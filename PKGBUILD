@@ -11,19 +11,28 @@ conflicts=('ungit')
 source=(
 	"https://github.com/FredrikNoren/ungit/releases/download/v${pkgver}/ungit-${pkgver}-linux-x64.zip"
 	'https://raw.githubusercontent.com/FredrikNoren/ungit/master/LICENSE.md'
+	'ungit.desktop'
 )
-md5sums=('SKIP' 'SKIP')
+md5sums=(
+	'SKIP'
+	'SKIP'
+	'SKIP'
+)
 
 package() {
+	# Install license
 	mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-	install LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install "${srcdir}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
+	# Install shortcut
+	mkdir -p "${pkgdir}/usr/share/applications"
+	install "${srcdir}/ungit.desktop" "${pkgdir}/usr/share/applications/ungit.desktop"
+
+	# Install folder
 	mkdir -p "${pkgdir}/opt"
-	cp -r ungit-linux-x64 "${pkgdir}/opt/${pkgname}"
+	cp -r "${srcdir}/ungit-linux-x64" "${pkgdir}/opt/${pkgname}"
 
+	# Link command
 	mkdir -p "${pkgdir}/usr/bin"
 	ln -s "/opt/${pkgname}/ungit" "${pkgdir}/usr/bin/ungit"
-
-	mkdir -p "${pkgdir}/usr/share/applications"
-	install "${startdir}/ungit.desktop" "${pkgdir}/usr/share/applications/ungit.desktop"
 }
