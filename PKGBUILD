@@ -31,5 +31,6 @@ package() {
   for pkg in "${_profiles}"/*; do
     cp -r "${pkg}" "${_dest}"
   done
+  mv "${_profiles}/jupyter" "${_bin_dest}"
   cp -r "${_profiles}/.gitlab/ci"/* "${_bin_dest}"
 }
