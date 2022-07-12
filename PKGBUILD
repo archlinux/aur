@@ -8,10 +8,16 @@ arch=('x86_64')
 url='https://github.com/FredrikNoren/ungit'
 license=('MIT')
 conflicts=('ungit')
-source=("https://github.com/FredrikNoren/ungit/releases/download/v${pkgver}/ungit-${pkgver}-linux-x64.zip")
-md5sums=('SKIP')
+source=(
+	"https://github.com/FredrikNoren/ungit/releases/download/v${pkgver}/ungit-${pkgver}-linux-x64.zip"
+	'https://raw.githubusercontent.com/FredrikNoren/ungit/master/LICENSE.md'
+)
+md5sums=('SKIP' 'SKIP')
 
 package() {
+	mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+	install LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
 	mkdir -p "${pkgdir}/opt"
 	cp -r ungit-linux-x64 "${pkgdir}/opt/${pkgname}"
 
