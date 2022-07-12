@@ -2,8 +2,10 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 # shellcheck disable=SC2034
-_pkgname=mkinitcpio-archiso
-pkgname=$_pkgname-encryption-git
+_pkgbase=mkinitcpio-archiso
+variant="encryption"
+_pkgname="${_pkgbase}-${variant}"
+pkgname="${_pkgname}-git"
 pkgver=v65
 pkgrel=1
 pkgdesc="Initcpio scripts used by archiso (encrypt hook support)"
@@ -12,8 +14,10 @@ _gitlab="https://gitlab.archlinux.org"
 url="${_gitlab}/mkinitcpio/mkinitcpio-archiso/-/merge_requests/25"
 license=(GPL3)
 depends=(bash device-mapper mkinitcpio cryptsetup)
-conflicts=('mkinitcpio-archiso' 'mkinitcpio-archiso-encryption')
-provides=('mkinitcpio-archiso' 'mkinitcpio-archiso-encryption')
+conflicts=("${_pkgbase}")
+conflicts+=("${_pkgname}")
+provides=("${_pkgbase}")
+provides+="${_pkgname}")
 makedepends=(git)
 checkdepends=(shellcheck shfmt)
 optdepends=(
@@ -22,18 +26,18 @@ optdepends=(
   'nbd: for PXE over NBD'
   'pv: for status display during copy to RAM'
 )
-source=("${_pkgname}::git+${_gitlab}/tallero/${_pkgname}.git#branch=crypto")
+source=("${_pkgbase}::git+${_gitlab}/tallero/${_pkgbase}.git#branch=crypto")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
+  cd "${_pkgbase}"
   git describe --tags | sed 's/-/+/g'
 }
 
 check() {
-  make -k check -C "${_pkgname}"
+  make -k check -C "${_pkgbase}"
 }
 
 package() {
-  make DESTDIR="$pkgdir/" PREFIX=/usr install -C "${_pkgname}"
+  make DESTDIR="$pkgdir/" PREFIX=/usr install -C "${_pkgbase}"
 }
