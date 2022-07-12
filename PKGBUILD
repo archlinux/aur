@@ -1,22 +1,25 @@
-# Maintainer: Buce <dmbuce@gmail.com>
+# Maintainer: fearlessdots <filipebertelli@tutanota.com>
+# Contributor: Buce <dmbuce@gmail.com>
 # Contributor: ssc <chasessc@gmail.com>
 
 pkgname=minecraft-region-fixer
-pkgver=0.2.1
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="Tries to fix Minecraft worlds (or region files)."
 arch=('i686' 'x86_64')
 url="https://github.com/Fenixin/Minecraft-Region-Fixer"
 license=('GPL')
-depends=('python2')
+depends=('python3')
 makedepends=('git')
-source=("$pkgname::git://github.com/Fenixin/Minecraft-Region-Fixer.git#tag=v$pkgver")
-md5sums=('SKIP')
+source=("$pkgname.tar.gz::https://github.com/Fenixin/Minecraft-Region-Fixer/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('2fa7b26f2631c856a138f664aa32b37f8ed39e129d254cb8dc14d64b38bfd18f')
+
+_extractdir="Minecraft-Region-Fixer-${pkgver}"
 
 prepare() {
-  cd "$srcdir/$pkgname"
-  sed -i '1 s|python|python2|g' region-fixer.py
-  chmod +x region-fixer.py
+  cd "${srcdir}/${_extractdir}"  
+  sed -i '1 s|python|python3|g' regionfixer.py
+  chmod +x regionfixer.py
 }
 
 #build() {
@@ -24,14 +27,14 @@ prepare() {
 #}
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "${srcdir}/${_extractdir}"
 
-  _installdir="usr/lib/python$(python2 --version 2>&1 | grep -o '2\.[0-9]*')/site-packages/${pkgname%-git}"
+  _installdir="usr/lib/python$(python3 --version 2>&1 | grep -o '3\.[0-9]*')/site-packages/${pkgname}"
   mkdir -p "$pkgdir/$_installdir"
   cp -r * "$pkgdir/$_installdir"
 
   mkdir -p "$pkgdir/usr/bin"
-  ln -s "/$_installdir/region-fixer.py" "$pkgdir/usr/bin/region-fixer"
+  ln -s "/$_installdir/regionfixer.py" "$pkgdir/usr/bin/regionfixer"
 } 
 
 # vim:set ts=2 sw=2 et:
