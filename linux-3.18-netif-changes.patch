@@ -1,0 +1,11 @@
+--- Drivers/DtaNw/Source/Linux/DtaNwIal.c	2022-07-12 15:19:33.911184124 +0100
++++ Drivers/DtaNw/Source/Linux/DtaNwIal.c	2022-07-12 15:18:53.207850737 +0100
+@@ -861,7 +861,7 @@
+     }
+ 
+     // Give packet to the network layer. Network layer will cleanup the packet
+-    netif_rx_ni(pSkb);
++    netif_rx(pSkb);
+ 
+ #if defined(RHEL_RELEASE_CODE)
+ #if RHEL_RELEASE_CODE>=RHEL_RELEASE_VERSION(7,5)

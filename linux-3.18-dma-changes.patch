@@ -1,0 +1,85 @@
+--- Drivers/DtSal/Source/DtDma.c	2022-07-12 14:04:25.567844916 +0100
++++ Drivers/DtSal/Source/DtDma.c	2022-07-12 15:13:17.281183634 +0100
+@@ -53,11 +53,6 @@
+ }
+ 
+ #else
+-//=+=+=+=+=+=+=+=+=+=+=+=+=+ Linux Kernel version dependancies +=+=+=+=+=+=+=+=+=+=+=+=+=+
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,5)
+-    #define  pci_dma_sync_sg_for_device  pci_dma_sync_sg
+-    #define  pci_dma_sync_sg_for_cpu  pci_dma_sync_sg
+-#endif
+ 
+ //=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ Scatter/Gather helpers +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+ //
+@@ -161,15 +156,13 @@
+ #else
+     if (Supports64Bit)
+     {
+-        if (pci_set_dma_mask(pDevice->m_pPciDev, DT_DMA_64BIT_MASK)<0 ||
+-            pci_set_consistent_dma_mask(pDevice->m_pPciDev, DT_DMA_64BIT_MASK)<0)
++        if (dma_set_mask_and_coherent(&pDevice->m_pPciDev->dev, DT_DMA_64BIT_MASK)<0)
+         {
+             DtDbgOut(ERR, SAL_DMA, "Unable to set DMA 64-bit mask.");
+             return DT_STATUS_FAIL;
+         }
+     } else {
+-        if (pci_set_dma_mask(pDevice->m_pPciDev, DT_DMA_32BIT_MASK)<0 ||
+-            pci_set_consistent_dma_mask(pDevice->m_pPciDev, DT_DMA_32BIT_MASK)<0)
++        if (dma_set_mask_and_coherent(&pDevice->m_pPciDev->dev, DT_DMA_32BIT_MASK)<0)
+         {
+             DtDbgOut(ERR, SAL_DMA, "Unable to set DMA 32-bit mask.");
+             return DT_STATUS_FAIL;
+@@ -237,8 +230,8 @@
+     }
+ #else
+     // Create common buffer and store virtual and physical address.
+-    pDmaBuffer->m_pVirtualAddressUnaligned = pci_alloc_consistent(pDevice->m_pPciDev,
+-                                                             BufSizeAligned, &DmaAddress);
++    pDmaBuffer->m_pVirtualAddressUnaligned = dma_alloc_coherent(&pDevice->m_pPciDev->dev,
++                                                             BufSizeAligned, &DmaAddress, GFP_KERNEL);
+     pDmaBuffer->m_PhysicalAddressUnaligned.QuadPart = DmaAddress;
+     if (Align != 0)
+     {   
+@@ -266,7 +259,7 @@
+ #ifdef WINBUILD
+     WdfObjectDelete(pDmaBuffer->m_CommonBuffer);
+ #else
+-    pci_free_consistent(pDevice->m_pPciDev, pDmaBuffer->m_BufferLength,
++    dma_free_coherent(&pDevice->m_pPciDev->dev, pDmaBuffer->m_BufferLength,
+                                          pDmaBuffer->m_pVirtualAddressUnaligned,
+                                          pDmaBuffer->m_PhysicalAddressUnaligned.QuadPart);
+ #endif
+@@ -358,8 +351,8 @@
+     }
+     
+     // Map scatter-gather-list
+-    pOsSgl->m_NumSglEntries = pci_map_sg(
+-           pDevice->m_pPciDev, pOsSgl->m_pSgList, pPageList->m_NumPages,
++    pOsSgl->m_NumSglEntries = dma_map_sg(
++           &pDevice->m_pPciDev->dev, pOsSgl->m_pSgList, pPageList->m_NumPages,
+            (Direction == DT_DMA_DIRECTION_FROM_DEVICE ? DMA_FROM_DEVICE : DMA_TO_DEVICE));
+ #endif
+     pOsSgl->m_BufferLength = BufSize;
+@@ -380,7 +373,7 @@
+     pOsSgl->m_pSgList = NULL;  // ???Do we need to do something...???  or is KMDF deleting
+                                // it for us when deleting the transaction??
+ #else
+-    pci_unmap_sg(pDevice->m_pPciDev, pOsSgl->m_pSgList, pOsSgl->m_PageList.m_NumPages,
++    dma_unmap_sg(&pDevice->m_pPciDev->dev, pOsSgl->m_pSgList, pOsSgl->m_PageList.m_NumPages,
+            (Direction == DT_DMA_DIRECTION_FROM_DEVICE ? DMA_FROM_DEVICE : DMA_TO_DEVICE));
+ #endif
+     pOsSgl->m_Allocated = FALSE;
+@@ -399,10 +392,10 @@
+                                                                                     TRUE);
+ #else
+     if (Direction == DT_DMA_DIRECTION_TO_DEVICE)
+-        pci_dma_sync_sg_for_device(pDevice->m_pPciDev, pOsSgl->m_pSgList, 
++        dma_sync_sg_for_device(&pDevice->m_pPciDev->dev, pOsSgl->m_pSgList, 
+                                                   pOsSgl->m_NumSglEntries, DMA_TO_DEVICE);
+     else
+-        pci_dma_sync_sg_for_device(pDevice->m_pPciDev, pOsSgl->m_pSgList, 
++        dma_sync_sg_for_device(&pDevice->m_pPciDev->dev, pOsSgl->m_pSgList, 
+                                                 pOsSgl->m_NumSglEntries, DMA_FROM_DEVICE);
+ #endif
+     return DT_STATUS_OK;
