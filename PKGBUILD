@@ -1,7 +1,7 @@
 # Maintainer: Holger Obermaier
 
 pkgname="dpc++"
-_pkgtag="2021-WW10"
+_pkgtag="2022-06"
 pkgver="${_pkgtag//-/.}"
 pkgrel=1
 pkgdesc="Data Parallel C++"
