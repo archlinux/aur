@@ -2,7 +2,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-early-access
-pkgver=2828
+pkgver=2829
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger (early access version)"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ provides=('yuzu')
 conflicts=('yuzu')
 source=("https://github.com/pineappleEA/pineapple-src/archive/EA-${pkgver}.tar.gz"
     "inject-git-info.patch")
-md5sums=('654373d55648e202d98f9fabb0d3232b'
+md5sums=('2436033d3381ea4a68d04d3d0f282f28'
          '3f0a9f3d79cbe4759e9ef550dbad0baa')
 
 prepare() {
@@ -29,13 +29,12 @@ prepare() {
   #find . -name "CMakeLists.txt" -exec sed -i 's/^.*-Werror=.*)$/ )/g' {} +
   find . -name "CMakeLists.txt" -exec sed -i 's/^.*-Werror=.*$/ /g' {} +
   find . -name "CMakeLists.txt" -exec sed -i 's/-Werror/-W/g' {} +
-  sed -i 's/static constexpr/const/g' src/shader_recompiler/frontend/maxwell/structured_control_flow.cpp
-  sed -i 's/add_subdirectory(mcl)/add_subdirectory(mcl EXCLUDE_FROM_ALL)/g' externals/dynarmic/externals/CMakeLists.txt
-  sed -i -e 's/--quiet //g' src/video_core/host_shaders/CMakeLists.txt
-  sed -i -e 's#${SPIRV_HEADER_FILE} ${SOURCE_FILE}#${SPIRV_HEADER_FILE} ${SOURCE_FILE} 2>/dev/null#g' src/video_core/host_shaders/CMakeLists.txt
+  #sed -i -e 's/--quiet //g' src/video_core/host_shaders/CMakeLists.txt
+  #sed -i -e 's#${SPIRV_HEADER_FILE} ${SOURCE_FILE}#${SPIRV_HEADER_FILE} ${SOURCE_FILE} 2>/dev/null#g' src/video_core/host_shaders/CMakeLists.txt
   sed -i -e '/Name=yuzu/ s/$/ Early Access/' dist/yuzu.desktop
   sed -i -e '/yuzu %f/a StartupWMClass=yuzu' dist/yuzu.desktop
   sed -i -e 's_^MimeType=.*_&application/x-nx-nsp;application/x-nx-xci;_' dist/yuzu.desktop
+  curl -s https://raw.githubusercontent.com/pineappleEA/Pineapple-Linux/master/yuzu.xml > ./dist/yuzu.xml || curl -s https://gitlab.com/samantas5855/pineapple/-/raw/master/yuzu.xml > ./dist/yuzu.xml
 }
 build() {
   cd "$srcdir/pineapple-src-EA-${pkgver}"
@@ -50,11 +49,13 @@ build() {
     -DYUZU_USE_QT_WEB_ENGINE=ON \
     -DUSE_DISCORD_PRESENCE=ON \
     -DENABLE_QT_TRANSLATION=ON \
-    -DYUZU_USE_EXTERNAL_SDL2=OFF \
     -DYUZU_USE_BUNDLED_OPUS=OFF \
     -DDYNARMIC_NO_BUNDLED_FMT=ON \
     -DDYNARMIC_NO_BUNDLED_ROBIN_MAP=ON \
-    -DYUZU_USE_BUNDLED_FFMPEG=OFF
+    -DYUZU_USE_BUNDLED_FFMPEG=OFF \
+    -DYUZU_USE_BUNDLED_LIBUSB=OFF \
+    -DYUZU_USE_BUNDLED_QT=OFF \
+    -DYUZU_USE_EXTERNAL_SDL2=OFF
 
   ninja
 }
