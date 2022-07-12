@@ -2,13 +2,13 @@
 
 _branch=dev
 pkgname=espanso-git
-pkgver=2.0.0.r234.ge3887c0
+pkgver=2.1.5.beta.r17.g930bf80
 pkgrel=2
 pkgdesc="Cross-platform Text Expander written in Rust"
 arch=(x86_64)
 url="https://espanso.org/"
 license=("GPL3")
-depends=("xdotool" "xclip" "libxtst" "libnotify" "wxgtk2")
+depends=("xdotool" "xclip" "libxtst" "libnotify" "wxgtk3")
 makedepends=("rust" "git" "cmake" "cargo-make" "rust-script")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
