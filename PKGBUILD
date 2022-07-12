@@ -4,7 +4,7 @@
 # Contributor: Gerardo Exequiel Pozzi <djgera@archlinux.org>
 
 _pkgbase=archiso
-_variant="${_pkgname}"
+_variant="encryption"
 _pkgname="${_pkgbase}-${_variant}"
 pkgname="${_pkgname}-git"
 pkgver=v58+214+gee08b3c

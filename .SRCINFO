@@ -1,4 +1,4 @@
-pkgbase = archiso--git
+pkgbase = archiso-encryption-git
 	pkgdesc = Tools for creating Arch Linux live and install iso images with luks
 	pkgver = v58+214+gee08b3c
 	pkgrel = 1
@@ -22,10 +22,10 @@ pkgbase = archiso--git
 	optdepends = openssl: for codesigning support when building netboot artifacts
 	optdepends = qemu: for run_archiso
 	provides = archiso
-	provides = archiso-
+	provides = archiso-encryption
 	conflicts = archiso
-	conflicts = archiso-
-	source = archiso::git+https://gitlab.archlinux.org/tallero/archiso-#branch=crypto
+	conflicts = archiso-encryption
+	source = archiso::git+https://gitlab.archlinux.org/tallero/archiso-encryption#branch=crypto
 	sha256sums = SKIP
 
-pkgname = archiso--git
+pkgname = archiso-encryption-git
