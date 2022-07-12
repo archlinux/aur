@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=mfgtools-git
-pkgver=1.4.165.r8.g87a99ff
+pkgver=1.4.224.r4.g3903471
 pkgrel=1
 epoch=
 pkgdesc="uuu (Universal Update Utility), mfgtools 3.0. Freescale/NXP I.MX Chip image deploy tools."
@@ -20,7 +20,7 @@ backup=()
 options=('!strip')
 install=
 changelog=
-source=("${pkgname%-git}::git+https://ghproxy.com/${url}.git")
+source=("${pkgname%-git}::git+${url}.git")
 noextract=()
 sha256sums=('SKIP')
 #validpgpkeys=()
