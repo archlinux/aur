@@ -2,18 +2,18 @@
 
 pkgname=python-wpiformat-git
 _gitname=styleguide
-pkgver=2021.51
+pkgver=2022.22
 pkgrel=1
 pkgdesc="Linters and formatters for ensuring WPILib's source code conforms to its style guide"
 arch=('i686' 'x86_64')
-url="http://github.com/wpilibsuite/styleguide"
+url="https://github.com/wpilibsuite/styleguide"
 license=('custom=FRC-BSD')
-depends=('python-regex' 'clang' 'yapf')
+depends=('python-regex' 'clang' 'python-black')
 makedepends=('git')
 checkdepends=('python-pytest-runner' 'python-pip' 'git')
 provides=('python-wpiformat')
 conflicts=('python-wpiformat')
-source=(git+git://github.com/wpilibsuite/styleguide)
+source=(git+https://github.com/wpilibsuite/styleguide)
 md5sums=('SKIP')
 
 pkgver() {
