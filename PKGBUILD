@@ -5,7 +5,7 @@ pkgver=4.0.0
 pkgrel=2
 pkgdesc="Status bar application able to temporarily inhibit the screensaver and sleep mode."
 arch=(any)
-url="https://github.com/caffeine-ng/caffeine-ng"
+url="https://codeberg.org/WhyNotHugo/caffeine-ng"
 license=(GPL3)
 depends=(
   python-gobject
