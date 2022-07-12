@@ -7,7 +7,7 @@
 _pkgname=archiso
 variant="persistent"
 pkgname="${_pkgname}-${variant}-git"
-pkgver=v58+248+g710abd8
+pkgver=v58+287+gb435a72
 pkgrel=1
 pkgdesc='Tools for creating Arch Linux live and install iso images with luks'
 arch=('any')
@@ -18,6 +18,7 @@ depends=('arch-install-scripts' 'bash' 'dosfstools' 'e2fsprogs' 'erofs-utils'
 makedepends=('git')
 checkdepends=('shellcheck')
 replaces=("${_pkgname}" "${_pkgname}-encryption" "${_pkgname}-${variant}")
+provides=("${_pkgname}" "${_pkgname}-encryption" "${_pkgname}-${variant}")
 conflicts=("${_pkgname}" "${_pkgname}-encryption" "${_pkgname}-${variant}")
 optdepends=(
   'archiso-profiles: extra profiles for archiso'
