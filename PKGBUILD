@@ -1,7 +1,7 @@
 # Maintainer: Caleb Fontenot <foley2431 at gmail dot com>
 # Co-Maintainer: Lance G. <gero3977 at gmail dot com>
 pkgname=mmsd-tng-git
-pkgver=1.5.r0.g2bbeaa2
+pkgver=1.10.r0.gac0dbc3
 pkgrel=1
 pkgdesc="Multimedia Messaging Service Daemon - The Next Generation"
 url="https://git.kernel.org/pub/scm/network/ofono/mmsd.git"
@@ -40,5 +40,5 @@ package() {
 	cd "$srcdir/$pkgname"
 	DESTDIR="$pkgdir" meson install -C build
         mkdir -p $pkgdir/usr/lib/systemd/user
-        install -Dm644 "mmsd-tng.user.service" "$pkgdir/usr/lib/systemd/user/mmsd-tng.service"
+        install -Dm644 "$srcdir/mmsd-tng.user.service" "$pkgdir/usr/lib/systemd/user/mmsd-tng.service"
 }
