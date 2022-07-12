@@ -3,8 +3,9 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Gerardo Exequiel Pozzi <djgera@archlinux.org>
 
-_pkgname=archiso
-pkgname=$_pkgname-encryption
+_pkgbase=archiso
+_variant="encryption"
+pkgname="${_pkgbase}-${_variant}"
 pkgver=v65
 pkgrel=1
 pkgdesc='Tools for creating Arch Linux live and install iso images with luks'
@@ -15,8 +16,8 @@ depends=('arch-install-scripts' 'bash' 'dosfstools' 'e2fsprogs' 'erofs-utils'
 'libarchive' 'libisoburn' 'mtools' 'squashfs-tools' 'cryptsetup-nested-cryptkey')
 makedepends=('git')
 checkdepends=('shellcheck')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+provides=("${_pkgbase}")
+conflicts=("${_pkgbase}")
 optdepends=(
   'archiso-profiles: extra profiles for archiso'
   'edk2-ovmf: for emulating UEFI with run_archiso'
@@ -24,15 +25,15 @@ optdepends=(
   'qemu: for run_archiso'
 )
 _commit="ee08b3c97344ef7a3ea293456a64cd97b9b85262"
-source=("git+https://gitlab.archlinux.org/tallero/${_pkgname}#commit=${_commit}")
+source=("${_pkgbase}::git+https://gitlab.archlinux.org/tallero/${_pkgname}#commit=${_commit}")
 sha256sums=('SKIP')
 
 check() {
-  cd "${_pkgname}"
+  cd "${_pkgbase}"
   make -k check
 }
 
 package() {
-  cd "${_pkgname}"
+  cd "${_pkgbase}"
   make DESTDIR="${pkgdir}" PREFIX='/usr' install
 }

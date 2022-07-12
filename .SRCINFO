@@ -23,7 +23,7 @@ pkgbase = archiso-encryption
 	optdepends = qemu: for run_archiso
 	provides = archiso
 	conflicts = archiso
-	source = git+https://gitlab.archlinux.org/tallero/archiso#commit=ee08b3c97344ef7a3ea293456a64cd97b9b85262
+	source = archiso::git+https://gitlab.archlinux.org/tallero/#commit=ee08b3c97344ef7a3ea293456a64cd97b9b85262
 	sha256sums = SKIP
 
 pkgname = archiso-encryption
