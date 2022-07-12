@@ -1,0 +1,23 @@
+pkgbase = python2-httpbin
+	pkgdesc = HTTP Request and Response Service (for Python 2)
+	pkgver = 0.7.0
+	pkgrel = 3
+	url = https://github.com/requests/httpbin
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2-blinker
+	depends = python2-brotlipy
+	depends = python2-decorator
+	depends = python2-flasgger
+	depends = python2-flask
+	depends = python2-gevent
+	depends = python2-itsdangerous
+	depends = python2-markupsafe
+	depends = python2-raven
+	depends = python2-six
+	depends = python2-werkzeug
+	source = httpbin-0.7.0.tar.gz::https://github.com/requests/httpbin/archive/v0.7.0.tar.gz
+	sha512sums = faec48a0a2ac8800293b10281966a28195884ad2f69f0f28f1b8c8e1a7bfd8933ebbc9b541c80cdc19e1031a8ba9383afe8e372b9044436cb307dd1e8eddaae7
+
+pkgname = python2-httpbin
