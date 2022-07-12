@@ -3,9 +3,9 @@
 # Contributor: Carlos Galindo <carlos.s.galindo (at) gmail.com>
 
 _npmname=meshcentral
-_npmver=1.0.51
+_npmver=1.0.52
 pkgname=meshcentral
-pkgver=1.0.51
+pkgver=1.0.52
 pkgrel=1
 pkgdesc="The open source, multi-platform, self-hosted, feature packed web site for remote device management"
 arch=(any)
@@ -22,7 +22,7 @@ source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz"
         "$_npmname.sysusers"
         "$_npmname.tmpfiles")
 noextract=("$_npmname-$_npmver.tgz")
-sha256sums=('5c5c63d61eba7975c795a29f37f37c2aced98f19ed0a5760ab0d0b3e092b59aa'
+sha256sums=('2d1bf709ab320ff81f3ab9a0351c21b9db0251505eb6176e094dae8268424f77'
             'd53889dc58f968fa63cdbd8b245f154fc8170262908a832de674962ff2fa8b85'
             'd907415d1be94568c92d3a05e70dd855f004ebed2c4170f5c2d2f36c0dfd5199'
             '9968e59627f098fc5e2cbf0a0f1e11054e01ccd793d9098b5ff101c4e14f278b')
