@@ -1,6 +1,7 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Contributor: David Runge <dvzrv@archlinux.org>
 
+# shellcheck disable=SC2034
 _pkgname=mkinitcpio-archiso
 pkgname=$_pkgname-encryption-git
 pkgver=65
@@ -23,6 +24,11 @@ optdepends=(
 )
 source=("${pkgname}::git+${_gitlab}/tallero/${_pkgname}.git#branch=crypto")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+  git describe --tags | sed 's/-/+/g'
+}
 
 check() {
   make -k check -C $pkgname
