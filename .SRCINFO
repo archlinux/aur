@@ -1,6 +1,6 @@
 pkgbase = archiso-persistent-git
 	pkgdesc = Tools for creating Arch Linux live and install iso images (persistent drive support).
-	pkgver = v58+287+gb435a72
+	pkgver = v67.r0.g2864fac
 	pkgrel = 1
 	url = https://gitlab.archlinux.org/archlinux/archiso/-/issues/184
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = archiso-persistent-git
 	conflicts = archiso
 	conflicts = archiso-encryption
 	conflicts = archiso-
-	source = archiso::git+https://gitlab.archlinux.org/tallero/archiso#branch=
+	source = archiso::git+https://gitlab.archlinux.org/tallero/archiso#branch=persistent
 	sha256sums = SKIP
 
 pkgname = archiso-persistent-git

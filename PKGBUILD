@@ -34,8 +34,8 @@ source=("${_pkgbase}::git+https://gitlab.archlinux.org/tallero/${_pkgbase}#branc
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgbase}"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${_pkgbase}" || exit
+  echo "v$(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 check() {
