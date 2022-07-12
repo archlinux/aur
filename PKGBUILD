@@ -15,14 +15,13 @@ options=(!emptydirs)
 conflicts=('libpamac-aur' 'libpamac-flatpak' 'libpamac' 'libpamac-full-dev')
 #Temp Fix
 source=(git+https://gitlab.manjaro.org/applications/libpamac.git)
-sha256sums=('SKIP')
+
 #Stable
 #source=(https://gitlab.manjaro.org/applications/libpamac/-/archive/$pkgver/$_pkgname-$pkgver.tar.bz2)
-#sha256sums=('8f05c025934756f77a1a8f00e3ae5abb710fda078876f8e44e0b300fd49d1347')
+sha256sums=('8f05c025934756f77a1a8f00e3ae5abb710fda078876f8e44e0b300fd49d1347')
 
 build() {
-  cd libpamac 
-# cd $_pkgname-$pkgver
+  cd $_pkgname-$pkgver
   mkdir -p builddir
   cd builddir
   meson setup --prefix=/usr --sysconfdir=/etc -Denable-snap=true -Denable-flatpak=true --buildtype=release
@@ -32,8 +31,7 @@ build() {
 
 package() {
   backup=('etc/pamac.conf')
-  cd libpamac
-# cd $_pkgname-$pkgver
+  cd $_pkgname-$pkgver
   cd builddir
   DESTDIR="$pkgdir" ninja install
 }
