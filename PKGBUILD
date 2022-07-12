@@ -1,14 +1,14 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-telescope-git
-pkgver=r806.492f1d3
+pkgver=0.1.0.r0.gb79cd6c8
 pkgrel=1
 pkgdesc="Extensible fuzzy finder for lists"
 arch=('any')
 url="https://github.com/nvim-telescope/telescope.nvim"
 license=('MIT')
 groups=('neovim-plugins')
-depends=('neovim' 'neovim-plenary' 'neovim-popup')
+depends=('neovim' 'neovim-plenary')
 optdepends=(
 	'bat: for inline previews'
 	'fd'
@@ -16,15 +16,14 @@ optdepends=(
 	'neovim-tree-sitter'
 	'vim-devicons')
 makedepends=('git')
-provides=("${pkgname%-git}")
+provides=("${pkgname%-git}=${pkgver%.r*}")
 conflicts=("${pkgname%-git}")
-install=
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
+validpgpkeys=()
 
 pkgver() {
-	cd "$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git -C "$pkgname" describe --long --tags | sed 's/-/.r/;s/-/./'
 }
 
 package() {

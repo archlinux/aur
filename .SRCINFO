@@ -1,6 +1,6 @@
 pkgbase = neovim-telescope-git
 	pkgdesc = Extensible fuzzy finder for lists
-	pkgver = r806.492f1d3
+	pkgver = 0.1.0.r0.gb79cd6c8
 	pkgrel = 1
 	url = https://github.com/nvim-telescope/telescope.nvim
 	arch = any
@@ -9,13 +9,12 @@ pkgbase = neovim-telescope-git
 	makedepends = git
 	depends = neovim
 	depends = neovim-plenary
-	depends = neovim-popup
 	optdepends = bat: for inline previews
 	optdepends = fd
 	optdepends = ripgrep
 	optdepends = neovim-tree-sitter
 	optdepends = vim-devicons
-	provides = neovim-telescope
+	provides = neovim-telescope=0.1.0
 	conflicts = neovim-telescope
 	source = neovim-telescope-git::git+https://github.com/nvim-telescope/telescope.nvim
 	sha256sums = SKIP
