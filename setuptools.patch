@@ -1,0 +1,8 @@
+--- setup.py
++++ setup.py
+@@ -68,4 +68,5 @@
+     data_files=data_files,
+ 
+     scripts=["caffeine", "caffeinate", "caffeine-indicator"],
++    py_modules=[]
+     )

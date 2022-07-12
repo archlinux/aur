@@ -5,7 +5,7 @@
 _name=cups-of-caffeine
 pkgname=caffeine
 pkgver=2.9.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Keep your computer awake."
 arch=(any)
 url="https://launchpad.net/caffeine"
@@ -13,8 +13,15 @@ license=('GPL3')
 depends=(python-xlib python-gobject python-ewmh)
 makedepends=('python-setuptools')
 optdepends=('libayatana-appindicator: caffeine-indicator (tray applet) support')
-source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-$pkgver.tar.gz")
-md5sums=('cd624f6d0a573771ff74df122376fbf8')
+source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-$pkgver.tar.gz"
+        setuptools.patch)
+md5sums=('cd624f6d0a573771ff74df122376fbf8'
+         'afeee8e85507772316fecd8765456fdb')
+
+prepare() {
+  cd "$srcdir/${_name}-${pkgver}"
+  patch -u -p0 --input="${srcdir}/setuptools.patch"
+}
 
 build() {
   cd "$srcdir/${_name}-${pkgver}"
