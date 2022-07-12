@@ -1,117 +1,131 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=ardupilot-copter-sitl
-pkgver=4.0.7
+pkgver=4.2.1
 pkgdesc="Advanced, Fully-Featured, and Reliable Autopilot Software (Copter,
 SITL)"
 url='https://ardupilot.org'
 arch=('i686' 'x86_64')
-pkgrel=2
+pkgrel=1
 license=('GPLv3')
 provides=('ardupilot-sitl')
-makedepends=('waf' 'python-setuptools')
+makedepends=('waf' 'python-setuptools' 'git')
 
 # Deps taken from:
 # https://github.com/ArduPilot/ardupilot/blob/master/Tools/environment_install/install-prereqs-ubuntu.sh
+sitl_depends=(
+    libtool
+    libxml2
+    libxslt
+    python
+    python-pip
+    python-setuptools
+    python-numpy
+    python-pyparsing
+    python-psutil
+    xterm
+    python-matplotlib
+    python-pyserial
+    python-scipy
+    python-opencv
+    csfml
+    sfml
+    python-yaml
+    python-argparse
+    python-wxpython
+)
+px4_depends=()
+arm_linux_depends=(
+    #arm-linux-gnueabihf-gcc
+    #arm-linux-gnueabihf-pkg-config
+)
+coverage_depends=(
+    lcov
+    gcovr
+)
 python_depends=(
     python-future
     python-lxml
     python-pymavlink
     mavproxy
     python-pexpect
+    flake8
+    python-geocoder
+    python-empy
+    python-click
+    python-decorator
     python-pygame
     python-intelhex
 )
-
-px4_depends=(
-    python-argparse
-    openocd
-    flex
-    bison
-    ncurses
-    autoconf
-    texinfo
-    libftdi
-    zlib
-    zip
-    genromfs
-    python-empy
-    cmake
-)
-arm_linux_depends=(
-    #arm-linux-gnueabihf-gcc
-    #arm-linux-gnueabihf-pkg-config
-)
-sitl_depends=(
-    libtool
-    libxml2
-    libxslt
-    python
-    python-matplotlib
-    python-pyserial
-    python-scipy
-    #python-opencv
-    python-numpy
-    python-pyparsing
-    xterm
-    lcov
-    gcovr
-    csfml
-    sfml
-    python-yaml
-)
-submodule_depends=(
-    chibios
-    benchmark
-    gtest
-    #libcanard
-    #libuavcan
-    #mavlink
-    waf
-)
 depends=(
-    ${python_depends[@]}
+    ${sitl_depends[@]}
     ${px4_depends[@]}
     ${arm_linux_depends[@]}
-    ${sitl_depends[@]}
+    ${coverage_depends[@]}
+    ${python_depends[@]}
     ${submodule_depends[@]}
     lsb-release
-    python-wxpython
 )
-source=("${pkgname}-${pkgver}::https://github.com/ArduPilot/ardupilot/archive/Copter-${pkgver}.tar.gz"
-        "13921.patch"::"https://github.com/ArduPilot/ardupilot/pull/13921.patch"
-        "libcanard::https://github.com/ArduPilot/libcanard/archive/99163fc2369e5e5f75f8473f0b950b3418830d3f.tar.gz"
-        "mavlink::https://github.com/ArduPilot/mavlink/archive/6e08c0757a1e90c461a8caf1a8d5b724abf3ca57.tar.gz"
-        "uavcan::https://github.com/ArduPilot/uavcan/archive/3ef4b88d96466bbcf886f74d0ae169a4c8c1bdb0.tar.gz"
-       )
-sha256sums=('26defe4a6d73da802ec152ff9ab9ad4e2673a16ff86f053e59e5369b6f67c355'
-            '236508cb3d3dc57930cec4b40911df43e6d7c69a077f0ffe14e7d67b940f21b3'
-            'dfea517b8009d3c3a85f561ca8372b5464499c0875d6b57d1e4d5cd2975122d3'
-            '1d93d928503561f2ccb307245f6789c3437ad469d0efba637e97a90fb49e5aa8'
-            '02b86cd97b6a626e64240fe83de4e725ee6f59cac2a459dc9349c794dbb2eb6e'
-           )
-
-_pkgname=ardupilot-Copter
+source=("${pkgname}-${pkgver}::git+https://github.com/ArduPilot/ardupilot.git#tag=Copter-${pkgver}"
+        "${pkgname}-libuavcan::git+https://github.com/DroneCAN/libuavcan.git"
+        "${pkgname}-waf::git+https://github.com/ArduPilot/waf.git"
+        "${pkgname}-benchmark::git+https://github.com/google/benchmark.git"
+        "${pkgname}-mavlink::git+https://github.com/ArduPilot/mavlink.git"
+        "${pkgname}-googletest::git+https://github.com/ArduPilot/googletest.git"
+        "${pkgname}-ChibiOS::git+https://github.com/ArduPilot/ChibiOS.git"
+        "${pkgname}-gsoap::git+https://github.com/ArduPilot/gsoap.git"
+        "${pkgname}-DSDL::git+https://github.com/DroneCAN/DSDL.git"
+        "${pkgname}-CrashDebug::git+https://github.com/ardupilot/CrashDebug.git"
+        "${pkgname}-pydronecan::git+https://github.com/DroneCAN/pydronecan.git"
+        "${pkgname}-dronecan_dsdlc::git+https://github.com/DroneCAN/dronecan_dsdlc.git"
+        "${pkgname}-libcanard::git+https://github.com/DroneCAN/libcanard.git"
+        "uninitialized.patch::https://patch-diff.githubusercontent.com/raw/ArduPilot/ardupilot/pull/21171.patch"
+)
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+)
 
 prepare() {
-    cd "$srcdir"
-    mv -n archived-libcanard-99163fc2369e5e5f75f8473f0b950b3418830d3f/* \
-          "${_pkgname}-${pkgver}/modules/libcanard"
-    mv -n mavlink-6e08c0757a1e90c461a8caf1a8d5b724abf3ca57/* \
-          "${_pkgname}-${pkgver}/modules/mavlink"
-    mv -n archived-uavcan-3ef4b88d96466bbcf886f74d0ae169a4c8c1bdb0/* \
-          "${_pkgname}-${pkgver}/modules/uavcan"
+    cd "$srcdir/${pkgname}-${pkgver}"
 
-    cd "ardupilot-Copter-$pkgver"
-    patch --forward --strip=1 --input="${srcdir}/13921.patch"
+    git submodule init
+
+    git config submodule."modules/uavcan".url "${srcdir}/${pkgname}"-libuavcan
+    git config submodule."modules/waf".url "${srcdir}/${pkgname}"-waf
+    git config submodule."modules/gbenchmark".url "${srcdir}/${pkgname}"-benchmark
+    git config submodule."modules/mavlink".url "${srcdir}/${pkgname}"-mavlink
+    git config submodule."gtest".url "${srcdir}/${pkgname}"-googletest
+    git config submodule."modules/ChibiOS".url "${srcdir}/${pkgname}"-ChibiOS
+    git config submodule."modules/gsoap".url "${srcdir}/${pkgname}"-gsoap
+    git config submodule."modules/DroneCAN/DSDL".url "${srcdir}/${pkgname}"-DSDL
+    # git config submodule."modules/CrashDebug".url "${srcdir}/${pkgname}"-CrashDebug
+    git config submodule."modules/DroneCAN/pydronecan".url "${srcdir}/${pkgname}"-pydronecan
+    git config submodule."modules/DroneCAN/dronecan_dsdlc".url "${srcdir}/${pkgname}"-dronecan_dsdlc
+    git config submodule."modules/DroneCAN/libcanard".url "${srcdir}/${pkgname}"-libcanard
+
+    git submodule update --init --recursive
+
+    patch -Np1 -i "${srcdir}"/uninitialized.patch
 }
 
 build() {
-    cd "$srcdir/${_pkgname}-${pkgver}"
+    cd "$srcdir/${pkgname}-${pkgver}"
     waf configure --board sitl
     waf copter
 }
 
 package() {
-    cd "$srcdir/${_pkgname}-${pkgver}"
+    cd "$srcdir/${pkgname}-${pkgver}"
     DESTDIR="${pkgdir}/" waf install
 }
