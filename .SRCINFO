@@ -14,6 +14,7 @@ pkgbase = dumpifs-git
 	provides = zzz
 	provides = exMifsLzo
 	provides = exMifsLz4
+	conflicts = mfgtools
 	source = git+https://github.com/askac/dumpifs.git
 	source = https://github.com/askac/dumpifs/commit/eb6c695e1a2a79967935b4cea07695141ba60336.patch
 	md5sums = SKIP

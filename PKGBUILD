@@ -10,6 +10,7 @@ url='https://github.com/askac/dumpifs'
 license=('custom:BLACKBERRY SDK')
 depends=('clang')
 provides=(dumpifs fixdecifs fixencifs uuu zzz exMifsLzo exMifsLz4)
+conflicts=('mfgtools')
 # source=("git+${url}.git#commit=b7bac90e8312eca2796f2003a52791899eb8dcd9"
 source=("git+${url}.git"
     "https://github.com/askac/dumpifs/commit/eb6c695e1a2a79967935b4cea07695141ba60336.patch")
