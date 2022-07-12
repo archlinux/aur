@@ -3,10 +3,11 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Gerardo Exequiel Pozzi <djgera@archlinux.org>
 
+# shellcheck disable=SC2034
 _pkgbase=archiso
 _variant="encryption"
 pkgname="${_pkgbase}-${_variant}"
-pkgver=v65
+pkgver=v66
 pkgrel=1
 pkgdesc='Tools for creating Arch Linux live and install iso images with luks'
 arch=('any')
@@ -24,16 +25,16 @@ optdepends=(
   'openssl: for codesigning support when building netboot artifacts'
   'qemu: for run_archiso'
 )
-_commit="ee08b3c97344ef7a3ea293456a64cd97b9b85262"
-source=("${_pkgbase}::git+https://gitlab.archlinux.org/tallero/${_pkgname}#commit=${_commit}")
+source=("${_pkgbase}::git+https://gitlab.archlinux.org/tallero/${_pkgbase}#tag=${pkgver}")
 sha256sums=('SKIP')
 
 check() {
-  cd "${_pkgbase}"
+  cd "${_pkgbase}" || exit
   make -k check
 }
 
+# shellcheck disable=SC2154
 package() {
-  cd "${_pkgbase}"
+  cd "${_pkgbase}" || exit
   make DESTDIR="${pkgdir}" PREFIX='/usr' install
 }
