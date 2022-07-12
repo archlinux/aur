@@ -3,12 +3,12 @@
 _pkgver=2.1.6-beta
 pkgname=espanso
 pkgver=2.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform Text Expander written in Rust"
 arch=(x86_64)
 url="https://espanso.org/"
 license=("GPL3")
-depends=("xdotool" "xclip" "libxtst" "libnotify" "wxgtk2")
+depends=("xdotool" "xclip" "libxtst" "libnotify" "wxgtk3")
 makedepends=("rust" "git" "cmake" "cargo-make" "rust-script")
 options=("!lto")  # fails with LTO as of 2022-03
 source=("git+https://github.com/federico-terzi/espanso.git#tag=v${_pkgver}")
