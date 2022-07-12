@@ -2,7 +2,7 @@
 # See also https://github.com/eremiell-aur/dpp
 pkgname=dpp
 _pkgname=DPP
-pkgver=10.0.12
+pkgver=10.0.13
 pkgrel=1
 pkgdesc="Lightweight and Scalable C++ Discord API Bot Library"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('cmake')
 install="${pkgname}.install"
 changelog="${pkgname}.changelog"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/brainboxdotcc/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a986fcd0e6d491b0df6522fe2c85bff1e16f5513bcc3abee1b774ff25e03ee1b')
+sha256sums=('35dc9f5dc265d70047df67b13ae45f7345ed3f3b842b114fd89cacb3c83428ed')
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -22,7 +22,6 @@ prepare() {
 	sed -i -E "s/libdpp/dpp/" "CMakeLists.txt" "cmake/libdpp-config.cmake"
 	sed -i -E "s/libdpp-config/dpp-config/" "cmake/CPackSetup.cmake"
 	mv "cmake/libdpp-config.cmake" "cmake/dpp-config.cmake"
-	sed -i -E "s/(#include <shared_mutex>)/#include <mutex>\n\1/" "src/dpp/dns.cpp"
 }
 
 build() {
