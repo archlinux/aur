@@ -4,7 +4,7 @@
 
 pkgname=ums
 pkgver=11.1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server."
 arch=('i686' 'x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
 url="http://www.universalmediaserver.com/"
@@ -34,7 +34,7 @@ sha256sums=('0cdadbabef215b6539e56755147a8f626d9f1fadfb85e2e5b7f7f1b66f1cdef9'
             '1f6efefa58dde9148396bd9236a6985db0fa27f1c767067b52bfae1832f32284'
             '7fd36db71f39fde3d515c697101190f979b308d910b3c4210b90422669683ab0')
 sha256sums_i686=('c7fcc88b3ff443cae647e466875bdaf6fc27c224f737b8919a84c9a265792ba0')
-sha256sums_x86_64=('c7fcc88b3ff443cae647e466875bdaf6fc27c224f737b8919a84c9a265792ba0')
+sha256sums_x86_64=('042583c87dfa0c32481c0b76742a3ca335924147d7cd7ed0cbb60923d45febe1')
 sha256sums_aarch64=('3a8f13d2abe3d417e75830f6077253447c8cef3a756a6bd0832ed3957e120aa1')
 sha256sums_arm=('b50a4ab171fd57b6940fd8e2dd77048b278d17130ecae3af8616537fe46c8af9')
 sha256sums_armv6h=('4b9064d84862c3f57e91c1a884da16382f839ca2b6b7b9d7e14d07ddd10d249e')
