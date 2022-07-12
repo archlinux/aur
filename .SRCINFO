@@ -1,0 +1,24 @@
+pkgbase = breeze-rofi-theme-git
+	pkgdesc = Breeze Themes for Rofi to match KDE Breeze Themes
+	pkgver = r41.df07825
+	pkgrel = 1
+	url = https://github.com/futpib/breeze-rofi-theme
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = nodejs
+	makedepends = yarn
+	makedepends = node-gyp
+	makedepends = python
+	makedepends = unzip
+	depends = rofi
+	provides = breeze-rofi-theme
+	conflicts = breeze-rofi-theme
+	source = git+https://github.com/futpib/breeze-rofi-theme.git
+	source = git+https://github.com/KDE/breeze.git
+	source = git+https://github.com/davatorium/rofi.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = breeze-rofi-theme-git
