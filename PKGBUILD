@@ -3,12 +3,13 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Gerardo Exequiel Pozzi <djgera@archlinux.org>
 
+# shellcheck disable=SC2034
 _pkgbase=archiso
-_variant="encryption"
+_variant="persistent"
 pkgname="${_pkgbase}-${_variant}"
-pkgver=v65
+pkgver=v67
 pkgrel=1
-pkgdesc='Tools for creating Arch Linux live and install iso images with luks'
+pkgdesc='Tools for creating Arch Linux live and install iso images (persistent drive support).'
 arch=('any')
 license=('GPL3')
 url="https://gitlab.archlinux.org/archlinux/archiso/-/issues/156"
@@ -17,23 +18,25 @@ depends=('arch-install-scripts' 'bash' 'dosfstools' 'e2fsprogs' 'erofs-utils'
 makedepends=('git')
 checkdepends=('shellcheck')
 provides=("${_pkgbase}")
+provides+=("${_pkgbase}-encryption")
 conflicts=("${_pkgbase}")
+conflicts+=("${_pkgbase}-encryption")
 optdepends=(
   'archiso-profiles: extra profiles for archiso'
   'edk2-ovmf: for emulating UEFI with run_archiso'
   'openssl: for codesigning support when building netboot artifacts'
   'qemu: for run_archiso'
 )
-_commit="ee08b3c97344ef7a3ea293456a64cd97b9b85262"
-source=("${_pkgbase}::git+https://gitlab.archlinux.org/tallero/${_pkgname}#commit=${_commit}")
+source=("${_pkgbase}::git+https://gitlab.archlinux.org/tallero/${_pkgbase}#tag=${pkgver}")
 sha256sums=('SKIP')
 
 check() {
-  cd "${_pkgbase}"
+  cd "${_pkgbase}" || exit
   make -k check
 }
 
+# shellcheck disable=SC2154
 package() {
-  cd "${_pkgbase}"
+  cd "${_pkgbase}" || exit
   make DESTDIR="${pkgdir}" PREFIX='/usr' install
 }
