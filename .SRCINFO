@@ -1,6 +1,6 @@
 pkgbase = archlinux-libvirt
 	pkgdesc = Arch Linux install drive (libvirt VM).
-	pkgver = 2022.07.12
+	pkgver = v1.0
 	pkgrel = 1
 	url = https://gitlab.archlinux.org/tallero/archiso-profiles
 	arch = i686
