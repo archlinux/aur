@@ -1,6 +1,6 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='kahlo'
-pkgver='1.1.0'
+pkgver='1.1.1'
 pkgrel='1'
 pkgdesc='Video download tool that automatically downloads newly posted videos from channels on supported websites'
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=(
 	'youtube-dl>=2020.11.21.1: at least one youtube-dl compatible module must be installed'
 )
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('a3a781647642809e48615b2f0616594390c8f33f4e76bdc497ecf0709a9946fa606d535f23111aba6c4e03b0deb4e104affcc8bd930484e6689665305bd4760d')
+sha512sums=('2cdb1f79e91e112a9d9a380cc9a68c9097e7122494a62a28c64bee612f77d636847866949e057f492d20d4d37483cc43627de243c6e4fb194810fbd4947b9440')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver/"
