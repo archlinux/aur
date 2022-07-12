@@ -1,6 +1,6 @@
 pkgbase = icon-git
 	pkgdesc = The Icon programming language
-	pkgver = 9.5.20i.r1.gf48c0f5
+	pkgver = 9.5.22d
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/gtownsend/icon
@@ -19,4 +19,3 @@ pkgbase = icon-git
 	sha256sums = 57b2b71129aa652ca63b07d3c23564bc7a45444a274d12e50856b46e4d088e35
 
 pkgname = icon-git
-
