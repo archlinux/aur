@@ -1,6 +1,6 @@
 # Maintainer: MedzikUser <nivua1fn@duck.com>
 pkgname='revanced-integrations'
-pkgver="0.22.1"
+pkgver="0.23.0"
 pkgrel=1
 pkgdesc='Integrations containing helper classes for ReVanced. Originally maintained by Vanced.'
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('revanced-cli')
 source=("integrations-${pkgver}.apk::${url}/releases/download/v${pkgver}/app-release-unsigned.apk"
         "${url}/raw/v${pkgver}/LICENSE")
-sha256sums=('1faa758feca3ce8f4b28ed8a8481630f62bd49f75278c0f21254108116dd1578'
+sha256sums=('41ab6b07a2a361cc509a19293dfd2ead016202bda0dc944fb170467fde66735c'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 package() {
