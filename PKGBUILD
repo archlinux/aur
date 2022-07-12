@@ -3,7 +3,7 @@
 
 pkgbase=linux-mainline-um5302ta
 pkgver=5.19.rc6
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.kernel.org/torvalds/h/$_srctag"
@@ -19,7 +19,7 @@ _srcname=linux-mainline
 source=(
   "$_srcname::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=$_srctag"
   config         # the main kernel config file
-  v5-ACPI-skip-IRQ1-override-on-3-Ryzen-6000-laptops.patch
+  v6-ACPI-skip-IRQ-override-on-AMD-Zen-platforms.patch
   v0-ALSA-hda-realtek-Add-quirk-for-ASUS-UM5302TA.patch
   v0-ASoC-cs35l41-CSC3551.patch
   v4-Bluetooth-btusb-Add-a-new-VID-PID-0489-e0e2-for-MT7922.patch
@@ -31,7 +31,7 @@ validpgpkeys=(
 )
 sha256sums=('SKIP'
             '382aa201a6a6939210dd8668ab052724547b4bd489b38e97502bbd0848061b35'
-            'a78e1868cfcaa34d5e5c8e16f2072e54966798664e5148a804579819ef965814'
+            'b34496cca01243a0805582cb656b9cfb2781c706cc4d13cea0ac4598364d3425'
             '6b86f4d857af3622f66da8ad9ea059ea39693fe80e5fbb507b0f8d9bc4616f88'
             '66ecbd41168b1fb7fe8c8bba8a374456130aeceb64df2708d62f7ac3e700df1f'
             '5212ffc69ba29c5b29365849e8bdb621c8cadac4025de5a503f55af923f123f0')
