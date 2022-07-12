@@ -18,7 +18,6 @@ url="https://gitlab.${_distro}.org/tallero/${_pkgbase}"
 provides=("${_distro}-${profile}-libvirt")
 depends=("${_distro}"
 	 "libvirt")
-makedepends=("${_pkgname}")
 checkdepends=('shellcheck')
 source=("${_pkg}-template.xml"
 	"${_pkg}-storage-template.xml"
