@@ -1,8 +1,8 @@
 # Maintainer:  Joshua Holmer <jholmer.in@gmail.com>
 
 pkgname=libjxl-metrics-git
-pkgver=v0.3.7.1056.g7d047b5f
-pkgrel=2
+pkgver=v0.3.7.1143.g6612139f
+pkgrel=1
 pkgdesc="JPEG XL image format reference implementation with butteraugli and ssimulacra (git version)"
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
@@ -11,9 +11,9 @@ makedepends=('git' 'cmake' 'clang' 'brotli' 'gdk-pixbuf2' 'giflib' 'gimp'
     'gperftools' 'libjpeg-turbo' 'libpng' 'openexr' 'gflags'
     'gtest' 'java-environment' 'python' 'asciidoc' 'doxygen'
     'graphviz' 'xdg-utils' 'highway')
-provides=('libjxl' 'libjpeg-xl-git' 'libjxl.so' 'libjxl_threads.so' 'libjxl-doc' 'libjpeg-xl-doc-git')
-conflicts=('libjxl' 'libjpeg-xl-git' 'libjxl-doc' 'libjpeg-xl-doc-git')
-replaces=('libjpeg-xl-git' 'libjpeg-xl-doc-git')
+provides=('libjxl' 'libjxl-git' 'libjxl.so' 'libjxl_threads.so' 'libjxl-doc' 'libjxl-doc-git')
+conflicts=('libjxl' 'libjxl-git' 'libjxl-doc' 'libjxl-doc-git')
+replaces=('libjxl-git' 'libjxl-doc-git')
 optdepends=('gdk-pixbuf2: for gdk-pixbuf loader'
     'gimp: for gimp plugin')
 options=('!lto')
