@@ -2,11 +2,11 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-git"
-pkgver=r884.g2659afe
+pkgver=r996.gbf8bd87
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(any)
-url="https://github.com/vaxerski/Hyprland"
+url="https://github.com/hyprwm/Hyprland"
 license=('BSD')
 depends=(
 	libxcb
@@ -47,7 +47,7 @@ makedepends=(
 	vulkan-headers
 	wayland-protocols
 	xorgproto)
-source=("${_pkgname}::git+https://github.com/vaxerski/Hyprland.git")
+source=("${_pkgname}::git+https://github.com/hyprwm/Hyprland.git")
 conflicts=("${_pkgname}")
 provides=(hyprland)
 sha256sums=('SKIP')
