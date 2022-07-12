@@ -1,3 +1,3 @@
 #!/usr/bin/sh
 cd /usr/lib/tradingview/
-electron app.asar "$@"
+@ELECTRON@ app.asar "$@"
