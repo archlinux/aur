@@ -1,6 +1,7 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Contributor: John Beard <john.j.beard@gmail.com>
 
+# shellcheck disable=SC2034
 _pkgname=daty
 pkgname=$_pkgname-git
 pkgver=1.0beta+78+g81b9736
@@ -21,6 +22,7 @@ pkgver() {
   git describe --tags | sed 's/-/+/g'
 }
 
+# shellcheck disable=SC2154
 package() {
     cd "${_pkgname}"
     python3 setup.py install --root="${pkgdir}" --optimize=1
