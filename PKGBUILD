@@ -2,9 +2,10 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Gerardo Exequiel Pozzi <djgera@archlinux.org>
+
 _pkgname=archiso
 pkgname=$_pkgname-encryption
-pkgver=65
+pkgver=v65
 pkgrel=1
 pkgdesc='Tools for creating Arch Linux live and install iso images with luks'
 arch=('any')
@@ -14,8 +15,9 @@ depends=('arch-install-scripts' 'bash' 'dosfstools' 'e2fsprogs' 'erofs-utils'
 'libarchive' 'libisoburn' 'mtools' 'squashfs-tools' 'cryptsetup-nested-cryptkey')
 makedepends=('git')
 checkdepends=('shellcheck')
-replaces=('archiso')
-conflicts=('archiso')
+replaces=("${_pkgname}")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 optdepends=(
   'archiso-profiles: extra profiles for archiso'
   'edk2-ovmf: for emulating UEFI with run_archiso'
