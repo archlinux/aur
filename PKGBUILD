@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-futurist
-pkgver=2.3.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='Code from the future, delivered to you in the now.'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-pbr' 'python-six' 'python-monotonic' 'python-prettytable'
 checkdepends=('python-eventlet' 'python-oslotest' 'python-stestr'
               'python-testrepository' 'python-testscenarios' 'python-testtools')
 source=("https://github.com/openstack/futurist/archive/$pkgver.tar.gz")
-sha512sums=('79a0e8ec71a27ca6a58ed2e45ada7bfaae9f09fe1d68be624eb31593b4417f4c7ec8569cda13727694aa25250f95077d407a13897cc67bd86042ad64d9726540')
+sha512sums=('843dddb5aacde60772be4e92b7c514393ccc51849da8c34ce0bdfa77155bcd4d002a1986143f2ba575ff6eb4f2cae036536da484ed0cc494caaf26b417ebb8e1')
 
 export PBR_VERSION=$pkgver
 
