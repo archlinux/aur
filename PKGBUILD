@@ -1,4 +1,5 @@
-# Maintainer: Emil Renner Berthing <aur@esmil.dk>
+# Maintainer: Maxr1998 <aur@maxr1998.de>
+# Contributor: Emil Renner Berthing <aur@esmil.dk>
 
 _target=riscv64-unknown-elf
 pkgname=$_target-binutils
