@@ -1,5 +1,5 @@
 pkgbase = archiso-persistent-git
-	pkgdesc = Tools for creating Arch Linux live and install iso images with luks
+	pkgdesc = Tools for creating Arch Linux live and install iso images (persistent drive support).
 	pkgver = v58+287+gb435a72
 	pkgrel = 1
 	url = https://gitlab.archlinux.org/archlinux/archiso/-/issues/184
@@ -22,12 +22,12 @@ pkgbase = archiso-persistent-git
 	optdepends = openssl: for codesigning support when building netboot artifacts
 	optdepends = qemu: for run_archiso
 	provides = archiso
-	provides = archiso-persistent
 	provides = archiso-encryption
+	provides = archiso-
 	conflicts = archiso
-	conflicts = archiso-persistent
 	conflicts = archiso-encryption
-	source = git+https://gitlab.archlinux.org/tallero/archiso#branch=persistent
+	conflicts = archiso-
+	source = archiso::git+https://gitlab.archlinux.org/tallero/archiso#branch=
 	sha256sums = SKIP
 
 pkgname = archiso-persistent-git
