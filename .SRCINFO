@@ -1,0 +1,16 @@
+pkgbase = xkbset-git
+	pkgdesc = Tool to help manage many of XKB features of X window.
+	pkgver = 0.8.r12.20220626.774fcef
+	pkgrel = 1
+	url = https://github.com/stephenmontgomerysmith/xkbset
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	depends = libx11
+	optdepends = perl-tk: For graphical tool 'xkbset-gui'.
+	provides = xkbset=0.8.r12.20220626.774fcef
+	conflicts = xkbset
+	source = xkbset::git+https://github.com/stephenmontgomerysmith/xkbset.git
+	sha256sums = SKIP
+
+pkgname = xkbset-git
