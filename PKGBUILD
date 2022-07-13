@@ -1,6 +1,6 @@
 # Maintainer: f4iey <f4iey@f6kgl.ampr.org>
 pkgname=vlfrx-tools
-pkgver=0.9j
+pkgver=0.9m
 pkgrel=1
 pkgdesc="A modular software toolkit for timestamped signal processing and storage."
 arch=('any')
