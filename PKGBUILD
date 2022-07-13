@@ -2,7 +2,7 @@
 
 _upstream_pkgname=trane-cli
 pkgname=trane
-pkgver=0.2.2
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='Automated system for learning complex skills'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
 )
 
 sha512sums=(
-  '85af830c2b2ad03102a589bac127c754d690883feb3debac7f59006fac4f50a7b6786d848a896d17d4212bb7442ae9a88d4fbf5618c4e447b0c60958a72e8ee3'
+  '5264359f2a07e7549a6b6902fd0156a5a02ef887abf1dd85bcc9a2225213f71b984bbd7a4d2241cc62f617f5e8ad22d3f4d009182af625507d523f5bfd16b056'
 )
 
 prepare() {
