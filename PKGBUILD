@@ -7,13 +7,10 @@ arch=('any')
 _srctag=v${pkgver}
 url="https://github.com/dbernhard-0x7CD/simple-reaction-daemon/releases/tag/$_srctag"
 license=('GPL2')
-groups=()
 depends=(libsystemd libconfig glibc)
 makedepends=()
 checkdepends=()
 optdepends=()
-provides=()
-conflicts=()
 replaces=()
 backup=('etc/srd/srd.conf')
 options=('strip')
@@ -22,7 +19,6 @@ changelog=
 source=(
     "$pkgname::git+https://github.com/dbernhard-0x7CD/simple-reaction-daemon"
     'srd.conf')
-noextract=()
 sha256sums=('SKIP'
             'b96840484ced981d203de18da82e2710e21335799aa3f5e910f5d749b4252245')
 validpgpkeys=()
