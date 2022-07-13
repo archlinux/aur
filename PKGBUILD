@@ -1,19 +1,19 @@
-# Maintainer: Daniel Hnyk <kotrfa [at] gmail [dot] com>
-
+# Maintainer: Maxim De Clercq <maximdeclercq00@gmail.com>
 pkgname=biber-bin
-pkgver=2.6 # for biblatex 3.5
+pkgver=2.18
 pkgrel=1
-pkgdesc="Binary version of a unicode-capable BibTeX replacement for biblatex users"
-arch=('x86_64')
-license=('PerlArtistic' 'GPL')
-url="https://sourceforge.net/projects/biblatex-biber/"
+pkgdesc='Biber is a sophisticated bibliography processing backend for the LaTeX biblatex package.'
+arch=('i686' 'x86_64')
+url='https://ctan.org/pkg/biber'
+license=('AST')
+depends=('libxcrypt-compat')
+provides=("biber=$pkgver")
 conflicts=('biber')
-
-source_x86_64=("biber::https://www.dropbox.com/s/aa8aimnyi51wh8q/biber?raw=1")
-md5sums_x86_64=('995dd26c6f22c554a79a2a345b51a41b')
-
+source_i686=("http://mirrors.ctan.org/biblio/biber/biber-linux/biber-$pkgver-1-linux_x86_32.tar.gz")
+md5sums_i686=('de1703b56240a8b61328d03f27d27623')
+source_x86_64=("http://mirrors.ctan.org/biblio/biber/biber-linux/biber-$pkgver-1-linux_x86_64.tar.gz")
+md5sums_x86_64=('3f60f479f7f5a854772700142c865d9c')
 
 package() {
-    install -Dm755 biber "${pkgdir}/usr/bin/biber"
+    install -Dm755 "biber" "$pkgdir/usr/bin/biber"
 }
-
