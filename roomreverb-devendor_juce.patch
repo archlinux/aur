@@ -1,0 +1,14 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 762ab9f..8683d14 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -18,7 +18,8 @@ if(UNIX AND NOT APPLE)
+ endif ()
+ 
+ # include JUCE
+-add_subdirectory(Libs/JUCE)
++find_package(JUCE COMPONENTS REQUIRED)
++include(FindPkgConfig)
+ 
+ # include clap extension to build plugin in clap format
+ add_subdirectory(Libs/clap-juce-extensions EXCLUDE_FROM_ALL)
