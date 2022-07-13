@@ -1,0 +1,12 @@
+pkgbase = mate-xfce-tool-git
+	pkgdesc = Fix MATE desktop after screen change, switch xfwm4 HiDPI sttyle, reload xfce4-panel on DPR change
+	pkgver = r4.ge3e2603
+	pkgrel = 1
+	url = https://github.com/zaps166/mate-xfce-tool
+	arch = x86_64
+	license = Unlicense
+	makedepends = cmake
+	source = git+https://github.com/zaps166/mate-xfce-tool.git
+	sha1sums = SKIP
+
+pkgname = mate-xfce-tool-git
