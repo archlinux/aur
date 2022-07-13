@@ -1,10 +1,11 @@
 pkgbase = ruby-dry-system
 	pkgdesc = Organize your code into reusable components
-	pkgver = 0.24.0
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://github.com/dry-rb/dry-system
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-concurrent
@@ -14,10 +15,8 @@ pkgbase = ruby-dry-system
 	depends = ruby-dry-core
 	depends = ruby-dry-inflector
 	depends = ruby-dry-struct
-	noextract = dry-system-0.24.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/dry-system-0.24.0.gem
-	sha512sums = 26334049a5591f424a21780e18aaf4237a43371f60a1a75396a82abd987a295fcd95e1f198d00c860e0a62f11c49d656a68ad79c97db54fe24aaa079a0b975c2
-	b2sums = 0c9a63e237988e1beffd724156ec32073c301b852efab82d98c73f0d6b1a05895ba322c46a9464676142fe99fcc35ef8018b950fb04fe9cfec5499ad213e8511
+	source = ruby-dry-system::git+https://github.com/dry-rb/dry-system#commit=c65aa38d6f97e6c5b3f9c0101d0453d15e91377e
+	b2sums = SKIP
 
 pkgname = ruby-dry-system
