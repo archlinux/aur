@@ -1,6 +1,6 @@
 # Maintainer: pkg_maintainer <archlinuxpackagemaintainer@gmail.com>
 pkgname=stdm-git
-pkgver=1.r16.1b442f6.BETA
+pkgver=1.r19.1803739.BETA
 pkgrel=1
 epoch=
 pkgdesc="A linux man page search engine"
