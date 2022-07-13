@@ -1,7 +1,7 @@
 pkgbase = pclish
 	pkgdesc = Python Command-Line Shell
-	pkgver = 0.0.1
-	pkgrel = 0.0
+	pkgver = 0.7.0
+	pkgrel = 0.7
 	arch = x86_64
 	arch = arm
 	license = MIT
