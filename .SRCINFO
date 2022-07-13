@@ -1,12 +1,13 @@
 pkgbase = python-bytecode-git
 	pkgdesc = Python module to modify bytecode
 	pkgver = 0.13.0.r45.g3a25441
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MatthieuDartiailh/bytecode
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	provides = python-bytecode
 	conflicts = python-bytecode
 	source = python-bytecode::git+https://github.com/MatthieuDartiailh/bytecode

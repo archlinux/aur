@@ -2,13 +2,13 @@
 pkgname=python-bytecode-git
 _shortname="${pkgname%-git}"
 pkgver=0.13.0.r45.g3a25441
-pkgrel=1
+pkgrel=2
 pkgdesc="Python module to modify bytecode"
 arch=(x86_64)
 url="https://github.com/MatthieuDartiailh/bytecode"
 license=('MIT')
 depends=()
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-setuptools' 'python-setuptools-scm')
 provides=("$_shortname")
 conflicts=("$_shortname")
 source=("$_shortname::git+$url")
