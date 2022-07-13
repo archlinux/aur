@@ -1,0 +1,12 @@
+pkgbase = vimirror
+	pkgdesc = A simple utility to change, test, and use mirrors
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/JaydenDev/vimirror
+	arch = any
+	license = MIT
+	provides = vimirror
+	source = https://dl.jaydendev.repl.co/vimirror-1.0.0.tar.gz
+	md5sums = 223a8a9a1da0b5bc2acc2ebebd2e1f62
+
+pkgname = vimirror
