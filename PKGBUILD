@@ -1,7 +1,7 @@
 # Maintainer: Justin Dray <justin@dray.be>
 pkgname=lsiutil
 pkgver=1.72
-pkgrel=1
+pkgrel=2
 pkgdesc="Configuration utility for LSI MPT adapters (FC, SCSI, and SAS/SATA)"
 url="http://http://karlsbakk.net/LSIUtil%20Kit%201.63/Source/"
 arch=('x86_64' 'i686')
@@ -11,7 +11,6 @@ source=("https://ftp.icm.edu.pl/packages/LSI/sw/lsiutil-$pkgver.tar.gz")
 
 build() {
 	cd "${srcdir}/${pkgname}"
-	rm lsiutil
 	gcc $CFLAGS -Wall -O lsiutil.c -o lsiutil
 }
 
