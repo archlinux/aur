@@ -30,7 +30,7 @@ prepare() {
 
 build() {
     cd "${pkgname}"
-    git checkout ${_srctag}
+    git checkout -q ${_srctag}
 
     git submodule init
     git submodule update
