@@ -1,13 +1,16 @@
 pkgbase = igvtools
 	pkgdesc = IGV utilities for preprocessing bioinformatics data files
-	pkgver = 2.4.19
-	pkgrel = 2
+	pkgver = 2.13.2
+	pkgrel = 1
 	url = https://software.broadinstitute.org/software/igv
 	arch = any
-	license = GPL2
-	depends = java-runtime
-	depends = bash
-	source = http://data.broadinstitute.org/igv/projects/downloads/2.4/igvtools_2.4.19.zip
-	sha256sums = 7b351dde496ef9026b9da46f1962ce56b4a03ac04a212ddd59c3ba3caa9957c8
+	license = MIT
+	depends = java-runtime>=11
+	source = igvtools-2.13.2.zip::https://data.broadinstitute.org/igv/projects/downloads/2.13/IGV_2.13.2.zip
+	source = igvtools.sh
+	source = igvtools_gui.sh
+	sha256sums = 92ab783f693506cafc3499f014f63dce950534b0499e153853cde010a101c104
+	sha256sums = d4cda10928d773dbc959a1cd5bb336aeecf95cb5e549b4560ba561c66f27c50a
+	sha256sums = 1bf610102219c0390d7d78e993110e1cdcb5aae571a79cfa54b093ee3c50ff7f
 
 pkgname = igvtools
