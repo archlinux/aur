@@ -1,8 +1,8 @@
 #Maintainer: Sam Bazley <sambazley@fastmail.com>
 pkgname=blockbar-git
-pkgver=20191017234655
+pkgver=20220712185955
 pkgrel=1
-pkgdesc="Blocks based status bar for X window managers"
+pkgdesc="Blocks based status bar for X window managers and Wayland (wlroots) compositors"
 arch=("i686" "x86_64")
 url="https://github.com/sambazley/blockbar"
 license=("ZLIB")
