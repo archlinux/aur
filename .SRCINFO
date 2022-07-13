@@ -1,6 +1,6 @@
 pkgbase = flashrom-chromeos
 	pkgdesc = Flashrom with Chromium project modifications
-	pkgver = 97.14324
+	pkgver = 104.14909
 	pkgrel = 1
 	url = https://chromium.googlesource.com/chromiumos/third_party/flashrom
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = flashrom-chromeos
 	depends = libftdi-compat
 	depends = pciutils
 	optdepends = dmidecode: for SMBIOS/DMI table decoder support
-	source = https://chromium.googlesource.com/chromiumos/third_party/flashrom/+archive/release-R97-14324.B.tar.gz
-	sha1sums = cfa64991a4d0df18797daa235b6e5446942dcad0
+	source = https://chromium.googlesource.com/chromiumos/third_party/flashrom/+archive/release-R104-14909.B.tar.gz
+	sha1sums = 52669c8258e93572e95bc3cdf5595bfe00a31e93
 
 pkgname = flashrom-chromeos
