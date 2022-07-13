@@ -1,9 +1,9 @@
 pkgbase=kodi-eggz
 pkgname=kodi-eggz
-pkgver=19.4
-gittag=19.4-Matrix
-gittagvfs=4.0.0-Matrix
-pkgrel=5
+pkgver=20.0a2
+gittag=20.0a2-Nexus
+gittagvfs=20.1.0-Nexus
+pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -20,21 +20,13 @@ makedepends=(
   'fstrcmp' 'spdlog'
 )
 
-_ffmpeg_version="4.3-kodi-dav1d-1.0"
-
 source=(
-  "$pkgbase-ffmpeg-$_ffmpeg_version.tar.gz::https://github.com/BlackIkeEagle/kodi-FFmpeg/archive/refs/heads/fix/4.3-kodi-dav1d-1.0.tar.gz"
   "git+https://github.com/xbmc/xbmc.git#tag=$gittag"
   "git+https://github.com/xbmc/vfs.rar.git#tag=$gittagvfs"
   "removestupidremarks.patch"
 )
 
-noextract=(
-  "$pkgbase-ffmpeg-$_ffmpeg_version.tar.gz"
-)
-
 sha256sums=(
-'SKIP'
 'SKIP'
 'SKIP'
 'e89cc7c880b0b10361b882339b542ad49be91ae78de9d4b38ddc08b594734cf5'
@@ -56,27 +48,12 @@ prepare() {
  cmake -DADDONS_TO_BUILD=vfs.rar -DADDON_SRC_PREFIX=../.. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=../../xbmc/kodi-build/addons -DPACKAGE_ZIP=1 ../../xbmc/cmake/addons
  make -j $threads || exit 2
 
-
- msg "Prepare DEPs"
- msg2 "pivot to git dir"
- cd ${srcdir}/xbmc
- msg2 "making DEP/crossguid"
- make -j $threads -C tools/depends/target/crossguid PREFIX=${srcdir}/usr
- msg2 "making DEP/flatbuffers"
- make -j $threads -C tools/depends/target/flatbuffers PREFIX=${srcdir}/usr
- msg2 "making DEP/libfmt"
- make -j $threads -C tools/depends/target/libfmt PREFIX=${srcdir}/usr
- msg2 "making DEP/libspdlog"
- make -j $threads -C tools/depends/target/libspdlog PREFIX=${srcdir}/usr
-
  msg "Prepare Kodi"
  msg2 "Patching Kodisource"
  while read patch; do
   echo "Applying $patch"
   git apply $patch || exit 2
  done <<< $(ls ../../*.patch)
-
-
 }
 
 build() {
@@ -87,7 +64,7 @@ build() {
  cd ${srcdir}/kodi-build
  msg2 "cmake configure phase"
  export APP_RENDER_SYSTEM=gl
- cmake ../xbmc -DCMAKE_INSTALL_PREFIX=/usr -DX11_RENDER_SYSTEM=gl -DENABLE_INTERNAL_FMT=on -DENABLE_INTERNAL_FFMPEG=ON -DENABLE_INTERNAL_CROSSGUID=ON -DENABLE_INTERNAL_FSTRCMP=ON -DENABLE_INTERNAL_FLATBUFFERS=ON -DENABLE_INTERNAL_SPDLOG=ON -DENABLE_MYSQLCLIENT=ON -DENABLE_INTERNAL_FFMPEG=ON -DFFMPEG_URL="$srcdir/$pkgbase-ffmpeg-$_ffmpeg_version.tar.gz"
+ cmake ../xbmc -DCMAKE_INSTALL_PREFIX=/usr -DX11_RENDER_SYSTEM=gl -DENABLE_INTERNAL_FMT=on -DENABLE_INTERNAL_FFMPEG=ON -DENABLE_INTERNAL_CROSSGUID=ON -DENABLE_INTERNAL_FSTRCMP=ON -DENABLE_INTERNAL_FLATBUFFERS=ON -DENABLE_INTERNAL_SPDLOG=ON -DENABLE_MYSQLCLIENT=ON
  msg2 "cmake build phase"
  cmake --build . -- #VERBOSE=1
 
