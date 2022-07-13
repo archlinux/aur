@@ -3,14 +3,16 @@ pkgbase = r-corpus
 	pkgver = 0.10.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=corpus
-	arch = i686
 	arch = x86_64
-	license = Apache2.0
-	depends = r>=3.3
-	depends = r-utf8>=1.1.0
+	license = Apache
+	depends = r
+	depends = r-utf8
 	optdepends = r-knitr
+	optdepends = r-matrix
+	optdepends = r-quanteda
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
+	optdepends = r-tm
 	source = https://cran.r-project.org/src/contrib/corpus_0.10.2.tar.gz
 	sha256sums = c4647fae59d7acf9d4397a5126d386c8d323ad469df9800184de95b63a1aaa3b
 
