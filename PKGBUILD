@@ -1,42 +1,28 @@
-# Maintainer: Lara Maia <lara@craft.net.br>
-#
-# Contributors: Nuno Araujo <nuno.araujo at russo79.com>
-#               Guan Qing <neokuno@gmail.com>
-#               Liudas <liudas@akmc.lt>
-#               Tom Tryfonidis <tomtryf [at] gmail [dot] com>
+# Maintainer: Luke Arms <luke@arms.to>
+# Contributor: Lara Maia <lara@craft.net.br>
+# Contributor: Nuno Araujo <nuno.araujo at russo79.com>
+# Contributor: Guan Qing <neokuno@gmail.com>
+# Contributor: Liudas <liudas@akmc.lt>
+# Contributor: Tom Tryfonidis <tomtryf [at] gmail [dot] com>
 
 pkgname=key-mon
-pkgver=1.17
+pkgver=1.20
 pkgrel=1
-pkgdesc="A small utility to display your current keyboard and mouse status. Useful for screencasts."
+url="https://github.com/scottkirkwood/key-mon"
+pkgdesc="A screencast utility that displays your keyboard and mouse status"
 arch=('any')
-url="http://code.google.com/p/key-mon/"
-depends=('pygtk' 'dbus-glib' 'python2-dbus' 'python2-xlib')
-makedepends=('python2-distribute')
-install=${pkgname}.install
-license=('Apache 2.0')
+license=('Apache')
+depends=('gtk3' 'python' 'python-cairo' 'python-gobject' 'python-xlib')
+makedepends=('python-setuptools')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha512sums=('8f8ef0a1cad92d6bd6e3e954b7b6989e69153ade83a41362561eae2e546df6dc1e4165c4fbc47357d489ea8df7f24a1a52d2f72afa17482f04f509c0b8e4a4fd')
 
-source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/$pkgname/$pkgname-$pkgver.tar.gz
-        $pkgname.install)
-        
-md5sums=('68bfe1ff8765878cf7d100759d433473'
-         'bb92b6ada97430e35595ca0f7e48b931')
-
-package() {
-  cd "$srcdir"/$pkgname-$pkgver
-
-  python2 setup.py install --root="$pkgdir"
-  
-  install -Dm644 "$srcdir"/$pkgname-$pkgver/icons/key-mon.desktop "$pkgdir"/usr/share/applications/key-mon.desktop
-  install -Dm644 "$srcdir"/$pkgname-$pkgver/icons/key-mon.xpm "$pkgdir"/usr/share/pixmaps/key-mon.xpm
-
-  find "$pkgdir" -type f -exec sed -i 's|/usr/bin/python$|/usr/bin/python2|g' {} +
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    python setup.py build
 }
 
-
-
-
-
-
-
-
+package() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+}
