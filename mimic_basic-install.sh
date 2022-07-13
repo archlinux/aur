@@ -1,6 +1,8 @@
 source "/etc/pihole/setupVars.conf"
 PI_HOLE_BIN_DIR="/usr/bin"
 
+webroot="/srv/http/pihole"
+
 # from official basic-install.sh
 valid_ip() {
     # Local, named variables
