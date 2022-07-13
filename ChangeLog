@@ -1,3 +1,9 @@
+09/07/2022
+    Wapiti 3.1.3
+    Reports: Add a new --detailed-report option that will put HTTP responses (headers and bodies) in the report.
+    Crawler: Add a new --mitm-port option that will replace the crawler with an intercepting proxy (mitmproxy)
+    Core: Dropped support of Python 3.7
+
 13/05/2022
     Wapiti 3.1.2
     mod_http_headers: Deprecate X-XSS-Protection header
@@ -343,7 +349,7 @@
 	GET_XSS: only scan for XSS with HTTP GET method (no post)
 	POST_XSS: XSS attacks using POST and not GET
 	GET_ALL: every attack without POST requests
-	
+
 12/08/2006
 	Version 1.1.3
 	Fixed the timeout bug with chunked responses
