@@ -1,8 +1,8 @@
 # Maintainer: Deckweiss <Deckweiss75@gmail.com>
 
 pkgname=drawj2d
-pkgver=1.3.0
-pkgrel=4
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="Drawj2d creates technical line drawings using a descriptive language. It writes pdf, svg, eps, emf and dxf vector graphics or png images. It runs on all platforms that run Java. It is inspired by Asymptote but with a tcl-like syntax and 2D only."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://sourceforge.net/projects/$pkgname"
@@ -14,8 +14,8 @@ makedepends=(
 )
 conflicts=('drawj2d')
 provides=('drawj2d')
-source=("$pkgname-$pkgver.tar.gz::https://iweb.dl.sourceforge.net/project/$pkgname/$pkgver/Drawj2d-$pkgver.src.tar.gz")
-sha256sums=('fd437d1f13fa09d0c65da82698e919f6c3c94c6109432152a175bc6ef8addb4b')
+source=("$pkgname-$pkgver.tar.gz::https://master.dl.sourceforge.net/project/$pkgname/$pkgver/Drawj2d-$pkgver.src.tar.gz")
+sha256sums=('a566e0b10a6ec9e26e895ded01ec02bf8271b7136b76422b4046578164aa1824')
 
 prepare() {
     cd "$srcdir"
