@@ -1,13 +1,15 @@
 pkgbase = siod
 	pkgdesc = Scheme in one day or scheme in one defun
-	pkgver = 3.6
+	pkgver = 3.6.2
 	pkgrel = 1
 	url = http://people.delphiforums.com/gjc/siod.html
 	arch = i686
 	arch = x86_64
 	license = LGPL
-	depends = gcc
-	source = https://ibiblio.org/pub/linux/devel/lang/lisp/siod-3.2.tar.gz
-	sha256sums = f6849069cdfe4bd0a9cddcd0f7457c1ea4ade17ac9a95d82d41cddeee617bfd4
+	depends = gd
+	source = git+https://github.com/ludwhe/siod
+	source = use-rpath.patch
+	sha256sums = SKIP
+	sha256sums = 2babd5b14db11d48b70ef07c22d7df0f4b3aca7978b5da7fc7f947b16b80a3df
 
 pkgname = siod

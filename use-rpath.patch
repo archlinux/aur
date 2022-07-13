@@ -1,0 +1,17 @@
+diff --git a/src/makefile b/src/makefile
+index 6c085e2..2e80642 100644
+--- a/src/makefile
++++ b/src/makefile
+@@ -25,10 +25,10 @@ uninstall:
+ 	-$(RM) -r $(PREFIX)/lib/siod
+ 
+ siod: siod.o libsiod.$(SO)
+-	$(LD) $^ -o $@ $(LD_EXE_LIBS) -Wl,-rpath,.
++	$(LD) $^ -o $@ $(LD_EXE_LIBS) -Wl,-rpath,$(PREFIX)/lib/siod
+ 
+ ssiod: siod.o slib.o sliba.o trace.o slibu.o md5.o
+-	$(CC) $^ -o $@ -lm -lcrypt -ldl
++	$(CC) $^ -o $@ -lm -lcrypt -ldl -Wl,-rpath,$(PREFIX)/lib/siod
+ 
+ libsiod.$(SO): slib.o sliba.o trace.o slibu.o md5.o
+ 	$(LD) -shared $^ -o $@ $(LD_LIB_LIBS)
