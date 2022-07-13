@@ -6,6 +6,7 @@ pkgbase = ardupilot-gazebo-sitl-git
 	arch = x86_64
 	license = GPLv3
 	makedepends = cmake
+	makedepends = git
 	depends = gazebo
 	optdepends = ardupilot-sitl
 	provides = ardupilot-gazebo-sitl
