@@ -1,7 +1,7 @@
 # Maintainer: Łukasz Mariański <lmarianski dot protonmail dot com>
 pkgname=alvr-nightly
 _pkgname=${pkgname%-nightly}
-pkgver=18.0.0_dev02+nightly.2022.05.21
+pkgver=19.0.0_dev00+nightly.2022.07.12
 pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
@@ -96,7 +96,7 @@ package() {
 	# resources (presets + dashboard)
 	install -d $pkgdir/usr/share/alvr/{dashboard,presets}
 
-	install -Dm644 alvr/xtask/resources/presets/* -t "$pkgdir/usr/share/alvr/presets/"
+	# install -Dm644 alvr/xtask/resources/presets/* -t "$pkgdir/usr/share/alvr/presets/"
 	cp -ar dashboard $pkgdir/usr/share/alvr/
 
 	# Desktop
@@ -104,7 +104,7 @@ package() {
 
 	# Icons
 	install -d $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256}/apps/
-	cp -r icons/* $pkgdir/usr/share/icons/
+	cp -ar icons/* $pkgdir/usr/share/icons/
 
 	# Firewall
 	install -Dm644 packaging/firewall/$_pkgname-firewalld.xml "$pkgdir/usr/lib/firewalld/services/${_pkgname}.xml"
