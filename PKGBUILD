@@ -1,8 +1,8 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=caffeine-ng
-pkgver=4.0.0
-pkgrel=2
+pkgver=4.0.1
+pkgrel=1
 pkgdesc="Status bar application able to temporarily inhibit the screensaver and sleep mode."
 arch=(any)
 url="https://codeberg.org/WhyNotHugo/caffeine-ng"
@@ -32,7 +32,7 @@ provides=(caffeine caffeine-bzr caffeine-oneclick caffeine-systray)
 replaces=(caffeine-oneclick caffeine-systray)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 
-md5sums=('c711b0fd63f554312554fccb08d84be7')
+md5sums=('3d2c98a23d6daa51339f205664834ec0')
 
 build() {
   cd "$srcdir"/caffeine-ng-${pkgver}
