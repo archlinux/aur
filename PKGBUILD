@@ -1,14 +1,14 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=dbow2-git
-pkgver=r28.4d08e9f
+pkgver=r46.3924753
 pkgrel=1
 pkgdesc="Enhanced hierarchical bag-of-word library for C++."
 arch=('x86_64')
 url="https://github.com/dorian3d/DBoW2"
 license=('custom')
-depends=('gcc')
-makedepends=('cmake' 'gcc')
+depends=()
+makedepends=('cmake' 'opencv' 'git')
 provides=('dbow2')
 _name=DBoW2
 source=("git+https://github.com/dorian3d/DBoW2.git"
