@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=KeY
+Icon=key-project
+Exec=key-project
+Terminal=false
+Categories=Application
+StartupWMClass=java-lang-Thread

@@ -1,0 +1,5 @@
+pkg/
+src/
+
+key-project-*.pkg.tar.zst
+key-*.jar
