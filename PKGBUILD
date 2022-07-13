@@ -1,6 +1,6 @@
 # Maintainer: f4iey <f4iey@f6kgl.ampr.org>
 pkgname=fate-git
-pkgver=7ed9e57
+pkgver=r12.7ed9e57
 pkgrel=1
 pkgdesc="Minimal CLI JS8 software"
 arch=('any')
@@ -14,6 +14,11 @@ sha256sums=('SKIP')
 build() {
     cd $srcdir/$pkgname
     make
+}
+
+pkgver() {
+    cd "$srcdir/$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
