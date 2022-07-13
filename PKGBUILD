@@ -2,7 +2,7 @@
 # Contributor: darkhz <kmachanwenw at gmail dot com>
 
 pkgname=bluetuith
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="TUI-based bluetooth manager"
 arch=('x86_64' 'i686' 'arm' 'aarch64' 'armv6h' 'armv7h')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('bluez' 'dbus')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c9273bcaa6ef3c2cc4d517d7c65a74d39c53aabda02aff221f73bd8ce0a2f4f7')
+sha256sums=('e6fd97bf3f82f7432d16813ac16591e7e44c949af06bf284eca64a152e878533')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -27,6 +27,11 @@ build() {
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 	cd "$pkgname-$pkgver"
 	go build -o build
+}
+
+check() {
+	cd "$pkgname-$pkgver"
+	go test ./...
 }
 
 package() {
