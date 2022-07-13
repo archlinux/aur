@@ -8,10 +8,10 @@ depends=("python" "bash")
 license=("MIT")
 
 package() { 
-    sudo pacman -S python-psutil
+    pacman -S python-psutil
     rm -rf /home/$USER/pclish/src/pclish
 	sudo pip install pyinstaller
-	git clone https://github.com/JaydenDev/pclish $srcdir/pclish
+	git clone -b v0.7.0 https://github.com/JaydenDev/pclish $srcdir/pclish
     rm -rf /home/$USER/.local/bin/pclish_dir
 	mkdir -p /home/$USER/.local/bin/pclish_dir
     mkdir -p /home/$USER/.local/bin
