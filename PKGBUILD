@@ -1,7 +1,7 @@
 # Maintainer: f4iey <f4iey@f6kgl.ampr.org>
 # Contributor: f4iqn <f4iqn@f6kgl.ampr.org>
 pkgname=yahpt-git
-pkgver=20211002
+pkgver=r10.7f01dd2
 pkgrel=1
 pkgdesc="Yet Another HF Propagation Tool"
 arch=('any')
@@ -11,6 +11,11 @@ url="https://gitlab.com/f4iey/yahpt.git"
 source=($pkgname::"git+$url")
 
 sha256sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
         cd $srcdir/$pkgname
