@@ -2,7 +2,7 @@
 
 pkgname=voicevox-appimage
 pkgver=0.12.4
-pkgrel=6
+pkgrel=7
 pkgdesc='Offical Frontend for the free VOICEVOX TTS Engine'
 arch=('x86_64')
 license=('LGPLv3' 'custom')
