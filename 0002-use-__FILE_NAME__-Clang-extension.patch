@@ -1,7 +1,7 @@
-From 387f77ccadf1f3048b0df8896793178c266e104a Mon Sep 17 00:00:00 2001
+From b754882082ad7101e815c67e2343583f1bc2b5cb Mon Sep 17 00:00:00 2001
 From: Masanori Ogino <masanori.ogino@gmail.com>
 Date: Fri, 24 Jun 2022 09:55:51 +0900
-Subject: [PATCH 2/2] use __FILE_NAME__ Clang extension
+Subject: [PATCH 2/3] use __FILE_NAME__ Clang extension
 
 Signed-off-by: Masanori Ogino <masanori.ogino@gmail.com>
 ---
@@ -1709,5 +1709,5 @@ index a6ddfac..00a6820 100644
      }
    }
 -- 
-2.36.1
+2.37.1
 
