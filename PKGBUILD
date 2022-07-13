@@ -1,12 +1,12 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hpipm-git
-pkgver=r1201.2660484
+pkgver=r1325.b140f36
 pkgrel=1
 pkgdesc="High-performance interior-point-method QP solvers"
 url='https://github.com/giaf/hpipm'
 arch=('i686' 'x86_64')
 license=('BSD 2-Clause')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 depends=('blasfeo')
 provides=('hpipm')
 conflicts=('hpipm')

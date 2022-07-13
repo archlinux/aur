@@ -1,12 +1,13 @@
 pkgbase = hpipm-git
 	pkgdesc = High-performance interior-point-method QP solvers
-	pkgver = r1201.2660484
+	pkgver = r1325.b140f36
 	pkgrel = 1
 	url = https://github.com/giaf/hpipm
 	arch = i686
 	arch = x86_64
 	license = BSD 2-Clause
 	makedepends = cmake
+	makedepends = git
 	depends = blasfeo
 	provides = hpipm
 	conflicts = hpipm
@@ -14,4 +15,3 @@ pkgbase = hpipm-git
 	sha256sums = SKIP
 
 pkgname = hpipm-git
-
