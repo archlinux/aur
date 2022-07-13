@@ -1,7 +1,7 @@
 # Maintainer: leuko <leuko_aydos_de>
 
 pkgname=jupyter-nbgrader
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A system for assigning and grading notebooks"
 arch=(any)
@@ -26,11 +26,25 @@ depends=(
 	python-qtconsole
 	python-ipywidgets
 	jupyter-nbclient
+	python-traitlets
 )
 makedepends=(python-setuptools)
 source=(git+https://github.com/jupyter/nbgrader)
 source=(https://files.pythonhosted.org/packages/source/n/nbgrader/nbgrader-$pkgver.tar.gz)
-sha256sums=(8d924eed05faa992b9caa754fc054598629662fe95275f851c4b03452f7d8059)
+sha256sums=(
+	871705d8bc4ad82c80a2376868381b2290fd69f0398b986925b9eaf9fd496fca
+)
+prepare() {
+	#TODO remove after update
+	# Undo traitlets pin, it seems to be only relevant for the tests
+	# https://github.com/jupyter/nbgrader/pull/1593
+	sed -i 's/traitlets<5\.2\.0/traitlets/' "$srcdir"/nbgrader-$pkgver/setup.py
+
+	# nbgrader explicitly depends on jupyter-notebook, but jupyterhub only
+	# seems to work with `jupyter-nbclassic`. Disable dependency checks:
+	sed -i '/^\s*"notebook/d' "$srcdir"/nbgrader-$pkgver/setup.py
+	sed -i '/^\s*"ipywidgets/d' "$srcdir"/nbgrader-$pkgver/setup.py
+}
 build() {
 	cd nbgrader-$pkgver
 	python setup.py build
