@@ -1,9 +1,9 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Rose Kunkel <rose at rosekunkel dot me>
 
 pkgname=guile3
 pkgver=3.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Portable, embeddable Scheme implementation written in C'
 arch=('x86_64' 'pentium4')
 url='https://www.gnu.org/software/guile/'
@@ -27,8 +27,8 @@ options=('!strip')
 PURGE_TARGETS=('usr/share/aclocal/guile.m4')
 
 prepare() {
-  # Disable a test that's known to fail. See
-  # https://lists.gnu.org/archive/html/bug-guile/2021-01/msg00001.html
+  # Disable a test that's known to fail.
+  # See https://lists.gnu.org/archive/html/bug-guile/2021-01/msg00001.html
 	patch -p1 -d "guile-$pkgver" < skip-testing-oom-conditions.patch
 }
 
@@ -42,16 +42,17 @@ build() {
 	./configure \
 		--prefix=/usr \
 		--infodir="/usr/share/info/$pkgname" \
-		--program-suffix=3
+		--program-suffix=3 \
+		--disable-static \
+		--disable-error-on-warning
 	make
 }
 
 check() {
-	cd "guile-$pkgver"
-	make -k check
+	make -C "guile-$pkgver" -k check
 }
 
 package() {
-	cd "guile-$pkgver"
-	make DESTDIR="$pkgdir/" install
+	make -C "guile-$pkgver" DESTDIR="$pkgdir/" install
+	rm "$pkgdir"/usr/lib/libguile-3.?.so.*-gdb.scm
 }

@@ -1,7 +1,7 @@
 pkgbase = guile3
 	pkgdesc = Portable, embeddable Scheme implementation written in C
 	pkgver = 3.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/guile/
 	arch = x86_64
 	arch = pentium4
