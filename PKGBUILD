@@ -2,14 +2,14 @@
 
 pkgname=vimirror
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple utility to change, test, and use mirrors"
 arch=('any')
 url="https://github.com/JaydenDev/$pkgname"
 license=('MIT')
 provides=("$pkgname")
 source=("https://dl.jaydendev.repl.co/$pkgname-$pkgver.tar.gz")
-md5sums=("223a8a9a1da0b5bc2acc2ebebd2e1f62")
+md5sums=("e7ec5f445e88916b0bb3730b1c003ab4")
 
 package() {
   install -Dm755 "$srcdir/$pkgname-$pkgver/main.sh" "$pkgdir/usr/bin/vimirror"
