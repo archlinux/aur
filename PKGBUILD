@@ -1,6 +1,6 @@
 # Maintainer: Cpt_Huntsman <other.plan1133@fastmail.com>
 pkgname="trilium-bin-cn"
-pkgver=0.52.4_20220701
+pkgver=0.53.2_20220713
 pkgrel=1
 pkgdesc="A hierarchical note taking application built on modern technologies with Simplified Chinese translation."
 depends=('libxss' 'nss' 'gtk3')
@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/Nriver/trilium-translation"
 license=('AGPL3')
 source=("https://github.com/Nriver/trilium-translation/releases/download/v$pkgver/trilium-cn-linux-x64.zip")
-sha256sums=('9febcc9f985ff4f0291e3cbc0cd198bbaa44794e99de325a88a65a5f5727c988')
+sha256sums=('80686d36585c5fda0c9d86dcc939939c206f036a3f56abaac996fe3660854a25')
 
 package() {
     export destdir="$pkgdir/"
