@@ -3,7 +3,7 @@
 pkgname=('mtxx-bin')
 _pkgname="mtxx"
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="美图秀秀, An image editing software that is mostly used in Mainland China"
 provides=($_pkgname)
 url="https://xiuxiu.web.meitu.com/"
@@ -35,8 +35,8 @@ package(){
     
     cd ${pkgdir}/usr/share/applications/
     
-    sed -i "6c Exec=${_pkgname} %U" com.meitu.mtxx.desktop
-    sed -i "11c Icon=MTXX"          com.meitu.mtxx.desktop
+    sed -i "s|^Exec=.*|Exec=${_pkgname} %U|g" com.meitu.mtxx.desktop
+    sed -i "s|^Icon=.*|Icon=${_pkgname}|g"          com.meitu.mtxx.desktop
     
     cd ${pkgdir}/opt/${_pkgname}
     rm *.sh mosaicpen/*.txt .DS_Store env post* *.pem 
