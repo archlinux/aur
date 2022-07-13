@@ -1,9 +1,9 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=dxvk-mingw
-pkgver=1.10.1
+pkgver=1.10.2
 _asyncver=1.10.1
-pkgrel=2
+pkgrel=1
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version'
 arch=('x86_64')
 url="https://github.com/doitsujin/dxvk"
@@ -28,21 +28,8 @@ prepare() {
     # Enable at your own risk. If you don't know what it is,
     # and its implications, leave it as is. You have been warned.
     # I am not liable if anything happens to you by using it.
-    patch -p1 -i "$srcdir"/dxvk-async-${_asyncver}.patch
-    patch -p1 -i "$srcdir"/dxvk-async-conf.patch
-
-    # Filter known bad flags before applying optimizations
-    # Filter fstack-protector{ ,-all,-strong} flag for MingW.
-    # https://github.com/Joshua-Ashton/d9vk/issues/476
-    CFLAGS="${CFLAGS// -fstack-protector*([\-all|\-strong])/}"
-    CXXFLAGS="${CXXFLAGS// -fstack-protector*([\-all|\-strong])/}"
-    # Doesn't compile with these flags in MingW so remove them.
-    # They are also filtered in Wine PKGBUILDs so remove them
-    # for winelib versions too.
-    CFLAGS="${CFLAGS/ -fno-plt/}"
-    CXXFLAGS="${CXXFLAGS/ -fno-plt/}"
-    LDFLAGS="${LDFLAGS/,-z,now/}"
-    LDFLAGS="${LDFLAGS/,-z,relro/}"
+    #patch -p1 -i "$srcdir"/dxvk-async-${_asyncver}.patch
+    #patch -p1 -i "$srcdir"/dxvk-async-conf.patch
 
     # By default export FLAGS used by proton and ignore makepkg
     # This overrides FLAGS from makepkg.conf, if you comment these you are on your own
@@ -117,8 +104,9 @@ package() {
     DESTDIR="$pkgdir" ninja -C "build/x32" install
     DESTDIR="$pkgdir" ninja -C "build/x64" install
     install -Dm 755 -t "$pkgdir/usr/share/dxvk" dxvk/setup_dxvk.sh
-    install -Dm 644 -t "$pkgdir/usr/share/doc/dxvk" dxvk/dxvk.conf
-    install -Dm 644 -t "$pkgdir/usr/share/$pkgname" dxvk/LICENSE
+    install -Dm 644 -t "$pkgdir/usr/share/dxvk" dxvk/dxvk.conf
+    install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" dxvk/README.md
+    install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname" dxvk/LICENSE
     install -Dm 755 -t "$pkgdir/usr/bin" setup_dxvk
 }
 
