@@ -2,3 +2,5 @@
 /pkg/
 /*.tgz
 /*.pkg.tar.zst
+/*.tar.gz
+LICENSE.txt
