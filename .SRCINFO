@@ -6,11 +6,8 @@ pkgbase = lusol
 	arch = i686
 	arch = x86_64
 	license = MIT/BSD
-	makedepends = gcc-libs
-	depends = gcc-libs
-	optdepends = 
-	source = https://github.com/nwh/lusol/archive/build-2016-01-26.tar.gz
+	makedepends = gcc-fortran
+	source = lusol.tar.gz::https://github.com/nwh/lusol/archive/refs/tags/build-2016-01-26.tar.gz
 	sha256sums = f9ff04d8be7decfaa930b3052e2ca026ad977ff300b5f27a4088bdc16de279dc
 
 pkgname = lusol
-
