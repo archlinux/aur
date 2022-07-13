@@ -1,16 +1,14 @@
 pkgbase = warsaw-bin
 	pkgdesc = Banking security tool developed by GAS Tecnologia
 	pkgver = 2.21.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://diagnostico.gasantifraud.com
 	install = warsaw-bin.install
 	arch = x86_64
-	license = custom
+	license = GPL-3.0-or-later
 	depends = dbus
 	depends = procps-ng
 	depends = python
-	depends = zenity
-	optdepends = gtk2: required on first bank setup
 	optdepends = python-gpgme
 	provides = warsaw
 	conflicts = warsaw
@@ -18,6 +16,8 @@ pkgbase = warsaw-bin
 	options = !emptydirs
 	backup = etc/init.d/warsaw
 	backup = etc/init/warsaw.conf
+	source = https://www.gnu.org/licenses/gpl-3.0.txt
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 	source_x86_64 = warsaw-2.21.3.1-64.run::https://cloud.gastecnologia.com.br/gas/diagnostico/ubuntu_64bits.run
 	sha256sums_x86_64 = b7ebf7f6ae8e5251ab0948a91aefdee7f23cc2142d2519ddff674d76ea18abe6
 
