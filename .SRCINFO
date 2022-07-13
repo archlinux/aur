@@ -1,11 +1,12 @@
 pkgbase = hipsycl-cuda-git
 	pkgdesc = Implementation of SYCL 1.2.1 over AMD HIP/NVIDIA CUDA
-	pkgver = r500.5f30bc1
+	pkgver = r1916.4d068906
 	pkgrel = 1
 	url = https://github.com/illuhad/hipSYCL
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
+	makedepends = git
 	depends = llvm
 	depends = clang
 	depends = python
