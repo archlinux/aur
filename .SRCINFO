@@ -1,15 +1,17 @@
 pkgbase = python-lightning-bolts
 	pkgdesc = Toolbox of models, callbacks, and datasets for AI/ML researchers
 	pkgver = 0.5.0
-	pkgrel = 1
-	url = https://github.com/PyTorchLightning/lightning-bolts
+	pkgrel = 2
+	url = https://github.com/Lightning-AI/lightning-bolts
 	arch = any
 	license = Apache
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-pytorch
 	depends = python-pytorch-lightning
 	depends = python-torchmetrics
-	source = lightning-bolts-0.5.0.tar.gz::https://github.com/PyTorchLightning/lightning-bolts/archive/refs/tags/0.5.0.tar.gz
+	source = lightning-bolts-0.5.0.tar.gz::https://github.com/Lightning-AI/lightning-bolts/archive/refs/tags/0.5.0.tar.gz
 	sha512sums = cf54f5ee436b226053ed94596a53da7d82f87c990142af968dfab2da3434fceb1e45c97ecedf518fee38a9e1890204572a31c48653ebfdf5078e7c57447c7bd5
 
 pkgname = python-lightning-bolts
