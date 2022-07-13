@@ -5,7 +5,7 @@
 
 _pkgname=shattered-pixel-dungeon
 pkgname=$_pkgname-git
-pkgver=5452v1.2.3
+pkgver=5620v1.3.1
 pkgrel=1
 pkgdesc='Shattered fork of the popular rogue-like game'
 url='https://shatteredpixel.com'
@@ -40,7 +40,7 @@ prepare() {
   chmod 755 gradlew
 
   # Fix the build
-  patch -p1 < ../fix-build.patch
+  # patch -p1 < ../fix-build.patch
 }
 
 build() {
