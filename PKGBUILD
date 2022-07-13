@@ -1,7 +1,7 @@
 # Maintainer: darkhz <kmachanwenw at gmail dot com>
 pkgname=bluetuith-bin
 _pkgname=bluetuith
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="A TUI based bluetooth manager"
 arch=('x86_64' 'i686' 'arm' 'aarch64' 'armv6h' 'armv7h')
@@ -17,12 +17,12 @@ source_aarch64=("https://github.com/darkhz/${_pkgname}/releases/download/v${pkgv
 source_armv6h=("https://github.com/darkhz/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_armv6.tar.gz")
 source_armv7h=("https://github.com/darkhz/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_armv7.tar.gz")
 
-sha256sums_x86_64=("ad37de002ba4a27ac151134385c5b6a2034a774d9735210016005ce38f71e8f2")
-sha256sums_i686=("d5f14ae80301779fdcc5f2b288a22414b29a7171664b1e54ec9e12fa996de029")
-sha256sums_arm=("87ab06d32c1d8ff53baacb1c1ba77ff00a002e1fc05b7286ee888c9d55d8281d")
-sha256sums_aarch64=("88a038590aaf7cc4264ffab28955d0db4896d76e0d7b121d879ee57b360fd1a9")
-sha256sums_armv6h=("cc5aec73ab7eb907a0c8bd6df8f1edc06d183f5c25100bf9c26edca17b4e9c97")
-sha256sums_armv7h=("48a23be76f20b05d0438dd9eb0434c530744ef28d743d3e95f33bce1dfbca725")
+sha256sums_x86_64=("865d4048bde88eb6d78fe45e8366835e7b9b8c629286a326bc52d34b9554ab1d")
+sha256sums_i686=("1ea9d25504f0302bae4e0cfc25c2b2b3ad3cd46c58c7ca7bff625a0f03674701")
+sha256sums_arm=("9bb4e50c4efb50ef856c2fd755b90e72f0a469c6e8bba46d16651304d9d399f1")
+sha256sums_aarch64=("23f2e65f26120bd027cfd819804c91e4f3e730cb87e4e3dd1e5f3859e9befdd6")
+sha256sums_armv6h=("9691ad2cc983627dd3ddd2fbfd36dd7d865348ba57e864d7369d6326e85612ce")
+sha256sums_armv7h=("f59a3df41f2be06125091eb975042d0da8d3fe11d818e94a179296a0fc429dce")
 
 package() {
   install -Dm 755 "${_pkgname}" -t "${pkgdir}/usr/bin"
