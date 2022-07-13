@@ -1,7 +1,7 @@
 pkgbase = xfce4-settings-standalone
 	pkgdesc = Settings manager of the Xfce desktop
-	pkgver = 4.16.2+2076199f
-	pkgrel = 8
+	pkgver = 4.16.3+024399b1
+	pkgrel = 1
 	url = https://docs.xfce.org/xfce/xfce4-settings/start
 	arch = x86_64
 	groups = xfce4
@@ -21,9 +21,9 @@ pkgbase = xfce4-settings-standalone
 	depends = adwaita-icon-theme
 	depends = gnome-themes-extra
 	optdepends = python: xfce4-compose-mail -- "mailto:" URI handling
-	provides = xfce4-settings=4.16.2
+	provides = xfce4-settings=4.16.3
 	conflicts = xfce4-settings
-	source = xfce4-settings::git+https://gitlab.xfce.org/xfce/xfce4-settings#tag=xfce4-settings-4.16.2
+	source = xfce4-settings::git+https://gitlab.xfce.org/xfce/xfce4-settings#tag=xfce4-settings-4.16.3
 	source = default-xsettings-xml.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/default-xsettings-xml.patch?h=packages/xfce4-settings
 	source = remove-settings-manager.patch
 	source = remove-accessibility-settings.patch

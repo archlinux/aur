@@ -2,10 +2,10 @@
 # Do not forget to run `makepkg --printsrcinfo > .SRCINFO`
 
 _pkgname=xfce4-settings
-_pkgver=4.16.2
+_pkgver=4.16.3
 pkgname=${_pkgname}-standalone
-pkgver=4.16.2+2076199f
-pkgrel=8
+pkgver=4.16.3+024399b1
+pkgrel=1
 pkgdesc="Settings manager of the Xfce desktop"
 arch=('x86_64')
 url="https://docs.xfce.org/xfce/xfce4-settings/start"
