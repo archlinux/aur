@@ -1,23 +1,21 @@
 # Maintainer: Alexander Seiler <seileralex@gmail.com>
 pkgname=sioyek
-pkgver=1.3.0
-pkgrel=4
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="PDF viewer for research papers and technical books."
 arch=('x86_64')
 license=('GPL3')
 provides=('sioyek')
 url="https://github.com/ahrm/sioyek"
 depends=('qt5-base' 'qt5-3d' 'harfbuzz' 'gzip' 'libmupdf' 'zlib' 'gumbo-parser' 'openjpeg2' 'jbig2dec')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('153876cecb75c32bed5469a86f24e7f14ea885711dacbac0072e91594d9f9235')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz" "mupdf-1.20.patch")
+sha256sums=('44d49aec28e49bb79c2d0fb7cefd26aecc53b60136bf02dfec9863ac586aacd0' 'ab9fdffca70d43f1e6d2ba347c546430a79c51452178f05efb086589e247054b')
 
 prepare() {
     cd "$pkgname-$pkgver"
+    patch --forward --strip=1 --input="${srcdir}/mupdf-1.20.patch"
     sed -i 's/-lmupdf-third -lmupdf-threads -lharfbuzz/-lmupdf-third -lharfbuzz -lfreetype -lgumbo -ljbig2dec -lopenjp2 -ljpeg/' pdf_viewer_build_config.pro
     sed -i 's/\/\/#define LINUX_STANDARD_PATHS/#define LINUX_STANDARD_PATHS/' pdf_viewer/main.cpp
-
-    # This has been fixed on the `master` branch, remove this for future releases:
-    sed -i '9i #include <cstring>' pdf_viewer/utils.cpp
 }
 
 build() {

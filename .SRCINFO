@@ -1,7 +1,7 @@
 pkgbase = sioyek
 	pkgdesc = PDF viewer for research papers and technical books.
-	pkgver = 1.3.0
-	pkgrel = 4
+	pkgver = 1.4.0
+	pkgrel = 1
 	url = https://github.com/ahrm/sioyek
 	arch = x86_64
 	license = GPL3
@@ -15,7 +15,9 @@ pkgbase = sioyek
 	depends = openjpeg2
 	depends = jbig2dec
 	provides = sioyek
-	source = sioyek-1.3.0.tar.gz::https://github.com/ahrm/sioyek/archive/v1.3.0.tar.gz
-	sha256sums = 153876cecb75c32bed5469a86f24e7f14ea885711dacbac0072e91594d9f9235
+	source = sioyek-1.4.0.tar.gz::https://github.com/ahrm/sioyek/archive/v1.4.0.tar.gz
+	source = mupdf-1.20.patch
+	sha256sums = 44d49aec28e49bb79c2d0fb7cefd26aecc53b60136bf02dfec9863ac586aacd0
+	sha256sums = ab9fdffca70d43f1e6d2ba347c546430a79c51452178f05efb086589e247054b
 
 pkgname = sioyek
