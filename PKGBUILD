@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-sentencepiece-git
-pkgver=0.1.96
+pkgver=0.1.97
 pkgrel=1
 pkgdesc='Sentencepiece text tokenizer (Python version)'
 arch=('any')
@@ -17,8 +17,8 @@ md5sums=(
 
 
 pkgver() {
-    cd "${pkgname}"
-    printf "%s" "$(python python/setup.py --version)"
+    cd "${pkgname}"/python
+    printf "%s" "$(python setup.py --version)"
 }
 
 
