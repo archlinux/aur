@@ -1,7 +1,7 @@
 # Maintainer: Jaco Malan <jacomalan.12@gmail.com>
 
 pkgname=rkimer-git
-pkgver=r40.e77f8af
+pkgver=r41.ead3caf
 pkgrel=1
 pkgdesc="A lightweight speedcubing timer written in Kotlin"
 arch=('any')
