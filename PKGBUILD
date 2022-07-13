@@ -4,9 +4,9 @@ pkgdesc="ROS - The OctoMap library implements a 3D occupancy grid mapping approa
 url='http://octomap.github.io'
 
 pkgname='ros-noetic-octomap'
-pkgver='1.9.6'
+pkgver='1.9.8'
 arch=('any')
-pkgrel=5
+pkgrel=1
 license=('BSD')
 options=('staticlibs')
 
@@ -18,8 +18,15 @@ ros_depends=(ros-noetic-catkin)
 depends=(${ros_depends[@]})
 
 _dir="octomap-${pkgver}/octomap"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/OctoMap/octomap/archive/v${pkgver}.tar.gz")
-sha256sums=('0f88c1c024f0d29ab74c7fb9f6ebfdddc8be725087372c6c4d8878be95831eb6')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/OctoMap/octomap/archive/v${pkgver}.tar.gz"
+        "iterator.patch::https://patch-diff.githubusercontent.com/raw/OctoMap/octomap/pull/373.patch")
+sha256sums=('417af6da4e855e9a83b93458aa98b01a2c88f880088baad2b59d323ce162586e'
+            'SKIP')
+
+prepare() {
+  cd "$srcdir/octomap-${pkgver}"
+  patch -Np1 -i "$srcdir/iterator.patch"
+}
 
 build() {
   # Use ROS environment variables

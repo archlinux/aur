@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-octomap
 	pkgdesc = ROS - The OctoMap library implements a 3D occupancy grid mapping approach, providing data structures and mapping algorithms in C++.
-	pkgver = 1.9.6
-	pkgrel = 5
+	pkgver = 1.9.8
+	pkgrel = 1
 	url = http://octomap.github.io
 	arch = any
 	license = BSD
@@ -9,8 +9,9 @@ pkgbase = ros-noetic-octomap
 	makedepends = ros-build-tools
 	depends = ros-noetic-catkin
 	options = staticlibs
-	source = ros-noetic-octomap-1.9.6.tar.gz::https://github.com/OctoMap/octomap/archive/v1.9.6.tar.gz
-	sha256sums = 0f88c1c024f0d29ab74c7fb9f6ebfdddc8be725087372c6c4d8878be95831eb6
+	source = ros-noetic-octomap-1.9.8.tar.gz::https://github.com/OctoMap/octomap/archive/v1.9.8.tar.gz
+	source = iterator.patch::https://patch-diff.githubusercontent.com/raw/OctoMap/octomap/pull/373.patch
+	sha256sums = 417af6da4e855e9a83b93458aa98b01a2c88f880088baad2b59d323ce162586e
+	sha256sums = SKIP
 
 pkgname = ros-noetic-octomap
-
