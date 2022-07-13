@@ -1,7 +1,7 @@
 pkgbase = vimirror
 	pkgdesc = A simple utility to change, test, and use mirrors
 	pkgver = 1.0.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/JaydenDev/vimirror
 	arch = any
 	license = MIT
