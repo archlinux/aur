@@ -1,6 +1,6 @@
 pkgbase = godns
 	pkgdesc = A dynamic DNS client tool, supports AliDNS, Cloudflare, Google Domains, DNSPod, HE.net & DuckDNS, written in Go
-	pkgver = 2.8.3
+	pkgver = 2.8.4
 	pkgrel = 1
 	url = https://github.com/timothyye/godns
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = godns
 	makedepends = go
 	provides = godns
 	backup = etc/conf.d/godns.json
-	source = godns-2.8.3.tar.gz::https://github.com/TimothyYe/godns/archive/v2.8.3.tar.gz
-	sha256sums = 1d52b97e2f500bfab74292a4513d3a8703bf6cb395839544b6514059338d42ae
+	source = godns-2.8.4.tar.gz::https://github.com/TimothyYe/godns/archive/v2.8.4.tar.gz
+	sha256sums = ebdabcf07c491b8b047e2cb4e12291dd7cea3178e424ecbb8b321f4589757b97
 
 pkgname = godns
