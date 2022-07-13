@@ -1,25 +1,35 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Christian Schwarz <me@cschwarz.com>
-_base=yoctopuce
-pkgname=python-${_base}
-pkgver=1.10.48220
+
+pkgname=python-yoctopuce
+_pkg="${pkgname#python-}"
+pkgver=1.10.50357
 pkgrel=1
-pkgdesc="Yoctopuce python API"
-arch=(any)
-url="https://pypi.org/project/${_base}"
+pkgdesc="Yoctopuce library for Python"
+arch=('any')
+url='https://github.com/yoctopuce/yoctolib_python'
 license=('custom')
-depends=(python)
-makedepends=(python-setuptools)
-source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('54bdc1ee3c446a8814fd95547cfb81f38e1ad2636f1ad8c3d99b470af5af88cf4820bb567bd3479df2cd9e5d0e0da39890d9bfaba8f5ed8d3b18ce366cfc9341')
+depends=('python' 'yoctopuce')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/y/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('9309fbc0fc55bcf3ee5f2c4ec0186dc768aefafcb2bb6fac5eed91ed7cbaf4f0')
+
+prepare() {
+	cd "$_pkg-$pkgver/$_pkg/"
+	rm cdll/*
+	sed -i '/yoctopuce/c\recursive-include   yoctopuce *.py *.so' ../MANIFEST.in
+}
 
 build() {
-  cd ${_base}-${pkgver}
-  export PYTHONHASHSEED=0
-  python setup.py build
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
 package() {
-  cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/" "$pkgdir/$_site/$_pkg/cdll"
+	ln -s "$_site/$_pkg-$pkgver.dist-info/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	ln -s /usr/lib/libyapi.so "$pkgdir/$_site/$_pkg/cdll/"
 }
