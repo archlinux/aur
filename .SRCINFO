@@ -1,0 +1,24 @@
+pkgbase = python-numpy-flame
+	pkgdesc = Scientific tools for Python, compiled with libFLAME
+	pkgver = 1.23.0
+	pkgrel = 1
+	url = https://www.numpy.org/
+	arch = x86_64
+	license = custom
+	checkdepends = python-pytest
+	checkdepends = python-hypothesis
+	makedepends = python-setuptools
+	makedepends = gcc-fortran
+	makedepends = cython
+	depends = cblas
+	depends = libflame
+	depends = python
+	provides = python3-numpy=1.23.0
+	provides = python-numpy=1.23.0
+	conflicts = python3-numpy
+	conflicts = python-numpy
+	options = staticlibs
+	source = https://github.com/numpy/numpy/releases/download/v1.23.0/numpy-1.23.0.tar.gz
+	sha512sums = 899d0ca062b676b64de0da204339694dcb7e52f257625e971f9a8ad7267206a6ad2924353e4dd1e153b4a64ae318380899c9e1ee7a6f53fdeba4c19b34917583
+
+pkgname = python-numpy-flame
