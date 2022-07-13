@@ -8,6 +8,7 @@ pkgbase = grub-editor
 	makedepends = make
 	depends = python
 	depends = grub
+	depends = python-pyqt5
 	source = https://github.com/Thenujan-0/grub-editor/archive/refs/tags/v1.0.tar.gz
 	md5sums = SKIP
 
