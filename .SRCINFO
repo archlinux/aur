@@ -1,6 +1,6 @@
 pkgbase = bedops
 	pkgdesc = Highly scalable genomic feature operations.
-	pkgver = 2.4.40
+	pkgver = 2.4.41
 	pkgrel = 1
 	url = http://github.com/bedops/bedops/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = bedops
 	depends = glibc
 	depends = python
 	depends = tcsh
-	source = https://github.com/bedops/bedops/archive/refs/tags/v2.4.40.tar.gz
-	md5sums = 84c756bc92a023863ab564b96ba11067
+	source = https://github.com/bedops/bedops/archive/refs/tags/v2.4.41.tar.gz
+	md5sums = f0eadfce409de35ea804c9df993d5d07
 
 pkgname = bedops
