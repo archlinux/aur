@@ -14,7 +14,7 @@ license=('LGPL2.1')
 url='https://github.com/drowe67/codec2'
 makedepends=('cmake')
 provides=('freedv' 'codec2')
-conflicts=('freedv' 'codec2')
+conflicts=('freedv')
 source=("$url/archive/v$_tag/$_pkgname-$_tag.tar.gz")
 sha512sums=('1b59a0520d55b0f92b72a51dde0f58a0cd845056195734d23bf59bf44e7b5c7431bdc3cebe7c60aef7dadf3ec02f9edd62f041b4b283c05a4b50a0380f3ed67c')
 
