@@ -1,14 +1,13 @@
 pkgbase = antidot-bin
 	pkgdesc = Cleans up your $HOME from those pesky dotfiles
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/doron-cohen/antidot
 	arch = x86_64
 	license = MIT
 	provides = antidot
 	conflicts = antidot
-	source = https://github.com/doron-cohen/antidot/releases/download/v0.6.2/antidot_0.6.2_Linux_x86_64.tar.gz
-	sha256sums = 3027e8a1f79741c5b644cf00e52aa232864ca76a8f813337eab343bc123605ed
+	source = https://github.com/doron-cohen/antidot/releases/download/v0.6.3/antidot_0.6.3_Linux_x86_64.tar.gz
+	sha256sums = 69bf8e4de2da1fdada2be866d7ba0a0261cbc9e9e5410bd87c79791f2ce6dbdc
 
 pkgname = antidot-bin
-
