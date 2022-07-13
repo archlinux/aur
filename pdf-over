@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /usr/bin/java -cp '/usr/share/java/pdf-over/*' at.asit.pdfover.gui.Main "$@"
+exec /usr/lib/jvm/java-17-openjdk/bin/java -cp '/usr/share/java/pdf-over/*' at.asit.pdfover.gui.Main "$@"
