@@ -3,29 +3,42 @@
 
 _gemname=dry-container
 pkgname=ruby-$_gemname
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
-pkgdesc="A simple container intended for use as an IoC container"
+pkgdesc='A simple container intended for use as an IoC container'
 arch=('any')
-url="https://github.com/dry-rb/dry-container"
+url='https://github.com/dry-rb/dry-container'
 license=('MIT')
-depends=('ruby' 'ruby-concurrent' 'ruby-dry-configurable')
-makedepends=('ruby-rdoc')
+depends=('ruby' 'ruby-concurrent')
+makedepends=('git' 'ruby-rdoc')
 options=('!emptydirs')
-source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
-noextract=("$_gemname-$pkgver.gem")
-b2sums=('b635c58149bfc33c39968134c6df2a5b0bc5824bf1156203d357728420f41c95990fb40eb4518300223853b1e73625cff81026993067fba7635426cac9a95b67')
+_commit='ad67e5b8f3f8e0717ee67bd13a477ace5fd66131'
+source=("$pkgname::git+$url#commit=$_commit")
+b2sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+
+  git describe --tags | sed 's/^v//'
+}
+
+build() {
+  cd "$pkgname"
+
+  gem build
+}
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
 
   gem install \
     --verbose \
+    --local \
     --ignore-dependencies \
     --no-user-install \
     --install-dir "$pkgdir/$_gemdir" \
     --bindir "$pkgdir/usr/bin" \
-    "$_gemname-$pkgver.gem"
+    "$pkgname/$_gemname-$pkgver.gem"
 
   # delete cache
   cd "$pkgdir/$_gemdir"
