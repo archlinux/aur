@@ -1,0 +1,22 @@
+pkgbase = neon-browser-git
+	pkgdesc = A minimalistic web browser
+	pkgver = 0.r19.1803739.BETA
+	pkgrel = 1
+	url = https://www.gitlab.com/NEON-MMD/neon-browser.git
+	install = neon-browser-git.install
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = python-pyqt5
+	depends = python-pyqt5-3d
+	depends = python-pyqt5-chart
+	depends = python-pyqt5-datavisualization
+	depends = python-pyqt5-networkauth
+	depends = python-pyqt5-purchasing
+	depends = python-pyqt5-webengine
+	optdepends = privoxy
+	provides = neon-browser-git
+	source = git+https://www.gitlab.com/NEON-MMD/neon-browser.git
+	md5sums = SKIP
+
+pkgname = neon-browser-git
