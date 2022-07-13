@@ -1,0 +1,4 @@
+dosbox-core/
+src/
+pkg/
+*.pkg.tar.xz
