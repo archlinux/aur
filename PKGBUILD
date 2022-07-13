@@ -3,31 +3,35 @@
 # Contributor: mdraw.gh at gmail dot com
 
 pkgname=python-markovify
-pkgver=0.9.3
+_pkg="${pkgname#python-}"
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="Simple, extensible Markov chain generator"
 arch=('any')
 url='https://github.com/jsvine/markovify'
 license=('MIT')
 depends=('python-unidecode')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-nose')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('37388aa9fb066bc8f0c5490691500ce5df05fd6e629c24fca3f9eed2cd26245e')
+sha256sums=('c854b7a2600be322028a9f9deda58e54f3dd984f1828ee2dd19faaedbb79bb59')
 
 build() {
-	cd "markovify-$pkgver"
-	python setup.py build
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
 check() {
-	cd "markovify-$pkgver"
+	cd "$_pkg-$pkgver"
 	nosetests
 }
 
 package() {
-	cd "markovify-$pkgver"
-	PYTHONHASHSEED=0 python setup.py install --root="${pkgdir}" --prefix=/usr --optimize=1 --skip-build
-	install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
+	# install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s "$_site/$_pkg-$pkgver.dist-info/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
