@@ -1,0 +1,69 @@
+#!/bin/bash
+# Script to apply desired Lenovo bios System Cooling mode using acpi_call
+if [ -a /proc/acpi/call ]; then
+curcoolmode() {
+	echo '\_SB.PCI0.LPC0.EC0.FCMO' > /proc/acpi/call
+	cat /proc/acpi/call | cut -d '' -f1
+}
+
+hcoolmodearr=( "\033[35;1;1mIntelligent Cooling\033[0m" "\033[31;1;1mExtreme Performance\033[0m" "\033[36;1;1mBattery Saving\033[0m" )
+hcoolmodei=0
+hcoolmodep=1
+hcoolmodeb=2
+
+modepusharr=( "0x000FB001" "0x0012B001" "0x0013B001" )
+modepushi=0
+modepushp=1
+modepushb=2
+
+noticetext="\033[36;1;45mNotice:\033[0m"
+helptext="$hcurrmode \n$noticetext \033[34;1;1mProvide a case insensitive option to set system cooling mode: \n  -i for "${hcoolmodearr[$hcoolmodei]}" \033[34;1;1m \n  -p for "${hcoolmodearr[$hcoolmodep]}" \033[34;1;1m \n  -b for "${hcoolmodearr[$hcoolmodeb]}" \033[0m \n "  
+
+case `curcoolmode` in
+		0x0) 
+		coolmodei="${hcoolmodearr[$hcoolmodei]}"
+		coolmode="$coolmodei"
+			;;
+		0x1)
+		coolmodep="${hcoolmodearr[$hcoolmodep]}"
+		coolmode="$coolmodep"
+			;;
+		0x2)
+		coolmodeb="${hcoolmodearr[$hcoolmodep]}"
+		coolmode="$coolmodeb"
+			;;
+	esac
+
+hcurrmode="\n$noticetext \033[34;1;1mCurrent cooling mode is set as $coolmode \n"
+
+[ $# -eq 0 ] && { echo -e "$hcurrmode"; echo -e "$helptext"; exit 1; }
+
+while getopts ':[-][iI][pP][bB]' optgiv 
+do
+	case "$optgiv" in
+		[iI] ) 
+			modepush="${modepusharr[$modepushi]}"
+			hmodepush="${hcoolmodearr[$hcoolmodei]}"
+			;;
+		[pP] )
+	       	modepush="${modepusharr[$modepushp]}"
+			hmodepush="${hcoolmodearr[$hcoolmodep]}"
+			;;
+		[bB] )
+	       	modepush="${modepusharr[$modepushb]}"
+			hmodepush="${hcoolmodearr[$hcoolmodeb]}"
+			;;
+		\? )
+            echo -e "$hcurrmode"
+			echo -e "$helptext"  
+			exit;;
+	esac
+
+        echo "\_SB.PCI0.LPC0.EC0.VPC0.DYTC $modepush" > /proc/acpi/call
+        echo -e "\n$noticetext\033[34;1;1m Successfully updated system cooling from $coolmode \033[34;1;1mto $hmodepush\033[34;1;1m mode. \033[0m \n"
+	exit
+done
+else
+	echo -e "\n\033[41;1;1mERROR: No /proc/acpi/call found! Please make sure acpi_call is installed and has been modprobed. \033[0m \n"
+fi
+
