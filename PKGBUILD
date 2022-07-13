@@ -13,7 +13,8 @@ url="https://github.com/lksj/einstein-puzzle"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('sdl_ttf' 'sdl_mixer' 'xorg-server')
-makedepends=('git' 'sharutils' 'ttf-dejavu')
+makedepends=('git' 'ttf-dejavu')
+checkdepends=('sharutils')
 changelog=ChangeLog
 source=("git+https://github.com/lksj/einstein-puzzle.git"
         "${pkgname}.desktop"
