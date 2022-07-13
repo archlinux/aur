@@ -1,11 +1,11 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
-# Contributor: Philip Goto <philip.goto@gmail.com>
+# Contributor: Philip Goto <philip.goto@gmail.com>, WithTheBraid <the-one@with-the-braid.cf>
 
 pkgname=flutter
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
-arch=("x86_64")
+arch=("x86_64" "aarch64")
 url="https://${pkgname}.dev"
 license=("custom" "BSD" "CCPL")
 depends=("git" "glu" "java-environment" "libglvnd" "unzip")
