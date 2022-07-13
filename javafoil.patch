@@ -1,0 +1,11 @@
+diff '--color=auto' --unified --recursive --text src/JavaFoil.sh srcc/JavaFoil.sh
+--- src/JavaFoil.sh	2021-12-18 18:39:54.000000000 +0100
++++ srcc/JavaFoil.sh	2022-07-13 17:00:21.515754359 +0200
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ #
+-cd ~/MH-AeroTools/JavaFoil
++cd /opt/javafoil
+ #
+ ARCHS=javafoil.jar:mhclasses.jar
+ CLASS=MH.JavaFoil.JavaFoil

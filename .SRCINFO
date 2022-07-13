@@ -1,0 +1,16 @@
+pkgbase = javafoil
+	pkgdesc = Potential flow analysis using a higher order panel method.
+	pkgver = 2.29
+	pkgrel = 1
+	url = https://www.mh-aerotools.de/airfoils/javafoil.htm
+	arch = any
+	depends = jre-openjdk
+	depends = sharutils
+	source = javafoil.patch
+	source = javafoil.desktop
+	source = https://www.mh-aerotools.de/airfoils/java/javafoilinstaller.sh
+	sha256sums = b9c702c685c4b287cb1f68339428d5fdb693736d4a441a2e089dea1699e3e047
+	sha256sums = 5016b837af2fc1832379988aca2f6cf22b640c170f478521b4a74e3abbd9e120
+	sha256sums = 5978d45e8d22da30e19c6f5a21280d3509a6bd3dcddd1e49e45b26f536e7334a
+
+pkgname = javafoil

@@ -1,0 +1,8 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Name=Javafoil
+Exec=bash /opt/javafoil/JavaFoil.sh
+Terminal=false
+Icon=/usr/share/pixmaps/javafoil.ico
+Categories=Application;
