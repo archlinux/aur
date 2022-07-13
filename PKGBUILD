@@ -1,6 +1,6 @@
 # Maintainer: David Bernhard <davidbernhard.w@gmail.com>
 pkgname=simple-reaction-daemon
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Simple Reaction Daemon - Periodically ping hosts and run custom actions if they are unreachable"
 arch=('any')
@@ -20,7 +20,7 @@ source=(
     "$pkgname::git+https://github.com/dbernhard-0x7CD/simple-reaction-daemon"
     'srd.conf')
 sha256sums=('SKIP'
-            'b96840484ced981d203de18da82e2710e21335799aa3f5e910f5d749b4252245')
+            '59e4dc68a893100b898791dcaf17e4bd45ce2bdccbcf3e63bded83e9965febf4')
 validpgpkeys=()
 
 
