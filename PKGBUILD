@@ -4,7 +4,7 @@
 
 pkgname='libcs50-git'
 _gitname='libcs50'
-pkgver=10.1.0.r0.gb5d03d3
+pkgver=10.1.0.r40.gb9f4bd7
 pkgrel=1
 pkgdesc="CS50 Library for C (development version)"
 arch=('x86_64' 'i686')
@@ -15,7 +15,7 @@ makedepends=('asciidoctor' 'git')
 provides=("${_gitname}")
 conflicts=("${_gitname}")
 source=(
-  'git+https://github.com/cs50/libcs50.git#branch=master'
+  'git+https://github.com/cs50/libcs50.git#branch=main'
   'Makefile.patch'
 )
 sha256sums=(
