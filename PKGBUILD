@@ -2,13 +2,13 @@
 pkgbase=python-photutils
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Astropy Affiliated package for image photometry utilities"
 arch=('i686' 'x86_64')
-url="http://photutils.readthedocs.io/"
+url="http://photutils.readthedocs.io"
 license=('BSD')
-makedepends=('cython>=0.28'
+makedepends=('cython>=0.29.22'
              'python-setuptools-scm'
              'python-wheel'
              'python-build'
@@ -22,7 +22,18 @@ makedepends=('cython>=0.28'
              'graphviz')
 checkdepends=('python-pytest-astropy' 'python-gwcs')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('39647bdd3ca2d10564c44fe2a4196f72')
+#       "https://github.com/astropy/photutils-datasets/raw/main/data/M6707HH.fits"
+#       "https://github.com/astropy/photutils-datasets/raw/main/data/SA112-SF1-001R1.fit.gz"
+#       "https://github.com/astropy/photutils-datasets/raw/main/data/SA112-SF1-ra-dec-list.txt"
+#       "https://github.com/astropy/photutils-datasets/raw/main/data/hst_wfc3ir_f160w_simulated_starfield.fits"
+#       "https://github.com/astropy/photutils-datasets/raw/main/data/irac_ch1_flight.fits"
+#       "https://github.com/astropy/photutils-datasets/raw/main/data/irac_ch2_flight.fits"
+#       "https://github.com/astropy/photutils-datasets/raw/main/data/irac_ch3_flight.fits"
+#       "https://github.com/astropy/photutils-datasets/raw/main/data/irac_ch4_flight.fits"
+#       "https://github.com/astropy/photutils-datasets/raw/main/data/spitzer_example_catalog.xml"
+#       "https://github.com/astropy/photutils-datasets/raw/main/data/spitzer_example_image.fits"
+#       'datasets-use-local.patch')
+md5sums=('c010166dc3ecf3f44a87c229aa5bc7bd')
 
 get_pyver() {
     python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
@@ -32,6 +43,8 @@ prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     sed -i "/oldest-supported-numpy/d" pyproject.toml
+#   cp -v "${srcdir}"/{*.fit*,*.txt,*.xml} ${_pyname}/datasets/data
+#   patch -Np1 -i "${srcdir}/datasets-use-local.patch"
 }
 
 build() {
@@ -46,7 +59,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest "build/lib.linux-${CARCH}-$(get_pyver)" --remote-data || warning "Tests failed"
+    pytest "build/lib.linux-${CARCH}-$(get_pyver)" --remote-data=any || warning "Tests failed"
 }
 
 package_python-photutils() {
@@ -57,7 +70,8 @@ package_python-photutils() {
                 'python-matplotlib>=3.1: To power a variety of plotting features (e.g. plotting apertures'
                 'python-gwcs>=0.16: Used in make_gwcs to create a simple celestial gwcs object'
                 'python-photutils-doc: Documentation for python-photutils'
-                'python-bottleneck: Improves the performance of sigma clipping and other functionality that may require computing statistics on arrays with NaN values')
+                'python-bottleneck: Improves the performance of sigma clipping and other functionality that may require computing statistics on arrays with NaN values'
+                'python-tqdm: Used to display optional progress bars')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"

@@ -6,3 +6,6 @@ pkg
 *.part
 *.pkg.tar.*
 *.log
+*fit*
+*xml*
+*txt*
