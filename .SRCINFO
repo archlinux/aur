@@ -1,0 +1,11 @@
+pkgbase = win32yank-bin
+	pkgdesc = A clipboard tool for Windows
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/equalsraf/win32yank
+	arch = x86_64
+	license = ISC
+	source = https://github.com/equalsraf/win32yank/releases/download/v0.0.4/win32yank-x64.zip
+	sha512sums = 782384302bd456b0dd3e422bbb53b88d2ffda0cb423d942a669a348f9fcb22c8e2141952e69b7260d736e8c275c504f0e5816268644452f892a2c716f5e53776
+
+pkgname = win32yank-bin
