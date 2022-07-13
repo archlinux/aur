@@ -2,7 +2,7 @@
 
 pkgname=pridefetch-git
 pkgver="r78.02cb0c5"
-pkgrel=1
+pkgrel=2
 pkgdesc="Neofetch clone written in Python with the ability to display pride flags"
 arch=('any')
 url="https://github.com/Spyhoodle/pridefetch"
@@ -14,8 +14,9 @@ conflicts=('pridefetch')
 sha512sums=('SKIP')
 
 pkgver() {
-	cd "$pkgname"
+	cd "pridefetch"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd ..
 }
 
 package() {
