@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-tempest
-pkgver=29.0.0
+pkgver=31.1.0
 pkgrel=1
 pkgdesc='OpenStack Integration Testing'
 arch=('any')
@@ -16,7 +16,7 @@ depends=('python-pbr' 'python-cliff' 'python-jsonschema' 'python-testtools'
          'python-debtcollector')
 checkdepends=('python-hacking' 'python-mock' 'python-oslotest')
 source=("https://github.com/openstack/tempest/archive/$pkgver.tar.gz")
-sha512sums=('bf16897fa9d016cb72bcad38884c1e1cee99021374aa21f2c80b5ac4fdf24b7769c24a3c70f503933bb6ca4ed6279154af6bb343975578298cbd66c28f791246')
+sha512sums=('2d9796d6d81138e82eae78f83f50b5d3207571618c1cdeec41860fc6e88ea70f24f6da1871b152354b749c8ac59110119e69c7a7f93daec3982b333ec509330d')
 
 export PBR_VERSION=$pkgver
 
