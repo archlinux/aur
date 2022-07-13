@@ -3,9 +3,9 @@
 
 pkgname=manjaro-zsh-config-git
 _pkgname=manjaro-zsh-config
-pkgver=r69.a9b56f6
-pkgrel=3
-pkgdesc="Zsh configuration from manjaro forked for archlinux"
+pkgver=r70.098fb0e
+pkgrel=1
+pkgdesc="Zsh configuration from manjaro forked for all the cool kids"
 arch=(any)
 url="https://github.com/ayr-ton/$_pkgname"
 license=('MIT')
@@ -21,7 +21,6 @@ depends=('zsh-autosuggestions'
 makedepends=('git')
 provides=(${pkgname}=$pkgver)
 conflicts=(${pkgname%-*})
-#source=("$_pkgname.tar.gz::$url/archive/$_gitcommit.tar.gz")
 source=($_pkgname::git+https://github.com/ayr-ton/${_pkgname}.git)
 sha256sums=('SKIP')
 backup=(root/.zshrc)
@@ -33,17 +32,17 @@ pkgver() {
 
 package() {
 	cd ${srcdir}
-	install -D -m644 $srcdir/$_pkgname/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-	install -D -m644 $srcdir/$_pkgname/.zshrc ${pkgdir}/etc/skel/.zshrc
-	install -D -m644 $srcdir/$_pkgname/manjaro-zsh-config ${pkgdir}/usr/share/zsh/manjaro-zsh-config
-	install -D -m644 $srcdir/$_pkgname/manjaro-zsh-prompt ${pkgdir}/usr/share/zsh/manjaro-zsh-prompt
-	install -D -m644 $srcdir/$_pkgname/zsh-maia-prompt ${pkgdir}/usr/share/zsh/zsh-maia-prompt
-	install -D -m644 $srcdir/$_pkgname/p10k.zsh ${pkgdir}/usr/share/zsh/p10k.zsh
-	install -D -m644 $srcdir/$_pkgname/command-not-found.zsh ${pkgdir}/usr/share/zsh/functions/command-not-found.zsh
-	install -D -m640 $srcdir/$_pkgname/rootzshrc ${pkgdir}/root/.zshrc
+	install -D -m644 ${srcdir}/${_pkgname}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+	install -D -m644 ${srcdir}/${_pkgname}/.zshrc ${pkgdir}/etc/skel/.zshrc
+	install -D -m644 ${srcdir}/${_pkgname}/manjaro-zsh-config ${pkgdir}/usr/share/zsh/manjaro-zsh-config
+	install -D -m644 ${srcdir}/${_pkgname}/manjaro-zsh-prompt ${pkgdir}/usr/share/zsh/manjaro-zsh-prompt
+	install -D -m644 ${srcdir}/${_pkgname}/zsh-maia-prompt ${pkgdir}/usr/share/zsh/zsh-maia-prompt
+	install -D -m644 ${srcdir}/${_pkgname}/p10k.zsh ${pkgdir}/usr/share/zsh/p10k.zsh
+	install -D -m644 ${srcdir}/${_pkgname}/command-not-found.zsh ${pkgdir}/usr/share/zsh/functions/command-not-found.zsh
+	install -D -m640 ${srcdir}/${_pkgname}/rootzshrc ${pkgdir}/root/.zshrc
 	chmod 750 ${pkgdir}/root
-	mkdir -p $pkgdir/usr/share/zsh/scripts
-	cp -r $srcdir/$_pkgname/base16-shell $pkgdir/usr/share/zsh/scripts
-	chmod a+x $pkgdir/usr/share/zsh/scripts/base16-shell/*
+	mkdir -p ${pkgdir}/usr/share/zsh/scripts
+	cp -r ${srcdir}/${_pkgname}/base16-shell ${pkgdir}/usr/share/zsh/scripts
+	chmod a+x ${pkgdir}/usr/share/zsh/scripts/base16-shell/*
 }
 
