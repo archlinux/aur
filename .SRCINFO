@@ -1,0 +1,15 @@
+pkgbase = highlight-pointer
+	pkgdesc = Highlight mouse pointer/cursor using a dot - useful for presentations, screen sharing
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://github.com/swillner/highlight-pointer
+	arch = x86_64
+	license = MIT
+	depends = libx11
+	depends = libxext
+	depends = libxfixes
+	depends = libxi
+	source = https://github.com/swillner/highlight-pointer/archive/v1.1.3.tar.gz
+	sha256sums = a2f9752735e32150143d42d5e4b590a9941ceacdb6954b871e9129bfc07ebf49
+
+pkgname = highlight-pointer
