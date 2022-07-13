@@ -1,14 +1,14 @@
 # Maintainer: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname=xs
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="A FASTQ read simulator"
 arch=('x86_64')
 url=https://github.com/pratas/"${pkgname}"
 license=('GPL2')
 source=("${pkgname}"-"${pkgver}".tar.gz::https://github.com/pratas/"${pkgname}"/archive/v"${pkgver}".tar.gz)
-sha256sums=('8914433668b9b55fb2240990f532fbf36c9a2162eb15b902db5ce3cc9e4282d3')
+sha256sums=('3882f88dd757bee2d44cf2393af02084c572dd490dd8cbe55925cb2788777174')
 
 prepare() {
   cd "${srcdir}"/"${pkgname}"-"${pkgver}"
