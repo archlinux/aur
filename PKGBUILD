@@ -1,5 +1,5 @@
 pkgname=gossm-bin
-pkgver=1.4.6
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Interactive CLI tool that you can connect to ec2 using commands same as start-session, ssh in AWS SSM Session Manager "
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=(
   'openssh'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gjbae1212/${pkgname%-bin}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums=('3889a711b4dd50cee53e54ec4872cb5e0fe63da68cb6f7334dd3b720782e45c4')
+sha256sums=('dffcb2b55f77ccc32446b93d0566f2b73178216fa1e5b00a21b1ea6e5a5928c0')
 
 package() {
   mkdir -p "${pkgdir}/usr/bin" "${pkgdir}/usr/share/${pkgname}"
