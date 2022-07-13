@@ -1,6 +1,6 @@
 pkgbase = garcon-devel
 	pkgdesc = Implementation of the freedesktop.org menu specification
-	pkgver = 4.17.0
+	pkgver = 4.17.1
 	pkgrel = 1
 	url = https://www.xfce.org/
 	arch = i686
@@ -14,10 +14,10 @@ pkgbase = garcon-devel
 	makedepends = gobject-introspection
 	depends = libxfce4ui>=4.15.7
 	depends = libxfce4util>=4.15.6
-	provides = garcon=4.17.0
+	provides = garcon=4.17.1
 	conflicts = garcon
 	replaces = libxfce4menu
-	source = https://archive.xfce.org/src/xfce/garcon/4.17/garcon-4.17.0.tar.bz2
-	sha256sums = 9c527b54eed0ccb3af60cfc63ed554cbf02a37fd566b2e248c5ba0f3c16e3c7a
+	source = https://archive.xfce.org/src/xfce/garcon/4.17/garcon-4.17.1.tar.bz2
+	sha256sums = 6a00104443a9bc8e9ce9457a0a71ab285913e4e7d9250c23e4da65da0d4e8e26
 
 pkgname = garcon-devel
