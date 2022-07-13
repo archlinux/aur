@@ -1,6 +1,6 @@
 pkgbase = warp
 	pkgdesc = Fast and secure file transfer
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/warp
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = warp
 	depends = libadwaita
 	conflicts = warp-share-files
 	replaces = warp-share-files
-	source = https://gitlab.gnome.org/World/warp/-/archive/v0.2.1/warp-v0.2.1.tar.gz
-	b2sums = e83ea387bb6ea43ef2fa04d7669159977f064b4295623045351063307b928513096bd8fcfa3d7425f3267e458be87a712dae51c5108c2cfe20e468dcca765ea1
+	source = https://gitlab.gnome.org/World/warp/-/archive/v0.2.2/warp-v0.2.2.tar.gz
+	b2sums = 178da172ee5bdcb4885ba55b012c8fa563dd7f8801d7349e1e873445482e1bfe0e604275d04ba99e908e71e176cbc83f9fa703e63d535112f057193eda3283d5
 
 pkgname = warp
