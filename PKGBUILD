@@ -1,6 +1,6 @@
 # Maintainer: f4iey <f4iey@f6kgl.ampr.org>
 pkgname=tetra-kit-git
-pkgver=4b7e91d
+pkgver=r93.4b7e91d
 pkgrel=1
 pkgdesc="TETRA downlink decoder/recorder kit"
 arch=('any')
@@ -23,6 +23,11 @@ prepare(){
 build(){
     cd $srcdir/$pkgname
     ./build.sh
+}
+
+pkgver() {
+    cd "$srcdir/$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
