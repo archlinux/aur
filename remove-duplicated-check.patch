@@ -1,8 +1,20 @@
+diff --git a/defs/c-Linux.mk b/defs/c-Linux.mk
+index c2c3129..4f1bbee 100644
+--- a/defs/c-Linux.mk
++++ b/defs/c-Linux.mk
+@@ -34,7 +34,6 @@ HOSTOS_CWARN	=				\
+ 	-Wdeclaration-after-statement		\
+ 	-Wdisabled-optimization			\
+ 	-Wempty-body				\
+-	-Werror					\
+ 	-Wextra					\
+ 	-Wfloat-equal				\
+ 	-Wformat				\
 diff --git a/lib/ftdiuart.c b/lib/ftdiuart.c
-index 7d1054c..0620dd1 100644
+index 7e17d69..85d30cb 100644
 --- a/lib/ftdiuart.c
 +++ b/lib/ftdiuart.c
-@@ -359,7 +359,7 @@ static int fuart_wr_rd_locked(struct fuart_context *fuartc) {
+@@ -371,7 +371,7 @@ static int fuart_wr_rd_locked(struct fuart_context *fuartc) {
        rd_buf += bytes;
        bytes_remaining -= bytes;
      }
@@ -11,3 +23,15 @@ index 7d1054c..0620dd1 100644
          (retries < 10)) {
        retries++;
        goto retry_write;
+diff --git a/servo/scripts/bash_completion/Makefile b/servo/scripts/bash_completion/Makefile
+index d22faa5..ca7f0ed 100644
+--- a/servo/scripts/bash_completion/Makefile
++++ b/servo/scripts/bash_completion/Makefile
+@@ -15,6 +15,6 @@ $(SCRIPT_DEST_DIR)/%: $(HDCTOOLS_SOURCE_DIR)/%.bash
+ 	$(CP) $< $@
+ 
+ all:
+-	$(MKDIR) -p $(SCRIPT_DEST_DIR)
++	$(NOECHO) $(NOOP)
+ 
+ install: $(SCRIPT_DST)

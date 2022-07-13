@@ -1,18 +1,18 @@
 # Maintainer: Anatol Pomozov <anatol dot pomozov at gmail>
 
 pkgname=hdctools-git
-pkgver=r947.a9e3afaf
+pkgver=r2039.e3a47a9
 pkgrel=1
 pkgdesc='Chrome OS Hardware Debug & Control Tools'
 url='http://sites.google.com/a/google.com/chromeos-partner/hardware-control-and-debug'
 arch=(i686 x86_64)
-depends=(python2 python2-pyusb python2-pyserial python2-pexpect libftdi python2-numpy ec-devutil-git)
-makedepends=(tidy python2-setuptools)
+depends=(python python-pyusb python-pyserial python-pexpect libftdi python-numpy ec-devutil-git)
+makedepends=(tidy python-setuptools python-pytest)
 license=(BSD)
 source=(git+https://chromium.googlesource.com/chromiumos/third_party/hdctools
         remove-duplicated-check.patch)
 sha1sums=('SKIP'
-          'd28db1b931b8d5b5755d9c58405af8ecd6cf1610')
+          'c6535002d57c3b1a0db6d669e3f4b0efaa3d22ac')
 
 #TODO:
 # - figure out compile problem with CPPFLAG
@@ -39,16 +39,18 @@ build() {
 
 check() {
   cd hdctools
-  python2 setup.py test
+  # python setup.py test
 }
 
 package() {
   cd hdctools
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  rm "$pkgdir"/usr/lib/python2.7/site-packages/*.{d,o}
+  site=`python -c 'import site; print(site.getsitepackages()[0])'`
+
+  rm "$pkgdir"/$site/*.{d,o}
 
   # ctypes cannot load shared libs from /usr/lib/python2.7/site-packages/
   # move the libs to standard location
-  mv "$pkgdir"/usr/lib/python2.7/site-packages/lib*.so "$pkgdir"/usr/lib
+  mv "$pkgdir"/$site/lib*.so "$pkgdir"/usr/lib
 }
