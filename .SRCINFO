@@ -1,6 +1,6 @@
 pkgbase = blender-wayland-git
 	pkgdesc = A fully integrated 3D graphics creation suite (development)
-	pkgver = 3.3.r114671.g2a2261d7e19
+	pkgver = 3.3.r116307.g8f543a73abc
 	pkgrel = 1
 	url = https://blender.org/
 	arch = i686
@@ -34,6 +34,7 @@ pkgbase = blender-wayland-git
 	depends = openshadinglanguage
 	depends = libtiff
 	depends = libpng
+	depends = libdecor
 	optdepends = cuda: CUDA support in Cycles
 	optdepends = optix=7.1.0: OptiX support in Cycles
 	optdepends = usd=21.05: USD export Scene
