@@ -1,6 +1,6 @@
 # Maintainer: pkg_maintainer <archlinuxpackagemaintainer@gmail.com>
 pkgname=neon-logout-git
-pkgver=5.r16.1b442f6
+pkgver=5.r19.1803739
 pkgrel=1
 epoch=
 pkgdesc="A logout window manager made for neon-os. inspired from distrotube. credit to flaticons for the icons"
