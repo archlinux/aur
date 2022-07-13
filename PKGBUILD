@@ -2,7 +2,7 @@
 # Do not forget to run `makepkg --printsrcinfo > .SRCINFO`
 
 pkgname=libvirt-vnc
-pkgver=8.4.0
+pkgver=8.5.0
 pkgrel=1
 pkgdesc='Libvirt runtime libraries and headers exclusively for VNC support.'
 arch=('x86_64')
@@ -32,7 +32,7 @@ source=(
   "libvirt-src-meson.build.patch"
 )
 sha256sums=(
-  '601a6e9bb03a43d05659f63e4a403df253ab0975b4a973f10a5607f3bbc018dd'
+  '401e99b5e1b83de39a86347e091a85eb4dba82a87053dfcb5aa250328f97db62'
   'SKIP'
   '9c6dc059fa0a716d35cc6fa43b470bd5feb0aec476472bfbb8747c40f8105984'
   'bfcaff2fb2b1c24d7d04e0cc747c6ce288770b814aeee54ab8449cf24c9eab0c'
