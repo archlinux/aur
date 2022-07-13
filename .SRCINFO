@@ -1,0 +1,23 @@
+pkgbase = gnome-browser-connector-git
+	pkgdesc = Native browser connector for integration with extensions.gnome.org
+	pkgver = 42rc.r656.101c501
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/GnomeShellIntegration
+	arch = any
+	license = GPL3
+	makedepends = meson
+	makedepends = git
+	depends = gnome-shell
+	depends = python-requests
+	depends = python-gobject
+	provides = chrome-gnome-shell
+	provides = gnome-browser-connector
+	conflicts = chrome-gnome-shell
+	conflicts = gs-chrome-connector
+	conflicts = gnome-browser-connector
+	replaces = chrome-gnome-shell
+	replaces = gs-chrome-connector
+	source = git+https://gitlab.gnome.org/nE0sIghT/gnome-browser-connector.git
+	md5sums = SKIP
+
+pkgname = gnome-browser-connector-git
