@@ -1,17 +1,16 @@
 pkgbase = otf-gfs-neohellenic-math
 	pkgdesc = An open type mathematical font from the Greek Font Society.
-	pkgver = 20190727
+	pkgver = 20220713
 	pkgrel = 1
-	url = http://www.greekfontsociety-gfs.gr
+	url = https://www.greekfontsociety-gfs.gr
 	arch = any
 	license = custom: SIL-OFL
 	makedepends = unzip
 	noextract = GFS_NeoHellenic_Math.zip
 	noextract = LICENSE
-	source = http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_NeoHellenic_Math.zip
+	source = https://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_NeoHellenic_Math.zip
 	source = LICENSE
-	md5sums = aac8f8ba1606c8a110bba93688495d04
-	md5sums = 288069c8fb0c828b081833cfcfe0638b
+	sha512sums = 75168c5a0da5a123aa6c6dc8283b13d04ddace96ec594b057534a37f942aa334d08b8957cc8d879a77332c486556df04eb7f9f944bf0b338c8990a27de93096a
+	sha512sums = 9583e535c20621e989455cc76e97d7c71b7c592dc02036309e228ccdee1b0d56067bbf367ab414fcf20a428d05e7a9149851b46b5f6d6637b86f29c3ecf7629e
 
 pkgname = otf-gfs-neohellenic-math
-
