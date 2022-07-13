@@ -1,14 +1,13 @@
 pkgbase = python-yaql
 	pkgdesc = YAQL - Yet Another Query Language
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://yaql.readthedocs.io
 	arch = any
 	license = Apache
 	checkdepends = python-fixtures
-	checkdepends = python-subunit
-	checkdepends = python-testrepository
 	checkdepends = python-testtools
+	checkdepends = python-stestr
 	depends = python-six
 	depends = python-pbr
 	depends = python-babel
