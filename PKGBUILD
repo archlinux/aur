@@ -1,9 +1,9 @@
 pkgname=1password-beta
 
-_tarver=8.8.0-165.BETA
+_tarver=8.8.0-183.BETA
 _tar="1password-${_tarver}.x64.tar.gz"
 pkgver=${_tarver//-/_}
-pkgrel=165
+pkgrel=183
 conflicts=('1password' '1password-beta-bin')
 pkgdesc="Password manager and secure wallet"
 arch=('x86_64')
@@ -12,8 +12,8 @@ license=('LicenseRef-1Password-Proprietary')
 options=(!strip)
 install="1password.install"
 source=(https://downloads.1password.com/linux/tar/beta/${CARCH}/${_tar}{,.sig})
-sha256sums=('66928092e20c787105773fe877fb0a0e1f155e858e6583bc1a3bcc8a1a370f80'
-            'd6e69f3a3c328c8d58aa5731428287dc013913700d8932b623f6d37e174a9fda'
+sha256sums=('e9823a8177eef330f90631e121d88520f870f2e998cba1b6bb53c596c740eeca'
+            'b5e10dd6d826f20221dbbe0cef4884ba7c0ff0743148de4de406a5c8337dea46'
 )
 validpgpkeys=('3FEF9748469ADBE15DA7CA80AC2D62742012EA22')
 
@@ -59,4 +59,8 @@ EOF" > ./com.1password.1Password.policy
     # Symlink /usr/bin executable to opt
     install -dm0755 "${pkgdir}"/usr/bin
     ln -s /opt/1Password/1password "${pkgdir}"/usr/bin/1password
+
+    # chrome-sandbox requires the setuid bit to be specifically set.
+    # See https://github.com/electron/electron/issues/17972
+    chmod 4755 "${pkgdir}"/opt/1Password/chrome-sandbox
 }
