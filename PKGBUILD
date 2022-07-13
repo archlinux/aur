@@ -1,6 +1,6 @@
 # Maintainer: f4iey <f4iey@f6kgl.ampr.org>
 pkgname=tetra-kit-player-git
-pkgver=ea258fc
+pkgver=r65.ea258fc
 pkgrel=1
 pkgdesc="Web application that streams events and files produced by tetra kit."
 arch=('any')
@@ -10,6 +10,11 @@ options=(!strip)
 depends=('tetra-kit-git' 'npm')
 url="https://github.com/sonictruth/tetra-kit-player"
 source=($pkgname::"git+$url.git")
+
+pkgver() {
+    cd "$srcdir/$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 sha256sums=('SKIP')
 build(){
