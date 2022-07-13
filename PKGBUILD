@@ -1,14 +1,15 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=mavproxy-git
-pkgver=r2216.435a1b06
+pkgver=r2659.241cf6e3
 pkgrel=1
 pkgdesc='MAVLink proxy and command line ground station.'
 arch=('any')
 url='http://ardupilot.github.io/MAVProxy/html/index.html'
 license=('GPL3')
 depends=(python python-pymavlink)
-makedepends=(python python-setuptools)
+makedepends=(git python python-build python-installer python-wheel
+             python-setuptools)
 provides=(mavproxy)
 conflicts=(mavproxy)
 source=('git+https://github.com/ArduPilot/MAVProxy.git')
@@ -23,10 +24,10 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }

@@ -1,11 +1,15 @@
 pkgbase = mavproxy-git
 	pkgdesc = MAVLink proxy and command line ground station.
-	pkgver = r2216.435a1b06
+	pkgver = r2659.241cf6e3
 	pkgrel = 1
 	url = http://ardupilot.github.io/MAVProxy/html/index.html
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pymavlink
@@ -15,4 +19,3 @@ pkgbase = mavproxy-git
 	sha256sums = SKIP
 
 pkgname = mavproxy-git
-
