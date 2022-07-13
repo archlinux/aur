@@ -6,6 +6,7 @@ pkgbase = hipsycl-rocm-git
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
+	makedepends = git
 	depends = llvm
 	depends = clang
 	depends = python
