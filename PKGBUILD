@@ -1,6 +1,6 @@
 # Maintainer: Julian Schmidhuber <aur at schmiddi dot anonaddy dot com>
 pkgname=tubefeeder-git
-pkgver=1.8.2.r0.549291f
+pkgver=1.8.3.r1.a9926c2
 pkgrel=1
 pkgdesc="A Youtube, Lbry and Peertube client made for the Pinephone"
 arch=('x86_64' 'aarch64')
