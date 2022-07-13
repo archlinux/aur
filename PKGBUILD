@@ -1,12 +1,12 @@
 # Maintainer: oscareczek <oscareczek at gmail dot com>
 pkgname=86box-git
-pkgver=3.6.r105.g30479fc3b
+pkgver=3.6.r128.gb164db81f
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
 url='https://86box.net/'
 license=('GPL2')
-depends=('faudio' 'libslirp' 'qt6-base' 'rtmidi')
+depends=('hicolor-icon-theme' 'libslirp' 'openal' 'qt6-base' 'rtmidi' 'sdl2')
 makedepends=('git' 'cmake>=3.21' 'ninja' 'qt6-tools')
 optdepends=(
     '86box-roms-git: ROM files'
