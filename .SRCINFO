@@ -1,9 +1,9 @@
 pkgbase = walld
 	pkgdesc = A wallpaper daemon
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/Dotz0cat/walld
-	arch = x86_64
+	arch = any
 	license = GPL3
 	makedepends = meson
 	depends = feh
@@ -11,7 +11,7 @@ pkgbase = walld
 	depends = libevent
 	depends = libconfig
 	optdepends = xorg-xrdb: automatically reload xrdb
-	source = walld-1.4.1.tar.gz::https://github.com/Dotz0cat/walld/archive/refs/tags/1.4.1.tar.gz
-	sha256sums = c13b94a680081cec8ae8bff21c3e52d9e4c70a7c506de0ff17d7c76b83ad883e
+	source = walld-1.4.2.tar.gz::https://github.com/Dotz0cat/walld/archive/refs/tags/1.4.2.tar.gz
+	sha256sums = 8098b78d046ce288bd508ce9cd8ee5fc447211eb9102bc194bcd195176e35b3f
 
 pkgname = walld
