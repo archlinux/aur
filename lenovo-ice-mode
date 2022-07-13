@@ -29,7 +29,7 @@ case `curcoolmode` in
 		coolmode="$coolmodep"
 			;;
 		0x2)
-		coolmodeb="${hcoolmodearr[$hcoolmodep]}"
+		coolmodeb="${hcoolmodearr[$hcoolmodeb]}"
 		coolmode="$coolmodeb"
 			;;
 	esac

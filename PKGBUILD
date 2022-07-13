@@ -2,12 +2,12 @@
 
 pkgname=lenovo-ice-mode
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Easily set Lenovo Intelligent Cooling Engine with acpi_call using the $pkgname bash script."
 arch=('any')
 depends=(acpi_call)
 source=(lenovo-ice-mode)
-sha512sums=('eece9cc8ef57d6f11b250e2c8454565c65f6c4026baa75509fcc670c31b99faa2028f3056f275ead17050a24e3e16ae6513d0a8a3584a94343a7c892744fcfa7')
+sha512sums=('a27fd6a80fed4359211b7cb4d8b4b5e1e1e22ce8ff80599ed8f0ec5d8b03750ff54a3c4c0f6a03ce39fde4588470edf3ac92086b1ee4fecdf8b3ec4bd15eabc4')
 package() {
     mkdir -p "${pkgdir}"/usr/local/bin
     install -Dm755 lenovo-ice-mode "${pkgdir}/usr/local/bin"
