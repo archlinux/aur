@@ -1,19 +1,18 @@
 pkgbase = rtg-tools
 	pkgdesc = Utilities for accurate VCF comparison and manipulation
-	pkgver = 3.8.4
-	pkgrel = 4
+	pkgver = 3.12.1
+	pkgrel = 1
 	url = https://github.com/RealTimeGenomics/rtg-tools
 	arch = i686
 	arch = x86_64
 	license = Simplified BSD
-	makedepends = apache-ant>1.9
-	depends = java-runtime>=1.8
-	source = https://github.com/RealTimeGenomics/rtg-tools/archive/3.8.4.tar.gz
+	makedepends = ant
+	depends = java-runtime<=14
+	source = rtg-tools-3.12.1.tar.gz::https://github.com/RealTimeGenomics/rtg-tools/archive/3.12.1.tar.gz
 	source = rtg.cfg
 	source = rtg.sh
-	md5sums = c5b558cbe845fcb315e943162b7da38e
+	md5sums = 8c069e654e176c81ed17b6872266f4ae
 	md5sums = 1e5e1f5df474ab87b5a28a9d694e4e17
 	md5sums = d7c63bf91030230c609c740d28b22d38
 
 pkgname = rtg-tools
-
