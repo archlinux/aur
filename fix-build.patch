@@ -1,0 +1,56 @@
+diff --git a/tools/build.py b/tools/build.py
+index f396028..24fab95 100644
+--- a/tools/build.py
++++ b/tools/build.py
+@@ -889,51 +889,9 @@ def install_and_run():
+         print("[build.py] ERROR while making installer package")
+         sys.exit(1)
+ 
+-    # Install
+-    print("[build.py] Install the cefpython package")
+-    os.chdir(setup_installer_dir)
+-    command = ("\"{python}\" setup.py install"
+-               .format(python=sys.executable))
+-    command = sudo_command(command, python=sys.executable)
+-    ret = os.system(command)
+-    if ret != 0:
+-        print("[build.py] ERROR while installing package")
+-        sys.exit(1)
+-    os.chdir(BUILD_DIR)
+-
+     # Delete setup installer directory after the package was installed
+     delete_directory_reliably(setup_installer_dir)
+ 
+-    # Run unittests
+-    print("[build.py] Run unittests")
+-    test_runner = os.path.join(UNITTESTS_DIR, "_test_runner.py")
+-    command = ("\"{python}\" {test_runner}"
+-               .format(python=sys.executable,
+-                       test_runner=test_runner))
+-    ret = os.system(command)
+-    if ret != 0:
+-        print("[build.py] ERROR while running unit tests")
+-        sys.exit(1)
+-
+-    # Run examples
+-    if not UNITTESTS:
+-        print("[build.py] Run examples")
+-        os.chdir(EXAMPLES_DIR)
+-        flags = ""
+-        if KIVY_FLAG:
+-            flags += " --kivy"
+-        if HELLO_WORLD_FLAG:
+-            flags += " --hello-world"
+-        run_examples = os.path.join(TOOLS_DIR, "run_examples.py")
+-        command = ("\"{python}\" {run_examples} {flags}"
+-                   .format(python=sys.executable,
+-                           run_examples=run_examples,
+-                           flags=flags))
+-        ret = os.system(command)
+-        if ret != 0:
+-            print("[build.py] ERROR while running examples")
+-            sys.exit(1)
+-
+     print("[build.py] Everything OK")
+ 
+ 

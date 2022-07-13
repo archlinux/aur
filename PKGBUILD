@@ -1,12 +1,9 @@
-# Maintainer: Giacomo Vercesi <mrjackv@hotmail.it>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Giacomo Vercesi <mrjackv@hotmail.it>
 
 pkgname='python-cef'
 _vermajor="66"
-_verminor="0"
-pkgname='python-cef'
-_vermajor="66"
-_verminor="0"
-pkgver="${_vermajor}.${_verminor}"
+pkgver=66.1.r3.g5679f28
 pkgrel=1
 pkgdesc="CEF python bindings (with bundled spotify-built CEF)"
 arch=('x86_64')
@@ -15,47 +12,58 @@ depends=('python' 'nss' 'libgl' 'libxtst' 'alsa-lib' 'gtk2' 'libxss')
 makedepends=('python-docopt' 'python-setuptools' 'python-wheel' 'cython')
 license=('BSD')
 _cefstring="cef66_3.3359.1774.gd49d25f_linux64"
-source=("https://github.com/cztomczak/cefpython/archive/v${pkgver}.tar.gz"
-        "https://github.com/cztomczak/cefpython/releases/download/v${_vermajor}-upstream/${_cefstring}.zip")
-sha256sums=('d1592a7914ce1fd69f59bcc88a22e5c65bc0ff4944a7adfa7a408946efad844c'
-            'a9ec9a72cc84f290cb985bbf06b9825312b7f84cb3e1ca3f4dcfeeeef338d84b')
+source=("git+https://github.com/cztomczak/cefpython.git#commit=5679f28cec18a57a56e298da2927aac8d8f83ad6"
+        "https://github.com/cztomczak/cefpython/pull/640.patch"
+        "https://github.com/cztomczak/cefpython/releases/download/v${_vermajor}-upstream/${_cefstring}.zip"
+        'fix-build.patch')
+sha256sums=('SKIP'
+            'ad9a68087018797697e3ca0c8e20a164036c0b4e73d845e3d6e93396423d5333'
+            'a9ec9a72cc84f290cb985bbf06b9825312b7f84cb3e1ca3f4dcfeeeef338d84b'
+            '74aa087814d6f34366b0f01c95eb2d0c31dd4e9c3614f00d33436f8c733529a1')
 
-prepare(){
-    cd "${srcdir}/cefpython-${pkgver}"
-    mkdir -p build
-    cd build
-    if [ ! -d "${_cefstring}" ]; then
-        ln -s "$(realpath ../../${_cefstring})"
-    fi
-    cythonver="$(pacman -Q cython | cut -d' ' -f2 | cut -d'-' -f1)"
-    pythonver="$(python -c 'import platform; print("".join(platform.python_version_tuple()[:2]))')"
-    sed -i "s;0.28.4;$cythonver;g" ../tools/requirements.txt
-    sed -i 's;print("ERROR: This version of Python is not supported");return "2015";g' ../tools/common.py
-    sed -i 's; -Wall -Werror;;g' ../tools/build.py
-    sed -i 's;    install_and_run();# &;g' ../tools/build.py
-    sed -i "s;'/usr/lib/glib-2.0/include',;&'/usr/include/harfbuzz',;g" ../tools/cython_setup.py
-    sed -i 's;-I/usr/lib/glib-2.0/include;& -I/usr/include/harfbuzz;g' ../src/client_handler/Makefile
-    sed -i 's;-I/usr/lib/glib-2.0/include;& -I/usr/include/harfbuzz;g' ../src/subprocess/Makefile
-    sed -i 's;-I/usr/lib/glib-2.0/include;& -I/usr/include/harfbuzz;g' ../src/subprocess/Makefile-libcefpythonapp
-    echo "#include \"../../build/build_cefpython/cefpython_py${pythonver}_fixed.h\"" >> ../src/common/cefpython_public_api.h
+_dirpkgver="${_vermajor}.0"
+_dir="cefpython"
+
+pkgver() {
+	cd "${_dir}"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build(){
-    cd "${srcdir}/cefpython-${pkgver}/build"
-    python ../tools/build.py "${pkgver}"
+prepare() {
+	cd "${_dir}"
+	patch -p1 -i '../640.patch'
+	patch -p1 -i '../fix-build.patch'
+
+	mkdir -p 'build'
+	cd 'build'
+	if [ ! -d "${_cefstring}" ]; then
+		ln -s "$(realpath ../../${_cefstring})"
+	fi
+	cythonver="$(pacman -Q cython | cut -d' ' -f2 | cut -d'-' -f1)"
+	sed -i "s;Cython ==;Cython == $cythonver;" '../tools/requirements.txt'
 }
 
-package(){
-    cd "${srcdir}/cefpython-${pkgver}/build"
-    python ../tools/make_installer.py --version "${pkgver}"
-    cd "cefpython3_${pkgver}_linux64"
-    sed -i 's;        post_install_hook();#&;g' setup.py
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    pythonver="$(python -c 'import platform; print(".".join(platform.python_version_tuple()[:2]))')"
-    cp -r cefpython3 "${pkgdir}/usr/lib/python${pythonver}/site-packages/"
-    cd "${pkgdir}/usr/lib/python${pythonver}/site-packages/cefpython3"
-    pythonver="$(python -c 'import platform; print("".join(platform.python_version_tuple()[:2]))')"
-    sed -i "s;    raise.*$;    from . import cefpython_py${pythonver} as cefpython\n#&;g" __init__.py
-    chmod +x cefclient cefsimple ceftests subprocess
-    find . -name '*.log' -exec chmod 666 {} \;
+build() {
+	cd "${_dir}/build"
+	python '../tools/build.py' "${_dirpkgver}"
+}
+
+check() {
+	cd "${_dir}/build"
+	python '../unittests/_test_runner.py'
+}
+
+package() {
+	cd "${_dir}/build"
+	python '../tools/make_installer.py' --version "${_dirpkgver}"
+	cd "cefpython3_${_dirpkgver}_linux64"
+	sed -i 's;        post_install_hook();#&;g' 'setup.py'
+	python 'setup.py' install --root="$pkgdir/" --optimize=1 --skip-build
+	pythonver="$(python -c 'import platform; print(".".join(platform.python_version_tuple()[:2]))')"
+	cp -r 'cefpython3' "${pkgdir}/usr/lib/python${pythonver}/site-packages/"
+	cd "${pkgdir}/usr/lib/python${pythonver}/site-packages/cefpython3"
+	pythonver="$(python -c 'import platform; print("".join(platform.python_version_tuple()[:2]))')"
+	sed -i "s;    raise.*$;    from . import cefpython_py${pythonver} as cefpython\n#&;g" '__init__.py'
+	chmod +x cefclient cefsimple ceftests subprocess
+	find . -name '*.log' -exec chmod 666 {} \;
 }
