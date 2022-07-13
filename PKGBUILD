@@ -10,9 +10,9 @@
 # Contributor: anthrit <anthrit [at] anthware [dot] com>
 
 pkgname=lightworks
-lwksver=2022.1.1
-lwksreldir=2022.1.1
-lwksbuild=132185
+lwksver=2022.2
+lwksreldir=2022.2
+lwksbuild=135077
 pkgver=$lwksver
 pkgrel=1
 pkgdesc="Lightworks is a professional video editing suite"
@@ -30,7 +30,7 @@ source=(
     )
 
 sha512sums=(
-    '0b4ab5199288fd39ad7c44c3ab2fb36f007e5f8ec9708ff5b130eaf9b3402ec267ee23d6431aa8c577c36408416eba5b287f397457dccb9f409e738ea8981991'
+    'fabb9badfd17cc344706e1c86d779bdba9e6ceda2859201c751f32b48a066a946737650e6bd06182d9c2487a30238d7d7a243cf5cd22a6f398793b899347e613'
     )
 
 package() {
