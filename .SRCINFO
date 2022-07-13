@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-vertical-workspaces-git
+	pkgdesc = Changes the horizontal layout of workspaces to vertical and adds customization of Activities Overview layout
+	pkgver = r45.704c2f9
+	pkgrel = 1
+	url = https://github.com/G-dH/vertical-workspaces
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = jq
+	depends = gnome-shell
+	provides = gnome-shell-extension-vertical-workspaces
+	conflicts = gnome-shell-extension-vertical-workspaces
+	source = git+https://github.com/G-dH/vertical-workspaces.git
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-vertical-workspaces-git
