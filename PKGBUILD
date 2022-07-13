@@ -1,7 +1,7 @@
 # Maintainer: Rodney van den Velden <rodney@dfagaming.nl>
 
 pkgname=pridefetch-git
-pkgver=r76.a046048
+pkgver="r78.02cb0c5"
 pkgrel=1
 pkgdesc="Neofetch clone written in Python with the ability to display pride flags"
 arch=('any')
@@ -12,6 +12,11 @@ makedepends=('git' 'zip')
 provides=('pridefetch')
 conflicts=('pridefetch')
 sha512sums=('SKIP')
+
+pkgver() {
+	cd "$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
 	cd pridefetch/src
