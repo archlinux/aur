@@ -1,0 +1,73 @@
+diff --git a/Binaries/GNUmakefile b/Binaries/GNUmakefile
+index 95f2b23..5793ce1 100644
+--- a/Binaries/GNUmakefile
++++ b/Binaries/GNUmakefile
+@@ -131,7 +131,7 @@ CPP_OSX32 = g++
+ 
+ #generic flags
+ OPTS_DBG = -g -Wall
+-OPTS_PROD = -g -Wall
++OPTS_PROD = -Wall $(CFLAGS) $(CXXFLAGS)
+ OPTS_STAT =
+ OPTS_DYN = -fPIC
+ 
+@@ -168,43 +168,43 @@ OPTS_OSX32 = -m32
+ 
+ 
+ #link optionsfor each arch
+-LINKWITH_I386 = -lm -lpthread -lusb-1.0
+-LINKWITH_X64 = -lm -lpthread -lusb-1.0
++LINKWITH_I386 = -lm -lpthread -lusb-1.0 $(LDFLAGS)
++LINKWITH_X64 = -lm -lpthread -lusb-1.0 $(LDFLAGS)
+ ifdef TOOLCHAIN_QARM
+-LINKWITH_ARMEL = -L$(STAGING_QARM)/usr/lib/ -lm -lpthread -lusb-1.0
++LINKWITH_ARMEL = -L$(STAGING_QARM)/usr/lib/ -lm -lpthread -lusb-1.0 $(LDFLAGS)
+ else
+-LINKWITH_ARMEL = -lm -lpthread -lusb-1.0
++LINKWITH_ARMEL = -lm -lpthread -lusb-1.0 $(LDFLAGS)
+ endif
+ ifdef TOOLCHAIN_ARMHF
+-LINKWITH_ARMHF = -L$(STAGING_ARMHF)/usr/lib/ -lm -lpthread -lusb-1.0
++LINKWITH_ARMHF = -L$(STAGING_ARMHF)/usr/lib/ -lm -lpthread -lusb-1.0 $(LDFLAGS)
+ else
+-LINKWITH_ARMHF = -lm -lpthread -lusb-1.0
++LINKWITH_ARMHF = -lm -lpthread -lusb-1.0 $(LDFLAGS)
+ endif
+ ifdef TOOLCHAIN_AARCH64
+-LINKWITH_AARCH64 = -L$(STAGING_AARCH64)/usr/lib/ -lm -lpthread -lusb-1.0
++LINKWITH_AARCH64 = -L$(STAGING_AARCH64)/usr/lib/ -lm -lpthread -lusb-1.0 $(LDFLAGS)
+ else
+-LINKWITH_AARCH64 = -lm -lpthread -lusb-1.0
++LINKWITH_AARCH64 = -lm -lpthread -lusb-1.0 $(LDFLAGS)
+ endif
+ LINKWITH_MIPS = -L$(MIPS_TARGET_ROOT)/usr/lib/ -lm -lpthread -lusb-1.0
+ LINKWITH_MIPSEL = -L$(MIPSEL_TARGET_ROOT)/usr/lib/ -lm -lpthread -lusb-1.0
+ LINKWITH_OSX =
+ 
+-YAPI_LINKWITH_I386 = -lpthread -lusb-1.0
+-YAPI_LINKWITH_X64 = -lpthread -lusb-1.0
++YAPI_LINKWITH_I386 = -lpthread -lusb-1.0 $(LDFLAGS)
++YAPI_LINKWITH_X64 = -lpthread -lusb-1.0 $(LDFLAGS)
+ ifdef TOOLCHAIN_QARM
+-YAPI_LINKWITH_ARMEL = -L$(STAGING_QARM)/usr/lib/ -lpthread -lusb-1.0
++YAPI_LINKWITH_ARMEL = -L$(STAGING_QARM)/usr/lib/ -lpthread -lusb-1.0 $(LDFLAGS)
+ else
+-YAPI_LINKWITH_ARMEL = -lpthread -lusb-1.0
++YAPI_LINKWITH_ARMEL = -lpthread -lusb-1.0 $(LDFLAGS)
+ endif
+ ifdef TOOLCHAIN_ARMHF
+-YAPI_LINKWITH_ARMHF = -L$(STAGING_ARMHF)/usr/lib/    -lpthread -lusb-1.0
++YAPI_LINKWITH_ARMHF = -L$(STAGING_ARMHF)/usr/lib/    -lpthread -lusb-1.0 $(LDFLAGS)
+ else
+-YAPI_LINKWITH_ARMHF = -lpthread -lusb-1.0
++YAPI_LINKWITH_ARMHF = -lpthread -lusb-1.0 $(LDFLAGS)
+ endif
+ ifdef TOOLCHAIN_AARCH64
+-YAPI_LINKWITH_AARCH64 = -L$(STAGING_AARCH64)/usr/lib/    -lpthread -lusb-1.0
++YAPI_LINKWITH_AARCH64 = -L$(STAGING_AARCH64)/usr/lib/ -lpthread -lusb-1.0 $(LDFLAGS)
+ else
+-YAPI_LINKWITH_AARCH64 = -lpthread -lusb-1.0
++YAPI_LINKWITH_AARCH64 = -lpthread -lusb-1.0 $(LDFLAGS)
+ endif
+ YAPI_LINKWITH_MIPS = -L$(MIPS_TARGET_ROOT)/usr/lib/ -lpthread -lusb-1.0
+ YAPI_LINKWITH_MIPSEL = -L$(MIPSEL_TARGET_ROOT)/usr/lib/ -lpthread -lusb-1.0
