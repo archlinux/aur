@@ -1,29 +1,35 @@
 pkgbase = python-parfive
 	pkgdesc = A HTTP and FTP parallel file downloader
-	pkgver = 1.5.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://parfive.readthedocs.io
 	arch = any
 	license = MIT
+	checkdepends = python-pytest-socket
 	checkdepends = python-pytest-localserver
 	checkdepends = python-pytest-asyncio
-	checkdepends = python-pytest-socket
 	checkdepends = python-aioftp
 	checkdepends = python-aiofiles
 	makedepends = python-setuptools-scm
-	makedepends = python-sphinx-astropy
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-sphinx-automodapi
+	makedepends = python-sphinx-autodoc-typehints
+	makedepends = python-sphinx_contributors
+	makedepends = python-sphinx-book-theme
 	makedepends = python-aiohttp
 	makedepends = python-tqdm
 	makedepends = graphviz
-	makedepends = python-sunpy-sphinx-theme
-	source = https://files.pythonhosted.org/packages/source/p/parfive/parfive-1.5.1.tar.gz
-	md5sums = cb6861020bd3cd22c6f9a70cf85c47c1
+	source = https://files.pythonhosted.org/packages/source/p/parfive/parfive-2.0.0.tar.gz
+	md5sums = df1d4c98b45f48734b5c4dd644a7e7d7
 
 pkgname = python-parfive
 	depends = python>=3.7
-	depends = python-tqdm
+	depends = python-tqdm>=4.27.0
 	depends = python-aiohttp
-	optdepends = python-aioftp: For downloads over FTP
+	depends = python-typing_extensions
+	optdepends = python-aioftp>=0.17.1: For downloads over FTP
 	optdepends = python-parfive-doc: Documentation for Parfive
 
 pkgname = python-parfive-doc
