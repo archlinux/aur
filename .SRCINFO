@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-appindicator-gnome43
 	pkgdesc = AppIndicator/KStatusNotifierItem support for GNOME Shell (with GNOME 43 patches)
 	pkgver = 43.alpha
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ubuntu/gnome-shell-extension-appindicator
 	arch = any
 	license = GPL
@@ -12,6 +12,7 @@ pkgbase = gnome-shell-extension-appindicator-gnome43
 	optdepends = libappindicator-gtk3: support GTK+3 applications
 	provides = gnome-shell-extension-appindicator
 	conflicts = gnome-shell-extension-appindicator
+	conflicts = gnome-shell-extension-appindicator-git
 	source = gnome-shell-extension-appindicator-43.alpha::git+https://github.com/ubuntu/gnome-shell-extension-appindicator.git#commit=88b55be5b10b7fec304f8e4d08c06e82b1eed8a3
 	source = gnome43-comp.patch::https://patch-diff.githubusercontent.com/raw/ubuntu/gnome-shell-extension-appindicator/pull/351.patch
 	sha256sums = SKIP
