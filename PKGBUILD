@@ -12,8 +12,11 @@ url="https://github.com/jatinchowdhury18/AnalogTapeModel"
 license=('GPL3')
 depends=('freeglut' 'freetype2' 'libxcursor' 'libxinerama' 'libxrandr')
 makedepends=('git' 'cmake' 'alsa-lib' 'jack' 'webkit2gtk')
-source=('git+https://github.com/jatinchowdhury18/AnalogTapeModel.git')
-sha256sums=('SKIP')
+# TODO: Remove this patch once the plugin is updated to JUCE 7
+source=('git+https://github.com/jatinchowdhury18/AnalogTapeModel.git'
+       'fix-missing-utility-include.patch::https://github.com/juce-framework/JUCE/commit/ce8aff22c31c4d932a8414bc6f6185381dc970db.patch')
+sha256sums=('SKIP'
+            '62958e8fc9d30366436540a82b577e0053353a411b474d2720961b1e635643e8')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -23,6 +26,12 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_pkgname"
     git submodule update --init --recursive -j 4
+
+    # TODO: This patch is needed right now because JUCE 6 is missing an include
+    #       and doesn't build with GCC 12. The `|| true` is there to prevent
+    #       breaking the build when the plugin is updated to JUCE 7. When that
+    #       happens, this patch should be removed.
+    patch --directory='Plugin/modules/JUCE' --forward --strip=1 --input="${srcdir}/fix-missing-utility-include.patch" || true
 }
 
 build() {

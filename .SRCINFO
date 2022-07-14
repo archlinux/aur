@@ -16,7 +16,9 @@ pkgbase = chowtapemodel-git
 	depends = libxinerama
 	depends = libxrandr
 	source = git+https://github.com/jatinchowdhury18/AnalogTapeModel.git
+	source = fix-missing-utility-include.patch::https://github.com/juce-framework/JUCE/commit/ce8aff22c31c4d932a8414bc6f6185381dc970db.patch
 	sha256sums = SKIP
+	sha256sums = 62958e8fc9d30366436540a82b577e0053353a411b474d2720961b1e635643e8
 
 pkgname = chowtapemodel-jack-git
 	depends = freeglut

@@ -3,3 +3,4 @@ pkg/
 AnalogTapeModel/
 
 *.tar.*
+fix-missing-utility-include.patch
