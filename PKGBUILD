@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggtree
-_pkgver=3.4.0
+_pkgver=3.4.1
 pkgname=r-${_pkgname,,}
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc='an R package for visualization of tree and annotation data'
 arch=('any')
@@ -38,7 +38,7 @@ optdepends=(
   r-tibble
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('64fa2762990c6d5c4840e8b8e9cd68ec50202da666eab4bc3814ec6b1139790c')
+sha256sums=('989ec21dc9fd8f467c53a5df56bad57efb5faefbf323c5b6c5f1716100731827')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
