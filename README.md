@@ -32,13 +32,13 @@ mv ~/.zshrc ~/.zshrc.bak
 - And run the following command to apply the configuration file to you home directory:
 
   - If you don't need to customize your `.zshrc` file and you want to keep your `.zshrc` file to the current one, run the following command:
-```zsh
-ln -s /etc/zsh/zshrc ~/.zshrc
-```
+  ```zsh
+  ln -s /etc/zsh/zshrc ~/.zshrc
+  ```
   - If you want to customize your `.zshrc` file, run:
-```zsh
-cp /etc/zsh/zshrc ~/.zshrc
-```
+  ```zsh
+  cp /etc/zsh/zshrc ~/.zshrc
+  ```
 
 ### Configure the Theme
 
