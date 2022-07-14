@@ -23,15 +23,19 @@ function sync_git(){
     git push
 }
 
-function main(){
-    local ver=$(get_last_version)
-    [[ -z $ver ]] && echo "Can't retrieve online version" && return 1
+function try_update(){
+    local ver=$1
     local old_ver=$(awk -F= '/pkgver=/{print $2}' PKGBUILD)
     if [[ $ver == $old_ver ]]; then
         echo "Already up-to-date: version $ver"
     else
         update_to $ver && sync_git $ver || patch_pkgbuild $old_ver
     fi
+}
+
+function main(){
+    local ver=$(get_last_version)
+    [[ -n $ver ]] && try_update $ver || echo "Can't retrieve online version"
 }
 
 cd $0:A:h && main $@
