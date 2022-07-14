@@ -4,13 +4,13 @@
 # Contributor: TDY <tdy@gmx.com>
 
 pkgname=moneymanagerex-git
-pkgver=1.5.14
-pkgrel=2
+pkgver=1.5.16
+pkgrel=1
 pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version."
 arch=('x86_64')
 url="http://www.moneymanagerex.org/"
 license=('GPL')
-depends=('wxgtk3-dev-opt' 'webkit2gtk')
+depends=('wxwidgets-gtk3' 'webkit2gtk')
 makedepends=('curl' 'cmake' 'fakeroot' 'file' 'gawk' 'gcc' 'gettext' 'git' 'jq' 'lsb-release' 'make' 'pkg-config' 'rapidjson')
 optdepends=('cups: for printing support')
 replaces=('mmex')
@@ -32,16 +32,13 @@ prepare() {
 }
 
 build() {
-  WXGTK_PATH=/opt/wxgtk-dev
-
   cd "${srcdir}"/moneymanagerex
 
   # Disable all warnings when building, then configure CMake
   export CXXFLAGS=-w
-  cmake -DCMAKE_BUILD_TYPE=Release -DwxWidgets_CONFIG_EXECUTABLE=${WXGTK_PATH}/bin/wx-config-gtk3 .
-
-  # Make sure the linker bakes the non-standard path for wxWidgets into the executable
-  export LD_RUN_PATH=${WXGTK_PATH}/lib
+  
+  cmake -DCMAKE_BUILD_TYPE=Release -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config .
+  
   cmake --build . --target package
 }
 
