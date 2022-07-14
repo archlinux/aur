@@ -2,8 +2,8 @@
 # Contributor: Ariel Popper <a@arielp.com>
 
 pkgname=vim-airline-git
-pkgver=0.8.r237.g4a47cd7
-pkgrel=2
+pkgver=0.11.r509.gebb89a08
+pkgrel=1
 epoch=1
 pkgdesc="A lean & mean statusline for vim that's light as air."
 arch=('any')
@@ -28,6 +28,6 @@ package() {
   cd "${pkgname%-git}"
   _installpath="${pkgdir}/usr/share/vim/vimfiles"
   mkdir -p "${_installpath}"
-  cp -r autoload doc plugin t "${_installpath}"
+  cp -r autoload doc plugin test "${_installpath}"
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
