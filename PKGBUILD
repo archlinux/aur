@@ -3,7 +3,7 @@
 pkgname=lenovo-ice-mode
 pkgver=1.0
 pkgrel=2
-pkgdesc='Set Lenovo Intelligent Cooling Engine via acpi_call. Laptops with this feature available in the bios can use %pkgname to switch between Intelligent Cooling, Extreme Performance, and Battery Saving mode.'
+pkgdesc='Set Lenovo Intelligent Cooling Engine via acpi_call. Laptops with this feature available in the bios can use lenovo-ice-mode to switch between Intelligent Cooling, Extreme Performance, and Battery Saving mode.'
 arch=('any')
 depends=(acpi_call)
 source=(lenovo-ice-mode)
