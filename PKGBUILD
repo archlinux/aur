@@ -78,7 +78,7 @@ source=("${pkgname}-${pkgver}::git+https://github.com/ArduPilot/ardupilot.git#ta
         "${pkgname}-pydronecan::git+https://github.com/DroneCAN/pydronecan.git"
         "${pkgname}-dronecan_dsdlc::git+https://github.com/DroneCAN/dronecan_dsdlc.git"
         "${pkgname}-libcanard::git+https://github.com/DroneCAN/libcanard.git"
-        "uninitialized.patch::https://patch-diff.githubusercontent.com/raw/ArduPilot/ardupilot/pull/21171.patch"
+        "uninitialized.patch::https://patch-diff.githubusercontent.com/raw/ArduPilot/ardupilot/pull/21183.patch"
 )
 sha256sums=('SKIP'
             'SKIP'
