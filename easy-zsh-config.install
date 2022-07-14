@@ -1,5 +1,5 @@
 info() {
-    echo -e "\033[0;34m================================INFO==================================="
+    echo -e "================================INFO==================================="
     echo -e "* To apply changes to current user, run:"
     echo -e "  > cp /etc/zsh/zshrc ~/.zshrc"
     echo -e "* To configure the theme:"
@@ -11,7 +11,7 @@ info() {
     echo -e "  Ctrl-Down:   History beginning search(forward)"
     echo -e "  Ctrl-Left:   Skip a whole word(left)"
     echo -e "  Ctrl-Right:  Skip a whole word(right)"
-    echo -e "====================================================================\033[0m"
+    echo -e "======================================================================="
 }
 post_install() {
     info
