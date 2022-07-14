@@ -3,15 +3,14 @@
 
 pkgname=vice-sdl2
 _pkgname=vice
-pkgver=3.6
-_pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 pkgdesc='The Versatile Commodore 8-bit Emulator, SDL2 version'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://vice-emu.sourceforge.net'
 depends=('sdl2' 'sdl2_image' 'libpulse')
-makedepends=('xa')
+makedepends=('xa' 'dos2unix')
 provides=('vice')
 conflicts=('vice' 'vice-gtk' 'vice-sdl' 'vice-sdl-devel' 'vice-gtkglext' 'vice-gnomeui-devel')
 replaces=('vice')
@@ -22,13 +21,13 @@ source=(
   ${_pkgname}.png
 )
 sha256sums=(
-  65bfe55cce627db9b5a0ac7876a90c087e9fe86e9f5517e809446c4064a2d3fd
+  20df84c851aaf2f5000510927f6d31b32f269916d351465c366dc0afc9dc150c
   e0a600d72c2352826282a0f7fcf380b24272fba10a9ed31c8fd45a21d597f3ad
   0d51f822b70d24bbc9d813d552138660cf705aaaecc12115bc1416364e1473b3
 )
 
 build() {
-  cd ${srcdir}/${_pkgname}-${_pkgver}
+  cd ${srcdir}/${_pkgname}-${pkgver}
   ./configure --prefix=/usr --enable-sdlui2 --with-sdlsound --disable-pdf-docs --enable-ethernet --enable-x64
   make
 }
@@ -36,6 +35,6 @@ build() {
 package() {
   install -Dm644 ${_pkgname}.desktop $pkgdir/usr/share/applications/${_pkgname}.desktop
   install -Dm644 ${_pkgname}.png $pkgdir/usr/share/pixmaps/${_pkgname}.png
-  cd ${srcdir}/${_pkgname}-${_pkgver}
+  cd ${srcdir}/${_pkgname}-${pkgver}
   make DESTDIR=${pkgdir} install
 }
