@@ -36,7 +36,7 @@ if [[ "${terminfo[khome]}" != "" ]]; then
   bindkey "${terminfo[khome]}" beginning-of-line                # [Home] - Go to beginning of line
 fi
 bindkey '^[[8~' end-of-line                                     # End key
-bindkey '^[[F' end-of-line                                     # End key
+bindkey '^[[F' end-of-line                                      # End key
 if [[ "${terminfo[kend]}" != "" ]]; then
   bindkey "${terminfo[kend]}" end-of-line                       # [End] - Go to end of line
 fi
@@ -45,9 +45,9 @@ bindkey '^[[3~' delete-char                                     # Delete key
 bindkey '^[[C'  forward-char                                    # Right key
 bindkey '^[[D'  backward-char                                   # Left key
 bindkey "^[[A" history-substring-search-up                      # Up key
--bindkey "^[[B" history-substring-search-down                   # Down key
--bindkey ";5A" history-beginning-search-backward                # Ctrl-Up key
--bindkey ";5B" history-beginning-search-forward                 # Ctrl-Down key
+bindkey "^[[B" history-substring-search-down                    # Down key
+bindkey ";5A" history-beginning-search-backward                 # Ctrl-Up key
+bindkey ";5B" history-beginning-search-forward                  # Ctrl-Down key
 
 bindkey '^[Oc' forward-word                                     #
 bindkey '^[Od' backward-word                                    #
