@@ -3,8 +3,8 @@
 
 _pyname=panflute
 pkgname=python-$_pyname
-pkgver=2.1.3
-pkgrel=2
+pkgver=2.2.1
+pkgrel=1
 pkgdesc='A Pythonic alternative to John MacFarlane’s pandocfilters'
 arch=(any)
 url="https://github.com/sergiocorreia/$_pyname"
@@ -14,9 +14,8 @@ _pydeps=(click
 depends=(pandoc
          python
          "${_pydeps[@]/#/python-}")
-makedepends=(python-{build,installer}
-             python-setuptools
-             python-wheel)
+makedepends=(python-{build,installer,wheel}
+             python-setuptools)
 _pycheckdeps=(pandocfilters
               pytest
               pytest-cov)
@@ -25,8 +24,8 @@ provides=("pandoc-$_pyname=$pkgver")
 conflicts=("pandoc-$_pyname")
 replaces=("pandoc-$_pyname")
 _archive="$_pyname-$pkgver"
-source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('8e49cc658cdcdbfa66aab8a9e48a414d42b924d2aa2cc225d0215f8f9955568f')
+source=("$url/archive/v$pkgver/$_archive.tar.gz")
+sha256sums=('6dff90cb986ba1cc29830e0782d3e3f0a5e9add73c6bcfa9c2d5368b2a8921e0')
 
 build() {
 	cd "$_archive"
