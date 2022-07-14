@@ -30,12 +30,12 @@ build() {
 }
 
 check() {
-    cd "${_alt_pkgname}-${pkgver}"
-    cmake --build build -- test
+    cd "${_alt_pkgname}-${pkgver}/build"
+    ctest --output-on-failure
 }
 
 package() {
     cd "${_alt_pkgname}-${pkgver}"
-    cmake --build build -- DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" cmake --install build
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
