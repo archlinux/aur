@@ -7,6 +7,7 @@ arch=('x86_64')
 url="https://github.com/rushsteve1/trash-d"
 license=('GPL')
 makedepends=(dmd dub ruby ruby-rake ruby-ronn-ng)
+conflicts=("trash-cli")
 source=("https://github.com/rushsteve1/trash-d/archive/refs/tags/${pkgver}.tar.gz")
 sha512sums=('ad6ca117b4b9cff7ef280d407ad3014c9bd0ef2442504e15b9dc1fab95882bea46fabdca2641df831de446a5444708a411aaff7764772fa67789e7da2914b91e')
 
