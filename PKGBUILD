@@ -12,7 +12,7 @@ depends=('dotnet-runtime')
 makedepends=('dotnet-sdk')
 
 source=("https://github.com/microsoft/${pkgname}/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('7325102c686428dbe7579f42036fd4920db981101db315ebb66422a2b84b45cd')
+sha256sums=('75891356476a2d6e7fbb3fc02a5f9371dbf8c8bca6b38817d8f9638f895b8cf0')
 
 fixLocaleName() {
     oldName=$1
