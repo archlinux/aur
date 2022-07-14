@@ -1,7 +1,8 @@
 pkgbase = gnome-shell-extension-material-shell-git
 	pkgdesc = GNOME Shell Extension Material Shell
-	pkgver = 12.r21.2985acf
+	pkgver = r931.8e6c6e3
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/PapyElGringo/material-shell
 	arch = any
 	groups = gnome-shell-extensions
@@ -16,4 +17,3 @@ pkgbase = gnome-shell-extension-material-shell-git
 	md5sums = SKIP
 
 pkgname = gnome-shell-extension-material-shell-git
-

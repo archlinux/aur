@@ -1,8 +1,9 @@
 # Maintainer: Henri van de Munt <(firstname) @ gmail.com>
 # Contributor: j.r <j.r@jugendhacker.de>
 pkgname=gnome-shell-extension-material-shell-git
-pkgver=12.r21.2985acf
+pkgver=r931.8e6c6e3
 pkgrel=1
+epoch=1
 pkgdesc="GNOME Shell Extension Material Shell"
 arch=('any')
 url="https://github.com/PapyElGringo/material-shell"
@@ -18,7 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd material-shell
-    printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
