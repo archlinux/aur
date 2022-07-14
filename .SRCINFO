@@ -1,6 +1,6 @@
 pkgbase = aeron
 	pkgdesc = Efficient reliable UDP unicast, UDP multicast, and IPC message transport
-	pkgver = 1.38.2
+	pkgver = 1.39.0
 	pkgrel = 1
 	url = https://github.com/real-logic/aeron
 	arch = i686
@@ -12,9 +12,9 @@ pkgbase = aeron
 	depends = util-linux-libs
 	depends = zlib
 	depends = java-environment
-	source = aeron-1.38.2.tar.gz::https://github.com/real-logic/aeron/archive/1.38.2.tar.gz
+	source = aeron-1.39.0.tar.gz::https://github.com/real-logic/aeron/archive/1.39.0.tar.gz
 	source = aeronmd.service
-	sha256sums = c8e719662e6c6369b7c68f7460127d71b7dc3e7b75a374d921edbe71dc225794
+	sha256sums = 23b394fe3a56f0ba6c6d64cb6a0134873a26b22fca91e4dc8e3351856b480381
 	sha256sums = 3e6f3d61880ef39743c77103a169f53074337adbe382c78a768bd001d8a646be
 
 pkgname = aeron
