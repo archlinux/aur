@@ -25,6 +25,7 @@ build() {
         --wrap-mode=forcefallback
         -Dappend_libdir_mangohud=false
         -Duse_system_vulkan=enabled
+        -Dtests=disabled
         "$_pkgbase"
     )
     arch-meson "${__meson_opts[@]}" build64
