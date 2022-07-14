@@ -9,13 +9,13 @@ provides=(darkradiant)
 arch=(x86_64)
 url=http://www.darkradiant.net
 license=(GPL LGPL BSD)
-pkgver=2.1.0.r559.gb2f5471ea
+pkgver=3.0.0.r12.gf5f9ab1f6
 source=("DarkRadiant::git+https://github.com/codereader/DarkRadiant.git")
 sha512sums=(SKIP)
 
 pkgver(){
   cd "$srcdir/DarkRadiant"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare(){
