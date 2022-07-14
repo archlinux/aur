@@ -169,9 +169,9 @@ package_systemd-pr23511() {
            'libelf' 'libseccomp' 'libseccomp.so' 'util-linux' 'libblkid.so'
            'libmount.so' 'xz' 'pcre2' 'audit' 'libaudit.so' 'libp11-kit'
            'libp11-kit.so' 'openssl')
-  provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
+  provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver" "${_pkgbase}")
   replaces=('nss-myhostname' 'systemd-tools' 'udev')
-  conflicts=('nss-myhostname' 'systemd-tools' 'udev')
+  conflicts=('nss-myhostname' 'systemd-tools' 'udev' "${_pkgbase}")
   optdepends=('libmicrohttpd: remote journald capabilities'
               'quota-tools: kernel-level quota management'
               'systemd-sysvcompat: symlink package to provide sysvinit binaries'
@@ -253,9 +253,9 @@ package_systemd-pr23511-libs() {
   pkgdesc='systemd client libraries'
   depends=('glibc' 'libcap' 'libgcrypt' 'libp11-kit' 'lz4' 'xz' 'zstd')
   license=('LGPL2.1')
-  provides=('libsystemd' 'libsystemd.so' 'libudev.so')
+  provides=('libsystemd' 'libsystemd.so' 'libudev.so' "${_pkgbase}-libs")
   conflicts=('libsystemd' "${_pkgbase}-libs")
-  replaces=('libsystemd' "${_pkgbase}-libs")
+  replaces=('libsystemd')
 
   install -d -m0755 "$pkgdir"/usr
   mv systemd-libs "$pkgdir"/usr/lib

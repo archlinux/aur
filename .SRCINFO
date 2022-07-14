@@ -145,9 +145,11 @@ pkgname = systemd-pr23511
 	provides = nss-myhostname
 	provides = systemd-tools=251.3
 	provides = udev=251.3
+	provides = systemd
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
+	conflicts = systemd
 	replaces = nss-myhostname
 	replaces = systemd-tools
 	replaces = udev
@@ -181,10 +183,10 @@ pkgname = systemd-pr23511-libs
 	provides = libsystemd
 	provides = libsystemd.so
 	provides = libudev.so
+	provides = systemd-libs
 	conflicts = libsystemd
 	conflicts = systemd-libs
 	replaces = libsystemd
-	replaces = systemd-libs
 
 pkgname = systemd-pr23511-resolvconf
 	pkgdesc = systemd resolvconf replacement (for use with systemd-resolved)
