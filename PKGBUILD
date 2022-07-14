@@ -8,7 +8,7 @@
 pkgname=gnome-shell-extension-dash-to-dock-gnome43
 _pkgname=gnome-shell-extension-dash-to-dock
 pkgver=43.alpha
-pkgrel=1
+pkgrel=2
 pkgdesc='Move the dash out of the overview transforming it in a dock (with GNOME 43 patches)'
 url='https://github.com/ubuntu/gnome-shell-extension-dash-to-dock'
 arch=('any')
