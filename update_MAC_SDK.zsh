@@ -25,6 +25,7 @@ function sync_git(){
 
 function main(){
     local ver=$(get_last_version)
+    [[ -z $ver ]] && echo "Can't retrieve online version" && return 1
     local old_ver=$(awk -F= '/pkgver=/{print $2}' PKGBUILD)
     if [[ $ver == $old_ver ]]; then
         echo "Already up-to-date: version $ver"
