@@ -2,7 +2,7 @@
 # Contributor: Jagadeesh Kotra <jagadeesh at stdin dot top>
 
 pkgname=eovpn
-pkgver=1.23
+pkgver='1.24.2'
 pkgrel=1
 pkgdesc='Application to connect, manage and update OpenVPN configurations'
 arch=('x86_64')
@@ -10,9 +10,9 @@ url='https://github.com/jkotra/eOVPN'
 license=('GPL3')
 depends=('gtk4' 'python' 'networkmanager' 'libsecret' 'networkmanager-openvpn' 'python-gobject')
 optdepends=('openvpn3')
-makedepends=('gobject-introspection' 'meson')
+makedepends=('gobject-introspection' 'meson' 'openvpn3')
 source=("https://github.com/jkotra/eOVPN/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('8f53466f7ce17bfc57ff96f9069a3cc6832fdad73f428e1eb23ababeae7025c7')
+sha256sums=('cdf4e08237a21a062840ab0652911fbe3e60ba660d7376d59243ad1deee3d1b0')
 
 build() {
   arch-meson eOVPN-$pkgver build
