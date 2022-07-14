@@ -16,7 +16,7 @@ license=('GPL')
 depends=('gnome-shell>=43')
 makedepends=('git' 'intltool' 'gettext' 'sassc')
 conflicts=(${pkgname%-gnome43} "${_pkgname}-git")
-provides=(${pkgname%-gnome43} "${_pkgname}-git")
+provides=(${pkgname%-gnome43})
 _srcname=dash-to-dock
 _commit=0fc9d94b59e91e1c08ad38762ebc55b7deaf99ab # master^0
 source=(

@@ -11,7 +11,6 @@ pkgbase = gnome-shell-extension-dash-to-dock-gnome43
 	makedepends = sassc
 	depends = gnome-shell>=43
 	provides = gnome-shell-extension-dash-to-dock
-	provides = gnome-shell-extension-dash-to-dock-git
 	conflicts = gnome-shell-extension-dash-to-dock
 	conflicts = gnome-shell-extension-dash-to-dock-git
 	source = gnome-shell-extension-dash-to-dock-43.alpha::git+https://github.com/micheleg/dash-to-dock.git#commit=0fc9d94b59e91e1c08ad38762ebc55b7deaf99ab
