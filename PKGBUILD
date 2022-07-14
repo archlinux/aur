@@ -1,25 +1,25 @@
 # Maintainer:       zzjzxq33 <wojiushixxx at 126 dot com>
 # Co-Maintainer:    Misaka13514 <Misaka13514 at gmail dot com>
 pkgname=bbg
-pkgver=20220713
+pkgver=20220717
 pkgrel=1
 pkgdesc="A static blog generator built with electron"
 arch=('any')
-url="https://github.com/baiyang-lzy/bbg"
+url="https://github.com/bbg-contributors/bbg"
 license=('Unlicense')
-depends=('electron16')
+depends=('electron19')
 conflicts=("${pkgname}-git")
 source=(
 	'bbg.sh'
-	'icon.png'::'https://github.com/baiyang-lzy/bbg-resources/raw/30dfd1cbdfbed040a74f05b0312302f3bf0c1c85/icon.png'
+	'icon.png'::'https://github.com/bbg-contributors/bbg-resources/raw/30dfd1cbdfbed040a74f05b0312302f3bf0c1c85/icon.png'
 	'bbg.desktop'
 	"app-${pkgver}.asar"::"${url}/releases/download/${pkgver}/app.asar"
 )
 sha256sums=(
-	'ef39a1c67ffe2228d8bb51256a5a666d8ecbbfbc935c1f515a6c087ba5fbe924'
+	'94dec4c60fa1e124569bd9ff75cf29b51eeb85025e27dde1b15979f4525f25e6'
 	'd5f8f191d914a140ab11999a176b226523dd78e6865a75b483013846503a5228'
 	'f503d93639c1f4d4e050eceb11adf64d369908e5941cfdbda3af30b2f3c73d96'
-	'0d60f81f28cd76d09a42ff6c12db3ebc70be45eb06a15a02c21d1658c3595cfb'
+	'09af888b549abf42cd0fb015f9c831ee51dc19c7e44a39020697d0d603797005'
 )
 
 package() {
@@ -30,6 +30,6 @@ package() {
 	install -Dm644 "bbg.desktop"        "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	install -Dm644 "icon.png"           "${pkgdir}/usr/share/icons/${pkgname}.png"
 
-	# install bbgvertype: https://github.com/baiyang-lzy/bbg/blob/f3d61ce4d79680329bad4cb014c909fb86037f38/App/start.js
+	# install bbgvertype: https://github.com/bbg-contributors/bbg/blob/f3d61ce4d79680329bad4cb014c909fb86037f38/App/start.js
 	echo "aur-bbg-zzjzxq33-misaka13514" | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bbg/bbgvertype"
 }
