@@ -2,11 +2,11 @@
 _pkgname=remoteplaywhatever
 pkgname=${_pkgname}-bin
 pkgver=0.1.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Tiny application that lets you force remote play together any game you have in your steam library including non-steam ones."
 arch=('x86_64')
 url="https://github.com/m4dEngi/RemotePlayWhatever"
-depends=('wxgtk-common' 'wxgtk3')
+depends=('wxwidgets-common' 'wxwidgets-gtk3')
 source=(
   ${pkgname}-${pkgver}.deb::https://github.com/m4dEngi/${_pkgname}/releases/download/${pkgver}-alpha/${_pkgname}-${pkgver}-Linux.deb
 )
