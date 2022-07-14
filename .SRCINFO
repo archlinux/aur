@@ -1,0 +1,73 @@
+pkgbase = claws-mail-gtk2-git
+	pkgdesc = A GTK based e-mail client. Latest git checkout of GTK2 branch.
+	pkgver = 3.19.0+48.r11565.20220713.5d76d2a7f
+	pkgrel = 1
+	url = https://www.claws-mail.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = bogofilter
+	makedepends = git
+	makedepends = python
+	makedepends = spamassassin
+	makedepends = valgrind
+	makedepends = dillo
+	makedepends = gumbo-parser
+	makedepends = libcanberra
+	makedepends = libgdata
+	makedepends = libical
+	makedepends = libnotify
+	makedepends = libytnef
+	makedepends = networkmanager
+	makedepends = poppler-glib
+	makedepends = pygtk
+	makedepends = docbook-utils
+	makedepends = texlive-core
+	makedepends = texlive-formatsextra
+	depends = compface
+	depends = dbus-glib
+	depends = desktop-file-utils
+	depends = enchant
+	depends = gnutls
+	depends = gpgme
+	depends = gtk2
+	depends = hicolor-icon-theme
+	depends = libetpan
+	depends = libsm
+	depends = startup-notification
+	optdepends = bogofilter: adds support for spamfiltering.
+	optdepends = curl: for vcalendar, rssyl and spamreport plugins.
+	optdepends = dbus: for notification plugin.
+	optdepends = dillo: for dillo html viewer plugin.
+	optdepends = ghostscript: for pdf viewer plugin.
+	optdepends = gumbo-parser: for litehtml_viewer plugin.
+	optdepends = jpilot: for jpilot (palm pilot connection) plugin.
+	optdepends = libarchive: for archive plugin and various other plugins.
+	optdepends = libcanberra: for notification plugin.
+	optdepends = libgdata: for gdata plugin.
+	optdepends = libical: for vcalendar plugin.
+	optdepends = libnotify: for notification plugin.
+	optdepends = libxml2: for rssyl plugins.
+	optdepends = libytnef: for tnef_parse plugin.
+	optdepends = perl: needed for some tools and perl plugin.
+	optdepends = poppler-glib: for pdf viewer plugin.
+	optdepends = python2: needed for some tools and python plugin.
+	optdepends = python: for some tools/ plugins.
+	optdepends = spamassassin: adds support for spamfiltering.
+	provides = claws=3.19.0+48.r11565.20220713.5d76d2a7f
+	provides = claws-mail=3.19.0+48.r11565.20220713.5d76d2a7f
+	provides = claws-mail-gtk2=3.19.0+48.r11565.20220713.5d76d2a7f
+	provides = claws-mail-bash-completion
+	provides = claws-mail-extra-plugins=3.19.0+48.r11565.20220713.5d76d2a7f
+	conflicts = claws
+	conflicts = claws-mail
+	conflicts = claws-mail-gtk2
+	conflicts = claws-mail-bash-completion
+	conflicts = claws-mail-extra-plugins
+	conflicts = sylpheed-claws
+	replaces = claws-mail-extra-plugins
+	replaces = sylpheed-claws
+	source = claws-mail::git://git.claws-mail.org/claws.git#branch=gtk2
+	sha256sums = SKIP
+
+pkgname = claws-mail-gtk2-git
