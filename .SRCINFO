@@ -1,6 +1,6 @@
 pkgbase = blockbar-git
-	pkgdesc = Blocks based status bar for X window managers and Wayland (wlroots) compositors
-	pkgver = 20220712185955
+	pkgdesc = Blocks based status bar for X window managers
+	pkgver = 20220713101001
 	pkgrel = 1
 	url = https://github.com/sambazley/blockbar
 	install = blockbar.install
