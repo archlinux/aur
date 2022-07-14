@@ -1,0 +1,20 @@
+pkgbase = blockbar-wl-git
+	pkgdesc = Blocks based status bar for Wayland (wlroots) compositors
+	pkgver = 20220713101001
+	pkgrel = 1
+	url = https://github.com/sambazley/blockbar
+	install = blockbar.install
+	arch = i686
+	arch = x86_64
+	license = ZLIB
+	depends = cairo
+	depends = pango
+	depends = ujson-git
+	depends = wayland
+	depends = wayland-protocols
+	provides = blockbar
+	conflicts = blockbar-git
+	source = git+https://github.com/sambazley/blockbar.git
+	md5sums = SKIP
+
+pkgname = blockbar-wl-git
