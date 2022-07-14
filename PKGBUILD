@@ -1,18 +1,16 @@
 # Maintainer: Iztech LLC <iztech@iztech.ru>
 pkgname=mit8
 orgname=Iztech
-pkgver=3.2.3
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Программа для управления измерителями температуры серии МИТ-8 производства ООО ИзТех"
 url="https://www.iztech.ru"
 license=(custom)
 depends=("qt5-base" "qt5-multimedia" "qt5-svg" "qt5-serialport" "qwt" "sqlite")
-conflicts=("mit30")
-replaces=("mit30")
 arch=("x86_64")
 options=("strip")
 source=("$url/content/files/app/$pkgname-latest-x86_64.tar.gz")
-md5sums=("11a77bb16101bb7ec977f5186823fa0f")
+md5sums=("5be775877258619daa45d2aac25b8b5c")
 
 
 package() {
