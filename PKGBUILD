@@ -1,32 +1,29 @@
-# Maintainer: Sebastian Reuße <seb@wirrsal.net>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Sebastian Reuße <seb@wirrsal.net>
+
 pkgname=zsh-autopair-git
-_gitname=zsh-autopair
-pkgver=r32.86b6d0e
+_name="${pkgname%-git}"
+pkgver=1.0.r1.g9d003fc
 pkgrel=1
 pkgdesc="Auto-close and delete matching delimiters in Zsh"
-arch=(any)
+arch=('any')
 url=https://github.com/hlissner/zsh-autopair
-license=(custom:MIT)
-depends=(zsh)
-makedepends=(git)
-provides=(zsh-autopair)
-conflicts=(zsh-autopair)
-source=(git+https://github.com/hlissner/zsh-autopair)
-install=zsh-autopair-git.install
+license=('MIT')
+depends=('zsh')
+makedepends=('git')
+provides=("$_name=${pkgver%.r*}")
+conflicts=("$_name")
+source=("$_name::git+$url")
+install="$_name.install"
 sha256sums=(SKIP)
 
-
 pkgver() {
-    cd "$_gitname"
-    commit=$(git rev-list --count master)
-    hash=$(git rev-parse --short HEAD)
-    echo "r$commit.$hash"
+	git -C "$_name" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 package() {
-  cd "$_gitname"
-
-  install -Dm644 autopair.zsh "$pkgdir"/usr/share/zsh/plugins/"$_gitname"/autopair.zsh
-  install -Dm644 README.md "$pkgdir"/usr/share/doc/"$_gitname"/README.md
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
+	cd "$_name"
+	install -Dm644 autopair.zsh -t "$pkgdir/usr/share/zsh/plugins/$_name/"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
