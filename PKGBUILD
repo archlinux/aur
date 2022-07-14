@@ -1,11 +1,13 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgbase=zed
 pkgname=(
   'zed'
   'zq'
 )
-pkgver=1.1.0
+pkgver=1.2.0
+_commit='76f0409f96a0208d15c4487505604cf6c0e2ae92'
 pkgrel=1
 pkgdesc='Tooling for super-structured data'
 arch=('x86_64')
@@ -14,7 +16,6 @@ license=('BSD')
 depends=('glibc')
 makedepends=('git' 'go')
 options=('!lto')
-_commit='c68a120d0c9d696cdd55241fe4569f3fa112f866'
 source=("$pkgbase::git+https://github.com/brimdata/zed#commit=$_commit")
 md5sums=('SKIP')
 
@@ -68,7 +69,7 @@ package_zed() {
   install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
 }
 
-package_zq(){ 
+package_zq() {
   cd "$pkgbase"
 
   # binary
