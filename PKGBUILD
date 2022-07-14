@@ -4,7 +4,7 @@
 pkgname=yank-note-bin
 _pkgname=yank-note
 _electron=electron
-pkgver=3.31.0
+pkgver=3.32.0
 pkgrel=1
 pkgdesc='A Hackable Markdown Note Application for Programmers.'
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('asar' 'yarn')
 source=("$_pkgname-$pkgver.deb::${url}/releases/download/v${pkgver}/Yank-Note-linux-amd64-${pkgver}.deb"
         "$_pkgname.sh"
         )
-sha256sums=('84fa41c041324f86db7409046a53c830a7d62400e07e8b4942ed8a3d22f5ee39'
+sha256sums=('f0c64af92a364ceafd97e48d9713b36176d37f05f1c4836781383cc7bd4913a6'
             'e12bac7e9f11a03487dea56fb1ac7afb4b2e7eedcc8e7eb1427b2c960cb830de')
 options=(!strip)
 prepare() {
@@ -26,8 +26,11 @@ prepare() {
     asar e app.asar apps 
     rm -rf apps/app.asar
     cd apps/dist/main
+    # system pandoc
     sed -i "s|^var binPath.*|var binPath='/usr/bin/pandoc';|g" server/convert.js
     sed -i "s|^exports.BIN_DIR.*|exports.BIN_DIR='/usr/bin';|g" constant.js
+    # disable autoupdate checker.
+    sed -i "s|^var disabled.*|var disabled = true;|g" updater.js
     
     cd $srcdir/usr/share/applications
     sed -i "s|^Exec.*|Exec=yank-note %U|g"   ${_pkgname}.desktop
@@ -39,6 +42,7 @@ build(){
     cd "$srcdir/opt/Yank Note/resources"
     cd apps
     rm -rf bin
+    export HOME=$srcdir
     # fix node-pty
     yarn add electron-rebuild
     node_modules/.bin/electron-rebuild -f -w node-pty -v $(${_electron} -v)
@@ -59,5 +63,5 @@ package(){
     cd "$srcdir/opt/Yank Note/resources"
     mkdir -p ${pkgdir}/usr/lib/${_pkgname}/
     cp -rf apps ${pkgdir}/usr/lib/${_pkgname}/app
-    cp -rf app.asar.unpacked ${pkgdir}/usr/lib/${_pkgname}/app.asar.unpacked
+#     cp -rf app.asar.unpacked ${pkgdir}/usr/lib/${_pkgname}/app.asar.unpacked
 }
