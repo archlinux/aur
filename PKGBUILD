@@ -1,7 +1,7 @@
 # Maintainer: Docler <hello@docler.me>
 
 pkgname=fvm-bin
-pkgver=2.3.1
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Flutter Version Management: A simple CLI to manage Flutter SDK versions."
 url="https://github.com/fluttertools/fvm"
@@ -13,7 +13,7 @@ source=(
   "$url/releases/download/$pkgver/fvm-$pkgver-linux-x64.tar.gz"
 )
 sha256sums=(
-  '4431ac11108b69b1e908f581bd3b3f6a1ba82e1f0783fd563e3b294b009709f0'
+  '78498cfe331b9f4d2c8ebd97ebe17d3b19ac20c391c3d688525baf764170c0b9'
 )
 conflicts=()
 OPTIONS=()
