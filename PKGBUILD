@@ -2,7 +2,7 @@
 
 _libname='libgnunetworker'
 pkgname="${_libname}-git"
-pkgver='r6.6880861'
+pkgver='r8.80daef5'
 pkgrel=1
 pkgdesc='Multithreading with GNUnet'
 arch=('i686' 'x86_64')
