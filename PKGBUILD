@@ -7,7 +7,7 @@
 # sorry, community- i do hope someday that pacman devs stop making arbitrary changes on a whim.
 
 pkgname=('nquake')
-pkgver=2.5
+pkgver=latest
 pkgrel=13
 pkgdesc="The easiest, quickest, and most popular QuakeWorld client."
 url="http://nquake.com/"

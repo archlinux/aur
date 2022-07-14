@@ -1,6 +1,6 @@
 pkgbase = nquake
 	pkgdesc = The easiest, quickest, and most popular QuakeWorld client.
-	pkgver = 2.5
+	pkgver = latest
 	pkgrel = 13
 	url = http://nquake.com/
 	install = nquake.install
