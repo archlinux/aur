@@ -44,8 +44,10 @@ bindkey '^[[2~' overwrite-mode                                  # Insert key
 bindkey '^[[3~' delete-char                                     # Delete key
 bindkey '^[[C'  forward-char                                    # Right key
 bindkey '^[[D'  backward-char                                   # Left key
-bindkey '^[[5~' history-beginning-search-backward               # Page up key
-bindkey '^[[6~' history-beginning-search-forward                # Page down key
+bindkey "^[[A" history-substring-search-up                      # Up key
+-bindkey "^[[B" history-substring-search-down                   # Down key
+-bindkey ";5A" history-beginning-search-backward                # Ctrl-Up key
+-bindkey ";5B" history-beginning-search-forward                 # Ctrl-Down key
 
 bindkey '^[Oc' forward-word                                     #
 bindkey '^[Od' backward-word                                    #
