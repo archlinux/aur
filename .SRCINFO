@@ -1,6 +1,6 @@
 pkgbase = libgnunetworker
 	pkgdesc = Multithreading with GNUnet
-	pkgver = 0.5.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/madmurphy/libgnunetworker
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = libgnunetworker
 	depends = gnunet
 	conflicts = libgnunetworker-git
 	conflicts = libgnunetworker-bin
-	source = https://github.com/madmurphy/libgnunetworker/releases/download/0.5.0/libgnunetworker-0.5.0-with-configure.tar.gz
-	sha512sums = 6c902f399bc5a63fd7c5bcbb92033147beb277f9ba7505b1c0f3bda74665772b522c21bd20585cb21a4b9f1932a6c0cc40e3fe1670821d037f9954a01e86add2
+	source = https://github.com/madmurphy/libgnunetworker/releases/download/1.0.0/libgnunetworker-1.0.0-with-configure.tar.gz
+	sha512sums = dca102f03b88f83cce7a6e244da38acd8ed1930b516163bf94b4530ee6cad63e2a673da09ecec80faeb1026ad7dfb45b7756043e57cc6ca3d3ed6939487848b9
 
 pkgname = libgnunetworker
