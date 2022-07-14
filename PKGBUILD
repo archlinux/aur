@@ -10,7 +10,7 @@ pkgver="${_tag_name/-/}"
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
-provides=("$_pkgbase" "$_pkgbase-libs" "$_pkgbase-resolvconf" "$_pkgbase-sysvcompat")
+provides=("${_pkgbase}" "${_pkgbase}-libs" "${_pkgbase}-resolvconf" "${_pkgbase}-sysvcompat")
 conflicts=("${provides[@]}")
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'intltool' 'iptables' 'kmod' 'libcap' 'libidn2' 'libgcrypt'
@@ -254,8 +254,8 @@ package_systemd-pr23511-libs() {
   depends=('glibc' 'libcap' 'libgcrypt' 'libp11-kit' 'lz4' 'xz' 'zstd')
   license=('LGPL2.1')
   provides=('libsystemd' 'libsystemd.so' 'libudev.so')
-  conflicts=('libsystemd')
-  replaces=('libsystemd')
+  conflicts=('libsystemd' "${_pkgbase}-libs")
+  replaces=('libsystemd' "${_pkgbase}-libs")
 
   install -d -m0755 "$pkgdir"/usr
   mv systemd-libs "$pkgdir"/usr/lib
@@ -265,8 +265,8 @@ package_systemd-pr23511-resolvconf() {
   pkgdesc='systemd resolvconf replacement (for use with systemd-resolved)'
   license=('LGPL2.1')
   depends=('systemd')
-  provides=('openresolv' 'resolvconf')
-  conflicts=('openresolv')
+  provides=('openresolv' 'resolvconf' "${_pkgbase}-resolvconf")
+  conflicts=('openresolv' "${_pkgbase}-resolvconf")
 
   install -d -m0755 "$pkgdir"/usr/bin
   ln -s resolvectl "$pkgdir"/usr/bin/resolvconf
@@ -278,7 +278,8 @@ package_systemd-pr23511-resolvconf() {
 package_systemd-pr23511-sysvcompat() {
   pkgdesc='sysvinit compat for systemd'
   license=('GPL2')
-  conflicts=('sysvinit')
+  provides=("${_pkgbase}-sysvcompat")
+  conflicts=('sysvinit' "${_pkgbase}-sysvcompat")
   depends=('systemd')
 
   install -D -m0644 -t "$pkgdir"/usr/share/man/man8 \

@@ -182,7 +182,9 @@ pkgname = systemd-pr23511-libs
 	provides = libsystemd.so
 	provides = libudev.so
 	conflicts = libsystemd
+	conflicts = systemd-libs
 	replaces = libsystemd
+	replaces = systemd-libs
 
 pkgname = systemd-pr23511-resolvconf
 	pkgdesc = systemd resolvconf replacement (for use with systemd-resolved)
@@ -190,10 +192,14 @@ pkgname = systemd-pr23511-resolvconf
 	depends = systemd
 	provides = openresolv
 	provides = resolvconf
+	provides = systemd-resolvconf
 	conflicts = openresolv
+	conflicts = systemd-resolvconf
 
 pkgname = systemd-pr23511-sysvcompat
 	pkgdesc = sysvinit compat for systemd
 	license = GPL2
 	depends = systemd
+	provides = systemd-sysvcompat
 	conflicts = sysvinit
+	conflicts = systemd-sysvcompat
