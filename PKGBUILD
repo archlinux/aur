@@ -3,8 +3,8 @@
 
 _pkgname=mod-cv-plugins
 pkgname="${_pkgname}-git"
-pkgver=r214.0ac8ecd
-pkgrel=2
+pkgver=r258.5b17548
+pkgrel=1
 pkgdesc="CV (audio-rate control) LV2 plugins from MOD Devices (git version)"
 arch=('i686' 'x86_64')
 url="https://github.com/moddevices/mod-cv-plugins"
@@ -43,7 +43,7 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
   install -dm755 "${pkgdir}"/usr/lib/lv2
-  make DEST_DIR="${pkgdir}/usr/lib/lv2" install
+  make DESTDIR="${pkgdir}/usr/lib/lv2" install
 }
 
 # vim:set ts=2 sw=2 et:
