@@ -6,7 +6,7 @@ _mainpkgname="$_projectname-emu"
 _noguipkgname="$_projectname-emu-nogui"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git")
-pkgver='5.0.r16541.gbb2a3d35b0'
+pkgver='5.0.r16907.g537fe33997'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -25,8 +25,10 @@ optdepends=('pulseaudio: PulseAudio backend')
 source=(
 	"$pkgname::git+https://github.com/$_mainpkgname/$_projectname"
 	"$pkgname-mgba::git+https://github.com/mgba-emu/mgba.git"
+	"$pkgname-spirvcross::git+https://github.com/KhronosGroup/SPIRV-Cross.git"
 )
 sha512sums=('SKIP'
+            'SKIP'
             'SKIP')
 
 _sourcedirectory="$pkgname"
@@ -37,10 +39,16 @@ prepare() {
 	mkdir 'build/'
 
 	# Provide mgba submodule
-	_mgbapath="Externals/mGBA/mgba"
+	_mgbapath='Externals/mGBA/mgba'
 	git submodule init "$_mgbapath"
 	git config "submodule.$_mgbapath.url" "$srcdir/$pkgname-mgba/"
 	git submodule update "$_mgbapath"
+
+	# Provide SPIRV-Cross submodule
+	_spirvcrosspath='Externals/spirv_cross/SPIRV-Cross'
+	git submodule init "$_spirvcrosspath"
+	git config "submodule.$_spirvcrosspath.url" "$srcdir/$pkgname-spirvcross/"
+	git submodule update "$_spirvcrosspath"
 }
 
 pkgver() {
