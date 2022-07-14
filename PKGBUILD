@@ -25,33 +25,6 @@ makedepends=(
     eigen
     ros-noetic-message-runtime
     ros-noetic-gazebo-dev
-
-    ros-noetic-actionlib
-    ros-noetic-actionlib-msgs
-    ros-noetic-control-msgs
-    ros-noetic-controller-interface
-    ros-noetic-controller-manager
-    ros-noetic-dynamic-reconfigure
-    ros-noetic-geometry-msgs
-    ros-noetic-hardware-interface
-    ros-noetic-joint-limits-interface
-    ros-noetic-joint-state-publisher
-    ros-noetic-libfranka
-    ros-noetic-message-generation
-    ros-noetic-message-runtime
-    ros-noetic-panda-moveit-config
-    ros-noetic-pluginlib
-    ros-noetic-realtime-tools
-    ros-noetic-robot-state-publisher
-    ros-noetic-roscpp
-    ros-noetic-rospy
-    ros-noetic-rostest
-    ros-noetic-std-msgs
-    ros-noetic-sensor-msgs
-    ros-noetic-tf
-    ros-noetic-tf2-msgs
-    ros-noetic-urdf
-    ros-noetic-xmlrpcpp
 )
 
 source=("franka_ros-$pkgver.tar.gz::https://github.com/frankaemika/franka_ros/archive/$pkgver.tar.gz")
@@ -84,7 +57,6 @@ package_ros-noetic-franka-ros() {
         ros-noetic-franka-msgs
         ros-noetic-franka-visualization
         ros-noetic-franka-gazebo
-        ros-noetic-panda-moveit-config
     )
 
     cd "${srcdir}/build_isolated/franka_ros"
