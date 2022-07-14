@@ -1,16 +1,7 @@
 [Desktop Entry]
 Name=YFKLog
-Name[en_US]=YFKLog
 Comment=Full Featured QSO Logger 
-Comment[en_US]=Full Featured QSO Logger
-Encoding=UTF-8
-Exec=yfk
+Exec=xfce4-terminal --geometry 80x25 -x yfk
 Icon=yfklog
-MimeType=text/plain
-StartupNotify=true
-Terminal=true
-TerminalOptions=
 Type=Application
-Categories=Application;HamRadio;
-X-DCOP-ServiceType=none
-X-KDE-SubstituteUID=false
+Categories=HamRadio;
