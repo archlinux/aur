@@ -20,10 +20,10 @@ pkgver() {
 }
 
 package() {
-	cd "${_pkgname}"
+    cd "${_pkgname}"
     mkdir -p "${pkgdir}"/usr/share/{icons,licenses/"${_pkgname}",doc/"${_pkgname}"}
     cp -r "${_pkgname}" "${pkgdir}/usr/share/icons"
     cp -r "${_pkgname}-white" "${pkgdir}/usr/share/icons"
-	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 }
