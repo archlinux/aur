@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ensemblVEP
-_pkgver=1.37.1
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.37.1
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='R Interface to Ensembl Variant Effect Predictor'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0a35985b3b4212cce66fc4c59e21c067523b702938ac346d4b55a6f4d1821365')
+sha256sums=('c8ac6f434fe43cfc9bb1d7fe39bd233a4c93b2809dc72bcc736083df9bae94f6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

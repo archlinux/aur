@@ -1,6 +1,6 @@
 pkgbase = r-ensemblvep
 	pkgdesc = R Interface to Ensembl Variant Effect Predictor
-	pkgver = 1.37.1
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ensemblVEP
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-ensemblvep
 	depends = r-summarizedexperiment
 	depends = r-variantannotation
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ensemblVEP_1.37.1.tar.gz
-	sha256sums = 0a35985b3b4212cce66fc4c59e21c067523b702938ac346d4b55a6f4d1821365
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ensemblVEP_1.38.0.tar.gz
+	sha256sums = c8ac6f434fe43cfc9bb1d7fe39bd233a4c93b2809dc72bcc736083df9bae94f6
 
 pkgname = r-ensemblvep
