@@ -1,6 +1,6 @@
 # Maintainer: VHSgunzo <vhsgunzo.github.io>
-pkgname=lutris-wine-git
-pkgver=0.73.r1.g7fd8f45
+pkgname='lutris-wine-git'
+pkgver=0.74.r1.gb5dfdec
 pkgrel=1
 pkgdesc='Easy launch of your Windows applications and games with Wine/Proton'
 arch=('any')
@@ -21,58 +21,5 @@ pkgver() {
 
 package() {
     cd $srcdir/${pkgname%-git}
-    install -Dm755 usr/bin/lutris-wine ${pkgdir}/usr/bin/lutris-wine
-    install -Dm644 etc/xdg/menus/applications-merged/LutrisWine.menu ${pkgdir}/etc/xdg/menus/applications-merged/LutrisWine.menu
-    install -Dm644 usr/share/applications/LutrisWine/clearpfx.desktop ${pkgdir}/usr/share/applications/LutrisWine/clearpfx.desktop
-    install -Dm644 usr/share/applications/LutrisWine/cmd.desktop ${pkgdir}/usr/share/applications/LutrisWine/cmd.desktop
-    install -Dm644 usr/share/applications/LutrisWine/control.desktop ${pkgdir}/usr/share/applications/LutrisWine/control.desktop
-    install -Dm644 usr/share/applications/LutrisWine/debug.desktop ${pkgdir}/usr/share/applications/LutrisWine/debug.desktop
-    install -Dm644 usr/share/applications/LutrisWine/explorer.desktop ${pkgdir}/usr/share/applications/LutrisWine/explorer.desktop
-    install -Dm644 usr/share/applications/LutrisWine/killwine.desktop ${pkgdir}/usr/share/applications/LutrisWine/killwine.desktop
-    install -Dm644 usr/share/applications/LutrisWine/LutrisWine.desktop ${pkgdir}/usr/share/applications/LutrisWine/LutrisWine.desktop
-    install -Dm644 usr/share/applications/LutrisWine/openpfx.desktop ${pkgdir}/usr/share/applications/LutrisWine/openpfx.desktop
-    install -Dm644 usr/share/applications/LutrisWine/regedit.desktop ${pkgdir}/usr/share/applications/LutrisWine/regedit.desktop
-    install -Dm644 usr/share/applications/LutrisWine/rmapp.desktop ${pkgdir}/usr/share/applications/LutrisWine/rmapp.desktop
-    install -Dm644 usr/share/applications/LutrisWine/shell.desktop ${pkgdir}/usr/share/applications/LutrisWine/shell.desktop
-    install -Dm644 usr/share/applications/LutrisWine/shortcut.desktop ${pkgdir}/usr/share/applications/LutrisWine/shortcut.desktop
-    install -Dm644 usr/share/applications/LutrisWine/addtolu.desktop ${pkgdir}/usr/share/applications/LutrisWine/addtolu.desktop
-    install -Dm644 usr/share/applications/LutrisWine/taskmgr.desktop ${pkgdir}/usr/share/applications/LutrisWine/taskmgr.desktop
-    install -Dm644 usr/share/applications/LutrisWine/winemgr.desktop ${pkgdir}/usr/share/applications/LutrisWine/winemgr.desktop
-    install -Dm644 usr/share/applications/LutrisWine/uninstaller.desktop ${pkgdir}/usr/share/applications/LutrisWine/uninstaller.desktop
-    install -Dm644 usr/share/applications/LutrisWine/winecfg.desktop ${pkgdir}/usr/share/applications/LutrisWine/winecfg.desktop
-    install -Dm644 usr/share/applications/LutrisWine/winetricks.desktop ${pkgdir}/usr/share/applications/LutrisWine/winetricks.desktop
-    install -Dm644 usr/share/applications/LutrisWine/killtray.desktop ${pkgdir}/usr/share/applications/LutrisWine/killtray.desktop
-    install -Dm644 usr/share/applications/LutrisWine/update.desktop ${pkgdir}/usr/share/applications/LutrisWine/update.desktop
-    install -Dm644 usr/share/applications/LutrisWine/killexe.desktop ${pkgdir}/usr/share/applications/LutrisWine/killexe.desktop
-    install -Dm644 usr/share/applications/LutrisWine/config.desktop ${pkgdir}/usr/share/applications/LutrisWine/config.desktop
-    install -Dm644 usr/share/applications/LutrisWine/tray.desktop ${pkgdir}/usr/share/applications/LutrisWine/tray.desktop
-    install -Dm644 usr/share/applications/LutrisWine/exit.desktop ${pkgdir}/usr/share/applications/LutrisWine/exit.desktop
-    install -Dm644 usr/share/applications/LutrisWine/killshell.desktop ${pkgdir}/usr/share/applications/LutrisWine/killshell.desktop
-    install -Dm644 usr/share/applications/LutrisWine/appcfg.desktop ${pkgdir}/usr/share/applications/LutrisWine/appcfg.desktop
-    install -Dm644 usr/share/applications/LutrisWine/help.desktop ${pkgdir}/usr/share/applications/LutrisWine/help.desktop
-    install -Dm644 usr/share/applications/LutrisWine/version.desktop ${pkgdir}/usr/share/applications/LutrisWine/version.desktop
-    install -Dm644 usr/share/applications/LutrisWine/init.desktop ${pkgdir}/usr/share/applications/LutrisWine/init.desktop
-    install -Dm644 usr/share/desktop-directories/LutrisWineApp.directory ${pkgdir}/usr/share/desktop-directories/LutrisWineApp.directory
-    install -Dm644 usr/share/desktop-directories/LutrisWine.directory ${pkgdir}/usr/share/desktop-directories/LutrisWine.directory
-    install -Dm644 usr/share/kservices5/ServiceMenus/LutrisWineService.desktop ${pkgdir}/usr/share/kservices5/ServiceMenus/LutrisWineService.desktop
-    install -Dm644 usr/share/lutris-wine/icon/default_icon.png ${pkgdir}/usr/share/lutris-wine/icon/default_icon.png
-    install -Dm644 usr/share/lutris-wine/gif/default_loading.gif ${pkgdir}/usr/share/lutris-wine/gif/default_loading.gif
-    install -Dm644 "usr/share/lutris-wine/themes/DEFAULT.reg" "${pkgdir}/usr/share/lutris-wine/themes/DEFAULT.reg"
-    install -Dm644 "usr/share/lutris-wine/themes/Breeze Dark.reg" "${pkgdir}/usr/share/lutris-wine/themes/Breeze Dark.reg"
-    install -Dm644 "usr/share/lutris-wine/themes/Win10 Black.reg" "${pkgdir}/usr/share/lutris-wine/themes/Win10 Black.reg"
-    install -Dm644 "usr/share/lutris-wine/themes/Wine Dark.reg" "${pkgdir}/usr/share/lutris-wine/themes/Wine Dark.reg"
-    install -Dm644 "usr/share/lutris-wine/themes/Wine Dark.reg" "${pkgdir}/usr/share/lutris-wine/themes/Wine Dark.reg"
-    install -Dm644 usr/share/lutris-wine/db/LeagueClient.lwdb ${pkgdir}/usr/share/lutris-wine/db/LeagueClient.lwdb
-    install -Dm644 usr/share/lutris-wine/db/re8.lwdb ${pkgdir}/usr/share/lutris-wine/db/re8.lwdb
-    install -Dm644 usr/share/lutris-wine/db/bms.lwdb ${pkgdir}/usr/share/lutris-wine/db/bms.lwdb
-    install -Dm644 usr/share/lutris-wine/db/DOOMEternalx64vk.lwdb ${pkgdir}/usr/share/lutris-wine/db/DOOMEternalx64vk.lwdb
-    install -Dm644 usr/share/lutris-wine/db/nvapi64-tests.lwdb ${pkgdir}/usr/share/lutris-wine/db/nvapi64-tests.lwdb
-    install -Dm644 usr/share/lutris-wine/gif/league-of-legends.gif ${pkgdir}/usr/share/lutris-wine/gif/league-of-legends.gif
-    install -Dm644 usr/share/lutris-wine/db/GenshinImpact.lwdb ${pkgdir}/usr/share/lutris-wine/db/GenshinImpact.lwdb
-    install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/lutris-wine/LICENSE
-    install -Dm644 usr/share/lutris-wine/db/Zona.lwdb ${pkgdir}/usr/share/lutris-wine/db/Zona.lwdb
-    install -Dm644 usr/share/applications/LutrisWine/pfxbackup.desktop ${pkgdir}/usr/share/applications/LutrisWine/pfxbackup.desktop
-    install -Dm644 usr/share/applications/LutrisWine/pfxrestore.desktop ${pkgdir}/usr/share/applications/LutrisWine/pfxrestore.desktop
-    install -Dm644 usr/share/applications/LutrisWine/backupmnt.desktop ${pkgdir}/usr/share/applications/LutrisWine/backupmnt.desktop
-    install -Dm644 usr/share/applications/LutrisWine/backupunmnt.desktop ${pkgdir}/usr/share/applications/LutrisWine/backupunmnt.desktop
+    make DESTDIR="${pkgdir}" install
 }
