@@ -6,7 +6,7 @@
 _pkgbin=ledger-live-desktop
 pkgname=ledger-live
 pkgdesc="Ledger Live - Desktop"
-pkgver=2.44.0
+pkgver=2.44.1
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
@@ -19,10 +19,8 @@ _pkgfolder=ledger-live--ledgerhq-live-desktop-${pkgver}
 source=(
   "${_pkgbin}-${pkgver}.tar.gz::https://github.com/LedgerHQ/ledger-live/archive/refs/tags/@ledgerhq/live-desktop@${pkgver}.tar.gz"
   "ledger-live-desktop.desktop")
-sha512sums=(
-  '7b2657576932028948ce74d5b744f8cd67fb5789fd4fcb5bcaabb6adc7f95b624d56f5698a683709d3566ea8e5069aba0530757c922bdc465d4c7dae033ccdd8'
-  '01bee3b5a90d9a87bb8b1f8edd8fa5851b39db7f9374d0e31114301876fafbc9226b120f114b66a3158a4e98eb514569f34cd0d4f1212062a55d0c8d0e698dda'
-)
+sha512sums=('b4a69bcd0216e29617346f12e7dda7c4531506a4f96bfa59c916bf2bc8368e235ade9cd6fe181de766f9a91104ce7c57b455428451951dd0c91727120ce3750a'
+            '01bee3b5a90d9a87bb8b1f8edd8fa5851b39db7f9374d0e31114301876fafbc9226b120f114b66a3158a4e98eb514569f34cd0d4f1212062a55d0c8d0e698dda')
 
 build() {
   cd $_pkgfolder
