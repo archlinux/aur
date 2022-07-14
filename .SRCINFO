@@ -1,17 +1,19 @@
 pkgbase = python-ftputil
 	pkgdesc = High-level FTP client library
-	pkgver = 5.0.3
-	pkgrel = 2
+	pkgver = 5.0.4
+	pkgrel = 1
 	url = https://ftputil.sschwarzer.net/
 	changelog = announcements.txt
 	arch = any
 	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python-freezegun
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = python-ftputil-5.0.3.tar.gz::https://files.pythonhosted.org/packages/source/f/ftputil/ftputil-5.0.3.tar.gz
-	sha256sums = 9b86ee67c1980ce1d89b13752bc48b9493fee06349cb476828594e76e08f8488
+	source = python-ftputil-5.0.4.tar.gz::https://files.pythonhosted.org/packages/source/f/ftputil/ftputil-5.0.4.tar.gz
+	sha256sums = 6889db8649dd20d9b6d40a6c5f0f84ccf340a7dac1e0bfc0f0024090fc2afb33
 
 pkgname = python-ftputil
