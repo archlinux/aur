@@ -1,0 +1,14 @@
+pkgbase = gnatstudio-bin
+	pkgdesc = GNAT Programming Studio for Ada binary
+	pkgver = 20220512
+	pkgrel = 1
+	url = https://github.com/AdaCore/gnatstudio
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python
+	conflicts = gnat-gps
+	source = https://github.com/AdaCore/gnatstudio/releases/download/gnatstudio-cr-20220512/gnatstudio-23.0w-20220512-x86_64-linux-bin.tar.gz
+	sha256sums = 788bde77af2affb0797a783e2f158ca230d89858c0e4eb18355abd20e146baa0
+
+pkgname = gnatstudio-bin
