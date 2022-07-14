@@ -1,5 +1,5 @@
 # Maintainer: Furkan Baytekin (Elagoht) <furkanbaytekin@gmail.com>
-pkgbase=passenger-pm-bin
+pkgbase=passenger-pm
 pkgname=passengen-pm-bin
 pkgver=1.0
 pkgrel=1
@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://github.com/Elagoht/Passenger"
 license=('GPL')
 optdepends=('git: sync passwords with git repo')
+source=("PassengerLinuxInstaller.tar.gz::https://github.com/Elagoht/Passenger/releases/download/v$pkgver/PassengerLinuxInstaller.tar.gz")
 sha256sums=('610f1cc3adbbf6ef68d510ac719eaeb0d3a2a685ae951752865fb323b21cd0c2')
 pkgver() {
   printf "$pkgver"
