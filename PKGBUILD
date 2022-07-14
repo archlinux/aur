@@ -3,12 +3,12 @@
 
 pkgname=gnome-browser-connector
 pkgver=42rc
-pkgrel=1
+pkgrel=2
 pkgdesc='Native browser connector for integration with extensions.gnome.org'
 arch=(any)
 url="https://wiki.gnome.org/Projects/GnomeShellIntegration"
 license=(GPL3)
-depends=(gnome-shell python-requests python-gobject)
+depends=(gnome-shell python-gobject)
 makedepends=(meson git)
 provides=(chrome-gnome-shell)
 replaces=(chrome-gnome-shell gs-chrome-connector)

@@ -1,14 +1,13 @@
 pkgbase = gnome-browser-connector
 	pkgdesc = Native browser connector for integration with extensions.gnome.org
 	pkgver = 42rc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/GnomeShellIntegration
 	arch = any
 	license = GPL3
 	makedepends = meson
 	makedepends = git
 	depends = gnome-shell
-	depends = python-requests
 	depends = python-gobject
 	provides = chrome-gnome-shell
 	conflicts = chrome-gnome-shell
