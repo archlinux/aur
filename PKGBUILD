@@ -1,4 +1,5 @@
-# Maintainer: Qirui Wang <wqr.prg@gmail.com>
+# Maintainer: Daniele Basso <d dot bass05 at pm dot me>
+# Contributor: Qirui Wang <wqr.prg@gmail.com>
 
 pkgname=wxgtk-audacity
 pkgver=3.1.5
