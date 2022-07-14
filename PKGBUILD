@@ -2,8 +2,8 @@
 pkgname=darkradiant-git
 pkgrel=1
 pkgdesc="Editor for The Dark Mod and Doom 3 (idTech4) based games"
-makedepends=(automake libtool)
-depends=(wxgtk ftgl glew boost boost-libs freealut webkitgtk2 pybind11)
+makedepends=(cmake)
+depends=(wxgtk2 ftgl glew freealut libvorbis python libsigc++ eigen)
 conflicts=(darkradiant)
 provides=(darkradiant)
 arch=(x86_64)
@@ -20,8 +20,8 @@ pkgver(){
 
 prepare(){
   cd "$srcdir/DarkRadiant"
-  ./autogen.sh
-  ./configure
+  git submodule update --init --recursive
+  cmake .
 }
 
 build(){
