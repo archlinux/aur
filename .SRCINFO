@@ -1,0 +1,14 @@
+pkgbase = neatmail
+	pkgdesc = A command-line mail client.
+	pkgver = 02
+	pkgrel = 1
+	url = http://repo.or.cz/neatmail.git
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	conflicts = neatmail-git
+	source = neatmail-02.tar.gz::https://github.com/aligrudi/neatmail/archive/refs/tags/02.tar.gz
+	sha256sums = a6c8631f61967bce873bce6dc7891acea3e737aa4312632a213a350b2e5b141e
+
+pkgname = neatmail
