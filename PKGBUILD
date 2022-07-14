@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=metaseqR2
-_pkgver=1.8.0
+_pkgver=1.8.2
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.8.2
 pkgrel=1
 pkgdesc='An R package for the analysis and result reporting of RNA-Seq data by combining multiple statistical algorithms'
 arch=('x86_64')
@@ -66,7 +66,7 @@ optdepends=(
   r-tcc
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('dcccce3e48dc2795553f07bec5ef1dbe81fba546e52a8ab3699b7af75dcbf96b')
+sha256sums=('849f965fd958253dcfc3af8df78ddff487dc0cd59376847358df0a930bb12bff')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
