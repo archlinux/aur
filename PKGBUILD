@@ -3,7 +3,7 @@
 # Contributor: aimileus < $(echo YWltaWxpdXNAcHJvdG9ubWFpbC5jb20K | base64 -d)
 _pkgname="vita3k"
 pkgname="${_pkgname}-git"
-pkgver=r2686.27e0c030
+pkgver=r2746.75b12013
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -56,7 +56,7 @@ build() {
 	export BUILDPRESET=linux-ninja-clang
 
 	# Configure
-	cmake --preset ${BUILDPRESET} -DCI=ON -DUSE_VULKAN=ON -DUSE_DISCORD_RICH_PRESENCE=OFF
+	cmake --preset ${BUILDPRESET} -DCI=ON -DUSE_VULKAN=ON -DUSE_DISCORD_RICH_PRESENCE=OFF -DUSE_VITA3K_UPDATE=OFF
 	# Build
 	cmake --build build/${BUILDPRESET} --config Release
 }
