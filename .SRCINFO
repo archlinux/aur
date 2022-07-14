@@ -1,0 +1,24 @@
+pkgbase = i3-workspace-names-daemon-git
+	pkgdesc = A daemon script to dynamically update workspace names in i3wm based on their content.
+	pkgver = r89.4a7d2d6
+	pkgrel = 1
+	url = https://github.com/i3-workspace-names-daemon/i3-workspace-names-daemon
+	arch = any
+	license = MIT
+	checkdepends = flake8
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-randomly
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-i3ipc
+	depends = ttf-font-awesome
+	optdepends = pango
+	provides = i3-workspace-names-daemon
+	conflicts = i3-workspace-names-daemon
+	source = i3wnd::git+https://github.com/i3-workspace-names-daemon/i3-workspace-names-daemon.git
+	md5sums = SKIP
+
+pkgname = i3-workspace-names-daemon-git

@@ -1,0 +1,8 @@
+*.tar.zst
+i3wnd
+pkg
+src1
+
+# emacs files
+.\#*
+\#*\#
