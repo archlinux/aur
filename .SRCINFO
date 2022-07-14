@@ -1,0 +1,17 @@
+pkgbase = python-freshdesk
+	pkgdesc = A Python client for the Freshdesk helpdesk API
+	pkgver = 1.3.8
+	pkgrel = 1
+	url = https://github.com/sjkingo/python-freshdesk
+	arch = any
+	license = BSD
+	checkdepends = python-nose
+	checkdepends = python-responses
+	checkdepends = python-pytest
+	checkdepends = python-mock
+	depends = python-requests
+	depends = python-dateutil
+	source = https://github.com/sjkingo/python-freshdesk/archive/028c09c205c7eaee581f97290156b5b78c77ced5.zip
+	sha512sums = 36b754e3bff6bf0752318272fd5cba09449568db7b4364b111252c5b3694809728359b8bc61ed622bb284b669213032fdd6b9965c72562f56a1e3eeb8f5a3052
+
+pkgname = python-freshdesk
