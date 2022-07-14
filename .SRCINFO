@@ -8,7 +8,6 @@ pkgbase = gnome-browser-connector-git
 	makedepends = meson
 	makedepends = git
 	depends = gnome-shell
-	depends = python-requests
 	depends = python-gobject
 	provides = chrome-gnome-shell
 	provides = gnome-browser-connector
