@@ -2,7 +2,7 @@
 
 pkgname=gnome-console
 _pkgname=console
-pkgver=42.1
+pkgver=42.2
 pkgrel=1
 pkgdesc="A simple user-friendly terminal emulator for the GNOME desktop"
 arch=('x86_64')
@@ -14,7 +14,7 @@ checkdepends=('appstream-glib')
 conflicts=('kgx')
 replaces=('kgx')
 source=($url/-/archive/$pkgver/$_pkgname-$pkgver.tar)
-b2sums=('bd6eeaac31ec071bb24957ffbcb479c0a1cc1f1f41db4c35fbf537544aa00930bdeb721838992e444164f43f918f78b416d9defd0d66922d5d7b1cd63a18c10b')
+b2sums=('93b5339c48cf1d8597cf61227de3d3903a71fc39d651d2eedf9acf91b16a1bcf8cc2d377433ec4cb745a0d0ce78ad1cf8d9becc5239b8260f212371f5e4935d9')
 
 build() {
   arch-meson "$_pkgname-$pkgver" build

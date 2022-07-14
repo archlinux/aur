@@ -1,6 +1,6 @@
 pkgbase = gnome-console
 	pkgdesc = A simple user-friendly terminal emulator for the GNOME desktop
-	pkgver = 42.1
+	pkgver = 42.2
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/console
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = gnome-console
 	depends = vte3
 	conflicts = kgx
 	replaces = kgx
-	source = https://gitlab.gnome.org/GNOME/console/-/archive/42.1/console-42.1.tar
-	b2sums = bd6eeaac31ec071bb24957ffbcb479c0a1cc1f1f41db4c35fbf537544aa00930bdeb721838992e444164f43f918f78b416d9defd0d66922d5d7b1cd63a18c10b
+	source = https://gitlab.gnome.org/GNOME/console/-/archive/42.2/console-42.2.tar
+	b2sums = 93b5339c48cf1d8597cf61227de3d3903a71fc39d651d2eedf9acf91b16a1bcf8cc2d377433ec4cb745a0d0ce78ad1cf8d9becc5239b8260f212371f5e4935d9
 
 pkgname = gnome-console
