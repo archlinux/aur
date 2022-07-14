@@ -1,0 +1,21 @@
+pkgbase = gnome-shell-extension-pip-on-top-gnome43
+	pkgdesc = Makes Picture-in-Picture windows stay on top
+	pkgver = 43.alpha
+	pkgrel = 1
+	url = https://github.com/Rafostar/gnome-shell-extension-pip-on-top
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = meson
+	makedepends = jq
+	depends = gnome-shell>=43
+	optdepends = clapper
+	provides = gnome-shell-extension-pip-on-top
+	conflicts = gnome-shell-extension-pip-on-top
+	conflicts = gnome-shell-extension-pip-on-top-git
+	source = gnome-shell-extension-pip-on-top-43::git+https://github.com/Rafostar/gnome-shell-extension-pip-on-top.git
+	source = gnome43-comp.patch
+	b2sums = SKIP
+	b2sums = 56fdcac533def2de827433967b2d4081b488f759a4207f2f20e9e825fedcb36aabe168b4b494f2e479b5bf54c0baa6681269ad269ac3809f4b68bd5cfa935783
+
+pkgname = gnome-shell-extension-pip-on-top-gnome43

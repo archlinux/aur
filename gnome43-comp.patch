@@ -1,0 +1,13 @@
+diff --color --unified --recursive --text package.orig/metadata.json package.new/metadata.json
+--- package.orig/metadata.json	2022-07-14 22:59:36.338632839 +0200
++++ package.new/metadata.json	2022-07-14 22:59:59.984598267 +0200
+@@ -5,7 +5,8 @@
+   "name": "PiP on top",
+   "settings-schema": "org.gnome.shell.extensions.pip-on-top",
+   "shell-version": [
+-    "42"
++    "42",
++    "43"
+   ],
+   "url": "https://github.com/Rafostar/gnome-shell-extension-pip-on-top",
+   "uuid": "pip-on-top@rafostar.github.com",
