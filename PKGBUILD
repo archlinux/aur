@@ -16,7 +16,7 @@ depends=(
         'lib32-libusb' 'lib32-vkd3d' 'lib32-libx11' 'lib32-libxext' 'lib32-libxml2'
         'lib32-ocl-icd' 'deepin-udis86' 'lib32-zlib' 'lib32-ncurses' 'lib32-fontconfig'
         'lib32-freetype2' 'lib32-gettext' 'lib32-libxcursor' 'lib32-mesa' 'lib32-libjpeg6'
-        'lib32-libxrandr' 'lib32-libxi' 'lib32-glu' 'deepin-wine-helper' 'deepin-wine5-stable' 'p7zip'
+        'lib32-libxrandr' 'lib32-libxi' 'lib32-glu' 'deepin-wine-helper' 'deepin-wine6-stable' 'p7zip'
     )
 makedepends=('tar')
 checkdepends=()
@@ -51,7 +51,9 @@ package() {
 	mkdir -p ${pkgdir}/usr/share/applications
 	install -Dm644 ${srcdir}/com.qq.weixin.work.deepin-${pkgver}/opt/apps/com.qq.weixin.work.deepin/entries/applications/com.qq.weixin.work.deepin.desktop ${pkgdir}/usr/share/applications/com.qq.weixin.work.deepin.desktop
 	cp -r ${srcdir}/com.qq.weixin.work.deepin-${pkgver}/opt/apps/com.qq.weixin.work.deepin/entries/icons/ ${pkgdir}/usr/share/
+	# 更换为deepin-win6 解决汇报新建日报以及查看我提交的日报白屏问题
 
+	# history
 	# 更换为deepin-wine5 (6存在拖动边框 任务栏的图标闪烁异常 搜索框弹不出来）
 	# sed s#deepin-wine6#deepin-wine5#g /opt/apps/com.qq.weixin.work.deepin/files/run.sh
 
