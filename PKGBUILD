@@ -1,7 +1,7 @@
 # Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-vfio-lts
-pkgver=5.15.53
+pkgver=5.15.54
 pkgrel=1
 pkgdesc='LTS Linux VFIO'
 url="https://www.kernel.org/"
@@ -22,8 +22,6 @@ source=(
   0004-Bluetooth_btintel_Fix_bdaddress_comparison_with_garbage_value.patch
   0005-lg-laptop_Recognize_more_models.patch
   0006_fix_NFSv4_mount_regression.diff
-  0100-netfilter-nf_tables-stricter-validation-of-element-data.diff
-  0101-netfilter-nft_set_pipapo-release-elements-in-clone-from-abort-path.diff
   add-acs-overrides.patch
   i915-vga-arbiter.patch
 )
@@ -32,17 +30,15 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('f3aa717243051f3fcca90ebfe26fe5c3a596c2f6047846e8d1724ea90df77b07'
+sha256sums=('594f548bb0a73e9c08deef838836c984666709687257a624c5ccaf9ae056ce4d'
             'SKIP'
-            '0e605ccfafa347522c5960289aaaabe368aef98b47bc0b76baadab7ca28e833c'
+            '8d9ae7bd60b671077a34e68058a1800b759060f93d658b0bbf83fb2a921a7fc8'
             '99df282c594cc269d9a5d19bb86ea887892d3654cfc53c4ce94a644cf3278423'
             'c35018601f04ae81e0a2018a8597595db6ae053158c206845399cdebb2d2b706'
             '7c7707c738983f3683d76295b496f578996b7341fa39ad334ec2833bfe4b966e'
             '3fa8a4af66d5a3b99b48ca979a247c61e81c9b2d3bcdffa9d3895a5532a420b4'
             '79266c6cc970733fd35881d9a8f0a74c25c00b4d81741b8d4bba6827c48f7c78'
             'e9527ad81d5b1821a7b17c56cb3abaec85785563f51e448cb3c06f1c68e2966f'
-            'b2e03d795a67843b9898367eaf3f2b855487d7e7cbe87b43a0df22b2fb36477c'
-            '08cae506648665a0a2990a690d951dd4432b6eea4ca295dbfc0a836ee63671ea'
             'b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77'
             '856230cfbdc2bb53a4920dfbcb6fb2d58427b7b184e5f94e21f08011d0a2fcc6')
 
@@ -56,10 +52,6 @@ prepare() {
   # fix NFSv4 mounting issue regression - FS#73838 / FS#73860
   # https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/patch/?id=6f2836341d8a39e1e000572b10959347d7e61fd9
   patch -Rp1 -i ../0006_fix_NFSv4_mount_regression.diff
-
-  # FS#75226 - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-34918
-  patch -Np1 -i ../0100-netfilter-nf_tables-stricter-validation-of-element-data.diff
-  patch -Np1 -i ../0101-netfilter-nft_set_pipapo-release-elements-in-clone-from-abort-path.diff
 
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion
