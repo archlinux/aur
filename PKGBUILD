@@ -6,8 +6,12 @@
 # Maintainer: MD Gaziur Rahman Noor <mdgaziurrahmannoor@gmail.com>
 pkgname=findex-git
 _pkgname=findex
-pkgver=0
-pkgrel=0
+pkgver=v0.5.0.64
+pkgver() {
+	cd findex
+	git describe --tags | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/-/./'
+}
+pkgrel=1
 epoch=
 pkgdesc="Highly customizable finder with high performance. Written in Rust and uses GTK"
 arch=('x86_64')
