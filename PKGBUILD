@@ -4,25 +4,30 @@ pkgname=(
     'ros-noetic-franka-control'
     'ros-noetic-franka-description'
     'ros-noetic-franka-example-controllers'
+    'ros-noetic-franka-gazebo'
     'ros-noetic-franka-gripper'
     'ros-noetic-franka-hw'
     'ros-noetic-franka-msgs'
     'ros-noetic-franka-ros'
     'ros-noetic-franka-visualization'
 )
-pkgver="0.6.0"
-pkgrel=2
+pkgver="0.9.0"
+pkgrel=1
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 url="http://wiki.ros.org/franka_ros"
 license=('Apache 2.0')
 
 makedepends=(
-    cmake
-    eigen
     ros-build-tools
+    cmake
+    ros-noetic-catkin
+    ros-noetic-message-generation
+    eigen
+    ros-noetic-message-runtime
+    ros-noetic-gazebo-dev
+
     ros-noetic-actionlib
     ros-noetic-actionlib-msgs
-    ros-noetic-catkin
     ros-noetic-control-msgs
     ros-noetic-controller-interface
     ros-noetic-controller-manager
@@ -50,7 +55,7 @@ makedepends=(
 )
 
 source=("franka_ros-$pkgver.tar.gz::https://github.com/frankaemika/franka_ros/archive/$pkgver.tar.gz")
-sha256sums=(6bfc7f743569e7491d44b82e1b9c39ace55881b7f42e4952e202e13d1e70a6b9)
+sha256sums=("e1858ed46bcc56bb336fd0e1bd1f9de6870a4313d130430bbefdef3ab4d0c991")
 
 
 build() {
@@ -78,12 +83,12 @@ package_ros-noetic-franka-ros() {
         ros-noetic-franka-hw
         ros-noetic-franka-msgs
         ros-noetic-franka-visualization
+        ros-noetic-franka-gazebo
         ros-noetic-panda-moveit-config
     )
 
     cd "${srcdir}/build_isolated/franka_ros"
     make DESTDIR="${pkgdir}/" install
-
 }
 
 
@@ -92,8 +97,6 @@ package_ros-noetic-franka-control() {
     url='https://wiki.ros.org/franka_control'
     depends=(
         ros-noetic-libfranka
-        ros-noetic-actionlib
-        ros-noetic-actionlib-msgs
         ros-noetic-controller-interface
         ros-noetic-controller-manager
         ros-noetic-franka-hw
@@ -105,10 +108,11 @@ package_ros-noetic-franka-control() {
         ros-noetic-sensor-msgs
         ros-noetic-tf2-msgs
         ros-noetic-tf
+        ros-noetic-std-srvs
         ros-noetic-franka-description
         ros-noetic-franka-gripper
         ros-noetic-joint-state-publisher
-        ros-noetic-message-runtime
+        ros-noetic-joint-trajectory-controller
         ros-noetic-robot-state-publisher
     )
     cd "${srcdir}/build_isolated/franka_control"
@@ -132,9 +136,12 @@ package_ros-noetic-franka-example-controllers() {
     depends=(
         ros-noetic-controller-interface
         ros-noetic-dynamic-reconfigure
+        ros-noetic-eigen-conversions
         ros-noetic-franka-hw
         ros-noetic-geometry-msgs
         ros-noetic-hardware-interface
+        ros-noetic-tf
+        ros-noetic-tf-conversions
         ros-noetic-libfranka
         ros-noetic-pluginlib
         ros-noetic-realtime-tools
@@ -143,9 +150,41 @@ package_ros-noetic-franka-example-controllers() {
         ros-noetic-franka-description
         ros-noetic-message-runtime
         ros-noetic-panda-moveit-config
+        ros-noetic-moveit-commander
         ros-noetic-rospy
     )
     cd "${srcdir}/build_isolated/franka_example_controllers"
+    make DESTDIR="${pkgdir}/" install
+}
+
+package_ros-noetic-franka-gazebo() {
+    pkgdesc="This package offers the FrankaHWSim Class to simulate a Franka Robot in Gazebo"
+    url='https://wiki.ros.org/franka_gazebo'
+    depends=(
+        ros-noetic-gazebo-ros
+        ros-noetic-gazebo-ros-control
+        ros-noetic-roscpp
+        ros-noetic-std-msgs
+        ros-noetic-control-msgs
+        ros-noetic-control-toolbox
+        ros-noetic-controller-manager
+        ros-noetic-controller-interface
+        ros-noetic-pluginlib
+        ros-noetic-kdl-parser
+        ros-noetic-hardware-interface
+        ros-noetic-transmission-interface
+        ros-nopetic-joint-limits-interface
+        ros-noetic-eigen-conversions
+        ros-noetic-franka-hw
+        ros-noetic-franka-msgs
+        ros-noetic-franka-gripper
+        ros-noetic-franka-example-controllers
+        ros-noetic-urdf
+        ros-noertic-angles
+        ros-noetic-rospy
+        ros-noetic-roslaunch
+    )
+    cd "${srcdir}/build_isolated/franka_gazebo"
     make DESTDIR="${pkgdir}/" install
 }
 
@@ -162,7 +201,6 @@ package_ros-noetic-franka-gripper() {
         ros-noetic-xmlrpcpp
         ros-noetic-actionlib-msgs
         ros-noetic-message-runtime
-        ros-noetic-rostest
     )
     cd "${srcdir}/build_isolated/franka_gripper"
     make DESTDIR="${pkgdir}/" install
@@ -172,12 +210,18 @@ package_ros-noetic-franka-hw() {
     pkgdesc="franka_hw provides hardware interfaces for using Franka Emika research robots with ros_control"
     url='https://wiki.ros.org/franka_hw'
     depends=(
+        ros-noetic-actionlib-msgs
+        ros-noetic-actionlib
         ros-noetic-controller-interface
+        ros-noetic-combined-robot-hw
         ros-noetic-hardware-interface
         ros-noetic-joint-limits-interface
         ros-noetic-libfranka
         ros-noetic-roscpp
+        ros-noetic-std-srvs
         ros-noetic-urdf
+        ros-noetic-pluginlib
+        ros-noetic-franka-msgs
     )
     cd "${srcdir}/build_isolated/franka_hw"
     make DESTDIR="${pkgdir}/" install
@@ -188,6 +232,7 @@ package_ros-noetic-franka-msgs() {
     url='https://wiki.ros.org/franka_msgs'
     depends=(
         ros-noetic-std-msgs
+        ros-noetic-actionlib-msgs
         ros-noetic-message-runtime
     )
     cd "${srcdir}/build_isolated/franka_msgs"
