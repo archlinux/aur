@@ -8,6 +8,7 @@ pkgbase = macfand-git
 	license = MIT
 	makedepends = git
 	makedepends = make
+        makedepends = libconfig
 	provides = macfand
 	conflicts = macfand
 	source = git+https://github.com/ablakely/macfand.git
