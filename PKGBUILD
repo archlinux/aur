@@ -6,7 +6,7 @@ url='https://github.com/ros-controls/ros_control/wiki'
 pkgname='ros-noetic-controller-manager'
 pkgver='0.19.5'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -21,12 +21,16 @@ ros_makedepends=(
 makedepends=(
     cmake
     ros-build-tools
-    python-setuptools
     ${ros_makedepends[@]}
+    python-setuptools
 )
 
 ros_depends=(
     ros-noetic-roscpp
+    ros-noetic-controller-interface
+    ros-noetic-controller-manager-msgs
+    ros-noetic-hardware-interface
+    ros-noetic-pluginlib
     ros-noetic-std-msgs
     ros-noetic-rosparam
     ros-noetic-rospy
