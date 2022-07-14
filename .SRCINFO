@@ -1,0 +1,19 @@
+pkgbase = ros-noetic-franka-description
+	pkgdesc = ROS - franka_description contains URDF files and meshes of Franka Emika robots
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://wiki.ros.org/franka_description
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = Apache 2.0
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-xacro
+	source = ros-noetic-franka-description-0.9.0.tar.gz::https://github.com/frankaemika/franka_ros/archive/0.9.0.tar.gz
+	sha256sums = e1858ed46bcc56bb336fd0e1bd1f9de6870a4313d130430bbefdef3ab4d0c991
+
+pkgname = ros-noetic-franka-description
