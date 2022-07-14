@@ -2,7 +2,6 @@ pkgdesc="A metapackage for all Franka Emika ROS packages"
 pkgbase="ros-noetic-franka-ros"
 pkgname=(
     'ros-noetic-franka-control'
-    'ros-noetic-franka-description'
     'ros-noetic-franka-example-controllers'
     'ros-noetic-franka-gazebo'
     'ros-noetic-franka-gripper'
@@ -12,7 +11,7 @@ pkgname=(
     'ros-noetic-franka-visualization'
 )
 pkgver="0.9.0"
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 url="http://wiki.ros.org/franka_ros"
 license=('Apache 2.0')
@@ -91,16 +90,6 @@ package_ros-noetic-franka-control() {
     make DESTDIR="${pkgdir}/" install
 }
 
-
-package_ros-noetic-franka-description() {
-    pkgdesc="franka_description contains URDF files and meshes of Franka Emika robots"
-    url='https://wiki.ros.org/franka_description'
-    depends=(
-        ros-noetic-xacro
-    )
-    cd "${srcdir}/build_isolated/franka_description"
-    make DESTDIR="${pkgdir}/" install
-}
 
 package_ros-noetic-franka-example-controllers() {
     pkgdesc="franka_example_controllers provides example code for controlling Franka Emika research robots with ros_control"
