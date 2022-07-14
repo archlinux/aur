@@ -145,14 +145,14 @@ package_ros-noetic-franka-gazebo() {
         ros-noetic-kdl-parser
         ros-noetic-hardware-interface
         ros-noetic-transmission-interface
-        ros-nopetic-joint-limits-interface
+        ros-noetic-joint-limits-interface
         ros-noetic-eigen-conversions
         ros-noetic-franka-hw
         ros-noetic-franka-msgs
         ros-noetic-franka-gripper
         ros-noetic-franka-example-controllers
         ros-noetic-urdf
-        ros-noertic-angles
+        ros-noetic-angles
         ros-noetic-rospy
         ros-noetic-roslaunch
     )

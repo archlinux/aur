@@ -83,14 +83,14 @@ pkgname = ros-noetic-franka-gazebo
 	depends = ros-noetic-kdl-parser
 	depends = ros-noetic-hardware-interface
 	depends = ros-noetic-transmission-interface
-	depends = ros-nopetic-joint-limits-interface
+	depends = ros-noetic-joint-limits-interface
 	depends = ros-noetic-eigen-conversions
 	depends = ros-noetic-franka-hw
 	depends = ros-noetic-franka-msgs
 	depends = ros-noetic-franka-gripper
 	depends = ros-noetic-franka-example-controllers
 	depends = ros-noetic-urdf
-	depends = ros-noertic-angles
+	depends = ros-noetic-angles
 	depends = ros-noetic-rospy
 	depends = ros-noetic-roslaunch
 
