@@ -1,0 +1,30 @@
+--- jacal.orig/Makefile	2022-07-14 11:58:29.649924664 +0900
++++ jacal/Makefile	2022-07-14 12:39:23.292683511 +0900
+@@ -25,7 +25,7 @@
+ INSTALL = install
+ INSTALL_PROGRAM = ${INSTALL}
+ INSTALL_DATA = ${INSTALL} -m 644
+-INSTALL_INFO = ginstall-info
++INSTALL_INFO = ${INSTALL}
+ 
+ CHPAT = $(HOME)/bin/chpat
+ MAKEDEV = $(MAKE) -f $(HOME)/makefile.dev
+@@ -195,12 +195,12 @@
+ 	echo "(math)"				  >> go-scm
+ 	$(INSTALL_DATA) go-scm $(DESTDIR)$(jacallibdir)go.scm
+ 	rm go-scm
+-	echo '#! /bin/sh'			   > jacal-script
+-	grep -h ^SCHEME_LIBRARY_PATH= `which slib`>> jacal-script
+-	echo export SCHEME_LIBRARY_PATH		  >> jacal-script
+-	echo JACALDIR=$(DESTDIR)$(jacallibdir)	  >> jacal-script
+-	echo VERSION=$(VERSION)			  >> jacal-script
+-	cat $<					  >> jacal-script
++	echo '#! /bin/sh'				 > jacal-script
++	echo SCHEME_LIBRARY_PATH=$(SCHEME_LIBRARY_PATH)	>> jacal-script
++	echo export SCHEME_LIBRARY_PATH			>> jacal-script
++	echo JACALDIR=$(jacallibdir)			>> jacal-script
++	echo VERSION=$(VERSION)				>> jacal-script
++	cat $<						>> jacal-script
+ 	$(INSTALL_PROGRAM) jacal-script $(DESTDIR)$(bindir)jacal
+ 	rm jacal-script
+ 
