@@ -1,12 +1,12 @@
 pkgbase = harmonoid-bin
 	pkgdesc = Elegant music app to play & manage music library. Lyrics & playlists. YouTube Music support.
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/harmonoid/harmonoid
 	arch = x86_64
 	license = custom
 	depends = mpv
-	source = harmonoid-linux-0.2.4-x86_64.tar.gz::https://github.com/harmonoid/harmonoid/releases/download/v0.2.4/harmonoid-linux-x86_64.tar.gz
-	sha256sums = 7e5240e9223daeac70002ea1b2ef5165ed1a04efe5a6c7e532a0d5940c7ee234
+	source = harmonoid-linux-0.2.5-x86_64.tar.gz::https://github.com/harmonoid/harmonoid/releases/download/v0.2.5/harmonoid-linux-x86_64.tar.gz
+	sha256sums = 6c209a71bae7e4dc5b95dad68db4f71f392a589f741b3978ca4d5b4e685ef646
 
 pkgname = harmonoid-bin
