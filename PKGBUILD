@@ -1,6 +1,6 @@
 # Maintainer: Furkan Baytekin (Elagoht) <furkanbaytekin@gmail.com>
 pkgbase=passenger-pm-bin
-pkgname=passengen-pm-bin
+pkgname=passenger-pm-bin
 pkgver=1.0
 pkgrel=1
 pkgdesc="Built version of Passenger with secret algorithm. Use opensource for your algorithm."
