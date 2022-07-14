@@ -2,8 +2,9 @@
 
 pkgname=dxvk-mingw
 pkgver=1.10.2
-_asyncver=1.10.1
-pkgrel=1
+_asyncver=1.10.2
+_asyncsha="-af418dc"
+pkgrel=2
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version'
 arch=('x86_64')
 url="https://github.com/doitsujin/dxvk"
@@ -15,7 +16,7 @@ conflicts=('dxvk' 'd9vk')
 options=(!lto !staticlibs)
 source=(
     "git+https://github.com/doitsujin/dxvk.git#tag=v$pkgver"
-    "dxvk-async-${_asyncver}.patch::https://raw.githubusercontent.com/Sporif/dxvk-async/${_asyncver}/dxvk-async.patch"
+    "dxvk-async-${_asyncver}.patch::https://raw.githubusercontent.com/Sporif/dxvk-async/${_asyncver}/dxvk-async${_asyncsha}.patch"
     "dxvk-async-conf.patch"
     "dxvk-extraopts.patch"
     "setup_dxvk"
@@ -111,7 +112,7 @@ package() {
 }
 
 sha256sums=('SKIP'
-            'e6f042cdfd1d20d3bad0e5732696d453efde0502beacc3788e2af3568eeacd68'
+            '14e9011b9aa40fe3dcc7a248735eec717a525aa2866e2bba5fd6fa5662c3dec0'
             'c9c2f02bce1e1e93d511aff73484208456835d4d7601a36ab4524939472fc401'
             'bcc15521e4c7f966a0192a1dabb7fb4935b33db39344ab5b861f9d81486f1362'
             'c1f6a18b03d1612b60f8081428f00cfac5e66315fe9d42719f01cf5564deeeff')
