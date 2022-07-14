@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=Project Sushi
+GenericName=Platformer game
+Comment=A short but challenging 2D platformer game
+Exec=project-sushi
+Icon=project-sushi
+Terminal=false
+Categories=Game;ActionGame;
+Keywords=platforming;

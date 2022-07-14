@@ -1,0 +1,11 @@
+#!/bin/bash
+export LOCALPATH="$HOME"/.project-sushi
+export WINEPREFIX="$LOCALPATH"/wine
+export WINEDLLOVERRIDES="mscoree,mshtml="
+if [ ! -d "$WINEPREFIX" ] ; then
+   mkdir -p "$WINEPREFIX" || exit 1
+   ln -s /usr/share/project-sushi/project-sushi.exe "$LOCALPATH" || exit 1
+   ln -s /usr/share/project-sushi/data.win "$LOCALPATH" || exit 1
+   cp /usr/share/project-sushi/options.ini "$LOCALPATH" || exit 1
+fi
+WINEDEBUG=-all wine "$LOCALPATH"/project-sushi.exe "$@"
