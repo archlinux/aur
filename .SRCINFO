@@ -1,6 +1,6 @@
 pkgbase = r-treeio
 	pkgdesc = Base Classes and Functions for Phylogenetic Tree Input and Output
-	pkgver = 1.20.0
+	pkgver = 1.20.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/treeio
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-treeio
 	optdepends = r-vroom
 	optdepends = r-xml2
 	optdepends = r-yaml
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/treeio_1.20.0.tar.gz
-	sha256sums = 8a7a19fd7b6475146098c3de643d69c9defca314deda08fe80b9632c16a885c1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/treeio_1.20.1.tar.gz
+	sha256sums = 095dd4629183e330f10f6560dc1b55edc3b146866de74be3a21ff8892bc69a14
 
 pkgname = r-treeio
