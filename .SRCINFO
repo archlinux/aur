@@ -1,6 +1,6 @@
 pkgbase = libretro-dosbox-core-git
 	pkgdesc = A DOSBox core for use in RetroArch and other libretro frontends
-	pkgver = r4784.f5e1796c
+	pkgver = r4939.dffa80e6
 	pkgrel = 1
 	url = https://github.com/realnc/dosbox-core
 	arch = x86_64
