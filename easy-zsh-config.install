@@ -2,6 +2,8 @@ info() {
     echo -e "================================INFO==================================="
     echo -e "* To apply changes to current user, run:"
     echo -e "  > cp /etc/zsh/zshrc ~/.zshrc"
+    echo -e "* If you don't need to customize your `.zshrc` file and you want to keep your `.zshrc` file to the current one, you can also run:"
+    echo -e "  > ln -s /etc/zsh/zshrc ~/.zshrc"
     echo -e "* To configure the theme:"
     echo -e "  Edit line 2, ~/.zshrc, and replace default theme file path with your target theme file path."
     echo -e "* Key bindings info:"
