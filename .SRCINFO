@@ -1,13 +1,15 @@
 pkgbase = 0x-git
 	pkgdesc = Colorized hex dump viewer
 	pkgver = r1.8070704
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mcy/0x
 	arch = x86_64
 	license = Apache
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
+	provides = 0x
+	conflicts = 0x
 	source = 0x-git::git+https://github.com/mcy/0x
 	sha256sums = SKIP
 
