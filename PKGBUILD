@@ -51,8 +51,7 @@ package_mangohud-git() {
     optdepends=('bash: mangohud helper script'
                 'libxnvctrl: support for older NVIDIA GPUs')
     
-    DESTDIR="$pkgdir" ninja -C build64 install
-    rm -r "$pkgdir/usr/bin" "$pkgdir/usr/share/doc" "$pkgdir/usr/share/man"  "$pkgdir/usr/share/vulkan/implicit_layer.d/libMangoApp.json"
+    meson install --destdir="$pkgdir" -C build64 --tags runtime
 }
 
 package_lib32-mangohud-git() {
@@ -63,8 +62,7 @@ package_lib32-mangohud-git() {
     replaces=('lib32-vulkan-mesa-layer-mango')
     optdepends=('lib32-libxnvctrl: support for older NVIDIA GPUs')
 
-    DESTDIR="$pkgdir" ninja -C build32 install
-    rm -r "$pkgdir/usr/bin" "$pkgdir/usr/share/doc" "$pkgdir/usr/share/man" "$pkgdir/usr/share/vulkan/implicit_layer.d/libMangoApp.json"
+    meson install --destdir="$pkgdir" -C build32 --tags runtime
     mv "$pkgdir/usr/share/vulkan/implicit_layer.d/MangoHud.json" "$pkgdir/usr/share/vulkan/implicit_layer.d/MangoHud.x86.json"
 }
 
@@ -73,8 +71,7 @@ package_mangohud-common-git() {
     conflicts=('mangohud-common')
     provides=("mangohud-common=$pkgver")
 
-    DESTDIR="$pkgdir" ninja -C build64 install
-    rm -r "$pkgdir/usr/lib" "$pkgdir/usr/share/vulkan"
+    meson install --destdir="$pkgdir" -C build64 --tags man,doc,scripts
 
     install -Dm664 "$_pkgbase/LICENSE" "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
 }
