@@ -1,17 +1,16 @@
 pkgbase = crosswords
-	pkgdesc = Crossword player and editor.
-	pkgver = 0.3.2
+	pkgdesc = Crossword player and editor for GNOME
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://gitlab.gnome.org/jrb/crosswords
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
-	checkdepends = appstream-glib
 	makedepends = meson
-	makedepends = git
-	depends = libadwaita
-	depends = librsvg
+	depends = libadwaita-git
 	depends = libipuz
-	source = git+https://gitlab.gnome.org/jrb/crosswords.git#commit=590216093a630e7a596bce309b5d23fcd4b51c7d
-	md5sums = SKIP
+	depends = python
+	source = https://gitlab.gnome.org/jrb/crosswords/-/archive/0.3.3/crosswords-0.3.3.tar.gz
+	b2sums = 44f3a9095e01d8837c5f76f79cc96e543201565b4ce1e8948ef3630f81e6b30820af5a1861b6339dcdadaab87eb5d586c163b7bd894d1886a5d1291cd9642855
 
 pkgname = crosswords
