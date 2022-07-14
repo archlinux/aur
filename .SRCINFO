@@ -1,4 +1,4 @@
-pkgbase = passenger-pm
+pkgbase = passenger-pm-bin
 	pkgdesc = Built version of Passenger with secret algorithm. Use opensource for your algorithm.
 	pkgver = 1.0
 	pkgrel = 1

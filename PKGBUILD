@@ -1,5 +1,5 @@
 # Maintainer: Furkan Baytekin (Elagoht) <furkanbaytekin@gmail.com>
-pkgbase=passenger-pm
+pkgbase=passenger-pm-bin
 pkgname=passengen-pm-bin
 pkgver=1.0
 pkgrel=1
