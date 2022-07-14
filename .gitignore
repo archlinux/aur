@@ -1,5 +1,6 @@
 *
 !PKGBUILD
 !launch_fix.diff
+!rename_icons.diff
 !.SRCINFO
 !.gitignore
