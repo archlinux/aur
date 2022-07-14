@@ -1,7 +1,7 @@
 pkgbase = chowtapemodel-git
 	pkgdesc = Physical modelling signal processing for analog tape recording
-	pkgver = 2.9.0.r20.gd5b3109
-	pkgrel = 2
+	pkgver = 2.11.0.r0.ge411646
+	pkgrel = 1
 	url = https://github.com/jatinchowdhury18/AnalogTapeModel
 	arch = x86_64
 	license = GPL3
@@ -27,6 +27,11 @@ pkgname = chowtapemodel-jack-git
 	depends = alsa-lib
 	depends = jack
 	provides = chowtapemodel-jack
+
+pkgname = chowtapemodel-clap-git
+	provides = chowtapemodel-clap
+	provides = chowtapemodel.clap
+	provides = chowtapemodel.clap-git
 
 pkgname = chowtapemodel-vst3-git
 	provides = chowtapemodel-vst3
