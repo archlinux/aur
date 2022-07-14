@@ -1,7 +1,7 @@
 # Maintainer: Daniel Otero <otero dot o dot daniel at gmail dot com>
 pkgname=cvise
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A super-parallel Python port of the C-Reduce"
 arch=('x86_64')
 url="https://github.com/marxin/cvise"
@@ -11,7 +11,7 @@ makedepends=('git' 'cmake' 'llvm')
 checkdepends=('python-pytest' 'python-pytest-flake8')
 optdepends=('colordiff')
 source=("https://github.com/marxin/cvise/archive/v$pkgver.tar.gz")
-sha256sums=('55ae8c39bdbaddba9a2ac1173bef7995e58387bc81f4610125dd1488c8e8b1ae')
+sha256sums=('3cf8c7e6b5ece928cedfff99c6453a0a595cdf57d8356bafe15ee103814e1863')
 
 build() {
 	cmake -B build -S "${pkgname}-${pkgver}" \

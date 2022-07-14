@@ -1,7 +1,7 @@
 pkgbase = cvise
 	pkgdesc = A super-parallel Python port of the C-Reduce
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/marxin/cvise
 	arch = x86_64
 	license = custom:University of Illinois
@@ -19,6 +19,6 @@ pkgbase = cvise
 	depends = unifdef
 	optdepends = colordiff
 	source = https://github.com/marxin/cvise/archive/v2.4.0.tar.gz
-	sha256sums = 55ae8c39bdbaddba9a2ac1173bef7995e58387bc81f4610125dd1488c8e8b1ae
+	sha256sums = 3cf8c7e6b5ece928cedfff99c6453a0a595cdf57d8356bafe15ee103814e1863
 
 pkgname = cvise
