@@ -10,12 +10,12 @@
 
 pkgname=p7zip-gui
 pkgver=16.02
-pkgrel=5
+pkgrel=6
 pkgdesc='Graphic user interface (alpha quality) for the 7zip file archiver'
 url='http://p7zip.sourceforge.net'
 license=('custom:unRAR' 'LGPL')
 arch=('i686' 'x86_64')
-depends=('p7zip' 'wxgtk2')
+depends=('p7zip' 'wxwidgets-gtk3')
 optdepends=('desktop-file-utils: desktop entries'
             'kservice: entries in kde context menu')
 makedepends=('python')
