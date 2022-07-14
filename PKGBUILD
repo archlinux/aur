@@ -29,7 +29,8 @@ sha256sums=('265c63ee82067f6b5dc44b47c9ec58be5e13c654f31035c60a7e375ffa4082c9'
             '5e256b84bbdbd2bd625cba0472ea27a1fde6d673d37a85fe971a20d52874acaa')
 
 prepare() {
-  ln -sf ae-${_d_ae_ver} "${srcdir}/ae" # directory name must be "ae" for --rdmd
+  ln -sfT ae-${_d_ae_ver} "${srcdir}/ae" # directory name must be "ae" for --rdmd
+  rm -rf "${srcdir}/_dub"
   cd "${srcdir}/${pkgname}-${pkgver}"
   HOME="${srcdir}/_dub" dub add-local ../ae ${_d_ae_ver}
   HOME="${srcdir}/_dub" dub add-local ../d-btrfs-${_d_btrfs_ver} ${_d_btrfs_ver}
