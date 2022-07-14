@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 pkgname=picopt
-pkgver=3.2.2
+pkgver=3.2.3
 pkgrel=1
 pkgdesc="A multi format lossless image optimizer that uses external tools"
 url="https://github.com/ajslater/${pkgname}"
@@ -13,7 +13,7 @@ optdepends=('gifsicle: for animated GIFs support'
 license=(GPL2)
 arch=(any)
 source=(https://pypi.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('d71ff6cc9d68a34147c62e5a0678124e02a20083c700b9419080baaf699b04ca3a3d52063e1b7edcf144334e1575c4a67fdf1deb57ccc28b46b4dec7d7790bce')
+sha512sums=('2581280433b0eeae3a2e1c056becf09630e42f95809b37df4f45b4d6b75d3059179fd0c2b4ce420e5dafe73faccfdc345f254a57deafd2cf2d4f5c235cd3c1da')
 
 build() {
   cd ${pkgname}-${pkgver}
