@@ -3,7 +3,7 @@
 
 pkgname=key-project
 pkgver=2.10.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A program to use formal verification with Java programs"
 
@@ -26,7 +26,7 @@ noextract=("key-$pkgver-exe.jar")
 
 sha256sums=(
   '102d85d94612272a66bf4612b06ffa0561b709bbeb3ea55ed9bd28b339211f18'
-  'e7ec88c40bce27a7c344c90bc39c54a0f2a20e239f277a6e77cdbf6036957d7f'
+  '16377958fce36d59c8fcfd9d0e34587ef1d671fd8c0aa79ca510539e1596fef5'
   'f88c92559367ca052427ef090fa934a39753200a029a29b83092309912df36a8'
   'ac2686c9d152af629f3beb2bcf219b8017df37adb8534ab054184c14b5e40b62'
   'ac2686c9d152af629f3beb2bcf219b8017df37adb8534ab054184c14b5e40b62'

@@ -1,7 +1,7 @@
 pkgbase = key-project
 	pkgdesc = A program to use formal verification with Java programs
 	pkgver = 2.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.key-project.org/
 	arch = any
 	license = GPL
