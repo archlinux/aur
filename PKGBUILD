@@ -21,6 +21,7 @@ pkgver() {
 build() {
   cd $pkgname
   git submodule update --init --recursive
+  sed -i '/ament_index_cpp/d' CMakeLists.txt
   mkdir -p build
   cmake -S.  -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TESTING=OFF
   cmake --build build -j$(nproc)
