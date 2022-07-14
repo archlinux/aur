@@ -2,7 +2,7 @@
 # Contributor : peeweep <peeweep at 0x0 dot ee>
 
 pkgname=tidal-dl
-pkgver=2022.7.8.2
+pkgver=2022.7.14.1
 pkgrel=1
 pkgdesc="Download videos and tracks from Tidal."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-aigpy' 'python-lyricsgenius' 'python-pycryptodome'
          'python-pydub' 'python-prettytable' 'python-setuptools' 'python-psutil'
          'python-pyqt5' 'python-qt-material')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7130fe725c703899157f227955f28c7d17bd92229a43e25ab3d9aef8961f2fd3')
+sha256sums=('0649226aca5c94558fa4b90b45a2baaeee1529ffee5f8c28b93f14c9cc361a8b')
 
 build() {
   cd "${pkgname}-${pkgver}"
