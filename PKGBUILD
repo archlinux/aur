@@ -2,7 +2,7 @@
 
 _pkgname=pacseek
 pkgname=pacseek-bin
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc='A terminal user interface for searching and installing Arch Linux packages (binary version)'
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('xdg-utils: open URL on click support')
 provides=('pacseek')
 conflicts=('pacseek')
 source=("$url/releases/download/v$pkgver/$_pkgname-linux-x64-v$pkgver.tar.gz")
-sha256sums=('b1326c8d53f2b0953164ea92a9c4eb4beb5c2512a9b729b4322d3d9eb447d7dc')
+sha256sums=('ccc03fd5f7b30f825668e80d6fa6b2e4f638c66fb0541c156708c1d9429a2e42')
 
 package() {
   # bin
