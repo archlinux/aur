@@ -1,13 +1,13 @@
 pkgbase = sqltoolsservice
 	pkgdesc = SQL Tools API service that provides SQL Server data management capabilities.
-	pkgver = 4.1.0.17
+	pkgver = 4.1.0.18
 	pkgrel = 1
 	url = https://github.com/microsoft/sqltoolsservice
 	arch = any
 	license = MIT
 	makedepends = dotnet-sdk
 	depends = dotnet-runtime
-	source = https://github.com/microsoft/sqltoolsservice/archive/refs/tags/4.1.0.17.tar.gz
+	source = https://github.com/microsoft/sqltoolsservice/archive/refs/tags/4.1.0.18.tar.gz
 	sha256sums = 7325102c686428dbe7579f42036fd4920db981101db315ebb66422a2b84b45cd
 
 pkgname = sqltoolsservice

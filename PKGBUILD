@@ -1,7 +1,7 @@
 # Maintainer: Gleb Liutsko <gleb@liutsko.ru>
 
 pkgname=sqltoolsservice
-pkgver=4.1.0.17
+pkgver=4.1.0.18
 pkgrel=1
 pkgdesc='SQL Tools API service that provides SQL Server data management capabilities.'
 url='https://github.com/microsoft/sqltoolsservice'
