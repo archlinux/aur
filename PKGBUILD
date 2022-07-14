@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=jupyter-server-mathjax
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc='MathJax resources as a Jupyter Server Extension'
 arch=(any)
@@ -10,7 +10,7 @@ license=(BSD)
 depends=(jupyter-server mathjax2)
 makedepends=(python-build python-installer python-jupyter_packaging)
 source=(https://pypi.io/packages/source/j/${pkgname//-/_}/${pkgname//-/_}-$pkgver.tar.gz)
-sha256sums=('64d96c8e6dfe6edba737902b2dc3a2dc058f17516776c25f4d30ca24617ee7b3')
+sha256sums=('bb1e6b6dc0686c1fe386a22b5886163db548893a99c2810c36399e9c4ca23943')
 
 build() {
   cd ${pkgname//-/_}-$pkgver
