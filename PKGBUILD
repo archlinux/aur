@@ -2,11 +2,11 @@
 
 pkgname=wxmp3val-git
 _pkgname="${pkgname%-git}"
-pkgver=r215.f23c701
-pkgrel=2
+pkgver=r219.0016161
+pkgrel=1
 pkgdesc="a free front-end for the MP3val"
 url="https://github.com/cfgnunes/wxmp3val"
-depends=(mp3val wxgtk2)
+depends=(mp3val wxwidgets-gtk3)
 makedepends=(git cmake)
 license=('GPL')
 arch=('x86_64')
