@@ -1,33 +1,34 @@
 pkgbase = lxc-nosystemd-git
 	pkgdesc = Linux Containers git version. Without systemd dependencies.
-	pkgver = 4.0.0.r1729.g78598e2b3
-	pkgrel = 4
+	pkgver = 5
+	pkgrel = 1
 	url = https://linuxcontainers.org
-	arch = x86_64
+	arch = aarch64
 	arch = armv6h
 	arch = armv7h
-	arch = aarch64
+	arch = x86_64
 	license = LGPL
+	makedepends = apparmor
 	makedepends = docbook2x
 	makedepends = doxygen
-	makedepends = lua
-	makedepends = python-setuptools
-	makedepends = apparmor
 	makedepends = git
+	makedepends = lua
+	makedepends = meson
+	makedepends = python-setuptools
 	depends = bash
-	depends = perl
-	depends = libseccomp
 	depends = libcap
+	depends = libseccomp
+	depends = perl
 	depends = python
 	depends = rsync
 	depends = wget
 	optdepends = lua
 	optdepends = lua-filesystem: lxc-top
 	optdepends = lua-alt-getopt: lxc-top
-	provides = lxc=4.0.0.r1729.g78598e2b3
-	provides = lxc-git=4.0.0.r1729.g78598e2b3
-	provides = lxc-nosystemd=4.0.0.r1729.g78598e2b3
-	provides = lxc-sysvinit=4.0.0.r1729.g78598e2b3
+	provides = lxc=5
+	provides = lxc-git=5
+	provides = lxc-nosystemd=5
+	provides = lxc-sysvinit=5
 	conflicts = lxc
 	conflicts = lxc-git
 	conflicts = lxc-nosystemd

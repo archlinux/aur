@@ -1,4 +1,3 @@
-# Maintainer: dreieck
 # Contriburor: graysky <graysky AT archlinux DOT us>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Andrea Zucchelli <zukka77@gmail.com>
@@ -9,13 +8,34 @@
 _pkgname=lxc
 _pkgvariant=nosystemd
 pkgname="${_pkgname}-${_pkgvariant}-git"
-pkgver=4.0.0.r1729.g78598e2b3
-pkgrel=4
+pkgver=5
+pkgrel=1
 pkgdesc="Linux Containers git version. Without systemd dependencies."
-arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
+arch=(
+  'aarch64'
+  'armv6h'
+  'armv7h'
+  'x86_64'
+)
 url="https://linuxcontainers.org"
-depends=('bash' 'perl' 'libseccomp' 'libcap' 'python' 'rsync' 'wget')
-makedepends=('docbook2x' 'doxygen' 'lua' 'python-setuptools' 'apparmor' 'git')
+depends=(
+  'bash'
+  'libcap'
+  'libseccomp'
+  'perl'
+  'python'
+  'rsync'
+  'wget'
+)
+makedepends=(
+  'apparmor'
+  'docbook2x'
+  'doxygen'
+  'git'
+  'lua'
+  'meson'
+  'python-setuptools'
+)
 optdepends=(
   'lua'
   'lua-filesystem: lxc-top'
@@ -48,42 +68,33 @@ sha256sums=(
   '10e4f661872f773bf3122a2f9f2cb13344fea86a4ab72beecb4213be4325c479'
 )
 
+prepare() {
+  cd "${srcdir}"
+
+  mkdir -p 'build'
+}
+
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   git describe --long | sed 's/^lxc-//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-  sed -e 's|"\\"-//Davenport//DTD DocBook V3.0//EN\\""|"\\"-//OASIS//DTD DocBook XML\\" \\"https://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd\\""|' -i configure.ac
+  _ver="$(git describe --tags | sed -E -e 's|^lxc[+-]||' -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
+  _rev="$(git rev-list --count HEAD)"
+  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
+  _hash="$(git rev-parse --short HEAD)"
+
+  if [ -z "${_ver}" ]; then
+    error "Could not determine version."
+    return 1
+  else
+    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
+  fi
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
-  ./autogen.sh
-  bashcompdir=/usr/share/bash-completion/completions ./configure \
-    --prefix=/usr \
-    --sbindir=/usr/bin \
-    --localstatedir=/var \
-    --libexecdir=/usr/lib \
-    --libdir=/usr/lib \
-    --sysconfdir=/etc \
-    --enable-doc \
-    --enable-api-docs \
-    --enable-apparmor \
-    --enable-openssl \
-    --disable-selinux \
-    --enable-seccomp \
-    --enable-capabilities \
-    --enable-examples \
-    --enable-bash \
-    --enable-tools \
-    --enable-commands \
-    --enable-pam \
-    --disable-werror \
-    --with-init-script=sysvinit \
-    --with-pamdir=/usr/lib/security
-  make
+  cd "${srcdir}"
+  arch-meson "${_pkgname}" 'build'
+  meson compile -C build
 }
 
 package() {
