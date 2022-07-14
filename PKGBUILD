@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Mufeed Ali <lastweakness@tuta.io>
 pkgname=dialect
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A translation app for GNOME."
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('dbus-python' 'gst-python' 'libadwaita' 'libsoup3' 'python-gobject' 'python-gtts')
 makedepends=('blueprint-compiler' 'git' 'gobject-introspection' 'meson')
 checkdepends=('appstream-glib')
-_commit=912ec1e99d8502a5ca2c8c483fd7e922e95ad785
+_commit=8f3fedde99a34814ced737168b1fa1f3a90afc76
 source=("git+https://github.com/dialect-app/dialect.git#commit=$_commit"
         'git+https://github.com/dialect-app/po.git')
 sha256sums=('SKIP'
