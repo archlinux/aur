@@ -14,11 +14,10 @@ pkgver() {
   printf "$pkgver"
 }
 package() {
+   sed -i "s/Exec\=passenger/Exec\=\/usr\/share\/Passenger\/Passenger/" Passenger.desktop 
    cp -fv "Passenger.app" "Passenger/Passenger"
    install -d "$pkgdir/usr/share/applications"
    cp -vr "Passenger" "$pkgdir/usr/share"
    install -Dm644 "Passenger.desktop" -t "$pkgdir/usr/share/applications"
-   install -d "$pkgdir/usr/bin"
-   ln -s "$pkgdir/usr/share/Passenger/Passenger" "$pkgdir/usr/bin/passenger"
    rm -r *
 }
