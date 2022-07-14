@@ -2,14 +2,18 @@ pkgdesc="ROS - Controller for executing joint-space trajectories on a group of j
 url='https://github.com/ros-controls/ros_controllers/wiki'
 
 pkgname='ros-noetic-joint-trajectory-controller'
-pkgver='0.17.0'
+pkgver='0.20.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
     ros-noetic-catkin
-    ros-noetic-cmake-modules
+    ros-noetic-angles
+    ros-noetic-control-msgs
+    ros-noetic-hardware-interface
+    ros-noetic-pluginlib
+    ros-noetic-trajectory-msgs
 )
 
 makedepends=(
@@ -20,25 +24,25 @@ makedepends=(
 
 ros_depends=(
     ros-noetic-actionlib
-    ros-noetic-angles
-    ros-noetic-control-msgs
     ros-noetic-control-toolbox
     ros-noetic-controller-interface
-    ros-noetic-hardware-interface
     ros-noetic-realtime-tools
     ros-noetic-roscpp
-    ros-noetic-trajectory-msgs
     ros-noetic-urdf
-    ros-noetic-pluginlib
+    ros-noetic-controller-manager
+    ros-noetic-xacro
+    ros-noetic-rostest
+    ros-noetic-std-msgs
 )
 
 depends=(
     ${ros_depends[@]}
+    boost
 )
 
 _dir="ros_controllers-${pkgver}/joint_trajectory_controller"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/ros_controllers/archive/${pkgver}.tar.gz")
-sha256sums=('d1b46651956d19a36eedc628c2761526ec4769390e596bd76688abc45f59ace8')
+sha256sums=('c9a42db66d8a90604f255592fb0f2c20d315a235a0a20aaa07a1e045dcda6d27')
 
 build() {
     # Use ROS environment variables
