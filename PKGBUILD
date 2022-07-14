@@ -12,7 +12,7 @@ arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
 license=('MIT')
 depends=('ledger-udev')
-makedepends=('git' 'pnpm' 'ruby-bundler' 'python>=3.5' 'nodejs>=16')
+makedepends=('pnpm' 'ruby-bundler' 'python>=3.5' 'nodejs>=16')
 provides=('ledger-live')
 conflicts=('ledger-live-bin' 'ledger-live-git')
 _pkgfolder=ledger-live--ledgerhq-live-desktop-${pkgver}
