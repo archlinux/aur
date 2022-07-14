@@ -35,7 +35,6 @@ mv ~/.zshrc ~/.zshrc.bak
 ```zsh
 ln -s /etc/zsh/zshrc ~/.zshrc
 ```
-
   - If you want to customize your `.zshrc` file, run:
 ```zsh
 cp /etc/zsh/zshrc ~/.zshrc
