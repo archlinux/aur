@@ -1,0 +1,14 @@
+pkgbase = dina8-font-otb
+	pkgdesc = A monospace bitmap font, primarily aimed at programmers, only size 8 (OTB Format)
+	pkgver = 2.92
+	pkgrel = 10
+	url = https://www.dcmembers.com/jibsen/download/61/
+	arch = any
+	license = custom
+	makedepends = fonttosfnt
+	depends = fontconfig
+	conflicts = dina-font-otb
+	source = dina-2.92-new.zip::https://www.dcmembers.com/jibsen/download/61/?wpdmdl=61
+	md5sums = 028424baac750e9fd0f54df03202e5d0
+
+pkgname = dina8-font-otb
