@@ -3,7 +3,7 @@
 
 _pyname=fontParts
 pkgname=python-${_pyname,,}
-pkgver=0.10.6
+pkgver=0.10.7
 pkgrel=1
 pkgdesc='The replacement for RoboFab'
 arch=(any)
@@ -24,7 +24,7 @@ makedepends=(python-{build,installer}
              python-wheel)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.zip")
-sha256sums=('9849d05a6cf36794bcad6ce65ee2438dcba82028ba43e6a7797f211978f5d468')
+sha256sums=('bb484a2362cb5805062154440a4e9be72ed42a0247531d88f11e50faa90ac5c8')
 
 build() {
 	cd "$_archive"
