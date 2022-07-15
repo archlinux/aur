@@ -1,6 +1,6 @@
 # Maintainer: Cyano Hao <c@cyano.cn>
 
-_electron=electron18
+_electron=electron
 _electronver=$(</usr/lib/$_electron/version)
 
 _pkgname=WowUp
