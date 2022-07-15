@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=python3-gpg_batch_sign
 pkgver=2021.11.20
-pkgrel=2
+pkgrel=4
 pkgdesc='A module and stand-alone script for batch-signing files with GPG.'
 arch=(any)
 license=(GPL)
@@ -13,13 +13,13 @@ source=(
 )
 sha512sums=(
   336133cd07c332cb3cb3c0f6fae63b1905455ea27c5c2d892b54ca2068f10769b889879e34e1db6473940590040ac5984ce41d5b77b38a1707d470a37780bdfd
-  a5d65233b762b20f4e231b7ec7331be0ed8702560ed01760b7f340336a249eefd5ec0265fc2dbfe9701bbb7a9cc5a43484c2abd7289d622c45f435538c9da526
+  3a91d7411f39091d8fb39f9c266f6e6fbae7a0d7d842d1cee7fb1fcf123d94212815fe801e952e896af1d741a52b86a0d9da32b38801d8da2f523facbd394eeb
 )
 md5sums=(
   3e6972122f14ef911e0e5203a4f0bef6
-  487f41c47c5de1be64f4a34e4ef308d4
+  0a9fec316b961c527977c2d3f820965d
 )
-validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
+validpgpkeys=('D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519')
 
 package ()
 {
