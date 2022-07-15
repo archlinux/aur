@@ -21,14 +21,17 @@ backup=("root/.zshrc"
         "etc/skel/.zshrc")
 install="easy-zsh-config.install"
 source=("zshrc"
-        "LICENSE")
-sha256sums=('9daaf2e6d518f74d1e60d5cb7e4250778c9405b75e4c0377284200b5259d1e01'
-            '191f93567e767c599cfd843bb8343f311396d8e80d423ec38af2ad3dc52551a3')
+        "LICENSE"
+        "easy-zsh-config")
+sha256sums=('74025a0f32a58a8474466c2b09a56d0f5600f369ab206abf58244e9a3501578a'
+            '191f93567e767c599cfd843bb8343f311396d8e80d423ec38af2ad3dc52551a3'
+            '9081f1c9b5ee60aaab6a0641002bcfae4ab231d4c219f07304d6dbfcf23d4073')
 
 package(){
     install -Dm644 zshrc "${pkgdir}/etc/skel/.zshrc"
     install -Dm644 zshrc "${pkgdir}/etc/zsh/zshrc"
     install -Dm640 zshrc "${pkgdir}/root/.zshrc"
     install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm644 easy-zsh-config "${pkgdir}/usr/share/zsh/easy-zsh-config"
     chmod 750 "${pkgdir}/root"
 }
