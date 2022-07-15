@@ -1,7 +1,7 @@
 pkgbase = broadcom-bt-firmware
 	pkgdesc = Firmware for Broadcom Bluetooth devices
 	pkgver = 10.1.0.1115
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/winterheart/broadcom-bt-firmware
 	arch = x86_64
 	license = custom
