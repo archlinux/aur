@@ -6,6 +6,7 @@ if [[ -r "${_POSH_THEME}" ]];then
 else
   echo "Warning: \"${POSH_THEME_FILE}\" is unreachable! Using the fallback theme now (may be very slow to load)!"
   echo "Please check your theme file's existance and read permission!"
+  echo "Tips: run \"sudo chmod +r -R /usr/share/oh-my-posh/\" may helps when there're permission issues"
 fi
 eval "$(oh-my-posh init zsh)"
 

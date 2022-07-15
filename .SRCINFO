@@ -1,7 +1,7 @@
 pkgbase = easy-zsh-config
 	pkgdesc = A simple but fast and out of the box configuration of zsh powered by oh-my-posh and zsh pulgins.
 	pkgver = 0.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wszqkzqk/easy-zsh-config
 	install = easy-zsh-config.install
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = easy-zsh-config
 	source = zshrc
 	source = LICENSE
 	source = easy-zsh-config
-	sha256sums = d8e2f94691555821dccbb8d9238c473405a712e8f77b4df852376c3b7b534f84
+	sha256sums = ae6b9a0fdcffc34a4d1b8040cd0582357f13c52e5fada7fe2facd108d68cd166
 	sha256sums = 191f93567e767c599cfd843bb8343f311396d8e80d423ec38af2ad3dc52551a3
 	sha256sums = 9081f1c9b5ee60aaab6a0641002bcfae4ab231d4c219f07304d6dbfcf23d4073
 
