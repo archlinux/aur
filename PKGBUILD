@@ -1,18 +1,20 @@
 # Maintainer: Cyano Hao <c@cyano.cn>
 
+_electron=electron18
+_electronver=$(</usr/lib/$_electron/version)
+
 _pkgname=WowUp
 pkgname=${_pkgname,,}-native
-_electronver=$(</usr/lib/electron/version)
-_pkgver=2.8.2
-pkgver=${_pkgver/-/.}+electron.${_electronver}
-pkgrel=2
-pkgdesc='WowUp the World of Warcraft addon updater (system Electron)'
+_pkgver=2.8.3
+pkgver=${_pkgver/-/.}
+pkgrel=1
+pkgdesc='World of Warcraft addon updater (system Electron)'
 arch=('x86_64')
 
 url='https://github.com/WowUp/WowUp'
 license=('GPL3')
 depends=(
-    'electron'
+    $_electron
 )
 makedepends=(
     'nodejs-lts-gallium' # may fail with latest nodejs, use lts
@@ -26,8 +28,8 @@ source=(
     wowup-native.desktop
     run_wowup-native.sh
 )
-sha256sums=('ca080bd5a6debbb98195318159fd5c252dd5ec53ebde4802f113041d1c072608'
-            '6bfc22269c930d771c9c3cbbdf49ccda67a6d0e57d0e9414eb4af519b0653ca0'
+sha256sums=('fb17965dbe1900a9cf4bf50a7f2bc46124ac622b0c1356b40c53fc76838554e0'
+            '371d0e19917b031911ac5503e01e19170988230fb793f68e42eb15e4d1cfb97c'
             '76ebf12e022e15075a6a3824731a8288acbc6a4e1f69f6bd0fa3591d6f658656'
             '96b62f48ab60f289a375b93eef8ccbd67be818e1043f450da706894b2c958356')
 
@@ -38,6 +40,9 @@ prepare() {
     # intergient.com refuse to provide service to users in some country/region
     # add a workaround that extracts the key manually
     cat wago-fix.js >>"$_pkgname-$_pkgver/wowup-electron/assets/preload/wago.js"
+
+    # set correct electron path in launcher
+    sed -i "s|/usr/bin/electron|/usr/bin/$_electron|" run_wowup-native.sh wowup-native.desktop
 }
 
 build() {
@@ -55,7 +60,7 @@ build() {
     ./node_modules/.bin/electron-builder \
         --linux dir \
         -c.nodeGypRebuild=false \
-        -c.electronDist=/usr/lib/electron \
+        -c.electronDist=/usr/lib/$_electron \
         -c.electronVersion=$_electronver
 }
 
