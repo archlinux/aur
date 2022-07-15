@@ -5,7 +5,7 @@
 
 pkgname=fluent-bit
 
-pkgver=1.9.5
+pkgver=1.9.6
 pkgrel=1
 epoch=
 
@@ -73,5 +73,5 @@ package() {
 }
 
 # curl https://releases.fluentbit.io/1.x/source-1.x.y.tar.gz.{md5,sha256}
-md5sums=('62801c9d034e5b6ecf9d6c6b279ab7d3')
-sha256sums=('1ce2cd411b25297f0d6c175a8131fbd949abaa7d1d7f15c9d8913771e71bf5ae')
+md5sums=('ad65bb3ca55d203a467a63426e17bfae')
+sha256sums=('5ef7dd97e10936269fe5f4e5d3ebf16559333066f7d6757ba12464a9d6186570')
