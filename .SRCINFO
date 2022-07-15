@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-zstd
 	pkgdesc = Zstandard - Fast real-time compression algorithm (mingw-w64)
 	pkgver = 1.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.zstd.net/
 	arch = x86_64
 	license = BSD
@@ -11,7 +11,7 @@ pkgbase = mingw-w64-zstd
 	options = staticlibs
 	options = !buildflags
 	options = !strip
-	source = zstd-1.5.2.tar.gz::https://github.com/facebook/zstd/archive/refs/tags/1.5.2.tar.gz
-	sha256sums = 7c42d56fac126929a6a85dbc73ff1db2411d04f104fae9bdea51305663a83fd0
+	source = zstd-1.5.2.tar.gz::https://github.com/facebook/zstd/archive/refs/tags/v1.5.2.tar.gz
+	sha256sums = f7de13462f7a82c29ab865820149e778cbfe01087b3a55b5332707abf9db4a6e
 
 pkgname = mingw-w64-zstd
