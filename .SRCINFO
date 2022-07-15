@@ -12,7 +12,7 @@ pkgbase = ypsilon-scheme2
 	depends = llvm>=10
 	depends = llvm<15
 	optdepends = rlwrap: readline support
-	source = https://github.com/fujita-y/ypsilon/archive/v2.0.8.tar.gz
+	source = ypsilon-2.0.8.tar.gz::https://github.com/fujita-y/ypsilon/archive/v2.0.8.tar.gz
 	source = 0001-rename-to-ypsilon2.patch
 	source = 0002-use-__FILE_NAME__-Clang-extension.patch
 	source = 0003-supports-llvm-14.patch

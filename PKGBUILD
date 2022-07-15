@@ -13,7 +13,7 @@ depends=('llvm>=10' 'llvm<15')
 makedepends=('clang' 'cmake' 'lld')
 optdepends=('rlwrap: readline support')
 
-source=($url/archive/v$pkgver.tar.gz
+source=("ypsilon-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         0001-rename-to-ypsilon2.patch
         0002-use-__FILE_NAME__-Clang-extension.patch
         0003-supports-llvm-14.patch)
