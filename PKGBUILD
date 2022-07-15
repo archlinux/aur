@@ -3,7 +3,7 @@
 # Contributor: Baptiste Grenier <baptiste@bapt.name>
 
 pkgname=ttf-andika
-pkgver=6.001
+pkgver=6.101
 pkgrel=1
 pkgdesc='A sans serif, Unicode-compliant font designed especially for literacy use'
 url='https://software.sil.org/andika/'
@@ -11,7 +11,7 @@ arch=('any')
 license=('OFL')
 conflicts=('ttf-sil-fonts<=6')
 source=("https://software.sil.org/downloads/r/andika/Andika-$pkgver.zip")
-sha256sums=('efb4879bb78f256ac821ad621a7fc7925aad309bb43c56820b4ccbb51e9a111c')
+sha256sums=('8595a879054a540b24fa942a2621efcd194a9f6468d9cf2541ae693e496b8dd4')
 
 package() {
 	cd Andika-$pkgver
