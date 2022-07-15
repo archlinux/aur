@@ -1,0 +1,12 @@
+pkgbase = golden-point
+	pkgdesc = Golden Point is FIDO network message editor/reader, mailer, tracker and tosser.
+	pkgver = 1.2.19
+	pkgrel = 1
+	url = https://github.com/vit1251/golden/releases
+	arch = x86_64
+	license = MIT
+	makedepends = go>=2:1.18
+	source = https://github.com/vit1251/golden-point/archive/refs/tags/1.2.19.tar.gz
+	md5sums = 0eb99ab2413bf2078b75e202de995764
+
+pkgname = golden-point
