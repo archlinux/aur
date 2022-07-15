@@ -1,18 +1,19 @@
 pkgbase = openbgpd
 	pkgdesc = A FREE implementation of the Border Gateway Protocol, Version 4
-	pkgver = 7.2
+	pkgver = 7.5
 	pkgrel = 1
-	url = https://openbgpd.com
+	url = https://www.openbgpd.org
 	arch = x86_64
 	license = ISC
-	makedepends = git
-	depends = glibc
-	depends = rpki-client
-	source = https://github.com/openbgpd-portable/openbgpd-portable/archive/refs/tags/7.2.tar.gz
+	depends = libevent
+	source = https://cdn.openbsd.org/pub/OpenBSD/OpenBGPD/openbgpd-7.5.tar.gz
+	source = https://cdn.openbsd.org/pub/OpenBSD/OpenBGPD/openbgpd-7.5.tar.gz.asc
 	source = bgpd.service
 	source = sysusers.conf
-	sha256sums = b9a0da39e69fcd7aa96dc4c624de430a522160b669bc0bf548158c1f5db291b0
-	sha256sums = d19c8a1ce86e09a5cf7ed9c77fe84bf725dd28cb0e71f912c09907b4e7130239
+	validpgpkeys = BA3DA14FEE657A6D7931C08EC755429BA6A969A8
+	sha256sums = 67a81b3005cb23416b1c4842f1a1ed63a113c26ef1e91ce9ec0b90dcd5caffea
+	sha256sums = SKIP
+	sha256sums = 374fbf93489ba8e5d8722c534e5c899a6c01601d5540423ac290fcc0fe6c77c6
 	sha256sums = 66d091f846ea9202bc87c985918d69425fb0f165f38d753b02094569b9e1191c
 
 pkgname = openbgpd

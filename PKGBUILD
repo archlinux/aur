@@ -1,40 +1,25 @@
-# Maintainer: Yuuta Liang <yuuta@yuuta.moe>
+# Maintainer: T.J. Townsend <tj@openbsd.org>
+# Contributor: Yuuta Liang <yuuta@yuuta.moe>
+
 pkgname=openbgpd
-pkgver=7.2
+pkgver=7.5
 pkgrel=1
-epoch=
 pkgdesc="A FREE implementation of the Border Gateway Protocol, Version 4"
 arch=(x86_64)
-url="https://openbgpd.com"
+url="https://www.openbgpd.org"
 license=('ISC')
-groups=()
-depends=(glibc rpki-client)
-makedepends=(git)
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://github.com/openbgpd-portable/openbgpd-portable/archive/refs/tags/$pkgver.tar.gz"
-"bgpd.service"
-"sysusers.conf")
-noextract=()
-sha256sums=('b9a0da39e69fcd7aa96dc4c624de430a522160b669bc0bf548158c1f5db291b0'
-            'd19c8a1ce86e09a5cf7ed9c77fe84bf725dd28cb0e71f912c09907b4e7130239'
+depends=(libevent)
+source=(https://cdn.openbsd.org/pub/OpenBSD/OpenBGPD/openbgpd-${pkgver}.tar.gz{,.asc}
+	bgpd.service
+	sysusers.conf)
+sha256sums=('67a81b3005cb23416b1c4842f1a1ed63a113c26ef1e91ce9ec0b90dcd5caffea'
+            'SKIP'
+            '374fbf93489ba8e5d8722c534e5c899a6c01601d5540423ac290fcc0fe6c77c6'
             '66d091f846ea9202bc87c985918d69425fb0f165f38d753b02094569b9e1191c')
-validpgpkeys=()
-
-prepare() {
-	cd "$pkgname-portable-$pkgver"
-}
+validpgpkeys=(BA3DA14FEE657A6D7931C08EC755429BA6A969A8) # Claudio Jeker
 
 build() {
-	cd "$pkgname-portable-$pkgver"
-	./autogen.sh
+	cd "$pkgname-$pkgver"
 	./configure \
 		--prefix=/usr \
 		--sysconfdir=/etc/bgpd \
@@ -45,14 +30,14 @@ build() {
 }
 
 check() {
-	cd "$pkgname-portable-$pkgver"
+	cd "$pkgname-$pkgver"
 	make -k check
 }
 
 package() {
-	cd "$pkgname-portable-$pkgver"
+	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
-	rm -r "$pkgdir/var/run"
+	rm -r "$pkgdir/var"
 	mkdir -p "$pkgdir/usr/share/licenses/openbgpd/"
         install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/openbgpd/"
 	mkdir -p "$pkgdir/usr/lib/sysusers.d/"
