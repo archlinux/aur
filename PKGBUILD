@@ -2,7 +2,7 @@
 pkgname=nx-udev
 pkgver=0.1.1
 pkgrel=1
-pkgdesc="udev rule for the Nintendo Switch"
+pkgdesc="udev rule allowing communication with the Nintendo Switch without root"
 arch=('any')
 url="https://github.com/pheki/nx-udev"
 license=('GPL3')
