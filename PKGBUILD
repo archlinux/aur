@@ -4,7 +4,7 @@
 pkgname=gnome-shell-extension-pip-on-top43
 _pkgname=gnome-shell-extension-pip-on-top
 pkgver=43.alpha
-pkgrel=3
+pkgrel=4
 pkgdesc='Makes Picture-in-Picture windows stay on top (with GNOME 43 patches)'
 url="https://github.com/Rafostar/gnome-shell-extension-pip-on-top"
 arch=('any')
@@ -21,7 +21,7 @@ source=(
 )
 
 b2sums=('SKIP'
-        '259ad5ddb14501b9bd7df77a38e17101d1ddee9e4cce276a2392fd678178a28c766ef3045bba1bae306aba4c3e812f3576ba5869c41a24034b0e1c90c11f9330')
+        '5338861d09dd2e5a66334e2ca4f404ef09176e8e586f3b9477732c0376275048ece6825982dfb68a7c60b9d3e17d07c56dace8a1621a4b2aec5bab46d45e9829')
 
 prepare() {
   cd "${_cvsdir}"
