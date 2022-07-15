@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.1090
+pkgver=mainline.0.1091
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=(
 	'cmake>=3.15'
 	'cpp-httplib-compiled>=0.10.8'
 	'cubeb>=r1398'
-	'dynarmic>=6'
+	'dynarmic>=6.2'
 	'ffmpeg>=4.3.1'
 	'fmt>=8.0.1'
 	'git'
