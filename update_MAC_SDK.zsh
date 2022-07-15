@@ -35,7 +35,7 @@ function try_update(){
 
 function main(){
     local ver=$(get_last_version)
-    [[ -n $ver ]] && try_update $ver || echo "Can't retrieve online version"
+    [[ -n $ver ]] && try_update $ver || { echo "Can't retrieve online version" && return 1 }
 }
 
 cd $0:A:h && main $@
