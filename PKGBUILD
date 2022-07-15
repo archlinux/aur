@@ -102,6 +102,8 @@ BUILD_DIR="_build"
 prepare()
 {
   cd "${srcdir}/${_pkg_name_ver}"
+  # temporary hack: remove wxcrafter
+  rm -rf wxcrafter
   #patch -p0 < "${startdir}/CMakeLists.txt.patch"
 }
 
