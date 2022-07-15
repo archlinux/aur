@@ -1,17 +1,17 @@
 pkgbase = quixand
 	pkgdesc = A tool for creating single-use unrecoverable encrypted sandboxes.
 	pkgver = 2020
-	pkgrel = 2
+	pkgrel = 4
 	url = https://xyne.dev/projects/quixand
 	arch = any
 	license = GPL
 	depends = encfs
 	source = https://xyne.dev/projects/quixand/src/quixand-2020.tar.xz
 	source = https://xyne.dev/projects/quixand/src/quixand-2020.tar.xz.sig
-	validpgpkeys = EC3CBE7F607D11E663149E811D1F0DC78F173680
+	validpgpkeys = D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519
 	md5sums = 462656113d86e837a4918dfb8431cfe6
-	md5sums = 7030a3ddf7a5e4c6c9587277b0be710b
+	md5sums = ee175d40aa25f9d0dcd3b306883dafeb
 	sha512sums = 15b3d14337f994843db35b6f3a85d670a6df4819e31df18cc4f5e9ec7981b01628a059a7bc16145b0807fa61b8c04a1a98090fff7cc580bd5af5d6ab9bd27901
-	sha512sums = b935f27ba5ea75edd73d562917e28e128e1c5e79bd7e13f74cd3aa43ac8d274506d0da480ea8c82a5e3a7bf3b87ae2dc2aade9bf9a316f013cfef21c19910309
+	sha512sums = 25d8a506f9ee2355e48d7c6a3219af2dcc69daf14806e30aaac13a56ad736513009fa17146c37e2e95fc2a0fbae6fb7d6b6db8bfdabff97ee6d342de346eda03
 
 pkgname = quixand
