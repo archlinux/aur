@@ -1,10 +1,10 @@
 # Maintainer: <reg-archlinux AT klein DOT tuxli DOT ch> 
 pkgname=neatmail
 pkgver=02
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line mail client."
 arch=('i686' 'x86_64' 'aarch64')
-url="http://repo.or.cz/neatmail.git"
+url="https://repo.or.cz/neatmail.git"
 license=('ISC')
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aligrudi/neatmail/archive/refs/tags/${pkgver}.tar.gz")

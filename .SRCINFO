@@ -1,8 +1,8 @@
 pkgbase = neatmail
 	pkgdesc = A command-line mail client.
 	pkgver = 02
-	pkgrel = 1
-	url = http://repo.or.cz/neatmail.git
+	pkgrel = 2
+	url = https://repo.or.cz/neatmail.git
 	arch = i686
 	arch = x86_64
 	arch = aarch64
