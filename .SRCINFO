@@ -1,0 +1,14 @@
+pkgbase = kubeeye-bin
+	pkgdesc = KubeEye aims to find various problems on Kubernetes, such as application misconfiguration, unhealthy cluster components and node problems.
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/kubesphere/kubeeye
+	arch = x86_64
+	license = Apache 2
+	provides = kubeeye-bin
+	source = https://github.com/kubesphere/kubeeye/releases/download/v0.5.0/kubeeye-v0.5.0-linux-amd64.tar.gz
+	source = https://raw.githubusercontent.com/kubesphere/kubeeye/v0.5.0/LICENSE
+	sha256sums = 41d2bb5c339d6a9447fab6224183c7eef9ce0a203fe9b7142cb643f9f693808a
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+
+pkgname = kubeeye-bin
