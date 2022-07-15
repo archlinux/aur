@@ -15,7 +15,7 @@
 
 pkgbase='nvidia-merged'
 pkgname=('lib32-nvidia-merged-utils' 'lib32-opencl-nvidia-merged' 'nvidia-merged-dkms' 'nvidia-merged-settings' 'nvidia-merged-utils' 'opencl-nvidia-merged')
-pkgver=510.47.03
+pkgver=510.73.06
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'rust')
@@ -23,7 +23,8 @@ url='https://krutavshah.github.io/GPU_Virtualization-Wiki/'
 license=('custom')
 options=('!strip')
 groups=('nvidia-merged')
-_gridpkg="NVIDIA-Linux-${CARCH}-${pkgver}-grid"
+_gridpkgver=510.73.08
+_gridpkg="NVIDIA-Linux-${CARCH}-${_gridpkgver}-grid"
 _vgpupkg="NVIDIA-Linux-${CARCH}-${pkgver}-vgpu-kvm"
 
 DLAGENTS=("file::/usr/bin/echo ${BOLD}${RED} Unable to find %u, please read the PKGBUILD ${ALL_OFF}" $DLAGENTS[@])
@@ -33,25 +34,27 @@ source=(
     'nvidia-smi'
     'nvidia-vgpu.conf'
     'vgpu_unlock-rs.conf'
+    'disable-nvidia-blob-version-check.patch'
+    'nvidia-510.73.05-vgpu-5.18.patch'
     'nv-kernel.patch'
     'nvidia.rules'
     'nvidia-utils.sysusers'
-    'nvidia-vgpu-vfio.patch'
     'vgpu_unlock.patch'
     "file://${_gridpkg}.run"
     "file://${_vgpupkg}.run"
-    'git+https://github.com/mbilker/vgpu_unlock-rs.git#commit=3858f2c')
+    'git+https://github.com/mbilker/vgpu_unlock-rs.git#commit=6deede6')
 sha256sums=('be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d'
             '20676096714ac00d9fc993901ab275e4b0fa3f2eddc937dae395c8f4e8cb543e'
             '5ea0d9edfcf282cea9b204291716a9a4d6d522ba3a6bc28d78edf505b6dc7949'
             'c85ae100a6c87c12906fd0057b77c0c4190f68434de4bc3bc89348ffc19aed61'
-            '7f6c7ab8bdcff47589306c465906bf950c93a721cb1c01792ca8150530566316'
+            'cc150696cf5b74556fca93cee3b1fc05695bb3a420a4a7bae5090e4b9d9bcfd7'
+            '79b09682f9c3cfa32d219a14b3c956d8f05340addd5a43e7063c3d96175a56f4'
+            '36325e26243429e1e55c8500bcac850fea6e6a8975a657984c0979042a001c7b'
             '4fbfd461f939f18786e79f8dba5fdb48be9f00f2ff4b1bb2f184dbce42dd6fc3'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
-            '35bb29a3ea181ceadc6e27e88af863f10a6ba94ea16d9394cea4b50d384d3c47'
             'f77f26f609bb6f1eb69d3dc7e84ba704e5c065e424a619ab1460accb8247143f'
-            '10f7873893ff558f92bbf0d2e7ec208d652f43f2829e7a307a83d46ac6cb61df'
-            '8656a261902e6569a71fbb55229dde8f03383772b6be50044102f250520d846f'
+            '2affa1e1035a71b17d15d5fa9a16d8b3704d73701f04afaa4b09035a3412e6ce'
+            'b7d076bee270e779b7c1eb512c9325794be2e8cbd7cd37c0f62fc72d87654a82'
             'SKIP')
 
 create_links() {
@@ -82,7 +85,7 @@ prepare() {
       -i "${_gridpkg}/kernel/conftest.sh"
 
     sed \
-      -e "s/__VERSION_STRING/${pkgver}/" \
+      -e "s/__VERSION_STRING/${_gridpkgver}/" \
       -e 's/__JOBS/`nproc`/' \
       -e 's/__DKMS_MODULES//' \
       -e '$iBUILT_MODULE_NAME[0]="nvidia"\
@@ -101,11 +104,12 @@ DEST_MODULE_LOCATION[5]="/kernel/drivers/video"' \
       -i "${_gridpkg}/kernel/dkms.conf"
 
     pushd "${_vgpupkg}"
-    patch -p1 < "${srcdir}/nvidia-vgpu-vfio.patch"
+    patch -p1 < "${srcdir}/nvidia-510.73.05-vgpu-5.18.patch"
     popd
 
     pushd "${_gridpkg}"
-    patch -p1 < "${srcdir}/nv-kernel.patch"
+    patch -p1 < "${srcdir}/disable-nvidia-blob-version-check.patch"
+    patch -u kernel/nvidia/nv-kernel.o_binary < "${srcdir}/nv-kernel.patch"
     patch -p1 < "${srcdir}/vgpu_unlock.patch"
     popd
 }
@@ -125,9 +129,9 @@ package_opencl-nvidia-merged() {
 
     # OpenCL
     install -D -m644 "${_gridpkg}/nvidia.icd" "${pkgdir}/etc/OpenCL/vendors/nvidia.icd"
-    install -D -m755 "${_gridpkg}/libnvidia-compiler-next.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-compiler-next.so.${pkgver}"
-    install -D -m755 "${_gridpkg}/libnvidia-compiler.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-compiler.so.${pkgver}"
-    install -D -m755 "${_gridpkg}/libnvidia-opencl.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-opencl.so.${pkgver}"
+    install -D -m755 "${_gridpkg}/libnvidia-compiler-next.so.${_gridpkgver}" "${pkgdir}/usr/lib/libnvidia-compiler-next.so.${_gridpkgver}"
+    install -D -m755 "${_gridpkg}/libnvidia-compiler.so.${_gridpkgver}" "${pkgdir}/usr/lib/libnvidia-compiler.so.${_gridpkgver}"
+    install -D -m755 "${_gridpkg}/libnvidia-opencl.so.${_gridpkgver}" "${pkgdir}/usr/lib/libnvidia-opencl.so.${_gridpkgver}"
 
     create_links
 
@@ -140,12 +144,12 @@ package_nvidia-merged-dkms() {
     provides=('NVIDIA-MODULE' 'nvidia-dkms')
 
     install -d -m755 "${pkgdir}/usr/src"
-    cp -dr --no-preserve='ownership' "${_gridpkg}/kernel" "${pkgdir}/usr/src/nvidia-${pkgver}"
+    cp -dr --no-preserve='ownership' "${_gridpkg}/kernel" "${pkgdir}/usr/src/nvidia-${_gridpkgver}"
 
-    install -D -m644 "${_vgpupkg}/kernel/common/inc/nv-vgpu-vfio-interface.h" "${pkgdir}/usr/src/nvidia-${pkgver}/common/inc/nv-vgpu-vfio-interface.h"
-    install -D -m644 "${_vgpupkg}/kernel/nvidia/nv-vgpu-vfio-interface.c" "${pkgdir}/usr/src/nvidia-${pkgver}/nvidia/nv-vgpu-vfio-interface.c"
-    install -D -m644 "${_vgpupkg}/kernel/nvidia/nvidia-sources.Kbuild" "${pkgdir}/usr/src/nvidia-${pkgver}/nvidia/nvidia-sources.Kbuild"
-    cp -dr --no-preserve='ownership' "${_vgpupkg}/kernel/nvidia-vgpu-vfio" "${pkgdir}/usr/src/nvidia-${pkgver}/nvidia-vgpu-vfio"
+    install -D -m644 "${_vgpupkg}/kernel/common/inc/nv-vgpu-vfio-interface.h" "${pkgdir}/usr/src/nvidia-${_gridpkgver}/common/inc/nv-vgpu-vfio-interface.h"
+    install -D -m644 "${_vgpupkg}/kernel/nvidia/nv-vgpu-vfio-interface.c" "${pkgdir}/usr/src/nvidia-${_gridpkgver}/nvidia/nv-vgpu-vfio-interface.c"
+    install -D -m644 "${_vgpupkg}/kernel/nvidia/nvidia-sources.Kbuild" "${pkgdir}/usr/src/nvidia-${_gridpkgver}/nvidia/nvidia-sources.Kbuild"
+    cp -dr --no-preserve='ownership' "${_vgpupkg}/kernel/nvidia-vgpu-vfio" "${pkgdir}/usr/src/nvidia-${_gridpkgver}/nvidia-vgpu-vfio"
 
     echo "blacklist nouveau" | install -D -m644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/${pkgname}.conf"
     echo "nvidia-uvm"        | install -D -m644 /dev/stdin "${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
@@ -160,7 +164,7 @@ package_nvidia-merged-settings() {
     provides=('nvidia-settings')
 
     install -D -m755 "${_gridpkg}/nvidia-settings" "${pkgdir}/usr/bin/nvidia-settings"
-    install -D -m644 "${_gridpkg}/libnvidia-gtk3.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-gtk3.so.${pkgver}"
+    install -D -m644 "${_gridpkg}/libnvidia-gtk3.so.${_gridpkgver}" "${pkgdir}/usr/lib/libnvidia-gtk3.so.${_gridpkgver}"
     install -D -m644 "${_gridpkg}/nvidia-settings.1" "${pkgdir}/usr/share/man/man1/nvidia-settings.1"
     install -D -m644 "${_gridpkg}/nvidia-settings.png" "${pkgdir}/usr/share/pixmaps/nvidia-settings.png"
     install -D -m644 "${_gridpkg}/nvidia-settings.desktop" "${pkgdir}/usr/share/applications/nvidia-settings.desktop"
@@ -190,72 +194,72 @@ package_nvidia-merged-utils() {
     install -D -m644 "${_gridpkg}/15_nvidia_gbm.json" "${pkgdir}/usr/share/egl/egl_external_platform.d/15_nvidia_gbm.json"
 
     mkdir -p "${pkgdir}/usr/lib/gbm"
-    ln -s "/usr/lib/libnvidia-allocator.so.${pkgver}" "${pkgdir}/usr/lib/gbm/nvidia-drm_gbm.so"
+    ln -s "/usr/lib/libnvidia-allocator.so.${_gridpkgver}" "${pkgdir}/usr/lib/gbm/nvidia-drm_gbm.so"
 
     # firmware
-    install -D -m644 "${_gridpkg}/firmware/gsp.bin" "${pkgdir}/usr/lib/firmware/nvidia/${pkgver}/gsp.bin"
+    install -D -m644 "${_gridpkg}/firmware/gsp.bin" "${pkgdir}/usr/lib/firmware/nvidia/${_gridpkgver}/gsp.bin"
 
     # GLX extension module for X
-    install -D -m755 "${_gridpkg}/libglxserver_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglxserver_nvidia.so.${pkgver}"
+    install -D -m755 "${_gridpkg}/libglxserver_nvidia.so.${_gridpkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglxserver_nvidia.so.${_gridpkgver}"
 
     # Ensure that X finds glx
-    ln -s "libglxserver_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglxserver_nvidia.so.1"
-    ln -s "libglxserver_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglxserver_nvidia.so"
+    ln -s "libglxserver_nvidia.so.${_gridpkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglxserver_nvidia.so.1"
+    ln -s "libglxserver_nvidia.so.${_gridpkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglxserver_nvidia.so"
 
-    install -D -m755 "${_gridpkg}/libGLX_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/libGLX_nvidia.so.${pkgver}"
+    install -D -m755 "${_gridpkg}/libGLX_nvidia.so.${_gridpkgver}" "${pkgdir}/usr/lib/libGLX_nvidia.so.${_gridpkgver}"
 
     # OpenGL libraries
-    install -D -m755 "${_gridpkg}/libEGL_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/libEGL_nvidia.so.${pkgver}"
-    install -D -m755 "${_gridpkg}/libGLESv1_CM_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/libGLESv1_CM_nvidia.so.${pkgver}"
-    install -D -m755 "${_gridpkg}/libGLESv2_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/libGLESv2_nvidia.so.${pkgver}"
+    install -D -m755 "${_gridpkg}/libEGL_nvidia.so.${_gridpkgver}" "${pkgdir}/usr/lib/libEGL_nvidia.so.${_gridpkgver}"
+    install -D -m755 "${_gridpkg}/libGLESv1_CM_nvidia.so.${_gridpkgver}" "${pkgdir}/usr/lib/libGLESv1_CM_nvidia.so.${_gridpkgver}"
+    install -D -m755 "${_gridpkg}/libGLESv2_nvidia.so.${_gridpkgver}" "${pkgdir}/usr/lib/libGLESv2_nvidia.so.${_gridpkgver}"
     install -D -m644 "${_gridpkg}/10_nvidia.json" "${pkgdir}/usr/share/glvnd/egl_vendor.d/10_nvidia.json"
 
     # OpenGL core library
-    install -D -m755 "${_gridpkg}/libnvidia-glcore.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-glcore.so.${pkgver}"
-    install -D -m755 "${_gridpkg}/libnvidia-eglcore.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-eglcore.so.${pkgver}"
-    install -D -m755 "${_gridpkg}/libnvidia-glsi.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-glsi.so.${pkgver}"
+    install -D -m755 "${_gridpkg}/libnvidia-glcore.so.${_gridpkgver}" "${pkgdir}/usr/lib/libnvidia-glcore.so.${_gridpkgver}"
+    install -D -m755 "${_gridpkg}/libnvidia-eglcore.so.${_gridpkgver}" "${pkgdir}/usr/lib/libnvidia-eglcore.so.${_gridpkgver}"
+    install -D -m755 "${_gridpkg}/libnvidia-glsi.so.${_gridpkgver}" "${pkgdir}/usr/lib/libnvidia-glsi.so.${_gridpkgver}"
 
     # misc
-    install -D -m755 "${_gridpkg}/libnvidia-fbc.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-fbc.so.${pkgver}"
-    install -D -m755 "${_gridpkg}/libnvidia-encode.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-encode.so.${pkgver}"
-    install -D -m755 "${_gridpkg}/libnvidia-cfg.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-cfg.so.${pkgver}"
-    install -D -m755 "${_gridpkg}/libnvidia-ml.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-ml.so.${pkgver}"
-    install -D -m755 "${_gridpkg}/libnvidia-glvkspirv.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-glvkspirv.so.${pkgver}"
-    install -D -m755 "${_gridpkg}/libnvidia-allocator.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-allocator.so.${pkgver}"
-    install -D -m755 "${_gridpkg}/libnvidia-vulkan-producer.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-vulkan-producer.so.${pkgver}"
+    install -D -m755 "${_gridpkg}/libnvidia-fbc.so.${_gridpkgver}" "${pkgdir}/usr/lib/libnvidia-fbc.so.${_gridpkgver}"
+    install -D -m755 "${_gridpkg}/libnvidia-encode.so.${_gridpkgver}" "${pkgdir}/usr/lib/libnvidia-encode.so.${_gridpkgver}"
+    install -D -m755 "${_gridpkg}/libnvidia-cfg.so.${_gridpkgver}" "${pkgdir}/usr/lib/libnvidia-cfg.so.${_gridpkgver}"
+    install -D -m755 "${_gridpkg}/libnvidia-ml.so.${_gridpkgver}" "${pkgdir}/usr/lib/libnvidia-ml.so.${_gridpkgver}"
+    install -D -m755 "${_gridpkg}/libnvidia-glvkspirv.so.${_gridpkgver}" "${pkgdir}/usr/lib/libnvidia-glvkspirv.so.${_gridpkgver}"
+    install -D -m755 "${_gridpkg}/libnvidia-allocator.so.${_gridpkgver}" "${pkgdir}/usr/lib/libnvidia-allocator.so.${_gridpkgver}"
+    install -D -m755 "${_gridpkg}/libnvidia-vulkan-producer.so.${_gridpkgver}" "${pkgdir}/usr/lib/libnvidia-vulkan-producer.so.${_gridpkgver}"
     # Sigh libnvidia-vulkan-producer.so has no SONAME set so create_links doesn't catch it. NVIDIA please fix!
-    ln -s "libnvidia-vulkan-producer.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-vulkan-producer.so.1"
-    ln -s "libnvidia-vulkan-producer.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-vulkan-producer.so"
+    ln -s "libnvidia-vulkan-producer.so.${_gridpkgver}" "${pkgdir}/usr/lib/libnvidia-vulkan-producer.so.1"
+    ln -s "libnvidia-vulkan-producer.so.${_gridpkgver}" "${pkgdir}/usr/lib/libnvidia-vulkan-producer.so"
 
     # Vulkan ICD
     install -D -m644 "${_gridpkg}/nvidia_icd.json" "${pkgdir}/usr/share/vulkan/icd.d/nvidia_icd.json"
     install -D -m644 "${_gridpkg}/nvidia_layers.json" "${pkgdir}/usr/share/vulkan/implicit_layer.d/nvidia_layers.json"
 
     # VDPAU
-    install -D -m755 "${_gridpkg}/libvdpau_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/vdpau/libvdpau_nvidia.so.${pkgver}"
+    install -D -m755 "${_gridpkg}/libvdpau_nvidia.so.${_gridpkgver}" "${pkgdir}/usr/lib/vdpau/libvdpau_nvidia.so.${_gridpkgver}"
 
     # nvidia-tls library
-    install -D -m755 "${_gridpkg}/libnvidia-tls.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-tls.so.${pkgver}"
+    install -D -m755 "${_gridpkg}/libnvidia-tls.so.${_gridpkgver}" "${pkgdir}/usr/lib/libnvidia-tls.so.${_gridpkgver}"
 
     # CUDA
-    install -D -m755 "${_gridpkg}/libcuda.so.${pkgver}" "${pkgdir}/usr/lib/libcuda.so.${pkgver}"
-    install -D -m755 "${_gridpkg}/libnvcuvid.so.${pkgver}" "${pkgdir}/usr/lib/libnvcuvid.so.${pkgver}"
+    install -D -m755 "${_gridpkg}/libcuda.so.${_gridpkgver}" "${pkgdir}/usr/lib/libcuda.so.${_gridpkgver}"
+    install -D -m755 "${_gridpkg}/libnvcuvid.so.${_gridpkgver}" "${pkgdir}/usr/lib/libnvcuvid.so.${_gridpkgver}"
 
     # PTX JIT Compiler (Parallel Thread Execution (PTX) is a pseudo-assembly language for CUDA)
-    install -D -m755 "${_gridpkg}/libnvidia-ptxjitcompiler.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-ptxjitcompiler.so.${pkgver}"
+    install -D -m755 "${_gridpkg}/libnvidia-ptxjitcompiler.so.${_gridpkgver}" "${pkgdir}/usr/lib/libnvidia-ptxjitcompiler.so.${_gridpkgver}"
 
     # raytracing
-    install -D -m755 "${_gridpkg}/libnvoptix.so.${pkgver}" "${pkgdir}/usr/lib/libnvoptix.so.${pkgver}"
-    install -D -m755 "${_gridpkg}/libnvidia-rtcore.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-rtcore.so.${pkgver}"
+    install -D -m755 "${_gridpkg}/libnvoptix.so.${_gridpkgver}" "${pkgdir}/usr/lib/libnvoptix.so.${_gridpkgver}"
+    install -D -m755 "${_gridpkg}/libnvidia-rtcore.so.${_gridpkgver}" "${pkgdir}/usr/lib/libnvidia-rtcore.so.${_gridpkgver}"
 
     # NGX
-    install -D -m755 "${_gridpkg}/libnvidia-ngx.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-ngx.so.${pkgver}"
+    install -D -m755 "${_gridpkg}/libnvidia-ngx.so.${_gridpkgver}" "${pkgdir}/usr/lib/libnvidia-ngx.so.${_gridpkgver}"
     install -D -m755 "${_gridpkg}/nvidia-ngx-updater" "${pkgdir}/usr/bin/nvidia-ngx-updater"
     install -D -m755 "${_gridpkg}/_nvngx.dll" "${pkgdir}/usr/lib/nvidia/wine/_nvngx.dll"
     install -D -m755 "${_gridpkg}/nvngx.dll" "${pkgdir}/usr/lib/nvidia/wine/nvngx.dll"
 
     # Optical flow
-    install -D -m755 "${_gridpkg}/libnvidia-opticalflow.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-opticalflow.so.${pkgver}"
+    install -D -m755 "${_gridpkg}/libnvidia-opticalflow.so.${_gridpkgver}" "${pkgdir}/usr/lib/libnvidia-opticalflow.so.${_gridpkgver}"
 
     # vGPU
     install -D -m755 "${_vgpupkg}/libnvidia-vgpu.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-vgpu.so.${pkgver}"
@@ -303,8 +307,8 @@ package_nvidia-merged-utils() {
     sed -i 's/__USER__/nvidia-persistenced/' "${pkgdir}/usr/lib/systemd/system/nvidia-persistenced.service"
 
     # application profiles
-    install -D -m644 "${_gridpkg}/nvidia-application-profiles-${pkgver}-rc" "${pkgdir}/usr/share/nvidia/nvidia-application-profiles-${pkgver}-rc"
-    install -D -m644 "${_gridpkg}/nvidia-application-profiles-${pkgver}-key-documentation" "${pkgdir}/usr/share/nvidia/nvidia-application-profiles-${pkgver}-key-documentation"
+    install -D -m644 "${_gridpkg}/nvidia-application-profiles-${_gridpkgver}-rc" "${pkgdir}/usr/share/nvidia/nvidia-application-profiles-${_gridpkgver}-rc"
+    install -D -m644 "${_gridpkg}/nvidia-application-profiles-${_gridpkgver}-key-documentation" "${pkgdir}/usr/share/nvidia/nvidia-application-profiles-${_gridpkgver}-key-documentation"
 
     install -D -m644 "${_gridpkg}/README.txt" "${pkgdir}/usr/share/doc/nvidia/README"
     install -D -m644 "${_gridpkg}/NVIDIA_Changelog" "${pkgdir}/usr/share/doc/nvidia/NVIDIA_Changelog"
@@ -331,40 +335,40 @@ package_lib32-nvidia-merged-utils() {
     provides=('lib32-vulkan-driver' 'lib32-opengl-driver' 'lib32-nvidia-libgl' 'lib32-nvidia-utils')
     replaces=('lib32-nvidia-libgl')
 
-    install -D -m755 "${_gridpkg}/32/libGLX_nvidia.so.${pkgver}" "${pkgdir}/usr/lib32/libGLX_nvidia.so.${pkgver}"
+    install -D -m755 "${_gridpkg}/32/libGLX_nvidia.so.${_gridpkgver}" "${pkgdir}/usr/lib32/libGLX_nvidia.so.${_gridpkgver}"
 
     # OpenGL libraries
-    install -D -m755 "${_gridpkg}/32/libEGL_nvidia.so.${pkgver}" "${pkgdir}/usr/lib32/libEGL_nvidia.so.${pkgver}"
-    install -D -m755 "${_gridpkg}/32/libGLESv1_CM_nvidia.so.${pkgver}" "${pkgdir}/usr/lib32/libGLESv1_CM_nvidia.so.${pkgver}"
-    install -D -m755 "${_gridpkg}/32/libGLESv2_nvidia.so.${pkgver}" "${pkgdir}/usr/lib32/libGLESv2_nvidia.so.${pkgver}"
+    install -D -m755 "${_gridpkg}/32/libEGL_nvidia.so.${_gridpkgver}" "${pkgdir}/usr/lib32/libEGL_nvidia.so.${_gridpkgver}"
+    install -D -m755 "${_gridpkg}/32/libGLESv1_CM_nvidia.so.${_gridpkgver}" "${pkgdir}/usr/lib32/libGLESv1_CM_nvidia.so.${_gridpkgver}"
+    install -D -m755 "${_gridpkg}/32/libGLESv2_nvidia.so.${_gridpkgver}" "${pkgdir}/usr/lib32/libGLESv2_nvidia.so.${_gridpkgver}"
 
     # OpenGL core library
-    install -D -m755 "${_gridpkg}/32/libnvidia-glcore.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-glcore.so.${pkgver}"
-    install -D -m755 "${_gridpkg}/32/libnvidia-eglcore.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-eglcore.so.${pkgver}"
-    install -D -m755 "${_gridpkg}/32/libnvidia-glsi.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-glsi.so.${pkgver}"
+    install -D -m755 "${_gridpkg}/32/libnvidia-glcore.so.${_gridpkgver}" "${pkgdir}/usr/lib32/libnvidia-glcore.so.${_gridpkgver}"
+    install -D -m755 "${_gridpkg}/32/libnvidia-eglcore.so.${_gridpkgver}" "${pkgdir}/usr/lib32/libnvidia-eglcore.so.${_gridpkgver}"
+    install -D -m755 "${_gridpkg}/32/libnvidia-glsi.so.${_gridpkgver}" "${pkgdir}/usr/lib32/libnvidia-glsi.so.${_gridpkgver}"
 
     # misc
-    install -D -m755 "${_gridpkg}/32/libnvidia-fbc.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-fbc.so.${pkgver}"
-    install -D -m755 "${_gridpkg}/32/libnvidia-encode.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-encode.so.${pkgver}"
-    install -D -m755 "${_gridpkg}/32/libnvidia-ml.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-ml.so.${pkgver}"
-    install -D -m755 "${_gridpkg}/32/libnvidia-glvkspirv.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-glvkspirv.so.${pkgver}"
-    install -D -m755 "${_gridpkg}/32/libnvidia-allocator.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-allocator.so.${pkgver}"
+    install -D -m755 "${_gridpkg}/32/libnvidia-fbc.so.${_gridpkgver}" "${pkgdir}/usr/lib32/libnvidia-fbc.so.${_gridpkgver}"
+    install -D -m755 "${_gridpkg}/32/libnvidia-encode.so.${_gridpkgver}" "${pkgdir}/usr/lib32/libnvidia-encode.so.${_gridpkgver}"
+    install -D -m755 "${_gridpkg}/32/libnvidia-ml.so.${_gridpkgver}" "${pkgdir}/usr/lib32/libnvidia-ml.so.${_gridpkgver}"
+    install -D -m755 "${_gridpkg}/32/libnvidia-glvkspirv.so.${_gridpkgver}" "${pkgdir}/usr/lib32/libnvidia-glvkspirv.so.${_gridpkgver}"
+    install -D -m755 "${_gridpkg}/32/libnvidia-allocator.so.${_gridpkgver}" "${pkgdir}/usr/lib32/libnvidia-allocator.so.${_gridpkgver}"
 
     # VDPAU
-    install -D -m755 "${_gridpkg}/32/libvdpau_nvidia.so.${pkgver}" "${pkgdir}/usr/lib32/vdpau/libvdpau_nvidia.so.${pkgver}"
+    install -D -m755 "${_gridpkg}/32/libvdpau_nvidia.so.${_gridpkgver}" "${pkgdir}/usr/lib32/vdpau/libvdpau_nvidia.so.${_gridpkgver}"
 
     # nvidia-tls library
-    install -D -m755 "${_gridpkg}/32/libnvidia-tls.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-tls.so.${pkgver}"
+    install -D -m755 "${_gridpkg}/32/libnvidia-tls.so.${_gridpkgver}" "${pkgdir}/usr/lib32/libnvidia-tls.so.${_gridpkgver}"
 
     # CUDA
-    install -D -m755 "${_gridpkg}/32/libcuda.so.${pkgver}" "${pkgdir}/usr/lib32/libcuda.so.${pkgver}"
-    install -D -m755 "${_gridpkg}/32/libnvcuvid.so.${pkgver}" "${pkgdir}/usr/lib32/libnvcuvid.so.${pkgver}"
+    install -D -m755 "${_gridpkg}/32/libcuda.so.${_gridpkgver}" "${pkgdir}/usr/lib32/libcuda.so.${_gridpkgver}"
+    install -D -m755 "${_gridpkg}/32/libnvcuvid.so.${_gridpkgver}" "${pkgdir}/usr/lib32/libnvcuvid.so.${_gridpkgver}"
 
     # PTX JIT Compiler (Parallel Thread Execution (PTX) is a pseudo-assembly language for CUDA)
-    install -D -m755 "${_gridpkg}/32/libnvidia-ptxjitcompiler.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-ptxjitcompiler.so.${pkgver}"
+    install -D -m755 "${_gridpkg}/32/libnvidia-ptxjitcompiler.so.${_gridpkgver}" "${pkgdir}/usr/lib32/libnvidia-ptxjitcompiler.so.${_gridpkgver}"
 
     # Optical flow
-    install -D -m755 "${_gridpkg}/32/libnvidia-opticalflow.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-opticalflow.so.${pkgver}"
+    install -D -m755 "${_gridpkg}/32/libnvidia-opticalflow.so.${_gridpkgver}" "${pkgdir}/usr/lib32/libnvidia-opticalflow.so.${_gridpkgver}"
 
     create_links
 
@@ -379,8 +383,8 @@ package_lib32-opencl-nvidia-merged() {
     conflicts=('lib32-opencl-nvidia')
 
     # OpenCL
-    install -D -m755 "${_gridpkg}/32/libnvidia-compiler.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-compiler.so.${pkgver}"
-    install -D -m755 "${_gridpkg}/32/libnvidia-opencl.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-opencl.so.${pkgver}"
+    install -D -m755 "${_gridpkg}/32/libnvidia-compiler.so.${_gridpkgver}" "${pkgdir}/usr/lib32/libnvidia-compiler.so.${_gridpkgver}"
+    install -D -m755 "${_gridpkg}/32/libnvidia-opencl.so.${_gridpkgver}" "${pkgdir}/usr/lib32/libnvidia-opencl.so.${_gridpkgver}"
 
     create_links
 

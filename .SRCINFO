@@ -1,5 +1,5 @@
 pkgbase = nvidia-merged
-	pkgver = 510.47.03
+	pkgver = 510.73.06
 	pkgrel = 1
 	url = https://krutavshah.github.io/GPU_Virtualization-Wiki/
 	arch = x86_64
@@ -12,25 +12,27 @@ pkgbase = nvidia-merged
 	source = nvidia-smi
 	source = nvidia-vgpu.conf
 	source = vgpu_unlock-rs.conf
+	source = disable-nvidia-blob-version-check.patch
+	source = nvidia-510.73.05-vgpu-5.18.patch
 	source = nv-kernel.patch
 	source = nvidia.rules
 	source = nvidia-utils.sysusers
-	source = nvidia-vgpu-vfio.patch
 	source = vgpu_unlock.patch
-	source = file://NVIDIA-Linux-x86_64-510.47.03-grid.run
-	source = file://NVIDIA-Linux-x86_64-510.47.03-vgpu-kvm.run
-	source = git+https://github.com/mbilker/vgpu_unlock-rs.git#commit=3858f2c
+	source = file://NVIDIA-Linux-x86_64-510.73.08-grid.run
+	source = file://NVIDIA-Linux-x86_64-510.73.06-vgpu-kvm.run
+	source = git+https://github.com/mbilker/vgpu_unlock-rs.git#commit=6deede6
 	sha256sums = be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d
 	sha256sums = 20676096714ac00d9fc993901ab275e4b0fa3f2eddc937dae395c8f4e8cb543e
 	sha256sums = 5ea0d9edfcf282cea9b204291716a9a4d6d522ba3a6bc28d78edf505b6dc7949
 	sha256sums = c85ae100a6c87c12906fd0057b77c0c4190f68434de4bc3bc89348ffc19aed61
-	sha256sums = 7f6c7ab8bdcff47589306c465906bf950c93a721cb1c01792ca8150530566316
+	sha256sums = cc150696cf5b74556fca93cee3b1fc05695bb3a420a4a7bae5090e4b9d9bcfd7
+	sha256sums = 79b09682f9c3cfa32d219a14b3c956d8f05340addd5a43e7063c3d96175a56f4
+	sha256sums = 36325e26243429e1e55c8500bcac850fea6e6a8975a657984c0979042a001c7b
 	sha256sums = 4fbfd461f939f18786e79f8dba5fdb48be9f00f2ff4b1bb2f184dbce42dd6fc3
 	sha256sums = d8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167
-	sha256sums = 35bb29a3ea181ceadc6e27e88af863f10a6ba94ea16d9394cea4b50d384d3c47
 	sha256sums = f77f26f609bb6f1eb69d3dc7e84ba704e5c065e424a619ab1460accb8247143f
-	sha256sums = 10f7873893ff558f92bbf0d2e7ec208d652f43f2829e7a307a83d46ac6cb61df
-	sha256sums = 8656a261902e6569a71fbb55229dde8f03383772b6be50044102f250520d846f
+	sha256sums = 2affa1e1035a71b17d15d5fa9a16d8b3704d73701f04afaa4b09035a3412e6ce
+	sha256sums = b7d076bee270e779b7c1eb512c9325794be2e8cbd7cd37c0f62fc72d87654a82
 	sha256sums = SKIP
 
 pkgname = lib32-nvidia-merged-utils
@@ -38,8 +40,8 @@ pkgname = lib32-nvidia-merged-utils
 	depends = lib32-zlib
 	depends = lib32-gcc-libs
 	depends = lib32-libglvnd
-	depends = nvidia-merged-utils=510.47.03
-	optdepends = lib32-opencl-nvidia=510.47.03
+	depends = nvidia-merged-utils=510.73.06
+	optdepends = lib32-opencl-nvidia=510.73.06
 	provides = lib32-vulkan-driver
 	provides = lib32-opengl-driver
 	provides = lib32-nvidia-libgl
@@ -58,7 +60,7 @@ pkgname = lib32-opencl-nvidia-merged
 pkgname = nvidia-merged-dkms
 	pkgdesc = NVIDIA drivers - module sources; patched for vGPU support w/ Rust unlock & host DRM output
 	depends = dkms
-	depends = nvidia-merged-utils=510.47.03
+	depends = nvidia-merged-utils=510.73.06
 	depends = libglvnd
 	provides = NVIDIA-MODULE
 	provides = nvidia-dkms
@@ -69,7 +71,7 @@ pkgname = nvidia-merged-settings
 	depends = gtk3
 	depends = libxv
 	depends = libvdpau
-	depends = nvidia-merged-utils=510.47.03
+	depends = nvidia-merged-utils=510.73.06
 	provides = nvidia-settings
 
 pkgname = nvidia-merged-utils
@@ -77,9 +79,9 @@ pkgname = nvidia-merged-utils
 	depends = xorg-server
 	depends = libglvnd
 	depends = egl-wayland
-	optdepends = nvidia-merged-settings=510.47.03: configuration tool
+	optdepends = nvidia-merged-settings=510.73.06: configuration tool
 	optdepends = xorg-server-devel: nvidia-xconfig
-	optdepends = opencl-nvidia-merged=510.47.03: OpenCL support
+	optdepends = opencl-nvidia-merged=510.73.06: OpenCL support
 	optdepends = mdevctl: mediated device contfiguration tool
 	optdepends = libvirt: virtualization engine control interface
 	provides = vulkan-driver
