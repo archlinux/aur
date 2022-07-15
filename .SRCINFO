@@ -5,6 +5,7 @@ pkgbase = fakepkg-git
 	url = https://github.com/Edenhofer/fakepkg
 	arch = any
 	license = GPL2
+	makedepends = git
 	depends = bash>=4.2
 	depends = pacman
 	depends = tar
@@ -13,7 +14,7 @@ pkgbase = fakepkg-git
 	depends = awk
 	provides = fakepkg
 	conflicts = fakepkg
-	source = fakepkg-1.42.0.tar.gz::https://gitlab.archlinux.org/tallero/fakepkg/archive/v1.42.0.tar.gz
-	sha512sums = a0cbced9fa2c15114881ed71915671141b91efdf265a851a35013dfa1e34be328c80f47cabcb9e04262baa1a32e6f4e47a893cc7af0eb1b2dc4190712667f4b6
+	source = fakepkg::git+https://gitlab.archlinux.org/tallero/fakepkg
+	sha512sums = SKIP
 
 pkgname = fakepkg-git

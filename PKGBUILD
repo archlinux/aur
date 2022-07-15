@@ -12,13 +12,14 @@ license=('GPL2')
 url="https://github.com/Edenhofer/fakepkg"
 _url="https://gitlab.archlinux.org/tallero/${_pkgname}"
 depends=('bash>=4.2' 'pacman' 'tar' 'gzip' 'sed' 'awk')
+makedepends=("git")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}-${pkgver}.tar.gz::${_url}/archive/v${pkgver}.tar.gz")
-sha512sums=('a0cbced9fa2c15114881ed71915671141b91efdf265a851a35013dfa1e34be328c80f47cabcb9e04262baa1a32e6f4e47a893cc7af0eb1b2dc4190712667f4b6')
+source=("${_pkgname}::git+${_url}")
+sha512sums=('SKIP')
 
 package() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
+	cd "${srcdir}/${_pkgname}"
 
 	install -D -m755 "${_pkgname}"       "${pkgdir}/usr/bin/${_pkgname}"
 	install -D -m644 "man/${_pkgname}.1" "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
