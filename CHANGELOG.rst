@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.6.0 (2022-07-15)
+------------------
+
+* Add support for GeneralizedTime (thanks to vollkorntomate)
+
 2.5.0 (2022-03-03)
 ------------------
 

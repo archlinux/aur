@@ -2,7 +2,8 @@
 # Contributor: jerry73204 <jerry73204 at google gmail>
 
 pkgname=python-asn1
-pkgver=2.5.0
+_pkg="${pkgname#python-}"
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='ASN.1 encoder/decoder'
 arch=('any')
@@ -19,25 +20,25 @@ makedepends=(
 checkdepends=('python-pytest')
 changelog=CHANGELOG.rst
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ba174e15974671f2d27474fa0ac53b8ccf920f78ab71302460489cc174effc77')
+sha256sums=('b54989be97f9c698fcda64302a0edd452b39f7199d648f7233064e8bde126727')
 
 build() {
 	cd "$pkgname-$pkgver"
 	export PYTHONPATH="$PWD/src"
 	python -m build --wheel --no-isolation
-	cd docs
-	sphinx-build -b man ./ _build/man
+	sphinx-build -b man docs/ docs/_build/man
 }
 
 check() {
 	cd "$pkgname-$pkgver"
-	pytest tests
+	pytest -x tests
 }
 
 package_python-asn1() {
-	export PYTHONHASHSEED=0
 	cd "$pkgname-$pkgver"
-	python -m installer --destdir="$pkgdir/" dist/*.whl
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 "docs/_build/man/$pkgname.1" -t "$pkgdir/usr/share/man/man1/"
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
