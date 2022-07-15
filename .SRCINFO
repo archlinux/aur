@@ -1,6 +1,6 @@
 pkgbase = python-aesara
 	pkgdesc = Library for defining, optimizing, and efficiently evaluating mathematical expressions involving multi-dimensional arrays
-	pkgver = 2.7.6
+	pkgver = 2.7.7
 	pkgrel = 1
 	url = https://github.com/aesara-devs/aesara
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-aesara
 	depends = python-cons
 	depends = python-typing_extensions
 	depends = openblas
-	source = python-aesara-2.7.6.tar.gz::https://github.com/aesara-devs/aesara/archive/refs/tags/rel-2.7.6.tar.gz
-	sha256sums = 84fa439becd2488c28bac71692652e51f33e719a943882e66292880ce2dc8926
+	source = python-aesara-2.7.7.tar.gz::https://github.com/aesara-devs/aesara/archive/refs/tags/rel-2.7.7.tar.gz
+	sha256sums = fafff46d1225b2834c0600f588d5017ce3c863c18905210fdfe9208f72b83bda
 
 pkgname = python-aesara
