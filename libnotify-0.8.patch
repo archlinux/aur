@@ -1,0 +1,11 @@
+--- a/bin/gwe.in
++++ b/bin/gwe.in
+@@ -44,7 +44,7 @@
+     gi.require_version('Gtk', '3.0')
+     gi.require_version('Dazzle', '1.0')
+     gi.require_version('Gdk', '3.0')
+-    gi.require_version('Notify', '0.7')
++    gi.require_version('Notify', '0.8')
+
+     from gi.repository import Gio
+     resource = Gio.Resource.load(os.path.join(PKGDATA_DIR, 'com.leinardi.gwe.gresource'))

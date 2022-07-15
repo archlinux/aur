@@ -1,7 +1,7 @@
 pkgbase = gwe
 	pkgdesc = A system utility for controlling NVIDIA GPUs
 	pkgver = 0.15.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/leinardi/gwe
 	arch = any
 	license = GPL3
@@ -10,6 +10,7 @@ pkgbase = gwe
 	depends = gobject-introspection
 	depends = libdazzle
 	depends = libappindicator-gtk3
+	depends = libnotify
 	depends = python
 	depends = python-cairo
 	depends = python-gobject
@@ -22,6 +23,8 @@ pkgbase = gwe
 	depends = python-pyxdg
 	depends = python-xlib
 	source = https://gitlab.com/leinardi/gwe/-/archive/0.15.5/gwe-0.15.5.tar.gz
+	source = libnotify-0.8.patch
 	sha256sums = 67c30c735b6160c2f4af61ce353108dc9709b6c850ce8bc21d2d2a506dfa3b70
+	sha256sums = 9db823f5eda05ad7f1b10b8a1d69437efe89cf00b6001fc15b15c049d84385ce
 
 pkgname = gwe
