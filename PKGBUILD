@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=gnome-shell-extension-pip-on-top-git
-pkgver=r14.d719a72
+pkgver=r20.cd80aa2
 pkgrel=1
 pkgdesc="Makes "Picture-in-Picture" windows stay on top (even on Wayland session). Compatible with Firefox and Clapper media player."
 arch=('any')
@@ -40,5 +40,5 @@ package() {
 
   local uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${uuid}"
-  bsdtar -xvf ${uuid}.zip -C "$pkgdir/usr/share/gnome-shell/extensions/${uuid}"
+  bsdtar --uid 0 --gid 0 -xvf ${uuid}.zip -C "$pkgdir/usr/share/gnome-shell/extensions/${uuid}"
 }
