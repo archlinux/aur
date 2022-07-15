@@ -1,0 +1,16 @@
+pkgbase = omniorb425
+	pkgdesc = A CORBA object request broker for C++ and Python.
+	pkgver = 4.2.5
+	pkgrel = 1
+	url = http://omniorb.sourceforge.net/
+	arch = x86_64
+	arch = armv7h
+	license = GPL2
+	license = LGPL2.1
+	depends = python
+	provides = omniorb=4.2.5
+	conflicts = omniorb
+	source = http://downloads.sourceforge.net/omniorb/omniORB-4.2.5.tar.bz2
+	sha256sums = f05cf999fb2f4c24c1173b3c44ad97215591d0d1a48d49ac0843c464efe073bb
+
+pkgname = omniorb425
