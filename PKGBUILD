@@ -8,7 +8,7 @@
 pkgname=gnome-shell-extension-dash-to-dock43
 _pkgname=gnome-shell-extension-dash-to-dock
 pkgver=43.alpha
-pkgrel=3
+pkgrel=4
 pkgdesc='Move the dash out of the overview transforming it in a dock (with GNOME 43 patches)'
 url='https://github.com/ubuntu/gnome-shell-extension-dash-to-dock'
 arch=('any')
@@ -23,12 +23,12 @@ source=(
   "${_pkgname}-${pkgver}::git+https://github.com/micheleg/${_cvsdir}.git#commit=${_commit}"
   "pr1720.patch::https://patch-diff.githubusercontent.com/raw/micheleg/dash-to-dock/pull/1720.patch"
   "pr1771.patch::https://patch-diff.githubusercontent.com/raw/micheleg/dash-to-dock/pull/1771.patch"
-  "pr1776.patch::https://patch-diff.githubusercontent.com/raw/micheleg/dash-to-dock/pull/1775.patch"
+  "pr1776.patch::https://patch-diff.githubusercontent.com/raw/micheleg/dash-to-dock/pull/1776.patch"
 )
 b2sums=('SKIP'
         '9fb577d8ab4f9d182cfa1f760f4fc7a35385f23a3e9dae26db531fd05f3a45572d82079ba237be1c9e04706cf43716c546b81876a88e2f23a34b13f3148e6e0d'
         'dacc5c561989cf4fab8171f3b30e293acd9a9ad8e4de327221db5dac0329bef306ccdd36bb1c9f8e47f34b93be0c81a371e950c250162956e7b0c756bbc8bc56'
-        '786a02f742015903c6c6fd852552d272912f4740e15847618a86e217f71f5419d25e1031afee585313896444934eb04b903a685b1448b755d56f701afe9be2ce')
+        '19d36ebb30af337b06e65b1f122984fdb159620a575c2105a29fbf4b78707f4e0bf8c38b6ebe2755c338865bcc7b455a3913f56d2fc83ff61f284f9d63aafc61')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
