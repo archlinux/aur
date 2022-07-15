@@ -699,44 +699,41 @@ index a6e698d4b..910b887f1 100644
  
  	if (xlat_verbose(xlat_verbosity) == XLAT_STYLE_VERBOSE || !cid_str)
 diff --git a/src/strace.c b/src/strace.c
-index ec338fe97..efdcb5c57 100644
+index ec338fe97..1d73419eb 100644
 --- a/src/strace.c
 +++ b/src/strace.c
-@@ -42,6 +42,7 @@
- #include "delay.h"
+@@ -43,6 +43,8 @@
  #include "wait.h"
  #include "secontext.h"
-+#include "color.h"
  
++#include "color.h"
++
  /* In some libc, these aren't declared. Do it ourself: */
  extern char **environ;
-@@ -92,6 +93,7 @@ static bool rflag;
- static int rflag_scale = 1000;
+ extern int optind;
+@@ -93,6 +95,12 @@ static int rflag_scale = 1000;
  static int rflag_width = 6;
  static bool print_pid_pfx;
-+int no_color_flag = 0;
  
++/* -1 = auto
++ *  0 = never
++ *  1 = always
++ */
++int no_color_flag = -1;
++
  static unsigned int version_verbosity;
  
-@@ -278,7 +280,7 @@ usage(void)
- #endif
- 
- 	printf("\
--Usage: strace [-ACdffhi" K_OPT "qqrtttTvVwxxyyzZ] [-I N] [-b execve] [-e EXPR]...\n\
-+Usage: strace [-ACdffhiN" K_OPT "qqrtttTvVwxxyyzZ] [-I N] [-b execve] [-e EXPR]...\n\
-               [-a COLUMN] [-o FILE] [-s STRSIZE] [-X FORMAT] [-O OVERHEAD]\n\
-               [-S SORTBY] [-P PATH]... [-p PID]... [-U COLUMNS] [--seccomp-bpf]\n"\
-               SECONTEXT_OPT "\
-@@ -343,6 +345,8 @@ Filtering:\n\
+ /* -I n */
+@@ -343,6 +351,8 @@ Filtering:\n\
                   print only syscalls that returned with an error code\n\
  \n\
  Output format:\n\
-+  -N, --no-color     \n\
-+                 disable colored output\n\
++  --color[=WHEN]\n\
++                 colorize the output; WHEN can be 'always', 'auto' (default), or 'never'\n\
    -a COLUMN, --columns=COLUMN\n\
                   alignment COLUMN for printing syscall results (default %d)\n\
    -e abbrev=SET, --abbrev=SET\n\
-@@ -702,7 +706,23 @@ static void
+@@ -702,7 +712,23 @@ static void
  tvprintf(const char *const fmt, va_list args)
  {
  	if (current_tcp) {
@@ -761,7 +758,7 @@ index ec338fe97..efdcb5c57 100644
  		if (n < 0) {
  			/* very unlikely due to vfprintf buffering */
  			outf_perror(current_tcp);
-@@ -728,7 +748,22 @@ void
+@@ -728,7 +754,22 @@ void
  tprints(const char *str)
  {
  	if (current_tcp) {
@@ -785,7 +782,7 @@ index ec338fe97..efdcb5c57 100644
  		if (n >= 0) {
  			current_tcp->curcol += strlen(str);
  			return;
-@@ -742,7 +777,7 @@ void
+@@ -742,7 +783,7 @@ void
  tprints_comment(const char *const str)
  {
  	if (str && *str)
@@ -794,7 +791,7 @@ index ec338fe97..efdcb5c57 100644
  }
  
  void
-@@ -863,7 +898,7 @@ printleader(struct tcb *tcp)
+@@ -863,7 +904,7 @@ printleader(struct tcb *tcp)
  		else
  			xsprintf(str, "%lld", (long long) local);
  		if (tflag_width)
@@ -803,7 +800,7 @@ index ec338fe97..efdcb5c57 100644
  				(long) ts.tv_nsec / tflag_scale);
  		else
  			tprintf("%s ", str);
-@@ -881,9 +916,9 @@ printleader(struct tcb *tcp)
+@@ -881,9 +922,9 @@ printleader(struct tcb *tcp)
  		ts_sub(&dts, &ts, &ots);
  		ots = ts;
  
@@ -815,41 +812,56 @@ index ec338fe97..efdcb5c57 100644
  				rflag_width, (long) dts.tv_nsec / rflag_scale);
  		}
  		tprints(tflag_format ? ") " : " ");
-@@ -2218,7 +2253,7 @@ init(int argc, char *argv[])
- #endif
- 
- 	static const char optstring[] =
--		"+a:Ab:cCdDe:E:fFhiI:kno:O:p:P:qrs:S:tTu:U:vVwxX:yYzZ";
-+		"+a:NAb:cCdDe:E:fFhiI:kno:O:p:P:qrs:S:tTu:U:vVwxX:yYzZ";
+@@ -2222,6 +2263,7 @@ init(int argc, char *argv[])
  
  	enum {
  		GETOPT_SECCOMP = 0x100,
-@@ -2247,6 +2282,7 @@ init(int argc, char *argv[])
++		GETOPT_COLOR,
+ 		GETOPT_DAEMONIZE,
+ 		GETOPT_HEX_STR,
+ 		GETOPT_FOLLOWFORKS,
+@@ -2247,6 +2289,7 @@ init(int argc, char *argv[])
  		GETOPT_QUAL_SECONTEXT,
  	};
  	static const struct option longopts[] = {
-+		{"no-color",        no_argument, 0, 'N'},
++		{ "color",		optional_argument, 0, GETOPT_COLOR },
  		{ "columns",		required_argument, 0, 'a' },
  		{ "output-append-mode",	no_argument,	   0, 'A' },
  		{ "detach-on",		required_argument, 0, 'b' },
-@@ -2318,6 +2354,9 @@ init(int argc, char *argv[])
- 		lopt_idx = -1;
- 
- 		switch (c) {
-+		case 'N':
-+			no_color_flag = 1;
+@@ -2354,6 +2397,23 @@ init(int argc, char *argv[])
+ 		case 'D':
+ 			daemonized_tracer++;
+ 			break;
++		case GETOPT_COLOR:
++			if(optarg) {
++				if(!strcmp(optarg , "always"))
++					no_color_flag = 0;
++				else if(!strcmp(optarg, "never"))
++					no_color_flag = 1;
++				else if(!strcmp(optarg, "auto"))
++					no_color_flag = -1;
++				else
++					error_msg_and_die("invalid argument \"%s\" for \"--color\"\n"
++							  "Valid arguments are:\n"
++							  "  - \"always\"\n"
++							  "  - \"never\"\n"
++							  "  - \"auto\"",
++							  optarg);
++			}
 +			break;
- 		case 'a':
- 			acolumn = string_to_uint(optarg);
- 			if (acolumn < 0)
-@@ -2875,6 +2914,12 @@ init(int argc, char *argv[])
+ 		case GETOPT_DAEMONIZE:
+ 			daemonized_tracer_long =
+ 				find_arg_val(optarg, daemonize_str,
+@@ -2875,6 +2935,14 @@ init(int argc, char *argv[])
  			      qflag_short == 2 ? qqflag_qual : qqqflag_qual);
  	}
  
-+	if((getenv("NO_COLOR")))
-+		no_color_flag = 1;
++	// --color=auto (default)
++	if(no_color_flag == -1)
++		no_color_flag = !isatty(STDOUT_FILENO);
 +
-+	if(outfname)
++	// if we set NO_COLOR or use --output
++	if((getenv("NO_COLOR")) || outfname)
 +		no_color_flag = 1;
 +
  	/*
