@@ -1,10 +1,9 @@
 # Maintainer: Mubashir Haroon <mubashirmusab at gmail dot com>
 # Contributor: Husam Bilal <me@husam.dev>
 
-_pkgname=clipman
 pkgname=clipman-git
-pkgver=1.4.0.r22.g505d7e4
-pkgrel=2
+pkgver=1.6.1.r0.g52602f2
+pkgrel=1
 pkgdesc="A simple clipboard manager for Wayland"
 url="https://github.com/yory8/clipman"
 depends=("wl-clipboard>=2.0")
@@ -14,21 +13,21 @@ conflicts=("clipman")
 license=("GPL3")
 arch=("x86_64" "i686")
 md5sums=("SKIP")
-source=("${_pkgname}::git+https://github.com/yory8/${_pkgname}.git")
+source=("${pkgname}::git+https://github.com/yory8/clipman.git")
 
 pkgver() {
-  cd "$_pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$pkgname"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd $_pkgname
+  cd $pkgname
   go build .
 }
 
 package() {
-  cd $_pkgname
-  install -Dm755 $_pkgname $pkgdir/usr/bin/$_pkgname
-  install -Dm644 docs/$_pkgname.1 $pkgdir/usr/share/man/man1/$_pkgname.1
-  gzip $pkgdir/usr/share/man/man1/$_pkgname.1
+  cd $pkgname
+  install -Dm755 clipman $pkgdir/usr/bin/clipman
+  install -Dm644 docs/clipman.1 $pkgdir/usr/share/man/man1/clipman.1
+  gzip $pkgdir/usr/share/man/man1/clipman.1
 }
