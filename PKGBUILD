@@ -1,15 +1,15 @@
 # Maintainer: Adrian Perez de Castro
 pkgdesc='SVG optimizer'
 pkgname=ohmysvg
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 url=https://github.com/sonnyp/OhMySVG/
 arch=(any)
 license=(GPL3)
 depends=(gjs hicolor-icon-theme gtk4)
 makedepends=(meson)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('decb4423611da1181fc6b8132af8bb103f904dff0b0e229ec1650ffd95a54c865ba4eb6036e6db9ddfc824f44c3923e9886c246a21b35d506c599ec2b372b4c5')
+b2sums=('87f9b68ad3acedd121635fbe542d1094633f1a5dc172ce839cb55bc27bfda3340abeb81cefa8de6eda9fdfbe575901621a6d66d70e310fcc289fbdbecc8c1ecc')
 
 build () {
 	arch-meson _build "OhMySVG-${pkgver}"
