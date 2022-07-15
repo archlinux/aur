@@ -6,8 +6,8 @@ pkgbase=linux-firmware-uncompressed
 pkgname=(linux-firmware-uncompressed amd-ucode-uncompressed
          linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}-uncompressed
 )
-_tag=20220610
-pkgver=20220610.7b71b75
+_tag=20220708
+pkgver=20220708.be7798e
 pkgrel=1
 pkgdesc="Firmware files for Linux (without module compression)"
 url="https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary"
@@ -91,7 +91,8 @@ package_linux-firmware-uncompressed() {
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 LICEN*
 
   # split
-  cd "$pkgdir"
+  cd "${pkgdir}"
+
   _pick linux-firmware-nfp usr/lib/firmware/netronome
   _pick linux-firmware-nfp usr/share/licenses/${pkgname}/LICENCE.Netronome
 
