@@ -8,7 +8,7 @@ _lang=zh-TW
 _pkgver=104.0a1
 
 pkgname=${_pkgname}-${_channel}-${_lang/TW/tw}
-pkgver=104.0a1.20220702065811
+pkgver=104.0a1.20220715095545
 pkgrel=1
 pkgdesc='Standalone web browser from mozilla.org, nightly build (zh-TW)'
 url='https://www.mozilla.org/en-US/firefox/'
@@ -30,7 +30,8 @@ sha512sums=("${_srcsum}"
             'SKIP')
 
 pkgver() {
-  printf "%s.%s" $_pkgver $(curl -s $_srcurl/firefox-${_pkgver}.en-US.linux-${CARCH}.txt | head -n1)
+  source <(grep BuildID firefox/application.ini)
+  printf "%s.%s" $_pkgver $BuildID
 }
 
 package() {
