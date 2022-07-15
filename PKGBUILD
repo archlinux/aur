@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=bash-statemgr
 pkgver=2018
-pkgrel=2
+pkgrel=4
 pkgdesc='A Bash module for creating generic state/profile managers.'
 arch=(any)
 license=(GPL)
@@ -14,13 +14,13 @@ source=(
 )
 sha512sums=(
   46bbde5808a5b90a2b861ff9f9a1aadacd5f47deae71ce14a80482e754ef2679040140a95128016f894b608ad465f7c09b6fefeb0310751c07deba915750b6bd
-  0c3a39c94951bee0e3a52b599ae73868e9e0ff00a70a0fec924464ad1159474cce998b6248a5f458082cd3a80bdd5ee8a5711a622ef108d2e2f4bfc386cce75f
+  53b8c90862778cd6d0ba05a6e35ae00a421a82939e5d84fb45cf4f29830fdc435d30ef0548737bf674622d52fcac64ff53eb2c90473a58bbf4ef4c1adcf915e7
 )
 md5sums=(
   5bd0eb9000e951630db9a6008f3a2b0a
-  1c96f4ac54a704aaa6b0cc0414c22a94
+  3a93da7c1a30b7441c938f6da0eda4ee
 )
-validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
+validpgpkeys=('D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519')
 
 package ()
 {
