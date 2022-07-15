@@ -1,12 +1,12 @@
 # Maintainer: Arvid Norlander <VorpalBlade (at) users DOT noreply DOT github DOT com>
 pkgname=fluxengine-git
-pkgver=r1810.da11fad
+pkgver=r1823.567b074
 pkgrel=1
 pkgdesc="PSOC5 floppy disk imaging interface"
 arch=('x86_64')
 url="http://cowlark.com/fluxengine/"
 license=('MIT')
-depends=('wxgtk2' 'libudev.so' 'zlib' 'sqlite3' 'protobuf' 'fmt' 'libfmt.so' 'libprotobuf.so')
+depends=('wxwidgets-gtk3' 'libudev.so' 'zlib' 'sqlite3' 'protobuf' 'fmt' 'libfmt.so' 'libprotobuf.so')
 makedepends=('git' 'xxd')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
