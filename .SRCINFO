@@ -1,0 +1,13 @@
+pkgbase = cp-p-git
+	pkgdesc = cp (and mv), with progress
+	pkgver = r17.daf5066
+	pkgrel = 1
+	url = https://github.com/Naheel-Azawy/cp-p
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = cp-p
+	source = cp-p::git+https://github.com/Naheel-Azawy/cp-p.git
+	sha256sums = SKIP
+
+pkgname = cp-p-git
