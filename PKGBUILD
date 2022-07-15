@@ -1,6 +1,6 @@
 # Maintainer: Audun-Marius Gangstø <audun@gangsto.org>
 pkgname=esa-snap-bin
-pkgver=8.0.0
+pkgver=9.0.0
 pkgrel=1
 pkgdesc="ESA SNAP Toolbox for Sentinel Satellite  data"
 arch=("x86_64")
@@ -8,19 +8,19 @@ url="http://step.esa.int/main/"
 license=('GPL3')
 options=("!strip")
 provides=("esa-snap")
-depends=("jre8-openjdk")
-source=("https://download.esa.int/step/snap/${pkgver:0:3}/installers/${pkgname/-bin/}_all_unix_${pkgver:0:1}_${pkgver:2:1}.sh"
+depends=("java-runtime=8")
+source=("https://download.esa.int/step/snap/${pkgver:0:3}/installers/${pkgname/-bin/}_all_unix_${pkgver//./_}.sh"
 	"snap-conf-optimiser.desktop"
 	"snap-desktop.desktop"
 	"response.varfile"
         )
-noextract=("${pkgname/-bin/}_all_unix_${pkgver:0:1}_${pkgver:2:1}.sh")
-md5sums=("9e5fbb15d6a0b247139d47bf7072437d"
+noextract=("${pkgname/-bin/}_all_unix_${pkgver//./_}.sh")
+md5sums=("d7db246ed952832261b4bdae98a03246"
          "cc4814b417fba1c6ce2782654b18d8b8"
          "b30e02a81cce3370eb9e04ce4caee040"
          "171e808a3ba22fb6a522aa318a8703db"
 )
-sha256sums=("b49d6795f55bbe9ecb46f9c289ac245626243d3fcd32211b47a54b26b508798e"
+sha256sums=("ad6ef8c679c80c58660fe23ab5fb4974f9cd3ff4b119ad8e7e40dc79dbe03896"
             "bc705ce50143ee597485f1dbbef0e62794c62af781c4af71db2f304b34c7ee01"
             "8d07671f6e94250ac333a34f1c8288f09e89428cbe9bf9c2af4a5226182cc2f9"
             "97f680aec00cc74ec2f202aba1e0132c461d631d705203ab613371c9c4c28f2d"
@@ -35,7 +35,7 @@ package() {
 	install -d "${pkgdir}/usr/share/applications"
 	
 	# java.util.prefs.userRoot is set to silence some warnings during install. We have to delete it afterwards
-	sh esa-snap_all_unix_8_0.sh -q -dir "${pkgdir}/opt/snap" -J-Djava.util.prefs.userRoot="${pkgdir}/" -Vsys.symlinkDir=${pkgdir}/usr/bin
+	sh "${pkgname/-bin/}_all_unix_${pkgver//./_}.sh" -q -dir "${pkgdir}/opt/snap" -J-Djava.util.prefs.userRoot="${pkgdir}/" -Vsys.symlinkDir=${pkgdir}/usr/bin
 
 	
 	install -Dm 644 "${srcdir}"/snap-desktop.desktop "${pkgdir}"/usr/share/applications
