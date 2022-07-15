@@ -1,7 +1,7 @@
-# Maintainer: Alexander Ryapolov <srwork@gmail.com>
+# Maintainer: Berbigou <ber.bigou@yahoo.fr>
 
 pkgname=qtvkbd
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="A virtual keyboard"
 arch=(i686 x86_64)
@@ -10,8 +10,8 @@ license=('GPL3')
 depends=('qt5-base' 'qt5-x11extras' 'libxtst')
 makedepends=('cmake')
 source=("https://github.com/Alexander-r/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('0cc3ddf285a5ecb41bf92f82d0e3ca5a')
-sha256sums=('93a380c21e4568974731198937ae47852d491e059260aba3b24add594ddce85d')
+md5sums=('612cf920f4d287cbd4fdca7d1aa78c09')
+sha256sums=('d6a53280e8fdceaae3f1dcaa2780aaa98062761a8e1b3e2589e09d186a93cfd8')
 
 prepare() {
   mkdir -p build
