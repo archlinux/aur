@@ -1,7 +1,7 @@
 pkgbase = html5validator
 	pkgdesc = Command line tool to validate HTML5 files.
-	pkgver = 0.4.0
-	pkgrel = 2
+	pkgver = 0.4.2
+	pkgrel = 1
 	url = https://github.com/svenkreiss/html5validator
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = html5validator
 	makedepends = python-setuptools
 	depends = python-yaml
 	depends = java-environment-openjdk=8
-	source = https://github.com/svenkreiss/html5validator/archive/v0.4.0/html5validator-0.4.0.tar.gz
-	sha512sums = b37528430115d54971e2856c1d46268e9003a7c9f94b6e94c435d160b00c44dcc7f9bb32101ab2fc21a8cea61d03dc08df96639e4f8fb0b65a5d5d426ba68d1d
+	source = https://github.com/svenkreiss/html5validator/archive/v0.4.2/html5validator-0.4.2.tar.gz
+	sha512sums = 0de38c394de6afc243c66f5dfca1c6b39e5de256e21c7051ea2030eda1848d0ac22d55642c4e399d6db65df5b94dd99a91fb6d4a81ed0ae6a31fd2ab9d8f9305
 
 pkgname = html5validator
