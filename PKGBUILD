@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=python3-scinum
 pkgver=2021
-pkgrel=2
+pkgrel=4
 pkgdesc='A collection of scientific number classes for arbitrary precision, standard and custom units, and uncertainty for measured values.'
 arch=(any)
 license=(GPL)
@@ -13,13 +13,13 @@ source=(
 )
 sha512sums=(
   936892d5350d8e932bd5a088eb2301adbc470dd34cd2047c1bbea8a43813b8cfbc181b5658e773a7eeda59eaa1e77b982c30b5c5d2210b98cbd0a1b54a561470
-  41fc243913f2776d55f7ee1b99e71cfe67d586f82cf84b644d59225ff720ec52c19d31088611aebac882564738810090e03c3b0092900010748e7f65e4218a30
+  10eca9f3dfb39d19ac789cfe9216e924ddf4c31711bee49f9975a6584a3fdc5884838030caf5bb15ceb53b50822ca99f40ba6ce712930d863bc0d5cba7adeb36
 )
 md5sums=(
   696ddc2bce66307b8eae534d2f698268
-  fbefcf9af5c12e9a779d61e9cd0802f7
+  aa40ed2c98f553a89cd90a01000c92c0
 )
-validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
+validpgpkeys=('D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519')
 
 package ()
 {
