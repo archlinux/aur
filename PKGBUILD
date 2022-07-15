@@ -1,9 +1,9 @@
 # Maintainer: Matt Pharoah <mtpharoah@gmail.com>
 pkgname=parallel-launcher
-pkgver=6.9.4
-pkgrel=1
+pkgver=6.10.0
+pkgrel=0
 epoch=
-pkgdesc='A simple easy-to-use launcher for the ParallelN64 and Mupen64Plus-Next emulators'
+pkgdesc='Modern N64 Emulator'
 arch=('x86_64')
 url='https://parallel-launcher.ca'
 license=('GPL3')
@@ -38,9 +38,9 @@ backup=()
 options=()
 install='parallel-launcher.install'
 changelog=
-source=('https://gitlab.com/parallel-launcher/parallel-launcher/uploads/9a103ba2f451f3c782b42cee9a95f672/parallel-launcher-6.9.4.tar.gz')
+source=('https://gitlab.com/parallel-launcher/parallel-launcher/uploads/676b594d31863cf815726fe68f04e07c/parallel-launcher-6.10.0.tar.gz')
 noextract=()
-sha256sums=('aa42862a2fede0ae63ca850db94d204cab7c0cc8e3c25c9c645c48ce344ead27')
+sha256sums=('c8582fb99e2f3bc1dc77d502c8a5936431bf1ac7d0293d2bdc27bfa6bf8f50a5')
 validpgpkeys=()
 
 build() {
@@ -51,8 +51,9 @@ build() {
 
 package() {
 	install -D parallel-launcher $pkgdir/usr/bin/parallel-launcher
-	install -D parallel-launcher.desktop $pkgdir/usr/share/applications/parallel-launcher.desktop
-	install -D data/appicon.svg $pkgdir/usr/share/parallel-launcher/appicon.svg
+	install -D ca.parallel_launcher.ParallelLauncher.desktop $pkgdir/usr/share/applications/ca.parallel_launcher.ParallelLauncher.desktop
+	install -D ca.parallel_launcher.ParallelLauncher.metainfo.xml $pkgdir/usr/share/metainfo/ca.parallel_launcher.ParallelLauncher.metainfo.xml
+	install -D data/appicon.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/ca.parallel_launcher.ParallelLauncher.svg
 	install -D bps-mime.xml $pkgdir/usr/share/parallel-launcher/bps-mime.xml
 	install -D lang/parallel-launcher.en_us.qm $pkgdir/usr/share/parallel-launcher/parallel-launcher.en_us.qm
 	install -D lang/parallel-launcher.en_gb.qm $pkgdir/usr/share/parallel-launcher/parallel-launcher.en_gb.qm
