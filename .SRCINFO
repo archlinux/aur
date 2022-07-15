@@ -4,7 +4,7 @@ pkgbase = fakepkg-git
 	pkgrel = 1
 	url = https://github.com/Edenhofer/fakepkg
 	arch = any
-	license = GPL2
+	license = AGPL3
 	makedepends = git
 	depends = bash>=4.2
 	depends = pacman

@@ -8,7 +8,7 @@ pkgver=1.42.0
 pkgrel=1
 pkgdesc="Tool to reassemble installed packages from its deliverd files. It comes in handy if there is no internet connection available and you have no access to an up-to-date package cache"
 arch=('any')
-license=('GPL2')
+license=('AGPL3')
 url="https://github.com/Edenhofer/fakepkg"
 _url="https://gitlab.archlinux.org/tallero/${_pkgname}"
 depends=('bash>=4.2' 'pacman' 'tar' 'gzip' 'sed' 'awk')
