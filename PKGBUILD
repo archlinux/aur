@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=bauerbill
 pkgver=2021.12.31
-pkgrel=1
+pkgrel=3
 pkgdesc='Extension of Powerpill with AUR and ABS support.'
 arch=(any)
 license=(GPL)
@@ -14,13 +14,13 @@ source=(
 )
 sha512sums=(
   8c781cb1e78326f900928205fd10a4512402c648e3188c927dd4a354f11f38e13e6f1d53fd0fd57ce46e46f32fa7fc70333666b3ef7d57ca1eae5554c17ceb45
-  ebda63eef8778178e1ef2217c3dff472308838c3f9f5c9456627b860c0ded6406175485440bbf60cf20724dfed75d24455a2173995dd8454c03bebbdc99022e5
+  30695921d547f5f2c9a325789b620c721113eb7553830924bc15dd5d649504cc09a5fd5d1ff7ddeca276fe5cd9911bbb5d3e77beb8e37b08af13c1b0f94052a6
 )
 md5sums=(
   0d6bbf2f8c1e6c07630c553e9951a7a1
-  97903bf699dc8be0d80a463c5e56a559
+  71f19748d4cf849e6418db7d2f17c855
 )
-validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
+validpgpkeys=('D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519')
 
 package ()
 {
