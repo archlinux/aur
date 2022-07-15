@@ -5,6 +5,7 @@ pkgcompletename="ESLauncher2"
 pkgrel=2
 pkgver=0.8.5
 pkgdesc="The next generation Endless Sky Launcher"
+depends=('rust')
 arch=('any')
 url="https://github.com/EndlessSkyCommunity/ESLauncher2"
 license=('GPL-3.0')
