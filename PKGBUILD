@@ -3,7 +3,7 @@
 # Contributor: 	diestl <max at friedersdorff dot com>
 _pkgname='rsgislib'
 pkgname=("python-$_pkgname")
-pkgver=5.0.8
+pkgver=5.0.10
 pkgrel=1
 pkgdesc="A collection of Python modules for processing remote sensing and GIS datasets"
 arch=('i686' 'x86_64')
@@ -42,7 +42,7 @@ optdepends=(
   'python-rtree: For vectorgeoms.create_rtree_index/bbox_intersects_index, '`
     `'imagecalc.calc_fill_regions_knn and vectorutils.perform_spatial_join'
   'python-scikit-image: For segmentation.skimgseg and imagecalc.leastcostpath'
-  'python-scikit-optimize: Required by classification.classlightgbm and '`
+  'python-scikit-optimize-git: Required by classification.classlightgbm and '`
     `'classification.xgboost'
   'python-scipy: For tools.stats, tools.plotting.quantile_plot, '`
     `'imageutils.spectral_smoothing and UTM/zonal mode stats'
@@ -53,12 +53,13 @@ optdepends=(
   'python-tensorflow: For classification.classkeraspxl and '`
     `'classification.classkeraschips'
   'python-xgboost: For classification.xgboost'
+  'python-matplotlib-scalebar: For tools.mapping'
 )
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-geopandas' 'python-rtree' 'python-matplotlib')
 options=(!emptydirs)
 _github='https://github.com/remotesensinginfo/rsgislib'
 source=("$pkgname-$pkgver.tar.gz::$_github/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('356f954ca2fb4ebf5c0e14f03755316e6398f564db640df2ac0ee2bac34693c2')
+sha256sums=('07f7ca5c7f25395f35f7f246ddca5bcd3155936bb7e41175510f69860af2751e')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
