@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=repo-add_and_sign
 pkgver=2021.11.12
-pkgrel=2
+pkgrel=4
 pkgdesc='Easily create signed Pacman package repositories.'
 arch=(any)
 license=(GPL)
@@ -13,13 +13,13 @@ source=(
 )
 sha512sums=(
   f2d9b9e6158fb30dc1b48911ae181483f9b3d4aeef26eea047cbc7ccb4cf8f670e817a3908ac905da20345a7b599089d6f10a4fabaa8043186d665d77afecf27
-  af873ac565eb276a717e46be0449696e818adfa1af16eb14bf962939748ae2b5fd1dfaac4e5e7505a46241635dd2535b38def6d2750999e4787244218de528fb
+  99b3b7911a7ea0678098d920e9a93837417e1a4fab2d82e2e4e9bc2b5146c5af2df826fb62078c6ac290c96c70e9e80212725fe37dab3d1b19fcd1c9739626b6
 )
 md5sums=(
   e8ed6f559071ef28beedc1a7ebfd65e5
-  9d87c3ae2af511a37795e46b4509b9eb
+  81598c9a05fa503576c83e056bd84358
 )
-validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
+validpgpkeys=('D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519')
 
 package ()
 {
