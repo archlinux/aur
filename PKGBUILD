@@ -1,25 +1,25 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=rmdupes
-pkgver=2020.12
-pkgrel=2
+pkgver=2022
+pkgrel=3
 pkgdesc='Command-line tool to find and remove duplicate files.'
 arch=(any)
 license=(GPL)
 url="https://xyne.dev/projects/rmdupes"
 depends=(python3)
 source=(
-  https://xyne.dev/projects/rmdupes/src/rmdupes-2020.12.tar.xz
-  https://xyne.dev/projects/rmdupes/src/rmdupes-2020.12.tar.xz.sig
+  https://xyne.dev/projects/rmdupes/src/rmdupes-2022.tar.xz
+  https://xyne.dev/projects/rmdupes/src/rmdupes-2022.tar.xz.sig
 )
 sha512sums=(
-  08c8a67f3be0d759427744184dee7ab231960280f39ef883c0f62c01021a0feff4cc9f1d9a1e4707e0ea6d314d72551a0e45b86c8b1239325379f6f7c56caaaf
-  cf7f5195f5eabec1fc1c0f3c9aaa24692caf6089c6aeb17301628c973fd618f818bc1a26d23d7a9137ef15bcfca105e8db478a5df169467602698a6436a443e4
+  ac8471871dc9e86464d26b5cbb0c19d9e4829624ced07df07fe7448b92ef8fb81db9de95b9ee1bb95aea1f0713e5e48aa3522e4578c002cf80373b56d2deacdc
+  452bdde161b9d1f6d05e183e998e184b7d59f6fd1f9cd3ea3cc83463ad4e10c2a3ddc80d49377ea21b12b4649bd0be31e2bdbc7b656add0b59ce1bde92b84dff
 )
 md5sums=(
-  eca5f5451f4ca6c96ef1cfde76f1f789
-  ff891e74fecce3b060a47b8489b5663e
+  9b0ea46cfa9a7a7f7e55b2eaea3fdf70
+  ec0e3c724a94c0be6bfb52088af05ece
 )
-validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
+validpgpkeys=('D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519')
 
 package ()
 {
