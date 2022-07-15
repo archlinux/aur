@@ -1,13 +1,14 @@
 pkgbase = blurble
 	pkgdesc = Word guessing game
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/pervoj/Blurble
 	arch = x86_64
 	license = GPL3
 	checkdepends = appstream-glib
 	makedepends = meson
 	makedepends = blueprint-compiler
+	makedepends = gobject-introspection
 	makedepends = vala
 	depends = libadwaita
 	source = https://gitlab.gnome.org/pervoj/Blurble/-/archive/v0.1.0/Blurble-v0.1.0.tar.gz
