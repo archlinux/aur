@@ -5,6 +5,7 @@ pkgbase = virtualfish
 	url = https://github.com/justinmayer/virtualfish
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = fish>=3.1
 	depends = python>=3.6.2
 	depends = python-packaging>=21.3
