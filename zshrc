@@ -4,6 +4,7 @@ if [[ -r ${POSH_THEME} ]];then
   eval "$(oh-my-posh init zsh --config "${POSH_THEME}")"
 else
   eval "$(oh-my-posh init zsh)"
+fi
 
 ## Import easy-zsh-config
 if [[ -r /usr/share/zsh/easy-zsh-config ]]; then
