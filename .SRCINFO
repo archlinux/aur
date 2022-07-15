@@ -1,14 +1,14 @@
 pkgbase = gentorrent-git
 	pkgdesc = A torrent generator
 	pkgver = r35.9e49248
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tanguy.ortolo.eu/
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = AGPLv3
 	makedepends = git
-	source = git://git.ortolo.eu/gentorrent.git
+	source = git+https://git.ortolo.eu/git/gentorrent.git
 	md5sums = SKIP
 
 pkgname = gentorrent-git
-

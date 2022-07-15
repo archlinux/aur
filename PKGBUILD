@@ -1,17 +1,14 @@
-# Maintainer: Francois Boulogne <fboulogne at april dot org>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Francois Boulogne <fboulogne at april dot org>
 pkgname=gentorrent-git
 pkgver=r35.9e49248
-pkgrel=1
+pkgrel=2
 pkgdesc="A torrent generator"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="http://tanguy.ortolo.eu/"
 license=('AGPLv3')
-depends=('')
-optdepends=()
 makedepends=('git')
-provides=()
-conflicts=()
-source=("git://git.ortolo.eu/gentorrent.git")
+source=("git+https://git.ortolo.eu/git/gentorrent.git")
 md5sums=('SKIP')
 
 pkgver() {
