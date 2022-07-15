@@ -1,17 +1,17 @@
 pkgbase = python3-xynexdg
 	pkgdesc = Implementation of various freedesktop.org standards, for internal use in Xyne's modules.
 	pkgver = 2021
-	pkgrel = 2
+	pkgrel = 4
 	url = https://xyne.dev/projects/python3-xynexdg
 	arch = any
 	license = GPL
 	depends = python3
 	source = https://xyne.dev/projects/python3-xynexdg/src/python3-xynexdg-2021.tar.xz
 	source = https://xyne.dev/projects/python3-xynexdg/src/python3-xynexdg-2021.tar.xz.sig
-	validpgpkeys = EC3CBE7F607D11E663149E811D1F0DC78F173680
+	validpgpkeys = D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519
 	md5sums = 10784cb444bcf29db1a29e386eb67ef0
-	md5sums = b7d1c655aa82759529e8540c375a7d12
+	md5sums = 98643ea2db70b127479ffe0eb78fea56
 	sha512sums = 68362460ef36164b3e17d294269ecea51ff5a477a1e4f0d6c8eaca29a1bacdb5d2ee733ca0a68c0159774c4354eb968bbcc3a1b2be62b4b7eafd60c09802de67
-	sha512sums = 3410d3db7522f9a5d465ee399c635f1fe02348d0249b957b703ccac9e057b15f04f21c0f2d575ab891f40d41a1fdc5529e7713e4aa0cdac512a04ccf878dd189
+	sha512sums = 16748c9bf9883a69483bebbba870754208e47344f56f4a30ab610dc422e0c6e2bc2b64e54886105797bce18d6e71d261ce534f294a8c30ef16b5db22f19c364a
 
 pkgname = python3-xynexdg
