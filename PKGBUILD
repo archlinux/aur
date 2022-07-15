@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=xac
 pkgver=2021
-pkgrel=2
+pkgrel=4
 pkgdesc='A markdown- and Pandoc-based content management system (CMS).'
 arch=(any)
 license=(GPL)
@@ -14,13 +14,13 @@ source=(
 )
 sha512sums=(
   34130a8a6af68ed20750c5cf161b88cd2b9389c1a258166f02c321b6c332c4a7e97609c8e0bae54e7bc18e6a75d0be84451259a63eed7e3a3e5dce83be272cd3
-  0a6e9cd71bafbac85b99012a6d49b1ed2289475fe5c0af94263644499165a3084e6bfafa9f7b1829d63c69be7a92ed904b8b77d15167716af8979ccd17e70a0a
+  14db062d744d2c8cc2e090310cdf69ee34ebca3d33e51b704b3a7560a23572f9292f79ff47fa8ee3fe0efc00413b6eaeb0e7c5978425d7f2b372590b2ba105f2
 )
 md5sums=(
   53d1c1380c1b264eaadb7916b5864374
-  041cde32c5ded7eb6a6512024951eb09
+  1746607ffe5ccc158d773e8fd7ce2ecd
 )
-validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
+validpgpkeys=('D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519')
 
 package ()
 {
