@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=moz2fs
 pkgver=2013.9.23.3
-pkgrel=2
+pkgrel=4
 pkgdesc='Convert Mozilla (Firefox) bookmarks in JSON format to and from a filesystem hierarchy.'
 arch=(any)
 license=(GPL)
@@ -14,13 +14,13 @@ source=(
 )
 sha512sums=(
   f37ceec837ea006579eadf3e1874594e3f045f01d6823337872322eca5d930f33e884081ad292d459337c04b78c80b14e6126c5bb70e2628b52ec6c7f1575b65
-  89c4a2ea9be7f3c84b2d24900bc04f0fd1ffd907d2c6408678e3b0cd801f4cde9c0dadd5dcb715093135e6a58d078e4374b071ae68210155be79de030abb06b3
+  412c00e3331bb605220ffd5fc7148a2ce4848436f74c28e56f8f3c48d1c1f5dddd1bc53f87bf0956189ae6ef1daa6d76be9637dea85aac0068357cf837cc7bc1
 )
 md5sums=(
   9a0cece7ad4ffebaf3d24251f3147555
-  4b2f2e80b69ad070bd8c08ec29770f9a
+  6fc0e3a5b380a5af34156e78721e2677
 )
-validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
+validpgpkeys=('D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519')
 
 package ()
 {
