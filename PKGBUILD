@@ -21,10 +21,11 @@ source=(
 sha256sums=(
     'SKIP'
 )
-depends=(coreutils ncurses zlib)
+depends=(coreutils ncurses zlib erlang)
 makedepends=(
     cmake
     coreutils
+    erlang
     git
     unzip
 )
