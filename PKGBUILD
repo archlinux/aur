@@ -2,7 +2,7 @@
 pkgbase=python-parfive
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A HTTP and FTP parallel file downloader"
 arch=('any')
@@ -25,7 +25,7 @@ checkdepends=('python-pytest-socket'
               'python-aioftp'
               'python-aiofiles')   #python-aiohttp tqdm
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('df1d4c98b45f48734b5c4dd644a7e7d7')
+md5sums=('16b5450d280188dc4d5a220511bd6fbf')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
