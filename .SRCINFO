@@ -1,15 +1,14 @@
 pkgbase = project-sushi
 	pkgdesc = A short but challenging 2D platformer game
 	pkgver = a1.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.patreon.com/posts/33983587
 	arch = i686
 	arch = x86_64
 	license = unknown
 	makedepends = icoutils
-	makedepends = curl
 	depends = wine
-	depends = bash
+	depends = sh
 	depends = hicolor-icon-theme
 	options = !strip
 	source = project-sushi-a1.2.4.zip::https://www.patreon.com/file?h=33983587&i=5219261
@@ -17,6 +16,6 @@ pkgbase = project-sushi
 	source = project-sushi
 	sha256sums = 25130969828988141c1da20dbe92322216c6c918c90a8105156592a435ddec8d
 	sha256sums = 24b3f56c0ec3205278f0d34250258aae4f9e9349a0105a8c20411efe397defe1
-	sha256sums = 747a723d7fe895849a76a547a2c324729e1911afb707d817f4b7c99d4b352b0a
+	sha256sums = 78f7e9e4cb1e2358e058414baf06bf78a5027cbdd42b357dabc80d5a2c023090
 
 pkgname = project-sushi
