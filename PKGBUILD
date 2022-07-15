@@ -4,7 +4,7 @@
 pkgname=('autokey-common' 'autokey-gtk' 'autokey-qt')
 pkgbase=autokey
 pkgver=0.96.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A desktop automation utility for Linux and X11"
 arch=('any')
 url="https://github.com/autokey/autokey"
@@ -12,6 +12,13 @@ license=('GPL3')
 makedepends=('python-build' 'python-installer' 'python-pyqt5' 'python-setuptools' 'python-wheel')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/autokey/autokey/archive/v$pkgver.tar.gz")
 sha256sums=('40341fc4cd9703a34264e9191b5938fc7ed5a6f357992d91e492975d89933acd')
+
+prepare() {
+  cd "$pkgbase-$pkgver"
+
+  # bump Notify to 0.8
+  sed -i "s/'Notify', '0.7'/'Notify', '0.8'/g" lib/autokey/gtkui/notifier.py
+}
 
 build() {
   cd "$pkgbase-$pkgver"

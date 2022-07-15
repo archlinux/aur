@@ -1,7 +1,7 @@
 pkgbase = autokey
 	pkgdesc = A desktop automation utility for Linux and X11
 	pkgver = 0.96.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/autokey/autokey
 	arch = any
 	license = GPL3
