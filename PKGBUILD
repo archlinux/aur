@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=autochown
-pkgver=2020
-pkgrel=2
+pkgver=2022.7
+pkgrel=3
 pkgdesc='Monitor multiple directories using glob patterns and automatically adjust file ownership and permissions.'
 arch=(i686 x86_64 armv6h armv6l armv7h armv7l armv8h armv8l)
 license=(GPL)
@@ -9,18 +9,18 @@ url="https://xyne.dev/projects/autochown"
 makedepends=(cmake rabbit_tree)
 backup=(etc/autochownd.conf)
 source=(
-  https://xyne.dev/projects/autochown/src/autochown-2020.tar.xz
-  https://xyne.dev/projects/autochown/src/autochown-2020.tar.xz.sig
+  https://xyne.dev/projects/autochown/src/autochown-2022.7.tar.xz
+  https://xyne.dev/projects/autochown/src/autochown-2022.7.tar.xz.sig
 )
 sha512sums=(
-  c9d0efcac6ba1511456e7587b519a9183082a7844a38e2b1604f82eeeda0e23be00ae354cd758bdc9e04dfceb23066dd11be1c4564224149bae739ca9f26c6a1
-  f131b5b9a775d55eb4a639435c7d9ce1106e24a59a05fb75216d8d6c7d1e4626cbb38400837b87c119b3d3094075bf529aed8756a9068773eb34ac5c788add1e
+  7e4aa477657727fb0bc86f02bcfb6dffc7e3522d6bae037fa9483468f059fd98d6475d203dfcc06dd107afa78b2978fac3adfc9998a670f6f39bf3fdfc13f532
+  1bbb5800277096f794188abf13b1d6bb1136d11e95dafb927b25c1ada1553123652ce6d5aa1202f42e4aab5dbcc4357e4a169695e3a349f768c0a8457ec868d0
 )
 md5sums=(
-  4511eacc6bdf562bc9ed4977c9aceaa8
-  dca269ea8441112d57518c26ea8ee27b
+  f82556fb057096762dd96584ba831d86
+  314fa5586a7fe2db7bcf852fc2221c6a
 )
-validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
+validpgpkeys=('D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519')
 
 build ()
 {
