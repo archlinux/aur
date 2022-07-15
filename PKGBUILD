@@ -2,7 +2,7 @@
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
 
 pkgname=gotop-bin
-pkgver=4.1.2
+pkgver=4.1.4
 pkgrel=1
 pkgdesc="A terminal based graphical activity monitor inspired by gtop and vtop"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -21,9 +21,9 @@ source_aarch64=("https://github.com/xxxserxxx/gotop/releases/download/v$pkgver/g
 package() {
   install -Dm755 "$srcdir/gotop" "$pkgdir/usr/bin/gotop"
 }
-sha256sums_x86_64=('685bd69d4c1fe0b6af4e075036dd68ea14ecd42c51c2151457758b7faecac898')
-sha256sums_i686=('ab4fc6aa0375e2ec1337042894fb1b16df6c0bc4877de443e6c15551c589d3c3')
-sha256sums_arm=('e64726174cc72ceab24f3173e8a8f6bdd14246a1ea99ab50938c3caf02af0ff0')
-sha256sums_armv6h=('ce7addd24435bb91a749b8c22355458aeb1983393fe870dbcaf560d0d2fcc1c3')
-sha256sums_armv7h=('33bf20347fc27c67486484c0b281a810541731ac302b4e059368a5b579d5da79')
-sha256sums_aarch64=('671f6756c3468cfea16afd679e3807e954c7b920d27dd13a0755eb48ea0021a6')
+sha256sums_x86_64=('85878a570988a18b65481fa9968fd05472888d03c89585c09bf72af52b1e11f6')
+sha256sums_i686=('89484f9e009257e5c08a6979ce313458bab2deac959d0dc6a3a98565b2e50029')
+sha256sums_arm=('a0a3105443ec800a91aa7e7e8cd9eee3b8a2a33c69783cd871e5ed1c1c726d8a')
+sha256sums_armv6h=('6bb9a3dc460b0c02c960a19fbb682e44f39668b66e668ed8c071b47f5064a83a')
+sha256sums_armv7h=('5ad8eb76642d6928446377882924965a366a4d1ed5eff1b3112e02a36e28677c')
+sha256sums_aarch64=('7f89c3491468d764fb46f982a6b800d11c6e17e5189158df7b3a4dadad02f23c')
