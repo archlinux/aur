@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-gsjackctl
+	pkgdesc = GNOME Shell JACK Control
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/cbix/gsjackctl
+	arch = any
+	groups = pro-audio
+	license = GPL2
+	depends = gnome-shell>=3.38
+	depends = jack2-dbus
+	optdepends = a2jmidid: can be controlled by the extension
+	source = gnome-shell-extension-gsjackctl-1.tar.gz::https://github.com/cbix/gsjackctl/archive/refs/tags/v1.tar.gz
+	sha256sums = d5017d144ef84707530d3ea0260e4a912b68bea9874ea939c9fb5c1e0f8118ec
+
+pkgname = gnome-shell-extension-gsjackctl
