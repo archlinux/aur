@@ -1,9 +1,7 @@
-# Maintainer: Nguyễn Chính Hữu <huupoke12@gmail.com>
-# Contributor: emersion <contact@emersion.fr>
-# Contributor: ValdikSS <iam@valdikss.org.ru>
+# Maintainer: Rodney van den Velden <rodney@dfagaming.nl>
 
 pkgname='osu'
-pkgver='20220424'
+pkgver='20220715'
 pkgrel=1
 pkgdesc='A free-to-win rhythm game'
 _terms_commit='a5cf78c68e98280985f58725868b8df0cd2498b8'
