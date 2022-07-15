@@ -24,8 +24,8 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-if [[ -r /usr/share/zsh/functions/command-not-found.zsh ]]; then
-    source /usr/share/zsh/functions/command-not-found.zsh
+if [[ -r /usr/share/doc/pkgfile/command-not-found.zsh ]]; then
+    source /usr/share/doc/pkgfile/command-not-found.zsh
     export PKGFILE_PROMPT_INSTALL_MISSING=1
 fi
 
