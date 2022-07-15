@@ -48,7 +48,7 @@ arch=('i686' 'x86_64')
 url="http://www.codelite.org/"
 license=('GPL')
 makedepends=('pkgconfig' 'cmake' 'clang')
-depends=('wxgtk3'
+depends=('wxwidgets-gtk3'
           'webkit2gtk'
           'clang' 'lldb'
           'libedit'
@@ -119,7 +119,8 @@ export CXXFLAGS
 # cmake find_package() will try env var WX_CONFIG as wx-config tool path before checking its builtin hardcoded naming conbinations for wx-config tool
 #WX_CONFIG="wx-config"
 #WX_CONFIG="wx-config-gtk2"
-WX_CONFIG="wx-config-gtk3"
+#WX_CONFIG="wx-config-gtk3"
+WX_CONFIG="wx-config"
 export WX_CONFIG
 
 mkdir -p "${BUILD_DIR}"
