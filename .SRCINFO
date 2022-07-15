@@ -1,7 +1,7 @@
 pkgbase = pychrom
 	pkgdesc = An enhanced yet simple pyGTK color selection and conversion tool that can minimize to the tray.
 	pkgver = 2012
-	pkgrel = 4
+	pkgrel = 6
 	url = https://xyne.dev/projects/pychrom
 	install = pychrom.install
 	arch = any
@@ -11,10 +11,10 @@ pkgbase = pychrom
 	depends = python2
 	source = https://xyne.dev/projects/pychrom/src/pychrom-2012.tar.xz
 	source = https://xyne.dev/projects/pychrom/src/pychrom-2012.tar.xz.sig
-	validpgpkeys = EC3CBE7F607D11E663149E811D1F0DC78F173680
+	validpgpkeys = D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519
 	md5sums = c10d0c91f73d0221d719bd9b4d531a12
-	md5sums = cd791e704a1f0db262ced591225a193c
+	md5sums = 52d2b59368a52a2973a6a0d6a461496c
 	sha512sums = d055aa34f62cbb00367bde2dd22f5016ad571e4c70c7fca597bb253a93197ef7facbdebf7cd1e2f099761207080694625645f88086b584b6b56c58cd10eaf651
-	sha512sums = db19afb09bec9a958697bdab58e95e53275a5b64bea83c4097c0fa93fb1051a77c4236f74c712cf0aea908c59ee341d0bfe2865775b2dad6433a0c1eca87cfad
+	sha512sums = 4daea37d701b6c7cc77e3496553450bf5f1c2144531d6af5af2ce0f651f7af9d26f6cba0947018a4defd088f296dd9d7220b296a2b205aaead488304e04331de
 
 pkgname = pychrom
