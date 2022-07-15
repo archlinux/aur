@@ -1,18 +1,22 @@
 # Maintainer: Philipp Joram <mail [at] phijor [dot] me>
 
 _hkgname=agda-language-server
-_agdaver=2.6.2
+_agdaver=2.6.2.1
 pkgname=haskell-agda-language-server
 pkgver=0.2.1
-pkgrel=20
+pkgrel=21
 pkgdesc="An implementation of language server protocal (LSP) for Agda 2."
 url="https://github.com/banacorn/agda-language-server#readme"
 license=("custom: MIT")
 arch=('x86_64')
 depends=('ghc-libs' "agda=$_agdaver" 'haskell-aeson' 'haskell-lsp' 'haskell-network' 'haskell-network-simple' 'haskell-strict')
-makedepends=('ghc' 'haskell-tasty' 'haskell-tasty-golden' 'haskell-tasty-hunit' 'haskell-tasty-quickcheck')
-source=("https://hackage.haskell.org/packages/archive/$_hkgname/$pkgver/$_hkgname-$pkgver.tar.gz")
-sha256sums=('20ec24dfd7d7f6f74942615bd5edbbc6641648dc5a41820bc9fdef24cb87fda7')
+
+# FIXME:
+# Remove git dependency and revert to downloading from hackage once upstream
+# provides a release compatible with Agda v2.6.2.1.
+makedepends=('git' 'ghc' 'haskell-tasty' 'haskell-tasty-golden' 'haskell-tasty-hunit' 'haskell-tasty-quickcheck')
+source=("$_hkgname-$pkgver::git+https://github.com/banacorn/agda-language-server.git#branch=2.6.2.1")
+sha256sums=('SKIP')
 
 build() {
   cd $_hkgname-$pkgver
