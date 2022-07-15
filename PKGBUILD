@@ -1,4 +1,5 @@
-# Maintainer: Jaan Toots <jaan@jaantoots.org>
+# Maintainer: Matt Robinson <aur@nerdoftheherd.com>
+# Contributor: Jaan Toots <jaan@jaantoots.org>
 pkgname=goobook
 pkgver=3.5.1
 pkgrel=2
