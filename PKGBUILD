@@ -7,7 +7,7 @@
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
 pkgver=2022.7.4
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=(any)
 url=https://home-assistant.io/
@@ -31,6 +31,7 @@ depends=(
   python-jinja
   python-lru-dict
   python-mutagen
+  python-orjson
   python-pillow
   python-pip
   python-pyjwt
