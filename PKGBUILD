@@ -12,36 +12,35 @@ provides=('crosvm')
 arch=('x86_64')
 license=('custom:chromiumos')
 source=("git+https://chromium.googlesource.com/crosvm/crosvm"
-        "git+https://chromium.googlesource.com/chromiumos/platform2"
-        "git+https://chromium.googlesource.com/chromiumos/third_party/adhd"
-        "git+https://chromium.googlesource.com/chromiumos/third_party/rust-vmm/vhost"
+        "git+https://chromium.googlesource.com/chromiumos/third_party/tpm2"
+        "git+https://chromium.googlesource.com/chromiumos/platform/minigbm"
+        "git+https://chromium.googlesource.com/chromiumos/third_party/virglrenderer"
         "git+https://android.googlesource.com/platform/external/minijail"
         )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
-  # crosvm build system expects a certain directory tree structure
-  # see its Cargo.toml
-  rm -rf platform third_party aosp
-  mkdir -p platform aosp/external third_party/rust-vmm
-  mv crosvm platform
-  mv adhd third_party
-  mv vhost third_party/rust-vmm
-  mv minijail platform/crosvm/third_party/
+  cd crosvm
+  git submodule init
+  git config submodule."tpm2-sys/libtpm2".url "$srcdir/tpm2"
+  git config submodule."third_party/minigbm".url "$srcdir/minigbm"
+  git config submodule."third_party/virglrenderer".url "$srcdir/virglrenderer"
+  git config submodule."third_party/minijail".url "$srcdir/minijail"
+  git submodule update
 }
 
 pkgver() {
-  cd platform/crosvm
+  cd crosvm
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd platform/crosvm
+  cd crosvm
   cargo build --release
 }
 
 package() {
-  cd platform/crosvm
+  cd crosvm
   install -Dm755 target/release/crosvm "$pkgdir/usr/bin/crosvm"
   install -d "$pkgdir/usr/share/policy/crosvm/"
   cp -r seccomp/x86_64/* "$pkgdir/usr/share/policy/crosvm/"
