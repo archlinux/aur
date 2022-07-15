@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=pacnew_scripts
 pkgver=2012.12
-pkgrel=3
+pkgrel=5
 pkgdesc='A collection of scripts to help merge changes in .pacnew files.'
 arch=(any)
 license=(GPL)
@@ -13,13 +13,13 @@ source=(
 )
 sha512sums=(
   5bc4b63ded01da212297343a023c5fd00264246e0cfaa48b9529a8dbac7f54e354248b3d7c8cd6be08a02161a220cd6287a3e94e3385c16edf2b3326623266f1
-  ca43e498de2d02b5add368f5861086d54bd5f30f63009106430da9083ffb3aeb090dc886fbb333b4a9f58bd8cbc9791efb94043c809108c2af44c107be42b352
+  cb5735f6b180f15793bd0514d2ba90c7792bb70102e68de49e0f702accc90e0a9cda4be382babdb79195e53846ab040249bad96ac9cf8ed29262cbce48ce4600
 )
 md5sums=(
   420f3b13f46810f223b82ebcf834b94a
-  20c1c8c1a9f532c644d641e1782a4332
+  5e911a5361ab1bd1ad30512b04a8a8f1
 )
-validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
+validpgpkeys=('D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519')
 
 package ()
 {
