@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=cups-client-mgr
 pkgver=2013
-pkgrel=2
+pkgrel=4
 pkgdesc='Save and restore CUPS client states.'
 arch=(any)
 license=(GPL)
@@ -13,13 +13,13 @@ source=(
 )
 sha512sums=(
   d90de376a27bce254f2130d92f334fa8f983e315f62d06e86d936c9579c6b776ac980d2ae75a310c244bcd9660732a1c272b2b577db30fbd4286b8b0c1fa8e9a
-  e34effefb628aa5129c3fe7d31dbca04dcc2b01d5543e4193cda56a672fa20d1823449ca36222f29b900a819295def51e088b3f78ac0b637ae697a7984f4efe1
+  410ce85ad99c7621adf2005ce2433fc48d9b60bf944f893a2f923ebc56e49d41a1464d989c3fdba41c4acf4c0f8f3113958987f9279b552169684714088e1291
 )
 md5sums=(
   519dec6d2c2962fa94837085bbaa34c1
-  7dd5ca58e3db803368fcbb0a227cda13
+  06fceef640760322fa270999a1ce6f09
 )
-validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
+validpgpkeys=('D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519')
 
 package ()
 {
