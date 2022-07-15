@@ -1,18 +1,21 @@
 pkgbase = python-numpoly
 	pkgdesc = NumPy compatible polynomial representation
-	pkgver = 1.2.3
-	pkgrel = 2
+	pkgver = 1.2.4
+	pkgrel = 1
 	url = https://github.com/jonathf/numpoly
 	arch = any
 	license = BSD
 	checkdepends = python-pytest
 	checkdepends = python-sympy
+	makedepends = git
 	makedepends = python-poetry
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-sphinx
 	depends = python-numpy
-	source = python-numpoly-1.2.3.tar.gz::https://github.com/jonathf/numpoly/archive/v1.2.3.tar.gz
-	sha256sums = 934bb44efa5e5988debdb4409a6c2556bd67481d04f97364ef5d2b48c289e966
+	depends = python-setuptools
+	source = python-numpoly::git+https://github.com/jonathf/numpoly#commit=4c1c5fd?signed
+	validpgpkeys = 558C5F4DBB8597A140DA91C53673F898D24A40A7
+	sha256sums = SKIP
 
 pkgname = python-numpoly
