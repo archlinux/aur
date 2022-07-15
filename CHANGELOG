@@ -1,5 +1,5 @@
 See the full changelog for all versions at:
 https://github.com/krathalan/wtwitch/blob/master/FULLCHANGELOG
 
-2.5.0 (July 11, 2022)
-    Added zsh completion file from michaeldxyz (PR#9)
+2.5.1 (July 15, 2022)
+    Added full command name completion to new zsh completion from elig0n (PR#10)
