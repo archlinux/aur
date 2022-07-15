@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=python3-aria2jsonrpc
 pkgver=2021
-pkgrel=2
+pkgrel=4
 pkgdesc='A wrapper class around Aria2'"'"'s JSON RPC interface.'
 arch=(any)
 license=(GPL)
@@ -13,13 +13,13 @@ source=(
 )
 sha512sums=(
   97786fe2f7cc227b41c540d743c1212ccbb9a82d9f7acff00a32d6a1a241e9d4a8109113490c72f1f43aae55784cae09ad6fb8751c6806fbf15c3d6d67933b47
-  ef7d9e486c688b1d42a5aa1546b6dc6444159350a106302915e1fb5aa2b2e8d2be2b330b2a028cbc263617c181cc646d7736d1a4c88fe569f482c992a2af0b25
+  5682e6b853637623c13803abebff033053319d9cea2780092d384e768a10c371deed496654e194b8c6529ad1b9cc10cd8acc6498da164b56be2aca10cd63d826
 )
 md5sums=(
   83004437b5f272471fe016655302e35f
-  45cbde1097940b041406611004671976
+  25f7418e2e1937cefd5975b441a7da56
 )
-validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
+validpgpkeys=('D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519')
 
 package ()
 {
