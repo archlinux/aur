@@ -1,0 +1,73 @@
+diff --git a/kernel/nvidia-vgpu-vfio/nvidia-vgpu-vfio.c b/kernel/nvidia-vgpu-vfio/nvidia-vgpu-vfio.c
+index acb8fb2..a300b73 100644
+--- a/kernel/nvidia-vgpu-vfio/nvidia-vgpu-vfio.c
++++ b/kernel/nvidia-vgpu-vfio/nvidia-vgpu-vfio.c
+@@ -1058,6 +1058,14 @@ static int nv_vgpu_vfio_region_info(vgpu_dev_t *vgpu_dev,
+         struct vfio_region_info_cap_type cap_type = {
+             .header.id = VFIO_REGION_INFO_CAP_TYPE,
+             .header.version = 1,
++#if defined(VFIO_REGION_TYPE_MIGRATION_DEPRECATED)
++            .type = VFIO_REGION_TYPE_MIGRATION_DEPRECATED,
++#else
+             .type = VFIO_REGION_TYPE_MIGRATION,
++#endif
++#if defined(VFIO_REGION_SUBTYPE_MIGRATION_DEPRECATED)
++            .subtype = VFIO_REGION_SUBTYPE_MIGRATION_DEPRECATED
++#else
+             .subtype = VFIO_REGION_SUBTYPE_MIGRATION
++#endif
+         };
+@@ -1261,12 +1261,20 @@ static void vgpu_read_base(vgpu_dev_t *vgpu_dev)
+ NvU32 nv_translate_device_state(NvU32 device_state, NvU32 nv_state)
+ {
+     if (device_state & VFIO_DEVICE_STATE_RUNNING) {
++#if defined(VFIO_DEVICE_STATE_V1_SAVING)
++        if (device_state & VFIO_DEVICE_STATE_V1_SAVING)
++#else
+         if (device_state & VFIO_DEVICE_STATE_SAVING)
++#endif
+             return NV_VFIO_DEVICE_STATE_MIGRATION_PRECOPY_ACTIVE;
+         else
+             return NV_VFIO_DEVICE_STATE_RUNNING;
+     } else {
++#if defined(VFIO_DEVICE_STATE_V1_SAVING)
++        if (device_state & VFIO_DEVICE_STATE_V1_SAVING)
++#else
+         if (device_state & VFIO_DEVICE_STATE_SAVING)
++#endif
+             return NV_VFIO_DEVICE_STATE_MIGRATION_STOPNCOPY_ACTIVE;
+         else if (nv_state == NV_VFIO_DEVICE_STATE_MIGRATION_STOPNCOPY_ACTIVE)
+             return NV_VFIO_DEVICE_STATE_NONE;
+@@ -3262,7 +3262,7 @@ static NV_STATUS nv_create_dma_mappings(vgpu_dev_t *vgpu_dev,
+     }
+
+     pdev = to_pci_dev(NV_GET_MDEV_PARENT(vgpu_dev->mdev));
+-    mapped_count = pci_map_sg(pdev, sgt.sgl, sgt.orig_nents, PCI_DMA_BIDIRECTIONAL);
++    mapped_count = dma_map_sg(&pdev->dev, sgt.sgl, sgt.orig_nents, DMA_BIDIRECTIONAL);
+     if (mapped_count == 0)
+     {
+         NV_VGPU_DEV_LOG(VGPU_ERR, vgpu_dev->mdev,
+@@ -3341,7 +3341,7 @@ static void nv_destroy_dma_mappings(vgpu_dev_t *vgpu_dev, mapping_node_t *mappin
+     }
+
+     pdev = to_pci_dev(NV_GET_MDEV_PARENT(vgpu_dev->mdev));
+-    pci_unmap_sg(pdev, sgt.sgl, sgt.orig_nents, PCI_DMA_BIDIRECTIONAL);
++    dma_unmap_sg(&pdev->dev, sgt.sgl, sgt.orig_nents, DMA_BIDIRECTIONAL);
+     NV_DMA_FREE_SG_TABLE(sgt);
+
+ destroy_exit:
+@@ -4412,8 +4412,14 @@ static NV_STATUS nv_vgpu_probe(struct pci_dev *dev, NvU32 num_vgpu_types, NvU32
+         pci_set_master(dev);
+
+         pf_dma_mask = dma_get_mask(&dev->physfn->dev);
+-        pci_set_dma_mask(dev, pf_dma_mask);
+-        pci_set_consistent_dma_mask (dev, pf_dma_mask);
++        dma_set_mask(&dev->dev, pf_dma_mask);
++#if !NV_IS_EXPORT_SYMBOL_GPL_sme_active
++#if defined(NV_DMA_SET_COHERENT_MASK_PRESENT)
++        dma_set_coherent_mask(&dev->dev, pf_dma_mask);
++#else
++       	pci_set_consistent_dma_mask(dev, pf_dma_mask);
++#endif
++#endif
+     }

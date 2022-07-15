@@ -13,7 +13,7 @@
 
 pkgbase='nvidia-vgpu'
 pkgname=('nvidia-vgpu-dkms' 'nvidia-vgpu-utils')
-pkgver=510.47.03
+pkgver=510.73.06
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'rust')
@@ -30,17 +30,17 @@ source=(
     'nvidia-vgpu.conf'
     'vgpu_unlock-rs.conf'
     'nv-kernel.patch'
-    'nvidia-vgpu-vfio.patch'
+    'nvidia-510.73.05-vgpu-5.18.patch'
     'vgpu_unlock.patch'
     "file://${_vgpupkg}.run"
     'git+https://github.com/mbilker/vgpu_unlock-rs.git#commit=3858f2c')
 sha256sums=('20676096714ac00d9fc993901ab275e4b0fa3f2eddc937dae395c8f4e8cb543e'
             '9c23ae9e0ef3b9b927608079ccc5f787e7e351a780f2369479c2e75dfd0470fe'
             'c85ae100a6c87c12906fd0057b77c0c4190f68434de4bc3bc89348ffc19aed61'
-            '7f6c7ab8bdcff47589306c465906bf950c93a721cb1c01792ca8150530566316'
-            '35bb29a3ea181ceadc6e27e88af863f10a6ba94ea16d9394cea4b50d384d3c47'
+            '36325e26243429e1e55c8500bcac850fea6e6a8975a657984c0979042a001c7b'
+            '79b09682f9c3cfa32d219a14b3c956d8f05340addd5a43e7063c3d96175a56f4'
             'f77f26f609bb6f1eb69d3dc7e84ba704e5c065e424a619ab1460accb8247143f'
-            '8656a261902e6569a71fbb55229dde8f03383772b6be50044102f250520d846f'
+            'b7d076bee270e779b7c1eb512c9325794be2e8cbd7cd37c0f62fc72d87654a82'
             'SKIP')
 
 create_links() {
@@ -71,11 +71,11 @@ DEST_MODULE_LOCATION[1]="/kernel/drivers/video"' \
       -i "${_vgpupkg}/kernel/dkms.conf"
 
     pushd "${_vgpupkg}"
-    patch -p1 < "${srcdir}/nvidia-vgpu-vfio.patch"
+    patch -p1 < "${srcdir}/nvidia-510.73.05-vgpu-5.18.patch"
     popd
 
     pushd "${_vgpupkg}"
-    patch -p1 < "${srcdir}/nv-kernel.patch"
+    patch -u kernel/nvidia/nv-kernel.o_binary < "${srcdir}/nv-kernel.patch"
     patch -p1 < "${srcdir}/vgpu_unlock.patch"
     popd
 }
