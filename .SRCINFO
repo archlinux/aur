@@ -1,7 +1,7 @@
 pkgbase = web-greeter
 	pkgdesc = A modern, visually appealing greeter for LightDM
 	pkgver = 3.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JezerM/web-greeter
 	arch = any
 	license = GPL3

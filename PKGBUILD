@@ -2,7 +2,7 @@
 
 pkgname=web-greeter
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern, visually appealing greeter for LightDM'
 arch=('any')
 url='https://github.com/JezerM/web-greeter'
@@ -16,6 +16,7 @@ sha512sums=('SKIP'
 prepare() {
     cd "$pkgname-$pkgver"
     patch --forward --strip=1 --input="${srcdir}/package.patch"
+    git submodule set-url ts-types https://github.com/JezerM/nody-greeter-types
     git submodule init
     git submodule update --recursive
 }
