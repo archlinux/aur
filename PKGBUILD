@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=svn-export
 pkgver=2013.1.30
-pkgrel=3
+pkgrel=5
 pkgdesc='An svn export emulator with support for incremental exports.'
 arch=(any)
 license=(GPL)
@@ -13,13 +13,13 @@ source=(
 )
 sha512sums=(
   c1ff3781fa3200528699203c8fa01c6b84655e95ef75163ebbaab21bf5918021eaddf8a12ddeac469633e74d77be47a399f73198624f6188e1a266d6737af37c
-  dfb2819c9f77e227f329d945ba2466f078f062a7fd79b2ec503b60d7d618a2f175ee6b21752a6d1955abedfce536d58c639224e46c51933db0413c2b868767b5
+  0c2c1fa67f2d85c1f17b0c2e8adebee9de734111cf1dd36bd995e01bc294687f61ead873ab55f94f0ba2e11201894f1ac20bc669893ae855ee09324c9d8211ea
 )
 md5sums=(
   9ae1866e3197590ac0f288d3da3cc144
-  cd57071964216d794db6c6d6083d1ced
+  cfc57220d664c7baf8c857d5ea666e39
 )
-validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
+validpgpkeys=('D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519')
 
 package ()
 {
