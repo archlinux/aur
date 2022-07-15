@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=idemptables
 pkgver=2012
-pkgrel=3
+pkgrel=5
 pkgdesc='Idempotent iptables wrapper for appending and deleting rules.'
 arch=(any)
 license=(GPL)
@@ -13,13 +13,13 @@ source=(
 )
 sha512sums=(
   c8512b30ed528ac81d45ff4eabe6098371ee6f40f9a85ff0d716e9a051912d170a7d1b1fde04b1b1074fbe082a5380bff6d0071ea4b33d18d98063617ee37457
-  376ab5a94657357499680e8ddaa91c983dac64a2afb97de02fdef3ce88dac8e3b0cd05fc6be53401b03a85ebb856d98b2ecc1d8850b3671f736307105573d02b
+  27d860f05202997bba9c6bc5f04c2a4dce3ad547752deacb0cf263e70006883067523966cab64e66220069ea03be8cfb318990975e62f72139e4087fab1a7f09
 )
 md5sums=(
   937834cc23b4afe9628fa7bc69ad39ba
-  3f63fe8004ce7912f621728671ae9b42
+  e23f8fcbcf39d0c32c4892397cd5603b
 )
-validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
+validpgpkeys=('D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519')
 
 package ()
 {
