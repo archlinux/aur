@@ -1,4 +1,4 @@
-pkgbase = gnome-shell-extension-pip-on-top-gnome43
+pkgbase = gnome-shell-extension-pip-on-top43
 	pkgdesc = Makes Picture-in-Picture windows stay on top (with GNOME 43 patches)
 	pkgver = 43.alpha
 	pkgrel = 3
@@ -18,4 +18,4 @@ pkgbase = gnome-shell-extension-pip-on-top-gnome43
 	b2sums = SKIP
 	b2sums = 259ad5ddb14501b9bd7df77a38e17101d1ddee9e4cce276a2392fd678178a28c766ef3045bba1bae306aba4c3e812f3576ba5869c41a24034b0e1c90c11f9330
 
-pkgname = gnome-shell-extension-pip-on-top-gnome43
+pkgname = gnome-shell-extension-pip-on-top43

@@ -1,7 +1,7 @@
 # Maintainer: Ewout van Mansom <ewout@vanmansom.name>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
-pkgname=gnome-shell-extension-pip-on-top-gnome43
+pkgname=gnome-shell-extension-pip-on-top43
 _pkgname=gnome-shell-extension-pip-on-top
 pkgver=43.alpha
 pkgrel=3
@@ -12,8 +12,8 @@ license=('GPL2')
 depends=('gnome-shell>=43')
 makedepends=('git' 'meson' 'jq')
 optdepends=('clapper')
-conflicts=("${pkgname%-gnome43}" "${_pkgname}-git")
-provides=("${pkgname%-gnome43}")
+conflicts=("${pkgname%43}" "${_pkgname}-git")
+provides=("${pkgname%43}")
 _cvsdir="${_pkgname}-${pkgver:0:2}"
 source=(
   "${_cvsdir}::git+${url}.git"
