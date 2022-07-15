@@ -1,17 +1,18 @@
 # Maintainer: nic96 <jeromyreimer at gmail dot com>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 
 pkgname=voxelands-bin
 pkgver=1602.00
-pkgrel=2
+pkgrel=3
 pkgdesc="A fork of Minetest, an Infiniminer/Minecraft inspired game"
 arch=(x86_64)
-url="http://www.voxelands.com/"
+url="https://web.archive.org/web/20180616063819/voxelands.com/"
 license=('GPL3')
 depends=('libxxf86vm' 'irrlicht' 'sqlite' 'libvorbis' 'openal' 'glu' 'libsm' 'hicolor-icon-theme' 'freetype2' 'libpng12')
 replaces=('minetest-classic')
 provides=('minetest-classic' 'voxelands')
 conflicts=('minetest-classic' 'minetest-classic-next-git' 'voxelands-next-git' 'voxelands')
-source=("http://www.voxelands.com/downloads/voxelands-${pkgver}-ubuntu-x86_64.deb")
+source=("https://github.com/bl00dy1837/voxelands_deb/blob/main/voxelands-1602.00-ubuntu-x86_64.deb?raw=true")
 md5sums=('977894fa4216fa8acfe235cfaa315419')
 
 build() {
