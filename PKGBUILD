@@ -2,7 +2,7 @@
 
 pkgname=caffeine-ng
 pkgver=4.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Status bar application able to temporarily inhibit the screensaver and sleep mode."
 arch=(any)
 url="https://codeberg.org/WhyNotHugo/caffeine-ng"
@@ -20,7 +20,10 @@ depends=(
   python-pulsectl
   libindicator-gtk3
 )
-optdepends=("libappindicator-gtk3: AppIndicator support (eg: Plasma, Unity).")
+optdepends=(
+  "libappindicator-gtk3: AppIndicator support (eg: Plasma, Unity)."
+  "xfconf: Support for Xfce presentation mode."
+)
 makedepends=(
   git
   python-setuptools-scm
