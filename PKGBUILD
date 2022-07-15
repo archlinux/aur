@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=bacpac
 pkgver=2014
-pkgrel=2
+pkgrel=4
 pkgdesc='Pacman-independent portable package downloader with dependency resolution.'
 arch=(any)
 license=(GPL)
@@ -14,13 +14,13 @@ source=(
 )
 sha512sums=(
   4910e4506c5a7474517ce18b15edb796ce6e9e7958895d5ec25bfbd1330ad3620d0d97e121cdb571482124e558e5ff52852ccecfd611c28916fccd9644bffc9b
-  77409d5ebd3d666dddb6f69f7da95806ed55609aeca848daaebd1546cf3acb7e2b9b4bf69ad39597449144e203da650fb25fbaa28aa04174b88ec4fa9ea3dd70
+  840652eb0dac9f704177c3ef5c28265063cb6ba3fc3261ddba02fa00f4193febe06fa87a90a131516c11f8fd44aa53e53f6b80d684c8c73d13219d152ca177eb
 )
 md5sums=(
   7f17bd2e978ab51a05665f298a6e032a
-  a70c2eff3ddb0fdc00d221a3a79b9e1e
+  34454ad43863c289ece477c42df4d642
 )
-validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
+validpgpkeys=('D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519')
 
 package ()
 {
