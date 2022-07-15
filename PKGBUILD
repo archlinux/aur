@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=igraph
-_pkgver=1.3.2
+_pkgver=1.3.3
 pkgname=r-${_pkgname,,}
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc='Network Analysis and Visualization'
 arch=('x86_64')
@@ -14,6 +14,7 @@ depends=(
   r
   r-magrittr
   r-pkgconfig
+  r-rlang
 )
 optdepends=(
   r-ape
@@ -34,7 +35,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0f5066180e223e165d28cee050054008ca23102e8392ff4ecd72e733537ec320')
+sha256sums=('d964a7d43860b9e92df0a998e265d4e02df419c774c41b429cf191e3946fe21b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
