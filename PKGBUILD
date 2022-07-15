@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=obtheme
 pkgver=2013.2.20.2
-pkgrel=5
+pkgrel=7
 pkgdesc='A GUI theme editor for Openbox.'
 arch=(any)
 license=(GPL)
@@ -13,14 +13,14 @@ source=(
 )
 sha512sums=(
   5e7d1d187c0d5f3e6851b3a09be9aeed3b2708277940abd19efba4a501bf3ab20e0307f51e4b63e33ba07d301abf41607cec7074b3e478c9c5e6b065b3773f77
-  6f678511de9d8f5017c5ea63146ea26d8b0d38424377b021fb478472384de944c3efae13c9e3fb0c63e8285d4ff30c2523eaf7ab1ac79634ee00e43de9fa9944
+  636737e4a78c10f4278fe18ff170e03a982989a11e13b93237a78fffbe70e3937d5af1a0ab9e80710905baf729abe0a45e679898b111a7c299140e35f0f234d9
 )
 md5sums=(
   3623a3cefb9d665c29091a19ae6fdbf6
-  88d4e8e93938776c8c47c8f1e6d2df18
+  55627f3807d73263be359773470492f7
 )
 install=obtheme.install
-validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
+validpgpkeys=('D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519')
 
 package ()
 {
