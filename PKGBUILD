@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=rabbit_tree
 pkgver=2016.11.13
-pkgrel=2
+pkgrel=4
 pkgdesc='Radix bit tries for implementing associative arrays and sets in C.'
 arch=(any)
 license=(GPL)
@@ -13,13 +13,13 @@ source=(
 )
 sha512sums=(
   b405ebd2c22103d96fe3d6d09bdbe35d8c178fa53a49bc4b2141ab7d09afd3634fd5b1b41f3e97e37fa9ed7ab2c546e025a0bec0d522053e0efb979d19e85c95
-  c8a2a4367986328f398c4ff3f3fcd51ab394a4a6c4213a2e801099eaceb01f0d488c92bd1553b786b36a37c3bca5ff412f4f10511b196d0c365f039ee93e11d2
+  df3e4119aad7257de69383c640fb7cde1b02398c77ac81fdeba81f3d04902c8572ee4c3b0fc16e5f54ce5117b6b13321317eddf847fb4e71e7c18d3cb203e283
 )
 md5sums=(
   1d06ee9762c1eb22b2858bec1c99ccba
-  426b2ccdbaf542cb1e86aa1f7e4278b7
+  568b14da04bf4ad58c6e81cd6c6aceaa
 )
-validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
+validpgpkeys=('D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519')
 
 build ()
 {
