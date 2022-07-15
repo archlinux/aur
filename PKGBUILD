@@ -4,7 +4,7 @@
 
 pkgname=mail-notification
 pkgver=5.4.r69.g9ae8768
-pkgrel=5
+pkgrel=6
 pkgdesc="Tray icon application that informs you if you have new mail"
 arch=('i686' 'x86_64')
 url="http://www.nongnu.org/mailnotify/"
@@ -19,6 +19,7 @@ source=(git+https://github.com/epienbroek/mail-notification.git
         http://pkgs.fedoraproject.org/cgit/rpms/mail-notification.git/plain/mail-notification-dont-link-against-bsd-compat.patch
         http://pkgs.fedoraproject.org/cgit/rpms/mail-notification.git/plain/mail-notification-eds3_23_2.patch
         http://pkgs.fedoraproject.org/cgit/rpms/mail-notification.git/plain/mail-notification-gstreamer1.patch
+        mail-notification-bool.patch
         mail-notification.desktop)
 sha256sums=('SKIP'
             'a7646259ca72b58165e4e1c8cf12b197e32807459c4291867479ef3520d39732'
@@ -26,6 +27,7 @@ sha256sums=('SKIP'
             '2340c6001ad9dfd071f80cf0cd9b45d3fa7efada6880a530b16a3b4d36a27444'
             'dfb9980292524a33f60c80a5abbeac8e6dad0888564105d221e3effee91fd791'
             'bc1ccc9aba228a7446732e078775ca6972a549ee77a70d7bc89c464830ab178b'
+            '18234400d819e84184127746001975cd9361d03f0d21c9688833639e33dc72e2'
             '6a1a683da2a83e596999b261d3830a10678b46d16317c5ac3615ab29fffe6a38')
 
 pkgver() {
@@ -43,6 +45,7 @@ prepare() {
   patch -Np0 < "$srcdir/mail-notification-dont-link-against-bsd-compat.patch"
   patch -Np1 < "$srcdir/mail-notification-eds3_23_2.patch"
   patch -Np1 < "$srcdir/mail-notification-gstreamer1.patch"
+  patch -Np1 < "$srcdir/mail-notification-bool.patch"
 
   cp -p /usr/share/libtool/build-aux/config.{guess,sub} jbsrc/tools/
 }

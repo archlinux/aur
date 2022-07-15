@@ -1,0 +1,40 @@
+diff --git a/src/mn-conf.c b/src/mn-conf.c
+index a5aca91..ed29ed4 100644
+--- a/src/mn-conf.c
++++ b/src/mn-conf.c
+@@ -452,10 +452,34 @@ mn_conf_set_value (const char *key, const GConfValue *value)
+   CONF_GETTER(name, get_ctype, fail_retval)				\
+   CONF_SETTER(name, set_ctype)
+ 
+-CONF_ACCESSORS(bool, gboolean, gboolean, FALSE)
+ CONF_ACCESSORS(int, int, int, 0)
+ CONF_ACCESSORS(string, char *, const char *, NULL)
+ 
++gboolean
++mn_conf_get_bool (const char *key)
++{
++  gboolean v;
++  GError *err = NULL;
++
++  g_return_val_if_fail(key != NULL, FALSE);
++
++  v = gconf_client_get_bool(mn_conf_get_client(), key, &err);
++  handle_error(&err);
++
++  return v;
++}
++
++void
++mn_conf_set_bool (const char *key, gboolean value)
++{
++	GError *err = NULL;
++
++	g_return_if_fail(key != NULL);
++
++	gconf_client_set_bool(mn_conf_get_client(), key, value, &err);
++	handle_error(&err);
++}
++
+ GSList *
+ mn_conf_get_string_list (const char *key)
+ {
