@@ -7,7 +7,7 @@
 
 pkgname=gargoyle
 pkgver=2022.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Interactive Fiction multi-interpreter that supports all major IF formats."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://ccxvii.net/gargoyle/"
@@ -32,6 +32,11 @@ prepare() {
 
 build() {
 	cd "${srcdir}/garglk-${pkgver}"
+
+	# Extract the license for Git from the readme
+	sed -n '/Copyright (c)/,/DEALINGS IN THE SOFTWARE\./p' \
+		terps/git/README.txt > terps/git/LICENSE
+
 	mkdir -p build
 	cd build
 	# the Arch package guidelines say to use
@@ -55,8 +60,14 @@ package() {
 	install -dm755 "$pkgdir/usr/share/licenses/${pkgname}"
 	install -m644 "$gsrcdir/License.txt" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 	install -m644 "$gsrcdir/licenses/BSD-2-Clause.txt" "$pkgdir/usr/share/licenses/${pkgname}"
+	install -m644 "$gsrcdir/licenses/Go Mono.txt" \
+		"$pkgdir/usr/share/licenses/${pkgname}/BSD-3-Clause-Go-Mono.txt"
 	install -m644 "$gsrcdir/terps/advsys/LICENSE" \
-		"$pkgdir/usr/share/licenses/${pkgname}/BSD-3-Clause.txt"
+		"$pkgdir/usr/share/licenses/${pkgname}/BSD-3-Clause-AdvSys.txt"
+	install -m644 "$gsrcdir/terps/git/LICENSE" \
+		"$pkgdir/usr/share/licenses/${pkgname}/MIT-Git.txt"
+	install -m644 "$gsrcdir/terps/glulxe/LICENSE" \
+		"$pkgdir/usr/share/licenses/${pkgname}/MIT-Glulxe.txt"
 	install -m644 "$gsrcdir/licenses/Charis SIL.txt" \
 		"$pkgdir/usr/share/licenses/${pkgname}/OFL-1.1.txt"
 }
