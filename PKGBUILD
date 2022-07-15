@@ -1,15 +1,15 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=blurble-git
 _pkgname=Blurble
 pkgver=0.1.0.r3.g9170f7c
-pkgrel=1
+pkgrel=2
 pkgdesc="Word guessing game"
 arch=('x86_64')
 url="https://gitlab.gnome.org/pervoj/Blurble"
 license=('GPL3')
 depends=('libadwaita')
-makedepends=('git' 'meson' 'blueprint-compiler' 'vala')
+makedepends=('git' 'meson' 'blueprint-compiler' 'gobject-introspection' 'vala')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
