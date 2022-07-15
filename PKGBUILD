@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=maown
 pkgver=2021
-pkgrel=1
+pkgrel=3
 pkgdesc='Monitor a shared directory and automatically adjust file ownership and permissions.'
 arch=(i686 x86_64)
 license=(GPL)
@@ -12,13 +12,13 @@ source=(
 )
 sha512sums=(
   3402be9c0bcd113cc2bf4b46941c6a0e6b9688d8480421021b5231736ed03b02800011fad14e3576543b9671856d50f88b23fe7699b702d40446786575beb93a
-  74de3e3c0ec61cc17b56f4776f782d4aaefe1d472f7c2e2bd8de42920678964d1104718d5ef8534ab06abb65a0b013b72967fcce4936f94baf9423a5c3d50726
+  30bc5dcfd5e6aaf08761096567a153e8a762408ae02923e971f82f1258e98ae5376d69f772fe3ebed64857fe5dd8253c4e875618de4e069535ca48aa801aa688
 )
 md5sums=(
   279a6095df026dbcf1ac5099289f2271
-  13ab656f6d0468de92e09e8fb26c6df5
+  b993fc4dcc4b7bfcf1835fe136b0aa76
 )
-validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
+validpgpkeys=('D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519')
 
 build ()
 {
