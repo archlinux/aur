@@ -1,12 +1,12 @@
 # Maintainer: Niels Sonnich Poulsen <niels@nielssp.dk>
 pkgname=colorgrab
 pkgver=0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A cross-platform color picker."
 url="https://github.com/nielssp/colorgrab"
 arch=('x86_64' 'i686')
 license=('MIT')
-depends=('wxwidgets')
+depends=('wxwidgets-gtk3')
 makedepends=('cmake')
 conflicts=()
 replaces=()
