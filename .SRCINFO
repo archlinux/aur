@@ -6,12 +6,12 @@ pkgbase = virtualfish
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = fish>=3.1
-	depends = python>=3.6.2
-	depends = python-packaging>=21.3
-	depends = python-pkgconfig>=1.5
-	depends = python-psutil>=5.7
-	depends = python-virtualenv>=20
+	depends = fish
+	depends = python
+	depends = python-packaging
+	depends = python-pkgconfig
+	depends = python-psutil
+	depends = python-virtualenv
 	source = https://files.pythonhosted.org/packages/source/v/virtualfish/virtualfish-2.5.4.tar.gz
 	sha256sums = c8e256586d7a45ca461134a18d2fecfb7df7d32c104e9bd84d82570c6ef2ac3e
 
