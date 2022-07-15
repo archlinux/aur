@@ -14,9 +14,9 @@ conflicts=("${pkgname%-bin}")
 source_x86_64=("https://github.com/kopia/kopia/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_amd64.deb")
 source_aarch64=("https://github.com/kopia/kopia/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_arm64.deb")
 source_armv7h=("https://github.com/kopia/kopia/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_armhf.deb")
-sha256sums_x86_64=('ab7c68ff0371a6de20326bf32fb526690db823a4628711d837f72c68d23fdd57')
-sha256sums_aarch64=('f7cb0f552fb6356f72cfcdcf205839d60fbb9b15352063eefe3db865a31c71f0')
-sha256sums_armv7h=('7902560db059c8cf15fe212772304e306982c82fcb33e740c19a61ba05952b65')
+sha256sums_x86_64=('f44d89061599023f3eda2d5fb358028aadadebabf3c653e0554f224446d150e2')
+sha256sums_aarch64=('5676923a1b91a838f20558e571641e6912efb30c7108eba9506598bb0417f1fb')
+sha256sums_armv7h=('e17ab79166495ca1d67095f126f68b24ca7a3a7ca919e041daf70e7a2f826534')
 
 package() {
     tar -xf data.tar.gz -C "$pkgdir"
