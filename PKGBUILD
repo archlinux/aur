@@ -1,23 +1,27 @@
 # Maintainer: B.C. van Zuiden <zuiden@ilorentz.org>
 _pkgname=aflplusplus
 pkgname=${_pkgname}-git
-pkgver=2.54c
+pkgver=4.01c.r49.gc57988e6
 pkgrel=1
-pkgdesc="afl++ is afl with community patches, AFLfast power schedules, qemu 3.1 upgrade + laf-intel support, MOpt mutators, InsTrim instrumentation, unicorn_mode and a lot more!"
+pkgdesc="The fuzzer afl++ is afl with community patches, qemu 5.1 upgrade, collision-free coverage, enhanced laf-intel & redqueen, AFLfast++ power schedules, MOpt mutators, unicorn_mode, and a lot more!"
 arch=('x86_64')
-url="https://github.com/vanhauser-thc/AFLplusplus"
+url="https://github.com/AFLplusplus/AFLplusplus"
 license=('Apache')
 makedepends=('git')
 provides=('afl')
 conflicts=('afl')
-source=('git://github.com/vanhauser-thc/AFLplusplus.git')
+source=("git+https://github.com/AFLplusplus/AFLplusplus.git")
 sha256sums=('SKIP')
+
+pkgver() {
+    cd AFLplusplus
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build()
 {
     cd AFLplusplus
     make PREFIX="/usr"
-    make llvm_mode PREFIX="/usr"
 }
 
 package()
