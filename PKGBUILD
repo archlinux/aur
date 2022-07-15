@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=arch32-light
 pkgver=2015
-pkgrel=2
+pkgrel=4
 pkgdesc='Lightweight 32-bit chroot intended for 64-bit systems.'
 arch=(any)
 license=(GPL)
@@ -16,14 +16,14 @@ source=(
 )
 sha512sums=(
   bd1873763b4d74853f9d2a0167df1bf3a1376a1fcfd23b96c62eb3cb5f558c7dcf60a80e7bc58d04601b2e39099a8a01d4f475fce709b4fcf64acfdadfbb93ba
-  a65e20d5a8240174a44fc82ac554a6b6a2404a3c5417fbfa0dcd45f2ad5e3c221f34fb237882fbfc7e0915f53358ee103dd9c61812abf60290b85c9d439ae18f
+  956e8d8673b58f8d296a5e9e97c801a0a679d71da3157c5b31c35d8692360b9b722678b43cd210efd571425d514a18b5ac9782708c17b6e2807aa6ac304471b4
 )
 md5sums=(
   587c96663eefe801d9623c45ccf3557c
-  d1375746b73425a011a46530b8493791
+  7a69ae656105769d617d4a8a2e6b80bf
 )
 install=arch32-light.install
-validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
+validpgpkeys=('D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519')
 
 package ()
 {
