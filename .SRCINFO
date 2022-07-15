@@ -1,0 +1,11 @@
+pkgbase = yor-bin
+	pkgdesc = Extensible auto-tagger for your IaC files.
+	pkgver = 0.1.150
+	pkgrel = 1
+	url = https://github.com/bridgecrewio/yor
+	arch = x86_64
+	license = Apache
+	source = https://github.com/bridgecrewio/yor/releases/download/0.1.150/yor_0.1.150_linux_amd64.tar.gz
+	sha256sums = 687ce1bb90742201345791f9fc508cfac65635fcb4ffa2bc03496e8835331971
+
+pkgname = yor-bin
