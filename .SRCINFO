@@ -1,18 +1,18 @@
 pkgbase = alatools
 	pkgdesc = Tools for the Arch Linux Archive.
-	pkgver = 2018.12
+	pkgver = 2022.6
 	pkgrel = 3
 	url = https://xyne.dev/projects/alatools
 	arch = any
 	license = GPL
 	depends = python-pyxdg
 	depends = python3
-	source = https://xyne.dev/projects/alatools/src/alatools-2018.12.tar.xz
-	source = https://xyne.dev/projects/alatools/src/alatools-2018.12.tar.xz.sig
-	validpgpkeys = EC3CBE7F607D11E663149E811D1F0DC78F173680
-	md5sums = 187d507cbbd4d1ce8c5dd0ae8f66fdb1
-	md5sums = 844070ee041c4146678db32e2968c0d0
-	sha512sums = 568e8bab8e788a278f0c8504ac6f1de22600050e40ea6c92746eb143f39f8eb5eaee9eb20191a42fa87ba20adfbc63de2b405293090b28701b3db96bef76d0d9
-	sha512sums = 0bfa47120ed1dca33c86fda5e125dfba43277d089d182773a88942c668e344298a2ecad0b3ec8298e050f7851821131679f0914bb002dab39f315d13ca3c5e55
+	source = https://xyne.dev/projects/alatools/src/alatools-2022.6.tar.xz
+	source = https://xyne.dev/projects/alatools/src/alatools-2022.6.tar.xz.sig
+	validpgpkeys = D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519
+	md5sums = bd0bfcb0173ea3b605bf508793da58b5
+	md5sums = 6dd44c73ca1ceda1d8d45e476b5eda78
+	sha512sums = 3c05ba7269f12573007d5c1ef67a44897bcc403cee688541be1971db9d9ea342564192936a1a7c49e145a71d57fa95e8d8dc9d36e521c17aff2d10aec52261e2
+	sha512sums = 5109fa4a577fd7713fd4ef3fa1cabafa5474c8219a362c6d3dfd240d46cab17350bd9adfc0b7108a13652a2dfd4fc7868d905ca48a8107894274995075332d2c
 
 pkgname = alatools
