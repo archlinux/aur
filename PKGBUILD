@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=python3-currencyconverter
 pkgver=2021
-pkgrel=2
+pkgrel=4
 pkgdesc='Module and command-line tool for currency conversion and rate retrieval.'
 arch=(any)
 license=(GPL)
@@ -13,13 +13,13 @@ source=(
 )
 sha512sums=(
   bef5bc812d4ca35c549d364459f0b02b74a0ea487e46a8c0f6971cdc8cc75dcf3f16a5d459771ea5d5d210ef8481135affb156392153ec4da963050be2a61453
-  9c3691f6596db4d08e510d9f1ebd4324cf411627dfdd9723d8a5ceb30c1fcd977b381e4392c5aa32f8d5449d0dcdc425afab7acbc5aa64688b375898f8ffb6a3
+  8ff542a4d950bd720af8715070368ee223f629ee1734de07fe674bd4cd9659d4ee5ba2d5a6ff31b81f105adbef6351c11987a63bf81747596029048de60351b7
 )
 md5sums=(
   21fe16b66554a312bf2c68b73d177894
-  e7cc0351df05e49267fdc77813e5be30
+  1472062c83c1877b1c8fba6d90f8b6cc
 )
-validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
+validpgpkeys=('D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519')
 
 package ()
 {
