@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=boringtun
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Userspace WireGuard implementation in Rust"
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ url="https://github.com/cloudflare/boringtun"
 license=('BSD')
 depends=('gcc-libs')
 makedepends=('rust')
-source=("$pkgname-$pkgver-src.tar.gz::https://github.com/cloudflare/boringtun/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a7eaea4ceb6d0b7e4edc97f60557740dfd89288ca73a1ffb985e9fc39fec7f8a')
+source=("$pkgname-$pkgver-src.tar.gz::https://github.com/cloudflare/boringtun/archive/refs/tags/boringtun-$pkgver.tar.gz")
+sha256sums=('6de89f0750e401770326639ac1506fad457d26acdfe8d23a5dff6184684e4cc9')
 
 
 check() {
