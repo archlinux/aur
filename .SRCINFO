@@ -1,6 +1,6 @@
 pkgbase = nvidia-merged
 	pkgver = 510.73.06
-	pkgrel = 1
+	pkgrel = 2
 	url = https://krutavshah.github.io/GPU_Virtualization-Wiki/
 	arch = x86_64
 	groups = nvidia-merged
@@ -46,6 +46,7 @@ pkgname = lib32-nvidia-merged-utils
 	provides = lib32-opengl-driver
 	provides = lib32-nvidia-libgl
 	provides = lib32-nvidia-utils
+	conflicts = lib32-nvidia-utils
 	replaces = lib32-nvidia-libgl
 
 pkgname = lib32-opencl-nvidia-merged
@@ -64,6 +65,7 @@ pkgname = nvidia-merged-dkms
 	depends = libglvnd
 	provides = NVIDIA-MODULE
 	provides = nvidia-dkms
+	conflicts = nvidia-dkms
 
 pkgname = nvidia-merged-settings
 	pkgdesc = Tool for configuring the NVIDIA graphics driver
@@ -73,6 +75,7 @@ pkgname = nvidia-merged-settings
 	depends = libvdpau
 	depends = nvidia-merged-utils=510.73.06
 	provides = nvidia-settings
+	conflicts = nvidia-settings
 
 pkgname = nvidia-merged-utils
 	pkgdesc = NVIDIA drivers utilities; patched for vGPU support w/ Rust unlock & host DRM output
@@ -90,6 +93,7 @@ pkgname = nvidia-merged-utils
 	provides = nvidia-utils
 	provides = vgpu_unlock
 	conflicts = nvidia-libgl
+	conflicts = nvidia-utils
 	replaces = vgpu_unlock
 
 pkgname = opencl-nvidia-merged

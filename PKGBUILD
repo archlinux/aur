@@ -16,7 +16,7 @@
 pkgbase='nvidia-merged'
 pkgname=('lib32-nvidia-merged-utils' 'lib32-opencl-nvidia-merged' 'nvidia-merged-dkms' 'nvidia-merged-settings' 'nvidia-merged-utils' 'opencl-nvidia-merged')
 pkgver=510.73.06
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 makedepends=('git' 'rust')
 url='https://krutavshah.github.io/GPU_Virtualization-Wiki/'
@@ -142,6 +142,7 @@ package_nvidia-merged-dkms() {
     pkgdesc="NVIDIA drivers - module sources; patched for vGPU support w/ Rust unlock & host DRM output"
     depends=('dkms' "nvidia-merged-utils=${pkgver}" 'libglvnd')
     provides=('NVIDIA-MODULE' 'nvidia-dkms')
+    conflicts=('nvidia-dkms')
 
     install -d -m755 "${pkgdir}/usr/src"
     cp -dr --no-preserve='ownership' "${_gridpkg}/kernel" "${pkgdir}/usr/src/nvidia-${_gridpkgver}"
@@ -162,6 +163,7 @@ package_nvidia-merged-settings() {
     pkgdesc='Tool for configuring the NVIDIA graphics driver'
     depends=('jansson' 'gtk3' 'libxv' 'libvdpau' "nvidia-merged-utils=${pkgver}")
     provides=('nvidia-settings')
+    conflicts=('nvidia-settings')
 
     install -D -m755 "${_gridpkg}/nvidia-settings" "${pkgdir}/usr/bin/nvidia-settings"
     install -D -m644 "${_gridpkg}/libnvidia-gtk3.so.${_gridpkgver}" "${pkgdir}/usr/lib/libnvidia-gtk3.so.${_gridpkgver}"
@@ -182,7 +184,7 @@ package_nvidia-merged-utils() {
                 "opencl-nvidia-merged=${pkgver}: OpenCL support"
                 'mdevctl: mediated device contfiguration tool'
                 'libvirt: virtualization engine control interface')
-    conflicts=('nvidia-libgl')
+    conflicts=('nvidia-libgl' 'nvidia-utils')
     provides=('vulkan-driver' 'opengl-driver' 'nvidia-libgl' 'nvidia-utils' 'vgpu_unlock')
     replaces=('vgpu_unlock')
 
@@ -334,6 +336,7 @@ package_lib32-nvidia-merged-utils() {
     optdepends=("lib32-opencl-nvidia=${pkgver}")
     provides=('lib32-vulkan-driver' 'lib32-opengl-driver' 'lib32-nvidia-libgl' 'lib32-nvidia-utils')
     replaces=('lib32-nvidia-libgl')
+    conflicts=('lib32-nvidia-utils')
 
     install -D -m755 "${_gridpkg}/32/libGLX_nvidia.so.${_gridpkgver}" "${pkgdir}/usr/lib32/libGLX_nvidia.so.${_gridpkgver}"
 
