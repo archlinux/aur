@@ -1,7 +1,8 @@
 # Maintainer: Niels Sonnich Poulsen <niels@nielssp.dk>
 pkgname=colorgrab
-pkgver=0.3
-pkgrel=4
+pkgver=0.4.0_pre
+_pkgver=0.4.0-pre
+pkgrel=1
 pkgdesc="A cross-platform color picker."
 url="https://github.com/nielssp/colorgrab"
 arch=('x86_64' 'i686')
@@ -13,28 +14,21 @@ replaces=()
 backup=()
 install="${pkgname}.install"
 source=(
-  "https://github.com/nielssp/${pkgname}/archive/v${pkgver}.tar.gz"
-  "fixbuild.patch"
+  "https://github.com/nielssp/${pkgname}/archive/refs/tags/v${_pkgver}.tar.gz"
 )
 md5sums=(
-  'd1db6f37cd4a4f0cf1878d3cb76ef216'
-  '18e9012cf812f2c56ab044dbe7175b5c'
+  '9cfddc4007ff483a58e5f2adf8e1b666'
 )
 
-prepare() {
-  cd "$pkgname-$pkgver"
-  patch --forward --strip=1 --input="${srcdir}/fixbuild.patch"
-}
-
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${_pkgver}"
   cmake ./ -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package() {
   cd "${srcdir}"
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${_pkgver}"
   install -Dm755 "${pkgname}" "$pkgdir/usr/bin/${pkgname}"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   
