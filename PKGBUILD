@@ -2,12 +2,12 @@
 
 pkgname=peirates-bin
 pkgver=1.1.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Kubernetes Penetration Testing tool.'
 arch=('x86_64')
 url='https://github.com/inguardians/peirates'
 license=('Apache 2')
-provides=('kdigger-bin')
+provides=('peirates-bin')
 source=("https://github.com/inguardians/${pkgname%-bin}/releases/download/v${pkgver}/${pkgname%-bin}-linux-amd64.tar.xz"
         "https://raw.githubusercontent.com/inguardians/${pkgname%-bin}/v${pkgver}/LICENSE"
 )
