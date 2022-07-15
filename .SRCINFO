@@ -1,5 +1,5 @@
-pkgbase = picom-pijulius
-	pkgdesc = X compositor (fork of compton) (git-version)
+pkgbase = picom-pijulius-git
+	pkgdesc = pijulius's fork of picom, adds animations
 	pkgver = 1691_Next.129.g982bb43_2021.10.23
 	pkgrel = 1
 	url = https://github.com/pijulius/picom
@@ -39,4 +39,4 @@ pkgbase = picom-pijulius
 	source = git+https://github.com/pijulius/picom.git#branch=implement-window-animations
 	md5sums = SKIP
 
-pkgname = picom-pijulius
+pkgname = picom-pijulius-git
