@@ -2,7 +2,7 @@
  
  pkgname=easy-zsh-config
  pkgver=0.4.0
- pkgrel=1
+ pkgrel=2
  pkgdesc="A simple but fast and out of the box configuration of zsh powered by oh-my-posh and zsh pulgins."
  arch=(any)
  url=https://github.com/wszqkzqk/easy-zsh-config
@@ -15,15 +15,15 @@
             "zsh-autosuggestions"
             "zsh-history-substring-search"
             )
-optdepends=(    "nerd-fonts-noto: to showed the special characters needed by oh-my-posh (highly recommended but still optional)"
-                "pkgfile: to provide a function that will automatically search the pkgfile database when entering an unrecognized command")
+optdepends=("nerd-fonts-noto: to showed the special characters needed by oh-my-posh (highly recommended but still optional)"
+            "pkgfile: to provide a function that will automatically search the pkgfile database when entering an unrecognized command")
 backup=("root/.zshrc"
         "etc/skel/.zshrc")
 install="easy-zsh-config.install"
 source=("zshrc"
         "LICENSE"
         "easy-zsh-config")
-sha256sums=('74025a0f32a58a8474466c2b09a56d0f5600f369ab206abf58244e9a3501578a'
+sha256sums=('b6825c485f3f496604288cf83d824f334ff69b6b929bc94cb20e3481d3780bde'
             '191f93567e767c599cfd843bb8343f311396d8e80d423ec38af2ad3dc52551a3'
             '9081f1c9b5ee60aaab6a0641002bcfae4ab231d4c219f07304d6dbfcf23d4073')
 
