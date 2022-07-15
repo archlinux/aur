@@ -4,7 +4,7 @@
 
 pkgname=river-noxwayland-git
 _pkgname=river
-pkgver=0.1.0.r75.gded490d
+pkgver=0.1.0.r107.gbc610c8
 pkgrel=1
 pkgdesc='A dynamic tiling wayland compositor.'
 arch=('x86_64')
@@ -12,7 +12,10 @@ url='https://github.com/riverwm/river'
 license=('GPL3')
 depends=(
 	'mesa' 'wlroots' 'wayland' 'wayland-protocols' 'libxkbcommon'
-	'libevdev' 'pixman' 'polkit'
+	'libevdev' 'pixman'
+)
+optdepends=(
+	'polkit: access seat through systemd-logind'
 )
 makedepends=('zig' 'git' 'scdoc')
 provides=('river' 'riverctl' 'rivertile')
