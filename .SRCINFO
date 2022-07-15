@@ -1,8 +1,8 @@
 pkgbase = gentorrent-git
 	pkgdesc = A torrent generator
 	pkgver = r35.9e49248
-	pkgrel = 2
-	url = http://tanguy.ortolo.eu/
+	pkgrel = 3
+	url = https://tanguy.ortolo.eu/perso/pages/projets/gentorrent
 	arch = i686
 	arch = x86_64
 	arch = aarch64

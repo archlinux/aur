@@ -2,10 +2,10 @@
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 pkgname=gentorrent-git
 pkgver=r35.9e49248
-pkgrel=2
+pkgrel=3
 pkgdesc="A torrent generator"
 arch=('i686' 'x86_64' 'aarch64')
-url="http://tanguy.ortolo.eu/"
+url="https://tanguy.ortolo.eu/perso/pages/projets/gentorrent"
 license=('AGPLv3')
 makedepends=('git')
 source=("git+https://git.ortolo.eu/git/gentorrent.git")
