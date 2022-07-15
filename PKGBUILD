@@ -1,15 +1,15 @@
 # Maintainer: JaydenDev <jdev0894@gmail.com>
 
 pkgname=vimirror
-pkgver=1.0.1
-pkgrel=5
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="A simple utility to change, test, and use mirrors"
 arch=('any')
 url="https://github.com/JaydenDev/$pkgname"
 license=('MIT')
 provides=("$pkgname")
-source=("https://dl.jaydendev.repl.co/$pkgname-$pkgver.tar.gz")
-md5sums=("e7ec5f445e88916b0bb3730b1c003ab4")
+source=("https://github.com/JaydenDev/vimirror/archive/refs/tags/v1.0.2.tar.gz")
+md5sums=("SKIP")
 
 package() {
   install -Dm755 "$srcdir/$pkgname-$pkgver/main.sh" "$pkgdir/usr/bin/vimirror"
