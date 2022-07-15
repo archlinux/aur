@@ -4,7 +4,7 @@
 
 pkgname=perl-digest-crc
 _realname=Digest-CRC
-pkgver=0.23
+pkgver=0.24
 pkgrel=1
 # Fix archive name
 _revision=
@@ -17,7 +17,7 @@ options=(!emptydirs)
 source=("https://cpan.metacpan.org/authors/id/O/OL/OLIMAUL/${_realname}-${pkgver}${_revision}.tar.gz"
         "COPYING" # From README in source directory
         )
-sha512sums=('983dfb3a39ca054819906bd67251f0e275a55d4ab1873146a8bbe36dee3d979e67a36f3fc53ce18608873a1c68ba30d6de8c59b58ae57a7e36e6816551752875'
+sha512sums=('c536cbcc5c4d336b8ec0e9f7737b5d06fbde8cfacd9b0247320b903ce868fefdf583c2bf4cedb306dc5885b7761bbcc58d385e17e939f6300206907d860110dd'
             '9931cc165ead33233e5ca71b7cf388c882dfeb5b0f21fd891113139579106574860141a23303970b17fc3da2d7390e6b2b2ff438acf599db4a0b7ff05d85822f')
 
 build() {
@@ -49,5 +49,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha512sums=('b92e40bf717882b0e694c6552a88f13ac92a569e4484eedfdfc57b7fe867e29a81e228d00c29e9e4ba120cb9e0ca4d10db12cad5af185893ebcd89b1be87d2c1'
-            '9931cc165ead33233e5ca71b7cf388c882dfeb5b0f21fd891113139579106574860141a23303970b17fc3da2d7390e6b2b2ff438acf599db4a0b7ff05d85822f')
