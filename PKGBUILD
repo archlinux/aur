@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=svg2ggr
 pkgver=2012
-pkgrel=3
+pkgrel=5
 pkgdesc='Extract gradients from svg files and save them to Gimp gradient files (ggr).'
 arch=(any)
 license=(GPL)
@@ -13,13 +13,13 @@ source=(
 )
 sha512sums=(
   8e1b183044f98063876f11b0181f8fea9e41199601a8b9c3d2aeb64ec8b1b9817717003b9a665db3849935ca76638951748013df0ba2dd670517a2409c689a4e
-  fbb7c3f73d164b500dc8a0284ffdc45661606e7c55629d39ae2786af70ea266581501d5ec6c8a55a7a4f53189b666633dbac2cf944a9c5911e5f6cfc866a1774
+  335b7eae4cd12c062dd5dbb7274422865d54da01973835c900aa324f6fe6e0370580cb8aa645e2e848c18a98e401bf584ff9958205a1dc676d3ed44d6548cb38
 )
 md5sums=(
   f170e57058b7608d64849ffe1fff1be5
-  2eeab763ba4c56502d9d0f1593f53cf6
+  764f3bf20435efbc179323f996a72e38
 )
-validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
+validpgpkeys=('D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519')
 
 package ()
 {
