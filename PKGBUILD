@@ -3,14 +3,18 @@
 
 _USE_CCACHE=false
 # _USE_CCACHE=true
+_WITH_NETWORKMANAGER=false
+# _WITH_NETWORKMANAGER=true
+_TOOLKIT='gtk2'
+# _TOOLKIT='gtk3'
 
 _pkgname='claws-mail'
-_pkgvariant='gtk2'
-_gitbranch="${_pkgvariant}"
-_toolkit="${_pkgvariant}"
+_pkgvariant="${_TOOLKIT}"
+_gitbranch="${_TOOLKIT}"
 pkgname="${_pkgname}-${_pkgvariant}-git"
+epoch=0
 pkgver=3.19.0+48.r11565.20220713.5d76d2a7f
-pkgrel=1
+pkgrel=3
 pkgdesc='A GTK based e-mail client. Latest git checkout of GTK2 branch.'
 arch=(
   'i686'
@@ -25,19 +29,19 @@ depends=(
   'enchant'
   'gnutls'
   'gpgme'
-  "${_toolkit}"
+  "${_TOOLKIT}"
   'hicolor-icon-theme'
   'libetpan'
   'libsm'
   'startup-notification'
 )
 makedepends=(
-  'bogofilter'
   'git'
   'python'
   'spamassassin'
   'valgrind'
-  # dependencies for plugins
+  # dependencies for plugins:
+  'bogofilter'
   'dillo'
   'gumbo-parser'
   'libcanberra'
@@ -45,10 +49,9 @@ makedepends=(
   'libical'
   'libnotify'
   'libytnef'
-  'networkmanager'
   'poppler-glib'
   'pygtk'
-  # deps to build the docs
+  # dependencies to build the docs:
   'docbook-utils'
   'texlive-core'
   'texlive-formatsextra'
@@ -100,15 +103,26 @@ sha256sums=(
   'SKIP'
 )
 
+
 if "${_USE_CCACHE}"; then
   options+=('ccache')
 fi
+if "${_WITH_NETWORKMANAGER}"; then
+  makedepends+=('networkmanager')
+  optdepends+=('networkmanager:    for NetworkManager network connection query.')
+  _networkmanager_config_opts=('--enable-networkmanager')
+else
+  _networkmanager_config_opts=('--disable-networkmanager')
+fi
+
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
 
   # Generate ./configure
-  NOCONFIGURE=1 ./autogen.sh
+  if [ ! -e configure ]; then
+    NOCONFIGURE=1 ./autogen.sh
+  fi
 }
 
 pkgver() {
@@ -130,77 +144,83 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  # add --enable-alternate-addressbook to the options to use the new/alternate address book (which could break things!). Do not forget to add claws-contacts to the dependencies then
-  ./configure \
-    --prefix=/usr \
-    --disable-static \
-    --enable-shared \
-    --enable-nls \
-    --enable-manual \
-    --enable-libsm \
-    --enable-ipv6 \
-    --enable-gnutls \
-    --enable-enchant \
-    --enable-crash-dialog \
-    --disable-generic-umpc \
-    --enable-compface \
-    --enable-pthread \
-    --enable-startup-notification \
-    --enable-dbus \
-    --enable-ldap \
-    --enable-jpilot \
-    --disable-networkmanager \
-    --enable-libetpan \
-    --disable-valgrind \
-    --disable-alternate-addressbook \
-    --enable-svg \
-    --disable-tests \
-    --enable-deprecated \
-    --enable-acpi_notifier-plugin \
-    --enable-address_keeper-plugin \
-    --enable-archive-plugin \
-    --enable-att_remover-plugin \
-    --enable-attachwarner-plugin \
-    --enable-bogofilter-plugin \
-    --enable-bsfilter-plugin \
-    --enable-clamd-plugin \
-    --enable-dillo-plugin \
-    --disable-fancy-plugin \
-    --enable-fetchinfo-plugin \
-    --enable-gdata-plugin \
-    --enable-libravatar-plugin \
-    --enable-litehtml_viewer-plugin \
-    --enable-mailmbox-plugin \
-    --enable-managesieve-plugin \
-    --enable-newmail-plugin \
-    --enable-notification-plugin \
-    --enable-pdf_viewer-plugin \
-    --enable-perl-plugin \
-    --enable-python-plugin \
-    --enable-pgpcore-plugin \
-    --enable-pgpmime-plugin \
-    --enable-pgpinline-plugin \
-    --enable-rssyl-plugin \
-    --enable-smime-plugin \
-    --enable-spamassassin-plugin \
-    --enable-spam_report-plugin \
-    --enable-tnef_parse-plugin \
-    --enable-vcalendar-plugin \
+  _configure_opts=(
+    --prefix=/usr
+    # --disable-static # Specifying this would break compilation with `--enable-tests`. See https://www.thewildbeast.co.uk/claws-mail/bugzilla/show_bug.cgi?id=4547.
+    --enable-shared
+    --enable-nls
+    --enable-manual
+    --enable-libsm
+    --enable-ipv6
+    --enable-gnutls
+    --enable-enchant
+    --enable-crash-dialog
+    --disable-generic-umpc
+    --enable-compface
+    --enable-pthread
+    --enable-startup-notification
+    --enable-dbus
+    --enable-ldap
+    --enable-jpilot
+    "${_networkmanager_config_opts[@]}"
+    --enable-libetpan
+    --disable-valgrind
+    --disable-alternate-addressbook # add --enable-alternate-addressbook to the options to use the new/alternate address book (which could break things!). Do not forget to add claws-contacts to the dependencies then
+    --enable-svg
+    --enable-tests
+    --enable-deprecated
+    --enable-acpi_notifier-plugin
+    --enable-address_keeper-plugin
+    --enable-archive-plugin
+    --enable-att_remover-plugin
+    --enable-attachwarner-plugin
+    --enable-bogofilter-plugin
+    --enable-bsfilter-plugin
+    --enable-clamd-plugin
+    --enable-dillo-plugin
+    --disable-fancy-plugin
+    --enable-fetchinfo-plugin
+    --enable-gdata-plugin
+    --enable-libravatar-plugin
+    --enable-litehtml_viewer-plugin
+    --enable-mailmbox-plugin
+    --enable-managesieve-plugin
+    --enable-newmail-plugin
+    --enable-notification-plugin
+    --enable-pdf_viewer-plugin
+    --enable-perl-plugin
+    --enable-python-plugin
+    --enable-pgpcore-plugin
+    --enable-pgpmime-plugin
+    --enable-pgpinline-plugin
+    --enable-rssyl-plugin
+    --enable-smime-plugin
+    --enable-spamassassin-plugin
+    --enable-spam_report-plugin
+    --enable-tnef_parse-plugin
+    --enable-vcalendar-plugin
     --enable-demo-plugin
-    #--help
+  )
+
+#   unset MAKEFLAGS
+#   unset CFLAGS
+#   unset CXXFLAGS
+#   unset LDFLAGS
+
+  ./configure "${_configure_opts[@]}"
   make
 
   # build extra tools
-  cd tools/
+  pushd tools 2>/dev/null
   make
+  popd 2>/dev/null
 }
 
-# check() {
-##  2022-07-14: Compilation with `--enable-tests` fails with `No rule to make target '../pgpcore_la-pgp_utils.o', needed by 'pgp_utils_test'.`. See https://www.thewildbeast.co.uk/claws-mail/bugzilla/show_bug.cgi?id=4547.
-#   cd "${srcdir}/${_pkgname}"
-# 
-#   make test
-# }
+check() {
+  cd "${srcdir}/${_pkgname}"
+
+  make test
+}
 
 package() {
   cd "${srcdir}/${_pkgname}"
@@ -219,7 +239,7 @@ package() {
   for _dir in kdeservicemenu; do
     cp -arv "${_file}" "${pkgdir}/usr/lib/${_pkgname}"/tools/
   done
-  popd
+  popd 2>/dev/null
 
   # Install more information files.
   for _docfile in ABOUT-NLS AUTHORS ChangeLog* INSTALL NEWS README RELEASE_NOTES TODO version; do
