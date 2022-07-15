@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=hapi
 pkgver=2021
-pkgrel=3
+pkgrel=5
 pkgdesc='Python library, command-line tools and server for annotating Mandarin Chinese with phonetics (pinyin, zhuyin, etc.) and colors by tone.'
 arch=(any)
 license=(GPL)
@@ -14,13 +14,13 @@ source=(
 )
 sha512sums=(
   4b91208394ab91217b99e1f88a5e58a198d33ae06ea5a08c50e9d0aa4449c644469b759ee8cbc31e7c603cffc39997b8c5d703b94c629b2bfd7cacba4e2a0ff2
-  2276d02d8e6503e8a8da86e870c35b3ff3f2f055571dcba8edcc7671ef52b3cd768365671dab63fca928cf46aa999938fe1ca2e0f7516b9802d1bd2dcde03414
+  2f538d2a594174973b9cf80967828a70086957c49546dfbf947da34105602a67f16421c3b134e4a35e4ed7a42d4bf38d7eef3b6dbdc4460637d4d788caeffaaf
 )
 md5sums=(
   d427437faed46cf6c39aa8432b52f29f
-  56e93167c1fa2769910ce36bf05bc645
+  fa2742a0cd3c5f6a4baf4f4bb26cd824
 )
-validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
+validpgpkeys=('D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519')
 
 package ()
 {
