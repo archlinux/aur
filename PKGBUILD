@@ -2,19 +2,20 @@
 # Maintainer: Edmund Lodewijks <e.lodewijks@gmail.com>
 
 pkgname=caja-deja-dup-bzr
-pkgver=0.0.9.r24
+pkgver=0.0.9.r25
 pkgrel=1
-pkgdesc="Deja Dup extension for Caja File Browser"
+pkgdesc="Caja File browser context menu items to backup or restore files/ folders via Deja Dup"
 url="https://launchpad.net/deja-dup-caja"
 arch=('any')
 license=('GPL3')
 groups=()
 depends=('deja-dup' 'python-caja')
-makedepends=('bzr' 'python-distutils-extra')
+makedepends=('bzr' 'breezy' 'python-distutils-extra')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("${pkgname%-*}::bzr+lp:deja-dup-caja")
 md5sums=('SKIP')
+install=caja-deja-dup-bzr.install
 
 pkgver() {
   cd ${pkgname%-*}

@@ -1,0 +1,13 @@
+post_install() {
+  echo
+  echo 'Restart Caja for changes to take effect: "caja -q".'
+  echo
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  post_install
+} 

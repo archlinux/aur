@@ -1,11 +1,13 @@
 pkgbase = caja-deja-dup-bzr
-	pkgdesc = Deja Dup extension for Caja File Browser
-	pkgver = 0.0.9
+	pkgdesc = Caja File browser context menu items to backup or restore files/ folders via Deja Dup
+	pkgver = 0.0.9.r25
 	pkgrel = 1
 	url = https://launchpad.net/deja-dup-caja
+	install = caja-deja-dup-bzr.install
 	arch = any
 	license = GPL3
 	makedepends = bzr
+	makedepends = breezy
 	makedepends = python-distutils-extra
 	depends = deja-dup
 	depends = python-caja
@@ -15,4 +17,3 @@ pkgbase = caja-deja-dup-bzr
 	md5sums = SKIP
 
 pkgname = caja-deja-dup-bzr
-
