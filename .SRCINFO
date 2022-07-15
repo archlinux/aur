@@ -1,10 +1,11 @@
 pkgbase = vimirror
 	pkgdesc = A simple utility to change, test, and use mirrors
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JaydenDev/vimirror
 	arch = any
 	license = MIT
+	depends = vim
 	provides = vimirror
 	source = https://github.com/JaydenDev/vimirror/archive/refs/tags/v1.0.2.tar.gz
 	md5sums = SKIP
