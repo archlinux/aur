@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=pystopwatch
 pkgver=2019
-pkgrel=2
+pkgrel=4
 pkgdesc='A stopwatch written in Python with a clock and two countdown functions that can minimize to the tray.'
 arch=(any)
 license=(GPL)
@@ -13,13 +13,13 @@ source=(
 )
 sha512sums=(
   bfe88dd238c08b3b36f3789994e8cd30787e8cc1ee17bc8005828a2f5816b6d6c26b721899dcc5da8e867147bbc6acb5f3d86c623b6e9bd9ef23df2a41a1c52c
-  6c25a08ef5b59de8c37a344f6cea16f741687544b60dff65f8181acf6d47b252c355ec39d79c97b413d0a271fcf68d387ef468c15d6efae339e194940b92af00
+  be6ecb92f874128232c51b5b62749a3a423337d83f0fa90e84a9b490cd9c51304fd04ed6c2a5cc39ca04372431090602242d65318b70528a33b393dd96000be8
 )
 md5sums=(
   636cb26bcb89cd1344d9dbbed47a77fb
-  750e12365a2bb0c58b15b90707fe688e
+  f5710a67a45e7d8823e4252d56c58a19
 )
-validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
+validpgpkeys=('D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519')
 
 package ()
 {
