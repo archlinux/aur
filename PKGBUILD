@@ -3,7 +3,7 @@
 
 pkgname=easyeda-pro-bin
 _pkgname=${pkgname%-bin}
-pkgver=1.7.29
+pkgver=1.7.30
 pkgrel=1
 pkgdesc="EasyEDA Professional Edition"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("${_pkgname}-${pkgver}.zip::https://image.easyeda.com/files/easyeda-pro-
 		"LICENSE"
 		"${pkgname}.install")
 noextract=()
-sha256sums=('f42c3831d9453f06ff955ce5e600f4a98331627de03fb2fbf7e8d5e4d82e75aa'
+sha256sums=('81458bae691b9dce0d7997c738b67aabc2dfa97e194a232d42cc9d3a732a2ee7'
 			'c25d162b032c680a34856d65062aa7ffab56a478ee972eeb3e78543d2eb40f74'
 			'cc1661c75c9366d2fe43c4b864cf81acb9aae7cab505ce21e7de2db3c68cde76')
 
@@ -32,12 +32,12 @@ package() {
 
 	# icon
 	local _icon
-	for _icon in 16 128; do
+	for _icon in 16 32 64 128 256 512; do
 		install -Dm644	${pkgdir}/opt/${_pkgname}/icon/icon_${_icon}x${_icon}.png \
 						${pkgdir}/usr/share/icons/hicolor/${_icon}x${_icon}/apps/${_pkgname}.png
 	done
-	install -Dm644	${pkgdir}/opt/${_pkgname}/icon/icon_128x128@2x.png \
-					${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png
+	install -Dm644	${pkgdir}/opt/${_pkgname}/icon/icon_512x512@2x.png \
+					${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${_pkgname}.png
 	rm -rf ${pkgdir}/opt/${_pkgname}/icon
 
 	# desktop entry
