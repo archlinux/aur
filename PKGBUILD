@@ -3,8 +3,10 @@
 pkgname=tauon-music-box
 _pkgname=tauonmb
 _gitname=TauonMusicBox
-pkgver=7.3.1
+pkgver=7.3.2
 pkgrel=1
+_kissfftver=131.1.0
+_miniaudiocommit=4d813cfe23c28db165cce6785419fee9d2399766
 pkgdesc="A modern streamlined music player"
 arch=('any')
 url="https://tauonmusicbox.rocks"
@@ -52,10 +54,15 @@ optdepends=('noto-fonts-cjk: Matching font for CJK characters'
             'python-jxlpy: JPEG XL image support' # AUR
             )
             
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Taiko2k/TauonMusicBox/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Taiko2k/TauonMusicBox/archive/v$pkgver.tar.gz"
+	"kissfft.tar.gz::https://github.com/mborgerding/kissfft/archive/refs/tags/$_kissfftver.tar.gz"
+	"miniaudio.tar.gz::https://github.com/mackron/miniaudio/archive/4d813cf.tar.gz"
+	)
 
 
 build() {
+    mv kissfft-$_kissfftver/* $_gitname-$pkgver/src/phazor/kissfft/
+    mv miniaudio-$_miniaudiocommit/* $_gitname-$pkgver/src/phazor/miniaudio/
     cd "$_gitname-$pkgver"
     python compile-translations.py
     bash compile-phazor.sh
@@ -79,4 +86,6 @@ package() {
     install -Dm755 "extra/tauonmb.sh" "$pkgdir/usr/bin/tauon"
 }
 
-md5sums=('adb7045805607530b3c51091bd6b5d9c')
+md5sums=('a40904aedbce703508cdd71316d40c28'
+         '981ad3e496fbd8edb99704fc0e2aa939'
+         '709b15aed941a14d6e921bd87caff9d3')
