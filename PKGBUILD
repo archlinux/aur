@@ -1,6 +1,7 @@
-# Maintainer: otreblan <otreblain@gmail.com>
+# Maintainer: blindcrone <blindcrone@tuta.io>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
-pkgname=mingw-w64-sfml
+# Contributor: otreblan <otreblain@gmail.com>
+pkgname=mingw-w64-sfml-static
 pkgver=2.5.1
 pkgrel=1
 pkgdesc="A simple, fast, cross-platform, and object-oriented multimedia API (mingw-w64)"
@@ -9,8 +10,8 @@ url="https://www.sfml-dev.org"
 license=("zlib")
 depends=(mingw-w64-libsndfile mingw-w64-libjpeg-turbo mingw-w64-openal mingw-w64-glew mingw-w64-freetype2)
 makedepends=(mingw-w64-cmake)
-conflicts=(mingw-w64-sfml-static)
-provides=(mingw-w64-sfml-static)
+conflicts=(mingw-w64-sfml)
+provides=(mingw-w64-sfml)
 options=(staticlibs !strip !buildflags)
 source=("https://github.com/SFML/SFML/archive/${pkgver}.tar.gz")
 md5sums=('0d8a10fad7f10fa7b4453e647fb6b1a8')
@@ -25,6 +26,8 @@ build() {
     mkdir -p "build-${_arch}" && pushd "build-${_arch}"
     ${_arch}-cmake --no-warn-unused-cli \
       -DCMAKE_BUILD_TYPE=Release \
+      -DBUILD_SHARED_LIBS=0\
+      -DSFML_USE_STATIC_STD_LIBS=1\
       -DFREETYPE_LIBRARY=/usr/${_arch}/lib/libfreetype.dll.a \
       -DGLEW_LIBRARY=/usr/${_arch}/lib/libglew32.dll.a \
       -DJPEG_LIBRARY=/usr/${_arch}/lib/libjpeg.dll.a \
