@@ -5,45 +5,45 @@
 # Contributor: Janne Haapsaari <haaja@iki.fi>
 # Contributor: Christopher Krooß <didi2002 at web.de>
 
-pkgname=gnome-shell-extension-dash-to-dock-gnome43
+pkgname=gnome-shell-extension-dash-to-dock43
 _pkgname=gnome-shell-extension-dash-to-dock
 pkgver=43.alpha
-pkgrel=2
+pkgrel=3
 pkgdesc='Move the dash out of the overview transforming it in a dock (with GNOME 43 patches)'
 url='https://github.com/ubuntu/gnome-shell-extension-dash-to-dock'
 arch=('any')
 license=('GPL')
 depends=('gnome-shell>=43')
 makedepends=('git' 'intltool' 'gettext' 'sassc')
-conflicts=(${pkgname%-gnome43} "${_pkgname}-git")
-provides=(${pkgname%-gnome43})
-_srcname=dash-to-dock
+conflicts=(${_pkgname} "${_pkgname}-git")
+provides=(${_pkgname})
+_cvsdir=dash-to-dock
 _commit=0fc9d94b59e91e1c08ad38762ebc55b7deaf99ab # master^0
 source=(
-  "${_pkgname}-${pkgver}::git+https://github.com/micheleg/${_srcname}.git#commit=${_commit}"
-  "1720.patch::https://patch-diff.githubusercontent.com/raw/micheleg/dash-to-dock/pull/1720.patch"
-  "1771.patch::https://patch-diff.githubusercontent.com/raw/micheleg/dash-to-dock/pull/1771.patch"
-  "1775.patch::https://patch-diff.githubusercontent.com/raw/micheleg/dash-to-dock/pull/1775.patch"
+  "${_pkgname}-${pkgver}::git+https://github.com/micheleg/${_cvsdir}.git#commit=${_commit}"
+  "pr1720.patch::https://patch-diff.githubusercontent.com/raw/micheleg/dash-to-dock/pull/1720.patch"
+  "pr1771.patch::https://patch-diff.githubusercontent.com/raw/micheleg/dash-to-dock/pull/1771.patch"
+  "pr1776.patch::https://patch-diff.githubusercontent.com/raw/micheleg/dash-to-dock/pull/1775.patch"
 )
-sha256sums=('SKIP'
-            'f9f1c15e6e1cdfa027478f35ded42fdbb438b7f98650f9f54c9145a36cdd6fa3'
-            '878b29f280d0a21a34a203202281689fac97c33185bbee76f4876de6d608e160'
-            'e81b0b59f979956b5b6011247ffd63d887bd11bb629f6ec7dc69682cd701e41a')
+b2sums=('SKIP'
+        '9fb577d8ab4f9d182cfa1f760f4fc7a35385f23a3e9dae26db531fd05f3a45572d82079ba237be1c9e04706cf43716c546b81876a88e2f23a34b13f3148e6e0d'
+        'dacc5c561989cf4fab8171f3b30e293acd9a9ad8e4de327221db5dac0329bef306ccdd36bb1c9f8e47f34b93be0c81a371e950c250162956e7b0c756bbc8bc56'
+        '786a02f742015903c6c6fd852552d272912f4740e15847618a86e217f71f5419d25e1031afee585313896444934eb04b903a685b1448b755d56f701afe9be2ce')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
 
   # [daniruiz] Fix stylesheet for gnome 42
   # https://github.com/micheleg/dash-to-dock/pull/1720
-  patch --forward --strip=1 --input="${srcdir}/1720.patch"
+  patch --forward --strip=1 --input="${srcdir}/pr1720.patch"
 
   # [3v1n0] some random fixes for 42
   # https://github.com/micheleg/dash-to-dock/pull/1771
-  patch --forward --strip=1 --input="${srcdir}/1771.patch"
+  patch --forward --strip=1 --input="${srcdir}/pr1771.patch"
 
-  # [emansom] Add support for gnome-shell 43
-  # https://github.com/micheleg/dash-to-dock/pull/1775
-  patch --forward --strip=1 --input="${srcdir}/1775.patch"
+  # [emansom] metadata: Add support for gnome-shell 43.alpha
+  # https://github.com/micheleg/dash-to-dock/pull/1776
+  patch --forward --strip=1 --input="${srcdir}/pr1776.patch"
 }
 
 build() {
