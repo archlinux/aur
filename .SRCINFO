@@ -1,6 +1,6 @@
 pkgbase = fakepkg-git
 	pkgdesc = Tool to reassemble installed packages from its deliverd files. It comes in handy if there is no internet connection available and you have no access to an up-to-date package cache
-	pkgver = 1.42.0
+	pkgver = v1.42.0
 	pkgrel = 1
 	url = https://github.com/Edenhofer/fakepkg
 	arch = any
@@ -15,6 +15,6 @@ pkgbase = fakepkg-git
 	provides = fakepkg
 	conflicts = fakepkg
 	source = fakepkg::git+https://gitlab.archlinux.org/tallero/fakepkg
-	sha512sums = SKIP
+	sha256sums = SKIP
 
 pkgname = fakepkg-git
