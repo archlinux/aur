@@ -21,7 +21,7 @@ md5sums=(SKIP)
 
 pkgver() {
     cd "$srcdir/$provides"
-    ./check-version.sh
+    ./check-version.sh | sed 's/-g/.g/g;s/-/.r/g'
 }
 
 build()
