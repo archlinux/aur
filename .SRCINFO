@@ -1,0 +1,13 @@
+pkgbase = yandex-browser-ffmpeg-update-hook
+	pkgdesc = alpm-hook to automatically update yandex-browser's ffmpeg codecs on package update for stable version of yandex browser
+	pkgver = 0.0.3
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = yandex-browser
+	depends = jq
+	depends = wget
+	provides = yandex-browser-ffmpeg-update-hook
+	conflicts = yandex-browser-ffmpeg-update-hook
+
+pkgname = yandex-browser-ffmpeg-update-hook

@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = yandex-browser
+Target = yandex-browser-ffmpeg-update-hook
+[Action]
+Depends = jq
+Depends = wget
+Depends = yandex-browser
+When = PostTransaction
+Exec = /opt/yandex/browser/update-ffmpeg
