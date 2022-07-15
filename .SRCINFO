@@ -1,0 +1,13 @@
+pkgbase = broadcom-bt-firmware
+	pkgdesc = Firmware for Broadcom Bluetooth devices
+	pkgver = 10.1.0.1115
+	pkgrel = 1
+	url = https://github.com/winterheart/broadcom-bt-firmware
+	arch = x86_64
+	license = custom
+	license = MIT
+	conflicts = broadcom-bt-firmware-git
+	source = https://github.com/winterheart/broadcom-bt-firmware/releases/download/v12.0.1.1105_p3/broadcom-bt-firmware-10.1.0.1115.deb
+	b2sums = b261cebd2996ca322accc0639c927772f92744eb51c3c1ac44dd3cd887b0db25a60b471db379faaf5a16d2ce57b23614920d56b36e0ea2f40a3d2fdd7e8c12a2
+
+pkgname = broadcom-bt-firmware
