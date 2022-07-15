@@ -1,0 +1,23 @@
+pkgbase = maixpy-ide-bin
+	pkgdesc = Micropython env for Sipeed Maix boards
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://dl.sipeed.com/MAIX/MaixPy/ide/
+	arch = x86_64
+	license = custom
+	depends = libusb
+	depends = python-pyusb
+	depends = qt5-multimedia
+	depends = qt5-script
+	depends = qt5-svg
+	depends = qt5-tools
+	depends = qt5-webengine
+	depends = qt5-3d
+	provides = maixpy-ide
+	conflicts = maixpy-ide
+	source = manual://maixpy-ide-linux-x86_64-0.2.5-installer-archive.7z
+	source = https://avatars.githubusercontent.com/u/44034752
+	sha512sums = a629276e4f11be322b05a6bc52b4327cbbe8c5c29a519ff78894593ce8a284bb1a4152557d34c4c09d83b201fcedb7f57d3c5f6c3611f08bb1ef791938a40abf
+	sha512sums = 76204fb81ac8a5f8a22206846962a89deff2e8cf31babd84a32711432b748621da48c80a5585fd11f7c92b2804347741fdd7eb6894780b9883d1307b03212a7d
+
+pkgname = maixpy-ide-bin
