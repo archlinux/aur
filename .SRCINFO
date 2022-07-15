@@ -1,10 +1,12 @@
 pkgbase = heroes
 	pkgdesc = Heroes is similar to the Tron and Nibbles games of yore, but includes many graphical improvements and new game features.
 	pkgver = 0.21
-	pkgrel = 2
+	pkgrel = 3
 	url = http://heroes.sourceforge.net
 	arch = x86_64
 	license = GPL
+	depends = libmikmod
+	depends = sdl
 	source = http://prdownloads.sourceforge.net/heroes/heroes-0.21.tar.gz
 	source = http://prdownloads.sourceforge.net/heroes/heroes-data-1.5.tar.gz
 	source = http://prdownloads.sourceforge.net/heroes/heroes-sound-tracks-1.0.tar.gz
