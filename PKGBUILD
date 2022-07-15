@@ -2,10 +2,10 @@
 
 pkgname=kopia-bin
 pkgdesc='A cross-platform backup-tool with encryption, deduplication, compression and cloud support.'
-pkgver=0.11.2
+pkgver=0.11.3
 # Uncomment for releases with hyphens
 # _pkgver=$(echo "$pkgver" | tr '~' -)
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/kopia/kopia/'
 license=('APACHE')
