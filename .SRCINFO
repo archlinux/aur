@@ -1,6 +1,6 @@
 pkgbase = python-chaospy
 	pkgdesc = Toolbox for performing uncertainty quantification
-	pkgver = 4.3.7
+	pkgver = 4.3.8
 	pkgrel = 1
 	url = https://github.com/jonathf/chaospy
 	changelog = CHANGELOG.rst
@@ -17,7 +17,7 @@ pkgbase = python-chaospy
 	depends = python-numpoly
 	depends = python-numpy
 	depends = python-scipy
-	source = python-chaospy-4.3.7.tar.gz::https://github.com/jonathf/chaospy/archive/4.3.7.tar.gz
-	sha256sums = 07a419fafacc6bba463cb04e69087f43535c2f929022a9d7a9df46e63dd1a8f3
+	source = python-chaospy-4.3.8.tar.gz::https://github.com/jonathf/chaospy/archive/v4.3.8.tar.gz
+	sha256sums = 9cf73ba7a732e12d559e808f6261a78738ce360b2767367df37614a96599d82a
 
 pkgname = python-chaospy
