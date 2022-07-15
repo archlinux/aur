@@ -3,7 +3,7 @@
 
 pkgname=swaylock
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 license=("MIT")
 pkgdesc="Screen locker for Wayland"
 makedepends=(
