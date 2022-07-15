@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=tex2png
 pkgver=2014.12.28
-pkgrel=3
+pkgrel=5
 pkgdesc='Convert TeX and LaTeX to PNG images.'
 arch=(any)
 license=(GPL)
@@ -13,13 +13,13 @@ source=(
 )
 sha512sums=(
   80c823dd1dc214ec75a13b6771a3a8c20be492c33c33c15a6afcce018fa7481114a9bf90dc093a92f2492975d3fdd57ba308dc556f08060fdd2748d206f399af
-  218dae1395cbe4d9252c2c515f6a5fbe398496f433b8558e092efd4b002ca1819eac3f63734ff19b48a47ca1038ceaf81b8688495c766342e9e13ea909fe3ddf
+  17ddd847780d95c506e8c1fd1b16be2994f7f75bf04b2c50a67f872ed9608f404e64e3ea7c70800a68595ef8f94fa8f2343d9ee065455400ddf3fcf85a6c5eda
 )
 md5sums=(
   67447ccdf30cbb97adba9175e4c7043c
-  5aa8cbc3d3aacb22b490cc47db100081
+  cfcdd2884b125407f87d20652a2fcbaa
 )
-validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
+validpgpkeys=('D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519')
 
 package ()
 {
