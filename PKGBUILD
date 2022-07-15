@@ -3,14 +3,17 @@
 
 pkgname=river
 pkgver=0.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc='A dynamic tiling wayland compositor.'
 arch=('x86_64')
 url='https://github.com/riverwm/river'
 license=('GPL3')
 depends=(
 	'mesa' 'wlroots>=0.15.0' 'wayland' 'wayland-protocols' 'libxkbcommon'
-	'libevdev' 'pixman' 'xorg-xwayland' 'polkit'
+	'libevdev' 'pixman' 'xorg-xwayland'
+)
+optdepends=(
+	'polkit: access seat through systemd-logind'
 )
 makedepends=('zig' 'git' 'scdoc')
 provides=('river' 'riverctl' 'rivertile')
