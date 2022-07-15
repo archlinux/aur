@@ -14,7 +14,7 @@ url="https://mondoo.com"
 license=('custom')
 source=(
     "https://releases.mondoo.com/mondoo/${pkgver}/mondoo_${pkgver}_linux_amd64.tar.gz"
-    'LICENSE.html::https://mondoo.com/terms-of-service/'
+    'LICENSE.html'
     'OSS-LICENSES.tar.xz'
     'mondoo.service'
     'mondoo.sh'
@@ -22,7 +22,7 @@ source=(
 arch=('x86_64')
 
 sha256sums=('062dc73e5a5ec2d39bb6acd17def3afbc852e506b380426fdda8c39413e31e14'
-            '6c1c80bfbdd6f6ddfd65b1f110c3dd8db47609d2edf2efdee6ab4713706cc69b'
+            'c8d346670913c91bf712405e57c2311e6fbda37261f8abfadf9ca7e5fdd768bd'
             'cd99e204a986af5a91f46c43478b28f556a4f50fd9721844d0b600d45ac43cb8'
 	    '2febf46353886823e6a61ca15c73e651d71d45579b0a1a17e18905a61387e7e6'
             '92ceefe40c2963f96d02e36743338599cfa9a062d00a5e38580370099b01066c')
