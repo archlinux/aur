@@ -1,0 +1,11 @@
+pkgbase = kernelloader
+	pkgdesc = Set of BIOSes for various consoles.
+	pkgver = 3.0
+	pkgrel = 1
+	url = http://kernelloader.sourceforge.net/linux.html
+	arch = any
+	license = GPL2
+	source = https://sourceforge.net/projects/kernelloader/files/Kernelloader/Kernelloader%203.0/kernelloader3.0.tgz
+	sha256sums = c5e155b8b968418ff0f91a37f683fa9073acb2a0651e2e520fedcbcb8f9ec17a
+
+pkgname = kernelloader
