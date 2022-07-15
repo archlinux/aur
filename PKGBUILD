@@ -1,6 +1,6 @@
 # Maintainer: github.com/lmorg
 pkgname=murex-git
-pkgver=r2255.59e27bb1
+pkgver=r2348.5604d44e
 pkgrel=1
 pkgdesc="Bash-like shell designed for greater commandline productivity and safer shell scripts"
 arch=('i686' 'x86_64')
@@ -8,6 +8,7 @@ url="https://github.com/lmorg/murex"
 provides=('murex')
 license=('GPL2')
 makedepends=('git' 'go')
+optdepends=('aspell: inline spell checking')
 source=("git+https://github.com/lmorg/murex.git")
 sha1sums=('SKIP')
 
