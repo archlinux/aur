@@ -1,10 +1,11 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=RBDOOM-3-BFG
+Name=RBDOOM 3 BFG
 Exec=rbdoom-3-bfg-launcher
 Icon=rbdoom-3-bfg
 StartupNotify=true
 Terminal=false
 Type=Application
-Comment=Modern Doom 3 BFG source port
+Comment=Doom 3 BFG Edition with modern engine features
 Categories=Game;ActionGame;
+Path=
