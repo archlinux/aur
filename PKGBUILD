@@ -1,33 +1,28 @@
 # Maintainer: Anton Kudelin <kudelin at protonmail dot com>
+# Maintainer: Matthias Mailänder <matthias at mailaender dot name>
 
 pkgname=openchrom
-pkgver=1.4.0
-pkgrel=2
-pkgdesc="Visualization and Analysis of mass spectrometric and chromatographic data"
+pkgver=1.5.0
+pkgrel=1
+pkgdesc="Visualization and analysis of mass spectrometric and chromatographic data"
 arch=("x86_64")
 url="https://lablicate.com/platform/openchrom"
-license=('EPL')
-depends=('jdk8-openjdk' 'java-runtime' 'gtk2' 'libglvnd' 'libnet' 'libxtst' 'alsa-lib'
-         'python')
-makedepends=('maven' 'git')
-conflicts=("$pkgname-bin")
-source=("git+https://github.com/OpenChrom/openchrom.git"
-        "git+https://github.com/eclipse/chemclipse.git")
+license=('EPL' 'custom: commercial')
+# Don't build from source, because otherwise proprietary file converters are missing.
+source=("https://products.lablicate.com/openchrom/${pkgver}/openchrom-lablicate_linux.x86_64_${pkgver}.tar.gz"
+        "openchrom.desktop"
+        "openchrom.png")
+# Avoid checksums, because minor release overwrite without change in versioning.
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP')
 
-build() {
-  cd "$srcdir"
-  mvn -f $pkgname/$pkgname/releng/net.openchrom.aggregator/pom.xml install
-}
-
 package() {
-  cd "$pkgdir"
-  install -dm755 {usr/bin,opt/openchrom}
-  cd "$srcdir/openchrom/openchrom/products/net.openchrom.rcp.compilation.community.product/target/products/net.openchrom.rcp.compilation.community.product.id/linux/gtk/$CARCH"
-  cp -r * "$pkgdir/opt/openchrom"
-  cd "$pkgdir/opt"
-  sed -i "s@$srcdir@@g" openchrom/p2/org.eclipse.equinox.p2.engine/.settings/*
-  chmod -R 755 openchrom
-  ln -sf /opt/openchrom/openchrom ../usr/bin
+  install -d "${pkgdir}/usr/lib/openchrom"
+  cp -r configuration features p2 plugins readme artifacts.xml openchrom openchrom.ini "${pkgdir}/usr/lib/openchrom"
+  install -d "${pkgdir}/usr/bin"
+  ln -s "/usr/lib/openchrom/openchrom" "${pkgdir}/usr/bin/openchrom"
+
+  install -Dm0644 "openchrom.desktop" "${pkgdir}/usr/share/applications/openchrom.desktop"
+  install -Dm0644 "openchrom.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/openchrom.png"
 }

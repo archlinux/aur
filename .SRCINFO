@@ -1,25 +1,14 @@
 pkgbase = openchrom
-	pkgdesc = Visualization and Analysis of mass spectrometric and chromatographic data
-	pkgver = 1.4.0
-	pkgrel = 2
+	pkgdesc = Visualization and analysis of mass spectrometric and chromatographic data
+	pkgver = 1.5.0
+	pkgrel = 1
 	url = https://lablicate.com/platform/openchrom
 	arch = x86_64
 	license = EPL
-	makedepends = maven
-	makedepends = git
-	depends = jdk8-openjdk
-	depends = java-runtime
-	depends = gtk2
-	depends = libglvnd
-	depends = libnet
-	depends = libxtst
-	depends = alsa-lib
-	depends = python
-	conflicts = openchrom-bin
-	source = git+https://github.com/OpenChrom/openchrom.git
-	source = git+https://github.com/eclipse/chemclipse.git
+	license = custom: commercial
+	source = https://products.lablicate.com/openchrom/1.5.0/openchrom-lablicate_linux.x86_64_1.5.0.tar.gz
+	source = openchrom.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = openchrom
-
