@@ -21,6 +21,7 @@ pkgbase = curl-impersonate-chrome
 	makedepends = patch
 	depends = nss
 	provides = curl-impersonate-chrome
+	provides = libcurl-impersonate-chrome
 	options = !buildflags
 	source = curl-impersonate.tar.gz::https://github.com/lwthiker/curl-impersonate/archive/refs/tags/v0.5.1.tar.gz
 	md5sums = 66c6660c431b50aed9942f3fd460ea68
