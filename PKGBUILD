@@ -2,7 +2,7 @@
 # Submitter: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.22.13627.cd74fb6a6
+pkgver=0.0.23.13925.73ed657e0
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64)
@@ -46,7 +46,7 @@ makedepends=(
 )
 provides=(rpcs3)
 conflicts=(rpcs3)
-options=(!emptydirs)
+options=(!emptydirs !lto)
 source=(
   git+https://github.com/RPCS3/rpcs3.git
   rpcs3-llvm::git+https://github.com/RPCS3/llvm-mirror.git
