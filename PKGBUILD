@@ -7,8 +7,8 @@ _SPELL_EN_DICT_SHA256='c44a5d7847925eea9e4d2d04748d442cd28dd9299a0b572ef7d91eac4
 
 _pkgname=fcitx5
 pkgname=${_pkgname}-git
-pkgver=5.0.4.r7.g9f7dd4d
-pkgrel=2
+pkgver=5.0.18.r13.g541a3e1
+pkgrel=1
 pkgdesc="Next generation of fcitx"
 arch=('i686' 'x86_64')
 url="https://github.com/fcitx/fcitx5"
@@ -30,7 +30,7 @@ pkgver() {
 }
 
 prepare() {
-  cd fcitx5/src/modules/spell/dict
+  cd fcitx5/src/modules/spell
   cp $srcdir/en_dict-${_SPELL_EN_DICT_VER}.tar.gz .
 }
 
