@@ -1,11 +1,11 @@
 # Maintainer: Jarkko Sakkinen <jarkko.sakkinen@iki.fi>
 
 pkgbase=linux-sgx
-pkgver=5.18.1.arch1
+pkgver=5.19.0.sgx1
 pkgrel=1
-pkgdesc='Linux'
-_srctag=v${pkgver%.*}-${pkgver##*.}
-url="https://github.com/archlinux/linux/commits/$_srctag"
+pkgdesc="Linux Mainline"
+_srctag=v5.19-rc6
+url="https://kernel.org/"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
@@ -14,11 +14,11 @@ makedepends=(
   git
 )
 options=('!strip')
-_srcname=archlinux-linux
+_srcname=linux-sgx
 source=(
-  "$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
+  "$_srcname::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=$_srctag"
   config         # the main kernel config file
-  patch-5.18-enarx.patch
+  patch-5.19-enarx.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
