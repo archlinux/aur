@@ -1,7 +1,7 @@
 # Maintainer: Gabriel M. Dutra <0xdutra@gmail.com>
 
 pkgname=chaoskube
-pkgver=0.21.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="Chaoskube periodically kills random pods in your Kubernetes cluster"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/linki/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('b0747be3fe27a33e81e8b6b6cbdbf9b5111a65bcadce16bd5eea6aafd58986fd')
+sha256sums=('07b2771aa2ef67b1c254e29c5d25f5c3d619e60eaebf6a45b3783257036e512e')
 
 prepare(){
   cd "$pkgname-$pkgver"
