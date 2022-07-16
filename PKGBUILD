@@ -3,7 +3,7 @@
 pkgbase=linux-sgx
 pkgver=5.19.0.sgx1
 pkgrel=1
-pkgdesc="Linux Mainline"
+pkgdesc='Linux'
 _srctag=v5.19-rc6
 url="https://kernel.org/"
 arch=(x86_64)
