@@ -1,0 +1,19 @@
+pkgbase = dmenu_shot-git
+	pkgdesc = A clean and easy-to-use dmenu menu to do some basic image manupulation using ImageMagic on the output of Flameshot.
+	pkgver = 1
+	pkgrel = 2
+	url = https://codeberg.org/mehrad/dmenu_shot
+	arch = any
+	makedepends = git
+	makedepends = make
+	depends = sh
+	depends = bash
+	depends = xclip
+	depends = flameshot
+	depends = dmenu
+	depends = imagemagick
+	depends = xdotool
+	source = dmenu_shot-git::git+https://codeberg.org/mehrad/dmenu_shot
+	sha256sums = SKIP
+
+pkgname = dmenu_shot-git
