@@ -8,7 +8,9 @@ pkgbase = gummy
 	makedepends = git
 	makedepends = cmake
 	depends = libxext
+	depends = libxcb
 	depends = sdbus-cpp
+	depends = libudev.so
 	provides = gummy
 	conflicts = gummy-git
 	source = git+https://github.com/Fushko/gummy#tag=0.2

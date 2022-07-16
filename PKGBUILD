@@ -1,13 +1,13 @@
-# Maintainer: Maksim Verkhoturov (sd32@protonmail.com)
+# Maintainer: mi544 (sd32 at protonmail.com)
 
 pkgname=gummy
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux brightness/temperature manager for X11"
 arch=('x86_64')
 url="https://github.com/Fushko/$pkgname"
 license=('GPL3')
-depends=('libxext' 'sdbus-cpp')
+depends=('libxext' 'libxcb' 'sdbus-cpp' 'libudev.so')
 makedepends=('git' 'cmake')
 provides=("$pkgname")
 conflicts=("$pkgname-git")
