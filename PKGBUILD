@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-lilcom-git
-pkgver=1.1.1
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Lossy compression of floating-point NumPy arrays into byte strings."
 arch=('any')
