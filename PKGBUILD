@@ -1,7 +1,7 @@
 # Maintainer: Niels Sonnich Poulsen <niels@nielssp.dk>
 pkgname=colorgrab
-pkgver=0.4.0_pre
-_pkgver=0.4.0-pre
+pkgver=0.4.0_pre.1
+_pkgver=0.4.0-pre.1
 pkgrel=1
 pkgdesc="A cross-platform color picker."
 url="https://github.com/nielssp/colorgrab"
@@ -17,7 +17,7 @@ source=(
   "https://github.com/nielssp/${pkgname}/archive/refs/tags/v${_pkgver}.tar.gz"
 )
 md5sums=(
-  '9cfddc4007ff483a58e5f2adf8e1b666'
+  '351d86d1b25466912672d41f295af179'
 )
 
 build() {
