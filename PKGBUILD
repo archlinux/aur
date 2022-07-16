@@ -9,7 +9,7 @@ pkgdesc="A Linux backlight utility inspired by acpibacklight"
 url="https://codeberg.org/crapStone/lamp"
 license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('fbf2ea683d3789f1b02d527dcf9c128a3c3f74bec98c575ce2b7180c4b2168f2')
+sha256sums=('24ec91f86515dfb6e666b73487e563f42b033be8373377ce69653cf931268014')
 
 prepare() {
 	cd "$pkgname"
