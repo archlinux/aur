@@ -1,7 +1,7 @@
 # Maintainer: Cristian Burneci <cburneci at gmail dot com>
 
 pkgname=tv-lite
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="IPTV viewer with Sopcast and Acestream handling capabilities.  It wants to be a replacement for the older TV-Maxe"
 arch=('i686' 'x86_64')
@@ -27,7 +27,14 @@ build() {
   cd "$srcdir/$pkgname-$pkgver/src"
   mkdir -p build
   cd build
-  cmake -DWX_CONFIG=wx-config-gtk3 ..
+  if [ -f '/usr/bin/wx-config-gtk3' ]
+  then 
+    echo "Old wx-config found"
+    wxcfg="wx-config-gtk3"
+  else
+    wxcfg="wx-config"
+  fi    
+  cmake -DWX_CONFIG=$wxcfg ..
   make
 }
 
