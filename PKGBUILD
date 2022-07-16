@@ -6,10 +6,10 @@
 # shellcheck disable=SC2034,SC2154 # allow unused/uninitialized variables.
 
 name=cloudcompare
-_fragment="#tag=v2.12.3"
+_fragment="#tag=v2.12.4"
 pkgname=${name}
 pkgver="${_fragment###tag=v}"
-pkgrel=3
+pkgrel=1
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
 url="http://www.danielgm.net/cc/"
@@ -21,14 +21,12 @@ source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git${_fragmen
         "${name}-cork::git+https://github.com/CloudCompare/cork.git"
         CloudCompare.desktop
         ccViewer.desktop
-        tbb.2021.patch
-        tbb.2021.cccorelib.patch)
+        tbb.2021.patch)
 sha256sums=('SKIP'
             'SKIP'
             '14096df9cf7aca3099d5df1585d1cf669544e9b10754dce3d2507100dd7034fe'
             '821ac2540e1196774e26f8033946ce7b36223dae7a2a7c78f4a901b4177f68cc'
             'f10ac084b1ec626c7a9c51e09faf87054edd0c069f4114334d9b1ed664a16ff1'
-            'c4549314b559f61878f63ea9d98aa6da0df3cb7bf8dff709ba089494ab58a32f'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -42,7 +40,6 @@ prepare() {
   prepare_submodule
 # sed "/CXX_STANDARD/s/14/17/" -i "${srcdir}/${name}"/cmake/CMakeSetCompilerOptions.cmake
   git -C "${srcdir}/${name}" apply -v "${srcdir}"/tbb.2021.patch
-  git -C "${srcdir}/${name}/libs/qCC_db/extern/CCCoreLib" apply -v "${srcdir}"/tbb.2021.cccorelib.patch
 }
 
 build() {
