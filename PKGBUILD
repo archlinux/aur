@@ -2,7 +2,7 @@
 pkgname=maixpy-ide-bin
 _pkgname=maixpy-ide
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Micropython env for Sipeed Maix boards"
 arch=('x86_64')
 url="https://dl.sipeed.com/MAIX/MaixPy/ide/"
@@ -13,7 +13,7 @@ conflicts=(maixpy-ide)
 replaces=()
 changelog=
 source=(manual://maixpy-ide-linux-x86_64-$pkgver-installer-archive.7z
-'https://avatars.githubusercontent.com/u/44034752')
+local://icon.png)
 noextract=()
 sha512sums=('a629276e4f11be322b05a6bc52b4327cbbe8c5c29a519ff78894593ce8a284bb1a4152557d34c4c09d83b201fcedb7f57d3c5f6c3611f08bb1ef791938a40abf'
             '76204fb81ac8a5f8a22206846962a89deff2e8cf31babd84a32711432b748621da48c80a5585fd11f7c92b2804347741fdd7eb6894780b9883d1307b03212a7d')
@@ -26,7 +26,7 @@ mkdir -p "${pkgdir}/opt/${_pkgname}/"
 cp -a share/ "${pkgdir}/opt/${_pkgname}/"
 cp -a lib/ "${pkgdir}/opt/${_pkgname}/"
 cp -a bin/ "${pkgdir}/opt/${_pkgname}/"
-cp 44034752 "${pkgdir}/opt/${_pkgname}/icon.png"
+cp icon.png "${pkgdir}/opt/${_pkgname}/icon.png"
 chmod 755 "${pkgdir}/opt/${_pkgname}/bin/maixpyide.sh"
 
 # Add the symbolic link to /usr/bin/
