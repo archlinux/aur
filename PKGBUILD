@@ -1,12 +1,8 @@
 # Maintainer: Guus van Meerveld <contact@guusvanmeerveld.dev>
+pkgbase='dust-mail-client'
 pkgname=('dust-mail-client-git')
 
 arch=('x86_64')
-
-pkgdesc='A simple and fast mail client (Git version)'
-
-conflicts=('dust-mail-client')
-provides=('dust-mail-client')
 
 pkgver=0.1.4.r2.gef28602
 pkgver() {
@@ -63,7 +59,12 @@ build() {
   yarn run tauri build --verbose
 }
 
-package() {
+package_dust-mail-client-git() {
+  pkgdesc='A simple and fast mail client (Git version)'
+
+  conflicts=('dust-mail-client')
+  provides=('dust-mail-client')
+
   install -Dm644 "$srcdir/dust-mail.desktop" "$pkgdir/usr/share/applications/dust-mail-client.desktop"
   install -Dm644 "$srcdir/dust-mail.png" "$pkgdir/usr/share/dust-mail.png"
   install -Dm755 "$srcdir/$pkgname/packages/client/src-tauri/target/release/dust-mail" "$pkgdir/usr/bin/dust-mail-client"
