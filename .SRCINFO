@@ -1,7 +1,7 @@
 pkgbase = ocaml-lambda-term
 	pkgdesc = Terminal manipulation library for OCaml
-	pkgver = 3.2.0
-	pkgrel = 2
+	pkgver = 3.3.1
+	pkgrel = 1
 	url = https://github.com/ocaml-community/lambda-term
 	install = ocaml-lambda-term.install
 	arch = x86_64
@@ -11,16 +11,15 @@ pkgbase = ocaml-lambda-term
 	arch = armv7h
 	arch = aarch64
 	license = BSD
-	makedepends = dune>=1.1.0
+	makedepends = dune>=3.0.0
 	depends = ocaml>=4.08.0
-	depends = ocaml-camomile>=1.0.1
-	depends = ocaml-lwt>=4.0.0
-	depends = ocaml-lwt_log
+	depends = ocaml-logs
+	depends = ocaml-lwt>=4.2.0
 	depends = ocaml-mew_vi>=0.5.0
 	depends = ocaml-react
-	depends = ocaml-zed>=3.0.0
+	depends = ocaml-zed>=3.2.0
 	options = !strip
-	source = ocaml-lambda-term-3.2.0-2.tar.gz::https://github.com/ocaml-community/lambda-term/archive/3.2.0.tar.gz
-	sha512sums = b161341268450466da4aa42cb9b78960797ef61384ba9a11c08874286155dc5e0db4d68d313a714003ebc73c63e19bec17e5d39c57a8c32db0f0f7844d1dce6e
+	source = ocaml-lambda-term-3.3.1-1.tar.gz::https://github.com/ocaml-community/lambda-term/archive/3.3.1.tar.gz
+	sha512sums = 0cbb35717012d648175cb74677e857973e40f153f3d85adb28bcbcfdaabb7b0f35c4b0ce88cd6f2158cedfab74d16acc1b3b987161a71dfda24892f34393b3ed
 
 pkgname = ocaml-lambda-term
