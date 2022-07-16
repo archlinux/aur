@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=gphotos-sync
-pkgver=2.14.2
-pkgrel=2
+pkgver=3.0.3
+pkgrel=1
 pkgdesc='Google Photos and Albums backup tool'
 arch=(any)
 url="https://github.com/gilesknap/$pkgname"
@@ -10,22 +10,32 @@ license=(MIT)
 _py_deps=(attrs
           appdirs
           exif
+          google-auth-oauthlib
           psutil
+          psutil
+          pyyaml
           requests-oauthlib
-          yaml)
+          types-pyyaml
+          types-requests)
 depends=(python
          "${_py_deps[@]/#/python-}")
-makedepends=(python-setuptools)
+makedepends=(python-{build,installer,wheel}
+             python-setuptools-scm)
 _archive="$pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('713773dfb7798636382b1efa3efda6d812794ed8d8eaa38e7ec30522ccaa02f7')
+sha256sums=('4b3da700c8260823db2a0ea568652101767f51632acd6736f783884059742cbc')
+
+prepare() {
+	cd "$_archive"
+	sed -i -e '/^requires/s/[<>=]\+[0-9.]\+"/"/g' pyproject.toml
+}
 
 build() {
 	cd "$_archive"
-	python setup.py build
+	python -m build -wn
 }
 
 package() {
 	cd "$_archive"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 }
