@@ -1,7 +1,7 @@
 pkgbase = tilemaker
 	pkgdesc = Convert OpenStreetMap .pbf files into vector tiles without the stack
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/systemed/tilemaker
 	install = tilemaker.install
 	arch = i686
