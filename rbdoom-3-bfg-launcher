@@ -24,4 +24,4 @@ fi
 
 # Disable terminal support too, if the user knows
 # what they are doing, they don't need the launcher anyways
-exec RBDoom3BFG +set in_tty 0 "$basepath" "$@"
+exec RBDoom3BFG +set in_tty 0 $basepath "$@"

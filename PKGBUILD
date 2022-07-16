@@ -37,7 +37,7 @@ sha256sums=('SKIP'
             'SKIP'
             '414085bd095261665a5cbf6f575b101ae32f24f9e2b00d4ce7eeaa2cd9a6de72'
             '0fb6a3bb9b47cad65d5012ba20dc9de3b1487f4ac1908ee847e6087511b7f09e'
-            '6b40daca58635b30a68100741c265d22ffdefe90c74aad37827af1ea3daf8304')
+            'f2690f82beedee7f1f4c981851437e6e0141482a694b44828dd04d372eb934e9')
 
 prepare() {
   cd RBDOOM-3-BFG
