@@ -18,7 +18,7 @@ source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('9c3cdd70fd1c1f7f33bdf64fff7352d77d2ccd19475e9293ef2beb83969696e2')
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}/gotz"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	go build \
 		-trimpath \
 		-buildmode=pie \
@@ -29,6 +29,6 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}/gotz"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	install -D -m755 gotz ${pkgdir}/usr/bin/gotz
 }
