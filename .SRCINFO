@@ -1,16 +1,14 @@
 pkgbase = r8125
 	pkgdesc = A kernel module for Realtek r8125 network cards
-	pkgver = 9.009.01
+	pkgver = 9.009.02
 	pkgrel = 1
 	url = http://www.realtek.com.tw
 	arch = x86_64
 	license = GPL
 	makedepends = linux-headers
 	conflicts = r8125-dkms
-	source = https://codeberg.org/ysblokje/r8125/archive/9.009.01.tar.gz
-	source = linux518.patch
-	sha256sums = 4d36509ace216c954895751145c93914101ceba7945e6c7f1131f9970d2f8c7c
-	sha256sums = 8ef6947eafde2b69fd03f92c2ec4f789b1ecdbc6201a498d0a2c2fe4622fecea
+	source = https://codeberg.org/ysblokje/r8125/archive/9.009.02.tar.gz
+	sha256sums = 45248674e26aa87b2f03daf27d02df8e1ea7f6c202f56f105445f942b41181ea
 
 pkgname = r8125
 	depends = glibc

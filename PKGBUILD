@@ -5,7 +5,7 @@
 # go to the r8168 package people
 
 pkgname=r8125
-pkgver=9.009.01
+pkgver=9.009.02
 pkgrel=1
 pkgdesc="A kernel module for Realtek r8125 network cards"
 url="http://www.realtek.com.tw"
@@ -13,15 +13,8 @@ license=("GPL")
 arch=('x86_64')
 conflicts=('r8125-dkms')
 makedepends=('linux-headers')
-source=(https://codeberg.org/ysblokje/r8125/archive/${pkgver}.tar.gz
-        linux518.patch)
-sha256sums=('4d36509ace216c954895751145c93914101ceba7945e6c7f1131f9970d2f8c7c'
-            '8ef6947eafde2b69fd03f92c2ec4f789b1ecdbc6201a498d0a2c2fe4622fecea')
-
-prepare() {
-	cd "$pkgname"
-	patch -Np1 -i ../linux518.patch
-}
+source=(https://codeberg.org/ysblokje/r8125/archive/${pkgver}.tar.gz)
+sha256sums=('45248674e26aa87b2f03daf27d02df8e1ea7f6c202f56f105445f942b41181ea')
 
 build() {
 	cd "$pkgname"
