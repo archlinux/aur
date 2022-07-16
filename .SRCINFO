@@ -1,0 +1,19 @@
+pkgbase = release-plz-git
+	pkgdesc = Release Rust packages without using the command line (git)
+	pkgver = 0.2.9.r0.gdc057be
+	pkgrel = 1
+	url = https://github.com/MarcoIeni/release-plz
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = curl
+	provides = release-plz
+	conflicts = release-plz
+	options = !lto
+	source = git+https://github.com/MarcoIeni/release-plz
+	sha512sums = SKIP
+
+pkgname = release-plz-git
