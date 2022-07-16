@@ -5,25 +5,26 @@
 # Contributor: Jon Nordby <jononor@gmail.com>
 
 pkgname=lib32-libwebp
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
-pkgdesc='WebP library'
-arch=('x86_64')
-url='https://developers.google.com/speed/webp/'
-license=('BSD')
-depends=('lib32-glibc' 'libwebp')
+pkgdesc="WebP library (32-bit)"
+url="https://developers.google.com/speed/webp/"
+arch=(x86_64)
+license=(BSD)
+depends=(lib32-glibc libwebp)
 provides=(libwebp{,decoder,demux,mux}.so)
-source=(https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-${pkgver}.tar.gz{,.asc})
-sha256sums=('7656532f837af5f4cec3ff6bafe552c044dc39bf453587bd5b77450802f4aee6'
+options=(debug)
+source=(https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-$pkgver.tar.gz{,.asc})
+sha256sums=('f5d7ab2390b06b8a934a4fc35784291b3885b557780d099bd32f09241f9d83f9'
             'SKIP')
 validpgpkeys=('6B0E6B70976DE303EDF2F601F9C3D6BDB8232B5D') # WebP release signing key
 
 build() {
-  cd libwebp-${pkgver}
+  cd libwebp-$pkgver
 
-  export CC='gcc -m32'
-  export CXX='g++ -m32'
-  export PKG_CONFIG='i686-pc-linux-gnu-pkg-config'
+  export CC="gcc -m32"
+  export CXX="g++ -m32"
+  export PKG_CONFIG=i686-pc-linux-gnu-pkg-config
 
   ./configure \
     --prefix=/usr \
@@ -36,18 +37,17 @@ build() {
 }
 
 check() {
-  cd libwebp-${pkgver}
+  cd libwebp-$pkgver
   make check
 }
 
 package() {
-  cd libwebp-${pkgver}
+  cd libwebp-$pkgver
 
-  make DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}"/usr/{bin,include,share}
+  make DESTDIR="$pkgdir" install
+  rm -r "$pkgdir"/usr/{bin,include,share}
 
-  install -dm 755 "${pkgdir}"/usr/share/licenses
-  ln -s libwebp "${pkgdir}"/usr/share/licenses/lib32-libwebp
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 COPYING
 }
 
-# vim: ts=2 sw=2 et:
+# vim:set sw=2 sts=-1 et:
