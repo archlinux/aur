@@ -3,8 +3,7 @@
 # Based on the rbdoom3-bfg-git package by M0Rf30
 
 pkgname=rbdoom-3-bfg
-_srctag=1.4.0
-pkgver=${_srctag//-/.}
+pkgver=1.4.0.r11.d292e461
 pkgrel=1
 pkgdesc="Doom 3 BFG Edition with modern engine features like PBR, Baked Global Illumination, Soft Shadows"
 arch=('x86_64')
@@ -27,7 +26,7 @@ optdepends=(
 install=$pkgname.install
 options=(!lto)
 source=(
-  git+https://github.com/RobertBeckebans/RBDOOM-3-BFG.git#tag=v${_srctag}
+  git+https://github.com/RobertBeckebans/RBDOOM-3-BFG.git
   glslang::git+https://github.com/KhronosGroup/glslang.git
   rbdoom-3-bfg.desktop
   rbdoom-3-bfg.png
@@ -38,6 +37,11 @@ sha256sums=('SKIP'
             '961649f60b9b39b97c5a23201f9276037694b4eb9e930bc33d255d9093385646'
             '0fb6a3bb9b47cad65d5012ba20dc9de3b1487f4ac1908ee847e6087511b7f09e'
             '6b40daca58635b30a68100741c265d22ffdefe90c74aad37827af1ea3daf8304')
+
+pkgver() {
+  cd RBDOOM-3-BFG
+  printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v//g')"
+}
 
 prepare() {
   cd RBDOOM-3-BFG

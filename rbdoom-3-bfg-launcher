@@ -1,0 +1,27 @@
+#!/usr/bin/bash
+
+conf="$HOME/.rbdoom3bfg/launcher.conf"
+
+if [ -f "$conf" ]; then
+    source "$conf"
+else
+    conf_dir=$(dirname "$conf")
+    if [ ! -d "$conf_dir" ]; then
+        mkdir -p "$conf_dir"
+    fi
+    echo "install_dir=\"\"" > "$conf"
+fi
+
+basepath=""
+if [  -z "$install_dir" ]; then
+    printf "%s: install_dir is not set.\n\n" "$(basename "$0")"
+    printf "\tThe default install locations will be searched.\n"
+    printf "\tIf RBDoom3BFG fails to start, specify the Doom 3 BFG \n"
+    printf "\tinstallation directory in %s.\n\n" "$conf"
+else
+    basepath="+set fs_basepath $install_dir"
+fi
+
+# Disable terminal support too, if the user knows
+# what they are doing, they don't need the launcher anyways
+exec RBDoom3BFG +set in_tty 0 "$basepath" "$@"
