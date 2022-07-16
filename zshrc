@@ -7,7 +7,7 @@ else
   echo "Please check your theme file's existance and read permission!"
   echo "Tips: run \"sudo chmod +r -R /usr/share/oh-my-posh/\" may helps when there're permission issues."
 fi
-eval "$(oh-my-posh init zsh)"
+eval "$(oh-my-posh init zsh --config ${POSH_THEME})"
 
 ## Import easy-zsh-config
 if [[ -r /usr/share/zsh/easy-zsh-config ]]; then
