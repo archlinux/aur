@@ -1,7 +1,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=perimeter81
-pkgver=latest
-pkgrel=2
+pkgver=8.0.2.628
+pkgrel=1
 pkgdesc='Perimeter81 agent application'
 arch=('x86_64')
 url='https://support.perimeter81.com/docs/downloading-the-agent'
@@ -9,13 +9,14 @@ license=('custom:LICENSE')
 depends=('systemd' 'netcat')
 options=(!strip)
 source=(
-  'https://static.perimeter81.com/agents/linux/snapshot/latest/Perimeter81.deb'
+  "https://static.perimeter81.com/agents/linux/Perimeter81_${pkgver}.deb"
   'perimeter81helper.service'
   'LICENSE'
 )
 md5sums=(
-  'SKIP'
-  'SKIP'
+  '9cee736542c96e84b6fd1e61b440e98c'
+  '089b611fb1ecbd3e39e2d2d391743205'
+  '64c25ccc5446c93c6073a418f664d3d5'
 )
 
 prepare() {
