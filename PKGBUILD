@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o
-pkgver=2.53.0
+pkgver=2.54.0
 pkgrel=1
 pkgdesc='Text editor and minimalistic IDE'
 arch=(x86_64)
@@ -9,7 +9,7 @@ url='https://github.com/xyproto/o'
 license=(BSD)
 depends=(vte3)
 makedepends=(git go)
-source=("git+$url#commit=16c90371be5e3c747c79f9029e5ceb7fb94cd40e") # tag: v2.53.0
+source=("git+$url#commit=1757eab4ecf6232be0ea4399c2129b1b8c386f3c") # tag: v2.54.0
 optdepends=('asciidoctor: for writing man pages'
             'agda: for compiling Agda'
             'astyle: for formatting C#'
@@ -49,7 +49,7 @@ optdepends=('asciidoctor: for writing man pages'
             'v: for compiling and formatting V'
             'yasm: for compiling Assembly'
             'zig: for compiling and formatting Zig')
-b2sums=(SKIP)
+b2sums=('SKIP')
 
 build() {
   cd $pkgname/v2
