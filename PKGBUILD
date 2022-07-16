@@ -9,7 +9,7 @@ license=('MIT')
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 makedepends=(tar cmake go ninja unzip zlib autoconf automake libtool python mercurial gyp patch)
 depends=(nss)
-provides=(curl-impersonate-firefox)
+provides=(curl-impersonate-firefox libcurl-impersonate-firefox)
 
 # WORKAROUND for building brotli
 options=("!buildflags")
