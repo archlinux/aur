@@ -1,6 +1,6 @@
 pkgbase = lamp
 	pkgdesc = A Linux backlight utility inspired by acpibacklight
-	pkgver = 0.2.2
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://codeberg.org/crapStone/lamp
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = lamp
 	license = GPL3
 	makedepends = rust
 	makedepends = cargo
-	source = lamp-0.2.2.tar.gz::https://codeberg.org/crapStone/lamp/archive/v0.2.2.tar.gz
-	sha256sums = f4dee7838cd9576dc59aafba82fceec5ce5b04bc077aa3b6627a2200511bf139
+	source = lamp-0.3.0.tar.gz::https://codeberg.org/crapStone/lamp/archive/v0.3.0.tar.gz
+	sha256sums = fbf2ea683d3789f1b02d527dcf9c128a3c3f74bec98c575ce2b7180c4b2168f2
 
 pkgname = lamp
