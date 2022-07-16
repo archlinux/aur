@@ -11,8 +11,9 @@ conflicts=('goobook')
 provides=('goobook')
 depends=('python' 'python-simplejson' 'python-google-api-core'
          'python-google-api-python-client' 'python-googleapis-common-protos'
-         'python-oauth2client' 'python-xdg>=4.0.1')
-makedepends=('git' 'python-setuptools' 'python-docutils')
+         'python-oauth2client' 'python-pyxdg')
+makedepends=('git' 'python-installer' 'python-build' 'python-docutils'
+             'python-poetry')
 source=("git+https://gitlab.com/goobook/goobook.git")
 md5sums=('SKIP')
 install=goobook.install
@@ -24,12 +25,12 @@ pkgver() {
 
 build() {
   cd "$_gitname"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$_gitname"
-  python setup.py install --root="${pkgdir}" --optimize=1
+  python -m installer --destdir="${pkgdir}" dist/*.whl
   rst2man.py --strict "$_gitname.1.rst" "$_gitname.1"
   install -Dm644 -Dt "$pkgdir/usr/share/man/man1" "$_gitname.1"
   install -Dm644 -Dt "$pkgdir/usr/share/doc/$_gitname" "README.rst" "CHANGES.rst"
