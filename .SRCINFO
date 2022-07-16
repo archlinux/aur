@@ -1,7 +1,7 @@
 pkgbase = plex-desktop
 	pkgdesc = Plex desktop client for linux
 	pkgver = 1.48.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://plex.tv
 	arch = x86_64
 	license = unknown

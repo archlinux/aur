@@ -2,7 +2,7 @@
 
 pkgname=plex-desktop
 pkgver=1.48.2
-pkgrel=1
+pkgrel=2
 _snapid=qc6MFRM433ZhI1XjVzErdHivhSOhlpf0
 _snaprev=12
 pkgdesc="Plex desktop client for linux"
@@ -44,6 +44,7 @@ package() {
   install -Dm644 "${pkgdir}/opt/${pkgname}/lib/libicuuc.so.66" -t "${pkgdir}/usr/lib/${pkgname}"
   install -Dm644 "${pkgdir}/opt/${pkgname}/lib/libavutil.so.56" -t "${pkgdir}/usr/lib/${pkgname}"
   install -Dm644 "${pkgdir}/opt/${pkgname}/lib/libavformat.so.58" -t "${pkgdir}/usr/lib/${pkgname}"
+  ln -s "/usr/lib/libmpv.so" "${pkgdir}/usr/lib/${pkgname}/libmpv.so.2"
 
   install -Dm644 "${srcdir}/${pkgname}/usr/lib/x86_64-linux-gnu/libvpx.so.6.2.0" "${pkgdir}/usr/lib/${pkgname}/libvpx.so.6"
   install -Dm644 "${srcdir}/${pkgname}/usr/lib/x86_64-linux-gnu/libwebp.so.6.0.2" "${pkgdir}/usr/lib/${pkgname}/libwebp.so.6"
