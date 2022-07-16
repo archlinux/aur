@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Ted Alff <twa022 at gmail dot com>
 pkgname=touchpad-indicator-git
-pkgver=2.2.3.ubuntu20.04.0.r128.97cdae5
-pkgrel=1
+pkgver=2.2.3.ubuntu20.04.0.r131.bc21ab5
+pkgrel=2
 pkgdesc="An indicator for the touchpad"
 arch=('any')
 url="https://github.com/atareao/Touchpad-Indicator"
@@ -33,6 +33,9 @@ prepare() {
     grep -B 1000 "End comile languages" | \
     sed "s:\${CURDIR}/debian/touchpad-indicator:\"$pkgdir\":g" > make_translations.sh
   chmod +x make_translations.sh
+
+  # bump Notify to 0.8
+  sed -i "s/'Notify', '0.7'/'Notify', '0.8'/g" src/touchpadindicator.py
 }
 
 package() {
