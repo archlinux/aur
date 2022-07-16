@@ -1,10 +1,9 @@
 pkgbase = zhumu
 	pkgdesc = Video Conferencing and Web Conferencing Service
-	pkgver = 2.5.361956.0302
-	pkgrel = 4
+	pkgver = 5.5.188.0612
+	pkgrel = 1
 	url = https://www.zhumu.me
 	arch = x86_64
-	arch = i386
 	license = unknown
 	depends = fontconfig
 	depends = glib2
@@ -28,10 +27,7 @@ pkgbase = zhumu
 	optdepends = qt5-webengine: SSO login support
 	optdepends = picom: extra compositor needed by some window managers for screen sharing
 	optdepends = xcompmgr: extra compositor needed by some window managers for screen sharing
-	source_x86_64 = http://downloads.zhumu.me/client/latest/linux/zhumu_2.5.361956.0302_amd64.deb
-	sha256sums_x86_64 = 7d3f4a6795b2904e411dfb9b64de36d49c95513dc1ea96dbd8f0dcd2027174c9
-	source_i386 = http://downloads.zhumu.me/client/latest/linux/zhumu_2.5.361956.0302_i386.deb
-	sha256sums_i386 = aa1eadcc6cde6ab7ece90d86ed19426dc538a8b1282b39bcfadfe868884ff804
+	source_x86_64 = zhumuintl_5.5.188.0612_amd64.deb::http://d.zhumu.com/client/latest/zhumuintl_amd64.deb
+	sha256sums_x86_64 = f5e105e578a3352846bcc3f736bc727bedce22be3ed16c2c34339d9e6e98f3ca
 
 pkgname = zhumu
-
