@@ -17,7 +17,7 @@ source=("git+https://chromium.googlesource.com/crosvm/crosvm"
         "git+https://chromium.googlesource.com/chromiumos/third_party/virglrenderer"
         "git+https://android.googlesource.com/platform/external/minijail"
         )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
   cd crosvm

@@ -23,6 +23,5 @@ pkgbase = crosvm-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = SKIP
 
 pkgname = crosvm-git
