@@ -1,6 +1,6 @@
 pkgbase = r-ngsreports
 	pkgdesc = Load FastqQC reports and other NGS related files
-	pkgver = 1.12.2
+	pkgver = 1.12.3
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ngsReports
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = r-ngsreports
 	optdepends = r-knitr
 	optdepends = r-testthat
 	optdepends = r-truncnorm
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ngsReports_1.12.2.tar.gz
-	sha256sums = f05b1f3d71d785eaefef4cdad2aef0d9e7f7debbe9974aa73ee1c0cfb8cf3416
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ngsReports_1.12.3.tar.gz
+	sha256sums = cc95f9f28ffed99ed9874589141d5a6d376cfee2e1b6d32fd8ea3916ce1ec169
 
 pkgname = r-ngsreports
