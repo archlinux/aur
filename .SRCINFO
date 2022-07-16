@@ -1,0 +1,12 @@
+pkgbase = sudo-mice-bin
+	pkgdesc = A pixel graphics CLI GUI two players game.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Elagoht/SudoMice
+	arch = x86_64
+	license = Unlicense
+	provides = sudo-mice
+	source = SudoMice.tar.gz::https://github.com/Elagoht/Passenger/releases/download/v1.0/SudoMice.tar.gz
+	sha256sums = 3469fbf2bd86780937efc56d41114baed9b1c2a7775e8e756695445d5629754c
+
+pkgname = sudo-mice-bin
