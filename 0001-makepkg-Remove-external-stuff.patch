@@ -1,18 +1,18 @@
-From 1c5b4de11fb85581501eedd32b26b8dbdbbd4e13 Mon Sep 17 00:00:00 2001
+From 9bbc271de0828bdcada005030f59023b79db4b03 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Thu, 3 Mar 2022 19:58:41 +0100
 Subject: [PATCH 1/3] makepkg: Remove external stuff
 
 ---
  CMakeLists.txt            |  1 -
- cmake/build_helpers.cmake | 29 -----------------------------
- 2 files changed, 30 deletions(-)
+ cmake/build_helpers.cmake | 31 -------------------------------
+ 2 files changed, 32 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index cfddb106..ec738564 100644
+index 47ab66fa..7733b02c 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -12,7 +12,6 @@ include("${IMHEX_BASE_FOLDER}/cmake/build_helpers.cmake")
+@@ -14,7 +14,6 @@ option(IMHEX_OFFLINE_BUILD "Enable offline build" OFF)
  
  # Make sure project is configured correctly
  setDefaultBuiltTypeIfUnset()
@@ -21,10 +21,10 @@ index cfddb106..ec738564 100644
  # List plugin names here. Project name must match folder name
  set(PLUGINS
 diff --git a/cmake/build_helpers.cmake b/cmake/build_helpers.cmake
-index c5954466..74e21048 100644
+index 366aba89..33552e58 100644
 --- a/cmake/build_helpers.cmake
 +++ b/cmake/build_helpers.cmake
-@@ -225,7 +225,6 @@ macro(createPackage)
+@@ -226,7 +226,6 @@ macro(createPackage)
          install(FILES ${CMAKE_SOURCE_DIR}/dist/imhex.desktop DESTINATION ${CMAKE_INSTALL_PREFIX}/share/applications)
          install(FILES ${CMAKE_SOURCE_DIR}/resources/icon.png DESTINATION ${CMAKE_INSTALL_PREFIX}/share/pixmaps RENAME imhex.png)
          install(FILES "$<TARGET_FILE:libimhex>" DESTINATION "${CMAKE_INSTALL_LIBDIR}")
@@ -32,7 +32,7 @@ index c5954466..74e21048 100644
      endif()
      
      if (CREATE_BUNDLE)
-@@ -275,31 +274,3 @@ macro(setDefaultBuiltTypeIfUnset)
+@@ -276,33 +275,3 @@ macro(setDefaultBuiltTypeIfUnset)
          set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release")
      endif()
  endmacro()
@@ -50,21 +50,23 @@ index c5954466..74e21048 100644
 -
 -
 -function(downloadImHexPatternsFiles dest)
--    FetchContent_Declare(
--        imhex_patterns
--        GIT_REPOSITORY https://github.com/WerWolv/ImHex-Patterns.git
--        GIT_TAG master
--    )
+-    if (NOT IMHEX_OFFLINE_BUILD)
+-        FetchContent_Declare(
+-            imhex_patterns
+-            GIT_REPOSITORY https://github.com/WerWolv/ImHex-Patterns.git
+-            GIT_TAG master
+-        )
 -
--    FetchContent_Populate(imhex_patterns)
+-        FetchContent_Populate(imhex_patterns)
 -
--    set(PATTERNS_FOLDERS_TO_INSTALL constants encodings includes patterns magic)
--    foreach (FOLDER ${PATTERNS_FOLDERS_TO_INSTALL})
--        install(DIRECTORY "${imhex_patterns_SOURCE_DIR}/${FOLDER}" DESTINATION ${dest})
--    endforeach()
+-        set(PATTERNS_FOLDERS_TO_INSTALL constants encodings includes patterns magic)
+-        foreach (FOLDER ${PATTERNS_FOLDERS_TO_INSTALL})
+-            install(DIRECTORY "${imhex_patterns_SOURCE_DIR}/${FOLDER}" DESTINATION ${dest})
+-        endforeach ()
+-    endif ()
 -
 -endfunction()
 \ No newline at end of file
 -- 
-2.37.0
+2.37.1
 

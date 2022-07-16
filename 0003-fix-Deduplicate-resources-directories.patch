@@ -1,4 +1,4 @@
-From 868c2dd6f7c7fe50c240277ea5cb2acde43ede4a Mon Sep 17 00:00:00 2001
+From 33505ec80d294b531baf9f83e5f2d7fdc6eb4218 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Sat, 11 Jun 2022 23:08:31 +0200
 Subject: [PATCH 3/3] fix: Deduplicate resources directories
@@ -32,7 +32,7 @@ index 5f4e29af..26ff62df 100644
      std::string combineStrings(const std::vector<std::string> &strings, const std::string &delimiter = "");
  
 diff --git a/lib/libimhex/source/helpers/fs.cpp b/lib/libimhex/source/helpers/fs.cpp
-index b756769b..c50c6de5 100644
+index 6fa817aa..a2e1263e 100644
 --- a/lib/libimhex/source/helpers/fs.cpp
 +++ b/lib/libimhex/source/helpers/fs.cpp
 @@ -1,4 +1,5 @@
@@ -41,7 +41,7 @@ index b756769b..c50c6de5 100644
  
  #include <hex/api/content_registry.hpp>
  #include <hex/helpers/fs_macos.hpp>
-@@ -266,6 +267,9 @@ namespace hex::fs {
+@@ -256,6 +257,9 @@ namespace hex::fs {
          if (exePath && !exePath->empty())
              dataDirs.push_back(exePath->parent_path());
  
@@ -52,5 +52,5 @@ index b756769b..c50c6de5 100644
              case ImHexPath::Patterns:
                  addUserDirs(dataDirs);
 -- 
-2.37.0
+2.37.1
 
