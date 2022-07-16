@@ -9,10 +9,10 @@ arch=('i686' 'x86_64')
 url="https://www.enlightenment.org/about-enventor"
 license=('BSD')
 depends=('efl')
-makedepends=('git' 'base-devel')
+makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("git://git.enlightenment.org/enlightenment/$_pkgname.git")
+source=("git+https://git.enlightenment.org/enlightenment/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
