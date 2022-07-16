@@ -3,8 +3,8 @@
 # Contributor: David Thurstenson <thurstylark@gmail.com>
 
 pkgname=j4-make-config-git
-pkgver=r62.e3fc517
-pkgrel=2
+pkgver=r69.feee58f
+pkgrel=1
 pkgdesc='Universal theme switcher and config generator for the i3 wm'
 arch=('any')
 url='https://github.com/okraits/j4-make-config'
@@ -13,7 +13,7 @@ depends=('python')
 makedepends=('git')
 optdepends=('rofi: interactive theme menu'
             'xorg-xsetroot: set root window background')
-source=('git://github.com/okraits/j4-make-config.git')
+source=('git+https://github.com/okraits/j4-make-config.git')
 sha1sums=('SKIP')
 
 _gitname='j4-make-config'

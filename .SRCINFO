@@ -1,7 +1,7 @@
 pkgbase = j4-make-config-git
 	pkgdesc = Universal theme switcher and config generator for the i3 wm
-	pkgver = r62.e3fc517
-	pkgrel = 2
+	pkgver = r69.feee58f
+	pkgrel = 1
 	url = https://github.com/okraits/j4-make-config
 	arch = any
 	license = GPL
@@ -9,8 +9,7 @@ pkgbase = j4-make-config-git
 	depends = python
 	optdepends = rofi: interactive theme menu
 	optdepends = xorg-xsetroot: set root window background
-	source = git://github.com/okraits/j4-make-config.git
+	source = git+https://github.com/okraits/j4-make-config.git
 	sha1sums = SKIP
 
 pkgname = j4-make-config-git
-
