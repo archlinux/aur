@@ -1,5 +1,5 @@
 pkgname=7-zip-full
-pkgver=22.00
+pkgver=22.01
 pkgrel=1
 pkgdesc="File archiver with a high compression ratio. (Full package to replace p7zip.)"
 url="https://www.7-zip.org"
@@ -17,8 +17,8 @@ source=(
 )
 
 sha256sums=(
-    '40969f601e86aff49aaa0ba0df5ce6fd397cf7e2683a84b591b0081e461ef675'
-    '07abcf21a0aa67a6c9e78f553805a7a1f4b772b184b51c8e5c12c013cc692e2a'
+    '393098730c70042392af808917e765945dc2437dee7aae3cfcc4966eb920fbc5'
+    '9682e6493d372424be837f2385820935a104b7ce60c3dc8946fdaaefd00ac21f'
 )
 
 prepare() {
