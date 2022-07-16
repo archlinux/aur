@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Office;
+Comment=A simple and fast mail client
+Exec=dust-mail
+Icon=dust-mail
+Name=Dust-Mail
+Terminal=false
+Type=Application
