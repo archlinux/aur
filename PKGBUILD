@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-icefall-git
-pkgver=1.1.1
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Official recipes associated with k2 and lhotse"
 arch=('any')
