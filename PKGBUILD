@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-k2-git
-pkgver=1.14
+pkgver=1.17
 pkgrel=1
 pkgdesc='FSA/FST algorithms, differentiable, with PyTorch compatibility'
 arch=('any')
@@ -19,7 +19,7 @@ md5sums=(
 
 pkgver() {
     cd "${pkgname}"
-    # To obtain a version number compatible with PEP 440
+    # To obtain a version number compatible with PEP 440, the K2_IS_STABLE needs to be set
     export K2_IS_STABLE=1
     printf "%s" "$(python setup.py --version)"
 }
@@ -27,6 +27,12 @@ pkgver() {
 
 build() {
     cd "${pkgname}"
+    # For a CPU-only installation of k2, use:
+    #   export K2_CMAKE_ARGS="-DK2_WITH_CUDA=OFF -DCMAKE_BUILD_TYPE=Release"
+    # For another compiler, use
+    #   export LANG=C
+    #   export CXX=clang++
+    #   export K2_MAKE_ARGS="CXX=clang++"
     python setup.py build
 }
 
