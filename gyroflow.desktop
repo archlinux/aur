@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Gyroflow
+GenericName=Video stabilization software
+Comment=Video stabilization using gyroscope data
+Exec=/usr/bin/gyroflow %U
+Icon=gyroflow
+StartupNotify=false
+Terminal=false
+Categories=Graphics;Photography;AudioVideo;
+MimeType=video/mp4;video/mpeg;
