@@ -1,0 +1,17 @@
+pkgbase = kodi-plugin-video-picta-bin
+	pkgdesc = Kodi mediacenter video plugin for picta.cu
+	pkgver = v2.0.0
+	pkgrel = 1
+	url = https://github.com/oleksis/plugin.video.picta
+	arch = x86_64
+	groups = kodi
+	license = MIT
+	makedepends = unzip
+	depends = python-requests
+	depends = kodi-addon-inputstream-adaptive
+	depends = kodi-addon-inputstream-ffmpegdirect
+	provides = kodi-plugin-video-picta
+	source = https://github.com/oleksis/plugin.video.picta/releases/download/v2.0.0/plugin.video.picta-kodi_19.zip
+	sha256sums = f2f20222a0776d2b49930e00d4f277345fa451ef5d587813999366ed90cf48e0
+
+pkgname = kodi-plugin-video-picta-bin
