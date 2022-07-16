@@ -1,13 +1,13 @@
 # Maintainer: larte <lauri.arte@gmail.com>
 pkgname=k8stail
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Watch kubernetes logstreams filtering with namespace and labels, like tail -f"
 arch=('x86_64' 'i686')
 url="https://github.com/dtan4/k8stail"
 license=('MIT')
 depends=('glibc')
-makedepends=('go' 'go-bindata' 'make' 'glide')
+makedepends=('go' 'go-bindata' 'make')
 _archive=k8stail-$pkgver
 source=($_archive.tar.gz::https://github.com/dtan4/k8stail/archive/v$pkgver.tar.gz)
 md5sums=('f4d8cb3b40d4ca62ad0757047006d1f7')
@@ -32,7 +32,6 @@ build() {
         export PATH=$PATH:$GOPATH/bin
 
         make install
-        #GOPATH=$srcdir/go go install -ldflags="-s -w -X \"main.Version=$pkgver\" -X \"main.Revision=aur-pkgbuild\""
 }
 
 check() {

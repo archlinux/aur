@@ -1,7 +1,7 @@
 pkgbase = k8stail
 	pkgdesc = Watch kubernetes logstreams filtering with namespace and labels, like tail -f
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dtan4/k8stail
 	arch = x86_64
 	arch = i686
@@ -9,7 +9,6 @@ pkgbase = k8stail
 	makedepends = go
 	makedepends = go-bindata
 	makedepends = make
-	makedepends = glide
 	depends = glibc
 	source = k8stail-0.7.0.tar.gz::https://github.com/dtan4/k8stail/archive/v0.7.0.tar.gz
 	md5sums = f4d8cb3b40d4ca62ad0757047006d1f7
