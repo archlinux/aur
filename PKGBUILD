@@ -6,12 +6,12 @@
 
 pkgname=wxmaxima
 pkgver=22.05.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A wxWidgets GUI for the computer algebra system Maxima"
 arch=(x86_64)
 url="https://github.com/${pkgname}-developers/${pkgname}"
 license=(GPL2)
-depends=(maxima wxgtk3)
+depends=(maxima wxwidgets-gtk3)
 makedepends=(cmake)
 # checkdepends=(xorg-server-xvfb)
 optdepends=('bash-completion: for completion when using bash'
@@ -28,7 +28,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_CXX_STANDARD=14 \
     -DCMAKE_CXX_COMPILER=g++ \
-    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
+    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config \
     -Wno-dev
   cmake --build build
 }
