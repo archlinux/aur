@@ -2,7 +2,8 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-botorch
-pkgver=0.6.4
+_pkg="${pkgname#python-}"
+pkgver=0.6.5
 pkgrel=1
 pkgdesc='Bayesian Optimization in PyTorch'
 arch=('any')
@@ -22,17 +23,17 @@ makedepends=(
 	'python-setuptools'
 	'python-setuptools-scm')
 changelog=CHANGELOG.md
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/b/botorch/botorch-$pkgver.tar.gz")
-sha256sums=('3fd28417f55749501a45378f72cd5ca7614e2e05b7b65c6b4eb9b72378bc665a')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/b/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('696ce5a68e4bb0f6ce4584940b5e4eab9634d48b69b1dbb134ef01ebbb486884')
 
 build() {
-	cd "botorch-$pkgver"
+	cd "$_pkg-$pkgver"
 	## requires (setuptools<48); skip check
-	python -m build --wheel --skip-dependency-check --no-isolation
+	python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "botorch-$pkgver"
+	cd "$_pkg-$pkgver"
 	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
