@@ -1,7 +1,7 @@
 # Maintainer: Cassandra Watergate (saltedcoffii) <cassandrawatergate@outlook.com>
 
 pkgname=tgs-to-gif-cpp-git
-pkgver=r6.f626548
+pkgver=r14.e538087
 pkgrel=1
 pkgdesc="Animated stickers for Telegram (*.tgs) to animated GIFs converter, c++ version"
 arch=("x86_64" "i386" "arm" "armv6h" "armv7h" "aarch64")
@@ -9,22 +9,15 @@ url="https://github.com/ed-asriyan/tgs-to-gif"
 license=('MIT')
 depends=('rlottie')
 makedepends=('conan' 'cmake')
+optdepends=('libwebp: WEBP conversion support'
+            'gifski: GIF conversion support')
 provides=('tgs-to-gif' 'tgs-to-gif-cpp' 'tgs-to-gif-git')
 conflicts=('tgs-to-gif' 'tgs-to-gif-cpp' 'tgs-to-gif-git')
-source=("git+https://github.com/ed-asriyan/tgs-to-gif"
-	basename.patch)
-sha256sums=('SKIP'
-            'd5b6f6c734ed8dbc6ffed897e2789d3a6e2a93b5ff3cf85bf6d42298353d1e9f')
+source=("git+https://github.com/ed-asriyan/tgs-to-gif")
+sha256sums=('SKIP')
 
 build() {
-	cd "tgs-to-gif"
-	git checkout master-cpp
-	# This patch fails when using musl libc, detect it and only apply the patch if not.
-	if [ -z $(ldd /bin/ls | grep 'musl' | head -1 | cut -d ' ' -f1) ]; then
-		patch -Np1 -i ../basename.patch
-	else
-		echo "Detected musl libc: not applying basename.patch"
-	fi
+	cd tgs-to-gif
 	conan install . --build
 	cmake CMakeLists.txt
 	make
@@ -32,6 +25,11 @@ build() {
 
 package() {
 	mkdir -p $pkgdir/usr/bin/
-	install tgs-to-gif/bin/tgs_to_gif $pkgdir/usr/bin/tgs-to-gif
-	ln -srv $pkgdir/usr/bin/tgs-to-gif $pkgdir/usr/bin/tgs2gif
+	install tgs-to-gif/bin/tgs_to_png $pkgdir/usr/bin/tgs_to_png
+	install tgs-to-gif/tgs_to_gif.sh $pkgdir/usr/bin/tgs_to_gif.sh
+	install tgs-to-gif/tgs_to_webp.sh $pkgdir/usr/bin/tgs_to_webp.sh
+	install tgs-to-gif/tgs_to_png.sh $pkgdir/usr/bin/tgs_to_png.sh
+	ln -srv $pkgdir/usr/bin/tgs_to_png $pkgdir/usr/bin/tgs2png
+	ln -srv $pkgdir/usr/bin/tgs_to_gif.sh $pkgdir/usr/bin/tgs2gif
+	ln -srv $pkgdir/usr/bin/tgs_to_webp.sh $pkgdir/usr/bin/tgs2webp
 }
