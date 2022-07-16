@@ -40,19 +40,6 @@ prepare() {
     git submodule update third_party/spirv-headers
     popd
 
-    # Filter known bad flags before applying optimizations
-    # Filter fstack-protector{ ,-all,-strong} flag for MingW.
-    # https://github.com/Joshua-Ashton/d9vk/issues/476
-    CFLAGS="${CFLAGS// -fstack-protector*([\-all|\-strong])/}"
-    CXXFLAGS="${CXXFLAGS// -fstack-protector*([\-all|\-strong])/}"
-    # Doesn't compile with these flags in MingW so remove them.
-    # They are also filtered in Wine PKGBUILDs so remove them
-    # for winelib versions too.
-    CFLAGS="${CFLAGS/ -fno-plt/}"
-    CXXFLAGS="${CXXFLAGS/ -fno-plt/}"
-    LDFLAGS="${LDFLAGS/,-z,now/}"
-    LDFLAGS="${LDFLAGS/,-z,relro/}"
-
     # By default export FLAGS used by proton and ignore makepkg
     # This overrides FLAGS from makepkg.conf, if you comment these you are on your own
     # If you want the "best" possible optimizations for your system you can use
@@ -126,7 +113,8 @@ package() {
     DESTDIR="$pkgdir" ninja -C "build/x86" install
     DESTDIR="$pkgdir" ninja -C "build/x64" install
     install -Dm 755 -t "$pkgdir/usr/share/vkd3d-proton" vkd3d-proton/setup_vkd3d_proton.sh
-    install -Dm 644 -t "$pkgdir/usr/share/$pkgname" vkd3d-proton/LICENSE
+    install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" vkd3d-proton/README.md
+    install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname" vkd3d-proton/LICENSE
     install -Dm 755 -t "$pkgdir/usr/bin" setup_vkd3d_proton
 }
 
@@ -134,5 +122,5 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '459d0de87abd6ea44ac71b4d7a005b6cfc9b2a75613ecda161223e95a22414d8'
+            '67815eed9d47bbf610e23c6a1e4954c11371886c2ca73555dd9f1d6fbebb1323'
             '8fc019d1dca8c52b6af96c40ff06a6c215aad3e713ae17be72c7422f1ba45634')

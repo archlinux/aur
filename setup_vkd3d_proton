@@ -1,2 +1,2 @@
 #!/bin/sh
-/usr/share/vkd3d-proton/setup_vkd3d_proton.sh $1 --symlink
+/usr/share/vkd3d-proton/setup_vkd3d_proton.sh $@

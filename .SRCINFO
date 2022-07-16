@@ -31,7 +31,7 @@ pkgbase = vkd3d-proton-mingw-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 459d0de87abd6ea44ac71b4d7a005b6cfc9b2a75613ecda161223e95a22414d8
+	sha256sums = 67815eed9d47bbf610e23c6a1e4954c11371886c2ca73555dd9f1d6fbebb1323
 	sha256sums = 8fc019d1dca8c52b6af96c40ff06a6c215aad3e713ae17be72c7422f1ba45634
 
 pkgname = vkd3d-proton-mingw-git
