@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-kaldilm-git
-pkgver=1.11
+pkgver=1.13
 pkgrel=1
 pkgdesc='Python wrapper for arpa2fst from the kaldi speech toolkit.'
 arch=('any')
