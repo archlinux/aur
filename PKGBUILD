@@ -7,7 +7,7 @@ pkgdesc='Unicode character database decoder for OCaml'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://erratique.ch/software/$_projectname"
 license=('ISC')
-depends=('ocaml>=4.03.0')
+depends=('ocaml>=4.01.0')
 makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-topkg>=1.0.3' 'opam' 'ocaml-xmlm')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/dbuenzli/$_projectname/archive/v$pkgver.tar.gz")
