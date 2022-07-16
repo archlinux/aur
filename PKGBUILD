@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 pkgname=perl-wx
 pkgver=0.9932
