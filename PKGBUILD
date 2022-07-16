@@ -11,7 +11,7 @@ pkgver() {
 pkgrel=1
 epoch=1
 
-makedepends=('yarn' 'nvm' 'cargo' 'git' 'appstream')
+makedepends=('yarn' 'nvm' 'cargo' 'git' 'appstream' 'wget')
 
 pkgdesc='A simple and fast mail client (Git version)'
 
