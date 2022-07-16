@@ -1,7 +1,7 @@
 # Maintainer: Riccardo Berto <riccardobrt at gmail>
 pkgname=redis-rejson
 _pkgname=RedisJSON
-pkgver=2.0.5
+pkgver=2.0.11
 pkgrel=1
 pkgdesc="Redis module that implements ECMA-404 The JSON Data Interchange Standard as a native data type."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('AGPL-3.0')
 depends=('redis')
 makedepends=("clang")
 source=("$url/archive/v$pkgver.tar.gz")
-sha512sums=('1aed71cd5f1d563b0d2607f9bcb44a81e35db64b9d249c710520737a924011ef2b04faeb79cdb39f57c35e23550cc2302109183d94c9b26f88c1e3aa743b5f4d')
+sha512sums=('560839397f299f036ab6e2f747cc77e9b7889ead06a3d5c4d779fe48bd74919c5d0bf1b462f8e5cff43920ca1082e20305d28b0b7b3b1cf769e86f9ff981177e')
 
 prepare() {
 	cd "$_pkgname-$pkgver"
