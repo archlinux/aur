@@ -5,9 +5,6 @@ arch=('x86_64')
 
 pkgdesc='A simple and fast mail client'
 
-conflicts=('dust-mail-client-git')
-provides=('dust-mail-client-git')
-
 pkgver=0.1.4
 pkgrel=1
 epoch=1
