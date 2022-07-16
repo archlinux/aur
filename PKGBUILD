@@ -49,8 +49,8 @@ package() {
     install -Dm644 $_pkgname@.service "$pkgdir"/usr/lib/systemd/system/$_pkgname@.service
     install -d "$pkgdir"/etc/$_pkgname
     install -Dm644 config.json "$pkgdir"/etc/$_pkgname/config.json
-    install -Dm644 config.json "$pkgdir"/etc/$_pkgname/server.json
-    install -Dm644 config.json "$pkgdir"/etc/$_pkgname/client.json
+    install -Dm644 server.json "$pkgdir"/etc/$_pkgname/server.json
+    install -Dm644 client.json "$pkgdir"/etc/$_pkgname/client.json
     cd $pkgname
     install -Dm755 $_pkgname "$pkgdir"/usr/bin/$_pkgname
 }
