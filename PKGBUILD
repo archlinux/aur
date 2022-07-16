@@ -1,5 +1,5 @@
 # Maintainer: Guus van Meerveld <contact@guusvanmeerveld.dev>
-pkgname=('dust-mail-client-git')
+pkgname='dust-mail-client-git'
 
 arch=('x86_64')
 
@@ -24,8 +24,8 @@ license=('MIT')
 
 source=("$pkgname::git+https://github.com/Guusvanmeerveld/Dust-Mail.git" "dust-mail.desktop" "dust-mail.png")
 
-md5sums=('SKIP' '225f3614b306b30c1bf515ee42c68109' '1c7baa069d5b6aea65b43e37728abbcd')
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'c0038e61dc8df198e6783b26ff966e6c' '1c7baa069d5b6aea65b43e37728abbcd')
+sha256sums=('SKIP' '7b7134228e2a4e7451c5615c7dec0f1babd0adfe11d22bde46ea883f5bd9ef44' 'c1ccc31852531ea642e17daa1481cfa65463602f9fd735eabb7abb5ea2674579')
 
 _ensure_local_nvm() {
     # let's be sure we are starting clean
