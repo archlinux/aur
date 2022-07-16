@@ -1,7 +1,7 @@
 # Maintainer: crapStone <crapstone01@gmail.com>
 
 pkgname=lamp
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -9,7 +9,7 @@ pkgdesc="A Linux backlight utility inspired by acpibacklight"
 url="https://codeberg.org/crapStone/lamp"
 license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('24ec91f86515dfb6e666b73487e563f42b033be8373377ce69653cf931268014')
+sha256sums=('ad03fb78aaf4bdc1127839870be7d8dc5c21bc8aabe8274165d6d0f9c8af1337')
 
 prepare() {
 	cd "$pkgname"
@@ -30,4 +30,8 @@ package () {
 
 	install -Dm0755 target/release/$pkgname "$pkgdir/usr/bin/$pkgname"
 	install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  install -Dm0644 target/completions/$pkgname.bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+  install -Dm0644 target/completions/$pkgname.fish "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
+  install -Dm0644 target/completions/_$pkgname "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
