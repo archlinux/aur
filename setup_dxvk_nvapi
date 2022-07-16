@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/share/dxvk-nvapi/setup_dxvk_nvapi.sh $@
