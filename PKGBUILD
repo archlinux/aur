@@ -82,8 +82,8 @@ fi
 
 pkgbase=linux-manjaro-xanmod
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-_major=5.17
-pkgver=${_major}.7
+_major=5.18
+pkgver=${_major}.11
 _branch=5.x
 xanmod=1
 pkgrel=1
@@ -91,7 +91,7 @@ pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="a7ee13522a80f6f7eaa897dff215dbd676478331" # 5.17.7
+__commit="17eb6c3fad577c14080cee23816fd9d7fdd0ec97" # 5.18.11
 
 license=(GPL2)
 makedepends=(
@@ -118,11 +118,11 @@ for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
         
-sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'  # kernel tar.xz
+sha256sums=('51f3f1684a896e797182a0907299cc1f0ff5e5b51dd9a55478ae63a409855cee'  # kernel tar.xz
             'SKIP'                                                              #        tar.sign
-            'bd58952f92badc91fd52e3a8c07605546c7ece1620f63b9837677ded73647e1c'  # xanmod
+            '15741e8f803af25f4582d01e7c08a52a4f16ad28257f507ed5008f34d5c78298'  # xanmod
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'  # choose-gcc-optimization.sh
-            'b32d9211d63eccb40e56e3ca880b52de4b9b2d0ba54a0b119809adee292985bb') # manjaro
+            '45ae58dbbf54e231e9c78c631eb74012b718feb26329ea22cc8bccd24c04e961') # manjaro
 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -218,7 +218,7 @@ prepare() {
   fi
 
   # Let's user choose microarchitecture optimization in GCC
-  sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
+  ../choose-gcc-optimization.sh $_microarchitecture
 
   # This is intended for the people that want to build this package with their own config
   # Put the file "myconfig" at the package folder (this will take preference) or "${XDG_CONFIG_HOME}/linux-xanmod/myconfig"
