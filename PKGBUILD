@@ -2,11 +2,11 @@
 
 _pkgbase=synadm
 pkgname=${_pkgbase}-git
-pkgver=0.30.r1.gf13cf1d
+pkgver=0.35.r1.ga62f932
 pkgrel=1
 pkgdesc="CLI frontend to Matrix-Synapse admin APIs"
 url="https://github.com/JOJ0/synadm"
-depends=('python' 'python-click' 'python-requests' 'python-yaml' 'python-tabulate' 'python-click-option-group')
+depends=('python' 'python-click' 'python-requests' 'python-yaml' 'python-tabulate' 'python-click-option-group' 'python-dnspython')
 makedepends=('git' 'python3' 'python-setuptools')
 provides=("$_pkgbase=$pkgver")
 conflicts=("$_pkgbase")
