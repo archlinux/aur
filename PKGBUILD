@@ -2,18 +2,18 @@
 # Maintainer: Campbell Jones <dev at serebit dot com>
 
 pkgname=budgie-desktop-git
-pkgver=10.6.r13.g5b3d49fb
+pkgver=10.6.r63.g84edf57d
 pkgrel=1
 pkgdesc="A feature-rich, modern desktop - latest git"
 arch=('x86_64')
 url="https://github.com/BuddiesOfBudgie/budgie-desktop"
 license=('GPL2' 'LGPL2.1')
-depends=('gnome-bluetooth' 'gnome-menus' 'gnome-session' 'gnome-themes-standard' 'libpeas' 'libwnck3'
+depends=('gnome-bluetooth' 'gnome-menus' 'gnome-session' 'gnome-themes-standard' 'libgee' 'libpeas' 'libwnck3'
          'mutter' 'accountsservice' 'sassc' 'ibus')
 makedepends=('meson' 'git' 'gobject-introspection' 'intltool' 'vala' 'gtk-doc')
 optdepends=('gnome-backgrounds: Default background'
-            'gnome-control-center: System settings'
-            'gnome-screensaver: Lock screen'
+            'budgie-control-center: System settings'
+            'budgie-screensaver: Lock screen'
             'network-manager-applet: Network management')
 provides=('budgie-desktop')
 conflicts=('budgie-desktop')
