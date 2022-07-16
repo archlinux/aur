@@ -17,7 +17,7 @@ makedepends=(
 options=('!strip')
 _srcname=linux-sgx
 source=(
-  "$_srcname::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=$_srctag"
+  "$_srcname::git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=$_srctag"
   config         # the main kernel config file
   patch-5.19-enarx.patch
 )
