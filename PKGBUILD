@@ -1,6 +1,7 @@
 # Maintainer: Jarkko Sakkinen <jarkko.sakkinen@iki.fi>
 
 pkgbase=linux-sgx
+pkgname=linux-sgx
 pkgver=5.19.0.sgx1
 pkgrel=1
 pkgdesc='Linux'
