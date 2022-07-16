@@ -1,0 +1,18 @@
+pkgbase = eclipse-rcp
+	pkgdesc = IDE for Rich Client Platform (RCP) and Remote Application Platform (RAP)
+	pkgver = 4.24
+	pkgrel = 1
+	epoch = 2
+	url = https://eclipse.org/ide
+	arch = x86_64
+	license = EPL
+	depends = java-environment>=11
+	provides = eclipse=4.24-1
+	conflicts = eclipse
+	backup = usr/lib/eclipse/eclipse.ini
+	source = eclipse-rcp-2022-06-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2022-06/R/eclipse-rcp-2022-06-R-linux-gtk-x86_64.tar.gz&r=1
+	source = eclipse.desktop::https://git.eclipse.org/c/linuxtools/org.eclipse.linuxtools.eclipse-build.git/plain/desktopintegration/eclipse.desktop?h=f20
+	sha512sums = 2d443d7d1c4f19166e776e85b05a7f1840e353e009d6c138f0971979724df4e5a78fb07b5aa082d812d330180132b8fb40f30528fefa169f2373adaadec3db4b
+	sha512sums = e1ef156793d844ab20e38b0ea055836a0732005657556eee85ae337d0ed4242cd204a0c62709b505454ac7ae7c2235d2ef286252855728c79cf66e77b97041a0
+
+pkgname = eclipse-rcp
