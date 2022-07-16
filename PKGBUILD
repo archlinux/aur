@@ -2,7 +2,7 @@
 # Former Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=nativescript
-pkgver=8.1.5
+pkgver=8.2.3
 pkgrel=1
 pkgdesc='CLI for building NativeScript apps'
 arch=(any)
@@ -14,7 +14,7 @@ optdepents=(android-sdk: for native Android development)
 conflicts=(nativescript-cli)
 options=(!emptydirs)
 source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
-sha512sums=('2149c08732150add612da3243eab9385a45feb0dc516ee767e876999b7e8cc546e2d30e9c96e3cded072930bd70751ac2f66a914cc1098188b05b2896a16f54a')
+sha512sums=('01749734ed80c3f8c6722a3447405cb1cf0d5bbb5a2dc6243cbd3651677a8c4b2d3a01ec31fe83575ce6064a5c9458cb5d2c40719825a52b5a90e1576c7e886b')
 noextract=($pkgname-$pkgver.tgz)
 
 package() {
