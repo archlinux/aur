@@ -6,7 +6,7 @@
 SUMO_HOME='/usr/share/sumo'
 pkgname=('sumo' 'sumo-doc')
 pkgbase=sumo
-pkgver=1.12.0
+pkgver=1.14.0
 _pkgver="${pkgver//./_}"
 pkgrel=1
 pkgdesc="Traffic simulation modelling road vehicles, public transport and pedestrians."
@@ -18,12 +18,11 @@ makedepends=('cmake' 'help2man' 'swig' 'gtest' 'gmock')
 source=("https://github.com/eclipse/sumo/archive/v${_pkgver}.tar.gz"
         "${pkgbase}.desktop")
 
-sha256sums=('049f5f50d1d27352d868cbb4b2a4b59bc0a913ef792b619c1adf1a289b3e48a7'
-            'd9ec82a1b56ebeaf31c6382f6d903baf0767e440b640a713e587d7e09f72d213')
+sha256sums=('147ee3d6d452d0ad86e4275bfc2eed70848f8f6afb6e0af593a47551ee175768'
+            'cc0ed7ad1cce228cd8c634e031c966e1795a16623f0e139ebdcc7ecd06d0bf4d')
 
 prepare() {
     cd ${pkgbase}-${_pkgver}
-    sed -i "/^Version=/ s/$/${pkgver}/" "${srcdir}/${pkgbase}.desktop"
 
     cmake -H. -Bbuild \
         -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
