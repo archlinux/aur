@@ -1,71 +1,32 @@
 # Maintainer: Guus van Meerveld <contact@guusvanmeerveld.dev>
-pkgbase='dust-mail-client'
-pkgname=('dust-mail-client-git')
+pkgname='dust-mail-client'
 
 arch=('x86_64')
 
-pkgver=0.1.4.r2.gef28602
-pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+pkgdesc='A simple and fast mail client'
+
+conflicts=('dust-mail-client-git')
+provides=('dust-mail-client-git')
+
+pkgver=0.1.4
 pkgrel=1
 epoch=1
-
-makedepends=('yarn' 'nvm' 'cargo' 'git' 'appstream')
 
 url='https://github.com/Guusvanmeerveld/Dust-Mail'
 
 license=('MIT')
 
-source=("$pkgname::git+https://github.com/Guusvanmeerveld/Dust-Mail.git" "dust-mail.desktop" "dust-mail.png")
+source=("$pkgname::https://github.com/Guusvanmeerveld/Dust-Mail/releases/download/${pkgver}/dust-mail_${pkgver}_amd64.deb")
 
-md5sums=('SKIP' '225f3614b306b30c1bf515ee42c68109' '1c7baa069d5b6aea65b43e37728abbcd')
-sha256sums=('SKIP' 'SKIP' 'SKIP')
-
-_ensure_local_nvm() {
-    # let's be sure we are starting clean
-    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-    export NVM_DIR="${srcdir}/.nvm"
-
-    # The init script returns 3 if version specified
-    # in ./.nvrc is not (yet) installed in $NVM_DIR
-    # but nvm itself still gets loaded ok
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-}
+md5sums=('e66cd41ee6ebe478b1dca7bb28c0814e')
+sha256sums=('da05ca5c7466ec55d961a68f26a385a245f164be627e0e71619cefcbca47037e')
 
 prepare() {
-  _ensure_local_nvm
-  nvm install 16
-
-  cd "$srcdir/$pkgname/packages/client/src-tauri"
-
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  tar -zxvf data.tar.gz
 }
 
-build() {
-  _ensure_local_nvm
+package() {
+  mkdir -p "$pkgdir/usr"
 
-  cd "$pkgname/packages/client"
-
-  yarn install --frozen-lockfile
-
-  unset SOURCE_DATE_EPOCH
-
-  export RUSTUP_TOOLCHAIN=1.61
-
-  export VITE_UNSTABLE=true
-
-  yarn run tauri build --verbose
-}
-
-package_dust-mail-client-git() {
-  pkgdesc='A simple and fast mail client (Git version)'
-
-  conflicts=('dust-mail-client')
-  provides=('dust-mail-client')
-
-  install -Dm644 "$srcdir/dust-mail.desktop" "$pkgdir/usr/share/applications/dust-mail-client.desktop"
-  install -Dm644 "$srcdir/dust-mail.png" "$pkgdir/usr/share/dust-mail.png"
-  install -Dm755 "$srcdir/$pkgname/packages/client/src-tauri/target/release/dust-mail" "$pkgdir/usr/bin/dust-mail-client"
+  cp "$srcdir/usr" "$pkgdir" -r
 }
