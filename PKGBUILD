@@ -1,110 +1,110 @@
-# Maintainer: S. Leduc <sebastien@sleduc.fr>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: S. Leduc <sebastien@sleduc.fr>
 # Contributor: redfish <redfish@galactica.pw>
 # Contributor: Amr Hassan <amr.hassan@gmail.com>
 # Contributor: Nathan Owe <ndowens.aur at gmail dot com>
 # Contributor: G. Richard Bellamy <rbellamy@pteradigm.com>
 
+## Using the tarball from PyPI because it's smaller, thus easier on bandwidth
+
 pkgname=flexget
-_pkgname=Flexget
-pkgver=3.1.110
+_pkgname=FlexGet
+pkgver=3.3.21
 pkgrel=1
-
-pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
-
+pkgdesc='Multipurpose automation tool for downloading media content from different sources'
 arch=('any')
-url="http://flexget.com/"
+url='https://github.com/flexget/flexget'
 license=('MIT')
-
-depends=('python'
-         # documented in requirements.in
-         'python-feedparser-dev>=6.0.2'
-         'python-sqlalchemy>=1.3.10'
-         'python-yaml>=4.2b1'
-         'python-beautifulsoup4>=4.5'
-         'python-html5lib>=0.11'
-         'python-pyrss2gen'
-         'python-pynzb'
-         'python-rpyc>=4.0'
-         'python-jinja>=2.10'
-         'python-requests>=2.20.0'
-         'python-dateutil>=2.5.3'
-         'python-jsonschema>=2.0'
-         'python-guessit>=3.2.0'
-         'python-rebulk>=2.0.0'
-         'python-apscheduler>=3.2.0'
-         'python-terminaltables>=3.1.0'
-         'python-colorclass>=2.2.0'
-         'python-cherrypy>=18.0.0'
-         'python-flask>=0.7'
-         'python-flask-restful>=0.3.3'
-         'python-flask-restx>=0.2.0'
-         'python-flask-compress>=1.2.1'
-         'python-flask-login>=0.4.0'
-         'python-flask-cors>=2.1.2'
-         'python-pyparsing>=2.4.7'
-         'python-zxcvbn'
-         'python-progressbar>=2.5'
-         'python-loguru>=0.4.1'
-         # Arch Bug FS#68391: remove this transitive dep when bug fixed
-         'python-brotli'
-         )
-optdepends=('python-guppy: for memusage plugin' #AUR#
-            'python-transmissionrpc: Transmission support' #AUR#
-            'python-rarfile: decompress plugin' #AUR#
-            'python-boto3: SNS output plugin' #AUR#
-            )
-makedepends=('python-paver'
-             'python-setuptools'
-             )
-
-source=("https://github.com/Flexget/Flexget/archive/v${pkgver}.tar.gz"
-        'flexget.service'
-        'flexget@.service'
-        "http://flexget.com/ChangeLog"
-        )
-
-changelog=ChangeLog
+depends=(
+  # documented in requirements.in
+  'python-apscheduler'
+  'python-beautifulsoup4'
+  'python-cherrypy'
+  'python-click'
+  'python-colorama'
+  'python-colorclass'
+  'python-dateutil'
+  'python-feedparser'
+  'python-flask'
+  'python-flask-compress'
+  'python-flask-cors'
+  'python-flask-login'
+  'python-flask-restful'
+  'python-flask-restx'
+  'python-guessit'
+  'python-html5lib'
+  'python-jinja'
+  'python-jsonschema'
+  'python-loguru'
+  'python-more-itertools'
+  'python-packaging'
+  'python-psutil'
+  'python-pynzb'
+  'python-pyparsing'
+  'python-pyrss2gen'
+  'python-rebulk'
+  'python-requests'
+  'python-rich'
+  'python-rpyc'
+  'python-sqlalchemy'
+  'python-terminaltables'
+  'python-yaml'
+  'python-zxcvbn'
+)
+optdepends=(
+  'python-boto3: SNS output plugin'
+  'python-rarfile: decompress plugin'
+  'python-transmissionrpc: Transmission support'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-paver'
+  'python-setuptools'
+  'python-wheel'
+)
+source=(
+  "$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/F/$_pkgname/$_pkgname-$pkgver.tar.gz"
+  'flexget.service'
+  'flexget@.service')
+sha256sums=('d4f1b76e5b0d1a59f91b6b0ffced0749c217e13aeb27eec3056d490315a11135'
+            'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
+            'aceecee5496a34c14c12ed5ad8b97197de32896f358b5aef63a84bf4a419756a')
 
 prepare() {
-  cd "${_pkgname}"-"${pkgver}"
-
-  # Don't use the requirements.txt with pinned deps
-  cp requirements.{in,txt}
+  cd "$_pkgname-$pkgver"
 
   # Remove specific versions, because they are not going to match
   # versions of Arch packages. Yes, this might break something.
-  sed -i 's/==.*//g' requirements.txt
-  sed -i 's/<=.*//g' requirements.txt
-  sed -i 's/~=.*//g' requirements.txt
-
-  # Relax loguru requirement (AUR out-of-date right now)
-  sed -i 's/loguru>=0.4.1/loguru>=0.4/g' requirements.txt
+  sed -i 's/[=<~]=.*//g' requirements.txt
 
   ## zxcvbn-python has been renamed zxcvbn
   sed -i 's/zxcvbn-python/zxcvbn/' requirements.txt
 
-  # Python distribution of progressbar v3.x.x is named progressbar2
-  sed -i 's/progressbar/progressbar2/' requirements.txt
+  # Prebuilt egg-info erroneously includes tests in final package
+  rm -rf "$_pkgname.egg-info"
+}
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  # Build wheel according to new Python packaging guidelines
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${_pkgname}"-"${pkgver}"
+  cd "$_pkgname-$pkgver"
 
-  # Cleanup a previous builds if any, since setuptools doesn't do it
-  rm -rf build
+  # Install wheel according to new Python packaging guidelines
+  # PYTHONHASHSEED is for reproducible builds
+  PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
 
-  # Python setup
-  python setup.py install --root="${pkgdir}"/ --prefix=/usr --optimize=1
-
-  # License
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+  # Symlink license instead of installing a copy
+  local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  ln -s "$_site/$_pkgname-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 
   # install systemd user unit
-  install -Dm644 ../flexget.service "${pkgdir}"/usr/lib/systemd/user/flexget.service
+  install -Dm644 "$srcdir/$pkgname"{,@}.service -t "$pkgdir/usr/lib/systemd/user/"
 }
-
-sha256sums=('7d1542a61a895d2fa9b54bdc76315c97d736d5926a872b88b782156e5ed0eff0'
-            'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
-            'aceecee5496a34c14c12ed5ad8b97197de32896f358b5aef63a84bf4a419756a'
-            'dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6')
 # vim:set ts=2 sw=2 et:
