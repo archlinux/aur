@@ -1,0 +1,17 @@
+pkgbase = multi-user
+	pkgdesc = Access control for running graphical applications as other users.
+	pkgver = 1.0
+	pkgrel = 1
+	install = multi-user.install
+	arch = any
+	license = AGPL3
+	depends = dconf
+	depends = xorg-xhost
+	source = multi-user
+	source = multi-user.desktop
+	source = multi-user.gschema.xml
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = multi-user

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Multi-user graphical authorization
+Comment=Authorize other users to run graphical applications in this session
+GenericName=xinitrc target
+Exec=/usr/lib/multi-user/multi-user
+X-GNOME-Autostart-enabled=true

@@ -1,0 +1,12 @@
+post_upgrade() {
+  xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+}
+
+post_remove() {
+  xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+}
+
+post_install() {
+  /usr/bin/glib-compile-schemas "/usr/share/glib-2.0/schemas/"
+  xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+}

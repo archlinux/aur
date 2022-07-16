@@ -1,0 +1,22 @@
+#!/usr/bin/zsh
+
+# user
+_auth() {
+  xhost +SI:localuser:"${1}"
+}
+
+declare -a _xauth_users
+_xauth_users=("dev"
+              "porn"
+              "safe")
+
+_auth() {
+  local _user
+  local _users
+  _users=$(dconf read /org/archlinux/aur/multiuser/allowed-users | tr "'" '"' | jq '.[]')
+  for _user in "${_users[@]}"; do
+    _auth "${_user}"
+  done
+}
+
+_auth
