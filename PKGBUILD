@@ -7,7 +7,7 @@ pkgdesc='Alternative NVAPI implementation on top of DXVK. '
 arch=('x86_64')
 url="https://github.com/jp7677/dxvk-nvapi"
 license=('MIT')
-depends=('vulkan-icd-loader' 'wine>=4.0rc1' 'lib32-vulkan-icd-loader' 'bash')
+depends=('vulkan-icd-loader' 'wine>=4.0rc1' 'lib32-vulkan-icd-loader' 'dxvk' 'bash')
 makedepends=('ninja' 'meson>=0.43' 'glslang' 'git' 'mingw-w64-gcc')
 options=(!lto)
 source=(
