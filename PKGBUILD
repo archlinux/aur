@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=release-plz-git
-pkgver=0.2.9.r0.gdc057be
+pkgver=0.2.19.r0.g8f2ff0e
 pkgrel=1
 pkgdesc="Release Rust packages without using the command line (git)"
 arch=('x86_64')
@@ -18,8 +18,7 @@ options=('!lto')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --tags \
-    $(git tag | grep "${pkgname%-git}-v" | tail -n 1) | sed 's/^.*v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --match "${pkgname%-git}-v*" | sed 's/^.*v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
