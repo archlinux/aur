@@ -1,4 +1,0 @@
-post_install() {
-  mkdir -p var/db/sshguard
-  echo "-- For more information, see https://wiki.archlinux.org/index.php/Sshguard"
-}

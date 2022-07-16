@@ -1,4 +1,5 @@
-/*.pkg.tar.xz
-/sshguard
-/pkg
-/src
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!sshguard.*
