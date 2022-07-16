@@ -1,3 +1,2 @@
 d /var/lib/librespeed 0750 librespeed librespeed
 f /etc/librespeed/settings.toml 0640 root librespeed
-f /var/lib/librespeed/speedtest.db 0640 librespeed librespeed
