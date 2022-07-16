@@ -19,6 +19,13 @@ sha512sums=('ed3a384ea5ae9b4184a985acf38f3aac009e706537209abf8dd86c2d8d749fff6fe
 
 _sourcedirectory="$_projectname-$pkgver"
 
+prepare() {
+	cd "$srcdir/$_sourcedirectory/"
+
+	# Replace topkg watermarks
+	find . -type f -exec sed -i "s/%%\(VERSION\|VERSION_NUM\)%%/$pkgver/g" {} +
+}
+
 build() {
 	cd "$srcdir/$_sourcedirectory/"
 	ocaml 'pkg/pkg.ml' build
