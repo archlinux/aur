@@ -1,5 +1,5 @@
 pkgbase = lamp
-	pkgdesc = A Linux backlight utility inspired by acpibacklight
+	pkgdesc = A Linux backlight utility written in Rust
 	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://codeberg.org/crapStone/lamp
