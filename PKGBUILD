@@ -3,15 +3,14 @@
 # Oleksandr Natalenko <oleksandr@natalenko.name>
 
 pkgname=uksmd-git
-_repouser=post-factum
 _reponame=uksmd
-pkgver=0.0.0.r32.8368d7e
+pkgver=0.0.0.r37.f10f38e
 pkgrel=1
 pkgdesc="Userspace KSM helper daemon (git version)"
 url="https://codeberg.org/pf-kernel/uksmd"
 license=(GPL3)
 arch=(x86_64)
-depends=(UKSMD-BUILTIN systemd procps-ng libcap-ng)
+depends=(systemd procps-ng libcap-ng)
 makedepends=(meson)
 makedepends+=(git)
 source=(${_reponame}::git+${url}.git)
@@ -33,6 +32,7 @@ build() {
 }
 
 package() {
+	depends+=(UKSMD-BUILTIN)
 	cd "${_reponame}"
 
 	meson install -C build --destdir "${pkgdir}"
