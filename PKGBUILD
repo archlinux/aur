@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-wandb-git
-pkgver=0.13.0rc5.dev2
+pkgver=0.13.0rc6.dev1
 pkgrel=1
 pkgdesc='Weights and Biases - organize and analyze machine learning experiments'
 arch=('any')
