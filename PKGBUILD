@@ -1,6 +1,6 @@
 # Maintainer: Arisa Snowbell <goddess@chizuru.space>
 pkgname=wik
-pkgver=r2.7532e70
+pkgver=r6.62f2ead
 pkgrel=1
 pkgdesc="A command line program for getting Wikipedia summaries easily."
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://gitlab.com/Arisa_Snowbell/wik"
 license=('GPL3')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
-_commit=7532e709716d891a58f304cf46085a107ee759ab
+_commit=62f2ead1d5e5ee70de856953e1e34867b39d3382
 source=("git+https://gitlab.com/Arisa_Snowbell/wik.git#commit=$_commit?signed")
 sha256sums=('SKIP')
 validpgpkeys=('E2C998FA1F7B651E45B20CDC56AA2C2801F619D7' '93F4694364C3E688BA33E3E41CBE6B7A2B054E06' '4F9AC746631BB0BC52FAE73D3D526B3B3252C69E')
