@@ -5,18 +5,18 @@
 # Contributor: serp <serp256 at gmail dot com>
 _projectname='lwt'
 pkgname="ocaml-$_projectname"
-pkgver='5.5.0'
-pkgrel='2'
+pkgver='5.6.1'
+pkgrel='1'
 pkgdesc='A library for cooperative threads in OCaml'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocsigen/$_projectname"
 license=('MIT')
-depends=('libev' 'dune>=1.8.0' 'ocaml>=4.08.0' 'ocaml-luv' 'ocaml-mmap>=1.1.0' 'ocaml-ocplib-endian' 'ocaml-ppxlib>=0.16.0' 'ocaml-react>=1.0.0' 'ocaml-result' 'ocaml-seq')
+depends=('libev' 'dune>=1.8.0' 'ocaml>=4.08.0' 'ocaml-luv' 'ocaml-ocplib-endian' 'ocaml-ppxlib>=0.16.0' 'ocaml-react>=1.0.0')
 makedepends=('cppo>=1.1.0')
 checkdepends=('ocaml-ppx_let')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('8951b94555e930634375816d71815b9d85daad6ffb7dab24864661504d11be26575ab0b237196c54693efa372a9b69cdc1d5068a20a250dc0bbb4a3c03c5fda1')
+sha512sums=('698875bd3bfcd5baa47eb48e412f442d289f9972421321541860ebe110b9af1949c3fbc253768495726ec547fe4ba25483cd97ff39bc668496fba95b2ed9edd8')
 
 _sourcedirectory="$_projectname-$pkgver"
 
