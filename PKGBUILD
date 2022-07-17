@@ -4,7 +4,7 @@
 
 pkgname=libafterimage
 pkgver=1.20
-pkgrel=5
+pkgrel=6
 pkgdesc="Generic image manipulation library"
 url="http://www.afterstep.org/afterimage"
 license=('GPL')
@@ -45,7 +45,7 @@ build() {
   # don't run ldconfig
   sed -i -e 's/`uname`/"hack"/g' Makefile
 
-  make
+  make AR="ar cq"
 }
 
 package() {
