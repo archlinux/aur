@@ -12,7 +12,8 @@ source=(
 package() {
 	install -d "${pkgdir}/usr/bin/"
 	install -d "${pkgdir}/usr/share/applications/"
-	install -Dm755 "${srcdir}/playinmpv" "${pkgdir}/usr/bin/playinmpv"
+	install -Dm755 "${srcdir}/playinmpv" "${pkgdir}/usr/bin/"
+	install -Dm755 "${srcdir}/playinmpv.desktop" "${pkgdir}/usr/share/applications/"
 }
 
 sha256sums=('79eadc9c8c3076d487babd21ef74f087515dca9a94f675a75957b29ceff0ac59'
