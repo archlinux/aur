@@ -2,7 +2,7 @@
 # Contributor: Jan de Groot < jgc at archlinux dot org >
 
 pkgname=xf86-video-mga
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="X.org mga video driver"
 arch=('x86_64')

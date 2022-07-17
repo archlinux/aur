@@ -1,6 +1,6 @@
 pkgbase = xf86-video-mga
 	pkgdesc = X.org mga video driver
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/xorg/driver/xf86-video-mga
 	arch = x86_64
@@ -18,4 +18,3 @@ pkgbase = xf86-video-mga
 	sha256sums = SKIP
 
 pkgname = xf86-video-mga
-
