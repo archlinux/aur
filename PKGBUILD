@@ -2,7 +2,8 @@
 # Maintainer: Benjamin Radel <aur@radel.tk>
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=libasdcp-cth
-pkgver=0.1.6
+_commit=a276ed1c5a43a92dd2b9ca93072ce8d024329e82
+pkgver=0.1.6.r18.ga276ed1
 pkgrel=1
 pkgdesc="open source implementation of SMPTE and the MXF Interop Sound & Picture Track File format."
 arch=('i686' 'x86_64')
@@ -10,23 +11,24 @@ url="https://carlh.net/asdcplib"
 license=('GPL')
 depends=('libxml++2.6' 'boost-libs>=1.72.0' )
 makedepends=('git' 'python' 'pkg-config' 'boost')
-source=("${pkgname}-${pkgver}::git+git://git.carlh.net/git/asdcplib.git#tag=v${pkgver}")
+source=("${pkgname}::git+git://git.carlh.net/git/asdcplib.git#commit=${_commit}")
 sha256sums=('SKIP')
 conflicts=('asdcplib')
 provides=('libasdcp-cth')
 
-prepare() {
-    cd ${pkgname}-${pkgver}
-    python waf configure --prefix=/usr
+pkgver() {
+    cd "$pkgname"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
+    python waf configure --prefix=/usr
     python waf build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
   python waf install --destdir=$pkgdir
   cd "${pkgdir}"
   if [ -d usr/lib64  ]
