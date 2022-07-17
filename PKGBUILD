@@ -2,7 +2,7 @@
 # Contributor: Markus Näther <naether.markus@gmail.com>
 pkgname=rocblas
 pkgver=5.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Next generation BLAS implementation for ROCm platform'
 arch=('x86_64')
 url='https://rocblas.readthedocs.io/en/latest'
@@ -35,7 +35,7 @@ build() {
                     -DTensile_LIBRARY_FORMAT=yaml
                     -DTensile_CPU_THREADS="$_tensile_threads"
                     -DTensile_CODE_OBJECT_VERSION=V3
-                    -Dpython=python
+                    -DCMAKE_TOOLCHAIN_FILE=toolchain-linux.cmake
                     -DBUILD_TESTING=OFF)
   if [[ -n "$AMDGPU_TARGETS" ]]; then
       cmake_args+=(-DAMDGPU_TARGETS="$AMDGPU_TARGETS")
