@@ -1,0 +1,23 @@
+pkgbase = rtl-git
+	pkgdesc = RTL is a full function, device agnostic, web user interface to help manage lightning node operations.
+	pkgver = v0.12.3.r0.f84719e2
+	pkgrel = 19
+	url = https://www.ridethelightning.info/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	depends = nodejs
+	optdepends = lnd: Lightning Network Daemon
+	provides = rtl
+	conflicts = rtl
+	source = RTL::git+https://github.com/Ride-The-Lightning/RTL.git#branch=master
+	source = RTL.service
+	source = Sample-RTL-Config.json
+	source = Use-RTL_LOG_PATH-for-logfiles.patch
+	sha256sums = SKIP
+	sha256sums = cabf574f045a316a36679f1f9afe2f2ccf244b9ff75a452f873ef72b392462ea
+	sha256sums = 979acec0c296dc726a1ae32cfb69d0908c6348443cd55eae4bcbd3fa57868d6a
+	sha256sums = d7ba77f211043a63c3dca42397731ee10af029fde0232fe88e7e107d4c3ba065
+
+pkgname = rtl-git

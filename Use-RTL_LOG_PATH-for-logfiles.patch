@@ -1,0 +1,55 @@
+From a0369146116a2dc24eeb11dcebc5cda5df0e2c21 Mon Sep 17 00:00:00 2001
+From: Joe Pentland <redacted@example.com>
+Date: Wed, 20 Jul 2022 21:59:24 +0200
+Subject: [PATCH] config.ts: Use RTL_LOG_PATH for logfiles
+
+---
+ backend/utils/config.js | 3 ++-
+ server/utils/config.ts  | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/backend/utils/config.js b/backend/utils/config.js
+index d06d40f9..d226153f 100644
+--- a/backend/utils/config.js
++++ b/backend/utils/config.js
+@@ -264,7 +264,7 @@ export class ConfigService {
+                     catch (err) {
+                         this.logger.log({ selectedNode: this.common.initSelectedNode, level: 'ERROR', fileName: 'Config', msg: 'Something went wrong while creating the backup directory: \n' + err });
+                     }
+-                    this.common.nodes[idx].log_file = this.common.rtl_conf_file_path + '/logs/RTL-Node-' + node.index + '.log';
++                    this.common.nodes[idx].log_file = this.common.rtl_log_file_path + '/RTL-Node-' + node.index + '.log';
+                     this.logger.log({ selectedNode: this.common.initSelectedNode, level: 'INFO', fileName: 'Config', msg: 'Node Config: ' + JSON.stringify(this.common.nodes[idx]) });
+                     const log_file = this.common.nodes[idx].log_file;
+                     if (fs.existsSync(log_file)) {
+@@ -330,6 +330,7 @@ export class ConfigService {
+         this.setServerConfiguration = () => {
+             try {
+                 this.common.rtl_conf_file_path = (process.env.RTL_CONFIG_PATH) ? process.env.RTL_CONFIG_PATH : join(this.directoryName, '../..');
++                this.common.rtl_log_file_path = (process.env.RTL_LOG_PATH) ? process.env.RTL_LOG_PATH : join(this.common.rtl_conf_file_path, "logs");
+                 const confFileFullPath = this.common.rtl_conf_file_path + sep + 'RTL-Config.json';
+                 if (!fs.existsSync(confFileFullPath)) {
+                     fs.writeFileSync(confFileFullPath, JSON.stringify(this.setDefaultConfig()));
+diff --git a/server/utils/config.ts b/server/utils/config.ts
+index fe0d3f2b..a5ee7af6 100644
+--- a/server/utils/config.ts
++++ b/server/utils/config.ts
+@@ -246,7 +246,7 @@ export class ConfigService {
+         } catch (err) {
+           this.logger.log({ selectedNode: this.common.initSelectedNode, level: 'ERROR', fileName: 'Config', msg: 'Something went wrong while creating the backup directory: \n' + err });
+         }
+-        this.common.nodes[idx].log_file = this.common.rtl_conf_file_path + '/logs/RTL-Node-' + node.index + '.log';
++        this.common.nodes[idx].log_file = this.common.rtl_log_file_path + '/RTL-Node-' + node.index + '.log';
+         this.logger.log({ selectedNode: this.common.initSelectedNode, level: 'INFO', fileName: 'Config', msg: 'Node Config: ' + JSON.stringify(this.common.nodes[idx]) });
+         const log_file = this.common.nodes[idx].log_file;
+         if (fs.existsSync(log_file)) {
+@@ -308,6 +308,7 @@ export class ConfigService {
+   public setServerConfiguration = () => {
+     try {
+       this.common.rtl_conf_file_path = (process.env.RTL_CONFIG_PATH) ? process.env.RTL_CONFIG_PATH : join(this.directoryName, '../..');
++      this.common.rtl_log_file_path = (process.env.RTL_LOG_PATH) ? process.env.RTL_LOG_PATH : join(this.common.rtl_conf_file_path, "log");
+       const confFileFullPath = this.common.rtl_conf_file_path + sep + 'RTL-Config.json';
+       if (!fs.existsSync(confFileFullPath)) {
+         fs.writeFileSync(confFileFullPath, JSON.stringify(this.setDefaultConfig()));
+-- 
+2.37.1
+

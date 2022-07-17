@@ -1,0 +1,34 @@
+{
+  "port": "3000",
+  "defaultNodeIndex": 1,
+  "SSO": {
+    "rtlSSO": 0,
+    "rtlCookiePath": "",
+    "logoutRedirectLink": ""
+  },
+  "nodes": [
+    {
+      "index": 1,
+      "lnNode": "Node 1",
+      "lnImplementation": "LND",
+      "Authentication": {
+        "macaroonPath": "/var/lib/lnd/data/chain/bitcoin/testnet",
+        "configPath": "/etc/lnd/lnd.conf",
+        "swapMacaroonPath": "/var/lib/loop/mainnet",
+        "boltzMacaroonPath": "/var/lib/boltz/mainnet"
+      },
+      "Settings": {
+        "userPersona": "MERCHANT",
+        "themeMode": "DAY",
+        "themeColor": "PURPLE",
+        "channelBackupPath": "/var/lib/lnd/backup/node-1",
+        "logLevel": "ERROR",
+        "lnServerUrl": "https://127.0.0.1:8080",
+        "swapServerUrl": "https://127.0.0.1:8081",
+        "boltzServerUrl": "https://127.0.0.1:9003",
+        "fiatConversion": false
+      }
+    }
+  ],
+  "multiPass": "secret"
+}
