@@ -10,6 +10,7 @@ _gitname=R-Darktable
 pkgver=3.9.0.r1643.g60bbf83ac
 pkgrel=1
 pkgdesc="A camera raw editor and asset manager, based on the \"rationalised\" R&Darktable fork from Aurélien Pierre."
+pkgdesc="Aurélien Pierre's R&Darktable fork of the camera raw editor/asset manager"
 arch=('i686' 'x86_64')
 url=https://github.com/aurelienpierre/R-Darktable/blob/master/README.md
 license=('GPL3')
