@@ -1,7 +1,7 @@
-# Maintainer: Aditya Mishra <youremail@domain.com>
+# Maintainer: Aditya Mishra <https://github.com/pegvin/goxel2/issues>
 pkgname=goxel2-git
 pkgver=0.11.1
-pkgrel=1 # Update if you changed something but that is so minor change you don't want to change the version
+pkgrel=2 # Update if you changed something but that is so minor change you don't want to change the version
 pkgdesc="a cross-platform 3d voxel art editor"
 arch=('i686' 'x86_64')
 url="https://pegvin.github.io/goxel2"
@@ -11,11 +11,6 @@ makedepends=(git make tar curl scons pkg-config)
 optdepends=()
 provides=('goxel2')
 conflicts=('goxel2')
-# source=(
-# 	"git+https://github.com/pegvin/goxel2.git"
-# 	"goxel2.desktop"
-# )
-# md5sums=('SKIP' 'SKIP')
 
 # Name of the directory the cloned repository will be in.
 _gitname=goxel2
