@@ -1,6 +1,6 @@
 pkgbase = swhkd-bin
 	pkgdesc = A display server independent hotkey daemon inspired by sxhkd
-	pkgver = 1.1.7
+	pkgver = 1.2.0
 	pkgrel = 2
 	url = https://github.com/waycrate/swhkd
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = swhkd-bin
 	provides = swhkd
 	conflicts = swhkd-git
 	conflicts = swhkd-musl-git
-	source = swhkd-bin-1.1.7.zip::https://github.com/waycrate/swhkd/releases/download/1.1.7/glibc-x86_64-1.1.7.zip
-	source = https://raw.githubusercontent.com/waycrate/swhkd/fb52e9f2a34c9f1c1f1f37a7ecc37493019a9e61/com.github.swhkd.pkexec.policy
-	sha256sums = 2b293f6ee8486d5ab12f443fc7fef1b16a0891d6ae87f0f0138783a0182ad400
+	source = swhkd-bin-1.2.0.zip::https://github.com/waycrate/swhkd/releases/download/1.2.0/glibc-x86_64-1.2.0.zip
+	source = https://raw.githubusercontent.com/waycrate/swhkd/19db3259a5f24e3c4395bbfeb3cfad8709d14f18/com.github.swhkd.pkexec.policy
+	sha256sums = 6a53e359754971d041f759efb64e1b12c495158f8ea6d36ed9a49c45cc35b15f
 	sha256sums = 3eee83632e7a8c2fb9d1fb7748af0d49739f9585df0e5d4f8d0249ef4594ec47
 
 pkgname = swhkd-bin
