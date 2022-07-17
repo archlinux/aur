@@ -9,6 +9,7 @@ post_install() {
 
     chown -R emqx:emqx /var/lib/emqx
     chown -R emqx:emqx /var/log/emqx
+    chown -R emqx:emqx /usr/lib/emqx
     systemctl daemon-reload
 }
 
@@ -23,6 +24,7 @@ post_install() {
 post_upgrade() {
     chown -R emqx:emqx /var/lib/emqx
     chown -R emqx:emqx /var/log/emqx
+    chown -R emqx:emqx /usr/lib/emqx
     systemctl daemon-reload
 }
 

@@ -1,6 +1,6 @@
 pkgbase = emqx-git
 	pkgdesc = EMQX, a distributed, massively scalable, highly extensible MQTT message broker.
-	pkgver = 5.0.2
+	pkgver = 5.0.3.45
 	pkgrel = 1
 	url = https://github.com/emqx/emqx
 	install = emqx.install
