@@ -1,0 +1,8 @@
+*.tar.zst
+delta-limiter-lv2
+pkg
+src
+
+# emacs files
+.\#*
+\#*\#

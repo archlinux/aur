@@ -1,0 +1,17 @@
+pkgbase = delta-limiter-lv2-git
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://github.com/hannesbraun/delta-limiter
+	arch = i686
+	arch = x86_64
+	groups = lv2-plugins
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	provides = delta-limiter-lv2-git
+	conflicts = delta-limiter
+	source = delta-limiter-lv2::git+https://github.com/hannesbraun/delta-limiter
+	md5sums = SKIP
+
+pkgname = delta-limiter-lv2-git
