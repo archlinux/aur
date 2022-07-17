@@ -1,9 +1,9 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=nitch
-pkgver=0.1.4
-_commit=a18ed4d3e88f2a2790503faad7f639aae0ab5b7d
-pkgrel=2
+pkgver=0.1.5
+_commit=abf145c9366c9cda43aeb6d28e6fc944e383fadc
+pkgrel=1
 pkgdesc="Incredibly fast system fetch written in nim"
 arch=(x86_64)
 url=https://github.com/unxsh/nitch
