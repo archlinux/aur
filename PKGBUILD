@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=slade-git
-pkgver=3.2.0+23+g7bcd1153
+pkgver=3.2.1+19+g4364af26
 pkgrel=1
 pkgdesc='SLADE3 Doom editor (git version)'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ depends=('bzip2'
          'mpg123'
          'sfml>=2.5'
          'webkit2gtk'
-         'wxgtk3>=3.0'
+         'wxwidgets-gtk3>=3.2'
          'zlib')
 makedepends=('cmake'
              'git'
@@ -40,7 +40,6 @@ build() {
     export CCACHE_SLOPPINESS=pch_defines,time_macros
     cmake -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX=/usr \
-          -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
           .
     make
 }

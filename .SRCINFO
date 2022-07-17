@@ -1,6 +1,6 @@
 pkgbase = slade-git
 	pkgdesc = SLADE3 Doom editor (git version)
-	pkgver = 3.2.0+23+g7bcd1153
+	pkgver = 3.2.1+19+g4364af26
 	pkgrel = 1
 	url = http://slade.mancubus.net/
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = slade-git
 	depends = mpg123
 	depends = sfml>=2.5
 	depends = webkit2gtk
-	depends = wxgtk3>=3.0
+	depends = wxwidgets-gtk3>=3.2
 	depends = zlib
 	provides = slade
 	conflicts = slade
