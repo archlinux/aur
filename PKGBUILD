@@ -10,9 +10,9 @@ license=('MIT')
 makedepends=('curl' 'grep' 'sed' 'unzip')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-sha256sums=('7b2e1bed49d5f8f01520589ae35f53e4a9f9caa364c2c159b8aa0b079fbab10b'
+sha256sums=('872621edb8ef1844d843f62645d90fbfd10f2fd66e4cbc99f43fb02bc756e6ad'
             'a5308c4e51268229a039ec4ec9a251a4cdb89d9380383e6e13aeba64a74f19ad')
-sha256sums_x86_64=('89eba56d735b6063654b2498763e107bd9e9265b810ae4b372573ec566db584b')
+sha256sums_x86_64=('9c99d3bfd4e7150b055821277636a896fd704b9761e26a20804d171aad90a650')
 sha256sums_armv7h=('9b653952e95ab89e7d0add5bc36608495f31e549572eba70e67063faf4aa873a')
 sha256sums_aarch64=('e6ca0dd8de3f1d74117c28f94e3c0bf10423ba34684eb5cc41b2fcbfa9dfcb8c')
 source=(
