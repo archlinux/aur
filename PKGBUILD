@@ -7,7 +7,7 @@
 pkgbase=yozo-office
 pkgname=('yozo-office' 'yozo-office-fonts' 'yozo-office-templates')
 pkgver=8.0.1331.101ZH.S1
-pkgrel=4
+pkgrel=5
 pkgdesc="Yozo Office 2019 - An M$ Office compatible office suite"
 url="https://www.yozosoft.com/product-officelinux.html"
 options=('!strip')
@@ -20,20 +20,18 @@ _info() { echo -e "[\e[96m$*\e[0m]"; }
 
 prepare() {
     cd "${srcdir}"
-    _info "Decompressing data.tar.xz ..."
+    _info "Extracting data.tar.xz ..."
     tar -xvpf data.tar.xz -C "${srcdir}"
 
     _info "Fixing directory permissions ..."
     find "${srcdir}" -type d -exec chmod -v 755 {} +
 
     _info "Removing unnecessary files ..."
-    rm -rv "${srcdir}"/etc/xdg
-    rm -rv "${srcdir}"/etc/skel
+    rm -rv "${srcdir}"/etc/{skel,xdg,yozoXpack}
     rm -rv "${srcdir}"/opt/Yozosoft/Yozo_Office/Upgrade
     rm -rv "${srcdir}"/opt/Yozosoft/Yozo_Office/uninstall
     rm -rv "${srcdir}"/usr/lib64
     rm -rv "${srcdir}"/usr/share/applications/yozo-uninstall.desktop
-    rm -rv "${srcdir}"/etc/yozoXpack
 }
 package_yozo-office() {
     depends=('gtk2' 'libxml2' 'hicolor-icon-theme')
@@ -47,30 +45,13 @@ package_yozo-office() {
     _info "Separating built-in fonts and templates ..."
     rm -rv "${pkgdir}"/usr/share/fonts
     rm -rv "${pkgdir}"/opt/Yozosoft/Yozo_Office/Templates
-    
-    # Redirect Java binary
-    # rm -rf "${pkgdir}"/opt/Yozosoft/Yozo_Office/Jre/bin
-    # ln -sf /usr/lib/jvm/java-8-openjdk/jre/bin "${pkgdir}"/opt/Yozosoft/Yozo_Office/Jre/bin
-    # cd $pkgdir/opt/Yozosoft/Yozo_Office/Jre/lib
-    # for j in *; do
-    #    if [ "$j" != "ext" ]; then
-    #        rm -rf $j
-    #    fi
-    # done
 
-    # Redirect VLC lib
-    #mkdir -p "${pkgdir}"/usr/lib/Yozo_Office/
-    #mv "${pkgdir}"/opt/Yozosoft/Yozo_Office/Lib/* "${pkgdir}"/usr/lib/Yozo_Office
-    #rm -rf "${pkgdir}"/opt/Yozosoft/Yozo_Office/Lib/media/vlc
-    #ln -sf /usr/lib/vlc "${pkgdir}"/opt/Yozosoft/Yozo_Office/Lib/media/vlc
+    _info "Fixing permissions of binaries in /usr/bin ..."
+    find "${pkgdir}"/usr/bin -type f -exec chmod -v 755 {} +
     
     _info "Installing licenses of thirdparties ..."
     install -Dvm644 "${pkgdir}"/opt/Yozosoft/Yozo_Office/thirdpartylicensereadme.txt \
         "${pkgdir}"/usr/share/licenses/${pkgname}/thirdpartylicensereadme.txt
-    
-#    targetP="${pkgdir}/opt/Yozosoft/Yozo_Office"
-#    unpackP="${targetP}/Jre/bin/unpack200"
-#    libP="${targetP}/Jre/lib"
 }
 
 package_yozo-office-fonts() {

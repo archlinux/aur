@@ -1,7 +1,7 @@
 pkgbase = yozo-office
 	pkgdesc = Yozo Office 2019 - An M$ Office compatible office suite
 	pkgver = 8.0.1331.101ZH.S1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.yozosoft.com/product-officelinux.html
 	arch = x86_64
 	license = custom: yozo
