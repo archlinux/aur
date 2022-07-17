@@ -1,6 +1,6 @@
 # Maintainer: Johannes Arnold <johannesarnold@stud.uni-hannover.de>
 pkgname=xfwm4-rounded-corners
-pkgver=4.14.0
+pkgver=4.16.1
 pkgrel=1
 epoch=
 pkgdesc="Patch for Xfwm4 that allows drawing windows with rounded corners"
@@ -20,16 +20,20 @@ options=()
 install=
 changelog=
 source=('git+https://github.com/xfce-mirror/xfwm4.git'
-        'git+https://github.com/wsdfhjxc/xfwm-rounded-corners-patch.git')
+        'git+https://github.com/samueldy/xfce-patches.git')
 noextract=()
 md5sums=('SKIP'
          'SKIP')
 validpgpkeys=()
 
 prepare() {
+	cd "$srcdir/xfce-patches"
+	git checkout "rounded-corners-4.16.1"
+
 	cd "$srcdir/xfwm4"
 	git checkout "xfwm4-$pkgver"
-	git apply "$srcdir/xfwm-rounded-corners-patch/xfwm-$pkgver-rounded-corners.patch"
+
+	git apply "$srcdir/xfce-patches/xfwm4/xfwm4-$pkgver-rounded-corners.patch"
 }
 
 build() {
