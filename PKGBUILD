@@ -19,7 +19,7 @@ optdepends=(
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("$pkgname-$pkgver-$pkgrel.deb::https://get.popsql.com/download/debian")
-sha512sums_x86_64=('c473683bf5127b4ddd3d791d2275083ecceee7a1a92fd9a35f449327e48872989580f4cb82a5c4900c715ac3795839936d1d348655e79f5438af4af8f3d17ba3')
+sha512sums_x86_64=('3cf2fb5df52b975b581ad06b75053314c11c9cd2a716c92b5efb5f126cf19647ac2edc69a6b0e08c143e5a94b4d0da55adb9199fcdf2e672afceae3896e71dd0')
 
 package() {
   # Extract package data
