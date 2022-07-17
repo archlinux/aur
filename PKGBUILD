@@ -6,7 +6,7 @@
 pkgname=vmd-src
 _pkgname=vmd
 pkgver=1.9.4a57
-pkgrel=1
+pkgrel=2
 pkgdesc="Visual Molecular Dynamics"
 url="http://www.ks.uiuc.edu/Research/vmd/"
 license=('custom')
@@ -18,6 +18,7 @@ optdepends=('openbabel: additional file formats support'
             'ospray: accelerated ray tracing for Intel CPUs'
             'optix: accelerated ray tracing for NVIDIA GPUs'
             'cuda: NVIDIA CUDA GPU acceleration functions')
+provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-bin")
 # You have to download the package from the VMD url
 # and put it in the PKGBUILD folder.

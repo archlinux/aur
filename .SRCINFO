@@ -1,7 +1,7 @@
 pkgbase = vmd-src
 	pkgdesc = Visual Molecular Dynamics
 	pkgver = 1.9.4a57
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ks.uiuc.edu/Research/vmd/
 	arch = x86_64
 	arch = aarch64
@@ -20,6 +20,7 @@ pkgbase = vmd-src
 	optdepends = ospray: accelerated ray tracing for Intel CPUs
 	optdepends = optix: accelerated ray tracing for NVIDIA GPUs
 	optdepends = cuda: NVIDIA CUDA GPU acceleration functions
+	provides = vmd
 	conflicts = vmd
 	conflicts = vmd-bin
 	source = local://vmd-1.9.4a57.src.tar.gz
