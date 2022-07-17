@@ -1,6 +1,6 @@
 pkgbase = termtyper-git
 	pkgdesc = A TUI application written in python for typing!
-	pkgver = 1.0.1.r18.g3c4f42b
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/kraanzu/termtyper
 	arch = any
