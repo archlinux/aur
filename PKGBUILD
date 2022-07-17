@@ -3,7 +3,7 @@
 pkgbase=sudo-mice-bin
 pkgname=sudo-mice-bin
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A pixel graphics CLI GUI two players game."
 arch=('x86_64')
 url="https://github.com/Elagoht/SudoMice"
