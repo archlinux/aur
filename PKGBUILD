@@ -11,7 +11,7 @@
 pkgbase=networkmanager-git
 _gitname=NetworkManager
 pkgname=(networkmanager-git libnm-git)
-pkgver=1.39.7.r30600.g2dd76e6b98
+pkgver=1.39.10.r30678.g5e4632f021
 pkgrel=1
 pkgdesc="Network Management daemon"
 arch=(i686 x86_64)
