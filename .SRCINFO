@@ -1,7 +1,7 @@
 pkgbase = ddnswolf-git
 	pkgdesc = Dynamic DNS updater
-	pkgver = 3
-	pkgrel = 1
+	pkgver = 1
+	pkgrel = 2
 	url = https://github.com/Wolfizen/DDNSWolf
 	arch = any
 	license = GPL3
@@ -10,12 +10,12 @@ pkgbase = ddnswolf-git
 	makedepends = python-setuptools
 	depends = python>=3.9
 	depends = python-cloudflare
-	depends = python-dnspython-git>=v2.0
+	depends = python-dnspython>=2.0
 	depends = python-netifaces
 	depends = python-pyhocon
 	depends = python-requests
 	backup = etc/ddnswolf.conf
-	source = git://github.com/Wolfizen/DDNSWolf.git
+	source = git+https://github.com/Wolfizen/DDNSWolf.git
 	sha256sums = SKIP
 
 pkgname = ddnswolf-git
