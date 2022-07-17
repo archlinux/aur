@@ -3,7 +3,7 @@
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=dcpomatic
 pkgver=2.16.18
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, open-source program to generate Digital Cinema Packages (DCPs) from videos or images"
 arch=('i686' 'x86_64')
 url="https://dcpomatic.com/"
@@ -32,7 +32,7 @@ prepare() {
    cd "${srcdir}/${pkgname}-${pkgver}"
    # Ugly fix for some error in dcpomatic
    # should be reported to upstream
-   CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBC_ASSERTIONS}
+   CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
    python waf configure --prefix=/usr --disable-tests
    python waf build
  }
