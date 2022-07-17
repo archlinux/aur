@@ -5,7 +5,7 @@
 ## build root via __FILE__ macro
 
 pkgname=arcan
-pkgver=0.6.1pre1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='Game Engine meets a Display Server meets a Multimedia Framework'
 arch=('x86_64')
@@ -20,6 +20,7 @@ depends=('espeak-ng'
          'libvncserver'
          'lua51' # Doesn't compile against LuaJIT 2.1 due to deprecated ref API usage
          'mesa'
+         'libmupdf'
          'openal'
          'sdl'
          'sqlite'
@@ -30,7 +31,7 @@ makedepends=('cmake'
              'meson'
              'ruby')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/letoram/arcan/archive/$pkgver.tar.gz")
-sha256sums=('23fc768f006e6a19e1088451aaf95ca1e7d2b5c8e78d8e3954002ef7eba32613')
+sha256sums=('635c447c341c7b803fd13317d3027ce438e8965803943a213a8f4409352d889c')
 
 build() {
   cd "$pkgbase-$pkgver"
