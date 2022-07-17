@@ -17,4 +17,4 @@ package() {
 }
 
 sha256sums=('79eadc9c8c3076d487babd21ef74f087515dca9a94f675a75957b29ceff0ac59'
-            'c7ec7c461845bdbf3f47ee2fffee659d7bcd4a4fc9b6d6b683c91ee5bedd08de')
+            '5a8e1888332c135219ac6bad9aa0f74042cd5f367191071818593a002bfb98e2')

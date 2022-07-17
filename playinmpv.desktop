@@ -3,5 +3,5 @@ Type=Application
 Name=playinmpv
 Comment=Play Bilibili videos with MPV
 NoDisplay=true
-Exec=$BINPATH %U
+Exec=playinmpv %U
 MimeType=x-scheme-handler/mpv;
