@@ -1,7 +1,7 @@
 pkgbase = dune-common
 	pkgdesc = Build system, infrastructure and foundation classes
 	pkgver = 2.8.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://dune-project.org/modules/dune-common
 	arch = x86_64
 	license = custom:GPL2 with runtime exception
@@ -50,5 +50,6 @@ pkgname = python-dune-common
 	depends = python-portalocker
 	depends = python-numpy
 	depends = python-mpi4py
+	depends = python-setuptools
 	optdepends = python-matplotlib: for Matplotlib rendering
 	optdepends = mayavi: for 3D plotting

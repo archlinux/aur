@@ -6,7 +6,7 @@ pkgname=(${pkgbase} python-${pkgbase})
 _tarver=2.8.0
 _tar="${_tarver}/${pkgbase}-${_tarver}.tar.gz"
 pkgver=${_tarver}
-pkgrel=5
+pkgrel=6
 pkgdesc="Build system, infrastructure and foundation classes"
 arch=('x86_64')
 url="https://dune-project.org/modules/${pkgbase}"
@@ -48,7 +48,7 @@ build() {
     -DCMAKE_DISABLE_FIND_PACKAGE_PTScotch=TRUE \
     -Wno-dev
   cmake --build build-cmake --target all
-  cd "build-cmake/python"
+  cd build-cmake/python
   python setup.py build
 }
 
@@ -74,11 +74,10 @@ package_dune-common() {
 }
 
 package_python-dune-common() {
-  depends=('dune-common>=2.8.0' 'python-portalocker' 'python-numpy' 'python-mpi4py')
+  depends=('dune-common>=2.8.0' 'python-portalocker' 'python-numpy' 'python-mpi4py' 'python-setuptools')
   pkgdesc+=" (python bindings)"
   optdepends=('python-matplotlib: for Matplotlib rendering'
     'mayavi: for 3D plotting')
-  cd "build-cmake/python"
-  export PYTHONHASHSEED=0
+  cd build-cmake/python
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }
