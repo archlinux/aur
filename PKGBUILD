@@ -8,7 +8,7 @@ pkgdesc='Electronic schematic and printed circuit board (PCB) design tools'
 arch=('x86_64')
 url='http://kicad.org/'
 license=('GPL')
-depends=('wxgtk3' 'python' 'boost-libs' 'glew' 'curl' 'glm' 'ngspice' 'opencascade' 'python-wxpython')
+depends=('wxwidgets-gtk3' 'python' 'boost-libs' 'glew' 'curl' 'glm' 'ngspice' 'opencascade' 'python-wxpython')
 makedepends=('git' 'cmake' 'zlib' 'mesa' 'boost' 'swig' 'ninja' 'tar' 'gzip')
 options=('!strip')
 optdepends=(
@@ -52,10 +52,10 @@ build()
 		-DCMAKE_INSTALL_LIBDIR=/usr/lib/kicad-nightly/lib \
 		-DCMAKE_EXECUTABLE_SUFFIX=-nightly \
 		-DKICAD_USE_OCC=ON \
+		-DKICAD_USE_EGL=ON \
 		-DKICAD_SCRIPTING_WXPYTHON=ON \
 		-DKICAD_BUILD_I18N=ON \
 		-DKICAD_DATA=/usr/share/kicad-nightly \
-		-DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
 		-Wno-dev
 	ninja
 }
