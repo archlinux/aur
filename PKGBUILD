@@ -1,6 +1,6 @@
 # Maintainer: Justus Tartz <aur at jrtberlin dot de>
 pkgname=steam-boilr-gui
-pkgver=1.3.19
+pkgver=1.4.0
 pkgrel=1
 _tag="v.${pkgver}"
 _ver="v.${pkgver}"
@@ -24,13 +24,13 @@ provides=('boilr-gui')
 source=("https://github.com/PhilipK/BoilR/archive/refs/tags/${_tag}.tar.gz"
         "boilr.png"
         "boilr.desktop")
-sha256sums=("159fe72ce648f61f8c6b58a199ea9c40f2f0661727eca0acecc57b20236c3131"
+sha256sums=("9bb2dd22c6e653c2ea992605a73a4e338b884cddd6a16c699e1f2fe62f6fd6ed"
             "baab109c6311f05ddbf647aa384b42098db9308c27cb50537f99bb341930387f"
             "c8e71371c9dc39db087e79d5a32df1ee0f4dd2cf5d069e38b491c3b9812d8424")
 
 prepare() {
   cd "${srcdir}/BoilR-${_ver}"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
