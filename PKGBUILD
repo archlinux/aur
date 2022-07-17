@@ -4,16 +4,16 @@
 pkgbase=wxwidgets
 pkgname=(wxwidgets-gtk3 wxwidgets-qt5 wxwidgets-common)
 pkgver=3.2.0
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 url='https://wxwidgets.org'
 license=(custom:wxWindows)
 makedepends=(cmake gst-plugins-base glu webkit2gtk libnotify qt5-base sdl2 libmspack)
-options=(!emptydirs)
 source=(https://github.com/wxWidgets/wxWidgets/releases/download/v$pkgver/wxWidgets-$pkgver.tar.bz2
         destdir.patch)
 sha256sums=('356e9b55f1ae3d58ae1fed61478e9b754d46b820913e3bfbc971c50377c1903a'
             'cb4a7ca0d40b090d5d40d77790828a26766c6b496b3a5f5351fa30b3a6b42bd9')
+options=(debug)
 
 prepare() {
   patch -d wxWidgets-$pkgver -p1 < destdir.patch # Honor DESTDIR
@@ -32,7 +32,8 @@ build() {
     -DwxUSE_LIBPNG=sys \
     -DwxUSE_LIBTIFF=sys \
     -DwxUSE_LIBLZMA=sys \
-    -DwxUSE_LIBMSPACK=ON
+    -DwxUSE_LIBMSPACK=ON \
+    -DwxUSE_PRIVATE_FONTS=ON
   cmake --build build-gtk3
 
   cmake -B build-qt5 -S wxWidgets-$pkgver \
@@ -47,7 +48,8 @@ build() {
     -DwxUSE_LIBPNG=sys \
     -DwxUSE_LIBTIFF=sys \
     -DwxUSE_LIBLZMA=sys \
-    -DwxUSE_LIBMSPACK=ON
+    -DwxUSE_LIBMSPACK=ON \
+    -DwxUSE_PRIVATE_FONTS=ON
   cmake --build build-qt5
 }
 
