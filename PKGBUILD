@@ -34,6 +34,10 @@ build() {
  cmake --build build
 }
 
+check() {
+ ctest --test-dir build --output-on-failure
+}
+
 package() {
  DESTDIR="$pkgdir" cmake --install build
 }
