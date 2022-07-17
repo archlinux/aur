@@ -49,11 +49,11 @@ prepare() {
 
 build() {
   cd tenacity/build
-  export WX_CONFIG=/usr/bin/wx-config-gtk3
+  export WX_CONFIG=/usr/bin/wx-config
   CC=clang CXX=clang++ cmake \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DWX_CONFIG=/usr/bin/wx-config-gtk3 \
+    -DWX_CONFIG=/usr/bin/wx-config \
     audacity_use_ffmpeg:STRING=loaded \
     ..
   cmake --build .
