@@ -4,8 +4,8 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=emby-server-beta
-pkgver=4.8.0.3
-pkgrel=5
+pkgver=4.8.0.6
+pkgrel=1
 _ffmpeg_ver=2022_05_07
 _ffdetect_ver=2022_05_07
 pkgdesc='Bring together your videos, music, photos, and live television'
@@ -67,7 +67,7 @@ noextract=('license.docx'
 
 backup=('etc/conf.d/emby-server')
 install=emby-server.install
-sha256sums=('cc87aa722ee9ae196f01cecf4212a2fb14c4a78db4ed7a04698c4b71d803bbaa'
+sha256sums=('9e39f368373a02c579a08bd6038d3251efed060d143e885e9dd8cc632d213350'
             'cfa7c7dedd99990ea2b7d2e4228c53d25061caf5fce87a79ce29c4a6ffd27ff2'
             '0351d6e9118853e3aa275d62b67dce4444b3d85130b05fb889b2069f364f47ca'
             'd1a805284d8a1329f6f6e736423be747d8951c5a9600fbb79c13a6f9be7149c0'
