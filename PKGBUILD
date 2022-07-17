@@ -1,10 +1,10 @@
 _pkgname=zihap
 pkgname=zihap-git
-pkgver=1.0.r41.g7d9c46a
-pkgrel=1
+pkgver=1.0.r64.gf4c6b0f
+pkgrel=0
 pkgdesc="zihap is a Unified Messaging and Social Media Apps which combines all your messaging services and social media into one single windows."
 arch=('i686' 'x86_64')
-url="https://codeberg.org/exxxxkc/zihap"
+url="https://exxxxkc.tildepages.org/ziweb/@site/origin.htm"
 license=('custom:M/IT/X')
 depends=('gtk3' 'glib2' 'webkit2gtk' 'gcr' 'libxft' 'tomlc99-git')
 makedepends=('git')
