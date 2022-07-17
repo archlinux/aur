@@ -2,7 +2,7 @@
 
 pkgname=dict-git
 _name=dict
-pkgver=r28.5b97458
+pkgver=r29.5f1c93d
 pkgrel=1
 pkgdesc="A dictionary, for the command line."
 arch=('x86_64')
