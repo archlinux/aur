@@ -1,0 +1,14 @@
+pkgbase = vobsubocr
+	pkgdesc = Blazingly fast and accurate DVD VobSub to SRT subtitle conversion
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/elizagamedev/vobsubocr
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = clang
+	depends = tesseract
+	source = vobsubocr-0.1.0.tar.gz::https://github.com/elizagamedev/vobsubocr/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 3a147b36ed03f6323564dc3a45bd4eaa090ca75a8726d3f103803ed6723d6fdc
+
+pkgname = vobsubocr
