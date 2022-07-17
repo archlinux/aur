@@ -7,23 +7,25 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=tenacity-wxgtk3-git
-pkgver=r13926.g0665614b8
+pkgver=r13942.g91f8b4340
 pkgrel=2
 pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity - stable wxgtk3"
 arch=(i686 x86_64)
 url="https://tenacityaudio.org"
 license=(GPL2 CCPL)
 groups=(pro-audio)
-depends=(wxgtk3 libid3tag lilv portsmf suil libmad twolame vamp-plugin-sdk libsoxr
-         soundtouch portaudio portmidi lame jack sdl2)
+depends=(wxwidgets-gtk3 libid3tag lilv portsmf suil libmad twolame vamp-plugin-sdk libsoxr
+         soundtouch portaudio portmidi lame jack sdl2 glibc)
 makedepends=(git cmake clang libsoup libnotify gstreamer gst-plugins-bad-libs
-             ffmpeg4.4 nasm chrpath expat gcc-libs gdk-pixbuf2 glibc
+             ffmpeg4.4 nasm chrpath expat gcc-libs gdk-pixbuf2
              flac libogg libsndfile libvorbis ffmpeg)
 optdepends=('ffmpeg4.4: additional import/export capabilities')
 provides=(tenacity)
 conflicts=(tenacity)
-source=("git+https://git.sr.ht/~tenacity/tenacity")
-sha256sums=('SKIP')
+source=("git+https://github.com/tenacityteam/tenacity"
+        wxwidgets-gtk3-3.1.6-plus.patch)
+sha256sums=('SKIP'
+            '13cafd71700a4c8802fab3d8dc7dfbfa7a612124bfaf3dddf1bfef98ee609591')
 
 pkgver() {
   cd tenacity
@@ -41,6 +43,7 @@ prepare() {
     cd ..
   done
   cd ../..
+  patch -tp1 <../wxwidgets-gtk3-3.1.6-plus.patch
   mkdir -p build
 }
 
