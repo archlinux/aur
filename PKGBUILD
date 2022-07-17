@@ -1,9 +1,9 @@
-# Maintainer: Samuel Walladge <samuel@swalladge.id.au>
+# Maintainer: Franck Hochstaetter <dasfranck@gmx.com>
 
 pkgname=piqueserver-git
 _pkgname=piqueserver
-pkgver=v0.1.3.r534.gd0ee6456
-pkgrel=3
+pkgver="v0.1.3.r601.gb10c3819"
+pkgrel=1
 pkgdesc="an Ace of Spades 0.75 server based on PySnip"
 arch=('any')
 url="https://github.com/piqueserver/${_pkgname}"
@@ -21,19 +21,19 @@ depends=(
   'python-zope-interface'
 )
 optdepends=('python-geoip: to use the "from" command'
-            'python-crypto: ssh'
+            'python-pycryptodome: ssh'
             'python-pyasn1: ssh')
 makedepends=('git')
-source=("${pkgname}"::"git://github.com/piqueserver/${_pkgname}.git")
+source=("${pkgname}"::"git+https://github.com/piqueserver/${_pkgname}.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  cd "${pkgname}"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${pkgname}"
   python setup.py install --root="${pkgdir}" --optimize=1
 }
 
