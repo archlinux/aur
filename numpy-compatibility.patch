@@ -1,0 +1,25 @@
+diff --git a/dynd/include/numpy_interop.hpp b/dynd/include/numpy_interop.hpp
+index 8036b8f..c109407 100644
+--- a/dynd/include/numpy_interop.hpp
++++ b/dynd/include/numpy_interop.hpp
+@@ -33,7 +33,6 @@
+ #define NPY_ARRAY_NOTSWAPPED NPY_NOTSWAPPED
+ #define NPY_ARRAY_ALIGNED NPY_ALIGNED
+ #define NPY_ARRAY_WRITEABLE NPY_WRITEABLE
+-#define NPY_ARRAY_UPDATEIFCOPY NPY_UPDATEIFCOPY
+ #endif
+ 
+ #define PY_ARRAY_UNIQUE_SYMBOL pydynd_ARRAY_API
+diff --git a/dynd/src/numpy_interop.cpp b/dynd/src/numpy_interop.cpp
+index 24f445b..767ff4a 100644
+--- a/dynd/src/numpy_interop.cpp
++++ b/dynd/src/numpy_interop.cpp
+@@ -524,7 +524,7 @@ dynd::nd::array pydynd::array_from_numpy_array(PyArrayObject *obj,
+     // Get a shared pointer that tracks buffer ownership
+     PyObject *base = PyArray_BASE(obj);
+     dynd::intrusive_ptr<dynd::memory_block_data> memblock;
+-    if (base == NULL || (PyArray_FLAGS(obj) & NPY_ARRAY_UPDATEIFCOPY) != 0) {
++    if (base == NULL || (PyArray_FLAGS(obj) & NPY_ARRAY_WRITEBACKIFCOPY) != 0) {
+       Py_INCREF(obj);
+       memblock = dynd::make_external_memory_block(obj, py_decref_function);
+     }
