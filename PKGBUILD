@@ -3,7 +3,7 @@
 # Contributor: JP-Ellis <josh@jpellis.me>
 
 pkgname=miopen-hip
-pkgver=5.1.3
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="AMD's Machine Intelligence Library (HIP backend)"
 arch=('x86_64')
@@ -14,9 +14,9 @@ makedepends=('cmake' 'rocm-cmake' 'miopengemm' 'sqlite' 'boost>=1.78')
 provides=('miopen')
 conflicts=('miopen')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/rocm-$pkgver.tar.gz"
-       "https://github.com/ROCmSoftwarePlatform/MIOpen/pull/1490.patch")
-sha256sums=('510461f5c5bdbcf8dc889099d1e5960b9f84bd845a9fc9154588a9898c701c1d'
-            'SKIP')
+       "https://github.com/ROCmSoftwarePlatform/MIOpen/commit/9ae2418adf767794e9475274a4cf90e418f00a58.patch")
+sha256sums=('5fda69426e81df9f8fb6658e579176b9c4fcce3516fc8488d3cfd2b6f6f2b3b4'
+            '329970d0f9b63b1d814a7256def2b2167ce5cb0e56a6ea037c9c40b225b8cd9f')
 _dirname="$(basename "$url")-$(basename "${source[0]}" .tar.gz)"
 
 prepare() {
