@@ -2,7 +2,7 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=sass
-_cranver=0.4.1
+_cranver=0.4.2
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -28,8 +28,8 @@ optdepends=(
     r-curl
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
-        "R-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT")
-sha256sums=('850fcb6bd49085d5afd25ac18da0744234385baf1f13d8c0a320f4da2de608bb'
+        "CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT")
+sha256sums=('b409049d0de9fae853f46c19d353226c8e9244ce847bdada033d8669fc2c9646'
             'e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b')
 
 prepare() {
@@ -55,6 +55,6 @@ package() {
 
   cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
 
-  install -Dm644 R-MIT-TEMPLATE "${pkgdir}/usr/share/licenses/${pkgname}/MIT"
+  install -Dm644 CRAN-MIT-TEMPLATE "${pkgdir}/usr/share/licenses/${pkgname}/MIT"
   install -Dm644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
