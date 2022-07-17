@@ -3,7 +3,7 @@
 # Contributor: tioguda <guda.flavio@gmail.com>
 pkgname=slimbookbattery
 pkgver=4.0.5beta
-pkgrel=3
+pkgrel=4
 pkgdesc="Battery optimization application for portable devices."
 arch=('x86_64')
 url="https://github.com/slimbook/slimbookbattery"
@@ -36,9 +36,6 @@ package() {
   install -d "$pkgdir/usr/lib/systemd/system"
   ln -s "/usr/share/$pkgname/src/service/$pkgname.service" \
     "$pkgdir/usr/lib/systemd/system"
-
-  # bump Notify to 0.8
-  sed -i "s/'Notify', '0.7'/'Notify', '0.8'/g" "$pkgdir/usr/share/$pkgname/src/${pkgname}indicator.py"
 
   # Install locales
   # cd "$pkgdir/usr/share/$pkgname/src/translations"
