@@ -1,7 +1,7 @@
 # Maintainer: Murli Tawari <kraanzu@gmail.com>
 pkgname=termtyper-git
 _gitname=termtyper
-pkgver=1.0.1.r18.g3c4f42b
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A TUI application written in python for typing!"
 arch=('any')
