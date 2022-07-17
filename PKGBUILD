@@ -10,7 +10,7 @@ url="https://github.com/Elagoht/SudoMice"
 license=('Unlicense')
 provides=("sudo-mice")
 source=("SudoMice.tar.gz::https://github.com/Elagoht/SudoMice/releases/download/v$pkgver/SudoMice.tar.gz")
-sha256sums=('3469fbf2bd86780937efc56d41114baed9b1c2a7775e8e756695445d5629754c')
+sha256sums=('cc04350147e691342d8d312cb35ffc2c76b78fc53a0e2e70af1703f991c18ecd')
 pkgver() {
   printf "$pkgver"
 }
@@ -22,5 +22,7 @@ package() {
   chmod +x SudoMice
   mv -v "assets" "$pkgdir/usr/share/sudomice/"
   install -Dm755 "SudoMice" "$pkgdir/usr/share/sudomice"
+  install -d "$pkgdir/usr/bin"
+  ln -sv "/usr/share/sudomice/SudoMice" "$pkgdir/usr/bin/sudo-mice"
   rm -v *
 }
