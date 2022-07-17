@@ -16,7 +16,7 @@ pkgbase = anki-sync-server-git
 	backup = etc/nginx/sites-available/anki-sync-server-http
 	backup = etc/nginx/sites-available/anki-sync-server-https
 	backup = usr/lib/systemd/system/anki-sync-server.service
-	source = git+https://github.com/ankicommunity/anki-sync-server.git
+	source = git+https://github.com/ankicommunity/anki-sync-server.git#branch=main
 	source = anki2.0.py
 	source = anki2.1.28.py
 	source = anki2.1.py
