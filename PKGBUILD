@@ -1,7 +1,8 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=bslib
-_cranver=0.3.1
+_cranver=0.4.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -9,17 +10,41 @@ pkgdesc="Custom 'Bootstrap' 'Sass' Themes for 'shiny' and 'rmarkdown'"
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(MIT)
-depends=('r>=2.10' 'r-htmltools>=0.5.2' r-jsonlite 'r-sass>=0.4.0' 'r-jquerylib>=0.1.3' r-rlang)
-optdepends=(r-shiny r-rmarkdown r-thematic r-knitr r-testthat r-withr r-rappdirs r-curl r-magrittr)
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('5f5cb56e5cab9039a24cd9d70d73b69c2cab5b2f5f37afc15f71dae0339d9849')
+depends=(
+    r-htmltools
+    r-jsonlite
+    r-sass
+    r-jquerylib
+    r-rlang
+    r-cachem
+    r-memoise
+)
+optdepends=(
+    r-shiny
+    r-rmarkdown
+    r-thematic
+    r-knitr
+    r-testthat
+    r-withr
+    r-rappdirs
+    r-curl
+    r-magrittr
+)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
+        "CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT")
+sha256sums=('fbea4ecec726f23618e825624f1d9c03939f765ca5a490b171ebf95b815475c2'
+            'e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b')
 
 build() {
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "${_cranname}" -l "${srcdir}/build"
 }
 
 package() {
   install -dm0755 "${pkgdir}/usr/lib/R/library"
 
-  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
+
+  install -Dm644 CRAN-MIT-TEMPLATE "${pkgdir}/usr/share/licenses/${pkgname}/MIT"
+  install -Dm644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
