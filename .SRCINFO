@@ -1,10 +1,10 @@
 pkgbase = budgie-desktop-view-git
-	pkgdesc = The official Budgie desktop icons application / implementation -- latest git
-	pkgver = v1.0.2.r0.g39641f2
+	pkgdesc = The official Budgie desktop icons implementation - latest git
+	pkgver = 1.2.r0.g1f30d69
 	pkgrel = 1
-	url = https://solus-project.com/budgie
+	url = https://github.com/BuddiesOfBudgie/budgie-desktop-view
 	arch = x86_64
-	license = APACHE
+	license = Apache-2.0
 	makedepends = meson
 	makedepends = git
 	makedepends = gobject-introspection
@@ -14,8 +14,7 @@ pkgbase = budgie-desktop-view-git
 	depends = budgie-desktop
 	provides = budgie-desktop-view
 	conflicts = budgie-desktop-view
-	source = git+https://github.com/getsolus/budgie-desktop-view.git
+	source = budgie-desktop-view-git::git+https://github.com/BuddiesOfBudgie/budgie-desktop-view.git
 	md5sums = SKIP
 
 pkgname = budgie-desktop-view-git
-

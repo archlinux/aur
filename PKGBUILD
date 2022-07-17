@@ -1,45 +1,32 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
+# Maintainer: Campbell Jones <dev at serebit dot com>
 
 pkgname=budgie-desktop-view-git
-pkgver=v1.0.2.r0.g39641f2
+pkgver=1.2.r0.g1f30d69
 pkgrel=1
-pkgdesc="The official Budgie desktop icons application / implementation -- latest git"
+pkgdesc="The official Budgie desktop icons implementation - latest git"
 arch=('x86_64')
-url="https://solus-project.com/budgie"
-license=('APACHE')
-depends=(
-budgie-desktop
-)
-makedepends=(
-meson
-git
-gobject-introspection
-intltool
-vala
-gtk-doc
-)
+url="https://github.com/BuddiesOfBudgie/budgie-desktop-view"
+license=('Apache-2.0')
+depends=(budgie-desktop)
+makedepends=(meson git gobject-introspection intltool vala gtk-doc)
 provides=(budgie-desktop-view)
 conflicts=(budgie-desktop-view)
-source=("git+https://github.com/getsolus/budgie-desktop-view.git")
+source=("$pkgname"::"git+https://github.com/BuddiesOfBudgie/budgie-desktop-view.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd budgie-desktop-view
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-}
-
-prepare(){
-  cd budgie-desktop-view
-  meson --prefix=/usr --sysconfdir=/etc build
+  cd "$pkgname"
+  git describe --long --tags | sed -r 's/^v([^-]*)-([^-]*)-/\1.r\2./'
 }
 
 build() {
-  cd budgie-desktop-view
+  cd "$pkgname"
+  meson build --prefix=/usr --sysconfdir=/etc --buildtype=plain
   ninja -C build
 }
 
 package() {
-  cd budgie-desktop-view
+  cd "$pkgname"
   DESTDIR="${pkgdir}" ninja -C build install
 }
-
