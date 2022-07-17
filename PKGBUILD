@@ -2,13 +2,29 @@
 # Maintainer: Andri Yngvason <andri@yngvason.is>
 
 pkgname=neatvnc-git
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="VNC server library that's intended to be fast and neat"
 arch=(x86_64 i686 aarch64 armv7h)
 url=https://github.com/any1/neatvnc
 license=(custom:ISC)
-depends=(libglvnd libxkbcommon pixman aml-git gnutls libjpeg-turbo)
+depends=(
+  glibc
+  gnutls
+  libaml.so
+  libpixman-1.so
+  libturbojpeg.so
+  zlib
+  libglvnd
+  libdrm
+  ffmpeg
+)
+makedepends=(
+  git
+  libdrm
+  meson
+  ninja
+)
 makedepends=(git meson ninja libdrm)
 source=("git+$url")
 sha512sums=('SKIP')
