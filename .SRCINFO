@@ -1,13 +1,14 @@
 pkgbase = superpaper
 	pkgdesc = Cross-platform multi monitor wallpaper manager
 	pkgver = 2.1.0+32+g7d0b284
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hhannine/Superpaper
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	makedepends = git
 	depends = python-pillow>=7.0
 	depends = python-screeninfo>=0.6.1
