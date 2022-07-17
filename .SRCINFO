@@ -1,7 +1,7 @@
 pkgbase = gnudatalanguage
 	pkgdesc = An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)
 	pkgver = 1.0.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gnudatalanguage.github.io/
 	arch = i686
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = gnudatalanguage
 	depends = python-numpy
 	depends = shapelib
 	depends = udunits
-	depends = wxgtk2
+	depends = wxgtk3
 	optdepends = cuda
 	source = gnudatalanguage-1.0.1.tar.gz::https://github.com/gnudatalanguage/gdl/archive/v1.0.1.tar.gz
 	source = gdl.profile

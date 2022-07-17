@@ -10,6 +10,7 @@ variables:
 
 stages:
   - containerize
+  - extract
   - build
   - test
   - deploy
@@ -18,16 +19,22 @@ container-build-and-test:
   extends: .arch-containerize
   needs: []
 
+extract-gnudatalanguage:
+  extends: .arch-extract-only
+  needs:
+    - job: "container-build-and-test"
+      artifacts: no
+    
 build-gnudatalanguage:
   artifacts:
     paths:
       - $PKG_NAME*.pkg.tar.zst
       - src/gdl-*/build/Testing/Temporary/LastTest.log
     when: always
-  extends: .arch-buildx
-  needs:
-    - job: "container-build-and-test"
-      artifacts: no
+  before_script:
+    - sed -i "s/^tolerance=0.01/tolerance=${TOLERANCE:-0.01}/" src/gdl-*/testsuite/test_tic_toc.pro
+  extends: .arch-buildx-only
+  needs: ["extract-gnudatalanguage"]
   
 test-gnudatalanguage:
   extends: .arch-test
