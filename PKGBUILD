@@ -59,7 +59,7 @@ package() {
     ln -s /usr/lib/emqx/bin/emqx "$pkgdir"/usr/bin/emqx
     ln -s /usr/lib/emqx/bin/emqx_ctl "$pkgdir"/usr/bin/emqx_ctl
     cp -ar "$srcdir"/emqx/_build/emqx/rel/emqx/etc "$pkgdir"/usr/lib/emqx/
-    ln -s /var/lib/emqx/etc "$pkgdir"/etc/emqx
+    ln -s /usr/lib/emqx/etc "$pkgdir"/etc/emqx
     cp -ar "$srcdir"/emqx/_build/emqx/rel/emqx/data/* "$pkgdir"/var/lib/emqx/
     cp -ar "$srcdir"/emqx/_build/emqx/rel/emqx/lib "$pkgdir"/usr/lib/emqx/
     cp -ar "$srcdir"/emqx/_build/emqx/rel/emqx/releases "$pkgdir"/usr/lib/emqx/
