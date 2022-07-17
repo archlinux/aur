@@ -1,0 +1,13 @@
+pkgbase = qr-rs-bin
+	pkgdesc = A CLI utility to encode URLs or text into QR codes in various formats and colors
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/marcoradocchia/qr-rs
+	arch = x86_64
+	license = GPL3
+	provides = qr
+	conflicts = qr
+	source = https://github.com/marcoradocchia/qr-rs/releases/download/v0.1.0/qr-rs-0.1.0-x86_64-linux-gnu.tar.gz
+	sha256sums = 1adcd5b4734c78c854112837aa532be506b684d821e48539c0fcb3a0789d8474
+
+pkgname = qr-rs-bin
