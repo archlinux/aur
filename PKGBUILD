@@ -1,5 +1,5 @@
 # Maintainer:  <castix at autistici dot org>
-pkgname=rsaturation-lv2
+pkgname=rsaturation-lv2-git
 pkgver='2.0'
 pkgrel=1
 epoch=

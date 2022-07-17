@@ -1,4 +1,4 @@
-pkgbase = rsaturation-lv2
+pkgbase = rsaturation-lv2-git
 	pkgdesc = A simple saturation plugin
 	pkgver = 2.0
 	pkgrel = 1
@@ -10,9 +10,9 @@ pkgbase = rsaturation-lv2
 	makedepends = git
 	makedepends = cmake
 	depends = glibc
-	provides = rsaturation-lv2
-	conflicts = rsaturation-lv2
+	provides = rsaturation-lv2-git
+	conflicts = rsaturation
 	source = rsaturation-lv2::git+https://github.com/hannesbraun/rsaturation
 	md5sums = SKIP
 
-pkgname = rsaturation-lv2
+pkgname = rsaturation-lv2-git
