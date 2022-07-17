@@ -2,31 +2,28 @@
 
 pkgname=jupyterhub-systemdspawner
 pkgdesc="Spawn JupyterHub single-user servers with systemd"
-pkgver=0.15.0
+pkgver=0.16
 pkgrel=1
 url="https://github.com/jupyterhub/systemdspawner"
 arch=('any')
 depends=('jupyterhub')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 license=('BSD')
 source=(
-  "https://files.pythonhosted.org/packages/source/j/$pkgname/$pkgname-$pkgver.tar.gz"
-  'https://raw.githubusercontent.com/jupyterhub/systemdspawner/master/LICENSE'
+  "https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
 )
 sha256sums=(
-  'b6e2d981657aa5d3794abb89b1650d056524158a3d0f0f706007cae9b6dbeb2b'
-  '8879cac31d6a25ae880180569ea4d80ca9b24ea9e73a73b5604a9711f1744a29'
+  'a7aeea1e8cb081a9c4de14475504199bbe249d93ea317da5c09d536b7b11b300'
 )
 
 build() {
-    cd "jupyterhub-systemdspawner-${pkgver}"
-    python setup.py build
+    cd "$pkgname-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    cd "jupyterhub-systemdspawner-${pkgver}"
-    python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1 --skip-build
-    install -t "${pkgdir}/usr/share/doc/${pkgname}" -vDm 644 README.md
+    cd "$pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 }
-
