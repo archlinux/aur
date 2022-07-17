@@ -1,10 +1,10 @@
 pkgname=awlib-git
-pkgver=0.0.2.r1900.g70d01569
+pkgver=r2173.f5be6e52
 pkgrel=1
 pkgdesc="C++ helper library"
 arch=('i686' 'x86_64')
 depends=()
-makedepends=('git')
+makedepends=('git' 'cmake' 'gcc')
 url="https://git.absurdworlds.org/awlib.git"
 license=('LGPLv3')
 source=('git+https://github.com/absurdworlds/awlib.git')
@@ -21,19 +21,19 @@ pkgver() {
   )
 }
 
-prepare() {
- cd "${srcdir}"/${pkgname%-git}
- cp Config.mk{.in,}
-}
+#prepare() {
+# cd "${srcdir}"/${pkgname%-git}
+# cp Config.mk{.in,}
+#}
 
 build() {
- cd "${srcdir}"/${pkgname%-git}
- make target="release install"
+ cmake -B build -S "${srcdir}/${pkgname%-git}" \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -Wno-dev
+ cmake --build build
 }
 
 package() {
-  install -d -m755 "${pkgdir}/usr/include"
-  install -d -m755 "${pkgdir}/usr/lib"
-  cp -r "${srcdir}/${pkgname%-git}/include/aw" "${pkgdir}/usr/include"
-  cp -a "${srcdir}/${pkgname%-git}/lib/."      "${pkgdir}/usr/lib"
+ DESTDIR="$pkgdir" cmake --install build
 }
