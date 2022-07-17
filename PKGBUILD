@@ -1,17 +1,15 @@
-## --- Menu Config
-
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
 ## Valid numbers between: 0 to 99
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 98 (Intel native) or 99 (AMD native)
 _microarchitecture=98
 
-## --- PKGBUILD
-
 ## Major kernel version
-_major=5.17
+_major=5.18
 ## Minor kernel version
-_minor=5
+_minor=12
+
+## PKGBUILD ##
 
 pkgbase=linux-multimedia
 #pkgver=${_major}
@@ -27,11 +25,11 @@ makedepends=(
   git
 )
 options=('!strip')
-_srcname=linux-$pkgver
+_srcname=linux-${pkgver}
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar.{xz,sign}
-  "git+https://github.com/Frogging-Family/linux-tkg.git"
   "git+https://github.com/graysky2/kernel_compiler_patch.git"
+  "git+https://github.com/Frogging-Family/linux-tkg.git"
   "choose-gcc-optimization.sh"
 )
 validpgpkeys=(
@@ -39,7 +37,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('9bbcd185b94436f9c8fe977fa0e862f60d34003562327fcebb27c9fa342fe987'
+sha256sums=('40b74d0942f255da07481710e1083412d06e37e45b8f9d9e34ae856db37b9527'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -81,33 +79,42 @@ prepare() {
   cp ${srcdir}/linux-tkg/linux-tkg-config/${_major}/config.x86_64 .config
   make olddefconfig
 
-  ## --- Configs And Tweaks
-  
   # Let's user choose microarchitecture optimization in GCC
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
-  ### Disable NUMA
+  ## --- Configs And Tweaks
+
   msg2 "Disable NUMA..."
   scripts/config --disable CONFIG_NUMA
 
-  ### Optimize Kernel for Performance Using (GCC -O3)
-  msg2 "Set Up A GCC -O3 Optimized Kernel..."
+  msg2 "Enable full tickless timer..."
+  scripts/config --disable CONFIG_NO_HZ_IDLE
+  scripts/config --enable CONFIG_NO_HZ_FULL
+
+  msg2 "Set up a GCC -O3 optimized kernel..."
   scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
   scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
 
-  ### Set tickrate to 1000HZ
   msg2 "Set tick rate to 1000HZ..."
   scripts/config --disable CONFIG_HZ_300
   scripts/config --enable CONFIG_HZ_1000
   scripts/config --set-val CONFIG_HZ 1000
 
-  ### Set Default Governor To Performance
-  msg2 "Set Default Governor To Performance..."
+  msg2 "Set default CPU governor to performance..."
   scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
   scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
 
-  ### Disable Kernel Debugging
-  msg2 "Disable Kernel Debugging For Smaller Builds..."
+  msg2 "Enable Anbox support..."
+  scripts/config --module CONFIG_ASHMEM
+  scripts/config --enable CONFIG_ANDROID
+  scripts/config --enable CONFIG_ANDROID_BINDER_IPC
+  scripts/config --enable ANDROID_BINDER_IPC_SELFTEST
+  scripts/config --enable CONFIG_ANDROID_BINDERFS
+  scripts/config --set-str CONFIG_ANDROID_BINDER_DEVICES "binder,hwbinder,vndbinder"
+  scripts/config --enable CONFIG_SW_SYNC
+  scripts/config --module CONFIG_UHID
+
+  msg2 "Disable kernel debugging for smaller builds..."
   scripts/config --disable CONFIG_CONTEXT_TRACKING
   scripts/config --disable CONFIG_CONTEXT_TRACKING_FORCE
   scripts/config --disable CONFIG_DEBUG_KERNEL
