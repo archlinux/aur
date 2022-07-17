@@ -1,5 +1,5 @@
 pkgname=libtorrent-rasterbar-1
-pkgver=1.2.16
+pkgver=1.2.17
 pkgrel=1
 pkgdesc="Open source C++ library implementing the BitTorrent protocol."
 url="https://libtorrent.org/"
@@ -16,7 +16,7 @@ _repo="${_name%-rasterbar}"
 _snapshot="${_repo}-${pkgver}"
 
 source=("${_snapshot}.tar.gz::https://github.com/arvidn/${_repo}/archive/v${pkgver}.tar.gz")
-sha256sums=('2ee435c3e2e6dd8825903230b41fbaf0741b7aed57094f2ca0e6214d89fef9d4')
+sha256sums=('ccab9dde68e060fa84e8dde535975dc9aa51817d6b1cbe8d922c084fb2005417')
 
 build() {
     cd "${srcdir}"
