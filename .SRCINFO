@@ -1,6 +1,6 @@
 pkgbase = dcpomatic
 	pkgdesc = A free, open-source program to generate Digital Cinema Packages (DCPs) from videos or images
-	pkgver = 2.16.10
+	pkgver = 2.16.18
 	pkgrel = 1
 	url = https://dcpomatic.com/
 	arch = i686
@@ -8,17 +8,16 @@ pkgbase = dcpomatic
 	makedepends = python
 	makedepends = which
 	makedepends = boost>=1.78.0
-	depends = pangomm>=1.4
 	depends = xorgproto
-	depends = libsub>=1.6.19
+	depends = libsub>=1.6.23
 	depends = libcxml>=0.17.3
-	depends = libdcp>=1.8.18
+	depends = libdcp>=1.8.22
 	depends = ffmpeg>=4.0.2
 	depends = glib2
 	depends = imagemagick
 	depends = libssh
-	depends = wxgtk3>=3.0.4
-	depends = wxgtk-common
+	depends = wxwidgets-gtk3
+	depends = wxwidgets-common
 	depends = libzip
 	depends = xz
 	depends = libsndfile
@@ -27,10 +26,10 @@ pkgbase = dcpomatic
 	depends = rtaudio
 	depends = x264
 	depends = openssl
-	depends = leqm-nrt>=0.0.2
-	source = dcpomatic-2.16.10.tar.bz2::https://dcpomatic.com/dl.php?id=source&version=2.16.10
+	depends = leqm-nrt>=0.0.2.r8.g93ae9e6
+	source = dcpomatic-2.16.18.tar.bz2::https://dcpomatic.com/dl.php?id=source&version=2.16.18
 	source = 0001-set-version.patch
-	sha256sums = 6cdccc69b0171220ae644c13fcfdad18d1957c9407ce370901627689cec670b9
+	sha256sums = a425b17582f77632ace766b31239c83298fe997ee540fbe8394ceeb4bcc0c7ac
 	sha256sums = 21f83b2b6850a6fb717ff2815f53148b68efa83882c89e664c721d737afb0040
 
 pkgname = dcpomatic
