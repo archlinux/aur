@@ -8,3 +8,12 @@ post_install() {
 	echo "systemctl --user enable findex-restarter.path"
     fi
 }
+
+post_remove() {
+    if [[ $(pidof systemd) ]]
+    then
+	echo "Don't forget to stop findex service:"
+	echo "systemctl --user stop findex.service"
+	echo "systemctl --user stop findex-restarter.path"
+    fi
+}
