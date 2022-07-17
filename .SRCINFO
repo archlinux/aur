@@ -1,6 +1,6 @@
 pkgbase = netflix-nativefier
 	pkgdesc = Netflix desktop built with nativefier
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 0
 	url = https://www.netflix.com
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = netflix-nativefier
 	makedepends = unzip
 	depends = gtk3
 	depends = nss
+	depends = alsa-lib
 	source = netflix-nativefier.desktop
 	sha256sums = 3de315b9c3de5e138bea96ce9e80db5f61ef3de892bfcc957ffd471023a06da7
 

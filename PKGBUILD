@@ -1,13 +1,13 @@
 # Maintainer: Julian Mac Kenzie <jukiangm@gmail.com>
 
 pkgname=netflix-nativefier
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=0
 pkgdesc="Netflix desktop built with nativefier"
 arch=('x86_64')
 url="https://www.netflix.com"
 license=('custom')
-depends=('gtk3' 'nss')
+depends=('gtk3' 'nss' 'alsa-lib')
 makedepends=('imagemagick' 'nodejs-nativefier' 'unzip')
 source=('netflix-nativefier.desktop')
 sha256sums=('3de315b9c3de5e138bea96ce9e80db5f61ef3de892bfcc957ffd471023a06da7')
@@ -17,7 +17,7 @@ build() {
   nativefier \
     --name "Netflix" \
     --widevine \
-    -e "15.3.5" \
+    -e "15.5.7" \
     "$url" \
     "netflix"
 }
