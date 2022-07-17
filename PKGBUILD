@@ -13,7 +13,7 @@ depends=('python' 'python-pip' 'nginx')
 makedepends=('git' 'portaudio')
 optdepends=()
 install=anki-sync-server.install
-source=('git+https://github.com/ankicommunity/anki-sync-server.git'
+source=('git+https://github.com/ankicommunity/anki-sync-server.git#branch=main'
         'anki2.0.py'
         'anki2.1.28.py'
         'anki2.1.py'
