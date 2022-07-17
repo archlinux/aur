@@ -3,7 +3,7 @@
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=libcxml
 pkgver=0.17.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A small C++ library which makes it marginally neater to parse XML using libxml++"
 arch=('i686' 'x86_64')
 url="https://carlh.net/libcxml"
@@ -13,12 +13,9 @@ makedepends=('git' 'python' 'pkg-config' 'boost')
 source=("$pkgname-$pkgver::git+git://git.carlh.net/git/libcxml.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
-prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    python waf configure --prefix=/usr
-}
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    python waf configure --prefix=/usr
     python waf build
 }
 
