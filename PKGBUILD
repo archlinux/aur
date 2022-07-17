@@ -1,14 +1,15 @@
 pkgbase=stt
 pkgname=('stt' 'python-stt')
 _pkgname=STT
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Coqui-STT for inference"
 arch=('x86_64' 'aarch64' 'armv7' 'amd64')
 url="https://github.com/coqui-ai/STT"
 license=('MPL2')
-makedepends=('bazel' 'python' 'git' 'sox' 'wget')
-source=("${_pkgname}-${pkgver}::git+https://github.com/coqui-ai/STT.git#tag=v${pkgver}")
+makedepends=('gcc' 'cmake' 'bazel' 'git' 'sox' 'wget' 'swig')
+depends=('python' 'sox')
+source=("${_pkgname}-${pkgver}::git+https://github.com/coqui-ai/STT.git#tag=main")
 sha256sums=('SKIP')
 
 prepare()
@@ -36,19 +37,41 @@ build() {
   export CC_OPT_FLAGS="-march=${arch}"
   #rm .bazelversion
   ./configure
-
-  bazel build \
-      --workspace_status_command="bash native_client/bazel_workspace_status_cmd.sh" \
-      --config=monolithic \
-        -c opt \
-        --copt=-O3 \
-        --copt="-D_GLIBCXX_USE_CXX11_ABI=0" \
-        --copt=-fvisibility=hidden \
-      --verbose_failures \
-      //native_client:libstt.so
-
+  
+  if [[ $arch == "x86_64" ]]; then
+    bazel build \
+        --workspace_status_command="bash native_client/bazel_workspace_status_cmd.sh" \
+          -c opt \
+          --copt=-mtune=generic \
+          --copt=-march=x86-64 \
+          --copt=-msse \
+          --copt=-msse2 \
+          --copt=-msse3 \
+          --copt=-msse4.1 \
+          --copt=-msse4.2 \
+          --copt=-mavx \
+          --config=noaws \
+          --config=nogcp \
+          --config=nohdfs \
+          --config=nonccl \
+          --copt=-fvisibility=hidden \
+        --verbose_failures \
+        //native_client:libstt.so
+  elif [[ $arch == "aarch64" ]]; then
+    bazel build \
+        --workspace_status_command="bash native_client/bazel_workspace_status_cmd.sh" \
+        --config=monolithic \
+          -c opt \
+          --config=rpi3-armv8_opt
+        --verbose_failures \
+        //native_client:libstt.so
+  fi;
   cd "${srcdir}/${_pkgname}-${pkgver}/native_client"
-  make stt SOX_LDFLAGS="-lsox -Wl,-no-undefined"
+  if [[ $arch == "x86_64" ]]; then
+    make stt SOX_LDFLAGS="-lsox -Wl,-no-undefined"
+  elif [[ $arch == "aarch64" ]]; then
+    make TARGET=rpi3-armv8 stt SOX_LDFLAGS="-lsox -Wl,-no-undefined"
+  fi;
   make bindings -C python
   make bindings -C ctcdecode
 }
@@ -64,7 +87,7 @@ package_python-stt() {
   depends=('stt' 'python-numpy')
   cd "${srcdir}/${_pkgname}-${pkgver}/native_client"
   PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps python/dist/stt-*.whl
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps ctcdecode/dist/*.whl
+  #PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps ctcdecode/dist/*.whl
   #mv "$pkgdir/usr/bin/stt" "$pkgdir/usr/bin/stt_python"
   cp -rv "${srcdir}/${_pkgname}-${pkgver}/training/coqui_stt_training" "$pkgdir"`python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"`
 }
