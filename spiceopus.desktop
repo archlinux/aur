@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Exec=spiceopus
+Comment=A free general purpose circuit simulator specially suited for optimization loops
+Terminal=false
+Name=Spice Opus
+Icon=/usr/share/pixmaps/spiceopus.png
+Categories=Science;Education;

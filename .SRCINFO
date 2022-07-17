@@ -1,0 +1,11 @@
+pkgbase = spiceopus
+	pkgdesc = Spice Opus is a free general purpose circuit simulator specially suited for optimization loops
+	pkgver = 2v33r242
+	pkgrel = 1
+	url = http://www.spiceopus.si/
+	arch = x86_64
+	license = GPL3
+	source = http://www.spiceopus.si/download/spice_opus233r242_linux_amd64.tar.gz
+	sha256sums = 52d70f8f6878d6ce0d0e33cdb09a2501edbd5081e6739e2fc1c1246424578929
+
+pkgname = spiceopus
