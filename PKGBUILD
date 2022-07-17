@@ -2,13 +2,13 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=menyoki-git
-pkgver=1.6.0.r0.g7bcf595
+pkgver=1.6.1.r0.gd08f9e2
 pkgrel=1
 pkgdesc="Screen{shot,cast} and perform ImageOps on the command line (git)"
 arch=('x86_64')
 url="https://github.com/orhun/menyoki"
 license=('GPL3')
-depends=('gcc-libs' 'libxrandr')
+depends=('gcc-libs' 'libxrandr' 'libsixel')
 makedepends=('cargo' 'git')
 optdepends=('slop: area selection support')
 conflicts=("${pkgname%-git}")
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  cargo build --release --frozen
+  cargo build --release --frozen --features sixel
 }
 
 check() {
