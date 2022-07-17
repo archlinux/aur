@@ -2,8 +2,8 @@
 # Maintainer: Tobias Backer Dirks <omgitsaheadcrab@gmail.com>
 
 pkgname=popsql
-pkgver=1.0.65
-pkgrel=1
+pkgver=1.0.74
+pkgrel=0
 pkgdesc="Collaborative SQL editor to write, run, and share queries instantly"
 arch=('x86_64')
 url="https://popsql.io"
