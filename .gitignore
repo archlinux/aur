@@ -1,0 +1,8 @@
+*.tar.zst
+airwindows-lv2
+pkg
+src
+
+# emacs files
+.\#*
+\#*\#
