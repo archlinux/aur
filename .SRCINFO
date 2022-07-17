@@ -1,7 +1,7 @@
 pkgbase = piqueserver-git
 	pkgdesc = an Ace of Spades 0.75 server based on PySnip
-	pkgver = v0.1.3.r534.gd0ee6456
-	pkgrel = 3
+	pkgver = v0.1.3.r601.gb10c3819
+	pkgrel = 1
 	url = https://github.com/piqueserver/piqueserver
 	arch = any
 	license = GPL3
@@ -17,10 +17,9 @@ pkgbase = piqueserver-git
 	depends = python-twisted
 	depends = python-zope-interface
 	optdepends = python-geoip: to use the "from" command
-	optdepends = python-crypto: ssh
+	optdepends = python-pycryptodome: ssh
 	optdepends = python-pyasn1: ssh
-	source = piqueserver-git::git://github.com/piqueserver/piqueserver.git
+	source = piqueserver-git::git+https://github.com/piqueserver/piqueserver.git
 	md5sums = SKIP
 
 pkgname = piqueserver-git
-
