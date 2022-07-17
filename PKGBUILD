@@ -12,16 +12,16 @@ provides=('dns53')
 conflicts=('dns53')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.4.0/dns53_0.4.0_linux-arm64.tar.gz")
-sha256sums_aarch64=('2a7efcbb96d025485263a4b25076e950f78438b729ea677050e543452dc3a9c7')
+sha256sums_aarch64=('92e270364f82505c15797cd47900660b6ace71196fe2e0093e5368dbcce56993')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.4.0/dns53_0.4.0_linux-arm.tar.gz")
-sha256sums_armv7h=('40fa93b3f959b1dd3bc1fba4516cdbf452b43e7e6b0529fc8fe35dd2fda89ff7')
+sha256sums_armv7h=('c4b7b6e6c96ab2d247d9040137cd70472ac5429c9f40b31a56fb9646471b3a2f')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.4.0/dns53_0.4.0_linux-i386.tar.gz")
-sha256sums_i686=('f3ef9a2a9218509d9a3d99f01c6ef8b7bc8a74763a58c9933881b533839fd950')
+sha256sums_i686=('3a183ee2de34c14bb0d12d7e17a955fe8325f47a025c3aedbdc65be1d750d864')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.4.0/dns53_0.4.0_linux-x86_64.tar.gz")
-sha256sums_x86_64=('466fd16d19f17647789305b455d7af8f953be9933ef1497ce5d99181f9013725')
+sha256sums_x86_64=('caf4938b02784e1c7d5b20081f4b13d2eb987ec23dceb51b08ddb33f0e4f2ced')
 
 package() {
   # bin
