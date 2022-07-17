@@ -1,8 +1,7 @@
-# Maintainer: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 # Maintainer: librewish <librewish@gmail.com>
 
 pkgname=snapper-support
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Support package for enabling Snapper with snap-pac and grub-btrfs support'
 arch=(any)
