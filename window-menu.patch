@@ -18,7 +18,7 @@ index d867b64..972e8e7 100644
    [separator]
    [close]
 +  [separator]
-+  [submenu] (Opzioni avanzate)
++  [submenu] (Advanced options)
 +      [shade]
 +      [stick]
 +      [raise]
