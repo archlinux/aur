@@ -1,13 +1,13 @@
 # Maintainer: Alexander Schnaidt <alex.schnaidt@gmail.com>
 # Contributor: Brandon Moller <mollerbw@gmail.com>
 pkgname=passwordsafe-git
-pkgver=r11444.80baea965
+pkgver=r13263.98a688fb6
 pkgrel=1
 pkgdesc="Simple & Secure Password Management"
 arch=('i686' 'x86_64')
 url="https://pwsafe.org/"
 license=('Artistic2.0')
-depends=('libxtst' 'wxgtk' 'qrencode' 'yubikey-personalization' 'xerces-c')
+depends=('wxwidgets-gtk3' 'qrencode' 'yubikey-personalization' 'xerces-c')
 makedepends=('git' 'cmake' 'gtest' 'zip' 'libxt')
 optdepends=('xvkbd: virtual-keyboard support')
 conflicts=('passwordsafe-debian' 'passwordsafe' 'pwsafe')
