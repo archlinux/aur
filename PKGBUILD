@@ -4,7 +4,7 @@
 # Contributor: Mark Lee <mark at markelee dot com>
 
 pkgname=jupyterhub
-pkgver=2.2.2
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Multi-user server for Jupyter notebooks"
 url="https://jupyter.org/hub"
@@ -18,7 +18,7 @@ depends=(
   'python-sqlalchemy' 'python-tornado' 'python-traitlets'
 )
 makedepends=(
-  'npm' 'python-setuptools'
+  'npm' 'python-build' 'python-installer' 'python-wheel'
 )
 checkdepends=(
   'jupyter-notebook' 'python-beautifulsoup4' 'python-pytest'
@@ -39,7 +39,7 @@ source=(
   'tests_use_random_ports.patch'
 )
 sha256sums=(
-  '0e7922b58cc350c861d54c46501c3a370f7c0313fea0725581ef943758885921'
+  'dd9605462c1e382b3cc374226ffe9f550cc59643a9de05bbea67630f4a3f6c5a'
   'adb4c09c668c35605d9cddc4a4171dd64ed6e74ab82da97f19b3437d26b052b9'
   'acba51024276670aabad3d3f2a1c80d4b573809ca7e7ef6594916329d842417f'
 )
@@ -51,51 +51,76 @@ prepare() {
 
 build() {
   cd "${srcdir}/jupyterhub-$pkgver"
-  python setup.py build
+  python -m build --wheel --no-isolation
 
   # Generate the default configuration. The value of data_files_path is set
   # based on the directory containing the loaded code, so we need to replace
-  # it with the final installed destination.
+  # it with the final installed destination. We also replace the 'Currently
+  # installed' headers with 'Included with the jupyterhub package'.
   cd build/lib
   python -m jupyterhub --generate-config -f "$srcdir/default_config.py" -y True
   _srcdir_esc="${srcdir////\\/}"
-  sed -i -e "s/${_srcdir_esc}\/jupyterhub-$pkgver/\/usr/" "$srcdir/default_config.py"
+  sed -i "$srcdir/default_config.py" \
+    -e "s/${_srcdir_esc}\/jupyterhub-$pkgver/\/usr/" \
+    -e 's/#  Currently installed:/#  Included with the jupyterhub package:/'
 }
 
 check() {
   cd "${srcdir}/jupyterhub-$pkgver"
 
-  # Run the tests we can. The DB upgrade tests always fail for me (it looks
-  # like the virtual environment they set up is not complete). The internal SSL
-  # connections test are broken by our patch to use random ports for testing.
-  # This enables a lot more tests than it breaks so it is a worthwhile
-  # trade-off for now. The test_server_token_role test needs the package
-  # installed so it can find the jupyterhub-singleuser script. The other
-  # specific skipped tests intermittently fail. We'll have to trust the
-  # upstream CI on those.
-  PYTHONPATH="$PWD/build/lib" pytest -v jupyterhub \
-    --ignore=jupyterhub/tests/test_db.py \
-    --ignore=jupyterhub/tests/test_internal_ssl_connections.py \
-    -k "not test_server_token_role and not test_external_service and not test_single_user_spawner"
+  skip_files=(
+    # DB upgrade tests always seem to fail (virtual environment appears incorrect).
+    'test_db.py'
+
+    # Broken by our patch to use random ports for testing. This enables a lot
+    # more tests than it breaks so it is a worthwhile trade-off for now.
+    'test_internal_ssl_connections.py'
+  )
+
+  skip_tests=(
+    # Needs the package to already be installed.
+    'test_server_token_role'
+
+    # Intermittent failures. For now, trust the upstream CI.
+    'test_external_service'
+    'test_single_user_spawner'
+    'test_nbclassic_control_panel'
+  )
+
+  # The community package jupyter-nbclassic provides and conflicts with
+  # jupyter-notebook. Some tests depend on nbclassic, some on notebook, so
+  # selectively skip based on what package is in use.
+  if pacman -Qqs jupyter-nbclassic > /dev/null; then
+    skip_tests+=('test_singleuser_app_class[notebook.notebookapp.NotebookApp]')
+  else
+    skip_tests+=('test_singleuser_auth' 'test_disable_user_config')
+  fi
+
+  # Start building pytest args with --ignore options for whole files.
+  testargs=()
+  for filename in "${skip_files[@]}"; do
+    testargs+=("--ignore=jupyterhub/tests/$filename")
+  done
+
+  # Add a filter expression with all the tests we want to skip.
+  karg=""
+  for testname in "${skip_tests[@]}"; do
+    karg="$karg and not $testname"
+  done
+  testargs+=('-k' "${karg:5}")  # Trim the leading ' and '.
+
+  PYTHONPATH="$PWD/build/lib" pytest -v jupyterhub "${testargs[@]}"
 }
 
 package() {
   cd "${srcdir}/jupyterhub-$pkgver"
-  install -Dm644 COPYING.md "${pkgdir}"/usr/share/licenses/$pkgname/COPYING.md
-
-  # Something in the test suite writes byte code with $srcdir references, even
-  # if we set PYTHONDONTWRITEBYTECODE=1. Just remove the caches. This also
-  # covers anything written when generating the default config.
-  find . -name "*.pyc" -delete
-  find . -type d -name __pycache__ -delete
 
   # Install the package.
-  python setup.py install --root="${pkgdir}" --prefix=/usr --skip-build --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" COPYING.md
 
-  # Remove $srcdir references from (1) npm metadata and (2) Python egg metadata.
+  # Remove $srcdir references from npm metadata.
   find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
-  _srcdir_esc="${srcdir////\\/}"
-  find "$pkgdir" -name SOURCES.txt -exec sed -i "/${_srcdir_esc}/d" {} \;
 
   # systemd service and default configuration.
   install -Dm644 "$srcdir/jupyterhub.service" "$pkgdir/usr/lib/systemd/system/jupyterhub.service"
