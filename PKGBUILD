@@ -1,13 +1,13 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgbase=wxwidgets-light
-pkgname=('wxgtk2-light'
-         'wxgtk3-light'
-         'wxcommon-light'
+pkgname=('wxwidgets-common-light'
+         'wxwidgets-gtk3-light'
+         'wxwidgets-qt5-light'
          )
-pkgver=3.0.5.1
-pkgrel=3
-pkgdesc="wxWidgets suite for Base, GTK2 and GTK3 toolkits (GNOME/GStreamer free!)"
+pkgver=3.2.0
+pkgrel=2
+pkgdesc="wxWidgets suite for Base, Qt5 and GTK3 toolkits (GNOME/GStreamer free!)"
 arch=('x86_64')
 url='http://wxwidgets.org'
 license=('custom:wxWindows')
@@ -19,125 +19,146 @@ makedepends=('git'
              'libsm'
              'libgl'
              'libnotify'
+             'cmake'
              )
 source=("wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v${pkgver}"
-        'https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/wxgtk/trunk/wxgtk-abicheck.patch'
+        'git+https://github.com/wxWidgets/nanosvg.git'
+        'https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/wxwidgets/trunk/destdir.patch'
         )
 sha256sums=('SKIP'
-            '53501db871290b71967af08b60aedb738c920a307ef9bd32dd19c30498732cf8'
+            'SKIP'
+            'cb4a7ca0d40b090d5d40d77790828a26766c6b496b3a5f5351fa30b3a6b42bd9'
             )
 options=('debug')
 
 prepare() {
-  mkdir -p build-{base,gtk{2,3}}
+  mkdir -p build-{base,gtk3,qt5}
 
   cd wxwidgets
 
-  # C++ ABI check is too strict
-  patch -Np1 -i "${srcdir}/wxgtk-abicheck.patch"
+  git config submodule.3rdparty/nanosvg.url "${srcdir}/nanosvg"
+  git submodule update --init 3rdparty/nanosvg
+
+  patch -Np1 -i "${srcdir}/destdir.patch"
 }
 
 build() {
   msg2 "Build WxBASE"
-  cd "${srcdir}/build-base"
-  ../wxwidgets/configure \
-    --prefix=/usr \
-    --libdir=/usr/lib \
-    --with-regex=builtin \
-    --disable-{precomp-headers,gui}
+  cmake -B build-base -S wxwidgets \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=None \
+    -DwxUSE_OPENGL=ON \
+    -DwxUSE_REGEX=sys\
+    -DwxUSE_ZLIB=sys \
+    -DwxUSE_EXPAT=sys \
+    -DwxUSE_LIBJPEG=sys \
+    -DwxUSE_LIBPNG=sys \
+    -DwxUSE_LIBTIFF=sys \
+    -DwxUSE_LIBLZMA=sys \
+    -DwxUSE_LIBMSPACK=ON \
+    -DwxUSE_GUI=OFF
 
-  make
-  make -C ../wxwidgets/locale allmo
-
-  msg2 "Build WxGTK2"
-  cd "${srcdir}/build-gtk2"
-  ../wxwidgets/configure \
-    --prefix=/usr \
-    --libdir=/usr/lib \
-    --with-gtk=2 \
-    --with-lib{jpeg,png,tiff,xpm}=sys \
-    --with-regex=builtin \
-    --with-{opengl,sdl} \
-    --enable-graphics_ctx \
-    --without-gnomevfs \
-    --disable-{gtktest,sdltest,precomp-headers,mediactrl,webview}
-
-  make
-  make -C ../wxwidgets/locale allmo
+  cmake --build build-base
 
   msg2 "Build WxGTK3"
-  cd "${srcdir}/build-gtk3"
-  ../wxwidgets/configure \
-    --prefix=/usr \
-    --libdir=/usr/lib \
-    --with-gtk=3 \
-    --with-lib{jpeg,png,tiff,xpm}=sys \
-    --with-regex=builtin \
-    --with-{opengl,sdl} \
-    --enable-graphics_ctx \
-    --without-gnomevfs \
-    --disable-{gtktest,sdltest,precomp-headers,mediactrl,webview}
+    cmake -B build-gtk3 -S wxwidgets \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=None \
+    -DwxBUILD_TOOLKIT=gtk3 \
+    -DwxUSE_OPENGL=ON \
+    -DwxUSE_REGEX=sys\
+    -DwxUSE_ZLIB=sys \
+    -DwxUSE_EXPAT=sys \
+    -DwxUSE_LIBJPEG=sys \
+    -DwxUSE_LIBPNG=sys \
+    -DwxUSE_LIBTIFF=sys \
+    -DwxUSE_LIBLZMA=sys \
+    -DwxUSE_LIBMSPACK=ON \
+    -DwxUSE_MEDIACTRL=OFF
 
-  make
-  make -C ../wxwidgets/locale allmo
+  cmake --build build-gtk3
+
+  msg2 "Build WxQT5"
+  cmake -B build-qt5 -S wxwidgets \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=None \
+    -DwxBUILD_TOOLKIT=qt \
+    -DwxUSE_OPENGL=ON \
+    -DwxUSE_REGEX=sys \
+    -DwxUSE_ZLIB=sys \
+    -DwxUSE_EXPAT=sys \
+    -DwxUSE_LIBJPEG=sys \
+    -DwxUSE_LIBPNG=sys \
+    -DwxUSE_LIBTIFF=sys \
+    -DwxUSE_LIBLZMA=sys \
+    -DwxUSE_LIBMSPACK=ON \
+    -DwxUSE_MEDIACTRL=OFF
+
+  cmake --build build-qt5
 }
 
-package_wxgtk2-light() {
-  pkgdesc="wxWidgets GTK2 Toolkit (GNOME/GStreamer free!)"
-  depends=('wxcommon-light'
+package_wxwidgets-qt5-light() {
+pkgdesc="wxWidgets Qt5 Toolkit (GNOME/GStreamer free!)"
+  depends=('wxwidgets-common-light'
            'libgl'
-           'gtk2'
+           'qt5-base'
            'libsm'
            'sdl2'
            'libnotify'
            )
-  provides=('wxgtk'
-            'wxgtk2'
+  provides=('wxwidgets-qt5'
+            'wxwidgets'
             )
-  conflicts=('wxgtk'
-             'wxgtk2'
-             )
-  options=('!emptydirs')
+  conflicts=('wxwidgets-qt5')
+  options+=('!emptydirs')
 
-  make -C build-gtk2 DESTDIR="${pkgdir}" install
-  make -C build-gtk2 DESTDIR="${pkgdir}" uninstall_basedll uninstall_netdll uninstall_xmldll locale_uninstall
-  make -C build-gtk2/utils DESTDIR="${pkgdir}" uninstall_wxrc
+  make -C build-qt5 DESTDIR="${pkgdir}" install
 
-  cp -P "${pkgdir}/usr/bin/wx-config" "${pkgdir}/usr/bin/wx-config-gtk2"
-  rm -fr "${pkgdir}/usr/bin/"wxrc{,-3.0}
+  mv "${pkgdir}/usr/bin/wx-config" "${pkgdir}/usr/bin/wx-config-qt"
+  rm -fr "${pkgdir}/usr/bin/"wxrc{,-3*}
   rm -fr "${pkgdir}/usr/include"
+  rm -fr "${pkgdir}/usr/lib/"*base*
+  rm -fr "${pkgdir}/usr/lib/cmake"
   rm -fr "${pkgdir}/usr/share/bakefile"
   rm -fr "${pkgdir}/usr/share/"{aclocal,locale}
 
   install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/wxgtk2-light/LICENSE"
 }
 
-package_wxgtk3-light() {
+package_wxwidgets-gtk3-light() {
   pkgdesc="wxWidgets GTK3 Toolkit (GNOME/GStreamer free!)"
-  depends=('wxcommon-light'
+  depends=('wxwidgets-common-light'
            'gtk3'
            'libsm'
            'sdl2'
            'libnotify'
            )
-  provides=('wxgtk3')
-  conflicts=('wxgtk3')
-  options=('!emptydirs')
+  provides=('wxwidgets'
+            'wxwidgets-gtk3'
+            'wxgtk3'
+            )
+  conflicts=('wxwidgets-gtk3'
+             'wxgtk3'
+             )
+  replaces=('wxgtk3-light'
+            'wxgtk3'
+            )
+  options+=('!emptydirs')
 
   make -C build-gtk3 DESTDIR="${pkgdir}" install
-  make -C build-gtk3 DESTDIR="${pkgdir}" uninstall_basedll uninstall_netdll uninstall_xmldll locale_uninstall
-  make -C build-gtk3/utils DESTDIR="${pkgdir}" uninstall_wxrc
 
-  mv "${pkgdir}/usr/bin/wx-config" "${pkgdir}/usr/bin/wx-config-gtk3"
-  rm -fr "${pkgdir}/usr/bin/"wxrc{,-3.0}
+  ln -s wx-config "${pkgdir}/usr/bin/wx-config-gtk3"
+  rm -fr "${pkgdir}/usr/bin/"wxrc{,-3*}
   rm -fr "${pkgdir}/usr/include"
+  rm -fr "${pkgdir}/usr/lib/"*base*
+  rm -fr "${pkgdir}/usr/lib/cmake"
   rm -fr "${pkgdir}/usr/share/bakefile"
   rm -fr "${pkgdir}/usr/share/"{aclocal,locale}
 
   install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/wxgtk3-light/LICENSE"
 }
 
-package_wxcommon-light() {
+package_wxwidgets-common-light() {
   pkgdesc="wxWidgets common & base (GNOME/GStreamer free!)"
   depends=('sh'
            'expat'
@@ -146,23 +167,28 @@ package_wxcommon-light() {
   provides=('wxbase'
             'wxbase-light'
             'wxgtk-common'
+            'wxwidgets-common'
             )
   conflicts=('wxbase'
              'wxbase-light'
              'wxgtk-common'
+             'wxwidgets-common'
              )
-  options=('!emptydirs')
+  replaces=('wxcommon-light'
+            'wxgtk-common'
+            )
+  options+=('!emptydirs')
 
-  make -C build-gtk2 DESTDIR="${pkgdir}" install
+  make -C build-qt5 DESTDIR="${pkgdir}" install
   make -C build-gtk3 DESTDIR="${pkgdir}" install
   make -C build-base DESTDIR="${pkgdir}" install
 
-  make -C build-gtk2 DESTDIR="${pkgdir}" uninstall_advdll uninstall_auidll uninstall_coredll uninstall_gldll uninstall_htmldll uninstall_propgriddll uninstall_qadll uninstall_ribbondll uninstall_richtextdll uninstall_stcdll uninstall_xrcdll
-  make -C build-gtk3 DESTDIR="${pkgdir}" uninstall_advdll uninstall_auidll uninstall_coredll uninstall_gldll uninstall_htmldll uninstall_propgriddll uninstall_qadll uninstall_ribbondll uninstall_richtextdll uninstall_stcdll uninstall_xrcdll
-
   mv "${pkgdir}/usr/bin/wx-config" "${pkgdir}/usr/bin/wx-config-base"
+  rm -fr "${pkgdir}/usr/lib/"*qt*.so*
+  rm -fr "${pkgdir}/usr/lib/"*gtk*.so*
   rm -fr "${pkgdir}/usr/bin/wxrc"
-  rm -fr "${pkgdir}/usr/lib/wx/"{config,include}/gtk*
+  rm -fr "${pkgdir}/usr/lib/wx/"{config,include}/{gtk,qt}*
+  rm -fr "${pkgdir}/usr/lib/wx/"3*
 
   install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/wxcommon-light/LICENSE"
 }
