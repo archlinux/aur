@@ -1,7 +1,7 @@
 pkgbase = radiotray-ng
 	pkgdesc = An Internet radio player for Linux
 	pkgver = 0.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ebruck/radiotray-ng
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = radiotray-ng
 	depends = libnotify
 	depends = libxdg-basedir
 	depends = glibmm
-	depends = wxgtk3
+	depends = wxwidgets-gtk3
 	optdepends = python-lxml: Convert radiotray bookmarks to radiotray-ng format
 	options = !libtool
 	source = radiotray-ng-0.2.8.tar.gz::https://github.com/ebruck/radiotray-ng/archive/v0.2.8.tar.gz
