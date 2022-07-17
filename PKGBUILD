@@ -1,7 +1,7 @@
 # Maintainer: MD Gaziur Rahman Noor <mdgaziurrahmannoor@gmail.com>
 pkgname=findex-git
 _pkgname=findex
-pkgver=v0.5.0.64
+pkgver=0.6.0
 pkgver() {
 	cd findex
 	git describe --tags | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/-/./'
@@ -22,7 +22,7 @@ conflicts=("findex-git" "findex-bin")
 replaces=()
 backup=()
 options=()
-install=
+install=post_install.install
 changelog=
 source=("git+https://github.com/mdgaziur/findex")
 noextract=()
@@ -30,18 +30,24 @@ md5sums=(SKIP)
 validpgpkeys=()
 
 build() {
-	cd $_pkgname
-	git checkout development
+    cd $_pkgname
+    git checkout development
 
-	rustup default stable
-	cargo build --release
+    rustup default stable
+    cargo build --release
 }
 
 package() {
-	cd "$_pkgname"
+    cd "$_pkgname"
 	
-	install -Dm755 target/release/findex "${pkgdir}/usr/bin/${_pkgname}"
-	mkdir -p "${pkgdir}/opt/findex"
-	cp ./css/style.css "${pkgdir}/opt/findex"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    install -Dm755 target/release/findex "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm644 css/style.css "${pkgdir}/opt/findex"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    
+    if [[ $(pidof systemd) ]]
+    then
+	install -Dm644 findex.service "${pkgdir}/etc/systemd/user/findex.service"
+	install -Dm644 findex-restarter.service "${pkgdir}/etc/systemd/user/findex-restarter.service"
+	install -Dm644 findex-restarter.path "${pkgdir}/etc/systemd/user/findex-restarter.path"
+    fi
 }
