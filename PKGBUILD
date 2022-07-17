@@ -3,7 +3,7 @@
 
 pkgname=dktools
 pkgver=4.34.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of tools by Dirk Krause, including converters, daemons, Perl modules, development tools, administration tools and printing tools."
 arch=('i686' 'x86_64')
 url="http://dktools.sourceforge.net"

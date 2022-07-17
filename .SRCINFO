@@ -1,7 +1,7 @@
 pkgbase = dktools
 	pkgdesc = Collection of tools by Dirk Krause, including converters, daemons, Perl modules, development tools, administration tools and printing tools.
 	pkgver = 4.34.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dktools.sourceforge.net
 	arch = i686
 	arch = x86_64
