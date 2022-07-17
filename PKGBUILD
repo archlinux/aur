@@ -3,27 +3,28 @@
 # Contributor: JP-Ellis <josh@jpellis.me>
 
 pkgname=miopen-opencl
-pkgver=5.1.3
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="AMD's Machine Intelligence Library (OpenCL backend)"
 arch=('x86_64')
-url="https://github.com/ROCmSoftwarePlatform/MIOpen"
+url="https://rocmsoftwareplatform.github.io/MIOpen/doc/html"
 license=('MIT')
 depends=('ocl-icd' 'rocblas' 'rocm-llvm' 'rocm-llvm-mlir')
 makedepends=('opencl-headers' 'rocm-cmake' 'cmake' 'miopengemm' 'sqlite' 'boost>=1.78')
 provides=('miopen')
 conflicts=('miopen')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/rocm-$pkgver.tar.gz"
-       "https://github.com/ROCmSoftwarePlatform/MIOpen/pull/1490.patch")
-sha256sums=('510461f5c5bdbcf8dc889099d1e5960b9f84bd845a9fc9154588a9898c701c1d'
+_git="https://github.com/ROCmSoftwarePlatform/MIOpen"
+source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz"
+       "$_git/commit/9ae2418adf767794e9475274a4cf90e418f00a58.patch")
+sha256sums=('5fda69426e81df9f8fb6658e579176b9c4fcce3516fc8488d3cfd2b6f6f2b3b4'
             'SKIP')
-_dirname="$(basename "$url")-$(basename "${source[0]}" .tar.gz)"
+_dirname="$(basename "$_git")-$(basename "${source[0]}" .tar.gz)"
 
 prepare() {
   cd "$_dirname"
 
   # -fcf-protection is not supported by HIP, see
-  # https://github.com/ROCm-Developer-Tools/HIP/blob/rocm-5.1.x/docs/markdown/clang_options.md
+  # https://docs.amd.com/bundle/ROCm-Compiler-Reference-Guide-v5.2/page/Appendix_A.html
   # -fPIC fixes linking errors.
   export CC=/opt/rocm/llvm/bin/clang
   export CXX=/opt/rocm/llvm/bin/clang++
@@ -45,9 +46,6 @@ prepare() {
 build() {
   cd "$_dirname"
 
-  # -fcf-protection is not supported by HIP, see
-  # https://github.com/ROCm-Developer-Tools/HIP/blob/rocm-5.1.x/docs/markdown/clang_options.md
-  # -fPIC fixes linking errors with boost.
   export CC=/opt/rocm/llvm/bin/clang
   export CXX=/opt/rocm/llvm/bin/clang++
   export CXXFLAGS="${CXXFLAGS} -fcf-protection=none -fPIC"
