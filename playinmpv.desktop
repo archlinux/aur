@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=playinmpv
+Comment=Play Bilibili videos with MPV
+NoDisplay=true
+Exec=$BINPATH %U
+MimeType=x-scheme-handler/mpv;
