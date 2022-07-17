@@ -4,13 +4,13 @@
 # Maintainer: Andre Klitzing <aklitzing () gmail () com>
 # AUR Category: devel
 pkgname=tortoisehg
-pkgver=6.1.3
+pkgver=6.2
 pkgrel=1
 #_pkgchangeset=1605d6fba195f02c0c689fe4aff5d7160aa2b15d
 pkgdesc="Graphical tools for Mercurial"
 url="https://foss.heptapod.net/mercurial/tortoisehg/thg"
 license=("GPL")
-depends=('python' 'mercurial>=5.9' 'mercurial<6.2' 'python-qscintilla-qt5' 'python-iniparse' 'qt5-svg' 'python-pyqt5')
+depends=('python' 'mercurial>=6.0' 'mercurial<6.3' 'python-qscintilla-qt5' 'python-iniparse' 'qt5-svg' 'python-pyqt5')
 arch=('any')
 optdepends=('python-pygments: syntax highlighting'
             'python-nautilus: Python binding for Nautilus components')
@@ -42,4 +42,4 @@ package() {
 	rm -rf python*/site-packages/hgext3rd/__pycache__/
 }
 
-sha256sums=('348ff3e879fc840bf05d7c7421e7fd845dd766f00d6cd0116fc5b0777046f4c8')
+sha256sums=('acbed457dfca56a02e9fa37ea90bdc030783cee656812a67a8fd1bdd35752937')
