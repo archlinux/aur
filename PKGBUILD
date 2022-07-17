@@ -4,7 +4,7 @@
 
 _pkgname=repo
 pkgname=repo-git
-pkgver=1.13.7.1.r0.gb466854b
+pkgver=2.27.r5.ga8cf575d
 pkgrel=1
 pkgdesc="The Multiple Git Repository Tool"
 arch=('any')

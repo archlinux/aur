@@ -1,6 +1,6 @@
 pkgbase = repo-git
 	pkgdesc = The Multiple Git Repository Tool
-	pkgver = 1.13.7.1.r0.gb466854b
+	pkgver = 2.27.r5.ga8cf575d
 	pkgrel = 1
 	url = https://source.android.com/source/developing.html
 	arch = any
@@ -13,4 +13,3 @@ pkgbase = repo-git
 	sha256sums = SKIP
 
 pkgname = repo-git
-
