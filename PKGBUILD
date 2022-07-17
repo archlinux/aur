@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=frog-ocr
 pkgver=1.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Intuitive text extraction tool (OCR) for GNOME."
 arch=('any')
 url="https://tenderowl.com/work/frog"
@@ -19,9 +19,6 @@ prepare() {
 
   # Fix path to appdata
   sed -i 's|/app/share/|/usr/share/|g' frog/language_manager.py
-
-  # bump Notify to 0.8
-  sed -i "s/'Notify', '0.7'/'Notify', '0.8'/g" frog/main.py
 }
 
 build() {
