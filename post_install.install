@@ -1,0 +1,10 @@
+post_install() {
+    if [[ $(pidof systemd) ]]
+    then
+	echo "Services for Findex was installed automatically."
+	echo "To enable them, run the following commands: "
+	echo "systemctl --user daemon-reload"
+	echo "systemctl --user enable findex.service"
+	echo "systemctl --user enable findex-restarter.path"
+    fi
+}
