@@ -1,7 +1,7 @@
 pkgbase = idutils
 	pkgdesc = A package of language independent tools that indexes program identifiers, literal numbers, or words of human-readable text.
 	pkgver = 4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/idutils/
 	arch = i686
 	arch = x86_64
@@ -12,4 +12,3 @@ pkgbase = idutils
 	md5sums = 99b572536377fcddb4d38e86a3c215fd
 
 pkgname = idutils
-
