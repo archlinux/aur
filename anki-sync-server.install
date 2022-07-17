@@ -17,6 +17,9 @@ post_install() {
   echo "==============================================="
   echo "Check the manpage for post-install instructions"
   echo "==============================================="
+
+  # ankisyncctl.py can't find ankisyncd module unless it's in the root directory (pending upstream change)
+  sudo -u anki-sync-server mv /opt/anki-sync-server/ankisyncd_cli/ankisyncctl.py /opt/anki-sync-server/.
 }
 
 post_remove(){
