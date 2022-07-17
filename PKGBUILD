@@ -1,8 +1,8 @@
 # Maintainer: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
 
 pkgname=beagle-lib
-pkgver=3.1.2
-pkgrel=4
+pkgver=4.0.0
+pkgrel=2
 epoch=1
 pkgdesc="general purpose library for evaluating the likelihood of sequence evolution on trees"
 arch=('i686' 'x86_64')
@@ -12,37 +12,24 @@ depends=('libtool')
 optdepends=('cuda-toolkit: for CUDA support'
             'java-runtime: for Java support'
             'libcl: for OpenCL support')
-makedepends=('make' 'java-environment')
+makedepends=('cmake' 'make' 'java-environment')
 conflicts=('beagle-lib-git' 'beagle-lib-svn')
 source=("https://github.com/beagle-dev/beagle-lib/archive/v${pkgver}.tar.gz")
-sha512sums=('0dacede40a51d8bb67c149d635b0f0fb5c27daf68b0d4a63d4109805eb1e16e1a408c725b99903cc615b60ba44723df9b6431815b6993e88783fce1aa88f29ea')
+sha512sums=('41f390dd7180584b1ca0b2fc798a88aa718f03ea0d40d9831178f0c14c303255470a84a45df580a2b22307e905230af628af8671b70fda4330d67963e114a06e')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
-
-  ./autogen.sh
+  test -d build || mkdir build
 }
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-
+  cd build
   export JAVA_HOME=/usr/lib/jvm/default
-
-  ./configure \
-    --prefix=/usr \
-    --enable-openmp
-
-  make
-}
-
-check() {
-  cd $srcdir/$pkgname-$pkgver
-
-  make check
+  cmake -DBUILD_CUDA=ON -DBUILD_OPENCL=ON -DCMAKE_INSTALL_PREFIX:PATH=$pkgdir/usr ..
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-
-  make DESTDIR=$pkgdir install
+  cd $srcdir/$pkgname-$pkgver/build
+  make install
 }
