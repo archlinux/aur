@@ -1,7 +1,7 @@
 pkgbase = mopidy-podcast-itunes
 	pkgdesc = Mopidy-Podcast extension for searching and browsing podcasts on the iTunes Store
-	pkgver = 3.0.0
-	pkgrel = 3
+	pkgver = 3.0.1
+	pkgrel = 1
 	url = https://github.com/tkem/mopidy-podcast-itunes
 	arch = any
 	license = APACHE
@@ -13,8 +13,7 @@ pkgbase = mopidy-podcast-itunes
 	depends = mopidy-podcast>=3.0
 	depends = python-pykka>=2.0.1
 	depends = python-requests>=2.0
-	source = https://pypi.python.org/packages/source/M/Mopidy-Podcast-iTunes/Mopidy-Podcast-iTunes-3.0.0.tar.gz
-	md5sums = d6fc73c113eb462b2f81b816a8695b0b
+	source = https://pypi.python.org/packages/source/M/Mopidy-Podcast-iTunes/Mopidy-Podcast-iTunes-3.0.1.tar.gz
+	md5sums = 935e46124993b51bd148de6f52620d5c
 
 pkgname = mopidy-podcast-itunes
-
