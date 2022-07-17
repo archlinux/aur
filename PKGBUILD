@@ -71,7 +71,7 @@ fi
 
 # Use LLVM Type ( "full" or "thin" )
 if [ -z ${_use_llvm_type+x} ]; then
-  _use_llvm_type="full"
+  _use_llvm_type="thin"
 fi
 
 # cpufreq gov (available:performance,ondemand,conservative,userspace,schedutil,powersave)
@@ -110,7 +110,7 @@ fi
 
 pkgbase=linux-xanmod-tt-uksm-cjktty
 _major=5.15
-pkgver=${_major}.53
+pkgver=${_major}.54
 _branch=5.x
 xanmod=1
 pkgrel=${xanmod}
@@ -153,7 +153,7 @@ done
 
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            '4e98f22abda61c6afa0dcad77abc90f5281c433f441104ecf9074ff2fe1a13f3'
+            'bb223ac91f3d0ad1cad7ec7c30fbb7f14c4398861be5b035aae207bb121f6c5c'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
             '97a525e28a270c5e6e5a4fc4ab4920c42ceef2f9921857497ab3c56ec343803e'
             'cb348cc3ba1a453ac6057ecc08000a2ccddc47b70491caaf71db34a3d630f77c')
