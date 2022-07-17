@@ -2,7 +2,7 @@
 
 _pkgname=flower
 pkgname=python-$_pkgname
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Real-time monitor and web admin for Celery distributed task queue'
 arch=('any')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('python-redis')
 makedepends=('python-setuptools')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('9f2fb03198291cfa754d803c7088a43dd40d657160b66db7996c43787d553819')
+sha256sums=('99ab5e957538540c18126dc0661bbf07b1a956a280c618f34f85c7750cb9e1f2')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
