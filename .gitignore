@@ -7,3 +7,7 @@ pkg
 *.pkg.tar*
 *.log
 LICENSE*
+*.rst
+*.dat
+*.j2k
+*.xmp
