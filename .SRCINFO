@@ -10,8 +10,8 @@ pkgbase = airwindows-lv2-git
 	makedepends = git
 	makedepends = cmake
 	depends = glibc
-	provides = airwindows-lv2
-	conflicts = airwindows-lv2
+	provides = airwindows-lv2-git
+	conflicts = airwindows
 	source = git+https://github.com/hannesbraun/airwindows-lv2
 	md5sums = SKIP
 
