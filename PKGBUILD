@@ -21,11 +21,11 @@ source=(
 sha256sums=(
     'SKIP'
 )
-depends=(coreutils ncurses zlib erlang)
+depends=(coreutils ncurses zlib erlang-nox)
 makedepends=(
     cmake
     coreutils
-    erlang
+    erlang-nox
     git
     unzip
 )
@@ -40,7 +40,8 @@ pkgver() {
 
 build() {
     cd "$srcdir/$REPO_NAME" || exit
-    BUILD_WITHOUT_JQ=false make
+    export CFLAGS="-fno-pie -no-pie -fPIC"
+    make
 }
 
 package() {
