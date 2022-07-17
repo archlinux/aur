@@ -1,8 +1,8 @@
 # Maintainer: Winona Schroeer-Smith (Wolfizen) <wolfizen@wolfizen.net>
 
 pkgname='ddnswolf-git'
-pkgver=3
-pkgrel=1
+pkgver=1
+pkgrel=2
 pkgdesc='Dynamic DNS updater'
 arch=('any')
 url='https://github.com/Wolfizen/DDNSWolf'
@@ -10,8 +10,7 @@ license=('GPL3')
 depends=(
     'python>=3.9'
     'python-cloudflare'
-    # community/python-dnspython is locked to 1.16. ddnswolf needs 2.0
-    'python-dnspython-git>=v2.0'
+    'python-dnspython>=2.0'
     'python-netifaces'
     'python-pyhocon'
     'python-requests'
@@ -26,7 +25,7 @@ source=(
     # a (potentially modified) checkout of the DDNSWolf repo.
     $([ ! -z "${LOCAL_SOURCE}" ] \
         && echo "DDNSWolf::git+file://${LOCAL_SOURCE}" \
-        || echo 'git://github.com/Wolfizen/DDNSWolf.git')
+        || echo 'git+https://github.com/Wolfizen/DDNSWolf.git')
 )
 sha256sums=(
     'SKIP'
