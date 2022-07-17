@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: CC0-1.0
 
 pkgname='nginx-mod-http-xslt-filter'
-pkgver=1.20.2
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Transform nginx XML responses using XSLT stylesheets'
 arch=('x86_64')
