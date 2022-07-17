@@ -7,46 +7,46 @@
 pkgbase=yozo-office
 pkgname=('yozo-office' 'yozo-office-fonts' 'yozo-office-templates')
 pkgver=8.0.1331.101ZH.S1
-pkgrel=3
-pkgdesc="永中办公 2019 | Yozo Office 2019 - An M$ Office Compatible Office Suite"
+pkgrel=4
+pkgdesc="Yozo Office 2019 - An M$ Office compatible office suite"
 url="https://www.yozosoft.com/product-officelinux.html"
 options=('!strip')
-license=("custom: yozo")
+license=('custom: yozo')
 arch=('x86_64')
-source=("https://dl.yozosoft.com/yozo/project/file/20210415_094030_900850/yozo-office_8.0.1331.101ZH.S1_amd64.deb")
-# "https://dl.yozosoft.com/portal-download/fileManager/PRODUCT/yozo-office_${pkgver}_amd64.deb"
+source=("https://dl.yozosoft.com/yozo/project/file/20210415_094030_900850/yozo-office_${pkgver}_amd64.deb")
 sha256sums=('0896ca9d4b7163e769ba0be0da0862ed4322dabb18909a3309822832d0047d8f')
 
-prepare() {
-    mkdir -p "${srcdir}"/temp
-    bsdtar --acls --xattrs -xpf data.tar.xz -C "${srcdir}"/temp
+_info() { echo -e "[\e[96m$*\e[0m]"; }
 
-    # Premission fix
-    find "${srcdir}" -type d -exec chmod 755 {} +
-    
-    # Remove unnecessary files
-    cd "${srcdir}"/temp
-    rm -rf etc/xdg
-    rm -rf etc/skel
-    rm -rf opt/Yozosoft/Yozo_Office/Upgrade
-    rm -rf opt/Yozosoft/Yozo_Office/uninstall
-    rm -rf usr/lib64
-    rm -rf usr/share/applications/yozo-uninstall.desktop
+prepare() {
+    cd "${srcdir}"
+    _info "Decompressing data.tar.xz ..."
+    tar -xvpf data.tar.xz -C "${srcdir}"
+
+    _info "Fixing directory permissions ..."
+    find "${srcdir}" -type d -exec chmod -v 755 {} +
+
+    _info "Removing unnecessary files ..."
+    rm -rv "${srcdir}"/etc/xdg
+    rm -rv "${srcdir}"/etc/skel
+    rm -rv "${srcdir}"/opt/Yozosoft/Yozo_Office/Upgrade
+    rm -rv "${srcdir}"/opt/Yozosoft/Yozo_Office/uninstall
+    rm -rv "${srcdir}"/usr/lib64
+    rm -rv "${srcdir}"/usr/share/applications/yozo-uninstall.desktop
+    rm -rv "${srcdir}"/etc/yozoXpack
 }
 package_yozo-office() {
-    depends=('glibc>=2.3' 'libx11' 'libxext' 'libxi' 'libxt'
-             'libxtst' 'libxmu' 'libxau' 'libcups' 'libxcb')
-    optdepends=('yozo-office-fonts: UI Fonts'
-                'yozo-office-templates: Built-in Document Templates')
-    install=${pkgname}.install
+    depends=('gtk2' 'libxml2' 'hicolor-icon-theme')
+    optdepends=('yozo-office-fonts: built-in fonts'
+                'yozo-office-templates: built-in document templates')
     
-    # Copy to pkgdir
-    cd "${srcdir}"/temp
-    cp -r usr opt etc "${pkgdir}"
+    cd "${srcdir}"
+    _info "Installing main binaries ..."
+    cp -rv "$srcdir"/{usr,opt,etc} "${pkgdir}"
     
-    # Separate font files and built-in templates
-    rm -rf "${pkgdir}"/usr/share/fonts
-    rm -rf "${pkgdir}"/opt/Yozosoft/Yozo_Office/Templates
+    _info "Separating built-in fonts and templates ..."
+    rm -rv "${pkgdir}"/usr/share/fonts
+    rm -rv "${pkgdir}"/opt/Yozosoft/Yozo_Office/Templates
     
     # Redirect Java binary
     # rm -rf "${pkgdir}"/opt/Yozosoft/Yozo_Office/Jre/bin
@@ -64,7 +64,9 @@ package_yozo-office() {
     #rm -rf "${pkgdir}"/opt/Yozosoft/Yozo_Office/Lib/media/vlc
     #ln -sf /usr/lib/vlc "${pkgdir}"/opt/Yozosoft/Yozo_Office/Lib/media/vlc
     
-    install -Dm644 "${pkgdir}"/opt/Yozosoft/Yozo_Office/thirdpartylicensereadme.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+    _info "Installing licenses of thirdparties ..."
+    install -Dvm644 "${pkgdir}"/opt/Yozosoft/Yozo_Office/thirdpartylicensereadme.txt \
+        "${pkgdir}"/usr/share/licenses/${pkgname}/thirdpartylicensereadme.txt
     
 #    targetP="${pkgdir}/opt/Yozosoft/Yozo_Office"
 #    unpackP="${targetP}/Jre/bin/unpack200"
@@ -72,15 +74,19 @@ package_yozo-office() {
 }
 
 package_yozo-office-fonts() {
-    pkgdesc="永中办公界面字体 | UI Fonts for Yozo Office 2019"
-    cd "${srcdir}"/temp
-    mkdir -p "${pkgdir}"/usr/share/fonts/truetype
-    cp -r usr/share/fonts/truetype/yozo "${pkgdir}"/usr/share/fonts/truetype
+    pkgdesc="Built-in fonts of Yozo Office 2019"
+    cd "${srcdir}"
+    _info "Installing built-in fonts of Yozo Office 2019 ..."
+    install -dvm644 "${pkgdir}"/usr/share/fonts/truetype
+    cp -rv "${srcdir}"/usr/share/fonts/truetype/yozo \
+        "${pkgdir}"/usr/share/fonts/truetype
 }
 
 package_yozo-office-templates() {
-    pkgdesc="永中办公内置模板 | Yozo Office 2019 Built-in Document Templates"
-    cd "${srcdir}"/temp
-    mkdir -p "${pkgdir}"/opt/Yozosoft/Yozo_Office
-    cp -r opt/Yozosoft/Yozo_Office/Templates "${pkgdir}"/opt/Yozosoft/Yozo_Office
+    pkgdesc="Built-in document templates of Yozo Office 2019"
+    cd "${srcdir}"
+    _info "Installing built-in document templates of Yozo Office 2019 ..."
+    install -dvm755 "${pkgdir}"/opt/Yozosoft/Yozo_Office
+    cp -rv "${srcdir}"/opt/Yozosoft/Yozo_Office/Templates \
+        "${pkgdir}"/opt/Yozosoft/Yozo_Office
 }
