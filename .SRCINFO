@@ -1,6 +1,6 @@
 pkgbase = python-apycula
 	pkgdesc = Open Source tools for Gowin FPGAs
-	pkgver = 0.3.1
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/YosysHQ/apicula
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-apycula
 	makedepends = python-setuptools
 	depends = python
 	conflicts = prjapicula
-	source = https://files.pythonhosted.org/packages/source/A/Apycula/Apycula-0.3.1.tar.gz
-	sha256sums = 468599b763b1d178c9eaf9ae08270d09331fc199f027a7d2c7bd5f9a2a66bb67
+	source = https://files.pythonhosted.org/packages/source/A/Apycula/Apycula-0.4.tar.gz
+	sha256sums = f865579aaa05f6bfc63efd92eca3fe3d34b65937ae6e12c135a03d317c39951a
 
 pkgname = python-apycula
 	depends = python
