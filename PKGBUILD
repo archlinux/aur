@@ -1,13 +1,14 @@
-# Contributor: ANDRoid7890 andrey.android7890@gmail.com
+# Contributor: ANDRoid7890 <andrey.android7890 at gmail dot com>
+
 pkgbase=meridius-bin-git
 pkgname=("${pkgbase}") #"${pkgbase}-electron")
-pkgver=v2.2.6
+pkgver=v2.4.24
 pkgrel=1
 pkgdesc="Free and modern music player for VK. Meridius - it is a beautiful music player for vk.com"
 arch=('x86_64')
 url="https://purplehorrorrus.github.io/meridius"
 license=('custom')
-makedepends=('git')
+makedepends=('git' 'gendesk')
 options=('!strip' '!emptydirs')
 source=(git+https://github.com/PurpleHorrorRus/Meridius.git)
 md5sums=('SKIP')
@@ -19,11 +20,11 @@ pkgver(){
          
 build(){
     cd $srcdir
-    debfile=meridius-${pkgver//v}.deb
-    deburl=https://github.com/PurpleHorrorRus/Meridius/releases/download/$pkgver/$debfile
+    file=meridius-${pkgver//v}.tar.gz
+    url=https://github.com/PurpleHorrorRus/Meridius/releases/download/$pkgver/$file
     
-    curl -qgb "" -fLC - --retry 3 --retry-delay 3 -o $debfile $deburl
-    bsdtar -xf $debfile
+    curl -qgb "" -fLC - --retry 3 --retry-delay 3 -o $file $url
+    bsdtar -xf $file
 }
     
 package_meridius-bin-git(){
@@ -33,11 +34,20 @@ package_meridius-bin-git(){
     pkgdesc="Music Player for vk.com based on Electron, NuxtJS, Vue. (Built-in Electron)"
     provides=('meridius')
     conflicts=('meridius')
-    
-        tar xf data.tar.xz -C "${pkgdir}"
-        install -D -m644 "${pkgdir}/opt/Meridius/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+        install -dm755 "$pkgdir/opt"
+        mv "meridius-${pkgver//v}" "${pkgdir}/opt/Meridius"
+        install -Dm 644 "${pkgdir}/opt/Meridius/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+        
+        gendesk --pkgname "meridius"                            \
+                --exec "/opt/Meridius/meridiusreborn %U"        \
+                --icon "/opt/Meridius/build/icons/256x256.png"  \
+                --categories "Audio;"                           \
+                --comment $pkgdesc
+                
+        install -Dm 644 -t "$pkgdir/usr/share/applications" meridius.desktop
 }
 
+# (not working)
 # https://aur.archlinux.org/packages/meridius-electron-bin/
 # package_meridius-bin-git-electron() {
 #     depends=('electron' 'libxss' 'libxtst' 'at-spi2-core' 'util-linux-libs' 'libsecret')
