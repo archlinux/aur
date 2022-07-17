@@ -2,14 +2,29 @@
 # Maintainer: Andri Yngvason <andri@yngvason.is>
 
 pkgname=wayvnc-git
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='VNC server for wlroots-based Wayland compositors'
 arch=(x86_64 i686 aarch64 armv7h)
 url=https://github.com/any1/wayvnc
 license=(custom:ISC)
-depends=(libglvnd libxkbcommon libuv pixman neatvnc-git wayland)
-makedepends=(git meson ninja aml-git scdoc)
+depends=(
+  glibc
+  libaml.so
+  libglvnd
+  libdrm
+  neatvnc-git
+  libpixman-1.so
+  libxkbcommon.so
+  wayland
+)
+makedepends=(
+  git
+  meson
+  ninja
+  pam
+  scdoc
+)
 source=("git+$url")
 sha512sums=('SKIP')
 conflicts=(wayvnc)
