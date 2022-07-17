@@ -1,5 +1,5 @@
 case "$CARCH" in
-     armv?h) THIS_JDK='zulu-embedded-13' ;;
+     armv?h) THIS_JDK='zulu-embedded-17' ;;
     aarch64) THIS_JDK='zulu-embedded-17' ;;
           *) THIS_JDK='zulu-embedded-17' ;;
 esac
