@@ -4,21 +4,28 @@
 
 pkgname=rocm-llvm-mlir
 pkgdesc="Radeon Open Compute - LLVM Multi-Level IR Compiler Framework"
-pkgver=5.1.3
+pkgver=5.2.0
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/ROCmSoftwarePlatform/llvm-project-mlir"
 license=('custom:Apache 2.0 with LLVM Exception')
 depends=("hip")
 makedepends=("cmake" "sqlite" "python")
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/rocm-$pkgver.tar.gz")
-sha256sums=('936f92707ffe9a1973728503db6365bb7f14e5aeccfaef9f0924e54d25080c69')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/rocm-$pkgver.tar.gz"
+        "llvm-project-mlir-fix-rpath-flags.patch::https://patch-diff.githubusercontent.com/raw/ROCmSoftwarePlatform/llvm-project-mlir/pull/688.patch")
+sha256sums=('546121f203e7787d3501fbaf6673bdbeefbb39e0446b02c480454338362a1f01'
+            '7085543c8726b3b14cae675ecccef54847a2525af3a13d34d6e1d52d2a17907a')
 options=(!lto)
 _dirname="$(basename $url)-$(basename ${source[0]} .tar.gz)"
 
+prepare() {
+  cd "$_dirname"
+  patch -Np1 < "$srcdir/llvm-project-mlir-fix-rpath-flags.patch"
+}
+
 build() {
   # -fcf-protection is not supported by HIP, see
-  # https://github.com/ROCm-Developer-Tools/HIP/blob/rocm-4.5.x/docs/markdown/clang_options.md
+  # https://docs.amd.com/bundle/ROCm-Compiler-Reference-Guide-v5.2/page/Appendix_A.html
   # -fPIC fixes linking.
   export CXXFLAGS="${CXXFLAGS} -fcf-protection=none -fPIC"
 
