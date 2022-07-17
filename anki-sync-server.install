@@ -4,6 +4,9 @@ post_install() {
   chown -R anki-sync-server /opt/anki-sync-server
   chgrp -R anki-sync-server /opt/anki-sync-server
 
+  # fix protobuf needs older version (pending upstream change)
+  sudo -u anki-sync-server sed -i "s/\\(protobuf\\)==.*$/\\1<=3.20.1/" /opt/anki-sync-server/requirements.txt
+
   # install prerequisites as stated on the website
   echo "installing python packages as anki-sync-server user..."
   sudo -u anki-sync-server pip install -r /opt/anki-sync-server/requirements.txt --user --no-warn-script-location
@@ -17,6 +20,9 @@ post_install() {
   echo "==============================================="
   echo "Check the manpage for post-install instructions"
   echo "==============================================="
+
+  # ankisyncctl.py can't find ankisyncd module unless it's in the root directory (pending upstream change)
+  sudo -u anki-sync-server mv /opt/anki-sync-server/ankisyncd_cli/ankisyncctl.py /opt/anki-sync-server/.
 }
 
 post_remove(){
