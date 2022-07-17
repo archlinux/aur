@@ -7,17 +7,17 @@
 # Contributor: jht <stefano@inventati.org>
 
 pkgname=wxglade
-pkgver=1.0.2
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='wxGlade is a GUI builder written in Python for the GUI toolkit wxWidgets/wxPython'
 arch=('any')
 license=('MIT')
-url='http://wxglade.sourceforge.net/'
-depends=('python' 'python-wxpython' 'desktop-file-utils' 'hicolor-icon-theme' 'shared-mime-info')
+url='https://github.com/wxGlade/wxGlade'
+depends=('python>=3.4' 'python-wxpython>=2.8' 'desktop-file-utils' 'hicolor-icon-theme' 'shared-mime-info')
 makedepends=(icoutils gendesk)
 source=("https://github.com/wxGlade/wxGlade/archive/v$pkgver.tar.gz"
         application-x-wxg.xml)
-sha256sums=('dcf1e3bc3e141480ea9fc059739e823f2d7553931fd51ab130b2ef6a8b699ea1'
+sha256sums=('4ef19816224bd5d1acaf7b98fa6e03904d2acc8c225942618289d2ff55f157d2'
             'f651ff097678077eac865c64a655107c9a4aa4fd0bf65e233713a5ed916608c0')
 
 prepare() {
@@ -33,7 +33,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  python setup.py build
+  command -p python setup.py build
 
   icotool --extract --output=$srcdir icons/wxglade*.ico
 }
@@ -41,7 +41,7 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
 
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  command -p python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
   datadir="$pkgdir/usr/share/"
 
