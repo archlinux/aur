@@ -2,7 +2,7 @@
 
 pkgname=slade
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='SLADE3 Doom editor'
 arch=('i686' 'x86_64')
 url='http://slade.mancubus.net/'
@@ -18,7 +18,7 @@ depends=('bzip2'
          'mpg123'
          'sfml>=2.5'
          'webkit2gtk'
-         'wxgtk3>=3.0'
+         'wxwidgets-gtk3>=3.2'
          'zlib')
 makedepends=('cmake'
              'p7zip')
@@ -31,7 +31,6 @@ build() {
     export CCACHE_SLOPPINESS=pch_defines,time_macros
     cmake -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX=/usr \
-          -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
           .
     make
 }
