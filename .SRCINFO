@@ -1,0 +1,18 @@
+pkgbase = rsaturation-lv2
+	pkgdesc = A simple saturation plugin
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/hannesbraun/rsaturation
+	arch = i686
+	arch = x86_64
+	groups = lv2-plugins
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	provides = rsaturation-lv2
+	conflicts = rsaturation-lv2
+	source = rsaturation-lv2::git+https://github.com/hannesbraun/rsaturation
+	md5sums = SKIP
+
+pkgname = rsaturation-lv2
