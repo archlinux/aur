@@ -12,6 +12,7 @@ url='http://support-asia.canon-asia.com/'
 license=('custom')
 depends=('cups' 'glib2' 'libglade' 'gtk2' 'atk' 'libxml2' 'popt' 'ghostscript')
 depends_x86_64=('lib32-libxml2' 'lib32-popt' 'lib32-gcc-libs')
+conflicts=('cndrvcups-lb' 'cndrvcups-lb' 'cndrvcups-common-lb')
 install=${pkgname}.install
 _tardir=linux-capt-drv-v271-uken
 source=("http://gdlp01.c-wss.com/gds/6/0100004596/05/${_tardir}.tar.gz"
