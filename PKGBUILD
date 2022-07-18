@@ -7,7 +7,7 @@
 _name=Rack
 pkgname=vcvrack
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source Eurorack modular synthesizer simulator'
 url='https://vcvrack.com/'
 license=(custom CCPL GPL3)
@@ -15,8 +15,8 @@ arch=(x86_64 aarch64)
 _plugin_name=Fundamental
 _plugin_ver=2.2.1
 _plugin_pkg=$pkgname-${_plugin_name,,}
-makedepends=(curl gendesk glew glfw-x11 jansson jq libarchive openssl rtaudio rtmidi simde speexdsp
-  zstd)
+depends=(glfw-x11 jansson openssl speexdsp)
+makedepends=(curl gendesk glew jq libarchive rtaudio rtmidi simde zstd)
 provides=(libRack.so $_plugin_pkg)
 conflicts=($_plugin_pkg)
 groups=(pro-audio)
@@ -54,7 +54,7 @@ sha256sums=('253b655a12bb4f27be8f134fee4696b328962ffb44413650dbad8656a123c9fd'
             '21ac35c6ad4e5a29c32939b17baaf7ac1936077eda2214e28675eefcf2021db8'
             'e1da6ccf04bae3a2101151fec7ddd32e48ff92b0a1146b559fd3221c778d521f'
             '1159629aa90abb7c972c0f630d55d018b88a6b3bc3ff0bb9466cc06982f38641'
-            '0046e7e7497f070fde1108267367f5eb25cd7a0d4268403d297036081da8abf5')
+            'bc6d144302e429d4a5051207733142e99c1c60953766d7d87b96f2b10a5ca723')
 # extract the submodules ourselves so we have control over the unpacked top-level directory name
 noextract=($(for _i in ${!_submodules[@]}; do
   echo "${_submodules[$_i]}-${_commits[$_i]}.tar.gz"
@@ -104,8 +104,8 @@ build() {
 
 package() {
   # Rack does not start with glfw-wayland
-  depends=(libcurl.so libGLEW.so glfw-x11 jansson libarchive.so
-    openssl librtaudio.so librtmidi.so libsamplerate.so speexdsp zenity)
+  depends+=(libcurl.so libGLEW.so libarchive.so
+    librtaudio.so librtmidi.so libsamplerate.so zenity)
   cd $_name-$pkgver
   install -vDm755 Rack -t "$pkgdir"/usr/lib/$pkgname
   install -vDm755 libRack.so -t "$pkgdir"/usr/lib

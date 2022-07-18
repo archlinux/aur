@@ -13,7 +13,7 @@ index b2676f27..4b455a35 100644
  $(error Could not determine CPU architecture of $(MACHINE). Try hacking around in arch.mk)
  endif
 diff --git a/compile.mk b/compile.mk
-index 9580533c..70c171e6 100644
+index 9580533c..94b8a970 100644
 --- a/compile.mk
 +++ b/compile.mk
 @@ -14,7 +14,7 @@ FLAGS += -MMD -MP
@@ -25,6 +25,19 @@ index 9580533c..70c171e6 100644
  # Warnings
  FLAGS += -Wall -Wextra -Wno-unused-parameter
  # C++ standard
+@@ -82,8 +82,12 @@ build/%.m.o: %.m
+ build/%.bin.o: %
+ 	@mkdir -p $(@D)
+ ifdef ARCH_LIN
++ifdef ARCH_aarch64
++	$(OBJCOPY) -I binary -O elf64-littleaarch64 -B aarch64 --rename-section .data=.rodata,alloc,load,readonly,data,contents $< $@
++else
+ 	$(OBJCOPY) -I binary -O elf64-x86-64 -B i386:x86-64 --rename-section .data=.rodata,alloc,load,readonly,data,contents $< $@
+ endif
++endif
+ ifdef ARCH_WIN
+ 	$(OBJCOPY) -I binary -O pe-x86-64 -B i386:x86-64 --rename-section .data=.rodata,alloc,load,readonly,data,contents $< $@
+ endif
 diff --git a/dep.mk b/dep.mk
 index 1d541269..b7963885 100644
 --- a/dep.mk
