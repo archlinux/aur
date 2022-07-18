@@ -1,0 +1,16 @@
+pkgbase = discord-screenaudio
+	pkgdesc = Custom discord client with the ability to stream desktop audio
+	pkgver = 1.0.0.rc.2
+	pkgrel = 1
+	url = https://github.com/maltejur/discord-screenaudio
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = cmake
+	makedepends = qt5-base
+	makedepends = qt5-webengine
+	makedepends = pipewire
+	depends = pipewire
+	source = discord-screenaudio-1.0.0.rc.2.tar.gz::https://github.com/maltejur/discord-screenaudio/archive/refs/tags/v1.0.0-rc.2.tar.gz
+	sha256sums = b999c9d3f99f9e5b0c30b1ae18e6620e8b6e380eaaadc5db144eeab33d0d6078
+
+pkgname = discord-screenaudio
