@@ -14,7 +14,7 @@ _minor=12
 pkgbase=linux-multimedia
 #pkgver=${_major}
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Multimedia Optimized'
 url="https://www.kernel.org/"
 arch=(x86_64)
@@ -86,10 +86,9 @@ prepare() {
 
   msg2 "Disable NUMA..."
   scripts/config --disable CONFIG_NUMA
-
-  msg2 "Enable full tickless timer..."
-  scripts/config --disable CONFIG_NO_HZ_IDLE
-  scripts/config --enable CONFIG_NO_HZ_FULL
+  
+  msg2 "Disable old dynticks..."
+  scripts/config --disable CONFIG_NO_HZ
 
   msg2 "Set up a GCC -O3 optimized kernel..."
   scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
@@ -102,6 +101,8 @@ prepare() {
 
   msg2 "Set default CPU governor to performance..."
   scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
+  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_POWERSAVE
+  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_USERSPACE
   scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
 
   msg2 "Enable Anbox support..."
