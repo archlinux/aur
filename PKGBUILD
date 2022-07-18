@@ -1,11 +1,11 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname=qbe-git
 pkgdesc='Small embeddable C compiler backend'
-pkgver=r1265.cd778b4
+pkgver=r1269.c8cd282
 pkgrel=1
-url='http://c9x.me/compile/'
+url=http://c9x.me/compile/
 license=(custom:MIT)
-arch=(x86_64)
+arch=(x86_64 aarch64)
 depends=(glibc)
 makedepends=(git)
 provides=(qbe)
