@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=stalld
-pkgver=1.15.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="A daemon to prevent the starvation of operating system threads"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://git.kernel.org/pub/scm/utils/stalld/stalld.git/"
 license=('GPL2')
 depends=('glibc')
 source=("https://git.kernel.org/pub/scm/utils/stalld/stalld.git/snapshot/stalld-$pkgver.tar.gz")
-sha256sums=('94cd22bbbb2b69044dbcfb2f1176b6d9a6f0dbc3b09f25c3d1f253644c60ec62')
+sha256sums=('226d26904d878b70113b3c4a4ae3b102f837e52e2101743f740255b887d5b748')
 
 
 prepare() {
