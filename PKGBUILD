@@ -1,9 +1,9 @@
 # Maintainer: Mintsuki <mintsuki@protonmail.com>
 pkgname=jinx
 pkgver=0.0.10
-pkgrel=2
+pkgrel=3
 pkgdesc="A meta-build-system for building OS distributions"
-arch=("x86_64")
+arch=("any")
 url="https://github.com/mintsuki/jinx"
 license=("BSD")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mintsuki/jinx/archive/refs/tags/v${pkgver}.tar.gz")
