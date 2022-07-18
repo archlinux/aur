@@ -1,18 +1,17 @@
-# Maintainer: ValHue <vhuelamo at gmail dot com>
-#
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: ValHue <vhuelamo at gmail dot com>
 # Contributor: satanselbow <igdfpm at gmail dot com>
 # Contributor: Artem Sereda <overmind88 at gmail dot com>
-#
-pkgname="flacon"
-pkgver="9.0.0"
-pkgrel="1"
+
+pkgname=flacon
+pkgver=9.1.0
+pkgrel=1
 pkgdesc="An Audio File Encoder. Extracts audio tracks from an audio CD image to separate tracks."
-arch=('i686' 'x86_64' 'aarch64')
+arch=(x86_64 i686 aarch64)
 url="https://flacon.github.io/"
-_url="https://github.com/${pkgname}"
-license=('LGPL2.1')
-makedepends=('cmake' 'icu' 'qt5-tools')
-depends=('hicolor-icon-theme' 'qt5-base' 'uchardet' 'ffmpeg' 'taglib')
+license=(LGPL2.1)
+depends=(hicolor-icon-theme qt5-base uchardet taglib) #ffmpeg
+makedepends=(cmake icu qt5-tools)
 optdepends=('flac: For FLAC support'
             'lame: For MP3 support'
             'mac: For APE support'
@@ -24,23 +23,29 @@ optdepends=('flac: For FLAC support'
             'vorbisgain: For OGG Replay Gain support'
             'wavpack: For WavPack support'
 )
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/flacon/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('640b3baf3940ab58034afa9eba7024d7db20971cc78c8cb672111bdaa9a3a11d')
 
-source=("${pkgname}-${pkgver}.tar.gz::${_url}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('a83d5fe297ceb6408b7f63c56a6be336fe1c6d06ebedcc0c84a3f7dd234140e4')
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  [[ -d build ]] || mkdir build
+}
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    mkdir -p build
+  cd "${srcdir}/${pkgname}-${pkgver}/build" #-Wno-dev
+  cmake ..  \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_TESTS=Yes
+  make
+}
 
-    cd build
-    cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-    make
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  #ctest --output-on-failure
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}/build"
-    install -D -m644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    make DESTDIR="${pkgdir}" install
+  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  make DESTDIR="${pkgdir}" install
 }
-
-# vim: set ts=4 sw=4 et syn=sh ft=sh:
