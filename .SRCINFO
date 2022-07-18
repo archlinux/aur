@@ -6,7 +6,6 @@ pkgbase = opentabletdriver
 	install = notes.install
 	arch = x86_64
 	license = LGPL3
-	makedepends = git
 	makedepends = dotnet-sdk>=6.0
 	depends = dotnet-runtime>=6.0
 	depends = dotnet-host>=6.0

@@ -12,7 +12,7 @@ url="https://github.com/OpenTabletDriver/OpenTabletDriver"
 license=('LGPL3')
 depends=('dotnet-runtime>=6.0' 'dotnet-host>=6.0' 'gtk3' 'libevdev')
 optdepends=('libxrandr: x11 display querying support' 'libx11')
-makedepends=('git' 'dotnet-sdk>=6.0')
+makedepends=('dotnet-sdk>=6.0')
 install="notes.install"
 source=("OpenTabletDriver-$pkgver.tar.gz::https://github.com/OpenTabletDriver/OpenTabletDriver/archive/v$pkgver.tar.gz"
         "$_spkgname"
