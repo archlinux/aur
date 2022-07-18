@@ -1,0 +1,64 @@
+diff --git a/data/styles/Artwiz b/data/styles/Artwiz
+index f413761a..153b20b1 100644
+--- a/data/styles/Artwiz
++++ b/data/styles/Artwiz
+@@ -110,5 +110,5 @@ background.modY:		4
+ background.color:		rgb:10/18/20
+ background.colorTo:		rgb:30/38/40
+ 
+-*Font:	                        -*-lucidatypewriter-medium-r-*-*-*-100-*-*-*-*-*-*
+-!*Font:                         vera-7
++!*Font:	                        -*-lucidatypewriter-medium-r-*-*-*-100-*-*-*-*-*-*
++*Font:                         vera-7
+diff --git a/data/styles/BlueNight b/data/styles/BlueNight
+index 1e77343f..1e5e86ee 100644
+--- a/data/styles/BlueNight
++++ b/data/styles/BlueNight
+@@ -52,7 +52,7 @@ menu.title:                          Flat Gradient CrossDiagonal
+ menu.title.color:                    #80949d
+ menu.title.colorTo:                  #4e5a67
+ menu.title.textColor:                #ffffff
+-menu.title.font:                     -*-lucida-bold-r-*-*-11-*-*-*-*-*-*-*
++!menu.title.font:                     -*-lucida-bold-r-*-*-11-*-*-*-*-*-*-*
+ menu.title.justify:                  Left
+ 
+ menu.hilite:                         Flat Gradient CrossDiagonal
+@@ -138,3 +138,4 @@ bevelWidth:                          1
+ borderWidth:                         1
+ borderColor:                         #000000
+ 
++*.font:				     lucidasans-10
+diff --git a/data/styles/Makro b/data/styles/Makro
+index 28d14f80..313c3ccf 100644
+--- a/data/styles/Makro
++++ b/data/styles/Makro
+@@ -104,7 +104,7 @@ window.justify:                      Left
+ 
+ toolbar.font:                        -*-helvetica-medium-r-*-*-11-*-*-*-*-*-iso8859-*
+ window.font:                         -*-helvetica-bold-r-*-*-11-*-*-*-*-*-iso8859-*
+-menu.title.font:                     -*-helvetica-bold-r-*-*-11-*-*-*-*-*-iso8859-*
++!menu.title.font:                     -*-helvetica-bold-r-*-*-11-*-*-*-*-*-iso8859-*
+ menu.frame.font:                     -*-helvetica-medium-r-*-*-10-*-*-*-*-*-iso8859-*
+ 
+ borderColor:                         rgb:10/10/10
+@@ -114,4 +114,4 @@ borderWidth:                         1
+ handleWidth:                         3
+ 
+ background: flat
+-background.color: rgb:9A/9A/90
+\ No newline at end of file
++background.color: rgb:9A/9A/90
+diff --git a/data/styles/MerleyKay b/data/styles/MerleyKay
+index ae491e34..dc528e90 100644
+--- a/data/styles/MerleyKay
++++ b/data/styles/MerleyKay
+@@ -121,8 +121,7 @@ window.justify:                      Center
+ window.tab.font:                     -*-clean-medium-r-*-*-12-*-*-*-*-60-iso8859-*
+ toolbar.font:                        -*-lucida-bold-r-*-*-*-100-*-*-*-*-*-*
+ window.font:                         -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-iso8859-*
+-#menu.title.font:                    -*-lucida-bold-r-*-*-*-100-*-*-*-*-*-*
+-menu.title.font:                     -*-lucida-bold-r-*-*-*-100-*-*-*-*-*-*
++!menu.title.font:                     -*-lucida-bold-r-*-*-*-100-*-*-*-*-*-*
+ menu.frame.font:                     -*-lucida-medium-r-*-*-*-100-*-*-*-*-*-*
+ 
+ borderColor:                         rgb:00/00/00

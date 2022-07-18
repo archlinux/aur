@@ -1,6 +1,6 @@
 pkgbase = fluxbox-wm
 	pkgdesc = A lightweight and highly-configurable window manager build without toolbar and slit support
-	pkgver = 1.3.7+205+g1d19662c
+	pkgver = 1.3.7
 	pkgrel = 2
 	url = http://www.fluxbox.org/
 	arch = x86_64
@@ -19,11 +19,15 @@ pkgbase = fluxbox-wm
 	provides = fluxbox
 	conflicts = fluxbox
 	options = !makeflags
-	source = git+https://github.com/fluxbox/fluxbox.git#commit=1d19662c8975e881b4fa6465a8305be3ea5282ee
+	source = git+https://github.com/fluxbox/fluxbox.git#commit=88a74ff1cde22be3e894498ffd88934dc92dfef0
 	source = window-menu.patch
+	source = styles.patch
+	source = c-plus-plus-17.patch
 	source = fluxbox.desktop
 	sha256sums = SKIP
 	sha256sums = 9caa2179d17517034c19cc237f817dfb26da1a4cbdc6ed298a1b2bea14ccf0f7
+	sha256sums = d09736de789b3926a0642e381c4a30499a03c7ac99ffb6c981921910c392de07
+	sha256sums = a743324fb0c684be44fbcb3ff626f604057fce42fe1dda774515c1b24efbf418
 	sha256sums = 2148a90aca653b596e9632264dbdbd8c7e673d732e4b04eee66a8ac1e68b3c5d
 
 pkgname = fluxbox-wm
