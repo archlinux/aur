@@ -15,6 +15,7 @@ depends=(
 	"python-beautifulsoup4"
 	"python-slugify"
 	"python-lxml"
+	"python-natsort"
 )
 makedepends=("git" "python-build" "python-installer")
 optdepends=(

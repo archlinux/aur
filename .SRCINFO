@@ -14,6 +14,7 @@ pkgbase = mandown-git
 	depends = python-beautifulsoup4
 	depends = python-slugify
 	depends = python-lxml
+	depends = python-natsort
 	optdepends = python-pillow: Image processing
 	optdepends = pyside6: Graphical interface
 	conflicts = mandown
