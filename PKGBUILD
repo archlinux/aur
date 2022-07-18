@@ -10,7 +10,7 @@ pkgdesc="Distributed RESTful search engine built on top of Lucene"
 arch=('x86_64')
 url="https://www.elastic.co/products/elasticsearch"
 license=('custom:SSPL+Elastic-2.0')
-depends=('java-environment=17' 'systemd' 'libxml2')
+depends=('java-environment>=17' 'systemd' 'libxml2')
 makedepends=('java-environment>=17')
 source=(
   $pkgname-$pkgver.tar.gz::"https://github.com/elastic/elasticsearch/archive/v${pkgver}.tar.gz"
@@ -50,7 +50,7 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-  export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
+  export PATH=/usr/lib/jvm/`archlinux-java get`/bin:$PATH
   export GRADLE_OPTS="-Dbuild.snapshot=false -Dlicense.key=x-pack/plugin/core/snapshot.key"
   ./gradlew :modules:systemd:assemble
   ./gradlew :distribution:archives:linux-tar:assemble
