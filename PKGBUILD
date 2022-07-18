@@ -1,35 +1,32 @@
-# Maintainer: Kicker0429 <kicker0429@yahoo.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Kicker0429 <kicker0429@yahoo.com>
 # Contributor: katt <magunasu.b97@gmail.com>
 
 pkgname=libopenaptx-git
-pkgver=0.2.1
+_pkgname="${pkgname%-git}"
+pkgver=0.2.1.r0.g811bc18
 pkgrel=1
 pkgdesc='Open Source implementation of Audio Processing Technology codec (aptX)'
-arch=(x86_64)
+arch=('x86_64')
 url='https://github.com/pali/libopenaptx'
-license=(GPL3)
-depends=(glibc)
-makedepends=(git)
-provides=(libopenaptx.so)
-conflicts=(libopenaptx)
-_commit=811bc18586d634042618d633727ac0281d4170b8  # tags/0.2.1
-source=("git+$url#commit=$_commit")
-sha512sums=('SKIP')
+license=('GPL3')
+depends=('glibc')
+makedepends=('git')
+provides=("$_pkgname.so")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "${pkgname%-git}"
-	git describe --tags | sed 's/-/+/g'
+	git -C "$_pkgname" describe --long --tags | sed 's/-/.r/;s/-/./'
 }
 
 build() {
-	cd "${pkgname%-git}"
-	make CPPFLAGS="$CPPFLAGS" \
-	CFLAGS="-O3 -mavx2 $CFLAGS" \
-	LDFLAGS="$LDFLAGS" \
-    PREFIX=/usr "$@"
+	cd "$_pkgname"
+	make CFLAGS="-O2 $CFLAGS" LDFLAGS="$LDFLAGS"
 }
 
 package() {
-	cd "${pkgname%-git}"
+	cd "$_pkgname"
 	make PREFIX=/usr DESTDIR="$pkgdir" install
 }
