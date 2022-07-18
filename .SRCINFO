@@ -1,7 +1,7 @@
 pkgbase = r-aroma.affymetrix
 	pkgdesc = Analysis of Large Affymetrix Microarray Data Sets
-	pkgver = 3.2.0
-	pkgrel = 4
+	pkgver = 3.2.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=aroma.affymetrix
 	arch = any
 	license = LGPL
@@ -34,7 +34,7 @@ pkgbase = r-aroma.affymetrix
 	optdepends = r-pdinfobuilder
 	optdepends = r-preprocesscore
 	optdepends = r-rcolorbrewer
-	source = https://cran.r-project.org/src/contrib/aroma.affymetrix_3.2.0.tar.gz
-	sha256sums = d279cf13cf6ed8369cfdf6682ace12924379bad578003453449aa1ccec31b0a7
+	source = https://cran.r-project.org/src/contrib/aroma.affymetrix_3.2.1.tar.gz
+	sha256sums = 7aefbbddf94f6fc0ee2dec261f0caa6ca28d5f36aa7f7534ffb5f4e10ec4f5fb
 
 pkgname = r-aroma.affymetrix
