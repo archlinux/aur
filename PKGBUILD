@@ -11,8 +11,8 @@ license=('MIT')
 provides=('ftpgrab')
 conflicts=()
 depends=()
-source=("https://github.com/ftpgrab/ftpgrab/releases/download/${pkgver}/ftpgrab_${pkgver}_linux_x86_64.tar.gz")
-sha256sums=('cc334bf948e3ade7906b7bb0e441bcf3c4fb7cbe1ea5a2c59dc2e3997c65c958')
+source=("https://github.com/crazy-max/ftpgrab/releases/download/v7.7.0/ftpgrab_7.7.0_linux_amd64.tar.gz")
+sha256sums=('38ebc18d08bed49f10698e68645b5d61b943f67c1b6e1bac6de6616c0a2e883f')
 
 package() {
 	install -Dm755 ${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
