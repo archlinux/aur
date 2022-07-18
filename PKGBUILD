@@ -4,7 +4,7 @@
 pkgbase=ola
 pkgname=(ola ola-docs)
 pkgver=0.10.8
-pkgrel=6
+pkgrel=7
 pkgdesc='Open Lighting Architecture for controlling entertainment lighting equipment'
 arch=(x86_64 aarch64)
 url='https://www.openlighting.org'
@@ -13,10 +13,10 @@ depends=()
 makedepends=(avahi cppunit doxygen flake8 libftdi-compat liblo libmicrohttpd ncurses protobuf
   python-numpy python-protobuf util-linux-libs)
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/OpenLightingProject/$pkgbase/archive/refs/tags/$pkgver.tar.gz"
-        "fix-crash.patch::https://github.com/OpenLightingProject/$pkgbase/pull/1753.patch"
+        "fix-crash.patch::https://github.com/OpenLightingProject/$pkgbase/commit/c818692.patch"
         "fix-tests.patch::https://github.com/OpenLightingProject/$pkgbase/pull/1757.patch")
 sha256sums=('45bc101d1ddcc1c6320c063eb25a9345e5820a4233acfa5b29f2dfd99f7452e1'
-            'abbb4ca92bedab87d0310dc4e42162ef31a2c46863cedff791d927647ddd6c40'
+            '6dfa80507a3c6422e8b870dd24345021b2bbff8bd13a06fce2b9fe2ef9883aa5'
             'cfe0647ed23d064bfe5fae108b1c5d3461a0475cfd5a902012b43813c07aae46')
 
 prepare() {
