@@ -2,7 +2,7 @@
 
 pkgname=csdr-jketterl-git
 pkgver=0.17.1.r38.gc4a970b
-pkgrel=4
+pkgrel=5
 pkgdesc="A simple DSP library and command-line tool for Software Defined Radio."
 arch=('i686' 'x86_64')
 url="https://github.com/jketterl/csdr"
@@ -11,7 +11,7 @@ depends=('fftw')
 makedepends=('git' 'cmake')
 conflicts=('csdr')
 provides=('csdr')
-source=("$pkgname"::'git://github.com/jketterl/csdr.git')
+source=("$pkgname"::'git+https://github.com/jketterl/csdr')
 md5sums=('SKIP')
 
 pkgver() {
