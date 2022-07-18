@@ -1,6 +1,6 @@
 pkgbase = noveldown-git
-	pkgdesc = Webnovel downloader and converter to EPUB as a Python library and command line application.
-	pkgver = r27.6dd094e
+	pkgdesc = Webnovel downloader and EPUB converter
+	pkgver = r41.6a9b48f
 	pkgrel = 1
 	url = https://github.com/potatoeggy/noveldown
 	arch = any
