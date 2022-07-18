@@ -1,7 +1,7 @@
 # Maintainer: Matteo Triggiani <davvore33@gmail.com>
 
 pkgname=mlv.app
-pkgver=1.11
+pkgver=1.14
 _pkgver=QTv$pkgver
 pkgrel=0
 pkgdesc='Lightroom, but for Magic Lantern MLV Video'
@@ -11,7 +11,7 @@ license=('GPLv3')
 makedepends=('imagemagick')
 depends=('qt5-base' 'qt5-multimedia' 'ffmpeg')
 source=("$url/archive/$_pkgver.tar.gz" "mlvapp.desktop")
-md5sums=('6906545a6d3857ef4b8a6fc6ec1c57d3'
+md5sums=('977c74b542859ac6e15c2d826f532d2c'
          '25cb5da49a4bc270eb3758a1e8cdb581')
 icodim="512x512"
 build() {
