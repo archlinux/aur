@@ -1,4 +1,4 @@
-pkgname=(python)
+pkgname=python-static
 pkgver=3.10.5
 pkgrel=1
 _pybasever=${pkgver%.*}

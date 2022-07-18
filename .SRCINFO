@@ -1,4 +1,4 @@
-pkgbase = python
+pkgbase = python-static
 	pkgdesc = Next generation of the python high-level scripting language
 	pkgver = 3.10.5
 	pkgrel = 1
@@ -27,4 +27,4 @@ pkgbase = python
 	validpgpkeys = A035C8C19219BA821ECEA86B64E628F8D684696D
 	sha512sums = aa7f58a9b31de9824185b3e7bfa7da0dcf64ae9e89840664eae9d98d9048a650fa012cd5b873a62ff44b65b856db86f095c4003117406ec5e9583ec5f7e78e90
 
-pkgname = python
+pkgname = python-static
