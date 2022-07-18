@@ -1,6 +1,6 @@
 # Maintainer: Eugene Dementyev <e@dementyev.me>
 pkgname=aws-ssh
-pkgver=2.2.8
+pkgver=2.2.9
 pkgrel=1
 epoch=
 pkgdesc="aws-ssh goes through all available AWS accounts in parallel, looks up ec2 instances and generates ssh config to access them"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("${pkgname}-$pkgver.tar.gz::https://github.com/springload/aws-ssh/archive/v$pkgver.tar.gz")
 noextract=()
-md5sums=(66593546559820ac6c618483a69f371f)
+md5sums=(ca3eb2d56840f840c49dbf1e8b4e8823)
 validpgpkeys=()
 
 build() {
