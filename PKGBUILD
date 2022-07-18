@@ -1,15 +1,14 @@
 # Maintainer: Mark Kostovetskyy <mark at sgtxd dot de >
 pkgname='ani-cli-git'
 _pkgname='ani-cli'
-pkgver=r569.79b08aa
+pkgver=r572.e737a01
 pkgrel=1
 pkgdesc="A cli to browse and watch anime. (development version)"
 arch=('any')
 url="https://github.com/pystardust/ani-cli"
 license=('GPL3')
-depends=('grep' 'sed' 'curl' 'openssl' 'mpv')
-optdepends=('vlc: An alternative video player'
-'axel: For downloading episodes')
+depends=('grep' 'sed' 'awk' 'curl' 'openssl' 'mpv' 'axel' 'ffmpeg')
+optdepends=('vlc: An alternative video player' 'fzf')
 makedepends=('git')
 provides=('ani-cli')
 conflicts=('ani-cli')
@@ -23,10 +22,10 @@ pkgver() {
 
 package() {
         cd "$srcdir/${_pkgname%-VCS}"
-        install -Dm755 "./bin/ani-cli" "$pkgdir/usr/bin/ani-cli"
-        install -Dm755 "./lib/ani-cli/player_download" "$pkgdir/usr/lib/ani-cli/player_download"
-        install -Dm755 "./lib/ani-cli/player_mpv" "$pkgdir/usr/lib/ani-cli/player_mpv"
-        install -Dm755 "./lib/ani-cli/player_syncplay" "$pkgdir/usr/lib/ani-cli/player_syncplay"
-        install -Dm755 "./lib/ani-cli/player_vlc" "$pkgdir/usr/lib/ani-cli/player_vlc"
-        install -Dm755 "./lib/ani-cli/UI" "$pkgdir/usr/lib/ani-cli/UI"
+	install -Dm755 "./bin/ani-cli" "$pkgdir/usr/bin/ani-cli"
+	install -Dm755 "./lib/ani-cli/player_download" "$pkgdir/usr/lib/ani-cli/player_download"
+	install -Dm755 "./lib/ani-cli/player_mpv" "$pkgdir/usr/lib/ani-cli/player_mpv"
+	install -Dm755 "./lib/ani-cli/player_syncplay" "$pkgdir/usr/lib/ani-cli/player_syncplay"
+	install -Dm755 "./lib/ani-cli/player_vlc" "$pkgdir/usr/lib/ani-cli/player_vlc"
+	install -Dm755 "./lib/ani-cli/UI" "$pkgdir/usr/lib/ani-cli/UI"
 }
