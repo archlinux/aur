@@ -2,7 +2,7 @@
 
 _pkgname=mate-no-sleep-on-battery-lid-closed
 pkgname=${_pkgname}-git
-pkgver=r4.ge3e2603
+pkgver=r1.ge45596f
 pkgrel=1
 pkgdesc="Don't suspend if you have external display connected when running on laptop's battery in MATE desktop"
 arch=('x86_64')
