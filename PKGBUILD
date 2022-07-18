@@ -1,8 +1,8 @@
 # Maintainer: Brendan <ball dot brendan 50 at gmail dot com>
 # Contributor: Harms <thotro at lyse dot net>
 pkgname=forticlient
-pkgver=7.0.1.0057
-pkgrel=2
+pkgver=7.0.6.0214
+pkgrel=1
 pkgdesc="An endpoint protection application"
 arch=('x86_64')
 url="https://www.forticlient.com"
@@ -13,7 +13,7 @@ depends=('libxss' 'libsecret' 'alsa-lib' 'libnotify' 'gtk3' 'nss' 'libxcrypt-com
 backup=('etc/forticlient/config.db')
 options=('!strip' '!emptydirs')
 source=("https://repo.fortinet.com/repo/7.0/ubuntu/pool/multiverse/${pkgname}/${pkgname}_${pkgver}_amd64.deb")
-sha512sums=('2d4598f5618c2de0789b80de9c9b7a720e2cce8e88e7e4bd8d1f1ac3c6b07f82f536c84c45560efac4a7750a0cb906122e43ba2d97046b2a7e1aa6cb0d1b56e7')
+sha512sums=('a885658f50e06814e3f3a933c2cc6ff67a74b3e641292586b529f51ecf02e866a0798f7cdeb687793403420c87d817a2fd832e3bc33e75f9cffde1a1ce8d1d93')
 
 package(){
 
