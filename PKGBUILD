@@ -3,7 +3,7 @@
 
 pkgname=mongosh-bin
 _pkgname=mongosh
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='An interactive shell to connect with MongoDB with syntax highlighting, autocomplete, contextual help and error messages.'
 arch=('x86_64' 'aarch64')
@@ -13,9 +13,9 @@ license=('Apache')
 _mongosh_file=mongosh-${pkgver}-linux-x64
 
 source_x86_64=("https://downloads.mongodb.com/compass/${_pkgname}-${pkgver}-linux-x64.tgz")
-sha256sums_x86_64=('722786542d67019b8a2843ccad665bd0aaf2292acd880ddeddb1e5ef489bf303')
+sha256sums_x86_64=('ef52d411fef065e2bebc0599caa4984c0c39e48dc63ab6ae887ad0d876b41e2c')
 source_aarch64=("https://downloads.mongodb.com/compass/${_pkgname}-${pkgver}-linux-arm64.tgz")
-sha256sums_aarch64=('54ac5bc71a657a87a34ac573820382c83188a902c93bca8d2e203754ea2e81cd')
+sha256sums_aarch64=('a31bb7c6d35cc4e1656575e67a749af3d8f14dc0704fbe38b46a89c1f58d96e3')
 
 package() {
     install -D $_mongosh_file/bin/mongosh "$pkgdir/usr/bin/mongosh"
