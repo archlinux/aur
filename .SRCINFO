@@ -1,0 +1,13 @@
+pkgbase = lapack-static
+	pkgdesc = Linear Algebra PACKage
+	pkgver = 3.10.1
+	pkgrel = 1
+	url = https://www.netlib.org/lapack
+	arch = x86_64
+	license = custom
+	makedepends = gcc-fortran
+	makedepends = cmake
+	source = https://github.com/Reference-LAPACK/lapack/archive/v3.10.1/lapack-static-3.10.1.tar.gz
+	sha256sums = cd005cd021f144d7d5f7f33c943942db9f03a28d110d6a3b80d718a295f7f714
+
+pkgname = lapack-static
