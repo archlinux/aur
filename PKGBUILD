@@ -6,7 +6,7 @@ LATEST_INFO="$(curl -s https://api.github.com/repos/${ORG_NAME}/${REPO_NAME}/rel
 TAG=$(echo "$LATEST_INFO" | grep "tag_name" | cut -d'"' -f4)
 
 pkgname=$REPO_NAME-git
-pkgver=5.0.3.45
+pkgver=5.0.3.49
 pkgrel=1
 pkgdesc="EMQX, a distributed, massively scalable, highly extensible MQTT message broker."
 arch=('x86_64')
@@ -21,13 +21,13 @@ source=(
 sha256sums=(
     'SKIP'
 )
-depends=(coreutils ncurses zlib erlang-nox)
+depends=(ncurses erlang-nox)
 makedepends=(
     cmake
-    coreutils
     erlang-nox
     git
     unzip
+    systemd
 )
 optdepends=()
 install=$REPO_NAME.install
