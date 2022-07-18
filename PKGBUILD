@@ -4,7 +4,7 @@
 pkgbase=wxwidgets
 pkgname=(wxwidgets-gtk3 wxwidgets-qt5 wxwidgets-common)
 pkgver=3.2.0
-pkgrel=3
+pkgrel=4
 arch=(x86_64)
 url='https://wxwidgets.org'
 license=(custom:wxWindows)
@@ -51,6 +51,10 @@ build() {
     -DwxUSE_LIBMSPACK=ON \
     -DwxUSE_PRIVATE_FONTS=ON
   cmake --build build-qt5
+
+# Run configure to generate the Makefile, cmake doesn't install translations
+  cd wxWidgets-$pkgver
+  ./configure --prefix=/usr
 }
 
 package_wxwidgets-common() {
@@ -62,6 +66,8 @@ package_wxwidgets-common() {
   DESTDIR="$pkgdir" cmake --install build-gtk3
   rm -r "$pkgdir"/usr/{bin/wx-config,lib/{wx,libwx_gtk*}}
   install -Dm644 wxWidgets-$pkgver/wxwin.m4 -t "$pkgdir"/usr/share/aclocal
+# Install translations
+  make DESTDIR="$pkgdir" -C wxWidgets-$pkgver locale_install  
 
   install -Dm644 wxWidgets-$pkgver/docs/licence.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
