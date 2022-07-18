@@ -3,7 +3,7 @@
 
 pkgname=freedownloadmanager
 pkgver=6.16.2.4586
-pkgrel=1
+pkgrel=2
 pkgdesc="FDM is a powerful modern download accelerator and organizer."
 arch=('x86_64')
 url="https://www.freedownloadmanager.org/"
