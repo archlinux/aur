@@ -1,8 +1,9 @@
 pkgbase = colloid-gtk-theme-git
 	pkgdesc = Modern and clean Gtk theme for linux
-	pkgver = 2022.05.15.r2.g65f141f2
+	pkgver = 2022.07.18.r4.g947f142e
 	pkgrel = 1
 	url = https://www.pling.com/p/1661959
+	install = colloid-gtk-theme.install
 	arch = any
 	license = GPL3
 	makedepends = git

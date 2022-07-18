@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=colloid-gtk-theme-git
-pkgver=2022.05.15.r2.g65f141f2
+pkgver=2022.07.18.r4.g947f142e
 pkgrel=1
 pkgdesc="Modern and clean Gtk theme for linux"
 arch=('any')
@@ -13,6 +13,7 @@ optdepends=('gtk-engine-murrine: GTK2 theme support'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!strip')
+install="${pkgname%-git}.install"
 source=('git+https://github.com/vinceliuice/Colloid-gtk-theme.git')
 sha256sums=('SKIP')
 
@@ -30,4 +31,12 @@ package() {
   # Nord version
   ./install.sh -t all --tweaks nord -d "$pkgdir/usr/share/themes"
   ./install.sh -t all -s compact --tweaks nord -d "$pkgdir/usr/share/themes"
+
+  # Dracula version
+  ./install.sh -t all --tweaks dracula -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all -s compact --tweaks dracula -d "$pkgdir/usr/share/themes"
+
+  # Firefox theme
+  install -d "$pkgdir/usr/share/doc/${pkgname%-git}"
+  cp -r src/other/firefox "$pkgdir/usr/share/doc/${pkgname%-git}/"
 }
