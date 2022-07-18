@@ -1,5 +1,5 @@
 pkgname=webcord
-pkgver=3.5.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="A Discord and Fosscord client made with the Electron."
 arch=('any')
@@ -19,7 +19,7 @@ source=(
 )
 
 sha256sums=(
-    '4565cedb619a0fcb5937c7083429eb6a31b957285a14e23fe076372293bc644b'
+    'ca19e2ef743fd9b108dc18067ab147b5be888e3d4887c9b61faeaf58e7729ceb'
     '0f907649efc3dc60320ea84bfc6489996d2664523348641c9b6e7642bd062be0'
     'c803c7227982fad22390a8d6d11f3707171d5e9b1a394731a6a07773eab75b1f'
     '3a9b6df6be84741b5839d559301b95cb75e012fd7f20f3f8eac10cc11bccc4a1'
@@ -49,21 +49,29 @@ build() {
 
 package() {
     local lib="${pkgdir}/usr/lib/${pkgname}"
-    local sources="${lib}/sources"
 
     cd "${srcdir}"
     install -Dm755 -t "${lib}" "${source[1]}"
-    install -dm755 "${pkgdir}/usr/bin" && ln -s "${lib#${pkgdir}}/${source[1]}" "$_/webcord"
     install -Dm644 -t "${lib}" "${source[2]}"
     install -Dm644 "${source[3]}" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     cp -rdt "${lib}" "app"
 
+    local bin="${pkgdir}/usr/bin"
+    install -dm755 "${bin}"
+    ln -s "${lib#${pkgdir}}/${source[1]}" "${bin}/webcord"
+
     cd "${_srcname}"
     install -Dm644 -t "${lib}" "package.json"
     cp -rdt "${lib}" "node_modules"
-    mkdir -p "${sources}"
+
+    local sources="${lib}/sources"
+    install -dm755 "${sources}"
     cp -rdt "${sources}" "sources/assets"
-    rm -r "${sources}/assets/icons/app."*
-    install -Dm644 "sources/assets/icons/app.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
+    rm -r "${sources}/assets/icons/app.ic"*
+
+    local icons="${pkgdir}/usr/share/icons/hicolor/256x256/apps"
+    install -dm755 "${icons}"
+    ln -s "${sources#${pkgdir}}/assets/icons/app.png" "${icons}/${pkgname}.png"
+
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "LICENSE"
 }
