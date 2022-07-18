@@ -4,7 +4,7 @@
 
 _name=libcap
 pkgname=lib32-libcap
-pkgver=2.64
+pkgver=2.65
 pkgrel=1
 pkgdesc="POSIX 1003.1e capabilities (32-bit)"
 arch=(x86_64)
@@ -15,9 +15,9 @@ makedepends=(linux-api-headers)
 provides=(libcap.so libpsx.so)
 options=(debug)
 source=(https://kernel.org/pub/linux/libs/security/linux-privs/${_name}2/$_name-$pkgver.tar.{xz,sign})
-sha512sums=('3c5cf478cef249585ee1a0dfd75c6b41b0daf4e1ecb59dce894eac5523841aa79ca499be4161f73193dd8e7363edcd51063f3e281930cee939ebd50983eecbaf'
+sha512sums=('de34cd7fecfe9b688ee08e56c71d4f39a3a05f6414f88577faaadfcd5111a0ae1824af3e76a5b8199131a8df6e87e47fdcb3570c364999e4626f2ab8fafb8671'
             'SKIP')
-b2sums=('078ce2505a79c1bd4ca0a8eaf3444178bc19a566f0505d28c6959f86fbbac2fe2fc88c06fd0d988087a6e20e8ec66a2633146cea957f0f3fd92eaff4f81d7c66'
+b2sums=('9417c5c22fa2fc03df08667dca802c2e190f17af3cda86021de175bd315cbef8607cff51ee2a9c0b6cee7a09c536dbdc43c01549e0540c335966f0afaf9268c3'
         'SKIP')
 validpgpkeys=(38A644698C69787344E954CE29EE848AE2CCF3F4) # Andrew G. Morgan <morgan@kernel.org>
 
@@ -26,7 +26,7 @@ build() {
 }
 
 check() {
-  make test CC="gcc -m32" -k -C "${_name}-$pkgver"
+  make test CC="gcc -m32" -k -C $_name-$pkgver
 }
 
 package() {
