@@ -1,13 +1,13 @@
 # Maintainer: Magnus Groß, for email contact see AUR commit author email
 _pkgname=grandorgue
 pkgname="$_pkgname"-git
-pkgver=3.6.6.1.r0.g5be48044
-pkgrel=2
+pkgver=3.7.0.0.r1.g31281f21
+pkgrel=1
 pkgdesc="Virtual Pipe Organ Software"
 arch=('i686' 'x86_64')
 url="https://github.com/GrandOrgue/$_pkgname"
 license=('GPL2+')
-depends=(wxgtk2 wavpack fftw jack rtmidi rtaudio portaudio zita-convolver)
+depends=(wxwidgets-gtk3 wavpack fftw jack rtmidi rtaudio portaudio zita-convolver)
 makedepends=(git cmake rtaudio rtmidi docbook-xsl)
 conflicts=(grandorgue grandorgue-bin)
 source=("git+$url.git")
