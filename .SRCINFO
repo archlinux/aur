@@ -1,12 +1,11 @@
 pkgbase = lxqt-plugin-wingmenu-git
 	pkgdesc = alternative menu plugin for lxqt-panel
 	pkgver = r11.7b31638
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/slidinghotdog/plugin-wingmenu
 	arch = x86_64
 	groups = lxqt
 	license = GPL
-	makedepends = git
 	makedepends = lxqt-build-tools
 	depends = liblxqt
 	provides = lxqt-plugin-wingmenu

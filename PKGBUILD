@@ -1,22 +1,19 @@
 # Maintainer: BrLi <brli@chakralinux.org>
 _pkgname=plugin-wingmenu
-pkgname=lxqt-$_pkgname-git # '-bzr', '-git', '-hg' or '-svn'
+pkgname=lxqt-$_pkgname-git
 pkgver=r11.7b31638
-pkgrel=1
+pkgrel=2
 pkgdesc="alternative menu plugin for lxqt-panel"
 arch=(x86_64)
 url="https://github.com/slidinghotdog/plugin-wingmenu"
 license=('GPL')
 groups=(lxqt)
 depends=(liblxqt)
-makedepends=(git lxqt-build-tools) # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=(lxqt-build-tools)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+$url")
 sha256sums=('SKIP')
-
-# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
