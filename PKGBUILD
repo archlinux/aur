@@ -5,7 +5,7 @@
 
 _pkgbase=libnl
 pkgname=lib32-${_pkgbase}
-pkgver=3.6.0
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="Library for applications dealing with netlink sockets (32 bit)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('GPL')
 depends=('lib32-glibc' "${_pkgbase}")
 makedepends=('gcc-multilib')
 source=("https://github.com/thom311/libnl/releases/download/libnl${pkgver//./_}/libnl-${pkgver}.tar.gz")
-sha512sums=('7d1190ce94f43f5b18b1f7909221ca034d4ea5c8ed5735dbd27224d03e7f95d3c4e8ccdb611e33b58007729a21bfc0e23adc8758b112c712355664d87a81ce1b')
+sha512sums=('80fbbc079299c90afd2a5eda62e4d4f98bf4ef23958c3ce5101f4ed4d81d783af733213bb3bab15f218555d8460bc2394898f909f4ac024fc27281faec86a041')
 
 build() {
   export CC='gcc -m32'
