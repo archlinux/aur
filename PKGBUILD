@@ -2,7 +2,7 @@
 
 pkgname=dh-exec
 pkgver=0.23
-pkgrel=1
+pkgrel=2
 pkgdesc='Debhelper executable file substition helpers'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/algernon/dh-exec'
@@ -12,20 +12,20 @@ makedepends=('autoconf')
 optdepends=(
 )
 source=(
-    'https://github.com/algernon/dh-exec/archive/dh-exec-0.23.tar.gz'
+    "https://git.madhouse-project.org/archive/dh-exec/archive/dh-exec-${pkgver}.tar.gz"
 )
 sha512sums=(
-    '82b6f36e88060b5a71483b502e9f9cdd8f13d195b9c83ff633df180286d98dc586db6cfaad1b0249884d34758d1ce3ac4b01baf37c07d81ac47c381dc7ce11bd'
+    'b9df73beb5044e5447165bf69892f1b3014ffd132613141e84d38dc5aa2ae868f1e35db1908fe649392a773c4fd94194ccd49387cb706c94df00d0d55751f4e7'
 )
 
 build() {
-    cd "${pkgname}-${pkgname}-${pkgver}"
+    cd "${pkgname}"
     autoreconf --install
     ./configure --prefix=/usr --libexecdir=/usr/lib
     make
 }
 
 package() {
-    cd "${pkgname}-${pkgname}-${pkgver}"
-    make install DESTDIR="$pkgdir"
+    cd "${pkgname}"
+    make install DESTDIR="${pkgdir}"
 }
