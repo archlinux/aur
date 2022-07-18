@@ -1,0 +1,19 @@
+pkgbase = brother-mfc-6580cdw-jpn
+	pkgdesc = LPR and CUPS drivers for Brother MFC-6580CDW (Japan)
+	pkgver = 20220218
+	pkgrel = 1
+	url = http://support.brother.com/g/s/id/linux/en/index.html
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = perl
+	depends = a2ps
+	depends = lib32-libcups
+	depends = libcups
+	optdepends = brscan5: Scanner support
+	source = https://download.brother.com/welcome/dlf103148/mfcj6580cdwcupswrapper-1.0.1-0.i386.deb
+	source = https://download.brother.com/welcome/dlf103146/mfcj6580cdwlpr-1.0.1-0.i386.deb
+	sha256sums = aedcecaab10ec45f9a164607aa3c3c161d519e4132608ac15411e4d48db07359
+	sha256sums = 6557d708c0518216c32712bf5665a295f287a5858e79d6e99b09ca31c0ff72e8
+
+pkgname = brother-mfc-6580cdw-jpn
