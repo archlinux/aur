@@ -1,0 +1,14 @@
+pkgbase = neovim-filetype
+	pkgdesc = Faster version of filetype.vim
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/nathom/filetype.nvim
+	install = filetype.install
+	arch = any
+	groups = neovim-plugins
+	license = unknown
+	depends = neovim
+	source = neovim-filetype-0.4.tar.gz::https://github.com/nathom/filetype.nvim/archive/v0.4.tar.gz
+	sha256sums = bd14e428c7fd44e8acdde6419c797f82ff86ffa318f4a0b06164831cd7ee9375
+
+pkgname = neovim-filetype
