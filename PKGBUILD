@@ -3,8 +3,8 @@
 # Contributor: Troy Engel <troyengel + arch at gmail dot com>
 # Contributor: Callum Denby <me@callumdenby.com>
 pkgname=aws-session-manager-plugin
-pkgver=1.2.312.0
-pkgrel=2
+pkgver=1.2.339.0
+pkgrel=1
 pkgdesc="AWS Session Manager Plugin for aws-cli."
 arch=('x86_64' 'aarch64')
 url="https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html"
@@ -14,9 +14,11 @@ backup=('usr/lib/systemd/system/session-manager-plugin.service' 'usr/sessionmana
 options=('!strip' '!emptydirs')
 source_x86_64=("${pkgname}-${pkgver}.deb"::https://s3.amazonaws.com/session-manager-downloads/plugin/${pkgver}/ubuntu_64bit/session-manager-plugin.deb)
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb"::https://s3.amazonaws.com/session-manager-downloads/plugin/${pkgver}/ubuntu_arm64/session-manager-plugin.deb)
-sha512sums_x86_64=('0ee3978e197308395f85126ce9a59e427c50b0e3832cb2337b2ca29a687463b7238668e431e18b3a0be5dc9c278d5c9663cfb1d6fcdee5abc4673b900855c16a')
-sha512sums_aarch64=('fb07b660598ac5f6f765a040d2e1efa9b4df62e1b2558b1a259db21c6f53cafbb7ddf27262002156bad67b23da865e9181d972f6d57c7bd371d24cb5d899d7e6')
+sha512sums_x86_64=('645a72b8f51b96d658277cea0682ab1f4d84809262ea38684fad2d1910b009c034cb09b0cf7a31bce044b0dc309bc4412f9f2ea9d8cd78678c642ce48e25afdd')
+sha512sums_aarch64=('7ef2d45ef8764b670c41de5bedfd232c0aafb71a883d3ab614ed3d6360f452e52f7da74c0669537a430b17f8449b03ded7a5c73059cb483583576d08992825a9')
 
+# Version history with new versions is here.
+#  https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html#plugin-version-history
 
 package(){
 
