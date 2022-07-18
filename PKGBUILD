@@ -1,16 +1,17 @@
-# Maintainer: Erik Bročko <erik.brocko@letemsvetemapplem.eu>
+# Maintainer: Erik Bročko (OM2LT) <erik@brocko.eu>
 
 pkgname=digiham-git
-pkgver=0.3.0.r4.g6687105
+pkgver=0.6.0.r1.g08b923a
 pkgrel=1
 pkgdesc="Tools for decoding digital ham communication."
 arch=('x86_64')
 url="https://github.com/jketterl/digiham"
 license=('GPL3')
-depends=('mbelib')
+depends=('mbelib' 'icu' 'codecserver')
 makedepends=('git' 'cmake')
+conflicts=('digiham')
 provides=('digiham')
-source=("$pkgname"::'git://github.com/jketterl/digiham.git')
+source=("$pkgname"::'git+https://github.com/jketterl/digiham')
 md5sums=('SKIP')
 
 pkgver() {

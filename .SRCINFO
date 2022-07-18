@@ -1,6 +1,6 @@
 pkgbase = digiham-git
 	pkgdesc = Tools for decoding digital ham communication.
-	pkgver = 0.3.0.r4.g6687105
+	pkgver = 0.6.0.r1.g08b923a
 	pkgrel = 1
 	url = https://github.com/jketterl/digiham
 	arch = x86_64
@@ -8,9 +8,11 @@ pkgbase = digiham-git
 	makedepends = git
 	makedepends = cmake
 	depends = mbelib
+	depends = icu
+	depends = codecserver
 	provides = digiham
-	source = digiham-git::git://github.com/jketterl/digiham.git
+	conflicts = digiham
+	source = digiham-git::git+https://github.com/jketterl/digiham
 	md5sums = SKIP
 
 pkgname = digiham-git
-
