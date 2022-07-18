@@ -1,17 +1,18 @@
 pkgbase = vcvrack-befaco
-	pkgdesc = Rack plugins based on Befaco Eurorack modules
-	pkgver = 0.6.0+21+g31da1ab
+	pkgdesc = VCV Rack plugin collection
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/VCVRack/Befaco
-	install = vcvrack-befaco.install
 	arch = x86_64
-	license = BSD
-	makedepends = git
-	makedepends = jq
-	makedepends = zip
+	groups = proaudio
+	groups = vcvrack-plugins
+	license = custom
+	license = CCPL:by-nc
+	license = GPL3
+	makedepends = simde
+	makedepends = zstd
 	depends = vcvrack
-	source = Befaco-0.6.0+21+g31da1ab::git+https://github.com/VCVRack/Befaco.git#commit=31da1ab46d698e6a89867b7a10251870e1d8aa91
-	sha256sums = SKIP
+	source = vcvrack-befaco-2.2.0.tar.gz::https://github.com/VCVRack/Befaco/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = e1aa5c32d58e8c7ea3ba9628d5a38ea99287a5f0e54348410161f1b2c66c2f73
 
 pkgname = vcvrack-befaco
-

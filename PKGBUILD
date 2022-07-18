@@ -1,47 +1,34 @@
-# Maintainer: Miroslav Koškár <http://mkoskar.com/>
+# Maintainer: Florian Hülsmann <fh@cbix.de>
+# Contributor: Miroslav Koškár <http://mkoskar.com/>
 # Contributor: David Runge <dave@sleepmap.de>
 
-_name='Befaco'
-# upstream doesn't tag properly any more (plugin.json suggests the version is
-# currently at 1.0.0) because yolo
-_commit='31da1ab46d698e6a89867b7a10251870e1d8aa91'
-
-pkgname='vcvrack-befaco'
-pkgver=0.6.0+21+g31da1ab
+_slug=Befaco
+_name=$_slug
+pkgname=vcvrack-${_slug,,}
+pkgver=2.2.0
 pkgrel=1
-pkgdesc="Rack plugins based on Befaco Eurorack modules"
+pkgdesc='VCV Rack plugin collection'
+arch=(x86_64)
 url='https://github.com/VCVRack/Befaco'
-license=('BSD')
-arch=('x86_64')
-depends=('vcvrack')
-makedepends=('git' 'jq' 'zip')
-install="$pkgname.install"
-source=("${_name}-${pkgver}::git+https://github.com/VCVRack/${_name}.git#commit=${_commit}")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "${_name}"-"${pkgver}"
-  git describe --tags | sed 's/^v//;s/-/+/g'
-}
-
-prepare() {
-  cd "${_name}"-"${pkgver}"
-}
+license=(custom 'CCPL:by-nc' GPL3)
+groups=(proaudio vcvrack-plugins)
+depends=(vcvrack)
+makedepends=(simde zstd)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/VCVRack/$_name/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('e1aa5c32d58e8c7ea3ba9628d5a38ea99287a5f0e54348410161f1b2c66c2f73')
 
 build() {
-  # define RACK_DIR, so Makefile snippets can be found
-  export RACK_DIR="/usr/share/vcvrack"
-  # define FLAGS, so headers can be included
-  export FLAGS="-I/usr/include/vcvrack -I/usr/include/vcvrack/dep"
-  cd "${_name}"-"${pkgver}"
-  USE_SYSTEM_LIBS=true make
-  USE_SYSTEM_LIBS=true make dist
+  cd $_name-$pkgver
+  # vcvrack make flags
+  export SLUG=$_slug
+  export VERSION=$pkgver
+  export RACK_DIR=/usr/share/vcvrack
+  make dist
 }
 
 package() {
-  cd "${_name}"-"${pkgver}"
-  install -vDm 644 "dist/${_name}"*".zip" \
-    "${pkgdir}/opt/vcvrack/${_name}.zip"
-  install -vDm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-  install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  cd $_name-$pkgver
+  install -vDm644 LICENSE.md -t "$pkgdir"/usr/share/licenses/$pkgname
+  install -d "$pkgdir"/usr/lib/vcvrack/plugins
+  cp -va dist/$_slug -t "$pkgdir"/usr/lib/vcvrack/plugins
 }
