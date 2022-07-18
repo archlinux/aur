@@ -1,12 +1,12 @@
 pkgbase = sensu-cli
 	pkgdesc = Sensu Go cli
-	pkgver = 6.7.3
+	pkgver = 6.7.4
 	pkgrel = 2
 	url = https://sensu.io
 	arch = x86_64
 	arch = armv7h
 	license = MIT
-	source = sensu-cli-6.7.3_x86_64.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.7.3/sensu-go_6.7.3_linux_amd64.tar.gz
-	sha256sums = d841590cf05e7f5fe0e99186b300f87a156944ef7f5faf9cf37b31b97891a2b4
+	source = sensu-cli-6.7.4_x86_64.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.7.4/sensu-go_6.7.4_linux_amd64.tar.gz
+	sha256sums = 15adc6a7fcb1b4b7bb9150974eef715433475f575af5b726c0f4e4128acfd102
 
 pkgname = sensu-cli
