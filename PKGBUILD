@@ -1,13 +1,13 @@
 pkgname='jmk-x11-fonts-git'
 pkgdesc="Jim's Fonts for X"
 pkgver=r5.29ae539
-pkgrel=2
+pkgrel=3
 license=('GPL')
 url='http://nikolas.us.to/jmkfonts/'
 arch=('any')
 source=("${pkgname}::git+https://github.com/nikolas/jmk-x11-fonts.git")
 sha512sums=('SKIP')
-makedepends=('imake' 'xorg-mkfontdir')
+makedepends=('imake' 'xorg-mkfontdir' 'xorg-bdftopcf' 'git')
 conflicts=('jmk-x11-fonts')
 provides=('jmk-x11-fonts')
 
