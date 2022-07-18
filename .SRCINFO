@@ -1,0 +1,19 @@
+pkgbase = zander-bin
+	pkgdesc = Software to manage dedicated doom server instances
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://zander.node-3.net
+	license = MIT
+	conflicts = zander
+	provides = zander
+	arch = aarch64
+	source_aarch64 = https://gitlab.node-3.net/zander/zander/-/releases/v0.1.5/downloads/zander_0.1.5_linux_arm64.tar.gz
+	sha256sums_aarch64 = 6e050a7a1b94690d8aae0d022bb783d478c0a00a4f8ff75f093b5d1d094cb5db
+	arch = i686
+	source_i686 = https://gitlab.node-3.net/zander/zander/-/releases/v0.1.5/downloads/zander_0.1.5_linux_i386.tar.gz
+	sha256sums_i686 = 09a2c45178841090e29d7262543162203e3ebc0a844fb547a6c80c94dbfac726
+	arch = x86_64
+	source_x86_64 = https://gitlab.node-3.net/zander/zander/-/releases/v0.1.5/downloads/zander_0.1.5_linux_x86_64.tar.gz
+	sha256sums_x86_64 = d6e9933a8f2f1edb9c79ca3543b7e8f0eb2dbda487c240626f9e9285682f5cfb
+	
+pkgname = zander-bin
