@@ -1,7 +1,7 @@
 # Maintainer: Erik Bročko <erik.brocko@letemsvetemapplem.eu>
 
 pkgname=python-js8py-git
-pkgver=0.1.0.r1.g6ac8f5c
+pkgver=0.1.2.r5.g391347d
 pkgrel=1
 pkgdesc="python module for parsing messages from the "js8" command line decoder"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=('git' 'python-setuptools' 'python-nose')
 depends=('python')
 provides=('js8py')
-source=("$pkgname"::'git://github.com/jketterl/js8py.git')
+source=("$pkgname"::'git+https://github.com/jketterl/js8py')
 md5sums=('SKIP')
 
 pkgver() {
