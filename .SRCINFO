@@ -1,6 +1,6 @@
 pkgbase = mandown-git
-	pkgdesc = Comic/manga downloader and EPUB/CBZ/PDF converter application and Python library
-	pkgver = r97.b79b4bb
+	pkgdesc = Comic/manga/webtoon downloader and converter to CBZ/EPUB/PDF
+	pkgver = r121.62fd3d5
 	pkgrel = 1
 	url = https://github.com/potatoeggy/mandown
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = mandown-git
 	depends = python-slugify
 	depends = python-lxml
 	optdepends = python-pillow: Image processing
+	optdepends = pyside6: Graphical interface
 	conflicts = mandown
 	source = git+https://github.com/potatoeggy/mandown.git
 	sha256sums = SKIP

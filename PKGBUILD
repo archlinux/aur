@@ -1,9 +1,9 @@
-# Maintainer: eggy <eggyrules at gmail dot com>
+# Maintainer: Daniel Chen <danielchen04 at hotmail dot ca>
 
 pkgname=mandown-git
-pkgver=r97.b79b4bb
+pkgver=r121.62fd3d5
 pkgrel=1
-pkgdesc="Comic/manga downloader and EPUB/CBZ/PDF converter application and Python library"
+pkgdesc="Comic/manga/webtoon downloader and converter to CBZ/EPUB/PDF"
 url="https://github.com/potatoeggy/mandown"
 replaces=()
 arch=("any")
@@ -19,6 +19,7 @@ depends=(
 makedepends=("git" "python-build" "python-installer")
 optdepends=(
 	"python-pillow: Image processing"
+	"pyside6: Graphical interface"
 )
 provides=()
 conflicts=("mandown")
