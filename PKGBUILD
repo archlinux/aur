@@ -2,7 +2,7 @@
 
 pkgname=zeitgeist-dependencies-git
 name=zeitgeist
-pkgver=0.3.0.r230.g95fd0d6
+pkgver=0.3.0.r426.gd2b7e91
 pkgrel=1
 pkgdesc='The language-agnostic dependency checker'
 arch=('x86_64')
