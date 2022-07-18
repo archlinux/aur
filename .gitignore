@@ -1,5 +1,6 @@
 *.swp
 *.tar.xz
+*.tar.zst
 src/
 pkg/
 *.zip
