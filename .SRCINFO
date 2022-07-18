@@ -1,7 +1,7 @@
 pkgbase = caffeine
 	pkgdesc = Keep your computer awake.
-	pkgver = 2.9.11
-	pkgrel = 2
+	pkgver = 2.9.12
+	pkgrel = 1
 	url = https://launchpad.net/caffeine
 	arch = any
 	license = GPL3
@@ -10,9 +10,7 @@ pkgbase = caffeine
 	depends = python-gobject
 	depends = python-ewmh
 	optdepends = libayatana-appindicator: caffeine-indicator (tray applet) support
-	source = cups-of-caffeine-2.9.11.tar.gz::https://files.pythonhosted.org/packages/source/c/cups-of-caffeine/cups-of-caffeine-2.9.11.tar.gz
-	source = setuptools.patch
-	md5sums = cd624f6d0a573771ff74df122376fbf8
-	md5sums = afeee8e85507772316fecd8765456fdb
+	source = cups-of-caffeine-2.9.12.tar.gz::https://files.pythonhosted.org/packages/source/c/cups-of-caffeine/cups-of-caffeine-2.9.12.tar.gz
+	md5sums = 4645f84314d7d35fd94387b9f0b6c1d4
 
 pkgname = caffeine
