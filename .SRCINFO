@@ -1,6 +1,6 @@
 pkgbase = greaseweazle
 	pkgdesc = Tools for accessing a floppy drive at the raw flux level
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/keirf/greaseweazle
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = greaseweazle
 	depends = python-pyserial
 	depends = python-requests
 	optdepends = capsimage: Read IPF files
-	source = https://github.com/keirf/greaseweazle/releases/download/v1.0/greaseweazle-1.0.zip
-	sha256sums = 1a639055e8652068d21aa3550e9045184b497dd48ec41c7a6e443219db18100b
+	source = https://github.com/keirf/greaseweazle/releases/download/v1.1/greaseweazle-1.1.zip
+	sha256sums = 5b12476eb0d19ca9abfd37ff7da80c9dd75689e7b243b3aea68607a84b2116e5
 
 pkgname = greaseweazle
