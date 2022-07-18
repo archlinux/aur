@@ -8,7 +8,7 @@
 
 pkgname=wxglade
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='wxGlade is a GUI builder written in Python for the GUI toolkit wxWidgets/wxPython'
 arch=('any')
 license=('MIT')
@@ -28,7 +28,7 @@ prepare() {
     --mimetypes 'application/x-wxg' \
     --categories "Development;GUIDesigner"
 
-  rm -rf "$pkgname-$pkgver" && mv -Tfv {wxGlade,$pkgname}-$pkgver
+  rm -rf "$pkgname-$pkgver" && mv -Tf {wxGlade,$pkgname}-$pkgver
 }
 
 build() {
