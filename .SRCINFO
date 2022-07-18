@@ -1,7 +1,7 @@
 pkgbase = exman
 	pkgdesc = manuals for other systems
 	pkgver = 2062.73
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.causal.agency/exman
 	arch = any
 	license = ISC
@@ -14,6 +14,6 @@ pkgbase = exman
 	options = !strip
 	options = !zipman
 	source = https://git.causal.agency/exman/snapshot/exman-2062.73.tar.gz
-	sha256sums = a5258d72c38e8509d26be7b7ae1be381fde498abe55414291c48a3d7e2c76a80
+	sha256sums = bc293595476a5dfbded6105d91a2a40bae92dac38f3e9acff51b2c0bba0600b6
 
 pkgname = exman
