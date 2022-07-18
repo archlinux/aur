@@ -1,8 +1,8 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=nitch
-pkgver=0.1.5
-_commit=abf145c9366c9cda43aeb6d28e6fc944e383fadc
+pkgver=0.1.6
+_commit=1c6955c4632614797154487fdc0f983e60f20f06
 pkgrel=1
 pkgdesc="Incredibly fast system fetch written in nim"
 arch=(x86_64)
