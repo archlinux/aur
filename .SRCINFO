@@ -1,8 +1,8 @@
 pkgbase = reflector-simple
 	pkgdesc = Simple GUI wrapper for 'reflector'.
 	pkgver = 2.0
-	pkgrel = 1
-	url = https://github.com/endeavouros-team/PKGBUILDS/raw/master/reflector-simple
+	pkgrel = 2
+	url = https://gitlab.com/garuda-linux/packages/stable-pkgbuilds/reflector-simple
 	arch = any
 	license = GPL
 	depends = bash

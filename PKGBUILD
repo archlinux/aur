@@ -1,16 +1,18 @@
 # Maintainer: EndeavourOS-Team <info@endeavouros.com>
+# Maintainer: TNE <tne@garudalinux.org>
+# Mainteiner: Mikhail Velichko <efklid@gmail.com>
 
 pkgname=reflector-simple
 pkgdesc="Simple GUI wrapper for 'reflector'."
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('GPL')
 depends=(
   bash yad reflector whois geoip bind
 )
 
-url="https://github.com/endeavouros-team/PKGBUILDS/raw/master/$pkgname"
+url="https://gitlab.com/garuda-linux/packages/stable-pkgbuilds/reflector-simple"
 
 source=(
   $pkgname
