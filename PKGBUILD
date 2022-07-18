@@ -37,7 +37,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/alicevision/CCTag"
 license=('MPL2')
 depends=(boost-libs tbb)
-makedepends=(boost cmake eigen gcc10 ninja opencv)
+makedepends=(boost cmake eigen ninja opencv)
 # Configuration specific dependencis:
 ((DISABLE_CUDA)) || { makedepends+=(cuda); optdepends+=('cuda: for cuda detector'); }
 ((ENABLE_APPS)) && depends+=(devil2 qt5-base)
@@ -53,7 +53,7 @@ prepare() {
 
 build() {
 	cmake -S "${srcdir}/${_src_dir}" -B build -G Ninja \
-		-DCUDA_HOST_COMPILER="$(which gcc-10)" \
+		-DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DBUILD_SHARED_LIBS=ON \
