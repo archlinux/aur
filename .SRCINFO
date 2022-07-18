@@ -1,0 +1,22 @@
+pkgbase = python-pypi-simple
+	pkgdesc = PyPI Simple Repository API client library
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/jwodder/pypi-simple
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-install
+	depends = python
+	depends = python-beautifulsoup4
+	depends = python-mailbits
+	depends = python-packaging
+	depends = python-requests
+	optdepends = python-tqdm
+	provides = python-pypi-simple
+	conflicts = python-pypi-simple
+	source = https://github.com/jwodder/pypi-simple/archive/refs/tags/v0.10.0.zip
+	sha512sums = 665e4be413fa101b359d49c70a45f0d9eab64cea04f7486bb24e5b6a320b534d4cd7984a631215e5b583a61504bcbdbb11ad1ccf4e5c81db16596ed1b314fb80
+
+pkgname = python-pypi-simple
