@@ -1,6 +1,6 @@
 pkgbase = sk1-git
 	pkgdesc = An open source vector graphics editor for prepress
-	pkgver = r5194.17caa859
+	pkgver = r5201.62cc98e0
 	pkgrel = 1
 	url = https://sk1project.net/
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = sk1-git
 	depends = python2-pycups
 	provides = sk1
 	conflicts = sk1
-	source = sk1::git://github.com/sk1project/sk1-wx.git
+	source = sk1::git+https://github.com/sk1project/sk1-wx.git
 	md5sums = SKIP
 
 pkgname = sk1-git

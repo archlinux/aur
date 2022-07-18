@@ -2,7 +2,7 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 
 pkgname=sk1-git
-pkgver=r5194.17caa859
+pkgver=r5201.62cc98e0
 pkgrel=1
 pkgdesc="An open source vector graphics editor for prepress"
 url="https://sk1project.net/"
@@ -13,7 +13,7 @@ depends=('lcms2' 'cairo' 'libmagick' 'pango' 'wxpython' 'python2-cairo'
 makedepends=('git' 'python2')
 provides=('sk1')
 conflicts=('sk1')
-source=("${pkgname%-*}"::'git://github.com/sk1project/sk1-wx.git')
+source=("${pkgname%-*}"::'git+https://github.com/sk1project/sk1-wx.git')
 md5sums=('SKIP')
 
 pkgver() {
