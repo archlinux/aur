@@ -10,6 +10,6 @@ pkgbase = a2ln
 	depends = python-gobject
 	depends = python-setproctitle
 	source = a2ln-1.1.1.tar.gz::https://github.com/patri9ck/a2ln-server/archive/1.1.1.tar.gz
-	sha256sums = 444c66c1f0c3569868ec6ae0ede035d541aaaee5ef7b39bff4b9aa3e7ba42d30
+	sha256sums = 49eec64f7809dae7c1aa33eba2145f073ed986af73db4b1cb6d9160b2913cf1e
 
 pkgname = a2ln
