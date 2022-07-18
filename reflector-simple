@@ -1,0 +1,1315 @@
+#!/bin/bash
+#
+# Select pacman mirrors with a simple GUI.
+#
+
+EOS_ROOTER=pkexec
+export EOS_YAD_STARTER_CMD="/usr/bin/yad --window-icon=update"
+
+eos_yad() {
+    GDK_BACKEND=x11 $EOS_YAD_STARTER_CMD "$@" | grep -v "^WINDOW DECORATIONS RELOADED$"
+    return ${PIPESTATUS[0]}
+}
+#export -f eos_yad
+
+eos_GetArch() {
+    local arch="$(/usr/bin/uname -m)"
+    case "$arch" in
+        armv7* | aarch64) arch=armv7h ;;
+    esac
+    printf "%s" "$arch"
+}
+
+eos_GetProgName() { /usr/bin/basename "$0" ; }
+
+eos_select_browser() {
+    # Select an existing browser.
+    # User may export a variable _WELCOME_BROWSER to use the preferred browser.
+
+    if [ -n "$_WELCOME_BROWSER" ] ; then
+        echo "$_WELCOME_BROWSER"
+        return
+    fi
+
+    local browser
+    for browser in xdg-open exo-open firefox chromium vivaldi-stable opera ; do
+        if (/usr/bin/which "$browser" >& /dev/null) ; then
+            echo "$browser"
+            return
+        fi
+    done
+    eos_yad_WARN "$FUNCNAME: cannot find a browser"
+}
+
+eos_yad_terminal() {
+    local conf=/etc/eos-script-lib-yad.conf
+    if [ -r $conf ] ; then
+        source $conf
+        if [ -n "$EOS_YAD_TERMINAL" ] ; then
+            if [ -x /usr/bin/"$EOS_YAD_TERMINAL" ] || [ -x "$EOS_YAD_TERMINAL" ] ; then
+                echo "$EOS_YAD_TERMINAL"
+                return
+            fi
+            echo "Sorry, terminal program '$EOS_YAD_TERMINAL' is not available. Please check your configuration file $conf." | \
+                eos_yad --text-info --title=Warning --height=100 --width=500 --wrap --button=yad-ok:0
+        fi
+    fi
+
+    # Show a terminal that is capable of supporting option -e properly. Empty if not found.
+    # Requires: yad
+    #
+    # These terminal programs are known not to work with this program:
+    #     - putty
+    # The following terminals are known to work:
+    local suitable_terminals=(
+        xfce4-terminal
+        konsole
+        gnome-terminal
+        mate-terminal
+        lxterminal
+        deepin-terminal
+        terminator
+        qterminal
+        alacritty
+        tilix
+        termite
+        xterm
+        kitty
+        terminology
+        sakura
+    )
+    local eos_terminal_prog=""
+    local xx
+
+    for xx in "${suitable_terminals[@]}" ; do
+        if [ -x "/usr/bin/$xx" ] ; then
+            eos_terminal_prog="/usr/bin/$xx"
+            echo "$eos_terminal_prog"
+            return 0
+        fi
+    done
+
+    printf "%s\n    %s\n%s" \
+           "Sorry, none of the terminal programs:" \
+           "${suitable_terminals[*]}" \
+           "is installed. Some features may not work as expected." \
+        | eos_yad --text-info \
+                  --title="Warning" --height=200 --width=700 --wrap --button=yad-ok:0
+    return 1
+}
+
+eos_yad_check_internet_connection() {
+    local verbose="$1"          # yes|verbose = show dialog, otherwise don't show dialog
+    local waitrounds="$2"       # try max $waitrounds times for a connection, test once per $onewait
+    local onewait="$3"          # time to wait in one waiting round
+    local caller="$4"           # who is calling this function (often empty)
+    local ix
+    local title="Warning"
+    local checker="ping -c 1 8.8.8.8"
+
+    case "$EOS_CONNECTION_CHECKER" in
+        curl)
+            # checker="curl --silent --connect-timeout 8 https://8.8.8.8"
+            checker=/usr/bin/eos-connection-checker
+            ;;
+    esac
+
+    test -z "$verbose"    && verbose=no
+    test -z "$waitrounds" && waitrounds=5
+    test -z "$onewait"    && onewait=1s
+
+    if [ -n "$caller" ] ; then
+        title+=" at $caller"
+    fi
+
+    for ((ix=0; ix<waitrounds; ix++)) ; do
+        $checker >/dev/null && return 0   # is connected
+        sleep $onewait
+    done
+
+    $checker >/dev/null || {
+        case "$verbose" in
+            [yY]*|1|true|TRUE|True|on|enable*|verbose)
+                echo "No internet connection!" | \
+                    eos_yad --text-info --title="$title" \
+                            --height=100 --width=300 --justify=center --wrap \
+                            --button=yad-quit:1 \
+                            --button=" Continue anyway!go-next!Don't stop me now":0
+                ;;
+            *)
+                return 1
+                ;;
+        esac
+    }
+}
+
+eos_yad_GetArgVal() {
+    echo "${1#*=}"
+    #e cho "$1" | cut -d '=' -f 2
+}
+
+eos_yad_RunCmdTermBashOpt() {  # like eos_yad_RunCmdTermBash, but supports certain options
+    local cmd=""
+    local prompt=""
+    local termopts=""
+    local waitopt=""
+    local opts
+
+    # Handle options for variables cmd ... waitopt.
+    opts="$(getopt -o=p:t:w:E --longoptions prompt:,term:,wait:,no-enter-wait --name "$FUNCNAME" -- "$@")"
+    [ $? -eq 0 ] || return 1
+    eval set -- "$opts"
+    while true ; do
+        case "$1" in
+            --prompt | -p)
+                prompt="$2" ; shift ;;
+            --term | -t)
+                termopts="$2" ; shift ;;        # e.g. --term="-T 'my title' --geometry=100x200"
+            --wait | -w)
+                waitopt="$2" ; shift ;;         # e.g. --wait="--no-enter-wait"
+            --no-enter-wait | -E)
+                waitopt="--no-enter-wait" ;;    # alternative to --wait
+            --)
+                shift; break ;;
+        esac
+        shift
+    done
+    cmd="$*"
+    [ -n "$cmd" ] || { echo "$FUNCNAME: warning: required command is missing." >&2; return 1; }
+
+    # Get the available/configured terminal.
+    local term="$(eos_yad_terminal)"
+    test -n "$term" || return 1
+
+    mkdir -p "$HOME/.cache"
+    local tmpfile=$(mktemp "$HOME/.cache/$FUNCNAME.XXXXX")
+
+    echo "#!/bin/bash"                                   >> $tmpfile
+    test -n "$prompt" && echo "echo $prompt"             >> $tmpfile
+    echo "$cmd"                                          >> $tmpfile
+    echo "echo"                                          >> $tmpfile
+    case "$term" in
+        /usr/bin/deepin-terminal | deepin-terminal) ;;
+        *)
+            _init_translations
+            if [ "$waitopt" != "--no-enter-wait" ] ; then
+                echo "read -p '$(ltr updt_press_enter): '"    >> $tmpfile
+            fi
+            ;;
+    esac
+    echo "rm -f $tmpfile"                                >> $tmpfile                    # this may cause issues in very special cases!
+
+    chmod +x $tmpfile
+
+    # Try make sure terminal $term does not return to the caller immediately
+    # but waits until the commands from $tmpfile are executed.
+    case "$term" in
+        /usr/bin/gnome-terminal | gnome-terminal)
+            $term $termopts --wait -- $tmpfile ;;
+        /usr/bin/xfce4-terminal | xfce4-terminal)
+            $term --disable-server $termopts -e $tmpfile ;;
+        *)
+            $term $termopts -e $tmpfile ;;
+    esac
+
+    # The following DOES NOT WORK with plain gnome-terminal:
+    #echo "Deleting '$tmpfile'."
+    #rm -f $tmpfile
+}
+
+eos_yad_RunCmdTermBash() {
+    local cmd="$1"
+    local prompt="$2"
+    local termopts="$3"
+    local waitopt="$4"
+
+    eos_yad_RunCmdTermBashOpt --prompt="$prompt" --term="$termopts" --wait="$waitopt" "$cmd"
+}
+
+eos_yad_problem() {
+    local title="$1"
+    shift
+    eos_yad --text-info --title="$title" --wrap --image=error \
+            --width=700 --height=500 --button=yad-quit:0 "$@"
+    # removed --tail
+}
+
+eos_yad_DIE() {
+    # This function is only for small messages.
+    # The local Usage can be used only if it is
+    #  - defined before sourcing this file
+    #  - exported
+
+    local msg="$1"
+    local title="Error"
+    shift
+    while true ; do
+        echo "$msg"
+        # run Usage function if available (usually is not ...)
+        test -n "$(declare -F | grep -w '^declare -f Usage$')" && Usage
+        break
+    done | eos_yad_problem "$title" "$@"
+    exit 1
+}
+
+eos_yad_WARN() {
+    local msg="$1"
+    local title="Warning"
+    shift
+    echo "$msg" | eos_yad_problem "$title" --image=dialog-warning "$@"
+}
+
+# Function detectDE is copied from: https://cgit.freedesktop.org/xdg/xdg-utils/tree/scripts/xdg-utils-common.in
+
+#--------------------------------------
+# Checks for known desktop environments
+# set variable DE to the desktop environments name, lowercase
+
+eos_yad__detectDE()
+{
+    # see https://bugs.freedesktop.org/show_bug.cgi?id=34164
+    unset GREP_OPTIONS
+
+    if [ -n "${XDG_CURRENT_DESKTOP}" ]; then
+      case "${XDG_CURRENT_DESKTOP}" in
+         # only recently added to menu-spec, pre-spec X- still in use
+         Budgie*)
+           DE=budgie
+           ;;
+         Cinnamon|X-Cinnamon)
+           DE=cinnamon;
+           ;;
+         DEEPIN|[Dd]eepin)
+           DE=deepin;
+           ;;
+         ENLIGHTENMENT|Enlightenment)
+           DE=enlightenment;
+           ;;
+         # GNOME, GNOME-Classic:GNOME, or GNOME-Flashback:GNOME
+         GNOME*|gnome)
+           DE=gnome;
+           ;;
+         KDE)
+           DE=kde;
+           ;;
+         LXDE)
+           DE=lxde;
+           ;;
+         LXQt)
+           DE=lxqt;
+           ;;
+         MATE)
+           DE=mate;
+           ;;
+         XFCE)
+           DE=xfce
+           ;;
+         X-Generic)
+           DE=generic
+           ;;
+         i3)
+           DE=i3
+           ;;
+      esac
+    fi
+
+    if [ x"$DE" = x"" ]; then
+      # classic fallbacks
+      if [ x"$KDE_FULL_SESSION" != x"" ]; then DE=kde;
+      elif [ x"$GNOME_DESKTOP_SESSION_ID" != x"" ]; then DE=gnome;
+      elif [ x"$MATE_DESKTOP_SESSION_ID" != x"" ]; then DE=mate;
+      elif `dbus-send --print-reply --dest=org.freedesktop.DBus /org/freedesktop/DBus org.freedesktop.DBus.GetNameOwner string:org.gnome.SessionManager > /dev/null 2>&1` ; then DE=gnome;
+      elif xprop -root _DT_SAVE_MODE 2> /dev/null | grep ' = \"xfce4\"$' >/dev/null 2>&1; then DE=xfce;
+      elif xprop -root 2> /dev/null | grep -i '^xfce_desktop_window' >/dev/null 2>&1; then DE=xfce
+      elif echo $DESKTOP | grep -q '^Enlightenment'; then DE=enlightenment;
+      elif [ x"$LXQT_SESSION_CONFIG" != x"" ]; then DE=lxqt;
+      fi
+    fi
+
+    if [ x"$DE" = x"" ]; then
+      # fallback to checking $DESKTOP_SESSION
+      case "$DESKTOP_SESSION" in
+         gnome)
+           DE=gnome;
+           ;;
+         LXDE|Lubuntu)
+           DE=lxde; 
+           ;;
+         MATE)
+           DE=mate;
+           ;;
+         xfce|xfce4|'Xfce Session')
+           DE=xfce;
+           ;;
+         openbox)
+             DE=openbox
+             ;;
+      esac
+    fi
+
+    if [ x"$DE" = x"" ]; then
+      # fallback to uname output for other platforms
+      case "$(uname 2>/dev/null)" in 
+        CYGWIN*)
+          DE=cygwin;
+          ;;
+        Darwin)
+          DE=darwin;
+          ;;
+      esac
+    fi
+
+    if [ x"$DE" = x"gnome" ]; then
+      # gnome-default-applications-properties is only available in GNOME 2.x
+      # but not in GNOME 3.x
+      which gnome-default-applications-properties > /dev/null 2>&1  || DE="gnome3"
+    fi
+
+    if [ -f "$XDG_RUNTIME_DIR/flatpak-info" ]; then
+      DE="flatpak"
+    fi
+
+    if [ -z "$DE" ] ; then
+        # neofetch fails: Enlightenment, openbox
+        # neofetch differs: KDE -> plasma (with DESKTOP_SESSION=openbox-kde and DESKTOP_SESSION=plasma)
+        [ -x /usr/bin/neofetch ] && DE="$(neofetch --enable de --de_version off | awk '{print $NF}' | tr [:upper:] [:lower:])"
+    fi
+}
+
+eos_yad_GetDesktopName() {      # return DE name in uppercase letters
+    local de=$(eos_yad__detectDE && echo "$DE" | tr '[:lower:]' '[:upper:]')
+    echo "$de"
+}
+
+eos_IsSway()  {
+    case "$DESKTOP_SESSION" in
+        sway | */sway) return 0 ;;
+    esac
+    case "$XDG_SESSION_DESKTOP" in
+        sway | */sway) return 0 ;;
+    esac
+    [ -x /usr/bin/swaybg ] && return 0
+    return 1
+}
+
+eos_IsBspwm() {
+    case "$DESKTOP_SESSION" in
+        bspwm | */bspwm) return 0 ;;
+    esac
+    case "$XDG_SESSION_DESKTOP" in
+        bspwm | */bspwm) return 0 ;;
+    esac
+    [ -x /usr/bin/bspwm ] && return 0
+    return 1
+}
+
+eos_GetDeOrWm() {
+    local de="$(eos_yad_GetDesktopName)"
+    if [ "$de" = "" ] ; then
+        if (eos_IsSway) ; then
+            de=SWAY
+        elif (eos_IsBspwm) ; then
+            de=BSPWM
+        fi
+    fi
+    echo "$de"
+}
+
+# DIE()  { eos_yad_DIE  "$@" ; }    # deprecated
+# WARN() { eos_yad_WARN "$@" ; }    # deprecated
+
+#SetBrowser() {
+#    local xx
+#    for xx in xdg-open exo-open firefox chromium ; do  # use one of these browser commands
+#        if [ -x /usr/bin/$xx ] ; then
+#            _BROWSER=/usr/bin/$xx        # for showing external links
+#            return
+#        fi
+#    done
+#    DIE "$FUNCNAME: cannot find a browser"
+#}
+
+eos_yad_nothing_todo() {
+    local text="$1"
+    local timeout="$2"  # optional, default set below
+    local title="$3"    # optional, default set below
+    local image="$4"    # optional, default set below
+
+    [ -n "$timeout" ] || timeout=10
+    [ -n "$title" ]   || title="Info"
+    [ -n "$image" ]   || image=info
+
+    local cmd=(
+        eos_yad --form --text="$text" --title="$title" --no-focus
+                --height=100 --width=300 --timeout=$timeout --timeout-indicator=left
+                --button=yad-close:0
+    )
+    "${cmd[@]}"
+}
+
+
+FindAvailableMonoFont() {
+    local size="$1"
+    local font="Mono"   # fallback
+
+    [ -n "$size" ] || size=10
+
+    if [ -r /usr/share/fonts/liberation/LiberationMono-Regular.ttf ] ; then
+        font="Liberation Mono"
+    elif [ -r /usr/share/fonts/TTF/DejaVuSansMono.ttf ] ; then
+        font"DejaVu Sans Mono"
+    elif [ -r /usr/share/fonts/noto/NotoSansMono-Regular.ttf ] ; then
+        font="Noto Sans Mono"
+    elif [ -r /usr/share/fonts/gsfonts/NimbusMonoPS-Regular.otf ] ; then
+        font="Nimbus Mono"
+    elif [ -r /usr/share/fonts/adobe-source-code-pro/SourceCodePro-Regular.otf ] ; then
+        font="Source Code Pro"
+    fi
+    echo "$font $size"
+}
+
+ProgressBar() {         # This function was converted from the work of @Kresimir, thanks!
+    local msg="$1"
+    local percent="$2"
+    local barlen="$3"
+    local c
+    local columns="$COLUMNS"                                # nr of columns on the terminal
+    [ -n "$columns" ] || columns=80                         # guess nr of columns on the terminal
+    local msglen=$((columns - barlen - 9))                  # max space for the msg
+    [ "${#msg}" -gt "$msglen" ] && msg="${msg::$msglen}"    # msg must be truncated
+    [ "${msg: -1}" = ":" ] || msg+=":"                      # make sure a colon is after msg
+
+    printf "\r%-*s %3d%% [" "$msglen" "$msg" $percent >&2
+    for ((c = 0; c < $barlen; c++)) ; do
+        if (( $c <= $percent * $barlen / 100 )); then
+            echo -ne "#" >&2
+        else
+            echo -ne " " >&2
+        fi
+    done;
+    stdbuf -oL printf "]" >&2 # flush stdout
+}
+ProgressBarInit() {
+    # progress bar initialization
+    trap 'printf "\x1B[?25h" >&2' EXIT # cursor on
+    printf "\x1B[?25l" >&2              # cursor off
+}
+ProgressBarEnd() {
+    printf "\n" >&2
+}
+
+YadProgressPulsate() {
+    local lockfile="$1"
+    local text="$2"
+
+    while true ; do
+        [ -r "$lockfile" ] || return
+        echo 0
+        sleep 0.1s
+    done | eos_yad --progress \
+                   --title="Progress indicator" \
+                   --text="$text" \
+                   --auto-close \
+                   --width=400 --hide-text --pulsate
+}
+
+eos_FormMonoText() {
+    local txt="$1"
+    local size="$2"   # optional
+
+    [ -n "$size" ] && size=" $size"
+    printf "<span font='Mono$size'>%s</span>" "$txt"
+}
+
+# check the config:
+case "$EOS_ROOTER" in
+    su           | "su -c"          | "/usr/bin/su -c" | "")     export EOS_ROOTER="eos-run-cmd-with-su" ;;          # default!
+    sudo         | "sudo bash -c"   | "/usr/bin/sudo bash -c")   export EOS_ROOTER="sudo bash -c" ;;
+    pkexec       | "pkexec bash -c" | "/usr/bin/pkexec bash -c") export EOS_ROOTER="/usr/bin/pkexec bash -c" ;;
+    su-c_wrapper)                                                export EOS_ROOTER="/usr/bin/su-c_wrapper bash -c" ;;
+    *)
+        eos_yad_DIE "Error: configuration '$EOS_ROOTER' for EOS_ROOTER in file /etc/eos-script-lib-yad.conf is not supported!"
+        ;;
+esac
+
+
+export -f eos_yad
+export -f eos_yad_terminal
+export -f eos_yad_RunCmdTermBash
+
+
+DIE() {
+    eos_yad --form --width=400 --title="reflector-simple problem" --image=error --text="$1" --button=yad-quit
+    Destructor
+    exit 1
+}
+echo2() { echo "$@" >&2; }
+INFO() { echo2 "$progname: info: $1"; }
+WARN() {
+    echo2 "$progname: warning: $1"
+    # eos_yad --form --width=400 --title="reflector-simple warning" --image=dialog-warning --text="$1" --button=yad-quit
+}
+
+Verbose() {
+    return
+    local time=$(date +%H:%M:%S)
+    echo2 "$time: $1"
+}
+
+CodeToCountry() {  # convert country code to country name
+    local code="$1"
+    echo "$REFLECTOR_COUNTRIES" | grep -wi "$code" | sed 's|^\(.*[a-z]\)[ ]*[A-Z][A-Z].*$|\1|'
+}
+CountryToCode() {  # convert country name to country code
+    local country="$1"
+    echo "$REFLECTOR_COUNTRIES" | grep -w "$country" | awk '{print $(NF-1)}'
+}
+
+
+CCCheck() {   # check validity of country code
+    case "$1" in
+        [A-Z][A-Z])
+            if [ -n "$(CodeToCountry "$1")" ] ; then
+                echo "$1"
+                return 0
+            fi
+            ;;
+    esac
+    return 1  # fail
+}
+
+Method0() {
+    # use https://ipinfo.io/country
+    local code="$(curl -Lsm 10 https://ipinfo.io/country)"
+    CCCheck "$code"
+}
+Method1() {
+    # use ipv4 and 'dig' with google, then 'geoiplookup'
+    Method12_IP || return 1
+    local code="$(geoiplookup "$IP" | sed 's|^.*: \([A-Z][A-Z]\),.*$|\1|')"
+    CCCheck "$code"
+}
+Method2() {
+    # use ipv4 and 'dig' with google, then 'whois'
+    Method12_IP || return 1
+    local code="$(whois "$IP" | grep ^country: | awk '{print $NF}')"
+    CCCheck "$code"
+}
+Method3() {
+    # use ipv6 and 'dig' with google, then 'geoiplookup6'; note that ipv6 may not be available
+    Method34_IP || return 1
+    local code="$(geoiplookup6 "$IP" | sed 's|^.*: \([A-Z][A-Z]\),.*$|\1|')"
+    CCCheck "$code"
+}
+Method4() {
+    # use ipv6 and 'dig' with google, then 'whois'; note that ipv6 may not be available
+    Method34_IP || return 1
+    local code="$(whois "$IP" | grep ^country: | awk '{print $NF}')"
+    CCCheck "$code"
+}
+Method5() {
+    # net services failed, use local variables, but may be wrong
+    local code="$(locale | grep ^LC_TIME | cut -d '"' -f 2 | sed 's|^.*_\([A-Z][A-Z]\)\..*$|\1|')"
+    CCCheck "$code"
+}
+
+Method12_IP() {
+    if [ -z "$IP_method12" ] ; then
+        local xx="$(dig -4 TXT +short o-o.myaddr.l.google.com @ns1.google.com | tr -d '"')"  # ipv4 address
+        if [ -n "$(echo "$xx" | sed 's|[0-9\.]*||g')" ] ; then
+            return 1   # is not an ipv4 address
+        fi
+        IP_method12="$xx"
+    fi
+    IP="$IP_method12"
+}
+
+Method34_IP() {
+    if [ -z "$IP_method34" ] ; then
+        local xx="$(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | tr -d '"')"  # ipv6 address (preferred)
+        if [ -n "$(echo "$xx" | sed 's|[0-9a-fA-f:]*||g')" ] ; then
+            return 1   # is not an ipv6 address
+        fi
+        IP_method34="$xx"
+    fi
+    IP="$IP_method34"
+}
+
+GetYourCountryCode() {
+    local IP
+    local IP_method12=""
+    local IP_method34=""
+
+    # try the preferred method first
+    case "$REFLECTOR_SIMPLE_COUNTRY_METHOD" in
+        default) ;;
+        [0-5]) Method$REFLECTOR_SIMPLE_COUNTRY_METHOD && return ;;
+        *) DIE "method $REFLECTOR_SIMPLE_COUNTRY_METHOD of REFLECTOR_SIMPLE_COUNTRY_METHOD in unsupported" ;;
+    esac
+
+    # come here if the preferred method failed, or default was chosen
+    local method
+    for method in $(seq 0 5) ; do
+        if [ "$method" != "$REFLECTOR_SIMPLE_COUNTRY_METHOD" ] ; then
+            Method$method && return
+        fi
+    done
+
+    DIE "failed to find country code"
+}
+
+ArgsYesNo() {
+    local searched="$1"
+    shift
+    for xx in "$@" ; do
+        test "$xx" = "$searched" && { echo "yes" ; return ; }
+    done
+    echo "no"
+}
+
+IsDroppedCountry() {
+    local xx
+    for xx in "${conf_dropped_countries[@]}" ; do
+        [ "$xx" = "$1" ] && return 0
+    done
+    return 1
+}
+
+_config_country() {
+    local xx="$1"
+    case "$xx" in
+        [a-zA-Z][a-zA-Z]) conf_selected_countries+=("$(CodeToCountry "$xx")") ;;
+    esac
+}
+
+GetListToken() {
+    local -n __lista__=$1
+    local -n __token__=$2
+    __token__="$(echo "$__lista__" | cut -d ',' -f 1)"
+    __lista__="$(echo "$__lista__" | sed 's|^[^,]*[,]*||')"
+}
+
+Destructor() {
+    [ -n "$tmpconf" ] && rm -f $tmpconf
+}
+
+# Conf limitations:
+# - nothing known!
+
+_get_reflector_x_configs() {
+    # Read reflector options from $REFLECTOR_X_CONF,
+    # convert country names to country codes, and put all options
+    # into file '$tmpconf'.
+    local name code ix
+
+    INFO "reading file $REFLECTOR_X_CONF"
+
+    # Remove empty lines and comments. Remove quotes.
+    cat $REFLECTOR_X_CONF | grep -v "^[ \t]*$" | sed -e 's|[ \t]*#.*||' -e '/^$/d' | tr -d "'\""  > $tmpconf
+
+    # change country names to country codes in $tmpconf
+    for ((ix=0; ix<${#countrycodes[@]}; ix++)) ; do
+        name="${countrynames[$ix]}"
+        code="${countrycodes[$ix]}"
+        sed -i $tmpconf \
+            -e "s|'$name'|$code|gI" \
+            -e "s|\"$name\"|$code|gI" \
+            -e "s|\([, \t]\)$name[ \t]*$|\1$code|gI" \
+            -e "s|\([, \t]\)$name,|\1$code,|gI"
+    done
+
+    local xx list yy opt=""
+    for xx in $(cat $tmpconf) ; do
+        # split single letter option from its value
+        case "$xx" in
+            -p?* | -c?* | -a?* | -n?*)
+                opt="${xx::2}"
+                xx="${xx:2}"
+                ;;
+            $country_exclude=*)
+                opt="$country_exclude"
+                xx="${xx#*=}"
+                ;;
+        esac
+
+        case "$opt" in
+            --sort)            conf_sort="$xx" ;;
+            -a | --age)        conf_age="$xx" ;;
+            -n | --number)     [ "$use_number_instead_of_latest" = "yes" ] && conf_number="$xx" ;;
+            -l | --latest)     [ "$use_number_instead_of_latest" = "yes" ] || conf_number="$xx" ;;
+            -p | --protocol)
+                list="$xx"
+                while [ -n "$list" ] ; do
+                    GetListToken list yy
+                    conf_protocol+=("$yy")
+                done
+                ;;
+            $country_exclude)                                  # extension
+                case "$xx" in
+                    [a-zA-Z][a-zA-Z])
+                        yy="$(CodeToCountry "$xx")"
+                        [ -n "$yy" ] || DIE "Unrecognized country code '$xx' with option $country_exclude in file $REFLECTOR_X_CONF, see 'reflector --list-countries'"
+                        xx="$(echo "$xx" | tr "[:lower:]" "[:upper:]")"
+                        conf_dropped_countries+=("$xx")
+                        conf_dropped_countries+=("$yy")
+                        ;;
+                    [A-Z][a-z]*)
+                        xx="$(FixCountryName "$xx")"
+                        yy="$(CountryToCode "$xx")"
+                        [ -n "$yy" ] || DIE "Unrecognized country name '$xx' with option $country_exclude in file $REFLECTOR_X_CONF, see 'reflector --list-countries'"
+                        conf_dropped_countries+=("$xx")
+                        conf_dropped_countries+=("$yy")
+                        ;;
+                    *)
+                        DIE "Unrecognized country '$xx' with option $country_exclude in file $REFLECTOR_X_CONF, see 'reflector --list-countries'"
+                        ;;
+                esac
+                ;;
+            -c | --country)
+                # list or single value: "GB,FR,DE" or "GB"
+                xx="$(ChangeNamesToCodes "$xx")"
+                list="$xx"
+                while [ -n "$list" ] ; do
+                    GetListToken list yy
+                    _config_country "$yy"
+                done
+                ;;
+        esac
+        opt="$xx"
+    done
+
+    local zz=()
+    for xx in "${conf_selected_countries[@]}" ; do
+        IsDroppedCountry "$xx" || zz+=("$(CodeToCountry "$xx")")
+    done
+    conf_selected_countries=("${zz[@]}")
+}
+
+ChangeNamesToCodes() {
+    local list="$1"
+    local newlist=""
+    local name
+    for ((ix=1; ; ix++)) ; do
+        name="$(echo "$list" | cut -s -d ',' -f $ix)"
+        if [ -z "$name" ] && [ -n "$list" ] ; then
+            name="$list"
+            list=""
+        fi
+        if [ -z "$name" ] && [ -z "$list" ] ; then
+            break
+        fi
+        case "$name" in
+            [a-zA-Z][a-zA-Z])
+                ;;
+            *)
+                name="$(FixCountryName "$name")"
+                name="$(CountryToCode "$name")"
+                ;;
+        esac
+        [ $ix -eq 1 ] && newlist+="$name" || newlist+=",$name"
+    done
+    echo "$newlist"
+}
+
+FixCountryName() {   # simple fix to country name to be the same as in 'reflector --list-countries'
+    local name="$1"
+
+    if [ -z "$(CountryToCode "$name")" ] ; then
+        local official_name
+        name=${name,,}  # make lowercase
+        for official_name in "${countrynames[@]}" ; do
+            if [ "$name" = "${official_name,,}" ] ; then
+                name="$official_name"
+                break
+            fi
+        done
+    fi
+    echo "$name"
+}
+
+IsInSelectedCountries() {
+    local cname="$1"
+    local xx
+    for xx in "${conf_selected_countries[@]}" ; do
+        [ "$xx" = "$cname" ] && return 0
+    done
+    return 1
+}
+
+IsInAddedCountries() {
+    local ccode="$1"
+    local xx
+    for xx in "${added_countries[@]}" ; do
+        [ "$xx" = "$ccode" ] && return 0
+    done
+    return 1
+}
+
+OptTypeNeeded() {
+    case "$local_country_code" in
+        CH|DE|DK|FI|FR|HK|IE|IS|NL|NZ|SE|SG|UK|US)
+            echo "plain"
+            ;;
+        *)
+            echo "$local_country_code"
+            ;;
+    esac
+}
+
+IsPositiveNumber() {
+    local val="$1"
+
+    if [ "$(echo "$val" | /usr/bin/sed 's|[0-9]*||g')" = "" ] ; then
+        if [ -n "$val" ] ; then
+            return 0
+        fi
+    fi
+    return 1
+}
+
+AskCountriesAndOptions() {
+    local tips=(
+        "Select countries to include in mirror ranking"
+        "  - select one or more countries"
+        "  - closest locations are usually the fastest"
+        "  - https is the preferred protocol"
+    )
+    if [ -r "$REFLECTOR_X_CONF" ] ; then
+        tips+=("\nNote: configuration file <b>$REFLECTOR_X_CONF</b> options are in use.")
+    else
+        tips+=("\nNote: configuration file <b>$REFLECTOR_X_CONF</b> is unavailable, using $progname defaults.")
+    fi
+    local ix included xx tip
+    local command
+    local default_age=2
+    local default_sort='age!^rate!country!score!delay'
+    local default_number=10
+    local use_saved=""
+
+    Verbose "Creating the yad command..."
+
+    if [ "$use_age" = "yes" ] ; then
+        case "$(OptTypeNeeded)" in
+            plain) ;;                         # no additional defaults
+            "")         default_age=1 ;;      # country not directly supported by Arch
+            [A-Z][A-Z]) default_age=8 ;;      # country may lack https mirrors
+        esac
+    fi
+
+    [ -n "$conf_age" ]     && default_age="$conf_age"
+    [ -n "$conf_number" ]  && default_number="$conf_number"
+    [ -n "$conf_sort" ]    && default_sort="$(echo "$default_sort" | sed -e 's|\^||' -e "s|$conf_sort|^$conf_sort|")"
+    
+
+    command=(eos_yad --form --columns=$REFLECTOR_SIMPLE_COLUMNS --title="Select Arch mirrors with $progname v$VERSION_INFO")
+    command+=(--scroll --width=$REFLECTOR_SIMPLE_WIDTH --height=$REFLECTOR_SIMPLE_HEIGHT)
+    tip=""
+    for xx in "${tips[@]}" ; do
+        tip+="${xx}\n"
+    done
+    tip+=""
+    command+=(--text="$tip")
+
+    for ((ix=0; ix < ${#countrycodes[@]}; ix++)) ; do
+        included=false
+        IsInSelectedCountries "${countrynames[$ix]}" && included=true
+        if [ "${countrycodes[$ix]}" = "$local_country_code" ] && (! IsDroppedCountry "$local_country_code") ; then
+            included=true
+        fi
+        command+=(--field="${countrynames[$ix]}:chk" $included)
+    done
+    command+=(--separator=" ")                      # assumes all returned values lack spaces
+    command+=(--image="preferences-system")
+
+    #command+=(--field=":LBL" "")
+    command+=(--field="<span font='italic 14'>Feature selection\:</span>:LBL" "")
+    command+=(--field="Include https mirrors:chk" true)             # always suggest https
+    included=false
+    for xx in "${conf_protocol[@]}" ; do
+        case "$xx" in
+            http) included=true ; break ;;
+        esac
+    done
+    command+=(--field="Include http mirrors:chk" $included)
+    if [ "$rsync_supported" = "yes" ] ; then
+	command+=(--field="Include rsync mirrors:chk" false)
+    fi
+    if [ "$use_age" = "yes" ] ; then
+        command+=(--field="Max hours from latest mirror sync":num $default_age)    # --age
+    fi
+    command+=(--field="Sort by":cb "$default_sort")                                # --sort
+    if [ "$use_number_instead_of_latest" = "yes" ] ; then
+        command+=(--field="Max number of mirrors":num $default_number)             # --number
+    else
+        command+=(--field="Max number of freshest mirrors":num $default_number)    # --latest
+    fi
+
+    local free_params=""
+    if [ -r "$free_params_file" ] ; then
+        free_params="$(/usr/bin/cat "$free_params_file" | tr '\n' ' ')"
+    fi
+    command+=(--field="Optional reflector params" " $free_params")    # note the initial space in value !!!
+    Verbose "done."
+
+    reflector_info="$("${command[@]}")"
+    case "$?" in
+        1) Destructor ; exit 1 ;;
+    esac
+    test -z "$(echo "$reflector_info" | tr -d ' ')" && exit 1      # stop if $reflector_info has no words
+    if [ "$(echo "$reflector_info" | wc -l)" != "1" ] ; then
+        DIE "yad output is garbage!"
+    fi
+    reflector_info=($(echo $reflector_info))                       # make it an array
+}
+
+BuildReflectorCommand() {
+    local ix xx
+    local ix_ext=""
+    local ac
+
+    reflector_cmd=(reflector --verbose)
+
+    if [ -r "$REFLECTOR_X_CONF" ] ; then
+        reflector_cmd+=($(cat $tmpconf | grep -v "^$country_exclude"))
+        # now we may have countries from config file
+        for ac in "${conf_selected_countries[@]}" ; do
+            added_countries+=("$(CountryToCode "$ac")")
+        done
+    fi
+
+    # then, add countries
+    for ((ix=0; ix<${#countrycodes[@]}; ix++)) ; do
+        xx="${reflector_info[$ix]}"
+        test "$xx" = TRUE && {
+            conf_selected_countries+=("${countrynames[$ix]}")
+            if [ "${countrynames[$ix]}" != "Worldwide" ] ; then
+                ac="${countrycodes[$ix]}"
+                if [ 1 -eq 1 ] ; then
+                    IsInAddedCountries "$ac" || {
+                        added_countries+=("$ac")
+                        reflector_cmd+=(-c "$ac")
+                    }
+                else
+                    reflector_cmd+=(-c "$ac")
+                fi
+            else
+                worldwide_selected=1
+            fi
+        }
+    done
+
+    # finally, add feature selections
+    test "${reflector_info[$((ix++))]}" = "TRUE" && { reflector_cmd+=(--protocol https) ; https_selected=1 ; }
+    test "${reflector_info[$((ix++))]}" = "TRUE" && { reflector_cmd+=(--protocol http) ; http_selected=1 ; }
+    test "$rsync_supported" = "yes" && {
+        test "${reflector_info[$((ix++))]}" = "TRUE" && { reflector_cmd+=(--protocol rsync) ; rsync_selected=1 ; }
+    }
+    if [ "$use_age" = "yes" ] ; then
+        reflector_cmd+=(--age "${reflector_info[$((ix++))]}")
+    fi
+    reflector_cmd+=(--sort $(echo "${reflector_info[$ix]}" | tr -d '|'))  # with echo incrementing ix with ++ does not work
+    ((ix++))
+    if [ "$use_number_instead_of_latest" = "yes" ] ; then
+        reflector_cmd+=(--number "${reflector_info[$((ix++))]}")
+    else
+        reflector_cmd+=(--latest "${reflector_info[$((ix++))]}")
+    fi
+
+    # add optional free parameters to the command and save free params to file
+    printf "" > "$free_params_file"
+    while true ; do
+        xx="${reflector_info[$((ix++))]}"
+        [ -n "$xx" ] || break
+        reflector_cmd+=("$xx")
+        echo "$xx" >> "$free_params_file"
+    done
+}
+
+ShowMirrorlistSaved() {
+    INFO "New $ml saved."
+    return  # showing dialog not really needed...
+
+    echo "New $ml saved." | \
+        eos_yad --text-info --width=300 --height=100 --align=center \
+                --title="Success" --button=yad-quit:0 \
+                --timeout=5 --timeout-indicator=left
+}
+
+AddCountryNamesToMirrors() {
+    local full_list=$(mktemp)
+
+    Verbose "Fetching Arch mirror list..."
+    if [ 0 -eq 1 ] ; then
+        curl -Lsm 10 -o $full_list $ARCH_SITE/mirrorlist/all || {
+            WARN "cannot fetch Arch mirror list."
+            rm -f $full_list
+            return 1
+        }
+    else
+        eos-latest-arch-mirrorlist $full_list || {
+            WARN "cannot fetch Arch mirror list."
+            rm -f $full_list
+            return 1
+        }
+    fi
+    Verbose "done."
+
+    local selected_mirrors=$(grep "^Server = " $tmpfile | awk '{print $3}')
+    local sel_mir
+    local cc xx
+    local country_mirrors country_and_mirror
+    local found
+    local headers="$(grep "^#" $tmpfile)"
+
+    printf "%s\n" "$headers" > $tmpfile
+
+    for sel_mir in $selected_mirrors ; do
+        found=0
+        for cc in "${conf_selected_countries[@]}" ; do
+            country_mirrors="$(sed -n '/^## '"$cc"'$/,/^$/p' $full_list | sed '1d;$d' | awk '{print $3}')"
+            for xx in $country_mirrors ; do
+                if [ "$sel_mir" = "$xx" ] ; then
+                    found=1
+                    printf "\n## $cc\nServer = $sel_mir\n" >> $tmpfile
+                    break
+                fi
+                test "$found" = "1" && break
+            done
+        done
+    done
+    if [ "$worldwide_selected" = "1" ] ; then
+        country_mirrors="$(sed -n '/^## Worldwide$/,/^$/p' $full_list | sed '1d;$d' | awk '{print $3}')"
+        printf "\n## Worldwide\n" >> $tmpfile
+        for xx in $country_mirrors ; do
+            case "$xx" in
+                "https://"*) test $https_selected -eq 1 && echo "Server = $xx" >> $tmpfile ;;
+                "http://"*)  test $http_selected  -eq 1 && echo "Server = $xx" >> $tmpfile ;;
+                "rsync://"*) test $rsync_selected -eq 1 && echo "Server = $xx" >> $tmpfile ;;
+            esac
+        done
+    fi
+    rm -f $full_list
+}
+
+SaveMirrorlist() {
+    local opts txt
+    local font="$(FindAvailableMonoFont)"
+
+    if (! grep "^Server = [hr]" $tmpfile >/dev/null) ; then
+        txt+="$progname: no mirrors found!\n\n"
+        txt+="You may need to change some option values,\n"
+        txt+="e.g. use bigger <i>age</i> for mirrors or add different/more countries."
+        txt=$(eos_FormMonoText "$txt")
+        opts=( --form --title="Error" --image=error --button=yad-quit --text="$txt")
+        eos_yad "${opts[@]}"
+        return 1
+    fi
+    AddCountryNamesToMirrors
+
+    opts=(--text-info
+          --width=750
+          --height=500
+          --title="New Arch mirrorlist"
+          --button=yad-quit:1 --button=" Save to $ml!document-save":0
+          --filename=$tmpfile
+         )
+    if [ -n "$font" ] ; then
+        opts+=(--fontname="$font")
+    fi
+
+    eos_yad "${opts[@]}"
+
+    case "$?" in
+        0) pkexec bash -c "cp $ml $ml.bak && cp $tmpfile $ml" && ShowMirrorlistSaved ;;
+    esac
+}
+
+ReadToolConf() {
+    local def_width=1000
+    local def_height=750
+    local def_cols=5
+    local max_cols=8
+
+    REFLECTOR_SIMPLE_WIDTH=$def_width
+    REFLECTOR_SIMPLE_HEIGHT=$def_height
+    REFLECTOR_SIMPLE_COLUMNS=$def_cols
+    REFLECTOR_SIMPLE_COUNTRY_METHOD=default
+
+    if [ -r $toolconf ] ; then
+        INFO "reading file $toolconf"
+        source $toolconf
+        if ! IsPositiveNumber "$REFLECTOR_SIMPLE_WIDTH" ; then
+            WARN "$toolconf: REFLECTOR_SIMPLE_WIDTH has an invalid value, using default ($def_width)"
+            REFLECTOR_SIMPLE_WIDTH=$def_width
+        fi
+        if ! IsPositiveNumber "$REFLECTOR_SIMPLE_HEIGHT" ; then
+            WARN "$toolconf: REFLECTOR_SIMPLE_HEIGHT has an invalid value, using default ($def_height)"
+            REFLECTOR_SIMPLE_HEIGHT=$def_height
+        fi
+
+        if ! IsPositiveNumber "$REFLECTOR_SIMPLE_COLUMNS" ; then
+            WARN "$toolconf: REFLECTOR_SIMPLE_COLUMNS has an invalid value, using default ($def_cols)"
+            REFLECTOR_SIMPLE_COLUMNS=$def_cols
+        fi
+        if [ $REFLECTOR_SIMPLE_COLUMNS -gt $max_cols ] ; then
+            WARN "setting value of REFLECTOR_SIMPLE_COLUMNS to $max_cols"
+            REFLECTOR_SIMPLE_COLUMNS=$max_cols
+        elif [ $REFLECTOR_SIMPLE_COLUMNS -lt $def_cols ] ; then
+            WARN "setting value of REFLECTOR_SIMPLE_COLUMNS to $def_cols"
+            REFLECTOR_SIMPLE_COLUMNS=$def_cols
+        fi
+    else
+        INFO "file $toolconf not found, using defaults."
+    fi
+    (( REFLECTOR_SIMPLE_WIDTH+=(100*(REFLECTOR_SIMPLE_COLUMNS - def_cols)) ))
+    (( REFLECTOR_SIMPLE_HEIGHT-=(60*(REFLECTOR_SIMPLE_COLUMNS - def_cols)) ))
+}
+
+Main() {
+    local progname=reflector-simple
+    local VERSION_INFO="added by PKGBUILD"
+    local ARCH_SITE=https://www.archlinux.org
+    local free_params_file="$HOME/.config/reflector-simple-free-params.txt"
+
+    Verbose "Fetching country names with reflector..."
+    local REFLECTOR_LIST_COUNTRIES="$(/usr/bin/reflector --list-countries 2>/dev/null | /usr/bin/sed -n '/^-----/,//'p | /usr/bin/sed '1d')"
+    Verbose "done."
+
+    if [ -z "$REFLECTOR_LIST_COUNTRIES" ] ; then
+        DIE "reflector: Fetching information from $ARCH_SITE failed!"
+    fi
+    REFLECTOR_COUNTRIES="$(echo "Worldwide WW 0" ; echo "$REFLECTOR_LIST_COUNTRIES")"
+
+    local REFLECTOR_SIMPLE_CONF=/etc/reflector-simple.conf
+    local toolconf=/etc/reflector-simple-tool.conf
+    local REFLECTOR_AUTO_CONF=/etc/reflector-auto.conf
+    local REFLECTOR_X_CONF=$REFLECTOR_SIMPLE_CONF
+
+    local REFLECTOR_SIMPLE_WIDTH
+    local REFLECTOR_SIMPLE_HEIGHT
+    local REFLECTOR_SIMPLE_COLUMNS
+    local REFLECTOR_SIMPLE_COUNTRY_METHOD
+
+    if [ ! -r "$REFLECTOR_X_CONF" ] ; then
+        if [ -r $REFLECTOR_AUTO_CONF ] ; then
+            REFLECTOR_X_CONF=$REFLECTOR_AUTO_CONF
+            WARN "Config file$REFLECTOR_SIMPLE_CONF not found, using $REFLECTOR_AUTO_CONF instead."
+        fi
+    fi
+
+    local rsync_supported=no   # yes or no
+
+    local verbose=$(ArgsYesNo -v "$@")
+    local showlist=$(ArgsYesNo -l "$@")
+
+    test "$verbose" = "yes" && echo2 "Find your country ..."
+
+    ReadToolConf
+
+    local local_country_code="$(GetYourCountryCode)"
+    local countrynames
+    local countrycodes
+    local reflector_info
+    local reflector_cmd
+    local ml=/etc/pacman.d/mirrorlist
+    local conf_selected_countries=()
+    local conf_dropped_countries=()
+    local added_countries=()           # used in removing duplicates in given countries!
+    local use_age=no                   # was yes; now we use --latest, so --age is not needed
+    local conf_age=""
+    local conf_sort=""
+    local conf_number=""
+    local conf_protocol=()
+    local worldwide_selected=0
+    local use_number_instead_of_latest="$REFLECTOR_SIMPLE_PREFER_NUMBER"  # from exported env var
+    local https_selected=0
+    local http_selected=0
+    local rsync_selected=0
+    local country_exclude="--country-exclude"          # reflector does not have this option
+    local use_pulsating_indicator=no  # yes or no
+    local tmpconf=""
+
+    case "$use_number_instead_of_latest" in
+        yes | no) ;;
+        *) use_number_instead_of_latest=no ;;          # new default!
+    esac
+
+    # Find countries with supported mirrors.
+
+    readarray -t countrynames <<< "$(echo "$REFLECTOR_COUNTRIES" | sed 's|^\(.*[a-z]\)[ ]*[A-Z][A-Z].*$|\1|')"
+    readarray -t countrycodes <<< "$(echo "$REFLECTOR_COUNTRIES" | awk '{print $(NF-1)}')"
+
+    if [ -r "$REFLECTOR_X_CONF" ] ; then
+        tmpconf=$(mktemp)
+        Verbose "Reading config file..."
+        _get_reflector_x_configs
+        Verbose "done."
+    else
+        INFO "file $REFLECTOR_X_CONF not found, using defaults."
+    fi
+
+    # Now we have info about supported countries.
+    # Next, we ask user to give some countries for mirror ranking.
+
+    AskCountriesAndOptions   # modifies $reflector_info
+
+    # Now we know which countries to include in mirror ranking.
+    # Let's create a proper reflector command.
+
+    BuildReflectorCommand    # uses $reflector_info and modifies $reflector_cmd
+
+    # Add the save option here!
+    local tmpfile=$(mktemp)
+
+    # Now all is ready, so just run the command.
+
+    if [ "$use_pulsating_indicator" = "yes" ] ; then
+        local lockfile="$(mktemp "$HOME"/.lck.XXXXXXXX)"
+        YadProgressPulsate "$lockfile" "Ranking mirrors, please wait..." &
+    fi
+
+    local ranklog=/tmp/mirror-rating.log
+    local progress_cmd=(
+        eos_yad --progress --enable-log --log-on-top --log-expanded --image=update --image-on-top --log-height 200 --auto-close
+        --width=900 --no-buttons
+        --title="Mirror ranking"
+        --text="Rating mirrors, please wait...\nNote: rating log will be saved in file <b>$ranklog</b>."
+    )
+
+    Verbose "Starting ranking..."
+    "${reflector_cmd[@]}" 2>&1 > $tmpfile | tee $ranklog | {
+        local line="" max_lines=0 value=0 line_count=-2
+        while read line ; do
+            if [[ "$line" == *"mirror(s) by"* ]]; then
+                max_lines=$(echo "$line" | sed -e 's/.*rating \(.*\) mirror.*/\1/')
+            fi
+            if [[ "$line" != *"WARNING:"* ]]; then
+                ((line_count++))
+            fi
+            echo "#<tt>$line</tt>"
+            if [ "$line_count" -ge 0 ]; then
+                value=$(( line_count*100/max_lines ))
+                echo "$((  value < 100 ? value : 99  ))"
+            fi
+        done
+        echo 100
+    } | "${progress_cmd[@]}"
+    Verbose "done."
+
+    if [ "$use_pulsating_indicator" = "yes" ] ; then
+        #sleep 0.5
+        rm -f "$lockfile"
+    fi
+
+    # Show the result and ask permission to save the mirrorlist.
+
+    SaveMirrorlist
+
+    # cleanup
+    rm -f $tmpfile
+    if [ -r "$REFLECTOR_X_CONF" ] ; then
+        Destructor
+    fi
+}
+
+Main "$@"

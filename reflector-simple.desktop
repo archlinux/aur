@@ -1,0 +1,16 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Reflector Simple
+Name[de]=Reflector Simple
+Comment=A simple GUI for 'reflector'
+Comment[de]=Eine simple GUI zum Mirror refreshen
+Comment[ru]= Простой графический интерфейс для reflector
+Exec=/usr/bin/reflector-simple
+Icon=reflector-simple
+# StartupNotify=false
+# Terminal=False
+Hidden=false
+X-GNOME-Autostart-enabled=true
+X-KDE-autostart-after=panel
+Categories=System
