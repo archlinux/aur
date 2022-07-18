@@ -2,13 +2,13 @@
 
 pkgname=apk-tools-git
 pkgver=2.12.10.r248.gff7c8f6
-pkgrel=1
+pkgrel=2
 pkgdesc="Alpine package manager"
 arch=('i686' 'x86_64')
 url="https://gitlab.alpinelinux.org/alpine/apk-tools"
 license=('GPL2')
 depends=('glibc' 'openssl' 'zlib')
-makedepends=('git' 'meson' 'scdoc' 'lua53' 'lua53-zlib')
+makedepends=('git' 'lua53' 'lua53-zlib' 'meson' 'scdoc')
 provides=("apk-tools=$pkgver")
 conflicts=('apk-tools')
 options=('staticlibs')
