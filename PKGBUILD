@@ -1,27 +1,22 @@
 # Maintainer: Inder Redni <inder@oad.earth>
 
 pkgname=strapi
-pkgver=3.0.0.alpha.11.2
-_pkgver=3.0.0-alpha.11.2
-pkgrel=2
-pkgdesc="Content Management Framework (headless-CMS) to build powerful API with no effort"
+pkgver=4.2.3
+pkgrel=1
+pkgdesc="Open source Node.js Headless CMS to easily build customisable APIs"
 arch=('any')
 url="https://strapi.io"
 license=('MIT')
-depends=('nodejs>=9.0.0' 'mongodb>=3.4.0')
-makedepends=('npm>=5.0.0')
+depends=('nodejs-lts-gallium')
+makedepends=('npm')
 provides=('strapi')
-source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$_pkgver.tgz"
+source=("https://registry.npmjs.org/@strapi/strapi/-/$pkgname-$pkgver.tgz"
         LICENSE)
-noextract=($pkgname-$_pkgver.tgz)
-sha512sums=('853c866cec80e137eea9e8a09921205eb5d9bc49360d63ed6d5811b40e1421327fd7ca771d83ab9dc2643aad25a7a47ea94fdabf4d8ff2f572c7c92f04652ebe'
-            '07d628c82c22ce8da740a34ad487a20972c51195180ac4cfc957f1367dd1a2b1b7d5e0d93cbaed054f3f279d0ec2e9d837301c84122dff0b9a7903e124906fde')
+noextract=($pkgname-$pkgver.tgz)
+sha256sums=('f249ad71e2eac0a018e14f49e15d66171793e90e7782c224dd64da41a083a5ff'
+            'c9291261c888edc8fd80d24d47f507033630cf4108ca9040fc640cd95a7eea79')
 
 package() {
-  npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$_pkgver.tgz
-  rm -r "$pkgdir"/usr/etc
+  npm install -g --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  # Fix permissions
-  find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
 }
