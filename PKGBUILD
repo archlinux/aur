@@ -3,28 +3,32 @@
 pkgname='veracrypt-inyourlanguage'
 _pkgname='veracrypt'
 pkgver=1.25.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Disk encryption with strong security based on TrueCrypt 7.1a. Choose one of 40+ languages for installation.'
 url='https://www.veracrypt.fr'
 arch=('x86_64')
 license=('Apache 2.0' 'TrueCrypt 3.0')
 provides=('veracrypt')
 conflicts=('veracrypt' 'veracrypt-console-bin' 'veracrypt-git' 'veracrypt-git-no-gost' 'veracrypt-trans')
-depends=('fuse2>=2.8.0' 'wxgtk3>=3.0' 'libsm' 'device-mapper')
+depends=('fuse2>=2.8.0' 'wxwidgets-gtk3' 'libsm' 'device-mapper')
 makedepends=('git' 'yasm' 'libxml2' 'coreutils')
 optdepends=('sudo: mounting encrypted volumes as nonroot users')
 source=("https://launchpad.net/${_pkgname}/trunk/${pkgver}/+download/VeraCrypt_${pkgver}_Source.tar.bz2"
-        "select_lang.sh")
+        "select_lang.sh"
+        "wx-3.2-size-warnings.patch")
 sha512sums=('9b11c8d8e85770ae05960fef8fc9639731e4f9caf0cc4e50bc8c9c92b45d44c80eaeff483d3ab048fd6a82cc873a6027820e21abde7ddb92b3c368f85b837cf2'
+            'SKIP'
             'SKIP')
 
 prepare() {
   bash $srcdir/../select_lang.sh
+  cd src
+  patch -p1 < ../wx-3.2-size-warnings.patch
 }
 
 build() {
   cd src
-  make PKG_CONFIG_PATH=/usr/lib/pkgconfig WX_CONFIG=/usr/bin/wx-config-gtk3
+  make PKG_CONFIG_PATH=/usr/lib/pkgconfig WX_CONFIG=/usr/bin/wx-config
 }
 
 package() {

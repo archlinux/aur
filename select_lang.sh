@@ -1,23 +1,38 @@
 #!/bin/sh
 
-#~~ Script for PKGBUILD 
-#~~ Select GUI-language for Veracrypt 1.25.7 (x86_64) Linux
+#~~ Script for PKGBUILD
+#~~ Select GUI-language for Veracrypt 1.25.7 and higher (x86_64) Linux
 #~~ by Shapiro <shapiro@quantentunnel.de>
-#~~ v1.0
+#~~ v1.1 (option for Corsican language and fancy ascii-art included)
 
-country_codes="ar be bg ca cs da de el es et eu fa fi fr he hu id it ja ka ko lv my nl nn pl pt-br ro ru sk sl sv th tr uk uz vi zh-cn zh-hk zh-tw"
-
+country_codes="ar be bg ca co cs da de el es et eu fa fi fr he hu id it ja ka ko lv my nl nn pl pt-br ro ru sk sl sv th tr uk uz vi zh-cn zh-hk zh-tw"
+clear
+echo ""
+echo '____   ____                  _________                        __'
+echo '\   \ /   /________________  \_   ___ \_______ ___.__._______/  |_'
+echo ' \   Y   // __ \_  __ \__  \ /    \  \/\_  __ <   |  |\____ \   __\'
+echo '  \     /\  ___/|  | \// __ \\     \____|  | \/\___  ||  |_> >  |  '
+echo '   \___/  \___  >__|  (____  /\______  /|__|   / ____||   __/|__|'
+echo '              \/           \/        \/        \/     |__|'
+echo '         _                            _'
+echo '        (_)_ _    _  _ ___ _  _ _ _  | |__ _ _ _  __ _ _  _ __ _ __ _ ___'
+echo '        | | ` \  | || / _ \ || | `_| | / _` | ` \/ _` | || / _` / _` / -_)'
+echo '        |_|_||_|  \_, \___/\_,_|_|   |_\__,_|_||_\__, |\_,_\__,_\__, \___|'
+echo '                  |__/                           |___/          |___/'
+echo ""
+echo ""
 echo "Enter the country code for your preferred language (i.e. de for German):"
-echo " 1. Arabic (ar)   2. Belarusian (be)   3. Bulgarian (bg)   4. Catalan (ca)   5. Czech (cs)"
-echo " 6. Danish (da)   7. German (de)   8. Greek (el)   9. Spanish (es)   10. Estonian (et)"
-echo "11. Basque (eu)   12. Persian (fa)   13. Finnish (fi)   14. French (fr)   15. Hebrew (he)"
-echo "16. Hungarian (hu)   17. Indonesian (id)   18. Italian (it)   19. Japanese (ja)   20. Georgian (ka)"
-echo "21. Korean (ko)   22. Latvian (lv)   23. Burmese (my)   24. Dutch (nl)   25. Norwegian (nn)"
-echo "26. Polish (pl)   27. Portuguese/Brazil (pt-br)   28. Romanian (ro)   29. Russian (ru)   30. Slovak (sk)"
-echo "31. Slovenian (sl)   32. Swedish (sv)   33. Thai (th)   34. Turkish (tr)   35. Ukrainian (uk)"
-echo "36. Uzbek/Cyrillic (uz)   37. Vietnamese (vi)   38. Chinese/Simplified (zh-cn)"
-echo "39. Chinese/Hong Kong (zh-hk)   40. Chinese/Taiwan (zh-tw)   41. English (en) [DEFAULT]"
-
+echo ""
+echo " 1. Arabic: ar   2. Belarusian: be   3. Bulgarian: bg   4. Catalan: ca   5. Corsican: co"
+echo " 6. Czech: cs   7. Danish: da   8. German: de   9. Greek: el   10. English: en (DEFAULT)"
+echo "11. Spanish: es   12. Estonian: et   13. Basque: eu   14. Persian: fa   15. Finnish: fi"
+echo "16. French: fr   17. Hebrew: he   18. Hungarian: hu   19. Indonesian: id   20. Italian: it"
+echo "21. Japanese: ja   22. Georgian: ka   23. Korean: ko   24. Latvian: lv   25. Burmese: my"
+echo "26. Dutch: nl   27. Norwegian: nn   28. Polish: pl   29. Portuguese/Brazil: pt-br   30. Romanian: ro"
+echo "31. Russian: ru   32. Slovak: sk   33. Slovenian: sl   34. Swedish: sv   35. Thai: th"
+echo "36. Turkish: tr   37. Ukrainian: uk   38. Uzbek/Cyrillic: uz   39. Vietnamese: vi"
+echo "40. Chinese/Simplified: zh-cn   41. Chinese/Hong Kong: zh-hk   42. Chinese/Taiwan: zh-tw"
+echo ""
 read -p "==> " var
 if [[ "$country_codes" == *"$var"* ]]; then
 	cp "./Translations/Language.$var.xml" "./src/Common/Language.xml"
@@ -33,6 +48,9 @@ if [[ "$country_codes" == *"$var"* ]]; then
 		;;
 	ca)
 		echo "Language set to: Catalan (ca)"
+		;;
+	co)
+		echo "Language set to: Corsican (co)"
 		;;
 	cs)
 		echo "Language set to: Czech (cs)"

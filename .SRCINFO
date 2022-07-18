@@ -1,7 +1,7 @@
 pkgbase = veracrypt-inyourlanguage
 	pkgdesc = Disk encryption with strong security based on TrueCrypt 7.1a. Choose one of 40+ languages for installation.
 	pkgver = 1.25.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.veracrypt.fr
 	arch = x86_64
 	license = Apache 2.0
@@ -11,7 +11,7 @@ pkgbase = veracrypt-inyourlanguage
 	makedepends = libxml2
 	makedepends = coreutils
 	depends = fuse2>=2.8.0
-	depends = wxgtk3>=3.0
+	depends = wxwidgets-gtk3
 	depends = libsm
 	depends = device-mapper
 	optdepends = sudo: mounting encrypted volumes as nonroot users
@@ -23,7 +23,9 @@ pkgbase = veracrypt-inyourlanguage
 	conflicts = veracrypt-trans
 	source = https://launchpad.net/veracrypt/trunk/1.25.9/+download/VeraCrypt_1.25.9_Source.tar.bz2
 	source = select_lang.sh
+	source = wx-3.2-size-warnings.patch
 	sha512sums = 9b11c8d8e85770ae05960fef8fc9639731e4f9caf0cc4e50bc8c9c92b45d44c80eaeff483d3ab048fd6a82cc873a6027820e21abde7ddb92b3c368f85b837cf2
+	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = veracrypt-inyourlanguage
