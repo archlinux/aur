@@ -8,8 +8,9 @@ arch=('x86_64')
 url="https://github.com/szechyjs/mbelib"
 license=('GPL3')
 makedepends=('git' 'cmake')
+conflicts=('mbelib')
 provides=('mbelib')
-source=("$pkgname"::'git://github.com/szechyjs/mbelib.git')
+source=("$pkgname"::'git+https://github.com/szechyjs/mbelib')
 md5sums=('SKIP')
 
 pkgver() {

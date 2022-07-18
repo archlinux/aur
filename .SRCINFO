@@ -8,8 +8,8 @@ pkgbase = mbelib-git
 	makedepends = git
 	makedepends = cmake
 	provides = mbelib
-	source = mbelib-git::git://github.com/szechyjs/mbelib.git
+	conflicts = mbelib
+	source = mbelib-git::git+https://github.com/szechyjs/mbelib
 	md5sums = SKIP
 
 pkgname = mbelib-git
-
