@@ -1,0 +1,18 @@
+pkgbase = codecserver-git
+	pkgdesc = Modular audio codec server, coordinates central dispatching and (hardware or software) codecs over the network.
+	pkgver = 0.2.0.r1.g7c353aa
+	pkgrel = 1
+	url = https://github.com/jketterl/codecserver
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = protobuf
+	provides = codecserver
+	conflicts = codecserver
+	source = codecserver-git::git+https://github.com/jketterl/codecserver
+	source = codecserver.sysusers
+	sha256sums = SKIP
+	sha256sums = ac2f4184640ce200e6ee230fdce72417813e77584d1b78cd50a30fc4cb60e682
+
+pkgname = codecserver-git
