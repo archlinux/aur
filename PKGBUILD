@@ -10,7 +10,7 @@ license=('GPL2')
 makedepends=('go' 'git')
 conflicts=(ntfysh-bin ntfy)
 source=("$pkgname::git+https://github.com/binwiederhier/ntfy.git#tag=v$pkgver"
-				"ntfy.sysusers"
+	"ntfy.sysusers"
         )
 b2sums=('SKIP'
         '958bdfc80eeb8ed62508593a94b379d7c099373a4ed2af3eaeedebdca05519378e2bc20940950db4f848be0575cebe16bcb79b794133e8f4467418f8e34278ca')
