@@ -1,7 +1,7 @@
 # Maintainer: Erik Bročko <erik.brocko@letemsvetemapplem.eu>
 
 pkgname=owrx_connector-git
-pkgver=0.2.0.r1.g53b2e02
+pkgver=0.6.0.r1.g8887135
 pkgrel=1
 pkgdesc="Connectors used by OpenWebRX to interface with SDR hardware."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/jketterl/owrx_connector"
 license=('GPL3')
 makedepends=('git' 'cmake')
 provides=('owrx_connector')
-source=("$pkgname"::'git://github.com/jketterl/owrx_connector.git')
+source=("$pkgname"::'git+https://github.com/jketterl/owrx_connector')
 md5sums=('SKIP')
 
 pkgver() {
