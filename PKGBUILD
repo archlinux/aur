@@ -22,14 +22,15 @@ source=('git+https://github.com/OpenTabletDriver/OpenTabletDriver'
         "$_spkgname-gui"
         "$_lpkgname.service"
         "$_pkgname.desktop"
-        "notes.install")
+        "notes.install"
+        )
 
 sha256sums=('SKIP'
             'a3e5a2e4b8e7b17776bfa3fc33cb33f13bc26d6756ba5ada8200ca708f33e293'
             '20aac1584a8e08b5a9add1d02ce38e60ddfede615227df6f25c7422217df82b0'
             '88f7d9ae1e9402cfbf9266ddf0de642195b64de13a3d5ce6f93460ba035cf7f2'
             '4399359bf6107b612d10aaa06abb197db540b00a973cfec64c2b40d1fbbb2834'
-            '7deefb285b6a39596d0b14973fd6f1eccf819bc2fa7d299f7dd28437dcbaab77')
+            'c18e36c7287db4dc16df687693f7ffe548620b26c03b2a98b0b44f4fdedfd442')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
