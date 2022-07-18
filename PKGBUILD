@@ -1,21 +1,22 @@
 pkgname=mujoco
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-Joint dynamics with Contact. A general purpose physics simulator."
 arch=('x86_64')
 url="https://www.mujoco.org"
 license=('Apache')
-depends=('libccd' 'libgl' 'glfw' 'tinyxml2' 'tinyobjloader')
+depends=('libccd' 'libgl' 'glfw' 'tinyxml2' 'tinyobjloader' 'qhull')
 makedepends=('abseil-cpp' 'gtest' 'benchmark' 'cmake' 'git')
 source=("https://github.com/deepmind/mujoco/archive/refs/tags/$pkgver.tar.gz"
     "${pkgname}.patch")
 sha256sums=('e7fa0821c993073b19bd8034df63661e309edcdc2d602101c3f9b28201574ded'
-            'fa5799290dd68bd2bdd520515484112c3a72079af6425ee6d01b6865e81bdab1')
+            'fa3ec3a529a80aa74804c23fe8b7a0d3ddebd0c86cef1597e60aaf5cb39c7317')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
 
 	# Use as many system libs as possible
+    # Patch to use system qhull comes from https://github.com/conda-forge/staged-recipes/pull/19049
 	patch -Np1 -i "${srcdir}/${pkgname}.patch"
 }
 
