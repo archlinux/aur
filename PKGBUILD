@@ -1,39 +1,33 @@
-# Maintainer: Helder Bertoldo <helder.bertoldo@gmail.com>
-# Contributor: 
+# Maintainer: Peter Mattern <pmattern at arcor dot de>
+# Contributor: Helder Bertoldo <helder.bertoldo@gmail.com>
 
-_gitname=tuner
-_author=louis77
-pkgname=("${_gitname}-git")
-pkgver=r92.cd9008be
+_pkgname=tuner
+pkgname=$_pkgname-git
+pkgver=1.5.1.r31.7ecfdfb
 pkgrel=1
-pkgdesc="An app to discover and listen to internet radio stations"
+pkgdesc="Minimalist radio station player geared towards RadioBrowser"
 arch=('i686' 'x86_64')
-url="https://github.com/${_author}/${_gitname}"
+url="https://github.com/louis77/$_pkgname"
 license=('GPL3')
-depends=('gtk3' 'granite' 'gstreamer' 'gst-plugins-bad-libs' 'libgee' 'libsoup' 'json-glib')
-optdepends=()
+depends=('granite' 'gst-plugins-bad-libs' 'geoclue')
 makedepends=('git' 'meson' 'vala')
-provides=("${_gitname}" "${_gitname}-git")
-conflicts=("${_gitname}")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=("git+${url}.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "${_gitname}"
-    ( set -o pipefail
-        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+    cd "${_pkgname}"
+    printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
-    cd "${_gitname}/"
+    cd "${_pkgname}/"
     meson . _build --prefix=/usr
     ninja -C _build
 }
 
 package() {
-    cd "${_gitname}/"
+    cd "${_pkgname}/"
     DESTDIR="${pkgdir}" ninja -C _build install
 }
-
