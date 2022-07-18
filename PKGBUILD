@@ -1,6 +1,6 @@
 # Maintainer: Eugene Dvoretsky <radioxoma at gmail dot com>
 pkgname=pilorama-git
-pkgver=v3.0.2.r2.gf0ce031
+pkgver=v3.0.3.r5.g805a363
 pkgrel=1
 epoch=
 pkgdesc="Advanced timeboxing pomodoro timer"
@@ -8,12 +8,11 @@ arch=('x86_64')
 url="https://github.com/eplatonoff/pilorama"
 license=('GPLv3')
 groups=()
-depends=('qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-multimedia')
+depends=('qt5-svg' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-multimedia')
 makedepends=('git')
 checkdepends=()
 optdepends=()
 provides=('pilorama')
-conflicts=('pilorama')
 replaces=()
 backup=()
 options=()
@@ -31,7 +30,8 @@ pkgver() {
 
 build() {
     cd "$srcdir/$pkgname"
-    qmake src/pilorama.pro 
+    sed -i 's/TARGET=Pilorama/TARGET=pilorama/g' src/pilorama.pro
+    qmake src/pilorama.pro
     make
 }
 
