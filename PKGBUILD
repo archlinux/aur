@@ -2,7 +2,7 @@
 
 pkgname="ftpgrab-bin"
 _pkgname="ftpgrab"
-pkgver="6.3.0"
+pkgver="7.7.0"
 pkgrel=1
 pkgdesc="A CLI application written in Go to grab your files from a remote FTP or SFTP server."
 arch=('x86_64')
