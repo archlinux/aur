@@ -4,12 +4,13 @@
 pkgname=nodejs-serverless
 _pkgname=${pkgname#nodejs-}
 pkgver=3.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Serverless Framework - Build web, mobile and IoT applications with serverless architectures using AWS Lambda, Azure Functions, Google CloudFunctions & more"
 arch=(any)
 url="https://serverless.com/framework/docs/"
 license=(MIT)
-depends=('nodejs' 'npm')
+depends=('nodejs')
+makedepends=('npm' 'jq')
 optdepends=()
 conflicts=('nodejs-serverless-git')
 source=(https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz)
