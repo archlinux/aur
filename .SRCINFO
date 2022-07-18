@@ -1,0 +1,13 @@
+pkgbase = cdimage-git
+	pkgdesc = A tool for burning visible pictures on a compact disc surfase
+	pkgver = r16.4940af6
+	pkgrel = 1
+	url = https://github.com/arduinocelentano/cdimage
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = qt6-base
+	source = git+https://github.com/arduinocelentano/cdimage.git
+	sha512sums = SKIP
+
+pkgname = cdimage-git
