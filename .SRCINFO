@@ -1,6 +1,6 @@
 pkgbase = hare-git
 	pkgdesc = The Hare systems programming language
-	pkgver = r2626.bd1c1c4a
+	pkgver = r2629.f7584535
 	pkgrel = 1
 	url = https://harelang.org
 	arch = x86_64
@@ -17,7 +17,9 @@ pkgbase = hare-git
 	conflicts = hare
 	source = hare::git+https://git.sr.ht/~sircmpwn/hare
 	source = config.x86_64.mk
+	source = config.aarch64.mk
 	sha512sums = SKIP
 	sha512sums = bf0f1985de8ae414352b2a5c542c7c5f3ede8cdf4af5e22753226dc7d5192695fa55ef495bb10d9be682858533bdd771d38990d3271d9a4fa955fb15509b384f
+	sha512sums = 33e9933d97a22ab1f650dc5dde3f97958114a9974065f79722adfa004c6737a87312f4fd1da07e52406aee6e0a81b8c04a49bcbae0919abcec3102b137b6d96e
 
 pkgname = hare-git
