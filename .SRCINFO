@@ -1,0 +1,18 @@
+pkgbase = python-labmaze
+	pkgdesc = A standalone release of DeepMind Lab's maze generator with Python bindings
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/deepmind/labmaze
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = bazel
+	depends = python
+	depends = python-absl
+	depends = python-numpy
+	source = https://github.com/deepmind/labmaze/archive/refs/tags/1.0.5.tar.gz
+	source = fixbuild.patch
+	sha256sums = 6f27748abb979f428cc2f6f2c18e51936791a9edf1fa78ff1850d106079eda05
+	sha256sums = 051d8c0ed8ce05562976c182ec4c0c5921f589beb2bfcad2a6eb4fb20a579d1f
+
+pkgname = python-labmaze
