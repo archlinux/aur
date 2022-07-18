@@ -1,7 +1,7 @@
 # Maintainer: Nikita Ivanov <nikita dot vyach dot ivanov at gmail dot com>
 _name=ctpv
 pkgname="${_name}-git"
-pkgver=r146.2d36fa4
+pkgver=r179.4e05a76
 pkgrel=1
 pkgdesc="Terminal previewer"
 arch=('i686' 'x86_64')
@@ -32,6 +32,7 @@ optdepends=(
 )
 source=("git+$url?signed")
 sha512sums=('SKIP')
+validpgpkeys=('701DE74D84F87EE1BC91CD216E656AC5B97B5133')
 
 pkgver() {
     cd "$srcdir/${_name}"

@@ -1,6 +1,6 @@
 pkgbase = ctpv-git
 	pkgdesc = Terminal previewer
-	pkgver = r146.2d36fa4
+	pkgver = r179.4e05a76
 	pkgrel = 1
 	url = https://github.com/NikitaIvanovV/ctpv
 	arch = i686
@@ -31,6 +31,7 @@ pkgbase = ctpv-git
 	optdepends = poppler: for PDF files
 	optdepends = transmission-cli: for torrent files
 	source = git+https://github.com/NikitaIvanovV/ctpv?signed
+	validpgpkeys = 701DE74D84F87EE1BC91CD216E656AC5B97B5133
 	sha512sums = SKIP
 
 pkgname = ctpv-git
