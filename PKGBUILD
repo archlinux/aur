@@ -1,9 +1,9 @@
 # Maintainer: Daniel Chen <danielchen04 at hotmail dot ca>
 
 pkgname=noveldown-git
-pkgver=r27.6dd094e
+pkgver=r41.6a9b48f
 pkgrel=1
-pkgdesc="Webnovel downloader and converter to EPUB as a Python library and command line application."
+pkgdesc="Webnovel downloader and EPUB converter"
 url="https://github.com/potatoeggy/noveldown"
 replaces=()
 arch=("any")
