@@ -1,0 +1,16 @@
+pkgbase = python-dm-env
+	pkgdesc = A Python interface for reinforcement learning environments
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/deepmind/dm_env
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = python-setuptools
+	depends = python
+	depends = python-absl
+	depends = python-dm-tree
+	depends = python-numpy
+	source = https://github.com/deepmind/dm_env/archive/refs/tags/v1.5.tar.gz
+	sha256sums = a35d10fb4a70a00187a23f128bc4041560847154b8cd1441bbdf2845f5ad3519
+
+pkgname = python-dm-env
