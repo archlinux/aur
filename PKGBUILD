@@ -1,7 +1,7 @@
 # Maintainer: Kenneth Cremeans <iam@kcseb.digital>
 # CoMaintainer: Tom Zander <tom@flowee.org>
 # Release Code Name: Pausch
-# LBRY, Why have you stopped the cool release code names? 
+# LBRY, Why have you stopped the cool release code names?
 
 pkgname=lbry-app-bin
 pkgver=0.53.4
