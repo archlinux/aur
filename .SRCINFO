@@ -1,0 +1,27 @@
+pkgbase = python-dm-control
+	pkgdesc = DeepMind's software stack for physics-based simulation and Reinforcement Learning environments, using MuJoCo.
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/deepmind/dm_control
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = python-setuptools
+	depends = python
+	depends = python-absl
+	depends = python-dm-env
+	depends = python-dm-tree
+	depends = python-glfw
+	depends = python-labmaze
+	depends = python-lxml
+	depends = python-mujoco
+	depends = python-numpy
+	depends = python-protobuf
+	depends = python-opengl
+	depends = python-pyparsing
+	depends = python-requests
+	depends = python-scipy
+	depends = python-tqdm
+	source = https://github.com/deepmind/dm_control/archive/refs/tags/1.0.4.tar.gz
+	sha256sums = 3159a244e87aec89c9be9a9221138600da0409954b7b2dff41e5ad0b8a1d15c9
+
+pkgname = python-dm-control
