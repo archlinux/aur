@@ -1,16 +1,19 @@
 pkgbase = python-spython
 	pkgdesc = CLI tool for working with Singularity Python
-	pkgver = 0.1.17
+	pkgver = 0.2.1
 	pkgrel = 1
-	url = https://singularityhub.github.io/singularity-cli/
+	url = https://github.com/singularityhub/singularity-cli
 	arch = any
 	license = MPL2
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-pytest-runner
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-requests
 	depends = python-semver
-	optdepends = singularity-container: to use and manipulate Singularity Containers
-	source = python-spython-0.1.17.tar.gz::https://files.pythonhosted.org/packages/source/s/spython/spython-0.1.17.tar.gz
-	sha256sums = 00991fa848c6787ffbb7dfa6efc67cc80cb5214b5faf7124515c92f4bb02de3e
+	optdepends = singularity-container: use and manipulate Singularity Containers
+	source = python-spython-0.2.1.tar.gz::https://files.pythonhosted.org/packages/source/s/spython/spython-0.2.1.tar.gz
+	sha256sums = beb8866751268ebbc38e05ee7d14d99a144f2a9b21409b16e3bcab9ebd452a19
 
 pkgname = python-spython

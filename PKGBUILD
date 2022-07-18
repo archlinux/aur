@@ -2,29 +2,37 @@
 # Contributor: Hans-Nikolai Viessmann <hans AT viess.mn>
 
 pkgname=python-spython
-pkgver=0.1.17
+_pkg="${pkgname#python-}"
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="CLI tool for working with Singularity Python"
 arch=('any')
-url="https://singularityhub.github.io/singularity-cli/"
+url='https://github.com/singularityhub/singularity-cli'
 license=('MPL2')
 depends=('python-requests' 'python-semver')
-optdepends=('singularity-container: to use and manipulate Singularity Containers')
-makedepends=('python-setuptools' 'python-pytest-runner')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/s/spython/spython-$pkgver.tar.gz")
-sha256sums=('00991fa848c6787ffbb7dfa6efc67cc80cb5214b5faf7124515c92f4bb02de3e')
+optdepends=('singularity-container: use and manipulate Singularity Containers')
+makedepends=('python-build' 'python-installer' 'python-pytest-runner' 'python-setuptools' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/s/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('beb8866751268ebbc38e05ee7d14d99a144f2a9b21409b16e3bcab9ebd452a19')
+
+prepare() {
+	cd "$_pkg-$pkgver"
+	rm -rf "$_pkg.egg-info"
+	sed -i '/spython/d' MANIFEST.in
+	sed -i '/find_packages/s/()/(exclude=["*tests*"])/' setup.py
+}
 
 build() {
-	cd "spython-$pkgver"
-	python setup.py build
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
-check() {
-	cd "spython-$pkgver"
-	python setup.py pytest
-}
+# check() {
+# 	cd "$_pkg-$pkgver"
+# 	python setup.py pytest
+# }
 
 package() {
-	cd "spython-$pkgver"
-	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
 }
