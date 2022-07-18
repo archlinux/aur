@@ -3,15 +3,15 @@
 # Contributor: Levente Polyak <anthraxx at archlinux dot org>
 
 pkgname=dh-strip-nondeterminism
-_gitcommit=0f98d4ba83c2e78cda2bf4b5f4d0ec40cc07538e
-pkgver=0.042
-pkgrel=2
+_gitcommit=10a5d747068988448633c253ed4cc7bf7e82e72f
+pkgver=1.13.0
+pkgrel=1
 pkgdesc='Tool for stripping bits of non-deterministic information from files, supports dh'
 url='https://salsa.debian.org/reproducible-builds/strip-nondeterminism'
 arch=('any')
 license=('GPL3')
-depends=("perl" 'perl-archive-zip' 'perl-archive-cpio')
-makedepends=('git')
+depends=('perl' 'perl-archive-zip' 'perl-archive-cpio')
+makedepends=('git' 'perl-sub-override')
 conflicts=('strip-nondeterminism')
 provides=('strip-nondeterminism')
 options=('!emptydirs')
@@ -23,11 +23,6 @@ validpgpkeys=(
     '2F5DAF3FC1F793D94F3D900CA721DA055374AA4F' # Reiner Herrmann <reiner at reiner-h dot de>
     '66AE2B4AFCCF3F52DA184D184B043FCDB9444540' # Mattia Rizzolo <mattia at debian dot org>
 )
-
-pkgver() {
-    cd ${pkgname}
-    git describe --always | sed 's/^v//;s/-/./g'
-}
 
 build() {
     cd ${pkgname}
