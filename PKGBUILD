@@ -1,8 +1,8 @@
 # Maintainer: Erik Bročko <erik.brocko@letemsvetemapplem.eu>
 
 pkgname=csdr-jketterl-git
-pkgver=0.17.1.r38.gc4a970b
-pkgrel=5
+pkgver=0.18.0.r2.gc895bd0
+pkgrel=1
 pkgdesc="A simple DSP library and command-line tool for Software Defined Radio."
 arch=('i686' 'x86_64')
 url="https://github.com/jketterl/csdr"
