@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=VK Teams
+Comment=Official desktop application for the VK Teams messaging service
+Icon=vkteams
+Categories=Network;
+Terminal=false
+MimeType=x-scheme-handler/vkteams;x-scheme-handler/myteam-messenger;
+Exec=vkteams -urlcommand %u
