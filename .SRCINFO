@@ -1,0 +1,16 @@
+pkgbase = kibana-tm
+	pkgdesc = Kibana
+	pkgver = 8.3.2
+	pkgrel = 0
+	url = https://elastic.co
+	install = kibana.install
+	arch = x86_64
+	license = MIT
+	source = kibana-tm-8.3.2_x86_64.tar.gz::https://artifacts.elastic.co/downloads/kibana/kibana-8.3.2-linux-x86_64.tar.gz
+	source = kibana.service
+	source = users.conf
+	sha256sums = 4dcb87877ff0607766b65aa7323a27595866bd2e1b12e0da7105545a6e198b11
+	sha256sums = fb841a02e3ec5b86c70eb3ea2637d24d0485371e70ccc791ad5b4b43eab7ce95
+	sha256sums = 7f77864171716c227cec2ed72b0374d57a5de24e8b5fe028fb77f52fccccc8f9
+
+pkgname = kibana-tm

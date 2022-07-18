@@ -1,0 +1,5 @@
+post_remove() {
+  /usr/bin/userdel kibana
+  /usr/bin/groupdel kibana
+  rm -rf /usr/share/kibana
+}
