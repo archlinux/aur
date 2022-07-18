@@ -1,0 +1,13 @@
+pkgbase = mkmcxx
+	pkgdesc = Closed-source, freeware microkinetics modeling software written in C++.
+	pkgver = 2.15.3
+	pkgrel = 1
+	url = https://www.mkmcxx.nl/
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = cairo
+	source = https://www.mkmcxx.nl/downloads/stable/mkmcxx-2.15.3-debian-x64.tar.bz2
+	sha256sums = aae8a09f00c301b28bc08daf3b8e92f05f31b783da5704105aebda3b6d5e8b9c
+
+pkgname = mkmcxx
