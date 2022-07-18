@@ -22,10 +22,10 @@ sha256sums_x86_64=('d6e9933a8f2f1edb9c79ca3543b7e8f0eb2dbda487c240626f9e9285682f
 
 package() {
   # bin
-  install -Dm755 "./zander" "${pkgdir}/usr/bin/zander"
+  install -Dm755 "zander_${pkgver}_linux_${CARCH}/zander" "${pkgdir}/usr/bin/zander"
 
   # license
-  install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/zander/LICENSE"
+  install -Dm644 "zander_${pkgver}_linux_${CARCH}/LICENSE" "${pkgdir}/usr/share/licenses/zander/LICENSE"
 
   # TODO: completions
 }
