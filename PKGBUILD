@@ -1,4 +1,5 @@
 # Maintainer: Gigadoc2 <gigadoc2+aur@revreso.de>
+# Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: VirtualTam <virtualtam@flibidi.net>
 # Contributor: speps <speps@aur.archlinux.org>
 # Contributor: Felipe Machado aka arch_audio <machado.felipe@gmail.com>
@@ -7,22 +8,20 @@
 
 _pkgname=sooperlooper
 pkgname=${_pkgname}-git
-pkgver=r510.f00442b
+pkgver=r549.0cf3001
 pkgrel=1
-pkgdesc="Live looping sampler capable of immediate loop recording. Build from git with open merge requests."
+pkgdesc="Live looping sampler capable of immediate loop recording. Built from git."
 arch=('i686' 'x86_64')
 url="http://essej.net/sooperlooper/"
-license=('GPL')
-depends=('jack' 'liblo' 'libsigc++' 'libxml2' 'rubberband' 'wxgtk')
-optdepends=('libsamplerate: audio sample rate conversion')
+license=('GPL2')
+depends=('gcc-libs' 'glibc' 'libsigc++' 'wxgtk3')
+makedepends=('alsa-lib' 'autoconf-archive' 'gendesk' 'git' 'imagemagick'
+'jack' 'liblo' 'libsamplerate' 'libsndfile' 'libxml2' 'ncurses' 'rubberband')
 provides=('sooperlooper')
 conflicts=('sooperlooper')
-source=("git+https://github.com/essej/sooperlooper.git"
-        "${_pkgname}.desktop"
-        "slgui.png")
-sha256sums=('SKIP'
-            'add385c13329e0d28b4d89d1a08953d09013a896c80bbda7fe450de4bd279507'
-            '465dfb14154899eae5435afa7b2e04b2cbb8463fc3b60c465246628e496b3d85')
+source=("git+https://github.com/essej/sooperlooper.git")
+sha256sums=('SKIP')
+
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -30,20 +29,33 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
+  ./autogen.sh
+  convert doc/html/sl_web_logo_black.png \
+    -resize 128x128\> \
+    -size 128x128 xc:black +swap \
+    -gravity center \
+    -composite net.essej.sooperlooper.png
+  gendesk -n \
+          --pkgname "net.essej.sooperlooper" \
+          --name "SooperLooper" \
+          --pkgdesc "Live Looping Sampler" \
+          --exec "slgui" \
+          --icon "net.essej.sooperlooper" \
+          --genericname "Live Looping Sampler" \
+          --categories "AudioVideo;Audio;"
 }
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  ./autogen.sh
-  CPPFLAGS=-std=c++11 ./configure \
-          --prefix=/usr \
-          --with-wxconfig-path=/usr/bin/wx-config
+  ./configure --prefix='/usr'
   make
 }
 
 package() {
+  depends+=('libasound.so' 'libjack.so' 'liblo.so' 'libncursesw.so'
+  'librubberband.so' 'libsamplerate.so' 'libsndfile.so')
   cd "${srcdir}/${_pkgname}"
   make DESTDIR="${pkgdir}" install
-  install -Dm644 ../${_pkgname}.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  install -Dm644 ../slgui.png "${pkgdir}/usr/share/pixmaps/slgui.png"
+  install -vDm 644 *.desktop -t "${pkgdir}/usr/share/applications/"
+  install -vDm 644 net.essej.sooperlooper.png -t "${pkgdir}/usr/share/icons/hicolor/128x128/apps/"
 }
