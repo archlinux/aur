@@ -1,7 +1,7 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 
 pkgname=infamousplugins-git
-pkgver=0.2.04
+pkgver=0.3.0.r18.gfa6cfeb
 pkgrel=1
 pkgdesc="A collection of open-source LV2 plugins"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('fftw' 'ntk' 'zita-resampler')
 makedepends=('git' 'cmake' 'lv2')
 provides=('infamousplugins')
 conflicts=('infamousplugins')
-source=("${pkgname%-*}"::'git://github.com/ssj71/infamousPlugins.git')
+source=("${pkgname%-*}"::'git+https://github.com/ssj71/infamousPlugins.git')
 md5sums=('SKIP')
 options=(!buildflags)
 
