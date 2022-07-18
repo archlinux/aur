@@ -1,14 +1,12 @@
 pkgbase = jura-font
 	pkgdesc = Jura font
 	pkgver = r108.f9df75d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ossobuffo/jura
 	arch = any
 	license = OFL
-	depends = fontconfig
-	depends = xorg-mkfontscale
-	source = https://github.com/ossobuffo/jura/archive/f9df75d92c93324e74e5ec0df6d91c8ee4b84b5a.zip
-	sha256sums = 7f92a1d27f824a0ac370075b1fdbfdd74291175cedf084715d76acc3fae7ee78
+	source = ttf-jura-r108.f9df75d.tar.gz::https://github.com/ossobuffo/jura/archive/f9df75d92c93324e74e5ec0df6d91c8ee4b84b5a.tar.gz
+	sha256sums = 60ec536e7eadb9d1c86e6bc488c3364a3d63b39134fee15b9b987699ecf77b90
 
 pkgname = ttf-jura
 	pkgdesc = Jura font - TTF variation
