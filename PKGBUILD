@@ -67,7 +67,7 @@ _CMAKE_FLAGS+=(
 _name=alice-vision
 
 pkgname=${_name}-git
-pkgver=2.4.0.r283.g73fef3491
+pkgver=2.4.0.r805.g2b8d7d3a0
 pkgrel=1
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('i686' 'x86_64')
@@ -95,13 +95,11 @@ source+=("${pkgname}::git+https://github.com/alicevision/AliceVision.git${_fragm
         "geogram::git+https://github.com/alicevision/geogram.git"
         "ute_lib::git+https://github.com/alicevision/uncertaintyTE.git"
         "cmake_cxx_std_14.patch"
-        "openexr3.patch"
         )
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'caf2bf06bd7c6a2387f01f312d94b649ef3e4363b18fcdf95986cd71a0d6c275'
-            'e7a89d510788ff0320415d00e9871220e602e046ffc0fb65d60d465d6bed93a7'
             'SKIP'
             'SKIP'
             'SKIP')
