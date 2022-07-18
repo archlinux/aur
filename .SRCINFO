@@ -1,6 +1,6 @@
 pkgbase = shcrt-git
 	pkgdesc = Replace proprietary SecureCRT software with a Bash script that parses its configs
-	pkgver = r36.f1ff4b3
+	pkgver = r43.2468473
 	pkgrel = 1
 	url = https://github.com/Depau/shcrt
 	arch = any
@@ -8,11 +8,10 @@ pkgbase = shcrt-git
 	depends = bash
 	depends = easybashgui
 	depends = python
-	depends = python-pycrypto
+	depends = python-pycryptodome
 	provides = shcrt
 	conflicts = shcrt
 	source = shcrt::git+https://github.com/Depau/shcrt.git
 	sha256sums = SKIP
 
 pkgname = shcrt-git
-

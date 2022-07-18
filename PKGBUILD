@@ -2,11 +2,11 @@
 
 _pkgname=shcrt
 pkgname=$_pkgname-git
-pkgver=r36.f1ff4b3
+pkgver=r43.2468473
 pkgrel=1
 pkgdesc="Replace proprietary SecureCRT software with a Bash script that parses its configs"
 arch=('any')
-depends=('bash' 'easybashgui' 'python' 'python-pycrypto')
+depends=('bash' 'easybashgui' 'python' 'python-pycryptodome')
 url="https://github.com/Depau/shcrt"
 license=('GPL3')
 source=(${_pkgname}::git+https://github.com/Depau/shcrt.git)
