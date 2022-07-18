@@ -1,7 +1,7 @@
 pkgbase = nmtrust-git
 	pkgdesc = A simple framework for determining network trust with NetworkManager
-	pkgver = r25.79bbcf5
-	pkgrel = 3
+	pkgver = r58.464a5f0
+	pkgrel = 1
 	url = https://github.com/pigmonkey/nmtrust
 	arch = any
 	license = GPL
