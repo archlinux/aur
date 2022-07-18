@@ -1,6 +1,6 @@
 pkgbase = wafw00f
 	pkgdesc = The Web Application Firewall Fingerprinting Tool
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/EnableSecurity/wafw00f
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = wafw00f
 	depends = python-requests
 	provides = wafw00f
 	conflicts = wafw00f
-	source = wafw00f-2.1.0.tar.gz::https://github.com/EnableSecurity/wafw00f/archive/v2.1.0.tar.gz
-	sha256sums = 611efa7e21f5acd40681eb1ed83af3500bccd4764201bd3b76c23ab7a74d6a45
+	source = wafw00f-2.2.0.tar.gz::https://github.com/EnableSecurity/wafw00f/archive/v2.2.0.tar.gz
+	b2sums = b19c29e22a3d1682595e1c6681b2046c54819f53782f45fcc707fed52fc6de0ff154b3d8151eb2a17dea7f9a5090afa68a6c171bf56d4e4823f5a7f240f07a78
 
 pkgname = wafw00f
-
