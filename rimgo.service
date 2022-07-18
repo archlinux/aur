@@ -1,0 +1,39 @@
+[Unit]
+Description=rimgo daemon
+After=network.service
+
+[Service]
+DynamicUser=yes
+# Default Values
+Environment=ADDRESS=0.0.0.0
+Environment=PORT=3000
+Environment=IMGUR_CLIENT_ID=546c25a59c58ad7
+Environment=FORCE_WEBP=0
+# Optional Override
+EnvironmentFile=-/etc/rimgo.conf
+ExecStart=/usr/bin/rimgo -a ${ADDRESS} -p ${PORT} -imgur ${IMGUR_CLIENT_ID}  -webp ${FORCE_WEBP}
+
+# Hardening
+DeviceAllow=
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+PrivateDevices=yes
+ProcSubset=pid
+ProtectClock=yes
+ProtectControlGroups=yes
+ProtectHome=yes
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectProc=invisible
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service ~@privileged ~@resources
+UMask=0077
+
+[Install]
+WantedBy=default.target
