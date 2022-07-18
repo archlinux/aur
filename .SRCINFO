@@ -1,6 +1,6 @@
 pkgbase = uniconvertor2-git
 	pkgdesc = A universal vector graphics translator
-	pkgver = r477.646dfc1
+	pkgver = r523.973d5b6
 	pkgrel = 1
 	epoch = 1
 	url = https://sk1project.net/
@@ -19,8 +19,7 @@ pkgbase = uniconvertor2-git
 	depends = python2-pycups
 	provides = uniconvertor
 	conflicts = uniconvertor
-	source = uniconvertor2::git://github.com/sk1project/uniconvertor.git
+	source = uniconvertor2::git+https://github.com/sk1project/uniconvertor.git
 	md5sums = SKIP
 
 pkgname = uniconvertor2-git
-

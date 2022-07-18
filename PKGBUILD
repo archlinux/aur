@@ -2,7 +2,7 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 
 pkgname=uniconvertor2-git
-pkgver=r477.646dfc1
+pkgver=r523.973d5b6
 pkgrel=1
 epoch=1
 pkgdesc="A universal vector graphics translator"
@@ -14,7 +14,7 @@ depends=('lcms2' 'cairo' 'libmagick' 'pango' 'python2-cairo'
 makedepends=('git' 'python2')
 provides=('uniconvertor')
 conflicts=('uniconvertor')
-source=("${pkgname%-*}"::'git://github.com/sk1project/uniconvertor.git')
+source=("${pkgname%-*}"::'git+https://github.com/sk1project/uniconvertor.git')
 md5sums=('SKIP')
 
 pkgver() {
