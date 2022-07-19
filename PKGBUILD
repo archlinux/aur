@@ -4,7 +4,7 @@ url="https://github.com/clearlinux-pkgs/linux"
 pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=5.18
-_minor=11
+_minor=12
 _clr=1159
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
@@ -16,12 +16,12 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=36620
+_clear_version=36630
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=1de00ad9c85021157da237022092a56131b511e4d2972500572dadb1d090d85f
-_config_hash_clear_version=36620
+_config_hash=af83077a0837b5eadb8cf4e3d73e593208f3c24b951e42ed612c1a602cf72457
+_config_hash_clear_version=36630
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -53,6 +53,6 @@ package() {
     mkdir -p $pkgdir/usr/lib
     cp -Pr modules $pkgdir/usr/lib
 }
-b2sums=('2bf04a0a2db9fc8d58083c91b5c2427aeb637cd3621199ddb5cc0ddb3c9a22596d6cb5b2a3dde487e05162da201f1836e5ad6fa340d0363b3412eae0dbc74822'
-        'bcd1ef7008384d1b7f0d81f405b0b110d65a7eb0a1da49ba2701259b883067981e8ef619fde1b6bd349bdb1cb95ed4e4a34449308fa207c875e8937dfe546a42'
-        '550d5b54102a21fed1ff6a57a8a40ecec4969dcddb2ecd74c811134e8a5a8271e5f71ecf2e9c4e46e591f03c4e7c09fb9283cbe026cd1ed8ba5129e6f27b48dd')
+b2sums=('2ed10e3e49c06624a265b761391dcc8d57960c4bfe27b8a095af574bae4e30bb21c14766404fd6d30ceed220d4e2837e05963d4b941d546bcccb1a11460a631e'
+        '239d6f7b9beb098bbf782446e81a2110243a91c2f2e1c885d726c37b8dfb3ee485224f376cc5d6013e2b2ec880da61e0be105d07db4def25f5aabb5b4a238e5c'
+        '6aaec29aa34560077865c2d1b1e362b9c90ef834c1fa3cf2f7065dadf24fbc157cc2172f8f419dc1bb7390cbdcfd784d6f3cdb519e9a3255bada75decb5cd783')
