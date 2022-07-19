@@ -2,7 +2,7 @@
 # Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 
 pkgname='tkn-pac'
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='tkn-pac - A command line interface for interacting with Pipelines as Code'
 url='https://pipelinesascode.com'
@@ -12,10 +12,10 @@ provides=('pipelines-as-code')
 conflicts=('pipelines-as-code')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/openshift-pipelines/pipelines-as-code/releases/download/0.9.0/tkn-pac_0.9.0_Linux_arm64.tar.gz")
-sha256sums_aarch64=('e3ffaaa5e645e1249b354c9b18b820d9308eda7699c92a9430d049963fa5df10')
+sha256sums_aarch64=('b15b8e12981b6ee97452ffe7b21f094b66c7e97fd94ae258889fc8fb170582e8')
+sha256sums_x86_64=('6d77676be23b7e0ddb3d535076f90cafe29b2b9d8b86c6ff0e1b1e4a67034f97')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/openshift-pipelines/pipelines-as-code/releases/download/0.9.0/tkn-pac_0.9.0_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('14e5803f8e1c15560d3f5d383422cc644d826a8db6a59343ab6cc5bbcb46b468')
 
 package() {
   # bin
