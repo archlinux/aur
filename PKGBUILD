@@ -2,8 +2,8 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=workbench
-pkgver=42.1
-pkgrel=3
+pkgver=42.2
+pkgrel=1
 pkgdesc="Learn and prototype with GNOME technologies"
 arch=('x86_64')
 url="https://github.com/sonnyp/Workbench"
@@ -15,7 +15,7 @@ optdepends=('gtk4-demos: GTK Demo, GTK Widget Factory, GTK Icon Browser'
             'highlight: syntax highlighting'
             'libadwaita-demos: Adwaita Demo')
 install="$pkgname.install"
-_commit=875b14dfeab14eb4644eb55e50bb9f206c4f84b3
+_commit=5b57afabb4e1e0f948a22e2be2adb0a1e89d8240
 source=("git+https://github.com/sonnyp/Workbench.git#commit=${_commit}"
         'git+https://gitlab.gnome.org/Teams/Design/icon-development-kit-www.git'
         'git+https://github.com/sonnyp/troll.git')
@@ -59,7 +59,7 @@ package() {
   meson install -C build --destdir "$pkgdir"
 
   # Scalable action icons conflict with numerous other packages
-  # Install to doc folder so they can be copied to user space for use
+  # Install to doc folder so they can be symlinked to user space for use
   install -d "$pkgdir/usr/share/doc/$pkgname/icons/hicolor/scalable"
   mv "$pkgdir/usr/share/icons/hicolor/scalable/actions" \
     "$pkgdir/usr/share/doc/$pkgname/icons/hicolor/scalable/"
