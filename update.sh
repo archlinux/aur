@@ -4,7 +4,7 @@ set -x
 
 set -eo pipefail
 
-rm SHA256SUMS cloud-nuke_linux_amd64 cloud-nuke_linux_386 cloud-nuke-bin-*x86_64.pkg.tar.zst cloud-nuke-bin || true
+rm SHA256SUMS cloud-nuke_linux_arm64 cloud-nuke_linux_amd64 cloud-nuke_linux_386 cloud-nuke-bin-*x86_64.pkg.tar.zst cloud-nuke-bin || true
 
 rm -rf pkg src || true
 
