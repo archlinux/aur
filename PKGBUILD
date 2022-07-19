@@ -9,7 +9,7 @@ url="https://github.com/linuxhw/hw-probe"
 license=('GPLv2')
 source=("git+$url")
 md5sums=('SKIP')
-depends=('perl>=5' 'hwinfo' 'curl' 'dmidecode' 'pciutils' 'usbutils' 'net-tools' 'edid-decode')
+depends=('perl>=5' 'hwinfo' 'curl' 'dmidecode' 'pciutils' 'usbutils' 'net-tools' 'edid-decode' 'acpica')
 optdepends=('hdparm' 'smartmontools' 'inxi' 'pnputils')
 makedepends=('git')
 conflicts=('hw-probe')
