@@ -1,12 +1,12 @@
 pkgbase = kubescape-bin
 	pkgdesc = kubescape is the first tool for testing if Kubernetes is deployed securely as defined in Kubernetes Hardening Guidance by to NSA and CISA
-	pkgver = 2.0.161
+	pkgver = 2.0.162
 	pkgrel = 1
 	url = https://github.com/armosec/kubescape
 	arch = x86_64
 	license = APACHE
 	provides = kubescape
-	source = kubescape-bin-2.0.161::https://github.com/armosec/kubescape/releases/download/v2.0.161/kubescape-ubuntu-latest
-	sha256sums = b7bd0bbb97d9b515cf72c178c5139b0cef11aec0d2613608f01183f8141639be
+	source = kubescape-bin-2.0.162::https://github.com/armosec/kubescape/releases/download/v2.0.162/kubescape-ubuntu-latest
+	sha256sums = 84258a531859efd0c7e17a90fa969f34152bb546866ce3bddd116ad2da66e016
 
 pkgname = kubescape-bin
