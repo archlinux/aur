@@ -1,6 +1,6 @@
 pkgbase = wl-mirror-git
 	pkgdesc = a simple Wayland output mirror client (git version)
-	pkgver = 0.11.2.r0.g454a17c
+	pkgver = 0.11.2.r8.g30c4462
 	pkgrel = 1
 	url = https://github.com/Ferdi265/wl-mirror
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = wl-mirror-git
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
+	makedepends = scdoc
 	depends = libglvnd
 	depends = wayland
 	optdepends = pipectl: named pipe manager, for wl-present script
