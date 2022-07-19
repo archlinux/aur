@@ -3,13 +3,15 @@
 
 pkgname=openmsx-catapult
 pkgver=18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Front-end for openMSX: the MSX emulator that aims for perfection."
 arch=('i686' 'x86_64')
 url="http://openmsx.org"
 license=('GPL')
-depends=('libxml2' 'wxgtk2' 'zlib' 'libjpeg' 'libpng' 'libtiff' "openmsx=${pkgver}")
+depends=('libxml2' 'wxwidgets-gtk2' 'zlib' 'libjpeg' 'libpng' 'libtiff' "openmsx=${pkgver}")
 makedepends=('python')
+provides=("openmsx-catapult")
+conflicts=("openmsx-catapult-git")
 source=("https://github.com/openMSX/wxcatapult/archive/RELEASE_${pkgver//./_}.tar.gz")
 
 build() {
