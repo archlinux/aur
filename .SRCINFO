@@ -1,12 +1,12 @@
 pkgbase = beakerlib
 	pkgdesc = BeakerLib is a shell-level integration testing library, providing convenience functions which simplify writing, running and analysis of integration and blackbox tests.
-	pkgver = 1.29
+	pkgver = 1.29.1
 	pkgrel = 1
 	url = https://github.com/beakerlib/beakerlib
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	source = https://github.com/beakerlib/beakerlib/archive/refs/tags/1.29.tar.gz
-	sha256sums = 3e3babd11a5ee4dec21f1c3d4fff775cd83f519af3739a7b8c7a32ed34d15708
+	source = https://github.com/beakerlib/beakerlib/archive/refs/tags/1.29.1.tar.gz
+	sha256sums = 28e510aa77071d9747c243bd36704f6835191e94823dfa87b3daca58c2195432
 
 pkgname = beakerlib
