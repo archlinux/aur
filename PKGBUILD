@@ -1,7 +1,7 @@
 # Maintainer: S.Leduc <sebastien@sleduc.fr>
 pkgname=python2-fancycompleter
 _realname=fancycompleter
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Colorful TAB completion for Python prompt"
 arch=("any")
@@ -11,7 +11,7 @@ depends=('python2' 'pyrepl')
 install="$pkgname.install"
 source=("https://files.pythonhosted.org/packages/source/${_realname::1}/$_realname/$_realname-$pkgver.tar.gz")
 
-md5sums=('bcef3de6b10b25c6a9fd2ea5bd40d716')
+sha256sums=('09e0feb8ae242abdfd7ef2ba55069a46f011814a80fe5476be48f51b00247272')
 
 build() {
   cd "$srcdir/$_realname-$pkgver"
