@@ -1,15 +1,14 @@
 pkgbase = python-flask-bcrypt
 	pkgdesc = Bcrypt hashing for Flask
-	pkgver = 0.7.1
-	pkgrel = 4
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = http://flask-bcrypt.readthedocs.io/en/latest/
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python-flask
 	depends = python-bcrypt
-	source = python-flask-bcrypt-0.7.1.tar.gz::https://github.com/maxcountryman/flask-bcrypt/archive/0.7.1.tar.gz
-	md5sums = 52747432432d6057fac3ed365c13a466
+	source = python-flask-bcrypt-1.0.1.tar.gz::https://github.com/maxcountryman/flask-bcrypt/archive/1.0.1.tar.gz
+	sha256sums = db07a56750cbde187920d8c55fa8a806ba24211d9eb14399fc17bac83262ff57
 
 pkgname = python-flask-bcrypt
-

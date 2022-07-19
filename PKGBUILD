@@ -4,8 +4,8 @@
 
 _pipname=flask-bcrypt
 pkgname=python-flask-bcrypt
-pkgver=0.7.1
-pkgrel=4
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Bcrypt hashing for Flask"
 arch=('any')
 url="http://flask-bcrypt.readthedocs.io/en/latest/"
@@ -13,7 +13,7 @@ license=('BSD')
 depends=('python-flask' 'python-bcrypt')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/maxcountryman/flask-bcrypt/archive/${pkgver}.tar.gz")
-md5sums=('52747432432d6057fac3ed365c13a466')
+sha256sums=('db07a56750cbde187920d8c55fa8a806ba24211d9eb14399fc17bac83262ff57')
 
 package() {
     cd $_pipname-$pkgver
