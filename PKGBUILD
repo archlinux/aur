@@ -1,7 +1,7 @@
 # Maintainer: Nathaniel Chin <thegamingorangutans+aur at gmail.com>
 
 pkgname=av1an-git
-pkgver=0.3.1.r17.gda8ccf1
+pkgver=r2237.3e32699
 pkgrel=1
 pkgdesc='A cross-platform all-in-one tool for streamlining AV1 encoding'
 arch=('x86_64')
@@ -23,12 +23,12 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "Av1an"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd "Av1an"
-    cargo fetch --locked --target "x86_64-unknown-linux-gnu"
+  cd "Av1an"
+  cargo fetch --locked --target "x86_64-unknown-linux-gnu"
 }
 
 build() {
