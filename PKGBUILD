@@ -5,7 +5,7 @@
 pkgbase=noto-fonts-cjk-vf
 pkgname=(noto-fonts-{cjk,{cjk-,}{hk,jp,kr,sc,tc}}-vf)
 pkgver=20220126
-pkgrel=3
+pkgrel=4
 pkgdesc='Google Noto CJK variable fonts'
 url='https://www.google.com/get/noto/'
 license=(custom:SIL)
@@ -31,7 +31,7 @@ sha256sums=('d1e143273cc7ad37b710cdb0d188a32553cee9cfd60129dcee9d59f91e3c6b48'
             '233846410004447b718545aa83a5375400d5e3a0219e79ff0ab50a430aec765b'
             '099e5f2fff526d0d38d57ce5aa0ebd92e0886aaa937f77812f85d63d3e01e53c'
             '42d6a448bae63daba8eb6123a7b5e56683536f82709ed448a0b29c12bdf18e02')
-noextract=(noto-cjk-{sans,serif}-*.zip)
+noextract=(noto-cjk-sans-${_sansver}.zip noto-cjk-serif-${_serifver}.zip)
 
 _langs=(hk jp kr sc tc)
 
