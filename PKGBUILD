@@ -2,13 +2,13 @@
 pkgname=python2-dbus
 _pkgname=dbus-python
 pkgver=1.2.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Python2 bindings for DBUS"
 url="https://www.freedesktop.org/wiki/Software/DBusBindings"
 arch=(x86_64)
 license=('GPL' 'LGPL')
 depends=('dbus' 'glib2' 'python2' 'python-dbus-common<1.3' 'python-dbus-common>=1.2')
-makedepends=('autoconf-archive')
+makedepends=('autoconf-archive' 'automake')
 source=(https://dbus.freedesktop.org/releases/${_pkgname}/${_pkgname}-${pkgver}.tar.gz)
 sha256sums=('92bdd1e68b45596c833307a5ff4b217ee6929a1502f5341bae28fd120acf7260')
 

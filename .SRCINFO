@@ -1,12 +1,13 @@
 pkgbase = python2-dbus
 	pkgdesc = Python2 bindings for DBUS
 	pkgver = 1.2.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freedesktop.org/wiki/Software/DBusBindings
 	arch = x86_64
 	license = GPL
 	license = LGPL
 	makedepends = autoconf-archive
+	makedepends = automake
 	depends = dbus
 	depends = glib2
 	depends = python2
