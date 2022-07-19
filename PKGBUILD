@@ -5,7 +5,7 @@
 pkgname=cargo-pkgbuild
 pkgver=0.1.1
 _sha=e5fea7fa4f083a2a78e5347c0ec33c17f931c187
-pkgrel=1
+pkgrel=2
 pkgdesc='ArchLinux PKGBULD generator from Cargo.toml manifest'
 arch=(x86_64 i686 armv6h armv7h)
 url='https://github.com/kstep/cargo-pkgbuild'
