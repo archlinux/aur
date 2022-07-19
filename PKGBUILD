@@ -12,7 +12,7 @@ source=("git+$url")
 sha256sums=('SKIP')
 conflicts=(greetd-gtkgreet)
 provides=(greetd-gtkgreet=${pkgver%+*})
-makedepends=(meson ninja scdoc)
+makedepends=(git meson ninja scdoc)
 depends=(gtk3 gtk-layer-shell json-c)
 
 pkgver() {
