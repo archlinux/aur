@@ -3,6 +3,9 @@
 # Select pacman mirrors with a simple GUI.
 #
 
+#source /usr/share/endeavouros/scripts/eos-script-lib-yad || exit 1
+#export -f eos_yad
+# EOS script lib function implementation for some dist-agnostic
 EOS_ROOTER=pkexec
 export EOS_YAD_STARTER_CMD="/usr/bin/yad --window-icon=update"
 
@@ -10,443 +13,6 @@ eos_yad() {
     GDK_BACKEND=x11 $EOS_YAD_STARTER_CMD "$@" | grep -v "^WINDOW DECORATIONS RELOADED$"
     return ${PIPESTATUS[0]}
 }
-#export -f eos_yad
-
-eos_GetArch() {
-    local arch="$(/usr/bin/uname -m)"
-    case "$arch" in
-        armv7* | aarch64) arch=armv7h ;;
-    esac
-    printf "%s" "$arch"
-}
-
-eos_GetProgName() { /usr/bin/basename "$0" ; }
-
-eos_select_browser() {
-    # Select an existing browser.
-    # User may export a variable _WELCOME_BROWSER to use the preferred browser.
-
-    if [ -n "$_WELCOME_BROWSER" ] ; then
-        echo "$_WELCOME_BROWSER"
-        return
-    fi
-
-    local browser
-    for browser in xdg-open exo-open firefox chromium vivaldi-stable opera ; do
-        if (/usr/bin/which "$browser" >& /dev/null) ; then
-            echo "$browser"
-            return
-        fi
-    done
-    eos_yad_WARN "$FUNCNAME: cannot find a browser"
-}
-
-eos_yad_terminal() {
-    local conf=/etc/eos-script-lib-yad.conf
-    if [ -r $conf ] ; then
-        source $conf
-        if [ -n "$EOS_YAD_TERMINAL" ] ; then
-            if [ -x /usr/bin/"$EOS_YAD_TERMINAL" ] || [ -x "$EOS_YAD_TERMINAL" ] ; then
-                echo "$EOS_YAD_TERMINAL"
-                return
-            fi
-            echo "Sorry, terminal program '$EOS_YAD_TERMINAL' is not available. Please check your configuration file $conf." | \
-                eos_yad --text-info --title=Warning --height=100 --width=500 --wrap --button=yad-ok:0
-        fi
-    fi
-
-    # Show a terminal that is capable of supporting option -e properly. Empty if not found.
-    # Requires: yad
-    #
-    # These terminal programs are known not to work with this program:
-    #     - putty
-    # The following terminals are known to work:
-    local suitable_terminals=(
-        xfce4-terminal
-        konsole
-        gnome-terminal
-        mate-terminal
-        lxterminal
-        deepin-terminal
-        terminator
-        qterminal
-        alacritty
-        tilix
-        termite
-        xterm
-        kitty
-        terminology
-        sakura
-    )
-    local eos_terminal_prog=""
-    local xx
-
-    for xx in "${suitable_terminals[@]}" ; do
-        if [ -x "/usr/bin/$xx" ] ; then
-            eos_terminal_prog="/usr/bin/$xx"
-            echo "$eos_terminal_prog"
-            return 0
-        fi
-    done
-
-    printf "%s\n    %s\n%s" \
-           "Sorry, none of the terminal programs:" \
-           "${suitable_terminals[*]}" \
-           "is installed. Some features may not work as expected." \
-        | eos_yad --text-info \
-                  --title="Warning" --height=200 --width=700 --wrap --button=yad-ok:0
-    return 1
-}
-
-eos_yad_check_internet_connection() {
-    local verbose="$1"          # yes|verbose = show dialog, otherwise don't show dialog
-    local waitrounds="$2"       # try max $waitrounds times for a connection, test once per $onewait
-    local onewait="$3"          # time to wait in one waiting round
-    local caller="$4"           # who is calling this function (often empty)
-    local ix
-    local title="Warning"
-    local checker="ping -c 1 8.8.8.8"
-
-    case "$EOS_CONNECTION_CHECKER" in
-        curl)
-            # checker="curl --silent --connect-timeout 8 https://8.8.8.8"
-            checker=/usr/bin/eos-connection-checker
-            ;;
-    esac
-
-    test -z "$verbose"    && verbose=no
-    test -z "$waitrounds" && waitrounds=5
-    test -z "$onewait"    && onewait=1s
-
-    if [ -n "$caller" ] ; then
-        title+=" at $caller"
-    fi
-
-    for ((ix=0; ix<waitrounds; ix++)) ; do
-        $checker >/dev/null && return 0   # is connected
-        sleep $onewait
-    done
-
-    $checker >/dev/null || {
-        case "$verbose" in
-            [yY]*|1|true|TRUE|True|on|enable*|verbose)
-                echo "No internet connection!" | \
-                    eos_yad --text-info --title="$title" \
-                            --height=100 --width=300 --justify=center --wrap \
-                            --button=yad-quit:1 \
-                            --button=" Continue anyway!go-next!Don't stop me now":0
-                ;;
-            *)
-                return 1
-                ;;
-        esac
-    }
-}
-
-eos_yad_GetArgVal() {
-    echo "${1#*=}"
-    #e cho "$1" | cut -d '=' -f 2
-}
-
-eos_yad_RunCmdTermBashOpt() {  # like eos_yad_RunCmdTermBash, but supports certain options
-    local cmd=""
-    local prompt=""
-    local termopts=""
-    local waitopt=""
-    local opts
-
-    # Handle options for variables cmd ... waitopt.
-    opts="$(getopt -o=p:t:w:E --longoptions prompt:,term:,wait:,no-enter-wait --name "$FUNCNAME" -- "$@")"
-    [ $? -eq 0 ] || return 1
-    eval set -- "$opts"
-    while true ; do
-        case "$1" in
-            --prompt | -p)
-                prompt="$2" ; shift ;;
-            --term | -t)
-                termopts="$2" ; shift ;;        # e.g. --term="-T 'my title' --geometry=100x200"
-            --wait | -w)
-                waitopt="$2" ; shift ;;         # e.g. --wait="--no-enter-wait"
-            --no-enter-wait | -E)
-                waitopt="--no-enter-wait" ;;    # alternative to --wait
-            --)
-                shift; break ;;
-        esac
-        shift
-    done
-    cmd="$*"
-    [ -n "$cmd" ] || { echo "$FUNCNAME: warning: required command is missing." >&2; return 1; }
-
-    # Get the available/configured terminal.
-    local term="$(eos_yad_terminal)"
-    test -n "$term" || return 1
-
-    mkdir -p "$HOME/.cache"
-    local tmpfile=$(mktemp "$HOME/.cache/$FUNCNAME.XXXXX")
-
-    echo "#!/bin/bash"                                   >> $tmpfile
-    test -n "$prompt" && echo "echo $prompt"             >> $tmpfile
-    echo "$cmd"                                          >> $tmpfile
-    echo "echo"                                          >> $tmpfile
-    case "$term" in
-        /usr/bin/deepin-terminal | deepin-terminal) ;;
-        *)
-            _init_translations
-            if [ "$waitopt" != "--no-enter-wait" ] ; then
-                echo "read -p '$(ltr updt_press_enter): '"    >> $tmpfile
-            fi
-            ;;
-    esac
-    echo "rm -f $tmpfile"                                >> $tmpfile                    # this may cause issues in very special cases!
-
-    chmod +x $tmpfile
-
-    # Try make sure terminal $term does not return to the caller immediately
-    # but waits until the commands from $tmpfile are executed.
-    case "$term" in
-        /usr/bin/gnome-terminal | gnome-terminal)
-            $term $termopts --wait -- $tmpfile ;;
-        /usr/bin/xfce4-terminal | xfce4-terminal)
-            $term --disable-server $termopts -e $tmpfile ;;
-        *)
-            $term $termopts -e $tmpfile ;;
-    esac
-
-    # The following DOES NOT WORK with plain gnome-terminal:
-    #echo "Deleting '$tmpfile'."
-    #rm -f $tmpfile
-}
-
-eos_yad_RunCmdTermBash() {
-    local cmd="$1"
-    local prompt="$2"
-    local termopts="$3"
-    local waitopt="$4"
-
-    eos_yad_RunCmdTermBashOpt --prompt="$prompt" --term="$termopts" --wait="$waitopt" "$cmd"
-}
-
-eos_yad_problem() {
-    local title="$1"
-    shift
-    eos_yad --text-info --title="$title" --wrap --image=error \
-            --width=700 --height=500 --button=yad-quit:0 "$@"
-    # removed --tail
-}
-
-eos_yad_DIE() {
-    # This function is only for small messages.
-    # The local Usage can be used only if it is
-    #  - defined before sourcing this file
-    #  - exported
-
-    local msg="$1"
-    local title="Error"
-    shift
-    while true ; do
-        echo "$msg"
-        # run Usage function if available (usually is not ...)
-        test -n "$(declare -F | grep -w '^declare -f Usage$')" && Usage
-        break
-    done | eos_yad_problem "$title" "$@"
-    exit 1
-}
-
-eos_yad_WARN() {
-    local msg="$1"
-    local title="Warning"
-    shift
-    echo "$msg" | eos_yad_problem "$title" --image=dialog-warning "$@"
-}
-
-# Function detectDE is copied from: https://cgit.freedesktop.org/xdg/xdg-utils/tree/scripts/xdg-utils-common.in
-
-#--------------------------------------
-# Checks for known desktop environments
-# set variable DE to the desktop environments name, lowercase
-
-eos_yad__detectDE()
-{
-    # see https://bugs.freedesktop.org/show_bug.cgi?id=34164
-    unset GREP_OPTIONS
-
-    if [ -n "${XDG_CURRENT_DESKTOP}" ]; then
-      case "${XDG_CURRENT_DESKTOP}" in
-         # only recently added to menu-spec, pre-spec X- still in use
-         Budgie*)
-           DE=budgie
-           ;;
-         Cinnamon|X-Cinnamon)
-           DE=cinnamon;
-           ;;
-         DEEPIN|[Dd]eepin)
-           DE=deepin;
-           ;;
-         ENLIGHTENMENT|Enlightenment)
-           DE=enlightenment;
-           ;;
-         # GNOME, GNOME-Classic:GNOME, or GNOME-Flashback:GNOME
-         GNOME*|gnome)
-           DE=gnome;
-           ;;
-         KDE)
-           DE=kde;
-           ;;
-         LXDE)
-           DE=lxde;
-           ;;
-         LXQt)
-           DE=lxqt;
-           ;;
-         MATE)
-           DE=mate;
-           ;;
-         XFCE)
-           DE=xfce
-           ;;
-         X-Generic)
-           DE=generic
-           ;;
-         i3)
-           DE=i3
-           ;;
-      esac
-    fi
-
-    if [ x"$DE" = x"" ]; then
-      # classic fallbacks
-      if [ x"$KDE_FULL_SESSION" != x"" ]; then DE=kde;
-      elif [ x"$GNOME_DESKTOP_SESSION_ID" != x"" ]; then DE=gnome;
-      elif [ x"$MATE_DESKTOP_SESSION_ID" != x"" ]; then DE=mate;
-      elif `dbus-send --print-reply --dest=org.freedesktop.DBus /org/freedesktop/DBus org.freedesktop.DBus.GetNameOwner string:org.gnome.SessionManager > /dev/null 2>&1` ; then DE=gnome;
-      elif xprop -root _DT_SAVE_MODE 2> /dev/null | grep ' = \"xfce4\"$' >/dev/null 2>&1; then DE=xfce;
-      elif xprop -root 2> /dev/null | grep -i '^xfce_desktop_window' >/dev/null 2>&1; then DE=xfce
-      elif echo $DESKTOP | grep -q '^Enlightenment'; then DE=enlightenment;
-      elif [ x"$LXQT_SESSION_CONFIG" != x"" ]; then DE=lxqt;
-      fi
-    fi
-
-    if [ x"$DE" = x"" ]; then
-      # fallback to checking $DESKTOP_SESSION
-      case "$DESKTOP_SESSION" in
-         gnome)
-           DE=gnome;
-           ;;
-         LXDE|Lubuntu)
-           DE=lxde; 
-           ;;
-         MATE)
-           DE=mate;
-           ;;
-         xfce|xfce4|'Xfce Session')
-           DE=xfce;
-           ;;
-         openbox)
-             DE=openbox
-             ;;
-      esac
-    fi
-
-    if [ x"$DE" = x"" ]; then
-      # fallback to uname output for other platforms
-      case "$(uname 2>/dev/null)" in 
-        CYGWIN*)
-          DE=cygwin;
-          ;;
-        Darwin)
-          DE=darwin;
-          ;;
-      esac
-    fi
-
-    if [ x"$DE" = x"gnome" ]; then
-      # gnome-default-applications-properties is only available in GNOME 2.x
-      # but not in GNOME 3.x
-      which gnome-default-applications-properties > /dev/null 2>&1  || DE="gnome3"
-    fi
-
-    if [ -f "$XDG_RUNTIME_DIR/flatpak-info" ]; then
-      DE="flatpak"
-    fi
-
-    if [ -z "$DE" ] ; then
-        # neofetch fails: Enlightenment, openbox
-        # neofetch differs: KDE -> plasma (with DESKTOP_SESSION=openbox-kde and DESKTOP_SESSION=plasma)
-        [ -x /usr/bin/neofetch ] && DE="$(neofetch --enable de --de_version off | awk '{print $NF}' | tr [:upper:] [:lower:])"
-    fi
-}
-
-eos_yad_GetDesktopName() {      # return DE name in uppercase letters
-    local de=$(eos_yad__detectDE && echo "$DE" | tr '[:lower:]' '[:upper:]')
-    echo "$de"
-}
-
-eos_IsSway()  {
-    case "$DESKTOP_SESSION" in
-        sway | */sway) return 0 ;;
-    esac
-    case "$XDG_SESSION_DESKTOP" in
-        sway | */sway) return 0 ;;
-    esac
-    [ -x /usr/bin/swaybg ] && return 0
-    return 1
-}
-
-eos_IsBspwm() {
-    case "$DESKTOP_SESSION" in
-        bspwm | */bspwm) return 0 ;;
-    esac
-    case "$XDG_SESSION_DESKTOP" in
-        bspwm | */bspwm) return 0 ;;
-    esac
-    [ -x /usr/bin/bspwm ] && return 0
-    return 1
-}
-
-eos_GetDeOrWm() {
-    local de="$(eos_yad_GetDesktopName)"
-    if [ "$de" = "" ] ; then
-        if (eos_IsSway) ; then
-            de=SWAY
-        elif (eos_IsBspwm) ; then
-            de=BSPWM
-        fi
-    fi
-    echo "$de"
-}
-
-# DIE()  { eos_yad_DIE  "$@" ; }    # deprecated
-# WARN() { eos_yad_WARN "$@" ; }    # deprecated
-
-#SetBrowser() {
-#    local xx
-#    for xx in xdg-open exo-open firefox chromium ; do  # use one of these browser commands
-#        if [ -x /usr/bin/$xx ] ; then
-#            _BROWSER=/usr/bin/$xx        # for showing external links
-#            return
-#        fi
-#    done
-#    DIE "$FUNCNAME: cannot find a browser"
-#}
-
-eos_yad_nothing_todo() {
-    local text="$1"
-    local timeout="$2"  # optional, default set below
-    local title="$3"    # optional, default set below
-    local image="$4"    # optional, default set below
-
-    [ -n "$timeout" ] || timeout=10
-    [ -n "$title" ]   || title="Info"
-    [ -n "$image" ]   || image=info
-
-    local cmd=(
-        eos_yad --form --text="$text" --title="$title" --no-focus
-                --height=100 --width=300 --timeout=$timeout --timeout-indicator=left
-                --button=yad-close:0
-    )
-    "${cmd[@]}"
-}
-
 
 FindAvailableMonoFont() {
     local size="$1"
@@ -468,51 +34,6 @@ FindAvailableMonoFont() {
     echo "$font $size"
 }
 
-ProgressBar() {         # This function was converted from the work of @Kresimir, thanks!
-    local msg="$1"
-    local percent="$2"
-    local barlen="$3"
-    local c
-    local columns="$COLUMNS"                                # nr of columns on the terminal
-    [ -n "$columns" ] || columns=80                         # guess nr of columns on the terminal
-    local msglen=$((columns - barlen - 9))                  # max space for the msg
-    [ "${#msg}" -gt "$msglen" ] && msg="${msg::$msglen}"    # msg must be truncated
-    [ "${msg: -1}" = ":" ] || msg+=":"                      # make sure a colon is after msg
-
-    printf "\r%-*s %3d%% [" "$msglen" "$msg" $percent >&2
-    for ((c = 0; c < $barlen; c++)) ; do
-        if (( $c <= $percent * $barlen / 100 )); then
-            echo -ne "#" >&2
-        else
-            echo -ne " " >&2
-        fi
-    done;
-    stdbuf -oL printf "]" >&2 # flush stdout
-}
-ProgressBarInit() {
-    # progress bar initialization
-    trap 'printf "\x1B[?25h" >&2' EXIT # cursor on
-    printf "\x1B[?25l" >&2              # cursor off
-}
-ProgressBarEnd() {
-    printf "\n" >&2
-}
-
-YadProgressPulsate() {
-    local lockfile="$1"
-    local text="$2"
-
-    while true ; do
-        [ -r "$lockfile" ] || return
-        echo 0
-        sleep 0.1s
-    done | eos_yad --progress \
-                   --title="Progress indicator" \
-                   --text="$text" \
-                   --auto-close \
-                   --width=400 --hide-text --pulsate
-}
-
 eos_FormMonoText() {
     local txt="$1"
     local size="$2"   # optional
@@ -520,23 +41,9 @@ eos_FormMonoText() {
     [ -n "$size" ] && size=" $size"
     printf "<span font='Mono$size'>%s</span>" "$txt"
 }
-
-# check the config:
-case "$EOS_ROOTER" in
-    su           | "su -c"          | "/usr/bin/su -c" | "")     export EOS_ROOTER="eos-run-cmd-with-su" ;;          # default!
-    sudo         | "sudo bash -c"   | "/usr/bin/sudo bash -c")   export EOS_ROOTER="sudo bash -c" ;;
-    pkexec       | "pkexec bash -c" | "/usr/bin/pkexec bash -c") export EOS_ROOTER="/usr/bin/pkexec bash -c" ;;
-    su-c_wrapper)                                                export EOS_ROOTER="/usr/bin/su-c_wrapper bash -c" ;;
-    *)
-        eos_yad_DIE "Error: configuration '$EOS_ROOTER' for EOS_ROOTER in file /etc/eos-script-lib-yad.conf is not supported!"
-        ;;
-esac
-
-
-export -f eos_yad
-export -f eos_yad_terminal
-export -f eos_yad_RunCmdTermBash
-
+#export -f eos_yad_terminal
+#export -f eos_yad_RunCmdTermBash
+# End of EOS lib function implementation
 
 DIE() {
     eos_yad --form --width=400 --title="reflector-simple problem" --image=error --text="$1" --button=yad-quit
@@ -579,8 +86,7 @@ CCCheck() {   # check validity of country code
 }
 
 Method0() {
-    # use https://ipinfo.io/country
-    local code="$(curl -Lsm 10 https://ipinfo.io/country)"
+    local code="$(show-location-info country)"
     CCCheck "$code"
 }
 Method1() {
@@ -943,17 +449,23 @@ AskCountriesAndOptions() {
     else
         command+=(--field="Max number of freshest mirrors":num $default_number)    # --latest
     fi
+    command+=(--field="Download timeout in seconds":num 5)                         # --download-timeout
 
     local free_params=""
     if [ -r "$free_params_file" ] ; then
         free_params="$(/usr/bin/cat "$free_params_file" | tr '\n' ' ')"
     fi
     command+=(--field="Optional reflector params" " $free_params")    # note the initial space in value !!!
+
+    command+=(--button="Changelog!applications-development!reflector-simple changelog":2 --button=yad-cancel:1 --button=yad-ok:0)
     Verbose "done."
 
     reflector_info="$("${command[@]}")"
     case "$?" in
         1) Destructor ; exit 1 ;;
+        2)
+            $(eos_select_browser) $(eos-github2gitlab https://github.com/endeavouros-team/PKGBUILDS/commits/master/reflector-simple)
+            Destructor ; exit 0 ;;
     esac
     test -z "$(echo "$reflector_info" | tr -d ' ')" && exit 1      # stop if $reflector_info has no words
     if [ "$(echo "$reflector_info" | wc -l)" != "1" ] ; then
@@ -1014,6 +526,7 @@ BuildReflectorCommand() {
     else
         reflector_cmd+=(--latest "${reflector_info[$((ix++))]}")
     fi
+    reflector_cmd+=(--download-timeout "${reflector_info[$((ix++))]}")
 
     # add optional free parameters to the command and save free params to file
     printf "" > "$free_params_file"
@@ -1046,7 +559,7 @@ AddCountryNamesToMirrors() {
             return 1
         }
     else
-        eos-latest-arch-mirrorlist $full_list || {
+        latest-arch-mirrorlist $full_list || {
             WARN "cannot fetch Arch mirror list."
             rm -f $full_list
             return 1
@@ -1270,8 +783,9 @@ Main() {
 
     local ranklog=/tmp/mirror-rating.log
     local progress_cmd=(
-        eos_yad --progress --enable-log --log-on-top --log-expanded --image=update --image-on-top --log-height 200 --auto-close
+        eos_yad --progress --enable-log --log-on-top --log-expanded --log-height 200 --auto-close
         --width=900 --no-buttons
+        --image=applications-internet
         --title="Mirror ranking"
         --text="Rating mirrors, please wait...\nNote: rating log will be saved in file <b>$ranklog</b>."
     )

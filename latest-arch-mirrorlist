@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Fetch the latest Arch mirrorlist.
+# Use the file as target if given, otherwise save it to /tmp.
+# Then display the full file path to stdout.
+
+Main()
+{
+    local full_list="$1"
+    local ARCH_SITE=https://www.archlinux.org
+
+    if [ -z "$full_list" ]; then
+        full_list=/tmp/arch-mirrorlist-latest.$(date +%Y-%m-%d)
+    fi
+
+    curl -Lsm 10 -o "$full_list" $ARCH_SITE/mirrorlist/all || {
+        return 1
+    }
+    echo "$full_list"
+}
+
+Main "$@"

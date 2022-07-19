@@ -4,23 +4,40 @@
 
 pkgname=reflector-simple
 pkgdesc="Simple GUI wrapper for 'reflector'."
-pkgver=2.0
-pkgrel=2
+pkgver=3.1
+pkgrel=1
 arch=('any')
 license=('GPL')
 depends=(
-  bash yad reflector whois geoip bind
+   bash yad reflector whois geoip bind
+)
+optdepends=(
+  'reflector-bash-completion: useful for plain reflector usage'
+)
+backup=(
+  etc/$pkgname.conf
+  etc/${pkgname}-tool.conf
 )
 
-url="https://gitlab.com/garuda-linux/packages/stable-pkgbuilds/reflector-simple"
+#url=https://github.com/endeavouros-team/PKGBUILDS
+url=https://github.com/endeavouros-team/PKGBUILDS/tree/master/$pkgname
+
 
 source=(
   $pkgname
   $pkgname.desktop
+  $pkgname.conf
+  ${pkgname}-tool.conf
+  mirrorlist-rank-info
+  latest-arch-mirrorlist
   $pkgname.svg
 )
-sha512sums=('ace126e97637fbe7a4a196485f2ccbf004f9b585bfab0d0360f1caf97594ebdb3533e80a6364a4d5dc2ceff242f6df6f2d14ddd30560037dd169ec392ce401c8'
-            'b3b6d69a9af877e02d07620d2df085d72811d5ac55d1e2a5ca3fab03663849be3054fde2c026da98cb630a77ea0912423aa40932361bd24d24e15f9fb8835ca2'
+sha512sums=('f8b969e39a78edf16ffdf87086892e3b0256ca71ec0fce25695974528a8ac32d6ec126e21a9c72bb9512f30de2bee2bae8c4304593e6993b71bbdf93d8fd2d3f'
+            'ac9d9313d85e3f90b7a5b1e9daa4bb16bfac4329336bc4a1e3924633a3c249c63c28603f35ede7f030a09cf52591d23fb2b0bdde7f2dbb4292855897220e54c2'
+            'aa149c8fc273e6a9fb5ddc38bde8a37b8fb095ec8877a324b957be57e156ef583adbed5988f0184ef06d5d09ec13e01e4a58b81fffef5d6d316405a3881895c3'
+            '8b101caac9f38238d30f293176a09f1bb483ec1cdc474ef126ec087a8b548b50eee5c35617f0616dd1618e4dce72e14b70270f47658577e20e04a133405510aa'
+            'c56090338b01f6eb251e3250d69d32c2b96c8393ebe921896de3ad1bd5c622c01ae637a09c6d0d0aa40e71d55be608a8d77066be05929d586723e79e0f24002c'
+            '84fbd6a973dadaa8c11ddfb8ed505a332a8788f0d5e43cfcf234bba0441c0e4dde2534acb7ddbdf8d1422a2f57491ee79485ab4f7ebf4e6cf9d00aa12edb894b'
             '1d904cf0b7ae64052f70a77ff3a102e8741b54cd4bf81fce25eef2c3d475291aa79a3c8c39d63b13e28753d33ed4b0106bd896cd50952c26a7c79cbf5795157f')
 
 package() {
@@ -29,10 +46,16 @@ package() {
   sed -i $pkgname -e "s|local VERSION_INFO=.*$|local VERSION_INFO=${pkgver}-$pkgrel|"
 
   install -d $pkgdir/usr/bin
+  install -d $pkgdir/etc
   install -d $pkgdir/usr/share/applications
   install -d $pkgdir/usr/share/pixmaps/
 
-  install -Dm755 $pkgname         $pkgdir/usr/bin/$pkgname
-  install -Dm644 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
-  install -Dm644 $pkgname.svg     $pkgdir/usr/share/pixmaps/$pkgname.svg
+  install -Dm755 $pkgname                     $pkgdir/usr/bin/$pkgname
+  install -Dm755 latest-arch-mirrorlist       $pkgdir/usr/bin/latest-arch-mirrorlist
+  install -Dm755 mirrorlist-rank-info         $pkgdir/usr/bin/mirrorlist-rank-info
+  install -Dm644 $pkgname.svg                 $pkgdir/usr/share/pixmaps/$pkgname.svg
+  
+  install -Dm644 $pkgname.conf           $pkgdir/etc/$pkgname.conf
+  install -Dm644 ${pkgname}-tool.conf    $pkgdir/etc/${pkgname}-tool.conf
+  install -Dm644 $pkgname.desktop        $pkgdir/usr/share/applications/$pkgname.desktop
 }

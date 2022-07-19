@@ -1,0 +1,137 @@
+#!/bin/bash
+
+# Show up-to-date ranking information about the mirrors
+# in file /etc/pacman.d/mirrorlist.
+
+printf2() { printf "$@" >&2 ; }
+
+DIE()  { echo "==> $progname: error: $1" >&2 ; exit 1 ; }
+WARN() { printf2 "\n==> Warning: $1\n" >&2 ; }
+
+Us2S() {
+    local us="$1"
+    local sec="$(echo "scale=6; $us / 1000000" | bc -l)"
+    [ "${sec::1}" = "." ] && sec="0$sec"
+    echo "$sec"
+}
+
+Age_Fetchtime()
+{
+    local mirror="$1"          # An Arch mirror URL to folder where
+                               # file 'lastupdate' exists.
+    local now="$2"             # date +%s
+    local ofile=$HOME/.$file
+    local timestamp
+    local fetchtime
+    local age
+    local output
+    
+    [ -n "$mirror" ] || DIE "parameter 'mirror' missing"
+    [ -n "$now" ]    || now=$(date +%s)
+
+    IFS=' ' output=($(curl -Lsm 10 -w "%{time_total} %{http_code}" "$mirror"/$file -o$ofile))
+    case "$?" in
+        0)
+            case "${output[1]}" in
+                ""|301|302) echo "fail" ; return 1 ;;
+                *)
+                    if [ "${output[1]}" -ge 400 ] ; then
+                        echo "fail"
+                        return 1
+                    fi
+                    ;;
+            esac
+            ;;
+        *) echo "fail" ; return 1 ;;
+    esac
+
+    #fetchtime="$(Us2S ${output[0]})"
+    fetchtime="${output[0]}"
+    
+    timestamp="$(cat $ofile)"
+    rm -f $ofile
+
+    if [ -n "$timestamp" ] ; then
+        age=$((now - timestamp))
+        output="$age|$fetchtime"
+    else
+        output="fail"
+    fi
+    echo "$output"
+}
+
+ShowLines() {
+    # Testing material:
+    # echo "atest1 110 0.50000"
+    # echo "atest2 10000 0.010000"
+
+    echo "Mirror Age(sec) Rate(sec)"
+    echo "~~~~~~ ~~~~~~~~ ~~~~~~~~~"  # for sorting: tilde (~) is after Z in ascii table
+    for line in "${results[@]}" ; do
+        echo "$line"
+    done
+}
+
+Options() {
+    local arg
+    for arg in "$@" ; do
+        case "$arg" in
+            --age)  sort=age ;;
+            --rate) sort=rate ;;
+            --help | -h) Usage ; exit 0 ;;
+        esac
+    done
+}
+Usage() {
+    cat <<EOF
+Usage: $progname [options]
+options:
+    --age           Sorting precedence: 'age' over 'rate'.
+    --rate          Sorting precedence: 'rate' over 'age'.
+    --help | -h     This help.
+EOF
+}
+
+Main() {
+    export LC_ALL=C
+    local progname="$(basename "$0")"
+    local mlfile=/etc/pacman.d/mirrorlist
+
+    local mirrors="$(grep "^Server = " $mlfile | awk '{print $NF}' | sed 's|/$repo/os/$arch$||')"
+    local mirror m
+    local now=$(date +%s)
+    local result age fetchtime
+    local results=()
+    local sort=age
+    local file=lastupdate
+    local line
+    local ix=0
+    local count="$(echo "$mirrors" | wc -l)"
+
+    printf2 "Show up-to-date ranking information about mirrors in file $mlfile.\n"
+
+    Options "$@"
+
+    printf2 "==> Use option --help for more info.\n"
+
+    for mirror in $mirrors ; do
+        printf2 "\r==> %d/%d ranking..."  "$((++ix))" "$count"
+        result="$(Age_Fetchtime "$mirror" "$now")"
+        if [ "$result" != "fail" ] ; then
+            age=$(      echo "$result" | cut -d '|' -f1)
+            fetchtime=$(echo "$result" | cut -d '|' -f2)
+            m="$mirror"'/$repo/os/$arch'
+            results+=("$m $age $fetchtime")
+        else
+            WARN "fetching file '$mirror/$file' failed."
+        fi
+    done
+    printf2 "\n==> Sorting by %s.\n\n" "$sort"
+
+    case "$sort" in
+        age)  ShowLines | sort -n -k2,2 -k3,3 | column -t ;;
+        rate) ShowLines | sort -n -k3,3 -k2,2 | column -t ;;
+    esac
+}
+
+Main "$@"
