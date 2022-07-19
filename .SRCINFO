@@ -1,6 +1,6 @@
 pkgbase = neovim-headlines
 	pkgdesc = Adds highlights for text filetypes
-	pkgver = 3.2.2
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/lukas-reineke/headlines.nvim
 	install = headlines.install
@@ -8,7 +8,7 @@ pkgbase = neovim-headlines
 	groups = neovim-plugins
 	license = MIT
 	depends = neovim
-	source = neovim-headlines-3.2.2.tar.gz::https://github.com/lukas-reineke/headlines.nvim/archive/v3.2.2.tar.gz
-	sha256sums = 49f01df6b9f604e7293037b17debd4fa58aead872ebcd542e814803d807fbd73
+	source = neovim-headlines-3.3.0.tar.gz::https://github.com/lukas-reineke/headlines.nvim/archive/v3.3.0.tar.gz
+	sha256sums = 864d0ea663c1265ca99518868d3dfb451b3c7a247f6c9001dcce6f34801cc485
 
 pkgname = neovim-headlines
