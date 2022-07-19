@@ -16,7 +16,7 @@ conflicts=('goxel2')
 _gitname=goxel2
 
 build() {
-	echo "Downloading v$pkgver.tar.gz from GitHub..."
+	echo "Getting Goxel2 v$pkgver Source Code from GitHub Release..."
 	curl -L "https://github.com/pegvin/goxel2/archive/refs/tags/v$pkgver.tar.gz" --output $_gitname.tar.gz
 
 	echo "Extracting $_gitname.tar.gz..."
