@@ -2,7 +2,7 @@
 
 pkgbase=vulkan-extensionlayer-git
 pkgname=({,lib32-}vulkan-extensionlayer-git)
-pkgver=r39.7474cb8e1f
+pkgver=r145.70a12ce118
 pkgrel=1
 pkgdesc="Layer providing Vulkan features when native support is unavailable"
 arch=(x86_64)
@@ -62,6 +62,7 @@ package_lib32-vulkan-extensionlayer-git() {
 
   # Delete conflicting file provided by vulkan-extensionlayer
   rm "$pkgdir"/usr/share/vulkan/explicit_layer.d/VkLayer_khronos_timeline_semaphore.json
+  rm "$pkgdir"/usr/share/vulkan/explicit_layer.d/VkLayer_khronos_synchronization2.json
   rmdir "$pkgdir"/usr/share/vulkan/explicit_layer.d/
   rmdir "$pkgdir"/usr/share/vulkan/
   rmdir "$pkgdir"/usr/share/
