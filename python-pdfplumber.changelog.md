@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [0.7.3] - 2022-07-18
+
+### Fixed
+
+- Quick fix for transparency issue in visual debugging mode. [b98dd7c](https://github.com/jsvine/pdfplumber/commit/b98dd7c)
+
+## [0.7.2] - 2022-07-17
+
+### Added
+
+- Add `split_at_punctuation` parameter to `.extract_words(...)` and `.extract_text(...)`. ([#682](https://github.com/jsvine/pdfplumber/issues/674)) [h/t @lolipopshock]
+- Add README.md link to @hbh112233abc's [Chinese translation of README.md](https://github.com/hbh112233abc/pdfplumber/blob/stable/README-CN.md). ([#674](https://github.com/jsvine/pdfplumber/issues/674))
+
+### Changed
+
+- Change `.to_image(...)`'s approach, preferring to composite with a white background instead of removing the alpha channel. ([1cd1f9a](https://github.com/jsvine/pdfplumber/commit/1cd1f9a))
+
+### Fixed
+
+- Fix bug in `LayoutEngine.calculate(...)` when processing char objects with len>1 representations, such as ligatures. ([#683](https://github.com/jsvine/pdfplumber/issues/683))
+
+## [0.7.1] - 2022-05-31
+
+### Fixed
+
+- Fix bug when calling `PageImage.debug_tablefinder()` (i.e., with no parameters). ([#659](https://github.com/jsvine/pdfplumber/issues/659) + [063e2ed](https://github.com/jsvine/pdfplumber/commit/063e2ed)) [h/t @rneumann7]
+
+### Development Changes
+
+- Add `Makefile` target for `examples`, as well as dev requirements to support re-running the example notebooks automatically. ([ef065a7](https://github.com/jsvine/pdfplumber/commit/ef065a7))
+
 ## [0.7.0] - 2022-05-27
 
 ### Added
