@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=python-avocado-git
-pkgver=97
+pkgver=98.0+0.g027faa19ab
 pkgrel=1
 pkgdesc="Set of tools and libraries to help with automated testing"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL2')
 source=("git+https://github.com/avocado-framework/avocado")
 sha256sums=('SKIP')
 depends=('python' 'libvirt-python')
-makedepends=('python-setuptools' 'python-docutils')
+makedepends=('git' 'python-setuptools' 'python-docutils')
 conflicts=('python-avocado')
 provides=("python-avocado=${pkgver%+*}")
 
