@@ -2,7 +2,7 @@
 
 pkgname='prm'
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Pull Request Manager for Maintainers'
 url='https://ldez.github.io/prm/'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -15,8 +15,8 @@ depends=('git')
 makedepends=()
 
 _repourl='https://github.com/ldez/prm'
-_basedownloadurl="${_repourl}/releases/download/${pkgver}"
-_basearchive="${pkgname}_${pkgver}_linux"
+_basedownloadurl="${_repourl}/releases/download/v${pkgver}"
+_basearchive="${pkgname}_v${pkgver}_linux"
 
 source_x86_64=("${_basedownloadurl}/${_basearchive}_amd64.tar.gz")
 sha256sums_x86_64=('89f727ab43e1c8d827130eb615361ae6c94f67351949d9466a054dfc6eaf92e9')

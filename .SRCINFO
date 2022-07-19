@@ -1,7 +1,7 @@
 pkgbase = prm
 	pkgdesc = Pull Request Manager for Maintainers
 	pkgver = 3.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ldez.github.io/prm/
 	arch = x86_64
 	arch = i686
@@ -12,13 +12,13 @@ pkgbase = prm
 	provides = prm
 	conflicts = prm
 	conflicts = prm-git
-	source_x86_64 = https://github.com/ldez/prm/releases/download/3.5.0/prm_3.5.0_linux_amd64.tar.gz
+	source_x86_64 = https://github.com/ldez/prm/releases/download/v3.5.0/prm_v3.5.0_linux_amd64.tar.gz
 	sha256sums_x86_64 = 89f727ab43e1c8d827130eb615361ae6c94f67351949d9466a054dfc6eaf92e9
-	source_i686 = https://github.com/ldez/prm/releases/download/3.5.0/prm_3.5.0_linux_386.tar.gz
+	source_i686 = https://github.com/ldez/prm/releases/download/v3.5.0/prm_v3.5.0_linux_386.tar.gz
 	sha256sums_i686 = cfb5662ef061a4e2fbcf3da6d8c7b085d03520da241ee79c9bd3ad90ad9ed279
-	source_armv7h = https://github.com/ldez/prm/releases/download/3.5.0/prm_3.5.0_linux_armv7.tar.gz
+	source_armv7h = https://github.com/ldez/prm/releases/download/v3.5.0/prm_v3.5.0_linux_armv7.tar.gz
 	sha256sums_armv7h = 1577b03aa312e0e2abbbb73c1c37e052b89b12c85f32748c1b6c72e3e3f390b0
-	source_aarch64 = https://github.com/ldez/prm/releases/download/3.5.0/prm_3.5.0_linux_arm64.tar.gz
+	source_aarch64 = https://github.com/ldez/prm/releases/download/v3.5.0/prm_v3.5.0_linux_arm64.tar.gz
 	sha256sums_aarch64 = 2b83e92d690dcb264f5858f839d8072166f84b946a9d69614d9008b6d29067d0
 
 pkgname = prm
