@@ -1,0 +1,12 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 60b8652..e65fa8a 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -20,6 +20,7 @@ classifiers = [
+   "Topic :: System :: Hardware",
+   "Topic :: Home Automation"
+ ]
++exclude = ["miio/**/tests/*"]
+ 
+ [tool.poetry.scripts]
+ mirobo = "miio.integrations.vacuum.roborock.vacuum_cli:cli"

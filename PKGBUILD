@@ -1,8 +1,10 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Patrick Lühne <patrick-arch@luehne.de>
 
+## Using tarballs from GitHub to build manpages
+
 pkgname=python-miio
-pkgver=0.5.11
+pkgver=0.5.12
 pkgrel=1
 pkgdesc="Python library & console tool for controlling Xiaomi smart appliances"
 url="https://github.com/rytilahti/python-miio"
@@ -23,31 +25,37 @@ depends=(
 	'python-zeroconf')
 optdepends=('python-android-backup-tools: Android backup extraction support')
 makedepends=(
-	'python-poetry-core'
 	'python-build'
 	'python-installer'
-	'python-wheel'
+	'python-poetry-core'
 	'python-pytest'
 	'python-sphinx'
 	'python-sphinx-click'
 	'python-sphinx_rtd_theme'
-	'python-sphinxcontrib-apidoc')
+	'python-sphinxcontrib-apidoc'
+	'python-wheel')
 install=miio.install
 changelog=CHANGELOG.md
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('804029ffa10760d3563b9025e3a074e5622494562c412ef4a3d7d8b62e2bd01ac3f4ee65de1d271143196464355f58a38364460454ead647254989d6ff550b12')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+        'remove-tests.patch')
+sha256sums=('8a2d369913247e0e62102ee11d6fc026917c710e831863362d4abdcef818e3f1'
+            'a0f3a1e3b926221f41704601d89142c5fb999d009743b7781cb63446c810f4dd')
+
+prepare() {
+	patch -p1 -d "$pkgname-$pkgver" < remove-tests.patch
+}
 
 build() {
 	cd "$pkgname-$pkgver"
 	python -m build --wheel --no-isolation
-	cd docs
-	PYTHONPATH=../ make man
+	PYTHONPATH="$PWD" make -C docs man
 }
 
 package() {
-	export PYTHONHASHSEED=0
 	cd "$pkgname-$pkgver"
-	python -m installer --destdir="$pkgdir/" dist/*.whl
-	install -Dm644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 "docs/_build/man/$pkgname.1" -t "$pkgdir/usr/share/man/man1/"
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s "$_site/${pkgname/-/_}-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
