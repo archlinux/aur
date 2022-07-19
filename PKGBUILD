@@ -5,7 +5,7 @@ _electron=electron17
 _nodejs='16.14.2'
 
 pkgname=${_pkgname}-electron
-pkgver=1.67.2
+pkgver=1.69.2
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -13,18 +13,16 @@ url="https://github.com/VSCodium/vscodium"
 license=('MIT')
 depends=("$_electron" 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
 optdepends=('x11-ssh-askpass: SSH authentication')
-makedepends=('git' 'gulp' 'python' 'yarn' 'nvm' 'imagemagick')
+makedepends=('git' 'gulp' 'python' 'yarn' 'nvm' 'imagemagick' 'ripgrep')
 conflicts=('vscodium')
 source=("git+https://github.com/VSCodium/vscodium.git#tag=${pkgver}"
     	"git+https://github.com/microsoft/vscode.git#tag=${pkgver}"
-		"${_pkgname}.patch"
-        "${_pkgname}.sh"
+		"${_pkgname}.sh"
 		"${_pkgname}.js"
 		"${_pkgname}.desktop"
 		"${_pkgname}-uri-handler.desktop")
 sha256sums=('SKIP'
             'SKIP'
-            '617d3fa88b6daa988d65f37c07d77673dd1dc3a6174db177ffa4f8d81e40503a'
             '43eab45670ca1d447eaa409932a54ee11a5f4a81fa859f459d0758053934c75f'
             '7a3dceb7a470f1dd6bc2991c28a4bfc68be6b81252ec7ff8f61f280e2e5b01f8'
             '204ed8761e4f57e095833aee800f5fe662667aa06c2a213ef8b733929c639237'
@@ -64,13 +62,14 @@ _ensure_local_nvm() {
 
 prepare() {
 	cd "$srcdir/$_pkgname"
-
 	ln -sf ../vscode vscode
 
-	patch -p1 --input "$srcdir/$_pkgname.patch"
+	sed -i "s:\.\./:../vscodium/:" "prepare_vscode.sh"
+	sed -i "s:\.\./:../vscodium/:" "update_settings.sh"
+	sed -i -e "s:\.\./:../vscodium/:" -e 's:\grep -rl --exclude-dir=\.git -E "${TELEMETRY_URLS}" \.:rg --no-ignore --iglob "!*.map" -l "${TELEMETRY_URLS}" .:' "undo_telemetry.sh"
 
-	sed -i "s/@ELECTRON@/${_electron}/" "../$_pkgname.sh"
-	sed -i "s/@ELECTRON@/${_electron}/" "../$_pkgname.js"
+	sed -i "s/@ELECTRON@/${_electron}/" "$srcdir/$_pkgname.sh"
+	sed -i "s/@ELECTRON@/${_electron}/" "$srcdir/$_pkgname.js"
 
 	_ensure_local_nvm
 	nvm install "$_nodejs"
@@ -90,7 +89,9 @@ build() {
 
 	HOME="$srcdir" ./prepare_vscode.sh
 
-	cd vscode
+	echo ABC
+
+	cd "$srcdir/vscode"
 	HOME="$srcdir" CHILD_CONCURRENCY=1 yarn install --cache-folder "$srcdir/yarn-cache" --arch=$_vscode_arch
 
 	gulp compile-build compile-extension-media compile-extensions-build "vscode-linux-$_vscode_arch-min"
