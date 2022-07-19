@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+"${EDITOR}" "${HOME}"/.lexaloffle/pico-8/config.txt

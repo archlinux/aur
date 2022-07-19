@@ -1,0 +1,22 @@
+pkgbase = pico8
+	pkgdesc = A fantasy console for making, sharing and playing tiny games and other computer programs.
+	pkgver = 0.2.4c
+	pkgrel = 5
+	url = https://www.lexaloffle.com/pico-8.php
+	arch = x86_64
+	license = custom:pico8
+	depends = wget
+	depends = sdl2
+	provides = pico8
+	provides = pico-8
+	conflicts = pico-8
+	source = file://pico-8_0.2.4c_amd64.zip
+	source = pico8.desktop
+	source = application-pico8.xml
+	source = pico8-config
+	sha256sums = 00967d08289d08f0fe275b21f9453734fb6c3d7f674191fa6026a0301e837d43
+	sha256sums = a2bc1eea115b86f5670b89914b3f9cb35577ca52f005e71d0afb4c7a42408d57
+	sha256sums = 4d8aaaeb48541c779e19a5b9d262a3c3fe214b1a5a0946a4d1a64bc2795b5ecd
+	sha256sums = 422c728d6652fc1bef572c38792c08a711ec83e001bc79d69fc71fb918bf3a0c
+
+pkgname = pico8
