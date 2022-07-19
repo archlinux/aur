@@ -1,18 +1,11 @@
 # Maintainer: Cédric Bellegarde <cedric.bellegarde@adishatz.org>
 
 pkgname=geary-preview
-pkgver=40.0.r19.gf8c2e697a
+pkgver=40.1
 pkgrel=1
 epoch=1
 pkgdesc='A lightweight email client for the GNOME desktop
-Preview version by Geary maintainer:
-- Thunderbird autoconfig support
-- Mark messages menu state
-- Reworked move messages menu
-- Fixed contact search
-- More options to show images
-- Fixed touch support
-'
+Preview version by Geary maintainer: Thunderbird autoconfig support, Mark messages menu state, Reworked move messages menu, Fixed contact search, More options to show images, Fixed touch support'
 arch=(x86_64)
 url=https://wiki.gnome.org/Apps/Geary
 license=(GPL3)
@@ -62,11 +55,6 @@ sha256sums=(SKIP)
 prepare() {
   cd geary
   git checkout gnumdk/stable
-}
-
-pkgver() {
-  cd geary
-  git describe --long | sed 's/^gnome-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
