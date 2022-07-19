@@ -1,7 +1,7 @@
 # Maintainer: Marcin Kornat <rarvolt@gmail.com>
 pkgname=python-barcode
 pkgver=0.14.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Create standard barcodes with Python. No external modules needed."
 arch=('any')
 license=('MIT')
@@ -17,7 +17,6 @@ source=(
 sha256sums=('SKIP')
 
 build() {
-    pwd
     cd "${pkgname}-${pkgver}"
     python -m build --wheel --no-isolation
 }
