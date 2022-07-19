@@ -3,19 +3,19 @@
 
 pkgname=python-fmf
 _pkg="${pkgname#python-}"
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 arch=('any')
 license=('GPL2')
 pkgdesc='Flexible Metadata Format'
 url='https://github.com/psss/fmf'
-depends=('python-ruamel-yaml' 'python-filelock' 'python-jsonschema')
+depends=('python-filelock' 'python-jsonschema' 'python-ruamel-yaml')
 makedepends=('python-build' 'python-docutils' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest' 'git')
 provides=("$_pkg")
 conflicts=("$_pkg")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('f32700451b41a80c1f3410a14f32e5be566a3874b575236461f3b0bbd4703cc4')
+sha256sums=('854f0c0044e02f44204ee555912cce9e90ff8c31dbd095fe1414df9bf16c0d47')
 
 build() {
 	cd "$_pkg-$pkgver"

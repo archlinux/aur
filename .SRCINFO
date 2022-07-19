@@ -1,6 +1,6 @@
 pkgbase = python-fmf
 	pkgdesc = Flexible Metadata Format
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/psss/fmf
 	arch = any
@@ -12,12 +12,12 @@ pkgbase = python-fmf
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = python-ruamel-yaml
 	depends = python-filelock
 	depends = python-jsonschema
+	depends = python-ruamel-yaml
 	provides = fmf
 	conflicts = fmf
-	source = python-fmf-1.1.0.tar.gz::https://github.com/psss/fmf/archive/1.1.0.tar.gz
-	sha256sums = f32700451b41a80c1f3410a14f32e5be566a3874b575236461f3b0bbd4703cc4
+	source = python-fmf-1.2.0.tar.gz::https://github.com/psss/fmf/archive/1.2.0.tar.gz
+	sha256sums = 854f0c0044e02f44204ee555912cce9e90ff8c31dbd095fe1414df9bf16c0d47
 
 pkgname = python-fmf
