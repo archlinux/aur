@@ -4,8 +4,7 @@ pkgname=geary-preview
 pkgver=40.1
 pkgrel=1
 epoch=1
-pkgdesc='A lightweight email client for the GNOME desktop
-Preview version by Geary maintainer: Thunderbird autoconfig support, Mark messages menu state, Reworked move messages menu, Fixed contact search, More options to show images, Fixed touch support'
+pkgdesc='A lightweight email client for the GNOME desktop. Preview version by Geary maintainer'
 arch=(x86_64)
 url=https://wiki.gnome.org/Apps/Geary
 license=(GPL3)
