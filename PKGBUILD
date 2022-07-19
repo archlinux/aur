@@ -2,7 +2,7 @@
 # Contributor: Artur Juraszek <artur@juraszek.xyz>
 
 pkgname=dolt-bin
-pkgver=0.40.17
+pkgver=0.40.18
 pkgrel=1
 pkgdesc='Git for data!'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://www.dolthub.com/'
 license=('Apache')
 conflicts=('dolt')
 source=("$pkgname-x86_64-$pkgver.tar.gz::https://github.com/liquidata-inc/dolt/releases/download/v$pkgver/dolt-linux-amd64.tar.gz")
-sha256sums=('7b3e16e9afd53b30486f01af41429f6c2345f409925fba1169468ed2d7725eb6')
+sha256sums=('902469a4c55fa987b97e76e7a05889f35f3c82cc74a4ad25aecbfe3c7cdbd951')
 
 package() {
   cd dolt-linux-amd64
