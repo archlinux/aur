@@ -2,7 +2,7 @@
 # PKGBUILD based on the 'spicetify-themes-git' package maintained by morpheusthewhite <zffromGerace@hotmail.it>
 
 pkgname=spicetify-custom-apps-and-extensions-git
-pkgver=r77.5471fd5
+pkgver=r115.0f5e79f
 pkgrel=1
 pkgdesc="A community-driven collection of custom apps and extensions for spicetify"
 arch=('any')
@@ -27,5 +27,5 @@ pkgver() {
 # It's just a collection of extensions, for now.
 package() {
     cd "$pkgname"
-    install -Dm 644 ./*/*.js -t "${pkgdir}/usr/share/spicetify-cli/Extensions"
+    install -Dm 644 ./v2/*/*.js -t "${pkgdir}/usr/share/spicetify-cli/Extensions"
 }
