@@ -2,12 +2,12 @@ pkgbase = python-logzero
 	pkgdesc = Robust and effective logging for Python
 	pkgver = 1.7.0
 	pkgrel = 1
-	url = https://pypi.python.org/pypi/logzero
-	arch = any
+	url = https://github.com/metachris/logzero
+	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://pypi.org/packages/source/l/logzero/logzero-1.7.0.tar.gz
-	sha512sums = 6c9647e81f16479a09b11383a9b6e7fb1068e61007cf9884d59469535706850a4ef2893d7393feb68dcdeb0793dcb8c41f8f3865289792de97dd20a5d32224bb
+	source = python-logzero-1.7.0.tar.gz::https://github.com/metachris/logzero/archive/refs/tags/v1.7.0.tar.gz
+	sha256sums = ff5d91754ebd6e822553dbfa8179e7ed3d4de3ba3505d03394d7db2bdab515ce
 
 pkgname = python-logzero

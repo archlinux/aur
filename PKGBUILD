@@ -1,24 +1,30 @@
 # Contributor: Clint Valentine <valentine.clint@gmail.com>
-_base=logzero
-pkgname=python-${_base}
+pkgname=python-logzero
 pkgver=1.7.0
 pkgrel=1
 pkgdesc="Robust and effective logging for Python"
-arch=(any)
-url="https://pypi.python.org/pypi/${_base}"
+arch=(x86_64)
+url="https://github.com/metachris/logzero"
 license=(MIT)
-depends=(python)
+depends=(
+python
+)
 makedepends=(python-setuptools)
-source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('6c9647e81f16479a09b11383a9b6e7fb1068e61007cf9884d59469535706850a4ef2893d7393feb68dcdeb0793dcb8c41f8f3865289792de97dd20a5d32224bb')
+source=("${pkgname}-${pkgver}.tar.gz"::https://github.com/metachris/logzero/archive/refs/tags/v${pkgver}.tar.gz)
+sha256sums=('ff5d91754ebd6e822553dbfa8179e7ed3d4de3ba3505d03394d7db2bdab515ce')
+
+prepare() {
+  cd logzero-${pkgver}
+}
 
 build() {
-  cd ${_base}-${pkgver}
+  cd logzero-${pkgver}
   python setup.py build
 }
 
-package_python-logzero() {
-  cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+package() {
+  cd logzero-${pkgver}
+  python setup.py install --root="${pkgdir}" --optimize=1
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}" 
 }
+
