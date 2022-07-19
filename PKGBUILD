@@ -1,14 +1,14 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=cpod-git
-pkgver=1.28.0.r5.g295b5d1
+pkgver=1.28.0.r24.gb60930d
 pkgrel=1
 pkgdesc="A simple, beautiful podcast app"
 arch=('x86_64')
 url="https://github.com/z-------------/CPod"
 license=('Apache')
-depends=('gconf')
-makedepends=('git' 'gulp' 'nvm' 'yarn')
+depends=('alsa-lib' 'gconf' 'gtk3' 'libxss' 'nss')
+makedepends=('git' 'gulp' 'libxcrypt-compat' 'nvm' 'yarn')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=('cumulonimbus')
