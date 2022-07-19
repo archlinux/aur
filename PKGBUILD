@@ -1,7 +1,8 @@
-# Maintainer: Shuyuan Liu (AUR)
+# Maintainer: xiretza <xiretza+aur@xiretza.xyz>
+# Contributor: Shuyuan Liu (AUR)
 
 pkgname=aptdec-git
-pkgver=r190.b1cc748
+pkgver=r200.be640ff
 pkgrel=1
 pkgdesc='NOAA APT satellite imagery decoder'
 arch=('x86_64' 'arm' 'aarch64')
@@ -13,8 +14,10 @@ provides=('aptdec')
 conflicts=('aptdec')
 source=(
 	"git+$url"
+	"git+https://github.com/cofyc/argparse"
 )
-md5sums=('SKIP')
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
 	cd aptdec
@@ -23,6 +26,10 @@ pkgver() {
 
 prepare() {
     cd aptdec
+
+    git submodule init
+    git config submodule.src/argparse.url "$srcdir/argparse"
+    git submodule update
 }
 
 build() {
@@ -36,3 +43,4 @@ package() {
 	make -C build DESTDIR="$pkgdir/" install
 }
 
+# vim: set et ts=4:
