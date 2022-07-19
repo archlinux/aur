@@ -2,7 +2,7 @@
 # Maintainer: Achilleas Pipinellis <axilleas at archlinux dot gr>
 
 _npmname=markdownlint-cli
-_npmver=0.31.1
+_npmver=0.32.0
 pkgname=nodejs-$_npmname
 pkgver=$_npmver
 pkgrel=1
@@ -37,4 +37,4 @@ package() {
   # Install license
   install -Dm644 "${srcdir}"/package/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-sha512sums=('91e20e330427f8287b32807003e4dd93254cbb101e645106988225bf0815d19d53192e4cc4f9d1af6f5708b86437308753eb8d2868d4f951232d7f99f64962ea')
+sha512sums=('06eed93a14cd479447d742ff7dc063c29d6a572dbb224131639610be453dc133d72c3dc4b714998830dcd07b2543887d1792c490fb3f57e7011d20433e80cbcd')
