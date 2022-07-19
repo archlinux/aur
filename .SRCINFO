@@ -5,11 +5,11 @@ pkgbase = coccigrep-git
 	url = http://home.regit.org/software/coccigrep/
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = python-setuptools
 	depends = coccinelle
 	provides = coccigrep=1.20
-	source = https://github.com/regit/coccigrep
+	source = git+https://github.com/regit/coccigrep
 	md5sums = SKIP
 
 pkgname = coccigrep-git
-

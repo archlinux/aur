@@ -9,7 +9,7 @@ arch=('any')
 url='http://home.regit.org/software/coccigrep/'
 license=('GPL3')
 depends=('coccinelle')
-makedepends=('python-setuptools')
+makedepends=('git' 'python-setuptools')
 source=('git+https://github.com/regit/coccigrep')
 md5sums=('SKIP')
 provides=("coccigrep=${pkgver%+*}")
