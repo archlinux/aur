@@ -3,7 +3,7 @@
 
 _archive_extension='tar.gz'
 pkgname=system-bridge
-pkgver=3.3.0
+pkgver=3.4.1
 pkgrel=1
 epoch=1
 pkgdesc="Bridges your system to other systems, like Home Assistant"
@@ -20,7 +20,7 @@ source=("$pkgname-$pkgver.$_archive_extension::https://github.com/timmo001/$pkgn
         "$pkgname.desktop"
         "$pkgname"
         "$pkgname.service")
-b2sums=('d7c3b158ce03663d88c686507d527fcb9d79f67c27aa73626caa4c49601b2e90421ca455e56d894fed0e9691ad95e41b3e4930ba22d8165406458338f7d2cfaf'
+b2sums=('57eec8b81ae10ebde023967fb59a566e92939f96b2db1aebadaa759c218ada162b3a215050cc601008e994a8878ba6016b81066521cafb1b6f8f847656a2ae9c'
         'fa5f2b2bb64d44f7791fe8631481cf294f0a3afa88f1ac7fdb55508df9acc4ad26b1723cadebbf1bc09369c2e3732c6628b6b06d44c3bdcebee0d5913d85d097'
         '26634fe43624791f7ae6fe85e70792fcf67fcd5a9997ba40043c49a636d939d610eb5e6ededdf1e6723dd8280e924160e72a8469501a1436ad67f28eab2d4fef'
         '03852934e853a7a5973e4139a9c51a160df81af1fa958ac6550a6525aa97ad3ebc983bf4a662cce345e04cc0451912687d4c199c9152c7160b173abad2b73b37')
@@ -59,3 +59,4 @@ package() {
 	install -Dm 644 "resources/$pkgname.svg" "$pkgdir/usr/share/icons/$pkgname.svg"
         install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
