@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=dce
-_pkgver=1.4.0
+_pkgver=1.4.99
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
+pkgver=1.4.99
 pkgrel=1
 pkgdesc='Pathway Enrichment Based on Differential Causal Effects'
 arch=('any')
@@ -56,7 +56,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('88e1c31deb4e19153e999bbca9cc147e22a7f2d454766b27e96c78b9a0bb4a93')
+sha256sums=('809481f15596a7a9e18ff64bebb07f4d4c07164296d2fd820524fe3ddc371c90')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
