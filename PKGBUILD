@@ -1,7 +1,7 @@
 # Maintainer: Aditya Mishra <https://github.com/pegvin/goxel2/issues>
 pkgname=goxel2-git
 pkgver=0.12.1
-pkgrel=2 # Update if you changed something but that is so minor change you don't want to change the version
+pkgrel=3 # Update if you changed something but that is so minor change you don't want to change the version
 pkgdesc="a cross-platform 3d voxel art editor"
 arch=('i686' 'x86_64')
 url="https://github.com/pegvin/goxel2"
@@ -16,7 +16,7 @@ conflicts=('goxel2')
 _gitname=goxel2
 
 build() {
-	echo "Getting Goxel2 v$pkgver Source Code from GitHub Release..."
+	echo "Downloading v$pkgver.tar.gz from GitHub..."
 	curl -L "https://github.com/pegvin/goxel2/archive/refs/tags/v$pkgver.tar.gz" --output $_gitname.tar.gz
 
 	echo "Extracting $_gitname.tar.gz..."
