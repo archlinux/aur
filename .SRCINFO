@@ -1,7 +1,7 @@
 pkgbase = r-ggdist
 	pkgdesc = Visualizations of Distributions and Uncertainty
-	pkgver = 3.1.1
-	pkgrel = 3
+	pkgver = 3.2.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=ggdist
 	arch = any
 	license = GPL
@@ -34,7 +34,7 @@ pkgbase = r-ggdist
 	optdepends = r-testthat
 	optdepends = r-tidyr
 	optdepends = r-vdiffr
-	source = https://cran.r-project.org/src/contrib/ggdist_3.1.1.tar.gz
-	sha256sums = d92882b947e8575ecd1aba9117aaf4aca87d90d39af15612af48ff37beb2ed9c
+	source = https://cran.r-project.org/src/contrib/ggdist_3.2.0.tar.gz
+	sha256sums = 09c989d9ebb282d6eaae37f68a8c98abce61d9788527e691ed2ebe42da111e46
 
 pkgname = r-ggdist
