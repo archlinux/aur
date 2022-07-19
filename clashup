@@ -86,7 +86,7 @@ class ClashUp:
         if os.path.isfile(self.clash_conf_path):
             shutil.move(self.clash_conf_path, self.clash_conf_path_old)
         with open(self.clash_conf_path, 'w') as f:
-            f.write(yaml.safe_dump(config))
+            f.write(yaml.safe_dump(config, allow_unicode=True))
 
     def update(self, use_proxy):
         logging.info('Update Start')
