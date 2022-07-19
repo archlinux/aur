@@ -8,6 +8,12 @@ pkgbase = vkteams-bin
 	conflicts = vkteams
 	options = !strip
 	source = vkteams-10.0.0.18759.tar.xz::https://vkteams-www.hb.bizmrg.com/linux/x64/vkteams.tar.xz
+	source = vkteams.sh
+	source = vkteams.png
+	source = vkteams.desktop
 	sha256sums = 320f90d618061cb620cc4e0b9b701b7b1162f261a73e76483248e451c212a5ae
+	sha256sums = a2afc2dbd79e67736511c91b3d8f0a5fe3800c929ead9909d1b8f90fe7a7ca4b
+	sha256sums = 455842f3b3045a590e03372ae1f9ca75fc935d2cc829c379eaf01acefba97d68
+	sha256sums = 4f29a8011226d2523819a8b39bf2e5923c0bd0bc1748b7d4bb8eb5b57887e02a
 
 pkgname = vkteams-bin
