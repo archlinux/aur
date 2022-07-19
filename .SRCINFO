@@ -1,7 +1,7 @@
 pkgbase = smartreboot
 	pkgdesc = Reboot a machine without interrupting ongoing work.
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BrenekH/smartreboot#readme
 	arch = x86_64
 	license = GPL3

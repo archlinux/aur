@@ -1,7 +1,7 @@
 # Maintainer: Brenek Harrison <brenekharrison @ gmail d0t com>
 pkgname=smartreboot
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Reboot a machine without interrupting ongoing work."
 arch=("x86_64")
 url="https://github.com/BrenekH/smartreboot#readme"
@@ -10,6 +10,11 @@ depends=("glibc")
 makedepends=("go")
 source=("smartreboot-$pkgver.tar.gz"::"https://github.com/BrenekH/smartreboot/archive/$pkgver.tar.gz")
 sha256sums=('f13c0fa0a389bd5314087bad957c7a7a0657f3da3f40e859a45a1c829ea6fad0')
+
+prepare() {
+	# This is a temporary patch until a new version of Smart Reboot is cut
+	sed -i 's/\/usr\/sbin\/smartrebootd/\/usr\/bin\/smartrebootd/g' "smartreboot-$pkgver/Makefile" "smartreboot-$pkgver/resources/systemd.service"
+}
 
 build() {
 	cd "smartreboot-$pkgver"
