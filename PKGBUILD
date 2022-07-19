@@ -1,9 +1,9 @@
-# Based off of: https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
+# Based off: https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
 # Maintainer: Wainer Vandelli <wainer dot vandelli at gmail dot com>
 
 pkgname=cern-phone-app
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="CERNPhone Desktop Application"
 arch=('x86_64')
 url="https://cernphone.docs.cern.ch/"
@@ -11,13 +11,14 @@ license=('custom')
 depends=('zlib' 'hicolor-icon-theme')
 options=(!strip)
 _appimage="${pkgname}.AppImage"
-source=("https://cernphone-sw.web.cern.ch/cernphone-sw/releases/cern-phone-app-${pkgver}-x86_64-linux.AppImage.d/${_appimage}")
-noextract=("${_appimage}")
+_appimage_dst="${pkgname}-${pkgver}.AppImage"
+source=("${_appimage_dst}::https://cernphone-sw.web.cern.ch/cernphone-sw/releases/cern-phone-app-${pkgver}-x86_64-linux.AppImage.d/${_appimage}")
+noextract=("${_appimage_dst}")
 sha256sums=('6a4b335e25b0461db3a97d6611770e5ca1d18f11e1e5d8b0051818d88f125081')
 
 prepare() {
-    chmod +x "${_appimage}"
-    ./"${_appimage}" --appimage-extract
+    chmod +x "${_appimage_dst}"
+    ./"${_appimage_dst}" --appimage-extract
 }
 
 build() {
@@ -30,7 +31,7 @@ build() {
 
 package() {
     # AppImage
-    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
+    install -Dm755 "${srcdir}/${_appimage_dst}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
 
     # Desktop file
     install -Dm644 "${srcdir}/squashfs-root/${pkgname}.desktop"\
