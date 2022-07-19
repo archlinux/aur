@@ -1,12 +1,13 @@
 pkgbase = ravro_dcrp-git
 	pkgdesc = Decrypt secret report files ravro
 	pkgver = r78.c7fb7fc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ravro-ir/ravro_dcrp
 	arch = any
 	license = unknown
 	makedepends = go
 	makedepends = git
+	depends = wkhtmltopdf
 	provides = ravro_dcrp
 	conflicts = ravro_dcrp
 	source = git+https://github.com/ravro-ir/ravro_dcrp.git

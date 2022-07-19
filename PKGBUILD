@@ -2,11 +2,12 @@
 
 pkgname=ravro_dcrp-git
 pkgver=r78.c7fb7fc
-pkgrel=1
+pkgrel=2
 pkgdesc="Decrypt secret report files ravro"
 arch=('any')
 url="https://github.com/ravro-ir/ravro_dcrp"
 license=('unknown')
+depends=('wkhtmltopdf')
 makedepends=('go' 'git')
 source=("git+${url}.git")
 provides=('ravro_dcrp')
