@@ -2,7 +2,7 @@
 pkgname=hare-git
 _pkgname=hare
 pkgver=r2629.f7584535
-pkgrel=1
+pkgrel=2
 license=("MPL2")
 pkgdesc="The Hare systems programming language"
 makedepends=(

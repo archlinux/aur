@@ -1,7 +1,7 @@
 pkgbase = hare-git
 	pkgdesc = The Hare systems programming language
 	pkgver = r2629.f7584535
-	pkgrel = 1
+	pkgrel = 2
 	url = https://harelang.org
 	arch = x86_64
 	arch = aarch64
