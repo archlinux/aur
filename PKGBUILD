@@ -1,7 +1,7 @@
 # Maintainer: Brittany Figueroa <dormwear underscore iure at crowley dot seership dot dev>
 
 pkgname=oauth2l
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Simple CLI for interacting with Google API authentication'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/google/${pkgname}"
 license=('Apache')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('bb4998b52413920d26b893113ce6c915677c2bcccb2a34e280e23cf4205e45e2eb5bdc38d539d97d26f801914e9a0ca73a393f6480fe46c5df345f94f0e65b0f')
+b2sums=('83044b616e65881d54b78bd8e6d9ec6890cd3087a91c8574a976aa2f5f1ed1ac4fa2d50fd9d438a8b608d53af2a56e232c304cc2c984ac3b582fffdfe2ca01df')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
