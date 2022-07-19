@@ -1,2 +1,4 @@
-/dlm/
-/*.pkg.*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
