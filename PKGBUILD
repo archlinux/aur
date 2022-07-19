@@ -9,7 +9,7 @@
 
 pkgname=ntfsprogs-ntfs3
 pkgver=2022.5.17
-pkgrel=3
+pkgrel=4
 pkgdesc='NTFS filesystem utilities without NTFS-3G driver. For system with kernel >= 5.15'
 url='https://github.com/tuxera/ntfs-3g'
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=("ntfs-3g_${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         )
 sha256sums=('49680b2dd38c472368425923b0178195e24705fc355c78764632e5835000db49'
             'c468ffe0d9baac40aff77acaf2ef71baf9cd4a05355de639ad832839156eadf6'
-            'daad3ccbfd6f69725a63e910b525de771219e105cd7fa42497a4f8b94342c553')
+            '1d55f1cd829c948b7a173d2cc82fcb6e9990a7a8e40e6d88f184a12e9bd79068')
 
 build() {
   cd ntfs-3g-${pkgver}
