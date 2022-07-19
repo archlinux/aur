@@ -5,6 +5,7 @@ pkgbase = vulkan-extensionlayer-git
 	url = https://github.com/KhronosGroup/Vulkan-ExtensionLayer
 	arch = x86_64
 	license = Apache
+	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = vulkan-headers

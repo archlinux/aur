@@ -11,7 +11,7 @@ license=(Apache)
 source=("git+$url")
 sha256sums=('SKIP')
 depends=(vulkan-icd-loader)
-makedepends=(cmake ninja vulkan-headers)
+makedepends=(git cmake ninja vulkan-headers)
 checkdepends=()
 
 pkgver() {
