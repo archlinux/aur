@@ -1,6 +1,6 @@
 pkgbase = r-hca
 	pkgdesc = Exploring the Human Cell Atlas Data Coordinating Platform
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/hca
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-hca
 	optdepends = r-singlecellexperiment
 	optdepends = r-summarizedexperiment
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/hca_1.4.1.tar.gz
-	sha256sums = e63d28e3de354a0dd042df551f8ceb6e2691a406541c2ede98978d5b1ffa086e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/hca_1.4.2.tar.gz
+	sha256sums = 7ef0fc9f4be5a4d90bfebec98d633003cbf139b334e73f6f34a162e22a436fbe
 
 pkgname = r-hca
