@@ -41,7 +41,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_pkgname"
-	cp "$srcdir/config.$arch.mk" config.mk
+	cp "$srcdir/config.$CARCH.mk" config.mk
 	export VERSION="dev+$(echo "$_commit" | cut -c-7)"
 	export LOCALVER=arch
 	make -j1 # XXX: parallel build driver builds are broken
