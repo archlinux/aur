@@ -1,0 +1,80 @@
+#!/bin/bash
+
+# Show (a short piece of) information related to current location.
+# Use a keyword to specify what info to show.
+
+DIE() {
+    echo "==> $progname: error: $1"
+    exit 0
+}
+
+Options() {
+    local opts
+    local lopts="help,timeout:"
+    local sopts="ht:"
+
+    opts="$(/usr/bin/getopt -o=$sopts --longoptions $lopts --name "$progname" -- "$@")" || {
+        Options -h
+        return 1
+    }
+
+    eval set -- "$opts"
+
+    while true ; do
+        case "$1" in
+            -t | --timeout)   timeout="$2" ; shift ;;
+            -h | --help)
+                cat <<EOF >&2
+$progname - show info about your current location
+
+Usage: $progname [options] [location-item]
+
+Location-item: one of
+   ${items[*]}
+Location-item defaults to showing all available info.
+
+Options:
+  -h, --help       This help.
+  -t, --timeout    Max number of seconds to wait for a response from
+                   $infourl (default: $timeout_default).
+EOF
+                exit 0
+                ;;
+            
+            --) shift ; break ;;
+        esac
+        shift
+    done
+
+    item="$1"
+
+    local it
+    for it in "${items[@]}" ; do
+        [ "$item" = "$it" ] && break
+    done
+    
+    [ "$item" = "$it" ] || DIE "item name must be one of: ${items[*]}"
+    [ -n "$timeout" ]   || DIE "given timeout value cannot be empty"
+}
+
+Main() {
+    local progname="$(basename "$0")"
+
+    # default values
+    local timeout_default=30
+    local timeout=$timeout_default
+    local item=""
+
+    # supported values
+    local items=(city country hostname ip loc org postal region timezone "")   # "" means: all
+
+    # info source
+    local infourl=https://ipinfo.io
+
+    Options "$@"
+
+    # show the wanted location info
+    echo "$(LANG=C curl -Lsm $timeout $infourl/$item)"
+}
+
+Main "$@"

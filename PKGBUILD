@@ -4,7 +4,7 @@
 
 pkgname=reflector-simple
 pkgdesc="Simple GUI wrapper for 'reflector'."
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 arch=('any')
 license=('GPL')
@@ -31,6 +31,7 @@ source=(
   mirrorlist-rank-info
   latest-arch-mirrorlist
   $pkgname.svg
+  show-location-info
 )
 sha512sums=('f8b969e39a78edf16ffdf87086892e3b0256ca71ec0fce25695974528a8ac32d6ec126e21a9c72bb9512f30de2bee2bae8c4304593e6993b71bbdf93d8fd2d3f'
             'ac9d9313d85e3f90b7a5b1e9daa4bb16bfac4329336bc4a1e3924633a3c249c63c28603f35ede7f030a09cf52591d23fb2b0bdde7f2dbb4292855897220e54c2'
@@ -38,7 +39,9 @@ sha512sums=('f8b969e39a78edf16ffdf87086892e3b0256ca71ec0fce25695974528a8ac32d6ec
             '8b101caac9f38238d30f293176a09f1bb483ec1cdc474ef126ec087a8b548b50eee5c35617f0616dd1618e4dce72e14b70270f47658577e20e04a133405510aa'
             'c56090338b01f6eb251e3250d69d32c2b96c8393ebe921896de3ad1bd5c622c01ae637a09c6d0d0aa40e71d55be608a8d77066be05929d586723e79e0f24002c'
             '84fbd6a973dadaa8c11ddfb8ed505a332a8788f0d5e43cfcf234bba0441c0e4dde2534acb7ddbdf8d1422a2f57491ee79485ab4f7ebf4e6cf9d00aa12edb894b'
-            '1d904cf0b7ae64052f70a77ff3a102e8741b54cd4bf81fce25eef2c3d475291aa79a3c8c39d63b13e28753d33ed4b0106bd896cd50952c26a7c79cbf5795157f')
+            '1d904cf0b7ae64052f70a77ff3a102e8741b54cd4bf81fce25eef2c3d475291aa79a3c8c39d63b13e28753d33ed4b0106bd896cd50952c26a7c79cbf5795157f'
+            'be1a4eae09bde1666ad1cef7acfa310edf9dd2a4659fc7bde6da115b8f89ab0020993ea315025fae7b3ce34284d40eaae6378242ef46dda9aec4997ec2339334'
+            )
 
 package() {
   cd $srcdir
@@ -53,6 +56,7 @@ package() {
   install -Dm755 $pkgname                     $pkgdir/usr/bin/$pkgname
   install -Dm755 latest-arch-mirrorlist       $pkgdir/usr/bin/latest-arch-mirrorlist
   install -Dm755 mirrorlist-rank-info         $pkgdir/usr/bin/mirrorlist-rank-info
+  install -Dm755 show-location-info           $pkgdir/usr/bin/show-location-info
   install -Dm644 $pkgname.svg                 $pkgdir/usr/share/pixmaps/$pkgname.svg
   
   install -Dm644 $pkgname.conf           $pkgdir/etc/$pkgname.conf
