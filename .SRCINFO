@@ -1,7 +1,7 @@
 pkgbase = libflame-git
 	pkgdesc = High-performance object-based library for DLA computations
-	pkgver = r90.9fdb4fd1
-	pkgrel = 2
+	pkgver = r105.d10f8bb4
+	pkgrel = 1
 	url = https://github.com/flame/libflame
 	arch = i686
 	arch = x86_64

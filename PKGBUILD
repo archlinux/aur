@@ -2,8 +2,8 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 pkgname=libflame-git
-pkgver=r90.9fdb4fd1
-pkgrel=2
+pkgver=r105.d10f8bb4
+pkgrel=1
 pkgdesc="High-performance object-based library for DLA computations"
 arch=('i686' 'x86_64')
 license=('BSD')
