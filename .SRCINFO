@@ -5,6 +5,7 @@ pkgbase = jing-git
 	url = https://github.com/relaxng/jing-trang
 	arch = x86_64
 	license = BSD
+	makedepends = git
 	makedepends = java-environment
 	depends = java-runtime
 	provides = jing=20220510

@@ -12,7 +12,7 @@ source=("git+$url"
 sha256sums=('SKIP'
             'd7610d8e1446ac837f81bf0726fb7eaa3ed3d6d204bf02eb03f36aabf3ae0c00')
 depends=(java-runtime)
-makedepends=(java-environment)
+makedepends=(git java-environment)
 provides=(jing=${pkgver%+*})
 conflicts=(jing)
 
