@@ -1,6 +1,6 @@
 pkgbase = verco-git
 	pkgdesc = A simple Git/Mercurial/PlasticSCM tui client based on keyboard shortcuts (git)
-	pkgver = 6.11.0.r0.g6084a2d
+	pkgver = 6.12.0.r0.g2df4be3
 	pkgrel = 1
 	url = https://github.com/vamolessa/verco
 	arch = x86_64
