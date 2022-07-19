@@ -3,11 +3,11 @@ pkgbase='python-parquet-tools'
 pkgname=('python-parquet-tools')
 _name='parquet_tools'
 pkgver='0.2.11'
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy install parquet-tools"
 url="https://github.com/ktrueda/parquet-tools"
 depends=(
-    'python'
+    'python>=3.8'
     'python-halo>=0.0.29' 'python-halo<0.1.0'
     'python-pyarrow'
     'python-pandas>=1' 'python-pandas<=2'

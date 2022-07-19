@@ -1,12 +1,12 @@
 pkgbase = python-parquet-tools
 	pkgdesc = Easy install parquet-tools
 	pkgver = 0.2.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ktrueda/parquet-tools
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python
+	depends = python>=3.8
 	depends = python-halo>=0.0.29
 	depends = python-halo<0.1.0
 	depends = python-pyarrow
