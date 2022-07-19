@@ -1,7 +1,7 @@
 # Maintainer: Gabriel-Andrew Pollo-Guilbert <gabrielpolloguilbert@gmail.com>
 
 pkgname=libpcanbasic
-pkgver=4.4.2
+pkgver=4.6.0
 pkgrel=1
 pkgdesc='API for the development of applications with PEAK CAN connection for Linux '
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(
     "https://www.peak-system.com/produktcd/Develop/PC%20interfaces/Linux/PCAN-Basic_API_for_Linux/PCAN-Basic_Linux-${pkgver}.tar.gz"
 )
 sha256sums=(
-    "b44d76964cbfb60b98b5d3676ef49eaa6d0c70bd10afc8b45a1d28a57968177f"
+    "c81652bc0748c093dcbfbb044dcc0a7882b6ff96a1e06d6d59781de966c9f5d5"
 )
 
 prepare() {
@@ -20,14 +20,14 @@ prepare() {
     cd "PCAN-Basic_Linux-${pkgver}/libpcanbasic/pcanbasic"
 
     # add new install target into the makefile
-    echo -e ''                                                                  >> 'Makefile_latest.mk'
-    echo -e 'install-archlinux:'                                                >> 'Makefile_latest.mk'
-    echo -e '\tcp $(TARGET) $(DESTDIR)/$(LIBPATH)/$(TARGET)'                    >> 'Makefile_latest.mk'
+    echo -e ''                                                                 >> 'Makefile_latest.mk'
+    echo -e 'install-archlinux:'                                               >> 'Makefile_latest.mk'
+    echo -e '\tcp lib/$(TARGET) $(DESTDIR)/$(LIBPATH)/$(TARGET)'               >> 'Makefile_latest.mk'
     echo -e '\t$(LN) /$(LIBPATH)/$(TARGET) $(DESTDIR)/$(LIBPATH)/$(SONAME)'     >> 'Makefile_latest.mk'
     echo -e '\t$(LN) /$(LIBPATH)/$(TARGET) $(DESTDIR)/$(LIBPATH)/$(SONAME_OLD)' >> 'Makefile_latest.mk'
     echo -e '\t$(LN) /$(LIBPATH)/$(SONAME) $(DESTDIR)/$(LIBPATH)/$(LDNAME)'     >> 'Makefile_latest.mk'
-    echo -e '\tcp PCANBasic.h $(DESTDIR)/usr/include/PCANBasic.h'               >> 'Makefile_latest.mk'
-    echo -e '\tchmod 644 $(DESTDIR)/usr/include/PCANBasic.h'                    >> 'Makefile_latest.mk'
+    echo -e '\tcp PCANBasic.h $(DESTDIR)/usr/include/PCANBasic.h'              >> 'Makefile_latest.mk'
+    echo -e '\tchmod 644 $(DESTDIR)/usr/include/PCANBasic.h'                   >> 'Makefile_latest.mk'
 }
 
 build() {
