@@ -1,19 +1,20 @@
-# Maintainer:
+# Maintainer: Michael Dorst <m@mdorst.net>
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Konstantin Stepanov <me@kstep.me>
 
 pkgname=cargo-pkgbuild
 pkgver=0.1.1
-_sha=70158570f553d1b3f4426b1cae47be4d5b4c6877
+_sha=e5fea7fa4f083a2a78e5347c0ec33c17f931c187
 pkgrel=1
 pkgdesc='ArchLinux PKGBULD generator from Cargo.toml manifest'
 arch=(x86_64 i686 armv6h armv7h)
 url='https://github.com/kstep/cargo-pkgbuild'
 license=(MIT Apache)
 makedepends=(cargo)
+depends=(gcc-libs)
 _archive="$pkgname-$_sha"
 source=("$_archive.tar.gz::$url/archive/$_sha.tar.gz")
-sha256sums=('cd9cfcd6a4cb7c704a7cd45016766394a00c1995ea376f7d63f46b9d1333eeeb')
+sha256sums=('0d67691b9674614dc64229891316297a6272ba9a6ffe3d48215292dfc44ff8aa')
 
 pkgver() {
 	cd "$_archive"

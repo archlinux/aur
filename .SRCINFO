@@ -10,7 +10,8 @@ pkgbase = cargo-pkgbuild
 	license = MIT
 	license = Apache
 	makedepends = cargo
-	source = cargo-pkgbuild-70158570f553d1b3f4426b1cae47be4d5b4c6877.tar.gz::https://github.com/kstep/cargo-pkgbuild/archive/70158570f553d1b3f4426b1cae47be4d5b4c6877.tar.gz
-	sha256sums = cd9cfcd6a4cb7c704a7cd45016766394a00c1995ea376f7d63f46b9d1333eeeb
+	depends = gcc-libs
+	source = cargo-pkgbuild-e5fea7fa4f083a2a78e5347c0ec33c17f931c187.tar.gz::https://github.com/kstep/cargo-pkgbuild/archive/e5fea7fa4f083a2a78e5347c0ec33c17f931c187.tar.gz
+	sha256sums = 0d67691b9674614dc64229891316297a6272ba9a6ffe3d48215292dfc44ff8aa
 
 pkgname = cargo-pkgbuild
