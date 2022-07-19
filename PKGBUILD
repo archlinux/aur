@@ -5,7 +5,7 @@
 pkgname=aegisub-wangqr-git
 _pkgtag='v3.3.3'
 pkgver=3.3.3.r0.a596a8811
-pkgrel=1
+pkgrel=2
 pkgdesc='A general-purpose subtitle editor with ASS/SSA support (wangqr fork)'
 arch=(x86_64)
 url=http://www.aegisub.org
@@ -25,7 +25,7 @@ depends=(
   libffms2.so
   libgl
   libpulse
-  wxgtk3
+  wxwidgets-gtk3
   uchardet
   zlib
 )
@@ -65,7 +65,7 @@ build() {
 
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
+    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config \
     -DWITH_STARTUPLOG=OFF \
     -DWITH_{PORTAUDIO,OPENAL,OSS}=OFF \
     ../Aegisub
