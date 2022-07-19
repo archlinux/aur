@@ -1,3 +1,4 @@
+# Maintainer: Gerard Ribugent <ribugent <at> gmail <dot> com>
 pkgbase='python-parquet-tools'
 pkgname=('python-parquet-tools')
 _name='parquet_tools'
