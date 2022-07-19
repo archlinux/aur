@@ -5,7 +5,9 @@ pkgbase=datagrip-eap
 _pkgbase=${pkgbase/-eap/}
 pkgname=(datagrip-eap datagrip-eap-jre)
 pkgver=222.3345.70
-pkgrel=1
+#_pkgver=${pkgver}
+_pkgver=2022.2
+pkgrel=2
 pkgdesc='Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity (EAP)'
 arch=('any')
 url='https://www.jetbrains.com/datagrip/'
@@ -29,7 +31,7 @@ package_datagrip-eap() {
   install -dm755 "${pkgdir}"/usr/share/applications/
   install -dm755 "${pkgdir}"/usr/share/pixmaps/
 
-  cp -a "${srcdir}"/DataGrip-${pkgver}/ "${pkgdir}"/opt/${pkgbase}
+  cp -a "${srcdir}"/DataGrip-${_pkgver}/ "${pkgdir}"/opt/${pkgbase}
   rm -rf "${pkgdir}"/opt/${pkgbase}/jbr
 
   ln -s /opt/${pkgbase}/bin/${_pkgbase}.sh "${pkgdir}"/usr/bin/${pkgbase}
@@ -43,5 +45,5 @@ package_datagrip-eap-jre() {
   url='https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime'
 
   install -dm755 "${pkgdir}"/opt/${pkgbase}
-  cp -a "${srcdir}"/DataGrip-${pkgver}/jbr "${pkgdir}"/opt/${pkgbase}
+  cp -a "${srcdir}"/DataGrip-${_pkgver}/jbr "${pkgdir}"/opt/${pkgbase}
 }
