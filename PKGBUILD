@@ -1,13 +1,13 @@
 pkgname=hunt
-pkgver=1.7.5
+pkgver=1.7.6
 pkgrel=1
 pkgdesc="Highly-opinionated simplified Find command made with Rust"
 arch=("i686" "x86_64")
 url="https://github.com/LyonSyonII/hunt-rs"
-license=("Apache")
+license=("custom:MIT")
 makedepends=("cargo")
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('cad6b3a85a10feea2acf04bc6ff563889e637856a832629492243cbc75ff5d48')
+sha256sums=('0afdd5b32db2b21a81688e2d5b40ebcf8c76b9549e83325975534cd3074c44eb')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -30,4 +30,5 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+	install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
