@@ -1,7 +1,7 @@
 # Maintainer: Gabriel-Andrew Pollo-Guilbert <gabrielpolloguilbert@gmail.com>
 
 pkgname=antidote
-pkgver=10.6.1_F_39
+pkgver=10.6.3_B_40
 pkgrel=1
 pkgdesc='The most complete writing assistance software suite for English and French.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(
     'antidote.install'
 )
 md5sums=(
-    'ddd568a5ced2aebaa0f905b6155c7222'
+    '1197254ecc0c0f63cc453e5feca571ab'
     '4a84d8ffa4e4744bb6385a7d022d4f67'
 )
 options=(!strip)
