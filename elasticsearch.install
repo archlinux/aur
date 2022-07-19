@@ -1,0 +1,5 @@
+post_remove() {
+  /usr/bin/userdel elasticsearch
+  /usr/bin/groupdel elasticsearch
+  rm -rf /var/lib/elasticsearch
+}
