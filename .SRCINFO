@@ -1,0 +1,15 @@
+pkgbase = pidif
+	pkgdesc = Simple PDF Reader
+	pkgver = 0.1
+	pkgrel = 0
+	url = https://github.com/bjesus/pidif
+	arch = any
+	license = GPL
+	makedepends = cargo
+	makedepends = gtk4
+	makedepends = poppler
+	makedepends = cairo
+	source = pidif-0.1.tar.gz::https://github.com/bjesus/pidif/archive/refs/tags/0.1.tar.gz
+	sha512sums = ba067c8c98cc5db6c3412dd7793ba901863f9ca6fa2cf828d28597c87614c3ba7f57e74d7ba85267e28c569d30e3ab12424eae96e963092d5bfb6fd720d40ca9
+
+pkgname = pidif
