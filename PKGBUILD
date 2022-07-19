@@ -2,7 +2,7 @@
 
 pkgname=seer-gdb
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A gui frontend to gdb"
 arch=('x86_64' 'aarch64')
 url="https://github.com/epasveer/seer.git"
@@ -22,6 +22,15 @@ build() {
 package() {
 	cd "$srcdir/build"
         cmake --install . --strip --prefix "$pkgdir/usr/"
+
+        cd "$srcdir/${pkgname}/src/resources"
+        install -Dm644 'seer_32x32.png' "$pkgdir/usr/share/icons/hicolor/32x32/apps/seer.png"
+        install -Dm644 'seer_64x64.png' "$pkgdir/usr/share/icons/hicolor/64x64/apps/seer.png"
+        install -Dm644 'seer_128x128.png' "$pkgdir/usr/share/icons/hicolor/128x128/apps/seer.png"
+        install -Dm644 'seer_256x256.png' "$pkgdir/usr/share/icons/hicolor/256x256/apps/seer.png"
+        install -Dm644 'seer_512x512.png' "$pkgdir/usr/share/icons/hicolor/512x512/apps/seer.png"
+
+        install -Dm644 'seer.desktop' -t "$pkgdir/usr/share/applications"
 }
 
 
