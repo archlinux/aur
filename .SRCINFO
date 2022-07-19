@@ -5,6 +5,7 @@ pkgbase = greetd-wlgreet-git
 	url = https://git.sr.ht/~kennylevinsen/wlgreet
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = rust
 	provides = greetd-wlgreet=0.4
 	conflicts = greetd-wlgreet

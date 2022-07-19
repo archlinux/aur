@@ -11,7 +11,7 @@ source=("git+$url")
 sha256sums=('SKIP')
 conflicts=(greetd-wlgreet)
 provides=(greetd-wlgreet=${pkgver%+*})
-makedepends=(rust)
+makedepends=(git rust)
 
 pkgver() {
   git -C wlgreet describe --tags --abbrev=10 | sed 's/-/+/; s/-/./'
