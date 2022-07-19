@@ -9,7 +9,7 @@
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
 
 pkgname=aseprite-skia-bin
-pkgver=1.2.35
+pkgver=1.2.37
 pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
@@ -44,7 +44,7 @@ source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprit
         shared-skia-deps.patch
         optional-pixman.patch)
 noextract=("${source[0]##*/}" "${source[1]##*/}") # Don't extract Aseprite sources or Skia at the root
-sha256sums=('407ee1cf9c4ac47cc0033d1ce597591d33f9c39bb8cfc5b95728c6195378be14'
+sha256sums=('74989ac5e57e4cba9cc16212d81f058c3aff70749d929e2e35eb38688c994c9e'
             '47693b85d7ee9e4bab3663c04de2bae37f67d566e091183b0a22c97837b7dcbe'
             '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9'
             'e42675504bfbc17655aef1dca957041095026cd3dd4e6981fb6df0a363948aa7'
