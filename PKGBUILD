@@ -2,7 +2,7 @@
 
 pkgname=torchvision-cuda
 pkgdesc='datasets, transforms, and models specific to computer vision (C++ library only)'
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=2
 license=("BSD")
 url='https://github.com/pytorch/vision'
@@ -11,15 +11,8 @@ arch=('x86_64')
 provides=(torchvision)
 conflicts=(torchvision)
 
-source=(
-	"$pkgname-$pkgver.tar.gz::https://github.com/pytorch/vision/archive/v$pkgver.tar.gz"
-	"fix-python-linking.patch::https://github.com/pytorch/vision/commit/fb771ef5fedb76aabf00c6c6b113ae16d059ba2d.patch"
-)
-
-sha512sums=(
-	'ebc48a9e9ef58cc93c1b095e565c67feb2bc1bf06551e8f891a0369c211c6732e10bf191298b0633a05664371fa6dc637aab851b01a57f6b3e0d5936e87ee8ae'
-	'd9d750f55d0f44e3c7dda07ea8d50a2333de4e88549c850c1ab16548928a266dbaa467428b9893d81e8e7d8a68c6cdc216836883fcde20412dd4761ee172d045'
-)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pytorch/vision/archive/v$pkgver.tar.gz")
+sha512sums=('e4ca6d3764b4114e5f485acf255021e18597715b8d7a53d700537c62a84ae1bb241c3cc561b86b236675973667a57ef8ca701657cb629a2ec9c8ae4bc023950e')
 
 depends=(
 	cuda
@@ -36,7 +29,6 @@ prepare() {
 	mkdir build
 	cd build
 
-	patch -d "$srcdir/vision-$pkgver" -p1 < "$srcdir/fix-python-linking.patch"
 	cmake "$srcdir/vision-$pkgver" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=None \
