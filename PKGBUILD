@@ -3,11 +3,11 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=udevil-git
-pkgver=20170628.225
-pkgrel=2
+pkgver=20200402.230
+pkgrel=1
 pkgdesc='Mount without password'
 arch=('i686' 'x86_64')
-url=https://github.com/IgnorantGuru/udevil
+url=https://github.com/alpharde/udevil
 license=('GPL3')
 makedepends=('intltool' 'gettext')
 depends=('udev' 'glib2')
@@ -28,7 +28,7 @@ conflicts=('udevil' 'devmon' 'devmon-git')
 provides=('udevil' 'devmon')
 backup=('etc/udevil/udevil.conf' 'etc/conf.d/devmon')
 options=(!strip debug)
-source=("git+${url}.git#branch=next")
+source=("git+${url}.git")
 md5sums=(SKIP)
 
 pkgver() {
