@@ -5,13 +5,13 @@ pkgbase = basis-universal-git
 	url = https://github.com/BinomialLLC/basis_universal
 	arch = x86_64
 	license = Apache
+	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
 	provides = basis-universal
 	provides = basisu
 	conflicts = basis-universal
-	source = https://github.com/BinomialLLC/basis_universal
+	source = git+https://github.com/BinomialLLC/basis_universal
 	sha256sums = SKIP
 
 pkgname = basis-universal-git
-
