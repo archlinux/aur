@@ -11,7 +11,7 @@ license=('ISC')
 source=("git+$url")
 sha512sums=('SKIP')
 depends=('wayland')
-makedepends=('meson' 'wayland-protocols' 'scdoc')
+makedepends=('git' 'meson' 'wayland-protocols' 'scdoc')
 conflicts=('wob')
 provides=("wob=${pkgver%%+*}")
 
