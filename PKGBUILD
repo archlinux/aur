@@ -4,10 +4,10 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=htmltools
-_cranver=0.5.2
+_cranver=0.5.3
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Tools for HTML"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
@@ -28,7 +28,7 @@ optdepends=(
     r-shiny
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('7dc7d50436e5a82a5801f85bcd2f572a06a98b4027d71aa17b4854ec9b2767fb')
+sha256sums=('2c451b369ea8918358e2b280f548816664fe0143222c609e6bfb1f9cd2f7324f')
 
 build() {
   mkdir -p build
