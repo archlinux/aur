@@ -4,6 +4,7 @@ pkgbase = hare-git
 	pkgrel = 1
 	url = https://harelang.org
 	arch = x86_64
+	arch = aarch64
 	license = MPL2
 	makedepends = scdoc
 	makedepends = git

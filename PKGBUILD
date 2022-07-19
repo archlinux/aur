@@ -22,7 +22,7 @@ optdepends=(
 	"riscv64-linux-gnu-binutils: riscv64 cross compilation support"
 )
 
-arch=("x86_64")
+arch=("x86_64" "aarch64")
 url="https://harelang.org"
 source=("${pkgname%-*}::git+https://git.sr.ht/~sircmpwn/hare"
 	config.x86_64.mk
