@@ -1,7 +1,7 @@
 # Maintainer: Felipe Contreras <felipe.contreras@gmail.com>
 
 pkgname=dot-tools
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc='Tools for distributed dotfiles'
 url="https://github.com/felipec/$pkgname"

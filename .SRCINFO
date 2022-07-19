@@ -1,12 +1,12 @@
 pkgbase = dot-tools
 	pkgdesc = Tools for distributed dotfiles
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/felipec/dot-tools
 	arch = any
 	license = MIT
 	makedepends = git
-	source = dot-tools::git+https://github.com/felipec/dot-tools.git#tag=v0.2
+	source = dot-tools::git+https://github.com/felipec/dot-tools.git#tag=v0.3
 	sha256sums = SKIP
 
 pkgname = dot-tools
