@@ -2,17 +2,22 @@
 
 pkgname=hdl-dump-git
 _pkgbasename=hdl-dump
-pkgver=0.9.2
+pkgver=latest.r1.gaf15596
 pkgrel=1
 pkgdesc="PlayStation 2 HDLoader image dump/install utility"
 arch=('x86_64')
 url="https://github.com/AKuHAK/hdl-dump"
 license=('GPL')
-provides=($_pkgname)
+provides=(${_pkgbasename})
 conflicts=(${_pkgbasename})
 
 source=("${pkgname}::git+https://github.com/AKuHAK/${_pkgbasename}.git")
 md5sums=('SKIP')
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
 	cd ${srcdir}/${pkgname}
