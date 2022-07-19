@@ -2,7 +2,7 @@
 
 pkgname=docker-pushrm
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='"Docker Push Readme" - a Docker CLI plugin to update container repo docs'
 arch=('x86_64')
 url=https://github.com/christian-korneck/docker-pushrm
@@ -16,7 +16,6 @@ build() {
 }
 
 package() {
-  mkdir --parents /usr/lib/docker/cli-plugins
   install -D --mode=0755 "${srcdir}/${pkgname}-${pkgver}/${pkgname}" "${pkgdir}/usr/lib/docker/cli-plugins/${pkgname}"
   install -D --mode=0644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
