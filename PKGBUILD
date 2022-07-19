@@ -2,23 +2,25 @@
 # Contributor: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=fwupd-git
-pkgver=1.7.6.r62.g4074150d2
+pkgver=1.8.2.r46.g6e69d8fb8
 pkgrel=1
 pkgdesc="Simple daemon to allow session software to update firmware"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64')
 url="https://github.com/fwupd/fwupd"
 license=('LGPL')
 depends=(
     'libxmlb' 'efivar' 'python' 'libsmbios' 'libgusb'
     'polkit' 'shared-mime-info' 'tpm2-tss' 'flashrom'
-    'libjcat' 'fwupd-efi' 'gcab' 'libarchive.so'
+    'libjcat' 'fwupd-efi' 'gcab' 'hicolor-icon-theme'
+    'bluez' 'gnutls'
+    'libarchive.so' 'libcurl.so' 'libcbor.so'
     'libjson-glib-1.0.so' 'libgudev-1.0.so' 'libmm-glib.so'
-    'libqmi-glib.so' 'libprotobuf-c.so' 'libcbor')
+    'libqmi-glib.so' 'libprotobuf-c.so')
 optdepends=(
     'udisks2: UEFI firmware upgrade support'
 )
 makedepends=(
-    'meson' 'valgrind' 'gobject-introspection' 'gtk-doc'
+    'meson' 'valgrind' 'gobject-introspection' 'gi-docgen'
     'python-cairo' 'noto-fonts' 'noto-fonts-cjk' 'python-gobject' 'vala'
     'bash-completion' 'python-pillow' 'help2man' 'gnu-efi-libs' 'git')
 checkdepends=('umockdev')
@@ -49,10 +51,11 @@ build() {
     arch-meson "${srcdir}/${pkgname}" "${srcdir}/build" \
         -D plugin_flashrom=enabled \
         -D plugin_modem_manager=enabled \
-        -D plugin_intel_spi=true \
         -D b_lto=false \
         -D lzma=enabled \
-        -D docs=gtkdoc \
+        -D docs=enabled \
+        -D gresource_quirks=disabled \
+        -D plugin_intel_spi=true \
         -D supported_build=enabled \
         -D efi_binary=false
 
@@ -76,4 +79,5 @@ package() {
 
     # Remove msr module-load config as it is built-in
     rm "${pkgdir}"/usr/lib/modules-load.d/fwupd-msr.conf
+    rmdir "${pkgdir}"/usr/lib/modules-load.d
 }
