@@ -3,7 +3,7 @@
 
 pkgname=openmsx-catapult
 pkgver=18.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Front-end for openMSX: the MSX emulator that aims for perfection."
 arch=('i686' 'x86_64')
 url="http://openmsx.org"
@@ -17,7 +17,11 @@ source=("https://github.com/openMSX/wxcatapult/archive/RELEASE_${pkgver//./_}.ta
 build() {
   cd "wxcatapult-RELEASE_${pkgver//./_}"
 
-  # Changing some default configurations...
+  # Catapult uses wxwidgets-gtk2
+  sed -i 's@wx-config@wx-config-gtk2@' build/probe.mk
+  sed -i 's@wx-config@wx-config-gtk2@' build/main.mk
+
+  # Changing some default configurations
   sed -i 's@SYMLINK_FOR_BINARY:=true@SYMLINK_FOR_BINARY:=false@' build/custom.mk
   sed -i 's@/opt/openMSX-Catapult@/usr/share/openmsx-catapult@' build/custom.mk
   sed -i 's@/opt/openMSX/bin/openmsx@/usr/bin/openmsx@' build/custom.mk
