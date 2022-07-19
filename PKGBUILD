@@ -1,7 +1,7 @@
 # Maintainer: Markus Pesch <markus.pesch@cryptic.systems>
 
 pkgname=docker-pushrm
-pkgver=1.8.1
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='"Docker Push Readme" - a Docker CLI plugin to update container repo docs'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url=https://github.com/christian-korneck/docker-pushrm
 license=('MIT')
 makedepends=('go')
 source=("https://github.com/christian-korneck/docker-pushrm/archive/v${pkgver}.zip")
-sha512sums=('c1a339239fc51b83f9b9c3f2719700ceac5350686d0399576ca096e68ca9f83be807c3be1f8738862332395ab47e0d362a03dd7671b2116034f17fa6460719b2')
+sha512sums=('aef19964c740b4d9b512b696759cd4b31793ced91f066864e534242d74694a796ee9930a809c2b5a6779238e32572642ab05fa5a7f8cf1062d0a9dd5f40c52d8')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver} && go build
