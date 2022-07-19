@@ -18,6 +18,11 @@ pkgver() {
     git describe --tags | sed 's/-/./g'
 }
 
+prepare() {
+    cd "$pkgname"
+    git cherry-pick -n 16a910d7862b9771bcd12cef7cd6388d9e5d0c54
+}
+
 build() {
     cd "$pkgname"
     # https://github.com/HarveyHunt/howm/issues/68
@@ -26,7 +31,7 @@ build() {
 
 package() {
     cd "$pkgname"
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="$pkgdir"/ install
 
     mkdir -p "$pkgdir"/usr/share/howm/examples
     cp -a examples/* "$pkgdir"/usr/share/howm/examples/
