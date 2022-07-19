@@ -1,6 +1,6 @@
 pkgbase = prometheus-ssl-exporter
 	pkgdesc = Prometheus exporter for TLS certificates
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/ribbybibby/ssl_exporter
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = prometheus-ssl-exporter
 	makedepends = git
 	depends = glibc
 	options = !lto
-	source = git+https://github.com/ribbybibby/ssl_exporter.git#commit=52fb44781ccdab47811b9873afc37c73cd18ab8f
+	source = git+https://github.com/ribbybibby/ssl_exporter.git#commit=8b30e0983c79f57b87b9f114a86ead0b728bf55e
 	b2sums = SKIP
 
 pkgname = prometheus-ssl-exporter

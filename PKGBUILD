@@ -2,7 +2,7 @@
 
 pkgname=prometheus-ssl-exporter
 _pkgname=ssl_exporter
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc='Prometheus exporter for TLS certificates'
 arch=('x86_64')
@@ -11,13 +11,14 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 options=('!lto')
-_commit='52fb44781ccdab47811b9873afc37c73cd18ab8f'
+_commit='8b30e0983c79f57b87b9f114a86ead0b728bf55e'
 source=("git+$url.git#commit=$_commit")
 b2sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --tags | sed 's/^[vV]//;s/-/+/g'
+
+  git describe --tags | sed 's/^v//'
 }
 
 prepare() {
@@ -32,6 +33,7 @@ prepare() {
 
 build() {
   cd "$_pkgname"
+
   go build -v \
     -buildmode=pie \
     -trimpath \
@@ -48,6 +50,7 @@ build() {
 
 check() {
   cd "$_pkgname"
+
   go test -v ./...
 }
 
