@@ -1,7 +1,7 @@
 # Maintainer: Ferdinand B <theferdi265@gmail.com>
 
 pkgname=pipectl-git
-pkgver=0.3.0.r0.gbb2099d
+pkgver=0.3.0.r2.g3692fb0
 pkgrel=1
 pkgdesc="a simple named pipe management utility (git version)"
 url="https://github.com/Ferdi265/pipectl"
@@ -10,7 +10,7 @@ license=('GPL3')
 provides=("pipectl=${pkgver%%.r*}")
 conflicts=('pipectl')
 depends=()
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'scdoc')
 source=(
     "git+https://github.com/Ferdi265/pipectl"
 )
@@ -22,7 +22,10 @@ pkgver() {
 }
 
 build() {
-    cmake -B build -S "$srcdir/pipectl" -DCMAKE_INSTALL_PREFIX=/usr
+    cmake -B build -S "$srcdir/pipectl" \
+        -DINSTALL_DOCUMENTATION=ON \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_MANDIR=/usr/share/man
     make -C build
 }
 
