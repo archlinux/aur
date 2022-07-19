@@ -11,7 +11,7 @@ source=("git+$url")
 sha256sums=('SKIP')
 conflicts=(greetd-dlm)
 provides=(greetd-dlm)
-makedepends=(rust)
+makedepends=(git rust)
 
 pkgver() {
   cd dlm

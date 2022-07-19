@@ -5,11 +5,11 @@ pkgbase = greetd-dlm-git
 	url = https://git.sr.ht/~kennylevinsen/dlm
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = rust
 	provides = greetd-dlm
 	conflicts = greetd-dlm
-	source = https://git.sr.ht/~kennylevinsen/dlm
+	source = git+https://git.sr.ht/~kennylevinsen/dlm
 	sha256sums = SKIP
 
 pkgname = greetd-dlm-git
-
