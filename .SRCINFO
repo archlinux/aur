@@ -1,7 +1,7 @@
 pkgbase = perl-x11-wmctrl
 	pkgdesc = Perl wrapper for the wmctrl program
 	pkgver = 0.03
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/pod/X11::WMCtrl
 	arch = any
 	license = GPL
@@ -13,4 +13,3 @@ pkgbase = perl-x11-wmctrl
 	sha256sums = d71f935adcea0580fc6a74f35294fab547774cc7ceb0906365856ddb034f82a9
 
 pkgname = perl-x11-wmctrl
-

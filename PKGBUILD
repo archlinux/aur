@@ -1,11 +1,9 @@
-# Maintainer: Simon Perry <pezz [at] sanxion [dot] net>
+# Contributor: Simon Perry <pezz [at] sanxion [dot] net>
 
 pkgname=perl-x11-wmctrl
 _relpkg=X11-WMCtrl
 pkgver=0.03
-pkgrel=2
-conflicts=('')
-replaces=('')
+pkgrel=3
 pkgdesc="Perl wrapper for the wmctrl program"
 depends=('perl' 'wmctrl')
 license=('GPL' 'PerlArtistic')
