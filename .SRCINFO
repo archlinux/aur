@@ -1,0 +1,13 @@
+pkgbase = ath
+	pkgdesc = command line tool for converting text containing ANSI escape sequences into HTML
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/maltejur/ath
+	arch = x86_64
+	license = LGPL-3.0
+	makedepends = ldc
+	makedepends = dub
+	source = ath-1.0.0.tar.gz::https://github.com/maltejur/ath/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = c9b776c4d480be3cfafd7f14a6b374dae67d3420625f99c5bd338a54c6e7b9a4
+
+pkgname = ath
