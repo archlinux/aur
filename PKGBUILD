@@ -1,7 +1,7 @@
 # Maintainer: Marcin Kornat <rarvolt@gmail.com>
 pkgname=python-barcode
 _pkgname=python_barcode
-pkgver=0.13.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Create standard barcodes with Python. No external modules needed."
 arch=('any')
@@ -13,10 +13,10 @@ depends=('python')
 optdepends=('python-pillow: generate images')
 makedepends=('python-pip')
 source=(
-        "https://files.pythonhosted.org/packages/4e/aa/90966e1caf4d630b2bb420084c9eaa14a7d2ddc8e8a4311cd55ac90753a8/${_pkgname}-${pkgver}-py3-none-any.whl"
+        "https://github.com/WhyNotHugo/${pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-py3-none-any.whl"
     )
 noextract=("${pkgname}-${pkgver}-py2.py3-none-any.whl")
-sha256sums=('daa32fb999a843812fbb1c75ff909638811af7c465f0a991e9e41d26d2a44a24')
+sha256sums=('449d4073bfd34f1bb5fa42162356df4550ae7ccf6df3ac34fdb7ab45331921ef')
 
 package() {
     cd "${srcdir}"
