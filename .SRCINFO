@@ -1,7 +1,7 @@
 pkgbase = rocm-core
 	pkgdesc = AMD ROCm core package
 	pkgver = 5.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.amd.com/
 	arch = x86_64
 	makedepends = cmake
