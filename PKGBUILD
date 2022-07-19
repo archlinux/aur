@@ -13,7 +13,7 @@ provides=('networkmanager-libreswan')
 conflicts=('networkmanager-libreswan')
 depends=('libsecret' 'libreswan' 'libnl' 'gtk3' 'libnma')
 makedepends=('intltool' 'python' 'git' 'gettext')
-source=(git+https://gitlab.gnome.org/GNOME/NetworkManager-libreswan.git#branch=master)
+source=(git+https://gitlab.gnome.org/GNOME/NetworkManager-libreswan.git#branch=main)
 sha256sums=('SKIP')
 
 build() {
