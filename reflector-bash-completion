@@ -1,0 +1,98 @@
+# bash completion for reflector        -*- shell-script -*-
+
+_reflector_complete() {
+    COMPREPLY=($(compgen -W "$1" -- "$cur"))
+    [[ $COMPREPLY == *= ]] && compopt -o nospace
+    compopt -o nosort
+}
+
+_reflector_complete_countries() {
+    local folder=$HOME/.config/reflector-complete
+    local countrylist=$folder/countrylist
+    local date=$(date +%Y%V)                # updates countrylist weekly
+    local country_names
+
+    mkdir -p $folder
+    if [ -r $countrylist.$date ] ; then
+        country_names="$(cat $countrylist.$date)"
+    else
+        rm -f $countrylist.*
+        country_names="$(/usr/bin/reflector --list-countries 2>/dev/null | /usr/bin/sed -n '/^-----/,//'p | /usr/bin/sed -e '1d' -e 's|^\(.*[a-z]\)[ ]*[A-Z][A-Z].*$|\1|')"
+        echo "$country_names" > $countrylist.$date
+    fi
+
+    local IFS=$'\n'
+    COMPREPLY=( $(compgen -W "$country_names" -- "$cur") )
+    compopt -o nosort
+    compopt -o filenames
+}
+
+_reflector_options() {
+    local opts=(
+        --help     -h
+        --age      -a
+        --country  -c
+        --exclude  -x
+        --fastest  -f
+        --include  -i
+        --latest   -l
+        --number   -n
+        --protocol -p
+
+        --cache-timeout
+        --completion-percent
+        --connection-timeout
+        --download-timeout
+        --info
+        --ipv4
+        --ipv6
+        --isos
+        --list-countries
+        --save
+        --score
+        --sort
+        --url
+        --verbose
+    )
+    echo "${opts[*]}"
+}
+
+_reflector_() 
+{
+    local cur prev #words cword split
+    _init_completion -s || return
+
+    # Handle options that need sub-options.
+    # Each option "case" should return immediately.
+
+    case "$prev" in
+        --age | --cache-timeout | --connection-timeout | --download-timeout | --fastest | --latest | --score | --number | -a | -f | -l | -n)
+            COMPREPLY=($(compgen -P "$cur" -W "{0..9}"))
+            compopt -o nospace
+            ;;
+        --completion-percent)
+            COMPREPLY=($(compgen -W "{0..100}" -- "$cur"))
+            compopt -o nosort
+            ;;
+        --country | -c)  _reflector_complete_countries ;;
+        --protocol | -p) _reflector_complete "https http rsync" ;;
+        --sort)          _reflector_complete "age rate country score delay" ;;
+        --save)          _filedir ;;
+        --url) ;;
+        --include | -i | --exclude | -x) ;;
+
+        *)
+            # Handle all top-level parameters.
+            case "$cur" in
+                -* | "")
+                    # Any option or nothing yet.
+                    _reflector_complete "$(_reflector_options)"
+                    ;;
+                *)
+                    # Non-option parameters.
+                    ;;
+            esac
+            ;;
+    esac
+} &&
+complete -F _reflector_ reflector
