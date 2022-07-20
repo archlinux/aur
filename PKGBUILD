@@ -13,7 +13,7 @@ md5sums=("SKIP")
 depends=('git')
 
 package() {
-  install -Dm755 "$srcdir/$pkgname-$pkgver/main.sh" "$pkgdir/usr/bin/saurh"
+  install -Dm755 "$srcdir/$pkgname-$pkgver/saurh" "$pkgdir/usr/bin/saurh"
   install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
