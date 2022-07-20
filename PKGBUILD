@@ -1,7 +1,7 @@
 # Maintainer  : Matthias Fulz < mfulz [at] olznet [dot] de >
 
 pkgname=ospd
-pkgver=21.4.3
+pkgver=21.4.4
 pkgrel=1
 pkgdesc='Greenbone Open Scanner Protocol python bindings'
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('python-ospd')
 makedepends=('python-setuptools')
 groups=('greenbone-vulnerability-manager')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/greenbone/ospd/archive/v${pkgver}.tar.gz")
-sha512sums=('551c4243eb9e8ee667eec4ee91259465b66353c70741602304faab94041ec144b1cc082ead7383a2d58bf3812a3e965568cd826e8a34152fc87680a049af4f5e')
+sha512sums=('700cae3a248e8998a00116c7f49a2dccd7cc23d8317eed9200472c5574962b2b4767c3d689ccca93e919b10e1ecb8160bdb1e2d155fdd2e76d12a23d07748ca4')
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
