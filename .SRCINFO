@@ -1,6 +1,6 @@
 pkgbase = pipectl
 	pkgdesc = a simple named pipe management utility
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/Ferdi265/pipectl
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = pipectl
 	license = GPL3
 	makedepends = cmake
 	makedepends = scdoc
-	source = pipectl-0.4.0.tar.gz::https://github.com/Ferdi265/pipectl/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = 6fa585c666d779c638ddba90f2340c0a070532137c1a84ae1a0ce0080f7f1b52
+	source = pipectl-0.4.1.tar.gz::https://github.com/Ferdi265/pipectl/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = d7b04d6a08f0f1cd61e62de52006902aac3b3254002712c19f71dffe0bf379c7
 
 pkgname = pipectl

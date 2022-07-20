@@ -1,7 +1,7 @@
 # Maintainer: Ferdinand B <theferdi265@gmail.com>
 
 pkgname=pipectl
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="a simple named pipe management utility"
 url="https://github.com/Ferdi265/pipectl"
@@ -12,7 +12,7 @@ makedepends=('cmake' 'scdoc')
 source=(
     "pipectl-$pkgver.tar.gz::https://github.com/Ferdi265/pipectl/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('6fa585c666d779c638ddba90f2340c0a070532137c1a84ae1a0ce0080f7f1b52')
+sha256sums=('d7b04d6a08f0f1cd61e62de52006902aac3b3254002712c19f71dffe0bf379c7')
 
 build() {
     cmake -B build -S "$srcdir/pipectl-$pkgver" \
