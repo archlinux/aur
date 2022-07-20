@@ -8,7 +8,11 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/database64128/$pkgname"
 license=('AGPL3')
 makedepends=('go')
-backup=("etc/$pkgname/config.json")
+backup=(
+    "etc/$pkgname/config.json"
+    "etc/$pkgname/server.json"
+    "etc/$pkgname/client.json"
+)
 source=(
     "$url/archive/refs/tags/v$pkgver.tar.gz"
     "$pkgname.service"
