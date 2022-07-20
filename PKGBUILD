@@ -2,7 +2,7 @@
 
 pkgname=pipectl-git
 pkgver=0.4.1.r0.g0bc6dbc
-pkgrel=1
+pkgrel=2
 pkgdesc="a simple named pipe management utility (git version)"
 url="https://github.com/Ferdi265/pipectl"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 provides=("pipectl=${pkgver%%.r*}")
 conflicts=('pipectl')
 depends=()
-makedepends=('git' 'cmake' 'scdoc')
+makedepends=('git' 'cmake' 'ninja' 'scdoc')
 source=(
     "git+https://github.com/Ferdi265/pipectl"
 )
@@ -22,13 +22,12 @@ pkgver() {
 }
 
 build() {
-    cmake -B build -S "$srcdir/pipectl" \
+    cmake -G Ninja -B build -S "$srcdir/pipectl" \
         -DINSTALL_DOCUMENTATION=ON \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_MANDIR=/usr/share/man
-    make -C build
+        -DCMAKE_INSTALL_PREFIX=/usr
+    ninja -C build
 }
 
 package() {
-    make -C build DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" ninja -C build install
 }
