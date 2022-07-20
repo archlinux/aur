@@ -1,4 +1,4 @@
-# Maintainer: zehkira <(same as my name) at pm me>
+# Maintainer: zehkira <KHNhbWUgYXMgbXkgbmFtZSkgYXQgcG0gbWU=>
 pkgname="myuzi"
 pkgver="v0.9.1"
 pkgrel=1
