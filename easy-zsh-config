@@ -1,3 +1,28 @@
+## Config the theme file from arg. or use fallback theme file
+if [ $# -gt 0 ]; then
+    if [[ -r "${1}" ]]; then
+        _POSH_THEME = ${1}
+    else
+        _POSH_THEME = "/usr/share/oh-my-posh/themes/jandedobbeleer.omp.json"
+    fi
+else
+    _POSH_THEME = "/usr/share/oh-my-posh/themes/jandedobbeleer.omp.json"
+fi
+
+## Apply the theme file
+if [[ -r "${_POSH_THEME}" ]]; then
+    eval "$(oh-my-posh init zsh --config \"${_POSH_THEME}\")"
+else
+    echo "Warning: \"${_POSH_THEME}\" is unreachable!"
+    echo "Oh My Posh theme is disabled! Using the fallback \"elite2\" theme now!"
+    echo "Please check your theme file's existance and read permission!"
+    echo "Tips: run \"sudo chmod +r -R /usr/share/oh-my-posh/\" may helps when there're permission issues."
+    autoload -U promptinit
+    promptinit
+    prompt elite2 green yellow
+fi
+
+
 ## Set history
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -20,6 +45,7 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
+
 ## Set plugins
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -28,6 +54,7 @@ if [[ -r /usr/share/doc/pkgfile/command-not-found.zsh ]]; then
     source /usr/share/doc/pkgfile/command-not-found.zsh
     export PKGFILE_PROMPT_INSTALL_MISSING=1
 fi
+
 
 ## Set key bindings
 bindkey -e
@@ -57,11 +84,13 @@ bindkey '^[[1;5C' forward-word                                  #
 bindkey '^H' backward-kill-word                                 # delete previous word with ctrl+backspace
 bindkey '^[[Z' undo                                             # Shift+tab undo last action
 
+
 ## Set alias 
 alias cp="cp -i"                                                # Confirm before overwriting something
 alias df='df -h'                                                # Human-readable sizes
 alias free='free -m'                                            # Show sizes in MB
 alias gitu='git add . && git commit && git push'
+
 
 ## Color man pages
 export LESS_TERMCAP_mb=$'\E[01;32m'

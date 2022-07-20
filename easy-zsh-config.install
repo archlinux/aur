@@ -1,11 +1,13 @@
 info() {
-    echo -e "================================INFO==================================="
+    echo -e "\e[36m=================================INFO====================================\e[0m"
     echo -e "* To apply changes to current user, run:"
-    echo -e "  > cp /etc/zsh/zshrc ~/.zshrc"
-    echo -e "* If you don't need to customize your .zshrc file and you want to keep your .zshrc file to the current one, you can also run:"
-    echo -e "  > ln -s /etc/zsh/zshrc ~/.zshrc"
+    echo -e "  \e[4m> cp /etc/zsh/zshrc ~/.zshrc\e[0m"
+    echo -e "* If you don't need to customize your .zshrc file and you want to keep"
+    echo -e "your .zshrc file to the current one, you can also run:"
+    echo -e "  \e[4m> ln -s /etc/zsh/zshrc ~/.zshrc\e[0m"
     echo -e "* To configure the theme:"
-    echo -e "  Edit line 2, ~/.zshrc, and replace default theme file name with your target theme file name."
+    echo -e "  Edit \e[4mline 4, ~/.zshrc\e[0m, and replace default theme path with your target"
+    echo -e "theme path."
     echo -e "* Key bindings info:"
     echo -e "  Up:          History substring search(backward)"
     echo -e "  Down:        History substring search(forward)"
@@ -13,7 +15,7 @@ info() {
     echo -e "  Ctrl-Down:   History beginning search(forward)"
     echo -e "  Ctrl-Left:   Skip a whole word(left)"
     echo -e "  Ctrl-Right:  Skip a whole word(right)"
-    echo -e "======================================================================="
+    echo -e "\e[36m=========================================================================\e[0m"
 }
 post_install() {
     info
