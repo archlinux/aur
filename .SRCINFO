@@ -1,7 +1,7 @@
 pkgbase = r-jaspresults
 	pkgdesc = Easy results for your JASP analysis
 	pkgver = 1.16
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/jasp-stats/jaspResults
 	arch = x86_64
 	groups = r-jasp
@@ -10,10 +10,12 @@ pkgbase = r-jaspresults
 	makedepends = git
 	depends = r
 	depends = r-rcpp
+	depends = r-gridgraphics
+	depends = r-ragg
+	depends = r-r6
+	depends = r-qgraph
 	optdepends = r-jaspgraphs
 	source = git+https://github.com/jasp-stats/jaspResults.git
-	source = jaspColumnEncoder::git+https://github.com/jasp-stats/jaspColumnEncoder.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = r-jaspresults

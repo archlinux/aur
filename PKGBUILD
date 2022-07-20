@@ -3,35 +3,31 @@ _pkgname=jaspResults
 _pkgver=1.16
 pkgname=r-${_pkgname,,}
 pkgver=1.16
-pkgrel=1
+pkgrel=3
 pkgdesc="Easy results for your JASP analysis"
 arch=('x86_64')
 url="https://github.com/jasp-stats/${_pkgname}"
 license=('GPL')
 depends=(r
 'r-rcpp'
+'r-gridgraphics'
+'r-ragg'
+'r-r6'
+'r-qgraph'
 )
 groups=(r-jasp r-jaspbase)
 makedepends=('git')
 optdepends=('r-jaspgraphs')
 source=("git+https://github.com/jasp-stats/${_pkgname}.git"
-"jaspColumnEncoder::git+https://github.com/jasp-stats/jaspColumnEncoder.git"
 )
-sha256sums=('SKIP'
-            'SKIP')
-
-prepare(){
-  cp -rf $srcdir/jaspColumnEncoder/* $srcdir/${_pkgname}/src/jaspColumnEncoder
-
-}
+sha256sums=('SKIP')
 
 build() {
-  mkdir -p ${srcdir}/usr/lib/R/library
-  R -e "install.packages('${srcdir}/${_pkgname}',\
-     type='source', repos=NULL,lib='${srcdir}/usr/lib/R/library', INSTALL_opts='--no-multiarch --no-docs --no-test-load')"
+  tar -cvf ${srcdir}/${_pkgname}_${_pkgver}.tar.gz ${_pkgname}
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-
-  cp -a --no-preserve=ownership "${srcdir}/usr" "${pkgdir}"
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
 }
