@@ -1,28 +1,28 @@
 pkgbase = gsa
 	pkgdesc = Greenbone Security Assistant
-	pkgver = 21.4.2
+	pkgver = 22.4
 	pkgrel = 4
 	url = https://github.com/greenbone/gsa
 	arch = x86_64
 	groups = greenbone-vulnerability-manager
 	license = GPL
-	makedepends = cmake
+	makedepends = yarn
 	makedepends = doxygen
 	makedepends = xmltoman
 	makedepends = nodejs
 	makedepends = npm
-	depends = gvm-libs-20
+	depends = gvm-libs-20>=22.4.0
 	depends = libgcrypt
 	depends = gnutls
 	depends = postgresql
 	depends = libxml2
 	depends = libmicrohttpd
-	depends = openvas-scanner
+	depends = openvas-scanner>=22.4
 	backup = etc/default/gsad
-	source = gsa-21.4.2.tar.gz::https://github.com/greenbone/gsa/archive/v21.4.2.tar.gz
+	source = gsa-22.4.tar.gz::https://github.com/greenbone/gsa/archive/v22.4.tar.gz
 	source = gsad.service
 	source = gsad
-	sha512sums = 8916290f880187c190bc51ba454b66858a9a9f3513091c07752313a53a650e88352e1d875f7bb84f35781df91f7e7bbee053f6739492d2fef15c7000618672a1
+	sha512sums = 8e680a7e5b0785a9dd871d56199dae8f4f3b124b6500c08274a2329edf9973ad3841e951dd348aa2c18effbf9d065e9a8ac0f39bde2f6a393e9ca4541ead2f99
 	sha512sums = 6c65e3ea08b427cd1773c346b054b7b1a3e95d06d6d4070603e97f92b59f9dd465e94992cd6b5927192bc9b859c1268d1cda8d92d4067264389a7a0a578b9d30
 	sha512sums = 27542d6e194d8fe4ef37364f387293d69f4c7002f2b380b8a21ae995122531ccbce6ca689f0768c463252d33cf0b1735343cbe61eac51947fbec0e05a45e1d1b
 
