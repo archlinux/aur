@@ -2,12 +2,12 @@ pkgbase = orphan-reaper
 	pkgdesc = Place subreapers in your process tree to keep it structured
 	pkgver = 2.3.3
 	pkgrel = 1
-	url = https://github.com/maandree/orphan-reaper
+	url = https://codeberg.org/maandree/orphan-reaper
 	arch = i686
 	arch = x86_64
 	license = custom:ISC
 	depends = linux>=3.4
-	source = orphan-reaper-2.3.3.tar.gz::https://github.com/maandree/orphan-reaper/archive/2.3.3.tar.gz
-	sha256sums = 5525bbef0b2d990fa61cbae1ea05cce6ec35d02ccd957d7f6b5e8339d1233b90
+	source = orphan-reaper-2.3.3.tar.gz::https://codeberg.org/maandree/orphan-reaper/archive/2.3.3.tar.gz
+	sha256sums = 528179d8e4dcf1d5a5efd8eaa9e52c6c33b51481a108d6ba8583614cf02cdd9d
 
 pkgname = orphan-reaper

@@ -4,23 +4,23 @@ pkgver=2.3.3
 pkgrel=1
 pkgdesc="Place subreapers in your process tree to keep it structured"
 arch=(i686 x86_64)
-url="https://github.com/maandree/orphan-reaper"
+url="https://codeberg.org/maandree/orphan-reaper"
 license=('custom:ISC')
 depends=('linux>=3.4')
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(5525bbef0b2d990fa61cbae1ea05cce6ec35d02ccd957d7f6b5e8339d1233b90)
+sha256sums=(528179d8e4dcf1d5a5efd8eaa9e52c6c33b51481a108d6ba8583614cf02cdd9d)
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   make PREFIX=/usr
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   make check
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   make PREFIX=/usr DESTDIR="$pkgdir" install
 }
