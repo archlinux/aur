@@ -2,8 +2,8 @@
 # Contributor: Michael Thalmeier <michael@thalmeier.at>
 
 pkgname=curecoin-qt-git
-pkgver=v2.0.0.2.r24.g3ef6a62
-pkgrel=3
+pkgver=v2.1.0.1.r0.gc06a7b2
+pkgrel=1
 pkgdesc="GUI client (wallet) for CureCoin cryptocurrency"
 arch=('x86_64' 'i686')
 url="https://curecoin.net/"

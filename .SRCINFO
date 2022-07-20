@@ -1,7 +1,7 @@
 pkgbase = curecoin-qt-git
 	pkgdesc = GUI client (wallet) for CureCoin cryptocurrency
-	pkgver = v2.0.0.2.r24.g3ef6a62
-	pkgrel = 2
+	pkgver = v2.1.0.1.r0.gc06a7b2
+	pkgrel = 1
 	url = https://curecoin.net/
 	arch = x86_64
 	arch = i686
@@ -24,4 +24,3 @@ pkgbase = curecoin-qt-git
 	sha256sums = 47e4c7305240dd16361d922bf6bc3a86ee53d7e0bc43bdf12c341ea0b7968387
 
 pkgname = curecoin-qt-git
-
