@@ -2,10 +2,10 @@ pkgbase = median
 	pkgdesc = Calculate the median values for a set of groups
 	pkgver = 2.0.1
 	pkgrel = 1
-	url = https://github.com/maandree/median
+	url = https://codeberg.org/maandree/median
 	arch = x86_64
 	license = custom:ISC
-	source = median-2.0.1.tar.gz::https://github.com/maandree/median/archive/2.0.1.tar.gz
+	source = median-2.0.1.tar.gz::https://codeberg.org/maandree/median/archive/2.0.1.tar.gz
 	sha256sums = 1b9dec4912934057f430ef76bed717f6b3c69945768176b8b77bb67049e567b2
 
 pkgname = median
