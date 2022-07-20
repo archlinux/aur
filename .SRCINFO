@@ -1,0 +1,13 @@
+pkgbase = saurh
+	pkgdesc = simple aur helper
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/JaydenDev/saurh
+	arch = any
+	license = MIT
+	depends = git
+	provides = saurh
+	source = https://github.com/JaydenDev/saurh/archive/refs/tags/0.0.1.tar.gz
+	md5sums = SKIP
+
+pkgname = saurh
