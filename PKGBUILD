@@ -2,7 +2,7 @@
 
 pkgname=wl-mirror-git
 pkgver=0.12.1.r0.gae7968d
-pkgrel=1
+pkgrel=2
 pkgdesc="a simple Wayland output mirror client (git version)"
 url="https://github.com/Ferdi265/wl-mirror"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 provides=("wl-mirror=${pkgver%%.r*}")
 conflicts=('wl-mirror')
 depends=('libglvnd' 'wayland')
-makedepends=('git' 'cmake' 'scdoc')
+makedepends=('git' 'cmake' 'ninja' 'scdoc')
 optdepends=(
     'pipectl: named pipe manager, for wl-present script'
     'slurp: selecting regions and outputs, for wl-present script'
@@ -38,13 +38,13 @@ prepare() {
 }
 
 build() {
-    cmake -B build -S "$srcdir/wl-mirror" \
+    cmake -G Ninja -B build -S "$srcdir/wl-mirror" \
         -DINSTALL_EXAMPLE_SCRIPTS=ON \
         -DINSTALL_DOCUMENTATION=ON \
         -DCMAKE_INSTALL_PREFIX=/usr
-    make -C build
+    ninja -C build
 }
 
 package() {
-    make -C build DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" ninja -C build install
 }
