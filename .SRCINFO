@@ -1,0 +1,12 @@
+pkgbase = gnome-shell-extension-big-avatar
+	pkgdesc = An extension based on https://github.com/db0x/bigavatar-db0x.de, it adds your avatar icon and name to the menu panel. It allows you to tweak the size of both font and avatar image
+	pkgver = 16
+	pkgrel = 1
+	url = https://github.com/GustavoPeredo/Big-Avatar-Gnome-Shell-Extension
+	arch = any
+	license = GPL3
+	depends = gnome-shell
+	source = https://github.com/GustavoPeredo/Big-Avatar-Gnome-Shell-Extension/archive/v16.tar.gz
+	b2sums = a7df1e8fc73d88441593df69bfba100a6f6e0527a28408efb313e6363244ca8a90e05bde8deccc5d62a6f7c0ecf5f0757cf23a53c51ad8515e8992a88af90549
+
+pkgname = gnome-shell-extension-big-avatar
