@@ -2,7 +2,7 @@
 # Contributor: budRich
 
 pkgname=i3ass
-pkgver=2022.07.19
+pkgver=2022.07.21.1
 pkgrel=1
 pkgdesc='A bash-script collection to assist the use of i3-wm.'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('gawk' 'sed')
 optdepends=('rofi' 'xdotool')
 conflicts=('i3-gaps')
 source=("$url/archive/$pkgver/${pkgname}-$pkgver.tar.gz")
-sha256sums=('7296bff75b6938ac60ab9d8999c9084ac5c3a73e271f32fe06aff5852938b366')
+sha256sums=('13c1e989a5ff9b3d53d03f88704eeae76764abb8214f782c77e2d535d741ed34')
 _trgdir="$pkgname-$pkgver"
 
 # _trgdir="$pkgname"
