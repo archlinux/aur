@@ -1,15 +1,13 @@
 pkgbase = r-rinside
-	pkgdesc = C++ Classes to Embed R in C++ Applications
-	pkgver = 0.2.16
+	pkgdesc = C++ Classes to Embed R in C++ (and C) Applications
+	pkgver = 0.2.17
 	pkgrel = 1
 	url = https://cran.r-project.org/package=RInside
-	arch = i686
 	arch = x86_64
-	license = GPL2
-	license = GPL3
+	license = GPL
 	depends = r
 	depends = r-rcpp
-	source = https://cran.r-project.org/src/contrib/RInside_0.2.16.tar.gz
-	sha256sums = 7ae4ade128ea05f37068d59e610822ff0b277f9d39d8900f7eb31759ad5a2a0e
+	source = https://cran.r-project.org/src/contrib/RInside_0.2.17.tar.gz
+	sha256sums = 0be28c44ee34cba669a7264d2b99c289230645598ca78e21682559dc31824348
 
 pkgname = r-rinside
