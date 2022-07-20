@@ -1,6 +1,6 @@
 pkgbase = wl-mirror
 	pkgdesc = a simple Wayland output mirror client
-	pkgver = 0.12.0
+	pkgver = 0.12.1
 	pkgrel = 4
 	url = https://github.com/Ferdi265/wl-mirror
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = wl-mirror
 	optdepends = slurp: selecting regions and outputs, for wl-present script
 	optdepends = rofi: interactively selecting options, for wl-present script
 	optdepends = dmenu: interactively selecting options, alternative, for wl-present script
-	source = wl-mirror-0.12.0.tar.gz::https://github.com/Ferdi265/wl-mirror/releases/download/v0.12.0/wl-mirror-0.12.0.tar.gz
-	sha256sums = a1f427b87ca91c98a41c8c034771fe2eff6b5ea2f4cc7b35c110b70cd2aa03f9
+	source = wl-mirror-0.12.1.tar.gz::https://github.com/Ferdi265/wl-mirror/releases/download/v0.12.1/wl-mirror-0.12.1.tar.gz
+	sha256sums = ee2792cd212c6833eec21b14e3af8a611f303cb0149e79fcad827102b505a16f
 
 pkgname = wl-mirror
