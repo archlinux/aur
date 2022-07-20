@@ -1,8 +1,8 @@
 # Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
 
 pkgname=python-traitsui
-pkgver=7.2.1
-pkgrel=3
+pkgver=7.4.0
+pkgrel=1
 pkgdesc="Traits-capable user interfaces"
 arch=('any')
 url="https://github.com/enthought/traitsui"
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('python-pyface')
 makedepends=('python-setuptools')
 source=("traitsui-${pkgver}.tar.gz::https://github.com/enthought/traitsui/archive/${pkgver}.tar.gz")
-sha256sums=('be42f0e8d14d164c5fb1a278b3d0a99450d30a7db8c3da37ef9ea20cad615bc9')
+sha256sums=('55853041872bc7e35321e6b3816e153bf8982b87f8ab9df529c2e9e17586a3ca')
 
 build() {
   cd "$srcdir"/traitsui-$pkgver
