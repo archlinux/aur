@@ -1,12 +1,12 @@
 pkgbase = budgie-control-center
 	pkgdesc = Budgie's main interface to configure various aspects of the desktop
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/BuddiesOfBudgie/budgie-control-center
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
-	license = GPL2
+	license = GPL
 	makedepends = docbook-xsl
 	makedepends = modemmanager
 	makedepends = meson
