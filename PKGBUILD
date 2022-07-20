@@ -3,9 +3,9 @@
 _upkgname=asgardex
 _pkgname=ASGARDEX
 pkgname=asgardex-appimage
-pkgver=1.17.1
+pkgver=1.17.2
 msgver=(${pkgver//./})
-pkgrel=2
+pkgrel=1
 pkgdesc="Thorchain wallet desktop app"
 arch=('x86_64')
 url="https://github.com/thorchain/asgardex-electron/releases"
