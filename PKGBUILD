@@ -10,14 +10,14 @@ license=(custom:ISC)
 depends=()
 makedepends=()
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(1b9dec4912934057f430ef76bed717f6b3c69945768176b8b77bb67049e567b2)
+sha256sums=(60d2d492e1aa2550090606c838e7ff52aa57497d8a8df0159957c08cb98f39ad)
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname"
     make PREFIX=/usr
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname"
     make PREFIX=/usr DESTDIR="$pkgdir" install
 }
