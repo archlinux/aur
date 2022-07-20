@@ -1,50 +1,34 @@
-# Maintainer: Robert Greener <me@r0bert.dev>
-_cranname=Rdpack
-_cranver=2.3.1
-_updatedate=2022-06-08
-pkgname=r-${_cranname,,}
-pkgver=${_cranver//[:-]/.}
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+
+_pkgname=Rdpack
+_pkgver=2.3.1
+pkgname=r-${_pkgname,,}
+pkgver=2.3.1
 pkgrel=1
-pkgdesc="Update and Manipulate Rd Documentation Objects"
-arch=(any)
-url="https://cran.r-project.org/package=${_cranname}"
-license=()
+pkgdesc='Update and Manipulate Rd Documentation Objects'
+arch=('any')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('GPL')
 depends=(
-	"r>=2.15.0"
-)
-checkdepends=(
-	r-testthat
-	r-rstudioapi
-	r-rprojroot
-	r-gbrd
+  r
+  r-rbibutils
 )
 optdepends=(
-	r-testthat
-	r-rstudioapi
-	r-rprojroot
-	r-gbrd
+  r-gbrd
+  r-grdevices
+  r-rprojroot
+  r-rstudioapi
+  r-testthat
 )
-source=("https://cran.microsoft.com/snapshot/${_updatedate}/src/contrib/${_cranname}_${_cranver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('b53e5e9db53e31f514e2fef46bafa00bc7cd8828e36e5c933e28e9ac892d448a')
 
 build() {
-	mkdir -p build
-	R CMD INSTALL "${_cranname}" -l "${srcdir}/build"
-}
-
-check() {
-	if [ -d "${_cranname}/tests" ]
-	then
-  		cd "${_cranname}/tests"
-		for i in *.R; do
-			R_LIBS="${srcdir}/build" Rscript --vanilla $i
-		done
-	fi
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-	install -dm0755 "${pkgdir}/usr/lib/R/library"
-
-	cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
 }
-
-sha256sums=('b53e5e9db53e31f514e2fef46bafa00bc7cd8828e36e5c933e28e9ac892d448a')
+# vim:set ts=2 sw=2 et:
