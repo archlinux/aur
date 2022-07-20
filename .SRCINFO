@@ -1,0 +1,18 @@
+pkgbase = mplus-1-code-nerd-font
+	pkgdesc = M PLUS 1 Code Nerd Font
+	pkgver = 20220720
+	pkgrel = 1
+	url = https://mplusfonts.github.io/
+	arch = any
+	license = OFL
+	makedepends = fontforge
+	provides = mplus
+	conflicts = mplus
+	source = M_PLUS_1_Code-20220720.zip::https://fonts.google.com/download?family=M%20PLUS%201%20Code
+	source = https://github.com/ryanoasis/nerd-fonts/releases/download/2.2.0-RC/FontPatcher.zip
+	source = https://raw.githubusercontent.com/coz-m/MPLUS_FONTS/master/OFL.txt
+	sha256sums = SKIP
+	sha256sums = 69df3545b86dbea1702b9ec078920211463ebe0d30a3c693d616f24112796914
+	sha256sums = 04971e3fcee60b247395150d93b3616f6a0b092572332c96187b472976553abc
+
+pkgname = mplus-1-code-nerd-font
