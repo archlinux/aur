@@ -1,18 +1,18 @@
 # Maintainer: Campbell Jones <dev at serebit dot com>
 
 pkgname=budgie-screensaver-git
-pkgver=v5.0.r0.g07dcdfe
+pkgver=v5.0.2.r1.g57dfb33
 pkgrel=1
-pkgdesc="Budgie's fork of GNOME's legacy screensaver, latest git"
+pkgdesc="Budgie's fork of GNOME's legacy screensaver - latest git"
 arch=('x86_64')
-license=('GPL2')
+license=('GPL')
 url="https://github.com/BuddiesOfBudgie/budgie-screensaver"
-depends=('dbus-glib' 'budgie-desktop')
-makedepends=('git' 'intltool' 'gnome-common')
+depends=('budgie-desktop' 'dbus-glib' 'libgnomekbd')
+makedepends=('meson' 'git' 'intltool' 'gnome-common')
 optdepends=('gnome-backgrounds: default background')
 provides=('gnome-screensaver' 'budgie-screensaver')
 conflicts=('gnome-screensaver' 'budgie-screensaver')
-source=("${pkgname}::git+https://github.com/BuddiesOfBudgie/budgie-screensaver")
+source=("$pkgname"::"git+https://github.com/BuddiesOfBudgie/budgie-screensaver.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -20,17 +20,11 @@ pkgver() {
     git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-    cd "$pkgname"
-    arch-meson build --prefix=/usr --sysconfdir=/etc --libexecdir=lib/budgie-screensaver --buildtype plain
-}
-
 build() {
-    cd "$pkgname"
-    ninja -C build
+    arch-meson "$pkgname" build --libexecdir="lib/budgie-screensaver"
+    meson compile -C build
 }
 
 package() {
-    cd "$pkgname"
-    DESTDIR=$pkgdir ninja -C build install
+    meson install -C build --destdir "$pkgdir"
 }
