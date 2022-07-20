@@ -1,10 +1,10 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
+# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=bfind
 pkgver=3.0.1
 pkgrel=1
 pkgdesc="find alternative optimised for finding files rather then listing files"
-url="https://github.com/maandree/bfind"
+url="https://codeberg.org/maandree/bfind"
 arch=(any)
 license=(custom:ISC)
 depends=()
