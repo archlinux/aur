@@ -1,7 +1,7 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
 
 pkgname=agordejo
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A music production session manager"
 arch=(any)
@@ -11,9 +11,9 @@ groups=(pro-audio)
 depends=(hicolor-icon-theme new-session-manager python python-pyqt5
 python-pyxdg ttf-dejavu)
 source=(https://laborejo.org/downloads/$pkgname-$pkgver.tar.gz{,.sig})
-sha512sums=('9b4b2a9e8b80b25014ddf5882b6ea3864e925525f30a5e5253dcb410e3d7641729f1f6ce338e2a7f27294d97ed5776d5cbde1a67ab4dd60e3d59a0c78b71259d'
+sha512sums=('01fb3d1329f1bcc95e0f17d80ab65a2d99cb94e3864ded3818f83ccc6e4685966be545f073ad82c8bc76a120bcf5348a62511d52a28775cc563b6dc8a19f39ab'
             'SKIP')
-b2sums=('28a9c8e9959ce4358ea5a7512dfe25f6b6f3be028a1321116eafb244880828dc1aa5b57c1e42b1571f184bee1764c919323da50b41506ad735083800c73ccbd5'
+b2sums=('7261b55cc764ca432bbdf13fb54ab4b8b7049be249410f553aff9d937f0a816c76dae7e534aa4dd9d4a26ce983e219db4e25f89c1619721e0e4e8f70bf8cbdb4'
         'SKIP')
 validpgpkeys=('45D952EF384ADFBB00913E3428C6A306F2909FEE') # Nils Hilbricht <nils@hilbricht.com>
 
