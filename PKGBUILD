@@ -3,7 +3,7 @@
 
 pkgname=python-pyscaffold
 _pkg=PyScaffold
-pkgver=4.2.3
+pkgver=4.3
 pkgrel=1
 pkgdesc="Python project template generator with batteries included"
 url="https://github.com/pyscaffold/pyscaffold"
@@ -16,23 +16,23 @@ depends=(
 	'python-platformdirs'
 	'python-tomlkit')
 optdepends=(
-	'python-django: Scaffold Django projects.'
 	'python-cookiecutter: Create custom scaffold templates.'
+	'python-django: Scaffold Django projects.'
 	'python-pre-commit: Use Git pre-commit hooks.'
-	'python-sphinx: Support building documentation with Sphinx.'
-	'python-pytest: Use the integrated unit testing.'
+	'python-pytest-cov: Generate a coverage report for your project.'
 	'python-pytest-runner: Use the integrated unit testing.'
-	'python-pytest-cov: Generate a coverage report for your project.')
+	'python-pytest: Use the integrated unit testing.'
+	'python-sphinx: Support building documentation with Sphinx.')
 makedepends=(
-	'python-setuptools'
-	'python-setuptools-scm'
 	'python-build'
 	'python-installer'
+	'python-setuptools'
+	'python-setuptools-scm'
 	'python-wheel')
 # checkdepends=('python-pytest' 'python-pytest-virtualenv')
 changelog=CHANGELOG.rst
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('58c7d9ce296cc26ac377061365c2f87cd8e28f46e4fb2c96ee48f9c64e33ac4a')
+sha256sums=('1a8c39bbad9abc121d6e126035740ba5f043434abb432f368a3a76596184b3ed')
 
 build() {
 	cd "$_pkg-$pkgver"
@@ -52,7 +52,6 @@ build() {
 package() {
 	cd "$_pkg-$pkgver"
 	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
-
 	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
 	install -d "$pkgdir/usr/share/licenses/$pkgname/"
 	ln -s \

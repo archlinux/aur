@@ -13,15 +13,28 @@ Changelog
 Current versions
 ================
 
+Version 4.3, 2022-07-20
+-----------------------
+
+- Removed ``wheel`` from the set of build dependencies in ``pyproject.toml``
+  (it is redundant since ``setuptools`` already includes it), :pr:`652`.
+- Updated ``freebsd`` configuration in ``.cirrus.yml`` (with workaround for
+  ``pipx`` in 2022Q3 repo), :pr:`657`.
+
+
+Older versions
+==============
+
+Version 4.2.3, 2022-06-17
+-------------------------
+
+- Automatically create directory when saving config file, :issue:`648`
+
 Version 4.2.2, 2022-05-26
 -------------------------
 
 - Update ``.github/workflows/ci.yml`` template, :pr:`637` and :pr:`640`
 - Update note in ``skeleton.py`` template clarifying file can be renamed, :pr:`641`
-
-
-Older versions
-==============
 
 Version 4.2.1, 2022-03-16
 -------------------------
