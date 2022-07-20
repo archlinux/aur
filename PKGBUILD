@@ -2,7 +2,7 @@
 
 _name=pytest-metadata
 pkgname=python-pytest-metadata
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Plugin for accessing test session metadata"
 arch=(any)
@@ -11,12 +11,11 @@ license=(MPL2)
 depends=(python-pytest)
 makedepends=(python-build python-installer python-poetry python-wheel)
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha512sums=('1dc27fa66aec03d1a2fcfa2b0c14a94c0bdca52c13df6e8f22a4a7d2fa7f91a054046c7f71d97277ee049f317fe1ff001f7122905b04bbe200611c842bcce2df')
-b2sums=('95868ad0f26f84b3544610b4a3575c42f0aca665ac44861e8ecc240e4866c1409fca729be508791b19f9c78ab8fd7dcbf563ba183bbcea7b36c2e0a2061481c0')
+sha512sums=('2d07a20fafbc84ad308d4a2542df2dc245baf87bb3348047a2ebc0779d30c9c1f93522b66356a8a985619edfad0cff49b76e34ea46e0432a7568416830f33e16')
+b2sums=('7b4b7b15509701e569e9e58df7bea9341c56a47a1e3d59eb3c51817e2956abf9bd0de70a189eafc7fa15fd49044791f9a60f66d705fcea0286dcf5fe29f0fc62')
 
 build() {
   cd $_name-$pkgver
-  python setup.py build
   python -m build --wheel --no-isolation
 }
 
