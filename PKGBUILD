@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-njs
-pkgver=0.7.5 # http://hg.nginx.org/njs/tags
+pkgver=0.7.6 # http://hg.nginx.org/njs/tags
 pkgrel=1
 
 _modname="${pkgname#nginx-mainline-mod-}"
@@ -14,7 +14,7 @@ url="https://nginx.org/en/docs/njs_about.html"
 license=('CUSTOM')
 
 source=(njs-$pkgver.tar.gz::http://hg.nginx.org/njs/archive/$pkgver.tar.gz)
-sha256sums=('e8b5985efceaa575407e851d314b375de644c90106b233e7411fc3dfeee3f47e')
+sha256sums=('8214f95928ac73935d896db0f8cf4ffc258f9f41ca6b7c1c1f4baca3e2f34acb')
 
 prepare() {
 	mkdir -p build
