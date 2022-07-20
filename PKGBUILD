@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rdpack
-_pkgver=2.3.1
+_pkgver=2.4
 pkgname=r-${_pkgname,,}
-pkgver=2.3.1
+pkgver=2.4
 pkgrel=1
 pkgdesc='Update and Manipulate Rd Documentation Objects'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b53e5e9db53e31f514e2fef46bafa00bc7cd8828e36e5c933e28e9ac892d448a')
+sha256sums=('7652add12b30fcba1f3a12493a089a4166079e78c47b95802a98595a3ff53581')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
