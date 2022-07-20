@@ -2,7 +2,7 @@
 # Contributor: Aris Synodinos <arissynod-gmail-com>
 
 pkgname=gazebo-git
-pkgver=r32519.e2849f96ac
+pkgver=r32522.20705f51af
 pkgrel=1
 pkgdesc="A multi-robot simulator for outdoor environments. Git version."
 arch=('i686' 'x86_64')
@@ -32,11 +32,6 @@ _pkgname=gazebo
 pkgver() {
   cd "${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-  sed -i 's/putstr/printf/g' gazebo/gui/qgv/private/QGVCore.h
 }
 
 build() {
