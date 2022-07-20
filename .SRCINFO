@@ -6,6 +6,7 @@ pkgbase = tachidesk-sorayomi-bin
 	arch = x86_64
 	license = MPL2
 	depends = zenity
+	depends = xdg-user-dirs
 	optdepends = tachidesk-server
 	provides = tachidesk-sorayomi
 	conflicts = tachidesk-sorayomi
