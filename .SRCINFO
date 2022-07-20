@@ -1,11 +1,11 @@
 pkgbase = budgie-desktop-git
-	pkgdesc = A feature-rich, modern desktop - latest git
+	pkgdesc = A familiar, modern desktop environment - latest git
 	pkgver = 10.6.r63.g84edf57d
 	pkgrel = 1
 	url = https://github.com/BuddiesOfBudgie/budgie-desktop
 	arch = x86_64
-	license = GPL2
-	license = LGPL2.1
+	license = GPL
+	license = LGPL
 	makedepends = meson
 	makedepends = git
 	makedepends = gobject-introspection
@@ -30,6 +30,8 @@ pkgbase = budgie-desktop-git
 	provides = budgie-desktop
 	conflicts = budgie-desktop
 	source = budgie-desktop-git::git+https://github.com/BuddiesOfBudgie/budgie-desktop.git
+	source = gvc::git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = budgie-desktop-git
