@@ -1,25 +1,26 @@
 ## Config the theme file from arg. or use fallback theme file
 if [ $# -gt 0 ]; then
-    if [[ -r "${1}" ]]; then
-        _POSH_THEME="${1}"
-    else
-        _POSH_THEME="/usr/share/oh-my-posh/themes/jandedobbeleer.omp.json"
-    fi
-else
+  if [[ -r "${1}" ]]; then
+    _POSH_THEME="${1}"
+  else
     _POSH_THEME="/usr/share/oh-my-posh/themes/jandedobbeleer.omp.json"
+  fi
+else
+  _POSH_THEME="/usr/share/oh-my-posh/themes/jandedobbeleer.omp.json"
 fi
 
 ## Apply the theme file
 if [[ -r "${_POSH_THEME}" ]]; then
-    eval "$(oh-my-posh init zsh --config \"${_POSH_THEME}\")"
+  ${POSH_THEME}=${_POSH_THEME}
+  eval "$(oh-my-posh init zsh)"
 else
-    echo "Warning: \"${_POSH_THEME}\" is unreachable!"
-    echo "Oh My Posh theme is disabled! Using the fallback \"elite2\" theme now!"
-    echo "Please check your theme file's existance and read permission!"
-    echo "Tips: run \"sudo chmod +r -R /usr/share/oh-my-posh/\" may helps when there're permission issues."
-    autoload -U promptinit
-    promptinit
-    prompt elite2 green yellow
+  echo "Warning: \"${_POSH_THEME}\" is unreachable!"
+  echo "Oh My Posh theme is disabled! Using the fallback \"elite2\" theme now!"
+  echo "Please check your theme file's existance and read permission!"
+  echo "Tips: run \"sudo chmod +r -R /usr/share/oh-my-posh/\" may helps when there're permission issues."
+  autoload -U promptinit
+  promptinit
+  prompt elite2 green yellow
 fi
 
 
