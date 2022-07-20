@@ -1,8 +1,8 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-headers-more
-pkgver=0.33
-pkgrel=33
+pkgver=0.34
+pkgrel=1
 
 _modname="${pkgname#nginx-mainline-mod-}"
 
@@ -14,7 +14,7 @@ url="https://github.com/openresty/headers-more-nginx-module"
 license=('BSD')
 
 source=(https://github.com/openresty/$_modname-nginx-module/archive/v$pkgver/$_modname-$pkgver.tar.gz)
-sha256sums=('a3dcbab117a9c103bc1ea5200fc00a7b7d2af97ff7fd525f16f8ac2632e30fbf')
+sha256sums=('0c0d2ced2ce895b3f45eb2b230cd90508ab2a773299f153de14a43e44c1209b3')
 
 prepare() {
 	mkdir -p build
