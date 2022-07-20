@@ -7,7 +7,7 @@ _srcname=linux-5.18
 _major=5.18
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=8
+_minor=12
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 [[ -z $_minor ]] && _fullver=$_major || _fullver=$_major.$_minor
@@ -30,6 +30,7 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-HID-apple-Properly-handle-function-keys-on-Keychron-.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -37,12 +38,13 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
-b2sums=('fea4fb176e35df06a34e06e9dcc96894b9ba9f514c69495c6bb3aa61cc678cf6e2d6b712f456fc4d00e539943cf46fed682909c276d5014cc28a6bc08a4962d7'
+b2sums=('cc22236a1dca4a41b2ad4be072555b3618d308e12d13badb541346ad37aa3e880d45cadb1169bdc475003479900fe046a7bd5e5b5fd6f326418d505d0a74acbc'
         'SKIP'
-        '92231982abac349aa682fc1af12a3707ac1b68ffc970a0679134f03e2c56a46ae6273c67c05d20bed100dda1c58cb9916de2757552405c280b52b1973f2da7a8'
+        '000df730f6651173292a43745edd615b501d959f4d963a11df600a6bcb378db0750023c9025c8d63091658d7540693cc0e486f3bae3b49610135ca34f0b8edd4'
         'SKIP'
         'aeffb500a9cf0f1265fc62fa9260bdddac8ba47bf01e3b2732d961ea7d58ae4886563bc7076fe920d4fca3ad19588bfe8f9368e77fdc61336c894488bab41638'
-        'e226fb1f498a739a9a65cf8bb542978b0573ba7630e82516d2393dcdcdd42910adc7107d6174eed349a513643092a737acf552c19d27f896f4f771de3d1e00f1')
+        'e226fb1f498a739a9a65cf8bb542978b0573ba7630e82516d2393dcdcdd42910adc7107d6174eed349a513643092a737acf552c19d27f896f4f771de3d1e00f1'
+        '35e8ef4806040797f2844d076c92728ad55adb0c29e906399afe6155e2657a2784ffea61e49ef6a9910ed392b621663a180fa0d7750e92a01afd5446bce46a5a')
 
 
 export KBUILD_BUILD_HOST=archlinux
