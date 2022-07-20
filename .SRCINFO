@@ -10,6 +10,7 @@ pkgbase = tachidesk-sorayomi
 	makedepends = clang
 	makedepends = ninja
 	depends = zenity
+	depends = xdg-user-dirs
 	optdepends = tachidesk-server
 	source = https://github.com/Suwayomi/Tachidesk-Sorayomi/archive/refs/tags/0.2.3.tar.gz
 	sha256sums = 11f5774119364637163fbd791248dc1d035c9a5c2e7ab9b4a82ddcc79fcca939
