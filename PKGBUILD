@@ -2,8 +2,8 @@
 
 pkgname=clipcc
 _pkgname=clipcc
-pkgver=3.1.2
-pkgrel=3
+pkgver=3.1.3
+pkgrel=1
 pkgdesc="ClipCC is a powerful scratch fork with plenty of extra features."
 conflicts=("clipcc-beta-bin" "clipcc-bin")
 arch=("x86_64")
