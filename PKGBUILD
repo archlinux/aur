@@ -1,9 +1,9 @@
 # Maintainer: diedbydisgust <sergio.cabrerafalcon@gmail.com>
 pkgname=kodi-plugin-video-picta-bin
-pkgver=v2.0.0
+pkgver=v2.1.0
 pkgrel=1
 pkgdesc="Kodi mediacenter video plugin for picta.cu"
-_gitname=plugin.video.picta
+_gitname=oleksis/plugin.video.picta
 _gitpkg=plugin.video.picta-kodi_19
 arch=('x86_64')
 url="https://github.com/oleksis/plugin.video.picta"
@@ -12,9 +12,9 @@ groups=('kodi')
 provides=('kodi-plugin-video-picta')
 makedepends=('unzip')
 depends=('python-requests' 'kodi-addon-inputstream-adaptive' 'kodi-addon-inputstream-ffmpegdirect')
-source=("https://github.com/oleksis/$_gitname/releases/download/$pkgver/$_gitpkg.zip")
+source=("https://github.com/$_gitname/releases/download/$pkgver/$_gitpkg.zip")
 
-sha256sums=('f2f20222a0776d2b49930e00d4f277345fa451ef5d587813999366ed90cf48e0')
+sha256sums=('256821af92327439103f53259c81b27882411a10b94323d937b86c7f4d2db9bb')
 
 package() {
     mkdir -p $pkgdir/usr/share/kodi/addons
