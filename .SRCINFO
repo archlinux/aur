@@ -1,10 +1,11 @@
 pkgbase = r7-office
 	pkgdesc = An enterprise office suite that combines text, spreadsheet and presentation editors
 	pkgver = 7.1.1
-	pkgrel = 1
+	pkgrel = 10
 	url = https://r7-office.ru/
 	arch = x86_64
 	license = custom:JSC R7
+	makedepends = icoutils
 	depends = curl
 	depends = gtk3
 	depends = gtk2
