@@ -1,6 +1,6 @@
 # Maintainer: 4censord <mail@business-insulting.de>
 pkgver=7.22.0
-pkgrel=2
+pkgrel=3
 
 pkgbase=xe-guest-utilities-xcp-ng
 pkgname=('xe-guest-utilities-xcp-ng' 'xenstore-xcp-ng')
@@ -33,7 +33,7 @@ build() {
   cd $srcdir/xe-guest-utilities-$pkgver
   go mod tidy
   go mod download
-  make
+  make PRODUCT_MAJOR_VERSION=7 PRODUCT_MINOR_VERSION=22 PRODUCT_MICRO_VERSION=0 NUMERIC_BUILD_NUMBER=3
 }
 
 package_xenstore-xcp-ng() {
