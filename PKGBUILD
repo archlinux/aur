@@ -2,13 +2,12 @@
 # Maintainer: e-search
 # Contributor: e-search
 pkgname=e-search
-pkgver=1.7.0
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="识屏 · 搜索"
 arch=('x86_64')
 url="https://esearch.vercel.app/"
 license=('GPL3')
-groups=('')
 depends=('electron18' 'at-spi2-core' 'clion' 'desktop-file-utils' 'glib2' 'gtk3' 'hicolor-icon-theme' 'kde-cli-tools' 'libdrm' 'libnotify' 'libxcb' 'libxtst' 'mesa' 'trash-cli' 'xdg-utils' 'libappindicator-gtk3')
 optdepends=('alsa-lib'
             'apparmor'
@@ -18,7 +17,7 @@ conflicts=('e-search-git')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://download.fastgit.org/xushengfeng/eSearch/releases/download/${pkgver}/eSearch_${pkgver}.aur")
-sha512sums=('fb645b379bc550571a80a8af73414b080a15a1176441c0dae11cfc4a94d2c7952dc2ddd14ddac4d361a195a1eded80f8de9ebb715fd0fdcb0652ca2c185bb97d')
+sha512sums=('bcd8bec86bbbcad969d2f65c7e63bd5f3f160342c728a6ee7dc5eb39b903745c1bf89c082c36fa1ca644beab42c98be5fec595345b89c80c53bf926bd4edd229')
 
 package(){
 
