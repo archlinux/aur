@@ -3,7 +3,7 @@
 pkgname=python-bitbox02
 _pkgname=py-bitbox02
 _gitname=bitbox02-firmware-py-bitbox02
-pkgver=6.0.0
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="Python code to communicate with BitBox02 cryptocurrency wallet"
 arch=('any')
@@ -13,7 +13,7 @@ url="https://github.com/digitalbitbox/bitbox02-firmware"
 license=('Apache')
 options=('!emptydirs')
 source=(https://github.com/digitalbitbox/bitbox02-firmware/archive/$_pkgname-$pkgver.tar.gz)
-sha256sums=('c6696f9942a4e973ef6183f4ba8e2e55db8b5301a640803a8366f1f0f6f70c0f')
+sha256sums=('65dbd89eec4039e117ed420a58e63c6ed9cac173d04e16c050dc57620301bc1a')
 
 build() {
   cd "$srcdir/$_gitname-$pkgver/py/bitbox02"
