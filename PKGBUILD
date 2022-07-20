@@ -1,8 +1,8 @@
 # Maintainer: Ferdinand B <theferdi265@gmail.com>
 
 pkgname=wl-mirror-git
-pkgver=0.11.2.r8.g30c4462
-pkgrel=1
+pkgver=0.12.0.r1.g697067c
+pkgrel=2
 pkgdesc="a simple Wayland output mirror client (git version)"
 url="https://github.com/Ferdi265/wl-mirror"
 arch=('i686' 'x86_64')
@@ -41,8 +41,7 @@ build() {
     cmake -B build -S "$srcdir/wl-mirror" \
         -DINSTALL_EXAMPLE_SCRIPTS=ON \
         -DINSTALL_DOCUMENTATION=ON \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_MANDIR=/usr/share/man
+        -DCMAKE_INSTALL_PREFIX=/usr
     make -C build
 }
 
