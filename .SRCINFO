@@ -1,20 +1,23 @@
 pkgbase = inform
-	pkgdesc = Interactive fiction compiler
-	pkgver = 6.36.r4
+	pkgdesc = The Inform 6 compiler, standard library, and PunyInform library
+	pkgver = 6.40.r1
 	pkgrel = 1
-	url = http://www.inform-fiction.org/
+	url = https://gitlab.com/DavidGriffith/inform6unix
 	arch = aarch64
 	arch = arm
 	arch = armv6h
 	arch = armv7h
+	arch = i486
 	arch = i686
 	arch = pentium4
 	arch = x86_64
 	groups = inform
 	license = Artistic2.0
 	license = MIT
-	depends = glibc
-	source = http://ifarchive.org/if-archive/infocom/compilers/inform6/source/inform-6.36-r4.tar.gz
-	md5sums = e6d58db0dcef317f6801b5ef2b43e9f7
+	depends = perl
+	depends = ruby
+	provides = punyinform=4.0
+	source = http://ifarchive.org/if-archive/infocom/compilers/inform6/source/inform-6.40-r1.tar.gz
+	b2sums = 9178c5383fd9469694b0b0ee6a27e01652643c504d36fea61a424e1ec93f91adb264fd16fd9c217a806e22a381c91448b5a60370cf3da6a692184d7cd32da961
 
 pkgname = inform

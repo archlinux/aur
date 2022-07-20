@@ -1,32 +1,39 @@
-# maintainer: libele <libele@disroot.org>
-# maintainer: Beej <beej@beej.us>
-
-# contributor: Alessandro Schillaci < http://slade.altervista.org >
+# Maintainer: libele <libele@disroot.org>
+# Contributor: Beej <beej@beej.us>
 
 pkgname=inform
-pkgver=6.36.r4
-_ifrel="6.36-r4"
+pkgver=6.40.r1
+_ifrel="6.40-r1"
 pkgrel=1
-pkgdesc="Interactive fiction compiler"
-arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'pentium4' 'x86_64')
-url="http://www.inform-fiction.org/"
+pkgdesc="The Inform 6 compiler, standard library, and PunyInform library"
+arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
+url="https://gitlab.com/DavidGriffith/inform6unix"
 license=('Artistic2.0' 'MIT')
-depends=('glibc')
 groups=(inform)
+depends=('perl' 'ruby')
+provides=('punyinform=4.0')
 source=("http://ifarchive.org/if-archive/infocom/compilers/inform6/source/${pkgname}-${_ifrel}.tar.gz")
-
-md5sums=('e6d58db0dcef317f6801b5ef2b43e9f7')
+b2sums=('9178c5383fd9469694b0b0ee6a27e01652643c504d36fea61a424e1ec93f91adb264fd16fd9c217a806e22a381c91448b5a60370cf3da6a692184d7cd32da961')
 
 build() {
   cd "${srcdir}/${pkgname}-${_ifrel}"
-  make PREFIX=/usr MAN_PREFIX=/usr/share
+  make PREFIX=/usr
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${_ifrel}"
-  make REAL_PREFIX=/usr PREFIX="${pkgdir}"/usr MAN_PREFIX="${pkgdir}"/usr/share install
+  make REAL_PREFIX=/usr PREFIX="${pkgdir}"/usr install
+
+  cd "${pkgdir}"/usr/share/inform/std/lib
+  install -Dm644 ARTISTIC "${pkgdir}"/usr/share/licenses/inform/ARTISTIC
+
+  cd "${pkgdir}"/usr/share/inform/punyinform
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/punyinform/LICENSE
+
+  cd "${pkgdir}"/usr/man/man1
+  install -Dm644 inform.1 "${pkgdir}"/usr/share/man/man1/inform.1
+  rm -rf "${pkgdir}"/usr/man
 
   cd "${pkgdir}"/usr/bin
-  rm pblorb punyinform scanblorb
-  mv punyinform.sh punyinform
+  rm pblorb scanblorb
 }
