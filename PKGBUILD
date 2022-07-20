@@ -2,7 +2,7 @@
 # Contributor: Archie <archie-woc@ya.ru>
 # Contributor: Vasiliy Stelmachenok <ventureo@yandex.ru>
 pkgname=yamux
-pkgver=v57
+pkgver=v58
 pkgrel=2
 pkgdesc="Yandex Music client"
 arch=('x86_64')
