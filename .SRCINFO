@@ -1,15 +1,14 @@
 pkgbase = hunspell-sk
 	pkgdesc = Slovak dictionary for Hunspell
-	pkgver = 20110228
+	pkgver = 2.4.4
 	pkgrel = 1
-	url = http://www.sk-spell.sk.cx/hunspell-sk
+	url = https://github.com/sk-spell/hunspell-sk
 	arch = any
 	license = GPL2
 	license = LGPL2.1
-	license = MPL
+	license = MPL1.1
 	optdepends = hunspell: Hunspell spell checking library and program
-	source = http://www.sk-spell.sk.cx/files/hunspell-sk-20110228.zip
-	sha512sums = 594ac0ea0b4897fde335d3a6e3cb394e02ef643fddc80e296f756ba73c1fb0c5d8678b190c75289de861fde7d3237cbfd1e9a709fcd12a39868289a9501f934a
+	source = https://github.com/sk-spell/hunspell-sk/releases/download/v2.4.4/2.4.4-sk@dictionaries.addons.mozilla.org.xpi
+	sha512sums = 50748a913b46fac7a7df2498e1001bbec441e58769c13dd1f78841b5ee9d2b1ffbc56e1e5f36c6ced2af8b718185f99491868533d1c2ed649ec5001ce8e61065
 
 pkgname = hunspell-sk
-
