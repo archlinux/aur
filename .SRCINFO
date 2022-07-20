@@ -1,4 +1,4 @@
-pkgbase = goneovim-bin-git
+pkgbase = goneovim-git-bin
 	pkgdesc = A Neovim GUI written in Go
 	pkgver = 0.6.2
 	pkgrel = 1
@@ -19,4 +19,4 @@ pkgbase = goneovim-bin-git
 	source = git+https://github.com/akiyosi/goneovim.git
 	md5sums = SKIP
 
-pkgname = goneovim-bin-git
+pkgname = goneovim-git-bin

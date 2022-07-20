@@ -3,7 +3,7 @@
 
 _pkgname=goneovim
 _author=akiyosi
-pkgname=$_pkgname-bin-git
+pkgname=$_pkgname-git-bin
 pkgver=0.6.2
 pkgrel=1
 pkgdesc="A Neovim GUI written in Go"
