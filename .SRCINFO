@@ -1,7 +1,7 @@
 pkgbase = ossia-score
 	pkgdesc = ossia score, an interactive sequencer for the intermedia arts
 	pkgver = 3.0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ossia.io
 	arch = x86_64
 	license = GPLv3
@@ -27,6 +27,8 @@ pkgbase = ossia-score
 	optdepends = libfreenect2
 	optdepends = qt5-shadertools-git
 	optdepends = ysfx-git
+	optdepends = leap-motion-sdk
+	optdepends = leap-motion-driver
 	provides = ossia-score=3.0.12
 	conflicts = ossia-score-git
 	replaces = i-score
