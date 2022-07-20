@@ -1,19 +1,19 @@
 # Maintainer  : Matthias Fulz < mfulz [at] olznet [dot] de >
 
 pkgname=openvas-scanner
-pkgver=21.4.2
+pkgver=22.4.0
 pkgrel=1
 pkgdesc='Vulnerability scanning Daemon'
 arch=('x86_64')
 url="https://github.com/greenbone/openvas-scanner"
 license=('GPL')
-depends=('gvm-libs-20' 'redis' 'rsync')
+depends=('gvm-libs-20>=22.4.0' 'redis' 'rsync')
 makedepends=('cmake' 'doxygen')
 groups=('greenbone-vulnerability-manager')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/greenbone/openvas-scanner/archive/v${pkgver}.tar.gz"
         "greenbone-nvt-sync.timer"
         "greenbone-nvt-sync.service")
-sha512sums=('12096901b58a80e05c268808ce3cd18a68151d4d7d5a1c7fde6cd50031bdf08759df47123599aa95fab23a90ac81a9fbbf3ba7f8d89ff1f7f4d268029deca4d6'
+sha512sums=('9fa712eedc20ebefafeb4050a1baa7c6016924bd4dc5c22b623d87040c01fce092153ff94185e5ebb3a22a675a2be82c7938fb92514f14d4e981767330c24014'
             '2df63297cd9bd1cfb7b774152b1791ff946a1a410e563e54212652d847063b3c22b5362cd287b1bd73684be1fbd66464a2f8bb79b92cd086ba58e9a801d675ec'
             '1ef913c24721533b0f779047532de63d195e8498885b90972a7bbbfb734444c0f7cbdcc52c437b2ce773881d45eadfcec03fcd00886e02962cb06d318d0c7c96')
 
