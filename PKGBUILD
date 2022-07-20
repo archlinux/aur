@@ -10,7 +10,7 @@ license=('GPL2')
 conflicts=('urlscan')
 provides=('urlscan')
 depends=('python' 'python-urwid')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=('git+https://github.com/firecat53/urlscan.git')
 md5sums=('SKIP')
 install=urlscan.install
@@ -22,10 +22,10 @@ pkgver() {
 
 build() {
     cd "$_gitname"
-    ./setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$_gitname"
-  ./setup.py install --root=${pkgdir} --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
