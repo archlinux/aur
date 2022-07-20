@@ -1,0 +1,17 @@
+pkgbase = kiss-git
+	pkgdesc = A GUI utility to change the server of .wrl files for Sapari
+	pkgver = r36.8afd43a
+	pkgrel = 0
+	url = https://github.com/KodiCraft/KISS
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-pyqt5
+	depends = python-requests
+	provides = kiss
+	conflicts = kiss
+	source = kiss::git+https://github.com/KodiCraft/KISS
+	md5sums = SKIP
+
+pkgname = kiss-git
