@@ -1,0 +1,16 @@
+pkgbase = archnews
+	pkgdesc = Show the latest news from Arch Linux official page
+	pkgver = 20220720
+	pkgrel = 1
+	url = https://gist.github.com/Hayao0819/897be45dfedb0aa4fcc2735a0831966f
+	arch = any
+	license = WTFPL
+	depends = zenity
+	source = archnews.sh::https://gist.githubusercontent.com/Hayao0819/897be45dfedb0aa4fcc2735a0831966f/raw/ArchNews.sh
+	source = show-archnews.desktop::https://gist.githubusercontent.com/Hayao0819/897be45dfedb0aa4fcc2735a0831966f/raw/show-archnews.desktop
+	source = FasBashLib::git+https://github.com/Hayao0819/FasBashLib.git#commit=3198a759281504ccb2af4df76fca192be9a81e17
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = archnews
