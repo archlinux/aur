@@ -1,6 +1,6 @@
 pkgbase = remark-lsp-git
 	pkgdesc = A language server to lint and format markdown files with remark
-	pkgver = 1.1.0.r0.g1b6c7fe
+	pkgver = 2.0.0.r0.gae2d737
 	pkgrel = 1
 	url = https://github.com/remarkjs/remark-language-server
 	arch = x86_64

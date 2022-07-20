@@ -1,7 +1,7 @@
 # Maintainer: michaelkuc6 <michaelkuc6 at gmail dot com>
 _pkgname=remark-lsp
 pkgname="${_pkgname}-git"
-pkgver=1.1.0.r0.g1b6c7fe
+pkgver=2.0.0.r0.gae2d737
 pkgrel=1
 pkgdesc="A language server to lint and format markdown files with remark"
 arch=('x86_64')
@@ -24,7 +24,6 @@ pkgver() {
 
 package() {
 	cd "$srcdir/${_pkgname}"
-	diff --git a/PKGBUILD b/PKGBUILD
 	BINARCHIVE="$(npm pack --cache "${srcdir}/npm-cache")"
 	npm install -g --prefix "${pkgdir}/usr" "${BINARCHIVE}"
 	install -D -m644 license "${pkgdir}/usr/share/licenses/${pkgname}/README.txt"
