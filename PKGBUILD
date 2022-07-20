@@ -66,13 +66,20 @@ _mq_deadline_disable=y
 _kyber_disable=y
 
 ### Enable multigenerational LRU
-_lru_enable=y
+# ATTENTION - one of three predefined values should be selected!
+# 'standard' - enable multigenerational LRU 
+# 'stats' - enable multigenerational LRU with stats
+# 'none' - disable multigenerational LRU
+_lru_config='standard'
 
 ## Enable DAMON
 _damon=y
 
-## enable SPECULATIVE_PAGE_FAULT
-_spf_enable=y
+### Enable SPECULATIVE_PAGE_FAULT
+# ATTENTION - one of two predefined values should be selected!
+# 'standard' - enable SPECULATIVE_PAGE_FAULT
+# 'stats' - enable support SPECULATIVE_PAGE_FAULT with stats
+_spf_config='standard'
 
 ## Enable Linux Random Number Generator
 _lrng_enable=y
@@ -127,9 +134,8 @@ _stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
-arch=(x86_64 x86_64_v3)
 pkgdesc='Linux BORE scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=1
+pkgrel=2
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -207,6 +213,7 @@ prepare() {
     echo "Setting config..."
     cp ../config .config
 
+    ### Select CPU optimization
     if [ -n "$_processor_opt" ]; then
         MARCH=$(echo $_processor_opt|tr '[:lower:]' '[:upper:]'&&echo)
         MARCH2=M${MARCH}
@@ -214,6 +221,7 @@ prepare() {
         scripts/config -k --enable CONFIG_${MARCH2}
     fi
 
+    ### Use autooptimization
     if [ -n "$_use_auto_optimization" ]; then
         "${srcdir}"/auto-cpu-optimization.sh
     fi
@@ -243,8 +251,8 @@ prepare() {
         scripts/config --enable SCHED_BORE
     elif [ "$_cpusched" = "tt" ]; then
         echo "Selecting TT Scheduler..."
-        scripts/config --enable TT_SCHED
-        scripts/config --enable TT_ACCOUNTING_STATS
+        scripts/config --enable TT_SCHED \
+            --enable TT_ACCOUNTING_STATS
     elif [ "$_cpusched" = "cfs" ]; then
         echo "Selecting Completely Fair Scheduler..."
     elif [ "$_cpusched" = "hardened" ]; then
@@ -259,12 +267,14 @@ prepare() {
         exit
     fi
 
+    ### Enable KCFI
     if [ -n "$_use_kcfi" ]; then
         echo "Enabling kCFI"
         scripts/config --enable ARCH_SUPPORTS_CFI_CLANG \
             --enable CFI_CLANG
     fi
 
+    ### Select LLVM level
     if [ "$_use_llvm_lto" = "thin" ]; then
         echo "Enabling LLVM THIN LTO..."
         scripts/config --enable LTO \
@@ -291,6 +301,7 @@ prepare() {
         scripts/config --enable LTO_NONE
     fi
 
+    ### Select tick rate
     if [ "$_HZ_ticks" = "1000" ]; then
         echo "Setting tick rate to 1k Hz..."
         scripts/config --disable HZ_300 \
@@ -315,6 +326,7 @@ prepare() {
         echo "Setting tick rate to 300Hz..."
     fi
 
+    ### Disable NUMA
     if [ -n "$_NUMAdisable" ]; then
         echo "Disabling NUMA from kernel config..."
         scripts/config --disable NUMA \
@@ -331,16 +343,19 @@ prepare() {
             --disable NEED_MULTIPLE_NODES
     fi
 
+    ### Disable MQ Deadline I/O scheduler
     if [ -n "$_mq_deadline_disable" ]; then
         echo "Disabling MQ-Deadline I/O scheduler..."
         scripts/config --disable MQ_IOSCHED_DEADLINE
     fi
 
+    ### Disable Kyber I/O scheduler
     if [ -n "$_kyber_disable" ]; then
         echo "Disabling Kyber I/O scheduler..."
         scripts/config --disable MQ_IOSCHED_KYBER
     fi
 
+    ### Select performance governor
     if [ -n "$_per_gov" ]; then
         echo "Setting performance governor..."
         scripts/config --disable CPU_FREQ_DEFAULT_GOV_SCHEDUTIL \
@@ -350,6 +365,7 @@ prepare() {
             --enable PCIE_BUS_PERFORMANCE
     fi
 
+    ### Select tick type
     if [ "$_tickrate" = "perodic" ]; then
         echo "Enabling periodic ticks..."
         scripts/config --disable NO_HZ_IDLE \
@@ -376,6 +392,7 @@ prepare() {
             --enable CONTEXT_TRACKING
     fi
 
+    ### Select preempt type
     if [ "$_preempt" = "full" ]; then
         echo "Enabling low latency preempt..."
         scripts/config --enable PREEMPT_BUILD \
@@ -405,12 +422,14 @@ prepare() {
             --disable PREEMPT_DYNAMIC
     fi
 
+    ### Enable O3
     if [ -n "$_cc_harder" ]; then
         echo "Enabling KBUILD_CFLAGS -O3..."
         scripts/config --disable CC_OPTIMIZE_FOR_PERFORMANCE \
             --enable CC_OPTIMIZE_FOR_PERFORMANCE_O3
     fi
 
+    ### Enable bbr2
     if [ -n "$_tcp_bbr2" ]; then
         echo "Disabling TCP_CONG_CUBIC..."
         scripts/config --module TCP_CONG_CUBIC \
@@ -420,25 +439,57 @@ prepare() {
             --set-str DEFAULT_TCP_CONG bbr2
     fi
 
+    ### Enable FULLCONENAT
     if [ -n "$_nf_cone" ]; then
         echo "Enabling FULLCONENAT..."
         scripts/config --module IP_NF_TARGET_FULLCONENAT \
             --module NETFILTER_XT_TARGET_FULLCONENAT
     fi
 
-    if [ -n "$_spf_enable" ]; then
-        echo "Enabling SPECULATIVE_PAGE_FAULT LRU..."
-        scripts/config --enable SPECULATIVE_PAGE_FAULT
+    ### Select SPF config
+    if [ "$_spf_config" = "standard" ]; then
+       echo "Enabling SPECULATIVE_PAGE_FAULT..."
+       scripts/config --enable CONFIG_SPECULATIVE_PAGE_FAULT \
+           --disable CONFIG_SPECULATIVE_PAGE_FAULT_STATS
+    elif [ "$_spf_config" = "stats" ]; then
+       echo "Enabling SPECULATIVE_PAGE_FAULT with stats..."
+       scripts/config --enable CONFIG_SPECULATIVE_PAGE_FAULT \
+           --enable CONFIG_SPECULATIVE_PAGE_FAULT_STATS
+    else
+        if [ -n "$_spf_config" ]; then
+           error "The value $_spf_config is invalid. Choose the correct one again."
+        else
+           error "The value is empty. Choose the correct one again."
+        fi
+          error "Enabling SPECULATIVE_PAGE_FAULT failed!"
+          exit
     fi
 
-    if [ -n "$_lru_enable" ]; then
-        echo "Enabling multigenerational LRU..."
-        scripts/config --enable ARCH_HAS_NONLEAF_PMD_YOUNG \
-            --enable LRU_GEN \
-            --enable LRU_GEN_ENABLED \
-            --disable LRU_GEN_STATS
+    ### Select LRU config
+    if [ "$_lru_config" = "standard" ]; then
+       echo "Enabling multigenerational LRU..."
+       scripts/config --enable CONFIG_LRU_GEN \
+           --enable CONFIG_LRU_GEN_ENABLED \
+           --disable CONFIG_LRU_GEN_STATS
+    elif [ "$_lru_config" = "stats" ]; then
+       echo "Enabling multigenerational LRU with stats..."
+       scripts/config --enable CONFIG_LRU_GEN \
+           --enable CONFIG_LRU_GEN_ENABLED \
+           --enable CONFIG_LRU_GEN_STATS
+    elif [ "$_lru_config" = "none" ]; then
+       echo "Disabling multigenerational LRU..."
+       scripts/config --disable CONFIG_LRU_GEN
+    else
+        if [ -n "$_lru_config" ]; then
+           error "The value $_lru_config is invalid. Choose the correct one again."
+        else
+           error "The value is empty. Choose the correct one again."
+        fi
+         error "Enabling multigenerational LRU failed!"
+         exit
     fi
 
+    ### Enable DAMON
     if [ -n "$_damon" ]; then
         echo "Enabling DAMON..."
         scripts/config --enable DAMON \
@@ -450,77 +501,79 @@ prepare() {
             --enable DAMON_LRU_SORT
     fi
 
+    ### Enable LRNG
     if [ -n "$_lrng_enable" ]; then
         echo "Enabling Linux Random Number Generator ..."
-        scripts/config --disable CONFIG_RANDOM_DEFAULT_IMPL
-        scripts/config --enable CONFIG_LRNG
-        scripts/config --enable CONFIG_LRNG_SHA256
-        scripts/config --enable CONFIG_LRNG_COMMON_DEV_IF
-        scripts/config --enable CONFIG_LRNG_DRNG_ATOMIC
-        scripts/config --enable CONFIG_LRNG_SYSCTL
-        scripts/config --enable CONFIG_LRNG_RANDOM_IF
-        scripts/config --module CONFIG_LRNG_KCAPI_IF
-        scripts/config --module CONFIG_LRNG_HWRAND_IF
-        scripts/config --enable CONFIG_LRNG_DEV_IF
-        scripts/config --enable CONFIG_LRNG_RUNTIME_ES_CONFIG
-        scripts/config --enable CONFIG_LRNG_IRQ_DFLT_TIMER_ES
-        scripts/config --disable CONFIG_LRNG_SCHED_DFLT_TIMER_ES
-        scripts/config --enable CONFIG_LRNG_TIMER_COMMON
-        scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_256
-        scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_512
-        scripts/config --enable CONFIG_LRNG_COLLECTION_SIZE_1024
-        scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_2048
-        scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_4096
-        scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_8192
-        scripts/config --set-val CONFIG_LRNG_COLLECTION_SIZE 1024
-        scripts/config --enable CONFIG_LRNG_HEALTH_TESTS
-        scripts/config --set-val CONFIG_LRNG_RCT_CUTOFF 31
-        scripts/config --set-val CONFIG_LRNG_APT_CUTOFF 325
-        scripts/config --enable CONFIG_LRNG_IRQ
-        scripts/config --enable CONFIG_LRNG_CONTINUOUS_COMPRESSION_ENABLED
-        scripts/config --disable CONFIG_LRNG_CONTINUOUS_COMPRESSION_DISABLED
-        scripts/config --enable CONFIG_LRNG_ENABLE_CONTINUOUS_COMPRESSION
-        scripts/config --enable CONFIG_LRNG_SWITCHABLE_CONTINUOUS_COMPRESSION
-        scripts/config --set-val CONFIG_LRNG_IRQ_ENTROPY_RATE 256
-        scripts/config --enable CONFIG_LRNG_JENT
-        scripts/config --set-val CONFIG_LRNG_JENT_ENTROPY_RATE 16
-        scripts/config --enable CONFIG_LRNG_CPU
-        scripts/config --set-val CONFIG_LRNG_CPU_FULL_ENT_MULTIPLIER 1
-        scripts/config --set-val CONFIG_LRNG_CPU_ENTROPY_RATE 8
-        scripts/config --enable CONFIG_LRNG_SCHED
-        scripts/config --set-val CONFIG_LRNG_SCHED_ENTROPY_RATE 4294967295
-        scripts/config --enable CONFIG_LRNG_DRNG_CHACHA20
-        scripts/config --module CONFIG_LRNG_DRBG
-        scripts/config --module CONFIG_LRNG_DRNG_KCAPI
-        scripts/config --enable CONFIG_LRNG_SWITCH
-        scripts/config --enable CONFIG_LRNG_SWITCH_HASH
-        scripts/config --module CONFIG_LRNG_HASH_KCAPI
-        scripts/config --enable CONFIG_LRNG_SWITCH_DRNG
-        scripts/config --module CONFIG_LRNG_SWITCH_DRBG
-        scripts/config --module CONFIG_LRNG_SWITCH_DRNG_KCAPI
-        scripts/config --enable CONFIG_LRNG_DFLT_DRNG_CHACHA20
-        scripts/config --disable CONFIG_LRNG_DFLT_DRNG_DRBG
-        scripts/config --disable CONFIG_LRNG_DFLT_DRNG_KCAPI
-        scripts/config --enable CONFIG_LRNG_TESTING_MENU
-        scripts/config --disable CONFIG_LRNG_RAW_HIRES_ENTROPY
-        scripts/config --disable CONFIG_LRNG_RAW_JIFFIES_ENTROPY
-        scripts/config --disable CONFIG_LRNG_RAW_IRQ_ENTROPY
-        scripts/config --disable CONFIG_LRNG_RAW_RETIP_ENTROPY
-        scripts/config --disable CONFIG_LRNG_RAW_REGS_ENTROPY
-        scripts/config --disable CONFIG_LRNG_RAW_ARRAY
-        scripts/config --disable CONFIG_LRNG_IRQ_PERF
-        scripts/config --disable CONFIG_LRNG_RAW_SCHED_HIRES_ENTROPY
-        scripts/config --disable CONFIG_LRNG_RAW_SCHED_PID_ENTROPY
-        scripts/config --disable CONFIG_LRNG_RAW_SCHED_START_TIME_ENTROPY
-        scripts/config --disable CONFIG_LRNG_RAW_SCHED_NVCSW_ENTROPY
-        scripts/config --disable CONFIG_LRNG_SCHED_PERF
-        scripts/config --disable CONFIG_LRNG_ACVT_HASH
-        scripts/config --disable CONFIG_LRNG_RUNTIME_MAX_WO_RESEED_CONFIG
-        scripts/config --disable CONFIG_LRNG_TEST_CPU_ES_COMPRESSION
-        scripts/config --enable CONFIG_LRNG_SELFTEST
-        scripts/config --disable CONFIG_LRNG_SELFTEST_PANIC
+        scripts/config --disable RANDOM_DEFAULT_IMPL \
+            --enable LRNG \
+            --enable LRNG_SHA256 \
+            --enable LRNG_COMMON_DEV_IF \
+            --enable LRNG_DRNG_ATOMIC \
+            --enable LRNG_SYSCTL \
+            --enable LRNG_RANDOM_IF \
+            --module LRNG_KCAPI_IF \
+            --module LRNG_HWRAND_IF \
+            --enable LRNG_DEV_IF \
+            --enable LRNG_RUNTIME_ES_CONFIG \
+            --enable LRNG_IRQ_DFLT_TIMER_ES \
+            --disable LRNG_SCHED_DFLT_TIMER_ES \
+            --enable LRNG_TIMER_COMMON \
+            --disable LRNG_COLLECTION_SIZE_256 \
+            --disable LRNG_COLLECTION_SIZE_512 \
+            --enable LRNG_COLLECTION_SIZE_1024 \
+            --disable LRNG_COLLECTION_SIZE_2048 \
+            --disable LRNG_COLLECTION_SIZE_4096 \
+            --disable LRNG_COLLECTION_SIZE_8192 \
+            --set-val LRNG_COLLECTION_SIZE 1024 \
+            --enable LRNG_HEALTH_TESTS \
+            --set-val LRNG_RCT_CUTOFF 31 \
+            --set-val LRNG_APT_CUTOFF 325 \
+            --enable LRNG_IRQ \
+            --enable LRNG_CONTINUOUS_COMPRESSION_ENABLED \
+            --disable LRNG_CONTINUOUS_COMPRESSION_DISABLED \
+            --enable LRNG_ENABLE_CONTINUOUS_COMPRESSION \
+            --enable LRNG_SWITCHABLE_CONTINUOUS_COMPRESSION \
+            --set-val LRNG_IRQ_ENTROPY_RATE 256 \
+            --enable LRNG_JENT \
+            --set-val LRNG_JENT_ENTROPY_RATE 16 \
+            --enable LRNG_CPU \
+            --set-val LRNG_CPU_FULL_ENT_MULTIPLIER 1 \
+            --set-val LRNG_CPU_ENTROPY_RATE 8 \
+            --enable LRNG_SCHED \
+            --set-val LRNG_SCHED_ENTROPY_RATE 4294967295 \
+            --enable LRNG_DRNG_CHACHA20 \
+            --module LRNG_DRBG \
+            --module LRNG_DRNG_KCAPI \
+            --enable LRNG_SWITCH \
+            --enable LRNG_SWITCH_HASH \
+            --module LRNG_HASH_KCAPI \
+            --enable LRNG_SWITCH_DRNG \
+            --module LRNG_SWITCH_DRBG \
+            --module LRNG_SWITCH_DRNG_KCAPI \
+            --enable LRNG_DFLT_DRNG_CHACHA20 \
+            --disable LRNG_DFLT_DRNG_DRBG \
+            --disable LRNG_DFLT_DRNG_KCAPI \
+            --enable LRNG_TESTING_MENU \
+            --disable LRNG_RAW_HIRES_ENTROPY \
+            --disable LRNG_RAW_JIFFIES_ENTROPY \
+            --disable LRNG_RAW_IRQ_ENTROPY \
+            --disable LRNG_RAW_RETIP_ENTROPY \
+            --disable LRNG_RAW_REGS_ENTROPY \
+            --disable LRNG_RAW_ARRAY \
+            --disable LRNG_IRQ_PERF \
+            --disable LRNG_RAW_SCHED_HIRES_ENTROPY \
+            --disable LRNG_RAW_SCHED_PID_ENTROPY \
+            --disable LRNG_RAW_SCHED_START_TIME_ENTROPY \
+            --disable LRNG_RAW_SCHED_NVCSW_ENTROPY \
+            --disable LRNG_SCHED_PERF \
+            --disable LRNG_ACVT_HASH \
+            --disable LRNG_RUNTIME_MAX_WO_RESEED_CONFIG \
+            --disable LRNG_TEST_CPU_ES_COMPRESSION \
+            --enable LRNG_SELFTEST \
+            --disable LRNG_SELFTEST_PANIC
     fi
 
+    ### Enable ZSTD swap/zram compression
     if [ -n "$_zstd_swap_compression" ]; then
         echo "Enabling zram ZSTD compression..."
         scripts/config --disable ZRAM_DEF_COMP_LZORLE \
@@ -533,21 +586,24 @@ prepare() {
             --set-val ZRAM_ENTROPY_THRESHOLD 100000
     fi
 
+    ### Disable DEBUG
     if [ -n "$_disable_debug" ]; then
         scripts/config --disable DEBUG_INFO \
-            --disable DEBUG_INFO_BTF \
-            --disable DEBUG_INFO_DWARF4 \
-            --disable DEBUG_INFO_DWARF5 \
-            --disable PAHOLE_HAS_SPLIT_BTF \
-            --disable DEBUG_INFO_BTF_MODULES \
-            --disable SLUB_DEBUG \
-            --disable PM_DEBUG \
-            --disable PM_ADVANCED_DEBUG \
-            --disable PM_SLEEP_DEBUG \
-            --disable ACPI_DEBUG \
-            --disable SCHED_DEBUG \
-            --disable LATENCYTOP \
-            --disable DEBUG_PREEMPT
+            --disable CONFIG_DEBUG_INFO_BTF \
+            --disable CONFIG_DEBUG_INFO_DWARF5 \
+            --disable CONFIG_PAHOLE_HAS_SPLIT_BTF \
+            --disable CONFIG_DEBUG_INFO_BTF_MODULES \
+            --disable CONFIG_CGROUP_BPF \
+            --disable CONFIG_BPF_LSM \
+            --disable CONFIG_BPF_PRELOAD \
+            --disable CONFIG_BPF_LIRC_MODE2 \
+            --disable CONFIG_BPF_KPROBE_OVERRIDE \
+            --disable CONFIG_PM_DEBUG \
+            --disable CONFIG_PM_SLEEP_DEBUG \
+            --disable CONFIG_ACPI_DEBUG \
+            --disable CONFIG_SCHED_DEBUG \
+            --disable CONFIG_LATENCYTOP \
+            --disable CONFIG_DEBUG_PREEMPT
     fi
 
     echo "Enable USER_NS_UNPRIVILEGED"
@@ -765,7 +821,7 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha256sums=('40b74d0942f255da07481710e1083412d06e37e45b8f9d9e34ae856db37b9527'
-            '5ca5d7a30453fbb2891458fea6de84923218cd161a4137fe76c8e699fddb7037'
+            '290cfc52f209df028b8693fcbeed276564ca1d1c13023ebed3faa3d56d6d6ede'
             'ce8bf7807b45a27eed05a5e1de5a0bf6293a3bbc2085bacae70cd1368f368d1f'
             '37763b7f098fadd029923dafb952f9c9485ff3527e48087b6c5e557e043fa324'
             '7a36fe0a53a644ade0ce85f08f9ca2ebaddd47876966b7cc9d4cae8844649271')
