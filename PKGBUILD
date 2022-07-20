@@ -1,11 +1,11 @@
 # Maintainer: Campbell Jones <dev at serebit dot com>
 
 pkgname=budgie-control-center-git
-pkgver=v1.0.0.r2.g5cb3b3deb
-pkgrel=2
+pkgver=1.0.1.r64.g11a92640a
+pkgrel=1
 pkgdesc="Budgie's main interface to configure various aspects of the desktop, latest git"
 url="https://github.com/BuddiesOfBudgie/budgie-control-center"
-license=(GPL2)
+license=(GPL)
 arch=(x86_64)
 depends=(budgie-desktop gnome-online-accounts libgtop libpwquality smbclient libcheese libnma
          udisks2 libhandy gsound colord-gtk)
@@ -19,27 +19,28 @@ optdepends=('system-config-printer: Printer settings'
             'power-profiles-daemon: Power profiles support')
 provides=(budgie-control-center)
 conflicts=(budgie-control-center gnome-control-center)
-source=("$pkgname"::"git+https://github.com/BuddiesOfBudgie/budgie-control-center.git")
-sha256sums=('SKIP')
+source=("$pkgname"::"git+https://github.com/BuddiesOfBudgie/budgie-control-center.git"
+        "gvc"::"git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
-    git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$pkgname"
+    git describe --tags --long | sed 's/\([^-]*-g\)/r\1/; s/-/./g; s/^v//g'
 }
 
 prepare() {
-    cd "$srcdir/$pkgname"
-    git submodule update --init
-    meson build --prefix=/usr --sysconfdir=/etc -Ddocumentation=true
+    cd "$pkgname"
+    git submodule init
+    git config submodule.gvc.url "$srcdir/gvc"
+    git submodule update
 }
 
-
 build() {
-    cd "$srcdir/$pkgname"
+    arch-meson "$pkgname" build -Ddocumentation=true
     meson compile -C build
 }
 
 package() {
-    cd "$srcdir/$pkgname"
     meson install -C build --destdir "$pkgdir"
 }

@@ -1,10 +1,10 @@
 pkgbase = budgie-control-center-git
 	pkgdesc = Budgie's main interface to configure various aspects of the desktop, latest git
-	pkgver = v1.0.0.r2.g5cb3b3deb
-	pkgrel = 2
+	pkgver = 1.0.1.r64.g11a92640a
+	pkgrel = 1
 	url = https://github.com/BuddiesOfBudgie/budgie-control-center
 	arch = x86_64
-	license = GPL2
+	license = GPL
 	checkdepends = python-dbusmock
 	checkdepends = python-gobject
 	checkdepends = xorg-server-xvfb
@@ -34,6 +34,8 @@ pkgbase = budgie-control-center-git
 	conflicts = budgie-control-center
 	conflicts = gnome-control-center
 	source = budgie-control-center-git::git+https://github.com/BuddiesOfBudgie/budgie-control-center.git
+	source = gvc::git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = budgie-control-center-git
