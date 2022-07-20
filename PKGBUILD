@@ -3,14 +3,14 @@
 pkgbase=wraith-master
 pkgname=("wraith-master-common" "wraith-master-cli" "wraith-master-gtk")
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Wraith Prism RGB control application"
 arch=("x86_64")
 url="https://gitlab.com/serebit/wraith-master"
 license=("APACHE")
 makedepends=("gradle" "scdoc" "libusb" "gtk3")
-source=("https://gitlab.com/serebit/$pkgbase/-/archive/v$pkgver/$pkgbase-v$pkgver.tar.gz")
-sha256sums=("SKIP")
+source=("$pkgname-v$pkgver.tar.gz"::"https://gitlab.com/serebit/$pkgbase/-/archive/v$pkgver/$pkgbase-v$pkgver.tar.gz")
+sha256sums=("fcf150b5f45e9b9ffad60e1a72f7251d4488fba28d5b325688c931f5098e21ca")
 
 build() {
     cd "$pkgbase-v$pkgver"
@@ -28,7 +28,7 @@ package_wraith-master-common() {
 
 package_wraith-master-cli() {
     pkgdesc="Command-line application for controlling RGB on the Wraith Prism"
-	depends=("wraith-master-common" "libusb")
+    depends=("wraith-master-common" "libusb")
 
     cd "$pkgbase-v$pkgver"
     make install-cli DESTDIR="$pkgdir" PREFIX=/usr
