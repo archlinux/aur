@@ -103,6 +103,7 @@ package_trilium() {
 package_trilium-server() {
 	pkgdesc="A hierarchical note taking application with focus on building large personal knowledge bases - Server version"
 	depends=("nodejs$_nodejs_lts_version")
+	optdepends=('trilium-dumpdb: Independent tool that allows emergency dump of notes to single files in the filesystem')
 
 	cd "$pkgbase-$pkgver"
 
