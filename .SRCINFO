@@ -1,7 +1,7 @@
 pkgbase = geary-preview
 	pkgdesc = A lightweight email client for the GNOME desktop. Preview version by Geary maintainer
-	pkgver = 40.1
-	pkgrel = 1
+	pkgver = 40.2
+	pkgrel = 3
 	epoch = 1
 	url = https://wiki.gnome.org/Apps/Geary
 	arch = x86_64

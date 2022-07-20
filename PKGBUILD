@@ -1,8 +1,8 @@
 # Maintainer: Cédric Bellegarde <cedric.bellegarde@adishatz.org>
 
 pkgname=geary-preview
-pkgver=40.1
-pkgrel=1
+pkgver=40.2
+pkgrel=3
 epoch=1
 pkgdesc='A lightweight email client for the GNOME desktop. Preview version by Geary maintainer'
 arch=(x86_64)
@@ -58,7 +58,8 @@ prepare() {
 
 build() {
   arch-meson geary build \
-    -Dprofile=release
+    -Dprofile=release \
+    -Dvaladoc=disabled
   meson compile -C build
 }
 
