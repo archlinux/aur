@@ -4,19 +4,19 @@ pkgver=1.1.2
 pkgrel=1
 pkgdesc="Listen for VT switches"
 arch=(i686 x86_64)
-url="https://github.com/maandree/vtchs"
-license=('ISC')
+url="https://codeberg.org/maandree/vtchs"
+license=('custom:ISC')
 depends=()
 makedepends=()
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(94e790982663e384f8df57beea3ae7a3426246151c47f22fa4ca7ad5b0734dbf)
+sha256sums=(264d9fe27b9840b2f8029c5c6c39e3454024041bc0a6bdc7d5afb9ea1395b997)
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname"
     make PREFIX=/usr
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname"
     make PREFIX=/usr DESTDIR="$pkgdir" install
 }
