@@ -4,7 +4,7 @@
 pkgname=manjaro-zsh-config-git
 _pkgname=manjaro-zsh-config
 pkgver=r70.098fb0e
-pkgrel=1
+pkgrel=2
 pkgdesc="Zsh configuration from manjaro forked for all the cool kids"
 arch=(any)
 url="https://github.com/ayr-ton/$_pkgname"

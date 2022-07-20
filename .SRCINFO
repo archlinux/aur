@@ -1,7 +1,7 @@
 pkgbase = manjaro-zsh-config-git
 	pkgdesc = Zsh configuration from manjaro forked for all the cool kids
 	pkgver = r70.098fb0e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ayr-ton/manjaro-zsh-config
 	arch = any
 	license = MIT
