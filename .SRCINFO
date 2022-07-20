@@ -1,6 +1,6 @@
 pkgbase = python-gnutls
 	pkgdesc = GnuTLS bindings for Python
-	pkgver = 3.1.8
+	pkgver = 3.1.10
 	pkgrel = 1
 	url = https://github.com/AGProjects/python3-gnutls
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = python-gnutls
 	provides = python3-gnutls
 	conflicts = python3-gnutls
 	replaces = python3-gnutls
-	source = https://github.com/AGProjects/python3-gnutls/archive/3.1.8.tar.gz
-	sha512sums = f45e149a41a2b2d8441e17301db4ca29f42047aab5af781bb2e5a9a0b2db5c64deaff2c0a115b65104a3976dfbe39a8074dcfa1b53f7cab1a30645dc998bae70
+	source = https://github.com/AGProjects/python3-gnutls/archive/release-3.1.10.tar.gz
+	sha512sums = 15e1d9a73b5c80bf5b978a9eb463c751a259ee712dee7e7cb88cb6a8cb133c5d1b62f5f96a0c4520ddd24a64a3a144ce353d45cd451311f36ad9365033ddde20
 
 pkgname = python-gnutls
