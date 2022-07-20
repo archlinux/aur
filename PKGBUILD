@@ -1,6 +1,6 @@
 # Maintainer: loh.tar <loh.tar at googlemail dot com>
 pkgname="wpa-cute"
-pkgver="0.8.2"
+pkgver="0.8.3"
 pkgrel="1"
 pkgdesc="A graphical wpa_supplicant front end"
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=("BSD")
 depends=("qt5-base" "qt5-svg" "wpa_supplicant")
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/loh-tar/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('a1f377d4d3cc908e93e34339ce6a87f7')
+md5sums=('3cb74285e2c6dc15733b1f194d63f67a')
 
 build() {
   cd "$pkgname-$pkgver/src"
