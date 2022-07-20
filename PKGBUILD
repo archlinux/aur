@@ -1,8 +1,8 @@
  # Maintainer: wszqkzqk <wszqkzqk@qq.com>
  
  pkgname=easy-zsh-config
- pkgver=0.4.6
- pkgrel=2
+ pkgver=0.4.7
+ pkgrel=1
  pkgdesc="A simple but fast and out of the box configuration of zsh powered by oh-my-posh and zsh pulgins."
  arch=(any)
  url=https://github.com/wszqkzqk/easy-zsh-config
@@ -23,7 +23,7 @@ install="easy-zsh-config.install"
 source=("zshrc"
         "LICENSE"
         "easy-zsh-config")
-sha256sums=('67af6ec8e0e8f66a2c00d0f52c72416a3e3840edd5f399e6d8687f2f37d86c73'
+sha256sums=('a3a455fb5b4dcd0f68f8ffc91d65c133cbab7576afef6e5a382a97e8de991de3'
             '191f93567e767c599cfd843bb8343f311396d8e80d423ec38af2ad3dc52551a3'
             '8562351200fbdabcd81d6f998bcd9ec2e2ecdd1d336bf23bf0656e387a75a23d')
 
