@@ -3,7 +3,7 @@
 
 pkgname=discord-ptb
 _pkgname=DiscordPTB
-pkgver=0.0.30
+pkgver=0.0.31
 pkgrel=1
 pkgdesc="All-in-one voice and text chat for gamers that's free and secure. - Public Test Build"
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=('libpulse: Pulseaudio support'
 source=("https://dl-ptb.discordapp.net/apps/linux/$pkgver/$pkgname-$pkgver.tar.gz"
         'LICENSE.html::https://discordapp.com/terms'
         'OSS-LICENSES.html::https://discordapp.com/licenses')
-sha512sums=('466903b0bc1bf1d1e99757782e677f7fe05d3abc415228d41ade6294848679093853f4bd13a302caf55057f42b8960755c62641398e17854e23d27a62f117df4'
+sha512sums=('c20e10584c34ad2dc2db3b1a223f7dfd64c0f578959340861fa8ccf33c6652256521d038caf60e49652bd0b1877da16890d9617f7e0d765a69cbd89deca13c1e'
             'SKIP'
             'SKIP')
 
