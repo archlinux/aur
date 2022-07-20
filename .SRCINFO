@@ -1,7 +1,7 @@
 pkgbase = gvmd
 	pkgdesc = Vulnerability manager Daemon
 	pkgver = 22.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/greenbone/gvmd
 	arch = x86_64
 	groups = greenbone-vulnerability-manager

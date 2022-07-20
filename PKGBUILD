@@ -2,7 +2,7 @@
 
 pkgname='gvmd'
 pkgver=22.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Vulnerability manager Daemon'
 arch=('x86_64')
 url="https://github.com/greenbone/gvmd"
@@ -66,4 +66,6 @@ package() {
   install -m 644 $srcdir/greenbone-feed-sync.service $pkgdir/usr/lib/systemd/system
   install -m 644 $srcdir/gvmd.service $pkgdir/usr/lib/systemd/system
   install -d $pkgdir/var/lib/gvm/gvmd
+  # fix for destroying arch fs
+  rm -rf $pkgdir/lib
 }
