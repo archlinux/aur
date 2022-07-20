@@ -1,8 +1,8 @@
 # Maintainer: BrLi <brli@chakralinux.org>
 _pkgname=plugin-wingmenu
 pkgname=lxqt-$_pkgname-git
-pkgver=r11.7b31638
-pkgrel=3
+pkgver=r29.5609864
+pkgrel=1
 pkgdesc="alternative menu plugin for lxqt-panel"
 arch=(x86_64)
 url="https://github.com/slidinghotdog/plugin-wingmenu"
