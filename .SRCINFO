@@ -1,6 +1,6 @@
 pkgbase = cantara
 	pkgdesc = Song Presentation Software
-	pkgver = 2.2.1
+	pkgver = 2.2.3beta
 	pkgrel = 1
 	url = https://github.com/reckel-jm/cantara
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = cantara
 	makedepends = qt5pas
 	depends = qt5pas
 	provides = cantara
-	source = https://github.com/reckel-jm/cantara/archive/refs/tags/v2.2.1.zip
-	md5sums = 0442b757786487798eaec4de756e3acc
+	source = https://github.com/reckel-jm/cantara/archive/refs/tags/v2.2.3beta.zip
+	md5sums = cbc7f1bcbe835364cf01be8fff892f53
 
 pkgname = cantara
