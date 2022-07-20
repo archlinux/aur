@@ -2,14 +2,16 @@
 
 pkgname=paper-note-git
 _pkgname=paper
-pkgver=r173.b595227
+_app_id=io.posidon.Paper
+pkgver=r229.5b602d0
 pkgrel=1
 pkgdesc="A pretty note-taking app for GNOME"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://gitlab.com/posidon_software/paper"
 license=('GPL3')
-depends=('glib2' 'libadwaita' 'gtksourceview5' 'libgee')
+depends=('libadwaita' 'gtksourceview5' 'libgee')
 makedepends=('git' 'meson' 'gobject-introspection' 'blueprint-compiler' 'vala')
+checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(git+$url.git)
@@ -34,4 +36,7 @@ check() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
+  
+  # Temporary solution to the issue: https://gitlab.com/posidon_software/paper/-/issues/36
+  mv "$pkgdir/usr/share/applications/$_app_id.desktop" "$pkgdir/usr/share/applications/Paper.desktop"
 }
