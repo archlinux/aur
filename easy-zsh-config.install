@@ -6,7 +6,7 @@ info() {
     echo -e "your .zshrc file to the current one, you can also run:"
     echo -e "  \e[4m> ln -s /etc/zsh/zshrc ~/.zshrc\e[0m"
     echo -e "* To configure the theme:"
-    echo -e "  Edit \e[4mline 4, ~/.zshrc\e[0m, and replace default theme path with your target"
+    echo -e "  Edit \e[4mline 3, ~/.zshrc\e[0m, and replace default theme path with your target"
     echo -e "theme path."
     echo -e "* Key bindings info:"
     echo -e "  Up:          History substring search(backward)"
