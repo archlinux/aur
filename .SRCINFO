@@ -1,6 +1,6 @@
 pkgbase = fish-fzf
 	pkgdesc = fzf key-bindings into fish
-	pkgver = 9.0
+	pkgver = 9.1
 	pkgrel = 1
 	url = https://github.com/PatrickF1/fzf.fish
 	install = fish-fzf.install
@@ -13,7 +13,7 @@ pkgbase = fish-fzf
 	optdepends = fd: required for search directory feature
 	optdepends = bat: required for search directory feature
 	optdepends = git
-	source = fish-fzf-9.0.tar.gz::https://github.com/PatrickF1/fzf.fish/archive/v9.0.tar.gz
-	sha256sums = ccf416bcf63c4ae0bfae55e54be0165c4a269b48da7bd91d4a9ebfec1ede4c0e
+	source = fish-fzf-9.1.tar.gz::https://github.com/PatrickF1/fzf.fish/archive/v9.1.tar.gz
+	sha256sums = e3392f956b17cabd25d01df5b61126e3fe3191e91e9e655958b00b26849e39ae
 
 pkgname = fish-fzf
