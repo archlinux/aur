@@ -52,7 +52,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 if [[ -r /usr/share/doc/pkgfile/command-not-found.zsh ]]; then
     source /usr/share/doc/pkgfile/command-not-found.zsh
-    export PKGFILE_PROMPT_INSTALL_MISSING=1
+    #export PKGFILE_PROMPT_INSTALL_MISSING=1
 fi
 
 
