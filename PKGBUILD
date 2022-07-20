@@ -2,7 +2,7 @@
 
 pkgname=kopia
 pkgdesc='A cross-platform backup-tool with encryption, deduplication, compression and cloud support.'
-pkgver=0.10.7
+pkgver=0.11.3
 pkgrel=1
 arch=('x86_64')
 url='https://kopia.io'
@@ -13,7 +13,7 @@ makedepends=('go>=1.17')
 #source=("$pkgname-$pkgver::git+https://github.com/kopia/kopia.git#commit=$(git rev-list -n 1 v$pkgver)?signed") # use git commit, if those are signed by a proper key in the future
 #source=("$pkgname-$pkgver::git+https://github.com/kopia/kopia.git#tag=v$pkgver?signed") # use git tag, if those are signed by a proper key in the future
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kopia/kopia/archive/refs/tags/v$pkgver.tar.gz") # use unsigned tarball for now.
-sha256sums=('d797330d39c099c10e8d7bdb4654b254790ea180543971214e8aeec31ad66da4')
+sha256sums=('da677cbaace0d22b35edbab88d4f8ad7c2c00fc9c1c474130d37abce48f39b6f')
 #checksums calculated by packager, no checksums available from upstream for source tarball.
 
 build() {
