@@ -1,7 +1,7 @@
 # Maintainer: Marc Rechté <marc4@rechte.fr>
 
 pkgbase=postgresql14
-pkgver=14.2
+pkgver=14.4
 _majorver=${pkgver%.*}
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
 pkgrel=1
@@ -19,7 +19,7 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
         postgresql.sysusers
         postgresql.tmpfiles
         pgenv.sh)
-sha256sums=('2cf78b2e468912f8101d695db5340cf313c2e9f68a612fb71427524e8c9a977a'
+sha256sums=('c23b6237c5231c791511bdc79098617d6852e9e3bdf360efd8b5d15a1a3d8f6a'
             '02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a'
             'af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb'
             '5f45d2ad3a93f5ea87ea40bc82a5377e5b8faca9586bfa84d4efe05bdd90ebb6'
