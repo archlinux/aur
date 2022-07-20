@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=103.0.5060.114
+pkgver=103.0.5060.134
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=4
@@ -31,7 +31,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         sql-make-VirtualCursor-standard-layout-type.patch
         remove-no-opaque-pointers-flag.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('77683510f03b947332461b03954488474d95e49992efc11908f4bd8045635965'
+sha256sums=('e48a272481e41b1aae7aba71b55c41fe9e994cf71edd01c8ca1d0b604af0b571'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'fed11a8987d9f9baa04457fb114f8f7fdb800300a3780927020865bcc43e4f52'
             '779fb13f2494209d3a7f1f23a823e59b9dded601866d3ab095937a1a04e19ac6'
