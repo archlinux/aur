@@ -2,12 +2,12 @@ pkgbase = slack
 	pkgdesc = Control your timer slack
 	pkgver = 3.0.2
 	pkgrel = 1
-	url = https://github.com/maandree/slack
+	url = https://codeberg.org/maandree/slack
 	arch = i686
 	arch = x86_64
 	license = custom:ISC
 	depends = linux>=2.6.28
-	source = slack-3.0.2.tar.gz::https://github.com/maandree/slack/archive/3.0.2.tar.gz
-	sha256sums = 9999311df585e0863e55798204b9531a83a73f415ecd1c6584b9c1d964640c56
+	source = slack-3.0.2.tar.gz::https://codeberg.org/maandree/slack/archive/3.0.2.tar.gz
+	sha256sums = 1012498dd60dc6d43a4ceb21e9a32430f6a7d6545b702c04db2ce6bfd81daedd
 
 pkgname = slack
