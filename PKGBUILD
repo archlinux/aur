@@ -4,7 +4,7 @@
 pkgname=easyeda-bin
 _pkgname=${pkgname%-bin}
 pkgver=6.5.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A Simple and Powerful Electronic Circuit Design Tool"
 arch=('x86_64')
 url="https://easyeda.com/"
@@ -19,9 +19,9 @@ sha256sums=('fbf32123a6383d54bfd06695d515f83e594bf8acad2e658370272ff066d7e63f'
 			'c52b78caac78dde0948489d67bfadbb2c1eb21a456846806b1a4a3a1c07f36ec')
 
 package() {
-
 	install -dm755 ${pkgdir}/opt/${_pkgname}
-	unzip easyeda-linux-x64.zip -d ${pkgdir}/opt/${_pkgname}
+	#unzip easyeda-linux-x64.zip -d ${pkgdir}/opt/${_pkgname}
+	mv ${srcdir}/easyeda-linux-x64/* ${pkgdir}/opt/${_pkgname}
 
 	# icon
 	local _icon
