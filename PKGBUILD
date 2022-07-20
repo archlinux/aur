@@ -1,13 +1,13 @@
 # Maintainer  : Matthias Fulz < mfulz [at] olznet [dot] de >
 
 pkgname='gvmd'
-pkgver=21.4.3
+pkgver=22.4
 pkgrel=1
 pkgdesc='Vulnerability manager Daemon'
 arch=('x86_64')
 url="https://github.com/greenbone/gvmd"
 license=('GPL')
-depends=('gvm-libs-20' 'libical' 'python3' 'gnutls' 'postgresql' 'libxslt' 'sudo')
+depends=('gvm-libs-20>=22.4.0' 'libical' 'python3' 'gnutls' 'postgresql' 'libxslt' 'sudo')
 makedepends=('cmake' 'doxygen' 'xmltoman' 'libxslt')
 groups=('greenbone-vulnerability-manager')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/greenbone/gvmd/archive/v${pkgver}.tar.gz"
@@ -21,7 +21,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/greenbone/gvmd/archive/
         "gvmd.install"
         "gvmd.service"
         "gvmd")
-sha512sums=('d76ba46d2def48b0dcdd431b1f91b4e43a9222042b1b2a34bc2e3217059aa72fbde6b3df156525220ae582bdbef3b3853dd4db93ab73c7a2e145fe3318fcf072'
+sha512sums=('467652223f0136c9c386622b734f96317ca00cdbec2bb2de4b1c382086e1422b3490c1d883e864d26c183562042ea2b57a3e491cf0df53b60e0b16537b2ac0d2'
             'ec2cbedf87bfd8cc1abfc6be9c566b6d2e6f7b1f902f5596d496b01faf208c9921b502d77ec9281ef3c0d03462f2d49bb973f4f9216a106116cd824e938951c2'
             '4d259ff625d29b10040ab1ff7cb472b3dee2355c8ef01275754c5c08779e0de3d5ae1cbb157239fd17d663644b43a642fe15c2d8e13cde037e52ad6a4e2e0afd'
             'e1be40755530f9793c91c47db3bc1fb65266dcea2d1ba5e3ba1de97a93572bc52a18dc182f9c4d11fc4586f714663447917d70321e32c20bbe35765f999141d2'
