@@ -1,6 +1,6 @@
 pkgbase = ani-cli-git
 	pkgdesc = A cli to browse and watch anime. (development version)
-	pkgver = r572.e737a01
+	pkgver = r573.e4e87bf
 	pkgrel = 1
 	url = https://github.com/pystardust/ani-cli
 	arch = any

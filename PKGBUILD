@@ -1,7 +1,7 @@
 # Maintainer: Mark Kostovetskyy <mark at sgtxd dot de >
 pkgname='ani-cli-git'
 _pkgname='ani-cli'
-pkgver=r572.e737a01
+pkgver=r573.e4e87bf
 pkgrel=1
 pkgdesc="A cli to browse and watch anime. (development version)"
 arch=('any')
@@ -22,10 +22,5 @@ pkgver() {
 
 package() {
         cd "$srcdir/${_pkgname%-VCS}"
-	install -Dm755 "./bin/ani-cli" "$pkgdir/usr/bin/ani-cli"
-	install -Dm755 "./lib/ani-cli/player_download" "$pkgdir/usr/lib/ani-cli/player_download"
-	install -Dm755 "./lib/ani-cli/player_mpv" "$pkgdir/usr/lib/ani-cli/player_mpv"
-	install -Dm755 "./lib/ani-cli/player_syncplay" "$pkgdir/usr/lib/ani-cli/player_syncplay"
-	install -Dm755 "./lib/ani-cli/player_vlc" "$pkgdir/usr/lib/ani-cli/player_vlc"
-	install -Dm755 "./lib/ani-cli/UI" "$pkgdir/usr/lib/ani-cli/UI"
+	install -Dm755 "./ani-cli" "$pkgdir/usr/bin/ani-cli"
 }
