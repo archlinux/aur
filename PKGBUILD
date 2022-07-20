@@ -3,7 +3,7 @@
 _name=networkx
 
 pkgname=python-networkx-git
-pkgver=2.8.r18.g12c1a00cd
+pkgver=2.8.4.r97.gd7903fe6c
 pkgrel=1
 pkgdesc="Python package for the creation, manipulation, and study of the structure, dynamics, and functions of complex networks."
 
