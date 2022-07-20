@@ -1,7 +1,7 @@
 pkgbase = python-django-channels
 	pkgdesc = Developer-friendly asynchrony for Django
-	pkgver = 3.0.4
-	pkgrel = 1
+	pkgver = 3.0.5
+	pkgrel = 0
 	url = http://github.com/django/channels
 	arch = any
 	license = BSD
@@ -10,7 +10,7 @@ pkgbase = python-django-channels
 	depends = python-django
 	depends = python-asgiref
 	depends = python-daphne
-	source = https://pypi.io/packages/source/c/channels/channels-3.0.4.tar.gz
-	sha256sums = fdd9a94987a23d8d7ebd97498ed8b8cc83163f37e53fc6c85098aba7a3bb8b75
+	source = https://pypi.io/packages/source/c/channels/channels-3.0.5.tar.gz
+	sha256sums = a3dc3339cc033e7c2afe083fb3dedf74fc5009815967e317e080e7bfdc92ea26
 
 pkgname = python-django-channels
