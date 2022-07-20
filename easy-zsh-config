@@ -11,7 +11,7 @@ fi
 
 ## Apply the theme file
 if [[ -r "${_POSH_THEME}" ]]; then
-  ${POSH_THEME}=${_POSH_THEME}
+  export ${POSH_THEME}=${_POSH_THEME}
   eval "$(oh-my-posh init zsh)"
 else
   echo "Warning: \"${_POSH_THEME}\" is unreachable!"
