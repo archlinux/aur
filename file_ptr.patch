@@ -1,0 +1,29 @@
+diff --git include/hex.h include/hex.h
+index 57845c0..e1420a1 100644
+--- include/hex.h
++++ include/hex.h
+@@ -126,7 +126,7 @@ extern bool color_enabled;
+ #define max(a,b) ((a) >(b) ? (a) : (b))
+ #endif
+ 
+-FILE *fpIN;		        		/* global file ptr           */
++extern FILE *fpIN;		        		/* global file ptr           */
+ 
+ /* function prototypes */
+ 
+diff --git src/hexcurse.c src/hexcurse.c
+index e723ddc..5a60b1a 100644
+--- src/hexcurse.c
++++ src/hexcurse.c
+@@ -22,8 +22,11 @@
+  *									      *
+ \******************************************************************************/
+ 
++
+ #include "hex.h"					/* custom header      */
+ 
++FILE* fpIN;
++
+ /*#define DEBUG_LLIST*/
+ /*#define DEBUG_GOTO*/
+ 

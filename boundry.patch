@@ -1,0 +1,45 @@
+diff --git src/acceptch.c src/acceptch.c
+index d57207b..6edf992 100644
+--- src/acceptch.c
++++ src/acceptch.c
+@@ -66,7 +66,8 @@ int wacceptch(WINS *win, off_t len)
+ 
+     /*createStack(stack);*/				/* init the stack     */
+     stack = NULL;
+-    temp = (char *)calloc(81, sizeof(char));
++    const int temp_size = 81;
++    temp = (char *)calloc(temp_size, sizeof(char));
+ 
+     if (fpIN)						/* if file opened then*/
+     {							/* highlight 0,0 loc  */
+@@ -456,10 +457,10 @@ int wacceptch(WINS *win, off_t len)
+ 
+ 		if (temp != NULL)
+ 		{
+-		    bzero(SearchStr, 13);
++		    bzero(SearchStr, sizeof(SearchStr));
+ 		    strcat(SearchStr, "(");
+ 		    if (strlen(temp) <= 10)
+-			strncat(SearchStr, temp, strlen(temp));
++			strncat(SearchStr, temp, sizeof(SearchStr)-1);
+ 		    else
+ 		    {
+ 			strncat(SearchStr, temp, 7);
+@@ -497,14 +498,13 @@ int wacceptch(WINS *win, off_t len)
+ 
+ 		if (tmpstr[0] != '\0' )			/* enter was hit so   */
+ 		{					/* don't change temp  */
+-		    bzero(temp, 81);
+-		    strncpy(temp, tmpstr, (strlen(tmpstr) > 80) 
+-			    ? 80 : strlen(tmpstr));
++		    bzero(temp, temp_size);
++		    strncpy(temp, tmpstr, temp_size-1);
+ 		}
+ 
+ 		val = 0;
+ 							/* parse out input    */
+-	        for (count = 0; temp[count] != 0 && count < 80; count++)
++	        for (count = 0; temp[count] != 0 && count < temp_size-1; count++)
+ 		    if (!editHex)
+ 			ch[count] = temp[count];
+ 		    else
