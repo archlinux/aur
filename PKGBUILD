@@ -4,8 +4,8 @@
 # Contributor: Tetsumaki <http://goo.gl/YMBdA>
 
 pkgname=flamerobin-git
-pkgver=0.9.3.11.r7.gde8f182d
-pkgrel=1
+pkgver=0.9.3.12.r2.g5b8232f5
+pkgrel=2
 pkgdesc='A tool to handle Firebird database management'
 arch=('i686' 'x86_64')
 url="http://www.flamerobin.org/"
@@ -31,7 +31,7 @@ build() {
   export PATH="$(pwd):$PATH"
   ln -s /usr/bin/wx-config-gtk3 ./wx-config
   
-  ./configure --prefix=/usr --with-wx-config=/usr/bin/wx-config-gtk3
+  ./configure --prefix=/usr --with-wx-config=wx-config
   cmake -B build -S "./" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX='/usr' -Wno-dev
   cmake --build build
   
