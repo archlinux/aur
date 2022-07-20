@@ -16,12 +16,12 @@ sha256sums=('01328f5e3e999c939f998f431ca6b7624034032846fe7c43b7addac016e35b7c')
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
   echo "${pkgver}" > VERSION
-  python setup.py build
+  python -c "from setuptools import setup; setup();" build
 }
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python -c "from setuptools import setup; setup();" install --root="$pkgdir/" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
