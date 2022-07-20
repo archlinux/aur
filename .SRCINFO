@@ -1,12 +1,12 @@
 pkgbase = wraith-master-bin
-	pkgdesc = A Wraith Prism RGB control application built with Kotlin/Native (Binary Version)
+	pkgdesc = A Wraith Prism RGB control application (Binary Version)
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/serebit/wraith-master
 	arch = x86_64
-	license = Apache-2.0
+	license = APACHE
 	depends = gtk3
-	source = wraith-master.tar.xz::https://gitlab.com/serebit/wraith-master/uploads/e4bef291e3292c6e2c2d2b96841786c5/wraith-master-v1.2.1.tar.xz
-	sha256sums = SKIP
+	source = wraith-master-v1.2.1.tar.xz::https://gitlab.com/serebit/wraith-master/uploads/e4bef291e3292c6e2c2d2b96841786c5/wraith-master-v1.2.1.tar.xz
+	sha256sums = d9ea771b9707e2576c18d18eba769096ce8fc929bb3d161aced90c56fbf4d117
 
 pkgname = wraith-master-bin
