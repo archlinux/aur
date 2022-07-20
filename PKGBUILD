@@ -9,7 +9,7 @@
 # https://github.com/sudoforge/pkgbuilds
 
 pkgname="google-cloud-sdk"
-pkgver=393.0.0
+pkgver=394.0.0
 pkgrel=1
 pkgdesc="A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq."
 url="https://cloud.google.com/sdk/"
@@ -29,7 +29,7 @@ source=(
   "0003-add-compdef-to-zsh-completion.patch"
   "0004-collections-abc.patch"
 )
-sha256sums=('cac21bbd2a5684887e399d5495e9245a2d0135b42e4bd48b3f28e866776adefe'
+sha256sums=('ff113e3ba6995889f7cfe3fc8d3b4eadb9b032ca3a60909426f20983d75bb063'
             'ecd7b3895f6ecf1c6411f385bee3a4b64139976d72069469d323c8a09b97aaea'
             '62ec7f56e09168d375823e9e99fcdcfbf40b0fffdd75f35cf91122c5902c82e9'
             'ff6065ce2e54ac654605bd5fe554313b1d0def2c31ce56ff39429098dd1e39fe'
