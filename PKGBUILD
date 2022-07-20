@@ -3,7 +3,7 @@
 
 _pkgname=gtools
 pkgname=r-$_pkgname
-pkgver=3.9.2.2
+pkgver=3.9.3
 pkgrel=1
 pkgdesc='Various R Programming Tools'
 arch=('any')
@@ -13,7 +13,7 @@ depends=()
 makedepends=()
 optdepends=()
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_$pkgver.tar.gz")
-sha512sums=('db9266e9bec896a05435dfe6cb6c7eddb0768792d58682405d3fffb619a679fcb7b9d3d422ebc585f685cfb9ffb2249f0fccbb7324353b4dcd783437d5390907')
+sha512sums=('dd2aae84923e37865eaf02f5df47ddd449a14f526613a26abd1f92f9462641f5d698dba9a0270addc21eb3868cdd0f197d58bf329b2c01ae4207e5f10f55e543')
 
 build(){
     R CMD INSTALL ${_pkgname}_$pkgver.tar.gz -l "$srcdir"
