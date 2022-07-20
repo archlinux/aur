@@ -6,30 +6,48 @@
 ## GPG key: https://greenbone.net/GBCommunitySigningKey.asc
 
 pkgname=gvm-libs
-pkgver=21.4.4
+pkgver=22.4.0
 pkgrel=1
 pkgdesc='greenbone-vulnerability-manager libraries'
 arch=('x86_64')
 url="https://github.com/greenbone/gvm-libs"
 license=('GPL')
 groups=('greenbone-vulnerability-manager')
-depends=('gnutls' 'libpcap' 'gpgme' 'libssh' 'glib2' 'libldap' 'hiredis' 'libnet' 'libxml2')
+depends=(
+	'gnutls'
+	'hiredis'
+	'libgcrypt'
+	'libgio-2.0.so'
+	'libglib-2.0.so'
+	'libgpgme.so'
+	'libnet'
+	'libpcap.so'
+	'libssh.so'
+	'libuuid.so'
+	'libxml2.so'
+	'paho-mqtt-c'
+	'zlib')
 makedepends=('cmake')
 provides=(
-	'libgvm_util.so=21-64'
-	'libgvm_osp.so=21-64'
-	'libgvm_gmp.so=21-64'
-	'libgvm_boreas.so=21-64'
-	'libgvm_base.so=21-64')
+	"libgvm_base.so=${pkgver::2}-64"
+	"libgvm_boreas.so=${pkgver::2}-64"
+	"libgvm_gmp.so=${pkgver::2}-64"
+	"libgvm_osp.so=${pkgver::2}-64"
+	"libgvm_util.so=${pkgver::2}-64")
 replaces=('openvas-libraries')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc")
-sha256sums=('119e61725c64cbff24c67f47e85463eb6f508f3ece4455da186ac28c29af96b2'
+sha256sums=('568ca642d9e616c27be128041acb0764022e8eebe5b43a6f96e82e4527734da5'
             'SKIP')
 validpgpkeys=('8AE4BE429B60A59B311C2E739823FAA60ED1E580') # GVM Transfer Integrity
 
 PURGE_TARGETS=('var/run')
+
+prepare() {
+	cd "$pkgname-$pkgver"
+	sed -i '/-Werror/d' CMakeLists.txt
+}
 
 build() {
 	cmake \

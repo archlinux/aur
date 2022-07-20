@@ -4,18 +4,41 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## [21.4.3] - 2021-10-11
+## [22.4] (unreleased)
 
-### Changed
-* Use better defaults for installation directories [#576](https://github.com/greenbone/gvm-libs/pull/576)
-    * SYSCONFDIR is /etc by default now
-    * LOCALSTATEDIR is /var by default now
-    * Introduced GVM_RUN_DIR that uses /run/gvm by default
-    * GVM_PID_DIR is /run/gvm by default now
-### Fixed
+### Added
+
+- Add support for volatile keys. [#460](https://github.com/greenbone/gvm-libs/pull/460)
+- Possibility to use lcrypt with `$6$` (sha512) for authentication [484](https://github.com/greenbone/gvm-libs/pull/484)
+- Add function to perform an alive test and get the amount of alive hosts. [495](https://github.com/greenbone/gvm-libs/pull/495)
+- Add functions for sentry integration. [#502](https://github.com/greenbone/gvm-libs/pull/502) [#506](https://github.com/greenbone/gvm-libs/pull/506)
+- Add basic support for mqtt.
+  Original
+  [#505](https://github.com/greenbone/gvm-libs/pull/505)
+  [#511](https://github.com/greenbone/gvm-libs/pull/511).
+  Reintroduction after Rebase
+  [#538](https://github.com/greenbone/gvm-libs/pull/538)
+- Refactor MQTT handling [#562](https://github.com/greenbone/gvm-libs/pull/562). Add function for mqtt init status [#567](https://github.com/greenbone/gvm-libs/pull/567). Fix prototypes in mqtt.h. [#584](https://github.com/greenbone/gvm-libs/pull/584)
+- Add function to get the severity_vector, otherwise the cvss_base_vector. [#568](https://github.com/greenbone/gvm-libs/pull/568)
 - Add function to duplicate host and vhost objects [#590](https://github.com/greenbone/gvm-libs/pull/590)
 
-[21.4.3]: https://github.com/greenbone/gvm-libs/compare/v21.4.3...stable
+### Changed
+- Handle script timeout as script preference with ID 0 [#581](https://github.com/greenbone/gvm-libs/pull/581)
+
+### Fixed
+### Removed
+
+[Unreleased]: https://github.com/greenbone/gvm-libs/compare/stable...HEAD
+
+## [21.4.3] (unreleased)
+
+### Added
+### Changed
+### Deprecated
+### Removed
+### Fixed
+
+[Unreleased]: https://github.com/greenbone/gvm-libs/compare/v21.4.2...stable
 
 ## [21.4.2] - 2021-08-03
 
@@ -27,7 +50,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [21.4.1] - 2021-06-23
 
 ### Added
-- Possibility to use lcrypt with `$6$` (sha512) for authentication [484](https://github.com/greenbone/gvm-libs/pull/484)
 - Add function to find and return a host from a host list. [490](https://github.com/greenbone/gvm-libs/pull/490)
 
 ### Changed
@@ -36,13 +58,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Fixed
 - Unify GLib log domains [#479](https://github.com/greenbone/gvm-libs/pull/479)
 - Fix double free. [#499](https://github.com/greenbone/gvm-libs/pull/499)
-- Fix uninitialized variable error of the gcc. [#477](https://github.com/greenbone/gvm-libs/pull/477)
 
 ### Removed
 
 [21.4.1]: https://github.com/greenbone/gvm-libs/compare/v21.4.0...v21.4.1
 
-## [21.4.0] (2021-04-15)
+
+## [21.4.0] - 2021-04-15
 
 ### Added
 - Use dedicated port list for alive detection (Boreas only) if supplied via OSP. [#391](https://github.com/greenbone/gvm-libs/pull/391)
@@ -76,8 +98,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 [21.4.0]: https://github.com/greenbone/gvm-libs/compare/oldstable...v21.4.0
 
-## [20.8.4] - 2021-10-11
+## [20.8.4] - Unreleased
 ### Added
+- Add function to duplicate host and vhost objects [#590](https://github.com/greenbone/gvm-libs/pull/590)
 ### Changed
 * Use better defaults for installation directories [#574](https://github.com/greenbone/gvm-libs/pull/574)
     * SYSCONFDIR is /etc by default now
@@ -115,7 +138,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Adding initialization to struct scanner in `boreas/util_tests.c`. [#438](https://github.com/greenbone/gvm-libs/pull/438)
 - Fix warnings about uninitialized variables. [#448](https://github.com/greenbone/gvm-libs/pull/448)
 - Split the log message into smaller pieces when syslog is the log destination.  [#455](https://github.com/greenbone/gvm-libs/pull/455)
-- Initialize reallocated memory in gvm_hosts_add [#520](https://github.com/greenbone/gvmd/pull/520)
+- Initialize reallocated memory in gvm_hosts_add [#520](https://github.com/greenbone/gvm-libs/pull/520)
 
 [20.8.2]: https://github.com/greenbone/gvm-libs/compare/v20.8.1...v20.8.2
 
@@ -172,6 +195,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Fix is_cidr6_block() and is_short_range_network(). [#337](https://github.com/greenbone/gvm-libs/pull/337)
 - Fix S/MIME keylist and improve error handling [#345](https://github.com/greenbone/gvm-libs/pull/345)
 - Fix interrupted state by sending correct number of dead hosts. [#371](https://github.com/greenbone/gvm-libs/pull/371)
+- Fix uninitialized variable error of the gcc. [#477](https://github.com/greenbone/gvm-libs/pull/477)
 
 ### Removed
 - Remove parallel from target options [#347](https://github.com/greenbone/gvm-libs/pull/347)
