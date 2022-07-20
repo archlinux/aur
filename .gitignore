@@ -1,8 +1,8 @@
 pkg/
 src/
 *.swp
-*.pkg.tar.xz
-*.tar.gz
+*.pkg.tar.*
+*.tar.*
 *.tar
 
 DSView/
