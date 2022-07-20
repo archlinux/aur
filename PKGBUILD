@@ -11,7 +11,7 @@ arch=('any')
 url="https://github.com/firecat53/keepmenu"
 license=('GPL3')
 depends=('python' 'python-pykeepass' 'python-pynput')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-build' 'python-setuptools' 'python-installer' 'python-wheel')
 optdepends=('dmenu: either dmenu or rofi is required'
             'rofi: either dmenu or rofi is required'
             'xdotool: required for typing non-U.S. Unicode characters')
@@ -28,12 +28,12 @@ pkgver() {
 
 build() {
   cd "$_gitname"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$_gitname"
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 "$srcdir/$_gitname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "$srcdir/$_gitname/keepmenu.1" "$pkgdir/usr/share/man/man1/keepmenu.1"
 }
