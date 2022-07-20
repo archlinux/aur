@@ -1,9 +1,9 @@
 # Maintainer: Tilla <carlosfritz@posteo.net>
 
 pkgname=libretro-dosbox-core-git
-pkgver=r4939.dffa80e6
+pkgver=r4941.8f59f153
 pkgrel=1
-pkgdesc="Best DOSBox core"
+pkgdesc="MS-DOS core"
 arch=(x86_64 aarch64)
 url="https://github.com/realnc/dosbox-core"
 license=(GPL2)
@@ -26,8 +26,8 @@ prepare() {
 
 build() {
   cd ${_gitname}/libretro
-  make platform=unix BUNDLED_AUDIO_CODECS=0 BUNDLED_LIBSNDFILE=0 BUNDLED_SDL=0 WITH_BASSMIDI=0 WITH_FLUIDSYNTH=0 deps
-  make platform=unix BUNDLED_AUDIO_CODECS=0 BUNDLED_LIBSNDFILE=0 BUNDLED_SDL=0 WITH_BASSMIDI=0 WITH_FLUIDSYNTH=0
+  make platform=unix BUNDLED_AUDIO_CODECS=0 BUNDLED_LIBSNDFILE=0 BUNDLED_SDL=0 deps
+  make platform=unix BUNDLED_AUDIO_CODECS=0 BUNDLED_LIBSNDFILE=0 BUNDLED_SDL=0
 }
 
 package() {
