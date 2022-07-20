@@ -9,7 +9,7 @@ license=('MIT')
 conflicts=('tabview')
 provides=('tabview')
 depends=('python')
-makedepends=('git')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("git+https://github.com/tabviewer/tabview.git")
 _gitname="tabview"
 md5sums=('SKIP')
@@ -21,10 +21,10 @@ pkgver() {
 
 build() {
   cd "$_gitname"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
   
 package() {
   cd "$_gitname"
-  python setup.py install --root=${pkgdir} --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
