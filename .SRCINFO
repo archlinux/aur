@@ -1,6 +1,6 @@
 pkgbase = boringtun
 	pkgdesc = Userspace WireGuard implementation in Rust
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/cloudflare/boringtun
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = boringtun
 	license = BSD
 	makedepends = rust
 	depends = gcc-libs
-	source = boringtun-0.5.1-src.tar.gz::https://github.com/cloudflare/boringtun/archive/refs/tags/boringtun-0.5.1.tar.gz
-	sha256sums = 6de89f0750e401770326639ac1506fad457d26acdfe8d23a5dff6184684e4cc9
+	source = boringtun-0.5.2-src.tar.gz::https://github.com/cloudflare/boringtun/archive/refs/tags/boringtun-0.5.2.tar.gz
+	sha256sums = 660f69e20b1980b8e75dc0373dfe137f58fb02b105d3b9d03f35e1ce299d61b3
 
 pkgname = boringtun
