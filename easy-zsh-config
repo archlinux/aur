@@ -1,12 +1,12 @@
 ## Config the theme file from arg. or use fallback theme file
 if [ $# -gt 0 ]; then
     if [[ -r "${1}" ]]; then
-        _POSH_THEME = ${1}
+        _POSH_THEME="${1}"
     else
-        _POSH_THEME = "/usr/share/oh-my-posh/themes/jandedobbeleer.omp.json"
+        _POSH_THEME="/usr/share/oh-my-posh/themes/jandedobbeleer.omp.json"
     fi
 else
-    _POSH_THEME = "/usr/share/oh-my-posh/themes/jandedobbeleer.omp.json"
+    _POSH_THEME="/usr/share/oh-my-posh/themes/jandedobbeleer.omp.json"
 fi
 
 ## Apply the theme file
