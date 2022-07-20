@@ -1,0 +1,14 @@
+pkgbase = saurh-git
+	pkgdesc = simple aur helper straight from the source. saurh bleeding edge.
+	pkgver = 0.1.0edge
+	pkgrel = 1
+	url = https://github.com/JaydenDev/saurh
+	arch = any
+	license = MIT
+	depends = git
+	provides = saurh-git
+	conflicts = saurh
+	source = https://github.com/JaydenDev/saurh/archive/refs/heads/master.tar.gz
+	md5sums = SKIP
+
+pkgname = saurh-git
