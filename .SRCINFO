@@ -1,7 +1,7 @@
 pkgbase = python-pytorch-lightning
 	pkgdesc = The lightweight PyTorch wrapper for high-performance AI research
 	pkgver = 1.6.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://lightning.ai
 	arch = any
 	license = Apache
@@ -23,7 +23,7 @@ pkgbase = python-pytorch-lightning
 	depends = tensorboard
 	optdepends = python-apex: mixed precision support
 	optdepends = python-horovod: for distributed training
-	source = lightning-1.6.5.tar.gz::https://github.com/Lightning-AI/lightning/archive/refs/tags/1.6.5.tar.gz
-	sha512sums = e257dca3ac3ee82e2684501a91000cb26b735935b86dff3ff5ebe73b185be7809b8b13d1afae751b75a6107476ca0ca8848ef2aaa9d244b8ac8cc64971d0b946
+	source = pytorch-lightning-1.6.5.tar.gz::https://files.pythonhosted.org/packages/source/p/pytorch-lightning/pytorch-lightning-1.6.5.tar.gz
+	sha512sums = 3fbbe4abb180b62f9960c6923f1789f608d1fe329a2fd52777832739b407c3761741b0012335199656d7c80771abc6f44a12b27b0acac9123aa4261f88d810b2
 
 pkgname = python-pytorch-lightning
