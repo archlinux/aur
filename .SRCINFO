@@ -1,0 +1,22 @@
+pkgbase = python-aiotdlib-git
+	pkgdesc = Python asyncio Telegram client based on TDLib (git version)
+	pkgver = 0.19.2.r10.g50af307
+	pkgrel = 1
+	url = https://github.com/pylakey/aiotdlib
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	makedepends = python-jinja
+	depends = python
+	depends = python-pydantic
+	depends = python-sortedcontainers
+	depends = python-ujson
+	provides = python-aiotdlib
+	conflicts = python-aiotdlib
+	source = python-aiotdlib::git+https://github.com/pylakey/aiotdlib.git
+	sha256sums = SKIP
+
+pkgname = python-aiotdlib-git
