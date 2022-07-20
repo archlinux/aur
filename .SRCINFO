@@ -1,0 +1,21 @@
+pkgbase = brother-hl3070cw
+	pkgdesc = LPR and CUPS driver for the Brother HL3070CW
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-hl3070cw.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	depends = lib32-glibc
+	source = http://www.brother.com/pub/bsc/linux/dlf/hl3070cwlpr-1.1.2-1.i386.rpm
+	source = http://www.brother.com/pub/bsc/linux/dlf/hl3070cwcupswrapper-1.1.2-2.i386.rpm
+	source = cupswrapper-license.txt
+	source = lpr-license.txt
+	md5sums = 1e9f14e0065f67d1385bc8c5ab123684
+	md5sums = ea3fbd2f8211f00a0e1e8da0125b96e9
+	md5sums = 9181a7fe7ef4b57d92ac04800c4f5b64
+	md5sums = d319bab2a7842f20fd03fe87bedf4eed
+
+pkgname = brother-hl3070cw

@@ -1,0 +1,15 @@
+post_install() {
+	post_upgrade;
+	echo "You can now register your new printer using the web interface at:"
+	echo "  http://localhost:631/"
+	echo "and select the driver 'HL3070CW CUPS (en)'"
+}
+
+post_upgrade() {
+	systemctl restart cups.service
+}
+
+post_remove() {
+	post_upgrade;
+}
+
