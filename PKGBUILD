@@ -1,8 +1,8 @@
 #Maintainer: sukanka <su975853527 AT gmail.com>
 _pkgname=jaspRegression
-_pkgver=0.16.3
+_pkgver=0.16.4
 pkgname=r-${_pkgname,,}
-pkgver=0.16.3
+pkgver=0.16.4
 pkgrel=1
 pkgdesc="Regression Module for JASP"
 arch=('x86_64')
