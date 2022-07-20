@@ -6,6 +6,6 @@ pkgbase = bfind
 	arch = any
 	license = custom:ISC
 	source = bfind-3.0.1.tar.gz::https://codeberg.org/maandree/bfind/archive/3.0.1.tar.gz
-	sha256sums = b5f44e57464debaeb48f3df38ac26468d6fdee3ef53f5c79e3367b94e1b6ae5d
+	sha256sums = 56503678a91e0add62073981e89bf5c4de514a94e88b242c1cbabf3d011fc9dd
 
 pkgname = bfind

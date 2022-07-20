@@ -10,15 +10,15 @@ license=(custom:ISC)
 depends=()
 makedepends=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=(b5f44e57464debaeb48f3df38ac26468d6fdee3ef53f5c79e3367b94e1b6ae5d)
+sha256sums=(56503678a91e0add62073981e89bf5c4de514a94e88b242c1cbabf3d011fc9dd)
 
 
 build() {
-	cd "$srcdir/bfind-$pkgver"
+	cd "$srcdir/bfind"
 	make PREFIX=/usr
 }
 
 package() {
-	cd "$srcdir/bfind-$pkgver"
+	cd "$srcdir/bfind"
 	make PREFIX=/usr DESTDIR="$pkgdir" install
 }
