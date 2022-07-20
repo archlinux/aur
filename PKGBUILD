@@ -5,17 +5,17 @@ pkgver=1.1.4
 pkgrel=1
 pkgdesc='A humongous timer or stopwatch for the terminal'
 arch=(any)
-url='https://github.com/maandree/mongotimer'
+url='https://codeberg.org/maandree/mongotimer'
 license=('custom:ISC')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=(1099ffea5b7cebe6f4e6d13539f7b1b63dadfd9667729f27a71ec5da84ded3c1)
+sha256sums=(a5814feadbd8b742047e1e3e2c1273536d1fd14d22c05277517c6c0ab316bc4e)
 
 build() {
-    cd "$srcdir/mongotimer-$pkgver"
+    cd "$srcdir/mongotimer"
     make PREFIX=/usr
 }
 
 package() {
-    cd "$srcdir/mongotimer-$pkgver"
+    cd "$srcdir/mongotimer"
     make PREFIX=/usr DESTDIR="$pkgdir" install
 }
