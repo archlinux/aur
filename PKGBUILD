@@ -2,7 +2,7 @@
  
  pkgname=easy-zsh-config
  pkgver=0.5.0
- pkgrel=0
+ pkgrel=1
  pkgdesc="A simple but fast and out of the box configuration of zsh powered by oh-my-posh and zsh pulgins."
  arch=(any)
  url=https://github.com/wszqkzqk/easy-zsh-config
