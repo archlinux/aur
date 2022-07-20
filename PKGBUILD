@@ -2,7 +2,7 @@
 
 _pkgname=shadowsocks-go
 pkgname=$_pkgname-git
-pkgver=1.0.0.r0.gfaef828
+pkgver=1.0.0.r3.gaf83c9e
 pkgrel=1
 pkgdesc="A versatile and efficient proxy platform for secure communications"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,11 @@ license=('AGPL3')
 makedepends=('git' 'go')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-backup=("etc/$_pkgname/config.json")
+backup=(
+    "etc/$_pkgname/config.json"
+    "etc/$_pkgname/server.json"
+    "etc/$_pkgname/client.json"
+)
 source=(
     "$pkgname::git+$url.git"
     "$_pkgname.service"
