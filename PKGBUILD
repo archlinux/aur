@@ -3,11 +3,11 @@
 
 pkgname=budgie-desktop-view-git
 pkgver=1.2.r0.g1f30d69
-pkgrel=1
+pkgrel=2
 pkgdesc="The official Budgie desktop icons implementation - latest git"
 arch=('x86_64')
 url="https://github.com/BuddiesOfBudgie/budgie-desktop-view"
-license=('Apache-2.0')
+license=('APACHE')
 depends=(budgie-desktop)
 makedepends=(meson git gobject-introspection intltool vala gtk-doc)
 provides=(budgie-desktop-view)
@@ -17,16 +17,14 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags | sed -r 's/^v([^-]*)-([^-]*)-/\1.r\2./'
+  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/; s/-/./g; s/^v//g'
 }
 
 build() {
-  cd "$pkgname"
-  meson build --prefix=/usr --sysconfdir=/etc --buildtype=plain
-  ninja -C build
+  arch-meson "$pkgname" build
+  meson compile -C build
 }
 
 package() {
-  cd "$pkgname"
-  DESTDIR="${pkgdir}" ninja -C build install
+  meson install -C build --destdir "$pkgdir"
 }
