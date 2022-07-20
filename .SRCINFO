@@ -1,0 +1,17 @@
+pkgbase = neovim-highlight-colors-git
+	pkgdesc = Highlight color codes in Neovim
+	pkgver = r26.30be040
+	pkgrel = 1
+	url = https://github.com/brenoprata10/nvim-highlight-colors
+	install = highlight-colors.install
+	arch = any
+	groups = neovim-plugins
+	license = unknown
+	makedepends = git
+	depends = neovim
+	provides = neovim-highlight-colors
+	conflicts = neovim-highlight-colors
+	source = neovim-highlight-colors::git+https://github.com/brenoprata10/nvim-highlight-colors
+	sha256sums = SKIP
+
+pkgname = neovim-highlight-colors-git
