@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=helm-gcs
-pkgver=0.3.21
+pkgver=0.3.22
 pkgrel=1
 pkgdesc="Helm plugin to manage chart repositories on GCS"
 arch=(x86_64)
@@ -11,17 +11,18 @@ install=helm-gcs.install
 depends=(bash helm)
 makedepends=(go)
 source=("https://github.com/hayorov/helm-gcs/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('8faa8afdc68b87397fe31b1700a4370919f15d732106fd10bdfa8722f6752768')
+sha256sums=('3a9938e11813d57cadbdff987470a00aa113eed82238a0267e1838a833c544e8')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  go mod tidy # upstream released a dirty mod file; remove on next release
+  export GOPATH="${srcdir}/gopath"
   go mod download
   sed -i '/^hooks:$/Q' plugin.yaml
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
+  export GOPATH="${srcdir}/gopath"
   export CGO_LDFLAGS="$LDFLAGS"
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
