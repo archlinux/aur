@@ -7,7 +7,7 @@ _vlcver=3.0.17.4
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=8
+pkgrel=9
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64' 'aarch64')
@@ -89,8 +89,8 @@ optdepends=(
   'libavc1394: devices using the 1394ta AV/C'
   'libdc1394: IEEE 1394 access plugin'
   'kwallet: kwallet keystore'
-  'libva-vdpau-driver: vdpau backend nvidia'
-  'libva-intel-driver: video backend intel'
+  #'libva-vdpau-driver: vdpau backend nvidia'
+  #'libva-intel-driver: video backend intel'
   'libbluray: Blu-Ray video input'
   'flac: Free Lossless Audio Codec plugin'
   'twolame: TwoLAME mpeg2 encoder plugin'
@@ -263,7 +263,7 @@ build() {
     --enable-mpg123 \
     --enable-gst-decode \
     --enable-avcodec \
-    --enable-libva \
+    --disable-libva \
     --enable-avformat \
     --enable-postproc \
     --enable-faad \
@@ -332,7 +332,6 @@ build() {
     --enable-srt \
     --enable-dav1d \
     --disable-decklink \
-    --disable-libva \
     $GLES
 
   # prevent excessive overlinking due to libtool

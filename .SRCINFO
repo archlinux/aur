@@ -1,7 +1,7 @@
 pkgbase = vlc-luajit
 	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility
 	pkgver = 3.0.17.4
-	pkgrel = 8
+	pkgrel = 9
 	url = https://www.videolan.org/vlc/
 	arch = i686
 	arch = x86_64
@@ -109,8 +109,6 @@ pkgbase = vlc-luajit
 	optdepends = libavc1394: devices using the 1394ta AV/C
 	optdepends = libdc1394: IEEE 1394 access plugin
 	optdepends = kwallet: kwallet keystore
-	optdepends = libva-vdpau-driver: vdpau backend nvidia
-	optdepends = libva-intel-driver: video backend intel
 	optdepends = libbluray: Blu-Ray video input
 	optdepends = flac: Free Lossless Audio Codec plugin
 	optdepends = twolame: TwoLAME mpeg2 encoder plugin
