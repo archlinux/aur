@@ -2,7 +2,7 @@
 
 pkgname=python-adafruit-circuitpython-pcd8544
 _pypi_pkgname=adafruit-circuitpython-pcd8544
-pkgver=1.2.7
+pkgver=1.2.9
 pkgrel=0
 pkgdesc="CircuitPython display control library for Nokia PCD8544 monochrome displays"
 arch=('armv6h' 'armv7h')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 depends=('python' 'python-adafruit-circuitpython-busdevice')
 optdepends=('python-raspberry-gpio')
 source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('99084296128bc64641d52c55f4808eb352f1199151774599a2d47603b5396a5b')
+sha256sums=('81abcf1d285268914307d0b41d57604350ff44e32cf9fffbf1bac74bd1d80b4e')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
