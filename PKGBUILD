@@ -1,5 +1,5 @@
 pkgname='rumtricks'
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Winetricks alternative'
 arch=('x86_64')
@@ -11,7 +11,7 @@ source=(
     "rumtricks-${pkgver}::https://github.com/jc141x/${pkgname}/releases/download/${pkgver}/rumtricks.sh"
     "wha-${pkgver}::https://github.com/jc141x/${pkgname}/releases/download/${pkgver}/wha.sh"
  )
-md5sums=('e4b727189b39073c10f332311764cad9'
+md5sums=('fbd0163e8ac435658a7aade3bf651689'
          '2c07197e1acf892482ba1f4567c7abb3')
 
 package() {
