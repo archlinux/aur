@@ -8,7 +8,7 @@ arch=(any)
 url='https://codeberg.org/maandree/mongoclock'
 license=('custom:ISC')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=(f2b42573eb459d51b46b83ffdbef2af94c8293842775b4d563309559753f5e03)
+sha256sums=(777d59f3453f9282c35bcfa124da6b3c3860ac5cbcc613258bc6485bfaf063d2)
 
 build() {
     cd "$srcdir/mongoclock"
