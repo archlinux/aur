@@ -1,17 +1,18 @@
 # Maintainer: Librewish <librewish@gmail.com>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Paul Kasemir <paul.kasemir@gmail.com>
 pkgname=find-the-command-git
-pkgver=1.4.2.r2.g0fc7e85
-pkgrel=2
+pkgver=1.4.3.r0.g5a59306
+pkgrel=1
 pkgdesc="Advanced command-not-found hook for bash, fish and zsh using the power of pacman"
 arch=('any')
-url="https://github.com/agura-lex/find-the-command"
+url="https://github.com/pkasemir/find-the-command"
 license=('WTFPL')
 depends=('pacman' 'systemd')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install="${pkgname%-git}.install"
-source=('git+https://github.com/agura-lex/find-the-command.git')
+source=('git+https://github.com/pkasemir/find-the-command.git')
 sha256sums=('SKIP')
 
 pkgver() {
