@@ -1,46 +1,31 @@
-# Maintainer: Robert Greener <me@r0bert.dev>
-_cranname=mitools
-_cranver=2.4
-pkgname=r-${_cranname,,}
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
-pkgdesc="Tools for Multiple Imputation of Missing Data"
-arch=(any)
-url="https://cran.r-project.org/package=${_cranname}"
-license=(GPL2)
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+
+_pkgname=mitools
+_pkgver=2.4
+pkgname=r-${_pkgname,,}
+pkgver=2.4
+pkgrel=4
+pkgdesc='Tools for Multiple Imputation of Missing Data'
+arch=('any')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('GPL')
 depends=(
-	r
-	r-dbi
-)
-checkdepends=(
-	r-rodbc
-	r-foreign
+  r
+  r-dbi
 )
 optdepends=(
-	r-rodbc
-	r-foreign
+  r-foreign
+  r-rodbc
 )
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('f204f3774e29d79810f579f128de892539518f2cbe6ed237e08c8e7283155d30')
 
 build() {
-	mkdir -p build
-	R CMD INSTALL "${_cranname}" -l "${srcdir}/build"
-}
-
-check() {
-	if [ -d "${_cranname}/tests" ]
-	then
-  		cd "${_cranname}/tests"
-		for i in *.R; do
-			R_LIBS="${srcdir}/build" Rscript --vanilla $i
-		done
-	fi
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-	install -dm0755 "${pkgdir}/usr/lib/R/library"
-
-	cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
 }
-
-sha256sums=('f204f3774e29d79810f579f128de892539518f2cbe6ed237e08c8e7283155d30')
+# vim:set ts=2 sw=2 et:
