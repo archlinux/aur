@@ -1,12 +1,12 @@
 #Maintainer: Viktor Semykin thesame.ml@gmail.com
 
-pkgname="mongodb34-bin"
-pkgver="3.4.16"
-pkgrel="1"
+pkgname=mongodb36-bin
+pkgver=3.6.23
+pkgrel=1
 pkgdesc="Scalable and flexible document database"
 arch=("x86_64")
 url="https://www.mongodb.com/"
-license=("AGPLv3")
+license=('custom:SSPL')
 provides=("mongodb=$pkgver" "mongodb-tools=$pkgver")
 conflicts=("mongodb" "mongodb-tools")
 source=(
@@ -17,7 +17,7 @@ source=(
     "mongodb.tmpfiles"
     )
 
-md5sums=('16c7a42623b5f5d798708dd44915dd1f'
+md5sums=('7d6c6d7a37de204f5bc7b5a0a0a273f0'
          '96ab4517b48974ce0e566d9746a75a4f'
          '4839fe1d638187ca3226e8267b947318'
          'ff773b723f7bf217c2a8176e3b143498'
@@ -27,6 +27,7 @@ backup=("etc/mongodb.conf")
 
 package() {
   mkdir -p "$pkgdir/usr"
+  install -Dm644 "$srcdir/mongodb-linux-$arch-$pkgver/LICENSE-Community.txt" "$pkgdir/usr/share/licenses/$pkgname/SSPL"
   cp -r "$srcdir/mongodb-linux-$arch-$pkgver/bin" "$pkgdir/usr/"
   install -Dm644 "$srcdir/mongodb.conf" "$pkgdir/etc/mongodb.conf"
   install -Dm644 "$srcdir/mongodb.service" "$pkgdir/usr/lib/systemd/system/mongodb.service"
