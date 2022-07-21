@@ -1,16 +1,14 @@
 pkgbase = r-collections
-	pkgdesc = Provides high performance container data types such as queues, stacks, deques, dicts and ordered dicts
+	pkgdesc = High Performance Container Data Types
 	pkgver = 0.3.5
 	pkgrel = 2
 	url = https://cran.r-project.org/package=collections
-	arch = any
+	arch = x86_64
 	license = MIT
-	checkdepends = r-testthat>=2.3.1
 	depends = r
-	optdepends = r-covr>=3.4.0
+	optdepends = r-covr
+	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/collections_0.3.5.tar.gz
-	source = CRANMITTEMPLATE::https://cran.r-project.org/web/licenses/MIT
-	sha512sums = aa95b0c9b449533510376e041d31cfcd1b53654f7998b17e8951f0fc1d520fa1f38f74c74dce3c87ce4fc605054a482121eaac7fd37fbe31803fc2ea752393bb
-	sha512sums = 20e82bfce7b50a3adfccad5f56e13c82449da19a8dfb92f8395210dd6cf69a1962aaa114743faae02388132431d855361880b2bb26e2e30da9630a05360f42f5
+	sha256sums = bf76ab5c6a8082b6bb70b9bf3bdb30658e823e3b7b28cf7be7e8a87d117a7114
 
 pkgname = r-collections
