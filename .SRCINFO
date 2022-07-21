@@ -1,14 +1,14 @@
 pkgbase = syrinscape-scifi-player
 	pkgdesc = Soundscape creator and sound design app for Sci-Fi games
-	pkgver = 1.4.11_p9
+	pkgver = 1.4.13_p0
 	pkgrel = 2
 	url = https://www.syrinscape.com
 	arch = x86_64
 	license = Proprietary
 	options = !strip
-	source = syrinscape-1.4.11-p9-linux-scifi.tar.gz::https://www.syrinscape.com/get-download/syrinscape-1.4.11-p9-linux-scifi.tar.gz?type=linux&version=1.4.11-p9
+	source = syrinscape-1.4.13-p0-linux-scifi.tar.gz::https://www.syrinscape.com/get-download/syrinscape-1.4.13-p0-linux-scifi.tar.gz?type=linux&version=1.4.13-p0
 	source = local://syrinscape-scifi-player.desktop
-	sha256sums = 6587f7767d1f115017e3774f346dade7bc3cad99ed6329e02722fb9430cda745
+	sha256sums = ec5a5b763f198675142e2926612cbea835dc4f9c12bdf75fa60254c5bfb0b791
 	sha256sums = SKIP
 
 pkgname = syrinscape-scifi-player
