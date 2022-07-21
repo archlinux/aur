@@ -1,8 +1,8 @@
 # Maintainer: Steven Tang <xosdy.t at gmail dot com>
 
 pkgname=simpread-sync-git
-pkgver=v0.6.6.r3.ga383d3e
-pkgrel=2
+pkgver=v0.8.0.r2.g28216c2
+pkgrel=1
 pkgdesc='SimpRead sync server'
 arch=('x86_64')
 url="https://github.com/j1g5awi/simpread-sync"
@@ -30,5 +30,6 @@ build() {
 package() {
   cd "$srcdir"/"$pkgname"
   install -Dm755 simpread-sync -t "$pkgdir"/usr/bin/
-  install -Dm644 systemd/simpread-sync@.service -t "$pkgdir"/usr/lib/systemd/system/
+  install -Dm644 systemd/system/simpread-sync@.service -t "$pkgdir"/usr/lib/systemd/system/
+  install -Dm644 systemd/user/simpread-sync.service -t "$pkgdir"/usr/lib/systemd/user/
 }
