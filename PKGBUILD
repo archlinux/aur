@@ -2,9 +2,9 @@ pkgdesc="ROS - Generates a configuration package that makes it easy to use MoveI
 url='https://moveit.ros.org'
 
 pkgname='ros-noetic-moveit-setup-assistant'
-pkgver='1.1.8'
+pkgver='1.1.9'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-noetic-srdfdom
@@ -31,12 +31,13 @@ depends=(${ros_depends[@]}
 
 _dir="moveit-${pkgver}/moveit_setup_assistant"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz" 
-        "fixbuild.patch"::"https://patch-diff.githubusercontent.com/raw/ros-planning/moveit/pull/3175.patch")
-sha256sums=('2a88440169593037c4adbf14896c30def63f8b3af85f1239e8ef94ee62b0b969'
-            '3751b9739fa0fcd408bfda9028ce8e8c7701fabdb72af8ab78691926ce0dca21')
+        "bool.patch"::"https://github.com/ros-planning/moveit/commit/d49bea1b372eded30a5480d691ffc296b32bc013.patch")
+sha256sums=('704532a56c1e9e780707748b469f441c5d4482f5265de41f6edf313ba2df6314'
+            '807cdc8790c1a0280617e7eb05f34dd9b94b0d757db53cecab139d239d5b8254')
 
 prepare() {
-  patch --directory="moveit-$pkgver" --forward --strip=1 --input="${srcdir}/fixbuild.patch"
+  cd "$srcdir/moveit-${pkgver}"
+  patch -Np1 < "${srcdir}/bool.patch"
 }
 
 build() {
