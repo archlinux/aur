@@ -4,21 +4,25 @@ pkgbase = r-multcomp
 	pkgrel = 1
 	url = https://cran.r-project.org/package=multcomp
 	arch = any
-	license = GPL2
+	license = GPL
 	depends = r
-	depends = r-mvtnorm>=1.0.10
-	depends = r-th.data>=1.0.2
-	depends = r-sandwich>=2.3.0
-	optdepends = r-lme4
-	optdepends = r-robustbase
+	depends = r-mvtnorm
+	depends = r-sandwich
+	depends = r-th.data
 	optdepends = r-coin
-	optdepends = r-xtable
-	optdepends = r-lmtest
 	optdepends = r-coxme
-	optdepends = r-simcomp
+	optdepends = r-fixest
+	optdepends = r-foreign
 	optdepends = r-iswr
+	optdepends = r-lme4
+	optdepends = r-lmtest
+	optdepends = r-mass
+	optdepends = r-nlme
+	optdepends = r-robustbase
+	optdepends = r-simcomp
 	optdepends = r-tram
-	source = https://cran.microsoft.com/snapshot/2022-06-08/src/contrib/multcomp_1.4-19.tar.gz
+	optdepends = r-xtable
+	source = https://cran.r-project.org/src/contrib/multcomp_1.4-19.tar.gz
 	sha256sums = f03473b1cfbc714cd85a0ee948e2ecdb23bcdccbe95e27237ee25e9c71e3e557
 
 pkgname = r-multcomp
