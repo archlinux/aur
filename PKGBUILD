@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname}"
-  cmake -S. -Bbuild -DCROW_BUILD_EXAMPLES=OFF -DCROW_BUILD_TESTS=OFF -DCROW_AMALGAMATE=ON -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/"
+  cmake -S. -Bbuild -DCROW_BUILD_EXAMPLES=OFF -DCROW_BUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/"
   cmake --build build
 }
 
