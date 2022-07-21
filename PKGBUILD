@@ -3,7 +3,7 @@
 _pkgname="gimmeasearx"
 pkgname="$_pkgname-git"
 pkgver="2.0.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Find a random searx instance"
 arch=("x86_64")
 url="https://github.com/demostanis/gimmeasearx"

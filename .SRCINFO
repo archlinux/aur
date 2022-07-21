@@ -1,7 +1,7 @@
 pkgbase = gimmeasearx-git
 	pkgdesc = Find a random searx instance
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/demostanis/gimmeasearx
 	arch = x86_64
 	license = GPL3
@@ -14,4 +14,3 @@ pkgbase = gimmeasearx-git
 	sha512sums = SKIP
 
 pkgname = gimmeasearx-git
-
