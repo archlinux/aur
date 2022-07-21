@@ -1,0 +1,16 @@
+pkgbase = r-urlchecker
+	pkgdesc = Run CRAN URL Checks from Older R Versions
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=urlchecker
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-cli
+	depends = r-curl
+	depends = r-xml2
+	optdepends = r-covr
+	source = https://cran.r-project.org/src/contrib/urlchecker_1.0.1.tar.gz
+	sha256sums = 62165ddbe1b748b58c71a50c8f07fdde6f3d19a7b39787b9fa2b4f9216250318
+
+pkgname = r-urlchecker
