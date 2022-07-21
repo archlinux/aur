@@ -1,6 +1,6 @@
 # Maintainer: Kevin S <aur@eldenring.mozmail.com>
 pkgname=audiobookshelf-git
-pkgver=v2.0.24.r0.g277a5fa
+pkgver=v2.1.0.r3.g217bbb4
 pkgrel=1
 pkgdesc="Self-hosted audiobook server for managing and playing audiobooks"
 arch=('any')
@@ -60,7 +60,7 @@ package() {
 	cd "${srcdir}/${pkgname}"
 
 	install -d -m 755 "${pkgdir}/usr/share/audiobookshelf/"
-	pkg -t node16-linux -o "${pkgdir}/usr/share/audiobookshelf/audiobookshelf" .
+	"${srcdir}/${pkgname}"/node_modules/.bin/pkg -t node16-linux -o "${pkgdir}/usr/share/audiobookshelf/audiobookshelf" . 
 	install -D -m 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -D -m 644 "${srcdir}/audiobookshelf.conf.d" "${pkgdir}/etc/conf.d/audiobookshelf"
 	install -D -m 644 "${srcdir}/audiobookshelf.service" "${pkgdir}/usr/lib/systemd/system/audiobookshelf.service"
