@@ -4,35 +4,31 @@
 
 pkgname=xp-pen-tablet
 pkgver=3.2.3.220323
-pkgrel=3
-epoch=1
+pkgrel=7
+epoch=0
 pkgdesc="XP-Pen (Official) Linux utility (New UI driver)"
 arch=('x86_64')
 url='https://www.xp-pen.com/download/index.html'
 license=('LGPL3')
-source=("XPPen-pentablet-${pkgver}-1.${arch}.tar.gz::https://www.xp-pen.com/download/file/id/1936/pid/56/ext/gz.html"
-        "install.sh.patch"
-)
+source=("XPPen-pentablet-${pkgver}-1.${arch}.deb::https://www.xp-pen.ru/download/file/id/1954/pid/143/ext/deb.html")
+install=${pkgname}.install
 
-sha256sums=('70b6dc1345958c1858d091a3d48bdd75c91fcc879ba175739ef9152790bdcb2b'
-            '7307056c90591b750fe5c38f5ad0e7f53c6346e14a18413ae544143ddf6f7357')
-
-prepare() {
-    cd "$srcdir/xp-pen-pentablet-${pkgver}-1.${CARCH}"
-
-    patch < "$srcdir/install.sh.patch"
-}
+sha512sums=('bcbd6c04ac0f28f4f9151e95ffc2e0b0941b5863e34af569964660b9aa02ea616cf24772b0a90aa69feb598aa79654a44d185048636cf84b510102c44074df6c')
 
 
 package() {
-    cd "$srcdir/xp-pen-pentablet-${pkgver}-1.${CARCH}"
-
-	mkdir -p "${pkgdir}/usr/lib/pentablet"
-	mkdir -p "${pkgdir}/usr/share/applications"
-	mkdir -p "${pkgdir}/usr/share/icons/"
-	mkdir -p "${pkgdir}/etc/xdg/autostart"
-	mkdir -p "${pkgdir}/usr/lib/udev/rules.d/"
-	mkdir -p "${pkgdir}/usr/lib/pentablet/conf/xppen"
-
-	./install.sh "${pkgdir}"
+       cd $srcdir
+       ar x *.deb
+       bsdtar xf data.tar.xz -C $pkgdir
+       cp -r $pkgdir/lib/* $pkgdir/usr/lib
+       rm -r $pkgdir/lib
+       chmod 755 $pkgdir/usr/
+       chmod 755 $pkgdir/usr/lib/
+       chmod 755 $pkgdir/usr/share/
+       chmod 755 $pkgdir/usr/share/applications/
+       chmod 755 $pkgdir/usr/share/icons/
+       #Moved from the official post_install() script to avoid errors during installation/updates
+       chmod 777 $pkgdir/usr/lib/pentablet/conf/xppen/
+       chmod 777 $pkgdir/usr/lib/pentablet/lib/
+       chmod 777 $pkgdir/usr/lib/pentablet/platforms/
 }
