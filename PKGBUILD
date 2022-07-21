@@ -1,25 +1,32 @@
-# Maintainer: Robert Greener <me@r0bert.dev>
-# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# system requirements: C++11
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
-_cranname=conquer
-_cranver=1.3.0
-pkgname=r-${_cranname,,}
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
-pkgdesc="Convolution-Type Smoothed Quantile Regression"
-arch=(any)
-url="https://cran.r-project.org/package=${_cranname}"
-license=(GPL3)
-depends=('r>=3.5.0' 'r-rcpp>=1.0.3' r-matrixstats r-caret 'r-rcpparmadillo>=0.9.850.1.0')
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha512sums=("57878bc6c559f7d460bda84f8fdba83348a4582b1c63aba8f545e23c01811c0c9ddb1ff77be1cfc6c871171793485234fd3405a09b0818b15c709f8e6adfe33a")
+_pkgname=conquer
+_pkgver=1.3.0
+pkgname=r-${_pkgname,,}
+pkgver=1.3.0
+pkgrel=3
+pkgdesc='Convolution-Type Smoothed Quantile Regression'
+arch=('x86_64')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('GPL')
+depends=(
+  r
+  r-caret
+  r-matrixstats
+  r-rcpp
+  r-rcpparmadillo
+  gcc
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('ac354e18c9ad6f41ed5200fad1c99fa5b124fc6fa5bba8f3434be2478f53d5fa')
 
 build() {
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
 package() {
   install -dm0755 "${pkgdir}/usr/lib/R/library"
-
-  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
 }
+# vim:set ts=2 sw=2 et:
