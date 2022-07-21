@@ -1,10 +1,10 @@
 pkgbase = r-brew
 	pkgdesc = Templating Framework for Report Generation
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=brew
 	arch = any
-	license = GPL2
+	license = GPL
 	depends = r
 	source = https://cran.r-project.org/src/contrib/brew_1.0-7.tar.gz
 	sha256sums = 38b859c1dca63479f6937c593da8f806f2b3279585bb6e20ecff1b898469e76e
