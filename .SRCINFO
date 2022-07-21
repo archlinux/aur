@@ -1,31 +1,33 @@
 pkgbase = r-devtools
 	pkgdesc = Tools to Make Developing R Packages Easier
-	pkgver = 2.4.3
+	pkgver = 2.4.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=devtools
 	arch = any
 	license = MIT
-	depends = r>=3.0.2
-	depends = r-usethis>=2.0.1
-	depends = r-callr>=3.6.0
-	depends = r-cli>=3.0.0
-	depends = r-desc>=1.3.0
-	depends = r-ellipsis>=0.3.1
-	depends = r-fs>=1.5.0
-	depends = r-httr>=1.4.2
-	depends = r-lifecycle>=1.0.0
-	depends = r-memoise>=2.0.0
-	depends = r-pkgbuild>=1.2.0
-	depends = r-pkgload>=1.2.1
-	depends = r-rcmdcheck>=1.3.3
-	depends = r-remotes>=2.3.0
-	depends = r-rlang>=0.4.10
-	depends = r-roxygen2>=7.1.1
-	depends = r-rstudioapi>=0.13
-	depends = r-rversions>=2.0.2
-	depends = r-sessioninfo>=1.1.1
-	depends = r-testthat>=3.0.2
-	depends = r-withr>=2.4.1
+	depends = r
+	depends = r-cli
+	depends = r-desc
+	depends = r-ellipsis
+	depends = r-fs
+	depends = r-httr
+	depends = r-lifecycle
+	depends = r-memoise
+	depends = r-miniui
+	depends = r-pkgbuild
+	depends = r-pkgdown
+	depends = r-pkgload
+	depends = r-profvis
+	depends = r-rcmdcheck
+	depends = r-remotes
+	depends = r-rlang
+	depends = r-roxygen2
+	depends = r-rversions
+	depends = r-sessioninfo
+	depends = r-testthat
+	depends = r-urlchecker
+	depends = r-usethis
+	depends = r-withr
 	optdepends = r-biocmanager
 	optdepends = r-covr
 	optdepends = r-curl
@@ -36,13 +38,15 @@ pkgbase = r-devtools
 	optdepends = r-gmailr
 	optdepends = r-knitr
 	optdepends = r-lintr
+	optdepends = r-mass
 	optdepends = r-mockery
 	optdepends = r-pingr
 	optdepends = r-pkgdown
 	optdepends = r-rhub
 	optdepends = r-rmarkdown
 	optdepends = r-spelling
-	source = https://cran.r-project.org/src/contrib/devtools_2.4.3.tar.gz
-	sha256sums = e42159a9bca0b219170e76c282862e27ca283649d6cbf6a868175d8982e06b4f
+	optdepends = r-rstudioapi
+	source = https://cran.r-project.org/src/contrib/devtools_2.4.4.tar.gz
+	sha256sums = acd6759d269f30893eda173a738b1ce6537a11313c8e8e12e116452c4296934d
 
 pkgname = r-devtools
