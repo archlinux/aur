@@ -1,11 +1,11 @@
 pkgbase = r-splus2r
-	pkgdesc = Currently there are many functions in S-PLUS that are missing in R. To facilitate the conversion of S-PLUS packages to R packages, this package provides some missing S-PLUS functionality in R.
+	pkgdesc = Supplemental S-PLUS Functionality in R
 	pkgver = 1.3.3
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=splus2R
-	arch = any
+	arch = x86_64
 	license = GPL
-	depends = r>=2.7.2
+	depends = r
 	source = https://cran.r-project.org/src/contrib/splus2R_1.3-3.tar.gz
 	sha256sums = 7d5c90842debaf6046d445e3fce4f9721baad0339aa7193339705ef68568bf0c
 
