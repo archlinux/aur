@@ -1,35 +1,34 @@
 pkgbase = r-lme4
 	pkgdesc = Linear Mixed-Effects Models using 'Eigen' and S4
-	pkgver = 1.1.29
-	pkgrel = 2
+	pkgver = 1.1.30
+	pkgrel = 1
 	url = https://cran.r-project.org/package=lme4
-	arch = i686
 	arch = x86_64
-	license = GPL2
-	license = GPL3
-	depends = r>=3.2.0
-	depends = r-minqa>=1.1.15
-	depends = r-nloptr>=1.0.4
-	depends = r-rcpp>=0.10.5
+	license = GPL
+	depends = r
+	depends = r-minqa
+	depends = r-nloptr
+	depends = r-rcpp
 	depends = r-rcppeigen
-	optdepends = r-knitr
-	optdepends = r-rmarkdown
-	optdepends = r-pkpdmodels
-	optdepends = r-memss
-	optdepends = r-testthat
-	optdepends = r-ggplot2
-	optdepends = r-mlmrev
-	optdepends = r-optimx
-	optdepends = r-gamm4
-	optdepends = r-pbkrtest
-	optdepends = r-hsaur3
-	optdepends = r-numderiv
 	optdepends = r-car
 	optdepends = r-dfoptim
-	optdepends = r-statmod
+	optdepends = r-gamm4
+	optdepends = r-ggplot2
+	optdepends = r-hsaur3
+	optdepends = r-knitr
+	optdepends = r-memss
+	optdepends = r-mgcv
+	optdepends = r-mlmrev
+	optdepends = r-numderiv
+	optdepends = r-optimx
+	optdepends = r-pbkrtest
+	optdepends = r-pkpdmodels
+	optdepends = r-rmarkdown
 	optdepends = r-rr2
 	optdepends = r-semeff
-	source = https://cran.microsoft.com/snapshot/2022-06-08/src/contrib/lme4_1.1-29.tar.gz
-	sha256sums = 83d97de48cc4706a5a9615b126ba1a86f1a3009d3f38b8da3e57dd619519e826
+	optdepends = r-statmod
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/lme4_1.1-30.tar.gz
+	sha256sums = fdabdfc4b64cff05ae9506a766c948a953eeb6db71761f9401b36d6d9979300f
 
 pkgname = r-lme4
