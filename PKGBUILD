@@ -10,14 +10,26 @@ license=('MIT')
 depends=('openssh')
 makedepends=('go')
 source=("https://github.com/quantumsheep/sshs/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums=('07992229eab5d97be4fac44a21d3ad3c89ef7c7d15c8814ed579a054334f5e5f')
+
+prepare() {
+    cd "$pkgname-$pkgver"
+    sed -i "s|go build |go build -trimpath -mod=readonly -modcacherw -buildmode=pie |" Makefile
+}
 
 build() {
+    export GOPATH="$srcdir"/gopath
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export CGO_ENABLED=1
+
     cd "$pkgname-$pkgver"
     make VERSION="$pkgver"
 }
 
 package() {
     cd "$pkgname-$pkgver"
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="$pkgdir" PREFIX="/usr" install
 }
