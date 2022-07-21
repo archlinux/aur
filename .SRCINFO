@@ -1,12 +1,12 @@
 pkgbase = stylua-bin
 	pkgdesc = An opinionated code formatter for Lua 5.1 and Luau, built using full-moon.
-	pkgver = 0.14.0
+	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://github.com/JohnnyMorganz/StyLua
 	arch = any
 	license = MPL-2.0
 	conflicts = stylua-git
-	source = stylua-bin-0.14.0.zip::https://github.com/JohnnyMorganz/StyLua/releases/download/v0.14.0/stylua-linux.zip
+	source = stylua-bin-0.14.1.zip::https://github.com/JohnnyMorganz/StyLua/releases/download/v0.14.1/stylua-linux.zip
 	sha256sums = SKIP
 
 pkgname = stylua-bin
