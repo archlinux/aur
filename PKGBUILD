@@ -1,16 +1,19 @@
 # Maintainer: Kevin MacMartin <prurigro at gmail dot com>
 # Maintainer: SanskritFritz (gmail)
+# Contributor: Hawath <hawath at 163 dot com>
 
 _pkgname=treesheets
 pkgname=$_pkgname-git
-pkgver=r341.ae6506a
+pkgver=r354.6aeaa03
 pkgrel=1
-pkgdesc='The ultimate replacement for spreadsheets, mind mappers, outliners, PIMs, text editors and small databases'
-url='http://treesheets.com'
-license=('zlib')
-depends=('wxgtk2')
+pkgdesc="A \"hierarchical spreadsheet\" as a replacement for spreadsheets, mind mappers, outliners, PIMs, text editors and small databases."
+url="http://treesheets.com"
+license=('ZLIB')
+depends=('wxwidgets-gtk3')
 makedepends=('cmake' 'git')
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
+provides=('treesheets')
+conflicts=('treesheets')
 
 source=(
   "git+https://github.com/aardappel/$_pkgname.git"
@@ -24,38 +27,33 @@ sha512sums=(
 
 pkgver() {
   cd $_pkgname
+
   printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd $_pkgname
+
   patch -p1 < ../myframe.patch
   find TS/images -type f ! -iname '*.png' -a ! -iname '*.svg' -delete
 }
 
 build() {
   cd $_pkgname
-  cmake -S . -B _build -DCMAKE_BUILD_TYPE=Release
-  cd _build
-  make
+
+  cmake -S . -B _build \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr
+
+  make -C _build
 }
 
 package() {
   cd $_pkgname
-  install -Dm644 ZLIB_LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -dm755 "$pkgdir/usr/share/applications"
-  install -Dm755 _build/$_pkgname "$pkgdir/usr/bin/$_pkgname"
 
-  cd TS
-  sed 's|Icon=images/|Icon=|' $_pkgname.desktop > "$pkgdir/usr/share/applications/$_pkgname.desktop"
-  install -Dm644 images/$_pkgname.svg "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
+  # install using default configuration
+  make -C _build DESTDIR="${pkgdir}/" install
 
-  install -dm755 "$pkgdir/usr/share/$_pkgname"
-  cp -R scripts "$pkgdir/usr/share/$_pkgname/scripts"
-  cp -R examples "$pkgdir/usr/share/$_pkgname/examples"
-  cp -R images "$pkgdir/usr/share/$_pkgname/images"
-  cp -R docs "$pkgdir/usr/share/$_pkgname/docs"
-
-  cd "$pkgdir/usr/share/$_pkgname/examples"
-  ln -s tutorial.cts tutorial-en.cts
+  # install license
+  install -Dm644 ZLIB_LICENSE.txt "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
