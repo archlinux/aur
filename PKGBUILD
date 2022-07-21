@@ -1,25 +1,31 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
-_cranname=listenv
-_cranver=0.8.0
-pkgname=r-${_cranname,,}
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
-pkgdesc="Environments Behaving (Almost) as Lists"
-arch=(any)
-url="https://cran.r-project.org/package=${_cranname}"
-license=(LGPL2.1 LPGL3)
-depends=('r>=3.1.2')
-optdepends=(r-r.utils r-r.rsp r-markdown)
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+_pkgname=listenv
+_pkgver=0.8.0
+pkgname=r-${_pkgname,,}
+pkgver=0.8.0
+pkgrel=4
+pkgdesc='Environments Behaving (Almost) as Lists'
+arch=('any')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('LGPL')
+depends=(
+  r
+)
+optdepends=(
+  r-markdown
+  r-r.rsp
+  r-r.utils
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('fd2aaf3ff2d8d546ce33d1cb38e68401613975117c1f9eb98a7b41facf5c485f')
 
 build() {
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
 package() {
   install -dm0755 "${pkgdir}/usr/lib/R/library"
-
-  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
 }
+# vim:set ts=2 sw=2 et:
