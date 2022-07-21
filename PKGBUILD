@@ -1,51 +1,33 @@
-# Maintainer: Robert Greener <me@r0bert.dev>
-_cranname=Ckmeans.1d.dp
-_cranver=4.3.4
-pkgname=r-${_cranname,,}
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
-pkgdesc="Optimal, Fast, and Reproducible Univariate Clustering"
-arch=(any)
-url="https://cran.r-project.org/package=${_cranname}"
-license=(LGPL3)
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+
+_pkgname=Ckmeans.1d.dp
+_pkgver=4.3.4
+pkgname=r-${_pkgname,,}
+pkgver=4.3.4
+pkgrel=4
+pkgdesc='Optimal, Fast, and Reproducible Univariate Clustering'
+arch=('x86_64')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('LGPL')
 depends=(
-	r
-	r-rcpp
-	"r-rdpack>=0.6.1"
-)
-checkdepends=(
-	r-testthat
-	r-knitr
-	r-rmarkdown
-	r-rcolorbrewer
+  r
+  r-rcpp
+  r-rdpack
 )
 optdepends=(
-	r-testthat
-	r-knitr
-	r-rmarkdown
-	r-rcolorbrewer
+  r-knitr
+  r-rmarkdown
+  r-testthat
 )
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('4691b5b55a91f9f2fb6a2e2b77a3017c62ab9f4e0ca6a928af1f8ef3acba29d3')
 
 build() {
-	mkdir -p build
-	R CMD INSTALL "${_cranname}" -l "${srcdir}/build"
-}
-
-check() {
-	if [ -d "${_cranname}/tests" ]
-	then
-  		cd "${_cranname}/tests"
-		for i in *.R; do
-			R_LIBS="${srcdir}/build" Rscript --vanilla $i
-		done
-	fi
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-	install -dm0755 "${pkgdir}/usr/lib/R/library"
-
-	cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
 }
-
-sha256sums=('4691b5b55a91f9f2fb6a2e2b77a3017c62ab9f4e0ca6a928af1f8ef3acba29d3')
+# vim:set ts=2 sw=2 et:
