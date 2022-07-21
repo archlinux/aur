@@ -4,7 +4,7 @@ pkgname=realesrgan-ncnn-vulkan
 _pkgname=Real-ESRGAN-ncnn-vulkan
 pkgver=0.2.0
 _pkgver="v$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="NCNN implementation of Real-ESRGAN"
 url="https://github.com/xinntao/Real-ESRGAN-ncnn-vulkan"
 license=('MIT')
@@ -30,19 +30,20 @@ prepare() {
 build() {
     cd "$srcdir/$_pkgname"
     
-    if [[ -d build ]]; then
-        cd build
-        make
-    else
+    if [[ ! -d build ]]
+    then
         mkdir build && cd build
-        cmake ../src/ \
-        -DBUILD_SHARED_LIBS=1 \
-        -DUSE_SYSTEM_NCNN=0 \
-        -DUSE_SYSTEM_WEBP=1 \
-        -DCMAKE_INSTALL_PREFIX=/usr
+    else
+        cd build
     fi
-        make
+    cmake ../src/ \
+    -DBUILD_SHARED_LIBS=0 \
+    -DUSE_SYSTEM_NCNN=0 \
+    -DUSE_SYSTEM_WEBP=1 \
+    -DGLSLANG_TARGET_DIR=/usr/lib/cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr
 
+    make
 }
 
 package() {
