@@ -1,0 +1,14 @@
+--- src/Makefile	2018-09-22 13:30:15.580979499 -0400
++++ src/Makefile	2018-09-22 13:30:19.690995581 -0400
+@@ -120,9 +120,8 @@
+ endif
+ 
+ ifeq ($(MALLOC),jemalloc)
+-	DEPENDENCY_TARGETS+= jemalloc
+-	FINAL_CFLAGS+= -DUSE_JEMALLOC -I../deps/jemalloc/include
+-	FINAL_LIBS+= ../deps/jemalloc/lib/libjemalloc.a
++	FINAL_CFLAGS+= -DUSE_JEMALLOC -DJEMALLOC_NO_DEMANGLE -I/usr/include/jemalloc
++	FINAL_LIBS+= -ljemalloc
+ endif
+ 
+ REDIS_CC=$(QUIET_CC)$(CC) $(FINAL_CFLAGS)

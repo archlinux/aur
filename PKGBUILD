@@ -1,7 +1,7 @@
-pkgver=5.0.14
+pkgver=4.0.14
 _ver=$(echo "$pkgver" | sed -e "s:\([0-9]*\).*:\1:g")
 pkgname=redis${_ver}
-pkgrel=2
+pkgrel=1
 pkgdesc="Advanced key-value store (version $_ver)"
 arch=('i686' 'x86_64')
 url='http://redis.io/'
@@ -14,17 +14,17 @@ source=(https://download.redis.io/releases/redis-${pkgver}.tar.gz
         redis.service
         redis.logrotate
         redis.conf-sane-defaults.patch
-        redis-use-system-jemalloc.patch)
-sha1sums=('58f2b4bfd4aded983195c21275516dac2f7e283e'
+        redis4-use-system-jemalloc.patch)
+sha1sums=('21a4e37d532ff2469943864096db36fd1b8f43bb'
           '758d0a2cdd99b75c556e6fc13d9ab4cd7475a943'
           'f1edcd6e469dc6f076e223e3611ac683a6c37766'
           '8d60927802707bc7096f1c815e0e64937fc899ad'
-          '46fed06e1b37165e1bfb994aaa367c232b83ee43')
+          '8afe989d601107fe26da420bb8ff52737096a798')
 
 prepare() {
   cd redis-${pkgver}
   patch -p1 -i ../redis.conf-sane-defaults.patch
-  patch -p0 -i ../redis-use-system-jemalloc.patch
+  patch -p0 -i ../redis4-use-system-jemalloc.patch
 }
 
 build() {
