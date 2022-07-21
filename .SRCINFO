@@ -1,6 +1,6 @@
-pkgbase = redis-git
-	pkgdesc = Advanced key-value store (git unstable branch)
-	pkgver = r7362.0d6f11f4d
+pkgbase = redis6
+	pkgdesc = Advanced key-value store (version 6)
+	pkgver = 6.2.7
 	pkgrel = 1
 	url = http://redis.io/
 	install = redis.install
@@ -10,20 +10,19 @@ pkgbase = redis-git
 	depends = jemalloc
 	depends = grep
 	depends = shadow
-	provides = redis
-	conflicts = redis
-	backup = etc/redis.conf
-	backup = etc/logrotate.d/redis
-	source = git+https://github.com/antirez/redis.git#branch=unstable
+	provides = redis6
+	conflicts = redis6
+	backup = etc/redis6.conf
+	backup = etc/logrotate.d/redis6
+	source = https://download.redis.io/releases/redis-6.2.7.tar.gz
 	source = redis.service
 	source = redis.logrotate
 	source = redis.conf-sane-defaults.patch
 	source = redis-use-system-jemalloc.patch
-	sha1sums = SKIP
-	sha1sums = 285476bd6f92aa3dfba40cea1ad6cabef5a94df7
-	sha1sums = b2a3cdc6ea1b89dc867d6db9ce02571e58e8b645
+	sha1sums = b01ef3f117c9815dea41bf2609e489a03c3a5ab1
+	sha1sums = d509e13130a103309a7505d395f947d6a9b28082
+	sha1sums = 5db6e7b62f1cfca12a3e8e053c5e2a337640cdd2
 	sha1sums = 8d60927802707bc7096f1c815e0e64937fc899ad
 	sha1sums = 46fed06e1b37165e1bfb994aaa367c232b83ee43
 
-pkgname = redis-git
-
+pkgname = redis6

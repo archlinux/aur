@@ -3,6 +3,6 @@ post_install() {
   getent passwd redis >/dev/null || useradd --system -g redis \
     -d /var/lib/redis -s /bin/false redis
 
-  install -dm700 var/lib/redis
-  chown redis:redis var/lib/redis
+  install -dm700 var/lib/redis6
+  chown redis:redis var/lib/redis6
 }
