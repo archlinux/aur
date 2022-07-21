@@ -1,12 +1,15 @@
 pkgbase = r-slam
-	pkgdesc = Data structures and algorithms for sparse arrays and matrices, based on index arrays and simple triplet representations, respectively
+	pkgdesc = Sparse Lightweight Arrays and Matrices
 	pkgver = 0.1.50
-	pkgrel = 2
+	pkgrel = 4
 	url = https://cran.r-project.org/package=slam
-	arch = any
-	license = GPL2
-	depends = r>=3.4.0
+	arch = x86_64
+	license = GPL
+	depends = r
+	optdepends = r-matrix
+	optdepends = r-spam
+	optdepends = r-sparsem
 	source = https://cran.r-project.org/src/contrib/slam_0.1-50.tar.gz
-	sha512sums = 159d9de537c7392abbcbff4c0b6187e77de98c20a1d4a91d6afe6985f911814f94ddfddcecae2b7b6f0546fcf0a543a6e15652bb6a15c836803b1ce3d8cc3e9e
+	sha256sums = 7899bf3266c204ecccefc1878f96940b117d4503af128f4fbc50fc409163f8bd
 
 pkgname = r-slam
