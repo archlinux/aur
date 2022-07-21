@@ -1,29 +1,27 @@
 pkgbase = r-ggrepel
 	pkgdesc = Automatically Position Non-Overlapping Text Labels with 'ggplot2'
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=ggrepel
-	arch = i686
 	arch = x86_64
-	license = GPL3
-	depends = r>=3.0.0
-	depends = r-ggplot2>=2.2.0
+	license = GPL
+	depends = r
+	depends = r-ggplot2
 	depends = r-rcpp
-	depends = r-rlang>=0.3.0
-	depends = r-scales>=0.5.0
-	optdepends = r-knitr
-	optdepends = r-rmarkdown
-	optdepends = r-testthat
-	optdepends = r-gridextra
+	depends = r-rlang
+	depends = r-scales
 	optdepends = r-devtools
-	optdepends = r-prettydoc
-	optdepends = r-ggbeeswarm
 	optdepends = r-dplyr
+	optdepends = r-ggbeeswarm
+	optdepends = r-gridextra
+	optdepends = r-knitr
 	optdepends = r-magrittr
+	optdepends = r-prettydoc
 	optdepends = r-readr
+	optdepends = r-rmarkdown
 	optdepends = r-stringr
+	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/ggrepel_0.9.1.tar.gz
 	sha256sums = 29fb916d4799ba6503a5dd019717ffdf154d2aaae9ff1736f03e2be24af6bdfc
 
 pkgname = r-ggrepel
-
