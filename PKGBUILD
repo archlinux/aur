@@ -4,7 +4,7 @@
 _pkgname=gbRd
 _pkgver=0.4-11
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=0.4.11
 pkgrel=1
 pkgdesc='Utilities for processing Rd objects and files'
 arch=('any')
