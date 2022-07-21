@@ -1,61 +1,54 @@
-# Maintainer: Robert Greener <me@r0bert.dev>
-# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
-# Contributor: Ward Segers <w@rdsegers.be>
-# Contributor: Alex Branham <alex.branham@gmail.com>
+# system requirements: GNU make, pandoc
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
-_cranname=rstan
-_cranver=2.21.5
-pkgname=r-${_cranname,,}
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
-pkgdesc="R Interface to Stan"
-arch=(any)
-url="https://cran.r-project.org/package=${_cranname}"
-license=(GPL3)
+_pkgname=rstan
+_pkgver=2.21.5
+pkgname=r-${_pkgname,,}
+pkgver=2.21.5
+pkgrel=3
+pkgdesc='R Interface to Stan'
+arch=('x86_64')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('GPL')
 depends=(
-	"r>=3.4.0"
-	"r-stanheaders>=2.21.0"
-	"r-ggplot2>=3.0.0"
-	r-inline
-	"r-gridextra>=2.0.0"
-	"r-rcpp>=0.12.0"
-	"r-rcppparallel>=5.0.1"
-	"r-loo>=2.3.0"
-	r-pkgbuild
-	"r-rcppeigen>=0.3.3.3.0"
-	"r-bh>=1.72.0.2"
-	pandoc
-)
-checkdepends=(
-	r-runit
-	r-matrix
+  r
+  r-bh
+  r-ggplot2
+  r-gridextra
+  r-inline
+  r-loo
+  r-pkgbuild
+  r-rcpp
+  r-rcppeigen
+  r-rcppparallel
+  r-stanheaders
+  make
+  pandoc
 )
 optdepends=(
-	r-runit
-	r-kernsmooth
-	r-shinystan
-	r-bayesplot
-	r-rmarkdown
-	r-rstantools
-	r-rstudioapi
-	r-matrix
-	r-knitr
-	r-v8)
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("aaf0ff5739179675d98238a95f2f423c2a55eb9b38bf2a3e43c9d0433489707c5b66b25919d895a31c6d281bd3ac92783c80d78ac44b79f808a369d2c3a5c9f1")
+  r-bayesplot
+  r-bh
+  r-kernsmooth
+  r-knitr
+  r-matrix
+  r-parallel
+  r-rcppeigen
+  r-rmarkdown
+  r-rstantools
+  r-rstudioapi
+  r-runit
+  r-shinystan
+  r-v8
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('86e4fe562d8ddcd0b02336f35a420fa8786dd21de7ca2bebb4ed6e9c252bb9ea')
 
 build() {
-	mkdir -p build
-	R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build"
-}
-
-check() {
-	cd "${_cranname}/tests"
-	R_LIBS="${srcdir}/build" Rscript --vanilla doRUnit.R
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-	install -dm0755 "${pkgdir}/usr/lib/R/library"
-
-	cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
 }
+# vim:set ts=2 sw=2 et:
