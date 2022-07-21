@@ -1,11 +1,10 @@
 pkgbase = r-nortest
 	pkgdesc = Tests for Normality
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=nortest
 	arch = any
-	license = GPL2
-	license = GPL3
+	license = GPL
 	depends = r
 	source = https://cran.r-project.org/src/contrib/nortest_1.0-4.tar.gz
 	sha256sums = a3850a048181d5d059c1e74903437569873b430c915b709808237d71fee5209f
