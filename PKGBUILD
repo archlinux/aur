@@ -4,11 +4,11 @@ pkgname=realesrgan-ncnn-vulkan
 _pkgname=Real-ESRGAN-ncnn-vulkan
 pkgver=0.2.0
 _pkgver="v$pkgver"
-pkgrel=2
+pkgrel=3
 pkgdesc="NCNN implementation of Real-ESRGAN"
 url="https://github.com/xinntao/Real-ESRGAN-ncnn-vulkan"
 license=('MIT')
-depends=('vulkan-icd-loader' 'vulkan-driver' 'libwebp' 'gcc-libs' 'glslang')
+depends=('vulkan-driver' 'libwebp' 'gcc-libs' 'glslang' 'ncnn')
 makedepends=('git' 'cmake' 'vulkan-headers')
 conflicts=('realesrgan-ncnn-vulkan-bin')
 provides=('realesrgan-ncnn-vulkan')
@@ -38,7 +38,7 @@ build() {
     fi
     cmake ../src/ \
     -DBUILD_SHARED_LIBS=0 \
-    -DUSE_SYSTEM_NCNN=0 \
+    -DUSE_SYSTEM_NCNN=1 \
     -DUSE_SYSTEM_WEBP=1 \
     -DGLSLANG_TARGET_DIR=/usr/lib/cmake \
     -DCMAKE_INSTALL_PREFIX=/usr

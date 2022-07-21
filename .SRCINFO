@@ -1,18 +1,18 @@
 pkgbase = realesrgan-ncnn-vulkan
 	pkgdesc = NCNN implementation of Real-ESRGAN
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xinntao/Real-ESRGAN-ncnn-vulkan
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cmake
 	makedepends = vulkan-headers
-	depends = vulkan-icd-loader
 	depends = vulkan-driver
 	depends = libwebp
 	depends = gcc-libs
 	depends = glslang
+	depends = ncnn
 	provides = realesrgan-ncnn-vulkan
 	conflicts = realesrgan-ncnn-vulkan-bin
 	source = git+https://github.com/xinntao/Real-ESRGAN-ncnn-vulkan#tag=v0.2.0
