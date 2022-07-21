@@ -1,7 +1,7 @@
 pkgbase = easyeda-pro-bin
 	pkgdesc = EasyEDA Professional Edition
 	pkgver = 1.7.31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pro.easyeda.com/
 	install = easyeda-pro-bin.install
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = easyeda-pro-bin
 	source = easyeda-pro-1.7.31.zip::https://image.easyeda.com/files/easyeda-pro-linux-x64-1.7.31.zip
 	source = LICENSE
 	source = easyeda-pro-bin.install
-	sha256sums = 0ee0730a3f864556566e532fbd2070c73c01b4ad2d16d259517db46098b69ceb
+	sha256sums = 3d1cfa547e7616d54c29cc01d6c2073a894a1cd4b6c8c719c68c99994728d38f
 	sha256sums = c25d162b032c680a34856d65062aa7ffab56a478ee972eeb3e78543d2eb40f74
 	sha256sums = cc1661c75c9366d2fe43c4b864cf81acb9aae7cab505ce21e7de2db3c68cde76
 
