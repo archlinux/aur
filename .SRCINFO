@@ -6,6 +6,7 @@ pkgbase = openpnp
 	arch = arm64
 	arch = x86_64
 	license = GPL3
+	depends = jre11-openjdk
 	source = openpnp::https://openpnp.s3-us-west-2.amazonaws.com/develop/2022-06-19_21-15-55.af43024/OpenPnP-unix-develop.tar.gz
 	sha256sums = 129ce7b7987605fd6f5b7978f744d36de84b9855b50c52599d528a0d2a6699b2
 
