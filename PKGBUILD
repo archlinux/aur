@@ -2,7 +2,7 @@
 # Contributor: Tomasz Zok
 _pkgname=pandoc-eisvogel-template
 pkgname="${_pkgname}-git"
-pkgver=2.0.0.8+236.g4909f13
+pkgver=2.0.0.23+251.g04e3296
 pkgrel=1
 pkgdesc="The 'eisvogel' LaTeX-template for pandoc. A clean pandoc LaTeX template to convert your markdown files to PDF or LaTeX. It is designed for lecture notes and exercises with a focus on computer science. The template is compatible with pandoc 2."
 arch=(any)
@@ -12,7 +12,7 @@ depends=('pandoc')
 makedepends=('git')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+git://github.com/Wandmalfarbe/pandoc-latex-template.git")
+source=("${_pkgname}::git+https://github.com/Wandmalfarbe/pandoc-latex-template.git")
 
 sha256sums=('SKIP')
 
