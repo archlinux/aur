@@ -2,7 +2,7 @@
 
 pkgname=battlestar
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Programming language for creating tiny executables'
 arch=(x86_64)
 url='https://github.com/xyproto/battlestar'
@@ -17,7 +17,8 @@ source=("git+$url#commit=deb78a26b141531abe6cdc5cd980691e3a41ec46")
 b2sums=('SKIP')
 
 build() {
-  make -C $pkgname
+  cd $pkgname/cmd/battlestarc
+  go build -buildmode=pie -ldflags="-s -w -extldflags \"${LDFLAGS}\"" -mod=vendor -trimpath -v
 }
 
 package() {

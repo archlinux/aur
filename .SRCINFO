@@ -1,7 +1,7 @@
 pkgbase = battlestar
 	pkgdesc = Programming language for creating tiny executables
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xyproto/battlestar
 	arch = x86_64
 	license = BSD
