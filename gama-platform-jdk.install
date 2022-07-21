@@ -1,0 +1,21 @@
+post_install() {
+
+	chown root:root -R /opt/gama-platform
+
+	chmod a+rw -R /opt/gama-platform/Gama.ini
+	chmod a+x -R /opt/gama-platform/Gama
+	chmod a+x -R /opt/gama-platform/headless/gama-headless.sh
+
+	# Add gama-headless.sh shortcut in PATH
+	ln -s /opt/gama-platform/headless/gama-headless.sh /usr/bin/gama-headless
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+
+	rm /usr/bin/gama-headless
+	rm -fr /opt/gama-platform
+}
