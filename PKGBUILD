@@ -1,7 +1,7 @@
 # Maintainer: Curve <curve.platin at gmail.com>
 pkgname=nordzy-icon-theme-git
 _gitname=Nordzy-icon
-pkgver=r74.d705e544
+pkgver=r86.7e6d2474
 pkgrel=1
 pkgdesc="Nordzy is a free and open source icon theme for Linux desktops using the Nord color palette from Arctic Ice Studio and based on WhiteSur and Numix Icon Theme."
 arch=(any)
@@ -23,5 +23,5 @@ pkgver() {
 package() {
         cd "${srcdir}/${_gitname}"
         install -dm755 "${pkgdir}/usr/share/icons"
-        ./install.sh -d "${pkgdir}/usr/share/icons" -t all
+        ./install.sh -d "${pkgdir}/usr/share/icons" --total
 }
