@@ -3,7 +3,7 @@
 pkgname=openpnp
 pkgver=2022_06_19_21_15_55.af43024
 _pkgver=2022-06-19_21-15-55.af43024
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source SMT Pick and Place Hardware and Software"
 arch=('arm64' 'x86_64')
 depends=("jre11-openjdk")
