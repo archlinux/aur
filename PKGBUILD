@@ -5,8 +5,8 @@
 
 pkgname=swift-bin-development
 pkgver=5.7.DEVELOPMENT
-vendorver=5.7-DEVELOPMENT-SNAPSHOT-2022-07-12-a
-pkgrel=3
+vendorver=5.7-DEVELOPMENT-SNAPSHOT-2022-07-17-a
+pkgrel=4
 epoch=4
 pkgdesc="Binary builds of the Swift programming language (dev snapshot)"
 arch=('x86_64')
