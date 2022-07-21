@@ -1,6 +1,6 @@
 # Maintainer: Burak <burakberkkeskin@gmail.com>
 pkgname=coineus-server-git
-pkgver=1.0.r.
+pkgver=1.0.r2.af281cd
 pkgrel=1
 pkgdesc="Coineus App Backend"
 arch=(x86_64)
@@ -28,7 +28,5 @@ build() {
 }
 
 package() {
-	cd "coineus-server-aur/cmd/server"
-  mkdir -p ${pkgdir}/opt/${pkgname}
-  cp server ${pkgdir}/opt/${pkgname}
+	install -Dm 755 "coineus-server-aur/cmd/server/server" "$pkgdir/usr/bin/cserver"
 }
