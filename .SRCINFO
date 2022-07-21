@@ -3,13 +3,13 @@ pkgbase = r-chron
 	pkgver = 2.3.57
 	pkgrel = 1
 	url = https://cran.r-project.org/package=chron
-	arch = i686
 	arch = x86_64
-	license = GPL2
-	depends = r>=2.12.0
-	optdepends = r-scales
+	license = GPL
+	depends = r
 	optdepends = r-ggplot2
+	optdepends = r-scales
+	optdepends = r-zoo
 	source = https://cran.r-project.org/src/contrib/chron_2.3-57.tar.gz
-	sha512sums = 3ce30bfba3a462530e61e97ac64eb49ed4e03ad78fe79fa9c3c1c1c9e1c96034f196110b2df67497f138ba3cb62df0470b2c9ddbf7483c4ab085c6f4a4039026
+	sha256sums = 9645d86a84d1afc12a0accf4f826fdd40e6d050a313424ad70f8085e8f19c232
 
 pkgname = r-chron
