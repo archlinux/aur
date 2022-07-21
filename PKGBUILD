@@ -2,7 +2,7 @@
 # Contributor: Static_Rocket
 
 pkgname=asusctl
-pkgver=4.2.1
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="A control daemon, CLI tools, and a collection of crates for interacting with ASUS ROG laptops"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('acpi_call: fan control'
             'asusctltray: tray profile switcher')
 makedepends=('git' 'rust')
 conflicts=('asusctl-git')
-_commit=5017a0ea9b79b86d377d8be65556d0d13c35f9f9 # tags/4.2.1^0
+_commit=cd7e748c88d6018351d7a9bf3559f4194b494d72 # tags/4.3.0^0
 source=("git+${url}.git#commit=$_commit")
 sha256sums=('SKIP')
 

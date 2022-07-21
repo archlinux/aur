@@ -1,6 +1,6 @@
 pkgbase = asusctl
 	pkgdesc = A control daemon, CLI tools, and a collection of crates for interacting with ASUS ROG laptops
-	pkgver = 4.2.1
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://gitlab.com/asus-linux/asusctl
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = asusctl
 	optdepends = supergfxctl: hybrid GPU control
 	optdepends = asusctltray: tray profile switcher
 	conflicts = asusctl-git
-	source = git+https://gitlab.com/asus-linux/asusctl.git#commit=5017a0ea9b79b86d377d8be65556d0d13c35f9f9
+	source = git+https://gitlab.com/asus-linux/asusctl.git#commit=cd7e748c88d6018351d7a9bf3559f4194b494d72
 	sha256sums = SKIP
 
 pkgname = asusctl
