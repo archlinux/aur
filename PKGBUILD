@@ -1,6 +1,6 @@
 # Maintainer: Burak <burakberkkeskin@gmail.com>
 pkgname=coineus-server-git
-pkgver=1.0.r2.af281cd
+pkgver=1.0.r3.c173c2f
 pkgrel=1
 pkgdesc="Coineus App Backend"
 arch=(x86_64)
