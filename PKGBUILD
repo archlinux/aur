@@ -2,22 +2,19 @@
 # Contributer: Steven Honeyman <stevenhoneyman at gmail com>
 
 pkgname=geeqie-git
-pkgver=20220128
+pkgver=20220719
 pkgrel=1
 pkgdesc='Lightweight image viewer'
 arch=('x86_64')
 url="http://www.geeqie.org/"
 license=('GPL2')
-depends=('exiv2' 'gtk3' 'ffmpegthumbnailer'
-         'djvulibre' 'libheif' 'libchamplain'
-         'poppler-glib' 'libarchive' 'libraw' 'libjxl')
-makedepends=('git'
-             'intltool' 'python' 'librsvg'
-             'libwmf' 'libwebp' 'imagemagick'
-             'fbida' 'gawk' 'perl-image-exiftool'
+depends=('exiv2' 'gtk3' 'ffmpegthumbnailer' 'gspell'
+         'djvulibre' 'libchamplain' 'poppler-glib'
+         'poppler-glib' 'libarchive' 'libheif' 'libraw' 'libjxl' 'librsvg' 'libwebp')
+makedepends=('git' 'meson'
              'highway' # for libjxl
              # for the docs
-             'doxygen' 'yelp-tools' 'graphviz')
+             'pandoc' 'yelp-tools' 'graphviz' 'xxd')
 optdepends=('librsvg: SVG rendering'
             'fbida: for jpeg rotation'
             'gawk: to use the geo-decode function'
@@ -34,26 +31,18 @@ pkgver() {
     git log -1 --format="%cd" --date=short | sed 's|-||g'
 }
 
-prepare() {
-    cd "${srcdir}/geeqie"
-
-    # Remove Werror
-    sed -i 's|^CFLAGS+=" -Werror|# CFLAGS+=" -Werror|' configure.ac
-
-    NOCONFIGURE=1 ./autogen.sh
-}
-
 build() {
     cd "${srcdir}/geeqie"
 
-    ./configure \
-        --prefix=/usr \
-        --disable-lirc \
-        --disable-lua
-    make
+    arch-meson \
+        -Dlirc=disabled \
+        -Dlua=disabled \
+        build
+    meson compile -C build
 }
 
 package() {
     cd "${srcdir}/geeqie"
-    make DESTDIR="${pkgdir}" install
+    
+    meson install -C build --destdir "${pkgdir}"
 }
