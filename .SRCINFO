@@ -1,0 +1,20 @@
+pkgbase = mrtrix3-git
+	pkgdesc = tools for diffusion MRI analyses, data conversion and a viewer (mrview)
+	pkgver = 3.0.3.r105.gd3941f443
+	pkgrel = 1
+	url = https://github.com/MRtrix3/mrtrix3
+	arch = x86_64
+	license = MPL2
+	makedepends = gcc
+	makedepends = git
+	makedepends = eigen
+	depends = qt5-svg
+	depends = python
+	optdepends = libtiff
+	optdepends = fftw
+	provides = mrtrix3
+	conflicts = mrtrix3
+	source = mrtrix3-git::git+https://github.com/MRtrix3/mrtrix3.git
+	sha256sums = SKIP
+
+pkgname = mrtrix3-git
