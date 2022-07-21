@@ -1,15 +1,14 @@
 pkgbase = r-minpack.lm
 	pkgdesc = R Interface to the Levenberg-Marquardt Nonlinear Least-Squares Algorithm Found in MINPACK, Plus Support for Bounds
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=minpack.lm
-	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL
 	makedepends = gcc-fortran
 	depends = r
-	depends = gcc-fortran
-	source = https://cran.microsoft.com/snapshot/2022-06-08/src/contrib/minpack.lm_1.2-2.tar.gz
+	optdepends = r-mass
+	source = https://cran.r-project.org/src/contrib/minpack.lm_1.2-2.tar.gz
 	sha256sums = c70956122528575433c57a5669e26f4f9b1e160b004f135a38658c2c2634df87
 
 pkgname = r-minpack.lm
