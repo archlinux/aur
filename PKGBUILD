@@ -2,8 +2,8 @@
 # https://aur.archlinux.org/packages/honk/
 
 pkgname=honk
-pkgver=0.9.7
-pkgrel=8
+pkgver=0.9.8
+pkgrel=9
 epoch=0
 pkgdesc="ActivityPub compatible server with web frontend."
 arch=("x86_64")
@@ -16,7 +16,7 @@ changelog="$pkgname.changelog"
 provides=("${pkgname}")
 conflicts=("${pkgname}" 'honk-hg')
 source=("$pkgname-$pkgver.tar::https://humungus.tedunangst.com/r/honk/d/$pkgname-$pkgver.tgz")
-sha512sums=("45acc81178f5a3143da8c7fa3dc4492dab70739cee3630b594b68b4d8cda88929a11d0bc499065eeed0462e787feac1f7718d17b7ff2dccecedb04e28affe2e3")
+sha512sums=("f32be393698eb3b3ae72d223814eee2a15af3e892ab4b9140314da3ce96d4b4582a8b73c3fa5adede34a4d9d9b2cfc8d7dbb933d516eba8e3820d125c217a354")
 options=(strip docs zipman)
 install="$pkgname.install"
 

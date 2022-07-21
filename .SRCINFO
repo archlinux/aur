@@ -1,7 +1,7 @@
 pkgbase = honk
 	pkgdesc = ActivityPub compatible server with web frontend.
-	pkgver = 0.9.7
-	pkgrel = 8
+	pkgver = 0.9.8
+	pkgrel = 9
 	epoch = 0
 	url = https://humungus.tedunangst.com/r/honk
 	install = honk.install
@@ -19,7 +19,7 @@ pkgbase = honk
 	options = strip
 	options = docs
 	options = zipman
-	source = honk-0.9.7.tar::https://humungus.tedunangst.com/r/honk/d/honk-0.9.7.tgz
-	sha512sums = 45acc81178f5a3143da8c7fa3dc4492dab70739cee3630b594b68b4d8cda88929a11d0bc499065eeed0462e787feac1f7718d17b7ff2dccecedb04e28affe2e3
+	source = honk-0.9.8.tar::https://humungus.tedunangst.com/r/honk/d/honk-0.9.8.tgz
+	sha512sums = f32be393698eb3b3ae72d223814eee2a15af3e892ab4b9140314da3ce96d4b4582a8b73c3fa5adede34a4d9d9b2cfc8d7dbb933d516eba8e3820d125c217a354
 
 pkgname = honk
