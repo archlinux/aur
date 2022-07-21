@@ -1,7 +1,7 @@
 pkgbase = beyond-identity-bin
 	pkgdesc = Beyond Identity Linux authenticator (official binary)
 	pkgver = 2.60.0_0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://app.byndid.com/downloads
 	install = beyond-identity-bin.install
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = beyond-identity-bin
 	depends = tpm2-tss
 	depends = openssl
 	optdepends = tpm2-abrmd
-	optdepends = tmp2-tools
+	optdepends = tpm2-tools
 	optdepends = zenity: Receive desktop notifications
 	provides = beyond-identity
 	conflicts = beyond-identity

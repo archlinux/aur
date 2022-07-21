@@ -3,7 +3,7 @@ pkgname=beyond-identity-bin
 _pkgname=beyond-identity
 pkgver=2.60.0_0
 _pkgver=2.60.0-0
-pkgrel=1
+pkgrel=2
 pkgdesc="Beyond Identity Linux authenticator (official binary)"
 arch=('x86_64')
 url="https://app.byndid.com/downloads"
@@ -12,7 +12,7 @@ depends=('gnome-keyring'
   'tpm2-tss'
   'openssl')
 optdepends=('tpm2-abrmd'
-  'tmp2-tools'
+  'tpm2-tools'
   'zenity: Receive desktop notifications')
 backup=('etc/xdg/autostart/com.beyondidentity.endpoint.pgpauth.autostart.BeyondIdentity.desktop'
   'etc/xdg/autostart/com.beyondidentity.endpoint.webserver.autostart.BeyondIdentity.desktop')
