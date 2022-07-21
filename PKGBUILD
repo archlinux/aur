@@ -27,6 +27,12 @@ depends=(npth libgpg-error libgcrypt libksba libassuan pinentry libbz2.so readli
 optdepends=('libldap: gpg2keys_ldap'
             'libusb-compat: scdaemon'
             'pcsclite: scdaemon')
+validpgpkeys=(
+  '5B80C5754298F0CB55D8ED6ABCEF7E294B092E28' # Andre Heinecke (Release Signing Key)
+  '6DAA6E64A76D2840571B4902528897B826403ADA' # Werner Koch (dist signing 2020)
+  'AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD' # Niibe Yutaka (GnuPG Release Key)
+  '02F38DFF731FF97CB039A1DA549E695E905BA208' # GnuPG.com (Release Signing Key 2021)
+)
 source=("https://gnupg.org/ftp/gcrypt/${pkgname%23}/${pkgname%23}-${pkgver}.tar.bz2"{,.sig}
 	"drop-import-clean.patch"
 	"avoid-beta-warning.patch")
