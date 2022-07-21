@@ -1,6 +1,8 @@
 # Maintainer: Ian Huang <imyxhuang@gmail.com>
+# Maintainer: MartorSkull <livemartor@gmail.com>
 pkgname=cardano-node-bin
 pkgver=1.35.0
+_hydra_build=16159630
 pkgrel=1
 pkgdesc="The core component that is used to participate in a Cardano \
 decentralised blockchain (binary package)."
@@ -11,14 +13,14 @@ provides=("cardano-node=${pkgver}")
 conflicts=("cardano-node")
 install=cardano-node-bin.install
 source=(
-  "https://hydra.iohk.io/build/13065769/download/1/cardano-node-${pkgver}-linux.tar.gz"
+  "https://hydra.iohk.io/build/${_hydra_build}/download/1/cardano-node-${pkgver}-linux.tar.gz"
   "cardano-node.sysusers"
   "cardano-node.tmpfiles"
   "cardano-node.service"
   "cardano-node.confd"
   "cardano-node-testnet.service"
   "cardano-node-testnet.confd")
-sha256sums=('5621ca7229d1e4c0eeb2e8eb1230b7620eabe1788e3de43d88c1e86c68b341aa'
+sha256sums=('56603e35a0d9e1475993e0336887a83a3a7d0c8f5730c84eac9b5b5562db1618'
             '782696d794db3c41cc96e301ed76c8108ac01cbd3347233eb9c4d4f970071633'
             '3212902b0d2bb0e6bacba0feeafd261516b9f6ab5f37f876a8c37239a1947542'
             '6db0b3bb81063f410499a6688a1abbbc5d63af165310ef709924985e5c0d1c4d'
@@ -27,7 +29,6 @@ sha256sums=('5621ca7229d1e4c0eeb2e8eb1230b7620eabe1788e3de43d88c1e86c68b341aa'
             '0a57c08cb631db16f2ca38f29d30229d45cab91176a1b376aaa629dab9d063d7')
 
 package() {
-
   # install systemd service
   install -D -m0644 "${srcdir}/cardano-node.sysusers" \
     "${pkgdir}/usr/lib/sysusers.d/cardano-node.conf"
@@ -42,7 +43,6 @@ package() {
     "${pkgdir}/usr/lib/systemd/system/cardano-node-testnet.service"
   install -D -m0644 "${srcdir}/cardano-node-testnet.confd" \
     "${pkgdir}/etc/conf.d/cardano-node-testnet"
-
 
   # install configuration directory
   mkdir -p "${pkgdir}/var/lib/cardano-node"

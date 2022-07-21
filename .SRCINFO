@@ -8,14 +8,14 @@ pkgbase = cardano-node-bin
 	license = Apache
 	provides = cardano-node=1.35.0
 	conflicts = cardano-node
-	source = https://hydra.iohk.io/build/13065769/download/1/cardano-node-1.35.0-linux.tar.gz
+	source = https://hydra.iohk.io/build/16159630/download/1/cardano-node-1.35.0-linux.tar.gz
 	source = cardano-node.sysusers
 	source = cardano-node.tmpfiles
 	source = cardano-node.service
 	source = cardano-node.confd
 	source = cardano-node-testnet.service
 	source = cardano-node-testnet.confd
-	sha256sums = 5621ca7229d1e4c0eeb2e8eb1230b7620eabe1788e3de43d88c1e86c68b341aa
+	sha256sums = 56603e35a0d9e1475993e0336887a83a3a7d0c8f5730c84eac9b5b5562db1618
 	sha256sums = 782696d794db3c41cc96e301ed76c8108ac01cbd3347233eb9c4d4f970071633
 	sha256sums = 3212902b0d2bb0e6bacba0feeafd261516b9f6ab5f37f876a8c37239a1947542
 	sha256sums = 6db0b3bb81063f410499a6688a1abbbc5d63af165310ef709924985e5c0d1c4d
