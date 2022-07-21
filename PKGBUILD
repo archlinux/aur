@@ -1,25 +1,32 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
-_cranname=fields
-_cranver=13.3
-pkgname=r-${_cranname,,}
-pkgver=${_cranver//[:-]/.}
+_pkgname=fields
+_pkgver=14.0
+pkgname=r-${_pkgname,,}
+pkgver=14.0
 pkgrel=1
-pkgdesc="Tools for Spatial Data"
-arch=(i686 x86_64)
-url="https://cran.r-project.org/package=${_cranname}"
-license=(GPL2 GPL3)
-depends=('r>=3.0' r-spam r-maps r-viridis)
-makedepends=(gcc-fortran)
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('c652838b1ae7eb368831522824bfbc1d1db7b9d1db5e9bb52b194098549944c3')
+pkgdesc='Tools for Spatial Data'
+arch=('x86_64')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('GPL')
+depends=(
+  r
+  r-maps
+  r-spam
+  r-viridis
+)
+makedepends=(
+  gcc-fortran
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('907de477a275bad073fa972fd33896158bb41d4d7349f3a00bba3851ba174f66')
 
 build() {
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
 package() {
   install -dm0755 "${pkgdir}/usr/lib/R/library"
-
-  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
 }
+# vim:set ts=2 sw=2 et:
