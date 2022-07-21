@@ -1,27 +1,49 @@
-# Maintainer: Robert Greener <me@r0bert.dev>
-# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
-# Contributor: Alex Branham <branham@utexas.edu>
+# system requirements: C++11
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
-_cranname=roxygen2
-_cranver=7.2.0
-pkgname=r-${_cranname,,}
-pkgver=${_cranver//[:-]/.}
+_pkgname=roxygen2
+_pkgver=7.2.1
+pkgname=r-${_pkgname,,}
+pkgver=7.2.1
 pkgrel=1
-pkgdesc="In-Line Documentation for R"
-arch=(i686 x86_64)
-url="https://cran.r-project.org/package=${_cranname}"
-license=(MIT)
-depends=('r>=3.3' r-brew r-commonmark 'r-desc>=1.2.0' r-digest r-knitr 'r-pkgload>=1.0.2' 'r-purrr>=0.3.3' 'r-r6>=2.1.2' r-rlang r-stringi 'r-stringr>=1.0.0' r-xml2 r-cpp11)
-optdepends=(r-covr r-devtools r-rmarkdown r-testthat r-r.methodss3 r-r.oo)
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('2ebfcfd567b9db6c606c6d42be1645b4e987f987995a2ad8954fa963a519448b')
+pkgdesc='In-Line Documentation for R'
+arch=('x86_64')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('MIT')
+depends=(
+  r
+  r-brew
+  r-commonmark
+  r-cpp11
+  r-desc
+  r-digest
+  r-knitr
+  r-pkgload
+  r-purrr
+  r-r6
+  r-rlang
+  r-stringi
+  r-stringr
+  r-xml2
+)
+optdepends=(
+  r-covr
+  r-devtools
+  r-r.methodss3
+  r-r.oo
+  r-rmarkdown
+  r-testthat
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('d2f0342591dc2b561fad8f6cf6fb3001e5e0bdd02be68bb2c6315f6bb82cda21')
 
 build() {
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
 package() {
   install -dm0755 "${pkgdir}/usr/lib/R/library"
-
-  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
+# vim:set ts=2 sw=2 et:
