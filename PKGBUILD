@@ -2,7 +2,7 @@
 # Contributor: James Barnett < james at wbarnett dot us >
 
 pkgname=avogadroapp
-pkgver=1.96.0
+pkgver=1.97.0
 pkgrel=1
 pkgdesc="An advanced molecular editor"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('openbabel: Open Babel plugin actions')
 makedepends=('cmake' 'eigen')
 provides=('avogadro2')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenChemistry/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('dc5317804747a1a97f8e7534fb1663a2a6dc808799a06322a3ceb959ef3dcdff')
+sha256sums=('c4e1a0d54e43c2ae8bbd6b872e46b2f983f45c5aaa981731c681d5325faaec63')
 
 build() {
   mkdir -p "$srcdir/build"
