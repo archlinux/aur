@@ -1,26 +1,33 @@
-# Maintainer: Robert Greener <me@r0bert.dev>
-# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Maintainer: sukanka <su975853527@gmail.com>
+# Contributor: Robert Greener <me@r0bert.dev>
 
-_cranname=rcompanion
-_cranver=2.4.15
-_updatedate=2022-06-08
-pkgname=r-${_cranname,,}
-pkgver=${_cranver//[:-]/.}
+_pkgname=rcompanion
+_pkgver=2.4.16
+pkgname=r-${_pkgname,,}
+pkgver=${_pkgver//[:-]/.}
 pkgrel=1
-pkgdesc="Functions to Support Extension Education Program Evaluation"
-arch=(any)
-url="https://cran.r-project.org/package=${_cranname}"
-license=(GPL3)
-depends=('r>=4.1.0' 'r-desctools>=0.99.43' 'r-multcompview>=0.1.8' 'r-plyr>=1.8.6' 'r-coin>=1.4.2' 'r-lmtest>=0.9.38' 'r-nortest>=1.0.4')
-source=("https://cran.microsoft.com/snapshot/${_updatedate}/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('347939cb7bb5cff00edf28f13d46149e862f13fc34251089deac8528d8f562dd')
+pkgdesc='Functions to Support Extension Education Program Evaluation'
+arch=('any')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('GPL')
+depends=(
+  r
+  r-coin
+  r-desctools
+  r-lmtest
+  r-multcompview
+  r-nortest
+  r-plyr
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('f4d2f628e44c7c0b19105b5a5f97c78bd88c4fe579eb34dd6696ee6d69469227')
 
 build() {
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
 package() {
   install -dm0755 "${pkgdir}/usr/lib/R/library"
-
-  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
 }
+# vim:set ts=2 sw=2 et:
