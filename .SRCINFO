@@ -1,6 +1,6 @@
 pkgbase = harrison-xt-plugins-bin
 	pkgdesc = Harrison Consoles LV2 XT Plugin Suite
-	pkgver = 8.0.17
+	pkgver = 8.1.268
 	pkgrel = 1
 	url = https://harrisonconsoles.com/mixbus-plugins/
 	arch = x86_64
