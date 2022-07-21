@@ -4,6 +4,7 @@
 
 # Ignore packages
 *.pkg.tar.xz
+*.pkg.tar.zst
 
 # Ignore log files
 *.log

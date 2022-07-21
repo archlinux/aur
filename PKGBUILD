@@ -1,10 +1,10 @@
 # Maintainer: Aetf <aetf at unlimitedcodeworks dor xyz>
 pkgname=libtsm-patched-git
 _gitname=libtsm
-pkgver=4.0.1.r3.g8d299ab
+pkgver=4.0.2.r4.g06d52d1
 pkgrel=1
 pkgdesc="Terminal-emulator State Machine. Patched flavor (using patches from http://github.com/Aetf/libtsm)"
-arch=('x86_64' 'armv7h')
+arch=('x86_64' 'armv7h' 'aarch64')
 url="http://www.freedesktop.org/wiki/Software/kmscon/$_gitname"
 license=('MIT')
 depends=(glibc)
