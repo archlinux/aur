@@ -1,4 +1,5 @@
-# Maintainer: Moon Sungjoon <sumoon at seoulsaram dot org>
+# Maintainer: Mikhail Velichko <efklid at gmail dot com>
+# Contributor: Moon Sungjoon <sumoon at seoulsaram dot org>
 # Contributor: Hurstel Alexandre <alexandre at hurstel dot eu>
 # Contributor: Tobias Manske <aur at rad4day dot de>
 
