@@ -14,7 +14,7 @@ depends=('libsndfile' 'libsndfile.so')
 makedepends=('git')
 provides=('libbs2b' 'libbs2b.so')
 conflicts=('libbs2b')
-source=('git+git://github.com/alexmarsev/libbs2b.git')
+source=('git+https://github.com/alexmarsev/libbs2b.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -23,14 +23,14 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/$_gitname/"
-	./autogen.sh
-	./configure --prefix=/usr
-	make || return 1
+    cd "$srcdir/$_gitname/"
+    ./autogen.sh
+    ./configure --prefix=/usr
+    make || return 1
 }
 
 package() {
-	cd "$srcdir/$_gitname/"
-	make DESTDIR=$pkgdir install  || return 1
+    cd "$srcdir/$_gitname/"
+    make DESTDIR=$pkgdir install  || return 1
     install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }

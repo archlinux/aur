@@ -12,7 +12,7 @@ pkgbase = libbs2b-git
 	provides = libbs2b
 	provides = libbs2b.so
 	conflicts = libbs2b
-	source = git+git://github.com/alexmarsev/libbs2b.git
+	source = git+https://github.com/alexmarsev/libbs2b.git
 	sha256sums = SKIP
 
 pkgname = libbs2b-git
