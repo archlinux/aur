@@ -1,7 +1,7 @@
 # Maintainer: Marcel Röthke <marcel.roethke@haw-hamburg.de>
 
 pkgname=exabgp
-pkgver=4.2.20
+pkgver=4.2.21
 pkgrel=1
 pkgdesc="The BGP swiss army knife of networking"
 url="https://github.com/Exa-Networks/exabgp"
@@ -10,7 +10,7 @@ depends=('python')
 makedepends=('python-setuptools')
 arch=('any')
 source=("exabgp-${pkgver}.tar.gz::https://github.com/Exa-Networks/exabgp/archive/${pkgver}.tar.gz")
-sha256sums=('98ae57460c43fd8cec29e28413f2dc82d5a5fddf0add6ba2b1511f1d0ac65969')
+sha256sums=('5d5ce6e973fc966fa6aed4a1033b63722d95c8f8ba7bb44659694d659c3f7b7b')
 
 package() {
   cd "$srcdir/exabgp-$pkgver"
