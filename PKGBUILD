@@ -1,26 +1,30 @@
-# Maintainer: Robert Greener <me@r0bert.dev>
-# Contributor: Thomas Ivesdal-Tronstad <thotro at lyse dot net>
-_cranname=pracma
-_cranver=2.3.8
-pkgname=r-pracma
-pkgver=${_cranver//[:-]/.}
-pkgrel=2
-pkgdesc="Provides a large number of functions."
-url="https://cran.r-project.org/package=pracma"
-arch=("any")
-license=('GPL-2' 'GPL-3')
-depends=('r>=3.1.0')
-optdepends=()
-source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha512sums=("67592275a802fd056e4a81311adce7ea86fa0d0787aeb3764580a3df3f2eac5df3c7e15c9f5dea9d00bbc3c9248e267ed346f4ef5d31979db2fbf93f6b2e6821")
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+
+_pkgname=pracma
+_pkgver=2.3.8
+pkgname=r-${_pkgname,,}
+pkgver=2.3.8
+pkgrel=3
+pkgdesc='Practical Numerical Math Functions'
+arch=('any')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('GPL')
+depends=(
+  r
+)
+optdepends=(
+  r-nlcoptim
+  r-quadprog
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('2302d454406e72711714732658d0c59c9d5a1ead698f22ee23f38cba63d42764')
 
 build() {
-    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-    install -dm0755 "${pkgdir}/usr/lib/R/library"
-
-    cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
 }
-
+# vim:set ts=2 sw=2 et:
