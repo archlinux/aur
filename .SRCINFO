@@ -1,14 +1,12 @@
 pkgbase = r-dotcall64
 	pkgdesc = Enhanced Foreign Function Interface Supporting Long Vectors
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=dotCall64
-	arch = i686
 	arch = x86_64
-	license = GPL2
-	license = GPL3
+	license = GPL
 	makedepends = gcc-fortran
-	depends = r>=3.1
+	depends = r
 	optdepends = r-microbenchmark
 	optdepends = r-openmpcontroller
 	optdepends = r-rcolorbrewer
