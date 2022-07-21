@@ -1,6 +1,6 @@
 # Maintainer: YagiOoda <YagiOoda@pm.me>
 pkgname=everdo
-pkgver=1.7.7
+pkgver=1.7.8
 pkgrel=1
 pkgdesc="The Perfect App for GTD / Getting Things Done"
 arch=('x86_64')
@@ -8,22 +8,10 @@ url='https://everdo.net'
 license=('unknown')
 
 depends=(
-	'c-ares' 
-	'ffmpeg' 
 	'gtk3'
-	'http-parser' 
-	'libevent' 
-	'libvpx' 
-	'libxslt' 
-	'libxss' 
-	'minizip' 
 	'nss' 
-	're2' 
-	'snappy' 
-	'libnotify' 
-	'libappindicator-gtk2' 
-	'libappindicator-gtk3' 
-	'gconf'
+	'alsa-lib'
+	'dbus-x11'
 	)
 
 source=("https://d11l8siwmn8w36.cloudfront.net/$pkgver/$pkgname-$pkgver.pacman")
@@ -42,4 +30,4 @@ package() {
                       "${pkgdir}${icons_dir}/${pkgname}.png"
     done
 }
-md5sums=('91d3bcaec246befca99dddfb63b0e02c')
+sha256sums=('4e5e857cabd48be399ea132df639b9e0eeaeb57d7a36637c762defa1bfdff8b7')
