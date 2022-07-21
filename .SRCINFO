@@ -1,5 +1,5 @@
 pkgbase = r-gbrd
-	pkgdesc = Provides utilities for processing Rd objects and files. Extract argument descriptions and other parts of the help pages of functions
+	pkgdesc = Utilities for processing Rd objects and files
 	pkgver = 0.4.11
 	pkgrel = 1
 	url = https://cran.r-project.org/package=gbRd

@@ -1,41 +1,27 @@
-# Maintainer: Robert Greener <me@r0bert.dev>
-_cranname=gbRd
-_cranver=0.4-11
-pkgname=r-${_cranname,,}
-pkgver=${_cranver//[:-]/.}
+# Maintainer: sukanka <su975853527@gmail.com>
+# Contributor: Robert Greener <me@r0bert.dev>
+
+_pkgname=gbRd
+_pkgver=0.4-11
+pkgname=r-${_pkgname,,}
+pkgver=${_pkgver//[:-]/.}
 pkgrel=1
-pkgdesc="Provides utilities for processing Rd objects and files. Extract argument descriptions and other parts of the help pages of functions"
-arch=(any)
-url="https://cran.r-project.org/package=${_cranname}"
-license=(GPL)
+pkgdesc='Utilities for processing Rd objects and files'
+arch=('any')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('GPL')
 depends=(
-	r
+  r
 )
-checkdepends=(
-)
-optdepends=(
-)
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('0251f6dd6ca987a74acc4765838b858f1edb08b71dbad9e563669b58783ea91b')
 
 build() {
-	mkdir -p build
-	R CMD INSTALL "${_cranname}" -l "${srcdir}/build"
-}
-
-check() {
-	if [ -d "${_cranname}/tests" ]
-	then
-  		cd "${_cranname}/tests"
-		for i in *.R; do
-			R_LIBS="${srcdir}/build" Rscript --vanilla $i
-		done
-	fi
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-	install -dm0755 "${pkgdir}/usr/lib/R/library"
-
-	cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
 }
-
-sha256sums=('0251f6dd6ca987a74acc4765838b858f1edb08b71dbad9e563669b58783ea91b')
+# vim:set ts=2 sw=2 et:
