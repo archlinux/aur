@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rcpi
-_pkgver=1.32.1
+_pkgver=1.32.2
 pkgname=r-${_pkgname,,}
-pkgver=1.32.1
-pkgrel=3
+pkgver=1.32.2
+pkgrel=1
 pkgdesc='Molecular Informatics Toolkit for Compound-Protein Interaction in Drug Discovery'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -29,7 +29,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('686d051bedd8113b761e888041816db9d02091a636a31c234686f789cfa9c25f')
+sha256sums=('820984fd26d407cd31b5080b0c2b17a2800058f977ecc10aa40253aa97b7dc66')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
