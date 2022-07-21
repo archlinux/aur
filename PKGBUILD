@@ -30,6 +30,7 @@ build() {
  cmake -B build -S "${srcdir}/${pkgname%-git}" \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
+        -DAW_SPLIT_INCLUDES:BOOL=OFF \
         -Wno-dev
  cmake --build build
 }
