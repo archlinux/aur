@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/gregodadone/amor-themes-extra"
 license=('GPL')
 depends=('amor')
-source=('https://github.com/gregodadone/amor-themes-extra/releases/download/aur/amor-themes-extra-${pkgver}-${pkgrel}.tar.gz')
+source=(https://github.com/gregodadone/amor-themes-extra/releases/download/aur/amor-themes-extra-1.0-2.tar.gz)
 sha256sums=('74528e8c33c4f665fe54d2510ebd3f57613108d71c9c15e928a6cf53bda5a0e9')
 install='amor-themes-extra.install'
 
