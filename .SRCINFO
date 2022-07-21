@@ -1,6 +1,6 @@
 pkgbase = ferdium-bin
 	pkgdesc = A messaging browser that allows you to combine your favorite messaging services into one application (binary release).
-	pkgver = 6.0.0.nightly.103
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://ferdium.org
 	arch = x86_64
@@ -25,11 +25,11 @@ pkgbase = ferdium-bin
 	depends = snappy
 	provides = ferdium
 	conflicts = ferdium
-	source_x86_64 = ferdium-bin-6.0.0-nightly.103-1-amd64.zip::https://github.com/ferdium/ferdium-app/releases/download/v6.0.0-nightly.103/Ferdium-linux-6.0.0-nightly.103-amd64.deb
-	sha512sums_x86_64 = 58c757e079ecd567a805b3ef4ca33ce4bdcf037a43c21ec6a8407fdd706ccdd8384c051d747ac81e1323fbadc73f532fd0fbaff60895a32caef0d21e77b516cb
-	source_armv7l = ferdium-bin-6.0.0-nightly.103-1-armv7l.zip::https://github.com/ferdium/ferdium-app/releases/download/v6.0.0-nightly.103/Ferdium-linux-6.0.0-nightly.103-armv7l.deb
-	sha512sums_armv7l = 405fe7b4d7a9e892333d73ed78c79672d2396b9c57974077644da2433358d37fc1714e4743bc83372735614773520f4b4d1e70abfea38bec047f9841b5a679b9
-	source_arm64 = ferdium-bin-6.0.0-nightly.103-1-arm64.zip::https://github.com/ferdium/ferdium-app/releases/download/v6.0.0-nightly.103/Ferdium-linux-6.0.0-nightly.103-arm64.deb
-	sha512sums_arm64 = fd43a0a1c17ab6d0ea5f1fbdaf3d223ea27db3c74ed345f8bea387341a3f0c872fec443a3dae4b2118e3ce990bb2c85eba9fab05f3e2c68d9b2a3f090e9865d7
+	source_x86_64 = ferdium-bin-6.0.0-1-amd64.zip::https://github.com/ferdium/ferdium-app/releases/download/v6.0.0/Ferdium-linux-6.0.0-amd64.deb
+	sha512sums_x86_64 = c9e1da70bf1cd1075d60dabcb6c08a22b130d9f75399416f95e3b9283bde3cd4b4005c4434baae105c0599c15c2c4a29905a8e0268ace5f36a41c8ab93b78406
+	source_armv7l = ferdium-bin-6.0.0-1-armv7l.zip::https://github.com/ferdium/ferdium-app/releases/download/v6.0.0/Ferdium-linux-6.0.0-armv7l.deb
+	sha512sums_armv7l = 2da95497cd0397a6f2b0f2e49a156d63ef3f9a2f280d1525b0c464a2ec6e90576fc676a98d5f4edeadb5063f5991423ec6ad5ce90bb135de94572d7e4fd0b4b9
+	source_arm64 = ferdium-bin-6.0.0-1-arm64.zip::https://github.com/ferdium/ferdium-app/releases/download/v6.0.0/Ferdium-linux-6.0.0-arm64.deb
+	sha512sums_arm64 = 0c2f6e7645df56286a2e5b84046d0c2b7cdc4af0dcdafd86ad687a9218ad63d863f2f7b024151a0c524d84326ed44d8fb64309d2b62225bd932a74ed33a04bfd
 
 pkgname = ferdium-bin
