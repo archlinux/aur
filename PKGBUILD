@@ -1,26 +1,28 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
-# Contributor: Alex Branham <branham@utexas.edu>
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
-_cranname=prodlim
-_cranver=2019.11.13
-pkgname=r-${_cranname,,}
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
-pkgdesc="Product-Limit Estimation for Censored Event History Analysis"
-arch=(i686 x86_64)
-url="https://cran.r-project.org/package=${_cranname}"
-license=(GPL2 GPL3)
-depends=('r>=2.9.0' 'r-rcpp>=0.11.5' r-lava)
-makedepends=(gcc)
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+_pkgname=prodlim
+_pkgver=2019.11.13
+pkgname=r-${_pkgname,,}
+pkgver=2019.11.13
+pkgrel=4
+pkgdesc='Product-Limit Estimation for Censored Event History Analysis'
+arch=('x86_64')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('GPL')
+depends=(
+  r
+  r-lava
+  r-rcpp
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('6809924f503a14681de84730489cdaf9240d7951c64f5b98ca37dc1ce7809b0f')
 
 build() {
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
 package() {
   install -dm0755 "${pkgdir}/usr/lib/R/library"
-
-  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
 }
+# vim:set ts=2 sw=2 et:
