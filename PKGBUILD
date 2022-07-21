@@ -1,26 +1,25 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
+# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=jlibgamma
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Display server abstraction layer for gamma ramps and Java"
 arch=(i686 x86_64)
-url="https://github.com/maandree/jlibgamma"
-license=('GPL3')
+url="https://codeberg.org/maandree/jlibgamma"
+license=('custom:ISC')
 depends=('java-runtime-headless>=1.5' 'libgamma>=0.3' glibc)
 makedepends=('java-environment>=1.5' 'libgamma>=0.3' glibc gcc make coreutils sed)
-source=($url/archive/$pkgver.tar.gz)
-sha256sums=(b2b4fff21270162a7faa3cc95f511261acf128a28e35f24c6c24a1b8492bb175)
+source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
+sha256sums=(7cd2d93b08db6f3c3bc62f0a684952783dbafc7fc16c5f1cf2be7d09c48fb564)
 
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   make PREFIX=/usr JAVA_HOME=/usr/lib/jvm/default
 }
 
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   make PREFIX=/usr JAVA_HOME=/usr/lib/jvm/default install DESTDIR="$pkgdir"
 }
-
