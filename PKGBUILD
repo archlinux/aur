@@ -1,7 +1,7 @@
 # Maintainer: GI_Jack <iamjacksemail@hackermail.com>
 pkgname=i2p-controller
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI I2P Controller written in python."
 url="http://sourceforge.net/projects/i2pcontroller/"
 arch=('any')
@@ -34,8 +34,8 @@ package() {
   mv "${srcdir}/i2pcontroller.desktop" usr/share/applications/
   #rename compiled files
   cd usr/share/i2pcontroller
-  mv i2pcontroller.cpython-3?.pyc i2pcontroller.pyc
-  mv mainwindow.cpython-3?.pyc mainwindow.pyc
+  #mv i2pcontroller.cpython-3?.pyc i2pcontroller.pyc
+  #mv mainwindow.cpython-3?.pyc mainwindow.pyc
 }
  
 # vim:set ts=2 sw=2 et:
