@@ -28,6 +28,10 @@ build() {
 }
 
 package() {
+	install -m755 -d "$pkgdir"/usr/lib/systemd/system
+	install -m644 $_pkgname/services/systemd/gimmeasearx.service "$pkgdir"/usr/lib/systemd/system/gimmeasearx.service
+	sed -i s,TEMPLATE_DIR,/var/lib/gimmeasearx, "$pkgdir"/usr/lib/systemd/system/gimmeasearx.service
+
 	install -Dm 755 /dev/stdin "$pkgdir"/usr/bin/$_pkgname <<EOF
 #!/bin/sh
 cd /var/lib/gimmeasearx
