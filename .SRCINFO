@@ -1,6 +1,6 @@
 pkgbase = dogecoin-daemon
 	pkgver = 1.14.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dogecoin.com/
 	arch = x86_64
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = dogecoin-daemon
 	validpgpkeys = 1DDC450B45DB5ADCCF5DDA7F8E4217C6D47D946D
 	sha256sums = 341088d4d59c5086a430ec64ce81c92a9629146ef50d6c4a4d868b31ce2cef79
 	sha256sums = 9946c415ffb7d7189c81a349bd92020aeb658706adb74215630339daf00a6c96
-	sha256sums = eaf022a60cb3297a31148b047bd473eef5bb08ec011f6ed29869061a03342d94
+	sha256sums = 0fc1bf30a981dca11f7fa7cb81c87bbc5342c3dbcd63b9ef6e0bff766c78eb31
 
 pkgname = dogecoin-daemon
 	pkgdesc = Dogecoin is a peer-to-peer network based digital currency - daemon
