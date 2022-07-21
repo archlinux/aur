@@ -1,4 +1,4 @@
-pkgver=6.2.7
+pkgver=5.0.14
 _ver=$(echo "$pkgver" | sed -e "s:\([0-9]*\).*:\1:g")
 pkgname=redis${_ver}
 pkgrel=2
@@ -15,7 +15,7 @@ source=(https://download.redis.io/releases/redis-${pkgver}.tar.gz
         redis.logrotate
         redis.conf-sane-defaults.patch
         redis-use-system-jemalloc.patch)
-sha1sums=('b01ef3f117c9815dea41bf2609e489a03c3a5ab1'
+sha1sums=('58f2b4bfd4aded983195c21275516dac2f7e283e'
           '758d0a2cdd99b75c556e6fc13d9ab4cd7475a943'
           'f1edcd6e469dc6f076e223e3611ac683a6c37766'
           '8d60927802707bc7096f1c815e0e64937fc899ad'
