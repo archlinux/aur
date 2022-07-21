@@ -1,11 +1,13 @@
 pkgbase = ninjam-server-git
 	pkgdesc = Make real music together via the Internet.
-	pkgver = 0.080.r171.44c21b9
+	pkgver = 0.080.r5.44c21b9
 	pkgrel = 1
 	url = https://www.cockos.com/ninjam/
 	arch = i686
 	arch = x86_64
 	license = GPL
+	provides = ninjam-server
+	conflicts = ninjam-server
 	backup = etc/ninjam.cfg
 	source = git+https://github.com/justinfrankel/ninjam.git
 	source = ninjam-server.service
@@ -17,4 +19,3 @@ pkgbase = ninjam-server-git
 	sha256sums = f354185c5b615cd8a1493506d762e0f0efc7e29b5d4497ae89db194e52343321
 
 pkgname = ninjam-server-git
-
