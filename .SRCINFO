@@ -1,11 +1,11 @@
 pkgbase = r-xopen
 	pkgdesc = Open System Files, 'URLs', Anything
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=xopen
 	arch = any
 	license = MIT
-	depends = r>=3.1
+	depends = r
 	depends = r-processx
 	optdepends = r-ps
 	optdepends = r-testthat
