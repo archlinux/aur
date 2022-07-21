@@ -1,14 +1,14 @@
 pkgbase = premid-nightly
 	pkgdesc = Discord Rich Presence for web services
 	pkgver = 2.3.3_1652526171
-	pkgrel = 1
+	pkgrel = 2
 	url = https://premid.app
 	arch = x86_64
 	license = MPL2
 	optdepends = discord: Proper Rich Presence support
 	conflicts = premid-git
 	conflicts = premid
-	source = premid-nightly-2.3.3_1652526171.tar.gz::https://github.com/premid/Linux/releases/download/v2.3.3-1652526171/PreMiD.tar.gz
+	source = premid-2.3.3_1652526171.tar.gz::https://github.com/premid/Linux/releases/download/v2.3.3-1652526171/PreMiD.tar.gz
 	sha512sums = 3b797c70327b5bf1fd8b632eeb8672d83a48ee8bee7eb794f7f1f73e5a463f317ad79e95e1f5d3e6044871948ebd4a90350f83faf5034d2217a90bf52f1b5fb9
 
 pkgname = premid-nightly

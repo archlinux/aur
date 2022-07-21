@@ -4,14 +4,14 @@ pkgname=premid-nightly
 _pkgname=PreMiD
 pkgver=2.3.3_1652526171
 gitver=2.3.3-1652526171
-pkgrel=1
+pkgrel=2
 pkgdesc="Discord Rich Presence for web services"
 arch=('x86_64')
 url='https://premid.app'
 license=('MPL2')
 optdepends=('discord: Proper Rich Presence support')
 conflicts=('premid-git' 'premid')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/premid/Linux/releases/download/v${gitver}/${_pkgname}.tar.gz")
+source=("premid-$pkgver.tar.gz::https://github.com/premid/Linux/releases/download/v${gitver}/${_pkgname}.tar.gz")
 sha512sums=('3b797c70327b5bf1fd8b632eeb8672d83a48ee8bee7eb794f7f1f73e5a463f317ad79e95e1f5d3e6044871948ebd4a90350f83faf5034d2217a90bf52f1b5fb9')
 
 package() {
@@ -21,10 +21,10 @@ package() {
 
   # Icon
   install -d "${pkgdir}/usr/share/pixmaps"
-  ln -s "/opt/${pkgname}/assets/appIcon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  ln -s "/opt/premid/assets/appIcon.png" "${pkgdir}/usr/share/pixmaps/premid.png"
 
   # Desktop Entry
-  install -Dm644 "${pkgdir}/opt/${pkgname}/assets/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+  install -Dm644 "${pkgdir}/opt/premid/assets/premid.desktop" -t "${pkgdir}/usr/share/applications"
   mkdir -p ${pkgdir}/usr/bin/
   ln -sf /opt/premid/premid  "${pkgdir}/usr/bin/premid"
 
