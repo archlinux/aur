@@ -41,7 +41,8 @@ build() {
            -DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \
            -DCMAKE_INSTALL_PREFIX="/usr" \
            -DCMAKE_INSTALL_LIBDIR="lib" \
-           -DCMAKE_INSTALL_SYSCONFDIR="/etc"
+           -DCMAKE_INSTALL_SYSCONFDIR="/etc" \
+           -DQT_DEFAULT_MAJOR_VERSION=5
   make
 }
 
