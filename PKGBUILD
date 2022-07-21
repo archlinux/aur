@@ -1,24 +1,22 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=elfinfo
-pkgver=1.1.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Detect which compiler version was used for compiling an ELF file'
 arch=(x86_64)
 url='https://elfinfo.roboticoverlords.org/'
-license=(MIT)
+license=(BSD)
 makedepends=(go git)
-source=("git+https://github.com/xyproto/elfinfo#commit=fa069dd07e2a1629dcc6fa8bfefd59fc28833fa7")
-sha256sums=('SKIP')
+source=("git+https://github.com/xyproto/elfinfo#commit=0f5a6d671c6d298e7f06d2917a2007e9a547d2ad") # tag: 1.2.1
+b2sums=('SKIP')
 
 build() {
   cd $pkgname
-  go build -mod=vendor -gcflags "all=-trimpath=${PWD}" -asmflags "all=-trimpath=${PWD}" -ldflags "-extldflags ${LDFLAGS}"
+  go build -v -mod=vendor -trimpath -buildmode=pie -ldflags="-s -w -extldflags $LDFLAGS"
 }
 
 package() {
   install -Dm755 "$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim: ts=2 sw=2 et:
