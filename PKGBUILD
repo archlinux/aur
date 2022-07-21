@@ -1,10 +1,13 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 # based on extra/xf86-video-amdgpu by:
 # Laurent Carlier <lordheavym@gmail.com>
+#
+# Send PRs here: https://github.com/yurikoles-aur/xf86-video-ati-git
+#
 
 pkgname=xf86-video-amdgpu-git
-_pkgname=xf86-video-amdgpu
-pkgver=21.0.0.r1.g6936552
+_pkgname=${pkgname%-*}
+pkgver=22.0.0.r8.g4e011b9
 pkgrel=1
 pkgdesc="X.org amdgpu video driver (git version)"
 arch=('x86_64')
@@ -12,9 +15,9 @@ url="https://xorg.freedesktop.org/"
 license=('custom')
 depends=('systemd-libs' 'mesa')
 makedepends=('xorg-server-devel' 'systemd' 'git' 'pixman')
-conflicts=('xf86-video-amdgpu' 'xorg-server<1.20.0')
-provides=('xf86-video-amdgpu')
-groups=('xorg-drivers')
+conflicts=("${_pkgname}" 'xorg-server<1.20.0')
+provides=("${_pkgname}=$pkgver")
+groups=('xorg-drivers-git')
 source=("${pkgname}::git+https://gitlab.freedesktop.org/xorg/driver/${_pkgname}.git")
 sha256sums=('SKIP')
 

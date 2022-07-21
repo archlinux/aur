@@ -1,10 +1,10 @@
 pkgbase = xf86-video-amdgpu-git
 	pkgdesc = X.org amdgpu video driver (git version)
-	pkgver = 21.0.0.r1.g6936552
+	pkgver = 22.0.0.r8.g4e011b9
 	pkgrel = 1
 	url = https://xorg.freedesktop.org/
 	arch = x86_64
-	groups = xorg-drivers
+	groups = xorg-drivers-git
 	license = custom
 	makedepends = xorg-server-devel
 	makedepends = systemd
@@ -12,7 +12,7 @@ pkgbase = xf86-video-amdgpu-git
 	makedepends = pixman
 	depends = systemd-libs
 	depends = mesa
-	provides = xf86-video-amdgpu
+	provides = xf86-video-amdgpu=22.0.0.r8.g4e011b9
 	conflicts = xf86-video-amdgpu
 	conflicts = xorg-server<1.20.0
 	source = xf86-video-amdgpu-git::git+https://gitlab.freedesktop.org/xorg/driver/xf86-video-amdgpu.git
