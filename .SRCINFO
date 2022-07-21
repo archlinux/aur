@@ -3,16 +3,16 @@ pkgbase = r-rcpparmadillo
 	pkgver = 0.11.2.0.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=RcppArmadillo
-	arch = any
-	license = GPL2
-	license = GPL3
-	checkdepends = r-tinytest
-	checkdepends = r-pkgkitten
-	checkdepends = r-reticulate
-	checkdepends = r-slam
-	depends = r>=3.3.0
-	depends = r-rcpp>=0.11.0
-	source = https://cran.microsoft.com/snapshot/2022-06-25/src/contrib/RcppArmadillo_0.11.2.0.0.tar.gz
-	sha512sums = f42912475f768d045cf67156d0b61523ee035c2f6720ca2966f0d1f02bd2cb7b57c3dafdb8fd2dbe40261639684e3735392b16933b4cf8029503ec90bdd46568
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	optdepends = r-matrix
+	optdepends = r-pkgkitten
+	optdepends = r-reticulate
+	optdepends = r-slam
+	optdepends = r-tinytest
+	source = https://cran.r-project.org/src/contrib/RcppArmadillo_0.11.2.0.0.tar.gz
+	sha256sums = f9e17af85ef5c0c8d63771b6e7da0cdcdbecc7ac8bd40d5035a64952c4ce1938
 
 pkgname = r-rcpparmadillo
