@@ -1,17 +1,17 @@
 pkgbase = r-cellranger
 	pkgdesc = Translate Spreadsheet Cell Ranges to Rows and Columns
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=cellranger
 	arch = any
 	license = MIT
-	depends = r>=3.0.0
+	depends = r
 	depends = r-rematch
 	depends = r-tibble
 	optdepends = r-covr
-	optdepends = r-testthat
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
+	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/cellranger_1.1.0.tar.gz
 	sha256sums = 5d38f288c752bbb9cea6ff830b8388bdd65a8571fd82d8d96064586bd588cf99
 
