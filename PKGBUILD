@@ -1,7 +1,7 @@
 # Maintainer: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=1.5.1.r0.gdbe24c7
+pkgver=1.5.6.r25.g63bf22f
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c"
 arch=("x86_64" "i686" "pentium4" "armv5" "armv6h" "armv7h" "aarch64")
@@ -75,19 +75,19 @@ build() {
   cmake \
     -B "${_build_dir}" \
     -S "${_src_dir}" \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+		-DCMAKE_INSTALL_SYSCONFDIR="/etc" \
     -DENABLE_SQLITE3=OFF \
     -DENABLE_RPM=OFF \
     -DENABLE_IMAGEMAGICK6=OFF \
     -Wno-dev
 
   cmake \
-    --build "${_build_dir}" \
-    --target fastfetch \
-    --target flashfetch
+    --build "${_build_dir}"
 }
 
 package() {
+  DESTDIR="${pkgdir}" \
   cmake \
-    --install "${_build_dir}" \
-    --prefix "${pkgdir}/usr"
+    --install "${_build_dir}"
 }
