@@ -1,13 +1,13 @@
 pkgbase = r-egg
 	pkgdesc = Extensions for 'ggplot2': Custom Geom, Custom Themes, Plot Alignment, Labelled Panels, Symmetric Scales, and Fixed Panel Size
 	pkgver = 0.4.5
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=egg
 	arch = any
-	license = GPL3
+	license = GPL
 	depends = r
-	depends = r-gridextra>=2.3
 	depends = r-ggplot2
+	depends = r-gridextra
 	depends = r-gtable
 	optdepends = r-knitr
 	optdepends = r-png
