@@ -3,16 +3,15 @@ pkgbase = r-metadynminer3d
 	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=metadynminer3d
-	arch = i686
 	arch = x86_64
-	license = GPL3
-	depends = r>=3.3.0
+	license = GPL
+	depends = r
 	depends = r-metadynminer
-	depends = r-rgl
-	depends = r-rcpp
 	depends = r-misc3d
+	depends = r-rcpp
+	depends = r-rgl
 	optdepends = r-testthat
-	source = https://cran.microsoft.com/snapshot/2022-06-08/src/contrib/metadynminer3d_0.0.2.tar.gz
+	source = https://cran.r-project.org/src/contrib/metadynminer3d_0.0.2.tar.gz
 	sha256sums = 55e2b7a17e08f0ebcfbb621ea0c03ebce73576c9de2409491a3be353aed32cf8
 
 pkgname = r-metadynminer3d
