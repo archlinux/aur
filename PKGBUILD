@@ -1,7 +1,7 @@
 # Maintainer: Mik Mueller <imse335@gmail.com>
 pkgname=smarthome-commander
 pkgver=0.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Microservice for executing shell commands via API requests"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/smarthome-go/commander"
