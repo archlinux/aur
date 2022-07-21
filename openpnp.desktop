@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=OpenPnP
+Comment=Open Source SMT Pick and Place Hardware and Software
+Path=/opt/openpnp/OpenPnP
+Exec=OpenPnP
+#Icon=OpenPnP
+Terminal=false
+#Categories=Education;Languages;Java;
