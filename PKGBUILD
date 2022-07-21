@@ -3,30 +3,42 @@
 
 pkgname=ruby-excon
 _gemname="${pkgname#ruby-}"
-pkgver=0.92.3
+pkgver=0.92.4
 pkgrel=1
 pkgdesc='EXtended http(s) CONnections'
 arch=('any')
 url='https://github.com/excon/excon'
 license=('MIT')
 depends=('ruby')
-makedepends=('rubygems' 'ruby-rdoc')
+makedepends=('git' 'rubygems' 'ruby-rdoc')
 options=('!emptydirs')
-source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
-noextract=("$_gemname-$pkgver.gem")
-sha512sums=('8f739431a44dcdd991e45dad3a220814047831b3dc1debbaba0ee63ec34f66c33299016c63211403f8720eaa582063ebd38c11dd76015eae3c56dfab036b4a38')
-b2sums=('3736fe39b07c5398f253644b26eb15161454c2fe3acba21738c548184b6afe7cab2f0fbe34111c74c2fe656a68a3c2035ec64ae836c006603943d45f698e040e')
+_commit='e80c3c75a5ec0cd66758c134fb0256e37a9fdc8c'
+source=("$pkgname::git+$url#commit=$_commit")
+b2sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+
+  git describe --tags | sed 's/^v//'
+}
+
+build() {
+  cd "$pkgname"
+
+  gem build
+}
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
 
   gem install \
+    --local \
     --ignore-dependencies \
     --no-user-install \
     --no-document \
     --install-dir "$pkgdir/$_gemdir" \
     --bindir "$pkgdir/usr/bin" \
-    "$_gemname-$pkgver.gem"
+    "$pkgname/$_gemname-$pkgver.gem"
 
   # delete unnecessary files & folders
   cd "$pkgdir/$_gemdir"
