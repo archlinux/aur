@@ -1,0 +1,17 @@
+pkgbase = c3c-git
+	pkgdesc = C3 is an evolution of C enabling the same paradigms and retaining the same syntax as far as possible.
+	pkgver = r726.56a6e0b
+	pkgrel = 1
+	url = https://github.com/c3lang/c3c.git
+	arch = x86_64
+	license = LGPL3
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = llvm>=12
+	provides = c3c
+	conflicts = c3c
+	source = git+https://github.com/c3lang/c3c.git
+	md5sums = SKIP
+
+pkgname = c3c-git
