@@ -7,12 +7,12 @@
 pkgname=xaralx-bin
 _pkgname=xaralx
 pkgver=0.7_rev1785
-pkgrel=16
+pkgrel=17
 pkgdesc="An advanced vector graphics program, development release"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.xaraxtreme.org/"
 license=('GPL')
-depends=('desktop-file-utils')
+depends=('desktop-file-utils' 'lib32-libstdc++5' 'lib32-pangox-compat' 'lib32-gtk2' 'lib32-libsm')
 makedepends=('pkgconfig')
 optdepends=('imagemagick: needed for some conversions'
             'java-environment: for web help')
@@ -21,13 +21,6 @@ conflicts=('xaralx')
 install=${pkgname}.install
 source=(http://downloads.xara.com/opensource/xaralx${pkgver}.tar.bz2)
 sha256sums=('83de10dda870da08cc2c1285246b364e1abfe3e0eb2d8483c1aa104a74003082')
-
-if [ "$CARCH" = "x86_64" ]; then
-    depends+=(lib32-{libstdc++5,pangox-compat,gtk2,libsm})
-elif [ "$CARCH" = "i686" ]; then
-    depends+=(libstdc++5 pangox-compat gtk2 libsm)
-fi
-
 
 package() {
   cd "$srcdir/$_pkgname"
