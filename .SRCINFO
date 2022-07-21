@@ -1,14 +1,10 @@
 pkgbase = r-webshot
 	pkgdesc = Take Screenshots of Web Pages
 	pkgver = 0.5.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=webshot
 	arch = any
-	license = GPL2
-	depends = graphicsmagick
-	depends = imagemagick
-	depends = optipng
-	depends = phantomjs
+	license = GPL
 	depends = r
 	depends = r-callr
 	depends = r-jsonlite
