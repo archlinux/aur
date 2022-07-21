@@ -2,7 +2,7 @@
 
 _pkgname="wxgtk2-wxgtk-provides"
 pkgname="${_pkgname}-latest"
-pkgver=3.0.5.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Dummy/ meta package that depends on 'wxgtk2' and provides 'wxgtk'. Needed for some (ill-formed) AUR packages to fulfill dependencies."
 arch=("any")
