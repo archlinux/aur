@@ -2,8 +2,8 @@
 # Contributor: aksr <aksr at t-com dot me>
 
 pkgname=nuweb
-pkgver=1.61
-pkgrel=2
+pkgver=1.62
+pkgrel=1
 epoch=
 pkgdesc="A Simple Literate Programming Tool"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('custom:BSD-3-Clause')
 depends=('texlive-core')
 install=nuweb.install
 source=("http://downloads.sourceforge.net/project/nuweb/$pkgname-$pkgver.tar.gz" "nuweb.install" "nuweb.LICENSE")
-sha256sums=('fbf4ff8f27690027bceac799262b43cc27cad51261799111d512d2faf1044c9b'
+sha256sums=('255a8f62460f5c14f4c4b356b96e0357a37a6652ae0584064f8e9fae19e953ae'
             '93b550ff61543e6628a858cb28d70c7a850da8aa4fbfc7172830eae70fc78014'
             '86d9ee75add7cee2e21c0423182523e9525b2f5824dbf802fea3e337d0a49e77')
 
@@ -53,4 +53,3 @@ package() {
   install -D -m644 $srcdir/$pkgname-$pkgver/nuweb.pdf    $pkgdir/usr/share/doc/$pkgname/nuweb.pdf
   install -D -m644 $srcdir/$pkgname-$pkgver/nuwebdoc.pdf $pkgdir/usr/share/doc/$pkgname/nuwebdoc.pdf
 }
-
