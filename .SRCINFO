@@ -1,13 +1,13 @@
 pkgbase = r-miniui
 	pkgdesc = Shiny UI Widgets for Small Screens
 	pkgver = 0.1.1.1
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=miniUI
 	arch = any
-	license = GPL3
+	license = GPL
 	depends = r
-	depends = r-shiny>=0.13
-	depends = r-htmltools>=0.3
+	depends = r-htmltools
+	depends = r-shiny
 	source = https://cran.r-project.org/src/contrib/miniUI_0.1.1.1.tar.gz
 	sha256sums = 452b41133289f630d8026507263744e385908ca025e9a7976925c1539816b0c0
 
