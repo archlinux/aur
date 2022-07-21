@@ -1,7 +1,7 @@
 pkgbase = python-metpy
 	pkgdesc = collection of tools in Python for reading, visualizing and performing calculations with weather data.
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://unidata.github.io/MetPy
 	arch = any
 	license = BSD
