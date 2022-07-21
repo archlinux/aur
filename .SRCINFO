@@ -1,6 +1,6 @@
 pkgbase = r-biocviews
 	pkgdesc = Categorized views of R package repositories
-	pkgver = 1.64.0
+	pkgver = 1.64.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/biocViews
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-biocviews
 	optdepends = r-biocgenerics
 	optdepends = r-commonmark
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/biocViews_1.64.0.tar.gz
-	sha256sums = 468407a4de1a6f1bae7f4b157baa5fcafd79cbebebf9e8e88bb871358aa250d1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/biocViews_1.64.1.tar.gz
+	sha256sums = 6850fff041ea45bb5a6038024ca878a8ce72c02f93ce412bb495d78b71eaac47
 
 pkgname = r-biocviews
