@@ -5,13 +5,13 @@ _nodejs_lts_version=-lts-gallium
 
 pkgname=('trilium' 'trilium-server' 'trilium-dumpdb')
 pkgver=0.53.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A hierarchical note taking application with focus on building large personal knowledge bases."
 arch=('x86_64')
 url="https://github.com/zadam/trilium"
 license=('AGPL3')
-depends=("electron$_electron_version" "nodejs$_nodejs_lts_version")
-makedepends=('npm')
+depends=("electron$_electron_version")
+makedepends=('npm' "nodejs$_nodejs_lts_version")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zadam/trilium/archive/refs/tags/v$pkgver.tar.gz"
 	"copy-trilium.sh.patch"
 	"config-sample.ini.patch"
