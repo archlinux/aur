@@ -1,0 +1,22 @@
+pkgbase = mcctl-git
+	pkgdesc = A powerful script which can automatically run and update Minecraft servers
+	pkgver = r83.0800482
+	pkgrel = 1
+	url = https://github.com/Kimiblock/mcctl/
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = wget
+	depends = jre-openjdk-headless
+	depends = screen
+	optdepends = git: for updating script
+	optdepends = python-pip: for chromedriver usage
+	optdepends = python: for chromedriver usage
+	optdepends = chromium: for chromedriver usage
+	optdepends = systemd: for autostart function
+	optdepends = xdg-utils: for opening Mojang EULA websites automatically
+	provides = mcctl
+	source = git+https://github.com/Kimiblock/mcctl
+	md5sums = SKIP
+
+pkgname = mcctl-git

@@ -1,0 +1,47 @@
+# Maintainer: Kimiblock Zhou <pn3535@icloud.com>
+pkgname=mcctl-git
+pkgver=r83.0800482
+pkgrel=1
+epoch=
+pkgdesc="A powerful script which can automatically run and update Minecraft servers"
+arch=('any')
+url="https://github.com/Kimiblock/mcctl/"
+license=('GPL3')
+groups=()
+depends=('bash' 'wget' 'jre-openjdk-headless' 'screen')
+makedepends=()
+checkdepends=()
+optdepends=(
+		'git: for updating script'
+		'python-pip: for chromedriver usage'
+		'python: for chromedriver usage'
+		'chromium: for chromedriver usage'
+		'systemd: for autostart function'
+		'xdg-utils: for opening Mojang EULA websites automatically'
+)
+provides=(mcctl)
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("git+https://github.com/Kimiblock/mcctl")
+noextract=()
+md5sums=('SKIP')
+validpgpkeys=()
+
+pkgver() {
+   cd mcctl
+   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+	cd mcctl
+    mkdir -p ${pkgdir}/usr/bin
+    mv mcctl ${pkgdir}/usr/bin
+    chmod +x ${pkgdir}/usr/bin/mcctl
+    mkdir -p ${pkgdir}/opt/mcctl
+    mv resources ${pkgdir}/opt/mcctl/
+    rm -f ${pkgdir}/opt/mcctl/resources/demo.png
+}
