@@ -3,7 +3,7 @@
 
 _pkgname=Qogir-icon-theme
 _pkgver=2022-07-20
-pkgname=qogir-icon-theme
+pkgname=${_pkgname@L}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="A colorful design icon theme for linux desktops"
