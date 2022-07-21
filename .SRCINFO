@@ -1,20 +1,20 @@
 pkgbase = crow-git
-	pkgdesc = Crow is very fast and easy to use C++ micro web framework (inspired by Python Flask)
-	pkgver = r351.16a0f6b
+	pkgdesc = A Fast and Easy to use microframework for the web
+	pkgver = r1360.5f77b2bd
 	pkgrel = 1
-	url = https://github.com/ipkn/crow
+	url = https://github.com/CrowCpp/Crow
 	arch = any
-	license = GPL
+	license = BSD
 	makedepends = git
 	makedepends = cmake
 	makedepends = make
-	makedepends = boost
 	makedepends = python
-	depends = boost
+	depends = asio
+	optdepends = openssl
+	optdepends = zlib
 	provides = crow
 	conflicts = crow
-	source = crow-git::git+https://github.com/ipkn/crow.git
+	source = crow-git::git+https://github.com/CrowCpp/Crow.git
 	md5sums = SKIP
 
 pkgname = crow-git
-

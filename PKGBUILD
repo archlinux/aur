@@ -1,33 +1,31 @@
 # Maintainer: condy chen <condy0919@gmail.com>
 pkgname=crow-git
-pkgver=r351.16a0f6b
+pkgver=r1360.5f77b2bd
 pkgrel=1
-pkgdesc='Crow is very fast and easy to use C++ micro web framework (inspired by Python Flask)'
+pkgdesc='A Fast and Easy to use microframework for the web'
 arch=('any')
-url="https://github.com/ipkn/crow"
-license=('GPL')
-depends=('boost')
-makedepends=('git' 'cmake' 'make' 'boost' 'python')
+url="https://github.com/CrowCpp/Crow"
+license=('BSD')
+depends=('asio')
+makedepends=('git' 'cmake' 'make' 'python')
+optdepends=('openssl' 'zlib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-optoptions=('gperftools: Fast, multi-threaded malloc and nifty performance analysis tools')
-source=("${pkgname}"::'git+https://github.com/ipkn/crow.git')
+source=("${pkgname}"::'git+https://github.com/CrowCpp/Crow.git')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/${pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$srcdir/${pkgname}"
-    mkdir build -p
-    cd build
-    cmake ..
-	make
+  cd "$srcdir/${pkgname}"
+  cmake -S. -Bbuild -DCROW_BUILD_EXAMPLES=OFF -DCROW_BUILD_TESTS=OFF -DCROW_AMALGAMATE=ON -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/"
+  cmake --build build
 }
 
 package() {
-	cd "$srcdir/${pkgname}"
-    install -Dm644 "build/amalgamate/crow_all.h" "$pkgdir/usr/include/crow.h"
+  cd "$srcdir/${pkgname}"
+  cmake --install build
 }
