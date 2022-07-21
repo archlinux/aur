@@ -1,7 +1,7 @@
 pkgbase = trilium
 	pkgdesc = A hierarchical note taking application with focus on building large personal knowledge bases.
 	pkgver = 0.53.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zadam/trilium
 	arch = x86_64
 	license = AGPL3

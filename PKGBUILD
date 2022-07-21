@@ -5,7 +5,7 @@ _nodejs_lts_version=-lts-gallium
 
 pkgname=('trilium' 'trilium-server' 'trilium-dumpdb')
 pkgver=0.53.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A hierarchical note taking application with focus on building large personal knowledge bases."
 arch=('x86_64')
 url="https://github.com/zadam/trilium"
