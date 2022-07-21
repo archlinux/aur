@@ -4,35 +4,33 @@ pkgbase = r-bookdown
 	pkgrel = 1
 	url = https://cran.r-project.org/package=bookdown
 	arch = any
-	license = GPL3
-	makedepends = r-testthat>=3.1.0
-	makedepends = r-testit>=0.9
+	license = GPL
 	depends = r
-	depends = pandoc>=1.17.2
-	depends = r-htmltools>=0.3.6
-	depends = r-knitr>=1.31
-	depends = r-rmarkdown>=2.13
+	depends = r-htmltools
 	depends = r-jquerylib
-	depends = r-xfun>=0.29
-	depends = r-tinytex>=0.12
-	depends = r-yaml>=2.1.19
-	optdepends = r-bslib>=0.2.4
-	optdepends = r-downlit>=0.4.0
+	depends = r-knitr
+	depends = r-rmarkdown
+	depends = r-tinytex
+	depends = r-xfun
+	depends = r-yaml
+	depends = pandoc
+	optdepends = r-bslib
+	optdepends = r-downlit
 	optdepends = r-htmlwidgets
 	optdepends = r-jsonlite
-	optdepends = r-rstudioapi
 	optdepends = r-miniui
-	optdepends = r-rsconnect>=0.4.3
-	optdepends = r-servr>=0.13
+	optdepends = r-rsconnect
+	optdepends = r-rstudioapi
+	optdepends = r-servr
 	optdepends = r-shiny
+	optdepends = r-testit
+	optdepends = r-testthat
 	optdepends = r-tibble
-	optdepends = r-testit>=0.9
 	optdepends = r-tufte
-	optdepends = r-xml2
 	optdepends = r-webshot
-	optdepends = r-testthat>=3.1.0
-	optdepends = r-withr>=2.3.0
-	source = https://cran.microsoft.com/snapshot/2022-06-25/src/contrib/bookdown_0.27.tar.gz
-	sha512sums = 1f65c8cd113cf9d5c1f53173e15576024457be890efcb809d3e84406a653c55b12f2c7364ca732f722a83b2948acec10755898ed5d38c8f2d7b371d594ece3ea
+	optdepends = r-withr
+	optdepends = r-xml2
+	source = https://cran.r-project.org/src/contrib/bookdown_0.27.tar.gz
+	sha256sums = 2e724abbe63fdceb74fc4ac59fcf1dcaac5f768617f6fbeb752df401e1899f23
 
 pkgname = r-bookdown
