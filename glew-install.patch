@@ -1,0 +1,65 @@
+diff --git a/Makefile b/Makefile
+index 9a6b9ef..4a02f59 100644
+--- a/Makefile
++++ b/Makefile
+@@ -120,7 +120,7 @@ ifneq ($(STRIP),)
+ endif
+ 
+ $(LIB.SHARED.DIR)/$(LIB.SHARED): $(LIB.SOBJS)
+-	$(LD) $(LDFLAGS.SO) -o $@ $^ $(LIB.LDFLAGS) $(LIB.LIBS)
++	$(LD) $(LDFLAGS.SO) $(LDFLAGS) -o $@ $^ $(LIB.LDFLAGS) $(LIB.LIBS)
+ ifneq ($(LN),)
+ 	$(LN) $(LIB.SHARED) $(LIB.SHARED.DIR)/$(LIB.SONAME)
+ 	$(LN) $(LIB.SHARED) $(LIB.SHARED.DIR)/$(LIB.DEVLNK)
+@@ -131,11 +131,11 @@ endif
+ 
+ tmp/$(SYSTEM)/default/static/glew.o: src/glew.c include/GL/glew.h include/GL/wglew.h include/GL/glxew.h
+ 	@mkdir -p $(dir $@)
+-	$(CC) -DGLEW_NO_GLU -DGLEW_STATIC $(CFLAGS) $(CFLAGS.SO) -o $@ -c $<
++	$(CC) -DGLEW_NO_GLU -DGLEW_STATIC $(CFLAGS) $(CFLAGS.SO) $(LDFLAGS) -o $@ -c $<
+ 
+ tmp/$(SYSTEM)/default/shared/glew.o: src/glew.c include/GL/glew.h include/GL/wglew.h include/GL/glxew.h
+ 	@mkdir -p $(dir $@)
+-	$(CC) -DGLEW_NO_GLU -DGLEW_BUILD $(CFLAGS) $(CFLAGS.SO) -o $@ -c $<
++	$(CC) -DGLEW_NO_GLU -DGLEW_BUILD $(CFLAGS) $(CFLAGS.SO) $(LDFLAGS) -o $@ -c $<
+ 
+ # Force re-write of glew.pc, GLEW_DEST can vary
+ 
+@@ -178,25 +178,25 @@ endif
+ 
+ bin/$(GLEWINFO.BIN): $(GLEWINFO.BIN.OBJ) $(LIB.SHARED.DIR)/$(LIB.SHARED)
+ 	@mkdir -p $(dir $@)
+-	$(CC) $(CFLAGS) -o $@ $(GLEWINFO.BIN.OBJ) $(BIN.LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(GLEWINFO.BIN.OBJ) $(BIN.LIBS)
+ ifneq ($(STRIP),)
+ 	$(STRIP) -x $@
+ endif
+ 
+ bin/$(VISUALINFO.BIN): $(VISUALINFO.BIN.OBJ) $(LIB.SHARED.DIR)/$(LIB.SHARED)
+ 	@mkdir -p $(dir $@)
+-	$(CC) $(CFLAGS) -o $@ $(VISUALINFO.BIN.OBJ) $(BIN.LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(VISUALINFO.BIN.OBJ) $(BIN.LIBS)
+ ifneq ($(STRIP),)
+ 	$(STRIP) -x $@
+ endif
+ 
+ $(GLEWINFO.BIN.OBJ): $(GLEWINFO.BIN.SRC) include/GL/glew.h include/GL/wglew.h include/GL/glxew.h
+ 	@mkdir -p $(dir $@)
+-	$(CC) -DGLEW_NO_GLU $(CFLAGS) $(CFLAGS.SO) -o $@ -c $<
++	$(CC) -DGLEW_NO_GLU $(CFLAGS) $(CFLAGS.SO) $(LDFLAGS) -o $@ -c $<
+ 
+ $(VISUALINFO.BIN.OBJ): $(VISUALINFO.BIN.SRC) include/GL/glew.h include/GL/wglew.h include/GL/glxew.h
+ 	@mkdir -p $(dir $@)
+-	$(CC) -DGLEW_NO_GLU $(CFLAGS) $(CFLAGS.SO) -o $@ -c $<
++	$(CC) -DGLEW_NO_GLU $(CFLAGS) $(CFLAGS.SO) $(LDFLAGS) -o $@ -c $<
+ 
+ # Install targets
+ 
+@@ -243,6 +243,7 @@ install.pkgconfig: glew.pc
+ 	$(INSTALL) -m 0644 glew.pc "$(DESTDIR)$(PKGDIR)/"
+ 
+ uninstall:
++	$(RM) "$(DESTDIR)$(INCDIR)/eglew.h"
+ 	$(RM) "$(DESTDIR)$(INCDIR)/wglew.h"
+ 	$(RM) "$(DESTDIR)$(INCDIR)/glew.h"
+ 	$(RM) "$(DESTDIR)$(INCDIR)/glxew.h"
