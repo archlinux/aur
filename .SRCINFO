@@ -11,7 +11,7 @@ pkgbase = c3c-git
 	makedepends = llvm>=12
 	provides = c3c
 	conflicts = c3c
-	source = git+https://github.com/c3lang/c3c.git
-	md5sums = SKIP
+	source = https://github.com/c3lang/c3c.git
+	md5sums = a1f44ac4eeb1508cd03fa1e30ddbe260
 
 pkgname = c3c-git

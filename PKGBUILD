@@ -7,12 +7,12 @@ pkgrel=1
 pkgdesc="C3 is an evolution of C enabling the same paradigms and retaining the same syntax as far as possible."
 arch=(x86_64)
 url="https://github.com/c3lang/c3c.git"
-source=("git+https://github.com/c3lang/c3c.git")
+source=("https://github.com/c3lang/c3c.git")
 license=('LGPL3' 'MIT')
 makedepends=(git cmake 'llvm>=12')
 provides=(c3c)
 conflicts=(c3c)
-md5sums=('SKIP')
+md5sums=('a1f44ac4eeb1508cd03fa1e30ddbe260')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
