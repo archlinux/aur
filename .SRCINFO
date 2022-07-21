@@ -1,0 +1,19 @@
+pkgbase = commander
+	pkgdesc = Microservice for executing shell commands via API requests
+	pkgver = 0.2.0
+	pkgrel = 2
+	url = https://github.com/smarthome-go/commander
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL2
+	makedepends = cargo
+	depends = gcc-libs
+	source = commander-0.2.0.tar.gz::https://github.com/smarthome-go/commander/archive/refs/tags/v0.2.0.tar.gz
+	b2sums = ddf4f04b4dd2206e6eab906a29997bad10c0682fb5fa70585f255af7ac17482cc4369bb4a53cb0a47fd2ff4a07b151df7d70549d623caa06c1c188360a5ea6a9
+
+pkgname = commander
