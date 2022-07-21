@@ -3,13 +3,12 @@ pkgbase = r-gld
 	pkgver = 2.6.5
 	pkgrel = 1
 	url = https://cran.r-project.org/package=gld
-	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = r
 	depends = r-e1071
 	depends = r-lmom
-	source = https://cran.microsoft.com/snapshot/2022-06-30/src/contrib/gld_2.6.5.tar.gz
+	source = https://cran.r-project.org/src/contrib/gld_2.6.5.tar.gz
 	sha256sums = 8294f7c033147aa9b559b152ec9d46d380234527d1ab03adbe46b80d5da68ee9
 
 pkgname = r-gld
