@@ -1,59 +1,42 @@
-# Maintainer: Robert Greener <me@r0bert.dev>
+# system requirements: Python (>= 2.7.0)
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
-_cranname=reticulate
-_cranver=1.25
-pkgname=r-${_cranname,,}
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
-pkgdesc="Interface to 'Python' modules, classes, and functions"
-arch=(any)
-url="https://cran.r-project.org/package=${_cranname}"
-license=(Apache)
+_pkgname=reticulate
+_pkgver=1.25
+pkgname=r-${_pkgname,,}
+pkgver=1.25
+pkgrel=3
+pkgdesc="Interface to 'Python'"
+arch=('x86_64')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('Apache')
 depends=(
-	"python>=2.7.0"
-	"r>=3.0"
-	"r-matrix"
-	"r-rcpp>=0.12.7"
-	"r-rcpptoml"
-	"r-here"
-	"r-jsonlite"
-	"r-png"
-	"r-rappdirs"
-	"r-withr"
-)
-checkdepends=(
-	r-testthat
-	python-numpy
-	python-pandas
-	python-pipenv
-	python-poetry
-	python-scipy
-	python-matplotlib
-	python-virtualenv
-	python-plotly
+  r
+  r-here
+  r-jsonlite
+  r-png
+  r-rappdirs
+  r-rcpp
+  r-withr
+  python
+  r-rcpptoml
 )
 optdepends=(
-	"r-callr"
-	"r-knitr"
-	"r-rlang"
-	"r-rmarkdown"
-	"r-testthat"
+  r-callr
+  r-knitr
+  r-rlang
+  r-rmarkdown
+  r-testthat
 )
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha512sums=("0bed6f67b67dc796a89cf82215fd4b37c6d5dc4999c5c61c34b66657a7c3afb70c880f1d27c8f458102410f797a278c777440e8a134fb073e0d70bb01c7e5478")
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('2125af9e75939c3b7c0dc74f28f42606e816d63aa1143baf631c318ff5ff3a2c')
 
 build() {
-	mkdir -p build
-	R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build"
-}
-
-check() {
-	cd "${_cranname}/tests"
-	R_LIBS="${srcdir}/build" NOT_CRAN=true Rscript --vanilla testthat.R
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
 package() {
   install -dm0755 "${pkgdir}/usr/lib/R/library"
-
-  cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
 }
+# vim:set ts=2 sw=2 et:
