@@ -1,0 +1,31 @@
+pkgbase = r-downlit
+	pkgdesc = Syntax Highlighting and Automatic Linking
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=downlit
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-brio
+	depends = r-desc
+	depends = r-digest
+	depends = r-evaluate
+	depends = r-fansi
+	depends = r-memoise
+	depends = r-rlang
+	depends = r-vctrs
+	depends = r-withr
+	depends = r-yaml
+	optdepends = r-covr
+	optdepends = r-htmltools
+	optdepends = r-jsonlite
+	optdepends = r-mass
+	optdepends = r-massspecwavelet
+	optdepends = r-pkgload
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-xml2
+	source = https://cran.r-project.org/src/contrib/downlit_0.4.2.tar.gz
+	sha256sums = 33dff66909104d1a5ba8e57b1288986e82b61fd5e91dce0cd358d53724b37e3c
+
+pkgname = r-downlit
