@@ -1,15 +1,19 @@
 pkgbase = r-rgeos
-	pkgdesc = Interface to Geometry Engine - Open Source (GEOS) using the C-API for topology operations on geometries.
+	pkgdesc = Interface to Geometry Engine - Open Source ('GEOS')
 	pkgver = 0.5.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=rgeos
 	arch = x86_64
 	license = GPL
 	depends = r
-	depends = r-cli
+	depends = r-sp
 	depends = geos
-	replaces = r-geos
-	source = https://cran.microsoft.com/snapshot/2022-06-24/src/contrib/rgeos_0.5-9.tar.gz
+	optdepends = r-maps
+	optdepends = r-maptools
+	optdepends = r-rgdal
+	optdepends = r-testthat
+	optdepends = r-xml
+	source = https://cran.r-project.org/src/contrib/rgeos_0.5-9.tar.gz
 	sha256sums = ab90cbfe6a3680a9d2eed5e655064a075adc66788e304468969ab7cc2df0e3d4
 
 pkgname = r-rgeos
