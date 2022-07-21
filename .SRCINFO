@@ -1,13 +1,12 @@
 pkgbase = r-ellipsis
 	pkgdesc = Tools for Working with ...
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 5
 	url = https://cran.r-project.org/package=ellipsis
-	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = r>=3.2
-	depends = r-rlang>=0.3.0
+	depends = r
+	depends = r-rlang
 	optdepends = r-covr
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/ellipsis_0.3.2.tar.gz
