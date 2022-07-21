@@ -2,7 +2,7 @@
 
 pkgname=ninjam-server-git
 _srcpkgname=ninjam
-pkgver=0.080.r5.44c21b9
+pkgver=0.080.r344.44c21b9
 pkgrel=1
 pkgdesc='Make real music together via the Internet.'
 arch=('i686' 'x86_64')
