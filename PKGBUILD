@@ -3,7 +3,7 @@
 _pkgname="gimmeasearx"
 pkgname="$_pkgname-git"
 pkgver="2.0.0"
-pkgrel=2
+pkgrel=3
 pkgdesc="Find a random searx instance"
 arch=("x86_64")
 url="https://github.com/demostanis/gimmeasearx"
@@ -39,6 +39,7 @@ exec /var/lib/gimmeasearx/gimmeasearx
 EOF
 	install -Dm 755 $_pkgname/$_pkgname "$pkgdir"/var/lib/$_pkgname/$_pkgname
 	install -t "$pkgdir"/var/lib/$_pkgname/templates -Dm 644 $_pkgname/templates/*
+	install -Dm 644 $_pkgname/opensearch.xml "$pkgdir"/var/lib/$_pkgname/opensearch.xml 
 }
 
 # vim:set ft=sh:
