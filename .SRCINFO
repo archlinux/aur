@@ -5,6 +5,7 @@ pkgbase = kmscon-patched-git
 	url = https://github.com/Aetf/kmscon
 	arch = x86_64
 	arch = armv7h
+	arch = aarch64
 	license = MIT
 	makedepends = libxslt
 	makedepends = docbook-xsl
