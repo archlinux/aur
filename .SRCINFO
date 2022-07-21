@@ -1,15 +1,14 @@
 pkgbase = r-minqa
 	pkgdesc = Derivative-free optimization algorithms by quadratic approximation
 	pkgver = 1.2.4
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=minqa
-	arch = i686
 	arch = x86_64
-	license = GPL2
-	makedepends = make
+	license = GPL
 	makedepends = gcc-fortran
 	depends = r
-	depends = r-rcpp>=0.9.10
+	depends = r-rcpp
+	depends = make
 	source = https://cran.r-project.org/src/contrib/minqa_1.2.4.tar.gz
 	sha256sums = cfa193a4a9c55cb08f3faf4ab09c11b70412523767f19894e4eafc6e94cccd0c
 
