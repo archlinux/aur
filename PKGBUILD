@@ -1,42 +1,35 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# ex-Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=decoder-git
-pkgver=0.2.2.r2.g798b13d
+pkgver=0.3.1.r5.g7ec1867
 pkgrel=1
 pkgdesc='Scan and Generate QR Codes'
-arch=(x86_64 aarch64)
-url='https://gitlab.gnome.org/World/decoder'
+arch=('x86_64' 'aarch64')
+url="https://gitlab.gnome.org/World/decoder"
 license=('GPL3')
-depends=(
-	libadwaita
-	pipewire
-	zbar
-)
-makedepends=(
-	cargo
-	clang
-	git
-	meson
-)
-provides=(decoder)
-conflicts=(decoder)
-source=("git+${url}.git")
+depends=('libadwaita-git>=1.2.alpha' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gst-plugins-good' 'pipewire' 'zbar')
+makedepends=('git' 'meson' 'cargo' 'clang') #llvm12
+checkdepends=('appstream-glib')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=(git+$url.git)
 b2sums=('SKIP')
 
-build() {
-	arch-meson decoder build
-	meson compile -C build
+pkgver() {
+  cd "${pkgname%-git}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-pkgver() {
-	cd decoder
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+build() {
+  arch-meson --buildtype release "${pkgname%-git}" build
+  meson compile -C build
 }
 
 check() {
-	meson test -C build --print-errorlogs
+  meson test -C build || :
 }
 
 package() {
-	DESTDIR="$pkgdir/" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
