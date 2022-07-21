@@ -1,30 +1,46 @@
-# Maintainer: Robert Greener <me@r0bert.dev>
-# Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
-_cranname=ggpp
-_cranver=0.4.4
-pkgname=r-${_cranname,,}
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
-pkgdesc="Extensions to 'ggplot2' respecting the grammar of graphics paradigm."
-arch=(any)
-url="https://cran.r-project.org/package=${_cranname}"
-license=(GPL)
-depends=('r>=3.6' 'r-ggplot2>=3.3.2' r-rlang r-magrittr r-glue r-gridextra r-scales r-tibble r-dplyr r-xts r-zoo r-polynom r-lubridate r-stringr)
-optdepends=(r-knitr r-rmarkdown r-gginnards r-ggrepel r-magick)
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha512sums=('bb124c49154c7768c66ab2d49f3fa4d28b365ed2814d21ed26700fbe91462e5950a4b3e4232d6abf51f9607efd7b42e22e2eea2f29825050afad6f34d5a86509')
+_pkgname=ggpp
+_pkgver=0.4.4
+pkgname=r-${_pkgname,,}
+pkgver=0.4.4
+pkgrel=3
+pkgdesc="Grammar Extensions to 'ggplot2'"
+arch=('any')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('GPL')
+depends=(
+  r
+  r-dplyr
+  r-ggplot2
+  r-glue
+  r-gridextra
+  r-lubridate
+  r-magrittr
+  r-polynom
+  r-rlang
+  r-scales
+  r-stringr
+  r-tibble
+  r-xts
+  r-zoo
+)
+optdepends=(
+  r-gginnards
+  r-ggrepel
+  r-knitr
+  r-magick
+  r-rmarkdown
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('616eba2c452fc5063ac0e5181cc71d61e28a9070eca420207abe6c25fb678a71')
 
 build() {
-  cd "${srcdir}"
-
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-  cd "${srcdir}"
-
   install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
 }
-
+# vim:set ts=2 sw=2 et:
