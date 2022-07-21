@@ -12,7 +12,7 @@ pkgbase = gnunet-webui-git
 	provides = gnunet-webui
 	conflicts = gnunet-webui
 	options = !strip
-	source = git+https://gnunet.org/git/gnunet-webui.git
+	source = git+https://git.gnunet.org/git/gnunet-webui.git
 	source = gnunet-webui.sh
 	source = gnunet-webui.service
 	md5sums = SKIP
@@ -20,4 +20,3 @@ pkgbase = gnunet-webui-git
 	md5sums = 7da568705f440c4a3022bf5e18d31349
 
 pkgname = gnunet-webui-git
-

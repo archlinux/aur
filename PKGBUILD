@@ -13,7 +13,7 @@ conflicts=("${_appname}")
 depends=('gnunet' 'nodejs')
 makedepends=('npm')
 options=('!strip')
-source=("git+https://gnunet.org/git/${_appname}.git"
+source=("git+https://git.gnunet.org/git/${_appname}.git"
 	"${_appname}.sh"
 	"${_appname}.service")
 md5sums=('SKIP'
