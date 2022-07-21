@@ -1,12 +1,12 @@
 pkgbase = pcb-rnd
 	pkgdesc = free/open source, flexible, modular Printed Circuit Board editor
 	pkgver = 3.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.repo.hu/projects/pcb-rnd/
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	depends = librnd3
+	depends = librnd3>=3.1.0
 	depends = libxml2
 	optdepends = gd: gd based exports and pixmap imports (png, gif, jpeg)
 	optdepends = freetype2: import_ttf plugin
