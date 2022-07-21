@@ -4,19 +4,18 @@ pkgbase = r-psych
 	pkgrel = 1
 	url = https://cran.r-project.org/package=psych
 	arch = any
-	license = GPL2
-	license = GPL3
+	license = GPL
 	depends = r
 	depends = r-mnormt
-	optdepends = r-psychtools
 	optdepends = r-gparotation
-	optdepends = r-lavaan
-	optdepends = r-lme4
-	optdepends = r-rcsdp
 	optdepends = r-graph
 	optdepends = r-knitr
+	optdepends = r-lavaan
+	optdepends = r-lme4
+	optdepends = r-psychtools
+	optdepends = r-rcsdp
 	optdepends = r-rgraphviz
 	source = https://cran.r-project.org/src/contrib/psych_2.2.5.tar.gz
-	sha512sums = a804bad30bd08aa73ffc24c03d3c68fa8b60595a6ecc8b10e3652d0d7a71509943617b49ee038c7c618528f34333cb2bcbf6b88f6a783655c48aad87a0b05770
+	sha256sums = dcc3f9b30ed44dfd1de0366295a308e0b52959eb7ac9cb3bc3f32dc5b15fc321
 
 pkgname = r-psych
