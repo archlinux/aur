@@ -3,20 +3,19 @@ pkgbase = r-cnorm
 	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=cNORM
-	arch = x86_64
-	license = AGPL3
-	depends = r>=4.0.0
-	depends = r-lattice>=0.20
-	depends = r-leaps>=3.0
-	depends = r-latticeextra>=0.6
-	optdepends = r-knitr
-	optdepends = r-shiny
-	optdepends = r-shinycssloaders
+	arch = any
+	license = AGPL
+	depends = r
+	depends = r-latticeextra
+	depends = r-leaps
 	optdepends = r-foreign
+	optdepends = r-knitr
 	optdepends = r-readxl
 	optdepends = r-rmarkdown
+	optdepends = r-shiny
+	optdepends = r-shinycssloaders
 	optdepends = r-testthat
-	source = https://cran.microsoft.com/snapshot/2022-06-25/src/contrib/cNORM_3.0.2.tar.gz
+	source = https://cran.r-project.org/src/contrib/cNORM_3.0.2.tar.gz
 	sha256sums = 31231a0612915ee5171676b28273f82acdc8914bd6385fc9e7b17f930e66c91a
 
 pkgname = r-cnorm
