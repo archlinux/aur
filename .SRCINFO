@@ -1,14 +1,14 @@
 pkgbase = jdk-lts
 	pkgdesc = Oracle Java
-	pkgver = 17.0.3.1
+	pkgver = 17.0.4
 	pkgrel = 1
 	url = https://www.oracle.com/java/
 	arch = x86_64
 	license = custom
 	makedepends = python-html2text
-	noextract = jdk-17.0.3.1_doc-all.zip
-	source = https://download.oracle.com/java/17/archive/jdk-17.0.3.1_linux-x64_bin.tar.gz
-	source = https://download.oracle.com/otn_software/java/jdk/17.0.3.1+2/5562c970298847549292823b2b1a9682/jdk-17.0.3.1_doc-all.zip
+	noextract = jdk-17.0.4_doc-all.zip
+	source = https://download.oracle.com/java/17/archive/jdk-17.0.4_linux-x64_bin.tar.gz
+	source = https://download.oracle.com/otn_software/java/jdk/17.0.4+11/6cea4ab7f4434375a7d3c6a9b7805073/jdk-17.0.4_doc-all.zip
 	source = jdk-17_doc-license.html::https://download.oracle.com/otndocs/jcp/java_se-17-final-spec/license.html
 	source = java.desktop
 	source = jconsole.desktop
@@ -16,8 +16,8 @@ pkgbase = jdk-lts
 	source = java_16.png
 	source = java_48.png
 	source = LICENSE
-	sha256sums = 11b4465229b77fa84416a14b5e7023b6d2cf03cda5eb1557d57aea0247fff643
-	sha256sums = f1466f75bd22bcb6b6905224102b0f901ed29c39de5139f13cfe240e73d760c4
+	sha256sums = 50edb026947d5b2cb799fbc550ab62d3bec687691bade021139da4f1d9f1c21a
+	sha256sums = 6648337de00ace10f0993574ebb9645f216e47eb28e926549cd8b32ef9bd64b3
 	sha256sums = ab50940bda40a9e8935d1a8f002debda0fdd0b3e2bcc0319827ec19acd8b34f3
 	sha256sums = ee891aca4c92f6485218b17273cf00ec0ac4df4915daa461271006081450aeae
 	sha256sums = 7046b820d138317dec4601f6159f2837b8ff8c6a6628e3d956454b20c9dea8fe
@@ -42,10 +42,10 @@ pkgname = jre-lts
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=17
 	provides = java-runtime-jdk17
-	provides = jre17-jdk=17.0.3.1-1
+	provides = jre17-jdk=17.0.4-1
 	provides = java-runtime-headless=17
 	provides = java-runtime-headless-jdk=17
-	provides = jre17-jdk-headless=17.0.3.1-1
+	provides = jre17-jdk-headless=17.0.4-1
 	backup = etc/java-jdk-lts/management/jmxremote.access
 	backup = etc/java-jdk-lts/management/jmxremote.password.template
 	backup = etc/java-jdk-lts/management/management.properties
@@ -65,12 +65,12 @@ pkgname = jdk-lts
 	pkgdesc = Oracle Java Development Kit (LTS release)
 	install = jdk.install
 	depends = java-environment-common
-	depends = jre-lts=17.0.3.1-1
+	depends = jre-lts=17.0.4-1
 	depends = zlib
 	depends = hicolor-icon-theme
 	provides = java-environment=17
 	provides = java-environment-jdk=17
-	provides = jdk17-jdk=17.0.3.1-1
+	provides = jdk17-jdk=17.0.4-1
 
 pkgname = jdk-lts-doc
 	pkgdesc = Oracle Java documentation (LTS release)
