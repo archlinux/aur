@@ -14,7 +14,7 @@ pkgname=(pipewire-common-git
          pipewire-common-zeroconf-git
          gst-plugin-pipewire-common-git
          )
-pkgver=0.3.51.r12.g8358f020
+pkgver=0.3.56.r23.g38b3d027
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -23,7 +23,7 @@ arch=(x86_64)
 makedepends=(git meson doxygen python-docutils graphviz ncurses
              readline libsndfile alsa-lib dbus rtkit libpulse
              webrtc-audio-processing libusb bluez-libs
-             sbc libldac libfreeaptx libfdk-aac
+             sbc libldac libfreeaptx libfdk-aac opus
              lilv libx11 libxfixes libcanberra
              avahi openssl
              gst-plugins-base-libs
@@ -85,7 +85,7 @@ package_pipewire-common-git() {
            libsndfile.so libudev.so libasound.so libsystemd.so
            libwebrtc_audio_processing.so libusb-1.0.so
            libbluetooth.so libsbc.so libldacBT_{enc,abr}.so
-           libfreeaptx.so libfdk-aac.so
+           libfreeaptx.so libfdk-aac.so libopus.so
            liblilv-0.so)
   optdepends=('pipewire-session-manager: Session manager'
               'pipewire-common-docs-git: Documentation'
