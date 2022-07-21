@@ -1,15 +1,15 @@
 pkgbase = r-progress
 	pkgdesc = Terminal Progress Bars
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 5
 	url = https://cran.r-project.org/package=progress
 	arch = any
 	license = MIT
 	depends = r
+	depends = r-crayon
 	depends = r-hms
 	depends = r-prettyunits
 	depends = r-r6
-	depends = r-crayon
 	optdepends = r-rcpp
 	optdepends = r-testthat
 	optdepends = r-withr
