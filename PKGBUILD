@@ -4,8 +4,8 @@
 
 _pkgname=losslesscut
 pkgname=losslesscut-bin
-pkgver=3.45.0
-pkgrel=2
+pkgver=3.46.2
+pkgrel=1
 pkgdesc="Crossplatform GUI tool for lossless trimming/cutting of video/audio files"
 arch=('x86_64')
 url="https://github.com/mifi/lossless-cut"
@@ -15,7 +15,7 @@ source_x86_64=("$pkgname-$pkgver.tar.bz2::https://github.com/mifi/lossless-cut/r
                "losslesscut.desktop"
                "LICENSE"
                "https://raw.githubusercontent.com/mifi/lossless-cut/master/src/icon.svg")
-sha256sums_x86_64=('e1b75fec0c76dac0acc23c95453d7d76e7c74fa9985e7df87efbcb361fb1da5a'
+sha256sums_x86_64=('4009eb710a17def440741df34252d1531ed0ba99b42986b03d17f2bcfac3a491'
                    '87827ee65955d49c40327ba958b15d054cc107cf8e56de7cf1f93d4bc2b6fca5'
                    '48affed7162fc2e76f1cd47b50355181b869b4025ff04c2a53b03854e329dca0'
                    'd3d3da3f403ce1b9f846ae2a38a8fe9938fc458024352a9741b59a920eefacf9')
