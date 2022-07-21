@@ -1,7 +1,7 @@
 pkgbase = openpnp
 	pkgdesc = Open Source SMT Pick and Place Hardware and Software
 	pkgver = 2022_06_19_21_15_55.af43024
-	pkgrel = 2
+	pkgrel = 3
 	url = https://openpnp.org/
 	arch = arm64
 	arch = x86_64
