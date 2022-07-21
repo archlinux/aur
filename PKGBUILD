@@ -4,7 +4,7 @@
 _pkgname=rcompanion
 _pkgver=2.4.16
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=2.4.16
 pkgrel=1
 pkgdesc='Functions to Support Extension Education Program Evaluation'
 arch=('any')
