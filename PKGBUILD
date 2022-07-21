@@ -1,7 +1,7 @@
 # Maintainer: Campbell Jones <dev at serebit dot com>
 
 pkgname=budgie-screensaver-git
-pkgver=v5.0.2.r1.g57dfb33
+pkgver=5.0.2.r1.g57dfb33
 pkgrel=1
 pkgdesc="Budgie's fork of GNOME's legacy screensaver - latest git"
 arch=('x86_64')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --tags --long | sed 's/\([^-]*-g\)/r\1/; s/-/./g; s/^v//g'
 }
 
 build() {
