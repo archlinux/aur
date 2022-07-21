@@ -1,0 +1,121 @@
+From bf5c975cc5585a9170d61e83d5de2982e3d0a765 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Tue, 5 Jul 2022 10:33:19 -0600
+Subject: [PATCH 5/6] Linux-5.19: Remove flags from aops->write_begin
+
+The Linux 5.19 commits:
+
+ fs: Remove aop flags parameter from grab_cache_page_write_begin()
+  (b7446e7c)
+ fs: Remove flags parameter from aops->write_begin (9d6b0cd7)
+
+removed the flags parameter from the address space operations
+'write_begin' as well as removing the flags parameter from the Linux
+function 'grab_cache_page_write_begin'.
+
+Add an autoconf test to see if grab_cache_page_write_begin takes 2 or
+3 parameters. Use this as a test to determine if the address space
+operations 'write_begin' takes a flags parameter.
+
+Create a version of afs_linux_write_begin that does not take a flags
+parameter, which also calls grab_cache_page_write_begin without flags.
+
+Change-Id: Ib98c615e6964202748c78037c9ecac459fc3372b
+Reviewed-on: https://gerrit.openafs.org/15041
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 52d8df218ff27c139ede221ec4decf593610fc47)
+---
+ src/afs/LINUX/osi_compat.h   |  4 +++-
+ src/afs/LINUX/osi_vnodeops.c | 30 +++++++++++++++++++++++++++++-
+ src/cf/linux-kernel-func.m4  |  7 ++++++-
+ 3 files changed, 38 insertions(+), 3 deletions(-)
+
+diff --git a/src/afs/LINUX/osi_compat.h b/src/afs/LINUX/osi_compat.h
+index 53a079b67..9a080da31 100644
+--- a/src/afs/LINUX/osi_compat.h
++++ b/src/afs/LINUX/osi_compat.h
+@@ -138,7 +138,9 @@ hlist_unhashed(const struct hlist_node *h) {
+ #define AOP_WRITEPAGE_ACTIVATE WRITEPAGE_ACTIVATE
+ #endif
+ 
+-#if defined(STRUCT_ADDRESS_SPACE_OPERATIONS_HAS_WRITE_BEGIN) && !defined(HAVE_LINUX_GRAB_CACHE_PAGE_WRITE_BEGIN)
++#if defined(STRUCT_ADDRESS_SPACE_OPERATIONS_HAS_WRITE_BEGIN) && \
++    !defined(HAVE_LINUX_GRAB_CACHE_PAGE_WRITE_BEGIN_WITHFLAGS) && \
++    !defined(HAVE_LINUX_GRAB_CACHE_PAGE_WRITE_BEGIN_NOFLAGS)
+ static inline struct page *
+ grab_cache_page_write_begin(struct address_space *mapping, pgoff_t index,
+ 			    unsigned int flags) {
+diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
+index 04f13a1b1..881d38e06 100644
+--- a/src/afs/LINUX/osi_vnodeops.c
++++ b/src/afs/LINUX/osi_vnodeops.c
+@@ -3480,6 +3480,33 @@ afs_linux_write_end(struct file *file, struct address_space *mapping,
+     return code;
+ }
+ 
++# if defined(HAVE_LINUX_GRAB_CACHE_PAGE_WRITE_BEGIN_NOFLAGS)
++static int
++afs_linux_write_begin(struct file *file, struct address_space *mapping,
++		      loff_t pos, unsigned len,
++		      struct page **pagep, void **fsdata)
++{
++    struct page *page;
++    pgoff_t index = pos >> PAGE_SHIFT;
++    unsigned int from = pos & (PAGE_SIZE - 1);
++    int code;
++
++    page = grab_cache_page_write_begin(mapping, index);
++    if (!page) {
++	return -ENOMEM;
++    }
++
++    *pagep = page;
++
++    code = afs_linux_prepare_write(file, page, from, from + len);
++    if (code) {
++	unlock_page(page);
++	put_page(page);
++    }
++
++    return code;
++}
++# else
+ static int
+ afs_linux_write_begin(struct file *file, struct address_space *mapping,
+                                 loff_t pos, unsigned len, unsigned flags,
+@@ -3505,7 +3532,8 @@ afs_linux_write_begin(struct file *file, struct address_space *mapping,
+ 
+     return code;
+ }
+-#endif
++# endif /* HAVE_LINUX_GRAB_CACHE_PAGE_WRITE_BEGIN_NOFLAGS */
++#endif /* STRUCT_ADDRESS_SPACE_OPERATIONS_HAS_WRITE_BEGIN */
+ 
+ #ifndef STRUCT_DENTRY_OPERATIONS_HAS_D_AUTOMOUNT
+ static void *
+diff --git a/src/cf/linux-kernel-func.m4 b/src/cf/linux-kernel-func.m4
+index cd4afe914..27a1d4141 100644
+--- a/src/cf/linux-kernel-func.m4
++++ b/src/cf/linux-kernel-func.m4
+@@ -59,9 +59,14 @@ AC_CHECK_LINUX_FUNC([find_task_by_pid],
+ AC_CHECK_LINUX_FUNC([generic_file_aio_read],
+                     [#include <linux/fs.h>],
+                     [generic_file_aio_read(NULL,NULL,0,0);])
+-AC_CHECK_LINUX_FUNC([grab_cache_page_write_begin],
++dnl - linux 5.19 removed the flags parameter, need to test
++dnl - with and without the flags parameter
++AC_CHECK_LINUX_FUNC([grab_cache_page_write_begin_withflags],
+                     [#include <linux/pagemap.h>],
+                     [grab_cache_page_write_begin(NULL, 0, 0);])
++AC_CHECK_LINUX_FUNC([grab_cache_page_write_begin_noflags],
++                    [#include <linux/pagemap.h>],
++                    [grab_cache_page_write_begin(NULL, 0);])
+ AC_CHECK_LINUX_FUNC([hlist_unhashed],
+                     [#include <linux/list.h>],
+                     [hlist_unhashed(0);])
+-- 
+2.37.1
+
