@@ -1,14 +1,13 @@
 pkgbase = r-purrr
 	pkgdesc = Functional Programming Tools
 	pkgver = 0.3.4
-	pkgrel = 1
+	pkgrel = 5
 	url = https://cran.r-project.org/package=purrr
-	arch = i686
 	arch = x86_64
-	license = GPL3
-	depends = r>=3.2
-	depends = r-magrittr>=1.5
-	depends = r-rlang>=0.3.1
+	license = GPL
+	depends = r
+	depends = r-magrittr
+	depends = r-rlang
 	optdepends = r-covr
 	optdepends = r-crayon
 	optdepends = r-dplyr
