@@ -1,14 +1,14 @@
 pkgbase = jdk
 	pkgdesc = Oracle Java
-	pkgver = 18.0.1.1
+	pkgver = 18.0.2
 	pkgrel = 1
 	url = https://www.oracle.com/java/
 	arch = x86_64
 	license = custom
 	makedepends = python-html2text
-	noextract = jdk-18.0.1.1_doc-all.zip
-	source = https://download.oracle.com/java/18/archive/jdk-18.0.1.1_linux-x64_bin.tar.gz
-	source = https://download.oracle.com/otn_software/java/jdk/18.0.1.1+2/65ae32619e2f40f3a9af3af1851d6e19/jdk-18.0.1.1_doc-all.zip
+	noextract = jdk-18.0.2_doc-all.zip
+	source = https://download.oracle.com/java/18/archive/jdk-18.0.2_linux-x64_bin.tar.gz
+	source = https://download.oracle.com/otn_software/java/jdk/18.0.2+9/f6ad4b4450fd4d298113270ec84f30ee/jdk-18.0.2_doc-all.zip
 	source = jdk-18_doc-license.html::https://download.oracle.com/otndocs/jcp/java_se-18-final-spec/license.html
 	source = java.desktop
 	source = jconsole.desktop
@@ -16,8 +16,8 @@ pkgbase = jdk
 	source = java_16.png
 	source = java_48.png
 	source = LICENSE
-	sha256sums = dbabd3f726775a63329254b001b4190c082206e38323950b2db478606f1d65fa
-	sha256sums = 2cd4425eeeaae67630603f3d1c2420674a14acbccc9cd5cae9308c9c9e0492ef
+	sha256sums = 70ba0921ad5c3f716b29c9e6a7444abbfb8361aefa54c9852e9e4348ce4b61ba
+	sha256sums = 2e47fe855417b2eb7014d8305a1693deed135dcc5597a965367a8b43b65e15dc
 	sha256sums = 08deffce836955e426ea1ebc8ea85862fba39bb7a954af9df1752f8f5fac730f
 	sha256sums = 0275bc0d4620f391d6fafb64ed7d89740b834b8fc810ed82a30a5b0fe7386496
 	sha256sums = 95596dcb0f48677def0d60277ae6577748e6e9eb8d4567ba11ae8579c6cf57b7
@@ -42,10 +42,10 @@ pkgname = jre
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=18
 	provides = java-runtime-jdk18
-	provides = jre18-jdk=18.0.1.1-1
+	provides = jre18-jdk=18.0.2-1
 	provides = java-runtime-headless=18
 	provides = java-runtime-headless-jdk=18
-	provides = jre18-jdk-headless=18.0.1.1-1
+	provides = jre18-jdk-headless=18.0.2-1
 	backup = etc/java-jdk/management/jmxremote.access
 	backup = etc/java-jdk/management/jmxremote.password.template
 	backup = etc/java-jdk/management/management.properties
@@ -65,12 +65,12 @@ pkgname = jdk
 	pkgdesc = Oracle Java Development Kit
 	install = jdk.install
 	depends = java-environment-common
-	depends = jre=18.0.1.1-1
+	depends = jre=18.0.2-1
 	depends = zlib
 	depends = hicolor-icon-theme
 	provides = java-environment=18
 	provides = java-environment-jdk=18
-	provides = jdk18-jdk=18.0.1.1-1
+	provides = jdk18-jdk=18.0.2-1
 
 pkgname = jdk-doc
 	pkgdesc = Oracle Java documentation
