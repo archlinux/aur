@@ -4,9 +4,9 @@
 _jdkname=zulu-15
 pkgname="${_jdkname}-bin"
 _java_ver=15
-_zulu_build="${_java_ver}.40.19-ca"
-pkgver="${_java_ver}.0.7"
-pkgrel=3
+_zulu_build="${_java_ver}.42.15-ca"
+pkgver="${_java_ver}.0.8"
+pkgrel=1
 pkgdesc='Zulu Community builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads.'
 arch=('x86_64')
 url='https://www.azul.com/products/zulu-community/'
@@ -27,7 +27,7 @@ provides=(
 install="$pkgname.install"
 _tarballname="zulu${_zulu_build}-jdk${pkgver}-linux_x64"
 source=("https://cdn.azul.com/zulu/bin/${_tarballname}.tar.gz")
-sha256sums=('9171d0cb812d66d3da94e5c9767a04e0b3d5e67964258b60393ff721b2a79aaf')
+sha256sums=('3c4663f1b18617ae311cabf1bd2c0e7b4509f2ac6c394d42ef9f70321610d48b')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
