@@ -1,6 +1,6 @@
 pkgbase = xorg-server-git
-	pkgver = 21.1.99.1.r177.g9e5a37961
-	pkgrel = 2
+	pkgver = 21.1.99.1.r256.g6907b6ea2
+	pkgrel = 1
 	url = https://xorg.freedesktop.org
 	arch = x86_64
 	groups = xorg
@@ -111,6 +111,7 @@ pkgname = xorg-server-xephyr-git
 pkgname = xorg-server-xnest-git
 	pkgdesc = A nested X server that runs as an X application (git version)
 	depends = libxfont2
+	depends = libunwind
 	depends = libxext
 	depends = pixman
 	depends = xorg-server-common-git

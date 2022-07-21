@@ -14,8 +14,8 @@ pkgname=(
   'xorg-server-xvfb-git'
 )
 _pkgbase='xserver'
-pkgver=21.1.99.1.r177.g9e5a37961
-pkgrel=2
+pkgver=21.1.99.1.r256.g6907b6ea2
+pkgrel=1
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
@@ -30,7 +30,8 @@ makedepends=('xorgproto-git' 'pixman' 'libx11' 'mesa' 'mesa-libgl' 'xtrans'
 _srcurl=git+https://gitlab.freedesktop.org/xorg/xserver.git
 source=($_srcurl
         xvfb-run # with updates from FC master
-        xvfb-run.1)
+        xvfb-run.1
+)
 sha512sums=('SKIP'
             '87c79b4a928e74463f96f58d277558783eac9b8ea6ba00d6bbbb67ad84c4d65b3792d960ea2a70089ae18162e82ae572a49ad36df169c974cc99dbaa51f63eb2'
             'de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22')
@@ -68,7 +69,8 @@ build() {
     -D systemd_logind=true \
     -D suid_wrapper=true \
     -D xkb_dir=/usr/share/X11/xkb \
-    -D xkb_output_dir=/var/lib/xkb
+    -D xkb_output_dir=/var/lib/xkb \
+    -D libunwind=true
 
   # Print config
   meson configure build
@@ -169,7 +171,7 @@ package_xorg-server-xvfb-git() {
 
 package_xorg-server-xnest-git() {
   pkgdesc="A nested X server that runs as an X application (git version)"
-  depends=(libxfont2 libxext pixman xorg-server-common-git nettle libtirpc systemd-libs)
+  depends=(libxfont2 libunwind libxext pixman xorg-server-common-git nettle libtirpc systemd-libs)
   provides=('xorg-server-xnest')
   conflicts=('xorg-server-xnest')
 
