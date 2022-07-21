@@ -1,8 +1,8 @@
 # Maintainer: Leo Mao <leomaoyw at gmail dot com>
 pkgname=python-cupy
 _pkgname=cupy
-pkgver=10.4.0
-_cubver=1.8.0
+pkgver=10.6.0
+_cub_commit=c3cceac115c072fb63df1836ff46d8c60d9eb304
 _jitify_commit=4a37de0be4639f222c6565ebd0654cb922b5180e
 pkgrel=1
 pkgdesc="NumPy-like API accelerated with CUDA"
@@ -14,19 +14,18 @@ depends=('cuda' 'cudnn' 'nccl' 'python-numpy' 'python-fastrlock')
 makedepends=('python' 'python-setuptools' 'cython')
 optdepends=('libcutensor')
 source=("https://github.com/cupy/cupy/archive/v$pkgver.tar.gz"
-        "https://github.com/NVIDIA/cub/archive/$_cubver.tar.gz"
-        "https://github.com/NVIDIA/jitify/archive/$_jitify_commit.zip")
-md5sums=('bf0e4aa964412a66fbd5eae5f7fc5719'
-         '9203ea2499b56782601fddf8a12e9b08'
-         'b4e0a3cee0cae738f505a12f2b7df8d3')
+        "https://github.com/NVIDIA/cub/archive/$_cub_commit.tar.gz"
+        "https://github.com/NVIDIA/jitify/archive/$_jitify_commit.tar.gz")
+md5sums=('63693ad1ca502a8919d72d089e8b216f'
+         'ae6435aef98378a8b323b69f6665df33'
+         '2ad752c0814c2da9909e2dcac0f50401')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
   rmdir cupy/_core/include/cupy/cub
-  ln -srfT "$srcdir/cub-$_cubver" cupy/_core/include/cupy/cub
+  ln -srfT "$srcdir/cub-$_cub_commit" cupy/_core/include/cupy/cub
   rmdir cupy/_core/include/cupy/jitify
   ln -srfT "$srcdir/jitify-$_jitify_commit" cupy/_core/include/cupy/jitify
-  #ln -srf "$srcdir/cub-$_cubver" cupy/_core/include/cupy/cub
   export CC=/opt/cuda/bin/gcc
   export CXX=/opt/cuda/bin/g++
   # We can use c++14 if the cuda version is greater than 11.
