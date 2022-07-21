@@ -1,0 +1,11 @@
+--- a/lib/GLPI/Agent/Tools/Screen.pm	2022-07-01 12:21:44.000000000 +0300
++++ b/lib/GLPI/Agent/Tools/Screen.pm	2022-07-21 18:21:57.332275628 +0300
+@@ -29,7 +29,7 @@
+     if ($self->{edid}->{serial_number2} && $self->{edid}->{serial_number2}->[0]) {
+         $self->{_serial} = $self->{edid}->{serial_number2}->[0];
+     } else {
+-        $self->{_serial} = sprintf("%08x", $self->{edid}->{serial_number});
++        $self->{_serial} = sprintf("%08x", $self->{edid}->{serial_number} . $self->{edid}->{checksum});
+     }
+ 
+     # Setup manufacturer
