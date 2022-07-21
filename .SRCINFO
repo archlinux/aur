@@ -1,6 +1,6 @@
 pkgbase = mcctl-git
 	pkgdesc = A powerful script which can automatically run and update Minecraft servers
-	pkgver = r83.0800482
+	pkgver = r85.729d9d6
 	pkgrel = 1
 	url = https://github.com/Kimiblock/mcctl/
 	arch = any
@@ -16,6 +16,8 @@ pkgbase = mcctl-git
 	optdepends = systemd: for autostart function
 	optdepends = xdg-utils: for opening Mojang EULA websites automatically
 	provides = mcctl
+	conflicts = mcctl
+	replaces = mcctl
 	source = git+https://github.com/Kimiblock/mcctl
 	md5sums = SKIP
 

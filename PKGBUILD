@@ -1,6 +1,6 @@
 # Maintainer: Kimiblock Zhou <pn3535@icloud.com>
 pkgname=mcctl-git
-pkgver=r83.0800482
+pkgver=r85.729d9d6
 pkgrel=1
 epoch=
 pkgdesc="A powerful script which can automatically run and update Minecraft servers"
@@ -20,12 +20,9 @@ optdepends=(
 		'xdg-utils: for opening Mojang EULA websites automatically'
 )
 provides=(mcctl)
-conflicts=()
-replaces=()
-backup=()
-options=()
+conflicts=(mcctl)
+replaces=(mcctl)
 install=
-changelog=
 source=("git+https://github.com/Kimiblock/mcctl")
 noextract=()
 md5sums=('SKIP')
@@ -43,5 +40,5 @@ package() {
     chmod +x ${pkgdir}/usr/bin/mcctl
     mkdir -p ${pkgdir}/opt/mcctl
     mv resources ${pkgdir}/opt/mcctl/
-    rm -f ${pkgdir}/opt/mcctl/resources/demo.png
+    rm ${pkgdir}/opt/mcctl/resources/demo.png
 }
