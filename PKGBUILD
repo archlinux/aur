@@ -42,7 +42,7 @@ build() {
            -DCMAKE_INSTALL_PREFIX="/usr" \
            -DCMAKE_INSTALL_LIBDIR="lib" \
            -DCMAKE_INSTALL_SYSCONFDIR="/etc" \
-           -DQT_DEFAULT_MAJOR_VERSION=5
+           -DQT_DIR="/usr/lib/cmake/Qt5"
   make
 }
 
