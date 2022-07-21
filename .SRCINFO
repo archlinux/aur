@@ -4,11 +4,11 @@ pkgbase = r-r.oo
 	pkgrel = 1
 	url = https://cran.r-project.org/package=R.oo
 	arch = any
-	license = LGPL2.1
-	license = LGPL3
-	depends = r>=2.13.0
-	depends = r-r.methodss3>=1.8.0
-	source = https://cran.microsoft.com/snapshot/2022-06-25/src/contrib/R.oo_1.25.0.tar.gz
+	license = LGPL
+	depends = r
+	depends = r-r.methodss3
+	optdepends = r-tools
+	source = https://cran.r-project.org/src/contrib/R.oo_1.25.0.tar.gz
 	sha256sums = b8b19061774918ee7d9d4330c16c0ea505f7cd02d01343df1e8b2e4fb847beef
 
 pkgname = r-r.oo
