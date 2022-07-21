@@ -1,23 +1,32 @@
 pkgbase = r-ggpmisc
-	pkgdesc = Provide for uniform handling of R's different time-based data classes by extending zoo, maximizing native format information preservation and allowing for user level customization and extension, while simplifying cross-class interoperability.
+	pkgdesc = Miscellaneous Extensions to 'ggplot2'
 	pkgver = 0.4.7
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggpmisc
 	arch = any
 	license = GPL
-	makedepends = r-splus2r
-	makedepends = r-lmodel2
-	makedepends = r-plyr
-	depends = r>=3.6.0
-	depends = r-ggpp>=0.4.2
-	optdepends = r-knitr
-	optdepends = r-rmarkdown
-	optdepends = r-ggrepel
+	depends = r
+	depends = r-dplyr
+	depends = r-generics
+	depends = r-ggplot2
+	depends = r-ggpp
+	depends = r-lmodel2
+	depends = r-lubridate
+	depends = r-plyr
+	depends = r-polynom
+	depends = r-quantreg
+	depends = r-rlang
+	depends = r-scales
+	depends = r-splus2r
+	depends = r-tibble
 	optdepends = r-broom
 	optdepends = r-broom.mixed
-	optdepends = r-nlme
 	optdepends = r-gginnards
-	source = https://cran.microsoft.com/snapshot/2022-06-25/src/contrib/ggpmisc_0.4.7.tar.gz
-	sha512sums = 6036065614dd6a443336ebc994e04458df1a56f3761268da369daaa74d508d54a00b3d916aa0fe86e1a9c1aa91c96e4819d340c54ff91d97c76577276b03381b
+	optdepends = r-ggrepel
+	optdepends = r-knitr
+	optdepends = r-nlme
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/ggpmisc_0.4.7.tar.gz
+	sha256sums = fd93e10f23c477cc39e3e776b380afeefc31f89283e09605ad6878b8a86536fc
 
 pkgname = r-ggpmisc
