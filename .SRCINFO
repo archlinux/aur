@@ -1,5 +1,5 @@
 pkgbase = redis5
-	pkgdesc = Advanced key-value store (version 6)
+	pkgdesc = Advanced key-value store (version 5)
 	pkgver = 5.0.14
 	pkgrel = 1
 	url = http://redis.io/

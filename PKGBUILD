@@ -1,7 +1,7 @@
 pkgname=redis5
 pkgver=5.0.14
 pkgrel=1
-pkgdesc='Advanced key-value store (version 6)'
+pkgdesc='Advanced key-value store (version 5)'
 arch=('i686' 'x86_64')
 url='http://redis.io/'
 license=('BSD')
