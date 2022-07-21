@@ -1,0 +1,16 @@
+pkgbase = entt-git
+	pkgdesc = A header-only, tiny and easy to use entity-component system (and much more) written in modern C++
+	pkgver = 3.10.0.r265.e8f85202
+	pkgrel = 1
+	url = https://skypjack.github.io/entt/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = doxygen
+	provides = entt
+	conflicts = entt
+	source = entt::git+https://github.com/skypjack/entt
+	sha256sums = SKIP
+
+pkgname = entt-git
