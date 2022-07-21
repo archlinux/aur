@@ -1,14 +1,13 @@
 pkgbase = r-plot3d
 	pkgdesc = Plotting Multi-Dimensional Data
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=plot3D
 	arch = any
-	license = GPL3
-	depends = r>=2.15
+	license = GPL
+	depends = r
 	depends = r-misc3d
 	source = https://cran.r-project.org/src/contrib/plot3D_1.4.tar.gz
 	sha256sums = d04a45197646fb36bc38870c1c2351cb56b912bd772b1ebfa25eaeef35fda9c0
 
 pkgname = r-plot3d
-
