@@ -1,5 +1,5 @@
 pkgbase = freeglut-svn
-	pkgver = r1846
+	pkgver = r1877
 	pkgrel = 2
 	url = http://freeglut.sourceforge.net/
 	arch = i686
@@ -21,14 +21,13 @@ pkgbase = freeglut-svn
 	md5sums = SKIP
 
 pkgname = freeglut-x11-svn
-	pkgdesc = Provides functionality for small OpenGL programs; X11 version
+	pkgdesc = Provides functionality for small OpenGL programs - X11 version
 	depends = libxi
 	depends = libxrandr
 	depends = libgl
 
 pkgname = freeglut-wayland-svn
-	pkgdesc = Provides functionality for small OpenGL programs; Wayland version
+	pkgdesc = Provides functionality for small OpenGL programs - Wayland version
 	depends = wayland
 	depends = libxkbcommon
 	depends = libgl
-
