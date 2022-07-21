@@ -1,8 +1,10 @@
 post_install() {
+  _ver=$(echo "$1" | sed -e "s:\([0-9]*\).*:\1:g")
+
   getent group redis >/dev/null || groupadd --system redis
   getent passwd redis >/dev/null || useradd --system -g redis \
     -d /var/lib/redis -s /bin/false redis
 
-  install -dm700 var/lib/redis6
-  chown redis:redis var/lib/redis6
+  install -dm700 var/lib/redis${_ver}
+  chown redis:redis var/lib/redis${_ver}
 }
