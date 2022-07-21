@@ -4,7 +4,7 @@
 
 pkgname=ums
 pkgver=11.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server."
 arch=('i686' 'x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
 url="http://www.universalmediaserver.com/"
@@ -44,7 +44,6 @@ package() {
   mkdir -p "${pkgdir}/opt/ums"
   mkdir "${pkgdir}/opt/ums/database"
   mkdir -p "${pkgdir}/usr/bin"
-  chmod -R 755 "${srcdir}/ums-$pkgver/plugins" "${srcdir}/ums-$pkgver/documentation"
   cp -r "${srcdir}/ums-$pkgver"/* "${pkgdir}/opt/ums/"
   touch "${pkgdir}/opt/ums/UMS.conf"
   touch "${pkgdir}/opt/ums/debug.log"

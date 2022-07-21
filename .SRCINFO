@@ -1,7 +1,7 @@
 pkgbase = ums
 	pkgdesc = Universal Media Server: a DLNA-compliant UPnP Media Server.
 	pkgver = 11.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.universalmediaserver.com/
 	arch = i686
 	arch = x86_64
