@@ -1,6 +1,6 @@
 ## Maintainer: khanhas <xuankhanh963@gmail.com>, itsmeow <itsmeow@itsmeow.dev>
 pkgname=spicetify-cli
-pkgver=2.11.0
+pkgver=2.11.1
 pkgrel=1
 pkgdesc='Command-line tool to customize Spotify client'
 arch=('x86_64' 'i686')
@@ -9,7 +9,7 @@ license=('GPL')
 makedepends=('git' 'go')
 optdepends=('xdg-utils: Allows for opening directories in default file manager')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('3e98ec209df789aaf9af68a44ee42dac4eb6c350b2d10038d984f4148b8e1100')
+sha256sums=('93ddbd8461b8c3d75f5c5d2dd4c6d7ede6599d88349dfddf981bd8d8690412ea')
 
 build() {
   cd "$pkgname-$pkgver"
