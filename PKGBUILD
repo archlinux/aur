@@ -6,10 +6,10 @@
 
 pkgbase=virtualbox-bin
 pkgname=('virtualbox-bin' 'virtualbox-bin-guest-iso' 'virtualbox-bin-sdk')
-pkgver=6.1.34
-_build=150636
+pkgver=6.1.36
+_build=152435
 _rev=94273
-pkgrel=2
+pkgrel=1
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use (Oracle branded non-OSE)'
 arch=('x86_64')
 url='https://www.virtualbox.org/'
@@ -27,11 +27,10 @@ source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver
         'vboxweb.service'
         'virtualbox.sysusers'
         'LICENSE.sdk'
-        '013-Makefile.patch'
-        '020-linux518.patch')
+        '013-Makefile.patch')
 noextract=("VirtualBoxSDK-${pkgver}-${_build}.zip")
-sha256sums=('1e47ac7b0b71bc29aa6fe880f85f300fa7b2c921b01fda1de56144db13703a48'
-            '79175b299955269635362730c6841141aaaa40d345080d986da2ef6d1e3dc2cb'
+sha256sums=('214586f62034e31f1a25e021752398019817a2dfd005bf1fadaa4e935708cb66'
+            'eb6ffa0ca0e8d6b89bf7a74fb37151a896c636e7720a55b4311185229da9a676'
             'da610d799e06fc977c695d564b654be53bf3d0f6bd42dabeec687fd9d9af58dc'
             '69242fc39605786e8ccae38ee76bf771d1047cc237a4d661ebdfcc721e458957'
             '6b0c34c09c9184a511aff265d115c104db3af3ebe26121032717b053b2b6fd82'
@@ -41,8 +40,7 @@ sha256sums=('1e47ac7b0b71bc29aa6fe880f85f300fa7b2c921b01fda1de56144db13703a48'
             'e6e875ef186578b53106d7f6af48e426cdaf1b4e86834f01696b8ef1c685787f'
             '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
             '09335d7d1075df02d29cec13119538134efdf43ea73a93b0f89d0d7d4b6625a1'
-            '3c2089575e8c03b7517fe176e65168e15fb7aefe7e71224bf264d21812dbc635'
-            'ee0e2fc32934c1b86f71a693c20d75f2a4d4ee27f17ef07b1eaa71aca7d1b08e')
+            '3c2089575e8c03b7517fe176e65168e15fb7aefe7e71224bf264d21812dbc635')
 
 prepare() {
     local _extractdir="${pkgname}-${pkgver}/VirtualBox-extracted"
@@ -60,8 +58,6 @@ prepare() {
     
     # fix dkms build
     patch -d "$_extractdir" -Np1 -i "${srcdir}/013-Makefile.patch"
-    
-    patch -d "$_extractdir" -Np1 -i "${srcdir}/020-linux518.patch"
 }
 
 build() {
