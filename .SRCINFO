@@ -7,7 +7,6 @@ pkgbase = entt-git
 	license = MIT
 	makedepends = git
 	makedepends = cmake
-	makedepends = doxygen
 	provides = entt
 	conflicts = entt
 	source = entt::git+https://github.com/skypjack/entt
