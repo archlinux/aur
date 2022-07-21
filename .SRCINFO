@@ -1,21 +1,21 @@
 pkgbase = r-rcmdcheck
 	pkgdesc = Run 'R CMD check' from 'R' and Capture Results
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=rcmdcheck
 	arch = any
 	license = MIT
 	depends = r
-	depends = r-callr>=3.1.1.9000
-	depends = r-cli>=3.0.0
+	depends = r-callr
+	depends = r-cli
 	depends = r-curl
-	depends = r-desc>=1.2.0
+	depends = r-desc
 	depends = r-digest
 	depends = r-pkgbuild
 	depends = r-prettyunits
 	depends = r-r6
 	depends = r-rprojroot
-	depends = r-sessioninfo>=1.1.1
+	depends = r-sessioninfo
 	depends = r-withr
 	depends = r-xopen
 	optdepends = r-covr
