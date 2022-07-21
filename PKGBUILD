@@ -4,7 +4,7 @@
 _pkgname=FSA
 _pkgver=0.9.3
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=0.9.3
 pkgrel=1
 pkgdesc='Simple Fisheries Stock Assessment Methods'
 arch=('any')
