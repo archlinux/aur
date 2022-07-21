@@ -1,51 +1,41 @@
-# Maintainer: Robert Greener <me@r0bert.dev>
-# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# system requirements: libgit2 (>= 0.26): libgit2-devel (rpm) orlibgit2-dev (deb)
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
-_cranname=gert
-_cranver=1.6.0
-pkgname=r-${_cranname,,}
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
-pkgdesc="Simple Git Client for R"
-arch=(any)
-url="https://cran.r-project.org/package=${_cranname}"
-license=(MIT)
+_pkgname=gert
+_pkgver=1.6.0
+pkgname=r-${_pkgname,,}
+pkgver=1.6.0
+pkgrel=3
+pkgdesc='Simple Git Client for R'
+arch=('x86_64')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('MIT')
 depends=(
-	r
-	r-askpass
-	"r-credentials>=1.2.1"
-	"r-openssl>=1.4.1"
-	"r-rstudioapi>=0.11"
-	r-sys
-	"r-zip>=2.1.0"
-	"libgit2>=1.0"
+  r
+  r-askpass
+  r-credentials
+  r-openssl
+  r-rstudioapi
+  r-sys
+  r-zip
+  libgit2
 )
-checkdepends=(r-testthat)
 optdepends=(
-	r-spelling
-	r-knitr
-	r-rmarkdown
+  r-knitr
+  r-rmarkdown
+  r-spelling
+  r-testthat
 )
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
-	"CRAN_MIT::https://cran.r-project.org/web/licenses/MIT")
-sha512sums=("9e2c0096ca74c7c68f863a1a5e5e34432dec7f9326829d07275ca5d83e03de1f2272fca03c56f0285af068696f280f5db652939f9e347f1bf21a1645e4cfd36d"
-	    "20e82bfce7b50a3adfccad5f56e13c82449da19a8dfb92f8395210dd6cf69a1962aaa114743faae02388132431d855361880b2bb26e2e30da9630a05360f42f5")
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('8c440aeebabf1cb3b57124ec9280e0f46b2ab56f2bca07d72b5c7a7f4edc2964')
 
 build() {
-	mkdir -p build
-	R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build"
-}
-
-check() {
-	cd "${_cranname}/tests"
-	R_LIBS="${srcdir}/build" NOT_CRAN=true Rscript --vanilla testthat.R
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-	install -dm0755 "${pkgdir}/usr/lib/R/library"
-
-	cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
-
-	install -Dm644 CRAN_MIT "${pkgdir}/usr/share/licenses/${pkgname}/MIT"
-	install -Dm644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
+# vim:set ts=2 sw=2 et:
