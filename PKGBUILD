@@ -1,6 +1,6 @@
 # Maintainer: David Barri <japgolly@gmail.com>
 pkgname=shift
-pkgver=8.0.45
+pkgver=8.0.46
 pkgrel=1
 pkgdesc="Shift is the desktop app for streamlining your accounts, apps, and workflows."
 arch=('x86_64')
