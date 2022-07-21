@@ -1,11 +1,11 @@
 pkgbase = gjid
 pkgdesc = Sokoban-style puzzle game
 pkgver = 3.3
-pkgrel = 1
-url = https://github.com/msharov/gjid
+pkgrel = 2
+url = https://sourceforge.net/projects/gjid/
 arch = x86_64
 license = MIT
 depends = libxcb
-source = gjid-3.3.tar.gz::https://github.com/msharov/gjid/archive/refs/tags/v3.3.tar.gz
-sha256sums = ab2d09b0dd821f23da2864936d0beca44d1dcee2e865fcba72ba0ca93f03f967
+source = gjid-3.3.tar.gz::https://sourceforge.net/projects/gjid/files/gjid-3.3.tar.gz/download
+sha256sums = ae992c1ea0da8e57e9e6a56d94e7f629769e38b1010d964e2818ca1161951074
 pkgname = gjid
