@@ -1,53 +1,38 @@
-# Maintainer: Robert Greener <me@r0bert.dev>
-_cranname=nloptr
-_cranver=2.0.3
-pkgname=r-${_cranname,,}
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
-pkgdesc="R Interface to NLopt"
-arch=(any)
-url="https://cran.r-project.org/package=${_cranname}"
-license=(LGPL3)
+# system requirements: A system installation of NLopt >= 2.4.0 (withheaders) will be used if available.
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+
+_pkgname=nloptr
+_pkgver=2.0.3
+pkgname=r-${_pkgname,,}
+pkgver=2.0.3
+pkgrel=3
+pkgdesc='R Interface to NLopt'
+arch=('x86_64')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('LGPL')
 depends=(
-	r
-	r-testthat
-	nlopt
-)
-checkdepends=(
-	r-knitr
-	r-rmarkdown
-	r-xml2
-	"r-testthat>=3.0.0"
-	r-covr
+  r
+  nlopt
+  r-testthat
 )
 optdepends=(
-	r-knitr
-	r-rmarkdown
-	r-xml2
-	"r-testthat>=3.0.0"
-	r-covr
+  r-inline
+  r-knitr
+  r-rmarkdown
+  r-testthat
 )
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+makedepends=(
+  gcc-fortran
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('7b26ac1246fd1bd890817b0c3a145456c11aec98458b8518de863650b99616d7')
 
 build() {
-	mkdir -p build
-	R CMD INSTALL "${_cranname}" -l "${srcdir}/build"
-}
-
-check() {
-	if [ -d "${_cranname}/tests" ]
-	then
-  		cd "${_cranname}/tests"
-		for i in *.R; do
-			R_LIBS="${srcdir}/build" Rscript --vanilla $i
-		done
-	fi
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-	install -dm0755 "${pkgdir}/usr/lib/R/library"
-
-	cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
 }
-
-sha256sums=('7b26ac1246fd1bd890817b0c3a145456c11aec98458b8518de863650b99616d7')
+# vim:set ts=2 sw=2 et:
