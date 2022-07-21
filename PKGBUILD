@@ -8,7 +8,7 @@ pkgdesc="ossia score, an interactive sequencer for the intermedia arts"
 arch=('x86_64')
 url="https://ossia.io"
 license=('GPLv3')
-depends=('boost' 'qt5-base' 'qt5-imageformats' 'qt5-svg' 'qt5-websockets' 'qt5-quickcontrols2' 'qt5-serialport' 'qt5-declarative' 'ffmpeg' 'portaudio' 'jack')
+depends=('clang' 'lld' 'boost' 'qt5-base' 'qt5-imageformats' 'qt5-svg' 'qt5-websockets' 'qt5-quickcontrols2' 'qt5-serialport' 'qt5-declarative' 'ffmpeg' 'portaudio' 'jack')
 makedepends=('git' 'cmake' 'qt5-tools')
 optdepends=('faust' 'lilv' 'suil' 'lv2' 'sdl2' 'libfreenect2' 'qt5-shadertools-git' 'ysfx-git' 'leap-motion-sdk' 'leap-motion-driver')
 provides=("$pkgname=$pkgver")
@@ -23,7 +23,11 @@ build() {
   mkdir -p "$srcdir/build"
   cd "$srcdir/build"
 
-  cmake -Wno-dev \
+  cmake \
+  -Wno-dev \
+  -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ \
+  -DCMAKE_SHARED_LINKER_FLAGS="-fuse-ld=lld" \
+  -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_UNITY_BUILD=1 \
   -DSCORE_PCH=0 \
