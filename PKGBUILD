@@ -1,10 +1,7 @@
 # Maintainer: Martin Dünkelmann <nc-duenkekl3 at netcologne.de>
-# Contributor: Alberto Sánchez Molero <alsamolero at gmail.com>
-# Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
-# Contributor: TDY <tdy@gmx.com>
 
 pkgname=moneymanagerex-git
-pkgver=1.5.17
+pkgver=v1.5.15.r749.gf2de9b5a9
 pkgrel=1
 pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest commit."
 arch=('x86_64')
@@ -20,7 +17,9 @@ source=(git+https://github.com/moneymanagerex/moneymanagerex.git)
 sha512sums=('SKIP')
 
 pkgver() {
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${srcdir}"/moneymanagerex
+
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
