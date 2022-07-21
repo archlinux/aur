@@ -1,65 +1,41 @@
-# Maintainer: Robert Greener <me@r0bert.dev>
-_cranname=survey
-_cranver=4.1-1
-pkgname=r-${_cranname,,}
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
-pkgdesc="Analysis of Complex Survey Samples"
-arch=(any)
-url="https://cran.r-project.org/package=${_cranname}"
-license=(GPL)
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+
+_pkgname=survey
+_pkgver=4.1-1
+pkgname=r-${_pkgname,,}
+pkgver=4.1.1
+pkgrel=4
+pkgdesc='Analysis of Complex Survey Samples'
+arch=('any')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('GPL')
 depends=(
-	r
-	r-matrix
-	r-survival
-	r-lattice
-	r-minqa
-	r-numderiv
-	"r-mitools>=2.4"
-)
-checkdepends=(
-	r-foreign
-	r-mass
-	r-kernsmooth
-	r-hexbin
-	r-rsqlite
-	r-quantreg
-	r-compquadform
-	r-dbi
-	r-aer
+  r
+  r-minqa
+  r-mitools
+  r-numderiv
 )
 optdepends=(
-	r-foreign
-	r-mass
-	r-kernsmooth
-	r-hexbin
-	r-rsqlite
-	r-quantreg
-	r-compquadform
-	r-dbi
-	r-aer
+  r-aer
+  r-compquadform
+  r-dbi
+  r-foreign
+  r-hexbin
+  r-kernsmooth
+  r-mass
+  r-parallel
+  r-quantreg
+  r-rsqlite
 )
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('05e89a1678a39e32bfb41af8a31d643b04fc4d2660a96e701825e6bffcd75a52')
 
 build() {
-	mkdir -p build
-	R CMD INSTALL "${_cranname}" -l "${srcdir}/build"
-}
-
-check() {
-	if [ -d "${_cranname}/tests" ]
-	then
-  		cd "${_cranname}/tests"
-		for i in *.R; do
-			R_LIBS="${srcdir}/build" Rscript --vanilla $i
-		done
-	fi
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-	install -dm0755 "${pkgdir}/usr/lib/R/library"
-
-	cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
 }
-
-sha256sums=('05e89a1678a39e32bfb41af8a31d643b04fc4d2660a96e701825e6bffcd75a52')
+# vim:set ts=2 sw=2 et:
