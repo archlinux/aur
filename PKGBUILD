@@ -4,7 +4,7 @@
 _pkgname=metadynminer
 _pkgver=0.1.7
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Tools to Read, Analyze and Visualize Metadynamics HILLS Files from 'Plumed'"
 arch=('x86_64')
