@@ -1,41 +1,26 @@
-# Maintainer: Robert Greener <me@r0bert.dev>
-_cranname=CompQuadForm
-_cranver=1.4.3
-pkgname=r-${_cranname,,}
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
-pkgdesc="Distribution Function of Quadratic Forms in Normal Variables"
-arch=(any)
-url="https://cran.r-project.org/package=${_cranname}"
-license=(GPL)
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+
+_pkgname=CompQuadForm
+_pkgver=1.4.3
+pkgname=r-${_pkgname,,}
+pkgver=1.4.3
+pkgrel=4
+pkgdesc='Distribution Function of Quadratic Forms in Normal Variables'
+arch=('x86_64')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('GPL')
 depends=(
-	r
+  r
 )
-checkdepends=(
-)
-optdepends=(
-)
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('042fc56c800dd8f5f47a017e2efa832caf74f0602824abf7099898d9708660c4')
 
 build() {
-	mkdir -p build
-	R CMD INSTALL "${_cranname}" -l "${srcdir}/build"
-}
-
-check() {
-	if [ -d "${_cranname}/tests" ]
-	then
-  		cd "${_cranname}/tests"
-		for i in *.R; do
-			R_LIBS="${srcdir}/build" Rscript --vanilla $i
-		done
-	fi
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-	install -dm0755 "${pkgdir}/usr/lib/R/library"
-
-	cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
 }
-
-sha256sums=('042fc56c800dd8f5f47a017e2efa832caf74f0602824abf7099898d9708660c4')
+# vim:set ts=2 sw=2 et:
