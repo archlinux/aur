@@ -1,25 +1,26 @@
 pkgbase = r-lintr
 	pkgdesc = A 'Linter' for R Code
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=lintr
 	arch = any
 	license = MIT
-	depends = r>=3.2
-	depends = r-rex
+	depends = r
+	depends = r-backports
 	depends = r-crayon
 	depends = r-cyclocomp
-	depends = r-testthat>=2.2.1
 	depends = r-digest
-	depends = r-rstudioapi>=0.2
-	depends = r-httr>=1.2.1
+	depends = r-httr
 	depends = r-jsonlite
 	depends = r-knitr
-	depends = r-xml2>=1.0.0
-	depends = r-xmlparsedata>=1.0.3
-	optdepends = r-rmarkdown
+	depends = r-rex
+	depends = r-rstudioapi
+	depends = r-testthat
+	depends = r-xml2
+	depends = r-xmlparsedata
 	optdepends = r-mockery
-	source = https://cran.microsoft.com/snapshot/2022-06-25/src/contrib/lintr_3.0.0.tar.gz
-	sha256sums = fe0723757b653ef83ec7a5005d0a7524cd917d646d35a5627ee639158881ce93
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/lintr_3.0.0.tar.gz
+	sha256sums = eeb1d428748311727b0453c6e6b0df2dbf5c15e35c6db1bef7f8d6ac94b177b4
 
 pkgname = r-lintr
