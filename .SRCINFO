@@ -1,24 +1,34 @@
 pkgbase = r-styler
-	pkgdesc = Pretty-prints R code without changing the user's formatting intent.
+	pkgdesc = Non-Invasive Pretty Printing of R Code
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=styler
 	arch = any
 	license = MIT
-	checkdepends = r-testthat>=2.1.0
-	depends = r>=3.4.0
-	depends = r-cli>=3.1.1
-	depends = r-magrittr>=2.0.0
-	depends = r-purrr>=0.2.3
-	depends = r-r.cache>=0.15.0
-	depends = r-rematch2>=2.0.1
-	depends = r-rlang>=0.1.1
-	depends = r-rprojroot>=1.1
-	depends = r-tibble>=1.4.2
-	depends = r-withr>=1.0.0
+	depends = r
+	depends = r-backports
+	depends = r-cli
+	depends = r-glue
+	depends = r-magrittr
+	depends = r-purrr
+	depends = r-r.cache
+	depends = r-rematch2
+	depends = r-rlang
+	depends = r-rprojroot
+	depends = r-tibble
+	depends = r-withr
+	depends = r-xfun
+	optdepends = r-data.tree
+	optdepends = r-digest
+	optdepends = r-dplyr
+	optdepends = r-here
+	optdepends = r-knitr
+	optdepends = r-prettycode
+	optdepends = r-rmarkdown
+	optdepends = r-roxygen2
+	optdepends = r-rstudioapi
+	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/styler_1.7.0.tar.gz
-	source = CRANMITTEMPLATE::https://cran.r-project.org/web/licenses/MIT
-	sha512sums = f7b64199154a9d9a4d7479fc31b9cbc62f62bd9a568a202b08ae849b4a34b4f3f878c6ed3448db08290b6d45d6ea1043cd92835b9a31579e9f1b171e53db839e
-	sha512sums = 20e82bfce7b50a3adfccad5f56e13c82449da19a8dfb92f8395210dd6cf69a1962aaa114743faae02388132431d855361880b2bb26e2e30da9630a05360f42f5
+	sha256sums = 3e49f3ac2e65f9bdab15837a4e629db35c8fd0a15a74daa057354ba01e3022ce
 
 pkgname = r-styler
