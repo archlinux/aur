@@ -1,7 +1,7 @@
 pkgbase = smarthome-commander
 	pkgdesc = Microservice for executing shell commands via API requests
 	pkgver = 0.2.0
-	pkgrel = 3
+	pkgrel = 5
 	url = https://github.com/smarthome-go/commander
 	arch = i686
 	arch = pentium4
