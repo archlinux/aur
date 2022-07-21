@@ -5,7 +5,7 @@
 
 pkgname=pdfbeads
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A small utility written in Ruby which takes scanned page images and converts them into a single PDF file"
 arch=('any')
 url='https://github.com/akryukov/pdfbeads'
@@ -23,6 +23,7 @@ depends=(
 
 optdepends=(
 'jbig2enc: for better JPEG2000 compression'
+'ruby-iconv'
 )
 
 source=("https://rubygems.org/downloads/$pkgname-$pkgver.gem")
