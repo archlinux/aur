@@ -1,18 +1,16 @@
 pkgbase = perl-moosex-oneargnew
-	pkgdesc = teach ->new to accept single, non-hashref arguments
-	pkgver = 0.005
+	pkgdesc = Teach ->new to accept single, non-hashref arguments
+	pkgver = 0.006
 	pkgrel = 1
 	url = https://metacpan.org/release/MooseX-OneArgNew
 	arch = any
-	license = PerlArtistic
 	license = GPL
+	license = PerlArtistic
+	depends = perl
 	depends = perl-moose
-	depends = perl-moosex-role-parameterized>=1.01
+	depends = perl-moosex-role-parameterized
 	depends = perl-namespace-autoclean
-	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/MooseX-OneArgNew-0.005.tar.gz
-	md5sums = 60024f3e873280bf6c67f61f14e87bd2
-	sha512sums = 0d846346be4eb2deb8a212220991dc727a3ca1fab4109292117dadc8f64fef20ddc93877d198d56974686fbd5d3f4ebf10abd429f08c7fbf1de42975138259ba
+	source = https://www.cpan.org/modules/by-module/MooseX/MooseX-OneArgNew-0.006.tar.gz
+	sha512sums = 77395725d79182b050939b9f9d7cf36a349ce619758dfc02f12d9690ccb53d46fd6bbb6c6cf255b5f186512a94071f0c6f6d4152f0864979c82fa4e13cc45428
 
 pkgname = perl-moosex-oneargnew
-
