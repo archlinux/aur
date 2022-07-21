@@ -1,45 +1,32 @@
-# Maintainer: Robert Greener <me@r0bert.dev>
-_cranname=leaps
-_cranver=3.1
-pkgname=r-${_cranname,,}
-pkgver=${_cranver//[:-]/.}
-pkgrel=2
-pkgdesc="Regression Subset Selection"
-arch=(any)
-url="https://cran.r-project.org/package=${_cranname}"
-license=(GPL)
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+
+_pkgname=leaps
+_pkgver=3.1
+pkgname=r-${_pkgname,,}
+pkgver=3.1
+pkgrel=4
+pkgdesc='Regression Subset Selection'
+arch=('x86_64')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('GPL')
 depends=(
-	r
-)
-makedepends=(
-	gcc-fortran
-)
-checkdepends=(
+  r
 )
 optdepends=(
-	r-biglm
+  r-biglm
 )
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+makedepends=(
+  gcc-fortran
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('3d7c3a102ce68433ecf167ece96a7ebb4207729e4defd0ac8fc00e7003f5c3b6')
 
 build() {
-	mkdir -p build
-	R CMD INSTALL "${_cranname}" -l "${srcdir}/build"
-}
-
-check() {
-	if [ -d "${_cranname}/tests" ]
-	then
-  		cd "${_cranname}/tests"
-		for i in *.R; do
-			R_LIBS="${srcdir}/build" Rscript --vanilla $i
-		done
-	fi
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-	install -dm0755 "${pkgdir}/usr/lib/R/library"
-
-	cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
 }
-
-sha256sums=('3d7c3a102ce68433ecf167ece96a7ebb4207729e4defd0ac8fc00e7003f5c3b6')
+# vim:set ts=2 sw=2 et:
