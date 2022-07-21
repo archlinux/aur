@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=R.filesets
-_pkgver=2.14.0
+_pkgver=2.15.0
 pkgname=r-${_pkgname,,}
-pkgver=2.14.0
-pkgrel=4
+pkgver=2.15.0
+pkgrel=1
 pkgdesc='Easy Handling of and Access to Files Organized in Structured Directories'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -21,7 +21,7 @@ optdepends=(
   r-gtools
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('707dd7c099aeadbecebbd2ba57e6400405aa44487c641f3729ce06c4c642bb23')
+sha256sums=('bad66f3d0f00eccc681b9e23aefc37343e6e414298eedba3a2db41e74c7fb691')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
