@@ -1,5 +1,7 @@
 post_install() {
-
+	
+	chown root:root -R /opt/gama-platform
+	
 	chmod a+rw -R /opt/gama-platform/Gama.ini
 	chmod a+x -R /opt/gama-platform/Gama
 	chmod a+x -R /opt/gama-platform/headless/gama-headless.sh
