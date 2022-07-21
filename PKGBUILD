@@ -3,7 +3,7 @@
 _pkgname=cNORM
 _pkgver=3.0.2
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=3.0.2
 pkgrel=1
 pkgdesc='Continuous Norming'
 arch=('any')
