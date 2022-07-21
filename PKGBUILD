@@ -3,8 +3,8 @@
 pkgname=wedoc-bin
 _pkgname=wedoc
 provides=('wedoc' 'tencent-document')
-pkgver=2.3.7
-pkgrel=2
+pkgver=2.3.10
+pkgrel=1
 pkgdesc="Tencent Document, like Google Doc to create and collaborate on online documents. 腾讯文档"
 arch=('x86_64')
 license=('unknown')
