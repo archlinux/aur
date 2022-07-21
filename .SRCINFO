@@ -1,12 +1,12 @@
 pkgbase = r-sessioninfo
 	pkgdesc = R Session Information
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=sessioninfo
 	arch = any
-	license = GPL2
-	depends = r>=2.10
-	depends = r-cli>=3.1.0
+	license = GPL
+	depends = r
+	depends = r-cli
 	optdepends = r-callr
 	optdepends = r-covr
 	optdepends = r-mockery
