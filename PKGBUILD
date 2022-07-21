@@ -1,26 +1,26 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
+# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=libgammamm
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Display server abstraction layer for gamma ramps and C++"
 arch=(i686 x86_64)
-url="https://github.com/maandree/libgammamm"
-license=('GPL3')
+url="https://codeberg.org/maandree/libgammamm"
+license=('custom:ISC')
 depends=('libgamma>=0.3' glibc gcc-libs)
 makedepends=('libgamma>=0.3' glibc gcc-libs gcc make coreutils)
-source=($url/archive/$pkgver.tar.gz)
-sha256sums=(712df650ffcc4666421e952c52b94660f371e8fb401a7d0e2ffd196580b84d50)
+source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
+sha256sums=(999f7ec89769a6e2b6894b2dee7e2160c97dd473820bce5b2bf8a68a6f4eda1f)
 
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   make PREFIX=/usr
 }
 
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   make PREFIX=/usr install DESTDIR="$pkgdir"
 }
 
