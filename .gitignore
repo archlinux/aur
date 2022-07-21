@@ -4,4 +4,4 @@ clean.sh
 *.deb
 pkg/
 src/
-*.tar.zst
+*.zst
