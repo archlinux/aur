@@ -106,6 +106,7 @@ _disable_debug=y
 ## Enable zram/zswap ZSTD compression
 _zstd_compression=y
 
+# Enable FULLCONENAT
 _nf_cone=y
 
 # Clang LTO mode, only available with the "llvm" compiler - options are "no", "full" or "thin".
@@ -118,6 +119,12 @@ _build_zfs=
 
 # Enable bcachefs
 _bcachefs=
+
+# Enable aufsfs
+_aufs=
+
+# Enable spadefs
+_spadfs=
 
 if [ -n "$_use_llvm_lto" ]; then
     pkgsuffix=cachyos-${_cpusched}-lto
@@ -138,13 +145,13 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux BMQ scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=2
+pkgrel=4
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
 license=('GPL2')
 options=('!strip')
-makedepends=('bc' 'texlive-latexextra' 'libelf' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'zstd' 'xmlto' 'git' 'gcc' 'gcc-libs' 'glibc' 'binutils' 'make' 'patch')
+# LLVM makedepends
 if [ -n "$_use_llvm_lto" ]; then
     makedepends+=(clang llvm lld python)
     BUILD_FLAGS=(
@@ -153,6 +160,11 @@ if [ -n "$_use_llvm_lto" ]; then
         LLVM=1
         LLVM_IAS=1
     )
+fi
+# ZFS makedepends
+if [ -n "$_build_zfs" ]; then
+    makedepends+=(git)
+
 fi
 _patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/${_major}"
 source=(
@@ -190,6 +202,14 @@ fi
 
 if [ -n "$_bcachefs" ]; then
 source+=("${_patchsource}/0001-bcachefs-after-lru.patch")
+fi
+
+if [ -n "$_aufs" ]; then
+source+=("${_patchsource}/0001-aufs-20220620.patch")
+fi
+
+if [ -n "$_spadfs" ]; then
+source+=("${_patchsource}/0001-spadfs-5.18-merge-v1.0.16.patch")
 fi
 
 export KBUILD_BUILD_HOST=archlinux
