@@ -1,9 +1,9 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=m64p
-pkgver=20220712
+pkgver=20220720
 pkgrel=1
-_tag=v2022.07.6
+_tag=v2022.07.10
 pkgdesc='Mupen64Plus with custom plugins and Qt6 GUI'
 arch=('x86_64')
 url='https://m64p.github.io/'
@@ -27,10 +27,10 @@ source=("git+https://github.com/loganmc10/m64p.git#tag=${_tag}"
         'm64p.desktop')
 sha256sums=('SKIP'
             '038d8f811dd4632e87d4775f050dfaf0aea836c6ed4002b8ae1390b857e4e039'
-            'cc19027b19c0b516280e5e939115483ded9c7f03b1ff5f91e589e0d6bae9f735'
+            '740b571b0cb26413c2f655c0063ad589569bb352a0ca8858c691ec81905157b5'
             'e9da860ae7adcdd0a1cc0155c232f81ca8399e9e855bd71fb51269edb708b1cc'
             '4212cff6311f12ea2af5479a162a183d489dbb4107955c621a4440276a46cb76'
-            '19304ee362dd53c62c1e0dff23876fce454340fdd2f13a948d99613d0c0dee7c'
+            '31d99d7c6d288a5b2686c934c7d8be2e9870d5d94f0bd360d06c044037841850'
             'a33a66612343035929eee5d6eb2acb342cc0c5a18a8e113aef83b28fb0f156c7'
             '8df4e8076d28a1bc44f41b0129a9935da9839e8a8cb9944206757e47da561808')
 
@@ -73,7 +73,7 @@ package() {
     local _sover
     for _component in core audio-sdl2 input-raphnetraw
     do
-        make -C "m64p/mupen64plus-${_component}/projects/unix" DESTDIR="$pkgdir" PREFIX='/usr' LDCONFIG='true' NEW_DYNAREC='0' NETPLAY='1' OSD='0' install
+        make -C "m64p/mupen64plus-${_component}/projects/unix" DESTDIR="$pkgdir" PREFIX='/usr' LDCONFIG='true' NO_ASM='1' NETPLAY='1' OSD='0' install
     done
     _sover="$(find "${pkgdir}/usr/lib" -type f -name 'libmupen64plus.so.*.*.*' | sed 's/^.*\.so\.//')"
     ln -s "libmupen64plus.so.${_sover}" "${pkgdir}/usr/lib/libmupen64plus.so"

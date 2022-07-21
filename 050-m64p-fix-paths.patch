@@ -44,7 +44,7 @@
  #endif
      m64p_error res = osal_dynlib_open(&coreLib, QDir(corePath).filePath(OSAL_DEFAULT_DYNLIB_FILENAME).toUtf8().constData());
  
-@@ -1043,7 +1044,7 @@ void MainWindow::loadPlugins()
+@@ -1044,7 +1045,7 @@ void MainWindow::loadPlugins()
  #ifdef PLUGIN_DIR_PATH
      QString pluginPath = PLUGIN_DIR_PATH;
  #else
