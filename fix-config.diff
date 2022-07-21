@@ -1,0 +1,48 @@
+diff --git a/doc/ircd.conf.example b/doc/ircd.conf.example
+index 1ae47b33..0d1a179f 100644
+--- a/doc/ircd.conf.example
++++ b/doc/ircd.conf.example
+@@ -101,15 +101,15 @@ admin {
+ };
+ 
+ log {
+-	fname_userlog = "logs/userlog";
+-	#fname_fuserlog = "logs/fuserlog";
+-	fname_operlog = "logs/operlog";
+-	#fname_foperlog = "logs/foperlog";
+-	fname_serverlog = "logs/serverlog";
+-	#fname_klinelog = "logs/klinelog";
+-	fname_killlog = "logs/killlog";
+-	fname_operspylog = "logs/operspylog";
+-	#fname_ioerrorlog = "logs/ioerror";
++	fname_userlog = "/var/log/solanum/userlog";
++	#fname_fuserlog = "/var/log/solanum/fuserlog";
++	fname_operlog = "/var/log/solanum/operlog";
++	#fname_foperlog = "/var/log/solanum/foperlog";
++	fname_serverlog = "/var/log/solanum/serverlog";
++	#fname_klinelog = "/var/log/solanum/klinelog";
++	fname_killlog = "/var/log/solanum/killlog";
++	fname_operspylog = "/var/log/solanum/operspylog";
++	#fname_ioerrorlog = "/var/log/solanum/ioerror";
+ };
+ 
+ /* class {} blocks MUST be specified before anything that uses them.  That
+@@ -586,8 +586,7 @@ general {
+ 	not_authorised_client_message = "You are not authorised to access this server.";
+ 	illegal_hostname_client_message = "You have an illegal character in your hostname.";
+ 	server_full_client_message = "Sorry, server is full - try later";
+-	illegal_name_long_client_message = "Your username is invalid. Please make sure that your username contains "
+-									   "only alphanumeric characters.";
++	illegal_name_long_client_message = "Your username is invalid. Please make sure that your username contains only alphanumeric characters.";
+ 	illegal_name_short_client_message = "Invalid username";
+ 	identify_service = "NickServ@services.int";
+ 	identify_command = "IDENTIFY";
+@@ -635,6 +634,6 @@ general {
+ };
+ 
+ modules {
+-	path = "modules";
+-	path = "modules/autoload";
++	path = "/usr/lib/solanum/modules";
++	path = "/usr/lib/solanum/modules/autoload";
+ };

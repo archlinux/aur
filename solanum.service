@@ -1,0 +1,40 @@
+[Unit]
+Description=solanum irc daemon
+After=network.target
+
+[Service]
+Type=simple
+User=solanum
+Restart=always
+PIDFile=/run/solanum/ircd.pid
+ExecStart=/usr/bin/solanum -foreground
+ExecReload=/bin/kill -HUP $MAINPID
+
+RemoveIPC=yes
+CapabilityBoundingSet=
+NoNewPrivileges=yes
+PrivateDevices=yes
+ProtectClock=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectKernelModules=yes
+PrivateMounts=yes
+SystemCallArchitectures=native
+MemoryDenyWriteExecute=yes
+RestrictNamespaces=yes
+RestrictSUIDSGID=yes
+ProtectHostname=yes
+LockPersonality=yes
+ProtectKernelTunables=yes
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictRealtime=yes
+ProtectSystem=strict
+ProtectProc=invisible
+ProtectHome=yes
+ReadWritePaths=/run /var/lib/solanum /var/log/solanum
+PrivateTmp=yes
+SystemCallFilter=@network-io @system-service
+SystemCallErrorNumber=EPERM
+
+[Install]
+WantedBy=multi-user.target

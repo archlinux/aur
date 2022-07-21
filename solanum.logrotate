@@ -1,0 +1,6 @@
+/var/log/solanum/*.log {
+	compress
+	create 600 solanum solanum
+	missingok
+	notifempty
+}

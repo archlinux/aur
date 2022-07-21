@@ -1,0 +1,3 @@
+d /run/solanum 0755 solanum solanum - -
+d /var/lib/solanum 0750 solanum solanum - -
+z /var/log/solanum 0755 solanum solanum - -
