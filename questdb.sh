@@ -174,7 +174,7 @@ function start {
     fi
 
     QDB_LOG=/var/log/questdb/
-    mkdir -p QDB_LOG
+    mkdir -p ${QDB_LOG}
 
     JAVA_LIB="$BASE/questdb.jar"
 

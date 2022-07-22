@@ -1,7 +1,7 @@
 pkgbase = questdb
 	pkgdesc = Fast timeseries database
 	pkgver = 6.4.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://questdb.io
 	install = questdb.install
 	arch = any
