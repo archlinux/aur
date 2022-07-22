@@ -1,4 +1,5 @@
-# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Maintainer JaydenDev <jdev0894@gmail.com>
+# Previous Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Submitter: Ecmel Ercan <ecmel dot ercan at gmail dot com>
 # Contributor: Vain <aurmaint1 on host: uninformativ dot de>
 # Contributor: BlindPenguin <ferdinand holzner at gmail dot com>
@@ -6,7 +7,7 @@
 #
 pkgname=cdesktopenv
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CDE - Common Desktop Environment"
 url="http://sourceforge.net/projects/cdesktopenv/"
 arch=('i686' 'x86_64') # Some parts of CDE are not stable on x86_64 yet.
@@ -105,3 +106,10 @@ package() {
 		 "$pkgdir/usr/bin/startxsession.sh"
 }
 
+md5sums=('e66daaf5157bf575ac19166942b7f901'
+         '66ff27b4c6b7c5fda4e2db69f829e4aa'
+         '18f9ef4643ff7ed6637907f5cbdabecf'
+         '5cc80c2851ea90b94e94b0c5d92d81fb'
+         '897316929176464ebc9ad085f31e7284'
+         '7d11b9d2bc1234278f14151025744916'
+         '2e5557241915e4c2761ba136dbcba469')
