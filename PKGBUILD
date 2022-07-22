@@ -2,7 +2,7 @@
 _pkgname='mdpdf'
 pkgname="${_pkgname}-git"
 pkgver=r9.1beff75
-pkgrel=3
+pkgrel=4
 pkgdesc='a shell script for converting markdown to pdf using lowdown.'
 url=https://github.com/ghesy/mdpdf
 arch=('x86_64')
@@ -12,6 +12,8 @@ depends=('lowdown')
 optdepends=('zathura: for opening pdfs after markdown compilation')
 source=("git+${url}.git")
 md5sums=('SKIP')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 pkgver() {
     cd "$_pkgname"
