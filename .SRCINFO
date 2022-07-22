@@ -1,6 +1,6 @@
 pkgbase = brn-git
 	pkgdesc = Text editor based bulk rename utility.
-	pkgver = r28.a59abe0
+	pkgver = r31.454e213
 	pkgrel = 1
 	url = https://github.com/nimaipatel/brn/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = brn-git
 	makedepends = gcc
 	makedepends = make
 	provides = brn
-	source = brn-git::git://github.com/nimaipatel/brn.git
+	source = brn-git::git+https://github.com/nimaipatel/brn.git
 	md5sums = SKIP
 
 pkgname = brn-git
