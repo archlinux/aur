@@ -1,6 +1,6 @@
 pkgbase = comgr
 	pkgdesc = Radeon Open Compute - compiler support
-	pkgver = 5.2.0
+	pkgver = 5.2.1
 	pkgrel = 1
 	url = https://github.com/RadeonOpenCompute/ROCm-CompilerSupport
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = comgr
 	makedepends = rocm-cmake
 	depends = zlib
 	depends = rocm-device-libs
-	source = comgr-5.2.0.tar.gz::https://github.com/RadeonOpenCompute/ROCm-CompilerSupport/archive/rocm-5.2.0.tar.gz
-	sha256sums = 5f63fa93739ee9230756ef93c53019474b6cdddea3b588492d785dae1b08c087
+	source = comgr-5.2.1.tar.gz::https://github.com/RadeonOpenCompute/ROCm-CompilerSupport/archive/rocm-5.2.1.tar.gz
+	sha256sums = ebeaea8e653fc2b9d67d3271be44690ac7876ee679baa01d47863e75362b8c85
 
 pkgname = comgr
