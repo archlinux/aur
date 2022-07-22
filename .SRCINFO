@@ -1,6 +1,6 @@
 pkgbase = rocprim
 	pkgdesc = Header-only library providing HIP parallel primitives
-	pkgver = 5.2.0
+	pkgver = 5.2.1
 	pkgrel = 1
 	url = https://github.com/ROCmSoftwarePlatform/rocPRIM
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = rocprim
 	makedepends = rocm-cmake
 	makedepends = git
 	depends = hip
-	source = rocprim-5.2.0.tar.gz::https://github.com/ROCmSoftwarePlatform/rocPRIM/archive/rocm-5.2.0.tar.gz
-	sha256sums = f99eb7d2f6b1445742fba631a0dc8bb0d464a767a9c4fb79ac865d9570fe747b
+	source = rocprim-5.2.1.tar.gz::https://github.com/ROCmSoftwarePlatform/rocPRIM/archive/rocm-5.2.1.tar.gz
+	sha256sums = 47f09536b0afbb7be4d6fb71cca9f0a4fa58dde29c83aee247d4b167f6f3acae
 
 pkgname = rocprim
