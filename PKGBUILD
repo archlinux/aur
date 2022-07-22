@@ -2,7 +2,7 @@
 
 pkgname=tnl-git
 _pkgname=tnl
-pkgver=r6391.54d74955f
+pkgver=r6408.3b9e14d95
 pkgrel=1
 pkgdesc="An efficient C++ library providing parallel algorithms and data structures for high-performance computing on GPUs, multicore CPUs and distributed clusters"
 arch=('x86_64')
@@ -11,12 +11,9 @@ license=('MIT')
 depends=('gcc-libs' 'openmpi' 'zlib' 'tinyxml2' 'metis' 'libpng' 'libjpeg' 'dcmtk')
 # Note: openssh is required for mpirun (when running examples for doc): https://github.com/open-mpi/ompi/issues/3625
 makedepends=('git' 'cmake' 'ninja' 'doxygen' 'graphviz' 'texlive-bin' 'texlive-latexextra'
-             'cuda' 'hypre' 'python' 'python-numpy' 'python-matplotlib' 'pybind11' 'cgal'
-             'openssh')
+             'cuda' 'hypre' 'python' 'python-numpy' 'python-matplotlib' 'cgal' 'openssh')
 optdepends=('cuda: for tools, benchmarks and examples built with CUDA'
-            'hypre: for Hypre wrappers'
-            'python: for Python bindings'
-            'python-numpy: for Python bindings')
+            'hypre: for Hypre wrappers')
 source=("git+https://gitlab.com/tnl-project/$_pkgname.git")
 md5sums=('SKIP')
 
@@ -42,8 +39,7 @@ build() {
     -DWITH_COVERAGE=no \
     -DBUILD_BENCHMARKS=yes \
     -DBUILD_EXAMPLES=yes \
-    -DBUILD_TOOLS=yes \
-    -DBUILD_PYTHON=yes
+    -DBUILD_TOOLS=yes
   ninja -C build all
 
   # BUILD_DOC=yes executes the built examples, so we need to check if the build
@@ -94,8 +90,7 @@ check() {
     -DWITH_COVERAGE=no \
     -DBUILD_BENCHMARKS=no \
     -DBUILD_EXAMPLES=no \
-    -DBUILD_TOOLS=no \
-    -DBUILD_PYTHON=no
+    -DBUILD_TOOLS=no
   ninja -C build-tests all
 
   # limit parallel execution of tests to 4 threads and 4 processes
