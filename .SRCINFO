@@ -1,15 +1,15 @@
 pkgbase = xkblayout-remember-git
 	pkgdesc = Program to remember the keyboard layout for X11 windows.
 	pkgver = r23.bf028b1
-	pkgrel = 2
-	url = https://github.com/soystemd/xkblayout-remember
+	pkgrel = 3
+	url = https://github.com/ghesy/xkblayout-remember
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = pkgconf
 	depends = libx11
 	depends = glib2
-	source = git+https://github.com/soystemd/xkblayout-remember.git
+	source = git+https://github.com/ghesy/xkblayout-remember.git
 	md5sums = SKIP
 
 pkgname = xkblayout-remember-git

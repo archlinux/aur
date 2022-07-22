@@ -1,16 +1,16 @@
 # Maintainer: Ehsan Ghorbannezad <ehsan at disroot dot org>
-_pkgname=xkblayout-remember
-pkgname=$_pkgname-git
+_pkgname='xkblayout-remember'
+pkgname="${_pkgname}-git"
 pkgver=r23.bf028b1
-pkgrel=2
+pkgrel=3
 pkgdesc='Program to remember the keyboard layout for X11 windows.'
-url=https://github.com/soystemd/xkblayout-remember
-arch=(x86_64)
-license=(GPL)
-depends=(libx11 glib2)
-makedepends=(git pkgconf)
-source=("git+$url.git")
-md5sums=(SKIP)
+url='https://github.com/ghesy/xkblayout-remember'
+arch=('x86_64')
+license=('GPL')
+depends=('libx11' 'glib2')
+makedepends=('git' 'pkgconf')
+source=("git+${url}.git")
+md5sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
