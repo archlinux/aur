@@ -13,7 +13,7 @@ function _dl_url {
   echo "https://github.com/weewx/weewx/archive/refs/tags/v$1.$2.$3.tar.gz"
 }
 
-pkgrel=1
+pkgrel=2
 pkgdesc="Software for logging data from weather stations"
 arch=("any")
 url="http://www.weewx.com/"
@@ -41,7 +41,7 @@ source=("$(_dl_url $_MAJOR $_MINOR $_PATCH)"
         "weewxd"
         "wunderfixer"
         "weewx.service")
-sha512sums=('b1e985e2fac1005e3cf0efeca0543ec9e5e5309c80551042f93ddd32055b0d2884128f78b273a6ca249a538dbfc8fa80586ccc3cb6e4d329ec1de15b70491704'
+sha512sums=('57a5d805969b99652ae23544387b4bcfe9aaaf900090e15325fd8611620f68a66b14a4aa6b9f24f68fd29e6140a6d6e5a4e054f9217bc8964a795b9056bf269b'
             'SKIP'
             'SKIP'
             'SKIP'
