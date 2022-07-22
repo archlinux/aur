@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=gradient
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="CLI tool for playing with color gradients"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT' 'Apache')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('bb8520b6fba76dbd7e68f46769a8cd63e9b1020f4624e8bb4d9f1ff324311177')
+sha256sums=('583bd91235ae7d97ec056cf0c95d55f907914f61a12906f18ad119ec8e2834cc')
 
 prepare() {
 	cd "$pkgname-rs-$pkgver"
