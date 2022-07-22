@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=maliit-keyboard
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='Virtual keyboard based on Maliit framework'
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(maliit-framework hunspell presage qt5-multimedia qt5-quickcontrols2 qt5
 makedepends=(cmake libpinyin anthy libchewing)
 optdepends=('anthy: japanese language support' 'libpinyin: chinese language support' 'libchewing: chinese language support')
 source=(https://github.com/maliit/keyboard/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('fd8288a6275c432eb71b44627bf39b4755a3b90a05352ee5c44cccd8d5e39a6e')
+sha256sums=('c3e1eb985b8ae7ce4e3e28412b7e797ff5db437ccd327e0d852a3c37f17fe456')
 options=(debug)
 
 build() {
