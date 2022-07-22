@@ -1,18 +1,16 @@
 pkgbase = r-pillar
 	pkgdesc = Coloured Formatting for Columns
-	pkgver = 1.7.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=pillar
 	arch = any
 	license = MIT
 	depends = r
-	depends = r-cli
-	depends = r-crayon>=1.3.4
-	depends = r-ellipsis>=0.3.2
+	depends = r-cli>=2.3.0
 	depends = r-fansi
 	depends = r-glue
 	depends = r-lifecycle
-	depends = r-rlang>=0.3.0
+	depends = r-rlang>=1.0.2
 	depends = r-utf8>=1.1.0
 	depends = r-vctrs>=0.3.8
 	optdepends = r-bit64
@@ -23,18 +21,19 @@ pkgbase = r-pillar
 	optdepends = r-ggplot2
 	optdepends = r-knitr
 	optdepends = r-lubridate
+	optdepends = r-nanotime
 	optdepends = r-nycflights13
 	optdepends = r-palmerpenguins
 	optdepends = r-rmarkdown
 	optdepends = r-scales
 	optdepends = r-stringi
 	optdepends = r-survival
-	optdepends = r-testthat
+	optdepends = r-testthat>=3.1.1
 	optdepends = r-tibble
-	optdepends = r-units
+	optdepends = r-units>=0.7.2
 	optdepends = r-vdiffr
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/pillar_1.7.0.tar.gz
-	sha256sums = 7841f89658cc8935568c0ff24dc480b4481bac896de2f6447050abc4360a13bb
+	source = https://cran.r-project.org/src/contrib/pillar_1.8.0.tar.gz
+	sha256sums = 52c6433692edede2731a95f58ae2bb4017fa50b62d3554c19b7c161d0a79b36f
 
 pkgname = r-pillar
