@@ -9,7 +9,7 @@ pkgbase = dxreminders
 	license = GPL
 	makedepends = cmake
 	depends = wxwidgets-gtk3
-	source = http://files.dxsolutions.org/dxreminders-1.20.0.tar.gz
+	source = https://files.dxsolutions.org/dxreminders-1.20.0.tar.gz
 	md5sums = f8d698404e9a989333f5f30c929af99e
 
 pkgname = dxreminders

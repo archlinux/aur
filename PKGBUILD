@@ -10,7 +10,7 @@ license=('GPL')
 depends=('wxwidgets-gtk3')
 makedepends=('cmake')
 install=${pkgname}.install
-source=(http://files.dxsolutions.org/$pkgname-$pkgver.tar.gz)
+source=(https://files.dxsolutions.org/$pkgname-$pkgver.tar.gz)
 md5sums=('f8d698404e9a989333f5f30c929af99e')
 
 build() {
