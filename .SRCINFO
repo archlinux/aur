@@ -1,0 +1,27 @@
+pkgbase = trojan-plus
+	pkgdesc = Trojan added with experimental features
+	pkgver = r765.14a1f9c
+	pkgrel = 1
+	url = https://github.com/Trojan-Plus-Group/trojan-plus
+	arch = x86_64
+	license = GPL3
+	checkdepends = openssl
+	checkdepends = python
+	checkdepends = curl
+	checkdepends = netcat
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = openssl
+	makedepends = mariadb-libs
+	depends = boost-libs
+	depends = openssl
+	depends = mariadb-libs
+	optdepends = ca-certificates: server certificate verification
+	optdepends = mariadb: advanced user management
+	conflicts = trojan
+	backup = etc/trojan/config.json
+	source = trojan-plus::git+https://github.com/Trojan-Plus-Group/trojan-plus
+	sha512sums = SKIP
+
+pkgname = trojan-plus
