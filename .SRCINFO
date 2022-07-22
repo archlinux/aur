@@ -1,6 +1,6 @@
 pkgbase = rocm-opencl-runtime
 	pkgdesc = Radeon Open Compute - OpenCL runtime
-	pkgver = 5.2.0
+	pkgver = 5.2.1
 	pkgrel = 1
 	url = https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = rocm-opencl-runtime
 	depends = opencl-icd-loader
 	provides = opencl-driver
 	conflicts = opencl-amdgpu-pro-pal
-	source = rocm-opencl-runtime-5.2.0.tar.gz::https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/archive/rocm-5.2.0.tar.gz
-	source = rocm-opencl-runtime-rocclr-5.2.0.tar.gz::https://github.com/ROCm-Developer-Tools/ROCclr/archive/rocm-5.2.0.tar.gz
+	source = rocm-opencl-runtime-5.2.1.tar.gz::https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/archive/rocm-5.2.1.tar.gz
+	source = rocm-opencl-runtime-rocclr-5.2.1.tar.gz::https://github.com/ROCm-Developer-Tools/ROCclr/archive/rocm-5.2.1.tar.gz
 	source = enable-gfx800.patch
-	sha256sums = 80f73387effdcd987a150978775a87049a976aa74f5770d4420847b004dd59f0
-	sha256sums = 37f5fce04348183bce2ece8bac1117f6ef7e710ca68371ff82ab08e93368bafb
+	sha256sums = eb4ff433f8894ca659802f81792646034f8088b47aca6ad999292bcb8d6381d5
+	sha256sums = 465ca9fa16869cd89dab8c2d66d9b9e3c14f744bbedaa1d215b0746d77a500ba
 	sha256sums = b186dd4a604d6e8a2c94ba6569638aaa8066558d764aa0d9cf76f998724ed90a
 
 pkgname = rocm-opencl-runtime
