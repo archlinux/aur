@@ -1,0 +1,42 @@
+#!/bin/bash
+
+[ ! -d "$1/boot/bootcfg/" ] && exit
+[ ! -d "$1/boot/dtb-patch/" ] && exit
+fipdev=$(cat    $1/boot/bootcfg/device)
+linux=$(cat    $1/boot/bootcfg/linux)
+cmdline=$(cat  $1/boot/bootcfg/cmdline)
+initrd=$(cat   $1/boot/bootcfg/initrd)
+dtb=$(cat      $1/boot/bootcfg/dtb)
+cp -vf $1/boot/dtss/.${dtb}.dtb.dts.tmp $1/boot/dtbs/${dtb}.dts
+for bp in $1/boot/dtb-patch/*.patch; do 
+  echo Applying: $bp
+  patch -d $1/ -p1 -N -r - < $bp
+done
+if [ -f "$1$initrd" ];then
+  iend=$(( 0x48000000 + $(du -b $1$initrd | cut -f1) ))
+  in="\n  linux,initrd-start = <0x48000000>;\n  linux,initrd-end = <0x$(printf '%x\n' $iend)>;"
+else
+  in=""
+  echo -n "" > "$1$initrd"
+fi
+origargs=$(cat $1/boot/dtbs/${dtb}.dts | grep "bootargs = ")
+origargs=${origargs##*"bootargs = "}
+origargs=${origargs/;/}
+origargs=${origargs//"\""/}
+echo ORIGARGS = "$origargs"
+bootargs="root=PARTLABEL=bpir64-${fipdev}-root $origargs $cmdline"
+sed -i 's/.*bootargs = .*/  bootargs = "'"$bootargs"'";'"$in"'/' \
+           $1/boot/dtbs/${dtb}.dts
+dtc -q -I dts -O dtb -o $1/boot/dtbs/${dtb}.dtb $1/boot/dtbs/${dtb}.dts
+fiptool --verbose create $1/boot/fip.bin \
+      --tos-fw-extra2 $1$initrd \
+             --nt-fw $1$linux \
+       --nt-fw-config $1/boot/dtbs/${dtb}.dtb
+fiptool info $1/boot/fip.bin
+fipdev="/dev/disk/by-partlabel/bpir64-${fipdev}-fip"
+echo Writing to: $fipdev
+dd of=$fipdev if=/dev/zero 2>/dev/null
+dd of=$fipdev if=$1/boot/fip.bin
+
+exit 0
+

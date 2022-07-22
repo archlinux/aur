@@ -1,4 +1,4 @@
-# Aarch64 kernel for BananaPi R64
+# Arch64 kernel for BananaPi R64
 # Maintainer: yjun <ericwouds@gmail.com>
 
 # PKGBUILD: https://github.com/archlinuxarm/PKGBUILDs/tree/master/core/linux-aarch64
@@ -14,19 +14,21 @@ pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
-## uboot-tools ????
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'dtc')
+makedepends=('kmod' 'inetutils' 'bc' 'git' 'dtc')
 options=('!strip')
 source=('defconfig'
         'linux.preset'
         '60-linux.hook'
-        '90-linux.hook')
-md5sums=(SKIP SKIP SKIP SKIP)
+        '90-linux.hook'
+        '95-linux.hook'
+        'bpir64-writefip')
+md5sums=(SKIP SKIP SKIP SKIP SKIP SKIP)
 
 export LOCALVERSION="-${pkgrel}"
 
 prepare() {
   if [[ -d "${srcdir}/${_srcname}/" ]]; then
+echo test
     cd "${srcdir}/${_srcname}/"
     git fetch
     echo "LOCAL  HEAD: $(git rev-parse HEAD)"
@@ -39,6 +41,7 @@ prepare() {
     echo
   else
     cd "${srcdir}/"
+echo    git clone --branch "${_gitbranch}" --depth=1 "${_gitroot}" "${srcdir}/${_srcname}/"
     git clone --branch "${_gitbranch}" --depth=1 "${_gitroot}" "${srcdir}/${_srcname}/"
     echo
   fi
@@ -67,8 +70,8 @@ build() {
 
 _package() {
   pkgdesc="The Linux Kernel and modules - ${_desc}"
-  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
-  optdepends=('crda: to set the correct wireless channels of your country')
+  depends=('coreutils' 'linux-firmware' 'kmod' 'linux-bpir64-fiptool-git')
+  optdepends=('mkinitcpio>=0.7')
   provides=("linux=${pkgver}" "WIREGUARD-MODULE")
   replaces=('linux-armv8')
   conflicts=('linux')
@@ -84,10 +87,11 @@ _package() {
   _basekernel=${_kernver%%-*}
   _basekernel=${_basekernel%.*}
 
-  mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
+  mkdir -p "${pkgdir}"/{boot,boot/dtss,boot/dtbs,usr/lib/modules}
   make INSTALL_MOD_PATH="${pkgdir}/usr" DEPMOD=/doesnt/exist modules_install
-  make INSTALL_DTBS_PATH="${pkgdir}/boot/dtbs" dtbs_install
+  make dtbs
   cp arch/$KARCH/boot/Image{,.gz} "${pkgdir}/boot"
+  cp arch/$KARCH/boot/dts/mediatek/.*.dtb.dts.tmp "${pkgdir}/boot/dtss"
 
   # make room for external modules
   local _extramodules="extramodules-${_basekernel}${_kernelname}"
@@ -122,6 +126,11 @@ _package() {
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
   sed "${_subst}" ../90-linux.hook |
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
+  sed "${_subst}" ../95-linux.hook |
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/95-${pkgbase}.hook"
+
+  cd "${startdir}"
+  install -m755 -vDt $pkgdir/usr/bin bpir64-writefip
 }
 
 _package-headers() {

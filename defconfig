@@ -51,7 +51,6 @@ CONFIG_CGROUP_CPUACCT=y
 CONFIG_CGROUP_PERF=y
 # CONFIG_UTS_NS is not set
 CONFIG_USER_NS=y
-CONFIG_BLK_DEV_INITRD=y
 CONFIG_CC_OPTIMIZE_FOR_SIZE=y
 
 #
@@ -301,6 +300,7 @@ CONFIG_MTD=y
 #
 # Partition parsers
 #
+CONFIG_MTD_CMDLINE_PARTS=m
 # CONFIG_MTD_OF_PARTS is not set
 # end of Partition parsers
 
@@ -309,6 +309,13 @@ CONFIG_MTD=y
 #
 CONFIG_NFTL=m
 CONFIG_NFTL_RW=y
+
+#
+# Self-contained MTD device drivers
+#
+CONFIG_MTD_BLOCK2MTD=m
+# end of Self-contained MTD device drivers
+
 CONFIG_MTD_SPI_NOR=y
 # CONFIG_MTD_SPI_NOR_USE_4K_SECTORS is not set
 
@@ -742,6 +749,13 @@ CONFIG_NLS_ISO8859_1=y
 # Authenticated Encryption with Associated Data
 #
 CONFIG_CRYPTO_ECHAINIV=y
+
+#
+# Library routines
+#
+
+CONFIG_XZ_DEC=y
+# end of Library routines
 
 #
 # Kernel hacking

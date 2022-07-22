@@ -4,19 +4,20 @@ pkgbase = linux-bpir64-git
 	url = http://www.kernel.org/
 	arch = aarch64
 	license = GPL2
-	makedepends = xmlto
-	makedepends = docbook-xsl
 	makedepends = kmod
 	makedepends = inetutils
 	makedepends = bc
 	makedepends = git
-	makedepends = uboot-tools
 	makedepends = dtc
 	options = !strip
 	source = defconfig
 	source = linux.preset
 	source = 60-linux.hook
 	source = 90-linux.hook
+	source = 95-linux.hook
+	source = bpir64-writefip
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
@@ -28,8 +29,8 @@ pkgname = linux-bpir64-git
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
-	depends = mkinitcpio>=0.7
-	optdepends = crda: to set the correct wireless channels of your country
+	depends = linux-bpir64-fiptool-git
+	optdepends = mkinitcpio>=0.7
 	provides = linux=5.18.11.bpi.r64.1
 	provides = WIREGUARD-MODULE
 	conflicts = linux
