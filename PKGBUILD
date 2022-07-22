@@ -1,7 +1,7 @@
 # Maintainer: Aria Moradi <aria.moradi007 at gmail dot com>
 
 pkgname=pw-volume-git
-pkgver=r45.a906b7e
+pkgver=r47.26c7b55
 pkgrel=1
 pkgdesc="Basic interface to PipeWire volume controls"
 arch=("x86_64")

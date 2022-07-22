@@ -1,6 +1,6 @@
 pkgbase = pw-volume-git
 	pkgdesc = Basic interface to PipeWire volume controls
-	pkgver = r45.a906b7e
+	pkgver = r47.26c7b55
 	pkgrel = 1
 	url = https://github.com/smasher164/pw-volume
 	arch = x86_64
