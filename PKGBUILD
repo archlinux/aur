@@ -1,13 +1,13 @@
 # Maintainer: Marc Tiehuis <marctiehuis at gmail.com>
 
 pkgname=zig-git
-pkgver=0.9.0
+pkgver=0.9.0.r3052.g460211431
 pkgrel=1
 pkgdesc="a programming language prioritizing robustness, optimality, and clarity"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url='https://ziglang.org'
 license=('MIT')
-depends=('clang' 'llvm>=13' 'lld')
+depends=('clang' 'llvm>=14' 'lld')
 makedepends=('cmake' 'git')
 provides=(zig)
 conflicts=(zig)
@@ -22,7 +22,8 @@ build() {
     cmake -B build -S zig \
         -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DZIG_PREFER_CLANG_CPP_DYLIB=ON
+        -DZIG_PREFER_CLANG_CPP_DYLIB=ON \
+        -DZIG_STATIC_ZLIB=on
     cmake --build build
 }
 
