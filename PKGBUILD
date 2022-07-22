@@ -2,7 +2,7 @@
 
 pkgname=fakturama
 pkgver=2.1.2.d
-pkgrel=1
+pkgrel=2
 pkgdesc="Creates invoices with ZUGFeRD / XRechnung support"
 arch=('x86_64')
 url="https://www.fakturama.info"
@@ -14,7 +14,9 @@ depends=(
 )
 makedepends=()
 checkdepends=()
-optdepends=()
+optdepends=(
+	'libreoffice-fresh'
+)
 provides=()
 conflicts=()
 replaces=()
@@ -49,7 +51,9 @@ prepare() {
 
 package() {
 	# Get prefixed application directory
-	_main_application="$pkgdir/usr/share/${pkgname}2"
+	_bin_dir="$pkgdir/usr/bin"
+	_rooted_application="/usr/share/${pkgname}2"
+	_main_application="$pkgdir$_rooted_application"
 
 	# Create entry under _main_application
 	install -m 755 -d "$_main_application"
@@ -67,4 +71,8 @@ package() {
 	install -Dm 644 "$srcdir/icon.xpm" "$pkgdir/usr/share/pixmaps/fakturama2.xpm"
 	install -Dm 644 "$srcdir/fakturama2.desktop" "$pkgdir/usr/share/applications/fakturama2.desktop"
 	install -Dm 644 "$srcdir/fakturama2-clean.desktop" "$pkgdir/usr/share/applications/fakturama2-clean.desktop"
+
+	# create symlink for binar
+  mkdir -p "$_bin_dir"
+	ln -s "$_rooted_application/Fakturama" "$_bin_dir"
 }
