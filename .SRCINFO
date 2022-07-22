@@ -29,7 +29,7 @@ pkgname = linux-bpir64-git
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
-	depends = linux-bpir64-fiptool-git
+	depends = bpir64-atf-git
 	optdepends = mkinitcpio>=0.7
 	provides = linux=5.18.13.bpi.r64.1
 	provides = WIREGUARD-MODULE
