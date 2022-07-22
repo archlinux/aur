@@ -1,0 +1,22 @@
+pkgbase = bpir64-atf-git
+	pkgdesc = ATF bpir64 images including fiptool
+	pkgver = r20210508214220.d2c75b2
+	pkgrel = 1
+	url = https://github.com/mtk-openwrt/arm-trusted-firmware.git
+	install = bpir64-atf-git.install
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	depends = bpir64-mkimage
+	source = bl31-inside-bl2-image.patch
+	source = mmc-high-speed.patch
+	source = move-bl33-base.patch
+	source = no-uboot-bl2.patch
+	source = no-uboot-bl31.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = bpir64-atf-git

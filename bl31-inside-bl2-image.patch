@@ -1,0 +1,50 @@
+--- a/common/bl_common.c	2021-09-25 13:55:57.548234397 +0200
++++ b/common/bl_common.c	2021-09-25 13:57:52.297025456 +0200
+@@ -82,6 +82,47 @@
+ 
+ 	image_base = image_data->image_base;
+ 
++#if (PRELOADED_BL33_BASE & 0b0001) != 0
++	if (image_id == BL31_IMAGE_ID) {
++		#pragma message "Compiling BL31 into BL2" 
++
++		extern uint8_t _binary_FILENAME_start[];
++		extern uint8_t _binary_FILENAME_end;
++		__asm__(
++		 ".section \".rodata\", \"a\", @progbits\n"
++		 "_binary_FILENAME_start:\n"
++		 ".balign 16\n"
++		 ".incbin \"build/mt7622/release/bl31.bin\"\n"
++		 "_binary_FILENAME_end:\n"
++		 ".balign 16\n"
++		 ".previous\n"
++		);
++		image_data->image_size = (uint32_t)((uintptr_t)&_binary_FILENAME_end -
++		                                    (uintptr_t)&_binary_FILENAME_start);
++
++		if (image_data->image_size > image_data->image_max_size) {
++			WARN("Image id=%u size out of bounds\n", image_id);
++			return -EFBIG;
++		}
++
++		memcpy((void *)image_base, &_binary_FILENAME_start, image_data->image_size);
++
++		INFO("Image id=%u copied: 0x%lx - 0x%lx\n", image_id, image_base,
++		     image_base + (uintptr_t)image_data->image_size);
++
++		return 0;
++	}
++#endif
++	if (image_id == NT_FW_CONFIG_ID) {
++		unsigned int * ptr = (unsigned int *) BL33_BASE;
++		if (ptr[14] == 0x644d5241)
++			INFO("Loaded BL33 image is linux kernel image, loading DTB\n");
++		else {
++			INFO("Loaded BL33 image is not linux kernel image, not loading DTB\n");
++			return 0;
++		}
++	}
++
+ 	/* Obtain a reference to the image by querying the platform layer */
+ 	io_result = plat_get_image_source(image_id, &dev_handle, &image_spec);
+ 	if (io_result != 0) {

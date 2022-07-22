@@ -1,0 +1,8 @@
+diff -NarU 1 a/plat/mediatek/mt7622/include/platform_def.h b/plat/mediatek/mt7622/include/platform_def.h 
+--- a/plat/mediatek/mt7622/include/platform_def.h	2022-07-15 08:41:23.704138923 +0200
++++ b/plat/mediatek/mt7622/include/platform_def.h	2022-07-15 08:37:57.905563753 +0200
+@@ -92,3 +92,3 @@
+ 
+-#define BL33_BASE		(0x41e00000)
++#define BL33_BASE		(0x44000000)
+ 
