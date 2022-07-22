@@ -6,8 +6,8 @@ __author=davis
 _pkgname=LAGraph
 __pkgname=lagraph
 pkgname=$__pkgname-git
-pkgver=28Feb2022.r8.gf8e41e801
-pkgrel=3
+pkgver=r57.gdd3449877
+pkgrel=1
 pkgdesc="A library plus a test harness for collecting algorithms that use the GraphBLAS."
 arch=('any')
 url="https://github.com/$_author/$_pkgname"
@@ -22,7 +22,7 @@ md5sums=('SKIP')
 pkgver() {
 	cd "$_pkgname"
 	( set -o pipefail
-	git describe --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+	git describe --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -d'.' -f 2,3 ||
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }

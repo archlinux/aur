@@ -1,7 +1,7 @@
 pkgbase = lagraph-git
 	pkgdesc = A library plus a test harness for collecting algorithms that use the GraphBLAS.
-	pkgver = 28Feb2022.r8.gf8e41e801
-	pkgrel = 3
+	pkgver = r57.gdd3449877
+	pkgrel = 1
 	url = https://github.com/GraphBLAS/LAGraph
 	arch = any
 	license = BSD
