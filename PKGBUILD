@@ -34,15 +34,14 @@ sha256sums=('de94eb264b5b30d55b36329c4761596bcc6b4c443b096b0b15ac963892d79ee4'
             'a24e45c707c8e0689f2f1b7952f652e824b7c55e159f4c4a0421fabd428cdf5e'
             'b3c1a11f6fa397a0f7303272692999809df69e9c1d83ddac95d88243b3eff6a3'
             '4eb1b55dac5c9d276383ea1fdd8580fc611184937b845da20d25b67610039fa8')
-
 package() {
   mkdir -p ${pkgdir}/usr/share/${pkgname}
   mkdir -p ${pkgdir}/usr/bin
   mkdir -p ${pkgdir}/usr/share/applications
   cp -r ${srcdir}/${_extractedname}/* ${pkgdir}/usr/share/${pkgname}/
-  cp ${srcdir}/Meshroom.png ${pkgdir}/usr/share/${pkgname}/Meshroom.png
-  cp ${srcdir}/Meshroom ${pkgdir}/usr/bin/Meshroom
-  cp ${srcdir}/meshroom_photogrammetry ${pkgdir}/usr/bin/meshroom_photogrammetry
-  cp ${srcdir}/meshroom_compute ${pkgdir}/usr/bin/meshroom_compute
-  cp ${srcdir}/Meshroom.desktop ${pkgdir}/usr/share/applications/Meshroom.desktop
+  install -m644 ${srcdir}/Meshroom.png ${pkgdir}/usr/share/${pkgname}/Meshroom.png
+  install -m755 ${srcdir}/Meshroom ${pkgdir}/usr/bin/Meshroom
+  install -m755 ${srcdir}/meshroom_photogrammetry ${pkgdir}/usr/bin/meshroom_photogrammetry
+  install -m755 ${srcdir}/meshroom_compute ${pkgdir}/usr/bin/meshroom_compute
+  install -m755 ${srcdir}/Meshroom.desktop ${pkgdir}/usr/share/applications/Meshroom.desktop
 }
