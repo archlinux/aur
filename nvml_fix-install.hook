@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Type = Package
+Target = nvlax
+Target = nvlax-git
+
+[Action]
+Description = Applying nvlax
+When = PostTransaction
+Exec = /usr/bin/ln -s /usr/lib/libnvidia-ml.so.1.fix /usr/lib/libnvidia-ml.so.1
+NeedsTargets

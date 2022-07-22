@@ -1,0 +1,18 @@
+pkgbase = nvml-fix-git
+	pkgdesc = A workaround for an annoying bug in nVidia's NVML library.
+	pkgver = r35.038fa0c
+	pkgrel = 1
+	url = https://github.com/CFSworks/nvml_fix
+	arch = x86_64
+	arch = i686
+	depends = NVIDIA-MODULE
+	depends = nvidia-utils
+	provides = nvml-fix
+	conflicts = nvml-fix-
+	options = !ccache
+	source = git+https://github.com/CFSworks/nvml_fix.git
+	source = nvml_fix-install.hook
+	sha256sums = SKIP
+	sha256sums = 31072e446c801f253305582de4f0cee66646453e0c281458374fac3e41f6b530
+
+pkgname = nvml-fix-git
