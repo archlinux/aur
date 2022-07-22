@@ -5,7 +5,7 @@ Target = nvml-fix
 Target = nvml-fix-git
 
 [Action]
-Description = Applying nvlax
-When = PostTransaction
-Exec = /usr/bin/ln -s /usr/lib/libnvidia-ml.so.1.fix /usr/lib/libnvidia-ml.so.1
+Description = Applying nvml_fix...
+When = PreTransaction
+Exec = /bin/sh -c "mv /usr/lib/libnvidia-ml.so.1 /usr/lib/libnvidia-ml.so.1.bak"
 NeedsTargets
