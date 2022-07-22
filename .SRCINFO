@@ -1,14 +1,14 @@
 pkgbase = fend
 	pkgdesc = Arbitrary-precision unit-aware calculator
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/printfn/fend
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	depends = gcc-libs
-	source = fend-1.0.3.tar.gz::https://static.crates.io/crates/fend/fend-1.0.3.crate
-	sha512sums = 833699b6484cb2473b78a48067cfdc2ef2ff84a3a20646770fd230a9e70555680ea723791a2666d33e731dd4a3ab64f5018dd17797604669d778ea12da6649ed
+	source = fend-1.0.4.tar.gz::https://static.crates.io/crates/fend/fend-1.0.4.crate
+	sha512sums = 167a42f734c546d97d44f52a29eb6e8422b7b683eb3a78546f290e7d2c6f31a129fbf096d0277523070576dcce1d5d762d1368ef0e6d20226f2f4cde5749b61d
 
 pkgname = fend
 
