@@ -1,12 +1,12 @@
 pkgbase = pluralith-cli-bin
 	pkgdesc = Pluralith CLI for integration with Terraform and other useful little tools
-	pkgver = 0.1.8
+	pkgver = 0.1.11
 	pkgrel = 1
 	url = https://github.com/Pluralith/pluralith-cli
 	arch = x86_64
 	license = Apache-2.0
 	provides = pluralith
-	source_x86_64 = pluralith-cli-bin::https://github.com/Pluralith/pluralith-cli/releases/download/v0.1.8/pluralith_cli_linux_amd64_v0.1.8
-	sha256sums_x86_64 = eb5757e1a6e246a666d4d7e16da14abecbc269a3f883c2dc762ac59e11a3bf05
+	source_x86_64 = pluralith-cli-bin::https://github.com/Pluralith/pluralith-cli/releases/download/v0.1.11/pluralith_cli_linux_amd64_v0.1.11
+	sha256sums_x86_64 = f89f0eab65ea3fccb55d23ca46bc43899f76a1da65788e2b07fcab3cf02986c2
 
 pkgname = pluralith-cli-bin
