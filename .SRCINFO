@@ -1,0 +1,12 @@
+pkgbase = passh
+	pkgdesc = interactive keyboard password authentication for SSH
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/clarkwang/passh
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	source = passh-1.0.1.tar.gz::https://github.com/clarkwang/passh/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = f6efc7127515b3716108fa28439caca561d16923404bb1a8f734b41340b3f14e
+
+pkgname = passh
