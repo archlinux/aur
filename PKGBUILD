@@ -1,16 +1,18 @@
 # Maintainer: Ehsan Ghorbannezad <ehsan at disroot dot org>
-_pkgname=pulseaudio-subscribe
-pkgname=$_pkgname-git
+_pkgname='pulseaudio-subscribe'
+pkgname="${_pkgname}-git"
 pkgver=r9.983b005
-pkgrel=2
+pkgrel=3
 pkgdesc='program to subscribe to pulseaudio events. useful for updating statusbars.'
-url=https://github.com/soystemd/pulseaudio-subscribe
-arch=(x86_64)
-license=(GPL)
-depends=(libpulse)
-makedepends=(git pkgconf)
-source=("git+$url.git")
-md5sums=(SKIP)
+url='https://github.com/soystemd/pulseaudio-subscribe'
+arch=('x86_64')
+license=('GPL')
+depends=('libpulse')
+makedepends=('git' 'pkgconf')
+source=("git+${url}.git")
+md5sums=('SKIP')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 pkgver() {
     cd "$_pkgname"
