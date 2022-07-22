@@ -4,7 +4,7 @@ _init_system=openrc
 _basename=tblock
 pkgname=${_basename}-${_init_system}
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 provides=("$_basename")
 pkgdesc="An anti-capitalist ad-blocker that uses the hosts file"
 url="https://tblock.codeberg.page"
@@ -13,10 +13,10 @@ license=("GPL3")
 conflicts=("$_basename")
 makedepends=(
         "make"
-        "pandoc"
         "gzip"
         "python>=3"
-        "python-setuptools"
+        "python-build"
+        "python-installer"
 )
 depends=(
         "python-urllib3"
