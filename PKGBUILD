@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/${pkgver}.tar.gz")
-sha512sums=('732bb3baf195be273f211ca7f469d13c85e3389eb3b61818bcf1bd62725270832730c1dab1f5fc788a2f31743fb3be5137441e9f7bac19a33a8fae093183fa9d')
+sha512sums=('d5b49348fa60b5c3e9f6309c0b662dccc52ef4e59f13ec806faa5a6c4c84760edb91f029cdf909c7f945f668773f07f62229bfd0f3aee1860acffe7707fad7eb')
 
 build() {
     ## From Go package guidelines
