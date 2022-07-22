@@ -4,12 +4,12 @@ pkgname=realesrgan-ncnn-vulkan
 _pkgname=Real-ESRGAN-ncnn-vulkan
 pkgver=0.2.0
 _pkgver="v$pkgver"
-pkgrel=3
+pkgrel=4
 pkgdesc="NCNN implementation of Real-ESRGAN"
 url="https://github.com/xinntao/Real-ESRGAN-ncnn-vulkan"
 license=('MIT')
-depends=('vulkan-driver' 'libwebp' 'gcc-libs' 'glslang' 'ncnn')
-makedepends=('git' 'cmake' 'vulkan-headers')
+depends=('vulkan-driver' 'libwebp' 'gcc-libs' 'ncnn')
+makedepends=('git' 'cmake' 'vulkan-headers' 'glslang')
 conflicts=('realesrgan-ncnn-vulkan-bin')
 provides=('realesrgan-ncnn-vulkan')
 arch=('x86_64')
@@ -22,11 +22,6 @@ source=(
 sha256sums=('SKIP'
             'e5aa6eb131234b87c0c51f82b89390f5e3e642b7b70f2b9bbe95b6a285a40c96'
             '058bc5167a00ff53a6a135ed033797a4d012bdb86e930ba4eb271ab4c848f8df')
-prepare() {
-    cd "${srcdir}/${_pkgname}"
-    git submodule update --init --recursive
-}
-
 build() {
     cd "$srcdir/$_pkgname"
     
