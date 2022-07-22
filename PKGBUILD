@@ -3,16 +3,23 @@
 pkgbase=prusa-slicer
 pkgname=(prusa-slicer slicer-udev)
 pkgver=2.4.2
-pkgrel=6
+pkgrel=7
 pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r)"
 arch=(x86_64)
 url="https://github.com/prusa3d/PrusaSlicer"
 license=(AGPL3)
-depends=(boost-libs curl glew mpfr nlopt tbb wxwidgets-gtk3 qhull openvdb)
-makedepends=(cmake boost cereal cgal eigen expat gtest libpng systemd) # libigl not detected?
+# wx 3.2 is not supported yet https://github.com/prusa3d/PrusaSlicer/issues/8299
+depends=(boost-libs curl glew mpfr nlopt tbb qhull openvdb
+         gtk3 libjpeg-turbo) # wxwidgets-gtk3
+makedepends=(cmake boost cereal cgal eigen expat gtest libpng systemd
+             gst-plugins-base glu webkit2gtk libnotify) # libigl not detected?
 checkdepends=(catch2)
 replaces=(slic3r-prusa3d)
+# prusa-slicer use a patched wxWidgets and does not work with upstream, commit pinned in
+# https://github.com/prusa3d/PrusaSlicer/blob/version_${pkgver}/deps/wxWidgets/wxWidgets.cmake
+_wxcommit=489f6118256853cf5b299d595868641938566cdb
 source=(${url}/archive/version_${pkgver}/${pkgname}-${pkgver}.tar.gz
+        https://github.com/prusa3d/wxWidgets/archive/${_wxcommit}/wxWidgets-${_wxcommit}.tar.gz
         ${pkgname}-fix-lcereal-p1.patch::${url}/commit/0ffcfd8393457fd035576436752267c9a1e6bbcc.patch
         ${pkgname}-fix-lcereal-p2.patch::${url}/commit/cc788ebb643b6d4048f3550235ac3e9d3697ada0.patch
         ${pkgname}-boost-1.79-p1.patch::${url}/commit/408e56f0390f20aaf793e0aa0c70c4d9544401d4.patch
@@ -20,6 +27,7 @@ source=(${url}/archive/version_${pkgver}/${pkgname}-${pkgver}.tar.gz
         ${pkgname}-boost-1.79-p3.patch::${url}/commit/436a454b2e5dc823c6a878b836f82f56922e8834.patch
         use-system-catch2.patch)
 sha256sums=('ac3a77212260e8d0baf9df027c29e0ae965bc77f371e59fd27b8fe103ebb1f23'
+            'b4f0f6aea13b779e87c227dd7a062a6c2af4cad2f4e92b1272e43e2d45eedf51'
             'e110c3ca7cd8034f878b22e4992c442cc200a7c001d570dc2c9eef8a6af41786'
             'eb5bce1cb5b3970a1aa92fd9b7fe1943da4d7bb2c9908890811090914fef91c4'
             'a1cddcfb276f2da60cd91226e09ba9869b861cab3108425c9d5c1851e8009e41'
@@ -38,13 +46,36 @@ prepare() {
 }
 
 build() {
+  cmake -B deps -S wxWidgets-${_wxcommit} \
+    -DCMAKE_INSTALL_PREFIX="${srcdir}"/deps/destdir/usr/local \
+    -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
+    -DBUILD_SHARED_LIBS=OFF \
+    -DwxBUILD_TOOLKIT=gtk3 \
+    -DwxUSE_MEDIACTRL=OFF \
+    -DwxUSE_DETECT_SM=OFF \
+    -DwxUSE_UNICODE=ON \
+    -DwxUSE_UNICODE_UTF8=ON \
+    -DwxUSE_OPENGL=ON \
+    -DwxUSE_LIBPNG=sys \
+    -DwxUSE_ZLIB=sys \
+    -DwxUSE_REGEX=builtin \
+    -DwxUSE_LIBJPEG=sys \
+    -DwxUSE_LIBTIFF=sys \
+    -DwxUSE_EXPAT=sys \
+    -DwxUSE_LIBLZMA=sys \
+    -DwxUSE_LIBSDL=OFF \
+    -DwxUSE_XTEST=OFF
+  cmake --build deps
+  cmake --install deps
   cmake -B build -S PrusaSlicer-version_${pkgver} \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DOPENVDB_FIND_MODULE_PATH=/usr/lib/cmake/OpenVDB \
     -DSLIC3R_FHS=ON \
     -DSLIC3R_PCH=OFF \
-    -DSLIC3R_GTK=3
+    -DSLIC3R_GTK=3 \
+    -DwxWidgets_USE_STATIC=ON \
+    -DCMAKE_PREFIX_PATH="${srcdir}"/deps/destdir/usr/local
   make -C build
 }
 
