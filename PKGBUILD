@@ -1,46 +1,43 @@
-# Maintainer: Lars Hagström <lars@foldspace.nu>
+# Maintainer: Emil Velikov <emil.l.velikov@gmail.com>
+# Contributor: Lars Hagström <lars@foldspace.nu>
 # Contributor: Nephyrin Zey <nephyrin@doublezen.net>
 # Contributor: John Schoenick <john@pointysoftware.net>
 # Contributor: Geoffrey Teale <tealeg@googlemail.com>
 pkgname=google-breakpad-git
-pkgver=r1668.072f86ca
+pkgver=r2032.afc8daa2
 pkgrel=1
 pkgdesc="An open-source multi-platform crash reporting system"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://chromium.googlesource.com/breakpad/breakpad/"
 license=('BSD')
-makedepends=('depot-tools-git')
-depends=()
-options=('staticlibs' '!strip')
-conflicts=('google-breakpad-svn')
+makedepends=('git')
+depends=('gcc-libs')
+conflicts=('google-breakpad')
+provides=('google-breakpad')
+source=('git+https://chromium.googlesource.com/breakpad/breakpad'
+        'git+https://chromium.googlesource.com/linux-syscall-support')
+sha256sums=('SKIP'
+            'SKIP')
 
 prepare() {
-  #remove any old source lying around, since I don't want to learn depot tools
-  if [ -d "$srcdir/${pkgname}" ]; then
-    rm -rf "$srcdir/${pkgname}"
-  fi
-
-  mkdir -p "$srcdir/${pkgname}"
-  cd "$srcdir/${pkgname}"
-  /opt/depot_tools/fetch breakpad
+  ln -sfT "$srcdir/linux-syscall-support" "breakpad/src/third_party/lss"
+  cd "$srcdir/breakpad"
 }
 
 pkgver() {
-  cd "$srcdir/${pkgname}/src"
+  cd "$srcdir/breakpad"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/${pkgname}/src"
+  cd "$srcdir/breakpad"
 
-  msg2 "Configuring"
-  ./configure --prefix=/usr
-  msg2 "Building"
+  ./configure --prefix=/usr --libexecdir=/usr/lib
   make
 }
 
 package() {
-  cd "$srcdir/${pkgname}/src"
+  cd "$srcdir/breakpad"
   make DESTDIR="$pkgdir" install
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
