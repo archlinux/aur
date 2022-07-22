@@ -1,16 +1,16 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=plow
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
-pkgdesc="A high-performance HTTP benchmarking tool with real-time web UI & terminal displaying"
+pkgdesc="High-performance HTTP benchmarking tool"
 arch=('x86_64' 'aarch64')
 url="https://github.com/six-ddc/plow"
 license=('Apache')
 depends=('glibc')
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bd57418d6842ae79a675ede027cd986d1e719edb163febfaec812d1a7cde4304')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('0f0eca22651a06de3b981618b726f14efbed2701c3f53112e6763372d91a4bf9')
 
 prepare() {
 	cd "$pkgname-$pkgver"
