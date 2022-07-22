@@ -5,7 +5,6 @@ pkgbase = nvml-fix-git
 	url = https://github.com/CFSworks/nvml_fix
 	arch = x86_64
 	arch = i686
-	depends = NVIDIA-MODULE
 	depends = nvidia-utils
 	provides = nvml-fix
 	conflicts = nvml-fix-
@@ -15,6 +14,6 @@ pkgbase = nvml-fix-git
 	source = nvml-fix-upgrade.hook
 	sha256sums = SKIP
 	sha256sums = 51c2e28e88193a8b2435ff23eb4d1818f8cdaaba32f7c2562862fae2223d3a35
-	sha256sums = 2f46c41408eb708fa8fd4435229152d5d1f31742241a4bb3cabed3aa42b43e4e
+	sha256sums = 93aba7a7d07593672cda2b65ae7d2de2230e6da7422b913b5e6c76adafe745b2
 
 pkgname = nvml-fix-git

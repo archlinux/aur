@@ -10,11 +10,13 @@ arch=('x86_64' 'i686')
 conflicts=(${pkgname%*git})
 provides=(${pkgname%-git})
 options=(!ccache)
-depends=('NVIDIA-MODULE' 'nvidia-utils')
+depends=('nvidia-utils')
 source=("git+https://github.com/CFSworks/nvml_fix.git"
 		"nvml-fix-install.hook"
 		"nvml-fix-upgrade.hook")
-sha256sums=('SKIP' '51c2e28e88193a8b2435ff23eb4d1818f8cdaaba32f7c2562862fae2223d3a35' '2f46c41408eb708fa8fd4435229152d5d1f31742241a4bb3cabed3aa42b43e4e')
+sha256sums=('SKIP'
+'51c2e28e88193a8b2435ff23eb4d1818f8cdaaba32f7c2562862fae2223d3a35'
+'93aba7a7d07593672cda2b65ae7d2de2230e6da7422b913b5e6c76adafe745b2')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
