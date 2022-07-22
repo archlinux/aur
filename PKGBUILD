@@ -7,7 +7,7 @@ pkgdesc="Program for time tracking"
 arch=('i686' 'x86_64')
 url="https://dxtime.dxsolutions.org"
 license=('GPL')
-depends=('wxgtk3')
+depends=('wxwidgets-gtk3')
 makedepends=('cmake')
 install=${pkgname}.install
 source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz)
@@ -15,11 +15,13 @@ md5sums=('185d2a66bb50adc1d3b5c92e5ae423af')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DDX_WX_CONFIG=wx-config-gtk3
+  mkdir build
+  cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}/build"
   make DESTDIR="$pkgdir" install
 }

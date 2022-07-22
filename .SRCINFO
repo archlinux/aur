@@ -8,7 +8,7 @@ pkgbase = dxtime
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
-	depends = wxgtk3
+	depends = wxwidgets-gtk3
 	source = http://downloads.sourceforge.net/sourceforge/dxtime/dxtime-1.2.4.tar.gz
 	md5sums = 185d2a66bb50adc1d3b5c92e5ae423af
 
