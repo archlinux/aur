@@ -1,0 +1,17 @@
+pkgbase = linux-galliumos-bin
+	pkgdesc = GalliumOS kernel for most Chromebooks and Chromeboxes, version: 4.16.18
+	pkgver = 4.16.18
+	pkgrel = 1
+	url = https://github.com/GalliumOS/linux
+	arch = x86_64
+	license = GPL2
+	noextract = linux-image-4.16.18-galliumos_4.16.18-galliumos4_amd64.deb
+	noextract = linux-headers-4.16.18-galliumos_4.16.18-galliumos4_amd64.deb
+	source = https://apt.galliumos.org/pool/main/l/linux-4.16.18-galliumos/linux-image-4.16.18-galliumos_4.16.18-galliumos4_amd64.deb
+	source = https://apt.galliumos.org/pool/main/l/linux-4.16.18-galliumos/linux-headers-4.16.18-galliumos_4.16.18-galliumos4_amd64.deb
+	sha256sums = 4be88294cdc5a39e1adfa7003c8a0f99a7372a4ca3e343711266fe2033f59be8
+	sha256sums = 6c14f8c5e998b960a87ee990ed4f08178c7614a2db63e98f98da8159f4f8abed
+
+pkgname = linux-galliumos-bin
+
+pkgname = linux-galliumos-headers-bin
