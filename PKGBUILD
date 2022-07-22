@@ -7,17 +7,22 @@ pkgdesc="Asynchronous Psycopg wrapper for Tornado."
 arch=("any")
 url="http://momoko.61924.nl"
 license=("MIT")
-depends=("python" "python-tornado" "python-psycopg2")
-makedepends=("python-setuptools")
+depends=('python'
+         'python-tornado'
+         'python-psycopg2')
+makedepends=('python-build'
+             'python-installer'
+             'python-setuptools'
+             'python-wheel')
 source=("https://github.com/FSX/momoko/archive/v$pkgver.tar.gz")
-sha1sums=("65156ce1054126a75a1b34d923f251ca997e44f2")
+sha1sums=('65156ce1054126a75a1b34d923f251ca997e44f2')
 
 build() {
     cd "$srcdir/momoko-$pkgver"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$srcdir/momoko-$pkgver"
-    python setup.py install --root="$pkgdir"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
