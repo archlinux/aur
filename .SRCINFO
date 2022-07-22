@@ -1,0 +1,20 @@
+pkgbase = splash-git
+	pkgdesc = A Unsplash wallpaper application for GNOME
+	pkgver = r17.d1739db
+	pkgrel = 1
+	url = https://gitlab.gnome.org/Bharatkalluri/splash
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	depends = libadwaita
+	provides = splash
+	conflicts = splash
+	source = git+https://gitlab.gnome.org/Bharatkalluri/splash.git
+	source = 2.patch
+	b2sums = SKIP
+	b2sums = 1797f930e07b5a97598b951f7539ed86c6d4a21f242e44322d806d7b139ec841a66c5af580c3d308c8ab0b6cfee05e4d64bdd49a61bb4092ee5d2b0724944a87
+
+pkgname = splash-git

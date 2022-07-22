@@ -1,0 +1,367 @@
+diff --git a/build-aux/flatpak/in.bharatkalluri.splash.json b/build-aux/flatpak/in.bharatkalluri.splash.json
+index ebbefb5464d0fd955df94a0a3fb31e2665c202b1..f6519baf92a15348310e36d99571b324f7b7dad2 100644
+--- a/build-aux/flatpak/in.bharatkalluri.splash.json
++++ b/build-aux/flatpak/in.bharatkalluri.splash.json
+@@ -1,7 +1,7 @@
+ {
+     "app-id" : "in.bharatkalluri.splash",
+     "runtime" : "org.gnome.Platform",
+-    "runtime-version" : "3.36",
++    "runtime-version" : "42",
+     "sdk" : "org.gnome.Sdk",
+     "command" : "splash",
+     "finish-args" : [
+@@ -9,9 +9,7 @@
+         "--share=ipc",
+         "--socket=fallback-x11",
+         "--socket=wayland",
+-
+         "--filesystem=xdg-pictures",
+-
+         "--filesystem=xdg-run/dconf",
+         "--filesystem=~/.config/dconf:ro",
+         "--talk-name=ca.desrt.dconf",
+@@ -29,7 +27,65 @@
+         "*.a"
+     ],
+     "modules" : [
+-    	"python3-requests.json",
++        "python3-requests.json",
++        {
++            "name" : "libsass",
++            "cleanup" : [
++                "*"
++            ],
++            "sources" : [
++                {
++                    "type" : "archive",
++                    "url" : "https://github.com/sass/libsass/archive/3.6.4.tar.gz",
++                    "sha256" : "f9484d9a6df60576e791566eab2f757a97fd414fce01dd41fc0a693ea5db2889"
++                },
++                {
++                    "type" : "script",
++                    "dest-filename" : "autogen.sh",
++                    "commands" : [
++                        "autoreconf -si"
++                    ]
++                }
++            ]
++        },
++        {
++            "name" : "sassc",
++            "cleanup" : [
++                "*"
++            ],
++            "sources" : [
++                {
++                    "type" : "archive",
++                    "url" : "https://github.com/sass/sassc/archive/3.6.1.tar.gz",
++                    "sha256" : "8cee391c49a102b4464f86fc40c4ceac3a2ada52a89c4c933d8348e3e4542a60"
++                },
++                {
++                    "type" : "script",
++                    "dest-filename" : "autogen.sh",
++                    "commands" : [
++                        "autoreconf -si"
++                    ]
++                }
++            ]
++        },
++        {
++            "name" : "libadwaita",
++            "buildsystem" : "meson",
++            "config-opts" : [
++                "-Dgtk_doc=false",
++                "-Dtests=false",
++                "-Dexamples=false",
++                "-Dvapi=false",
++                "-Dglade_catalog=disabled"
++            ],
++            "sources" : [
++                {
++                    "type" : "git",
++                    "url" : "https://gitlab.gnome.org/GNOME/libadwaita.git",
++                    "branch" : "main"
++                }
++            ]
++        },
+         {
+             "name" : "splash",
+             "builddir" : true,
+@@ -41,5 +97,8 @@
+                 }
+             ]
+         }
+-    ]
++    ],
++    "build-options" : {
++        "env" : {        }
++    }
+ }
+diff --git a/data/ui/about_dialog.ui b/data/ui/about_dialog.ui
+index 06815312c521495d9acb0c2faeb135e8c1ba560c..af40184c62d3a9e2928c84047b196ee2b9a69634 100644
+--- a/data/ui/about_dialog.ui
++++ b/data/ui/about_dialog.ui
+@@ -1,45 +1,13 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<!-- Generated with glade 3.36.0 -->
+ <interface>
+-  <requires lib="gtk+" version="3.22"/>
++  <requires lib="gtk+" version="4.0"/>
+   <object class="GtkAboutDialog" id="about_dialog">
+     <property name="can_focus">False</property>
+-    <property name="type_hint">dialog</property>
+     <property name="program_name">Splash!</property>
+     <property name="version">0.1</property>
+     <property name="website">https://bharatkalluri.in</property>
+     <property name="authors">Bharat Kalluri</property>
+     <property name="logo_icon_name">in.bharatkalluri.splash</property>
+     <property name="license_type">gpl-3-0</property>
+-    <child internal-child="vbox">
+-      <object class="GtkBox">
+-        <property name="can_focus">False</property>
+-        <property name="orientation">vertical</property>
+-        <property name="spacing">2</property>
+-        <child internal-child="action_area">
+-          <object class="GtkButtonBox">
+-            <property name="can_focus">False</property>
+-            <property name="layout_style">end</property>
+-            <child>
+-              <placeholder/>
+-            </child>
+-            <child>
+-              <placeholder/>
+-            </child>
+-          </object>
+-          <packing>
+-            <property name="expand">False</property>
+-            <property name="fill">False</property>
+-            <property name="position">0</property>
+-          </packing>
+-        </child>
+-        <child>
+-          <placeholder/>
+-        </child>
+-      </object>
+-    </child>
+-    <child type="titlebar">
+-      <placeholder/>
+-    </child>
+   </object>
+ </interface>
+diff --git a/data/ui/header_bar.ui b/data/ui/header_bar.ui
+index 5cea742382f184205c335c1394233465c7417150..c7f4bf9637dd64ce2baaa3c6fbf023932779127f 100644
+--- a/data/ui/header_bar.ui
++++ b/data/ui/header_bar.ui
+@@ -1,64 +1,45 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<!-- Generated with glade 3.36.0 -->
+ <interface>
+-  <requires lib="gtk+" version="3.22"/>
++  <requires lib="gtk" version="4.0"/>
+   <template class="header_bar" parent="GtkHeaderBar">
+-    <property name="visible">True</property>
+-    <property name="can_focus">False</property>
+-    <property name="title">Splash!</property>
+-    <property name="show_close_button">True</property>
+-    <child>
++    <property name="title-widget">
++      <object class="GtkLabel" id="title_label">
++        <property name="label" translatable="yes">Splash!</property>
++        <property name="single-line-mode">True</property>
++        <property name="ellipsize">end</property>
++        <property name="width-chars">5</property>
++        <style>
++          <class name="title"/>
++        </style>
++      </object>
++    </property>
++    <child type="start">
+       <object class="GtkButton" id="shuffle_button">
+         <property name="label" translatable="yes">Shuffle</property>
+-        <property name="visible">True</property>
+-        <property name="can_focus">True</property>
+-        <property name="receives_default">True</property>
++        <property name="focusable">1</property>
++        <property name="css_classes">suggested-action</property>
+       </object>
+     </child>
+     <child>
+-      <object class="GtkMenuButton" id="open_menu_button">
+-        <property name="visible">True</property>
+-        <property name="can_focus">True</property>
+-        <property name="receives_default">True</property>
+-        <child>
+-          <object class="GtkImage" id="open_menu_icon">
+-            <property name="visible">True</property>
+-            <property name="can_focus">False</property>
+-            <property name="icon_name">open-menu-symbolic</property>
+-          </object>
+-        </child>
+-      </object>
+-      <packing>
+-        <property name="pack_type">end</property>
+-        <property name="position">1</property>
+-      </packing>
++      <object class="GtkSpinner" id="loading_spinner"/>
+     </child>
+-    <child>
+-      <object class="GtkSpinner" id="loading_spinner">
+-        <property name="visible">True</property>
+-        <property name="can_focus">False</property>
++    <child type="end">
++      <object class="GtkMenuButton" id="open_menu_button">
++        <property name="focusable">1</property>
++        <property name="icon_name">open-menu-symbolic</property>
+       </object>
+-      <packing>
+-        <property name="position">2</property>
+-      </packing>
+     </child>
+-    <child>
++    <child type="end">
+       <object class="GtkButton" id="save_wallpaper_button">
+-        <property name="visible">True</property>
+-        <property name="can_focus">True</property>
+-        <property name="receives_default">True</property>
++        <property name="focusable">1</property>
++        <property name="has_frame">False</property>
+         <child>
+           <object class="GtkImage">
+-            <property name="visible">True</property>
+-            <property name="can_focus">False</property>
+             <property name="icon_name">document-save-symbolic</property>
+           </object>
+         </child>
+       </object>
+-      <packing>
+-        <property name="pack_type">end</property>
+-        <property name="position">3</property>
+-      </packing>
+     </child>
+   </template>
+ </interface>
++
+diff --git a/data/ui/window.ui b/data/ui/window.ui
+index 908bdad3a24e5b0e4985c6038c0bcfe3d2f5705c..953479de1b694a2d1ddfa4113bbdcca4cba827a1 100644
+--- a/data/ui/window.ui
++++ b/data/ui/window.ui
+@@ -1,20 +1,25 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<!-- Generated with glade 3.36.0 -->
+ <interface>
+-  <requires lib="gtk+" version="3.20"/>
+-  <template class="SplashWindow" parent="GtkApplicationWindow">
++  <template class="SplashWindow" parent="AdwApplicationWindow">
+     <property name="can_focus">False</property>
+-    <property name="default_width">600</property>
+-    <property name="default_height">300</property>
++    <property name="default_width">1280</property>
++    <property name="default_height">720</property>
+     <child>
+-      <object class="GtkImage" id="wallpaper_container">
+-        <property name="visible">True</property>
+-        <property name="can_focus">False</property>
+-        <property name="icon_name">applets-screenshooter-symbolic</property>
++      <object class="GtkBox">
++        <property name="orientation">vertical</property>
++        <child>
++          <object class="header_bar" id="headerbar">
++          </object>
++        </child>
++        <child>
++          <object class="GtkPicture" id="wallpaper_container">
++            <property name="visible">True</property>
++            <property name="can_focus">False</property>
++            <property name="vexpand">True</property>
++          </object>
++        </child>
+       </object>
+     </child>
+-    <child type="titlebar">
+-      <placeholder/>
+-    </child>
+   </template>
+ </interface>
++
+diff --git a/src/main.py b/src/main.py
+index 4f143b13222fa8823f440eb821a15239104db205..dc8fd316402f2228f1fb163fa7a62311f9b4a7f5 100644
+--- a/src/main.py
++++ b/src/main.py
+@@ -18,9 +18,10 @@
+ import sys
+ import gi
+ 
+-gi.require_version('Gtk', '3.0')
++gi.require_version('Gtk', '4.0')
++gi.require_version('Adw', '1')
+ 
+-from gi.repository import Gtk, Gio
++from gi.repository import Gtk, Gio, Adw
+ 
+ from .views.window import SplashWindow
+ 
+diff --git a/src/views/header_bar.py b/src/views/header_bar.py
+index 93db00f1dc78f57aa9a857593a9473e60aa6b0a9..bc3d68d5247388d7e042fa867fd81a955e936f17 100644
+--- a/src/views/header_bar.py
++++ b/src/views/header_bar.py
+@@ -1,4 +1,4 @@
+-from gi.repository import Gtk, GdkPixbuf, Gio
++from gi.repository import Gtk, GdkPixbuf, Gio, Adw
+ from ..services.wallpaper_service import WallPaperService
+ from ..services.unsplash_service import UnSplashService, UnSplashImage
+ 
+@@ -12,6 +12,7 @@ class HeaderBar(Gtk.HeaderBar):
+     loading_spinner: Gtk.Spinner = Gtk.Template.Child()
+     open_menu_button: Gtk.MenuButton = Gtk.Template.Child()
+     save_wallpaper_button: Gtk.Button = Gtk.Template.Child()
++    title_label: Gtk.Label = Gtk.Template.Child()
+ 
+     unsplash_service: UnSplashService = UnSplashService()
+     wallpaper_service: WallPaperService = WallPaperService.get_instance()
+@@ -34,8 +35,9 @@ class HeaderBar(Gtk.HeaderBar):
+             preserve_aspect_ratio=True,
+         )
+         from .window import SplashWindow
+-        SplashWindow.get_instance().wallpaper_container.set_from_pixbuf(pixbuf)
+-        self.set_subtitle(f"Photograph by {random_wallpaper_metadata.photographer_name} from Unsplash.com")
++        SplashWindow.get_instance().wallpaper_container.set_pixbuf(pixbuf)
++        SplashWindow.get_instance().wallpaper_container.set_can_shrink(False)
++        self.title_label.set_text(f"Photograph by {random_wallpaper_metadata.photographer_name} from Unsplash.com")
+         self.loading_spinner.stop()
+ 
+     def async_shuffle_image(self):
+diff --git a/src/views/window.py b/src/views/window.py
+index 9b3b1ab95ec56217d90b0d845488ec72a4d55e74..488f0f6b101c3eb207e55bbb385efad3888de630 100644
+--- a/src/views/window.py
++++ b/src/views/window.py
+@@ -15,24 +15,24 @@
+ # You should have received a copy of the GNU General Public License
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+-from gi.repository import Gtk, GdkPixbuf, Gio
++from gi.repository import Gtk, GdkPixbuf, Gio, Adw
+ from ..services.wallpaper_service import WallPaperService
+ from ..services.unsplash_service import UnSplashService, UnSplashImage
+ from .header_bar import HeaderBar
+ 
+-
+ @Gtk.Template(resource_path='/in/bharatkalluri/splash/ui/window.ui')
+-class SplashWindow(Gtk.ApplicationWindow):
++class SplashWindow(Adw.ApplicationWindow):
++
++    Adw.init()
++
+     __gtype_name__ = 'SplashWindow'
+ 
+     wallpaper_container: Gtk.Image = Gtk.Template.Child()
+-    header_bar: Gtk.HeaderBar = HeaderBar.get_instance()
+ 
+     def __init__(self, **kwargs):
+         super().__init__(**kwargs)
+         self.set_icon_name('in.bharatkalluri.splash')
+         self.set_default_size(1024, 768)
+-        self.set_titlebar(self.header_bar)
+ 
+     instance = None
+     @staticmethod
