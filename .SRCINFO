@@ -1,12 +1,12 @@
 pkgbase = r-parallelly
 	pkgdesc = Enhancing the 'parallel' Package
-	pkgver = 1.32.0
+	pkgver = 1.32.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=parallelly
 	arch = any
 	license = LGPL
 	depends = r
-	source = https://cran.r-project.org/src/contrib/parallelly_1.32.0.tar.gz
-	sha256sums = 909ca35e7931b08dab7c8e48747c9b55c4f92480d87a85f98331a03b5f85e179
+	source = https://cran.r-project.org/src/contrib/parallelly_1.32.1.tar.gz
+	sha256sums = 31c685f59ac7ff702fe2720910780378113adf0df0baf048a62eef94524cca90
 
 pkgname = r-parallelly
