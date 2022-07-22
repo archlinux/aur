@@ -1,7 +1,7 @@
 pkgbase = lfutils-git
 	pkgdesc = Scripts and utilities for the lf file manager.
-	pkgver = r92.4d52766
-	pkgrel = 2
+	pkgver = r96.8149768
+	pkgrel = 1
 	url = https://github.com/soystemd/lfutils
 	arch = x86_64
 	license = GPL
@@ -23,6 +23,8 @@ pkgbase = lfutils-git
 	optdepends = docx2txt: previewing docx files
 	optdepends = odt2txt: previewing OpenDocument files
 	optdepends = transmission-cli: previewing .torrent files
+	provides = lfutils
+	conflicts = lfutils
 	source = git+https://github.com/soystemd/lfutils.git
 	md5sums = SKIP
 
