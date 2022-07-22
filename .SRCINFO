@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-quick-settings-git
+	pkgdesc = Quick Settings for Gnome
+	pkgver = r145.9e0660f
+	pkgrel = 1
+	url = https://gitlab.gnome.org/fmuellner/quick-settings-extension
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = gnome-shell
+	provides = gnome-shell-extension-quick-settings
+	conflicts = gnome-shell-extension-quick-settings
+	source = gnome-shell-extension-quick-settings::git+https://gitlab.gnome.org/fmuellner/quick-settings-extension
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-quick-settings-git
