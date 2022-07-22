@@ -1,0 +1,15 @@
+pkgbase = codelldb-bin
+	pkgdesc = A native debugger extension for VSCode based on LLDB
+	pkgver = 1.7.2
+	pkgrel = 1
+	url = https://github.com/vadimcn/vscode-lldb
+	arch = x86_64
+	license = MIT
+	provides = codelldb
+	conflicts = codelldb
+	source = https://github.com/vadimcn/vscode-lldb/releases/download/v1.7.2/codelldb-x86_64-linux.vsix
+	source = vscode-lldb-1.7.2.tar.gz::https://github.com/vadimcn/vscode-lldb/archive/refs/tags/v1.7.2.tar.gz
+	sha256sums = 99b919587030fc77a6a88d4ea393646f485b7550910e59e9e425049c9d1530de
+	sha256sums = d818c0ffab6c52d3804fda40f2c5cd80a36567a5f1094490b3b768b34a6a1a99
+
+pkgname = codelldb-bin
