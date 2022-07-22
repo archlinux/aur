@@ -1,6 +1,6 @@
 pkgbase = plow-bin
-	pkgdesc = A high-performance HTTP benchmarking tool with real-time web UI & terminal displaying
-	pkgver = 1.2.0
+	pkgdesc = High-performance HTTP benchmarking tool
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/six-ddc/plow
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = plow-bin
 	license = Apache
 	provides = plow
 	conflicts = plow
-	source_x86_64 = plow-bin-1.2.0-x86_64.tar.gz::https://github.com/six-ddc/plow/releases/download/v1.2.0/plow_1.2.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 928eda5b6c74c20d0d70197b4c2a1cd482112083ba557d94866e5af04974d73d
-	source_aarch64 = plow-bin-1.2.0-aarch64.tar.gz::https://github.com/six-ddc/plow/releases/download/v1.2.0/plow_1.2.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 5bad7187a4ff55b27f5dd1b379fb92c12908c7e2cf7ce98bbec5b9f1bca6afb2
+	source_x86_64 = plow-bin-1.3.0-x86_64.tar.gz::https://github.com/six-ddc/plow/releases/download/v1.3.0/plow_1.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = d31fe6ab100fd6e922beaf1a395ed23cb0b4651f01f7b52e9dabd3689b819dd9
+	source_aarch64 = plow-bin-1.3.0-aarch64.tar.gz::https://github.com/six-ddc/plow/releases/download/v1.3.0/plow_1.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3b70ff85de021b53827734f03aeab6731ec9cf890aaa65d59374494699ed4917
 
 pkgname = plow-bin
