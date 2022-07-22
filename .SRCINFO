@@ -1,6 +1,6 @@
 pkgbase = sia
 	pkgdesc = Sia - Decentralized storage for the post-cloud world
-	pkgver = 1.5.8
+	pkgver = 1.5.9
 	pkgrel = 1
 	url = https://sia.tech
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = sia
 	provides = siac
 	conflicts = sia-daemon
 	conflicts = siac
-	source = git+https://github.com/SiaFoundation/siad.git#tag=v1.5.8
+	source = git+https://github.com/SiaFoundation/siad.git#tag=v1.5.9
 	source = sia.sysusers
 	source = sia.tmpfiles
 	source = siad.service
