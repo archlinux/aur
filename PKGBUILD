@@ -1,7 +1,7 @@
 #Maintainer: Emanuel Serpa <emanuelvserpa at gmail dot com>
 pkgname=swayr
 pkgver=0.20.0
-pkgrel=3
+pkgrel=1
 pkgdesc="Swayr is a window switcher (and more) for sway"
 arch=('x86_64')
 url="https://git.sr.ht/~tsdh/swayr"
