@@ -13,7 +13,7 @@ source=(https://github.com/HEnquist/camilladsp/archive/refs/tags/v$pkgver.tar.gz
         camilladsp.install
         camilladsp.service
         camilladsp.yml)
-sha256sums=('9de8d7759fa738206e6dd21596a72736aa1841927cc81c359c8d726d22c8a4ad'
+sha256sums=('890d84d2ae105968d536d9795ff4c9da2acedb7e6eaa7794a45fc4ca02c028ed'
             '15e9bb22a32472b88bd092d5bdbca0cdc7de8d0a476e954558ca8e00ab8c4517'
             '993f05f04e1627b1739046e3c59d880deec1d4849525fa0e633dda5493923b48'
             'dd7932754e220e3e68250dae326ce6a81f6a61ce7923f6e001c9c3c1787a3b07')
