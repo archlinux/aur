@@ -3,17 +3,19 @@
 _pkgbase=dogecoin
 pkgname=('dogecoin-daemon' 'dogecoin-cli' 'dogecoin-tx')
 pkgver=1.14.6
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='https://dogecoin.com/'
 makedepends=('boost' 'libevent' 'zeromq')
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$_pkgbase/$_pkgbase/archive/v$pkgver.tar.gz"
         'dogecoin.sysusers'
-        'dogecoin.tmpfiles')
+        'dogecoin.tmpfiles'
+        'service.patch')
 sha256sums=('341088d4d59c5086a430ec64ce81c92a9629146ef50d6c4a4d868b31ce2cef79'
             '9946c415ffb7d7189c81a349bd92020aeb658706adb74215630339daf00a6c96'
-            '0fc1bf30a981dca11f7fa7cb81c87bbc5342c3dbcd63b9ef6e0bff766c78eb31')
+            '0fc1bf30a981dca11f7fa7cb81c87bbc5342c3dbcd63b9ef6e0bff766c78eb31'
+            'a6dc48bd9ccebeb79f00de8d1bb9bbade031a2f186ea65e43669a62842a15c18')
 validpgpkeys=('1DDC450B45DB5ADCCF5DDA7F8E4217C6D47D946D')
 
 prepare() {
@@ -22,6 +24,7 @@ prepare() {
 }
 
 build() {
+  patch "$srcdir/$_pkgbase-$pkgver/contrib/init/dogecoind.service" "service.patch"
   cd $_pkgbase-$pkgver
   ./configure --prefix=/usr --with-gui=no --with-incompatible-bdb --without-miniupnpc
   make

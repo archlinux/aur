@@ -1,0 +1,37 @@
+--- src/dogecoin-1.14.6/contrib/init/dogecoind.service	2022-07-18 18:54:00.000000000 -0400
++++ /usr/lib/systemd/system/dogecoind.service	2022-07-21 20:17:10.344295631 -0400
+@@ -9,6 +9,8 @@
+ [Unit]
+ Description=Dogecoin's distributed currency daemon
+ After=network.target
++StartLimitIntervalSec=120
++StartLimitBurst=5
+ 
+ [Service]
+ Type=simple
+@@ -19,15 +21,13 @@
+ RestartSec=5
+ TimeoutStopSec=60
+ TimeoutStartSec=5
+-StartLimitIntervalSec=120
+-StartLimitBurst=5
+ 
+ User=dogecoin
+ Group=dogecoin
+ 
+ ### Restrict resource consumption
+ MemoryAccounting=yes
+-MemoryLimit=3g
++MemoryLimit=3G
+ 
+ ### Restrict access to host file system.
+ #
+@@ -37,7 +37,7 @@
+ TemporaryFileSystem=/:ro
+ 
+ # Add core dependencies
+-BindReadOnlyPaths=/etc/ /lib/ /lib64/
++BindReadOnlyPaths=/etc/ /usr/lib/ /lib64/
+ 
+ # Add daemon paths
+ BindReadOnlyPaths=/usr/bin/dogecoind /etc/dogecoin/
