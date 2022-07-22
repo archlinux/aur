@@ -1,6 +1,6 @@
 pkgbase = blink-git
 	pkgdesc = Fully featured, easy to use SIP client with a Qt based UI
-	pkgver = 5.1.8.r1296.a54013c
+	pkgver = 5.2.0.r1379.a2a082e
 	pkgrel = 1
 	url = https://icanblink.com
 	arch = aarch64
@@ -16,13 +16,13 @@ pkgbase = blink-git
 	depends = python-pyqt5
 	depends = python-service-identity
 	depends = python-sipsimple
+	depends = python-formencode
+	depends = python-sqlobject
 	depends = qt5-svg
 	depends = qt5-webkit
 	optdepends = x11vnc: for screen sharing
 	conflicts = blink
 	source = blink-git::git+https://github.com/AGProjects/blink-qt.git
-	source = fix_for_python310.patch
 	sha512sums = SKIP
-	sha512sums = c6d77ded2a9297197cee01e55243fb13a2b20193a761fa7ddf2f2162ba33ebcbe4190b569956d6ddf4ac7fb487e7be9610a70b02273ca20e70c8e6131e366221
 
 pkgname = blink-git
