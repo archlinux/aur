@@ -12,8 +12,8 @@ provides=(${pkgname%-git})
 options=(!ccache)
 depends=('NVIDIA-MODULE' 'nvidia-utils')
 source=("git+https://github.com/CFSworks/nvml_fix.git"
-		"nvml_fix-install.hook")
-sha256sums=('SKIP' '4792f6b7d72798a30fa528be10a02540c9fc230404092cac79822eb37277dc56')
+		"nvml-fix-install.hook")
+sha256sums=('SKIP' '51c2e28e88193a8b2435ff23eb4d1818f8cdaaba32f7c2562862fae2223d3a35')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -22,6 +22,7 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
+
 build() {
 	NVIDIA_VERSION=$(pacman -Qs nvidia-utils | head -n1 | awk '{print $2}' | sed  's/-[0-9]$//')
 	cd ${srcdir}/${_pkgname}
@@ -29,5 +30,5 @@ build() {
 }
 package() {
 	install -Dm755 "${srcdir}/${_pkgname}/libnvidia-ml.so.1" "${pkgdir}/usr/lib/libnvidia-ml.so.1.fix"
-	install -Dm644 "${srcdir}/nvml_fix-install.hook" -t "${pkgdir}/usr/share/libalpm/hooks"
+	install -Dm644 "${srcdir}/nvml-fix-install.hook" "${pkgdir}/usr/share/libalpm/hooks/nvml-fix-install.hook"
 }
