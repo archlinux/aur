@@ -1,6 +1,6 @@
 # Maintainer: Jose Lopes <josemslopes at gmail dot com>
 pkgname=sipsak-git
-pkgver=r524.0bdf6e6
+pkgver=r539.e03190b
 pkgrel=1
 pkgdesc='A small command line tool for developers and administrators of Session Initiation Protocol (SIP) applications.'
 arch=('x86_64')
