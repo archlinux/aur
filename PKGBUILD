@@ -1,14 +1,14 @@
 # Maintainer: rern <rernrern@gmail.com>
 
 pkgname=camilladsp
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='IIR and FIR engine for crossovers, room correction etc.'
 url=https://github.com/HEnquist/camilladsp
 arch=(armv6h armv7h aarch64)
 license=(GPL)
 depends=(alsa-lib openssl)
-makedepends=(pkg-config)
+makedepends=(pkg-config rust)
 source=(https://github.com/HEnquist/camilladsp/archive/refs/tags/v$pkgver.tar.gz
         camilladsp.install
         camilladsp.service
