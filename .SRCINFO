@@ -1,0 +1,15 @@
+pkgbase = alsa-scarlett-gui
+	pkgdesc = GUI for the ALSA controls presented by the Focusrite Scarlett Gen 2/3 mixer driver
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/geoffreybennett/alsa-scarlett-gui
+	arch = x86_64
+	license = GPL3
+	license = LGPL3
+	makedepends = git
+	depends = gtk4
+	depends = alsa-lib
+	source = alsa-scarlett-gui::git+https://github.com/geoffreybennett/alsa-scarlett-gui#commit=d085fd49c1a8ef3dda348d06b1d7381adccaaf2f
+	b2sums = SKIP
+
+pkgname = alsa-scarlett-gui
