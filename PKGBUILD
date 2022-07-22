@@ -3,7 +3,7 @@
 pkgbase='python-drf-yasg'
 pkgname=('python-drf-yasg')
 _module='drf-yasg'
-pkgver='1.20.0'
+pkgver='1.21.3'
 pkgrel=4
 pkgdesc="Automated generation of real Swagger/OpenAPI 2.0 schemas from Django Rest Framework code."
 url="https://github.com/axnsan12/drf-yasg"
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('d50f197c7f02545d0b736df88c6d5cf874f8fea2507ad85ad7de6ae5bf2d9e5a')
+sha256sums=('b2eebb438fa641503a08dac791be24183ea26dbcfe371a9824ea91f6e3a988aa')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
