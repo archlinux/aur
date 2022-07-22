@@ -1,6 +1,6 @@
 # Maintainer: Abraham Toriz <categulario at gmail dot com>
 pkgname=tiempo-git
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc='Simple Gtk drawing application'
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ build() {
 
 package() {
     cd "$pkgname"
-    install -Dm755 target/release/tiempo "$pkgdir"/usr/bin/tiempo
+    install -Dm755 target/release/t "$pkgdir"/usr/bin/t
 
     install -Dm644 README.md "$pkgdir"/usr/share/doc/tiempo/README.md
     install -Dm644 LICENSE "$pkgdir"/usr/share/doc/tiempo/LICENSE
