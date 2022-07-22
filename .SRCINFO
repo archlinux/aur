@@ -1,0 +1,12 @@
+pkgbase = jdutils-bin
+	pkgdesc = Basic coreutils alternative written in rust, all programs included do one thing and does that one thing well.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/JaydenDev/jd-utils-rust
+	arch = any
+	license = x86_64
+	provides = jdutils-bin
+	source = https://github.com/JaydenDev/jd-utils-rust/releases/download/v0.2.0/jd-utils-0.2.0.tar
+	md5sums = SKIP
+
+pkgname = jdutils-bin
