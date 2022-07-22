@@ -1,0 +1,20 @@
+pkgbase = picplanner
+	pkgdesc = Plan your next photo locations
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/Zwarf/picplanner
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = meson
+	depends = libadwaita
+	depends = libshumate
+	depends = libgweather
+	depends = geocode-glib
+	depends = protobuf
+	depends = protobuf-c
+	source = https://gitlab.com/Zwarf/picplanner/-/archive/v0.1.0/picplanner-v0.1.0.tar.gz
+	b2sums = 5302d28d71c1ed624cd0997df2b572ba513d68a00f7a9b39d482ac1ee4a7c79e09448cdbe916c4a55a58f36674ce2a465132335b99d5685979bca46f263d8247
+
+pkgname = picplanner
