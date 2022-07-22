@@ -1,15 +1,15 @@
 # Maintainer: Ehsan Ghorbannezad <ehsan@disroot.org>
-_pkgname=sblock
-pkgname=${_pkgname}-git
+_pkgname='sblock'
+pkgname="${_pkgname}-git"
 pkgver=r15.53e3f1f
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple adblocker that creates a hosts file from multiple sources, similar to hblock."
 arch=('any')
-url='https://github.com/soystemd/sblock'
+url='https://github.com/ghesy/sblock'
 license=('GPL')
 depends=('aria2')
 makedepends=('git')
-source=("git+$url.git")
+source=("git+${url}.git")
 md5sums=('SKIP')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
