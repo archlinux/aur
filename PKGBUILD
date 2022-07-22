@@ -7,7 +7,7 @@ pkgdesc="Program pro vedeni danove evidence (for czech tax records)"
 arch=('i686' 'x86_64')
 url="https://dxde.dxsolutions.org"
 license=('GPL')
-depends=('wxgtk3' 'openssl' 'fontconfig' 'curl')
+depends=('wxwidgets-gtk3' 'openssl' 'fontconfig' 'curl')
 makedepends=('cmake')
 install=${pkgname}.install
 source=(https://files.dxsolutions.org/$pkgname-$pkgver.tar.gz)
@@ -15,7 +15,7 @@ md5sums=('ab82f6a30c4f0d26635c2436f7b6dae0')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DDX_WX_CONFIG=wx-config-gtk3
+  cmake -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
