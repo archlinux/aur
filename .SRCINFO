@@ -1,17 +1,18 @@
 pkgbase = commit
 	pkgdesc = Commit message editor.
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://apps.gnome.org/app/re.sonny.Commit
 	arch = x86_64
 	license = GPL3
+	checkdepends = appstream-glib
 	makedepends = meson
 	depends = libadwaita
 	depends = gjs
 	depends = gtksourceview5
 	optdepends = git: git support
 	optdepends = mercurial: mercurial support
-	source = commit-3.2.0.tar.gz::https://github.com/sonnyp/Commit/archive/refs/tags/v3.2.0.tar.gz
-	sha256sums = d85df545901824203531c2d95cbf80ba45e9d6e53d6a8f9227a3960f523d8695
+	source = commit-3.3.0.tar.gz::https://github.com/sonnyp/Commit/archive/refs/tags/v3.3.0.tar.gz
+	sha256sums = b993a2786b022b748959ba096fdf9248ab02ca52b400295484e0646e8ff220a4
 
 pkgname = commit
