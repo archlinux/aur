@@ -1,7 +1,7 @@
 pkgbase = cdesktopenv
 	pkgdesc = CDE - Common Desktop Environment
 	pkgver = 2.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sourceforge.net/projects/cdesktopenv/
 	install = cdesktopenv.install
 	arch = i686
