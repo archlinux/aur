@@ -3,7 +3,7 @@
 # Contributor: this.ven <misgi@ven.uber.space>
 
 pkgname=clap
-pkgver=1.0.3
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Clever Audio Plugin API'
 arch=(any)
@@ -12,7 +12,7 @@ license=(MIT)
 groups=(pro-audio)
 depends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/free-audio/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('84fef9f2e975177b320ede47365fc8e04a459d34d967eef2afc5a57b6992b0c6')
+sha256sums=('eef67a38df6c20fd4cb79698772d35d30aefc2e1a8d5275a5169f58cd530333e')
 
 package() {
   cd $pkgname-$pkgver
