@@ -2,7 +2,7 @@
 
 name=colutius-desktop
 pkgname=colutius-desktop-git
-pkgver=r46.62fbab5
+pkgver=r47.ad78fc0
 pkgrel=1
 pkgdesc="A cross-platform, easy-to-use and beautiful IRC client"
 arch=('x86_64')
