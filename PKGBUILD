@@ -101,9 +101,6 @@ provides=(
   libswresample.so
   libswscale.so
 )
-options=(
-  debug
-)
 _tag=9687cae2b468e09e35df4cea92cc2e6a0e6c93b3
 source=(
   git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
