@@ -1,6 +1,6 @@
 # Maintainer: Nimai Patel <nimai.m.patel@gmail.com>
 pkgname=brn-git
-pkgver=r28.a59abe0
+pkgver=r31.454e213
 pkgrel=1
 epoch=
 pkgdesc="Text editor based bulk rename utility."
@@ -18,7 +18,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname::git://github.com/nimaipatel/brn.git")
+source=("$pkgname::git+https://github.com/nimaipatel/brn.git")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
