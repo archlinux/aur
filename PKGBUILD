@@ -1,26 +1,27 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=qatlib
-pkgver=21.11.0
-pkgrel=2
+pkgver=22.07.0
+pkgrel=1
 pkgdesc="User space library for Intel(R) QuickAssist Technology"
 url="https://github.com/intel/qatlib"
 license=('BSD')
 arch=('any')
-dependes=()
+dependes=('yasm')
 
 source=(
   "$url/archive/refs/tags/$pkgver.tar.gz"
   "qatlib.sysusers"
 )
 sha256sums=(
-  '0fd827cca1ea5ffa7302d560759329141843aee09251f1226c7f3e5e8e2b3ecd'
+  '01be1530a2808a43eae29679e835e5fb1c54ac70b8d37172fc497920fe5a3c35'
   '67ccaef8fc91484bf103ee6e321d03f820f633cc2a8d73926b568bd9a358bd8f'
 )
 
 build() {
   cd "$pkgname-$pkgver"
 
+  mkdir -p m4
   ./autogen.sh
   ./configure --prefix=/usr
   make
