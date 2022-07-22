@@ -2,9 +2,9 @@
 _pkgname='lfutils'
 pkgname="${_pkgname}-git"
 pkgver=r96.8149768
-pkgrel=1
+pkgrel=2
 pkgdesc='Scripts and utilities for the lf file manager.'
-url='https://github.com/soystemd/lfutils'
+url='https://github.com/ghesy/lfutils'
 source=("git+${url}.git")
 arch=('x86_64')
 license=('GPL')
