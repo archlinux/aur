@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-vulkan
 	pkgdesc = Complete solution to record, convert and stream audio and video
-	pkgver = 5.0
-	pkgrel = 2
+	pkgver = 5.0.1
+	pkgrel = 1
 	epoch = 2
 	url = https://ffmpeg.org/
 	arch = x86_64
@@ -87,7 +87,7 @@ pkgbase = ffmpeg-vulkan
 	provides = libswscale.so
 	conflicts = ffmpeg
 	options = debug
-	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=390d6853d0ef408007feb39c0040682c81c02751
+	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=9687cae2b468e09e35df4cea92cc2e6a0e6c93b3
 	source = ffmpeg-vmaf2.x.patch
 	source = add-av_stream_get_first_dts-for-chromium.patch
 	b2sums = SKIP
