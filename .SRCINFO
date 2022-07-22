@@ -1,6 +1,6 @@
 pkgbase = reveal-md
 	pkgdesc = Get beautiful reveal.js presentations from your Markdown file
-	pkgver = 5.3.2
+	pkgver = 5.3.4
 	pkgrel = 1
 	url = https://webpro.github.io/reveal-md/
 	arch = any
@@ -8,7 +8,8 @@ pkgbase = reveal-md
 	makedepends = yarn
 	makedepends = git
 	depends = nodejs
-	source = git+https://github.com/webpro/reveal-md.git#tag=5.3.2
+	options = !strip
+	source = git+https://github.com/webpro/reveal-md.git#tag=5.3.4
 	sha256sums = SKIP
 
 pkgname = reveal-md

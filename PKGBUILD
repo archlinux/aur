@@ -1,5 +1,5 @@
 pkgname=reveal-md
-pkgver=5.3.2
+pkgver=5.3.4
 pkgrel=1
 pkgdesc='Get beautiful reveal.js presentations from your Markdown file'
 arch=('any')
@@ -7,12 +7,14 @@ url='https://webpro.github.io/reveal-md/'
 license=('MIT')
 depends=(nodejs)
 makedepends=(yarn git)
+options=('!strip')
 source=(git+https://github.com/webpro/$pkgname.git#tag=$pkgver)
 sha256sums=('SKIP')
 
 prepare() {
     cd $srcdir/$pkgname
-    sed 's,"puppeteer": "1.19.0","puppeteer-core": "latest",' -i package.json
+    sed 's,puppeteer,puppeteer-core,' -i package.json
+    sed "s,require('puppeteer');,require('puppeteer-core');," -i lib/print.js lib/featured-slide.js
 }
 
 build() {    
@@ -52,7 +54,7 @@ package() {
     install -dm755 $pkgdir/usr/bin
     install -Dm755 /dev/stdin $pkgdir/usr/bin/$pkgname <<END
 #!/bin/env sh
-NODE_ENV=production node $_destdir/bin/$pkgname.js
+NODE_ENV=production node $_destdir/bin/$pkgname.js "\$@"
 END
 }
 
