@@ -1,5 +1,5 @@
 pkgbase = mwgp
-	pkgdesc = Proxy multiple WireGuard interfaces over one UDP port
+	pkgdesc = A WireGuard proxy designed to reuse one UDP port for multiple WireGuard interfaces
 	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/haruue-net/mwgp
