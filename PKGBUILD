@@ -1,17 +1,17 @@
 # Maintainer: Ehsan Ghorbannezad <ehsan at disroot dot org>
-_pkgname=grub-entries
-pkgname=${_pkgname}-git
-pkgver=r9.4f939c1
-pkgrel=2
+_pkgname='grub-entries'
+pkgname="${_pkgname}-git"
+pkgver='r9.4f939c1'
+pkgrel=3
 pkgdesc="A script to list grub's top-level menu entries."
-url=https://github.com/soystemd/grub-entries
-arch=(x86_64)
-license=(GPL)
-makedepends=(git)
-source=("git+$url.git")
-md5sums=(SKIP)
-provides=($_pkgname)
-conflicts=($_pkgname)
+url='https://github.com/ghesy/grub-entries'
+arch=('x86_64')
+license=('GPL')
+makedepends=('git')
+source=("git+${url}.git")
+md5sums=('SKIP')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 pkgver() {
     cd "$_pkgname"

@@ -1,14 +1,14 @@
 pkgbase = grub-entries-git
 	pkgdesc = A script to list grub's top-level menu entries.
 	pkgver = r9.4f939c1
-	pkgrel = 2
-	url = https://github.com/soystemd/grub-entries
+	pkgrel = 3
+	url = https://github.com/ghesy/grub-entries
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	provides = grub-entries
 	conflicts = grub-entries
-	source = git+https://github.com/soystemd/grub-entries.git
+	source = git+https://github.com/ghesy/grub-entries.git
 	md5sums = SKIP
 
 pkgname = grub-entries-git
