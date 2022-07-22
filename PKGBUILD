@@ -11,6 +11,8 @@ depends=('aria2')
 makedepends=('git')
 source=("git+$url.git")
 md5sums=('SKIP')
+conflicts=("$_pkgname")
+provides=("$_pkgname")
 
 pkgver() {
     cd "$_pkgname"
