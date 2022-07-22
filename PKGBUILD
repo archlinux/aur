@@ -1,7 +1,7 @@
 # Maintainer: Ehsan Ghorbannezad <ehsan@disroot.org>
 _pkgname=sblock
 pkgname=${_pkgname}-git
-pkgver=r7.43a0383
+pkgver=r15.53e3f1f
 pkgrel=1
 pkgdesc="Simple adblocker that creates a hosts file from multiple sources, similar to hblock."
 arch=('any')
