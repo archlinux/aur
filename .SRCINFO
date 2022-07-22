@@ -1,0 +1,18 @@
+pkgbase = knownreader
+	pkgdesc = Fast and small XML/CSS based eBook reader
+	pkgver = 20220407
+	pkgrel = 1
+	url = https://github.com/plotn/coolreader
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt5-tools
+	depends = fribidi
+	depends = hicolor-icon-theme
+	depends = libunibreak
+	depends = qt5-base
+	source = knownreader-20220407.tar.gz::https://github.com/plotn/coolreader/archive/refs/tags/20220407.tar.gz
+	sha256sums = SKIP
+
+pkgname = knownreader
