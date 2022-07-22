@@ -1,0 +1,15 @@
+pkgbase = bpir64-mkimage
+	pkgdesc = An acoustic spectrum analyser (compiled against wxGtk3 and ffmpeg4.4)
+	pkgver = 2021.10
+	pkgrel = 1
+	url = http://spek.cc/
+	arch = aarch64
+	license = GPL3
+	source = https://github.com/u-boot/u-boot/archive/refs/tags/v2021.10.tar.gz
+	source = mtkimage-buffer-inc.patch
+	source = mtkimage-gpt-expand.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = bpir64-mkimage

@@ -1,0 +1,9 @@
+diff -NarU 1 a/tools/mtk_image.c b/tools/mtk_image.c
+--- a/tools/mtk_image.c    2021-06-11 13:26:11.580666817 +0200
++++ b/tools/mtk_image.c    2021-06-11 13:29:14.024018325 +0200
+@@ -262,3 +262,3 @@
+ /* GFH header + 2 * 4KB pages of NAND */
+-static char hdr_tmp[sizeof(struct gfh_header) + 0x2000];
++static char hdr_tmp[sizeof(struct gfh_header) + 0x2000 + 0x10000];
+
+
