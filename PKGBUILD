@@ -1,12 +1,14 @@
 # Maintainer: Christian Mauderer <oss@c-mauderer.de>
 pkgname=abeep-git
-pkgrel=3
+pkgrel=4
 pkgver=r20.01c63c8
 pkgdesc='Just like beep, except that it plays via ALSA'
 arch=('x86_64')
 url='https://github.com/Hawk777/abeep'
 license=('GPL2')
 depends=('alsa-lib')
+provides=('abeep')
+conflicts=('abeep')
 makedepends=('git')
 source=("${pkgname}"::'git+https://github.com/Hawk777/abeep.git')
 sha512sums=('SKIP')
