@@ -2,7 +2,7 @@
 # Contributor: Tiago Brait <tiagobrait AT gmail DOT com>
 
 pkgname=ca-certificates-icp_br
-pkgver=20220718
+pkgver=20220722
 pkgrel=1
 pkgdesc="Brazilian government Certification Authorities"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('unzip')
 _source="icpbr_certs-${pkgver}-${pkgrel}"
 source=("$_source.zip::http://acraiz.icpbrasil.gov.br/credenciadas/CertificadosAC-ICP-Brasil/ACcompactado.zip")
 noextract=("$_source.zip")
-sha512sums=('c42422bfbe1a674d257330ab9d6abd57f2c77b983f168765cf3c3d6a5eb7a5280fba92dca3e3fc854d431996ba0e3cc91692f7ea623626564c7a1c48b7186913')
+sha512sums=('be06e2307b9a0afb34de21e7192e73f737a8df784511a6e202c94b4cb64236875cea8827038258edbe322e20cf99fd51586dcd39ce246e10cafa06fdf588885b')
   # This checksum must match: http://acraiz.icpbrasil.gov.br/credenciadas/CertificadosAC-ICP-Brasil/hashsha512.txt
 
 prepare() {
