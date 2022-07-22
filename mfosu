@@ -1,0 +1,6 @@
+#!/bin/sh
+DATADIR=$HOME/.local/share/osu
+if [ ! -d $DATADIR ]; then
+    mkdir -p $DATADIR
+fi
+env OSU_EXTERNAL_UPDATE_PROVIDER=1 /opt/mfosu/mfosu.appimage "$@"

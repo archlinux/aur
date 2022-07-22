@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=mfosu
+MimeType=application/x-osu-skin-archive;application/x-osu-replay;application/x-osu-beatmap-archive;x-scheme-handler/osu;
+Icon=/usr/share/pixmaps/mfosu.png
+Comment=Open source free-to-win rhythm game
+Exec=/usr/bin/mfosu
+Categories=Game;
