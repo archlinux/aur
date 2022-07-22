@@ -1,6 +1,9 @@
 #!/bin/sh
+set -eu
 
+set -a
 . /etc/default/fleet-orbit
+set +a
 
 export ORBIT_ROOT_DIR="${ORBIT_ROOT_DIR:-/opt/fleet-orbit}"
 export ORBIT_DISABLE_UPDATES="${ORBIT_DISABLE_UPDATES:-true}"

@@ -1,7 +1,7 @@
 pkgbase = fleet-orbit
 	pkgdesc = Eases the deployment of osquery connected with a Fleet server.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fleetdm/fleet/tree/main/orbit
 	arch = x86_64
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = fleet-orbit
 	source = fleet-orbit-config
 	source = fleet-orbit.service
 	sha512sums = f5fb9657da175085898f98d445f0791abdef1d142300cf086855531686f6c7941dea00957a0948a67dc032d27347d5144ba43b33845e894c50bf496950d26549
-	sha512sums = 449f29d82564b3a0e56d529e0550bf83b22cfd672b960e20441015ef5c106f4d7508f4f0bb47631fe399e477e31b05c4a223549a36d23dc89ba9571d6468a75e
+	sha512sums = d94ab30cc3543e2cb0abcc520ad2b4a297a22f29798dde7e188caf91e8669d99b60dbde7c513afec908cfd47c74a11537267046f0c8c0ccbcaacb8d1b75dd21d
 	sha512sums = c4d4fdf980a891f5e56ca82173c57b60d0e157ef4af769fc5d9ecd7b9c70124402d694f35d48101e6633d0134ade9ab33cff3c129e2f603a6b7df1ee560eab5a
 	sha512sums = 781ba7743f8f176aeeef702cce67478af70981596029677e1e50f1a57b479c66832436e39d66b5e7f879477733b661326d306064050968acfb246adddfddf30a
 	sha512sums = 87aca00b0c053c194a36d583f474f34f22207c4e1e5319ed3722769f796599e8f69b920063daca95644f9ea11454cefdb4109011370c70ce27db90720d5f12e8
