@@ -1,21 +1,21 @@
 pkgbase = stm32cubemx
 	pkgdesc = graphical software configuration tool for STM32 microcontrollers that allows generating C initialization code
 	pkgver = 6.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.st.com/en/development-tools/stm32cubemx.html
 	arch = any
 	license = custom
 	makedepends = imagemagick
 	depends = java-runtime=11
+	depends = archlinux-java-run
 	depends = bash
 	options = !strip
 	source = https://sw-center.st.com/packs/resource/library/stm32cube_mx_v661-lin.zip
-	source = LICENSE
 	source = stm32cubemx.desktop
 	source = stm32cubemx.sh
 	sha512sums = 273ca4e96972cae1cf1b95eaf5dd8d6bc747149e8794fae96ff51301bfd212fbef41c306264d9b5d8c000e85d8c26d40125b4f79b18642de23b3bec24e9c9837
 	sha512sums = ad1897ea5234b712d726b5d3423f05f1c0c5a64e28354afe07dce7451563ae4492366cc252ca379b44793797be20011a66458431fd5453c18a7543ccb8df5397
 	sha512sums = 56bff32e35f8eb09ae4df94e4e885aaf9349c687ce9f4901ddd11c83b69a32b19d99ab8dbd90c6679e86e7213c4d41640e52ab0d80b8fc4640a1bc5df9a3af32
-	sha512sums = 99ed513b6813135a3e4ee8f2a9c6e061b4fb5edddbcffcd81eca6ee8ac7fe23f804870a4aa168d83bb6902cde41f28cab0a4fa65e467ce25eb6240f701672694
+	sha512sums = 6a79222fecdd4e0321d4a460a746d704c25fa32a97fd6653adfb64447053b8985c9533caf2f92f8907ef4424aa19ce0bdff3911bbdc6bf744bb354baaa3d834c
 
 pkgname = stm32cubemx
