@@ -13,7 +13,8 @@ options=(!ccache)
 depends=('NVIDIA-MODULE' 'nvidia-utils')
 source=("git+https://github.com/CFSworks/nvml_fix.git"
 		"nvml_fix-install.hook")
-sha256sums=('SKIP' '342955cc1a829b119fc0461cf3f12d2fd45e114cd38059938179738640d20c92')
+sha256sums=('SKIP'
+			'342955cc1a829b119fc0461cf3f12d2fd45e114cd38059938179738640d20c92')
 
 
 pkgver() {
