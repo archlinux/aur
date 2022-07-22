@@ -1,6 +1,6 @@
 pkgbase = netbird-bin
 	pkgdesc = A WireGuard-based mesh network that connects your devices into a single private network
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://netbird.io
 	arch = x86_64
@@ -17,11 +17,11 @@ pkgbase = netbird-bin
 	sha256sums = 128e36e1f814a12886f3122a1809a404be17f81481275b6624e66937941f5269
 	sha256sums = ae5938e98c84a2dd4324208389b0a6cdf9a24cf3b66d1001a0b137e008da33ec
 	sha256sums = ae5938e98c84a2dd4324208389b0a6cdf9a24cf3b66d1001a0b137e008da33ec
-	source_x86_64 = netbird-bin-0.8.2-amd64.tar.gz::https://github.com/netbirdio/netbird/releases/download/v0.8.2/netbird_0.8.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 4e3d434ae7c5813ea9f53f6cf6d5451cc5dcc036d86b3b14e81b016a789879bb
-	source_aarch64 = netbird-bin-0.8.2-arm64.tar.gz::https://github.com/netbirdio/netbird/releases/download/v0.8.2/netbird_0.8.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = 4ba6e176a8dc64c4d0c77cccef4945abcf9af1cada9dfbe4ada9d2d44bc8d09c
-	source_armv6h = netbird-bin-0.8.2-armv6.tar.gz::https://github.com/netbirdio/netbird/releases/download/v0.8.2/netbird_0.8.2_linux_armv6.tar.gz
-	sha256sums_armv6h = d179c46647e0067d187502211668d79ca9c064f38236d3bd4d8110bff14bdb90
+	source_x86_64 = netbird-bin-0.8.3-amd64.tar.gz::https://github.com/netbirdio/netbird/releases/download/v0.8.3/netbird_0.8.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = a97ef48c459cba0639eb9d279cf6db47c38e6dbbf32f3190a2e5c935fc8698e1
+	source_aarch64 = netbird-bin-0.8.3-arm64.tar.gz::https://github.com/netbirdio/netbird/releases/download/v0.8.3/netbird_0.8.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = 1b8c36c608f1991a07d5927a7ef3ef0721007f37ded07d07ecb13d3eba16ff50
+	source_armv6h = netbird-bin-0.8.3-armv6.tar.gz::https://github.com/netbirdio/netbird/releases/download/v0.8.3/netbird_0.8.3_linux_armv6.tar.gz
+	sha256sums_armv6h = a3203748608451099fe24184e0c5aa306a2c0702ded4cc461fd35bd94de5d1d4
 
 pkgname = netbird-bin
