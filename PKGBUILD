@@ -1,4 +1,4 @@
-# Maintainer: Basso Daniele <daniele05 dot bass at gmail dot com>
+# Maintainer: Basso Daniele <d dot bass05 at pm dot me>
 pkgname=oc-auxiliary-tools
 pkgver=20220207
 pkgrel=1
