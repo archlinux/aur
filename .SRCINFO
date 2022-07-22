@@ -13,6 +13,6 @@ pkgbase = nvml-fix-git
 	source = git+https://github.com/CFSworks/nvml_fix.git
 	source = nvml_fix-install.hook
 	sha256sums = SKIP
-	sha256sums = 342955cc1a829b119fc0461cf3f12d2fd45e114cd38059938179738640d20c92
+	sha256sums = a33692ae706c19aab12af31e136c8d9bab082984419f63d8c95f13cb957bd86f
 
 pkgname = nvml-fix-git

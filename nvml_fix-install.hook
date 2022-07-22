@@ -1,8 +1,8 @@
 [Trigger]
 Operation = Install
 Type = Package
-Target = nvlax
-Target = nvlax-git
+Target = nvml-fix
+Target = nvml-fix-git
 
 [Action]
 Description = Applying nvlax
