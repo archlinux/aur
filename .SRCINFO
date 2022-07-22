@@ -1,16 +1,22 @@
 pkgbase = cine-encoder
-	pkgdesc = Cine Encoder 2021
-	pkgver = 3.5.2
+	pkgdesc = Cine Encoder 2022
+	pkgver = 3.5.4
 	pkgrel = 1
 	url = https://github.com/CineEncoder/cine-encoder.git
 	arch = x86_64
 	license = GPL3
+	depends = gcc
 	depends = qt5-base>=5.15
 	depends = qt5-multimedia>=5.15
+	depends = qt5-svg>=5.15
+	depends = qt5-x11extras>=5.15
 	depends = libmediainfo>=20.03
-	depends = mkvtoolnix-cli>=49.0
+	depends = libxext
 	depends = ffmpeg>=4.2
-	source = https://github.com/CineEncoder/cine-encoder/archive/3.5.2.tar.gz
-	md5sums = 9456c9a21132b254ee0ba553395c8a83
+	depends = mkvtoolnix-cli>=49.0
+	depends = intel-media-driver>=22.2
+	depends = libva-intel-driver>=2.4
+	source = https://github.com/CineEncoder/cine-encoder/archive/3.5.4.tar.gz
+	md5sums = 015fef1f0c2c6acbcd520d776f6c6b26
 
 pkgname = cine-encoder
