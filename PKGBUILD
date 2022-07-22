@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=wem
-pkgver=0.8.7
+pkgver=0.8.8
 pkgrel=1
 pkgdesc='Wine Environment Manager: A CLI tool for managing wine "envs" or prefixes.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/${pkgver}.tar.gz")
-sha512sums=('a82d355b3b221e25dbed3108d8e9fe4c9c63d6b571a2fc989b68f0ed0acb1c734f0a40bd6dedb280a970f2ce92081f4e2c562d59037fbadaa95e72cf7aeb5702')
+sha512sums=('d5b49348fa60b5c3e9f6309c0b662dccc52ef4e59f13ec806faa5a6c4c84760edb91f029cdf909c7f945f668773f07f62229bfd0f3aee1860acffe7707fad7eb')
 
 build() {
     ## From Go package guidelines
@@ -20,10 +20,10 @@ build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    export GOFLAGS="-buildmode=pie -buildvcs=false -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
     cd "$pkgname-$pkgver"
-    go build -o wem wem.go
+    go build -o wem ./cmd/wem
 }
 
 package() {
