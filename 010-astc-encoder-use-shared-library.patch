@@ -43,20 +43,28 @@
  endif()
  
  macro(astcenc_set_properties NAME)
-@@ -266,10 +270,10 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+@@ -310,16 +314,16 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
              COMPILE_FLAGS ${EXTERNAL_CXX_FLAGS})
  endif()
  
 -astcenc_set_properties(${ASTC_TARGET}-static)
 +astcenc_set_properties(${ASTC_TARGET})
  
+-    target_compile_options(${ASTC_TARGET}-static
++    target_compile_options(${ASTC_TARGET}
+         PRIVATE
+             $<$<CXX_COMPILER_ID:MSVC>:/W4>)
+ 
  if(${CLI})
 -    astcenc_set_properties(${ASTC_TARGET})
 +    astcenc_set_properties(${ASTC_TARGET}-bin)
  
-     string(TIMESTAMP astcencoder_YEAR "%Y")
+-    target_compile_options(${ASTC_TARGET}
++    target_compile_options(${ASTC_TARGET}-bin
+         PRIVATE
+             $<$<CXX_COMPILER_ID:MSVC>:/W3>)
  
-@@ -278,9 +282,10 @@ if(${CLI})
+@@ -330,9 +334,10 @@ if(${CLI})
          astcenccli_version.h
          ESCAPE_QUOTES @ONLY)
  
