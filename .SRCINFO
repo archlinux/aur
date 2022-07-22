@@ -1,0 +1,22 @@
+pkgbase = python-ast-monitor
+	pkgdesc = A wearable Raspberry Pi computer for cyclists
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/firefly-cpp/AST-Monitor
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-install
+	makedepends = python-poetry-core
+	depends = python-sport-activities-features
+	depends = python-pyqt-feedback-flow
+	depends = python-pyqt5-webengine
+	depends = qt5-svg
+	optdepends = python-openant: for ANT sensor support
+	optdepends = python-adafruit-circuitpython-gps: for GPS sensor support
+	optdepends = python-serial: for serial communication support
+	source = https://github.com/firefly-cpp/AST-Monitor/archive/0.2.1.tar.gz
+	sha512sums = b4cced2a5e6f6052943453058a30bbf216d1b7d823b55828bc29ec999be3dc1d6f359b0396790cfeca40e74592eab1c6e968c85d4da48bf7bd24843c39df785a
+
+pkgname = python-ast-monitor
