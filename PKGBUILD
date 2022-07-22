@@ -2,7 +2,7 @@
 # Contributer: Jose Riha <jose1711 gmail com>
 pkgname=python-resampy
 _pkgname=resampy
-pkgver=0.2.2
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Efficient sample rate conversion in python"
 arch=('any')
@@ -11,7 +11,7 @@ license=('ISC')
 depends=('python-numba' 'python-numpy' 'python-scipy' 'python-six')
 makedepends=('cython' 'python-setuptools')
 source=("$url/archive/${pkgver}.tar.gz")
-md5sums=('a22d712da12f17ec6fa561e5525c72f0')
+md5sums=('dc3ee98bfea4f95e3656db8a04ff1ea2')
 
 build() {
   msg "Building Python 3"
