@@ -2,7 +2,7 @@
 
 pkgname=geary-preview
 pkgver=40.3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='A lightweight email client for the GNOME desktop. Preview version by Geary maintainer'
 arch=(x86_64)
