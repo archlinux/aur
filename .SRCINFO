@@ -1,7 +1,7 @@
 pkgbase = kbuilder
 	pkgdesc = Bash script for building custom kernels
 	pkgver = 0.3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AnnikaV9/kbuilder
 	arch = x86_64
 	license = Unlicense
@@ -14,5 +14,6 @@ pkgbase = kbuilder
 	depends = coreutils
 	provides = kbuilder
 	source = kbuilder-0.3.2.tar.gz::https://github.com/AnnikaV9/kbuilder/releases/download/v0.3.2/kbuilder-0.3.2.tar.gz
+	sha256sums = 4bf4699fc08bac5880d62e7832011c438a73c8fae4130ce9de807064d568bd90
 
 pkgname = kbuilder
