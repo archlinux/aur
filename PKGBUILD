@@ -5,7 +5,7 @@
 # Thanks goes to yjftsjthsd for https://aur.archlinux.org/packages/cdesktopenv-git/ PKGBUILD.
 #
 pkgname=cdesktopenv
-pkgver=2.3.2
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="CDE - Common Desktop Environment"
 url="http://sourceforge.net/projects/cdesktopenv/"
@@ -27,13 +27,7 @@ source=("http://downloads.sourceforge.net/$pkgname/cde-$pkgver.tar.gz"
         'cde.desktop'
 	'startxsession.sh')
 
-md5sums=('c093f3239a9c9462d96f19f5ad85f1e3'
-         '66ff27b4c6b7c5fda4e2db69f829e4aa'
-         '18f9ef4643ff7ed6637907f5cbdabecf'
-         '5cc80c2851ea90b94e94b0c5d92d81fb'
-         '897316929176464ebc9ad085f31e7284'
-         '7d11b9d2bc1234278f14151025744916'
-         '2e5557241915e4c2761ba136dbcba469')
+md5sums=("SKIP")
 
 build() {
   cd "$srcdir/cde-$pkgver/"
