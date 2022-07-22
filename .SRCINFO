@@ -1,0 +1,14 @@
+pkgbase = abeep-beep-provides
+	pkgdesc = Dummy/ meta package that symlinks 'abeep' to 'beep' and thus provides a drop-in replacement for 'beep' that uses ALSA instead of the PC speaker.
+	pkgver = 1
+	pkgrel = 3
+	url = https://aur.archlinux.org/packages/abeep-beep-provides
+	arch = any
+	license = custom: public domain
+	depends = abeep
+	provides = beep
+	conflicts = beep
+	source = license-metapackage-pd.txt
+	sha256sums = 1e86f8ac1ad7315c76f4db8bf6a1dbdde6825ac95ff468e431bbe452b6865ae6
+
+pkgname = abeep-beep-provides
