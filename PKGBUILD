@@ -1,11 +1,11 @@
 # Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
 pkgname=kak-palette-git
 _reponame=palette.kak
-pkgver=r7.652a00d
-pkgrel=2
+pkgver=r8.bbb179f
+pkgrel=1
 pkgdesc='Color preview in Kakoune'
 arch=(any)
-url="https://github.com/alexherbo2/$_reponame"
+url="https://github.com/Ordoviz/$_reponame"
 license=(Unlicense)
 depends=(kakoune)
 makedepends=(git)
@@ -24,5 +24,5 @@ pkgver() {
 package() {
 	cd "$srcdir/$_reponame"
 	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
-	install -Dm644 -t "$pkgdir/usr/share/kak/rc/addons" rc/palette.kak
+	install -Dm644 -t "$pkgdir/usr/share/kak/rc/addons" palette.kak
 }
