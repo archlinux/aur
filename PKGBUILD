@@ -2,16 +2,18 @@
 
 pkgname=webviewer
 pkgver=0.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Minimal display of a website. Useful for web versions of messengers."
 arch=('any')
 url="https://github.com/LeAlex27/webviewer"
 license=('GPL3')
 depends=('pyside6' 'qt6-webengine')
 makedepends=('qt6-base' 'python-setuptools' 'python-build' 'wget' 'gendesk')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/LeAlex27/$pkgname/archive/refs/tags/$pkgver.tar.gz")
+source=("webviewer.sh"
+        "$pkgname-$pkgver.tar.gz::https://github.com/LeAlex27/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 
-sha256sums=('c4a0493e35a39f323d346974893cf280cc4cab440bf2ea04b6d7f4fbc05d6733')
+sha256sums=('f148d8c29d7b549f541d69b6335c92c9b3ee6a4788741339f22bf9356375e6a5'
+            'c4a0493e35a39f323d346974893cf280cc4cab440bf2ea04b6d7f4fbc05d6733')
 
 # uncomment to generate .desktop files
 _whatsapp_web=1
@@ -19,8 +21,6 @@ _threema_web=1
 _android_messages=1
 
 prepare() {
-    # Todo: add qt material color scheme to files
-    # Todo: does this work when set to 0?
     if [ -n "$_whatsapp_web" ]; then
         wget "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/766px-WhatsApp.svg.png"
         gendesk --pkgname "whatsapp_web" --name "WhatsApp Web" --categories "Network;InstantMessaging" \
@@ -48,6 +48,7 @@ build() {
 
 package() {
     cd $srcdir
+    install -Dm655 webviewer.sh $pkgdir/usr/bin/webviewer
 
     # install shortcuts
     if [ -n "$_whatsapp_web" ]; then

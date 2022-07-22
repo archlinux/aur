@@ -1,7 +1,7 @@
 pkgbase = webviewer
 	pkgdesc = Minimal display of a website. Useful for web versions of messengers.
 	pkgver = 0.4.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/LeAlex27/webviewer
 	arch = any
 	license = GPL3
@@ -12,7 +12,9 @@ pkgbase = webviewer
 	makedepends = gendesk
 	depends = pyside6
 	depends = qt6-webengine
+	source = webviewer.sh
 	source = webviewer-0.4.1.tar.gz::https://github.com/LeAlex27/webviewer/archive/refs/tags/0.4.1.tar.gz
+	sha256sums = f148d8c29d7b549f541d69b6335c92c9b3ee6a4788741339f22bf9356375e6a5
 	sha256sums = c4a0493e35a39f323d346974893cf280cc4cab440bf2ea04b6d7f4fbc05d6733
 
 pkgname = webviewer
