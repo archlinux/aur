@@ -40,7 +40,8 @@ LTO=              # Enable link-time optimization. Still experimental.
 JIT="YES"         # Enable native just-in-time compilation. libgccjit is in AUR.
                   # This compiles only performance critical elisp files.
                   #
-                  # To compile all elisp on demand, add
+                  # To compile all site-lisp on demand (repos/AUR packages,
+                  # ELPA, MELPA, whatever), add
                   #    (setq comp-deferred-compilation t)
                   # to your .emacs file.
 
@@ -207,6 +208,7 @@ fi
 ################################################################################
 pkgver() {
   cd "$srcdir/emacs-git"
+
   printf "%s.%s" \
     $(grep AC_INIT configure.ac | \
     awk -F',' '{ gsub("[ \\[\\]]","",$2); print $2 }') \
