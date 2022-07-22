@@ -1,6 +1,6 @@
 pkgbase = aliyundrive-webdav-bin
 	pkgdesc = 阿里云盘 WebDAV 服务
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/messense/aliyundrive-webdav
 	install = aliyundrive-webdav.install
@@ -9,7 +9,7 @@ pkgbase = aliyundrive-webdav-bin
 	provides = aliyundrive-webdav
 	options = !strip
 	options = emptydirs
-	source = https://github.com/messense/aliyundrive-webdav/releases/download/v1.8.1/aliyundrive-webdav_1.8.1_amd64.deb
-	sha256sums = a8d84f8e39ea66631c5328ac4f365a438d299dc6254e92c15ba0f8c5a4296d21
+	source = https://github.com/messense/aliyundrive-webdav/releases/download/v1.8.2/aliyundrive-webdav_1.8.2_amd64.deb
+	sha256sums = 997988981c4ed0f86baa3ad148936a34ae52c5a2e60ba36086ba65ed4f7dc256
 
 pkgname = aliyundrive-webdav-bin
