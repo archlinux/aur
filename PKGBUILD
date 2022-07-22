@@ -2,7 +2,7 @@
 
 pkgname=tblock
 pkgver=2.2.0
-pkgrel=3
+pkgrel=4
 provides=("$pkgname")
 pkgdesc="An anti-capitalist ad-blocker that uses the hosts file"
 url="https://tblock.codeberg.page"
@@ -14,6 +14,7 @@ makedepends=(
         "python>=3"
         "python-build"
         "python-installer"
+	"python-setuptools"
 )
 depends=(
         "python-urllib3"
