@@ -25,7 +25,7 @@ post_install() {
     #/usr/bin/systemctl enable snapper-timeline.timer
     
     echo "Creating snapper config for root"
-    /usr/bin/snapper create-config --template garuda /
+    /usr/bin/snapper create-config --template snapper /
 
     if ! mkinitcpio_has_grub_btrfs_overlayfs_hook; then
         sed -re 's/(^HOOKS=[\"|(][^")]+)/\1 grub-btrfs-overlayfs/gi' -i /etc/mkinitcpio.conf
