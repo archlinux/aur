@@ -2,7 +2,7 @@
 
 pkgname=kbuilder
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Bash script for building custom kernels"
 arch=("x86_64")
 url="https://github.com/AnnikaV9/$pkgname"
