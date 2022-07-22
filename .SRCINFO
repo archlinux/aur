@@ -1,6 +1,6 @@
 pkgbase = r-sf
 	pkgdesc = Simple Features for R
-	pkgver = 1.0.7
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://cran.r-project.org/package=sf
 	arch = i686
@@ -10,49 +10,48 @@ pkgbase = r-sf
 	depends = geos
 	depends = proj
 	depends = r
-	depends = r-classint
-	depends = r-dbi
+	depends = r-classint>=0.4.1
+	depends = r-dbi>=0.8
 	depends = r-magrittr
-	depends = r-rcpp
-	depends = r-s2
-	depends = r-units
+	depends = r-rcpp>=0.12.18
+	depends = r-s2>=1.0.7
+	depends = r-units>=0.7.0
 	optdepends = r-blob
 	optdepends = r-covr
-	optdepends = r-dplyr
+	optdepends = r-dplyr>=0.8.3
 	optdepends = r-ggplot2
 	optdepends = r-knitr
-	optdepends = r-lwgeom
+	optdepends = r-lwgeom>=0.2.1
 	optdepends = r-maps
 	optdepends = r-mapview
 	optdepends = r-matrix
 	optdepends = r-microbenchmark
 	optdepends = r-odbc
+	optdepends = r-pbapply
 	optdepends = r-pillar
 	optdepends = r-pool
 	optdepends = r-raster
-	optdepends = r-rgdal
-	optdepends = r-rgeos
 	optdepends = r-rlang
 	optdepends = r-rmarkdown
-	optdepends = r-rpostgres
+	optdepends = r-rpostgres>=1.1.0
 	optdepends = r-rpostgresql
 	optdepends = r-rsqlite
-	optdepends = r-sp
-	optdepends = r-spatstat
+	optdepends = r-sp>=1.2.4
+	optdepends = r-spatstat>2.0.1
 	optdepends = r-spatstat.geom
-	optdepends = r-spatstat.core
 	optdepends = r-spatstat.linnet
+	optdepends = r-spatstat.random
 	optdepends = r-spatstat.utils
-	optdepends = r-stars
+	optdepends = r-stars>=0.2.0
 	optdepends = r-terra
 	optdepends = r-testthat
-	optdepends = r-tibble
-	optdepends = r-tidyr
-	optdepends = r-tidyselect
-	optdepends = r-tmap
+	optdepends = r-tibble>=1.4.1
+	optdepends = r-tidyr>=1.2.0
+	optdepends = r-tidyselect>=1.0.0
+	optdepends = r-tmap>=2.0
 	optdepends = r-vctrs
 	optdepends = r-wk
-	source = https://cran.r-project.org/src/contrib/sf_1.0-7.tar.gz
-	sha256sums = d0731fab9438d73a55af7232f0474b36f4b2a4e6d66adaa141632f4a60265453
+	source = https://cran.r-project.org/src/contrib/sf_1.0-8.tar.gz
+	sha256sums = 3ddc7090e79d6b5e3fad69e01254677ab5ec86a0b25e7e73493c8eac0ea98732
 
 pkgname = r-sf
