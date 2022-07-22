@@ -1,8 +1,8 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hip-runtime-amd
-pkgver=5.2.0
-pkgrel=5
+pkgver=5.2.1
+pkgrel=1
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
 url='https://rocmdocs.amd.com/en/latest/Installation_Guide/HIP.html'
@@ -20,15 +20,13 @@ source=("$pkgname-$pkgver.tar.gz::$_hip/archive/rocm-$pkgver.tar.gz"
         "$pkgname-rocclr-$pkgver.tar.gz::$_rocclr/archive/rocm-$pkgver.tar.gz"
         "$pkgname-hipamd-$pkgver.tar.gz::$_hipamd/archive/rocm-$pkgver.tar.gz"
         "git-hash.patch::https://github.com/ROCm-Developer-Tools/hipamd/commit/56b32604729cca08bdcf00c7a69da8a75cc95b8a.patch"
-        "noinline.patch::https://github.com/ROCm-Developer-Tools/hipamd/commit/28009bc68faf2b4dd8fda91c99b0725e1b063a18.patch"
-        "config-path.patch::https://patch-diff.githubusercontent.com/raw/ROCm-Developer-Tools/hipamd/pull/32.patch")
-sha256sums=('a6e0515d4d25865c037b546035df9c51f0882cd2700e759c266ff7e199f37c3a'
-            '80f73387effdcd987a150978775a87049a976aa74f5770d4420847b004dd59f0'
-            '37f5fce04348183bce2ece8bac1117f6ef7e710ca68371ff82ab08e93368bafb'
-            '8774958bebc29a4b7eb9dc2d38808d79d9a24bf9c1f44e801ff99d2d5ba82240'
+        "noinline.patch::https://github.com/ROCm-Developer-Tools/hipamd/commit/28009bc68faf2b4dd8fda91c99b0725e1b063a18.patch")
+sha256sums=('7d4686a2f8a9124bb21f7f3958e451c57019f48a0cbb42ffdc56ed02860a46c3'
+            'eb4ff433f8894ca659802f81792646034f8088b47aca6ad999292bcb8d6381d5'
+            '465ca9fa16869cd89dab8c2d66d9b9e3c14f744bbedaa1d215b0746d77a500ba'
+            '4feaa3883cbc54ddcd5d2d5becbe0f3fe3edd5b3b468dc73b5104893029eefac'
             '3b0ec136c9bad206697087df0908922df705ec76085f57e36d0d15f52a5fd981'
-            'f45f2087ba3fab3ee3b9e65baefad604cd774611f3d433273afc1166d146e8ed'
-            'SKIP')
+            'f45f2087ba3fab3ee3b9e65baefad604cd774611f3d433273afc1166d146e8ed')
 _dirhip="$(basename "$_hip")-$(basename "${source[0]}" ".tar.gz")"
 _diropencl="$(basename "$_opencl")-$(basename "${source[1]}" ".tar.gz")"
 _dirrocclr="$(basename "$_rocclr")-$(basename "${source[2]}" ".tar.gz")"
@@ -38,7 +36,6 @@ prepare() {
     cd "$_dirhipamd"
     patch -Np1 -i "$srcdir/git-hash.patch"
     patch -Np1 -i "$srcdir/noinline.patch"
-    patch -N   -i "$srcdir/config-path.patch"
 }
 
 build() {
