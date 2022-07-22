@@ -1,8 +1,8 @@
 pkgbase = yosys-git
 	pkgdesc = A framework for RTL synthesis
-	pkgver = 0.10+25.r10984.a0f5ba850
+	pkgver = 0.19+20.r11686.12b0ce972
 	pkgrel = 1
-	url = http://www.clifford.at/yosys/
+	url = https://yosyshq.net/yosys/
 	arch = x86_64
 	arch = i686
 	license = custom:ISC
@@ -17,7 +17,7 @@ pkgbase = yosys-git
 	depends = boost-libs
 	optdepends = graphviz: Schematics display support
 	optdepends = xdot: Design netlist display support
-	provides = yosys=0.10+25.r10984.a0f5ba850
+	provides = yosys=0.19+20.r11686.12b0ce972
 	conflicts = yosys
 	source = git+https://github.com/YosysHQ/yosys.git
 	source = git+https://github.com/YosysHQ/abc.git
