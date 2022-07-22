@@ -1,7 +1,7 @@
 pkgbase = beast
-	pkgdesc = Bayesian Evolutionary Analysis Sampling Trees
+	pkgdesc = Bayesian Evolutionary Analysis Sampling Trees. https://doi.org/10.1186/1471-2148-7-214
 	pkgver = 1.10.4
-	pkgrel = 1
+	pkgrel = 10
 	url = http://beast.community/
 	arch = x86_64
 	license = LGPL-2.1 License

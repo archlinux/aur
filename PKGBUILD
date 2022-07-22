@@ -3,9 +3,9 @@
 
 pkgname=beast
 pkgver=1.10.4
-pkgrel=1
+pkgrel=10
 provides=("beast")
-pkgdesc="Bayesian Evolutionary Analysis Sampling Trees"
+pkgdesc="Bayesian Evolutionary Analysis Sampling Trees. https://doi.org/10.1186/1471-2148-7-214"
 arch=('x86_64')
 url="http://beast.community/"
 license=('LGPL-2.1 License')
