@@ -1,6 +1,6 @@
 pkgbase = tiempo-git
-	pkgdesc = A command line time tracker
-	pkgver = 1.1.1.r0.8cb7bb5
+	pkgdesc = Simple Gtk drawing application
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://gitlab.com/categulario/tiempo-rs
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = tiempo-git
 	license = GPL3
 	makedepends = cargo
 	makedepends = git
-	optdepends = sqlite: for manually editing the database
+	depends = gtk3
 	provides = tiempo
 	conflicts = tiempo
 	source = tiempo-git::git+https://gitlab.com/categulario/tiempo-rs
