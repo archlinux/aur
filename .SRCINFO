@@ -1,6 +1,6 @@
 pkgbase = cdesktopenv
 	pkgdesc = CDE - Common Desktop Environment
-	pkgver = 2.3.2
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = http://sourceforge.net/projects/cdesktopenv/
 	install = cdesktopenv.install
@@ -23,20 +23,13 @@ pkgbase = cdesktopenv
 	options = !strip
 	options = !zipman
 	backup = etc/dt/config/xfonts/C/fonts.alias
-	source = http://downloads.sourceforge.net/cdesktopenv/cde-2.3.2.tar.gz
+	source = http://downloads.sourceforge.net/cdesktopenv/cde-2.4.0.tar.gz
 	source = cdesktopenv.install
 	source = dtlogin.service
 	source = fonts.alias
 	source = fonts.dir
 	source = cde.desktop
 	source = startxsession.sh
-	md5sums = c093f3239a9c9462d96f19f5ad85f1e3
-	md5sums = 66ff27b4c6b7c5fda4e2db69f829e4aa
-	md5sums = 18f9ef4643ff7ed6637907f5cbdabecf
-	md5sums = 5cc80c2851ea90b94e94b0c5d92d81fb
-	md5sums = 897316929176464ebc9ad085f31e7284
-	md5sums = 7d11b9d2bc1234278f14151025744916
-	md5sums = 2e5557241915e4c2761ba136dbcba469
+	md5sums = SKIP
 
 pkgname = cdesktopenv
-
