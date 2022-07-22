@@ -4,7 +4,7 @@ _init_system=dinit
 _basename=tblock
 pkgname=${_basename}-${_init_system}
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 provides=("$_basename")
 pkgdesc="An anti-capitalist ad-blocker that uses the hosts file"
 url="https://tblock.codeberg.page"
@@ -17,6 +17,7 @@ makedepends=(
         "python>=3"
         "python-build"
         "python-installer"
+	"python-setuptools"
 )
 depends=(
         "python-urllib3"

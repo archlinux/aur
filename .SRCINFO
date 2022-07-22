@@ -1,7 +1,7 @@
 pkgbase = tblock-dinit
 	pkgdesc = An anti-capitalist ad-blocker that uses the hosts file
 	pkgver = 2.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tblock.codeberg.page
 	arch = any
 	license = GPL3
@@ -10,6 +10,7 @@ pkgbase = tblock-dinit
 	makedepends = python>=3
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	depends = python-urllib3
 	depends = python-requests
 	depends = python-colorama
