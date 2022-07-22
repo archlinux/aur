@@ -2,9 +2,9 @@
 _pkgname='pulseaudio-subscribe'
 pkgname="${_pkgname}-git"
 pkgver=r9.983b005
-pkgrel=3
+pkgrel=4
 pkgdesc='program to subscribe to pulseaudio events. useful for updating statusbars.'
-url='https://github.com/soystemd/pulseaudio-subscribe'
+url='https://github.com/ghesy/pulseaudio-subscribe'
 arch=('x86_64')
 license=('GPL')
 depends=('libpulse')
