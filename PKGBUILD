@@ -1,9 +1,11 @@
 # Maintainer: Ren Tatsumoto <tatsu at autistici dot org>
+# Contributor: Felix Golatofski
+# Contributor: Mark Tompkins
 
 pkgname=archie-silence-grub-theme-git
 _gitname="arch-silence"
-pkgver="r5.9fda3bf"
-pkgrel=3
+pkgver=r7.cd4bba1
+pkgrel=1
 pkgdesc="Arch Silence - GRUB2 theme - GIT version, with a new logo."
 arch=('any')
 license=('GPL')
@@ -15,7 +17,7 @@ source=("git+https://github.com/fghibellini/$_gitname.git")
 makedepends=('git')
 sha512sums=('SKIP')
 conflicts=("$_gitname-grub-theme" "$_gitname-grub-theme-git")
-provides=("$_gitname-grub-theme=$pkgver")
+provides=("$_gitname-grub-theme")
 
 pkgver() {
   cd ${srcdir}/${_gitname}
