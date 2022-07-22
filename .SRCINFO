@@ -1,7 +1,7 @@
 pkgbase = sensu-backend
 	pkgdesc = Sensu Go Backend
 	pkgver = 6.7.4
-	pkgrel = 0
+	pkgrel = 3
 	url = https://sensu.io
 	install = sensu-backend.install
 	arch = x86_64

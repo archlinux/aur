@@ -2,18 +2,12 @@ post_install() {
   if [ -z $(getent group sensu) ]; then
     /usr/bin/groupadd sensu
   fi
-  if [ -z $(getent passwd sensu) ]; then
-    /usr/bin/useradd -s /sbin/nologin -d /var/lib/sensu -m -g sensu sensu
-  fi
   /usr/bin/mkdir -p /var/log/sensu && /usr/bin/chown sensu:sensu /var/log/sensu
 }
 
 post_upgrade() {
   if [ -z $(getent group sensu) ]; then
     /usr/bin/groupadd sensu
-  fi
-  if [ -z $(getent passwd sensu) ]; then
-    /usr/bin/useradd -s /sbin/nologin -d /var/lib/sensu -m -g sensu sensu
   fi
   /usr/bin/mkdir -p /var/log/sensu && /usr/bin/chown sensu:sensu /var/log/sensu
 }
