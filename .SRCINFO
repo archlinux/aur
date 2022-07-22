@@ -28,7 +28,7 @@ pkgbase = davinci-resolve-beta
 	conflicts = davinci-resolve-studio
 	conflicts = davinci-resolve-studio-beta
 	options = !strip
-	source = DaVinci_Resolve_18.0b4_Linux.zip::https://sw.blackmagicdesign.com/DaVinciResolve/v18.0b4/DaVinci_Resolve_18.0b4_Linux.zip?Key-Pair-Id=APKAJTKA3ZJMJRQITVEA&Signature=oCoOJNBA8KVlCoMfZ/jtm2qF7ldMckfLD9ReHdNk2fY6Av2b9123iAnfCScFZcCv5QKAbr5WF+b8HYgHzNG972sGb2cbrgFKDXWPdF9kZtiNrJvSocOKmgHmNzIeg3zuUChVlMJ/u862pItzwOEcrFd2vsNPXY4/hJmQ7tLblceXmCwucpPC7eTu9XSG3yeXToMIYMZABJzFYuSKhd3ikVm3Dgwfo2DwEJ7uhmXAkRg12R4FZ/pnRlIk7qvnND/XTUAjP8CCuEftFG92idSzsYHcQyvTZFVNMgIx9Mtlsgpf/b9rIqgdAL5+An+UBk85FJQQgZ4JHe0sFQcKIfBgtA==&Expires=1655123460
+	source = DaVinci_Resolve_18.0b4_Linux.zip::Error: The download id 'db6624435ea749e68ab3a8947c64e131' was not found: lang=en
 	sha256sums = 65f3575f8b1e98450f76e06be098b8a1bc5eb30df7596a222a400991608def79
 
 pkgname = davinci-resolve-beta
