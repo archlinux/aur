@@ -9,7 +9,7 @@ _gitroot="https://git.kernel.org/pub/scm/linux/kernel/git/stable/${_srcname}"
 _gitbranch="linux-rolling-stable"
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for BPIR64"
-pkgver=5.18.11.bpi.r64.1
+pkgver=5.18.13.bpi.r64.1
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -28,9 +28,8 @@ export LOCALVERSION="-${pkgrel}"
 
 prepare() {
   if [[ -d "${srcdir}/${_srcname}/" ]]; then
-echo test
     cd "${srcdir}/${_srcname}/"
-    git fetch
+    git fetch --depth 1
     echo "LOCAL  HEAD: $(git rev-parse HEAD)"
     echo "REMOTE HEAD: $(git rev-parse @{u})"
     if [ "$(git rev-parse HEAD)" != "$(git rev-parse @{u})" ]; then
@@ -41,7 +40,7 @@ echo test
     echo
   else
     cd "${srcdir}/"
-echo    git clone --branch "${_gitbranch}" --depth=1 "${_gitroot}" "${srcdir}/${_srcname}/"
+    echo git clone --branch "${_gitbranch}" --depth=1 "${_gitroot}" "${srcdir}/${_srcname}/"
     git clone --branch "${_gitbranch}" --depth=1 "${_gitroot}" "${srcdir}/${_srcname}/"
     echo
   fi
