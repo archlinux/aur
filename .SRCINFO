@@ -1,0 +1,24 @@
+pkgbase = livi-git
+	pkgdesc = A simple GTK4 based video player for mobile phones
+	pkgver = 0.0.2.r6.g2afa84f
+	pkgrel = 1
+	url = https://source.puri.sm/guido.gunther/livi
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	depends = libadwaita
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-bad
+	depends = gst-plugins-good
+	depends = x264
+	depends = libgudev
+	provides = livi
+	conflicts = livi
+	source = git+https://source.puri.sm/guido.gunther/livi.git
+	b2sums = SKIP
+
+pkgname = livi-git
