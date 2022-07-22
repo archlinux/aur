@@ -1,8 +1,8 @@
 # Maintainer: David Bernhard <davidbernhard.w@gmail.com>
 pkgname=simple-reaction-daemon
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
-pkgdesc="Simple Reaction Daemon - Periodically ping hosts and run custom actions if they are unreachable"
+pkgdesc="Simple Reaction Daemon - Periodically ping hosts and run custom actions if they fail/succeed"
 arch=('any')
 _srctag=v${pkgver}
 url="https://github.com/dbernhard-0x7CD/simple-reaction-daemon/releases/tag/$_srctag"
@@ -11,7 +11,6 @@ depends=(libsystemd libconfig glibc)
 makedepends=()
 checkdepends=()
 optdepends=()
-replaces=()
 backup=('etc/srd/srd.conf')
 options=('strip')
 install=
