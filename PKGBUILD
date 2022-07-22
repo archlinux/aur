@@ -3,6 +3,7 @@
 pkgname=gnome-shell-extension-gsconnect
 pkgver=50
 pkgrel=1
+epoch=1
 pkgdesc="KDE Connect implementation with GNOME Shell integration"
 arch=('any')
 url="https://github.com/GSConnect/gnome-shell-extension-gsconnect"
