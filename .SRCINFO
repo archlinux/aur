@@ -1,6 +1,6 @@
 pkgbase = cephadm
 	pkgdesc = Cephadm deploys and manages a Ceph cluster by connection to hosts from the manager daemon via SSH to add, remove, or update Ceph daemon containers
-	pkgver = 16.2.9
+	pkgver = 16.2.10
 	pkgrel = 1
 	url = https://ceph.com/
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = cephadm
 	optdepends = ntp: time sync service
 	provides = cephadm
 	conflicts = cephadm-git
-	source = cephadm-16.2.9::https://github.com/ceph/ceph/raw/v16.2.9/src/cephadm/cephadm
+	source = cephadm-16.2.10::https://github.com/ceph/ceph/raw/v16.2.10/src/cephadm/cephadm
 	sha256sums = f233379fa27d4a21029ad38f58f4d5f88b1131bdd2e80c6da4309033de4ac3b3
 
 pkgname = cephadm
