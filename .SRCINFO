@@ -1,13 +1,16 @@
 pkgbase = find-the-command-git
 	pkgdesc = Advanced command-not-found hook for bash, fish and zsh using the power of pacman
 	pkgver = 1.4.3.r0.g5a59306
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pkasemir/find-the-command
 	install = find-the-command.install
 	arch = any
 	license = WTFPL
+	makedepends = git
 	depends = pacman
 	depends = systemd
+	depends = pkgfile
+	depends = fzf
 	provides = find-the-command
 	conflicts = find-the-command
 	source = git+https://github.com/pkasemir/find-the-command.git
