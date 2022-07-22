@@ -3,7 +3,7 @@
 pkgname=64gram-desktop
 _pkgname=64Gram
 pkgver=1.0.39
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Unofficial desktop version of Telegram messaging app'
 arch=('x86_64')
@@ -33,8 +33,6 @@ prepare() {
 
 build() {
     cd $_pkgname-$pkgver-full
-    # Fix https://bugs.archlinux.org/task/73220
-    export CXXFLAGS+=" -Wp,-U_GLIBCXX_ASSERTIONS"
     export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
     cmake . \
         -B build \
