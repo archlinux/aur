@@ -1,12 +1,14 @@
 pkgbase = sblock-git
 	pkgdesc = Simple adblocker that creates a hosts file from multiple sources, similar to hblock.
-	pkgver = r7.43a0383
+	pkgver = r15.53e3f1f
 	pkgrel = 1
 	url = https://github.com/soystemd/sblock
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = aria2
+	provides = sblock
+	conflicts = sblock
 	source = git+https://github.com/soystemd/sblock.git
 	md5sums = SKIP
 
