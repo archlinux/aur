@@ -25,18 +25,18 @@
 ################################################################################
 
 export QDB_PROCESS_LABEL="QuestDB-Runtime-66535"
-export QDB_MAX_STOP_ATTEMPTS=5;
-export QDB_OS=`uname`
+export QDB_MAX_STOP_ATTEMPTS=5
+export QDB_OS=$(uname)
 
-case `uname` in
-   Darwin|FreeBSD)
-       export PS_CMD="ps aux"
-       export QDB_DEFAULT_ROOT="/usr/local/var/questdb"
-       ;;
-   *)
-       export PS_CMD="ps -ef"
-       export QDB_DEFAULT_ROOT="/var/lib/questdb"
-       ;;
+case $(uname) in
+Darwin | FreeBSD)
+    export PS_CMD="ps aux"
+    export QDB_DEFAULT_ROOT="/usr/local/var/questdb"
+    ;;
+*)
+    export PS_CMD="ps -ef"
+    export QDB_DEFAULT_ROOT="/var/lib/questdb"
+    ;;
 esac
 
 ## jvm java_opt configurations
@@ -50,12 +50,15 @@ function read_link {
 
         if [[ "$f" != /* ]]; then
             f="$(dirname $1)/$f"
-            f="$(cd $(dirname ${f}); pwd)/$(basename ${f})"
+            f="$(
+                cd $(dirname ${f})
+                pwd
+            )/$(basename ${f})"
         fi
 
         n=$(read_link ${f})
         if [ "$n" != "" ]; then
-             f=${n};
+            f=${n}
         fi
     fi
     echo "$f"
@@ -68,7 +71,7 @@ function usage {
 }
 
 function export_pid {
-    export QDB_PID=`${PS_CMD} | grep ${QDB_PROCESS_LABEL} | grep -v grep | tr -s " " | cut -d " " -f 2`
+    export QDB_PID=$(${PS_CMD} | grep ${QDB_PROCESS_LABEL} | grep -v grep | tr -s " " | cut -d " " -f 2)
 }
 
 function export_java {
@@ -78,23 +81,23 @@ function export_java {
         export QDB_PACKAGE=withjre
         export JAVA="$BASE/java"
     else
-      export QDB_PACKAGE=withoutjre
-      if [ "$JAVA_HOME" = "" -a -e /usr/libexec/java_home ]; then
-          JAVA_HOME=$(/usr/libexec/java_home -v 11)
-      fi
+        export QDB_PACKAGE=withoutjre
+        if [ "$JAVA_HOME" = "" -a -e /usr/libexec/java_home ]; then
+            JAVA_HOME=$(/usr/libexec/java_home -v 11)
+        fi
 
-      # check that JAVA_HOME is defined
-      if [ "$JAVA_HOME" = "" ]; then
-          JAVA_HOME=/usr/lib/jvm/default
-      fi
+        # check that JAVA_HOME is defined
+        if [ "$JAVA_HOME" = "" ]; then
+            JAVA_HOME=/usr/lib/jvm/default
+        fi
 
-      # check that Java binary is executable
-      export JAVA=${JAVA_HOME}/bin/java
+        # check that Java binary is executable
+        export JAVA=${JAVA_HOME}/bin/java
     fi
 
     if [ ! -x "$JAVA" ]; then
         echo "$JAVA is not executable"
-        exit 55;
+        exit 55
     fi
 
     echo "JAVA: $JAVA"
@@ -111,35 +114,35 @@ function export_args {
         key="$1"
 
         case ${key} in
-            -f)
-                export QDB_OVERWRITE_PUBLIC="-f"
-                ;;
-            -n)
-                export QDB_DISABLE_HUP_HANDLER="-n"
-                ;;
-            -c)
-                export QDB_CONTAINER_MODE="-c"
-                ;;
-            -d)
-                if [[ $# -eq 1 ]]; then
-                    echo "Expected: -d <path>"
-                    exit 55
-                fi
-                export QDB_ROOT="$2"
-                shift
-                ;;
-            -t)
-                if [[ $# -eq 1 ]]; then
-                    echo "Expected: -t <tag>"
-                    exit 55
-                fi
-                export QDB_PROCESS_LABEL="QuestDB-Runtime-$2"
-                shift
-                ;;
-            *)
-                echo "Unexpected option: $key"
-                usage
-                ;;
+        -f)
+            export QDB_OVERWRITE_PUBLIC="-f"
+            ;;
+        -n)
+            export QDB_DISABLE_HUP_HANDLER="-n"
+            ;;
+        -c)
+            export QDB_CONTAINER_MODE="-c"
+            ;;
+        -d)
+            if [[ $# -eq 1 ]]; then
+                echo "Expected: -d <path>"
+                exit 55
+            fi
+            export QDB_ROOT="$2"
+            shift
+            ;;
+        -t)
+            if [[ $# -eq 1 ]]; then
+                echo "Expected: -t <tag>"
+                exit 55
+            fi
+            export QDB_PROCESS_LABEL="QuestDB-Runtime-$2"
+            shift
+            ;;
+        *)
+            echo "Unexpected option: $key"
+            usage
+            ;;
         esac
         shift
     done
@@ -171,6 +174,7 @@ function start {
     fi
 
     QDB_LOG=/var/log/questdb/
+    mkdir -p QDB_LOG
 
     JAVA_LIB="$BASE/questdb.jar"
 
@@ -179,19 +183,19 @@ function start {
     -ea -Dnoebug
     -XX:+UnlockExperimentalVMOptions
     -XX:+AlwaysPreTouch
-    -XX:+UseParallelOldGC
+    -XX:+UseParallelGC
     "
 
     JAVA_MAIN="io.questdb/io.questdb.ServerMain"
-    DATE=`date +%Y-%m-%dT%H-%M-%S`
+    DATE=$(date +%Y-%m-%dT%H-%M-%S)
 
     if [ "${QDB_CONTAINER_MODE}" != "" ]; then
-        ${JAVA} ${JAVA_OPTS} -p ${JAVA_LIB} -m ${JAVA_MAIN} -d ${QDB_ROOT} ${QDB_OVERWRITE_PUBLIC} > ${QDB_LOG}/stdout-${DATE}.txt
+        ${JAVA} ${JAVA_OPTS} -p ${JAVA_LIB} -m ${JAVA_MAIN} -d ${QDB_ROOT} ${QDB_OVERWRITE_PUBLIC} >${QDB_LOG}/stdout-${DATE}.txt
     elif [ "${QDB_DISABLE_HUP_HANDLER}" = "" ]; then
-        ${JAVA} ${JAVA_OPTS} -p ${JAVA_LIB} -m ${JAVA_MAIN} -d ${QDB_ROOT} ${QDB_OVERWRITE_PUBLIC} > ${QDB_LOG}/stdout-${DATE}.txt &
+        ${JAVA} ${JAVA_OPTS} -p ${JAVA_LIB} -m ${JAVA_MAIN} -d ${QDB_ROOT} ${QDB_OVERWRITE_PUBLIC} >${QDB_LOG}/stdout-${DATE}.txt &
         sleep 0.5
     else
-        ${JAVA} ${JAVA_OPTS} -p ${JAVA_LIB} -m ${JAVA_MAIN} -d ${QDB_ROOT} ${QDB_OVERWRITE_PUBLIC} ${QDB_DISABLE_HUP_HANDLER} > ${QDB_LOG}/stdout-${DATE}.txt
+        ${JAVA} ${JAVA_OPTS} -p ${JAVA_LIB} -m ${JAVA_MAIN} -d ${QDB_ROOT} ${QDB_OVERWRITE_PUBLIC} ${QDB_DISABLE_HUP_HANDLER} >${QDB_LOG}/stdout-${DATE}.txt
     fi
 }
 
@@ -219,7 +223,7 @@ function stop {
         kill ${QDB_PID}
         sleep 0.5
         export_pid
-        count=$((count-1))
+        count=$((count - 1))
     done
 
     if [[ "${QDB_PID}" != "" ]]; then
@@ -255,16 +259,16 @@ if [[ $# -gt 0 ]]; then
     export_args $@
 
     case ${command} in
-       start)
+    start)
         start
         ;;
-       status)
+    status)
         query
         ;;
-       stop)
+    stop)
         stop
         ;;
-       *)
+    *)
         usage
         ;;
     esac
