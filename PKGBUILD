@@ -132,7 +132,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=5.18
-_minor=12
+_minor=13
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -142,7 +142,7 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux hardened kernel with the BORE scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=4
+pkgrel=1
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -345,8 +345,10 @@ prepare() {
         scripts/config --disable HZ_300 \
             --enable HZ_500 \
             --set-val HZ 500
-    elif [ "$_HZ_ticks" = "300" ]; then
+    else
         echo "Setting tick rate to 300Hz..."
+        scripts/config --enable HZ_300 \
+            --set-val HZ 300
     fi
 
     ### Disable NUMA
@@ -389,7 +391,7 @@ prepare() {
     fi
 
     ### Select tick type
-    if [ "$_tickrate" = "perodic" ]; then
+    if [ "$_tickrate" = "periodic" ]; then
         echo "Enabling periodic ticks..."
         scripts/config --disable NO_HZ_IDLE \
             --disable NO_HZ_FULL \
@@ -397,14 +399,14 @@ prepare() {
             --disable NO_HZ_COMMON \
             --enable HZ_PERIODIC
     elif [ "$_tickrate" = "idle" ]; then
-        echo "Enabling tickless idle..."
+        echo "Enabling idle ticks.."
         scripts/config --disable HZ_PERIODIC \
             --disable NO_HZ_FULL \
             --enable NO_HZ_IDLE \
             --enable NO_HZ \
             --enable NO_HZ_COMMON
     elif [ "$_tickrate" = "full" ]; then
-        echo "Enabling tickless idle..."
+        echo "Enabling full ticks..."
         scripts/config --disable HZ_PERIODIC \
             --disable NO_HZ_IDLE \
             --disable CONTEXT_TRACKING_FORCE \
@@ -413,6 +415,14 @@ prepare() {
             --enable NO_HZ \
             --enable NO_HZ_COMMON \
             --enable CONTEXT_TRACKING
+    else
+        if [ -n "$_tickrate" ]; then
+            error "The value $_tickrate is invalid. Choose the correct one again."
+        else
+            error "The value is empty. Choose the correct one again."
+        fi
+        error "Selecting the tick rate failed!"
+        exit
     fi
 
     ### Select preempt type
@@ -426,7 +436,7 @@ prepare() {
             --enable PREEMPTION \
             --enable PREEMPT_DYNAMIC
     elif [ "$_preempt" = "voluntary" ]; then
-        echo "Enabling tickless idle..."
+        echo "Enabling voluntary preempt..."
         scripts/config --enable PREEMPT_BUILD \
             --disable PREEMPT_NONE \
             --enable PREEMPT_VOLUNTARY \
@@ -434,8 +444,8 @@ prepare() {
             --enable PREEMPT_COUNT \
             --enable PREEMPTION \
             --disable PREEMPT_DYNAMIC
-    elif [ "$_tickrate" = "server" ]; then
-        echo "Enabling tickless idle..."
+    elif [ "$_preempt" = "server" ]; then
+        echo "Enabling server preempt..."
         scripts/config --enable PREEMPT_NONE_BUILD \
             --enable PREEMPT_NONE \
             --disable PREEMPT_VOLUNTARY \
@@ -443,6 +453,14 @@ prepare() {
             --disable PREEMPT_COUNT \
             --disable PREEMPTION \
             --disable PREEMPT_DYNAMIC
+    else
+        if [ -n "$_preempt" ]; then
+            error "The value $_preempt is invalid. Choose the correct one again."
+        else
+            error "The value is empty. Choose the correct one again."
+        fi
+        error "Selecting PREEMPT failed!"
+        exit
     fi
 
     ### Enable O3
@@ -846,10 +864,10 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('40b74d0942f255da07481710e1083412d06e37e45b8f9d9e34ae856db37b9527'
-            '99d33d202ea55e52db74d75c1cd269362c1cfc608b02a0cd89bfaefb3119a7a4'
+sha256sums=('430e1affe62fcca274f217b150290995a33ceb0d5ad5e72ca6ee8a2d28276bda'
+            '6545991ed6547235dceb71681639aca09324ae860a265d588f0ee972c7981038'
             'ce8bf7807b45a27eed05a5e1de5a0bf6293a3bbc2085bacae70cd1368f368d1f'
-            '37763b7f098fadd029923dafb952f9c9485ff3527e48087b6c5e557e043fa324'
+            '6578c745064c71ba0fb9d59fd4b4d224516368607241f5613fad05c44f2ae842'
             '7a36fe0a53a644ade0ce85f08f9ca2ebaddd47876966b7cc9d4cae8844649271'
             'd09b35736cf6b5b9b269bfe3b8f32a68463d1ae9d591a256f94bcc6a62425c28'
             'acf8ca58f229a487e6a3654bee4ce63e8b8679985e0a1e1f26406e3f1a092b02')
