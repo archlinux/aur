@@ -1,12 +1,11 @@
 pkgbase = tblock
 	pkgdesc = An anti-capitalist ad-blocker that uses the hosts file
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tblock.codeberg.page
 	arch = any
 	license = GPL3
 	makedepends = make
-	makedepends = pandoc
 	makedepends = gzip
 	makedepends = python>=3
 	makedepends = python-setuptools
