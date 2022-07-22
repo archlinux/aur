@@ -1,17 +1,20 @@
 pkgbase = svstudio-bin
 	pkgdesc = Synthesizer V Studio, a high-quality singing synthesis software.
-	pkgver = 1.6.1
+	pkgver = 1.7.0
 	pkgrel = 2
 	url = https://dreamtonics.com
 	arch = x86_64
 	license = custom
-	depends = libcurl-gnutls
-	depends = webkit2gtk
+	depends = alsa-lib
+	depends = freetype2
+	depends = libglvnd
+	depends = curl
+	depends = hicolor-icon-theme
 	provides = svstudio
-	source = svstudio-1.6.1.zip::https://resource.dreamtonics.com/download/Synthesizer%20V%20Studio%20Basic/1.6.1/svstudio-basic-linux64.zip
+	source = svstudio-1.7.0.zip::https://download.dreamtonics.com.cn/svstudio/1.7.0-7M6VDjm9hrEbcwUBaTpA/svstudio-basic-linux64.zip
 	source = svstudio.svg
 	source = svstudio.desktop
-	sha512sums = 8e1a1a1cbe53f9803c9a60416a399702fb18fd48f8ba035c903dacdbb6520f2fb10ca10ccedc63e5c445a7705250a9feddad6e1c32435ddbdb26aa3404970acf
+	sha512sums = 593035ef80f247e861a4f3f8acb2b8837408d977fe1e25b77b7a555563f6a42ae0953942b550fae22ea7f8347186ea3ea37c14e80c550f515e9d6dd478e517b4
 	sha512sums = ee2fbe1a3d4c63f2fed31368396c4b3315fbe01368341ce73d7d4c1cb5e0fe3d9f529083ce45890a860624debc57543e2a873940c4fa14135f4e5f013d88cde2
 	sha512sums = bf95cea8be7def9c9e108b584efa247baec68eacc9afc1192fa4ff6368290d570ff958f9fbd1997d33df6c33c4d4dbaea673c36c6156e9a353a70991edc327f9
 
