@@ -3,7 +3,7 @@
 
 pkgname=meshroom-bin
 pkgver=2021.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Meshroom is a free, open-source 3D Reconstruction Software based on the AliceVision framework."
 arch=( 'x86_64')
 url="https://github.com/alicevision/meshroom"
