@@ -1,16 +1,16 @@
 pkgbase = midisport-firmware
 	pkgdesc = Firmware for some (legacy) m-audio midi devices
 	pkgver = 1.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://usb-midi-fw.sourceforge.net/
 	arch = any
 	license = gpl
 	depends = alsa-lib
 	depends = fxload
+	depends = udev
 	source = http://downloads.sourceforge.net/project/usb-midi-fw/midisport-firmware/1.2/midisport-firmware-1.2.tar.gz
 	source = midisport_udev_rules.patch
 	md5sums = b1e4976b68f396a50e92491caa6f36bc
 	md5sums = 46fdfedc6fc7ca7a257dfbd401c204e0
 
 pkgname = midisport-firmware
-
