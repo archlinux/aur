@@ -1,19 +1,19 @@
 pkgbase = clickhouse-bin
 	pkgdesc = ClickHouse is a fast open-source OLAP database management system
-	pkgver = 22.6.3.35
+	pkgver = 22.7.1.2484
 	pkgrel = 1
 	url = https://clickhouse.tech/
 	arch = x86_64
 	license = Apache
 	provides = clickhouse
-	source = https://packages.clickhouse.com/tgz/stable/clickhouse-client-22.6.3.35-amd64.tgz
-	source = https://packages.clickhouse.com/tgz/stable/clickhouse-common-static-22.6.3.35-amd64.tgz
-	source = https://packages.clickhouse.com/tgz/stable/clickhouse-server-22.6.3.35-amd64.tgz
+	source = https://packages.clickhouse.com/tgz/stable/clickhouse-client-22.7.1.2484-amd64.tgz
+	source = https://packages.clickhouse.com/tgz/stable/clickhouse-common-static-22.7.1.2484-amd64.tgz
+	source = https://packages.clickhouse.com/tgz/stable/clickhouse-server-22.7.1.2484-amd64.tgz
 	source = clickhouse.sysusers
 	source = clickhouse-server.service
-	sha512sums = 2e2b6978eec4a3a833b8f60d60b91f53cabf919b7530f928c26aedce00b3c930e76d1e9d67fd66441ea2a2002d5aa046abcbdd943391fb2549fc5c5f1a40dab9
-	sha512sums = 444df771a00f9ac769728b761cd565facca31c8a2aeb14f0108ba649993ca706f0cbe80fb5e0b81a84a1f0d45e0caf27a59815f709315a0bb1483c2935e4967b
-	sha512sums = 4873f1d3ed22e28d81fdc14b7f61c01101a833f3fcd55690bf9da94011d89d959fa41255d613212799d6f1d4cc45c688254822657aef7201a02f08db36302567
+	sha512sums = 2a80b19caebb86f3cd1b40519e9b6ba7f4af6de77e599b0c1870b343d3a10082acd7693c0737438cb42e3d2a9ddf010aad6f185a8fb4e508c66826ddf2489a74
+	sha512sums = 1690e72b93e0bbb8184d380bb1ddae0ad6bafc899d682b3117c058c18170f443e3f20c0f1de89502c84cc7e84c02550e31ff93025d2c9695f1adb14a5f86e99b
+	sha512sums = 54ab78474a69ca8823e6916e37244b8be9e9764848bd5e6e4175108274725e07f28319d036af43fd0c3792e4ec3e872060a5fd434c7994c2ecd25cbd369e2a7a
 	sha512sums = 70af4456ded1a1bb5cf29d2d3b29086aedc7875ef673e8817f389243f0c79eb491c9ce715b94542cbe16eb7489d97411ff0ab4a1a7f6c9b9120c659b87ea25b7
 	sha512sums = f70fb1fc8d26e1d6c8b4f5c808b373d464cd20ace363cfd735703d1af0f6ec6196a0c7c905d804fad789eb51acab4896397e70b64a0b61cdcd7457a6694fc4b3
 
