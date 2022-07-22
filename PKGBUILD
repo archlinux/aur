@@ -3,7 +3,7 @@
 _name=pyfastani
 pkgname=python-${_name}
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cython bindings and Python interface to FastANI, a method for fast whole-genome similarity estimation"
 url="https://github.com/althonos/${_name}"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -23,7 +23,7 @@ build() {
 check() {
     local pyver=$(python -c 'import sys; print("{}.{}".format(*sys.version_info[:2]))')
     local machine=$(python -c 'import platform; print(platform.machine())')
-    cd "${srcdir}/${_name}-${pkgver}/build/lib.linux-${machine}-${pyver}"
+    cd "${srcdir}/${_name}-${pkgver}/build/"lib.linux-*
     python -m unittest ${_name}.tests
 }
 
