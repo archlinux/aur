@@ -1,0 +1,17 @@
+pkgbase = python-concur-imgui
+	pkgdesc = Cython-based Python bindings for dear imgui (Concur fork)
+	pkgver = 1.3.9
+	pkgrel = 1
+	url = https://github.com/pyimgui/pyimgui
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	provides = python-imgui
+	conflicts = python-imgui
+	source = https://files.pythonhosted.org/packages/source/c/concur_imgui/concur_imgui-1.3.9.tar.gz
+	sha256sums = f6e7e71ffaccedb293f5af9cc477fae873fe2d34b30e7235def3f52dfa05fa94
+
+pkgname = python-concur-imgui
