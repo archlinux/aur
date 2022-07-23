@@ -1,21 +1,21 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=torf-cli
-pkgver=3.4.0
+pkgver=4.0.3
 pkgrel=1
 pkgdesc='A tool for creating, reading and editing torrent files'
 arch=('any')
 url='https://github.com/rndusr/torf-cli/'
 license=('GPL3')
 depends=('python' 'python-torf' 'python-pyxdg')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
 source=("https://github.com/rndusr/torf-cli/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('8ac4793ca713067f9916dfd2236efce69754e4ae8d068dfaaa97a7e5e7725b0d')
+sha256sums=('6c38b777be3d7372296257ffc9d7b83c3decab26015ee520fd3325c0826df2db')
 
 build() {
     cd "${pkgname}-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 check() {
@@ -24,6 +24,5 @@ check() {
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
-    PYTHONHASHSEED='0' python setup.py install --root="$pkgdir" --skip-build --optimize='1'
+    python -m installer --destdir="$pkgdir" "${pkgname}-${pkgver}/dist"/*.whl
 }
