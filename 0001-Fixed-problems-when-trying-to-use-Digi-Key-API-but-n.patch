@@ -1,0 +1,28 @@
+From ac0d58277c30a6e35064dc784bce5cc079632cf8 Mon Sep 17 00:00:00 2001
+From: "Salvador E. Tropea" <salvador@inti.gob.ar>
+Date: Thu, 21 Jul 2022 13:35:35 -0300
+Subject: [PATCH] Fixed problems when trying to use Digi-Key API, but not
+ available
+
+Related to INTI-CMNB/KiBot#209
+---
+ kicost/distributors/api_digikey.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/kicost/distributors/api_digikey.py b/kicost/distributors/api_digikey.py
+index a09f9da..7333a62 100644
+--- a/kicost/distributors/api_digikey.py
++++ b/kicost/distributors/api_digikey.py
+@@ -91,6 +91,9 @@ class api_digikey(distributor_class):
+         DK_API.api_ops = {}
+         cache_ttl = 7
+         cache_path = None
++        if not available:
++            debug_obsessive('Digi-Key API not available')
++            return
+         for k, v in ops.items():
+             if k == 'client_id':
+                 DK_API.id = v
+-- 
+2.37.1
+

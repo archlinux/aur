@@ -1,6 +1,6 @@
 pkgbase = kicost
 	pkgdesc = KiCAD script to convert BOM xml into spreadsheet
-	pkgver = 1.1.6
+	pkgver = 1.1.10
 	pkgrel = 1
 	url = https://github.com/xesscorp/KiCost/
 	arch = any
@@ -15,7 +15,9 @@ pkgbase = kicost
 	depends = python-validators
 	depends = python-wxpython
 	depends = python-colorama
-	source = kicost-1.1.6.tar.gz::https://github.com/xesscorp/KiCost/archive/v1.1.6.tar.gz
-	sha512sums = 682281f54fbf9419effdd1991e9416d581e48dfc245b6b14bf6d82898a136b02500fb624cdc084fec719d3e48ee93764bcd1eb77e98ea6e047ff4c0c009897fa
+	source = kicost-1.1.10.tar.gz::https://github.com/xesscorp/KiCost/archive/v1.1.10.tar.gz
+	source = 0001-Fixed-problems-when-trying-to-use-Digi-Key-API-but-n.patch
+	sha512sums = d38242f2e482d9f58a89c361ba6252c1f633a4004d9be92900f9a8abde0f961d387e5b3c7f9a88dffe49525614f4aaee2e45df02fc176ca534927e99f2b24f71
+	sha512sums = 609345567334474becab7fd1948ae7acea6dd032e2270e94433aad7d9ffabbb304b8ae7513e81888fea6fc664f284c0114967842bb6671f8ed37bd862f7c8ead
 
 pkgname = kicost
