@@ -1,0 +1,18 @@
+pkgbase = procenv
+	pkgdesc = Utility to show process environment
+	pkgver = 0.60
+	pkgrel = 1
+	url = https://github.com/jamesodhunt/procenv
+	arch = x86_64
+	license = GPL3
+	checkdepends = check
+	checkdepends = expat
+	checkdepends = groff
+	makedepends = git
+	depends = apparmor
+	depends = libcap
+	depends = numactl
+	source = procenv::git+https://github.com/jamesodhunt/procenv#commit=349157f839d14f4d4f3061b793597d33a5ac71ba
+	b2sums = SKIP
+
+pkgname = procenv
