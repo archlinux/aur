@@ -1,7 +1,7 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=gnome-shell-extension-quick-settings-git
-pkgver=r145.9e0660f
+pkgver=r152.b3e0d0d
 pkgrel=1
 pkgdesc='Quick Settings for Gnome'
 arch=(any)
@@ -32,5 +32,5 @@ package() {
 	cd "${pkgname%-git}"
 	_extensiondir="/usr/share/gnome-shell/extensions/quick-settings@fmuellner.gnome.org"
 	install -d "$pkgdir$_extensiondir"
-	unzip quick-settings@fmuellner.gnome.org.shell-extension.zip -d "$pkgdir$_extensiondir"
+	bsdtar -xf quick-settings@fmuellner.gnome.org.shell-extension.zip -C "$pkgdir$_extensiondir"
 }
