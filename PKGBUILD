@@ -51,7 +51,7 @@ _major=5.18
 _minor=14
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux AUFS'
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
@@ -70,8 +70,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_aufs_path}/${_aufs_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v2-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v2-sep/0002-HID-apple-Properly-handle-function-keys-on-Keychron-.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0002-HID-apple-Properly-handle-function-keys-on-Keychron-.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0003-soundwire-Raise-DEFAULT_PROBE_TIMEOUT-to-10000-ms.patch"
          # the main kernel config files
         'config')
 
@@ -295,9 +296,10 @@ sha512sums=('270c27efc9557c001314dd80508d533e00c1f5dc6be496e1c4581144e2386550efd
             'SKIP'
             'f47bcdd8d32b0b2ff1c58d552e2fe83047b6aa183ba03670dfd4e0f1f27eec6808eab53904847b316d8e31c85b4d63a7f365c6a91008a6d6cbcf89639073a880'
             '2fa1250d93049fcfcfe04d201236eb7a662703b71a73b77c8e5df72900ad40cbb0b818c9c82cbf0204f67bf496bce7310d713ff9106825816525be1ba2da68e8'
-            'edfeb7045168791e49737295e30cdec1a819d214e56b7ef7861efac941f309ef2c5552cdbaf538a7c0257d40b0a7f30e7a865e716e0aa0393addc10603bc3534'
-            'b3665c03ec1b150b00f777c2cd3051171cf9bceb8861f461d827af15d0f40fb4fbc6c9baf13e89d77acbeb87449e3e74a8013ce0959a765b74c2cec786926b96'
-            'b1bd5dee74818279e2d2021364d1c570a7874555d1f5fa1c6628f0104eb3d5f2fbbb7a19beee58cb78673c808a88a64da7331442667c5bb0bc2352a81f15ed41')
+            '7cb854ec305f181ddf8f2d0edf2aac0412e49d42f0e3050550d57aa89dd1b1c8687bae7a1e853b1ab1a36b93491fad26955d0e094cf00f2da40a2da2c7fd4a81'
+            '01116fc7aaace204ede7d33875813ec64d99d102de3f98f6f886a4d4e7c64e27683f9f6c05b1140676730fce00531fbef064a449727deec3c1be9679463b104c'
+            '4e22feb4975ea8ad73f9380b9bbc7a2c4a6428c830b64844faa2a9fd69158f3f4ebfc4c75bf0bb74dedddc047cba914953d4274d47ca29797175768eefa7ce8c'
+            '86b53ee024d8d048a5f0878b77ed685aae48154f3000b5b3b40f0afd85cdaa1741bbd4fd3352024ced2211bbb91488a563bfdbbef0bceaf608972c4adca98e2a')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
