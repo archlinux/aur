@@ -1,7 +1,7 @@
 pkgbase = amor
 	pkgdesc = On-Screen Creature
 	pkgver = 15.08.3
-	pkgrel = 9
+	pkgrel = 10
 	url = https://projects.kde.org/projects/kde/kdetoys/amor
 	arch = i686
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = amor
 	depends = kdbusaddons
 	depends = kdoctools
 	depends = qt5-x11extras
+	optdepends = amor-themes-extra: 26 extra themes for KDE AMOR
 	source = git+https://github.com/KDE/amor.git
 	sha256sums = SKIP
 
