@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 63b2b01..be5220d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -4,7 +4,7 @@
+ # Version
+ #
+ VERSION ?= $(shell git describe --tags --dirty)
+-WXVERSION=3.0
++WXVERSION=3.2
+ 
+ #
+ # Source files
