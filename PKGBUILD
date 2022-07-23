@@ -3,63 +3,46 @@
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 
 _pkgname=lilv
-pkgname="${_pkgname}-git"
-pkgver=0.24.13.r1396.71a2ff5
+pkgname=$_pkgname-git
+pkgver=0.24.16.r1416.a15b01e
 pkgrel=1
-pkgdesc="A C library interface to the LV2 plug-in standard with Python bindings (git version)"
-arch=('i686' 'x86_64')
-url="http://drobilla.net/software/lilv"
-license=("custom:ISC")
-depends=('lv2>=1.17.0' 'python' 'sratom')
-makedepends=('git' 'libsndfile')
+pkgdesc='A C library interface to the LV2 plug-in standard with Python bindings (git version)'
+arch=(i686 x86_64)
+url='http://drobilla.net/software/lilv'
+license=(ISC)
+depends=('lv2>=1.18.2' python sratom)
+makedepends=(git libsndfile)
 optdepends=(
     "bash-completion: completion for bash"
     "libsndfile: lv2apply utility"
 )
-provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}" "lib${_pkgname}-${pkgver::1}.so")
-conflicts=("${_pkgname}" "${_pkgname}-svn")
-source=("${_pkgname}::git+https://gitlab.com/lv2/${_pkgname}.git"
-        'autowaf::git+https://gitlab.com/drobilla/autowaf.git')
-md5sums=('SKIP'
-         'SKIP')
+provides=($_pkgname "$_pkgname=${pkgver//.r*/}" $_pkgname-docs)
+conflicts=($_pkgname $_pkgname-docs)
+source=("$_pkgname::git+https://gitlab.com/lv2/$_pkgname.git")
+sha256sums=('SKIP')
 
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-
-  local ver=`grep "^LILV_VERSION" wscript | cut -d "'" -f 2`
-  echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-
-  git submodule init
-  git config submodule.waflib.url "${srcdir}/autowaf"
-  git submodule update
-}
-
-check() {
-  cd "${srcdir}/${_pkgname}"
-
-  python waf test -v || echo "Some tests are currently known to fail"
+  cd $_pkgname
+  local ver=$(grep -E "^\s+version: '[0-9]+\.[0-9]+\.[0-9]+'" meson.build | cut -d "'" -f 2)
+  echo ${ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  arch-meson $_pkgname $_pkgname-build
+  meson compile -C $_pkgname-build
+}
 
-  python waf configure \
-    --prefix=/usr \
-    --configdir=/etc \
-    --dyn-manifest \
-    --test
-  python waf $MAKEFLAGS
+
+check() {
+  meson test -C $_pkgname-build || echo "Ignoring failing tests"
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-
-  python waf install --destdir="${pkgdir}"
-  # license
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  depends+=(libserd-0.so libsord-0.so libsratom-0.so)
+  provides+=(liblilv-0.so)
+  meson install -C $_pkgname-build --destdir "$pkgdir"
+  mv -v "$pkgdir"/usr/share/doc/{$_pkgname-0,$pkgname}
+  install -vDm 644 $_pkgname/COPYING -t "$pkgdir"/usr/share/licenses/$pkgname
+  install -vDm 644 $_pkgname/{AUTHORS,NEWS,README.md} -t "$pkgdir"/usr/share/doc/$pkgname
 }
