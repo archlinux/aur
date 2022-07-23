@@ -10,6 +10,7 @@ license=("MIT")
 arch=('x86_64')
 conflicts=(${_pkgbase})
 provides=('yafu' 'ysieve')
+#makedepends=('zlib' 'msieve')
 depends=('gmp' 'gmp-ecm')
 optdepends=('ggnfs')
 source=(
@@ -57,4 +58,8 @@ package() {
 
 	cd ${srcdir}/yafu
 	install -Dm755 yafu ${pkgdir}/usr/bin/yafu
+	install -Dm644 yafu.ini -t ${pkgdir}/etc/yafu
+	install -Dm644 README -t ${pkgdir}/usr/share/doc/yafu
+	install -Dm644 CHANGES -t ${pkgdir}/usr/share/doc/yafu
+	install -Dm644 docfile.txt -t ${pkgdir}/usr/share/doc/yafu
 }
