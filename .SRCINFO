@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-headless
 	pkgdesc = Complete solution to record, convert and stream audio and video; optimised for server (headless) systems
-	pkgver = 5.0.1
-	pkgrel = 3
+	pkgver = 5.1
+	pkgrel = 1
 	epoch = 1
 	url = https://ffmpeg.org/
 	arch = i686
@@ -76,9 +76,7 @@ pkgbase = ffmpeg-headless
 	provides = libswscale.so
 	provides = ffmpeg
 	conflicts = ffmpeg
-	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=9687cae2b468e09e35df4cea92cc2e6a0e6c93b3
-	source = ffmpeg-vmaf2.x.patch
+	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=e0723b7e4e22492275d476fcd30d759e1198bc5b
 	b2sums = SKIP
-	b2sums = 65039aac811bfd143359e32720cd6ca64124f1789c1b624bd28a5bd75b37362b2a3b6b402203c4e9d137fb1d00895114f3789df40f8381091d38c98e7876cc8a
 
 pkgname = ffmpeg-headless

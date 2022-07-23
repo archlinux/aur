@@ -6,8 +6,8 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-headless
-pkgver=5.0.1
-pkgrel=3
+pkgver=5.1
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -87,10 +87,8 @@ provides=(
     "${pkgname%-headless}"
 )
 conflicts=("${pkgname%-headless}")
-source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=9687cae2b468e09e35df4cea92cc2e6a0e6c93b3
-        ffmpeg-vmaf2.x.patch)
-b2sums=('SKIP'
-        '65039aac811bfd143359e32720cd6ca64124f1789c1b624bd28a5bd75b37362b2a3b6b402203c4e9d137fb1d00895114f3789df40f8381091d38c98e7876cc8a')
+source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=e0723b7e4e22492275d476fcd30d759e1198bc5b)
+b2sums=('SKIP')
 
 pkgver() {
     git -C "${pkgname%-headless}" describe --tags | sed 's/^n//'
@@ -99,7 +97,6 @@ pkgver() {
 prepare() {
     cd ${pkgname%-headless}
     git cherry-pick -n 988f2e9eb063db7c1a678729f58aab6eba59a55b     # fix nvenc on older gpus
-    patch -Np1 -i ../ffmpeg-vmaf2.x.patch                           # vmaf 2.x support
 }
 
 build() {
