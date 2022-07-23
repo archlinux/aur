@@ -1,0 +1,21 @@
+pkgbase = gaw-xschem-git
+	pkgdesc = Gtk analog waveform viewer with patches to improve xschem support
+	pkgver = r34.854bee4
+	pkgrel = 1
+	url = https://github.com/StefanSchippers/xschem-gaw
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = sed
+	depends = gtk3
+	depends = alsa-lib
+	depends = gettext
+	provides = gaw
+	conflicts = gaw
+	conflicts = gaw3
+	source = gaw-xschem::git+https://github.com/StefanSchippers/xschem-gaw.git
+	md5sums = SKIP
+
+pkgname = gaw-xschem-git
