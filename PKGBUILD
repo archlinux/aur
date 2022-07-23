@@ -6,14 +6,14 @@
 
 pkgname=btrfs-progs-git
 _gitname=${pkgname%-git}
-pkgver=5816_5.16.2_r0_g31458c9c
+pkgver=5959_5.18.1_r0_g47b5cf86
 pkgrel=1
 pkgdesc="Btrfs filesystem utilities"
 arch=("i686" "x86_64")
 url="https://btrfs.wiki.kernel.org/index.php/Main_Page"
 license=('GPL')
 depends=('glibc' 'e2fsprogs' 'lzo' 'zlib' 'zstd' 'systemd-libs')
-makedepends=('git' 'asciidoc' 'xmlto' 'python' 'python-setuptools' 'systemd')
+makedepends=('git' 'asciidoc' 'xmlto' 'python' 'python-setuptools' 'systemd' 'python-sphinx')
 provides=('btrfs-progs')
 conflicts=('btrfs-progs')
 _url=https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/btrfs-progs/trunk/
@@ -83,7 +83,9 @@ check() {
     tests/fsck-tests/031-metadatadump-check-data-csum \
     tests/fsck-tests/033-lowmem-collission-dir-items \
     tests/fsck-tests/037-freespacetree-repair \
-    tests/fsck-tests/052-init-csum-tree
+    tests/fsck-tests/052-init-csum-tree \
+    tests/fsck-tests/056-raid56-false-alerts \
+    tests/fsck-tests/057-seed-false-alerts
 
   make test-fsck
 
