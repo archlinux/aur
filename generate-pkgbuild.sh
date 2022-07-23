@@ -1,17 +1,24 @@
 #!/usr/bin/env bash
 
+# Source code:
+# - https://github.com/vmware-tanzu/carvel-imgpkg
+# - https://github.com/vmware-tanzu/carvel-kapp
+# - https://github.com/vmware-tanzu/carvel-kbld
+# - https://github.com/vmware-tanzu/carvel-kapp-controller
+# - https://github.com/vmware-tanzu/carvel-kwt
+# - https://github.com/vmware-tanzu/carvel-vendir
+# - https://github.com/vmware-tanzu/carvel-ytt
+
 set -eo pipefail
 
-readonly basedir=$(mktemp -d)
-readonly pkgver=$(date +%Y%m%d)
-readonly pkgrel=${PKGBUILD_PKGREL:-1}
-readonly tools_amd64=(ytt kbld kapp kwt imgpkg vendir)
+basedir=$(mktemp -d)
+pkgver=$(date +%Y%m%d)
+pkgrel=${PKGBUILD_PKGREL:-1}
+tools_amd64=(imgpkg kapp kbld kctrl kwt vendir ytt)
 # Not all tools provide arm64 builds
-readonly tools_arm64=(ytt kapp vendir)
-# Architectures of the tools
-readonly arches_bin=(amd64 arm64)
+tools_arm64=(imgpkg kapp kbld kctrl vendir ytt)
 # Architectures recognized by PKGBUILD spec
-readonly arches_pkg=(x86_64 aarch64)
+arches_pkg=(x86_64 aarch64)
 
 set -u
 
@@ -19,7 +26,7 @@ cat <<EOF
 # Maintainer: German Lashevich <german.lashevich@gmail.com>
 
 pkgname=carvel-tools
-pkgdesc="Set of Carvel (k14s) tools: ${tools_amd64[@]}"
+pkgdesc="Set of Carvel tools: ${tools_amd64[@]}"
 pkgver=${pkgver}
 pkgrel=${pkgrel}
 url="https://carvel.dev"
@@ -39,24 +46,32 @@ function foo {
     shift
     local tools=("$@")
 
+    local project
+
     for tool in "${tools[@]}"; do
-        tmp_file=${basedir}/${tool}
-        curl https://api.github.com/repos/vmware-tanzu/carvel-${tool}/releases/latest -o ${tmp_file} -C -
+        if [[ $tool == kctrl ]]; then
+            project=kapp-controller
+        else
+            project="$tool"
+        fi
 
-        url=$(jq -r '.assets[] | select(.name == "'${tool}'-linux-'${arch_bin}'").browser_download_url' <${tmp_file})
-        version=$(jq -r '.name' <${tmp_file})
-        echo "${tool}-${version}::${url}" >>${basedir}/_source_${arch_pkg}
+        tmp_file="${basedir}/${tool}"
+        curl "https://api.github.com/repos/vmware-tanzu/carvel-${project}/releases/latest" -o "${tmp_file}" -C -
 
-        hashsum=$(jq -r '.body' <${tmp_file} | rg -F linux-${arch_bin} | awk '{print $1}')
-        echo ${hashsum} >>${basedir}/_hashsum_${arch_pkg}
+        url=$(jq -r '.assets[] | select(.name == "'"${tool}"'-linux-'"${arch_bin}"'").browser_download_url' <"${tmp_file}")
+        version=$(jq -r '.name' <"${tmp_file}")
+        echo "${tool}-${version}::${url}" >>"${basedir}/_source_${arch_pkg}"
+
+        hashsum=$(jq -r '.body' <"${tmp_file}" | rg -F "linux-${arch_bin}" | awk '{print $1}')
+        echo "${hashsum}" >>"${basedir}/_hashsum_${arch_pkg}"
     done
 
     cat <<EOF
 source_${arch_pkg}=(
-$(cat ${basedir}/_source_${arch_pkg})
+$(cat "${basedir}/_source_${arch_pkg}")
 )
 sha256sums_${arch_pkg}=(
-$(cat ${basedir}/_hashsum_${arch_pkg})
+$(cat "${basedir}/_hashsum_${arch_pkg}")
 )
 EOF
 }
@@ -67,8 +82,9 @@ foo arm64 aarch64 "${tools_arm64[@]}"
 echo "package() {"
 
 for tool in "${tools_amd64[@]}"; do
-    bin_name=$(rg "^${tool}[^:]+" -o ${basedir}/_source_x86_64)
-    echo '[[ -f "${srcdir}/'${bin_name}'" ]] && install -Dm 755 "${srcdir}/'${bin_name}'" "${pkgdir}/usr/bin/'${tool}'"'
+    bin_name=$(rg "^${tool}[^:]+" -o "${basedir}/_source_x86_64")
+    # shellcheck disable=SC2016
+    echo '[[ -f "${srcdir}/'"${bin_name}"'" ]] && install -Dm 755 "${srcdir}/'"${bin_name}"'" "${pkgdir}/usr/bin/'"${tool}"'"'
 done
 
 echo "}"
