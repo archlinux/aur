@@ -1,7 +1,7 @@
 pkgbase = yaknewtab
 	pkgdesc = A shell script for opening new Yakuake tabs/sessions
 	pkgver = 52192368063cbc676c15006c539367c7375704aa
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RogueScholar/yaknewtab
 	arch = any
 	license = GPL-3.0
