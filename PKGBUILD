@@ -28,7 +28,7 @@ if [ -n "$_disable_docs" ]; then
 else
   pkgname=(mutter-performance mutter-performance-docs)
 fi
-pkgver=42.3
+pkgver=42.3+r4+gd96efc7b1
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -41,7 +41,7 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols sysprof gi-docgen)
 checkdepends=(xorg-server-xvfb pipewire-session-manager python-dbusmock)
-_commit=1903356b45c6c884a0451580f32494ff1288656d  # tags/42.3^0
+_commit=d96efc7b17056b0fa01e4d9002e13f487e120db8  # tags/42.3^4
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1154.patch'
         'mr1441.patch'
