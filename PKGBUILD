@@ -3,7 +3,7 @@
 
 pkgname=wem
 pkgver=0.8.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Wine Environment Manager: A CLI tool for managing wine "envs" or prefixes.'
 arch=('x86_64')
 url='https://git.sr.ht/~hristoast/wem'
@@ -20,10 +20,10 @@ build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -buildvcs=false -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    export GOFLAGS="-buildmode=pie -buildvcs=false -trimpath -mod=readonly -modcacherw"
 
     cd "$pkgname-$pkgver"
-    go build -o wem ./cmd/wem
+    go build -ldflags="-linkmode=external -X 'git.sr.ht/~hristoast/wem/cfg.WemVersion=${pkgver}_${pkgrel}'" -o wem ./cmd/wem
 }
 
 package() {
