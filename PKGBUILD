@@ -1,24 +1,35 @@
 # Maintainer: Aditya Sirish <aditya@saky.in>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=shiv
-pkgver=0.5.1
-pkgrel=2
-pkgdesc="A command line utility for building fully self contained Python zipapps as outlined in PEP 441, but with all their dependencies included"
+pkgver=1.0.1
+pkgrel=1
+pkgdesc="CLI for building self-contained Python zipapps"
 arch=('any')
 url='https://github.com/linkedin/shiv'
 license=('BSD')
-depends=('python' 'python-click')
-makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/${pkgver}.tar.gz")
-sha256sums=('386e73e8ef20615d577c50562748ca91d10fa229273130d73b438d4f73cdf803')
+depends=('python-click')
+makedepends=(
+	'python-build'
+	'python-installer'
+	'python-setuptools'
+	'python-sphinx'
+	'python-sphinx-click'
+	'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('26b1e67db39931f4e7cd8cb6b6d92132c68a275e7f5cc3a485f05873bf2710b2')
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  python setup.py build
+	cd "$pkgname-$pkgver"
+	python -m build --wheel --no-isolation
+	sphinx-build -b man docs/ _build/man
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/shiv/LICENSE"
+	cd "$pkgname-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm644 _build/man/shiv.1 -t "$pkgdir/usr/share/man/man1/"
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s "$_site/$pkgname-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
