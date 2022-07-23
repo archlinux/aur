@@ -7,11 +7,13 @@ pkgdesc="Customizable personal knowledge-base with Github as unlimited storage a
 arch=('i686' 'x86_64')
 url="https://github.com/tiddly-gittly/TidGi-Desktop"
 license=('MPL2')
-depends=('alsa-lib' 'anaconda' 'atk' 'at-spi2-atk' 'at-spi2-core' 'cairo' 'clion' 'curl' 'dbus' 'desktop-file-utils' 'discord' 'expat' 'gdk-pixbuf2' 'glib2' 'gtk3' 'gvfs' 'hicolor-icon-theme' 'kde-cli-tools' 'kdepim-runtime' 'libcups' 'libdrm' 'libnotify' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'libxtst' 'mesa' 'nspr' 'nss' 'openssl' 'pango' 'trash-cli' 'xdg-utils' 'zlib')
+depends=('alsa-lib' 'atk' 'at-spi2-atk' 'at-spi2-core' 'cairo' 'curl' 'dbus' 'desktop-file-utils' 'expat' 'gdk-pixbuf2' 'glib2' 'gtk3' 'gvfs' 'hicolor-icon-theme' 'libcups' 'libdrm' 'libnotify' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'libxtst' 'mesa' 'nspr' 'nss' 'openssl' 'pango' 'trash-cli' 'xdg-utils' 'zlib')
 optdepends=('apparmor'
             'gnome-keyring'
             'libgnome-keyring'
-            'pulseaudio')
+            'pulseaudio'
+			'kde-cli-tools'
+			'kdepim-runtime')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_i686=("https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
@@ -24,7 +26,7 @@ package(){
 
 	# Extract package data
 	tar -xJ -f data.tar.xz -C "${pkgdir}"
-
+	cd "${pkgdir}"
 	install -D -m644 "usr/lib/tidgi/resources/node_modules/zx/node_modules/yaml/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -D -m644 "usr/share/doc/tidgi/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
 
