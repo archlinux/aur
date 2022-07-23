@@ -24,7 +24,7 @@ optdepends=('glfw: to use system GLFW libraries'
 )
 source=("https://github.com/PolyMC/PolyMC/releases/download/$pkgver/PolyMC-$pkgver.tar.gz")
 
-sha256sums=('c33484ae20c912d3dde2e55f64f24d8b86a9a9547631cd3b10481ddbf90f4735')
+sha256sums=('91b67bd4415f288399f824d9dc83a537d69e66f7ace93de4f62c3dd531a729a9')
 
 build() {
 
