@@ -1,0 +1,16 @@
+pkgbase = materialize
+	pkgdesc = A streaming database for real-time applications.
+	pkgver = 0.26.4
+	pkgrel = 1
+	url = https://materialize.com
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = rust>=1.6.0
+	makedepends = gcc-libs
+	provides = materialize
+	conflicts = materialize
+	source = git+https://github.com/MaterializeInc/materialize.git#commit=v0.26.4
+	md5sums = SKIP
+
+pkgname = materialize
