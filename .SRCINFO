@@ -1,15 +1,16 @@
 pkgbase = seh-utn
 	pkgdesc = SEH Technology UTN service/daemon, kernel module (DKMS) and clitool
-	pkgver = 3.2.10
+	pkgver = 3.3.5
 	pkgrel = 1
 	url = https://www.seh-technology.com/
 	arch = x86_64
 	license = custom
+	makedepends = patch
 	depends = dkms
 	depends = linux-headers
 	backup = etc/xdg/SEH Computertechnik GmbH/SEH UTN Manager.conf
 	backup = etc/xdg/SEH Computertechnik GmbH/SEH UTN Service.conf
-	source = https://www.seh-technology.com/fileadmin/user/downloads/deviceserver/tools/sehutnmanager-deb_linux_64bit-3.2.10.zip
-	sha256sums = 0c8ffeb736cb91f0bd5a44a3cefa41804b6906c5191224e3603ac41f5502e642
+	source = https://www.seh-technology.com/fileadmin/user/downloads/deviceserver/tools/sehutnmanager-deb_linux_64bit-3.3.5.zip
+	sha256sums = 69e3c6f95cd547b13e6583f06b033574d2a8fdbb087ef90be51af4b9fa4244b6
 
 pkgname = seh-utn
