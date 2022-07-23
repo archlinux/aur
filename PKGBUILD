@@ -5,8 +5,8 @@
 
 # Maintainer: Matt Coffin <mcoffin13 at gmail.com>
 pkgname=wl-clipboard-rs
-pkgver=0.4.1
-pkgrel=3
+pkgver=0.6.0
+pkgrel=1
 epoch=
 pkgdesc="A safe Rust reimplementation of the Wayland command-line copy/paste utilities"
 arch=('x86_64')
@@ -16,21 +16,21 @@ depends=('gcc-libs')
 makedepends=('git' 'cargo')
 provides=('wl-clipboard')
 conflicts=('wl-clipboard')
-source=("${pkgname}::git+git://github.com/YaLTeR/wl-clipboard-rs.git#tag=v${pkgver}" Cargo.lock)
+source=("${pkgname}::git+https://github.com/YaLTeR/wl-clipboard-rs.git#tag=v${pkgver}" Cargo.lock)
 sha512sums=('SKIP'
-            'c74a50b361fd470843e44b704eec2dc63933b4090e32fcf5b6df8b3d455f69a9d46c4eb27c884ea06f787141129d1f160c90a793654f3eaf3052172ff5e7b652')
+            '5e3b8aa2b757c166edcea1b13f45827ffd84a07c9b75a58918679bc82d3f37a7f29eb4ef3d595bcb42a74c26bb9e1d38b2bb93319a25bd6eb16752d891a5f5bc')
 
 prepare() {
 	cp "$srcdir"/Cargo.lock "$srcdir"/"$pkgname"/
 }
 
 build() {
-	cd "$pkgname"
+	cd "$pkgname/wl-clipboard-rs-tools"
 	CARGO_INCREMENTAL=0 cargo build --release --locked
 }
 
 check() {
-	cd "$pkgname"
+	cd "$pkgname/wl-clipboard-rs-tools"
 	CARGO_INCREMENTAL=0 cargo test --release --locked
 }
 
@@ -38,7 +38,7 @@ package() {
 	if [ ! -d "$pkgdir/usr/bin" ]; then
 		mkdir -p "$pkgdir/usr"
 	fi
-	CARGO_INCREMENTAL=0 cargo install --path "$pkgname" --root "$pkgdir/usr" --bins --frozen --offline
+	CARGO_INCREMENTAL=0 cargo install --path "$pkgname/wl-clipboard-rs-tools" --root "$pkgdir/usr" --bins --frozen --offline
 
 	local _f
 	for _f in "$pkgdir"/usr/{.crates.toml,.crates2.json}; do
