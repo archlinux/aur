@@ -2,7 +2,7 @@
 
 _pkgname='cmake-init'
 pkgname="${_pkgname}-git"
-pkgver=0.31.1.r0.g8264e70
+pkgver=0.31.2.r0.g65af496
 pkgrel=1
 pkgdesc='An opinionated CMake project initializer that generates CMake projects.'
 arch=(any)
@@ -18,6 +18,7 @@ optdepends=(
 	'conan'
 	'vcpkg'
 )
+makedepends=('git')
 sha256sums=('SKIP')
 source=("git+${url}.git")
 
@@ -39,8 +40,8 @@ prepare() {
 package() {
 	cd "$_srcdir/package"
 	
-	python 'setup.py' install --optimize=1 --root="$pkgdir/" --prefix="/usr"
+	python 'setup.py' install --optimize=1 --root="$pkgdir/" --prefix='/usr'
 	
 	cd ..
-	install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/${_pkgname}"
+	install -Dm644 'COPYING' -t "$pkgdir/usr/share/licenses/${_pkgname}"
 }
