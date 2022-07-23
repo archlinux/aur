@@ -1,8 +1,8 @@
 # Maintainer: Josh Holmer <jholmer.in@gmail.com>
 
 pkgname=aom-psy-git
-pkgver=r32687.g2b3394525
-pkgrel=3
+pkgver=r32859.gc7ecd15af
+pkgrel=1
 pkgdesc="An open, royalty-free video coding format, includes tune=(vmaf|butteraugli) and BlueSwordM's psy patches"
 arch=('i686' 'x86_64')
 url="https://aomedia.org/"
@@ -60,6 +60,7 @@ package() {
 
   make -C "_build" DESTDIR="$pkgdir" install
   cp "_build/examples/photon_noise_table" "$pkgdir/usr/bin/photon_noise_table"
+  cp "_build/examples/noise_model" "$pkgdir/usr/bin/noise_model"
 
   install -d "$pkgdir/usr/share/doc/aom"
   cp -R "_build/docs/." "$pkgdir/usr/share/doc/aom"
