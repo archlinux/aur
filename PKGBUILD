@@ -1,7 +1,7 @@
 pkgname=foxtelgo-bin
 _pkgname=FoxtelGo-bin
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 _pkgrel_x86_64=1
 pkgdesc="Unnofficial FoxtelGo desktop application"
 arch=('x86_64')
@@ -28,7 +28,7 @@ package() {
     ln -s "/opt/FoxtelGo/foxtelgo" "$pkgdir/usr/bin/foxtelgo"
 
     # Desktop Entry
-    install -Dm644 "$srcdir/$_pkgname/FoxtelGO.desktop" \
-        "$pkgdir/usr/share/applications/FoxtelGO.desktop"
-    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/FoxtelGO.desktop"
+    install -Dm644 "$srcdir/$_pkgname/FoxtelGo.desktop" \
+        "$pkgdir/usr/share/applications/FoxtelGo.desktop"
+    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/FoxtelGo.desktop"
 }
