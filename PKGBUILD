@@ -1,12 +1,12 @@
 pkgname=mfosu-bin
 pkgver=2022.528.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An fork of osu!lazer."
 arch=(x86_64)
 url="https://github.com/MATRIX-feather/osu"
 license=(
   "MIT"
-  "custom:CC-BY-NC 4.0"
+  "CC-BY-NC 4.0"
 )
 depends=(
   zlib
@@ -29,11 +29,11 @@ source=(
 )
 noextract=("mfosu.appimage")
 sha256sums=(
-  "SKIP"
-  "SKIP"
-  "SKIP"
-  "SKIP"
-  "SKIP"
+  "fe8f26b11443a0f0e6dc9e6c10d32d9c3c5cc3f2e825e970f4ebfe4f7994ae37"
+  "36f73cfe0a84cd65a8bb54fcde5a01c419b134bee4a88cc92eb4f33236343a10"
+  "30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244"
+  "a072250ea8407385937d9a25e077ba71ec581da67598922fe4893f097dfe3280"
+  "2bf4c70aebc2375b8fd607981ff1999b60659d13aab80df42b735085d0fd0cec"
 )
 package() {
   cd "$srcdir"
