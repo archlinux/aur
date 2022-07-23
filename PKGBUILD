@@ -1,7 +1,7 @@
 #
 # PKGBUILD for minipro (stable)
 #
-# Maintainer: uffe _.at._ uffe _.dot._ org
+# Maintainer: uffe _.at._ uffe _.dat._ org
 #
 
 pkgname=minipro
@@ -22,15 +22,23 @@ provides=("minipro")
 md5sums=("601df72a153e47dd452bc20c32acd275")
 
 
+prepare()
+{
+  cd "${srcdir}/${pkg_name_ver}"
+}
+
 build()
 {
   cd "${srcdir}/${pkg_name_ver}"
-  make PREFIX="/usr"
+
+  # MAKEFLAGS="-j1": temporary hack to prevent parallel compile - see link:  https://gitlab.com/DavidGriffith/minipro/-/commit/b2fd68da00154608bcaacde01845466e51795a7d
+  make PREFIX="/usr" MAKEFLAGS="-j1"
 }
 
 package()
 {
   cd "${srcdir}/${pkg_name_ver}"
+
   make DESTDIR="${pkgdir}" PREFIX="/usr" COMPLETIONS_DIR="/usr/share/bash-completion/completions" install
 }
 
