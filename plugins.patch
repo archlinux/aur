@@ -28,7 +28,7 @@ diff -aur a/plugin.mk b/plugin.mk
 +	# Installed includes
 +	FLAGS += -I/usr/include/vcvrack -I/usr/include/vcvrack/dep
 +	# Link shared libs
-+	LDFLAGS += -ldl $(shell pkg-config --libs glew glfw3 jansson libcurl openssl libarchive libzstd speexdsp samplerate rtmidi rtaudio)
++	LDFLAGS += -ldl
  	RACK_USER_DIR ?= $(HOME)/.Rack2
  endif
 
