@@ -11,6 +11,7 @@ arch=('any')
 url="https://github.com/mwilck/${_pkgname}"
 license=('GPL2')
 depends=('python')
+makedepends=('git')
 source=(
 	"git+${url}.git"
 	"${url}/pull/10.patch"

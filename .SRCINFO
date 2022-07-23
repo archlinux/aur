@@ -5,6 +5,7 @@ pkgbase = btrfs-clone-git
 	url = https://github.com/mwilck/btrfs-clone
 	arch = any
 	license = GPL2
+	makedepends = git
 	depends = python
 	provides = btrfs-clone
 	conflicts = btrfs-clone
