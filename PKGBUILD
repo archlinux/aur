@@ -9,13 +9,12 @@ pkgdesc="next-next-gen video compression technology from Xiph.org, Mozilla and o
 arch=('i686' 'x86_64')
 url="https://www.xiph.org/daala/"
 license=('BSD')
-makedepends=('git' 'sdl2' 'wxgtk2' 'libjpeg-turbo' 'libogg' 'libpng')
+makedepends=('git' 'sdl2' 'libjpeg-turbo' 'libogg' 'libpng')
 checkdepends=('check')
 optdepends=("libogg: OGG support"
             "libpng: PNG support"
             "libjpeg-turbo: JPG support"
-            "sdl2: For daala example player"
-            "wxgtk2: For daala example analyzer")
+            "sdl2: For daala example player")
 provides=('libdaala' $_gitname)
 conflicts=('libdaala' $_gitname)
 options=('!libtool')
@@ -31,7 +30,7 @@ pkgver() {
 build() {
   cd $_gitname
   ./autogen.sh
-  ./configure --prefix=/usr --libdir=/usr/lib --enable-analyzer
+  ./configure --prefix=/usr --libdir=/usr/lib
   make
   #make tools
 }
@@ -50,7 +49,6 @@ package() {
 
   # Install the example programs (if someone want to, some do work, outside of build directory)
   #install -Dm644 $pkgdir/usr/bin
-  #install -m755 examples/analyzer ${pkgdir}/usr/bin/daala-analyzer
   #install -m755 examples/encoder_example ${pkgdir}/usr/bin/daala-encoder-ex
   #install -m755 examples/dump_video ${pkgdir}/usr/bin/daala-dump-video
   #install -m755 examples/player_example ${pkgdir}/usr/bin/daala-player-ex

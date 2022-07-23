@@ -9,7 +9,6 @@ pkgbase = daala-git
 	checkdepends = check
 	makedepends = git
 	makedepends = sdl2
-	makedepends = wxgtk2
 	makedepends = libjpeg-turbo
 	makedepends = libogg
 	makedepends = libpng
@@ -17,7 +16,6 @@ pkgbase = daala-git
 	optdepends = libpng: PNG support
 	optdepends = libjpeg-turbo: JPG support
 	optdepends = sdl2: For daala example player
-	optdepends = wxgtk2: For daala example analyzer
 	provides = libdaala
 	provides = daala
 	conflicts = libdaala
@@ -27,4 +25,3 @@ pkgbase = daala-git
 	md5sums = SKIP
 
 pkgname = daala-git
-
