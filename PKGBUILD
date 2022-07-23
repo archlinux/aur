@@ -36,6 +36,8 @@ build() {
   msg2 "Building stage 3 (muon from muon)"
   build-stage2/muon setup \
     -D prefix=/usr \
+    -D b_lto=true \
+    -D b_pie=true \
     build
   ninja -C build
 }
