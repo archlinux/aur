@@ -1,13 +1,13 @@
 # Maintainer: Andreas Tennert <mail at andreas-tennert dot de>
 pkgname='lcarsde-status-bar'
 pkgver=22.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Menu for lcarsde to display and run installed software"
 arch=('any')
 url="https://lcarsde.github.io"
 license=('MIT')
 groups=('lcarsde')
-depends=('pango' 'icu' 'libxml2' 'glib2' 'harfbuzz' 'freetype2' 'gtk3')
+depends=('pango' 'icu' 'libxml2' 'glib2' 'harfbuzz' 'freetype2' 'gtk3' 'libxcrypt-compat')
 optdepends=('ttf-ubuntu-font-family' 'alsa-utils' 'pulseaudio')
 makedepends=('jdk-openjdk' 'ncurses5-compat-libs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lcarsde/status-bar/archive/$pkgver.tar.gz")

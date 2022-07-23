@@ -1,7 +1,7 @@
 pkgbase = lcarsde-status-bar
 	pkgdesc = Menu for lcarsde to display and run installed software
 	pkgver = 22.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lcarsde.github.io
 	arch = any
 	groups = lcarsde
@@ -15,6 +15,7 @@ pkgbase = lcarsde-status-bar
 	depends = harfbuzz
 	depends = freetype2
 	depends = gtk3
+	depends = libxcrypt-compat
 	optdepends = ttf-ubuntu-font-family
 	optdepends = alsa-utils
 	optdepends = pulseaudio
