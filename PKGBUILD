@@ -3,8 +3,8 @@
 # TODO: Fix broken help page
 
 pkgname=bookletimposer
-pkgver=0.3
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="Achieve some basic imposition on PDF documents"
 arch=('any')
 url="http://kjo.herbesfolles.org/bookletimposer/"
@@ -12,8 +12,8 @@ license=('GPLv3+')
 depends=('python>=3.5' 'python-pypdf2>=1.26' 'python-gobject' 'desktop-file-utils')
 makedepends=('python-distutils-extra' 'pandoc')
 install=bookletimposer.install
-source=("http://kjo.herbesfolles.org/bookletimposer/archive/$pkgname-$pkgver.tar.gz")
-md5sums=('2e8d34829f5873590b41d4fe309e4ee0')
+source=("https://git.codecoop.org/kjo/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+b2sums=('dbe93e90970c4862fa8b391ae62543463a902eba22e51784f7295daab02257cfc7a15d27d1fdad089637346ec2644c893d6d36c3920cb48e4a7ae381475ca1c1')
 
 build() {
         cd "$pkgname-$pkgver"
