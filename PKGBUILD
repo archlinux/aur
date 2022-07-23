@@ -1,38 +1,38 @@
 pkgdesc="ROS - Generic joystick teleop for twist robots."
 url='https://wiki.ros.org/teleop_twist_joy'
 
-pkgname='ros-melodic-teleop-twist-joy'
+pkgname='ros-noetic-teleop-twist-joy'
 pkgver='0.1.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
-    ros-melodic-catkin
-    ros-melodic-geometry-msgs
-    ros-melodic-joy
-    ros-melodic-roscpp
-    ros-melodic-roslaunch
-    ros-melodic-roslint
-    ros-melodic-rostest
-    ros-melodic-sensor-msgs
+    ros-noetic-catkin
+    ros-noetic-geometry-msgs
+    ros-noetic-joy
+    ros-noetic-roscpp
+    ros-noetic-roslaunch
+    ros-noetic-roslint
+    ros-noetic-rostest
+    ros-noetic-sensor-msgs
 )
 
 makedepends=(
-	'cmake'
-	'ros-build-tools'
+	cmake
+	ros-build-tools
 	${ros_makedepends[@]}
 )
 
 ros_depends=(
-    ros-melodic-geometry-msgs
-    ros-melodic-joy
-    ros-melodic-roscpp
-    ros-melodic-sensor-msgs
+    ros-noetic-geometry-msgs
+    ros-noetic-joy
+    ros-noetic-roscpp
+    ros-noetic-sensor-msgs
 )
 
 depends=(
-    'eigen'
+    eigen
 	${ros_depends[@]}
 )
 
@@ -43,21 +43,18 @@ sha256sums=('4b83d6e52e9334f63182af5cf6ebbfb1c1e38f009f39542d32483479bd9c80d2')
 build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
 
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
+		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+		-DPYTHON_EXECUTABLE=/usr/bin/python \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
