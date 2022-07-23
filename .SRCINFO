@@ -1,6 +1,6 @@
 pkgbase = zesarux-git
 	pkgdesc = A Zx80/Zx81/Z88, Zx Spectrum 16/48/128/+2/+2A and ZX-Uno emulator with ULAPlus support. Development version.
-	pkgver = 10.1.r623.g3f12476
+	pkgver = 10.2.RC1.r4.g472ec9f
 	pkgrel = 1
 	url = https://github.com/chernandezba/zesarux
 	install = zesarux.install
