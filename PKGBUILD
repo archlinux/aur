@@ -8,12 +8,6 @@ arch=('i686' 'x86_64')
 url="https://github.com/tiddly-gittly/TidGi-Desktop"
 license=('MPL2')
 depends=('alsa-lib' 'atk' 'at-spi2-atk' 'at-spi2-core' 'cairo' 'curl' 'dbus' 'desktop-file-utils' 'expat' 'gdk-pixbuf2' 'glib2' 'gtk3' 'gvfs' 'hicolor-icon-theme' 'libcups' 'libdrm' 'libnotify' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'libxtst' 'mesa' 'nspr' 'nss' 'openssl' 'pango' 'trash-cli' 'xdg-utils' 'zlib')
-optdepends=('apparmor'
-            'gnome-keyring'
-            'libgnome-keyring'
-            'pulseaudio'
-			'kde-cli-tools'
-			'kdepim-runtime')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_i686=("https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
