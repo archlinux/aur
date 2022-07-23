@@ -1,6 +1,6 @@
 pkgbase = onevpl-cpu
 	pkgdesc = oneVPL runtime implementation for CPU
-	pkgver = 2022.1.5
+	pkgver = 2022.2.0
 	pkgrel = 1
 	url = https://www.intel.com/content/www/us/en/developer/tools/oneapi/onevpl.html
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = onevpl-cpu
 	makedepends = yasm
 	depends = gcc-libs
 	provides = onevpl-runtime
-	source = https://github.com/oneapi-src/oneVPL-cpu/archive/v2022.1.5/onevpl-cpu-2022.1.5.tar.gz
+	source = https://github.com/oneapi-src/oneVPL-cpu/archive/v2022.2.0/onevpl-cpu-2022.2.0.tar.gz
 	source = 010-onevpl-cpu-fix-build.patch
-	sha256sums = 546751b91efecbd71124d33ee10ab967d8e9f5efd1c9c9956978be8c5b560793
+	sha256sums = c053752c7987142424738d9d5f563745b7319c76387e6678b6ad10933e9104e0
 	sha256sums = f8a04899239250cd32edde782823cf76be46249a17c3147fc29f3742a21f710c
 
 pkgname = onevpl-cpu
