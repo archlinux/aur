@@ -1,4 +1,6 @@
 # Maintainer: fossdd <fossdd@tutanota.com>
+# Maintainer: Eric Engestrom <aur@engestrom.ch>
+
 pkgname=muon-meson-git
 _pkgname=${pkgname%-meson-git}
 pkgver=r1815.ba783656693ab3d6f4d6
