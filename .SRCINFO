@@ -1,24 +1,35 @@
 pkgbase = sratom-git
 	pkgdesc = An LV2 Atom RDF serialisation library (git version)
-	pkgver = 0.6.4.r183.2ed87d0
+	pkgver = 0.6.12.r232.bde09a6
 	pkgrel = 1
 	url = http://drobilla.net/software/sratom/
 	arch = i686
 	arch = x86_64
-	license = custom:ISC
+	license = ISC
+	makedepends = doxygen
 	makedepends = git
-	makedepends = python
+	makedepends = lv2
+	makedepends = meson
+	makedepends = python-sphinx
+	makedepends = python-sphinx-lv2-theme
+	makedepends = serd
+	makedepends = sord
+	depends = glibc
 	depends = lv2
-	depends = sord
 	provides = sratom
-	provides = sratom=0.6.4
-	provides = libsratom-0.so
+	provides = sratom=0.6.12
+	provides = sratom-docs
 	conflicts = sratom
-	conflicts = sratom-svn
+	conflicts = sratom-docs
 	source = sratom::git+https://gitlab.com/lv2/sratom.git
-	source = autowaf::git+https://gitlab.com/drobilla/autowaf.git
-	md5sums = SKIP
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = sratom-git
-
+	depends = glibc
+	depends = lv2
+	depends = libserd-0.so
+	depends = libsord-0.so
+	provides = sratom
+	provides = sratom=0.6.12
+	provides = sratom-docs
+	provides = libsratom-0.so

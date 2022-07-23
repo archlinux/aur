@@ -1,51 +1,42 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 _pkgname=sratom
-pkgname="${_pkgname}-git"
-pkgver=0.6.4.r183.2ed87d0
+pkgname=$_pkgname-git
+pkgver=0.6.12.r232.bde09a6
 pkgrel=1
-pkgdesc="An LV2 Atom RDF serialisation library (git version)"
-arch=('i686' 'x86_64')
-url="http://drobilla.net/software/$_pkgname/"
-license=('custom:ISC')
-depends=('lv2' 'sord')
-makedepends=('git' 'python')
-conflicts=("${_pkgname}" "${_pkgname}-svn")
-provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}" "lib${_pkgname}-${pkgver::1}.so")
-source=("${_pkgname}::git+https://gitlab.com/lv2/sratom.git"
-        'autowaf::git+https://gitlab.com/drobilla/autowaf.git')
-md5sums=('SKIP'
-         'SKIP')
+pkgdesc='An LV2 Atom RDF serialisation library (git version)'
+arch=(i686 x86_64)
+url='http://drobilla.net/software/sratom/'
+license=(ISC)
+depends=(glibc lv2)
+makedepends=(doxygen git lv2 meson python-sphinx python-sphinx-lv2-theme serd sord)
+conflicts=($_pkgname $_pkgname-docs)
+provides=($_pkgname "$_pkgname=${pkgver//.r*/}" $_pkgname-docs)
+source=("$_pkgname::git+https://gitlab.com/lv2/$_pkgname.git")
+sha256sums=('SKIP')
 
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-
-  local ver=`grep "^SRATOM_VERSION" wscript | cut -d "'" -f 2`
-  echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-
-  git submodule init
-  git config submodule.waflib.url "${srcdir}/autowaf"
-  git submodule update
-
-  # remove local call to ldconfig
-  sed -i "/ldconfig/d" wscript
+  cd $_pkgname
+  local ver=$(grep -E "^\s+version: '[0-9]+\.[0-9]+\.[0-9]+'" meson.build | cut -d "'" -f 2)
+  echo ${ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  arch-meson $_pkgname $_pkgname-build
+  meson compile -C $_pkgname-build
+}
 
-  python waf configure --prefix=/usr
-  python waf build $MAKEFLAGS
+check() {
+  meson test -C $_pkgname-build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  depends+=(libserd-0.so libsord-0.so)
+  provides+=(libsratom-0.so)
 
-  python waf install --destdir="$pkgdir"
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  meson install -C $_pkgname-build --destdir "$pkgdir"
+  mv -v "$pkgdir"/usr/share/doc/{sratom-0,$pkgname}
+  install -vDm 644 $_pkgname/COPYING -t "$pkgdir"/usr/share/licenses/$pkgname
+  install -vDm 644 $_pkgname/{NEWS,README.md} -t "$pkgdir"/usr/share/doc/$pkgname
 }
