@@ -2,16 +2,16 @@
 
 pkgbase=libjxl-git
 pkgname=('libjxl-git' 'libjxl-doc-git')
-pkgver=0.6.1.r590.g7f5a2cd0
+pkgver=0.6.1.r780.gf5d6e292
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
 license=('BSD')
-makedepends=('git' 'cmake' 'clang' 'brotli' 'gdk-pixbuf2' 'giflib' 'gimp'
+makedepends=('git' 'cmake' 'brotli' 'gdk-pixbuf2' 'giflib' 'gimp'
              'gperftools' 'highway-git' 'libjpeg-turbo' 'libpng' 'openexr'
-             'gflags' 'gtest' 'java-environment' 'python' 'asciidoc'
-             'doxygen' 'graphviz' 'xdg-utils')
+             'gtest' 'java-environment' 'python' 'asciidoc' 'doxygen'
+             'graphviz' 'xdg-utils')
 source=('git+https://github.com/libjxl/libjxl.git'
         'git+https://github.com/google/brotli.git'
         'git+https://github.com/mm2/Little-CMS.git'
@@ -21,10 +21,8 @@ source=('git+https://github.com/libjxl/libjxl.git'
         'git+https://github.com/google/highway.git'
         'git+https://github.com/glennrp/libpng.git'
         'git+https://github.com/madler/zlib.git'
-        'git+https://github.com/gflags/gflags.git'
         'libjxl-testdata'::'git+https://github.com/libjxl/testdata.git')
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -38,7 +36,7 @@ sha256sums=('SKIP'
 prepare() {
     git -C libjxl submodule init
     local _submodule
-    for _submodule in brotli googletest sjpeg skcms highway libpng zlib gflags
+    for _submodule in brotli googletest sjpeg skcms highway libpng zlib
     do
         git -C libjxl config --local "submodule.third_party/${_submodule}.url" "${srcdir}/${_submodule}"
     done
@@ -56,7 +54,7 @@ pkgver() {
 
 build() {
     export CFLAGS+=' -DNDEBUG -ffat-lto-objects'
-    export CXXFLAGS+=' -DNDEBUG -ffat-lto-objects'
+    export CXXFLAGS+=' -DNDEBUG -ffat-lto-objects -Wp,-U_GLIBCXX_ASSERTIONS'
     cmake -B build -S libjxl \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
@@ -69,7 +67,6 @@ build() {
         -DJPEGXL_FORCE_SYSTEM_GTEST:BOOL='true' \
         -DJPEGXL_FORCE_SYSTEM_HWY:BOOL='true' \
         -DJPEGXL_BUNDLE_LIBPNG:BOOL='NO' \
-        -DJPEGXL_BUNDLE_GFLAGS='NO' \
         -DJPEGXL_INSTALL_JARDIR='/usr/share/java' \
         -Wno-dev
     make -C build all doc
@@ -80,7 +77,7 @@ check() {
 }
 
 package_libjxl-git() {
-    depends=('brotli' 'gflags' 'giflib' 'gperftools' 'highway-git' 'libjpeg-turbo'
+    depends=('brotli' 'giflib' 'gperftools' 'highway-git' 'libjpeg-turbo'
              'libpng' 'openexr')
     optdepends=('gdk-pixbuf2: for gdk-pixbuf loader'
                 'gimp: for gimp plugin'
