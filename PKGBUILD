@@ -2,8 +2,8 @@
 
 pkgname=python-vfs
 pkgver=0.3.1
-pkgrel=1
-pkgdesc="A simplified object-oriented Python wrapper for libpcap"
+pkgrel=2
+pkgdesc="File Versioning System with hash comparison, deduplication and data storage to create unlinked states that can be deleted"
 arch=(any)
 url="https://github.com/mirkobrombin/FVS"
 license=(MIT)
