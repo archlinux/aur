@@ -1,0 +1,13 @@
+pkgbase = hulk-rs-bin
+	pkgdesc = HULK DoS tool ported to Rust with additional features
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/Hexalyse/hulk-rs
+	arch = x86_64
+	license = GPL-3.0
+	provides = hulk-rs
+	conflicts = hulk-rs
+	source = https://github.com/Hexalyse/hulk-rs/releases/download/v1.2.3/hulk-rs-1.2.3-x86_64.tar.gz
+	sha256sums = c492a1bac8de7198c7600c678284568930c33c54e9fba2d5fe53d981f3a1961f
+
+pkgname = hulk-rs-bin
