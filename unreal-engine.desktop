@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Unreal Engine
+Comment=The world's most open and advanced real-time 3D creation tool
+Path=/opt/unreal-engine/Engine/Binaries/Linux
+Exec=/opt/unreal-engine/Engine/Binaries/Linux/UnrealEditor %F
+Terminal=false
+Icon=unreal-engine
+MimeType=application/x-uproject
+Categories=AudioVideo;Development;Graphics;
