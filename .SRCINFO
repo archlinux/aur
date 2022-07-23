@@ -1,0 +1,18 @@
+pkgbase = vcvrack-8mode
+	pkgdesc = 8Mode VCV Rack modules
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/8Mode/8Mode-VCV_Modules
+	arch = x86_64
+	arch = aarch64
+	groups = proaudio
+	groups = vcvrack-plugins
+	license = BSD
+	makedepends = simde
+	makedepends = zstd
+	depends = gcc-libs
+	depends = vcvrack
+	source = vcvrack-8mode-2.0.tar.gz::https://github.com/8Mode/8Mode-VCV_Modules/archive/refs/tags/2.0.tar.gz
+	sha256sums = c69c38dc27acdf0df7bb009ddcac81e06a4353954c3ffada5550193b79b342ea
+
+pkgname = vcvrack-8mode
