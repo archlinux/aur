@@ -8,7 +8,7 @@ pkgdesc="A Simple, powerful and efficient cross-platform subtitle production sof
 arch=("i686" "x86_64")
 url="https://arctime.org"
 license=('custom')
-depends=('ffmpeg' 'jdk8-openjdk' 'vlc' 'sed')
+depends=('hicolor-icon-theme' 'jdk8-openjdk' 'vlc' 'sed')
 conflicts=('arctime')
 sha256sums=('7b45dde078ec213fa101ecabdc477b554b6e815c69abe6e99ae3049a4da1046b'
             '9f490a4fc4d4f15e31b15e84717e11ce794e908055484f22d02aa0a166093677'
@@ -43,7 +43,6 @@ package() {
   sed -i '2,6d' "${pkgdir}/opt/${pkgname}/run.sh"
   sed -i "3 icd /opt/${pkgname}/" "${pkgdir}/opt/${pkgname}/run.sh"
   sed -i 's/java-8-openjdk-amd64/java-8-openjdk/g' "${pkgdir}/opt/${pkgname}/run.sh"
-  install -D "./tools/GPL LICENSE.txt" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE.txt"
   install -D "./ArcTime.jar" "${pkgdir}/opt/${pkgname}/ArcTime.jar"
 
   # change permissions
