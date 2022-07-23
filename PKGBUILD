@@ -1,13 +1,13 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=goverlay
-pkgver=0.8.1
-_pkgver=0.8.1
-pkgrel=2
+pkgver=0.9.0
+_pkgver=0.9
+pkgrel=1
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
 url="https://github.com/benjamimgois/goverlay"
 license=('GPL3')
-depends=('qt5pas' 'qt5-base' 'mangohud' 'breeze')
+depends=('qt5pas' 'qt5-base' 'mangohud')
 makedepends=('git' 'lazarus')
 checkdepends=('appstream' 'desktop-file-utils')
 optdepends=('vkbasalt: Configure vkBasalt'
@@ -15,11 +15,11 @@ optdepends=('vkbasalt: Configure vkBasalt'
             'vulkan-tools: Vulkan preview'
             'git: Clone reshade repository'
             'replay-sorcery: Instant replay solution'
-	    'breeze: First choice for theme'
-	    'oxygen: Second choice for theme')
+	    'breeze: Prefered choice for theme'
+	    'oxygen: Backup choice for theme')
 conflicts=("${pkgname%-git}" "${pkgname%-bin}")
 source=("${url}/archive/refs/tags/${_pkgver}.tar.gz")
-sha512sums=('1dcde60d217dd5af32244cd3555ae3788edfbb8ca195fca80740a18b1b1f1b5c942b5cbdadb4d1e97922504d4f4cd5c65f682f39a6d0e3e7cf02f4da77c8cd49')
+sha512sums=('570e79dea9c1b0ee965719741c1dd404ac3b87c4c3e5cecc242f0bb3ffe6158bcbb57601ed1b1318c946631a19455dea1efbf692c2e2c46e829be27dc0032aed')
 
 build() {
 	cd "$srcdir/$pkgname-$_pkgver"
