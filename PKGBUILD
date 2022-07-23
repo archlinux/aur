@@ -10,7 +10,7 @@ url="https://code.soundsoftware.ac.uk/projects/pyin"
 _url="https://gitlab.com/tallero/vampy"
 _sdk_url="https://github.com/c4dm/vamp-plugin-sdk"
 license=('GPL')
-depends=(vamp-plugin-sdk python python2)
+depends=(vamp-plugin-sdk python python2 python-numpy python2-numpy)
 source=("git+$_url")
 md5sums=('SKIP') 
 

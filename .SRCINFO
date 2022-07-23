@@ -8,6 +8,8 @@ pkgbase = vampy
 	depends = vamp-plugin-sdk
 	depends = python
 	depends = python2
+	depends = python-numpy
+	depends = python2-numpy
 	source = git+https://gitlab.com/tallero/vampy
 	md5sums = SKIP
 
