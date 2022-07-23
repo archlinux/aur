@@ -38,8 +38,8 @@ build() {
 
 package() {
 	cd macfand
-	mkdir -p ${pkgdir}/usr/local/${pkgname}
-	cp -rf * ${pkgdir}/usr/local/${pkgname}
+	mkdir -p ${pkgdir}/usr/local/${pkgname/-git/}
+	cp -rf * ${pkgdir}/usr/local/${pkgname/-git/}
 
 	install -Dm755 macfand "${pkgdir}/usr/bin/macfand"
 	install -Dm644 macfand.conf "${pkgdir}/etc/macfand.conf"
@@ -48,5 +48,5 @@ package() {
 	install -Dm644 macfand.1 "${pkgdir}/usr/share/man/man1/macfand.1"
 	install -Dm644 macfand.service "${pkgdir}/usr/lib/systemd/system/macfand.service"
 
-	perl ./util/updatemodel "${pkgdir}/etc/macfand.conf" "${pkgdir}/usr/local/${pkgname}"
+	perl ./util/updatemodel "${pkgdir}/etc/macfand.conf" "${pkgdir}/usr/local/${pkgname/-git/}"
 }
