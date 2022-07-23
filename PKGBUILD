@@ -2,7 +2,7 @@
 #
 # Maintainer: Aaron Blakely <aaron@ephasic.org>
 pkgname=macfand-git
-pkgver=1.1.r32.90b5789b
+pkgver=1.1.r32.90b5789c
 pkgrel=1
 epoch=
 pkgdesc="Mac fan control daemon"
@@ -48,5 +48,5 @@ package() {
 	install -Dm644 macfand.1 "${pkgdir}/usr/share/man/man1/macfand.1"
 	install -Dm644 macfand.service "${pkgdir}/usr/lib/systemd/system/macfand.service"
 
-	perl ./util/updatemodel.pl "${pkgdir}/etc/macfand.conf" "${pkgdir}/usr/local/${pkgname/-git/}"
+	sudo perl ./util/updatemodel.pl "${pkgdir}/etc/macfand.conf" "${pkgdir}/usr/local/${pkgname/-git/}"
 }
