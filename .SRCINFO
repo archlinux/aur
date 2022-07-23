@@ -1,0 +1,13 @@
+pkgbase = vapoursynth-plugin-svpflow-bin
+	pkgdesc = Plugin for Vapoursynth: svpflow1 and svpflow2
+	pkgver = 4.3.0.168
+	pkgrel = 1
+	url = https://www.svp-team.com/wiki/Plugins:_SVPflow
+	arch = x86_64
+	license = custom:svp-team
+	makedepends = chrpath
+	depends = gcc-libs
+	source = http://www.svp-team.com/files/gpl/svpflow-4.3.0.168.zip
+	sha256sums = fd42a06e3528f278cc846e5027d0e9506bdcb47259afbf99d861e72c2328fd8e
+
+pkgname = vapoursynth-plugin-svpflow-bin
