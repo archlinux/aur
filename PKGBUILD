@@ -1,56 +1,41 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 _pkgname=sord
-pkgname="${_pkgname}-git"
-pkgver=0.16.6.r446.3faa8cc
+pkgname="$_pkgname-git"
+pkgver=0.16.12.r502.c1cda16
 pkgrel=1
-pkgdesc="Lightweight C library for storing RDF statements in memory (git version)"
-arch=('i686' 'x86_64')
-url="http://drobilla.net/software/sord/"
-license=('custom:ISC')
-depends=('pcre' 'serd')
-makedepends=('git' 'python')
-conflicts=("${_pkgname}" "${_pkgname}-svn")
-provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}" "lib${_pkgname}-${pkgver::1}.so")
-source=("${_pkgname}::git+https://gitlab.com/drobilla/sord.git"
-        'autowaf::git+https://gitlab.com/drobilla/autowaf.git')
-md5sums=('SKIP'
-         'SKIP')
+pkgdesc='Lightweight C library for storing RDF statements in memory (git version)'
+arch=(i686 x86_64)
+url='http://drobilla.net/software/sord/'
+license=(ISC)
+depends=(glibc pcre)
+makedepends=(doxygen git meson python-sphinx serd)
+conflicts=($_pkgname $_pkgname-docs)
+provides=($_pkgname "$_pkgname=${pkgver//.r*/}" $_pkgname-docs)
+source=("$_pkgname::git+https://gitlab.com/drobilla/$_pkgname.git")
+sha256sums=('SKIP')
 
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-
-  local ver=`grep "^SORD_VERSION" wscript | cut -d "'" -f 2`
-  echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-
-  git submodule init
-  git config submodule.waflib.url "${srcdir}/autowaf"
-  git submodule update
-
-  # remove local call to ldconfig
-  sed -i "/ldconfig/d" wscript
+  cd $_pkgname
+  local ver=$(grep -E "^\s+version: '[0-9]+\.[0-9]+\.[0-9]+'" meson.build | cut -d "'" -f 2)
+  echo ${ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
-
-  python ./waf configure --prefix=/usr --test
-  python waf build $MAKEFLAGS
+  arch-meson $_pkgname $_pkgname-build
+  meson compile -C $_pkgname-build
 }
 
 check() {
-  cd "${srcdir}/${_pkgname}"
-  python waf test -v
+  meson test -C $_pkgname-build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-
-  python waf install --destdir="$pkgdir"
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  depends+=(libserd-0.so)
+  provides+=(libsord-0.so)
+  meson install -C $_pkgname-build --destdir "$pkgdir"
+  mv -v "$pkgdir"/usr/share/doc/{sord-0,$pkgname}
+  install -vDm 644 $_pkgname/COPYING -t "$pkgdir"/usr/share/licenses/$pkgname
+  install -vDm 644 $_pkgname/{AUTHORS,NEWS,README.md} -t "$pkgdir"/usr/share/doc/$pkgname
 }

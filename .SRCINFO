@@ -1,24 +1,31 @@
 pkgbase = sord-git
 	pkgdesc = Lightweight C library for storing RDF statements in memory (git version)
-	pkgver = 0.16.6.r446.3faa8cc
+	pkgver = 0.16.12.r502.c1cda16
 	pkgrel = 1
 	url = http://drobilla.net/software/sord/
 	arch = i686
 	arch = x86_64
-	license = custom:ISC
+	license = ISC
+	makedepends = doxygen
 	makedepends = git
-	makedepends = python
+	makedepends = meson
+	makedepends = python-sphinx
+	makedepends = serd
+	depends = glibc
 	depends = pcre
-	depends = serd
 	provides = sord
-	provides = sord=0.16.6
-	provides = libsord-0.so
+	provides = sord=0.16.12
+	provides = sord-docs
 	conflicts = sord
-	conflicts = sord-svn
+	conflicts = sord-docs
 	source = sord::git+https://gitlab.com/drobilla/sord.git
-	source = autowaf::git+https://gitlab.com/drobilla/autowaf.git
-	md5sums = SKIP
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = sord-git
-
+	depends = glibc
+	depends = pcre
+	depends = libserd-0.so
+	provides = sord
+	provides = sord=0.16.12
+	provides = sord-docs
+	provides = libsord-0.so
