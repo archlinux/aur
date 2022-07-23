@@ -1,7 +1,7 @@
 # Maintainer: S Stewart <tda@null.net>
 # Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
 pkgname="gdlauncher"
-pkgver="1.1.25"
+pkgver="1.1.26"
 pkgrel=1
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
@@ -13,7 +13,7 @@ conflicts=('gdlauncher-beta' 'gdlauncher-beta-bin' 'gdlauncher-appimage' 'gdlaun
 provides=('gdlauncher')
 source=("https://github.com/gorilla-devs/GDLauncher/archive/refs/tags/v${pkgver}.tar.gz"
         "use-system-7za-and-disable-updater.patch")
-md5sums=('b9f0db3784161eefd5429b6cc6ec2e16'
+md5sums=('a16809c7c591ea72dc0193b06e45116a'
          '68c75869fe0898c54699b9a5eb667d7b')
 
 prepare() {
@@ -38,7 +38,7 @@ build() {
     cd "${srcdir}/GDLauncher-${pkgver}/"
 
     # Install required npm packages
-    npm install --cache="${srcdir}/npm-cache"
+    npm install --legacy-peer-deps --cache="${srcdir}/npm-cache"
 
     # Build the program
     export CI=false \
