@@ -1,10 +1,10 @@
 # Maintainer: Mckol <mckol363@gmail.com>
 # Contributor: Jean Lucas <jean@4ray.co>
 
-export GIT_LFS_SKIP_SMUDGE=1 # This is to prevent Git LFS errors 
+export GIT_LFS_SKIP_SMUDGE=1 # This is to prevent Git LFS errors
 pkgname=veloren
-pkgver=0.12.0
-pkgrel=3
+pkgver=0.13.0
+pkgrel=1
 pkgdesc='An open-world, open-source multiplayer voxel RPG'
 arch=('x86_64' 'i686')
 url='https://veloren.net/'
