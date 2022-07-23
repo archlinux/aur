@@ -1,7 +1,7 @@
 pkgbase = vcvrack-sonusmodular
-	pkgdesc = VCV Rack plugin collection
+	pkgdesc = Sonus Modular VCV Rack modules
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/sonusdept/sonusmodular
 	arch = x86_64
 	arch = aarch64
