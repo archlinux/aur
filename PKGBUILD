@@ -17,6 +17,8 @@ optdepends=('openblas: faster linear algebra')
 makedepends=('python-setuptools' 'gcc-fortran' 'cython')
 checkdepends=('python-pytest' 'python-hypothesis')
 options=('staticlibs')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=("https://github.com/numpy/numpy/releases/download/v$pkgver/numpy-$pkgver.tar.gz")
 sha512sums=('4415c6a96af625fcc7fe5395b1441c389fbe4a9b97b18e87ffa063609245f4b352e0b623f96bbacd3d0939fdc86fd79009bf09b1ee0004c13e3d05af298d8f10')
 
