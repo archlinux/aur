@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-ubuntu-dock-git
+	pkgdesc = dash-to-dock's ubuntu branch
+	pkgver = 72ubuntu1.r0.ge6d2c51
+	pkgrel = 1
+	url = https://github.com/micheleg/dash-to-dock/tree/ubuntu-dock
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = sassc
+	depends = gnome-shell
+	provides = gnome-shell-extension-dash-to-dock
+	conflicts = gnome-shell-extension-dash-to-dock
+	source = git+https://github.com/micheleg/dash-to-dock.git#branch=ubuntu-dock
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-ubuntu-dock-git
