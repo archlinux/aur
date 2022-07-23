@@ -1,6 +1,6 @@
 pkgname=paper-icon-theme
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Paper is an open source desktop theme and icon project by Sam Hewitt"
 arch=('any')
 url="https://snwh.org/paper"
@@ -10,15 +10,13 @@ makedepends=('meson')
 provides=('paper-icon-theme')
 conflicts=('paper-icon-theme-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/snwh/$pkgname/archive/v.$pkgver.tar.gz")
-md5sums=('e7e2e22a4a34432f43846c815cbdbeb4')
-sha512sums=('be84bc332eba0e9c216435a130d3eed180fe1807d81ff7b3aadb3914fc130c9e243fb7fccef8febae1da6655f8e8a1bcf9420afb429e11e4c79bcbbb5bcd291b')
+b2sums=('dd7e327e83e1a79754a35f225d2c99745fd5628b00d54097f25fd4488fcd7d8defee060fa85fe79112f1ab1df07748aa7ccf8e37359d953dfad8e7a9174f4fef')
 
 build() {
-  cd "$pkgname-v.$pkgver"
-  meson "build" --prefix=/usr
+  arch-meson $pkgname-v.$pkgver build
 }
 
 package() {
-  cd "$pkgname-v.$pkgver"
-  DESTDIR="${pkgdir}" ninja -C "build" install
+  DESTDIR="$pkgdir" meson install -C build
 }
+

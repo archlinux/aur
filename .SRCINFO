@@ -1,7 +1,7 @@
 pkgbase = paper-icon-theme
 	pkgdesc = Paper is an open source desktop theme and icon project by Sam Hewitt
 	pkgver = 1.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://snwh.org/paper
 	arch = any
 	license = CCPL:by-sa-4.0
@@ -10,8 +10,6 @@ pkgbase = paper-icon-theme
 	provides = paper-icon-theme
 	conflicts = paper-icon-theme-git
 	source = paper-icon-theme-1.5.0.tar.gz::https://github.com/snwh/paper-icon-theme/archive/v.1.5.0.tar.gz
-	md5sums = e7e2e22a4a34432f43846c815cbdbeb4
-	sha512sums = be84bc332eba0e9c216435a130d3eed180fe1807d81ff7b3aadb3914fc130c9e243fb7fccef8febae1da6655f8e8a1bcf9420afb429e11e4c79bcbbb5bcd291b
+	b2sums = e7e2e22a4a34432f43846c815cbdbeb4
 
 pkgname = paper-icon-theme
-
