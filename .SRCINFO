@@ -1,6 +1,6 @@
 pkgbase = python-ccxt
 	pkgdesc = A JavaScript / Python / PHP cryptocurrency trading library with support for 130+ exchanges
-	pkgver = 1.90.39
+	pkgver = 1.91.20
 	pkgrel = 1
 	url = https://ccxt.trade
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-ccxt
 	depends = python-aiohttp
 	depends = python-aiodns
 	depends = python-yarl
-	source = https://files.pythonhosted.org/packages/source/c/ccxt/ccxt-1.90.39.tar.gz
-	sha256sums = 1c971fa0031b2f70eb79ddb0cc7d4ddd13f88baf7f43d897faec6f9455337ed1
+	source = https://files.pythonhosted.org/packages/source/c/ccxt/ccxt-1.91.20.tar.gz
+	sha256sums = db70b839f7250454e22b265724df84620be257f5600e8a9b56747df59a2a65b7
 
 pkgname = python-ccxt
