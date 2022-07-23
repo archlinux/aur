@@ -1,6 +1,7 @@
-# Maintainer: esrh : email at esrh at netc dot eu
+# Maintainer: Ren Tatsumoto <tatsu at autistici dot org>
+# Contributor: eshrh <esrh at gatech dot edu>
 pkgname=mpv-mpvacious
-pkgver=0.16.r15.g146c890
+pkgver=0.17.r26.g1290f2d
 pkgrel=1
 pkgdesc="Adds mpv keybindings to create Anki cards from movies and TV shows."
 arch=('any')
@@ -24,4 +25,3 @@ package() {
         install -Dm644 "$file" "${pkgdir}/etc/mpv/scripts/mpvacious/${file}"
     done
 }
-
