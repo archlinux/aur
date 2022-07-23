@@ -14,7 +14,7 @@ optdepends=()
 backup=('etc/srd/srd.conf')
 options=('strip')
 install=
-changelog=
+changelog="https://github.com/dbernhard-0x7CD/simple-reaction-daemon/blob/main/CHANGELOG.md"
 source=(
     "$pkgname::git+https://github.com/dbernhard-0x7CD/simple-reaction-daemon"
     'srd.conf')
