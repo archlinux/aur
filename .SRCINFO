@@ -1,7 +1,7 @@
 pkgbase = ngircd-pam
 	pkgdesc = Next Generation IRC Daemon compiled with PAM support
 	pkgver = 26.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ngircd.barton.de/
 	arch = x86_64
 	license = GPL

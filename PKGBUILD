@@ -1,6 +1,6 @@
 pkgname=ngircd
 pkgver=26.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Next Generation IRC Daemon compiled with PAM support"
 arch=('x86_64')
 backup=(etc/ngircd.conf)
