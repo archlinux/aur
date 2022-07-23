@@ -44,7 +44,7 @@ prepare() {
     echo "REMOTE HEAD: $(git rev-parse @{u})"
     if [ "$(git rev-parse HEAD)" != "$(git rev-parse @{u})" ]; then
       git reset --hard
-      git pull --depth=1 origin "${_gitbranch}:${_gitbranch}"
+      git fetch --depth 1 origin "${_gitbranch}:${_gitbranch}"
       git checkout "${_gitbranch}"
       _patch
     fi
