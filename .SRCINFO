@@ -1,6 +1,6 @@
 pkgbase = yacd
 	pkgdesc = Yet Another Clash Dashboard
-	pkgver = 0.3.5
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://github.com/haishanh/yacd
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = yacd
 	makedepends = yarn
 	depends = clash
 	conflicts = yacd-git
-	source = yacd-0.3.5.tar.gz::https://github.com/haishanh/yacd/archive/v0.3.5.tar.gz
-	sha256sums = c5ae0aaa480599380bc0d7148d5fa2f305819bc88bc7f178b0b940d73cde20d5
+	source = yacd-0.3.6.tar.gz::https://github.com/haishanh/yacd/archive/v0.3.6.tar.gz
+	sha256sums = e49f890da01aad77ebd10b4e125d26b9ffa2ab1de492aea3bdf5bc46211d0b16
 
 pkgname = yacd
