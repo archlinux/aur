@@ -24,7 +24,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/Binge/Binge" "$pkgdir/usr/bin/binge"
+    ln -s "/opt/Binge/binge" "$pkgdir/usr/bin/binge"
 
     # Desktop Entry
     install -Dm644 "$srcdir/$_pkgname/Binge.desktop" \
