@@ -4,7 +4,7 @@ url='https://wiki.ros.org/joy'
 pkgname='ros-noetic-joy'
 pkgver='1.15.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -12,6 +12,7 @@ ros_makedepends=(
     ros-noetic-roscpp
     ros-noetic-sensor-msgs
     ros-noetic-catkin
+    ros-noetic-roslint
 )
 makedepends=(
     cmake
