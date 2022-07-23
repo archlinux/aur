@@ -1,6 +1,6 @@
 pkgbase = goxel2-git
 	pkgdesc = a cross-platform 3d voxel art editor
-	pkgver = 0.13.2
+	pkgver = 0.13.3
 	pkgrel = 3
 	url = https://github.com/pegvin/goxel2
 	arch = i686
