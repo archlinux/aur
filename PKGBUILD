@@ -2,8 +2,8 @@
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
 pkgname=ffmpeg-full
-pkgver=5.0.1
-pkgrel=2
+pkgver=5.1
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -11,15 +11,15 @@ license=('custom: nonfree and unredistributable')
 depends=(
     # official repositories:
         'alsa-lib' 'avisynthplus' 'bzip2' 'frei0r-plugins' 'libgcrypt' 'gmp' 'gnutls'
-        'ladspa' 'libass' 'aom' 'aribb24' 'libbluray' 'libbs2b' 'libcaca' 'celt'
-        'libcdio-paranoia' 'codec2' 'dav1d' 'libdc1394' 'libavc1394' 'libfdk-aac'
+        'ladspa' 'lcms2' 'aom' 'aribb24' 'libass' 'libbluray' 'libbs2b' 'libcaca'
+        'celt' 'libcdio-paranoia' 'codec2' 'dav1d' 'libdc1394' 'libavc1394' 'libfdk-aac'
         'fontconfig' 'freetype2' 'fribidi' 'glslang' 'spirv-tools' 'libgme' 'gsm'
-        'libiec61883' 'libilbc' 'jack' 'kvazaar' 'libmodplug' 'lame'
+        'libiec61883' 'libilbc' 'jack' 'libjxl-git' 'kvazaar' 'libmodplug' 'lame'
         'opencore-amr' 'openjpeg2' 'opus' 'libplacebo' 'libpulse' 'librabbitmq-c'
-        'rav1e' 'librsvg' 'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr'
-        'speex' 'srt' 'libssh' 'svt-hevc' 'svt-av1' 'svt-vp9' 'tesseract' 'libtheora'
-        'twolame' 'v4l-utils' 'vid.stab' 'vmaf' 'libvorbis' 'libvpx' 'libwebp' 'x264'
-        'x265' 'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz'
+        'rav1e' 'librsvg' 'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex'
+        'srt' 'libssh' 'svt-av1' 'svt-hevc' 'svt-vp9' 'tesseract' 'libtheora' 'twolame'
+        'v4l-utils' 'vid.stab' 'vmaf' 'libvorbis' 'libvpx' 'libwebp' 'x264' 'x265'
+        'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz'
         'libmysofa' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
         'vulkan-icd-loader' 'libxv' 'libx11' 'libxext' 'zlib' 'cuda'
         'libomxil-bellagio' 'libdrm' 'intel-media-sdk' 'libva' 'libvdpau'
@@ -39,27 +39,21 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libswscale.so' 'libswresample.so'
           'ffmpeg')
 conflicts=('ffmpeg')
-_svt_hevc_ver='111eef187fd7b91ad27573421c7238ef787e164f'
-_svt_vp9_ver='308ef4464568a824f1f84c4491cb08ab4f535f6c'
+_svt_hevc_ver='b62f72e752243cee4104cfb41dc7ee409d3ac3e9'
+_svt_vp9_ver='d9ef3cc13159143b9afc776c04f67cdfa6284046'
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         "010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
         #"020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
         "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
-        '050-ffmpeg-vmaf-2.x.patch'
         '060-ffmpeg-fix-segfault-with-avisynthplus.patch'
-        '070-ffmpeg-libsvtav1-0.9.0-part1.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/c33b4048859a191acf9b6aa22acaea248a4eb18f'
-        '080-ffmpeg-libsvtav1-0.9.0-part2.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/1dddb930aaf0cadaa19f86e81225c9c352745262'
         'LICENSE')
-sha256sums=('ef2efae259ce80a240de48ec85ecb062cecca26e4352ffb3fda562c21a93007b'
+sha256sums=('55eb6aab5ee235550fa54a33eaf8bf1b4ec66c01453182b12f6a993d75698b03'
             'SKIP'
-            'efd01f96c1f48ea599881dfc836d20ba18c758a3588d616115546912aebeb77f'
-            '9565b3eed177ce5d109876f2a56f3781a2c7fae41e32601bf6ec805ea199d21b'
-            '91973c465f01446a999f278f0c2a3763304994dba1ac35de0e4c72f12f39409e'
-            'eb044a095ba72ebe63de53f15952aa0100bb27ee691cf3d3a205d5a597c72a7d'
-            '887c2e440b159b7c3575a12eb17e1297b76f9468b65b96ef2674b7bb36b12fcf'
-            '65a455c6ef110cd06196b48e53f36b87cb2a90fccfdd65fe25cd225b2524fa22'
-            '9de88ea609fddf8437536b6cf7c9b4039bde4fa560977cdeba14b87b8dcca31c'
+            '4da3826aa370572273ef9fb4c0bf2c93a840595b07a671a0412ad0dc9ed8d689'
+            'e310eedb3dc88c8ad6ffcd6cb6bde1f593ded330ea99b0356724c9d22bcfde4c'
+            '2df82046908015bf26bc1303275cf52ba01fa380029a54ea6415373e389e423c'
+            'b1d68f626168f2409a4b0987acf5b208e7ced2ddab49b11990a10f458d377e9a'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
@@ -69,10 +63,7 @@ prepare() {
     #patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/050-ffmpeg-vmaf-2.x.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/060-ffmpeg-fix-segfault-with-avisynthplus.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/070-ffmpeg-libsvtav1-0.9.0-part1.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/080-ffmpeg-libsvtav1-0.9.0-part2.patch"
 }
 
 build() {
@@ -104,6 +95,7 @@ build() {
         --enable-gnutls \
         --enable-iconv \
         --enable-ladspa \
+        --enable-lcms2 \
         --enable-libaom \
         --enable-libaribb24 \
         --enable-libass \
@@ -127,6 +119,7 @@ build() {
         --enable-libiec61883 \
         --enable-libilbc \
         --enable-libjack \
+        --enable-libjxl \
         --enable-libklvanc \
         --enable-libkvazaar \
         --enable-liblensfun \
@@ -155,8 +148,9 @@ build() {
         --enable-libspeex \
         --enable-libsrt \
         --enable-libssh \
-        --enable-libsvthevc \
         --enable-libsvtav1 \
+        --enable-libsvthevc \
+        --enable-libsvtvp9 \
         --disable-libtensorflow \
         --enable-libtesseract \
         --enable-libtheora \
@@ -169,7 +163,6 @@ build() {
         --enable-libvo-amrwbenc \
         --enable-libvorbis \
         --enable-libvpx \
-        --enable-libsvtvp9 \
         --enable-libwebp \
         --enable-libx264 \
         --enable-libx265 \
