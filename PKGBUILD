@@ -8,9 +8,9 @@ pkgdesc="Spell Checker plugin for the Qt Creator IDE"
 groups=('qt' 'qt5')
 arch=('i686' 'x86_64')
 url="https://github.com/CJCombrink/SpellChecker-Plugin"
-license=('GPL3')
+license=('LGPL3' 'GPL3')
 depends=('qtcreator' 'hunspell')
-makedepends=('git' 'qtcreator-devel' 'ninja')
+makedepends=('git' 'cmake' 'qtcreator-devel' 'ninja')
 source=("$pkgname"::git+https://github.com/CJCombrink/SpellChecker-Plugin.git)
 sha256sums=('SKIP')
 
