@@ -1,7 +1,7 @@
 # Maintainer: YagiOoda <YagiOoda@pm.me>
 pkgname=everdo
 pkgver=1.7.8
-pkgrel=1
+pkgrel=2
 pkgdesc="The Perfect App for GTD / Getting Things Done"
 arch=('x86_64')
 url='https://everdo.net'
@@ -11,7 +11,7 @@ depends=(
 	'gtk3'
 	'nss' 
 	'alsa-lib'
-	'dbus-x11'
+	'dbus'
 	)
 
 source=("https://d11l8siwmn8w36.cloudfront.net/$pkgver/$pkgname-$pkgver.pacman")

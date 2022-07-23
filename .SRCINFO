@@ -1,14 +1,14 @@
 pkgbase = everdo
 	pkgdesc = The Perfect App for GTD / Getting Things Done
 	pkgver = 1.7.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://everdo.net
 	arch = x86_64
 	license = unknown
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
-	depends = dbus-x11
+	depends = dbus
 	source = https://d11l8siwmn8w36.cloudfront.net/1.7.8/everdo-1.7.8.pacman
 	sha256sums = 4e5e857cabd48be399ea132df639b9e0eeaeb57d7a36637c762defa1bfdff8b7
 
