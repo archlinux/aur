@@ -2,7 +2,7 @@
 #
 # Maintainer: Aaron Blakely <aaron@ephasic.org>
 pkgname=macfand-git
-pkgver=1.1.r32.90b5789
+pkgver=1.1.r32.190b5789
 pkgrel=1
 epoch=
 pkgdesc="Mac fan control daemon"

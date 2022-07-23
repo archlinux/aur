@@ -1,14 +1,12 @@
 pkgbase = macfand-git
 	pkgdesc = Mac fan control daemon
-	pkgver = 1.1.r32.90b5789
+	pkgver = 1.1.r32.190b5789
 	pkgrel = 1
 	url = https://github.com/ablakely/macfand.git
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = git
-	makedepends = make
-        makedepends = libconfig
 	provides = macfand
 	conflicts = macfand
 	source = git+https://github.com/ablakely/macfand.git
