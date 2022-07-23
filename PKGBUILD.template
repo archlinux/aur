@@ -5,8 +5,8 @@
 
 # Maintainer: Sopamo <github@sopamo.de>
 pkgname=via-cli-bin
-pkgver=v0.3.1
-pkgrel=2
+pkgver=$VIA_VERSION
+pkgrel=$PACKAGE_VERSION
 epoch=
 pkgdesc="Easily start & stop your local dev environments from your cli"
 arch=(x86_64)
@@ -26,7 +26,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver-$arch::$url/releases/download/$pkgver/via-linux-$arch")
 noextract=()
-md5sums=('e7bd310f0e28640545f2bfb488373eb0')
+md5sums=('$VIA_LINUX_HASH')
 validpgpkeys=()
 
 package() {
