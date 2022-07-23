@@ -1,3 +1,4 @@
+# Maintainer: JaydenDev <jdev0894@gmail.com>
 
 pkgname=gnome-shell-extension-background-logo-git
 _name=background-logo-extension
