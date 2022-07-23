@@ -1,11 +1,12 @@
+# Maintainer: JaydneDev <jdev0894@gmail.com>
 # Contributor: Davor Balder <dbalder@ozemail.com.au>
 # Contributor: Jiyunatori <tori_LEAVETHISOUT_@0xc29.net>
 # Contributor: mdev
-# Maintainer: gryffyn <aur@evan.mp>
+# Previous Maintainer: gryffyn <aur@evan.mp>
 
 pkgname=emacs-org-mode
 _srcname=org
-pkgver=9.4.4
+pkgver=9.5.0
 pkgrel=1
 pkgdesc="Emacs Org Mode"
 arch=('any')
