@@ -1,8 +1,8 @@
 # Maintainer: Mikuro Kagamine <mikurok@forgecrushing.com>
 
 pkgname=browsh-bin
-pkgver=1.6.4
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 pkgdesc='A fully-modern text-based browser, rendering to TTY and browsers'
 arch=('x86_64' 'i386' 'i486' 'i586' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url='https://www.brow.sh'
@@ -19,14 +19,14 @@ source_i686=($source_i386)
 source_armv6h=("https://github.com/${provides[0]}-org/${provides[0]}/releases/download/v${pkgver}/${provides[0]}_${pkgver}_linux_armv6")
 source_armv7h=("https://github.com/${provides[0]}-org/${provides[0]}/releases/download/v${pkgver}/${provides[0]}_${pkgver}_linux_armv7")
 source_aarch64=("https://github.com/${provides[0]}-org/${provides[0]}/releases/download/v${pkgver}/${provides[0]}_${pkgver}_linux_arm64")
-sha256sums_x86_64=('d0bbdfe07e1494bb097dcff6290f17f98f6e3e5546f17139223b75d97c1caab5')
-sha256sums_i386=('43969b4af481c387303ce44357d4f912f250bb00a13c094968809e36fd7988e5')
+sha256sums_x86_64=('30a6b4e5220be088bce9b2416164eed7d3d8de76741e6a71d24a35b2fe6f1ae7')
+sha256sums_i386=('887c4e0d2679fd0d91c0867f4643771286c5320b1f84966f67a22cced8a90c85')
 sha256sums_i486=($sha256sums_i386)
 sha256sums_i586=($sha256sums_i386)
 sha256sums_i686=($sha256sums_i386)
-sha256sums_armv6h=('39d8048ae084d5b9229d1e89e882b52268dfe950c939c79c8d1de640a6914514')
-sha256sums_armv7h=('36f02b21cbac554e1ca05e382560bf10043b402d2c345cbfffa9f1f20992bec2')
-sha256sums_aarch64=('59505d1ffb45e986693be28250a2ef561cb09af616b11aa77c786cb7ab144181')
+sha256sums_armv6h=('e799299732d9ebc6885c27e483fe8c43d452f9052f09df1d674600cba5eb2177')
+sha256sums_armv7h=('db4c9ac68d527e5cc7f53611db0cd7dcdf59307599b19faad181d15db6d36968')
+sha256sums_aarch64=('e5e3ed418e0930d0ec12394894269983f6e6da80ff60d03909e2e5c307971a99')
 
 prepare() {
 	cat ${provides[0]}_${pkgver}_linux_* > ${provides[0]}
