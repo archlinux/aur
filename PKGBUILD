@@ -18,10 +18,10 @@ source=(
 	"config.json"
 )
 sha256sums=(
-	"ef84efaf305d656400eca8a924754d9d31b28378f96b2704b1f3c162de609d5a"
-	"11a427cc3d3a8a4c5e1bbcaba8c94dd9265a6b4c4f53f16d694d83ff92514078"
-	"1e084c5349449289129006b21294699ec34122050ada92be81e682631a60f159"
-	"aab0eb4c02ab5fa20f1b6c2f66542358ee18ebbb0a60ec2c60e6371844c48d73"
+"ef84efaf305d656400eca8a924754d9d31b28378f96b2704b1f3c162de609d5a"
+"11a427cc3d3a8a4c5e1bbcaba8c94dd9265a6b4c4f53f16d694d83ff92514078"
+"1e084c5349449289129006b21294699ec34122050ada92be81e682631a60f159"
+"aab0eb4c02ab5fa20f1b6c2f66542358ee18ebbb0a60ec2c60e6371844c48d73"
 )
 makedepends=(python-build python-installer python-wheel)
 install=$pkgname.install
@@ -30,7 +30,7 @@ backup=("etc/ddns/config.json")
 
 package() {
 	python -m installer --destdir="$pkgdir" *.whl
-    i[[ -f /usr/lib/systemd/system/newfuture_ddns.service ]] || nstall -Dm644 newfuture_ddns.service  "${pkgdir}/usr/lib/systemd/system/newfuture_ddns.service"
-    i[[ -f /usr/lib/systemd/system/newfuture_ddns.service ]] || nstall -Dm644 newfuture_ddns.timer "${pkgdir}/usr/lib/systemd/system/newfuture_ddns.timer";
-    [[ -f /etc/ddns/config.json ]] || install -Dm644 config.json "${pkgdir}/etc/ddns/config.json";
+    install -Dm644 newfuture_ddns.service  "${pkgdir}/usr/lib/systemd/system/newfuture_ddns.service"
+    install -Dm644 newfuture_ddns.timer "${pkgdir}/usr/lib/systemd/system/newfuture_ddns.timer";
+    install -Dm644 config.json "${pkgdir}/etc/ddns/config.json";
 }
