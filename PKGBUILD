@@ -3,7 +3,7 @@
 _pkgname=serd
 pkgname=$_pkgname-git
 pkgver=0.30.15.r1032.14f422f6
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight C library for RDF syntax supporting reading / writing Turtle and NTriples (git version)'
 arch=(i686 x86_64)
 url='http://drobilla.net/software/serd/'
@@ -32,7 +32,7 @@ check() {
 }
 
 package() {
-  provides=(libserd-0.so)
+  provides+=(libserd-0.so)
   meson install -C $_pkgname-build --destdir "$pkgdir"
   mv -v "$pkgdir"/usr/share/doc/{serd-0,$pkgname}
   install -vDm 644 $_pkgname/COPYING -t "$pkgdir"/usr/share/licenses/$pkgname
