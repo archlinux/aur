@@ -1,5 +1,5 @@
-# Maintainer: librewish <librewish at gmail dot com>
-# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: librewish <librewish at gmail dot com>
 # Contributor: Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: Jay Garcia <morbidj at gmail dot com>
 # Contributor: Doug Newgard <scimmia22 at outlook dot com>
