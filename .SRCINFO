@@ -1,6 +1,6 @@
 pkgbase = miopen-opencl
 	pkgdesc = AMD's Machine Intelligence Library (OpenCL backend)
-	pkgver = 5.2.0
+	pkgver = 5.2.1
 	pkgrel = 1
 	url = https://rocmsoftwareplatform.github.io/MIOpen/doc/html
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = miopen-opencl
 	depends = rocm-llvm-mlir
 	provides = miopen
 	conflicts = miopen
-	source = miopen-opencl-5.2.0.tar.gz::https://github.com/ROCmSoftwarePlatform/MIOpen/archive/rocm-5.2.0.tar.gz
+	source = miopen-opencl-5.2.1.tar.gz::https://github.com/ROCmSoftwarePlatform/MIOpen/archive/rocm-5.2.1.tar.gz
 	source = https://github.com/ROCmSoftwarePlatform/MIOpen/commit/9ae2418adf767794e9475274a4cf90e418f00a58.patch
-	sha256sums = 5fda69426e81df9f8fb6658e579176b9c4fcce3516fc8488d3cfd2b6f6f2b3b4
+	sha256sums = 0977a8876d41bbd2fa268341c93892f35878d7efc1711194ad87582f877ff500
 	sha256sums = SKIP
 
 pkgname = miopen-opencl
