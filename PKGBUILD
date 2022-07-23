@@ -1,6 +1,6 @@
 # Maintainer : eggz
 pkgname=ffmpeg-nocuda
-pkgver=5.0.1
+pkgver=5.1
 gitver=n${pkgver}
 pkgrel=3
 pkgdesc='Complete solution to record, convert and stream audio and video (without nvidias propriatary blobs)'
@@ -73,14 +73,9 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'ffmpeg')
 conflicts=('ffmpeg')
 source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=$gitver"
-	010-ffmpeg-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch
-        030-ffmpeg-Add-ability-for-ffmpeg-to-run-svt-vp9.patch
 	040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch
-	050-ffmpeg-vmaf-2.x.patch
 )
-sha256sums=('SKIP'
-'SKIP'
-'SKIP'
+sha256sums=(
 'SKIP'
 'SKIP'
 )
