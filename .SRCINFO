@@ -8,6 +8,6 @@ pkgbase = deepin-wine-helper
 	license = Proprietary
 	makedepends = tar
 	source = https://community-store-packages.deepin.com/appstore/pool/appstore/d/deepin-wine-helper/deepin-wine-helper_5.1.42-1_i386.deb
-	md5sums = 2ed6014301d401b6e7107af7673ff69a
+	sha256sums = c55cfa78e42afc1bb0b4d9bdf3234dd97cb9edff326895b59a146ed9af82b22d
 
 pkgname = deepin-wine-helper

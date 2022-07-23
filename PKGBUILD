@@ -3,6 +3,7 @@
 # Contribuor: wszqkzqk <wszqkzqk@gmail.com>
 # Contribuor: luosoy <249799588@qq.com>
 
+
 pkgname=deepin-wine-helper
 _pkgver=5.1.42-1
 pkgver=${_pkgver//-/_}
@@ -14,7 +15,7 @@ license=('Proprietary')
 depends=()
 makedepends=('tar')
 source=("https://community-store-packages.deepin.com/appstore/pool/appstore/d/${pkgname}/${pkgname}_${_pkgver}_i386.deb")
-md5sums=('2ed6014301d401b6e7107af7673ff69a')
+sha256sums=('c55cfa78e42afc1bb0b4d9bdf3234dd97cb9edff326895b59a146ed9af82b22d')
 
 package() {
     tar -xf data.tar.xz -C ${pkgdir} --exclude="etc"
