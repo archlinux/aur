@@ -7,44 +7,38 @@
 # Contributor: dada513 <dada513@protonmail.com>
 
 pkgname=polymc
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="https://github.com/PolyMC/PolyMC"
 license=('GPL3')
-depends=('java-runtime' 'libgl' 'qt5-base' 'zlib' 'qt5-imageformats' 'qt5-svg' 'hicolor-icon-theme' 'quazip-qt5')
-conflicts=('polymc')
-makedepends=('cmake' 'git' 'java-environment')
+depends=('java-runtime' 'libgl' 'qt6-base' 'qt6-5compat' 'qt6-svg' 'qt6-imageformats' 'zlib' 'hicolor-icon-theme' 'quazip-qt6')
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'java-environment' 'scdoc')
 optdepends=('glfw: to use system GLFW libraries'
             'openal: to use system OpenAL libraries'
             'visualvm: Profiling support'
             'xorg-xrandr: for older minecraft versions'
 )
 source=("https://github.com/PolyMC/PolyMC/releases/download/$pkgver/PolyMC-$pkgver.tar.gz")
-
-sha256sums=('c33484ae20c912d3dde2e55f64f24d8b86a9a9547631cd3b10481ddbf90f4735')
+sha256sums=('91b67bd4415f288399f824d9dc83a537d69e66f7ace93de4f62c3dd531a729a9')
 
 build() {
-  cd "${srcdir}/PolyMC-$pkgver"
-  mkdir -p build
 
-  cd build
-  cmake -DCMAKE_BUILD_TYPE=None \
+  cmake -DCMAKE_BUILD_TYPE= \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DLauncher_BUILD_PLATFORM="archlinux" \
-    -DLauncher_APP_BINARY_NAME="${pkgname}" \
-    -Wno-dev \
-    ..
-  cmake --build .
+    -DLauncher_QT_VERSION_MAJOR="6" \
+    -Bbuild -SPolyMC-$pkgver
+  cmake --build build
 }
 
 check() {
-  cd "${srcdir}/PolyMC-$pkgver/build"
+  cd "build"
   ctest .
 }
 
 package() {
-  cd "${srcdir}/PolyMC-$pkgver/build"
+  cd "build"
   DESTDIR="$pkgdir" cmake --install .
 }
