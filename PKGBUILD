@@ -1,54 +1,50 @@
-# Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - The robot_localization package provides nonlinear state estimation through sensor fusion of an abritrary number of sensors."
 url='https://wiki.ros.org/robot_localization'
 
 pkgname='ros-noetic-robot-localization'
 pkgver='2.7.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
-ros_makedepends=(ros-noetic-tf2-ros
-  ros-noetic-geographic-msgs
-  ros-noetic-diagnostic-updater
-  ros-noetic-roscpp
-  ros-noetic-geometry-msgs
-  ros-noetic-std-msgs
-  ros-noetic-diagnostic-msgs
-  ros-noetic-message-filters
-  ros-noetic-message-generation
-  ros-noetic-sensor-msgs
-  ros-noetic-cmake-modules
+ros_makedepends=(
   ros-noetic-catkin
-  ros-noetic-tf2-geometry-msgs
-  ros-noetic-nav-msgs
-  ros-noetic-tf2
+  ros-noetic-message-generation
   ros-noetic-roslint
-  ros-noetic-eigen-conversions)
-makedepends=('ros-build-tools'
+)
+makedepends=(
+  cmake
+  ros-build-tools
   ${ros_makedepends[@]}
+  eigen
+  geographiclib
+  python-catkin_pkg
+)
+
+ros_depends=(
+  ros-noetic-cmake-modules
+  ros-noetic-diagnostic-msgs
+  ros-noetic-diagnostic-updater
+  ros-noetic-eigen-conversions
+  ros-noetic-geographic-msgs
+  ros-noetic-geometry-msgs
+  ros-noetic-message-filters
+  ros-noetic-nav-msgs
+  ros-noetic-nodelet
+  ros-noetic-roscpp
+  ros-noetic-sensor-msgs
+  ros-noetic-std-msgs
+  ros-noetic-std-srvs
+  ros-noetic-tf2
+  ros-noetic-tf2-geometry-msgs
+  ros-noetic-tf2-ros
+)
+depends=(
+  ${ros_depends[@]}
   geographiclib
   eigen
-  cmake)
-
-ros_depends=(ros-noetic-tf2-ros
-  ros-noetic-geographic-msgs
-  ros-noetic-diagnostic-updater
-  ros-noetic-roscpp
-  ros-noetic-geometry-msgs
-  ros-noetic-std-msgs
-  ros-noetic-message-runtime
-  ros-noetic-diagnostic-msgs
-  ros-noetic-message-filters
-  ros-noetic-sensor-msgs
-  ros-noetic-cmake-modules
-  ros-noetic-tf2-geometry-msgs
-  ros-noetic-nav-msgs
-  ros-noetic-tf2
-  ros-noetic-eigen-conversions)
-depends=(${ros_depends[@]}
-  geographiclib
-  eigen)
+  yaml-cpp
+)
 
 _dir="robot_localization-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/cra-ros-pkg/robot_localization/archive/${pkgver}.tar.gz")
