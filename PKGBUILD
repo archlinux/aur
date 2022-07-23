@@ -2,12 +2,12 @@
 
 pkgname=zoho-notebook
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Zoho Notebook for Linux: Take notes, add files, create checklists, sketches, record audio, and capture moments."
 arch=('x86_64')
 url="https://www.zoho.com/notebook"
 license=('custom')
-depends=('gtk3' 'libsecret' 'dbus-x11' 'libxss' 'nss')
+depends=('gtk3' 'libsecret' 'dbus' 'libxss' 'nss')
 options=('!strip' '!emptydirs')
 install=notebook.install
 source=("https://downloads.zohocdn.com/notebooklinux-desktop/Notebook-${pkgver}.deb")
