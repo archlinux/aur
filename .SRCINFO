@@ -1,6 +1,6 @@
 pkgbase = handygccs-git
 	pkgdesc = Handheld Game Console Controller Support.
-	pkgver = 22.07.r54.a860f6b
+	pkgver = 22.07.r55.1c05e63
 	pkgrel = 1
 	url = https://github.com/ShadowBlip/HandyGCCS
 	arch = any
