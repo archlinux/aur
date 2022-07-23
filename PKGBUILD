@@ -1,17 +1,17 @@
-# Maintainer: AmberArch <sawanon@protonmail.com>
+# Maintainer: AmberArch <amber@mail.cyborgtrees.com>
 
 pkgname=show-git
 _pkgname=Show
-pkgver=r59.9657faf
-pkgrel=3
+pkgver=r86.f966da3
+pkgrel=1
 arch=(any)
 pkgdesc="Realtime GLSL shader wallpapers"
 url="https://github.com/danielfvm/Show"
 license=("GPL")
 # Show needs xrandr to build, but I don't know if its required for wayland systems.
-depends=(imlib2 glew xorg-xrandr)
-makedepends=(meson git cmake)
-source=('git+https://github.com/danielfvm/Show.git')
+depends=(python-xcffib python-cairocffi python-opengl python-screeninfo python-mouse python-opencv python-scipy python-glfw)
+makedepends=(git python-build python-installer python-wheel python-setuptools)
+source=('git+https://github.com/danielfvm/Show.git') 
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,17 +22,28 @@ pkgver() {
   )
 }
 
+#prepare() {
+#  cd "$srcdir/$_pkgname"
+#  git apply "$srcdir/show.patch"
+#}
+
 build() {
-cd "$_pkgname"
-	mkdir build
-	meson "$_pkgname/build" --prefix="$pkgdir/usr"
+  cd "$srcdir/$_pkgname"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-mkdir -p "$pkgdir/usr"
 mkdir -p "$pkgdir/usr/share/show"
-cd "$_pkgname"
-	ninja -C "$_pkgname/build" install
+cd "$srcdir/$_pkgname"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 	cp example/* LICENSE README.md "$pkgdir/usr/share/show"
-
+  #installs directly to site-packages instead of making a subdirectory
+  cd "$pkgdir/usr/lib/python3.10/site-packages"
+  mkdir Show
+  mv ./*.py Show/
+  mv __pycache__ Show/
+  chmod +x Show/show.py
+  #executable
+  mkdir -p "$pkgdir/usr/bin"
+  ln -s "/usr/lib/python3.10/site-packages/Show/show.py" "$pkgdir/usr/bin/show"
 }
