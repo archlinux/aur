@@ -1,13 +1,13 @@
-# Maintainer: JaydenDev <jdev0894@gmail.com>
+# Maintainer JaydenDev <jdev0894@gmail.com>
 # Previous Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Submitter: Ecmel Ercan <ecmel dot ercan at gmail dot com>
 # Contributor: Vain <aurmaint1 on host: uninformativ dot de>
 # Contributor: BlindPenguin <ferdinand holzner at gmail dot com>
 # Thanks goes to yjftsjthsd for https://aur.archlinux.org/packages/cdesktopenv-git/ PKGBUILD.
-# Big thanks to ekollof for the updated PKGBUILD! https://git.hackerheaven.org/ekollof/cdesktopenv
+#
 pkgname=cdesktopenv
 pkgver=2.4.0
-pkgrel=3
+pkgrel=2
 pkgdesc="CDE - Common Desktop Environment"
 url="http://sourceforge.net/projects/cdesktopenv/"
 arch=('i686' 'x86_64') # Some parts of CDE are not stable on x86_64 yet.
@@ -28,13 +28,7 @@ source=("http://downloads.sourceforge.net/$pkgname/cde-$pkgver.tar.gz"
         'cde.desktop'
 	'startxsession.sh')
 
-md5sums=('e66daaf5157bf575ac19166942b7f901'
-         '66ff27b4c6b7c5fda4e2db69f829e4aa'
-         '18f9ef4643ff7ed6637907f5cbdabecf'
-         '5cc80c2851ea90b94e94b0c5d92d81fb'
-         '897316929176464ebc9ad085f31e7284'
-         '7d11b9d2bc1234278f14151025744916'
-         '2e5557241915e4c2761ba136dbcba469')
+md5sums=("SKIP")
 
 build() {
   cd "$srcdir/cde-$pkgver/"
@@ -52,8 +46,7 @@ EOF
      export LANG=C
      export LC_ALL=C
      export IMAKECPP=cpp
-     export IMAKEDEFINEs='-DDtLocalesToBuild="en_US.UTF-8"'
-     make -j1 World 
+     make -j1 World
   )  
 
   sed -e "s:mkProd -D :&$pkgdir:" -i admin/IntegTools/dbTools/installCDE
@@ -109,7 +102,14 @@ package() {
                  "$pkgdir/etc/xinetd.d/cmsd"
   install -Dm644 "$srcdir/cde-$pkgver/contrib/xinetd/ttdbserver" \
                  "$pkgdir/etc/xinetd.d/ttdbserver"
-  install -Dm755 "$srcdir/startxsession.sh" \
+  install -Dm644 "$srcdir/startxsession.sh" \
 		 "$pkgdir/usr/bin/startxsession.sh"
 }
 
+md5sums=('e66daaf5157bf575ac19166942b7f901'
+         '66ff27b4c6b7c5fda4e2db69f829e4aa'
+         '18f9ef4643ff7ed6637907f5cbdabecf'
+         '5cc80c2851ea90b94e94b0c5d92d81fb'
+         '897316929176464ebc9ad085f31e7284'
+         '7d11b9d2bc1234278f14151025744916'
+         '2e5557241915e4c2761ba136dbcba469')
