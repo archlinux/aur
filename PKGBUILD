@@ -1,59 +1,34 @@
-pkgname='passbook-git'
-_gitname="${pkgname/-git}"
-pkgdesc='Password manager for GNOME'
-pkgver=0.8.r73.2554925
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+pkgname=passbook-git
+pkgver=0.8.r36.g750825d
 pkgrel=1
-url='https://wiki.gnome.org/Apps/Passbook'
-arch=('x86_64')
+pkgdesc="Password manager for GNOME"
+arch=('any')
+url="https://wiki.gnome.org/Apps/Passbook"
 license=('GPL3')
-makedepends=('git' 'meson' 'ninja')
-depends=(
-  'appstream-glib' 'desktop-file-utils' 'gobject-introspection'
-  'gtk3' 'itstool' 'python-cairo' 'python-gobject'
-)
-conflicts=("${_gitname}")
-provides=("${_gitname}")
-source=(
-  "git+https://gitlab.gnome.org/gnumdk/${_gitname}.git"
-  "git+https://gitlab.gnome.org/gnumdk/${_gitname}-po.git"
-)
-sha256sums=(
-  'SKIP'
-  'SKIP'
-)
+depends=('gtk3' 'python-cairo' 'python-gobject')
+makedepends=('git' 'gobject-introspection' 'meson')
+checkdepends=('appstream-glib')
+optdepends=('python-pykeepass: Support for keepass files')
+provides=('passbook')
+conflicts=('passbook')
+source=('git+https://gitlab.gnome.org/gnumdk/passbook.git')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_gitname}"
-
-  git describe --tags \
-    | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "${_gitname}"
-
-  local -r submodules=(
-    'passbook-po'
-  )
-
-  for module in "${submodules[@]}"; do
-    local submodule="subprojects/${module/passbook-/}"
-    git submodule init "${submodule}"
-    git config "submodule.${submodule}.url" "${srcdir}/${module}"
-    git submodule update "${submodule}"
-  done
+  cd "$srcdir/passbook"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${_gitname}"
+  arch-meson passbook build
+  meson compile -C build
+}
 
-  meson build --prefix=/usr
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  cd "${_gitname}"
-
-	DESTDIR="$pkgdir" ninja -C build install
+  meson install -C build --destdir "$pkgdir"
 }
-
-# vim: ts=2 sw=2 et:
