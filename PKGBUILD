@@ -11,6 +11,7 @@ arch=('x86_64')
 conflicts=(${_pkgbase})
 provides=('yafu' 'ysieve')
 depends=('gmp' 'gmp-ecm')
+optdepends=('ggnfs')
 source=(
 	"git+https://github.com/bbuhrow/yafu.git"
 	"git+https://github.com/bbuhrow/ytools.git"
@@ -39,7 +40,7 @@ build() {
 	cp libytools.a ${srcdir}/ysieve/
 
 	cd ${srcdir}/ysieve
-	make
+	make CC=gcc
 	cp libytools.a ${srcdir}/yafu/
 	cp libysieve.a ${srcdir}/yafu/
 	
@@ -52,8 +53,8 @@ build() {
 
 package() {
 	cd ${srcdir}/ysieve
-	install -Dm644 ysieve ${pkgdir}/usr/bin/ysieve
+	install -Dm755 ysieve ${pkgdir}/usr/bin/ysieve
 
 	cd ${srcdir}/yafu
-	install -Dm644 yafu ${pkgdir}/usr/bin/yafu
+	install -Dm755 yafu ${pkgdir}/usr/bin/yafu
 }
