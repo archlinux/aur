@@ -1,9 +1,8 @@
-# Maintainer: OSAMC <https://github.com/osam-cologne/archlinux-proaudio>
-# Contributor: Phil A. <flying-sheep@web.de>
+# Maintainer: Phil A. <flying-sheep@web.de>
+# Maintainer: Florian Hülsmann <fh@cbix.de>
 # Contributor: David Runge <dave@sleepmap.de>
 # Contributor: Adrain Sinclair <adrian at adrusi dot com>
 # Contributor: Miroslav Koškár <http://mkoskar.com/>
-# Contributor: Florian Hülsmann <fh@cbix.de>
 
 _name=Rack
 pkgname=vcvrack
