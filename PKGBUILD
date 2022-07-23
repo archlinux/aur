@@ -2,7 +2,7 @@
 
 pkgname=steam-screensaver-fix
 pkgver=r4.97cf918
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Fix for steam screensaving bug.'
 arch=('i686' 'x86_64')
@@ -13,6 +13,9 @@ depends=(
 	'glibc')
 optdepends=(
 	'steam-native-runtime'
+)
+makedepends=(
+	'git'
 )
 depends_x86_64=(
 	'lib32-glibc')
