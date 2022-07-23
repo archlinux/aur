@@ -20,12 +20,14 @@ pkgver() {
 
 build() {
 	cd "$srcdir/BBDown"
-	if "$CARCH" = "aarch64"
-	then
+	if [ "$CARCH" == "aarch64" ]; then
+	msg2 "build for arm64"
 	dotnet publish BBDown -r linux-arm64 -c Release -o artifact
 	else
+	msg2 "build for x64"
 	dotnet publish BBDown -r linux-x64 -c Release -o artifact
 	fi
+	strip artifact/BBDown
 }
 
 package() {
