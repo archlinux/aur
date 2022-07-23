@@ -10,7 +10,7 @@ depends=('gtk3' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'iso-codes')
 makedepends=('appstream' 'appstream-glib' 'meson' 'gettext' 'gobject-introspection' 'yelp-tools' 'desktop-file-utils' 'gtk-doc')
 optdepends=('parlatype-libreoffice-extension: LibreOffice macros')
 source=("https://github.com/gkarsay/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('c93ffc1cac64dfda71e16744941fcf48a2a376b17ee3963e27765361da2fdb1f')
+b2sums=('7227a7b725f0bdae75ecf30cbc6fd06085ece95be1c73fb8019cb66ca00e9c8a3fa31e99ff38869045cedcc7871a7fa23bb4cbbcb442d143d85ecab3407d038c')
 
 build() {
 	cd "$pkgname-$pkgver"

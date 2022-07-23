@@ -20,6 +20,6 @@ pkgbase = parlatype
 	depends = iso-codes
 	optdepends = parlatype-libreoffice-extension: LibreOffice macros
 	source = https://github.com/gkarsay/parlatype/releases/download/v3.1/parlatype-3.1.tar.gz
-	sha256sums = c93ffc1cac64dfda71e16744941fcf48a2a376b17ee3963e27765361da2fdb1f
+	b2sums = 7227a7b725f0bdae75ecf30cbc6fd06085ece95be1c73fb8019cb66ca00e9c8a3fa31e99ff38869045cedcc7871a7fa23bb4cbbcb442d143d85ecab3407d038c
 
 pkgname = parlatype
