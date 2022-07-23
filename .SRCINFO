@@ -1,0 +1,17 @@
+pkgbase = bootsplash-manager-git
+	pkgdesc = Simple bootsplash manager
+	pkgver = 1.9.r0.g4f83103
+	pkgrel = 1
+	url = https://github.com/ANDRoid7890/bootsplash-manager
+	arch = x86_64
+	license = GPL3
+	depends = qt5-base
+	depends = bootsplash-systemd
+	depends = kauth
+	depends = pamac
+	depends = sdl2
+	conflicts = bootsplash-manager-bin
+	source = git+https://github.com/ANDRoid7890/bootsplash-manager.git
+	md5sums = SKIP
+
+pkgname = bootsplash-manager-git
