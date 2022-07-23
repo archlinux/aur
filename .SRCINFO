@@ -1,13 +1,13 @@
 pkgbase = deepin-wine-helper
 	pkgdesc = Deepin Wine Helper
-	pkgver = 5.1.41_1
+	pkgver = 5.1.42_1
 	pkgrel = 1
 	url = http://www.deepin.org
 	arch = i686
 	arch = x86_64
 	license = Proprietary
 	makedepends = tar
-	source = https://community-store-packages.deepin.com/appstore/pool/appstore/d/deepin-wine-helper/deepin-wine-helper_5.1.41-1_i386.deb
-	md5sums = 7e36c187776028c39183addd737c0e23
+	source = https://community-store-packages.deepin.com/appstore/pool/appstore/d/deepin-wine-helper/deepin-wine-helper_5.1.42-1_i386.deb
+	md5sums = 2ed6014301d401b6e7107af7673ff69a
 
 pkgname = deepin-wine-helper
