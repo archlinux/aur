@@ -7,6 +7,7 @@ pkgbase = qtcreator-spellchecker-plugin-bin
 	arch = x86_64
 	groups = qt
 	license = LGPL3
+	license = GPL3
 	depends = qtcreator
 	depends = hunspell
 	conflicts = qtcreator-spellchecker-plugin-git
