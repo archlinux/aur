@@ -7,7 +7,7 @@ pkgdesc="Customizable personal knowledge-base with Github as unlimited storage a
 arch=('i686' 'x86_64')
 url="https://github.com/tiddly-gittly/TidGi-Desktop"
 license=('MPL2')
-depends=('alsa-lib' 'anaconda' 'atk' 'at-spi2-atk' 'at-spi2-core' 'cairo' 'clion' 'curl' 'dbus' 'desktop-file-utils' 'discord' 'expat' 'gdk-pixbuf2' 'glib2' 'gtk3' 'gvfs' 'hicolor-icon-theme' 'kde-cli-tools' 'kdebase-runtime' 'libcups' 'libdrm' 'libnotify' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'libxtst' 'mesa' 'nspr' 'nss' 'openssl' 'pango' 'trash-cli' 'xdg-utils' 'zlib')
+depends=('alsa-lib' 'anaconda' 'atk' 'at-spi2-atk' 'at-spi2-core' 'cairo' 'clion' 'curl' 'dbus' 'desktop-file-utils' 'discord' 'expat' 'gdk-pixbuf2' 'glib2' 'gtk3' 'gvfs' 'hicolor-icon-theme' 'kde-cli-tools' 'kdepim-runtime' 'libcups' 'libdrm' 'libnotify' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'libxtst' 'mesa' 'nspr' 'nss' 'openssl' 'pango' 'trash-cli' 'xdg-utils' 'zlib')
 optdepends=('apparmor'
             'gnome-keyring'
             'libgnome-keyring'
