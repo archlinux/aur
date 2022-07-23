@@ -2,7 +2,7 @@
 # Contributor: Vlad Frolov <frolvlad@gmail.com>
 
 pkgname=cargo-llvm-cov
-pkgver=0.4.8
+pkgver=0.4.11
 pkgrel=1
 pkgdesc="Cargo subcommand to easily use LLVM source-based code coverage (-Z instrument-coverage)."
 url="https://github.com/taiki-e/cargo-llvm-cov"
@@ -11,7 +11,7 @@ makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=('MIT' 'APACHE')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/taiki-e/cargo-llvm-cov/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('9568b73b078a9428e5731e5acc53e71ef72ee719e72b34f9e0931592409e3f4d6051685bcc422e9dd45933fad94bafc60b88f75669e44b874724439a231dceeb')
+sha512sums=('16b209238cedbf57537b822d7dfb7410112d44f42331d284e39e267199e8e161c10ad026471c32a41c19c1dbe17db105afc0b6f05d3345ac744533b00c5c8dbd')
 
 build() {
   cd "${pkgname}-${pkgver}"
