@@ -6,7 +6,7 @@
 #_with_usermode=1
 
 pkgname=mock
-pkgver=3.0
+pkgver=3.1
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
@@ -30,11 +30,9 @@ install="$pkgname.install"
 backup=("etc/$pkgname/logging.ini"
         "etc/$pkgname/site-defaults.cfg")
 source=("$url/archive/$_pkgtag.tar.gz"
-        "archlinux-defaults.cfg"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-sha256sums=('60fe689017925767e6c21b47d15aa638b7623895188855b60e771a3221b3da5a'
-            'e32d7e96c6ea3c1fb06f20bca60d7e9bc92e70e0eab52e74b0070264c94cef9c'
+sha256sums=('da4b0a0ba08dbdc1eae3ca05f3970e36f26e538146539049607ed5121b06068a'
             'f6cba3f7e7f35c3d811f548af9ff2044764b6b65eb9bd74f035904c0c8463651'
             '7fd98f2d7700996041a835551a746cc8e6ab1048c7b297db9ac5c5534dd87d86')
 
@@ -51,9 +49,6 @@ prepare() {
 	cd "$pkgname-$pkgver"
 
 	sed -e "s|@MOCK_DOCS@|$_docdir|" -i "mock-core-configs/etc/$pkgname/site-defaults.cfg"
-
-	# Apply configuration required for Arch Linux systems
-	cat "$srcdir/archlinux-defaults.cfg" >> "mock-core-configs/etc/$pkgname/site-defaults.cfg"
 }
 
 build() {

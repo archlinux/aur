@@ -1,6 +1,6 @@
 pkgbase = mock
 	pkgdesc = A simple chroot build environment manager for building RPMs
-	pkgver = 3.0
+	pkgver = 3.1
 	pkgrel = 1.1
 	url = https://github.com/rpm-software-management/mock
 	install = mock.install
@@ -24,12 +24,10 @@ pkgbase = mock
 	optdepends = yum-utils: to create RPMs for Fedora <= 23 (including EL5, EL6 and EL7)
 	backup = etc/mock/logging.ini
 	backup = etc/mock/site-defaults.cfg
-	source = https://github.com/rpm-software-management/mock/archive/mock-3.0-1.tar.gz
-	source = archlinux-defaults.cfg
+	source = https://github.com/rpm-software-management/mock/archive/mock-3.1-1.tar.gz
 	source = mock.sysusers
 	source = mock.tmpfiles
-	sha256sums = 60fe689017925767e6c21b47d15aa638b7623895188855b60e771a3221b3da5a
-	sha256sums = e32d7e96c6ea3c1fb06f20bca60d7e9bc92e70e0eab52e74b0070264c94cef9c
+	sha256sums = da4b0a0ba08dbdc1eae3ca05f3970e36f26e538146539049607ed5121b06068a
 	sha256sums = f6cba3f7e7f35c3d811f548af9ff2044764b6b65eb9bd74f035904c0c8463651
 	sha256sums = 7fd98f2d7700996041a835551a746cc8e6ab1048c7b297db9ac5c5534dd87d86
 
