@@ -130,9 +130,9 @@ source=(
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
     dxvk-async-${_asyncver}.patch::https://raw.githubusercontent.com/Sporif/dxvk-async/${_asyncver}/dxvk-async.patch
-    wine-25946b48148784e8275c1685f6498ab88f553ca3.patch
+    0001-wldap32-25946b48148784e8275c1685f6498ab88f553ca3.patch
     wine-winevulkan_fsr.patch
-    wine-more_8x5_res.patch
+    wine-winevulkan_fsr_autogen.patch
     0001-AUR-pkgbuild-changes.patch
     proton-user_compat_data.patch
 )
@@ -261,11 +261,11 @@ prepare() {
         # Fix openldap 2.5+ detection
         sed 's/-lldap_r/-lldap/' -i configure
         # Fix wldap32 compilation on 32bit
-        patch -p1 -i "$srcdir"/wine-25946b48148784e8275c1685f6498ab88f553ca3.patch
+        patch -p1 -i "$srcdir"/0001-wldap32-25946b48148784e8275c1685f6498ab88f553ca3.patch
         # Add FSR for fshack
         #patch -p1 -i "$srcdir"/wine-winevulkan_fsr.patch
         # Adds more 16:10 resolutions for use with FSR
-        #patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
+        #patch -p1 -i "$srcdir"/wine-winevulkan_fsr_autogen.patch
     popd
 
     pushd dxvk
@@ -300,22 +300,6 @@ build() {
         --steam-runtime=native \
         --no-proton-sdk \
         --build-name="${pkgname}"
-
-    # Filter known bad flags before applying optimizations
-    # Filter fstack-protector{ ,-all,-strong} flag for MingW.
-    # https://github.com/Joshua-Ashton/d9vk/issues/476
-    export CFLAGS="${CFLAGS// -fstack-protector*([\-all|\-strong])/}"
-    export CXXFLAGS="${CXXFLAGS// -fstack-protector*([\-all|\-strong])/}"
-    # From wine-staging PKGBUILD
-    # Doesn't compile with these flags in MingW so remove them.
-    # They are also filtered in Wine PKGBUILDs so remove them
-    # for winelib versions too.
-    # Doesn't compile without remove these flags as of 4.10
-    export CFLAGS="${CFLAGS/ -fno-plt/}"
-    export CXXFLAGS="${CXXFLAGS/ -fno-plt/}"
-    export LDFLAGS="${LDFLAGS/,-z,now/}"
-    # MingW Wine builds fail with relro
-    export LDFLAGS="${LDFLAGS/,-z,relro/}"
 
     # By default export FLAGS used by proton and ignore makepkg
     # This overrides FLAGS from makepkg.conf, if you comment these you are on your own
@@ -411,6 +395,6 @@ sha256sums=('SKIP'
             '14e9011b9aa40fe3dcc7a248735eec717a525aa2866e2bba5fd6fa5662c3dec0'
             '11aa65bb6b8da1814557edf18a3cdada80135b021634236feabf93d2a194838b'
             'd76b87410047f623accc846f15f849fe13275924c685ccfb95a91a8b22943e51'
-            '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
+            '373a7465822504c37f9787e49475ac144ee89b0f4b52fa0795c7a12a7e120fb4'
             'e258b4111e3ec8b0720db2b789ef8dcd9e482770c70a2f4a12ad470f587b83ad'
             '3cebd3d1bc920bcfacb7b0dfe2bdf386bdb9c031317e7f7b45148853b618ed78')
