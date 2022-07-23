@@ -1,0 +1,18 @@
+pkgbase = vcvrack-aaronstatic
+	pkgdesc = Aaron Static VCV Rack modules
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/aaronstatic/AaronStatic_modules
+	arch = x86_64
+	arch = aarch64
+	groups = proaudio
+	groups = vcvrack-plugins
+	license = MIT
+	makedepends = simde
+	makedepends = zstd
+	depends = gcc-libs
+	depends = vcvrack
+	source = vcvrack-aaronstatic-2.0.tar.gz::https://github.com/aaronstatic/AaronStatic_modules/archive/refs/tags/v2.0.tar.gz
+	sha256sums = 07b10033468ada768088356d31ee3ed327d152d3f92c437d1df7a041f98425c4
+
+pkgname = vcvrack-aaronstatic
