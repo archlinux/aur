@@ -4,7 +4,9 @@ pkgname=vampy-host
 pkgver=2.3
 pkgrel=1
 pkgdesc="Wrapper plugin that enables you to use Python Vamp in any Vamp host."
-arch=(any)
+arch=('x86_64'
+      'i686'
+      'pentium4')
 url="https://code.soundsoftware.ac.uk/projects/pyin"
 _url="https://github.com/c4dm/vampy-host"
 _sdk_url="https://github.com/c4dm/vamp-plugin-sdk"
