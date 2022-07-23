@@ -15,30 +15,39 @@
 
 #
 _pkg_name="codelite"
-_pkg_ver="16.1.0"
-#_commit=52c724d1132d78ea44894bfe2eaca44f38a9bd85
+_pkg_ver="16.2.0"
+_commit=49783ba2e9cfbc83746098ce8d88efb2af54c116
 
-
+# ctags submodule
 _ctags_pkg_name="eranif-ctags"
-_ctags_pkg_ident="${_ctags_pkg_name}-52c724d"
+_ctags_pkg_ident="52c724d"
+_ctags_pkg_name_ident="${_ctags_pkg_name}-${_ctags_pkg_ident}"
+
+# dbgd/wxdap submodule
+_dbgd_pkg_name="eranif-dbgd"
+_dbgd_pkg_ident="82d9bb8"
+_dbgd_pkg_name_ident="${_dbgd_pkg_name}-${_dbgd_pkg_ident}"
 
 # pkg
 pkgname="${_pkg_name}-unstable"
 #pkgver=${_pkg_ver}
 #pkgver="${_pkg_ver//_/-}"
 pkgver="${_pkg_ver/-*/}"
-pkgrel=2
+pkgrel=0
 
+# generic: pre
+_pkg_ver="${pkgver}"
 
 # version
-_pkg_ver="${pkgver}"
-_pkg_ident="${_pkg_name}-${pkgver}"
-_pkg_name_ver="${_pkg_name}-${_pkg_ver}"
-#_pkg_name_ver="${_pkg_name}-${_pkg_ver//_/-}"
+#_pkg_ident="${_pkg_name}-${pkgver}"
+#_pkg_name_ver="${_pkg_name}-${_pkg_ver}"
 
 # commit
-#pkg_ident="${_commit}"
-#pkg_name_ver="${_pkg_name}-${_commit}"
+_pkg_ident="${_commit}"
+
+# generic: post
+_pkg_name_ver="${_pkg_name}-${_pkg_ident}"
+_pkg_name_ident="${_pkg_name}-${_pkg_ident}"
 
 
 #
@@ -47,7 +56,7 @@ arch=('i686' 'x86_64')
 url="http://www.codelite.org/"
 license=('GPL')
 makedepends=('pkgconfig' 'cmake' 'clang')
-depends=('wxgtk3-dev-opt'
+depends=('wxwidgets-gtk3'
           'webkit2gtk'
           'clang' 'lldb'
           'libedit'
@@ -70,15 +79,16 @@ optdepends=('graphviz: callgraph visualization'
             )
 conflicts=('codelite')
 
-
 source=(
-    "${_pkg_name_ver}.tar.gz::https://github.com/eranif/${_pkg_name}/archive/${_pkg_ver}.tar.gz"
+    "${_pkg_name_ident}.tar.gz::https://github.com/eranif/${_pkg_name}/archive/${_pkg_ident}.tar.gz"
     "codelite-ctags.tar.gz::https://github.com/eranif/ctags/tarball/52c724d1132d78ea44894bfe2eaca44f38a9bd85"
+    "codelite-dbgd.tar.gz::https://github.com/eranif/dbgd/tarball/82d9bb8cdef440eef14c7ef484f21e0df812d103"
     http://repos.codelite.org/wxCrafterLibs/wxgui.zip
   )
 
-sha256sums=('97adfada8a3ba6f3aaf9baba30f741ef4d380f8af1c2ce0693732f38b4a9e0f5'
+sha256sums=('207651b0a06de5972f0b85aee4ed863658e67b2d9e0ac186e892da858f787e0f'
             '77cd02b001f8d677ce0842eb3d93675a5762c7cedc96e5a915b247be1eaaa075'
+            '12a86354ac047496668aeab801504d3ce537bd43e1a820dd65602fed4e2d411d'
             '498c39ad3cc46eab8232d5fa37627c27a27f843cbe9521f05f29b19def436e12')
 
 noextract=('wxgui.zip')
@@ -103,14 +113,24 @@ BUILD_DIR="_build"
 #
 prepare()
 {
-  # eranif-ctags-52c724d
-  cd "${srcdir}/${_pkg_ident}"
+  cd "${srcdir}/${_pkg_name_ident}"
+
+  # submodule eranif-ctags
   rmdir ctags
   ln -s ../eranif-ctags-52c724d ctags
+
+  # submodule eranif-dbgd to wxdap
+  rmdir wxdap
+  ln -s ../eranif-dbgd-82d9bb8 wxdap
+
+  # apply patches
+
   #patch -p0 < "${startdir}/codelite-quickfindbar-focus-tweak.patch"
-  patch -p0 < "${startdir}/cmake.patch"
+
+  #patch -p0 < "${startdir}/cmake.patch"  # wx-config patch
+
   # temporary disable wxcrafter build: cl-16.1.0/wxcrafter subdir build fails with wx-3.1.7
-  mv wxcrafter wxcrafter.disable
+  #mv wxcrafter wxcrafter.disable
 }
 
 
@@ -119,7 +139,7 @@ prepare()
 #
 build()
 {
-cd "${srcdir}/${_pkg_ident}"
+cd "${srcdir}/${_pkg_name_ident}"
 
 CXXFLAGS="${CXXFLAGS} -fno-devirtualize"
 export CXXFLAGS
@@ -128,7 +148,8 @@ export CXXFLAGS
 #WX_CONFIG="wx-config"
 #WX_CONFIG="wx-config-gtk2"
 #WX_CONFIG="wx-config-gtk3"
-WX_CONFIG="/opt/wxgtk-dev/bin/wx-config"
+#WX_CONFIG="/opt/wxgtk-dev/bin/wx-config"
+WX_CONFIG="wx-config"
 export WX_CONFIG
 
 mkdir -p "${BUILD_DIR}"
@@ -145,7 +166,7 @@ make -C "${BUILD_DIR}"
 #
 package()
 {
-cd "${srcdir}/${_pkg_ident}"
+cd "${srcdir}/${_pkg_name_ident}"
 
 make -C "${BUILD_DIR}" -j1 DESTDIR="${pkgdir}" install
 install -m 644 -D "${srcdir}/${_pkg_name_ver}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkg_name}/LICENSE"
