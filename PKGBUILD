@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=wem
-pkgver=0.8.8
+pkgver=0.8.9
 pkgrel=1
 pkgdesc='Wine Environment Manager: A CLI tool for managing wine "envs" or prefixes.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/${pkgver}.tar.gz")
-sha512sums=('d5b49348fa60b5c3e9f6309c0b662dccc52ef4e59f13ec806faa5a6c4c84760edb91f029cdf909c7f945f668773f07f62229bfd0f3aee1860acffe7707fad7eb')
+sha512sums=('4019000162bb2501c862a543d5c951f2127245d0ddfec2dc8cc6777164eb0ba1f19c09ba84c483e1d6ff904c0fca1d2d30c925f2342c0b3a183a61bb9c9dc684')
 
 build() {
     ## From Go package guidelines
