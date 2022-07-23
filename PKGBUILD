@@ -10,7 +10,7 @@ arch=('x86_64'
       'i686'
       'pentium4')
 depends=('python')
-makedepends=()
+makedepends=('gcc-fortran')
 source=("git+$url")
 sha512sums=('SKIP')
 

@@ -7,6 +7,7 @@ pkgbase = pypropack
 	arch = i686
 	arch = pentium4
 	license = BSD
+	makedepends = gcc-fortran
 	depends = python
 	source = git+https://github.com/jakevdp/pypropack
 	sha512sums = SKIP
