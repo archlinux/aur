@@ -1,0 +1,15 @@
+pkgbase = bmfdec-git
+	pkgdesc = Decompile binary MOF file (BMF) from WMI buffer (git master)
+	pkgver = r49.abb99dc
+	pkgrel = 1
+	url = https://github.com/pali/bmfdec
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = glibc
+	provides = bmfdec
+	conflicts = bmfdec
+	source = git+https://github.com/pali/bmfdec.git
+	md5sums = SKIP
+
+pkgname = bmfdec-git
