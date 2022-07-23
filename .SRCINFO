@@ -9,7 +9,6 @@ pkgbase = gslx680-acpi-dkms-git
 	license = GPL2
 	makedepends = git
 	depends = dkms
-	depends = linux-headers
 	provides = gslx680-acpi
 	conflicts = gslx680-acpi
 	source = gslx680-acpi-dkms-git::git+https://github.com/onitake/gslx680-acpi.git
@@ -18,4 +17,3 @@ pkgbase = gslx680-acpi-dkms-git
 	sha256sums = 04e768901152606ab0c33dac6d0c4a365e5fd7ba803a43be9847e47f9da38461
 
 pkgname = gslx680-acpi-dkms-git
-
