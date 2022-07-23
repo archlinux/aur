@@ -1,50 +1,40 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 _pkgname=serd
-pkgname="${_pkgname}-git"
-pkgver=0.30.5.r815.49a6eea
+pkgname=$_pkgname-git
+pkgver=0.30.15.r1032.14f422f6
 pkgrel=1
-pkgdesc="Lightweight C library for RDF syntax supporting reading / writing Turtle and NTriples (git version)"
-arch=('i686' 'x86_64')
-url="http://drobilla.net/software/serd/"
-license=('custom:ISC')
-makedepends=('git' 'python')
-conflicts=("${_pkgname}" "${_pkgname}-svn")
-provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}" "lib${_pkgname}-${pkgver::1}.so")
-source=("$_pkgname::git+https://gitlab.com/drobilla/serd.git"
-        'autowaf::git+https://gitlab.com/drobilla/autowaf.git')
-md5sums=('SKIP'
-         'SKIP')
+pkgdesc='Lightweight C library for RDF syntax supporting reading / writing Turtle and NTriples (git version)'
+arch=(i686 x86_64)
+url='http://drobilla.net/software/serd/'
+license=(ISC)
+depends=(glibc)
+makedepends=(doxygen git meson python-sphinx)
+conflicts=($_pkgname $_pkgname-docs)
+provides=($_pkgname "$_pkgname=${pkgver//.r*/}" $_pkgname-docs)
+source=("$_pkgname::git+https://gitlab.com/drobilla/$_pkgname.git")
+sha256sums=('SKIP')
 
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-
-  local ver=`grep "^SERD_VERSION" wscript | cut -d "'" -f 2`
+  cd $_pkgname
+  local ver=$(grep -E "^\s+version: '[0-9]+\.[0-9]+\.[0-9]+'" meson.build | cut -d "'" -f 2)
   echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-
-  git submodule init
-  git config submodule.waflib.url "${srcdir}/autowaf"
-  git submodule update
-
-  # remove call to local ldconfig
-  sed -i "/ldconfig/d" wscript
+build() {
+  arch-meson $_pkgname $_pkgname-build
+  meson compile -C $_pkgname-build
 }
 
-build() {
-  cd "${srcdir}/${_pkgname}"
-
-  python ./waf configure --prefix=/usr
-  python waf build $MAKEFLAGS
+check() {
+  meson test -C $_pkgname-build
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-
-  python waf install --destdir="$pkgdir"
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  provides=(libserd-0.so)
+  meson install -C $_pkgname-build --destdir "$pkgdir"
+  mv -v "$pkgdir"/usr/share/doc/{serd-0,$pkgname}
+  install -vDm 644 $_pkgname/COPYING -t "$pkgdir"/usr/share/licenses/$pkgname
+  install -vDm 644 $_pkgname/{AUTHORS,NEWS,README.md} -t "$pkgdir"/usr/share/doc/$pkgname
 }
