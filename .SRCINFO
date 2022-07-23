@@ -1,0 +1,14 @@
+pkgbase = yttrim
+	pkgdesc = Trim portions from online videos with ease.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://codeberg.org/theooo/yttrim
+	arch = any
+	license = custom
+	depends = yt-dlp
+	depends = ffmpeg
+	depends = fzf
+	source = https://codeberg.org/theooo/yttrim/raw/branch/main/yttrim
+	sha512sums = SKIP
+
+pkgname = yttrim
