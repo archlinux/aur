@@ -1,6 +1,6 @@
 pkgbase = g4music
 	pkgdesc = Play your music
-	pkgver = 1.3
+	pkgver = 1.4
 	pkgrel = 1
 	url = https://gitlab.gnome.org/neithern/g4music
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = g4music
 	depends = gst-plugins-good
 	depends = taglib
 	depends = tracker3
-	source = https://gitlab.gnome.org/neithern/g4music/-/archive/v1.3/g4music-v1.3.tar.gz
-	b2sums = 1256b6850b675141800f56c3fd9ffd45592aaf34fcd983064a8bdd5034832b5e9fd1173220fb17b9f0900825b34b627cd2615b6fbb7ca40582d93bd7aa03001a
+	source = https://gitlab.gnome.org/neithern/g4music/-/archive/v1.4/g4music-v1.4.tar.gz
+	b2sums = 624cb0462cb5ecf0c867dfc1caacc01b7c7a4bf2e674af4f4a5d64ba50312d8cb65f54cc988cc6bc96be34548c7bcd8d9d04830236282306997306bcb8505a32
 
 pkgname = g4music
