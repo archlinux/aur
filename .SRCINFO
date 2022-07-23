@@ -1,0 +1,21 @@
+pkgbase = libby-git
+	pkgdesc = a simple cli tool to download books from Library Genesis
+	pkgver = r29.fb3dd56
+	pkgrel = 1
+	url = https://github.com/carterprince/libby
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = pup
+	depends = fzf
+	depends = curl
+	depends = wget
+	optdepends = neomutt
+	optdepends = rofi
+	optdepends = ebook-convert
+	provides = libby
+	conflicts = libby
+	source = libby-git::git+https://github.com/carterprince/libby
+	md5sums = SKIP
+
+pkgname = libby-git
