@@ -17,7 +17,7 @@ sha256sums=('7b45dde078ec213fa101ecabdc477b554b6e815c69abe6e99ae3049a4da1046b'
             'c9bc9ac2ffdc703b672c1f918ea4d48479693bdc69dfd346a077547de47ce7d1'
             '346fa1d54c67f48406688eade0a0032af83410a1ff0d846f4388ac7f7fcdcef3')
 source=(
-  "ARCTIME_PRO_${pkgver}_LINUX.7z::https://cdntx.arctime.pro"
+  "ARCTIME_PRO_${pkgver}_LINUX.7z::https://t.arctime.cn/nap2x"
   16x16.png
   24x24.png
   32x32.png
