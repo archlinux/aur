@@ -1,7 +1,7 @@
 pkgbase = cate-bossfight-bin
 	pkgdesc = funny jinx the cat game where you click the cat, a gamemaker remake by Skirlez of the scratch game "cate remix remix remix remix remix remix" about the big-footed cat named jinx
 	pkgver = 1.7.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/Skirlez/cate-bossfight-gm
 	arch = x86_64
 	license = custom
