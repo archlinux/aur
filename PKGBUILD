@@ -5,8 +5,8 @@
 _pkgname=mpv
 pkgname=$_pkgname-caca
 epoch=1
-_tag='4c9d3669a0f672e6754ac456acd324db570964d3' # git rev-parse v${pkgver}
-pkgver=0.33.1
+_tag='df6d84c1cf4bbc2b998f4d320542c78df674512d' # git rev-parse v${pkgver}
+pkgver=0.34.1
 pkgrel=4
 pkgdesc='a free, open source, and cross-platform media player (libcaca support)'
 arch=('x86_64')
@@ -36,8 +36,9 @@ source=("git+https://github.com/mpv-player/mpv.git#tag=${_tag}?signed")
 sha256sums=('SKIP')
 prepare() {
   cd ${_pkgname}
-  # vo_gpu: placebo: update for upstream API changes
-  git cherry-pick -n 7c4465cefb27d4e0d07535d368febdf77b579566
+  git cherry-pick -n \
+    '79bfcc672343ddbc348e040ad899d61a0bafc050' \
+    'fc94c8c365ebeb038af6052bf4ea0506c1220559'
 }
 build() {
   cd ${_pkgname}

@@ -1,6 +1,6 @@
 pkgbase = mpv-caca
 	pkgdesc = a free, open source, and cross-platform media player (libcaca support)
-	pkgver = 0.33.1
+	pkgver = 0.34.1
 	pkgrel = 4
 	epoch = 1
 	url = https://mpv.io/
@@ -82,7 +82,7 @@ pkgbase = mpv-caca
 	provides = mpv
 	conflicts = mpv
 	options = !emptydirs
-	source = git+https://github.com/mpv-player/mpv.git#tag=4c9d3669a0f672e6754ac456acd324db570964d3?signed
+	source = git+https://github.com/mpv-player/mpv.git#tag=df6d84c1cf4bbc2b998f4d320542c78df674512d?signed
 	validpgpkeys = 145077D82501AA20152CACCE8D769208D5E31419
 	sha256sums = SKIP
 
