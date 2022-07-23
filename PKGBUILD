@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  rm -rf build
+  rm -rf build*
 
   msg2 "Building stage 1 (bootstrap)"
   ./bootstrap.sh build-stage1
