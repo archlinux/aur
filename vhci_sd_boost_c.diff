@@ -1,0 +1,27 @@
+--- ./usr/src/seh-utn-driver-3.3.5/vhci_sd_boost.c	2022-07-23 11:24:02.000000000 +0200
++++ ./usr/src/seh-utn-driver-3.3.5/vhci_sd_boost.c	2022-07-23 12:52:36.131228260 +0200
+@@ -10,6 +10,7 @@
+ 
+ #include <linux/kthread.h>
+ #include <linux/slab.h>
++#include <linux/backing-dev.h>
+ 
+ #include "vhci_common.h"
+ #include "vhci.h"
+@@ -54,15 +55,7 @@
+                     if (sdev){
+                         struct backing_dev_info *dst;
+                         blk_queue_max_hw_sectors(sdev->request_queue, BUFFER_SECTOR);
+-                        /*PATCH für kernel backing_dev_info ist from structure to pointer changed
+-                         * the patch is ugly but should work*/
+-                        dst = (struct backing_dev_info *)&sdev->request_queue->backing_dev_info;
+-                        if (sizeof (sdev->request_queue->backing_dev_info) == sizeof (struct backing_dev_info)){
+-                            dst->ra_pages = BUFFER_READ_AHEAD >> (PAGE_SHIFT - 10);
+-                        }else{
+-                            struct backing_dev_info **d = (struct backing_dev_info **)dst;
+-                            (*d)->ra_pages = BUFFER_READ_AHEAD >> (PAGE_SHIFT - 10);
+-                        }
++                        sdev->quiesced_by->backing_dev_info->ra_pages = BUFFER_READ_AHEAD >> (PAGE_SHIFT - 10);
+                         dev_info (&sdev->sdev_gendev, "Set max_sectors to %d",BUFFER_SECTOR);
+                         dev_info (&sdev->sdev_gendev, "Set read_ahead_kb to %d k", BUFFER_READ_AHEAD);
+                     }
