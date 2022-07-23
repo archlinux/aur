@@ -1,22 +1,19 @@
-# Maintainer: Alexandria Pettit <alxpettit@gmail.com>
-# Contributor: Kyle Keen <keenerd@gmail.com>
-# Contributor: Mateusz Herych <heniekk@gmail.com>
-# Contributor: Alexander Rødseth <rodseth@gmail.com>
-
-pkgname=ngircd-pam
-pkgver=25
+pkgname=ngircd
+pkgver=26.1
 pkgrel=2
 pkgdesc="Next Generation IRC Daemon compiled with PAM support"
 arch=('x86_64')
 backup=(etc/ngircd.conf)
-url="http://ngircd.barton.de/"
+url="https://ngircd.barton.de/"
 license=('GPL')
 conflicts=('ngircd')
 depends=('openssl' 'libident' 'zlib')
-source=("http://ngircd.barton.de/pub/ngircd/ngircd-$pkgver.tar.gz"
+source=("https://ngircd.barton.de/pub/ngircd/ngircd-$pkgver.tar.gz"{,.sig}
         ngircd.service)
-sha256sums=('51915780519bae43da3798807e3bed60d887e4eaa728354aa6bb61cdbcda49ba'
+sha256sums=('41e1b1c6326c667a6a07799c34175b5406e78ec3b19b4b780046c8d3f532706e'
+            'SKIP'
             'f02e30f6864ba1130bcc85bedc44ad782687f572c06f10e0501b0ddcf532b404')
+validpgpkeys=('F5B9F52ED90920D2520376A2C24A0F637E364856') # Alexander Barton <alex@barton.de>
 
 build() {
   cd "$srcdir/ngircd-$pkgver"
@@ -27,8 +24,8 @@ build() {
   	--mandir=/usr/share/man \
   	--with-ident \
   	--with-openssl \
-  	--enable-ipv6 \
-    --with-pam
+  	--with-pam \
+  	--enable-ipv6
   make
 }
 

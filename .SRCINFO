@@ -1,8 +1,8 @@
 pkgbase = ngircd-pam
 	pkgdesc = Next Generation IRC Daemon compiled with PAM support
-	pkgver = 25
+	pkgver = 26.1
 	pkgrel = 2
-	url = http://ngircd.barton.de/
+	url = https://ngircd.barton.de/
 	arch = x86_64
 	license = GPL
 	depends = openssl
@@ -10,9 +10,9 @@ pkgbase = ngircd-pam
 	depends = zlib
 	conflicts = ngircd
 	backup = etc/ngircd.conf
-	source = http://ngircd.barton.de/pub/ngircd/ngircd-25.tar.gz
+	source = https://ngircd.barton.de/pub/ngircd/ngircd-26.1.tar.gz
 	source = ngircd.service
-	sha256sums = 51915780519bae43da3798807e3bed60d887e4eaa728354aa6bb61cdbcda49ba
+	sha256sums = 41e1b1c6326c667a6a07799c34175b5406e78ec3b19b4b780046c8d3f532706e
 	sha256sums = f02e30f6864ba1130bcc85bedc44ad782687f572c06f10e0501b0ddcf532b404
 
 pkgname = ngircd-pam
