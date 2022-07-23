@@ -1,8 +1,8 @@
 pkgbase = futurerestore-m1stadev-git
 	pkgdesc = iOS upgrade and downgrade tool utilizing SHSH blobs - m1stadev's fork - git version
-	pkgver = r199.f42719c5
+	pkgver = r278.ecc32003
 	pkgrel = 1
-	url = https://github.com/m1stadev/futurerestore
+	url = https://github.com/futurerestore/futurerestore
 	arch = x86_64
 	license = LGPL3
 	makedepends = git
@@ -10,9 +10,10 @@ pkgbase = futurerestore-m1stadev-git
 	depends = img4tool
 	depends = libfragmentzip
 	depends = libgeneral
+	depends = libimobiledevice-glue
 	depends = libimobiledevice
-	depends = libirecovery
-	depends = libplist
+	depends = libirecovery-git
+	depends = libplist-git
 	depends = libzip
 	depends = openssl
 	depends = zlib
@@ -21,15 +22,17 @@ pkgbase = futurerestore-m1stadev-git
 	provides = futurerestore-marijuanarm-git
 	conflicts = futurerestore
 	replaces = futurerestore-marijuanarm-git
-	source = git+https://github.com/m1stadev/futurerestore.git#branch=master
-	source = git+https://github.com/DanTheMann15/tsschecker.git
-	source = git+https://github.com/m1stadev/idevicerestore.git
+	source = git+https://github.com/futurerestore/futurerestore.git#commit=ecc32003b09a3afb27be80fd881cee9fcc0b5d49
+	source = git+https://github.com/futurerestore/idevicerestore.git
+	source = git+https://github.com/1Conan/tsschecker.git
 	source = git+https://github.com/tihmstar/jssy.git
 	source = idevicerestore-0001-configure.ac-check-for-pthreads.patch
+	source = idevicerestore-0002-ipsw-Update-to-reflect-color-macro-name-change-in-li.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 7a1ac46309eab59763186fdb91e456bd77f703b0fe59fec968e0001349c24d78
+	sha256sums = 3ba642f08b569bd91767a1c3bd74cc4dcf50f14c7253c4a5f20795acaafcf8f1
+	sha256sums = 7f01f292913d20df47254a776bab3cab385063d86b47420706bae42450e8b8f3
 
 pkgname = futurerestore-m1stadev-git
