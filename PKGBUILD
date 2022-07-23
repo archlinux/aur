@@ -3,13 +3,14 @@
 pkgname=show-git
 _pkgname=Show
 pkgver=r86.f966da3
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc="Realtime GLSL shader wallpapers"
 url="https://github.com/danielfvm/Show"
 license=("GPL")
 # Show needs xrandr to build, but I don't know if its required for wayland systems.
-depends=(python-xcffib python-cairocffi python-opengl python-screeninfo python-mouse python-opencv python-scipy python-glfw)
+depends=(python-xcffib python-cairocffi python-opengl python-screeninfo python-mouse python-opencv python-scipy python-glfw glfw)
+optdepends=("glfw-wayland: wayland support")
 makedepends=(git python-build python-installer python-wheel python-setuptools)
 source=('git+https://github.com/danielfvm/Show.git') 
 sha256sums=('SKIP')
