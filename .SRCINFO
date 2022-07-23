@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-background-logo-git
 	pkgdesc = GNOME Shell extension to overlay a logo over the default background
-	pkgver = 41.0
+	pkgver = 42.0
 	pkgrel = 1
 	url = https://pagure.io/background-logo-extension
 	arch = any
@@ -14,4 +14,3 @@ pkgbase = gnome-shell-extension-background-logo-git
 	sha256sums = ae3223dab86d51ed54ac22c0518102bcd965fe0576839a038e559301cf94cc2c
 
 pkgname = gnome-shell-extension-background-logo-git
-
