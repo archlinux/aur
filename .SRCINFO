@@ -1,0 +1,21 @@
+pkgbase = python-numpy1.22
+	pkgdesc = Scientific tools for Python
+	pkgver = 1.22.4
+	pkgrel = 1
+	url = https://www.numpy.org/
+	arch = x86_64
+	license = custom
+	checkdepends = python-pytest
+	checkdepends = python-hypothesis
+	makedepends = python-setuptools
+	makedepends = gcc-fortran
+	makedepends = cython
+	depends = cblas
+	depends = lapack
+	depends = python
+	optdepends = openblas: faster linear algebra
+	options = staticlibs
+	source = https://github.com/numpy/numpy/releases/download/v1.22.4/numpy-1.22.4.tar.gz
+	sha512sums = 4415c6a96af625fcc7fe5395b1441c389fbe4a9b97b18e87ffa063609245f4b352e0b623f96bbacd3d0939fdc86fd79009bf09b1ee0004c13e3d05af298d8f10
+
+pkgname = python-numpy1.22
