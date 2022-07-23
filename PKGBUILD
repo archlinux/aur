@@ -4,7 +4,7 @@
 # Maintainer: Matheus Gabriel Werny de Lima <matheusgwdl@protonmail.com>
 
 pkgname="btcpayserver"
-pkgver="1.6.2"
+pkgver="1.6.3"
 pkgrel="1"
 pkgdesc="Accept Bitcoin payments. Free, open-source and self-hosted Bitcoin payment processor."
 arch=("any")
@@ -12,16 +12,16 @@ url="https://github.com/btcpayserver/${pkgname}"
 license=("MIT")
 depends=("aspnet-runtime" "bitcoin-daemon" "dotnet-sdk" "nbxplorer")
 optdepends=("apache: HTTP server"
-"core-lightning: Lightning network support"
-"certbot: Creates SSL certificates."
-"eclair: Lightning network support"
-"lnd: Lightning network support"
-"mariadb: Database"
-"nginx: HTTP server"
-"postgresql: Database"
-"sqlite: Database")
+    "core-lightning: Lightning network support"
+    "certbot: Creates SSL certificates."
+    "eclair: Lightning network support"
+    "lnd: Lightning network support"
+    "mariadb: Database"
+    "nginx: HTTP server"
+    "postgresql: Database"
+    "sqlite: Database")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("1d0980d35dd47c52104565f9b29e1e91e10db4f0b1e0a4cc0b6a9cece09ab5d0615ad5d96acd8dfbfac00aa350814d8fb7510145fcb1c62668234786beb9d635")
+sha512sums=("662d6f779d5b0d371fb25422ee795911577e053885cb64578a46340dc798b8514278bee64b22365f09b0cba5046b067db01c19f8517162ded4fafb31e8da22c1")
 
 build()
 {
