@@ -1,0 +1,18 @@
+pkgbase = vcvrack-zetacarinae
+	pkgdesc = VCV Rack plugin collection
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://github.com/mhampton/ZetaCarinaeModules
+	arch = x86_64
+	arch = aarch64
+	groups = proaudio
+	groups = vcvrack-plugins
+	license = GPL3
+	makedepends = simde
+	makedepends = zstd
+	depends = gcc-libs
+	depends = vcvrack
+	source = vcvrack-zetacarinae-2.0.4.tar.gz::https://github.com/mhampton/ZetaCarinaeModules/archive/refs/tags/v2.0.4.tar.gz
+	sha256sums = 24e4b92fdccd4fbce41df833daf5c366c9032075ac57e39a5cee52421592ee3b
+
+pkgname = vcvrack-zetacarinae
