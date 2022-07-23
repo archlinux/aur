@@ -68,7 +68,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=5.18.13
+pkgver=5.18.14
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -92,18 +92,20 @@ source=(
   "ck-hrtimer-$_commit.tar.gz::https://github.com/graysky2/linux-patches/archive/$_commit.tar.gz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-HID-apple-Properly-handle-function-keys-on-Keychron-.patch
+  0003-soundwire-Raise-DEFAULT_PROBE_TIMEOUT-to-10000-ms.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('430e1affe62fcca274f217b150290995a33ceb0d5ad5e72ca6ee8a2d28276bda'
+sha256sums=('e17d46451133d3a3099b09e200839e875100b48403171923ab71b6a9b39856af'
             'SKIP'
-            '382aa201a6a6939210dd8668ab052724547b4bd489b38e97502bbd0848061b35'
+            '6f0fd44dd87dd0ad23f782a26752bb7200d0d163e3a50df6ad3cf5cec7fe948e'
             '5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c'
             '0506bdad4255ccc8165e39b2567450a3b12de2759ed7b42c0c90de1c57b1a283'
-            '7294286511384aa7f7685b7f9cbe1d9729cc2ab8306541c9bdc6a521e2c92cb8'
-            '15a2140a4bbf6b8ef32ddd6f7f65633c4af6aad9ca788c863d2d3fcfc0656fb2')
+            '0799f30e1d6e2d4c8b4f62bcc391c09eabdea988e479ea3861d32289bc9e205e'
+            'ccb4f283d47a6c5e0109fbf27e7cde266a09d19c151a52f67f8e85e1d50cd0c1'
+            '6e5499f68f6d3cc23ba259790cb37c0e860ece6faa30f9e8814ea329d7c58368')
 
 prepare() {
   cd linux-${pkgver}
