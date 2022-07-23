@@ -1,6 +1,6 @@
 # Maintainer: Grzegorz Koperwas <admin@grzegorzkoperwas.site>
 pkgname=swww
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=2
 pkgdesc="Efficient animated wallpaper daemon for wayland, controlled at runtime."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('gcc-libs' 'lz4')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Horus645/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('659bd8833220bf0b7bf61e9223b1ef8e5acd2222738653be26f7c7915068f53f')
+sha256sums=('55a61991aaec5756e9bd95869a7cf7763934c09a588e87bb07c668e626c64e4e')
 
 prepare() {
     cd "$pkgname-$pkgver"
