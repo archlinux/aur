@@ -2,7 +2,7 @@
 
 pkgname=gamescope-session-git
 _gitdir=gamescope-session
-pkgver=r48.9be54cd
+pkgver=r56.6913517
 pkgrel=1
 pkgdesc="Steam Big Picture Mode session based on gamescope for ChimeraOS"
 arch=('any')
@@ -12,7 +12,7 @@ groups=()
 depends=('gamescope')
 optdepends=('chimera: for steam-tweaks integration')
 makedepends=('git')
-#install=gamescope-session.install
+install=gamescope-session.install
 source=("${_gitdir}::git+https://github.com/ChimeraOS/${_gitdir}.git")
 md5sums=('SKIP')
 
@@ -26,9 +26,11 @@ pkgver() {
 package() {
 	cd "$srcdir/${_gitdir}"
     mkdir -p ${pkgdir}/usr/bin
+    mkdir -p ${pkgdir}/usr/share/wayland-sessions
     mkdir -p ${pkgdir}/etc/pam.d
     mkdir -p ${pkgdir}/etc/systemd/system
     install -m755 usr/bin/gamescope-session ${pkgdir}/usr/bin/gamescope-session
+    install -m755 usr/share/wayland-sessions/gamescope-session.desktop ${pkgdir}/usr/share/wayland-sessions/gamescope-session.desktop
     install -m644 etc/pam.d/gamescope ${pkgdir}/etc/pam.d/gamescope
     install -m644 etc/systemd/system/gamescope@.service ${pkgdir}/etc/systemd/system/gamescope@.service
 }
