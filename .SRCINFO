@@ -1,0 +1,18 @@
+pkgbase = vcvrack-sonusmodular
+	pkgdesc = VCV Rack plugin collection
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://gitlab.com/sonusdept/sonusmodular
+	arch = x86_64
+	arch = aarch64
+	groups = proaudio
+	groups = vcvrack-plugins
+	license = GPL3
+	makedepends = simde
+	makedepends = zstd
+	depends = gcc-libs
+	depends = vcvrack
+	source = vcvrack-sonusmodular-2.0.0.zip::https://gitlab.com/sonusdept/sonusmodular/-/archive/2.0.0/sonusmodular-2.0.0.zip
+	sha256sums = 1168cd4276d70d87ac4843fb3875953ae532f4c356ecd88002ccfbb9ee3d10be
+
+pkgname = vcvrack-sonusmodular
