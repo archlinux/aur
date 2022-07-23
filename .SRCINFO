@@ -19,7 +19,7 @@ pkgbase = wechat-devtools
 	source = nwjs-v0.55.0.tar.gz::https://npm.taobao.org/mirrors/nwjs/v0.55.0/nwjs-sdk-v0.55.0-linux-x64.tar.gz
 	source = wechat_devtools_1.06.2206090_x64.exe::https://servicewechat.com/wxa-dev-logic/download_redirect?type=x64&from=mpwiki&download_version=1062206090&version_type=1
 	source = node-v16.4.2.tar.gz::https://npm.taobao.org/mirrors/node/v16.4.2/node-v16.4.2-linux-x64.tar.gz
-	source = compiler-v1.06.2206090-1.tar.gz::https://mirror.ghproxy.com/https://github.com/msojocs/wechat-web-devtools-linux/releases/download/v1.06.2206090-1/compiler.tar.gz
+	source = compiler-v1.06.2206090-1.tar.gz::https://github.com/msojocs/wechat-web-devtools-linux/releases/download/v1.06.2206090-1/compiler.tar.gz
 	source = wechat-devtools.desktop
 	source = logo.svg
 	source = wechat-devtools

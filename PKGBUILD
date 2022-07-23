@@ -32,7 +32,7 @@ makedepends=('p7zip' 'python2' 'openssl' 'gcc' 'make' 'libssh2' 'krb5')
 source=("nwjs-v${_nwjs_ver}.tar.gz::https://npm.taobao.org/mirrors/nwjs/v${_nwjs_ver}/nwjs-sdk-v${_nwjs_ver}-linux-x64.tar.gz"
         "${_wechat_devtools_exe}::${_wechat_devtools_url}"
         "node-v${_node_version}.tar.gz::https://npm.taobao.org/mirrors/node/v${_node_version}/node-v${_node_version}-linux-x64.tar.gz"
-        "compiler-v${_wechat_devtools_ver}-${pkgrel}.tar.gz::https://mirror.ghproxy.com/https://github.com/msojocs/wechat-web-devtools-linux/releases/download/v${_wechat_devtools_ver}-${pkgrel}/compiler.tar.gz"
+        "compiler-v${_wechat_devtools_ver}-${pkgrel}.tar.gz::https://github.com/msojocs/wechat-web-devtools-linux/releases/download/v${_wechat_devtools_ver}-${pkgrel}/compiler.tar.gz"
         "wechat-devtools.desktop"
         "logo.svg"
         "wechat-devtools"
