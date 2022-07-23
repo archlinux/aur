@@ -1,0 +1,13 @@
+pkgbase = ds360
+	pkgdesc = xboxdrv wrapper to use a DualSense as a Xbox 360 controller on Linux
+	pkgver = 20211113
+	pkgrel = 1
+	url = https://github.com/yoyossef/ds360
+	arch = x86_64
+	license = unknown
+	depends = xboxdrv
+	depends = systemd
+	source = git+https://github.com/yoyossef/ds360.git
+	sha512sums = SKIP
+
+pkgname = ds360
