@@ -1,26 +1,24 @@
 pkgbase = kaldi
 	pkgdesc = Speech recognition research toolkit
-	pkgver = 5.5.r9114.d6198906f
+	pkgver = 5.5.r9264.9af2c5c16
 	pkgrel = 1
 	url = https://github.com/kaldi-asr/kaldi
 	arch = x86_64
-	arch = i686
 	license = APACHE
 	makedepends = git
 	makedepends = wget
-	makedepends = sed
 	depends = cblas
 	depends = kaldi-openfst
 	depends = lapack
-	depends = python2
+	depends = python
 	optdepends = cuda
 	optdepends = kaldi-irstlm
 	optdepends = kaldi-kaldi_lm
 	optdepends = kaldi-sctk
 	optdepends = kaldi-sph2pipe
 	optdepends = kaldi-srilm
+	options = !lto
 	source = git+https://github.com/kaldi-asr/kaldi
 	sha256sums = SKIP
 
 pkgname = kaldi
-
