@@ -1,7 +1,7 @@
 # Maintainer: obslsessed <obslsessed@protonmail.com>
 pkgname="cate-bossfight-bin"
 pkgver="1.7.0"
-pkgrel="2"
+pkgrel="1"
 pkgdesc="funny jinx the cat game where you click the cat, a gamemaker remake by Skirlez of the scratch game \"cate remix remix remix remix remix remix\" about the big-footed cat named jinx"
 arch=("x86_64")
 url="https://github.com/Skirlez/cate-bossfight-gm"
