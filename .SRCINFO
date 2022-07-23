@@ -1,38 +1,37 @@
 pkgbase = lv2-git
 	pkgdesc = Plugin standard for audio systems (git version)
-	pkgver = 1.17.2.r1257.c0773f8
+	pkgver = 1.18.7.r1399.8124b4e
 	pkgrel = 1
 	url = http://lv2plug.in/
 	arch = i686
 	arch = x86_64
-	license = custom:ISC
+	license = ISC
 	makedepends = asciidoc
+	makedepends = codespell
 	makedepends = doxygen
+	makedepends = flake8
 	makedepends = git
-	makedepends = gtk2
 	makedepends = libsndfile
+	makedepends = meson
 	makedepends = pygmentize
+	makedepends = python-black
 	makedepends = python-lxml
 	makedepends = python-markdown
 	makedepends = python-pygments
+	makedepends = python-pylint
 	makedepends = python-rdflib
-	optdepends = libsndfile: example sampler plugin
-	optdepends = gtk2: example scope plugin
+	makedepends = serd
+	makedepends = sord
+	optdepends = sord: for lv2_validate
+	optdepends = libsndfile: for eg-sampler.lv2
 	optdepends = python-lxml: for lv2specgen.py
 	optdepends = python-markdown: for lv2specgen.py
 	optdepends = python-pygments: for lv2specgen.py
 	optdepends = python-rdflib: for lv2specgen.py
 	provides = lv2
-	provides = lv2=1.17.2
-	provides = lv2core
-	provides = lv2-svn
+	provides = lv2=1.18.7
 	conflicts = lv2
-	conflicts = lv2-svn
-	replaces = lv2core
 	source = lv2::git+https://gitlab.com/lv2/lv2.git
-	source = autowaf::git+https://gitlab.com/drobilla/autowaf.git
-	md5sums = SKIP
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = lv2-git
-

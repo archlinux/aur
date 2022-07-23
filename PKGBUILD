@@ -2,59 +2,64 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 _pkgname=lv2
-pkgname="${_pkgname}-git"
-pkgver=1.17.2.r1257.c0773f8
+pkgname="$_pkgname-git"
+pkgver=1.18.7.r1399.8124b4e
 pkgrel=1
-pkgdesc="Plugin standard for audio systems (git version)"
-arch=('i686' 'x86_64')
-url="http://lv2plug.in/"
-license=('custom:ISC')
-makedepends=('asciidoc' 'doxygen' 'git' 'gtk2' 'libsndfile' 'pygmentize'
-             'python-lxml' 'python-markdown' 'python-pygments' 'python-rdflib')
-optdepends=('libsndfile: example sampler plugin'
-            'gtk2: example scope plugin'
-            'python-lxml: for lv2specgen.py'
-            'python-markdown: for lv2specgen.py'
-            'python-pygments: for lv2specgen.py'
-            'python-rdflib: for lv2specgen.py')
-provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}" 'lv2core' "${_pkgname}-svn")
-conflicts=("${_pkgname}" "${_pkgname}-svn")
-replaces=('lv2core')
-source=("${_pkgname}::git+https://gitlab.com/lv2/lv2.git"
-        'autowaf::git+https://gitlab.com/drobilla/autowaf.git')
-md5sums=('SKIP'
-         'SKIP')
+pkgdesc='Plugin standard for audio systems (git version)'
+arch=(i686 x86_64)
+url='http://lv2plug.in/'
+license=(ISC)
+makedepends=(
+  asciidoc
+  codespell
+  doxygen
+  flake8
+  git
+  libsndfile
+  meson
+  pygmentize
+  python-black
+  python-lxml
+  python-markdown
+  python-pygments
+  python-pylint
+  python-rdflib
+  serd
+  sord
+)
+optdepends=(
+  'sord: for lv2_validate'
+  'libsndfile: for eg-sampler.lv2'
+  'python-lxml: for lv2specgen.py'
+  'python-markdown: for lv2specgen.py'
+  'python-pygments: for lv2specgen.py'
+  'python-rdflib: for lv2specgen.py'
+)
+provides=($_pkgname "${_pkgname}=${pkgver//.r*/}")
+conflicts=($_pkgname)
+source=("${_pkgname}::git+https://gitlab.com/lv2/lv2.git")
+sha256sums=('SKIP')
 
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-
-  local ver=$(grep '^VERSION' wscript | cut -d "'" -f 2)
+  cd $_pkgname
+  local ver=$(grep -E "^\s+version: '.*'" meson.build | cut -d "'" -f 2)
   echo ${ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-
-  git submodule init
-  git config submodule.waflib.url "${srcdir}/autowaf"
-  git submodule update
-}
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  arch-meson $_pkgname $_pkgname-build
+  meson compile -C $_pkgname-build
+}
 
-  python waf configure \
-    --prefix=/usr \
-    --docs \
-    --docdir=/usr/share/doc/${pkgname}
-  python waf build $MAKEFLAGS
+
+check() {
+  meson test -C $_pkgname-build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-
-  python waf install --destdir="${pkgdir}"
-  install -Dm644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  meson install -C $_pkgname-build --destdir "$pkgdir"
+  install -vDm 644 $_pkgname/COPYING -t "$pkgdir"/usr/share/licenses/$pkgname
+  install -vDm 644 $_pkgname/README.md -t "$pkgdir"/usr/share/doc/$pkgname
 }
