@@ -2,8 +2,8 @@
 
 pkgname=google-cloud-sdk-gke-gcloud-auth-plugin
 _debname=google-cloud-cli-gke-gcloud-auth-plugin
-_debshasum=04cca5f6ba7035954886226c519fa3627f97750bb664371b3def0864d6889e92 
-pkgver=393.0.0
+_debshasum=d2b7fd2e30cf3f83ddf710ea8520a85a462921d2ae33ca6c1038b1806a16a341 
+pkgver=394.0.0
 pkgrel=1
 pkgdesc="A google-cloud-sdk component that provides a kubectl authentication plugin for GKE."
 arch=('x86_64')
