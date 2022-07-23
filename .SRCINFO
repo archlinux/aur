@@ -1,8 +1,8 @@
 pkgbase = python-concur
-	pkgdesc = Beautiful side-by-side diffs
+	pkgdesc = Concur UI Framework for Python
 	pkgver = 0.10.0
 	pkgrel = 1
-	url = https://github.com/darrenburns/dunk
+	url = https://github.com/potocpav/python-concur
 	arch = any
 	license = MIT
 	makedepends = python-build
