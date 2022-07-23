@@ -1,19 +1,19 @@
 pkgbase = zander-bin
 	pkgdesc = Software to manage dedicated doom server instances
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://node-3.net/zander
 	license = MIT
 	conflicts = zander
 	provides = zander
 	arch = aarch64
-	source_aarch64 = https://gitlab.node-3.net/zander/zander/-/releases/v0.1.5/downloads/zander_0.1.5_linux_arm64.tar.gz
-	sha256sums_aarch64 = 6e050a7a1b94690d8aae0d022bb783d478c0a00a4f8ff75f093b5d1d094cb5db
+	source_aarch64 = https://gitlab.node-3.net/zander/zander/-/releases/v0.1.6/downloads/zander_0.1.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = 45f5ffa1762b2da8a5528e34db0025dfd6b8479565d1f6864358a0bfa4da6a1b
 	arch = i686
-	source_i686 = https://gitlab.node-3.net/zander/zander/-/releases/v0.1.5/downloads/zander_0.1.5_linux_i386.tar.gz
-	sha256sums_i686 = 09a2c45178841090e29d7262543162203e3ebc0a844fb547a6c80c94dbfac726
+	source_i686 = https://gitlab.node-3.net/zander/zander/-/releases/v0.1.6/downloads/zander_0.1.6_linux_i386.tar.gz
+	sha256sums_i686 = a3e3a704f9fa33989b0f2dfaf6a3244ebfa9e4a27554db9d84d5913b4ef2fc63
 	arch = x86_64
-	source_x86_64 = https://gitlab.node-3.net/zander/zander/-/releases/v0.1.5/downloads/zander_0.1.5_linux_x86_64.tar.gz
-	sha256sums_x86_64 = d6e9933a8f2f1edb9c79ca3543b7e8f0eb2dbda487c240626f9e9285682f5cfb
+	source_x86_64 = https://gitlab.node-3.net/zander/zander/-/releases/v0.1.6/downloads/zander_0.1.6_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 73265ae918a9dbf39cdb482c3da872a719607e38b184a39cd3c64b5ea7ead1fa
 	
 pkgname = zander-bin
