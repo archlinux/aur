@@ -1,8 +1,8 @@
 # Maintainer: Mckol <mckol363@gmail.com>
 
 pkgname=veloren-bin
-pkgver=0.10.0
-pkgrel=2
+pkgver=0.13.0
+pkgrel=1
 pkgdesc="An open-world, open-source multiplayer voxel RPG"
 arch=('x86_64')
 url="https://veloren.net/"
@@ -13,12 +13,12 @@ makedepends=()
 provides=('veloren')
 conflicts=('veloren')
 source=(
-    "$pkgname"::"https://veloren-4129.fra1.digitaloceanspaces.com/releases/$pkgver-linux.tar.gz"
+    "$pkgname-$pkgver"::"https://gitlab.com/veloren/veloren/-/jobs/2761241182/artifacts/download"
     'voxygen-wrapper.sh'
     'server-cli-wrapper.sh'
 )
 noextract=('voxygen-wrapper.sh' 'server-cli-wrapper.sh')
-sha512sums=('0f976794c6d34eb937bbee021b48451139eae3e02fef4c757a7787fa9c06c3095b288522de58f55b6d7b80208f1be9e4300b4ec0dcf39cbb90640517e5a2a8ac'
+sha512sums=('291aaa36355cc54b3ba0e8f748d8686fda9ddfb6e3582611a3bdd60d1d472d7a6ad77dd14fc88c571dd2e56f286af3cdb8fa8a955655be4952c3e27b74dc9a35'
             'e35c852bfa8d80a78a4df50c09246e69431efe9ebc208bd3c2a864e7674ee1078ab0d2eb2b2ffc1b67847ab7125a38dd260d8964054f55cdf0305248ece9a11c'
             'a1ec4d3590af0f07be59c22de3de9402e7ed20eff7fb2b086773f04e8019a607a843a9ba0cf59df48431a5d9a3eb1d0c79272dced9a812c11ae7ed52e41bb0d2')
 
