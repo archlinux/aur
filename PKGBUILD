@@ -2,7 +2,7 @@
 # Contributor: Talebian <talebian@sovietunion.xyz>
 
 pkgname=bottles-git
-pkgver=2022.6.14.brescia.1.r115.gc23bb5fa
+pkgver=2022.7.14.brescia.3.r37.g992da179
 pkgrel=2
 epoch=1
 pkgdesc="Easily manage wineprefix using environments"
@@ -25,7 +25,9 @@ depends=(
   python
   python-gobject
   python-markdown
+  python-orjson
   python-requests
+  python-vfs
   python-yaml
   webkit2gtk
   wine
