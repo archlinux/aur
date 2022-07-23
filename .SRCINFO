@@ -10,6 +10,7 @@ pkgbase = wob-git
 	makedepends = meson
 	makedepends = wayland-protocols
 	makedepends = scdoc
+	makedepends = libinih
 	depends = wayland
 	provides = wob=0.13
 	conflicts = wob
