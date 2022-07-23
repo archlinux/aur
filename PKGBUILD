@@ -2,12 +2,11 @@
 
 pkgname=mingw-w64-lame
 pkgver=3.100
-pkgrel=4
+pkgrel=5
 pkgdesc="A high quality MPEG Audio Layer III (MP3) encoder (mingw-w64)"
 arch=('any')
 url="http://lame.sourceforge.net/"
-#depends=('ncurses')
-depends=('mingw-w64-crt')
+depends=('mingw-w64-crt' 'mingw-w64-ncurses')
 options=('!strip' '!buildflags' '!libtool' 'staticlibs')
 makedepends=('mingw-w64-gcc' 'nasm')
 license=('LGPL')
@@ -32,7 +31,7 @@ build() {
 
     unset LDFLAGS CPPFLAGS
     
-    CFLAGS="-msse" CPPFLAGS="-msse" $srcdir/lame-$pkgver/configure --prefix=/usr/${_arch} \
+    LIBS="-lncursesw" CFLAGS="-msse" CPPFLAGS="-msse" $srcdir/lame-$pkgver/configure --prefix=/usr/${_arch} \
                 --host=${_arch} \
                 --enable-nasm \
                 --enable-shared
