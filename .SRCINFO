@@ -1,0 +1,22 @@
+pkgbase = vcvrack-ahornberg
+	pkgdesc = VCV Rack plugin collection
+	pkgver = 2.1.6
+	pkgrel = 1
+	url = https://github.com/Ahornberg/Ahornberg-VCV-Modules
+	arch = x86_64
+	arch = aarch64
+	groups = proaudio
+	groups = vcvrack-plugins
+	license = GPL3
+	license = custom:OFL
+	makedepends = simde
+	makedepends = zstd
+	depends = gcc-libs
+	depends = vcvrack
+	options = !emptydirs
+	source = vcvrack-ahornberg-2.1.6.tar.gz::https://github.com/Ahornberg/Ahornberg-VCV-Modules/archive/refs/tags/v2.1.6.tar.gz
+	source = fix-gcc-format.patch::https://github.com/Ahornberg/Ahornberg-VCV-Modules/pull/20.patch
+	sha256sums = 1b7006d7c6bb10c4efc51accf70959384fd512a20a3395104ea181302b79830b
+	sha256sums = d87e4494844a6c432222487157d81510b402e0b2e55ac0608b1640c71790ab19
+
+pkgname = vcvrack-ahornberg

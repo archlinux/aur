@@ -1,0 +1,5 @@
+/fix-gcc-format.patch
+pkg/
+src/
+*.tar.*
+*.zip
