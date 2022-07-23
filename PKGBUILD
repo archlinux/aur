@@ -2,7 +2,7 @@
 pkgname=omniorb425
 pkgver=4.2.5
 pkgrel=1
-pkgdesc="A CORBA object request broker for C++ and Python."
+pkgdesc="A CORBA object request broker for C++ and Python. Legacy version."
 arch=('x86_64' 'armv7h')
 url="http://omniorb.sourceforge.net/"
 license=('GPL2' 'LGPL2.1')

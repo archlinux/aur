@@ -1,5 +1,5 @@
 pkgbase = omniorb425
-	pkgdesc = A CORBA object request broker for C++ and Python.
+	pkgdesc = A CORBA object request broker for C++ and Python. Legacy version.
 	pkgver = 4.2.5
 	pkgrel = 1
 	url = http://omniorb.sourceforge.net/
