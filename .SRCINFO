@@ -1,7 +1,7 @@
 pkgbase = vcvrack-zetacarinae
-	pkgdesc = VCV Rack plugin collection
+	pkgdesc = ZetaCarinae VCV Rack modules
 	pkgver = 2.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mhampton/ZetaCarinaeModules
 	arch = x86_64
 	arch = aarch64
