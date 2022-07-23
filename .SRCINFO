@@ -6,13 +6,12 @@ pkgbase = libicu53
 	arch = x86_64
 	license = custom:icu
 	depends = gcc-libs
-	depends = sh
-	provides = libicudata.so=53
-	provides = libicui18n.so=53
-	provides = libicuio.so=53
-	provides = libicutest.so=53
-	provides = libicutu.so=53
-	provides = libicuuc.so=53
+	provides = libicudata.so.53
+	provides = libicui18n.so.53
+	provides = libicuio.so.53
+	provides = libicutest.so.53
+	provides = libicutu.so.53
+	provides = libicuuc.so.53
 	source = https://github.com/unicode-org/icu/releases/download/release-53-2/icu4c-53_2-src.tgz
 	sha512sums = fa3a7c9e388d263d548a02a1e4a63358c24883b4b6d7b29715fb333b96ba193d6c1fef363dafb96097565cf4baf3c1e3be3da5ed1647edf30757a4a65286970b
 
