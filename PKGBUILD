@@ -13,7 +13,7 @@
 ### Related wiki page: https://wiki.archlinux.org/title/Makepkg#Configuration
 
 ## Add changes from ffmpeg-full
-## Enable everything except NDI and CUDA changes (enable them manually if you want them)
+## Enable everything except CUDA changes (enable it manually if you want it)
 if [[ -z "$FFMPEG_OBS_FULL" ]]; then
   FFMPEG_OBS_FULL=OFF
 fi
@@ -38,11 +38,6 @@ fi
 ## Add changes from ffmpeg-libfdk_aac (nonfree option)
 if [[ -z "$FFMPEG_OBS_LIBFDK_AAC" ]]; then
   FFMPEG_OBS_LIBFDK_AAC=OFF
-fi
-
-## Add changes from ffmpeg-ndi (nonfree option)
-if [[ -z "$FFMPEG_OBS_NDI" ]]; then
-  FFMPEG_OBS_NDI=OFF
 fi
 
 ## Add SVT related changes from ffmpeg-full because ffmpeg-svt is out of date
@@ -349,25 +344,6 @@ if [[ $FFMPEG_OBS_LIBFDK_AAC == 'ON' ]]; then
   provides+=(ffmpeg-libfdk_aac)
 fi
 
-if [[ $FFMPEG_OBS_NDI == 'ON' ]]; then
-  _nonfree_enabled=ON
-  depends+=('ndi-sdk')
-  source+=(
-    "Revert-lavd-Remove-libndi_newtek.patch::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/master_Revert-lavd-Remove-libndi_newtek.patch?inline=false"
-    "libndi_newtek_common.h::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_common.h?inline=false"
-    "libndi_newtek_dec.c::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_dec.c?inline=false"
-    "libndi_newtek_enc.c::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_enc.c?inline=false"
-  )
-  sha256sums+=(
-    'a5701faa71ac69c94dc0230b401203d135e48c45980926432f1190ef3218009b'
-    '462e984a7cb3d0af17b0ea0eb2a010aee2f79a3e77c2055fdfd760163dd75fa4'
-    '3c6dea7583d79911e9ea198c35b1b56830b85eea84e49d63c2d5c03af5210eca'
-    '83cc714edc8d1c37ffabd2ee17960d6ed91a1d019bd43d01383f84eea28e4fbb'
-  )
-  _args+=(--enable-libndi_newtek)
-  provides+=(ffmpeg-ndi)
-fi
-
 if [[ $FFMPEG_OBS_SVT == 'ON' ]]; then
   depends+=(svt-vp9 svt-hevc)
   _svt_hevc_ver='111eef187fd7b91ad27573421c7238ef787e164f'
@@ -488,13 +464,6 @@ prepare() {
   sed -i 's/fifo_buffer_size/fifo_shift/g' libavformat/librist.c
 
   ### Package features changes
-
-  ## NDI changes if enabled
-  if [[ $FFMPEG_OBS_NDI == 'ON' ]]; then
-    patch -Np1 -i "${srcdir}"/Revert-lavd-Remove-libndi_newtek.patch
-    printf 'Copying libndi missing file\n'
-    cp "${srcdir}"/libndi_newtek_* libavdevice/
-  fi
 
   ## SVT changes if enabled
   if [[ $FFMPEG_OBS_SVT == 'ON' ]]; then
