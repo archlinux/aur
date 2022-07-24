@@ -1,0 +1,14 @@
+pkgbase = goreleaser-test-bin
+	pkgdesc = Test
+	pkgver = 0.1.26
+	pkgrel = 1
+	conflicts = goreleaser-test
+	provides = goreleaser-test
+	arch = aarch64
+	source_aarch64 = https://github.com/ismaelpadilla/goreleaser-test/releases/download/v0.1.26/goreleaser-test_0.1.26_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 19eccbafcd647a3420e12c7f2867c563008f8de8d8ba2eb7ceb0b24d91b0c648
+	arch = i686
+	source_i686 = https://github.com/ismaelpadilla/goreleaser-test/releases/download/v0.1.26/goreleaser-test_0.1.26_Linux_i386.tar.gz
+	sha256sums_i686 = 57011c1d7ef8c6a62b8dbd7a8f787305070394752aa82c2ef08a5714e94251f6
+	
+pkgname = goreleaser-test-bin
