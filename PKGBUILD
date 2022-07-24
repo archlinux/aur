@@ -1,28 +1,29 @@
-# Maintainer: Mike Zorn (apechimp) <apechimp@icloud.com>
+# Maintainer: Mike Zorn (mike-zorn) <apechimp@icloud.com>
 
 pkgname=purple-hue
-pkgver=0.1.4
+pkgver=0.2.0
 pkgrel=0
 pkgdesc="Change a hue light's color based on air quality data from purple air."
 provides=('purple-hue')
 makedepends=('cargo')
 arch=('x86_64')
 url="https://github.com/mike-zorn/purple-hue"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mike-zorn/purple-hue/archive/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mike-zorn/purple-hue/archive/$pkgver.tar.gz")
 license=('GPL')
-sha512sums=('5b073aa7d646b94e97bb62c72990ea48920b5b377abac09d45595cb929aefcecb427cdb1b54b8f0dde0db120910b335b804d430c27001b5bfc45a3bdb1288e1b')
+sha512sums=('93743530edd1c07c1c58adeff800b70975be6ea25641fc2d7ad27842b53e6c238d4d028dc0e6c88a5474e2fe6d786969a9b8dd548641ad3008bfc71932cbc50d')
 
 build() {
-    tar xvzf "$pkgname-$pkgver.tar.gz"
-    mv "purple-hue-tags-v$pkgver"/* .
+    cd $pkgname-$pkgver
     cargo build --release --locked
 }
 
 check() {
+    cd $pkgname-$pkgver
     cargo test --release --locked
 }
 
 package() {
+    cd $pkgname-$pkgver
     install -Dm755 target/release/purple-hue "$pkgdir/usr/bin/purple-hue"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "systemd/purple-hue.timer" "$pkgdir/usr/lib/systemd/system/purple-hue.timer"

@@ -1,13 +1,13 @@
 pkgbase = purple-hue
 	pkgdesc = Change a hue light's color based on air quality data from purple air.
-	pkgver = 0.1.4
+	pkgver = 0.2.0
 	pkgrel = 0
 	url = https://github.com/mike-zorn/purple-hue
 	arch = x86_64
 	license = GPL
 	makedepends = cargo
 	provides = purple-hue
-	source = purple-hue-0.1.4.tar.gz::https://github.com/mike-zorn/purple-hue/archive/tags/v0.1.4.tar.gz
-	sha512sums = 5b073aa7d646b94e97bb62c72990ea48920b5b377abac09d45595cb929aefcecb427cdb1b54b8f0dde0db120910b335b804d430c27001b5bfc45a3bdb1288e1b
+	source = purple-hue-0.2.0.tar.gz::https://github.com/mike-zorn/purple-hue/archive/0.2.0.tar.gz
+	sha512sums = 93743530edd1c07c1c58adeff800b70975be6ea25641fc2d7ad27842b53e6c238d4d028dc0e6c88a5474e2fe6d786969a9b8dd548641ad3008bfc71932cbc50d
 
 pkgname = purple-hue
