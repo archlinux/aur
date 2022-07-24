@@ -1,7 +1,7 @@
 pkgbase=stt
 pkgname=('stt' 'python-stt')
 _pkgname=STT
-pkgver=1.4.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Coqui-STT for inference"
 arch=('x86_64' 'aarch64' 'armv7' 'amd64')
@@ -9,7 +9,7 @@ url="https://github.com/coqui-ai/STT"
 license=('MPL2')
 makedepends=('gcc10' 'cmake' 'bazel' 'git' 'sox' 'wget' 'swig')
 depends=('python' 'sox')
-source=("${_pkgname}-${pkgver}::git+https://github.com/coqui-ai/STT.git#tag=main")
+source=("${_pkgname}-${pkgver}::git+https://github.com/coqui-ai/STT.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 provides=('stt' 'python-stt')
 conflicts=('python-stt-bin' 'stt-bin')
