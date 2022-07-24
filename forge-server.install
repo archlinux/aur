@@ -1,55 +1,24 @@
-_forge_name="forge"
-_forge_user="forge"
-_conflict_ver="1.14.4_28.1.0-3"
-_good_ver="1.14.4-28.1.0-9"
-_server_root="/srv/${_forge_name}"
+_game="forge"
+_user="forge"
+_server_root="/srv/forge"
 
 post_install() {
-	if ! getent group "$_forge_user" &>/dev/null; then
-		echo "Adding ${_forge_user} system group..."
-		groupadd -r "$_forge_user" 1>/dev/null
-	fi
-
-	if ! getent passwd "$_forge_user" &>/dev/null; then
-		echo "Adding ${_forge_user} system user..."
-		useradd -r -g "${_forge_user}" -d "$_server_root" "$_forge_user" 1>/dev/null
-	fi
-
-	chown -R "${_forge_user}:${_forge_user}" "$_server_root"
-
-	echo "The world data is stored under ${_server_root} and the server runs as the forge user to increase security."
-	echo "Use the forged script under /usr/bin/${_forge_name}d to start, stop or backup the server."
-	echo "Adjust the configuration file under /etc/conf.d/${_forge_name} to your liking."
-	echo "Make sure to change the SERVER_START_CMD variable if you want to use a JVM other than OpenJDK 8."
-	echo "Please note that you need Java 8 in order to run Forge."
-	echo "For the server to start you have to accept the EULA in ${_server_root}/eula.txt!"
+	echo "The world data is stored under ${_server_root} and the server runs as ${_user} user to increase security."
+	echo "Use the ${_game} script under /usr/bin/${_game}d to start, stop or backup the server."
+	echo "Adjust the configuration file under /etc/conf.d/${_game} to your liking."
+	echo "For the server to start you have to accept the EULA in ${_server_root}/eula.txt !"
 	echo "The EULA file is generated after the first server start."
 }
 
 post_upgrade() {
-	if [ "$(vercmp "$2" "$_conflict_ver")" -ge 0 ] && [ "$(vercmp "$2" "$_good_ver")" -lt 0 ]; then
-		post_install
-
-		echo "==> NOTICE: All filenames have been changed from \"forged\" to \"${_forge_name}d\"!"
-		echo "==> For example:"
-		echo "==> /usr/lib/systemd/system/forged.service -> /usr/lib/systemd/system/${_forge_name}d.service"
-		echo "==> /usr/bin/forged -> /usr/bin/${_forge_name}d"
-		echo "==> /srv/forge -> ${_server_root}"
-
-		if [ -d "/srv/forge" ]; then
-			find "/srv/forge" -mindepth 1 -maxdepth 1 | while read -r _file; do
-				mv "$_file" "${_server_root}${_file#"/srv/forge"}"
-			done
-			rm -rf "/srv/forge"
-			echo "==> Game saves in /srv/forge were moved to ${_server_root}."
-		fi
-
-		echo "==> The forge user was preserved on your system."
-	fi
-	chown -R "${_forge_user}:${_forge_user}" "${_server_root}"
+	echo "The management script switched from GNU screen to tmux."
+	echo "Manual intervention is needed to close the previous GNU screen sessions:"
+	echo "Use \`sudo -u ${_user} screen -S ${_game} -rx\` to attach to the ${_game} session and stop it."
+	echo "Do the same for the \`idle_server_${_game}\` session if one is running."
 }
 
 post_remove() {
-	[ -d "$_server_root" ] && echo "Game saves in ${_server_root} were kept on your system."
-	echo "The ${_forge_user} user was preserved on your system."
+	[ -d "$_server_root" ] && echo "Game saves in ${_server_root} have been kept on your system."
+	echo "The configuration in /etc/conf.d/ has been kept on your system."
+	echo "The ${_forge_user} user has been kept on your system."
 }

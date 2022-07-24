@@ -1,36 +1,24 @@
 pkgbase = forge-server
-	pkgdesc = Minecraft Forge server unit files, script and jar
-	pkgver = 1.16.5_36.1.0
-	pkgrel = 2
+	pkgdesc = Forge is a free, open-source modding API all of your favourite mods use!
+	pkgver = 41.0.109
+	pkgrel = 1
 	url = https://minecraftforge.net
 	install = forge-server.install
 	arch = any
 	license = custom
-	depends = java-runtime-headless=8
-	depends = screen
-	depends = sudo
-	depends = bash
-	depends = awk
-	depends = sed
+	makedepends = jdk-openjdk
+	depends = jdk-openjdk
+	depends = tmux
 	optdepends = tar: needed in order to create world backups
 	optdepends = netcat: required in order to suspend an idle server
-	provides = forge-server=1.16.5_36.1.0
-	noextract = forge-1.16.5-36.1.0.jar
+	provides = forge-server=41.0.109
+	noextract = forge-1.19-41.0.109-installer.jar
 	backup = etc/conf.d/forge
-	source = forged-backup.service
-	source = forged-backup.timer
-	source = forged.service
-	source = forged.conf
-	source = forged.sh
-	source = forge-1.16.5-36.1.0-installer.jar::https://files.minecraftforge.net/maven/net/minecraftforge/forge/1.16.5-36.1.0/forge-1.16.5-36.1.0-installer.jar
-	source = LICENSE-forge-server-1.16.5-36.1.0.txt::https://raw.githubusercontent.com/MinecraftForge/MinecraftForge/1.16.x/LICENSE.txt
-	sha512sums = cbc7a567cd254e48e80aa97b62b6f2439ec09cde957ca0643a8ab323bb6bbdcf34ff27a5949fd2f153e736daf09b29639c3a613a8ef4fa0df16070cd58135199
-	sha512sums = a47b5a9e2262877008a5dcae3a833fe99f911631d6fdbe97b95e0451e1dd2b5a26b6f7b843dd6a8ccd4f663cf5c3bca53a89a1d3aabb363281ab6c6fb19e41a4
-	sha512sums = d6bde61a7aa479b85e35b4a3eccb9b3237a6c97f8919b3d704434f1df15672b74c7ae9ca9473eea6a0593e6e80892a2510782115185c1b7fe332720ccb78a7bd
-	sha512sums = a55c2fcc3718f58b723b459f67b3de32b3e40d352e48dda79a85862f30956c5759f8eba4af85946c83c8a878994c43b01803fb2de971e91122c32af013eb6764
-	sha512sums = 76f038abf51fe1ff503118611b3e2f931349b0be9d444a521703b82406d8602099851e4006887c88d24468b6ea72e5ba1b63e8846420fb45e5f68f14aa9378d4
-	sha512sums = 81a5102f820d0a9a9dfc3d57990eab20299e855433f357780747c8fc0fa2c61fdd5e1ece99658a23a1cee5510c3af3adadff537c8053b6bbc8b27c1830912e11
+	source = https://maven.minecraftforge.net/net/minecraftforge/forge/1.19-41.0.109/forge-1.19-41.0.109-installer.jar
+	source = forge-scripts::git+https://github.com/Edenhofer/minecraft-server
+	source = https://raw.githubusercontent.com/MinecraftForge/MinecraftForge/1.19.x/LICENSE.txt
+	sha512sums = 78b7ea6c255d20c60f6cccbe835c93fd27c6638a5e98fefa1d5c4c5e324808a640366262f1f29725f207b1c2f7bd4c35422f21a798f89886dc68adf5b558a5e9
+	sha512sums = SKIP
 	sha512sums = 3da10d63a5edee4bc8bcd3d5c2730771062f7fa58626a8c51635fbe96bfbceca3ff6937cfaad3e17f16a94ef95137f7c78cc6dac1c846a6b9a8f18d3c6355973
 
 pkgname = forge-server
-
