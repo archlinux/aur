@@ -1,0 +1,15 @@
+pkgbase = batterymon-git
+	pkgdesc = Simple battery monitor
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.github.com/weebcyberpunk/batterymon
+	arch = any
+	license = MIT
+	depends = python
+	depends = libnotify
+	depends = python-psutil
+	provides = batterymon
+	source = git+https://www.github.com/weebcyberpunk/batterymon
+	md5sums = SKIP
+
+pkgname = batterymon-git
