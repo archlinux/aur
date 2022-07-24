@@ -1,7 +1,7 @@
 # Maintainer: NSK-1010 <kotone[dot]olin1010[at]gmail[dot]com>
 pkgname=floorp
-pkgver=10.1.0
-pkgrel=4
+pkgver=10.2.0
+pkgrel=1
 pkgdesc="Firefox-based browser with excellent privacy protection, developed by a community of students in Japan"
 url="http://floorp.ablaze.one"
 arch=('x86_64')
@@ -20,7 +20,7 @@ backup=()
 source=("https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/${pkgname}-${pkgver}.linux-${arch}.tar.bz2"
             "https://github.com/Floorp-Projects/About-Floorp-Projects/raw/main/Creater-pack/Creater_pack_Floorp.zip"
             "floorp.desktop")
-md5sums=('4b689eb617a58265a5f598d524bd102c'
+md5sums=('306f89d63b4dc6afc95a3ae403199918'
             'c12cf6c807ad562188e648c60b2b7289'
             'cecce3f030f194da95819cfaffe020e3')
 
