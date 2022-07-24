@@ -1,4 +1,4 @@
-pkgname=broadmix-bin
+pkgname=boardmix-bin
 pkgver=1.13.0
 pkgrel=1
 pkgdesc='Online collaborative whiteboard software.'
@@ -12,6 +12,8 @@ depends=(
 	'libxtst'
 	'xdg-utils'
 	'libsecret'
+)
+optdepends=(
 	'libappindicator-gtk3'
 )
 arch=('x86_64')
@@ -21,7 +23,9 @@ source=(
 
 package() {
 	echo "  -> Extracting the data.tar.xz..."
-	bsdtar -xf data.tar.xz -C "$pkgdir/"
+	bsdtar -xf data.tar.xz -C "${pkgdir}/"
+	chmod 755 "${pkgdir}/opt/apps"
+	chmod 755 "${pkgdir}/opt"
 	echo "  -> Installing..."
 	install -d "${pkgdir}/usr/bin"
 	install -d "${pkgdir}/usr/share/applications"
