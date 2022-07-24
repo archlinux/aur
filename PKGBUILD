@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://github.com/mike-zorn/purple-hue"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mike-zorn/purple-hue/archive/$pkgver.tar.gz")
 license=('GPL')
-sha512sums=('93743530edd1c07c1c58adeff800b70975be6ea25641fc2d7ad27842b53e6c238d4d028dc0e6c88a5474e2fe6d786969a9b8dd548641ad3008bfc71932cbc50d')
+sha512sums=('fd155868f87dca9c4aab2cc46745dfa4c0fc8962c1438a31245143a07e687b746a626116d93b97bfc13f74a9189d843845ef5618e991551d7c637a77c7c09ea6')
 
 build() {
     cd $pkgname-$pkgver
