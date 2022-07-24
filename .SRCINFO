@@ -1,15 +1,14 @@
 pkgbase = insomnia-bin
 	pkgdesc = API Client and Design Platform for GraphQL and REST
 	pkgver = 2022.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://insomnia.rest
 	arch = x86_64
 	license = MIT
-	depends = libnotify
-	depends = libsecret
 	depends = libxss
 	depends = nss
 	depends = gtk3
+	depends = alsa-lib
 	optdepends = libappindicator-gtk3: StatusNotifierItem support
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
 	provides = insomnia

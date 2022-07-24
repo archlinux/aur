@@ -5,13 +5,13 @@ _pkgname='insomnia'
 _upkgname='Insomnia'
 pkgname="${_pkgname}-bin"
 pkgver=2022.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='API Client and Design Platform for GraphQL and REST'
 arch=('x86_64')
 url='https://insomnia.rest'
 _url_source='https://github.com/Kong/insomnia'
 license=('MIT')
-depends=('libnotify' 'libsecret' 'libxss' 'nss' 'gtk3')
+depends=('libxss' 'nss' 'gtk3' 'alsa-lib')
 optdepends=("libappindicator-gtk3: StatusNotifierItem support"
 	    "xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)")
 provides=("${_pkgname}")
