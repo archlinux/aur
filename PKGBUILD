@@ -1,6 +1,6 @@
 # Maintainer: Leon Mergen <leon@solatis.com>
 pkgname=cloudflare-warp-bin
-pkgver=2022.4.235
+pkgver=2022.5.346
 pkgrel=1
 pkgdesc="Cloudflare Warp Client"
 url="https://1.1.1.1"
@@ -19,34 +19,15 @@ changelog=$pkgname.changelog
 #
 # `curl https://pkg.cloudflareclient.com/dists/focal/main/binary-amd64/Packages`
 source=(
-    "${pkgname}-${pkgver}-x86_64.deb::https://pkg.cloudflareclient.com/pool/dists/focal/main/cloudflare_warp_2022_4_235_1_amd64_c71a3ae2e7_amd64.deb"
+    "${pkgname}-${pkgver}-x86_64.deb::https://pkg.cloudflareclient.com/pool/dists/focal/main/cloudflare_warp_2022_5_346_1_amd64_ea02be46df_amd64.deb"
     "${pkgname}-${pkgver}-${pkgrel}-Release::https://pkg.cloudflareclient.com/dists/focal/Release"
-    "${pkgname}-${pkgver}-${pkgrel}-Release.sig::https://pkg.cloudflareclient.com/dists/focal/Release.gpg"
     "${pkgname}-${pkgver}-${pkgrel}-x86_64-Packages::https://pkg.cloudflareclient.com/dists/focal/main/binary-amd64/Packages"
 )
 
-# If you're getting PGP validation errors, you likely need to import the cloudflare GPG key.
-# You can import it using one of the following methods:
-#
-# Using curl directly from their servers:
-#  * curl -sS https://pkg.cloudflareclient.com/pubkey.gpg  | gpg --import -
-#
-# Using MIT's keyserver:
-#  gpg --recv-keys --keyserver hkp://pgp.mit.edu C068A2B5771775193CBE1F2F6E2DD2174FA1C3BA
-#
-# Or a utility like `yay` can do this automatically for you using:
-#   yay -S --pgpfetch cloudflare-warp-bin
-#
-# which will automatically import the GPG key based on the `validpgpkeys` attribute below.
-
-validpgpkeys=('C068A2B5771775193CBE1F2F6E2DD2174FA1C3BA')
-
-md5sums=('e1b4ef3ea8350f3e8f44654724e65c80'
-         'SKIP'
+md5sums=('e778d6d3b402f5f79f0aeb80738ad088'
          'SKIP'
          'SKIP')
-sha256sums=('71b86448b8c03c1a06d61f3f5e54ffce3e2b6831cebe77c571fb9600d30224b7'
-            'SKIP'
+sha256sums=('46d374b6df28f212bba1b7bce6edd3167d92b1ac63e5e467bcbcd09c2c1cc80b'
             'SKIP'
             'SKIP')
 install=$pkgname.install

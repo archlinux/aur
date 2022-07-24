@@ -1,3 +1,17 @@
+cloudflare-warp (2022.5.346) unstable; urgency=medium
+
+  * Fixed issue where all nftables rulesets were flushed after warp-cli disconnect
+  * Fixed false positives when attempting to detect a captive portal
+  * Fixed issue where OS version would not be updated in dash after OS update
+  * Added support for DNS over TCP
+  * Fixed issue where updated posture checks might not take effect until restart
+  * Fixed issue with warp-cli where enable/disable with wifi was allowed in Zero Trust mode
+  * Fixed issue where too many DNS requests could result in the following error
+    appearing in logs: WARN warp::dns: Shedding DNS load
+  * Bug fixes and enhancements
+
+ -- Matt Schulte <mschulte@cloudflare.com> Fri, 17 Jun 2022 15:00:00 -0700
+
 cloudflare-warp (2022.4.235) unstable; urgency=medium
 
   * Removed periodic tunnel checks
