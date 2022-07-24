@@ -4,34 +4,35 @@
 
 pkgname=s25rttr
 pkgver=0.9.5
-build=397f2b2315e997504d4958bfbdea0af815ce559a
-pkgrel=1
+pkgrel=2
 pkgdesc="Return to the Roots is an unofficial extension of (Die Siedler II) ® by BlueByte Software GmbH. Put the files from the original game in the folder (/usr/share/s25rttr/S2/)"
 arch=('i686' 'x86_64')
 url="https://www.siedler25.org/"
 license=('GPL3')
-depends=('sdl2' 'sdl2_mixer')
+depends=('sdl2' 'sdl2_mixer' 'libcurl-gnutls' 'bzip2' 'glfw' 'libsamplerate' 'boost-libs' 'miniupnpc' 'lua51')
+makedepends=('cmake' 'boost')
 install="s25rttr.install"
-source=($pkgname $pkgname.desktop $pkgname.xpm $pkgname.install)
-md5sums=('23235e636d60c380aa1631b44fabbb6b'
-         '8c486f63efb1c9bec6d50306270f1b4c'
-         'a7bf0908aac3dbfaed837c19695ca362'
-         'f51bc71ef665266ae68ce134892ca612')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Return-To-The-Roots/s25client/releases/download/v$pkgver/s25client_src_v$pkgver.tar.gz")
+sha256sums=('c6a9ef5b90943b5f2e81543f1e3290ff773663a45ebbbcc5a786bb5f5495fbec')
 
-if [[ $CARCH == 'x86_64' ]]; then
-    source+=("http://www.siedler25.org/uploads/stable/${pkgname}_${pkgver}-${build}-linux.x86_64.tar.bz2")
-    md5sums+=('108b58ee7a25e08637f3acbead239ded')
-fi
+build() {
+    cmake -B build -S "s25client_v$pkgver" \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D RTTR_BUILD_UPDATER=OFF \
+    -D RTTR_USE_SYSTEM_LIBS=ON \
+    -D BUILD_TESTING=OFF \
+    -D LUA_INCLUDE_DIR=/usr/include/lua5.1/
+
+    cmake --build build
+}
 
 package() {
-    install -d -m755 "$pkgdir"/usr/share/
-    cp -ra "$srcdir"/"$pkgname"_"$pkgver"/share/* "$pkgdir"/usr/share/
-    cp -ra "$srcdir"/"$pkgname"_"$pkgver"/lib/ "$pkgdir"/usr/lib/
-    find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
-    find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
+    pushd build
+    make DESTDIR="$pkgdir" install
+    popd
 
-    install -Dm644 "$srcdir"/"$pkgname".xpm "$pkgdir"/usr/share/pixmaps/"$pkgname".xpm
-    install -Dm644 "$srcdir"/"$pkgname".desktop "$pkgdir"/usr/share/applications/"$pkgname".desktop
-    install -Dm755 "$srcdir"/"$pkgname" "$pkgdir"/usr/bin/"$pkgname"
-    install -Dm755 "$srcdir"/"$pkgname"_"$pkgver"/bin/s25client "$pkgdir"/usr/bin/s25client
+    pushd "s25client_v$pkgver"
+    install -D -m 0644 tools/release/debian/s25rttr.desktop "${pkgdir}/usr/share/applications/s25rttr.desktop"
+    install -D -m 0644 tools/release/debian/s25rttr.png "${pkgdir}/usr/share/icons/hicolor/64x64/apps/s25rttr.png"
+    popd
 }
