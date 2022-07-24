@@ -1,22 +1,22 @@
 --- a/src/sage/interfaces/tachyon.py
 +++ b/src/sage/interfaces/tachyon.py
 @@ -140,14 +140,14 @@ written in the sequence they are listed in the examples in this section.
-     The ``PROJECTION`` keyword must be followed by one of the supported
-     camera projection mode identifiers ``PERSPECTIVE``, ``PERSPECTIVE_DOF``,
-     ``ORTHOGRAPHIC``, or ``FISHEYE``. The ``FISHEYE`` projection mode
--    requires two extra parameters ``FOCALLENGTH`` and ``APERTURE`` which
-+    requires two extra parameters ``FOCALDIST`` and ``APERTURE`` which
-     precede the regular camera options.
+ The ``PROJECTION`` keyword must be followed by one of the supported
+ camera projection mode identifiers ``PERSPECTIVE``, ``PERSPECTIVE_DOF``,
+ ``ORTHOGRAPHIC``, or ``FISHEYE``. The ``FISHEYE`` projection mode
+-requires two extra parameters ``FOCALLENGTH`` and ``APERTURE`` which
++requires two extra parameters ``FOCALDIST`` and ``APERTURE`` which
+ precede the regular camera options.
  
-     ::
+ ::
  
-        Camera
-          projection perspective_dof
--         focallength 0.75
-+         FOCALDIST 0.75
-          aperture 0.02
-          Zoom 0.666667
-          Aspectratio 1.000000
+    Camera
+      projection perspective_dof
+-     focallength 0.75
++     FOCALDIST 0.75
+      aperture 0.02
+      Zoom 0.666667
+      Aspectratio 1.000000
 --- a/src/sage/plot/plot3d/tachyon.py
 +++ b/src/sage/plot/plot3d/tachyon.py
 @@ -92,7 +92,7 @@ angle, right angle)::

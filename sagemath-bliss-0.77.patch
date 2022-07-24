@@ -81,11 +81,11 @@ index 921bc6a765..1f1f502558 100644
      cdef cppclass Graph(AbstractGraph):
          Graph(const unsigned int)
          void add_edge(const unsigned int, const unsigned int)
--        void find_automorphisms(Stats&, void (*)(void* , unsigned int,
--                    const unsigned int*), void*)
+-        void find_automorphisms(Stats&, void (*)(void*, unsigned int,
+-                                                 const unsigned int*), void*)
          void change_color(const unsigned int, const unsigned int)
--        const unsigned int* canonical_form(Stats&, void (*)(void*,unsigned int,
--                    const unsigned int*), void*)
+-        const unsigned int* canonical_form(Stats&, void (*)(void*, unsigned int,
+-                                                            const unsigned int*), void*)
 +        const unsigned int* canonical_form(Stats&)
 +
 +cdef extern from "bliss/digraph.hh" namespace "bliss":
@@ -93,11 +93,11 @@ index 921bc6a765..1f1f502558 100644
      cdef cppclass Digraph(AbstractGraph):
          Digraph(const unsigned int)
          void add_edge(const unsigned int, const unsigned int)
--        void find_automorphisms(Stats&, void (*)(void* , unsigned int,
--                    const unsigned int*), void*)
+-        void find_automorphisms(Stats&, void (*)(void*, unsigned int,
+-                                                 const unsigned int*), void*)
          void change_color(const unsigned int, const unsigned int)
--        const unsigned int* canonical_form(Stats&, void (*)(void*,unsigned int,
--                    const unsigned int*), void*)
+-        const unsigned int* canonical_form(Stats&, void (*)(void*, unsigned int,
+-                                                            const unsigned int*), void*)
 +        const unsigned int* canonical_form(Stats&)
          unsigned int get_hash()
  
@@ -113,7 +113,7 @@ index 921bc6a765..1f1f502558 100644
  
      sig_free(done)
  
--cdef void empty_hook(void *user_param , unsigned int n, const unsigned int *aut):
+-cdef void empty_hook(void *user_param, unsigned int n, const unsigned int *aut):
 -    return
 -
  #####################################################
