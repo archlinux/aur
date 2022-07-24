@@ -3,7 +3,7 @@
 _base=fortranformat
 pkgname=python-${_base}
 pkgdesc="Mimics Fortran textual IO in Python"
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 arch=(any)
 url="https://github.com/brendanarnold/py-${_base}"
@@ -11,11 +11,10 @@ license=(MIT)
 depends=(python)
 makedepends=(python-setuptools)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('9c6910dca41738c18988351554b199721efd0a461362fcb712a76a2be3ccba540afdd893ef70bee8f492639039f7fd0e7c35289db405a4a410d53be8f4388516')
+sha512sums=('8e9fbc7286b9641568bec1bfcc965f603989dab36e7b315bb20b3225a7b1cad673d2ab9cfd7832fae2e299dd64755d96a089d96097bf870851d156526ba728e3')
 
 build() {
   cd ${_base}-${pkgver}
-  export PYTHONHASHSEED=0
   python setup.py build
 }
 
