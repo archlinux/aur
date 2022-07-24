@@ -11,14 +11,24 @@ options=('!strip' '!buildflags' '!libtool' 'staticlibs')
 makedepends=('mingw-w64-gcc' 'nasm')
 license=('LGPL')
 source=("http://downloads.sourceforge.net/lame/lame-$pkgver.tar.gz"
+        "lame.pc.in"
         "mingw.patch"
         "0007-revert-posix-code.patch")
-md5sums=('83e260acbe4389b54fe08e0bdbf7cddb'
-         'df7981d86c7539eb26f91a2aa4b699f9'
-         '43349a9207e41fc8ff4debde6c4b9dad')
+sha256sums=('ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e'
+            '3ec0c7126cdd39288cdf4d49edbd16b770e88cd1a96cf82eb69418637047c52d'
+            '3b90a1ea486b245c7a6ddc7e3c4a6b217afdcfdf918a1857633a4e509e274296'
+            '1e7f61456b15ceea613de8fd982b3f892340b851393d4ca4aff44395ae237ae9')
+b2sums=('6954d30cfd3951ea07762ba5dd7ff27038b78455f423099a225ebf748abddf9970e444456ca5a6179bd381e2205b32293392cb757c203901674860710fe2c183'
+        '369c6aedb682613576429beb3790dcf1d00717a30f2ed8e7165b4a145bfb2e2787514089aed94b4bdfe4adc63f2b916926bb579102fbb6b3ae70c725b1a528db'
+        '2016a58f6ca3049ef93f603546e4cf07d6c55e17ea125c52085dc77299e2aa69d97f0110f4cf973d989d1634f37a569bc02e741e08f691f721b6a421328ec0be'
+        '679b392ce029ed3b2077c781131eddcfb112158a79f08ef00b1fc9bcc684a6bd0a6e98d7c7104abc0cf872027131fdb3fc72f9a9e20468a9fb1a8fd09a7969e2')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
+  for _arch in ${_architectures}; do
+   sed -e "s/VERSION/$pkgver/" -e "s/ARCH/${_arch}/" lame.pc.in > lame-${_arch}.pc
+  done
+
    cd ${srcdir}/lame-${pkgver}
 
    patch -Np1 -i "${srcdir}/mingw.patch"
@@ -30,12 +40,20 @@ build() {
     mkdir -p ${srcdir}/build-${_arch} && cd ${srcdir}/build-${_arch}
 
     unset LDFLAGS CPPFLAGS
-    
+
     LIBS="-lncursesw" CFLAGS="-msse" CPPFLAGS="-msse" $srcdir/lame-$pkgver/configure --prefix=/usr/${_arch} \
                 --host=${_arch} \
                 --enable-nasm \
+                --enable-mp3rtp \
                 --enable-shared
     make
+  done
+}
+
+check() {
+  for _arch in ${_architectures}; do
+      cd ${srcdir}/build-${_arch}
+      make test
   done
 }
 
@@ -49,6 +67,9 @@ package() {
     ${_arch}-strip -x -g ${pkgdir}/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g ${pkgdir}/usr/${_arch}/lib/*.a
     rm -r $pkgdir/usr/${_arch}/share
+
+    cd ${srcdir}
+    install -vDm 644 lame-${_arch}.pc -t "$pkgdir/usr/${_arch}/lib/pkgconfig/lame.pc"
   done
 }
 
