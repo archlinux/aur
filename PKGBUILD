@@ -4,31 +4,22 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname='ibus-mozc'
-pkgver=2.28.4770.102
+pkgver=2.28.4800.102
 pkgrel=1
 pkgdesc='Mozc module for IBus'
 arch=('x86_64')
 url='https://github.com/google/mozc'
 license=('Apache' 'BSD' 'LGPL' 'custom')
-depends=('ibus>=1.4.1' 'mozc>=2.28.4770.102')
+depends=('ibus>=1.4.1' 'mozc>=2.28.4800.102')
 makedepends=('bazel' 'git' 'python' 'qt5-base')
 options=(!distcc !ccache)
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=5e3542b98adb743553e672f34caee6d5d8021b85")
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=9dc923ab84f4f0369ba507848430c0bd42dbd01d")
 sha256sums=('SKIP')
 
 prepare() {
     cd ${pkgname}-git/src
 
     git submodule update --init --recursive
-
-    # Fix the Qt5 include path
-    sed -i -e 's/x86_64-linux-gnu\/qt5/qt/' config.bzl
-
-    # Fix the GLib include path
-    sed -i -e 's/x86_64-linux-gnu\/glib/glib/' BUILD.ibus.bazel
-
-    # Temp fix for the Android NDK error
-    sed -i -e 's/android_ndk_repository(name = "androidndk")/#android_ndk_repository(name = "androidndk")/' WORKSPACE.bazel
 }
 
 build() {
