@@ -25,7 +25,7 @@ pkgbase = archiso-encryption-git
 	provides = archiso-encryption
 	conflicts = archiso
 	conflicts = archiso-encryption
-	source = archiso::git+https://gitlab.archlinux.org/tallero/archiso#branch=crypto
+	source = archiso::git+https://gitlab.archlinux.org/tallero/archiso#branch=crypto-safeboot
 	sha256sums = SKIP
 
 pkgname = archiso-encryption-git
