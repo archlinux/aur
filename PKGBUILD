@@ -2,14 +2,14 @@
 
 pkgname=randomgtk-git
 _pkgname=random
-pkgver=r198.4f67b85
+pkgver=r363.2eecfb8
 pkgrel=1
 pkgdesc="A randomization app for GNOME"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://codeberg.org/foreverxml/random"
 license=('AGPL3')
-depends=('glib2' 'gtk4' 'libadwaita' 'gdk-pixbuf2')
-makedepends=('git' 'meson' 'vala')
+depends=('libadwaita-git>=1.2.alpha')
+makedepends=('git' 'meson' 'gobject-introspection' 'vala')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -29,6 +29,10 @@ build() {
   meson compile -C build
 }
 
+check() {
+  meson test -C build || :
+}
+
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
