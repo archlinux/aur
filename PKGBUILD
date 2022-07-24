@@ -2,7 +2,7 @@
 
 # shellcheck disable=SC2034
 _pkg=archiso
-_variant="persistent"
+_variant="encryption"
 _pkgname="${_pkg}-profiles"
 pkgname="${_pkgname}-git"
 pkgver=v0.2+22+g9877e40

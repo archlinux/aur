@@ -8,7 +8,7 @@ pkgbase = archiso-profiles-git
 	checkdepends = shellcheck
 	makedepends = git
 	makedepends = make
-	depends = archiso-persistent-git
+	depends = archiso-encryption-git
 	provides = archiso-profiles
 	conflicts = archiso-profiles
 	source = archiso-profiles::git+https://gitlab.archlinux.org/tallero/archiso-profiles#branch=main
