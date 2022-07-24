@@ -10,6 +10,10 @@ pkgbase = stt
 	makedepends = git
 	makedepends = sox
 	makedepends = wget
+	conflicts = python-stt-bin
+	conflicts = stt-bin
+	provides = stt
+	provides = python-stt
 	source = STT-1.3.0::git+https://github.com/coqui-ai/STT.git#tag=v1.3.0
 	sha256sums = SKIP
 

@@ -11,6 +11,7 @@ makedepends=('gcc' 'cmake' 'bazel' 'git' 'sox' 'wget' 'swig')
 depends=('python' 'sox')
 source=("${_pkgname}-${pkgver}::git+https://github.com/coqui-ai/STT.git#tag=main")
 sha256sums=('SKIP')
+provides=('stt' 'python-stt')
 conflicts=('python-stt-bin' 'stt-bin')
 
 prepare()
