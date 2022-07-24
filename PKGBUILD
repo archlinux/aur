@@ -1,8 +1,8 @@
 # Maintainer: librewish <librewish@gmail.com>
 
 pkgname=snapper-support
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='Support package for enabling Snapper with snap-pac and grub-btrfs support'
 arch=(any)
 url='https://gitlab.com/garuda-linux/packages/stable-pkgbuilds/snapper-support'
