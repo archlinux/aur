@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-binstall
-pkgver=0.10.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="Binary installation for Rust projects"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('xz' 'bzip2')
 makedepends=('cargo' 'cmake' 'clang')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('63c2244b609616f41314c89226d9301103145ce3b7ad195b91189cdf6f9045c9')
+sha256sums=('025f0f2e0b783f156f2b172d1682ecbf8714176cb5368bb081f632bc7c3e1649')
 
 prepare() {
   cd "$pkgname-$pkgver"
