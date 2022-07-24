@@ -2,7 +2,7 @@
 # Contributor: Leo <olorin12+gmail+com>
 
 pkgname=hypnotix
-pkgver=2.8
+pkgver=2.9
 pkgrel=1
 pkgdesc="An IPTV streaming application"
 arch=(any)
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=(dconf hicolor-icon-theme python-cairo python-gobject python-imdbpy python-requests python-setproctitle python-unidecode mpv xapp)
 optdepends=('yt-dlp: YouTube channel support')
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-b2sums=('85b85058b419b904203e070913f9adec00f92bda700869ea391cc77331f0203f38f0ff99bef63fdb389628a7607ec773b302467375d0f9109ffaed3ea6b32373')
+b2sums=('edf3f86a6d7b3536575bb02c566ba845cdd4bc4a0745a0c331f570c1f3ce734dafeca6306c70926e88323c6fc5fd28ea7de35229997ecdcd4bbb27c48bce851f')
 
 prepare() {
 	cd $pkgname-$pkgver
