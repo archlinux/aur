@@ -6,7 +6,7 @@ pkgdesc="Script used to install the .NET SDK and the shared runtime"
 arch=('x86_64' 'i686')
 url="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-install-script"
 license=('MIT')
-depends=('curl')
+depends=('curl' 'bash')
 source=('dotnet-install')
 md5sums=('5a995842b520f8d35a17ce8c58103c9f')
 
