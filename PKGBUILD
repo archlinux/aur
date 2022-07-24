@@ -1,4 +1,4 @@
-# Maintainer: Thomas Weber <weber_t+aur at mailbox dot org>
+# Maintainer: Thomas Weber <contact at turbowarp dot org>
 
 pkgname=turbowarp-desktop-bin
 pkgver=1.5.0
