@@ -1,6 +1,6 @@
 pkgbase = volatility3-git
 	pkgdesc = Advanced memory forensics framework
-	pkgver = v2.0.1.3241.48c1533e
+	pkgver = v2.0.1.3394.334f7a93
 	pkgrel = 1
 	url = https://github.com/volatilityfoundation/volatility3
 	arch = any
