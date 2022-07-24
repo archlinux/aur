@@ -7,7 +7,7 @@ pkgdesc="Coqui-STT for inference"
 arch=('x86_64' 'aarch64' 'armv7' 'amd64')
 url="https://github.com/coqui-ai/STT"
 license=('MPL2')
-makedepends=('gcc' 'cmake' 'bazel' 'git' 'sox' 'wget' 'swig')
+makedepends=('gcc10' 'cmake' 'bazel' 'git' 'sox' 'wget' 'swig')
 depends=('python' 'sox')
 source=("${_pkgname}-${pkgver}::git+https://github.com/coqui-ai/STT.git#tag=main")
 sha256sums=('SKIP')
@@ -37,8 +37,8 @@ build() {
   export TF_NEED_ROCM=0
   export TF_DOWNLOAD_CLANG=0
   export TF_NEED_CUDA=0
-  #export CC=/usr/bin/gcc-10
-  #export CXX=/usr/bin/g++-10
+  export CC=/usr/bin/gcc-10
+  export CXX=/usr/bin/g++-10
   export CC_OPT_FLAGS="-march=${arch}"
   #rm .bazelversion
   ./configure
