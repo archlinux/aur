@@ -13,7 +13,7 @@ makedepends=('python-build'
              'python-setuptools'
              'python-setuptools-scm'
              'python-wheel')
-source=("https://github.com/mdshw5/pyfaidx/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mdshw5/pyfaidx/archive/v$pkgver.tar.gz")
 sha1sums=('7b60727b1fbc318b01cb98e7375badce6230a393')
 
 build() {

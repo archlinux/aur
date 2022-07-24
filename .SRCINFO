@@ -11,7 +11,7 @@ pkgbase = python-pyfaidx
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python
-	source = https://github.com/mdshw5/pyfaidx/archive/v0.7.1.tar.gz
+	source = python-pyfaidx-0.7.1.tar.gz::https://github.com/mdshw5/pyfaidx/archive/v0.7.1.tar.gz
 	sha1sums = 7b60727b1fbc318b01cb98e7375badce6230a393
 
 pkgname = python-pyfaidx
