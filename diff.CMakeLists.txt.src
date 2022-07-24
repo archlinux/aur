@@ -1,5 +1,0 @@
---- src/CMakeLists.txt	2017-05-23 18:53:22.000000000 -0600
-+++ src/CMakeLists.txt	2017-05-23 14:04:53.415939903 -0600
-@@ -57 +57 @@
--install(TARGETS tqsllib DESTINATION lib${LIB_SUFFIX})
-+install(TARGETS tqsllib DESTINATION lib/trustedqsl)

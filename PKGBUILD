@@ -3,23 +3,23 @@
 pkgname=trustedqsl-git
 _pkgname=trustedqsl
 __pkgname=tqsl
-pkgver=2.3.1.r4.g640e7ac
+pkgver=2.6.5.rc2.r0.ge7d3796
+#.rc2.r0.ge7d3796
+#2.3.1.r4.g640e7ac
 #.r4.g640e7ac
 #.r0.ge165520
-pkgrel=2
+pkgrel=3
 pkgdesc="QSO log signing & upload - ARRL's Logbook of The World (LoTW) - GIT version"
 arch=('i686' 'x86_64')
 url="http://lotw.arrl.org/"
 license=('custom:ARRL')
-depends=('wxgtk2.8' 'curl' 'hamradio-menus')
-makedepends=('cmake')
+depends=('lmdb' 'wxgtk3' 'hamradio-menus')
+makedepends=('git' 'cmake' 'libxxf86vm')
 provides=('tqsllib' 'trustedqsl')
 conflicts=('trustedqsl' 'trustedqsl-devel')
 replaces=('tqsl')
-source=("$pkgname::git+http://git.code.sf.net/p/${_pkgname}/${__pkgname}"
-	diff.CMakeLists.txt.apps
-	diff.CMakeLists.txt.src
-	${_pkgname}.desktop)
+source=($pkgname::git+http://git.code.sf.net/p/$_pkgname/$__pkgname
+	$_pkgname.desktop)
 
 pkgver() {
 	cd "$srcdir/$pkgname"
@@ -30,13 +30,6 @@ pkgver() {
 	)
 }
 
-prepare() {
-	cd "$srcdir/$pkgname"
-
-	patch -p0 < ../diff.CMakeLists.txt.apps
-	patch -p0 < ../diff.CMakeLists.txt.src
-}
-
 build() {
 	cd "$srcdir/$pkgname"
 
@@ -44,8 +37,8 @@ build() {
 	cd build
 	cmake \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DwxWidgets_CONFIG_EXECUTABLE='/usr/bin/wx-config-2.8' \
-		-DwxWidgets_wxrc_EXECUTABLE='/usr/bin/wxrc-2.8' \
+		-DwxWidgets_CONFIG_EXECUTABLE='/usr/bin/wx-config' \
+		-DwxWidgets_wxrc_EXECUTABLE='/usr/bin/wxrc' \
 		../
 	make
 }
@@ -61,13 +54,9 @@ package() {
 	mkdir -p $pkgdir/usr/share/applications
 	install -D -m 644 ../../${_pkgname}.desktop $pkgdir/usr/share/applications
 
-	rm -rf $pkgdir/usr/include
+	rm -rf $pkgdir/usr/include $pkgdir/man5
 }
 md5sums=('SKIP'
-         'bbdec5f6ae2d23bb2c74c84df07d2c70'
-         '26adbe13930454571bf44eabd825e1bc'
-         '860b305f9cf6db8cc1c14dc88cef34fc')
+         '6dd4296f5fda2d77922c9cbe4a120d3b')
 sha256sums=('SKIP'
-            '84eb4f182e90d6996d687952e82c47c2cc7c8fcd95a4290ef7b8c77b4d7b6e4e'
-            '733ef5dfa14a8ab480f43856ce184c2730129f48a35b0ef110a6dc06378bfd0e'
-            'cb638467e305f6f9426a22841dbbb4d656a30f48e4c1c27e87dd82890794c167')
+            '68129b7f7ddbb75be52f1b9164d43c6d9805c5877423546b50397c2d920c79e9')
