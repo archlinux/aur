@@ -1,0 +1,7 @@
+post_install() {
+    mkdir -m 777 /opt/unreal-engine/.vscode
+}
+
+pre_remove() {
+    rm -rf /opt/unreal-engine/.vscode
+}

@@ -1,8 +1,9 @@
 pkgbase = unreal-engine-bin
 	pkgdesc = The world's most open and advanced real-time 3D creation tool
 	pkgver = 5.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.unrealengine.com/
+	install = unreal-engine-bin.install
 	arch = x86_64
 	license = custom
 	depends = alsa-lib
@@ -17,11 +18,15 @@ pkgbase = unreal-engine-bin
 	depends = ncurses5-compat-libs
 	depends = nss
 	depends = pango
+	depends = vulkan-driver
 	optdepends = android-ndk: Android build support
+	optdepends = clion: CLion IDE support
+	optdepends = code: Visual Studio Code IDE support
 	provides = unreal-engine=5.0
 	conflicts = unreal-engine
 	conflicts = unreal-engine-4
 	conflicts = unreal-engine-git
+	options = staticlibs
 	options = !strip
 	source = manual://Linux_Unreal_Engine_5.0.3.zip
 	source = unreal-engine.desktop
