@@ -1,7 +1,7 @@
 # Maintainer: Mike Zorn (mike-zorn) <apechimp@icloud.com>
 
 pkgname=purple-hue
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=0
 pkgdesc="Change a hue light's color based on air quality data from purple air."
 provides=('purple-hue')
@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://github.com/mike-zorn/purple-hue"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mike-zorn/purple-hue/archive/$pkgver.tar.gz")
 license=('GPL')
-sha512sums=('f0805c6b69eb2c9112b475545807eded09acc5eb87ea867980776dd2b56cd822349d242cbcfb5d9979f2b781fd329f542db4760ba50f2dc0a82ffc00734efb74')
+sha512sums=('eb0f22da441ca6c783d79c354b24f5cd580cc665732daaead2a3497dece27b07769229ba7092a1d910b5912fb274d561da95ad94cedac8247cf55415fc1b8d49')
 
 build() {
     cd $pkgname-$pkgver
