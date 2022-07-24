@@ -2,7 +2,7 @@
 
 pkgname=tidy-viewer
 _pkgname=tv
-pkgver=1.4.6
+pkgver=1.4.7
 pkgrel=1
 pkgdesc="CLI csv pretty printer that uses column styling"
 arch=('x86_64' 'aarch64')
@@ -29,3 +29,4 @@ package() {
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
   install -Dm644 "$srcdir/$_pkgname-$pkgver/UNLICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+sha256sums=('25fa361e41d81d38214c2252d0ccc902e5c4c76770c1863c725844154ddb4c71')
