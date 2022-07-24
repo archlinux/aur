@@ -5,9 +5,8 @@ pkgdesc="一款命令行式哔哩哔哩下载器. Bilibili Downloader."
 arch=("x86_64" "aarch64")
 url="https://github.com/nilaoda/BBDown"
 license=("MIT")
-depends=("zlib" "gcc-libs")
+depends=("zlib" "gcc-libs" "ffmpeg")
 makedepends=("git" "dotnet-sdk>=7")
-optdepends=("ffmpeg: 混流用")
 provides=("bbdown")
 conflicts=("bbdown")
 source=('git+https://github.com/nilaoda/BBDown.git')

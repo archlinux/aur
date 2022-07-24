@@ -10,7 +10,7 @@ pkgbase = bbdown-git
 	makedepends = dotnet-sdk>=7
 	depends = zlib
 	depends = gcc-libs
-	optdepends = ffmpeg: 混流用
+	depends = ffmpeg
 	provides = bbdown
 	conflicts = bbdown
 	source = git+https://github.com/nilaoda/BBDown.git
