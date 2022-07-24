@@ -1,14 +1,14 @@
-# Maintainer: Johannes Frohnmeyer <aur at akbvopenfl1 dot hopto dot org>
+# Maintainer: Johannes Frohnmeyer <johannes at frohnmeyer-wds dot de>
 
 pkgname=inceptum-git
-pkgver=0.1.0.r20.g2a8efdb
+pkgver=0.1.0.r48.g5e729ef
 pkgrel=1
 pkgdesc="An advanced minecraft launcher written in java"
 arch=("x86_64")
 url="https://gitlab.com/jfmods/inceptum"
 license=("GPL3")
-depends=("java-runtime>=17" 'bash')
-makedepends=('git' 'java-environment=17' 'gradle')
+depends=("java-runtime>=18" 'bash')
+makedepends=('git' 'java-environment=18' 'gradle')
 source=(git+"${url}".git
         "${pkgname%-git}.desktop"
         "${pkgname%-git}.sh"
@@ -29,7 +29,7 @@ pkgver() {
 build() {
     cd "${pkgname%-git}"
     gradle build -Prelease
-    mv "build/libs/Inceptum-$(git describe --tags --abbrev=0)-custom.jar" "../${pkgname%-git}.jar"
+    mv "launcher/build/libs/Inceptum-$(git describe --tags --abbrev=0)-custom.jar" "../${pkgname%-git}.jar"
 }
 
 package() {
