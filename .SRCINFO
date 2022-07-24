@@ -1,13 +1,17 @@
 pkgbase = odilia
-	pkgdesc = Odilia Screenreader -- Make Linux Accessible!
-	pkgver = 0.2b
+	pkgdesc = Building a better screen reader for the Linux desktop, one step at a time.
+	pkgver = 0.3a
 	pkgrel = 1
 	url = https://odilia.app/
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	depends = clang
-	depends = rustup
+	depends = libspeechd
+	depends = speech-dispatcher
+	depends = cargo
+	depends = at-spi2-core
+	depends = at-spi2-atk
 	provides = odilia
 
 pkgname = odilia
