@@ -1,6 +1,6 @@
 pkgbase = geeqie-git
 	pkgdesc = Lightweight image viewer
-	pkgver = 20220719
+	pkgver = 20220721
 	pkgrel = 1
 	url = http://www.geeqie.org/
 	arch = x86_64

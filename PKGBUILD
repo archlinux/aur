@@ -2,7 +2,7 @@
 # Contributer: Steven Honeyman <stevenhoneyman at gmail com>
 
 pkgname=geeqie-git
-pkgver=20220719
+pkgver=20220721
 pkgrel=1
 pkgdesc='Lightweight image viewer'
 arch=('x86_64')
@@ -35,7 +35,6 @@ build() {
     cd "${srcdir}/geeqie"
 
     arch-meson \
-        -Dlirc=disabled \
         -Dlua=disabled \
         build
     meson compile -C build
