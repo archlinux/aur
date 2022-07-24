@@ -1,16 +1,14 @@
 pkgbase = fsharp
 	pkgdesc = The F# Compiler, Core Library & Tools (F# Software Foundation Repository)
 	pkgver = 10.2.3
-	pkgrel = 3
-	url = http://fsharp.org/
+	pkgrel = 4
+	url = https://fsharp.org
 	arch = any
-	license = MIT
-	depends = mono
-	depends = msbuild
-	conflicts = fsharp-git
-	conflicts = fsharp-mono-bin
+	license = Apache
+	makedepends = mono-msbuild
+	depends = mono>=4.0
+	options = !strip
 	source = fsharp-10.2.3.tar.gz::https://github.com/fsharp/fsharp/archive/10.2.3.tar.gz
 	sha256sums = 527e4bad7a6d71668e905608c82db7c6eda44d9fd2ed9ce3c758e291e024cc4d
 
 pkgname = fsharp
-
