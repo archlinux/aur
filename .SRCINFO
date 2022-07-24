@@ -13,7 +13,6 @@ pkgbase = superslicer-git
 	makedepends = libigl
 	makedepends = openvdb
 	makedepends = samurai
-	makedepends = wxgtk2-dev-314-opt
 	depends = boost-libs>=1.73.0
 	depends = cgal
 	depends = glew
@@ -22,7 +21,8 @@ pkgbase = superslicer-git
 	depends = nlopt
 	depends = openvdb
 	depends = qhull>=2020.2-4
-	depends = wxgtk3-dev-314-opt
+	depends = slicer-udev
+	depends = wxwidgets-gtk3
 	optdepends = superslicer-profiles: Predefined printer profiles
 	provides = superslicer=1:2.3.57.11.r1.gd49bafc8a
 	conflicts = superslicer
@@ -30,11 +30,9 @@ pkgbase = superslicer-git
 	replaces = slic3r++
 	options = !emptydirs
 	source = SuperSlicer::git+https://github.com/supermerill/SuperSlicer.git
-	source = 0001-wxgtk3-is-broken-on-wayland.patch
 	source = 0002-fix-cereal.patch
 	source = 0003-openexr3.patch
 	sha512sums = SKIP
-	sha512sums = acf35ebe467e9fb30f1b77d15348f1a7b82dcf45a5b829e375e972b5d6b49968603b3fa090c4d1f56e8b5148e2b820e79afa269da60ace70de1ceadcf6e820c5
 	sha512sums = 182205e77a77c36b1bdb1b449bd6eb3b593cfb6f97527f1cd7dd90c09db5698e570942303b29007d1285742b3bdf5b3e01dab59bf56fc890e3942f65bccd46b4
 	sha512sums = a83cad3b8c64012c929a8d10a8946c621a74dde139a1ed4f667b65121a48e3fb4aaa26d6444513ec739d7e4864bfef1aeba67802b495ace8e5aafa6e822eebd6
 

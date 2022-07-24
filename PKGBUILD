@@ -10,17 +10,15 @@ url="https://github.com/supermerill/SuperSlicer"
 license=('AGPL3')
 options=(!emptydirs)
 replaces=('slic3r++')
-depends=('boost-libs>=1.73.0' 'cgal' 'glew' 'imath' 'libspnav' 'nlopt' 'openvdb' 'qhull>=2020.2-4' 'wxgtk3-dev-314-opt')
-makedepends=('boost>=1.73.0' 'cereal>=1.3.0' 'cmake' 'eigen' 'libigl' 'openvdb' 'samurai' 'wxgtk2-dev-314-opt') # cmake doesn't detect wx if not both gtk2 and gtk3 are installed
+depends=('boost-libs>=1.73.0' 'cgal' 'glew' 'imath' 'libspnav' 'nlopt' 'openvdb' 'qhull>=2020.2-4' 'slicer-udev' 'wxwidgets-gtk3')
+makedepends=('boost>=1.73.0' 'cereal>=1.3.0' 'cmake' 'eigen' 'libigl' 'openvdb' 'samurai') # cmake doesn't detect wx if not both gtk2 and gtk3 are installed
 optdepends=('superslicer-profiles: Predefined printer profiles')
 provides=("superslicer=$epoch:$pkgver")
 conflicts=('superslicer' 'superslicer-prerelease')
 source=("SuperSlicer::git+https://github.com/supermerill/SuperSlicer.git"
-        "0001-wxgtk3-is-broken-on-wayland.patch"
         "0002-fix-cereal.patch"
         "0003-openexr3.patch")
 sha512sums=('SKIP'
-            'acf35ebe467e9fb30f1b77d15348f1a7b82dcf45a5b829e375e972b5d6b49968603b3fa090c4d1f56e8b5148e2b820e79afa269da60ace70de1ceadcf6e820c5'
             '182205e77a77c36b1bdb1b449bd6eb3b593cfb6f97527f1cd7dd90c09db5698e570942303b29007d1285742b3bdf5b3e01dab59bf56fc890e3942f65bccd46b4'
             'a83cad3b8c64012c929a8d10a8946c621a74dde139a1ed4f667b65121a48e3fb4aaa26d6444513ec739d7e4864bfef1aeba67802b495ace8e5aafa6e822eebd6')
 
@@ -40,7 +38,6 @@ prepare()
 	sed -i 's,add_subdirectory(test),,g' src/CMakeLists.txt
 
 	# apply patches
-	patch -Np1 -i "$srcdir/0001-wxgtk3-is-broken-on-wayland.patch"
 	patch -Np1 -i "$srcdir/0002-fix-cereal.patch"
 	patch -Np1 -i "$srcdir/0003-openexr3.patch"
 }
@@ -73,4 +70,5 @@ package()
 
 	DESTDIR="$pkgdir" samu install
 	test ! -h "$pkgdir/usr/share/SuperSlicer/resources" || rm "$pkgdir/usr/share/SuperSlicer/resources"
+	rm -r "${pkgdir}"/usr/lib/udev # Provided by slicer-udev
 }
