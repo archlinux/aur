@@ -5,7 +5,7 @@
 
 _name=PyPDF2
 pkgname=python-pypdf2
-pkgver=2.7.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc='A pure-python PDF library for splitting, merging, cropping, and transforming pages of PDF files'
 arch=(any)
@@ -14,7 +14,7 @@ license=(BSD)
 depends=(python)
 makedepends=(python-setuptools)
 source=($pkgname-$pkgver.tar.gz::"https://github.com/py-pdf/$_name/archive/$pkgver.tar.gz")
-sha256sums=('8a4e8d0cd382ecaec03db01b02bb83b6d1ccc929ce6db7bf7e540951975e1307')
+sha256sums=('db332d461cbeb8cf74f419f49c1743a78b65950509bc3971d7da784b4865683b')
 
 build() {
   cd $_name-$pkgver
