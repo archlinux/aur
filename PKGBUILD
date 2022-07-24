@@ -3,10 +3,11 @@
 
 pkgname=python-bitcointx
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy interface to the bitcoin transaction data structures"
 arch=('any')
-depends=()
+depends=('libsecp256k1')
+optdepends=('libbitcoin-consensus' 'openssl')
 makedepends=('python-setuptools')
 url="https://github.com/petertodd/python-bitcoinlib"
 license=('LGPL3')
