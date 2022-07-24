@@ -23,7 +23,7 @@ pkgver() {
 build() {
   cd "$srcdir/ftxui"
   mkdir -p build && cd build
-  cmake \
+  CXXFLAGS="$CFLAGS" cmake \
     -DFTXUI_ENABLE_INSTALL=ON \
     -DFTXUI_BUILD_EXAMPLES=OFF \
     -DFTXUI_BUILD_TESTS=OFF \
