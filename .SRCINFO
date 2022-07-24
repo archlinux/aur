@@ -1,0 +1,17 @@
+pkgbase = python-asyncprawcore
+	pkgdesc = Low-level asynchronous communication layer for Async PRAW
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/praw-dev/asyncprawcore
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	options = !emptydirs
+	source = https://github.com/praw-dev/asyncprawcore/archive/refs/tags/v2.3.0.tar.gz
+	sha256sums = f3103442eb566f207a577718a72b8054f216ca4970df88ebc8e4fdebb55f91cd
+
+pkgname = python-asyncprawcore
