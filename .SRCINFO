@@ -1,0 +1,19 @@
+pkgbase = broadmix-bin
+	pkgdesc = Online collaborative whiteboard software.
+	pkgver = 1.13.0
+	pkgrel = 1
+	url = https://boardmix.cn/
+	arch = x86_64
+	license = custom:boardmix
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = libsecret
+	depends = libappindicator-gtk3
+	source = https://home-store-packages.uniontech.com/appstore/pool/appstore/c/cn.bosyun.boardmix/cn.bosyun.boardmix_1.13.0_amd64.deb
+	sha256sums = e318e1400e65b50cf2c4daffad39d072f730dcfb1c7cf1545cde929347c9372e
+
+pkgname = broadmix-bin
