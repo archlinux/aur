@@ -11,7 +11,6 @@ pkgbase = sdl-jstest
 	makedepends = cmake
 	makedepends = docbook2x
 	depends = ncurses
-	provides = sdl2-jstest
 	source = git+https://gitlab.com/sdl-jstest/sdl-jstest.git#commit=95784a322faf66f7af79bc883508c8d827ed77b2
 	source = git+https://github.com/grumbel/tinycmmc.git
 	source = git+https://github.com/gabomdq/SDL_GameControllerDB.git

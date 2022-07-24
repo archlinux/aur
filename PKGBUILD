@@ -11,7 +11,6 @@ arch=('x86_64')
 license=('GPLv3')
 depends=('ncurses')
 makedepends=('sdl' 'sdl2' 'git' 'cmake' 'docbook2x')
-provides=('sdl2-jstest')
 
 source=(git+https://gitlab.com/sdl-jstest/sdl-jstest.git#commit=${_commit}
         git+https://github.com/grumbel/tinycmmc.git
