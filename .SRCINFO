@@ -1,7 +1,7 @@
 pkgbase = dune-mmesh
 	pkgdesc = MMesh is a grid implementation based on CGAL triangulations
 	pkgver = 1.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dune-project.org/modules/dune-mmesh
 	arch = x86_64
 	license = GPL3
@@ -19,6 +19,7 @@ pkgbase = dune-mmesh
 
 pkgname = dune-mmesh
 	depends = dune-grid>=2.8.0
+	depends = cgal
 
 pkgname = python-dune-mmesh
 	pkgdesc = MMesh is a grid implementation based on CGAL triangulations (python bindings)

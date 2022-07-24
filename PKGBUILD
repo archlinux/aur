@@ -2,7 +2,7 @@
 pkgbase=dune-mmesh
 pkgname=(${pkgbase} python-${pkgbase})
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="MMesh is a grid implementation based on CGAL triangulations"
 arch=('x86_64')
 url="https://dune-project.org/modules/${pkgbase}"
@@ -43,7 +43,7 @@ build() {
 }
 
 package_dune-mmesh() {
-  depends=("dune-grid>=${_dunever}")
+  depends=("dune-grid>=${_dunever}" "cgal")
   DESTDIR="${pkgdir}" cmake --build build-cmake --target install
   install -m644 -D ${pkgbase}-${pkgver}/LICENSE.md "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
   find "${pkgdir}" -type d -empty -delete
