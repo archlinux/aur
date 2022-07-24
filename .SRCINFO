@@ -1,6 +1,6 @@
 pkgbase = clash-for-windows-bin-git
 	pkgdesc = A Windows/macOS/Linux GUI based on Clash and Electron.
-	pkgver = 0.19.23
+	pkgver = 0.19.25
 	pkgrel = 1
 	url = https://github.com/Fndroid/clash_for_windows_pkg
 	install = clash-for-windows-bin.install
@@ -19,9 +19,9 @@ pkgbase = clash-for-windows-bin-git
 	sha512sums = d739dbdd622e873e58155c40be9ef78f5a2247115d0fdc480be2beaac41c59b7eca963fbc2e09cfec49dd0d491ac2a92dcf5a157c95ef1448694f47e0e752c14
 	sha512sums = e3716794ffeaff3bcecd3fb12fe6c882c7186866b494f006042f41aaba6e4afc405066cdec66bd2c66402141c74bc900425b2de17e1002f017f69662f08c0e3e
 	sha512sums = 14f67ad3718e97350b12280dada01a2f965cc2e9e5ccd72e2295e5f2f3f3fa04f2c5ed0f435054de6155937c17049064227cd39107bad3e11a126ce5a3e0fcf7
-	source_x86_64 = clash-for-windows-bin-git-0.19.23-x86_64-linux.tar.gz::https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.19.23/Clash.for.Windows-0.19.23-x64-linux.tar.gz
+	source_x86_64 = clash-for-windows-bin-git-0.19.25-x86_64-linux.tar.gz::https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.19.25/Clash.for.Windows-0.19.25-x64-linux.tar.gz
 	sha512sums_x86_64 = SKIP
-	source_aarch64 = clash-for-windows-bin-git-0.19.23-aarch64-linux.tar.gz::https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.19.23/Clash.for.Windows-0.19.23-arm64-linux.tar.gz
+	source_aarch64 = clash-for-windows-bin-git-0.19.25-aarch64-linux.tar.gz::https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.19.25/Clash.for.Windows-0.19.25-arm64-linux.tar.gz
 	sha512sums_aarch64 = SKIP
 
 pkgname = clash-for-windows-bin-git
