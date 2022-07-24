@@ -1,4 +1,5 @@
-# Maintainer: Joseph R. Quinn <quinn period joseph r at protonmail dot com>
+# Maintainer: Matthias Mailänder <matthias at mailaender dot name>
+# Contributor: Joseph R. Quinn <quinn period joseph r at protonmail dot com>
 # Contributor: Brett Gilio <owner@brettgilio.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Mort Yao <soi@mort.ninja>
@@ -6,13 +7,14 @@
 
 pkgname=fsharp
 pkgver=10.2.3
-pkgrel=3
+pkgrel=4
 pkgdesc="The F# Compiler, Core Library & Tools (F# Software Foundation Repository)"
 arch=('any')
-url="http://fsharp.org/"
-license=('MIT')
-depends=('mono' 'msbuild')
-conflicts=('fsharp-git' 'fsharp-mono-bin')
+url="https://fsharp.org"
+license=('Apache')
+depends=('mono>=4.0')
+makedepends=('mono-msbuild')
+options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fsharp/fsharp/archive/$pkgver.tar.gz")
 sha256sums=('527e4bad7a6d71668e905608c82db7c6eda44d9fd2ed9ce3c758e291e024cc4d')
 
