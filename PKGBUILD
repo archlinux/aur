@@ -2,7 +2,7 @@
 
 pkgname=csvq-bin
 _pkgname=csvq
-pkgver=1.17.7
+pkgver=1.17.8
 pkgrel=1
 pkgdesc='SQL-like query language for csv'
 url='https://mithrandie.github.io/csvq/'
