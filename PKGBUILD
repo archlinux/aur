@@ -10,17 +10,19 @@ url="https://github.com/supermerill/SuperSlicer"
 license=('AGPL3')
 options=(!emptydirs)
 replaces=('slic3r++')
-depends=('boost-libs>=1.73.0' 'cgal' 'glew' 'imath' 'libspnav' 'nlopt' 'openvdb' 'qhull>=2020.2-4' 'slicer-udev' 'wxwidgets-gtk3')
-makedepends=('boost>=1.73.0' 'cereal>=1.3.0' 'cmake' 'eigen' 'libigl' 'openvdb' 'samurai') # cmake doesn't detect wx if not both gtk2 and gtk3 are installed
+depends=('boost-libs>=1.79.0' 'cgal' 'glew' 'imath' 'libspnav' 'nlopt' 'openvdb' 'qhull>=2020.2-4' 'slicer-udev' 'wxwidgets-gtk3')
+makedepends=('boost>=1.79.0' 'cereal>=1.3.0' 'cmake' 'eigen' 'libigl' 'openvdb' 'samurai')
 optdepends=('superslicer-profiles: Predefined printer profiles')
 provides=("superslicer=$epoch:$pkgver")
 conflicts=('superslicer' 'superslicer-prerelease')
 source=("SuperSlicer::git+https://github.com/supermerill/SuperSlicer.git"
-        "0002-fix-cereal.patch"
-        "0003-openexr3.patch")
+        "0002-fix-cereal.patch::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/superslicer/trunk/superslicer-cereal.patch"
+        "0003-openexr3.patch::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/superslicer/trunk/superslicer-openexr3.patch",
+        '0004-boost1.79.patch::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/superslicer/trunk/superslicer-boost1.79.patch')
 sha512sums=('SKIP'
-            '182205e77a77c36b1bdb1b449bd6eb3b593cfb6f97527f1cd7dd90c09db5698e570942303b29007d1285742b3bdf5b3e01dab59bf56fc890e3942f65bccd46b4'
-            'a83cad3b8c64012c929a8d10a8946c621a74dde139a1ed4f667b65121a48e3fb4aaa26d6444513ec739d7e4864bfef1aeba67802b495ace8e5aafa6e822eebd6')
+            'c3ba2d16140d445168681ff442bda12e87de22f8b94d59c32576bd7079ffe5864cce8e62cddd1ed47458f9eddcbd3e1a02645b0645aad6f2e0cb08a876bf783f'
+            '840e51b8feb3568ff46d309ece063f7188018fcaa43d19ec50ede408fdf2c237a3b7eaa11ba24409d8c3f7d6f5fb270181508cc56e0b2b0fef68b766130ef1eb'
+            'fc18e8edf516f9479c3b0e201d1c74b42289f15ef8a64ff3a88c2bb14613978a9dcf7be50ff8b79faf054c7721a095a70715b0fb0747be48757f9502ba0eb859')
 
 pkgver()
 {
@@ -40,6 +42,7 @@ prepare()
 	# apply patches
 	patch -Np1 -i "$srcdir/0002-fix-cereal.patch"
 	patch -Np1 -i "$srcdir/0003-openexr3.patch"
+	patch -Np1 -i "$srcdir/0004-boost1.79.patch"
 }
 
 build()
