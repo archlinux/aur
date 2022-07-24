@@ -2,47 +2,36 @@
 # Contributor: Morteza NourelahiAlamdari <m@0t1.me>
 
 pkgname=wait4x
-pkgver=2.4.0
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="Wait4X allows you to wait for a port or a service to enter the requested state"
 arch=('x86_64' 'x86' 'aarch64' 'armhf' 'ppc64le' 's390x' 'armv7')
-url="https://github.com/atkrad/wait4x"
+url="https://wait4x.dev"
 license=('Apache')
 depends=('glibc')
-makedepends=('go' 'git')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/atkrad/wait4x/archive/v${pkgver}.tar.gz")
-sha256sums=('de8f209251a5d081eb193ec8110c30e3a8e298fb1ee4be838df70034e2e30006')
+makedepends=('go')
+source=("wait4x-${pkgver}.tar.gz::https://github.com/atkrad/wait4x/archive/v${pkgver}.tar.gz")
+sha256sums=('e908bd9444a0a1bb8bf2785574a8a98108f40b91370a29309ac838be139e5ed4')
 
 build() {
-	local _commit
-	local _commit_datetime
-	_commit="$(bsdcat "$pkgname-$pkgver.tar.gz" | git get-tar-commit-id)"
-	_commit_datetime="$(TZ=UTC date -d @$(stat -c '%Y' $pkgname-$pkgver) '+%FT%TZ')"
+	cd "wait4x-$pkgver"
 
-	cd "$pkgname-$pkgver"
+	WAIT4X_BUILD_OUTPUT=./ WAIT4X_COMMIT_REF_SLUG="v$pkgver" make build
 
-	export CGO_ENABLED=1
- 	export CGO_CFLAGS="$CFLAGS"
- 	export CGO_CPPFLAGS="$CPPFLAGS"
- 	export CGO_CXXFLAGS="$CXXFLAGS"
- 	export CGO_LDFLAGS="$LDFLAGS"
- 	export GOFLAGS='-buildmode=pie -mod=readonly -modcacherw -trimpath'
-	go build -v -ldflags "-linkmode=external -X github.com/atkrad/wait4x/internal/app/wait4x/cmd.AppVersion=$pkgver -X github.com/atkrad/wait4x/internal/app/wait4x/cmd.GitCommit=${_commit:0:8} -X github.com/atkrad/wait4x/internal/app/wait4x/cmd.BuildTime=$_commit_datetime" -o "$pkgname" cmd/wait4x/main.go
-
-	./"$pkgname" version
-	./"$pkgname" completion bash > "$pkgname.bash"
-	./"$pkgname" completion zsh > "$pkgname.zsh"
-	./"$pkgname" completion fish > "$pkgname.fish"
+	./wait4x version
+	./wait4x completion bash > wait4x.bash
+	./wait4x completion zsh > wait4x.zsh
+	./wait4x completion fish > wait4x.fish
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "wait4x-$pkgver"
 
-	install -Dm 755 "$pkgname" -t "$pkgdir/usr/bin"
+	install -Dm 755 "wait4x" -t "$pkgdir/usr/bin"
 
-	install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/wait4x/LICENSE"
 
-	install -Dm644 "$pkgname.bash" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-	install -Dm644 "$pkgname.zsh" "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
-	install -Dm644 "$pkgname.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
+	install -Dm644 wait4x.bash "$pkgdir/usr/share/bash-completion/completions/wait4x"
+	install -Dm644 wait4x.zsh "$pkgdir/usr/share/zsh/site-functions/_wait4x"
+	install -Dm644 wait4x.fish "$pkgdir/usr/share/fish/vendor_completions.d/wait4x.fish"
 }
