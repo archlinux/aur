@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 pkgname=rapidfuzz-cpp
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Rapid fuzzy string matching in C++ using the Levenshtein Distance"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/maxbachmann/rapidfuzz-cpp"
 license=(MIT)
 makedepends=(cmake)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('14bcafba864e78662dd5f84e38412ebf589f12f45d3dd80fb5f5247b4f0f9b00')
+sha256sums=('64eb3534e7f0c785b53ca1f784b95bc0638c9c2b9cb074e4b01840c866404b4d')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" \
