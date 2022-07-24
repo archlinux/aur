@@ -2,7 +2,7 @@
 # Contributor: Matthew Murray <matt@compti.me>
 
 pkgname=mautrix-whatsapp
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A Matrix-WhatsApp puppeting bridge"
 arch=('any')
@@ -19,7 +19,7 @@ source=("${url}/archive/v${pkgver}.tar.gz"
         mautrix-whatsapp.service
         log-path.diff)
 backup=("etc/${pkgname}/mautrix-whatsapp.yaml")
-sha256sums=('67861a0cadc6fc414b82fa2615edd9a6baea5822a63cee3afd41d2bb56981db5'
+sha256sums=('87a27891b6407eaa5a29c7f51ef992c6cf3bc803919806fad02ed50e3818754c'
             '409e8fb3e35de1bd1ceebefa0ac275ad62ec66680117648058bcc177ddd2f9a1'
             '38c236650de46cf60a550afff79635f777335812531a67f4094a73186295f53c'
             'c353ac242c501063c7c45169e1e65e7a75fe7d681f73409e76682e7537466965'
