@@ -4,7 +4,7 @@
 pkgname=bilibili-bin
 _pkgname=bilibili
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Bilibili desktop client'
 license=('custom')
 depends=('ffmpeg' 'electron17' 'libappindicator-gtk3')
@@ -30,7 +30,7 @@ sha256sums=('1e5e10650d72af03fa646c6e52dcc05f9f733e7b47b965caea741bc44442b67c'
             'cd7961420bae8fb54b8523bb8b3190ce1cfb584b73f391bad52ca7a354b1b76f'
             '33cba5d0271d5783f353e60dacc01d2edc6629ca760d35427189e316a48f911f'
             'ce35cd6352cdeb248407093eec542dffe4a9a8bb9cab658cee9620752bb34895'
-            '620bcfbfe4922b7836c94e4496b4b818abf2ce0a17b2bc5c07770dac1f53e32b'
+            '690033fa2d662004bacbff00e1c458bdad2b688fd6fdb17eed69a847f2a660ac'
             '76fd49617a113799140f1d386f692e6632d84cb7729bf0a482c2ba6b0a379460'
             '7f80ebcb11d2e82db19cfaa88e4f4649cfa520c191248bbc60d6465e94ecce5b'
             '8a1db419e35988b46e76adda6a69d609b1a88bb302202cf8e5f02a2afe2bf189'
