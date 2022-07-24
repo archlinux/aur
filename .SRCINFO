@@ -1,5 +1,5 @@
 pkgbase = bpir64-mkimage
-	pkgdesc = An acoustic spectrum analyser (compiled against wxGtk3 and ffmpeg4.4)
+	pkgdesc = Mkimage tool modified to stretch the image leaving empty space on sectors 2 through 34, so a GPT table can be used without problems.
 	pkgver = 2021.10
 	pkgrel = 1
 	url = http://spek.cc/
