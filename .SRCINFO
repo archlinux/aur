@@ -1,6 +1,6 @@
 pkgbase = ytcc
 	pkgdesc = Command line tool to keep track of playlists
-	pkgver = 2.5.5
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://github.com/woefe/ytcc
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = ytcc
 	optdepends = mpv
 	optdepends = fzf
 	optdepends = youtube-dl
-	source = https://github.com/woefe/ytcc/archive/v2.5.5.tar.gz
-	sha256sums = ba40993cbebde32c0942cb8c4eff0864a43974ed6f5b84cf2271b124d08cddb1
+	source = https://github.com/woefe/ytcc/archive/v2.6.0.tar.gz
+	sha256sums = 3d69104a20b9a6861a2663a0ffcbd6054fe05a62caccf2126c0b0cf3a446dbec
 
 pkgname = ytcc
