@@ -1,6 +1,6 @@
-#Maintainer: NiNjA <heinep at gmail dot com>
-#Maintainer: float <flo.at at gmx dot de>
-#Contributor: Matthias Mailänder <matthias at mailaender dot name>
+#Maintainer: Matthias Mailänder <matthias at mailaender dot name>
+#Contributor NiNjA <heinep at gmail dot com>
+#Contributor float <flo.at at gmx dot de>
 
 pkgname=s25rttr
 pkgver=0.9.5
