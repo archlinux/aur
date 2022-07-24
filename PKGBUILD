@@ -1,7 +1,7 @@
 # Maintainer: GG weebcyberpunk@gmail.com
 pkgname=batterymon-git
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple battery monitor"
 arch=('any')
 url="https://www.github.com/weebcyberpunk/batterymon"
@@ -18,6 +18,6 @@ build() {
 
 package() {
     cd "batterymon"
-    install -Dm755 petit $pkgdir/usr/bin/batterymon
-    install -Dm644 petit.1 $pkgdir/usr/share/man/man1/batterymon.1
+    install -Dm755 batterymon $pkgdir/usr/bin/batterymon
+    install -Dm644 batterymon.1 $pkgdir/usr/share/man/man1/batterymon.1
 }
