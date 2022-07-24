@@ -1,11 +1,15 @@
 pkgbase = wch-isp
 	pkgdesc = Firmware programmer for WCH microcontrollers over USB
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jmaselbas/wch-isp
+	arch = i686
 	arch = x86_64
 	license = GPL2
-	depends = libusb
+	makedepends = make
+	depends = libusb>=1.0
+	depends = pkg-config
+	provides = wch-isp
 	source = http://pub.zdiv.net/dist/wch-isp-0.1.tar.gz
 	sha256sums = 993968bf3fc45f72cf92e44f6a2333b8c6ceee3ddda7610a5c6d28abccea1911
 
