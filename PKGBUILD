@@ -1,7 +1,7 @@
 # Maintainer: Lloyd Henning <lloyd.w.henning@gmail.com>
 pkgname=ob-xd
-pkgver=2.8
-_vershort=28
+pkgver=2.9
+_vershort=29
 pkgrel=1
 pkgdesc="Virtual Analog Synthesizer VST based on the Oberheim OB-X"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=('alsa-lib' 'freetype2' 'libcurl-gnutls')
 provides=('OB-Xd')
 source=("https://github.com/reales/OB-Xd/releases/download/v${pkgver}/Obxd${_vershort}Linux.zip")
 noextract=("Obxd${_vershort}Linux.zip")
-md5sums=("2ebbcf4115691900f1b8ad7ee2937560")
+md5sums=("24191ec1626ee0c6dce5a3b3e1857fa4")
 
 prepare() {
 install -d "${srcdir}/Obxd${_vershort}Linux"
@@ -22,11 +22,15 @@ package() {
 cd "${srcdir}/Obxd${_vershort}Linux"
 
 install -Dm755 "OB-Xd" "${pkgdir}/usr/bin/OB-Xd"
-install -D "OB-Xd.so" "${pkgdir}/usr/bin/OB-Xd.so"
+install -Dm755 "OB-Xd.so" "${pkgdir}/usr/bin/OB-Xd.so"
+install -D "OB-Xd Manual.pdf" "${pkgdir}/usr/share/doc/OB-Xd/OB-Xd Manual.pdf"
+install -D "MIDI CC.txt" "${pkgdir}/usr/share/doc/OB-Xd/MIDI CC.txt"
 
 install -d "${pkgdir}/usr/lib/vst3/"
-install -d "${pkgdir}/opt/"
+install -d "${pkgdir}/usr/lib/lv2/"
+install -d "${pkgdir}/$(xdg-user-dir DOCUMENTS)"
 
 cp -r "OB-Xd.vst3" "${pkgdir}/usr/lib/vst3/"
-cp -r "discoDSP" "${pkgdir}/opt/discoDSP"
+cp -r "OB-Xd.lv2" "${pkgdir}/usr/lib/lv2/"
+cp -r "discoDSP" "${pkgdir}/$(xdg-user-dir DOCUMENTS)"
 }
