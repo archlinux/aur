@@ -1,0 +1,14 @@
+pkgbase = updatecli
+	pkgdesc = a tool used to apply file update strategies
+	pkgver = 0.28.0
+	pkgrel = 1
+	url = https://www.updatecli.io/
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	source = updatecli-0.28.0.tar.gz::https://github.com/updatecli/updatecli/archive/refs/tags/v0.28.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = updatecli
