@@ -3,21 +3,23 @@
 _pkgname=appflowy
 pkgname=$_pkgname-git
 pkgver=latest
-pkgrel=4
+pkgrel=5
 pkgdesc='An open-source alternative to Notion.'
 arch=(x86_64)
 url='https://www.appflowy.io/'
 license=('AGPL3')
-depends=(gtk3 sqlite)
-makedepends=(git clang cmake ninja unzip rust cargo dart)
+depends=('glibc>=2.32' gtk3)
+makedepends=(git clang cmake ninja unzip rust cargo dart sqlite)
 provides=($_pkgname)
 conflicts=($_pkgname $_pkgname-bin)
 replaces=()
 backup=()
 options=()
 install=
-source=("$_pkgname::git+https://github.com/AppFlowy-IO/AppFlowy.git"
-        'flutter::git+https://github.com/flutter/flutter.git')
+source=(
+	"$_pkgname::git+https://github.com/AppFlowy-IO/AppFlowy.git"
+	'flutter::git+https://github.com/flutter/flutter.git'
+)
 sha256sums=('SKIP' 'SKIP')
 
 _setpath() {
@@ -37,9 +39,6 @@ prepare() {
 
 	cd "$srcdir/$_pkgname/frontend"
 	sed -i "/rustup/d" scripts/makefile/env.toml
-
-	cd "$srcdir/$_pkgname/frontend/app_flowy"
-	flutter pub add charcode
 }
 
 build() {
@@ -49,8 +48,7 @@ build() {
 
 	cd "$srcdir/$_pkgname/frontend"
 	cargo make flowy_dev
-	cargo make --profile production-linux-x86_64 flowy-sdk-release
-	cargo make --profile production-linux-x86_64 appflowy-linux
+	cargo make --profile production-linux-x86_64 appflowy
 }
 
 package() {
