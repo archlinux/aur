@@ -1,15 +1,15 @@
 pkgname=tcping-go-git
 _pkgname=tcping
-pkgver=0.1.1.r10.g84598f9
+pkgver=1.12.1.r29.g3a1dc3a
 pkgrel=1
-pkgdesc='ping over a tcp connection'
+pkgdesc="Ping TCP ports. Inspired by Linux's ping utility. Written in Go"
 provides=('tcping' 'tcping-go')
 conflicts=('tcping' 'tcping-go')
 arch=('x86_64')
-url="https://github.com/cloverstd/tcping"
+url="https://github.com/pouriyajamshidi/tcping"
 license=('MIT')
 makedepends=('go' 'git')
-source=("git+https://github.com/cloverstd/$_pkgname.git")
+source=("git+https://github.com/pouriyajamshidi/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {

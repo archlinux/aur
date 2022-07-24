@@ -1,8 +1,8 @@
 pkgbase = tcping-go-git
-	pkgdesc = ping over a tcp connection
-	pkgver = 0.1.1.r10.g84598f9
+	pkgdesc = Ping TCP ports. Inspired by Linux's ping utility. Written in Go
+	pkgver = 1.12.1.r29.g3a1dc3a
 	pkgrel = 1
-	url = https://github.com/cloverstd/tcping
+	url = https://github.com/pouriyajamshidi/tcping
 	arch = x86_64
 	license = MIT
 	makedepends = go
@@ -11,7 +11,7 @@ pkgbase = tcping-go-git
 	provides = tcping-go
 	conflicts = tcping
 	conflicts = tcping-go
-	source = git+https://github.com/cloverstd/tcping.git
+	source = git+https://github.com/pouriyajamshidi/tcping.git
 	sha256sums = SKIP
 
 pkgname = tcping-go-git
