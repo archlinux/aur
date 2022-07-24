@@ -1,0 +1,16 @@
+pkgbase = opengigabyte-driver-dkms-git
+	pkgdesc = Open source drivers and utilities for Gigabyte Laptops on GNU/Linux, git edition by fokx
+	pkgver = v0.0.2.r6.gf4f031f
+	pkgrel = 1
+	url = https://github.com/fokx/opengigabyte
+	install = opengigabyte-driver-dkms-git.install
+	arch = any
+	license = GPL2
+	depends = dkms
+	depends = udev
+	provides = opengigabyte-driver-dkms
+	conflicts = opengigabyte-driver-dkms
+	source = opengigabyte-driver-dkms-git::git+https://github.com/fokx/opengigabyte
+	md5sums = SKIP
+
+pkgname = opengigabyte-driver-dkms-git
