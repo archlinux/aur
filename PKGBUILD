@@ -2,9 +2,9 @@
 
 pkgname=fulcrum
 pkgdesc='A fast & nimble SPV server for Bitcoin Cash'
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
-url='https://gitlab.com/FloweeTheHub/fulcrum'
+url='https://codeberg.com/Flowee/fulcrum'
 arch=('x86_64')
 license=('GPL3')
 depends=(
@@ -17,25 +17,26 @@ backup=('etc/fulcrum.conf')
 install=fulcrum.install
 provides=("$pkgname")
 source=(
-    "https://gitlab.com/FloweeTheHub/fulcrum/-/archive/v$pkgver/fulcrum-v$pkgver.tar.gz"
+
+    "https://codeberg.org/Flowee/fulcrum/archive/v$pkgver.tar.gz"
     "fulcrum.conf"
 )
-sha256sums=('3c429210f7f3d69aa571531990f291754420e0b318c1643c5594b67c9f24a3bc'
+sha256sums=('2e9dddff02504ad3dc302a18a0f29729531d2bbeda54c452c8136a4f3c23aa68'
     '8a559a825d0b7bcd1231669e387183f05794ae919bb1b7ef84a9d74e407ff598'
 )
 
 prepare() {
-  cd "fulcrum-v$pkgver"
+  cd "fulcrum"
   qmake -makefile CONFIG+=recheck CONFIG+=release Fulcrum.pro
 }
 
 build() {
-  cd "fulcrum-v$pkgver"
+  cd "fulcrum"
   make
 }
 
 package() {
-    install -Dm 775 "$srcdir/fulcrum-v$pkgver/Fulcrum" -T "$pkgdir/usr/bin/fulcrum"
-    install -Dm 775 "$srcdir/fulcrum-v$pkgver/FulcrumAdmin" -T "$pkgdir/usr/bin/fulcrum-admin"
+    install -Dm 775 "$srcdir/fulcrum/Fulcrum" -T "$pkgdir/usr/bin/fulcrum"
+    install -Dm 775 "$srcdir/fulcrum/FulcrumAdmin" -T "$pkgdir/usr/bin/fulcrum-admin"
     install -Dm 664 "$srcdir/fulcrum.conf" -t "$pkgdir/etc/"
 }
