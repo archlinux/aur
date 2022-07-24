@@ -1,6 +1,12 @@
-pkgname=ngircd
+# Maintainer: Giorgi Kobakhidze <gk@koba.pvt.ge>
+# Contributor: Alexandria Pettit <alxpettit@gmail.com>
+# Contributor: Kyle Keen <keenerd@gmail.com>
+# Contributor: Mateusz Herych <heniekk@gmail.com>
+# Contributor: Alexander Rødseth <rodseth@gmail.com>
+
+pkgname=ngircd-pam
 pkgver=26.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Next Generation IRC Daemon compiled with PAM support"
 arch=('x86_64')
 backup=(etc/ngircd.conf)
