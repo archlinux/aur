@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo-git
 _pkgname=sftpgo
-pkgver=r1203.6f4475ff
+pkgver=r1238.81de7d27
 pkgrel=1
 pkgdesc='Fully featured and highly configurable SFTP server with optional HTTP, FTP/S and WebDAV support. It can serve local filesystem, S3, GCS, Azure Blob, SFTP'
 arch=('i686' 'x86_64' 'aarch64')
@@ -25,7 +25,7 @@ source=("git+https://github.com/drakkan/${_pkgname}.git"
   "sftpgo.json"
   "sftpgo.sysusers")
 sha256sums=('SKIP'
-  '066669009af5b1cc8fad93ce9a3d9738e8dcc6bcf9dbbcd9ae085c45c18610aa'
+  '8ad9ccda22c7ca46b4c8c38733af907eefa1acc6294251a81d901496778e09a4'
   '44658210043f805057c2e4b473653637a91204e4da17954b08081292c72edcb8')
 
 _uid_sftpgo=315
@@ -38,7 +38,7 @@ pkgver() {
 
 build() {
   cd "${_pkgname}"
-  go build -trimpath -ldflags "-s -w -X github.com/drakkan/sftpgo/v2/version.commit=`git describe --always --dirty` -X github.com/drakkan/sftpgo/v2/version.date=`date --utc +%FT%TZ`" -o sftpgo
+  go build -trimpath -ldflags "-s -w -X github.com/drakkan/sftpgo/v2/internal/version.commit=`git describe --always --dirty` -X github.com/drakkan/sftpgo/v2/internal/version.date=`date --utc +%FT%TZ`" -o sftpgo
   ./sftpgo gen completion bash > sftpgo-completion.bash
   ./sftpgo gen man -d man1
   gzip man1/*
