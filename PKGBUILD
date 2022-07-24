@@ -1,21 +1,21 @@
 pkgname=httm
-pkgver=0.14.3
+pkgver=0.14.4
 pkgrel=1
 pkgdesc="Prints the size, date and locations of available unique versions (deduplicated by modify time and size) of files residing on ZFS or BTRFS snapshots."
 arch=('x86_64')
 url="https://github.com/kimono-koans/httm"
 license=('MPL-2.0')
-groups=('utility')
+#groups=('utility')
 conflicts=('httm-bin')
 options=('!strip' '!emptydirs')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('7694d9e41f645cd23c1cedda6dd8d708da48ff5321d2665685a1b7ea409f194c9cb48d1cb591e0fa6819b743b2c4ca91e79b240192c977eedb205a5735bffd61')
+sha512sums=('2e8f4201da0649c3db6c17f08c22caeb1f3053985a1b03bb9145085591bb2f8edd3fe2d697c28492df45632721e6f26406573d542bd6d790ff800723eaf0f5bf')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-	cd -
+#	cd -
 }
 
 build(){
@@ -24,7 +24,7 @@ build(){
 	# use cargo to build from a tagged release
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	cargo build --frozen --release --all-features
-	cd -
+#	cd -
 }
 
 package(){
