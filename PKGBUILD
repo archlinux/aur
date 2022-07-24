@@ -5,7 +5,7 @@
 
 pkgname=xp-pen-tablet
 pkgver=3.2.3.220323
-pkgrel=7
+pkgrel=9
 epoch=0
 pkgdesc="XP-Pen (Official) Linux utility (New UI driver)"
 arch=('x86_64')
@@ -32,4 +32,6 @@ package() {
        chmod 777 $pkgdir/usr/lib/pentablet/conf/xppen/
        chmod 777 $pkgdir/usr/lib/pentablet/lib/
        chmod 777 $pkgdir/usr/lib/pentablet/platforms/
+       #Minimize GUI on autostartup
+       sed -re 's/(^Exec=\/.+)/\1 \/mini/gi' -i ${pkgdir}/etc/xdg/autostart/xppentablet.desktop
 }
