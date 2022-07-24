@@ -1,0 +1,15 @@
+pkgbase = python-fvs
+	pkgdesc = File Versioning System with hash comparison, deduplication and data storage to create unlinked states that can be deleted
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/mirkobrombin/FVS
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-orjson
+	conflicts = python-vfs
+	replaces = python-vfs
+	source = python-fvs-0.3.1.tar.gz::https://github.com/mirkobrombin/FVS/archive/refs/tags/0.3.1.tar.gz
+	sha256sums = 0ff5add2294110dbe5be6070279d658a3650beff8f2c66567bf38d3b4273b3db
+
+pkgname = python-fvs
