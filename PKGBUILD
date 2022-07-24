@@ -21,6 +21,7 @@ prepare()
   git submodule update --init tensorflow/
   cd tensorflow
   ln -sf ../native_client
+
 }
 
 build() {
@@ -34,6 +35,8 @@ build() {
   export TF_NEED_ROCM=0
   export TF_DOWNLOAD_CLANG=0
   export TF_NEED_CUDA=0
+  #export CC=/usr/bin/gcc-10
+  #export CXX=/usr/bin/g++-10
   export CC_OPT_FLAGS="-march=${arch}"
   #rm .bazelversion
   ./configure
@@ -54,16 +57,14 @@ build() {
           --config=nogcp \
           --config=nohdfs \
           --config=nonccl \
-          --copt=-fvisibility=hidden \
-        --verbose_failures \
+          --copt="-D_GLIBCXX_USE_CXX11_ABI=0" \
         //native_client:libstt.so
   elif [[ $arch == "aarch64" ]]; then
     bazel build \
         --workspace_status_command="bash native_client/bazel_workspace_status_cmd.sh" \
         --config=monolithic \
           -c opt \
-          --config=rpi3-armv8_opt
-        --verbose_failures \
+          --config=elinux_aarch64 \
         //native_client:libstt.so
   fi;
   cd "${srcdir}/${_pkgname}-${pkgver}/native_client"
@@ -73,7 +74,7 @@ build() {
     make TARGET=rpi3-armv8 stt SOX_LDFLAGS="-lsox -Wl,-no-undefined"
   fi;
   make bindings -C python
-  make bindings -C ctcdecode
+  #make bindings -C ctcdecode
 }
 
 package_stt() {
@@ -86,7 +87,7 @@ package_python-stt() {
   pkgdesc="Coqui STT Python bindings"
   depends=('stt' 'python-numpy')
   cd "${srcdir}/${_pkgname}-${pkgver}/native_client"
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps python/dist/stt-*.whl
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps python/dist/STT-*.whl
   #PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps ctcdecode/dist/*.whl
   #mv "$pkgdir/usr/bin/stt" "$pkgdir/usr/bin/stt_python"
   cp -rv "${srcdir}/${_pkgname}-${pkgver}/training/coqui_stt_training" "$pkgdir"`python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"`
