@@ -11,6 +11,7 @@ pkgbase = libby-git
 	depends = curl
 	depends = wget
 	depends = recode
+	depends = jq
 	optdepends = neomutt
 	optdepends = rofi
 	optdepends = calibre
