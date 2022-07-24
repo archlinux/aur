@@ -1,7 +1,7 @@
 pkgbase = hipmagma
 	pkgdesc = Matrix Algebra on GPU and Multicore Architectures
 	pkgver = 2.6.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://icl.cs.utk.edu/magma/
 	arch = x86_64
 	license = custom
@@ -15,6 +15,8 @@ pkgbase = hipmagma
 	optdepends = gcc11-fortran: Fortran interface
 	options = !lto
 	source = magma-2.6.2.tar.gz::http://icl.cs.utk.edu/projectsfiles/magma/downloads/magma-2.6.2.tar.gz
+	source = find-hip.patch::https://bitbucket.org/avcxz/magma/commits/489c8b6a4ae180da65630edbfcc92728f665db6c/raw
 	sha256sums = 75b554dab00903e2d10b972c913e50e7f88cbc62f3ae432b5a086c7e4eda0a71
+	sha256sums = SKIP
 
 pkgname = hipmagma
