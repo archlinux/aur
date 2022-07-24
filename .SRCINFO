@@ -10,6 +10,7 @@ pkgbase = libby-git
 	depends = fzf
 	depends = curl
 	depends = wget
+	depends = recode
 	optdepends = neomutt
 	optdepends = rofi
 	optdepends = calibre
