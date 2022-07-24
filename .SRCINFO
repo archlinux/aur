@@ -1,8 +1,8 @@
 pkgbase = python-bitcointx
 	pkgdesc = An easy interface to the bitcoin transaction data structures
 	pkgver = 1.1.3
-	pkgrel = 2
-	url = https://github.com/petertodd/python-bitcoinlib
+	pkgrel = 3
+	url = https://github.com/Simplexum/python-bitcointx
 	arch = any
 	license = LGPL3
 	makedepends = python-setuptools
