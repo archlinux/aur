@@ -15,10 +15,10 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation-openrc
-pkgver=16.2.3
-_buildver=19376536
+pkgver=16.2.4
+_buildver=20089737
 _pkgver=${pkgver}_${_buildver}
-pkgrel=3
+pkgrel=1
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC. Modified to use OpenRC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -59,7 +59,7 @@ backup=(
   'etc/conf.d/vmware'
 )
 source=(
-  "https://download3.vmware.com/software/WKST-${pkgver//./}-LX-New/VMware-Workstation-Full-${_pkgver/_/-}.${CARCH}.bundle"
+  "https://download3.vmware.com/software/WKST-${pkgver//./}-LX/VMware-Workstation-Full-${_pkgver/_/-}.${CARCH}.bundle"
 
   'vmware-bootstrap'
   'vmware-vix-bootstrap'
@@ -77,7 +77,7 @@ source=(
   'vmnet.patch'
 )
 sha256sums=(
-  'f891352a745f6b071a05a9e723212bd533594c5ed85d1618685315ab4fdeadb3'
+  '2e46708db46630edc96cdb11514d5e338f5300c46f51a90132e9a4cd11c3f3c0'
 
   '67edc40e39686281f5101ced1a250648ae32e4cd5dffe4fd47bc3c7aed929d50'
   'da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141'
@@ -108,8 +108,8 @@ _isovirtualprinterimages=(Linux Windows)
 
 if [ -n "$_enable_macOS_guests" ]; then
 
-_vmware_fusion_ver=12.2.3
-_vmware_fusion_buildver=19436697
+_vmware_fusion_ver=12.2.4
+_vmware_fusion_buildver=20071091
 _vmware_fusion_ver_full=${_vmware_fusion_ver}_${_vmware_fusion_buildver}
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
@@ -121,12 +121,12 @@ makedepends+=(
 )
 
 source+=(
-  "https://download3.vmware.com/software/FUS-${_vmware_fusion_ver//./}-New/VMware-Fusion-${_vmware_fusion_ver_full/_/-}_x86.dmg"
+  "https://download3.vmware.com/software/FUS-${_vmware_fusion_ver//./}/VMware-Fusion-${_vmware_fusion_ver_full/_/-}_x86.dmg"
   "unlocker.py"
   "efi-patches.txt"
 )
 sha256sums+=(
-  '8cd01bd0e7d18b32bfa159bcce54bd885151e3d92d97e5d4a20bcbc09a1c3f4b'
+  '0b0516f4d5f70e759ae08a40d2e14f487c0b66d84ee467e38972ad013e1f6c7f'
   '8a61e03d0edbbf60c1c84a43aa87a6e950f82d2c71b968888f019345c2f684f3'
   '392c1effcdec516000e9f8ffc97f2586524d8953d3e7d6f2c5f93f2acd809d91'
 )
