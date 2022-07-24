@@ -8,7 +8,7 @@ arch=("x86_64")
 url="https://github.com/vejnar/failing-disk-reporter"
 license=("MPLv2")
 makedepends=("go")
-source=("https://github.com/vejnar/failing-disk-reporter/archive/v${pkgver}.tar.gz" )
+source=("$pkgname-$pkgver.tar.gz::https://github.com/vejnar/failing-disk-reporter/archive/v${pkgver}.tar.gz" )
 sha1sums=("db76870971ac31633195333b7f2808a32743df67")
 
 build() {
