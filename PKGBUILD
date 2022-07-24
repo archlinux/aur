@@ -1,15 +1,15 @@
 # Maintainer: Charles Vejnar <first name [dot] last name [at] gmail [dot] com>
 
 pkgname=failing-disk-reporter
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
-pkgdesc="Gene counter and profiler."
+pkgdesc="Failing Disk Reporter (FDR): Get a report on Matrix or Slack when a drive (HDD or SDD) is failing"
 arch=("x86_64")
 url="https://github.com/vejnar/failing-disk-reporter"
 license=("MPLv2")
 makedepends=("go")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/vejnar/failing-disk-reporter/archive/v${pkgver}.tar.gz" )
-sha1sums=("db76870971ac31633195333b7f2808a32743df67")
+source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~vejnar/failing-disk-reporter/archive/v${pkgver}.tar.gz")
+sha1sums=('5d915dcd37b0d024ad09bceb28a48a2c96d62915')
 
 build() {
     cd "$srcdir/failing-disk-reporter-${pkgver}"
