@@ -5,7 +5,6 @@ pkgdesc="Prints the size, date and locations of available unique versions (dedup
 arch=('x86_64')
 url="https://github.com/kimono-koans/httm"
 license=('MPL-2.0')
-#groups=('utility')
 conflicts=('httm-bin')
 options=('!strip' '!emptydirs')
 makedepends=('cargo')
@@ -15,7 +14,6 @@ sha512sums=('2e8f4201da0649c3db6c17f08c22caeb1f3053985a1b03bb9145085591bb2f8edd3
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-#	cd -
 }
 
 build(){
@@ -24,7 +22,6 @@ build(){
 	# use cargo to build from a tagged release
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	cargo build --frozen --release --all-features
-#	cd -
 }
 
 package(){
