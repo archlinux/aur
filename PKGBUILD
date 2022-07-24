@@ -4,12 +4,13 @@
 _pkgname=tuner
 pkgname=$_pkgname-git
 pkgver=1.5.1.r31.7ecfdfb
-pkgrel=1
-pkgdesc="Minimalist radio station player geared towards RadioBrowser"
+pkgrel=2
+pkgdesc="Minimalist radio station player. Geared towards RadioBrowser"
 arch=('i686' 'x86_64')
 url="https://github.com/louis77/$_pkgname"
 license=('GPL3')
 depends=('granite' 'gst-plugins-bad-libs' 'geoclue')
+optdepends=('gst-libav: play AAC[+] streams')
 makedepends=('git' 'meson' 'vala')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
