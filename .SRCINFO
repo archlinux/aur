@@ -1,7 +1,7 @@
 pkgbase = ivy-calc
 	pkgdesc = An APL-like calculator.
 	pkgver = 0.2.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/robpike/ivy
 	arch = i686
 	arch = x86_64
