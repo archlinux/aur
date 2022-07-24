@@ -3,13 +3,13 @@
 _pkgname=appflowy
 pkgname=$_pkgname-git
 pkgver=latest
-pkgrel=3
+pkgrel=4
 pkgdesc='An open-source alternative to Notion.'
 arch=(x86_64)
 url='https://www.appflowy.io/'
 license=('AGPL3')
 depends=(gtk3 sqlite)
-makedepends=(git clang cmake ninja unzip rust cargo cargo-make dart)
+makedepends=(git clang cmake ninja unzip rust cargo dart)
 provides=($_pkgname)
 conflicts=($_pkgname $_pkgname-bin)
 replaces=()
@@ -32,27 +32,30 @@ pkgver() {
 
 prepare() {
 	_setpath
+	flutter channel stable
+	flutter config --enable-linux-desktop
+
 	cd "$srcdir/$_pkgname/frontend"
 	sed -i "/rustup/d" scripts/makefile/env.toml
 
 	cd "$srcdir/$_pkgname/frontend/app_flowy"
 	flutter pub add charcode
-
-	flutter config --enable-linux-desktop
 }
 
 build() {
 	_setpath
-	cd "$srcdir/$_pkgname/frontend"
+	cargo install cargo-make
 	cargo install duckscript_cli
+
+	cd "$srcdir/$_pkgname/frontend"
 	cargo make flowy_dev
-	# cargo make -p production-linux-x86 flowy-sdk-release
-	cargo make -p production-linux-x86 appflowy-linux
+	cargo make --profile production-linux-x86_64 flowy-sdk-release
+	cargo make --profile production-linux-x86_64 appflowy-linux
 }
 
 package() {
 	_setpath
-	cd "$srcdir/$_pkgname"/frontend/app_flowy/product/*/linux/Release/AppFlowy
+	cd "$srcdir/$_pkgname/frontend/app_flowy/product/"*/linux/Release/AppFlowy
 	install -dm755 "$pkgdir"{/usr/bin,/usr/share/applications,"/opt/$pkgname"}
 
 	cp -a * "$pkgdir/opt/$pkgname/"
