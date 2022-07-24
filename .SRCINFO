@@ -8,12 +8,12 @@ pkgbase = gotorrent-bin
 	provides = gotorrent
 	arch = aarch64
 	source_aarch64 = https://github.com/ismaelpadilla/gotorrent/releases/download/v0.1.0/gotorrent_0.1.0_Linux_arm64.tar.gz
-	sha256sums_aarch64 = b13bf6624578b55b74ac0263aad974a4b699fa933406078e05c44c0d0b5e26d3
+	sha256sums_aarch64 = 74c0bd6cb59ac2c3f49dd2895c30c41b99e69ef23f5ade3b20299fec14ba3dd7
 	arch = i686
 	source_i686 = https://github.com/ismaelpadilla/gotorrent/releases/download/v0.1.0/gotorrent_0.1.0_Linux_i386.tar.gz
-	sha256sums_i686 = ed4bd31e74573382ce70d5e96be0a630b7af1f3873e0bb495423dbed4c7c4197
+	sha256sums_i686 = f6f298ffe9cd05e4f5d6b786c44ff8982b4558cc5fe1ac23989df53864ae1a0c
 	arch = x86_64
 	source_x86_64 = https://github.com/ismaelpadilla/gotorrent/releases/download/v0.1.0/gotorrent_0.1.0_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = bb44aa4cc2955cdd34e26022f33c4bdc9b0c28b5cc01fb6e4cd252f4326758f0
+	sha256sums_x86_64 = 9dc21f79028165fb72303add1e5b12e26d3e2c7b2ab0808429912564897b1f23
 	
 pkgname = gotorrent-bin
