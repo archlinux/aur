@@ -6,12 +6,12 @@ pkgname="${_pkgname}"-appimage
 pkgver=0.7.6_beta
 # Actual version used by project
 _ver=${pkgver//_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightning wallet focused on user experience and ease of use"
 arch=('x86_64')
 url="https://github.com/LN-Zap/zap-desktop"
 license=('MIT')
-depends=('zlib' 'hicolor-icon-theme' 'desktop-file-utils')
+depends=('zlib' 'hicolor-icon-theme' 'desktop-file-utils' 'fuse2')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${pkgname}-${pkgver}.AppImage::https://github.com/LN-Zap/zap-desktop/releases/download/v${_ver}/Zap-linux-x86_64-v${_ver}.AppImage"
