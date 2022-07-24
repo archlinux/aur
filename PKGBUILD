@@ -1,7 +1,7 @@
 # Maintainer: bpozdena <https://github.com/bpozdena>
 
 pkgname=onedrivegui-git
-pkgver=0.2.0.r0.g1cb36f1
+pkgver=0.2.2.r4.g5a242a4
 pkgrel=1
 pkgdesc="A simple GUI for OneDrive Linux client, with multi-account support."
 license=("GPL")
