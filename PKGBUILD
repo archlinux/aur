@@ -4,7 +4,7 @@
 # Based on official PKGBUILD from Arch Linux with an annoying bug reverted
 pkgname=telegram-desktop-kdefix
 pkgver=4.0.2
-pkgrel=1
+pkgrel=4
 pkgdesc='Telegram Desktop client with KDE unread counter bug reverted'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
@@ -29,6 +29,7 @@ sha512sums=('0078b627d06dd8e655bd2bcc222ecbb3b15b7d88f858810bccdca84793ad02a60f4
 
 prepare() {
     cd tdesktop-$pkgver-full
+    rm -rf Telegram/ThirdParty/libtgvoip/webrtc_dsp/absl
     patch -Np1 -i "$srcdir"/fix-tgcalls-cstdint.patch -d Telegram/ThirdParty/tgcalls
     patch -Np1 -i "$srcdir"/0001-kde-theme-injection-fix.patch
     patch -Np1 -i "$srcdir"/0002-qt5-wayland-generator.patch -d Telegram/lib_base
@@ -36,9 +37,6 @@ prepare() {
 
 build() {
     cd tdesktop-$pkgver-full
-
-    # Fix https://bugs.archlinux.org/task/73220
-    export CXXFLAGS+=" -Wp,-U_GLIBCXX_ASSERTIONS"
 
     export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
     #Turns out we're allowed to use the official API key that telegram uses for their snap builds:
@@ -53,13 +51,6 @@ build() {
         -DTDESKTOP_API_ID=611335 \
         -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
     # Use Qt5 for the time being until mouse is not so broken (QTBUG-98720).
-        sed -i "s|/usr/lib/libav|/usr/lib/ffmpeg4.4/libav|g" build/build.ninja
-    sed -i "s|/usr/lib/libsw|/usr/lib/ffmpeg4.4/libsw|g" build/build.ninja
-    sed -i "s|-lavcodec|/usr/lib/ffmpeg4.4/libavcodec.so|g" build/build.ninja
-    sed -i "s|-lavformat|/usr/lib/ffmpeg4.4/libavformat.so|g" build/build.ninja
-    sed -i "s|-lavutil|/usr/lib/ffmpeg4.4/libavutil.so|g" build/build.ninja
-    sed -i "s|-lswscale|/usr/lib/ffmpeg4.4/libswscale.so|g" build/build.ninja
-    sed -i "s|-lswresample|/usr/lib/ffmpeg4.4/libswresample.so|g" build/build.ninja
     ninja -C build
 }
 
