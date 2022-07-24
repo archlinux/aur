@@ -7,7 +7,7 @@ pkgname=${_pkgname}-git
 provides=("betterlockscreen")
 conflicts=("betterlockscreen")
 pkgver=v4.0.4.r0.ge6c5530
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple lock script for i3lock-color"
 arch=('any')
 url="https://github.com/betterlockscreen/betterlockscreen"
@@ -25,18 +25,16 @@ pkgver() {
 }
 
 package() {
+	cd "$_pkgname"
+
 	# install executable
-	_srcdir="$srcdir/$_pkgname"
-	install -Dm 755 "$_srcdir/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+	install -Dm 755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
 	# install systemd user service
-	_serviceloc="$pkgdir/usr/lib/systemd/system"
-	_servicename="$_pkgname@.service"
-    sed -i 's,usr/local,usr,' "$_srcdir/system/$_servicename"
-#    sed -i '/^User/d' "$_srcdir/system/$_servicename"
-	install -Dm 644 "$_srcdir/system/$_servicename" "$_serviceloc/$_servicename"
+    sed -i 's,usr/local,usr,' "system/$_pkgname@.service"
+	install -Dm 644 "system/$_pkgname@.service" "$pkgdir/usr/lib/systemd/system/$_pkgname@.service"
 
 	# add config example and LICENCE files
-	install -Dm 644 "$_srcdir/examples/${_pkgname}rc" "$pkgdir/usr/share/doc/$_pkgname/examples/${_pkgname}rc"
-	install -Dm 644 "$_srcdir/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname"
+	install -Dm 644 "examples/${_pkgname}rc" "$pkgdir/usr/share/doc/$_pkgname/examples/${_pkgname}rc"
+	install -Dm 644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENCE"
 }
