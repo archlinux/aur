@@ -4,22 +4,22 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname='fcitx-mozc-ut'
-pkgver=2.28.4770.102
+pkgver=2.28.4800.102
 pkgrel=1
 pkgdesc='Mozc module for Fcitx'
 arch=('x86_64')
 url='https://github.com/fcitx/mozc'
 license=('Apache' 'BSD' 'LGPL' 'custom')
-depends=('fcitx' 'mozc>=2.28.4770.102')
+depends=('fcitx' 'mozc>=2.28.4800.102')
 makedepends=('bazel' 'git' 'python' 'qt5-base')
 optdepends=('fcitx-configtool')
-provides=('fcitx-mozc=2.28.4770.102')
+provides=('fcitx-mozc=2.28.4800.102')
 conflicts=('fcitx-mozc')
 options=(!distcc !ccache)
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=5e3542b98adb743553e672f34caee6d5d8021b85"
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=9dc923ab84f4f0369ba507848430c0bd42dbd01d"
         "fcitx.patch")
 sha256sums=('SKIP'
-            '02411077f078631811a90a7366d1da2f58d4a0440771c015dd40e5910c2cf4a2')
+            '4074e50fca25ee36ac4a7bb98c05687881b6e8ad34b39695405e92f24c37135a')
 
 prepare() {
     cd ${pkgname}-git/src
@@ -33,12 +33,6 @@ prepare() {
 
     # Patch in the out-of-source fcitx target (pulled from https://github.com/fcitx/mozc)
     patch -Np2 -i ${srcdir}/fcitx.patch
-
-    # Fix the Qt5 include path
-    sed -i -e 's/x86_64-linux-gnu\/qt5/qt/' config.bzl
-
-    # Temp fix for the Android NDK error
-    sed -i -e 's/android_ndk_repository(name = "androidndk")/#android_ndk_repository(name = "androidndk")/' WORKSPACE.bazel
 
     # Load the application icon dynamically
     sed -i -e 's|IconName=/usr/share/fcitx/mozc/icon/mozc.png|IconName=fcitx-mozc|' unix/fcitx/mozc.conf
