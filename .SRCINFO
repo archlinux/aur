@@ -1,6 +1,6 @@
 pkgbase = forkbomb
 	pkgdesc = Powers a fork bomb
-	pkgver = 1
+	pkgver = 2
 	pkgrel = 0
 	url = https://en.wikipedia.org/wiki/Fork_bomb
 	arch = any

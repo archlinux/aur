@@ -1,7 +1,7 @@
 # Maintainer: fossdd <fossdd@pwned.life>
 
 pkgname=forkbomb
-pkgver=1
+pkgver=2
 pkgrel=0
 pkgdesc="Powers a fork bomb"
 depends=('bash')
