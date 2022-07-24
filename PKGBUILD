@@ -1,12 +1,13 @@
 # Maintainer: Abraham Toriz <categulario at gmail dot com>
 pkgname=tiempo-git
-pkgver=1.2.5
+pkgver=1.2.6
 pkgrel=1
-pkgdesc='Simple Gtk drawing application'
+pkgdesc='A command line time tracking application'
 arch=('i686' 'x86_64')
 url='https://gitlab.com/categulario/tiempo-rs'
 license=('GPL3')
-depends=('gtk3')
+depends=()
+optdepends=('sqlite: for manually editing the database')
 makedepends=('cargo' 'git')
 provides=('tiempo')
 conflicts=('tiempo')
