@@ -1,4 +1,4 @@
-# Maintainer: Lawrence Thorpe <lawrence@lawrencethorpe.uk>
+# Maintainer: Lawrence Thorpe <lawrence at lawrencethorpe.uk>
 pkgname=dng
 pkgver=13.4
 pkgrel=1
