@@ -1,0 +1,12 @@
+pkgbase = forkbomb
+	pkgdesc = Powers a fork bomb
+	pkgver = 1
+	pkgrel = 0
+	url = https://en.wikipedia.org/wiki/Fork_bomb
+	arch = any
+	license = Unlicense
+	depends = bash
+	source = forkbomb.sh
+	sha512sums = 581939093aa3c8937b0988edab2875a1e775e201efa06443a07a6f745d884f8db671a33ce44f6827a0a3607e647959e648b069448b0b5477c1acc094691210bc
+
+pkgname = forkbomb
