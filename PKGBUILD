@@ -28,7 +28,7 @@ pkgname=(regolith-i3 # (regolith-i3-gaps regolith-i3-gaps-session i3-gaps-wm i3-
         regolith-desktop-config
 	remontoire-regolith)
 pkgver=1.6
-pkgrel=11
+pkgrel=12
 arch=('x86_64')
 url=https://github.com/regolith-linux/regolith-desktop
 url2=https://launchpad.net/~regolith-linux/+archive/ubuntu/release/+files
@@ -209,7 +209,7 @@ pkgdesc="Regolith's i3-gaps-based DE's underpinnings and gnome foundational depe
              'accountsservice' 'cups-pk-helper' 'libgtop' 'gnome-control-center' 'gnome-desktop' 
 	     'xorg-xwininfo' 'dbus' 'python-gobject' 'python-dbus' 'xorg-xprop' 'libev' 'pcre'
 	     'libconfig' 'xcb-util-image' 'xcb-util-renderutil' 'libsigc++' 'gnome-session'
-             'gnome-settings-daemon' 'playerctl' 'jsoncpp')
+             'gnome-settings-daemon' 'playerctl' 'jsoncpp' 'gnome-shell' 'mutter')
     optdepends=('picom: For compositing/desktop effects - strongly recommended!'
 		'unclutter-xfixes-git: For unclutter'
 		'lightdm: Display Manager - Regolith LightDM theme included in regolith-desktop-config' )

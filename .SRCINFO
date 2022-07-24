@@ -1,6 +1,6 @@
 pkgbase = regolith-de
 	pkgver = 1.6
-	pkgrel = 11
+	pkgrel = 12
 	url = https://github.com/regolith-linux/regolith-desktop
 	arch = x86_64
 	groups = regolith-de
@@ -166,6 +166,8 @@ pkgname = regolith-i3
 	depends = gnome-settings-daemon
 	depends = playerctl
 	depends = jsoncpp
+	depends = gnome-shell
+	depends = mutter
 	optdepends = picom: For compositing/desktop effects - strongly recommended!
 	optdepends = unclutter-xfixes-git: For unclutter
 	optdepends = lightdm: Display Manager - Regolith LightDM theme included in regolith-desktop-config
