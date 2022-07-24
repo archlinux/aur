@@ -1,7 +1,7 @@
 pkgbase = tuner
-	pkgdesc = Minimalist radio station player geared towards RadioBrowser
+	pkgdesc = Minimalist radio station player. Geared towards RadioBrowser
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/louis77/tuner
 	arch = x86_64
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = tuner
 	depends = granite
 	depends = gst-plugins-bad-libs
 	depends = geoclue
+	optdepends = gst-libav: play AAC[+] streams
 	source = tuner-1.5.1.tar.gz::https://github.com/louis77/tuner/archive/refs/tags/1.5.1.tar.gz
 	sha256sums = bbb5e7c97da1ee495651d85aca33c2fe58daba81906ae247e12b6a41b1ed7592
 
