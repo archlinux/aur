@@ -9,7 +9,7 @@ _gitroot="https://git.kernel.org/pub/scm/linux/kernel/git/stable/${_srcname}"
 _gitbranch="linux-rolling-stable"
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for BPIR64"
-pkgver=5.18.13.bpi.r64.1
+pkgver=5.18.14.bpi.r64.1
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -33,8 +33,7 @@ prepare() {
     echo "LOCAL  HEAD: $(git rev-parse HEAD)"
     echo "REMOTE HEAD: $(git rev-parse @{u})"
     if [ "$(git rev-parse HEAD)" != "$(git rev-parse @{u})" ]; then
-      git reset --hard
-      git fetch --depth 1 origin "${_gitbranch}:${_gitbranch}"
+      git pull --depth=1 --rebase=true --force origin "${_gitbranch}:${_gitbranch}"
       git checkout "${_gitbranch}"
     fi
     echo
