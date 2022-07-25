@@ -11,26 +11,26 @@ minver=1.19
 srvpath=/srv/forge
 
 pkgver=41.0.109
-pkgrel=1
+pkgrel=2
 pkgname=forge-server
 pkgdesc="Forge is a free, open-source modding API all of your favourite mods use!"
 url="https://minecraftforge.net"
 arch=('any')
 license=("custom")
-depends=("jdk-openjdk" "tmux")
+depends=("jdk-openjdk" "tmux" "forge-hooks")
 makedepends=("jdk-openjdk")
 optdepends=("tar: needed in order to create world backups"
 						"netcat: required in order to suspend an idle server")
 provides=("forge-server=${pkgver}")
 backup=("etc/conf.d/forge")
-install="forge-server.install"
-source=(https://maven.minecraftforge.net/net/minecraftforge/forge/${minver}-${pkgver}/forge-${minver}-${pkgver}-installer.jar
-				forge-scripts::git+https://github.com/Edenhofer/minecraft-server
-				https://raw.githubusercontent.com/MinecraftForge/MinecraftForge/${minver}.x/LICENSE.txt)
+install=forge-server.install
+source=(git+https://github.com/Edenhofer/minecraft-server
+				https://raw.githubusercontent.com/MinecraftForge/MinecraftForge/${minver}.x/LICENSE.txt
+				https://maven.minecraftforge.net/net/minecraftforge/forge/${minver}-${pkgver}/forge-${minver}-${pkgver}-installer.jar)
 noextract=(forge-${minver}-${pkgver}-installer.jar)
-sha512sums=('78b7ea6c255d20c60f6cccbe835c93fd27c6638a5e98fefa1d5c4c5e324808a640366262f1f29725f207b1c2f7bd4c35422f21a798f89886dc68adf5b558a5e9'
-            'SKIP'
-            '3da10d63a5edee4bc8bcd3d5c2730771062f7fa58626a8c51635fbe96bfbceca3ff6937cfaad3e17f16a94ef95137f7c78cc6dac1c846a6b9a8f18d3c6355973')
+sha512sums=('SKIP'
+            '3da10d63a5edee4bc8bcd3d5c2730771062f7fa58626a8c51635fbe96bfbceca3ff6937cfaad3e17f16a94ef95137f7c78cc6dac1c846a6b9a8f18d3c6355973'
+            '78b7ea6c255d20c60f6cccbe835c93fd27c6638a5e98fefa1d5c4c5e324808a640366262f1f29725f207b1c2f7bd4c35422f21a798f89886dc68adf5b558a5e9')
 
 frgpath=${srvpath}/libraries/net/minecraftforge/forge/${minver}-${pkgver}
 
@@ -41,7 +41,7 @@ prepare() {
 }
 
 build() {
-	cd forge-scripts
+	cd minecraft-server
 
 	make \
 		GAME=forge \
@@ -53,7 +53,7 @@ build() {
 }
 
 package() {
-	cd forge-scripts
+	cd minecraft-server
 
 	make \
 		GAME=forge \
@@ -70,5 +70,14 @@ package() {
 	find libraries -type f -print0 | xargs -0 -i@ install -Dm644 "@" "${pkgdir}${srvpath}/@"
 
 	install -Dm 644 user_jvm_args.txt ${pkgdir}${frgpath}/user_jvm_args.txt
-	install -Dm 644 ../LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+	install -Dm 644 $srcdir/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+
+	mkdir -p $pkgdir/var/log/
+
+	install -dm2755 $pkgdir$srvpath/logs
+	install -dm2755 $pkgdir$srvpath/mods
+
+	ln -s ${srvpath}/logs $pkgdir/var/log/forge
+
+	chmod g+ws $pkgdir$srvpath
 }
