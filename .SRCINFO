@@ -1,7 +1,7 @@
 pkgbase = python-apts
 	pkgdesc = Set of tools for automatic astrophotography images acquisition and processing
 	pkgver = 0.2.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pozar87/apts
 	arch = any
 	license = Apache 2
@@ -37,4 +37,3 @@ pkgname = python-apts
 	depends = python-aenum
 	depends = python-timezonefinder
 	depends = python-requests-cache
-
