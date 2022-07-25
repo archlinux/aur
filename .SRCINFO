@@ -1,12 +1,14 @@
 pkgbase = ospd-openvas
 	pkgdesc = OSP Server for openvas
 	pkgver = 22.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/greenbone/ospd-openvas
 	arch = x86_64
 	groups = greenbone-vulnerability-manager
 	license = GPL
 	makedepends = python-setuptools
+	makedepends = python-poetry
+	makedepends = python-installer
 	depends = python-ospd
 	depends = python-redis
 	depends = python-psutil

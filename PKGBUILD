@@ -2,7 +2,7 @@
 
 pkgname=ospd-openvas
 pkgver=22.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='OSP Server for openvas'
 arch=('x86_64')
 url="https://github.com/greenbone/ospd-openvas"
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('python-ospd' 'python-redis' 'python-psutil' 'python-packaging' 'openvas-scanner' 'python-paho-mqtt' 'python-gnupg')
 provides=('python-ospd-openvas')
 conflicts=('python-ospd-openvas')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-poetry' 'python-installer')
 groups=('greenbone-vulnerability-manager')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/greenbone/ospd-openvas/archive/v${pkgver}.tar.gz"
         "ospd-openvas"
