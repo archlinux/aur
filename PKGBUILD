@@ -3,7 +3,7 @@
 
 pkgname=sworkstyle
 _pkgname=swayest_workstyle
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=2
 pkgdesc="Swayest Workstyle - This tool will rename workspaces to the icons configured. Mainly meant for Sway WM"
 arch=("x86_64")
