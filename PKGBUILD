@@ -2,7 +2,7 @@
 
 pkgbase=vosk-api-git
 pkgname=('vosk-api-git' 'python-vosk-git')
-pkgver=0.3.42.r0.gb1b216d
+pkgver=0.3.43.r1.gf63b015
 pkgrel=1
 _model_small_ver=0.15
 _model_spk_ver=0.4
@@ -11,7 +11,8 @@ arch=('x86_64')
 url='https://alphacephei.com/vosk/'
 license=('Apache')
 makedepends=('git' 'cmake' 'gradle' 'python' 'python-build' 'python-cffi' 'python-installer'
-             'python-requests' 'python-setuptools' 'python-srt' 'python-tqdm' 'python-wheel')
+             'python-requests' 'python-setuptools' 'python-srt' 'python-tqdm' 'python-websockets'
+             'python-wheel')
 checkdepends=('ffmpeg' 'python-numpy')
 source=('git+https://github.com/alphacep/vosk-api.git'
         'git+https://github.com/xianyi/OpenBLAS.git'
@@ -113,12 +114,11 @@ build() {
 
 check() {
     local _test
-    local -x VOSK_MODEL_PATH="${srcdir}/models"
     cd vosk-api/python/example
     for _test in alternatives empty ffmpeg nlsml reset simple speaker srt text words
     do
         printf '%s\n' "Running test_${_test}..."
-        PYTHONPATH="${PWD}/../build/lib" python "./test_${_test}.py" test.wav
+        PYTHONPATH="${PWD}/../build/lib" VOSK_MODEL_PATH="${srcdir}/models" python "./test_${_test}.py" test.wav
     done
 }
 
@@ -139,14 +139,14 @@ package_vosk-api-git() {
 
 package_python-vosk-git() {
     pkgdesc='Python module for vosk-api (git version)'
-    depends=('python' 'python-cffi' 'python-requests' 'python-srt' 'python-tqdm' "vosk-api-git=${pkgver}")
+    depends=('python' 'python-cffi' 'python-requests' 'python-srt' 'python-tqdm' 'python-websockets'
+             "vosk-api-git=${pkgver}")
     provides=('python-vosk')
     conflicts=('python-vosk')
     
     local _pyver
     _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
-    cd vosk-api/python
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --destdir="$pkgdir" vosk-api/python/dist/*.whl
     rm "${pkgdir}/usr/lib/python${_pyver}/site-packages/vosk/libvosk.so"
     ln -s ../../../libvosk.so "${pkgdir}/usr/lib/python${_pyver}/site-packages/vosk/libvosk.so"
 }
