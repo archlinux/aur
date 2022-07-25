@@ -14,13 +14,13 @@
 
 pkgname=zoneminder
 pkgver=1.36.21
-pkgrel=1
+pkgrel=2
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('any')
 url='https://www.zoneminder.com/'
 license=('GPL2')
 depends=('polkit' 'ffmpeg'
-         'php-apcu' 'php-fpm' 'php-gd'
+         'php-fpm' 'php-gd' 'php-intl'
          'perl-archive-zip' 'perl-data-dump' 'perl-date-manip' 'perl-datetime' 'perl-dbd-mysql' 'perl-device-serialport' 'perl-file-slurp'
          'perl-image-info' 'perl-libwww' 'perl-mime-lite' 'perl-mime-tools' 'perl-net-sftp-foreign' 'perl-number-bytes-human' 'perl-php-serialization'
          'perl-sys-cpu' 'perl-sys-meminfo' 'perl-sys-mmap' 'perl-uri-encode'
