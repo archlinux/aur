@@ -2,8 +2,8 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-mainline-um5302ta
-pkgver=5.19.rc7
-pkgrel=2
+pkgver=5.19.rc8
+pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.kernel.org/torvalds/h/$_srctag"
