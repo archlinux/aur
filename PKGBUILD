@@ -5,9 +5,9 @@
 pkgname=rstudio-desktop
 _vermajor="2022"
 _verminor="07"
-_verpatch="0"
-_versuffix="+548"
-_gitcommit="8acbd38"
+_verpatch="1"
+_versuffix="+554"
+_gitcommit="7872775"
 _gitname=rstudio-rstudio-${_gitcommit}
 pkgver=${_vermajor}.${_verminor}.${_verpatch}${_versuffix}
 _srcname=rstudio-${_vermajor}.${_verminor}.${_verpatch}${_versuffix//+/-}
@@ -36,7 +36,7 @@ source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs
         "qt.conf"
         "pandoc_version.patch")
 
-sha256sums=('51061c4b92b6ec11bc07ca01b260c0b332d5b069aefd01b012182ae4086e9983'
+sha256sums=('1c3fd3fc64e3553ec1ec35758d177a3d4713ae5203493291d7b3b622478f4185'
             '2c69e7b040c208b61ebf9735c63d2e5bcabfed32ef05a9b8dd5823489ea50d6b'
             '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921'
             '286925c442c1818979714feeec1577f03ae8a3527d2478b0f55238e2272a0b9e')
@@ -48,16 +48,12 @@ prepare() {
     # Do not use outdated version name of pandoc
     patch -p1 < ${srcdir}/pandoc_version.patch
 
-    msg "Extracting dependencies..."
-
     cd "${srcdir}/${_srcname}/dependencies/common"
-    #_pandocver=$(grep -oP "(?<=PANDOC_VERSION=\").*(?=\"$)" install-pandoc)
     install -d pandoc/${_pandocver}
  
     ln -sfT /usr/share/myspell/dicts dictionaries
     ln -sfT /usr/share/mathjax2 mathjax-27
     ln -sfT /usr/bin/pandoc pandoc/${_pandocver}/pandoc
-
 
     # Nodejs
     install -d node/${_nodever}
