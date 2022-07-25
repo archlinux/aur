@@ -2,7 +2,7 @@
 # Maintainer: Andy Bao <contact at andybao dot me>
 
 pkgname="pterodactyl-wings-bin"
-pkgver=1.6.4
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="The server control plane for Pterodactyl Panel - binary package"
 url="https://pterodactyl.io/"
@@ -16,8 +16,8 @@ source=("${pkgname/-bin/}.service")
 source_x86_64=("${pkgname/-bin/}-$CARCH::https://github.com/pterodactyl/wings/releases/download/v$pkgver/wings_linux_amd64")
 source_aarch64=("${pkgname/-bin/}-$CARCH::https://github.com/pterodactyl/wings/releases/download/v$pkgver/wings_linux_arm64")
 sha256sums=('62dfff25f9bdae4769f4201ed30e7c2bfca54611bee75512c5626e74c764f46e')
-sha256sums_x86_64=('1ceb797aea7797732e33247a803d0a875fa74c151f0e9a9d0fb3041a1129261f')
-sha256sums_aarch64=('e67dfe79579e9c91d3bc59642dc714b9d819af1fb286e6c7036efa3028a29898')
+sha256sums_x86_64=('70f0f2bec282ecd7e4b02eace7db20db14c0ff240717bb6e177f188e2157a7a4')
+sha256sums_aarch64=('41f640728dad72175b99ef87454bb8dfa70f6e2e5c42f0aba2071d305c28f6fa')
 
 package(){
  install -d 640 "$pkgdir/etc/pterodactyl"
