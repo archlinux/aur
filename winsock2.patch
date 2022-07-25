@@ -1,0 +1,127 @@
+--- lame-3.100/configure	2017-08-15 17:17:12.000000000 +0200
++++ patched/configure	2022-07-25 10:07:53.030000709 +0200
+@@ -14985,58 +14985,17 @@
+ done
+ 
+ if test $ac_cv_func_socket = no; then
+-	# maybe it is in libsocket
+-	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for socket in -lsocket" >&5
+-$as_echo_n "checking for socket in -lsocket... " >&6; }
+-if ${ac_cv_lib_socket_socket+:} false; then :
+-  $as_echo_n "(cached) " >&6
+-else
+-  ac_check_lib_save_LIBS=$LIBS
+-LIBS="-lsocket  $LIBS"
+-cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+-/* end confdefs.h.  */
++    ac_fn_c_check_header_compile "$LINENO" "winsock2.h" "ac_cv_header_winsock2_h" "$ac_includes_default"
++if test "x$ac_cv_header_winsock2_h" = xyes
++then :
++  printf "%s\n" "#define HAVE_WINSOCK2_H 1" >>confdefs.h
+ 
+-/* Override any GCC internal prototype to avoid an error.
+-   Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-#ifdef __cplusplus
+-extern "C"
+-#endif
+-char socket ();
+-int
+-main ()
+-{
+-return socket ();
+-  ;
+-  return 0;
+-}
+-_ACEOF
+-if ac_fn_c_try_link "$LINENO"; then :
+-  ac_cv_lib_socket_socket=yes
+-else
+-  ac_cv_lib_socket_socket=no
+-fi
+-rm -f core conftest.err conftest.$ac_objext \
+-    conftest$ac_exeext conftest.$ac_ext
+-LIBS=$ac_check_lib_save_LIBS
+-fi
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_socket_socket" >&5
+-$as_echo "$ac_cv_lib_socket_socket" >&6; }
+-if test "x$ac_cv_lib_socket_socket" = xyes; then :
+-  $as_echo "#define HAVE_SOCKET 1" >>confdefs.h
+-
+-	LIBS="$LIBS -lsocket"
+ fi
+ 
+-	if test "X${ac_cv_lib_socket_socket}" != "Xyes"; then
+-		SOCKETFUNCTION=NO
+-	else
+-		case ${host_os} in
+-		*solaris*)
+-			LIBS="$LIBS -lnsl"
+-			;;
+-		esac
+-	fi
++                LIBS="$LIBS -lws2_32"
++    if test "${ac_cv_header_winsock2_h}" != "yes"; then
++    	SOCKETFUNCTION=NO
++    fi
+ fi
+ 
+ CFLAGS=${CFLAGS}
+--- lame-3.100/configure.in	2017-08-15 17:16:31.000000000 +0200
++++ patched/configure.in	2022-07-25 09:40:28.673334052 +0200
+@@ -385,20 +385,32 @@
+ SOCKETFUNCTION=unknown
+ AC_CHECK_FUNCS(socket)
+ if test $ac_cv_func_socket = no; then
+-	# maybe it is in libsocket
+-	AC_CHECK_LIB(socket, socket, [AC_DEFINE(HAVE_SOCKET)
+-	LIBS="$LIBS -lsocket"])
+-	if test "X${ac_cv_lib_socket_socket}" != "Xyes"; then
+-		SOCKETFUNCTION=NO
+-	else
+-		case ${host_os} in
+-		*solaris*)
+-			LIBS="$LIBS -lnsl"
+-			;;
+-		esac
+-	fi
++    AC_CHECK_HEADERS(winsock2.h)
++    dnl does not work
++    dnl AC_CHECK_LIB(ws2_32, socket, [AC_DEFINE(HAVE_SOCKET)
++    dnl LIBS="$LIBS -lws2_32"])
++    LIBS="$LIBS -lws2_32"
++    if test "${ac_cv_header_winsock2_h}" != "yes"; then
++    	SOCKETFUNCTION=NO
++    fi
+ fi
+ 
++dnl AC_CHECK_FUNCS(socket)
++dnl if test $ac_cv_func_socket = no; then
++dnl 	# maybe it is in libsocket
++dnl 	AC_CHECK_LIB(socket, socket, [AC_DEFINE(HAVE_SOCKET)
++dnl 	LIBS="$LIBS -lsocket"])
++dnl 	if test "X${ac_cv_lib_socket_socket}" != "Xyes"; then
++dnl 		SOCKETFUNCTION=NO
++dnl 	else
++dnl 		case ${host_os} in
++dnl 		*solaris*)
++dnl 			LIBS="$LIBS -lnsl"
++dnl 			;;
++dnl 		esac
++dnl 	fi
++dnl fi
++
+ dnl Initialize configuration variables for the Makefile
+ CFLAGS=${CFLAGS}
+ CONFIG_DEFS=${CONFIG_DEFS}
+--- lame-3.100/frontend/rtp.c	2011-05-07 18:05:17.000000000 +0200
++++ patched/frontend/rtp.c	2022-07-25 09:48:28.020000713 +0200
+@@ -159,7 +159,7 @@
+ 
+ #else
+ 
+-#include <Winsock2.h>
++#include <winsock2.h>
+ #ifndef IP_MULTICAST_TTL
+ #define IP_MULTICAST_TTL 3
+ #endif
