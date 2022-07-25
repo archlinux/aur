@@ -1,0 +1,6 @@
+*.zst
+*.log
+*.tar.gz
+remindme
+pkg
+src
