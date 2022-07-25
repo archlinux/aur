@@ -2,22 +2,23 @@
 # Co-Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 # Contributor: Eli Schwartz
 pkgname=smile
-pkgver=1.5.7
+pkgver=1.6.2
+_commit=0891189b186d92c451dea684e6af6e5dedee2b4d
 pkgrel=1
 pkgdesc="An emoji picker with custom tags support"
 arch=('any')
 url="https://github.com/mijorus/smile"
 license=('GPL3')
 depends=('libwnck3' 'python-manimpango')
-makedepends=('meson')
+makedepends=('git' 'meson')
 checkdepends=('appstream-glib' 'desktop-file-utils')
 conflicts=("$pkgname-emoji-picker")
 replaces=("$pkgname-emoji-picker")
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('516daac821e88926e7e0b37d3f08df3490adb11683f807cc61504ef52997fcbf')
+source=("git+$url.git#commit=$_commit")
+sha256sums=('SKIP')
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   sed -i 's/MESON_INSTALL_PREFIX/MESON_INSTALL_DESTDIR_PREFIX/g' \
     build-aux/meson/emoji_list/generate_emoji_dict.py
 
@@ -26,7 +27,7 @@ prepare() {
 }
 
 build() {
-  arch-meson "$pkgname-$pkgver" build
+  arch-meson "$pkgname" build
   meson compile -C build
 }
 
