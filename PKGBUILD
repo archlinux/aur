@@ -3,14 +3,14 @@
 pkgname=patchouli-forge
 pkgver=0.0.75
 minver=1.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Patchouli is a mod that aims to provide easy to implement, data-driven documentation for minecraft modders and modpack makers alike."
 arch=('any')
 url='https://www.curseforge.com/minecraft/mc-mods/patchouli'
 source=(https://github.com/VazkiiMods/Patchouli/blob/$minver.x/LICENSE
         https://mediafiles.forgecdn.net/files/3877/555/Patchouli-1.19-75.jar)
 license=('MIT')
-depends=(minecraft-hooks forge-server)
+depends=(forge-hooks forge-server)
 provides=(patchouli=$pkgver)
 noextract=(Patchouli-$minver-75.jar)
 groups=(forge-mods minecraft-mods)
