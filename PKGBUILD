@@ -3,13 +3,13 @@
 pkgname=libmarble-git
 _pkgname=marble
 pkgver=1.3.0.r4.g6dcc6fe
-pkgrel=2
+pkgrel=3
 pkgdesc="Custom GTK library"
 arch=('x86_64')
 url="https://gitlab.com/raggesilver/marble"
 license=('GPL3')
 depends=('glib2' 'gtk4')
-makedepends=('git' 'meson' 'vala')
+makedepends=('git' 'meson' 'gobject-introspection' 'python' 'vala')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(git+$url.git#branch=wip/gtk4)
