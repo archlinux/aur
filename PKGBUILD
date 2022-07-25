@@ -3,9 +3,9 @@
 pkgname=wayclip
 pkgver=0.3
 pkgrel=2
-pkgdesc='Wayland clipboard utility'
+pkgdesc="Wayland clipboard utility"
 arch=('x86_64')
-url='https://git.sr.ht/~noocsharp/wayclip'
+url="https://git.sr.ht/~noocsharp/wayclip"
 license=('ISC')
 depends=('wlroots')
 makedepends=('wayland')
