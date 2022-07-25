@@ -1,6 +1,6 @@
 pkgbase = ldr-translate-gtk
 	pkgdesc = 一个翻译软件，更适合gnome桌面，专注文献翻译，可以截图翻译、复制翻译等，顺带显示网速等系统信息
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/yuhldr/ldr-translate
 	arch = x86_64
@@ -8,11 +8,12 @@ pkgbase = ldr-translate-gtk
 	license = GPL
 	depends = make
 	depends = python
-	depends = python-pip
 	depends = libappindicator-gtk3
+	depends = python-psutil
+	depends = python-requests
 	optdepends = gnome-shell-extension-appindicator
 	conflicts = ldr-translate-qt
-	source = https://github.com/yuhldr/ldr-translate/archive/refs/tags/v1.4.0.tar.gz
-	md5sums = 457eb424ba171da1a9addd698ddc7263
+	source = https://github.com/yuhldr/ldr-translate/archive/refs/tags/v1.5.0.tar.gz
+	md5sums = c4c894d9da1f87cd4344d61d9d11c1c9
 
 pkgname = ldr-translate-gtk
