@@ -3,7 +3,7 @@
 pkgname=hopper4
 _pkgname=hopperv4
 pkgver=4.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Reverse engineering tool that lets you disassemble, decompile and debug your applications"
 arch=(x86_64)
 url="https://www.hopperapp.com/"
@@ -22,6 +22,10 @@ package() {
   # Copy package content
   cp -r "$srcdir"/opt "$pkgdir"/opt
   cp -r "$srcdir"/usr "$pkgdir"/usr
+
+  # CLI symlink
+  install -d "$pkgdir"/usr/bin
+  ln -s /opt/hopper-v4/bin/Hopper "$pkgdir"/usr/bin/hopper
 
   # Move docs to /opt
   mv "$pkgdir"/usr/share/doc/hopperv4 "$pkgdir"/opt/hopper-v4/doc

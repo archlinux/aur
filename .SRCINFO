@@ -1,7 +1,7 @@
 pkgbase = hopper4
 	pkgdesc = Reverse engineering tool that lets you disassemble, decompile and debug your applications
 	pkgver = 4.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.hopperapp.com/
 	changelog = ChangeLog
 	arch = x86_64
