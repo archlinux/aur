@@ -7,13 +7,14 @@
 pkgname=java-mango
 _pkgname=${pkgname#java-}
 pkgver=4.1
-pkgrel=5
+pkgrel=6
 pkgdesc='A viewer for medical research images'
 arch=('any')
 url='http://ric.uthscsa.edu/mango/index.html'
 license=('custom:RII-UTHSCSA')
-depends=('hicolor-icon-theme' 'jre8-openjdk')
-makedepends=('imagemagick')
+changelog=ChangeLog
+depends=(hicolor-icon-theme jre8-openjdk)
+makedepends=(imagemagick)
 options=(!strip)
 source=(
     "${pkgname}-${pkgver}.zip::http://ric.uthscsa.edu/$_pkgname/downloads/${_pkgname}_unix.zip"

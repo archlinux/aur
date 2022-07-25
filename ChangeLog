@@ -1,0 +1,434 @@
+Version 4.1 (2019-03-24)
+* On the "Window" menu of the image viewer we changed “Minimize” to “Dock”, to better describe the action.
+* Added a "Copy All" button to the Mouse & Keyboard Reference in Mango's Help menu. The copy can be pasted into a text document.
+* Added statistics for a point ROI as SD = 0, Size = voxel volume, and Count = 1.
+* Added several morphologic operations to the ROI pop-up menu: Dilate, Erode & Shrink Wrap.
+* Added Clear-, Threshold-, and Dilate-ROI options to the Operations button in the multi-feature segmentation plugin.
+* Added centroid to statistics reported for surfaces.
+* When creating a layout for 'Slices' Mango now updates the rows and columns when switching to a different section in the main viewer (axial, sagittal, coronal).
+* Updated behavior, paradigm, and disease analysis plugins.
+* Changed the significance threshold for paradigm analysis to z=3.3 instead of 3.0.  The threshold of z=3.0 is still used for behavior and disease analyses.
+* Other bug fixes and enhancements.
+
+Version 4.0.1 (2016-11-18)
+* Minor fixes and enhancements.
+
+Version 4.0 (2016-06-30)
+* Surfaces exported in GIFTI format can now include color data.
+* Surfaces exported in VTK format are now compatible with FSL.
+* "Create Webpage" feature now supports surfaces.
+* Replaced "Log Point" with "Bookmark" in image context menus. Bookmarked locations can be stored in-file.
+* Mango now automatically switches to "world mode" when appropriate.
+* Surface viewer now supports context menus.
+* Many other fixes and enhancements.
+
+Version 3.8 (2016-02-17)
+* The context menu for simple ROI shapes (cubes and spheres) now has a 'Move...' option.
+* Surface viewer now has dynamic ruler and angle tools.
+* Statistics window is now broken up into two separate 'Global Statistics' and 'Point Statistics' tables. 'Point Statistics' displays atlas labels.
+* User can now right-click on an image to display a context menu with 'Analyze' and 'Log' options.
+* New 'Zoom Toggle' option in View menu (also triggered by 'z' key). New 'Link Viewer Zoom' option in Toolbox.
+* Improved NIFTI support.
+* Improved DICOM support.
+* Other minor fixes and enhancements.
+
+Version 3.7 (2015-11-23)
+* Performance improvements throughout the application.
+* Other minor fixes and enhancements.
+
+Version 3.6 (2015-09-21)
+* More support for compressed DICOM formats.
+* Support for more DICOM datatypes, including RGB and color palettes.
+* Support for DICOM overlays.
+* Edit Header feature now supports DICOM.
+* There is now an Edit button in the Image Info header tab.
+* There is now an Anonymize button in the Edit Header dialog.
+* NIFTI RGB datatype support.
+* UI slider now displayed for series data.
+* Other minor fixes and enhancements.
+
+Version 3.5.1 (2015-07-27)
+* Fixed issue that caused OS X 10.10.4 to be mistaken for OS X 10.4.
+* Fixed issue that caused file selection to not work in Create Layout.
+* Other minor fixes and enhancements.
+
+Version 3.5 (2015-06-05)
+* Added support for scripting (see 'Scripts' in the Plugins menu or 'Script Manager' in the Options menu).
+* Added 'Edit Header' to the Open menu. Currently supports NIFTI and Analyze formats.
+* Added support for NIFTI-2. Added new option flag '-2' to the command-line utility 'convert2nii'.
+* Other minor fixes and enhancements.
+
+Version 3.4 (2014-12-04)
+* Added 'Create Video' in the Image menu. This feature can be used to create animated or free-form recordings of the slice, surface, and projection viewers.
+* Added 'Create Webpage' in the Image menu. This feature can be used to create a webpage of an image with an interactive viewer, including overlays and atlas.
+* Added 'Create Snapshot' in the Image menu. This feature can be used to create snapshots of the slice, surface, and projection viewers.
+* Added 'Create Layout' in the Image menu. This feature replaces 'Generate Layouts'.
+* Other minor fixes and enhancements.
+
+Version 3.3 (2014-11-03)
+* Improved rendering performance.
+* Improved keyboard control.
+* Improved function key support.
+* Improved surface measurement performance.
+* Dynamic ROI rendering in surface viewer.
+* Embedded JRE support.
+
+Version 3.2.7 (2014-09-25)
+* Fixed an issue with loading a ROI that contained metadata.
+* Fixed an issue with loading an older ROI format.
+* Other minor fixes and enhancements.
+
+Version 3.2.6 (2014-09-15)
+* Fixed issue that might cause Mango to fail to start in OS X if outdated plugins were present.
+* Improved NIFTI transform support.
+* Other minor fixes and enhancements.
+
+Version 3.2.5 (2014-09-08)
+* Changes to support.
+* Minor fixes and enhancements.
+
+Version 3.2.4 (2014-08-29)
+* Fixed an issue preventing first-time installation of Mango on Windows.
+
+Version 3.2.3 (2014-08-22)
+* Fixed an issue that may cause some non-Mango ROI images to load as a Mango ROI when using 'Load ROI'.
+* Fixed an issue in which using 'Save As' would not update the window title bar.
+* Other minor fixes and enhancements.
+
+Version 3.2.2 (2014-08-18)
+* Added MINC read support.
+* Loading a Mango ROI onto an image of different dimensions now preserves the ROI colors.
+* For single color Mango ROIs, when loaded, the ROI is set to the current color.
+* Added DICOM Enhanced MR Image (1.2.840.10008.5.1.4.1.1.4.1) export format.
+* Added DICOM Enhanced PET Image (1.2.840.10008.5.1.4.1.1.130) export format.
+* In the Histogram, 'Generate ROI' will now generate ROIs for all highlighted color regions at once.
+* Fixed 'Open Raw Image' dialog.
+* Other minor fixes and enhancements.
+
+Version 3.2.1 (2014-07-17)
+* Fixed bug preventing Series tool from working.
+
+Version 3.2 (2014-07-15)
+* Added support for dynamic ROI series (see Threshold to ROI).
+* Added support for up to 64 ROI colors.
+* Enhanced support for ROI labels throughout the application. Many features now support adding or editing ROI labels.
+* Added support for series labels (see Series Labels).
+* ROI metadata format (including labels) is now XML-based. More information can be found here.
+* Added ROI Inspector. This was the 'Navigate ROIs' tool, with a better design and support for labels. Repeatedly clicking a ROI mask color button now will increment to the next slice containing the ROI.
+* Added Find ROI Components tool. This tool can be used to split a ROI into its constituent components.
+* Changes to overlay display range are now saved with File > Save or File > Save Overlays.
+* ROI mask, line and points have right-click context menus now with basic ROI functions.
+* Image series can now be saved in DICOM format. One DICOM file per image volume will be created.
+* Support for Apple hardware retina screens.
+* Both Mac and Windows installers are now signed with our University certificate.
+* In the Windows installer, you can now choose to (not) associate known file types. You can now choose a destination drive.
+* 'Link Navigation' will now sync series index across image series.
+* Fixed bug in 'Add New Image' in which it would fail to create a series image (only single image volumes would work).
+
+Version 3.1.2 (2014-03-18)
+* Merged TIFF, AFNI, MicroPET and Talairach Loader plugins into main app.
+* Added support for ROI labeling (see ROI color menu drop down). Labels saved in ROI file; displayed in analyses when appropriate.
+* Improved Statistics Tool.
+* 'Open DICOM Folder' now supports searching recursively into subfolders.
+* Cleaned up Plugin API.
+* Fixed issue that may cause OS X firewall warning "Allow" option not to work.
+* Other fixes and enhancements.
+
+Version 3.1.1 (2014-02-06)
+* Added file associations to Windows installer.
+* Better handling of precision when converting between signed and unsigned datatypes.
+* Other fixes and enhancements.
+
+Version 3.1 (2014-01-24)
+* New Image Browser: overall better performance, support for surface files, and drag-and-drop to viewer.
+* Can now export data in DICOM format. There is now a 'convert2dcm' command-line utility.
+* Improved DICOM import support.
+* Surface viewer: added the ability to select an individual surface to save; better support for negative ranges.
+* 'Load Negatives' option now in the Toolbox overlay menu. This will add a new overlay of the same volume in the negative range.
+* Improved 'Color Table Manager'.
+* Console: added 'Show Logs' button; memory usage meters (for both Java and direct memory).
+* Other fixes and enhancements.
+
+Version 3.0.4 (2013-11-19)
+* Fixed a memory leak in the Image Browser.
+* Fixed an issue causing the time unit type to be "unknown" when working with a DICOM series.
+
+Version 3.0.3 (2013-11-14)
+* Added surface viewer 'Better Graphics' mode for supported hardware with improved rendering and performance.
+* Better performance when the scroll wheel changes the current slice. Fixed issue in which scrolling through slices wasn't triggering the "Link Navigation" feature.
+* Fixed issue causing some FSL atlases to not work correctly.
+* Improved DICOM support. Improved handling of Siemens Mosaic images.
+* The 'Install Utilities' feature now works in Windows. It will install and make available all the utility scripts at the DOS command-line.
+* Other minor fixes and enhancements.
+
+Version 3.0.2 (2013-09-10)
+* Fixed an issue causing surface build to fail when data is DICOM format.
+* Minor enhancement to support some kinds of RGB image data.
+
+Version 3.0.1 (2013-09-05)
+* Improved Siemens mosaic support.
+* Fixed an issue causing some DICOM images not to load.
+* Fixed an issue causing surface viewer not to work properly in some cases.
+* Fixed an issue with the "magic wand" tool causing it in some cases not to detect the shape selected.
+
+Version 3 (2013-08-30)
+* Improved surface rendering support (OpenGL).
+* Surface coordinates now update dynamically with mouse.
+* Surface data can now be imported/exported in VTK (legacy) formats.
+* Surface data can now be imported/exported in GIFTI (.surf.gii) format.
+* Added option to animate surface.
+* Added more options to position surface rendering as well as menu options to toggle cut planes.
+* Improved NIFTI file format support.
+* Brightness and contrast can now be controlled in the slice viewer by right-click and dragging with the mouse.
+* Adding overlays now defaults to the last used transparency level.
+* New projection viewer.
+* The 'resizer' command-line tool now supports reslicing.
+* Added 'Orthogonal (Wide)' view option.
+* Added 'Show File' option in the file menu which selects file in file system.
+* Loading ROIs will now navigate to the first slice that contains the ROI.
+* Preference added to toggle between using the scroll wheel for zooming or scrolling through slices.
+* Improved Siemens DICOM Mosaic support.
+* Improved developer tools.
+* Other fixes and enhancements.
+
+Version 2.6 (2012-05-21)
+* Added 'Open Sample Image' to Open menu of toolbox.
+* Added oblique cut plane option to surface viewer.
+* Transform tool improvements.
+* Added cluster rejection tool to Analysis menu.
+* Added Plugin Manager.
+* Histogram improvements.
+* Added DCMTK support.
+* Image Info improvements.
+* Other bug fixes and enhancements.
+
+Version 2.5 (2011-06-14)
+* Fixed issue causing Time-series dialog to not allow editing of text fields when an image is already open.
+* Improved performance of Image Browser.
+* NaN added to Image Calculator. Surface viewer now treats NaN as background.
+* Added shrink-wrap options to surface building. Added Default, Brain, and Custom presets.
+* Fixed issue found when using Make Stat Image from Time-series for images with slice-wise datascales.
+* Fixed issue sometimes causing '64-bit mode' switch to not work in Windows.
+* Replaced 'ROI Line Length' and 'ROI Line Angle' with 'Ruler' and 'Angle' tools in the View menu.
+* Statistics coordinates now change depending on image or world space mode.
+* Added Logical Analysis tool.
+* Added a workaround for an Apple bug causing file extensions to be dropped.
+* Mango will attempt to locate an FSL installation and automatically make its atlases available to the user.
+* Application now contains built-in Talairach and MNI 1mm atlases.
+* Atlas selection has moved from the Toolbox Options menu to a drop-down of the coordinate button.
+* When loading ROIs, bit planes are not overwritten if the empty in the loading image.
+* ROI save folder now defaults to base image folder.
+* Fixed issue in which an Analyze image could be corrupted if saving in unsupported orientation.
+* Improved line and point selection. Fixed point copying/pasting issue.
+* Added option to automatically update range when navigating through a time-series.
+* The command-line 'mango' script now accepts image URLs.
+* Added custom URL protocol mango://
+* Fixed issue in which progress bar may sometimes not appear.
+
+Version 2.4 (2011-03-14)
+* Added option for NIFTI time-series to load one, all, or a subset of timepoints.
+* Fixed issue which was preventing loading of extremely large time-series.
+* Added 'Sync to iPad' in the Options menu.
+* Added 'Count ROI' to the Analysis menu which displays point and line counts, used ROI masks, and buttons to navigate the viewer to these ROIs.
+* Added '-k' option to command-line 'mango' which will quit the application immediately.
+* Added 'All Cut Planes' option to the surface viewer to turn on/off all cut planes simultaneously.
+* Added 'Keyboard Reference' to the Help menu.
+* Added means to increment/decrement main slice view with left hand (keys g and v).
+* Other minor bug fixes and enhancements.
+
+Version 2.3.2 (2010-07-22)
+* Fixed 'Go To Coordinate' bug.
+* Fixed an issue when switching to radiological mode, in which the orientation markers would not update until the application was restarted.
+
+Version 2.3.1 (2010-07-09)
+* Command-line utility 'mango' now contains option (-q) to quit currently running instance.
+* Found work-around for issue that may cause OpenGL crash in Mac OS X.
+* Removed limit on number of threads used in surface building on 32-bit platform.
+* Fixed issue with overlays not being painted in correct position initially if transform is being used.
+* Loaded overlays are now added to surface when surface is loaded from file.
+
+Version 2.3 (2010-05-13)
+* Improved syncing of overlays between slice viewer and surface viewer. Overlays are now automatically added/removed based on actions in the slice viewer. Overlay parameters can be controlled via the toolbox.
+* Surface files can now be opened directly from the open dialog and need not be associated with a slice viewer. It is recommended that new surface files be saved for full compatibility with this feature.
+* ROIs are now saved in NIFTI format. Removed 'Export ROI'. Combined 'Load ROI' and 'Import ROI'. Any image file can now be loaded as an ROI. Added 'Load as ROI' button to image browser. Click here to see a video tutorial of the new ROI format.
+* Added radiological mode. See preferences to select between radiological and neurological display modes.
+* Better support for dual-displays: toolbox can now be dragged across displays; viewers can be maximized based on the size of the current display.
+* Better support for 64-bit Java in Windows and Linux. Preferences performance tab now contains an option to select between 32 and 64-bit mode for Mango operation. 64-bit mode can use more memory and may use other more resource intensive operations.
+* Pressing shift while hovering over a surface line will now show a third point which can be grabbed and dragged to define the surface line's cut plane.
+* Slice views can now be panned by command-clicking or right-clicking and dragging. Zoomed slice views no longer auto-adjust when changing the current coordinate. All three slice views now react when one is zoomed or panned. Zoom amount is displayed in title bar.
+* Axial slices can be incremented with the single-quote button (up) and forward slash button (down). This mimics the functionality of 'page up' and 'page down': keys which are often not found on laptop keyboards.
+* Fixed issues when combining transforms and some surface viewer features (e.g., cut plane picking).
+* Fixed bug causing image offset to not be updated correctly when saving in some cases.
+* Console now shows more detailed platform info.
+* Improved support for variable slice spacing and variable timing.
+* DICOM folders can now be opened from the command-line using the 'mango' command.
+* Cleaned up look-and-feel and window issues across platforms. Better Windows 7 support.
+* Image calculator expression window will now expand for longer expressions.
+* Other minor fixes and changes.
+
+Version 2.2.1 (2010-02-02)
+* Minor improvements to surface line editing.
+* Fixed bug causing selection box to ignore ROI points in coronal and sagittal views.
+* Added Change Render Mode option to the file menu of the surface viewer (Windows only). This will allow the user to switch between OpenGL and DirectX mode for surface rendering -- depending on OS and hardware configuration, one may provide better support over the other.
+* Fixed bug causing Image Browser to list non-image files.
+* Improved DICOM support.
+
+Version 2.2 (2010-01-19)
+* Now double-clicking overlapping ROIs will select only the ROI of the current color. If none are of the current color, all are selected.
+* Improved DICOM support for 4D images.
+* Added ROI selection box feature.
+* Added resolution option to Build Surface dialog.
+* Added makeroi command-line utility.
+* Fixed bug sometimes causing Save ROI to not work correctly.
+* Fixed bug causing s-key ROI toggle to stop working.
+* Fixed bug causing Image Info to show header file size, instead of image file size.
+* Can now add/edit points and lines in surface viewer. Lines can be drawn along a surface. Lines and points can be synced with the slice viewer.
+* Added convex hull option to Threshold to ROI tool.
+* Added area and volume measurement options to surfaces. Both visible and cut-away sections can be measured.
+* Added Reset Position in surface Surface menu.
+* Added Save Position and Go To Saved Position in surface Surface menu. Position can be saved within surface file.
+* Added Position option to surface View menu.
+* Added applytransform and roi2nii command-line utilities.
+* Fixed bug found when exporting ROI from a time-series image, causing the ROI to have multiple frames.
+* Can now import color tables that use expressions.
+
+Version 2.1 (2009-10-07)
+* Fixed issues with the global window mode in the toolbox causing some images to not display correctly.
+* Fixed issue in Image Browser in which removing some DICOM files from a folder would not render remaining DICOM images correctly.
+* Fixed bug in which Statistics centroid calculation may be incorrect within an ROI for images that contained negative values.
+* Fixed keyboard focus bug.
+* Fixed bug in which changes to origin were not apparent in world space for transforms.
+* Now using Java3D version 1.5.2.
+* When in world mode, ROIs are now copied/pasted and imported relative to origin.
+* Fixed bug in Add New Image: col and row size were switched
+* Fixed cosmetic issues related to Java6 and Snow Leopard.
+* Plugin Manager: shows all loaded plugins and allows deletion of plugins from application.
+* Added vols2series command-line program.
+* New toolbox option: Open Online Image.
+* New viewer options: Load Online Overlay, Load Online ROI.
+* Added support for ImageLoader plugin type.
+* Statistics can now export data (CSV format).
+* Analysis tools now export data in CSV format.
+* Time-series analysis: selecting an ROI by double-clicking now updates.
+* Saving NIFTI files to directories with no write permission now gives error dialog.
+
+Version 2.0 (2009-04-05)
+* Converted world space to use standard image transforms instead of image-to-world transforms.
+* Fixed bug in Generate Layouts. No longer throws exceptions when creating layouts using more than three overlays.
+* Added ability to load 64-bit images (converted to 32-bit internally).
+* Fixed bug found when reslicing or filtering images that have data intercepts.
+* Fixed bug found when saving an image to a different size when a surface had been built.
+* Fixed bug in which the last slice of images would not be included when running statistics using "All Slices" option.
+* Added folder update functionality to Image Browser. Fixed issue with Image Browser in which sometimes an image that was saved with a new name would not appear in the list.
+* Fixed an issue found when closing an image while it was saving, causing Mango to hang.
+* Finished improving sinc interpolation efficiency (66% faster!).
+* Added 'Background' panel to main surface menu, allows the background color to be changed.
+* Base image surface and cut-plane slices now respond to changes of color table.
+* Added ability to have a transparent base image surface. Replaced transparency sliders in surface and shape color panels with an opaque/transparent radio button choice.
+* When using cut-plane slice data, now if image data is not below the color table range but is below the surface threshold range, it is made transparent so as to not hide the surface.
+* Fixed issue of the first slice of some images with floating point voxel sizes being corrupted when saving.
+* Fixed bug found when reloading raw images leading to an error. Now the reload menu option is disabled for raw images.
+* Fixed bug with "Make Statistical Image From Time-series".
+* Fixed a problem with Image Calculator in which running "acos", "asin", or "atan" would lead to unexpected results.
+* Fixed problem in which computers using other languages might encounter problem when certain functions parse numbers.
+* The min, max, and centroid buttons in the Statistics window now navigate the surface coordinate when clicked.
+* Added Overlay dialog to surface menu which can be used to create per-vertex surface colors based on image overlays. The surface coloring can be synced (or not) with the image overlay in the slice viewer.
+* The 'Find Surface Values' feature now works when in world mode. Building added shapes when in world mode now works properly.
+* Removing an overlay or changing the coordinate type (e.g., from index to world) now properly updates the surface when an overlay was being drawn in the cut plane image.
+* Fixed transparency bug in surface rendering. Now added shapes that use transparency will be transparent from all directions.
+* Added option to see surfaces as wireframes or points in the Lighting dialog.
+* Fixed an issue in which two Image Calculator calculations running simultaneously might corrupt each other.
+* Fixed an issue that may cause ROI dilate and erode operations to not display a progress meter.
+* Fixed a bug that in rare cases might cause a DICOM tag to not be parsed correctly, possibly displaying a corrupted image.
+* Fixed a bug that would cause an overlay with the same image dimensions but different voxel dimensions to overlay as if it had the same voxel dimensions.
+* Fixed a floating-point round-off issue that, in rare cases, might cause an end slice of an image to be zeroed out when saved.
+* Added F-key functionality to Surface window menu items. See Preferences.
+* Enabled 64-bit capability for Mango running in Mac OS X 10.5 (Leopard). Added an item in the toolbox options menu for Leopard users to enable/disable 64-bit mode.
+* Removed "world origin". Now the only origin used in the viewer is the image "anatomical" origin. See Origin on the edit menu.
+* Added Maintain Zero option to the miscellaneous tab in Save As. This option is enabled when Fit Precision is selected. It uses potentially less precision to store the data, but will ensure that zeros are preserved.
+* Better support for multi-frame DICOM images including "mosaic" images.
+* The file menu option Revert to Saved has been replaced with Reload and is now always enabled.
+* Surface viewer now responds to image transforms. This can be useful in making oblique cut planes.
+* DICOM data now reports correct TR in seconds.
+* Added support for DICOM time-series data in which the frame number is implicit.
+* Added a preview option in the reslice section of Save As.
+* Add ROI as Shape now defaults to 2D shapes when in single-slice mode.
+* The temporary MangoTempData directory is now created in the home folder on Windows, instead of "My Documents".
+* The viewer now navigates to the currently selected ROI in Time-series if it does not already intersect the current slice.
+* Removed options to import/export ROI as a text file.
+* Overlay data and generated ROIs used in Histogram are now limited by the current ROI when "Use ROI" is selected.
+* Centroid calculations are now based on absolute values.
+* When doing manual rotation in the Add/Edit Transform tool, the default behavior is now to rotate about the center of array space, while pressing shift will rotate about the crosshair.
+* Added an option to enable shift key toggling of an explicit range when using ROI tools.
+* Hidden overlays in the overlay stack menu, shown with a grey box, will now show their overlay icon when the mouse hovers over them.
+* Added Add Parametric Overlay to the file menu. This option will overlay both positive and negative range from an image.
+* Fixed a problem found when saving a DICOM image with slicewise data scales to NEMA format with a different data order, causing and error.
+* Double-clicking the middle slider thumb in the toolbox will now reset the thumbs to their maximum extents while leaving the range as it is, instead of also resetting the range. Triple-clicking will reset the range to the display range, instead of the image max/min range.
+* On Windows, if all windows are in the background, clicking a button or menu on the toolbox will now bring the toolbox and current viewer to the top of the system window stack.
+* Fixed the keyboard command for taking captures (command-P). This works now for both the viewer and surface windows.
+* Fixed a bug found when making new images from the Image Calculator while using an ROI condition, which would always result in a blank image.
+* Fixed a bug that was resetting the current transform to 0 anytime the transform tools window was opened.
+* Fixed a bug that might cause the Image Calculator text area to become inaccessible when using very long expressions.
+* Fixed a bug in which outdated menu options used for function keys would cause an error when resetting.
+* Added Associate File Types to the options menu. File types can be associated with the application via this utility on Mac OS X and Windows, including formats read by installed ReadableHeader and WritableHeader plugins. Associated file types can be opened in the current instance of the application by double-clicking or dragging onto the dock icon (Mac) or desktop shortcut (Windows). If the application is not currently running, it will first be opened and then the image loaded.
+* Viewer info now shows the correct number of seconds per timepoint after running Make Statistical Image from Time-series.
+* Add/Edit Color Table now has an improved interface: color knots can be added and moved with the mouse; a new button has been added that opens a color wheel; an option is provided to display knot values in 8-bit range (0 to 255) or percent. Color tables can now be created using expressions. Expressions can be used only on color tables that do not have interior knots. Added a new built-in color table -- Grayscale (Compressed) -- as an example of an expression-based color table.
+* Fixed bug found when saving images from a viewer that had overlays in which the overlays were not accessible after the file was saved.
+* Save ROI now opens a file dialog, instead of always saving to a default file.
+* Reorganized ROI tool options for better clarity.
+* Made the dilate and erode wand tools the same option so that it would be easier to switch between them. Default is to dilate, pressing shift when clicking will erode.
+
+Version 0.9.10 (2008-03-12)
+* Fixed a problem found when loading DICOM files with very short names (less than 5 characters) or DICOM files with non-standard extensions.
+* Added Add ROI as Shape to the ROI menu. It can be used to create ROI of a certain shape (sphere, cube) and size.
+* Image Calculator will now stay open during a calculation. Also added a "history" button that will maintain a list of the past ten operations.
+* Tabbing between viewers that are the same size will automatically move the mouse to the same location in the newly activated viewer. This can be useful in quickly comparing voxel values at the same location in two or more viewers.
+* Fixed bug with convert2nii, convert2des, and convert2avw in which data that was not XYZ data order would not be converted correctly.
+* Fixed bug in Make Statistical Image from Time-series in which specifying less than the full range of timepoints would cause an error.
+* Histogram now exports data at its full precision, instead of rounding, as it does in the display.
+* Added Surface Format plugin interface which can be used to specify new import/export formats for surface data. Created a BrainVisa Surface Format as an example.
+* Added surface rendering functionality. It can be found in the Image menu. The loaded image, overlays, and ROIs can all be added as surfaces. Options are provided to apply orthogonal cut planes. The position of the cut planes is controlled by the orthogonal viewer. Options are provided to control lighting and color attributes. Surface data can be saved and loaded. Supports Java plugins. Shift-clicking on the surface or cut plane will display the coordinate of intersection. If an atlas is currently selected, it will show the atlas labels as well.
+* Turned off the ability to rename files in file browsers, which proved to more annoying than helpful.
+* Can now save (command-S) WritableHeader format images, instead of always having to use Save As. Command-line programs can now use plugins that implement ReadableHeader. For example, convert2nii can convert to NIFTI any format it can read, including ReadableHeader plugins.
+* Cross-section and Time-series analysis tools now have option to change y-axis. When the mouse moves over y-axis area, a selection box appears. Double-clicking the selection box will open a dialog.
+* Can now toggle between millimeter size and number of voxels in Statistics.
+* Statistics goto button now updates the viewer correctly when zoomed in.
+* Fixed bug in the Image Browser caused when an image was opened, then closed, then attempting to overlay an image on the closed image reference.
+* Fixed bug that was causing error message dialogs to always say "Out of Memory" when an image would not load.
+* Fixed bug that was causing spatial/temporal unit codes and TE parameters to not be stored in header files when saved to a new file.
+* Removed all options from Add New Image except image and voxel dimensions, since it now makes a 4-byte floating point buffer always. Also added an option to specify a name.
+* Many changes to working buffer: eliminated work files, all working data is now stored internally. Better reuse of working buffers when saving images, which may help in the case of very large (near capacity) files.
+* Fixed bug in shrink wrapping tools which, only in axial slice direction, would ignore data scales.
+* Fixed bug in Open Raw Image that caused file offsets less than maximum possible to be replaced by the maximum.
+* Mouse scroll wheel can now be used to zoom. Reversed the zoom direction: alt-dragging down or moving the scroll wheel down (toward the user) zooms in, alt-dragging up or moving the scroll wheel up (away from the user) zooms out.
+* Camera buttons can now be shift-clicked to select a folder destination and filename. Default is still to auto-name and save file.
+* Add 6-9-12 parameter feature to Landmark Registration.
+* Fixed bug with cutting (command-X) a selected ROI while in single-slice mode, in which the single slice was copied but the entire VOI removed.
+* Changed ROI selection behavior: now double-clicking ROIs will toggle selection, instead of shift-clicking.
+* Many changes to toolbox ROI editing tools menu: better descriptions of tools and better organization of options.
+* Fixed bug with how Mac OS X Leopard handled filenames in the Save As dialog.
+* Hidden overlays are no longer unhidden when a new overlay is added.
+* Fixed bug in which F2 action was not being saved in preferences.
+* Statistics table now responds to selection (command-A), copying (command-C), and deleting (Delete) keys.
+
+Version 0.9.9 (2007-12-03)
+* Added Set Tool Slice Range to the ROI menu.
+* In Unix/Linux version, default start directory is now always current directory, ignores last accessed directory saved in preferences.
+* The ROI editing button in the toolbox now has a colored border when the viewer is in Smart Tools mode.
+* Much smoother cursor response when ROI tracing and painting, particularly when zoomed in.
+* Added Install Utilities to the Options menu. This tool can be used to facilitate the installation of command-line utilities included with Mango. It creates the executable scripts to run the utilities as well as updates shell initialization files.
+* Many formatting changes to improve cross-platform appearance and behavior. Successfully tested on Mac OS X Tiger (Java 5), Mac OS X Leopard (Java 5), Windows XP (Java 5 and 6), and Linux (Java 5 and 6).
+* Added WritableHeader plugin interface. A class that implements WritableHeader will appear as a header type option in the Save As dialog. This interface extends ReadableHeader.
+* Added Close All item to Quit menu. Selecting the Quit menu will quit the program if no viewers are open.
+* Added "% Max" options to Shrink Wrap.
+* Added DefaultVolume to the plugin classes, which can instantiate a volume from a file on disk. Added some convenience methods to ImageVolume for getting image and voxel dimensions as well as origin (all with consideration of image orientation).
+* Added makePluginOverlay() to ViewerController for painting on the viewer image by a plugin. Also replaced getTalairachLabel() and getMNILabel() in ViewerController with getAtlas().
+* Added Atlas interface to the plugin classes. Four methods: loadAtlas(), getLabel(), getOptionsPanel(), and getName(). Removed built-in support for the Talairach Daemon labels and instead made a class that implements Atlas.
+* ROI and analysis tools now operate on the currently selected image in the image stack (shown in the toolbar) instead of always operating on the base image: for example, if an overlay is selected, creating an ROI using Threshold to ROI will make an ROI based on the overlay; if Use Smart Tools is selected and the current image is an overlay, painting an ROI over a thresholded overlay will snap it to the shape of the overlay; if an overlay is selected and Histogram is run, the resulting data will be from the overlay volume.
+* Save As can now reslice in temporal dimension.
+* Make Statistical Image from Time-series now has "Group" option (e.g., a time-series of a 180 images can be made into a time-series of 90 images by grouping and taking the mean of every 2 consecutive images).
+* Added ability to open, overlay, and refresh images from the command-line: command-line program communicates with an open instance of the application; if application is not open, command-line program launches it with the images to open as arguments.
+* Added "Data Scales" and "Data Intercepts" to Open Raw Image: these fields can either be filled in with a number (global data scale or intercept) or a file reference (scale or intercept per line for each slice in the volume or time-series).
+* Added "File Size" to Image Info.
+* Added "Check for Update" in Preferences with options to check automatically (once, on start up) or to check manually only; removed "Center of Rotation" option in Preferences: pressing shift before dragging a transform rotation slider will rotate about the center of array space, otherwise rotations are about the crosshairs intersection.
+* Added Current Overlay and All Overlays to the View menu: if neither option is selected, all overlays will be hidden.
