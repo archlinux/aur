@@ -3,17 +3,17 @@
 # Co-Maintainer: Zachary Matthews <zacharymatt5@gmail.com>
 
 pkgname=ylva-git
-pkgver=1.6.r21.g3fe428c
-pkgrel=1
+pkgver=1.7
+pkgrel=2
 pkgdesc='Command line password manager.'
 arch=('i686' 'x86_64')
-url='https://www.ylvapasswordmanager.com/'
+url='https://github.com/nrosvall/ylva'
 license=('GPL')
 depends=('openssl' 'sqlite' 'qrcodegen')
 makedepends=('git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
-source=("git+https://github.com/nrosvall/${pkgname%-git}.git")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
