@@ -1,10 +1,11 @@
 pkgbase = blockbench-bin
 	pkgdesc = A free, modern block model editor.
 	pkgver = 4.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://blockbench.net/
 	arch = x86_64
 	license = MIT
+	makedepends = gzip
 	depends = gtk3
 	depends = libnotify
 	depends = nss
