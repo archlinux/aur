@@ -8,7 +8,7 @@ pkgbase="python-${_pkgname}-rocm"
 pkgname=("${pkgbase}" "python-pytorch-opt-rocm")
 pkgver=1.12.0
 _pkgver=1.12.0
-pkgrel=3
+pkgrel=4
 _pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -222,13 +222,19 @@ prepare() {
   export TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
   export TORCH_CUDA_ARCH_LIST="5.2;6.0;6.2;7.0;7.2;7.5;8.0;8.6;8.6+PTX"  #include latest PTX for future compat
   export OVERRIDE_TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST}"
-  # Uncomment this when you want to specify specific ROCM_ARCH(s)
-  # Otherwise pytorch will automatically detect your architecture
-  # See: https://github.com/pytorch/pytorch/commit/8dfdc3df82ee34a83c1a0a9c59de8db195591a6b
-  # export PYTORCH_ROCM_ARCH="gfx803;gfx900;gfx906;gfx908"
 }
 
 build() {
+  # PYTORCH_ROCM_ARCH is an env var used to populate the PYTORCH_ROCM_ARCH export
+  # PYTORCH_ROCM_ARCH="gfx908"
+  # NOTE: It's your responbility to validate the value of $PYTORCH_ROCM_ARCH.
+  # If unsure, don't set it and several architectures will be built.
+  if [[ -n "$PYTORCH_ROCM_ARCH" ]]; then
+    export PYTORCH_ROCM_ARCH="$PYTORCH_ROCM_ARCH"
+  else
+    export PYTORCH_ROCM_ARCH="gfx803;gfx900;gfx906;gfx908"
+  fi
+
   echo "Building with rocm and without non-x86-64 optimizations"
   export USE_CUDA=0
   export USE_CUDNN=0
