@@ -57,13 +57,13 @@ pkgbase = liberica-jdk-17-full-bin
 	sha1sums = b8233f9ff931ce97a265827fac18ed90f4e248c6
 	sha1sums = a0da2952bc87a425182c3ac88e88649fbaa7cb65
 	sha1sums = eb36aa73a9be98164447774217865b91e79d503c
-	source_aarch64 = https://download.bell-sw.com/java/17.0.4.0+8/bellsoft-jdk17.0.4.0+8-linux-aarch64-full.tar.gz
+	source_aarch64 = https://download.bell-sw.com/java/17.0.4+8/bellsoft-jdk17.0.4+8-linux-aarch64-full.tar.gz
 	sha1sums_aarch64 = 7e0f8f4ff46b50d59a2c36f3502591974fac5a45
-	source_armv7h = https://download.bell-sw.com/java/17.0.4.0+8/bellsoft-jdk17.0.4.0+8-linux-arm32-vfp-hflt-full.tar.gz
+	source_armv7h = https://download.bell-sw.com/java/17.0.4+8/bellsoft-jdk17.0.4+8-linux-arm32-vfp-hflt-full.tar.gz
 	sha1sums_armv7h = bde21ff038f2aa949f1452130639a36765d20c11
-	source_armv8h = https://download.bell-sw.com/java/17.0.4.0+8/bellsoft-jdk17.0.4.0+8-linux-arm32-vfp-hflt-full.tar.gz
+	source_armv8h = https://download.bell-sw.com/java/17.0.4+8/bellsoft-jdk17.0.4+8-linux-arm32-vfp-hflt-full.tar.gz
 	sha1sums_armv8h = bde21ff038f2aa949f1452130639a36765d20c11
-	source_x86_64 = https://download.bell-sw.com/java/17.0.4.0+8/bellsoft-jdk17.0.4.0+8-linux-amd64-full.tar.gz
+	source_x86_64 = https://download.bell-sw.com/java/17.0.4+8/bellsoft-jdk17.0.4+8-linux-amd64-full.tar.gz
 	sha1sums_x86_64 = 0adb50b94374f95fae8ffd35f40b0bfecdc2c33d
 
 pkgname = liberica-jdk-17-full-bin
