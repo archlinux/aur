@@ -3,7 +3,7 @@
 
 pkgname=tcpstat
 pkgver=1.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Network interface statistics, with output similar to vmstat(8)"
 arch=('x86_64')
 url="https://frenchfries.net/paul/tcpstat"
@@ -27,5 +27,5 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir" install
-	install -Dm444 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

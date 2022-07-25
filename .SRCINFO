@@ -1,7 +1,7 @@
 pkgbase = tcpstat
 	pkgdesc = Network interface statistics, with output similar to vmstat(8)
 	pkgver = 1.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://frenchfries.net/paul/tcpstat
 	arch = x86_64
 	license = BSD
