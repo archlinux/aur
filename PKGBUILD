@@ -1,30 +1,31 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Mark Smith <markzzzsmith@yahoo.com.au>
+
 pkgname=tcpstat
 pkgver=1.5
-pkgrel=3
-pkgdesc="network interface statistics, with output similar to vmstat(8)"
-arch=('i686' 'x86_64')
-url="http://www.frenchfries.net/paul/tcpstat/"
+pkgrel=4
+pkgdesc="Network interface statistics, with output similar to vmstat(8)"
+arch=('x86_64')
+url="https://frenchfries.net/paul/tcpstat"
 license=('BSD')
-depends=('glibc' 'libpcap')
-makedepends=('coreutils' 'gawk' 'make' 'gcc' 'binutils' 'glibc' 'libpcap')
-source=($url$pkgname-$pkgver.tar.gz)
-md5sums=('93ca0ffb8f319ecf2e42ff925a7e6854')
+depends=('libpcap')
+source=("$pkgname-$pkgver.tar.gz::$url/$pkgname-$pkgver.tar.gz")
+sha256sums=('46fde9458cc5678264b0c5f2197f84ada9101951197fdeec5f04b0801fcff0ba')
+
+PURGE_TARGETS=('usr/share/man/man1/tcpprof.1')
+
+prepare() {
+	cd "$pkgname-$pkgver"
+	./configure --prefix=/usr --mandir=/usr/share/man/
+}
 
 build() {
-
-	cd "$srcdir/$pkgname-$pkgver"
-
-	./configure --prefix=/usr
-	make
+	cd "$pkgname-$pkgver"
+	make CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir" install
-	# tcpprof not built, so don't install manual page
-	rm $pkgdir/usr/man/man1/tcpprof.1
-
-	install -D -m444 LICENSE \
-		$pkgdir/usr/share/licenses/$pkgname/LICENSE
+	install -Dm444 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
