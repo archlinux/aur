@@ -21,7 +21,7 @@ provides=(via-cli)
 conflicts=(via-cli)
 replaces=()
 backup=()
-options=()
+options=(!strip)
 install=
 changelog=
 source=("$pkgname-$pkgver-$arch::$url/releases/download/$pkgver/via-linux-$arch")
@@ -30,7 +30,5 @@ md5sums=('$VIA_LINUX_HASH')
 validpgpkeys=()
 
 package() {
-	mkdir -p "${pkgdir}/usr/local/bin/"
-	cp -a "$pkgname-$pkgver-$arch" "${pkgdir}/usr/local/bin/via"
-	chmod 755 "${pkgdir}/usr/local/bin/via"
+	install -Dm755 "$pkgname-$pkgver-$arch" "${pkgdir}/usr/local/bin/via"
 }
