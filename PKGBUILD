@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.1105
+pkgver=mainline.0.1108
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('x86_64')
@@ -8,6 +8,7 @@ url="https://yuzu-emu.org/"
 license=('GPL3')
 depends=(
 	'discord-rpc>=3.4'
+	'qt5-multimedia>=5.15'
 	'qt5-webengine>=5.15'
 )
 makedepends=(
