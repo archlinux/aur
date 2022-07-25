@@ -1,27 +1,32 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+
+## PGP key: https://github.com/joachimmetz.gpg
+
 pkgname=libbde
-pkgver=20200724
+pkgver=20220121
 pkgrel=1
-pkgdesc="Library and tools to access the BitLocker Drive Encryption (BDE) encrypted volumes"
+pkgdesc="Library and tools for accessing BitLocker Drive Encryption (BDE) encrypted volumes"
 url="https://github.com/libyal/libbde"
-arch=(i686 x86_64)
-license=(GPL3)
-depends=(openssl)
-#_commit=89d624a80729e5e274007bc4aa884652c1b1a976
-#source=("git+https://github.com/libyal/libbde#commit=$_commit")
-source=("https://github.com/libyal/libbde/releases/download/$pkgver/libbde-alpha-$pkgver.tar.gz"
-        "https://github.com/libyal/libbde/releases/download/$pkgver/libbde-alpha-$pkgver.tar.gz.asc")
-sha256sums=('aa2a3fab8e599fcbef3b7aca26ccae18157e6be9c74d2ea929657553e0592a6d'
+arch=('x86_64')
+license=('GPL3')
+depends=('openssl' 'libcrypt.so')
+makedepends=('python')
+optdepends=('fuse: bdemount support')
+provides=('libbde.so' 'pybde.so' 'python-pybde')
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/libbde-alpha-$pkgver.tar.gz"
+        "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/$pkgver/libbde-alpha-$pkgver.tar.gz.asc")
+sha256sums=('76748cb939bf9cc899eaddab6e10ea1a9a7f7bdc6de4cb33d889fc7a2b938c2f'
             'SKIP')
-validpgpkeys=('0ED9020DA90D3F6E70BD3945D9625E5D7AD0177E')
+validpgpkeys=('0ED9020DA90D3F6E70BD3945D9625E5D7AD0177E') # Joachim Metz
 
 build() {
-  cd $pkgname-$pkgver
-  ./configure --prefix=/usr --enable-verbose-output --enable-debug-output
-  make
+  cd "$pkgname-$pkgver"
+  ./configure --prefix=/usr --enable-python
+  make CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 }
 

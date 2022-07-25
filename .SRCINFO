@@ -1,17 +1,21 @@
 pkgbase = libbde
-	pkgdesc = Library and tools to access the BitLocker Drive Encryption (BDE) encrypted volumes
-	pkgver = 20200724
+	pkgdesc = Library and tools for accessing BitLocker Drive Encryption (BDE) encrypted volumes
+	pkgver = 20220121
 	pkgrel = 1
 	url = https://github.com/libyal/libbde
-	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = python
 	depends = openssl
-	source = https://github.com/libyal/libbde/releases/download/20200724/libbde-alpha-20200724.tar.gz
-	source = https://github.com/libyal/libbde/releases/download/20200724/libbde-alpha-20200724.tar.gz.asc
+	depends = libcrypt.so
+	optdepends = fuse: bdemount support
+	provides = libbde.so
+	provides = pybde.so
+	provides = python-pybde
+	source = libbde-20220121.tar.gz::https://github.com/libyal/libbde/releases/download/20220121/libbde-alpha-20220121.tar.gz
+	source = libbde-20220121.tar.gz.asc::https://github.com/libyal/libbde/releases/download/20220121/libbde-alpha-20220121.tar.gz.asc
 	validpgpkeys = 0ED9020DA90D3F6E70BD3945D9625E5D7AD0177E
-	sha256sums = aa2a3fab8e599fcbef3b7aca26ccae18157e6be9c74d2ea929657553e0592a6d
+	sha256sums = 76748cb939bf9cc899eaddab6e10ea1a9a7f7bdc6de4cb33d889fc7a2b938c2f
 	sha256sums = SKIP
 
 pkgname = libbde
-
