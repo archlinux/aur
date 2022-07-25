@@ -1,0 +1,12 @@
+pkgbase = wine-fsr-git
+	pkgdesc = A script to provide easier use setting wine fsr options and configuration with proton/wine
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Ann1kaB/wine-fsr
+	arch = any
+	license = MIT
+	provides = wine-fsr
+	source = git+https://github.com/Ann1kaB/wine-fsr#branch=main
+	sha256sums = SKIP
+
+pkgname = wine-fsr-git
