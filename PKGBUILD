@@ -19,8 +19,9 @@ _build_platforms="x86_64-efi"
 # [[ "${_grub_emu_build}" == "1" ]] && _build_platforms+=" ${_target_arch}-emu"
 
 _pkgname="grub"
+_commit="1b3d97bdf8b026d1fe43accd14dd190dd47e183f"
 pkgname="${_pkgname}-improved-luks2-git"
-pkgver=2.06.r110.gbe257de00
+pkgver=2.06.r284.g1b3d97bdf
 pkgrel=1
 pkgdesc="GNU GRand Unified Bootloader (2) with Argon2 and better LUKS2 support"
 arch=('x86_64')
@@ -41,7 +42,7 @@ conflicts=("${_pkgname}")
 backup=('etc/default/grub'
         'etc/grub.d/40_custom')
 install="${pkgname}.install"
-source=("grub::git+https://git.savannah.gnu.org/git/grub.git#commit=be257de00c"
+source=("grub::git+https://git.savannah.gnu.org/git/grub.git#commit=${_commit}"
         "grub-extras::git+https://git.savannah.gnu.org/git/grub-extras.git"
         "gnulib::git+https://git.savannah.gnu.org/git/gnulib.git"
         'argon_1.patch'
@@ -50,23 +51,11 @@ source=("grub::git+https://git.savannah.gnu.org/git/grub.git#commit=be257de00c"
         'argon_3.patch'
         'argon_4.patch'
         'argon_5.patch'
-        'mm_1.patch'
-        'mm_2.patch'
-        'mm_3.patch'
-        'mm_4.patch'
-        'mm_5.patch'
-        'mm_6.patch'
         'grub-install_luks2.patch'
         'add-GRUB_COLOR_variables.patch'
         'detect-archlinux-initramfs.patch'
         'grub.default')
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -89,14 +78,6 @@ prepare() {
 
     # Patch grub-mkconfig to detect Arch Linux initramfs images.
     patch -Np1 -i "$srcdir"/detect-archlinux-initramfs.patch
-
-    # mm
-    patch -Np1 -i "$srcdir"/mm_1.patch
-    patch -Np1 -i "$srcdir"/mm_2.patch
-    patch -Np1 -i "$srcdir"/mm_3.patch
-    patch -Np1 -i "$srcdir"/mm_4.patch
-    patch -Np1 -i "$srcdir"/mm_5.patch
-    patch -Np1 -i "$srcdir"/mm_6.patch
 
     # argon2
     patch -Np1 -i "$srcdir"/argon_1.patch
