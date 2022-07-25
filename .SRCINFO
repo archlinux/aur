@@ -1,7 +1,7 @@
 pkgbase = gvm-libs-20
 	pkgdesc = greenbone-vulnerability-manager libraries
 	pkgver = 22.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/greenbone/gvm-libs
 	arch = x86_64
 	groups = greenbone-vulnerability-manager
@@ -18,6 +18,7 @@ pkgbase = gvm-libs-20
 	depends = hiredis
 	depends = sudo
 	depends = libnet
+	depends = paho-mqtt-c
 	provides = gvm-libs
 	conflicts = gvm-libs
 	replaces = openvas-libraries
