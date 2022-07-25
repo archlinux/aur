@@ -2,14 +2,14 @@
 # Maintainer: Henry Jenkins <archlinux.org@henryjenkins.com>
 
 pkgname=please-bin
-pkgver=16.20.2
+pkgver=16.21.3
 pkgrel=1
 pkgdesc="A cross-language build system with an emphasis on high performance, extensibility and reproduceability"
 arch=("x86_64")
 url="https://please.build/"
 license=("Apache")
 source_x86_64=("https://github.com/thought-machine/please/releases/download/v${pkgver}/please_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=("5989835d0257fd41c6f762159c03edac8eaa34e7f1c89a237e7263c122234a41")
+sha256sums_x86_64=("57783698bdd3d5171b7811fea27806f9eef64ef4a7baefe5d81d2767e83fd913")
 
 package() {
   install -d "${pkgdir}/opt/thought-machine"
