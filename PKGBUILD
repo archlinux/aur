@@ -1,6 +1,6 @@
 # Maintainer: Steef Hegeman <mail@steefhegeman.com>
 pkgname=snixembed
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="proxy the StatusNotifierItem protocol to the XEmbed System Tray"
 url="https://git.sr.ht/~steef/snixembed"
@@ -13,7 +13,7 @@ depends=("glib2"
 makedepends=("vala")
 conflicts=("snixembed-git")
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~steef/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('5c03c98f2056f096398b079f9d796ed9')
+md5sums=('aceff2975b478178ad5192909576fa90')
 
 build() {
 	cd snixembed-$pkgver
