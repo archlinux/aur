@@ -1,14 +1,16 @@
 pkgbase = python-translate
-	pkgdesc = Translate is a simple but powerful translation tool written in python with with support for multiple translation providers.
-	pkgver = 3.5.0
+	pkgdesc = Translate is a simple but powerful translation tool written in python with support for multiple translation providers.
+	pkgver = 3.6.1
 	pkgrel = 1
 	url = https://github.com/terryyin/translate-python
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-pytest-runner
 	depends = python
-	source = python-translate::https://github.com/terryyin/translate-python/archive/3.5.0.tar.gz
-	sha256sums = fb3bd2153d02861607c946a0d24141e6f7d7f111deadd3dc42f0737778423224
+	source = python-translate::https://github.com/terryyin/translate-python/archive/refs/tags/3.6.1.tar.gz
+	sha256sums = 28ddafe090847031a46f626fd06a2adaff067ff9f7c15234e05b196c9393f7f1
 
 pkgname = python-translate
-

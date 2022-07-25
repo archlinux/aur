@@ -1,23 +1,23 @@
 # Maintainer: vantu5z <vantu5z@mail.ru>
 
 pkgname=python-translate
-pkgver=3.5.0
+pkgver=3.6.1
 pkgrel=1
-pkgdesc="Translate is a simple but powerful translation tool written in python with with support for multiple translation providers."
+pkgdesc="Translate is a simple but powerful translation tool written in python with support for multiple translation providers."
 url="https://github.com/terryyin/translate-python"
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-pytest-runner')
 license=('MIT')
 arch=('any')
-source=(${pkgname}::"https://github.com/terryyin/translate-python/archive/$pkgver.tar.gz")
-sha256sums=('fb3bd2153d02861607c946a0d24141e6f7d7f111deadd3dc42f0737778423224')
+source=(${pkgname}::"https://github.com/terryyin/translate-python/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('28ddafe090847031a46f626fd06a2adaff067ff9f7c15234e05b196c9393f7f1')
 
 build() {
     cd "${srcdir}/translate-python-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${srcdir}/translate-python-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
