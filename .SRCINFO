@@ -1,0 +1,15 @@
+pkgbase = forge-server-alexsmobs
+	pkgdesc = Alex's Mobs is a Forge mod that adds 80 new mobs to Minecraft.
+	pkgver = 1.19.3
+	pkgrel = 1
+	url = https://www.curseforge.com/minecraft/mc-mods/alexs-mobs
+	arch = any
+	license = GPL
+	depends = forge-hooks>=1.0.0
+	depends = forge-server>=41.0.96
+	depends = forge-server-citadel>=1.12.6
+	noextract = alexsmobs-1.19.3.jar
+	source = https://mediafiles.forgecdn.net/files/3872/430/alexsmobs-1.19.3.jar
+	sha256sums = 52d3ac9583d7575ae10f6d085838d942f735ffe18fa0315aebb5be60140ebf15
+
+pkgname = forge-server-alexsmobs
