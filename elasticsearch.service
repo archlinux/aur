@@ -7,7 +7,7 @@ After=elasticsearch-keystore.service
 After=network-online.target
 
 [Service]
-Type=notify
+Type=simple
 RuntimeDirectory=elasticsearch
 PrivateTmp=true
 Environment=ES_HOME=/usr/share/elasticsearch
@@ -16,15 +16,15 @@ Environment=PID_DIR=/run/elasticsearch
 Environment=ES_SD_NOTIFY=true
 EnvironmentFile=-/etc/default/elasticsearch
 
-WorkingDirectory=/usr/share/elasticsearch
+WorkingDirectory=/opt/elasticsearch
 
 User=elasticsearch
 Group=elasticsearch
 
 PermissionsStartOnly=true
-ExecStartPre=/usr/share/elasticsearch/bin/elasticsearch-keystore upgrade
+ExecStartPre=/opt/elasticsearch/bin/elasticsearch-keystore upgrade
 
-ExecStart=/usr/share/elasticsearch/bin/elasticsearch -p ${PID_DIR}/elasticsearch.pid
+ExecStart=/opt/elasticsearch/bin/elasticsearch -p ${PID_DIR}/elasticsearch.pid
 
 # StandardOutput is configured to redirect to journalctl since
 # some error messages may be logged in standard output before
