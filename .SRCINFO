@@ -42,12 +42,12 @@ pkgbase = liberica-jdk-11-full-bin
 	backup = etc/liberica-jdk-11-full/security/policy/unlimited/default_local.policy
 	backup = etc/liberica-jdk-11-full/sound.properties
 	source_aarch64 = https://download.bell-sw.com/java/11.0.15.1+2/bellsoft-jdk11.0.15.1+2-linux-aarch64-full.tar.gz
-	sha1sums_aarch64 = 16f631bffe4eeaddc9d53fb7dfcb93ece9d3a681
+	sha1sums_aarch64 = a846d908799959e77f4a85f47cd5e65e9a709e0f
 	source_armv7h = https://download.bell-sw.com/java/11.0.15.1+2/bellsoft-jdk11.0.15.1+2-linux-arm32-vfp-hflt-full.tar.gz
-	sha1sums_armv7h = 546de92fa207368558996400653aa1987665c7dd
+	sha1sums_armv7h = f1b7448a4c37ade6edfb47a8a3815f56484368bd
 	source_armv8h = https://download.bell-sw.com/java/11.0.15.1+2/bellsoft-jdk11.0.15.1+2-linux-arm32-vfp-hflt-full.tar.gz
-	sha1sums_armv8h = 546de92fa207368558996400653aa1987665c7dd
+	sha1sums_armv8h = f1b7448a4c37ade6edfb47a8a3815f56484368bd
 	source_x86_64 = https://download.bell-sw.com/java/11.0.15.1+2/bellsoft-jdk11.0.15.1+2-linux-amd64-full.tar.gz
-	sha1sums_x86_64 = f89b4a14139486b18586bda540b67f1a39a0920b
+	sha1sums_x86_64 = 3f346b36fedd52da8ffa2ee351acc29b5f618717
 
 pkgname = liberica-jdk-11-full-bin

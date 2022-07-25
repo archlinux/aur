@@ -49,10 +49,10 @@ source_armv8h=(${source_armv7h[@]})
 source_x86_64=(https://download.bell-sw.com/java/$pkgver/bellsoft-jdk$pkgver-linux-amd64-full.tar.gz)
 
 # Upstream-provided
-sha1sums_aarch64=('16f631bffe4eeaddc9d53fb7dfcb93ece9d3a681')
-sha1sums_armv7h=('546de92fa207368558996400653aa1987665c7dd')
+sha1sums_aarch64=('a846d908799959e77f4a85f47cd5e65e9a709e0f')
+sha1sums_armv7h=('f1b7448a4c37ade6edfb47a8a3815f56484368bd')
 sha1sums_armv8h=(${sha1sums_armv7h[@]})
-sha1sums_x86_64=('f89b4a14139486b18586bda540b67f1a39a0920b')
+sha1sums_x86_64=('3f346b36fedd52da8ffa2ee351acc29b5f618717')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
