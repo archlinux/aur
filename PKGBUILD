@@ -1,27 +1,31 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+
 pkgname=vinecopulib
-pkgver=0.2.5
+pkgver=0.6.1
 pkgrel=1
-pkgdesc="A C++ vine copula library"
+pkgdesc="C++ vine copula library"
 license=('MIT')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/vinecopulib/vinecopulib"
 depends=('gcc-libs')
-makedepends=('cmake' 'eigen' 'boost')
-source=("https://github.com/vinecopulib/vinecopulib/archive/v${pkgver}.tar.gz")
-sha256sums=('f9b9b66b2fc73214d6ab0db37bf226601c9de85c4d318248247a2931a0df08ec')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-}
+makedepends=('cmake' 'eigen' 'boost' 'libwdm')
+provides=('libvinecopulib.so')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('a1201009882f723228f805b84e7b8de858727c1c14817379c021e03e49550e56')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  mkdir -p build && pushd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TESTING=OFF -DVINECOPULIB_SHARED_LIB=ON ..
-  make
+	cmake \
+		-B build \
+		-S "$pkgname-$pkgver" \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DBUILD_TESTING=OFF \
+		-DCMAKE_BUILD_TYPE=None \
+		-DVINECOPULIB_SHARED_LIB=ON \
+		-Wno-dev
+	make -C build
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/build"
-  make DESTDIR="$pkgdir" install
+	make -C build install DESTDIR="$pkgdir"
+	install -Dm644 "$pkgname-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
