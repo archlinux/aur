@@ -14,6 +14,15 @@ sworkstyle [FLAGS]
 -h, --help
       Display a description of this program.
 
+-v, --version
+	Print the current version
+
+-l, --log-level
+	Either "error", "warn", "info", "debug", "off". Uses "warn" by default
+
+-c, --config
+	Specifies the config file to use.
+
 --log-level
       Either "error", "warn", "info", "debug". Uses "warn" by default"
 .SH EXIT STATUS
