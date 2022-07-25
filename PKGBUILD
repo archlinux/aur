@@ -70,7 +70,7 @@ _subarch=36
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=5.18.10
+pkgver=5.18.14
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -80,8 +80,8 @@ makedepends=(bc libelf cpio perl tar xz)
 [[ -n "$_clangbuild" ]] && makedepends+=(clang llvm lld python)
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=68ef9da3f5dc9961e5263b6b2e6545772bb6ede8
-_prjc_version=5.18-r1
+_arch_config_commit=b0f473972baebfae0c947b6b4b5bd53c3384053c
+_prjc_version=5.18-r2
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20220315
 source=(
@@ -89,20 +89,22 @@ source=(
   "${pkgbase}-${pkgver}-config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
   "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-${pkgbase}-${pkgver}-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/2adedb768fdfa031a6a45a95cf37736bd65f0e6c.patch"
-  "0002-${pkgbase}-${pkgver}-HID-apple-Properly-handle-function-keys-on-Keychron-.patch::https://github.com/archlinux/linux/commit/836dfa299b84e82f8d7117e6b4d740348ed47de5.patch"
+  "0001-${pkgbase}-${pkgver}-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/63cec1d1efdb31caeef17411c7560e8b0f941073.patch"
+  "0002-${pkgbase}-${pkgver}-HID-apple-Properly-handle-function-keys-on-Keychron-.patch::https://github.com/archlinux/linux/commit/4b81eecd4c636d953aaf4ebafd8171716f4c61fe.patch"
+  "0003-${pkgbase}-${pkgver}-soundwire-Raise-DEFAULT_PROBE_TIMEOUT-to-10000-ms.patch::https://github.com/archlinux/linux/commit/2da21cf28e573b84e5a5baecc1eda7372322375d.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('71e1d666f2238bdf4c6a10d83c234b02b46dfa67ffbf73eea904254ddd7ded9ad5d520ec4713933388956d2e538e32911f4c99e16c5e3d0c19cbff0fbe38012e'
+b2sums=('faeadb397c61f3adc70fb03d5ba10c203764d8a43b70cb70838d17780922bf05cd8389c19ba8d323f322d81169d11cf744d86103011c4a17606a2081e18a906f'
         'SKIP'
         'aeffb500a9cf0f1265fc62fa9260bdddac8ba47bf01e3b2732d961ea7d58ae4886563bc7076fe920d4fca3ad19588bfe8f9368e77fdc61336c894488bab41638'
-        '81000dd93c038389ab1bbe04e1e9706062244e70571da03388c2ab0d382bd817d86d8b12adfe607b49adf7bbab3624640a70ba6df2e97bd7f55f9d2def73e88f'
+        '15d7ed7a0eb6f7ad37feaf52ab7c383e1c7c3e72fb41a767c8d1151a0ad41255c216ede1e4938a041f3b628874ed61398c61dd7b0e0b62090730f2fd0f6a70db'
         '20674a8fcc0a85726e06460a7dbccfe731c46bf377cc3bf511b7591175e7df892f271bc1909e77d9a02913c753d241493502c5ab15d9f78e95f31aa4399c2c27'
         '77b83734aa62dbc78ca6769861d49dc8cfb56e07b42ff2fc95290bbc805e217fa6eba8e09cab7509207de1511e1988557a28f8bd1dec6b25c1aba408c4fedac4'
-        '6b5401f54fafedc3ac1e8a4450b231d1ea6b8e94c805fceaef180edb3664b2b51b663915ef9a82be95d22be8f947594323c6c4acb9c575309f5305f20d46659f')
+        '6b5401f54fafedc3ac1e8a4450b231d1ea6b8e94c805fceaef180edb3664b2b51b663915ef9a82be95d22be8f947594323c6c4acb9c575309f5305f20d46659f'
+        '3ff59eb3dce03cbe7086f24ad07714380b427b306bd6f21ef4c53c405d6e635822db410b71d818d474e4f2452e48722c09af7ce3947f3fcc181488f64a6e7f6e')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
