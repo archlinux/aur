@@ -7,7 +7,7 @@
 pkgname=java-mango
 _pkgname=${pkgname#java-}
 pkgver=4.1
-pkgrel=4
+pkgrel=5
 pkgdesc='A viewer for medical research images'
 arch=('any')
 url='http://ric.uthscsa.edu/mango/index.html'
