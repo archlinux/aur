@@ -1,0 +1,16 @@
+pkgbase = forge-server-mcw-furniture
+	pkgdesc = Macaw's Furniture focuses on different styles of furniture and customization.
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://www.curseforge.com/minecraft/mc-mods/macaws-furniture
+	arch = any
+	license = custom
+	depends = forge-hooks>=1.0.0
+	depends = forge-server>=41.0.94
+	noextract = mcw-furniture-3.0.1-mc1.19.jar
+	source = LICENSE
+	source = https://mediafiles.forgecdn.net/files/3879/905/mcw-furniture-3.0.1-mc1.19.jar
+	sha256sums = 9610fdb452d3d92e7e51243963ea189f7783c1a7cdd4238de4d2a32c50042a8d
+	sha256sums = 3e6a16a78cccdf880a335533962e315743a6b6aa4db18a82dddc99cd8c50eee5
+
+pkgname = forge-server-mcw-furniture
