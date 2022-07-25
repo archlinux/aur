@@ -1,0 +1,12 @@
+pkgbase = libwdm
+	pkgdesc = Header-only C++ library for weighted dependence measures
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/tnagler/wdm
+	arch = any
+	license = MIT
+	makedepends = cmake
+	source = libwdm-0.2.2.tar.gz::https://github.com/tnagler/wdm/archive/v0.2.2.tar.gz
+	sha256sums = a52ec0a8557f500b28de097ae1a4677d0f6984d3102571f1173eeeda81698b09
+
+pkgname = libwdm
