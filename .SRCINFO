@@ -8,6 +8,6 @@ pkgbase = pacman-python
 	depends = python
 	depends = python-requests
 	source = pacman-python.py
-	sha512sums = 0eefba1155b4436bbb472b725976fc7304d48cc26602041992374c30a4b8c0c38c4b1a122146f906671431fa9597ca7291e1b0f762dcfb286b2425c54c52359f
+	sha512sums = 6c403d0dde947b4c72d5fffa253015dae654366ed8bf98aa148b71b9591127af17d0f3d7fb95791851c94d077655cba82e4793bb2582c753801a153c4a6e0859
 
 pkgname = pacman-python
