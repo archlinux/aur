@@ -3,7 +3,7 @@ pkgbase=vdr-softhdcuvid
 pkgname=(vdr-softhdcuvid vdr-softhdvaapi vdr-softhddrm)
 pkgver=3.6
 _vdrapi=2.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="VDR output plugin with CUDA and Opengl"
 url="https://github.com/jojo61/vdr-plugin-softhdcuvid"
 arch=('x86_64')
@@ -36,7 +36,8 @@ build() {
 }
 
 package_vdr-softhdcuvid() {
-  depends=('ffmpeg' 'freeglut' 'glew' 'mesa' "vdr-api=${_vdrapi}" 'xcb-util-wm' 'xorg-server' 'nvidia>=410.48' 'libplacebo>=3.120.0')
+  depends=('freeglut' 'glew' 'mesa' "vdr-api=${_vdrapi}" 'xcb-util-wm' 'xorg-server' 'nvidia>=410.48'
+           'libavcodec.so' 'libavutil.so' 'libplacebo.so' 'libswresample.so')
   optdepends=('vdr-xorg: Recommended way to start X.org server together with VDR')
   backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 
@@ -48,7 +49,8 @@ package_vdr-softhdcuvid() {
 }
 
 package_vdr-softhdvaapi() {
-  depends=('ffmpeg' 'freeglut' 'glew' 'mesa' "vdr-api=${_vdrapi}" 'xcb-util-wm' 'xorg-server' 'libplacebo>=3.120.0')
+  depends=('freeglut' 'glew' 'mesa' "vdr-api=${_vdrapi}" 'xcb-util-wm' 'xorg-server'
+           'libavcodec.so' 'libavfilter.so' 'libavutil.so' 'libplacebo.so' 'libswresample.so')
   optdepends=('vdr-xorg: Recommended way to start X.org server together with VDR')
   backup=("etc/vdr/conf.avail/50-softhdvaapi.conf")
 
@@ -61,7 +63,8 @@ package_vdr-softhdvaapi() {
 }
 
 package_vdr-softhddrm() {
-  depends=('ffmpeg' 'freeglut' 'glew' 'mesa' "vdr-api=${_vdrapi}" 'xcb-util-wm')
+  depends=('freeglut' 'glew' 'mesa' "vdr-api=${_vdrapi}" 'xcb-util-wm'
+           'libavcodec.so' 'libavfilter.so' 'libavutil.so' 'libswresample.so')
   conflicts=('vdr-xorg')
   backup=("etc/vdr/conf.avail/50-softhddrm.conf")
 
