@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=imgbrd-grabber
 pkgver=7.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Very customizable imageboard/booru downloader with powerful filenaming features."
 arch=('x86_64')
 url="https://github.com/Bionus/imgbrd-grabber"
@@ -13,8 +13,11 @@ conflicts=("imgbrd-grabber-git" 'imgbrd-grabber-bin' 'imgbrd-grabber-appimage')
 source=('git+https://github.com/Bionus/imgbrd-grabber.git#tag=v'${pkgver}''
         'git+https://github.com/LaurentGomila/qt-android-cmake.git'
         'git+https://github.com/sakra/cotire.git'
+        'git+https://github.com/lexbor/lexbor.git'
+
         'git+https://github.com/catchorg/Catch2.git')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -22,12 +25,10 @@ sha256sums=('SKIP'
 prepare() {
     cd "$srcdir/${pkgname}"
     git submodule init
-    git config submodule.qt-android-cmake.url "$srcdir/qt-android-cmake"
-    git config submodule.qt-android-cmake.path "$srcdir/${pkgname}/src/cmake/qt-android-cmake"
-    git config submodule.cotire.url "$srcdir/cotire"
-    git config submodule.cotire.path "$srcdir/${pkgname}/src/cmake/cotire"
-    git config submodule.Catch2.url $srcdir/Catch2
-    git config submodule.Catch2.path "$srcdir/${pkgname}/src/tests/src/vendor/catch"
+    git config submodule.cmake/qt-android-cmake.url "$srcdir/qt-android-cmake"
+    git config submodule.cmake/cotire.url "$srcdir/cotire"
+    git config submodule.tests/src/vendor/catch.url "$srcdir/Catch2"
+    git config submodule.lib/vendor/lexbor.url "$srcdir/lexbor"
     git submodule update
 }
 
