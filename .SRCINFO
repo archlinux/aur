@@ -1,0 +1,16 @@
+pkgbase = ob-xd-bin
+	pkgdesc = Virtual Analog Synthesizer VST based on the Oberheim OB-X
+	pkgver = 2.9
+	pkgrel = 1
+	url = https://github.com/reales/OB-Xd
+	arch = x86_64
+	license = GPL3
+	depends = alsa-lib
+	depends = freetype2
+	depends = libcurl-gnutls
+	provides = OB-Xd
+	noextract = Obxd29Linux.zip
+	source = https://github.com/reales/OB-Xd/releases/download/v2.9/Obxd29Linux.zip
+	md5sums = 24191ec1626ee0c6dce5a3b3e1857fa4
+
+pkgname = ob-xd-bin
