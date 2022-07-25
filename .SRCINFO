@@ -1,0 +1,16 @@
+pkgbase = gtksourceview-theme-darcula2-git
+	pkgdesc = Darcula2 GtkSourceView theme based on original Darcula theme by Sash0k
+	pkgver = 1.0.0.r0.gd255f3f
+	pkgrel = 1
+	url = https://github.com/egormanga/gtksourceview-theme-darcula2
+	arch = any
+	license = LGPL3
+	optdepends = gtksourceview-3
+	optdepends = gtksourceview-4
+	optdepends = gtksourceview-5
+	provides = gtksourceview-theme-darcula2
+	conflicts = gtksourceview-theme-darcula2
+	source = git+https://github.com/egormanga/gtksourceview-theme-darcula2.git
+	sha256sums = SKIP
+
+pkgname = gtksourceview-theme-darcula2-git
