@@ -1,0 +1,18 @@
+pkgbase = geckolib-forge
+	pkgdesc = GeckoLib is an animation engine for Minecraft Mods.
+	pkgver = 3.1.10
+	pkgrel = 1
+	url = https://geckolib.com
+	arch = any
+	groups = forge-mods
+	groups = minecraft-mods
+	license = MIT
+	depends = forge-server
+	provides = geckolib=3.1.10
+	noextract = geckolib-forge-1.19-.jar
+	source = https://github.com/bernie-g/geckolib/blob/1.19/LICENSE
+	source = https://mediafiles.forgecdn.net/files/3885/232/geckolib-forge-1.19-3.1.10.jar
+	sha256sums = ae651cfe7715ce791261be76c1b7d1e502c40502b7e2b7658bdac2d64157236b
+	sha256sums = 5db9d3b42a8c9e9abb6c1082e368ddc875ebdd7ea754813dbc2737532776d7c0
+
+pkgname = geckolib-forge
