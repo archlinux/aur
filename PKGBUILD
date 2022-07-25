@@ -2,7 +2,7 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-softhddevice
-pkgver=1.7.0
+pkgver=1.8.2
 epoch=1
 _vdrapi=2.6.1
 pkgrel=1
@@ -10,7 +10,8 @@ pkgdesc="software and GPU emulated HD output device plugin for VDR"
 url="https://github.com/ua0lnj/vdr-plugin-softhddevice"
 arch=('x86_64' 'i686')
 license=('AGPL3')
-depends=('ffmpeg' 'freeglut' 'glew' 'mesa' "vdr-api=${_vdrapi}" 'xcb-util-wm' 'xorg-server')
+depends=('freeglut' 'glew' 'mesa' "vdr-api=${_vdrapi}" 'xcb-util-wm' 'xorg-server'
+         'libavcodec.so' 'libswscale.so' 'libswresample.so')
 optdepends=('nvidia: Required for VDPAU decoding',
             'vdr-xorg: Recommended way to start X.org server together with VDR')
 makedepends=('glm' 'glu' 'ffnvcodec-headers')
@@ -18,7 +19,7 @@ _plugname=${pkgname//vdr-/}
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ua0lnj/vdr-plugin-softhddevice/archive/v$pkgver.tar.gz"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-sha256sums=('7ed4cd99c312c9845c95e6209ded312de2a258887504e97c3ded471a56ed8a3c'
+sha256sums=('8751ffb53a0ea0174faf3f0a9b81987dd5bf0cea52594c8c583d8b8bf61d016a'
             '889d4c19770a926f8aa6a014ff8219800a7a74c464ef0b12dcef6bb8db93e719')
 
 prepare() {
