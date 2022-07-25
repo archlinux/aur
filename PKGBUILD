@@ -1,8 +1,8 @@
 # Maintainer: Cédric Bellegarde <cedric.bellegarde@adishatz.org>
 
 pkgname=geary-preview
-pkgver=40.3
-pkgrel=2
+pkgver=40.5
+pkgrel=1
 epoch=1
 pkgdesc='A lightweight email client for the GNOME desktop. Preview version by Geary maintainer'
 arch=(x86_64)
