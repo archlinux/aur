@@ -1,0 +1,12 @@
+pkgbase = pies
+	pkgdesc = Program Invocation and Execution Supervisor
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://www.gnu.org/software/pies
+	arch = x86_64
+	license = GPL3
+	depends = gcc-libs
+	source = pies-1.7.tar.gz::https://ftp.gnu.org/gnu/pies/pies-1.7.tar.gz
+	md5sums = 50d96aaad4ab44e7b9424f1ba371d949
+
+pkgname = pies
