@@ -3,7 +3,7 @@
 # Original package from: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-covolunablu-gaming
-pkgver=5.18.12.arch1
+pkgver=5.18.14.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
