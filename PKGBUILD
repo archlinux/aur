@@ -3,7 +3,7 @@
 # shellcheck disable=SC2154,SC2115
 
 pkgname=git-completion
-pkgver=1.3.6
+pkgver=1.3.7
 pkgrel=1
 pkgdesc='Git completions for Zsh and Bash'
 url="https://github.com/felipec/$pkgname"
