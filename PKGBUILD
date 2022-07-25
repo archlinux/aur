@@ -12,7 +12,7 @@ pkgdesc='A viewer for medical research images'
 arch=('any')
 url='http://ric.uthscsa.edu/mango/index.html'
 license=('custom:RII-UTHSCSA')
-depends=('hicolor-icon-theme' 'jre7-openjdk')
+depends=('hicolor-icon-theme' 'jre8-openjdk')
 makedepends=('imagemagick')
 options=(!strip)
 source=(
@@ -23,7 +23,7 @@ source=(
     'LICENSE'
 )
 b2sums=('34ed9385f51cc29560a333abd0509bf2a41ef3db73d5b56d73df9ac8a446575f65f403b62daa8e9d589b9fe1dd720dac66fb56e6c345b9929b5b3f725eee7c0e'
-        'fefa71e6cbf9bce2f09293d9eb1d7018d041dca7e3feec7eb4d2e077b142f459800749925f68b8a259326d7b41226e688efa6df1957a170fd1c16165d44b9bca'
+        'd53e92c1f91cef43008bec5178dd4e1fdf08063d066f046f8ba8957f2cfb659f9b639147658cf090efffd76f72138c74d400937a58ce938e641cab425bb19817'
         'db3bc9fc702cd693a25f0f95554de3603bbac2442c19c1e73194cef53b7fac6f222a99f208bd31bd8add5b4ec999e8d2cddf5c57baf896c6c3ee7fa2e12f487e'
         '19c51a8fff8cda94117fd64db54d23105a9e1850db1016f391230118edc0c6430bbbc0b0e5a74a60b7c572ab4f7b59b21de8d6a77391267e63a42e17aab7e59a'
         'afef46bb3cefe57f95f6fa321d3686e15a95848298a1839f4932910f93ad4eb6542da118d9cb115df20b59e2c02b9ec80d3ddbba01c839c2ce68e4ee66d8eedb')
