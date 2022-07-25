@@ -1,0 +1,13 @@
+pkgbase = logtail-dash
+	pkgdesc = Displays and updates a dashboard based on one or more logfiles
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/happybeing/logtail-dash
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = logtail-dash_1.0.0.tar.gz::https://github.com/happybeing/logtail-dash/archive/3f47694ef24a12f4c5432b8e131a8373fb47fae5.tar.gz
+	sha512sums = bf8e4ac545a3680c61df6524d00278926f0c80dc0953a1b1bcfb0a3c2d18b204649d043d571682fe8d498054d1b07e4cf8b267d6c3d6a41fc626c40090c67d0d
+
+pkgname = logtail-dash
