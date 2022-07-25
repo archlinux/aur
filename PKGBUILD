@@ -1,4 +1,5 @@
-# Maintainer: Librewish <librewish AT gmail.com>
+# Maintainer: Flaviu Tamas <me at flaviutamas dot com>
+# Contributor: Librewish <librewish AT gmail.com>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=nohang
 pkgver=0.2.0
