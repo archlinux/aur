@@ -1,8 +1,8 @@
 pkgbase = ylva
 	pkgdesc = Command line password manager.
 	pkgver = 1.7
-	pkgrel = 1
-	url = https://www.ylvapasswordmanager.com/
+	pkgrel = 2
+	url = https://github.com/nrosvall
 	arch = i686
 	arch = x86_64
 	license = GPL
