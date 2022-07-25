@@ -1,0 +1,11 @@
+pkgbase = dye
+	pkgdesc = An ultrafast image colorizer tool
+	pkgver = 1.0.1
+	pkgrel = 0
+	url = https://github.com/Infinitybeond1/dye
+	arch = x86_64
+	license = GPL3
+	source = dye-1.0.1.zip::https://github.com/Infinitybeond1/dye/releases/download/v1.0.1/dye-linux-amd64.zip
+	sha256sums = SKIP
+
+pkgname = dye
