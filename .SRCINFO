@@ -1,13 +1,12 @@
 pkgbase = hello
 	pkgdesc = Prints Hello World and more
-	pkgver = 2.10
+	pkgver = 2.12.1
 	pkgrel = 1
 	url = https://gnu.org
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = https://ftp.gnu.org/gnu/hello/hello-2.10.tar.gz
-	md5sums = 6cd0ffea3884a4e79330338dcc2987d6
+	source = https://ftp.gnu.org/gnu/hello/hello-2.12.1.tar.gz
+	md5sums = 5cf598783b9541527e17c9b5e525b7eb
 
 pkgname = hello
-
