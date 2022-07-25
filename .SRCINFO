@@ -8,6 +8,7 @@ pkgbase = python-pyrage
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	makedepends = maturin
 	depends = python
 	source = python-pyrage-0.1.1.rc.2.tar.gz::https://github.com/woodruffw/pyrage/archive/refs/tags/v0.1.1-rc.2.tar.gz
