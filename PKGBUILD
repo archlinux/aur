@@ -14,7 +14,7 @@ _name='EGGNOGG'
 _categories='Game;ArcadeGame'
 
 prepare() {
-    gendesk -n -f ../PKGBUILD
+    gendesk -n -f ${startdir}/PKGBUILD
 }
 
 build() {
