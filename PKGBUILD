@@ -1,6 +1,6 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=pdfcmd
-pkgver=1.4
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Utility to perform commands on PDF files.'
 url="https://github.com/bulletmark/$pkgname"
@@ -9,7 +9,7 @@ arch=("any")
 depends=("python>=3.5" "python-pypdf2>=2.0.0")
 makedepends=("python-pip" "python-wheel")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha1sums=('4cb3e53e4076f92103c01d2a3dbb393bf1d089d3')
+sha1sums=('1c1599dfefbaeae0355b2f2d4d50bef4385dedc5')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
