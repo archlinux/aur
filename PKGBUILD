@@ -1,21 +1,21 @@
 # Maintainer: VHSgunzo <vhsgunzo.github.io>
 pkgname='vkteams-bin'
 pkgbasename='vkteams'
-pkgver='10.0.0.18759'
+pkgver='10.0.0.18761'
 pkgrel='1'
 pkgdesc='Official desktop application for the VK Teams messaging service'
 arch=("x86_64")
-url='https://teams.vk.com'
+url='https://dl.internal.myteam.mail.ru'
 provides=("${pkgbasename}")
 conflicts=("${pkgbasename}")
-source=("${pkgbasename}-${pkgver}.tar.xz::https://vkteams-www.hb.bizmrg.com/linux/x64/vkteams.tar.xz"
-        'vkteams.sh'
-        'vkteams.png'
-        'vkteams.desktop')
-sha256sums=('320f90d618061cb620cc4e0b9b701b7b1162f261a73e76483248e451c212a5ae'
+source=("${pkgbasename}-${pkgver}.tar.xz::https://dl.internal.myteam.mail.ru/downloads/linux/x64/latest/${pkgbasename}.tar.xz"
+        "${pkgbasename}.sh"
+        "${pkgbasename}.png"
+        "${pkgbasename}.desktop")
+sha256sums=('bf7ba00c655f7ba360b4c6a08d061d73ae141d4a268c7266232ccb8d5f4b87a1'
             'a2afc2dbd79e67736511c91b3d8f0a5fe3800c929ead9909d1b8f90fe7a7ca4b'
             '455842f3b3045a590e03372ae1f9ca75fc935d2cc829c379eaf01acefba97d68'
-            '4f29a8011226d2523819a8b39bf2e5923c0bd0bc1748b7d4bb8eb5b57887e02a')
+            '72e1ea7734ff394278a2593b0f630e07dbbc4f51726118c9afb043078f10d93b')
 options=('!strip')
 
 shopt -s extglob

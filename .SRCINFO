@@ -1,19 +1,19 @@
 pkgbase = vkteams-bin
 	pkgdesc = Official desktop application for the VK Teams messaging service
-	pkgver = 10.0.0.18759
+	pkgver = 10.0.0.18761
 	pkgrel = 1
-	url = https://teams.vk.com
+	url = https://dl.internal.myteam.mail.ru
 	arch = x86_64
 	provides = vkteams
 	conflicts = vkteams
 	options = !strip
-	source = vkteams-10.0.0.18759.tar.xz::https://vkteams-www.hb.bizmrg.com/linux/x64/vkteams.tar.xz
+	source = vkteams-10.0.0.18761.tar.xz::https://dl.internal.myteam.mail.ru/downloads/linux/x64/latest/vkteams.tar.xz
 	source = vkteams.sh
 	source = vkteams.png
 	source = vkteams.desktop
-	sha256sums = 320f90d618061cb620cc4e0b9b701b7b1162f261a73e76483248e451c212a5ae
+	sha256sums = bf7ba00c655f7ba360b4c6a08d061d73ae141d4a268c7266232ccb8d5f4b87a1
 	sha256sums = a2afc2dbd79e67736511c91b3d8f0a5fe3800c929ead9909d1b8f90fe7a7ca4b
 	sha256sums = 455842f3b3045a590e03372ae1f9ca75fc935d2cc829c379eaf01acefba97d68
-	sha256sums = 4f29a8011226d2523819a8b39bf2e5923c0bd0bc1748b7d4bb8eb5b57887e02a
+	sha256sums = 72e1ea7734ff394278a2593b0f630e07dbbc4f51726118c9afb043078f10d93b
 
 pkgname = vkteams-bin
