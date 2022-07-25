@@ -1,6 +1,6 @@
 pkgbase = corplink-rs
 	pkgdesc = Corplink client written in Rust
-	pkgver = 2.1
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://github.com/PinkD/corplink-rs
 	arch = i686
@@ -9,9 +9,9 @@ pkgbase = corplink-rs
 	makedepends = cargo
 	makedepends = go
 	backup = etc/corplink/config.json
-	source = corplink-rs.2.1.tar.gz::https://github.com/PinkD/corplink-rs/archive/2.1.tar.gz
+	source = corplink-rs.2.3.tar.gz::https://github.com/PinkD/corplink-rs/archive/2.3.tar.gz
 	source = wireguard-go::git+https://github.com/PinkD/wireguard-go
-	sha256sums = 1eb62c1bac926088f9a8306b85dfb26d3db02e5ccb64ff137e5fa4e14ba90f5d
+	sha256sums = 036d90f413b783f7d414e45f1c24437a12a92b3d391be4ccfd8063bf68c74e41
 	sha256sums = SKIP
 
 pkgname = corplink-rs
