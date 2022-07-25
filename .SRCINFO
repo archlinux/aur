@@ -1,13 +1,13 @@
 pkgbase = patchouli-forge
 	pkgdesc = Patchouli is a mod that aims to provide easy to implement, data-driven documentation for minecraft modders and modpack makers alike.
 	pkgver = 0.0.75
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.curseforge.com/minecraft/mc-mods/patchouli
 	arch = any
 	groups = forge-mods
 	groups = minecraft-mods
 	license = MIT
-	depends = minecraft-hooks
+	depends = forge-hooks
 	depends = forge-server
 	provides = patchouli=0.0.75
 	noextract = Patchouli-1.19-75.jar
