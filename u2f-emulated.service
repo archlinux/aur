@@ -1,0 +1,10 @@
+[Unit]
+Description=run u2f-emulated
+
+[Service]
+Type=simple
+WorkingDirectory=/usr/share/u2f-emulated/
+ExecStart=/usr/bin/u2f-emulated
+
+[Install]
+WantedBy=default.target

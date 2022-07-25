@@ -1,0 +1,28 @@
+post_install() {
+#!/usr/bin/env bash
+# Program:
+#	script to be run after package installation
+
+systemctl daemon-reload
+systemctl enable u2f-emulated.service
+# systemctl start u2f-emulated.service
+echo "
+Don't forget to run /usr/bin/u2f-emulated-setup as root to create you key!
+"
+
+}
+
+post_remove() {
+#!/usr/bin/env bash
+# Program:
+#	script to be run after package removal
+
+echo "run post uninstall script, action is $1 ..."
+
+[ "$1" = "remove" ] || [ "$1" = "purge" ] || exit 0
+
+if [ -d "/usr/share/u2f-emulated/" ]; then
+	rm -r "/usr/share/u2f-emulated/"
+fi
+
+}

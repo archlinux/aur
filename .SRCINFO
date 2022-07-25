@@ -1,0 +1,18 @@
+pkgbase = u2f-emulated
+	pkgdesc = Software that emulates U2F through a virtual USB device.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/MattGorko/u2f-emulated
+	install = u2f-emulated.install
+	arch = any
+	license = GPL2
+	checkdepends = criterion
+	makedepends = clang
+	provides = u2f-emulated
+	conflicts = u2f-emulated
+	source = https://github.com/MattGorko/u2f-emulated/archive/refs/heads/master.zip
+	source = u2f-emulated.service
+	sha256sums = 7eb4057524c1fb02d7883d189732428fe16fa36ac8ef1582304ad6d021698745
+	sha256sums = 8f03a228dc9c86d977714f2e8975a0c920e6faf3521912eb0cae789c77870786
+
+pkgname = u2f-emulated
