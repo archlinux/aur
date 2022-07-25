@@ -1,4 +1,6 @@
+# Maintainer: Dawson Dias <thexerothermicsclerodermoid@gmail.com>
 # Maintainer: Atakku <atakkudev@gmail.com>
+
 pkgname=blockbench-bin
 _pkgname=blockbench
 provides=(blockbench)
