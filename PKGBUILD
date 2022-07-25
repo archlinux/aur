@@ -12,7 +12,6 @@ conflicts=('teamviewer-beta')
 # TV_DMN, TV_DESK, TV_GUI
 depends=(
 	'hicolor-icon-theme'
-	'qt5-webkit'
 	'qt5-x11extras'
 	'qt5-quickcontrols' # Doesn't appear in namcap, won't display UI without it.
 	'qt5-webengine'
