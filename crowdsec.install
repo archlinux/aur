@@ -15,12 +15,15 @@ post_upgrade() {
 	
 	# Check the 1.x revision 
 	IFS="." read -r -a current_ver_rev  <<< "$current_ver"
-	IFS="." read -r -a new_ver_ref  <<< "$new_ver"
+	IFS="." read -r -a new_ver_rev  <<< "$new_ver"
 
 	# If new version is newer (1.2 versus 1.3) then run the upgrade
 	# Otherwise, only upgrade the binary files.
 	# Both options should keep exising configurations. 
-	if [[ ${current_ver_rev[1]} -lt ${new_ver_ref[1]} ]]; then
+	if [[ ${current_ver_rev[1]} -eq 3 ]]; then
+	  # Moving from 1.3 to 1.4 is not considered a major upgrade apparently and the wizard complains and errors out.
+		sh ./wizard.sh --upgrade
+	elif [[ ${current_ver_rev[1]} -lt ${new_ver_rev[1]} ]]; then
 		sh ./wizard.sh --upgrade
 	else
 		sh ./wizard.sh --binupgrade
