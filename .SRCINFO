@@ -1,0 +1,22 @@
+pkgbase = confettysh-bin
+	pkgdesc = Confetty over SSH
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://charm.sh/
+	license = MIT
+	conflicts = confettysh
+	provides = confettysh
+	arch = aarch64
+	source_aarch64 = https://github.com/charmbracelet/confettysh/releases/download/v1.0.3/confettysh_1.0.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5a880e594259c7fe7d95889d4f1e8e32811412a86f7f65d3b0a56823619ab7c3
+	arch = armv7h
+	source_armv7h = https://github.com/charmbracelet/confettysh/releases/download/v1.0.3/confettysh_1.0.3_linux_armv7.tar.gz
+	sha256sums_armv7h = d67d968883cab0e39e652d26801727aba6846ce5416b54ce1d895dea5ea19d0c
+	arch = i686
+	source_i686 = https://github.com/charmbracelet/confettysh/releases/download/v1.0.3/confettysh_1.0.3_linux_i386.tar.gz
+	sha256sums_i686 = c5b2fb30d25f15e20c859c470ce2ea2aa8a58708fd3f65bb30823c6dec93b160
+	arch = x86_64
+	source_x86_64 = https://github.com/charmbracelet/confettysh/releases/download/v1.0.3/confettysh_1.0.3_linux_x86_64.tar.gz
+	sha256sums_x86_64 = dffb9b4a5a392e79ba5582d2488d6fd4940d55adb1e684696cb9a90d5f5fa419
+	
+pkgname = confettysh-bin
