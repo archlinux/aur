@@ -1,7 +1,7 @@
 # Maintainer: MFW78 <mfw78@chasingseed.com>
 
 pkgname=swarm-bee
-pkgver=1.6.3
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='Swarm client implemented in Go, basic building block for Swarm Network'
 arch=('x86_64')
@@ -14,15 +14,17 @@ options=('!strip' '!buildflags' '!makeflags')
 backup=('etc/bee/bee.yaml')
 source=(
     "git+https://github.com/ethersphere/bee.git#tag=v${pkgver}"
+    "https://go.dev/dl/go1.17.11.linux-amd64.tar.gz"
 )
 sha512sums=(
     'SKIP'
+    'f25e730abc94364ae36c5d5834125cec1cea77c0c8a65ec23acf6f2c3f0a8e908547530202f818d13b74f21a037206fed546826838ffdebc5d1a10cb3a182e44'
 )
 install="${pkgname}.install"
 
 build() {
     cd "$srcdir/bee"
-    make binary
+    GO="$srcdir/go/bin/go" GOPATH="$srcdir/go" make binary
 }
 
 package() {
