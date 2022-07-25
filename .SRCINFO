@@ -1,0 +1,13 @@
+pkgbase = xdg-terminal-exec-git
+	pkgdesc = Proposed standard to launching desktop apps with Terminal=true
+	pkgver = r30.7ce994f
+	pkgrel = 1
+	url = https://github.com/Vladimir-csp/xdg-terminal-exec
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = which
+	source = git+https://github.com/Vladimir-csp/xdg-terminal-exec
+	sha256sums = SKIP
+
+pkgname = xdg-terminal-exec-git
