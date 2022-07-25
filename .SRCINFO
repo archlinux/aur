@@ -16,6 +16,7 @@ pkgbase = gcc-git
 	makedepends = binutils
 	makedepends = doxygen
 	makedepends = gcc-ada
+	makedepends = gcc-d
 	makedepends = git
 	makedepends = lib32-glibc
 	makedepends = lib32-gcc-libs
@@ -67,8 +68,10 @@ pkgname = gcc-libs-git
 	provides = libasan.so
 	provides = libtsan.so
 	provides = liblsan.so
+	provides = libgphobos.so
 	conflicts = gcc-libs
 	replaces = gcc-multilib-git
+	replaces = libgphobos
 	options = !emptydirs
 	options = !strip
 
@@ -115,6 +118,20 @@ pkgname = gcc-ada-git
 	replaces = gcc-multilib-git
 	options = !emptydirs
 	options = staticlibs
+
+pkgname = gcc-d-git
+	pkgdesc = D frontend for GCC (git version)
+	depends = gcc-git=13.0.0_r193646.g3164de6ac1b-1
+	depends = libisl.so
+	provides = gdc
+	replaces = gdc
+	options = staticlibs
+	options = !debug
+
+pkgname = lto-dump-git
+	pkgdesc = Dump link time optimization object files (git version)
+	depends = gcc-git=13.0.0_r193646.g3164de6ac1b-1
+	depends = libisl.so
 
 pkgname = gcc-go-git
 	pkgdesc = Go front-end for GCC (git version)

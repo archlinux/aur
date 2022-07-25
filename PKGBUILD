@@ -9,7 +9,7 @@
 # Just edit the --enable-languages option as well as the pkgname array, and comment out the pkg functions :)
 
 pkgbase=gcc-git
-pkgname=({gcc,gcc-libs,lib32-gcc-libs,gcc-fortran,gcc-objc,gcc-ada,gcc-go,libgccjit}-git)
+pkgname=({gcc,gcc-libs,lib32-gcc-libs,gcc-fortran,gcc-objc,gcc-ada,gcc-d,lto-dump,gcc-go,libgccjit}-git)
 pkgver=13.0.0_r193646.g3164de6ac1b
 _majorver=${pkgver%%.*}
 pkgrel=1
@@ -21,6 +21,7 @@ makedepends=(
   binutils
   doxygen
   gcc-ada
+  gcc-d
   git
   lib32-glibc
   lib32-gcc-libs
@@ -72,33 +73,34 @@ prepare() {
 
 build() {
   local _confflags=(
-    --prefix=/usr
-    --libdir=/usr/lib
-    --libexecdir=/usr/lib
-    --mandir=/usr/share/man
-    --infodir=/usr/share/info
-    --with-bugurl=https://bugs.archlinux.org/
-    --with-linker-hash-style=gnu
-    --with-system-zlib
-    --enable-__cxa_atexit
-    --enable-cet=auto
-    --enable-checking=release
-    --enable-clocale=gnu
-    --enable-default-pie
-    --enable-default-ssp
-    --enable-gnu-indirect-function
-    --enable-gnu-unique-object
-    --enable-linker-build-id
-    --enable-lto
-    --enable-multilib
-    --enable-plugin
-    --enable-shared
-    --enable-threads=posix
-    --disable-libssp
-    --disable-libstdcxx-pch
-    --disable-werror
-    --with-build-config=bootstrap-lto
-    --enable-link-serialization=1
+      --prefix=/usr
+      --libdir=/usr/lib
+      --libexecdir=/usr/lib
+      --mandir=/usr/share/man
+      --infodir=/usr/share/info
+      --with-bugurl=https://bugs.archlinux.org/
+      --with-build-config=bootstrap-lto
+      --with-linker-hash-style=gnu
+      --with-system-zlib
+      --enable-__cxa_atexit
+      --enable-cet=auto
+      --enable-checking=release
+      --enable-clocale=gnu
+      --enable-default-pie
+      --enable-default-ssp
+      --enable-gnu-indirect-function
+      --enable-gnu-unique-object
+      --enable-libstdcxx-backtrace
+      --enable-link-serialization=1
+      --enable-linker-build-id
+      --enable-lto
+      --enable-multilib
+      --enable-plugin
+      --enable-shared
+      --enable-threads=posix
+      --disable-libssp
+      --disable-libstdcxx-pch
+      --disable-werror
   )
 
   cd gcc-build
@@ -110,16 +112,16 @@ build() {
   CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
   "$srcdir/gcc/configure" \
-    --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++ \
+    --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++,d \
     --enable-bootstrap \
     "${_confflags[@]:?_confflags unset}"
 
   # see https://bugs.archlinux.org/task/71777 for rationale re *FLAGS handling
   make -O STAGE1_CFLAGS="-O2" \
-    BOOT_CFLAGS="$CFLAGS" \
-    BOOT_LDFLAGS="$LDFLAGS" \
-    LDFLAGS_FOR_TARGET="$LDFLAGS" \
-    bootstrap
+          BOOT_CFLAGS="$CFLAGS" \
+          BOOT_LDFLAGS="$LDFLAGS" \
+          LDFLAGS_FOR_TARGET="$LDFLAGS" \
+          bootstrap
 
   # make documentation
   make -O -C $CHOST/libstdc++-v3/doc doc-man-doxygen
@@ -136,16 +138,19 @@ build() {
 
   # see https://bugs.archlinux.org/task/71777 for rationale re *FLAGS handling
   make -O STAGE1_CFLAGS="-O2" \
-    BOOT_CFLAGS="$CFLAGS" \
-    BOOT_LDFLAGS="$LDFLAGS" \
-    LDFLAGS_FOR_TARGET="$LDFLAGS" \
-    all-gcc
+          BOOT_CFLAGS="$CFLAGS" \
+          BOOT_LDFLAGS="$LDFLAGS" \
+          LDFLAGS_FOR_TARGET="$LDFLAGS" \
+          all-gcc
 
   cp -a gcc/libgccjit.so* ../gcc-build/gcc/
 }
 
 check() {
   cd gcc-build
+
+  # disable libphobos test to avoid segfaults
+  sed -i '/maybe-check-target-libphobos \\/d' Makefile
 
   # do not abort on error as some are "expected"
   make -O -k check || true
@@ -156,32 +161,36 @@ package_gcc-libs-git() {
   depends=('glibc>=2.27')
   options=(!emptydirs !strip)
   provides=("gcc-libs-git=$pkgver-$pkgrel" gcc-libs gcc-multilib{,-git} libgo.so libgfortran.so
-  libubsan.so libasan.so libtsan.so liblsan.so)
+  libubsan.so libasan.so libtsan.so liblsan.so libgphobos.so)
   conflicts=(gcc-libs)
-  replaces=(gcc-multilib-git)
+  replaces=(gcc-multilib-git libgphobos)
 
   cd gcc-build
   make -C $CHOST/libgcc DESTDIR="$pkgdir" install-shared
   rm -f "$pkgdir/$_libdir/libgcc_eh.a"
 
   for lib in libatomic \
-    libgfortran \
-    libgo \
-    libgomp \
-    libitm \
-    libquadmath \
-    libsanitizer/{a,l,ub,t}san \
-    libstdc++-v3/src \
-    libvtv; do
+             libgfortran \
+             libgo \
+             libgomp \
+             libitm \
+             libquadmath \
+             libsanitizer/{a,l,ub,t}san \
+             libstdc++-v3/src \
+             libvtv; do
     make -C $CHOST/$lib DESTDIR="$pkgdir" install-toolexeclibLTLIBRARIES
   done
 
   make -C $CHOST/libobjc DESTDIR="$pkgdir" install-libs
   make -C $CHOST/libstdc++-v3/po DESTDIR="$pkgdir" install
 
+  make -C $CHOST/libphobos DESTDIR="$pkgdir" install
+  rm -rf "$pkgdir"/$_libdir/include/d/
+  rm -f "$pkgdir"/usr/lib/libgphobos.spec
+
   for lib in libgomp \
-    libitm \
-    libquadmath; do
+             libitm \
+             libquadmath; do
     make -C $CHOST/$lib DESTDIR="$pkgdir" install-info
   done
 
@@ -250,8 +259,8 @@ package_gcc-git() {
   make -C $CHOST/32/libsanitizer/asan DESTDIR="$pkgdir" install-nodist_toolexeclibHEADERS
 
   make -C gcc DESTDIR="$pkgdir" install-man install-info
-  rm "$pkgdir"/usr/share/man/man1/{gccgo,gfortran}.1
-  rm "$pkgdir"/usr/share/info/{gccgo,gfortran,gnat-style,gnat_rm,gnat_ugn}.info
+  rm "$pkgdir"/usr/share/man/man1/{gccgo,gfortran,lto-dump,gdc}.1
+  rm "$pkgdir"/usr/share/info/{gccgo,gfortran,gnat-style,gnat_rm,gnat_ugn,gdc}.info
 
   make -C libcpp DESTDIR="$pkgdir" install
   make -C gcc DESTDIR="$pkgdir" install-po
@@ -410,6 +419,9 @@ package_lib32-gcc-libs-git() {
 
   make -C $CHOST/32/libobjc DESTDIR="$pkgdir" install-libs
 
+  make -C $CHOST/libphobos DESTDIR="$pkgdir" install
+  rm -f "$pkgdir"/usr/lib32/libgphobos.spec
+
   # remove files provided by gcc-libs
   rm -rf "$pkgdir"/usr/lib
 
@@ -419,6 +431,41 @@ package_lib32-gcc-libs-git() {
 
 }
 
+package_gcc-d-git() {
+  pkgdesc="D frontend for GCC (git version)"
+  depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
+  provides=(gdc)
+  replaces=(gdc)
+  options=(staticlibs !debug)
+
+  cd gcc-build
+  make -C gcc DESTDIR="$pkgdir" d.install-{common,man,info}
+
+  install -Dm755 gcc/gdc "$pkgdir"/usr/bin/gdc
+  install -Dm755 gcc/d21 "$pkgdir"/"$_libdir"/d21
+
+  make -C $CHOST/libphobos DESTDIR="$pkgdir" install
+  rm -f "$pkgdir/usr/lib/"lib{gphobos,gdruntime}.so*
+  rm -f "$pkgdir/usr/lib32/"lib{gphobos,gdruntime}.so*
+
+  # Install Runtime Library Exception
+  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
+    "$pkgdir/usr/share/licenses/$pkgname/"
+}
+
+package_lto-dump-git() {
+  pkgdesc="Dump link time optimization object files (git version)"
+  depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
+
+  cd gcc-build
+  make -C gcc DESTDIR="$pkgdir" lto.install-{common,man,info}
+
+  # Install Runtime Library Exception
+  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
+    "$pkgdir/usr/share/licenses/$pkgname/"
+}
 package_libgccjit-git() {
   pkgdesc="Just-In-Time Compilation with GCC backend (git version)"
   depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
