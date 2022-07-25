@@ -1,0 +1,15 @@
+pkgbase = libredwg
+	pkgdesc = A free C library to handle DWG files
+	pkgver = 0.12.5
+	pkgrel = 1
+	url = https://www.gnu.org/software/libredwg/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python
+	depends = pcre
+	depends = perl
+	source = libredwg-0.12.5.tar.gz::https://ftp.gnu.org/gnu/libredwg/libredwg-0.12.5.tar.gz
+	md5sums = cbef6e83f3631c31ff2cbce23c77fac9
+
+pkgname = libredwg
