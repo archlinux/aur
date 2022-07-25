@@ -1,0 +1,16 @@
+pkgbase = via-cli-bin
+	pkgdesc = Easily start & stop your local dev environments from your cli
+	pkgver = v0.3.1
+	pkgrel = 1
+	url = https://github.com/Sopamo/via
+	arch = x86_64
+	license = MIT
+	makedepends = deno
+	makedepends = make
+	provides = via-cli
+	conflicts = via-cli
+	options = !strip
+	source = via-cli-bin-v0.3.1::git+https://github.com/Sopamo/via#tag=v0.3.1
+	md5sums = SKIP
+
+pkgname = via-cli-bin
