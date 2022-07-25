@@ -1,0 +1,13 @@
+[Trigger]
+Operation = Remove
+Operation = Upgrade
+Operation = Install
+
+Type = Path
+Target = srv/$srvname/mods/*
+
+[Action]
+When = PreTransaction
+Exec = /usr/bin/$srvnamed backup
+Depends = $srvname-server
+Description = Backing up the $srvname world.
