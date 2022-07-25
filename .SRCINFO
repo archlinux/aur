@@ -9,6 +9,8 @@ pkgbase = clavis
 	depends = pango
 	depends = pixman
 	depends = pass
+	depends = make
+	depends = pkgconf
 	conflicts = clavis-git
 
 pkgname = clavis
