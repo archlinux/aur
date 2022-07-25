@@ -1,9 +1,15 @@
 # Maintainer: FirstAirBender <noblechuk5 [at] web [dot] de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
+# Contributor: Manuel Hüsers <manuel.huesers@uni-ol.de>
+# Contributor: forest76 <forestt@poczta.onet.pl>
+# Contributor: Tilman Blumenbach <tilman@ax86.net>
+# Contributor: Christian Neukirchen <chneukirchen@gmail.com>
 
 _pkgname=autotrace
 pkgname="${_pkgname}-git"
 pkgver=20200219.65.r121.gfcd9043
-pkgrel=1
+pkgrel=2
 pkgdesc='AutoTrace is a utility for converting bitmap into vector graphics.'
 arch=('i686' 'x86_64')
 url='https://github.com/autotrace/autotrace.git'

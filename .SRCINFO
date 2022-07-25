@@ -1,7 +1,7 @@
 pkgbase = autotrace-git
 	pkgdesc = AutoTrace is a utility for converting bitmap into vector graphics.
 	pkgver = 20200219.65.r121.gfcd9043
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/autotrace/autotrace.git
 	arch = i686
 	arch = x86_64
