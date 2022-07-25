@@ -1,0 +1,19 @@
+pkgbase = curios-forge
+	pkgdesc = Curios is a flexible and expandable accessory/equipment API for users and developers.
+	pkgver = 5.1.0.4
+	pkgrel = 1
+	url = https://www.curseforge.com/minecraft/mc-mods/curios
+	arch = any
+	groups = forge-mods
+	groups = minecraft-mods
+	license = LGPL-3.0
+	depends = forge-hooks>=1.0.0
+	depends = forge-server>=41.0.94
+	provides = curios=5.1.0.4
+	noextract = curios-forge-1.19-.jar
+	source = https://github.com/TheIllusiveC4/Curios/blob/1.19.x/LICENSE
+	source = https://mediafiles.forgecdn.net/files/3871/347/curios-forge-1.19-5.1.0.4.jar
+	sha256sums = ae651cfe7715ce791261be76c1b7d1e502c40502b7e2b7658bdac2d64157236b
+	sha256sums = ac80177420900486f6cca6e6a78d0aaa71fe18f86e951384ab24fb87fc3e4140
+
+pkgname = curios-forge
