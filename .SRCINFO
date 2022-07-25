@@ -1,6 +1,6 @@
 pkgbase = numptyphysics
 	pkgdesc = A crayon-drawing based physics puzzle game
-	pkgver = 0.3.9
+	pkgver = 0.3.10
 	pkgrel = 1
 	url = https://github.com/thp/numptyphysics
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = numptyphysics
 	depends = sdl2
 	depends = sdl2_image
 	depends = sdl2_ttf
-	source = numptyphysics-0.3.9.zip::https://github.com/thp/numptyphysics/archive/refs/tags/0.3.9.zip
-	md5sums = 38d79b37733054ec52d4d393f4c02726
+	source = numptyphysics-0.3.10.zip::https://github.com/thp/numptyphysics/archive/refs/tags/0.3.10.zip
+	md5sums = 311d79475358cb814d997ab8e16a894b
 
 pkgname = numptyphysics
