@@ -1,0 +1,20 @@
+pkgbase = aoa
+	pkgdesc = Advent of Ascension is a massive adventure and exploration mod designed with the purpose of fleshing out every area of the game as much as possible.
+	pkgver = 3.6.10
+	pkgrel = 1
+	url = https://www.curseforge.com/minecraft/mc-mods/advent-of-ascension-nevermine
+	arch = any
+	groups = forge-mods
+	groups = minecraft-mods
+	license = other
+	depends = geckolib>=3.1.8
+	depends = forge-hooks>=1.0.0
+	depends = forge-server>=41.0.98
+	provides = aoa=3.6.10
+	noextract = AoA3--1.19-.jar
+	source = https://github.com/Tslat/Advent-Of-Ascension/blob/1.19/LICENSE.md
+	source = https://mediafiles.forgecdn.net/files/3894/434/AoA3-1.19-3.6.10.jar
+	sha256sums = 6300552af54c44b4079ac6dc19ad1eee402429994b9d2026441d14e0a5a073e5
+	sha256sums = 3599809d71a4ad144fca2dce6f523ae1bbd8fd908505379f49c3ffd83df08a6a
+
+pkgname = aoa
