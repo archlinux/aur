@@ -1,6 +1,6 @@
 pkgbase = sniprun
 	pkgdesc = Independently run snippets of code
-	pkgver = 1.2.4
+	pkgver = 1.2.6
 	pkgrel = 1
 	url = https://github.com/michaelb/sniprun
 	changelog = CHANGELOG.md
@@ -8,8 +8,8 @@ pkgbase = sniprun
 	license = MIT
 	makedepends = cargo
 	makedepends = gcc-libs
-	source = sniprun-1.2.4.tar.gz::https://github.com/michaelb/sniprun/archive/v1.2.4.tar.gz
-	sha256sums = 2b81fb897c56aab22d215282cf4b2cca1b4573f48f6b917569bd9f4cfdff9e1c
+	source = sniprun-1.2.6.tar.gz::https://github.com/michaelb/sniprun/archive/v1.2.6.tar.gz
+	sha256sums = 0269e4e467a070c918aca6b96dabd11886484078ece3c4a9ed9dd816d47963c8
 
 pkgname = sniprun
 	pkgdesc = Compiled binary core for neovim-sniprun
@@ -20,7 +20,7 @@ pkgname = neovim-sniprun
 	install = neovim-sniprun.install
 	arch = any
 	depends = neovim
-	depends = sniprun=1.2.4
+	depends = sniprun=1.2.6
 	optdepends = bash: Bash snippets support
 	optdepends = coffeescript: CoffeeScript snippets support
 	optdepends = gcc: C/C++ snippets support

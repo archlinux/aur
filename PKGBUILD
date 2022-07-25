@@ -2,7 +2,7 @@
 
 pkgbase=sniprun
 pkgname=('sniprun' 'neovim-sniprun')
-pkgver=1.2.4
+pkgver=1.2.6
 pkgrel=1
 pkgdesc='Independently run snippets of code'
 arch=('x86_64')
@@ -11,11 +11,10 @@ license=('MIT')
 makedepends=('cargo' 'gcc-libs')
 changelog=CHANGELOG.md
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2b81fb897c56aab22d215282cf4b2cca1b4573f48f6b917569bd9f4cfdff9e1c')
+sha256sums=('0269e4e467a070c918aca6b96dabd11886484078ece3c4a9ed9dd816d47963c8')
 
 prepare() {
 	cd "$pkgbase-$pkgver"
-	cargo update
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -69,8 +68,7 @@ package_neovim-sniprun() {
 		-type f -exec install -Dm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
 	install -d "$pkgdir/usr/share/nvim/runtime/target/release"
 	ln -s "/usr/bin/sniprun" "$pkgdir/usr/share/nvim/runtime/target/release/sniprun"
-	install -d "$pkgdir/usr/share/licenses/"
-	install -d "$pkgdir/usr/share/doc/"
+	install -d "$pkgdir/usr/share/licenses/" "$pkgdir/usr/share/doc/"
 	ln -s "/usr/share/licenses/sniprun/" "$pkgdir/usr/share/licenses/$pkgname"
 	ln -s "/usr/share/doc/sniprun/" "$pkgdir/usr/share/doc/$pkgname"
 }
