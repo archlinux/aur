@@ -1,20 +1,13 @@
-pkgbase = python-pip_search
+pkgbase = python-pip-search
 	pkgdesc = Searching thought pip when hard times strike.
 	pkgver = 0.0.12
 	pkgrel = 1
 	url = https://github.com/victorgarric/pip_search
 	arch = any
-	depends = python-pip
 	depends = python-rich
 	depends = python-beautifulsoup4
-	depends = python-chardet
-	depends = python-idna
-	depends = python-urllib3
-	depends = python-commonmark
-	depends = python-bs4
-	depends = python-pygments
-	depends = python-soupsieve
-	source = python-pip_search-0.0.12.tar.gz::https://github.com/victorgarric/pip_search/releases/download/0.0.12/pip_search-0.0.12.tar.gz
+	depends = python-requests
+	source = python-pip-search-0.0.12.tar.gz::https://github.com/victorgarric/pip_search/releases/download/0.0.12/pip_search-0.0.12.tar.gz
 	sha256sums = 89c78c36b4907ceb8e6b6313dc8759bf9dce80fbf5ee5f1d57445ea5c5a820d7
 
-pkgname = python-pip_search
+pkgname = python-pip-search
