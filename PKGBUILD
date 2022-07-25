@@ -3,7 +3,7 @@
 _base=hvplot
 pkgname=python-${_base}
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-level plotting API for pandas, dask, xarray, and networkx built on HoloViews"
 arch=(any)
 url="https://${_base}.holoviz.org"
@@ -23,7 +23,7 @@ build() {
 check() {
   cd ${_base}-${pkgver}
   # https://stackoverflow.com/a/58440525/9302545
-  python -m pytest -k 'not help_style_extension_output and not plotly'
+  python -m pytest -k 'not help_style_extension_output and not plotly and not options'
 }
 
 package() {

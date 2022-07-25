@@ -1,7 +1,7 @@
 pkgbase = python-hvplot
 	pkgdesc = A high-level plotting API for pandas, dask, xarray, and networkx built on HoloViews
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hvplot.holoviz.org
 	arch = any
 	license = custom:BSD-3-clause
