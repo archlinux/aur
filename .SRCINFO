@@ -1,15 +1,15 @@
 pkgbase = mtn
 	pkgdesc = Movie Thumbnailer using FFmpeg forked from mtn2008
-	pkgver = 3.4.1
+	pkgver = 3.4.2
 	pkgrel = 1
 	url = https://gitlab.com/movie_thumbnailer/mtn
 	arch = x86_64
 	license = GPL2
 	depends = ffmpeg
 	depends = gd
-	provides = mtn=3.4.1
+	provides = mtn=3.4.2
 	conflicts = mtn-git
-	source = https://gitlab.com/movie_thumbnailer/mtn/-/archive/v3.4.1/mtn-v3.4.1.tar.gz
-	sha256sums = 34c1105c67b29cc5f11c811bd8e9850eb8e80e421a6ff9bbdd11d37cb863d356
+	source = https://gitlab.com/movie_thumbnailer/mtn/-/archive/v3.4.2/mtn-v3.4.2.tar.gz
+	sha256sums = 19b2076c00f5b0ad70c2467189b17f335c6e7ece5d1a01ed8910779f6a5ca52a
 
 pkgname = mtn

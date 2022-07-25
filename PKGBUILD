@@ -2,7 +2,7 @@
 # Contributor: LinRs <LinRs AT users.noreply.github.com>
 # Contributor: Lucas Saliés Brum <lucas@archlinux.com.br>
 pkgname=mtn
-pkgver=3.4.1
+pkgver=3.4.2
 pkgrel=1
 pkgdesc="Movie Thumbnailer using FFmpeg forked from mtn2008"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('ffmpeg' 'gd')
 provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}-git")
 source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('34c1105c67b29cc5f11c811bd8e9850eb8e80e421a6ff9bbdd11d37cb863d356')
+sha256sums=('19b2076c00f5b0ad70c2467189b17f335c6e7ece5d1a01ed8910779f6a5ca52a')
 
 build() {
     cd "${pkgname}-v${pkgver}/src"
