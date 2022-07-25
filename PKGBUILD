@@ -1,7 +1,8 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-icecream
-pkgver=2.1.2
+_pkg="${pkgname#python-}"
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="Sweet and creamy print debugging"
 arch=('any')
@@ -12,22 +13,23 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel
 provides=('icecream-debugging')
 changelog=changelog.txt
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/i/icecream/icecream-$pkgver.tar.gz")
-sha256sums=('09300b2d1c678712410cbd47c95198eb1b580f66f311a554ccd6b9e758ece0ee')
+sha256sums=('0aa4a7c3374ec36153a1d08f81e3080e83d8ac1eefd97d2f4fe9544e8f9b49de')
 
 build() {
-	cd "icecream-$pkgver"
+	cd "$_pkg-$pkgver"
 	python -m build --wheel --no-isolation
 }
 
 check() {
-	cd "icecream-$pkgver"
+	cd "$_pkg-$pkgver"
 	python setup.py test
 }
 
 package() {
-	export PYTHONHASHSEED=0
-	cd "icecream-$pkgver"
-	python -m installer --destdir="$pkgdir/" dist/*.whl
-	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s "$_site/$_pkg-$pkgver.dist-info/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
