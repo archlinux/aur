@@ -9,7 +9,7 @@ Subject: [PATCH] Add -p to copyprj to enable copying of prjconf
  2 files changed, 8 insertions(+), 1 deletion(-)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index 636337b2ba3d4a624144da48791cfdfb55453e75..f700a7f1012322bb3b6290ad2d9629a0030a705e 100644
+index 5060757028f1144bcafda4c60507af4af090be8f..1acaa7f08ea166eb8e473f51d07f84854f478904 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
 @@ -3211,6 +3211,8 @@ Please submit there instead, or use --nodevelproject to force direct submission.
@@ -31,10 +31,10 @@ index 636337b2ba3d4a624144da48791cfdfb55453e75..f700a7f1012322bb3b6290ad2d9629a0
          print("done cp")
          print(r)
 diff --git a/osc/core.py b/osc/core.py
-index e37d1f353692e8cc4a8b3ae0807ccc3198503d71..d01dab539b6502119538e770504b75a74c6177eb 100644
+index 0625e7517b965ca2e52f19f1a78df78012f5f2e5..f943436fd0d27be71a050776cec4235bbec18b31 100644
 --- a/osc/core.py
 +++ b/osc/core.py
-@@ -5669,6 +5669,8 @@ def copy_prj(src_apiurl, src_project, dst_project,
+@@ -5672,6 +5672,8 @@ def copy_prj(src_apiurl, src_project, dst_project,
               withhistory = False,
               makeolder = False,
               resign = False,
@@ -43,7 +43,7 @@ index e37d1f353692e8cc4a8b3ae0807ccc3198503d71..d01dab539b6502119538e770504b75a7
               comment = None):
      """
      Create a copy of a project.
-@@ -5690,6 +5692,9 @@ def copy_prj(src_apiurl, src_project, dst_project,
+@@ -5693,6 +5695,9 @@ def copy_prj(src_apiurl, src_project, dst_project,
          query['comment'] = comment
      if now:
          query['nodelay'] = '1'

@@ -1,4 +1,4 @@
-# Maintainer  : Thaodan          <theodorstormgradex {at) gmail [dot} com>
+# Maintainer  : Thaodan          <AUR+me@thaodan.de>
 # Contributor : Firef0x          <Firefgx {at) gmail [dot} com>
 # Contributor : Bernhard Walle   <bwalle.de: bernhard            >
 # Contributor : Jesse Jaara      <gmail.com, mail.ru: jesse.jaara>
@@ -6,7 +6,7 @@
 # Contributor : Patrick McCarty  <pnorcks at gmail dot com>
 
 pkgname=osc
-pkgver=0.179.0
+pkgver=0.180.0
 pkgrel=1
 pkgdesc="Command line client for the openSUSE Build Service"
 arch=(any)
@@ -34,15 +34,15 @@ source=("https://github.com/openSUSE/${pkgname}/archive/${pkgver}.tar.gz"
         0006-Add-architecture-and-scheduler-maps.patch
         0007-Trap-any-kind-of-exception-during-plugin-parsing-eg-.patch
 )
-sha256sums=('543a9e1a4f2dc722a5228b41a8da92867a35fa52f9701dc213108fa9b35085e8'
+sha256sums=('a96b943f0110add33f0a30ac0a2f51a96c2af94d18f8327014f479307b10a774'
             '2b045e03d2fdce12683ceb9792d491a32f00b256045456412e7bc18c8726218a'
             '20a0d510c8b2a30d83e7f37fc1906104ab98045a246dc3f00a53fe28b6adae40'
-            'dac1691cbfafff337360cb92b4b1bba5e6913efebdd92d9bd7f24ec90999d4eb'
-            'ebe734cdd80fa9f61176ee038199d987cc35bcc52d6bbccd63decd6a0fbe28f8'
-            '7da848a75e8cc28e84111630911547ca315cbe3745743fa64f1ab42b43eb1312'
-            '20a084566856da11deb2c8b71b4f50b1dd829eb1f759f7b52a131bd5062aa482'
+            '3f87fba92d05f3a8e31ebc64de6cc526a82f4beebb7f5bee34ff38dfb2025be3'
+            'ec94d3acc0a5bb2be0d5ec66684f176ee4bac4364df5e54abb3270ea3f4f0cec'
+            'ad27cf70501463c533cf7f4b950fdb0e93c9a3e60bf1e7d374045a934db7e785'
+            'ba5b64b3d27768dea5a37fac4e84a5a23c4f2bcd87a428faac7e9a489d82a718'
             'ad44984d22119149a2e2a74f8811a55f478cd86fed842c196c74a93bdefbb0f3'
-            '2bcbea27b134c590f75b466003f1e48fef295ca521de11f8055a775a69d28cc8')
+            '1d70ab2ad055c5ba24b196642b1fea7e69a0ff29dcdba24eca9fb22000a3ca49')
 
 prepare() {
   # Add 'Arch_Core' and 'Arch_Extra' as osc build targets
@@ -52,6 +52,10 @@ prepare() {
   for patch in "$srcdir"/*.patch; do
     patch -p1 -i $patch
   done
+
+  # Fix version
+  sed -e "s/    version = \"%(describe:tags=true)\"/    version = \"$pkgver\"/"  \
+      -i osc/util/git_version.py
 }
 
 build() {
