@@ -11,6 +11,8 @@ depends=(remind)
 makedepends=(go pandoc)
 source=("${pkgname}::git+${url}")
 sha1sums=('SKIP')
+provides=("remindme")
+conflicts=("remindme")
 
 pkgver() {
   cd "${srcdir}/${pkgname}"

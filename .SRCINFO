@@ -8,6 +8,8 @@ pkgbase = remindme-git
 	makedepends = go
 	makedepends = pandoc
 	depends = remind
+	provides = remindme
+	conflicts = remindme
 	source = remindme-git::git+https://git.sr.ht/~primalmotion/remindme
 	sha1sums = SKIP
 
