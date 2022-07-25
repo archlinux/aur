@@ -2,7 +2,7 @@
 
 _pkgname='instalee'
 pkgname="${_pkgname}-git"
-pkgver=r30.7c6fa3f
+pkgver=r35.a7746da
 pkgrel=1
 pkgdesc='TODO'
 arch=('any')
@@ -18,6 +18,8 @@ sha512sums=('SKIP')
 package() {
   cd "${srcdir}/${_pkgname}/"
   local bin="${pkgdir}/usr/bin"
+  install -D --target-directory "${pkgdir}/usr/share/doc/${_pkgname}/" *.md
+  install -D --target-directory "${pkgdir}/usr/share/man/man1/" "${_pkgname}.1"
   install -D --target-directory "$bin" "${_pkgname}"
   sed -i "s/r%s.%s/version ${pkgver}/" "$bin/${_pkgname}"
 }
