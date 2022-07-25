@@ -1,0 +1,21 @@
+pkgbase = autotrace-git
+	pkgdesc = An utility to trace bitmaps: convert bitmaps to vector graphics, with patches from Sacha Chua
+	pkgver = 20200219.65.r0.g4333e37
+	pkgrel = 2
+	url = https://github.com/autotrace/autotrace.git
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = intltool
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	depends = libpng
+	depends = pstoedit
+	depends = graphicsmagick
+	options = !libtool
+	source = autotrace::git+https://github.com/sachac/autotrace.git#branch=master
+	sha512sums = SKIP
+
+pkgname = autotrace-git
