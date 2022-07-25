@@ -1,21 +1,20 @@
 # Maintainer=yuh <yuhldr@qq.com>
 
-pkgname=ldr-translate-qt
 pkgdata=ldr-translate
-pkgver=1.4.0
+pkgname=$pkgdata-qt
+pkgver=1.5.0
 pkgrel=1
 epoch=
 pkgdesc="一个翻译软件，更适合kde桌面，专注文献翻译，可以截图翻译、复制翻译"
 arch=('x86_64')
-url="https://github.com/yuhldr/ldr-translate"
+url="https://github.com/yuhldr/$pkgdata"
 license=('GPL')
 groups=(ldr)
-depends=(make python python-pip)
-makedepends=()
+depends=(python python-requests python-pyqt5)
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=(ldr-translate-gtk)
+conflicts=($pkgdata-gtk)
 replaces=()
 backup=()
 options=()
@@ -23,7 +22,7 @@ install=
 changelog=
 source=("https://github.com/yuhldr/$pkgdata/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-md5sums=(457eb424ba171da1a9addd698ddc7263)
+md5sums=(c4c894d9da1f87cd4344d61d9d11c1c9)
 validpgpkeys=()
 
 prepare() {
@@ -31,17 +30,19 @@ prepare() {
 	echo "ldr"
 }
 
-build() {
-	cd "$pkgdata-$pkgver"
-	make qt
-}
-
-check() {
-	cd "$pkgdata-$pkgver"
-	make check-qt
-}
-
 package() {
 	cd "$pkgdata-$pkgver"
-	make install
+
+	sudo mkdir -p /usr/bin
+	sudo mkdir -p /usr/share/applications
+	sudo mkdir -p /usr/share/icons
+	sudo mkdir -p /opt/ldr-translate
+
+	sudo cp data/ldr /usr/bin/
+
+	sudo cp data/icon/icon.png /usr/share/icons/ldr-translate.png
+	sudo cp data/ldr-translate.desktop /usr/share/applications/
+
+	sudo cp -r api data/icon data/config.json data/config_locale.json /opt/ldr-translate/
+	sudo cp gui/qt/* /opt/ldr-translate/
 }
