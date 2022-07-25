@@ -2,7 +2,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=r21519.b9a974483
+pkgver=r21737.dfaab8f65
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -53,11 +53,15 @@ source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-mainline"
         'git+https://git.ffmpeg.org/ffmpeg.git'
         'git+https://github.com/libsdl-org/SDL.git'
         'git+https://github.com/yhirose/cpp-httplib.git'
+        'git+https://github.com/Microsoft/vcpkg.git'
         # cubeb dependencies
         'git+https://github.com/arsenm/sanitizers-cmake.git'
+        'git+https://github.com/google/googletest'
         # sirit dependencies
         'git+https://github.com/KhronosGroup/SPIRV-Headers.git')
 md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -83,27 +87,23 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_pkgname"
 
-    for submodule in externals/{inih/inih,cubeb,dynarmic,libressl,libusb/libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,xbyak,opus/opus,ffmpeg,SDL,cpp-httplib}; do
-        git submodule init ${submodule}
-        git config submodule.${submodule}.url "$srcdir/${submodule##*/}"
-        git submodule update --init
+    for submodule in {inih,cubeb,dynarmic,libressl,libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,xbyak,opus,ffmpeg,SDL,cpp-httplib,vcpkg}; 
+    do
+        git config --file=.gitmodules submodule.$submodule.url "$srcdir/${submodule}"
     done
+
+    git submodule update --init
 
     cd "$srcdir/$_pkgname"/externals/cubeb
 
-    for submodule in cmake/sanitizers-cmake; do
-        git submodule init ${submodule}
-        git config submodule.${submodule}.url "$srcdir/${submodule##*/}"
-        git submodule update --init
-    done
+    git config --file=.gitmodules submodule.cmake/sanitizers-cmake.url "$srcdir/sanitizers-cmake"
+    git config --file=.gitmodules submodule.googletest.url "$srcdir/googletest"
+    git submodule update --init
     
     cd "$srcdir/$_pkgname"/externals/sirit
     
-    for submodule in externals/SPIRV-Headers; do
-        git submodule init ${submodule}
-        git config submodule.${submodule}.url "$srcdir/${submodule##*/}"
-        git submodule update --init
-    done
+    git config --file=.gitmodules submodule.externals/SPIRV-Headers.url "$srcdir/SPIRV-Headers"
+    git submodule update --init
 }
 
 build() {
