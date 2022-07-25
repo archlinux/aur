@@ -1,6 +1,6 @@
 pkgbase = r-restriktor
 	pkgdesc = Restricted Statistical Estimation and Inference for Linear Models
-	pkgver = 0.3.400
+	pkgver = 0.3.500
 	pkgrel = 1
 	url = https://cran.r-project.org/package=restriktor
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-restriktor
 	depends = r-lavaan
 	depends = r-mvtnorm
 	depends = r-quadprog
-	source = https://cran.r-project.org/src/contrib/restriktor_0.3-400.tar.gz
-	sha256sums = b2121cc2df5ba4218c74d2fb5bca086587fd940c860bd3b552640c12995c5d45
+	source = https://cran.r-project.org/src/contrib/restriktor_0.3-500.tar.gz
+	sha256sums = 636fccef98e0779ba437998ae7071679175c3c21bf2161d64d5a87de5b35459d
 
 pkgname = r-restriktor
