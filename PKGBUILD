@@ -1,7 +1,7 @@
 # Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=fiv-git
 _pkgname=fiv
-pkgver=r280.68e786b
+pkgver=r423.fa034a1
 pkgrel=1
 pkgdesc="Image browser and viewer"
 url="https://git.janouch.name/p/fiv"
@@ -11,10 +11,17 @@ conflicts=('fiv')
 provides=('fiv')
 makedepends=('meson' 'pkg-config' 'git')
 depends=('gtk3' 'pixman' 'libjpeg-turbo' 'libwebp')
-optdepends=('libraw' 'librsvg' 'gdk-pixbuf2' 'libxcursor' 'libtiff' 'libheif'
-  'perl-image-exiftool')
-source=("git+https://git.janouch.name/p/$_pkgname.git")
-md5sums=('SKIP')
+optdepends=('libraw' 'resvg' 'librsvg' 'gdk-pixbuf2' 'libxcursor' 'libtiff'
+  'libheif' 'perl-image-exiftool')
+install=fiv.install
+source=(
+  "git+https://git.janouch.name/p/$_pkgname.git"
+  update-fiv-desktop-files.hook
+)
+sha256sums=(
+  SKIP
+  b1f135e28fc09994fb891984990c9567ee49d1ad82ffebb6deb131c2e22cee52
+)
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -31,10 +38,12 @@ prepare() {
 }
 
 build() {
+  # resvg is unstable and needs to be enabled explicitly
   arch-meson --wrap-mode default "$srcdir/$_pkgname" "$srcdir/$_pkgname-build"
   meson compile -C "$srcdir/$_pkgname-build"
 }
 
 package() {
   meson install -C "$srcdir/$_pkgname-build" --destdir "$pkgdir"
+  install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 *.hook
 }

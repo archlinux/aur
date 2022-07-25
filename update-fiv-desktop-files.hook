@@ -1,0 +1,13 @@
+# This needs to copy gdk-pixbuf-query-loaders.hook and alphabetically follow it,
+# because we depend on that updated cache.
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/*.so
+
+[Action]
+Description = Updating fiv file format support info...
+When = PostTransaction
+Exec = /usr/bin/fiv-update-desktop-files
