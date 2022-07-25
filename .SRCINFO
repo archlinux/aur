@@ -5,6 +5,7 @@ pkgbase = r-gdata
 	url = https://cran.r-project.org/web/packages/gdata/
 	arch = any
 	license = GPL2
+	depends = r
 	depends = r-gtools
 	optdepends = perl-spreadsheet-parsexlsx
 	source = https://cran.r-project.org/src/contrib/gdata_2.18.0.1.tar.gz
