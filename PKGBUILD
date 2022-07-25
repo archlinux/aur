@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="pterodactyl-wings"
-pkgver=1.6.4
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="The server control plane for Pterodactyl Panel"
 url="https://pterodactyl.io/"
@@ -12,7 +12,7 @@ makedepends=("go")
 conflicts=("pterodactyl-daemon")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pterodactyl/wings/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.service")
-sha256sums=('3aac830bcb40fc6812ae2e5e6eb5bb47cb60ae651ec876d87e4c3aba88d7a928'
+sha256sums=('9250ffec599f8177c7369519f5ca7387d54cd880c3ab944eed8ef6ee037ab173'
             '62dfff25f9bdae4769f4201ed30e7c2bfca54611bee75512c5626e74c764f46e')
 
 build(){
