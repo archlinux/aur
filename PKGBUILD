@@ -1,22 +1,23 @@
-# Maintainer: Aditya Naik <nikeadilfc at gmail dot com>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: Aditya Naik <nikeadilfc at gmail dot com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=artanis
-pkgver=0.5
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A fast monolithic web-framework of Scheme"
 url="http://web-artanis.com/"
-depends=('guile')
+depends=('guile3')
 makedepends=('texlive-core')
 arch=('x86_64')
 license=('LGPL')
 source=(https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz)
-sha1sums=('dab7737eccbc92901cd7b70f6ac86551a0cd8259')
+sha1sums=('bc56edb3e6eca37b538d0e635960a320e5df4f7d')
 options=('!strip')
 
 build() {
   cd $pkgname-$pkgver
-  GUILE_EFFECTIVE_VERSION=2.2 ./configure --prefix=/usr
+  GUILE_EFFECTIVE_VERSION=3.0 ./configure --prefix=/usr
   make
   make docs
 }
