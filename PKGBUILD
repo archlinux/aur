@@ -1,9 +1,9 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=m64p
-pkgver=20220720
+pkgver=20220722
 pkgrel=1
-_tag=v2022.07.10
+_tag=v2022.07.12
 pkgdesc='Mupen64Plus with custom plugins and Qt6 GUI'
 arch=('x86_64')
 url='https://m64p.github.io/'
@@ -30,7 +30,7 @@ sha256sums=('SKIP'
             '740b571b0cb26413c2f655c0063ad589569bb352a0ca8858c691ec81905157b5'
             'e9da860ae7adcdd0a1cc0155c232f81ca8399e9e855bd71fb51269edb708b1cc'
             '4212cff6311f12ea2af5479a162a183d489dbb4107955c621a4440276a46cb76'
-            '31d99d7c6d288a5b2686c934c7d8be2e9870d5d94f0bd360d06c044037841850'
+            'a483f645b0a2036485e90c3aeef2e1aa61724e4fbd1cd9a1f807a5aea47c595e'
             'a33a66612343035929eee5d6eb2acb342cc0c5a18a8e113aef83b28fb0f156c7'
             '8df4e8076d28a1bc44f41b0129a9935da9839e8a8cb9944206757e47da561808')
 
