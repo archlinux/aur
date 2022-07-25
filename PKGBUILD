@@ -2,16 +2,16 @@
 # - 2016-2021	Ian Beringer <ian@ianberinger.com>
 # - 2021	Sebastian Karlsen <sebastian@karlsen.fr>
 
-pkgname=lf-git
-_pkgname=lf
-pkgver=22.r2.g8739087
+pkgname=lf-sixel-git
+_pkgname=lf-sixel
+pkgver=27.sixel.r2.g8aea3d4
 pkgrel=1
 license=('MIT')
-pkgdesc='lf is a terminal file manager written in Go'
+pkgdesc='lf is a terminal file manager written in Go from fork supporting sixel'
 depends=("glibc")
 makedepends=("git" "go>=1.6")
 arch=("i686" "x86_64")
-_gourl='github.com/gokcehan/lf'
+_gourl='github.com/horriblename/lf'
 url="https://${_gourl}"
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
