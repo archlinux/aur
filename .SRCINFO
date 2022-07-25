@@ -1,6 +1,6 @@
 pkgbase = xviewer
 	pkgdesc = A simple and easy to use image viewer. X-Apps Project.
-	pkgver = 3.2.8
+	pkgver = 3.2.9
 	pkgrel = 1
 	url = https://github.com/linuxmint/xviewer
 	arch = i686
@@ -22,7 +22,7 @@ pkgbase = xviewer
 	optdepends = xviewer-plugins: Extra plugins
 	optdepends = librsvg: for scaling svg images
 	optdepends = webp-pixbuf-loader: webp image support
-	source = xviewer-3.2.8.tar.gz::https://github.com/linuxmint/xviewer/archive/3.2.8.tar.gz
-	md5sums = d15ca0cb135411873e7c2122bf10220c
+	source = xviewer-3.2.9.tar.gz::https://github.com/linuxmint/xviewer/archive/3.2.9.tar.gz
+	md5sums = 144109b040c007a999c166fea1851909
 
 pkgname = xviewer
