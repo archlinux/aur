@@ -1,24 +1,36 @@
-# Maintainer: Andre Kugland <kugland@gmail.com>
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Contributor: Andre Kugland <kugland@gmail.com>
 
-pkgname="python-srt"
-_name=${pkgname#python-}
-pkgver=3.5.0
+pkgname=python-srt
+pkgver=3.5.2
 pkgrel=1
-pkgdesc='A tiny library for parsing, modifying, and composing SRT files'
+pkgdesc='Tools and python library for parsing, modifying, and composing SRT files'
 arch=('any')
-url="https://pypi.org/project/$_name/$pkgver"
+url='https://github.com/cdown/srt/'
 license=('MIT')
-provides=('python-srt')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+checkdepends=('python-hypothesis' 'python-pytest')
 conflicts=('python-pysrt')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('9378e67fcc7c110eca7ec12bdb17a174085f67e3b371f7e586a4c68a0dda245b')
+source=("https://github.com/cdown/srt/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('0cbdf0e64c09bdca37fd4d00e22850ee236b2745178634b60d0ac8610382b534')
 
 build() {
-	cd ${srcdir}/${_name}-${pkgver}
-    python setup.py build
+    cd "srt-${pkgver}"
+    python -m build --wheel --no-isolation
+}
+
+check() {
+    cd "srt-${pkgver}"
+    pytest
 }
 
 package() {
-	cd ${srcdir}/${_name}-${pkgver}  
-    python setup.py install --root="${pkgdir}" --optimize=1
+    python -m installer --destdir="$pkgdir" "srt-${pkgver}/dist"/*.whl
+    
+	local _pyver
+    _pyver="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
+    install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
+    ln -s "../../../lib/python${_pyver}/site-packages/srt-${pkgver}.dist-info/LICENSE" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
