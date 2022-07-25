@@ -1,0 +1,16 @@
+pkgbase = forge-server-mcw-doors
+	pkgdesc = This mod gives you the opportunity to make vanila doors with every wood color.
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://www.curseforge.com/minecraft/mc-mods/macaws-doors
+	arch = any
+	license = custom
+	depends = forge-hooks>=1.0.0
+	depends = forge-server>=41.0.94
+	noextract = mcw-doors-1.0.6-mc1.19.jar
+	source = LICENSE
+	source = https://mediafiles.forgecdn.net/files/3844/125/mcw-doors-1.0.6-mc1.19.jar
+	sha256sums = 9610fdb452d3d92e7e51243963ea189f7783c1a7cdd4238de4d2a32c50042a8d
+	sha256sums = 1518d24ed04ae808df085dc8990c699471d6db5eccb4542af8530ed71b2c72eb
+
+pkgname = forge-server-mcw-doors
