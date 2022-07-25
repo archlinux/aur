@@ -8,6 +8,7 @@ pkgbase = easena-git
 	license = AGPL3
 	makedepends = make
 	makedepends = gcc
+	depends = boost
 	depends = cmake
 	depends = flex
 	depends = bison
