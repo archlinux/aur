@@ -1,4 +1,4 @@
-pkgbase = via-cli-bin
+pkgbase = via-cli-git
 	pkgdesc = Easily start & stop your local dev environments from your cli
 	pkgver = v0.3.1
 	pkgrel = 1
@@ -10,7 +10,7 @@ pkgbase = via-cli-bin
 	provides = via-cli
 	conflicts = via-cli
 	options = !strip
-	source = via-cli-bin-v0.3.1::git+https://github.com/Sopamo/via#tag=v0.3.1
+	source = via-cli-git-v0.3.1::git+https://github.com/Sopamo/via#tag=v0.3.1
 	md5sums = SKIP
 
-pkgname = via-cli-bin
+pkgname = via-cli-git

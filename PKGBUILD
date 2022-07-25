@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Sopamo <github@sopamo.de>
-pkgname=via-cli-bin
+pkgname=via-cli-git
 pkgver=v0.3.1
 pkgrel=1
 epoch=
