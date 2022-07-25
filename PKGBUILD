@@ -1,50 +1,39 @@
-# Maintainer: Felix Barz <skycoder42.de@gmx.de>
-pkgname=paxchange
-pkgver=1.1.2
-pkgrel=1
-pkgdesc="A tool to synchronize installed packages across multiple machines"
-arch=('i686' 'x86_64')
-url="https://github.com/Baum42/$pkgname"
+# Maintainer: Skycoder42 <Skycoder42@users.noreply.github.com>
+pkgname='paxchange'
+pkgver='0.1.0'
+pkgrel='1'
+epoch=2
+pkgdesc='Simple dart script to passively synchronize installed pacman packages between systems.'
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+url='https://github.com/Skycoder42/paxchange'
 license=('BSD')
-depends=('qt5-base' 'qt5-svg' 'qt5-jsonserializer' 'pacman' )
-makedepends=('qt5-tools' 'git' 'qpmx-qpmsource')
-optdepends=("pacaur: Adds support for synchronizing AUR packages"
-			"repkg: Automatically rebuild the package on dependency updates")
-_pkgfqn=$pkgname-$pkgver
-source=("$_pkgfqn::git+https://github.com/Baum42/$pkgname.git#tag=$pkgver"
-		'paxchange.rule')
-sha256sums=('SKIP'
-            '6029d42b05d32d99a6e673e5a7c95ac657e6258f88835f8aff05bde7535e543b')
+depends=('pacman')
+makedepends=('dart>=2.17.0' 'dart<3.0.0' 'go-yq')
+_pkgdir="$pkgname-${pkgver//_/-}"
+source=("$_pkgdir.tar.gz::https://github.com/Skycoder42/paxchange/archive/refs/tags/v0.1.0.tar.gz")
+changelog='CHANGELOG.md'
+b2sums=('c029cfdf7307d2758af4ba2222ca1ba7910e18f59416aa65e70b2f09354c02936947ed624ce3415423a085d77af577f43f8ea40e46fe45cf5994c9bba13c1621')
 
 prepare() {
-  mkdir -p build
-
-  cd "$_pkgfqn"
-
-  echo "PAXCHANGE_PLUGINS = pacman" >> .qmake.conf #build pacman plugin only
-  echo "PS_STD_PLG = pacman" >> .qmake.conf #use pacman plugin as default
+  cd "$_pkgdir"
+  yq e -i "del(.dependency_overrides)" pubspec.yaml
+  dart pub get
 }
 
 build() {
-  cd build
+  cd "$_pkgdir"
+  dart run build_runner build --delete-conflicting-outputs --release
+  dart compile exe -o 'bin/paxchange' -S 'bin/paxchange.symbols' 'bin/paxchange.dart'
+}
 
-  qmake "../$_pkgfqn/"
-  make qmake_all
-  make
-  make lrelease
+check() {
+  cd "$_pkgdir"
+  dart analyze --no-fatal-warnings
+  # dart test
 }
 
 package() {
-  cd build
-  make INSTALL_ROOT="$pkgdir" install
-
-  cd "../$_pkgfqn"
-  # gui
-  install -D -m644 gui/icons/$pkgname.svg "$pkgdir/usr/share/icons/hicolor/scalable/mimetypes/x-${pkgname}-database.svg"
-  install -D -m644 gui/application-x-${pkgname}-database.xml "$pkgdir/usr/share/mime/packages/application-x-${pkgname}-database.xml"
-  install -D -m644 gui/icons/$pkgname.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
-  install -D -m644 gui/$pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
-
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -D -m644 "../${pkgname}.rule" "$pkgdir/etc/repkg/rules/${pkgname}.rule"
+  cd "$_pkgdir"
+  install -D -m755 'bin/paxchange' "$pkgdir"'/usr/bin/paxchange'
+  install -D -m644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

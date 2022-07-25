@@ -1,24 +1,20 @@
 pkgbase = paxchange
-	pkgdesc = A tool to synchronize installed packages across multiple machines
-	pkgver = 1.1.2
+	pkgdesc = Simple dart script to passively synchronize installed pacman packages between systems.
+	pkgver = 0.1.0
 	pkgrel = 1
-	url = https://github.com/Baum42/paxchange
-	arch = i686
+	epoch = 2
+	url = https://github.com/Skycoder42/paxchange
+	changelog = CHANGELOG.md
 	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
 	license = BSD
-	makedepends = qt5-tools
-	makedepends = git
-	makedepends = qpmx-qpmsource
-	depends = qt5-base
-	depends = qt5-svg
-	depends = qt5-jsonserializer
+	makedepends = dart>=2.17.0
+	makedepends = dart<3.0.0
+	makedepends = go-yq
 	depends = pacman
-	optdepends = pacaur: Adds support for synchronizing AUR packages
-	optdepends = repkg: Automatically rebuild the package on dependency updates
-	source = paxchange-1.1.2::git+https://github.com/Baum42/paxchange.git#tag=1.1.2
-	source = paxchange.rule
-	sha256sums = SKIP
-	sha256sums = 6029d42b05d32d99a6e673e5a7c95ac657e6258f88835f8aff05bde7535e543b
+	source = paxchange-0.1.0.tar.gz::https://github.com/Skycoder42/paxchange/archive/refs/tags/v0.1.0.tar.gz
+	b2sums = c029cfdf7307d2758af4ba2222ca1ba7910e18f59416aa65e70b2f09354c02936947ed624ce3415423a085d77af577f43f8ea40e46fe45cf5994c9bba13c1621
 
 pkgname = paxchange
-
