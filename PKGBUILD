@@ -1,58 +1,61 @@
-# Maintainer: Thomas <thomas at 6f dot io>
+# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Contributor: Thomas <thomas at 6f dot io>
+
 pkgname=jujutsu
-_pkgname=jj
-pkgver=0.2.0
+pkgver=0.4.0
 pkgrel=1
-makedepends=('cargo-nightly')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-pkgdesc="An experimental, Git-compatible DVCS."
-url="https://github.com/martinvonz/jj"
-license=('Apache-2.0')
-source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-conflicts=('jj')
-provides=('jj')
-sha256sums=('d657095e89455318951dbc40779b4e065f4376e376f32434f1c19f88c2482739')
+pkgdesc='A git-compatible DVCS'
+arch=('x86_64')
+url='https://github.com/martinvonz/jj'
+license=('Apache')
+depends=('gcc-libs' 'zlib')
+makedepends=('git' 'rust')
+options=('!lto')
+_commit='6efa47814accfa444a0fb60ee984b2a5c9746432'
+source=("$pkgname::git+$url#commit=$_commit")
+b2sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+
+  git describe --tags | sed 's/^v//'
+}
 
 prepare() {
-    cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-
-    # See comment in build().
-    # mkdir completions
+  # download dependencies
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
-    export RUSTUP_TOOLCHAIN=nightly
-    export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
+  cargo build --frozen --release --all-features
 
-    # Apparently this version is so old it doesn't even have completions.
-    # "target/release/$_pkgname" debug completion --bash > "completions/$_pkgname.bash"
-    # "target/release/$_pkgname" debug completion --fish > "completions/$_pkgname.fish"
-    # "target/release/$_pkgname" debug completion --zsh > "completions/_$_pkgname"
+  for shell in bash fish zsh; do
+    ./target/release/jj debug completion "--$shell" > "jj.$shell"
+  done
 }
 
 check() {
-    cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
-    export RUSTUP_TOOLCHAIN=nightly
-    cargo test --frozen --all-features
+  cargo test --frozen --all-features
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
-    install -Dm755 -t "$pkgdir/usr/bin" "target/release/$_pkgname"
+  # binary
+  install -vDm755 -t "$pkgdir/usr/bin" target/release/jj
 
-    # TODO: Install "$pkgname/docs".
-    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  # documentation
+  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+  cp -vr docs "$pkgdir/usr/share/doc/$pkgname"
 
-    # See comment in build().
-    # install -Dm644 -t "$pkgdir/usr/share/bash-completion/completions" "completions/$_pkgname.bash"
-    # install -Dm644 -t "$pkgdir/usr/share/fish/vendor_completions.d" "completions/$_pkgname.fish"
-    # install -Dm644 -t "$pkgdir/usr/share/zsh/site-functions" "completions/_$_pkgname"
+  # shell completions
+  install -vDm644 jj.bash "$pkgdir/usr/share/bash-completion/completions/jj"
+  install -vDm644 jj.fish "$pkgdir/usr/share/fish/vendor_completions.d/jj.fish"
+  install -vDm644 jj.zsh "$pkgdir/usr/share/zsh/site-functions/_jj"
 }

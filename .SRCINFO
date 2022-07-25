@@ -1,17 +1,16 @@
 pkgbase = jujutsu
-	pkgdesc = An experimental, Git-compatible DVCS.
-	pkgver = 0.2.0
+	pkgdesc = A git-compatible DVCS
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/martinvonz/jj
-	arch = i686
 	arch = x86_64
-	arch = armv6h
-	arch = armv7h
-	license = Apache-2.0
-	makedepends = cargo-nightly
-	provides = jj
-	conflicts = jj
-	source = jujutsu-0.2.0.tar.gz::https://static.crates.io/crates/jujutsu/jujutsu-0.2.0.crate
-	sha256sums = d657095e89455318951dbc40779b4e065f4376e376f32434f1c19f88c2482739
+	license = Apache
+	makedepends = git
+	makedepends = rust
+	depends = gcc-libs
+	depends = zlib
+	options = !lto
+	source = jujutsu::git+https://github.com/martinvonz/jj#commit=6efa47814accfa444a0fb60ee984b2a5c9746432
+	b2sums = SKIP
 
 pkgname = jujutsu
