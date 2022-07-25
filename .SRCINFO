@@ -1,7 +1,7 @@
 pkgbase = r-mi
 	pkgdesc = Missing Data Imputation and Model Checking
-	pkgver = 1.0
-	pkgrel = 6
+	pkgver = 1.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=mi
 	arch = any
 	license = GPL
@@ -17,7 +17,7 @@ pkgbase = r-mi
 	optdepends = r-sn
 	optdepends = r-survival
 	optdepends = r-truncnorm
-	source = https://cran.r-project.org/src/contrib/mi_1.0.tar.gz
-	sha256sums = 34f44353101e8c3cb6bf59c5f4ff5b2391d884dcbb9d23066a11ee756b9987c0
+	source = https://cran.r-project.org/src/contrib/mi_1.1.tar.gz
+	sha256sums = 4d7a9790dbdc675605d70755af9aa80c21a279be5a5d712b22d77465772cc785
 
 pkgname = r-mi
