@@ -1,0 +1,19 @@
+pkgbase = autotrace-bin
+	pkgdesc = AutoTrace is a utility for converting bitmap into vector graphics.
+	pkgver = 0.40.0_20200219
+	pkgrel = 1
+	url = https://github.com/autotrace/autotrace.git
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	depends = libpng
+	depends = pstoedit
+	depends = libmagick6
+	depends = glib2
+	provides = autotrace
+	conflicts = autotrace-git
+	source = https://github.com/autotrace/autotrace/releases/download/travis-20200219.65/autotrace_0.40.0-20200219_all.deb
+	sha512sums = c0e49c213fca78079ae02bec44fa04707d2358ddc2a5e77d6e29e1ae47028d1b7f45d604acd0d47c28320e1217278780e61d122e5383a13675e9a8cf3b136bfc
+
+pkgname = autotrace-bin
