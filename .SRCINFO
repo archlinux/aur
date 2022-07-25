@@ -8,6 +8,7 @@ pkgbase = remindme
 	makedepends = go
 	makedepends = pandoc
 	depends = remind
+	provides = remindme
 	source = https://git.sr.ht/~primalmotion/remindme/archive/v1.2.0.tar.gz
 	sha1sums = cdccd544e407507a927bfddc773c14c3f6ff0c09
 

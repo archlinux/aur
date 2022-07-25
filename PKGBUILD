@@ -11,6 +11,7 @@ depends=(remind)
 makedepends=(go pandoc)
 source=("https://git.sr.ht/~primalmotion/remindme/archive/${pkgver}.tar.gz")
 sha1sums=('cdccd544e407507a927bfddc773c14c3f6ff0c09')
+provides=("remindme")
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
