@@ -1,16 +1,18 @@
 # Maintainer: archcrack <johndoe.arch@outlook.com>
 
 pkgname=pacfree
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
-pkgdesc="A pacman wrapper to make pacman Free and Open Source Software  aware"
+pkgdesc="A pacman wrapper to make pacman free-software aware"
 arch=(any)
 url="https://github.com/leo-arch/pacfree"
 license=(GPL2)
-depends=('pacman' 'sed')
+depends=('pacman' 'sed' 'util-linux' 'gawk')
 optdepends=('isfree: Check your Arch system for nonfree software')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/leo-arch/$pkgname/archive/v${pkgver}.tar.gz")
-sha256sums=('a8901250fe954466c81d357d5db9ee3dd58ab46e956ac22e9ed9f2bf1834cc7e')
+makedepends=('git')
+#source=("git+${url}.git")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/leo-arch/pacfree/archive/v${pkgver}.tar.gz")
+sha256sums=('eb0332cbaa352d3db301851d8624e96a076dce2a11bd3c24a01d1de470b0217e')
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
