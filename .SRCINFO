@@ -1,7 +1,7 @@
 pkgbase = k3d-git
 	pkgdesc = 3D modelling and animation software
 	pkgver = 0.8.0.6+17
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.k-3d.org
 	arch = i486
 	arch = i686
@@ -40,7 +40,6 @@ pkgbase = k3d-git
 	depends = graphviz
 	depends = opencollada
 	optdepends = aqsis: Rendering engine
-	optdepends = boost-python2: Python support
 	provides = k3d
 	conflicts = k3d
 	source = git+https://github.com/K-3D/k3d.git

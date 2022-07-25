@@ -10,7 +10,7 @@ fi
 
 pkgname=k3d-git
 pkgver=0.8.0.6+17
-pkgrel=1
+pkgrel=2
 pkgdesc="3D modelling and animation software"
 arch=('i486' 'i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.k-3d.org"
@@ -80,9 +80,11 @@ build() {
   # The cmake script finds a mix of imagmagick 6 and 7, specify 7 directly.
   # The python paths are given to sort out python 3.
   # The openexr module does not compile anymore and is thus disabled.
+  # And set the cmake policy to link against the new OpenGL library.
   cmake ../k3d \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_POLICY_DEFAULT_CMP0072=NEW \
       -DPYTHON_EXECUTABLE=/usr/bin/python2 \
       -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
       -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
