@@ -3,13 +3,15 @@
 _pkgname=autotrace
 pkgname="${_pkgname}-git"
 pkgver=20200219.65.r0.g4333e37
-pkgrel=2
+pkgrel=3
 pkgdesc='An utility to trace bitmaps: convert bitmaps to vector graphics, with patches from Sacha Chua'
 arch=('i686' 'x86_64')
 url='https://github.com/autotrace/autotrace.git'
 license=('GPL' 'LGPL')
 depends=('libpng' 'pstoedit' 'graphicsmagick')
 makedepends=('intltool' 'git' 'autoconf' 'automake')
+provides=(autotrace)
+conflicts=(autotrace)
 options=('!libtool')
 source=("${_pkgname}::git+https://github.com/sachac/autotrace.git#branch=master")
 sha512sums=('SKIP')
