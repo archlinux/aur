@@ -1,7 +1,7 @@
 pkgbase = furnace
 	pkgdesc = A multi-system chiptune tracker compatible with DefleMask modules
 	pkgver = 0.6pre1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tildearrow/furnace
 	arch = x86_64
 	license = GPL
