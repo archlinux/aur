@@ -3,7 +3,7 @@
 
 pkgname=bottles-git
 pkgver=2022.7.14.brescia.3.r61.g57bbe195
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Easily manage wineprefix using environments"
 arch=(any)
@@ -29,7 +29,7 @@ depends=(
   python-markdown
   python-orjson
   python-requests
-  python-steamgrid
+  python-steamgriddb
   python-yaml
   webkit2gtk
   wine
