@@ -10,7 +10,7 @@
 
 pkgname=ros2-galactic
 pkgver=2021.07.16
-pkgrel=15
+pkgrel=16
 pkgdesc="A set of software libraries and tools for building robot applications"
 url="https://docs.ros.org/en/galactic/"
 arch=('any')
