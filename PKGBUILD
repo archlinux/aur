@@ -15,10 +15,10 @@
 ###############################################################################
 _phpbase="81"
 _suffix=""
-pkgver="8.1.5"
-pkgrel="1"
+pkgver="8.1.8"
+pkgrel="3"
 pkgbase="php81"
-pkgdesc="PHP 8.1.5 compiled as to not conflict with mainline php"
+pkgdesc="PHP 8.1.8 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
 _build_apache_cfg="etc/httpd/conf/extra"
 _build_bundled_gd="0"
@@ -129,7 +129,7 @@ source=(
     "php-makefile-patcher.php"
     "php-apache.conf"
     "https://php.net/distributions/php-${pkgver}.tar.xz"
-    "debian-php-8.1.5.patch"
+    "debian-php-8.1.8.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
     "timezonedb-php8.1.patch"
@@ -198,7 +198,7 @@ makedepends=(
 arch=(
 )
 _patches=(
-    "debian-php-8.1.5.patch"
+    "debian-php-8.1.8.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
     "timezonedb-php8.1.patch"
@@ -210,20 +210,20 @@ _sapi_depends=(
     "argon2"
 )
 _ext_depends_snmp=(
-    "php81=8.1.5"
+    "php81=8.1.8"
     "net-snmp"
     "openssl"
 )
 _ext_depends_ftp=(
-    "php81=8.1.5"
+    "php81=8.1.8"
     "openssl"
 )
 _ext_depends_intl=(
-    "php81=8.1.5"
+    "php81=8.1.8"
     "icu"
 )
 _ext_depends_imap=(
-    "php81=8.1.5"
+    "php81=8.1.8"
     "pam"
     "krb5"
     "c-client"
@@ -231,45 +231,45 @@ _ext_depends_imap=(
     "openssl"
 )
 _ext_depends_gd=(
-    "php81=8.1.5"
+    "php81=8.1.8"
     "gd"
 )
 _ext_depends_mysql=(
-    "php81=8.1.5"
-    "php81-pdo=8.1.5"
-    "php81-openssl=8.1.5"
+    "php81=8.1.8"
+    "php81-pdo=8.1.8"
+    "php81-openssl=8.1.8"
 )
 _ext_depends_dba=(
-    "php81=8.1.5"
+    "php81=8.1.8"
     "db"
     "lmdb"
 )
 _ext_depends_odbc=(
-    "php81=8.1.5"
+    "php81=8.1.8"
     "unixodbc"
-    "php81-pdo=8.1.5"
+    "php81-pdo=8.1.8"
 )
 _ext_depends_pgsql=(
-    "php81=8.1.5"
+    "php81=8.1.8"
     "postgresql-libs"
-    "php81-pdo=8.1.5"
+    "php81-pdo=8.1.8"
 )
 _ext_depends_firebird=(
-    "php81=8.1.5"
+    "php81=8.1.8"
     "libfbclient"
-    "php81-pdo=8.1.5"
+    "php81-pdo=8.1.8"
 )
 _ext_depends_sqlite=(
-    "php81=8.1.5"
+    "php81=8.1.8"
     "sqlite"
-    "php81-pdo=8.1.5"
+    "php81-pdo=8.1.8"
 )
 _ext_depends_mbstring=(
-    "php81=8.1.5"
+    "php81=8.1.8"
     "oniguruma"
 )
 _ext_depends_openssl=(
-    "php81=8.1.5"
+    "php81=8.1.8"
     "krb5"
     "e2fsprogs"
     "openssl"
@@ -285,7 +285,7 @@ _phpconfig="\
     --libdir=/usr/lib/php${_phpbase}${_suffix} \
     --datadir=/usr/share/php${_phpbase}${_suffix} \
     --program-suffix=${_phpbase}${_suffix} \
-    --with-config-file-scan-dir=/${_build_conf_d}
+    --with-config-file-scan-dir=/${_build_conf_d} \
     --enable-filter \
     --with-pear \
     --enable-session \
@@ -1521,7 +1521,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             '0b7e98dca9c996ec10cb9b3f6296bb7547c68797fd5f35006fdfd3e97700672d'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
-            '7647734b4dcecd56b7e4bd0bc55e54322fa3518299abcdc68eb557a7464a2e8a'
+            '04c065515bc347bc68e0bb1ac7182669a98a731e4a17727e5731650ad3d8de4c'
             '0df807d84bc0cf948a6ed0cf453e98213d47fbc7fdedc2747855a619dc616b3c'
             '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
