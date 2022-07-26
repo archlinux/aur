@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=SuperDUX
+GenericName=Gameboy Emulator
+Comment=Qt interface for SameBoy
+Icon=superdux
+TryExec=superdux
+Exec=superdux %f
+Categories=Game;Emulator;Qt;

@@ -10,9 +10,11 @@ arch=('x86_64')
 url="https://github.com/SnowyMouse/superdux"
 license=('GPL3')
 source=("git+https://github.com/SnowyMouse/${pkgname%-git}.git"
-        "git+https://github.com/LIJI32/SameBoy.git")
+        "git+https://github.com/LIJI32/SameBoy.git"
+        'superdux.desktop')
 sha256sums=('SKIP'
-            'SKIP')
+            'SKIP'
+            '8c6f79c0f3dd7bcc812a3ce389eafd6d1ad7bdfec22580d4068fa69fb1ebb364')
 provides=('superdux')
 conflicts=('superdux')
 
@@ -34,5 +36,7 @@ build() {
 }
 
 package() {
-	cmake --install build
+    cmake --install build
+    install -Dm644 "${pkgname%-git}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
+    install -Dm644 "${srcdir}/${pkgname%-git}/icon/${pkgname%-git}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
 }

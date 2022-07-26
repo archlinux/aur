@@ -15,7 +15,9 @@ pkgbase = superdux-git
 	conflicts = superdux
 	source = git+https://github.com/SnowyMouse/superdux.git
 	source = git+https://github.com/LIJI32/SameBoy.git
+	source = superdux.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 8c6f79c0f3dd7bcc812a3ce389eafd6d1ad7bdfec22580d4068fa69fb1ebb364
 
 pkgname = superdux-git
