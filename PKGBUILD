@@ -2,7 +2,7 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
-pkgver=3.98.12
+pkgver=3.98.15
 pkgrel=1
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
@@ -12,9 +12,9 @@ depends=('alsa-lib' 'gtk3' 'libsecret' 'nss')
 #makedepends=('node-gyp>=9.0.0' 'nodejs>=16.3.0' 'npm>=7.0.0')
 makedepends=('nvm' 'python')
 optdepends=('libappindicator-gtk3: StatusNotifierItem support')
-source=("https://github.com/tutao/tutanota/archive/${pkgname%-*}-release-$pkgver.tar.gz"
+source=("https://github.com/tutao/tutanota/archive/$pkgname-release-$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('a8d20d5e786514f953d36fabcc50ee965977c69ddb53500b310e5ac00b8f32ec'
+sha256sums=('b1f16e779f08ae76b2910615cee6688bda080286fb39306cc2c796a58c459e68'
             '9a41e5474e1568b13093c91fd54538fe614003f5f5d4f895553f73207c28cb08')
 
 _ensure_local_nvm() {
@@ -28,13 +28,13 @@ _ensure_local_nvm() {
 }
 
 prepare() {
-  cd "${pkgname%-*}-${pkgname%-*}-release-$pkgver"
+  cd "${pkgname%-*}-$pkgname-release-$pkgver"
   _ensure_local_nvm
   nvm install
 }
 
 build() {
-  cd "${pkgname%-*}-${pkgname%-*}-release-$pkgver"
+  cd "${pkgname%-*}-$pkgname-release-$pkgver"
   export npm_config_cache="$srcdir/npm_cache"
   _ensure_local_nvm
   npm ci
@@ -43,7 +43,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname%-*}-${pkgname%-*}-release-$pkgver"
+  cd "${pkgname%-*}-$pkgname-release-$pkgver"
   install -d "$pkgdir/opt/$pkgname/"
   cp -av build/desktop/linux-unpacked/* \
     "$pkgdir/opt/$pkgname/"
