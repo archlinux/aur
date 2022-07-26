@@ -1,6 +1,6 @@
 pkgbase = python-poetry-core-git
 	pkgdesc = Poetry PEP 517 Build Backend & Core Utilities
-	pkgver = 1.1.0a7.r8.g935b11b
+	pkgver = 1.2.0b3.r16.gec610a34
 	pkgrel = 1
 	url = https://github.com/python-poetry/poetry-core
 	arch = any
@@ -13,7 +13,9 @@ pkgbase = python-poetry-core-git
 	depends = python-packaging
 	depends = python-tomlkit
 	provides = poetry-core
+	provides = python-poetry-core
 	conflicts = poetry-core
+	conflicts = python-poetry-core
 	source = git+https://github.com/python-poetry/poetry-core
 	sha512sums = SKIP
 

@@ -2,7 +2,7 @@
 # Contributor: Thiago França<tfsthiagobr98@outlook.com>
 _pkgname=poetry-core
 pkgname=python-${_pkgname}-git
-pkgver=1.1.0a7.r8.g935b11b
+pkgver=1.2.0b3.r16.gec610a34
 pkgrel=1
 pkgdesc="Poetry PEP 517 Build Backend & Core Utilities"
 arch=('any')
@@ -14,8 +14,8 @@ makedepends=(python-{build,installer} git)
 # checkdepends=(python-pytest python-pytest-mock python-virtualenv)
 source=(git+${url})
 sha512sums=('SKIP')
-provides=(${_pkgname})
-conflicts=(${_pkgname})
+provides=(${_pkgname} python-${_pkgname})
+conflicts=(${_pkgname} python-${_pkgname})
 
 pkgver() {
   cd ${_pkgname}
