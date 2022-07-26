@@ -8,9 +8,9 @@
 # Contributor: jaltek <post@ezod.de>
 # Contributor: Daniel Mason (idanoo) <daniel@m2.nz>
 
-_electron=electron17
+_electron=electron
 pkgname=(element-{desktop,web}-greentext)
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="Glossy Matrix collaboration client with greentext baked in — "
 arch=(x86_64)
@@ -32,15 +32,15 @@ source=(element-web-${pkgver}.tar.gz::${_url}-web/archive/v${pkgver}.tar.gz
         element-config.json
         element-web.sh
         element-desktop.sh)
-sha256sums=('73d248b8d7b53d05c4a4297de125d1f350f2ddfa17b428e0aa4ed46ede5031e2'
+sha256sums=('b223fcff42a305ce8034892e0bdcb4806e45f5fd7f902e2914bc65dbd910230b'
             'SKIP'
-            '1a098b81ee4dcd2053d9fe19c37813721e7e49e53d300fb8463498fe48192105'
+            'b93c82705bde69504d201b3624bcbd5fb258c0bf20e1535c0339132e593469b4'
             'SKIP'
             '63ff6e4264b85da29f9147f5cbe58cc3ff395a936683988bca6ef6d0ebeabc99'
             'aaae4ffa41590361dac0c159aecc1166f69e459e89faa9d5cab1202f0277e06f'
             '0103f28a32fe31f698836516783c1c70a76a0117b5df7fd0af5c422c224220f9'
             '0d65ffa85e486a48e8a844fcc8c21b4eaadb28756a74566b22e44f3bdb257e2c'
-            '738dfd4d31b09b0d5b48c651bcc744540d0568afc54a699d15db1f67314a28bf'
+            '25651e837c8abdf173056b3ddd14c8cd9da3d4b8c7384a8054d3f5b3d1c47854'
             'bf4892cb7b76ea049d76e443c7d7c93afd19c44bd41839f378661275642cf9cd'
             'c1bd9ace215e3ec9af14d7f28b163fc8c8b42e23a2cf04ce6f4ce2fcc465feba')
 validpgpkeys=(712BFBEE92DCA45252DB17D7C7BE97EFA179B100) # Element Releases <releases@riot.im>
