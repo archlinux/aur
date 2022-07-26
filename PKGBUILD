@@ -33,7 +33,7 @@ build() {
 }
 
 package() {
-	cd easea
+	cd easea/build
 	make DESTDIR="$pkgdir/" install
 	#cmake --install build --prefix "$pkgdir"
 }
