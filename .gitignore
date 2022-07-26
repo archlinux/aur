@@ -1,0 +1,4 @@
+check_lsi_raid
+check_lsi_raid-git-*any.pkg.tar.xz
+pkg
+src

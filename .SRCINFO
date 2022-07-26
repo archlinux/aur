@@ -1,0 +1,13 @@
+pkgbase = check_lsi_raid-git
+	pkgdesc = Nagios/Icinga plugin to check LSI RAID Controllers
+	pkgver = r195.e4e88f1
+	pkgrel = 1
+	url = https://github.com/thomas-krenn/check_lsi_raid
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = perl-file-which
+	source = check_lsi_raid::git+https://github.com/thomas-krenn/check_lsi_raid.git
+	sha256sums = SKIP
+
+pkgname = check_lsi_raid-git
