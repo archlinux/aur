@@ -6,7 +6,7 @@
 
 ## Mozc compile option
 _bldtype='Release'
-_mozc_commit=62028fb
+_mozc_commit=0ee47ed
 _abseil_cpp_commit=2151058
 _breakpad_commit=216cea7
 _gtest_commit=703bd9c
@@ -17,12 +17,12 @@ _protobuf_commit=cc7b1b5
 _zipcode_rel=202110
 
 # Ut Dictionary
-_utdicdate=20220623
+_utdicdate=20220723
 
 _pkgbase=mozc-ut
 pkgbase=$_pkgbase-full
 pkgname=(${pkgbase}-common ibus-${pkgbase} fcitx5-${pkgbase} emacs-${pkgbase})
-pkgver=2.28.4770.102.20220623
+pkgver=2.28.4800.102.20220723
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
@@ -49,7 +49,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'd8a83ec55d993885333d31e4e2b31f240463766ed3f5b4e8de0887fc7f3e79096c872365029de8ee5234dcd514e7f734b608af1a3a1568f308c8ac6fa7a0865c')
+            '6fa5a6c9f97d97216d7fb4711299d3322667252a2dd74db08257edafaa3affc6db837cd9daa2c81cd4235d1c8418a10c10b22a3a6ef32aff33e69d7ec21daa5e')
 validpgpkeys=('2CC8A0609AD2A479C65B6D5C8E8B898CBF2412F9')  # Weng Xuetian
 
 pkgver() {
@@ -107,7 +107,7 @@ build() {
     python build_mozc.py gyp --gypdir=/usr/bin --target_platform=Linux
   python build_mozc.py build -c $_bldtype $_targets --use_gyp_for_ibus_build
 
-  sed -i 's|/usr/libexec/|/usr/lib/ibus-mozc/|g' out_linux/${_bldtype}/gen/unix/ibus/mozc.xml
+  sed 's|/usr/libexec/|/usr/lib/ibus-mozc/|g' -i "out_linux/${_bldtype}/gen/unix/ibus/mozc.xml"
 
   # Extract license part of mozc
   head -n 29 server/mozc_server.cc > LICENSE
@@ -120,7 +120,7 @@ package_mozc-ut-full-common() {
   export _bldtype
   cd mozc/src
 
-  install -d "${pkgdir}/usr/share/licenses/$pkgname/"
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -m 644 LICENSE data/installer/*.html "${pkgdir}/usr/share/licenses/${pkgname}/"
 
   ../scripts/install_server
