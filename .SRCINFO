@@ -1,6 +1,6 @@
 pkgbase = xandikos-git
 	pkgdesc = Lightweight yet complete CardDAV/CalDAV server that backs onto a Git repository
-	pkgver = 0.2.7.r2.gd5da74a
+	pkgver = 0.2.8.r63.g0b948e6
 	pkgrel = 1
 	url = https://www.xandikos.org
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = xandikos-git
 	depends = python-icalendar
 	depends = python-jinja
 	depends = python-multidict
+	depends = python-vobject
 	optdepends = python-aiohttp-openmetrics: for metrics with the standalone server
 	optdepends = uwsgi-plugin-python: for the WSGI interface
 	provides = xandikos
