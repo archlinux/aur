@@ -1,0 +1,17 @@
+pkgbase = graal-llvm-jdk17-bin
+	pkgdesc = GraalVM LLVM runtime (aka Sulong), Java 17 version
+	pkgver = 22.2.0
+	pkgrel = 1
+	url = https://www.graalvm.org/
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	depends = jdk17-graalvm-bin
+	source = https://raw.githubusercontent.com/oracle/graal/vm-22.2.0/sulong/LICENSE
+	sha256sums = 6fb47d3d4e641fe19602e68ade11fa4103095cd5ddba376e4f135284ae1a1c5e
+	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-22.2.0/llvm-installable-svm-java17-linux-amd64-22.2.0.jar
+	sha256sums_x86_64 = df7eefc018f2bb0a9cd20a87221fb16d4bd460d9e9b601811dc96b22e72d7b89
+	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-22.2.0/llvm-installable-svm-java17-linux-aarch64-22.2.0.jar
+	sha256sums_aarch64 = c174d21bd5c14a75e2446bebaae296f1b6a8bab07fec5be60701a22b5a79cec0
+
+pkgname = graal-llvm-jdk17-bin
