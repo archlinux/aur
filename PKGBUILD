@@ -2,6 +2,7 @@ pkgname=tor-relay-scanner
 pkgver=0.0.7
 pkgrel=1
 pkgdesc='Tor relay availability checker'
+url=https://github.com/ValdikSS/tor-relay-scanner
 arch=(x86_64)
 depends=(python)
 source=($pkgname-$pkgver.pyz::https://github.com/ValdikSS/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.pyz

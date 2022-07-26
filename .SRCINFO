@@ -2,6 +2,7 @@ pkgbase = tor-relay-scanner
 	pkgdesc = Tor relay availability checker
 	pkgver = 0.0.7
 	pkgrel = 1
+	url = https://github.com/ValdikSS/tor-relay-scanner
 	arch = x86_64
 	depends = python
 	source = tor-relay-scanner-0.0.7.pyz::https://github.com/ValdikSS/tor-relay-scanner/releases/download/0.0.7/tor-relay-scanner-0.0.7.pyz
