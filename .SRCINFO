@@ -1,20 +1,22 @@
 pkgbase = codelldb
 	pkgdesc = A native debugger extension for VSCode based on LLDB. Also known as vscode-lldb (NOT lldb-vscode)
-	pkgver = 1.7.2
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://github.com/vadimcn/vscode-lldb
 	arch = x86_64
-	arch = aarch64
 	arch = arm7h
-	license = custom:MIT
+	arch = aarch64
+	license = MIT
 	makedepends = cmake
 	makedepends = cargo
 	makedepends = npm
 	makedepends = python
 	depends = lldb
+	provides = codelldb
+	provides = vscode-lldb
 	options = !debug
 	options = strip
-	source = vscode-lldb-1.7.2.tar.gz::https://github.com/vadimcn/vscode-lldb/archive/refs/tags/v1.7.2.tar.gz
-	sha256sums = 1258815e76429ae4ef17b1b8f0ac62e2d64e1f64283a1ffb38e6ab276b375558
+	source = vscode-lldb-1.7.3.tar.gz::https://github.com/vadimcn/vscode-lldb/archive/refs/tags/v1.7.3.tar.gz
+	sha256sums = 699d3e7041a72d5ab5bd2004906223a4ced4ec316fa4d76fdab8b5e8ee83c32e
 
 pkgname = codelldb
