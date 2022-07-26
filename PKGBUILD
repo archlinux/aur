@@ -39,10 +39,5 @@ build() {
 package() {
         cd 8814au
         sudo make install
-        echo -e "\n\n+----------------------------------------------+"
-        echo "| CHANGES WILL BE APPLIED AFTER REBOOT         |"
-        echo "| Use \"start-mon.sh\" to start monitor mode   |"
-        echo -e "+----------------------------------------------+\n\n"
-        install -Dm755 start-mon.sh "$pkgdir/usr/bin/start-mon.sh"
         install -Dm644 README.md "$pkgdir/usr/share/licenses/$pkgname/README.md"
 }
