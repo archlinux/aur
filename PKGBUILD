@@ -37,7 +37,7 @@ install=ros2-galactic.install
 prepare() {
     # Check locale according to
     # https://docs.ros.org/en/rolling/Installation/Ubuntu-Development-Setup.html#set-locale
-    if ! locale | grep LANG | grep UTF-8 > /dev/null; then
+    if ! locale | grep LANG | grep 'UTF-8\|utf8' > /dev/null; then
         echo 'Your locale must support UTF-8. See ' \
              'https://wiki.archlinux.org/index.php/locale and ' \
              'https://docs.ros.org/en/rolling/Installation/Ubuntu-Development-Setup.html#set-locale'
