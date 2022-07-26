@@ -1,7 +1,7 @@
 pkgbase = tmsu-git
 	pkgdesc = A tool for tagging your files and accessing them through a virtual filesystem. (development version)
 	pkgver = latest
-	pkgrel = 3
+	pkgrel = 4
 	url = https://tmsu.org/
 	arch = i686
 	arch = x86_64

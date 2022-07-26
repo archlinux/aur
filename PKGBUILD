@@ -6,7 +6,7 @@
 
 pkgname=tmsu-git
 pkgver=latest
-pkgrel=3
+pkgrel=4
 pkgdesc="A tool for tagging your files and accessing them through a virtual filesystem. (development version)"
 arch=('i686' 'x86_64')
 url="https://tmsu.org/"
@@ -53,6 +53,7 @@ package() {
   make INSTALL_DIR="${pkgdir}/usr/bin" \
   MOUNT_INSTALL_DIR="${pkgdir}/usr/bin" \
   MAN_INSTALL_DIR="${pkgdir}/usr/share/man/man1" \
+  BASH_COMP_INSTALL_DIR="${pkgdir}/usr/share/bash-completion" \
   ZSH_COMP_INSTALL_DIR="${pkgdir}/usr/share/zsh/site-functions" \
   install
 }
