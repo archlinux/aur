@@ -1,9 +1,10 @@
 pkgbase = blurble-git
 	pkgdesc = Word guessing game
-	pkgver = 0.1.0.r3.g9170f7c
-	pkgrel = 2
-	url = https://gitlab.gnome.org/pervoj/Blurble
+	pkgver = 0.1.0.r58.gf5f35b9
+	pkgrel = 1
+	url = https://gitlab.gnome.org/World/Blurble
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	checkdepends = appstream-glib
 	makedepends = git
@@ -14,7 +15,7 @@ pkgbase = blurble-git
 	depends = libadwaita
 	provides = blurble
 	conflicts = blurble
-	source = git+https://gitlab.gnome.org/pervoj/Blurble.git
+	source = git+https://gitlab.gnome.org/World/Blurble.git
 	b2sums = SKIP
 
 pkgname = blurble-git

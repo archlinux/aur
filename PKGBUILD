@@ -2,11 +2,11 @@
 
 pkgname=blurble-git
 _pkgname=Blurble
-pkgver=0.1.0.r3.g9170f7c
-pkgrel=2
+pkgver=0.1.0.r58.gf5f35b9
+pkgrel=1
 pkgdesc="Word guessing game"
-arch=('x86_64')
-url="https://gitlab.gnome.org/pervoj/Blurble"
+arch=('x86_64' 'aarch64')
+url="https://gitlab.gnome.org/World/Blurble"
 license=('GPL3')
 depends=('libadwaita')
 makedepends=('git' 'meson' 'blueprint-compiler' 'gobject-introspection' 'vala')
