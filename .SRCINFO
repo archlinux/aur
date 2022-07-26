@@ -1,6 +1,6 @@
 pkgbase = imhex
 	pkgdesc = A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM
-	pkgver = 1.19.2
+	pkgver = 1.19.3
 	pkgrel = 1
 	url = https://imhex.werwolv.net
 	arch = x86_64
@@ -24,12 +24,12 @@ pkgbase = imhex
 	depends = yara
 	optdepends = imhex-patterns-git: ImHex base patterns
 	options = !lto
-	source = imhex::git+https://github.com/WerWolv/ImHex.git#tag=v1.19.2
+	source = imhex::git+https://github.com/WerWolv/ImHex.git#tag=v1.19.3
 	source = nativefiledialog::git+https://github.com/btzy/nativefiledialog-extended.git
 	source = xdgpp::git+https://git.sr.ht/~danyspin97/xdgpp
 	source = libromfs::git+https://github.com/WerWolv/libromfs
 	source = capstone::git+https://github.com/capstone-engine/capstone#branch=next
-	source = pattern_language::git+https://github.com/WerWolv/PatternLanguage#tag=ImHex-v1.19.2
+	source = pattern_language::git+https://github.com/WerWolv/PatternLanguage#tag=ImHex-v1.19.3
 	source = 0001-makepkg-Remove-external-stuff.patch
 	source = 0002-archlinux-compat-Remove-unused-mbedTLS-code-from-lib.patch
 	source = 0003-fix-Deduplicate-resources-directories.patch
@@ -39,26 +39,26 @@ pkgbase = imhex
 	cksums = SKIP
 	cksums = SKIP
 	cksums = SKIP
-	cksums = 559898873
-	cksums = 540260233
-	cksums = 1832599645
+	cksums = 352208527
+	cksums = 2380891546
+	cksums = 187806777
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 244a57aff73da60f6e20f7a5086b3fea3d34bf30d39d1de247e1ab9cb631bec8
-	sha256sums = 9fee7806ded795954b8f5131d1799dc2a15011af22b44be4f83e84fe7bf02060
-	sha256sums = 255b25c94298b06b1ec725e05a3e113a533d0001dae28909b8c34fc621081b6b
+	sha256sums = f38410d3b7fbf61cab51d9258c2f554fe04cfa59962bfb1ffa2086970a56bf02
+	sha256sums = a5fc4f0a7a7fa7465ba9ed29e1b49cf0d9cdc0477be93628768d0566309c909b
+	sha256sums = 44f737ed46d529e860084975c2a2a50e439b0baabf41205c2cbe50263b9621d3
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = c808b3b0dd174cd1233e949aed76e34cd21f432ca1b27fb582b9da279f025384ceab38fa8af797aec422e2d0e8941476a804b7f462ddb25c0439e1b0f96ce861
-	b2sums = a7532a182bce2fc946f117d20e0da499e0cdc7ef8fe1df4ff9fa77d6c6b0bb682f669ccf5a7e18792c74bcf9998fd86b0e2043f129bde069de29f01a8f58fd12
-	b2sums = a7669b46e4e6a0da883ca556a36d37c71be5420f376a9a684a3499dfc1bb32e667fe76d4177a85f2af1d9eeafaecbe8ae57a13ce1ddff593e38bf5f097fbb4a8
+	b2sums = a0e733be3d9373f572992effa943e4da3d88d35bd634daea1617adb63ff22ef3c07b919671c7ac1a6761e67bc9a703e77882f7bbf947c3271afe36512c8d1c99
+	b2sums = 39f71cc1c09f8d0b5eb70952b017aa0e57907c4dba8cc071fcc1b03b1ba95aed080db6c8de44ac59e92cbf22c58afcaeded424603ddad0e2af0495a7f5bcc38e
+	b2sums = 085b99b69d98256eb0078fe86b62921a1e0a9328e9992805e298a6de9a16d99d33fe0bf239711e1ca27c65cc29d6f733fac3dadc9d914860f128c697bd5e6f22
 
 pkgname = imhex
