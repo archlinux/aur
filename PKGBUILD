@@ -4,7 +4,7 @@
 # Contributor: Qinq-net
 
 pkgname=osp-tracker
-pkgver=6.0.8
+pkgver=6.0.9
 arch=('x86_64')
 pkgrel=1
 pkgdesc='Tracker video analysis and modeling tool'
@@ -18,7 +18,7 @@ _runname="Tracker-${pkgver}-linux-64bit-installer.run"
 source=("${url}/installers/${_runname}"
         "tracker.sh"
         "tracker.desktop")
-sha256sums=('8487a0a3f8989508dcb875f6cd268d317b9188d533d65157e9cb3f785c04df47'
+sha256sums=('9809f032f96eafcd9aca6b449d9742d632c8228c4b23988be443c2fcc4ea19d9'
          '0c36e09d4f2e2ab8cd39ee1ed896ce96db217bd2eff7a8522d426e15acf93f8d'
          '73664881f365a5640ca0c4ef83776105522ce3594f6961f2505766fea6bc361b')
 
