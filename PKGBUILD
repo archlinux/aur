@@ -11,7 +11,7 @@ license=(GPL3)
 depends=(
   python-gobject
   python-xdg
-  python-dbus
+  dbus-python
   python-click
   python-ewmh
   gtk3
