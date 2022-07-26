@@ -1,0 +1,13 @@
+pkgbase = python-steamgriddb
+	pkgdesc = Python API wrapper for SteamGridDB.com
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/ZebcoWeb/python-steamgriddb
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-requests
+	source = python-steamgriddb-1.0.4.tar.gz::https://github.com/ZebcoWeb/python-steamgriddb/archive/refs/tags/v1.0.4.tar.gz
+	sha256sums = fd11e46e030892c77bfa252f72e60db030e1266a34c6c530f8608c0eb725a36f
+
+pkgname = python-steamgriddb
