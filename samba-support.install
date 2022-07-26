@@ -1,0 +1,44 @@
+add_users() {
+    _l="/etc/login.defs"
+    _p="/etc/passwd"
+ 
+    ## get mini UID limit ##
+    l=$(grep "^UID_MIN" $_l)
+ 
+    ## get max UID limit ##
+    l1=$(grep "^UID_MAX" $_l)
+ 
+    ## use awk to print if UID >= $MIN and UID <= $MAX and shell is not /sbin/nologin   ##
+    users=$(awk -F':' -v "min=${l##UID_MIN}" -v "max=${l1##UID_MAX}" '{ if ( $3 >= min && $3 <= max  && $7 != "/sbin/nologin" ) print $0 }' "$_p" | cut -d: -f1)
+    for i in $users; do
+        echo "Adding user '$i' to user-group 'sambashare'"
+        usermod -a -G sambashare $i
+    done
+}
+
+add_group() {
+    getent group "sambashare" &>/dev/null || groupadd -r sambashare
+    add_users
+    chgrp sambashare var/lib/samba/usershare
+}
+
+post_upgrade() {
+    add_group
+}
+
+post_install() {
+    systemctl is-active smb >/dev/null || systemctl enable smb
+    systemctl is-active nmb >/dev/null || systemctl enable nmb
+    systemctl is-active avahi-daemon >/dev/null || systemctl enable avahi-daemon
+    echo "Changing nsswitch.conf to:"
+    sed -i 's|hosts:.*|hosts: files mymachines myhostname mdns_minimal [NOTFOUND=return] resolve [!UNAVAIL=return] dns wins|g' /etc/nsswitch.conf
+    echo ""
+    echo "hosts: files mymachines myhostname mdns_minimal [NOTFOUND=return] resolve [!UNAVAIL=return] dns wins"
+    add_group
+}
+
+post_remove() {
+    ! systemctl is-enabled smb >/dev/null || systemctl disable smb
+    ! systemctl is-enabled nmb >/dev/null || systemctl disable nmb
+    ! getent group sambashare || groupdel sambashare
+}
