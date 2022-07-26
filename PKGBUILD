@@ -5,9 +5,9 @@
 # Contributor: Simon Pintarelli <simon.pintarelli@gmail.com>
 # Contributor: Feng Wang <wanng.fenng@gmail.com>
 pkgname=trilinos
-pkgver=13.2.0
+pkgver=13.4.0
 _pkgver=${pkgver//./-}
-pkgrel=3
+pkgrel=1
 pkgdesc="algorithms for the solution of large-scale scientific problems"
 arch=('x86_64')
 url="http://trilinos.org"
@@ -16,12 +16,12 @@ depends=('python' 'lapack' 'boost' 'netcdf' 'libmatio' 'libx11' 'hdf5-openmpi')
 makedepends=('gcc-fortran' 'perl' 'blas' 'cmake' 'bc' 'python-numpy')
 checkdepends=('cmake')
 source=("https://github.com/trilinos/Trilinos/archive/refs/tags/trilinos-release-$_pkgver.tar.gz"
-        'python-mpi-version.patch')
-sha256sums=('0ddb47784ba7b8a6b9a07a4822b33be508feb4ccd54301b2a5d10c9e54524b90'
-            '9920ddf718ff04a14d1263623dfd98791404b1db0a73d95ba48d87215e8409eb')
+        'compiler-errors.patch')
+sha256sums=('39550006e059043b7e2177f10467ae2f77fe639901aee91cbc1e359516ff8d3e'
+            'a255f689d3a65187635a7dea2862b7c323c6efbc65501069bfe0cea7669d12a3')
 
 prepare() {
-  patch -d  Trilinos-trilinos-release-"$_pkgver" -p1 -i ../python-mpi-version.patch
+  patch -d  Trilinos-trilinos-release-"$_pkgver" -p1 -i ../compiler-errors.patch
 }
 
 build() {
@@ -38,7 +38,8 @@ build() {
              -DTPL_ENABLE_MPI:BOOL=ON \
              -DTPL_ENABLE_HDF5:BOOL=ON \
              -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-             -DBUILD_SHARED_LIBS:BOOL=ON
+             -DBUILD_SHARED_LIBS:BOOL=ON \
+             -DCMAKE_Fortran_FLAGS=-fallow-argument-mismatch
     make VERBOSE=1
 }
 
