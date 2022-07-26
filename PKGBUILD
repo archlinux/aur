@@ -2,7 +2,7 @@
 
 java_=17
 pkgname="jdk${java_}-graalvm-bin"
-pkgver=22.1.0
+pkgver=22.2.0
 pkgrel=1
 pkgdesc="Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java ${java_} version"
 arch=('x86_64'
@@ -12,6 +12,9 @@ license=('custom')
 depends=('java-runtime-common'
          'java-environment-common')
 makedepends=()
+optdepends=("graaljs-jdk${java_}-bin: JavaScript component (used to be bundled with this package before the 22.2.0 release)"
+            "graal-llvm-jdk${java_}-bin: LLVM component (used to be bundled with this package before the 22.2.0 release)"
+            "graal-visualvm-jdk${java_}-bin: VisualVM component (used to be bundled with this package before the 22.2.0 release)")
 provides=("java-runtime=${java_}"
           "java-environment=${java_}")
 options=('staticlibs')
@@ -20,8 +23,8 @@ source=('graalvm-rebuild-libpolyglot.hook')
 sha256sums=('SKIP')
 source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/graalvm-ce-java${java_}-linux-amd64-${pkgver}.tar.gz")
 source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/graalvm-ce-java${java_}-linux-aarch64-${pkgver}.tar.gz")
-sha256sums_x86_64=('f11d46098efbf78465a875c502028767e3de410a31e45d92a9c5cf5046f42aa2')
-sha256sums_aarch64=('05128e361ed44beebc89495faaa504b0b975bf93aa5e512e217b3cf5e42dfada')
+sha256sums_x86_64=('cd903566d030bf44a8c5c0f50914fc9c9d89cb2954e1f90512b137a0bfedc3ca')
+sha256sums_aarch64=('3025cc887bdaa088c89601b42931abc61dfd108aaad386abee8c1e08c913504d')
 
 package() {
     cd "graalvm-ce-java${java_}-${pkgver}"

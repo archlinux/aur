@@ -1,6 +1,6 @@
 pkgbase = jdk17-graalvm-bin
 	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 17 version
-	pkgver = 22.1.0
+	pkgver = 22.2.0
 	pkgrel = 1
 	url = https://www.graalvm.org/
 	install = jdk17-graalvm-bin.install
@@ -9,14 +9,17 @@ pkgbase = jdk17-graalvm-bin
 	license = custom
 	depends = java-runtime-common
 	depends = java-environment-common
+	optdepends = graaljs-jdk17-bin: JavaScript component (used to be bundled with this package before the 22.2.0 release)
+	optdepends = graal-llvm-jdk17-bin: LLVM component (used to be bundled with this package before the 22.2.0 release)
+	optdepends = graal-visualvm-jdk17-bin: VisualVM component (used to be bundled with this package before the 22.2.0 release)
 	provides = java-runtime=17
 	provides = java-environment=17
 	options = staticlibs
 	source = graalvm-rebuild-libpolyglot.hook
 	sha256sums = SKIP
-	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-22.1.0/graalvm-ce-java17-linux-amd64-22.1.0.tar.gz
-	sha256sums_x86_64 = f11d46098efbf78465a875c502028767e3de410a31e45d92a9c5cf5046f42aa2
-	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-22.1.0/graalvm-ce-java17-linux-aarch64-22.1.0.tar.gz
-	sha256sums_aarch64 = 05128e361ed44beebc89495faaa504b0b975bf93aa5e512e217b3cf5e42dfada
+	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-22.2.0/graalvm-ce-java17-linux-amd64-22.2.0.tar.gz
+	sha256sums_x86_64 = cd903566d030bf44a8c5c0f50914fc9c9d89cb2954e1f90512b137a0bfedc3ca
+	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-22.2.0/graalvm-ce-java17-linux-aarch64-22.2.0.tar.gz
+	sha256sums_aarch64 = 3025cc887bdaa088c89601b42931abc61dfd108aaad386abee8c1e08c913504d
 
 pkgname = jdk17-graalvm-bin
