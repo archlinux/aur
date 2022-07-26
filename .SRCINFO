@@ -11,6 +11,7 @@ pkgbase = qemu-loongarch64-static-git
 	makedepends = meson
 	makedepends = glib2-static
 	makedepends = pcre-static
+	provides = qemu-loongarch64-static
 	source = git+https://github.com/loongson/qemu.git#branch=tcg-dev
 	sha512sums = SKIP
 

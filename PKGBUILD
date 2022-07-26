@@ -2,9 +2,11 @@
 # Contributor: exkc <exxxxkc@tilde.club>
 
 pkgname=qemu-loongarch64-static-git
+_pkgname=qemu-loongarch64-static
 pkgdesc="Statically linked binaries of Qemu with loongarch64 user emulation. Useful for containers/chroot environment with binfmt."
 pkgver=7.0.50.r97536.g8ec4bc3c8c
 pkgrel=1
+provides=( ${_pkgname} )
 arch=(x86_64 aarch64)
 license=(GPL2 LGPL2.1)
 url="http://wiki.qemu.org/"
