@@ -2,7 +2,7 @@
 _base=tcxreader
 pkgname=python-${_base}
 pkgdesc="Reader for Garmin's TCX file format"
-pkgver=0.3.14
+pkgver=0.3.15
 pkgrel=1
 arch=(any)
 url="https://github.com/alenrajsp/${_base}"
@@ -11,7 +11,7 @@ depends=(python)
 makedepends=(python-setuptools)
 checkdepends=(python-pytest)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('dd6809bd8ef2780cd82578249d4fc4d4d023a5c1c3a1c271273e12ff5f861c5a6195bb59047d2d65cb9059dcfad5eba0b31fc7cfc670302444a26405fc6f3be9')
+sha512sums=('92c52e5518edb0850a263534c0e4516d9733e6d010a317dc4bfa5016c2b96f7303b00847fd9447dd1a9d7ad49c672c0397a874016b8cbfafaa3052fea0a3a693')
 
 build() {
   cd ${_base}-${pkgver}
