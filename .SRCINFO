@@ -1,0 +1,17 @@
+pkgbase = graal-llvm-jdk11-bin
+	pkgdesc = GraalVM LLVM runtime (aka Sulong), Java 11 version
+	pkgver = 22.2.0
+	pkgrel = 1
+	url = https://www.graalvm.org/
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	depends = jdk11-graalvm-bin
+	source = https://raw.githubusercontent.com/oracle/graal/vm-22.2.0/sulong/LICENSE
+	sha256sums = 6fb47d3d4e641fe19602e68ade11fa4103095cd5ddba376e4f135284ae1a1c5e
+	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-22.2.0/llvm-installable-svm-java11-linux-amd64-22.2.0.jar
+	sha256sums_x86_64 = d2dacc8267796570c628d17264593c315be43a11574ecd43eacfeeedc3b6cbeb
+	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-22.2.0/llvm-installable-svm-java11-linux-aarch64-22.2.0.jar
+	sha256sums_aarch64 = 13e57b9cf658fe40c52ce1f41ecc7b4f80a47818064f47218f27bd4a7127aaef
+
+pkgname = graal-llvm-jdk11-bin
