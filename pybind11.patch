@@ -1,0 +1,31 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0228db7..46bdbd4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -290,25 +290,7 @@ if (${P}_ENABLE_PYTHON)
+         set(CMAKE_REQUIRED_FLAGS "-std=c++11")
+       endif()
+       check_include_file_cxx("pybind11/pybind11.h" ${P}_PYBIND11_FOUND)
+-      if (${P}_PYBIND11_FOUND)
+-        unset(${P}_PYBIND11_FOUND CACHE)
+-        message(FATAL_ERROR "An existing version of pybind11 was found on "
+-                "the include path, which is going to conflict with the "
+-                "${PN}-provided one. Please uninstall it first (via brew, "
+-                "pip uninstall, your system package manager, or similar)")
+-      endif()
+-
+-      unset(${P}_PYBIND11_FOUND)
+-      unset(CMAKE_REQUIRED_FLAGS)
+-      unset(CMAKE_REQUIRED_INCLUDES)
+-
+-      set(${P}_PYBIND11_DIR "${CMAKE_CURRENT_SOURCE_DIR}/ext/pybind11"
+-        CACHE STRING "Path containing the 'pybind11' library used to compile ${PN}.")
+-      add_subdirectory(${${P}_PYBIND11_DIR} pybind11)
+-      mark_as_advanced(
+-        USE_PYTHON_INCLUDE_DIR PYBIND11_INSTALL PYBIND11_TEST PYBIND11_NOPYTHON
+-        PYBIND11_FINDPYTHON PYBIND11_PYTHON_VERSION PYBIND11_WERROR
+-        ${P}_PYBIND11_DIR)
++      find_package(pybind11 CONFIG REQUIRED)
+       endif()
+   endif()
+ endif()

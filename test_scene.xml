@@ -1,0 +1,53 @@
+<scene version="2.2.1">
+	<shape type="sphere">
+		<float name="radius" value="0.9" />
+		<transform name="to_world">
+			<translate x="1" y="1"/>
+		</transform>
+		<emitter type="area">
+			<rgb name="radiance" value="100,0,0"/>
+		</emitter>
+	</shape>
+	<shape type="sphere">
+		<float name="radius" value="0.9" />
+		<transform name="to_world">
+			<translate x="1" y="-1"/>
+		</transform>
+		<emitter type="area">
+			<rgb name="radiance" value="0,100,0"/>
+		</emitter>
+	</shape>
+	<shape type="sphere">
+		<float name="radius" value="0.9" />
+		<transform name="to_world">
+			<translate x="-1" y="1"/>
+		</transform>
+		<emitter type="area">
+			<rgb name="radiance" value="0,0,100"/>
+		</emitter>
+	</shape>
+	<shape type="sphere">
+		<float name="radius" value="0.9" />
+		<transform name="to_world">
+			<translate x="-1" y="-1"/>
+		</transform>
+	</shape>
+	<integrator type="direct">
+		<integer name="shading_samples" value="8"/>
+	</integrator>
+
+	<sensor type="perspective">
+		<transform name="to_world">
+			<translate z="-10" />
+		</transform>
+		<float name="fov" value="45"/>
+		<sampler type="independent">
+			<integer name="sample_count" value="128"/>
+		</sampler>
+		<film type="hdrfilm">
+			<string name="pixel_format" value="rgba"/>
+			<integer name="width" value="512"/>
+			<integer name="height" value="512"/>
+		</film>
+	</sensor>
+</scene>
