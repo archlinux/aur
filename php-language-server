@@ -1,2 +1,2 @@
 #!/bin/bash
-php /usr/share/php/php-language-server/bin/php-language-server.php
+php7 /usr/share/php7/php-language-server/bin/php-language-server.php
