@@ -1,15 +1,15 @@
 # Maintainer: D. Murphy (archerdm)
 
 pkgname=cackey
-pkgver=0.7.10
+pkgver=0.7.11
 pkgrel=1
 pkgdesc="CACKey PKCS#11 Provider for US Department of Defense CACs"
 arch=('x86_64')
 url="https://cackey.rkeene.org/fossil/home"
 license=('multiple')
 depends=('glibc' 'zlib' 'pcsclite')
-source=('http://cackey.rkeene.org/download/0.7.10/cackey-0.7.10.tar.gz')
-sha256sums=('e2074055bab8eb1c277bfa3355767c50f792d5b87bf41f9c0d1af0e77f311583')
+source=("http://cackey.rkeene.org/download/$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('0ed459814fb4753f6e5fa80034c55d1b312f55f88ee7317446dff49fa6e570f3')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
