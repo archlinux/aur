@@ -1,7 +1,7 @@
 pkgbase = r-forecast
 	pkgdesc = Forecasting Functions for Time Series and Linear Models
-	pkgver = 8.16
-	pkgrel = 4
+	pkgver = 8.17.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=forecast
 	arch = x86_64
 	license = GPL
@@ -9,6 +9,7 @@ pkgbase = r-forecast
 	depends = r-colorspace
 	depends = r-fracdiff
 	depends = r-ggplot2
+	depends = r-generics
 	depends = r-lmtest
 	depends = r-magrittr
 	depends = r-rcpp
@@ -25,7 +26,7 @@ pkgbase = r-forecast
 	optdepends = r-seasonal
 	optdepends = r-testthat
 	optdepends = r-uroot
-	source = https://cran.r-project.org/src/contrib/forecast_8.16.tar.gz
-	sha256sums = 9f01eb895a883a7e1e23725b167b46edc1b0b152fd4120278aaa5f7b2621767f
+	source = https://cran.r-project.org/src/contrib/forecast_8.17.0.tar.gz
+	sha256sums = 89fe532793fdfa69fbb9676299a69d314c8b66b67ab760de479491e7041ec304
 
 pkgname = r-forecast
