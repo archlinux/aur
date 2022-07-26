@@ -1,6 +1,6 @@
 # Maintainer: Alexander Courtis <alex@courtis.org>
 pkgname=xlayoutdisplay
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Detects and arranges linux display outputs, using XRandR for detection and xrandr for arrangement."
 arch=('x86_64')
@@ -9,7 +9,8 @@ license=('Apache')
 depends=('xorg-xrandr' 'xorg-xrdb' 'libxcursor')
 makedepends=('git' 'make' 'boost')
 source=("https://github.com/alex-courtis/xlayoutdisplay/archive/v$pkgver.tar.gz")
-sha256sums=('c203de2b61309b7fdaab96a3338d1877718150f7ab4c21bee78a29d99b482c92')
+sha256sums=('f369c6c47134079a0c2ef3c42775816a732b1ec52fe97c015f807bcf1a7d1775')
+install=install
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -19,4 +20,8 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	make PREFIX="/usr" DESTDIR="$pkgdir/" install
+	install -Dm644 README.md               -t "$pkgdir/usr/share/doc/$pkgname"
+	install -Dm644 99-xlayoutdisplay.rules -t "$pkgdir/usr/share/doc/$pkgname"
+	install -Dm644 LICENSE                 -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm644 NOTICE                  -t "$pkgdir/usr/share/licenses/$pkgname"
 }
