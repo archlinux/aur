@@ -11,7 +11,7 @@ pkgdesc="抖音桌面版 Tiktok desktop"
 arch=('x86_64')
 url="https://www.douyin.com/"
 license=('custom')
-depends=('qt5-webengine' 'qt5-x11extras' 'dtkwidget')
+depends=('qt5-webengine' 'qt5-x11extras' 'dtkwidget' 'deepin-qt5integration')
 source=(
     "https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.yunky.douyin/com.yunky.douyin_${pkgver}_amd64.deb"
 )
