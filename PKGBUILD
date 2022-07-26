@@ -3,8 +3,8 @@
 java_=11
 pkgname_=graalpython
 pkgname="${pkgname_}-jdk${java_}-bin"
-pkgver=22.1.0
-pkgrel=2
+pkgver=22.2.0
+pkgrel=1
 pkgdesc="GraalVM-based, high-performance implementation of the Python language (early development), Java ${java_} version"
 arch=('x86_64')
 url='https://github.com/graalvm/graalpython'
@@ -16,7 +16,7 @@ depends=(
     'zlib'
 )
 source=("https://github.com/graalvm/$pkgname_/releases/download/vm-${pkgver}/python-installable-svm-java${java_}-linux-amd64-${pkgver}.jar")
-sha256sums=('cec193b0647df8f8e95f86a34e296fbf1bab5c8a922cd009e2b7069d48022862')
+sha256sums=('b2f2712c6869d2f9ff1c737c7df4d4245f3d43c8d59161ab3bcd1cc0aa521564')
 
 package() {
     local file eq permissions mode name target
