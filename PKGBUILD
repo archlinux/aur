@@ -3,7 +3,7 @@
 
 pkgbase=linux-mainline-um5302ta
 pkgver=5.19.rc8
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.kernel.org/torvalds/h/$_srctag"
@@ -30,7 +30,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '382aa201a6a6939210dd8668ab052724547b4bd489b38e97502bbd0848061b35'
+            '2242592a373547224b158e43eb3d8cc144efe56f4ec22bc6952b1caf7183e870'
             'b34496cca01243a0805582cb656b9cfb2781c706cc4d13cea0ac4598364d3425'
             '6b86f4d857af3622f66da8ad9ea059ea39693fe80e5fbb507b0f8d9bc4616f88'
             '66ecbd41168b1fb7fe8c8bba8a374456130aeceb64df2708d62f7ac3e700df1f'
