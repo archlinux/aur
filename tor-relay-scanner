@@ -1,2 +1,2 @@
-#/usr/bin/sh
+#!/usr/bin/sh
 /usr/bin/python /usr/bin/tor-relay-scanner.pyz $@

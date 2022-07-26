@@ -1,13 +1,13 @@
 pkgbase = tor-relay-scanner
 	pkgdesc = Tor relay availability checker
 	pkgver = 0.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ValdikSS/tor-relay-scanner
 	arch = x86_64
 	depends = python
 	source = tor-relay-scanner-0.0.7.pyz::https://github.com/ValdikSS/tor-relay-scanner/releases/download/0.0.7/tor-relay-scanner-0.0.7.pyz
 	source = tor-relay-scanner
 	sha256sums = 8129d1437ee5114efeff55afb644766957a57baa5d0a22858a5be8ea5133b052
-	sha256sums = f7313782f7803ec5faf4fbd25e2259c14994b6e31ef9146d04c24c5680af6f41
+	sha256sums = 344c4452755a3f8095ed7b41adfbb6fbed66eb0d62ff367da4079b332f30437e
 
 pkgname = tor-relay-scanner
