@@ -1,6 +1,6 @@
 # Maintainer: Kimiblock Zhou <pn3535@icloud.com>
 pkgname=mcctl-git
-pkgver=r85.729d9d6
+pkgver=r90.efd5233
 pkgrel=1
 epoch=
 pkgdesc="A powerful script which can automatically operate Minecraft servers to run, update and more"
