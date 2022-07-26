@@ -1,12 +1,12 @@
 pkgbase = wxparaver
 	pkgdesc = Expressive powerful and flexible trace visualizer for post-mortem trace analysis (from BSC).
 	pkgver = 4.10.1.20220530
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
-	depends = wxgtk3
+	depends = wxwidgets-gtk3
 	depends = webkit2gtk
 	depends = boost
 	depends = libxml2
