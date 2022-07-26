@@ -1,7 +1,7 @@
 # Maintainer: sasvari
 pkg="pubs"
 pkgname="$pkg"
-pkgver=0.8.3
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Your bibliography on the command line"
 arch=(any)
@@ -11,7 +11,7 @@ depends=("python" "python-configobj" "python-bibtexparser" "python-beautifulsoup
 makedepends=("git")
 provides=("pubs")
 source=("https://github.com/pubs/pubs/archive/v$pkgver.tar.gz")
-sha256sums=('8241633805b19266cc042f8216b3934078f40327dfba7be87dda59c87e363ce5')
+sha256sums=('754a6033510f145702eeab4e99d71ed024f9e73245e2a71821692a9a32075b2b')
 
 build () {
 	cd "$srcdir/$pkg-$pkgver"
