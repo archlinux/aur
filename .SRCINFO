@@ -1,6 +1,6 @@
 pkgbase = r-dexma
 	pkgdesc = Differential Expression Meta-Analysis
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DExMA
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-dexma
 	optdepends = r-biocstyle
 	optdepends = r-qpdf
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DExMA_1.4.2.tar.gz
-	sha256sums = ab805379bae267b92ca049d6edcd16760b08fc86eb66acda16102ea0cff332af
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DExMA_1.4.3.tar.gz
+	sha256sums = 5e0059bb6aee7e927ae0848a90c4ddf9b164fa9a1bed3f04faf485e0c2e21df3
 
 pkgname = r-dexma
