@@ -4,13 +4,14 @@ java_=11
 pkgname_=graal-nodejs
 pkgname="${pkgname_}-jdk${java_}-bin"
 pkgver=22.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GraalVM-based, ployglot-enabled implementation of Node.js, Java ${java_} version"
 arch=('x86_64'
       'aarch64')
 url='https://github.com/oracle/graaljs'
 license=('custom')
 depends=("jdk${java_}-graalvm-bin")
+optdepends=("graaljs-jdk${java_}-bin: JavaScript support for non-native mode (with --jvm)")
 source_x86_64=("https://github.com/oracle/graaljs/releases/download/vm-${pkgver}/nodejs-installable-svm-java${java_}-linux-amd64-${pkgver}.jar")
 source_aarch64=("https://github.com/oracle/graaljs/releases/download/vm-${pkgver}/nodejs-installable-svm-java${java_}-linux-aarch64-${pkgver}.jar")
 sha256sums_x86_64=('5be7be3145ad21c8d184d7401851a82ff50521583545ab600621611c118467d0')
