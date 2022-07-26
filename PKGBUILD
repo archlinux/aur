@@ -1,9 +1,11 @@
-# Maintainer: Nikolay Korotkiy <sikmir@gmail.com>
+# Maintainer: Brian "Beej Jorgensen" Hall <beej@beej.us>
+# Contributor: Nikolay Korotkiy <sikmir@gmail.com>
+
 _orgname=irdvo
 _pkgname=gpxtools
 _branch=master
 pkgname=${_pkgname}-git
-pkgver=r43.f7d289a
+pkgver=r58.3a3276e
 pkgrel=1
 pkgdesc='A collection of command line tools for using GPX files'
 arch=(x86_64)
