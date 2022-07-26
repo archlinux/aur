@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=GE-Proton7-26
+_srctag=GE-Proton7-27
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
@@ -146,7 +146,7 @@ _make_wrappers () {
     declare -n _opt
     for _opt in "${_opts[@]}"; do
         for l in ar ranlib nm; do
-            ln -s /usr/bin/$l wrappers/${_opt[0]}-pc-linux-gnu-$l
+            ln -s /usr/bin/gcc-$l wrappers/${_opt[0]}-pc-linux-gnu-$l
         done
         for t in gcc g++; do
             install -Dm755 /dev/stdin wrappers/${_opt[0]}-pc-linux-gnu-$t <<EOF
