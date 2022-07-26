@@ -6,12 +6,12 @@
 # Maintainer:Integral<luckys68@126.com>
 pkgname=douyin-uos
 pkgver=1.0.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="抖音桌面版 Tiktok desktop"
 arch=('x86_64')
 url="https://www.douyin.com/"
 license=('custom')
-depends=('qt5-webengine' 'qt5-x11extras')
+depends=('qt5-webengine' 'qt5-x11extras' 'dtkwidget')
 source=(
     "https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.yunky.douyin/com.yunky.douyin_${pkgver}_amd64.deb"
 )
