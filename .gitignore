@@ -1,0 +1,7 @@
+*.tar.gz
+*.tar.zst
+/pkg
+/src
+/*.patch
+/*.log
+/*.zip
