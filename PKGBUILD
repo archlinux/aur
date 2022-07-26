@@ -4,14 +4,14 @@
 
 _pkgname=sddm-kcm
 pkgname=$_pkgname-git
-pkgver=5.19.90.4.g48dae08
+pkgver=5.24.90.24.g4d03c42
 pkgrel=1
 pkgdesc='KDE Config Module for SDDM'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kdereview/sddm-kcm/'
 license=('GPL')
-depends=('kio' 'libxcursor' 'sddm' 'knewstuff')
-makedepends=('git' 'extra-cmake-modules' 'qt5-tools')
+depends=('kcmutils-git')
+makedepends=('git' 'extra-cmake-modules' 'knewstuff')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+https://invent.kde.org/plasma/sddm-kcm.git")
