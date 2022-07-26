@@ -1,6 +1,6 @@
 # Maintainer: Look <notkool@protonmail.com>
 pkgname=miru-bin
-pkgver=2.10.0
+pkgver=2.10.1
 pkgrel=1
 pkgdesc="Bittorrent streaming software for cats"
 arch=('x86_64' 'aarch64')
