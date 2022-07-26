@@ -1,7 +1,7 @@
 pkgbase = redis4
 	pkgdesc = Advanced key-value store (version 4)
 	pkgver = 4.0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = http://redis.io/
 	install = redis.install
 	arch = i686
