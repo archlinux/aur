@@ -6,7 +6,7 @@
 # Maintainer:Integral<luckys68@126.com>
 pkgname=douyin-uos
 pkgver=1.0.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc="抖音桌面版 Tiktok desktop"
 arch=('x86_64')
 url="https://www.douyin.com/"

@@ -1,7 +1,7 @@
 pkgbase = douyin-uos
 	pkgdesc = 抖音桌面版 Tiktok desktop
 	pkgver = 1.0.2.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.douyin.com/
 	arch = x86_64
 	license = custom
