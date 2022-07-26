@@ -3,7 +3,7 @@
 # Contributor: Michael Yang <ohmyarchlinux@pm.me>
 
 pkgname=fmt-git
-pkgver=8.1.1.r172.g22d31b31
+pkgver=9.0.0.r23.g81f1cc74
 pkgrel=1
 pkgdesc='Open-source formatting library for C++'
 url='https://fmt.dev/'
@@ -11,9 +11,9 @@ arch=('x86_64')
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'cmake')
-provides=('fmt' 'libfmt.so=8-64')
+provides=("fmt=${pkgver%.r*}" 'libfmt.so')
 conflicts=('fmt')
-source=('git+https://github.com/fmtlib/fmt')
+source=('fmt::git+https://github.com/fmtlib/fmt')
 sha512sums=('SKIP')
 
 pkgver() {
