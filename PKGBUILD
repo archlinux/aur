@@ -5,7 +5,7 @@
 # Contributor: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=nnn-nerd
-pkgver=4.5
+pkgver=4.6
 pkgrel=1
 pkgdesc="The fastest terminal file manager ever written (with icon support using a patched nerd font)."
 arch=('x86_64')
@@ -26,7 +26,7 @@ license=('BSD')
 provides=(nnn)
 conflicts=(nnn)
 source=("nnn-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('ab64f0e6211b14e90a4632bb0da9a1214635c9a06718c7c434d344d69d1087b4d5d978d44f38c1b03bb555e3055ca5033bcbca40927135757a468e6f1b99046e')
+sha512sums=('714e31523036ffce0637809234c373d72baf70263c9ef0ce4d38557ffca0689b51ea0c79c62038d00fd68f668cc2985a8c28b2feeaa6da3b07028b4f1de61f89')
 
 prepare() {
     sed -i 's/install: all/install:/' "${provides}-${pkgver}/Makefile"
