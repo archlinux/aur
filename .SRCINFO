@@ -1,7 +1,7 @@
 pkgbase = spek-wxgtk3
 	pkgdesc = An acoustic spectrum analyser (compiled against wxGtk3 and ffmpeg4.4)
 	pkgver = 0.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://spek.cc/
 	arch = x86_64
 	license = GPL3

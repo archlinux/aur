@@ -1,7 +1,7 @@
 # Maintainer: Michał Przybyś <michal@przybys.eu>
 pkgname=spek-wxgtk3
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc='An acoustic spectrum analyser (compiled against wxGtk3 and ffmpeg4.4)'
 arch=(x86_64)
 url='http://spek.cc/'
@@ -18,6 +18,7 @@ sha256sums=(1751246e958cff91fe30b01925a38bf8cbd9c6abbd0d24e5b21eaad3d054534b)
 build() {
     cd "spek-${pkgver}"
     export PKG_CONFIG_PATH=/usr/lib/ffmpeg4.4/pkgconfig
+    export CXXFLAGS="$(pkg-config --cflags-only-I libavutil)"
     ./autogen.sh --with-wx-config=/usr/bin/wx-config --prefix=/usr
     make
 }
