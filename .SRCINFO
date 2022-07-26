@@ -1,0 +1,19 @@
+pkgbase = python-pyrogram
+	pkgdesc = Elegant, modern and asynchronous Telegram MTProto API framework in Python for users and bots
+	pkgver = 2.0.35
+	pkgrel = 1
+	url = https://github.com/pyrogram/pyrogram
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyaes
+	depends = python-pysocks
+	options = !emptydirs
+	source = https://github.com/pyrogram/pyrogram/archive/refs/tags/v2.0.35.tar.gz
+	sha256sums = bc0ca2430b7ebec635b3e937d4de65a0010cd51df17c2345eaa1b8208f31b776
+
+pkgname = python-pyrogram
