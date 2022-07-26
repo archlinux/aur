@@ -1,6 +1,6 @@
 pkgbase = truffleruby-jdk11-bin
 	pkgdesc = GraalVM-based, high-performance implementation of the Ruby language (Java 11 version)
-	pkgver = 22.1.0
+	pkgver = 22.2.0
 	pkgrel = 1
 	url = https://github.com/oracle/truffleruby
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = truffleruby-jdk11-bin
 	license = GPL2
 	license = LGPL2.1
 	depends = jdk11-graalvm-bin
-	source_x86_64 = https://github.com/oracle/truffleruby/releases/download/vm-22.1.0/ruby-installable-svm-java11-linux-amd64-22.1.0.jar
-	sha256sums_x86_64 = e6a6529eba6f04c72ff7241802972e8292cad230cbc8d38e8f7d1a535e981c47
-	source_aarch64 = https://github.com/oracle/truffleruby/releases/download/vm-22.1.0/ruby-installable-svm-java11-linux-aarch64-22.1.0.jar
-	sha256sums_aarch64 = 12ed2f5ec1ced38ff1a791777b1e19b117bccf40b3bca30a1948019799688f5f
+	source_x86_64 = https://github.com/oracle/truffleruby/releases/download/vm-22.2.0/ruby-installable-svm-java11-linux-amd64-22.2.0.jar
+	sha256sums_x86_64 = 7f8b6a76a92ae01c5a6e3e08a95872aaba4ecdae3ea15768fe40e27e81335457
+	source_aarch64 = https://github.com/oracle/truffleruby/releases/download/vm-22.2.0/ruby-installable-svm-java11-linux-aarch64-22.2.0.jar
+	sha256sums_aarch64 = 9842bba249a4b6080c6c4fafab0a125b0651440adf4e3ee604b65f19aa8aa6fe
 
 pkgname = truffleruby-jdk11-bin
