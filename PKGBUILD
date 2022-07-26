@@ -15,7 +15,7 @@ makedepends=("cargo")
 conflicts=(sworkstyle-git)
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "sworkstyle.man")
-sha256sums=('022b08ce5c3ec28a5ca6f700efe2a97f3e2cc9c62af7efdaed6f6653ccc888c3'
+sha256sums=('4363c00c322e40ddeb8abc7d10f4f5dc32276dfcdad34177cb5fe0ed20b3e6f6'
             'd16f4284fe6419603db058b878a32a56574a51409648a6ddbd1b516d50cb3eb7')
 
 build() {
