@@ -1,0 +1,18 @@
+pkgbase = python-itchat-uos-git
+	pkgdesc = A complete and graceful API for Wechat.
+	pkgver = r201.6ce8b5a
+	pkgrel = 1
+	url = https://pypi.org/project/itchat-uos
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-requests
+	depends = python-pyqrcode
+	depends = python-pypng
+	provides = python-itchat
+	conflicts = python-itchat
+	conflicts = python-itchat-git
+	source = git+https://github.com/why2lyj/ItChat-UOS.git
+	sha256sums = SKIP
+
+pkgname = python-itchat-uos-git
