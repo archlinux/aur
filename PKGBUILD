@@ -1,4 +1,4 @@
-# Maintainer: JITHIN JOHNSON jithu7432@gmail.com 
+# Maintainer: JITHIN JOHNSON jithu7432 at gmail dot com 
 
 export PIP_CONFIG_FILE=/dev/null
 export PIP_DISABLE_PIP_VERSION_CHECK=true
