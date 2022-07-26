@@ -1,7 +1,7 @@
 pkgver=3.2.9
 _ver=$(echo "$pkgver" | sed -e "s:\([0-9]*\).*:\1:g")
 pkgname=redis${_ver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced key-value store (version $_ver)"
 arch=('i686' 'x86_64')
 url='http://redis.io/'
