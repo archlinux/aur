@@ -2,7 +2,7 @@
 
 pkgname=fastfetch-git
 pkgver=1.6.0.r0.g159a114
-pkgrel=1
+pkgrel=2
 pkgdesc="Like neofetch, but much faster because written in c"
 arch=("x86_64" "i686" "pentium4" "armv5" "armv6h" "armv7h" "aarch64")
 url="https://github.com/LinusDierheimer/fastfetch"
@@ -76,6 +76,7 @@ build() {
   cmake \
     -B "${_build_dir}" \
     -S "${_src_dir}" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_SQLITE3=OFF \
     -DENABLE_RPM=OFF \
     -DENABLE_IMAGEMAGICK6=OFF \
