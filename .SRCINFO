@@ -1,0 +1,16 @@
+pkgbase = forge-server-mcw-bridges
+	pkgdesc = This simple mod adds a variety of bridges. The newest version adds corners, any width and bridge stairs. Bridges can be lighted with torches.
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://www.curseforge.com/minecraft/mc-mods/macaws-bridges
+	arch = any
+	license = custom
+	depends = forge-hooks>=1.0.0
+	depends = forge-server>=41.0.94
+	noextract = mcw-bridges-2.0.3-mc1.19.jar
+	source = LICENSE
+	source = https://mediafiles.forgecdn.net/files/3827/953/mcw-bridges-2.0.3-mc1.19.jar
+	sha256sums = 9610fdb452d3d92e7e51243963ea189f7783c1a7cdd4238de4d2a32c50042a8d
+	sha256sums = aeb1815a12d24175a7537a5f8b660a0b86a7000695d69a4a03aef280bd2c00fc
+
+pkgname = forge-server-mcw-bridges
