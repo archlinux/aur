@@ -1,13 +1,13 @@
 pkgbase = ruby-build
 	pkgdesc = Compile and install Ruby
-	pkgver = 20220710
+	pkgver = 20220726
 	pkgrel = 1
 	url = https://github.com/rbenv/ruby-build
 	arch = any
 	license = MIT
 	depends = bash
 	optdepends = git: install ruby from git
-	source = ruby-build-v20220710.tar.gz::https://github.com/rbenv/ruby-build/archive/v20220710.tar.gz
-	sha512sums = 156b71e6e32e4f97b9ca95c8b82af6c312efd065a195b40b726af8f20872f85fb8d7635f01ca2d3756f8985a493f479c599243090a2a04cf74d7a5b01e098e07
+	source = ruby-build-v20220726.tar.gz::https://github.com/rbenv/ruby-build/archive/v20220726.tar.gz
+	sha512sums = 5e2a829ed0fb83941be9efac2a6970d536d3df13d5b0a327d7391a556e63f193c496d7205082360f1d26dc0ce8832504b6344ba5e3f3521006ebc9a300639e01
 
 pkgname = ruby-build
