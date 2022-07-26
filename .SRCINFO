@@ -1,0 +1,17 @@
+pkgbase = graal-visualvm-jdk11-bin
+	pkgdesc = GraalVM VisualVM distribution, Java 11 version
+	pkgver = 22.2.0
+	pkgrel = 1
+	url = https://www.graalvm.org/
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	depends = jdk11-graalvm-bin
+	source = LICENSE::https://raw.githubusercontent.com/oracle/graal/09883274a37a97f69a143604249db904901b6a72/tools/VISUALVM_LICENSE
+	sha256sums = 29c5bc82ed188162958c6a681bc63b5d7444630e5c907a9285141368bae650f2
+	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-22.2.0/visualvm-installable-ce-java11-linux-amd64-22.2.0.jar
+	sha256sums_x86_64 = 5087caf533c94ca2012f1c1ff2b502652fb8a3e56fb77263101bc523b72adf0d
+	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-22.2.0/visualvm-installable-ce-java11-linux-aarch64-22.2.0.jar
+	sha256sums_aarch64 = 2bad5b1ac70d4d62bbbb3cbc130702c74dba2e9f49b597f527b5f789aed7cdc0
+
+pkgname = graal-visualvm-jdk11-bin
