@@ -1,6 +1,6 @@
 pkgbase = fastfetch-git
 	pkgdesc = Like neofetch, but much faster because written in c
-	pkgver = 1.5.6.r25.g63bf22f
+	pkgver = 1.6.0.r0.g159a114
 	pkgrel = 1
 	url = https://github.com/LinusDierheimer/fastfetch
 	arch = x86_64
@@ -44,6 +44,7 @@ pkgbase = fastfetch-git
 	optdepends = xfconf: XFWM theme + xfce-terminal font
 	optdepends = mesa: OpenGL module
 	optdepends = ocl-icd: OpenCL module
+	optdepends = nix: self contained nix package count
 	provides = fastfetch
 	conflicts = fastfetch
 	source = fastfetch-git::git+https://github.com/LinusDierheimer/fastfetch.git
