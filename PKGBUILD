@@ -1,6 +1,6 @@
 # Maintainer: GG weebcyberpunk@gmail.com
 pkgname=batterymon-git
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=2
 pkgdesc="Simple battery monitor"
 arch=('any')
