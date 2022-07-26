@@ -1,0 +1,416 @@
+pkgbase = php82
+	pkgdesc = PHP 8.2.0 pre-release compiled as to not conflict with mainline php
+	pkgver = 8.2.0beta1
+	pkgrel = 3
+	url = http://www.php.net
+	arch = x86_64
+	license = PHP
+	checkdepends = procps-ng
+	checkdepends = smtp-forwarder
+	makedepends = acl
+	makedepends = libtool
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = patchelf
+	makedepends = gawk
+	makedepends = sed
+	makedepends = bash
+	makedepends = python
+	makedepends = libxml2
+	makedepends = pam
+	makedepends = krb5
+	makedepends = zlib
+	makedepends = libedit
+	makedepends = smtp-forwarder
+	makedepends = pcre
+	makedepends = apache
+	makedepends = ncurses
+	makedepends = libxcrypt
+	makedepends = systemd
+	makedepends = systemd-libs
+	makedepends = coreutils
+	makedepends = findutils
+	makedepends = argon2
+	makedepends = libxslt
+	makedepends = openssl
+	makedepends = e2fsprogs
+	makedepends = lmdb
+	makedepends = db
+	makedepends = postgresql-libs
+	makedepends = unixodbc
+	makedepends = libfbclient
+	makedepends = freetds
+	makedepends = sqlite
+	makedepends = gd
+	makedepends = tidy
+	makedepends = gmp
+	makedepends = libzip
+	makedepends = oniguruma
+	makedepends = aspell
+	makedepends = enchant
+	makedepends = libvoikko
+	makedepends = hspell
+	makedepends = hunspell
+	makedepends = nuspell
+	makedepends = aspell
+	makedepends = icu
+	makedepends = curl
+	makedepends = net-snmp
+	makedepends = libsasl
+	makedepends = libldap
+	makedepends = c-client
+	makedepends = pam
+	makedepends = libsodium
+	makedepends = libffi
+	options = !lto
+	source = make-tests.patch
+	source = pear-config-patcher.php
+	source = php-makefile-patcher.php
+	source = php-apache.conf
+	source = https://downloads.php.net/~pierrick/php-8.2.0beta1.tar.xz
+	sha256sums = e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b
+	sha256sums = 0b7e98dca9c996ec10cb9b3f6296bb7547c68797fd5f35006fdfd3e97700672d
+	sha256sums = ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52
+	sha256sums = 6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91
+	sha256sums = 46ebb4be04b98833bab649314775cc100bdd825c73d9bc3646df5c1ec7ebb2a6
+
+pkgname = php82
+	pkgdesc = PHP. A general-purpose scripting language that is especially suited to web development
+	depends = zlib
+	depends = pcre
+	depends = libedit
+	backup = etc/php82/php.ini
+
+pkgname = php82-cli
+	pkgdesc = cli (command-line executable) version for php82
+	depends = php82=8.2.0beta1
+	depends = libxml2
+	depends = pcre2
+	depends = libedit
+	depends = argon2
+	backup = etc/php82/php.ini
+
+pkgname = php82-cgi
+	pkgdesc = CGI and FCGI SAPI for php82
+	depends = php82=8.2.0beta1
+	depends = libxml2
+	depends = pcre2
+	depends = libedit
+	depends = argon2
+	backup = etc/php82/php.ini
+
+pkgname = php82-fpm
+	pkgdesc = FastCGI Process Manager for php82
+	install = php-fpm.install
+	depends = php82=8.2.0beta1
+	depends = systemd-libs
+	depends = acl
+	depends = libxml2
+	depends = pcre2
+	depends = libedit
+	depends = argon2
+	options = !emptydirs
+	backup = etc/php82/php-fpm.conf
+	backup = etc/php82/php-fpm.d/www.conf
+	backup = etc/php82/php.ini
+
+pkgname = php82-embed
+	pkgdesc = Embedded PHP SAPI library for php82
+	depends = php82=8.2.0beta1
+	depends = ncurses
+	depends = systemd-libs
+	depends = libxcrypt
+	depends = acl
+	depends = ncurses
+	depends = libxml2
+	depends = pcre2
+	depends = libedit
+	depends = argon2
+	options = !emptydirs
+	backup = etc/php82/php.ini
+
+pkgname = php82-apache
+	pkgdesc = Apache SAPI for php82
+	depends = php82=8.2.0beta1
+	depends = apache
+	depends = libxml2
+	depends = pcre2
+	depends = libedit
+	depends = argon2
+	depends = libxcrypt
+	depends = ncurses
+	backup = etc/httpd/conf/extra/
+	backup = etc/php82/php.ini
+
+pkgname = php82-litespeed
+	pkgdesc = LiteSpeed SAPI for php82
+	depends = php82=8.2.0beta1
+	depends = libxml2
+	depends = pcre2
+	depends = libedit
+	depends = argon2
+	backup = etc/php82/php.ini
+
+pkgname = php82-pear
+	pkgdesc = PHP Extension and Application Repository (PEAR) for php82
+	depends = php82=8.2.0beta1
+	depends = php82-xml=8.2.0beta1
+	depends = php82-cli=8.2.0beta1
+	depends = php82-phar=8.2.0beta1
+
+pkgname = php82-pecl
+	pkgdesc = PHP Extension Community Library (PECL) for php82
+	depends = php82-pear=8.2.0beta1
+
+pkgname = php82-phpdbg
+	pkgdesc = Interactive PHP debugger for php82 ()
+	depends = php82=8.2.0beta1
+	depends = libxml2
+	depends = pcre2
+	depends = libedit
+	depends = argon2
+	options = !emptydirs
+	backup = etc/php82/php.ini
+
+pkgname = php82-xml
+	pkgdesc = xml modules for php82
+	depends = php82=8.2.0beta1
+	depends = libxml2
+
+pkgname = php82-xsl
+	pkgdesc = xsl module for php82
+	depends = php82-xml=8.2.0beta1
+	depends = php82-dom=8.2.0beta1
+	depends = libxslt
+
+pkgname = php82-xmlreader
+	pkgdesc = xmlreader module for php82
+	depends = php82-xml=8.2.0beta1
+
+pkgname = php82-xmlwriter
+	pkgdesc = xmlwriter module for php82
+	depends = php82-xml=8.2.0beta1
+
+pkgname = php82-dom
+	pkgdesc = dom module for php82
+	depends = php82-xml=8.2.0beta1
+
+pkgname = php82-simplexml
+	pkgdesc = simplexml module for php82
+	depends = php82-xml=8.2.0beta1
+
+pkgname = php82-openssl
+	pkgdesc = OpenSSL module for php82
+	depends = php82=8.2.0
+	depends = krb5
+	depends = e2fsprogs
+	depends = openssl
+
+pkgname = php82-pdo
+	pkgdesc = pdo module for php82
+	depends = php82=8.2.0beta1
+
+pkgname = php82-mysql
+	pkgdesc = MySQL modules for php82
+	depends = php82=8.2.0
+	depends = php82-pdo=8.2.0
+	depends = php82-openssl=8.2.0
+
+pkgname = php82-phar
+	pkgdesc = phar module for php82
+	depends = php82=8.2.0beta1
+
+pkgname = php82-pcntl
+	pkgdesc = pcntl module for php82
+	depends = php82=8.2.0beta1
+
+pkgname = php82-posix
+	pkgdesc = posix module for php82
+	depends = php82=8.2.0beta1
+
+pkgname = php82-shmop
+	pkgdesc = shmop module for php82
+	depends = php82=8.2.0beta1
+
+pkgname = php82-sockets
+	pkgdesc = sockets module for php82
+	depends = php82=8.2.0beta1
+
+pkgname = php82-sysvmsg
+	pkgdesc = sysvmsg module for php82
+	depends = php82=8.2.0beta1
+
+pkgname = php82-sysvsem
+	pkgdesc = sysvsem module for php82
+	depends = php82=8.2.0beta1
+
+pkgname = php82-sysvshm
+	pkgdesc = sysvshm module for php82
+	depends = php82=8.2.0beta1
+
+pkgname = php82-tokenizer
+	pkgdesc = tokenizer module for php82
+	depends = php82=8.2.0beta1
+
+pkgname = php82-dba
+	pkgdesc = dba module for php82
+	depends = php82=8.2.0
+	depends = db
+	depends = lmdb
+
+pkgname = php82-pgsql
+	pkgdesc = PostgreSQL modules for php82
+	depends = php82=8.2.0
+	depends = postgresql-libs
+	depends = php82-pdo=8.2.0
+
+pkgname = php82-odbc
+	pkgdesc = ODBC modules for php82
+	depends = php82=8.2.0
+	depends = unixodbc
+	depends = php82-pdo=8.2.0
+
+pkgname = php82-firebird
+	pkgdesc = pdo_firebird module for php82
+	depends = php82=8.2.0
+	depends = libfbclient
+	depends = php82-pdo=8.2.0
+
+pkgname = php82-dblib
+	pkgdesc = pdo_dblib module for php82
+	depends = php82=8.2.0beta1
+	depends = freetds
+
+pkgname = php82-sqlite
+	pkgdesc = sqlite module for php82
+	depends = php82=8.2.0
+	depends = sqlite
+	depends = php82-pdo=8.2.0
+
+pkgname = php82-gd
+	pkgdesc = gd module for php82
+	depends = php82=8.2.0
+	depends = gd
+
+pkgname = php82-exif
+	pkgdesc = exif module for php82
+	depends = php82=8.2.0beta1
+
+pkgname = php82-tidy
+	pkgdesc = tidy module for php82
+	depends = php82=8.2.0beta1
+	depends = tidy
+
+pkgname = php82-iconv
+	pkgdesc = iconv module for php82
+	depends = php82=8.2.0beta1
+
+pkgname = php82-bcmath
+	pkgdesc = bcmath module for php82
+	depends = php82
+
+pkgname = php82-gmp
+	pkgdesc = gmp module for php82
+	depends = php82=8.2.0beta1
+	depends = gmp
+
+pkgname = php82-zip
+	pkgdesc = zip module for php82
+	depends = php82=8.2.0beta1
+	depends = libzip
+
+pkgname = php82-bz2
+	pkgdesc = bz2 module for php82
+	depends = php82=8.2.0beta1
+	depends = bzip2
+
+pkgname = php82-fileinfo
+	pkgdesc = fileinfo module for php82
+	depends = php82=8.2.0beta1
+
+pkgname = php82-ctype
+	pkgdesc = ctype module for php82
+	depends = php82=8.2.0beta1
+
+pkgname = php82-mbstring
+	pkgdesc = mbstring module for php82
+	depends = php82=8.2.0
+	depends = oniguruma
+
+pkgname = php82-pspell
+	pkgdesc = pspell module for php82
+	depends = php82=8.2.0beta1
+	depends = aspell
+
+pkgname = php82-enchant
+	pkgdesc = enchant module for php82
+	depends = php82=8.2.0beta1
+	depends = enchant
+	depends = libvoikko
+	depends = hspell
+	depends = hunspell
+	depends = nuspell
+	depends = aspell
+
+pkgname = php82-intl
+	pkgdesc = intl module for php82
+	depends = php82=8.2.0
+	depends = icu
+
+pkgname = php82-calendar
+	pkgdesc = calendar module for php82
+	depends = php82=8.2.0beta1
+
+pkgname = php82-gettext
+	pkgdesc = gettext module for php82
+	depends = php82=8.2.0beta1
+
+pkgname = php82-soap
+	pkgdesc = soap module for php82
+	depends = php82=8.2.0beta1
+	depends = libxml2
+
+pkgname = php82-ftp
+	pkgdesc = FTP module for php82
+	depends = php82=8.2.0
+	depends = openssl
+
+pkgname = php82-curl
+	pkgdesc = curl module for php82
+	depends = php82=8.2.0beta1
+	depends = curl
+
+pkgname = php82-snmp
+	pkgdesc = snmp module for php82
+	depends = php82=8.2.0
+	depends = net-snmp
+	depends = openssl
+
+pkgname = php82-ldap
+	pkgdesc = ldap module for php82
+	depends = php82=8.2.0beta1
+	depends = libldap
+	depends = libsasl
+
+pkgname = php82-imap
+	pkgdesc = imap module for php82
+	depends = php82=8.2.0
+	depends = pam
+	depends = krb5
+	depends = c-client
+	depends = libxcrypt
+	depends = openssl
+
+pkgname = php82-sodium
+	pkgdesc = sodium (libsodium) module for php82
+	depends = php82=8.2.0beta1
+	depends = libsodium
+
+pkgname = php82-ffi
+	pkgdesc = ffi module for php82
+	depends = php82=8.2.0beta1
+	depends = libffi
+
+pkgname = php82-opcache
+	pkgdesc = opcache zend module for php82
+	depends = php82=8.2.0beta1
