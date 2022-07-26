@@ -1,7 +1,7 @@
 pkgbase = gyr-bin
 	pkgdesc = Blazing fast TUI launcher for GNU/Linux and *BSD (prebuilt binary version)
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.1.1
+	pkgrel = 0
 	url = https://sr.ht/~forkbomb9/gyr
 	arch = x86_64
 	arch = aarch64
@@ -9,11 +9,11 @@ pkgbase = gyr-bin
 	makedepends = rust
 	provides = gyr
 	conflicts = gyr
-	source_x86_64 = https://git.sr.ht/~forkbomb9/gyr/refs/download/v0.1.0/gyr-v0.1.0-x86_64-unknown-linux-musl
-	sha256sums_x86_64 = 637b633f86d243851db33c71dbcbcd257d06f2fd27705306a26530b87d07497b
-	b2sums_x86_64 = 475c49c0d322e7c2247bb9ac09e95f33a96b3785caac237d914dac19fdf454d28bf5e7aa4d1fc2e688c33f82a971da87acca383496e1c93a94660190e434c103
-	source_aarch64 = https://git.sr.ht/~forkbomb9/gyr/refs/download/v0.1.0/gyr-v0.1.0-aarch64-unknown-linux-musl
-	sha256sums_aarch64 = 9bebe8e31994dff8f3f45551adf00f4d97801c78e06fd417c08d3f0042b1fd78
-	b2sums_aarch64 = 9789acd77b4e83f9e6d34e91c19f2b0b5c0228676c051b164237c113c5c9a81dda33ade22612d3daf621bcaff4bbbf80c0d78d5fc5028918e2a519698bbcf830
+	source_x86_64 = https://git.sr.ht/~forkbomb9/gyr/refs/download/v0.1.1/gyr-v0.1.1-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = 94bf24c3dd0b7f3d6c31a0b53fe446868edd45f2f9de5000dbb1b720a6d35cc7
+	b2sums_x86_64 = 620c4ccef50dc8a25b57382c7a3b7baf25718030a24a2fb091f434407244eb86b29c0e459b98220f5fa1cfb29cfabec0450fba9675555d8da7aa01ac3f956d5b
+	source_aarch64 = https://git.sr.ht/~forkbomb9/gyr/refs/download/v0.1.1/gyr-v0.1.1-aarch64-unknown-linux-musl
+	sha256sums_aarch64 = 5d9af921cbbaac69f8d0106db54437e4c1bb942604dc6a87e69380bb90fc0f9b
+	b2sums_aarch64 = 858715c1923ab059ceac647bddc4af7adc5cb7ff3082305413e8884d7c2f545099fb75804a5079a3de0003a98e6c936450a2a07a71cc3cc855d38a7f44544c78
 
 pkgname = gyr-bin
