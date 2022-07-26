@@ -4,7 +4,7 @@
 java_=17
 pkgname_=native-image
 pkgname="${pkgname_}-jdk${java_}-bin"
-pkgver=22.1.0
+pkgver=22.2.0
 pkgrel=1
 pkgdesc="Plugin to turn GraalVM-based applications into native binary images (Java ${java_} version)"
 arch=('x86_64'
@@ -14,14 +14,14 @@ license=('custom')
 depends=("jdk${java_}-graalvm-bin")
 source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/${pkgname_}-installable-svm-java${java_}-linux-amd64-${pkgver}.jar")
 source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/${pkgname_}-installable-svm-java${java_}-linux-aarch64-${pkgver}.jar")
-sha256sums_x86_64=('d81eecea15ebbf4f24850860c14104eaf6f8ae74574330e22afac533b8f96738')
-sha256sums_aarch64=('6e10f6953ec8b9509c7a7d0194d57f265cf2a05dcb8f3272a6a8e847bda49cda')
+sha256sums_x86_64=('74656070429f8b24dd6770c2d274f272542116e3963291de74abed74c38ed08a')
+sha256sums_aarch64=('eeac78046e059e77542eec1fac7c0423bf5fa73eb6fb01b25100d8a6f81eecc0')
 
 package() {
     local file eq permissions mode name target
 
     mkdir -p "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/"
-    cp -a -t "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/" lib/ LICENSE_NATIVEIMAGE.txt
+    cp -a -t "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/" languages/ lib/ LICENSE_NATIVEIMAGE.txt
 
     printf '\n' >> META-INF/permissions
     while read -r file eq permissions; do
