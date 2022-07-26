@@ -1,7 +1,7 @@
 pkgbase = lua-cmark
 	pkgdesc = Lua wrapper for libcmark, CommonMark Markdown parsing and rendering library
-	pkgver = 0.29.0
-	pkgrel = 2
+	pkgver = 0.30.2
+	pkgrel = 1
 	url = https://github.com/jgm/cmark-lua
 	arch = x86_64
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = lua-cmark
 	makedepends = lua52
 	makedepends = lua51
 	makedepends = luarocks
-	source = cmark-0.29.0.tar.gz::https://github.com/jgm/cmark-lua/archive/0.29.0.tar.gz
-	sha256sums = 44965157b8c306324547fd75938fb97ff958f443219b4611d6823dd1daa1d6e2
+	source = cmark-0.30.2.tar.gz::https://github.com/jgm/cmark-lua/archive/0.30.2.tar.gz
+	sha256sums = b57849e9737a838d359cd552cb0563cf2134af70b60962b6073d197d2186109c
 
 pkgname = lua-cmark
 	depends = lua
@@ -25,4 +25,3 @@ pkgname = lua52-cmark
 
 pkgname = lua51-cmark
 	depends = lua51
-

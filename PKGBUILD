@@ -3,16 +3,16 @@
 _rockname=cmark
 _project=$_rockname-lua
 pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
-pkgver=0.29.0
+pkgver=0.30.2
 _rockrel=1
-pkgrel=2
+pkgrel=1
 pkgdesc='Lua wrapper for libcmark, CommonMark Markdown parsing and rendering library'
-arch=('x86_64' 'i686')
+arch=(x86_64 i686)
 url="https://github.com/jgm/$_project"
-license=('BSD')
-makedepends=('lua' 'lua53' 'lua52' 'lua51' 'luarocks')
+license=(BSD)
+makedepends=(lua lua53 lua52 lua51 luarocks)
 source=("$_rockname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('44965157b8c306324547fd75938fb97ff958f443219b4611d6823dd1daa1d6e2')
+sha256sums=('b57849e9737a838d359cd552cb0563cf2134af70b60962b6073d197d2186109c')
 
 prepare() {
   cp -a "$_project-$pkgver"{,-5.4}
@@ -21,7 +21,7 @@ prepare() {
   cp -a "$_project-$pkgver"{,-5.1}
 }
 
-_package_helper() {
+_package() {
   cd "$_project-$pkgver-$1"
   sed -i Makefile \
       -e "s!--local make!--lua-version='$1' --tree='$pkgdir/usr/' make --deps-mode=none --no-manifest!"
@@ -30,20 +30,20 @@ _package_helper() {
 
 package_lua-cmark() {
   depends=('lua')
-  _package_helper 5.4
+  _package 5.4
 }
 
 package_lua53-cmark() {
   depends=('lua53')
-  _package_helper 5.3
+  _package 5.3
 }
 
 package_lua52-cmark() {
   depends=('lua52')
-  _package_helper 5.2
+  _package 5.2
 }
 
 package_lua51-cmark() {
   depends=('lua51')
-  _package_helper 5.1
+  _package 5.1
 }
