@@ -7,9 +7,9 @@ pkgbase=quartus-free
 _components=(${pkgbase}-{quartus,questa,help,devinfo-{arria_lite,cyclone{,10lp,v},max{,10}},hls})
 pkgname=(${pkgbase} ${_components[@]})
 # Keep dot in _patchver
-_mainver=21.1; _patchver=.0; _buildver=842
-# Latest HLS compiler was only released with Pro numbering
-_promain=21.3; _propatch=.0; _probuild=170; _prover=${_promain}${_propatch}.${_probuild}
+_mainver=21.1; _patchver=.1; _buildver=850
+# HLS compiler is only released with Pro numbering
+_promain=22.2; _propatch=.0; _probuild=94; _prover=${_promain}${_propatch}.${_probuild}
 pkgver=${_mainver}${_patchver}.${_buildver}
 pkgrel=1
 pkgdesc="Quartus Prime Lite design software for Intel FPGAs"
@@ -30,22 +30,24 @@ source=("${_base_url}/${_mainver}std${_patchver/.0/}/${_buildver}/ib_installers/
         "${_base_url}/${_promain}${_propatch/.0/}/${_probuild}/ib_installers/HLSProSetup-${_prover}-linux.run"
         'quartus.sh' 'quartus.desktop' 'questa-fse.sh' 'questa-fse.desktop' 'questa.gif' '51-usbblaster.rules')
 noextract=({arria_lite,cyclone{,10lp,v},max{,10}}"-${pkgver}.qdz") # Will extract directly to pkgdir
-md5sums=('9b5f01ab0f5d3c591fc1802357e064d7'
-         '18ecba3798924467b82f229469f40842'
-         '44c0d88b372dd13ce3f9f504c124fe67'
-         'a2d16c109493c37bb5d10bcd3a54f58c'
-         'e37015353737752218908311e2e915f5'
-         '2061e55e14fa6419376bea1ff8bba3c1'
-         '5d3df782ac7f408f8166e58af030ff9b'
-         '8657de76ca949c8b435146f79bd39ef9'
-         'cb403b4794fba35c13075bf2234c7e2b'
-         'fa89e11f176f02c27beb16e4faf98a14'
-         'c3de75ed812e3810e5ba2bcb76f9d9b6'
-         'fce8bb5015acd892d829c8ce83be8ba6'
-         '44cf36c918ea51bcec780c4f571fb342'
-         '0a502c89020da0b5bd77865550341a0b'
-         '7d422454a0776d6f0cd469c5ab3ed869'
-         '7f6bc8dfa926ce4721ba6290b15e0f65')
+sha1sums=(
+    6b25e8c62535d0ac02a1075b3dd334d2b04394aa
+    8eec46c1c64eea80e3c32944d0afc74183ea9e87
+    1160eceb63f318221bac116a896d2d690330dfa4
+    73c76f098cc068be6e4bb713951b1fbc0cdde29c
+    0da78d840eaba15e23486e983b8dce4a7bf24bf7
+    7dcb21cb70fafe142afd261ea766700248aba657
+    467123b7bd5e6907beb7d6b1e073ed7bad3e5e94
+    c6f109a926864ecd1cb3e86c6b11a8e931525e66
+    52361585ed0f224281f17c07ae9b93466d38c6a5
+    972d1a386fbb8530bbc497909f5848ca8f9f06c1
+    f6d660c62a71ac650f23f1ab8ab272eef445632a
+    2efb252903bed064dd1ce5ced3ba84de2d5ef280
+    b69614473e3f622676dcbb7a9a91e65003b3550c
+    da7c90d1569c2819e37315daf0c4e2f894683318
+    20224d8007807eed71b27783bb95c73faf6de20b
+    be27e716166d265ca0baa2db320e0580ba8da939
+)
 
 options=('!strip' '!debug') # Stripping will takes ages, I'd avoid it
 PKGEXT=".pkg.tar.zst" # ZSTD is fast enough for compression
@@ -66,7 +68,7 @@ package_quartus-free() {
 package_quartus-free-quartus() {
     depends=(ld-lsb alsa-lib bzip2 dbus expat fontconfig freetype2 gcc-libs glib2 lib32-gcc-libs lib32-glibc
              libdrm libice libjpeg6 libpng12 libpulse libsm libudev0-shim libx11 libxau libxext libxi libxml2
-             libxrender libxtst ncurses5-compat-libs util-linux-libs zlib quartus-free-devinfo)
+             libxrender libxtst libxcrypt-compat ncurses5-compat-libs util-linux-libs zlib quartus-free-devinfo)
     optdepends=("eclipse: For Nios II EDS")
 
     DISPLAY="" ./QuartusLiteSetup-${pkgver}-linux.run \
