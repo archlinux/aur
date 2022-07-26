@@ -1,7 +1,7 @@
 pkgbase = ldr-translate-qt
 	pkgdesc = 一个翻译软件，更适合kde桌面，专注文献翻译，可以截图翻译、复制翻译
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yuhldr/ldr-translate
 	arch = x86_64
 	groups = ldr
