@@ -1,7 +1,7 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=duckstation-git
-pkgver=r5463.4d89b52d
+pkgver=r5491.c2f4b7e7
 pkgdesc='A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability (git version)'
 pkgrel=1
 arch=(x86_64 aarch64)
@@ -23,7 +23,6 @@ pkgver() {
 build() {
     cmake -B build -S duckstation \
         -DBUILD_NOGUI_FRONTEND=OFF \
-        -DUSE_DRMKMS=ON \
         -DUSE_WAYLAND=ON \
         -G Ninja \
         -Wno-dev
