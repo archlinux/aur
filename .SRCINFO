@@ -1,0 +1,25 @@
+pkgbase = furnace
+	pkgdesc = A multi-system chiptune tracker compatible with DefleMask modules
+	pkgver = 0.6pre1
+	pkgrel = 1
+	url = https://github.com/tildearrow/furnace
+	arch = x86_64
+	license = GPL
+	makedepends = jack
+	makedepends = cmake
+	depends = sdl2
+	depends = hicolor-icon-theme
+	depends = libsndfile
+	depends = fmt
+	depends = alsa-lib
+	depends = fftw
+	depends = rtmidi
+	optdepends = jack: JACK audio support
+	source = furnace-0.6pre1::https://github.com/tildearrow/furnace/archive/refs/tags/v0.6pre1.tar.gz
+	source = https://github.com/superctr/adpcm/archive/ef7a217154badc3b99978ac481b268c8aab67bd8.zip
+	source = https://github.com/nukeykt/Nuked-OPN2/archive/64704a443f8f6c1906ba26297092ea70fa1d45d7.zip
+	sha256sums = 168daa6f5c63d78d5b18ea69b537f598fb27ee9ad7e556edb9d2f9d0fc7ae013
+	sha256sums = d78895a68ada6dfc6de72943f005d42d7f4e9d98436a0237617c2b523766bab0
+	sha256sums = 34cd0c36eb507fc4a96487147be7a34aa97f4cf21b0775e021a62cacb61eef68
+
+pkgname = furnace
