@@ -1,7 +1,7 @@
 pkgbase = pomsky-bin
 	pkgdesc = Formerly rulex — a new, portable, regular expression language written in Rust (pre-compiled)
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pomsky-lang.org/
 	arch = x86_64
 	license = Apache

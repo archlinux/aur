@@ -1,10 +1,11 @@
 # Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
+# Contributor:  Ludwig Stecher <ludwig {dot} stecher {at} gmx {dot} de>
 # -*- mode: sh -*-
 
 pkgname='pomsky-bin'
 _pkgname=${pkgname%%-bin}
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Formerly rulex — a new, portable, regular expression language written in Rust (pre-compiled)'
 arch=('x86_64')
 url='https://pomsky-lang.org/'
