@@ -1,7 +1,7 @@
 pkgbase = linux-mainline-um5302ta
 	pkgdesc = Linux
 	pkgver = 5.19.rc8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.kernel.org/torvalds/h/v5.19-rc8
 	arch = x86_64
 	license = GPL2

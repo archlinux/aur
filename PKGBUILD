@@ -3,7 +3,7 @@
 
 pkgbase=linux-mainline-um5302ta
 pkgver=5.19.rc8
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.kernel.org/torvalds/h/$_srctag"
