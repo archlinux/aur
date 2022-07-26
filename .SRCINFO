@@ -1,6 +1,6 @@
 pkgbase = diopser-git
 	pkgdesc = A totally original phase rotation plugin - part of NIH-plug
-	pkgver = 0.0.1.r558.e491ff6
+	pkgver = 0.0.1.r1427.f557707
 	pkgrel = 1
 	url = https://github.com/robbert-vdh/nih-plug/tree/master/plugins/diopser
 	arch = x86_64
@@ -8,6 +8,8 @@ pkgbase = diopser-git
 	license = GPL3
 	makedepends = git
 	makedepends = cargo-nightly
+	depends = libglvnd
+	depends = xcb-util-wm
 	source = git+https://github.com/robbert-vdh/nih-plug.git
 	sha256sums = SKIP
 
