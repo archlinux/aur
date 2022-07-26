@@ -1,0 +1,8 @@
+build_prefix: extra-x86_64
+maintainers:
+  - github: starsareintherose
+    email: starsareintherose@outlook.com
+update_on:
+  - source: regex
+    url: https://sites.google.com/site/cophylogeny/software
+    regex: TreeMap(\w+).jar
