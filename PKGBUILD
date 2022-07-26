@@ -2,7 +2,7 @@
 _name=ctpv
 pkgname="${_name}-git"
 pkgver=r191.972efd3
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal previewer"
 arch=('i686' 'x86_64')
 url="https://github.com/NikitaIvanovV/ctpv"
@@ -11,7 +11,6 @@ depends=('file' 'openssl' 'imagemagick' 'coreutils')
 makedepends=('git')
 optdepends=(
     'perl-image-exiftool: for any files'
-    'coreutils: for any, directory, text files'
     'atool: for archive files'
     'colordiff: for diff files'
     'diff-so-fancy: for diff files'
