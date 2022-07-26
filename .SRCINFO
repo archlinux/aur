@@ -1,0 +1,14 @@
+pkgbase = keet-bin
+	pkgdesc = Peer-to-Peer encrypted text & video chat
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://keet.io
+	arch = x86_64
+	license = custom
+	provides = keet
+	conflicts = keet
+	options = !strip
+	source = Keet-1.0.4.AppImage::https://keet.io/downloads/1.0.4/Keet.AppImage
+	sha256sums = 304e5c3f861f15aabc002fa80087c68c13bc14a357ffc3201d884c5ebb8eccee
+
+pkgname = keet-bin
