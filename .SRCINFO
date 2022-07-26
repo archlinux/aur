@@ -1,7 +1,7 @@
 pkgbase = printer-support
 	pkgdesc = Metapkg for packages needed to use printers
 	pkgver = 1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://wiki.archlinux.org/index.php/Category:Printers
 	install = printer-support.install
 	arch = any
@@ -21,7 +21,6 @@ pkgbase = printer-support
 	depends = ghostscript
 	depends = gsfonts
 	depends = gutenprint
-	depends = hplip
 	depends = noto-color-emoji-fontconfig
 	depends = python-pyqt5
 	depends = python-pysmbc
@@ -30,5 +29,6 @@ pkgbase = printer-support
 	depends = splix
 	depends = system-config-printer
 	optdepends = print-manager: A KDE tool for managing print jobs and printers
+	optdepends = hplip: HP printer and scaner support and tools
 
 pkgname = printer-support

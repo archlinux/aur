@@ -3,7 +3,7 @@
 
 pkgname=printer-support
 pkgver=1
-pkgrel=5
+pkgrel=6
 arch=('any')
 url="https://wiki.archlinux.org/index.php/Category:Printers"
 license=('GPL')
@@ -23,7 +23,6 @@ depends=("a2ps"
         "ghostscript"
         "gsfonts"
         "gutenprint"
-        "hplip"
         "noto-color-emoji-fontconfig"
         "python-pyqt5"
         "python-pysmbc"
@@ -31,5 +30,6 @@ depends=("a2ps"
         "samba-support"
         "splix"
         "system-config-printer")
-optdepends=('print-manager: A KDE tool for managing print jobs and printers')
+optdepends=('print-manager: A KDE tool for managing print jobs and printers'
+            'hplip: HP printer and scaner support and tools')
 install=$pkgname.install
