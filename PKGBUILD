@@ -9,9 +9,8 @@ license=('MIT')
 arch=('any')
 md5sums=('SKIP')
 makedepends=(git)
-depends=(curl coreutils htmlq jq fzf rofi mpv bash)
-optdepends=('curl-impersonate-chrome: Bypass cloudflare blocks solving not found errors'
-            'rofi: GUI menu'
+depends=(curl coreutils htmlq jq fzf rofi mpv bash curl-impersonate-chrome)
+optdepends=('rofi: GUI menu'
             'dmenu: GUI menu')
 provides=(wcofun)
 source=("git+$url")
