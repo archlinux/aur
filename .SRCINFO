@@ -1,0 +1,18 @@
+pkgbase = cpp-jwt-git
+	pkgdesc = JSON Web Token library for C++
+	pkgver = 1.4.r14.ge12ef06
+	pkgrel = 1
+	url = https://github.com/arun11299/cpp-jwt
+	arch = any
+	license = MIT
+	checkdepends = gtest
+	makedepends = cmake
+	makedepends = git
+	depends = nlohmann-json
+	depends = openssl
+	provides = cpp-jwt=1.4.r14.ge12ef06
+	conflicts = cpp-jwt
+	source = cpp-jwt::git+https://github.com/arun11299/cpp-jwt.git
+	b2sums = SKIP
+
+pkgname = cpp-jwt-git
