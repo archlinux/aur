@@ -2,7 +2,7 @@
 
 pkgname=easena-git
 pkgver=r449.g33c1f75
-pkgrel=2
+pkgrel=3
 pkgdesc="EAsy Specification of Evolutionary and Neural Algorithms is an Artificial Evolution platform developped by the SONIC (Stochastic Optimisation and Nature Inspired Computing) group of the BFO team at Université de Strasbourg. "
 arch=(i686 x86_64)
 url="http://easea.unistra.fr"
@@ -34,5 +34,6 @@ build() {
 
 package() {
 	cd easea
-	cmake --install build --prefix "$pkgdir"
+	make DESTDIR="$pkgdir/" install
+	#cmake --install build --prefix "$pkgdir"
 }
