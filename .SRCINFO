@@ -1,15 +1,15 @@
 pkgbase = espresso-jdk17-bin
 	pkgdesc = GraalVM-based Java implementation as a Truffle language, Java 17 version
-	pkgver = 22.1.0
+	pkgver = 22.2.0
 	pkgrel = 1
 	url = https://github.com/oracle/graal
 	arch = x86_64
 	arch = aarch64
 	license = custom
 	depends = jdk17-graalvm-bin
-	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-22.1.0/espresso-installable-svm-java17-linux-amd64-22.1.0.jar
-	sha256sums_x86_64 = a4dd40f73494df389ed2668153faedcc071d72730b1239109ec6c7ae2d12d470
-	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-22.1.0/espresso-installable-svm-java17-linux-aarch64-22.1.0.jar
-	sha256sums_aarch64 = 37c0ad8772be4ed677eea76ddec174fea8d9519086502a80816b4bfafd5853f3
+	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-22.2.0/espresso-installable-svm-java17-linux-amd64-22.2.0.jar
+	sha256sums_x86_64 = d8b88e12b1f99ab561ec11ab4c5ec531eac6f8ef03b3ec1d38396c35b72ce1de
+	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-22.2.0/espresso-installable-svm-java17-linux-aarch64-22.2.0.jar
+	sha256sums_aarch64 = 232f935b138e636e0e90db4dd945a6f769c8470606d4465ae5fd0b0378fd05f4
 
 pkgname = espresso-jdk17-bin
