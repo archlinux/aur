@@ -3,10 +3,10 @@
 pkgname=blurble
 _pkgname=Blurble
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Word guessing game"
-arch=('x86_64')
-url="https://gitlab.gnome.org/pervoj/Blurble"
+arch=('x86_64' 'aarch64')
+url="https://gitlab.gnome.org/World/Blurble"
 license=('GPL3')
 depends=('libadwaita')
 makedepends=('meson' 'blueprint-compiler' 'gobject-introspection' 'vala')
