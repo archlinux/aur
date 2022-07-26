@@ -1,7 +1,7 @@
 pkgbase = floorp
 	pkgdesc = Firefox-based browser with excellent privacy protection, developed by a community of students in Japan
 	pkgver = 10.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://floorp.ablaze.one
 	arch = x86_64
 	license = MPL2
@@ -21,7 +21,7 @@ pkgbase = floorp
 	source = https://github.com/Floorp-Projects/Floorp/releases/download/v10.2.0/floorp-10.2.0.linux-x86_64.tar.bz2
 	source = https://github.com/Floorp-Projects/About-Floorp-Projects/raw/main/Creater-pack/Creater_pack_Floorp.zip
 	source = floorp.desktop
-	md5sums = 306f89d63b4dc6afc95a3ae403199918
+	md5sums = d41d8cd98f00b204e9800998ecf8427e
 	md5sums = c12cf6c807ad562188e648c60b2b7289
 	md5sums = cecce3f030f194da95819cfaffe020e3
 
