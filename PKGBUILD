@@ -2,7 +2,7 @@
 # Contributors: Det, Ner0, alexwizard, thotypous, jdhore, xduugu, randypenguin, bdheeman, AlK
 
 pkgname=chromium-snapshot-bin
-pkgver=105.0.5123.0.r1014686
+pkgver=106.0.5203.0.r1028210
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Latest Snapshot)"
 arch=('x86_64')
