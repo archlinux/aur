@@ -11,7 +11,7 @@ makedepends=('make')
 source=("git+$url")
 sha512sums=('SKIP')
 backup=(
-    etc/default/proxy-nsd.conf
+    etc/proxy-nsd.conf
 )
 
 build() {
