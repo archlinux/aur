@@ -16,7 +16,7 @@
 _phpbase="80"
 _suffix=""
 pkgver="8.0.21"
-pkgrel="2"
+pkgrel="3"
 pkgbase="php80"
 pkgdesc="PHP 8.0.21 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
@@ -285,7 +285,7 @@ _phpconfig="\
     --libdir=/usr/lib/php${_phpbase}${_suffix} \
     --datadir=/usr/share/php${_phpbase}${_suffix} \
     --program-suffix=${_phpbase}${_suffix} \
-    --with-config-file-scan-dir=/${_build_conf_d}
+    --with-config-file-scan-dir=/${_build_conf_d} \
     --enable-filter \
     --with-pear \
     --enable-session \
