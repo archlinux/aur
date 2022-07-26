@@ -11,7 +11,7 @@ pkgbase = proxy-ns
 	depends = libcap
 	depends = iproute2
 	depends = badvpn-git
-	backup = etc/default/proxy-nsd.conf
+	backup = etc/proxy-nsd.conf
 	source = git+https://github.com/OkamiW/proxy-ns
 	sha512sums = SKIP
 
