@@ -1,25 +1,21 @@
 pkgname=mingw-w64-sdl2_mixer
-pkgver=2.0.4
-pkgrel=3
+pkgver=2.6.1
+pkgrel=1
 pkgdesc="A simple multi-channel audio mixer (mingw-w64)"
 arch=(any)
 url="http://www.libsdl.org/projects/SDL_mixer"
 license=("zlib")
 depends=(mingw-w64-crt mingw-w64-sdl2 mingw-w64-libmodplug mingw-w64-libvorbis mingw-w64-flac mingw-w64-mpg123)
-makedepends=(sed mingw-w64-gcc mingw-w64-configure)
+makedepends=(mingw-w64-gcc mingw-w64-configure)
 options=(staticlibs !strip !buildflags)
-source=("http://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-$pkgver.tar.gz")
-md5sums=('a36e8410cac46b00a4d01752b32c3eb1')
+source=("https://github.com/libsdl-org/SDL_mixer/releases/download/release-2.6.1/SDL2_mixer-$pkgver.tar.gz")
+sha256sums=('bc5c7b85f297e5f3cb34c99c366a4746922fc41365b15fd78a164dda71a861a3')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
 	cd "${srcdir}/SDL2_mixer-${pkgver}"
 
-	# link ssp (needed because mingw env's -fstack-protection)
-	export LDFLAGS="-lssp"
-
-	sed -i 's/"modplug\.h"/"libmodplug\/modplug.h"/' music_modplug.h
 	for _arch in ${_architectures}; do
 		mkdir -p build-${_arch} && pushd build-${_arch}
 		${_arch}-configure
