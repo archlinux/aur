@@ -3,7 +3,6 @@ pkgbase = hiprompt-gtk-py
 	pkgver = r18.f744993
 	pkgrel = 1
 	url = https://sr.ht/~sircmpwn/himitsu
-	install = hiprompt-gtk-py.install
 	arch = any
 	license = GPL3
 	makedepends = meson

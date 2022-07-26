@@ -11,7 +11,6 @@ url='https://sr.ht/~sircmpwn/himitsu'
 license=(GPL3)
 depends=(python gtk3 gtk-layer-shell)
 makedepends=(meson)
-install="hiprompt-gtk-py.install"
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~sircmpwn/$pkgname/archive/$_commit.tar.gz")
 _extractedpath="$pkgname-$_commit"
 sha256sums=('SKIP')
