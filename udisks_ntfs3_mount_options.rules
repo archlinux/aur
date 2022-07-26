@@ -8,9 +8,8 @@ ENV{DM_MULTIPATH_DEVICE_PATH}=="1", GOTO="udisks_mount_options_end"
 ENV{DM_UDEV_DISABLE_OTHER_RULES_FLAG}=="?*", GOTO="udisks_mount_options_end"
 
 #
-# Use specific charset for NTFS3 filesystems
+# Use specific charset for NTFS filesystems
 #
-ENV{ID_FS_TYPE}=="ntfs", ENV{ID_FS_TYPE}="ntfs3", \
-ENV{UDISKS_MOUNT_OPTIONS_NTFS_DEFAULTS}="uid=$$UID,gid=$$GID,noatime,prealloc"
+ENV{UDISKS_MOUNT_OPTIONS_NTFS_DEFAULTS}="uid=,gid=,noatime,prealloc"
 
 LABEL="udisks_mount_options_end"
