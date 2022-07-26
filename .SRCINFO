@@ -1,0 +1,20 @@
+pkgbase = spectral-compressor-git
+	pkgdesc = Turn things into pink noise on demand - part of NIH-plug
+	pkgver = 0.0.1.r1427.f557707
+	pkgrel = 1
+	url = https://github.com/robbert-vdh/nih-plug/tree/master/plugins/spectral-compressor
+	arch = x86_64
+	groups = nih-plug
+	license = GPL3
+	makedepends = git
+	makedepends = cargo-nightly
+	depends = libglvnd
+	depends = xcb-util-wm
+	source = git+https://github.com/robbert-vdh/nih-plug.git
+	sha256sums = SKIP
+
+pkgname = spectral-compressor-clap-git
+	provides = spectral-compressor-clap
+
+pkgname = spectral-compressor-vst3-git
+	provides = spectral-compressor-vst3
