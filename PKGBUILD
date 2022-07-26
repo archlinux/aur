@@ -2,7 +2,7 @@
 
 pkgname=furnace
 pkgver=0.6pre1
-pkgrel=2
+pkgrel=3
 pkgdesc="A multi-system chiptune tracker compatible with DefleMask modules"
 url="https://github.com/tildearrow/furnace"
 depends=('sdl2' 'hicolor-icon-theme' 'libsndfile' 'fmt' 'alsa-lib' 'fftw' 'rtmidi')
@@ -42,17 +42,10 @@ build() {
 	make
 }
 
-package_furnace() {
+package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	cd build
 	make DESTDIR="${pkgdir}" PREFIX='/usr' install
 	cd ..
-	# find the icon size from the names and install them system-wide
-	_icon_search_path='res/icon.iconset'
-	find "${_icon_search_path}" -type f -name 'icon_*.png' \
-	| sed '/@2x/d' \
-	| xargs basename --multiple \
-	| sed -e 's/^icon_//' -e 's/\.png$//' \
-	| xargs -I{} install -Dvm644 "${_icon_search_path}/icon_{}.png" \
-		"${pkgdir}/usr/share/icons/hicolor/{}/apps/${pkgname}.png"
+	find "${pkgdir}/usr/share/icons/hicolor" -mindepth 1 -maxdepth 1 -type d -name '*@2' | xargs rm -rv
 }
