@@ -1,6 +1,6 @@
 # Maintainer: Baltazár Radics <baltazar.radics@gmail.com>
 pkgname=nanopb
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc='Protocol Buffers with small code size'
 arch=(any)
@@ -12,7 +12,7 @@ checkdepends=(scons)
 source=("https://jpa.kapsi.fi/$pkgname/download/$pkgname-$pkgver.tar.gz"
         'protoc-gen-nanopb'
         'scons-4.2.x.patch')
-sha256sums=('7efc553d3d861bceb1221f79d29b03e4353f0df2db690cbced0f4a81882d95fd'
+sha256sums=('e379d9babd86b9cfd8f8900fd0da8705cbd9bea4491178fb2b8be5e217bf02ab'
             'cd1ff902034d8deabf2d8ad3fadcdc4860d0b5d3be746e2b4b7427b9a7aca9c0'
             '18c02afa90b6ad077b4944e2a6006d24a909a8fab1a322acddd4a4ad61011ff5')
 
