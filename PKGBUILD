@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=aisleriot-git
-pkgver=3.22.23.r1.g1ad43def
+pkgver=3.22.25.r30
 pkgrel=1
 pkgdesc="A collection of patience games written in guile scheme"
 url="https://wiki.gnome.org/Apps/Aisleriot"
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --tags | sed 's/-/.r/' | tr - .
+  printf %s.r%s $(grep "^  version:" meson.build | cut -d: -f2|tr -d ,|tr -d \') $(git describe --tags | cut -d- -f2)
 }
 
 build() {

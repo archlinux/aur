@@ -1,6 +1,6 @@
 pkgbase = aisleriot-git
 	pkgdesc = A collection of patience games written in guile scheme
-	pkgver = 3.22.23.r1.g1ad43def
+	pkgver = 3.22.25.r30
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Aisleriot
 	arch = x86_64
