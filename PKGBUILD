@@ -10,7 +10,7 @@ pkgname=nvidia-container-runtime
 # identical to nvidia-container-toolkit's PKGBUILD.
 
 pkgver=3.10.0
-pkgrel=1
+pkgrel=2
 
 toolkit_ver=1.10.0
 
@@ -36,15 +36,18 @@ build() {
 
   GO111MODULE=auto \
   GOPATH="${srcdir}/gopath" \
+  GOOS=linux \
   go build -v \
     -modcacherw \
     -buildmode=pie \
     -gcflags "all=-trimpath=${PWD}" \
     -asmflags "all=-trimpath=${PWD}" \
-    -ldflags "-s -w -extldflags ${LDFLAGS}" \
     -o bin \
     "./..."
-    # -trimpath \  # only go > 1.13
+    # using LDFLAGS is busted because -Wl breaks linking to cuDriver* for some reason :(
+    #-ldflags "-s -w -extldflags \"${LDFLAGS}\"" \
+    # only go > 1.13
+    # -trimpath \
 
   # go leaves a bunch of local stuff with 0400, making it break future `makepkg -C` _grumble grumble_
   GO111MODULE=auto \
