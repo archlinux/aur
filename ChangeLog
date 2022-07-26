@@ -418,3 +418,26 @@ Fixes:
 - An issue that occurred when copying an event where the new timezone differs from the original one has been fixed
 - Morgen custom notifications on Linux are back on track
 - We fixed an issue that caused possible double bookings from scheduling links when clicking twice on the Confirmation button
+
+=== Morgen 2.5.7
+New Features:
+- If you are like us and rely on your calendar throughout the day, you surely enjoy the Morgen global shortcut. With Alt+C (Option+C on macOS) you can bring your calendar to the foreground wherever you are, without searching through tens of open tabs.
+
+Improvements:
+- is particularly helpful if you are working with multiple Google accounts to save you from finding the right Google user in your browser while your call is already starting. Make sure you are logged in on your browser with all your Google accounts for this to work best.
+- cannot be completed within the planned time. With this release, Morgen shows all the tasks that are left behind in the sidebar so you won't forget them in your calendar.
+
+Fixes:
+- We fixed a layout issue in the Month view
+- We fixed a problem preventing some Outlook/Exchange events to be edited
+
+=== Morgen 2.5.8
+New Features:
+- Sometimes copy-pasting an event to another day comes in handy so we made it easier. Use Right click -> Copy followed by Right click -> Paste on an empty slot. You can paste the same events multiple times if you wish.
+
+Improvements:
+- UTC can be selected as a primary or secondary time zone
+- when you copy availability as text, the time zone abbreviation now respects Daylight saving
+- in the (unlikely 😉) case that something goes wrong with one of the tasks or video conferencing integrations, Morgen will let you know more clearly
+- the event merging feature is now enabled by default
+

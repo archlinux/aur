@@ -1,3 +1,10 @@
 #!/bin/env sh
-/opt/Morgen/morgen $@
 
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    /opt/Morgen/morgen \
+        --enable-features=UseOzonePlatform,WaylandWindowDecorations \
+        --ozone-platform=wayland \
+        $@
+else
+    /opt/Morgen/morgen $@
+fi
