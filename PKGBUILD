@@ -41,7 +41,7 @@ package() {
   install -Dm644 redis.conf "$pkgdir"/etc/redis${_ver}.conf
   install -Dm644 ../redis.service "$pkgdir"/usr/lib/systemd/system/redis${_ver}.service
   for bin in server benchmark cli check-rdb check-aof sentinel; do
-    mv "$pkgdir"/usr/bin/redis-$bin "$pkgdir"/usr/bin/redis{$_ver}-$bin
+    mv "$pkgdir"/usr/bin/redis-$bin "$pkgdir"/usr/bin/redis${_ver}-$bin
   done
 
   install -Dm644 ../redis.logrotate "$pkgdir"/etc/logrotate.d/redis${_ver} 
