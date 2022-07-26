@@ -1,7 +1,7 @@
 # Maintainer: Nikita Ivanov <nikita dot vyach dot ivanov at gmail dot com>
 _name=ctpv
 pkgname="${_name}-git"
-pkgver=r179.4e05a76
+pkgver=r191.972efd3
 pkgrel=1
 pkgdesc="Terminal previewer"
 arch=('i686' 'x86_64')
@@ -10,25 +10,27 @@ license=('MIT')
 depends=('file' 'openssl' 'imagemagick' 'coreutils')
 makedepends=('git')
 optdepends=(
-    'colordiff: for diffs'
-    'diff-so-fancy: for diffs'
-    'git-delta: for diffs'
-    'elinks: for HTML files'
-    'lynx: for HTML files'
-    'w3m: for HTML files'
+    'perl-image-exiftool: for any files'
+    'coreutils: for any, directory, text files'
+    'atool: for archive files'
+    'colordiff: for diff files'
+    'diff-so-fancy: for diff files'
+    'git-delta: for diff files'
+    'gnupg: for gpg-encrypted files'
+    'elinks: for html files'
+    'lynx: for html files'
+    'w3m: for html files'
+    'chafa: for image files'
+    'ueberzug: for image files'
+    'jq: for json files'
+    'mdcat: for markdown files'
+    'libreoffice-fresh: for odt files'
+    'poppler: for pdf files'
     'bat: for text files'
     'highlight: for text files'
     'source-highlight: for text files'
-    'atool: for archives'
-    'jq: for JSON files'
-    'ueberzug: for images'
-    'chafa: for images'
-    'ffmpegthumbnailer: for videos'
-    'mdcat: for Markdown files'
-    'perl-image-exiftool: for media files'
-    'libreoffice-fresh: for documents'
-    'poppler: for PDF files'
     'transmission-cli: for torrent files'
+    'ffmpegthumbnailer: for video files'
 )
 source=("git+$url?signed")
 sha512sums=('SKIP')
