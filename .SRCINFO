@@ -1,8 +1,9 @@
 pkgbase = simple-reaction-daemon
 	pkgdesc = Simple Reaction Daemon - Periodically ping hosts and run custom actions if they fail/succeed
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
-	url = https://github.com/dbernhard-0x7CD/simple-reaction-daemon/releases/tag/v0.0.4
+	url = https://github.com/dbernhard-0x7CD/simple-reaction-daemon/releases/tag/v0.0.5
+	changelog = CHANGELOG.md
 	arch = any
 	license = GPL2
 	depends = libsystemd
@@ -13,6 +14,6 @@ pkgbase = simple-reaction-daemon
 	source = simple-reaction-daemon::git+https://github.com/dbernhard-0x7CD/simple-reaction-daemon
 	source = srd.conf
 	sha256sums = SKIP
-	sha256sums = 59e4dc68a893100b898791dcaf17e4bd45ce2bdccbcf3e63bded83e9965febf4
+	sha256sums = 6629d6cc0c7df342d586ad75fdbc96547d64d98cf44248deb3229d3c74abf863
 
 pkgname = simple-reaction-daemon

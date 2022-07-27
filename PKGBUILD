@@ -1,6 +1,6 @@
 # Maintainer: David Bernhard <davidbernhard.w@gmail.com>
 pkgname=simple-reaction-daemon
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Simple Reaction Daemon - Periodically ping hosts and run custom actions if they fail/succeed"
 arch=('any')
@@ -14,12 +14,12 @@ optdepends=()
 backup=('etc/srd/srd.conf')
 options=('strip')
 install=
-changelog="https://github.com/dbernhard-0x7CD/simple-reaction-daemon/blob/main/CHANGELOG.md"
+changelog="CHANGELOG.md"
 source=(
     "$pkgname::git+https://github.com/dbernhard-0x7CD/simple-reaction-daemon"
     'srd.conf')
 sha256sums=('SKIP'
-            '59e4dc68a893100b898791dcaf17e4bd45ce2bdccbcf3e63bded83e9965febf4')
+            '6629d6cc0c7df342d586ad75fdbc96547d64d98cf44248deb3229d3c74abf863')
 validpgpkeys=()
 
 
