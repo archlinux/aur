@@ -32,7 +32,7 @@ pkgver() {
 
 prepare() {
     _ensure_local_nvm
-    nvm install 14
+    nvm install 16
 }
 
 build() {
