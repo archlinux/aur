@@ -2,7 +2,7 @@
 # Contributor: Jesse Jaara <gmail.com: jesse.jaara>
 
 pkgname=lib32-kmod
-pkgver=29
+pkgver=30
 pkgrel=1
 pkgdesc="Linux kernel module handling"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('gcc-multilib')
 options=('!libtool')
 validpgpkeys=('EAB33C9690013C733916AC839BA2A5A630CBEA53')  # Lucas DeMarchi
 source=("https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-$pkgver.tar."{xz,sign})
-md5sums=('e81e63acd80697d001c8d85c1acb38a0'
+md5sums=('85202f0740a75eb52f2163c776f9b564'
          'SKIP')
 
 build() {
