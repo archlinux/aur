@@ -3,8 +3,8 @@
 
 _pkgname="sat-yt"
 pkgname="$_pkgname"
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="YouTube viewer based on saturnon"
 arch=('any')
 url="https://gitlab.com/TheDalaiAlpaca/sat-yt"
@@ -37,4 +37,6 @@ package() {
 	install -Dm 755 -t "$pkgdir/usr/share/saturnon"    "scripts/install_dirs"
 	install -Dm 755 -t "$pkgdir/usr/share/saturnon"    "scripts/info"
 	install -Dm 755 -t "$pkgdir/usr/share/saturnon"    "scripts/comments"
+	install -Dm 755 -t "$pkgdir/usr/share/saturnon"    "scripts/download"
+
 }
