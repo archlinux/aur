@@ -1,6 +1,6 @@
 # Maintainer: Angelo Theodorou <encelo at users dot sourceforge dot net>
 pkgname=stratagus
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="A free cross-platform real-time strategy gaming engine"
 arch=('i686' 'x86_64')
