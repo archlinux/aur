@@ -1,3 +1,12 @@
+4.5.4
+-----
+
+ - Fix issue #74.
+ - In :func:`pyteomics.auxiliary.fdr`, raise :exc:`PyteomicsError` instead of :exc:`ZeroDivisionError` when
+   using formula 1 on input without any target PSMs.
+ - Provide more accurate amino acid masses in :py:data:`mass.std_aa_mass`.
+ - Fix SyntaxError in :py:mod:`pyteomics.pylab_aux` on Python 2.7.
+
 4.5.3
 -----
 
@@ -47,7 +56,7 @@
  - New arguments `keep_nterm_M` and `fix_aa` in :py:func:`pyteomics.fasta.shuffle`
    (`#54 <https://github.com/levitsky/pyteomics/pull/54>`_ by Vladimir Gorshkov).
 
- - Fx for unwanted warnings in :py:func:`pyteomics.auxiliary.file_helpers._check_use_index` when
+ - Fix for unwanted warnings in :py:func:`pyteomics.auxiliary.file_helpers._check_use_index` when
    `use_index` is explicitly passed (`#52 <https://github.com/levitsky/pyteomics/issues/52>`_).
 
  - Update the default XML schema for featureXML and fix issues with incorrectly specified data types
