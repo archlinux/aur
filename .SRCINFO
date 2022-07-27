@@ -1,11 +1,12 @@
 pkgbase = mozillavpn
 	pkgdesc = A fast, secure and easy to use VPN. Built by the makers of Firefox.
-	pkgver = 2.8.0
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://vpn.mozilla.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = cmake
 	makedepends = qt6-tools
 	makedepends = go
 	makedepends = flex
@@ -31,9 +32,7 @@ pkgbase = mozillavpn
 	depends = wireguard-tools
 	depends = WIREGUARD-MODULE
 	depends = openresolv
-	source = https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/2.8.0-jammy1/mozillavpn_2.8.0.orig.tar.gz
-	source = https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/2.8.0-jammy1/mozillavpn_2.8.0-jammy1.debian.tar.xz
-	sha256sums = 4d6d1cf92ce330c705d7acafe8fbef45711878fb1a65ea846f5a4b7f3e9d013f
-	sha256sums = b17bbccaa998806789bd08fc7bba5c1e10b31a4315e7cdbb2145f4929a8461e1
+	source = https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/2.9.0-jammy1/mozillavpn_2.9.0.orig.tar.gz
+	sha256sums = 122b2e465da3dcbb226bde38413e7969b6128553999b1fc1ad59e1e3ace311ff
 
 pkgname = mozillavpn
