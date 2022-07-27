@@ -114,6 +114,6 @@ build() (
 package() {
 #bash
 mkdir -p $pkgdir/usr/bin
-install -Dm755 ./build-user-static/qemu-system-loongarch64 $pkgdir/usr/bin/
+install -Dm755 ./build/qemu-system-loongarch64 $pkgdir/usr/bin/
 
 }
