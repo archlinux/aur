@@ -5,7 +5,7 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-plus-git
-pkgver=3.11.33.beta1.r8.g7167877
+pkgver=3.11.33.beta1.r17.gc0e152f
 pkgrel=1
 pkgdesc="Micro-compositor from Valve with added patches not yet commited upstream"
 arch=(x86_64)
@@ -24,7 +24,7 @@ source=("add_force_rotation_option.patch"
         "$_pkgname::git+https://github.com/Plagman/gamescope.git"
         "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
         "git+https://github.com/nothings/stb.git")
-sha512sums=('2532cd721dee4b6036a93bbc0de63bf96ee0ee95f5245fd5d08b61c989bc6c62f3e7ea15ca34141d6c5accfd270d2a2bf7ec450be43ffcc31e1a9acec56c618a'
+sha512sums=('a3cef5fa2db02cb4eb4438427a92e72805ff21aa5ced366e47c7824d242e8a4f978e0e76da435bddb73fb273ebc8775d3470a79b9078dc43b1e0fa8290e90118'
             'SKIP'
             'SKIP'
             'SKIP')
