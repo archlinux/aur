@@ -7,6 +7,7 @@ pkgdesc="Connectors used by OpenWebRX to interface with SDR hardware."
 arch=('x86_64')
 url="https://github.com/jketterl/owrx_connector"
 license=('GPL3')
+depends=('csdr' 'libsamplerate')
 makedepends=('git' 'cmake')
 provides=('owrx_connector')
 source=("$pkgname"::'git+https://github.com/jketterl/owrx_connector')
