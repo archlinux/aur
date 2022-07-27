@@ -1,7 +1,7 @@
 # Maintainer:ston<2424284164@qq.com>
 pkgname=gtk-qq-git
 pkgver=r415.a80ba96
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Linux QQ client, based on GTK4."
 arch=('x86_64')
 url="https://github.com/lomirus/gtk-qq"
