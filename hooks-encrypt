@@ -75,6 +75,7 @@ _verify_signature() {
     local _file="${1}"
     local _sigfile="${2}"
     local _dir _filename
+
     _dir="$(dirname "${_file}")"
     _filename="$(basename "${_file}")"
     cd "${_dir}" || exit 1
@@ -227,6 +228,13 @@ run_hook() {
 
     # shellcheck disable=SC2154
     if [ "${verify}" = "y" ]; then 
+       local _cryptdev_sig_sha _keys_sig_sha
+       _cryptdev_sig_sha=$(sha512sum "${cryptdev}.sig")
+       _keys_sig_sha=$(sha512sum "/sigfile")
+       if [ ! "${_keys_sig_sha%% *}" != "${_cryptdev_sig_sha%% *}" ]; then
+           msg "ERROR: one or more signature files are corrupted."
+           launch_interactive_shell
+       fi
        if _verify_signature "${cryptdev}" "/sigfile"; then
            msg "Signature is OK, continue booting."
            export verify="n"
