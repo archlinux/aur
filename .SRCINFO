@@ -1,7 +1,7 @@
 pkgbase = tinyionice
-	pkgdesc = Tiny I/O Nice, a drop-in replacement for ionice
+	pkgdesc = ionice in 300 lines of C
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xyproto/tinyionice
 	arch = x86_64
 	license = GPL2

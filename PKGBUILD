@@ -2,8 +2,8 @@
 
 pkgname=tinyionice
 pkgver=1.0.2
-pkgrel=1
-pkgdesc='Tiny I/O Nice, a drop-in replacement for ionice'
+pkgrel=2
+pkgdesc='ionice in 300 lines of C'
 arch=(x86_64)
 url='https://github.com/xyproto/tinyionice'
 license=(GPL2)
