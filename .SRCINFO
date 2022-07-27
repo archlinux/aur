@@ -1,6 +1,6 @@
 pkgbase = dmenu-win-git
 	pkgdesc = Switch between windows with dmenu
-	pkgver = r9.fec8f09
+	pkgver = r19.2a471d4
 	pkgrel = 1
 	url = https://github.com/NikitaIvanovV/dmenu-win
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = dmenu-win-git
 	depends = dmenu
 	depends = xorg-xprop
 	depends = xdotool
+	provides = dmenu-win
 	source = git+https://github.com/NikitaIvanovV/dmenu-win
 	sha512sums = SKIP
 

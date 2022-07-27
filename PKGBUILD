@@ -1,12 +1,13 @@
 # Maintainer: Nikita Ivanov <nikita dot vyach dot ivanov at gmail dot com>
 _name=dmenu-win
 pkgname="$_name-git"
-pkgver=r9.fec8f09
+pkgver=r19.2a471d4
 pkgrel=1
 pkgdesc="Switch between windows with dmenu"
 arch=('any')
 url="https://github.com/NikitaIvanovV/dmenu-win"
 license=('MIT')
+provides=("$_name")
 depends=('dmenu' 'xorg-xprop' 'xdotool')
 source=("git+$url")
 sha512sums=('SKIP')
