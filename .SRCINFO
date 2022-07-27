@@ -6,8 +6,7 @@ pkgbase = properties-cpp
 	arch = any
 	license = LGPL3
 	makedepends = cmake
-	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/properties-cpp/0.0.2-6/properties-cpp_0.0.2.orig.tar.gz
+	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/properties-cpp/0.0.2-7/properties-cpp_0.0.2.orig.tar.gz
 	sha256sums = d768aebeadd19aacd99270b9b2288cddb462f7c578ff1d0ea2848bab7b1eb02c
 
 pkgname = properties-cpp
-

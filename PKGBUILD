@@ -4,7 +4,7 @@
 pkgname=properties-cpp
 pkgdesc="A very simple convenience library for handling properties and signals in C++11"
 pkgver=0.0.2
-_pkgver=0.0.2-6
+_pkgver=0.0.2-7
 pkgrel=1
 arch=(any)
 url="https://launchpad.net/properties-cpp"
