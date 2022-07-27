@@ -1,7 +1,7 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=web-eid
-pkgver=2.0.1.555
-_rls_tag=v2.0.1
+pkgver=2.1.0.565
+_rls_tag=v2.1.0
 pkgrel=1
 pkgdesc="Web eID browser extension for chromium and native application"
 arch=('x86_64')
@@ -48,7 +48,8 @@ build() {
              -DMOZILLA_INSTALL_DIR="/usr/lib/mozilla/native-messaging-hosts" \
              -DCMAKE_INSTALL_PREFIX="/usr" \
              -DCMAKE_INSTALL_LIBDIR="lib" \
-             -DCMAKE_INSTALL_SYSCONFDIR="/etc"
+             -DCMAKE_INSTALL_SYSCONFDIR="/etc" \
+             -DQT_DIR="/usr/lib/cmake/Qt5"
     cmake --build . --config Release
 }
 
