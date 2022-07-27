@@ -1,22 +1,21 @@
 # Maintainer: Skycoder42 <Skycoder42@users.noreply.github.com>
 pkgname='paxchange'
-pkgver='0.1.0'
-pkgrel='1'
-epoch=2
 pkgdesc='Simple dart script to passively synchronize installed pacman packages between systems.'
+pkgver='0.1.1'
+pkgrel=1
+epoch=2
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://github.com/Skycoder42/paxchange'
 license=('BSD')
 depends=('pacman')
-makedepends=('dart>=2.17.0' 'dart<3.0.0' 'go-yq')
-_pkgdir="$pkgname-${pkgver//_/-}"
-source=("$_pkgdir.tar.gz::https://github.com/Skycoder42/paxchange/archive/refs/tags/v0.1.0.tar.gz")
+makedepends=('dart>=2.17.0' 'dart<3.0.0')
+_pkgdir='paxchange-0.1.1'
+source=("$_pkgdir.tar.gz::https://github.com/Skycoder42/paxchange/archive/refs/tags/v0.1.1.tar.gz")
+b2sums=('d57be7c74a75374d190d26b2d6c0c0d41c27124801727360c362c151984335a5d32a5368568f8cc53c9ee106acfa0b23a58a877b7cc8a9c6d10524f8df9ddc99')
 changelog='CHANGELOG.md'
-b2sums=('c029cfdf7307d2758af4ba2222ca1ba7910e18f59416aa65e70b2f09354c02936947ed624ce3415423a085d77af577f43f8ea40e46fe45cf5994c9bba13c1621')
 
 prepare() {
   cd "$_pkgdir"
-  yq e -i "del(.dependency_overrides)" pubspec.yaml
   dart pub get
 }
 
@@ -29,11 +28,12 @@ build() {
 check() {
   cd "$_pkgdir"
   dart analyze --no-fatal-warnings
-  # dart test
+  dart test
 }
 
 package() {
   cd "$_pkgdir"
-  install -D -m755 'bin/paxchange' "$pkgdir"'/usr/bin/paxchange'
-  install -D -m644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m755 'bin/paxchange' "$pkgdir/usr/bin/"'paxchange'
+  install -D -m644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/"'LICENSE'
 }
+
