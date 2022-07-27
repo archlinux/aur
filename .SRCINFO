@@ -1,10 +1,11 @@
 pkgbase = base-devel-meta
 	pkgdesc = Metapackage for all the base-devel group.
-	pkgver = 2021.08.07
+	pkgver = 2022.07.19
 	pkgrel = 1
 	url = https://www.archlinux.org/
 	arch = any
 	license = none
+	depends = archlinux-keyring
 	depends = autoconf
 	depends = automake
 	depends = binutils

@@ -1,12 +1,13 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=base-devel-meta
-pkgver=2021.08.07
+pkgver=2022.07.19
 pkgrel=1
 pkgdesc='Metapackage for all the base-devel group.'
 arch=('any')
 license=('none')
 depends=(
+  'archlinux-keyring'
   'autoconf'
   'automake'
   'binutils'
