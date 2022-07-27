@@ -1,8 +1,8 @@
 pkgbase = ddrescue-gui
 	pkgdesc = A simple GUI frontend to make ddrescue (a command-line data recovery tool) easier to use.
 	pkgver = 2.1.1
-	pkgrel = 2
-	url = https://launchpad.net/ddrescue-gui
+	pkgrel = 3
+	url = https://www.hamishmb.com/html/ddrescue-gui.php
 	arch = any
 	license = GPL3
 	depends = python
@@ -14,8 +14,7 @@ pkgbase = ddrescue-gui
 	depends = python-requests
 	depends = python-beautifulsoup4
 	provides = ddrescue-gui
-	source = https://launchpad.net/ddrescue-gui/2.x/2.1.1/+download/ddrescue-gui_2.1.1%7Eotherdistro-0ubuntu1%7Eppa1.tar.gz
+	source = https://www.hamishmb.com/files/Downloads/ddrescue-gui/2.1.1/OtherDistro/ddrescue-gui_2.1.1~otherdistro-0ubuntu1~ppa1.tar.gz
 	md5sums = e03c81f83b9ff11b88df02c63a803651
 
 pkgname = ddrescue-gui
-

@@ -2,13 +2,13 @@
 
 pkgname=ddrescue-gui
 pkgver=2.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple GUI frontend to make ddrescue (a command-line data recovery tool) easier to use."
 arch=('any')
-url="https://launchpad.net/ddrescue-gui"
+url="https://www.hamishmb.com/html/ddrescue-gui.php"
 depends=('python' 'python-getdevinfo' 'python-wxpython' 'ddrescue' 'parted' 'lshw' 'python-requests' 'python-beautifulsoup4' )
 license=('GPL3')
-source=(https://launchpad.net/ddrescue-gui/2.x/${pkgver}/+download/ddrescue-gui_${pkgver}%7Eotherdistro-0ubuntu1%7Eppa1.tar.gz)
+source=(https://www.hamishmb.com/files/Downloads/ddrescue-gui/${pkgver}/OtherDistro/ddrescue-gui_${pkgver}~otherdistro-0ubuntu1~ppa1.tar.gz)
 provides=('ddrescue-gui')
 
 prepare() {
