@@ -91,7 +91,6 @@ esac
 : "${FORCE_CONFIGURE:=1}"
 
 prepare() {
-  mkdir -p build
 
   cd qemu
 }
@@ -106,8 +105,8 @@ _configure() {
 }
 
 build() (
- mkdir -p build-user-static
-  cd build-user-static
+ mkdir -p build
+  cd build
   [[ ! $FORCE_CONFIGURE && -e ../qemu-${pkgver}/config.log ]] || _configure
   make ARFLAGS="rc"
 )
