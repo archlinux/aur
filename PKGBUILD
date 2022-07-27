@@ -8,7 +8,7 @@ url='https://github.com/bitwarden/cli'
 license=('GPL3')
 makedepends=('unzip')
 conflicts=('bitwarden-cli')
-options=('!strip')
+options=('strip')
 source=("https://github.com/bitwarden/cli/releases/download/v$pkgver/bw-linux-$pkgver.zip")
 md5sums=('SKIP')
 
