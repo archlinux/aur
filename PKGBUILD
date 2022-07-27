@@ -23,7 +23,7 @@ source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz"
         "$_npmname.tmpfiles")
 noextract=("$_npmname-$_npmver.tgz")
 sha256sums=('2cf332a19fd6753253e79438a7a9d2aeb4ef51b4e9daa296fc3e92d5b7700d3f'
-            'd53889dc58f968fa63cdbd8b245f154fc8170262908a832de674962ff2fa8b85'
+            'd88ad4d11395bd13a4aa64829bf03977ac3511134be2dbe875b95c7243e5bf92'
             'd907415d1be94568c92d3a05e70dd855f004ebed2c4170f5c2d2f36c0dfd5199'
             '9968e59627f098fc5e2cbf0a0f1e11054e01ccd793d9098b5ff101c4e14f278b')
 
