@@ -1,0 +1,14 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -522,6 +522,11 @@ if (MSVC AND CMAKE_GENERATOR STREQUAL "Ninja")
+     )
+ endif()
+ 
++if (ENABLE_WEB_SERVICE)
++    find_package(cpp-jwt REQUIRED)
++    add_library(cpp-jwt ALIAS cpp-jwt::cpp-jwt)
++endif()
++
+ enable_testing()
+ add_subdirectory(externals)
+ add_subdirectory(src)
