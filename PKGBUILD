@@ -1,4 +1,4 @@
-PKGDEST="/tmp/"
+# Maintainer: Adam Jenča <jenca.adam at gmail dot com>
 pkgname=httpy
 pkgrel=1
 arch=('x86_64')
