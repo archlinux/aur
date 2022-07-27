@@ -1,7 +1,7 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=base-devel-meta
-pkgver=2022.07.19
+pkgver=2022.07.27
 pkgrel=1
 pkgdesc='Metapackage for all the base-devel group.'
 arch=('any')
@@ -32,6 +32,9 @@ depends=(
   'sudo'
   'texinfo'
   'which'
+)
+depends_aarch64=(
+  'archlinuxarm-keyring'
 )
 replaces=(meta-group-base-devel)
 conflicts=(meta-group-base-devel)
