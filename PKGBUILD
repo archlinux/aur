@@ -1,7 +1,7 @@
 # Maintainer: Rod Kay <charlie5 on #ada at irc.libera.chat>
 
 pkgname=inotify-ada
-pkgver=20210606
+pkgver=20220727
 pkgrel=1
 
 pkgdesc='An Ada 2012 library to monitor filesystem events using the Linux inotify API.'
@@ -13,7 +13,7 @@ depends=('gcc-ada' 'alire')
 makedepends=('gprbuild')
 
 source=("https://github.com/onox/inotify-ada/archive/refs/heads/master.zip")
-sha1sums=("a07c29269552ba496681ff7bd897ca38ecd829ba")
+sha256sums=("42c1b785c148ca7c68dd8eb14b990b7b22d1812df2047e7064303496c3f42ac7")
 
 
 build()

@@ -1,6 +1,6 @@
 pkgbase = inotify-ada
 	pkgdesc = An Ada 2012 library to monitor filesystem events using the Linux inotify API.
-	pkgver = 20210606
+	pkgver = 20220727
 	pkgrel = 1
 	url = https://github.com/onox/inotify-ada
 	arch = i686
@@ -10,6 +10,6 @@ pkgbase = inotify-ada
 	depends = gcc-ada
 	depends = alire
 	source = https://github.com/onox/inotify-ada/archive/refs/heads/master.zip
-	sha1sums = a07c29269552ba496681ff7bd897ca38ecd829ba
+	sha256sums = 42c1b785c148ca7c68dd8eb14b990b7b22d1812df2047e7064303496c3f42ac7
 
 pkgname = inotify-ada
