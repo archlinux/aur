@@ -4,12 +4,13 @@
 
 pkgname='csdr'
 pkgver='0.18.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="A simple DSP library and command-line tool for Software Defined Radio"
 arch=('i686' 'x86_64')
 url='https://github.com/jketterl/csdr'
 license=('GPL')
 depends=('fftw')
+makedepends=('cmake')
 source=("https://github.com/jketterl/csdr/archive/$pkgver.tar.gz")
 sha256sums=('918e478fb6da10ecfb502e3867059b2e4cfb5d05c3dcb6919ecd065eac203814')
 
