@@ -1,4 +1,4 @@
-pkgbase = boardmix-bin
+pkgbase = boardmix-uos
 	pkgdesc = Online collaborative whiteboard software.
 	pkgver = 1.13.0
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = boardmix-bin
 	source = https://home-store-packages.uniontech.com/appstore/pool/appstore/c/cn.bosyun.boardmix/cn.bosyun.boardmix_1.13.0_amd64.deb
 	sha512sums = 24ed16f2652dc8dbebe2bb44ae4a200f5a6defdb7b297931c739edcee0a9e5b83b8aeb79ef48a4b4a0ee7e1b0d6e2c14f5a6bdf9ea446b0462b7dd21d2fcf366
 
-pkgname = boardmix-bin
+pkgname = boardmix-uos

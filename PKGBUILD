@@ -5,7 +5,7 @@
 
 # Maintainer:Integral<luckys68@126.com>
 # Maintainer:ston<2424284164@qq.com>
-pkgname=boardmix-bin
+pkgname=boardmix-uos
 pkgver=1.13.0
 pkgrel=1
 pkgdesc="Online collaborative whiteboard software."
