@@ -26,6 +26,7 @@ depends=(
   'libjxl'
   'librsvg'
   'libwebp'
+  'libtiff'
   'libexif'
   )
 optdepends=('bash-completion: Bash completions')
@@ -42,14 +43,15 @@ pkgver() {
 
 build() {
   local meson_options=(
+    -D avif=enabled
+    -D bash=enabled
+    -D exif=enabled
+    -D gif=enabled
     -D jpeg=enabled
     -D jxl=enabled
-    -D gif=enabled
     -D svg=enabled
+    -D tiff=enabled
     -D webp=enabled
-    -D avif=enabled
-    -D exif=enabled
-    -D bash=enabled
     -D man=true
     -D desktop=true
     -D version=${pkgver}
