@@ -17,6 +17,7 @@ source=("git+https://github.com/wine-staging/wine-staging.git#tag=v${pkgver}"
         "0003-LoL-abi.vsyscall32-alternative_patch_by_using_a_fake_cs_segment.patch"
         "0004-LoL-broken-client-update-fix.patch"
         "0005-LoL-client-slow-start-fix.patch"
+        "0006-LoL-abi-vsyscall32-disable-vDSO.patch"
         )
 
 sha256sums=('SKIP'
@@ -25,6 +26,7 @@ sha256sums=('SKIP'
             'c2cb9265567dfe8c9f148e237910792cad7666d9d3cbf68d8717076030cddc92'
             '0c5b97c64fd4983119db8675f0686e26143898de1566c4da46d5df74cb98cfb2'
             '49dfbf7546c00958e2b426a61371eedf0119471e9998b354595d5c0ce6dab48b'
+            'fe33c51d492de4685b515781ac157a5d02f8048a528404b4fd8319cfc7f5cf25'
             )
 
 depends=(
@@ -153,6 +155,10 @@ prepare() {
     # Hack for league to start in reasonable time
     printf 'Apply 0005-LoL-client-slow-start-fix.patch\n'
     patch -Np1 < "${srcdir}/0005-LoL-client-slow-start-fix.patch"
+
+    # Disables vDSO in preelink, no need for "sudo sysctl -w abi.vsyscall32=0"
+    printf 'Apply 0006-LoL-abi-vsyscall32-disable-vDSO.patch\n'
+    patch -Np1 < "${srcdir}/0006-LoL-abi-vsyscall32-disable-vDSO.patch"
 }
 
 build() {
@@ -174,7 +180,7 @@ build() {
         --disable-tests \
         --disable-winemenubuilder \
         --disable-win16
-    make -j12
+    make -j`nproc`
 }
 
 package() {
