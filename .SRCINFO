@@ -1,0 +1,14 @@
+pkgbase = yuntucad-uos
+	pkgdesc = 云图三维 A collaboative CAD software.
+	pkgver = 0.0.2.1
+	pkgrel = 1
+	url = https://www.yuntucad.com/
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	depends = gtk3
+	depends = nss
+	source = https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.yuntucad.cloudcad/com.yuntucad.cloudcad_0.0.2.1_amd64.deb
+	sha512sums = bc4158d4a25e484a1e4614f543de581aa8af5ecd19e56a6ef4961b5c6ba3c5ab3b1628a6fa9812222e4dfbb2823888b72e22424fc406e3bfa6ab0ed1cee5745c
+
+pkgname = yuntucad-uos
