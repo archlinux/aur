@@ -4,7 +4,7 @@ pkgname=${_pkgbin}-bin
 pkgdesc='Desktop app to easily deploy on the Akash Network'
 license=('GPL')
 url='https://github.com/Akashlytics/akashlytics-deploy'
-pkgver=0.14.2
+pkgver=0.14.3
 pkgrel=1
 arch=('x86_64')
 depends=('libusb')
@@ -15,7 +15,7 @@ source=(
   "${_pkgsrc}::${url}/releases/download/v${pkgver}/${_pkgsrc}"
   "LICENSE::https://raw.githubusercontent.com/Akashlytics/akashlytics-deploy/v${pkgver}/LICENSE"
 )
-sha512sums=('ee9f280a533c0b377e73030963ed40ac892c77ee7d486040b51a507ca76ffe1d43ec7b42ff1052992e0dc4b98a94ca51d157de94007fc2d08d4a533fa6028314'
+sha512sums=('bce890ddd82dc9466ad203de876a887a32f370611a888fe047b8d99e661c309a872beaf51c00bb8d65ef398be9631a1e02d24ffe1fdfce793146c688c3cef948'
             'adfa9547f59d194835eb7cfa4014fd3f972470f92802e1f9c39e636225f285331956620accc7d431e5c0ff4171a462ef184c334e2bd639a92d383e22501ae60c')
 
 build() {
