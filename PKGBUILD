@@ -1,11 +1,11 @@
 # Maintainer: Manel Castillo Giménez
 pkgname="clavis-git"
-pkgver="0.1.0"
+pkgver="0.2.0"
 pkgrel="1"
 pkgdesc="An easy to use Password Manager. Development version"
 arch=("x86_64")
 url="https://github.com/ManelCG/clavis"
-depends=("gtk3" "cairo" "pango" "pixman" "pass" "make" "pkgconf")
+depends=("gtk3" "cairo" "pango" "pixman" "pass" "make" "pkgconf" "xdotool" "xclip")
 conflicts=("clavis")
 optdepends=()
 
