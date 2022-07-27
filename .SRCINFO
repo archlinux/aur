@@ -1,0 +1,17 @@
+pkgbase = forge-server-waystones
+	pkgdesc = This mod adds waystone blocks that the player can return to once they've been activated, either through a Warp Scroll, a rechargeable Warp Stone, or by using an existing waystone to hop from one to the other.
+	pkgver = 11.1.0
+	pkgrel = 1
+	url = https://www.curseforge.com/minecraft/mc-mods/waystones
+	arch = any
+	license = custom
+	depends = forge-hooks>=1.0.0
+	depends = forge-server>=41.0.94
+	depends = forge-server-balm>=4.5.1
+	noextract = waystones-forge-1.19-11.1.0.jar
+	source = LICENSE
+	source = https://mediafiles.forgecdn.net/files/3901/921/waystones-forge-1.19-11.1.0.jar
+	sha256sums = 9610fdb452d3d92e7e51243963ea189f7783c1a7cdd4238de4d2a32c50042a8d
+	sha256sums = 7127d14c4df967afad2a3207aa5434db98cdd2bc7f96d61791fd597f96b53d9c
+
+pkgname = forge-server-waystones
