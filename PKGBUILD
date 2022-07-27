@@ -29,6 +29,7 @@ build() {
 }
 
 check() {
+	cd gtk-qq
 	meson test -C builddir
 }
 
