@@ -1,0 +1,22 @@
+pkgbase = flipperzero-tea-bin
+	pkgdesc = TUI to interact with your flipper zero
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://jon4hz.io
+	license = MIT
+	conflicts = flipperzero-tea
+	provides = flipperzero-tea
+	arch = aarch64
+	source_aarch64 = https://github.com/jon4hz/flipperzero-tea/releases/download/v0.1.0/flipperzero-tea-v0.1.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 3a308ef3fd82f90099aa79a164b14d58328b0d6c0db45647104dbfd50620ba69
+	arch = armv7h
+	source_armv7h = https://github.com/jon4hz/flipperzero-tea/releases/download/v0.1.0/flipperzero-tea-v0.1.0-linux-armv7.tar.gz
+	sha256sums_armv7h = fb97f15a2a89afbdea8e760525eaafe9078458bf76d1c76ad1b8c1c3d32d4b7c
+	arch = i686
+	source_i686 = https://github.com/jon4hz/flipperzero-tea/releases/download/v0.1.0/flipperzero-tea-v0.1.0-linux-386.tar.gz
+	sha256sums_i686 = e9688a02246908a707371c2512e4c12d87ae9373f8dcd9b15c8acdaa6ec3b835
+	arch = x86_64
+	source_x86_64 = https://github.com/jon4hz/flipperzero-tea/releases/download/v0.1.0/flipperzero-tea-v0.1.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = caf4f9fc275605a9dd3401e631d4115732bede30671d65e4d99e214e8ef5ebbb
+	
+pkgname = flipperzero-tea-bin
