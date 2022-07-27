@@ -1,7 +1,7 @@
 # Maintainer: Mario Oenning <mo-son at mailbox dot org>
 
 pkgname=pacseek
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc='A terminal user interface for searching and installing Arch Linux packages'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('pacman')
 makedepends=('go')
 optdepends=('xdg-utils: open URL on click support')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('ff26a0655d8f3a73e831e580063521037e9eb64defd49e08c5707f02e8abde83')
+sha256sums=('32ddbce6d912f786ac62798596eb98274926da1cff06cf1cac1c3f3cae64c344')
 
 prepare(){
   cd "$pkgname-$pkgver"
