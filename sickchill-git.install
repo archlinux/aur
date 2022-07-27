@@ -1,6 +1,15 @@
+# Remove all program files, including files created or modified by SickChill
+_cleanup_app_files() {
+  rm -rf /opt/sickchill/app
+}
+
 post_install() {
   post_upgrade
   echo "==> Start and enable sickchill.service. Then visit http://localhost:8081/"
+}
+
+pre_upgrade() {
+  _cleanup_app_files
 }
 
 post_upgrade() {
@@ -14,8 +23,7 @@ pre_remove() {
 }
 
 post_remove() {
-  # Remove additional files created by the built-in updater
-  rm -rf /opt/sickchill/app
+  _cleanup_app_files
 
   echo "==> To delete the configuration files, run as root: rm -rf /opt/sickchill/data"
 

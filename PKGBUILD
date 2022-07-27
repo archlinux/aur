@@ -8,7 +8,7 @@
 # That is the only reason why this package ends on -git.
 
 pkgname=sickchill-git
-pkgver=2021.11.10.r0
+pkgver=2022.7.20.r0
 pkgrel=1
 pkgdesc="Automatic video library manager for TV shows"
 arch=('any')
