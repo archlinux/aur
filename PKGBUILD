@@ -4,7 +4,7 @@
 
 pkgname=wiki-js
 _pkgname=wiki-js
-pkgver=2.5.279
+pkgver=2.5.285
 pkgrel=1
 pkgdesc="Wiki.js | A modern, lightweight and powerful wiki app built on Node.js"
 license=('AGPL3')
@@ -20,7 +20,7 @@ source=(
 	"wiki-js.tmpfiles"
 	"config.sample.yml.patch"
 )
-sha256sums=('e1060d2af0047914894bd94edf46c8fd29ccf6b2e6baf44c47f2ec193efbc2f6'
+sha256sums=('993df77c9ea0360d51d3a456fd1bf38d1aac405649d31d7890a49c8157cf4440'
             '39bfd1390d3f2eba2522d750b89176aeefcdfdd1e3b2ba4d10276f1b7d3c55e8'
             '4e7fc467c43f5de2d1a355036abccb2ba23a6b10e1a93ae2d645e4352646bd55'
             '501ee03026279e6d01736767a590dd97ada35240896fc90a7a7c67c0a890b4d2'
