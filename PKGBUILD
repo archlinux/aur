@@ -6,8 +6,8 @@ pkgdesc="Unofficial Linux QQ client, based on GTK4."
 arch=('x86_64')
 url="https://github.com/lomirus/gtk-qq"
 license=('AGPL3')
-depends=('openssl' 'gtk4')
-makedepends=('pkgconf' 'libadwaita' 'meson' 'rustup')
+depends=('openssl' 'gtk4' 'libadwaita')
+makedepends=('meson' 'rustup' 'git')
 source=(
 	git+${url}
 )
