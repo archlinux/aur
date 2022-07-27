@@ -8,7 +8,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=gstm-git
-pkgver=1.3.7.r1.g0eca301
+pkgver=1.3.7.r11.g359a9f8
 pkgrel=1
 pkgdesc="Gnome SSH Tunnel Manager - Gtk3 Edition"
 arch=('i686' 'x86_64')
@@ -20,7 +20,6 @@ conflicts=('gstm' 'gstm-gtk2')
 provides=('gstm')
 source=('git+https://github.com/dallenwilson/gstm.git')
 sha256sums=('SKIP')
-_gitname='gstm'
 
 pkgver() {
   cd "$_gitname"
@@ -28,18 +27,18 @@ pkgver() {
 }
 
 prepare() {
-  cd ${srcdir}/${_gitname}
+  cd ${srcdir}/${pkgname%-git}
   #autoconf -I m4
   ./autogen.sh
 }
 
 build() {
-  cd ${srcdir}/${_gitname}
+  cd ${srcdir}/${pkgname%-git}
   ./configure --prefix=/usr
   make || return 1
 }
 
 package() {
-  cd ${srcdir}/${_gitname}
+  cd ${srcdir}/${pkgname%-git}
   make DESTDIR=${pkgdir} install
 }
