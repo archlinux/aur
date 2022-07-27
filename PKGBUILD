@@ -15,7 +15,7 @@ sha512sums=('92f8cd4c795d8d45d47b07d1362f74a1a1b12af040b26b7561e0a070ec194c93d04
 package () {
 	mkdir -p "$pkgdir/usr/share/edk2-ovmf/loongarch64"
 	mkdir -p "$pkgdir/usr/share/licenses/$_pkgname/"
-      install -vDm 644 ./OVMF_CODE.fd -t "$pkgdir/usr/share/edk2-ovmf/loongarch64/OVMF_CODE.fd"
+      install -vDm 644 ./OVMF_CODE.fd -t "$pkgdir/usr/share/edk2-ovmf/loongarch64/"
 install -vDm 644 ./90-edk2-ovmf-loongarch64.json -t "$pkgdir/usr/share/qemu/firmware/"
 install -vDm 644 License.txt -t "$pkgdir/usr/share/licenses/$_pkgname/"
   install -vDm 644 OvmfPkg.License.txt "$pkgdir/usr/share/licenses/$_pkgname/OvmfPkg.License.txt"
