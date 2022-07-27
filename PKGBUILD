@@ -1,6 +1,6 @@
 # Maintainer: courk <courk at courk dot fr>
 pkgname=kaitai-struct-compiler
-pkgver=0.9
+pkgver=0.10
 pkgrel=1
 pkgdesc="Kaitai Struct Compiler: Compiler for the Kaitai declarative binary format parsing language"
 arch=(any)
@@ -10,7 +10,7 @@ depends=("java-runtime")
 optdepends=()
 source=("https://github.com/kaitai-io/kaitai_struct_compiler/releases/download/$pkgver/$pkgname-$pkgver.zip"
         "01-fix_lib_dir.patch")
-sha256sums=('3038243334fb65bbb264f33b82986facfe1fbad2de1978766899855b40212215'
+sha256sums=('3d11d6cc46d058afb4680fda2e7195f645ca03b2843501d652a529646e55d16b'
             '11a49eae3903511c83fd43759d21ac4f430024fe7b6dba5d4ebef6f0ba3f05c6')
 
 prepare() {
