@@ -1,8 +1,8 @@
 # Maintainer: Nikita Ivanov <nikita dot vyach dot ivanov at gmail dot com>
 _name=ctpv
 pkgname="${_name}-git"
-pkgver=r191.972efd3
-pkgrel=2
+pkgver=r193.4aee1f7
+pkgrel=1
 pkgdesc="Terminal previewer"
 arch=('i686' 'x86_64')
 url="https://github.com/NikitaIvanovV/ctpv"
@@ -10,26 +10,28 @@ license=('MIT')
 depends=('file' 'openssl' 'imagemagick' 'coreutils')
 makedepends=('git')
 optdepends=(
-    'perl-image-exiftool: for any files'
     'atool: for archive files'
+    'bat: for text files'
+    'chafa: for image files'
     'colordiff: for diff files'
+    'coreutils: for any, directory, text files'
     'diff-so-fancy: for diff files'
+    'elinks: for html files'
+    'ffmpegthumbnailer: for video files'
+    'fontforge: for font files'
     'git-delta: for diff files'
     'gnupg: for gpg-encrypted files'
-    'elinks: for html files'
-    'lynx: for html files'
-    'w3m: for html files'
-    'chafa: for image files'
-    'ueberzug: for image files'
-    'jq: for json files'
-    'mdcat: for markdown files'
-    'libreoffice-fresh: for odt files'
-    'poppler: for pdf files'
-    'bat: for text files'
     'highlight: for text files'
+    'jq: for json files'
+    'libreoffice-fresh: for odt files'
+    'lynx: for html files'
+    'mdcat: for markdown files'
+    'perl-image-exiftool: for any files'
+    'poppler: for pdf files'
     'source-highlight: for text files'
     'transmission-cli: for torrent files'
-    'ffmpegthumbnailer: for video files'
+    'ueberzug: for image files'
+    'w3m: for html files'
 )
 source=("git+$url?signed")
 sha512sums=('SKIP')

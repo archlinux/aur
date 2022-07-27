@@ -31,14 +31,14 @@ BEGIN {
 
         for (i = 1; i <= progs_len; i++) {
             p = getpackage(progs[i])
-            package_progs[p][package_progs_len[p]++] = $1
+            package_progs[p][++package_progs_len[p]] = $1
         }
     }
 
     close(cmd)
 
     for (p in package_progs) {
-        types = join(package_progs[p], 0, package_progs_len[p] - 1, ", ")
+        types = join(package_progs[p], 1, package_progs_len[p], ", ")
         list = list sprintf("    '%s: for %s files'\n", p, types)
     }
 }
@@ -51,5 +51,6 @@ BEGIN {
 
 /^optdepends=\(/ {
     printf "%s", list | "sort"
+    close("sort")
     opts = 1
 }
