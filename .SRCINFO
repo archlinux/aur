@@ -1,11 +1,11 @@
 pkgbase = pam-fprint-grosshack
 	pkgdesc = PAM module enabling simultaneous fingerprint (fprintd) and password authentication
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://fprint.freedesktop.org/
 	arch = x86_64
 	license = GPL
-	makedepends = git
+	makedepends = cmake
 	makedepends = meson
 	makedepends = pam_wrapper
 	makedepends = python-cairo
@@ -18,7 +18,7 @@ pkgbase = pam-fprint-grosshack
 	depends = dbus
 	depends = dbus-glib
 	depends = systemd
-	source = git+https://gitlab.com/mishakmak/pam-fprint-grosshack.git#tag=v0.2.0
+	source = git+https://gitlab.com/mishakmak/pam-fprint-grosshack.git#tag=v0.3.0
 	sha256sums = SKIP
 
 pkgname = pam-fprint-grosshack
