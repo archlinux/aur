@@ -1,14 +1,5 @@
 --- PolyORB-master-old/Makefile.in
 +++ PolyORB-master/Makefile.in
-@@ -86,7 +86,7 @@
- # Note: if EXTRA_GNATMAKE_FLAGS contains a -%args argument, we add -margs at
- # the end because further builder flags may need to be passed.
- 
--COMP_TOOLS_GNATMAKE_FLAGS := @STYLE_SWITCHES@ -gnatwa@WARNINGS_MODE@ -gnat12 -gnatec=${top_builddir}/compilers/config.adc ${BASE_GNATMAKE_FLAGS}
-+COMP_TOOLS_GNATMAKE_FLAGS := @STYLE_SWITCHES@ -gnatwa@WARNINGS_MODE@ -gnat12 -gnatec=${DESTDIR}${top_builddir}/compilers/config.adc ${BASE_GNATMAKE_FLAGS}
- # Gnatmake flags for compilation tools mains, built without project files
- 
- # Extra flags for target
 @@ -626,16 +626,16 @@
  target=@target@
  
