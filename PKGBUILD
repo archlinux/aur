@@ -1,29 +1,48 @@
 # Maintainer: Mikhail f. Shiryaev <mr dot felixoid at gmail dot com>
 
 pkgname=clickhouse-lts
-pkgver=22.3.7.28
+pkgver=22.3.9.19
 pkgrel=1
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time. LTS version'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://clickhouse.tech/'
 license=('Apache')
 depends=('tzdata' 'libcap')
 provides=(clickhouse)
 conflicts=(clickhouse)
-noextract=(
-  clickhouse-client_${pkgver}_all.deb
-  clickhouse-common-static_${pkgver}_amd64.deb
-  clickhouse-server_${pkgver}_all.deb
-)
-source=(
-  https://packages.clickhouse.com/deb/pool/lts/clickhouse-client_${pkgver}_all.deb
+source_x86_64=(
+  https://packages.clickhouse.com/deb/pool/lts/clickhouse-client_${pkgver}_amd64.deb
   https://packages.clickhouse.com/deb/pool/lts/clickhouse-common-static_${pkgver}_amd64.deb
-  https://packages.clickhouse.com/deb/pool/lts/clickhouse-server_${pkgver}_all.deb
+  https://packages.clickhouse.com/deb/pool/lts/clickhouse-server_${pkgver}_amd64.deb
 )
-sha256sums=(
-  0b3a2d0507df34842e24791430ec28d788f657621090c23e958f5a353d707bc7
-  ad90bb23ebab661cb47976f4af992be0be1406f8ac9594ac081c3ca129bb325d
-  cad792e3fa695e4d2b771e124440032905390aea5b9491c474f7b4a69943d197
+sha256sums_x86_64=(
+  9afb1789704d2ed059bc7bf25da1ec2871649cce3b96c7b9065bca4b72304f02
+  bf32775a0062f4c776a1f61de17eeb002a41f1a0c53c5f55a0ad2f244daa6985
+  f4fed800789587235ba039416e2eed85225395656cc22709685d6811a57a11a8
+)
+source_aarch64=(
+  https://packages.clickhouse.com/deb/pool/lts/clickhouse-client_${pkgver}_arm64.deb
+  https://packages.clickhouse.com/deb/pool/lts/clickhouse-common-static_${pkgver}_arm64.deb
+  https://packages.clickhouse.com/deb/pool/lts/clickhouse-server_${pkgver}_arm64.deb
+)
+sha256sums_aarch64=(
+  3520deeb50e579bd7bbca68334b96f21f16839c3930e047f79f26a2adc21e9a3
+  e0a53be9f4e08c3a21e18b0c08cd08b8ce69c0f2f54b4771e0ab15553e9cba71
+  9f93b138061b7d81022e538e0ad03fbd8fcd5d1dca5911bc59b78d824d62ea83
+)
+_noextract_x86_64=(
+  clickhouse-client_"${pkgver}"_amd64.deb
+  clickhouse-common-static_"${pkgver}"_amd64.deb
+  clickhouse-server_"${pkgver}"_amd64.deb
+)
+_noextract_aarch64=(
+  clickhouse-client_"${pkgver}"_arm64.deb
+  clickhouse-common-static_"${pkgver}"_arm64.deb
+  clickhouse-server_"${pkgver}"_arm64.deb
+)
+noextract=(
+  "${_noextract_x86_64[@]}"
+  "${_noextract_aarch64[@]}"
 )
 install=$pkgname.install
 backup=(
@@ -33,8 +52,9 @@ backup=(
 )
 
 package() {
-  for deb in "${noextract[@]}"; do
-    bsdtar -xf $deb
+  debs="_noextract_${CARCH}[@]"
+  for deb in "${!debs}"; do
+    bsdtar -xf "$deb"
     tar xf data.tar.gz -C "${pkgdir}"
   done
 
