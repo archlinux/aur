@@ -8,7 +8,7 @@ pkgbase = python-aabbtree
 	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/kip-hart/AABBTree/archive/v2.8.1.tar.gz
+	source = AABBTree-2.8.1.tar.gz::https://github.com/kip-hart/AABBTree/archive/v2.8.1.tar.gz
 	sha512sums = 602c74c7fcbfde0c5042fdbc611e8f96d5656f05eebf47aceb7169e39d3d0fea46194ea4307ddf3a6a71138c977224c382e0349f408cab1da50796f7f1b68c38
 
 pkgname = python-aabbtree
