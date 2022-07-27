@@ -12,7 +12,7 @@ arch=(x86_64 aarch64)
 license=(GPL2 LGPL2.1)
 url="http://wiki.qemu.org/"
 arch=(i686 x86_64)
-depends=( "qemu" )
+depends=( "qemu" "edk2-ovmf-loongarch64")
 makedepends=(
   alsa-lib
   brltty

@@ -67,6 +67,7 @@ pkgbase = qemu-system-loongarch64-git
 	makedepends = zlib
 	makedepends = zstd
 	depends = qemu
+	depends = edk2-ovmf-loongarch64
 	provides = qemu-system-loongarch64
 	conflicts = qemu-system-loongarch64
 	source = git+https://github.com/loongson/qemu.git#branch=tcg-dev
