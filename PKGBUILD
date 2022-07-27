@@ -1,6 +1,6 @@
 # Maintainer: Vitaliy Berdinskikh <ur6lad at gmail dot com>
 pkgname=swayshot 
-pkgver=2.7.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc='Sway screenshots: screen, window or region.'
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('wl-clipboard: copy the full path to clipboard'
 	'libnotify: show message with path or URL')
 conflicts=('swaygrab-helper')
 source=(https://gitlab.com/radio_rogal/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2)
-sha256sums=('308f6ff3fafcf932307c05c753b7e69205bdd33cdd148a28e03d3e428031fe2d')
+sha256sums=('5bc30177c57fcbe173fa017c17e508c3d65fa5481347967bcac45f7c190f0ba2')
 
 package() {
 	cd "$srcdir"/$pkgname-$pkgver

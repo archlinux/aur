@@ -1,6 +1,6 @@
 pkgbase = swayshot
 	pkgdesc = Sway screenshots: screen, window or region.
-	pkgver = 2.7.1
+	pkgver = 2.7.2
 	pkgrel = 1
 	url = https://gitlab.com/radio_rogal/swayshot
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = swayshot
 	optdepends = curl: upload a screenshot to x0.at
 	optdepends = libnotify: show message with path or URL
 	conflicts = swaygrab-helper
-	source = https://gitlab.com/radio_rogal/swayshot/-/archive/2.7.1/swayshot-2.7.1.tar.bz2
-	sha256sums = 308f6ff3fafcf932307c05c753b7e69205bdd33cdd148a28e03d3e428031fe2d
+	source = https://gitlab.com/radio_rogal/swayshot/-/archive/2.7.2/swayshot-2.7.2.tar.bz2
+	sha256sums = 5bc30177c57fcbe173fa017c17e508c3d65fa5481347967bcac45f7c190f0ba2
 
 pkgname = swayshot
