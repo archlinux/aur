@@ -1,0 +1,20 @@
+pkgbase = edk2-ovmf-loongarch64-bin
+	pkgdesc = Firmware for Virtual Machines (loongarch64)
+	pkgver = 20220711
+	pkgrel = 0
+	url = https://github.com/loongson/edk2
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	provides = edk2-ovmf-loongarch64
+	conflicts = edk2-ovmf-loongarch64
+	source = 90-edk2-ovmf-loongarch64.json
+	source = https://github.com/loongson/edk2/raw/master/License.txt
+	source = OvmfPkg.License.txt::https://raw.githubusercontent.com/loongson/edk2/master/OvmfPkg/License.txt
+	source = OVMF_CODE.fd::https://github.com/yangxiaojuan-loongson/qemu-binary/raw/main/binary-0711/QEMU_EFI.fd
+	sha512sums = 5b550c211ecf3e95634f72b754050e864df1460e55c880ef20dd47ee8f11ced9976310cc34eeaa0b0722d5a264564f364c69ab02a53238917dc747e35c8ea951
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = df6d0cdef070815c057410832db4663545cfca0ae23c533c7816123a054fbbf8e7a3abae7f4029217e634b5cb2180179ab80c77c39e43fa82c4a25d1119e390b
+
+pkgname = edk2-ovmf-loongarch64-bin

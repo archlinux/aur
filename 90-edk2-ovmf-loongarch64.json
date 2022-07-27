@@ -1,0 +1,25 @@
+{
+    "description": "x64 UEFI for loongarch64",
+    "interface-types": [
+        "uefi"
+    ],
+    "mapping": {
+        "device": "flash",
+        "executable": {
+            "filename": "/usr/share/edk2-ovmf/x64/OVMF_CODE.fd",
+            "format": "raw"
+        }
+    },
+    "targets": [
+        {
+            "architecture": "loongarch64",
+            "machines": [
+                "*"
+            ]
+        }
+    ],
+    "features": [],
+    "tags": [
+
+    ]
+}
