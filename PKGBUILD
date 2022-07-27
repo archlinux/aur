@@ -30,7 +30,7 @@ md5sums=('SKIP')
 validpgpkeys=()
 pkgver(){
 	cd "punch"
-    printf "%s" "$(git describe --tags)"
+    printf "%s" "$(git describe --tags --abbrev=0)"
 }
 package() {
 	cd "punch"
