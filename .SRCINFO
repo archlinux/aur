@@ -1,0 +1,18 @@
+pkgbase = gnome-shell-extension-dash-to-dock-animator-git
+	pkgdesc = Animate the icons of dash to dock
+	pkgver = r24.d511de8
+	pkgrel = 1
+	url = https://github.com/icedman/dash-animator
+	arch = any
+	license = GPL3
+	makedepends = intltool
+	makedepends = git
+	makedepends = sassc
+	depends = gnome-shell
+	depends = gnome-shell-extension-dash-to-dock
+	provides = gnome-shell-extension-dash-to-dock-animator
+	conflicts = gnome-shell-extension-dash-to-dock-animator
+	source = git+https://github.com/icedman/dash-animator.git
+	b2sums = SKIP
+
+pkgname = gnome-shell-extension-dash-to-dock-animator-git
