@@ -3,7 +3,7 @@
 
 pkgname=python-pymor
 _pkgname=pymor
-pkgver=2021.2.1
+pkgver=2022.1.0
 pkgrel=1
 pkgdesc="pyMOR is a software library for building model order reduction applications with the Python programming language"
 arch=('x86_64')
@@ -52,9 +52,9 @@ optdepends=(
   'python-slycot'
   'python-mpi4py'
 )
-source=(https://files.pythonhosted.org/packages/26/47/a33c7da3dfb43ff015bfb6762292272e4e7eaae495fc702b30ecf1cd95d2/pymor-2021.2.1.tar.gz)
+source=(https://files.pythonhosted.org/packages/61/2f/c2508e6f1d662ec626da73901080e20a2ecd74c1ce446efc024fb455d374/pymor-2022.1.0.tar.gz)
 changelog=ChangeLog
-sha256sums=('dc844d24bfba37ca1a010e4dd4eee06e87f896c1850c2821017ab1c9b8eac90e')
+sha256sums=('db86adbbf74fd6f481991887ee0c141544b66c84655504e9587ebaa1a44e387f')
 
 build() {
   cd "$_pkgname-$pkgver"
