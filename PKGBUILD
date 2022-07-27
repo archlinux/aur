@@ -3,7 +3,7 @@
 _pkgname="hyprland"
 pkgname="${_pkgname}-git"
 pkgver=r1181.gee15ad1
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(any)
 url="https://github.com/hyprwm/Hyprland"
@@ -44,7 +44,6 @@ makedepends=(
 	gcc
 	gdb
 	meson
-	pandoc
 	vulkan-headers
 	wayland-protocols
 	xorgproto)
