@@ -4,7 +4,7 @@
 # Contributor: Julian Raufelder <arch@raufelder.com>
 
 pkgname=cryptomator-bin
-pkgver=1.6.11
+pkgver=1.6.12
 pkgrel=1
 pkgdesc="Multiplatform transparent client-side encryption of your files in the cloud."
 arch=('x86_64')
