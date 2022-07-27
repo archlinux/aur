@@ -29,7 +29,7 @@ noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 pkgver(){
-	cd "punch-git"
+	cd "${_pkgname}"
     printf "%s" "$(git describe --tags)"
 }
 package() {
