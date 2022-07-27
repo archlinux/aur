@@ -1,4 +1,4 @@
-pkgbase = python-httpy
+pkgbase = httpy
 	pkgdesc = Python library to maintain HTTP connections
 	pkgver = 1.4.2
 	pkgrel = 1
