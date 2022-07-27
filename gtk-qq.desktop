@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=gtk-qq
+Name[zh_CN]=QQ
+Keywords=qq;gtk-qq;
+Exec=gtk-qq
+Terminal=false
+Type=Application
+Icon=gtk-qq
+StartupWMClass=gtk-qq
+Comment=Unofficial Linux QQ client, based on GTK4.
+Categories=chat;Network;
