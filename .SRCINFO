@@ -1,0 +1,20 @@
+pkgbase = hypatia
+	pkgdesc = A research helper tool that provides context and information about interesting topics.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/HypatiaProject/hypatia
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = meson
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = libadwaita
+	depends = libgee
+	depends = libsoup3
+	depends = json-glib
+	source = https://github.com/HypatiaProject/hypatia/archive/0.1.1.tar.gz
+	b2sums = 4cc26adb7786f59b69dcc6c75763c35e663e26a9f9dedd96d25f643c548cf468f2d829d41da89edb4c3055d93b4b337f0d0ca8076a168582601b6309198f4bb4
+
+pkgname = hypatia
