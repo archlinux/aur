@@ -1,61 +1,72 @@
 #!/usr/bin/ash
+# shellcheck shell=dash
 
-run_hook() {
-    modprobe -a -q dm-crypt >/dev/null 2>&1
-    [ "${quiet}" = "y" ] && CSQUIET=">/dev/null"
+_verify_signature() {
+    local _status
+    local _file="${1}"
+    local _sigfile="${2}"
+    local _dir _filename
+    _dir="$(dirname "${_file}")"
+    _filename="$(basename "${_file}")"
+    cd "${_dir}" || exit 1
+    gpg --homedir /gpg --status-fd 1 --verify "${_sigfile}" "${_filename}" 2>/dev/null | grep -E '^\[GNUPG:\] GOODSIG'
+    _status=$?
+    cd -- "${OLDPWD}" || exit 1
+    return ${_status}
+}
 
-    # Get keyfile if specified
+_get_key() {
     ckeyfile="/crypto_keyfile.bin"
-    if [ -n "$cryptkey" ]; then
-        IFS=: read ckdev ckarg1 ckarg2 <<EOF
+    IFS=: read ckdev ckarg1 ckarg2 <<EOF
 $cryptkey
 EOF
-
-        if [ "$ckdev" = "rootfs" ]; then
-            ckeyfile=$ckarg1
-        elif resolved=$(resolve_device "${ckdev}" ${rootdelay}); then
-            case ${ckarg1} in
-                *[!0-9]*)
-                    # Use a file on the device
-                    # ckarg1 is not numeric: ckarg1=filesystem, ckarg2=path
-                    IFS=, read ckfs1 ckfs2 <<EOF
+    # shellcheck disable=SC2154
+    if [ "$ckdev" = "rootfs" ]; then
+        ckeyfile=$ckarg1
+    elif resolved=$(resolve_device "${ckdev}" ${rootdelay}); then
+        case ${ckarg1} in
+            *[!0-9]*)
+                # Use a file on the device
+                # ckarg1 is not numeric: ckarg1=filesystem, ckarg2=path
+                IFS=, read ckfs1 ckfs2 <<EOF
 $ckarg1
 EOF
-                    IFS=, read ckpath1 ckpath2 <<EOF
+                IFS=, read ckpath1 ckpath2 <<EOF
 $ckarg2
 EOF
-                    mkdir /ckey
-                    mount --mkdir -r -t "$ckfs1" "$resolved" /ckey
-                    ckey="/ckey/${ckpath1}"
-                    is_fs=$(blkid -o value -s TYPE "${ckey}")
-                    if [ "${is_fs}" != "" ]; then
-                        echo "${ckey} has type ${is_fs}"
-                        if cryptsetup isLuks "${ckey}" >/dev/null 2>&1; then
-                            while ! eval cryptsetup open --type luks2 "${ckey}" ckey; do
-                                sleep 2;
-                            done
-                            ckey="/dev/mapper/ckey"
-                        fi
-                        mount --mkdir -r -t "$ckfs2" "${ckey}" /ckey2
-                        ckey="/ckey2/${ckpath2}"
+                mkdir /ckey
+                mount --mkdir -r -t "$ckfs1" "$resolved" /ckey
+                ckey="/ckey/${ckpath1}"
+                is_fs=$(blkid -o value -s TYPE "${ckey}")
+                if [ "${is_fs}" != "" ]; then
+                    echo "${ckey} has type ${is_fs}"
+                    if cryptsetup isLuks "${ckey}" >/dev/null 2>&1; then
+                        while ! eval cryptsetup open --type luks2 "${ckey}" ckey; do
+                            sleep 2;
+                        done
+                        ckey="/dev/mapper/ckey"
                     fi
-                    dd if="${ckey}" of="$ckeyfile" >/dev/null 2>&1
-                    if mountpoint -q /ckey2; then
-                        umount /ckey2
-                        cryptsetup close --type luks ckey;
-                    fi
-                    umount /ckey
-                    ;;
-                *)
-                    # Read raw data from the block device
-                    # ckarg1 is numeric: ckarg1=offset, ckarg2=length
-                    dd if="$resolved" of="$ckeyfile" bs=1 skip="$ckarg1" count="$ckarg2" >/dev/null 2>&1
-                    ;;
-            esac
-        fi
-        [ ! -f ${ckeyfile} ] && echo "Keyfile could not be opened. Reverting to passphrase."
+                    mount --mkdir -r -t "$ckfs2" "${ckey}" /ckey2
+                    ckey="/ckey2/${ckpath2}"
+                fi
+                dd if="${ckey}" of="$ckeyfile" >/dev/null 2>&1
+                if mountpoint -q /ckey2; then
+                    umount /ckey2
+                    cryptsetup close --type luks ckey;
+                fi
+                umount /ckey
+                ;;
+            *)
+                # Read raw data from the block device
+                # ckarg1 is numeric: ckarg1=offset, ckarg2=length
+                dd if="$resolved" of="$ckeyfile" bs=1 skip="$ckarg1" count="$ckarg2" >/dev/null 2>&1
+                ;;
+        esac
     fi
+    [ ! -f ${ckeyfile} ] && echo "Keyfile could not be opened. Reverting to passphrase."
+}
 
+_get_cryptdev() {
     if [ -n "${cryptdevice}" ]; then
         DEPRECATED_CRYPT=0
         IFS=: read cryptdev cryptname cryptoptions <<EOF
@@ -79,18 +90,9 @@ EOF
             echo "Can't mount device ${cryptdev} over /run/cryptdev"
         fi
     fi
+}
 
-    # This may happen if third party hooks do the crypt setup
-    if [ -b "/dev/mapper/${cryptname}" ]; then
-        echo "Device ${cryptname} already exists, not doing any crypt setup."
-        return 0
-    fi
-
-    warn_deprecated() {
-        echo "The syntax 'root=${root}' where '${root}' is an encrypted volume is deprecated"
-        echo "Use 'cryptdevice=${root}:root root=/dev/mapper/root' instead."
-    }
-
+_set_cryptargs() {
     set -f
     OLDIFS="$IFS"; IFS=,
     for cryptopt in ${cryptoptions}; do
@@ -112,6 +114,14 @@ EOF
     set +f
     IFS="$OLDIFS"
     unset OLDIFS
+}
+
+warn_deprecated() {
+    echo "The syntax 'root=${root}' where '${root}' is an encrypted volume is deprecated"
+    echo "Use 'cryptdevice=${root}:root root=/dev/mapper/root' instead."
+}
+
+_mount_root() {
     resolved=$(cryptsetup isLuks "${cryptdev}" >/dev/null 2>&1 && echo "${cryptdev}")
     [ "${resolved}" = "" ] && resolved=$(resolve_device "${cryptdev}" ${rootdelay})
     if [ "${resolved}" != "" ]; then
@@ -186,6 +196,29 @@ EOF
             err "Failed to open encryption mapping: The device ${cryptdev} is not a LUKS volume and the crypto= paramater was not specified."
         fi
     fi
+}
+
+run_hook() {
+    # shellcheck disable=SC2154
+    modprobe -a -q dm-crypt >/dev/null 2>&1
+    [ "${quiet}" = "y" ] && CSQUIET=">/dev/null"
+
+    _get_cryptdev
+
+    # Get keyfile if specified
+    ckeyfile="/crypto_keyfile.bin"
+    if [ -n "$cryptkey" ]; then
+        _get_key
+    fi
+
+    # This may happen if third party hooks do the crypt setup
+    if [ -b "/dev/mapper/${cryptname}" ]; then
+        echo "Device ${cryptname} already exists, not doing any crypt setup."
+        return 0
+    fi
+
+    _set_cryptargs
+    _mount_root
     rm -f ${ckeyfile}
 }
 
