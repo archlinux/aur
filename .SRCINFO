@@ -1,6 +1,6 @@
 pkgbase = thunderbird-appmenu
 	pkgdesc = Thunderbird from extra with appmenu patch
-	pkgver = 102.0.2
+	pkgver = 102.0.3
 	pkgrel = 2
 	url = https://www.mozilla.org/thunderbird/
 	arch = x86_64
@@ -80,27 +80,22 @@ pkgbase = thunderbird-appmenu
 	depends = libpixman-1.so
 	depends = gnupg
 	optdepends = libotr: OTR support for active one-to-one chats
-	provides = thunderbird=102.0.2
+	provides = thunderbird=102.0.3
 	conflicts = thunderbird
 	options = !emptydirs
 	options = !makeflags
-	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/102.0.2/source/thunderbird-102.0.2.source.tar.xz
-	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/102.0.2/source/thunderbird-102.0.2.source.tar.xz.asc
-	source = thunderbird.desktop
-	source = vendor-prefs.js
-	source = distribution.ini
-	source = mozconfig.cfg
+	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/102.0.3/source/thunderbird-102.0.3.source.tar.xz
+	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/102.0.3/source/thunderbird-102.0.3.source.tar.xz.asc
+	source = cbindgen-0.24.0.diff
+	source = zstandard-0.18.0.diff
 	source = unity-menubar.patch
-	source = fix-wayland.patch
+	source = thunderbird.desktop
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
+	md5sums = d74f2d068e97491aa498e7c8ed2f8877
 	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = bb20e95b9d65d59ba39f2f7f1c853c27
+	md5sums = 29ce7c26f14c9c4169d88d1b05552189
+	md5sums = 63ebf05aea29545081dab2cb023e2bba
 	md5sums = 10872ca39ebb8844ec753203c55bccc4
-	md5sums = 7c04ba88f1078b224c7c1483b5f0fa78
-	md5sums = 1ef0f094e533a68399b96dc8080c6a6e
-	md5sums = c6963498e5ceddedb13af44efa70d86f
-	md5sums = 0d7f0fe667c3e9e54f95fa51e9560eed
-	md5sums = eb9fd90a3b18bfeebbed7e0e6056079c
 
 pkgname = thunderbird-appmenu
-	optdepends = libcanberra: sound support
