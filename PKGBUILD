@@ -1,7 +1,7 @@
 # Maintainer: Felipe Contreras <felipe.contreras@gmail.com>
 
 pkgname=xfce-config-helper
-pkgver=0.1
+pkgver=1.0
 pkgrel=1
 pkgdesc='Tools to help manage Xfce configurations'
 depends=('ruby' 'ruby-dbus')
