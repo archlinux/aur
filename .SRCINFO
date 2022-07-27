@@ -1,7 +1,7 @@
 pkgbase = gnome-browser-connector
 	pkgdesc = Native browser connector for integration with extensions.gnome.org
-	pkgver = 42rc
-	pkgrel = 2
+	pkgver = 42.0
+	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GnomeShellIntegration
 	arch = any
 	license = GPL3
@@ -14,7 +14,7 @@ pkgbase = gnome-browser-connector
 	conflicts = gs-chrome-connector
 	replaces = chrome-gnome-shell
 	replaces = gs-chrome-connector
-	source = git+https://gitlab.gnome.org/nE0sIghT/gnome-browser-connector.git#commit=101c501c34c088e47eea31c86d9a3cc4d0821192
+	source = git+https://gitlab.gnome.org/nE0sIghT/gnome-browser-connector.git#commit=0a3045c16f7add7c867f2681debfd4b870d4163d
 	md5sums = SKIP
 
 pkgname = gnome-browser-connector
