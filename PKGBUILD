@@ -1,7 +1,7 @@
 # Maintainer: thorko contact@thorko.de
 pkgname=sensu-agent
 pkgver=6.7.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Sensu Go Agent"
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://sensu.io'
@@ -18,17 +18,14 @@ install=sensu-agent.install
 source=(
         "sensu-agent.service"
         "agent.yml.example"
-        "users.conf"
         )
 sha256sums=(
             '7d8ca2731fe4a07beab0566d11ed47f0c069774752a96781ac7797697b3f7cc5'
             'c9997fa4be0879bb73b7250863ce9737b422515cf9131626075ff313b4575eed'
-            '5059739620935fb98fa3d3eab83d8633c8c407688c92d7374f833ea92b934360'
           )
 
 package() {
     install -Dm755 "${srcdir}/sensu-agent" "${pkgdir}/usr/bin/sensu-agent"
     install -Dm0644 "sensu-agent.service" "${pkgdir}/usr/lib/systemd/system/sensu-agent.service"
     install -Dm0644 "agent.yml.example" "${pkgdir}/etc/sensu/agent.yml.example"
-    install -Dm0644 "users.conf" "${pkgdir}/usr/lib/sysusers.d/sensu.conf"
 }
