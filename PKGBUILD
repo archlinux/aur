@@ -1,8 +1,3 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer:Integral<luckys68@126.com>
 # Maintainer:ston<2424284164@qq.com>
 pkgname=boardmix-uos
@@ -26,7 +21,7 @@ package() {
 
     echo "  -> Installing..."
     # Launcher
-    install -Dm755 "${pkgdir}/opt/apps/cn.bosyun.boardmix/files/boardmix.sh" "${pkgdir}/usr/bin/boardmix"
+    install -Dm755 "${pkgdir}/opt/apps/cn.bosyun.boardmix/files/boardmix.sh" "${pkgdir}/usr/bin/${pkgname}"
     # Desktop Entry
     install -Dm644 "${pkgdir}/opt/apps/cn.bosyun.boardmix/entries/applications/cn.bosyun.boardmix.desktop" -t "${pkgdir}/usr/share/applications/"
     # License
