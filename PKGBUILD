@@ -8,9 +8,9 @@ arch=("x86_64")
 url="http://compgen.bscb.cornell.edu/phast"
 license=("BSD")
 source=("http://www.netlib.org/clapack/clapack.tgz"
-        "https://github.com/CshlSiepelLab/phast/archive/refs/tags/v${pkgver}.tar.gz")
-sha1sums=("8b284658999d1eb71adb6ad521c6118e2db57a99"
-          "bd489a547e40fbaab3b7785b7435f8cf720dc613")
+        "$pkgname-$pkgver.tar.gz::https://github.com/CshlSiepelLab/phast/archive/refs/tags/v${pkgver}.tar.gz")
+sha1sums=('8b284658999d1eb71adb6ad521c6118e2db57a99'
+          'bd489a547e40fbaab3b7785b7435f8cf720dc613')
 
 build() {
     # Build CLAPACK

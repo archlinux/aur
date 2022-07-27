@@ -6,7 +6,7 @@ pkgbase = phast
 	arch = x86_64
 	license = BSD
 	source = http://www.netlib.org/clapack/clapack.tgz
-	source = https://github.com/CshlSiepelLab/phast/archive/refs/tags/v1.6.tar.gz
+	source = phast-1.6.tar.gz::https://github.com/CshlSiepelLab/phast/archive/refs/tags/v1.6.tar.gz
 	sha1sums = 8b284658999d1eb71adb6ad521c6118e2db57a99
 	sha1sums = bd489a547e40fbaab3b7785b7435f8cf720dc613
 
