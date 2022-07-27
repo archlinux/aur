@@ -129,7 +129,7 @@ build() {
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
 #  export MOZ_ENABLE_FULL_SYMBOLS=1
-#  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
+  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
 
   # LTO needs more open files
   ulimit -n 4096
