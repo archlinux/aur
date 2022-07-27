@@ -2,11 +2,12 @@
 
 _pkgname=gcsvedit
 pkgname=${_pkgname}-git
+epoch=1
 pkgver=0.8.0+58+gc1c7746
 pkgrel=1
 pkgdesc='Simple text editor for CSV, TSV and other kinds of delimiter-separated values (DSV) files.'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
-url="https://github.com/swilmet/gCSVedit"
+url="https://github.com/sonnyp/gCSVedit"
 license=('GPL3')
 depends=('gtk3' 'libxml2' 'libtepl-6.so' 'gtksourceview4')
 makedepends=('git')
