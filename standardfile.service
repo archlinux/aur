@@ -6,9 +6,9 @@ Wants=network.target
 [Service]
 User=standardfile
 Group=standardfile
-Type=forking
+Type=simple
 WorkingDirectory=/var/lib/standardfile
-ExecStart=/usr/bin/standardfile -c /etc/standardfile.yaml
+ExecStart=/usr/bin/standardfile server -c /etc/standardfile.yaml
 PIDFile=/var/lib/standardfile/pid
 Restart=on-abnormal
 
