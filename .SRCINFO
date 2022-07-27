@@ -1,6 +1,6 @@
 pkgbase = seadrive-daemon
 	pkgdesc = Daemon part of seadrive
-	pkgver = 2.0.16
+	pkgver = 2.0.22
 	pkgrel = 1
 	url = https://www.seafile.com/en/download/ + https://linux-clients.seafile.com/seadrive-deb/focal/pool/main/s/seadrive-daemon/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = seadrive-daemon
 	depends = libevent-compat
 	depends = openssl-1.0
 	depends = fuse2
-	source = http://linux-clients.seafile.com/seadrive-deb/focal/pool/main/s/seadrive-daemon/seadrive-daemon_2.0.16_amd64.deb
-	sha256sums = d635d8d679c689d3abe0cf6a3ef4509c3fd5326690e9f887689415c289f93521
+	source = http://linux-clients.seafile.com/seadrive-deb/focal/pool/main/s/seadrive-daemon/seadrive-daemon_2.0.22_amd64.deb
+	sha256sums = 8990b833647cc3c3ba2d58124f2cd8e27ad5a03cc768f4396a860700da7ac6f3
 
 pkgname = seadrive-daemon
