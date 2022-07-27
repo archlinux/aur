@@ -5,12 +5,12 @@ pkgbase = gtk-qq-git
 	url = https://github.com/lomirus/gtk-qq
 	arch = x86_64
 	license = AGPL3
-	makedepends = pkgconf
-	makedepends = libadwaita
 	makedepends = meson
 	makedepends = rustup
+	makedepends = git
 	depends = openssl
 	depends = gtk4
+	depends = libadwaita
 	source = git+https://github.com/lomirus/gtk-qq
 	sha512sums = SKIP
 
