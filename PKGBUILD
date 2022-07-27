@@ -2,71 +2,45 @@
 
 _basename=sord
 pkgname=lib32-sord
-pkgver=0.16.10
+pkgver=0.16.12
 pkgrel=1
 pkgdesc="A lightweight C library for storing RDF data in memory (32-bit)"
 arch=(x86_64)
-url="https://drobilla.net/software/sord/"
+url="https://drobilla.net/software/sord.html"
 license=(custom:ISC)
-depends=(lib32-glibc lib32-serd sord)
-makedepends=(lib32-gcc-libs waf)
-source=(https://download.drobilla.net/$_basename-$pkgver.tar.bz2{,.sig})
-sha512sums=('715201eaf4a13a3635337cf8fa7c1a1f229f1d589f70cdf8f67183d90df29cd8b4af180650ce9cd0c651c712d11901bfdc6b51f9b8d7c6e70d8d8f30b1861281'
+depends=(lib32-serd sord)
+makedepends=(meson)
+source=(https://download.drobilla.net/$_basename-$pkgver.tar.xz{,.sig})
+sha512sums=('d63cc1473d12676dac3724a096c85fd47745e456cf4b191fd9f8aaf8bb9399510c6878948fd045cc1942356e61dbefd8d88374c1ef6b327057e0bb8bfa03f926'
             'SKIP')
-b2sums=('6737d3495846529e6e4d14cbb2ac47ce4e67d04298381a119ba0107144deb56a53de9aa363397c2e302535f998c7c3ad44d340f52f70ac341ad6b635db608cb6'
+b2sums=('9b89848440a994145a934e66e6fe7b844e82e926cb48d05223faef9357d315db981cd68b1174d7c47e5d63b97f8e15d8cc6b2b992a6bd790b8b117ebbb6c059a'
         'SKIP')
 validpgpkeys=('907D226E7E13FA337F014A083672782A9BF368F3') # David Robillard <d@drobilla.net>
-
-prepare() {
-    cd $_basename-$pkgver
-
-    # remove local call to ldconfig
-    sed -i "/ldconfig/d" wscript
-
-    # let wscript(s) find the custom waf scripts
-    mkdir -pv tools
-    touch __init__.py
-    touch tools/__init__.py
-    cp -v waflib/extras/{autoship,autowaf,lv2}.py tools/
-    mkdir -pv plugins/tools/
-    cp -v waflib/extras/{autoship,autowaf,lv2}.py plugins/tools/
-    rm -rv waflib
-    sed -e 's/waflib.extras/tools/g' \
-        -e "s/load('autowaf'/load('autowaf', tooldir='tools'/g" \
-        -e "s/load('lv2'/load('lv2', tooldir='tools'/g" \
-        -i wscript
-}
 
 build() {
     export CC='gcc -m32'
     export CXX='g++ -m32'
-    export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+    export PKG_CONFIG='/usr/bin/i686-pc-linux-gnu-pkg-config'
 
-    export LINKFLAGS="$LDFLAGS"
+    arch-meson $_basename-$pkgver build \
+        --libdir='/usr/lib32' \
+        -Ddocs=disabled \
+        -Dtools=disabled
 
-    cd $_basename-$pkgver
-
-    waf configure --prefix=/usr \
-                  --libdir=/usr/lib32 \
-                  --test
-
-    waf build
+    meson compile -C build
 }
 
 check() {
-    cd $_basename-$pkgver
-
-    waf test
+    meson test -C build
 }
 
 package() {
-    cd $_basename-$pkgver
+    meson install -C build --destdir "$pkgdir"
 
-    waf install --destdir="$pkgdir"
-
-    install -vDm 644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
+    install -vDm 644 $_basename-$pkgver/COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
+    install -vDm 644 $_basename-$pkgver/{AUTHORS,NEWS,README.md} -t "$pkgdir/usr/share/doc/$pkgname/"
 
     cd "$pkgdir/usr"
 
-    rm -r bin include share/man
+    rm -r include
 }
