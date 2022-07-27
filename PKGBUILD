@@ -1,7 +1,7 @@
 # Maintainer: another <code § deadcode § eu>
 # Contributor: (unknown)
 pkgname=bitmap
-pkgver=1.0.9
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="X-bitmap (XBM) editor and converter utilities"
 arch=('i686' 'x86_64')
@@ -9,9 +9,12 @@ url="http://www.x.org/"
 license=('MIT')
 depends=('libxaw>=1.0.7')
 makedepends=('xbitmaps')
-source=("https://ftp.x.org/pub/individual/app/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('4b5f058a54bc6c831482320fab374bf5d729356ac8277f0e45e9080079d9eb4f')
-sha512sums=('4b8c89ecf6456609b497d3fab62d848e65d3b61dfa49b5761acfae8675c3ab8dc49a9f35a807796388b46fbc68b4cc0ab3422240ebd6e61e9543c8c5e89fd566')
+source=(https://www.x.org/releases/individual/app/${pkgname}-${pkgver}.tar.xz{,.sig})
+sha256sums=('8e86879c2feeece3f10e189330479cf51da0dd268355d1e3ee8a8497ab833690'
+            'SKIP')
+sha512sums=('3d6c94675f10772daeb71598c3e0ddcb51569b1bfc4771159e9df89599bfeb8bf49f464c24fef54d30a8f737af32136f859f844be03e088d24ed962f88381193'
+            'SKIP')
+validpgpkeys=('4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E') # Alan Coopersmith <alan.coopersmith@oracle.com>
 
 build(){
 	cd "${pkgname}-${pkgver}"
