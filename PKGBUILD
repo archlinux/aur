@@ -1,6 +1,6 @@
 # Maintainer: Corentin Cadiou <contact@cphyc.me>
 pkgname=focalboard-bin
-pkgver=v0.15.0
+pkgver=v7.0.1
 pkgrel=1
 epoch=
 pkgdesc="A self-hosted alternative to Trello, Notion, and Asana."
@@ -25,7 +25,7 @@ source=(
 	"focalboard_launcher.sh"
 )
 noextract=()
-sha256sums=('870e40fbcb6e2864ea29dc53881d0529ec50599b1df44b38eb5782850ba9c20f'
+sha256sums=('11a1202e802f9f8cbde07eb49c91136dcb1448e23eb72fd08f1580636cf4f658'
             'beaa7a13fa7f8df7b7d65a35e5c56432fbf543cd7cd85dd8e83ad55cf6865fc9'
             '2a76b99b190bdaf347eef3c4b92e63a2164204455094653a9231a535881cd18b')
 validpgpkeys=()
