@@ -1,3 +1,4 @@
+PKGDEST="/tmp/"
 pkgname=httpy
 pkgrel=1
 arch=('x86_64')
