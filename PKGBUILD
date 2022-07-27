@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=punch-git
-pkgver=$(git describe --tags)
+pkgver=VERSION
 pkgrel=1
 epoch=
 pkgdesc="file and folder management written in rust"
@@ -13,7 +13,7 @@ arch=(x86_64)
 url="https://github.com/spicylemonade/punch.git"
 license=('MIT')
 groups=()
-depends=(rustup)
+depends=(rustup git)
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -28,7 +28,9 @@ source=("git+$url")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
-
+pkgver(){
+    echo $(git describe --tags)
+}
 package() {
 	cd "punch"
 	. ./build.sh
