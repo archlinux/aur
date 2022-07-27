@@ -3,19 +3,20 @@
 
 pkgname=trn
 pkgver=4.0test77
-pkgrel=4
+pkgrel=5
 pkgdesc="Text-based threaded Usenet newsreader"
 arch=('i686' 'x86_64')
 url="http://trn.sourceforge.net/"
 license=('custom')
-depends=('heimdal-aur' 'ncurses')
+depends=('heimdal' 'ncurses')
 makedepends=('patch' 'expect' 'bison')
 optdepends=('aspell: spellcheck support'
   'sendmail: (or any outgoing mailer) outgoing email support')
 source=('http://downloads.sourceforge.net/trn/trn-4.0-test77.tar.gz' 
         'trn-4.0-test77-aur.patch' 'configbot')
+install=trn.install
 md5sums=('e0680ae4e6062747f88ba982326ac4c0'
-         '227db01e410765accad9a51520c837a4'
+         'cbe0903d86aa2a016093c0a2dd9604ef'
          '852f1309e9681bc340682484bd2322dc')
 
 prepare() {
@@ -24,6 +25,9 @@ prepare() {
   # fixes in include order to allow builds, and a fix to allow aspell
   # to be used as the speller:
   patch -Np1 < ${srcdir}/trn-4.0-test77-aur.patch
+
+  # The heimdal library really shouldn't be here
+  export LD_LIBRARY_PATH=/usr/heimdal/lib:$LD_LIBRARY_PATH
 
   # the Configure script is very very interactive, so we
   # let expect handle it.  This expect script runs the
@@ -35,6 +39,7 @@ build() {
   cd "$srcdir/trn-4.0-test77"
 
   # build it!
+
   make
 }
 

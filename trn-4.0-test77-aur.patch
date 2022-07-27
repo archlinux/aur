@@ -1,6 +1,6 @@
 diff -Naur trn-4.0-test77/Configure trn-4.0-test77-aur/Configure
 --- trn-4.0-test77/Configure	2010-09-01 23:12:26.000000000 -0700
-+++ trn-4.0-test77-aur/Configure	2013-04-01 10:02:17.966843649 -0700
++++ trn-4.0-test77-aur/Configure	2022-07-27 12:45:50.403340652 -0700
 @@ -3047,6 +3047,7 @@
  echo "Checking for GNU cc in disguise and/or its version number..." >&4
  $cat >gccvers.c <<EOM
@@ -41,9 +41,125 @@ diff -Naur trn-4.0-test77/Configure trn-4.0-test77-aur/Configure
  main()
  {
  	struct tm foo;
+diff -Naur trn-4.0-test77/scan.c trn-4.0-test77-aur/scan.c
+--- trn-4.0-test77/scan.c	2000-05-24 22:11:42.000000000 -0700
++++ trn-4.0-test77-aur/scan.c	2022-07-27 13:18:12.406702116 -0700
+@@ -16,6 +16,40 @@
+ #include "EXTERN.h"
+ #include "sorder.h"
+ 
++long* s_ent_sort;		/* sorted list of entries in the context */
++long s_ent_sort_max;		/* maximum index of sorted array */
++long s_ent_sorted_max;		/* maximum index *that is sorted* */
++long* s_ent_index;		/* indexes into ent_sorted */
++long s_ent_index_max;		/* maximum entry number added */
++
++int s_page_size;		/* number of entries allocated for page */
++				/* (usually fixed, > max screen lines) */
++PAGE_ENT* page_ents;		/* array of entries on page */
++/* -1 means not initialized for top and bottom entry */
++long s_top_ent;		/* top entry on page */
++long s_bot_ent;		/* bottom entry (note change) */
++bool s_refill;			/* does the page need refilling? */
++/* refresh entries */
++bool s_ref_all;		/* refresh all on page */
++bool s_ref_top;		/* top status bar */
++bool s_ref_bot;		/* bottom status bar */
++/* -1 for the next two entries means don't refresh */
++short s_ref_status;		/* line to start refreshing status from */
++short s_ref_desc;		/* line to start refreshing descript. from */
++/* screen sizes */
++short s_top_lines;		/* lines for top status bar */
++short s_bot_lines;		/* lines for bottom status bar */
++short s_status_cols;		/* characters for status column */
++short s_cursor_cols;		/* characters for cursor column */
++short s_itemnum_cols;		/* characters for item number column */
++short s_desc_cols;		/* characters for description column */
++/* pointer info */
++short s_ptr_page_line;		/* page_ent index */
++long  s_flags;			/* misc. flags */
++
++/* current context type (for fast switching) */
++int s_cur_type;
++
+ void
+ s_init_context(cnum,type)
+ int cnum,type;
+diff -Naur trn-4.0-test77/scan.h trn-4.0-test77-aur/scan.h
+--- trn-4.0-test77/scan.h	2000-05-24 22:11:42.000000000 -0700
++++ trn-4.0-test77-aur/scan.h	2022-07-27 13:18:48.943369305 -0700
+@@ -64,36 +64,36 @@
+ 
+ /* the current values */
+ 
+-long* s_ent_sort;		/* sorted list of entries in the context */
+-long s_ent_sort_max;		/* maximum index of sorted array */
+-long s_ent_sorted_max;		/* maximum index *that is sorted* */
+-long* s_ent_index;		/* indexes into ent_sorted */
+-long s_ent_index_max;		/* maximum entry number added */
++extern long* s_ent_sort;		/* sorted list of entries in the context */
++extern long s_ent_sort_max;		/* maximum index of sorted array */
++extern long s_ent_sorted_max;		/* maximum index *that is sorted* */
++extern long* s_ent_index;		/* indexes into ent_sorted */
++extern long s_ent_index_max;		/* maximum entry number added */
+ 
+-int s_page_size;		/* number of entries allocated for page */
++extern int s_page_size;		/* number of entries allocated for page */
+ 				/* (usually fixed, > max screen lines) */
+-PAGE_ENT* page_ents;		/* array of entries on page */
++extern PAGE_ENT* page_ents;		/* array of entries on page */
+ /* -1 means not initialized for top and bottom entry */
+-long s_top_ent;		/* top entry on page */
+-long s_bot_ent;		/* bottom entry (note change) */
+-bool s_refill;			/* does the page need refilling? */
++extern long s_top_ent;		/* top entry on page */
++extern long s_bot_ent;		/* bottom entry (note change) */
++extern bool s_refill;			/* does the page need refilling? */
+ /* refresh entries */
+-bool s_ref_all;		/* refresh all on page */
+-bool s_ref_top;		/* top status bar */
+-bool s_ref_bot;		/* bottom status bar */
++extern bool s_ref_all;		/* refresh all on page */
++extern bool s_ref_top;		/* top status bar */
++extern bool s_ref_bot;		/* bottom status bar */
+ /* -1 for the next two entries means don't refresh */
+-short s_ref_status;		/* line to start refreshing status from */
+-short s_ref_desc;		/* line to start refreshing descript. from */
++extern short s_ref_status;		/* line to start refreshing status from */
++extern short s_ref_desc;		/* line to start refreshing descript. from */
+ /* screen sizes */
+-short s_top_lines;		/* lines for top status bar */
+-short s_bot_lines;		/* lines for bottom status bar */
+-short s_status_cols;		/* characters for status column */
+-short s_cursor_cols;		/* characters for cursor column */
+-short s_itemnum_cols;		/* characters for item number column */
+-short s_desc_cols;		/* characters for description column */
++extern short s_top_lines;		/* lines for top status bar */
++extern short s_bot_lines;		/* lines for bottom status bar */
++extern short s_status_cols;		/* characters for status column */
++extern short s_cursor_cols;		/* characters for cursor column */
++extern short s_itemnum_cols;		/* characters for item number column */
++extern short s_desc_cols;		/* characters for description column */
+ /* pointer info */
+-short s_ptr_page_line;		/* page_ent index */
+-long  s_flags;			/* misc. flags */
++extern short s_ptr_page_line;		/* page_ent index */
++extern long  s_flags;			/* misc. flags */
+ 
+ EXT int s_num_contexts INIT(0);
+ /* array of context structures */
+@@ -102,7 +102,7 @@
+ /* current context number */
+ EXT int s_cur_context INIT(0);
+ /* current context type (for fast switching) */
+-int s_cur_type;
++extern int s_cur_type;
+ 
+ /* options */
+ /* show item numbers by default */
 diff -Naur trn-4.0-test77/Speller.SH trn-4.0-test77-aur/Speller.SH
 --- trn-4.0-test77/Speller.SH	2000-05-24 22:11:41.000000000 -0700
-+++ trn-4.0-test77-aur/Speller.SH	2010-09-22 18:10:34.000000000 -0700
++++ trn-4.0-test77-aur/Speller.SH	2022-07-27 12:45:50.403340652 -0700
 @@ -16,7 +16,7 @@
  # what pager you use--if you have kernal paging use cat
  pager="\${PAGER-$pager}"
