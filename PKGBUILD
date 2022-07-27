@@ -1,7 +1,7 @@
 # Maintainer: Mihail G. <misho88@gmail.com>
 
 pkgname=service6-git
-pkgver=50.0d25116
+pkgver=52.1305ff3
 pkgrel=1
 pkgdesc="user-friendy control of s6-rc"
 arch=('any')
