@@ -1,7 +1,7 @@
 # Maintainer: thorko contact@thorko.de
 pkgname=sensu-backend
 pkgver=6.7.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Sensu Go Backend"
 arch=('x86_64' 'armv7h')
 url='https://sensu.io'
@@ -16,12 +16,10 @@ sha256sums_aarch64=('2c63ea234facc1be601c4d1a6c00fe4a5f6faff1f429527ee8e4caaac73
 source=(
         "sensu-backend.service"
         "backend.yml.example"
-        "users.conf"
       )
 sha256sums=(
             '57c4e7835da2d58186e8e36518dc9e0b7cee93bd018619ec2a7210bf212d0d27'
             '29cf533a6b324ede8f2d774954bdbf879d0bf4470244cba5e7fbe1b935c1c4e9'
-            '5059739620935fb98fa3d3eab83d8633c8c407688c92d7374f833ea92b934360'
           )
 
 install=sensu-backend.install
@@ -30,5 +28,4 @@ package() {
     install -Dm755 "${srcdir}/sensu-backend" "${pkgdir}/usr/bin/sensu-backend"
     install -Dm0644 "sensu-backend.service" "${pkgdir}/usr/lib/systemd/system/sensu-backend.service"
     install -Dm0644 "backend.yml.example" "${pkgdir}/etc/sensu/backend.yml.example"
-    install -Dm0644 "users.conf" "${pkgdir}/usr/lib/sysusers.d/sensu.conf"
 }
