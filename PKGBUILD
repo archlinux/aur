@@ -1,15 +1,15 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgbase=web-eid-webextension
 pkgname=("firefox-extension-web-eid" "chromium-extension-web-eid")
-pkgver=2.0.1
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Web eID browser extension"
 arch=('any')
 url="https://web-eid.eu/"
 license=('MIT')
 depends=('web-eid')
-makedepends=('git' 'nodejs-lts-fermium' 'npm')
-source=("$pkgbase::git+https://github.com/web-eid/web-eid-webextension.git?signed#tag=v$pkgver"
+makedepends=('git' 'nodejs-lts-gallium' 'npm')
+source=("$pkgbase::git+https://github.com/web-eid/web-eid-webextension.git#tag=v$pkgver"
         "web-eid-js::git+https://github.com/web-eid/web-eid.js.git")
 sha256sums=("SKIP" "SKIP")
 validpgpkeys=(
@@ -26,7 +26,7 @@ prepare() {
 build() {
     cd "$srcdir/$pkgbase"
     npm install --cache "${srcdir}/npm-cache"
-    SOURCE_DATE_EPOCH=$(git log -1 --pretty=%ct) npm run clean build package
+    TOKEN_SIGNING_BACKWARDS_COMPATIBILITY=true SOURCE_DATE_EPOCH=$(git log -1 --pretty=%ct) npm run clean build package
 }
 
 package_firefox-extension-web-eid() {
