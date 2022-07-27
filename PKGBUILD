@@ -29,7 +29,7 @@ build() {
 }
 
 check() {
-	meson test -C build
+	meson test -C builddir
 }
 
 package() {
