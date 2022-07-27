@@ -1,0 +1,15 @@
+pkgbase = done
+	pkgdesc = Done is a simple to do app that aims to improve on the existing set of features provided to do apps to deliver the ultimate experience.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/edfloreshz/done
+	arch = x86_64
+	license = GPL2
+	makedepends = cargo
+	makedepends = meson
+	depends = libadwaita
+	depends = sqlite
+	source = https://github.com/edfloreshz/done/archive/v0.1.1.tar.gz
+	b2sums = 9e60e2ffa79a17e0c80348456445098216b7ff32db7a0a52361f767d16caa0ddd3fdfd0049663b77fb9feaedb841d30821f2e06c6531e8f578ce46e8aa152fb1
+
+pkgname = done
