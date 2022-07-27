@@ -106,6 +106,7 @@ _configure() {
 }
 
 build() (
+ mkdir -p build-user-static
   cd build-user-static
   [[ ! $FORCE_CONFIGURE && -e ../qemu-${pkgver}/config.log ]] || _configure
   make ARFLAGS="rc"
