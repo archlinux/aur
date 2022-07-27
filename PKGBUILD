@@ -3,7 +3,7 @@
 
 _basename=libgphoto2
 pkgname=lib32-libgphoto2
-pkgver=2.5.29
+pkgver=2.5.30
 pkgrel=1
 pkgdesc="Digital camera access library (32-bit)"
 url="http://www.gphoto.org/"
@@ -11,7 +11,7 @@ arch=(x86_64)
 license=(LGPL)
 depends=(curl lib32-libexif lib32-gd lib32-libltdl lib32-libusb lib32-libxml2 libgphoto2)
 makedepends=(autoconf-archive git)
-_commit=1691f4705cc08b08c7569ae3e83001ba8c3f28c2 # tags/libgphoto2-2_5_29-release
+_commit=6511898c4be52a9306f0791476561bdcebf5317d  # tags/libgphoto2-2_5_30-release
 source=("git+https://github.com/gphoto/libgphoto2#commit=$_commit")
 sha256sums=('SKIP')
 validpgpkeys=('7C4AFD61D8AAE7570796A5172209D6902F969C95') # Marcus Meissner
@@ -56,6 +56,6 @@ package() {
     rm -r "$pkgdir"/usr/share
 
     # Remove unused udev helper
-    rm -r "$pkgdir/usr/lib32/udev"
+    rm -rv "$pkgdir/usr/lib32/udev"
 }
 
