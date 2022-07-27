@@ -3,8 +3,8 @@
 _init_system=dinit
 _basename=tblock
 pkgname=${_basename}-${_init_system}
-pkgver=2.2.0
-pkgrel=4
+pkgver=2.3.0
+pkgrel=1
 provides=("$_basename")
 pkgdesc="An anti-capitalist ad-blocker that uses the hosts file"
 url="https://tblock.codeberg.page"
@@ -31,7 +31,7 @@ source=(
         "tblockd::https://codeberg.org/tblock/tblock/raw/commit/a324fd2424baf3f6208c40246ecbe9eaa4fa89b4/assets/services/dinit/tblockd"
 )
 sha512sums=(
-        "0b803786c5c271eef68aad589b1a497bb7615144ce6eb5fee90c0e8e4255c9ca25d05885c897f34f867792b220f5fcfd1a9d4b62eff64a4214bc184131b3d36b"
+        "2f2498cfc4b0ee28bf6d0b671013036bf0b2ddb65da86f2d83e2bbb42cf3f525bdb6b55a799329da5f4647dbb4b0e6deb543c2c4d02a763cf8b360e17ad5d9de"
         "036e85bafeb5c9c1a62340124576c48603138851cf6bd23e93913c404aa3bfc1b7beda23c6bbd7c714d069f8ba756dfb3af4c29accb45aacabe03732e714ddf7"
 )
 backup=("etc/tblock.conf")
