@@ -1,5 +1,3 @@
-# Maintainer: Chen Jicheng <git@chenjicheng.com>
-# fork https://aur.archlinux.org/packages/firefox-nightly, but update the package version daily.
 # Maintainer: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
 # Contributor: Cedric MATHIEU <me.xenom @ gmail.com>
 
@@ -10,13 +8,12 @@ _pkgname=${_name}-${_channel}
 pkgname=${_name}-${_channel}-bin
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
-_version=104.0a1
-pkgver=104.0a1.20220718065908+h2426bd765f8b
+_version=105.0a1
+pkgver=105.0a1.20220727093731+hb2f38ca819ab
 pkgrel=1
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
 depends=(dbus-glib gtk3 libxt nss mime-types)
-conflicts=(firefox-nightly)
 optdepends=('pulseaudio: audio support'
             'ffmpeg: h.264 video'
             'hunspell: spell checking'
@@ -24,6 +21,7 @@ optdepends=('pulseaudio: audio support'
             'libnotify: notification integration'
             'networkmanager: location detection via available WiFi networks'
             'speech-dispatcher: text-to-speech')
+conflicts=(firefox-nightly)
 _url="https://download-installer.cdn.mozilla.net/pub/${_name}/nightly/latest-mozilla-central"
 _src="${_name}-${_version}.${_lang}.linux"
 _filename="$(date -u +%Y%m%d)-${_src}"
@@ -36,12 +34,8 @@ source_x86_64=("${_filename}-x86_64.tar.bz2"::"${_url}/${_src}-x86_64.tar.bz2"
                "${_filename}-x86_64.txt"::"${_url}/${_src}-x86_64.txt")
 sha512sums=('87c181628c3be0762000ff3b5cb841ed2c2371937e4aab7f8f441c608dd08d349085036880c8e8aaed40d01fe258ea9be159741e9fad9f493c96fb9be4cc0de3'
             '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308')
-sha512sums_i686=('e496e6dcfe36cf193e85272fd82e6d5407edd2b0a62653be4d374575236a0e889d6670a0890cd5363a696d4285ebe406244bb81351024cd8b7b2e3171928018c'
-                 'SKIP'
-                 'f5b9260092e151c617598b7f8d626a36d950b3bf326a68307be6aef36f543f70a1bef7733d29ff65a5e9f0483e9d3d7c4650725a6c33812d74dcb5dd5ec77e09')
-sha512sums_x86_64=('18f7f591010a2f8a4a8f1bc40d342b8a364b65017cac2d7989de685213d40b8d08e5ea40c2e847e5a3416d80f7d22841037d1f4d249edddef76844db206be3b8'
-                   'SKIP'
-                   'f5b9260092e151c617598b7f8d626a36d950b3bf326a68307be6aef36f543f70a1bef7733d29ff65a5e9f0483e9d3d7c4650725a6c33812d74dcb5dd5ec77e09')
+sha512sums_i686=(SKIP SKIP SKIP)
+sha512sums_x86_64=(SKIP SKIP SKIP)
 validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla’s GnuPG release key
 
 pkgver() {
