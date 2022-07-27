@@ -9,7 +9,7 @@ license=('MIT')
 depends=('freetype2')
 makedepends=('cmake')
 source=("https://github.com/vladimirgamalyan/fontbm/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7befe5e39a7d72370ef5f96f09784556c9efedafe393db66f726eee7d0a4705b')
+md5sums=('76a242e85067acc2cbc6983ade15d1d7')
 
 build() {      
         cd "${pkgname}-${pkgver}"
