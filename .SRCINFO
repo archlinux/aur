@@ -1,14 +1,14 @@
 pkgbase = bmap-tools
 	pkgdesc = Tool optimized for copying largely sparse files using information from a block map (bmap) file
 	pkgver = 3.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/intel/bmap-tools
 	arch = any
 	license = GPL2
 	depends = python
 	depends = python-setuptools
+	depends = python-six
 	source = https://github.com/intel/bmap-tools/archive/v3.6.tar.gz
 	sha256sums = 0658afb972e7221aa16fece3f84e29e5102e901c929253d7fb6040bde28243f7
 
 pkgname = bmap-tools
-
