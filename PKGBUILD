@@ -1,4 +1,4 @@
-pkgname=python-httpy
+pkgname=httpy
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Python library to maintain HTTP connections"
