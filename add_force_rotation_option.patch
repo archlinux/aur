@@ -1,5 +1,5 @@
 diff --git a/src/drm.cpp b/src/drm.cpp
-index 8cb8918..1e1ce95 100644
+index 9f75f06..cee005d 100644
 --- a/src/drm.cpp
 +++ b/src/drm.cpp
 @@ -41,6 +41,8 @@ bool g_bDebugLayers = false;
@@ -75,7 +75,7 @@ index 8cb8918..1e1ce95 100644
  
  			liftoff_layer_set_property( drm->lo_layers[ i ], "CRTC_X", crtcX);
  			liftoff_layer_set_property( drm->lo_layers[ i ], "CRTC_Y", crtcY);
-@@ -1802,7 +1841,7 @@ bool drm_update_color_mtx(struct drm_t *drm)
+@@ -1814,7 +1853,7 @@ bool drm_update_color_mtx(struct drm_t *drm)
  		drm_ctm.matrix[i] = color.s31_32;
  	}
  
@@ -84,7 +84,7 @@ index 8cb8918..1e1ce95 100644
  	if (drmModeCreatePropertyBlob(drm->fd, &drm_ctm,
  			sizeof(struct drm_color_ctm), &blob_id) != 0) {
  		drm_log.errorf_errno("Unable to create CTM property blob");
-@@ -1877,7 +1916,7 @@ bool drm_update_gamma_lut(struct drm_t *drm)
+@@ -1889,7 +1928,7 @@ bool drm_update_gamma_lut(struct drm_t *drm)
  		gamma_lut[i].blue  = drm_calc_lut_value( b_exp, drm->pending.color_linear_gain[2], drm->pending.color_gain[2], drm->pending.gain_blend );
  	}
  
@@ -93,7 +93,7 @@ index 8cb8918..1e1ce95 100644
  	if (drmModeCreatePropertyBlob(drm->fd, gamma_lut,
  			lut_entries * sizeof(struct drm_color_lut), &blob_id) != 0) {
  		drm_log.errorf_errno("Unable to create gamma LUT property blob");
-@@ -1925,7 +1964,7 @@ bool drm_update_degamma_lut(struct drm_t *drm)
+@@ -1937,7 +1976,7 @@ bool drm_update_degamma_lut(struct drm_t *drm)
  		degamma_lut[i].blue  = drm_quantize_lut_value( safe_pow( input, drm->pending.color_degamma_exponent[2] ) );
  	}
  
@@ -103,10 +103,10 @@ index 8cb8918..1e1ce95 100644
  			lut_entries * sizeof(struct drm_color_lut), &blob_id) != 0) {
  		drm_log.errorf_errno("Unable to create degamma LUT property blob");
 diff --git a/src/drm.hpp b/src/drm.hpp
-index 286e345..de9fffd 100644
+index 84a726b..995856b 100644
 --- a/src/drm.hpp
 +++ b/src/drm.hpp
-@@ -78,7 +78,7 @@ struct fb {
+@@ -79,7 +79,7 @@ struct fb {
  	uint32_t id;
  	/* Client buffer, if any */
  	struct wlr_buffer *buf;
@@ -115,8 +115,8 @@ index 286e345..de9fffd 100644
  	 * doesn't need to be atomic as it's only ever
  	 * modified/read from the steamcompmgr thread */
  	int held_refs;
-@@ -100,19 +100,19 @@ struct drm_t {
- 	std::map< uint32_t, struct connector > connectors;
+@@ -101,19 +101,19 @@ struct drm_t {
+ 	std::unordered_map< uint32_t, struct connector > connectors;
  
  	std::map< uint32_t, drmModePropertyRes * > props;
 -	
@@ -139,7 +139,7 @@ index 286e345..de9fffd 100644
  	struct liftoff_device *lo_device;
  	struct liftoff_output *lo_output;
  	struct liftoff_layer *lo_layers[ k_nMaxLayers ];
-@@ -141,16 +141,16 @@ struct drm_t {
+@@ -142,16 +142,16 @@ struct drm_t {
  	std::vector < uint32_t > fbids_queued;
  	/* FBs currently on screen */
  	std::vector < uint32_t > fbids_on_screen;
@@ -160,8 +160,8 @@ index 286e345..de9fffd 100644
  	std::atomic < uint64_t > flipcount;
  
  	std::atomic < bool > paused;
-@@ -175,7 +175,16 @@ enum drm_mode_generation {
- 	DRM_MODE_GENERATE_FIXED,
+@@ -183,7 +183,16 @@ enum drm_screen_type {
+ 	DRM_SCREEN_TYPE_COUNT
  };
  
 +enum g_panel_orientation {
