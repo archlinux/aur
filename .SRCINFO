@@ -1,7 +1,7 @@
 pkgbase = paperless-ngx
 	pkgdesc = A supercharged version of paperless: scan, index and archive all your physical documents
 	pkgver = 1.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/paperless-ngx/paperless-ngx
 	install = paperless.install
 	arch = any
@@ -73,7 +73,7 @@ pkgbase = paperless-ngx
 	depends = python-dotenv
 	depends = python-gnupg
 	depends = python-levenshtein
-	depends = python-magic-ahupp
+	depends = python-magic
 	depends = python-pytz
 	depends = python-yaml
 	depends = python-redis

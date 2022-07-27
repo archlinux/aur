@@ -3,7 +3,7 @@
 
 pkgname="paperless-ngx"
 pkgver=1.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A supercharged version of paperless: scan, index and archive all your physical documents"
 url="https://github.com/paperless-ngx/paperless-ngx"
 license=("GPL3")
@@ -77,7 +77,7 @@ depends=("file"
          "python-dotenv"
          "python-gnupg"
          "python-levenshtein"
-         "python-magic-ahupp"
+         "python-magic"
          "python-pytz"
          "python-yaml"
          "python-redis"
