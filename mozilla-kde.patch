@@ -3,7 +3,7 @@
 # Date 1559294891 -7200
 #      Fri May 31 11:28:11 2019 +0200
 # Node ID c2aa7198fb925e7fde96abf65b6f68b9b755f112
-# Parent  edd7284c391b503b76bb5bb6321f24ab2f5f8bdf
+# Parent  64d0c9c59c2e7f31722466406a4c13cdf5c39a6b
 Description: Add KDE integration to Firefox (toolkit parts)
 Author: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Author: Lubos Lunak <lunak@suse.com>
@@ -255,7 +255,7 @@ diff --git a/toolkit/mozapps/downloads/HelperAppDlg.jsm b/toolkit/mozapps/downlo
 diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp
 --- a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp
 +++ b/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp
-@@ -10,16 +10,17 @@
+@@ -10,16 +10,18 @@
  #include "prnetdb.h"
  #include "prenv.h"
  #include "nsInterfaceHashtable.h"
@@ -264,6 +264,7 @@ diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/sy
  #include "nsNetUtil.h"
  #include "nsISupportsPrimitives.h"
  #include "nsIGSettingsService.h"
++#include "nsPrintfCString.h"
 +#include "nsKDEUtils.h"
  
  using namespace mozilla;
@@ -273,7 +274,7 @@ diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/sy
    NS_DECL_ISUPPORTS
    NS_DECL_NSISYSTEMPROXYSETTINGS
  
-@@ -33,16 +34,18 @@ class nsUnixSystemProxySettings final : 
+@@ -33,16 +35,18 @@ class nsUnixSystemProxySettings final : 
    nsCOMPtr<nsIGSettingsCollection> mProxySettings;
    nsInterfaceHashtable<nsCStringHashKey, nsIGSettingsCollection>
        mSchemeProxySettings;
@@ -292,7 +293,7 @@ diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/sy
  nsUnixSystemProxySettings::GetMainThreadOnly(bool* aMainThreadOnly) {
    // dbus prevents us from being threadsafe, but this routine should not block
    // anyhow
-@@ -378,21 +381,50 @@ nsresult nsUnixSystemProxySettings::GetP
+@@ -378,21 +382,50 @@ nsresult nsUnixSystemProxySettings::GetP
    return NS_OK;
  }
  

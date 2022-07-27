@@ -10,7 +10,7 @@ _patchurl=https://raw.githubusercontent.com/openSUSE/firefox-maintenance/master
 _bazaarurl=https://bazaar.launchpad.net/~mozillateam/firefox/firefox-trunk.head/download/head:/debian/patches
 
 pkgname=firefox-kde
-pkgver=102.0.1
+pkgver=103.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE and Ubuntu patches"
 arch=(x86_64)
@@ -31,7 +31,6 @@ options=(!emptydirs !makeflags !strip !lto !debug)
 provides=('firefox')
 conflicts=('firefox')
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
-        cbindgen-0.24.0.diff
         zstandard-0.18.0.diff
         $_pkgname.desktop
         identity-icons-brand.svg
@@ -41,16 +40,15 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         firefox-kde.patch::$_patchurl/firefox/firefox-kde.patch
         # https://bazaar.launchpad.net/~mozillateam/firefox/firefox-trunk.head/files/head:/debian/patches
         unity-menubar.patch::$_bazaarurl/unity-menubar.patch)
-sha256sums=('7bba6ffd6e8e42d5c38aa2a453f5fa30dfc9ef150f2175aa0625edb68fddae70'
+sha256sums=('acc41d050560db4c4177ea86e2d00e47d74229041fea4c02c0e9e87e64093773'
             'SKIP'
-            'd3ea2503dff0a602bb058153533ebccd8232e8aac1dc82437a55d724b8d22bc2'
-            '61701fbc965aee8c186ed05cc2750cfa13b6639b8c5fcd54d5d62f8e2dd2c295'
+            'a6857ad2f2e2091c6c4fdcde21a59fbeb0138914c0e126df64b50a5af5ff63be'
             '298eae9de76ec53182f38d5c549d0379569916eebf62149f9d7f4a7edef36abf'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
-            'f73b885106dbec9305f87c3716b7288fea1626ba29965a29fd5f5e8567fedd07'
+            '7bb6e9736b6e48300df89aabe4559da7f0e2c1c3b178a209ced70852942f79dd'
             'bcedaf4feb3ec56c86cb3b99c0fa99c3f38090485454d4beacf23bd90056433a'
             '19a029be46d89e76239f23d417f290c6a9050056fa2f786cd1ccdbab25cb02e9'
-            '0c6e1cf2bee5445cda5209ea6e4745a1175f863204245aa9be9c77073a017dd6')
+            '49a490199cdb19a1cf2735a35966cf056b2fcc13ec16cbe91f5869b50cac5cfe')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -68,9 +66,6 @@ _mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
 prepare() {
   mkdir mozbuild
   cd firefox-${pkgver%b*}
-
-  # Unbreak build with cbindgen 0.24.0
-  patch -Np1 -i ../cbindgen-0.24.0.diff
 
   # Unbreak build with python-zstandard 0.18.0
   patch -Np1 -i ../zstandard-0.18.0.diff
