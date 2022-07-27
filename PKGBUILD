@@ -9,11 +9,11 @@ makedepends=('git' 'make')
 depends=( 'sh' 'bash' 'xclip' 'flameshot' 'dmenu' 'imagemagick' 'xdotool')
 source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
-check(){
+check() {
     cd "${pkgname}"
     make check
 }
 package() {
-	cd "${pkgname}"
-	make DESTDIR="$pkgdir/" install
+    cd "${pkgname}"
+    make DESTDIR="$pkgdir/" install
 }
