@@ -1,13 +1,13 @@
 pkgbase = clusterctl-bin
 	pkgdesc = Cluster API Tool
-	pkgver = 1.1.5
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://cluster-api.sigs.k8s.io/
 	arch = x86_64
 	license = Apache
 	optdepends = kubectl: to manage the cluster
 	provides = clusterctl
-	source = clusterctl-linux-amd64-v1.1.5::https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.1.5/clusterctl-linux-amd64
-	sha256sums = 1573d60436503ff0d17ceac6284a4bd85493060c40269c1bab93897a30794dcb
+	source = clusterctl-linux-amd64-v1.2.0::https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.2.0/clusterctl-linux-amd64
+	sha256sums = b7bae14ffb4b566b853c4a88bbc351dc551fd681e18411b309f0f51b11071a8f
 
 pkgname = clusterctl-bin
