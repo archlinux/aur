@@ -1,6 +1,6 @@
 pkgbase = neovim-indent-blankline
 	pkgdesc = Indent guides for Neovim
-	pkgver = 2.19.1
+	pkgver = 2.20.0
 	pkgrel = 1
 	url = https://github.com/lukas-reineke/indent-blankline.nvim
 	install = indent-blankline.install
@@ -8,7 +8,7 @@ pkgbase = neovim-indent-blankline
 	groups = neovim-plugins
 	license = MIT
 	depends = neovim
-	source = neovim-indent-blankline-2.19.1.tar.gz::https://github.com/lukas-reineke/indent-blankline.nvim/archive/v2.19.1.tar.gz
-	sha256sums = 2ca7094fb1bc430c2eefc23748e0d83e9a995b305c6e6d7c17b6b754f5bf0b9a
+	source = neovim-indent-blankline-2.20.0.tar.gz::https://github.com/lukas-reineke/indent-blankline.nvim/archive/v2.20.0.tar.gz
+	sha256sums = 40340bbabe6b4dc5af3e0a69445ec5ce4f7f5083f2f5e588f3f205ffd4d8bb5f
 
 pkgname = neovim-indent-blankline
