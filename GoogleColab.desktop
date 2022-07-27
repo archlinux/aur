@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version = 1.0
+Type = Application
+Terminal = false
+Name = "Google Colab"
+Comment = Cloud Python Notebook Environment
+Exec = electron /usr/share/colab-desktop/app.asar "$@"
+Icon = googlecolab
+Categories = Science;Development;IDE;ArtificialIntelligence
+Keywords = python;jupyter

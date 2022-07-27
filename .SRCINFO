@@ -1,0 +1,21 @@
+pkgbase = colab-desktop
+	pkgdesc = Google Colab desktop webapp wrapper
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://colab.research.google.com/
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = icoutils
+	depends = electron
+	replaces = colab-chromium-desktop
+	source = build.js
+	source = colab-desktop
+	source = GoogleColab.desktop
+	source = https://colab.research.google.com/img/favicon.ico
+	sha256sums = 8a248e77ef7a0a6058d45a3b3c3b2e02ae563332d313fbaae2da8e4baf21f33f
+	sha256sums = f72bd81379a65d7825fc7a2c5cef141330380b16b1fd3dceefcc50dde812c7f7
+	sha256sums = 7c5cd5852cc603e45a99cf2e9787a150ec8717b0477ea8d57daa5193a0b79a53
+	sha256sums = 52232ddc81832d3edc91776ac1bc587fc40c91dc633e00b5f911466ad1c67f3a
+
+pkgname = colab-desktop
