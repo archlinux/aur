@@ -1,21 +1,17 @@
 pkgbase = xf86-video-r128
 	pkgdesc = X.org ati Rage128 video driver
 	pkgver = 6.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xorg.freedesktop.org/
 	arch = i686
 	arch = x86_64
 	groups = xorg-drivers
 	license = custom
 	makedepends = xorg-server-devel
-	makedepends = X-ABI-VIDEODRV_VERSION=24.0
+	makedepends = X-ABI-VIDEODRV_VERSION=25.2
 	depends = glibc
 	optdepends = r128-dri: DRI1 support from community repo
 	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-r128-6.12.0.tar.bz2
-	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-r128-6.12.0.tar.bz2.sig
-	validpgpkeys = 6EA3F3F3B9082632A9CBE931D53A0445B47A0DAB
 	sha256sums = 801c86882cbd2bbb3084d471dcc5cfee2c1754dcbfb4dc446676d58a6bd9e057
-	sha256sums = SKIP
 
 pkgname = xf86-video-r128
-
