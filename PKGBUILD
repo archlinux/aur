@@ -22,7 +22,7 @@ source=('git+https://github.com/dallenwilson/gstm.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_gitname"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
