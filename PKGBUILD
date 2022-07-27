@@ -20,30 +20,27 @@ arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/thunderbird/"
 
-depends=(
-  glibc gtk3 libgdk-3.so libgtk-3.so mime-types dbus libdbus-1.so dbus-glib
-  alsa-lib nss hunspell sqlite ttf-font libvpx zlib bzip2 libbz2.so
-  botan libwebp libwebp.so libwebpdemux.so libevent libjpeg-turbo libffi
-  libffi.so nspr gcc-libs libx11 libxrender libxfixes libxext libxcomposite
-  libxdamage pango libpango-1.0.so cairo gdk-pixbuf2 icu libicui18n.so
-  libicuuc.so freetype2 libfreetype.so fontconfig libfontconfig.so glib2
-  libglib-2.0.so pixman libpixman-1.so gnupg
-)
+depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse)
+makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
+             autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
+             python-setuptools python-zstandard lld dump_syms
+             wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi)
+optdepends=('networkmanager: Location detection via available WiFi networks'
+            'libnotify: Notification integration'
+            'pulseaudio: Audio support'
+            'speech-dispatcher: Text-to-Speech'
+            'hunspell-en_US: Spell checking, American English'
+            'xdg-desktop-portal: Screensharing with Wayland')
+options=(!emptydirs !makeflags !strip !lto !debug)
 
-optdepends=(
-  'libotr: OTR support for active one-to-one chats'
-)
-makedepends=(
-  unzip zip diffutils python python-setuptools yasm nasm mesa imake libpulse
-  inetutils xorg-server-xvfb autoconf2.13 rust clang llvm gtk2 cbindgen nodejs
-  gawk perl findutils libotr
-)
 provides=("thunderbird=$pkgver")
 conflicts=("thunderbird")
-options=(!emptydirs !makeflags)
+
 source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz{,.asc}
-cbindgen-0.24.0.diff zstandard-0.18.0.diff unity-menubar.patch
-$_pkgname.desktop)
+        cbindgen-0.24.0.diff
+        zstandard-0.18.0.diff
+        unity-menubar.patch
+        $_pkgname.desktop)
 
 
 md5sums=('d74f2d068e97491aa498e7c8ed2f8877'
