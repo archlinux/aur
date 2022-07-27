@@ -1,0 +1,14 @@
+pkgbase = catless-git
+	pkgdesc = cat and less in one program
+	pkgver = r1.4ad51f9
+	pkgrel = 1
+	url = https://github.com/NikitaIvanovV/catless
+	arch = any
+	license = MIT
+	depends = gawk
+	depends = less
+	provides = catless
+	source = git+https://github.com/NikitaIvanovV/catless
+	sha512sums = SKIP
+
+pkgname = catless-git
