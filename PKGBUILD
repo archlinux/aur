@@ -18,7 +18,6 @@ conflicts=('seahorse')
 provides=('seahorse')
 makedepends=(libldap yelp-tools gobject-introspection vala git meson)
 provides=(x11-ssh-askpass)
-_pkgname=seahorse
 # Tag: 3.30.0: 7e0535880a2010df356d9c468c68cdcb77b45431
 #_commit=7e0535880a2010df356d9c468c68cdcb77b45431
 #source=("git+https://gitlab.gnome.org/GNOME/seahorse.git#commit=$_commit")
@@ -27,12 +26,12 @@ source=("git+https://gitlab.gnome.org/GNOME/seahorse.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${_pkgname}
+  cd ${pkgname%-git}
   git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
-  cd ${_pkgname}
+  cd ${pkgname%-git}
 }
 
 build() {
