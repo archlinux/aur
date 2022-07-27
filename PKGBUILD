@@ -44,6 +44,7 @@ makedepends=(
 	gcc
 	gdb
 	meson
+	pandoc
 	vulkan-headers
 	wayland-protocols
 	xorgproto)

@@ -11,6 +11,7 @@ pkgbase = hyprland-git
 	makedepends = gcc
 	makedepends = gdb
 	makedepends = meson
+	makedepends = pandoc
 	makedepends = vulkan-headers
 	makedepends = wayland-protocols
 	makedepends = xorgproto
