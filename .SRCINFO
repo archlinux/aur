@@ -1,6 +1,6 @@
 pkgbase = bitwarden-cli-bin
 	pkgdesc = Bitwarden Command-line Interface
-	pkgver = 1.22.0
+	pkgver = 1.22.1
 	pkgrel = 1
 	url = https://github.com/bitwarden/cli
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = bitwarden-cli-bin
 	makedepends = unzip
 	conflicts = bitwarden-cli
 	options = !strip
-	source = https://github.com/bitwarden/cli/releases/download/v1.22.0/bw-linux-1.22.0.zip
+	source = https://github.com/bitwarden/cli/releases/download/v1.22.1/bw-linux-1.22.1.zip
 	md5sums = SKIP
 
 pkgname = bitwarden-cli-bin
