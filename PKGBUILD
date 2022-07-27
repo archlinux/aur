@@ -2,8 +2,8 @@
 
 pkgname=o-bin
 pkgver=2.55.0
-pkgrel=1
-pkgdesc='Text editor'
+pkgrel=2
+pkgdesc='Text editor, IDE and gdb frontend (CLI only)'
 arch=(aarch64 armv6 armv7 riscv64 x86_64)
 url='https://github.com/xyproto/o'
 license=(BSD)
