@@ -1,9 +1,8 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-ablog
 _pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}")
-#"python-${_pyname}-doc")
-pkgver=0.10.26
+pkgname=("python-${_pyname}" "python-${_pyname}-doc")
+pkgver=0.10.27
 pkgrel=1
 pkgdesc=" ABlog for blogging with Sphinx"
 arch=('any')
@@ -12,20 +11,20 @@ license=('MIT')
 makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
-             'python-installer')
-#             requires docutils<0.19
-#             'python-sphinx-automodapi'
-#             'python-nbsphinx'
-##            'python-feedgen'
-#             'python-invoke'
-#             'python-myst-parser'
-#             'python-watchdog'
-#             'pandoc'
-#             'graphviz')
-checkdepends=('python-pytest>=6.0.0' 'python-sphinx' 'python-feedgen')
+             'python-installer'
+             'python-sphinx-automodapi'
+             'python-nbsphinx'
+             'python-feedgen'
+             'python-invoke'
+             'python-myst-parser'
+             'python-watchdog'
+             'pandoc'
+             'graphviz')
+checkdepends=('python-pytest>=6.0.0')
+#'python-sphinx' 'python-feedgen')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #source=("https://github.com/sunpy/ablog/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('a1ded441f223a3bf348cf67f8f5ad0d8')
+md5sums=('7eae4f62eeb8511d30759ae7f71d90a2')
 
 get_pyver() {
     python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
@@ -39,17 +38,17 @@ build() {
     cd ${srcdir}/${_pyname}-${pkgver}
     python -m build --wheel --no-isolation
 
-#   msg "Building Docs"
-#   ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
-#       build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver).egg-info
-#   cd ${srcdir}/${_pyname}-${pkgver}/docs
-#   PYTHONPATH="../build/lib" make html
+    msg "Building Docs"
+    ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
+        build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver).egg-info
+    cd ${srcdir}/${_pyname}-${pkgver}/docs
+    PYTHONPATH="../build/lib" make html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest #|| warning "Tests failed"
+    pytest || warning "Tests failed"
 }
 
 package_python-ablog() {
@@ -65,11 +64,11 @@ package_python-ablog() {
     python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
-#package_python-ablog-doc() {
-#    pkgdesc="Documentation for ABlog"
-#    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
-#
-#    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE.rst
-#    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
-#    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
-#}
+package_python-ablog-doc() {
+    pkgdesc="Documentation for ABlog"
+    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
+
+    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE.rst
+    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
+    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
+}
