@@ -1,7 +1,7 @@
 pkgbase = kuro
 	pkgdesc = An Electron wrapper for Microsoft To-Do
-	pkgver = 8.1.3
-	pkgrel = 2
+	pkgver = 8.1.4
+	pkgrel = 1
 	url = https://github.com/davidsmorais/kuro
 	arch = x86_64
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = kuro
 	conflicts = ao
 	conflicts = ao-git
 	conflicts = kuro-appimage
-	source = https://github.com/davidsmorais/kuro/releases/download/v8.1.3/kuro-8.1.3.pacman
-	sha256sums = 79af4ecf3ee598bf75da52be6b6cae644a931d5bc63ff7d7ae4bca2c41a54368
+	source = https://github.com/davidsmorais/kuro/releases/download/v8.1.4/kuro-8.1.4.pacman
+	sha256sums = 1f7f7f7305d49d576e4214a02cd5899905b7c0e6b2e34e45666625bee4d38e72
 
 pkgname = kuro

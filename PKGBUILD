@@ -3,8 +3,8 @@
 # Contributor: David Naramski <david.naramski AT gmail.com>
 # Contributor: Paul Oppenheimer <redg3ar@airmail.cc>
 pkgname=kuro
-pkgver=8.1.3
-pkgrel=2
+pkgver=8.1.4
+pkgrel=1
 pkgdesc="An Electron wrapper for Microsoft To-Do"
 arch=('x86_64')
 url="https://github.com/davidsmorais/kuro"
@@ -13,7 +13,7 @@ depends=('libnotify' 'libxtst' 'nss' 'libxss')
 provides=('ao' 'kuro')
 conflicts=('ao' 'ao-git' 'kuro-appimage')
 source=("${url}/releases/download/v${pkgver}/kuro-${pkgver}.pacman")
-sha256sums=('79af4ecf3ee598bf75da52be6b6cae644a931d5bc63ff7d7ae4bca2c41a54368')
+sha256sums=('1f7f7f7305d49d576e4214a02cd5899905b7c0e6b2e34e45666625bee4d38e72')
 
 package() {
     # Install the application files in /opt
