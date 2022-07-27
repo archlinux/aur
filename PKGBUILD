@@ -3,7 +3,7 @@
 
 pkgname=qemu-system-loongarch64-git
 _pkgname=qemu-system-loongarch64
-pkgdesc="Statically linked binaries of Qemu with loongarch64 user emulation. Useful for containers/chroot environment with binfmt."
+pkgdesc="QEMU system emulator for loongarch64"
 pkgver=7.0.50.r97536.g8ec4bc3c8c
 pkgrel=1
 provides=( ${_pkgname} )
