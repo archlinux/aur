@@ -1,8 +1,8 @@
 # Maintainer: Alan Beale <the.mrabz@gmail.com>
 
 pkgname=minecraft-bedrock-server
-pkgver=1.19.10.03
-pkgrel=2
+pkgver=1.19.11.01
+pkgrel=1
 pkgdesc="Minecraft Bedrock Server for Windows 10 and Xbox One versions of Minecraft"
 arch=('x86_64')
 url="https://www.minecraft.net/en-us/download/server/bedrock"
