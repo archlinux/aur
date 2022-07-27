@@ -2,7 +2,7 @@
 # Maintainer:ston<2424284164@qq.com>
 pkgname=boardmix-uos
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Online collaborative whiteboard software."
 arch=('x86_64')
 url="https://boardmix.cn/"
