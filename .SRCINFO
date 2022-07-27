@@ -1,0 +1,17 @@
+pkgbase = xf86-video-cirrus
+	pkgdesc = Cirrus Logic video driver for the Xorg X server
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = x86_64
+	license = custom
+	makedepends = xorg-server-devel
+	makedepends = X-ABI-VIDEODRV_VERSION=25.2
+	depends = glibc
+	conflicts = xorg-server<21.1.1
+	conflicts = X-ABI-VIDEODRV_VERSION<25
+	conflicts = X-ABI-VIDEODRV_VERSION>=26
+	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-cirrus-1.6.0.tar.gz
+	sha256sums = 6448c25dabfa87153904cfa8aa21568d09022517d8f851dc9a360b3e1187f146
+
+pkgname = xf86-video-cirrus
