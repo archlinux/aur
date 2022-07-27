@@ -1,0 +1,15 @@
+pkgbase = pixso-uos
+	pkgdesc = A collaborative UI/UX design software.
+	pkgver = 1.28.0
+	pkgrel = 1
+	url = https://pixso.cn/
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	depends = gtk3
+	depends = nss
+	optdepends = libappindicator-gtk3: Allow Pixso to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).
+	source = https://home-store-packages.uniontech.com/appstore/pool/appstore/c/cn.bosyun.pixso/cn.bosyun.pixso_1.28.0_amd64.deb
+	sha512sums = 10b251be950dcd11e9f85dc3aefa49b5ab6fcf4b59aa795785d714184b0fab6d19a33ee50cf23dddc27fbb5ad89f9de8050fad48491b23e2973d0e8e59d6b35e
+
+pkgname = pixso-uos
