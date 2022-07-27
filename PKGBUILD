@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=punch-git
-pkgver=VERSION
+pkgver=1.7.5
 pkgrel=1
 epoch=
 pkgdesc="file and folder management written in rust"
@@ -29,7 +29,7 @@ noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 pkgver(){
-    echo $(git describe --tags)
+    printf "v%s" $(git describe --tags)
 }
 package() {
 	cd "punch"
