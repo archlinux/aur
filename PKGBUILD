@@ -3,7 +3,7 @@
 
 _pkgname=gyroflow
 pkgname=${_pkgname}-git
-pkgver=1.1.0.r0.g66fad8f
+pkgver=1.1.0.r50.gd85b2b3
 pkgrel=1
 pkgdesc="Video stabilization using gyroscope data (Git version)"
 arch=("x86_64")
@@ -64,10 +64,6 @@ package() {
 
     install -Dm0644 "resources/icon.svg" "${pkgdir}/usr/share/pixmaps/${_pkgname}.svg"
     install -Dm0644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-
-    # Workaround for svg loading
-    # See https://github.com/gyroflow/gyroflow/issues/353
-    cp -a resources/icons/svg/* "${pkgdir}/usr/share/pixmaps/"
 
     mkdir -p "${pkgdir}/usr/bin"
     ln -s "/opt/${_pkgname}/${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
