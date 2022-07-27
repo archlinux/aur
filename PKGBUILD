@@ -2,7 +2,7 @@
 
 pkgname=vmware-unlocker
 pkgver=4.2.1
-pkgrel=23
+pkgrel=25
 pkgdesc="VMware macOS utilities"
 arch=("x86_64")
 url="https://github.com/DrDonk/unlocker"
@@ -33,5 +33,5 @@ package() {
   install -Dm755 "$srcdir/$pkgname/dist/linux/"* "$pkgdir/usr/bin/"
   install -Dm644 "$srcdir/$pkgname/dist/iso/"* "$pkgdir/usr/iso/"
   install -Dm644 "$srcdir/"*.hook "$pkgdir/etc/pacman.d/hooks/"
-  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
