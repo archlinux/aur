@@ -1,7 +1,7 @@
 pkgbase = owrx_connector-git
 	pkgdesc = Connectors used by OpenWebRX to interface with SDR hardware.
 	pkgver = 0.6.0.r1.g8887135
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jketterl/owrx_connector
 	arch = x86_64
 	license = GPL3
@@ -9,6 +9,8 @@ pkgbase = owrx_connector-git
 	makedepends = cmake
 	depends = csdr
 	depends = libsamplerate
+	optdepends = rtl-sdr: RTLSDR dongles support.
+	optdepends = soapysdr: Allows interfacing with SDRs of many vendors.
 	provides = owrx_connector
 	source = owrx_connector-git::git+https://github.com/jketterl/owrx_connector
 	md5sums = SKIP
