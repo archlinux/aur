@@ -1,9 +1,10 @@
+# Maintainer: Cimu Wang <cimu58@gmail.com>
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 # Contributor: Robert Cegliński <rob.ceglinski@gmail.com>
 
 _name=ClearUrls
 pkgname=firefox-clearurls
-pkgver=1.23.1
+pkgver=1.25.0
 pkgrel=1
 pkgdesc='Removes tracking elements from URLs'
 arch=('any')
@@ -11,11 +12,12 @@ url=https://clearurls.xyz
 license=('LGPL3')
 groups=('firefox-addons')
 makedepends=('strip-nondeterminism' 'zip')
-source=("https://gitlab.com/KevinRoebert/$_name/-/archive/$pkgver/$_name-$pkgver.tar.gz")
-md5sums=('6c7250c5e547198fdce7fec07010f731')
+#source=("https://gitlab.com/KevinRoebert/$_name/-/archive/$pkgver/$_name-$pkgver.tar.gz")
+source=("https://github.com/$_name/Addon/archive/refs/tags/$pkgver.tar.gz")
+md5sums=('8af1d0da08f81a5f7d706a139314cc71')
 
 prepare() {
-  cd $_name-$pkgver
+  cd Addon-$pkgver
   sed -i 's/"default_locale": "en",/"default_locale": "en",\
     "browser_specific_settings": {\
       "gecko": {\
@@ -25,7 +27,7 @@ prepare() {
 }
 
 package() {
-  cd $_name-$pkgver
+  cd Addon-$pkgver
   install -d "$pkgdir"/usr/lib/firefox/browser/extensions
   zip -r \
     "$pkgdir"/usr/lib/firefox/browser/extensions/{74145f27-f039-47ce-a470-a662b129930a}.xpi \
