@@ -5,7 +5,7 @@
 pkgname='cookcli-git'
 _pkgname="${pkgname%-git}"
 arch=('x86_64')
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='CookCLI is provided as a command-line tool to make Cook recipe management easier, and enable automation and scripting workflows for the CookLang ecosystem. Build from source.'
 provides=("${_pkgname}")
@@ -15,7 +15,7 @@ license=('MIT')
 depends=('swift-language' 'libdispatch')
 
 source=("CookCLI_${pkgver}.zip::https://github.com/cooklang/CookCLI/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('443441bc7302096a667159df6535aadb655944165315110e0c1103496f1a3f9c')
+sha256sums=('0ad919c950dad9375adaceb79a1cfc407a3ac776a8190de2a82fef30a02a5504')
 check() {
     cd "${srcdir}/CookCLI-${pkgver}"
     ".build/${CARCH}-unknown-linux-gnu/release/cook" recipe read seed/Borsch.cook
