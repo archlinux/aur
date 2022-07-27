@@ -1,0 +1,11 @@
+[Unit]
+Description=mosdns - A DNS forwarder
+After=network.target
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/mosdns start -c /etc/mosdns/config.yaml -d /etc/mosdns
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
