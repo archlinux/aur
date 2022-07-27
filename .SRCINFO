@@ -1,7 +1,7 @@
 pkgbase = ctpv-git
 	pkgdesc = Terminal previewer
-	pkgver = r193.4aee1f7
-	pkgrel = 2
+	pkgver = r195.2a890bd
+	pkgrel = 1
 	url = https://github.com/NikitaIvanovV/ctpv
 	arch = i686
 	arch = x86_64
@@ -33,6 +33,7 @@ pkgbase = ctpv-git
 	optdepends = transmission-cli: for torrent files
 	optdepends = ueberzug: for image files
 	optdepends = w3m: for html files
+	provides = ctpv
 	source = git+https://github.com/NikitaIvanovV/ctpv?signed
 	validpgpkeys = 701DE74D84F87EE1BC91CD216E656AC5B97B5133
 	sha512sums = SKIP

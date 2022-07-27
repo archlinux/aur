@@ -1,12 +1,13 @@
 # Maintainer: Nikita Ivanov <nikita dot vyach dot ivanov at gmail dot com>
 _name=ctpv
 pkgname="${_name}-git"
-pkgver=r193.4aee1f7
-pkgrel=2
+pkgver=r195.2a890bd
+pkgrel=1
 pkgdesc="Terminal previewer"
 arch=('i686' 'x86_64')
 url="https://github.com/NikitaIvanovV/ctpv"
 license=('MIT')
+provides=("$_name")
 depends=('file' 'openssl' 'imagemagick' 'coreutils')
 makedepends=('git')
 optdepends=(
