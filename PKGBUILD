@@ -13,7 +13,7 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_ver="1.19_0.4.3_0.17.0-1" # <mcver_installerver_loaderver>
+_ver="1.19.1_0.4.3_0.17.1-1" # <mcver_installerver_loaderver>
 # installer ver can be gotten at https://meta.quiltmc.org/v3/versions/installer
 # loader ver can be gotten at https://meta.quiltmc.org/v3/versions/loader
 # stay on stable loader releases for the time being.
