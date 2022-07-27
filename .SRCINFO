@@ -1,0 +1,12 @@
+pkgbase = punch-git
+	pkgdesc = file and folder management written in rust
+	pkgver = 1.7.5
+	pkgrel = 1
+	url = https://github.com/spicylemonade/punch.git
+	arch = x86_64
+	license = MIT
+	depends = rustup
+	source = git+https://github.com/spicylemonade/punch.git
+	md5sums = SKIP
+
+pkgname = punch-git
