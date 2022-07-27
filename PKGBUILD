@@ -4,7 +4,7 @@
 # Contributor: Sebastian Stenzel <sebastian.stenzel@gmail.com>
 
 pkgname=cryptomator
-pkgver=1.6.11
+pkgver=1.6.12
 pkgrel=1
 pkgdesc="Multiplatform transparent client-side encryption of your files in the cloud."
 arch=('any')
@@ -67,6 +67,7 @@ build() {
     --java-options "-Dcryptomator.logDir=\"~/.local/share/Cryptomator/logs\"" \
     --java-options "-Dcryptomator.pluginDir=\"~/.local/share/Cryptomator/plugins\"" \
     --java-options "-Dcryptomator.settingsPath=\"~/.config/Cryptomator/settings.json:~/.Cryptomator/settings.json\"" \
+    --java-options "-Dcryptomator.p12Path=\"~/.config/Cryptomator/key.p12\"" \
     --java-options "-Dcryptomator.ipcSocketPath=\"~/.config/Cryptomator/ipc.socket\"" \
     --java-options "-Dcryptomator.mountPointsDir=\"~/.local/share/Cryptomator/mnt\"" \
     --java-options "-Dcryptomator.showTrayIcon=false" \
