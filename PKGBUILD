@@ -7,11 +7,11 @@ pkgdesc="STAR aligns RNA-seq reads to a reference genome using uncompressed suff
 arch=("x86_64")
 url="https://github.com/alexdobin/STAR"
 license=("GPL3")
-makedepends=("vim")
-source=("https://github.com/alexdobin/STAR/archive/${pkgver}.tar.gz"
+makedepends=('vim')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/alexdobin/STAR/archive/${pkgver}.tar.gz"
         "STAR-2.7.10a-missing-include.patch")
-sha1sums=("daaa3b889d7b38927df5c8e80a9bc032b0a4560f"
-          "fd09f494e1d6c5a474e41c610a355bf7a46f1aaf")
+sha1sums=('daaa3b889d7b38927df5c8e80a9bc032b0a4560f'
+          'fd09f494e1d6c5a474e41c610a355bf7a46f1aaf')
 
 prepare() {
   cd "$srcdir/STAR-${pkgver}"
