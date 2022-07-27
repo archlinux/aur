@@ -1,7 +1,7 @@
 # Maintainer: Malte Jürgens <maltejur@dismail.de>
 
 pkgname=discord-screenaudio
-_pkgver=1.0.0-rc.6
+_pkgver=1.0.0-rc.7
 pkgver=$(echo "$_pkgver" | sed 's/-/./')
 pkgrel=1
 pkgdesc="Custom discord client with the ability to stream desktop audio"
@@ -15,7 +15,7 @@ source=(
   "rohrkabel-1.2.tar.gz::https://github.com/Soundux/rohrkabel/archive/refs/tags/v1.2.tar.gz"
 )
 sha256sums=(
-  "4f755259cea1d8a426dc3d50c8b5fda001808a21b400a6975376fa9ccf3d3db8"
+  "12ba2f9b5ac6ba5a922c5e39a808681011e230d4d14f71bde591f6d1003cae31"
   "e167e50d4c633a2b96dde5faa28cd83dd56828868c669fcf86c7e0ade7db1dcd"
 )
 
