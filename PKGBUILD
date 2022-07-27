@@ -1,15 +1,15 @@
 # Maintainer: Brian "Beej Jorgensen" Hall <beej@beej.us>
 pkgname=wizardscastle-ncurses
-pkgver=1.0.2
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="A classic dungeon-crawling game"
 arch=('i686' 'x86_64')
 url="https://github.com/beejjorgensen/Wizards-Castle-Ncurses"
 license=('MIT')
 depends=("ncurses")
-makedepends=("rust>=1.31.0")
+makedepends=("rust")
 source=($pkgname-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('636622af578fde45b32bd21f246116497702d2a9f87c79d384cbdaf78620515733050b285c4d54e20db936e69d1324c0d5a674676e572e0b6b0e841cfdf379b3')
+sha512sums=('48ee0459acb39b7ceb70efa5c87658aa0caed28dfb138b74ec5b628fbda5f9b1948f4089f6bdf778d9247001974c77e4a80db5b7fb388bc63a18c23cb7c929ab')
 
 build() {
   cd "Wizards-Castle-Ncurses-$pkgver"
