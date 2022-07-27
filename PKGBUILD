@@ -8,7 +8,7 @@ pkgdesc="Bowtie 2 is an ultrafast and memory-efficient tool for aligning sequenc
 arch=("x86_64")
 url="http://bowtie-bio.sourceforge.net/bowtie2"
 license=("GPL3")
-source=("https://github.com/BenLangmead/bowtie2/archive/v${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/BenLangmead/bowtie2/archive/v${pkgver}.tar.gz")
 sha1sums=('1d9ab9d5c0a90cad48b447e93b95d7ff9f72545e')
 
 prepare() {

@@ -5,7 +5,7 @@ pkgbase = bowtie2
 	url = http://bowtie-bio.sourceforge.net/bowtie2
 	arch = x86_64
 	license = GPL3
-	source = https://github.com/BenLangmead/bowtie2/archive/v2.4.5.tar.gz
+	source = bowtie2-2.4.5.tar.gz::https://github.com/BenLangmead/bowtie2/archive/v2.4.5.tar.gz
 	sha1sums = 1d9ab9d5c0a90cad48b447e93b95d7ff9f72545e
 
 pkgname = bowtie2
