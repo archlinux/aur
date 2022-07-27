@@ -1,6 +1,6 @@
 pkgbase = dmenu-translate-git
 	pkgdesc = Quick text translation with dmenu
-	pkgver = r19.5dbf707
+	pkgver = r26.e02ece5
 	pkgrel = 1
 	url = https://github.com/NikitaIvanovV/dmenu-translate
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = dmenu-translate-git
 	depends = translate-shell
 	depends = xclip
 	depends = libnotify
+	provides = dmenu-translate
 	source = git+https://github.com/NikitaIvanovV/dmenu-translate
 	sha512sums = SKIP
 
