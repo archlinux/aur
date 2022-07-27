@@ -2,7 +2,7 @@
 
 pkgname='dye'
 pkgdesc="An ultrafast image colorizer tool"
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=0
 arch=('x86_64')
 url="https://github.com/Infinitybeond1/dye"
