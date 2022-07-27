@@ -2,12 +2,12 @@ pkgbase = fontbm
 	pkgdesc = BMFont compatible command line bitmap font generator.
 	pkgver = 0.5.0
 	pkgrel = 1
-	url = https://github.com/linuxwacom/input-wacom/wiki/Installing-input-wacom-from-source
+	url = https://github.com/vladimirgamalyan/fontbm
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	depends = freetype2
 	source = https://github.com/vladimirgamalyan/fontbm/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = 7befe5e39a7d72370ef5f96f09784556c9efedafe393db66f726eee7d0a4705b
+	md5sums = 76a242e85067acc2cbc6983ade15d1d7
 
 pkgname = fontbm
