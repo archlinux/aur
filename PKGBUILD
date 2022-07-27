@@ -3,7 +3,6 @@
 pkgname=linux-xanmod-edge-linux-headers-bin-x64v2
 _major=5.18
 pkgver=${_major}.14
-_git=20220723.debb916
 xanmod=1
 pkgrel=${xanmod}
 pkgdesc='Headers and scripts for building modules for the Linux Xanmod - Latest Mainline (EDGE) - Prebuilt version'
@@ -14,7 +13,8 @@ license=(GPL2)
 options=('!strip')
 depends=(pahole)
 
-source=("https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}/linux-headers-${pkgver}-xanmod${xanmod}-x64v2_${pkgver}-xanmod${xanmod}-x64v2-0.git${_git}_amd64.deb")
+_url=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${xanmod} | jq --arg PKGVER "${pkgver}-xanmod${xanmod}" -r '.assets[] | select(.name | contains("linux-headers-" + $PKGVER + "-x64v2")).browser_download_url')
+source=("${_url}")
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
