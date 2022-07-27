@@ -1,7 +1,11 @@
+# Maintainer: Marc barbier <mmarc471@gmail.com>
+
+# Contributor: Wachid Adi Nugroho <wachidadinugroho.maya@gmail.com>
+
 pkgname=maui-shell-bin
 _pkgname=${pkgname%-bin}
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Maui Shell is a convergent shell for desktops, tablets, and phones.'
 url='https://github.com/Nitrux/maui-shell'
 arch=(x86_64)
@@ -67,13 +71,15 @@ build() {
 }
 
 pkgver() {
-  printf "$($srcdir/squashfs-root/usr/bin/cask -v |& grep cask | cut -f2 -d ' ')"
+  # Cask can only report it's version if you are in a X11 or Wayland environement
+  [ -z "${XDG_SESSION_TYPE}" ] && printf "$($srcdir/squashfs-root/usr/bin/cask -v |& grep cask | cut -f2 -d ' ')"
 }
 
 prepare() {
   chmod +x ./maui-shell-latest-x86_64.AppImage
   ./maui-shell-latest-x86_64.AppImage --appimage-extract
 
+  #you can't patchelf those binaries if they are not stripped for some reason
   strip --strip-all "$srcdir/squashfs-root/usr/bin/cask"
   strip --strip-all "$srcdir/squashfs-root/usr/bin/CaskServer"
   strip --strip-all "$srcdir/squashfs-root/usr/bin/cask_session"
@@ -115,7 +121,8 @@ package() {
   install -Dm 644 "$srcdir/squashfs-root/usr/lib/x86_64-linux-gnu/libCaskNotifications.so" "$pkgdir/usr/lib/libCaskNotifications.so"
   install -Dm 644 "$srcdir/squashfs-root/usr/lib/x86_64-linux-gnu/libCaskLib.so" "$pkgdir/usr/lib/libCaskLib.so"
 
-  #using libexec is against the guide lines but since we are not recompiling we can't change it
+  #using libexec is against the guide lines
+  # im not sure this works if it doesn't changer $pkgname by libexec
   install -Dm 755 "$srcdir/squashfs-root/usr/lib/x86_64-linux-gnu/libexec/cask-dbus-run-session-if-needed" "$pkgdir/usr/lib/$pkgname/cask-dbus-run-session-if-needed"
   install -Dm 755 "$srcdir/squashfs-root/usr/lib/x86_64-linux-gnu/libexec/cask-sourceenv.sh" "$pkgdir/usr/lib/$pkgname/cask-sourceenv.sh"
 }
