@@ -1,7 +1,7 @@
 pkgbase = swayshot
-	pkgdesc = Sway screenshots: screen, window or region.
+	pkgdesc = Sway screenshots: screen, window or region. Also it uploads them to 0x0.st.
 	pkgver = 2.7.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/radio_rogal/swayshot
 	arch = any
 	license = GPL3

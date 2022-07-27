@@ -1,8 +1,8 @@
 # Maintainer: Vitaliy Berdinskikh <ur6lad at gmail dot com>
 pkgname=swayshot 
 pkgver=2.7.3
-pkgrel=2
-pkgdesc='Sway screenshots: screen, window or region.'
+pkgrel=3
+pkgdesc='Sway screenshots: screen, window or region. Also it uploads them to 0x0.st.'
 arch=('any')
 url='https://gitlab.com/radio_rogal/swayshot'
 license=('GPL3')
