@@ -1,7 +1,7 @@
 pkgbase = boardmix-uos
 	pkgdesc = Online collaborative whiteboard software.
 	pkgver = 1.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://boardmix.cn/
 	arch = x86_64
 	license = custom
