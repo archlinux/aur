@@ -1,0 +1,6 @@
+pkgname=(firefox-nightly)
+srcdest=/var/lib/archbuilddest/srcdest
+
+check_hg mozilla-central
+
+# vim:set ft=zsh:

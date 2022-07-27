@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=103.0a1+20220626.1+h8256997a5472
+pkgver=105.0a1+20220727.1+ha948931a2595
 pkgrel=1
 pkgdesc="Development version of the popular Firefox web browser"
 arch=(x86_64)
