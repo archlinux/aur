@@ -2,7 +2,7 @@
 
 pkgname=caffeine-ng-git
 _pkgname=caffeine-ng
-pkgver=v4.0.2.r5.gc7b1800
+pkgver=v4.0.2.r7.g1d43d45
 pkgrel=1
 pkgdesc="Status bar application able to temporarily inhibit the screensaver and sleep mode."
 arch=(any)
@@ -25,8 +25,8 @@ makedepends=(
   git
   meson
 )
-conflicts=(caffeine caffeine-bzr caffeine-oneclick caffeine-systray)
-provides=(caffeine caffeine-bzr caffeine-oneclick caffeine-systray)
+conflicts=(caffeine caffeine-bzr caffeine-oneclick caffeine-systray caffeine-ng)
+provides=(caffeine caffeine-bzr caffeine-oneclick caffeine-systray caffeine-ng)
 replaces=(caffeine-oneclick caffeine-systray)
 source=("git+https://codeberg.org/WhyNotHugo/$_pkgname.git")
 sha256sums=('SKIP')
