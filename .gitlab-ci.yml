@@ -33,6 +33,7 @@ pacman:
     - makepkg
   before_script:
     - cp yay /usr/sbin/yay
-    - yay --noconfirm
+    - useradd builduser -m && passwd -d builduser && printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
+    - sudo -u builduser bash -c 'yay --noconfirm'
   script:
-    - yay -U --noconfirm *.zst
+    - sudo -u builduser bash -c 'yay -U --noconfirm *.zst'
