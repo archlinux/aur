@@ -3,13 +3,15 @@
 pkgname=mazter-git
 _pkgname="${pkgname%-git}"
 pkgver=r9.b907627
-pkgrel=1
+pkgrel=2
 pkgdesc='Mazes in your terminal'
 arch=('x86_64')
 url='https://github.com/canop/mazter'
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'cargo')
+provides=('mazter')
+conflicts=('mazter')
 source=("$_pkgname::git+$url")
 sha256sums=('SKIP')
 
