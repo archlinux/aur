@@ -4,12 +4,12 @@ pkgname=yuzu-mainline-bin
 provides=('yuzu' 'yuzu-cmd')
 conflicts=('yuzu' 'yuzu-git' 'yuzu-canary-git' 'yuzu-mainline-git')
 pkgver=0.1114
-pkgrel=1
+pkgrel=2
 pkgdesc="Nintendo Switch emulator - mainline branch"
 arch=('x86_64')
 url="https://github.com/yuzu-emu/yuzu-mainline"
 license=('GPL2')
-depends=('qt5-base' 'opus' 'hicolor-icon-theme')
+depends=('libva' 'qt5-multimedia' 'hicolor-icon-theme')
 optdepends=('qt5-wayland: for Wayland support')
 source=("${url}/releases/download/mainline-${pkgver/./-}/yuzu-linux-${_version}.tar.xz"
         # icon and desktop from upstream not included in sources
