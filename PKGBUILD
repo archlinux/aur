@@ -2,20 +2,18 @@
 # Contributor : Phil Schaf <flying-sheep(at)web.de>
 
 #####################################################################################################
- ## NOTE: Removing python2 as mandatory makedep; if you want to have a precomiled Python 2 debugger ##
-  ##      packaged, make sure that `python2-setuptools` is installed _before_ building this package. ##
-   #####################################################################################################
+## NOTE: Removing python2 as mandatory makedep; if you want to have a precomiled Python 2 debugger ##
+##      packaged, make sure that `python2-setuptools` is installed _before_ building this package. ##
+#####################################################################################################
 
 
 pkgname=pycharm-community-eap
-
-_buildver=222.2889.11
+pkgver=222.3345.40
 _pkgver=2022.2
 _eap=y
-pkgver="$_pkgver.$_buildver"
 pkgrel=1
-epoch=13
 
+epoch=14
 pkgdesc='Powerful Python and Django IDE, Early Access Program (EAP) build, Community Edition'
 arch=('i686' 'x86_64')
 url=http://www.jetbrains.com/pycharm
@@ -31,17 +29,17 @@ optdepends=('python2: Support for Python 2 language'
 
 options=('!strip')
 
-_filever="$([ $_eap = y ] && echo -n $_buildver || echo -n $_pkgver)"
+_filever="$([ $_eap = y ] && echo -n $pkgver || echo -n $_pkgver)"
 source=("https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz")
-sha256sums=($(curl -s "https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz.sha256" | cut -d' ' -f1))
+sha256sums=('a12f4f4818dc8ed7a05082f1b5f07d2728e4e51c5976e55c04bd387dbb378175')
 
 
 prepare() {
 	if [ -d "pycharm-community-$_pkgver" ]; then
-		mv pycharm-community-{"$_pkgver","$_buildver"}
+		mv pycharm-community-{"$_pkgver","$pkgver"}
 	fi
 
-	cd "pycharm-community-$_buildver/bin"
+	cd "pycharm-community-$pkgver/bin"
 	local _vmoptfile
 	for _vmoptfile in pycharm{,64}.vmoptfile; do
 		echo $'-Dawt.useSystemAAFontSettings=on\n-Dswing.aatext=true' >>"$_vmoptfile"
@@ -52,7 +50,7 @@ prepare() {
 }
 
 build() {
-	cd "pycharm-community-$_buildver/plugins/python-ce/helpers/pydev"
+	cd "pycharm-community-$pkgver/plugins/python-ce/helpers/pydev"
 
 	# compile PyDev debugger used by PyCharm to speedup debugging
 	find . \( -name *.c -o -name *.so -o -name *.pyd \) -delete
@@ -71,7 +69,7 @@ build() {
 
 package() {
 	install -dm755 "$pkgdir"/{opt,usr/{bin,share/pixmaps}}
-	cp -R "pycharm-community-$_buildver" "$pkgdir/opt/$pkgname"
+	cp -R "pycharm-community-$pkgver" "$pkgdir/opt/$pkgname"
 
 	local _vmoptfile=pycharm64
 	if [[ "$CARCH" = i686 ]]; then
