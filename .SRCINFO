@@ -1,15 +1,16 @@
 pkgbase = flux-bin
-pkgname = flux-bin
 	pkgdesc = Open and extensible continuous delivery solution for Kubernetes
 	pkgver = 0.31.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fluxcd.io/
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
 	license = APACHE
-	source_x86_64 = ${pkgname}-${pkgver}.tar.gz::https://github.com/fluxcd/flux2/releases/download/v${pkgver}/flux_${pkgver}_linux_amd64.tar.gz
-	source_armv6h = ${pkgname}-${pkgver}.tar.gz::https://github.com/fluxcd/flux2/releases/download/v${pkgver}/flux_${pkgver}_linux_arm.tar.gz
-	source_armv7h = ${pkgname}-${pkgver}.tar.gz::https://github.com/fluxcd/flux2/releases/download/v${pkgver}/flux_${pkgver}_linux_arm.tar.gz
-	source_aarch64 = ${pkgname}-${pkgver}.tar.gz::https://github.com/fluxcd/flux2/releases/download/v${pkgver}/flux_${pkgver}_linux_arm64.tar.gz
+	source_x86_64 = flux-bin-0.31.5.tar.gz::https://github.com/fluxcd/flux2/releases/download/v0.31.5/flux_0.31.5_linux_amd64.tar.gz
+	source_armv6h = flux-bin-0.31.5.tar.gz::https://github.com/fluxcd/flux2/releases/download/v0.31.5/flux_0.31.5_linux_arm.tar.gz
+	source_armv7h = flux-bin-0.31.5.tar.gz::https://github.com/fluxcd/flux2/releases/download/v0.31.5/flux_0.31.5_linux_arm.tar.gz
+	source_aarch64 = flux-bin-0.31.5.tar.gz::https://github.com/fluxcd/flux2/releases/download/v0.31.5/flux_0.31.5_linux_arm64.tar.gz
+
+pkgname = flux-bin

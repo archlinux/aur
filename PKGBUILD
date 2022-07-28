@@ -3,7 +3,7 @@
 
 pkgname=flux-bin
 pkgver=0.31.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Open and extensible continuous delivery solution for Kubernetes"
 url="https://fluxcd.io/"
 arch=("x86_64" "armv6h" "armv7h" "aarch64")
