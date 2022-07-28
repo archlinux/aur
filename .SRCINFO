@@ -1,4 +1,4 @@
-pkgbase = coineus-server-git
+pkgbase = coineus-server
 	pkgdesc = Coineus App Backend
 	pkgver = 1.0.r68.1abe6e5
 	pkgrel = 1
