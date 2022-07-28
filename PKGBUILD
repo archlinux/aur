@@ -1,70 +1,94 @@
-# Maintainer: Xiaotian Wu <yetist@gmail.com>
 
 pkgname=qemu-loongarch64
-pkgdesc="A generic and open source machine emulator and virtualizer"
-pkgver=6.1.0.r91240.g59a245bd54
-_pkgver=6.1.0
+_pkgname=qemu-loongarch64
+pkgdesc="Statically linked binaries of Qemu with loongarch64 user emulation. Useful for containers/chroot environment with binfmt."
+pkgver=7.0.50.r97536.g8ec4bc3c8c
 pkgrel=1
-arch=(x86_64)
+provides=( ${_pkgname} )
+conflicts=( ${_pkgname} )
+arch=(x86_64 aarch64)
 license=(GPL2 LGPL2.1)
-url="https://wiki.qemu.org/"
-
-makedepends=(
-    git
-    glib2-static    # build from AUR
-    libffi-static
-    libiscsi
-    meson
-    pcre-static     # build from AUR
-    python
-    usbredir
-    xfsprogs
-)
-
-source=('git+https://github.com/loongson/qemu.git#branch=tcg-dev'
-        'qemu-loongarch64.conf')
-sha1sums=('SKIP'
-          '8834bc060ead1779ca82f3569789be49c03d2c0a')
+url="http://wiki.qemu.org/"
+depends=()
+makedepends=(python meson glib2-static pcre-static)
+source=('git+https://github.com/loongson/qemu.git#branch=tcg-dev')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/qemu"
-  printf "${_pkgver}.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  
+  printf "7.0.50.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-  cd "$srcdir/qemu"
-    ./configure \
-    --target-list="loongarch64-linux-user" \
-    --static \
-    --disable-capstone \
-    --disable-gtk \
-    --disable-sdl \
-    --disable-seccomp \
-    --disable-vnc \
-    --disable-vnc-jpeg \
-    --disable-vnc-png \
-    --disable-werror \
-    --disable-bpf \
-    --enable-debug \
-    --enable-kvm \
-    --enable-libiscsi \
-    --enable-libusb \
-    --disable-linux-aio \
-    --disable-spice \
-    --enable-tcg-interpreter \
-    --enable-usb-redir \
-    --enable-user \
-    --enable-xfsctl \
-    --interp-prefix=/usr/loongarch64-linux-gnu/ \
-    --prefix=/usr
-    make
+case $CARCH in
+  i?86) _corearch=i386 ;;
+  x86_64) _corearch=x86_64 ;;
+esac
+
+# If non empty, always run the configure script
+: "${FORCE_CONFIGURE:=1}"
+
+prepare() {
+  mkdir -p build-user-static
+
+  cd qemu
 }
+
+_configure() {
+    ../qemu/configure \
+            --prefix=/usr \
+            --sysconfdir=/etc \
+            --localstatedir=/var \
+            --libexecdir=/usr/lib/qemu \
+            --target-list=loongarch64-linux-user \
+            --enable-linux-user \
+            --disable-debug-info \
+            --disable-bsd-user \
+            --disable-werror \
+            --disable-system \
+            --disable-tools \
+            --disable-docs \
+            --disable-gtk \
+            --disable-gnutls \
+            --disable-nettle \
+            --disable-gcrypt \
+            --disable-glusterfs \
+            --disable-libnfs \
+            --disable-libiscsi \
+            --disable-vnc \
+            --disable-kvm \
+            --disable-libssh \
+            --disable-vde \
+            --disable-sdl \
+            --disable-opengl \
+            --disable-xen \
+            --disable-fdt \
+            --disable-tpm \
+            --disable-qom-cast-debug \
+            --disable-capstone \
+            --disable-zstd \
+            --disable-linux-io-uring \
+            --disable-bpf \
+}
+
+build() (
+  cd build-user-static
+  [[ ! $FORCE_CONFIGURE && -e ../qemu-${pkgver}/config.log ]] || _configure
+  make ARFLAGS="rc"
+)
 
 package() {
-  cd "$srcdir/qemu"
-  DESTDIR="$pkgdir" ninja -C build install
-  rm -rf "$pkgdir"/usr/share
-  install -Dm644 $srcdir/qemu-loongarch64.conf $pkgdir/usr/lib/binfmt.d/qemu-loongarch64.conf
-}
 
-## vim:set ts=2 sw=2 et:
+  make -C build-user-static DESTDIR="$pkgdir" install "${@:2}"
+
+  # remove conflicting /var/run directory
+  cd "$pkgdir"
+  rm -rf var
+
+  # Remove BIOS files etc...
+  rm -rf usr/share
+
+  # Rename static qemu binaries
+  cd "${pkgdir}/usr/bin/"
+  mv qemu-loongarch64 qemu-loongarch64-static
+}
