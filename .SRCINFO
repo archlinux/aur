@@ -1,17 +1,28 @@
 pkgbase = pipewire-support
-	pkgdesc = Meta package for pipewire support.
+	pkgdesc = Meta package for all important packages to use PipeWire
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 11
 	url = https://wiki.archlinux.org/index.php/PipeWire
+	install = pipewire-support.install
 	arch = any
 	license = GPL
+	depends = gst-plugin-pipewire
 	depends = pipewire
 	depends = pipewire-alsa
-	depends = pipewire-pulse
 	depends = pipewire-jack
+	depends = pipewire-pulse
+	depends = pipewire-v4l2
+	depends = pipewire-zeroconf
+	depends = realtime-privileges
+	depends = sof-firmware
 	depends = wireplumber
+	conflicts = pulseaudio-equalizer
+	conflicts = pulseaudio-jack
+	conflicts = pulseaudio-lirc
+	conflicts = pulseaudio-rtp
 	conflicts = pulseaudio-support
-	replaces = garuda-pipewire
+	conflicts = pulseaudio-zeroconf
+	conflicts = manjaro-pulse
+	replaces = manjaro-pipewire
 
 pkgname = pipewire-support
-
