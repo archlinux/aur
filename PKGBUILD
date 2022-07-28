@@ -13,8 +13,8 @@
 ### PACKAGE OPTIONS
 
 ## MERGE REQUESTS SELECTION
-# Merge Requests List: ('579' '1154' '1441' '1877')
-_merge_requests_to_use=('1441' '1877')
+# Merge Requests List: ('579' '1441' '2506')
+_merge_requests_to_use=('1441' '2506')
 
 ## Disable building a DOCS package
 # Remember to unset this variable when producing .SRCINFO
@@ -29,7 +29,7 @@ else
   pkgname=(mutter-performance mutter-performance-docs)
 fi
 pkgver=42.3+r4+gd96efc7b1
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -43,13 +43,11 @@ makedepends=(gobject-introspection git egl-wayland meson xorg-server
 checkdepends=(xorg-server-xvfb pipewire-session-manager python-dbusmock)
 _commit=d96efc7b17056b0fa01e4d9002e13f487e120db8  # tags/42.3^4
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-        'mr1154.patch'
         'mr1441.patch'
-        'mr1877.patch')
+        'mr2506.patch')
 sha256sums=('SKIP'
-            '9b3ddccc50adc57b4d8f3bd2236680c1409e5c72dd4e7722ae4d83428eec95e8'
             'c8e8e05f3b5ccf2faeeda45231bc12e4fff516c1e27f9d7a880a71eb00e5b0fa'
-            '5284e17ac5cc129ecd21a0726d8159d44abc2e0da5dbcf195f2f05aab8e06120')
+            'd6aa7d5b62b522fe6c448ec0c54826acd9ae19d49389fa26a456e2cdfbdf3294')
 
 pkgver() {
   cd $pkgname
@@ -133,19 +131,6 @@ prepare() {
   #          If you use stenography software or play hardcore rhythm games like Lunatic Rave 2/osumania, use it.
   pick_mr '579' ce86f90efbaa51522ba14c5b4cad933c2106de42 'revert'
 
-  # Title: backend/native: Add support for variable refresh rate
-  # Author: Dor Askayo <dor.askayo@gmail.com>
-  # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1154
-  # Type: 2
-  # Status: 2 & 3
-  # Comment: Add the logic required to detect monitors that are capable of VRR and
-  #          the ability to activate it using KMS properties.
-  #          Currently, it does not work with mr1441, so be aware of that.
-  #          Check the vrr-support-42 branch of @doraskayo's repo below for gnome-control-center
-  #          to be used with this MR:
-  #          https://gitlab.gnome.org/doraskayo/gnome-control-center/-/commits/vrr-support-42
-  pick_mr '1154' 'mr1154.patch' 'patch'
-
   # Title: WIP: clutter-frame-clock: Triple buffering support (v4)
   # Author: Daniel van Vugt <daniel.van.vugt@canonical.com>
   # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1441
@@ -155,13 +140,15 @@ prepare() {
   #          Thanks @JockeTF in AUR for the patch backported to gnome-41 base.
   pick_mr '1441' 'mr1441.patch' 'patch'
 
-  # Title: compositor: Use native GL mipmapping instead of MetaTextureTower
+  # Title: compositor: Use native GL mipmapping instead of MetaTextureTower (v2)
   # Author: Daniel van Vugt <daniel.van.vugt@canonical.com>
-  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1877
+  # Author: Neil Moore <dar13.dev@gmail.com>
+  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2506
   # Type: 3
-  # Status: 2 & 3
+  # Status: 4
   # Comment: Fix #849 (Window previews in the overview are not mipmapped on HiDPI)
-  pick_mr '1877' 'mr1877.patch' 'patch'
+  #          (v2) Move the original functionality into its own separate class.
+  pick_mr '2506' 'mr2506.patch' 'patch'
 
 }
 
