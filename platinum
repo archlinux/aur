@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+electron /opt/platinum/app/ --no-sandbox "$@";
+exit 0;

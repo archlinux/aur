@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Platinum Browser
+Exec=platinum
+Terminal=false
+Type=Application
+Icon=/usr/share/icons/hicolor/0x0/apps/platinum
+StartupWMClass=Platinum Browser
+X-AppImage-Version=1.0.0-pre.15
+Comment=Platinum Browser
+Categories=Network;
+MimeType=text/html;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;application/x-mimearchive;
