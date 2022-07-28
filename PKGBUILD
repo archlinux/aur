@@ -1,8 +1,8 @@
 # Maintainer: BlackCatDev
 
 pkgname=brcm4354-firmware
-pkgver=main_2.0
-pkgrel=3
+pkgver=latest
+pkgrel=4
 pkgdesc='Firmware for AM7256/BRCM4354 WIFI/BT module'
 arch=('any')
 url="https://github.com/BlackCatDevel0per/${pkgname}"
@@ -14,7 +14,7 @@ source=(
 "${url}/archive/refs/tags/${gzfirm}"
 )
 md5sums=(
-'f10f6e1a65489cafe84cd71125240911'
+'d8cd7bf6268993311a79837efe75e4ab'
 )
 
 package() {
