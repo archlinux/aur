@@ -1,65 +1,47 @@
-# Mantainer: Lorenzo Ferrillo <lorenzofer@live.it>
+# Maintainer: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
+# Contributor: Lorenzo Ferrillo <lorenzofer@live.it>
 # Contributor: Ray Rashif <schiv@archlinux.org>
 
 _basename=lv2
-pkgname=lib32-${_basename}
-pkgver=1.18.2
+pkgname=lib32-lv2
+pkgver=1.18.6
 pkgrel=1
-pkgdesc="Successor to the LADSPA audio plug-in standard"
+pkgdesc="Plugin standard for audio systems (32-bit)"
 url="http://lv2plug.in/"
 license=('LGPL' 'custom')
 arch=('x86_64')
-depends=('lv2')
-makedepends=('python' 'waf' 'lib32-libsndfile' 'lib32-gtk2')
-optdepends=('lib32-libsndfile: Example sampler'
-            'lib32-gtk2: Example sampler'
-            )
-provides=('lib32-lv2core')
-conflicts=('lib32-lv2core')
-replaces=('lib32-lv2core')
-
-source=("http://lv2plug.in/spec/$_basename-$pkgver.tar.bz2")
-sha512sums=('d5bdcf94d3cf9a569e29964002a038ae73cd6ae7f09f7d973f8fd74858c8cf9d01bbed85ae8bf0a00efcb2b3611357a64571222a89972091941449c36d76b0ef')
+depends=(lib32-gcc-libs lib32-libsndfile lv2)
+makedepends=(codespell flake8 meson python-black python-pylint python-rdflib serd sord)
+source=(https://lv2plug.in/spec/$_basename-$pkgver.tar.xz{,.sig})
+sha512sums=('baecef70abe8354bca056d67085657e2174e39d2030a5173a226ee194c96662d6c3351df4500b4631e08798765dfed6d758b6be16a2ea78c4f29abb53c5d786f'
+            'SKIP')
+b2sums=('27c9eb3e15e4515a63f93552c8924c502f8bc585fbf62a62a1fca4ff7fd2e9940827cda4b5c7cbb6858324e1dba5bcad2ad75239da9f860db56e6839224ae186'
+        'SKIP')
+validpgpkeys=('907D226E7E13FA337F014A083672782A9BF368F3') # David Robillard <d@drobilla.net>
 
 build() {
-  cd "$srcdir/$_basename-$pkgver"
-  export CC='gcc -m32'
-  export CXX='g++ -m32'
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-    
-  # let wscript(s) find the custom waf scripts
-  mkdir -pv tools
-  touch __init__.py
-  touch tools/__init__.py
-  cp -v waflib/extras/{autowaf,lv2}.py tools/
-  mkdir -pv plugins/tools/
-  cp -v waflib/extras/{autowaf,lv2}.py plugins/tools/
-  rm -rv waflib
-  sed -e 's/waflib.extras/tools/g' \
-      -e "s/load('autowaf'/load('autowaf', tooldir='tools'/g" \
-      -e "s/load('lv2'/load('lv2', tooldir='tools'/g" \
-      -i {,plugins/,plugins/*/}wscript
+    export CC='gcc -m32'
+    export CXX='g++ -m32'
+    export PKG_CONFIG='/usr/bin/i686-pc-linux-gnu-pkg-config'
 
-   # --docs is currently broken: https://gitlab.com/lv2/lv2/issues/28
-  waf -vv configure --prefix=/usr \
-                --libdir=/usr/lib32 \
-                --test
-  waf -vv build
+    arch-meson $_basename-$pkgver build \
+        --libdir='/usr/lib32' \
+        -Ddocs=disabled
+
+    meson compile -C build
 }
 
-
-
 check() {
-  cd "$srcdir/$_basename-$pkgver"
-  waf test
+    meson test -C build
 }
 
 package() {
-  cd "$srcdir/$_basename-$pkgver"
-#REMOVE includes and others
-  waf install --destdir="$pkgdir"
-  rm ${pkgdir}/usr/bin ${pkgdir}/usr/include ${pkgdir}/usr/share -Rf
-}
+    meson install -C build --destdir "$pkgdir"
 
-# vim:set ts=2 sw=2 et:
- 
+    install -vDm 644 $_basename-$pkgver/COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
+    install -vDm 644 $_basename-$pkgver/{NEWS,README.md} -t "$pkgdir/usr/share/doc/$pkgname/"
+
+    cd "$pkgdir/usr"
+
+    rm -r bin include share/lv2specgen
+}
