@@ -1,0 +1,22 @@
+pkgbase = debootstrap-devuan-git
+	pkgdesc = Bootstrap a basic Debian-derived devuan system
+	pkgver = 1.0.126+nmu1devuan1.r0.gf8c417b
+	pkgrel = 1
+	url = https://git.devuan.org/devuan/debootstrap
+	arch = any
+	license = GPL
+	depends = perl
+	depends = wget
+	depends = binutils
+	optdepends = gnupg: check release signatures
+	optdepends = debian-archive-keyring: check release signatures for Debian
+	optdepends = debian-ports-archive-keyring: check release signatures for Debian Ports
+	optdepends = ubuntu-keyring: check release signatures for Ubuntu
+	conflicts = debootstrap
+	replaces = debootstrap
+	source = git+https://git.devuan.org/devuan/debootstrap.git
+	source = arch-detect.patch
+	sha256sums = SKIP
+	sha256sums = 2e37df02dbcdeeea3cc6dd440efaf28c9d03c45c357b6a170c3fa3b662e2b881
+
+pkgname = debootstrap-devuan-git
