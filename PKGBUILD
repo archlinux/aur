@@ -1,23 +1,24 @@
-# Maintainer: Marcus Andersson <marcus@tojoma-se>
-# Maintainer: Morten Linderud <foxboron@archlinux.org>
+# Maintainer: Peter Mattern <pmattern at arcor dot de>
+# Contributor: Marcus Andersson <marcus@tojoma-se>
+# Contributor: Morten Linderud <foxboron@archlinux.org>
 # Contributor: Moritz Maxeiner <moritz@ucworks.org>
 # Contributor: Stefan-Husmann@t-online.de
 # Contributor: Army
 
-pkgname=dunst-git
 _pkgname=dunst
+pkgname=${_pkgname}-git
 pkgver=1.6.1.r13.g3acffdb
 pkgrel=1
-pkgdesc="Lightweight and customizable notification daemon"
+pkgdesc="A highly configurable and lightweight notification daemon"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://dunst-project.org/"
 license=('BSD')
 depends=('libxinerama' 'libxss' 'pango' 'libnotify' 'gdk-pixbuf2' 'libxdg-basedir' 'libxrandr')
 makedepends=('git' 'perl' 'dbus' 'wayland-protocols' 'wayland')
-provides=('dunst' 'notification-daemon' 'dunstify')
-conflicts=('dunst' 'dunstify')
-source=('git+https://github.com/dunst-project/dunst')
-md5sums=('SKIP')
+provides=('dunst' 'notification-daemon')
+conflicts=('dunst')
+source=('git+https://github.com/dunst-project/dunst.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"

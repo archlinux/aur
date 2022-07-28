@@ -1,5 +1,5 @@
 pkgbase = dunst-git
-	pkgdesc = Lightweight and customizable notification daemon
+	pkgdesc = A highly configurable and lightweight notification daemon
 	pkgver = 1.6.1.r13.g3acffdb
 	pkgrel = 1
 	url = https://dunst-project.org/
@@ -21,11 +21,8 @@ pkgbase = dunst-git
 	depends = libxrandr
 	provides = dunst
 	provides = notification-daemon
-	provides = dunstify
 	conflicts = dunst
-	conflicts = dunstify
-	source = git+https://github.com/dunst-project/dunst
-	md5sums = SKIP
+	source = git+https://github.com/dunst-project/dunst.git
+	sha256sums = SKIP
 
 pkgname = dunst-git
-
