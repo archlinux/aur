@@ -1,0 +1,15 @@
+pkgbase = perl-iterator-simple-lookahead
+	pkgdesc = Simple iterator with lookahead and unget
+	pkgver = 0.09
+	pkgrel = 1
+	url = https://metacpan.org/dist/Iterator-Simple-Lookahead
+	arch = any
+	license = PerlArtistic
+	makedepends = make
+	depends = perl-class-accessor
+	depends = perl-iterator-simple
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PS/PSCUST/Iterator-Simple-Lookahead-0.09.tar.gz
+	sha256sums = 1663c4d71754f0b0174b6d7e1f80c9690f3ba838b84385242dac2c500aac799c
+
+pkgname = perl-iterator-simple-lookahead
