@@ -1,7 +1,7 @@
 pkgbase = brcm43xx-firmware
 	pkgdesc = Firmware for brcm43xx modules
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BlackCatDevel0per/brcm4354-firmware
 	arch = any
 	source = https://github.com/BlackCatDevel0per/brcm43xx-firmware/archive/refs/tags/latest.tar.gz

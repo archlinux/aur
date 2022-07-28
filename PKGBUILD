@@ -2,7 +2,7 @@
 
 pkgname=brcm43xx-firmware
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc='Firmware for brcm43xx modules'
 arch=('any')
 url="https://github.com/BlackCatDevel0per/${pkgname}"
