@@ -1,16 +1,16 @@
 pkgbase = nfpm-bin
 	pkgdesc = nFPM is a simple, 0-dependencies, deb, rpm and apk packager.
-	pkgver = 2.16.0
+	pkgver = 2.17.0
 	pkgrel = 1
 	url = https://nfpm.goreleaser.com
 	license = MIT
 	conflicts = nfpm
 	provides = nfpm
 	arch = aarch64
-	source_aarch64 = https://github.com/goreleaser/nfpm/releases/download/v2.16.0/nfpm_2.16.0_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 37229bb2c84a08ba860eab97d0e283838ab64abf4452f97b2a29a07685d46d09
+	source_aarch64 = https://github.com/goreleaser/nfpm/releases/download/v2.17.0/nfpm_2.17.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = ae67bbc7e88ce665a6dc157462b5defc8207e959acc4ed22ef39a949d06b3b6e
 	arch = x86_64
-	source_x86_64 = https://github.com/goreleaser/nfpm/releases/download/v2.16.0/nfpm_2.16.0_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = efa8ffd74585ab0a3cb478e6dbc85554f46d2ffef64b115fe35e58b2063eca5b
+	source_x86_64 = https://github.com/goreleaser/nfpm/releases/download/v2.17.0/nfpm_2.17.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 98ebd3e3654c6c4764916f1dbe7e6accec1b46174ddea43ac199cf2937f14afc
 	
 pkgname = nfpm-bin
