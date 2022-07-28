@@ -1,0 +1,12 @@
+pkgbase = mazter-bin
+	pkgdesc = Mazes in your terminal
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/canop/mazter
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	source_x86_64 = mazter-bin-0.4.0.zip::https://dystroy.org/mazter/download/mazter_0.4.0.zip
+	sha256sums_x86_64 = 987c45d9694c0c47e57bfc710182eedf441ad0e4e79ad384cf31673ca5908b7f
+
+pkgname = mazter-bin
