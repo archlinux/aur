@@ -3,8 +3,8 @@
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=lib32-sdl2_image
-pkgver=2.0.5
-pkgrel=2
+pkgver=2.6.0
+pkgrel=1
 pkgdesc='A simple library to load images of various formats as SDL surfaces'
 arch=(x86_64)
 url=https://www.libsdl.org/projects/SDL_image/
@@ -20,9 +20,9 @@ depends=(
 )
 makedepends=(
   cmake
-  mercurial
+  git
 )
-source=(hg+https://hg.libsdl.org/SDL_image#tag=release-${pkgver})
+source=(git+https://github.com/libsdl-org/SDL_image#tag=release-${pkgver})
 sha256sums=(SKIP)
 
 prepare() {
