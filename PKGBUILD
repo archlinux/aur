@@ -18,9 +18,9 @@ install="${_pkgname}.install"
 depends=('pacman')
 makedepends=('git' 'python' 'sequoia-sq')
 checkdepends=('python-coverage' 'python-pytest')
-source=("${_pkgname}::${_url}?signed")
+source=("${_pkgname}::git+${_url}?signed")
 sha256sums=('SKIP')
-validpgpkeys=('3ABCBB9E8C2DE5D8D3264CD2D92FC471693D9BB7')
+validpgpkeys=('3D115DD206D92A0656C827BC8B686E3C22E4C2FA')
 
 build() {
   cd "${_pkgname}" || exit
