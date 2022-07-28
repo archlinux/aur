@@ -1,5 +1,5 @@
---- Makefile	2021-02-14 14:08:54.860536559 +0100
-+++ Makefile	2021-02-14 14:19:49.782369663 +0100
+--- Makefile.orig	2022-07-27 21:49:30.261649271 +0200
++++ Makefile	2022-07-27 21:56:13.981923364 +0200
 @@ -14,9 +14,8 @@
    EXESUFFIX 		?=
  endif
@@ -13,7 +13,7 @@
  git_count ?= $(shell git rev-list --count HEAD)
  version ?= $(shell date +%Y%m%d)
 @@ -59,7 +58,7 @@
- ALL_EXT = bin/zsdcc$(EXESUFFIX)
+ ALL_EXT = bin/z88dk-zsdcc$(EXESUFFIX)
  
  .PHONY: all
 -all: 	$(ALL) $(ALL_EXT)
@@ -21,7 +21,7 @@
  
  src/config.h:
  	$(shell if [ "${git_count}" != "" ]; then \
-@@ -175,29 +174,30 @@
+@@ -179,30 +178,31 @@
  	cd libsrc ; $(MAKE) install
  
  install: install-clean
@@ -35,6 +35,7 @@
 -	$(MAKE) -C src/zcc PREFIX=$(DESTDIR) install
 -	$(MAKE) -C src/zpragma PREFIX=$(DESTDIR) install
 -	$(MAKE) -C src/zx7 PREFIX=$(DESTDIR) install
+-	$(MAKE) -C src/zx0 PREFIX=$(DESTDIR) install
 -	$(MAKE) -C src/z80nm PREFIX=$(DESTDIR) install
 -	$(MAKE) -C src/zobjcopy PREFIX=$(DESTDIR) install
 -	$(MAKE) -C src/ticks PREFIX=$(DESTDIR) install
@@ -42,8 +43,8 @@
 -	$(MAKE) -C support/graphics PREFIX=$(DESTDIR) install
 -	$(MAKE) -C support/basck PREFIX=$(DESTDIR) install
 -	$(MAKE) -C support/pv1000 PREFIX=$(DESTDIR) install
--	if [ -f bin/zsdcpp$(EXESUFFIX) ]; then cp bin/zsdcpp$(EXESUFFIX) $(DESTDIR)/bin/; fi
--	if [ -f bin/zsdcc$(EXESUFFIX) ]; then cp bin/zsdcc$(EXESUFFIX) $(DESTDIR)/bin/; fi
+-	if [ -f bin/z88dk-zsdcpp$(EXESUFFIX) ]; then cp bin/z88dk-zsdcpp$(EXESUFFIX) $(DESTDIR)/bin/; fi
+-	if [ -f bin/z88dk-zsdcc$(EXESUFFIX) ]; then cp bin/z88dk-zsdcc$(EXESUFFIX) $(DESTDIR)/bin/; fi
 -	cp -r include $(prefix_share)/
 -	cp -r lib $(prefix_share)/
 -	cp -r libsrc $(prefix_share)/
@@ -59,6 +60,7 @@
 +	$(MAKE) -C src/zcc PREFIX=$(DESTDIR)$(prefix) install
 +	$(MAKE) -C src/zpragma PREFIX=$(DESTDIR)$(prefix) install
 +	$(MAKE) -C src/zx7 PREFIX=$(DESTDIR)$(prefix) install
++	$(MAKE) -C src/zx0 PREFIX=$(DESTDIR)$(prefix) install
 +	$(MAKE) -C src/z80nm PREFIX=$(DESTDIR)$(prefix) install
 +	$(MAKE) -C src/zobjcopy PREFIX=$(DESTDIR)$(prefix) install
 +	$(MAKE) -C src/ticks PREFIX=$(DESTDIR)$(prefix) install
@@ -66,12 +68,12 @@
 +	$(MAKE) -C support/graphics PREFIX=$(DESTDIR)$(prefix) install
 +	$(MAKE) -C support/basck PREFIX=$(DESTDIR)$(prefix) install
 +	$(MAKE) -C support/pv1000 PREFIX=$(DESTDIR)$(prefix) install
-+	if [ -f bin/zsdcpp$(EXESUFFIX) ]; then cp bin/zsdcpp$(EXESUFFIX) $(DESTDIR)$(prefix)/bin/; fi
-+	if [ -f bin/zsdcc$(EXESUFFIX) ]; then cp bin/zsdcc$(EXESUFFIX) $(DESTDIR)$(prefix)/bin/; fi
++	if [ -f bin/z88dk-zsdcpp$(EXESUFFIX) ]; then cp bin/z88dk-zsdcpp$(EXESUFFIX) $(DESTDIR)$(prefix)/bin/; fi
++	if [ -f bin/z88dk-zsdcc$(EXESUFFIX) ]; then cp bin/z88dk-zsdcc$(EXESUFFIX) $(DESTDIR)$(prefix)/bin/; fi
 +	cp -r include $(DESTDIR)$(prefix_share)/
 +	cp -r lib $(DESTDIR)$(prefix_share)/
 +	cp -r libsrc $(DESTDIR)$(prefix_share)/
 +	cp -r src/m4 $(DESTDIR)$(prefix_share)/src/
  
- 
- # BSD install syntax below
+ install-clean:
+ 	$(MAKE) -C libsrc install-clean

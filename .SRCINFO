@@ -1,22 +1,28 @@
 pkgbase = z88dk
 	pkgdesc = Developement kit for Z80 computers
-	pkgver = 2.1
+	pkgver = 2.2
 	pkgrel = 1
 	url = http://z88dk.org
 	arch = i686
 	arch = x86_64
 	license = custom:The Clarified Artistic License
-	depends = perl
+	makedepends = perl
+	makedepends = perl-modern-perl
+	makedepends = perl-yaml-tiny
+	makedepends = perl-cpu-z80-assembler
+	makedepends = perl-path-tiny
+	makedepends = ragel
+	makedepends = re2c
+	makedepends = dos2unix
 	depends = libxml2
 	backup = etc/profile.d/z88dk.sh
-	source = https://github.com/z88dk/z88dk/releases/download/v2.1/z88dk-src-2.1.tgz
+	source = https://github.com/z88dk/z88dk/releases/download/v2.2/z88dk-src-2.2.tgz
 	source = fix-whitespace-Makefile.patch
-	source = fix-makefile-v2.1.patch
+	source = fix-makefile-v2.2.patch
 	source = z88dk.sh
-	sha256sums = f3579ee59b4af552721173165af38223b115ccb67179e79d2f3c0ae64338dc7c
-	sha256sums = 3ae2c544e97a49298e81c3fbd19ff4458b7627a827d83534c34499f7570cfaa8
-	sha256sums = 02ad318eb810f2dff140f66e8c77b946f66018e077a7c27b87824081f6601646
+	sha256sums = 942aef3f5c55209a76925c8df681271e8340cf6623bedcb5a2933d4024657a41
+	sha256sums = dea585b77f15d42b1f9c9ca4bf20b26f884ed828e7b0891afb915361f008a8a1
+	sha256sums = 55a7d58e239f5513cd110d924b30f2cb8d3b3f1d38b3c24d90ddc65bb1e345e2
 	sha256sums = 4eef7c67e5b142db3006a4076876cdae9f386a7b94a66841a5a8fac869bea156
 
 pkgname = z88dk
-
