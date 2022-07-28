@@ -1,6 +1,6 @@
 post_install() {
 	cat <<EOF
-	>> To enable command-not-found hook for your shell 
+	>> To enable command-not-found hook for your shell
 	>> source the proper file to your shell:
 
 	>> for bash (~/.bashrc):
