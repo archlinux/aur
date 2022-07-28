@@ -1,6 +1,6 @@
 pkgbase = pcm
 	pkgdesc = Processor Counter Monitor
-	pkgver = 202205
+	pkgver = 202207
 	pkgrel = 1
 	url = https://github.com/opcm/pcm
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = pcm
 	makedepends = ninja
 	depends = gcc-libs
 	depends = simdjson
-	source = pcm-202205.tar.gz::https://github.com/opcm/pcm/archive/202205.tar.gz
-	sha256sums = 6929dbab8eab5470e7cc6bb8f7401e1e958c3da2381ab3057e09dd8dd569d2b5
+	source = pcm-202207.tar.gz::https://github.com/opcm/pcm/archive/202207.tar.gz
+	sha256sums = eb20738d5f082390c336717f4eeaf711ae87cfb8e981dbcd89f1c08ccb9b49ac
 
 pkgname = pcm
