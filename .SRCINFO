@@ -1,23 +1,21 @@
 pkgbase = bluetooth-support
-	pkgdesc = Meta package for bluetooth support.
+	pkgdesc = Metapkg containing needed packages for using Bluetooth
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 6
 	url = https://wiki.archlinux.org/index.php/Bluetooth
-	install = bluetooth.install
+	install = bluetooth-support.install
 	arch = any
 	license = GPL
+	depends = bluetooth-autoconnect
 	depends = bluez
-	depends = bluez-libs
 	depends = bluez-hid2hci
+	depends = bluez-libs
 	depends = bluez-plugins
 	depends = bluez-tools
 	depends = bluez-utils
-	depends = bluetooth-autoconnect
-	optdepends = blueman: A gtk+ bluetooth manager
+	optdepends = blueman: A GTK bluetooth manager
 	optdepends = bluedevil: Qt bluetooth frontend
 	optdepends = blueberry: Bluetooth configuration tool
-	replaces = garuda-bluetooth
 	replaces = manjaro-bluetooth
 
 pkgname = bluetooth-support
-
