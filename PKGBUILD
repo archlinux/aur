@@ -1,7 +1,7 @@
 # Maintainer: Tea <icepie.dev@gmail.com>
 pkgname=gnome-randr
 pkgver=0.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="This tries to reimplement the some of the functionality of 'xrandr' for the gnome desktop using mutter's dbus-api.
 It currently has not been tested with fractional scaling support."
 arch=('any')
@@ -11,7 +11,9 @@ groups=()
 depends=(
     'mutter'
 )
-makedepends=()
+makedepends=(
+    'git'
+)
 optdepends=()
 provides=()
 conflicts=()
