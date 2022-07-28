@@ -10,7 +10,7 @@ RestartSec=10
 
 EnvironmentFile=/etc/dell-g5se-fanctl.conf
 
-ExecStart=dell-g5se-fanctl -l $DELL_TEMPS -t $DELL_INTERVAL $DELL_FLAGS
+ExecStart=dell-g5se-fanctl -l -ut $DELL_TEMPS -t $DELL_INTERVAL $DELL_FLAGS
 
 [Install]
 WantedBy=multi-user.target
