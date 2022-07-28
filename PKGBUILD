@@ -10,11 +10,38 @@ pkgdesc="Bridges your system to other systems, like Home Assistant"
 arch=('any')
 url="https://github.com/timmo001/$pkgname"
 license=(MIT)
-depends=(python-pydantic python-typer python-incremental python-keyboard python-mutagen python-plyer python-psutil python-sanic python-zeroconf python-shellingham python-tabulate python-aiohttp python-pyperclip pyside6 python-appdirs python-colorlog python-cryptography python-pandas)
-makedepends=(yarn node-gyp python-build python-installer python-wheel libxss gtk3 nss)
+depends=(
+ 	python-pydantic
+	python-typer
+	python-incremental
+	python-keyboard
+	python-mutagen
+	python-plyer
+	python-psutil
+	python-sanic
+	python-zeroconf
+	python-shellingham
+	python-tabulate
+	python-aiohttp
+	python-pyperclip
+	pyside6
+	python-appdirs
+	python-colorlog
+	python-cryptography
+	python-pandas
+)
+makedepends=(
+	yarn
+	node-gyp
+	python-build
+	python-installer
+	python-wheel
+	libxss
+	gtk3
+	nss)
 optdepends=(
-'lshw: To get system information such as the UUID'
-'upower: To get battery information'
+	'lshw: To get system information such as the UUID'
+	'upower: To get battery information'
 )
 source=("$pkgname-$pkgver.$_archive_extension::https://github.com/timmo001/$pkgname/archive/refs/tags/$pkgver.$_archive_extension"
         "$pkgname.desktop"
