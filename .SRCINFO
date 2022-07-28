@@ -1,14 +1,14 @@
 pkgbase = zeus-bin
 	pkgdesc = The containerized AUR helper
-	pkgver = 2.0.1
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/threadexio/zeus
 	arch = x86_64
 	license = GPL
 	depends = docker
 	conflicts = zeus
-	conflicts = podman-docker
-	source = zeus-bin-2.0.1.tar.gz::https://github.com/threadexio/zeus/releases/download/v2.0.1/zeus-bin.tar.gz
-	sha256sums = 637144963547cbc13660a30e74b393c93015022e4b6d14dcaee0a7c55abcb5a4
+	noextract = zeus-3.0.0.tar.gz
+	source = zeus-3.0.0.tar.gz::https://github.com/threadexio/zeus/releases/download/v3.0.0/zeus.tar.gz
+	sha256sums = b58ba819e49673b48cc3a66f3ec33108995b6de0c28fa17e4b94683a50b42130
 
 pkgname = zeus-bin
