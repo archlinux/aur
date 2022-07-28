@@ -48,6 +48,10 @@ package() {
         "${pkgdir}/usr/share/pixmaps/${pkgname}.ico"
 
     msg2 'Packaging game data'
+    rm -rf \
+        "${srcdir}/${pkgname#gog-}/app" \
+        "${srcdir}/${pkgname#gog-}/commonappdata" \
+        "${srcdir}/${pkgname#gog-}/__redist"
     mkdir -p "${pkgdir}/opt/"
     mv "${srcdir}/${pkgname#gog-}" "${pkgdir}/opt/${pkgname}"
 
