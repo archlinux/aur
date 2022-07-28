@@ -17,11 +17,12 @@ makepkg:
   before_script:
     - pacman -Syu --noconfirm sudo
     - useradd builduser -m && passwd -d builduser && printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
+    - git clone "https://aur.archlinux.org/yay.git" && cd yay && makepkg -si --noconfirm
   script:
-    - sudo -u builduser bash -c 'makepkg -si --noconfirm'
+    - sudo -u builduser bash -c 'makepkg -s --noconfirm'
   artifacts:
     paths:
-      - "*.zst"
+      - "$CI_PROJECT_NAME*.zst"
       - "/usr/sbin/yay"
 
 pacman:
