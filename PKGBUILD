@@ -4,7 +4,7 @@
 # Contributor: Ryan Coyner <rcoyner@gmail.com>
 
 pkgname=mod_wsgi
-pkgver=4.9.2
+pkgver=4.9.3
 pkgrel=1
 pkgdesc='Python WSGI adapter module for Apache'
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('mod_wsgi2')
 makedepends=('apache' 'python')
 install='mod_wsgi.install'
 source=($pkgname-$pkgver.tar.gz::"https://codeload.github.com/GrahamDumpleton/mod_wsgi/tar.gz/$pkgver")
-sha256sums=('3bf817b1bdeb47f564af85e6dbd56339dcc747df2961b6bec61e99b4fd56bcbe')
+sha256sums=('09e83e2f687c9c67110f63f5acac914935fa67981ad4d23b2e113d016a446557')
 
 build() {
   cd $pkgname-$pkgver
