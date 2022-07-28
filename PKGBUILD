@@ -1,18 +1,20 @@
-# Maintainer: ouzu <ouzu att laze dott today>
+# Maintainer: Ghassan Alduraibi <aur att ghs.sn>
+# Contributor: ouzu <ouzu att laze dott today>
 pkgname=esphome-flasher
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 epoch=
-pkgdesc="Simple GUI tool to flash ESPs over USB"
+pkgdesc="ESP8266/ESP32 firmware flasher GUI for ESPHome"
 arch=("any")
 url="https://github.com/esphome/esphome-flasher"
 license=('MIT')
 depends=("esptool" "python" "python-pillow" "python-requests" "python-wxpython")
+makedepends=("python-installer" "python-wheel")
 provides=("esphomeflasher")
 conflicts=("esphomeflasher")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/esphome/$pkgname/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/esphome/$pkgname/archive/$pkgver.tar.gz")
 noextract=()
-md5sums=('b61d426c17800a2da581990c2bd08a08')
+md5sums=('4aa6f8d4149a80eba86731b15ea97102')
 
 build() {
 	cd "$pkgname-$pkgver"

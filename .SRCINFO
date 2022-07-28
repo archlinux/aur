@@ -1,10 +1,12 @@
 pkgbase = esphome-flasher
-	pkgdesc = Simple GUI tool to flash ESPs over USB
-	pkgver = 1.3.0
+	pkgdesc = ESP8266/ESP32 firmware flasher GUI for ESPHome
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/esphome/esphome-flasher
 	arch = any
 	license = MIT
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = esptool
 	depends = python
 	depends = python-pillow
@@ -12,8 +14,7 @@ pkgbase = esphome-flasher
 	depends = python-wxpython
 	provides = esphomeflasher
 	conflicts = esphomeflasher
-	source = esphome-flasher-1.3.0.tar.gz::https://github.com/esphome/esphome-flasher/archive/v1.3.0.tar.gz
-	md5sums = b61d426c17800a2da581990c2bd08a08
+	source = esphome-flasher-1.4.0.tar.gz::https://github.com/esphome/esphome-flasher/archive/1.4.0.tar.gz
+	md5sums = 4aa6f8d4149a80eba86731b15ea97102
 
 pkgname = esphome-flasher
-
