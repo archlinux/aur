@@ -1,6 +1,6 @@
 pkgbase = next-prayer
 	pkgdesc = Islamic prayers reminder for your status bar.
-	pkgver = v0.3.0.r56.da6186a
+	pkgver = v0.3.0.r57.cd81a8b
 	pkgrel = 1
 	url = https://github.com/AbdeltwabMF/next-prayer.git
 	arch = x86_64
