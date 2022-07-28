@@ -1,6 +1,6 @@
 # Maintainer: Mintsuki <mintsuki@protonmail.com>
 pkgname=limine
-pkgver=3.13.1
+pkgver=3.13.2
 pkgrel=1
 pkgdesc="An advanced x86/x86_64 BIOS/UEFI bootloader"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://limine-bootloader.org/"
 license=('BSD')
 depends=('glibc')
 source=("https://limine-bootloader.org/files/limine/limine-${pkgver}.tar.xz")
-sha256sums=('8bfb96b6cc0dc5d3342ab699de343b36d1a8b571ed5d2b0395fcba6aac8fa24a')
+sha256sums=('bc30e2424dfcfa4f7bcf659ce322c25220837bab5d983c9104b99eb680d2bbd6')
 makedepends=('nasm' 'mtools' 'llvm' 'lld' 'clang')
 
 build() {
