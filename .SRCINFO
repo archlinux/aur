@@ -1,0 +1,20 @@
+pkgbase = linux-explain-bin
+	pkgdesc = Utility to explain system call errors. This package provides an explain(1) command to explain Unix and Linux system call errors, after the fact.
+	pkgver = 1.4.D001
+	pkgrel = 1
+	url = http://libexplain.sourceforge.net
+	arch = i686
+	arch = x86_64
+	groups = 
+	license = LGPL
+	depends = acl
+	depends = bash-completion
+	depends = linux-libexplain51
+	conflicts = explain
+	conflicts = explain-git
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = http://libexplain.sourceforge.net/debian/explain_1.4.D001-1_amd64.deb
+	sha512sums_x86_64 = 156cb4ec0a1316d3e8412367806026dfa45520753fdf4804d34cae6b0ec917a3b5ebbae9203de0c8f398fa4f655e85761bfd0305c7910fc28901c57aae7c10d9
+
+pkgname = linux-explain-bin
