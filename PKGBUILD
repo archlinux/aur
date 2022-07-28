@@ -1,9 +1,9 @@
 # Maintainer: Anton Kudelin <kudelin at protonmail dot com>
 
 _pkgname=quantlib
-pkgname=java-$_pkgname
 _PkgName=QuantLib-SWIG
-pkgver=1.26
+pkgname=java-$_pkgname
+pkgver=1.27
 pkgrel=1
 pkgdesc="Java bindings for QuantLib"
 arch=("x86_64")
@@ -13,11 +13,16 @@ depends=("quantlib>=$pkgver" "java-environment")
 makedepends=("gcc" "boost")
 provides=("scala-$_pkgname")
 source=("https://github.com/lballabio/$_PkgName/releases/download/$_PkgName-v$pkgver/$_PkgName-$pkgver.tar.gz")
-sha256sums=("84838a1d0ad3994a195646c04e9c85bfc9314b8b3987c26853ea5d645fb62a8e")
+sha256sums=("d6d927389265a0aa13d087124a7fb8fb2b58758f621a38f60e13a642be9bdc0f")
 options=(!libtool)
 
-build() {
+prepare() {
   unset _JAVA_OPTIONS
+  cd "$srcdir/$_PkgName-$pkgver"
+  autoreconf -if
+}
+
+build() {
   cd "$srcdir/$_PkgName-$pkgver"
   ./configure \
     --prefix=/usr \

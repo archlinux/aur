@@ -1,17 +1,17 @@
 pkgbase = java-quantlib
 	pkgdesc = Java bindings for QuantLib
-	pkgver = 1.26
+	pkgver = 1.27
 	pkgrel = 1
 	url = http://quantlib.org
 	arch = x86_64
 	license = BSD
 	makedepends = gcc
 	makedepends = boost
-	depends = quantlib>=1.26
+	depends = quantlib>=1.27
 	depends = java-environment
 	provides = scala-quantlib
 	options = !libtool
-	source = https://github.com/lballabio/QuantLib-SWIG/releases/download/QuantLib-SWIG-v1.26/QuantLib-SWIG-1.26.tar.gz
-	sha256sums = 84838a1d0ad3994a195646c04e9c85bfc9314b8b3987c26853ea5d645fb62a8e
+	source = https://github.com/lballabio/QuantLib-SWIG/releases/download/QuantLib-SWIG-v1.27/QuantLib-SWIG-1.27.tar.gz
+	sha256sums = d6d927389265a0aa13d087124a7fb8fb2b58758f621a38f60e13a642be9bdc0f
 
 pkgname = java-quantlib
