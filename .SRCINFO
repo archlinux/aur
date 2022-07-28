@@ -1,0 +1,16 @@
+pkgbase = nautilus-open-any-terminal-git
+	pkgdesc = context-menu entry for opening other terminal in nautilus, git version
+	pkgver = 0.3.0.r10.g7cdc4d0
+	pkgrel = 1
+	url = https://github.com/Stunkymonkey/nautilus-open-any-terminal
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-nautilus
+	provides = nautilus-open-any-terminal
+	conflicts = nautilus-open-any-terminal
+	source = nautilus-open-any-terminal-git::git+https://github.com/Stunkymonkey/nautilus-open-any-terminal
+	sha512sums = SKIP
+
+pkgname = nautilus-open-any-terminal-git
