@@ -8,8 +8,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/davmac314/dinit/archive/v$p
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 license=('Apache')
 makedepends=('make')
-depends=('git')
-conflicts=('filesystem' 'systemd-sysvcompat')
+depends=('git' 'pacman')
 sha256sums=('b6cc489079a6600ae5f89cbc52b6046bd522e8e91da60c6a3006c4224cba83b4')
 
 build () {
@@ -19,7 +18,16 @@ build () {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   
-  make DESTDIR="$pkgdir/" install
+  install -Dm644 src/dinit "${pkgdir}/sbin/dinit"
+  install -Dm644 src/dinit-monitor "${pkgdir}/sbin/dinit-monitor"
+  install -Dm644 src/dinitcheck "${pkgdir}/sbin/dinitcheck"
+  install -Dm644 src/dinitctl "${pkgdir}/sbin/dinitctl"
+  
+  install -Dm644 doc/manpages/dinit-service.5 "${pkgdir}/usr/share/man/man5/dinit-service.5.gz"
+  install -Dm644 doc/manpages/dinit-monitor.8 "${pkgdir}/usr/share/man/man8/dinit-monitor.8.gz"
+  install -Dm644 doc/manpages/dinit.8 "${pkgdir}/usr/share/man/man8/dinit.8.gz"
+  install -Dm644 doc/manpages/dinitcheck.8 "${pkgdir}/usr/share/man/man8/dinitcheck.8.gz"
+  install -Dm644 doc/manpages/dinitctl.8 "${pkgdir}/usr/share/man/man8/dinitctl.8.gz"
 }
