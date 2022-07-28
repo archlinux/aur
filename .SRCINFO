@@ -1,0 +1,16 @@
+pkgbase = linux-libexplain-dev
+	pkgdesc = A library of system-call-specific strerror repl - development files.
+	pkgver = 1.4.D001
+	pkgrel = 1
+	url = http://libexplain.sourceforge.net
+	arch = x86_64
+	groups = 
+	license = LGPL
+	depends = bash-completion
+	depends = linux-explain-bin
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = http://libexplain.sourceforge.net/debian/libexplain-dev_1.4.D001-1_amd64.deb
+	sha512sums_x86_64 = a76a2b663ea38192f7a7bc397aafb04888c488cbafa3e8f00ee47aa96024ce0fbc9a8b97e158b68fc726dc8c0f0c57813923d8c7e3282fcdf3f59f27188db7b9
+
+pkgname = linux-libexplain-dev
