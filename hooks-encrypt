@@ -1,91 +1,61 @@
 #!/usr/bin/ash
-# shellcheck shell=dash
 
-_get_key() {
+run_hook() {
+    modprobe -a -q dm-crypt >/dev/null 2>&1
+    [ "${quiet}" = "y" ] && CSQUIET=">/dev/null"
+
+    # Get keyfile if specified
     ckeyfile="/crypto_keyfile.bin"
-    IFS=: read ckdev ckarg1 ckarg2 <<EOF
+    if [ -n "$cryptkey" ]; then
+        IFS=: read ckdev ckarg1 ckarg2 <<EOF
 $cryptkey
 EOF
-    # shellcheck disable=SC2154
-    if [ "$ckdev" = "rootfs" ]; then
-        ckeyfile=$ckarg1
-    elif resolved=$(resolve_device "${ckdev}" ${rootdelay}); then
-        case ${ckarg1} in
-            *[!0-9]*)
-                # Use a file on the device
-                # ckarg1 is not numeric: ckarg1=filesystem, ckarg2=path
-                IFS=, read ckfs1 ckfs2 <<EOF
+
+        if [ "$ckdev" = "rootfs" ]; then
+            ckeyfile=$ckarg1
+        elif resolved=$(resolve_device "${ckdev}" ${rootdelay}); then
+            case ${ckarg1} in
+                *[!0-9]*)
+                    # Use a file on the device
+                    # ckarg1 is not numeric: ckarg1=filesystem, ckarg2=path
+                    IFS=, read ckfs1 ckfs2 <<EOF
 $ckarg1
 EOF
-                IFS=, read ckpath1 ckpath2 <<EOF
+                    IFS=, read ckpath1 ckpath2 <<EOF
 $ckarg2
 EOF
-                mkdir /ckey
-                mount --mkdir -r -t "$ckfs1" "$resolved" /ckey
-                ckey="/ckey/${ckpath1}"
-                is_fs=$(blkid -o value -s TYPE "${ckey}")
-                if [ "${is_fs}" != "" ]; then
-                    echo "${ckey} has type ${is_fs}"
-                    if cryptsetup isLuks "${ckey}" >/dev/null 2>&1; then
-                        while ! eval cryptsetup open --type luks2 "${ckey}" ckey; do
-                            sleep 2;
-                        done
-                        ckey="/dev/mapper/ckey"
+                    mkdir /ckey
+                    mount --mkdir -r -t "$ckfs1" "$resolved" /ckey
+                    ckey="/ckey/${ckpath1}"
+                    is_fs=$(blkid -o value -s TYPE "${ckey}")
+                    if [ "${is_fs}" != "" ]; then
+                        echo "${ckey} has type ${is_fs}"
+                        if cryptsetup isLuks "${ckey}" >/dev/null 2>&1; then
+                            while ! eval cryptsetup open --type luks2 "${ckey}" ckey; do
+                                sleep 2;
+                            done
+                            ckey="/dev/mapper/ckey"
+                        fi
+                        mount --mkdir -r -t "$ckfs2" "${ckey}" /ckey2
+                        ckey="/ckey2/${ckpath2}"
                     fi
-                    mount --mkdir -r -t "$ckfs2" "${ckey}" /ckey2
-                    ckey="/ckey2/${ckpath2}"
-                fi
-                dd if="${ckey}" of="${ckeyfile}" >/dev/null 2>&1
-                if mountpoint -q /ckey2; then
-                    umount /ckey2
-                    cryptsetup close --type luks ckey;
-                fi
-                umount /ckey
-                ;;
-            *)
-                # Read raw data from the block device
-                # ckarg1 is numeric: ckarg1=offset, ckarg2=length
-                dd if="${resolved}" of="${ckeyfile}" bs=1 skip="${ckarg1}" count="${ckarg2}" >/dev/null 2>&1
-                ;;
-        esac
-    fi
-    [ ! -f "${ckeyfile}" ] && echo "Keyfile could not be opened. Reverting to passphrase."
-}
-
-_sigdev() {
-    local _sigdev _sigpath
-    if [ -n "${sigdevice}" ]; then
-        DEPRECATED_CRYPT=0
-        IFS=: read _sigdev _sigpath <<EOF
-$sigdevice
-EOF
-        if mount --mkdir -o "defaults" "${_sigdev}" /run/sigdev; then
-            echo "Device ${_sigdev} mounted successfully over /run/sigdev"
-            sigfile="/run/sigdev/${_sigpath}"
-            dd if="${sigfile}" of="/sigfile" >/dev/null 2>&1
-        else
-            echo "Can't mount device ${_sigdev} over /run/sigdev"
+                    dd if="${ckey}" of="$ckeyfile" >/dev/null 2>&1
+                    if mountpoint -q /ckey2; then
+                        umount /ckey2
+                        cryptsetup close --type luks ckey;
+                    fi
+                    umount /ckey
+                    ;;
+                *)
+                    # Read raw data from the block device
+                    # ckarg1 is numeric: ckarg1=offset, ckarg2=length
+                    dd if="$resolved" of="$ckeyfile" bs=1 skip="$ckarg1" count="$ckarg2" >/dev/null 2>&1
+                    ;;
+            esac
         fi
-
+        [ ! -f ${ckeyfile} ] && echo "Keyfile could not be opened. Reverting to passphrase."
     fi
-}
 
-_verify_signature() {
-    local _status
-    local _file="${1}"
-    local _sigfile="${2}"
-    local _dir _filename
-
-    _dir="$(dirname "${_file}")"
-    _filename="$(basename "${_file}")"
-    cd "${_dir}" || exit 1
-    gpg --homedir /gpg --status-fd 1 --verify "${_sigfile}" "${_filename}" 2>/dev/null | grep -E '^\[GNUPG:\] GOODSIG'
-    _status=$?
-    cd -- "${OLDPWD}" || exit 1
-    return ${_status}
-}
-
-_cryptdev() {
     if [ -n "${cryptdevice}" ]; then
         DEPRECATED_CRYPT=0
         IFS=: read cryptdev cryptname cryptoptions <<EOF
@@ -109,9 +79,18 @@ EOF
             echo "Can't mount device ${cryptdev} over /run/cryptdev"
         fi
     fi
-}
 
-_set_cryptargs() {
+    # This may happen if third party hooks do the crypt setup
+    if [ -b "/dev/mapper/${cryptname}" ]; then
+        echo "Device ${cryptname} already exists, not doing any crypt setup."
+        return 0
+    fi
+
+    warn_deprecated() {
+        echo "The syntax 'root=${root}' where '${root}' is an encrypted volume is deprecated"
+        echo "Use 'cryptdevice=${root}:root root=/dev/mapper/root' instead."
+    }
+
     set -f
     OLDIFS="$IFS"; IFS=,
     for cryptopt in ${cryptoptions}; do
@@ -136,14 +115,6 @@ _set_cryptargs() {
     set +f
     IFS="$OLDIFS"
     unset OLDIFS
-}
-
-warn_deprecated() {
-    echo "The syntax 'root=${root}' where '${root}' is an encrypted volume is deprecated"
-    echo "Use 'cryptdevice=${root}:root root=/dev/mapper/root' instead."
-}
-
-_open_root() {
     resolved=$(cryptsetup isLuks "${cryptdev}" >/dev/null 2>&1 && echo "${cryptdev}")
     [ "${resolved}" = "" ] && resolved=$(resolve_device "${cryptdev}" ${rootdelay})
     if [ "${resolved}" != "" ]; then
@@ -151,7 +122,7 @@ _open_root() {
             [ ${DEPRECATED_CRYPT} -eq 1 ] && warn_deprecated
             dopassphrase=1
             # If keyfile exists, try to use that
-            if [ -f "${ckeyfile}" ]; then
+            if [ -f ${ckeyfile} ]; then
                 if eval cryptsetup --key-file ${ckeyfile} open --type luks ${resolved} ${cryptname} ${cryptargs} ${CSQUIET}; then
                     dopassphrase=0
                 else
@@ -218,51 +189,7 @@ EOF
             err "Failed to open encryption mapping: The device ${cryptdev} is not a LUKS volume and the crypto= paramater was not specified."
         fi
     fi
-}
-
-run_hook() {
-    modprobe -a -q dm-crypt >/dev/null 2>&1
-    # shellcheck disable=SC2154
-    [ "${quiet}" = "y" ] && CSQUIET=">/dev/null"
-
-
-    _cryptdev
-    _sigdev
-
-    # shellcheck disable=SC2154
-    if [ "${verify}" = "y" ]; then 
-       local _cryptdev_sig_sha _keys_sig_sha
-       _cryptdev_sig_sha=$(sha512sum "${cryptdev}.sig")
-       _keys_sig_sha=$(sha512sum "/sigfile")
-       if [ ! "${_keys_sig_sha%% *}" != "${_cryptdev_sig_sha%% *}" ]; then
-           msg "ERROR: one or more signature files are corrupted."
-           launch_interactive_shell
-       fi
-       if _verify_signature "${cryptdev}" "/sigfile"; then
-           msg "Signature is OK, continue booting."
-           export verify="n"
-       else
-           echo "ERROR: one or more files are corrupted"
-           launch_interactive_shell
-       fi
-    fi
-
-    # Get keyfile if specified
-    ckeyfile="/crypto_keyfile.bin"
-    if [ -n "$cryptkey" ]; then
-        _get_key
-    fi
-
-    # This may happen if third party hooks do the crypt setup
-    if [ -b "/dev/mapper/${cryptname}" ]; then
-        echo "Device ${cryptname} already exists, not doing any crypt setup."
-        return 0
-    fi
-
-    _set_cryptargs
-    _open_root
     rm -f ${ckeyfile}
-    rm -f "${sigfile}"
 }
 
 # vim: set ft=sh ts=4 sw=4 et:
