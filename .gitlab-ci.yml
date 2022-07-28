@@ -1,24 +1,35 @@
 stages:
   - test
   - build
+  - install
 
-pamac_test:
+namcap:
   stage: test
   image: docker.io/archlinux:latest
   before_script:
-    - pacman -Sy --noconfirm namcap
+    - pacman -Syu --noconfirm namcap
   script:
     - namcap PKGBUILD
 
-makepkg_build:
+makepkg:
   stage: build
-  image: docker.io/archlinux:latest
+  image: docker.io/archlinux:base-devel
   before_script:
-    - pacman -Sy --noconfirm sudo base-devel git
+    - pacman -Syu --noconfirm sudo
     - useradd builduser -m && passwd -d builduser && printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
-    - pacman -Rdd --noconfirm git
   script:
     - sudo -u builduser bash -c 'makepkg -si --noconfirm'
   artifacts:
     paths:
       - "*.zst"
+      - "/usr/sbin/yay"
+
+pacman:
+  stage: install
+  image: docker.io/archlinux:latest
+  dependencies:
+    - makepkg
+  before_script:
+    - yay --noconfirm
+  script:
+    - yay -U --noconfirm *.zst
