@@ -1,0 +1,26 @@
+pkgbase = d4m-git
+	pkgdesc = Project Diva MegaMix+ mod manager
+	pkgver = r124.402ef8a
+	pkgrel = 00
+	url = https://github.com/brod8362/d4m
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-pip
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = libarchive
+	depends = pyside6
+	depends = python-requests
+	depends = python-colorama
+	depends = python-toml
+	depends = python-simple-term-menu
+	depends = python-vdf
+	depends = python-libarchive
+	source = d4m-git::git+https://github.com/brod8362/d4m.git
+	sha256sums = SKIP
+
+pkgname = d4m-git
