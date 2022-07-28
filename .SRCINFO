@@ -9,6 +9,7 @@ pkgbase = web-eid
 	makedepends = qt5-tools
 	makedepends = gtest
 	makedepends = gmock
+	makedepends = cmake
 	depends = openssl
 	depends = qt5-base
 	depends = qt5-svg
