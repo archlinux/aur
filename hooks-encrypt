@@ -220,32 +220,35 @@ EOF
     fi
 }
 
+_compare_signatures() {
+    local _cryptdev_sig_sha _keys_sig_sha
+    _cryptdev_sig_sha=$(sha512sum "${cryptdev}.sig")
+    _keys_sig_sha=$(sha512sum "/sigfile")
+    if [ ! "${_keys_sig_sha%% *}" != "${_cryptdev_sig_sha%% *}" ]; then
+        msg "ERROR: one or more signature files are corrupted."
+        launch_interactive_shell
+    fi
+}
+
+_verify() {
+    _compare_signatures
+    if _verify_signature "${cryptdev}" "/sigfile"; then
+        msg "Signature is OK, continue booting."
+        export verify="n"
+    else
+        echo "ERROR: one or more files are corrupted"
+        launch_interactive_shell
+    fi
+}
+
 run_hook() {
     modprobe -a -q dm-crypt >/dev/null 2>&1
     # shellcheck disable=SC2154
     [ "${quiet}" = "y" ] && CSQUIET=">/dev/null"
-
-
     _cryptdev
     _sigdev
-
     # shellcheck disable=SC2154
-    if [ "${verify}" = "y" ]; then 
-       local _cryptdev_sig_sha _keys_sig_sha
-       _cryptdev_sig_sha=$(sha512sum "${cryptdev}.sig")
-       _keys_sig_sha=$(sha512sum "/sigfile")
-       if [ ! "${_keys_sig_sha%% *}" != "${_cryptdev_sig_sha%% *}" ]; then
-           msg "ERROR: one or more signature files are corrupted."
-           launch_interactive_shell
-       fi
-       if _verify_signature "${cryptdev}" "/sigfile"; then
-           msg "Signature is OK, continue booting."
-           export verify="n"
-       else
-           echo "ERROR: one or more files are corrupted"
-           launch_interactive_shell
-       fi
-    fi
+    [ "${verify}" = "y" ] && _verify
 
     # Get keyfile if specified
     ckeyfile="/crypto_keyfile.bin"
