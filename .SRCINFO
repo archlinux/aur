@@ -1,0 +1,12 @@
+pkgbase = foobar2000-component-dynamic-range-bin
+	pkgdesc = A dynamic range component for foobar2000
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://wiki.hydrogenaud.io/index.php?title=Foobar2000:Components/Dynamic_Range_Meter_(foo_dynamic_range)
+	arch = any
+	license = unknown
+	depends = foobar2000>=1.0.0
+	source = https://dr.loudness-war.info/downloads/foo_dynamic_range_1.1.1.zip
+	sha256sums = d34f3c2bd4317b1bcdca9110cfc7d015c7eec8a5c7e978d1256fcfdd7244945a
+
+pkgname = foobar2000-component-dynamic-range-bin
