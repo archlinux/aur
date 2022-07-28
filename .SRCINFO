@@ -1,0 +1,22 @@
+pkgbase = pihpsdr-git
+	pkgdesc = piHPSDR
+	pkgver = r1486.c2304f6
+	pkgrel = 1
+	url = https://github.com/dl1ycf/pihpsdr
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = wdsp
+	depends = fftw
+	depends = libpulse
+	depends = gtk3
+	depends = soapysdr
+	depends = alsa-lib
+	provides = pihpsdr
+	conflicts = pihpsdr
+	source = pihpsdr::git+https://github.com/dl1ycf/pihpsdr
+	source = fix_icon.patch
+	sha512sums = SKIP
+	sha512sums = cf80ce2d6457cd2d041de4a70e5a82bb8cddd6f51cd0c2851ae3b39755bed65e034b106c8a0734903ca54ef058155c9ef42121190a8d29ab7b350819b163d767
+
+pkgname = pihpsdr-git
