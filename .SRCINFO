@@ -1,0 +1,17 @@
+pkgbase = colpick
+	pkgdesc = Pick color at the current position of the mouse
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/mehmetumit/colpick.git
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = imagemagick
+	depends = scrot
+	depends = xdotool
+	optdepends = xclip
+	optdepends = notification-daemon
+	source = git+https://github.com/mehmetumit/colpick.git
+	md5sums = SKIP
+
+pkgname = colpick
