@@ -1,11 +1,11 @@
 pkgbase = cmake-doc-qch
 	pkgdesc = CMake documentation in Qt Help format
-	pkgver = 3.23.2
+	pkgver = 3.23.3
 	pkgrel = 1
 	url = https://cmake.org/documentation
 	arch = any
 	license = CCPL:cc-by
-	source = CMake-3.23.2.qch::https://www.cmake.org/cmake/help/v3.23/CMake.qch
-	md5sums = d100f0b0f2907f8f00321edb0920c05a
+	source = CMake-3.23.3.qch::https://www.cmake.org/cmake/help/v3.23/CMake.qch
+	md5sums = 35a130370f13ee11133da00793dfbe58
 
 pkgname = cmake-doc-qch
