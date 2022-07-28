@@ -1,0 +1,19 @@
+pkgbase = gog-cuphead-the-delicious-last-course
+	pkgdesc = Cuphead DLC, with new playable character and levels. GOG version, uses Wine.
+	pkgver = 1.3.3.57402
+	pkgrel = 1
+	url = https://www.gog.com/game/cuphead_the_delicious_last_course
+	arch = x86_64
+	license = custom
+	makedepends = innoextract
+	makedepends = lgogdownloader
+	depends = gog-cuphead>=1.3.3
+	options = libtool
+	options = staticlibs
+	options = !strip
+	source = setup_cuphead_-_the_delicious_last_course_1.3.3_(57402).exe::gogdownloader://cuphead_the_delicious_last_course/en1installer0
+	source = setup_cuphead_-_the_delicious_last_course_1.3.3_(57402)-1.bin::gogdownloader://cuphead_the_delicious_last_course/en1installer1
+	sha512sums = 5ed6d7859424d3cf1ec68ee64e4dc27820b55bc1685a4fc8f7cd6ea50d903d10fbd68ea26db9fa0ef1dd72bdde8ccb188338d81b3e0dde43526d9561c23067b9
+	sha512sums = f73b829c4a77f194ecfbd01a605bdb385e77eecda592a5ecd0cb6cfe075602d70e49931c498eee2bf0a142eecb0f98dd1a8cf56a137f883581b1c910c989d2d7
+
+pkgname = gog-cuphead-the-delicious-last-course
