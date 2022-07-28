@@ -20,8 +20,7 @@ md5sums=(
 package() {
 	tar \
 		--extract \
-		--file ${gzfirm} \
-		--directory "${pkgdir}" \
-	&& mv ${gzdir}/* ${pkgdir} \
-	&& rm -R ${gzdir}
-} 
+		--file $gzfirm \
+		--directory $srcdir \
+	&& cp -R $gzdir/* $pkgdir
+	}
