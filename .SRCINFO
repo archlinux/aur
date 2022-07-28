@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-quick-settings-git
 	pkgdesc = Quick Settings for Gnome
-	pkgver = r152.b3e0d0d
+	pkgver = r158.ac0fa1c
 	pkgrel = 1
 	url = https://gitlab.gnome.org/fmuellner/quick-settings-extension
 	arch = any

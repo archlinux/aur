@@ -1,7 +1,7 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=gnome-shell-extension-quick-settings-git
-pkgver=r152.b3e0d0d
+pkgver=r158.ac0fa1c
 pkgrel=1
 pkgdesc='Quick Settings for Gnome'
 arch=(any)
@@ -24,13 +24,16 @@ build() {
 	gnome-extensions pack \
 		--extra-source=dark-mode-symbolic.svg \
 		--extra-source=quickSettings.js \
+		--extra-source=remoteAccess.js \
 		--extra-source=status/ \
 		--force
 }
 
 package() {
 	cd "${pkgname%-git}"
-	_extensiondir="/usr/share/gnome-shell/extensions/quick-settings@fmuellner.gnome.org"
+	_uuid='quick-settings@fmuellner.gnome.org'
+	_extensiondir="/usr/share/gnome-shell/extensions/$_uuid"
+
 	install -d "$pkgdir$_extensiondir"
-	bsdtar -xf quick-settings@fmuellner.gnome.org.shell-extension.zip -C "$pkgdir$_extensiondir"
+	bsdtar -xf "$_uuid.shell-extension.zip" -C "$pkgdir$_extensiondir"
 }
