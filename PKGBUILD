@@ -1,6 +1,6 @@
 
-pkgname=qemu-loongarch64
-_pkgname=qemu-loongarch64
+pkgname=qemu-loongarch64-git
+_pkgname=qemu-loongarch64-git
 pkgdesc="Statically linked binaries of Qemu with loongarch64 user emulation. Useful for containers/chroot environment with binfmt."
 pkgver=7.0.50.r97536.g8ec4bc3c8c
 pkgrel=1
