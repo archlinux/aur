@@ -1,44 +1,42 @@
+# Maintainer: Blair Bonnett <blair dot bonnett at gmail dot com>
+
 pkgname=python-blackdoc
+_pypi=blackdoc
 pkgdesc='Run Black on documentation code snippets'
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 url='https://github.com/keewis/blackdoc'
 license=('MIT')
 arch=('any')
 depends=('python-black' 'python-more-itertools')
-makedepends=('python-setuptools')
+optdepends=(
+  'ipython: for working with .ipynb files'
+  'python-tokenize-rt: for working with .ipynb files'
+)
+makedepends=(
+  'python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm'
+  'python-wheel'
+)
 checkdepends=('python-pytest')
 source=(
-  "https://files.pythonhosted.org/packages/source/b/blackdoc/blackdoc-$pkgver.tar.gz"
+  "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-  '8d416b541d378b431173874d0011a259efaed63580e92817f95c47e3b20d057f'
+  '7958065881412dc243fe809f8fa249fbb8a6731ae5f587c976ce803eaf886ac9'
 )
 
 build() {
-  cd "blackdoc-$pkgver"
-  python setup.py build
+  cd "$_pypi-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "blackdoc-$pkgver"
-
-  # The library uses importlib.metadata to load its version info, so we need
-  # the metadata available before we can run the tests.
-  python setup.py egg_info -e build/lib
+  cd "$_pypi-$pkgver"
   PYTHONPATH=$PWD/build/lib pytest -v
-  rm -r build/lib/blackdoc.egg-info
 }
 
 package() {
-  cd "blackdoc-$pkgver"
-  python setup.py install --skip-build --prefix=/usr --root="$pkgdir" --optimize=1
+  cd "$_pypi-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
-
-  # The egg-info generated does not pick up the version and so reports itself
-  # as 0.0.0. Move it to the correct place and edit the PKG_INFO details.
-  PYVER=$(python -c 'import sys; print("{}.{}".format(*sys.version_info[:2]))')
-  cd "$pkgdir/usr/lib/python$PYVER/site-packages/"
-  mv "blackdoc-0.0.0-py$PYVER.egg-info" "blackdoc-$pkgver-py$PYVER.egg-info"
-  sed -i -e "s/Version: 0.0.0/Version: $pkgver/" "blackdoc-$pkgver-py$PYVER.egg-info/PKG-INFO"
 }
