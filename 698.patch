@@ -1,0 +1,23 @@
+From dd25c29a59664f2ff2ead99fed38b7c78f41a35b Mon Sep 17 00:00:00 2001
+From: Adam Shrout <geezer85@users.noreply.github.com>
+Date: Wed, 8 Jun 2022 20:39:43 -0500
+Subject: [PATCH 2/2] Fix build error if spdlog does not ship with bundled fmt.
+
+---
+ CMakeLists.txt | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e1e9da0b..8d3ebc32 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -191,6 +191,9 @@ if(NOT Boost_FOUND)
+ endif()
+ 
+ ADD_DEFINITIONS(-DBOOST_ALL_DYN_LINK)
++if(NOT EXISTS /usr/include/spdlog/fmt/bundled)
++  ADD_DEFINITIONS(-DSPDLOG_FMT_EXTERNAL=ON)
++endif()
+ add_definitions(-DGNURADIO_VERSION=${GNURADIO_VERSION})
+ 
+ ########################################################################

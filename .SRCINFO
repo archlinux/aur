@@ -1,7 +1,7 @@
 pkgbase = trunk-recorder
 	pkgdesc = Records calls from a Trunked Radio System (P25 & SmartNet)
 	pkgver = 4.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/robotastic/trunk-recorder
 	arch = x86_64
 	arch = i686
@@ -23,10 +23,14 @@ pkgbase = trunk-recorder
 	source = https://github.com/robotastic/trunk-recorder/archive/v4.3.2.tar.gz
 	source = trunk-recorder.service
 	source = trunk-recorder.sysusers
+	source = 682.patch
+	source = 698.patch
 	source = trunk-recorder.tmpfiles
 	sha256sums = 66e424419aefb81f78aa05af6358a09a770caf0f14c6926e6f4b8d6b70b065c3
 	sha256sums = 78bb66aa30af3395c2eddcafa3e59f65e59a328e04a093bb849a83cdedf01a0d
 	sha256sums = f2e06d333ec8a64c869a9cf369015bf6e0b9819d2af259b4d1c411ed3cca78f8
+	sha256sums = b7a38883ffd38a15bdd2858fd7b1f35d58d4679ac7c4789838a6f1c399bc7b57
+	sha256sums = 9ff08a0601ab27447eab51c10e4f84d8eb826e0bc1b13c4344a2cb53c60c91a3
 	sha256sums = c20344ba366fcab3f3552e2b5e537f394406ab634f35c2b8858423ffa63fd0e8
 
 pkgname = trunk-recorder
