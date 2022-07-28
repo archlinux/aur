@@ -10,6 +10,7 @@ url='https://www.gog.com/game/cuphead'
 license=('custom')
 depends=('wine' 'wine-mono' 'wine-gecko')
 makedepends=('innoextract' 'lgogdownloader')
+optdepends=('gog-cuphead-the-delicious-last-course: The Delicious Last Course DLC')
 options=('libtool' 'staticlibs' '!strip')
 install="${pkgname}.install"
 source=(

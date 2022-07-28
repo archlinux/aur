@@ -11,6 +11,7 @@ pkgbase = gog-cuphead
 	depends = wine
 	depends = wine-mono
 	depends = wine-gecko
+	optdepends = gog-cuphead-the-delicious-last-course: The Delicious Last Course DLC
 	options = libtool
 	options = staticlibs
 	options = !strip
