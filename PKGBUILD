@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=argc-git
-pkgver=0.9.0.r4.g1b5c0db
+pkgver=0.9.1.r2.gab043da
 pkgrel=1
 pkgdesc="Make beautiful bash cli with ease"
 arch=('x86_64')
