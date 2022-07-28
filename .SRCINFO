@@ -1,0 +1,22 @@
+pkgbase = gum-bin
+	pkgdesc = Tasty Bubble Gum for your shell.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://charm.sh/
+	license = MIT
+	conflicts = gum
+	provides = gum
+	arch = aarch64
+	source_aarch64 = https://github.com/charmbracelet/gum/releases/download/v0.1.0/gum_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 95f661e3178ee805dbf463efa231f9f5f60c3ba1242d57f00eb84b07c5cfa27f
+	arch = armv7h
+	source_armv7h = https://github.com/charmbracelet/gum/releases/download/v0.1.0/gum_0.1.0_linux_armv7.tar.gz
+	sha256sums_armv7h = 548ae09a844b1f8b71745bfb482897c7585bae2b6cafca67717f3e0bc776cd7f
+	arch = i686
+	source_i686 = https://github.com/charmbracelet/gum/releases/download/v0.1.0/gum_0.1.0_linux_i386.tar.gz
+	sha256sums_i686 = facdb74302e829ac2e15fbd2ba1cdace383e6aca0786e2c7694224bd87ed83cd
+	arch = x86_64
+	source_x86_64 = https://github.com/charmbracelet/gum/releases/download/v0.1.0/gum_0.1.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = a8ad13621e1b002cc1d52b5b49096f5ba59ac0e3e940dd75af7c5dfde42968ad
+	
+pkgname = gum-bin
