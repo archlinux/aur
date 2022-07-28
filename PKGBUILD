@@ -2,7 +2,7 @@
 #Maintainer: AigioL<https://github.com/AigioL>
 pkgname=watt-toolkit-bin
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=2.8.1
+pkgver=2.8.2
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://steampp.net/
@@ -17,8 +17,8 @@ source_aarch64=("Steam++_aarch64.tar.zst::https://github.com/BeyondDimension/Ste
 source_x86_64=("Steam++_x86_64.tar.zst::https://github.com/BeyondDimension/SteamTools/releases/download/${pkgver}/Steam++_linux_x64_v${pkgver}.tar.zst")
 sha256sums=('251dceba9814b53e56e175d60965ffab8160b5cc58640c3069f927dae5b7a46f'
             '1c7e2b167b6b457c685d0d4890147edf70eb2a3eeefb12aa42ddd0c721b2f49d')
-sha256sums_x86_64=('67d6889c07ab49d37194c8d6c22761cd1b6fb319ccb79f83847ab8f281f4fcdd')
-sha256sums_aarch64=('4146abffd4e6b8a6d47179cbfb7f24c25622b97e751bebdfb0a6c0f5df082e14')
+sha256sums_x86_64=('61202fd6b730e0762cf690820a772f734e7396a5647e5a12b2fd57e703fa0efc')
+sha256sums_aarch64=('036c0c80fb9388ffb171093ba5b25cad1dfd63b465b93ebdec28b2fc58c103e0')
 noextract=("Steam++_${CARCH}.tar.zst")
 package(){
     mkdir -p "${pkgdir}/opt/watt-toolkit"
