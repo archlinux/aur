@@ -24,7 +24,7 @@ makepkg:
   artifacts:
     paths:
       - "$CI_PROJECT_NAME*.zst"
-      - "../../usr/sbin/yay"
+      - "../../../../usr/sbin/yay"
 
 pacman:
   stage: install
