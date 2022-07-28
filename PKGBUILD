@@ -1,9 +1,10 @@
-# Maintainer: Richard Neumann <mail at richard dash neumann period de>
+# Maintainer: ParaSait <parasait at proton dot me>
+# Former maintainer: Richard Neumann <mail at richard dash neumann period de>
 # Former maintainer: Tobias Hübner <dasNeutrum@gmx.de>
 
 _pkgname=sonarqube
 pkgname=${_pkgname}
-pkgver=9.3.0.51899
+pkgver=9.5.0.56709
 pkgrel=1
 pkgdesc="An open source platform for continuous inspection of code quality"
 arch=('x86_64')
@@ -30,7 +31,7 @@ source=("https://binaries.sonarsource.com/Distribution/${_pkgname}/${_pkgname}-$
         "${_pkgname}-user.conf"
         "99-${_pkgname}.conf")
 
-sha256sums=('74108676ed881e5a10ad53b42bc8b343e868be37b4d36705b447dc80ed9f2c1c'
+sha256sums=('6278da57011c64cef2a140619b77423d29d85992858dafce618f8918ea339a9d'
             'cbea7066125c5e1b1ca093b73ccfaa4a477dc8a8431c4619de356bd36a6a44a9'
             '2d908a2965df90a74feb0e734dabb27543f5a375ce94ce2a26b4682f462e3ea5'
             '43ff10bbb495827e952225dce79da79bb800627eaa6f1d933f8f7fb408aafe6d'
