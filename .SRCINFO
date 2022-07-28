@@ -1,0 +1,15 @@
+pkgbase = perl-iterator-simple
+	pkgdesc = Simple iterator and utilities
+	pkgver = 0.07
+	pkgrel = 1
+	url = https://metacpan.org/dist/Iterator-Simple
+	arch = any
+	license = PerlArtistic
+	makedepends = make
+	makedepends = perl-module-install
+	depends = perl-scalar-list-utils
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/M/MI/MICHAEL/Iterator-Simple-0.07.tar.gz
+	sha256sums = cb574d063bb481c8fb9cb5781a4645896aa0e1ee715ba947cf766f1ff4e9eb44
+
+pkgname = perl-iterator-simple
