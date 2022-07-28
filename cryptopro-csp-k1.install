@@ -527,9 +527,9 @@ post_install() {
     cpconfig -ini '\config\apppath' -add string libcades.so /opt/cprocsp/lib/amd64/libcades.so.2
     cpconfig -ini '\config\apppath' -add string libpkivalidator.so /opt/cprocsp/lib/amd64/libpkivalidator.so.2
     cpconfig -ini '\config\apppath' -add string librevprov.so /opt/cprocsp/lib/amd64/librevprov.so.2
-    cpconfig -ini '\config\policy\OIDs' -add string '{A4CC781E-04E9-425C-AAFD-1D74DA8DFAF6}' 'libpkivalidator.so OCSPSigningImpl'
-    cpconfig -ini '\config\policy\OIDs' -add string '{AF74EE92-A059-492F-9B4B-EAD239B22A1B}' 'libpkivalidator.so TimestampSigningImpl'
-    cpconfig -ini '\config\policy\OIDs' -add string '{B52FF66F-13A5-402C-B958-A3A6B5300FB6}' 'libpkivalidator.so SignatureImpl'
+    cpconfig -ini '\config\policy\OIDs' -add string '{A4CC781E-04E9-425C-AAFD-1D74DA8DFAF6}' 'libpkivalidator.so CertDllVerifyOCSPSigningCertificateChainPolicy'
+    cpconfig -ini '\config\policy\OIDs' -add string '{AF74EE92-A059-492F-9B4B-EAD239B22A1B}' 'libpkivalidator.so CertDllVerifyTimestampSigningCertificateChainPolicy'
+    cpconfig -ini '\config\policy\OIDs' -add string '{B52FF66F-13A5-402C-B958-A3A6B5300FB6}' 'libpkivalidator.so CertDllVerifySignatureCertificateChainPolicy'
     cpconfig -ini '\config\policy\OIDs' -add string '5' 'libpkivalidator.so BasicConstraintsImpl'
     cpconfig -ini '\cryptography\OID\EncodingType 1\CertDllVerifyRevocation\DEFAULT' -add string 'DLL' 'librevprov.so'
 

@@ -2,7 +2,7 @@
 
 pkgname="cryptopro-csp-k1"
 pkgver=5.0.12500
-pkgrel=1
+pkgrel=2
 _pkgver_patch="6"
 _cades_version="2.0.14589"
 _pkgver="$pkgver-$_pkgver_patch"
