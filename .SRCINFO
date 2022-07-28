@@ -1,0 +1,21 @@
+pkgbase = gr-satellites
+	pkgdesc = satellite decoder blocks for GNURadio
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://github.com/daniestevez/gr-satellites
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	depends = gnuradio
+	depends = python-construct>=2.9
+	depends = python-requests
+	depends = fmt
+	depends = gnuradio-iqbal
+	optdepends = feh: For realtime image decoders
+	optdepends = doxygen: For document generation
+	conflicts = gr-satellites
+	source = gr-satellites-5.0.0.tar.gz::https://github.com/daniestevez/gr-satellites/archive/refs/tags/v5.0.0.tar.gz
+	sha256sums = 74c30cc84b1e36410d1849bcabe7826002c241dfede1f208ea0ab09141e1fd38
+
+pkgname = gr-satellites
