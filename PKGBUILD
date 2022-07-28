@@ -2,7 +2,7 @@
 # Contributor: Slithery <aur [at] slithery [dot] uk>
 
 pkgname=linode-cli
-pkgver=5.21.0
+pkgver=5.22.0
 pkgrel=1
 pkgdesc="Linode API wrapper"
 arch=('any')
@@ -12,30 +12,30 @@ depends=('python-requests'
          'python-terminaltables' 
          'python-yaml')
 optdepends=('python-boto: Object Storage plugin')
-makedepends=('python-setuptools'
-             'python-wheel')
+makedepends=('python-setuptools')
 replaces=('linode-cli-dev')
 install="${pkgname}".install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname%%-cli}/${pkgname}/archive/${pkgver}.tar.gz"
-        no-python2.patch)
-sha512sums=('728d247b7218cbd594baad1d305a6d100fb0aa1f68af947da6de1860ab676ff2ebe61bd1a87c1453c7a51f730be0f0b25bd7c35d42eecdc44c845ebddb5f05e9'
-            'ab743f3909aab35012dfe0524ec508da65ee64b54731d55eeb3655c41f6eedac10bd2791507e9754e50962376243708727e069a8b791474ee38f018e40c8b962')
+        "${pkgname}-${pkgver}-openapi.yaml::https://www.${pkgname%%-cli}.com/docs/api/openapi.yaml")
+sha512sums=('f24708b657f7f6d0289f190823b34a357f793a2a141aafd9e91de398b494f88b2f72f278e368d5180e97b5176d368d94b4cb75eaaa29ba808a8dd4bad6f8437f'
+            'e5ce50a31788f091c30bc05dab03572162f1c3f56171df4d17659d9c5407b7a0429256551a79f686e2eeb2fce11e4d4fb3e244ee024797d687d72dd2092a4e47')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  patch --strip=1 --input="${srcdir}/no-python2.patch"
 
   # Manually set version number - thanks @the-k
   sed -i "s/\(version=\)get_version()/\1\"${pkgver}\"/" setup.py
 }
 
 build() {
-  cd "${pkgname}-${pkgver}" 
-  make build
+  cd "${pkgname}-${pkgver}"
+  python -m linodecli bake ../"${pkgname}-${pkgver}-openapi.yaml" --skip-config 
+  cp data-3 linodecli/
+  python setup.py build
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
