@@ -1,0 +1,18 @@
+pkgbase = pythonprop
+	pkgdesc = A collection of scripts using the VOACAP HF propagation prediction engine
+	pkgver = 0.30.1
+	pkgrel = 1
+	url = https://github.com/jawatson/pythonprop
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = yelp-tools
+	depends = voacapl
+	depends = python-matplotlib
+	depends = python-cartopy
+	depends = python-scipy
+	conflicts = pythonprop
+	source = pythonprop-0.30.1.tar.gz::https://github.com/jawatson/pythonprop/archive/refs/tags/v0.30.1.tar.gz
+	sha256sums = 424848448819cf7e3ebe3f82006bb33fdc0e10b88944cf54998a99ca618e2ee1
+
+pkgname = pythonprop
