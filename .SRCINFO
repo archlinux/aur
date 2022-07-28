@@ -1,7 +1,7 @@
 pkgbase = endeavour
 	pkgdesc = Task manager for GNOME
 	pkgver = 42.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/World/Endeavour
 	arch = x86_64
 	arch = aarch64
@@ -16,7 +16,7 @@ pkgbase = endeavour
 	depends = librest
 	depends = python
 	depends = libportal-gtk4
-	depends = libadwaita
+	depends = libadwaita-git>=1.2.alpha
 	conflicts = gnome-todo
 	replaces = gnome-todo
 	source = https://gitlab.gnome.org/World/Endeavour/-/archive/v42.0/Endeavour-v42.0.tar.gz

@@ -3,13 +3,13 @@
 pkgname=endeavour
 _pkgname=Endeavour
 pkgver=42.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Task manager for GNOME"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.gnome.org/World/Endeavour"
 license=('GPL3')
 groups=('gnome-extra')
-depends=('evolution-data-server' 'libpeas' 'librest' 'python' 'libportal-gtk4' 'libadwaita')
+depends=('evolution-data-server' 'libpeas' 'librest' 'python' 'libportal-gtk4' 'libadwaita-git>=1.2.alpha')
 makedepends=('gobject-introspection' 'meson' 'yelp-tools')
 checkdepends=('appstream-glib')
 conflicts=('gnome-todo')
