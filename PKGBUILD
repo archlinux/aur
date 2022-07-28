@@ -2,13 +2,13 @@
 # Contributor: igor-dyatlov <dyatlov.igor@gmail.com>
 
 pkgname=blackbox-terminal-git
-pkgver=0.11.1.r0.gfc14ffe
+pkgver=0.11.2.r10.ge1b6e63
 pkgrel=1
 pkgdesc="A beautiful GTK 4 terminal."
 arch=('x86_64')
 url="https://gitlab.gnome.org/raggesilver/blackbox"
 license=('GPL3')
-depends=('glib2' 'libadwaita-git' 'libmarble-git' 'vte4-copy-patch-git' 'json-glib' 'pcre')
+depends=('glib2' 'libadwaita-git' 'libmarble-git' 'vte4-git' 'json-glib' 'pcre')
 makedepends=('git' 'meson' 'vala' 'gi-docgen')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
