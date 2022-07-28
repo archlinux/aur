@@ -24,8 +24,10 @@ makedepends=('util-linux')
 provides=('libcryptsetup.so=12-32'
           'libcryptsetup.so'
 	  "${_pkgbase}-nested-cryptkey"
-          "${_pkgbase}=$pkgver")
+          "${_pkgbase}=$pkgver"
+	  "${_pkgbase}-${variant}")
 conflicts=("${_pkgbase}"
+	   "${_pkgbase}-${variant}"
 	   "${_pkgbase}-nested-cryptkey")
 options=('!emptydirs')
 validpgpkeys=('2A2918243FDE46648D0686F9D9B0577BD93E98FC') # Milan Broz <gmazyland@gmail.com>
