@@ -23,6 +23,7 @@ depends=('device-mapper'
 makedepends=('util-linux')
 provides=('libcryptsetup.so=12-32'
           'libcryptsetup.so'
+	  "${_pkgbase}-nested-cryptkey"
           "${_pkgbase}=$pkgver")
 conflicts=("${_pkgbase}"
 	   "${_pkgbase}-nested-cryptkey")
