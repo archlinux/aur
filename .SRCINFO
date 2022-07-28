@@ -1,0 +1,18 @@
+pkgbase = linux-libexplain51
+	pkgdesc = A library of system-call-specific strerror repl. Library of syscall-specific strerror replacements
+	pkgver = 1.4.D001
+	pkgrel = 1
+	url = http://libexplain.sourceforge.net
+	install = linux-libexplain51.install
+	arch = x86_64
+	groups = 
+	license = LGPL
+	depends = acl
+	depends = bash-completion
+	depends = libcap
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = http://libexplain.sourceforge.net/debian/libexplain51_1.4.D001-1_amd64.deb
+	sha512sums_x86_64 = 420362f882d4fdfa7677831ee85194013bd3efaa151a0fb10ae6de602c531dc633f0db427b9e0452c587131b8b7fd15d488227f4c2136bc554768cde392c0ebd
+
+pkgname = linux-libexplain51
