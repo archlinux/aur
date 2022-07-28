@@ -1,7 +1,7 @@
 pkgbase = samba-support
 	pkgdesc = Metapkg and configuration for Samba support
 	pkgver = 1
-	pkgrel = 3
+	pkgrel = 3.1
 	url = https://wiki.archlinux.org/index.php/samba
 	install = samba-support.install
 	arch = any
@@ -10,6 +10,8 @@ pkgbase = samba-support
 	depends = nss-mdns
 	depends = samba
 	optdepends = system-config-samba: The Samba configuration tool by Red Hat
+	provides = samba-support
+	replaces = manjaro-settings-samba
 	source = smb.conf
 	md5sums = 6f594384fdd50e1a88653382fcedb12e
 
