@@ -2,69 +2,42 @@
 
 _basename=sratom
 pkgname=lib32-sratom
-pkgver=0.6.10
+pkgver=0.6.12
 pkgrel=1
 pkgdesc="An LV2 Atom RDF serialisation library (32-bit)"
 arch=(x86_64)
-url="https://drobilla.net/software/sratom/"
+url="https://drobilla.net/software/sratom.html"
 license=(custom:ISC)
-depends=(lib32-glibc lib32-sord lib32-lv2 sratom)
-makedepends=(lib32-gcc-libs waf)
-source=("https://download.drobilla.net/$_basename-$pkgver.tar.bz2"{,.sig})
-sha512sums=('cc5d2848d61de45a37d1f844b2c741016decf065bcac975214dd01108171ba332f0a51526f2f1078d5f501055af0a48716704515cbe7a9f73526fd878621ca4b'
+depends=(lib32-sord lib32-lv2 sratom)
+makedepends=(meson)
+source=("https://download.drobilla.net/$_basename-$pkgver.tar.xz"{,.sig})
+sha512sums=('e677945f59494970c8c723319216cf6543ed38c590b6db94e5e928e830004e96dc957a2cf2fb0b76278cf55f0d62ea03ba705fbc449424c467e29593eaa948dc'
             'SKIP')
-b2sums=('6205a0269216099556556cd251649eba58fdf1a2c8a80611367f3b9564fe410ed7ff1c565ab7b628743fa99ca893eb7a86fed631872eff86e19de9ba534fae49'
+b2sums=('76a01c84e418ee3ffeb1e0e44214e9b02ab58b9b572372ee43309650a7a674a55e49384e8b62657af30933b7bdb02faf38ff100030e2ec86947972cacf32db69'
         'SKIP')
 validpgpkeys=('907D226E7E13FA337F014A083672782A9BF368F3') # David Robillard <d@drobilla.net>
-
-prepare() {
-    cd $_basename-$pkgver
-
-    # remove local ldconfig call
-    sed -i '/ldconfig/d' wscript
-
-    # let wscript(s) find the custom waf scripts
-    mkdir -pv tools
-    touch __init__.py
-    touch tools/__init__.py
-    cp -v waflib/extras/{autoship,autowaf,lv2}.py tools/
-    mkdir -pv plugins/tools/
-    cp -v waflib/extras/{autoship,autowaf,lv2}.py plugins/tools/
-    rm -rv waflib
-    sed -e 's/waflib.extras/tools/g' \
-        -e "s/load('autowaf'/load('autowaf', tooldir='tools'/g" \
-        -e "s/load('lv2'/load('lv2', tooldir='tools'/g" \
-        -i wscript
-}
 
 build() {
     export CC='gcc -m32'
     export CXX='g++ -m32'
-    export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+    export PKG_CONFIG='/usr/bin/i686-pc-linux-gnu-pkg-config'
 
-    export LINKFLAGS="$LDFLAGS"
+    arch-meson $_basename-$pkgver build \
+        --libdir='/usr/lib32' \
+        -Ddocs=disabled
 
-    cd $_basename-$pkgver
-
-    waf configure --prefix=/usr \
-                  --libdir=/usr/lib32 \
-                  --test
-
-    waf build
+    meson compile -C build
 }
 
 check() {
-    cd $_basename-$pkgver
-
-    waf test
+    meson test -C build
 }
 
 package() {
-    cd $_basename-$pkgver
+    meson install -C build --destdir "$pkgdir"
 
-    waf install --destdir="$pkgdir"
-
-    install -vDm 644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
+    install -vDm 644 $_basename-$pkgver/COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
+    install -vDm 644 $_basename-$pkgver/{NEWS,README.md} -t "$pkgdir/usr/share/doc/$pkgname/"
 
     cd "$pkgdir/usr"
 
