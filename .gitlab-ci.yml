@@ -18,7 +18,7 @@ makepkg:
     - pacman -Syu --noconfirm sudo git
     - useradd builduser -m && passwd -d builduser && printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
     - sudo -u builduser bash -c 'git clone "https://aur.archlinux.org/yay.git" && cd yay && makepkg -si --noconfirm'
-    - cp $(which yay) yay
+    - rm -rf yay && cp $(which yay) yay
   script:
     - sudo -u builduser bash -c 'makepkg -s --noconfirm'
   artifacts:
