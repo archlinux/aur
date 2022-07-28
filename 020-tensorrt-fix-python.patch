@@ -27,18 +27,9 @@
  
  if (MSVC)
      include_directories(${MSVC_COMPILER_DIR}/include ${MSVC_COMPILER_DIR}/../ucrt/include ${NV_WDKSDK_INC}/um ${NV_WDKSDK_INC}/shared)
-@@ -127,7 +127,7 @@ endif()
- 
- # -------- START BUILD PROCESS --------
- 
--if (${CMAKE_BUILD_TYPE} STREQUAL Release)
-+if (${CMAKE_BUILD_TYPE} STREQUAL Release OR ${CMAKE_BUILD_TYPE} STREQUAL None OR ${CMAKE_BUILD_TYPE} STREQUAL "")
-     message(STATUS "Building in Release mode")
-     if (ENABLE_INETWORK_SERIALIZE)
-         set(TRT_LIBS nvinfer nvonnxparser nvparsers nvinfer_plugin nvserialize)
 --- a/python/build.sh
 +++ b/python/build.sh
-@@ -33,8 +33,9 @@ cmake .. -DCMAKE_BUILD_TYPE=Release \
+@@ -35,8 +35,9 @@ cmake .. -DCMAKE_BUILD_TYPE=Release \
           -DEXT_PATH=${EXT_PATH} \
           -DCUDA_INCLUDE_DIRS=${CUDA_ROOT}/include \
           -DTENSORRT_ROOT=${ROOT_PATH} \
