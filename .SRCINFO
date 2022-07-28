@@ -1,7 +1,7 @@
 pkgbase = waifu2x-caffe
 	pkgdesc = Image rescaling and noise reduction using the power of convolutional neural networks. Rewritten from the original Waifu2x using Caffe. Compiled with CUDA & cuDNN enabled flags.
 	pkgver = v1.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Gin-no-kami/waifu2x-caffe
 	arch = x86_64
 	license = MIT
@@ -22,8 +22,8 @@ pkgbase = waifu2x-caffe
 	depends = lmdb
 	provides = waifu2x-caffe
 	conflicts = waifu2x-caffe
-	source = git://github.com/Gin-no-kami/waifu2x-caffe.git#tag=v1.1.1
-	source = git://github.com/Gin-no-kami/caffe.git#tag=v1.1
+	source = git+https://github.com/Gin-no-kami/waifu2x-caffe.git#tag=v1.1.1
+	source = git+https://github.com/Gin-no-kami/caffe.git#tag=v1.1
 	md5sums = SKIP
 	md5sums = SKIP
 
