@@ -1,0 +1,15 @@
+pkgbase = wmcompanion
+	pkgdesc = Desktop system event listener for minimal window manager users
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/kriansa/wmcompanion
+	arch = any
+	license = Apache
+	makedepends = python-poetry
+	makedepends = python-installer
+	depends = python
+	depends = python-dbus-next
+	source = https://github.com/kriansa/wmcompanion/archive/v0.1.1.tar.gz
+	sha256sums = 40cba25334bd04e52b7dd61c17daeb80cb67186108a98135e44877d7ab3204d1
+
+pkgname = wmcompanion
