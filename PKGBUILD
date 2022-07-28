@@ -2,7 +2,7 @@
 
 pkgname=brcm4354-firmware
 pkgver=latest
-pkgrel=4
+pkgrel=5
 pkgdesc='Firmware for AM7256/BRCM4354 WIFI/BT module'
 arch=('any')
 url="https://github.com/BlackCatDevel0per/${pkgname}"

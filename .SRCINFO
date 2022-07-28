@@ -1,7 +1,7 @@
 pkgbase = brcm4354-firmware
 	pkgdesc = Firmware for AM7256/BRCM4354 WIFI/BT module
 	pkgver = latest
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/BlackCatDevel0per/brcm4354-firmware
 	arch = any
 	source = https://github.com/BlackCatDevel0per/brcm4354-firmware/archive/refs/tags/latest.tar.gz
