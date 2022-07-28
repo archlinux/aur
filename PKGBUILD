@@ -2,7 +2,7 @@
 
 pkgname=landeseternelles
 pkgver=1.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Landes Eternelles is a french role playing game (mmorpg), forked from Eternal Lands."
 arch=('i686' 'x86_64')
 url="https://www.landes-eternelles.com"
