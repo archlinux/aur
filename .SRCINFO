@@ -1,0 +1,11 @@
+pkgbase = yaneuraou-nnue-avx2
+	pkgdesc = YaneuraOu is the World's Strongest Shogi engine(AI player) , WCSC29 1st winner , educational and USI compliant engine.
+	pkgver = 7.61
+	pkgrel = 1
+	url = https://github.com/yaneurao/YaneuraOu
+	arch = any
+	license = GPL3
+	source = yaneuraou-nnue-avx2-7.61.tar.gz::https://github.com/yaneurao/YaneuraOu/archive/V7.61.tar.gz
+	sha512sums = 9e4c8c924b4eb8219861629668371c7de343513b52550c6afd2c0443a4c321b9c95651a9c734befa6bc7108fc4e8d559c179dc3b35ffe5bd0a700dd8d9bd076d
+
+pkgname = yaneuraou-nnue-avx2
