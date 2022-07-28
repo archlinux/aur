@@ -12,7 +12,7 @@
 
 pkgbase=bcompare
 pkgname=('bcompare' 'bcompare-kde5' 'bcompare-kde4' 'bcompare-nautilus' 'bcompare-thunar' 'bcompare-cinnamon' 'bcompare-mate')
-pkgver=4.4.2.26348
+pkgver=4.4.3.26655
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://www.scootersoftware.com'
@@ -22,8 +22,8 @@ depends=('fontconfig' 'libsm' 'libxcursor' 'libxft' 'libxinerama'  'libxrandr' '
 makedepends=('sed')
 source_x86_64=("https://www.scootersoftware.com/${pkgbase}-${pkgver}.x86_64.tar.gz")
 source_i686=("https://www.scootersoftware.com/${pkgbase}-${pkgver}.i386.tar.gz")
-sha256sums_i686=('ebced62bf163c89e613ca548f4708f2890f5cf5e7f83e8799bf1e29bf4fcc0b5')
-sha256sums_x86_64=('ad994a2c6729411c21f57d344be6605b14655d4ca8a5a67a881670e7d87f48a7')
+sha256sums_i686=('8016ab92b49b2f45a8c4160e8ac7299e6b5d179587e4572615f8e7bc1399819b')
+sha256sums_x86_64=('6c02b4f0350d45a16a932a93eb303512016649778c09c44fc74ad453a53c55df')
 options=('!strip') # Do not strip binaries because it breaks them down
 
  prepare() {
@@ -124,7 +124,7 @@ package_bcompare() {
 
 package_bcompare-kde5() {
   pkgdesc="KDE Plasma 5 service menus for Beyond Compare 4"
-  depends=('bcompare')
+  depends=('bcompare' 'kinit')
   install=${pkgbase}-kde5.install
 
    msg2 "Packaging KDE Plasma 5 service menus..."
