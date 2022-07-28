@@ -8,6 +8,7 @@ pkgbase = gog-cuphead
 	license = custom
 	makedepends = innoextract
 	makedepends = lgogdownloader
+	makedepends = imagemagick
 	depends = wine
 	depends = wine-mono
 	depends = wine-gecko

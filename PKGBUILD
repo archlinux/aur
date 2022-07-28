@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://www.gog.com/game/cuphead'
 license=('custom')
 depends=('wine' 'wine-mono' 'wine-gecko')
-makedepends=('innoextract' 'lgogdownloader')
+makedepends=('innoextract' 'lgogdownloader' 'imagemagick')
 optdepends=('gog-cuphead-the-delicious-last-course: The Delicious Last Course DLC')
 options=('libtool' 'staticlibs' '!strip')
 install="${pkgname}.install"
@@ -43,9 +43,13 @@ package() {
     )"
 
     msg2 'Packaging game icon'
-    install -D -m 644 -T \
+    mkdir -p "${pkgdir}/usr/share/pixmaps/"
+    # The compressed .ico consists of 7 pixmaps of different sizes.
+    # Last image in the sequence is scaled up from a smaller icon
+    # and therefore blurry, so pick the largest non-blurry icon.
+    convert -delete 0,1,2,3,4,6 \
         "${srcdir}/${pkgname#gog-}/app/goggame-"${_gog_id?}".ico" \
-        "${pkgdir}/usr/share/pixmaps/${pkgname}.ico"
+        "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
     msg2 'Packaging game data'
     rm -rf \
