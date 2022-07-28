@@ -1,0 +1,16 @@
+pkgbase = lpcnetfreedv
+	pkgdesc = Experimental Neural Net speech coding for FreeDV
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://freedv.org/
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = cmake
+	depends = glibc
+	depends = codec2
+	source = LPCNet-0.3.tar.gz::https://github.com/drowe67/LPCNet/archive/refs/tags/v0.3.tar.gz
+	sha512sums = cae30c8a4c906ecdcd6d4cfc2da0b30410a37281753d987a35e4669f8cbb58ee29ee234f36eab458d4843ee840ce3f40973c652b364cec00c75052a37bf99ea5
+
+pkgname = lpcnetfreedv
