@@ -15,8 +15,7 @@
 # ExecStop=/usr/bin/screen -X -S bridgedaemon quit
 
 pkgname=protonmail-bridge-nogui
-pkgver=2.1.3
-_srcname=br-"$pkgver"
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
@@ -29,26 +28,26 @@ optdepends=('org.freedesktop.secrets: Applications that support Freedesktop secr
             'pass: support for password-store')
 conflicts=('protonmail-bridge-bin' 'protonmail-bridge')
 options=('!emptydirs' '!strip')
-source=("$_srcname.tar.gz::https://github.com/ProtonMail/proton-bridge/archive/"$_srcname".tar.gz"
+source=("git+https://github.com/ProtonMail/proton-bridge.git#tag=v${pkgver}"
         "bridge.service")
-sha256sums=('c2736fec4d0b491aef624692423ba3d7274f63ccd515a59e281aed1d71e776f3'
+sha256sums=('SKIP'
             '6b2fd1e042b55dc6d0ffe5eb44e82ffd233452b4571ef571132600e7ec0d5d82')
 
 prepare() {
-    cd "${srcdir}"/proton-bridge-"$_srcname"/
+    cd "${srcdir}"/proton-bridge/
     export PATH=$PATH:$(go env GOPATH)/bin/
     make clean
 }
 
 build() {
-    cd "${srcdir}"/proton-bridge-"$_srcname"/
+    cd "${srcdir}"/proton-bridge/
     export PATH=$PATH:$(go env GOPATH)/bin/
     make build-nogui
 }
 
 package() {
     install -Dm644 "${srcdir}"/bridge.service -t "${pkgdir}"/usr/lib/systemd/user/
-    cd "${srcdir}"/proton-bridge-"$_srcname"/
+    cd "${srcdir}"/proton-bridge/
     install -Dm644 ./LICENSE -t "${pkgdir}"/usr/share/licenses/"${pkgname}"/
     install -Dm644 ./Changelog.md -t "${pkgdir}"/usr/share/doc/"${pkgbame}"/
     install -Dm755 ./proton-bridge "${pkgdir}"/usr/bin/protonmail-bridge
