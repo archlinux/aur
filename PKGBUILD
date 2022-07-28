@@ -1,6 +1,6 @@
 # Maintainer: Mehmet Ümit Özden <ozdenmehmetumit@gmail.com>
 pkgname=colpick
-pkgver=1.5.0
+pkgver=1.5.0.r0.g6f1879c
 pkgrel=1
 pkgdesc="Pick color at the current position of the mouse"
 arch=(any)
