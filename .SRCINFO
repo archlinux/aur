@@ -1,0 +1,35 @@
+pkgbase = cryptsetup-sigfile-git
+	pkgdesc = Userspace setup tool for transparent encryption of block devices using dm-crypt
+	pkgver = 2.4.3
+	pkgrel = 4
+	url = https://gitlab.com/cryptsetup/cryptsetup/
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	license = GPL
+	makedepends = util-linux
+	depends = device-mapper
+	depends = openssl
+	depends = popt
+	depends = util-linux-libs
+	depends = json-c
+	depends = argon2
+	provides = libcryptsetup.so=12-32
+	provides = libcryptsetup.so
+	provides = cryptsetup=2.4.3
+	conflicts = cryptsetup
+	conflicts = cryptsetup-nested-cryptkey
+	options = !emptydirs
+	source = https://www.kernel.org/pub/linux/utils/cryptsetup/v2.4/cryptsetup-sigfile-2.4.3.tar.xz
+	source = https://www.kernel.org/pub/linux/utils/cryptsetup/v2.4/cryptsetup-sigfile-2.4.3.tar.sign
+	source = hooks-encrypt
+	source = install-encrypt
+	source = install-sd-encrypt
+	validpgpkeys = 2A2918243FDE46648D0686F9D9B0577BD93E98FC
+	sha256sums = fc0df945188172264ec5bf1d0bda08264fadc8a3f856d47eba91f31fe354b507
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 817686b47e5ffd32913bcae7efe717f3377a48062b6311549d4440cfd3eadf17
+	sha256sums = 5d68a359fd85b5132456f96c2405916de5009efc8e7edf51aef6bf2d2ffd0bd5
+
+pkgname = cryptsetup-sigfile-git
