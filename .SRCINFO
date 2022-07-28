@@ -1,6 +1,6 @@
 pkgbase = vim-zig-git
 	pkgdesc = Vim configuration for Zig
-	pkgver = r138.fb534e7
+	pkgver = r155.3538ae9
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/ziglang/zig.vim

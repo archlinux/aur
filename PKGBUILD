@@ -2,7 +2,7 @@
 
 _name='zig.vim'
 pkgname=vim-zig-git
-pkgver=r138.fb534e7
+pkgver=r155.3538ae9
 pkgrel=1
 epoch=1
 pkgdesc="Vim configuration for Zig"
@@ -27,7 +27,7 @@ package() {
   cd $srcdir/"${_name}"
   _installpath="${pkgdir}/usr/share/vim/vimfiles"
   mkdir -p "${_installpath}"
-  cp -r autoload ftdetect ftplugin plugin syntax compiler "${_installpath}"
+  cp -r */ "${_installpath}"
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
