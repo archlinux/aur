@@ -1,7 +1,7 @@
 pkgbase = plasma5-runners-emoji
 	pkgdesc = Select emojis and copy/paste them
-	pkgver = 2.2.0
-	pkgrel = 3
+	pkgver = 2.3.0
+	pkgrel = 1
 	url = https://github.com/alex1701c/EmojiRunner
 	arch = x86_64
 	license = GPL3
@@ -14,7 +14,7 @@ pkgbase = plasma5-runners-emoji
 	depends = krunner
 	depends = xdotool
 	depends = kcmutils
-	source = plasma5-runners-emoji-2.2.0.tar.gz::https://github.com/alex1701c/EmojiRunner/archive/2.2.0.tar.gz
-	sha256sums = 4de1a0ecf0d16c8e640bb442d0d840247dc30c1816d25ceda5238ca0ab2a2c6d
+	source = plasma5-runners-emoji-2.3.0.tar.gz::https://github.com/alex1701c/EmojiRunner/archive/2.3.0.tar.gz
+	sha256sums = bfbd82800162aac7d4aad6540122ce519d9505bbc145cd04399c00b826fdafe2
 
 pkgname = plasma5-runners-emoji

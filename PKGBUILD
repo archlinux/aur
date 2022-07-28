@@ -1,8 +1,8 @@
 # Maintainer: Ben Aaron Goldberg <ben@benaaron.dev>
 # Contributor: Alex <alex1701c.dev[at]gmx.net>
 pkgname=plasma5-runners-emoji
-pkgver=2.2.0
-pkgrel=3
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="Select emojis and copy/paste them"
 arch=(x86_64)
 url=https://github.com/alex1701c/EmojiRunner
@@ -10,7 +10,7 @@ license=(GPL3)
 depends=(krunner xdotool kcmutils)
 makedepends=(cmake extra-cmake-modules ki18n qt5-base qt5-tools kdelibs4support)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alex1701c/EmojiRunner/archive/$pkgver.tar.gz")
-sha256sums=("4de1a0ecf0d16c8e640bb442d0d840247dc30c1816d25ceda5238ca0ab2a2c6d")
+sha256sums=('bfbd82800162aac7d4aad6540122ce519d9505bbc145cd04399c00b826fdafe2')
 
 prepare(){
 	cd  "EmojiRunner-$pkgver"
