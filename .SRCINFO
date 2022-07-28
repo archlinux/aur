@@ -1,0 +1,11 @@
+pkgbase = hoholsay
+	pkgdesc = Cowsay but better
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/IfkumRfnl/hoholsay
+	arch = any
+	license = GPL
+	source = hoholsay::https://github.com/IfkumRfnl/hoholsay.git
+	md5sums = SKIP
+
+pkgname = hoholsay
