@@ -1,6 +1,6 @@
 pkgbase = spdk
 	pkgdesc = spdk: headers, libs, and scripts
-	pkgver = 22.01
+	pkgver = 22.05
 	pkgrel = 1
 	url = https://spdk.io/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = spdk
 	provides = spdk
 	conflicts = spdk
 	conflicts = dpdk
-	source = spdk::git+https://github.com/spdk/spdk.git#tag=v22.01
+	source = spdk::git+https://github.com/spdk/spdk.git#tag=v22.05
 	sha256sums = SKIP
 
 pkgname = spdk
