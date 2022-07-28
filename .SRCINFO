@@ -1,15 +1,15 @@
 pkgbase = ruby-ctf-party
 	pkgdesc = A CLI tool & library to enhance and speed up script/exploit writing with string conversion/manipulation.
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://noraj.github.io/ctf-party/
 	arch = x86_64
 	license = MIT
 	depends = ruby
 	depends = ruby-docopt
-	noextract = ctf-party-2.1.0.gem
+	noextract = ctf-party-2.2.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/ctf-party-2.1.0.gem
-	b2sums = 4f0bc3a84ee3ca6cae5ba37d15181b46e76c2a8008dfb3ee698118ce1768d7ae05bb066b263816e54254fd6c260616b9ba6e6626d11c2c65d7370011a193694f
+	source = https://rubygems.org/downloads/ctf-party-2.2.0.gem
+	b2sums = cbbb417c990a0c709f2cb603e744b71b0a78e9b5e9a747946f371d9b872c373be42cc3dcea938402554c3ea192845933b2883bb310fac6e61eddf7105175c72d
 
 pkgname = ruby-ctf-party
