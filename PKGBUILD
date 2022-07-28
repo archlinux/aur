@@ -1,13 +1,13 @@
 # Maintainer: fatalis <fatalis@fatalis.pw>
 pkgname=scream
 pkgver=3.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A Scream audio receiver using Pulseaudio, ALSA or stdout as audio output'
 arch=('x86_64')
 provides=('scream')
-depends=('libpulse' 'alsa-lib')
+depends=('jack' 'libpulse' 'libsoxr' 'alsa-lib')
 makedepends=('cmake')
-conflicts=('scream-pulse' 'scream-alsa')
+conflicts=('scream' 'scream-pulse' 'scream-alsa')
 url='https://github.com/duncanthrax/scream'
 license=('custom:MS-PL')
 source=("${url}/archive/${pkgver}.tar.gz")
