@@ -1,0 +1,20 @@
+pkgbase = gr-hpsdr
+	pkgdesc = interface module for HPSDR Hermes / Metis, and Red Pitaya (using OpenHPSDR protocol 1)
+	pkgver = 3.10
+	pkgrel = 1
+	url = https://github.com/Tom-McDermott/gr-hpsdr
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = cmake
+	depends = gnuradio
+	depends = python-construct>=2.9
+	depends = python-requests
+	optdepends = doxygen: For document generation
+	conflicts = gr-hpsdr
+	source = https://github.com/Tom-McDermott/gr-hpsdr/archive/V3.10/gr-hpsdr-3.10.tar.gz
+	source = python_cmakefiles.patch
+	sha256sums = 8e0f724c88fc9c4678eb8f78b2eae54e9ebbe875d43fe71bf934735eaa8d255a
+	sha256sums = f320e17f2c2615ee5d5309b0bd82809f9d7744efe4e7f23520e2400f8d20f112
+
+pkgname = gr-hpsdr
