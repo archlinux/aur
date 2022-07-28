@@ -1,7 +1,7 @@
 # Maintainer: Derek J. Clark <derekjohn dot clark at gmail dot com>
 pkgname=handygccs-git
 _gitdir=HandyGCCS
-pkgver=22.07.r58.4aa6a42
+pkgver=22.07.r64.e42f087
 pkgrel=1
 pkgdesc="Handheld Game Console Controller Support."
 arch=('any')
