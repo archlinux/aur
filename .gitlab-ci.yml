@@ -32,6 +32,7 @@ pacman:
   dependencies:
     - makepkg
   before_script:
+    - pacman -Syu --noconfirm sudo
     - cp yay /usr/sbin/yay
     - useradd builduser -m && passwd -d builduser && printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
     - sudo -u builduser bash -c 'yay --noconfirm'
