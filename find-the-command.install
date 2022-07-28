@@ -1,24 +1,28 @@
 post_install() {
 	cat <<EOF
 	>> To enable command-not-found hook for your shell 
-	>> add any of the following to your .bashrc or .zshrc file
-	>> depending on the shell you use:
-	>> for bash:
+	>> source the proper file to your shell:
+
+	>> for bash (~/.bashrc):
 	source /usr/share/doc/find-the-command/ftc.bash
-	>> for fish:
+	>> for fish (~/.config/fish/config.fish):
 	source /usr/share/doc/find-the-command/ftc.fish
-	>> for zsh:
+	>> for zsh (~/.zshrc):
 	source /usr/share/doc/find-the-command/ftc.zsh
-	>> You can also append 'su' option to use su instead of sudo
-	>> for root access, 'noprompt' to disable installation
-	>> prompt at all, or 'quiet' to decrease verbosity, e.g.:
+
+	>> There are several options you can use when sourcing:
+	  * askfirst    ask before searching the database for a command
+	  * noprompt    disable installation prompt
+	  * noupdate    disable "out of date" checks for db and files cache
+	  * quiet       decrease verbosity
+	  * su		use su instead of sudo for root access
+	>> Example:
 	source /usr/share/doc/find-the-command/ftc.zsh noprompt quiet
 
-	>> It is necessary to create pacman files database, run
-	# pacman -Fy
 	>> You may also want to enable timer for regular
-	>> pacman files database update:
+	>> pacman or pkgile files database update:
 	# systemctl enable pacman-files.timer
+	# systemctl enable pkgfile-update.timer
 EOF
 }
 

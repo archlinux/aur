@@ -2,13 +2,15 @@
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Paul Kasemir <paul.kasemir@gmail.com>
 pkgname=find-the-command-git
-pkgver=1.4.3.r0.g5a59306
-pkgrel=2
+pkgver=2.0.r0.g05157f6
+pkgrel=1
 pkgdesc="Advanced command-not-found hook for bash, fish and zsh using the power of pacman"
 arch=('any')
 url="https://github.com/pkasemir/find-the-command"
 license=('WTFPL')
-depends=('pacman' 'systemd' 'pkgfile' 'fzf')
+depends=('pacman' 'systemd')
+optdepends=('fzf: highly recommended for package selection and previews'
+            'pkgfile: provides faster searches than pacman')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
