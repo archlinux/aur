@@ -1,25 +1,26 @@
 # Maintainer: BlackCatDev
 
 pkgname=brcm4354-firmware
-pkgver=1.0
-pkgrel=2
+pkgver=main_2.0
+pkgrel=3
 pkgdesc='Firmware for AM7256/BRCM4354 WIFI/BT module'
 arch=('any')
 url="https://github.com/BlackCatDevel0per/${pkgname}"
 
 gzdir="${pkgname}-${pkgver}"
+gzfirm="${pkgver}.tar.gz"
 
 source=(
-"${url}/archive/refs/tags/${pkgver}.tar.gz"
+"${url}/archive/refs/tags/${gzfirm}"
 )
 md5sums=(
-'b77e4b639374339f961b9755cf799bfe'
+'f10f6e1a65489cafe84cd71125240911'
 )
 
 package() {
 	tar \
 		--extract \
-		--file ${pkgver}.tar.gz \
+		--file ${gzfirm} \
 		--directory "${pkgdir}" \
 	&& mv ${gzdir}/* ${pkgdir} \
 	&& rm -R ${gzdir}
