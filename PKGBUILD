@@ -6,13 +6,13 @@ pkgname=vechain-sync-bin
 pkgdesc='Vechain Sync - Desktop'
 license=('LGPL3')
 url='https://github.com/vechain/thor-sync.electron'
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 arch=('x86_64')
 _package="Sync-linux-${arch}-${pkgver}.AppImage"
 optdepends=('ledger-live: Ledger Hardware Wallet Support')
 source=("${_package}::${url}/releases/download/v${pkgver}/${_package}")
-sha512sums=('b47302256a7e1e91d0469b84149a9b1005233aed79b8f59b97f54ac8baec8f29ab65218192dfad568b36e516b31e39e51baddcf1d4ec6b4439817db3fd740690')
+sha512sums=('99ab4ed531503e75f35a79941fa3112b24ec194a55a0ceee9be78c9e4d476ef3dd46dfbdd1ca582c157ac392bf60a16c5d5df08cc7e1a244667fd11846d0b132')
 
 build() {
   # Extract files
