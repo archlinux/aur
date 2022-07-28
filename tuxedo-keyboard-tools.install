@@ -1,0 +1,27 @@
+post_install() {
+	cat << EOF
+
+Please execute
+
+  $ sudo systemctl enable tuxedo-keyboard-keep-light-level.service
+  $ systemctl --user enable tuxedo-keyboard-idle.service
+
+and restart machine.
+
+Report any issues to:
+https://github.com/onurbbr/tuxedo-keyboard-tools/issues
+
+EOF
+}
+
+post_remove() {
+	cat << EOF
+
+Please execute after uninstalling kos
+
+  $ sudo systemctl disable tuxedo-keyboard-keep-light-level.service
+  $ systemctl --user disable tuxedo-keyboard-idle.service
+
+and restart machine.
+EOF
+}
