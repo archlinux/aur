@@ -1,7 +1,7 @@
 pkgbase = printer-support
 	pkgdesc = Metapkg for packages needed to use printers
 	pkgver = 1
-	pkgrel = 6
+	pkgrel = 6.1
 	url = https://wiki.archlinux.org/index.php/Category:Printers
 	install = printer-support.install
 	arch = any
@@ -30,5 +30,7 @@ pkgbase = printer-support
 	depends = system-config-printer
 	optdepends = print-manager: A KDE tool for managing print jobs and printers
 	optdepends = hplip: HP printer and scaner support and tools
+	provides = printer-support
+	replaces = manjaro-printer
 
 pkgname = printer-support

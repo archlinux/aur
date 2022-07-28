@@ -3,7 +3,7 @@
 
 pkgname=printer-support
 pkgver=1
-pkgrel=6
+pkgrel=6.1
 arch=('any')
 url="https://wiki.archlinux.org/index.php/Category:Printers"
 license=('GPL')
@@ -32,4 +32,6 @@ depends=("a2ps"
         "system-config-printer")
 optdepends=('print-manager: A KDE tool for managing print jobs and printers'
             'hplip: HP printer and scaner support and tools')
+provides=('printer-support')
+replaces=('manjaro-printer')
 install=$pkgname.install
