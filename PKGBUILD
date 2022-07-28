@@ -1,9 +1,9 @@
-# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Contributor: Ordoban < dirk.langer@vvovgonik.de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-search-elasticsearch'
 _pkgname='Search-Elasticsearch'
-pkgver='7.715'
+pkgver='7.717'
 pkgrel='1'
 pkgdesc="The official client for Elasticsearch"
 arch=('any')
@@ -14,8 +14,8 @@ makedepends=()
 checkdepends=('perl-test-deep' 'perl-test-exception' 'perl-test-sharedfork')
 url='https://metacpan.org/release/Search-Elasticsearch'
 source=("https://cpan.metacpan.org/authors/id/E/EZ/EZIMUEL/$_pkgname-$pkgver.tar.gz")
-md5sums=('7cd320092379b1e49de67483690cf15e')
-sha512sums=('82a53115ef9f24e935b8a105e51b32a1b21ccd9ae0f491685b51c1c425de99c01cf538a937479053ce9a55f0653b8640281e98eefb3d2db279f5b41a801ca03b')
+md5sums=('16f29f464fff8782925dda5b44bed1ef')
+sha512sums=('ff35ae946d90988c9b022b48b09be5b036d1399aeee148df009f83faa49fd1b8d66e1f379c14a1ab481d17f753b6fe0d43291da4714aa50a8732a37ebd3e093a')
 _distdir="$_pkgname-$pkgver"
 
 build() {
