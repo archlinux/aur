@@ -2,8 +2,8 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=lib32-libvpx
-pkgver=1.11.0
-pkgrel=2
+pkgver=1.12.0
+pkgrel=1
 pkgdesc='VP8 and VP9 codec'
 arch=(x86_64)
 url=https://www.webmproject.org/
@@ -17,7 +17,7 @@ makedepends=(
   nasm
 )
 provides=(libvpx.so)
-_tag=626ff35955c2c35b806b3e0ecf551a1a8611cdbf
+_tag=03265cd42b3783532de72f2ded5436652e6f5ce3
 source=(git+https://chromium.googlesource.com/webm/libvpx#tag=${_tag})
 sha256sums=(SKIP)
 
