@@ -2,19 +2,19 @@
 # Contributor: Conor Anderson <conor@conr.ca>
 
 pkgname=wire-desktop
-pkgver=3.27.2944
+pkgver=3.28.2946
 pkgrel=1
 pkgdesc='End-to-end encrypted messenger with file sharing, voice calls and video conferences'
 arch=('any')
 url='https://wire.com/'
 license=('GPL3')
-depends=('electron13' 'xdg-utils')
+depends=('electron18' 'xdg-utils')
 makedepends=('git' 'npm' 'yarn')
 optdepends=('emoji-font: colorful emoji')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wireapp/${pkgname}/archive/linux/${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.sig::https://github.com/wireapp/${pkgname}/releases/download/linux%2F${pkgver}/${pkgname}-linux-${pkgver}.tar.gz.sig"
         "${pkgname}.desktop")
-sha256sums=('378c945e6933855407aa03fe49a934409675bdfc370398c8f21da1fd13832af9'
+sha256sums=('4da394123152a47543a3aa5549c1ce4ad5950ad807a2850308b9eafa70c762e7'
             'SKIP'
             '53f37e99d4c2f41a3e31fd70154d82ba06a4af578c68df86af4906f7f37ec787')
 validpgpkeys=('ABBA007D6E14E2DB5B283C45D599C1AA126762B1')
@@ -24,7 +24,7 @@ prepare() {
     cat << EOF > "${pkgname}"
 #!/usr/bin/env sh
 
-electron13 "/usr/lib/${pkgname}" "\$@"
+electron18 "/usr/lib/${pkgname}" "\$@"
 EOF
 }
 
