@@ -3,8 +3,8 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=cmake
-pkgver=3.23.2
-pkgrel=2
+pkgver=3.23.3
+pkgrel=1
 pkgdesc='A cross-platform open-source make system'
 arch=('x86_64')
 url="https://www.cmake.org/"
@@ -14,7 +14,7 @@ makedepends=('qt6-base' 'python-sphinx' 'emacs')
 optdepends=('qt6-base: cmake-gui')
 source=("https://www.cmake.org/files/v${pkgver%.*}/${pkgname}-${pkgver}.tar.gz"
          wxwidgets-3.2.patch)
-sha512sums=('0925adf973d642fd76d4089b61b3882babb0a85050c4c57d5f5f3bd6b17564a9feb0beed236cd636e25f69072fa30b67ea3f80932380b6b6576f2dd78b8e6931'
+sha512sums=('75f86abe60ef28ba9bd06546c0c24578921621fb4be942171e629366a759cf1469e430945addc85f8ce977920883c063ed26de1b78fd24dfd98d0eb604800632'
             '618a529fcd0a5029160fc6ef74439b7cb54ca74d13d52dd6cad005710bf1be263d0bf90bc4becc63a37929ac2f86c51278685e9da93fd82355ac646cb43b356f')
 
 prepare() {
