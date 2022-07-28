@@ -1,0 +1,16 @@
+pkgbase = mcalc
+	pkgdesc = MCalc - calculator for performing simple mathematical operations in all existing number systems
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/nesterovmaxim31/MCalc
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	makedepends = extra-cmake-modules
+	makedepends = cmake
+	depends = qt5-base
+	source = mcalc-2.2.0::https://github.com/nesterovmaxim31/MCalc/archive/v2.2.0.tar.gz
+	md5sums = SKIP
+
+pkgname = mcalc
