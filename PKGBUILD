@@ -7,7 +7,7 @@ pkgdesc="Landes Eternelles is a french role playing game (mmorpg), forked from E
 arch=('i686' 'x86_64')
 url="https://www.landes-eternelles.com"
 license=(custom:'eternal_lands_license')
-depends=('gtk2' 'glu' 'cal3d' 'sdl_image' 'sdl_net' 'openal' 'libvorbis' 'libxslt')
+depends=('gtk2' 'glu' 'cal3d' 'sdl2' 'sdl2_image' 'sdl_net' 'openal' 'libvorbis' 'libxslt')
 
 source=(
     https://landes-eternelles.com/client/1950/linux/LandesEternellesLinux.tar.gz
@@ -27,8 +27,8 @@ package() {
     cd "$srcdir/LandesEternelles"
     install -m755 le.$CARCH.linux.bin $pkgdir/usr/bin/le.$CARCH.linux.bin
     install -m755 mapedit.$CARCH.linux.bin $pkgdir/usr/bin/mapedit.$CARCH.linux.bin
-    
-    rm -f *.bin icon.bmp
+
+    rm -f *.bin
     install -m644 Licence.txt $pkgdir/usr/share/licenses/$pkgname/Licence.txt
     mv -f * $pkgdir/usr/share/$pkgname/
     find $pkgdir/usr/share/$pkgname/ -type f -exec chmod 0644 {} \;
