@@ -1,10 +1,11 @@
 # Maintainer: Burak <burakberkkeskin@gmail.com>
 pkgname=coineus-server-git
-pkgver=1.0.r3.c173c2f
+_pkgname=coineus-server
+pkgver=1.0.r68.1abe6e5
 pkgrel=1
 pkgdesc="Coineus App Backend"
 arch=(x86_64)
-url="https://github.com/safderun/coineus-server-aur"
+url="https://github.com/coineus/coineus-server"
 license=('MIT')
 depends=()
 makedepends=(git go)
@@ -23,10 +24,10 @@ pkgver() {
 }
 
 build() {
-	cd "coineus-server-aur/cmd/server"
+	cd "$_pkgname/cmd/server"
 	go build .
 }
 
 package() {
-	install -Dm 755 "coineus-server-aur/cmd/server/server" "$pkgdir/usr/bin/cserver"
+	install -Dm 755 "$_pkgname/cmd/server/server" "$pkgdir/usr/bin/cserver"
 }
