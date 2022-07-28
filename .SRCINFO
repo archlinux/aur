@@ -1,0 +1,16 @@
+pkgbase = kubefwd-git
+	pkgdesc = kubefwd is a command line utility built to port forward multiple services within one or more namespaces on one or more Kubernetes clusters.
+	pkgver = 1.22.3
+	pkgrel = 1
+	url = https://github.com/txn2/kubefwd
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = go
+	provides = kubefwd
+	conflicts = kubefwd
+	replaces = kubefwd
+	source = git+https://github.com/txn2/kubefwd
+	md5sums = SKIP
+
+pkgname = kubefwd-git
