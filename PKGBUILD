@@ -3,7 +3,7 @@
 pkgname=coolero
 _app_id="org.$pkgname.Coolero"
 pkgver=0.12.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A program to monitor and control your cooling devices"
 arch=('any')
 url="https://gitlab.com/coolero/coolero"
@@ -27,7 +27,7 @@ build() {
 check() {
   cd "$pkgname-$pkgver"
   desktop-file-validate "metadata/$_app_id.desktop"
-  appstream-util validate-relax "metadata/$_app_id.metainfo.xml"
+  #appstream-util validate-relax "metadata/$_app_id.metainfo.xml"
   python -m coolero -v
 }
 

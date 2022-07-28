@@ -1,7 +1,7 @@
 pkgbase = coolero
 	pkgdesc = A program to monitor and control your cooling devices
 	pkgver = 0.12.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/coolero/coolero
 	arch = any
 	license = GPL3
