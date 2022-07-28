@@ -1,6 +1,6 @@
 # Maintainer: Manel Castillo Giménez
 pkgname="clavis"
-pkgver="1.0.0"
+pkgver="1.0.1"
 pkgrel="1"
 pkgdesc="An easy to use Password Manager."
 arch=("x86_64")
