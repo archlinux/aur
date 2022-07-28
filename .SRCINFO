@@ -1,7 +1,7 @@
 pkgbase = gog-cuphead
 	pkgdesc = Contra-esque action game with retro cartoon visuals. GOG version, uses Wine.
-	pkgver = 1.2.4.29705
-	pkgrel = 2
+	pkgver = 1.3.3.57402
+	pkgrel = 1
 	url = https://www.gog.com/game/cuphead
 	install = gog-cuphead.install
 	arch = x86_64
@@ -14,12 +14,12 @@ pkgbase = gog-cuphead
 	options = libtool
 	options = staticlibs
 	options = !strip
-	source = setup_cuphead_1.2.4_(29705).exe::gogdownloader://cuphead/en1installer0
-	source = setup_cuphead_1.2.4_(29705)-1.bin::gogdownloader://cuphead/en1installer1
+	source = setup_cuphead_1.3.3_(57402).exe::gogdownloader://cuphead/en1installer0
+	source = setup_cuphead_1.3.3_(57402)-1.bin::gogdownloader://cuphead/en1installer1
 	source = launch_gog-cuphead.bash
 	source = gog-cuphead.desktop
-	sha512sums = bd2644ae4aa2de1b1d6b90d4f8ba91ca1d34f4083a7ed603c39f00b18660def1f9b35c05bb3f342bff5b465d71f6951821accbc2bd430a603cb7cfbc18a5a554
-	sha512sums = 7e5734aa90213076275cb7cbb570d46ec8924e7cae1c7ec7686f692a50087a5e57d6a7ceedaaeb21d1d3fd21659fb453dc2ab8495bab11d5d16f9d40126dcca2
+	sha512sums = 8bb3bc80b2db9ed2d1d28f54616fa320a6e00815f4a43b9e8006c4cde8d7eab2259f64d282cc66956f18e412c2b95b4c1fe268a38498be74ad81619ba07a6b7f
+	sha512sums = 94fab5bedee31e96b02d543de3af67175d5ce9ec3bcdb46c360f875d0bbba0abcb6e2996193c30be6eb1e8cc740529c614460589bf58e7387e10a2506325b791
 	sha512sums = 090081b2e86fa38a3b5d3d8f97dbc21abfe1450a895cd6bfae5b66361963ea697cb8e8f82af1594ae75804ac475196989e4afca489513c2d7a47c73d02667ca2
 	sha512sums = 3a57177546ed23f97f038bf5aa2bdf98d9d32cbad99a34c85239d91c0733a4035177d1173f6ffd816b48348316d0df33f93d2f720e1939f54da9996c7c6b5c49
 
