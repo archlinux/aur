@@ -18,12 +18,13 @@ makepkg:
     - pacman -Syu --noconfirm sudo
     - useradd builduser -m && passwd -d builduser && printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
     - git clone "https://aur.archlinux.org/yay.git" && cd yay && makepkg -si --noconfirm
+    - pwd
   script:
     - sudo -u builduser bash -c 'makepkg -s --noconfirm'
   artifacts:
     paths:
       - "$CI_PROJECT_NAME*.zst"
-      - "/usr/sbin/yay"
+      - "../../usr/sbin/yay"
 
 pacman:
   stage: install
