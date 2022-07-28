@@ -1,0 +1,25 @@
+pkgbase = freedv-gui
+	pkgdesc = Digital Voice for Radio Amateurs
+	pkgver = 1.8.2
+	pkgrel = 1
+	url = https://freedv.org/
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = cmake
+	depends = libpulse
+	depends = hamlib
+	depends = sox
+	depends = wxwidgets-gtk3
+	depends = codec2
+	depends = speex
+	depends = libao
+	depends = libsamplerate
+	depends = gsm
+	depends = libsndfile
+	depends = lpcnetfreedv
+	source = freedv-gui-1.8.2.tar.gz::https://github.com/drowe67/freedv-gui/archive/refs/tags/v1.8.2.tar.gz
+	sha512sums = 8b213da8e379946c7a7817cf75a8a63f3316383ea4513933d2ed0d864971b6a911b7fd8ab8045e5f4fc898dda86e4890df5ff93ecf68492e0bda5b02955eb930
+
+pkgname = freedv-gui
