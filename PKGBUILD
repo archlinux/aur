@@ -4,7 +4,7 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=102.0.1
+pkgver=103.0
 pkgrel=1
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3 aarch64)
@@ -39,7 +39,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
         "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
         "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git")
 # source_aarch64=()
-sha256sums=('7bba6ffd6e8e42d5c38aa2a453f5fa30dfc9ef150f2175aa0625edb68fddae70'
+sha256sums=('acc41d050560db4c4177ea86e2d00e47d74229041fea4c02c0e9e87e64093773'
             'SKIP'
             '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
             'SKIP'
@@ -238,7 +238,7 @@ fi
   patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/remove-snippets-from-home.patch
 
   # Add warning that sanitizing exceptions are bypassed by the options in History > Clear History when LibreWolf closes > Settings
-  patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/sanitizing-description.patch
+  # patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/sanitizing-description.patch
 
   # Add patch to hide website appearance settings
   patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/website-appearance-ui-rfp.patch
@@ -260,7 +260,7 @@ fi
   patch -Np1 -i "${_patches_dir}"/custom/add_firedragon_svg.patch
 
   # Needed build fix
-  patch -Np1 -i "${_patches_dir}"/gentoo/0032-bmo-1773259-cbindgen-root_clip_chain-fix.patch
+  #patch -Np1 -i "${_patches_dir}"/gentoo/0032-bmo-1773259-cbindgen-root_clip_chain-fix.patch
   patch -Np1 -i "${_cachyos_patches_dir}"/zstandard-0.18.0.patch
 
   rm -f "${srcdir}"/common/source_files/mozconfig
