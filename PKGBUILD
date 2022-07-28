@@ -1,33 +1,31 @@
 # Maintainer: Bruno Pagani <archange@archlinux.org>
 
 pkgname=cozy-desktop
-pkgver=3.35.0
+pkgver=3.36.0
 pkgrel=1
 pkgdesc="File synchronisation for Cozy Cloud on Desktop"
-arch=(any)
+arch=(x86_64)
 url="https://cozy-labs.github.io/cozy-desktop/"
 license=(AGPL3)
-_electron=electron12
+_electron=electron
 depends=(${_electron})
 makedepends=(nodejs-lts-fermium yarn git node-gyp python)
 source=(https://github.com/cozy-labs/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz
         https://github.com/cozy-labs/${pkgname}/releases/download/v${pkgver}/Cozy-Drive-${pkgver}-x86_64.AppImage
-        watcher-1.3.5.tar.gz::https://github.com/atom/watcher/archive/refs/tags/v1.3.5.tar.gz
+        ${pkgname}-fix-native-unpacking.patch::https://github.com/cozy-labs/cozy-desktop/pull/2253.patch
         ${pkgname}.desktop
         ${pkgname}.sh)
-sha256sums=('b7641b1275b3b5111f9ba92011b3ba58ad2921d00656fdf28ffdcfc4cb1fcd4a'
-            '821b9fa83fc7f937acb9a0f59f0343694ef47aadb10d6954628875764d7447ad'
-            'a674bf8f633a7d0a146d90db384e8761a9c430fc65a4e9028d9b19ad07a0f6d2'
+sha256sums=('adcf47613b9d64669d5da39657dce541643f1b5fa15a2f81a80793ad3f6458b7'
+            '75a0b65ae44095a900dce4097fece8ac0aad70a64e71341bebcd2caecd65c7f1'
+            '77a123b0ecc1de242d6bbdc1e355339535599e4e3654c067ecbc35bbdeb36d43'
             '563edd5a43c7f06080e03bec5f4e46154227f7e163500950ea39ecad466b198a'
             'a8783d3f6ce2da344ffe403f8e1a4f9da8de3b59e8bfda10e15a4ff5643244cf')
 
 prepare() {
-    # https://github.com/cozy-labs/cozy-desktop/issues/2206
-    sed -i 's/from_path, EntryKind kind);/from_path, EntryKind kind) noexcept;/' watcher-1.3.5/src/worker/linux/cookie_jar.h
     # Specify electron version in launcher
     sed -i "s|@ELECTRON@|${_electron}|" ${pkgname}.sh
     cd ${pkgname}-${pkgver}
-    yarn add file:"${srcdir}"/watcher-1.3.5
+    patch -p1 < ../${pkgname}-fix-native-unpacking.patch
     yarn install --no-fund
 }
 
@@ -38,15 +36,10 @@ build() {
 
 package() {
     cd ${pkgname}-${pkgver}
-    # https://github.com/cozy-labs/cozy-desktop/issues/2206
-    export npm_config_force_process_config=true
     yarn dist --dir -c.electronDist=/usr/lib/${_electron} -c.electronVersion=$(tail -c +1 /usr/lib/${_electron}/version)
 
     install -d "${pkgdir}"/usr/lib/${pkgname}
     cp -r dist/linux-unpacked/resources/* "${pkgdir}"/usr/lib/${pkgname}/
-
-    rm "${pkgdir}"/usr/lib/cozy-desktop/app.asar.unpacked/gui/scripts/macos-add-favorite.py
-    rmdir "${pkgdir}"/usr/lib/cozy-desktop/app.asar.unpacked/{gui/{scripts/,},}
     rm -r "${pkgdir}"/usr/lib/cozy-desktop/regedit
 
     cd "${srcdir}"
