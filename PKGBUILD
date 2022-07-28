@@ -1,7 +1,7 @@
 # Maintainer:ston<2424284164@qq.com>
 pkgname=gtk-qq-git
 pkgver=0.2.0.r137.g0be2283
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Linux QQ client, based on GTK4."
 arch=('x86_64')
 url="https://github.com/lomirus/gtk-qq"
@@ -26,12 +26,12 @@ pkgver() {
 
 build() {
 	cd gtk-qq
-	# setup
-	meson setup builddir
-	meson compile -C builddir
 	#force to use nightly
 	rustup install nightly
 	rustup override set nightly
+	# setup
+	meson setup builddir
+	meson compile -C builddir
 	cargo build --release
 }
 
