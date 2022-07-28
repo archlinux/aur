@@ -14,8 +14,7 @@ depends=('colord' 'kcmutils' 'kio' 'libxrandr' 'desktop-file-utils')
 optdepends=('gnome-color-manager: manual calibration')
 provides=('colord-kde')
 conflicts=('colord-kde')
-install="$pkgname.install"
-source=("$pkgname::git+https://anongit.kde.org/colord-kde.git")
+source=("$pkgname::git+https://invent.kde.org/graphics/colord-kde.git")
 md5sums=('SKIP')
 
 pkgver() {

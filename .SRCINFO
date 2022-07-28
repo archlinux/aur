@@ -3,7 +3,6 @@ pkgbase = colord-kde-git
 	pkgver = 0.3.0.r48.g3729d13
 	pkgrel = 1
 	url = https://projects.kde.org/projects/playground/graphics/colord-kde
-	install = colord-kde-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -17,7 +16,7 @@ pkgbase = colord-kde-git
 	optdepends = gnome-color-manager: manual calibration
 	provides = colord-kde
 	conflicts = colord-kde
-	source = colord-kde-git::git+https://anongit.kde.org/colord-kde.git
+	source = colord-kde-git::git+https://invent.kde.org/graphics/colord-kde.git
 	md5sums = SKIP
 
 pkgname = colord-kde-git
