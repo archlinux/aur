@@ -17,6 +17,7 @@ license=('BSD' 'custom')
 depends=('libxcursor' 'fontconfig' 'hicolor-icon-theme' 'libglvnd' 'libc++')
 makedepends=('git' 'ninja' 'python' 'clang' 'cmake' 'libxi')
 # makedepends=('git' 'ninja' 'python' 'clang' 'cmake' 'libxi' 'lld')
+options=('!lto')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-bin" "${_pkgname}-skia-bin")
 source=("git+https://github.com/${_pkgname}/${_pkgname}.git#branch=main"
