@@ -1,7 +1,7 @@
 # Maintainer: darkhz <kmachanwenw at gmail dot com>
 pkgname=bluetuith-bin
 _pkgname=bluetuith
-pkgver=0.0.3
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="A TUI based bluetooth manager"
 arch=('x86_64' 'i686' 'arm' 'aarch64' 'armv6h' 'armv7h')
