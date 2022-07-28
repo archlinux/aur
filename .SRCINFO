@@ -1,13 +1,14 @@
 pkgbase = all-repos
 	pkgdesc = Clone all your repositories and apply sweeping changes
 	pkgver = 1.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/asottile/all-repos
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
-	depends = python
 	depends = python-identify
+	depends = python-setuptools
+	optdepends = python-pre-commit: for pre-commit autofixer
+	optdepends = python-yaml: for autofixer on yaml files (pre-commit, azure pipelines)
 	source = https://files.pythonhosted.org/packages/source/a/all-repos/all_repos-1.23.0.tar.gz
 	sha256sums = 5ecba787dfbacd45632cfcba53ab01a1d81a52633ceb7555a0f81d1325fdcc70
 
