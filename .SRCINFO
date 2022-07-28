@@ -1,0 +1,17 @@
+pkgbase = perl-asm-preproc
+	pkgdesc = Preprocessor to be called from an assembler
+	pkgver = 1.03
+	pkgrel = 1
+	url = https://metacpan.org/pod/Asm::Preproc
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = make
+	depends = perl-iterator-simple-lookahead
+	depends = perl-text-template
+	depends = perl-data-dump
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PS/PSCUST/Asm-Preproc-1.03.tar.gz
+	sha256sums = a554e922a1b166907166501b5ee1836a9b8ec6ca77b8cfc033974a53195e8f53
+
+pkgname = perl-asm-preproc
