@@ -1,7 +1,7 @@
 pkgbase = sptlrx-bin
 	pkgdesc = Timesynced Spotify lyrics in your terminal.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/raitonoberu/sptlrx
 	arch = x86_64
 	arch = arm64
@@ -9,11 +9,11 @@ pkgbase = sptlrx-bin
 	license = MIT
 	provides = sptlrx
 	conflicts = sptlrx
-	source_x86_64 = https://github.com/raitonoberu/sptlrx/releases/download/v1.0.0-rc1/sptlrx_1.0.0-rc1_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 8a0f2a69fe7e38794ff58ae393b12f59f9c96d1b9b5e24d8b0da22a7eceeb94e
-	source_arm64 = https://github.com/raitonoberu/sptlrx/releases/download/v1.0.0-rc1/sptlrx_1.0.0-rc1_Linux_arm64.tar.gz
-	sha256sums_arm64 = 8f2f1105f369ce0a3b634dc30862b026906f1aa55d445c378f42fd062ed43a60
-	source_i386 = https://github.com/raitonoberu/sptlrx/releases/download/v1.0.0-rc1/sptlrx_1.0.0-rc1_Linux_i386.tar.gz
-	sha256sums_i386 = 4483525af76ddb37a812e6333e84bc2e37f1cd4700d640221622ff0253c5ae4f
+	source_x86_64 = https://github.com/raitonoberu/sptlrx/releases/download/v1.0.0/sptlrx_1.0.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = ba0fb8c9e390419e2e3d5f1bcca8117ee5dac3e0ad063c29cec7cb0d53b6c6e5
+	source_arm64 = https://github.com/raitonoberu/sptlrx/releases/download/v1.0.0/sptlrx_1.0.0_Linux_arm64.tar.gz
+	sha256sums_arm64 = 55813a2efcdf395f4f96df31cddb2955402f064df77cdbf6262487e82fb5c934
+	source_i386 = https://github.com/raitonoberu/sptlrx/releases/download/v1.0.0/sptlrx_1.0.0_Linux_i386.tar.gz
+	sha256sums_i386 = 9246b202538dbd320870c08d72f44e632e9b73150e568b37d989cc54baf82357
 
 pkgname = sptlrx-bin
