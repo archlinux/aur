@@ -1,29 +1,27 @@
 pkgbase = ryujinx-ava
-	pkgdesc = Experimental Nintendo Switch Emulator written in C# with AvaloniaUI & prime fixes
-	pkgver = 1.1.85
+	pkgdesc = Experimental Nintendo Switch Emulator written in C# with new AvaloniaUI
+	pkgver = 1.1.194
 	pkgrel = 1
-	url = https://github.com/emmauss/Ryujinx
+	url = https://github.com/Ryujinx/Ryujinx
 	install = ryujinx.install
 	arch = x86_64
 	license = MIT
+	makedepends = curl
 	makedepends = git
-	makedepends = dotnet-sdk
-	makedepends = python
+	makedepends = dotnet-sdk-bin
 	makedepends = jq
-	depends = dotnet-runtime
+	depends = dotnet-runtime-bin
 	provides = Ryujinx
 	conflicts = ryujinx-git
 	conflicts = ryujinx-ldn-bin
 	conflicts = ryujinx-cn-git
 	conflicts = ryujinx-cn
 	options = !strip
-	source = git+https://github.com/emmauss/Ryujinx#branch=avalonia
-	source = ryujinx.install
+	source = git+https://github.com/Ryujinx/Ryujinx
 	source = ryujinx.desktop
 	source = ryujinx.png
 	md5sums = SKIP
-	md5sums = 2a3637d0d4e7678473a9bd87f6acc8aa
-	md5sums = cae4fe3e16763affedd41c3ef9d36992
+	md5sums = 1904390e155a0029122fe51252d9494d
 	md5sums = 30138087aab7dcec30bdc4739617f000
 
 pkgname = ryujinx-ava
