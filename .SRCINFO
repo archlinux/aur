@@ -1,6 +1,6 @@
 pkgbase = rdma-core
 	pkgdesc = RDMA core userspace libraries and daemons
-	pkgver = 39.0
+	pkgver = 41.0
 	pkgrel = 1
 	url = https://github.com/linux-rdma/rdma-core
 	arch = x86_64
@@ -72,7 +72,7 @@ pkgbase = rdma-core
 	replaces = libibmad
 	backup = etc/rdma/rdma.conf
 	backup = etc/rdma/mlx4.conf
-	source = rdma-core::git+https://github.com/linux-rdma/rdma-core.git#tag=v39.0
+	source = rdma-core::git+https://github.com/linux-rdma/rdma-core.git#tag=v41.0
 	validpgpkeys = 42D25385C1A1C02B8B1B1C6F801BDDB825988F64
 	sha512sums = SKIP
 
