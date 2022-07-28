@@ -1,7 +1,7 @@
 # Maintainer: Sukanka <su975853527 [AT] gmail.com>
 pkgname=wiznote-electron
 _pkgname=wiznote
-pkgver=0.1.81
+pkgver=0.1.83
 pkgrel=1
 pkgdesc='A powerful note-taking tool.'
 arch=('any')
@@ -14,7 +14,7 @@ provides=("wiznote")
 source=("$_pkgname-$pkgver.AppImage::https://get.wiz.cn/x/wiznote-desktop-${pkgver}-linux-x86_64.AppImage"
 "${_pkgname}".sh
 )
-sha256sums=('2297a4a3b1a6b45cb905b35b5003e94da723a530201dd8170c0edad11502bc6b'
+sha256sums=('6b509325d1a1e59dd81dd31224488468afc1fa9b50a7f91d792809feccb8dac6'
             'ba433c18cd2c82e234d1921ed125c46d6a8ab6a20688e10181834bdbd5650bb1')
 
 prepare() {
@@ -42,6 +42,6 @@ package() {
     install -Dm644 wiznote-desktop.desktop ${pkgdir}/usr/share/applications/${_pkgname}.desktop
     
     cd ${pkgdir}/usr/share/applications/
-    sed -i "3c Exec=wiznote --no-sandbox %U" ${_pkgname}.desktop
+    sed -i "s|^Exec=.*|Exec=wiznote %U|g" ${_pkgname}.desktop
     
 }
