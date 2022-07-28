@@ -10,7 +10,7 @@ _pkgname="${_pkgbase}-${variant}"
 pkgname="${_pkgname}-git"
 pkgver=2.4.3
 pkgrel=4
-pkgdesc='Userspace setup tool for transparent encryption of block devices using dm-crypt'
+pkgdesc='Userspace setup tool for transparent encryption of block devices using dm-crypt (with mkinitcpio patch to check file system signature before attempting to open it)'
 arch=('i686' 'pentium4' 'x86_64')
 license=('GPL')
 url='https://gitlab.com/cryptsetup/cryptsetup/'
@@ -29,7 +29,7 @@ conflicts=("${_pkgbase}"
 	   "${_pkgbase}-nested-cryptkey")
 options=('!emptydirs')
 validpgpkeys=('2A2918243FDE46648D0686F9D9B0577BD93E98FC') # Milan Broz <gmazyland@gmail.com>
-source=("https://www.kernel.org/pub/linux/utils/cryptsetup/v${pkgver%.*}/${_pkgname}-${pkgver}.tar."{xz,sign}
+source=("https://www.kernel.org/pub/linux/utils/${_pkgbase}/v${pkgver%.*}/${_pkgbase}-${pkgver}.tar."{xz,sign}
         'hooks-encrypt'
         'install-encrypt'
         'install-sd-encrypt')
