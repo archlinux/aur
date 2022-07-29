@@ -47,5 +47,7 @@ package() {
 	Categories=Network;" >> "${pkgname^}-${pkgver}/korai.desktop"
 
 	install -Dm755 ${pkgname^}-${pkgver}/korai.desktop "${pkgdir}/usr/share/applications/korai.desktop"
+	pip install --upgrade mangadex-downloader
+	echo "Korai requires mangadex-downloader (only available using pip) to download MangaDex manga directly" 
 }
 
