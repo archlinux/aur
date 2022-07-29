@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ddns.newfuture.cc/schema/v2.8.json",
+  "debug": false,
+  "dns": "dnspod",
+  "id": "YOUR ID or EMAIL for DNS Provider",
+  "index4": "default",
+  "index6": "default",
+  "ipv4": [
+    "newfuture.cc",
+    "ddns.newfuture.cc"
+  ],
+  "ipv6": [
+    "newfuture.cc",
+    "ipv6.ddns.newfuture.cc"
+  ],
+  "proxy": null,
+  "token": "YOUR TOKEN or KEY for DNS Provider",
+  "ttl": null
+}
