@@ -16,7 +16,7 @@ PhLVmProvider class compile: 'for: aPhLVirtualMachineOrManager
 	| class |
 	class := aPhLVirtualMachineOrManager pharoVersion asInteger < 90
 		ifTrue: [ PhLVmProviderUntilPharo80 ]
-		ifFalse: [ aPhLVirtualMachineOrManager pharoVersion asInteger < 100
+		ifFalse: [ aPhLVirtualMachineOrManager pharoVersion asInteger < 110
 				ifTrue: [ PhLVmProviderArchlinux90 ]
 				ifFalse: [ self ] ].
 	^ class new

@@ -19,3 +19,9 @@ Then
 ```sh
 makepkg -si
 ```
+
+## Update .SRCInfo
+
+```sh
+makepkg --printsrcinfo > .SRCINFO
+```
