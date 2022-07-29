@@ -6,13 +6,13 @@ url='https://www.apple.com'
 arch=('x86_64')
 license=('custom')
 source=(
-'git+https://github.com/ShmilyHTT/PingFang.git'
+	'git+https://github.com/ShmilyHTT/PingFang.git'
 )
 
 pkgver() {
 	cd PingFang
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-} 
+}
 
 package() {
 	install -d "${pkgdir}/usr/share/fonts/PingFang/"
