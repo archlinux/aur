@@ -1,0 +1,97 @@
+pkgbase = corecomponents
+	pkgdesc = Toolkit for C++ application development
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://www.corecomponents.io
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc>=10.0.0
+	makedepends = readline
+	makedepends = gnutls>=3.3.5
+	makedepends = cairo
+	makedepends = freetype2
+	makedepends = libwebp
+	makedepends = sdl2>=2.0.10
+	source = corecomponents-2.2.0.tar.gz::https://www.corecomponents.io/download/CoreComponents-2.2.0.tar.gz
+	md5sums = 45be529eb4262d3d0d8e482f735ac20e
+	sha1sums = 0f4f5f27b9d099f4d2f79be11cbcb0233881e66c
+
+pkgname = corecomponents_core
+	pkgdesc = Toolkit for C++ application development: system abstraction and language primitives
+
+pkgname = corecomponents_core_tools
+	pkgdesc = Toolkit for C++ application development: misc. command line utilities
+	depends = corecomponents_core
+
+pkgname = corecomponents_syntax
+	pkgdesc = Toolkit for C++ application development: building blocks for building recursive descent parsers
+	depends = corecomponents_core
+
+pkgname = corecomponents_glob
+	pkgdesc = Toolkit for C++ application development: string and file name pattern matching
+	depends = corecomponents_syntax
+
+pkgname = corecomponents_meta
+	pkgdesc = Toolkit for C++ application development: object serialization, deserialization and validation
+	depends = corecomponents_syntax
+
+pkgname = corecomponents_testing
+	pkgdesc = Toolkit for C++ application development: unit testing and test automation
+	depends = corecomponents_testing
+
+pkgname = corecomponents_crypto
+	pkgdesc = Toolkit for C++ application development: cryptographic primitives
+	depends = corecomponents_core
+
+pkgname = corecomponents_crypto_tools
+	pkgdesc = Toolkit for C++ application development: cryptographic tools
+	depends = corecomponents_crypto
+	depends = readline
+
+pkgname = corecomponents_network
+	pkgdesc = Toolkit for C++ application development: network sockets, interface status and routing information
+	depends = corecomponents_glob
+
+pkgname = corecomponents_network_tools
+	pkgdesc = Toolkit for C++ application development: networking tools
+	depends = corecomponents_network
+
+pkgname = corecomponents_http
+	pkgdesc = Toolkit for C++ application development: http(s) client/server classes
+	depends = corecomponents_meta
+	depends = corecomponents_glob
+	depends = corecomponents_network
+	depends = gnutls>=3.3.5
+
+pkgname = corecomponents_http_plugins
+	pkgdesc = Toolkit for C++ application development: http(s) server plugins
+	depends = corecomponents_http
+
+pkgname = corecomponents_http_tools
+	pkgdesc = Toolkit for C++ application development: http(s) tools
+	depends = corecomponents_http_plugins
+
+pkgname = corecomponents_toki
+	pkgdesc = Toolkit for C++ application development: syntax highlighting library
+	depends = corecomponents_meta
+	depends = corecomponents_glob
+
+pkgname = corecomponents_toki_tools
+	pkgdesc = Toolkit for C++ application development: syntax highlighting tools
+	depends = corecomponents_toki
+
+pkgname = corecomponents_ux
+	pkgdesc = Toolkit for C++ application development: graphical user interfaces
+	depends = corecomponents_core
+	depends = corecomponents_ux_plugins
+	depends = cairo
+	depends = freetype2
+	depends = libwebp
+
+pkgname = corecomponents_ux_plugins
+	pkgdesc = Toolkit for C++ application development: graphical user interface style and platform plugins
+	depends = sdl2>=2.0.10
+
+pkgname = corecomponents_tools
+	pkgdesc = Toolkit for C++ application development: common developer tools (build system, etc.)
+	depends = corecomponents_tools
