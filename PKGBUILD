@@ -3,11 +3,12 @@
 
 pkgname=aiksaurus
 pkgver=1.2.1
-pkgrel=8
+pkgrel=9
 pkgdesc="A cross-platform, open-source thesaurus"
 url="http://aiksaurus.sourceforge.net/"
 license=('GPL')
 arch=('x86_64')
+depends=('gcc-libs')
 source=(https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz
         aiksaurus-gcc44.patch
         format-security.patch)
