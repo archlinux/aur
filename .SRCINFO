@@ -1,12 +1,12 @@
 pkgbase = forge-server-torchmaster
 	pkgdesc = Adds a special torch which prevents mob spawning in a configurable radius.
 	pkgver = 19.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.curseforge.com/minecraft/mc-mods/torchmaster
 	arch = any
 	license = MIT
-	depends = forge-hooks>=1.0.0
-	depends = forge-server>=41.0.94
+	depends = forge-server
+	depends = forge-server-hooks
 	noextract = torchmaster-19.0.2-beta.jar
 	source = https://github.com/Xalcon/TorchMaster/blob/mc/1.19/LICENSE
 	source = https://mediafiles.forgecdn.net/files/3890/66/torchmaster-19.0.2-beta.jar

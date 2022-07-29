@@ -5,7 +5,7 @@ modname=torchmaster
 srvname=forge
 pkgver=19.0.2
 minver=1.19
-pkgrel=1
+pkgrel=2
 
 url='https://www.curseforge.com/minecraft/mc-mods/torchmaster'
 arch=('any')
@@ -14,8 +14,8 @@ pkgdesc="Adds a special torch which prevents mob spawning in a configurable radi
 
 source=(https://github.com/Xalcon/TorchMaster/blob/mc/1.19/LICENSE
         https://mediafiles.forgecdn.net/files/3890/66/torchmaster-19.0.2-beta.jar)
-depends=("forge-hooks>=1.0.0"
-         "forge-server>=41.0.94")
+depends=("forge-server"
+         "forge-server-hooks")
 noextract=($modname-$pkgver-beta.jar)
 sha256sums=('9610fdb452d3d92e7e51243963ea189f7783c1a7cdd4238de4d2a32c50042a8d'
             'ed16d79be21d79a086d9b125d01da8eda168a801a538d04a4f93d558e81d2f6a')
