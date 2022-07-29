@@ -2,13 +2,13 @@
 pkgname=wayshot-bin
 _pkgname=wayshot
 pkgver=1.1.9
-pkgrel=2
+pkgrel=3
 pkgdesc="A screenshot tool for wlroots compositors."
 url="https://github.com/waycrate/wayshot"
 license=('BSD')
 arch=('x86_64')
 optdepends=('slurp: for area selection')
-makedepends=('scdoc')
+makedepends=('scdoc' 'rust')
 provides=('wayshot-bin')
 conflicts=('wayshot-git' 'wayshot-musl-git')
 source=("$_pkgname-bin::$url/releases/download/$pkgver/$_pkgname"
