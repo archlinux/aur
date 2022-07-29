@@ -6,7 +6,7 @@ pkgbase = go-musicfox-bin
 	arch = x86_64
 	license = MIT
 	source = https://github.com/anhoder/go-musicfox/releases/download/v2.2.1/go-musicfox_2.2.1_linux_amd64.zip
-	source = https://raw.githubusercontent.com/anhoder/go-musicfox/master/LICENSE
+	source = LICENSE
 	sha256sums = 0d923511165cc082ea0ab5917f5e3f3853de9d0a8d5e99cba2e9a61384a9d352
 	sha256sums = 20535828272932407c2f5172aeb714ac7b374a34e5ecb1825af509f2902cde54
 
