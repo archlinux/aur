@@ -1,6 +1,6 @@
 pkgbase = consolekit
 	pkgdesc = A framework for defining and tracking users, login sessions, and seats
-	pkgver = 1.2.1
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/ConsoleKit2/ConsoleKit2
 	install = consolekit.install
@@ -20,10 +20,9 @@ pkgbase = consolekit
 	optdepends = pm-utils: suspend/hibernate support
 	provides = consolekit2
 	options = libtool
-	source = https://github.com/ConsoleKit2/ConsoleKit2/releases/download/1.2.1/ConsoleKit2-1.2.1.tar.bz2
+	source = https://github.com/ConsoleKit2/ConsoleKit2/archive/refs/tags/1.2.4.tar.gz
 	source = consolekit.tmpfiles.conf
-	sha256sums = d6ea13b306557a76519388de39bf7f1a1ea9010af147fad4fb3131ce634bd8b3
+	sha256sums = 7c5ca07cc7ecb2743446c4ab5a66ae02667acab6214268d76f0fdf73eaf141e8
 	sha256sums = 778552dc12b3c235bde200e476d4262da0c135f3f6f8b3e975a87881d1f154d1
 
 pkgname = consolekit
-

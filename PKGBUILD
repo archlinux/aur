@@ -1,7 +1,7 @@
 _pkgname=ConsoleKit2
 
 pkgname=consolekit
-pkgver=1.2.1
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="A framework for defining and tracking users, login sessions, and seats"
 arch=('i686' 'x86_64')
@@ -14,13 +14,14 @@ optdepends=('consolekit-openrc: consolekit openrc initscript'
 makedepends=('acl' 'xmlto' 'docbook-xsl')
 options=('libtool')
 install=consolekit.install
-source=("$url/releases/download/$pkgver/$_pkgname-$pkgver.tar.bz2"
+source=("$url/archive/refs/tags/$pkgver.tar.gz"
         'consolekit.tmpfiles.conf')
-sha256sums=('9af223096ece88b217bcd3fe85093390a8d1527b6492124b0e90ea7688ec934b'
+sha256sums=('7c5ca07cc7ecb2743446c4ab5a66ae02667acab6214268d76f0fdf73eaf141e8'
             '778552dc12b3c235bde200e476d4262da0c135f3f6f8b3e975a87881d1f154d1')
 
 prepare(){
 	cd $srcdir/$_pkgname-$pkgver
+    autoreconf -fiv
 }
 
 build(){
