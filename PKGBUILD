@@ -1,7 +1,7 @@
 # Maintainer: Thaodan <AUR+me@thaodan.de>
 _pkgname=sdk-setup
 pkgname=sailfish-$_pkgname
-pkgver=1.4.58
+pkgver=1.4.59
 pkgrel=1
 pkgdesc="Sailfish SDK utilities patched to run on Arch, UNSUPPORTED"
 arch=('any')
