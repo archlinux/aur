@@ -1,20 +1,13 @@
 pkgname=kdocker
-pkgver=5.3
-pkgrel=2
+pkgver=5.4
+pkgrel=1
 pkgdesc="An application to help you dock any application into the system tray"
 arch=('i686' 'x86_64')
 url="https://github.com/user-none/KDocker"
 license=('GPL2')
 depends=('qt5-base' 'qt5-x11extras' 'libxpm' 'libxmu')
-source=(https://github.com/user-none/KDocker/archive/${pkgver}.tar.gz
-        'fix-deadlock.patch')
-sha256sums=('c49eea33d46a626b2a59c8ddc923ce9a027f0b9bd2125f4f6c264e888997e663'
-            '731edac829b4231ddf87f3ed6cd043df4c2026bec4dc26dd11c22ad79876bcbd')
-
-prepare() {
-    cd "$srcdir/KDocker-$pkgver"
-    patch --forward --strip=1 --input="${srcdir}/fix-deadlock.patch"
-}
+source=(https://github.com/user-none/KDocker/archive/${pkgver}.tar.gz)
+sha256sums=('c3c14b2c930db34d7b18c4d5d96f03d78dc0a21098acb0351ae6fe40e7f1048d')
 
 build() {
     cd "$srcdir/KDocker-$pkgver"
