@@ -1,21 +1,23 @@
 pkgbase = applecommander
 	pkgdesc = Tool that manipulates Apple ][ disk images
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://applecommander.github.io/
 	arch = x86_64
 	license = GPL2
-	makedepends = archlinux-java-run
-	makedepends = java-environment<12
+	makedepends = gradle
+	makedepends = java-environment>=11
+	depends = archlinux-java-run>=7
 	depends = bash
-	depends = java-runtime
+	depends = java-runtime>=11
 	optdepends = gtk3: Graphical User Interface
-	source = https://github.com/AppleCommander/AppleCommander/archive/v1-6-0.tar.gz
-	source = applecommander.sh
+	source = https://github.com/AppleCommander/AppleCommander/archive/refs/tags/1.8.0.tar.gz
+	source = applecommander-ac.sh
+	source = applecommander-acx.sh
 	source = applecommander-gui.sh
-	sha256sums = 246cdf31812a9034d1b8f1492d48560ef65e5a2cf13ee873522ded3980c5f627
-	sha256sums = 193dc3a0f5a73a371997ff837b7222edb4d52cf22a70431dedcfd7821dbbb879
-	sha256sums = 52a269fbc7aea2f354b6a0c6d0deff8e01c41a5021cf946542cdfadd2a392ead
+	sha256sums = 66def97b3f6c3b6caf1e4a30580f81b2d44ec78781542a4c170b4cecf0e187e6
+	sha256sums = d7b1ddd2d4bf0eb5a1fd595352cd36b645f1342e1da427a01579bef779b29714
+	sha256sums = 35bfb9831c1f0411a2ea60b7f33c671dda4accbb413ac94ae8320450d9325a42
+	sha256sums = 034f41f16c0200e398c3a019359c6c30978eb857fec4e5eb97948f962e79e0dc
 
 pkgname = applecommander
-
