@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-cmp-rg
-pkgver=1.3.6
+pkgver=1.3.7
 pkgrel=1
 pkgdesc="ripgrep source for neovim-cmp"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 groups=('neovim-plugins')
 depends=('neovim-cmp' 'ripgrep')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d82aded74b490bc20ac172bd81af92f66c92b2f519354f8db7df66f0e56233dd')
+sha256sums=('62234f2842966de9873d277e513135a0d55774c7fcf34841dd7fea4adfd6a413')
 
 package() {
 	cd "cmp-rg-$pkgver"

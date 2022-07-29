@@ -1,6 +1,6 @@
 pkgbase = neovim-cmp-rg
 	pkgdesc = ripgrep source for neovim-cmp
-	pkgver = 1.3.6
+	pkgver = 1.3.7
 	pkgrel = 1
 	url = https://github.com/lukas-reineke/cmp-rg
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = neovim-cmp-rg
 	license = MIT
 	depends = neovim-cmp
 	depends = ripgrep
-	source = neovim-cmp-rg-1.3.6.tar.gz::https://github.com/lukas-reineke/cmp-rg/archive/v1.3.6.tar.gz
-	sha256sums = d82aded74b490bc20ac172bd81af92f66c92b2f519354f8db7df66f0e56233dd
+	source = neovim-cmp-rg-1.3.7.tar.gz::https://github.com/lukas-reineke/cmp-rg/archive/v1.3.7.tar.gz
+	sha256sums = 62234f2842966de9873d277e513135a0d55774c7fcf34841dd7fea4adfd6a413
 
 pkgname = neovim-cmp-rg
