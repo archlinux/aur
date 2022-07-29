@@ -7,7 +7,7 @@ _pkgbase="${_pkg}-profiles"
 profile=ebaseline
 _pkgname="${_distro}-${profile}"
 pkgname="${_distro}-${profile}-git"
-pkgver=v0.1+11+g1afb2fc
+pkgver=v0.2+24+gfecdf01
 pkgrel=1
 pkgdesc='Builds an Arch Linux desktop'
 arch=('any')
@@ -24,7 +24,8 @@ checkdepends=('shellcheck')
 
 pkgver() {
   # shellcheck disable=SC2154
-  pacman -Q "${_pkgbase}" | awk '{print $2}'
+  local _norev="$(pacman -Q "${_pkgbase}" | awk '{print $2}')"
+  echo "${_norev%%-*}"
 }
 
 # shellcheck disable=SC2154
@@ -43,10 +44,10 @@ package() {
   machinectl shell --uid=0 \
 	           --setenv=profile="${profile}" \
 		   --setenv=_dest="${_dest}" \
-		   mkarchiso -v \
-	           -o "${_dest}" \
-		   -w "${_profile}/work" \
-                      "${_profile}"
+		   .host mkarchiso -v \
+	                 -o "${_dest}" \
+		         -w "${_profile}/work" \
+                            "${_profile}"
   mv "${_dest}/${_iso}" "${_dest}/${pkgname}-x86_64.iso"
   mv "${_dest}/${_keys_iso}" "${_dest}/${pkgname}-keys-x86_64.iso"
 }

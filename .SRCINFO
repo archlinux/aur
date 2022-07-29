@@ -1,6 +1,6 @@
 pkgbase = archlinux-ebaseline-git
 	pkgdesc = Builds an Arch Linux desktop
-	pkgver = v0.1+11+g1afb2fc
+	pkgver = v0.2+24+gfecdf01
 	pkgrel = 1
 	url = https://gitlab.archlinux.org/tallero/archiso-profiles
 	arch = any
