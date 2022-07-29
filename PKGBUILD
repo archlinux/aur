@@ -1,6 +1,6 @@
 # Maintainer: Burak <burakberkkeskin@gmail.com>
 pkgname=fuel-git
-pkgver=1.0.0.r1.221527b
+pkgver=1.0.0.r3.047b458
 pkgrel=1
 pkgdesc="With this CLI Tool, Fuel Price list information is instantly retrieved by city group. Price List information is printed on the screen by Parse instantly from Petrolofisi.com.tr"
 arch=(x86_64)
