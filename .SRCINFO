@@ -1,0 +1,19 @@
+pkgbase = gum
+	pkgdesc = A tool for glamorous shell scripts
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/charmbracelet/gum
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	provides = gum
+	conflicts = gum
+	source = gum-0.1.0.tar.gz::https://github.com/charmbracelet/gum/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = f89228867cd61ebeae0b7bcc9e8034079da256e2c6bf696a9eceb73fc4c3f2b6
+	sha512sums = 1890702d190610f87d82dcc3f950e2f545bef1d294249cfcdc68da24ba5f4b6506583fbdfce42aa7cc7ef96e0b0c0c0216b44cb07ec63a5920c3f04a2691000c
+	b2sums = c3e3121c2f5dcfa35d2ce2783b8c09ea03ee346904ee0c8a24ea005d5dfd0f986ac95aaa2bf3bcbee046067e1af1ceea857a53afe7d9a54275e35d81daa7c344
+
+pkgname = gum
