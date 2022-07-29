@@ -1,12 +1,13 @@
 pkgbase = changie
 	pkgdesc = Automated changelog tool for preparing releases with lots of customization options.
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://github.com/miniscruff/changie
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	makedepends = git
 	source = git+https://github.com/miniscruff/changie#tag=v1.8.0
 	sha256sums = SKIP
 
