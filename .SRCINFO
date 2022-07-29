@@ -1,7 +1,7 @@
 pkgbase = pacseek
 	pkgdesc = A terminal user interface for searching and installing Arch Linux packages
 	pkgver = 1.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moson-mo/pacseek
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,8 @@ pkgbase = pacseek
 	makedepends = go
 	depends = pacman
 	optdepends = xdg-utils: open URL on click support
+	optdepends = curl: show PKGBUILD support
+	optdepends = less: show PKGBUILD support
 	source = https://github.com/moson-mo/pacseek/archive/v1.4.6.tar.gz
 	sha256sums = f93d12fc72dc47dc354421d452a90f62232ff443ec7de58ae21920b342ed7ad2
 

@@ -2,14 +2,16 @@
 
 pkgname=pacseek
 pkgver=1.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal user interface for searching and installing Arch Linux packages'
 arch=('x86_64' 'aarch64')
 url="https://github.com/moson-mo/$pkgname"
 license=('GPL2')
 depends=('pacman')
 makedepends=('go')
-optdepends=('xdg-utils: open URL on click support')
+optdepends=('xdg-utils: open URL on click support'
+            'curl: show PKGBUILD support'
+            'less: show PKGBUILD support')
 source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('f93d12fc72dc47dc354421d452a90f62232ff443ec7de58ae21920b342ed7ad2')
 
