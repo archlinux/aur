@@ -1,17 +1,19 @@
 pkgbase = python-pymctranslate
 	pkgdesc = A library of block mappings that can be used to convert from any Minecraft format into any other Minecraft format
-	pkgver = 1.2.2
+	pkgver = 1.2.6
 	pkgrel = 1
 	url = https://github.com/gentlegiantJGC/PyMCTranslate
 	arch = any
 	license = custom
-	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-versioneer-518
 	makedepends = python-wheel
 	depends = python
 	depends = python-amulet-nbt
 	depends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/P/PyMCTranslate/PyMCTranslate-1.2.2.tar.gz
-	sha256sums = 76ea2963eb5836a8cdaa79968ef6392a332ff78f0ade69e73c84668cd25fdd84
+	source = python-pymctranslate-1.2.6.tar.gz::https://github.com/gentlegiantJGC/PyMCTranslate/archive/1.2.6.tar.gz
+	sha256sums = 3b7d21db6b0344b85c16dd185e3c55a84061cd59cd3cdbaca8528fe3b3eeb3bc
 
 pkgname = python-pymctranslate
