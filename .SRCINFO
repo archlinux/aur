@@ -9,7 +9,9 @@ pkgbase = wayshot-bin
 	provides = wayshot-bin
 	conflicts = wayshot-git
 	conflicts = wayshot-musl-git
-	source = wayshot::https://github.com/waycrate/wayshot/releases/download/1.1.9/wayshot
+	source = wayshot-bin::https://github.com/waycrate/wayshot/releases/download/1.1.9/wayshot
+	source = wayshot-src::git+https://git.sr.ht/~shinyzenith/wayshot
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = wayshot-bin
