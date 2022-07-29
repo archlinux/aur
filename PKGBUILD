@@ -13,7 +13,7 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_ver="1.19.1_0.4.3_0.17.1-1" # <mcver_installerver_loaderver>
+_ver="1.19.1_0.4.3_0.17.1-2" # <mcver_installerver_loaderver-pkgrelease>
 # installer ver can be gotten at https://meta.quiltmc.org/v3/versions/installer
 # loader ver can be gotten at https://meta.quiltmc.org/v3/versions/loader
 # stay on stable loader releases for the time being.
@@ -48,7 +48,7 @@ depends=("java-runtime-headless>=17" "tmux" "sudo" "bash" "awk" "sed" "tar")
 optdepends=("netcat: required in order to suspend an idle server")
 backup=("etc/conf.d/${_quilt_name}")
 install="quilt-server.install"
-
+options=(emptydirs)
 source=("minecraft-server-${_mng_ver}.tar.gz"::"https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v${_mng_ver}.tar.gz"
 		"quilt-installer-${_quilt_ver}.jar"::"https://maven.quiltmc.org/repository/release/org/quiltmc/quilt-installer/${_quilt_ver}/quilt-installer-${_quilt_ver}.jar")
 noextract=("quilt-${_pkgver}.jar")
@@ -69,7 +69,7 @@ build() {
 		BACKUP_PATHS="world world_nether world_the_end" \
 		GAME_USER=${_game} \
 		MAIN_EXECUTABLE=quilt-server-launch.jar \
-		SERVER_START_CMD="java -Dlog4j2.formatMsgNoLookups=true -Xms512M -Xmx1024M -jar './\$\${MAIN_EXECUTABLE}' --nogui" \
+		SERVER_START_CMD="java -Xms512M -Xmx1024M -jar './\$\${MAIN_EXECUTABLE}' --nogui" \
 		clean
 	make -C "${srcdir}/minecraft-server-${_mng_ver}" \
 		GAME=${_game} \
@@ -78,7 +78,7 @@ build() {
 		BACKUP_PATHS="world world_nether world_the_end" \
 		GAME_USER=${_game} \
 		MAIN_EXECUTABLE=quilt-server-launch.jar \
-		SERVER_START_CMD="java -Dlog4j2.formatMsgNoLookups=true -Xms512M -Xmx1024M -jar './\$\${MAIN_EXECUTABLE}' --nogui" \
+		SERVER_START_CMD="java -Xms512M -Xmx1024M -jar './\$\${MAIN_EXECUTABLE}' --nogui" \
 		all
 }
 
@@ -100,12 +100,16 @@ package() {
 	# install the libraries subfolder
 	# 1 create the emptyfolder structure 
 	install -dm755 "libraries" "${_server_root}/libraries"
-	for d in $(find "libraries" -type d);do
-		install -d --mode 755 "$d" "${_server_root}/${d}";
+	
+	cp -r "server/libraries/" "./"
+	for dir in $(find "libraries" -type d); do
+		echo "${_server_root}/${dir}"
+		install -d --mode 755 "$dir" "${_server_root}/${dir}"
 	done
 	# 2 install all files
-	for f in $(find "libraries" -type f); do
-		install -D --mode 755 "$f" "${_server_root}/${f}";
+	for file in $(find "libraries" -type f); do
+	echo "${_server_root}/${file}"
+		install -D --mode 755 "$file" "${_server_root}/${file}"
 	done
 
 	# Link log files
