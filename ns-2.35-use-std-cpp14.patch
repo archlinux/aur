@@ -1,0 +1,36 @@
+From d35cb66b7b63cb2fee2314efc69fb5c550b6fa09 Mon Sep 17 00:00:00 2001
+From: Sergio Correia <scorreia@redhat.com>
+Date: Fri, 29 Jul 2022 19:25:25 -0300
+Subject: [PATCH] Use -std=c++14 for compiling c++ code
+
+---
+ Makefile.in | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 2e6ff5f..bf76943 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -84,6 +84,10 @@ LIB	= \
+ 
+ CFLAGS	+= $(CCOPT) $(DEFINE) 
+ 
++# It won't build with c++17, but it does with previous
++# ones, so let's use c++14 instead.
++CXXSTD	= -std=c++14
++
+ # Explicitly define compilation rules since SunOS 4's make doesn't like gcc.
+ # Also, gcc does not remove the .o before forking 'as', which can be a
+ # problem if you don't own the file but can write to the directory.
+@@ -91,7 +95,7 @@ CFLAGS	+= $(CCOPT) $(DEFINE)
+ 
+ .cc.o:
+ 	@rm -f $@
+-	$(CPP) -c $(CFLAGS) $(INCLUDES) -o $@ $*.cc
++	$(CPP) -c $(CFLAGS) $(CXXSTD) $(INCLUDES) -o $@ $*.cc
+ 
+ .c.o:
+ 	@rm -f $@
+-- 
+2.37.1
+
