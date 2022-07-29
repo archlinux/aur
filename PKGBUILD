@@ -2,12 +2,13 @@
 pkgname=wayshot-bin
 _pkgname=wayshot
 pkgver=1.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A screenshot tool for wlroots compositors."
 url="https://github.com/waycrate/wayshot"
 license=('BSD')
 arch=('x86_64')
 optdepends=('slurp: for area selection')
+makedepends=('scdoc')
 provides=('wayshot-bin')
 conflicts=('wayshot-git' 'wayshot-musl-git')
 source=("$_pkgname-bin::$url/releases/download/$pkgver/$_pkgname"
@@ -25,6 +26,6 @@ build() {
 
 package() {
 	install -Dm 755 $_pkgname-bin "$pkgdir/usr/bin/$_pkgname"
-	install -Dm 644 ./$_pkgname-src/docs/*.1.gz "$pkgdir/usr/share/man/man1"
-	install -Dm 644 ./$_pkgname-src/docs/*.7.gz "$pkgdir/usr/share/man/man7"
+	install -Dm 644 ./$_pkgname-src/docs/wayshot.1.gz "$pkgdir/usr/share/man/man1/wayshot.1.gz"
+	install -Dm 644 ./$_pkgname-src/docs/wayshot.7.gz "$pkgdir/usr/share/man/man7/wayshot.7.gz"
 }

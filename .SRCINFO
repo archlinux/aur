@@ -1,10 +1,11 @@
 pkgbase = wayshot-bin
 	pkgdesc = A screenshot tool for wlroots compositors.
 	pkgver = 1.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/waycrate/wayshot
 	arch = x86_64
 	license = BSD
+	makedepends = scdoc
 	optdepends = slurp: for area selection
 	provides = wayshot-bin
 	conflicts = wayshot-git
