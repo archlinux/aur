@@ -5,14 +5,14 @@
 
 pkgname=gnome-shell-extension-openweather-git
 _pkgbase=openweather
-pkgver=1.2.r18.g951a47a
+pkgver=107.r4.g920f5dd
 pkgrel=1
 pkgdesc="Gnome shell extension for displaying weather information"
 arch=(any)
 url="https://gitlab.com/skrewball/openweather"
 license=(GPL3)
-depends=(glib2 gettext pkg-config gnome-shell gnome-icon-theme)
-makedepends=(git gnome-common autoconf automake intltool)
+depends=('dconf' 'gnome-shell')
+makedepends=('git')
 provides=(gnome-shell-extension-weather-git)
 conflicts=(gnome-shell-extension-weather-git)
 source=($_pkgbase::git+$url.git)
@@ -25,8 +25,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgbase"
-  ./autogen.sh --prefix=/usr
-  make
+  make mergepo
 }
 
 package() {
