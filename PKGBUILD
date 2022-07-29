@@ -2,7 +2,7 @@
 # Contributor: Maurizio Porrato <maurizio.porrato@gmail.com>
 
 pkgname=janus-gateway-git
-pkgver=0.10.10.r13.gad54495d
+pkgver=1.0.3.r22.g5e77ce5d
 pkgrel=1
 pkgdesc="An open source, general purpose, WebRTC server"
 arch=('x86_64' 'i686')
@@ -28,7 +28,6 @@ optdepends=('libwebsockets: WebSockets support for Janus API'
             'lua: Lua plugin')
 makedepends=('curl'
              'ffmpeg'
-             'gengetopt'
              'libogg'
              'librabbitmq-c'
              'libwebsockets'
@@ -63,8 +62,7 @@ build() {
         --enable-mqtt \
         --enable-plugin-duktape \
         --enable-plugin-lua \
-        --enable-post-processing \
-        --enable-rabbitmq
+        --enable-post-processing
     make
 }
 

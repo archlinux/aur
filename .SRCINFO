@@ -1,6 +1,6 @@
 pkgbase = janus-gateway-git
 	pkgdesc = An open source, general purpose, WebRTC server
-	pkgver = 0.10.10.r13.gad54495d
+	pkgver = 1.0.3.r22.g5e77ce5d
 	pkgrel = 1
 	url = https://janus.conf.meetecho.com
 	arch = x86_64
@@ -8,7 +8,6 @@ pkgbase = janus-gateway-git
 	license = GPL3
 	makedepends = curl
 	makedepends = ffmpeg
-	makedepends = gengetopt
 	makedepends = libogg
 	makedepends = librabbitmq-c
 	makedepends = libwebsockets
@@ -72,4 +71,3 @@ pkgname = janus-gateway-git
 	backup = etc/janus/janus.transport.pfunix.jcfg
 	backup = etc/janus/janus.transport.rabbitmq.jcfg
 	backup = etc/janus/janus.transport.websockets.jcfg
-
