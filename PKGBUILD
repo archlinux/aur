@@ -3,12 +3,13 @@
 pkgname=gnome-shell-extension-extension-list-git
 _pkgname=extension-list
 pkgver=42+r1+ge93f73c
-pkgrel=1
+pkgrel=2
 pkgdesc="A Simple GNOME Shell extension manager in the top panel - git"
 arch=('any')
 url="https://github.com/tuberry/extension-list"
 license=('GPL3')
 depends=('gnome-shell')
+makedepends=('git')
 provides=('gnome-shell-extension-extension-list')
 conflicts=('gnome-shell-extension-extension-list')
 source=("$_pkgname::git+$url")
