@@ -11,6 +11,7 @@ pkgbase = mozillavpn
 	makedepends = go
 	makedepends = flex
 	makedepends = python-yaml
+	makedepends = python-lxml
 	makedepends = clang
 	makedepends = cargo
 	depends = polkit

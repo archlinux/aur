@@ -29,7 +29,7 @@ depends=('polkit'
          'wireguard-tools'
          'WIREGUARD-MODULE'
          'openresolv')
-makedepends=('cmake' 'qt6-tools' 'go' 'flex' 'python-yaml' 'clang' 'cargo')
+makedepends=('cmake' 'qt6-tools' 'go' 'flex' 'python-yaml' 'python-lxml' 'clang' 'cargo')
 # https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+packages
 source=("https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/${pkgver}-${_debian_series}/mozillavpn_${pkgver}.orig.tar.gz")
 sha256sums=('122b2e465da3dcbb226bde38413e7969b6128553999b1fc1ad59e1e3ace311ff')
