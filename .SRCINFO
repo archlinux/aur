@@ -5,8 +5,8 @@ pkgbase = forge-server-balm
 	url = https://www.curseforge.com/minecraft/mc-mods/balm
 	arch = any
 	license = custom
-	depends = forge-hooks>=1.0.0
-	depends = forge-server>=41.0.94
+	depends = forge-server>=41.1.0
+	depends = forge-server-hooks>=1.0.0
 	noextract = balm-4.5.1.jar
 	source = LICENSE
 	source = https://mediafiles.forgecdn.net/files/3901/901/balm-4.5.1.jar
