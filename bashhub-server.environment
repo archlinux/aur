@@ -1,0 +1,3 @@
+ADDR=http://0.0.0.0:8080
+DB=/var/lib/bashhub-server/data.db
+REG=-r true

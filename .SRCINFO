@@ -1,0 +1,25 @@
+pkgbase = bashhub-server-git
+	pkgdesc = a private cloud alternative for bashhub-client with some added features like regex search.
+	pkgver = 0.2.5.r13.c49226d
+	pkgrel = 1
+	url = https://github.com/nicksherron/bashhub-server
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go-pie
+	depends = glibc
+	provides = bashhub-server
+	conflicts = bashhub-server
+	backup = etc/default/bashhub-server
+	source = bashhub-server::git+https://github.com/nicksherron/bashhub-server
+	source = bashhub-server.service
+	source = bashhub-server.sysusers
+	source = bashhub-server.tmpfiles
+	source = bashhub-server.environment
+	sha256sums = SKIP
+	sha256sums = b27591dddef43b8fa47be5608e1ea8dc87db64adc74c953ee4210d3edbc84310
+	sha256sums = 29509b7609074e4702d1c0cdaf2ce7d52a781723554456b35ae1a44a1fb2632f
+	sha256sums = a55dd07223e10313102367abc613dd2c20805523f58dd3784d88919e468506a8
+	sha256sums = 1d3551d70a0971a039e625c8e93757aa312d8536e98db5a9d7154ccac702902b
+
+pkgname = bashhub-server-git
