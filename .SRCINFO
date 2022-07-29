@@ -1,7 +1,7 @@
 pkgbase = psono-cli
 	pkgdesc = psono password manager cli
 	pkgver = 1.0.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/meldron/psoco
 	arch = x86_64
 	license = GPL
@@ -9,7 +9,7 @@ pkgbase = psono-cli
 	depends = jq
 	depends = xclip
 	source = pwc
-	sha256sums = f8e40eb3fbb85167a9e1a616d9b0ffa8f1c10b8070aca967a8421f991a844375
+	sha256sums = 2ddcfc6681d17beb77bcd160e6db9155b7bc9b83efef39decf0c6931cbacb430
 	source_x86_64 = https://github.com/meldron/psoco/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums_x86_64 = fdc8a3da8a8391e178aa3b7f9448ada8edfd8ea60e64b0e1f9e58d6afa40c996
 

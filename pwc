@@ -54,6 +54,11 @@ if [ $all -gt 0 ]; then
   exit 0
 fi
 
+if [ ${#pw[@]} -eq 0 ]; then
+  echo "Nothing found"
+  exit 0
+fi
+
 select p in "${!pw[@]}"; do
   break
 done

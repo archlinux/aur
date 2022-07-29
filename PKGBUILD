@@ -1,7 +1,7 @@
 # Maintainer: thorko contact@thorko.de
 pkgname=psono-cli
 pkgver=1.0.0
-pkgrel=0
+pkgrel=1
 pkgdesc="psono password manager cli"
 arch=('x86_64')
 url='https://github.com/meldron/psoco'
@@ -17,7 +17,7 @@ source=(
 )
 
 sha256sums=(
-  'f8e40eb3fbb85167a9e1a616d9b0ffa8f1c10b8070aca967a8421f991a844375'
+  '2ddcfc6681d17beb77bcd160e6db9155b7bc9b83efef39decf0c6931cbacb430'
 )
 
 build() {
