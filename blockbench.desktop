@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Blockbench
-Version=4.2.4
+Version=4.3.1
 GenericName=3D model editor
 Comment=A boxy 3D model editor
 Exec=/usr/bin/blockbench %f

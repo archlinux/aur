@@ -20,13 +20,10 @@ index 4f3546f..1194078 100644
  		show: false,
  		backgroundColor: '#21252b',
  		frame: LaunchSettings.get('native_window_frame') === true,
-@@ -201,45 +200,7 @@ ipcMain.on('request-color-picker', async (event, arg) => {
- })
+@@ -204,43 +203,6 @@ app.on('ready', () => {
  
- app.on('ready', () => {
--
  	createWindow()
--
+ 
 -	ipcMain.on('app-loaded', () => {
 -
 -		if (process.execPath && process.execPath.match(/electron\.\w+$/)) {
@@ -39,6 +36,7 @@ index 4f3546f..1194078 100644
 -			autoUpdater.autoDownload = false;
 -			if (LaunchSettings.get('update_to_prereleases') === true) {
 -				autoUpdater.allowPrerelease = true;
+-				autoUpdater.channel = 'beta';
 -			}
 -	
 -			autoUpdater.on('update-available', (a) => {
