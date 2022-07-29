@@ -1,0 +1,15 @@
+pkgbase = rishiqing-uos
+	pkgdesc = 日事清 A teamwork management software.
+	pkgver = 3.3.1
+	pkgrel = 1
+	url = https://www.rishiqing.com/
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	depends = alsa-lib
+	source = https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.rishiqing.uos/com.rishiqing.uos_3.3.1_amd64.deb
+	sha512sums = 0c5897b6e1f0d3de8ec6f054a3bfce1df866afa3405bd6bac9a827431f13f2146a02eff44d35c83ac1d7f12c5a90810b518b9a9860607cc8317615a04c9358f3
+
+pkgname = rishiqing-uos
