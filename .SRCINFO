@@ -7,6 +7,7 @@ pkgbase = python-pip-search
 	depends = python-rich
 	depends = python-beautifulsoup4
 	depends = python-requests
+	conflicts = python-pip_search
 	source = python-pip-search-0.0.12.tar.gz::https://github.com/victorgarric/pip_search/releases/download/0.0.12/pip_search-0.0.12.tar.gz
 	sha256sums = 89c78c36b4907ceb8e6b6313dc8759bf9dce80fbf5ee5f1d57445ea5c5a820d7
 

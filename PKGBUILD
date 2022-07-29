@@ -6,6 +6,7 @@ pkgrel=1
 pkgver=0.0.12
 pkgdesc="Searching thought pip when hard times strike."
 url=https://github.com/victorgarric/pip_search
+conflicts=('python-pip_search')
 arch=('any')
 depends=('python-rich' 'python-beautifulsoup4' 'python-requests')
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/victorgarric/${_pkgbase}/releases/download/${pkgver}/${_pkgbase}-${pkgver}.tar.gz")
