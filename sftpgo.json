@@ -246,6 +246,7 @@
         "address": "",
         "enable_web_admin": true,
         "enable_web_client": true,
+        "enabled_login_methods": 0,
         "enable_https": false,
         "certificate_file": "",
         "certificate_key_file": "",
@@ -263,10 +264,16 @@
           "client_secret": "",
           "config_url": "",
           "redirect_base_url": "",
+          "scopes": [
+            "openid",
+            "profile",
+            "email"
+          ],
           "username_field": "",
           "role_field": "",
           "implicit_roles": false,
-          "custom_fields": []
+          "custom_fields": [],
+          "debug": false
         },
         "security": {
           "enabled": false,
@@ -334,7 +341,8 @@
     "setup": {
       "installation_code": "",
       "installation_code_hint": "Installation code"
-    }
+    },
+    "hide_support_link": false
   },
   "telemetry": {
     "bind_port": 0,
