@@ -34,4 +34,6 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install
+
+  install -Dm644 renderdoc/LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
