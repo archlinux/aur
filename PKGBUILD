@@ -1,8 +1,8 @@
 # Maintainer: Aakash Sharma <aakashsensharma@gmail.com>
 pkgname='wayshot-git'
 _pkgname="wayshot"
-pkgver=1
-pkgrel=4
+pkgver=1.1.9.94.g2ac76bc
+pkgrel=1
 arch=('x86_64')
 url="https://git.sr.ht/~shinyzenith/wayshot"
 pkgdesc="A screenshot tool for wlroots compositors."
@@ -21,6 +21,8 @@ build(){
 package() {
 	cd "$_pkgname"
 	install -Dm 755 ./target/release/wayshot "$pkgdir/usr/bin/wayshot"
+	install -Dm 644 ./docs/*.1.gz "$pkgdir/usr/share/man/man1"
+	install -Dm 644 ./docs/*.7.gz "$pkgdir/usr/share/man/man7"
 }
 
 pkgver() {
