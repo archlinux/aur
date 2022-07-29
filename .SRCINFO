@@ -1,0 +1,20 @@
+pkgbase = forge-server-geckolib
+	pkgdesc = GeckoLib is an animation engine for Minecraft Mods, with support for complex 3D keyframe-based animations, 30+ easings, concurrent animation support, sound and particle keyframes, event keyframes, and more.
+	pkgver = 3.1.11
+	pkgrel = 1
+	url = https://www.curseforge.com/minecraft/mc-mods/goblin-traders
+	arch = any
+	license = MIT
+	depends = forge-server-hooks>=1.0.0
+	depends = forge-server>=41.0.98
+	provides = geckolib-forge
+	provides = forge-server-geckolib
+	conflicts = geckolib-forge
+	replaces = geckolib-forge
+	noextract = geckolib-forge-1.19-3.1.11.jar
+	source = https://github.com/bernie-g/geckolib/blob/1.19/LICENSE
+	source = https://mediafiles.forgecdn.net/files/3904/147/geckolib-forge-1.19-3.1.11.jar
+	sha256sums = ae651cfe7715ce791261be76c1b7d1e502c40502b7e2b7658bdac2d64157236b
+	sha256sums = d5935397d6e103c60019fa031fb7407cfe67437ed814d7d2784e7d8d40a6bf05
+
+pkgname = forge-server-geckolib
