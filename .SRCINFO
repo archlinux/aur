@@ -1,6 +1,6 @@
 pkgbase = swhkd-git
 	pkgdesc = A display server independent hotkey daemon inspired by sxhkd.
-	pkgver = .551.gc242124
+	pkgver = .552.g1b6cf27
 	pkgrel = 1
 	url = https://github.com/waycrate/swhkd
 	arch = x86_64

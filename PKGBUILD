@@ -4,7 +4,7 @@
 
 _pkgname="swhkd"
 pkgname="${_pkgname}-git"
-pkgver=.551.gc242124
+pkgver=.552.g1b6cf27
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/waycrate/swhkd"
@@ -31,10 +31,8 @@ package() {
 
 	install -Dm 644 -o root ./com.github.swhkd.pkexec.policy -t "$pkgdir/usr/share/polkit-1/actions"
 
-	install -Dm 644 ./docs/swhkd.1.gz -t "$pkgdir/usr/share/man/man1/swhkd.1.gz"
-	install -Dm 644 ./docs/swhkd.5.gz -t "$pkgdir/usr/share/man/man5/swhkd.5.gz"
-	install -Dm 644 ./docs/swhks.1.gz -t "$pkgdir/usr/share/man/man1/swhks.1.gz"
-	install -Dm 644 ./docs/swhkd-keys.5.gz -t "$pkgdir/usr/share/man/man5/swhkd-keys.5.gz"
+	install -Dm 644 ./docs/*.1.gz -t "$pkgdir/usr/share/man/man1/"
+	install -Dm 644 ./docs/*.5.gz -t "$pkgdir/usr/share/man/man5/"
 }
 
 pkgver() {
