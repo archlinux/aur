@@ -1,0 +1,22 @@
+pkgbase = fztea-bin
+	pkgdesc = TUI to interact with your flipper zero
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://jon4hz.io
+	license = MIT
+	conflicts = fztea
+	provides = fztea
+	arch = aarch64
+	source_aarch64 = https://github.com/jon4hz/fztea/releases/download/v0.2.0/fztea-v0.2.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = a727b8708a6e582d78c6a5a3c0da9026c6b193978020c36c04e42116f84eeeda
+	arch = armv7h
+	source_armv7h = https://github.com/jon4hz/fztea/releases/download/v0.2.0/fztea-v0.2.0-linux-armv7.tar.gz
+	sha256sums_armv7h = a5c6a6244da4c9e523ca2f10b399e55506dc13290675e665c2cc671607c0b6f0
+	arch = i686
+	source_i686 = https://github.com/jon4hz/fztea/releases/download/v0.2.0/fztea-v0.2.0-linux-386.tar.gz
+	sha256sums_i686 = c5d487de92a9b08e5ecca2e52f9f450941450a20844514fd303dccd12e290a04
+	arch = x86_64
+	source_x86_64 = https://github.com/jon4hz/fztea/releases/download/v0.2.0/fztea-v0.2.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 1cadb7ba692400d476b15163e7bb5d69bb301780e054255357cbe9d68e5508b7
+	
+pkgname = fztea-bin
