@@ -1,0 +1,22 @@
+pkgbase = bashhub-client
+	pkgdesc = a private cloud alternative for bashhub-client with some added features like regex search.
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/rcaloras/bashhub-client
+	arch = x86_64
+	license = Apache
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-bson
+	depends = python-jsonpickle
+	depends = python-inflection
+	depends = python-humanize
+	provides = bashhub-client
+	conflicts = bashhub-client-git
+	source = https://github.com/rcaloras/bashhub-client/archive/refs/tags/2.3.0.tar.gz
+	sha256sums = 70f2d70ee1a24ecca6f9bdf80256a93b488a10eb5cabf63de37ac5520f1cf6c9
+
+pkgname = bashhub-client
