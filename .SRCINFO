@@ -1,6 +1,6 @@
 pkgbase = clavis-git
 	pkgdesc = An easy to use Password Manager. Development version
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/ManelCG/clavis
 	arch = x86_64
@@ -13,6 +13,9 @@ pkgbase = clavis-git
 	depends = pkgconf
 	depends = xdotool
 	depends = xclip
+	depends = grep
+	depends = awk
+	depends = gpg
 	conflicts = clavis
 
 pkgname = clavis-git
