@@ -5,7 +5,7 @@ pkgbase = dye
 	url = https://github.com/Infinitybeond1/dye
 	arch = x86_64
 	license = GPL3
-	source = dye-1.1.1.zip::https://github.com/Infinitybeond1/dye/releases/download/v1.1.1/dye-ubuntu-latest-amd64.zip
+	source = dye-1.1.1.zip::https://github.com/Infinitybeond1/dye/releases/download/v1.1.1/dye-linux.zip
 	sha256sums = SKIP
 
 pkgname = dye
