@@ -1,13 +1,13 @@
 pkgbase = ldapadmin
 	pkgdesc = Client and administration tool for LDAP directory management
 	pkgver = 1.8.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ibv/LDAP-Admin
 	arch = any
 	license = GPL
 	depends = gtk2
 	source = https://github.com/ibv/LDAP-Admin/releases/download/v1.8.3/LdapAdmin-x86_64.tar.xz
-	sha256sums = 270dff20cd0aefdb0f9c9eeaa16f80b8e684fd0a6aab150cc10547866b73a405
-	b2sums = 82b0b2ac399878dc7ea6d8f994a01a1694bbd0e42ff7b313fb2f5f6bdde070e261d708750539868965feba60691c8d7b21975bcde3ee118fd7284a073b9a154f
+	sha256sums = 805eea323326c128be782cbcc024dc5f2b2af592b51f11e339e1d418661b8b10
+	b2sums = 9beb59ff7ad904f862b0a6a563b5da4aff2225fe274e3c0b4f5428cdd3833427d0be5a60e21b806cc4a0bb18111c328c38d40d16392b8050a95bfc252d12cae3
 
 pkgname = ldapadmin
