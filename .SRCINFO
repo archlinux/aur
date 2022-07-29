@@ -1,0 +1,19 @@
+pkgbase = kdocs-uos
+	pkgdesc = 金山文档 Kingsoft documents (An online collaborative office software).
+	pkgver = 3.5.2
+	pkgrel = 1
+	url = https://www.kdocs.cn/
+	arch = x86_64
+	license = custom
+	depends = nss
+	depends = alsa-lib
+	depends = gtk3
+	depends = dpkg
+	optdepends = pulseaudio: A featureful, general-purpose sound server.
+	optdepends = lib32-libpulse: A featureful, general-purpose sound server (32-bit client libraries).
+	optdepends = gnome-keyring: Stores passwords and encryption keys.
+	optdepends = lsb-release: LSB version query program.
+	source = https://home-store-packages.uniontech.com/appstore/pool/appstore/c/cn.kdocs.kdesktop/cn.kdocs.kdesktop_3.5.2_amd64.deb
+	sha512sums = 2a2762726ee09bdecbc256bf9d4f4be4ad89d3915025c8110ad0e86c0af4f32238748949e341c81617d8a1170f9071955e7688f4cd9abd8956f216d192d1bdbc
+
+pkgname = kdocs-uos
