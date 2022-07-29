@@ -1,7 +1,7 @@
 # Maintainer: Remi Gacogne <rgacogne(at)archlinux(dot)org>
 _pkgbase=lkrg
 pkgname=lkrg-dkms-git
-pkgver=r382.8fd4806
+pkgver=r484.dfb60a6
 pkgrel=1
 pkgdesc='Linux Kernel Runtime Guard (DKMS)'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL2')
 source=("${pkgname}::git+https://github.com/openwall/lkrg/"
         'dkms.conf')
 sha512sums=('SKIP'
-            '2b4dd1787d318820b3bd3117ec0e5a57148ea67156ff27718d143d99e152fec0ce973b4f09c90889d4a72bca81a76f9b170580d27e5c3d54ab1dadebe4d85d72')
+            '0a1db587e774003d562b78beb290c5041746c3095696daa713bb1913190076f2578fc66b8efc54c7d698866876b9b62920da750d58665a632ba6ad6014eeb00c')
 makedepends=('git') 
 depends=('dkms')
 provides=('lkrg-dkms')
