@@ -3,17 +3,18 @@
 pkgname=unreal-tournament-goty-steam
 _pkgname=unreal-tournament-goty
 pkgver=469
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 makedepends=('steamcmd' 'icoutils')
 depends=('lib32-libgl'
          'lib32-libpulse'
          'lib32-sdl')
-source=("https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v469a/OldUnreal-UTPatch469a-Linux.tar.bz2" "${_pkgname}.desktop" "${_pkgname}.png")
+source=("https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v469c-rc2/OldUnreal-UTPatch469c-Linux-x86.tar.bz2" "https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v469c-rc2/OldUnreal-UTPatch469c-Linux-amd64.tar.bz2" "${_pkgname}.desktop" "${_pkgname}.png")
 pkgdesc="Unreal Tournament GOTY Linux with data via Steam"
 license=('custom')
 url='https://store.steampowered.com/app/13240/Unreal_Tournament_Game_of_the_Year_Edition/'
-sha256sums=('d521a8339b80a4c86019c3648fb55cfc29edffeec73047ceb72784b159cc84f1'
+sha256sums=('13a823e659c35381ffb6770953d84ad0aa91b866652d18579586c2e928c65226'
+            '1aaefc5b4af53cd6769387d39709e278f42b1998b6a586eac53731a0f805c3cb'
             '842987c1380e304c87d1b3909f1aa10a732c1206d8083beda448844fe0d6d1ed'
             '69c9c5eb9ff8f6ee5cbfd9df5d16f68461d682fbb15c75a34627eaff2474190e')
 
@@ -34,7 +35,8 @@ package() {
     cp -r $srcdir/${_pkgname}/* $pkgdir/opt/${_pkgname}/
     rm -rf $pkgdir/opt/${_pkgname}/steamapps
     rm $pkgdir/opt/${_pkgname}/installscript.vdf
-    tar --extract --file "OldUnreal-UTPatch469a-Linux.tar.bz2" --directory "$pkgdir/opt/${_pkgname}"
+    tar --extract --file "OldUnreal-UTPatch469c-Linux-x86.tar.bz2" --directory "$pkgdir/opt/${_pkgname}"
+    tar --extract --file "OldUnreal-UTPatch469c-Linux-amd64.tar.bz2" --directory "$pkgdir/opt/${_pkgname}"
     chmod 666 $pkgdir/opt/${_pkgname}/System/{UnrealTournament,User}.ini 
 
     # Install desktop file.
@@ -46,6 +48,6 @@ package() {
              $pkgdir/usr/share/pixmaps/${_pkgname}.png
 
     # Install game binary link.
-    ln -s /opt/${_pkgname}/System/ut-bin \
+    ln -s /opt/${_pkgname}/System64/ut-bin \
              $pkgdir/usr/bin/${_pkgname}
 }
