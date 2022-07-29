@@ -1,6 +1,6 @@
 pkgbase = python-tifffile
 	pkgdesc = Read and write image data from and to TIFF files
-	pkgver = 2022.5.4
+	pkgver = 2022.7.28
 	pkgrel = 1
 	url = https://github.com/cgohlke/tifffile
 	arch = any
@@ -9,12 +9,17 @@ pkgbase = python-tifffile
 	checkdepends = python-xarray
 	checkdepends = python-fsspec
 	makedepends = python-setuptools
-	depends = python-numpy>=1.21.5
-	optdepends = python-matplotlib>=3.4.3: required only for plotting
-	optdepends = python-imagecodecs>=2022.2.22: required only for encoding or decoding LZW, JPEG, etc
-	optdepends = python-lxml>=4.8.0: required only for validating and printing XML
-	optdepends = python-zarr>=2.11.3: required only for opening zarr storage
-	source = https://files.pythonhosted.org/packages/source/t/tifffile/tifffile-2022.5.4.tar.gz
-	sha256sums = b03147a15862b7c1d90d47435197f149bef7a52c25ad67cf1f9b465faa71b8d2
+	makedepends = python-sphinx
+	source = https://files.pythonhosted.org/packages/source/t/tifffile/tifffile-2022.7.28.tar.gz
+	sha256sums = 61e3638e35156751dbc3cdbd0e4cf1166b90597d5d1972d03945a96570f1ad81
 
 pkgname = python-tifffile
+	depends = python-numpy>=1.21.5
+	optdepends = python-matplotlib>=3.5.2: required only for plotting
+	optdepends = python-imagecodecs>=2022.2.22: required only for encoding or decoding LZW, JPEG, etc
+	optdepends = python-lxml>=4.9.1: required only for validating and printing XML
+	optdepends = python-zarr>=2.11.3: required only for opening zarr storage
+	optdepends = python-tifffile-doc: Documentation for Python tifffile
+
+pkgname = python-tifffile-doc
+	pkgdesc = Documentation for Python Photutils module
