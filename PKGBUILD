@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=argc
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Make beautiful bash cli with ease"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT' 'Apache')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('5a0b890ce8e25ce9f9fefe31900500d50a847bb606a7e96ac8fa2627509b069fe7681ec5957b3f482f0cbd0b773f53d765bec7c2a6972915a59d23df79510c80')
+sha512sums=('163638e797bbb2b595a3fbce19976bb9a8f4f7a2ef030dea6c09836ef70ec267f5fc9b9dc5eab8437d7903de01b6e4baaafe81b04bf162ddae9bed668555b30e')
 
 prepare() {
   cd "$pkgname-$pkgver"
