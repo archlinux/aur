@@ -1,16 +1,16 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=pipgrip
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="Lightweight pip dependency resolver with deptree preview functionality based on the PubGrub algorithm"
 arch=('any')
 url="https://github.com/ddelange/pipgrip"
 license=('BSD')
-depends=('python-anytree' 'python-click' 'python-pip' 'python-packaging' 'python-pkginfo'
-         'python-setuptools' 'python-wheel')
+depends=('python-anytree' 'python-click' 'python-packaging' 'python-pip'
+         'python-pkginfo' 'python-setuptools' 'python-wheel')
 makedepends=('python-build' 'python-installer' 'python-setuptools-scm')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('1c6ee78705f60a01934cb03fdd0146c899209c2f08e03e4e75afb31cd5c309e7')
+sha256sums=('172a204b6b613c7e2b25ea03ed2639971b1e0c9963453a6acc0b569344b04f0a')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -29,5 +29,5 @@ package() {
   cd "$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
