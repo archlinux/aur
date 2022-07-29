@@ -48,7 +48,7 @@ makedepends=(
 )
 
 prepare() {
-    rm -rf CoreComponents
+    rm -f CoreComponents
     ln -s CoreComponents-$pkgver CoreComponents
     if [ ! -x CoreComponents-$pkgver-bootstrap/ccbuild ]; then
         mkdir -p CoreComponents-$pkgver-bootstrap
