@@ -1,0 +1,12 @@
+pkgbase = logoutscreen
+	pkgdesc = A simple window across the whole screen to reboot, shutdown, lock, logout
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/syk42.arch/$gitname.git
+	arch = x86_64
+	license = GPL3
+	depends = qt5-base
+	source = https://gitlab.com/syk42.arch/LogoutScreen/-/archive/1.0.0/LogoutScreen-1.0.0.tar.gz
+	b2sums = 329aa3323bdb3285231a42d880e7b45793233380e0f1e1724c238edf19f04cb85ce577633a699692f0e846143bf2e4c7a9da235c3e338b14218e5ee7b72fe627
+
+pkgname = logoutscreen
