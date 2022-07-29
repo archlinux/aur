@@ -6,7 +6,7 @@ pkgname=(
     'owlux_tools'
 )
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Yeelight smart LED control app"
 url="https://github.com/frankencode/Owlux"
 arch=('x86_64')
@@ -32,7 +32,7 @@ makedepends=(
 )
 
 build() {
-    rm -rf Owlux
+    rm -f Owlux
     ln -s Owlux-$pkgver Owlux
     mkdir -p Owlux-$pkgver-build
     cd Owlux-$pkgver-build
@@ -55,7 +55,7 @@ package_owlux() {
 package_owlux_tools() {
     pkgdesc="$pkgdesc: gui app and tools"
     depends=('owlux' 'corecomponents_ux')
-    install -D Owlux/tools/owlux/owlux.desktop "$pkgdir"/usr/share/applications/owlux.desktop
+    install -Dm644 Owlux/tools/owlux/owlux.desktop -t "$pkgdir/usr/share/applications"
     cd Owlux-$pkgver-build
     ccbuild -prefix=/usr -root="$pkgdir" -install -release ../Owlux/tools
 }
