@@ -1,0 +1,16 @@
+pkgbase = fuel-git
+	pkgdesc = With this CLI Tool, Fuel Price list information is instantly retrieved by city group. Price List information is printed on the screen by Parse instantly from Petrolofisi.com.tr
+	pkgver = 1.0.0.r1.221527b
+	pkgrel = 1
+	url = https://github.com/safderun/fuel
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = git
+	provides = fuel
+	conflicts = fuel
+	replaces = fuel
+	source = git+https://github.com/safderun/fuel
+	md5sums = SKIP
+
+pkgname = fuel-git
