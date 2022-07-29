@@ -18,8 +18,6 @@ sha256sums=('4d049600a62bb82a964605ebb4a7764198e3f00f634fa6a8033f02c13437caa4')
 
 package() {
 
-  SCRIPTS=({wtexport,wadscript,rookscript,doommake,dmxconv,dimgconv,decohack,wtexscan,wswantbl,wadtex,wadmerge})
-
   # /opt/doomtools
   # install -dm755 "${pkgdir}/opt/${_pkgname}/"
   install -dm755 "${pkgdir}/usr/bin/"
@@ -32,7 +30,6 @@ package() {
   # add all tools
   # cp "${srcdir}"/{wtexport,wadscript,rookscript,doommake,dmxconv,dimgconv,decohack,wtexscan,wswantbl,wadtex,wadmerge} "${pkgdir}/usr/bin/"
   # chmod +x "${pkgdir}"/usr/bin/{wtexport,wadscript,rookscript,doommake,dmxconv,dimgconv,decohack,wtexscan,wswantbl,wadtex,wadmerge}
-
   SCRIPTS=({wtexport,wadscript,rookscript,doommake,dmxconv,dimgconv,decohack,wtexscan,wswantbl,wadtex,wadmerge})
 
   for SCRIPT in "${SCRIPTS[@]}"; do
@@ -44,13 +41,6 @@ package() {
   install -Dm 755 "${srcdir}/jar/${_jar}" "${pkgdir}/usr/share/${_pkgname}/${_jar}"
 
   touch "${pkgdir}/usr/bin/${_pkgname}"
-
-  cat > "${pkgdir}/usr/bin/${_pkgname}" << EOF
-#!/usr/bin/env bash
-# export DOOMTOOLS_PATH=/usr/share/${_pkgname}/
-# export JAR_PATH=/usr/share/${_pkgname}
-exec java -jar /usr/share/${_pkgname}/${_jar} "\$@"
-EOF
   chmod +x "${pkgdir}/usr/bin/${_pkgname}"
 
   # add licenses
