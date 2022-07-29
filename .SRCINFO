@@ -1,6 +1,6 @@
 pkgbase = kdenlive-release-git
 	pkgdesc = A non-linear video editor. Following latest released branch in git.
-	pkgver = 22.04.0.r15897
+	pkgver = 22.07.80.r16397
 	pkgrel = 1
 	url = http://www.kdenlive.org/
 	install = kdenlive-release-git.install
@@ -20,16 +20,19 @@ pkgbase = kdenlive-release-git
 	depends = mlt
 	depends = hicolor-icon-theme
 	optdepends = ffmpeg: for FFmpeg plugin
+	optdepends = python: for speech to text scripts
 	optdepends = cdrkit: for creation of DVD ISO images
 	optdepends = dvdauthor: for creation of DVD
 	optdepends = dvgrab: for firewire capture
 	optdepends = libdv: for webcam capture (if FFmpeg is not installed)
 	optdepends = recordmydesktop: for screen capture
+	optdepends = perl-image-exif-tool: for exif information
+	optdepends = mediainfo: for exif information
 	optdepends = xine-ui: for DVD preview
 	optdepends = oxygen-icons: optional for xfce
 	provides = kdenlive
 	conflicts = kdenlive
-	source = git+https://invent.kde.org/multimedia/kdenlive#branch=release/22.04
+	source = git+https://invent.kde.org/multimedia/kdenlive#branch=release/22.08
 	sha1sums = SKIP
 
 pkgname = kdenlive-release-git
