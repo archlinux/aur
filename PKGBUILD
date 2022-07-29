@@ -1,14 +1,14 @@
 # Maintainer: Aakash Sharma <aakashsensharma@gmail.com>
 pkgname='wayshot-git'
 _pkgname="wayshot"
-pkgver=1.1.1.55.g4235f3c
-pkgrel=3
+pkgver=1
+pkgrel=4
 arch=('x86_64')
 url="https://git.sr.ht/~shinyzenith/wayshot"
 pkgdesc="A screenshot tool for wlroots compositors."
 license=('BSD')
 optdepends=('slurp: for area selection')
-makedepends=('rustup' 'git')
+makedepends=('rustup' 'git' 'scdoc')
 conflicts=('wayshot-bin' 'wayshot-musl-git')
 source=("$_pkgname::git+https://git.sr.ht/~shinyzenith/$_pkgname")
 sha256sums=('SKIP')
