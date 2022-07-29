@@ -1,0 +1,18 @@
+pkgbase = glade-sharp
+	pkgdesc = Glade bindings for C#
+	pkgver = 2.12.45
+	pkgrel = 1
+	url = https://www.mono-project.com/docs/gui/gtksharp/
+	arch = x86_64
+	license = LGPL
+	makedepends = monodoc
+	depends = mono
+	depends = libglade
+	depends = gtk2
+	options = !makeflags
+	source = https://download.mono-project.com/sources/gtk-sharp212/gtk-sharp-2.12.45.tar.gz
+	source = gtk-sharp2-2.12.12-gtkrange.patch
+	sha256sums = 02680578e4535441064aac21d33315daa009d742cab8098ac8b2749d86fffb6a
+	sha256sums = 26a1ade869ba1b54f37e544332e6e40cc6d3c93414a712d8605cb44fc212acf9
+
+pkgname = glade-sharp
