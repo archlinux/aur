@@ -1,0 +1,12 @@
+pkgbase = janet-posix-spawn
+	pkgdesc = A process API for janet wrapping posix-spawn(3)
+	pkgver = 0.0.1.r2021.02.17
+	pkgrel = 1
+	url = https://github.com/andrewchambers/janet-posix-spawn
+	arch = x86_64
+	license = MIT
+	depends = janet-lang
+	source = janet-posix-spawn-0.0.1.r2021.02.17.tar.gz::https://github.com/andrewchambers/janet-posix-spawn/archive/5a3689c250a207186bcb1a30f131d71e45b8cea6.tar.gz
+	sha256sums = 2171b724504908753f4684a8c8d0fa49468a7c94ad001a4219a76a29914851d4
+
+pkgname = janet-posix-spawn
