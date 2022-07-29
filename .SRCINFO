@@ -1,0 +1,19 @@
+pkgbase = forge-server-patchouli
+	pkgdesc = Patchouli is a mod that aims to provide easy to implement, data-driven documentation for minecraft modders and modpack makers alike.
+	pkgver = 0.0.75
+	pkgrel = 1
+	url = https://www.curseforge.com/minecraft/mc-mods/patchouli
+	arch = any
+	license = MIT
+	depends = forge-server=41.1.0
+	depends = forge-server-hooks=1.0.0
+	provides = patchouli-forge
+	conflicts = patchouli-forge
+	replaces = patchouli-forge
+	noextract = Patchouli-1.19-75.jar
+	source = https://github.com/VazkiiMods/Patchouli/blob/1.19.x/LICENSE
+	source = https://mediafiles.forgecdn.net/files/3877/555/Patchouli-1.19-75.jar
+	sha256sums = ae651cfe7715ce791261be76c1b7d1e502c40502b7e2b7658bdac2d64157236b
+	sha256sums = ce8dc7f0d2d2b4dca0071a7cb36a9c8ade355d81607ea653a00f42972a47e790
+
+pkgname = forge-server-patchouli
