@@ -1,28 +1,33 @@
 # Maintainer: Burak <burakberkkeskin@gmail.com>
 pkgname=kubefwd-git
-_pkgname=kubefwd
-pkgver=1.22.3
+pkgver=1.22.3.r3.df9078d
 pkgrel=1
 pkgdesc="kubefwd is a command line utility built to port forward multiple services within one or more namespaces on one or more Kubernetes clusters."
 arch=(x86_64)
 url="https://github.com/txn2/kubefwd"
-license=('MIT')
-depends=(go)
-makedepends=(git)
-provides=(kubefwd)
-conflicts=(kubefwd)
-replaces=(kubefwd)
+license=('GPL')
+depends=('go')
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+replaces=("kubefwd")
 source=("git+$url")
 md5sums=('SKIP')
 
+# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
+# a description of each element in the source array.
+
+pkgver() {
+	cd "$srcdir/${pkgname%-git}"
+	printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
 build() {
-  echo "Building Source Code"
-	cd "$_pkgname"
+	cd "$srcdir/${pkgname%-git}"
 	go build ./cmd/kubefwd/kubefwd.go
 }
 
 package() {
-  echo "Installing binary to path"
-	cd "$_pkgname"
-	install -Dm 755 "$_pkgname" "$pkgdir/usr/bin/kubefwd"
+	cd "$srcdir/${pkgname%-git}"
+  install -Dm 755 "${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
 }
