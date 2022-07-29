@@ -1,0 +1,15 @@
+pkgbase = forge-server-hooks
+	pkgdesc = Pacman hooks related to forge server.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	provides = forge-hooks
+	conflicts = forge-hooks
+	replaces = forge-hooks
+	source = server-mods.hook
+	source = server-restart.hook
+	md5sums = b5aa54ebdcc4a84832a39f7e00338c5c
+	md5sums = b9534116df8e0fac07e602c7285f0d9f
+
+pkgname = forge-server-hooks

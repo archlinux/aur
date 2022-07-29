@@ -1,0 +1,13 @@
+[Trigger]
+Operation = Remove
+Operation = Upgrade
+Operation = Install
+
+Type = Path
+Target = srv/$srvname/mods/*
+
+[Action]
+When = PostTransaction
+Exec = /usr/bin/systemctl restart $srvnamed
+Depends = $srvname-server
+Description = Restart the $srvname world.
