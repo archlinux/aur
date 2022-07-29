@@ -1,6 +1,6 @@
 pkgbase = xinux-wallpapers
 	pkgdesc = Wallpapers made for @uzinfocom-org/xinux
-	pkgver = 1.2
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://oss.uzinfocom.uz
 	install = xinux-wallpapers.install

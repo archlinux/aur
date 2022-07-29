@@ -1,6 +1,6 @@
 _pkgname="xinux-wallpapers"
 pkgname="${_pkgname}"
-pkgver="1.2"
+pkgver="1.5"
 pkgrel=1
 pkgdesc='Xinux wallpapers'
 arch=('any')
