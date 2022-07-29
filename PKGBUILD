@@ -5,7 +5,7 @@
 
 pkgname=gnome-shell-extension-openweather-git
 _pkgbase=openweather
-pkgver=107.r4.g920f5dd
+pkgver=118.r0.g353f50c
 pkgrel=1
 pkgdesc="Gnome shell extension for displaying weather information"
 arch=(any)
