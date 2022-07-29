@@ -1,15 +1,14 @@
 pkgbase = forge-server-citadel
 	pkgdesc = Citadel is a Library mod required for advanced animations and entity properties in 1.14 and beyond.
-	pkgver = 1.12.6
+	pkgver = 1.12.7
 	pkgrel = 1
 	url = https://www.curseforge.com/minecraft/mc-mods/citadel
 	arch = any
 	license = unlicensed
-	depends = forge-hooks>=1.0.0
 	depends = forge-server>=41.0.96
-	provides = citadel=1.12.6
-	noextract = citadel-1.12.6-1.19.jar
-	source = https://mediafiles.forgecdn.net/files/3872/415/citadel-1.12.6-1.19.jar
-	sha256sums = f97018e8b4ad5fc5162f524a2bf4511511c618f33765a3f9f7704a94555a7ec0
+	depends = forge-server-hooks>=1.0.0
+	noextract = citadel-1.12.7-1.19.jar
+	source = https://mediafiles.forgecdn.net/files/3902/867/citadel-1.12.7-1.19.jar
+	sha256sums = 67194c3778c0359f9392a26b7edcced24fdb44c250920c62e94d2a4898e9a83a
 
 pkgname = forge-server-citadel
