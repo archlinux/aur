@@ -2,13 +2,13 @@
 
 _pkgname=telegrand
 pkgname=telegrand-git
-pkgver=r808.7f4b967
+pkgver=r910.4c09966
 pkgrel=1
 pkgdesc='A Telegram client for GNOME'
 arch=(x86_64)
 url='https://github.com/melix99/telegrand'
 license=(GPL3)
-depends=(gtk4-telegrand libadwaita libtd-dev libtdjson.so)
+depends=(gtk4-telegrand libadwaita-git libtd-dev libtdjson.so)
 makedepends=(git meson rust)
 provides=(telegrand)
 conflicts=(telegrand)
