@@ -1,7 +1,7 @@
 pkgbase = rishiqing-uos
 	pkgdesc = 日事清 A teamwork management software.
 	pkgver = 3.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.rishiqing.com/
 	arch = x86_64
 	license = custom

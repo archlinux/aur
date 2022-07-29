@@ -2,7 +2,7 @@
 # Maintainer:ston<2424284164@qq.com>
 pkgname=rishiqing-uos
 pkgver=3.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="日事清 A teamwork management software."
 arch=('x86_64')
 url="https://www.rishiqing.com/"
