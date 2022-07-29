@@ -1,0 +1,23 @@
+pkgbase = doomtools-bin
+	pkgdesc = Doom-related tools for Java. Home of DECOHack and lots of other utilities. Build WAD projects (and soon, other kinds) with ease! Includes decohack dimgconv dmxconv doommake wadmerge wadscript wadtex wswantbl wtexport wtexscan
+	pkgver = 2022.07.28
+	pkgrel = 005119764
+	url = https://github.com/MTrop/DoomTools
+	arch = x86_64
+	license = MIT
+	provides = doomtools
+	provides = decohack
+	provides = dimgconv
+	provides = dmxconv
+	provides = doommake
+	provides = wadmerge
+	provides = wadscript
+	provides = wadtex
+	provides = wswantbl
+	provides = wtexport
+	provides = wtexscan
+	options = !strip
+	source = https://github.com/MTrop/DoomTools/releases/download/2022.07.28-RELEASE/doomtools-bash-2022.07.28.005119764.tar.gz
+	sha256sums = 4d049600a62bb82a964605ebb4a7764198e3f00f634fa6a8033f02c13437caa4
+
+pkgname = doomtools-bin
