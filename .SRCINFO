@@ -1,13 +1,13 @@
 pkgbase = forge-server-goblintraders
 	pkgdesc = Goblin Traders is a simple mod that adds goblins which have unique trades.
 	pkgver = 1.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.curseforge.com/minecraft/mc-mods/goblin-traders
 	arch = any
 	license = GPL
-	depends = forge-hooks>=1.0.0
-	depends = forge-server>=41.0.94
-	noextract = forge-server-goblintraders-1.7.3-1.19.jar
+	depends = forge-server>=41.1.0
+	depends = forge-server-hooks>=1.0.0
+	noextract = goblintraders-1.7.3-1.19.jar
 	source = https://mediafiles.forgecdn.net/files/3874/104/goblintraders-1.7.3-1.19.jar
 	sha256sums = c4b481ca2b058b0d52a87d13fdf622847acba82d1ce3efde2c213095cd716ae5
 
