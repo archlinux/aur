@@ -1,7 +1,7 @@
 # Maintainer: Mintsuki <mintsuki@protonmail.com>
 pkgname=jinx
 pkgver=0.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="A meta-build-system for building OS distributions"
 arch=("any")
 url="https://github.com/mintsuki/jinx"
