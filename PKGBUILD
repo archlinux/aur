@@ -2,13 +2,14 @@
 # Contributor: John Schug <xtr.xtrnet@gmail.com>
 pkgname=z88dk
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Developement kit for Z80 computers"
 arch=('i686' 'x86_64')
 url="http://z88dk.org"
 license=('custom:The Clarified Artistic License')
 depends=('libxml2')
-makedepends=('perl' 'perl-modern-perl' 'perl-yaml-tiny' 'perl-cpu-z80-assembler' 'perl-path-tiny'
+makedepends=('perl' 'perl-modern-perl' 'perl-yaml-tiny' 'perl-cpu-z80-assembler'
+	     'perl-path-tiny' 'perl-clone'
 	     'ragel' 're2c' 'dos2unix')
 backup=(etc/profile.d/z88dk.sh)
 source=(https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname}-src-${pkgver}.tgz
