@@ -2,7 +2,7 @@
 _pkgname=bashhub-server
 pkgname=${_pkgname}-git
 pkgver=0.2.5.r13.c49226d
-pkgrel=1
+pkgrel=2
 pkgdesc='a private cloud alternative for bashhub-client with some added features like regex search.'
 arch=('x86_64')
 _repo_prefix='github.com/nicksherron'
@@ -66,6 +66,15 @@ build () {
 		  -X main.version=$(git describe --always --tags --abbrev=0).$(git rev-parse --short HEAD)\
 	         " \
 	-o "${_repo_name}.bin"
+}
+
+check () {
+  cd "${srcdir}/src/${_repo_prefix}/${_repo_name}"
+  export GOPATH="${srcdir}/go"
+  export GOBIN="${GOPATH}/bin"
+  export PATH="${GOBIN}:${PATH}"
+
+  go test -v ./...
 }
 
 package () {
