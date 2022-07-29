@@ -3,7 +3,7 @@
 _name=ddns
 pkgname=python-ddns
 pkgrel=1
-pkgver=2.10.3
+pkgver=2.11.5
 pkgdesc="Automatically update DNS records to dynamic local IP."
 url=https://pypi.org/project/ddns
 arch=('any')
@@ -18,7 +18,7 @@ source=(
 	"config.json"
 )
 sha256sums=(
-"ef84efaf305d656400eca8a924754d9d31b28378f96b2704b1f3c162de609d5a"
+"48da8d24fc1dc8bcbc46ce8ae8bc19db05bf23e15f7a664d6ac658109498f178"
 "11a427cc3d3a8a4c5e1bbcaba8c94dd9265a6b4c4f53f16d694d83ff92514078"
 "1e084c5349449289129006b21294699ec34122050ada92be81e682631a60f159"
 "aab0eb4c02ab5fa20f1b6c2f66542358ee18ebbb0a60ec2c60e6371844c48d73"
