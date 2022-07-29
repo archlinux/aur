@@ -14,7 +14,7 @@
 
 pkgname=zoneminder
 pkgver=1.36.21
-pkgrel=3
+pkgrel=4
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('any')
 url='https://www.zoneminder.com/'
@@ -49,10 +49,10 @@ backup=("etc/nginx/sites-available/${pkgname}.conf"
         "etc/httpd/conf/extra/${pkgname}.conf"
         "etc/php/conf.d/${pkgname}.ini")
 install=${pkgname}.install
-source=("ZoneMinder.tar.gz::https://github.com/ZoneMinder/zoneminder/archive/refs/tags/${pkgver}.tar.gz"
-        'CakePHP.tar.gz::https://github.com/ZoneMinder/CakePHP-Enum-Behavior/archive/refs/tags/1.0-zm.tar.gz'
-        'Crud.tar.gz::https://github.com/FriendsOfCake/crud/archive/refs/tags/v3.2.0.tar.gz'
-        'RtspServer.zip::https://github.com/ZoneMinder/RtspServer/archive/refs/heads/master.zip'
+source=("https://github.com/ZoneMinder/zoneminder/archive/refs/tags/${pkgver}.tar.gz"
+        'https://github.com/ZoneMinder/CakePHP-Enum-Behavior/archive/refs/tags/1.0-zm.tar.gz'
+        'https://github.com/FriendsOfCake/crud/archive/refs/tags/v3.2.0.tar.gz'
+        'https://github.com/ZoneMinder/RtspServer/archive/refs/heads/master.zip'
         'zoneminder-nginx.conf'
         'zoneminder-httpd.conf'
         'zoneminder-php.ini'
@@ -60,7 +60,7 @@ source=("ZoneMinder.tar.gz::https://github.com/ZoneMinder/zoneminder/archive/ref
 sha256sums=('ca83cf52233db39daabdb13e280da4eff04a428b73e3e1e36f42174cf43c43ed'
             'dbd231e97b950c698f0f501d6a53c7291c9985e766b09e3afe00cfe69a969f44'
             '55be29e1eccb44d4ad0db8b23c37cec50f5341f8e498583d472ed1f0493876e3'
-            '57556adbeec7eebf1d00f7873930e144094ab26442d0852b63c1397f4b3af6d5'
+            'SKIP'
             'c60e855428a56cc327214aa13d02a70011bf3b63a94a0d845b1c5ea1fab28ad2'
             '1f0d2276861065caf0b6c030ba27a6edb6a2988c7a1ac0fdf4e8fcb856972715'
             '0ed914327b3b1b76086510c67360663bb2182db022787e86318b1cfac2195e8d'
