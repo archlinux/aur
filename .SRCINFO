@@ -1,7 +1,7 @@
 pkgbase = bashhub-client
-	pkgdesc = a private cloud alternative for bashhub-client with some added features like regex search.
+	pkgdesc = saves every terminal command entered across all sessions and systemto the cloud
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rcaloras/bashhub-client
 	arch = x86_64
 	license = Apache
