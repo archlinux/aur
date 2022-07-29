@@ -5,7 +5,7 @@ pkgbase = xinux-wallpapers
 	url = https://oss.uzinfocom.uz
 	install = xinux-wallpapers.install
 	arch = any
-	source = https://github.com/uzinfocom-org/wallpapers/archive/refs/tags/v1.2.zip
+	source = https://github.com/uzinfocom-org/wallpapers/archive/refs/tags/v1.5.zip
 	md5sums = SKIP
 
 pkgname = xinux-wallpapers
