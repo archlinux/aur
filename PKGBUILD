@@ -1,7 +1,7 @@
 # Maintainer: Kevin Meagher <kmeagher at icecube dot wisc dot edu>
 pkgname=healpix
-pkgver='3.81'
-_pkgdate='2022Jan25'
+pkgver='3.82'
+_pkgdate='2022Jul28'
 pkgrel=1
 pkgdesc="Software for pixelization, hierarchical indexation, synthesis, analysis, and visualization of data on the sphere."
 arch=('x86_64')
@@ -17,9 +17,9 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://downloads.sourceforge.net/project/healpix/Healpix_${pkgver}/Healpix_${pkgver}_${_pkgdate}.tar.gz")
-md5sums=('906e4907bb6f87400c895ce0627bf190')
-sha1sums=('a01ecea90f754067d62df3be63aa76d8f92bca4f')
-sha256sums=('82d92bb21626371f9d280e59e82ad0f47d9ae62c70d86ccd1026e0310f193551')
+md5sums=('f71ffbccd3009f5e602fb48b4fa134d5')
+sha1sums=('57b9963340af7c983040892c84d8f6d1a72dd22a')
+sha256sums=('47629f057a2daf06fca3305db1c6950edb9e61bbe2d7ed4d98ff05809da2a127')
 
 build() {
     cd "${srcdir}/Healpix_${pkgver}/src/C/autotools"
