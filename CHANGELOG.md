@@ -18,6 +18,62 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## 📚 Documentation -->
 
+# [0.8.1] - 2022-07-28
+
+## 🐛 Fixes
+
+- **Fixes superfluous output in npm installer - @EverlastingBugstopper, #1200 fixes #1197 and #1198**
+
+  In 0.8.0, we released a fix for our npm installer that makes it compatible with yarn workspaces by reinstalling Rover if it doesn't exist. Unfortunately, that means that steps that rely on printing to stdout contained information about the installs in those invocations. This has been fixed.
+
+## 📚 Documentation
+
+- **Adds documentation for the async checks feature introduced in 0.8.1 - @EverlastingBugstopper, #1193**
+
+# [0.8.0] - 2022-07-27
+
+## 🚀 Features
+
+- **Add new commands to use asynchronous checks API - @Y-Guo, #1139**
+
+  If you want to kick off a check without waiting for it to complete you can provide the `--background` flag to `rover graph check` or `rover subgraph check`. This will start the check in Apollo Studio. If your GitHub repo integrates with the Apollo Studio GitHub App, the check status will be updated on your GitHub branch. Using this flag can save you time and money with your CI provider. 
+
+- **Improved error messages and logs for filesysten read/write - @EverlastingBugstopper, #1183**
+
+  Start using the `saucer` create for file system read/writes. This will provide better errors than the ones provided by `std::fs` e.g. `permission denied os error (2)` by providing context about which file rover is trying to read/write to. Every read/write/other filesystem operation will now be included in the `--log info` output.
+
+## 🐛 Fixes
+
+- **Install rover before run if missing in npm package - @trevor-schneer, #1184 fixes #1178**
+
+- **Don't retry `400 Bad Request` errors - @EverlastingBugstopper, #1166**
+
+## 🛠 Maintenance
+
+- **Refactor command line argument parsing - @EverlastingBugstopper, #1155**
+
+- **Improve schema downloading for codegen, when building rover - @EverlastingBugstopper, #1166**
+
+- **Update rover to clap v3 - @EverlastingBugstopper, #1170 fixes #1165**
+
+- **Add Apollo Studio integration tests - @EverlastingBugstopper, #1188**
+
+  We now run integration tests against Apollo Studio's platform API as part of our release pipeline.
+
+## 📚 Documentation
+
+- **Update help message for `rover subgraph introspect` - @EverlastingBugstopper, #1169**
+
+  Previously the help message for `rover subgraph introspect` claimed to introspect from Apollo Studio Registry but it really introspects from a running subgraph endpoint.
+
+- **Add Jenkins CI/CD Documentation - @StephenBarlow, #1151**
+
+- **Update, restructure, and add missing docs for existing rover commands - @StephenBarlow, #1154, #1157**
+
+- **Update rover version in CI/CD docs - @rajington, #1177**
+
+- **Fix broken anchors for fetching schema - @tchupp, #1176**
+
 # [0.7.0] - 2022-06-09
 
 ## 🚀 Features
@@ -57,7 +113,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## 🐛 Fixes
 
-- **Fixes Input Value Definition block string encoding for descriptions.  - @lrlna, #1116 # fixes #1088**
+- **Fixes Input Value Definition block string encoding for descriptions.  - @lrlna, #1116 fixes #1088**
 
   Input values are now multilined when a description is present to allow for a more readable generated SDL.
 
