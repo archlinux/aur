@@ -1,6 +1,6 @@
 pkgbase = life-keyring-git
 	pkgdesc = Life PGP keyring
-	pkgver = 2022.07.28
+	pkgver = 2022.07.29
 	pkgrel = 1
 	url = https://gitlab.life.org/life/life-keyring
 	install = life-keyring.install
@@ -13,6 +13,7 @@ pkgbase = life-keyring-git
 	makedepends = python
 	makedepends = sequoia-sq
 	depends = pacman
+	conflicts = life-keyring-git
 	source = life-keyring::git+ssh://life_local_git/home/git/life-keyring?signed
 	validpgpkeys = 3D115DD206D92A0656C827BC8B686E3C22E4C2FA
 	sha256sums = SKIP
