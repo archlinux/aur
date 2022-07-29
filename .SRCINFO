@@ -1,6 +1,6 @@
 pkgbase = grub-improved-luks2-git
 	pkgdesc = GNU GRand Unified Bootloader (2) with Argon2 and better LUKS2 support
-	pkgver = 2.06.r284.g1b3d97bdf
+	pkgver = 2.06.r291.ge43f3d93b
 	pkgrel = 1
 	url = https://www.gnu.org/software/grub/
 	install = grub-improved-luks2-git.install
@@ -29,11 +29,10 @@ pkgbase = grub-improved-luks2-git
 	conflicts = grub
 	backup = etc/default/grub
 	backup = etc/grub.d/40_custom
-	source = grub::git+https://git.savannah.gnu.org/git/grub.git#commit=1b3d97bdf8b026d1fe43accd14dd190dd47e183f
+	source = grub::git+https://git.savannah.gnu.org/git/grub.git#commit=e43f3d93b28cce852c110c7a8e40d8311bcd8bb1
 	source = grub-extras::git+https://git.savannah.gnu.org/git/grub-extras.git
 	source = gnulib::git+https://git.savannah.gnu.org/git/gnulib.git
 	source = argon_1.patch
-	source = argon_2.patch
 	source = argon_2.patch
 	source = argon_3.patch
 	source = argon_4.patch
@@ -42,7 +41,6 @@ pkgbase = grub-improved-luks2-git
 	source = add-GRUB_COLOR_variables.patch
 	source = detect-archlinux-initramfs.patch
 	source = grub.default
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

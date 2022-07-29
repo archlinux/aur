@@ -19,9 +19,9 @@ _build_platforms="x86_64-efi"
 # [[ "${_grub_emu_build}" == "1" ]] && _build_platforms+=" ${_target_arch}-emu"
 
 _pkgname="grub"
-_commit="1b3d97bdf8b026d1fe43accd14dd190dd47e183f"
+_commit="e43f3d93b28cce852c110c7a8e40d8311bcd8bb1"
 pkgname="${_pkgname}-improved-luks2-git"
-pkgver=2.06.r284.g1b3d97bdf
+pkgver=2.06.r291.ge43f3d93b
 pkgrel=1
 pkgdesc="GNU GRand Unified Bootloader (2) with Argon2 and better LUKS2 support"
 arch=('x86_64')
@@ -47,7 +47,6 @@ source=("grub::git+https://git.savannah.gnu.org/git/grub.git#commit=${_commit}"
         "gnulib::git+https://git.savannah.gnu.org/git/gnulib.git"
         'argon_1.patch'
         'argon_2.patch'
-        'argon_2.patch'
         'argon_3.patch'
         'argon_4.patch'
         'argon_5.patch'
@@ -56,7 +55,6 @@ source=("grub::git+https://git.savannah.gnu.org/git/grub.git#commit=${_commit}"
         'detect-archlinux-initramfs.patch'
         'grub.default')
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
