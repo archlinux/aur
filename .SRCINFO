@@ -1,6 +1,6 @@
 pkgbase = pqmusic
 	pkgdesc = A minimalistic and easy to use audio player for download and use
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/son-link/PQMusic
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = pqmusic
 	depends = python-mutagen
 	depends = python-magic
 	depends = dbus-python
-	source = https://github.com/son-link/PQMusic/archive/refs/tags/v.1.2.0.tar.gz
-	sha256sums = 6811b92f71f2383e6108101a11d7391454ae9295bd573f62b8ab7575c83bae37
+	source = https://github.com/son-link/PQMusic/archive/refs/tags/v.1.2.1.tar.gz
+	sha256sums = 958cfc5b962e65e5225953f9937e356234ea4b55d273efb09df7332a397b698f
 
 pkgname = pqmusic

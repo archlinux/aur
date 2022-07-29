@@ -1,7 +1,7 @@
 # Maintainer: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 pkgname=pqmusic
 _gitname=PQMusic
-pkgver="1.2.0"
+pkgver="1.2.1"
 pkgrel=1
 pkgdesc="A minimalistic and easy to use audio player for download and use"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python' 'python-pyqt5' 'qt5-multimedia' 'python-mutagen' 'python-magic' 'dbus-python')
 makedepends=('python-setuptools')
 source=("${url}/archive/refs/tags/v.${pkgver}.tar.gz")
-sha256sums=('6811b92f71f2383e6108101a11d7391454ae9295bd573f62b8ab7575c83bae37')
+sha256sums=('958cfc5b962e65e5225953f9937e356234ea4b55d273efb09df7332a397b698f')
 
 build() {
 	cd "${srcdir}/${_gitname}-v.${pkgver}"
