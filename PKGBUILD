@@ -4,7 +4,7 @@
 
 pkgname=fcitx
 pkgdesc="Flexible Context-aware Input Tool with eXtension"
-pkgver=4.2.9.8
+pkgver=4.2.9.9
 pkgrel=1
 groups=('fcitx-im')
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=('enchant: for word predication support'
 makedepends=('extra-cmake-modules' 'doxygen' 'gtk2' 'gtk3' 'mesa' 'opencc'
              'iso-codes' 'gobject-introspection' 'enchant' 'python')
 source=("https://download.fcitx-im.org/$pkgname/$pkgname-${pkgver}_dict.tar.xz"{,.sig})
-sha512sums=('50a954c3178f53fd2d441cdaf81fb44a7fe8dfb263fa6d8dd4ee4884fc7ae8321880c726c9366d11e2a4ac8da2233268d06e5d0800d4527ba0bdb1a1430248ed'
+sha512sums=('d871df84ebb3514b6474000b693246c8e5b198121e9a5a0ca18d478e54cd4144f8dfb58922a004952d26ab3bcfc1f417c446c22d30994ef40875fc2ee3cda441'
             'SKIP')
 validpgpkeys=('2CC8A0609AD2A479C65B6D5C8E8B898CBF2412F9')  # Weng Xuetian
 
