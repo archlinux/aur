@@ -11,6 +11,6 @@ pkgbase = ldr-translate-qt
 	depends = python-pyqt5
 	conflicts = ldr-translate-gtk
 	source = https://github.com/yuhldr/ldr-translate/archive/refs/tags/v1.5.1.tar.gz
-	md5sums = 0f5eb3876a7e4ef940c97de2951c0b5c
+	md5sums = 87e0de74d7f56473d506c96db1f6b26b
 
 pkgname = ldr-translate-qt

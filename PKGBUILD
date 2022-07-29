@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://github.com/yuhldr/$pkgdata/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-md5sums=(0f5eb3876a7e4ef940c97de2951c0b5c)
+md5sums=(87e0de74d7f56473d506c96db1f6b26b)
 validpgpkeys=()
 
 prepare() {
