@@ -1,6 +1,6 @@
 pkgbase = gnome-console-git
 	pkgdesc = A simple user-friendly terminal emulator for the GNOME desktop
-	pkgver = 42.beta.r28.g85ebf51
+	pkgver = 42.beta.r89.g40fa1af
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/console
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = gnome-console-git
 	makedepends = sassc
 	makedepends = libnautilus-extension
 	depends = libgtop
-	depends = libhandy
-	depends = vte3
+	depends = libadwaita-git>=1.2.alpha
+	depends = vte4
 	provides = gnome-console
 	conflicts = kgx-git
 	conflicts = gnome-console

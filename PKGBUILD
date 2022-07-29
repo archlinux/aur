@@ -2,13 +2,13 @@
 
 pkgname=gnome-console-git
 _pkgname=console
-pkgver=42.beta.r28.g85ebf51
+pkgver=42.beta.r89.g40fa1af
 pkgrel=1
 pkgdesc="A simple user-friendly terminal emulator for the GNOME desktop"
 arch=('x86_64')
 url="https://gitlab.gnome.org/GNOME/console"
 license=('GPL3')
-depends=('libgtop' 'libhandy' 'vte3')
+depends=('libgtop' 'libadwaita-git>=1.2.alpha' 'vte4')
 makedepends=('git' 'meson' 'sassc' 'libnautilus-extension')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
