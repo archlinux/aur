@@ -1,6 +1,6 @@
 pkgbase = forge-server
 	pkgdesc = Forge is a free, open-source modding API all of your favourite mods use!
-	pkgver = 41.0.109
+	pkgver = 41.1.0
 	pkgrel = 2
 	url = https://minecraftforge.net
 	install = forge-server.install
@@ -12,14 +12,14 @@ pkgbase = forge-server
 	depends = forge-hooks
 	optdepends = tar: needed in order to create world backups
 	optdepends = netcat: required in order to suspend an idle server
-	provides = forge-server=41.0.109
-	noextract = forge-1.19-41.0.109-installer.jar
+	provides = forge-server=41.1.0
+	noextract = forge-1.19-41.1.0-installer.jar
 	backup = etc/conf.d/forge
 	source = git+https://github.com/Edenhofer/minecraft-server
 	source = https://raw.githubusercontent.com/MinecraftForge/MinecraftForge/1.19.x/LICENSE.txt
-	source = https://maven.minecraftforge.net/net/minecraftforge/forge/1.19-41.0.109/forge-1.19-41.0.109-installer.jar
+	source = https://maven.minecraftforge.net/net/minecraftforge/forge/1.19-41.1.0/forge-1.19-41.1.0-installer.jar
 	sha512sums = SKIP
 	sha512sums = 3da10d63a5edee4bc8bcd3d5c2730771062f7fa58626a8c51635fbe96bfbceca3ff6937cfaad3e17f16a94ef95137f7c78cc6dac1c846a6b9a8f18d3c6355973
-	sha512sums = 78b7ea6c255d20c60f6cccbe835c93fd27c6638a5e98fefa1d5c4c5e324808a640366262f1f29725f207b1c2f7bd4c35422f21a798f89886dc68adf5b558a5e9
+	sha512sums = f3a383a994d72edf047a3dfc3391f635b412c34ea1641a9af41f26682839acacf2d4cf6cb9700dc9b46df887912db211adb9ed6b0cbd6548728227aeca63db2b
 
 pkgname = forge-server
