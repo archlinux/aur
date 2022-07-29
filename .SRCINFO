@@ -13,6 +13,9 @@ pkgbase = clavis
 	depends = pkgconf
 	depends = xdotool
 	depends = xclip
+	depends = grep
+	depends = awk
+	depends = gpg
 	conflicts = clavis-git
 
 pkgname = clavis
