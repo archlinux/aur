@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.34.0.r360.g8da6b355f8
+pkgver=0.34.0.r386.g284fecc0bd
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -12,7 +12,6 @@ depends=(
          'aribb24'
          'avisynthplus'
          'bzip2'
-         'celt'
          'codec2'
          'dav1d'
          'desktop-file-utils'
@@ -275,7 +274,6 @@ prepare() {
     '--enable-libbs2b'
     '--enable-libcaca'
     '--enable-libcdio'
-    '--enable-libcelt'
     '--enable-libcodec2'
     '--enable-libdav1d'
     '--enable-libdc1394'
