@@ -1,11 +1,12 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
+# Maintainer: Shengyu Zhang <la@archlinuxcn.org>
 pkgname=coredns
 pkgver=1.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A DNS server that chains plugins"
 makedepends=('go' 'make')
 conflicts=('coredns-bin')
-arch=('any')
+arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/coredns/coredns"
 license=('Apache')
 provides=('coredns')
