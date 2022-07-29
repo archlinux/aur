@@ -1,7 +1,7 @@
 # Maintainer: Yufan You <ouuansteve at gmail.com>
 
 pkgname=noi-despised-git
-pkgver=r44.bad3e87
+pkgver=r50.13e0255
 pkgrel=1
 pkgdesc='NOI 背笔试工具'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('git')
 provides=('noi-despised')
 conflicts=('noi-despised')
-source=('git://github.com/ouuan/Despised.git')
+source=('git+https://github.com/ouuan/Despised.git')
 md5sums=('SKIP')
 
 pkgver() {
