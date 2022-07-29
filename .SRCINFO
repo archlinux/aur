@@ -1,0 +1,30 @@
+pkgbase = owlux
+	pkgdesc = Yeelight smart LED control app
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/frankencode/Owlux
+	arch = x86_64
+	license = GPL3
+	makedepends = corecomponents_tools
+	makedepends = corecomponents_core
+	makedepends = corecomponents_crypto
+	makedepends = corecomponents_glob
+	makedepends = corecomponents_meta
+	makedepends = corecomponents_network
+	makedepends = corecomponents_ux
+	source = owlux-1.0.0.zip::https://github.com/frankencode/Owlux/archive/refs/tags/v1.0.0.zip
+	md5sums = 846cff8a970df3a68c0d7e877cb51aa0
+	sha1sums = c4da17f01aa5dde62bce2d6cb54abaeec75a6b55
+
+pkgname = owlux
+	pkgdesc = Yeelight smart LED control app: protocol library
+	depends = corecomponents_core
+	depends = corecomponents_crypto
+	depends = corecomponents_glob
+	depends = corecomponents_meta
+	depends = corecomponents_network
+
+pkgname = owlux_tools
+	pkgdesc = Yeelight smart LED control app: gui app and tools
+	depends = owlux
+	depends = corecomponents_ux
