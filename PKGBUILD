@@ -2,9 +2,8 @@
 # Maintainer: Achilleas Pipinellis <axilleas at archlinux dot gr>
 
 _npmname=markdownlint-cli
-_npmver=0.32.0
 pkgname=nodejs-$_npmname
-pkgver=$_npmver
+pkgver=0.32.1
 pkgrel=1
 pkgdesc="MarkdownLint Command Line Interface"
 arch=('any')
@@ -12,7 +11,7 @@ url="https://github.com/igorshubovych/markdownlint-cli"
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm' 'jq')
-source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz")
+source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 
 package() {
   npm install -g --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" "$srcdir/$_npmname-$pkgver.tgz"
@@ -37,4 +36,4 @@ package() {
   # Install license
   install -Dm644 "${srcdir}"/package/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-sha512sums=('06eed93a14cd479447d742ff7dc063c29d6a572dbb224131639610be453dc133d72c3dc4b714998830dcd07b2543887d1792c490fb3f57e7011d20433e80cbcd')
+sha512sums=('8552d0fbbd9be5eb1077b23e22acc1101e31ff80bec096b14b633a9ea686a03c2bb4d63a8327467f9088509b50717b6ab0ceb5e7ef9af1364fb2f12d1fa1f883')
