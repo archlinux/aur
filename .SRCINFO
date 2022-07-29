@@ -15,7 +15,7 @@ pkgbase = clavis-git
 	depends = xclip
 	depends = grep
 	depends = awk
-	depends = gpg
+	depends = gnupg
 	conflicts = clavis
 
 pkgname = clavis-git

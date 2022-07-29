@@ -5,7 +5,7 @@ pkgrel="1"
 pkgdesc="An easy to use Password Manager. Development version"
 arch=("x86_64")
 url="https://github.com/ManelCG/clavis"
-depends=("gtk3" "cairo" "pango" "pixman" "pass" "make" "pkgconf" "xdotool" "xclip" "grep" "awk" "gpg")
+depends=("gtk3" "cairo" "pango" "pixman" "pass" "make" "pkgconf" "xdotool" "xclip" "grep" "awk" "gnupg")
 conflicts=("clavis")
 optdepends=()
 
