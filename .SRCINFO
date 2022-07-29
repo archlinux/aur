@@ -1,10 +1,11 @@
 pkgbase = czkawka
 	pkgdesc = Multi functional app to find duplicates, empty folders, similar images etc.
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/qarmin/czkawka
 	arch = x86_64
 	license = MIT
+	checkdepends = xorg-server-xvfb
 	makedepends = cargo
 	makedepends = rust
 	makedepends = git
