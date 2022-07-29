@@ -1,7 +1,7 @@
 pkgbase = zipkin
 	pkgdesc = Opensource Distributed Tracing System
-	pkgver = 2.23.9
-	pkgrel = 3
+	pkgver = 2.23.16
+	pkgrel = 1
 	url = http://zipkin.io
 	install = zipkin.install
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = zipkin
 	depends = bash
 	optdepends = kafka
 	optdepends = cassandra
-	source = https://search.maven.org/remotecontent?filepath=io/zipkin/zipkin-server/2.23.9/zipkin-server-2.23.9-exec.jar
+	source = https://search.maven.org/remotecontent?filepath=io/zipkin/zipkin-server/2.23.16/zipkin-server-2.23.16-exec.jar
 	source = zipkin.sh
 	source = zipkin.sysusers
 	source = zipkin.service
