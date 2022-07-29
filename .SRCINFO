@@ -1,4 +1,4 @@
-pkgbase = archlinux--git
+pkgbase = archlinux-ebaseline-git
 	pkgdesc = Builds an Arch Linux desktop
 	pkgver = v0.1+11+g1afb2fc
 	pkgrel = 1
@@ -13,4 +13,4 @@ pkgbase = archlinux--git
 	depends = fakepkg
 	depends = mkinitcpio-archiso-encryption
 
-pkgname = archlinux--git
+pkgname = archlinux-ebaseline-git
