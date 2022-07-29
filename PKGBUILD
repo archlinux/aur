@@ -21,7 +21,7 @@ pkgname=(
     'corecomponents_ux_plugins'
     'corecomponents_tools'
 )
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Toolkit for C++ application development"
 url="https://www.corecomponents.io"
@@ -31,10 +31,10 @@ source=(
     "$pkgbase-$pkgver.tar.gz::https://www.corecomponents.io/download/CoreComponents-$pkgver.tar.gz"
 )
 md5sums=(
-    '45be529eb4262d3d0d8e482f735ac20e'
+    'd76ad76e0471e11bfd638d389d9edc10'
 )
 sha1sums=(
-    '0f4f5f27b9d099f4d2f79be11cbcb0233881e66c'
+    '2df02e6bc404231c4ee78b3974e753243db585e4'
 )
 
 makedepends=(
