@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=plow
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="High-performance HTTP benchmarking tool"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0f0eca22651a06de3b981618b726f14efbed2701c3f53112e6763372d91a4bf9')
+sha256sums=('0ae69218fc61d4bc036a62f3cc8a4e5f29fad0edefe9e991f0446f71d9e6d9ba')
 
 prepare() {
 	cd "$pkgname-$pkgver"
