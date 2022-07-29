@@ -2,7 +2,7 @@
 # Maintainer: rsteube <rsteube@users.noreply.github.com>
 
 pkgname='lazycomplete-bin'
-pkgver=0.0.13
+pkgver=0.0.18
 pkgrel=1
 pkgdesc='lazy loading for shell completion scripts'
 url='https://github.com/rsteube/lazycomplete'
@@ -11,14 +11,14 @@ license=('MIT')
 provides=('lazycomplete')
 conflicts=('lazycomplete')
 
-source_aarch64=('https://github.com/rsteube/lazycomplete/releases/download/v0.0.13/lazycomplete_0.0.13_Linux_arm64.tar.gz')
-sha256sums_aarch64=('5e09f925b315750ba3875133745a837c75c0f75cc69f4af534168bb686a87cd7')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/rsteube/lazycomplete/releases/download/v0.0.18/lazycomplete_0.0.18_Linux_arm64.tar.gz")
+sha256sums_aarch64=('142a4b8fc75ab5673e5be51a93457dc6985f47e330431a9707bad9240c47448b')
 
-source_i686=('https://github.com/rsteube/lazycomplete/releases/download/v0.0.13/lazycomplete_0.0.13_Linux_i386.tar.gz')
-sha256sums_i686=('588d3834a1d28827b9ac86460b3988badd993ca7d09408e64e77d7e28e08a3a8')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/rsteube/lazycomplete/releases/download/v0.0.18/lazycomplete_0.0.18_Linux_i386.tar.gz")
+sha256sums_i686=('d52df651eb2d6489994e6b96ddc6d99efd15bcefe9216a7d762e154cc6365420')
 
-source_x86_64=('https://github.com/rsteube/lazycomplete/releases/download/v0.0.13/lazycomplete_0.0.13_Linux_x86_64.tar.gz')
-sha256sums_x86_64=('eb684cf84b67a54fc772287c3d4f4a29b08343da88acb0c3ebbcc067d01df9f7')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/rsteube/lazycomplete/releases/download/v0.0.18/lazycomplete_0.0.18_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('89785be6a72a2f313edfb662c2c67dcd14bc8af1520513879c5f8b8c1df0a56f')
 
 package() {
   install -Dm755 "./lazycomplete" "${pkgdir}/usr/bin/lazycomplete"
