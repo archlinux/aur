@@ -1,10 +1,11 @@
 pkgbase = soapymiri-git
 	pkgdesc = SoapySDR module for libmirisdr
-	pkgver = r19.87671ec
+	pkgver = r24.1ef1b42
 	pkgrel = 1
 	url = https://github.com/ericek111/SoapyMiri
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = cmake
 	depends = soapysdr
 	depends = libmirisdr5
