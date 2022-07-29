@@ -9,10 +9,10 @@ Subject: [PATCH] Trap any kind of exception during plugin parsing (eg IOError
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index 517e5ff057727a69e24acb530787fe94de1d798b..cf23e4f4f01ac46163d48906a768e452999a733a 100644
+index 28789ccd38d0afed3952bd21bf276100f9c823d4..e9062f0836af1aee54357168a0767d190991d1e9 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
-@@ -9686,7 +9686,7 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -9659,7 +9659,7 @@ Please submit there instead, or use --nodevelproject to force direct submission.
                          if (inspect.isfunction(data) and inspect.getmodule(data) == mod
                              or inspect.ismodule(data)):
                              setattr(self.__class__, name, data)

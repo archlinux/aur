@@ -8,7 +8,7 @@ Subject: [PATCH] Add sb2install support to osc
  1 file changed, 3 insertions(+)
 
 diff --git a/osc/build.py b/osc/build.py
-index 27403b5f64c4c48763e519abf4a2148562d1eaf8..c186a7e787a9ef00eba156c6d56dd03be89dcb89 100644
+index 993987c38c8e5faa8304565865ac6415de94c917..4a109be4a18054669a8cd8a2bdd8e03b65a296d2 100644
 --- a/osc/build.py
 +++ b/osc/build.py
 @@ -195,6 +195,7 @@ class Buildinfo:

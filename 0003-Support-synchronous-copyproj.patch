@@ -9,10 +9,10 @@ Subject: [PATCH] Support synchronous copyproj
  2 files changed, 7 insertions(+)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index 7dd55009165be14b4ae5f361de0ba9e56e313e6b..5060757028f1144bcafda4c60507af4af090be8f 100644
+index 083b67d35b5a123c0511404626ebdf7af9180f37..94b2b427842a395403b3b28aa06e3bd97f07a091 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
-@@ -3205,6 +3205,8 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -3189,6 +3189,8 @@ Please submit there instead, or use --nodevelproject to force direct submission.
  
      @cmdln.option('-b', '--with-binaries', action='store_true',
                          help='copy the built binaries over to avoid a rebuild')
@@ -21,7 +21,7 @@ index 7dd55009165be14b4ae5f361de0ba9e56e313e6b..5060757028f1144bcafda4c60507af4a
      @cmdln.option('-H', '--with-history', action='store_true',
                          help='replicate the history of each package.')
      @cmdln.option('-o', '--make-older', action='store_true',
-@@ -3222,6 +3224,8 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -3206,6 +3208,8 @@ Please submit there instead, or use --nodevelproject to force direct submission.
  
          The user must be able to create DESTPRJ
  
@@ -30,7 +30,7 @@ index 7dd55009165be14b4ae5f361de0ba9e56e313e6b..5060757028f1144bcafda4c60507af4a
          usage:
              osc copyprj SOURCEPRJ DESTPRJ
          ${cmd_option_list}
-@@ -3252,6 +3256,7 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -3236,6 +3240,7 @@ Please submit there instead, or use --nodevelproject to force direct submission.
                       withhistory = opts.with_history,
                       makeolder = opts.make_older,
                       resign = opts.re_sign,
@@ -39,7 +39,7 @@ index 7dd55009165be14b4ae5f361de0ba9e56e313e6b..5060757028f1144bcafda4c60507af4a
          print("done cp")
          print(r)
 diff --git a/osc/core.py b/osc/core.py
-index f929c0510aa54992e867655c412f8b51b62a4993..0625e7517b965ca2e52f19f1a78df78012f5f2e5 100644
+index 5669fae1b49f176ab714907e8724e51517d631f0..32d85910af3562488bf4052df381f033d8cb3c40 100644
 --- a/osc/core.py
 +++ b/osc/core.py
 @@ -5691,6 +5691,8 @@ def copy_prj(src_apiurl, src_project, dst_project,

@@ -13,10 +13,10 @@ Subject: [PATCH] Support 'osc copyprj' in api by Islam Amer usage: osc copyprj
  2 files changed, 81 insertions(+)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index c1cd206181e3e5e72e580eb372f0bf4a29daa315..7dd55009165be14b4ae5f361de0ba9e56e313e6b 100644
+index da95836f6ad5b2ebc132cb7cc3fee995eb173592..083b67d35b5a123c0511404626ebdf7af9180f37 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
-@@ -3203,6 +3203,59 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -3187,6 +3187,59 @@ Please submit there instead, or use --nodevelproject to force direct submission.
                  break
              sys.stdout.write(decode_it(buf))
  
@@ -77,7 +77,7 @@ index c1cd206181e3e5e72e580eb372f0bf4a29daa315..7dd55009165be14b4ae5f361de0ba9e5
      @cmdln.option('-m', '--message', metavar='TEXT',
                    help='specify message TEXT')
 diff --git a/osc/core.py b/osc/core.py
-index ef14985401828f65af368a82f97409e0cff8f4fc..f929c0510aa54992e867655c412f8b51b62a4993 100644
+index 1cf4895e181670863bd3564e6934b0a65c9488f3..5669fae1b49f176ab714907e8724e51517d631f0 100644
 --- a/osc/core.py
 +++ b/osc/core.py
 @@ -5667,6 +5667,34 @@ def copy_pac(src_apiurl, src_project, src_package,

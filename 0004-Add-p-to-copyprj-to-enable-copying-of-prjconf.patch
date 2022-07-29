@@ -9,10 +9,10 @@ Subject: [PATCH] Add -p to copyprj to enable copying of prjconf
  2 files changed, 8 insertions(+), 1 deletion(-)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index 5060757028f1144bcafda4c60507af4af090be8f..1acaa7f08ea166eb8e473f51d07f84854f478904 100644
+index 94b2b427842a395403b3b28aa06e3bd97f07a091..846dd5214efdfb6a7ee88ae3fcf16df7ab73d847 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
-@@ -3211,6 +3211,8 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -3195,6 +3195,8 @@ Please submit there instead, or use --nodevelproject to force direct submission.
                          help='replicate the history of each package.')
      @cmdln.option('-o', '--make-older', action='store_true',
                          help='No idea')
@@ -21,7 +21,7 @@ index 5060757028f1144bcafda4c60507af4af090be8f..1acaa7f08ea166eb8e473f51d07f8485
      @cmdln.option('-r', '--re-sign', action='store_true',
                          help='re-sign the binaries')
      @cmdln.option('-m', '--message', metavar='TEXT',
-@@ -3256,7 +3258,7 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -3240,7 +3242,7 @@ Please submit there instead, or use --nodevelproject to force direct submission.
                       withhistory = opts.with_history,
                       makeolder = opts.make_older,
                       resign = opts.re_sign,
@@ -31,7 +31,7 @@ index 5060757028f1144bcafda4c60507af4af090be8f..1acaa7f08ea166eb8e473f51d07f8485
          print("done cp")
          print(r)
 diff --git a/osc/core.py b/osc/core.py
-index 0625e7517b965ca2e52f19f1a78df78012f5f2e5..f943436fd0d27be71a050776cec4235bbec18b31 100644
+index 32d85910af3562488bf4052df381f033d8cb3c40..74adc2be966dcdd8fb73b90960371b55750eb6c7 100644
 --- a/osc/core.py
 +++ b/osc/core.py
 @@ -5672,6 +5672,8 @@ def copy_prj(src_apiurl, src_project, dst_project,
