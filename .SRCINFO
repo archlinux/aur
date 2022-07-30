@@ -7,7 +7,6 @@ pkgbase = gog-cuphead
 	arch = x86_64
 	license = custom
 	makedepends = innoextract
-	makedepends = lgogdownloader
 	makedepends = imagemagick
 	depends = wine
 	depends = wine-mono
