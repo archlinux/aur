@@ -4,7 +4,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libxml2
-pkgver=2.9.13
+pkgver=2.9.14
 pkgrel=1
 pkgdesc="XML parsing library, version 2 (android)"
 arch=('any')
@@ -18,7 +18,7 @@ groups=(android-libxml2)
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-configure')
 source=("https://gitlab.gnome.org/GNOME/libxml2/-/archive/v${pkgver}/libxml2-v${pkgver}.tar.gz")
-md5sums=('99dbd55a77c09edeeaaef5412e98769b')
+md5sums=('c614d670cb6e0620d0dcba6dd5408c0e')
 
 prepare () {
     cd "${srcdir}"/libxml2-v${pkgver}
