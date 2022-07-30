@@ -1,4 +1,4 @@
-# Maintainer: Giovanni Bottaro <giovanni26.bottaro@gmail.com>
+# Maintainer: Giovanni Bottaro <bgiovanni@mybotti.eu>
 
 _electron_version=16
 _nodejs_lts_version=-lts-gallium
