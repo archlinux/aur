@@ -1,6 +1,6 @@
 # Maintainer: Baltazár Radics <baltazar.radics@gmail.com>
 pkgname=cppreference-doc
-pkgver=20220201
+pkgver=20220730
 pkgrel=1
 pkgdesc='A complete reference for the features in the C++ Standard Library. HTML book, fork by PeterFeicht'
 arch=('any')
@@ -10,7 +10,7 @@ options=('!strip' '!emptydirs')
 provides=(cppreference)
 conflicts=(cppreference)
 source=("https://github.com/PeterFeicht/$pkgname/releases/download/v$pkgver/html-book-$pkgver.tar.xz")
-sha256sums=('b41960e7ec9c5433b31b1b33db5854f97770ae49535c81e7647f618003102d1a')
+sha256sums=('71f15003c168b8dc5a00cbaf19b6480a9b3e87ab7e462aa39edb63d7511c028b')
 
 package() {
 	mkdir        -p "$pkgdir"/usr/share/doc/cppreference
