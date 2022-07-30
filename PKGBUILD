@@ -1,7 +1,7 @@
 # Maintainer: Thorben Günther <echo YWRtaW5AeGVucm94Lm5ldAo= | base64 -d>
 
 pkgname=soju
-pkgver=0.4.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='A user-friendly IRC bouncer'
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     "soju.service"
     "soju.tmpfiles"
 )
-sha256sums=('91a78d8f038fb3319042961ff38d9a54a9bf897942804c0a690628dc6c959118'
+sha256sums=('52a8e3f832b0d897024ffcc85e2f4f4a07bb807be106cdc7090e220baba9f2d5'
             'SKIP'
             'c050d3f376f43e1cc22e75f445027862df8d09230e18cbb0913ab58ddced78aa'
             '4c609a9b267bb4877ba5e212f71146c87eccb13e2801edd7b68003e2ad8c2555'
