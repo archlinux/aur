@@ -1,7 +1,7 @@
 # Maintainer: Alif Zakiansyah As Syauqi <alifzakiansyah10@gmail.com>
 pkgname="spoof-dpi-bin"
-pkgver=0.61
-pkgrel=2
+pkgver=0.62
+pkgrel=0
 # epoch=
 pkgdesc="A simple and fast software designed to bypass Deep Packet Inspection"
 arch=(x86_64)
@@ -25,7 +25,7 @@ source=("spoof-dpi.service"
 noextract=()
 md5sums=("d6d5ee0dfa44d0503e75d8f2fa3178d9"
   "fdfc8c7b3ca5899d9adff76f0083298a"
-  "0c65ae9f832887a7c682de0910c38c97")
+  "7066e0edc934ea55a77a0e6c746388ed")
 # validpgpkeys=()
 
 package() {
