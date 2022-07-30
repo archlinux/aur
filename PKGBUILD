@@ -1,4 +1,5 @@
-# Maintainer: Dan Beste <dan.ray.beste@gmail.com>
+# Maintainer: Joonas Henriksson <joonas.henriksson at gmail com>
+# Contributor: Dan Beste <dan.ray.beste@gmail.com>
 
 # Notes:
 #   + gog:// DLAGENT:
