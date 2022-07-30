@@ -38,7 +38,9 @@ package() {
   install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -d "${pkgdir}/usr/share/pixmaps/"
 
-  cp -r data/noarch/game "${pkgdir}/opt/${pkgname}/"
+  mv \
+    "${srcdir}/data/noarch/game" \
+    -t "${pkgdir}/opt/${pkgname}/"
 
   install -m 755           \
     "${srcdir}/${pkgname}" \
