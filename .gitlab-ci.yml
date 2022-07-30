@@ -6,8 +6,6 @@ aur:
   rules:
     - if: $CI_COMMIT_BRANCH == "master"
   image: docker.io/archlinux:latest
-  dependencies:
-    - makepkg
   before_script:
     - pacman -Syu --noconfirm socat openssh git
     - eval $(ssh-agent -s)
