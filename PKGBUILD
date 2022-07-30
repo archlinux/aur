@@ -1,28 +1,23 @@
-# Maintainer: Wijnand Modderman-Lenstra <maze@pyth0n.org>
-pkgname=python2-sauce
-_pkgname=sauce
-pkgver=0.1.1
+# Contributor: Wijnand Modderman-Lenstra <maze@pyth0n.org>
+
+_base=sauce
+pkgname=python2-${_base}
+pkgver=1.2
 pkgrel=1
 pkgdesc="SAUCE record parser"
-arch=(i686 x86_64)
-url="https://github.com/tehmaze/sauce"
-license=('MIT')
-groups=()
-depends=('python2')
-makedepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=(!emptydirs)
-install=
-source=(https://pypi.python.org/packages/source/s/$_pkgname/$_pkgname-$pkgver.tar.gz)
-md5sums=('ea17431679c95a86d6c06e8f07591d25')
-sha1sums=('08cd4a8ba6eb01e5bb06eab05fed729763eab833')
+arch=(any)
+url="https://github.com/tehmaze/${_base}"
+license=(MIT)
+depends=(python2)
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('098fc621f11653edcf5c548ec60bf9999f2f5d83d9d7223d3964cf83512066bc306a2ef12b85b20918009b61cc63503ddd82d406b8afb8a5ee07a1db54169eea')
 
-package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+build() {
+  cd ${_base}-${pkgver}
+  python2 setup.py build
 }
 
-# vim:set ts=2 sw=2 et:
+package() {
+  cd ${_base}-${pkgver}
+  python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+}
