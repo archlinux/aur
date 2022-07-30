@@ -1,7 +1,7 @@
-From 4b81eecd4c636d953aaf4ebafd8171716f4c61fe Mon Sep 17 00:00:00 2001
+From 9b9cf90b52a77f6383905b0e168783253a373e5a Mon Sep 17 00:00:00 2001
 From: Bryan Cain <bryancain3@gmail.com>
 Date: Thu, 5 May 2022 13:12:21 -0600
-Subject: [PATCH 2/4] HID: apple: Properly handle function keys on Keychron
+Subject: [PATCH 2/6] HID: apple: Properly handle function keys on Keychron
  keyboards
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

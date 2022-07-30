@@ -68,7 +68,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=5.18.14
+pkgver=5.18.15
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -98,14 +98,14 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('e17d46451133d3a3099b09e200839e875100b48403171923ab71b6a9b39856af'
+sha256sums=('69804febdc388a69dfb64493b7b58d402853de3a14144ea8db7fd67c30dcbe3c'
             'SKIP'
             '6f0fd44dd87dd0ad23f782a26752bb7200d0d163e3a50df6ad3cf5cec7fe948e'
             '5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c'
             '0506bdad4255ccc8165e39b2567450a3b12de2759ed7b42c0c90de1c57b1a283'
-            '0799f30e1d6e2d4c8b4f62bcc391c09eabdea988e479ea3861d32289bc9e205e'
-            'ccb4f283d47a6c5e0109fbf27e7cde266a09d19c151a52f67f8e85e1d50cd0c1'
-            '6e5499f68f6d3cc23ba259790cb37c0e860ece6faa30f9e8814ea329d7c58368')
+            '2d3fd3973c12b8ce3259d57329c6a97b83b605280248394029e8fe40b1df2eed'
+            'd66cdd20e73baa8a0e7c11a0a0d723f688b7ba14c5929626d9fcdc3342b11398'
+            '43ef109032171e22604d582935c2988b5ed0b00390c7c45979ae58d281782396')
 
 prepare() {
   cd linux-${pkgver}
