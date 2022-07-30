@@ -69,9 +69,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_uksmd_path}/${_uksmd_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v3-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v3-sep/0002-HID-apple-Properly-handle-function-keys-on-Keychron-.patch"
-        "${_lucjanpath}/arch-patches-v3-sep/0003-soundwire-Raise-DEFAULT_PROBE_TIMEOUT-to-10000-ms.patch"
+        "${_lucjanpath}/arch-patches-v4-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v4-sep/0002-HID-apple-Properly-handle-function-keys-on-Keychron-.patch"
+        "${_lucjanpath}/arch-patches-v4-sep/0003-soundwire-Raise-DEFAULT_PROBE_TIMEOUT-to-10000-ms.patch"
+        "${_lucjanpath}/arch-patches-v4-sep/0004-drm-i915-psr-Use-full-update-In-case-of-area-calcula.patch"
+        "${_lucjanpath}/arch-patches-v4-sep/0005-drm-i915-Ensure-damage-clip-area-is-within-pipe-area.patch"
          # the main kernel config files
         'config')
 
@@ -296,9 +298,11 @@ sha512sums=('9436831b84727bd751741d1f569dc8bc314c33daf02d2405d4ef612ae6797dc4b3b
             'SKIP'
             '49ab997abb17d06b332a892cc6c281f9f757bf5455502dacef647343f3c78ed5a0ab590f12e3c85695b3bac31ee52d8640c493c502080184b802324a23a1dbaa'
             '2fa1250d93049fcfcfe04d201236eb7a662703b71a73b77c8e5df72900ad40cbb0b818c9c82cbf0204f67bf496bce7310d713ff9106825816525be1ba2da68e8'
-            '7cb854ec305f181ddf8f2d0edf2aac0412e49d42f0e3050550d57aa89dd1b1c8687bae7a1e853b1ab1a36b93491fad26955d0e094cf00f2da40a2da2c7fd4a81'
-            '01116fc7aaace204ede7d33875813ec64d99d102de3f98f6f886a4d4e7c64e27683f9f6c05b1140676730fce00531fbef064a449727deec3c1be9679463b104c'
-            '4e22feb4975ea8ad73f9380b9bbc7a2c4a6428c830b64844faa2a9fd69158f3f4ebfc4c75bf0bb74dedddc047cba914953d4274d47ca29797175768eefa7ce8c'
+            '7d06db3fd8eca5f616d0ae62c744671a9180b5dc5618dd282dc054e47dd470de74cd28fefb28766cd0c93d97f244e8bfcb51b1c8793103171ddc0833778e5cc4'
+            '75a64acd22a40ed0b9a49acb923c356b216136f65569aafca78fd84730fc273722d0b680d1f3304e9e9bc96a838bfebb4f041cf37ee7aea353cd99dfdf499ea7'
+            '0f691fc4cd765c17fbae056264c933a2c8b73df4d0206d25d8ca4318bb079600a50917e96bb1c1c89b2012e7b211dcb063b59d41816c61659356c138f09fe1d8'
+            'f0696b43eec0667e364793a9f36d9f9e07fa4828726f2d886c0a7b79a7fd69ab21314cb96a67b739c3d5f7b3abcc4f26e4c8d73c35047a98c9b97693f3493799'
+            '56e9e911d94e0034dba52e7d375577b591c9bce5f95043874317fa35bbb5310d799956d3d31385ce39440ad867a62c2b61ff05da6cae2e354b10314ee6a10920'
             '0fad0c13f9c795e0ea5fef2f27505ec0e0ba3c01c794d22329df2ce54bbb79cd37e17ce4844e63673de7c255b618a6838b3b41a32ddc2da4ea477134467972fa')
 
 validpgpkeys=(
