@@ -15,7 +15,6 @@ epoch=1
 pkgdesc="Hollow Knight is a challenging 2D action-adventure. You’ll explore twisting caverns, battle tainted creatures and escape intricate traps, all to solve an ancient long-hidden mystery."
 url='http://hollowknight.com/'
 license=('custom')
-groups=('games' 'gog')
 arch=('x86_64')
 source=(
   "${pkgname}"
