@@ -1,0 +1,13 @@
+pkgbase = fifm-bin
+	pkgdesc = Friendly interactive file manager (FIFM) is a simple terminal file manager written in rust.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/neoks23/fifm
+	arch = x86_64
+	license = GPL-3.0
+	provides = fifm
+	conflicts = fifm
+	source = https://github.com/neoks23/fifm/releases/download/v0.1.0/fifm-0.1.0-x86_64.tar.gz
+	sha256sums = 39fca768f1fdb52239614775a074d60a8f1892d72e9f7e83a48a8693b9ebdc22
+
+pkgname = fifm-bin
