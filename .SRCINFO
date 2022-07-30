@@ -1,6 +1,6 @@
 pkgbase = mivisionx
 	pkgdesc = Set of comprehensive computer vision and machine intelligence libraries, utilities
-	pkgver = 5.2.0
+	pkgver = 5.2.1
 	pkgrel = 1
 	url = https://gpuopen-professionalcompute-libraries.github.io/MIVisionX/
 	arch = x86_64
@@ -15,9 +15,7 @@ pkgbase = mivisionx
 	depends = ffmpeg4.4
 	depends = qt5-base
 	options = !lto
-	source = mivisionx-5.2.0.tar.gz::https://github.com/GPUOpen-ProfessionalCompute-Libraries/MIVisionX/archive/rocm-5.2.0.tar.gz
-	source = include-path.patch::https://github.com/GPUOpen-ProfessionalCompute-Libraries/MIVisionX/commit/ff4f54f4a4a99052494ff940860597a03c9f1f21.patch
-	sha256sums = fee620a1edd3bce18b2cec9ef26ec2afe0a85d6da8a37ed713ab0d1342382503
-	sha256sums = d0e39d5f85a1f112dfb8c7cd0987680872a08f5a41d7dc2978efc954c3591154
+	source = mivisionx-5.2.1.tar.gz::https://github.com/GPUOpen-ProfessionalCompute-Libraries/MIVisionX/archive/rocm-5.2.1.tar.gz
+	sha256sums = 201996b31f59a8d5e4cc3f17d17a5b81158a34d2a1c833b65ccc3dceb21d176f
 
 pkgname = mivisionx
