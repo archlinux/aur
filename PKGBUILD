@@ -2,7 +2,7 @@
 
 pkgname=google-crc32c
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="CRC32C implementation with support for CPU-specific acceleration instructions"
 arch=('i686' 'x86_64')
 url="https://github.com/google/crc32c/"
@@ -22,9 +22,9 @@ build() {
       -DBUILD_SHARED_LIBS=yes \
       -DCRC32C_BUILD_TESTS=OFF \
       -DCRC32C_BUILD_BENCHMARKS=OFF \
-      -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
+      -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/local" \
       -DCRC32C_USE_GLOG=OFF \
-      -H. -Bcmake-out
+      -S . -B cmake-out
   cmake --build cmake-out -- -j ${NCPU:-4}
 }
 

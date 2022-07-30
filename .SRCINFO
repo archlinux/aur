@@ -1,7 +1,7 @@
 pkgbase = google-crc32c
 	pkgdesc = CRC32C implementation with support for CPU-specific acceleration instructions
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/crc32c/
 	arch = i686
 	arch = x86_64
