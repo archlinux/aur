@@ -1,23 +1,21 @@
 pkgbase = fb2edit
-	pkgdesc = FB2 ebooks editor, qt5-patched version
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgdesc = FB2 ebooks editor, qt5 version
+	pkgver = 20220717
+	pkgrel = 1
 	url = https://github.com/vitlav/fb2edit
-	install = fb2edit.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = cmake>=3.1.0
+	makedepends = git
+	makedepends = cmake
 	makedepends = qt5-tools
 	depends = qt5-webkit
 	depends = libxml2
 	depends = qt5-xmlpatterns
 	depends = qt5-imageformats
 	depends = qt5-translations
-	source = fb2edit-0.1.0.tar.gz::https://github.com/vitlav/fb2edit/archive/0.1.0.tar.gz
-	source = fb2edit.install
-	sha256sums = 8395fd3e786b0d60f7d18f744e6176464441d8e4ac56f86361b06e5e2214c8a6
-	sha256sums = bf4edf1f92991d177fa2ea434c806de51d3ca0cb2f6e385e36b76960786b2ff3
+	depends = hicolor-icon-theme
+	source = git+https://github.com/vitlav/fb2edit
+	sha256sums = SKIP
 
 pkgname = fb2edit
-
