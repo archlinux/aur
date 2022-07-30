@@ -4,7 +4,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libwebp
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="WebP library and conversion tools (android)"
 arch=('any')
@@ -18,7 +18,7 @@ groups=(android-libwebp)
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-configure')
 source=("https://github.com/webmproject/libwebp/archive/v${pkgver}.tar.gz")
-md5sums=('cafb3f64313daa7492cd08c06dd76801')
+md5sums=('a9d3c93923ab0e5eab649a965b7b2bcd')
 
 prepare() {
     cd "$srcdir/libwebp-${pkgver}"
