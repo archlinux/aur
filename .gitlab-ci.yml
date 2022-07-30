@@ -1,12 +1,53 @@
 stages:
+  - test
+  - build
+  - install_before
   - deploy
+  - install_after
+
+namcap:
+  stage: test
+  image: docker.io/archlinux:latest
+  before_script:
+    - pacman -Syu --noconfirm namcap
+  script:
+    - namcap PKGBUILD
+
+makepkg:
+  stage: build
+  image: docker.io/archlinux:base-devel
+  before_script:
+    - pacman -Syu --noconfirm sudo git
+    - useradd builduser -m && passwd -d builduser
+    - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
+    - sudo -u builduser bash -c 'git clone "https://aur.archlinux.org/yay.git"'
+    - sudo -u builduser bash -c 'cd yay && makepkg -si --noconfirm'
+    - rm -rf yay && cp $(which yay) yay
+  script:
+    - sudo -u builduser bash -c 'makepkg -s --noconfirm'
+  artifacts:
+    paths:
+      - "$CI_PROJECT_NAME*.zst"
+      - "yay"
+
+yay_before:
+  stage: install_before
+  image: docker.io/archlinux:latest
+  dependencies:
+    - makepkg
+  before_script:
+    - pacman -Syu --noconfirm sudo
+    - cp yay /usr/sbin/yay
+    - useradd builduser -m && passwd -d builduser
+    - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
+    - sudo -u builduser bash -c 'yay --noconfirm'
+  script:
+    - sudo -u builduser bash -c 'yay -U --noconfirm *.zst'
 
 aur:
   stage: deploy
   rules:
     - if: $CI_COMMIT_BRANCH == "master"
-  variables:
-    GIT_STRATEGY: clone
   image: docker.io/archlinux:latest
   before_script:
     - pacman -Syu --noconfirm socat openssh git
@@ -20,3 +61,19 @@ aur:
     - git remote add aur ssh://aur@aur.archlinux.org/$CI_PROJECT_NAME.git
     - git push -u aur master
     - sleep 30
+
+yay_after:
+  stage: install_after
+  rules:
+    - if: $CI_COMMIT_BRANCH == "master"
+  image: docker.io/archlinux:latest
+  dependencies:
+    - makepkg
+  before_script:
+    - pacman -Syu --noconfirm sudo
+    - cp yay /usr/sbin/yay
+    - useradd builduser -m && passwd -d builduser
+    - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
+    - sudo -u builduser bash -c 'yay --noconfirm'
+  script:
+    - sudo -u builduser bash -c 'yay -S --noconfirm $CI_PROJECT_NAME'
