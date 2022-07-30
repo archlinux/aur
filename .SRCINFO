@@ -1,5 +1,5 @@
 pkgbase = simulide-bzr
-	pkgdesc = Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers)
+	pkgdesc = Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers). Development version.
 	pkgver = 1.0.1.r1300
 	pkgrel = 1
 	url = https://launchpad.net/simulide
