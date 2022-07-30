@@ -29,6 +29,12 @@ build() {
   make BEES_VERSION="${pkgver}" all scripts
 }
 
+check() {
+  cd bees
+
+  make BEES_VERSION="${pkgver}" test
+}
+
 package() {
   cd bees
 
