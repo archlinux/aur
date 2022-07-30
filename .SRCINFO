@@ -1,11 +1,12 @@
 pkgbase = pass-parcellite
 	pkgdesc = Stores, retrieves, generates, and synchronizes passwords securely (Parcellite support)
 	pkgver = 1.7.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.passwordstore.org/
 	arch = any
 	license = GPL2
 	checkdepends = git
+	makedepends = git
 	depends = bash
 	depends = gnupg
 	depends = tree
@@ -22,9 +23,10 @@ pkgbase = pass-parcellite
 	conflicts = passmenu
 	conflicts = pass
 	replaces = passmenu
-	source = https://git.zx2c4.com/password-store/snapshot/password-store-1.7.4.tar.xz
+	source = git+https://git.zx2c4.com/password-store?signed#tag=1.7.4
 	source = pass-parcellite.patch
-	sha256sums = cfa9faf659f2ed6b38e7a7c3fb43e177d00edbacc6265e6e32215ff40e3793c0
+	validpgpkeys = AB9942E6D4A4CFC3412620A749FC7012A5DE03AE
+	sha256sums = SKIP
 	sha256sums = 111ec13bdcbc691bdfca7134dfba3e01672d0900cdc9810bec5a5da487cb5d6f
 
 pkgname = pass-parcellite
