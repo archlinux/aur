@@ -1,6 +1,6 @@
 pkgbase = rocm-hip-sdk
 	pkgdesc = Develop applications using HIP and libraries for AMD platforms
-	pkgver = 5.2.0
+	pkgver = 5.2.1
 	pkgrel = 1
 	url = https://rocm-documentation.readthedocs.io/en/latest/
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = rocm-hip-sdk
 	depends = rocthrust
 	depends = hipsparse
 	depends = hipfft
-	source = rocm-hip-sdk-5.2.0.deb::https://repo.radeon.com/rocm/apt/5.2/pool/main/r/rocm-hip-sdk/rocm-hip-sdk_5.2.0.50200-65_amd64.deb
-	sha256sums = f71303a1777aa4ad4bdb997b0e928acc1229a9ece3b08ac2e53d151c79966876
+	source = rocm-hip-sdk-5.2.1.deb::https://repo.radeon.com/rocm/apt/5.2.1/pool/main/r/rocm-hip-sdk/rocm-hip-sdk_5.2.1.50201-79_amd64.deb
+	sha256sums = b39ad15eaf503d2385c47022aa531b0e3bdc015f73791228ada8e7ea8f37cb6c
 
 pkgname = rocm-hip-sdk
