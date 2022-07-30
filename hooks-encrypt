@@ -24,7 +24,7 @@ EOF
                 ckey="/ckey/${ckpath1}"
                 is_fs=$(blkid -o value -s TYPE "${ckey}")
                 if [ "${is_fs}" != "" ]; then
-                    echo "${ckey} has type ${is_fs}"
+                    msg "File ${ckey} has type ${is_fs}..."
                     if cryptsetup isLuks "${ckey}" >/dev/null 2>&1; then
                         while ! eval cryptsetup open --type luks2 "${ckey}" ckey; do
                             sleep 2;
@@ -59,7 +59,7 @@ _get_sig() {
     IFS=: read sigdev sigarg1 sigarg2 <<EOF
 $sigdevice
 EOF
-    echo "INFO:: See if ${sigdev} is online"
+    msg ":: Wait for ${sigdev}"
     if resolved=$(resolve_device "${sigdev}" ${rootdelay}); then
         case ${sigarg1} in
             *[!0-9]*)
@@ -71,12 +71,10 @@ EOF
                 IFS=, read sigpath1 sigpath2 <<EOF
 $sigarg2
 EOF
-                echo "INFO:: Mount ${resolved} (${sigfs1}) over /sigdev"
                 mount --mkdir -r -t "$sigfs1" "$resolved" /sigdev
                 sigpath="/sigdev/${sigpath1}"
                 is_fs=$(blkid -o value -s TYPE "${sigpath}")
                 if [ "${is_fs}" != "" ]; then
-                    echo "INFO:: File ${sigpath} has type ${is_fs}"
                     if cryptsetup isLuks "${sigpath}" >/dev/null 2>&1; then
                         while ! eval cryptsetup open --type luks2 "${sigpath}" sigdev; do
                             sleep 2;
@@ -86,7 +84,6 @@ EOF
                     mount --mkdir -r -t "$sigfs2" "${sigpath}" /sigdev2
                     sigpath="/sigdev2/${sigpath2}"
                 fi
-                echo "INFO:: Signature path: ${sigpath}"
                 dd if="${sigpath}" of="${sigfile}" >/dev/null 2>&1
                 if mountpoint -q /sigdev2; then
                     umount /sigdev2
@@ -101,10 +98,10 @@ EOF
                 ;;
         esac
     else
-        echo "Can't mount device ${sigdev} over /run/sigdev"
+        echo "Can't mount device ${sigdev} over /sigdev"
     fi
     if [ ! -f "${sigfile}" ]; then
-        echo "ERROR: signature file could not be opened. "
+        msg "ERROR: signature file could not be opened. "
         launch_interactive_shell
     fi
 }
@@ -264,19 +261,18 @@ _compare_signatures() {
     _cryptdev_sig_sha=$(sha512sum "${cryptdev}.sig")
     _keys_sig_sha=$(sha512sum "/crypto_sigfile.bin")
     if [ ! "${_keys_sig_sha%% *}" != "${_cryptdev_sig_sha%% *}" ]; then
-        msg "ERROR: one or more signature files are corrupted."
-        launch_interactive_shell
+        err "one or more signatures are corrupted."
+        return 1
     fi
 }
 
 _verify() {
     _compare_signatures
     if _verify_signature "${cryptdev}" "/crypto_sigfile.bin"; then
-        msg "Signature is OK, continue booting."
+        echo "Signature is OK, continue booting."
         export verify="n"
     else
-        echo "ERROR: one or more files are corrupted"
-        launch_interactive_shell
+        err "one or more files are corrupted"
     fi
 }
 
