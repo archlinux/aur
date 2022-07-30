@@ -1,14 +1,13 @@
 pkgbase = python2-mercurial_extension_utils
 	pkgdesc = Mercurial Extension Utils
-	pkgver = 1.3.0
+	pkgver = 1.5.2
 	pkgrel = 1
-	url = https://bitbucket.org/Mekk/mercurial-extension_utils
+	url = https://pypi.org/project/mercurial_extension_utils
 	arch = any
 	license = BSD
-	makedepends = python2-distribute
+	makedepends = python2-setuptools
 	depends = python2
-	source = https://pypi.io/packages/source/m/mercurial_extension_utils/mercurial_extension_utils-1.3.0.tar.gz
-	md5sums = f12fb6df9570e9ccdfe6662eb63a1f31
+	source = https://pypi.org/packages/source/m/mercurial_extension_utils/mercurial_extension_utils-1.5.2.tar.gz
+	sha512sums = 22f0ec5e922ca88fccaf75648557d8fe13175acd94cc4501f00bd010d8f8f91d8f2808aa1fa45b11ff95c45cf7e26e024d7826aae07f9a45900f6356aa08401e
 
 pkgname = python2-mercurial_extension_utils
-

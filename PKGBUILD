@@ -1,18 +1,23 @@
-# Maintainer: Vladimir Tsanev <tsachev@gmail.com>
-_pkgname=mercurial_extension_utils
-pkgname=python2-$_pkgname
-pkgver=1.3.0
+# Contributor: Vladimir Tsanev <tsachev@gmail.com>
+_base=mercurial_extension_utils
+pkgname=python2-${_base}
+pkgver=1.5.2
 pkgrel=1
+arch=(any)
 pkgdesc="Mercurial Extension Utils"
-arch=('any')
-url="https://bitbucket.org/Mekk/mercurial-extension_utils"
-makedepends=('python2-distribute')
-depends=('python2')
+url="https://pypi.org/project/${_base}"
 license=('BSD')
-source=(https://pypi.io/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
-md5sums=('f12fb6df9570e9ccdfe6662eb63a1f31')
+depends=(python2)
+makedepends=(python2-setuptools)
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('22f0ec5e922ca88fccaf75648557d8fe13175acd94cc4501f00bd010d8f8f91d8f2808aa1fa45b11ff95c45cf7e26e024d7826aae07f9a45900f6356aa08401e')
+
+build() {
+  cd ${_base}-${pkgver}
+  python2 setup.py build
+}
 
 package() {
-  cd $srcdir/$_pkgname-$pkgver
-  python2 setup.py install --root=$pkgdir || return 1
+  cd ${_base}-${pkgver}
+  python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }
