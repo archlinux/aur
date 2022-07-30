@@ -1,18 +1,19 @@
 # Maintainer: Alec Mev <alec@mev.earth>
 
 pkgname=notion-app-nativefier
-pkgver=2022.03.18
+pkgver=2022.07.30
 pkgrel=1
 pkgdesc='Notion in shared Electron runtime'
 arch=('x86_64')
 url='https://www.notion.so'
 license=('MIT')
-_electronv=17 # See todoist-nativefier for rationale
+_nativefier=49
+_electron=19
 depends=("electron${_electronv}")
 makedepends=(
   'curl'
   'gendesk'
-  'nodejs-nativefier'
+  'yarn'
 )
 
 _name=Notion
@@ -26,7 +27,7 @@ EOF
     --pkgname "${pkgname}" \
     --pkgdesc "${pkgdesc}" \
     --name "${_name}" \
-    --categories "Network;Office;ProjectManagement;Utility;TextTools;" \
+    --categories "Network;Office;ProjectManagement;Utility;TextTools" \
     -n \
     -f
   curl https://www.notion.so/images/logo-ios.png > "${pkgname}.png"
@@ -34,8 +35,8 @@ EOF
 
 build() {
   cd "${srcdir}"
-  # https://github.com/nativefier/nativefier/issues/831
-  nativefier \
+  yarn add "nativefier@${_nativefier}"
+  yarn nativefier \
     --name "${_name}" \
     --icon "${pkgname}.png" \
     --maximize \
