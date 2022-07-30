@@ -1,19 +1,19 @@
 pkgbase = gmail-desktop
 	pkgdesc = Unofficial Gmail desktop app
 	pkgver = 3.0.0.alpha.34
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/timche/gmail-desktop
 	arch = x86_64
 	license = MIT
 	makedepends = yarn
-	depends = electron15
+	depends = electron19
 	optdepends = libnotify: desktop notifications
 	optdepends = libappindicator-gtk3: tray icon
 	source = gmail-desktop-3.0.0.alpha.34.tar.gz::https://github.com/timche/gmail-desktop/archive/v3.0.0-alpha.34.tar.gz
 	source = gmail-desktop.sh
 	source = gmail-desktop.desktop
 	sha256sums = d9fcc89e79b1ad5ee091adef8c6ff4284583db09c3e18e7284fe8c57a5d0e2cf
-	sha256sums = 73ecbbf5025251fb057557cf316c8fc39fb99047fb1a2d5e7f26ad83180d9877
+	sha256sums = 6315ff1d7711cb4442d553c94948b9c296700dc48e81462db126ea0ef68cdade
 	sha256sums = 8c30e207fe88455f63f4c0b2ae9087a2ca2bbeaa68b9be244c31a9ec392373c4
 
 pkgname = gmail-desktop
