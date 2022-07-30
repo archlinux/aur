@@ -3,8 +3,8 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-speex
-pkgver=1.2.0
-pkgrel=3
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="A free codec for free speech (android)"
 arch=(any)
 url="http://www.speex.org"
@@ -14,7 +14,7 @@ depends=("android-${_android_arch}-speexdsp"
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-configure')
 source=("http://downloads.xiph.org/releases/speex/speex-$pkgver.tar.gz")
-md5sums=('8ab7bb2589110dfaf0ed7fa7757dc49c')
+md5sums=('fe7bf610883ff202092b92c72fe0fe3e')
 
 build() {
     cd "${srcdir}"/speex-${pkgver}
