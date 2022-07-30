@@ -2,7 +2,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=r21737.dfaab8f65
+pkgver=r21802.68148cf4e
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -44,7 +44,7 @@ source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-mainline"
         'git+https://github.com/MerryMage/dynarmic.git'
         'libressl::git+https://github.com/citra-emu/ext-libressl-portable.git'
         'git+https://github.com/libusb/libusb.git'
-        'git+https://github.com/discord/discord-rpc.git'
+        'git+https://github.com/yuzu-emu/discord-rpc.git'
         'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
         'git+https://github.com/ReinUsesLisp/sirit'
         'git+https://github.com/yuzu-emu/mbedtls'
