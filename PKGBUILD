@@ -38,6 +38,6 @@ check() {
 package() {
   cd bees
 
-  make install DESTDIR="${pkgdir}" BEES_VERSION="${pkgver}"
+  make BEES_VERSION="${pkgver}" DESTDIR="${pkgdir}" install
   mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
 }
