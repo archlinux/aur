@@ -21,7 +21,7 @@ pkgname=(
     'corecomponents_ux_plugins'
     'corecomponents_tools'
 )
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Toolkit for C++ application development"
 url="https://www.corecomponents.io"
@@ -31,10 +31,10 @@ source=(
     "$pkgbase-$pkgver.tar.gz::https://www.corecomponents.io/download/CoreComponents-$pkgver.tar.gz"
 )
 md5sums=(
-    'd76ad76e0471e11bfd638d389d9edc10'
+    '302e7921752136ceb4b45ffcdae37b03'
 )
 sha1sums=(
-    '2df02e6bc404231c4ee78b3974e753243db585e4'
+    'f01d0dc1699dd82bf27ae137322286726e241420'
 )
 
 makedepends=(
@@ -48,8 +48,7 @@ makedepends=(
 )
 
 prepare() {
-    rm -f CoreComponents
-    ln -s CoreComponents-$pkgver CoreComponents
+    ln -sf CoreComponents-$pkgver CoreComponents
     if [ ! -x CoreComponents-$pkgver-bootstrap/ccbuild ]; then
         mkdir -p CoreComponents-$pkgver-bootstrap
         pushd CoreComponents-$pkgver-bootstrap
@@ -66,7 +65,12 @@ prepare() {
 
 build() {
     cd CoreComponents-$pkgver-build
-    ./ccbuild -prefix=/usr -release -test ../CoreComponents
+    ./ccbuild -prefix=/usr -release ../CoreComponents
+}
+
+check() {
+    cd CoreComponents-$pkgver-build
+    ./ccbuild -prefix=/usr -release -test-run ../CoreComponents
 }
 
 package_corecomponents_core() {
