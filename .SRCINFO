@@ -1,0 +1,13 @@
+pkgbase = xec
+	pkgdesc = embedded controller i/o
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/miloserdev/xec.git
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	source = git+https://github.com/miloserdev/xec.git
+	md5sums = SKIP
+
+pkgname = xec
