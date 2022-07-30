@@ -21,9 +21,6 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 b2sums=('00f7f47bac1048ade1bcd50945363b794104f19c036f117bac87399bfd0efee202d0d1e23159aafbb3ea7693502438cc4641dca761ec01b4910be606e3a15a59')
 
 build() {
-	if [[ $CXX != clang* ]]; then
-		CXXFLAGS+=" -Wno-array-bounds"
-	fi
 	cmake -S $pkgname-$pkgver -B build \
 		-DBUILD_SHARED_LIBS=ON \
 		-DCMAKE_BUILD_TYPE=None \
