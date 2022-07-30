@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://www.gog.com/game/cuphead_the_delicious_last_course'
 license=('custom')
 depends=('gog-cuphead>=1.3.3')
-makedepends=('innoextract' 'lgogdownloader')
+makedepends=('innoextract')
 options=('libtool' 'staticlibs' '!strip')
 source=(
     "setup_cuphead_-_the_delicious_last_course_${pkgver%.*}_(${pkgver##*.}).exe`
