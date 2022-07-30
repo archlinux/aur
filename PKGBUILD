@@ -29,9 +29,6 @@ pkgver() {
 }
 
 build() {
-	if [[ $CXX != clang* ]]; then
-		CXXFLAGS+=" -Wno-array-bounds"
-	fi
 	cmake -S $_pkgname -B build \
 		-DBUILD_SHARED_LIBS=ON \
 		-DCMAKE_BUILD_TYPE=None \
