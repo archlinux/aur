@@ -2,21 +2,20 @@
 # Contributor: akaessens
 
 pkgname=google-calendar-nativefier
-pkgver=2022.03.18
+pkgver=2022.07.30
 pkgrel=1
 pkgdesc='Google Calendar in shared Electron runtime'
 arch=('x86_64')
 url='https://calendar.google.com'
 license=('MIT')
-_electronv=17 # See todoist-nativefier for rationale
+_nativefier=49
+_electron=19
 depends=("electron${_electronv}")
 makedepends=(
+  'curl'
   'gendesk'
-  'nodejs-nativefier'
+  'yarn'
 )
-install=google-calendar-nativefier.install
-source=("${pkgname}.png")
-sha256sums=('b6ade1c13d0f7cbab5bcba9071463293ea5a8251dd693dde80148dc6b6980b42')
 
 _name='Google Calendar'
 
@@ -29,15 +28,18 @@ EOF
     --pkgname "${pkgname}" \
     --pkgdesc "${pkgdesc}" \
     --name "${_name}" \
-    --categories "Network;Office;Calendar;" \
+    --categories "Network;Office;Calendar" \
     -n \
     -f
+  curl \
+    https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Calendar_icon_%282020%29.svg/512px-Google_Calendar_icon_%282020%29.svg.png \
+    > "${pkgname}.png"
 }
 
 build() {
   cd "${srcdir}"
-  # https://github.com/nativefier/nativefier/issues/831
-  nativefier \
+  yarn add "nativefier@${_nativefier}"
+  yarn nativefier \
     --name "${_name}" \
     --icon "${pkgname}.png" \
     --maximize \

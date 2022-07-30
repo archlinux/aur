@@ -1,15 +1,13 @@
 pkgbase = google-calendar-nativefier
 	pkgdesc = Google Calendar in shared Electron runtime
-	pkgver = 2022.03.18
+	pkgver = 2022.07.30
 	pkgrel = 1
 	url = https://calendar.google.com
-	install = google-calendar-nativefier.install
 	arch = x86_64
 	license = MIT
+	makedepends = curl
 	makedepends = gendesk
-	makedepends = nodejs-nativefier
-	depends = electron17
-	source = google-calendar-nativefier.png
-	sha256sums = b6ade1c13d0f7cbab5bcba9071463293ea5a8251dd693dde80148dc6b6980b42
+	makedepends = yarn
+	depends = electron
 
 pkgname = google-calendar-nativefier
