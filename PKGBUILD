@@ -1,23 +1,23 @@
-# Maintainer: Niklas <dev@n1klas.net>
+# Contributor: Niklas <dev@n1klas.net>
 
-pkgname=python2-otr
-_name=python-otr
-pkgver=1.2.0
+_base=python-otr
+pkgname=${_base/-/2-}
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Off-The-Record Messaging (OTR) protocol implementation for python"
-arch=('any')
-url="https://github.com/AGProjects/python-otr"
-license=('LGPL2.1')
-depends=('python2')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('4230fdc4246b366c49a9593280775e65b38be9083e72e0f93b974fdf3b2fb374b87925b7b0f842c2e62f12a7b5df7f3a7bc8e1dd11406187f6bf7e73b1481010')
+arch=(any)
+url="https://pypi.org/project/${_base}"
+license=('LGPL')
+depends=(python2-cryptography python2-gmpy python2-zope-interface) # python2-application
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('7370bf53dafbeed4106a6fde9309b906f11cf744e351549ad9fc2df07d2b8998f5c12ca3387925920bd830e277ed7fae0e6c0a078d7c944bd4e28dcf0d37cd15')
 
 build() {
-    cd "${srcdir}/${_name}-${pkgver}"
-    python2 setup.py build
+  cd ${_base}-${pkgver}
+  python2 setup.py build
 }
 
 package() {
-    cd "${srcdir}/${_name}-${pkgver}"
-    python2 setup.py install --root="${pkgdir}" --skip-build --optimize=1
+  cd ${_base}-${pkgver}
+  python2 setup.py install --root="${pkgdir}" --skip-build --optimize=1
 }

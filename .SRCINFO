@@ -1,13 +1,14 @@
 pkgbase = python2-otr
 	pkgdesc = Off-The-Record Messaging (OTR) protocol implementation for python
-	pkgver = 1.2.0
+	pkgver = 1.2.2
 	pkgrel = 1
-	url = https://github.com/AGProjects/python-otr
+	url = https://pypi.org/project/python-otr
 	arch = any
-	license = LGPL2.1
-	depends = python2
-	source = https://files.pythonhosted.org/packages/source/p/python-otr/python-otr-1.2.0.tar.gz
-	sha512sums = 4230fdc4246b366c49a9593280775e65b38be9083e72e0f93b974fdf3b2fb374b87925b7b0f842c2e62f12a7b5df7f3a7bc8e1dd11406187f6bf7e73b1481010
+	license = LGPL
+	depends = python2-cryptography
+	depends = python2-gmpy
+	depends = python2-zope-interface
+	source = https://pypi.org/packages/source/p/python-otr/python-otr-1.2.2.tar.gz
+	sha512sums = 7370bf53dafbeed4106a6fde9309b906f11cf744e351549ad9fc2df07d2b8998f5c12ca3387925920bd830e277ed7fae0e6c0a078d7c944bd4e28dcf0d37cd15
 
 pkgname = python2-otr
-
