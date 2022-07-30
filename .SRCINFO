@@ -1,6 +1,6 @@
 pkgbase = gog-hollow-knight
 	pkgdesc = Hollow Knight is a challenging 2D action-adventure. You’ll explore twisting caverns, battle tainted creatures and escape intricate traps, all to solve an ancient long-hidden mystery.
-	pkgver = 1.4.3.2
+	pkgver = 1.5.78.11833.51218
 	pkgrel = 1
 	epoch = 1
 	url = http://hollowknight.com/
@@ -10,10 +10,9 @@ pkgbase = gog-hollow-knight
 	license = custom
 	source = gog-hollow-knight
 	source = gog-hollow-knight.desktop
-	source = file://hollow_knight_1_4_3_2_23987.sh
+	source = file://hollow_knight_1_5_78_11833_51218.sh
 	sha256sums = 987b0c0e32895d0a4214650d0afb2f3c2359b049212e13860dc9ae67553c48b4
 	sha256sums = 8860a0daf52181f78711c2b1099d7a09a30ba09331c68e8aae71182a996a0acd
-	sha256sums = 483414118634692276b2ac50ebc87c2d2b1e4ca445cc3a7c901b2af9ab59e0a5
+	sha256sums = ab20725edf1f539115062b0e61f42a13bab0ff843f3faf89df9af5499dcdda72
 
 pkgname = gog-hollow-knight
-

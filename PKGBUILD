@@ -8,7 +8,7 @@
 #       - https://github.com/Sude-/lgogdownloader
 
 pkgname='gog-hollow-knight'
-pkgver=1.4.3.2
+pkgver=1.5.78.11833.51218
 pkgrel=1
 # Fix upstream versioning shenanigans:
 epoch=1
@@ -20,13 +20,11 @@ arch=('x86_64')
 source=(
   "${pkgname}"
   "${pkgname}.desktop"
-  'file://hollow_knight_1_4_3_2_23987.sh'
+  "file://hollow_knight_${pkgver//./_}.sh"
 )
-sha256sums=(
-  '987b0c0e32895d0a4214650d0afb2f3c2359b049212e13860dc9ae67553c48b4'
-  '8860a0daf52181f78711c2b1099d7a09a30ba09331c68e8aae71182a996a0acd'
-  '483414118634692276b2ac50ebc87c2d2b1e4ca445cc3a7c901b2af9ab59e0a5'
-)
+sha256sums=('987b0c0e32895d0a4214650d0afb2f3c2359b049212e13860dc9ae67553c48b4'
+            '8860a0daf52181f78711c2b1099d7a09a30ba09331c68e8aae71182a996a0acd'
+            'ab20725edf1f539115062b0e61f42a13bab0ff843f3faf89df9af5499dcdda72')
 
 prepare() {
   find . -type d -exec chmod 755 {} \;
