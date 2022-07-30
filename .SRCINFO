@@ -1,0 +1,26 @@
+pkgbase = woeusb-ng-git
+	pkgdesc = Simple tool that enable you to create your own usb stick with Windows installer.
+	pkgver = 0.2.5.r64.gbcb7583
+	pkgrel = 1
+	url = https://github.com/WoeUSB/WoeUSB-ng
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = parted
+	depends = dosfstools
+	depends = ntfs-3g
+	depends = grub
+	depends = p7zip
+	depends = python
+	depends = python-pip
+	depends = python-wxpython
+	depends = xdg-utils
+	depends = python-termcolor
+	provides = woeusb
+	conflicts = woeusb
+	conflicts = woeusb-git
+	conflicts = woeusb-ng
+	source = woeusb-ng-git::git+https://github.com/WoeUSB/WoeUSB-ng
+	sha256sums = SKIP
+
+pkgname = woeusb-ng-git
