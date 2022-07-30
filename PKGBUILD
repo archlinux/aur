@@ -2,7 +2,7 @@
 
 pkgname=bindiff
 pkgver=7
-pkgrel=2
+pkgrel=3
 pkgdesc="A comparison tool for binary files that assists vulnerability researchers and engineers to quickly find differences and similarities in disassembled code."
 arch=('x86_64')
 url="https://www.zynamics.com/bindiff.html"
@@ -11,8 +11,8 @@ depends=('desktop-file-utils' 'java-runtime>=11')
 options=('!strip')
 install=${pkgname}.install
 backup=("etc/opt/${pkgname}/bindiff.json")
-source=("https://storage.googleapis.com/bindiff-releases/updated-20210607/bindiff_${pkgver}_amd64.deb"{,.asc})
-sha256sums=('a3aa38579454e742189954e8e4006427684c08f8616fa754de8fa4d5be4adfbb'
+source=("https://storage.googleapis.com/bindiff-releases/updated-20220303/bindiff_${pkgver}_amd64.deb"{,.asc})
+sha256sums=('6fe6f0c1215ba8b38c486828e67bcd2a590d038041c7ac8d6de1c44ad3ee00d4'
             'SKIP')
 validpgpkeys=('EB4C1BFD4F042F6DDDCCEC917721F63BD38B4796')  # Google Inc. (Linux Packages Signing Authority)
 
