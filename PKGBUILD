@@ -1,18 +1,19 @@
 # Maintainer: Alec Mev <alec@mev.earth>
 
 pkgname=todoist-nativefier
-pkgver=2022.03.18
+pkgver=2022.07.30
 pkgrel=1
 pkgdesc='Todoist in shared Electron runtime'
 arch=('x86_64')
 url='https://todoist.com'
 license=('MIT')
-_electronv=17 # https://bugs.archlinux.org/task/74328
+_nativefier=49
+_electron=19
 depends=("electron${_electronv}")
 makedepends=(
   'curl'
   'gendesk'
-  'nodejs-nativefier'
+  'yarn'
 )
 
 _name=Todoist
@@ -26,7 +27,7 @@ EOF
     --pkgname "${pkgname}" \
     --pkgdesc "${pkgdesc}" \
     --name "${_name}" \
-    --categories "Network;Office;ProjectManagement;" \
+    --categories "Network;Office;ProjectManagement" \
     -n \
     -f
   curl \
@@ -36,8 +37,8 @@ EOF
 
 build() {
   cd "${srcdir}"
-  # https://github.com/nativefier/nativefier/issues/831
-  nativefier \
+  yarn add "nativefier@${_nativefier}"
+  yarn nativefier \
     --name "${_name}" \
     --icon "${pkgname}.png" \
     --maximize \
