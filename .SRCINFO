@@ -1,0 +1,15 @@
+pkgbase = earth-wallpaper-nightly
+	pkgdesc = 实时获取地球照片作为壁纸
+	pkgver = 1.3.1.r4.g5782504
+	pkgrel = 1
+	url = https://jihulab.com/ambition-echo/earth_wallpaper
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = qt5-base
+	source = git+https://jihulab.com/ambition-echo/earth_wallpaper.git
+	sha256sums = SKIP
+
+pkgname = earth-wallpaper-nightly
