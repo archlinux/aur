@@ -1,7 +1,7 @@
 pkgbase = android-x86-speexdsp
 	pkgdesc = DSP library derived from Speex (android)
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = http://www.speexdsp.org
 	arch = any
 	license = BSD
@@ -11,8 +11,7 @@ pkgbase = android-x86-speexdsp
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = http://downloads.xiph.org/releases/speex/speexdsp-1.2.0.tar.gz
-	md5sums = b722df341576dc185d897131321008fc
+	source = http://downloads.xiph.org/releases/speex/speexdsp-1.2.1.tar.gz
+	md5sums = e6eb5ddef743a362c8018f260b91dca5
 
 pkgname = android-x86-speexdsp
-
