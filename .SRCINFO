@@ -1,7 +1,7 @@
 pkgbase = zafiro-icon-theme
-	pkgdesc = A icon pack flat with light colors.
+	pkgdesc = A icon pack flat with light and dark colors.
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/zayronxio/Zafiro-icons
 	arch = any
 	license = GPL3
