@@ -1,0 +1,12 @@
+diff --unified --recursive --text dfhack/CMakeLists.txt dfhack.new/CMakeLists.txt
+--- dfhack/CMakeLists.txt	2022-07-29 03:02:00.924080839 -0600
++++ dfhack.new/CMakeLists.txt	2022-07-29 03:43:33.584455373 -0600
+@@ -244,7 +244,7 @@
+     # enable C++11 features
+     add_definitions(-DLINUX_BUILD)
+     add_definitions(-D_GLIBCXX_USE_C99)
+-    set(GCC_COMMON_FLAGS "-fvisibility=hidden -mtune=generic -Wall -Werror")
++    set(GCC_COMMON_FLAGS "-fvisibility=hidden -mtune=generic -Wall -Werror -Wno-restrict")
+     set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} -g")
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GCC_COMMON_FLAGS}")
+     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${GCC_COMMON_FLAGS}")
