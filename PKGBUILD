@@ -37,10 +37,13 @@ build() {
 }
 
 package() {
+    # Disable weird post install hook
+    sed --quiet --in-place 's|post_install()$|#post_install()|g' \
+        "${srcdir}/${pkgname}/setup.py"
+    # Install package
     cd "${srcdir}/${pkgname}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-
-    # Copy files because the installer is weird
+    # Copy files because the installer hook is atrocious
     install -dm 0755 "${pkgdir}/usr"
     install -dm 0755 "${pkgdir}/usr/bin"
     install -dm 0755 "${pkgdir}/usr/share"
