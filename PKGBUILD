@@ -24,6 +24,8 @@ pkgver() {
 build() {
   cd bees
 
+  export CXXFLAGS="$CXXFLAGS -Wno-error=restrict"
+  export CFLAGS="$CFLAGS -Wno-error=restrict"
   make BEES_VERSION="${pkgver}" all scripts
 }
 
