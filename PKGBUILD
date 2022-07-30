@@ -2,13 +2,13 @@
 
 pkgname=adwcustomizer-git
 _pkgname=AdwCustomizer
-pkgver=r52.c9e02d5
+pkgver=r120.eb55fec
 pkgrel=1
 pkgdesc="Change the look of Adwaita, with ease"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ArtyIF/AdwCustomizer"
 license=('GPL3')
-depends=('libadwaita-git>=1.2.alpha')
+depends=('libadwaita-git>=1.2.alpha' 'python-anyascii')
 makedepends=('git' 'meson' 'blueprint-compiler')
 checkdepends=('appstream-glib')
 optdepends=('adw-gtk3: The theme from libadwaita ported to GTK-3'
