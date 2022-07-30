@@ -2,7 +2,7 @@
 
 _npmname=clinic
 pkgname=nodejs-$_npmname
-pkgver=11.1.0
+pkgver=11.1.2
 pkgrel=1
 
 pkgdesc="diagnoses your Node.js performance issues"
@@ -20,7 +20,7 @@ options=(!strip emptydirs zipman)
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
 	"https://raw.githubusercontent.com/clinicjs/node-clinic/main/LICENSE")
 noextract=("${_npmname}-${pkgver}.tgz")
-b2sums=('2593a0614104109203c74f081d4e98f443cfaaa8ae981975c6d6c88b9f7697087e22ceaefcde33e9127964fa65e7b8b2536ac11ccc6877e3f57d4a245abdd9f9'
+b2sums=('3f650c42d290c53fcd29381b2fc042a132ac5580e679b1f5cf7d84c5b3522339b22cde0cd3524abd95776f04d3165746fb04f5200d532111a2c96e0b5af020b7'
 	'1f41dbdf32988d8c90a6762c97ff7292bdad10bbd7e900817d50862bf43e4c0c750189da6a4a990beea158b499526d54f208272e41fd18fd39a7d428231dfbb5')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
@@ -29,7 +29,8 @@ package() {
 	npm install -s -g \
 		--cache "${srcdir}/npm-cache" \
 		--prefix "${pkgdir}/usr" \
-		"${srcdir}/${_npmname}-${pkgver}.tgz"
+		"${srcdir}/${_npmname}-${pkgver}.tgz" \
+		# --loglevel verbose
 
 	# Fix ownership of ALL FILES
 	find "${pkgdir}/usr" -type d -exec chmod 755 {} +
