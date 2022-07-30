@@ -1,8 +1,8 @@
 # Maintainer: gee
 # contributors: yochananmarqos, bpierre, PedroHLC, rodrigo21
 pkgname='vkbasalt'
-pkgver=0.3.2.5
-pkgrel=3
+pkgver=0.3.2.6
+pkgrel=1
 pkgdesc='A Vulkan post-processing layer. Some of the effects are CAS, FXAA, SMAA, deband.'
 arch=('x86_64')
 url='https://github.com/DadSchoorse/vkBasalt'
@@ -10,7 +10,7 @@ license=('zlib')
 makedepends=('meson' 'ninja' 'glslang' 'libx11' 'spirv-headers' 'vulkan-headers')
 depends=('gcc-libs' 'glslang' 'libx11')
 source=("${url}/releases/download/v${pkgver}/vkBasalt-${pkgver}.tar.gz")
-sha256sums=('837cf63737302de7ab9c4a190a1ed3b8a1174630d3753f7a8478b140294b3b39')
+sha256sums=('bf71e34d5d3fea677bc5ab95c07fd5eb052369c399d839789331614b90957593')
 install=vkbasalt.install
 
 prepare() {
