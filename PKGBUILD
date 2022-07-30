@@ -29,14 +29,14 @@ optdepends=(
 )
 
 source=(
-    "An_Anime_Game_Launcher_${pkgver}.AppImage::https://gitlab.com/an-anime-team/an-anime-game-launcher/uploads/eea7a19068eeddf9554356e2ed804012/an-anime-game-launcher-2.3.6.AppImage"
+    "An_Anime_Game_Launcher_${pkgver}.AppImage::https://gitlab.com/an-anime-team/an-anime-game-launcher/uploads/176cc0d61a94658533bb1e73bdfb7201/an-anime-game-launcher-2.3.7.AppImage"
     "icon.png"
     "an-anime-game-launcher-bin.desktop"
     "an-anime-game-launcher-bin.sh"
 )
 
 md5sums=(
-    '9b0273fe1368ecdd60857b09eecf3c01'
+    'c7eb1782733d5032671d7e7e7b8d5b72'
     '82d75ad72aed6c6962f203f9c6f329d3'
     'acb9fecb5d938c4fb8e5facb0511bc23'
     'aa1d36e938b47b1f9fcff6aa5cec588b'
