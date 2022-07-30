@@ -1,0 +1,38 @@
+diff --git a/setup.py b/setup.py
+index e6c67e6..0b7cbf0 100644
+--- a/setup.py
++++ b/setup.py
+@@ -52,7 +52,7 @@ test_requires = ['rasterio', 'dask', 'xarray', 'cartopy>=0.20.0', 'pillow', 'mat
+ if sys.platform.startswith("win"):
+     extra_compile_args = []
+ else:
+-    extra_compile_args = ["-O3", "-Wno-unused-function"]
++    extra_compile_args = ["-O2", "-Wno-unused-function"]
+ 
+ extensions = [
+     Extension("pyresample.ewa._ll2cr", sources=["pyresample/ewa/_ll2cr.pyx"],
+@@ -82,7 +82,7 @@ if __name__ == "__main__":
+     README = open('README.md', 'r').read()
+     setup(name='pyresample',
+           url='https://github.com/pytroll/pyresample',
+-          version=versioneer.get_version(),
++          version='$PKGVER',
+           cmdclass=cmdclass,
+           description='Geospatial image resampling in Python',
+           long_description=README,
+@@ -90,13 +90,12 @@ if __name__ == "__main__":
+           author='Thomas Lavergne',
+           author_email='t.lavergne@met.no',
+           package_dir={'pyresample': 'pyresample'},
+-          packages=find_packages(),
+-          package_data={'pyresample.test': ['test_files/*']},
++          packages=find_packages(exclude=['pyresample.test*']),
+           python_requires='>=3.8',
+           setup_requires=setup_requires,
+           install_requires=requirements,
+           extras_require=extras_require,
+-          ext_modules=cythonize(extensions),
++          ext_modules=cythonize(extensions, language_level = "3"),
+           entry_points=entry_points,
+           zip_safe=False,
+           classifiers=[

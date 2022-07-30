@@ -1,25 +1,37 @@
 pkgbase = pyresample
 	pkgdesc = Geospatial image resampling in Python
-	pkgver = 1.22.3
+	pkgver = 1.25.0
 	pkgrel = 1
 	url = https://github.com/pytroll/pyresample
-	arch = any
+	arch = x86_64
 	license = LGPL3
 	makedepends = cython
-	depends = python-setuptools
-	depends = python-pyproj
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-oldest-supported-numpy
+	makedepends = python-versioneer-518
+	makedepends = python-wheel
+	depends = python>=3.8
 	depends = python-configobj
+	depends = python-numpy
 	depends = python-pykdtree
+	depends = python-pyproj
+	depends = python-setuptools
 	depends = python-yaml
 	optdepends = python-numexpr: used to optimize some bottlenecks
-	optdepends = python-matplotlib
-	optdepends = python-rasterio
 	optdepends = python-cartopy
 	optdepends = python-dask
-	optdepends = python-xarray
+	optdepends = python-matplotlib
+	optdepends = python-rasterio
 	optdepends = python-shapely
+	optdepends = python-xarray
 	optdepends = python-zarr
-	source = https://github.com/pytroll/pyresample/archive/v1.22.3.tar.gz
-	sha512sums = 12f3a7039a0dcf611bba546d2e3fd2f44b95620959a3240e36c690cdccc27f35e4d5c10a924568368ef57c90aba765f4446fdb460fa6b168d238c43e8e5001b2
+	provides = python-pyresample
+	source = pyresample::git+https://github.com/pytroll/pyresample#commit=93df018?signed
+	source = setup.py.patch
+	validpgpkeys = 0CEE1C80170AEA74FEEF700DD0DB5057C9F9D380
+	sha256sums = SKIP
+	sha256sums = f51c28743db217f124f33c42334a97cc86d01cd9a96728f67ca3c05de39042f9
 
 pkgname = pyresample
