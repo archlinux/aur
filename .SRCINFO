@@ -1,6 +1,6 @@
 pkgbase = r-metabosignal
 	pkgdesc = MetaboSignal: a network-based approach to overlay and explore metabolic and signaling KEGG pathways
-	pkgver = 1.26.1
+	pkgver = 1.26.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MetaboSignal
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-metabosignal
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MetaboSignal_1.26.1.tar.gz
-	sha256sums = ae09803f83eecbd65266f7c8645373782d71c877aa96bdd91644a6fca9e6aff2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MetaboSignal_1.26.2.tar.gz
+	sha256sums = 96dc1c7709cf0afdc8fbe24b4a3ffaf401e82c7047dcdae6b32a81f91aa87fb3
 
 pkgname = r-metabosignal
