@@ -2,7 +2,7 @@
 # Maintainer: amano.kenji <amano.kenji@proton.me>
 pkgname=janet-posix-spawn
 pkgver=0.0.1.r2021.02.17
-pkgrel=1
+pkgrel=2
 pkgdesc="A process API for janet wrapping posix-spawn(3)"
 arch=("x86_64")
 url="https://github.com/andrewchambers/janet-posix-spawn"
@@ -20,7 +20,7 @@ build() {
 package() {
   cd $pkgname-$_commit
   install -D -t "${pkgdir}/usr/share/doc/${pkgname}" README.md API.md
-  _modpath="$(janet -e '(print (dyn :syspath))')"
-  mkdir -p "${pkgdir}/${_modpath}"
-  jpm --modpath="${pkgdir}/${_modpath}" --binpath="${pkgdir}/usr/bin" install
+  modpath="$(janet -e '(print (dyn :syspath))')"
+  mkdir -p "${pkgdir}/${modpath}"
+  jpm --dest-dir="${pkgdir}" --modpath="${modpath}" --binpath="/usr/bin" install
 }
