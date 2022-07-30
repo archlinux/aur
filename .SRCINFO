@@ -4,6 +4,7 @@ pkgbase = mekfetch-git
 	pkgrel = 1
 	url = https://github.com/mekb-turtle/mekfetch
 	arch = any
+	optdepends = ttf-nerd-fonts-symbols: Nerd font support
 	provides = mekfetch
 	source = mekfetch::git+https://github.com/mekb-turtle/mekfetch.git
 	sha256sums = SKIP

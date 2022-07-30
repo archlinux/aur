@@ -8,6 +8,7 @@ url="https://github.com/mekb-turtle/mekfetch"
 provides=( mekfetch )
 source=("mekfetch::git+${url}.git")
 sha256sums=(SKIP)
+optdepends=('ttf-nerd-fonts-symbols: Nerd font support')
 build() {
 	make -C "$srcdir/mekfetch"
 }
