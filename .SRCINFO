@@ -1,6 +1,6 @@
 pkgbase = quakespasm-git
 	pkgdesc = A modern Quake 1 engine. Forked from Fitzquake and improved in many ways such as Vorbis/MP3 support for music. - Development version
-	pkgver = 0.94.6.r5.gf10c33a
+	pkgver = 0.94.7.r0.g47de22c
 	pkgrel = 1
 	url = http://quakespasm.sourceforge.net
 	install = quakespasm-git.install
