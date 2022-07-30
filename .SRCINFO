@@ -1,6 +1,6 @@
 pkgbase = dynarmic
 	pkgdesc = An ARM dynamic recompiler
-	pkgver = 6.2.1
+	pkgver = 6.2.3
 	pkgrel = 1
 	url = https://github.com/merryhime/dynarmic
 	arch = aarch64
@@ -10,14 +10,13 @@ pkgbase = dynarmic
 	makedepends = boost>=1.57
 	makedepends = cmake>=3.12
 	makedepends = fmt>=8.1.1
-	makedepends = fmt<9
 	makedepends = robin-map>=0.6.2
 	makedepends = xbyak>=6.60.1
 	makedepends = zydis>=3.1
 	makedepends = zydis<4
 	provides = libdynarmic.so
-	source = dynarmic-6.2.1.tar.gz::https://github.com/merryhime/dynarmic/archive/refs/tags/6.2.1.tar.gz
-	b2sums = 0fb7a290ae494176ffa13f567a7e1c7ca708d451ddb2077ee3f03c04e8d4a4e71c4f3353f5f3d3522fda2932ea30915a9f28d4badb61defbf57e3543558d5040
+	source = dynarmic-6.2.3.tar.gz::https://github.com/merryhime/dynarmic/archive/refs/tags/6.2.3.tar.gz
+	b2sums = 00f7f47bac1048ade1bcd50945363b794104f19c036f117bac87399bfd0efee202d0d1e23159aafbb3ea7693502438cc4641dca761ec01b4910be606e3a15a59
 
 pkgname = dynarmic
 	depends = libfmt.so
