@@ -4,7 +4,7 @@ resname=earth_wallpaper
 appid=cn.huguoyang.earthwallpaper
 pkgname=earth-wallpaper-git
 name=earth-wallpaper
-pkgver=1.2.1.r12.gad9d61a
+pkgver=1.2.1.r13.g44dbe1d
 pkgrel=1
 pkgdesc="实时获取地球照片作为壁纸"
 arch=('x86_64')
@@ -12,7 +12,7 @@ url="https://jihulab.com/ambition-echo/earth_wallpaper"
 license=('GPL3')
 
 depends=('qt5-base')
-makedepends=('cmake' 'git' 'make')
+makedepends=('cmake' 'git' 'ninja')
 
 source=("git+$url.git")
 sha256sums=("SKIP")
@@ -28,8 +28,8 @@ pkgver() {
 build() {
     mkdir build
     cd build
-    cmake ../$resname
-    make
+    cmake ../$resname -G Ninja
+    ninja
 }
 
 package() {
