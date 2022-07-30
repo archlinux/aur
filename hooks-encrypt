@@ -59,6 +59,7 @@ _get_sig() {
     IFS=: read sigdev sigarg1 sigarg2 <<EOF
 $sigdevice
 EOF
+    echo "INFO:: See if ${sigdev} is online"
     if resolved=$(resolve_device "${sigdev}" ${rootdelay}); then
         case ${sigarg1} in
             *[!0-9]*)
@@ -70,11 +71,12 @@ EOF
                 IFS=, read sigpath1 sigpath2 <<EOF
 $sigarg2
 EOF
+                echo "INFO:: Mount ${resolved} (${sigfs1}) over /sigdev"
                 mount --mkdir -r -t "$sigfs1" "$resolved" /sigdev
                 sigpath="/sigdev/${sigpath1}"
                 is_fs=$(blkid -o value -s TYPE "${sigpath}")
                 if [ "${is_fs}" != "" ]; then
-                    echo "${sigpath} has type ${is_fs}"
+                    echo "INFO:: File ${sigpath} has type ${is_fs}"
                     if cryptsetup isLuks "${sigpath}" >/dev/null 2>&1; then
                         while ! eval cryptsetup open --type luks2 "${sigpath}" sigdev; do
                             sleep 2;
@@ -84,6 +86,7 @@ EOF
                     mount --mkdir -r -t "$sigfs2" "${sigpath}" /sigdev2
                     sigpath="/sigdev2/${sigpath2}"
                 fi
+                echo "INFO:: Signature path: ${sigpath}"
                 dd if="${sigpath}" of="${sigfile}" >/dev/null 2>&1
                 if mountpoint -q /sigdev2; then
                     umount /sigdev2
