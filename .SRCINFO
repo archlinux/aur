@@ -5,7 +5,6 @@ pkgbase = mekfetch-bin
 	url = https://github.com/mekb-turtle/mekfetch
 	arch = any
 	optdepends = ttf-nerd-fonts-symbols: Nerd font support
-	provides = mekfetch
 	source = mekfetch::https://github.com/mekb-turtle/mekfetch/releases/download/1.0.0/mekfetch
 	sha256sums = 87347cab4bfbd0f418c2fd73ba34901b2e6980aff96f7854df54c9d81c0382ad
 
