@@ -4,7 +4,7 @@ resname=earth_wallpaper
 appid=cn.huguoyang.earthwallpaper
 pkgname=earth-wallpaper-git
 name=earth-wallpaper
-pkgver=1.3.0.r4.g64f5a90
+pkgver=1.3.0.r6.gf98a24b
 pkgrel=1
 pkgdesc="实时获取地球照片作为壁纸"
 arch=('x86_64')
@@ -25,10 +25,13 @@ pkgver() {
     )
 }
 
+prepare() {
+    sed -i "s/#define VERSION .*/#define VERSION \"$(git describe --tags |  sed  's/\([^-]*-g\)/r\1/;s/-/./g')\"/g" $resname/src/about.h
+}
+
 build() {
     mkdir build
     cd build
-    sed -i "s/#define VERSION .*/#define VERSION \"$(git describe --tags |  sed  's/\([^-]*-g\)/r\1/;s/-/./g')\"/g" ../$resname/src/about.h
     cmake ../$resname -G Ninja
     ninja
 }
