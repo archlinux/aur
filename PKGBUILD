@@ -2,7 +2,7 @@
 
 pkgname=cider-git
 _pkgname=Cider
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Project Cider. An open-source Apple Music client built from the ground up with Vue.js and Electron. Compiled from the GitHub repositories main branch."
 arch=("armv7h" "i686" "x86_64")
@@ -18,7 +18,7 @@ source=(
     "cider.desktop"
 )
 sha256sums=('SKIP'
-    'c41e9b1019411019fce8509e32f770edf33c9e864bf707c30ffe2e3f2dcf1571')
+            'c41e9b1019411019fce8509e32f770edf33c9e864bf707c30ffe2e3f2dcf1571')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
