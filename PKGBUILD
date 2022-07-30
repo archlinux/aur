@@ -33,7 +33,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname}"
-    python -m build --wheel --no-isolation
+    python setup.py build
 }
 
 package() {
