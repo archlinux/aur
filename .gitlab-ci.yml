@@ -60,7 +60,7 @@ aur:
     - git remote add aur ssh://aur@aur.archlinux.org/$CI_PROJECT_NAME.git
     - git fetch aur
   script:
-    - git push aur master
+    - git push -u aur master
     - sleep 30
 
 yay_after:
