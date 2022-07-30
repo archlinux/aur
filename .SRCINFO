@@ -1,0 +1,34 @@
+pkgbase = cef-jetbrains-git
+	pkgdesc = CEF for JetBrains
+	pkgver = 98.3.42+gf00e174+chromium+98.0.4758.102
+	pkgrel = 1
+	url = https://github.com/JetBrains/cef
+	arch = x86_64
+	license = BSD
+	makedepends = python
+	makedepends = gn
+	makedepends = ninja
+	makedepends = clang
+	makedepends = lld
+	makedepends = gperf
+	makedepends = nodejs
+	makedepends = pipewire
+	makedepends = java-runtime-headless
+	makedepends = git
+	depends = at-spi2-atk
+	depends = libxkbcommon
+	depends = libxcomposite
+	depends = mesa
+	depends = libcups
+	depends = pango
+	depends = libxrandr
+	depends = alsa-lib
+	depends = nss
+	provides = cef-jetbrains
+	conflicts = cef-jetbrains
+	source = git+https://github.com/JetBrains/cef.git#branch=jb_master
+	source = pkgver.py
+	sha256sums = SKIP
+	sha256sums = 7cacaccd96492a74c8f0e47ed08dc30d7f85f56e0d76ab3805007dfe05d116d5
+
+pkgname = cef-jetbrains-git
