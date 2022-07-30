@@ -17,7 +17,6 @@ conflicts=('elasticsearch')
 _relpkgname=elasticsearch
 source=(
   https://artifacts.elastic.co/downloads/$_relpkgname/$_relpkgname-$pkgver-x86_64.rpm{,.asc}
-  elasticsearch-env
   elasticsearch.service
   elasticsearch@.service
   elasticsearch-keystore.service
@@ -27,7 +26,6 @@ source=(
 )
 sha512sums=('cb4b58b289e8cef5e54c1724ea828d10ac9b8fa8d45b94e1dbf32ce0424e2c7ca06a313b68c0c5636872c71f0c5940b421abc31976006753cd7ee36a2d3d46fc'
             'SKIP'
-            'be6809adb680fc00a79da45b4c4ccadb1c21407b0fe2ea3ec5b5264f0a1810fa6289bcfb72acc1c360f68ea9f5ceb60e1316698d02401b1d27653ca3fc8e5dd6'
             '50d8cff9af937f0dbfc4e85ad326039f82470ef1b4546f4cd6cea38da3f6a82a0f9f7f1abc7c2b446963b48f04f9810dcaf9201827dd1e959a0514a9445fd2b0'
             'b8646b71bd9c1794776d2d10edab2a748bcd40efdfd5840a3c74d6736816cb6908fddfed754a1562062c745ab419256bef74dda9aaeef45e20845c43f0ecf6c3'
             '87ff9026db8883dab2b1c5dcf7ead2700de6aa37000631d153fb61cccf7ab42edbd5eeac4e320e9d6aa2aadbe76f2c6386efb1aefde6f02aef95680f6ffafd0b'
@@ -47,8 +45,6 @@ backup=('etc/default/elasticsearch'
 
 prepare() {
   cd "$srcdir"
-  find usr/share/elasticsearch/bin -type f ! -name \*.jar -exec \
-    sed -r 's;source .*/(.*)-env;source /usr/share/elasticsearch/\1-env;' -i {} +
   find usr/share/elasticsearch/bin -type f -name "elasticsearch-*" ! -name elasticsearch-bin -exec \
     sed 's/`dirname "$0"`/$(dirname "$(realpath "$0")")/' -i {} +
 }
@@ -68,8 +64,6 @@ package() {
   cp -R usr/share/elasticsearch/{bin,lib,modules,plugins} "$pkgdir"/usr/share/elasticsearch
 
   cd "$pkgdir"/usr/share/elasticsearch
-  rm -rf bin/elasticsearch-env
-
   find bin/ -type f -name elasticsearch-\* ! -name elasticsearch-cli -exec \
     ln -s ../share/elasticsearch/{} "$pkgdir"/usr/{} \;
 
@@ -77,7 +71,6 @@ package() {
   ln -s /var/lib/elasticsearch data
 
   cd "$pkgdir"
-  install -Dm644 "$srcdir"/elasticsearch-env usr/share/elasticsearch/elasticsearch-env
   install -Dm644 "$srcdir"/elasticsearch.service usr/lib/systemd/system/elasticsearch.service
   install -Dm644 "$srcdir"/elasticsearch@.service usr/lib/systemd/system/elasticsearch@.service
   install -Dm644 "$srcdir"/elasticsearch-keystore.service usr/lib/systemd/system/elasticsearch-keystore.service
@@ -86,4 +79,7 @@ package() {
   install -Dm644 "$srcdir"/elasticsearch-tmpfile.conf usr/lib/tmpfiles.d/elasticsearch.conf
   install -Dm644 "$srcdir"/usr/lib/sysctl.d/elasticsearch.conf usr/lib/sysctl.d/elasticsearch.conf
   install -Dm644 "$srcdir"/etc/sysconfig/elasticsearch etc/default/elasticsearch
+
+  sed -i 's@/etc/sysconfig/elasticsearch@/etc/default/elasticsearch@' usr/share/elasticsearch/bin/elasticsearch-env
+  sed -i 's@.*ES_JAVA_HOME=.*@ES_JAVA_HOME=/usr/lib/jvm/default-runtime@' etc/default/elasticsearch
 }
