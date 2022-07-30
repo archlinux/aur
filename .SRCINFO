@@ -1,20 +1,16 @@
 pkgbase = gmail-desktop-dev
-	pkgdesc = Nifty Gmail desktop app for macOS, Linux & Windows
-	pkgver = 3.0.0_alpha.27
-	pkgrel = 4
+	pkgdesc = Nifty Gmail desktop app
+	pkgver = 3.0.0_alpha.34
+	pkgrel = 1
 	url = https://github.com/timche/gmail-desktop/tree/develop
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
 	makedepends = yarn
-	depends = electron12
+	depends = electron15
 	optdepends = libappindicator-gtk3: Tray icon
 	conflicts = gmail-desktop
-	source = gmail-desktop-3.0.0-alpha.27.tar.gz::https://github.com/timche/gmail-desktop/archive/refs/tags/v3.0.0-alpha.27.tar.gz
-	source = gmail-desktop-3.0.0-alpha.27-menu.patch::https://github.com/alecmev/gmail-desktop/commit/fix-auto-hide-menu.patch
-	source = gmail-desktop-3.0.0-alpha.27-mailto-3.patch::https://github.com/alecmev/gmail-desktop/commit/handle-mailto-in-argv.patch
-	sha256sums = 36224d2b745697157a96dd68d85568c3c7ee4178061c05dc97e9d107718f5ac0
-	sha256sums = b7a1be78ccbe43f22d98d16942ef850bb99d1e40162752874606cdcca71042dc
-	sha256sums = a2c39764446033e501dccb19a5ef38bc84e7f1ffda8396b0e8321479160a6c40
+	source = gmail-desktop-3.0.0-alpha.34.tar.gz::https://github.com/timche/gmail-desktop/archive/refs/tags/v3.0.0-alpha.34.tar.gz
+	sha256sums = d9fcc89e79b1ad5ee091adef8c6ff4284583db09c3e18e7284fe8c57a5d0e2cf
 
 pkgname = gmail-desktop-dev
