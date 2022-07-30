@@ -5,10 +5,12 @@ pkgrel=1
 pkgdesc='Simple neofetch alternative written in C'
 arch=('any')
 url="https://github.com/mekb-turtle/mekfetch"
-provides=( mekfetch )
-source=("mekfetch::https://github.com/mekb-turtle/mekfetch/releases/download/$pkgver/mekfetch")
-sha256sums=('87347cab4bfbd0f418c2fd73ba34901b2e6980aff96f7854df54c9d81c0382ad')
+source=("mekfetch::git+${url}.git#tag=$pkgver")
+sha256sums=(SKIP)
 optdepends=('ttf-nerd-fonts-symbols: Nerd font support')
 package() {
-	install -Dm755 "$srcdir/mekfetch" "$pkgdir/usr/bin/mekfetch"
+	install -Dm755 "$srcdir/mekfetch/mekfetch" "$pkgdir/usr/bin/mekfetch"
+}
+build() {
+	make -C "$srcdir/mekfetch"
 }
