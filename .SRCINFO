@@ -1,0 +1,17 @@
+pkgbase = simple-dosbox-launcher
+	pkgdesc = It launches an executable in an archive file with dosbox.
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://codeberg.org/amano.kenji/simple-dosbox-launcher
+	arch = x86_64
+	license = custom:LICENSE
+	depends = janet-spork
+	depends = janet-sh
+	depends = coreutils
+	depends = atool
+	depends = unionfs-fuse
+	depends = dosbox
+	source = simple-dosbox-launcher-0.1.3.tar.gz::https://codeberg.org/amano.kenji/simple-dosbox-launcher/archive/v0.1.3.tar.gz
+	sha256sums = 3a13b64de3542e99d11b58581e92f78d13db111cb36a3b82db2e8e9882e7832d
+
+pkgname = simple-dosbox-launcher
