@@ -1,0 +1,16 @@
+pkgbase = firefly
+	pkgdesc = A C++ library to perform rational function interpolation over finite fields with a rational number reconstruction to promote the coefficients to Q. Usage of the optional dependencies flint and jemalloc is highly advised.
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://gitlab.com/firefly-library/firefly.git
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake>=3.1
+	depends = gmp>=6.1.2,
+	depends = zlib>=1.2.11
+	optdepends = flint>=2.5: faster modular arithmetic,
+	optdepends = jemalloc: better memory allocation
+	source = https://gitlab.com/firefly-library/firefly/-/archive/2.0.3/firefly-2.0.3.tar.gz
+	b2sums = a368e6cda5c6a5dc35c9369e8d20d4fe5a7e9a9ef8faa03e1f35cd6508e310a9f9bc205216a1e89f63e61b22475c0862eea0b63f906ccb45143e4d7744f128d8
+
+pkgname = firefly
