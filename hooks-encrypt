@@ -73,7 +73,7 @@ EOF
 $sigarg2
 EOF
                     mount --mkdir -r -t "$sigfs1" "$resolved" /sigkey
-                    ckey="/sigkey/${sigpath1}"
+                    sigkey="/sigkey/${sigpath1}"
                     is_fs=$(blkid -o value -s TYPE "${sigkey}")
                     if [ "${is_fs}" != "" ]; then
                         echo "${sigkey} has type ${is_fs}"
@@ -102,7 +102,10 @@ EOF
         else
             echo "Can't mount device ${sigdev} over /run/sigdev"
         fi
-        [ ! -f "${sigkeyfile}" ] && echo "Signature file could not be opened. "
+        if [ ! -f "${sigkeyfile}" ]; then
+            echo "ERROR: signature file could not be opened. "
+            launch_interactive_shell
+        fi
     fi
 }
 
