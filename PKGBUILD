@@ -2,7 +2,7 @@
 # Contributor: Sebastian Bøe <sebastianbooe at gmail dot com>
 
 pkgname=chisel
-pkgver=3.5.3
+pkgver=3.5.4
 pkgrel=1
 pkgdesc='Constructing Hardware in a Scala Embedded Language'
 arch=('any')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('java-environment=11' 'verilator')
 makedepends=('sbt' 'graphviz')
 source=("https://github.com/freechipsproject/chisel3/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-b2sums=('60dc92d5ade444fd491f69250d0036ece7b5adea3ef4b7a70abab332200b18df320bf9d09a3b430a8f34ab3bcc974818a7e1ef8d9a65793d51fc09ffd18f787e')
+b2sums=('5471206200946826bea7a8ec4addcc394011a23ba77aa30cfa0f32eec5a8341f3631aaa13bc468fbc73aece14f788abe0842a408cc911d97d65867c6f66a24ec')
 
 build(){
   cd ${pkgname}3-${pkgver}
