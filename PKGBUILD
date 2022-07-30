@@ -2,31 +2,25 @@
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=python-pyamdgpuinfo
-_name=${pkgname#python-}
-pkgver=2.1.2
-pkgrel=2
+_pkg=${pkgname#python-}
+pkgver=2.1.3
+pkgrel=1
 pkgdesc="AMD GPU stats"
 arch=('x86_64')
 url="https://github.com/mark9064/pyamdgpuinfo"
 license=('GPL3')
 depends=('python' 'libdrm')
-makedepends=(
-	'python-setuptools'
-	'cython'
-	'python-build'
-	'python-installer'
-	'python-wheel')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('706d9f09f8d97656bae642ac87f958d7977bbe751efe1350f3fcf2a24966026a')
+makedepends=('cython' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('16bc70d84ce898144a76e5456a134a45944f8b1d12b2b351277c25bb566210eb')
 
 build() {
-	cd "$_name-$pkgver"
+	cd "$_pkg-$pkgver"
 	python -m build --wheel --no-isolation
 }
 
 package() {
-	export PYTHONHASHSEED=0
-	cd "$_name-$pkgver"
-	python -m installer --destdir="$pkgdir/" dist/*.whl
+	cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
