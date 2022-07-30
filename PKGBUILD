@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=dynarmic
 pkgname=$_pkgname-git
-pkgver=6.2.3.r0.g2d4602a6
+pkgver=6.2.3.r2.gf33c6f06
 pkgrel=1
 pkgdesc="An ARM dynamic recompiler"
 arch=('aarch64' 'x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 makedepends=(
 	'boost>=1.57'
 	'cmake>=3.12'
-	'fmt>=9'
+	'fmt>=8.1.1'
 	'git'
 	'robin-map>=0.6.2'
 	'xbyak>=6.60.1'
