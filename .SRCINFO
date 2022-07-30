@@ -1,7 +1,7 @@
 pkgbase = owlux
 	pkgdesc = Yeelight smart LED control app
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/frankencode/Owlux
 	arch = x86_64
 	license = GPL3
