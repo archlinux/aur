@@ -47,7 +47,7 @@ yay_before:
 aur:
   stage: deploy
   rules:
-    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_BRANCH == "master"
   image: docker.io/archlinux:latest
   dependencies:
     - makepkg
@@ -63,7 +63,7 @@ aur:
 yay_after:
   stage: install_after
   rules:
-    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_BRANCH == "master"
   image: docker.io/archlinux:latest
   dependencies:
     - makepkg
