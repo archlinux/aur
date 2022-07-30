@@ -1,7 +1,7 @@
 pkgbase = linux-uksmd
 	pkgdesc = Linux UKSMD
 	pkgver = 5.18.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/pf-kernel/uksmd
 	arch = x86_64
 	license = GPL2
