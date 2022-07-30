@@ -31,35 +31,30 @@ prepare() {
 
 package() {
   install -d "${pkgdir}/opt/${pkgname}/"
-  install -d "${pkgdir}/opt/${pkgname}/support/"
-  install -d "${pkgdir}/usr/bin/"
-  install -d "${pkgdir}/usr/share/applications/"
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
-  install -d "${pkgdir}/usr/share/pixmaps/"
-
   mv \
     "${srcdir}/data/noarch/game" \
     -t "${pkgdir}/opt/${pkgname}/"
 
-  install -m 755           \
+  install -D -m 755 -T \
     "${srcdir}/${pkgname}" \
     "${pkgdir}/usr/bin/${pkgname}"
-  install -m 644         \
-    data/noarch/gameinfo \
-    "${pkgdir}/opt/${pkgname}/"
-  install -m 755         \
-    data/noarch/start.sh \
-    "${pkgdir}/opt/${pkgname}/"
-  install -m 755                     \
-    data/noarch/support/*.{sh,shlib} \
-    "${pkgdir}/opt/${pkgname}/support/"
-  install -m 644                                      \
-    'data/noarch/docs/End User License Agreement.txt' \
+  install -D -m 755 \
+    "${srcdir}/data/noarch/start.sh" \
+    -t "${pkgdir}/opt/${pkgname}/"
+  install -D -m 755 \
+    "${srcdir}"/data/noarch/support/*.{sh,shlib} \
+    -t "${pkgdir}/opt/${pkgname}/support/"
+  install -D -m 644 \
+    "${srcdir}/data/noarch/gameinfo" \
+    -t "${pkgdir}/opt/${pkgname}/"
+
+  install -D -m 644 -T \
+    "${srcdir}/data/noarch/docs/End User License Agreement.txt" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -m 644                   \
-    "data/noarch/support/icon.png" \
+  install -D -m 644 -T \
+    "${srcdir}/data/noarch/support/icon.png" \
     "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  install -m 644                   \
+  install -D -m 644 -T \
     "${srcdir}/${pkgname}.desktop" \
     "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
