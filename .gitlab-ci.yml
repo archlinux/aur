@@ -1,24 +1,77 @@
 stages:
   - test
   - build
+  - install_before
+  - deploy
+  - install_after
 
-pamac_test:
+namcap:
   stage: test
   image: docker.io/archlinux:latest
   before_script:
-    - pacman -Sy --noconfirm namcap
+    - pacman -Syu --noconfirm namcap
   script:
     - namcap PKGBUILD
 
-makepkg_build:
+makepkg:
   stage: build
-  image: docker.io/archlinux:latest
+  image: docker.io/archlinux:base-devel
   before_script:
-    - pacman -Sy --noconfirm sudo base-devel git
-    - useradd builduser -m && passwd -d builduser && printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
-    - pacman -Rdd --noconfirm git
+    - pacman -Syu --noconfirm sudo git
+    - useradd builduser -m && passwd -d builduser
+    - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
+    - sudo -u builduser bash -c 'git clone "https://aur.archlinux.org/yay.git"'
+    - sudo -u builduser bash -c 'cd yay && makepkg -si --noconfirm'
+    - rm -rf yay && cp $(which yay) yay
   script:
-    - sudo -u builduser bash -c 'makepkg -si --noconfirm'
+    - sudo -u builduser bash -c 'makepkg -s --noconfirm'
   artifacts:
     paths:
-      - "*.zst"
+      - "$CI_PROJECT_NAME*.zst"
+      - "yay"
+
+yay_before:
+  stage: install_before
+  image: docker.io/archlinux:latest
+  dependencies:
+    - makepkg
+  before_script:
+    - pacman -Syu --noconfirm sudo
+    - cp yay /usr/sbin/yay
+    - useradd builduser -m && passwd -d builduser
+    - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
+    - sudo -u builduser bash -c 'yay --noconfirm'
+  script:
+    - sudo -u builduser bash -c 'yay -U --noconfirm *.zst'
+
+aur:
+  stage: deploy
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+  image: docker.io/archlinux:latest
+  dependencies:
+    - makepkg
+  before_script:
+    - pacman -Syu openssh
+    - echo $SSH_KEY_B64 | base64 -di > ~/.ssh/id_rsa
+    - git remote add aur ssh://aur@aur.archlinux.org/$CI_PROJECT_NAME.git
+    - git fetch aur
+  script:
+    - git push aur master
+    - sleep 30
+
+yay_after:
+  stage: install_after
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+  image: docker.io/archlinux:latest
+  dependencies:
+    - makepkg
+  before_script:
+    - pacman -Syu --noconfirm sudo
+    - cp yay /usr/sbin/yay
+    - useradd builduser -m && passwd -d builduser
+    - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
+    - sudo -u builduser bash -c 'yay --noconfirm'
+  script:
+    - sudo -u builduser bash -c 'yay -S --noconfirm $CI_PROJECT_NAME'
