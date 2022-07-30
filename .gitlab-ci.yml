@@ -15,6 +15,7 @@ aur:
     - mkdir -p ~/.ssh && chmod 700 ~/.ssh
     - ssh-keyscan aur.archlinux.org >> ~/.ssh/known_hosts 2>/dev/null && chmod 644 ~/.ssh/known_hosts
   script:
+    - git fetch --unshallow origin
     - git checkout master
     - git remote add aur ssh://aur@aur.archlinux.org/$CI_PROJECT_NAME.git
     - git push -u aur master
