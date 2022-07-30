@@ -101,7 +101,7 @@ EOF
         echo "Can't mount device ${sigdev} over /sigdev"
     fi
     if [ ! -f "${sigfile}" ]; then
-        msg "ERROR: signature file could not be opened. "
+        err "Signature file could not be opened. "
         launch_interactive_shell
     fi
 }
