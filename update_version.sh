@@ -6,7 +6,7 @@ if [ $NVERSION != $CVERSION ]; then
     echo "Updating ..."
     sed -i "s/$CVERSION/$NVERSION/g" PKGBUILD
     #to see if it build
-    makepkg
+    #makepkg
     makepkg --printsrcinfo > .SRCINFO
     git commit -am "New version $NVERSION"
     git push aur master
