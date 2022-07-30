@@ -21,6 +21,7 @@ $ckarg2
 EOF
                 mkdir /ckey
                 mount --mkdir -r -t "$ckfs1" "$resolved" /ckey
+                echo ""
                 ckey="/ckey/${ckpath1}"
                 is_fs=$(blkid -o value -s TYPE "${ckey}")
                 if [ "${is_fs}" != "" ]; then
@@ -59,7 +60,7 @@ _get_sig() {
     IFS=: read sigdev sigarg1 sigarg2 <<EOF
 $sigdevice
 EOF
-    msg ":: Wait for ${sigdev}"
+    msg ":: wait for ${sigdev}"
     if resolved=$(resolve_device "${sigdev}" ${rootdelay}); then
         case ${sigarg1} in
             *[!0-9]*)
@@ -82,6 +83,7 @@ EOF
                         sigpath="/dev/mapper/sigdev"
                     fi
                     mount --mkdir -r -t "$sigfs2" "${sigpath}" /sigdev2
+                    msg ":: device ${sigpath} mounted over /sigdev2"
                     sigpath="/sigdev2/${sigpath2}"
                 fi
                 dd if="${sigpath}" of="${sigfile}" >/dev/null 2>&1
@@ -98,7 +100,7 @@ EOF
                 ;;
         esac
     else
-        echo "Can't mount device ${sigdev} over /sigdev"
+        err "can't mount device ${sigdev} over /sigdev"
     fi
     if [ ! -f "${sigfile}" ]; then
         err "Signature file could not be opened. "
@@ -139,10 +141,10 @@ EOF
 
     if [ -n "${cryptdevpath}" ]; then
         if mount --mkdir -o "defaults" "${cryptdev}" /run/cryptdev; then
-            echo "Device ${cryptdev} mounted successfully over /run/cryptdev"
+            msg ":: device ${cryptdev} mounted over /run/cryptdev"
             cryptdev="/run/cryptdev/${cryptdevpath}"
         else
-            echo "Can't mount device ${cryptdev} over /run/cryptdev"
+            err "Can't mount device ${cryptdev} over /run/cryptdev"
         fi
     fi
 }
@@ -165,7 +167,7 @@ _set_cryptargs() {
                 cryptargs="${cryptargs} --readonly"
                 ;;
             *)
-                echo "Encryption option '${cryptopt}' not known, ignoring." >&2
+                msg "::Encryption option '${cryptopt}' not known, ignoring." >&2
                 ;;
         esac
     done
@@ -175,8 +177,8 @@ _set_cryptargs() {
 }
 
 warn_deprecated() {
-    echo "The syntax 'root=${root}' where '${root}' is an encrypted volume is deprecated"
-    echo "Use 'cryptdevice=${root}:root root=/dev/mapper/root' instead."
+    msg "The syntax 'root=${root}' where '${root}' is an encrypted volume is deprecated"
+    msg "Use 'cryptdevice=${root}:root root=/dev/mapper/root' instead."
 }
 
 _open_root() {
@@ -260,8 +262,8 @@ _compare_signatures() {
     local _cryptdev_sig_sha _keys_sig_sha
     _cryptdev_sig_sha=$(sha512sum "${cryptdev}.sig")
     _keys_sig_sha=$(sha512sum "/crypto_sigfile.bin")
-    if [ ! "${_keys_sig_sha%% *}" != "${_cryptdev_sig_sha%% *}" ]; then
-        err "signatures on devices are different."
+    if [ "${_keys_sig_sha%% *}" != "${_cryptdev_sig_sha%% *}" ]; then
+        err "Signatures on devices are different."
         return 1
     fi
 }
@@ -272,7 +274,7 @@ _verify() {
         echo "Signature is OK, continue booting."
         export verify="n"
     else
-        err "one or more files are corrupted"
+        err "One or more files are corrupted"
         return 1
     fi
 }
