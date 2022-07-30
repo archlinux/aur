@@ -1,15 +1,13 @@
 pkgbase = python2-ohmu
-	pkgdesc = View space usage in your terminal.
-	pkgver = 0.1.0
+	pkgdesc = View space usage in your terminal
+	pkgver = 1.1.0
 	pkgrel = 1
-	url = https://github.com/paul-nechifor/ohmu
+	url = https://gitlab.com/paul-nechifor/ohmu
 	arch = any
 	license = MIT
 	makedepends = python2-setuptools
-	provides = python2-ohmu
-	conflicts = python2-ohmu-git
-	source = https://pypi.python.org/packages/source/o/ohmu/ohmu-0.1.0.tar.gz
-	sha256sums = ee979bd66bc7672ad3c73a5578be3fc9555cd2e08cb70a5af511a9b20ab14a81
+	depends = python2-scandir
+	source = https://pypi.org/packages/source/o/ohmu/ohmu-1.1.0.tar.gz
+	sha512sums = fb27c6094dd57d949d297620485f43e4fd98bbe95a3f42e9dd0b46601b1956a370f453153221f40aa451b748bec564e61d17ca239b1d129b0ec14a756dc00965
 
 pkgname = python2-ohmu
-
