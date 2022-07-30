@@ -1,5 +1,112 @@
 # Changelog
 
+## [v3.2.4](https://github.com/fastly/cli/releases/tag/v3.2.4) (2022-07-28)
+
+[Full Changelog](https://github.com/fastly/cli/releases/tag/v3.2.3...v3.2.4)
+
+**Bug fixes:**
+
+* Fix `--completion-script-zsh` [#617](https://github.com/fastly/cli/pull/617)
+
+## [v3.2.3](https://github.com/fastly/cli/releases/tag/v3.2.3) (2022-07-28)
+
+[Full Changelog](https://github.com/fastly/cli/releases/tag/v3.2.2...v3.2.3)
+
+**Bug fixes:**
+
+* Block for config update if CLI version updated [#615](https://github.com/fastly/cli/pull/615)
+
+## [v3.2.2](https://github.com/fastly/cli/releases/tag/v3.2.2) (2022-07-28)
+
+[Full Changelog](https://github.com/fastly/cli/releases/tag/v3.2.1...v3.2.2)
+
+**Bug fixes:**
+
+* Ignore TTL & update config if app version doesn't match config version [#612](https://github.com/fastly/cli/pull/612)
+
+## [v3.2.1](https://github.com/fastly/cli/releases/tag/v3.2.1) (2022-07-27)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v3.2.0...v3.2.1)
+
+**Enhancements:**
+
+* Print subprocess commands in verbose mode [#608](https://github.com/fastly/cli/pull/608)
+
+**Bug fixes:**
+
+* Ensure application configuration is updated after `fastly update` [#610](https://github.com/fastly/cli/pull/610)
+* Don't include language manifest in packages [#609](https://github.com/fastly/cli/pull/609)
+
+## [v3.2.0](https://github.com/fastly/cli/releases/tag/v3.2.0) (2022-07-27)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v3.1.1...v3.2.0)
+
+**Enhancements:**
+
+* Compute@Edge TinyGo Support [#594](https://github.com/fastly/cli/pull/594)
+* `pkg/commands/profile`: add `--json` flag for `list` command [#602](https://github.com/fastly/cli/pull/602)
+
+**Bug fixes:**
+
+* `pkg/commands/compute/deploy.go` (`getHashSum`): sort key order [#596](https://github.com/fastly/cli/pull/596)
+* `pkg/errors/log.go`: prevent runtime panic due to a `nil` reference [#601](https://github.com/fastly/cli/pull/601)
+
+## [v3.1.1](https://github.com/fastly/cli/releases/tag/v3.1.1) (2022-07-04)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v3.1.0...v3.1.1)
+
+**Enhancements:**
+
+* Handle build info more accurately [#588](https://github.com/fastly/cli/pull/588)
+
+**Bug fixes:**
+
+* Fix version check [#589](https://github.com/fastly/cli/pull/589)
+* Address profile data loss [#590](https://github.com/fastly/cli/pull/590)
+
+## [v3.1.0](https://github.com/fastly/cli/releases/tag/v3.1.0) (2022-06-24)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v3.0.1...v3.1.0)
+
+**Enhancements:**
+
+* Implement `profile token` command [#578](https://github.com/fastly/cli/pull/578)
+
+**Bug fixes:**
+
+* Fix `compute publish --non-interactive` [#583](https://github.com/fastly/cli/pull/583)
+* Support `fastly --help <command>` format [#581](https://github.com/fastly/cli/pull/581)
+
+## [v3.0.1](https://github.com/fastly/cli/releases/tag/v3.0.1) (2022-06-23)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v3.0.0...v3.0.1)
+
+**Enhancements:**
+
+* Makefile: when building binary, depend on .go files [#579](https://github.com/fastly/cli/pull/579)
+* Include `fastly.toml` hashsum [#575](https://github.com/fastly/cli/pull/575)
+* Hash main.wasm and not the package [#574](https://github.com/fastly/cli/pull/574)
+
+## [v3.0.0](https://github.com/fastly/cli/releases/tag/v3.0.0) (2022-05-30)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v2.0.3...v3.0.0)
+
+**Breaking changes:**
+
+* Implement new global flags for handling interactive prompts [#568](https://github.com/fastly/cli/pull/568)
+
+**Bug fixes:**
+
+* The `backend create` command should set `--port` value if specified [#566](https://github.com/fastly/cli/pull/566)
+* Don't overwrite `file.Load` error with `nil` [#569](https://github.com/fastly/cli/pull/569)
+
+**Enhancements:**
+
+* Support `[scripts.post_build]` [#565](https://github.com/fastly/cli/pull/565)
+* Support Viceroy "inline-toml" `format` and new `contents` field [#567](https://github.com/fastly/cli/pull/567)
+* Add example inline-toml dictionary to tests [#570](https://github.com/fastly/cli/pull/570)
+* Avoid config update checks when handling 'completion' flags [#554](https://github.com/fastly/cli/pull/554)
+
 ## [v2.0.3](https://github.com/fastly/cli/releases/tag/v2.0.3) (2022-05-20)
 
 [Full Changelog](https://github.com/fastly/cli/compare/v2.0.2...v2.0.3)

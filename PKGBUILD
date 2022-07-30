@@ -1,9 +1,11 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: oss@fastly.com
 
+## GPG key: https://github.com/web-flow.gpg
+
 pkgname=fastly
-pkgver=2.0.3
-_commit=112d60b
+pkgver=3.2.4
+_commit=54a460d
 pkgrel=1
 pkgdesc='CLI for the Fastly platform'
 url='https://github.com/fastly/cli'
@@ -12,15 +14,14 @@ license=('Apache')
 depends=('glibc')
 makedepends=('git' 'go')
 changelog=CHANGELOG.md
-source=("$pkgname::git+$url#commit=$_commit?signed"
-        'Makefile.patch')
-sha256sums=('SKIP'
-            'f16a46642b72d46388a0838cb19cf61b0873b1754edbc7acf4e4535f6adda63f')
-validpgpkeys=('A4C2C78656BA5E3DD5F122E4BCE379A5D550C407') ## Mark McDonnell (Integralist)
+source=("$pkgname::git+$url#commit=$_commit?signed")
+sha256sums=('SKIP')
+validpgpkeys=('A4C2C78656BA5E3DD5F122E4BCE379A5D550C407' ## Mark McDonnell (Integralist)
+              '5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23' ## GitHub
+)
 
 prepare() {
 	cd "$pkgname"
-	patch -p1 < "$srcdir/Makefile.patch"
 	go mod download
 }
 
@@ -32,7 +33,10 @@ build() {
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
 	cd "$pkgname"
-	VERSION="$pkgver" CLI_ENV="production" make fastly
+	make build \
+		VERSION="$pkgver" \
+		CLI_ENV="production" \
+		GORELEASER_ARGS="--rm-dist --single-target"
 }
 
 check() {
