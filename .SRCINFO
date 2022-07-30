@@ -1,6 +1,6 @@
 pkgbase = git-conventional-commits
 	pkgdesc = Git Conventional Commits Util to generate Semantic Version and Markdown Change Log and Validate Commit Messages
-	pkgver = 2.0.2
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://www.npmjs.com/package/git-conventional-commits
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = git-conventional-commits
 	makedepends = jq
 	depends = nodejs
 	depends = git
-	noextract = git-conventional-commits-2.0.2.tgz
-	source = https://registry.npmjs.org/git-conventional-commits/-/git-conventional-commits-2.0.2.tgz
-	sha256sums = 365c4f21bab147c8bc1f760db9438163e40957a9d8ffb1ef237246a4d7eb044e
+	noextract = git-conventional-commits-2.1.0.tgz
+	source = https://registry.npmjs.org/git-conventional-commits/-/git-conventional-commits-2.1.0.tgz
+	sha256sums = 7e75458c8263410f489d8af88f9dc224be7931ba13d143615e4e03f0e70fb99e
 
 pkgname = git-conventional-commits
