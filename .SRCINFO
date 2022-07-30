@@ -1,6 +1,6 @@
 pkgbase = verible-bin
 	pkgdesc = SystemVerilog parser, linter, formatter and etc from Google
-	pkgver = 0.0.2152
+	pkgver = 0.0.2162
 	pkgrel = 1
 	url = https://github.com/google/verible
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Ildus Kurbangaliev <i.kurbangaliev@gmail.com>
 
 pkgname=verible-bin
-pkgver=0.0.2152
+pkgver=0.0.2162
 pkgrel=1
 pkgdesc='SystemVerilog parser, linter, formatter and etc from Google'
 arch=('x86_64')
