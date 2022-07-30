@@ -1,17 +1,17 @@
 pkgbase = itk
 	pkgdesc = An open-source, cross-platform library that provides developers with an extensive suite of software tools for image analysis
 	pkgver = 5.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.itk.org
 	arch = x86_64
 	license = Apache
+	makedepends = clang
 	makedepends = cmake
 	makedepends = git
 	makedepends = gtest
 	makedepends = opencl-headers
 	makedepends = subversion
 	makedepends = swig
-	depends = castxml
 	depends = dcmtk
 	depends = eigen
 	depends = expat
@@ -32,7 +32,6 @@ pkgname = itk
 
 pkgname = python-itk
 	pkgdesc = An open-source, cross-platform library that provides developers with an extensive suite of software tools for image analysis (Python binding)
-	depends = castxml
 	depends = dcmtk
 	depends = eigen
 	depends = expat

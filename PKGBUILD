@@ -3,13 +3,12 @@
 _pkgname=ITK
 pkgname=(itk python-itk)
 pkgver=5.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc='An open-source, cross-platform library that provides developers with an extensive suite of software tools for image analysis'
 arch=('x86_64')
 url='https://www.itk.org'
 license=('Apache')
 depends=(
-  castxml
   dcmtk
   eigen
   expat
@@ -24,6 +23,7 @@ depends=(
   vxl
 )
 makedepends=(
+  clang
   cmake
   git
   gtest
@@ -40,15 +40,19 @@ get_pyver() {
 }
 
 build() {
+# we build the default modules by default
+# you could add additional modules by setting -DModule_<NAME>=ON
   cmake_opts=(
     -DBUILD_SHARED_LIBS=ON
     -DBUILD_TESTING=OFF
     -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_CXX_COMPILER=clang++
+    -DCMAKE_C_COMPILER=clang
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_SKIP_INSTALL_RPATH=ON
     -DITK_BUILD_DEFAULT_MODULES=ON
     -DITK_USE_MKL=ON
-    -DITK_USE_SYSTEM_CASTXML=ON
+    -DITK_USE_SYSTEM_CASTXML=OFF
     -DITK_USE_SYSTEM_DCMTK=ON
     -DITK_USE_SYSTEM_DOUBLECONVERSION=OFF
     -DITK_USE_SYSTEM_EIGEN=ON
@@ -76,9 +80,6 @@ build() {
     -DITK_WRAP_unsigned_long_long=ON
     -DITK_WRAP_unsigned_short=ON
     -DITK_WRAP_vector_double=ON
-    -DModule_ITKImageIO=ON
-    -DModule_ITKMeshIO=ON
-    -DModule_ITKTransformIO=ON
     -DModule_MorphologicalContourInterpolation=ON
 )
 
