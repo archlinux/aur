@@ -18,7 +18,10 @@ depends=(
     'xdg-utils'
     'python-termcolor'
 )
-makedepends=('python-setuptools')
+makedepends=(
+    'python-setuptools'
+    'git'
+)
 provides=('woeusb')
 conflicts=('woeusb' 'woeusb-git' 'woeusb-ng')
 source=( "${pkgname}::git+${url}")

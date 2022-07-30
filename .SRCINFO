@@ -6,6 +6,7 @@ pkgbase = woeusb-ng-git
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
+	makedepends = git
 	depends = parted
 	depends = dosfstools
 	depends = ntfs-3g
