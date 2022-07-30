@@ -10,6 +10,7 @@ _run_mkarchiso() {
   local _profile="${6}"
 
   export GNUPGHOME="${_gnupg_homedir}"
+  echo "$GNUPGHOME"
   env GNUPGHOME="${_gnupg_homedir}" /usr/bin/mkarchiso -v \
                                     -o "${_dest}" \
                                     -g "${_pgp_key_id}" \

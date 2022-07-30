@@ -56,8 +56,8 @@ _ephemeral_signature_info() {
 }
 
 _pgp_key() {
-  pgp_key_id="${1}"
-  if [ "${pgp_key_id}" == "" ] || [ "${pgp_key_id}" == "ephemeral" ]; then
+  _pgp_key_id="${1}"
+  if [ "${_pgp_key_id}" == "" ] || [ "${_pgp_key_id}" == "ephemeral" ]; then
     gnupg_homedir="${_profile}/work/gnupg"
     mkdir -p "${gnupg_homedir}"
     _ephemeral_signature_info
@@ -66,17 +66,15 @@ _pgp_key() {
                     "${sig_email}" \
                     "${sig_unit}" \
                     "${sig_comment}" > /dev/null 2>&1
-  elif [ "${pgp_key_id}" == "default" ]; then
+  elif [ "${_pgp_key_id}" == "default" ]; then
     gnupg_homedir="${HOME}/.gnupg"
-    export gnupg_homedir
+    sig_sender="makepkg@localhost"
   fi
   pgp_key_id="$(GNUPGHOME="${gnupg_homedir}" \
 	        gpg --list-keys \
                     --with-colons | \
 		awk -F: '/^pub:/ { print $5 }' | \
 		head -n 1)"
-  export gnupg_homedir
-  echo "${pgp_key_id#*\"}"
 }
 
 
@@ -93,18 +91,16 @@ package() {
   cp -r "${_profile_src}" "${srcdir}"
   cd "${_profile}" || exit
   mkdir -p work
-  _pgp_key_id=$(_pgp_key "ephemeral")
+  _pgp_key "ephemeral"
   mkarchisorepo "fakepkg" "packages.extra"
   install -d -m 0755 -- "${_dest}"
-
-  # pkexec "${_mkarchiso}" \
   machinectl shell --uid=0 \
 	           --setenv=GNUPGHOME="${gnupg_homedir}" \
 	           --setenv=DISPLAY="${DISPLAY}" \
 		   .host "${_mkarchiso}" \
                          "${gnupg_homedir}" \
                          "${_dest}" \
-                         "${_pgp_key_id}" \
+                         "${pgp_key_id}" \
                          "${sig_sender}" \
                          "${_profile}/work" \
                          "${_profile}"
