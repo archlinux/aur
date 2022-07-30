@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=fvs
-pkgver=0.3.1
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="File Versioning System with hash comparison, deduplication and data storage to create unlinked states that can be deleted"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=(python-setuptools)
 conflicts=(python-vfs)
 replaces=(python-vfs)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mirkobrombin/FVS/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('0ff5add2294110dbe5be6070279d658a3650beff8f2c66567bf38d3b4273b3db')
+sha256sums=('c57bcda81cd7500bc54b8f93c81405cccbc4c54b794209f8316ae27f43372696')
 
 build() {
   cd "FVS-${pkgver}"
