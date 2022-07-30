@@ -2,7 +2,6 @@
 # shellcheck shell=dash
 
 _get_key() {
-    ckeyfile="/crypto_keyfile.bin"
     IFS=: read ckdev ckarg1 ckarg2 <<EOF
 $cryptkey
 EOF
@@ -53,59 +52,57 @@ EOF
     [ ! -f "${ckeyfile}" ] && echo "Keyfile could not be opened. Reverting to passphrase."
 }
 
-_sigdev() {
-    sigkeyfile="/crypto_sigfile.bin"
-    if [ -n "${sigdevice}" ]; then
-        DEPRECATED_CRYPT=0
-        # IFS=: read _sigdev _sigpath <<EOF
-        IFS=: read sigdev sigarg1 sigarg2 <<EOF
+_get_sig() {
+    # sigfile="/crypto_sigfile.bin"
+    # if [ -n "${sigdevice}" ]; then
+    DEPRECATED_CRYPT=0
+    IFS=: read sigdev sigarg1 sigarg2 <<EOF
 $sigdevice
 EOF
-        if resolved=$(resolve_device "${sigdev}" ${rootdelay}); then
-            case ${sigarg1} in
-                *[!0-9]*)
-                    # Use a file on the device
-                    # sigarg1 is not numeric: sigarg1=filesystem, sigarg2=path
-                    IFS=, read sigfs1 sigfs2 <<EOF
+    if resolved=$(resolve_device "${sigdev}" ${rootdelay}); then
+        case ${sigarg1} in
+            *[!0-9]*)
+                # Use a file on the device
+                # sigarg1 is not numeric: sigarg1=filesystem, sigarg2=path
+                IFS=, read sigfs1 sigfs2 <<EOF
 $sigarg1
 EOF
-                    IFS=, read sigpath1 sigpath2 <<EOF
+                IFS=, read sigpath1 sigpath2 <<EOF
 $sigarg2
 EOF
-                    mount --mkdir -r -t "$sigfs1" "$resolved" /sigkey
-                    sigkey="/sigkey/${sigpath1}"
-                    is_fs=$(blkid -o value -s TYPE "${sigkey}")
-                    if [ "${is_fs}" != "" ]; then
-                        echo "${sigkey} has type ${is_fs}"
-                        if cryptsetup isLuks "${sigkey}" >/dev/null 2>&1; then
-                            while ! eval cryptsetup open --type luks2 "${sigkey}" sigkey; do
-                                sleep 2;
-                            done
-                            sigkey="/dev/mapper/sigkey"
-                        fi
-                        mount --mkdir -r -t "$sigfs2" "${sigkey}" /sigkey2
-                        sigkey="/sigkey2/${sigpath2}"
+                mount --mkdir -r -t "$sigfs1" "$resolved" /sigdev
+                sigpath="/sigdev/${sigpath1}"
+                is_fs=$(blkid -o value -s TYPE "${sigpath}")
+                if [ "${is_fs}" != "" ]; then
+                    echo "${sigpath} has type ${is_fs}"
+                    if cryptsetup isLuks "${sigpath}" >/dev/null 2>&1; then
+                        while ! eval cryptsetup open --type luks2 "${sigpath}" sigdev; do
+                            sleep 2;
+                        done
+                        sigpath="/dev/mapper/sigdev"
                     fi
-                    dd if="${sigkey}" of="${sigkeyfile}" >/dev/null 2>&1
-                    if mountpoint -q /sigkey2; then
-                        umount /sigkey2
-                        cryptsetup close --type luks sigkey;
-                    fi
-                    umount /sigkey
-                    ;;
-             *)
+                    mount --mkdir -r -t "$sigfs2" "${sigpath}" /sigdev2
+                    sigpath="/sigdev2/${sigpath2}"
+                fi
+                dd if="${sigpath}" of="${sigfile}" >/dev/null 2>&1
+                if mountpoint -q /sigdev2; then
+                    umount /sigdev2
+                    cryptsetup close --type luks sigdev;
+                fi
+                umount /sigdev
+                ;;
+            *)
                 # Read raw data from the block device
                 # sigarg1 is numeric: sigarg1=offset, sigarg2=length
-                dd if="${resolved}" of="${sigkeyfile}" bs=1 skip="${sigarg1}" count="${sigarg2}" >/dev/null 2>&1
+                dd if="${resolved}" of="${sigfile}" bs=1 skip="${sigarg1}" count="${sigarg2}" >/dev/null 2>&1
                 ;;
-            esac
-        else
-            echo "Can't mount device ${sigdev} over /run/sigdev"
-        fi
-        if [ ! -f "${sigkeyfile}" ]; then
-            echo "ERROR: signature file could not be opened. "
-            launch_interactive_shell
-        fi
+        esac
+    else
+        echo "Can't mount device ${sigdev} over /run/sigdev"
+    fi
+    if [ ! -f "${sigfile}" ]; then
+        echo "ERROR: signature file could not be opened. "
+        launch_interactive_shell
     fi
 }
 
@@ -285,11 +282,17 @@ run_hook() {
     # shellcheck disable=SC2154
     [ "${quiet}" = "y" ] && CSQUIET=">/dev/null"
     _cryptdev
-    _sigdev
+
+    # Get signature file if specified
+    sigfile="/crypto_sigfile.bin"
+    if [ -n "$sigdevice" ]; then
+        _get_sig
+    fi
+
     # shellcheck disable=SC2154
     [ "${verify}" = "y" ] && _verify
 
-    # Get keyfile if specified
+    # Get key file if specified
     ckeyfile="/crypto_keyfile.bin"
     if [ -n "$cryptkey" ]; then
         _get_key
