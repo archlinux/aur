@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-libtiff
 	pkgdesc = Library for manipulation of TIFF images (android)
-	pkgver = 4.3.0
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = http://www.simplesystems.org/libtiff/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = android-aarch64-libtiff
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = http://download.osgeo.org/libtiff/tiff-4.3.0.tar.gz
-	md5sums = 0a2e4744d1426a8fc8211c0cdbc3a1b3
+	source = http://download.osgeo.org/libtiff/tiff-4.4.0.tar.gz
+	md5sums = 376f17f189e9d02280dfe709b2b2bbea
 
 pkgname = android-aarch64-libtiff
