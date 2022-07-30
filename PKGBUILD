@@ -25,7 +25,7 @@ build() {
 
 package() {
     appdir="${pkgdir}/opt/${_pkgname}"
-    jar=$(find ${srcdir} -name "tsunami-main-${pkgver}-SNAPSHOT-cli.jar")
+    jar=$(find ${srcdir} -name "tsunami-main-${pkgver}-cli.jar")
     jar_filename=$(basename -- "${jar}")
 
     mkdir -p "${appdir}"
