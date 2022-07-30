@@ -52,7 +52,7 @@ aur:
   dependencies:
     - makepkg
   before_script:
-    - pacman -Syu openssh
+    - pacman -Syu --noconfirm openssh git
     - echo $SSH_KEY_B64 | base64 -di > ~/.ssh/id_rsa
     - git remote add aur ssh://aur@aur.archlinux.org/$CI_PROJECT_NAME.git
     - git fetch aur
