@@ -261,7 +261,7 @@ _compare_signatures() {
     _cryptdev_sig_sha=$(sha512sum "${cryptdev}.sig")
     _keys_sig_sha=$(sha512sum "/crypto_sigfile.bin")
     if [ ! "${_keys_sig_sha%% *}" != "${_cryptdev_sig_sha%% *}" ]; then
-        err "one or more signatures are corrupted."
+        err "signatures on devices are different."
         return 1
     fi
 }
@@ -273,6 +273,7 @@ _verify() {
         export verify="n"
     else
         err "one or more files are corrupted"
+        return 1
     fi
 }
 
