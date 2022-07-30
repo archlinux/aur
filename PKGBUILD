@@ -10,8 +10,8 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'systemd-libs-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
-_tag='615e67a0eeb479009f185d2526acf7cc1ed36e62' # git rev-parse v${_tag_name}
-_tag_name=251.2
+_tag='069e2b0ddd3a1b5bcff48530be165c56117d7134' # git rev-parse v${_tag_name}
+_tag_name=251.3
 pkgver="${_tag_name/-/}"
 pkgrel=1
 arch=('x86_64' 'aarch64')
@@ -136,7 +136,7 @@ build() {
     -Ddefault-dnssec=no
     -Ddefault-hierarchy=unified
     -Ddefault-kill-user-processes=false
-    -Ddefault-locale=C
+    -Ddefault-locale='C.UTF-8'
     -Dlocalegen-path=/usr/bin/locale-gen
     -Ddns-over-tls=openssl
     -Dfallback-hostname='archlinux'
