@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=alephone-git
-pkgver=1.5.r5575.59bc4c46
+pkgver=1.5.r5611.4f2fa2dd
 pkgrel=1
 pkgdesc='A free, enhanced port of the classic FPS "Marathon 2" by Bungie Software (development version)'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ optdepends=('alephone-eternalx: community-made scenario'
             'alephone-infinity: original data for Marathon Infinity'
             'alephone-marathon: M1A1 data converted for AlephOne'
             'alephone-marathon2: original data for Marathon 2: Durandal')
-makedepends=('git' 'boost' 'mesa' 'icoutils')
+makedepends=('git' 'boost' 'mesa' 'icoutils' 'autoconf-archive')
 source=("git+https://github.com/Aleph-One-Marathon/alephone")
 md5sums=('SKIP')
 
@@ -39,8 +39,8 @@ prepare() {
 
 build() {
   cd alephone
-  
-  ./autogen.sh 
+
+  autoreconf --install
   PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig" ./configure --prefix=/usr --without-smpeg
   make
 }
