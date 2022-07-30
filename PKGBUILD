@@ -1,7 +1,7 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
 pkgname=curl-impersonate-bin
-pkgver=v0.5.1
+pkgver=v0.5.2
 pkgrel=1
 pkgdesc="Curl impersonate scripts and executable. Libcurl is a special compilation of curl that makes it impersonate Firefox and Chrome"
 url="https://github.com/lwthiker/curl-impersonate"
