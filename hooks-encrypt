@@ -49,24 +49,60 @@ EOF
                 ;;
         esac
     fi
+
     [ ! -f "${ckeyfile}" ] && echo "Keyfile could not be opened. Reverting to passphrase."
 }
 
 _sigdev() {
-    local _sigdev _sigpath
+    sigkeyfile="/crypto_sigfile.bin"
     if [ -n "${sigdevice}" ]; then
         DEPRECATED_CRYPT=0
-        IFS=: read _sigdev _sigpath <<EOF
+        # IFS=: read _sigdev _sigpath <<EOF
+        IFS=: read sigdev sigarg1 sigarg2 <<EOF
 $sigdevice
 EOF
-        if mount --mkdir -o "defaults" "${_sigdev}" /run/sigdev; then
-            echo "Device ${_sigdev} mounted successfully over /run/sigdev"
-            sigfile="/run/sigdev/${_sigpath}"
-            dd if="${sigfile}" of="/sigfile" >/dev/null 2>&1
+        if resolved=$(resolve_device "${sigdev}" ${rootdelay}); then
+            case ${sigarg1} in
+                *[!0-9]*)
+                    # Use a file on the device
+                    # sigarg1 is not numeric: sigarg1=filesystem, sigarg2=path
+                    IFS=, read sigfs1 sigfs2 <<EOF
+$sigarg1
+EOF
+                    IFS=, read sigpath1 sigpath2 <<EOF
+$sigarg2
+EOF
+                    mount --mkdir -r -t "$sigfs1" "$resolved" /sigkey
+                    ckey="/sigkey/${sigpath1}"
+                    is_fs=$(blkid -o value -s TYPE "${sigkey}")
+                    if [ "${is_fs}" != "" ]; then
+                        echo "${sigkey} has type ${is_fs}"
+                        if cryptsetup isLuks "${sigkey}" >/dev/null 2>&1; then
+                            while ! eval cryptsetup open --type luks2 "${sigkey}" sigkey; do
+                                sleep 2;
+                            done
+                            sigkey="/dev/mapper/sigkey"
+                        fi
+                        mount --mkdir -r -t "$sigfs2" "${sigkey}" /sigkey2
+                        sigkey="/sigkey2/${sigpath2}"
+                    fi
+                    dd if="${sigkey}" of="${sigkeyfile}" >/dev/null 2>&1
+                    if mountpoint -q /sigkey2; then
+                        umount /sigkey2
+                        cryptsetup close --type luks sigkey;
+                    fi
+                    umount /sigkey
+                    ;;
+             *)
+                # Read raw data from the block device
+                # sigarg1 is numeric: sigarg1=offset, sigarg2=length
+                dd if="${resolved}" of="${sigkeyfile}" bs=1 skip="${sigarg1}" count="${sigarg2}" >/dev/null 2>&1
+                ;;
+            esac
         else
-            echo "Can't mount device ${_sigdev} over /run/sigdev"
+            echo "Can't mount device ${sigdev} over /run/sigdev"
         fi
-
+        [ ! -f "${sigkeyfile}" ] && echo "Signature file could not be opened. "
     fi
 }
 
@@ -223,7 +259,7 @@ EOF
 _compare_signatures() {
     local _cryptdev_sig_sha _keys_sig_sha
     _cryptdev_sig_sha=$(sha512sum "${cryptdev}.sig")
-    _keys_sig_sha=$(sha512sum "/sigfile")
+    _keys_sig_sha=$(sha512sum "/crypto_sigfile.bin")
     if [ ! "${_keys_sig_sha%% *}" != "${_cryptdev_sig_sha%% *}" ]; then
         msg "ERROR: one or more signature files are corrupted."
         launch_interactive_shell
@@ -232,7 +268,7 @@ _compare_signatures() {
 
 _verify() {
     _compare_signatures
-    if _verify_signature "${cryptdev}" "/sigfile"; then
+    if _verify_signature "${cryptdev}" "/crypto_sigfile.bin"; then
         msg "Signature is OK, continue booting."
         export verify="n"
     else
