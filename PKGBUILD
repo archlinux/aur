@@ -1,7 +1,7 @@
 # Maintainer: r4v3n6101
 
 pkgname=xash3d-fwgs-git
-pkgver=r1662.f9d0fba0
+pkgver=r1906.55a29e6e
 pkgrel=1
 pkgdesc="A custom GoldSrc engine implementation"
 arch=('x86_64')
@@ -38,5 +38,5 @@ package() {
     install -Dm 755 "xash3d" "${pkgdir}/usr/bin/xash3d"
     cd $pkgname
     ./waf install --strip --destdir="${pkgdir}/usr/local/lib/xash3d/"
-    install -Dm 755 "vgui-dev/lib/vgui.so" "${pkgdir}/usr/local/lib/xash3d/vgui.so"
+    install -Dm 755 "vgui_support/vgui-dev/lib/vgui.so" "${pkgdir}/usr/local/lib/xash3d/vgui.so"
 }

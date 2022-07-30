@@ -1,6 +1,6 @@
 pkgbase = xash3d-fwgs-git
 	pkgdesc = A custom GoldSrc engine implementation
-	pkgver = r1662.f9d0fba0
+	pkgver = r1906.55a29e6e
 	pkgrel = 1
 	url = http://xash.su/
 	arch = x86_64
