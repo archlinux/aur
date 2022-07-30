@@ -55,13 +55,10 @@ EOF
 }
 
 _get_sig() {
-    # sigfile="/crypto_sigfile.bin"
-    # if [ -n "${sigdevice}" ]; then
     DEPRECATED_CRYPT=0
     IFS=: read sigdev sigarg1 sigarg2 <<EOF
 $sigdevice
 EOF
-    msg ":: wait for ${sigdev}"
     if resolved=$(resolve_device "${sigdev}" ${rootdelay}); then
         case ${sigarg1} in
             *[!0-9]*)
@@ -73,6 +70,8 @@ EOF
                 IFS=, read sigpath1 sigpath2 <<EOF
 $sigarg2
 EOF
+
+                msg ":: mount ${resolved} (${ckfs1}) over /sigdev..."
                 mount --mkdir -r -t "$sigfs1" "$resolved" /sigdev
                 sigpath="/sigdev/${sigpath1}"
                 is_fs=$(blkid -o value -s TYPE "${sigpath}")
@@ -83,8 +82,8 @@ EOF
                         done
                         sigpath="/dev/mapper/sigdev"
                     fi
+                    msg ":: mount ${sigpath} (${sigfs2}) over /sigdev2"
                     mount --mkdir -r -t "$sigfs2" "${sigpath}" /sigdev2
-                    msg ":: device ${sigpath} mounted over /sigdev2"
                     sigpath="/sigdev2/${sigpath2}"
                 fi
                 dd if="${sigpath}" of="${sigfile}" >/dev/null 2>&1
@@ -102,6 +101,7 @@ EOF
         esac
     else
         err "Can't mount device ${sigdev} over /sigdev"
+        launch_interactive_shell
     fi
     if [ ! -f "${sigfile}" ]; then
         err "Signature file could not be opened. "
@@ -146,6 +146,7 @@ EOF
             cryptdev="/run/cryptdev/${cryptdevpath}"
         else
             err "Can't mount device ${cryptdev} over /run/cryptdev"
+            launch_interactive_shell
         fi
     fi
 }
