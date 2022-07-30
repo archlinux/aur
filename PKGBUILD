@@ -1,8 +1,8 @@
 # Maintainer: Michael Dorst <m@mdorst.net>
 pkgname=dotconfig
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
-sha256sums=('27cdd270acd2c1d01329b8907a9e1fe361e1f68c417ac22209008587d79f5a39')
+sha256sums=('a6fee6135ca2e025615d387b41739fddc65253d3dd886282c4065d20d321f6c4')
 makedepends=('cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="A tool for symlinking configuration files from a central repository to their respective locations on the system in a repeatable, configurable way."
