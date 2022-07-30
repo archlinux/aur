@@ -1,7 +1,7 @@
 pkgbase = cryptsetup-sigfile
 	pkgdesc = Userspace setup tool for transparent encryption of block devices using dm-crypt (with edited mkinitcpio hook to check file system signature before attempting to open it).
 	pkgver = 2.4.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://gitlab.com/cryptsetup/cryptsetup/
 	arch = x86_64
 	arch = i686
