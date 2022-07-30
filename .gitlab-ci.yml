@@ -5,6 +5,8 @@ aur:
   stage: deploy
   rules:
     - if: $CI_COMMIT_BRANCH == "master"
+  variables:
+    GIT_STRATEGY: clone
   image: docker.io/archlinux:latest
   before_script:
     - pacman -Syu --noconfirm socat openssh git
