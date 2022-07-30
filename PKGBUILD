@@ -1,7 +1,7 @@
 # Maintainer: Alec Mev <alec@mev.earth>
 
 pkgname=asdf-vm
-pkgver=0.9.0
+pkgver=0.10.2
 pkgrel=1
 pkgdesc='Extendable version manager with support for Ruby, Node.js, Elixir, Erlang & more'
 arch=('any')
@@ -11,6 +11,7 @@ depends=(
   'curl'
   'git'
 )
+makedepends=('cpio')
 optdepends=(
   'autoconf'
   'automake'
@@ -27,7 +28,7 @@ optdepends=(
 )
 install=asdf-vm.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/asdf-vm/asdf/archive/v${pkgver}.tar.gz")
-sha256sums=('f2ab54bf1d17e10f17e405c2fac29f0620a66b5c7a5200b5699e50e28ed210c8')
+sha256sums=('a097d40888c276cb20e1489a3da6573dd9d184d8e6518c5f8177d3c2c1066f57')
 
 package() {
   cd "asdf-${pkgver}"
@@ -42,20 +43,13 @@ package() {
   cp    asdf.sh     "${dst}"
   cp    defaults    "${dst}"
   cp    help.txt    "${dst}"
-  cp    LICENSE     "${dst}"
   cp    version.txt "${dst}"
 
   local usrshare="${pkgdir}/usr/share"
-  local docdir="${usrshare}/doc/${pkgname}"
-  mkdir -p "${docdir}"
 
-  cp docs/[^_]*.md     "${docdir}"
-  cp ballad-of-asdf.md "${docdir}"
-  cp help.txt          "${docdir}"
-  cp CHANGELOG.md      "${docdir}"
-  cp CONTRIBUTING.md   "${docdir}"
-  cp README.md         "${docdir}"
-  cp SECURITY.md       "${docdir}"
+  local docdir="${usrshare}/doc/${pkgname}"
+  find . -path ./.github -prune -o -name '*.md' -print | cpio -pd "${docdir}"
+  cp help.txt "${docdir}"
 
   install -Dm644 -t "${usrshare}/licenses/${pkgname}/" LICENSE
 
