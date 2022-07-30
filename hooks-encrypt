@@ -20,13 +20,14 @@ EOF
 $ckarg2
 EOF
                 mkdir /ckey
+                msg ":: mount ${resolved} (${ckfs1})..."
                 mount --mkdir -r -t "$ckfs1" "$resolved" /ckey
-                echo ""
                 ckey="/ckey/${ckpath1}"
                 is_fs=$(blkid -o value -s TYPE "${ckey}")
                 if [ "${is_fs}" != "" ]; then
-                    msg "File ${ckey} has type ${is_fs}..."
+                    msg ":: mount ${ckey} (${is_fs})..."
                     if cryptsetup isLuks "${ckey}" >/dev/null 2>&1; then
+                        msg ":: device ${key} is a LUKS volume..."
                         while ! eval cryptsetup open --type luks2 "${ckey}" ckey; do
                             sleep 2;
                         done
@@ -100,7 +101,7 @@ EOF
                 ;;
         esac
     else
-        err "can't mount device ${sigdev} over /sigdev"
+        err "Can't mount device ${sigdev} over /sigdev"
     fi
     if [ ! -f "${sigfile}" ]; then
         err "Signature file could not be opened. "
@@ -271,7 +272,7 @@ _compare_signatures() {
 _verify() {
     _compare_signatures
     if _verify_signature "${cryptdev}" "/crypto_sigfile.bin"; then
-        echo "Signature is OK, continue booting."
+        msg ":: Signature is OK, continue booting."
         export verify="n"
     else
         err "One or more files are corrupted"
