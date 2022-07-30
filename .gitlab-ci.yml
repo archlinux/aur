@@ -52,12 +52,17 @@ aur:
   dependencies:
     - makepkg
   before_script:
-    - pacman -Syu --noconfirm openssh git
-    - echo $SSH_KEY_B64 | base64 -di > ~/.ssh/id_rsa
-    - git remote add aur ssh://aur@aur.archlinux.org/$CI_PROJECT_NAME.git
-    - git fetch aur
+    - pacman -Syu --noconfirm sudo
+    - cp yay /usr/sbin/yay
+    - useradd builduser -m && passwd -d builduser
+    - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
+    - sudo -u builduser bash -c 'yay --noconfirm'
+    - sudo -u builduser bash -c 'yay -S --noconfirm openssh git'
+    - sudo -u builduser bash -c 'echo $SSH_KEY_B64 | base64 -di > ~/.ssh/id_rsa'
+    - sudo -u builduser bash -c 'git remote add aur ssh://aur@aur.archlinux.org/$CI_PROJECT_NAME.git'
+    - sudo -u builduser bash -c 'git fetch aur'
   script:
-    - git push aur master
+    - sudo -u builduser bash -c 'git push aur master'
     - sleep 30
 
 yay_after:
