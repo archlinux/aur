@@ -1,0 +1,11 @@
+pkgbase = mekfetch-git
+	pkgdesc = Simple neofetch alternative written in C
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mekb-turtle/mekfetch
+	arch = any
+	provides = mekfetch
+	source = mekfetch::git+https://github.com/mekb-turtle/mekfetch.git
+	sha256sums = SKIP
+
+pkgname = mekfetch-git
