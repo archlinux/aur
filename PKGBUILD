@@ -5,7 +5,7 @@
 
 # Maintainer: Sopamo <github@sopamo.de>
 pkgname=via-cli-bin
-pkgver=v0.4.0
+pkgver=v0.4.1
 pkgrel=1
 epoch=
 pkgdesc="Easily start & stop your local dev environments from your cli"
@@ -24,11 +24,11 @@ backup=()
 options=(!strip)
 install=
 changelog=
-source=("$pkgname-$pkgver-$arch::$url/releases/download/$pkgver/via-linux-$arch")
+source=("$pkgname-$pkgver-$arch::$url/releases/download/$pkgver/via-linux-$arch.tar.gz")
 noextract=()
-md5sums=('623f36cba13e327db2ce54a6917d7ea7')
+md5sums=('1e85c128e0529ff3112bce12ad8abf8c')
 validpgpkeys=()
 
 package() {
-	install -Dm755 "$pkgname-$pkgver-$arch" "${pkgdir}/usr/local/bin/via"
+	install -Dm755 "via-linux-$arch" "${pkgdir}/usr/local/bin/via"
 }

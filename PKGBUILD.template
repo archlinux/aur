@@ -24,11 +24,11 @@ backup=()
 options=(!strip)
 install=
 changelog=
-source=("$pkgname-$pkgver-$arch::$url/releases/download/$pkgver/via-linux-$arch")
+source=("$pkgname-$pkgver-$arch::$url/releases/download/$pkgver/via-linux-$arch.tar.gz")
 noextract=()
 md5sums=('$VIA_LINUX_HASH')
 validpgpkeys=()
 
 package() {
-	install -Dm755 "$pkgname-$pkgver-$arch" "${pkgdir}/usr/local/bin/via"
+	install -Dm755 "via-linux-$arch" "${pkgdir}/usr/local/bin/via"
 }

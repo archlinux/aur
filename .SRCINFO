@@ -1,6 +1,6 @@
 pkgbase = via-cli-bin
 	pkgdesc = Easily start & stop your local dev environments from your cli
-	pkgver = v0.4.0
+	pkgver = v0.4.1
 	pkgrel = 1
 	url = https://github.com/Sopamo/via
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = via-cli-bin
 	provides = via-cli
 	conflicts = via-cli
 	options = !strip
-	source = via-cli-bin-v0.4.0-x86_64::https://github.com/Sopamo/via/releases/download/v0.4.0/via-linux-x86_64
-	md5sums = 623f36cba13e327db2ce54a6917d7ea7
+	source = via-cli-bin-v0.4.1-x86_64::https://github.com/Sopamo/via/releases/download/v0.4.1/via-linux-x86_64.tar.gz
+	md5sums = 1e85c128e0529ff3112bce12ad8abf8c
 
 pkgname = via-cli-bin
