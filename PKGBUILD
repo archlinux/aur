@@ -1,52 +1,38 @@
-# Maintainer: Sonu Ishaq <sonuishaq67@gmail.com>
-_pkgname=Deskreen
+# Maintainer: Iván Gabaldón <contact|@|inetol.net>
+# Contributor: Sonu Ishaq <sonuishaq67@gmail.com>
+
 pkgname=deskreen
-pkgver=1.0.11
+pkgver=2.0.3
 pkgrel=1
-pkgdesc="Turns any device with a web browser to a second screen for your computer"
+pkgdesc='Turns any device with a web browser to a second screen for your computer'
 arch=('x86_64')
-url="https://github.com/pavlobu/deskreen"
+url='https://github.com/pavlobu/deskreen'
 license=('AGPL3')
-provides=()
-conflicts=()
-replaces=()
-depends=('gtk3' 'llvm' 'nss')
-makedepends=('coreutils')
-backup=()
-options=('!strip')
-source=("${_pkgname}-${pkgver}.AppImage::https://github.com/pavlobu/${pkgname}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver}.AppImage"
-    "${pkgname}.desktop")
-sha256sums=(
-      '6d8b680af63364fb1c241e88be6c8160f3dff07c285546acba5d3e42411a5649'  
-    '9f7f814e5f9d540c2ea5c07a86e72096b0af1fee7d109b5659a4ac8da1a2cfaa'
-)
+depends=('gtk3' 'nss')
+source=("$pkgname-$pkgver-$arch.deb::https://github.com/pavlobu/$pkgname/releases/download/v$pkgver/${pkgname}_${pkgver}_amd64.deb"
+        "$pkgname.desktop")
+sha256sums=('4ee7f5c144dc9934ceff2401803af11329255cb081db1a621b96bed90c38f627'
+            'cef3f9f1f02f22c047e49bec91657af941e6c4b86a176b812648c3b0dc625aa5')
 
 prepare() {
-    chmod u+x "${srcdir}"/${_pkgname}-${pkgver}.AppImage
-
-    "${srcdir}"/${_pkgname}-${pkgver}.AppImage --appimage-extract
+    tar xpf data.tar.xz ./opt/Deskreen/ --strip-components=2 -C "$srcdir"
+    tar xpf data.tar.xz ./usr/share/icons/ --strip-components=3 -C "$srcdir"
+    mv "$srcdir"/Deskreen "$srcdir"/$pkgname
 }
 
 package() {
-    find "${srcdir}"/squashfs-root/locales/ -type d -exec chmod 755 {} +
-    find "${srcdir}"/squashfs-root/resources/ -type d -exec chmod 755 {} +
+    find "$srcdir"/icons/ -type d -exec chmod 755 {} +
+    find "$srcdir"/$pkgname/locales/ -type d -exec chmod 755 {} +
+    find "$srcdir"/$pkgname/resources/ -type d -exec chmod 755 {} +
 
-    install -d "${pkgdir}"/opt/${pkgname}
-    cp -r "${srcdir}"/squashfs-root/* "${pkgdir}"/opt/${pkgname}
+    install -d "$pkgdir"/opt/$pkgname
+    cp -r "$srcdir"/$pkgname/* "$pkgdir"/opt/$pkgname
 
-    # remove broken or unused files and directories
-    rm -r "${pkgdir}"/opt/${pkgname}/usr/
-    rm "${pkgdir}"/opt/${pkgname}/AppRun
-    rm "${pkgdir}"/opt/${pkgname}/${pkgname}.desktop
-    rm "${pkgdir}"/opt/${pkgname}/${pkgname}.png
+    install -d "$pkgdir"/usr/bin
+    ln -s "$pkgdir"/opt/$pkgname/$pkgname "$pkgdir"/usr/bin/$pkgname
 
-    find "${srcdir}"/squashfs-root/usr/share/icons/ -type d -exec chmod 755 {} +
+    install -d "$pkgdir"/usr/share/icons
+    cp -r "$srcdir"/icons/hicolor "$pkgdir"/usr/share/icons/hicolor
 
-    install -d "${pkgdir}"/usr/share/icons
-    cp -r "${srcdir}"/squashfs-root/usr/share/icons/hicolor "${pkgdir}"/usr/share/icons/hicolor
-
-    install -d "${pkgdir}"/usr/bin
-    ln -s ../../opt/${pkgname}/${pkgname} "${pkgdir}"/usr/bin/${pkgname}
-
-    install -Dm644 "${srcdir}"/${pkgname}.desktop "${pkgdir}"/usr/share/applications/${pkgname}.desktop
+    install -Dm644 "$srcdir"/$pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
 }

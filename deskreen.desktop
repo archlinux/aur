@@ -4,5 +4,5 @@ Exec=deskreen
 Terminal=false
 Type=Application
 Icon=deskreen
-Comment=Turns any device with a web browser to a second screen for your computer
-Categories=Utility;
+Comment=Deskreen turns any device into a secondary screen for your computer
+Categories=Development;

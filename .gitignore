@@ -1,23 +1,8 @@
-*.tar.zst
-deskreen/
-pkg/
-src/
-
-# ignore everything
+# Ignore everything:
 *
-!.gitignore
 
-# except PKGBUILD needed files
+# ...except:
+!.gitignore
 !PKGBUILD
 !.SRCINFO
-!*.install
-!ChangeLog
-
-# common wing-man files
-!*.diff
-!*.patch
-
-!README.md
 !*.desktop
-
-# add files that don't have an online source
