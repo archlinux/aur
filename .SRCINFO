@@ -1,6 +1,6 @@
 pkgbase = kibana-xpack
 	pkgdesc = Browser based analytics and search dashboard for Elasticsearch
-	pkgver = 8.2.3
+	pkgver = 8.3.3
 	pkgrel = 1
 	url = https://www.elastic.co/products/kibana
 	arch = x86_64
@@ -8,19 +8,19 @@ pkgbase = kibana-xpack
 	depends = nodejs-lts-gallium
 	optdepends = elasticsearch
 	optdepends = nss: screenshotting plugin
-	provides = kibana=8.2.3
+	provides = kibana=8.3.3
 	conflicts = kibana
 	options = !strip
 	options = emptydirs
 	backup = etc/kibana/kibana.yml
 	backup = etc/kibana/node.options
-	source = https://artifacts.elastic.co/downloads/kibana/kibana-8.2.3-linux-x86_64.tar.gz
-	source = https://artifacts.elastic.co/downloads/kibana/kibana-8.2.3-linux-x86_64.tar.gz.asc
+	source = https://artifacts.elastic.co/downloads/kibana/kibana-8.3.3-linux-x86_64.tar.gz
+	source = https://artifacts.elastic.co/downloads/kibana/kibana-8.3.3-linux-x86_64.tar.gz.asc
 	source = kibana.service
 	source = tmpfile.conf
 	source = user.conf
 	validpgpkeys = 46095ACC8548582C1A2699A9D27D666CD88E42B4
-	sha512sums = fead94d384ded1e7f15bb8a28048b25450569b61de9be03db87bfb22260e00a16943409c0de94df33c099529011ff3fe35c52489d9512471e03ce478cfeb3e43
+	sha512sums = d4db983e3e63ec36543140e86847444400d2523ecd12cafc2831c927d068613a8de1489ef51ea512bb2e93fa4bf091cc8e4d575a5a0af9c8349ec9e928628817
 	sha512sums = SKIP
 	sha512sums = be50713d4e4db3a8b2d0d02ec68b56ce1636ffa9a41738b0abf276c562c36ef6118f440f25b220f39302ba23b2351b5a38f961c8693ad03ea19424e4d40409e6
 	sha512sums = afed49c164561f3c658a6d2423519adcf4d5293c416cd93fa5c9d12421416c1e9cb4287e832009049cfd014b365dc1cd93d9cf879117c701cce4caad3b772a8e
