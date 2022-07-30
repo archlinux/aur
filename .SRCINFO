@@ -1,0 +1,12 @@
+pkgbase = janet-jdn
+	pkgdesc = Janet data notation.
+	pkgver = 0.0.1.r2021.02.05
+	pkgrel = 1
+	url = https://github.com/andrewchambers/janet-jdn
+	arch = x86_64
+	license = MIT
+	depends = janet-lang
+	source = janet-jdn-0.0.1.r2021.02.05.tar.gz::https://github.com/andrewchambers/janet-jdn/archive/c0951f6978555268a24d86eee2f118327328b40b.tar.gz
+	sha256sums = eaaff4b5300941cbb26183fe0f03271145d10c0d63aa2e0daf3a2eee43c89853
+
+pkgname = janet-jdn
