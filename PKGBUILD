@@ -57,13 +57,5 @@ package() {
   install -D -m 644 -T \
     "${srcdir}/${pkgname}.desktop" \
     "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-
-  # If you can't access Config.ini, the game will not start... This is a bit
-  # of a hack, so if anyone has a better workaround I'm all ears (eyes?)!
-  # This workaround requires the user running the game to be a member of the
-  # group 'games':
-  install -g games -m 664 \
-    /dev/null             \
-    "${pkgdir}/opt/${pkgname}/game/Hollow Knight_Data/Config.ini"
 }
 
