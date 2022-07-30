@@ -118,54 +118,6 @@ bool ec_wait_status(int port, Status status) {
 
 int monitor() {
 
-//	std::stringstream ss;
-//
-//	ss << "  │ ";
-//	for (uint16_t x = 0; x < 16; x++) {
-//		string append = ((int) x < 16 ? "0" : "");
-//		ss << KRVR << append << uppercase << std::hex << x << " ";
-//	}
-//	ss << RST;
-//	ss << endl << "──┼";
-//	for (uint16_t x = 0; x < 16 * 3; x++) {
-//		ss << "─";
-//	}
-//	ss << endl;
-//
-//	for (uint16_t x = 0; x < 256; x++) {
-//
-//
-//		ec_wait_status(Ports::command_port, Status::input_buffer_full);
-//		ec_write(Ports::command_port, (byte) Command::_read);
-//		ec_wait_status(Ports::command_port, Status::input_buffer_full);
-//		ec_write(Ports::data_port, (byte) x );
-//
-//		byte data = ec_read(Ports::data_port);
-//
-//		//ss << std::hex << (int) data << " ";
-//
-//		string append = ((int) data < 16 ? "0" : "");
-//
-//		if (x > 256)
-//			break;
-//
-//		if (x == 0)
-//			ss << KRVR << "00" << RST << "│ ";
-//
-////		if ((int) data == 0xFF)
-////			cout << KCYN;
-//
-//		ss << uppercase << ((int) data == 0xFF ? KLGN : (int) data == 0x00 ? KGRY : KLRD);
-//		ss << append << uppercase << std::hex << (int) data << " ";
-//		if ((x % 16) == 0 && x != 0) {
-//			ss << endl;
-//			ss << RST << KRVR << uppercase << x << RST << "│ ";
-//		}
-//		ss << RST;
-//	}
-//	ss << endl;
-//	cout << ss.str();
-
 	cout << "  │ ";
 	for (uint16_t x = 0; x < 16; x++) {
 		string append = ((int) x < 16 ? "0" : "");
@@ -203,6 +155,19 @@ int monitor() {
 	}
 	cout << endl;
 }
+
+int help() {
+	cout << "eXecute EC" << endl;
+	cout << "<commands>" << endl;
+	cout << "  xec read 0xXX : read value from EC memory" << endl;
+	cout << "  xec write 0xXX 0xXX : write value to EC memory" << endl;
+	cout << "  xec monitor : full table of EC memory" << endl;
+	cout << endl;
+
+	cout << "<example>" << endl;
+	cout << "  watch -n 1 -c -d sudo xec monitor : print EC table with changes highlight every second" << endl;
+}
+
 int main(int argc, char **argv) {
 
 	ec_init();
@@ -221,8 +186,8 @@ int main(int argc, char **argv) {
 			ec_write(Ports::data_port, (byte) hex);
 			//ec_wait_status(Ports::command_port, Status::input_buffer_full);
 			ec_wait_status(Ports::command_port, Status::output_buffer_full);
-			cout << argv[2] << ": " << hex << "0x"
-					<< int(ec_read(Ports::data_port)) << endl;
+			cout << argv[2] << ": " << uppercase << std::hex << "0x"
+					<< (int)ec_read(Ports::data_port) << endl;
 
 		} else if (strcmp(argv[1], "write") == 0) {
 
@@ -230,6 +195,7 @@ int main(int argc, char **argv) {
 				err("no 1 address");
 			if (argv[3] == NULL)
 				err("no 2 address");
+
 
 			unsigned int hex0 = stoul(argv[2], nullptr, 16);
 			unsigned int hex1 = stoul(argv[3], nullptr, 16);
@@ -242,15 +208,17 @@ int main(int argc, char **argv) {
 			ec_write(Ports::data_port, (byte) hex1);
 			ec_read(Ports::data_port);
 
-			cout << std::hex << argv[2] << ": " << argv[3] << endl;
+			cout << uppercase << std::hex << argv[2] << ": " << argv[3] << endl;
 		} else if (strcmp(argv[1], "monitor") == 0) {
 			monitor();
-		} else if (strcmp(argv[1], "dump") == 0) {
-			cout << endl;
-
+		} else if (strcmp(argv[1], "help") == 0 || strcmp(argv[1], "") == 0) {
+			help();
+		} else {
+			cout << "unknown command" << endl;
 		}
 	} else {
-		cout << "type a command" << endl;
+		help();
+		//cout << "type help" << endl;
 	}
 
 	ec_close();
