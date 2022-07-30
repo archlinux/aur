@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=python-glfw
-pkgver=2.5.3
+pkgver=2.5.4
 pkgrel=1
 pkgdesc='Module for OpenGL, OpenGL ES, Vulkan, window and input support'
 arch=(any)
@@ -9,8 +9,8 @@ url='https://github.com/FlorianRhiem/pyGLFW'
 license=(MIT)
 depends=(glfw python)
 makedepends=(git python-setuptools)
-source=("git+$url#commit=ada90b17b6c15d077de64cb9a5c7a0c5651c6886") # tag: v2.1.0
-md5sums=('SKIP')
+source=("git+$url#commit=23cd892aff3fab8485ae453ef4edf25101e9d6cb") # tag: v2.5.4
+b2sums=('SKIP')
 
 build() {
   cd pyGLFW
