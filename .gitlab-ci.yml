@@ -1,9 +1,9 @@
 stages:
   - test
   - build
-  - install_before
+  - install_artifact
   - deploy
-  - install_after
+  - install_aur
 
 namcap:
   stage: test
@@ -30,8 +30,8 @@ makepkg:
       - "$CI_PROJECT_NAME*.zst"
       - "yay"
 
-yay_before:
-  stage: install_before
+yay_artifact:
+  stage: install_artifact
   image: docker.io/archlinux:latest
   dependencies:
     - makepkg
@@ -44,7 +44,7 @@ yay_before:
   script:
     - sudo -u builduser bash -c 'yay -U --noconfirm *.zst'
 
-aur:
+git_aur:
   stage: deploy
   rules:
     - if: $CI_COMMIT_BRANCH == "master"
@@ -60,10 +60,9 @@ aur:
     - git checkout master
     - git remote add aur ssh://aur@aur.archlinux.org/$CI_PROJECT_NAME.git
     - git push -u aur master
-    - sleep 30
 
-yay_after:
-  stage: install_after
+yay_aur:
+  stage: install_aur
   rules:
     - if: $CI_COMMIT_BRANCH == "master"
   image: docker.io/archlinux:latest
@@ -76,4 +75,5 @@ yay_after:
     - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
     - sudo -u builduser bash -c 'yay --noconfirm'
   script:
+    - sleep 20
     - sudo -u builduser bash -c 'yay -S --noconfirm $CI_PROJECT_NAME'
