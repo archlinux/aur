@@ -2,7 +2,7 @@
 
 _pkgname=godot4
 pkgname=${_pkgname}-bin
-pkgver=alpha12
+pkgver=alpha13
 pkgrel=1
 pkgdesc="Godot Game Engine: An advanced, feature packed, multi-platform 2D and 3D game engine."
 url="http://www.godotengine.org"
@@ -24,8 +24,8 @@ source_x86_64=($_pkgname-$pkgver-64bit.zip::https://downloads.tuxfamily.org/godo
 sha512sums=('a32864067fcd034cc95b0a39ba575dafe62ca8f67b93f1cc0ede5a471d12d73ba525032e1ba1b411f1ca550a106498b5e71a9d491663a39c67175740f07cad87'
             '3598100251a74a6595ffc002df0adac18c37c9367a4ef148ef7f057d547ed15aaaa07140705d4185394b888c0f5fd8446de35f97625a80d1c3a2132a0418b71e'
             'd38569e26e77b238cd9bf60d0ba7dc76367b5f25f68e5d45185d10fdf4de20c696431ab4eed815b7ad611e997d5ddadd96d70f1f6d4388c18b1553b81d4b6738')
-sha512sums_i686=('ee893934053810adefa6cce547b84a297268f276a8cc4bb6723838e00ce0957f9a40cd45cfcbc906cd9ca3f3e163e5f6f70408e37320a805e4d5675e46bc44e0')
-sha512sums_x86_64=('1d027e0700a26049ea403ab7b75427185a4b0d4e62948222d3f34eb4aa2e735d5a685ae918b73132ca67e6e527334cce154912f286b80ad0075b19aae1d910a8')
+sha512sums_i686=('394f146f12901ebcc4b1e99fe777ba0ddeac19b8a875668fd1b998ffe6d0c6ea92f0fbb8622dab5b4a56e49be8c4b496d1d9e63a77d1b619a5af5fe6341bb0cf')
+sha512sums_x86_64=('befe729918680b791c2bbe908d77100a181f16a9a5676fc3b76a8a6649f025b38ee32fa9dc224517795f8570fd2909e23da922aca54a6d0e129812b448f16aa0')
 
 
 package() {
