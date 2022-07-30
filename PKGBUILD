@@ -39,10 +39,6 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  # /var directories should not be in packages
-  # they will be installed by systemd
-  rm -rf "${pkgdir}/var"
-
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
   install -D -m644 README.md "${pkgdir}/usr/share/doc/$pkgname/README.md"
   install -D -m644 "${srcdir}/sysusers-rpki-client.conf" "${pkgdir}/usr/lib/sysusers.d/rpki-client.conf"
