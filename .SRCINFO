@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-pdcurses
 	pkgdesc = Public Domain Curses wincon port (mingw-w64)
-	pkgver = 4.3.3
+	pkgver = 4.3.4
 	pkgrel = 1
 	url = https://www.projectpluto.com/win32a.htm
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = mingw-w64-pdcurses
 	options = staticlibs
 	options = !buildflags
 	options = !strip
-	source = pdcurses-4.3.3.tar.gz::https://github.com/Bill-Gray/PDCursesMod/archive/v4.3.3.tar.gz
+	source = pdcurses-4.3.4.tar.gz::https://github.com/Bill-Gray/PDCursesMod/archive/v4.3.4.tar.gz
 	source = 001-mingw-pdcurses-4.1.0-build.patch
-	sha256sums = d3e06dd1d8c4ddce90aa83028123216df966d0d4873f8f960b79d9b154689090
+	sha256sums = abbd099a51612200d1bfe236d764e0f0748ee71c3a6bc2c4069447d907d55b82
 	sha256sums = 029b3755eacc8b3bebc09767b2090e18c160acc80be0b07742d8aaa098b6be89
 
 pkgname = mingw-w64-pdcurses
