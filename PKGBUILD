@@ -2,9 +2,9 @@
 # Contributor: Abhishek Dasgupta <abhidg@gmail.com>
 pkgname=hodie
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Prints the date in Latin."
-url="https://hodie.sourceforge.net"
+url="http://hodie.sourceforge.net"
 arch=('i686' 'x86_64')
 license=('custom')
 source=(https://downloads.sourceforge.net/hodie/${pkgname}-${pkgver}.tar.gz

@@ -1,8 +1,8 @@
 pkgbase = hodie
 	pkgdesc = Prints the date in Latin.
 	pkgver = 1.4
-	pkgrel = 2
-	url = https://hodie.sourceforge.net
+	pkgrel = 3
+	url = http://hodie.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = custom
