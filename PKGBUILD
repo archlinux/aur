@@ -51,7 +51,7 @@ _major=5.18
 _minor=15
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux UKSMD'
 arch=('x86_64')
 url="https://codeberg.org/pf-kernel/uksmd"
@@ -60,8 +60,8 @@ options=('!strip')
 makedepends=('bc' 'libelf' 'pahole' 'cpio' 'perl' 'tar' 'xz')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
-_uksmd_path="ksm-patches"
-_uksmd_patch="0001-${_uksmd_path}.patch"
+_uksmd_path="ksm-patches-v2"
+_uksmd_patch="0001-ksm-patches.patch"
 _compiler_path="cpu-patches-sep"
 _compiler_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
 
@@ -296,7 +296,7 @@ done
 
 sha512sums=('9436831b84727bd751741d1f569dc8bc314c33daf02d2405d4ef612ae6797dc4b3b96e13b46088db65e518052780f1bc30c0d1a4c528373d3509039dc055f835'
             'SKIP'
-            '49ab997abb17d06b332a892cc6c281f9f757bf5455502dacef647343f3c78ed5a0ab590f12e3c85695b3bac31ee52d8640c493c502080184b802324a23a1dbaa'
+            '974bfcdfd082e55668d17ccbcf62607c5b3d128c0a28bdbb18a28b46d42c08cb8c529e6cec2d745e0e0ee54608eb64837e2f35af06d1b651cb7497fce738349d'
             '2fa1250d93049fcfcfe04d201236eb7a662703b71a73b77c8e5df72900ad40cbb0b818c9c82cbf0204f67bf496bce7310d713ff9106825816525be1ba2da68e8'
             '7d06db3fd8eca5f616d0ae62c744671a9180b5dc5618dd282dc054e47dd470de74cd28fefb28766cd0c93d97f244e8bfcb51b1c8793103171ddc0833778e5cc4'
             '75a64acd22a40ed0b9a49acb923c356b216136f65569aafca78fd84730fc273722d0b680d1f3304e9e9bc96a838bfebb4f041cf37ee7aea353cd99dfdf499ea7'
