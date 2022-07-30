@@ -68,7 +68,7 @@ package() {
   # group 'games':
   install -g games -m 664 \
     /dev/null             \
-    "${pkgdir}/opt/${pkgname}/game/hollow_knight_Data/Config.ini"
+    "${pkgdir}/opt/${pkgname}/game/Hollow Knight_Data/Config.ini"
 }
 
 # vim: ts=2 sw=2 et:
