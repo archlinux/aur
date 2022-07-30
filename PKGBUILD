@@ -5,7 +5,7 @@
 
 # Maintainer: Sopamo <github@sopamo.de>
 pkgname=via-cli-git
-pkgver=v0.4.0
+pkgver=v0.4.1
 pkgrel=1
 epoch=
 pkgdesc="Easily start & stop your local dev environments from your cli"
