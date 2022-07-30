@@ -3,8 +3,8 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-speexdsp
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="DSP library derived from Speex (android)"
 arch=(any)
 url="http://www.speexdsp.org"
@@ -13,7 +13,7 @@ depends=('android-ndk')
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-configure')
 source=("http://downloads.xiph.org/releases/speex/speexdsp-$pkgver.tar.gz")
-md5sums=('b722df341576dc185d897131321008fc')
+md5sums=('e6eb5ddef743a362c8018f260b91dca5')
 
 prepare() {
     source android-env ${_android_arch}
