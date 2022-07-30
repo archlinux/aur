@@ -12,7 +12,8 @@ aur:
     - echo "$SSH_KEY_B64" | base64 -d | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh && chmod 700 ~/.ssh
     - ssh-keyscan aur.archlinux.org >> ~/.ssh/known_hosts 2>/dev/null && chmod 644 ~/.ssh/known_hosts
-    - git remote add aur ssh://aur@aur.archlinux.org/$CI_PROJECT_NAME.git
   script:
+    - git checkout master
+    - git remote add aur ssh://aur@aur.archlinux.org/$CI_PROJECT_NAME.git
     - git push -u aur master
     - sleep 30
