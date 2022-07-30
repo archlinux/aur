@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-network-displays
 pkgver=0.90.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Miracast implementation for GNOME"
 arch=('any')
 url="https://gitlab.gnome.org/GNOME/gnome-network-displays"
@@ -20,7 +20,7 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build --print-errorlogs || :
 }
 
 package() {
