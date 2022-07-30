@@ -1,6 +1,6 @@
 pkgbase = gosimac
 	pkgdesc = Fetch the wallpaper from Bings, Unsplash...
-	pkgver = 5.1.0
+	pkgver = 5.5.0
 	pkgrel = 1
 	url = https://github.com/1995parham/gosimac
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = gosimac
 	makedepends = go
 	conflicts = gosimac-bin
 	conflicts = gosimac-git
-	source = gosimac-5.1.0.tar.gz::https://github.com/1995parham/gosimac/archive/refs/tags/v5.1.0.tar.gz
-	sha256sums = e3ce3858757e85a7a6621d2628989de66fd35f6aa36292d452687acf4a7ad74d
+	source = gosimac-5.5.0.tar.gz::https://github.com/1995parham/gosimac/archive/refs/tags/v5.5.0.tar.gz
+	sha256sums = be42d6fdd631555e30a9b67f07b50b944c6cf88f5f89237c382ef78a0dbc698b
 
 pkgname = gosimac
