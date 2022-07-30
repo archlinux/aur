@@ -56,8 +56,8 @@ _ephemeral_signature_info() {
 }
 
 _pgp_key() {
-  pgp_key_id="$(gpgconf --list-options gpg | awk -F: '$1 == "default-key" {print $10}')"
-  if [ "${pgp_key_id}" == "" ]; then
+  pgp_key_id="${1}"
+  if [ "${pgp_key_id}" == "" ] || [ "${pgp_key_id}" == "ephemeral" ]; then
     gnupg_homedir="${_profile}/work/gnupg"
     mkdir -p "${gnupg_homedir}"
     _ephemeral_signature_info
@@ -65,18 +65,24 @@ _pgp_key() {
                     "${gnupg_homedir}" \
                     "${sig_email}" \
                     "${sig_unit}" \
-                    "${sig_comment}" > /dev/null 2>&1 
-    pgp_key_id="$(GNUPGHOME="${gnupg_homedir}" gpgconf --list-options gpg | awk -F: '$1 == "default-key" {print $10}')"
-  else
+                    "${sig_comment}" > /dev/null 2>&1
+  elif [ "${pgp_key_id}" == "default" ]; then
     gnupg_homedir="${HOME}/.gnupg"
+    export gnupg_homedir
   fi
+  pgp_key_id="$(GNUPGHOME="${gnupg_homedir}" \
+	        gpg --list-keys \
+                    --with-colons | \
+		awk -F: '/^pub:/ { print $5 }' | \
+		head -n 1)"
+  export gnupg_homedir
   echo "${pgp_key_id#*\"}"
 }
 
 
 # shellcheck disable=SC2154
 package() {
-  _mkarchiso="${srcdir}/run_archiso.sh"
+  _mkarchiso="${srcdir}/run_mkarchiso.sh"
   local _pkg_path="usr/share/${_pkg}"
   local _dest="${pkgdir}/usr/share/${_distro}"
   local _iso="${_pkgname}-${_pkgver}-x86_64.iso"
@@ -87,10 +93,16 @@ package() {
   cp -r "${_profile_src}" "${srcdir}"
   cd "${_profile}" || exit
   mkdir -p work
-  _pgp_key_id=$(_pgp_key)
+  _pgp_key_id=$(_pgp_key "ephemeral")
   mkarchisorepo "fakepkg" "packages.extra"
   install -d -m 0755 -- "${_dest}"
-  pkexec "${_mkarchiso}" "${gnupg_homedir}" \
+
+  # pkexec "${_mkarchiso}" \
+  machinectl shell --uid=0 \
+	           --setenv=GNUPGHOME="${gnupg_homedir}" \
+	           --setenv=DISPLAY="${DISPLAY}" \
+		   .host "${_mkarchiso}" \
+                         "${gnupg_homedir}" \
                          "${_dest}" \
                          "${_pgp_key_id}" \
                          "${sig_sender}" \
