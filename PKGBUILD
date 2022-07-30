@@ -1,5 +1,5 @@
 # Maintainer: mekb https://github.com/mekb-turtle
-pkgname=mekfetch
+pkgname=mekfetch-bin
 pkgver=1.0.0
 pkgrel=1
 pkgdesc='Simple neofetch alternative written in C'
