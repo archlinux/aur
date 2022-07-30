@@ -2,7 +2,7 @@
 
 pkgname=python-mutf8
 _pkg=mutf8
-pkgver=1.0.3
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="MUTF-8 encoder/decoder"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('bf7fcf53c8d8e7af7c0b38fcf404ef564715ab3293dcd5dc9017c1f515f6941a')
+sha256sums=('c7a86f00bc8d313b9ce184375c944bf5be771127283d82a8d2becf33cc84e1c7')
 
 build() {
 	cd "$_pkg-$pkgver"
