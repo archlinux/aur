@@ -1,6 +1,6 @@
 pkgbase = lanraragi
 	pkgdesc = LANraragi build package
-	pkgver = v.0.8.5
+	pkgver = v.0.8.6
 	pkgrel = 1
 	url = https://github.com/Difegue/LANraragi
 	arch = any
