@@ -2,7 +2,7 @@
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname='libplacebo-git'
-pkgver=4.192.0.41.gb840fbd
+pkgver=4.208.0.58.gb8928ff
 pkgrel=1
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives. (GIT version)'
 url='https://code.videolan.org/videolan/libplacebo'
@@ -24,6 +24,8 @@ makedepends=('git'
              'vulkan-headers'
              'vulkan-icd-loader'
              'python-mako'
+             'python-jinja'
+             'python-markupsafe'
              'ffmpeg'
              'lcms2'
              'shaderc'
@@ -35,8 +37,10 @@ provides=('libplacebo'
 conflicts=('libplacebo')
 source=('git+https://code.videolan.org/videolan/libplacebo.git'
         'git+https://github.com/Immediate-Mode-UI/Nuklear.git'
+        'git+https://github.com/Dav1dde/glad.git'
         )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             )
 options=('debug')
@@ -52,6 +56,7 @@ prepare() {
   cd libplacebo
   git config submodule.demos/3rdparty/nuklear.url "${srcdir}/Nuklear"
   git submodule update --init \
+    3rdparty/glad \
     demos/3rdparty/nuklear
 }
 
