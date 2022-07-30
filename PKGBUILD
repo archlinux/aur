@@ -2,7 +2,7 @@
 # Maintainer: amano.kenji <amano.kenji@proton.me>
 pkgname=janet-http
 pkgver=0.1.0.r2021.10.19
-pkgrel=1
+pkgrel=2
 pkgdesc="A janet http client library"
 arch=("x86_64")
 url="https://github.com/joy-framework/http"
@@ -12,17 +12,12 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/joy-framework/http/archive/
 sha256sums=('3f5fe5165d85ec0b7ff01625c0bb80e85e2e06c4b124d59184c6f796fa964d9f')
 
 build() {
-  cd $pkgname-$_commit
+  cd http-$_commit
   jpm build
 }
 
-check() {
-  cd $pkgname-$_commit
-  jpm test
-}
-
 package() {
-  cd $pkgname-$_commit
+  cd http-$_commit
   install -D -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
   modpath="$(janet -e '(print (dyn :syspath))')"
   mkdir -p "${pkgdir}/${modpath}"
