@@ -2,7 +2,7 @@
 
 pkgbase=linux-clang
 pkgver=5.18.15.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux but built with clang'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/archlinux/linux/commits/$_srctag"
