@@ -3,7 +3,7 @@
 
 pkgname=heliocron-git
 _pkgname=${pkgname%-*}
-pkgver=0.7.0.r0.g19ea49a
+pkgver=0.8.0.r1.ge5f13e1
 pkgrel=1
 pkgdesc='Execute tasks relative to sunset, sunrise and other solar events.'
 arch=('x86_64')
@@ -17,19 +17,16 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
-
 	git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
 	cd "$srcdir/$_pkgname"
-
 	RUSTUP_TOOLCHAIN=stable cargo build --release --locked --target-dir=target
 }
 
 package() {
 	cd "$srcdir/$_pkgname"
-
 	install -Dm755 "target/release/$_pkgname" -t "$pkgdir/usr/bin"
 	install -Dm644 'LICENSE-APACHE' -t "$pkgdir/usr/share/licenses/$_pkgname"
 	install -Dm644 'LICENSE-MIT' -t "$pkgdir/usr/share/licenses/$_pkgname"
