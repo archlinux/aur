@@ -1,0 +1,31 @@
+From 54d2a6826832ca73b0f603e057db8131f9f1ba4f Mon Sep 17 00:00:00 2001
+From: Bobby Rong <931189261@qq.com>
+Date: Sat, 30 Jul 2022 05:06:34 +0000
+Subject: [PATCH] build: Fix building with -Werror=format-security
+
+Otherwise build fails with:
+
+../src/gui/gtd-window.c: In function 'error_message_notification_secondary_action':
+../src/gui/gtd-window.c:145:35: error: format not a string literal and no format arguments [-Werror=format-security]
+  145 |                                   data->secondary_text);
+      |                                   ^~~~
+cc1: some warnings being treated as errors
+---
+ src/gui/gtd-window.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/gui/gtd-window.c b/src/gui/gtd-window.c
+index 783357d4..91323ff4 100644
+--- a/src/gui/gtd-window.c
++++ b/src/gui/gtd-window.c
+@@ -142,6 +142,7 @@ error_message_notification_secondary_action (GtdNotification *notification,
+                                            NULL);
+ 
+   adw_message_dialog_format_body (ADW_MESSAGE_DIALOG (dialog),
++                                  "%s",
+                                   data->secondary_text);
+ 
+   adw_message_dialog_add_response (ADW_MESSAGE_DIALOG (dialog),
+-- 
+GitLab
+

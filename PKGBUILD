@@ -3,7 +3,7 @@
 pkgname=endeavour
 _pkgname=Endeavour
 pkgver=42.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Task manager for GNOME"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.gnome.org/World/Endeavour"
@@ -14,8 +14,15 @@ makedepends=('gobject-introspection' 'meson' 'yelp-tools')
 checkdepends=('appstream-glib')
 conflicts=('gnome-todo')
 replaces=('gnome-todo')
-source=($url/-/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz)
-b2sums=('7c2f5fe089b86e9e26a33131fb892332b8b43de8f363b8a1ca95a4c15b5d35aa14c1c8db4a2e309f1b57eb84f2d4492935c056223d741c2a346c4bdb99ad6f88')
+source=($url/-/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz
+  132.patch)
+b2sums=('7c2f5fe089b86e9e26a33131fb892332b8b43de8f363b8a1ca95a4c15b5d35aa14c1c8db4a2e309f1b57eb84f2d4492935c056223d741c2a346c4bdb99ad6f88'
+        'd4792e076150cf8e57401908f1528d5ac54e3fdc8b5e96aa4c6ce38d01db5e00e4b390fae98dc3697500b8127c78e5f2fba35ac9ab198c2e50fb94a5b67e22ac')
+
+prepare() {
+  cd "$_pkgname-v$pkgver"
+  patch -Np1 -i "$srcdir/132.patch"
+}
 
 build() {
   arch-meson "$_pkgname-v$pkgver" build

@@ -1,7 +1,7 @@
 pkgbase = endeavour
 	pkgdesc = Task manager for GNOME
 	pkgver = 42.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.gnome.org/World/Endeavour
 	arch = x86_64
 	arch = aarch64
@@ -20,6 +20,8 @@ pkgbase = endeavour
 	conflicts = gnome-todo
 	replaces = gnome-todo
 	source = https://gitlab.gnome.org/World/Endeavour/-/archive/v42.0/Endeavour-v42.0.tar.gz
+	source = 132.patch
 	b2sums = 7c2f5fe089b86e9e26a33131fb892332b8b43de8f363b8a1ca95a4c15b5d35aa14c1c8db4a2e309f1b57eb84f2d4492935c056223d741c2a346c4bdb99ad6f88
+	b2sums = d4792e076150cf8e57401908f1528d5ac54e3fdc8b5e96aa4c6ce38d01db5e00e4b390fae98dc3697500b8127c78e5f2fba35ac9ab198c2e50fb94a5b67e22ac
 
 pkgname = endeavour
