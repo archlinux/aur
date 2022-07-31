@@ -3,7 +3,7 @@
 
 _plug=znedi3
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=2.1.16.g97940d2
+pkgver=2.1.20.g740c1f1
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT Version)"
 arch=('x86_64')
@@ -49,9 +49,10 @@ prepare() {
 
 build() {
   cd "${_plug}"
-  CXXFLAGS+=" -std=c++14 -O2 -fPIC -fvisibility=hidden -DX86=1 -DX86_AVX512=1"
-  CPPFLAGS+=" -DNNEDI3_WEIGHTS_PATH=\\\"/usr/lib/vapoursynth/nnedi3_weights.bin\\\" -DGRAPHENGINE_IMPL_NAMESPACE=znedi3 $(pkg-config --cflags vapoursynth) -Igraphengine/include -Iznedi3 -Ivsxx"
-  LC_ALL=C make V=1
+  CXXFLAGS="${CXXFLAGS/-fno-plt/-fplt}"
+  CPPFLAGS+=" $(pkg-config --cflags vapoursynth) -DNNEDI3_WEIGHTS_PATH=\\\"/usr/lib/vapoursynth/nnedi3_weights.bin\\\""
+  LDFLAGS="${LDFLAGS/-z,now/-z,lazy}"
+  LC_ALL=C make V=1 X86=1 X86_AVX512=1
 }
 
 package(){
