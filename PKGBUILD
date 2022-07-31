@@ -2,7 +2,7 @@
 # Contributor: DanielH, agstrc
 
 pkgname=iriunwebcam-bin
-pkgver=2.6
+pkgver=2.7
 pkgrel=1
 pkgdesc="Use your phone's camera as a wireless webcam in your PC."
 arch=('any')
@@ -21,4 +21,4 @@ package() {
     chmod 755 "${pkgdir}/usr/local/bin/iriunwebcam"
 }
 
-md5sums=('8ae4a38b3322c1ca98ef1f4d2f5c0f48')
+md5sums=('0c96650189ad6f579e6104c62e3b50c4')
