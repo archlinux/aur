@@ -1,0 +1,4 @@
+/gamecube-tools-*.pkg.tar.*
+/gamecube-tools-*/
+/pkg/
+/src/

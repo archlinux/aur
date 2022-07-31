@@ -1,0 +1,15 @@
+pkgbase = gamecube-tools
+	pkgdesc = gamecube tools
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/devkitPro/gamecube-tools
+	arch = x86_64
+	groups = gamecube-dev
+	groups = wii-dev
+	license = GPL3
+	makedepends = freeimage
+	makedepends = git
+	source = gamecube-tools-1.0.3::git+https://github.com/devkitPro/gamecube-tools.git#commit=21e671615cd9531c9c14c8f249bdb231af27f616
+	sha256sums = SKIP
+
+pkgname = gamecube-tools
