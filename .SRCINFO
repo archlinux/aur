@@ -1,0 +1,19 @@
+pkgbase = plage-git
+	pkgdesc = A message encryption tool, featuring a local keyring, inspired by Age and GnuPG.
+	pkgver = 22.07.r4.g34f39e2
+	pkgrel = 1
+	url = https://github.com/trizen/perl-scripts
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = perl>=5.20.0
+	depends = perl-crypt-cbc
+	depends = perl-cryptx
+	depends = perl-json
+	depends = perl-term-ui
+	depends = perl-term-readkey
+	depends = perl-term-readline-gnu
+	source = git+https://github.com/trizen/perl-scripts.git
+	sha512sums = SKIP
+
+pkgname = plage-git
