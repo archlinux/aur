@@ -10,7 +10,7 @@
 
 pkgname=osc-git
 _pkgname=osc
-pkgver=0.178.0.r3885.eac54347
+pkgver=0.181.0.r3966.4a67768c
 pkgrel=1
 pkgdesc="Command line client for the openSUSE Build Service"
 arch=(any)
@@ -49,10 +49,6 @@ package() {
     cd "${srcdir}/${_pkgname}"
     python setup.py install --root="${pkgdir}/" --optimize=1 --prefix=/usr
 
-    cd "${pkgdir}/usr/bin"
-    ln -s osc-wrapper.py osc
-    cd -
-
-    install -Dm644 dist/complete.sh "${pkgdir}/usr/share/bash-completion/completions/osc"
-    install -Dm755 dist/osc.complete "${pkgdir}/usr/lib/osc/complete"
+    install -Dm644 "${srcdir}/${_pkgname}/dist/complete.sh" "${pkgdir}/usr/share/bash-completion/completions/osc"
+    install -Dm755 "${srcdir}/${_pkgname}/dist/osc.complete" "${pkgdir}/usr/lib/osc/complete"
 }
