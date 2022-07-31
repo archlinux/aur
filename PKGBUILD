@@ -3,10 +3,10 @@
 # Contributor: Mikołaj Chwalisz <chwalisz at tkn.tu-berlin dot de>
 pkgname=uniflash
 pkgver=7.1.0.3796
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal Flash Programmer for Texas Instruments devices. Provides a single interface for programming Flash memory and executing Flash based operations on supported targets."
 arch=('i686' 'x86_64')
-url="http://processors.wiki.ti.com/index.php/Category:CCS_UniFlash"
+url="https://processors.wiki.ti.com/index.php/Category:CCS_UniFlash"
 license=('custom:TECHNOLOGY SOFTWARE PUBLICLY AVAILABLE by Texas Instruments Incorporated')
 depends=(
 	'gconf'
@@ -15,17 +15,17 @@ depends=(
 optdepends=(
 	'python2: The SimpleLink CC31xx/CC32xx families require Python2.7'
 )
-source=(${pkgname}_sl.$pkgver.run::http://software-dl.ti.com/ccs/esd/uniflash/${pkgname}_sl.$pkgver.run
+source=(${pkgname}_sl.$pkgver.run::https://software-dl.ti.com/ccs/esd/uniflash/${pkgname}_sl.$pkgver.run
 		62-msp430uif.rules)
 noextract=("${pkgname}_sl.$pkgver.run" )
 options=(!strip)
 sha256sums=('34e800db38944662e9be821d4cfe31521ef721a0810e7b10f2e0a07fb3db60c6'
             'e6fc064be173031f3a845f937b2dd7bd6742125e2bcb18f943968dde27b10cfb')
 
-DLAGENTS=('http::/usr/bin/curl -fLC - --cookie nada -o %o %u')
+DLAGENTS=('https::/usr/bin/curl -fLC - --cookie nada -o %o %u')
 prepare() {
 	cd "$srcdir"
-	msg "If you continue you will accept the license, more information at http://processors.wiki.ti.com/index.php/Category:CCS_UniFlash."
+	msg "If you continue you will accept the license, more information at https://processors.wiki.ti.com/index.php/Category:CCS_UniFlash."
 	chmod +x ${pkgname}_sl.$pkgver.run
 }
 build() {
