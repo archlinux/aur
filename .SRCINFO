@@ -1,0 +1,14 @@
+pkgbase = sematrix-plymouth-theme
+	pkgdesc = A matrix efect plymouth them
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/chapainaashish/sematrix
+	install = sematrix-plymouth-theme.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = plymouth
+	source = git+https://github.com/chapainaashish/sematrix.git
+	sha256sums = SKIP
+
+pkgname = sematrix-plymouth-theme

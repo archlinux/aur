@@ -1,0 +1,12 @@
+post_install() {
+	cat <<EOF 
+
+==> To activate the theme, run as root:
+==> plymouth-set-default-theme -R sematrix
+
+EOF
+}
+
+post_upgrade() {
+	post_install $1
+}
