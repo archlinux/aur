@@ -1,0 +1,15 @@
+pkgbase = gog-enter-the-gungeon
+	pkgdesc = A gunfight dungeon crawler following a band of misfits seeking to shoot, loot, dodge roll and table-flip their way to personal absolution by reaching the legendary Gungeon’s ultimate treasure: the gun that can kill the past.
+	pkgver = 2.1.9.33951
+	pkgrel = 1
+	url = http://dodgeroll.com/gungeon/
+	arch = x86_64
+	license = custom
+	source = gog-enter-the-gungeon
+	source = gog-enter-the-gungeon.desktop
+	source = enter_the_gungeon_2_1_9_33951.sh::gogdownloader://enter_the_gungeon/en3installer0
+	sha256sums = e06bf3e648aea9a6cc72cb297e097ea86bcca84c50c7e18a5f1c3cc3e554705e
+	sha256sums = 3560f0a19fc43566001a153c60d776da4467e74d4d99f3c74eb52f3f1b76fa90
+	sha256sums = 23eb414b55da3eecabb1ed0773499b30effabe563d08a0f6e74a1999db48067c
+
+pkgname = gog-enter-the-gungeon

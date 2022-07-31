@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Enter The Gungeon
+Comment=A gunfight dungeon crawler following a band of misfits seeking to shoot, loot, dodge roll and table-flip their way to personal absolution by reaching the legendary Gungeon’s ultimate treasure: the gun that can kill the past.
+Exec=gog-enter-the-gungeon
+Icon=gog-enter-the-gungeon
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;
+Encoding=UTF-8
