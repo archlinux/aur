@@ -1,0 +1,19 @@
+pkgbase = devkit-env
+	pkgdesc = environment settings for devkitPro supplied tools
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/devkitPro
+	arch = x86_64
+	groups = gp32-dev
+	groups = gba-dev
+	groups = nds-dev
+	groups = 3ds-dev
+	groups = gamecube-dev
+	groups = wii-dev
+	groups = wiiu-dev
+	groups = switch-dev
+	license = GPL
+	source = devkit-env.sh
+	sha256sums = 812c9d59d86dd34ddb64ec1190f53832e7cac04388d2a413e931e2a774660908
+
+pkgname = devkit-env
