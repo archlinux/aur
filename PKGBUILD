@@ -5,7 +5,7 @@
 # https://photoview.github.io/docs/installation-manual/
 
 pkgname=photoview
-pkgver=2.3.12
+pkgver=2.3.13
 pkgrel=1
 pkgdesc="Photo gallery for self-hosted personal servers"
 arch=('x86_64')
@@ -16,6 +16,7 @@ depends=(
   'nodejs'
   'libjpeg-turbo'
   'libheif'
+  'libwebp'
   'blas'
   'cblas'
   'lapack'
@@ -48,7 +49,7 @@ source=(
   "$url/archive/refs/tags/v${pkgver}.tar.gz"
   "${pkgname}.env.patch"
 )
-sha512sums=('3e7196f6df265abceabcfa4d4fc8f82ad2e6a3e95ae5482d6ad813dceafbee1258bece5b0e4c95ad28a710c9f85f0d2b46e42b6b2d1e10f8466dff0c6557bc93'
+sha512sums=('63feaaa33257a5f529fe87f354b1937f7eac60faf1ec0d01c1ca91bf6929b08b680359c044879e9ab96329690baa543e19d4cf0237b20fda152c39631496cd59'
             'aa9b3fe32883af83c183a3cf1d0646b6140f2294c5b58d6df3cac4b1f9b89300f955f46fa125d50ccaac866ab60a752d42f547af19772159e6a2f176c0cf6369')
 
 prepare() {
@@ -72,7 +73,7 @@ build() {
 
 package() {
   # --ui--
-  cd "${srcdir}/${_pkg_name_ver}/ui/build"
+  cd "${srcdir}/${_pkg_name_ver}/ui/dist"
   find * -type f -exec install -Dm0644 "{}" "${pkgdir}/usr/share/webapps/${pkgname}-ui/{}" \;
 
   # --api--
