@@ -1,5 +1,5 @@
 pkgbase = jre13
-	pkgdesc = Oracle Java Runtime Environment
+	pkgdesc = Oracle Java 13 Runtime Environment
 	pkgver = 13.0.2
 	pkgrel = 1
 	url = https://www.oracle.com/java/
