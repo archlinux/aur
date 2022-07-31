@@ -1,6 +1,6 @@
 pkgbase = clfft-git
 	pkgdesc = A software library containing FFT functions written in OpenCL (git)
-	pkgver = 2.12.2.r0.gce107c4
+	pkgver = 2.12.2.r29.gc59712e
 	pkgrel = 1
 	url = https://github.com/clMathLibraries/clFFT
 	arch = i686
@@ -8,9 +8,10 @@ pkgbase = clfft-git
 	license = APACHE
 	makedepends = opencl-headers
 	makedepends = cmake
+	makedepends = git
 	depends = ocl-icd
+	conflicts = clfft
 	source = git+https://github.com/clMathLibraries/clFFT.git
 	md5sums = SKIP
 
 pkgname = clfft-git
-

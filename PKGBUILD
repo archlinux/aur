@@ -1,14 +1,15 @@
 # Maintainer:  rubenvb <vanboxem.ruben@gmail.com>
 
 pkgname=clfft-git
-pkgver=2.12.2.r0.gce107c4
+pkgver=2.12.2.r29.gc59712e
 pkgrel=1
 pkgdesc="A software library containing FFT functions written in OpenCL (git)"
 arch=("i686" "x86_64")
 url="https://github.com/clMathLibraries/clFFT"
 license=('APACHE')
 depends=('ocl-icd')
-makedepends=('opencl-headers' 'cmake')
+makedepends=('opencl-headers' 'cmake' 'git')
+conflicts=(clfft)
 
 source=("git+https://github.com/clMathLibraries/clFFT.git")
 md5sums=(SKIP)
