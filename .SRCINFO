@@ -1,0 +1,17 @@
+pkgbase = html2text-git
+	pkgdesc = HTML to text (UTF-8) converter, given either an HTML file, or an URL.
+	pkgver = 22.07.r4.g34f39e2
+	pkgrel = 1
+	url = https://github.com/trizen/perl-scripts
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = perl>=5.10.0
+	depends = perl-html-tree
+	depends = perl-html-formatter
+	optdepends = perl-libwww: support for URLs
+	optdepends = perl-lwp-protocol-https: support for HTTPS URLs
+	source = git+https://github.com/trizen/perl-scripts.git
+	sha512sums = SKIP
+
+pkgname = html2text-git
