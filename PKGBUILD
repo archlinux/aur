@@ -8,6 +8,7 @@ pkgrel=1
 pkgdesc="Library for processing and uploading geotagged images to Mapillary"
 url="https://github.com/mapillary/mapillary_tools"
 depends=(
+  'python-appdirs'
   'python-construct'
   'python-dateutil'
   'python-exifread'
