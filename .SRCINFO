@@ -6,6 +6,7 @@ pkgbase = i3-pager-git
 	arch = any
 	license = GPLv3
 	makedepends = git
+	makedepends = extra-cmake-modules
 	provides = i3-pager
 	conflicts = i3-pager
 	source = git+https://github.com/duvholt/i3-pager.git
