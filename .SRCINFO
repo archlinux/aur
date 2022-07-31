@@ -1,12 +1,13 @@
 pkgbase = beast
 	pkgdesc = Bayesian Evolutionary Analysis Sampling Trees. https://doi.org/10.1186/1471-2148-7-214
 	pkgver = 1.10.4
-	pkgrel = 10
+	pkgrel = 12
 	url = http://beast.community/
 	arch = x86_64
 	license = LGPL-2.1 License
 	makedepends = java-environment
 	depends = java-runtime
+	optdepends = beagle-lib
 	provides = beast
 	source = https://github.com/beast-dev/beast-mcmc/releases/download/v1.10.4/BEASTv1.10.4.tgz
 	source = beast_beast.desktop

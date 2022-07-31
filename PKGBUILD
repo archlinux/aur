@@ -3,7 +3,7 @@
 
 pkgname=beast
 pkgver=1.10.4
-pkgrel=10
+pkgrel=12
 provides=("beast")
 pkgdesc="Bayesian Evolutionary Analysis Sampling Trees. https://doi.org/10.1186/1471-2148-7-214"
 arch=('x86_64')
@@ -19,17 +19,15 @@ sha256sums=('be652c4d55953f7c6c7a9d3eb3de203c77dc380e81ad81cfe0492408990c36a8'
             'aca5c3f88ea8624d94b9e6e0e8f4b41a1f981562ad33bee2f35cc15de84f9906')
 depends=('java-runtime')
 makedepends=('java-environment')
+optdepends=('beagle-lib')
 package() {
     install -dm755 "$pkgdir"/usr/{bin,share/{applications,${pkgname}}}
-
+    sed -i 's/\/usr\/local\/lib/\/usr\/lib/g'  ${srcdir}/BEASTv${pkgver}/bin/beast
     mv ${srcdir}/BEASTv${pkgver}/* ${pkgdir}/usr/share/beast/
-     
-    ln -s /usr/share/beast/bin/beauti ${pkgdir}/usr/bin/beauti_beast
-    ln -s /usr/share/beast/bin/beast ${pkgdir}/usr/bin/beast_beast
-    ln -s /usr/share/beast/bin/logcombiner ${pkgdir}/usr/bin/logcombiner_beast
-    ln -s /usr/share/beast/bin/treeannotator ${pkgdir}/usr/bin/treeannotator_beast
-    ln -s /usr/share/beast/bin/treestat ${pkgdir}/usr/bin/treestat_beast
-
+    for bin in $(ls $pkgdir/usr/share/beast/bin)
+do
+    ln -s /usr/share/beast2/bin/$bin ${pkgdir}/usr/bin/$bin
+done   
     install -m 755 treestat.png ${pkgdir}/usr/share/beast/images/
     install -m 755 *.desktop ${pkgdir}/usr/share/applications
     }
