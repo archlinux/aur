@@ -1,6 +1,6 @@
 Maintainer="baris-inandi"
 pkgname=fe
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="AUR helper with a familiar subcommand system"
 arch=(x86_64)
@@ -20,11 +20,7 @@ package() {
 	cp -n conf/pacman.conf /etc/fepacman.conf
 	if ! type "paru" > /dev/null; then
 		echo "WARN: INSTALL PARU BEFORE USING FE"
-	fi	
-}
-
-build() {
-	cd $pkgname
+	fi
 	sudo rm -rf /usr/bin/fe
 	sudo go build -o /usr/bin/fe
 	sudo rm -rf fe
