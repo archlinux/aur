@@ -1,6 +1,6 @@
 pkgbase = libindi-astrolink4usb-git
 	pkgdesc = 3rd party drivers for INDI, support for Astrolink 4 USB device
-	pkgver = 1.9.7.r30.2b4fb4f
+	pkgver = 1.9.7.r33.0022661
 	pkgrel = 1
 	url = http://www.indilib.org/index.php?title=Main_Page
 	arch = i686
