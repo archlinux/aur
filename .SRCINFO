@@ -1,6 +1,6 @@
 pkgbase = clavis
 	pkgdesc = An easy to use Password Manager.
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/ManelCG/clavis
 	arch = x86_64
