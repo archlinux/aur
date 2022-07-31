@@ -4,13 +4,13 @@
 _module="tablib"
 pkgname="python-${_module}"
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Format-agnostic tabular data library (XLS, JSON, YAML, CSV)"
 arch=("any")
 url="http://python-tablib.org"
 license=("MIT")
-depends=("python")
-makedepends=("python-pip" "python-setuptools")
+depends=(python)
+makedepends=(python-build python-installer python-wheel python-setuptools-scm)
 checkdepends=("python-pytest-cov" "python-tabulate" "python-markuppy"
               "python-odfpy" "python-pandas" "python-xlrd"
               "python-xlwt" "python-openpyxl" "python-pyaml")
@@ -28,7 +28,7 @@ sha256sums=('a57f2770b8c225febec1cb1e65012a69cf30dd28be810e0ff98d024768c7d0f1')
 
 build() {
     cd "${_module}-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 check() {
@@ -38,7 +38,7 @@ check() {
 
 package() {
     cd "${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -D -m644 "${srcdir}/${_module}-${pkgver}/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
