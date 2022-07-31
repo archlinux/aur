@@ -3,7 +3,8 @@
 pkgname=cqrlog-git
 _pkgname=cqrlog
 _authorname=ok2cqr
-pkgver=2.5.2.r208.g823332c
+pkgver=2.5.2.r234.g98a8ba5
+#.r234.g98a8ba5
 #.r208.g823332c
 pkgrel=1
 pkgdesc="An advanced ham radio logger using MariaDB - GIT version."
@@ -35,8 +36,8 @@ pkgver() {
 prepare() {
 	cd "$srcdir/$_pkgname"
 
-	sed -i 's/--ws=gtk2 src/--lazarusdir=\/usr\/lib\/lazarus --ws=gtk2 src/g' Makefile
-#	sed -i 's/--ws=gtk2 --pcp=$(tmpdir)\/.lazarus src/--lazarusdir=\/usr\/lib\/lazarus --ws=gtk2 --pcp=$(tmpdir)\/.lazarus src/g' Makefile
+#	sed -i 's/--ws=gtk2 src/--lazarusdir=\/usr\/lib\/lazarus --ws=gtk2 src/g' Makefile
+	sed -i 's/--ws=gtk2 --pcp=$(tmpdir)\/.lazarus src/--lazarusdir=\/usr\/lib\/lazarus --ws=gtk2 --pcp=$(tmpdir)\/.lazarus src/g' Makefile
 	sed -i "s:cqrlog.png:/usr/share/pixmaps/cqrlog/cqrlog.png:" tools/cqrlog.desktop
 }
 
