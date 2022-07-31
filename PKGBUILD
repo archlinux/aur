@@ -14,14 +14,14 @@ conflicts=('cef-jetbrains')
 source=('git+https://github.com/JetBrains/cef.git#branch=jb_master'
 'pkgver.py')
 sha256sums=('SKIP'
-            '7cacaccd96492a74c8f0e47ed08dc30d7f85f56e0d76ab3805007dfe05d116d5')
+            '85b66ad68449b1dec0f59d8fd12c837ad137f3a5b71b254eedc20a14f97590d3')
 
 pkgver() {
-    cd $srcdir/chromium/cef
+    cd $srcdir/cef
     python $srcdir/pkgver.py
 }
 
-prepare() {
+build() {
     cd $srcdir
     mkdir -p chromium
     mv cef chromium
@@ -30,11 +30,6 @@ prepare() {
     bash cef/jb/tools/common/get_sources.sh x64
     sed -i 's/.*install-build-deps.sh.*/echo/g' cef/jb/tools/linux/create_project.sh
     bash cef/jb/tools/linux/create_project.sh x64
-
-}
-
-build() {
-    cd $srcdir/chromium
     bash cef/jb/tools/linux/build.sh x64
     bash cef/jb/tools/linux/create_distr.sh x64
 }
