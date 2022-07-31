@@ -1,6 +1,6 @@
 pkgbase = qtcreator-xmake-project-manager
 	pkgdesc = QtCreator XMake project support plugin
-	pkgver = 8.0.0.r103.6839932
+	pkgver = 8.0.0.r104.0fa9312
 	pkgrel = 1
 	url = https://github.com/Arthapz/xmake-project-manager
 	arch = x86_64
