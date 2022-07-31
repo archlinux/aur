@@ -215,6 +215,7 @@ int main(int argc, char **argv) {
 			help();
 		} else {
 			cout << "unknown command" << endl;
+			return 0;
 		}
 	} else {
 		help();
