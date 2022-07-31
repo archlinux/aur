@@ -5,7 +5,7 @@
 
 pkgname=e4rat
 pkgver=0.2.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Toolset to accelerate the boot process and application startups for systems with ext4 root partitions."
 arch=('i686' 'x86_64')
 url="http://e4rat.sourceforge.net/"
@@ -21,7 +21,8 @@ source=( "http://downloads.sourceforge.net/project/$pkgname/$pkgver/e4rat_${pkgv
 	'sysmacros_h.patch' \
         'boost-fs3-v2.patch'
 	'cmake_boost.patch'
-	'cmake.patch')
+	'cmake.patch'
+	'build.patch')
 
 prepare () {
   cd "$srcdir/$pkgname-$pkgver"
@@ -30,11 +31,12 @@ prepare () {
   patch -p0 -i ../sysmacros_h.patch
   patch -p1 -i ../cmake_boost.patch
   patch -p0 -i ../cmake.patch
+  patch -p1 -i ../build.patch
 }
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_CORE_LIBRARY_STATIC=true  -DCMAKE_INSTALL_PREFIX="/usr" .
+  cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_CORE_LIBRARY_STATIC=true -DCMAKE_INSTALL_PREFIX="/usr" .
   make 
 }
 
@@ -50,4 +52,5 @@ sha256sums=('f6feda9618eff0f9442baf771b4776b634e5a2f39e678c10e4c7946b2c6a96a0'
             'ea35d1f7f8b6c4be9f20cc6ffbe72446dbdb6b99df450f29855a1cf9cf79362a'
             '9a9786d6167e4a47d1733735745b0eadeabf487886405df9e6771a28f3a20965'
             '0978a893f73dbd16ef727b59f865cb9079dd3a357f43188308a1ea303177dd02'
-            '626f5663c6d5690c119e2e21402ce352285d0771806cc7119ba6e4c785e6e3b1')
+            '626f5663c6d5690c119e2e21402ce352285d0771806cc7119ba6e4c785e6e3b1'
+            'f045addc960ec356f4063528a6a9e0a2abf8bd8e6b04e70f7fb54db75c9382cc')

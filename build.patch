@@ -1,0 +1,77 @@
+diff --git a/src/defrag.cc b/src/defrag.cc
+index 4a0815b..198b24c 100644
+--- a/src/defrag.cc
++++ b/src/defrag.cc
+@@ -24,6 +24,7 @@
+ #include "config.hh"
+ #include "buddycache.hh"
+ 
++#include <cmath>
+ #include <errno.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
+diff --git a/src/device.hh b/src/device.hh
+index fd881df..7318b65 100644
+--- a/src/device.hh
++++ b/src/device.hh
+@@ -21,6 +21,8 @@
+ #define DEVICE_HH
+ 
+ #include "common.hh"
++
++#include <boost/shared_ptr.hpp>
+ #include <string>
+ #include <ext2fs/ext2fs.h>
+ #include <ext2fs/ext2_fs.h>
+diff --git a/src/e4rat-collect.cc b/src/e4rat-collect.cc
+index 8309ade..8397a0d 100644
+--- a/src/e4rat-collect.cc
++++ b/src/e4rat-collect.cc
+@@ -421,7 +421,7 @@ int main(int argc, char* argv[])
+     if( Config::get<bool>("ext4_only"))
+         listener.watchExt4Only();
+ 
+-    CONNECT(&listener, eventParsed, boost::bind(&EventCatcher::handleAuditEvent, &project, _1));
++    CONNECT(&listener, eventParsed, boost::bind(&EventCatcher::handleAuditEvent, &project, boost::placeholders::_1));
+ 
+ 
+     if(execute || 1 == getpid())
+diff --git a/src/listener.cc b/src/listener.cc
+index e7ba5e1..81e6065 100644
+--- a/src/listener.cc
++++ b/src/listener.cc
+@@ -153,12 +153,7 @@ void AuditListener::watchFileSystemType(long t)
+ 
+ void addSyscall(struct audit_rule_data* rule, const char* sc, int machine)
+ {
+-    int syscall_nr;
+-    syscall_nr = audit_name_to_syscall(sc, machine);
+-    if(syscall_nr == -1)
+-        throw std::logic_error("Cannot convert syscall to number");
+-
+-    audit_rule_syscall_data(rule, syscall_nr);
++    audit_rule_syscallbyname_data(rule, sc);
+ }
+ 
+ void AuditListener::activateRules(int machine)
+diff --git a/src/signals.hh b/src/signals.hh
+index f050adf..7704d0e 100644
+--- a/src/signals.hh
++++ b/src/signals.hh
+@@ -42,11 +42,11 @@
+ #include <boost/signals2/signal.hpp>
+ 
+ //get the number of arguments
+-#define BIND1ST _1
+-#define BIND2ST _1,_2
+-#define BIND3ST _1,_2,_3
+-#define BIND4ST _1,_2,_3,_4
+-#define BIND5ST _1,_2,_3,_4,_5
++#define BIND1ST boost::placeholders::_1
++#define BIND2ST boost::placeholders::_1, boost::placeholders::_2
++#define BIND3ST boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3
++#define BIND4ST boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3, boost::placeholders::_4
++#define BIND5ST boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3, boost::placeholders::_4, boost::placeholders::_5
+ 
+ #define VA_NUM_ARGS(...) VA_NUM_ARGS_IMPL(__VA_ARGS__,                 \
+                                           BIND5ST,                     \
