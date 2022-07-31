@@ -9,6 +9,7 @@ pkgbase = mapillary_tools-git
 	depends = python-dateutil
 	depends = python-exifread
 	depends = python-gpxpy
+	depends = python-jsonschema
 	depends = python-piexif
 	depends = python-pillow
 	depends = python-pynmea2

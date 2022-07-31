@@ -12,6 +12,7 @@ depends=(
   'python-dateutil'
   'python-exifread'
   'python-gpxpy'
+  'python-jsonschema'
   'python-piexif'
   'python-pillow'
   'python-pynmea2'
