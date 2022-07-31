@@ -1,7 +1,7 @@
 pkgbase = pyinstaller
 	pkgdesc = Bundles a Python application and all its dependencies into a single package
-	pkgver = 5.2
-	pkgrel = 2
+	pkgver = 5.3
+	pkgrel = 1
 	url = http://www.pyinstaller.org
 	arch = x86_64
 	arch = i686
@@ -16,14 +16,14 @@ pkgbase = pyinstaller
 	depends = python-setuptools
 	optdepends = python-tinyaes>=1.0.0: bytecode encryption support
 	optdepends = python-importlib-metadata: support for python 3.8 and lower
-	source_x86_64 = https://files.pythonhosted.org/packages/py3/p/pyinstaller/pyinstaller-5.2-py3-none-manylinux2014_x86_64.whl
-	sha512sums_x86_64 = 1f5658e98f51b8f1badf8882467e9dc6ede666d95c18cf2e5ca0b5fa33e291bce65848d422e6bc76fa93d6ae03d01325213d5f2921c38209b3c1ac8c6f32735a
-	b2sums_x86_64 = 1eefb625a7040cff1ff6b429ffb09d7c6f64ccabe67f65aea4e613d45b37b0a0e9a74e344291f0ad51ee33047a39fcbe936db52aafa64ce4fa9f8ecda7eb476b
-	source_i686 = https://files.pythonhosted.org/packages/py3/p/pyinstaller/pyinstaller-5.2-py3-none-manylinux2014_i686.whl
-	sha512sums_i686 = 0c539c8958e9d7376c4acff284f42dc8737d6e2fc4ef3a7f68213a219701985943ff067b66e8cc9e910256dc3435c42fb9066b665861b27a1650b30e0f1637a6
-	b2sums_i686 = 0baabef5e7ac8a67ca186750f9e30eaea0a6bb8bdfe53e73f83ff6f0b4e59dce09dfa1ba2779336a30f31e34b8dc974b36f6f229034897ac54c6409972d1fb3f
-	source_aarch64 = https://files.pythonhosted.org/packages/py3/p/pyinstaller/pyinstaller-5.2-py3-none-manylinux2014_aarch64.whl
-	sha512sums_aarch64 = eb1cf0ae5635eaf0bf1f588cdcfe55dd6344dc68d2466b429aa6944c89788ac410248218c9cdfcf329e0b2716869b4a4a9f397dfbeb2b9372450d73bb2cf672f
-	b2sums_aarch64 = f2f6ab9b812b0d61e6cbb72b640a97b52b5a652ff376cd0687f0e29caad7b1ab3a12879709e03006a2402ce907eb52843e1f6a7476b83900e7a78c822340ca0d
+	source_x86_64 = https://files.pythonhosted.org/packages/py3/p/pyinstaller/pyinstaller-5.3-py3-none-manylinux2014_x86_64.whl
+	sha512sums_x86_64 = 4a497e2e2bbf2c476df683855bd7dcb9b3c797a4b5647a65de1482ec597098d6195cfb288b682dc6bf58776ed99cdd58e3a8155ac7fc1846301a12937c758d5c
+	b2sums_x86_64 = 02118d3d522e9afe61f401f8cda89d676702b4f880c5acf6002d4527abef6608a60e5bee0c39402307f1d72afda6f9c9cc424171d277dfa6effbf23adb33d7bc
+	source_i686 = https://files.pythonhosted.org/packages/py3/p/pyinstaller/pyinstaller-5.3-py3-none-manylinux2014_i686.whl
+	sha512sums_i686 = 771a9d53dabc0c104c9fe70bfc181a3b23808e8c7e1c7a4c3414b1c944dca72107c0eb3f908c1b229a7040fb8a0993b44c4e03e0d0063cd9e09e035b7dcd9db5
+	b2sums_i686 = fe56bace401428ac8aca93b0c05fc835b67e359b065e2e95732dbb3c7c8978a62f1d1f064867821c7401dcc209d01f8dd41ae218c24a1763234bb62ed3e22ceb
+	source_aarch64 = https://files.pythonhosted.org/packages/py3/p/pyinstaller/pyinstaller-5.3-py3-none-manylinux2014_aarch64.whl
+	sha512sums_aarch64 = 5819f354cbcaa5baf0022c28d612a535bed6b8c06d58c36ee8dbb44cf5797203cf1c066dd725ca3c1fbbf0111d973a9f0763f8cc3ee44cf037f0c8851142db08
+	b2sums_aarch64 = 4144489cda2e620dd0244b1d780c2274d6729cc5b37b60eb22a81931de70813ea0d952abf15bd17fbcfa820f4560917416917e50182545383777a9d672c99386
 
 pkgname = pyinstaller
