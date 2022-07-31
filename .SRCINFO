@@ -18,6 +18,7 @@ pkgbase = caffeine-ng-git
 	depends = python-pulsectl
 	depends = libindicator-gtk3
 	depends = libappindicator-gtk3
+	depends = scdoc
 	provides = caffeine
 	provides = caffeine-bzr
 	provides = caffeine-oneclick

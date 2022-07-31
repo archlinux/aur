@@ -20,6 +20,7 @@ depends=(
   python-pulsectl
   libindicator-gtk3
   libappindicator-gtk3
+  scdoc
 )
 makedepends=(
   git
