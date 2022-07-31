@@ -1,6 +1,6 @@
 # Maintainer: Kohei Suzuki <eagletmt@gmail.com>
 pkgname=amazon-corretto-8
-pkgver=8.342.07.3
+pkgver=8.342.07.4
 pkgrel=1
 pkgdesc='No-cost, multiplatform, production-ready distribution of OpenJDK'
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ package() {
   esac
 }
 
-sha256sums_x86_64=('cb4a7ebb483f02201b7259ac869aed3680f0975e3ac6ee4dfc389dcd48177d93'
+sha256sums_x86_64=('f10fc46f42df58cf26a4689a7016aa610b691ad4e8be7c349f8651dec79d4e41'
                    'SKIP')
-sha256sums_aarch64=('c02ffc723b741febcc5e88588d854325b30c5d6cddabe6a22a46e57f939a058f'
+sha256sums_aarch64=('2d454c4804fc2ee5a2aef9f517ca6c2b85dee7728d74edf20f85a35681b2d143'
                     'SKIP')

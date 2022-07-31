@@ -1,6 +1,6 @@
 pkgbase = amazon-corretto-8
 	pkgdesc = No-cost, multiplatform, production-ready distribution of OpenJDK
-	pkgver = 8.342.07.3
+	pkgver = 8.342.07.4
 	pkgrel = 1
 	url = https://aws.amazon.com/corretto/
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = amazon-corretto-8
 	provides = java-runtime=8
 	provides = java-environment=8
 	validpgpkeys = 6DC3636DAE534049C8B94623A122542AB04F24E3
-	source_x86_64 = https://corretto.aws/downloads/resources/8.342.07.3/amazon-corretto-8.342.07.3-linux-x64.tar.gz
-	source_x86_64 = https://corretto.aws/downloads/resources/8.342.07.3/amazon-corretto-8.342.07.3-linux-x64.tar.gz.sig
-	sha256sums_x86_64 = cb4a7ebb483f02201b7259ac869aed3680f0975e3ac6ee4dfc389dcd48177d93
+	source_x86_64 = https://corretto.aws/downloads/resources/8.342.07.4/amazon-corretto-8.342.07.4-linux-x64.tar.gz
+	source_x86_64 = https://corretto.aws/downloads/resources/8.342.07.4/amazon-corretto-8.342.07.4-linux-x64.tar.gz.sig
+	sha256sums_x86_64 = f10fc46f42df58cf26a4689a7016aa610b691ad4e8be7c349f8651dec79d4e41
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://corretto.aws/downloads/resources/8.342.07.3/amazon-corretto-8.342.07.3-linux-aarch64.tar.gz
-	source_aarch64 = https://corretto.aws/downloads/resources/8.342.07.3/amazon-corretto-8.342.07.3-linux-aarch64.tar.gz.sig
-	sha256sums_aarch64 = c02ffc723b741febcc5e88588d854325b30c5d6cddabe6a22a46e57f939a058f
+	source_aarch64 = https://corretto.aws/downloads/resources/8.342.07.4/amazon-corretto-8.342.07.4-linux-aarch64.tar.gz
+	source_aarch64 = https://corretto.aws/downloads/resources/8.342.07.4/amazon-corretto-8.342.07.4-linux-aarch64.tar.gz.sig
+	sha256sums_aarch64 = 2d454c4804fc2ee5a2aef9f517ca6c2b85dee7728d74edf20f85a35681b2d143
 	sha256sums_aarch64 = SKIP
 
 pkgname = amazon-corretto-8
