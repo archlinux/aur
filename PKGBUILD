@@ -7,7 +7,7 @@
 
 pkgname=dis4irc
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern Discord <-> IRC bridge"
 arch=('any') # Java :)
 url="https://github.com/zachbr/Dis4IRC"
@@ -36,9 +36,9 @@ noextract=(
     "Dis4IRC-${pkgver}.jar"
 )
 sha256sums=('dbdf65d18545443e562dc73015eb86c8d78faa35d45709d6ba3d3b4dc62fb4f2'
-            '83b67788944ef1f866a6f1bbaac495b4ea10a9ebed850e9747ba05389216c6d3'
+            'c32266a724ab7bf258627950a7f66563aebef1a0e1aa9ea9296b95cc900a823e'
             'd8c07815db79c8e9e6d9dec5fe2bca2fe3d1ed11470f4eb232c0bce7c87e2a4d'
-            '76d6b4d777da06de04b4cc82f5c2fba651d839e05fbdc68a9c75b4219c27d691')
+            'fe49b0c125e69433b91be596cd627424f464e609d39996693ae017889f2b31c4')
 
 build() {
     # Default config file doesn't exist. We have to generate it
