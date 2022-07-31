@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+LD_PRELOAD=/usr/lib/libcurl-openssl-1.0/libcurl.so.4 /opt/gog-devil-daggers/start.sh
+

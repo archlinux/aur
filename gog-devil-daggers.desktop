@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Devil Daggers
+Comment=Fast-paced shooter that places you in an abyssal arena to face endless legions of progressively more dreadful demons.
+Exec=gog-devil-daggers
+Icon=gog-devil-daggers
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;
+Encoding=UTF-8
