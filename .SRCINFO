@@ -1,0 +1,15 @@
+pkgbase = gog-race-the-sun
+	pkgdesc = You are a solar powered craft, racing against the sunset at insane speeds through an infinite procedural world that changes every day.
+	pkgver = 2.4.0.8
+	pkgrel = 1
+	url = http://flippfly.com/racethesun/
+	arch = x86_64
+	license = custom
+	source = gog-race-the-sun
+	source = gog-race-the-sun.desktop
+	source = gog_race_the_sun_2.4.0.8.sh::gogdownloader://race_the_sun/en3installer3
+	sha256sums = 4b48b6cf2df63532d7ac597d54e235d1484792067190bcea74d19158db193e71
+	sha256sums = 6019acb30ae95360ae7560f4b075a02375c9543ef85baf4afab7b11f489c69b3
+	sha256sums = 52735beb981d7853e8f40129f8d481eff454a31daf327f462e068b8e03ee1b27
+
+pkgname = gog-race-the-sun

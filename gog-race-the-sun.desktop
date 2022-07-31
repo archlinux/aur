@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Race the Sun
+Comment=You are a solar powered craft, racing against the sunset at insane speeds through an infinite procedural world that changes every day.
+Exec=gog-race-the-sun
+Icon=gog-race-the-sun
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;
+Encoding=UTF-8
