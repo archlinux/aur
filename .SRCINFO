@@ -1,0 +1,37 @@
+pkgbase = jre15
+	pkgdesc = Oracle Java 15 Runtime Environment
+	pkgver = 15.0.2
+	pkgrel = 1
+	url = https://www.oracle.com/java/
+	install = jre15.install
+	arch = x86_64
+	license = custom
+	depends = java-runtime-common
+	depends = ca-certificates-utils
+	depends = freetype2
+	depends = libxtst
+	depends = libxrender
+	depends = libnet
+	optdepends = alsa-lib: for basic sound support
+	provides = java-runtime=15
+	provides = java-runtime-headless=15
+	provides = java-runtime-jre=15
+	provides = java-runtime-headless-jre=15
+	backup = etc/java15-jre15/management/jmxremote.access
+	backup = etc/java15-jre15/management/jmxremote.password.template
+	backup = etc/java15-jre15/management/management.properties
+	backup = etc/java15-jre15/security/policy/limited/default_US_export.policy
+	backup = etc/java15-jre15/security/policy/limited/default_local.policy
+	backup = etc/java15-jre15/security/policy/limited/exempt_local.policy
+	backup = etc/java15-jre15/security/policy/unlimited/default_US_export.policy
+	backup = etc/java15-jre15/security/policy/unlimited/default_local.policy
+	backup = etc/java15-jre15/security/policy/README.txt
+	backup = etc/java15-jre15/security/java.policy
+	backup = etc/java15-jre15/security/java.security
+	backup = etc/java15-jre15/logging.properties
+	backup = etc/java15-jre15/net.properties
+	backup = etc/java15-jre15/sound.properties
+	source = local://jdk-15.0.2_linux-x64_bin.tar.gz
+	sha256sums = 54b29a3756671fcb4b6116931e03e86645632ec39361bc16ad1aaa67332c7c61
+
+pkgname = jre15
