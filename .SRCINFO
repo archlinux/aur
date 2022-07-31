@@ -1,0 +1,21 @@
+pkgbase = general-tools
+	pkgdesc = Tools for homebrew development
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/devkitPro/general-tools
+	arch = x86_64
+	groups = gp32-dev
+	groups = gp2x-dev
+	groups = gba-dev
+	groups = nds-dev
+	groups = 3ds-dev
+	groups = switch-dev
+	groups = gamecube-dev
+	groups = wii-dev
+	groups = wiiu-dev
+	license = GPL3
+	makedepends = git
+	source = general-tools-1.2.0::git+https://github.com/devkitPro/general-tools.git#commit=c1c3b1547d2ba48dd221553f1d62167cadc70d28
+	sha256sums = SKIP
+
+pkgname = general-tools

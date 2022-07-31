@@ -1,0 +1,4 @@
+/general-tools-*.pkg.tar.*
+/general-tools-*/
+/pkg/
+/src/
