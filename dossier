@@ -1,0 +1,149 @@
+#!/usr/bin/env bash
+# shellcheck source=/dev/null
+# shellcheck disable=2002
+
+ProgName=$(basename "$0")
+  
+sub_help(){
+    echo "Usage: $ProgName <subcommand> [options]"
+    echo "Subcommands:"
+    echo "    install     Install dotfiles in the current directory"
+    echo "    uninstall   Uninstall dotfiles in the current directory"
+    echo "    init        Create a basic dossier.config.json"
+    echo "    add         Add a file to your dossier config"
+    echo "    remove      Remove a file from your dossier config"
+    echo ""
+}
+
+sub_install() {
+    if [ -f "$HOME/.config/dossier.lock" ]; then 
+        echo "Dossier has already installed your dotfiles! Please use dossier uninstall"
+        exit
+    fi
+    if [ -f "./dossier.config.json" ]; then
+        gum confirm "Are you sure you want to install these dotfiles?" && mkdir -p "$HOME/.config/dossier" && touch "$HOME/.config/dossier.lock" &&
+        for row in $(cat dossier.config.json | jq -r '.files[] | @base64'); do
+            _jq() {
+                printf %s "${row}" | base64 --decode | jq -r "${1}"
+            }
+            NAME="$(_jq '.name')"
+            LOCATION="$(_jq '.location' | sed "s|^~|$HOME|")"
+            if [ -h "${LOCATION}/${NAME}" ]; then
+                echo -e "\e[38;5;212mLink Exists ${PWD}/${NAME} -> ${LOCATION}/${NAME}\e[0m"
+            else
+                if [ "$(_jq '.type')" == 'same' ]; then
+                    echo -e "\e[38;5;212m${PWD}/${NAME} -> ${LOCATION}/${NAME}\e[0m"
+                    rm -rf "${LOCATION:?}/${NAME}" &>/dev/null
+                    ln -s "${PWD}/${NAME}" "${LOCATION}/${NAME}" &>/dev/null
+                else
+                    echo -e "\e[38;5;212m${PWD}/${NAME} -> ${LOCATION}\e[0m"
+                    rm -rf "${LOCATION:?}" &>/dev/null
+                    ln -s "${PWD}/${NAME}" "${LOCATION}" &>/dev/null
+                fi
+            fi
+        done && echo -e "\e[38;5;114mAll links have been set up\e[0m" &&
+        for row in $(cat dossier.config.json | jq -r '.commands[] | @base64'); do
+            _jq() {
+                printf %s "${row}" | base64 --decode | jq -r "${1}"
+            }
+            COMMAND="$(_jq '.command')"
+            MESSAGE="$(_jq '.message')"
+            gum spin --title "$MESSAGE" -s line -- bash -c "$COMMAND" && echo -e "\e[38;5;114m$(_jq '.donemessage')\e[0m"
+        done && mkdir -p "$HOME/.config/"
+    else 
+        echo "This directory does not have a dossier config!"
+    fi
+}
+  
+sub_uninstall() {
+    if [ ! -f "$HOME/.config/dossier.lock" ]; then 
+        echo "Dossier hasn't installed your dotfiles yet!"
+        exit
+    fi
+    gum confirm "Are you sure you want to uninstall these dotfiles?
+     This could lead to a broken desktop!" &&
+    for row in $(cat dossier.config.json | jq -r '.files[] | @base64'); do
+        _jq() {
+            printf %s "${row}" | base64 --decode | jq -r "${1}"
+        }
+        NAME="$(_jq '.name')"
+        LOCATION="$(_jq '.location' | sed "s|^~|$HOME|")"
+        if [ "$(_jq '.type')" == 'same' ]; then
+            rm -rf "${LOCATION:?}/${NAME}"
+            echo -e "\e[38;5;212mRemoved ${LOCATION:?}/${NAME}\e[0m"
+        else
+            rm -f "${LOCATION:?}"
+            echo -e "\e[38;5;212mRemoved ${LOCATION:?}\e[0m"
+        fi
+    done && echo -e "\e[38;5;114mAll links have been removed\e[0m" && rm -f "$HOME/.config/dossier.lock"
+}
+
+sub_add() {
+    if [ -f "./dossier.config.json" ]; then
+        NAME=$(gum input --placeholder "What file should i track?")
+        if [ -z "$NAME" ]; then
+            echo "You need to specify what file to track!"
+            exit
+        fi
+        EXISTS=$(cat dossier.config.json | jq ".files[] | select(.name == \"$NAME\")")
+        if [ -n "$EXISTS" ]; then
+            echo "That file has already been added!"
+            exit
+        fi
+        LOCATION=$(gum input --placeholder "Where should that file be symlinked? (eg ~/.config)")
+        if [ -z "$LOCATION" ]; then
+            echo "You need to specify where to symlink to!"
+            exit
+        fi
+        echo "Is this file the same name as it will be when copied or different?"
+        FILEFOLDER=$(gum choose same different)
+        if [ -z "$FILEFOLDER" ]; then
+            echo "You need to specify if this is a file or folder!"
+            exit
+        fi
+        cat dossier.config.json | jq ".files += [{\"name\": \"$NAME\", \"location\": \"$LOCATION\", \"type\": \"$FILEFOLDER\"}]" | tee 'dossier.config.json' &>/dev/null
+        if [ "$FILEFOLDER" == 'same' ]; then
+            echo -e "\e[38;5;212m${PWD}/${NAME} will be symlinked to ${LOCATION}/${NAME} next time you install!\e[0m"
+        else
+            echo -e "\e[38;5;212m${PWD}/${NAME} will be symlinked to $LOCATION next time you install!\e[0m "
+        fi
+    else
+        echo "This directory does not have a dossier config!"
+    fi
+}
+
+sub_remove() {
+    if [ -f "./dossier.config.json" ]; then
+        NAME=$(gum input --placeholder "What file should i stop tracking?")
+        if [ -z "$NAME" ]; then
+            echo "You need to specify what file to stop tracking!"
+            exit
+        fi
+        cat dossier.config.json | jq "del(.files[] | select(.name == \"$NAME\"))" | tee 'dossier.config.json' &>/dev/null
+    else
+        echo "This directory does not have a dossier config!"
+    fi
+}
+
+sub_init() {
+    echo '{
+    "files": [],
+    "commands": []
+}' > dossier.config.json
+}
+
+subcommand=$1
+case $subcommand in
+    "" | "-h" | "--help")
+        sub_help
+        ;;
+    *)
+        shift
+        sub_"${subcommand}" "$@"
+        if [ $? = 127 ]; then
+            echo "Error: '$subcommand' is not a known subcommand." >&2
+            echo "       Run '$ProgName --help' for a list of known subcommands." >&2
+            exit 1
+        fi
+        ;;
+esac
