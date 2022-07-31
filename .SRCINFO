@@ -9,10 +9,9 @@ pkgbase = pvpn
 	makedepends = asciidoc
 	depends = iproute2
 	depends = openssh
-	depends = bind-tools
+	depends = bind
 	depends = ppp
 	source = git+https://github.com/takeshixx/pvpn.git
 	md5sums = SKIP
 
 pkgname = pvpn
-
