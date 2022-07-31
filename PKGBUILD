@@ -3,7 +3,7 @@ pkgname='dust-mail-client-git'
 
 arch=('x86_64')
 
-pkgver=0.1.4.r2.gef28602
+pkgver=0.1.4.r25.ge1b9dfc
 pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -11,7 +11,7 @@ pkgver() {
 pkgrel=1
 epoch=1
 
-makedepends=('yarn' 'nvm' 'cargo' 'git' 'appstream' 'wget')
+makedepends=('pnpm-bin' 'nvm' 'cargo' 'git' 'appstream' 'wget')
 
 pkgdesc='A simple and fast mail client (Git version)'
 
@@ -42,17 +42,21 @@ prepare() {
   _ensure_local_nvm
   nvm install 16
 
-  cd "$srcdir/$pkgname/packages/client/src-tauri"
+  cd "$srcdir/$pkgname/apps/client/src-tauri"
 
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+
+  pnpm fetch
 }
 
 build() {
   _ensure_local_nvm
 
-  cd "$pkgname/packages/client"
+  cd "$pkgname"
 
-  yarn install --frozen-lockfile
+  pnpm install --frozen-lockfile --offline
+
+  cd "apps/client"
 
   unset SOURCE_DATE_EPOCH
 
@@ -60,11 +64,11 @@ build() {
 
   export VITE_UNSTABLE=true
 
-  yarn run tauri build --verbose
+  pnpm run tauri build --verbose
 }
 
 package() {
   install -Dm644 "$srcdir/dust-mail.desktop" "$pkgdir/usr/share/applications/dust-mail-client.desktop"
   install -Dm644 "$srcdir/dust-mail.png" "$pkgdir/usr/share/dust-mail.png"
-  install -Dm755 "$srcdir/$pkgname/packages/client/src-tauri/target/release/dust-mail" "$pkgdir/usr/bin/dust-mail"
+  install -Dm755 "$srcdir/$pkgname/apps/client/src-tauri/target/release/dust-mail" "$pkgdir/usr/bin/dust-mail"
 }
