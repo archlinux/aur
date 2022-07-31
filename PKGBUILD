@@ -1,7 +1,7 @@
 # Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=zimg-git
-pkgver=3.0.3.64.g4e5950f
+pkgver=3.0.3.123.gafae03a
 pkgrel=1
 pkgdesc="Scaling, colorspace conversion, and dithering library. (GIT version)"
 arch=('x86_64')
@@ -18,8 +18,12 @@ conflicts=('zimg'
            'vapoursynth-plugin-zimg'
            'vapoursynth-plugin-zimg-git'
            )
-source=('git+https://github.com/sekrit-twc/zimg.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/sekrit-twc/zimg.git'
+        'git+https://github.com/sekrit-twc/graphengine.git'
+        )
+sha256sums=('SKIP'
+            'SKIP'
+            )
 options=('debug')
 
 pkgver() {
@@ -29,6 +33,11 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  cd zimg
+  git config submodule.graphengine.url "${srcdir}/graphengine"
+  git submodule update --init \
+    graphengine
 }
 
 build() {
