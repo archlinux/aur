@@ -29,6 +29,6 @@ pkgbase = cef-jetbrains-git
 	source = git+https://github.com/JetBrains/cef.git#branch=jb_master
 	source = pkgver.py
 	sha256sums = SKIP
-	sha256sums = 7cacaccd96492a74c8f0e47ed08dc30d7f85f56e0d76ab3805007dfe05d116d5
+	sha256sums = 85b66ad68449b1dec0f59d8fd12c837ad137f3a5b71b254eedc20a14f97590d3
 
 pkgname = cef-jetbrains-git
