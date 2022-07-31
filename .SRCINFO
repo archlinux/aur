@@ -1,15 +1,13 @@
 pkgbase = pyhn
 	pkgdesc = Hacker News command line client
 	pkgver = 0.3.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/pyhn/
 	arch = any
 	license = AGPL3
 	depends = python-urwid
 	depends = python-beautifulsoup4
-	depends = python-isit
 	source = https://pypi.io/packages/source/p/pyhn/pyhn-0.3.11.tar.gz
 	md5sums = e742e4cc9b29bc4fdcccbbd94d83a486
 
 pkgname = pyhn
-
