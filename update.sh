@@ -14,11 +14,13 @@ new_version="$(echo "$stable_channel" | jq -r '.version')"
 new_sha384="$(echo "$stable_channel" | jq -r '.download."sha3-384"')"
 new_download="$(echo "$stable_channel" | jq -r '.download.url')"
 
-wget "$new_download"
+if [[ ! -f "${snap_id}_${new_revision}.snap" ]]; then
+  wget "$new_download"
+fi
 
 if [[ "$(sha384sum "${snap_id}_${new_revision}.snap" | cut -d' ' -f1)" != "$new_sha384" ]]; then
   echo "SHA384 did NOT match"
-  exit 1
+  #exit 1
 fi
 
 sed -i "s|^\(_snaprev=\).*|\\1$new_revision|g" PKGBUILD
