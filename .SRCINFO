@@ -1,13 +1,13 @@
 pkgbase = prosody-mod-default-bookmarks
 	pkgdesc = allows to add default bookmarks for users
-	pkgver = 2022.01.10
+	pkgver = 2022.07.29
 	pkgrel = 1
 	url = https://modules.prosody.im/mod_default_bookmarks.html
 	arch = any
 	license = MIT
 	makedepends = mercurial
 	depends = prosody
-	source = hg+https://hg.prosody.im/prosody-modules/#revision=62006f4022e9
+	source = hg+https://hg.prosody.im/prosody-modules/#revision=8f77452abc59
 	sha1sums = SKIP
 
 pkgname = prosody-mod-default-bookmarks
