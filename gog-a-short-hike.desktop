@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=A Short Hike
+Comment=Hike, climb, and soar through the peaceful mountainside landscapes of Hawk Peak Provincial Park. Follow the marked trails or explore the backcountry as you make your way to the summit. Along the way, meet other hikers, discover hidden treasures, and take in the world around you.
+Exec=gog-a-short-hike
+Icon=gog-a-short-hike
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;
+Encoding=UTF-8
