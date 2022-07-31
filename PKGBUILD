@@ -1,7 +1,7 @@
 Maintainer="baris-inandi"
 pkgname=fe
-pkgver=1.0.3
-pkgrel=3
+pkgver=1.0.4
+pkgrel=1
 epoch=
 pkgdesc="AUR helper with a familiar subcommand system"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(bash sudo)
 makedepends=(git go bash)
 checkdepends=()
 optdepends=()
-provides=(fe)
+provides=()
 conflicts=()
 replaces=()
 backup=()
@@ -28,20 +28,17 @@ package() {
 	cd $pkgname
 	mkdir -p ~/.config/paru/
 	if [ ! -e /etc/paru.conf ]; then
-		sudo cp conf/paru.conf /etc/paru.conf
+		cp conf/paru.conf /etc/paru.conf
 	fi
-	sudo cp -n conf/pacman.conf /etc/fepacman.conf
-	if type "paru" > /dev/null; then
-		git clone https://github.com/joehillen/paruz.git
-		cd paruz
-		sudo make install
-		cd ..
-		sudo rm -rf paruz
-	else
+	cp -n conf/pacman.conf /etc/fepacman.conf
+	if ! type "paru" > /dev/null; then
 		echo "WARN: INSTALL PARU BEFORE USING FE"
-	fi
+	fi	
+}
+
+build() {
+	cd $pkgname
 	sudo rm -rf /usr/bin/fe
-	go build
-	sudo mv fe /usr/bin/fe
+	sudo go build -o /usr/bin/fe
 	sudo rm -rf fe
 }
