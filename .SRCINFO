@@ -1,0 +1,17 @@
+pkgbase = gcencryptor
+	pkgdesc = GUI application for gocryptfs
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/Helltar/gcencryptor
+	arch = x86_64
+	license = GPL3
+	depends = qt5pas
+	depends = gocryptfs
+	source = gcencryptor-1.5.1.tar.gz::https://github.com/Helltar/gcencryptor/releases/download/1.5.1/gcencryptor-1.5.1.tar.gz
+	source = gcencryptor.desktop
+	source = gcencryptor.png
+	sha256sums = a7f970f491afdd53adb52e7ff94042c33c36c64ff525550aef64beadc57410e6
+	sha256sums = 1b7d3ccbc119ea43dc7b252114e1bf97cd0a212f6fb02231a0e7b93811461a43
+	sha256sums = a144e4421b81b713837f19e0ee2ee9d3ff8f8142c7c276403e06200959e2ca3b
+
+pkgname = gcencryptor

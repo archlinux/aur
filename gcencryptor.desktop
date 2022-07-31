@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=gcencryptor
+Comment=Encrypted Vaults
+Comment[uk]=Зашифровані сховища
+Comment[ru]=Зашифрованные хранилища
+Icon=gcencryptor
+Exec=gcencryptor
+Terminal=false
+Categories=Utility;Security;Qt;
+StartupWMClass=gcencryptor
+SingleMainWindow=true
