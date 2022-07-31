@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-readingstrip-git
+	pkgdesc = It is a extension for Gnome-Shell with an equivalent function to a reading guide on the computer, that's really useful for people with dyslexia.
+	pkgver = r80.61d4174
+	pkgrel = 1
+	url = https://github.com/lupantano/readingstrip
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = zip
+	depends = gnome-shell
+	provides = gnome-shell-extension-readingstrip
+	conflicts = gnome-shell-extension-readingstrip
+	source = git+https://github.com/lupantano/readingstrip.git
+	b2sums = SKIP
+
+pkgname = gnome-shell-extension-readingstrip-git
