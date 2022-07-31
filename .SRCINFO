@@ -16,6 +16,7 @@ pkgbase = mapillary_tools-git
 	depends = python-pytz
 	depends = python-requests
 	depends = python-tqdm
+	depends = python-typing_extensions
 	depends = python-yaml
 	provides = mapillary_tools
 	source = mapillary_tools-git::git+https://github.com/mapillary/mapillary_tools.git

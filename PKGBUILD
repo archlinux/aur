@@ -19,6 +19,7 @@ depends=(
   'python-pytz'
   'python-requests'
   'python-tqdm'
+  'python-typing_extensions'
   'python-yaml'
 )
 provides=(mapillary_tools)
