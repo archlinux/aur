@@ -34,6 +34,8 @@ prepare() {
 	patch -p1 -i '../640.patch'
 	patch -p1 -i '../fix-build.patch'
 
+	sed -i 's/command = sudo_command/#command = sudo_command/' 'tools/build.py'
+
 	mkdir -p 'build'
 	cd 'build'
 	if [ ! -d "${_cefstring}" ]; then
