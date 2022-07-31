@@ -1,7 +1,7 @@
 # Maintainer: nblock <nblock [/at\] archlinux DOT us>
 
 pkgname=cruft
-pkgver=2.10.2
+pkgver=2.11.0
 pkgrel=1
 pkgdesc='Maintain all the necessary boilerplate for packaging and building projects separate from the code you intentionally write. Fully compatible with existing Cookiecutter templates'
 arch=('any')
@@ -15,8 +15,8 @@ depends=('python'
 optdepends=('python-toml: specify patterns to ignore in toml files')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha1sums=('4c31dbd68b8149b71d844072dcc0e1054853c60b')
-sha256sums=('fe7aaace048df17efc0e597c8035cb0deaa7a8734a86eb8c6cca5388971a2a42')
+sha1sums=('0fbcac3a99439df04458359ac2f5cdb5d5c6d3ba')
+sha256sums=('dd1edac65f039faca23f63bec46e774d2d3e8af86fd67e6b62cbfecef3d6ff18')
 
 build() {
 	cd "$pkgname-$pkgver"
