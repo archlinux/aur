@@ -1,0 +1,37 @@
+pkgbase = jre17
+	pkgdesc = Oracle Java 17 Runtime Environment
+	pkgver = 17.0.4
+	pkgrel = 1
+	url = https://www.oracle.com/java/
+	install = jre17.install
+	arch = x86_64
+	license = custom
+	depends = java-runtime-common
+	depends = ca-certificates-utils
+	depends = freetype2
+	depends = libxtst
+	depends = libxrender
+	depends = libnet
+	optdepends = alsa-lib: for basic sound support
+	provides = java-runtime=17
+	provides = java-runtime-headless=17
+	provides = java-runtime-jre=17
+	provides = java-runtime-headless-jre=17
+	backup = etc/java17-jre17/management/jmxremote.access
+	backup = etc/java17-jre17/management/jmxremote.password.template
+	backup = etc/java17-jre17/management/management.properties
+	backup = etc/java17-jre17/security/policy/limited/default_US_export.policy
+	backup = etc/java17-jre17/security/policy/limited/default_local.policy
+	backup = etc/java17-jre17/security/policy/limited/exempt_local.policy
+	backup = etc/java17-jre17/security/policy/unlimited/default_US_export.policy
+	backup = etc/java17-jre17/security/policy/unlimited/default_local.policy
+	backup = etc/java17-jre17/security/policy/README.txt
+	backup = etc/java17-jre17/security/java.policy
+	backup = etc/java17-jre17/security/java.security
+	backup = etc/java17-jre17/logging.properties
+	backup = etc/java17-jre17/net.properties
+	backup = etc/java17-jre17/sound.properties
+	source = local://jdk-17.0.4_linux-x64_bin.tar.gz
+	sha256sums = 50edb026947d5b2cb799fbc550ab62d3bec687691bade021139da4f1d9f1c21a
+
+pkgname = jre17
