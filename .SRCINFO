@@ -1,0 +1,15 @@
+pkgbase = image2png-git
+	pkgdesc = Convert any image (SVG, WEBP, JPEG, and more) to PNG, using the Gtk3::Gdk::Pixbuf library.
+	pkgver = 22.07.r6.g03816b2
+	pkgrel = 1
+	url = https://github.com/trizen/perl-scripts
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = perl>=5.20.0
+	depends = perl-gtk3
+	depends = webp-pixbuf-loader
+	source = git+https://github.com/trizen/perl-scripts.git
+	sha512sums = SKIP
+
+pkgname = image2png-git
