@@ -1,8 +1,8 @@
 pkgbase = deskreen
 	pkgdesc = Turns any device with a web browser to a second screen for your computer
 	pkgver = 2.0.3
-	pkgrel = 1
-	url = https://github.com/pavlobu/deskreen
+	pkgrel = 2
+	url = https://deskreen.com
 	arch = x86_64
 	license = AGPL3
 	depends = gtk3
@@ -10,6 +10,6 @@ pkgbase = deskreen
 	source = deskreen-2.0.3-x86_64.deb::https://github.com/pavlobu/deskreen/releases/download/v2.0.3/deskreen_2.0.3_amd64.deb
 	source = deskreen.desktop
 	sha256sums = 4ee7f5c144dc9934ceff2401803af11329255cb081db1a621b96bed90c38f627
-	sha256sums = cef3f9f1f02f22c047e49bec91657af941e6c4b86a176b812648c3b0dc625aa5
+	sha256sums = d54e49d2d012f5a5b95e0b4b7c5755b38d7e64c0ef3a9d4217d642c24631ca50
 
 pkgname = deskreen
