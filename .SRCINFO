@@ -1,0 +1,37 @@
+pkgbase = jre16
+	pkgdesc = Oracle Java 16 Runtime Environment
+	pkgver = 16.0.2
+	pkgrel = 1
+	url = https://www.oracle.com/java/
+	install = jre16.install
+	arch = x86_64
+	license = custom
+	depends = java-runtime-common
+	depends = ca-certificates-utils
+	depends = freetype2
+	depends = libxtst
+	depends = libxrender
+	depends = libnet
+	optdepends = alsa-lib: for basic sound support
+	provides = java-runtime=16
+	provides = java-runtime-headless=16
+	provides = java-runtime-jre=16
+	provides = java-runtime-headless-jre=16
+	backup = etc/java16-jre16/management/jmxremote.access
+	backup = etc/java16-jre16/management/jmxremote.password.template
+	backup = etc/java16-jre16/management/management.properties
+	backup = etc/java16-jre16/security/policy/limited/default_US_export.policy
+	backup = etc/java16-jre16/security/policy/limited/default_local.policy
+	backup = etc/java16-jre16/security/policy/limited/exempt_local.policy
+	backup = etc/java16-jre16/security/policy/unlimited/default_US_export.policy
+	backup = etc/java16-jre16/security/policy/unlimited/default_local.policy
+	backup = etc/java16-jre16/security/policy/README.txt
+	backup = etc/java16-jre16/security/java.policy
+	backup = etc/java16-jre16/security/java.security
+	backup = etc/java16-jre16/logging.properties
+	backup = etc/java16-jre16/net.properties
+	backup = etc/java16-jre16/sound.properties
+	source = local://jdk-16.0.2_linux-x64_bin.tar.gz
+	sha256sums = 630e3e56c58f45db3788343ce842756d5a5a401a63884242cc6a141071285a62
+
+pkgname = jre16
