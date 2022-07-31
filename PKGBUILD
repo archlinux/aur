@@ -2,7 +2,7 @@
 # from: git
 
 pkgname="fcitx5-bamboo-git"
-pkgver=1.0.0.b2cce20
+pkgver=1.0.0.0211584
 pkgrel=1
 pkgdesc="Bamboo (Vietnamese Input Method) engine support for Fcitx"
 arch=('x86_64')

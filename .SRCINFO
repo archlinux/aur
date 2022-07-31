@@ -1,6 +1,6 @@
 pkgbase = fcitx5-bamboo-git
 	pkgdesc = Bamboo (Vietnamese Input Method) engine support for Fcitx
-	pkgver = 1.0.0.b2cce20
+	pkgver = 1.0.0.0211584
 	pkgrel = 1
 	url = https://github.com/fcitx/fcitx5-bamboo
 	arch = x86_64
