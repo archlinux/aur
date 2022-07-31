@@ -2,7 +2,7 @@
 # Maintainer: Maas Lalani <maas@charm.sh>
 
 pkgname='gum-bin'
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Tasty Bubble Gum for your shell.'
 url='https://charm.sh/'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('gum')
 conflicts=('gum')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/gum/releases/download/v0.1.0/gum_0.1.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('95f661e3178ee805dbf463efa231f9f5f60c3ba1242d57f00eb84b07c5cfa27f')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/gum/releases/download/v0.2.0/gum_0.2.0_linux_arm64.tar.gz")
+sha256sums_aarch64=('36bc034b61ea5e67710773f1fd51c2745478953008de4180127dbac16cfd6249')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/gum/releases/download/v0.1.0/gum_0.1.0_linux_armv7.tar.gz")
-sha256sums_armv7h=('548ae09a844b1f8b71745bfb482897c7585bae2b6cafca67717f3e0bc776cd7f')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/gum/releases/download/v0.2.0/gum_0.2.0_linux_armv7.tar.gz")
+sha256sums_armv7h=('4d41faa29a04d1467a5cd2755afab847c936c23b87fc24e5c71345566c60ef58')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/gum/releases/download/v0.1.0/gum_0.1.0_linux_i386.tar.gz")
-sha256sums_i686=('facdb74302e829ac2e15fbd2ba1cdace383e6aca0786e2c7694224bd87ed83cd')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/gum/releases/download/v0.2.0/gum_0.2.0_linux_i386.tar.gz")
+sha256sums_i686=('85085cd615332484c8468d41fc7442dce80b7de5990947423b2f615cbb115c1d')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/gum/releases/download/v0.1.0/gum_0.1.0_linux_x86_64.tar.gz")
-sha256sums_x86_64=('a8ad13621e1b002cc1d52b5b49096f5ba59ac0e3e940dd75af7c5dfde42968ad')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/gum/releases/download/v0.2.0/gum_0.2.0_linux_x86_64.tar.gz")
+sha256sums_x86_64=('ff5cde812ea3aa8eab2cf6944da892e639449460719b9fab909a85f7bc5104cf')
 
 package() {
   # bin
