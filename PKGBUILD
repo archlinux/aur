@@ -1,8 +1,9 @@
-# Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
-# Maintainer: Vasili Novikov <n1dr+cmarchlinux@yaaandex.com> (replace "aaa" with "a")
+# Maintainer: Denys Rybalka <(first name).(second name)@tuta.io>
+# Contributor: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
+# Contributor: Vasili Novikov <n1dr+cmarchlinux@yaaandex.com> (replace "aaa" with "a")
 
 pkgname=scalafmt-native-bin
-pkgver=3.4.3
+pkgver=3.5.8
 pkgrel=1
 pkgdesc='Code formatter for Scala, native version via graalvm, statically compiled with musl'
 url='https://scalameta.org/scalafmt/'
@@ -12,7 +13,7 @@ license=('Apache-2.0')
 
 arch=('x86_64')
 
-b2sums=('5745d03e01c050d7934f6d4b88d6f602a3d2fd96f44bdf7e2e504da525d74ff4273dac724712ab398a2281d6f108bf77191e46ac2bbcc36480f3e46c3fa11759')
+b2sums=('d4ccbb79eb787300fd8686d52084cdd9a0f8442856f3db2950200d08f452ff17d6c780feaf16329a514323b1cd4b918b07d44955fcc9c6b005bc276f9a06d36a')
 
 package() {
   cd "$srcdir"
