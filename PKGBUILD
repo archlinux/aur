@@ -3,7 +3,7 @@
 
 pkgname=flrig
 pkgver=1.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Amateur (Ham) Radio Transceiver Control Program"
 arch=('armv7h' 'i686' 'x86_64' 'aarch64')
 url="http://www.w1hkj.com/flrig-help/index.html"
