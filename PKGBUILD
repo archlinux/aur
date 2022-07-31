@@ -1,6 +1,6 @@
 Maintainer="baris-inandi"
 pkgname=fe
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 epoch=
 pkgdesc="AUR helper with a familiar subcommand system"
@@ -26,5 +26,6 @@ validpgpkeys=()
 
 package() {
 	cd $pkgname
+	paru -S --skipreview --noconfirm --needed paruz
 	make install
 }
