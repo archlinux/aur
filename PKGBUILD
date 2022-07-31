@@ -1,6 +1,7 @@
 pkgname=heimdal
 pkgdesc="Heimdal, an implementation of Kerberos and PKIX"
-pkgver=7.99.r30301.ga8037d191
+_commit='b19633f9b94fbfff3777a432d02e0bf5405f372b'
+pkgver=7.99.r30417.gb19633f9b
 pkgrel=1
 url="https://www.heimdal.software/"
 arch=(x86_64)
@@ -8,7 +9,7 @@ depends=(libcap-ng readline sqlite)
 makedepends=(git libldap perl-json)
 optdepends=(libldap)
 provides=(heimdal=$pkgver)
-source=("git+https://github.com/heimdal/heimdal")
+source=("git+https://github.com/heimdal/heimdal#commit=$_commit")
 sha256sums=('SKIP')
 validpgpkeys=('E65941B71CF3C459A34FA89C45E7572A28CD8CC8')
 
