@@ -3,7 +3,7 @@
 pkgname=kaggle-api
 _name=${pkgname%-api}
 pkgver=1.5.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Kaggle API CLI'
 arch=('any')
 url="https://github.com/Kaggle/kaggle-api"
@@ -18,7 +18,7 @@ depends=(
   'python-tqdm'
   'python-slugify'
 )
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 replaces=('kaggle-api')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('b4d87d107bff743aaa805c2b382c3661c4c175cdb159656d4972be2a9cef42cb')

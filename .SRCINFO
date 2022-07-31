@@ -1,13 +1,14 @@
 pkgbase = kaggle-api
 	pkgdesc = Kaggle API CLI
 	pkgver = 1.5.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kaggle/kaggle-api
 	arch = any
 	license = Apache
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
 	depends = python-urllib3
 	depends = python-six
