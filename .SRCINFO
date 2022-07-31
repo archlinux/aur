@@ -1,6 +1,6 @@
 pkgbase = usbdm-git
 	pkgdesc = Debugger interface for Freescale RS08,HCS08,HCS12,Coldfire and ARM-Kinetis Devices.
-	pkgver = 1660.73fa3f5d
+	pkgver = 1749.877eaa42
 	pkgrel = 1
 	url = http://usbdm.sourceforge.net/
 	install = usbdm.install
