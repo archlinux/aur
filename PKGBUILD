@@ -1,6 +1,6 @@
 Maintainer="baris-inandi"
 pkgname=fe
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="AUR helper with a familiar subcommand system"
 arch=(x86_64)
@@ -14,10 +14,8 @@ md5sums=('SKIP')
 package() {
 	cd $pkgname
 	mkdir -p ~/.config/paru/
-	if [ ! -e /etc/paru.conf ]; then
-		cp conf/paru.conf /etc/paru.conf
-	fi
-	cp -n conf/pacman.conf /etc/fepacman.conf
+	cp conf/paru.conf /etc/paru.conf
+	cp conf/pacman.conf /etc/fepacman.conf
 	if ! type "paru" > /dev/null; then
 		echo "WARN: INSTALL PARU BEFORE USING FE"
 	fi
