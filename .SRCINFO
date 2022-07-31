@@ -1,0 +1,14 @@
+pkgbase = outguess-png-git
+	pkgdesc = Hide arbitrary data into the pixels of a PNG image (steganographic tool).
+	pkgver = 22.07.r7.gf6bc547
+	pkgrel = 1
+	url = https://github.com/trizen/perl-scripts
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = perl>=5.20.0
+	depends = perl-gd
+	source = git+https://github.com/trizen/perl-scripts.git
+	sha512sums = SKIP
+
+pkgname = outguess-png-git
