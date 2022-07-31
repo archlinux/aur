@@ -1,7 +1,7 @@
 pkgbase = gum
 	pkgdesc = A tool for glamorous shell scripts
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/charmbracelet/gum
 	arch = aarch64
 	arch = armv7h

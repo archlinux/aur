@@ -3,7 +3,7 @@
 
 pkgname='gum'
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for glamorous shell scripts'
 url='https://github.com/charmbracelet/gum'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -27,7 +27,7 @@ build() {
   go build \
     -buildmode=pie \
     -trimpath \
-    -ldflags="-linkmode=external -X main.version=$pkgver" \
+    -ldflags="-linkmode=external -X main.Version=$pkgver" \
     -mod=readonly \
     -modcacherw \
      .
