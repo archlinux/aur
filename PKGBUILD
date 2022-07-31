@@ -1,13 +1,12 @@
-# Maintainer: D. Can Celasun <dcelasun[at]dcc[dot]im>
-# Contributor : Daniel Bermond <dbermond@archlinux.org>
+# Maintainer: Muflone http://www.muflone.com/contacts/english/
+# Contributor: D. Can Celasun <dcelasun[at]dcc[dot]im>
+# Contributor: Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Det <nimetonmaili g-mail>
 
 pkgname=jre14
 pkgver=14.0.2
-_build=12
-_hash=205943a0976c4ed48cb16f1043c5c647
 _majver="${pkgver%%.*}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Oracle Java Runtime Environment'
 arch=('x86_64')
 url='https://www.oracle.com/java/'
@@ -32,10 +31,8 @@ backup=("etc/java${_majver}-${pkgname}/management/jmxremote.access"
         "etc/java${_majver}-${pkgname}/net.properties"
         "etc/java${_majver}-${pkgname}/sound.properties")
 install="${pkgname}.install"
-source=("https://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_hash}/jdk-${pkgver}_linux-x64_bin.tar.gz")
+source=("local://jdk-${pkgver}_linux-x64_bin.tar.gz")
 sha256sums=('cb811a86926cc0f529d16bec7bd2e25fb73e75125bbd1775cdb9a96998593dde')
-
-DLAGENTS=('https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 
 package() {
     cd "jdk-${pkgver}"
