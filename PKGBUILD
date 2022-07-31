@@ -1,6 +1,6 @@
 Maintainer="baris-inandi"
 pkgname=fe
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 epoch=
 pkgdesc="AUR helper with a familiar subcommand system"
@@ -9,7 +9,7 @@ url="https://github.com/baris-inandi/fe"
 license=('GPLv3')
 groups=()
 depends=(bash sudo)
-makedepends=(git go)
+makedepends=(git go bash)
 checkdepends=()
 optdepends=()
 provides=(fe)
@@ -26,6 +26,5 @@ validpgpkeys=()
 
 package() {
 	cd $pkgname
-	paru -S --skipreview --noconfirm --needed paruz
-	make install
+	bash install.sh
 }
