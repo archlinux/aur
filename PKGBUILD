@@ -25,7 +25,7 @@ source=(
     # It's just a github release
     "https://github.com/zachbr/Dis4IRC/releases/download/v${pkgver}/Dis4IRC-${pkgver}.jar"
     # License is required for MIT per the official packaging guideliness
-    "https://raw.githubusercontent.com/zachbr/Dis4IRC/master/LICENSE.md"
+    "https://raw.githubusercontent.com/zachbr/Dis4IRC/v${pkgver}/LICENSE.md"
     # We create a dedcicated dis4irc user
     "dis4irc-sysusers.conf"
     # I wrote my own systemd file (kind of overkill huh)
