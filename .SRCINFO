@@ -1,6 +1,6 @@
 pkgbase = gum
 	pkgdesc = A tool for glamorous shell scripts
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/charmbracelet/gum
 	arch = aarch64
@@ -11,9 +11,9 @@ pkgbase = gum
 	makedepends = go
 	provides = gum
 	conflicts = gum
-	source = gum-0.1.0.tar.gz::https://github.com/charmbracelet/gum/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = f89228867cd61ebeae0b7bcc9e8034079da256e2c6bf696a9eceb73fc4c3f2b6
-	sha512sums = 1890702d190610f87d82dcc3f950e2f545bef1d294249cfcdc68da24ba5f4b6506583fbdfce42aa7cc7ef96e0b0c0c0216b44cb07ec63a5920c3f04a2691000c
-	b2sums = c3e3121c2f5dcfa35d2ce2783b8c09ea03ee346904ee0c8a24ea005d5dfd0f986ac95aaa2bf3bcbee046067e1af1ceea857a53afe7d9a54275e35d81daa7c344
+	source = gum-0.2.0.tar.gz::https://github.com/charmbracelet/gum/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 85bf131216c5ce7fdfc1c8c72d2eca43d4a57e4ce323792f386317b6bfffb032
+	sha512sums = 8b8d2ec2fc6090137b6b605b3a22849fd3243b60850a33a0b090724ac846736b9fd348412eba0470fa2cc15a7661cf7ee18f9d214ce2404f70641b6d37a53204
+	b2sums = f8e65b592eaf5542f6a1befeb122fb4241342498836b95bb57dd680822fa25d89ffce4633455aad3a1c2af39ab5c8e4ebbfbeb994641894f3efaad7e92a012b2
 
 pkgname = gum
