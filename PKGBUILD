@@ -1,7 +1,7 @@
 # Maintainer: José Luis Salvador Rufo <salvador.joseluis@gmail.com>
 
 pkgname=godns
-pkgver=2.8.6
+pkgver=2.8.7
 pkgrel=1
 pkgdesc="A dynamic DNS client tool, supports AliDNS, Cloudflare, Google Domains, DNSPod, HE.net & DuckDNS, written in Go"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -11,7 +11,7 @@ provides=('godns')
 makedepends=('go')
 backup=(etc/conf.d/godns.json)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/TimothyYe/godns/archive/v${pkgver}.tar.gz")
-sha256sums=('bcb4515f6e4f335c124bbfb37dccbd69252c88428098b9e7e2dc04ef0b15ac00')
+sha256sums=('55c0fc7d897852115ca9f36d624dc2b639b4d91182eda1c03ba96b7c3873a542')
 
 build() {
 	export GOPATH="$srcdir"/gopath
