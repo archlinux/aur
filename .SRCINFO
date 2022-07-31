@@ -1,0 +1,13 @@
+pkgbase = gnome-shell-extension-disable-unredirect-git
+	pkgdesc = Disables unredirect fullscreen windows in gnome-shell
+	pkgver = r34.b2dcc0d
+	pkgrel = 1
+	url = https://github.com/kazysmaster/gnome-shell-extension-disable-unredirect
+	arch = any
+	license = GPL3
+	depends = gnome-shell
+	conflicts = gnome-shell-extension-disable-unredirect
+	source = git+https://github.com/kazysmaster/gnome-shell-extension-disable-unredirect
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-disable-unredirect-git
