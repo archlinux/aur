@@ -1,0 +1,14 @@
+pkgbase = collage-git
+	pkgdesc = A command-line tool to create a collage from a collection of photos/images.
+	pkgver = 22.07.r8.gbcd9bec
+	pkgrel = 1
+	url = https://github.com/trizen/perl-scripts
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = perl>=5.10.0
+	depends = perl-gd
+	source = git+https://github.com/trizen/perl-scripts.git
+	sha512sums = SKIP
+
+pkgname = collage-git
