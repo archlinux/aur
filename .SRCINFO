@@ -1,0 +1,11 @@
+pkgbase = fetcho
+	pkgdesc = A lightweight neofetch alternative!
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/CallMeEchoCodes/fetcho
+	arch = any
+	license = MIT
+	provides = fetcho
+	source = fetcho::https://github.com/CallMeEchoCodes/fetcho/releases/download/0.0.1/fetcho
+
+pkgname = fetcho
