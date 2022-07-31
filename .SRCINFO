@@ -1,15 +1,15 @@
 pkgbase = psysh
 	pkgdesc = A runtime developer console, interactive debugger and REPL for PHP.
-	pkgver = 0.11.7
+	pkgver = 0.11.8
 	pkgrel = 1
 	url = https://psysh.org/
 	install = .install
 	arch = x86_64
 	license = MIT
 	depends = php>=7.0
-	source = https://github.com/bobthecow/psysh/releases/download/v0.11.7/psysh-v0.11.7.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/bobthecow/psysh/v0.11.7/LICENSE
-	sha256sums = 3f9ba2f8bcb157b2e930e21d975caede04212452d4bfe62538ac4626f7a89dbe
+	source = https://github.com/bobthecow/psysh/releases/download/v0.11.8/psysh-v0.11.8.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/bobthecow/psysh/v0.11.8/LICENSE
+	sha256sums = 54ad5edea40668de8a73fe5d51a1b0ac702a93dca2242c1b5b6f71ea2ea71d0e
 	sha256sums = SKIP
 
 pkgname = psysh
