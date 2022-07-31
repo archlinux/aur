@@ -1,0 +1,15 @@
+pkgbase = earth-wallpaper-bin
+	pkgdesc = 实时获取地球照片作为壁纸
+	pkgver = 1.5.0
+	pkgrel = 0
+	url = https://jihulab.com/ambition-echo/earth_wallpaper
+	arch = x86_64
+	license = GPL3
+	depends = qt5-base
+	depends = python
+	depends = python-pillow
+	depends = python-requests
+	source = https://jihulab.com/api/v4/projects/40487/packages/generic/earth_wallpaper/1.5.0/earth-wallpaper-deepin-amd64.deb
+	sha256sums = 11403a78ddbb0a5d0ed431197d1acceb47c2ddeb2fa6d92a4c8d533102d9461c
+
+pkgname = earth-wallpaper-bin
