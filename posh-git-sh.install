@@ -1,0 +1,20 @@
+post_install() {
+	echo -e "
+===== Setup =====
+1) Source git-prompt.sh in ~/.bashrc or ~/.bash_profile:
+
+  source /usr/share/posh-git-sh/git-prompt.sh
+
+2) Customise PROMPT_COMMAND in ~/.bashrc or ~/.bash_profile using __posh_git_ps1, which takes two parameters:
+
+  __posh_git_ps1 <prefix> <suffix>
+
+This will set PS1 to <prefix><status><suffix>
+
+Example:
+
+  export PROMPT_COMMAND='__posh_git_ps1 \"[\u@\h \w]\" \" \\$ \";'\$PROMPT_COMMAND
+
+See /usr/share/doc/posh-git-sh/README.md for more information and Zsh-specific instructions
+"
+}
