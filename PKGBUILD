@@ -1,5 +1,6 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
+pkgbase=ctranslate2-git
 pkgname=(ctranslate2-git
          python-ctranslate2-git)
 pkgver=1703.77a48d43
@@ -9,7 +10,6 @@ arch=('x86_64' 'i686')
 url='https://github.com/OpenNMT/ctranslate2'
 license=('GPL3')
 makedepends=('git' 'cmake' 'pybind11')
-#makedepends_python-ctranslate2-git=('git' 'cmake' 'pybind11' 'ctranslate2-git')
 conflicts=(ctranslate2)
 provides=(ctranslate2)
 source=('git+https://github.com/OpenNMT/ctranslate2.git'
@@ -77,6 +77,9 @@ package_ctranslate2-git() {
 }
 
 package_python-ctranslate2-git() {
+  depends=(ctranslate2-git)
+  conflicts=()
+  provides=()
   cd ${srcdir}/ctranslate2/python
   python setup.py install --root="$pkgdir" --optimize=1
 }

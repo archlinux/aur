@@ -1,4 +1,4 @@
-pkgbase = ctranslate2-git
+pkgbase = ctranslate-git
 	pkgdesc = Fast inference engine for OpenNMT models
 	pkgver = 1703.77a48d43
 	pkgrel = 1
@@ -27,3 +27,6 @@ pkgbase = ctranslate2-git
 pkgname = ctranslate2-git
 
 pkgname = python-ctranslate2-git
+	depends = ctranslate2-git
+	provides = 
+	conflicts = 
