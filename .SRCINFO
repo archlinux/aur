@@ -1,5 +1,5 @@
 pkgbase = sematrix-plymouth-theme
-	pkgdesc = A matrix efect plymouth them
+	pkgdesc = A matrix effect plymouth theme on boot
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/chapainaashish/sematrix
