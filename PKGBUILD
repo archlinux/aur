@@ -2,14 +2,14 @@
 # Contributor: Janne Heß <jannehess@gmail.com>
 
 pkgname=archivemount-git
-pkgver=r63.104a314
+pkgver=r78.78c3065
 pkgrel=1
 pkgdesc="FUSE filesystem using libarchive"
 url="https://www.cybernoia.de/software/${pkgname%-git}.html"
 arch=("i686" "x86_64")
 license=("GPL2")
-depends=("fuse" "libarchive")
-makedepends=("git")
+depends=(fuse2 libarchive)
+makedepends=(git)
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("${pkgname}::git+https://github.com/cybernoid/archivemount.git")
