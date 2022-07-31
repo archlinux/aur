@@ -1,0 +1,15 @@
+pkgbase = json2csv-git
+	pkgdesc = Convert a stream of newline separated JSON data to CSV format.
+	pkgver = 22.07.r4.g34f39e2
+	pkgrel = 1
+	url = https://github.com/trizen/perl-scripts
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = perl>=5.10.0
+	depends = perl-text-csv
+	depends = perl-json
+	source = git+https://github.com/trizen/perl-scripts.git
+	sha512sums = SKIP
+
+pkgname = json2csv-git
