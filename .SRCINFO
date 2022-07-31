@@ -1,14 +1,16 @@
 pkgbase = python-shlib
-	pkgdesc = Shell library
+	pkgdesc = light-weight library to do shell-script like things relatively easily with Python
 	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/KenKundert/shlib
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-pip
 	depends = python-braceexpand
 	depends = python-inform
 	source = https://files.pythonhosted.org/packages/source/s/shlib/shlib-1.4.0.tar.gz
-	sha256sums = 04edc96c40b38c0012bbff83034890de24dc0cde1197f3e1f7df54763d3031af
+	b2sums = 3d060a9e570886dada3515a886a2b4dff1dc12461684a164c337ac3bdf6c4d34fd89e48db7eb1479d55336677d798817971a825bf6f988f4fc7e93ae11f42d8b
 
 pkgname = python-shlib
