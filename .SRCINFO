@@ -1,6 +1,6 @@
 pkgbase = osc-git
 	pkgdesc = Command line client for the openSUSE Build Service
-	pkgver = 0.178.0.r3885.eac54347
+	pkgver = 0.181.0.r3966.4a67768c
 	pkgrel = 1
 	url = https://github.com/openSUSE/osc
 	arch = any
