@@ -2,7 +2,7 @@
 
 pkgname=deezer-enhanced-git
 _pkgname=deezer-enhanced
-pkgver=v0.2.2.r0.g5b21175
+pkgver=v0.3.0.r0.ge6d4e6f
 pkgrel=1
 pkgdesc='An unofficial application for Deezer with enhanced features, that is not just an electron wrapper.'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  yarn && yarn build:pacman
+  yarn && yarn minify-webcss && yarn build:pacman
 }
 
 package() {
