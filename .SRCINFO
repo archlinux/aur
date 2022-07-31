@@ -10,8 +10,7 @@ pkgbase = iriunwebcam-bin
 	depends = v4l2loopback-dkms
 	depends = android-tools
 	options = !strip
-	source = iriunwebcam-2.6.deb::https://iriun.gitlab.io/iriunwebcam-2.6.deb
+	source = iriunwebcam-2.7.deb::http://iriun.gitlab.io/iriunwebcam-2.7.deb
 	md5sums = 0c96650189ad6f579e6104c62e3b50c4
 
 pkgname = iriunwebcam-bin
-
