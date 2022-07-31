@@ -1,8 +1,8 @@
 # Maintainer: a821 <a821 - mail - de>
 
 pkgname=python-numpy-groupies
-_name=numpy_groupies
-pkgver=0.9.17
+_name=numpy-groupies
+pkgver=0.9.18
 pkgrel=1
 pkgdesc='Optimised tools for group-indexing operations for python numpy'
 arch=("any")
@@ -14,8 +14,8 @@ optdepends=(
     'python-numba: for numba backend'
     'python-pandas: for pandas backend'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('de9390b1e5e4d84c27f0f520158b4ee8afb91035972d8e22dd0aea00f5588e3a')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('ea845a9acb533e3ba011826c48e7abe27dd1895edb3bfa09322bc12803982e1a')
 
 build() {
     cd "${_name}-${pkgver}"
