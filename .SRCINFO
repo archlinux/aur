@@ -1,6 +1,6 @@
 pkgbase = dfuzzer
 	pkgdesc = D-Bus fuzzer
-	pkgver = 2.1
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://github.com/dbus-fuzzer/dfuzzer
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = dfuzzer
 	makedepends = libxslt
 	depends = glib2
 	backup = etc/dfuzzer.conf
-	source = dfuzzer-2.1.tar.gz::https://github.com/dbus-fuzzer/dfuzzer/archive/refs/tags/v2.1.tar.gz
-	sha256sums = 107bec83ba1c786773385b25b3507cb3e9bdaf920ddde8f3a9d2f490fab81e10
+	source = dfuzzer-2.2.tar.gz::https://github.com/dbus-fuzzer/dfuzzer/archive/refs/tags/v2.2.tar.gz
+	sha256sums = f89e83bb935f96e0d02330e2c2fd991bed4a107734a422447764550017fc29ce
 
 pkgname = dfuzzer
