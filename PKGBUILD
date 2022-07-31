@@ -1,7 +1,7 @@
 # Maintainer: Marten Lienen <marten.lienen@gmail.com>
 
 pkgname=i3-pager-git
-pkgver=r127.9e82a42
+pkgver=r129.ab282c4
 pkgrel=1
 pkgdesc="Plasmoid pager for integrating i3 with KDE Plasma "
 arch=("any")
