@@ -1,0 +1,446 @@
+diff --git a/src/drm.cpp b/src/drm.cpp
+index 42cd0ee..28b613d 100644
+--- a/src/drm.cpp
++++ b/src/drm.cpp
+@@ -41,6 +41,8 @@ bool g_bDebugLayers = false;
+ const char *g_sOutputName = nullptr;
+ 
+ enum drm_mode_generation g_drmModeGeneration = DRM_MODE_GENERATE_CVT;
++enum g_panel_orientation g_drmModeOrientation = PANEL_ORIENTATION_AUTO;
++
+ 
+ static LogScope drm_log("drm");
+ static LogScope drm_verbose_log("drm", LOG_SILENT);
+@@ -1073,7 +1075,7 @@ void drm_lock_fbid( struct drm_t *drm, uint32_t fbid )
+ void drm_unlock_fbid( struct drm_t *drm, uint32_t fbid )
+ {
+ 	struct fb &fb = get_fb( *drm, fbid );
+-	
++
+ 	assert( fb.held_refs > 0 );
+ 	if ( --fb.held_refs != 0 )
+ 		return;
+@@ -1114,7 +1116,26 @@ drm_prepare_basic( struct drm_t *drm, const struct FrameInfo_t *frameInfo )
+ 
+ 	drm->fbids_in_req.push_back( fb_id );
+ 
+-	add_plane_property(req, drm->primary, "rotation", g_bRotated ? DRM_MODE_ROTATE_270 : DRM_MODE_ROTATE_0);
++	switch ( g_drmModeOrientation )
++	{
++	case PANEL_ORIENTATION_0:
++		add_plane_property(req, drm->primary, "rotation", DRM_MODE_ROTATE_0);
++		break;
++	case PANEL_ORIENTATION_270:
++		add_plane_property(req, drm->primary, "rotation", DRM_MODE_ROTATE_270);
++		break;
++	case PANEL_ORIENTATION_90:
++		add_plane_property(req, drm->primary, "rotation", DRM_MODE_ROTATE_90);
++		break;
++	case PANEL_ORIENTATION_180:
++		add_plane_property(req, drm->primary, "rotation", DRM_MODE_ROTATE_180);
++		break;
++	/* we are keeping the original method used for by default to prevent a sudden break in compatibility for devices using this method.*/
++	case PANEL_ORIENTATION_AUTO:
++	default:
++		add_plane_property(req, drm->primary, "rotation", g_bRotated ? DRM_MODE_ROTATE_270 : DRM_MODE_ROTATE_0);
++		break;
++	}
+ 
+ 	add_plane_property(req, drm->primary, "FB_ID", fb_id);
+ 	add_plane_property(req, drm->primary, "CRTC_ID", drm->crtc->id);
+@@ -1210,7 +1231,25 @@ drm_prepare_liftoff( struct drm_t *drm, const struct FrameInfo_t *frameInfo )
+ 				crtcH = w;
+ 			}
+ 
+-			liftoff_layer_set_property( drm->lo_layers[ i ], "rotation", g_bRotated ? DRM_MODE_ROTATE_270 : DRM_MODE_ROTATE_0);
++			switch ( g_drmModeOrientation )
++			{
++				case PANEL_ORIENTATION_0:
++					liftoff_layer_set_property( drm->lo_layers[ i ], "rotation", DRM_MODE_ROTATE_0);
++					break;
++				case PANEL_ORIENTATION_270:
++					liftoff_layer_set_property( drm->lo_layers[ i ], "rotation", DRM_MODE_ROTATE_270);
++					break;
++				case PANEL_ORIENTATION_90:
++					liftoff_layer_set_property( drm->lo_layers[ i ], "rotation", DRM_MODE_ROTATE_90);
++					break;
++				case PANEL_ORIENTATION_180:
++					liftoff_layer_set_property( drm->lo_layers[ i ], "rotation", DRM_MODE_ROTATE_180);
++					break;
++				case PANEL_ORIENTATION_AUTO:
++				default: /* We are using auto to ensure compatibility with devicess that used this method*/
++					liftoff_layer_set_property( drm->lo_layers[ i ], "rotation", g_bRotated ? DRM_MODE_ROTATE_270 : DRM_MODE_ROTATE_0);
++					break;
++			}
+ 
+ 			liftoff_layer_set_property( drm->lo_layers[ i ], "CRTC_X", crtcX);
+ 			liftoff_layer_set_property( drm->lo_layers[ i ], "CRTC_Y", crtcY);
+@@ -1618,7 +1657,7 @@ bool drm_update_color_mtx(struct drm_t *drm)
+ 		drm_ctm.matrix[i] = color.s31_32;
+ 	}
+ 
+-	uint32_t blob_id = 0;	
++	uint32_t blob_id = 0;
+ 	if (drmModeCreatePropertyBlob(drm->fd, &drm_ctm,
+ 			sizeof(struct drm_color_ctm), &blob_id) != 0) {
+ 		drm_log.errorf_errno("Unable to create CTM property blob");
+@@ -1693,7 +1732,7 @@ bool drm_update_gamma_lut(struct drm_t *drm)
+ 		gamma_lut[i].blue  = drm_calc_lut_value( b_exp, drm->pending.color_linear_gain[2], drm->pending.color_gain[2], drm->pending.gain_blend );
+ 	}
+ 
+-	uint32_t blob_id = 0;	
++	uint32_t blob_id = 0;
+ 	if (drmModeCreatePropertyBlob(drm->fd, gamma_lut,
+ 			lut_entries * sizeof(struct drm_color_lut), &blob_id) != 0) {
+ 		drm_log.errorf_errno("Unable to create gamma LUT property blob");
+@@ -1741,7 +1780,7 @@ bool drm_update_degamma_lut(struct drm_t *drm)
+ 		degamma_lut[i].blue  = drm_quantize_lut_value( safe_pow( input, drm->pending.color_degamma_exponent[2] ) );
+ 	}
+ 
+-	uint32_t blob_id = 0;	
++	uint32_t blob_id = 0;
+ 	if (drmModeCreatePropertyBlob(drm->fd, degamma_lut,
+ 			lut_entries * sizeof(struct drm_color_lut), &blob_id) != 0) {
+ 		drm_log.errorf_errno("Unable to create degamma LUT property blob");
+diff --git a/src/drm.hpp b/src/drm.hpp
+index 21ed839..616edd3 100644
+--- a/src/drm.hpp
++++ b/src/drm.hpp
+@@ -57,7 +57,7 @@ struct fb {
+ 	uint32_t id;
+ 	/* Client buffer, if any */
+ 	struct wlr_buffer *buf;
+-	/* A FB is held if it's being used by steamcompmgr 
++	/* A FB is held if it's being used by steamcompmgr
+ 	 * doesn't need to be atomic as it's only ever
+ 	 * modified/read from the steamcompmgr thread */
+ 	int held_refs;
+@@ -79,19 +79,19 @@ struct drm_t {
+ 	std::map< uint32_t, struct connector > connectors;
+ 
+ 	std::map< uint32_t, drmModePropertyRes * > props;
+-	
++
+ 	struct plane *primary;
+ 	struct crtc *crtc;
+ 	struct connector *connector;
+ 	int crtc_index;
+ 	int kms_in_fence_fd;
+ 	int kms_out_fence_fd;
+-	
++
+ 	struct wlr_drm_format_set primary_formats;
+-	
++
+ 	drmModeAtomicReq *req;
+ 	uint32_t flags;
+-	
++
+ 	struct liftoff_device *lo_device;
+ 	struct liftoff_output *lo_output;
+ 	struct liftoff_layer *lo_layers[ k_nMaxLayers ];
+@@ -120,16 +120,16 @@ struct drm_t {
+ 	std::vector < uint32_t > fbids_queued;
+ 	/* FBs currently on screen */
+ 	std::vector < uint32_t > fbids_on_screen;
+-	
++
+ 	std::unordered_map< uint32_t, struct fb > fb_map;
+ 	std::mutex fb_map_mutex;
+-	
++
+ 	std::mutex free_queue_lock;
+ 	std::vector< uint32_t > fbid_unlock_queue;
+ 	std::vector< uint32_t > fbid_free_queue;
+-	
++
+ 	std::mutex flip_lock;
+-	
++
+ 	std::atomic < uint64_t > flipcount;
+ 
+ 	std::atomic < bool > paused;
+@@ -154,7 +154,23 @@ enum drm_mode_generation {
+ 	DRM_MODE_GENERATE_FIXED,
+ };
+ 
++enum drm_screen_type {
++	DRM_SCREEN_TYPE_INTERNAL = 0,
++	DRM_SCREEN_TYPE_EXTERNAL = 1,
++
++	DRM_SCREEN_TYPE_COUNT
++};
++
++enum g_panel_orientation {
++	PANEL_ORIENTATION_0,	/* NORMAL */
++	PANEL_ORIENTATION_270,	/* RIGHT */
++	PANEL_ORIENTATION_90,	/* LEFT */
++	PANEL_ORIENTATION_180,	/* UPSIDE DOWN */
++	PANEL_ORIENTATION_AUTO,
++};
++
+ extern enum drm_mode_generation g_drmModeGeneration;
++extern enum g_panel_orientation g_drmModeOrientation;
+ 
+ bool init_drm(struct drm_t *drm, int width, int height, int refresh);
+ void finish_drm(struct drm_t *drm);
+diff --git a/src/main.cpp b/src/main.cpp
+index 792d872..4f84d23 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -75,6 +75,7 @@ const struct option *gamescope_options = (struct option[]){
+ 	{ "composite-debug", no_argument, nullptr, 0 },
+ 	{ "disable-xres", no_argument, nullptr, 'x' },
+ 	{ "fade-out-duration", required_argument, nullptr, 0 },
++	{ "force-orientation", required_argument, nullptr, 0 },
+ 
+ 	{} // keep last
+ };
+@@ -102,6 +103,8 @@ const char usage[] =
+ 	"  -C, --hide-cursor-delay        hide cursor image after delay\n"
+ 	"  -e, --steam                    enable Steam integration\n"
+ 	" --xwayland-count                create N xwayland servers\n"
++	" --prefer-vk-device              prefer Vulkan device for compositing (ex: 1002:7300)\n"
++	" --force-orientation             rotate the display (left, right, normal, upsidedown)\n"
+ 	"\n"
+ 	"Nested mode options:\n"
+ 	"  -o, --nested-unfocused-refresh game refresh rate when unfocused\n"
+@@ -208,6 +211,22 @@ static enum drm_mode_generation parse_drm_mode_generation(const char *str)
+ 	}
+ }
+ 
++static enum g_panel_orientation force_orientation (const char *str)
++{
++	if (strcmp(str, "normal") == 0) {
++		return PANEL_ORIENTATION_0;
++	} else if (strcmp(str, "right") == 0) {
++		return PANEL_ORIENTATION_270;
++	} else if (strcmp(str, "left") == 0) {
++		return PANEL_ORIENTATION_90;
++	} else if (strcmp(str, "upsidedown") == 0) {
++		return PANEL_ORIENTATION_180;
++	} else {
++		fprintf( stderr, "gamescope: invalid value for --force-orientation\n" );
++		exit(1);
++	}
++}
++
+ static void handle_signal( int sig )
+ {
+ 	switch ( sig ) {
+@@ -345,6 +364,8 @@ int main(int argc, char **argv)
+ 					g_nTouchClickMode = g_nDefaultTouchClickMode;
+ 				} else if (strcmp(opt_name, "generate-drm-mode") == 0) {
+ 					g_drmModeGeneration = parse_drm_mode_generation( optarg );
++				} else if (strcmp(opt_name, "force-orientation") == 0) {
++					g_drmModeOrientation = force_orientation( optarg );
+ 				} else if (strcmp(opt_name, "sharpness") == 0 ||
+ 						   strcmp(opt_name, "fsr-sharpness") == 0) {
+ 					g_upscalerSharpness = atoi( optarg );
+@@ -497,7 +518,7 @@ int main(int argc, char **argv)
+ 		fprintf( stderr, "Failed to initialize wlserver\n" );
+ 		return 1;
+ 	}
+-	
++
+ 	gamescope_xwayland_server_t *base_server = wlserver_get_xwayland_server(0);
+ 
+ 	setenv("DISPLAY", base_server->get_nested_display_name(), 1);
+diff --git a/src/wlserver.cpp b/src/wlserver.cpp
+index cbf5df8..a9c9489 100644
+--- a/src/wlserver.cpp
++++ b/src/wlserver.cpp
+@@ -6,7 +6,7 @@
+ #include <unistd.h>
+ #include <pthread.h>
+ #include <string.h>
+-#include <poll.h>	
++#include <poll.h>
+ 
+ #include <linux/input-event-codes.h>
+ 
+@@ -64,6 +64,7 @@ struct wlserver_content_override {
+ enum wlserver_touch_click_mode g_nDefaultTouchClickMode = WLSERVER_TOUCH_CLICK_LEFT;
+ enum wlserver_touch_click_mode g_nTouchClickMode = g_nDefaultTouchClickMode;
+ 
++
+ static struct wl_list pending_surfaces = {0};
+ 
+ static void wlserver_surface_set_wlr( struct wlserver_surface *surf, struct wlr_surface *wlr_surf );
+@@ -972,6 +973,176 @@ void wlserver_send_frame_done( struct wlr_surface *surf, const struct timespec *
+ 	wlr_surface_send_frame_done( surf, when );
+ }
+ 
++void wlserver_touchmotion( double x, double y, int touch_id, uint32_t time )
++{
++	if ( wlserver.mouse_focus_surface != NULL )
++	{
++		double tx = 0;
++		double ty = 0;
++		switch ( g_drmModeOrientation )
++		{
++			case PANEL_ORIENTATION_0:
++				tx = x;
++				ty = y;
++				break;
++			case PANEL_ORIENTATION_90:
++				tx = 1.0 - y;
++				ty = x;
++				break;
++			case PANEL_ORIENTATION_180:
++				tx = 1.0 - x;
++				ty = 1.0 - y;
++				break;
++			case PANEL_ORIENTATION_270:
++				tx = y;
++				ty = 1.0 - x;
++				break;
++			case PANEL_ORIENTATION_AUTO:
++			default: /* we are using the "auto" enum case to ensure compatibility for devices that were already using this*/
++				tx = g_bRotated ? y : x;
++				ty = g_bRotated ? 1.0 - x : y;
++				break;
++		}
++		tx *= g_nOutputWidth;
++		ty *= g_nOutputHeight;
++		tx += focusedWindowOffsetX;
++		ty += focusedWindowOffsetY;
++		tx *= focusedWindowScaleX;
++		ty *= focusedWindowScaleY;
++		wlserver.mouse_surface_cursorx = tx;
++		wlserver.mouse_surface_cursory = ty;
++
++		if ( g_nTouchClickMode == WLSERVER_TOUCH_CLICK_PASSTHROUGH )
++		{
++			wlr_seat_touch_notify_motion( wlserver.wlr.seat, time, touch_id, wlserver.mouse_surface_cursorx, wlserver.mouse_surface_cursory );
++		}
++		else if ( g_nTouchClickMode == WLSERVER_TOUCH_CLICK_DISABLED )
++		{
++			return;
++		}
++		else
++		{
++			g_bPendingTouchMovement = true;
++
++			wlr_seat_pointer_notify_motion( wlserver.wlr.seat, time, wlserver.mouse_surface_cursorx, wlserver.mouse_surface_cursory );
++			wlr_seat_pointer_notify_frame( wlserver.wlr.seat );
++		}
++	}
++
++	bump_input_counter();
++}
++
++void wlserver_touchdown( double x, double y, int touch_id, uint32_t time )
++{
++	if ( wlserver.mouse_focus_surface != NULL )
++	{
++		double tx = 0;
++		double ty = 0;
++		switch ( g_drmModeOrientation )
++		{
++			case PANEL_ORIENTATION_0:
++				tx = x;
++				ty = y;
++				break;
++			case PANEL_ORIENTATION_90:
++				tx = 1.0 - y;
++				ty = x;
++				break;
++			case PANEL_ORIENTATION_180:
++				tx =  1.0 - x;
++				ty =  1.0 - y;
++				break;
++			case PANEL_ORIENTATION_270:
++				tx = y;
++				ty = 1.0 - x;
++				break;
++			case PANEL_ORIENTATION_AUTO:
++			default: /* we are using the "auto" enum case to ensure compatibility for devices that were already using this*/
++				tx = g_bRotated ? y : x;
++				ty = g_bRotated ? 1.0 - x : y;
++				break;
++		}
++		tx *= g_nOutputWidth;
++		ty *= g_nOutputHeight;
++		tx += focusedWindowOffsetX;
++		ty += focusedWindowOffsetY;
++		tx *= focusedWindowScaleX;
++		ty *= focusedWindowScaleY;
++		wlserver.mouse_surface_cursorx = tx;
++		wlserver.mouse_surface_cursory = ty;
++
++		if ( g_nTouchClickMode == WLSERVER_TOUCH_CLICK_PASSTHROUGH )
++		{
++			if ( touch_id >= 0 && touch_id < WLSERVER_TOUCH_COUNT )
++			{
++				wlr_seat_touch_notify_down( wlserver.wlr.seat, wlserver.mouse_focus_surface, time, touch_id,
++											wlserver.mouse_surface_cursorx, wlserver.mouse_surface_cursory );
++
++				wlserver.touch_down[ touch_id ] = true;
++			}
++		}
++		else if ( g_nTouchClickMode == WLSERVER_TOUCH_CLICK_DISABLED )
++		{
++			return;
++		}
++		else
++		{
++			g_bPendingTouchMovement = true;
++
++			wlr_seat_pointer_notify_motion( wlserver.wlr.seat, time, wlserver.mouse_surface_cursorx, wlserver.mouse_surface_cursory );
++			wlr_seat_pointer_notify_frame( wlserver.wlr.seat );
++
++			uint32_t button = steamcompmgr_button_to_wlserver_button( g_nTouchClickMode );
++
++			if ( button != 0 && g_nTouchClickMode < WLSERVER_BUTTON_COUNT )
++			{
++				wlr_seat_pointer_notify_button( wlserver.wlr.seat, time, button, WLR_BUTTON_PRESSED );
++				wlr_seat_pointer_notify_frame( wlserver.wlr.seat );
++
++				wlserver.button_held[ g_nTouchClickMode ] = true;
++			}
++		}
++	}
++
++	bump_input_counter();
++}
++
++void wlserver_touchup( int touch_id, uint32_t time )
++{
++	if ( wlserver.mouse_focus_surface != NULL )
++	{
++		bool bReleasedAny = false;
++		for ( int i = 0; i < WLSERVER_BUTTON_COUNT; i++ )
++		{
++			if ( wlserver.button_held[ i ] == true )
++			{
++				uint32_t button = steamcompmgr_button_to_wlserver_button( i );
++
++				if ( button != 0 )
++				{
++					wlr_seat_pointer_notify_button( wlserver.wlr.seat, time, button, WLR_BUTTON_RELEASED );
++					bReleasedAny = true;
++				}
++
++				wlserver.button_held[ i ] = false;
++			}
++		}
++
++		if ( bReleasedAny == true )
++		{
++			wlr_seat_pointer_notify_frame( wlserver.wlr.seat );
++		}
++
++		if ( touch_id >= 0 && touch_id < WLSERVER_TOUCH_COUNT && wlserver.touch_down[ touch_id ] == true )
++		{
++			wlr_seat_touch_notify_up( wlserver.wlr.seat, time, touch_id );
++			wlserver.touch_down[ touch_id ] = false;
++		}
++	}
++
++	bump_input_counter();
++}
++
+ gamescope_xwayland_server_t *wlserver_get_xwayland_server( size_t index )
+ {
+ 	if (index >= wlserver.wlr.xwayland_servers.size() )
