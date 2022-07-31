@@ -1,8 +1,8 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=vcm
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=2022.02.10.AC.0.g5123442
+pkgver=2022.02.10.AC.4.gc770bbc
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GITversion)"
 arch=('x86_64')
@@ -42,7 +42,7 @@ prepare(){
       -i *.cpp \
       -i *.h
 
-  sed 's|#||g' -i meson.build
+  sed 's|^  #|  |g' -i meson.build
 }
 
 build() {
