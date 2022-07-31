@@ -1,12 +1,13 @@
 pkgbase = python-altair
 	pkgdesc = Declarative statistical visualization library for Python
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://altair-viz.github.io/
 	arch = any
 	license = BSD3
-	makedepends = python-setuptools
-	depends = python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-entrypoints
 	depends = python-jinja
 	depends = python-jsonschema
