@@ -1,9 +1,9 @@
 # Maintainer: Lex Black <autumn-wind@web.de>
 
 pkgname=prosody-mod-invites-page
-pkgver=2022.02.02
+pkgver=2022.07.18
 pkgrel=1
-_commit="09b8144051ea"
+_commit="75b6e5df65f9"
 pkgdesc="Generate friendly web page for invitations"
 arch=('any')
 url="https://modules.prosody.im/mod_invites_page.html"
