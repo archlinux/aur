@@ -1,0 +1,13 @@
+diff --git a/python_jsonschema_objects/markdown_support.py b/python_jsonschema_objects/markdown_support.py
+index bb2ea1b..6b63899 100644
+--- a/python_jsonschema_objects/markdown_support.py
++++ b/python_jsonschema_objects/markdown_support.py
+@@ -45,7 +45,7 @@ class SpecialFencedCodeExtension(Extension):
+         """ Add FencedBlockPreprocessor to the Markdown instance. """
+         md.registerExtension(self)
+ 
+-        if markdown.version_info[0] >= 3:
++        if markdown.__version_info__[0] >= 3:
+             md.preprocessors.register(
+                 SpecialFencePreprocessor(md), "fenced_code_block", 10
+             )
