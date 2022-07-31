@@ -1,6 +1,6 @@
 # Maintainer: Manel Castillo Giménez
 pkgname="clavis-git"
-pkgver="1.0.2"
+pkgver="1.0.3"
 pkgrel="1"
 pkgdesc="An easy to use Password Manager. Development version"
 arch=("x86_64")
