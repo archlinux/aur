@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Plsek <jeremy plsek at googlemail dot com>
 pkgname=puush-qt
 pkgdesc="GUI frontend for puush which will create a system tray icon."
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/jplsek/puush-qt"
@@ -15,7 +15,7 @@ build() {
 	cd "$pkgname"
 	git submodule init
 	git submodule update
-	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr
+	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr .
 	make
 }
 
