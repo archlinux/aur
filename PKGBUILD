@@ -1,7 +1,7 @@
 # Maintainer: Arthur LAURENT <arthur.laurent4@gmail.com>
 
 pkgname=qtcreator-xmake-project-manager
-pkgver=7.0.0.r61.0f9ac5a
+pkgver=8.0.0.r102.eb0b666
 pkgrel=1
 pkgdesc='QtCreator XMake project support plugin'
 arch=(x86_64)
@@ -18,7 +18,7 @@ pkgver() {
   cd 'xmake-project-manager' 
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "7.0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "8.0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
 
