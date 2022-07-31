@@ -4,7 +4,8 @@
 pkgbase=flatbuffers-git
 _gitbase=flatbuffers
 pkgname=(flatbuffers-git python-flatbuffers-git)
-pkgver=2.0.6.r118.g987aa5b5
+epoch=1
+pkgver=2.0.6.r130.g6e279164
 pkgrel=1
 pkgdesc='An efficient cross platform serialization library for C++, with support for Java, C# and Go'
 arch=(x86_64)
@@ -27,9 +28,8 @@ prepare() {
 build() {
   cd $_gitbase
   cmake . \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
     -DFLATBUFFERS_BUILD_FLATLIB=OFF \
     -DFLATBUFFERS_BUILD_SHAREDLIB=ON
   make
