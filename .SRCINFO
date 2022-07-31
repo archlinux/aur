@@ -1,0 +1,23 @@
+pkgbase = dkp-devkitppc
+	pkgdesc = Toolchain for Nintendo Gamecube & Wii homebrew development
+	pkgver = r41
+	pkgrel = 1
+	url = https://github.com/devkitpro/buildscripts
+	arch = x86_64
+	groups = gamecube-dev
+	groups = wii-dev
+	groups = wiiu-dev
+	license = Various
+	makedepends = git
+	depends = devkitppc-rules
+	provides = devkitPPC
+	conflicts = devkitPPC
+	noextract = gcc-12.1.0.tar.xz
+	source = https://github.com/devkitPro/buildscripts/archive/refs/tags/devkitPPC_r41.tar.gz
+	source = config.sh
+	source = ftp://ftp.gnu.org/gnu/gcc/gcc-12.1.0/gcc-12.1.0.tar.xz
+	sha256sums = 04417ff6b88cb8ef3225de456c71bb7470adc1a3c3ce8c795c79876e690c8d8a
+	sha256sums = 3baa66fca7b71b21edac06ae7bdc3125e0b872878957eb40a4e7cd1d8ccf2c87
+	sha256sums = 62fd634889f31c02b64af2c468f064b47ad1ca78411c45abe6ac4b5f8dd19c7b
+
+pkgname = dkp-devkitppc
