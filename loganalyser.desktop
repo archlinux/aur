@@ -1,0 +1,16 @@
+[Desktop Entry]
+Categories=
+Encoding=UTF-8
+Exec=/usr/share/beast2/bin/loganalyser
+Icon=/usr/share/beast2/images/beast.png
+MimeType=
+Name=loganalyser
+Name[zh]=loganalyser
+ServiceTypes=
+SwallowExec=
+SwallowTitle=
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=root
