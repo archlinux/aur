@@ -3,7 +3,7 @@
 # Contributor: Jonathan Kotta <jpkotta at gmail dot com>
 
 pkgname=python-ipython-sql
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="RDBMS access via IPython"
 arch=('any')
@@ -11,17 +11,11 @@ url="https://pypi.python.org/pypi/ipython-sql"
 license=('MIT')
 depends=('ipython' 'python-sqlalchemy' 'python-prettytable' 'python-sqlparse' 'python-six')
 source=("https://files.pythonhosted.org/packages/source/i/${pkgname#python-}/${pkgname#python-}-$pkgver.tar.gz")
-sha256sums=('3e888e59bf57277cbd6f383cb232858b2d7c71219e5749257128f16d9857e46c')
+sha256sums=('3786344ce208a58047a4bcf43afd3c143d935a395c72ea849bf0e3fc24fad9e4')
 optdepends=(
     'python-pandas: DataFrame support'
     'python-pymysql: connect to MySQL database'
     'python-psycopg2: connect to PostgreSQL database')
-
-prepare() {
-    # fix missing file
-    cd "${pkgname#python-}-${pkgver}"
-    test -f NEWS.rst || touch NEWS.rst
-}
 
 build() {
     cd "${pkgname#python-}-${pkgver}"

@@ -1,6 +1,6 @@
 pkgbase = python-ipython-sql
 	pkgdesc = RDBMS access via IPython
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/ipython-sql
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-ipython-sql
 	optdepends = python-pandas: DataFrame support
 	optdepends = python-pymysql: connect to MySQL database
 	optdepends = python-psycopg2: connect to PostgreSQL database
-	source = https://files.pythonhosted.org/packages/source/i/ipython-sql/ipython-sql-0.4.0.tar.gz
-	sha256sums = 3e888e59bf57277cbd6f383cb232858b2d7c71219e5749257128f16d9857e46c
+	source = https://files.pythonhosted.org/packages/source/i/ipython-sql/ipython-sql-0.4.1.tar.gz
+	sha256sums = 3786344ce208a58047a4bcf43afd3c143d935a395c72ea849bf0e3fc24fad9e4
 
 pkgname = python-ipython-sql
