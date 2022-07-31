@@ -1,4 +1,4 @@
-# Maintainer: Aashish Chapain <ashishchapain86@gmail.com>
+# Maintainer: Aashish Chapain <ashishchapain86@gmail.com> 
 
 pkgname=sematrix-plymouth-theme
 pkgver=1.0.0
