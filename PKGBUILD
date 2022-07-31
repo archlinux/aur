@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=uxplay
 _gitname=UxPlay
-pkgver=1.55
+pkgver=1.56
 pkgrel=1
 pkgdesc="AirPlay Unix mirroring server"
 arch=('any')
@@ -10,8 +10,8 @@ license=('GPL3')
 depends=('openssl' 'libplist' 'avahi' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-libav')
 optdepends=('gstreamer-vaapi: GStreamer plugin required for certain GPUs')
 makedepends=('cmake')
-source=("$_gitname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz" "uxplay.desktop")
-sha256sums=('57ea349d397077f24b361e0c9569450089b4adc775e6bba542ad648404abbb76'
+source=("$_gitname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz" "uxplay.desktop")
+sha256sums=('8cbbcb42a4c5253f80166bda7e7379a586aee5229fce225bfacdef2dac83b907'
             '6b43385942508d8c360e8360be52719cbf3899868f3560b245731d866fb245a3')
 
 build() {
