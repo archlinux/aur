@@ -7,18 +7,22 @@ _imgui_commit=0850b46c88daa92443dedf8609a80dbc1da52558
 _link_commit=14f6cc99ac41466d52ce780aa37e432fe92c289b
 _stb_commit=f54acd4e13430c5122cab4ca657705c84aa61b08
 _tinyfiledialogs_commit=2681e426ddaebc8e2764a7823b4b9d69564d1684
-_tinyxml2_commit=bf15233ad88390461f6ab0dbcf046cce643c5fcb
 _asio_commit=01b4e87c04abd4daec58e40463bcdc150085b269
 
 pkgname=vimix
-pkgver=0.7
-pkgrel=2
+pkgver=0.7.1
+pkgrel=1
 arch=('x86_64')
 pkgdesc="Live video editor"
 url="https://brunoherbelin.github.io/vimix/"
 license=('GPL3')
-depends=('glfw' 'gst-plugins-bad' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-ugly' 'gtk3')
+depends=('glfw' 'gst-plugins-base-libs' 'gtk3' 'tinyxml2')
 makedepends=('cmake' 'git' 'ninja')
+optdepends=('gst-libav: Extra media codecs'
+            'gst-plugins-base: Extra media codecs'
+            'gst-plugins-bad: Extra media codecs'
+            'gst-plugins-good: Extra media codecs'
+            'gst-plugins-ugly: Extra media codecs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/brunoherbelin/vimix/archive/refs/tags/$pkgver.tar.gz"
 	"dirent-${_dirent_commit}.tar.gz::https://github.com/tronkko/dirent/archive/${_dirent_commit}.tar.gz"
         "ImGuiColorTextEdit-${_ImGuiColorTextEdit_commit}.tar.gz::https://github.com/BalazsJako/ImGuiColorTextEdit/archive/${_ImGuiColorTextEdit_commit}.tar.gz"
@@ -27,9 +31,8 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/brunoherbelin/vimix/archive
         "link-${_link_commit}.tar.gz::https://github.com/Ableton/link/archive/${_link_commit}.tar.gz"
         "stb-${_stb_commit}.tar.gz::https://github.com/nothings/stb/archive/${_stb_commit}.tar.gz"
         "tinyfiledialogs::git+https://git.code.sf.net/p/tinyfiledialogs/code#commit=${_tinyfiledialogs_commit}"
-	"tinyxml2-${_tinyxml2_commit}.tar.gz::https://github.com/leethomason/tinyxml2/archive/${_tinyxml2_commit}.tar.gz"
 	"asio-${_asio_commit}.tar.gz::https://github.com/chriskohlhoff/asio/archive/${_asio_commit}.tar.gz")
-sha512sums=('a3fd5240e47f1342237a28d062a6aba34c355ba116959cb51e25c14e9a787ad8429626bcebbd665371ba70b16efb942f0a5ed80ef996e0c2dace40fe8b07f8a2'
+sha512sums=('eda7236cd8f1f8262271aebcb07d946d5a45826a4321be8577399fc4f490f849df193aaf91e281cc3239335b8e6ae142e5aca1b56cc808fab09ab806042db121'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -37,7 +40,7 @@ sha512sums=('a3fd5240e47f1342237a28d062a6aba34c355ba116959cb51e25c14e9a787ad8429
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
+#            'SKIP'
 	    'SKIP')
 
 prepare() {
@@ -53,8 +56,6 @@ prepare() {
       -C   "$pkgname-$pkgver/ext/link/"
   tar -xzf "stb-${_stb_commit}.tar.gz" --strip 1 \
       -C   "$pkgname-$pkgver/ext/stb/"
-  tar -xzf "tinyxml2-${_tinyxml2_commit}.tar.gz" --strip 1 \
-      -C   "$pkgname-$pkgver/ext/tinyxml2/"
   tar -xzf "asio-${_asio_commit}.tar.gz" --strip 1 \
       -C   "$pkgname-$pkgver/ext/link/modules/asio-standalone/"
 
