@@ -1,4 +1,4 @@
-# Maintainer: Austin Haedicke <austin.haedicke@gamil.com>
+# Maintainer: Austin Haedicke <austin.haedicke@gmail.com>
 
 pkgname=dnd-tools
 pkgver=r36.baefb9e
@@ -11,7 +11,7 @@ url='https://gitlab.com/savagezen/dnd-tools'
 license=('AGPLv3')
 conflicts=('dnd-tools')
 provides=('dnd-tools')
-source=(git://github.com/savagezen/dnd-tools.git)
+source=(git+https://gitlab.com/savagezen/dnd-tools)
 sha256sums=('SKIP')
 
 pkgver() {

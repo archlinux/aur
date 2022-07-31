@@ -11,7 +11,7 @@ pkgbase = dnd-tools
 	depends = python
 	provides = dnd-tools
 	conflicts = dnd-tools
-	source = git://gitlab.com/savagezen/dnd-tools.git
+	source = git+https://gitlab.com/savagezen/dnd-tools
 	sha256sums = SKIP
 
 pkgname = dnd-tools
