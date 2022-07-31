@@ -1,0 +1,13 @@
+pkgbase = prosody-mod-password-policy
+	pkgdesc = password policy for creating accounts
+	pkgver = 2021.12.22
+	pkgrel = 1
+	url = https://modules.prosody.im/mod_password_policy.html
+	arch = any
+	license = MIT
+	makedepends = mercurial
+	depends = prosody
+	source = hg+https://hg.prosody.im/prosody-modules/#revision=bfd4af4caddc
+	sha1sums = SKIP
+
+pkgname = prosody-mod-password-policy
