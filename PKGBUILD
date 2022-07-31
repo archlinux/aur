@@ -3,14 +3,14 @@
 pkgname=uvtools-bin
 _pkgname="${pkgname%-bin}"
 pkgver=3.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="MSLA/DLP, file analysis, calibration, repair, conversion and manipulation"
 arch=('x86_64')
 url="https://github.com/sn4k3/UVtools"
 license=('AGPL3')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
-depends=('zlib' 'fuse')
+depends=('zlib' 'fuse' 'openjpeg2' 'libjpeg-turbo' 'libpng' 'libgeotiff' 'libdc1394' 'ffmpeg' 'openexr' 'tbb' 'libgdiplus')
 options=('!strip')
 _appimage="UVtools_linux-x64_${pkgver}.AppImage"
 noextract=("${_appimage}")
