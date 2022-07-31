@@ -1,7 +1,7 @@
 # Maintainer: Carlo Teubner <carlo@cteubner.net>
 
 pkgname=archupd
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Arch updater'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('5217e8dead462f3ec57bf62b21c7cff7a017ffc4730dbfc8f6db9028f197ca10')
+sha256sums=('38048e3f3cb8be5103d7a1f711f077cc0fa7b8ef2a3f9ee3d8309d71bee7aa95')
 
 build() {
   cd "$pkgname-$pkgver"
