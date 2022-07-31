@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Markdown to PDF converter with syntax highlighting, using md2html (md4c), highlight and wkhtmltopdf."
 arch=('any')
 url="https://github.com/trizen/${_pkgname}"
-license=('Artistic2.0')
+license=('GPL3')
 makedepends=('git')
 
 provides=()
