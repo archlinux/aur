@@ -1,14 +1,14 @@
 # Maintainer: Lex Black <autumn-wind@web.de>
 
 pkgname=prosody-mod-invites-register-web
-pkgver=2020.10.06
-pkgrel=2
-_commit="39d1a4ecdee6"
+pkgver=2021.12.22
+pkgrel=1
+_commit="15cf32e666da"
 pkgdesc="Register accounts via the web using invite tokens"
 arch=('any')
 url="https://modules.prosody.im/mod_invites_register_web.html"
 license=('MIT')
-depends=('prosody' 'prosody-mod-invites-page')
+depends=('prosody' 'prosody-mod-invites-page' 'prosody-mod-password-policy')
 makedepends=('mercurial')
 optdepends=("prosody-mod-register-apps: Configuring list of XMPP clients")
 source=("hg+https://hg.prosody.im/prosody-modules/"#revision=$_commit)
