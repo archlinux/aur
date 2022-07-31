@@ -1,4 +1,4 @@
-# Maintainer: Marten Lienen <marten.lienen@gmai..com>
+# Maintainer: Marten Lienen <marten.lienen@gmail.com>
 
 pkgname=i3-pager-git
 pkgver=r127.9e82a42
