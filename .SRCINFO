@@ -1,7 +1,7 @@
 pkgbase = normcap
 	pkgdesc = OCR powered screen-capture tool to capture information instead of images
 	pkgver = 0.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dynobo.github.io/normcap
 	arch = any
 	license = GPL
