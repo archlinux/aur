@@ -1,5 +1,5 @@
 pkgbase = jre14
-	pkgdesc = Oracle Java Runtime Environment
+	pkgdesc = Oracle Java 14 Runtime Environment
 	pkgver = 14.0.2
 	pkgrel = 2
 	url = https://www.oracle.com/java/
