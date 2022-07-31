@@ -1,6 +1,6 @@
 # Maintainer: Mik Mueller <imse335@gmail.com>
 pkgname=smarthome-cli
-pkgver=2.9.0
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="Terminal client for the smarthome-go/smarthome server."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/smarthome-go/cli/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('7aedab7f613eb87d61b69cd8d53f18033aed039f98a66d7121c489514a8f2fb96d5070deb6d09f6a11306ee5bbb2e6af12c9f23ad1944f49c2182133d2936c49')
+b2sums=('613c8aa5d01c1ca79ec972922ce206c1d4aea37b2759fc8d3ef5fcac0f921926e4198c27e21e8a2abbb54de5b88772c79a2134202b15f7aa7f9b3df6bba5835f')
 
 prepare() {
     cd "$srcdir/cli-$pkgver"
