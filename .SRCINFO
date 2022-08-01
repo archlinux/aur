@@ -1,0 +1,15 @@
+pkgbase = python-dephell-specifier
+	pkgdesc = Work with version specifiers
+	pkgver = 0.2.2
+	pkgrel = 5
+	url = https://github.com/dephell/dephell_specifier
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-packaging
+	source = https://files.pythonhosted.org/packages/source/d/dephell_specifier/dephell_specifier-0.2.2.tar.gz
+	sha256sums = b5ec6409a1916980c4861da2cb7538246555bff4b95bef2c952c56bd19eb2de6
+	b2sums = eb7656c3c713fd842cc4b3f342d77d88efef773e03845a28244b4071a1db8d73051d4afc17301823878ddadd01c58be19a5fc6f8e5fed03ae73fb97b5c44ea83
+
+pkgname = python-dephell-specifier
