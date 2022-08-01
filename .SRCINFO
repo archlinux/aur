@@ -1,0 +1,18 @@
+pkgbase = gpbkdf2-git
+	pkgdesc = PBKDF2 key encoder for use in shell. Single, tiny binary. Written in Go
+	pkgver = r8.428e2de
+	pkgrel = 1
+	url = https://github.com/riotkit-org/gpbkdf2
+	arch = x86_64
+	arch = armv7h
+	license = LGPL3
+	makedepends = git
+	makedepends = go
+	provides = gpbkdf2
+	provides = gpbkdf2-git
+	conflicts = gpbkdf2
+	conflicts = gpbkdf2-git
+	source = git+https://github.com/riotkit-org/gpbkdf2.git
+	b2sums = SKIP
+
+pkgname = gpbkdf2-git
