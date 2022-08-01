@@ -4,7 +4,7 @@
 # Refactored by Blaž "Speed" Hrastnik <https://github.com/archSeer>
 
 pkgname=elasticsearch
-pkgver=8.2.0
+pkgver=8.3.3
 pkgrel=1
 pkgdesc="Distributed RESTful search engine built on top of Lucene"
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
   remove-systemd-distribution-check.patch
   remove-systemd-package-check.patch
 )
-sha256sums=('fa64e66038a515ce380e16ab4c8ad939ba7a4f85418de9796a52fcf504904d70'
+sha256sums=('c8d2b278ad9d63603e5c790b2ee8486fd0b90733ea232b336890e8c37e3810b2'
             '9e1f68ff275ef2b5f2b93d2823efc5cc9643da696fcbe09a3ea7520ada35ffba'
             '8a76ad9a44a34eca8d6cb7ec9d8f1b01d46c114765b0a76094de8d72f0477351'
             'bac40d87acaa5bee209ceb6dfa253009a072e9243fe3b94be42fb5cd44727d6f'
