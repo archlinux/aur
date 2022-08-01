@@ -21,7 +21,7 @@ depends=(
     'libdrm'
     'libfreetype.so'
     'libmfx'
-    'libplacebo'
+    'libplacebo.so'
     'libtheora'
     'libva.so'
     'libva-drm.so'
