@@ -2,7 +2,7 @@
 # Contributor: 
 
 pkgname=python-pyntcloud
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Python library for working with 3D point clouds"
 arch=("any")
@@ -16,7 +16,7 @@ optdepends=('python-laspy: LAS support'
             'python-numba: numba acceleration support')
 makedepends=()
 source=("https://github.com/daavoo/pyntcloud/archive/v${pkgver}.tar.gz")
-sha256sums=('b2754af94c0c195c408c5197b5640c6c9b0c4f09dbef296a5cf36228dddce54e')
+sha256sums=('29055c6374498759dc987ef195e9cc2a0959a0b9d5ed30f6c7dece40bfc005bb')
 
 build() {
     cd "pyntcloud-${pkgver}"
