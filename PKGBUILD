@@ -4,7 +4,7 @@
 pkgname=inform
 pkgver=6.40.r1
 _ifrel="6.40-r1"
-pkgrel=1
+pkgrel=2
 pkgdesc="The Inform 6 compiler, standard library, and PunyInform library"
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://gitlab.com/DavidGriffith/inform6unix"
@@ -13,7 +13,7 @@ groups=(inform)
 depends=('perl' 'ruby')
 provides=('punyinform=4.0')
 source=("http://ifarchive.org/if-archive/infocom/compilers/inform6/source/${pkgname}-${_ifrel}.tar.gz")
-b2sums=('9178c5383fd9469694b0b0ee6a27e01652643c504d36fea61a424e1ec93f91adb264fd16fd9c217a806e22a381c91448b5a60370cf3da6a692184d7cd32da961')
+md5sums=('ce99af3ec4cc1c1ed689682f3e43ab6a')
 
 build() {
   cd "${srcdir}/${pkgname}-${_ifrel}"
