@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o
-pkgver=2.55.0
+pkgver=2.55.1
 pkgrel=1
 pkgdesc='Text editor and minimalistic IDE'
 arch=(x86_64)
@@ -9,7 +9,7 @@ url='https://github.com/xyproto/o'
 license=(BSD)
 depends=(vte3)
 makedepends=(git go)
-source=("git+$url#commit=e7c9d32779adb034e56d1155816d9bb885213078") # tag: v2.55.0
+source=("git+$url#commit=ee2e08538c47b67e941d2e7c5d6d63a984d72fe3") # tag: v2.55.1
 optdepends=('asciidoctor: for writing man pages'
             'agda: for compiling Agda'
             'astyle: for formatting C#'
@@ -19,6 +19,7 @@ optdepends=('asciidoctor: for writing man pages'
             'clojure: for compiling Clojure'
             'crystal: for compiling Crystal'
             'cxx: for compiling C and C++'
+            'elm: for compiling Elm'
             'fpc: for compiling Object Pascal'
             'fstabfmt: for formatting /etc/fstab'
             'gdb: for debugging C'
