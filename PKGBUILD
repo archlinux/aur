@@ -1,13 +1,13 @@
 # Maintainer: Barış İnandıoğlu <68742481+baris-inandi@users.noreply.github.com>
 
 pkgname=fe
-pkgver=1.0.21
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="AUR helper with a familiar subcommand system"
 arch=(x86_64)
 url="https://github.com/baris-inandi/fe"
 license=('GPL3')
-depends=(bash sudo paru)
+depends=(bash sudo paru pacman-contrib)
 makedepends=(git go)
 source=("git+$url")
 md5sums=('SKIP')
