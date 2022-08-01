@@ -1,0 +1,35 @@
+From 18553636618a4d33f10af9b5ab92da6431784a8c Mon Sep 17 00:00:00 2001
+From: Michel Hermier <michel.hermier@gmail.com>
+Date: Sat, 9 Apr 2022 02:09:23 +0200
+Subject: [PATCH] wren-cli: Fix build on glibc >= 2.34 (#136)
+
+* wren-cli: Fix build on glibc >= 2.34
+---
+ src/cli/vm.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/cli/vm.c b/src/cli/vm.c
+index 48d2b1e..cad75be 100644
+--- a/src/cli/vm.c
++++ b/src/cli/vm.c
+@@ -241,7 +241,7 @@ static WrenForeignClassMethods bindForeignClass(
+   return methods;
+ }
+ 
+-static void write(WrenVM* vm, const char* text)
++static void writeFn(WrenVM* vm, const char* text)
+ {
+   printf("%s", text);
+ }
+@@ -274,7 +274,7 @@ static void initVM()
+   config.bindForeignClassFn = bindForeignClass;
+   config.resolveModuleFn = resolveModule;
+   config.loadModuleFn = loadModule;
+-  config.writeFn = write;
++  config.writeFn = writeFn;
+   config.errorFn = reportError;
+ 
+   // Since we're running in a standalone process, be generous with memory.
+-- 
+2.37.1
+
