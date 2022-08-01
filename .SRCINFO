@@ -1,0 +1,15 @@
+pkgbase = python-dephell-changelogs
+	pkgdesc = Find changelog for github repository, local dir, parse changelog
+	pkgver = 0.0.1
+	pkgrel = 6
+	url = https://github.com/dephell/dephell_changelogs
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/d/dephell_changelogs/dephell_changelogs-0.0.1.tar.gz
+	sha256sums = e639a3d08d389e22fbac0cc64181dbe93c4b4ba9f0134e273e6dd3e26ae70b21
+	b2sums = 6ec5383ff411e944ea90ae1a47061fdbd3f8bb5cfe9342936a3bebe8fc1e1791f7a5b7dfdb6d2d25bcee3ab1bf28d8bbf9101bb5d317afb5705e909964c49f68
+
+pkgname = python-dephell-changelogs
