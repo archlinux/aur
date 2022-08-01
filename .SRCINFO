@@ -1,0 +1,12 @@
+pkgbase = libantlr3c-cpp-headers
+	pkgdesc = C++ header files for libantlr3c
+	pkgver = 3.5.3
+	pkgrel = 1
+	url = https://www.antlr.org/
+	arch = any
+	license = BSD
+	depends = libantlr3c
+	source = https://github.com/antlr/antlr3/archive/refs/tags/3.5.3.tar.gz
+	sha256sums = a0892bcf164573d539b930e57a87ea45333141863a0dd3a49e5d8c919c8a58ab
+
+pkgname = libantlr3c-cpp-headers
