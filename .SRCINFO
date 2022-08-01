@@ -1,0 +1,17 @@
+pkgbase = mulle-test
+	pkgdesc = Runs tests and compares results against expectations
+	pkgver = 6.1.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/mulle-sde/mulle-test
+	changelog = RELEASENOTES.md
+	arch = any
+	groups = mulle-sde-all
+	license = BSD3
+	depends = bash
+	depends = mulle-bashfunctions>=4.1.1
+	depends = mulle-make>=1.1.1
+	source = https://github.com/mulle-sde/mulle-test/archive/6.1.0.tar.gz
+	md5sums = 6e1692b116ae1646f6afa2be9448c8a6
+
+pkgname = mulle-test
