@@ -71,7 +71,7 @@ EOF
 $sigarg2
 EOF
 
-                msg ":: mount ${resolved} (${ckfs1}) over /sigdev..."
+                msg ":: mount ${resolved} (${sigfs1}) over /sigdev..."
                 mount --mkdir -r -t "$sigfs1" "$resolved" /sigdev
                 sigpath="/sigdev/${sigpath1}"
                 is_fs=$(blkid -o value -s TYPE "${sigpath}")
@@ -267,6 +267,8 @@ _compare_signatures() {
     if [ "${_keys_sig_sha%% *}" != "${_cryptdev_sig_sha%% *}" ]; then
         err "Signatures on devices are different."
         return 1
+    else
+        msg "Signatures match, continue booting."
     fi
 }
 
