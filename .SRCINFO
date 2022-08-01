@@ -1,6 +1,6 @@
 pkgbase = mulle-craft
 	pkgdesc = Build projects using mulle-make and mulle-sourcetree
-	pkgver = 0.19.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/mulle-sde/mulle-craft
@@ -9,8 +9,8 @@ pkgbase = mulle-craft
 	groups = mulle-sde-all
 	license = BSD3
 	depends = bash
-	depends = mulle-bashfunctions>=3.4.0
-	source = https://github.com/mulle-sde/mulle-craft/archive/0.19.0.tar.gz
-	md5sums = 1790f75e2ecf3d6658bc29708cb7487a
+	depends = mulle-bashfunctions>=4.1.1
+	source = https://github.com/mulle-sde/mulle-craft/archive/2.0.0.tar.gz
+	md5sums = a457dde09f60f54454d0130d0d5fdb45
 
 pkgname = mulle-craft

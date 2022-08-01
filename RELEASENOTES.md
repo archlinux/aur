@@ -1,3 +1,24 @@
+# 2.0.0
+
+* code reorg and bug fixes
+
+
+# 1.0.0
+
+* big function rename to `<tool>`::`<file>`::`<function>` to make it easier to read hopefully
+* support etc/share style definition directories
+* bug fix for dynamic library creation
+* improved definition searchpath code
+* you can now install two callbacks, before the dependency folder is initalizing
+* the other callback when the dependency folder is complete. Sometimes useful for post-processing shared libraries on MacOS
+* uses mulle-bashfunctions 4 now
+* addes some undocumented switches to build --callback, --phases, --no-parallel-phase
+* the command craftorder-searchpath had been renamed to **craftinfo-searchpath**, as it searches craftinfos
+* fix problem with platform "Default" not being used as default in all cases
+* major update to the **status** command
+* mulle-craft can now run with **zsh** as well
+
+
 ## 0.19.0
 
 * new commands style and donefiles, for improved introspection
