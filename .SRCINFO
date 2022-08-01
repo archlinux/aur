@@ -1,6 +1,6 @@
 pkgbase = dsview-git
 	pkgdesc = GUI programe for supporting various instruments from DreamSourceLab, including logic analyzer, oscilloscope, etc.
-	pkgver = 1.12.r81.ga80c82d
+	pkgver = 1.2.0.r14.g1d249ff
 	pkgrel = 1
 	url = http://www.dreamsourcelab.com/
 	arch = i686
@@ -11,9 +11,7 @@ pkgbase = dsview-git
 	depends = boost-libs
 	depends = qt5-base
 	depends = fftw
-	depends = libsigrok4dsl-git
-	depends = libsigrokdecode4dsl-git
-	source = git://github.com/DreamSourceLab/DSView
+	source = git+https://github.com/DreamSourceLab/DSView
 	sha1sums = SKIP
 
 pkgname = dsview-git
