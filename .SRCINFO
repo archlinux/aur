@@ -1,7 +1,7 @@
 pkgbase = mulle-sourcetree
 	pkgdesc = Project composition and maintenance with build support
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/mulle-sde/mulle-sourcetree
 	changelog = RELEASENOTES.md
@@ -11,6 +11,7 @@ pkgbase = mulle-sourcetree
 	depends = bash
 	depends = mulle-bashfunctions>=4.1.1
 	depends = mulle-env>=4.1.0
+	depends = mulle-fetch>=3.0.1
 	source = https://github.com/mulle-sde/mulle-sourcetree/archive/1.1.0.tar.gz
 	md5sums = c0b6b01ab0a8a459c110ebc00ca6b56c
 
