@@ -1,8 +1,7 @@
-diff --git i/spsdk/crypto/__init__.py w/spsdk/crypto/__init__.py
-index f2a7b65..508b0ff 100644
---- i/spsdk/crypto/__init__.py
-+++ w/spsdk/crypto/__init__.py
-@@ -48,7 +48,6 @@ from cryptography.exceptions import InvalidSignature
+diff -ruN a/spsdk/crypto/__init__.py b/spsdk/crypto/__init__.py
+--- a/spsdk/crypto/__init__.py	2022-07-29 15:19:47.000000000 +0200
++++ b/spsdk/crypto/__init__.py	2022-07-31 20:31:00.457065560 +0200
+@@ -48,7 +48,6 @@
  # Explicit import due to MYPY issue
  from cryptography.hazmat.backends import *
  from cryptography.hazmat.backends import default_backend
