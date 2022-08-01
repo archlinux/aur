@@ -1,21 +1,20 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-x11-xlib'
-pkgver='0.03'
+pkgver='0.23'
 pkgrel='1'
 pkgdesc="Low-level access to the X11 library"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl' 'libx11>=1.6.3' 'libxext>=1.3.3' 'libxtst>=1.2.2' 'perl-devel-checklib')
-makedepends=()
-checkdepends=('ttf-dejavu' 'xorg-server-xvfb')
-url='https://metacpan.org/release/X11-Xlib'
-source=('http://search.cpan.org/CPAN/authors/id/M/MA/MARKELLIS/X11-Xlib-0.03.tar.gz')
-md5sums=('ea69fb750480da8353f0d16ad98865d8')
-sha512sums=('14468736447189da9cce6cac8c999092a5d5ff84231c5528285003057877a49bdee341811f382e04cb16a670bc5c09586e41d763e8b8a9734d7432f7147bdff3')
-_distdir="X11-Xlib-0.03"
+depends=('perl-try-tiny' 'libx11' 'libxext' 'libxtst')
+makedepends=('perl-devel-checklib' 'perl-extutils-depends')
+checkdepends=('ttf-dejavu' 'xorg-server-xvfb' 'perl-test-pod' 'xorg-server-xephyr')
+url='https://metacpan.org/dist/X11-Xlib'
+source=(https://cpan.metacpan.org/authors/id/N/NE/NERDVANA/X11-Xlib-$pkgver.tar.gz)
+md5sums=('6ec3c6f20926f6cc0cd7ada700925ea5')
+_distdir="X11-Xlib-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -43,9 +42,3 @@ package() {
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
