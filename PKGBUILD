@@ -1,8 +1,8 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o-bin
-pkgver=2.55.0
-pkgrel=2
+pkgver=2.55.1
+pkgrel=1
 pkgdesc='Text editor, IDE and gdb frontend (CLI only)'
 arch=(aarch64 armv6 armv7 riscv64 x86_64)
 url='https://github.com/xyproto/o'
@@ -18,6 +18,7 @@ optdepends=('asciidoctor: for writing man pages'
             'clojure: for compiling Clojure'
             'crystal: for compiling Crystal'
             'cxx: for compiling C and C++'
+            'elm: for compiling Elm'
             'fpc: for compiling Object Pascal'
             'fstabfmt: for formatting /etc/fstab'
             'gdb: for debugging C'
@@ -48,8 +49,8 @@ optdepends=('asciidoctor: for writing man pages'
             'v: for compiling and formatting V'
             'yasm: for compiling Assembly'
             'zig: for compiling and formatting Zig')
-sha256sums=('81e2ac6a6c6558b42eb42f983ba5342423ef7d15cb5c1eefc510e9d83569fa96')
-b2sums=('c24d3bf45a0f0fd17f31a76c8fc6394d7af44e1d3061dc8dcfc484aa647f622f6950a02bcedf2ce33daffa8522764e443faf900929439db99271bd0aeb5594d6')
+sha256sums=('844f4f995e222bf5ee7ab341f35c1cb7c1596f71a8f7aaa915954563bba933e5')
+b2sums=('bae54b5fe45116cd22342764c3cc5860bb0d63f00611346b3a6439a458e8fd1f9d6173dbe4c8dc98984d94c7fb246b3498fac7b57c53eb6c2f52e777d06b276e')
 
 package() {
   cd o-$pkgver-linux_${CARCH}_static
