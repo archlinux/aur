@@ -1,0 +1,8 @@
+post_remove() {
+  echo ""
+  echo "To completely remove the theme and revert to default,"
+  echo "delete the following files and logout:"
+  echo "rm ~/.config/gtk-3.0/gtk.css"
+  echo "rm ~/.config/gtk-4.0/gtk.css"
+  echo ""
+}
