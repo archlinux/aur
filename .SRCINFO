@@ -1,7 +1,7 @@
 pkgbase = intel-oneapi-compiler
 	pkgdesc = Intel® oneAPI Compiler
 	pkgver = 2022.1.0_3768
-	pkgrel = 1
+	pkgrel = 2
 	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
 	arch = x86_64
 	license = custom
@@ -80,6 +80,12 @@ pkgname = intel-oneapi-compiler
 	depends = intel-oneapi-tbb<2021.6.1
 	depends = intel-oneapi-dev-utilities<2021.6.1
 	depends = intel-oneapi-common=2022.1.0
+	provides = intel-oneapi-openmp
+	provides = intel-oneapi-compiler-shared-runtime
+	provides = intel-oneapi-compiler-dpcpp-cpp-runtime
+	conflicts = intel-oneapi-openmp
+	conflicts = intel-oneapi-compiler-shared-runtime
+	conflicts = intel-oneapi-compiler-dpcpp-cpp-runtime
 
 pkgname = intel-oneapi-compiler-static
 	pkgdesc = Intel® oneAPI Compiler (static libs)
