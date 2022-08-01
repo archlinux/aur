@@ -1,8 +1,7 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# based on aur electron8-bin: Tom Vincent <http://tlvince.com/contact/>
 
 _pkgname=electron
-_major=19
+_major=20
 pkgname="${_pkgname}-bin"
 pkgver="${_major}"
 pkgrel=1
