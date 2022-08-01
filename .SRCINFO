@@ -1,6 +1,6 @@
 pkgbase = ulauncher
 	pkgdesc = Application launcher for Linux
-	pkgver = 5.14.6
+	pkgver = 5.14.7
 	pkgrel = 1
 	url = https://ulauncher.io
 	install = ulauncher.install
@@ -24,7 +24,7 @@ pkgbase = ulauncher
 	depends = python-gobject
 	depends = python-cairo
 	optdepends = libappindicator-gtk3: tray icon
-	source = https://github.com/Ulauncher/Ulauncher/releases/download/5.14.6/ulauncher_5.14.6.tar.gz
+	source = https://github.com/Ulauncher/Ulauncher/releases/download/5.14.7/ulauncher_5.14.7.tar.gz
 	sha256sums = SKIP
 
 pkgname = ulauncher
