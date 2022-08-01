@@ -1,49 +1,37 @@
-# Maintainer: Felipe Morales <hel.sheep@gmail.com>
+# Maintainer: twa022 <twa022 at gmail dot com>
+
 _pkgname=plotinus
 pkgname=$_pkgname-git
-pkgver=r16.04f7876
+epoch=1
+pkgver=0.2.0+1+g0ce7a4b
 pkgrel=1
 pkgdesc="A searchable command palette in every modern GTK+ application"
-arch=(any)
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="http://github.com/p-e-w/plotinus"
 license=('GPL')
-groups=()
-makedepends=('git' 'vala' 'cmake')
 depends=('gtk3')
-source=(
-  'git+https://github.com/p-e-w/plotinus.git#branch=master'
-  'plotinus.sh'
-  )
-md5sums=(
-  'SKIP'
-  '6ad4e0036eba28de03cee657287dbfe2'
-  )
+makedepends=('git' 'vala' 'cmake')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}=${pkgver%%+}" 'DBUS-PLOTINUS')
+source=("${_pkgname}::git+https://github.com/p-e-w/plotinus.git"
+        'plotinus.sh')
+sha256sums=('SKIP'
+            '96fad14ace388edf164b5158adb507765b2bd1fe5c9435c41081ffa8ac2cec11')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  ( set -o pipefail
-  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd "${_pkgname}"
+  git describe --long --tags | sed -r "s/^v//;s/-/+/g"
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-  cmake .
-  make
+    cd "${_pkgname}"
+    cmake -DCMAKE_INSTALL_PREFIX=/usr
+    make
 }
 
 package() {
-  cd "$srcdir"
-  mkdir -p "$pkgdir/etc/profile.d"
-  install -m 644 plotinus.sh "$pkgdir/etc/profile.d"
+  cd "${_pkgname}"
+  make DESTDIR="${pkgdir}" install
 
-  cd "$_pkgname"
-  mkdir -p "$pkgdir/usr/lib"
-  mkdir -p "$pkgdir/usr/share/glib-2.0/schemas/"
-  install -m 644 libplotinus.so "$pkgdir/usr/lib"
-  install -m 644 data/com.worldwidemann.plotinus.gschema.xml "$pkgdir/usr/share/glib-2.0/schemas/"
-
+  install -Dm644 -t "${pkgdir}/etc/profile.d" "${srcdir}"/plotinus.sh
 }
-
-# vim:set ts=2 sw=2 et:

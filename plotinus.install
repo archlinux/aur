@@ -1,9 +1,0 @@
-post_install() {
-    echo ":: To enable globally, add"
-    echo "::    GTK3_MODULES=/usr/lib/libplotinus.so"
-    echo ":: to /etc/environment"
-}
-
-post_remove() {
-    echo ":: Remember to edit /etc/environment if necessary"
-}
