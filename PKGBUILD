@@ -1,7 +1,7 @@
 # Maintainer: Skycoder42 <Skycoder42@users.noreply.github.com>
 pkgname='paxchange'
 pkgdesc='Simple dart script to passively synchronize installed pacman packages between systems.'
-pkgver='0.1.1'
+pkgver='0.1.2'
 pkgrel=1
 epoch=2
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -9,10 +9,11 @@ url='https://github.com/Skycoder42/paxchange'
 license=('BSD')
 depends=('pacman')
 makedepends=('dart>=2.17.0' 'dart<3.0.0')
-_pkgdir='paxchange-0.1.1'
-source=("$_pkgdir.tar.gz::https://github.com/Skycoder42/paxchange/archive/refs/tags/v0.1.1.tar.gz")
-b2sums=('d57be7c74a75374d190d26b2d6c0c0d41c27124801727360c362c151984335a5d32a5368568f8cc53c9ee106acfa0b23a58a877b7cc8a9c6d10524f8df9ddc99')
+_pkgdir='paxchange-0.1.2'
+source=("$_pkgdir.tar.gz::https://github.com/Skycoder42/paxchange/archive/refs/tags/v0.1.2.tar.gz")
+b2sums=('814b80df62a4af65c68ba4c0eba675030c637d284aba5e9f101ec087005a96e0fcbf350b2387b480e91a5941cb6abff2035b483338596b8a7144ab57cbd6e54c')
 changelog='CHANGELOG.md'
+options=('!strip')
 
 prepare() {
   cd "$_pkgdir"
