@@ -16,8 +16,8 @@ backup=() # Anything we need to backup?
 options=()
 install=
 changelog=
-source=("${pkgname}-${pkgver}.tar.gz::${url}/refs/tags/${pkgver}.tar.gz")
-sha256sums=("c59081defac311e078657b0e7e933970a57fc89a4ba152d159436ccc3b6477a8")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('c59081defac311e078657b0e7e933970a57fc89a4ba152d159436ccc3b6477a8')
 
 prepare() {
     true; # Nothing to do I guess
