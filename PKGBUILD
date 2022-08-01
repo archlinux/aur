@@ -4,7 +4,7 @@ pkgname=nvhpc
 _REL_YEAR=2022
 _CUDA_VER=11.7
 pkgver=22.7
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA HPC SDK'
 arch=('x86_64')
 url="https://developer.nvidia.com/hpc-sdk"
@@ -29,11 +29,11 @@ options=(!strip)
 package() {
   cd "$srcdir/$_pkgname"
     NVHPC_SILENT=true \
-    NVHPC_INSTALL_DIR="$pkgdir/opt/nvidia" \
+    NVHPC_INSTALL_DIR="$pkgdir/opt/nvidia/hpc_sdk" \
     bash ./install
 
 # Remove references to $pkgdir from module files
-    cd "$pkgdir/opt/nvidia/modulefiles"
+    cd "$pkgdir/opt/nvidia/hpc_sdk/modulefiles"
     find . -type f -exec sed -i "s@$pkgdir@@g" {} \;
 
 # Install license
