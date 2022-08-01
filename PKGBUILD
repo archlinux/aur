@@ -2,8 +2,8 @@
 
 pkgname=inform-git
 _gitpkg=inform6unix
-pkgver=6.40.r1.0.gac1b4f1
-pkgrel=2
+pkgver=6.41.r1.0.g2635722
+pkgrel=1
 pkgdesc="The Inform 6 compiler, standard library, and PunyInform library (git version)"
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://gitlab.com/DavidGriffith/inform6unix"
