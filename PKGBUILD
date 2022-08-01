@@ -7,8 +7,8 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=103.0
-pkgrel=2
+pkgver=103.0.1
+pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
 license=(MPL GPL LGPL)
@@ -41,7 +41,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
     $pkgname.desktop
     "git+https://github.com/cachyos/cachyos-browser-settings.git"
 "git+https://github.com/cachyos/cachyos-browser-common.git")
-sha256sums=('acc41d050560db4c4177ea86e2d00e47d74229041fea4c02c0e9e87e64093773'
+sha256sums=('b2db4df5fae0801e6406686876e8115d9529fb93a01566f22548908ca6c2cf82'
             'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
@@ -63,7 +63,7 @@ ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
-ac_add_options --enable-linker=mold
+ac_add_options --enable-linker=lld
 ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
