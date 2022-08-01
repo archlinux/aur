@@ -1,6 +1,6 @@
 # Maintainer:  JP-Ellis <josh@jpellis.me>
 pkgname=papis
-pkgver=0.11.1
+pkgver=0.12
 pkgrel=1
 pkgdesc="Papis is a powerful and highly extensible command-line based document and bibliography manager."
 arch=('any')
@@ -10,6 +10,7 @@ depends=('python'
          'python-requests'
          'python-filetype'
          'python-pyparsing'
+         # 'python-configparser' This dependency from setup.py is part of the standard library in Python 3.10
          'python-arxiv2bib'
          'python-pyaml'
          'python-chardet'
@@ -29,15 +30,12 @@ depends=('python'
          'python-slugify'
         )
 optdepends=('papis-rofi: integration with rofi')
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
-        "isbnlib-3.10-fix.patch")
-sha256sums=('e54739a1771ba4da4afe30b0b52dfc220543926765f975d14e8ddce508f4fdf9'
-            '3f79cc4c5deb31cd56590b2c17e3d7a22fefd18e03580139ad665154b814fa10')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('9005ff51ec27c2ebf542c9c6f2a987e77060c53dce12a57de8ce39afb3deb483')
 noextract=()
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p 1 < "${srcdir}/isbnlib-3.10-fix.patch"
 }
 
 build() {

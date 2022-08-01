@@ -1,6 +1,6 @@
 pkgbase = papis
 	pkgdesc = Papis is a powerful and highly extensible command-line based document and bibliography manager.
-	pkgver = 0.11.1
+	pkgver = 0.12
 	pkgrel = 1
 	url = https://github.com/papis/papis
 	arch = any
@@ -27,10 +27,7 @@ pkgbase = papis
 	depends = python-lxml
 	depends = python-slugify
 	optdepends = papis-rofi: integration with rofi
-	source = https://files.pythonhosted.org/packages/source/p/papis/papis-0.11.1.tar.gz
-	source = isbnlib-3.10-fix.patch
-	sha256sums = e54739a1771ba4da4afe30b0b52dfc220543926765f975d14e8ddce508f4fdf9
-	sha256sums = 3f79cc4c5deb31cd56590b2c17e3d7a22fefd18e03580139ad665154b814fa10
+	source = https://files.pythonhosted.org/packages/source/p/papis/papis-0.12.tar.gz
+	sha256sums = 9005ff51ec27c2ebf542c9c6f2a987e77060c53dce12a57de8ce39afb3deb483
 
 pkgname = papis
-
