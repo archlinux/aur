@@ -1,13 +1,26 @@
 [Trigger]
 Operation = Install
 Operation = Upgrade
-Operation = Remove
 Type = Path
-Target = boot/vmlinuz-*
-Target = boot/intel-ucode.img
-Target = usr/lib/initcpio/*
+Target = usr/lib/modules/*/vmlinuz
 Target = usr/lib/systemd/boot/efi/linux*.efi.stub
 Target = usr/share/refind/refind_x64.efi
+
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Path
+Target = usr/lib/initcpio/*
+Target = usr/src/*/dkms.conf
+
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = intel-ucode
+Target = amd-ucode
 
 [Action]
 Description = Adding temporary LUKS TPM key...
