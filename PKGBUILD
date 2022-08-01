@@ -3,13 +3,13 @@
 _name=pytzdata
 pkgname=python-pytzdata
 pkgver=2020.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Official timezone database for Python."
 arch=('any')
 url="https://github.com/sdispater/pytzdata"
 license=('MIT')
 depends=('python')
-makedepends=('python-cleo' 'python-dephell')
+makedepends=('python-cleo' 'python-build' 'python-installer' 'python-poetry')
 checkdepends=('python-pytest')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sdispater/${_name}/archive/${pkgver}.tar.gz")
 sha512sums=('fd154bfbe90ce07a90f769063b772234036d2627c1e6d78a465d9ddbc894e50cb9d821c04ebff1a7cc6a327266f7843fe54e5592d37c41db023329d6e0f668c2')
@@ -17,13 +17,11 @@ b2sums=('6f07a7577edc87030fd70e720b32146e9044a8c6f74d0bafb9239ad666d0d6fd0ac7c3c
 
 prepare() {
   mv -v "${_name}-$pkgver" "$pkgname-$pkgver"
-  cd "$pkgname-$pkgver"
-  dephell deps convert --from pyproject.toml --to setup.py
 }
 
 build() {
   cd "$pkgname-$pkgver"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -35,10 +33,7 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-  python setup.py install --skip-build \
-    --optimize=1 \
-    --prefix=/usr \
-    --root="${pkgdir}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
   cp -av ${_name}/zoneinfo/* \
     "${pkgdir}/usr/lib/python${python_version}/site-packages/${_name}/zoneinfo/"
   install -vDm 644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
