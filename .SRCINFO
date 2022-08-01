@@ -1,0 +1,17 @@
+pkgbase = python-dephell-markers
+	pkgdesc = Work with environment markers (PEP-496)
+	pkgver = 1.0.3
+	pkgrel = 2
+	url = https://github.com/dephell/dephell_markers
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-attrs
+	depends = python-dephell-specifier
+	depends = python-packaging
+	source = https://files.pythonhosted.org/packages/source/d/dephell_markers/dephell_markers-1.0.3.tar.gz
+	sha256sums = 525e17914e705acf8652dd8681fccdec912432a747d8def4720f49416817f2d4
+	b2sums = e0d3f64cfb0b96a1c18c43c1d050d23477c2e7e6b00142e53d742cdfe8e9d6c8172c91a97c8607e220b34268976ecb2611aa617fbd3319117e9d3782ada2fac2
+
+pkgname = python-dephell-markers
