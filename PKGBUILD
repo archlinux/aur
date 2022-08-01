@@ -1,7 +1,7 @@
 # Maintainer: Wren Baxter <aur [at] wren.dev>
 
 pkgname=astap-bin-qt5
-pkgver=2022.7.13
+pkgver=2022.7.31
 pkgrel=1
 pkgdesc="Astrometric (plate) solver, stacking of images, photometry and FITS viewer"
 provides=('astap')
