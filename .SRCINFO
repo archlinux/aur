@@ -1,7 +1,7 @@
 pkgbase = mulle-monitor
 	pkgdesc = ‍ Extensible filesystem observation with callbacks
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/mulle-sde/mulle-monitor
 	changelog = RELEASENOTES.md
@@ -10,6 +10,8 @@ pkgbase = mulle-monitor
 	license = BSD3
 	depends = bash
 	depends = mulle-bashfunctions>=4.1.1
+	depends = mulle-craft>=2.0.0
+	depends = mulle-match>=1.0.1
 	source = https://github.com/mulle-sde/mulle-monitor/archive/1.0.1.tar.gz
 	md5sums = ca5d28967e72a2ad29936ceb7f9c3740
 
