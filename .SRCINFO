@@ -1,9 +1,9 @@
 pkgbase = cef-minimal-obs-rc-bin
 	pkgdesc = Chromium Embedded Framework minimal release needed by OBS Studio beta release in /opt/cef-obs
-	pkgver = 95.0.0_MediaHandler.2462+g95e19b8+chromium_95.0.4638.69_3
+	pkgver = 103.0.0_5060_shared_textures_143.2591+g4204d54+chromium_103.0.5060.134_0
 	pkgrel = 2
 	epoch = 1
-	url = https://github.com/obsproject/cef/tree/MediaHandler
+	url = https://github.com/obsproject/cef/tree/5060-shared-textures
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
@@ -16,12 +16,12 @@ pkgbase = cef-minimal-obs-rc-bin
 	depends = libxkbcommon
 	depends = libcups
 	depends = mesa
-	provides = cef-minimal-obs=95.0.0_MediaHandler.2462+g95e19b8+chromium_95.0.4638.69_3
+	provides = cef-minimal-obs=103.0.0_5060_shared_textures_143.2591+g4204d54+chromium_103.0.5060.134_0
 	conflicts = cef-minimal-obs
 	options = !lto
 	options = !strip
 	options = debug
-	source_x86_64 = https://cdn-fastly.obsproject.com/downloads/cef_binary_4638_linux64.tar.bz2
-	sha256sums_x86_64 = 54aba14a7228bb8f2573e081d795b4161bf3568796f8729ad42a9f8ef9c6d1ec
+	source_x86_64 = https://cdn-fastly.obsproject.com/downloads/cef_binary_5060_linux64.tar.bz2
+	sha256sums_x86_64 = 1fe9c09bb43e8d2be2c07b792e69fb51250782e68f2c8d1d30da2559cfb9ae0e
 
 pkgname = cef-minimal-obs-rc-bin
