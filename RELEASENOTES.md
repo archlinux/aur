@@ -1,6 +1,27 @@
-## 0.8.0
+### 1.0.1
 
 * Various small improvements
+
+# 1.0.0
+
+* big function rename to `<tool>`::`<file>`::`<function>` to make it easier to read hopefully
+* uses mulle-bashfunctions 4 now
+* can now run under zsh if bash is not available
+
+
+## 0.8.0
+
+* improved output of mulle-match-to-c
+* made filename command more helpful by checking `MULLE_MATCH_FILENAMES` also
+* not mulle-match-to-cmake outputs a `_Resources.file` for cmake
+* use ``MULLE_MATCH_TO_CMAKE_SOURCE_PATTERNFILETYPE`` and ``MULLE_MATCH_TO_CMAKE_HEADER_PATTERNFILETYPE`` instead of ``MULLE_MATCH_TO_CMAKE_PATTERNFILETYPE`` for improved separation of sources and headers in files list
+* renamed `-mf` flag to `-tf` (--type-filter) for improved readability
+* improved output of header guards
+* you can tweak the discrimination between Objetive-C or C headers with a bunch environment variables now
+* rename match command to filename
+* new `mulle-match-to-c` script
+* nicer comment header for `mulle-match-to-cmake`
+* `filename` command gains the `-l` option
 
 
 ## 0.7.0
