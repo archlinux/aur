@@ -1,5 +1,5 @@
 diff --git a/src/drm.cpp b/src/drm.cpp
-index 9f75f06..cee005d 100644
+index 96389da..1da17a2 100644
 --- a/src/drm.cpp
 +++ b/src/drm.cpp
 @@ -41,6 +41,8 @@ bool g_bDebugLayers = false;
@@ -11,7 +11,7 @@ index 9f75f06..cee005d 100644
  
  static LogScope drm_log("drm");
  static LogScope drm_verbose_log("drm", LOG_SILENT);
-@@ -1196,7 +1198,7 @@ void drm_lock_fbid( struct drm_t *drm, uint32_t fbid )
+@@ -1205,7 +1207,7 @@ void drm_lock_fbid( struct drm_t *drm, uint32_t fbid )
  void drm_unlock_fbid( struct drm_t *drm, uint32_t fbid )
  {
  	struct fb &fb = get_fb( *drm, fbid );
@@ -20,7 +20,7 @@ index 9f75f06..cee005d 100644
  	assert( fb.held_refs > 0 );
  	if ( --fb.held_refs != 0 )
  		return;
-@@ -1237,7 +1239,26 @@ drm_prepare_basic( struct drm_t *drm, const struct FrameInfo_t *frameInfo )
+@@ -1246,7 +1248,26 @@ drm_prepare_basic( struct drm_t *drm, const struct FrameInfo_t *frameInfo )
  
  	drm->fbids_in_req.push_back( fb_id );
  
@@ -48,7 +48,7 @@ index 9f75f06..cee005d 100644
  
  	add_plane_property(req, drm->primary, "FB_ID", fb_id);
  	add_plane_property(req, drm->primary, "CRTC_ID", drm->crtc->id);
-@@ -1374,7 +1395,25 @@ drm_prepare_liftoff( struct drm_t *drm, const struct FrameInfo_t *frameInfo )
+@@ -1383,7 +1404,25 @@ drm_prepare_liftoff( struct drm_t *drm, const struct FrameInfo_t *frameInfo )
  				crtcH = w;
  			}
  
@@ -75,7 +75,7 @@ index 9f75f06..cee005d 100644
  
  			liftoff_layer_set_property( drm->lo_layers[ i ], "CRTC_X", crtcX);
  			liftoff_layer_set_property( drm->lo_layers[ i ], "CRTC_Y", crtcY);
-@@ -1814,7 +1853,7 @@ bool drm_update_color_mtx(struct drm_t *drm)
+@@ -1823,7 +1862,7 @@ bool drm_update_color_mtx(struct drm_t *drm)
  		drm_ctm.matrix[i] = color.s31_32;
  	}
  
@@ -84,7 +84,7 @@ index 9f75f06..cee005d 100644
  	if (drmModeCreatePropertyBlob(drm->fd, &drm_ctm,
  			sizeof(struct drm_color_ctm), &blob_id) != 0) {
  		drm_log.errorf_errno("Unable to create CTM property blob");
-@@ -1889,7 +1928,7 @@ bool drm_update_gamma_lut(struct drm_t *drm)
+@@ -1898,7 +1937,7 @@ bool drm_update_gamma_lut(struct drm_t *drm)
  		gamma_lut[i].blue  = drm_calc_lut_value( b_exp, drm->pending.color_linear_gain[2], drm->pending.color_gain[2], drm->pending.gain_blend );
  	}
  
@@ -93,7 +93,7 @@ index 9f75f06..cee005d 100644
  	if (drmModeCreatePropertyBlob(drm->fd, gamma_lut,
  			lut_entries * sizeof(struct drm_color_lut), &blob_id) != 0) {
  		drm_log.errorf_errno("Unable to create gamma LUT property blob");
-@@ -1937,7 +1976,7 @@ bool drm_update_degamma_lut(struct drm_t *drm)
+@@ -1946,7 +1985,7 @@ bool drm_update_degamma_lut(struct drm_t *drm)
  		degamma_lut[i].blue  = drm_quantize_lut_value( safe_pow( input, drm->pending.color_degamma_exponent[2] ) );
  	}
  
@@ -239,7 +239,7 @@ index 32104a7..718e386 100644
  
  	setenv("DISPLAY", base_server->get_nested_display_name(), 1);
 diff --git a/src/wlserver.cpp b/src/wlserver.cpp
-index 08faeb9..4bbc58a 100644
+index 08faeb9..94f0ecf 100644
 --- a/src/wlserver.cpp
 +++ b/src/wlserver.cpp
 @@ -6,7 +6,7 @@
@@ -275,16 +275,16 @@ index 08faeb9..4bbc58a 100644
 +				ty = y;
 +				break;
 +			case PANEL_ORIENTATION_90:
-+				tx = g_bRotated ? 1.0 - y : x;
-+				ty = g_bRotated ? x : y;
++				tx = 1.0 - y;
++				ty = x;
 +				break;
 +			case PANEL_ORIENTATION_180:
 +				tx = 1.0 - x;
 +				ty = 1.0 - y;
 +				break;
 +			case PANEL_ORIENTATION_270:
-+				tx = g_bRotated ? y : x;
-+				ty = g_bRotated ? 1.0 - x : y;
++				tx = y;
++				ty = 1.0 - x;
 +				break;
 +			case PANEL_ORIENTATION_AUTO:
 +			default: /* we are using the "auto" enum case to ensure compatibility for devices that were already using this*/
@@ -316,20 +316,20 @@ index 08faeb9..4bbc58a 100644
 +		switch ( g_drmModeOrientation )
 +		{
 +			case PANEL_ORIENTATION_0:
-+				tx = g_bRotated ? y : x;
-+				ty = g_bRotated ? x : y;
++				tx = x;
++				ty = y;
 +				break;
 +			case PANEL_ORIENTATION_90:
-+				tx = g_bRotated ? 1.0 - y : x;
-+				ty = g_bRotated ? x : y;
++				tx = 1.0 - y;
++				ty = x;
 +				break;
 +			case PANEL_ORIENTATION_180:
 +				tx =  1.0 - x;
 +				ty =  1.0 - y;
 +				break;
 +			case PANEL_ORIENTATION_270:
-+				tx = g_bRotated ? y : x;
-+				ty = g_bRotated ? 1.0 - x : y;
++				tx = y;
++				ty = 1.0 - x;
 +				break;
 +			case PANEL_ORIENTATION_AUTO:
 +			default: /* we are using the "auto" enum case to ensure compatibility for devices that were already using this*/
