@@ -2,7 +2,7 @@
 
 pkgname=cavecube-bin
 ghpkgname=CaveCube
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="An in-development Minecraft/Infiniminer clone"
 arch=(x86_64)
@@ -17,7 +17,7 @@ sha256sums=('SKIP' 'SKIP')
 package() {
     cd "${srcdir}"
     find cavecube docs/ resources/ -type f -exec install -Dm 755 "{}" "${pkgdir}/opt/${ghpkgname}/{}" \;
-    ln -sf "/opt/${ghpkgname}/cavecube" cavecube.lnk
-    install -Dm 755 cavecube.lnk "${pkgdir}/usr/bin/cavecube"
+    mkdir -p "${pkgdir}/usr/bin/"
+    ln -sf "/opt/${ghpkgname}/cavecube" "${pkgdir}/usr/bin/cavecube"
     rm -f cavecube.lnk
 }
