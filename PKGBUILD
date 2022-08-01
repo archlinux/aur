@@ -3,7 +3,7 @@
 _pkgname=ITK
 pkgname=(itk python-itk)
 pkgver=5.2.1
-pkgrel=6
+pkgrel=7
 pkgdesc='An open-source, cross-platform library that provides developers with an extensive suite of software tools for image analysis'
 arch=('x86_64')
 url='https://www.itk.org'
@@ -85,6 +85,7 @@ build() {
     -DITK_WRAP_unsigned_short=ON
     -DITK_WRAP_vector_double=ON
     -DModule_MorphologicalContourInterpolation=ON
+    -DPY_SITE_PACKAGES_PATH=/usr/lib/python$(get_pyver)/site-packages
 )
 
   cmake -B "build" -S "${srcdir}/${_pkgname}-${pkgver}" \
@@ -95,8 +96,7 @@ build() {
 
 package_itk() {
   make -C "${srcdir}/build" DESTDIR="${pkgdir}" install
-  # quick fix for https://github.com/InsightSoftwareConsortium/ITK/issues/2960
-  rm -rf "${pkgdir}/build"
+  rm -rf "${pkgdir}/usr/lib/python$(get_pyver)"
 }
 
 package_python-itk() {
@@ -109,8 +109,7 @@ package_python-itk() {
 
   make -C "${srcdir}/build" DESTDIR="${srcdir}/dist" install
   install -dm755 "${pkgdir}/usr/lib"
-  # quick fix for https://github.com/InsightSoftwareConsortium/ITK/issues/2960
-  find "${srcdir}/dist" -type d -name "python$(get_pyver)" -print0 -quit | xargs -0 mv -vt "${pkgdir}/usr/lib"
+  cp -a "${srcdir}/dist/usr/lib/python$(get_pyver)" "${pkgdir}/usr/lib"
   python -O -m compileall "${pkgdir}/usr/lib"
 }
 # vim:set ts=2 sw=2 et:
