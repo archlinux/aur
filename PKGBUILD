@@ -4,7 +4,7 @@
 # Contributor: jaltek <post@ezod.de>
 # Contributor: Daniel Mason (idanoo) <daniel@m2.nz>
 
-_electron=electron17
+_electron=electron
 pkgbase=element-desktop-git
 pkgname=(element-web-git element-desktop-git)
 pkgver=1.10.9.r24.g691b8d5c38
