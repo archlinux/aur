@@ -1,9 +1,9 @@
 # Maintainer: Jonas Riedel <jonasriedel@protonmail.com>
 
 pkgname=rustyfetch
-pkgver=0.1.2
+pkgver=0.1.3
 pkgdesc="Fetch stuff with Rust!"
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/jonasrdl/rustfetch"
 license=('MPL-2.0')
@@ -16,7 +16,7 @@ build(){
 	export CARGO_TARGET_DIR=target
 	# use cargo to build from a tagged release
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	cargo build --frozen --release --all-features
+	cargo build --release --all-features
 	cd -
 }
 
