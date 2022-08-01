@@ -1,17 +1,23 @@
 pkgbase = plotinus
-	pkgdesc = A searchable command palette for GTK3 applications
-	pkgver = 0.2.0
-	pkgrel = 2
-	url = https://github.com/p-e-w/plotinus
-	arch = any
-	license = GPL3
+	pkgdesc = A searchable command palette in every modern GTK+ application
+	pkgver = 0.2.0+1+g0ce7a4b
+	pkgrel = 1
+	epoch = 1
+	url = http://github.com/p-e-w/plotinus
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = git
 	makedepends = vala
 	makedepends = cmake
+	makedepends = git
 	depends = gtk3
-	source = git+https://github.com/p-e-w/plotinus#tag=v0.2.0
+	provides = DBUS-PLOTINUS
+	source = plotinus::git+https://github.com/p-e-w/plotinus.git#commit=0ce7a4b98cd9c568ddebfc50ac3ec8392a574e39
 	source = plotinus.sh
 	sha256sums = SKIP
 	sha256sums = 96fad14ace388edf164b5158adb507765b2bd1fe5c9435c41081ffa8ac2cec11
 
 pkgname = plotinus
-
