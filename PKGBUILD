@@ -1,7 +1,7 @@
 # Maintainer: Abdelhak Bougouffa <abougouffa@fedoraproject.org>
 
 pkgname=guieditor-git
-pkgver=2021.07.19.22db096
+pkgver=2022.07.26.5c632de
 pkgrel=1
 pkgdesc='GUI editor for GNU Octave'
 arch=(i686 x86_64)

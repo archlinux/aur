@@ -1,6 +1,6 @@
 pkgbase = guieditor-git
 	pkgdesc = GUI editor for GNU Octave
-	pkgver = 2021.07.19.22db096
+	pkgver = 2022.07.26.5c632de
 	pkgrel = 1
 	url = https://gitlab.com/labinformatica/guieditor
 	arch = i686
