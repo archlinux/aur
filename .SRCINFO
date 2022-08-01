@@ -1,0 +1,16 @@
+pkgbase = python-dephell-setuptools
+	pkgdesc = Extract meta information from setup.py
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/dephell/dephell_setuptools
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-setuptools
+	source = https://github.com/dephell/dephell_setuptools/archive/v.0.2.5/python-dephell-setuptools-0.2.5.tar.gz
+	sha256sums = 8c635643fec3ce191734ad1918ee871e97e5b3555782f1a709b1408abbc00f75
+
+pkgname = python-dephell-setuptools
