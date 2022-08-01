@@ -1,0 +1,15 @@
+pkgbase = python-dephell-links
+	pkgdesc = Parse dependency links
+	pkgver = 0.1.5
+	pkgrel = 2
+	url = https://github.com/dephell/dephell_links
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-attrs
+	source = https://files.pythonhosted.org/packages/source/d/dephell_links/dephell_links-0.1.5.tar.gz
+	sha256sums = 28d694142e2827a59d2c301e7185afb52fb8acdb950b1da38308d69e43418eaa
+	b2sums = a9718ea90f792ba3f42258700f8915f39d3ebb57b0ce5672026fe6b4e197ee67470876d33b1de4ecc2047d504260fc63d5ef87552d00fe88c54dcafec06eb7db
+
+pkgname = python-dephell-links
