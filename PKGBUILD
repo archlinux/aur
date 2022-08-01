@@ -12,7 +12,7 @@ depends=('vlc>3.0.0' 'fluidsynth')
 optdepends=("soundfont-fluid: FluidR3_GM soundfont")
 
 deb_pkgver="3.0.17.4"
-deb_pkgrel="4"
+deb_pkgrel="4+b1"
 pkgver="${deb_pkgver}.${deb_pkgrel}"
 pkgrel="1"
 
