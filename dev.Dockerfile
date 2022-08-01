@@ -1,4 +1,4 @@
-FROM archlinux/base
+FROM archlinux:base
 MAINTAINER Sven Fischer <docker-guayadeque@linux4tw.de>
 
 RUN yes | pacman -Syq --noprogressbar --noconfirm base-devel git sudo
