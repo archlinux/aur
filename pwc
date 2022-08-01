@@ -6,14 +6,23 @@ function help() {
   echo "will get all entries like pattern and copy it to your clipboard manager"
   echo "-a   get all passwords on screen"
   echo "-p   search for this pattern"
+  echo "-d   debug messages"
   echo "-o   print password also on screen"
   exit 0
 }
 
+function debug() {
+  local msg=$1
+  if [ $debug -eq 1 ]; then
+    echo "$msg"
+  fi
+}
+
 onscreen=0
 all=0
+debug=0
 
-while getopts "ap:h" opt; do
+while getopts "dap:ho" opt; do
   case "$opt" in
     a)
       all=1
@@ -23,6 +32,9 @@ while getopts "ap:h" opt; do
       ;;
     o)
       onscreen=1
+      ;;
+    d)
+      debug=1
       ;;
     h)
       help
@@ -43,7 +55,9 @@ fi
 declare -A pw
 while IFS="\n" read  -r line; do
 	name=$(echo $line |cut -d',' -f1)
+  debug "name: $name"
   id=$(echo $line| cut -d',' -f2)
+  debug "id: $id"
 	pw["$name"]=$id
 done <  <(psoco search -js $pattern | jq -r '.[].match|[.name,.id]|@csv' | tr -d \")
 
@@ -62,6 +76,8 @@ fi
 select p in "${!pw[@]}"; do
   break
 done
+debug "select: $p"
+debug "array: ${pw[$p]}"
 user=$(psoco user ${pw[$p]})
 password=$(psoco pwd ${pw[$p]})
 
