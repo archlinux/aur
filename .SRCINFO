@@ -1,0 +1,16 @@
+pkgbase = python-dephell-licenses
+	pkgdesc = Manage OSS licenses: retrieve information, generate
+	pkgver = 0.1.7
+	pkgrel = 6
+	url = https://github.com/dephell/dephell_licenses
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-attrs
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/d/dephell-licenses/dephell-licenses-0.1.7.tar.gz
+	sha256sums = f175cec822a32bda5b56442f48dae39efbb5c3851275ecd41cfd7e849ddd2ea6
+	b2sums = 954daf4a725dd1061ae60c35a86295b9bcc835eb9f219f3a9fe0e19a710a11ed0fa94ff324b5a4171cf09566abc39c113a96226c71f21a54eae459cf0e10cc18
+
+pkgname = python-dephell-licenses
