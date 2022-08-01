@@ -37,7 +37,7 @@ build() {
 package() {
 	cd shortsync
 	# make install
-	install -CDm755 shortcut-files/ "$pkgdir/$HOME/.config/$pkgname/shortcut-files"
+	install -CDm755 -d shortcut-files/ "$pkgdir/$HOME/.config/$pkgname/shortcut-files"
 	install -CDm755 config.yaml "$pkgdir/$HOME/.config/$pkgname/config.yaml"
 	install -Dm755 bin/$pkgname "$pkgdir/usr/local/bin/$pkgname"
 	install -Dm644 $pkgname.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
