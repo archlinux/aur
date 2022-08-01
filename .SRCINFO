@@ -1,0 +1,15 @@
+pkgbase = ttf-adobe-source-serif-fonts
+	pkgdesc = Serif typeface designed to complement Source Sans
+	pkgver = 4.004
+	pkgrel = 1
+	url = https://adobe-fonts.github.io/source-serif/
+	arch = any
+	license = custom
+	provides = adobe-source-serif-fonts=4.004
+	provides = adobe-source-serif-pro-fonts=4.004
+	source = source-serif-4.004R.tar.gz::https://github.com/adobe-fonts/source-serif/archive/4.004R.tar.gz
+	source = source-serif-3.001R.tar.gz::https://github.com/adobe-fonts/source-serif/archive/3.001R.tar.gz
+	sha256sums = dfb364735699cb830caad534cf7741234804d28e4b6fc5e4736b2401f6131aba
+	sha256sums = 6be29a6ecc275d39f77d608fba576ee1976287f65823bde61309dc907023410c
+
+pkgname = ttf-adobe-source-serif-fonts
