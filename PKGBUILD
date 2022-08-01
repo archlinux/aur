@@ -2,8 +2,8 @@
 
 _pkgname=gitlab-gitaly
 pkgname="${_pkgname}-git"
-pkgver=15.1.0
-pkgrel=2
+pkgver=15.2.0
+pkgrel=1
 pkgdesc="Speed up Git access using caching"
 arch=('x86_64')
 conflicts=("$_pkgname")
