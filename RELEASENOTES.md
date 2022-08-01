@@ -1,3 +1,50 @@
+### 1.1.3
+
+* fix craftinfo command
+
+### 1.1.2
+
+* fix duplicate display of current state
+
+### 1.1.1
+
+* fix config copy/remove command
+
+## 1.1.0
+
+* new command **env-identifier**
+* support for multiple sourcetrees with the improved **config** command
+* fixed --analyze option of the **craft** command
+* use style none/wild for project type none, instead of mulle/wild during the **init** command
+* new subcommand *variables* for the **project** command
+
+
+### 1.0.1
+
+* fix installer
+* big function rename to `<tool>`::`<file>`::`<function>` to make it easier to read hopefully
+* improve install command and especially the usage dox, to make it more transparent how to build static or dynamic product
+* introduce some shortcuts: dep for dependency, lib for library, ext for extension, pat for patternfile, sub for subprojects. Aliases are nice but mulle-sde dep is also nice...
+* the list command has changed to only list files by default
+* runs under zsh if bash is not installed
+* supports crafthelp in addition to craftinfo as well
+* uses mulle-bashfunctions 4 now
+* experimental **project remove** command
+* bequeath ``MULLE_SOURCETREE_USE_PLATFORM_MARKS_FOR_FETCH`` and ``MULLE_SOURCETREE_RESOLVE_TAG`` to newly iniited test projects
+
+# 1.0.0
+
+* big function rename to `<tool>`::`<file>`::`<function>` to make it easier to read hopefully
+* improve install command and especially the usage dox, to make it more transparent how to build static or dynamic product
+* introduce some shortcuts: dep for dependency, lib for library, ext for extension, pat for patternfile, sub for subprojects. Aliases are nice but mulle-sde dep is also nice...
+* the list command has changed to only list files by default
+* runs under zsh if bash is not installed
+* supports crafthelp in addition to craftinfo as well
+* uses mulle-bashfunctions 4 now
+* experimental **project remove** command
+* bequeath ``MULLE_SOURCETREE_USE_PLATFORM_MARKS_FOR_FETCH`` and ``MULLE_SOURCETREE_RESOLVE_TAG`` to newly iniited test projects
+
+
 ## 0.47.0
 
 * add "test fetch" sub-command
@@ -128,7 +175,7 @@
 
 ### 0.38.4
 
-* remove accidental duplicate `sde_add_craftinfo_subproject_if_needed`
+* remove accidental duplicate `sde::craftinfo::add_craftinfo_subproject_if_needed`
 
 ### 0.38.3
 
