@@ -2,9 +2,8 @@
 # Co-Maintainer: Ranieri Althoff <ranisalt+aur at gmail dot com>
 pkgname=('lib32-mangohud' 'lib32-mangoapp')
 pkgbase=lib32-mangohud
-_pkgver=0.6.7-1
-pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgver=0.6.8
+pkgrel=1
 _imgui_ver=1.81
 _spdlog_ver=1.8.5
 arch=('x86_64')
@@ -12,7 +11,8 @@ url="https://github.com/flightlessmango/MangoHud"
 license=('MIT')
 makedepends=('git' 'glfw-x11' 'glslang' 'lib32-dbus' 'lib32-libglvnd' 'libxnvctrl'
              'meson' 'nlohmann-json' 'python-mako' 'vulkan-headers')
-source=("git+https://github.com/flightlessmango/MangoHud.git#tag=v$_pkgver"
+_commit=efdcc6d2f54e37a3a32475453407f1eb33d1bef2
+source=("git+https://github.com/flightlessmango/MangoHud.git#commit=${_commit}"
         'git+https://github.com/flightlessmango/minhook.git'
         "https://github.com/ocornut/imgui/archive/v${_imgui_ver}/imgui-${_imgui_ver}.tar.gz"
         "https://wrapdb.mesonbuild.com/v2/imgui_${_imgui_ver}-1/get_patch#/imgui-${_imgui_ver}-1-wrap.zip"
@@ -25,22 +25,21 @@ sha256sums=('SKIP'
             '944d0bd7c763ac721398dca2bb0f3b5ed16f67cef36810ede5061f35a543b4b8'
             '3c38f275d5792b1286391102594329e98b17737924b344f98312ab09929b74be')
 
+pkgver() {
+  cd "$srcdir/MangoHud"
+  git describe --tags | sed 's/^v//;s/-/+/g'
+}
+
 prepare() {
   cd "$srcdir/MangoHud"
   git submodule init modules/minhook
   git config submodule.minhook.url "$srcdir/minhook"
   git submodule update
 
-  mkdir -p "$srcdir/common"
-
   ln -sfv \
     "$srcdir/imgui-${_imgui_ver}" \
     "$srcdir/spdlog-${_spdlog_ver}" \
     subprojects
-
-  # Use system nlohmann-json package instead of subproject
-  sed -i "s/  json_sp = subproject('nlohmann_json')//g" meson.build
-  sed -i "s/json_dep = json_sp.get_variable('nlohmann_json_dep')/json_dep = dependency('nlohmann_json')/g" meson.build
 }
 
 build() {
@@ -66,15 +65,16 @@ package_lib32-mangohud() {
 #  optdepends=('lib32-libxnvctrl: NVIDIA GPU stats by XNVCtrl') # AUR
   replaces=("$pkgname-x11" "$pkgname-wayland")
 
-  meson install -C build --destdir "$pkgdir"
+  meson install --tags runtime -C build --destdir "$pkgdir"
 
-  mv -f "$pkgdir/usr/lib32/libMangoApp.so" "$srcdir/"
-  rm -rf "$pkgdir"/usr/{bin,share}
+  rm -rf "$pkgdir/usr/share/"
 }
 
 package_lib32-mangoapp() {
   pkgdesc="MangoApp 32-bit library"
   depends=('lib32-mangohud')
 
-  install -Dm644 libMangoApp.so -t "$pkgdir/usr/lib32/"
+  meson install --tags mangoapp -C build --destdir "$pkgdir"
+
+  rm -rf "$pkgdir/usr/share/"
 }
