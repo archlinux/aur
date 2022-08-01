@@ -1,0 +1,18 @@
+pkgbase = python-ssdpy
+	pkgdesc = Lightweight, compatible SSDP library for Python
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/MoshiBin/ssdpy
+	arch = any
+	license = MIT
+	checkdepends = python-mock
+	checkdepends = python-pytest-mock
+	checkdepends = twine
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://github.com/MoshiBin/ssdpy/archive/refs/tags/0.4.1.tar.gz
+	sha256sums = 752fdd4aa0b7b7cb53ac23adcf36f3f85dbf1e9fc70ee90643fd91c8443961eb
+
+pkgname = python-ssdpy
