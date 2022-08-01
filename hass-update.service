@@ -15,9 +15,6 @@ Type=oneshot
 # upgrade home assistant and all its necessary libs
 ExecStart=pip install --no-warn-script-location --user --upgrade homeassistant
 
-# temp workaround for https://github.com/home-assistant/core/issues/74405
-ExecStart = sh -c "find $(python -c 'import site; print(site.getusersitepackages())') -wholename '*/homeassistant/util/package.py' -exec sed -i '/--prefix=/d' {} \; "
-
 # delete old python version libraries in the venv
 ExecStart=sh -c '\
 find \
