@@ -23,6 +23,9 @@ makedepends=('python-setuptools')
 if $_with_r; then
   makedepends+=('r' 'r-stringi' 'r-magrittr' 'r-data.table')
 fi
+if $_with_cuda; then
+  makedepends+=('gcc11')
+fi
 arch=('x86_64')
 sha256sums=('SKIP'
             'SKIP'
@@ -55,11 +58,14 @@ build() {
     cmake_args+=('-DR_LIB=ON')
   fi
   if $_with_cuda; then
-    cmake_args+=('-DUSE_CUDA=ON')
+    cmake_args+=('-DUSE_CUDA=ON' '-DBUILD_WITH_CUDA_CUB=ON')
+    if [ -n "$_compute_ver" ]; then
+      cmake_args+=("-DGPU_COMPUTE_VER=$_compute_ver")
+    fi
   fi
 
   if $_with_cuda; then
-    CC=/usr/bin/gcc-8 CXX=/usr/bin/g++-8 cmake .. ${cmake_args[@]}
+    CC=/usr/bin/gcc-11 CXX=/usr/bin/g++-11 cmake .. ${cmake_args[@]}
   else
     cmake .. ${cmake_args[@]}
   fi
