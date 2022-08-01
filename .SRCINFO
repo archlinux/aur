@@ -1,0 +1,21 @@
+pkgbase = docopt-wordlist
+	pkgdesc = Automated tab completion for Docopt.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/docopt/docopt.rs
+	arch = x86_64
+	license = MIT
+	license = Unlicense
+	makedepends = cargo
+	makedepends = auth-tarball-from-git
+	source = docopt.rs-1.1.1.tar.gz::https://github.com/docopt/docopt.rs/archive/refs/tags/1.1.1.tar.gz
+	source = add_lock.patch
+	source = BurntSushi.gpg
+	md5sums = 8322ee987f94f3fae35630c46d6beaf5
+	md5sums = ceed5b6ca17960ee47642f022c15c13d
+	md5sums = d26e0ad3ddfaac4be51d2379e5e3bfbb
+	sha512sums = 5d60e8893ad91ac95f795930a84dff54c644040b74a05ffdd81097875bc99b5279ae91a638e26366e21a3843dec6cc6c526081cd5aa1e4662d516011c81a1274
+	sha512sums = 747f8edd7bbd6e9bac1aeb063d857b04e5dae633710f0923b68ce245bfe9fa5d61f3c987448dd49014bd7546203be960c767c812f2f39c301a5c7268708eb35e
+	sha512sums = ea911e330941281e1533d64b0cb22256e965f1481023f67d616f5b0606b1503763a44bad264541c6223497f796cc76b62406a45df35a852d95d8e4b8f7fea409
+
+pkgname = docopt-wordlist
