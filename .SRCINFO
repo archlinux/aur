@@ -13,6 +13,7 @@ pkgbase = element-desktop-git
 	makedepends = tcl
 	makedepends = electron
 	makedepends = nodejs
+	makedepends = sqlcipher
 	provides = element-web
 	conflicts = element-web
 	source = element-web::git+https://github.com/vector-im/element-web.git
