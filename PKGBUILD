@@ -3,9 +3,9 @@
 pkgbase=libreoffice-dev-i18n
 
 _pkgnamefmt=LibreOffice
-_pkgver=7.4.0.1
-pkgver=7.4.0.1
-pkgrel=2
+_pkgver=7.4.0.2
+pkgver=7.4.0.2
+pkgrel=1
 #_basever=$( cut -f1-2 -d'.' <<< ${_LOver} )
 
 arch=('any')
