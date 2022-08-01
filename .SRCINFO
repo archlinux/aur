@@ -1,6 +1,6 @@
 pkgbase = amduprof
 	pkgdesc = AMD uProf performance analysis tool.
-	pkgver = 3.5.671
+	pkgver = 3.6.449
 	pkgrel = 1
 	url = https://developer.amd.com/amd-uprof/
 	install = amduprof.install
@@ -11,9 +11,9 @@ pkgbase = amduprof
 	options = staticlibs
 	options = !strip
 	options = libtool
-	source = local://AMDuProf_Linux_x64_3.5.671.tar.bz2
+	source = local://AMDuProf_Linux_x64_3.6.449.tar.bz2
 	source = local://modulefile
-	md5sums = e499780a5c000569762371dfd656e8f9
+	md5sums = 07c596ae3f0f9fb94c54eb57f02049e4
 	md5sums = SKIP
 
 pkgname = amduprof

@@ -3,7 +3,7 @@
 
 _pkgname=AMDuProf_Linux_x64
 pkgname=amduprof
-pkgver=3.5.671
+pkgver=3.6.449
 pkgrel=1
 pkgdesc="AMD uProf performance analysis tool."
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=('staticlibs' '!strip' 'libtool')
 optdepends=('env-modules')
 depends=(dkms)
 install=amduprof.install
-md5sums=("e499780a5c000569762371dfd656e8f9" "SKIP")
+md5sums=("07c596ae3f0f9fb94c54eb57f02049e4" "SKIP")
 
 amduprof_prefix=/opt/${pkgname}
 
