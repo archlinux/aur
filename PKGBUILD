@@ -3,21 +3,22 @@
 
 _target=arm-none-eabi
 pkgname=$_target-linaro-binutils
-pkgver=2.32
-pkgrel=2
+pkgver=2.38
+pkgrel=1
 #_commit=2bd25930
 pkgdesc='A set of pograms to assemble and manipulate binary and object files for the ARM EABI target with extra flags'
 arch=(x86_64)
 url='http://www.gnu.org/software/binutils/'
 license=(GPL)
-depends=('isl>=0.14' 'cloog' 'gmp' 'mpc' 'mpfr' 'zlib')
+depends=('libisl' 'cloog' 'gmp' 'mpc' 'mpfr' 'zlib')
 provides=('arm-none-eabi-binutils')
 conflicts=('arm-none-eabi-binutils')
 source=(ftp://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.bz2{,.sig})
-sha1sums=('ee5ae264f29c0c89fbaa817ee629675acd815d26'
+sha1sums=('50e0acc9ffe920e90b699e8e5db0aa9449c22cb4'
           'SKIP')
 validpgpkeys=('EAF1C276A747E9ED86210CBAC3126D3B4AE55E93'  # Tristan Gingold <gingold@adacore.com>
-              '3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F') # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
+              '3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F'
+	      '13FCEF89DD9E3C4F') # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
 
 prepare() {
   cd binutils-$pkgver
