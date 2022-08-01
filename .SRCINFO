@@ -1,0 +1,10 @@
+pkgbase = vim-is-neovim
+	pkgdesc = Create symlink from vim -> nvim
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	depends = neovim
+	provides = vim
+	conflicts = vim
+
+pkgname = vim-is-neovim
