@@ -4,7 +4,7 @@
 
 pkgname=webkit2gtk-imgpaste
 pkgver=2.36.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Web content engine for GTK"
 url="https://webkitgtk.org"
 arch=(x86_64)
@@ -23,7 +23,6 @@ optdepends=('geoclue: Geolocation support'
             'gst-plugins-good: media decoding'
             'gst-plugins-bad: media decoding'
             'gst-libav: nonfree media decoding')
-options=(!lto)
 source=($url/releases/webkitgtk-$pkgver.tar.xz{,.asc}
         PasteBoardGtk.patch
         EnlargeObjectSize.patch)

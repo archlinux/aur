@@ -1,7 +1,7 @@
 pkgbase = webkit2gtk-imgpaste
 	pkgdesc = Web content engine for GTK
 	pkgver = 2.36.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://webkitgtk.org
 	arch = x86_64
 	license = custom
@@ -64,7 +64,6 @@ pkgbase = webkit2gtk-imgpaste
 	optdepends = gst-libav: nonfree media decoding
 	provides = webkit2gtk
 	conflicts = webkit2gtk
-	options = !lto
 	source = https://webkitgtk.org/releases/webkitgtk-2.36.5.tar.xz
 	source = https://webkitgtk.org/releases/webkitgtk-2.36.5.tar.xz.asc
 	source = PasteBoardGtk.patch
