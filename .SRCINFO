@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-assimp
 	pkgdesc = Portable Open Source library to import various well-known 3D model formats in an uniform manner (mingw-w64)
 	pkgver = 5.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.assimp.org/
 	arch = any
 	license = BSD

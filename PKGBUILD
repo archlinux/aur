@@ -3,7 +3,7 @@
 _pkgname=assimp
 pkgname=mingw-w64-${_pkgname}
 pkgver=5.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Portable Open Source library to import various well-known 3D model formats in an uniform manner (mingw-w64)"
 arch=('any')
 license=('BSD')
@@ -34,6 +34,14 @@ prepare ()
 	sed -i 's/LINK_DIRECTORIES/#nope/' 'tools/assimp_cmd/CMakeLists.txt'
 	sed -i 's/LINK_DIRECTORIES/#nope/' 'tools/assimp_view/CMakeLists.txt'
 	sed -i 's/LINK_DIRECTORIES/#nope/' 'test/CMakeLists.txt'
+
+	# Correct obvious bug
+	sed -i 's/vlist.push_back(\*tlist_i.end())/vlist.push_back(tlist_i.back())/' 'code/AssetLib/X3D/X3DImporter_Geometry2D.cpp'
+	sed -i 's/vlist.push_back(\*tlist_o.end())/vlist.push_back(tlist_o.back())/' 'code/AssetLib/X3D/X3DImporter_Geometry2D.cpp'	
+	sed -i 's/if (sheen.sheenColorFactor == defaultSheenFactor)/if (sheen.sheenColorFactor[0] == defaultSheenFactor[0] \&\& sheen.sheenColorFactor[1] == defaultSheenFactor[1] \&\& sheen.sheenColorFactor[2] == defaultSheenFactor[2])/' 'code/AssetLib/glTF2/glTF2Exporter.cpp'
+
+	# Obviously incorrect code
+	sed -i 's|aaiFaces\[(\*iFace).iTexture\].push_back( 0 )|//nope|' 'code/AssetLib/SMD/SMDLoader.cpp'
 }
 
 build()
