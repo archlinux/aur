@@ -16,12 +16,12 @@
 
 pkgname=protonmail-bridge-nogui
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
 url="https://github.com/ProtonMail/proton-bridge"
 license=('GPL3')
-makedepends=('go' 'gcc')
+makedepends=('go' 'gcc' 'git')
 depends=('libsecret')
 optdepends=('org.freedesktop.secrets: Applications that support Freedesktop secrets api'
             'gnome-keyring: support for gnome keyring'
