@@ -1,3 +1,34 @@
+## 4.1.0
+
+* some fixes for zsh
+* new commands mulle-bin-dir and mulle-libexec-dir for script support
+* new environment::get options for script support
+
+
+### 4.0.2
+
+* fix installer (?)
+
+### 4.0.1
+
+* fix version check for new version 4
+* big function rename to `<tool>`::`<file>`::`<function>` to make it easier to read hopefully
+* added invoke command to substitute env -i
+* add `MULLE_USERNAME` to list of exported/injected environment variables
+* new **doctor** command
+* used mulle-bashfunctions 4 now
+* compatible with zsh and will run zsh, if bash is not installed
+
+# 4.0.0
+
+* big function rename to `<tool>`::`<file>`::`<function>` to make it easier to read hopefully
+* added invoke command to substitute env -i
+* add `MULLE_USERNAME` to list of exported/injected environment variables
+* new **doctor** command
+* used mulle-bashfunctions 4 now
+* compatible with zsh and will run zsh, if bash is not installed
+
+
 ## 3.4.0
 
 * clarify distinction between os (host) and plaform (target) a bit

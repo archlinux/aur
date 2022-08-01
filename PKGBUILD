@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Boyle <programmerfalcon@gmail.com>
 pkgname=mulle-env
-pkgver=3.4.0
+pkgver=4.1.0
 pkgrel=1
 epoch=1
 pkgdesc="Virtual environment for Unix"
@@ -8,11 +8,11 @@ arch=('any')
 url="https://github.com/mulle-sde/mulle-env"
 license=('BSD3')
 groups=('mulle-sde-all')
-depends=('bash' 'mulle-bashfunctions>=3.4.0')
+depends=('bash' 'mulle-bashfunctions>=4.1.1')
 changelog="RELEASENOTES.md"
-source=("https://github.com/mulle-sde/mulle-env/archive/3.4.0.tar.gz")
+source=("https://github.com/mulle-sde/mulle-env/archive/4.1.0.tar.gz")
 noextract=()
-md5sums=('aeab87db94f46d45d4cb541141790d99')
+md5sums=('ae19f215b005f62017d0cc064494b13f')
 validpgpkeys=()
 
 package() {
