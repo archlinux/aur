@@ -1,6 +1,6 @@
 pkgbase = fe
 	pkgdesc = AUR helper with a familiar subcommand system
-	pkgver = 1.0.13
+	pkgver = 1.0.14
 	pkgrel = 1
 	url = https://github.com/baris-inandi/fe
 	arch = x86_64
@@ -10,6 +10,8 @@ pkgbase = fe
 	depends = bash
 	depends = sudo
 	depends = paru
+	backup = etc/feparu.conf
+	backup = etc/fepacman.conf
 	source = git+https://github.com/baris-inandi/fe
 	md5sums = SKIP
 

@@ -11,7 +11,9 @@ in:
 	make clean
 	make srcinfo
 	make si
+	make clean
 
 prep:
 	make clean
 	make srcinfo
+	make clean

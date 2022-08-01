@@ -1,6 +1,6 @@
 Maintainer="baris-inandi"
 pkgname=fe
-pkgver=1.0.13
+pkgver=1.0.14
 pkgrel=1
 pkgdesc="AUR helper with a familiar subcommand system"
 arch=(x86_64)
@@ -10,6 +10,7 @@ depends=(bash sudo paru)
 makedepends=(git go)
 source=("git+$url")
 md5sums=('SKIP')
+backup=("etc/feparu.conf" "etc/fepacman.conf")
 
 build() {
   cd "$pkgname"
@@ -23,5 +24,7 @@ build() {
 
 package() {
   cd "$pkgname"
+  install -Dm644 conf/pacman.conf "$pkgdir"/etc/fepacman.conf
+  install -Dm644 conf/paru.conf "$pkgdir"/etc/feparu.conf
   install -Dm755 "$pkgname-$pkgver-$pkgrel" "$pkgdir"/usr/bin/$pkgname
 }
