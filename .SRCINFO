@@ -1,18 +1,30 @@
 pkgbase = mplus-1-code-nerd-font
 	pkgdesc = M PLUS 1 Code Nerd Font
-	pkgver = 20220720
+	pkgver = 20220319052552.2.2.0_RC
 	pkgrel = 1
+	epoch = 1
 	url = https://mplusfonts.github.io/
 	arch = any
 	license = OFL
 	makedepends = fontforge
-	provides = mplus
-	conflicts = mplus
-	source = M_PLUS_1_Code-20220720.zip::https://fonts.google.com/download?family=M%20PLUS%201%20Code
+	provides = mplus-1-code
+	source = Mplus1Code-Bold-20220319052552.ttf::https://github.com/coz-m/MPLUS_FONTS/raw/master/fonts/ttf/Mplus1Code-Bold.ttf
+	source = Mplus1Code-ExtraLight-20220319052552.ttf::https://github.com/coz-m/MPLUS_FONTS/raw/master/fonts/ttf/Mplus1Code-ExtraLight.ttf
+	source = Mplus1Code-Light-20220319052552.ttf::https://github.com/coz-m/MPLUS_FONTS/raw/master/fonts/ttf/Mplus1Code-Light.ttf
+	source = Mplus1Code-Medium-20220319052552.ttf::https://github.com/coz-m/MPLUS_FONTS/raw/master/fonts/ttf/Mplus1Code-Medium.ttf
+	source = Mplus1Code-Regular-20220319052552.ttf::https://github.com/coz-m/MPLUS_FONTS/raw/master/fonts/ttf/Mplus1Code-Regular.ttf
+	source = Mplus1Code-SemiBold-20220319052552.ttf::https://github.com/coz-m/MPLUS_FONTS/raw/master/fonts/ttf/Mplus1Code-SemiBold.ttf
+	source = Mplus1Code-Thin-20220319052552.ttf::https://github.com/coz-m/MPLUS_FONTS/raw/master/fonts/ttf/Mplus1Code-Thin.ttf
+	source = OFL-20220319052552.txt::https://raw.githubusercontent.com/coz-m/MPLUS_FONTS/master/OFL.txt
 	source = https://github.com/ryanoasis/nerd-fonts/releases/download/2.2.0-RC/FontPatcher.zip
-	source = https://raw.githubusercontent.com/coz-m/MPLUS_FONTS/master/OFL.txt
-	sha256sums = SKIP
-	sha256sums = 69df3545b86dbea1702b9ec078920211463ebe0d30a3c693d616f24112796914
+	sha256sums = a7067056ec7a69f81812527e232ec9e57c28c3c01f897655a45937cebfd23d91
+	sha256sums = 507979a891f2d4d249e1249bacb53a89dda87e1cd699cef005857d79e711f643
+	sha256sums = 45c83fd3f9a5a6d07a4bbfd631e9e86559867bd4aa88cf81c334939ae06c316c
+	sha256sums = b2ce90cf4f963ee01ba0cfbf9e51f3d989ef9de45aeaca1089040ff406770a5d
+	sha256sums = 1986ac8f6cd99272c117a0cdb6e5ee0b150373030e050016ac1bc70a195f66da
+	sha256sums = f0e5bc8fd48a04e3203cb9ac73d431a4657275d128f452606f965506a02830ab
+	sha256sums = 59879e4c95eef7202031f3618d5cfac67e590f03341c1105157f072fd04975bf
 	sha256sums = 04971e3fcee60b247395150d93b3616f6a0b092572332c96187b472976553abc
+	sha256sums = 69df3545b86dbea1702b9ec078920211463ebe0d30a3c693d616f24112796914
 
 pkgname = mplus-1-code-nerd-font

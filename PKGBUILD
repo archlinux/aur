@@ -1,40 +1,47 @@
 # Maintainer: suienzan <suienzan at gmail dot com>
 
+_mplusver=20220319052552
 pkgname=mplus-1-code-nerd-font
 pkgdesc='M PLUS 1 Code Nerd Font'
-pkgver=20220720
+pkgver=20220319052552.2.2.0_RC
 pkgrel=1
+epoch=1
 arch=('any')
 license=('OFL')
 url='https://mplusfonts.github.io/'
-source=("M_PLUS_1_Code-${pkgver}.zip::https://fonts.google.com/download?family=M%20PLUS%201%20Code"
-        "https://github.com/ryanoasis/nerd-fonts/releases/download/2.2.0-RC/FontPatcher.zip"
-        "https://raw.githubusercontent.com/coz-m/MPLUS_FONTS/master/OFL.txt")
-sha256sums=('SKIP'
-            '69df3545b86dbea1702b9ec078920211463ebe0d30a3c693d616f24112796914'
-            '04971e3fcee60b247395150d93b3616f6a0b092572332c96187b472976553abc')
+
+source=("Mplus1Code-Bold-$_mplusver.ttf::https://github.com/coz-m/MPLUS_FONTS/raw/master/fonts/ttf/Mplus1Code-Bold.ttf"
+        "Mplus1Code-ExtraLight-$_mplusver.ttf::https://github.com/coz-m/MPLUS_FONTS/raw/master/fonts/ttf/Mplus1Code-ExtraLight.ttf"
+        "Mplus1Code-Light-$_mplusver.ttf::https://github.com/coz-m/MPLUS_FONTS/raw/master/fonts/ttf/Mplus1Code-Light.ttf"
+        "Mplus1Code-Medium-$_mplusver.ttf::https://github.com/coz-m/MPLUS_FONTS/raw/master/fonts/ttf/Mplus1Code-Medium.ttf"
+        "Mplus1Code-Regular-$_mplusver.ttf::https://github.com/coz-m/MPLUS_FONTS/raw/master/fonts/ttf/Mplus1Code-Regular.ttf"
+        "Mplus1Code-SemiBold-$_mplusver.ttf::https://github.com/coz-m/MPLUS_FONTS/raw/master/fonts/ttf/Mplus1Code-SemiBold.ttf"
+        "Mplus1Code-Thin-$_mplusver.ttf::https://github.com/coz-m/MPLUS_FONTS/raw/master/fonts/ttf/Mplus1Code-Thin.ttf"
+        "OFL-$_mplusver.txt::https://raw.githubusercontent.com/coz-m/MPLUS_FONTS/master/OFL.txt"
+        "https://github.com/ryanoasis/nerd-fonts/releases/download/2.2.0-RC/FontPatcher.zip")
+sha256sums=('a7067056ec7a69f81812527e232ec9e57c28c3c01f897655a45937cebfd23d91'
+            '507979a891f2d4d249e1249bacb53a89dda87e1cd699cef005857d79e711f643'
+            '45c83fd3f9a5a6d07a4bbfd631e9e86559867bd4aa88cf81c334939ae06c316c'
+            'b2ce90cf4f963ee01ba0cfbf9e51f3d989ef9de45aeaca1089040ff406770a5d'
+            '1986ac8f6cd99272c117a0cdb6e5ee0b150373030e050016ac1bc70a195f66da'
+            'f0e5bc8fd48a04e3203cb9ac73d431a4657275d128f452606f965506a02830ab'
+            '59879e4c95eef7202031f3618d5cfac67e590f03341c1105157f072fd04975bf'
+            '04971e3fcee60b247395150d93b3616f6a0b092572332c96187b472976553abc'
+            '69df3545b86dbea1702b9ec078920211463ebe0d30a3c693d616f24112796914')
 makedepends=('fontforge')
 provides=("mplus-1-code")
 
 build() {
   # set familyname
   sed -i 's/familyname = fontname/familyname = "M PLUS 1 Code"/g' ${srcdir}/font-patcher
-  for f in ${srcdir}/static/*; do
+  for f in ${srcdir}/Mplus1Code-*; do
     [[ -e "$f" ]] || break
     fontforge -script font-patcher "$f" -c -out dist
   done
 }
 
-pkgver() {
-  date +%Y%m%d
-}
-
 package() {
-  ls ${srcdir}/dist/
-
-  echo ${pkgdir}
-
   install -dm555 ${pkgdir}/usr/share/fonts/${pkgname}
   install -m444 dist/*.ttf ${pkgdir}/usr/share/fonts/${pkgname}
-  install -D -m644 OFL.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -D -m644 OFL-$_mplusver.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
