@@ -1,7 +1,7 @@
 # Maintainer: Lukas Spiss <lukas.spiss@outlook.de>
 
 pkgname=mockoon-bin
-pkgver=1.19.0
+pkgver=1.20.0
 pkgrel=2
 pkgdesc="Mockoon is the easiest and quickest way to run mock APIs locally."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 groups=('base-devel')
 depends=()
 source=(https://github.com/mockoon/mockoon/releases/download/v${pkgver}/mockoon-${pkgver}.deb)
-md5sums=('b3b72875420afc75212c69aefca8cd8d')
+md5sums=('2e9fc5737fa49ad5bbd54bc18a8d4ed6')
 
 package() {
 	install -dm755 "${pkgdir}"/usr/bin/
