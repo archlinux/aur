@@ -1,9 +1,8 @@
 # Maintainer: Gerard Ribugent <ribugent <at> gmail <dot> com>
-pkgbase='python-parquet-tools'
-pkgname=('python-parquet-tools')
+pkgname='python-parquet-tools'
 _name='parquet_tools'
 pkgver='0.2.11'
-pkgrel=2
+pkgrel=3
 pkgdesc="Easy install parquet-tools"
 url="https://github.com/ktrueda/parquet-tools"
 depends=(
