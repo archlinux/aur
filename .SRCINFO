@@ -1,0 +1,17 @@
+pkgbase = python-dephell-venvs
+	pkgdesc = Manage Python virtual environments
+	pkgver = 0.1.18
+	pkgrel = 2
+	url = https://github.com/dephell/dephell_venvs
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-requests
+	makedepends = python-setuptools
+	depends = python-attrs
+	depends = python-dephell-pythons
+	source = https://files.pythonhosted.org/packages/source/d/dephell_venvs/dephell_venvs-0.1.18.tar.gz
+	sha256sums = c7307291b754edba325ab27edeb05d85ee4dd2f1487c48872a1ebfc372bf7a2e
+	b2sums = ca3b64a0983ef32f4aec42a26413604d241e00d2ac5d2e6c36fa58b3d354ad1a95562aa495a799245b54a7796c036fea1c3041ab087d3cb915c829caf75e02cd
+
+pkgname = python-dephell-venvs
