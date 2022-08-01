@@ -1,10 +1,11 @@
 pkgbase = janet-http
 	pkgdesc = A janet http client library
 	pkgver = 0.1.0.r2021.10.19
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/joy-framework/http
 	arch = x86_64
 	license = MIT
+	depends = janet-lang
 	options = staticlibs
 	source = janet-http-0.1.0.r2021.10.19.tar.gz::https://github.com/joy-framework/http/archive/e3787820f1b5409757b2d23dcdf5a1dbf6539e65.tar.gz
 	sha256sums = 3f5fe5165d85ec0b7ff01625c0bb80e85e2e06c4b124d59184c6f796fa964d9f

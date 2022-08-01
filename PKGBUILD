@@ -2,11 +2,12 @@
 # Maintainer: amano.kenji <amano.kenji@proton.me>
 pkgname=janet-http
 pkgver=0.1.0.r2021.10.19
-pkgrel=3
+pkgrel=4
 pkgdesc="A janet http client library"
 arch=("x86_64")
 url="https://github.com/joy-framework/http"
 license=("MIT")
+depends=("janet-lang")
 options=("staticlibs")
 _commit="e3787820f1b5409757b2d23dcdf5a1dbf6539e65"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/joy-framework/http/archive/${_commit}.tar.gz")
