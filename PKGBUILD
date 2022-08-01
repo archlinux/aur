@@ -2,7 +2,7 @@
 
 pkgname=pc-ble-driver
 pkgver=4.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="C/C++ libraries for Bluetooth Low Energy nRF5 SoftDevice serialization"
 arch=(x86_64)
 url="https://github.com/NordicSemiconductor/pc-ble-driver"
@@ -15,6 +15,7 @@ provides=(
   libnrf-ble-driver-sd_api_v5.so
   libnrf-ble-driver-sd_api_v6.so
 )
+options=(debug staticlibs)
 source=(
   $pkgname-$pkgver.tar.gz::https://github.com/NordicSemiconductor/$pkgname/archive/refs/tags/v$pkgver.tar.gz
   $pkgname-4.1.4-gcc_11.2.patch::https://github.com/NordicSemiconductor/pc-ble-driver/commit/37258e65bdbcd0b4369ae448faf650dd181816ec.patch
@@ -26,6 +27,8 @@ b2sums=('7e31b05aaffaef4936f4794b527016dc3d550c8ce8fa6b1c89b8d73a71388aa38d8e30a
 
 prepare() {
   patch -Np1 -d $pkgname-$pkgver -i ../$pkgname-4.1.4-gcc_11.2.patch
+  # set project version properly, as it is used by all sorts of downstream projects
+  sed -e "s/0.0.0/$pkgver/g" -i $pkgname-$pkgver/CMakeLists.txt
 }
 
 build() {
