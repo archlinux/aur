@@ -1,21 +1,20 @@
 pkgbase = python-spatialpandas
 	pkgdesc = Pandas extension arrays for spatial/geometric operations
-	pkgver = 0.4.3
-	pkgrel = 2
+	pkgver = 0.4.4
+	pkgrel = 1
 	url = https://github.com/holoviz/spatialpandas
 	arch = any
 	license = custom:BSD-2-clause
 	makedepends = python-pyct
 	makedepends = python-setuptools
-	depends = python-fsspec
+	depends = python-dask
 	depends = python-numba
 	depends = python-pandas
 	depends = python-param
 	depends = python-pyarrow
 	depends = python-snappy
 	depends = python-retrying
-	depends = python-dask
-	source = spatialpandas-0.4.3::https://github.com/holoviz/spatialpandas/archive/v0.4.3.tar.gz
-	sha512sums = 7f6a6f8beb173e59768413751cede3eeac6a005290530ce4eb52eabfeec07a9c4fa5c03f2c2b621b19880155a98d4b89c269bc1ffda7bb28d6d298f2b00da479
+	source = spatialpandas-0.4.4.tar.gz::https://github.com/holoviz/spatialpandas/archive/v0.4.4.tar.gz
+	sha512sums = 914477da4f7c081b12ed686f2f01e8ce0df4c2c26769bd99c7daa9027b93dd1f9e328cf6f6f9561f29792b4ad8bdee628e068d92ee20006618af066eeea0922f
 
 pkgname = python-spatialpandas
