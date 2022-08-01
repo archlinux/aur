@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=argc
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="A bash cli framework, also a task runner"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT' 'Apache')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('ef9620c1212c9c77b0b8484fd4e0936740d51e6b851db388deb2184e296a668b9b055a2e03c2c51cde83603592d9b85b63aa67df3f766df8a12d7e51710d9a61')
+sha512sums=('23abb41e3984937f3685a7ea0be98edabe46331508755eb08d9ba731fa1462f49d378ba52c066a178de61a3da66cd0e216026eb974b3efa29e5a7905d9ab5a0f')
 
 prepare() {
   cd "$pkgname-$pkgver"
