@@ -6,7 +6,6 @@ Exec=/usr/bin/windterm
 Type=Application
 Icon=windterm
 StartupNotify=false
-StartupWMClass=Code
 Categories=Application;Development
 Actions=new-empty-window
 Keywords=windterm
