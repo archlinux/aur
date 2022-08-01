@@ -5,7 +5,7 @@ _pkgbase=systemd
 pkgbase=$_pkgbase-git
 pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
 pkgdesc='systemd (git version)'
-pkgver=251.r58405.4e5c39597a
+pkgver=251.r58942.91375fb9cf
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -35,7 +35,7 @@ source=('git+https://github.com/systemd/systemd'
         '30-systemd-udev-reload.hook'
         '30-systemd-update.hook')
 sha512sums=('SKIP'
-            'cc0c2ffb5f7c3a7176cd68f3dddd85ca000dcc4cdf3044746a20147234adb6811800fd28a4713faa6a59bf8c02be9fd43c2d6aa6695fd1dbf03ae773a91d090c'
+            'e9d16140a2b412c1d2f61fb27543baee40cc9369e6545abf6a06f99af5a07c3df536083ffe058b4a6467ec9dcefc99a75eae730a9ffc58533511ef752a6e2763'
             'f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73'
             'aeefb607471cffb5ed4c3d9f36dc0954a9a08cee4b7b4ff55468b561e089e3d8448398906a7df328049ba51b712e4d50698b96bc152bdb03a35ce39c3f51a7cb'
             'a8c7e4a2cc9c9987e3c957a1fc3afe8281f2281fffd2e890913dcf00cf704024fb80d86cb75f9314b99b0e03bac275b22de93307bfc226d8be9435497e95b7e6'
