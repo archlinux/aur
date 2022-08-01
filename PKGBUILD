@@ -24,7 +24,7 @@ if $_with_r; then
   makedepends+=('r' 'r-stringi' 'r-magrittr' 'r-data.table')
 fi
 if $_with_cuda; then
-  makedepends+=('gcc11')
+  makedepends+=('cuda')
 fi
 arch=('x86_64')
 sha256sums=('SKIP'
@@ -65,7 +65,7 @@ build() {
   fi
 
   if $_with_cuda; then
-    CC=/usr/bin/gcc-11 CXX=/usr/bin/g++-11 cmake .. ${cmake_args[@]}
+    CC=/opt/cuda/bin/gcc CXX=/opt/cuda/bin/g++ cmake .. ${cmake_args[@]}
   else
     cmake .. ${cmake_args[@]}
   fi
