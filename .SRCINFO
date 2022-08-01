@@ -1,7 +1,7 @@
 pkgbase = yuzu-mainline-bin
 	pkgdesc = Nintendo Switch emulator - mainline branch
 	pkgver = 0.1118
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yuzu-emu/yuzu-mainline
 	arch = x86_64
 	license = GPL2
@@ -15,6 +15,7 @@ pkgbase = yuzu-mainline-bin
 	conflicts = yuzu-git
 	conflicts = yuzu-canary-git
 	conflicts = yuzu-mainline-git
+	options = !strip
 	source = https://github.com/yuzu-emu/yuzu-mainline/releases/download/mainline-0-1118/yuzu-linux-20220731-d99d194b5.tar.xz
 	source = yuzu.svg
 	source = yuzu.desktop
