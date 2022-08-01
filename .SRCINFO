@@ -1,0 +1,15 @@
+pkgbase = python-dephell-archive
+	pkgdesc = Pathlib for archives
+	pkgver = 0.1.7
+	pkgrel = 2
+	url = https://github.com/dephell/dephell-archive
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-attrs
+	source = https://files.pythonhosted.org/packages/source/d/dephell-archive/dephell-archive-0.1.7.tar.gz
+	sha256sums = bb263492a7d430f9e04cef9a0237b7752cc797ab364bf35e70196af09c73ea37
+	b2sums = c07e703fd177072a29bc45b70b15273d23d889ab2a0de9434b30ac272c46c648e7214f5d8aaab136f868e0dadfbd290279b160dfd7183603cfcebf3b5bea435c
+
+pkgname = python-dephell-archive
