@@ -3,7 +3,7 @@
 # Contributor: ssc <chasessc@gmail.com>
 
 pkgname=minecraft-region-fixer
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="Tries to fix Minecraft worlds (or region files)."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('python3')
 makedepends=('git')
 source=("$pkgname.tar.gz::https://github.com/Fenixin/Minecraft-Region-Fixer/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2fa7b26f2631c856a138f664aa32b37f8ed39e129d254cb8dc14d64b38bfd18f')
+sha256sums=('614c9cf730afc568509a24c4812d22f7a4d08b84f25c8a1aa1b9bf7e7e395a03')
 
 _extractdir="Minecraft-Region-Fixer-${pkgver}"
 

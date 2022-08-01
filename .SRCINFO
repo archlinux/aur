@@ -1,6 +1,6 @@
 pkgbase = minecraft-region-fixer
 	pkgdesc = Tries to fix Minecraft worlds (or region files).
-	pkgver = 0.3.5
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://github.com/Fenixin/Minecraft-Region-Fixer
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = minecraft-region-fixer
 	license = GPL
 	makedepends = git
 	depends = python3
-	source = minecraft-region-fixer.tar.gz::https://github.com/Fenixin/Minecraft-Region-Fixer/archive/refs/tags/v0.3.5.tar.gz
-	sha256sums = 2fa7b26f2631c856a138f664aa32b37f8ed39e129d254cb8dc14d64b38bfd18f
+	source = minecraft-region-fixer.tar.gz::https://github.com/Fenixin/Minecraft-Region-Fixer/archive/refs/tags/v0.3.6.tar.gz
+	sha256sums = 614c9cf730afc568509a24c4812d22f7a4d08b84f25c8a1aa1b9bf7e7e395a03
 
 pkgname = minecraft-region-fixer
