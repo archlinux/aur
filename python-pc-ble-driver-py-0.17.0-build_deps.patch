@@ -1,0 +1,10 @@
+diff -ruN a/pyproject.toml b/pyproject.toml
+--- a/pyproject.toml	2022-07-06 15:36:11.000000000 +0200
++++ b/pyproject.toml	2022-07-31 22:43:21.367424662 +0200
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["setuptools", "wheel", "scikit-build", "cmake", "ninja", "tox"]
++requires = ["setuptools", "wheel", "scikit-build"]
+ 
+ [flake8]
+ exclude = [
