@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=System
+Comment=A simple tool that attempts to determine if a drive is a fake or not.
+Exec=capacity-tester
+Icon=capacity-tester
+Keywords=drive;fake;flash;usb
+Name=Capacity Tester
+Terminal=false
+TryExec=capacity-tester
+Type=Application
