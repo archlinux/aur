@@ -1,0 +1,15 @@
+pkgbase = ttf-adobe-source-sans-fonts
+	pkgdesc = Sans-serif font family for user interface environments
+	pkgver = 3.046
+	pkgrel = 1
+	url = https://adobe-fonts.github.io/source-sans/
+	arch = any
+	license = custom
+	provides = adobe-source-sans-fonts=3.046
+	provides = adobe-source-sans-pro-fonts=3.046
+	source = source-sans-3.046R.tar.gz::https://github.com/adobe-fonts/source-sans/archive/3.046R.tar.gz
+	source = source-sans-3.006R.tar.gz::https://github.com/adobe-fonts/source-sans/archive/3.006R.tar.gz
+	sha256sums = 7a0a3a0c9ff2740380eddc28a53b4b0dc99491da5f900f4add5af2d1a18e06bc
+	sha256sums = 45dbc4994892710367e801869d8ad6b26589030977b660f6a968de36147ffd32
+
+pkgname = ttf-adobe-source-sans-fonts
