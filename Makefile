@@ -4,22 +4,16 @@ clean:
 srcinfo:
 	makepkg --printsrcinfo > .SRCINFO
 
-si:
+install:
+	make clean
+	make srcinfo
 	makepkg -si
+	make clean
 
-in:
+release:
 	make clean
 	make srcinfo
-	make si
-	make clean
-
-prep:
-	make clean
-	make srcinfo
-	make clean
-
-rel:
-	make prep
 	git add -A
 	git commit -am "new release"
 	git push
+	make clean

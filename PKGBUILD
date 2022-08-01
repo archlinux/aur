@@ -1,6 +1,7 @@
-Maintainer="baris-inandi"
+# Maintainer: Barış İnandıoğlu <68742481+baris-inandi@users.noreply.github.com>
+
 pkgname=fe
-pkgver=1.0.16
+pkgver=1.0.18
 pkgrel=1
 pkgdesc="AUR helper with a familiar subcommand system"
 arch=(x86_64)
@@ -14,6 +15,7 @@ backup=("etc/feparu.conf" "etc/fepacman.conf")
 
 build() {
   cd "$pkgname"
+  git checkout tags/$pkgver -b $pkgver
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -24,6 +26,7 @@ build() {
 
 package() {
   cd "$pkgname"
+  git checkout tags/$pkgver -b $pkgver
   install -Dm644 conf/pacman.conf "$pkgdir"/etc/fepacman.conf
   install -Dm644 conf/paru.conf "$pkgdir"/etc/feparu.conf
   install -Dm755 "$pkgname-$pkgver-$pkgrel" "$pkgdir"/usr/bin/$pkgname
