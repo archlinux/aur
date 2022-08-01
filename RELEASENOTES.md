@@ -1,3 +1,16 @@
+### 3.0.1
+
+* Various small improvements
+
+# 3.0.0
+
+* big function rename to `<tool>`::`<file>`::`<function>` to make it easier to read hopefully
+* enable recursive git fetches with --recursive
+* uses mulle-bashfunctions 4 now
+* can now run under zsh if bash is not available
+* fix problems with the default git branch (again)
+
+
 # 2.0.0
 
 * Various small improvements
@@ -46,7 +59,7 @@
 
 ### 1.6.5
 
-* fix `source_validate_file_url`
+* fix `fetch::source::validate_file_url`
 
 ### 1.6.4
 
@@ -187,7 +200,7 @@
 
 ### 1.3.3
 
-* unify mulle-bashfunctions-env usage and help, also some refactoring
+* unify mulle-bashfunctions usage and help, also some refactoring
 
 ### 1.3.2
 
