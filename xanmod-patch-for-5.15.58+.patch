@@ -1,0 +1,18 @@
+diff -Nur 5.15.57/ck-hrtimer/0008-clockevents-hrtimer-Make-hrtimer-granularity-and-min.patch 5.15.58/ck-hrtimer/0008-clockevents-hrtimer-Make-hrtimer-granularity-and-min.patch
+--- 5.15.57/ck-hrtimer/0008-clockevents-hrtimer-Make-hrtimer-granularity-and-min.patch	2022-05-31 08:20:19.000000000 +0800
++++ 5.15.58/ck-hrtimer/0008-clockevents-hrtimer-Make-hrtimer-granularity-and-min.patch	2022-08-01 10:16:51.000000000 +0800
+@@ -16,10 +16,10 @@
+ index 083be6af29d7..f9da9b1b7a7f 100644
+ --- a/kernel/sysctl.c
+ +++ b/kernel/sysctl.c
+-@@ -122,9 +122,9 @@ static unsigned long long_max = LONG_MAX;
+- static int one_hundred = 100;
+- static int two_hundred = 200;
+- static int one_thousand = 1000;
++@@ -116,9 +116,9 @@ static int sixty = 60;
++ static unsigned long zero_ul;
++ static unsigned long one_ul = 1;
++ static unsigned long long_max = LONG_MAX;
+ -#ifdef CONFIG_PRINTK
+  static int ten_thousand = 10000;
+ -#endif

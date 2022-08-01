@@ -8,7 +8,7 @@
 # https://www.kernel.org/category/releases.html
 # 5.15 Greg Kroah-Hartman & Sasha Levin 2021-10-31 Oct, 2023
 _LLL_VER=5.15
-_LLL_SUBVER=50
+_LLL_SUBVER=58
 
 # Bisect debug, v5.4.47 -> v5.4.48
 _Bisect_debug=off # on, test, off
@@ -38,7 +38,7 @@ _NUMA_disable=y
 #   lrng framework
 _Xan_COMMIT=e66971a97b812487354914a47cdcc4d06403a717
 _Xan_PATCH_SRC="xanmod-$_Xan_COMMIT.tar.gz::https://github.com/xanmod/linux-patches/archive/$_Xan_COMMIT.tar.gz"
-_Xan_PATCH_PATCH=()
+_Xan_PATCH_PATCH=('xanmod-patch-for-5.15.58+.patch')
 
 # Ultra Kernel Samepage Merging
 # https://github.com/dolohow/uksm
@@ -95,8 +95,9 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            '16bfe772c0ac272bc4b5be68b3e1aead51eebdab2d61b360a0d18126f52c50a8'
+            'd53ba7438f77e5a95a4c2766844d39c0854aac86d186f2ee245149df4dc421a6'
             '34c9791cc0cacab354bdb0b283e1d429367bb78a060f89b1ef5a9add5880e339'
+            '05371d7a0b55daa630c7a9124798a06451d8ab2af4520d33e554995cc47bd5eb'
             '7323d58e79dee3bd79431db134afb49e6024f0f63f821eebacf04d3c9d7645da'
             '97a525e28a270c5e6e5a4fc4ab4920c42ceef2f9921857497ab3c56ec343803e'
             'f4d2c31065975e07c37b56b70452be8583a7ab2e5041bfdb93bcd7dfc3f5d0eb')
@@ -149,7 +150,9 @@ prepare() {
   msg2 "Patching source with some third-party patchsets in xanmod"
   _Xan_patch_dir=../linux-patches-"$_Xan_COMMIT"/"linux-${_LLL_VER}.y-xanmod"
   for p in ${_Xan_PATCH_PATCH[@]}; do
-    patch -Ni ../$p -d $_Xan_patch_dir/
+    # -d Change to $_Xan_patch_dir/ immediately, before finding $p
+    # -p1 for ${_LLL_VER}.${_LLL_SUBVER}/xxxx
+    patch -Np1 -i ../../$p -d $_Xan_patch_dir/
   done
   msg2 "Patching with xanmod: CK's high-resolution kernel timers (hrtimer) patchsets ..."
   patch_xanmod_dir $_Xan_patch_dir/ck-hrtimer
