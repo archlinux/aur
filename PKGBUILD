@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Boyle <programmerfalcon@gmail.com>
 pkgname=mulle-template
-pkgver=0.0.4
+pkgver=1.0.1
 pkgrel=1
 epoch=1
 pkgdesc="Template generator for text files"
@@ -8,11 +8,11 @@ arch=('any')
 url="https://github.com/mulle-sde/mulle-template"
 license=('BSD3')
 groups=('mulle-sde-all')
-depends=('bash' 'mulle-bashfunctions>=3.4.0')
+depends=('bash' 'mulle-bashfunctions>=4.1.1')
 changelog="RELEASENOTES.md"
-source=("https://github.com/mulle-sde/mulle-template/archive/0.0.4.tar.gz")
+source=("https://github.com/mulle-sde/mulle-template/archive/1.0.1.tar.gz")
 noextract=()
-md5sums=('9f37be78a74ab926fde8bc5b23502d1e')
+md5sums=('cf6f6d2b7fc271ca94d7e05ab99046d7')
 validpgpkeys=()
 
 package() {
