@@ -1,13 +1,12 @@
 pkgbase = deployer
 	pkgdesc = A deployment tool written in PHP with support for popular frameworks out of the box.
-	pkgver = 6.8.0
+	pkgver = 7.0.0
 	pkgrel = 1
 	url = https://deployer.org
 	arch = any
 	license = MIT
 	depends = php
-	source = https://deployer.org/releases/v6.8.0/deployer.phar
-	sha1sums = 18270e46dd02bcac871cf0babee82702457a26b0
+	source = deployer-7.0.0.phar::https://github.com/deployphp/deployer/releases/download/v7.0.0/deployer.phar
+	sha512sums = 2265bd1e520b2dcf453c54c4152e113231db5a884aabdf41f1203582319b50e846801f5d40ad6cae3ee31029c5b0712e8b1902f762df50e80104364b963216a7
 
 pkgname = deployer
-
