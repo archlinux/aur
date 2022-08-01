@@ -1,13 +1,13 @@
 pkgname=docker-compose-systemd-unit
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="systemd unit file for docker-compose services"
 arch=('any')
 url="https://gist.github.com/mosquito/b23e1c1e5723a7fd9e6568e5cf91180f"
 license=('unknown')
 depends=('docker' 'docker-compose')
 source=("docker-compose@.service")
-sha256sums=('d040c6d7f6bd47f8d7b13592487ca8da698ea86fa2bf505593e0fd7d5988822a')
+sha256sums=('872ce4ef8e0cd4fc6542f15342335c50cf84acab597fa5e67f0cd645481902ac')
 
 package() {
     mkdir -p "$pkgdir/etc/systemd/system"
