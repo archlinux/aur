@@ -39,7 +39,7 @@ index 083b67d35b5a123c0511404626ebdf7af9180f37..94b2b427842a395403b3b28aa06e3bd9
          print("done cp")
          print(r)
 diff --git a/osc/core.py b/osc/core.py
-index 5669fae1b49f176ab714907e8724e51517d631f0..32d85910af3562488bf4052df381f033d8cb3c40 100644
+index 1b2ce7a5e00fcff4b71adbafea9e6f363bcf6f9e..df13c3dbe1c22035058641c3d0dc01b7ff4e6282 100644
 --- a/osc/core.py
 +++ b/osc/core.py
 @@ -5691,6 +5691,8 @@ def copy_prj(src_apiurl, src_project, dst_project,
@@ -49,5 +49,5 @@ index 5669fae1b49f176ab714907e8724e51517d631f0..32d85910af3562488bf4052df381f033
 +    if now:
 +        query['nodelay'] = '1'
      u = makeurl(src_apiurl, ['source', dst_project], query=query)
-     print >>sys.stderr, "copyprj ", u
+     print("copyprj ", u, file=sys.stderr)
      f = http_POST(u)

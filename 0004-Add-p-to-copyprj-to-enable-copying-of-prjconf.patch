@@ -31,7 +31,7 @@ index 94b2b427842a395403b3b28aa06e3bd97f07a091..846dd5214efdfb6a7ee88ae3fcf16df7
          print("done cp")
          print(r)
 diff --git a/osc/core.py b/osc/core.py
-index 32d85910af3562488bf4052df381f033d8cb3c40..74adc2be966dcdd8fb73b90960371b55750eb6c7 100644
+index df13c3dbe1c22035058641c3d0dc01b7ff4e6282..6715928a7b31074001ad3f95299c0f1676fd9421 100644
 --- a/osc/core.py
 +++ b/osc/core.py
 @@ -5672,6 +5672,8 @@ def copy_prj(src_apiurl, src_project, dst_project,
@@ -51,5 +51,5 @@ index 32d85910af3562488bf4052df381f033d8cb3c40..74adc2be966dcdd8fb73b90960371b55
 +        query['prjconf'] = '1'
 +
      u = makeurl(src_apiurl, ['source', dst_project], query=query)
-     print >>sys.stderr, "copyprj ", u
+     print("copyprj ", u, file=sys.stderr)
      f = http_POST(u)

@@ -7,7 +7,7 @@
 
 pkgname=osc
 pkgver=0.181.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line client for the openSUSE Build Service"
 arch=(any)
 url="https://github.com/openSUSE/osc"
@@ -37,9 +37,9 @@ source=("https://github.com/openSUSE/${pkgname}/archive/${pkgver}.tar.gz"
 sha256sums=('ef97c1454a4c8416e3bbb3e378afde85e42fe381fff8a135ddb9c8c4fedd5697'
             '2b045e03d2fdce12683ceb9792d491a32f00b256045456412e7bc18c8726218a'
             '7a39acd43aa59d91d872e0d50effaac63613d108b0d2d84a499f77fda96149a5'
-            'dfa7c0a1109c6be92b9d91171f8010090651e4a8b957104f10d383264ac1605b'
-            '2bf937b14235cfe926373a1edcc4e2599f326fcadd721696454d48b705b4fa06'
-            '6be41709427f47f8b9517785717d30277c1b16f959988f46788106725c16db3d'
+            '2f6f7a37f4f43d3cdf8fbc22d37768e1b873960f3c11a2bedb8a780f34234acb'
+            '61711f5b4fdf0efe96cb158ad85bdcf7d30f20d9f24b6b42960edc8ca7ca422e'
+            'cd83bf7d25acdc033e80da5b0fda4ef7371651bf2d08329efaf5af8b55912554'
             '1896b8d8fe0c4b9d54b492e84c9ba5fe21a8a459a8812d3f52eadf48ee6e5bb2'
             'ad44984d22119149a2e2a74f8811a55f478cd86fed842c196c74a93bdefbb0f3'
             '77b78f055fe132799a08803e56d274b1f1b0bc8499e570641b1ffee4396ae4ba')

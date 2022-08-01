@@ -77,7 +77,7 @@ index da95836f6ad5b2ebc132cb7cc3fee995eb173592..083b67d35b5a123c0511404626ebdf7a
      @cmdln.option('-m', '--message', metavar='TEXT',
                    help='specify message TEXT')
 diff --git a/osc/core.py b/osc/core.py
-index 1cf4895e181670863bd3564e6934b0a65c9488f3..5669fae1b49f176ab714907e8724e51517d631f0 100644
+index 1cf4895e181670863bd3564e6934b0a65c9488f3..1b2ce7a5e00fcff4b71adbafea9e6f363bcf6f9e 100644
 --- a/osc/core.py
 +++ b/osc/core.py
 @@ -5667,6 +5667,34 @@ def copy_pac(src_apiurl, src_project, src_package,
@@ -109,7 +109,7 @@ index 1cf4895e181670863bd3564e6934b0a65c9488f3..5669fae1b49f176ab714907e8724e515
 +    if comment:
 +        query['comment'] = comment
 +    u = makeurl(src_apiurl, ['source', dst_project], query=query)
-+    print >>sys.stderr, "copyprj ", u
++    print("copyprj ", u, file=sys.stderr)
 +    f = http_POST(u)
 +    return f.read()
  
