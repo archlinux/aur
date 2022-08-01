@@ -1,0 +1,15 @@
+pkgbase = python-dephell-versioning
+	pkgdesc = Bump project version like a pro
+	pkgver = 0.1.2
+	pkgrel = 5
+	url = https://github.com/dephell/dephell_versioning
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-packaging
+	source = https://files.pythonhosted.org/packages/source/d/dephell_versioning/dephell_versioning-0.1.2.tar.gz
+	sha256sums = 9ba7636704af7bd64af5a64ab8efb482c8b0bf4868699722f5e2647763edf8e5
+	b2sums = 472a7c209f07880d02e687ad98436e5a7046c9471a4cf408a4611b63e7aac6e9a55bb87cb9b348311bfb6af492b29ae4fcb717f8d1949b8b9f49e164ef0550ae
+
+pkgname = python-dephell-versioning
