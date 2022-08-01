@@ -1,13 +1,13 @@
-# Maintainer: oscareczek <oscareczek at gmail dot com>
+# Maintainer: oscareczek <at gmail dot com>
 pkgname=86box
 _pkgname=86Box
-pkgver=3.6
+pkgver=3.7
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
 url='https://86box.net/'
 license=('GPL2')
-depends=('faudio' 'libslirp' 'qt6-base' 'rtmidi')
+depends=('hicolor-icon-theme' 'libslirp' 'openal' 'qt6-base' 'rtmidi' 'sdl2')
 makedepends=('cmake>=3.21' 'ninja' 'qt6-tools')
 optdepends=(
     '86box-roms: ROM files'
@@ -18,7 +18,7 @@ options=('!buildflags')
 source=(
     "https://github.com/${_pkgname}/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha512sums=('08f281f70afce47f8e483c0b16dc99b3704beb89c8ad007a6d1814f8cd3716d5bedc4ca4444cbd61c79960e89152b24cfa34c53d51a10f99c811ca3d3290225d')
+sha512sums=('fde59f957387b907f62dac26ef903727d47576c2c82036e877fe6508b4d9c8bee843789f23ed6d963f12e3a502391b55077841b80faac036ed7071608caff4c9')
 
 build() {
     case "$CARCH" in
