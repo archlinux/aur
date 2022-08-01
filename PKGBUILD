@@ -1,6 +1,6 @@
 Maintainer="baris-inandi"
 pkgname=fe
-pkgver=1.0.14
+pkgver=1.0.15
 pkgrel=1
 pkgdesc="AUR helper with a familiar subcommand system"
 arch=(x86_64)
