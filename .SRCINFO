@@ -1,0 +1,12 @@
+pkgbase = ttf-adobe-source-code-pro-fonts
+	pkgdesc = Monospaced font family for user interface and coding environments
+	pkgver = 2.038ro+1.058it+1.018var
+	pkgrel = 1
+	url = https://adobe-fonts.github.io/source-code-pro/
+	arch = any
+	license = custom
+	provides = adobe-source-code-pro-fonts=2.038ro+1.058it+1.018var
+	source = source-code-pro-2.038R-ro-1.058R-it-1.018R-VAR.tar.gz::https://github.com/adobe-fonts/source-code-pro/archive/2.038R-ro/1.058R-it/1.018R-VAR.tar.gz
+	sha256sums = d8f879fefd66ecb7291ea2d73984b9c0a97fb499424e58290ba6b81787d0c725
+
+pkgname = ttf-adobe-source-code-pro-fonts
