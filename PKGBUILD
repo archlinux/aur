@@ -6,7 +6,7 @@ pkgdesc="Stardict English Thesaurus"
 url="http://download.huzheng.org/"
 arch=('any')
 license=(public-domain)
-source=(http://download.huzheng.org/dict.org/$pkgname-$pkgver.tar.bz2¬)
+source=(http://download.huzheng.org/dict.org/$pkgname-$pkgver.tar.bz2)
 md5sums=('b916732a00d5e11750a82a4bc62c2052')
 
 package() {
