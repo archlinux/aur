@@ -1,0 +1,12 @@
+pkgbase = catp
+	pkgdesc = Print the output of a running process
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/rapiz1/catp
+	arch = x86_64
+	license = GPL
+	makedepends = rust
+	source = v0.2.0-catp-x86_64-unknown-linux-gnu.zip::https://github.com/rapiz1/catp/releases/download/v0.2.0/catp-x86_64-unknown-linux-gnu.zip
+	sha512sums = a6ffa2e81f8732116c8bb8d92e26fe6e08f0184fc1eed42ab02f202fedca97e337996adf47bde488c65d2bb3139a4ac9efc487f5a0381bbe72dc9e58276ca148
+
+pkgname = catp
