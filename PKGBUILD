@@ -3,7 +3,7 @@
 _pkgorg=gitlab.com/mipimipi
 pkgname=crema-git
 _pkgname=crema
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Manage (remote) custom repositories"
 arch=(
