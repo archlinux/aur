@@ -6,7 +6,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-ge-custom
-_srctag=GE-Proton7-23
+_srctag=GE-Proton7-24
 pkgver=${_srctag//-/.}
 pkgrel=1
 epoch=1
@@ -52,7 +52,6 @@ depends=(
   libsm            lib32-libsm
   gcc-libs         lib32-gcc-libs
   libpcap          lib32-libpcap
-  faudio           lib32-faudio
   desktop-file-utils
 )
 
@@ -157,8 +156,8 @@ build() {
   # MingW Wine builds fail with relro
   export LDFLAGS="${LDFLAGS/,-z,relro/}"
 
-  export CFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
-  export CXXFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
+  export CFLAGS="-O2 -march=nocona -mtune=core-avx2 -pipe"
+  export CXXFLAGS="-O2 -march=nocona -mtune=core-avx2 -pipe"
   export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
   export CFLAGS+=" -mno-avx2 -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf"
@@ -175,7 +174,6 @@ build() {
     --prefix=/usr \
     --libdir=/usr/lib \
     --with-x \
-    --with-faudio \
     --with-gstreamer \
     --with-mingw \
     --with-alsa \
@@ -200,7 +198,6 @@ build() {
   ../$pkgname/proton-wine/configure \
     --prefix=/usr \
     --with-x \
-    --with-faudio \
     --with-gstreamer \
     --with-mingw \
     --with-alsa \
