@@ -22,11 +22,11 @@ source=("element-web::${_giturl}/element-web.git"
         autolaunch.patch
         io.element.Element.desktop
         element-desktop.sh)
-sha256sums=('SKIP'
+sha512sums=('SKIP'
             'SKIP'
-            'aaae4ffa41590361dac0c159aecc1166f69e459e89faa9d5cab1202f0277e06f'
-            '0103f28a32fe31f698836516783c1c70a76a0117b5df7fd0af5c422c224220f9'
-            'c1bd9ace215e3ec9af14d7f28b163fc8c8b42e23a2cf04ce6f4ce2fcc465feba')
+            '76f0e19739d2eb409524e13336631c321d199ee3135ffbe0c92458d566a5588b9453db50454d25f2b892fc176c4bf0395399f10a090c8cc33330ce96cb4c0b02'
+            '72966c7067a18a9b19d6164354f4b8622aaa1c5cc29591c5a406018873613747613642a758fdfe9ce09cb0a85085117d1ab8e1131dc36c9ff5bfb4d21ef410c3'
+            '246f102c5768855deb155e6c33fc53f69ddec6d211db4eef8730cfba6e41bb01cc0b8983c2411c42872a5b768310d2495f919268f9420cacc2a12ad4e4ff11eb')
 
 pkgver() {
   cd "$srcdir/element-web"
@@ -48,11 +48,8 @@ prepare() {
   cd ../element-desktop
   patch -p1 < ../autolaunch.patch
   sed -i 's|"target": "deb"|"target": "dir"|' package.json
-  # sed -i 's|"electronVersion": "13.1.6"|"electronVersion": "13.1.8"|' package.json
   sed -i 's|"https://packages.element.io/desktop/update/"|null|' element.io/release/config.json
   yarn install --no-fund
-
-  cd ../element-web/node_modules/matrix-react-sdk
 }
 
 build() {
@@ -83,7 +80,7 @@ package_element-web-git() {
 package_element-desktop-git() {
   pkgdesc+="desktop version."
   replaces=(riot-desktop)
-  depends=("element-web-git=${pkgver}" ${_electron})
+  depends=("element-web-git=${pkgver}" ${_electron} libsecret)
   provides=(element-desktop)
   conflicts=(element-desktop)
   backup=("etc/element/config.json")
