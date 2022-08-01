@@ -3,7 +3,7 @@ if command -v module 2>&1 >/dev/null; then
 else
 export nvhome=/opt/nvidia
 export target=Linux_x86_64
-export version=22.5
+export version=22.7
 
 export nvcudadir=$nvhome/$target/$version/cuda
 export nvcompdir=$nvhome/$target/$version/compilers
