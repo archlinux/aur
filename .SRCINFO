@@ -1,6 +1,6 @@
 pkgbase = guayadeque-git
 	pkgdesc = Lightweight music player
-	pkgver = 0.4.6.r2145.6be35ba2
+	pkgver = 0.4.6.r2224.a8b47a68
 	pkgrel = 1
 	url = http://guayadeque.org/
 	arch = i686
@@ -24,7 +24,8 @@ pkgbase = guayadeque-git
 	provides = guayadeque
 	conflicts = guayadeque
 	source = git+https://github.com/anonbeat/guayadeque.git
+	source = wxwidgets.patch
 	sha512sums = SKIP
+	sha512sums = bdf0de22543b1c0db7e5619e4740ef7976bdc4f4428e7413824dce585ccc51b99af747ccacb5c9da931706b176f93f80c8f4669c9b0acd3b158974b3b0b6be10
 
 pkgname = guayadeque-git
-
