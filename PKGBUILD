@@ -2,7 +2,7 @@
 _base=sport-activities-features
 pkgname=python-${_base}
 pkgdesc="Minimalistic toolbox for extracting features from sports activity files written in Python"
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 arch=(any)
 url="https://github.com/firefly-cpp/${_base}"
@@ -11,7 +11,7 @@ depends=(python-matplotlib python-geopy python-tcxreader python-requests python-
 makedepends=(python-build python-install python-poetry-core)
 checkdepends=(python-pytest)
 source=(${url}/archive/${pkgver}.tar.gz)
-sha512sums=('252d7dfc5ceb930ab49b8db7a2bb8898612cfa3ea2bab24fdddadfccf74076a4f698cc6fc3ac5f44cbb399fa082393fc58b47a56f3cdb530e9209cee4c061385')
+sha512sums=('d42b23f962eac5686cdb30610313e34697604a27e654eb7a294b6f24386660f88fdeb25f398a4e0684c84176c3260028419bc340f83c9db7ab5cd9379b0c2553')
 
 build() {
   cd ${_base}-${pkgver}
@@ -20,7 +20,7 @@ build() {
 
 check() {
   cd ${_base}-${pkgver}
-  python -m pytest -k 'not generated_object_altitudes and not generated_object_properties and not weather_between_two_timestamps and not average_weather_size'
+  python -m pytest
 }
 
 package() {
