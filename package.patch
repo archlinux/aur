@@ -1,18 +1,90 @@
-diff '--color=auto' --unified --recursive --text src/mulle-bashfunctions-3.4.0/mulle-bashfunctions-env src.mod/mulle-bashfunctions-3.4.0/mulle-bashfunctions-env
---- src/mulle-bashfunctions-3.4.0/mulle-bashfunctions-env	2021-07-23 10:46:00.000000000 +0100
-+++ src.mod/mulle-bashfunctions-3.4.0/mulle-bashfunctions-env	2021-08-21 17:38:55.233157095 +0100
-@@ -349,7 +349,7 @@
+diff '--color=auto' --unified --recursive --text src/mulle-bashfunctions-4.1.1/src/mulle-bashfunctions-all.sh src.mod/mulle-bashfunctions-4.1.1/src/mulle-bashfunctions-all.sh
+--- src/mulle-bashfunctions-4.1.1/src/mulle-bashfunctions-all.sh	2022-07-12 10:35:08.000000000 +0100
++++ src.mod/mulle-bashfunctions-4.1.1/src/mulle-bashfunctions-all.sh	2022-08-01 11:09:46.927637560 +0100
+@@ -2324,7 +2324,7 @@
+    prefix="${RVAL}"
  
-    # now setup the global variable
  
 -   RVAL="${prefix}/libexec/${subdir}"
 +   RVAL="${prefix}/lib/${subdir}"
     if [ ! -f "${RVAL}/${matchfile}" ]
     then
        RVAL="${exedirpath}/src"
-diff '--color=auto' --unified --recursive --text src/mulle-bashfunctions-3.4.0/src/mulle-init.sh src.mod/mulle-bashfunctions-3.4.0/src/mulle-init.sh
---- src/mulle-bashfunctions-3.4.0/src/mulle-init.sh	2021-07-23 10:46:00.000000000 +0100
-+++ src.mod/mulle-bashfunctions-3.4.0/src/mulle-init.sh	2021-08-21 17:39:17.348482106 +0100
+@@ -2345,7 +2345,7 @@
+ 
+    if [ ! -f "${RVAL}/${matchfile}" ]
+    then
+-      printf "%s\n" "$0 fatal error: Could not find \"${subdir}\" libexec (${PWD#${MULLE_USER_PWD}/})" >&2
++      printf "%s\n" "$0 fatal error: Could not find \"${subdir}\" lib (${PWD#${MULLE_USER_PWD}/})" >&2
+       exit 1
+    fi
+ }
+diff '--color=auto' --unified --recursive --text src/mulle-bashfunctions-4.1.1/src/mulle-bashfunctions-embed.sh src.mod/mulle-bashfunctions-4.1.1/src/mulle-bashfunctions-embed.sh
+--- src/mulle-bashfunctions-4.1.1/src/mulle-bashfunctions-embed.sh	2022-07-12 10:35:08.000000000 +0100
++++ src.mod/mulle-bashfunctions-4.1.1/src/mulle-bashfunctions-embed.sh	2022-08-01 11:09:46.934304219 +0100
+@@ -2139,7 +2139,7 @@
+    prefix="${RVAL}"
+ 
+ 
+-   RVAL="${prefix}/libexec/${subdir}"
++   RVAL="${prefix}/lib/${subdir}"
+    if [ ! -f "${RVAL}/${matchfile}" ]
+    then
+       RVAL="${exedirpath}/src"
+@@ -2160,7 +2160,7 @@
+ 
+    if [ ! -f "${RVAL}/${matchfile}" ]
+    then
+-      printf "%s\n" "$0 fatal error: Could not find \"${subdir}\" libexec (${PWD#${MULLE_USER_PWD}/})" >&2
++      printf "%s\n" "$0 fatal error: Could not find \"${subdir}\" lib (${PWD#${MULLE_USER_PWD}/})" >&2
+       exit 1
+    fi
+ }
+diff '--color=auto' --unified --recursive --text src/mulle-bashfunctions-4.1.1/src/mulle-bashfunctions-minimal.sh src.mod/mulle-bashfunctions-4.1.1/src/mulle-bashfunctions-minimal.sh
+--- src/mulle-bashfunctions-4.1.1/src/mulle-bashfunctions-minimal.sh	2022-07-12 10:35:08.000000000 +0100
++++ src.mod/mulle-bashfunctions-4.1.1/src/mulle-bashfunctions-minimal.sh	2022-08-01 11:09:46.940970880 +0100
+@@ -2324,7 +2324,7 @@
+    prefix="${RVAL}"
+ 
+ 
+-   RVAL="${prefix}/libexec/${subdir}"
++   RVAL="${prefix}/lib/${subdir}"
+    if [ ! -f "${RVAL}/${matchfile}" ]
+    then
+       RVAL="${exedirpath}/src"
+@@ -2345,7 +2345,7 @@
+ 
+    if [ ! -f "${RVAL}/${matchfile}" ]
+    then
+-      printf "%s\n" "$0 fatal error: Could not find \"${subdir}\" libexec (${PWD#${MULLE_USER_PWD}/})" >&2
++      printf "%s\n" "$0 fatal error: Could not find \"${subdir}\" lib (${PWD#${MULLE_USER_PWD}/})" >&2
+       exit 1
+    fi
+ }
+diff '--color=auto' --unified --recursive --text src/mulle-bashfunctions-4.1.1/src/mulle-bashfunctions.sh src.mod/mulle-bashfunctions-4.1.1/src/mulle-bashfunctions.sh
+--- src/mulle-bashfunctions-4.1.1/src/mulle-bashfunctions.sh	2022-07-12 10:35:08.000000000 +0100
++++ src.mod/mulle-bashfunctions-4.1.1/src/mulle-bashfunctions.sh	2022-08-01 11:09:46.914304241 +0100
+@@ -2324,7 +2324,7 @@
+    prefix="${RVAL}"
+ 
+ 
+-   RVAL="${prefix}/libexec/${subdir}"
++   RVAL="${prefix}/lib/${subdir}"
+    if [ ! -f "${RVAL}/${matchfile}" ]
+    then
+       RVAL="${exedirpath}/src"
+@@ -2345,7 +2345,7 @@
+ 
+    if [ ! -f "${RVAL}/${matchfile}" ]
+    then
+-      printf "%s\n" "$0 fatal error: Could not find \"${subdir}\" libexec (${PWD#${MULLE_USER_PWD}/})" >&2
++      printf "%s\n" "$0 fatal error: Could not find \"${subdir}\" lib (${PWD#${MULLE_USER_PWD}/})" >&2
+       exit 1
+    fi
+ }
+diff '--color=auto' --unified --recursive --text src/mulle-bashfunctions-4.1.1/src/mulle-init.sh src.mod/mulle-bashfunctions-4.1.1/src/mulle-init.sh
+--- src/mulle-bashfunctions-4.1.1/src/mulle-init.sh	2022-07-12 10:35:08.000000000 +0100
++++ src.mod/mulle-bashfunctions-4.1.1/src/mulle-init.sh	2022-08-01 11:04:21.128004584 +0100
 @@ -155,7 +155,7 @@
  
     # now setup the global variable

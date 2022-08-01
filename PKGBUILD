@@ -1,18 +1,18 @@
 # Maintainer: Jonathan Boyle <programmerfalcon@gmail.com>
 pkgname=mulle-bashfunctions
-pkgver=3.4.0
+pkgver=4.1.1
 pkgrel=1
 epoch=1
-pkgdesc="A versioned collection of bash functions"
+pkgdesc="A collection of shell functions"
 arch=('any')
 url="https://github.com/mulle-nat/mulle-bashfunctions"
 license=('BSD3')
 groups=('mulle-sde-all')
 depends=('bash')
 changelog="RELEASENOTES.md"
-source=("https://github.com/mulle-nat/mulle-bashfunctions/archive/3.4.0.tar.gz" "package.patch")
+source=("https://github.com/mulle-nat/mulle-bashfunctions/archive/4.1.1.tar.gz" "package.patch")
 noextract=()
-md5sums=('fa6c1feb32d0cc2c83b4926788d30b18' '732d4569ee354923f89e4dc30af50f0c')
+md5sums=('910b840579c70b831efb23d241879ddf' 'ae1135c609e963283f0840afd5d21f86')
 validpgpkeys=()
 
 package() {

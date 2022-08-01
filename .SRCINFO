@@ -1,6 +1,6 @@
 pkgbase = mulle-bashfunctions
-	pkgdesc = A versioned collection of bash functions
-	pkgver = 3.4.0
+	pkgdesc = A collection of shell functions
+	pkgver = 4.1.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/mulle-nat/mulle-bashfunctions
@@ -9,9 +9,9 @@ pkgbase = mulle-bashfunctions
 	groups = mulle-sde-all
 	license = BSD3
 	depends = bash
-	source = https://github.com/mulle-nat/mulle-bashfunctions/archive/3.4.0.tar.gz
+	source = https://github.com/mulle-nat/mulle-bashfunctions/archive/4.1.1.tar.gz
 	source = package.patch
-	md5sums = fa6c1feb32d0cc2c83b4926788d30b18
-	md5sums = 732d4569ee354923f89e4dc30af50f0c
+	md5sums = 910b840579c70b831efb23d241879ddf
+	md5sums = ae1135c609e963283f0840afd5d21f86
 
 pkgname = mulle-bashfunctions
