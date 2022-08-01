@@ -1,6 +1,6 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname='diaspora-postgresql'
-pkgver=0.7.17.0
+pkgver=0.7.18.0
 pkgrel=1
 pkgdesc="A distributed privacy aware social network (PostgreSQL)"
 arch=('i686' 'x86_64')
@@ -57,7 +57,7 @@ build() {
   msg "Setup build directory"
   rm -rf $_builddir
   mkdir -p $_builddir
-  cp -Rf $srcdir/diaspora-0.7.17.0/{bin,app,config,db,public,lib,script,vendor,config.ru,Gemfile,Gemfile.lock,Rakefile} $_builddir
+  cp -Rf $srcdir/diaspora-0.7.18.0/{bin,app,config,db,public,lib,script,vendor,config.ru,Gemfile,Gemfile.lock,Rakefile} $_builddir
 
   cd $_builddir
 
@@ -137,7 +137,7 @@ package() {
   ln -sf /var/log/diaspora                     $pkgdir/usr/share/webapps/diaspora/log
 }
 
-sha256sums=('d54f339c1f8da70a87e11240d07dab2645a5ffefa6dc2daf0cf893f84aef0564'
+sha256sums=('27b3a279c293ec12e63121365cdd3ad7c483ac9ee5ce0806fb4da210a08ac56b'
             'aae126c4b1bcba6265d3d925dc3845bb034defa5606385c22dfb053111b57685'
             'd10f10439e56c38a9960e7cd481c7b44a68bc0ecf7c88b91d9cafb454aa6ffd0'
             '7128024976c95d511d8995c472907fe0b8c36fe5b45fef57fc053e3fadcae408'
