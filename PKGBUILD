@@ -29,9 +29,9 @@ build() {
 
 package() {
     cd ${_pkgname}-${pkgver}
-
     install -Dm 755 "bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-
     install -Dm 644 "res/USB_flash_drive.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+
+    cd ${srcdir}
     install -Dm 644 -t "${pkgdir}/usr/share/applications" "${pkgname}.desktop"
 }
