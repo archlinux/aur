@@ -1,6 +1,6 @@
 pkgbase = mathics-django
 	pkgdesc = The Django front-end to Mathics.
-	pkgver = 4.0.2
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://mathics.org/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = mathics-django
 	depends = python-networkx
 	depends = python-requests
 	optdepends = python-ujson: faster than the native json library, but not supported in pyston
-	source = mathics-django-4.0.2.tar.gz::https://github.com/Mathics3/mathics-django/releases/download/4.0.2/Mathics-Django-4.0.2.tar.gz
-	sha256sums = 432cf8da8a6f73164c6a1350ba101b15ffcd05c8754b14eae2f3dd78ac5bebbf
+	source = mathics-django-5.0.0.tar.gz::https://github.com/Mathics3/mathics-django/releases/download/5.0.0/Mathics-Django-5.0.0.tar.gz
+	sha256sums = 553dbfc16880d44d42d45e86b357d1a74d5b2f096a02c179d3bd501633711da6
 
 pkgname = mathics-django
