@@ -2,18 +2,18 @@
 ## Valid numbers between: 0 to 99
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 98 (Intel native) or 99 (AMD native)
-_microarchitecture=0
+_microarchitecture=98
 
 ## Major kernel version
-_major=5.18
+_major=5.19
 ## Minor kernel version
-_minor=15
+_minor=0
 
 ## PKGBUILD ##
 
 pkgbase=linux-multimedia
-#pkgver=${_major}
-pkgver=${_major}.${_minor}
+pkgver=${_major}
+#pkgver=${_major}.${_minor}
 pkgrel=1
 pkgdesc='Linux Multimedia Optimized'
 url="https://www.kernel.org/"
@@ -37,7 +37,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('69804febdc388a69dfb64493b7b58d402853de3a14144ea8db7fd67c30dcbe3c'
+sha256sums=('ff240c579b9ee1affc318917de07394fc1c3bb49dac25ec1287370c2e15005a8'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -68,7 +68,8 @@ prepare() {
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-cfs.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0006-add-acs-overrides_iommu.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-fsync1_via_futex_waitv.patch
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-winesync.patch
+  #patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-winesync.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0010-lru_${_major}.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0012-misc-additions.patch
 
   msg2 "Apply GCC Optimization Patch..."
