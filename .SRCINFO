@@ -1,11 +1,10 @@
 pkgbase = impressive
 	pkgdesc = A simple presentation program that displays slideshows of PDF, image or video files
-	pkgver = 0.13.0_r311
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = http://impressive.sourceforge.net
 	arch = any
 	license = GPL2
-	makedepends = subversion
 	depends = python-pygame
 	depends = python-opengl
 	depends = python-pillow
@@ -15,7 +14,7 @@ pkgbase = impressive
 	optdepends = xdg-utils: for starting web or e-mail hyperlinks from PDF documents
 	optdepends = mplayer: for sound and video playback
 	optdepends = ffmpeg: for more efficient generation of video preview images
-	source = impressive::svn+https://svn.emphy.de/impressive/trunk/impressive#revision=311
-	sha256sums = SKIP
+	source = http://downloads.sourceforge.net/impressive/Impressive-0.13.1.tar.gz
+	sha256sums = 2489173bbf8ab12b449907d811030fa973d23a30e637c635f17527eaba142d34
 
 pkgname = impressive
