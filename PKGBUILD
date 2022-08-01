@@ -1,4 +1,4 @@
-# Maintainer: Murtaza Udaipurwala <murtaza.u6e24@gmail.com>
+# Maintainer: Murtaza Udaipurwala <murtaza@murtazau.xyz>
 pkgname=transmission-remote-tui-git
 _gitname=${pkgname%-git}
 pkgrel=1
@@ -7,8 +7,7 @@ pkgdesc="A TUI for BitTorrent client Transmission"
 arch=('any')
 url="https://github.com/murtaza-u/transmission-remote-tui"
 license=('GPL3')
-depends=("transmission-cli")
-makedepends=("git" "go")
+makedepends=("git" "go" "make")
 provides=("trt")
 source=("git+$url")
 md5sums=('SKIP')
