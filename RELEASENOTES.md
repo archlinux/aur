@@ -1,3 +1,28 @@
+### 1.1.1
+
+* * fix command -v being used with mudo
+
+## 1.1.0
+
+* add build --analyze flag for scan-build/mulle-scan-build
+* some fixes for Windows
+
+
+# 1.0.0
+
+* big function rename to `<tool>`::`<file>`::`<function>` to make it easier to read hopefully
+* enables an 'aux' definition directory, to support share/etc style definition placements
+* mulle-make will no longer clobber an existing build directory, that it hasn't created itself
+* the autoconf plugin now looks to a bootstrap script in addition to autogen.sh, still prefering autogen.sh though
+* definition **remove** is now definition **unset**. That was necessary because a remove may reestablish a default value, where as an unset really NULLs the value so to speak
+* experimental support to build Makefile projects
+* recognizes and forwards the ``OTHER_CFLAGS`` (as well as CPP, CXX, LD) environment variables
+* ninja will not be used by default, unless the version is >= 1.11 (which is not released yet)
+* runs with zsh if bash is not installed
+* if there are no headers to install, ninja install will be skipped in the cmake Headers phase, which circumvents a useless error
+* mulle-make uses mulle-bashfunctions 4 now
+
+
 ## 0.16.0
 
 * Various small improvements
@@ -281,7 +306,7 @@
 
 ### 0.3.3
 
-* unify mulle-bashfunctions-env usage
+* unify mulle-bashfunctions usage
 
 ### 0.3.2
 
