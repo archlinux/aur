@@ -1,3 +1,14 @@
+### 1.0.1
+
+* Various small improvements
+
+# 1.0.0
+
+* big function rename to `<tool>`::`<file>`::`<function>` to make it easier to read hopefully
+* uses mulle-bashfunctions 4 now
+* can now run under zsh if bash is not available
+
+
 ## 0.5.0
 
 * Various small improvements
