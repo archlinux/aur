@@ -1,17 +1,18 @@
-# Maintainer: Stunts <f.pinamartins@gmail.com>
+# Contributor: xiota <archuser@mentalfossa.com>
+# Contributor: Stunts <f.pinamartins@gmail.com>
 pkgname=xboxdrv-develop-git
 _pkgname=xboxdrv
-pkgver=0.8.4.r457.gc12c2b5
+pkgver=0.8.4.r455.g1d267b9
 pkgrel=1
-pkgdesc="An XBox/XBox 360 gamepad driver - as alternative to the xpad-kernel module - with more configurability, runs in userspace and supports a multitude of controllers. Bleeding edge version."
+pkgdesc="XBox/XBox 360 userspace gamepad driver and emulator"
 arch=('i686' 'x86_64')
 url="https://xboxdrv.gitlab.io"
 license=('GPL3')
 depends=('libx11' 'dbus-glib' 'libusb' 'dbus-python' 'systemd' 'fmt' 'bluez-libs')
-makedepends=('git' 'scons' 'boost' 'pkg-config')
-provides=('xboxdrv')
-conflicts=('xboxdrv')
-source=('git+https://gitlab.com/xboxdrv/xboxdrv.git#branch=develop'
+makedepends=('git' 'scons' 'pkg-config')
+provides=('xboxdrv' 'xboxdrv-git' 'xboxdrv-sl6566bk' 'xboxdrv-cebtenzzre-git')
+conflicts=('xboxdrv' 'xboxdrv-git' 'xboxdrv-sl6566bk' 'xboxdrv-cebtenzzre-git')
+source=('git+https://gitlab.com/xboxdrv/xboxdrv.git#commit=1d267b92326375f2b8f3dd895c34f8eacc703a4e'
         'xboxdrv.service'
         'xboxdrv.conf')
 sha256sums=('SKIP'
