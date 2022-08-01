@@ -1,6 +1,6 @@
 pkgbase = dsview-git
 	pkgdesc = GUI programe for supporting various instruments from DreamSourceLab, including logic analyzer, oscilloscope, etc.
-	pkgver = 1.2.0.r14.g1d249ff
+	pkgver = 1.2.0.r15.g9264bce
 	pkgrel = 1
 	url = http://www.dreamsourcelab.com/
 	arch = i686

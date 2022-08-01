@@ -1,8 +1,9 @@
 # Maintainer: Anatol Pomozov
+# Co-Maintainer: Abdelhak Bougouffa <abougouffa@fedoraproject.org>
 # Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=dsview-git
-pkgver=1.2.0.r14.g1d249ff
+pkgver=1.2.0.r15.g9264bce
 pkgrel=1
 pkgdesc='GUI programe for supporting various instruments from DreamSourceLab, including logic analyzer, oscilloscope, etc.'
 arch=(i686 x86_64)
