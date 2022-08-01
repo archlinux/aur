@@ -1,6 +1,6 @@
 pkgbase = electron19-bin
 	pkgdesc = Build cross platform desktop apps with web technologies - binary version 19
-	pkgver = 19.0.9
+	pkgver = 19.0.10
 	pkgrel = 1
 	url = https://electronjs.org/
 	arch = x86_64
@@ -20,16 +20,16 @@ pkgbase = electron19-bin
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron19=19.0.9
-	provides = electron=19.0.9
+	provides = electron19=19.0.10
+	provides = electron=19.0.10
 	conflicts = electron19
-	source_x86_64 = electron19-bin-chromedriver-19.0.9-1-x86_64.zip::https://github.com/electron/electron/releases/download/v19.0.9/chromedriver-v19.0.9-linux-x64.zip
-	source_x86_64 = electron19-bin-19.0.9-1-x86_64.zip::https://github.com/electron/electron/releases/download/v19.0.9/electron-v19.0.9-linux-x64.zip
-	sha256sums_x86_64 = 9d8f154eb5e7d45b1751896c836a29c4a7cef39a6ea01ed2313e0211566fe1af
-	sha256sums_x86_64 = 55362da981265b3afd6c6813b5b04f0e00474656518a732bbfef6f78eae35fdf
-	source_aarch64 = electron19-bin-chromedriver-19.0.9-1-aarch64.zip::https://github.com/electron/electron/releases/download/v19.0.9/chromedriver-v19.0.9-linux-arm64.zip
-	source_aarch64 = electron19-bin-19.0.9-1-aarch64.zip::https://github.com/electron/electron/releases/download/v19.0.9/electron-v19.0.9-linux-arm64.zip
-	sha256sums_aarch64 = ea39b8161dbbd986191ec0131be2ec12e9c55070c2efc8f5fa0de4edd9ee6bc0
-	sha256sums_aarch64 = 92cb82d91b663fa925ebf741d4b618c1b2a21b1d51ea0cd73ce1dee7e5fa284f
+	source_x86_64 = electron19-bin-chromedriver-19.0.10-1-x86_64.zip::https://github.com/electron/electron/releases/download/v19.0.10/chromedriver-v19.0.10-linux-x64.zip
+	source_x86_64 = electron19-bin-19.0.10-1-x86_64.zip::https://github.com/electron/electron/releases/download/v19.0.10/electron-v19.0.10-linux-x64.zip
+	sha256sums_x86_64 = be64d0afddd3a368a7287eaff01c70e4cdc0dd070ee4ffafd6c47a4d037b1650
+	sha256sums_x86_64 = 656d2b2d6f0ae0e4d6a0cd565bcc594d1233dafe246981e49a6825e6e547ec3d
+	source_aarch64 = electron19-bin-chromedriver-19.0.10-1-aarch64.zip::https://github.com/electron/electron/releases/download/v19.0.10/chromedriver-v19.0.10-linux-arm64.zip
+	source_aarch64 = electron19-bin-19.0.10-1-aarch64.zip::https://github.com/electron/electron/releases/download/v19.0.10/electron-v19.0.10-linux-arm64.zip
+	sha256sums_aarch64 = 4fd6649cbdc691721d9b6a00a045cb0eab7476716ef5e7cb19e5db8cd04f8aee
+	sha256sums_aarch64 = 7e8de84f39337b717cad72323037593decd40d5fabb5ec76222eb065d7282d1c
 
 pkgname = electron19-bin
