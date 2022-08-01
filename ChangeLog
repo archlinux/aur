@@ -441,3 +441,15 @@ Improvements:
 - in the (unlikely 😉) case that something goes wrong with one of the tasks or video conferencing integrations, Morgen will let you know more clearly
 - the event merging feature is now enabled by default
 
+=== Morgen 2.5.9
+New Features:
+- Early access to Morgen for iOS and Android is now available. Capacity is still limited, so access to the mobile app is available to Morgen subscribers (personal and pro plans) only at this time. The mobile app includes the most used and relied on Morgen features. We continue to develop, so you can expect it to keep getting better. In the meantime, we want to hear your feedback.
+
+Improvements:
+- Events scheduled in Morgen with a Teams meeting now correctly trigger the Join button in the MS Teams app.
+
+
+Fixes:
+- Sometimes subtasks coming from external sources (Todoist, Microsoft To Do) were displayed in the wrong order. Now they are always anchored to the parent task.
+- We fixed a synchronization issue that could arise with some CalDAV providers.
+- We fixed a problem causing the memory usage of Morgen to grow over time - now Morgen will be less resource intensive on your system.
