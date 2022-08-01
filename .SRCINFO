@@ -1,7 +1,7 @@
 pkgbase = mathics
 	pkgdesc = A general-purpose computer algebra system.
-	pkgver = 4.0.0
-	pkgrel = 5
+	pkgver = 5.0.0
+	pkgrel = 1
 	url = https://mathics.org/
 	arch = any
 	license = GPL3
@@ -16,11 +16,14 @@ pkgbase = mathics
 	depends = python-llvmlite
 	depends = python-requests
 	depends = cython
+	depends = python-recordclass
 	optdepends = python-psutil: SystemMemory and MemoryAvailable
 	optdepends = python-scikit-image: FindMinimum can use this
 	optdepends = python-lxml: for HTML parsing used in builtin/fileformats/html
 	optdepends = python-wordcloud: Used in builtin/image.py by WordCloud
-	source = mathics-4.0.0.tar.gz::https://github.com/mathics/Mathics/releases/download/4.0.0/Mathics3-4.0.0.tar.gz
-	sha256sums = d50ee5ad07db845609078c99af789253337a45f50bef6f8b09262f48dca8da7c
+	source = mathics-5.0.0.tar.gz::https://github.com/Mathics3/mathics-core/releases/download/5.0.0/Mathics3-5.0.0.tar.gz
+	source = https://raw.githubusercontent.com/Mathics3/mathics-core/5.0.0/requirements-cython.txt
+	sha256sums = caeb4ce0234758367d9e3d7ef8d351ed3b7290d1bc52b7b1c99a7512d788b5bc
+	sha256sums = 9422d9bf7fc64748317f9345727ef5ec878d6805ea77afe2ee29997086463bdf
 
 pkgname = mathics
