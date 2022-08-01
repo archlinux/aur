@@ -1,0 +1,19 @@
+pkgbase = eartag
+	pkgdesc = Simple music tag editor
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/knuxify/eartag
+	arch = any
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = meson
+	depends = libadwaita
+	depends = taglib
+	depends = python-gobject
+	depends = python-eyed3
+	depends = python-pytaglib
+	depends = python-magic
+	source = https://github.com/knuxify/eartag/archive/0.1.0.tar.gz
+	b2sums = 21407b577e6a3eed46e77c250cf5a4b21522b4772136e313b6024766f783923c559cb4abb11af86e9560b597b75f76d0504a8fc7b111e92fae2e98460ba26a5a
+
+pkgname = eartag
