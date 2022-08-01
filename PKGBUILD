@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://jihulab.com/ambition-echo/earth_wallpaper"
 license=('GPL3')
 source=("https://jihulab.com/api/v4/projects/40487/packages/generic/earth_wallpaper/$pkgver/earth-wallpaper-deepin-amd64.deb")
-sha256sums=('11403a78ddbb0a5d0ed431197d1acceb47c2ddeb2fa6d92a4c8d533102d9461c')
+sha256sums=('SKIP')
 depends=('qt5-base' 'python' 'python-pillow' 'python-requests')
 build() {
     bsdtar -xpf "$srcdir/earth-wallpaper-deepin-amd64.deb"
