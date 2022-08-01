@@ -1,6 +1,6 @@
 # Maintainer: Taylor Allen
-pkgname=shortsync-git
-_pkgname=shortsync-git
+pkgname=shortsync
+_pkgname=shortsync
 pkgver=1
 pkgrel=1
 epoch=
