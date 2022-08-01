@@ -1,0 +1,15 @@
+pkgbase = python-dephell-discover
+	pkgdesc = Find project modules and data files (packages and package_data for setup.py)
+	pkgver = 0.2.10
+	pkgrel = 6
+	url = https://github.com/dephell/dephell_discover
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-attrs
+	source = https://files.pythonhosted.org/packages/source/d/dephell_discover/dephell_discover-0.2.10.tar.gz
+	sha256sums = a2ad414e5e0fe16c82c537d6a3198afd9818c0c010760eccb23e2d60e5b66df6
+	b2sums = 2721bdee22c9edcdc11c7102fb034db4ec92b23bf8ac7c077c87036083cefecf34bbf1474bdb0ddfa252ca47d40181054b5eacff68daef8c4e7bad9f4426ea35
+
+pkgname = python-dephell-discover
