@@ -1,0 +1,16 @@
+pkgbase = mulle-semver
+	pkgdesc = semantic versioning tool
+	pkgver = 1.0.1
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/mulle-sde/mulle-semver
+	changelog = RELEASENOTES.md
+	arch = any
+	groups = mulle-sde-all
+	license = BSD3
+	depends = bash
+	depends = mulle-bashfunctions>=4.1.1
+	source = https://github.com/mulle-sde/mulle-semver/archive/1.0.1.tar.gz
+	md5sums = 946d98dab1de527b153011b4970aee02
+
+pkgname = mulle-semver
