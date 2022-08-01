@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
-Name=M32 edit
-X-GNOME-FullName=M32 edit
+Name=M32-Edit
+X-GNOME-FullName=M32-Edit
 Comment=
 Icon=/usr/share/pixmaps/m32-edit.png
 NoDisplay=false
