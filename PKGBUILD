@@ -3,10 +3,10 @@
 _pkgnamefmt=LibreOffice
 _pkgname=libreoffice
 pkgname=${_pkgname}-dev-bin
-_LOver=7.4.0.1
-pkgver=7.4.0.1
+_LOver=7.4.0.2
+pkgver=7.4.0.2
 #_basever=$( cut -f1-2 -d'.' <<< ${_LOver} )
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 license=('LGPL3')
 url="https://www.libreoffice.org/"
