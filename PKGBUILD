@@ -2,7 +2,7 @@
 
 _pkgname=fmt
 pkgname=mingw-w64-${_pkgname}
-pkgver=8.1.1
+pkgver=9.0.0
 pkgrel=1
 pkgdesc='Open-source formatting library for C++ (mingw-w64)'
 url='https://fmt.dev/'
@@ -13,16 +13,18 @@ checkdepends=('mingw-w64-wine')
 arch=('any')
 options=(!strip !buildflags staticlibs !lto)
 optdepends=()
-sha256sums=('3d794d3cf67633b34b2771eb9f073bde87e846e0d395d254df7b211ef1ec7346')
+sha256sums=('9a1e0e9e843a356d65c7604e2c8bf9402b50fe294c355de0095ebd42fb9bd2c5')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/fmtlib/${_pkgname}/archive/${pkgver}.tar.gz")
 
 _srcdir="${_pkgname}-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
-_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DNDEBUG' -DFMT_DOC=OFF -DCMAKE_CXX_STANDARD=20 )
+_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DNDEBUG' \
+	-DFMT_DOC=OFF -DCMAKE_CXX_STANDARD=20 )
 
 build() {
 	for _arch in ${_architectures}; do
-		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" -DFMT_TEST=OFF -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
+		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" -DFMT_TEST=OFF -DBUILD_SHARED_LIBS=OFF \
+			-DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
 		cmake --build "build-${_arch}-static"
 		
 		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DFMT_TEST=OFF
