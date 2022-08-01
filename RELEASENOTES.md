@@ -1,3 +1,25 @@
+## 1.1.0
+
+* added mulle-sourcetree-edit-csv and friends
+
+
+# 1.0.0
+
+* big function rename to `<tool>`::`<file>`::`<function>` to make it easier to read hopefully
+* list has now a -m option
+* experimental support for os-specific config files
+* implemented having a different config by uname, if so desired (needs reflect on each platform though)
+* cmake now used no-dynamic-link and no-static-link for `find_library`
+* fix wrong zombification, which means that mulle-sourcetree now doesn't refetch a lot of stuff gratuitously anymore *HUGE IMPROVEMENT*
+* removed parallel clean because of an as of yet undiagnosed problem with it
+* advertise tool in generated file
+* added a **diff** command
+* the status gained --shallow and --deep flags
+* the sync operation can perform some node syncs in parallel now (turn off with --serial)
+* needs mulle-bashfunctions 4.0.0 now
+* runs with zsh when installed, which can double the speed of sourcetree walk operations
+
+
 ## 0.25.0
 
 * change/fix --no-bequeath --bequeath flags so it does what it promises to do and not the opposite
@@ -123,7 +145,7 @@
 * aliases need to include the name, so you can determine the lookup order
 * buildorder is now using breadth-first for marks and in-order for filename to make things easier
 * support various dedupe options
-* `node_printf` can print environment variables now with %v{ENVNAME,,}
+* `sourcetree::node::printf` can print environment variables now with %v{ENVNAME,,}
 * many commands lose the unused filter options --marks --nodetypes and --permissions
 * there is now a duplicate command for nodes
 * node typeguess is a bit better now

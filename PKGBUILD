@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Boyle <programmerfalcon@gmail.com>
 pkgname=mulle-sourcetree
-pkgver=0.25.0
+pkgver=1.1.0
 pkgrel=1
 epoch=1
 pkgdesc="Project composition and maintenance with build support"
@@ -8,11 +8,11 @@ arch=('any')
 url="https://github.com/mulle-sde/mulle-sourcetree"
 license=('BSD3')
 groups=('mulle-sde-all')
-depends=('bash' 'mulle-bashfunctions>=3.4.0')
+depends=('bash' 'mulle-bashfunctions>=4.1.1' 'mulle-env>=4.1.0')
 changelog="RELEASENOTES.md"
-source=("https://github.com/mulle-sde/mulle-sourcetree/archive/0.25.0.tar.gz")
+source=("https://github.com/mulle-sde/mulle-sourcetree/archive/1.1.0.tar.gz")
 noextract=()
-md5sums=('549a2ab9c90ac9b722e8e6be9691a155')
+md5sums=('c0b6b01ab0a8a459c110ebc00ca6b56c')
 validpgpkeys=()
 
 package() {
