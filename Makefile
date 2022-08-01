@@ -17,3 +17,9 @@ prep:
 	make clean
 	make srcinfo
 	make clean
+
+rel:
+	make prep
+	git add -A
+	git commit -am "new release"
+	git push
