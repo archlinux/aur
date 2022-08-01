@@ -1,0 +1,17 @@
+pkgbase = python-dephell-shells
+	pkgdesc = Activate virtual environment for current shell
+	pkgver = 0.1.5
+	pkgrel = 3
+	url = https://github.com/dephell/dephell_shells
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-attrs
+	depends = python-pexpect
+	depends = python-shellingham
+	source = https://files.pythonhosted.org/packages/source/d/dephell_shells/dephell_shells-0.1.5.tar.gz
+	sha256sums = 77150b732db135d436f41c2c6f12694e6058a8609214117ee80f6c40234ac2d5
+	b2sums = 6cc99191ddd5ca5585aa45f8e6f3815a1f2ee2de1176e8e41f96bf65c6611fb744a368cbd727d1de2642f6f42cf6462ca364a90f76f4cec0f50059c111b6d9fd
+
+pkgname = python-dephell-shells
