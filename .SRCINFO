@@ -1,0 +1,27 @@
+pkgbase = zfsbootmenu
+	pkgdesc = ZFS bootloader for root-on-ZFS systems
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/zbm-dev/zfsbootmenu
+	arch = x86_64
+	license = MIT
+	makedepends = fakeroot
+	makedepends = make
+	depends = kexec-tools
+	depends = fzf
+	depends = bash
+	depends = mbuffer
+	depends = ncurses
+	depends = perl-sort-versions
+	depends = perl-boolean
+	depends = perl-yaml-pp
+	optdepends = dracut
+	optdepends = mkinitcpio
+	optdepends = efibootmgr
+	optdepends = refind
+	optdepends = syslinux
+	optdepends = grub
+	source = zfsbootmenu-v2.0.0.tar.gz::https://github.com/zbm-dev/zfsbootmenu/archive/v2.0.0.tar.gz
+	sha256sums = 466496e896a992fea9d46c55e48c6fcec1ab62b7022476571f0c41c015e31b13
+
+pkgname = zfsbootmenu
