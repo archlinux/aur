@@ -1,0 +1,14 @@
+pkgbase = catp-git
+	pkgdesc = Print the output of a running process
+	pkgver = r22.14c5e5b
+	pkgrel = 1
+	url = https://github.com/rapiz1/catp
+	arch = x86_64
+	license = GPL
+	makedepends = rust
+	provides = catp
+	conflicts = catp
+	source = catp-git-x86_64::git+https://github.com/rapiz1/catp.git
+	sha512sums = SKIP
+
+pkgname = catp-git
