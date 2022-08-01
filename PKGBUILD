@@ -1,6 +1,8 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 # Maintainer: Ariel AxionL <i at axionl dot me>
 # Contributor: lilydjwg <lilydjwg at gmail dot com>
+# Contributor: kearneyBack <191615342 at qq dot com>
+
 _pkgname=baidunetdisk
 pkgname=baidunetdisk-bin
 pkgver=4.11.5
