@@ -1,7 +1,7 @@
 pkgbase = baidunetdisk-electron
 	pkgdesc = Baidu Net Disk - a cloud storage client (Linux Version). Run with system electron.
-	pkgver = 4.10.5
-	pkgrel = 3
+	pkgver = 4.11.5
+	pkgrel = 1
 	url = https://pan.baidu.com
 	arch = x86_64
 	license = custom
@@ -13,7 +13,7 @@ pkgbase = baidunetdisk-electron
 	source = baidunetdisk-wrapper.sh
 	sha256sums = 17bda6036e07916971257f25731130fb1b760b80798fa13273db39268ab9f28c
 	sha256sums = 14e82c2e285ee28e1d38538f8a434d3a1301621225a3130667d875688a5e430f
-	source_x86_64 = baidunetdisk-electron-4.10.5.deb::http://wppkg.baidupcs.com/issue/netdisk/Linuxguanjia/4.10.5/baidunetdisk_4.10.5_amd64.deb
-	sha256sums_x86_64 = d9761b3c99a1740405e261580fc0ab990c243de7ac54b3a8a831145777dc9bb9
+	source_x86_64 = baidunetdisk-electron-4.11.5.deb::http://wppkg.baidupcs.com/issue/netdisk/Linuxguanjia/4.11.5/baidunetdisk_4.11.5_amd64.deb
+	sha256sums_x86_64 = c1038c831ea320e5c46d8d2ca164be38d637d30d4d12804117d0a68c136dda78
 
 pkgname = baidunetdisk-electron
