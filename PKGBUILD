@@ -12,7 +12,7 @@ url="https://${pkgname}.org"
 license=(GPL2)
 depends=('libpng' 'libglvnd' 'freetype2' 'openssl' 'gpsd'
   'qt5-serialport' 'qt5-multimedia' 'qt5-location' 'qt5-charts' 'qt5-script' 'qt5-webengine')
-makedepends=('cmake' 'mesa' 'qt5-tools')
+makedepends=('cmake' 'ninja' 'mesa' 'qt5-tools')
 source=(https://github.com/Stellarium/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz{,.asc})
 validpgpkeys=('79151C2E6351E7278DA1A730BF38D4D02A328DFF') # Alexander Wolf <alex.v.wolf@gmail.com>
 md5sums=('2aafc25f5736b8b5d6d2bcf6d7c2d118' 'SKIP')
@@ -25,6 +25,7 @@ build() {
   cmake \
     -S ${pkgname}-${pkgver} \
     -B build \
+    -G Ninja \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_C_COMPILER=gcc \

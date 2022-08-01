@@ -6,6 +6,7 @@ pkgbase = stellarium
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = mesa
 	makedepends = qt5-tools
 	depends = libpng
