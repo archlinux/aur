@@ -1,15 +1,17 @@
 pkgbase = fe
 	pkgdesc = AUR helper with a familiar subcommand system
-	pkgver = 1.0.8
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://github.com/baris-inandi/fe
 	arch = x86_64
-	license = GPLv3
+	license = GPL3
 	makedepends = git
 	makedepends = go
-	makedepends = bash
 	depends = bash
 	depends = sudo
+	depends = paru
+	backup = etc/fepacman.conf
+	backup = etc/paru.conf
 	source = git+https://github.com/baris-inandi/fe
 	md5sums = SKIP
 
