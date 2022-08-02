@@ -2,7 +2,7 @@
 # Contributor: Julien Nicoulaud <julien dot nicoulaud at gmail dot com>
 
 pkgname=gotify-cli
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="A command line interface for pushing messages to gotify/server"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9013f4afdcc717932e71ab217e09daf4c48e153b23454f5e732ad0f74a8c8979')
+sha256sums=('d44d0058a87684db8c61a9952a84327f7bab102d6a4a16547f7be18b9a9c052c')
 
 build() {
     _commit=$(zcat $pkgname-$pkgver.tar.gz | git get-tar-commit-id)
@@ -42,5 +42,6 @@ check() {
 package() {
     cd cli-$pkgver
     install -Dm755 gotify -t "$pkgdir/usr/bin"
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
