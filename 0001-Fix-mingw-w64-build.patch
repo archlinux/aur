@@ -1,4 +1,4 @@
-From aa6cb1ffc0a005e37d22b14faa3e31b642b33d7c Mon Sep 17 00:00:00 2001
+From 16d52c5ed320dcd7912d4e23c538608a42f32d04 Mon Sep 17 00:00:00 2001
 From: Tilmann Meyer <allescrafterx@gmail.com>
 Date: Fri, 17 Apr 2020 02:12:23 +0200
 Subject: [PATCH 1/2] Fix mingw-w64 build
@@ -16,7 +16,7 @@ Subject: [PATCH 1/2] Fix mingw-w64 build
  9 files changed, 46 insertions(+), 47 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index d245b6e..93bf967 100644
+index 2584e93..6c67324 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -3,6 +3,9 @@
@@ -55,10 +55,10 @@ index d245b6e..93bf967 100644
  ###############
  
  INCLUDE(${CC_SOURCE_DIR}/cmake/misc.cmake)
-@@ -249,14 +248,20 @@ IF(UNIX)
-   SET(CMAKE_REQUIRED_LIBRARIES ${CMAKE_REQUIRED_LIBRARIES} ${LIBNSL} ${LIBBIND} ${LIBICONV} ${LIBZ}
-     ${LIBSOCKET} ${CMAKE_DL_LIBS} ${LIBM} ${LIBPTHREAD})
-   SET(SYSTEM_LIBS ${SYSTEM_LIBS} ${LIBNSL} ${LIBBIND} ${LIBICONV} ${LIBZ}
+@@ -251,14 +250,20 @@ IF(UNIX)
+   SET(CMAKE_REQUIRED_LIBRARIES ${CMAKE_REQUIRED_LIBRARIES} ${LIBNSL} ${LIBBIND} ${LIBICONV} ${ZLIB_LIBRARY} 
+       ${LIBSOCKET} ${CMAKE_DL_LIBS} ${LIBM} ${LIBPTHREAD})
+   SET(SYSTEM_LIBS ${SYSTEM_LIBS} ${LIBNSL} ${LIBBIND} ${LIBICONV} 
 -    ${LIBSOCKET} ${CMAKE_DL_LIBS} ${LIBM} ${LIBPTHREAD})
 -  #remove possible dups from required libraries
 -  LIST(LENGTH CMAKE_REQUIRED_LIBRARIES rllength)
@@ -66,14 +66,14 @@ index d245b6e..93bf967 100644
 -    LIST(REMOVE_DUPLICATES CMAKE_REQUIRED_LIBRARIES)
 -  ENDIF()
 +    ${LIBSOCKET} ${CMAKE_DL_LIBS} ${LIBDL} ${LIBM} ${LIBPTHREAD})
-+ENDIF()
-+
+ ENDIF()
+ 
 +IF(MINGW)
 +  FIND_PACKAGE(Threads)
 +  LIST(APPEND CMAKE_REQUIRED_LIBRARIES ${LIBPTHREAD})
 +  LIST(APPEND SYSTEM_LIBS ${LIBPTHREAD})
- ENDIF()
- 
++ENDIF()
++
 +#remove possible dups from required libraries
 +LIST(LENGTH CMAKE_REQUIRED_LIBRARIES rllength)
 +IF(${rllength} GREATER 0)
@@ -116,10 +116,10 @@ index c1c883d..cdca6dc 100644
    ADD_CUSTOM_COMMAND(
      OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${symlink_name}
 diff --git a/include/ma_global.h b/include/ma_global.h
-index e8ca7df..fbf6798 100644
+index d6077f3..d68f921 100644
 --- a/include/ma_global.h
 +++ b/include/ma_global.h
-@@ -33,7 +33,7 @@
+@@ -34,7 +34,7 @@
  #define snprintf _snprintf
  #endif
  #endif
@@ -128,7 +128,7 @@ index e8ca7df..fbf6798 100644
  #endif
  
  #include <ma_config.h>
-@@ -437,7 +437,7 @@ typedef SOCKET_SIZE_TYPE size_socket;
+@@ -440,7 +440,7 @@ typedef SOCKET_SIZE_TYPE size_socket;
  #define NO_PISAM		/* Not needed anymore */
  #define NO_MISAM		/* Not needed anymore */
  #define NO_HASH			/* Not needed anymore */
@@ -138,7 +138,7 @@ index e8ca7df..fbf6798 100644
  #define USE_MY_STAT_STRUCT	/* For my_lib */
  #ifdef _MSC_VER
 diff --git a/include/mysql.h b/include/mysql.h
-index b66cf17..354d3db 100644
+index 8a3884c..a2bc3cd 100644
 --- a/include/mysql.h
 +++ b/include/mysql.h
 @@ -39,11 +39,7 @@ extern "C" {
@@ -153,7 +153,7 @@ index b66cf17..354d3db 100644
  
  #ifndef my_socket_defined
  #define my_socket_defined
-@@ -468,7 +464,7 @@ struct st_mysql_client_plugin
+@@ -471,7 +467,7 @@ struct st_mysql_client_plugin
    MYSQL_CLIENT_PLUGIN_HEADER
  };
  
@@ -163,10 +163,10 @@ index b66cf17..354d3db 100644
                    int argc, ...);
  struct st_mysql_client_plugin * STDCALL
 diff --git a/include/mysql/client_plugin.h b/include/mysql/client_plugin.h
-index 72939d2..77e4538 100644
+index 262fd4a..9a0e1e6 100644
 --- a/include/mysql/client_plugin.h
 +++ b/include/mysql/client_plugin.h
-@@ -180,7 +180,7 @@ typedef struct st_mysql_client_plugin_REMOTEIO
+@@ -194,7 +194,7 @@ typedef struct st_mysql_client_plugin_REMOTEIO
    @retval
    a pointer to the loaded plugin, or NULL in case of a failure
  */
@@ -176,10 +176,10 @@ index 72939d2..77e4538 100644
                    int argc, ...);
  
 diff --git a/libmariadb/CMakeLists.txt b/libmariadb/CMakeLists.txt
-index 4e46d98..b9a1618 100644
+index 7faf827..43ab846 100644
 --- a/libmariadb/CMakeLists.txt
 +++ b/libmariadb/CMakeLists.txt
-@@ -393,7 +393,7 @@ ENDIF()
+@@ -405,7 +405,7 @@ ENDIF()
  FILE(WRITE ${CC_BINARY_DIR}/manpages.list "${MARIADB_LIB_SYMBOLS};${MYSQL_LIB_SYMBOLS}")
  
  IF(WIN32)
@@ -188,7 +188,7 @@ index 4e46d98..b9a1618 100644
                     "FILE_TYPE:VFT_DLL"
                     "SOURCE_FILE:libmariadb/libmariadb.c"
                     "ORIGINAL_FILE_NAME:libmariadb.dll"
-@@ -405,30 +405,28 @@ ADD_LIBRARY(mariadbclient STATIC  ${MARIADB_OBJECTS} ${EMPTY_FILE})
+@@ -417,30 +417,28 @@ ADD_LIBRARY(mariadbclient STATIC  ${MARIADB_OBJECTS} ${EMPTY_FILE})
  TARGET_LINK_LIBRARIES(mariadbclient ${SYSTEM_LIBS})
  
  IF(UNIX)
@@ -228,7 +228,7 @@ index 4e46d98..b9a1618 100644
  
  #
  # Installation
-@@ -440,8 +438,8 @@ INCLUDE(${CC_SOURCE_DIR}/cmake/symlink.cmake)
+@@ -452,8 +450,8 @@ INCLUDE(${CC_SOURCE_DIR}/cmake/symlink.cmake)
  # use mariadb client library we provide libmysql symlinks
  
  IF(WITH_MYSQLCOMPAT)
@@ -239,7 +239,7 @@ index 4e46d98..b9a1618 100644
    IF(NOT CMAKE_SYSTEM_NAME MATCHES AIX)
      create_symlink(libmysqlclient${CMAKE_STATIC_LIBRARY_SUFFIX} mariadbclient ${INSTALL_LIBDIR})
      create_symlink(libmysqlclient_r${CMAKE_STATIC_LIBRARY_SUFFIX} mariadbclient ${INSTALL_LIBDIR})
-@@ -450,7 +448,7 @@ ENDIF()
+@@ -462,7 +460,7 @@ ENDIF()
  
  create_symlink(libmariadb${CMAKE_STATIC_LIBRARY_SUFFIX} mariadbclient ${INSTALL_LIBDIR})
  
@@ -248,9 +248,9 @@ index 4e46d98..b9a1618 100644
   ${CPACK_PACKAGE_VERSION_MAJOR}
   SOVERSION ${CPACK_PACKAGE_VERSION_MAJOR})
  
-@@ -462,17 +460,17 @@ INSTALL(TARGETS mariadbclient
-           COMPONENT Development
-           DESTINATION ${INSTALL_LIBDIR})
+@@ -479,18 +477,18 @@ INSTALL(TARGETS libmariadb
+         DESTINATION ${INSTALL_LIBDIR})
+ ELSE()
  # in cmake 3.12+ we can use
 -#INSTALL(TARGETS libmariadb LIBRARY DESTINATION ${INSTALL_LIBDIR}
 +#INSTALL(TARGETS mariadb LIBRARY DESTINATION ${INSTALL_LIBDIR} RUNTIME DESTINATION ${INSTALL_BINDIR} ARCHIVE DESTINATION ${INSTALL_LIBDIR}
@@ -262,6 +262,7 @@ index 4e46d98..b9a1618 100644
 -INSTALL(TARGETS libmariadb LIBRARY DESTINATION ${INSTALL_LIBDIR}
 +INSTALL(TARGETS mariadb LIBRARY DESTINATION ${INSTALL_LIBDIR} RUNTIME DESTINATION ${INSTALL_BINDIR} ARCHIVE DESTINATION ${INSTALL_LIBDIR}
          COMPONENT Development NAMELINK_ONLY)
+ ENDIF()
  
  IF(MSVC)
     # On Windows, install PDB
@@ -296,5 +297,5 @@ index 8c304c9..e2e9c5a 100644
    ENDIF()
  ENDIF()
 -- 
-2.35.1
+2.37.1
 

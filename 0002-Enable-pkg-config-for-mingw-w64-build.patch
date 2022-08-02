@@ -1,18 +1,18 @@
-From d9eb742e22a1a72b4b5c1b09f6a7b6b606c5613e Mon Sep 17 00:00:00 2001
+From b975245b5d845d38b95a970afbf2bb1fc9ac1695 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 12 Sep 2020 20:30:49 +0200
 Subject: [PATCH 2/2] Enable pkg-config for mingw-w64 build
 
 ---
  CMakeLists.txt            |  2 +-
- libmariadb/CMakeLists.txt | 10 ++--------
- 2 files changed, 3 insertions(+), 9 deletions(-)
+ libmariadb/CMakeLists.txt | 13 ++++---------
+ 2 files changed, 5 insertions(+), 10 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 93bf967..247d361 100644
+index 6c67324..c7af878 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -422,7 +422,7 @@ ENDIF()
+@@ -424,7 +424,7 @@ ENDIF()
  INCLUDE(${CC_SOURCE_DIR}/plugins/CMakeLists.txt)
  ADD_SUBDIRECTORY(include)
  ADD_SUBDIRECTORY(libmariadb)
@@ -22,14 +22,21 @@ index 93bf967..247d361 100644
  ENDIF()
  
 diff --git a/libmariadb/CMakeLists.txt b/libmariadb/CMakeLists.txt
-index b9a1618..5f8c657 100644
+index 43ab846..9114e89 100644
 --- a/libmariadb/CMakeLists.txt
 +++ b/libmariadb/CMakeLists.txt
-@@ -459,14 +459,8 @@ ENDIF()
+@@ -471,19 +471,14 @@ ENDIF()
  INSTALL(TARGETS mariadbclient
            COMPONENT Development
            DESTINATION ${INSTALL_LIBDIR})
--# in cmake 3.12+ we can use
+-IF(WIN32)
+-INSTALL(TARGETS libmariadb
++IF(WIN32 AND NOT MINGW)
++INSTALL(TARGETS mariadb
+         COMPONENT SharedLibraries
+         DESTINATION ${INSTALL_LIBDIR})
+ ELSE()
+ # in cmake 3.12+ we can use
 -#INSTALL(TARGETS mariadb LIBRARY DESTINATION ${INSTALL_LIBDIR} RUNTIME DESTINATION ${INSTALL_BINDIR} ARCHIVE DESTINATION ${INSTALL_LIBDIR}
 -#        COMPONENT SharedLibraries NAMELINK_COMPONENT Development)
 -# but as long as we build on CentOS 7 with its cmake 2.8.12.2 we have to use
@@ -39,9 +46,9 @@ index b9a1618..5f8c657 100644
 -        COMPONENT Development NAMELINK_ONLY)
 +INSTALL(TARGETS mariadb RUNTIME DESTINATION ${INSTALL_BINDIR} ARCHIVE DESTINATION ${INSTALL_LIBDIR} LIBRARY DESTINATION ${INSTALL_LIBDIR}
 +        COMPONENT SharedLibraries NAMELINK_COMPONENT Development)
+ ENDIF()
  
  IF(MSVC)
-    # On Windows, install PDB
 -- 
-2.35.1
+2.37.1
 
