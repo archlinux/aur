@@ -1,21 +1,15 @@
 pkgbase = spek
-	pkgdesc = An acoustic spectrum analyser.
-	pkgver = 0.8.3
-	pkgrel = 5
+	pkgdesc = An acoustic spectrum analyser (compiled against wxGtk3 and ffmpeg4.4)
+	pkgver = 0.8.4
+	pkgrel = 1
 	url = http://spek.cc/
-	arch = aarch64
-	arch = arm
-	arch = armv6h
-	arch = armv7h
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = intltool
 	depends = desktop-file-utils
-	depends = ffmpeg2.8
-	depends = wxgtk
-	source = https://github.com/alexkay/spek/archive/v0.8.3.tar.gz
-	sha512sums = a4b54746316d295574bc963e650728b23b3730ee6bcc8d78b043a5678baac70a0e859870120de2b0e6a17059e9e3757075f4691e2abde98c083afc393e93e17c
+	depends = ffmpeg4.4
+	depends = wxwidgets-gtk3
+	source = https://github.com/alexkay/spek/archive/v0.8.4.tar.gz
+	sha256sums = 1751246e958cff91fe30b01925a38bf8cbd9c6abbd0d24e5b21eaad3d054534b
 
 pkgname = spek
-
