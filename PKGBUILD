@@ -9,8 +9,8 @@ _lang='de_DE'
 
 pkgname=dm-fotowelt
 pkgdesc='an offline client for creating photobooks, greeting cards, posters and more, uploading and ordering them at fotoparadies.de'
-sha256sums=('68eec4dae341a6b6182f0859b3f753eec020172afbd2fa6b134905a052f53c26')
-pkgver=7.2.2
+sha256sums=('e54f6713ceb9e53d5d622d44bde0d355cd2e59d73f700708cf6fd6c929c52b6b')
+pkgver=7.2.4
 pkgrel=2
 url="https://www.fotoparadies.de/"
 license=("custom:eula")
