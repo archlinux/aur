@@ -1,4 +1,4 @@
-pkgbase = systemback
+pkgbase = systemback-efiboot-amd64
 	pkgdesc = Systemback EFI bootloader support
 	pkgver = 1.8.9
 	pkgrel = 2

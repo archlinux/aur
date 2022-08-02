@@ -1,6 +1,5 @@
     # Maintainer: shadichy <shadichy.dev@gmail.com>
-    pkgbase=systemback
-    pkgname=("${pkgbase}-efiboot-amd64")
+    pkgname=("systemback-efiboot-amd64")
     pkgver=1.8.9
     pkgrel=2
     pkgdesc='Systemback EFI bootloader support'
@@ -13,12 +12,12 @@
     md5sums=('SKIP')
 
     build() {
-        cd "${srcdir}/${pkgbase}-archlinux/${pkgbase}"
+        cd "${srcdir}/systemback-archlinux/systemback"
         dpkg-buildpackage -d -us -uc
     }
 
     package() {
-        dpkg-deb -xv "${srcdir}/${pkgbase}-archlinux/${pkgbase}-efiboot-amd64_${pkgver}_all.deb" "${srcdir}/${pkgbase}-archlinux/${pkgbase}-efiboot-amd64"
-        cp -dr --no-preserve=ownership "${srcdir}/${pkgbase}-archlinux/${pkgbase}-efiboot-amd64/usr" "${pkgdir}/usr"
+        dpkg-deb -xv "${srcdir}/systemback-archlinux/systemback-efiboot-amd64_${pkgver}_all.deb" "${srcdir}/systemback-archlinux/systemback-efiboot-amd64"
+        cp -dr --no-preserve=ownership "${srcdir}/systemback-archlinux/systemback-efiboot-amd64/usr" "${pkgdir}/usr"
         install -dm755 "${pkgdir}/usr"
     }
