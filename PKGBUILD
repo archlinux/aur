@@ -5,8 +5,8 @@
 
 _pkgname=apkstudio
 pkgname=$_pkgname-git
-pkgver=r299.71ca9b5
-pkgrel=5
+pkgver=r300.d0a2408
+pkgrel=1
 epoch=1
 pkgdesc='An IDE for decompiling/editing & then recompiling of android application binaries.'
 arch=('i686' 'x86_64')
