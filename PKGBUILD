@@ -1,7 +1,7 @@
 # Maintainer: github.com/lmorg
 pkgname=murex
 replaces=('murex-git')
-pkgver=2.9.5000
+pkgver=2.10.2300
 pkgrel=1
 pkgdesc="Bash-like shell designed for greater commandline productivity and safer shell scripts"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL2')
 makedepends=('go')
 optdepends=('aspell: inline spell checking')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5607923416219951ba6b848b57138b5d10f4ce95090d167f9330231de4862e2d')
+sha256sums=('0ea18936bf9b77e0198124bb6cfb0cc1f6487c483e84aafb9063b4434e2e777d')
 
 prepare(){
   cd "$pkgname-$pkgver"
@@ -24,7 +24,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o build .
+  go build -v -o build .
 }
 
 check() {
