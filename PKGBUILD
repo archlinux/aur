@@ -4,7 +4,7 @@
 
 _gitname='tvheadend-git'
 pkgname=tvheadend-git
-pkgver=4.3.r2009.g1295dd2be
+pkgver=4.3.r2028.g1c65e8b0f
 pkgrel=1
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -66,7 +66,7 @@ build() {
   cd "${srcdir}/${_gitname}"
 
   # Work-around for GCC 10
-  export CFLAGS="${CFLAGS} -fcommon"
+  export CFLAGS="$CFLAGS -Wno-error=array-bounds -Wno-error=address"
 
   ./configure \
     --prefix=/usr \
