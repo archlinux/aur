@@ -2,7 +2,7 @@
 # Contributor: Shaber
 
 pkgname=corearchiver
-pkgver=4.3.0
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="Archiver from the C Suite to create and extract archives"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('qt5-base' 'libcprime>=2.7.1' 'libarchive-qt')
 makedepends=('cmake' 'ninja')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('4f118edc8b23946e201d1bdbf54e015c')
+md5sums=('372f47b449ba671aa399142de891010a')
 
 prepare() {
   mkdir -p build
