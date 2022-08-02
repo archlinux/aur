@@ -22,16 +22,6 @@ then
     flatpak override --filesystem=xdg-config/gtk-3.0
 fi
 
-# GTK 3
-if [[ ! -f "/usr/share/gtk-3.0/settings-old.ini" ]]
-then
-    echo "> Renaming gtk-3.0/settings.ini to gtk-3.0/settings-old.ini."
-    mv /usr/share/gtk-3.0/settings.ini /usr/share/gtk-3.0/settings-old.ini
-fi
-
-echo "> Installing modified config to gtk-3.0/settings.ini."
-cp /etc/blurry-text-fix/gtk-3.0/settings.ini /usr/share/gtk-3.0/settings.ini
-
 echo "INFO: Your backup file is in /usr/share/gtk-<version>/settings-old.ini"
 echo "INFO: If you want to edit settings.ini, then edit this file /etc/blurry-text-fix and then run blurry-text-fix-reload"
 echo "### Done. Please relog to apply changes."
