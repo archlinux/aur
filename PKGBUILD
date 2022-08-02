@@ -7,7 +7,7 @@ _pkgver_main=2022.7.14
 _release_name=brescia
 _pkgver_sub=3
 pkgver="$_pkgver_main.$_pkgver_sub"
-pkgrel=1
+pkgrel=2
 pkgdesc='Run Windows software on Linux with Bottles!'
 arch=(any)
 changelog=changelog.md
@@ -37,8 +37,18 @@ depends=(
 	gtksourceview5
 	libadwaita-git
 
-	# unknown
+	# additional not listed dependencies
 	libportal-gtk4
+	gedit
+	libgexiv2
+	libaccounts-glib
+	libibus
+	gnumeric
+	gom
+	goocanvas
+	xapp
+	libsignon-glib
+	libblockdev
 
 	# from dependency list
 	'cabextract>=1.9.0'
