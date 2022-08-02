@@ -1,7 +1,7 @@
 pkgbase = targeter-git
 	pkgdesc = Easily remove rust/cargo target directories
-	pkgver = 0.1.0.r0.gfeb96db
-	pkgrel = 1
+	pkgver = 0.1.0.r0.ga7a2ce4
+	pkgrel = 2
 	url = https://github.com/misobarisic/targeter
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = targeter-git
 	provides = targeter
 	conflicts = targeter
 	conflicts = targeter-bin
-	source = targeter::git+https://github.com/misobarisic/targeter.git#branch=master
+	source = targeter::git+https://github.com/misobarisic/targeter.git#branch=main
 	sha256sums = SKIP
 
 pkgname = targeter-git

@@ -2,7 +2,7 @@
 pkgname="targeter-git"
 _pkgname="targeter"
 pkgver=0.1.0.r0.ga7a2ce4
-pkgrel=1
+pkgrel=2
 pkgdesc="Easily remove rust/cargo target directories"
 arch=('x86_64')
 url="https://github.com/misobarisic/targeter"
@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=('cargo' 'rust')
 conflicts=('targeter' 'targeter-bin')
 provides=('targeter')
-source=("targeter::git+https://github.com/misobarisic/targeter.git#branch=master")
+source=("targeter::git+https://github.com/misobarisic/targeter.git#branch=main")
 sha256sums=("SKIP")
 
 pkgver() {
