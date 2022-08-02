@@ -1,0 +1,21 @@
+pkgbase = raider-file-shredder-git
+	pkgdesc = Securely delete your files
+	pkgver = r368.56b8628
+	pkgrel = 1
+	url = https://github.com/ADBeveridge/raider
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	makedepends = blueprint-compiler
+	depends = libadwaita
+	optdepends = libnautilus-extension
+	provides = raider-file-shredder
+	conflicts = raider-file-shredder
+	conflicts = raider
+	source = git+https://github.com/ADBeveridge/raider.git
+	b2sums = SKIP
+
+pkgname = raider-file-shredder-git
