@@ -5,13 +5,13 @@
 _pkgbase=nvfand
 pkgname=nvfand-git
 pkgver=r42.8de2e4f
-pkgrel=1
+pkgrel=2
 pkgdesc='a daemon that sets the fan speed of your nvidia GPU(s) based on a custom curve.'
 arch=('any')
 url='https://gitlab.com/chrooti/nvfand'
 license=('MIT')
 depends=(jansson nvidia-utils)
-makedepends=(git cuda)
+makedepends=(git cuda ninja)
 source=('nvfand::git+https://gitlab.com/chrooti/nvfand.git')
 sha256sums=('SKIP')
 
