@@ -1,9 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=paper-note-git
-_pkgname=paper
-_app_id=io.posidon.Paper
-pkgver=r229.5b602d0
+pkgver=r246.ce1c297
 pkgrel=1
 pkgdesc="A pretty note-taking app for GNOME"
 arch=('x86_64' 'aarch64')
@@ -18,7 +16,7 @@ source=(git+$url.git)
 b2sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname%-git}"
+  cd "${pkgname%-note-git}"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -26,7 +24,7 @@ pkgver() {
 }
 
 build() {
-  arch-meson "${_pkgname%-git}" build
+  arch-meson "${pkgname%-note-git}" build
   meson compile -C build
 }
 
@@ -36,7 +34,4 @@ check() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
-  
-  # Temporary solution to the issue: https://gitlab.com/posidon_software/paper/-/issues/36
-  mv "$pkgdir/usr/share/applications/$_app_id.desktop" "$pkgdir/usr/share/applications/Paper.desktop"
 }
