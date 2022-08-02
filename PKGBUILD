@@ -1,13 +1,13 @@
 # Maintainer: Strahinya Radich <contact@strahinja.org>
 pkgname=table
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="Command line utility to format and display CSV"
 arch=('x86_64')
 url="https://strahinja.srht.site/table"
 license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~strahinja/table/archive/v$pkgver.tar.gz")
-md5sums=('77caad9d100083dc4f975b50ff803ec4')
+md5sums=('7cf89287aaa2d1a907a7e7c94eff3dfa')
 
 #build() {
 #	local redo=$(command -v redo || echo ./do -c)
