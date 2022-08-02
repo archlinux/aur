@@ -1,6 +1,6 @@
 pkgname=mitogen
-pkgver=0.3.2
-pkgrel=3
+pkgver=0.3.3
+pkgrel=1
 pkgdesc="Distributed self-replicating programs in Python"
 license=("BSD")
 url="https://mitogen.networkgenomics.com/"
@@ -8,16 +8,16 @@ depends=('python')
 makedepends=('python-setuptools')
 optdepends=('ansible: for using the ansible strategy plugin')
 source=("https://github.com/mitogen-hq/mitogen/archive/v${pkgver//_/-}.tar.gz"
-	"pr913-pt1.patch::https://github.com/mitogen-hq/mitogen/commit/0fa0a93f556387a4989d3ac41bd9945a17c4b9fc.patch"
-	"pr913-pt2.patch::https://github.com/mitogen-hq/mitogen/commit/47699e15aa0f6eea5ce558a67e2fea644d4ea913.patch"
-	"pr913-pt3.patch::https://github.com/mitogen-hq/mitogen/commit/d2ca8a94239958394363c9faab70c5db99a82cae.patch")
+	"https://patch-diff.githubusercontent.com/raw/mitogen-hq/mitogen/pull/933.patch"
+	"https://patch-diff.githubusercontent.com/raw/mitogen-hq/mitogen/pull/936.patch"
+	"stdlib-module-names.patch")
 arch=('any')
 
 prepare() {
   cd "$srcdir/$pkgname-${pkgver//_/-}"
-  patch -p1 < "$srcdir/pr913-pt1.patch"
-  patch -p1 < "$srcdir/pr913-pt2.patch"
-  patch -p1 < "$srcdir/pr913-pt3.patch"
+  patch -p1 < "../936.patch"
+  patch -p1 < "../933.patch"
+  patch -p1 < "../stdlib-module-names.patch"
 }
 
 build() {
@@ -31,23 +31,23 @@ package() {
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-md5sums=('aa55d6974d62506d4c5d5df9743f70f1'
-         'bc1d112b1cecc3cf5c58226078859ac2'
-         'fca5fd4db06eeaf1fb24c8413c840194'
-         '22ddaa45b5aa6e4f5dba78615a7a7ab9')
-sha1sums=('f2d0d4c1a3756cbed14fb72130b8a05837d0c158'
-          'a9eccbf5d826842e872e3baa87d66730067e0ec8'
-          '24c5cceb445ee5adece1c9e6ed0e5032852fa825'
-          '8a8391d194994fc7c201276bd3d4d5d1744e13c4')
-sha256sums=('ab31dcee61b4c813424f75472194adb9641f984ee582af31bb51654be532bdd0'
-            '0dd0d945c227d156431f7c0ef011f93bc83b15e9c818ad14f3c2ee61d50d5274'
-            '8d1fdeef3d228acba16240f3ea3cc37c78c2ea93c9a3754a199b99e398a7802f'
-            '5d0bab0efe02ca56ec9597b54b073ce40eb5d2378ddda278e8256baa68912d79')
-sha384sums=('d8c3e96484e3d061748b59b2e05f417e7f73cfd277aa32e7303ab04f933513fffa404ab2dc9a84fd6c1bbce5cf333dfe'
-            'cf461d7c547f54039b6eecb937f5967cf47582566bc7f0c182a97b30cf94fe01a3422e49e83b4cfb177268ab0c1adfd9'
-            '3f1734ad29d997efdf4ed55d0ffe9e3cbe4885f3e01dbbf13ea665b74e3250f209b824979fc6ca44fe5cc75bbb3db9fd'
-            '20b235a2542a3e5113bc2240d120f451437d69fc2bd4b7811ba87cf361d9c0d215c3af27ac2ae1d26930e4670a457722')
-sha512sums=('fce05041db55ae14adb490458c7fa91f53d0a3f0dd0ffec6dfd6ca778676fe3f5b1075aa6acd7b7a2e51264d52721b92249010a9e83f0d32e25507200ff1042e'
-            '9f8aea4583a101981772d82965f80c2c27778bf905f651f960d8a24f2e671058473bd818fe764eb8f289f9c088d5b543693ff51b658dd9d7213bf300110f240e'
-            '7f00eb766de989608a97d26e465d11da73b5c72e95896c5670956b0296b6c192d95a0eb44df5b02e2eeca31319f13039c1a202403a0d4d1396043c025421afc1'
-            '1a1bb2c92a45e1f5cf1510da764faa5f5478163694a57904af6d8a25539933434e1fe85104bfcfe6a5a7ca00e5d1f60bc91e1f901ec63af0020baa66d1e04f68')
+md5sums=('0b15434520c5064784984336b6464f87'
+         '0845e4d09fea671a295d35047ba54157'
+         'e1b8089902d31fa34b79660612209424'
+         '24ed5be1ef7e1ccb4bde2e3d1c33577b')
+sha1sums=('5fd4c0d68fbaaac9a53188a25d215d8fd1cbaa2a'
+          '32bcf5f2b393d48915a4a4847c43a92fac521a3a'
+          '067cf243d8d7c052aa7186ecf4b4613d61f81680'
+          'c992afc2f9b97c024d8dac0390af69139c1a3553')
+sha256sums=('41d2c540a64ca4706f9413e6807c8d5d401918788ae7428d8273c80bb61ca216'
+            '31a75c6163cde25dea51dc377d9ed9354d99dbb655af8f5c9894835fba539762'
+            'fe20cfc55a61bc84d76cd2f759d3755c732bf8c847db3b4046194601fc06bc8e'
+            '6bace589a752827c866d6799b228b0e44c0ec42bb6f19f2ff8fe73ea20d4124c')
+sha384sums=('6fa77d0ee3b7b00fa4185fc5936183fc08de2f27aa93c5dd9a6a98d3db79c99939d1f258f4974ddc3514fe190d4ff23d'
+            '390bc3edf8b26110e4db841cf5b162bd09641d5a52f197d850f693a46e4432ebe6dc79f3ddebb9f2a9f081e7aee453bf'
+            '302c2e9536e45f034f2a59b6eb9ea3cc244780ef1de730a7ae610f91c1441e6889b0823e54e336fea563f6936152b55b'
+            'df0705220bbf9549e5a890e581aaefacb33d789c07992d9d0ec002b4f5901c34126443ce043b2779ab910a83aa40eeaa')
+sha512sums=('ca9287296090259c796982c02e6b4752b0671d24cc297b46b4235a2e273cf972ebf09fd4806600775f0974e3a097f128ecf3fd476bb04a688e5d118d4bbe5a05'
+            '1abb1b1fd7b161dbb55980fe864c8cf68986b5a47ea18f0436b0f4cb86782cf741275a82dbbd71c822e2079765c71716abbb08569aef3f9a926b316298c9ab8a'
+            'a73914fd2d06e5b67131c9ecc8187f9d478636a4983f7877c9ac631c9463c8f830e2e9a58c017ca70627e8ce9cf49a4098cdd4a40d5fccdd31f5f6e8e89001a6'
+            '51288bbcdce2f943d3c2d4e6e270ef62d0fafc47ac1c46ad777cda25250f5ac5bc7df7430cf8d1c1353c38a5f3170cea29c34336ee16729a9c0df5891252920a')
