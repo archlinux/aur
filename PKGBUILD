@@ -12,7 +12,7 @@ depends=('alsa-lib' 'freetype2' 'libcurl-gnutls')
 provides=('OB-Xd')
 source=("https://github.com/reales/OB-Xd/releases/download/v${pkgver}/Obxd${_vershort}Linux.zip")
 noextract=("Obxd${_vershort}Linux.zip")
-md5sums=("24191ec1626ee0c6dce5a3b3e1857fa4")
+md5sums=("5c928ae406a657750a4025e3c5753750")
 
 prepare() {
 install -d "${srcdir}/Obxd${_vershort}Linux"

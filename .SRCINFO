@@ -11,6 +11,6 @@ pkgbase = ob-xd-bin
 	provides = OB-Xd
 	noextract = Obxd29Linux.zip
 	source = https://github.com/reales/OB-Xd/releases/download/v2.9/Obxd29Linux.zip
-	md5sums = 24191ec1626ee0c6dce5a3b3e1857fa4
+	md5sums = 5c928ae406a657750a4025e3c5753750
 
 pkgname = ob-xd-bin
