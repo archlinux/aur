@@ -5,7 +5,7 @@ pkgbase=asusctl
 pkgname=(asusctl rog-control-center)
 pkgver=4.3.3
 pkgrel=1
-pkgdesc="A control daemon, CLI tools, and a collection of crates for interacting with ASUS ROG laptops"
+pkgdesc="A control daemon, tools, and a collection of crates for interacting with ASUS ROG laptops"
 arch=('x86_64')
 url="https://gitlab.com/asus-linux/asusctl"
 license=('MPL2')
@@ -37,6 +37,7 @@ _pick() {
 }
 
 package_asusctl() {
+  pkgdesc="${pkgdesc/tools/CLI tools}"
   depends=('libusb' 'systemd' 'power-profiles-daemon' 'hicolor-icon-theme')
   optdepends=('acpi_call: fan control'
             'supergfxctl: hybrid GPU control'

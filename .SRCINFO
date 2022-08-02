@@ -1,5 +1,5 @@
 pkgbase = asusctl
-	pkgdesc = A control daemon, CLI tools, and a collection of crates for interacting with ASUS ROG laptops
+	pkgdesc = A control daemon, tools, and a collection of crates for interacting with ASUS ROG laptops
 	pkgver = 4.3.3
 	pkgrel = 1
 	url = https://gitlab.com/asus-linux/asusctl
@@ -16,6 +16,7 @@ pkgbase = asusctl
 	sha256sums = SKIP
 
 pkgname = asusctl
+	pkgdesc = A control daemon, CLI tools, and a collection of crates for interacting with ASUS ROG laptops
 	depends = libusb
 	depends = systemd
 	depends = power-profiles-daemon
