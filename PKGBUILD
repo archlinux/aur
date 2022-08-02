@@ -2,12 +2,12 @@
 
 pkgname=libsurvive
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Tracking system for Lighthouse and Vive based devices'
 arch=('x86_64')
 url='https://github.com/cntools/libsurvive/'
 license=('MIT')
-depends=('cblas' 'lapacke' 'libpcap' 'libusb' 'libx11' 'sciplot' 'zlib')
+depends=('cblas' 'cnmatrix-git' 'lapacke' 'libpcap' 'libusb' 'libx11' 'sciplot' 'zlib')
 optdepends=('xr-hardware: for acessing additional devices')
 makedepends=('git' 'cmake' 'eigen')
 _data_commit=5cc2fc085d11ef98ad5936a745d4a42954b207ca

@@ -1,7 +1,7 @@
 pkgbase = libsurvive
 	pkgdesc = Tracking system for Lighthouse and Vive based devices
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cntools/libsurvive/
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = libsurvive
 	makedepends = cmake
 	makedepends = eigen
 	depends = cblas
+	depends = cnmatrix-git
 	depends = lapacke
 	depends = libpcap
 	depends = libusb
