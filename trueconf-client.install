@@ -8,6 +8,36 @@ post_install() {
         xdg-desktop-menu install --novendor --mode system /usr/share/applications/trueconf.desktop > /dev/null 2>&1 || true
     fi
     update-desktop-database > /dev/null 2>&1 || true
+
+    binpid=$(ps axco pid,command | awk '$2 == "TrueConf" {print $1; }')
+    if [ -n "$binpid" ]; then
+        for process in "$binpid"; do
+            kill -s 50 $process 
+        done
+    fi
+
+    startupbin=$(ps axco pid,command | awk '$2 == "trueconf" {print $1; }')
+    if [ -n "$startupbin" ]; then
+        for process in "$startupbin"; do
+            kill -s 50 $process 
+        done
+    fi
+}
+
+pre_remove() {
+    binpid=$(ps axco pid,command | awk '$2 == "TrueConf" {print $1; }')
+    if [ -n "$binpid" ]; then
+        for process in "$binpid"; do
+            kill -s 50 $process 
+        done
+    fi
+
+    startupbin=$(ps axco pid,command | awk '$2 == "trueconf" {print $1; }')
+    if [ -n "$startupbin" ]; then
+        for process in "$startupbin"; do
+            kill -s 50 $process 
+        done
+    fi
 }
 
 post_upgrade() {
