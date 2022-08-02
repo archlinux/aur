@@ -1,4 +1,4 @@
-pkgbase = systemback
+pkgbase = systemback-cli
 	pkgdesc = Simple system backup and restore application with extra features
 	pkgver = 1.8.9
 	pkgrel = 2

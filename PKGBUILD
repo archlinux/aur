@@ -1,6 +1,5 @@
     # Maintainer: shadichy <shadichy.dev@gmail.com>
-    pkgbase=systemback
-    pkgname=("${pkgbase}-cli")
+    pkgname=("systemback-cli")
     pkgver=1.8.9
     pkgrel=2
     pkgdesc='Simple system backup and restore application with extra features'
@@ -14,12 +13,12 @@
     md5sums=('SKIP')
 
     build() {
-        cd "${srcdir}/${pkgbase}-archlinux/${pkgbase}"
+        cd "${srcdir}/systemback-archlinux/systemback"
         dpkg-buildpackage -d -us -uc
     }
 
     package() {
-        dpkg-deb -xv "${srcdir}/${pkgbase}-archlinux/${pkgbase}-cli_${pkgver}_amd64.deb" "${srcdir}/${pkgbase}-archlinux/${pkgbase}-cli"
-        cp -dr --no-preserve=ownership "${srcdir}/${pkgbase}-archlinux/${pkgbase}-cli/usr" "${pkgdir}/usr"
+        dpkg-deb -xv "${srcdir}/systemback-archlinux/systemback-cli_${pkgver}_amd64.deb" "${srcdir}/systemback-archlinux/systemback-cli"
+        cp -dr --no-preserve=ownership "${srcdir}/systemback-archlinux/systemback-cli/usr" "${pkgdir}/usr"
         install -dm755 "${pkgdir}/usr"
     }
