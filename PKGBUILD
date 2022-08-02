@@ -4,14 +4,14 @@
 
 pkgname=mrbayes-mpi
 pkgver=3.2.7
-pkgrel=2
-pkgdesc="MrBayes is a program for Bayesian inference and model choice across a wide range of phylogenetic and evolutionary models"
+pkgrel=8
+pkgdesc="MrBayes is a program for Bayesian inference and model choice across a wide range of phylogenetic and evolutionary models. https://doi.org/10.1093/sysbio/sys029"
 arch=('i686' 'x86_64')
 url="nbisweden.github.io/mrbayes/"
 license=('GPL3')
-depends=('openmpi' 'readline')
+depends=('openmpi' 'readline' 'gcc')
 optdepends=('beagle-lib: for using GPU calculations among other enhancements - rebuild package after installing this dep')
-conflicts=(mrbayes)
+conflicts=('mrbayes' 'mrbayes-beagle' 'mrbayes-mpi-beagle')
 provides=(mrbayes)
 source=("https://github.com/NBISweden/MrBayes/archive/v${pkgver}.tar.gz")
 sha256sums=('64da39c01f606d0413ce90a1dd3c1ce2cbdef4cbad99aee8a4b2391a2e8db244')
