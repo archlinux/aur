@@ -1,6 +1,6 @@
 pkgbase = form-git
 	pkgdesc = Symbolic Manipulation System developed at Nikhef.
-	pkgver = 4.2.0.r18.gd15ec75
+	pkgver = 4.2.1.r40.g982111a
 	pkgrel = 1
 	url = https://www.nikhef.nl/~form/
 	arch = i686
@@ -10,8 +10,7 @@ pkgbase = form-git
 	depends = gmp>=4.2
 	depends = zlib>=1.2
 	provides = form
-	source = git://github.com/vermaseren/form.git
+	source = git+https://github.com/vermaseren/form.git
 	md5sums = SKIP
 
 pkgname = form-git
-

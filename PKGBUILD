@@ -1,7 +1,7 @@
-# Maintainer: Stefano Campanella <stefanocampanella1729@gmail.com>
+# Maintainers: Ben Ruijl <benruyl@gmail.com> and Stefano Campanella <stefanocampanella1729@gmail.com>
 pkgname=form-git
 _pkgid=${pkgname%-git}
-pkgver=4.2.0.r18.gd15ec75
+pkgver=4.2.1.r40.g982111a
 pkgrel=1
 pkgdesc="Symbolic Manipulation System developed at Nikhef."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('gmp>=4.2' 'zlib>=1.2')
 makedepends=('git')
 provides=('form')
-source=("git://github.com/vermaseren/form.git")
+source=("git+https://github.com/vermaseren/form.git")
 md5sums=('SKIP')
 
 pkgver() {
