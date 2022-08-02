@@ -26,8 +26,6 @@ package() {
     sudo pacman -U lazap.tar.zst
     
     install -Dm644 "${srcdir}/lazap.desktop" "${pkgdir}/usr/share/applications/lazap.desktop"
-    install -d "$pkgdir/opt/"
-    install -d "$pkgdir/usr/bin/"
     
     echo "Packaging Complete!"
 }
