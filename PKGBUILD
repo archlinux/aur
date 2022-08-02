@@ -1,6 +1,5 @@
     # Maintainer: shadichy <shadichy.dev@gmail.com>
-    pkgbase=systemback
-    pkgname=("lib${pkgbase}")
+    pkgname=("libsystemback")
     pkgver=1.8.9
     pkgrel=2
     pkgdesc='Libary for Systemback'
@@ -14,12 +13,12 @@
     md5sums=('SKIP')
 
     build() {
-        cd "${srcdir}/${pkgbase}-archlinux/${pkgbase}"
+        cd "${srcdir}/systemback-archlinux/systemback"
         dpkg-buildpackage -d -us -uc
     }
 
     package() {
-        dpkg-deb -xv "${srcdir}/${pkgbase}-archlinux/lib${pkgbase}_${pkgver}_amd64.deb" "${srcdir}/${pkgbase}-archlinux/lib${pkgbase}"
-        cp -dr --no-preserve=ownership "${srcdir}/${pkgbase}-archlinux/lib${pkgbase}/usr" "${pkgdir}/usr"
+        dpkg-deb -xv "${srcdir}/systemback-archlinux/libsystemback_${pkgver}_amd64.deb" "${srcdir}/systemback-archlinux/libsystemback"
+        cp -dr --no-preserve=ownership "${srcdir}/systemback-archlinux/libsystemback/usr" "${pkgdir}/usr"
         install -dm755 "${pkgdir}/usr"
     }

@@ -1,4 +1,4 @@
-pkgbase = systemback
+pkgbase = libsystemback
 	pkgdesc = Libary for Systemback
 	pkgver = 1.8.9
 	pkgrel = 2
