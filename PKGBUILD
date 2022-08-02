@@ -2,7 +2,7 @@
 
 pkgname=jailbox-git
 _pkgname=jailbox
-pkgver=0.2.0.r0.g0c39c5b
+pkgver=0.2.0.r2.gf77c902
 pkgrel=1
 pkgdesc="Torify the system with multiple tor exit nodes and load balance"
 url="https://github.com/jamazi/jailbox.git"
@@ -24,6 +24,7 @@ package() {
 
   install -Dm644 config             "${pkgdir}"/etc/jailbox/config
   install -Dm644 torrc              "${pkgdir}"/etc/jailbox/torrc
+  install -Dm644 version            "${pkgdir}"/etc/jailbox/version
   install -Dm755 jailbox-start      "${pkgdir}"/usr/bin/jailbox-start
   install -Dm755 jailbox-stop       "${pkgdir}"/usr/bin/jailbox-stop
   install -Dm755 jailbox-post-start "${pkgdir}"/usr/bin/jailbox-post-start
