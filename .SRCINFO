@@ -1,15 +1,14 @@
 pkgbase = check_smartmon-git
 	pkgdesc = Nagios-Plugin that uses smartmontools (http://smartmontools.sourceforge.net/) to check disk health status and temperature.
-	pkgver = r31.07b14b8
+	pkgver = r43.66ec3f3
 	pkgrel = 1
-	url = https://github.com/nihlaeth/Nagios_check_smartmon
+	url = https://github.com/driehuis/Nagios_check_smartmon
 	arch = any
 	license = GPL2
 	makedepends = git
-	depends = python2-psutil
+	depends = python-psutil
 	depends = smartmontools
-	source = check_smartmon-git::git+https://github.com/nihlaeth/Nagios_check_smartmon.git
+	source = check_smartmon-git::git+https://github.com/driehuis/Nagios_check_smartmon.git
 	sha256sums = SKIP
 
 pkgname = check_smartmon-git
-
