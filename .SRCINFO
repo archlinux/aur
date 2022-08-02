@@ -1,0 +1,23 @@
+pkgbase = systemback-scheduler
+	pkgdesc = Systemback scheduler
+	pkgver = 1.8.9
+	pkgrel = 2
+	url = https://github.com/shadichy/systemback-archlinux
+	arch = x86_64
+	license = GPL
+	makedepends = ncurses
+	makedepends = qt5-tools
+	makedepends = make
+	makedepends = gcc11
+	makedepends = dpkg
+	makedepends = debhelper
+	makedepends = util-linux
+	makedepends = util-linux-libs
+	makedepends = qt5-base>=5.5.0
+	makedepends = gcc-libs
+	makedepends = procps-ng
+	depends = libsystemback
+	source = systemback-archlinux::git+https://github.com/shadichy/systemback-archlinux.git
+	md5sums = SKIP
+
+pkgname = systemback-scheduler
