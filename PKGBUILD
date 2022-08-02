@@ -3,38 +3,53 @@
 # Contributor: Dan Foreman-Mackey
 
 pkgname='python-emcee-git'
-_name="${pkgname%-git}"
-pkgver=v2.2.1.r0.g67c8f79
+_basename="${pkgname%-git}"
+_distname="${_basename#python-}"
+pkgver=3.1.2.dev3+g9e407ee
 pkgrel=1
-pkgdesc="The Python ensemble sampling toolkit for affine-invariant MCMC"
+pkgdesc='The Python ensemble sampling toolkit for affine-invariant MCMC'
 arch=('any')
-url="https://github.com/dfm/emcee.git"
+url="https://pypi.org/project/${_distname}"
+_repourl="https://github.com/dfm/${_distname}"
 license=('MIT')
 depends=('python-numpy')
-makedepends=('git' 'python-setuptools')
-checkdepends=('python-nose' 'python-pytest' 'python-scipy' 'python-h5py')
-#source=("${_name}::git+${url}#tag=v3.0rc2")
-source=("${_name}::git+${url}#tag=v2.2.1")
-md5sums=('SKIP')
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools-scm'
+  'python-wheel'
+)
+checkdepends=(
+  'python-h5py'
+  'python-pytest'
+  'python-scipy'
+)
+optdepends=(
+  'python-h5py'
+  'python-scipy'
+)
+source=("${_basename}::git+${_repourl}.git")
+b2sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir"/$_name
-  printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
+  cd "${_basename}"
+  printf "%s" "$(git describe --long --tags | sed 's/\([^-]*\)-g/dev\1+g/;s/-/./g;s/^v//')"
 }
 
 build() {
-  cd "$srcdir"/$_name
-  python setup.py build
+  cd "${_basename}"
+  python -m build --wheel --no-isolation
 }
 
 check() {
   #python -c 'import emcee; emcee.test()'
-  cd "$srcdir"/$_name/emcee
-  nosetests -v || warning 'Tests failed'
+  cd "${_basename}"
+  pytest -v || warning 'Tests failed'
 }
 
 package() {
-  cd "${_name}"
-  python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1 --skip-build
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
+  cd "${_basename}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

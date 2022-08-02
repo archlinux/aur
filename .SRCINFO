@@ -1,18 +1,22 @@
 pkgbase = python-emcee-git
 	pkgdesc = The Python ensemble sampling toolkit for affine-invariant MCMC
-	pkgver = v2.2.1.r0.g67c8f79
+	pkgver = 3.1.2.dev3+g9e407ee
 	pkgrel = 1
-	url = https://github.com/dfm/emcee.git
+	url = https://pypi.org/project/emcee
 	arch = any
 	license = MIT
-	checkdepends = python-nose
+	checkdepends = python-h5py
 	checkdepends = python-pytest
 	checkdepends = python-scipy
-	checkdepends = python-h5py
 	makedepends = git
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
 	depends = python-numpy
-	source = python-emcee::git+https://github.com/dfm/emcee.git#tag=v2.2.1
-	md5sums = SKIP
+	optdepends = python-h5py
+	optdepends = python-scipy
+	source = python-emcee::git+https://github.com/dfm/emcee.git
+	b2sums = SKIP
 
 pkgname = python-emcee-git
