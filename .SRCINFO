@@ -1,6 +1,6 @@
 pkgbase = linux-xanmod-edge-linux-bin-x64v2
 	pkgdesc = The Linux kernel and modules with Xanmod patches - Latest Mainline (EDGE) - Prebuilt version
-	pkgver = 5.18.15
+	pkgver = 5.19.0
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = linux-xanmod-edge-linux-bin-x64v2
 	provides = KSMBD-MODULE
 	provides = NTFS3-MODULE
 	options = !strip
-	source = https://github.com/xanmod/linux/releases/download/5.18.15-xanmod1/linux-image-5.18.15-xanmod1-x64v2_5.18.15-xanmod1-x64v2-0.git20220730.789e502_amd64.deb
+	source = https://github.com/xanmod/linux/releases/download/5.19.0-xanmod1/linux-image-5.19.0-xanmod1-x64v2_5.19.0-xanmod1-x64v2-0.git20220802.f299573_amd64.deb
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 15769ae6b5c182eac5cb187b97f340fad77e813d03eebf20e222f1a51a6ea918
+	sha256sums = 77f842f324c978967ad9d6bd446d9d83032a5ca4caaa8d7fc9ec3b8a93affa45
 
 pkgname = linux-xanmod-edge-linux-bin-x64v2
