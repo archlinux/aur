@@ -1,9 +1,9 @@
 # Maintainer: Nikita Ivanov <nikita dot vyach dot ivanov at gmail dot com>
 _name=ctpv
 pkgname="${_name}-git"
-pkgver=r195.2a890bd
+pkgver=r207.1eff006
 pkgrel=1
-pkgdesc="Terminal previewer"
+pkgdesc="Fast previewer for lf (stpv replacement)"
 arch=('i686' 'x86_64')
 url="https://github.com/NikitaIvanovV/ctpv"
 license=('MIT')

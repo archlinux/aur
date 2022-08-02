@@ -1,6 +1,6 @@
 pkgbase = ctpv-git
-	pkgdesc = Terminal previewer
-	pkgver = r195.2a890bd
+	pkgdesc = Fast previewer for lf (stpv replacement)
+	pkgver = r207.1eff006
 	pkgrel = 1
 	url = https://github.com/NikitaIvanovV/ctpv
 	arch = i686
