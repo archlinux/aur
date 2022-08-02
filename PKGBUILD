@@ -2,7 +2,7 @@
 # Contributor: Shaber
 
 pkgname=coretime
-pkgver=4.3.0
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="A time related task manager from the C Suite."
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('qt5-base' 'libcprime>=2.7.1' 'qt5-multimedia')
 makedepends=('cmake' 'ninja')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('ffe871d1205026b001c0befc3941063e')
+md5sums=('d513785fed1f3bc36cb8f02091bbcd72')
 
 prepare() {
   mkdir -p build
