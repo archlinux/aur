@@ -3,7 +3,7 @@
 pkgname=('lua-pgmoon' 'lua51-pgmoon' 'lua52-pgmoon' 'lua53-pgmoon')
 _pkgbase='pgmoon'
 pkgver=1.15.0
-pkgrel=2
+pkgrel=3
 arch=('any')
 url='https://github.com/leafo/pgmoon'
 license=('MIT')
