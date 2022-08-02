@@ -1,0 +1,15 @@
+pkgbase = cnmatrix
+	pkgdesc = C interface to a few matrix backends
+	pkgver = 0.0
+	pkgrel = 1
+	url = https://github.com/cntools/cnmatrix/
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = eigen
+	depends = cblas
+	depends = lapacke
+	source = https://github.com/cntools/cnmatrix/archive/v0.0/cnmatrix-0.0.tar.gz
+	sha256sums = c9c43791b258feb25436288b1e219566903d72a158c81480a2185f21b0648426
+
+pkgname = cnmatrix
