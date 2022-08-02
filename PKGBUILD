@@ -1,4 +1,4 @@
-# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Patrice Peterson <runiq at archlinux dot us>
 # Contributor: Chris Brannon <cmbrannon79@gmail.com>
@@ -6,18 +6,15 @@
 
 pkgname='python2-urllib3'
 _name="${pkgname#python2-}"
-_commit='37ba00248424ea3cdf556cc3e7aa81ce0bf40382'
-pkgver=1.26.9.r11.g37ba0024
-pkgrel=3
+# _commit='aa3def7d242525e6e854991247c4b68583d15135'  # 1.26.11
+pkgver=1.26.11
+pkgrel=1
 pkgdesc='HTTP library with thread-safe connection pooling and file post support'
 arch=('any')
-url="https://pypi.org/project/${_name}/"
-_repourl="https://github.com/${_name}/${_name}"
+url="https://pypi.org/project/${_name}/${pkgver}"
+# _repourl="https://github.com/${_name}/${_name}"
 license=('MIT')
-depends=('python2')
-makedepends=(
-  'python2-setuptools'
-)
+makedepends=('python2-setuptools')
 checkdepends=(
   'python2-flaky'
   'python2-mock'
@@ -34,12 +31,13 @@ optdepends=(
 # 'python2-brotlicffi: Brotli support via native binary library'
   'python2-pyopenssl: secure connection support'
   'python2-pysocks: SOCKS proxy support (deprecated)'
-  'python2-gcp-devrel-py-tools: Google AppEngine support'
   'python-urllib3-doc: urllib3 documentation'
 )
-_tarname="${_name}-${_commit}"
-source=("${_tarname}.tar.gz::${_repourl}/archive/${_commit}.tar.gz")
-b2sums=('2e7494cd6002576c45816e53874297706b58c7dd7edd394ace1c57d7be7de5d1aeeb37d483f2b72d57a4d43d7c8020b25a03ba59af34aad0f79e8c53fd0f3897')
+# _tarname="${_name}-${_commit}"
+# source=("${_tarname}.tar.gz::${_repourl}/archive/${_commit}.tar.gz")
+_tarname="${_name}-${pkgver}"
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_tarname}.tar.gz")
+sha256sums=('ea6e8fb210b19d950fab93b60c9009226c63a28808bc8386e05301e25883ac0a')
 
 prepare() {
   cd "${_tarname}"
@@ -81,6 +79,8 @@ check() {
 }
 
 package() {
+  depends+=('python2')
+
   cd "${_tarname}"
   python2 setup.py install --root="${pkgdir}" --prefix='/usr' --optimize=1 --skip-build
   install -Dm 644 'LICENSE.txt' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
