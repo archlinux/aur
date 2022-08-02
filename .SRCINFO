@@ -1,6 +1,6 @@
 pkgbase = pacdef-git
 	pkgdesc = declarative package manager for Arch Linux
-	pkgver = 0.7.1.r9.g332e227
+	pkgver = 0.7.3+r60.gd4762ec
 	pkgrel = 1
 	url = https://github.com/steven-omaha/pacdef
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = pacdef-git
 	checkdepends = python-pytest
 	checkdepends = python-mock
 	makedepends = git
+	makedepends = python-pip
 	depends = python
 	depends = pyalpm
 	provides = pacdef
