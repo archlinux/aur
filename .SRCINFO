@@ -1,5 +1,5 @@
-pkgbase = rfay-test-ddev-edge-bin
-	pkgdesc = DDEV-Local: a local web development environment (edge)
+pkgbase = rfay-test-ddev-bin
+	pkgdesc = DDEV-Local: a local web development environment (rfay test stable)
 	pkgver = 1.19.5
 	pkgrel = 1
 	url = https://github.com/drud/ddev
@@ -13,4 +13,4 @@ pkgbase = rfay-test-ddev-edge-bin
 	source_x86_64 = https://github.com/drud/ddev/releases/download/v1.19.5/ddev_linux-amd64.v1.19.5.tar.gz
 	sha256sums_x86_64 = 287547c7b2f7ae02c32a6bef23c2623cc12da061f67c2bb2434368f3faa5b2f5
 
-pkgname = rfay-test-ddev-edge-bin
+pkgname = rfay-test-ddev--bin
