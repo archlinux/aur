@@ -1,6 +1,6 @@
 pkgbase = gyr-git
 	pkgdesc = Blazing fast TUI launcher for GNU/Linux and *BSD (git version)
-	pkgver = 0.1.0.r7.gccfe8c5
+	pkgver = 0.1.1.r3.g7fb83ce
 	pkgrel = 1
 	url = https://sr.ht/~forkbomb9/gyr
 	arch = any

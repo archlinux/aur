@@ -2,7 +2,7 @@
 
 _pkgname=gyr
 pkgname=${_pkgname}-git
-pkgver=0.1.0.r7.gccfe8c5
+pkgver=0.1.1.r3.g7fb83ce
 pkgrel=1
 pkgdesc='Blazing fast TUI launcher for GNU/Linux and *BSD (git version)'
 arch=('any')
@@ -26,7 +26,6 @@ build() {
 
 package() {
     cd "${_pkgname}"
-    strip "target/release/$_pkgname"
     install -Dm755 "target/release/$_pkgname" \
         -t "$pkgdir/usr/bin"
 }
