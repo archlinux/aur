@@ -1,0 +1,15 @@
+pkgbase = ellipse
+	pkgdesc = Command that truncates and ellipses strings in a human-friendly way
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://crates.io/crates/ellipse-bin
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = cargo
+	depends = gcc-libs
+	source = ellipse-bin-1.0.0.tar.gz::https://crates.io/api/v1/crates/ellipse-bin/1.0.0/download
+	sha512sums = 40b4700f87680cf81b0238ba63e95068877c96d36ffcaac62d361989bb351a10562941800f0b8f7adb66477a7eebd02322f359e3f52fb6e86fd48befe1ed9b69
+
+pkgname = ellipse
