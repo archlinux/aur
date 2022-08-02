@@ -3,9 +3,9 @@
 
 _pkgname=bottles
 pkgname=${_pkgname}-fixed
-_pkgver_main=2022.7.14
+_pkgver_main=2022.7.28
 _release_name=brescia
-_pkgver_sub=3
+_pkgver_sub=0
 pkgver="$_pkgver_main.$_pkgver_sub"
 pkgrel=2
 pkgdesc='Run Windows software on Linux with Bottles!'
@@ -49,6 +49,7 @@ depends=(
 	xapp
 	libsignon-glib
 	libblockdev
+	fvs
 
 	# from dependency list
 	'cabextract>=1.9.0'
@@ -84,9 +85,15 @@ makedepends=(
 )
 conflicts=('bottles' 'bottles-git')
 provides=('bottles')
-source=("${_pkgname}-${_pkgver_main}-${_release_name}-${_pkgver_sub}.tar.gz::$url/archive/refs/tags/${_pkgver_main}-${_release_name}-${_pkgver_sub}.tar.gz")
-#source=("${_pkgname}-${_pkgver_main}-${_release_name}-${_pkgver_sub}.tar.gz::$url/archive/refs/tags/${_pkgver_main}-${_release_name}.tar.gz")
-b2sums=('d165a18b10484804d6ea89715dc060cd46b07d1fee9f2e31c193cdc2d06509d762c6b5494e1b8a7ac54fe14742a99d2b217297f48eb45e2e316a44717e2baf1e')
+
+
+# use if _pkgver_sub is not 0
+#source=("${_pkgname}-${_pkgver_main}-${_release_name}-${_pkgver_sub}.tar.gz::$url/archive/refs/tags/${_pkgver_main}-${_release_name}-${_pkgver_sub}.tar.gz")
+# use if _pkgver_sub is 0
+source=("${_pkgname}-${_pkgver_main}-${_release_name}-${_pkgver_sub}.tar.gz::$url/archive/refs/tags/${_pkgver_main}-${_release_name}.tar.gz")
+
+
+b2sums=('976315dc07eb1445b0663080f81bbba3b85db43e57834366286da295d073151607735cb46850b53714382239e7f032973e3d81a27211aeec5b708a3f8a2fbd31')
 
 build() {
 	if [[ -d Bottles ]]; then
