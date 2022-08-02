@@ -1,7 +1,7 @@
 # Maintainer: Dennis van der Schagt <dennisschagt@gmail.com>
 pkgname=eprosima-fast-dds
 pkgver=2.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="eProsima's Fast-DDS implementation"
 arch=('x86_64')
 url="https://github.com/eProsima/Fast-DDS"
@@ -27,7 +27,7 @@ build() {
     cmake -B build \
           -DCMAKE_INSTALL_PREFIX=/usr \
           .
-    make -C build
+    make -C build -j8
 }
 
 package() {
