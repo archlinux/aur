@@ -2,26 +2,26 @@
 # Maintainer: Maas Lalani <maas@charm.sh>
 
 pkgname='gum-bin'
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
-pkgdesc='Tasty Bubble Gum for your shell.'
+pkgdesc='A tool for glamorous shell scripts'
 url='https://charm.sh/'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 license=('MIT')
 provides=('gum')
 conflicts=('gum')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/gum/releases/download/v0.2.0/gum_0.2.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('36bc034b61ea5e67710773f1fd51c2745478953008de4180127dbac16cfd6249')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/gum/releases/download/v0.3.0/gum_0.3.0_linux_arm64.tar.gz")
+sha256sums_aarch64=('f4ce59ec8d4c9eec4bb0dddbbedfd53e87b2449e0858bdbb42b605df73c73537')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/gum/releases/download/v0.2.0/gum_0.2.0_linux_armv7.tar.gz")
-sha256sums_armv7h=('4d41faa29a04d1467a5cd2755afab847c936c23b87fc24e5c71345566c60ef58')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/gum/releases/download/v0.3.0/gum_0.3.0_linux_armv7.tar.gz")
+sha256sums_armv7h=('17a8536aab2a22fedb8a758ddfa38619d17b2223460658c11da51ef21b3d5193')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/gum/releases/download/v0.2.0/gum_0.2.0_linux_i386.tar.gz")
-sha256sums_i686=('85085cd615332484c8468d41fc7442dce80b7de5990947423b2f615cbb115c1d')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/gum/releases/download/v0.3.0/gum_0.3.0_linux_i386.tar.gz")
+sha256sums_i686=('2ec310c005a82010397126f4aa7d3bf9d388897dab46b6ae3fbf9c5693ad1748')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/gum/releases/download/v0.2.0/gum_0.2.0_linux_x86_64.tar.gz")
-sha256sums_x86_64=('ff5cde812ea3aa8eab2cf6944da892e639449460719b9fab909a85f7bc5104cf')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/gum/releases/download/v0.3.0/gum_0.3.0_linux_x86_64.tar.gz")
+sha256sums_x86_64=('e2a8a48885d6d4f65aa1b5fe0f231baf87e93eeff041a793279567b201d2d212')
 
 package() {
   # bin
