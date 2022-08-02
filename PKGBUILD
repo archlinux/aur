@@ -1,8 +1,8 @@
 # Maintainer : nyanmisaka <nst799610810@gmail.com>
 
 pkgname=jellyfin-ffmpeg5
-pkgver=5.0.1
-pkgrel=8
+pkgver=5.1
+pkgrel=1
 pkgdesc='FFmpeg5 for Jellyfin'
 arch=('x86_64')
 url='https://github.com/jellyfin/jellyfin-ffmpeg'
