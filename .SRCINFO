@@ -6,26 +6,13 @@ pkgbase = python-emcee-git
 	arch = any
 	license = MIT
 	checkdepends = python-nose
-	checkdepends = python2-nose
 	checkdepends = python-pytest
 	checkdepends = python-scipy
-	checkdepends = python2-scipy
 	checkdepends = python-h5py
-	checkdepends = python2-h5py
 	makedepends = git
-	makedepends = python
-	makedepends = python-numpy
-	makedepends = python2
-	makedepends = python2-numpy
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	optdepends = python2-pytest
+	depends = python-numpy
 	source = python-emcee::git+https://github.com/dfm/emcee.git#tag=v2.2.1
 	md5sums = SKIP
 
 pkgname = python-emcee-git
-	depends = python-numpy
-
-pkgname = python2-emcee-git
-	depends = python2-numpy
-
