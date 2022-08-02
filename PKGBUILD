@@ -51,7 +51,7 @@ _pkg_name_ident="${_pkg_name}-${_pkg_ident}"
 
 
 #
-pkgdesc="Cross platform C/C++/PHP and Node.js IDE written in C++"
+pkgdesc="Cross platform IDE for C, C++, Rust, Python, PHP and Node.js written in C++"
 arch=('i686' 'x86_64')
 url="http://www.codelite.org/"
 license=('GPL')
