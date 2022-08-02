@@ -2,7 +2,7 @@
 # Contributor: Shaber
 
 pkgname=coretoppings
-pkgver=4.3.0
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="Additional features,plugins etc for CuboCore Application Suite."
 arch=('x86_64' 'aarch64')
@@ -28,7 +28,7 @@ optdepends=('ffmpeg: For media'
             'xdg-utils: Lockscreen')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('5e819d35910881f69ec6c16cec2fd7df')
+md5sums=('9dfbcf1d7fbfaeceb271e7d5e948fdb8')
 
 prepare() {
   mkdir -p build

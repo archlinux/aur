@@ -1,6 +1,6 @@
 pkgbase = coretoppings
 	pkgdesc = Additional features,plugins etc for CuboCore Application Suite.
-	pkgver = 4.3.0
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = https://gitlab.com/cubocore/coreapps/coretoppings
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = coretoppings
 	optdepends = polkit: Qwickaccess - To elevate user rights
 	optdepends = libnotify: Qwikaccess - Notifications
 	optdepends = xdg-utils: Lockscreen
-	source = https://gitlab.com/cubocore/coreapps/coretoppings/-/archive/v4.3.0/coretoppings-v4.3.0.tar.gz
-	md5sums = 5e819d35910881f69ec6c16cec2fd7df
+	source = https://gitlab.com/cubocore/coreapps/coretoppings/-/archive/v4.4.0/coretoppings-v4.4.0.tar.gz
+	md5sums = 9dfbcf1d7fbfaeceb271e7d5e948fdb8
 
 pkgname = coretoppings
