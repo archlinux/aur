@@ -1,6 +1,6 @@
 pkgbase = coreuniverse
 	pkgdesc = Shows information about apps from the C Suite
-	pkgver = 4.3.0
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = https://gitlab.com/cubocore/coreapps/coreuniverse
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = coreuniverse
 	makedepends = ninja
 	depends = qt5-base
 	depends = libcprime>=2.7.1
-	source = https://gitlab.com/cubocore/coreapps/coreuniverse/-/archive/v4.3.0/coreuniverse-v4.3.0.tar.gz
-	md5sums = b350cad57f10350bb80b518be54de42e
+	source = https://gitlab.com/cubocore/coreapps/coreuniverse/-/archive/v4.4.0/coreuniverse-v4.4.0.tar.gz
+	md5sums = 705df9df82dc3293fb2911cc77458f3a
 
 pkgname = coreuniverse
