@@ -1,18 +1,16 @@
 pkgbase = python2-gcp-devrel-py-tools
 	pkgdesc = Tools for Cloud Platform Python libraries and samples (Python 2 package)
 	pkgver = 0.0.16
-	pkgrel = 6
+	pkgrel = 7
 	url = https://pypi.org/project/gcp-devrel-py-tools/0.0.16/
 	arch = any
 	license = Apache
 	makedepends = python2-setuptools
-	depends = python2
 	source = python-repo-tools-dbc02f5ec965a6672d47a0e8963365970d96db17.tar.gz::https://github.com/GoogleCloudPlatform/python-repo-tools/archive/dbc02f5ec965a6672d47a0e8963365970d96db17.tar.gz
 	b2sums = f7d3a33381753c70e639c23e395a3fb32826f25f3eb766487ae9542a8fe45f441e6cccd9c8473cd8d4c384429a819ad586742e9fa4395e59e05527d432867943
 
 pkgname = python2-gcp-devrel-py-tools
-	depends = python2
 	depends = python2-packaging
 	depends = python2-pylint
 	depends = python2-requests
-	depends = python2-retrying
+	depends = python2-six
