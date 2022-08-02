@@ -1,0 +1,6 @@
+*.tar.zst
+*.tar.gz
+pkg/
+src/
+murex/
+
