@@ -5,7 +5,7 @@ _projectname=electron
 _major=17
 _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}"-bin
-_pkgver="${_major}.4.10"
+_pkgver="${_major}.4.11"
 pkgver="${_pkgver/-/.}"
 pkgrel=1
 pkgdesc="Build cross platform desktop apps with web technologies - binary version ${_major}"
@@ -38,14 +38,14 @@ source_aarch64=(
 	"${pkgname}-chromedriver-${pkgver}-${pkgrel}-aarch64.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-arm64.zip"
 	"${pkgname}-${pkgver}-${pkgrel}-aarch64.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-arm64.zip"
 )
-sha256sums_x86_64=('4b439f4708492b75d543c0660784974bd5cb34af09ed580b3946510d17f1da94'
-                   '065fdd554993d9b1e52ad8093e6341d001c219f49d81f32f3dd457f544375380')
-sha256sums_i686=('1d64796dba9700bdbddf031360941b7fcff96e852a32e775423f008eeb9ee815'
-                 '4b3c6a82a53499a2fecf683d1aa225ba39cebec19f8d65fccf53a53c53ad7d9c')
-sha256sums_armv7h=('74d0b937e8ff7cd4e2ce31a13e74103d21f981cd306977179609095825dbe5bc'
-                   'b3e4e44ef4014cd34f8fa1c06fe714d600e0e42e95a152255fa48d7246a47bf8')
-sha256sums_aarch64=('fa12be4991b64996aece686547566d0ed15ad141070354e65ce18a6d4239f682'
-                    '3186b7ac800f421286157c0550a923e5dfc8b0209c0d1ed037a7cd837136113c')
+sha256sums_x86_64=('e6db902c0aadb703fcd7c415e72c8077d9e46acb5464a90ebe60bfe09c50a544'
+                   'c40cc41da8f7958b4edbef953e9b0b4e830689467d1f1993c4d298677e6d0047')
+sha256sums_i686=('f863ee1a3462038436a387227ee60aed11957a3decfa56417c62ad75d7813f99'
+                 '9654be64612f157a89928166f220792b5ab76240081a40594d01f763902d1007')
+sha256sums_armv7h=('2435153397b31fa27dc26f7dd6de2a7a8d7c4e138ad6a3fad05427b4e99467e0'
+                   '2f148ad481fe0e06dade070caecf23b7e1564b1b27d775c9350c7a5245998af2')
+sha256sums_aarch64=('de123a2d8e195fd98ecada4664f5452003c12116fdd6195c7768bd71b8787154'
+                    '53618dc3fc6c04a4b4a44261987969850ad6ae56c8a5dbf21167cf0db7fc99bf')
 
 package() {
 	install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
