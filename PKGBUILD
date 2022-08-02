@@ -6,7 +6,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 #pkgbase="console_snake"
 pkgname="console_snake"
-pkgver=1
+pkgver=0.1.1
 pkgrel=1
 epoch=
 pkgdesc="UNIX sn@ke game"
@@ -25,24 +25,17 @@ backup=()
 options=()
 install=
 changelog=
-source=(
-    "https://raw.githubusercontent.com/TopProHatsker/snake/master/Makefile"
-    "https://raw.githubusercontent.com/TopProHatsker/snake/master/main.c"
-    "https://raw.githubusercontent.com/TopProHatsker/snake/master/list.c"
-    "https://raw.githubusercontent.com/TopProHatsker/snake/master/matrix.c"
-    "https://raw.githubusercontent.com/TopProHatsker/snake/master/list.h"
-    "https://raw.githubusercontent.com/TopProHatsker/snake/master/matrix.h"
-    )
+source=("https://raw.githubusercontent.com/TopProHatsker/snake/master/$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=("SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP")
+md5sums=('699c7ea233d4049cc7c014848eb38db5')
 validpgpkeys=()
 
 
 package() {
-#	install -Dm755 "$srcdir/pkg/nardy-bin/usr/bin/nardy" "$pkgdir/usr/bin/nardy"
-	#cd "$pkgname-$pkgver"
+    tar -xf $pkgname-$pkgver.tar.gz
+
 	make DESTDIR="$pkgdir/"
 
-    install -D console_snake "$pkgdir/usr/bin/snake"
+    install -D snake "$pkgdir/usr/bin/snake"
 }
  

@@ -1,23 +1,13 @@
 pkgbase = console_snake
 	pkgdesc = UNIX sn@ke game
-	pkgver = 1
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/TopProHatsker/snake
 	arch = any
 	license = GPL
 	makedepends = gcc
 	makedepends = git
-	source = https://raw.githubusercontent.com/TopProHatsker/snake/master/Makefile
-	source = https://raw.githubusercontent.com/TopProHatsker/snake/master/main.c
-	source = https://raw.githubusercontent.com/TopProHatsker/snake/master/list.c
-	source = https://raw.githubusercontent.com/TopProHatsker/snake/master/matrix.c
-	source = https://raw.githubusercontent.com/TopProHatsker/snake/master/list.h
-	source = https://raw.githubusercontent.com/TopProHatsker/snake/master/matrix.h
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	source = https://raw.githubusercontent.com/TopProHatsker/snake/master/console_snake-0.1.1.tar.gz
+	md5sums = 699c7ea233d4049cc7c014848eb38db5
 
 pkgname = console_snake
