@@ -1,6 +1,6 @@
 pkgbase = webtrees
 	pkgdesc = The web’s leading online collaborative genealogy application
-	pkgver = 2.1.6
+	pkgver = 2.1.7
 	pkgrel = 1
 	url = https://webtrees.net/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = webtrees
 	depends = php
 	optdepends = php-sqlite: sqlite3 database support
 	options = !strip
-	source = webtrees-2.1.6.zip::https://github.com/fisharebest/webtrees/releases/download/2.1.6/webtrees-2.1.6.zip
-	sha256sums = a2c48e9e5bf25d655c3af645c5f5d9ca5d07e226dc35e0c70b770512d76c7820
+	source = webtrees-2.1.7.zip::https://github.com/fisharebest/webtrees/releases/download/2.1.7/webtrees-2.1.7.zip
+	sha256sums = 47ac8c5ad92f177a3be39bf498419f910767fe790ff3ce1d29ed0f65780ac116
 
 pkgname = webtrees
