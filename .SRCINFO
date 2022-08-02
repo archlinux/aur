@@ -1,9 +1,8 @@
 pkgbase = gnome-shell-extension-material-you-theme-git
 	pkgdesc = Applies generated libadwaita theme from wallpaper using Material You
-	pkgver = r24.cb58fe6
+	pkgver = r31.a3de984
 	pkgrel = 1
 	url = https://github.com/avanishsubbiah/material-you-theme
-	install = material-you-theme.install
 	arch = any
 	license = unknown
 	makedepends = git

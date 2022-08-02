@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-shell-extension-material-you-theme-git
-pkgver=r24.cb58fe6
+pkgver=r31.a3de984
 pkgrel=1
 pkgdesc="Applies generated libadwaita theme from wallpaper using Material You"
 arch=('any')
@@ -10,7 +10,6 @@ depends=('adw-gtk3' 'gnome-shell')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-install=material-you-theme.install
 source=('git+https://github.com/avanishsubbiah/material-you-theme.git')
 sha256sums=('SKIP')
 
