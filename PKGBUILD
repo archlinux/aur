@@ -2,7 +2,7 @@
 
 pkgname=gum-git
 pkgver=0.2.0.r8.g378a000
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for glamorous shell scripts"
 arch=('i686' 'x86_64')
 url="https://github.com/charmbracelet/gum"
@@ -11,7 +11,6 @@ depends=('glibc')
 makedepends=('git' 'go')
 provides=("gum=$pkgver")
 conflicts=('gum')
-options=('staticlibs')
 source=("git+https://github.com/charmbracelet/gum.git")
 sha256sums=('SKIP')
 
