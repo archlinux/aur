@@ -41,6 +41,7 @@ pkgbase = systemback
 	md5sums = SKIP
 
 pkgname = libsystemback
+	pkgdesc = Libary for Systemback
 
 pkgname = systemback-cli
 	depends = util-linux
@@ -62,15 +63,19 @@ pkgname = systemback-cli
 	depends = systemback-efiboot-amd64
 
 pkgname = systemback-efiboot-amd64
+	pkgdesc = Systemback EFI bootloader support
 	depends = syslinux
+	depends = libsystemback
 	optdepends = grub
 	optdepends = systemback
 
 pkgname = systemback-locales
-	depends = 
+	pkgdesc = Systemback language support
+	depends = libsystemback
 	optdepends = systemback
 
 pkgname = systemback-scheduler
+	pkgdesc = Systemback scheduler
 	depends = util-linux
 	depends = util-linux-libs
 	depends = parted
