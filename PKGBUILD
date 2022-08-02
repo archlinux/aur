@@ -1,7 +1,7 @@
 # Maintainer: Wojciech Kępka (wojciech@wkepka.dev) 
 pkgname=helix-git
 _pkgname=helix
-pkgver=r1822.a1e64815
+pkgver=r3147.eef9eff2
 pkgrel=1
 pkgdesc="A text editor written in rust"
 url="https://helix-editor.com"
@@ -38,7 +38,7 @@ EOF
 
 build() {
 	cd "${_pkgname}"
-	cargo build --release --locked --all-features
+	cargo build --release --locked
 }
 
 check() {
