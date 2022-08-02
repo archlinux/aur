@@ -2,7 +2,7 @@
 
 pkgname=ultracopier
 _pkgname="$(echo "$pkgname" | sed 's/.*/\u&/')"
-pkgver=2.2.4.9
+pkgver=2.2.6.2
 pkgrel=1
 pkgdesc="Ultracopier is free and open source software licensed under GPL3 that acts as a replacement for files copy dialogs. Main features include: play/pause, speed limitation, on-error resume, error/collision management"
 url="https://ultracopier.first-world.info/"
@@ -11,9 +11,9 @@ license=('GPL3')
 depends=('qt5-base' 'qt5-multimedia')
 makedepends=('qt5-tools')
 provides=('ultracopier')
-commit=25ff5c5cc5b735bd523bb93325b2160d99664769
+commit=280fd21352aea05784c1097348df489210855109
 source=("$pkgname-$pkgver.zip"::"https://github.com/alphaonex86/Ultracopier/archive/$commit.zip")
-sha512sums=('7767532a4cbf7eb6f8cda80667108c55cb3efaa439ea1e939a68fa1e7f8d057bd86c49b1b63b787b3e312db0a8013194a1a5b28485310b2dcb09147596f47370')
+sha512sums=('97d7f834bd2daeeac44aa358fffd623dca57d1ab7eb10bd4b9decf4b144ff3d7dc9564f692afb732bb1d76b47b8b75b9924c395862f88a265952da07ad455ce1')
 
 prepare() {
 	cd "$srcdir/$_pkgname-$commit"
