@@ -14,6 +14,10 @@ pkgbase = blackbox-terminal
 	depends = libmarble-git
 	depends = vte4-copy-patch-git
 	source = blackbox-terminal-0.11.3.tar.gz::https://gitlab.gnome.org/raggesilver/blackbox/-/archive/v0.11.3/blackbox-v0.11.3.tar.gz
+	source = launch_fix.diff
+	source = rename_icons.diff
 	sha256sums = 85efef854f8378c8aeb9df5a167447c17bbf3ba21274cdfcd6cc8e4cd3536aed
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = blackbox-terminal
