@@ -1,5 +1,5 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
-# Contributor: Jingbei Li <i@jingbei.li>
+# Maintainer: Jingbei Li <i@jingbei.li>
 # Contributor: Sigvald Marholm <marholm@marebakken.com>
 # Adapted from the package petsc with the following original contributors:
 # Contributor: Martin Diehl <https://martin-diehl.net>
@@ -37,12 +37,13 @@ optdepends=('trilinos: support for zoltan'
   'fftw: support for the FFTW fast Fourier transform'
   'triangle: support for the two-dimensional quality mesh generator and Delaunay triangulator'
   'suitesparse: support for the suitesparse sparse matrix libraries'
-  'valgrind: support for valgrind to help find memory-management problems in programs')
+  'valgrind: support for valgrind to help find memory-management problems in programs'
+  'libyaml: support for YAML-formatted file')
 install=${_base}.install
 source=(https://ftp.mcs.anl.gov/pub/${_base}/release-snapshots/${_base}-lite-${pkgver}.tar.gz
   test_optdepends.sh)
 sha512sums=('99689e9e99ef34e98f0dc4f8c3bcbb9e8cc7dff0a9e2f7217c575d7359931bbf27b383919f7f016d6731f2373e102ca67e89f5eec57ad827be15f6f8855a2f11'
-  '0c9dff577a770262e0300d997a8db249b9f1eef99994f3b5e49337a1e48a635b7aaa1059594d6f1c7fecf4385af7fb677648385fdf0932c02b444fbdc676d837')
+  '3b64124b5775a0f61128b56c936899096355f694a98bc545657fe7744733b6829bffa6ddea904463d6782e0900ba654a65adf7fdb8642e9161f08fb56e74e56b')
 
 _install_dir=/opt/${_base}/${_config}
 _petsc_arch=arch-${_config}

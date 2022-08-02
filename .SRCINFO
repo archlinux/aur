@@ -30,12 +30,13 @@ pkgbase = petsc-complex
 	optdepends = triangle: support for the two-dimensional quality mesh generator and Delaunay triangulator
 	optdepends = suitesparse: support for the suitesparse sparse matrix libraries
 	optdepends = valgrind: support for valgrind to help find memory-management problems in programs
+	optdepends = libyaml: support for YAML-formatted file
 	provides = petsc=3.17.4
 	conflicts = petsc
 	options = staticlibs
 	source = https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-lite-3.17.4.tar.gz
 	source = test_optdepends.sh
 	sha512sums = 99689e9e99ef34e98f0dc4f8c3bcbb9e8cc7dff0a9e2f7217c575d7359931bbf27b383919f7f016d6731f2373e102ca67e89f5eec57ad827be15f6f8855a2f11
-	sha512sums = 0c9dff577a770262e0300d997a8db249b9f1eef99994f3b5e49337a1e48a635b7aaa1059594d6f1c7fecf4385af7fb677648385fdf0932c02b444fbdc676d837
+	sha512sums = 3b64124b5775a0f61128b56c936899096355f694a98bc545657fe7744733b6829bffa6ddea904463d6782e0900ba654a65adf7fdb8642e9161f08fb56e74e56b
 
 pkgname = petsc-complex
