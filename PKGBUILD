@@ -1,11 +1,11 @@
 # Maintainer: Denis mezencevdenis@yandex.ru
-pkgname="template-for-java-cli-app-github-integrated-aur"
-pkgver="0.0.6"
+pkgname="node14"
+pkgver="14.17.6"
 pkgrel=1
 epoch=
-pkgdesc="Template for creating aur package"
+pkgdesc="node js 14"
 arch=('x86_64')
-url="https://github.com/mezlogo/template-for-java-cli-app-github-integrated-aur"
+url="https://github.com/mezlogo/template-aur-bin"
 license=('unknown')
 groups=()
 depends=()
@@ -19,9 +19,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname-$pkgver.zip::https://github.com/mezlogo/template-for-java-cli-app-github-integrated/releases/download/v$pkgver/mycliapp.zip")
+source=("$pkgname-$pkgver.tar.gz::https://nodejs.org/dist/v$pkgver/node-v$pkgver-linux-x64.tar.gz")
 noextract=()
-md5sums=('628d58c794965142b06fe8600ac08f2b')
+md5sums=('2f1efa5dad4a7fbf38301450e6f84054')
 validpgpkeys=()
 
 build() {
@@ -29,9 +29,10 @@ build() {
 }
 
 package() {
-	install -dm755 "$pkgdir/opt/mycliapp/bin"
+	install -dm755 "$pkgdir/opt/node"
 	install -dm755 "$pkgdir/usr/bin"
-	cp -R "$srcdir/mycliapp/lib" "$pkgdir/opt/mycliapp/lib"
-	install -Dm755 "$srcdir/mycliapp/bin/mycliapp" "$pkgdir/opt/mycliapp/bin/mycliapp"
-	ln -s "/opt/mycliapp/bin/mycliapp" "$pkgdir/usr/bin/mycliapp"
+	cp -R "$srcdir/node-v$pkgver-linux-x64/." "$pkgdir/opt/node"
+	ln -s "/opt/node/bin/node" "$pkgdir/usr/bin/node"
+	ln -s "/opt/node/bin/npm" "$pkgdir/usr/bin/npx"
+	ln -s "/opt/node/bin/npx" "$pkgdir/usr/bin/npm"
 }
