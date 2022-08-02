@@ -1,7 +1,7 @@
 pkgbase = ventoy-bin
 	pkgdesc = A new multiboot USB solution
 	pkgver = 1.0.79
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ventoy.net
 	install = ventoy.install
 	arch = aarch64
