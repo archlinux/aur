@@ -1,3 +1,12 @@
+# 10.0.14-1 / 2022-08-02
+
+* bump to new libary version
+	* internal use of fmt got removed
+		* library still vendored for now
+	* clusters an now shutdown and start
+	* see library changelog for full list
+* late release for continuity
+
 # 10.0.13-1 / 2022-07-12
 
 * bump to new library version

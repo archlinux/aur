@@ -2,18 +2,18 @@
 # See also https://github.com/eremiell-aur/dpp
 pkgname=dpp
 _pkgname=DPP
-pkgver=10.0.13
+pkgver=10.0.14
 pkgrel=1
 pkgdesc="Lightweight and Scalable C++ Discord API Bot Library"
 arch=('x86_64')
 url="https://dpp.dev/"
 license=('Apache')
-depends=('openssl' 'zlib' 'opus' 'libsodium' 'fmt' 'nlohmann-json')
+depends=('gcc-libs' 'openssl' 'zlib' 'opus' 'libsodium' 'nlohmann-json')
 makedepends=('cmake')
 install="${pkgname}.install"
 changelog="${pkgname}.changelog"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/brainboxdotcc/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('35dc9f5dc265d70047df67b13ae45f7345ed3f3b842b114fd89cacb3c83428ed')
+sha256sums=('5eb4cf3b4f4ba200d5f0d57929a1b96cc79e2398004afccc9d9c63aee865ca9d')
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
