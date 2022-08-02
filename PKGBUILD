@@ -4,8 +4,8 @@
 
 ################################################################################
 # This PKGBUILD features:
-# - pgtk is not enabled.
-# - xwidgets is enabled (you can surf the Internet via
+# - the pure GTK3 rendering backend is enabled.
+# - the xwidgets is enabled (you can surf the Internet via 
 #   a modern browser(webkit) in Emacs!).
 # - link-time optimization is disabled by default.
 # - enalbe JIT and AOT compilation of emacs-lisp, which
@@ -63,7 +63,7 @@ AOT="YES"         # Precompile all included elisp. It takes a long time.
 
 CLI=              # CLI only binary.
 
-XINPUT2="YES"     # Use Xinput2 support.
+XINPUT2=          # Use Xinput2 support.
                   # https://www.x.org/releases/X11R7.7/doc/inputproto/XI2proto.txt
                   # This is useless with pgtk.
 
@@ -88,7 +88,7 @@ NOCAIRO=          # Disable here.
 XWIDGETS="YES"    # Use GTK+ widgets pulled from webkit2gtk. Usable.
                   # Thanks to Po Lu, xwidgets supports pgtk now!
                
-PGTK=             # Wayland is awesome!
+PGTK="YES"        # Wayland is awesome!
 
 DOCS_HTML=        # Generate and install html documentation.
                
@@ -103,21 +103,21 @@ if [[ $CLI == "YES" ]] ; then
 else
 pkgname="emacs-native-comp-git"
 fi
-pkgver=29.0.50.156571
-pkgrel=2
-pkgdesc="GNU Emacs. Development master branch without PGTK."
+pkgver=29.0.50.161808
+pkgrel=1
+pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL3')
 depends_nox=('gnutls' 'libxml2' 'jansson')
 depends=("${depends_nox[@]}" 'harfbuzz')
 makedepends=('git' 'mold')
-provides=('emacs' 'emacs-git' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
-conflicts=('emacs' 'emacs-git' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
-replaces=('emacs' 'emacs-git' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
-#source=("emacs-git::git://git.savannah.gnu.org/emacs.git")
+provides=('emacs')
+conflicts=('emacs')
+replaces=('emacs')
+source=("emacs-git::git+https://git.savannah.gnu.org/emacs.git")
 # If Savannah fails for reasons, use Github's mirror
-source=("emacs-git::git://github.com/emacs-mirror/emacs.git")
+#source=("emacs-git::git+https://github.com/emacs-mirror/emacs.git")
 options=(!strip)
 install=emacs-git.install
 b2sums=('SKIP')
@@ -239,7 +239,7 @@ pkgver() {
 
   printf "%s.%s" \
     "$(grep AC_INIT configure.ac | \
-    sed -e 's/^.\+\ \([0-9]\+\.[0-9]\+\.[0-9]\+\?\).\+$/\1/')" \
+    sed -e 's/^.\+\ \[\([0-9]\+\.[0-9]\+\.[0-9]\+\?\)\].\+$/\1/')" \
     "$(git rev-list --count HEAD)"
 }
 
