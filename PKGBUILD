@@ -4,7 +4,7 @@
 pkgname='python-shlib'
 _pkgname=${pkgname#python-}
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="light-weight library to do shell-script like things relatively easily with Python"
 arch=('any')
@@ -23,7 +23,7 @@ license=('GPL3')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz"
         "$url/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz.asc"
 )
-validpgpkeys=('DCBCCD39794E6FFA')
+validpgpkeys=('4A47DE443CEE6D70A892347A9B8FFF1D3E1C0A50')
 
 b2sums=('ea1dda23368e9d35e902fc75e85e26e85609d9a6d2d0827e547f37325d24571f7276792b833e82b57a41111bd89ca1099eb5b22e07f1d3d922b084ae1a44c085'
         'SKIP')
