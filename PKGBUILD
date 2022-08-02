@@ -5,7 +5,7 @@ _pkgname=bottles
 pkgname=${_pkgname}-fixed
 _pkgver_main=2022.7.28
 _release_name=brescia
-_pkgver_sub=1
+_pkgver_sub=2
 pkgver="$_pkgver_main.$_pkgver_sub"
 pkgrel=1
 pkgdesc='Run Windows software on Linux with Bottles!'
@@ -93,7 +93,7 @@ source=("${_pkgname}-${_pkgver_main}-${_release_name}-${_pkgver_sub}.tar.gz::$ur
 #source=("${_pkgname}-${_pkgver_main}-${_release_name}-${_pkgver_sub}.tar.gz::$url/archive/refs/tags/${_pkgver_main}-${_release_name}.tar.gz")
 
 
-b2sums=('c196fd9210cc14d2b60dcc6ebad89b7ef30a587436ec2ac5f44b0491ac266dcbf13642c9fef94cb0b224fc6d46c72a9ca4ad2b88e9afaebabf6fd2947fbb8bc3')
+b2sums=('4dd8c4c01e0521c9dcc97389010d6a2efeb37d8c5238f277203d0dcf427d56cb08a36ed122261ac53adfba6041a7ac436ef1320222e6e9f17828760366ce5a1a')
 
 build() {
 	if [[ -d Bottles ]]; then
