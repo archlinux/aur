@@ -1,10 +1,9 @@
 pkgbase = via-bin
-	pkgdesc = Yet another keyboard configurator, compatible with over 150 keyboards and easily added to other QMK keyboards.
-	pkgver = 1.3.1
+	pkgdesc = Native electron build of https://usevia.app/
+	pkgver = 2.0.5
 	pkgrel = 1
 	url = https://caniusevia.com/
 	arch = any
-	depends = hicolor-icon-theme
 	depends = gtk3
 	depends = libnotify
 	depends = nss
@@ -13,11 +12,10 @@ pkgbase = via-bin
 	depends = xdg-utils
 	depends = at-spi2-core
 	depends = libutil-linux
-	depends = libappindicator-gtk3
 	depends = libsecret
-	provides = via=1.3.1
-	source = https://github.com/the-via/releases/releases/download/v1.3.1/via-1.3.1-linux.deb
-	md5sums = 5b61cea500307e17a289f6ac99d60de7
+	optdepends = libappindicator-gtk3: recommended for app indicator
+	provides = via=2.0.5
+	source = https://github.com/the-via/releases/releases/download/v2.0.5/via-2.0.5-linux.deb
+	md5sums = a48528b45af5792c5d7f26f8f0f24879
 
 pkgname = via-bin
-

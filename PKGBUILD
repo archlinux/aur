@@ -2,14 +2,13 @@
 
 _pkgname=via
 pkgname=$_pkgname-bin
-pkgver=1.3.1
+pkgver=2.0.5
 pkgrel=1
-pkgdesc="Yet another keyboard configurator, compatible with over 150 keyboards and easily added to other QMK keyboards."
+pkgdesc="Native electron build of https://usevia.app/"
 arch=(any)
 url="https://caniuse$_pkgname.com/"
 provides=("${_pkgname}=${pkgver}")
-depends=("hicolor-icon-theme"
-        "gtk3" 
+depends=("gtk3" 
         "libnotify"
         "nss"
         "libxss"
@@ -17,12 +16,12 @@ depends=("hicolor-icon-theme"
         "xdg-utils" 
         "at-spi2-core"
         "libutil-linux"
-        "libappindicator-gtk3"
         "libsecret")
+optdepends=("libappindicator-gtk3: recommended for app indicator")
 _filename=("${_pkgname}-${pkgver}-linux.deb")
 source=("https://github.com/the-$_pkgname/releases/releases/download/v${pkgver}/$_filename")
 
-md5sums=("5b61cea500307e17a289f6ac99d60de7")
+md5sums=("a48528b45af5792c5d7f26f8f0f24879")
 
 build() {
   mkdir -p "${srcdir}/output"
