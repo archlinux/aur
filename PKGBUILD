@@ -1,7 +1,7 @@
 # Maintainer: NiNjA <heinep@gmail.com>
 pkgname=freeserf.net
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Settlers 1 clone written in C# (requires original game file)'
 arch=('x86_64')
 url='https://github.com/Pyrdacor/freeserf.net'
@@ -12,7 +12,7 @@ install='freeserf.net.install'
 source=("https://github.com/Pyrdacor/freeserf.net/archive/refs/tags/v${pkgver}.tar.gz" 'freeserf.net.install' 'FreeserfNet' 'FreeserfNet.desktop' 'fix_libdl.patch' 'fix_log_directory.patch')
 md5sums=('04e6eec26b3717aca6b4d22bfdeb014e'
          'ed08c80955615acd1697a0395d5dff41'
-         '3d3216451a91a5e39ec54cb37678ec84'
+         '3a8c9a0f03a6a526da130d057d9acd56'
          '59a76e9b8f0dfc0acf7ed7ca0927ab58'
          '2bd44c28ccced72c99a307109265a884'
          '316d3bc772637eccb729bd55499e3dd4')
