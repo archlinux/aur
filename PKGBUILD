@@ -1,6 +1,6 @@
 # Maintainer: Jan Martin Reckel <jm.reckel@t-online.de>
 pkgname=cantara
-pkgver=2.2.3beta
+pkgver=2.3
 pkgrel=1
 epoch=
 pkgdesc="Song Presentation Software"
@@ -12,7 +12,7 @@ depends=('qt5pas')
 makedepends=('lazarus-qt5' 'qt5pas')
 provides=("cantara")
 source=("https://github.com/reckel-jm/cantara/archive/refs/tags/v$pkgver.zip")
-md5sums=('cbc7f1bcbe835364cf01be8fff892f53')
+md5sums=('98c10e026e0653a67eb833755069f43f')
 #noextract=("master.zip")
 #md5sums=()
 #validpgpkeys=()
