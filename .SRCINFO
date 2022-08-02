@@ -1,6 +1,6 @@
 pkgbase = lib32-tevent
 	pkgdesc = An event system based on the talloc memory management library (lib32)
-	pkgver = 0.11.0
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://tevent.samba.org
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = lib32-tevent
 	depends = lib32-talloc
 	depends = tevent
 	depends = python
-	source = https://samba.org/ftp/tevent/tevent-0.11.0.tar.gz
-	sha256sums = ee9a86c8e808aac2fe1e924eaa139ff7f0269d0e8e4fafa850ae5c7489bc82ba
+	source = https://samba.org/ftp/tevent/tevent-0.12.1.tar.gz
+	sha256sums = d157ec123053f6cab1a4ef42579c1a37b7817f7b4893b7f3167708dc8e467763
 
 pkgname = lib32-tevent

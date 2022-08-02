@@ -4,7 +4,7 @@
 
 _name=tevent
 pkgname=lib32-${_name}
-pkgver=0.11.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="An event system based on the talloc memory management library (lib32)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('GPL3')
 source=("https://samba.org/ftp/${_name}/${_name}-${pkgver}.tar.gz")
 depends=('lib32-talloc' 'tevent' 'python')
 makedepends=('lib32-cmocka')
-sha256sums=('ee9a86c8e808aac2fe1e924eaa139ff7f0269d0e8e4fafa850ae5c7489bc82ba')
+sha256sums=('d157ec123053f6cab1a4ef42579c1a37b7817f7b4893b7f3167708dc8e467763')
 
 build() {
   cd ${_name}-${pkgver}
