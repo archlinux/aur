@@ -1,11 +1,11 @@
 # Maintainer: Oshgnacknak <osh@oshgnacknak.de>
 pkgname=jagr-bin
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc='Java AutoGrader, implemented in Kotlin'
 arch=('x86_64')
-url='https://github.com/SourceGrade/Jagr'
+url='https://github.com/sourcegrade/jagr'
 license=('AGPL-3.0')
 groups=()
 depends=('jre-openjdk')
