@@ -1,0 +1,20 @@
+pkgbase = gambito-git
+	pkgdesc = Chess Game
+	pkgver = r73.9d5bb81
+	pkgrel = 1
+	url = https://gitlab.gnome.org/danigm/gambito
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	makedepends = cargo
+	depends = libadwaita
+	depends = stockfish
+	provides = gambito
+	conflicts = gambito
+	source = git+https://gitlab.gnome.org/danigm/gambito.git
+	b2sums = SKIP
+
+pkgname = gambito-git
