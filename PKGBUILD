@@ -36,6 +36,7 @@ build() {
 
 package() {
 	cd shortsync
+	mkdir -p $HOME/.config/shortsync/shortcut-configs
 	cp -n config.yaml $HOME/.config/shortsync
 	cp -nr shortcut-configs $HOME/.config/shortsync/shortcut-configs
 	install -Dm755 bin/$pkgname "$pkgdir/usr/local/bin/$pkgname"
