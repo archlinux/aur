@@ -3,15 +3,16 @@
 pkgname=('lua-pgmoon' 'lua51-pgmoon' 'lua52-pgmoon' 'lua53-pgmoon')
 _pkgbase='pgmoon'
 pkgver=1.15.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/leafo/pgmoon'
 license=('MIT')
+pkgdesc="PostgreSQL driver written in pure Lua"
 _archive="${_pkgbase}-${pkgver}"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/leafo/pgmoon/archive/v$pkgver.tar.gz")
 
 _package() {
-    pkgdesc="PostgreSQL driver written in pure Lua for Lua ${1}"
+    pkgdesc+=" for Lua ${1}"
     depends=("${pkgname%-*}" "${pkgname%-*}-lpeg")
     if [[ "$1" == "5.1" ]] ; then
         depends+=("${pkgname%-*}-bitop")
