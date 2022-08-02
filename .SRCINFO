@@ -1,0 +1,46 @@
+pkgbase = systemback
+	pkgdesc = Simple system backup and restore application with extra features
+	pkgver = 1.8.9
+	pkgrel = 2
+	url = https://github.com/shadichy/systemback-archlinux
+	arch = x86_64
+	license = GPL
+	makedepends = ncurses
+	makedepends = qt5-tools
+	makedepends = make
+	makedepends = gcc11
+	makedepends = dpkg
+	makedepends = debhelper
+	makedepends = util-linux
+	makedepends = util-linux-libs
+	makedepends = qt5-base>=5.5.0
+	makedepends = gcc-libs
+	makedepends = procps-ng
+	depends = util-linux
+	depends = util-linux-libs
+	depends = parted
+	depends = qt5-base>=5.5.0
+	depends = gcc-libs
+	depends = procps-ng
+	depends = gnu-free-fonts
+	depends = dosfstools
+	depends = libisoburn
+	depends = squashfs-tools
+	depends = syslinux
+	depends = xterm
+	depends = xz
+	depends = mkinitcpio-live-boot
+	depends = ncurses
+	depends = libsystemback
+	depends = systemback-efiboot-amd64
+	optdepends = grub
+	optdepends = btrfs-progs
+	optdepends = jfsutils
+	optdepends = reiserfsprogs
+	optdepends = xfsprogs
+	optdepends = unionfs-fuse
+	optdepends = kdialog
+	source = systemback-archlinux::git+https://github.com/shadichy/systemback-archlinux.git
+	md5sums = SKIP
+
+pkgname = systemback-cli
