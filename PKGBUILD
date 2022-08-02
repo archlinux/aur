@@ -1,7 +1,7 @@
 # Maintainer: ny-a <nyaarch64@gmail..com>
 
 pkgname=ecspresso
-pkgver=1.6.2
+pkgver=1.7.12
 pkgrel=1
 pkgdesc="Deployment tool for Amazon ECS"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('go')
 options=('!strip' '!emptydirs')
 source=("https://github.com/kayac/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4c24e13aa96495c48c934521b902701bfd680cb44c132c1e97552b55119f9bc4')
+sha256sums=('41d78a83994130e4cfd65b0d8384b4b42297e37b54d2439c896f380aac874f6b')
 
 build() {
   cd "$pkgname-$pkgver"
