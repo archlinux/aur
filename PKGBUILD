@@ -2,7 +2,7 @@
 # Contributor: Thomas Hipp <thomashipp at gmail dot com>
 
 pkgname=dqlite
-pkgver=1.10.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="Distributed SQLite"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('libuv' 'raft' 'sqlite')
 makedepends=('tcl' 'readline' 'zlib')
 options=(debug strip)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/canonical/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('46f57036bd5ac4c67b76c07ef3ce58b674458eb1564131c80f11a2d5ec7db962')
+sha256sums=('f900b81b7ba66ba654c734f7fc9f01caf462408f3751f5357019db0c18d438b5')
 
 build() {
 	cd "$pkgname-$pkgver"
