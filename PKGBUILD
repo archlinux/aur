@@ -25,7 +25,7 @@ curl -s https://api.github.com/repos/Lazap-Development/lazap/releases/latest \
 
 package() {
     install -Dm644 "${srcdir}/lazap.desktop" "${pkgdir}/usr/share/applications/lazap.desktop"
-    ln -sf "${srcdir}/usr/bin" "${pkgdir}/usr/bin/lazap"
+    ln -sf "src/usr/bin" "${pkgdir}/usr/bin/lazap"
 
     echo "Packaging Complete!"
 }
