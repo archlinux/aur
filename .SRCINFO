@@ -1,0 +1,17 @@
+pkgbase = goxlr-utility
+	pkgdesc = A utility for monitoring and controlling a TC-Helicon GoXLR or GoXLR Mini.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/GoXLR-on-Linux/goxlr-utility
+	install = goxlr-utility.install
+	arch = x86_64
+	license = MIT
+	license = custom
+	makedepends = cargo
+	makedepends = jq
+	depends = libusb
+	depends = bzip2
+	source = goxlr-utility-0.3.0.tar.gz::https://github.com/GoXLR-on-Linux/goxlr-utility/archive/refs/tags/v0.3.0.tar.gz
+	sha512sums = b2c1b9449340cd04983beb15a69ce7896d41395df0c96ee35f63b0a8d48b28a1f3d74af633e2421410bf4c3bf60c6519c2bf0b95f103477fe6d16acc95067402
+
+pkgname = goxlr-utility
