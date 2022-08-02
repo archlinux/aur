@@ -2,7 +2,7 @@
 # Contributor: Shaber
 
 pkgname=corepad
-pkgver=4.3.0
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="A document editor from the C Suite"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('qt5-base' 'libcprime>=2.7.1')
 makedepends=('cmake' 'ninja')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('7a7670dcdaa8dd19b6fc6bbfd2e34fc7')
+md5sums=('bd27cb9fbe4f9275aa4dfff4a6fa04fe')
 
 prepare() {
   mkdir -p build
