@@ -17,6 +17,7 @@ pkgbase = qucs-s
 	makedepends = bison
 	makedepends = qt5-tools
 	makedepends = qt5-script
+	makedepends = qt5-svg
 	depends = qt5-base
 	optdepends = ngspice: recommended simulation backend
 	optdepends = qucs: for Qucsator simulation backend

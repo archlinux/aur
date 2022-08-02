@@ -10,7 +10,7 @@ url="https://ra3xdh.github.io"
 license=('GPL')
 options=(!makeflags)
 depends=('qt5-base')
-makedepends=('cmake' 'autoconf' 'automake' 'perl-gd' 'perl-xml-libxml' 'gperf' 'libtool' 'flex' 'bison' 'qt5-tools' 'qt5-script')
+makedepends=('cmake' 'autoconf' 'automake' 'perl-gd' 'perl-xml-libxml' 'gperf' 'libtool' 'flex' 'bison' 'qt5-tools' 'qt5-script' 'qt5-svg')
 optdepends=('ngspice: recommended simulation backend'
             'qucs: for Qucsator simulation backend'
             'freehdl: to permit digital circuit simulation'
