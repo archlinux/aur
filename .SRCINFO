@@ -5,6 +5,7 @@ pkgbase = console_snake
 	url = https://github.com/TopProHatsker/snake
 	arch = any
 	license = GPL
+	makedepends = fakeroot
 	makedepends = gcc
 	makedepends = git
 	source = https://raw.githubusercontent.com/TopProHatsker/snake/master/console_snake-0.1.1.tar.gz
