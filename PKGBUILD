@@ -1,17 +1,18 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-opencore-amr
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Open source implementation of the Adaptive Multi Rate (AMR) speech codec (mingw-w64)"
 arch=('any')
 license=('APACHE')
-url="http://opencore-amr.sourceforge.net/"
-source=(http://downloads.sourceforge.net/sourceforge/opencore-amr/opencore-amr-$pkgver.tar.gz)
+url="https://opencore-amr.sourceforge.net/"
+source=(https://downloads.sourceforge.net/sourceforge/opencore-amr/opencore-amr-$pkgver.tar.gz)
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' '!libtool' 'staticlibs')
 makedepends=('mingw-w64-gcc')
-sha256sums=('2c006cb9d5f651bfb5e60156dbff6af3c9d35c7bbcc9015308c0aff1e14cd341')
+sha512sums=('8955169954b09d2d5e2190888602c75771b72455290db131ab7f40b587df32ea6a60f205126b09193b90064d0fd82b7d678032e2b4c684189788e175b83d0aa7')
+b2sums=('5f2f618b6d80d667fd99f1df8793cf0260d582e2fc8021f4af35d60b2b1db7be7c897d4b78589da5a442e684161cecef005ec4247cef7a9c3df797c68db97d52')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
@@ -19,6 +20,10 @@ build() {
     mkdir -p ${srcdir}/build-${_arch} && cd ${srcdir}/build-${_arch}
     unset LDFLAGS CPPFLAGS
     $srcdir/opencore-amr-$pkgver/configure --prefix=/usr/${_arch} --host=${_arch} --enable-static
+
+    # prevent excessive overlinking due to libtool
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
     make
   done
 }
