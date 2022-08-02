@@ -58,6 +58,8 @@ package_systemback-scheduler() {
     optdepends=('systemback')
     dpkg-deb -xv "${srcdir}/${pkgbase}-archlinux/${pkgbase}-scheduler_${pkgver}_amd64.deb" "${srcdir}/${pkgbase}-archlinux/${pkgbase}-scheduler"
     cp -dr --no-preserve=ownership "${srcdir}/${pkgbase}-archlinux/${pkgbase}-scheduler/usr" "${pkgdir}/usr"
+    mkdir -p "${pkgdir}/usr/share/applications"
+    cp "${srcdir}/${pkgbase}-archlinux/${pkgbase}/systemback.desktop" "${pkgdir}/usr/share/applications/org.systemback.sbsustart.desktop"
     mkdir -p "${pkgdir}/usr/bin"
     cat << EOF > "${pkgdir}/usr/bin/sbsustart"
 #!/bin/bash
