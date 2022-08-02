@@ -1,6 +1,6 @@
 # Maintainer: Ralph Zhou <ralph-zhou@qq.com>
 pkgname=ikatago-client
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A tool for connect remote katago to local GUI"
 arch=(x86_64)
