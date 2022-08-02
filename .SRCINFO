@@ -1,12 +1,12 @@
 pkgbase = lua-resty-lrucache
 	pkgdesc = Lua lrucache for nginx lua module
-	pkgver = 0.11
+	pkgver = 0.13
 	pkgrel = 1
 	url = https://github.com/openresty/lua-resty-lrucache
 	arch = any
 	license = BSD
 	depends = luajit
-	source = lua-resty-lrucache-0.11.tar.gz::https://github.com/openresty/lua-resty-lrucache/archive/v0.11.tar.gz
-	sha256sums = e810ed124fe788b8e4aac2c8960dda1b9a6f8d0ca94ce162f28d3f4d877df8af
+	source = lua-resty-lrucache-0.13.tar.gz::https://github.com/openresty/lua-resty-lrucache/archive/v0.13.tar.gz
+	sha256sums = da70ba4b84292a862e845e10be10095c6ce78ec75ec9bba0e3b5b7987c5e11df
 
 pkgname = lua-resty-lrucache
