@@ -1,7 +1,7 @@
 pkgbase = trakt-scrobbler
 	pkgdesc = Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!
-	pkgver = 1.4.2
-	pkgrel = 3
+	pkgver = 1.5.0
+	pkgrel = 1
 	url = https://github.com/iamkroot/trakt-scrobbler
 	arch = any
 	license = GPL2
@@ -9,25 +9,25 @@ pkgbase = trakt-scrobbler
 	makedepends = go-md2man
 	makedepends = gzip
 	depends = systemd
-	depends = python-requests<3.0.0
-	depends = python-requests>=2.25.1
-	depends = python-urllib3<2.0.0
-	depends = python-urllib3>=1.26.0
-	depends = python-guessit<4.0.0
-	depends = python-guessit>=3.3.1
-	depends = python-appdirs<2.0.0
-	depends = python-appdirs>=1.4.4
-	depends = python-cleo<0.9.0
-	depends = python-cleo>=0.8.1
-	depends = python-confuse<2.0.0
-	depends = python-confuse>=1.4.0
-	depends = python-jeepney<0.8
-	depends = python-jeepney>=0.7
 	depends = python-urlmatch<2.0.0
 	depends = python-urlmatch>=1.0.1
-	source = trakt-scrobbler-1.4.2.tar.gz::https://files.pythonhosted.org/packages/source/t/trakt-scrobbler/trakt-scrobbler-1.4.2.tar.gz
+	depends = python-jeepney<0.9
+	depends = python-jeepney>=0.8
+	depends = python-confuse<3.0
+	depends = python-confuse>=2.0
+	depends = python-cleo<0.9.0
+	depends = python-cleo>=0.8.1
+	depends = python-appdirs<2.0.0
+	depends = python-appdirs>=1.4.4
+	depends = python-guessit<4.0.0
+	depends = python-guessit>=3.3.1
+	depends = python-urllib3<2.0.0
+	depends = python-urllib3>=1.26.0
+	depends = python-requests<3.0.0
+	depends = python-requests>=2.25.1
+	source = trakt-scrobbler-1.5.0.tar.gz::https://files.pythonhosted.org/packages/source/t/trakt-scrobbler/trakt-scrobbler-1.5.0.tar.gz
 	source = trakts-man.md
-	sha256sums = 66523cbae25d211cdb7306034b3e2e545cd690bf6834188f43f3fdbb69b4fe49
+	sha256sums = 012427205e400bc24c38a9dc24ca600c779574b8837492ccdb229aaca1ce7bc3
 	sha256sums = 81c3fb93bf01c0e6c0bbc9b2ef853da3f691bc3c50b4a87a68072b11ba72691c
 
 pkgname = trakt-scrobbler
