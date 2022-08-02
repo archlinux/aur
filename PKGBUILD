@@ -14,10 +14,10 @@ md5sums=('SKIP')
 
 build() {
   cd ${pkgname}
-  python3 setup.py build
+  /usr/bin/python3 setup.py build
 }
 
 package() {
   cd ${pkgname}
-  python3 setup.py install --root="$pkgdir" --optimize=1
+  /usr/bin/python3 setup.py install --root="$pkgdir" --optimize=1
 }

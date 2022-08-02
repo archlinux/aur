@@ -1,0 +1,5 @@
+# Makepkg Build files
+hyfetch/
+pkg/
+src/
+hyfetch-*.pkg.tar.zst
