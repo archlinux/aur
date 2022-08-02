@@ -1,7 +1,7 @@
 pkgbase = monado
 	pkgdesc = An open source OpenXR runtime
 	pkgver = 21.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://monado.dev/
 	arch = x86_64
 	license = Boost
@@ -32,9 +32,16 @@ pkgbase = monado
 	makedepends = systemd-libs
 	makedepends = vulkan-icd-loader
 	makedepends = wayland
+	makedepends = wayland-protocols
 	makedepends = zlib
 	source = https://gitlab.freedesktop.org/monado/monado/-/archive/v21.0.0/monado-v21.0.0.tar.bz2
+	source = 010-monado-meson-0.61.0-fix.patch::https://gitlab.freedesktop.org/monado/monado/-/commit/cce20942901211a6820654c31ce86d4bd06ab597.patch
+	source = 020-monado-gcc-10-fix-part001.patch::https://gitlab.freedesktop.org/monado/monado/-/commit/1a556740d5ba79af8f5e72d7145ab62b8867db0b.patch
+	source = 030-monado-gcc-10-fix-part002.patch::https://gitlab.freedesktop.org/monado/monado/-/commit/a0c8cc14f52f1b922c9c4fd1272652e01e130282.patch
 	sha256sums = 7849ef4123afef14ca401aa5f9b8923144bb6bc707fe35817a288285d4990458
+	sha256sums = 902de0126f2279800acb9bff8a6db9e59932d4eaf8a5a7dcf3e6631a6aa00347
+	sha256sums = 690fbd3f1d8e2f8b71924fc22dbfefe663dfa931741562033a9bcec5d2bb83b7
+	sha256sums = b1b430610995654ecfd8ea23d27543ba1e716076699fbc2eaf1fb622f111cf3e
 
 pkgname = monado
 	install = monado.install
@@ -63,4 +70,3 @@ pkgname = monado
 pkgname = monado-doc
 	pkgdesc = An open source OpenXR runtime (documentation)
 	arch = any
-
