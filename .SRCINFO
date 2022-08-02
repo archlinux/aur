@@ -1,6 +1,6 @@
 pkgbase = libvirt-xen
 	pkgdesc = API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)
-	pkgver = 8.4.0
+	pkgver = 8.6.0
 	pkgrel = 1
 	url = https://libvirt.org/
 	install = libvirt.install
@@ -45,7 +45,7 @@ pkgbase = libvirt-xen
 	optdepends = qemu: QEMU/KVM support
 	optdepends = lvm2: Logical Volume Manager support
 	optdepends = open-iscsi: iSCSI support via iscsiadm
-	provides = libvirt=8.4.0
+	provides = libvirt=8.6.0
 	provides = libvirt.so
 	provides = libvirt-admin.so
 	provides = libvirt-lxc.so
@@ -104,11 +104,11 @@ pkgbase = libvirt-xen
 	backup = etc/logrotate.d/libvirtd.libxl
 	backup = etc/logrotate.d/libvirtd.qemu
 	backup = etc/sasl2/libvirt.conf
-	source = https://libvirt.org/sources/libvirt-8.4.0.tar.xz
-	source = https://libvirt.org/sources/libvirt-8.4.0.tar.xz.asc
+	source = https://libvirt.org/sources/libvirt-8.6.0.tar.xz
+	source = https://libvirt.org/sources/libvirt-8.6.0.tar.xz.asc
 	source = find_programs.ini
 	validpgpkeys = 453B65310595562855471199CA68BE8010084C9C
-	sha256sums = 601a6e9bb03a43d05659f63e4a403df253ab0975b4a973f10a5607f3bbc018dd
+	sha256sums = a81847c43ac9ade61b6f8447c44e8ba2cc544ab49bac5c0b18a5b105f5da3ae2
 	sha256sums = SKIP
 	sha256sums = 735ac805fbf06021418f82297845babf481d5681bd939a6994fbdf36fe1661e4
 
