@@ -1,6 +1,6 @@
 # Maintainer: Taylor Allen
 pkgname=shortsync
-pkgver=1
+pkgver=1.r6.bf2795a
 pkgrel=1
 epoch=
 pkgdesc="This application makes it easy to keep track of alias, file, and folder shortcuts across multiple applications and shells."
