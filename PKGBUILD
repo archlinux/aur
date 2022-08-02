@@ -1,9 +1,9 @@
 # Maintainer: Jonas Riedel <jonasriedel@protonmail.com>
 
 pkgname=rustyfetch
-pkgver=0.1.3
+pkgver=0.1.4
 pkgdesc="Fetch stuff with Rust!"
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/jonasrdl/rustfetch"
 license=('MPL-2.0')

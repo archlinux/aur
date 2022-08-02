@@ -1,12 +1,12 @@
 pkgbase = rustyfetch
 	pkgdesc = Fetch stuff with Rust!
-	pkgver = 0.1.3
-	pkgrel = 2
+	pkgver = 0.1.4
+	pkgrel = 1
 	url = https://github.com/jonasrdl/rustfetch
 	arch = x86_64
 	license = MPL-2.0
 	makedepends = cargo
-	source = rustyfetch-0.1.3.tar.gz::https://static.crates.io/crates/rustyfetch/rustyfetch-0.1.3.crate
+	source = rustyfetch-0.1.4.tar.gz::https://static.crates.io/crates/rustyfetch/rustyfetch-0.1.4.crate
 	sha512sums = SKIP
 
 pkgname = rustyfetch
