@@ -2,17 +2,17 @@
 # Contributor: Shaber
 
 pkgname=corepdf
-pkgver=4.3.0
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="A PDF viewer from the C Suite"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/coreapps/$pkgname"
 license=('GPL3')
-depends=('qt5-base' 'qt5-webengine' 'libcprime>=2.7.1')
+depends=('qt5-base' 'poppler-qt5' 'libcprime>=2.7.1')
 makedepends=('cmake' 'ninja')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('df03b3f973e7dbebee4a8f378c5a4633')
+md5sums=('985cc3c5f44a95e2918d562d6c18ed43')
 
 prepare() {
   mkdir -p build
