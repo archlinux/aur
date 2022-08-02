@@ -36,11 +36,8 @@ build() {
 
 package() {
 	cd shortsync
-	# make install
-	install -CDm755 shortcut-files/alias_shortcuts.conf "$pkgdir/$HOME/.config/$pkgname/shortcut-files/alias_shortcuts.conf"
-	install -CDm755 shortcut-files/file_shortcuts.conf "$pkgdir/$HOME/.config/$pkgname/shortcut-files/file_shortcuts.conf"
-	install -CDm755 shortcut-files/folder_shortcuts.conf "$pkgdir/$HOME/.config/$pkgname/shortcut-files/folder_shortcuts.conf"
-	install -CDm755 config.yaml "$pkgdir/$HOME/.config/$pkgname/config.yaml"
+	cp -n config.yaml $HOME/.config/shortsync
+	cp -nr shortcut-configs $HOME/.config/shortsync/shortcut-configs
 	install -Dm755 bin/$pkgname "$pkgdir/usr/local/bin/$pkgname"
 	install -Dm644 $pkgname.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
