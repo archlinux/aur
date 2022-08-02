@@ -1,6 +1,6 @@
 # Maintainer: Thomas Frans <franske2000 at gmail dot com>
 pkgname=wiki-tui
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A simple and easy to use Wikipedia Text User Interface"
 arch=('x86_64')
@@ -18,17 +18,17 @@ md5sums=('SKIP')
 # this.
 prepare() {
 	cd "$pkgname-$pkgver"
-    cargo fetch
+    cargo fetch --locked
 }
 
 build() {
 	cd "$pkgname-$pkgver"
-    cargo build --release
+    cargo build --locked --release
 }
 
 check() {
 	cd "$pkgname-$pkgver"
-    cargo test --release
+    cargo test --locked --release
 }
 
 package() {
