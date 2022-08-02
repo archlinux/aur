@@ -3,8 +3,7 @@
 
 pkgname=gatk
 pkgver=4.2.6.1
-pkgrel=1
-epoch=2
+pkgrel=7
 pkgdesc="Variant discovery in high-throughput bioinformatics sequencing data"
 arch=('any')
 url=https://software.broadinstitute.org/"${pkgname}"
