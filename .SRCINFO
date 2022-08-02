@@ -1,0 +1,15 @@
+pkgbase = lightdm-webkit2-theme-xinux
+	pkgdesc = Xinux Webkit2 greeter theme
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/uzinfocom-org/greeter
+	arch = any
+	license = MIT
+	depends = lightdm
+	depends = lightdm-webkit2-greeter
+	conflicts = lightdm-webkit2-theme-xinux-git
+	source = https://github.com/uzinfocom-org/greeter/archive/v1.0.zip
+	md5sums = ee5bef26263ca28dd309072314a3b632
+
+pkgname = lightdm-webkit2-theme-xinux
+
