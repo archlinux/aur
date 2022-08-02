@@ -2,7 +2,7 @@
 pkgname=rimgo
 rpkgver=2022-04-22
 pkgver=2022.04.22
-pkgrel=2
+pkgrel=3
 pkgdesc="An alternative frontend for Imgur. Originally based on rimgu."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://codeberg.org/video-prize-ranch/rimgo"
@@ -12,6 +12,9 @@ provides=("${pkgname}")
 makedepends=('go>=1.17')
 source=("${pkgname}-${rpkgver}.tar.gz::${url}/archive/${rpkgver}.tar.gz")
 sha256sums=('d332f65e988247ee274a03de23bd86930fd4b2111d20ce01399c97c85d257241')
+backup=(
+  'etc/rimgo.conf'
+)
 
 prepare() {
   # prevent creation of a `go` directory in one's home.

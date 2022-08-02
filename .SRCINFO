@@ -1,7 +1,7 @@
 pkgbase = rimgo
 	pkgdesc = An alternative frontend for Imgur. Originally based on rimgu.
 	pkgver = 2022.04.22
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/video-prize-ranch/rimgo
 	arch = i686
 	arch = pentium4
@@ -14,6 +14,7 @@ pkgbase = rimgo
 	makedepends = go>=1.17
 	provides = rimgo
 	options = !lto
+	backup = etc/rimgo.conf
 	source = rimgo-2022-04-22.tar.gz::https://codeberg.org/video-prize-ranch/rimgo/archive/2022-04-22.tar.gz
 	sha256sums = d332f65e988247ee274a03de23bd86930fd4b2111d20ce01399c97c85d257241
 
