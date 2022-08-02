@@ -12,3 +12,4 @@ config.ninja
 /src/
 /pkg/
 /nvfand/
+nvfand-git-*.pkg.tar.*
