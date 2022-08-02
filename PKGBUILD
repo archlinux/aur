@@ -1,6 +1,6 @@
 # Maintainer: John Regan <john@jrjrtech.com>
 _pkgname=emoji-keyboard
-_pkgver="3.1.0"
+_pkgver="3.1.1"
 pkgname="${_pkgname}-appimage"
 pkgdesc="Virtual keyboard-like emoji palette for Linux - AppImage version"
 pkgver="${_pkgver//-}"
@@ -10,11 +10,11 @@ url="https://github.com/OzymandiasTheGreat/emoji-keyboard"
 license=('GPL')
 options=(!strip)
 _appimage="${_pkgname}-${_pkgver}.AppImage"
-source=("https://github.com/OzymandiasTheGreat/emoji-keyboard/archive/v${pkgver}.tar.gz")
-source_x86_64=("${_appimage}::https://github.com/OzymandiasTheGreat/emoji-keyboard/releases/download/v${pkgver}/${_appimage}")
+source=("https://github.com/OzymandiasTheGreat/emoji-keyboard/archive/${pkgver}.tar.gz")
+source_x86_64=("${_appimage}::https://github.com/OzymandiasTheGreat/emoji-keyboard/releases/download/${pkgver}/${_appimage}")
 noextract=("${_appimage}")
 sha256sums=('SKIP') # github auto-generated archives are unreliable :-/
-sha256sums_x86_64=('4c14ff6cb87dcc92059ccd95ff7ae337c3e01b811b823b0c26f4fee6490f76f2')
+sha256sums_x86_64=('4ee945e2f67aad661246c8d6b91251f05e232e56a82ef0decb71261847c4b0aa')
 makedepends=('appimage')
 conflicts=('emoji-keyboard')
 provides=('emoji-keyboard')
