@@ -5,9 +5,9 @@ _pkgname=bottles
 pkgname=${_pkgname}-fixed
 _pkgver_main=2022.7.28
 _release_name=brescia
-_pkgver_sub=0
+_pkgver_sub=1
 pkgver="$_pkgver_main.$_pkgver_sub"
-pkgrel=2
+pkgrel=1
 pkgdesc='Run Windows software on Linux with Bottles!'
 arch=(any)
 changelog=changelog.md
@@ -88,12 +88,12 @@ provides=('bottles')
 
 
 # use if _pkgver_sub is not 0
-#source=("${_pkgname}-${_pkgver_main}-${_release_name}-${_pkgver_sub}.tar.gz::$url/archive/refs/tags/${_pkgver_main}-${_release_name}-${_pkgver_sub}.tar.gz")
+source=("${_pkgname}-${_pkgver_main}-${_release_name}-${_pkgver_sub}.tar.gz::$url/archive/refs/tags/${_pkgver_main}-${_release_name}-${_pkgver_sub}.tar.gz")
 # use if _pkgver_sub is 0
-source=("${_pkgname}-${_pkgver_main}-${_release_name}-${_pkgver_sub}.tar.gz::$url/archive/refs/tags/${_pkgver_main}-${_release_name}.tar.gz")
+#source=("${_pkgname}-${_pkgver_main}-${_release_name}-${_pkgver_sub}.tar.gz::$url/archive/refs/tags/${_pkgver_main}-${_release_name}.tar.gz")
 
 
-b2sums=('976315dc07eb1445b0663080f81bbba3b85db43e57834366286da295d073151607735cb46850b53714382239e7f032973e3d81a27211aeec5b708a3f8a2fbd31')
+b2sums=('c196fd9210cc14d2b60dcc6ebad89b7ef30a587436ec2ac5f44b0491ac266dcbf13642c9fef94cb0b224fc6d46c72a9ca4ad2b88e9afaebabf6fd2947fbb8bc3')
 
 build() {
 	if [[ -d Bottles ]]; then
