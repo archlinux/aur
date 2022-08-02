@@ -2,7 +2,7 @@
 # Contributor: Shaber
 
 pkgname=libcsys
-pkgver=4.3.0
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="Library for managing drive and getting system resource information in real time"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('qt5-base' 'udisks2')
 makedepends=('cmake' 'ninja')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('d8bec74f286dca0e1ce76cd0eb331adb')
+md5sums=('ba0e6a2b3ddbb3510eb371555d88082c')
 
 prepare() {
   mkdir -p build
