@@ -2,7 +2,7 @@
 # Contributor: Shaber
 
 pkgname=corefm
-pkgver=4.3.0
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="A lightwight filemanager from the C Suite"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('qt5-base' 'libcprime>=2.7.1' 'libcsys>=2.7.1')
 makedepends=('cmake' 'ninja')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('0f94e064c36e9f225e1fb54cd15375ec')
+md5sums=('073319fc3ec3b48910755dee7d165ff4')
 
 prepare() {
   mkdir -p build
