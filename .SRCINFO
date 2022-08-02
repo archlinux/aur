@@ -1,7 +1,7 @@
 pkgbase = freeserf.net
 	pkgdesc = Settlers 1 clone written in C# (requires original game file)
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Pyrdacor/freeserf.net
 	install = freeserf.net.install
 	arch = x86_64

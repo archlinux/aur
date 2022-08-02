@@ -1,7 +1,7 @@
 # Maintainer: NiNjA <heinep@gmail.com>
 pkgname=freeserf.net
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Settlers 1 clone written in C# (requires original game file)'
 arch=('x86_64')
 url='https://github.com/Pyrdacor/freeserf.net'
