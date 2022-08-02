@@ -1,0 +1,5 @@
+[xboxdrv]
+silent = true
+next-controller = true
+[xboxdrv-daemon]
+dbus = disabled

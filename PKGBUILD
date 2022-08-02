@@ -1,55 +1,47 @@
-# Maintainer: Vítor Ferreira <vitor.dominor@gmail.com>
+# Maintainer: xiota <aur@mentalfossa.com>
+# Contributor: Vítor Ferreira <vitor.dominor@gmail.com>
 pkgname=xboxdrv-stable-git
-pkgver=20130227
+pkgname_=xboxdrv
+pkgver=0.8.8.18.g662952a
 pkgrel=1
-pkgdesc="An XBox/XBox 360 gamepad driver - as alternative to the xpad-kernel module - with more configurability, runs in userspace and supports a multitude of controllers"
+pkgdesc="XBox/XBox 360 userspace gamepad driver and emulator - git stable branch"
+url='https://xboxdrv.gitlab.io/'
 arch=('i686' 'x86_64')
-url="http://pingus.seul.org/~grumbel/xboxdrv/"
 license=('GPL3')
-depends=('libx11' 'dbus-glib' 'libusbx')
-makedepends=('git' 'scons' 'boost' 'pkg-config' 'libx11' 'dbus-glib' 'libusb')
-provides=('xboxdrv')
-conflicts=('xboxdrv')
-source=(
-  'xboxdrv.service'
-  'xboxdrv.conf')
-md5sums=('c44dc13f6d34cd7fc61c87ecd8c3a547'
-         'c73bb9cf8ff763e7c477366472d19813')
+depends=('libx11' 'dbus-glib' 'dbus-python' 'libusb' 'systemd')
+makedepends=('scons' 'boost' 'pkg-config' 'libx11' 'python')
+provides=('xboxdrv' 'xboxdrv-git' 'xboxdrv-sl6566bk' 'xboxdrv-cebtenzzre-git' 'xboxdrv-develop-git')
+conflicts=('xboxdrv' 'xboxdrv-git' 'xboxdrv-sl6566bk' 'xboxdrv-cebtenzzre-git' 'xboxdrv-develop-git')
+backup=("etc/default/xboxdrv")
+source=("${pkgname_}-${pkgver}::git+https://gitlab.com/xboxdrv/xboxdrv.git#branch=stable"
+        ${pkgname_}.service
+        ${pkgname_}.default
+        fix-60-sec-delay.patch)
+sha512sums=('SKIP'
+            'f1a4e7b1a06e951c3a4f5bcdec5f14db542b34963950619f0d4b1ee324d64b18ca2f63642719ef65a63e424702fb0eb33e0259937906732e587b96a9582c2e6b'
+            '4f6e9a12b208254e19daba477dd7787147a8b2c8a83007d92f8cfce6212c21ce3306f23a2669080f0e46986ca102ab08c262b42c678caf1a891326b4e2c40b5f'
+            '58170b3f96f02e5ba0af5f6641482fb1c612ca70650e475d68b55c05a62ec0831033190b90e591d593fd6b25c2a155e6c4975f37eef1534245947156a5e3285f')
 
-_gitroot=git://github.com/Grumbel/xboxdrv.git
-_gitname=xboxdrv-stable
+prepare() {
+  cd ${pkgname_}-${pkgver}
+  sed 's|python|python2|g' -i examples/*.py
+  patch -p1 < "${srcdir}/fix-60-sec-delay.patch"
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname" --branch stable
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  #
-  # BUILD HERE
-  #
-  make
+  cd ${pkgname_}-${pkgver}
+  scons \
+    LINKFLAGS="${LDFLAGS}" \
+    CXXFLAGS="${CPPFLAGS} ${CXXFLAGS}" \
+    "${MAKEFLAGS}"
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
-  make PREFIX=/usr DESTDIR="$pkgdir/" install
-  
-  install -D -m755 "$srcdir/xboxdrv.service" "$pkgdir/usr/lib/systemd/system/xboxdrv.service"
-  install -D -m644 "$srcdir/xboxdrv.conf" "$pkgdir/etc/conf.d/xboxdrv"
-
+  cd ${pkgname_}-${pkgver}
+  make PREFIX=/usr DESTDIR="${pkgdir}" install
+  install -Dm 644 "${srcdir}/${pkgname_}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname_}.service"
+  install -Dm 644 "${srcdir}/${pkgname_}.default" "${pkgdir}/etc/default/${pkgname_}"
+  install -Dm 644 README.md NEWS PROTOCOL -t "${pkgdir}/usr/share/doc/${pkgname_}"
+  install -Dm 644 examples/* -t "${pkgdir}/usr/share/doc/${pkgname_}/examples"
+  install -Dm 644 data/org.seul.Xboxdrv.conf -t "${pkgdir}/etc/dbus-1/system.d"
 }
-
-# vim:set ts=2 sw=2 et:

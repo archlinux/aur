@@ -1,10 +1,12 @@
 [Unit]
-Description = xboxdrv
+Description=Xbox controller driver daemon
+Documentation=man:xboxdrv(1)
 
 [Service]
-User = root
-Type = simple
-ExecStart = /usr/bin/xboxdrv -c /etc/conf.d/xboxdrv
+Type=forking
+User=root
+PIDFile=/var/run/xboxdrv.pid
+ExecStart=/usr/bin/xboxdrv --daemon --detach --pid-file /var/run/xboxdrv.pid -c /etc/default/xboxdrv --detach-kernel-driver --deadzone 4000 --deadzone-trigger 10%
 
 [Install]
-WantedBy = multi-user.target
+WantedBy=multi-user.target
