@@ -2,7 +2,7 @@
 
 pkgname=jailbox-git
 _pkgname=jailbox
-pkgver=0.2.0.r2.gf77c902
+pkgver=0.2.2.r0.gf77c902
 pkgrel=1
 pkgdesc="Torify the system with multiple tor exit nodes and load balance"
 url="https://github.com/jamazi/jailbox.git"
