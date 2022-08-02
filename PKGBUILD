@@ -1,7 +1,7 @@
 # Maintainer:
 pkgname=eprosima-fast-dds-monitor
 pkgver=1.2.0
-pkgrel=0
+pkgrel=1
 pkgdesc='eProsima Fast DDS Monitor is a graphical desktop application aimed at monitoring DDS environments deployed using the eProsima Fast DDS library.'
 arch=('x86_64')
 url='https://github.com/eProsima/Fast-DDS-monitor'
