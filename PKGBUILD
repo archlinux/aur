@@ -4,7 +4,7 @@
 # from: git
 
 pkgname=trackma-git
-pkgver=0.8.4.r117.g934c567
+pkgver=0.8.4.r147.g68fd22e
 pkgrel=1
 pkgdesc="A lightweight and simple program for updating and using lists on several media tracking websites."
 arch=('any')
