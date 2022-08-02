@@ -34,6 +34,20 @@ RestrictSUIDSGID=yes
 SystemCallArchitectures=native
 SystemCallFilter=@system-service ~@privileged ~@resources
 UMask=0077
+CapabilityBoundingSet=~CAP_SYS_CHROOT
+CapabilityBoundingSet=~CAP_SYS_BOOT
+CapabilityBoundingSet=~CAP_SYS_PTRACE
+CapabilityBoundingSet=~CAP_SYS_ADMIN
+CapabilityBoundingSet=~CAP_KILL
+CapabilityBoundingSet=~CAP_LINUX_IMMUTABLE
+CapabilityBoundingSet=~CAP_BLOCK_SUSPEND
+CapabilityBoundingSet=~CAP_SYS_NICE
+CapabilityBoundingSet=~CAP_SYS_RESOURCE
+#CapabilityBoundingSet=~CAP_CHOWN
+CapabilityBoundingSet=~CAP_FSETID
+CapabilityBoundingSet=~CAP_SETFCAP
+
+PrivateUsers=true
 
 [Install]
 WantedBy=default.target

@@ -2,7 +2,7 @@
 pkgname=rimgo
 rpkgver=2022-04-22
 pkgver=2022.04.22
-pkgrel=1
+pkgrel=2
 pkgdesc="An alternative frontend for Imgur. Originally based on rimgu."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://codeberg.org/video-prize-ranch/rimgo"
