@@ -1,0 +1,12 @@
+[Unit]
+Description=WireProxy userspace service
+After=network.target
+Documentation=https://github.com/octeep/wireproxy
+
+[Service]
+ExecStart=/usr/bin/wireproxy -c .config/wireproxy/proxy.conf
+RemainAfterExit=yes
+Restart=always
+
+[Install]
+WantedBy=default.target

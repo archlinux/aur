@@ -1,0 +1,13 @@
+[Unit]
+Description=WireProxy service
+After=network.target
+Wants=network.target
+Documentation=https://github.com/octeep/wireproxy
+
+[Service]
+ExecStart=/usr/bin/wireproxy -c /etc/wireguard/proxy.conf
+RemainAfterExit=yes
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
