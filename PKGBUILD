@@ -1,7 +1,7 @@
 # Maintainer: Aleksana QWQ <me@aleksana.moe>
 
 pkgname=hyfetch
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Neofetch with LGBTQ pride flags."
 arch=('any')
@@ -14,10 +14,14 @@ md5sums=('SKIP')
 
 build() {
   cd ${pkgname}
+  chmod +x neofetch
+  chmod +x hyfetch/scripts/neowofetch
   /usr/bin/python3 setup.py build
 }
 
 package() {
   cd ${pkgname}
+  chmod +x neofetch
+  chmod +x hyfetch/scripts/neowofetch
   /usr/bin/python3 setup.py install --root="$pkgdir" --optimize=1
 }
