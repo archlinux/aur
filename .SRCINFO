@@ -1,0 +1,55 @@
+pkgbase = bottles-fixed
+	pkgdesc = Run Windows software on Linux with Bottles!
+	pkgver = 2022.7.28.0
+	pkgrel = 1
+	url = https://github.com/bottlesdevs/bottles
+	changelog = changelog.md
+	arch = any
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	depends = python>=3.9
+	depends = python-yaml>=5.0
+	depends = python-requests>=2.25
+	depends = python-urllib3>=1.22
+	depends = python-chardet>=3.0
+	depends = python-certifi>=2019.11.28
+	depends = python-idna>=2.6
+	depends = python-markdown>=3.1
+	depends = python-pefile>=2021.9.3
+	depends = patool>=1.12
+	depends = python-gobject
+	depends = python-orjson
+	depends = python-pillow
+	depends = gtk4
+	depends = gtksourceview5
+	depends = libadwaita-git
+	depends = libportal-gtk4
+	depends = cabextract>=1.9.0
+	depends = p7zip>=16.02
+	depends = xorg-xdpyinfo
+	depends = icoextract
+	depends = imagemagick
+	depends = libpcap>=1.8
+	depends = libcapi>=3.2.3
+	depends = lib32-libusb
+	depends = libusb
+	depends = lib32-faudio
+	depends = faudio
+	depends = lib32-vkd3d
+	depends = vkd3d
+	depends = lib32-vulkan-icd-loader
+	depends = vulkan-icd-loader
+	depends = openldap
+	depends = dconf
+	depends = hicolor-icon-theme
+	optdepends = gamemode>=1.6: Support gamemode
+	optdepends = gamescope>=3.10: Support gamescope
+	optdepends = wine: as runtime alternative
+	provides = bottles
+	conflicts = bottles
+	conflicts = bottles-git
+	source = bottles-2022.7.28-brescia-0.tar.gz::https://github.com/bottlesdevs/bottles/archive/refs/tags/2022.7.28-brescia.tar.gz
+	b2sums = 976315dc07eb1445b0663080f81bbba3b85db43e57834366286da295d073151607735cb46850b53714382239e7f032973e3d81a27211aeec5b708a3f8a2fbd31
+
+pkgname = bottles-fixed
