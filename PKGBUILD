@@ -1,7 +1,7 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-gsm
-pkgver=1.0.20
+pkgver=1.0.21
 pkgrel=1
 pkgdesc="Shared libraries for GSM 06.10 lossy speech compression (mingw-w64)"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('mingw-w64-gcc')
 source=("http://www.quut.com/gsm/gsm-${pkgver}.tar.gz"
         'makefile.patch'
         'win32.patch')
-sha512sums=('8a57395cd22ff1e0340619aefc279693cbed7c4616b6e6ddc33fffca35361ddfe26b6c5a64ddcb5a9bb455797ca79aa1b7b8a31671dab1a003c544da78fc2ec5'
+sha512sums=('2ad92a8acea7cb47c3237f49805f21cdc180009f6a31ede3e7befbb361968f5235e5b0664503b46f74dd4ef85c602e60ac9c37029075b026ceeed33a72848e0f'
             '79c4b3b1e47da433fcb057124f592ca5233a8bf549ea6f30df09e74042421f64c9875c3750b88d153f3383eb7cf44204d275ae83e2ea9ed55ecaae899e4c8156'
             '4f0c1c4a02fbc390efd399f8873c7604aa73a9325be1944ee9f60e31b759a4beb48b500b6ef269e592dd67f03e197534d2bc15d94ddef3c8c3a141256e2c138f')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
