@@ -4,7 +4,7 @@ pkgname=nvhpc
 _REL_YEAR=2022
 _CUDA_VER=11.7
 pkgver=22.7
-pkgrel=2
+pkgrel=3
 pkgdesc='NVIDIA HPC SDK'
 arch=('x86_64')
 url="https://developer.nvidia.com/hpc-sdk"
@@ -18,7 +18,7 @@ _pkgname="nvhpc_${_REL_YEAR}_${pkgver//.}_Linux_${arch}_cuda_${_CUDA_VER}"
 source=("https://developer.download.nvidia.com/hpc-sdk/$pkgver/$_pkgname.tar.gz"
     "nvhpc.sh")
 sha256sums=('d536b937d1b2b3cdb74f7fb63dad3df7918b94338f0c2602b8f3f06fc7fb9655'
-    '39431b5c29cda76b15949fb4524dbda5bd16fa7fd1c23e1e1ffbde75450d32f6')
+    '316a02bebc92b86e449486280117f624c11a325d92a0d041ac3fb69931f75b2e')
 options=(!strip)
 
   prepare() {

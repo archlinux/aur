@@ -1,7 +1,7 @@
 if command -v module 2>&1 >/dev/null; then
-  module use /opt/nvidia/modulefiles
+  module use /opt/nvidia/hpc_sdk/modulefiles
 else
-export nvhome=/opt/nvidia
+export nvhome=/opt/nvidia/hpc_sdk
 export target=Linux_x86_64
 export version=22.7
 
