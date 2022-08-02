@@ -6,7 +6,7 @@
 
 pkgname=python-spotdl
 pkgver=3.9.6
-pkgrel=2
+pkgrel=3
 
 pkgdesc="Download your Spotify playlists and songs along with album art and metadata (from YouTube if a match is found)."
 arch=('any')
@@ -28,6 +28,7 @@ depends=('python'
 	'python-unidecode'
 	'python-pycryptodomex'
 	'python-websockets'
+	'python-async-timeout'
 	'python-brotli')
 makedepends=('python-setuptools')
 provides=("$pkgname" "spotdl")
