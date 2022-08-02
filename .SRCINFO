@@ -1,20 +1,14 @@
 pkgbase = lazap
 	pkgdesc = Lazap, All your games at one library with a modernish look and experience.
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
-	url = https://github.com/Lazap-Development/lazap.git
 	arch = armv7h
 	arch = i686
 	arch = x86_64
 	license = CC
-	makedepends = git
-	makedepends = npm
-	makedepends = nodejs
 	provides = lazap
 	conflicts = lazap
-	source = git+https://github.com/Lazap-Development/lazap.git
 	source = lazap.desktop
-	sha256sums = SKIP
 	sha256sums = c5c66e36202836f10e22e419cf129f01fef570ab458a04aadb49e1ea325c3465
 
 pkgname = lazap
