@@ -2,7 +2,7 @@
 
 pkgname=lib32-rrdtool
 _pkgname=rrdtool
-pkgver=1.7.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Data logging and graphing application (32-bit - binaries and libs only)"
 arch=('x86_64')
@@ -11,8 +11,8 @@ license=('GPL' 'custom')
 depends=('lib32-glibc' 'lib32-libxml2' 'lib32-pango' 'ttf-dejavu')
 makedepends=('intltool')
 options=('!emptydirs' '!makeflags')
-source=(http://oss.oetiker.ch/rrdtool/pub/rrdtool-${pkgver}.tar.gz)
-sha1sums=('e70e1241bd5ee286a5903e0714f2afb4070d1c2d')
+source=(https://github.com/oetiker/rrdtool-1.x/releases/download/v${pkgver}/rrdtool-${pkgver}.tar.gz)
+sha1sums=('4da6da5e2f789d006c1ccc3b816a5a1ac9123bc8')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
