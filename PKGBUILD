@@ -1,6 +1,6 @@
 # Maintainer: Wojciech Kepka <wojciech@wkepka.dev>
 pkgname=epick
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 epoch=
 pkgdesc="Color picker for creating harmonic color palettes"
@@ -11,7 +11,7 @@ depends=()
 makedepends=('cargo' 'rust')
 provides=("$pkgname")
 conflicts=()
-sha256sum=('11880e994a6388af6b97909fa5e2aed4dfaec44721d224c5fa8b8f71d63b579f')
+sha256sums=('d01ab6974c9400adab452770e923821646c69c5493d0d2033e718fb06f0170e2')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 
 prepare() {
