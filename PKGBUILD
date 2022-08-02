@@ -3,8 +3,9 @@
 
 pkgname='python-shlib'
 _pkgname=${pkgname#python-}
-pkgver=1.4.0
-pkgrel=1
+pkgver=1.4
+pkgrel=2
+epoch=1
 pkgdesc="light-weight library to do shell-script like things relatively easily with Python"
 arch=('any')
 depends=(
@@ -18,8 +19,14 @@ makedepends=(
 )
 url="https://github.com/KenKundert/$_pkgname"
 license=('GPL3')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-b2sums=('3d060a9e570886dada3515a886a2b4dff1dc12461684a164c337ac3bdf6c4d34fd89e48db7eb1479d55336677d798817971a825bf6f988f4fc7e93ae11f42d8b')
+
+source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz"
+        "$url/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz.asc"
+)
+validpgpkeys=('DCBCCD39794E6FFA')
+
+b2sums=('ea1dda23368e9d35e902fc75e85e26e85609d9a6d2d0827e547f37325d24571f7276792b833e82b57a41111bd89ca1099eb5b22e07f1d3d922b084ae1a44c085'
+        'SKIP')
 
 build() {
 	cd $_pkgname-$pkgver
