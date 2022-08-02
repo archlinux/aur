@@ -1,9 +1,9 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=dxvk-mingw
-pkgver=1.10.2
+pkgver=1.10.3
 _asyncver=1111b69
-pkgrel=2
+pkgrel=1
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version'
 arch=('x86_64')
 url="https://github.com/doitsujin/dxvk"
@@ -35,9 +35,8 @@ prepare() {
     # This overrides FLAGS from makepkg.conf, if you comment these you are on your own
     # If you want the "best" possible optimizations for your system you can use
     # `-march=native` and remove the `-mtune=core-avx2` option.
-    # `-O2` is adjusted to `-O3` since AVX is disabled
-    export CFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
-    export CXXFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
+    export CFLAGS="-O2 -march=nocona -mtune=core-avx2 -pipe"
+    export CXXFLAGS="-O2 -march=nocona -mtune=core-avx2 -pipe"
     export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
     # Uncomment to enable extra optimizations
