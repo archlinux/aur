@@ -1,6 +1,13 @@
+# 10.0.15-1 / 2022-08-02
+
+* bump to new library version
+	* vendored fmt removed in upstream (by accident :) )
+		* less patching on our end
+	* see library changelog for full list
+
 # 10.0.14-1 / 2022-08-02
 
-* bump to new libary version
+* bump to new library version
 	* internal use of fmt got removed
 		* library still vendored for now
 	* clusters an now shutdown and start
@@ -29,7 +36,7 @@
 * bump to new library version
 	* automod is now supported
 	* see library changelog for full list
-* nothing chaged for the package itself
+* nothing changed for the package itself
 	* all previously mentioned issues are still present
 
 # 10.0.10-1 / 2022-06-14
