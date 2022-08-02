@@ -1,4 +1,4 @@
-# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
@@ -9,7 +9,7 @@ pkgver=2.27.1.r5.gfa1b0a36
 pkgrel=1
 pkgdesc='HTTP for Humans (legacy Python 2 version)'
 arch=('any')
-url="https://pypi.org/project/${_name}/${pkgver}/"
+url="https://pypi.org/project/${_name}"
 _repourl="https://github.com/psf/${_name}"
 license=('Apache')
 makedepends=('python2-setuptools')
