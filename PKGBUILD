@@ -2,7 +2,7 @@
 # Contributor: Shaber
 
 pkgname=corestats
-pkgver=4.3.0
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="A system resource viewer from the C Suite"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('qt5-base' 'libcprime>=2.7.1' 'libcsys>=2.7.1' 'lm_sensors')
 makedepends=('cmake' 'ninja')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('6d310c9827319c797aa8fef87a964ade')
+md5sums=('be155a71c5854cc2f53c53b71d94b76e')
 
 prepare() {
   mkdir -p build

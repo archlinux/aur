@@ -1,6 +1,6 @@
 pkgbase = corestats
 	pkgdesc = A system resource viewer from the C Suite
-	pkgver = 4.3.0
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = https://gitlab.com/cubocore/coreapps/corestats
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = corestats
 	depends = libcprime>=2.7.1
 	depends = libcsys>=2.7.1
 	depends = lm_sensors
-	source = https://gitlab.com/cubocore/coreapps/corestats/-/archive/v4.3.0/corestats-v4.3.0.tar.gz
-	md5sums = 6d310c9827319c797aa8fef87a964ade
+	source = https://gitlab.com/cubocore/coreapps/corestats/-/archive/v4.4.0/corestats-v4.4.0.tar.gz
+	md5sums = be155a71c5854cc2f53c53b71d94b76e
 
 pkgname = corestats
