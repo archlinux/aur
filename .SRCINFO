@@ -1,7 +1,7 @@
 pkgbase = c++utilities
 	pkgdesc = Common C++ classes and routines such as argument parser, IO and conversion utilities
-	pkgver = 5.17.0
-	pkgrel = 2
+	pkgver = 5.18.0
+	pkgrel = 1
 	url = https://github.com/Martchus/cpp-utilities
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = c++utilities
 	depends = gcc-libs
 	optdepends = c++utilities-doc: API documentation
 	provides = libc++utilities.so
-	source = c++utilities-5.17.0.tar.gz::https://github.com/Martchus/cpp-utilities/archive/v5.17.0.tar.gz
-	sha256sums = 05663fa9ca188cd7be44dc06f1257cfb39b0721443b158a5bbfdaf6400e66505
+	source = c++utilities-5.18.0.tar.gz::https://github.com/Martchus/cpp-utilities/archive/v5.18.0.tar.gz
+	sha256sums = 6c2c10bc6610f19adbe12b7e4f256ff9e787903831827f0a23eb476b6a5ea029
 
 pkgname = c++utilities
