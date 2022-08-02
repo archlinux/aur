@@ -1,3 +1,4 @@
 #!/usr/bin/bash
 
+export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
 /usr/share/freeserf.net/FreeserfNet $@
