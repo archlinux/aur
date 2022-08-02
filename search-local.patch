@@ -1,8 +1,8 @@
-*** orig-nss.c	2018-02-19 15:33:31.000000000 +0000
---- nss.c	2020-06-05 17:29:03.659841552 +0100
+*** nss.c.orig	2021-05-11 02:25:39.000000000 +0100
+--- nss.c	2022-08-02 08:35:23.090458158 +0100
 ***************
-*** 126,131 ****
---- 126,149 ----
+*** 81,86 ****
+--- 81,104 ----
       }
   }
   
@@ -24,11 +24,11 @@
 +     }
 + }
 + 
-  static enum nss_status gethostbyname_impl(const char* name, int af,
-                                            userdata_t* u, int* errnop,
-                                            int* h_errnop) {
+  enum nss_status _nss_mdns_gethostbyname_impl(const char* name, int af,
+                                               userdata_t* u, int* errnop,
+                                               int* h_errnop) {
 ***************
-*** 168,195 ****
+*** 123,150 ****
       if (mdns_allow_file)
           fclose(mdns_allow_file);
   #endif
@@ -56,8 +56,8 @@
 !     }
   }
   
-  enum nss_status _nss_mdns_gethostbyname4_r(const char* name,
---- 186,211 ----
+  #ifndef __FreeBSD__
+--- 141,166 ----
       if (mdns_allow_file)
           fclose(mdns_allow_file);
   #endif
@@ -83,4 +83,4 @@
 !     return _convert_avahi_result(do_avahi_resolve_name(af, name, u), errnop, h_errnop);
   }
   
-  enum nss_status _nss_mdns_gethostbyname4_r(const char* name,
+  #ifndef __FreeBSD__

@@ -1,7 +1,7 @@
 pkgbase = nss-mdns-domainless
 	pkgdesc = glibc plugin providing host name resolution via mDNS (domainless allowed for .local)
-	pkgver = 0.14.1
-	pkgrel = 2
+	pkgver = 0.15.1
+	pkgrel = 1
 	url = http://0pointer.de/lennart/projects/nss-mdns/
 	install = nss-mdns.install
 	arch = i686
@@ -10,12 +10,11 @@ pkgbase = nss-mdns-domainless
 	arch = aarch64
 	license = LGPL
 	depends = glibc
-	provides = nss-dns=0.14.1-2
+	provides = nss-dns=0.15.1-1
 	conflicts = nss-mdns
-	source = https://github.com/lathiat/nss-mdns/releases/download/v0.14.1/nss-mdns-0.14.1.tar.gz
+	source = https://github.com/lathiat/nss-mdns/releases/download/v0.15.1/nss-mdns-0.15.1.tar.gz
 	source = search-local.patch
-	sha256sums = a2094101b735cade45048764ea594bdae2bfa9399837f3c852a5b264416e9c8c
-	sha256sums = 763fdbd346f6b7f54d5b680add7f9970c7cdae79c5f983aa9f4eafc305eef5d1
+	sha256sums = ddf71453d7a7cdc5921fe53ef387b24fd0c3c49f4dcf94a2a437498596761a21
+	sha256sums = 99174415719b247c7ce6947a80544a5c9b1cf534e349fd52091e507f4cc6d187
 
 pkgname = nss-mdns-domainless
-

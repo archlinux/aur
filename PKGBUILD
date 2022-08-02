@@ -1,12 +1,13 @@
 # Based on nss-mdns pkg by
-# Maintainer: Tom Gundersen <teg@jklm.no>
+# Maintainer: Robin Becker <robin@reportlab.com>
+# Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Travis Willard <travis@archlinux.org>
 # adds an automatic search name.local when name containss
 # no . thus allowing domainless searches
 
 pkgname=nss-mdns-domainless
-pkgver=0.14.1
-pkgrel=2
+pkgver=0.15.1
+pkgrel=1
 pkgdesc="glibc plugin providing host name resolution via mDNS (domainless allowed for .local)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="http://0pointer.de/lennart/projects/nss-mdns/"
@@ -19,8 +20,8 @@ source=("https://github.com/lathiat/nss-mdns/releases/download/v$pkgver/nss-mdns
 		"search-local.patch"
 		)
 sha256sums=(
-		'a2094101b735cade45048764ea594bdae2bfa9399837f3c852a5b264416e9c8c'
-		'763fdbd346f6b7f54d5b680add7f9970c7cdae79c5f983aa9f4eafc305eef5d1'
+		'ddf71453d7a7cdc5921fe53ef387b24fd0c3c49f4dcf94a2a437498596761a21'
+		'99174415719b247c7ce6947a80544a5c9b1cf534e349fd52091e507f4cc6d187'
 		)
 prepare(){
 	local d=${srcdir}/${pkgname}-${pkgver}
