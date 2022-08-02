@@ -1,6 +1,6 @@
 pkgbase = freerdp-gstfree
 	pkgdesc = Free implementation of the Remote Desktop Protocol (RDP)
-	pkgver = 2.7.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://www.freerdp.com/
 	arch = x86_64
@@ -40,7 +40,7 @@ pkgbase = freerdp-gstfree
 	provides = libwinpr-tools2.so
 	provides = libuwac0.so
 	conflicts = freerdp
-	source = freerdp::git+https://github.com/freerdp/freerdp.git#commit=40ee5d3bcc70343af6c0300d71968858c1f1948f
+	source = freerdp::git+https://github.com/freerdp/freerdp.git#commit=e3fc97feb512053189e276b2ca79762990bb8c4c
 	source = freerdp-manpage_formatting.patch
 	sha256sums = SKIP
 	sha256sums = d51a478b4664b59227dc6b22eda06a21a1b5905cedff1817043fc8cb73468a65
