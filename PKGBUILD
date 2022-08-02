@@ -1,50 +1,40 @@
-# Maintainer: Spider.007 <aur@spider007.net>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Spider.007 <aur@spider007.net>
+
 pkgname=graylog
-pkgver=4.2.2
+pkgver=4.3.3
 pkgrel=1
-pkgdesc="Graylog is an open source syslog implementation that stores your logs in ElasticSearch and MongoDB"
+pkgdesc='Free and open source log management platform'
 arch=('any')
-url="https://www.graylog.org/"
-license=(SSPL)
-depends=('java-runtime-headless=11')
-optdepends=('elasticsearch' mongodb)
+url="https://github.com/graylog2/graylog-server"
+license=('custom:SSPL')
+depends=('java-runtime=11')
+optdepends=('elasticsearch' 'mongodb')
 install=graylog.install
-changelog=UPGRADING.rst
-backup=(
-	etc/graylog/server/server.conf
-)
+changelog=UPGRADING.md
+backup=(etc/graylog/server/server.conf)
 source=(
-	https://packages.graylog2.org/releases/$pkgname/$pkgname-${pkgver/_/-}.tgz
+	"$pkgname-$pkgver.tar.gz::https://packages.graylog2.org/releases/$pkgname/$pkgname-${pkgver/_/-}.tgz"
 	graylog-tmpfiles.conf
-	graylog.service
-)
-
-sha256sums=('8cfaa705acfabc8fa644247aa3cb39ff5f03fdfc2daa213f720c47e5b5bee517'
-            'SKIP'
-            'SKIP')
-
-prepare() {
-	curl -O https://raw.githubusercontent.com/Graylog2/graylog2-server/4.0/UPGRADING.rst
-}
+	graylog.service)
+sha256sums=('7cab14cd9dffdeb4e3a3217fd0c4a95ba184c0c266375be47589d9a482636496'
+            '4d3c0bb83c7a02a5a902670b060d045068f5201728194a4473b2c2ba99bbd43d'
+            '42340980c59327d40354863da7431c4f92b45a19cea2cdccf2f2ae26e0adc38c')
 
 package() {
-	cd "$pkgdir"
-
-	for p in "$srcdir/$pkgname-${pkgver/_/-}"/plugin/*; do
-		install -Dm644 $p usr/lib/graylog/plugin/${p##*/}
-	done
-	install -Dm644 "$srcdir/$pkgname-${pkgver/_/-}"/graylog.jar usr/lib/graylog/server.jar
-	install -Dm644 "$srcdir/graylog-tmpfiles.conf" usr/lib/tmpfiles.d/graylog-server.conf
-	install -Dm644 "$srcdir/graylog.service" usr/lib/systemd/system/graylog.service
-
-	for f in README.markdown LICENSE; do
-		install -Dm644 "$srcdir/$pkgname-${pkgver/_/-}/$f" usr/share/doc/$pkgname/${f##*/}
-	done
-
-	install -Dm644 "$srcdir/$pkgname-${pkgver/_/-}"/graylog.conf.example $pkgdir/etc/graylog/server/server.conf
+	cd "$pkgname-$pkgver"
+	install -Dm644 "$pkgname.jar" "$pkgdir/usr/lib/$pkgname/server.jar"
+	install -Dm644 plugin/*.jar -t "$pkgdir/usr/lib/$pkgname/plugin/"
+	install -Dm644 "$srcdir/$pkgname-tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/$pkgname-server.conf"
+	install -Dm644 "$pkgname.conf.example" "$pkgdir/etc/$pkgname/server/server.conf"
+	install -Dm644 README.markdown "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 "$srcdir/$pkgname.service" -t "$pkgdir/usr/lib/systemd/system/"
 
 	# make absolute just in case
-	sed -i 's~^\(plugin_dir =\) plugin$~\1 /usr/lib/graylog/plugin~g' $pkgdir/etc/graylog/server/server.conf
-	sed -i 's~^\(message_journal_dir =\) data/journal$~\1 /var/lib/graylog/data/journal~g' $pkgdir/etc/graylog/server/server.conf
-	sed -i 's~^\(content_packs_dir =\) data/contentpacks$~\1 /usr/lib/graylog/data/contentpacks~g' $pkgdir/etc/graylog/server/server.conf
+	sed -i \
+		-e 's~^\(plugin_dir =\) plugin$~\1 /usr/lib/graylog/plugin~g' \
+		-e 's~^\(message_journal_dir =\) data/journal$~\1 /var/lib/graylog/data/journal~g' \
+		-e 's~^\(content_packs_dir =\) data/contentpacks$~\1 /usr/lib/graylog/data/contentpacks~g' \
+		"$pkgdir/etc/$pkgname/server/server.conf"
 }
