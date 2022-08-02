@@ -1,6 +1,6 @@
 pkgbase = appimage-appimage
 	pkgdesc = Generate, extract, and inspect AppImages - appimage version
-	pkgver = 12
+	pkgver = 13
 	pkgrel = 1
 	url = https://github.com/AppImage/AppImageKit
 	arch = x86_64
@@ -12,12 +12,11 @@ pkgbase = appimage-appimage
 	noextract = AppRun
 	noextract = runtime
 	options = !strip
-	source_x86_64 = appimagetool::https://github.com/AppImage/AppImageKit/releases/download/12/appimagetool-x86_64.AppImage
-	source_x86_64 = AppRun::https://github.com/AppImage/AppImageKit/releases/download/12/AppRun-x86_64
-	source_x86_64 = runtime::https://github.com/AppImage/AppImageKit/releases/download/12/runtime-x86_64
-	sha256sums_x86_64 = d918b4df547b388ef253f3c9e7f6529ca81a885395c31f619d9aaf7030499a13
-	sha256sums_x86_64 = e8f44f56bb23e105905850250d9d87fb1a5cf64211ad141b85864b1b7a092332
-	sha256sums_x86_64 = 24da8e0e149b7211cbfb00a545189a1101cb18d1f27d4cfc1895837d2c30bc30
+	source_x86_64 = appimagetool::https://github.com/AppImage/AppImageKit/releases/download/13/appimagetool-x86_64.AppImage
+	source_x86_64 = AppRun::https://github.com/AppImage/AppImageKit/releases/download/13/AppRun-x86_64
+	source_x86_64 = runtime::https://github.com/AppImage/AppImageKit/releases/download/13/runtime-x86_64
+	sha256sums_x86_64 = df3baf5ca5facbecfc2f3fa6713c29ab9cefa8fd8c1eac5d283b79cab33e4acb
+	sha256sums_x86_64 = fd0e2c14a135e7741ef82649558150f141a04c280ed77a5c6f9ec733627e520e
+	sha256sums_x86_64 = 328e0d745c5c6817048c27bc3e8314871703f8f47ffa81a37cb06cd95a94b323
 
 pkgname = appimage-appimage
-
