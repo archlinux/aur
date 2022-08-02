@@ -1,7 +1,7 @@
 pkgbase = soft-serve-git
 	pkgdesc = A tasty, self-hostable Git server for the command line
 	pkgver = 0.3.2.r14.g76cedbf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/charmbracelet/soft-serve
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,16 @@ pkgbase = soft-serve-git
 	depends = glibc
 	provides = soft-serve=0.3.2.r14.g76cedbf
 	conflicts = soft-serve
+	backup = etc/soft-serve.conf
 	source = git+https://github.com/charmbracelet/soft-serve.git
+	source = soft-serve.conf::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/soft-serve/trunk/soft-serve.conf
+	source = systemd.service::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/soft-serve/trunk/systemd.service
+	source = sysusers.conf::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/soft-serve/trunk/sysusers.conf
+	source = tmpfiles.conf::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/soft-serve/trunk/tmpfiles.conf
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = soft-serve-git
