@@ -16,6 +16,6 @@ pkgbase = c++utilities
 	optdepends = c++utilities-doc: API documentation
 	provides = libc++utilities.so
 	source = c++utilities-5.18.0.tar.gz::https://github.com/Martchus/cpp-utilities/archive/v5.18.0.tar.gz
-	sha256sums = 6c2c10bc6610f19adbe12b7e4f256ff9e787903831827f0a23eb476b6a5ea029
+	sha256sums = 8c194160bf3ff6548741fc8ca4c7378694763a12256eeb59da8e15c01a0681fd
 
 pkgname = c++utilities
