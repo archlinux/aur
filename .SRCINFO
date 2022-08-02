@@ -1,0 +1,27 @@
+pkgbase = jumpy-git
+	pkgdesc = Tactical 2D shooter in fishy pixels style
+	pkgver = 0.4.2.r23.g970bdd6
+	pkgrel = 1
+	url = https://github.com/fishfight/jumpy
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	makedepends = git
+	makedepends = systemd
+	depends = pkg-config
+	depends = libx11
+	depends = libxi
+	depends = mesa-libgl
+	depends = alsa-lib
+	depends = systemd-libs
+	depends = libudev.so
+	provides = jumpy
+	conflicts = jumpy
+	replaces = fishfight-git
+	source = git+https://github.com/fishfight/jumpy
+	source = jumpy.sh
+	sha256sums = SKIP
+	sha256sums = f2ef5d4b50903d0b014240bbe7b4908140a95798ccb7fafd73e5a61c99538c8a
+
+pkgname = jumpy-git
