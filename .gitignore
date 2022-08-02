@@ -1,0 +1,14 @@
+# project
+
+/out/
+/.cache/
+.gdb_history
+compile_commands.json
+nvfand.json
+config.ninja
+
+# arch
+
+/src/
+/pkg/
+/nvfand/

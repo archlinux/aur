@@ -4,7 +4,7 @@
 
 _pkgbase=nvfand
 pkgname=nvfand-git
-pkgver=r36.eee1315
+pkgver=r42.8de2e4f
 pkgrel=1
 pkgdesc='a daemon that sets the fan speed of your nvidia GPU(s) based on a custom curve.'
 arch=('any')
@@ -22,7 +22,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgbase"
-  make
+  ./gen_ninja_config.sh
+  ninja
 }
 
 package() {
