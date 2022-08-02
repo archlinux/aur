@@ -9,7 +9,7 @@ pkgbase = ultracopier
 	depends = qt5-base
 	depends = qt5-multimedia
 	provides = ultracopier
-	source = ultracopier-2.2.4.9.zip::https://github.com/alphaonex86/Ultracopier/archive/280fd21352aea05784c1097348df489210855109.zip
+	source = ultracopier-2.2.6.2.zip::https://github.com/alphaonex86/Ultracopier/archive/280fd21352aea05784c1097348df489210855109.zip
 	sha512sums = 97d7f834bd2daeeac44aa358fffd623dca57d1ab7eb10bd4b9decf4b144ff3d7dc9564f692afb732bb1d76b47b8b75b9924c395862f88a265952da07ad455ce1
 
 pkgname = ultracopier
