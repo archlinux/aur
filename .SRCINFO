@@ -15,9 +15,26 @@ pkgbase = lua-readline
 	sha256sums = 826736fbc0a631480aa464f4fb7bf9298ef25f17e45c1f3925ab26c9bd960244
 
 pkgname = lua-readline
+	pkgdesc = Lua bindings to readline - for Lua 5.4
+	depends = readline
+	depends = lua<5.5
+	depends = lua-posix
 
 pkgname = lua51-readline
+	pkgdesc = Lua bindings to readline - for Lua 5.1
+	depends = readline
+	depends = lua51
+	depends = lua51-posix
 
 pkgname = lua52-readline
+    pkgdesc = Lua bindings to readline - for Lua 5.2
+    depends = readline
+    depends = lua52
+    depends = lua52-posix
 
 pkgname = lua53-readline
+	pkgdesc = Lua bindings to readline - for Lua 5.3
+	depends = readline
+	depends = lua53
+	depends = lua53-posix
+

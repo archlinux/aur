@@ -5,7 +5,7 @@ _pkgname=readline
 pkgbase=lua-readline
 pkgdesc="Lua bindings to readline"
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686')
 url='https://pjb.com.au/comp/lua/readline.html'
 license=('MIT')
@@ -30,6 +30,7 @@ build() {
 
 _package() {
     depends+=("${pkgname%-*}" "${pkgname%-*}-posix")
+    pkgdesc+=" for Lua $1"
 
     install -Dm755 "${_archive}/lua${1}/C-readline.so" "$pkgdir/usr/lib/lua/$1/C-readline.so"
     install -Dm644 "${_archive}/readline.lua" "$pkgdir/usr/share/lua/$1/readline.lua"
