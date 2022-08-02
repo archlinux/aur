@@ -1,7 +1,7 @@
 # Maintainer: Aleksana QWQ <me@aleksana.moe>
 
 pkgname=hyfetch
-pkgver=1.0.7
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Neofetch with LGBTQ pride flags."
 arch=('any')
@@ -14,10 +14,10 @@ md5sums=('SKIP')
 
 build() {
   cd ${pkgname}
-  python setup.py build
+  python3 setup.py build
 }
 
 package() {
   cd ${pkgname}
-  python setup.py install --root="$pkgdir" --optimize=1
+  python3 setup.py install --root="$pkgdir" --optimize=1
 }
