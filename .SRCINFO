@@ -1,0 +1,21 @@
+pkgbase = scylla-bin
+	pkgdesc = The real-time big data database that is API-compatible with Apache Cassandra and Amazon DynamoDB
+	pkgver = 5.0.1
+	pkgrel = 1
+	url = http://www.scylladb.com/
+	install = scylla-bin.install
+	arch = x86_64
+	license = AGPL
+	depends = python-distro
+	depends = python-yaml
+	provides = scylla=5.0.1
+	conflicts = scylla
+	options = !strip
+	source = http://downloads.scylladb.com.s3.amazonaws.com/downloads/scylla/rpm/centos/scylladb-5.0/x86_64/scylla-conf-5.0.1-0.20220719.b177dacd3.x86_64.rpm
+	source = http://downloads.scylladb.com.s3.amazonaws.com/downloads/scylla/rpm/centos/scylladb-5.0/x86_64/scylla-kernel-conf-5.0.1-0.20220719.b177dacd3.x86_64.rpm
+	source = http://downloads.scylladb.com.s3.amazonaws.com/downloads/scylla/rpm/centos/scylladb-5.0/x86_64/scylla-server-5.0.1-0.20220719.b177dacd3.x86_64.rpm
+	sha256sums = fed1096b06cd69b1525b846322bbc9cf81c1b4fb935fa51943503d7c487c0562
+	sha256sums = 6184ea4e0a0e5c436ad25802dbcd730bca4159ca67af8d6e8a82217e6822b28a
+	sha256sums = 1c6bc41ef5d778d161aa4c86de42ee60dbec7b9339a0871b3a68a8cb8b5c9417
+
+pkgname = scylla-bin

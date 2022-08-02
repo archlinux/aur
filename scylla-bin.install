@@ -1,0 +1,17 @@
+post_install() {
+	getent group scylla || groupadd scylla
+	getent passwd scylla || useradd -g scylla -s /sbin/nologin -r -d /var/lib/scylla scylla
+	chown -R scylla:scylla /var/lib/scylla
+}
+
+pre_remove() {
+	rm -f /etc/scylla.d/io_properties.yaml
+	systemctl --no-reload disable scylla-server.service
+	systemctl stop scylla-server.service
+}
+
+post_remove() {
+	systemctl daemon-reload
+	userdel scylla
+	rm -rf /var/lib/scylla
+}
