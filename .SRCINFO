@@ -1,7 +1,7 @@
 pkgbase = ob-xd-bin
 	pkgdesc = Virtual Analog Synthesizer VST based on the Oberheim OB-X
 	pkgver = 2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/reales/OB-Xd
 	arch = x86_64
 	license = GPL3

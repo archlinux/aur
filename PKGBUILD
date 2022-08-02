@@ -3,7 +3,7 @@
 pkgname=ob-xd-bin
 pkgver=2.9
 _vershort=29
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual Analog Synthesizer VST based on the Oberheim OB-X"
 arch=(x86_64)
 url="https://github.com/reales/OB-Xd"
