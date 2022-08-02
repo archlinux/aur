@@ -1,0 +1,19 @@
+pkgbase = blackbox-terminal
+	pkgdesc = A beautiful GTK 4 terminal
+	pkgver = 0.11.3
+	pkgrel = 1
+	url = https://gitlab.gnome.org/raggesilver/blackbox
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = meson
+	makedepends = vala
+	makedepends = gi-docgen
+	depends = libadwaita-git
+	depends = libmarble-git
+	depends = vte4-copy-patch-git
+	source = blackbox-terminal-0.11.3.tar.gz::https://gitlab.gnome.org/raggesilver/blackbox/-/archive/v0.11.3/blackbox-v0.11.3.tar.gz
+	sha256sums = 85efef854f8378c8aeb9df5a167447c17bbf3ba21274cdfcd6cc8e4cd3536aed
+
+pkgname = blackbox-terminal
