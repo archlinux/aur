@@ -1,12 +1,12 @@
 pkgbase = dolt-bin
 	pkgdesc = Git for data!
-	pkgver = 0.40.20
+	pkgver = 0.40.21
 	pkgrel = 1
 	url = https://www.dolthub.com/
 	arch = x86_64
 	license = Apache
 	conflicts = dolt
-	source = dolt-bin-x86_64-0.40.20.tar.gz::https://github.com/liquidata-inc/dolt/releases/download/v0.40.20/dolt-linux-amd64.tar.gz
-	sha256sums = db47176ce5de70dcd8068eb4ce203839d5941c8191889c1fc161789b9e282625
+	source = dolt-bin-x86_64-0.40.21.tar.gz::https://github.com/liquidata-inc/dolt/releases/download/v0.40.21/dolt-linux-amd64.tar.gz
+	sha256sums = e4f9e248125675da6a89ee30ceafd643a6280c6ad2357e7d69cf1dca79474881
 
 pkgname = dolt-bin
