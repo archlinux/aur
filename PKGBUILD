@@ -28,7 +28,7 @@ depends=('java-runtime<17' 'bash' 'hicolor-icon-theme'
                         # https://aur.archlinux.org/account/SajeOne
          )
 optdepends=('ffmpeg: Background video playback')
-makedepends=('java-environment<17' 'java-web-start' 'gradle6' 'git')
+makedepends=('java-environment<17' 'java-web-start' 'gradle6')
 
 build() {
     cd "$pkgname-$pkgver" || exit

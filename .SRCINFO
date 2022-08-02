@@ -9,7 +9,6 @@ pkgbase = opsu
 	makedepends = java-environment<17
 	makedepends = java-web-start
 	makedepends = gradle6
-	makedepends = git
 	depends = java-runtime<17
 	depends = bash
 	depends = hicolor-icon-theme
