@@ -24,6 +24,8 @@ curl -s https://api.github.com/repos/Lazap-Development/lazap/releases/latest \
 
 package() {
     sudo pacman -U lazap.tar.zst
+    
+    install -Dm644 "${srcdir}/lazap.desktop" "${pkgdir}/usr/share/applications/lazap.desktop"
 
     echo "Packaging Complete!"
 }
