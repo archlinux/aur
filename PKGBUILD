@@ -3,8 +3,8 @@
 # Contributor: Ivelin Velkov <ivelin dot velkov at gmail dot com>
 
 pkgname=teams-for-linux-git
-pkgver=1.0.24.r0.g0b66032
-pkgrel=5
+pkgver=1.0.25.r0.g72d7b6d
+pkgrel=1
 pkgdesc="Unofficial Microsoft Teams client for Linux using Electron (develop branch)."
 arch=("aarch64" "armv7h" "i686" "x86_64")
 url="https://github.com/IsmaelMartinez/${pkgname%-git}"
@@ -12,7 +12,7 @@ license=("GPL3")
 conflicts=("teams-for-linux")
 provides=("teams-for-linux")
 depends=("gtk3" "libxss" "nss" "electron")
-makedepends=("git" "nodejs-lts-gallium" "node-gyp" "python2" "yarn")
+makedepends=("git" "nodejs-lts-gallium" "node-gyp" "python3" "yarn")
 source=(
   "${pkgname%-git}::git+https://github.com/IsmaelMartinez/${pkgname%-git}#branch=develop"
   "${pkgname%-git}.desktop"
@@ -33,7 +33,7 @@ prepare() {
   export _electronDist=/usr/lib/electron
   export _electronVer="$(tail /usr/lib/electron/version)"
   cd "${srcdir}/${pkgname%-git}"
-  sed -i "s/\"electron\": \".*\"/\"electron\": \"$_electronVer\"/g" package.json
+  sed -i "s/\"electron\": \".*\"/\"electron\": \"$_electronVer\"/g;s/\"yarn\": \".*\"/\"yarn\": \"$(yarn -v)\"/g" package.json
 }
 
 build() {
@@ -69,7 +69,7 @@ package() {
 
   # cp -r --preserve=mode "${srcdir}/${pkgname%-git}/dist/${_unpacked_dirname}" "${pkgdir}/opt/${pkgname%-git}"
 
-  cp -r --preserve=mode "${srcdir}/${pkgname%-git}/dist/${_unpacked_dirname}/resources/app.asar.unpacked" "${pkgdir}/opt/${pkgname%-git}"
+  # cp -r --preserve=mode "${srcdir}/${pkgname%-git}/dist/${_unpacked_dirname}/resources/app.asar.unpacked" "${pkgdir}/opt/${pkgname%-git}"
   install -Dm644 "${srcdir}/${pkgname%-git}/dist/${_unpacked_dirname}/resources/app.asar" "${pkgdir}/opt/${pkgname%-git}/app.asar"
 
   install -Dm644 "${srcdir}/${pkgname%-git}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
