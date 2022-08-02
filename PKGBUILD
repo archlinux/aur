@@ -1,6 +1,6 @@
 pkgname=monitorfs
 pkgdesc="Monitor filesystem, Do something on some filesystem event"
-pkgver=v0.0.3.r1.gda59ece
+pkgver=v0.0.3.r2.ge34dfd8
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://github.com/vcup/MonitorFileSystem
@@ -12,7 +12,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '760596d2e182e0edf05f4a10bd0fa266086d700fdd96438d2663f28e538912e3'
+  '4147ff176c9fbbc22452244c5f8da66cd8b5028decdeda36c54eae95d49e3b34'
 )
 
 pkgver() {
@@ -34,13 +34,11 @@ build(){
   cd "${srcdir}/MonitorFileSystem"
   PATH="${srcdir}/dotnet-sdk:${PATH}"
   dotnet restore ./MonitorFileSystem.sln
-  dotnet build ./src/MonitorFileSystem/MonitorFileSystem.csproj -c "Release"
   dotnet publish ./src/MonitorFileSystem/MonitorFileSystem.csproj -c "Release" \
-    --nologo --output ./service-out
+    --nologo --force --output ./service-out
 
-  dotnet build ./src/MonitorFileSystem.Client/MonitorFileSystem.Client.csproj -c "Release"
   dotnet publish ./src/MonitorFileSystem.Client/MonitorFileSystem.Client.csproj -c "Release" \
-    --nologo --output ./client-out
+    --nologo --force --output ./client-out
 }
 package(){
   mkdir -p "${pkgdir}/opt/monitorfs"
