@@ -1,4 +1,4 @@
-pkgbase = ddev-edge-bin
+pkgbase = rfay-test-ddev-edge-bin
 	pkgdesc = DDEV-Local: a local web development environment (edge)
 	pkgver = 1.19.5
 	pkgrel = 1
@@ -12,5 +12,5 @@ pkgbase = ddev-edge-bin
 	arch = x86_64
 	source_x86_64 = https://github.com/drud/ddev/releases/download/v1.19.5/ddev_linux-amd64.v1.19.5.tar.gz
 	sha256sums_x86_64 = 287547c7b2f7ae02c32a6bef23c2623cc12da061f67c2bb2434368f3faa5b2f5
-	
+
 pkgname = ddev-edge-bin
