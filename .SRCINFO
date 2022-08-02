@@ -1,0 +1,17 @@
+pkgbase = melt-git
+	pkgdesc = Backup and restore Ed25519 SSH keys with seed words
+	pkgver = 0.4.1.r6.gdf736f8
+	pkgrel = 1
+	url = https://github.com/charmbracelet/melt
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = melt=0.4.1.r6.gdf736f8
+	conflicts = melt
+	source = git+https://github.com/charmbracelet/melt.git
+	sha256sums = SKIP
+
+pkgname = melt-git
