@@ -1,7 +1,7 @@
 # Maintainer: Robert Plant <rob@robertplant.io>
 
 pkgname=paswitch-rs
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -11,7 +11,7 @@ depends=('pulseaudio' 'paswitch')
 provides=('paswitch-rs')
 url=https://github.com/RobertPlant/paswitch-rs
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha512sums=('83dfbcf8f2de4278e8432808085be6cf2dd3237043a2230e1aed14e6a3eb36bf40c533d76508e96037b2cf4f3ba8e0e10e950c0e2a1f758421e9f1c55348c1ef')
+sha512sums=('250a22229dbecd59bdf934540e533875e901196463b181e12fd9a97d7495f2286649bf37a1eacfbbe74fe6642af84e3fdbc9396ebfd1a0b81cb5b2314b1f2576')
 
 check() {
   cd $pkgname-$pkgver
