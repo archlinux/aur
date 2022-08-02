@@ -7,6 +7,7 @@
 pkgname=vo-aacenc
 pkgver=0.1.3
 pkgrel=1
+epoch=1
 pkgdesc="VisualOn Advanced Audio Coding (AAC) encoder"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://sourceforge.net/projects/opencore-amr/"
