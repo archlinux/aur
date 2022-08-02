@@ -2,12 +2,11 @@
 
 pkgname=gyr-bin
 pkgver=0.1.1
-pkgrel=0
+pkgrel=1
 pkgdesc='Blazing fast TUI launcher for GNU/Linux and *BSD (prebuilt binary version)'
 arch=('x86_64' 'aarch64')
 url="https://sr.ht/~forkbomb9/gyr"
 license=('BSD-2-Clause')
-makedepends=('rust')
 provides=('gyr')
 conflicts=('gyr')
 source_x86_64=("https://git.sr.ht/~forkbomb9/gyr/refs/download/v${pkgver}/gyr-v${pkgver}-x86_64-unknown-linux-musl")
