@@ -19,16 +19,14 @@ curl -s https://api.github.com/repos/Lazap-Development/lazap/releases/latest \
 | tr -d \" \
 | wget -qi - -O lazap.tar.zst
 
+ tar --use-compress-program=unzstd -xvf lazap.tar.zst
 	echo "Prepare Complete!"
 }
 
 package() {
-    sudo pacman -U lazap.tar.zst
-    
     install -Dm644 "${srcdir}/lazap.desktop" "${pkgdir}/usr/share/applications/lazap.desktop"
-    install -d "$pkgdir/opt/"
     install -d "$pkgdir/usr/bin/"
-    ln -sf "/opt/lazap" "${pkgdir}/usr/bin/lazap"
-    
+    ln -sf "/src/usr" "${pkgdir}/usr/bin/lazap"
+
     echo "Packaging Complete!"
 }
