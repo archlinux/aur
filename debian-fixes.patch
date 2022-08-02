@@ -1,0 +1,205 @@
+diff -Naur arpalert-2.0.12.orig/arpalert.c arpalert-2.0.12/arpalert.c
+--- arpalert-2.0.12.orig/arpalert.c	2022-08-01 19:59:28.933650527 -0400
++++ arpalert-2.0.12/arpalert.c	2022-08-01 20:19:19.638707780 -0400
+@@ -34,6 +34,13 @@
+ #include "func_time.h"
+ #include "macname.h"
+ 
++// time_t current_time;
++struct timeval current_t;
++
++// is forked
++int is_forked;
++
++
+ extern int errno;
+ 
+ void die(int);
+diff -Naur arpalert-2.0.12.orig/arpalert.h arpalert-2.0.12/arpalert.h
+--- arpalert-2.0.12.orig/arpalert.h	2022-08-01 19:59:28.933650527 -0400
++++ arpalert-2.0.12/arpalert.h	2022-08-01 20:19:29.609132301 -0400
+@@ -8,8 +8,8 @@
+ #include <sys/time.h>
+ 
+ // time_t current_time;
+-struct timeval current_t;
++extern struct timeval current_t;
+ 
+ // is forked
+-int is_forked;
++extern int is_forked;
+ 
+diff -Naur arpalert-2.0.12.orig/capture.c arpalert-2.0.12/capture.c
+--- arpalert-2.0.12.orig/capture.c	2022-08-01 19:59:28.933650527 -0400
++++ arpalert-2.0.12/capture.c	2022-08-01 20:23:34.528988165 -0400
+@@ -17,7 +17,7 @@
+ #include <errno.h>
+ #include <sys/select.h>
+ #include <sys/param.h>
+-#if (__Linux__ || __FreeBSD__ || __NetBSD__ || __OpenBSD__)
++#if ( __FreeBSD__ || __NetBSD__ || __OpenBSD__)
+ #    include <sys/sysctl.h>
+ #endif
+ #if (__sun)
+@@ -225,7 +225,7 @@
+ 
+ 	// check type of link
+ 	if(pcap_datalink(idcap) != DLT_EN10MB){
+-		logmsg(LOG_ERR, "[%s %i] pcap_datalink errror: "
++		logmsg(LOG_ERR, "[%s %i] pcap_datalink error: "
+ 		       "unrecognized link",
+ 		       __FILE__, __LINE__);
+ 		exit(1);
+diff -Naur arpalert-2.0.12.orig/configure.in arpalert-2.0.12/configure.in
+--- arpalert-2.0.12.orig/configure.in	2022-08-01 19:59:28.936983886 -0400
++++ arpalert-2.0.12/configure.in	2022-08-01 20:20:20.508358029 -0400
+@@ -66,8 +66,7 @@
+ if test "x${OS}" = "xLinux"; then
+ 	AC_CHECK_HEADERS(net/if.h, , echo "didn't find net/if.h"; exit 1)
+ fi
+-if test "x${OS}" = "xFreeBsd" ||
+-   test "x${OS}" = "xLinux"; then
++if test "x${OS}" = "xFreeBsd"; then
+ 	AC_CHECK_HEADERS(sys/sysctl.h, , echo "didn't find sys/sysctl.h"; exit 1)
+ fi
+ AC_CHECK_HEADERS(sys/time.h, , echo "didn't find sys/time.h"; exit 1)
+diff -Naur arpalert-2.0.12.orig/data.c arpalert-2.0.12/data.c
+--- arpalert-2.0.12.orig/data.c	2022-08-01 19:59:28.936983886 -0400
++++ arpalert-2.0.12/data.c	2022-08-01 20:23:53.402624362 -0400
+@@ -232,7 +232,7 @@
+ 	datap->alerts = field;
+ }
+ 
+-// add mac address in hash whith discover time
++// add mac address in hash with discover time
+ void data_add_time(struct ether_addr *mac, int status,
+                    struct in_addr ip, struct capt *idcap,
+                    struct timeval *tv){
+diff -Naur arpalert-2.0.12.orig/doc/arpalert.8 arpalert-2.0.12/doc/arpalert.8
+--- arpalert-2.0.12.orig/doc/arpalert.8	2022-08-01 19:59:28.936983886 -0400
++++ arpalert-2.0.12/doc/arpalert.8	2022-08-01 20:22:20.298953101 -0400
+@@ -17,7 +17,7 @@
+ Comma separated network interfaces listen to.
+ .TP
+ \fB\-p pid_file\fR
+-Use this pid file. this file containis a pid number of the arpalert session. If the file exist and his locked, the deamon do not run.
++Use this pid file. this file contains a pid number of the arpalert session. If the file exists and is locked, the daemon does not run.
+ .TP
+ \fB\-e exec_script\fR
+ Script launched when an alert is send.
+@@ -71,7 +71,7 @@
+ .br
+ The program read the config file and open the syslog socket before the chroot:
+ .br
+-The kill -HUP does not work with chroot.
++The kill \-HUP does not work with chroot.
+ .br
+ If the syslog program is restarted, the socket change and the arpalert syslog system can't be connect to the new socket:
+ the logs with syslog are disabled. Prefere to use the log file.
+diff -Naur arpalert-2.0.12.orig/loadconfig.c arpalert-2.0.12/loadconfig.c
+--- arpalert-2.0.12.orig/loadconfig.c	2022-08-01 19:59:28.936983886 -0400
++++ arpalert-2.0.12/loadconfig.c	2022-08-01 20:24:01.369446014 -0400
+@@ -15,6 +15,10 @@
+ #include "loadconfig.h"
+ #include "log.h"
+ 
++// if true, the data is updated
++int flagdump;
++char config_file[CONFIGFILE_LEN];
++
+ extern int errno;
+ 
+ char msg[4096];
+@@ -40,7 +44,7 @@
+ 	"    -f conf_file: configuration file\n"
+ 	"    -i devices:   comma separated list of interfaces\n"
+ 	"    -p pid_file:  file with pid of daemon\n"
+-	"    -e script:    script executed whith alerts\n"
++	"    -e script:    script executed with alerts\n"
+ 	"    -D loglevel:  loglevel (0 to 7)\n"
+ 	"    -l leases:    file to store mac addresses\n"
+ 	"    -m module:    module file to load\n"
+diff -Naur arpalert-2.0.12.orig/loadconfig.h arpalert-2.0.12/loadconfig.h
+--- arpalert-2.0.12.orig/loadconfig.h	2022-08-01 19:59:28.936983886 -0400
++++ arpalert-2.0.12/loadconfig.h	2022-08-01 20:18:46.884266073 -0400
+@@ -105,7 +105,7 @@
+ };
+ 
+ // if true, the data is updated
+-int flagdump;
++extern int flagdump;
+ 
+ 
+ /*
+@@ -132,7 +132,7 @@
+ 
+ extern struct config_cell config[];
+ 
+-char config_file[CONFIGFILE_LEN];
++extern char config_file[CONFIGFILE_LEN];
+ 
+ // load config file values
+ void config_load(int, char **);
+diff -Naur arpalert-2.0.12.orig/log.c arpalert-2.0.12/log.c
+--- arpalert-2.0.12.orig/log.c	2022-08-01 19:59:28.936983886 -0400
++++ arpalert-2.0.12/log.c	2022-08-01 20:17:35.554757822 -0400
+@@ -119,7 +119,7 @@
+ 	#ifdef USE_SYSLOG
+ 	if(config[CF_USESYSLOG].valeur.integer == TRUE &&
+ 	   syslog_initialized == TRUE){
+-		syslog(priority, log_msg); 
++		syslog(priority, "%s", log_msg); 
+ 	}
+ 	#endif
+ 
+diff -Naur arpalert-2.0.12.orig/maclist.c arpalert-2.0.12/maclist.c
+--- arpalert-2.0.12.orig/maclist.c	2022-08-01 19:59:28.940317244 -0400
++++ arpalert-2.0.12/maclist.c	2022-08-01 20:22:45.238720465 -0400
+@@ -144,7 +144,7 @@
+ 		// first arg: mac addr
+ 		if(str_to_mac(args[0], &mac) == -1){
+ 			logmsg(LOG_ERR,
+-			       "file: \"%s\", line %d: mac adress error",
++			       "file: \"%s\", line %d: mac address error",
+ 			       file_name, ligne);
+ 			return -1;
+ 		}
+@@ -153,7 +153,7 @@
+ 		ip.s_addr = inet_addr(args[1]);
+ 		if(ip.s_addr == INADDR_NONE){
+ 			logmsg(LOG_ERR,
+-			       "file: \"%s\", line %d: ip adress error: %s",
++			       "file: \"%s\", line %d: ip address error: %s",
+ 			       file_name, ligne, args[1]);
+ 			return -1;
+ 		}
+@@ -197,7 +197,7 @@
+ 				}
+ 				else {
+ 					logmsg(LOG_ERR,
+-					       "file: \"%s\", line %d: flag \"%s\" not availaible",
++					       "file: \"%s\", line %d: flag \"%s\" not available",
+ 					       file_name, ligne, args[i]);
+ 					return -1;
+ 				}
+diff -Naur arpalert-2.0.12.orig/sens.c arpalert-2.0.12/sens.c
+--- arpalert-2.0.12.orig/sens.c	2022-08-01 19:59:28.940317244 -0400
++++ arpalert-2.0.12/sens.c	2022-08-01 20:23:12.595432084 -0400
+@@ -240,7 +240,7 @@
+ 			// set mac address
+ 			if(str_to_mac(args[0], &mac) == -1){
+ 				logmsg(LOG_ERR,
+-				       "file: \"%s\", line %d: mac addess error",
++				       "file: \"%s\", line %d: mac address error",
+ 				       config[CF_AUTHFILE].valeur.string,
+ 				       ligne);
+ 				return -1;
+@@ -267,7 +267,7 @@
+ 			ip.s_addr = inet_addr(str_ip);
+ 			if(ip.s_addr == INADDR_NONE){
+ 				logmsg(LOG_ERR,
+-				       "file: \"%s\", line %d: ip adress error: %s",
++				       "file: \"%s\", line %d: ip address error: %s",
+ 				       config[CF_AUTHFILE].valeur.string,
+ 				       ligne, str_ip);
+ 				return -1;

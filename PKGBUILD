@@ -7,17 +7,20 @@ pkgver=2.0.12
 pkgrel=1
 pkgdesc="Monitor ARP changes in ethernet networks"
 arch=('i686' 'x86_64')
-url="http://www.arpalert.org/"
+url="https://www.arpalert.org/"
 license=('GPL')
 depends=('libpcap')
-source=("http://www.arpalert.org/src/${pkgname}-${pkgver}.tar.gz"
-        "arpalert-flags.patch")
+source=("https://www.arpalert.org/src/${pkgname}-${pkgver}.tar.gz"
+        "arpalert-flags.patch"
+        "debian-fixes.patch")
 sha256sums=('ca3ef80d89cbca64e5964cbbcdae8652dc69aa09e1a58f630f835a6349f489ab'
-            '19d3f3c5e1ce4795aaea1ee625aa0098a2d331dc566f774a8dde395a058e354e')
+            '19d3f3c5e1ce4795aaea1ee625aa0098a2d331dc566f774a8dde395a058e354e'
+            'f1604cdd991b0d363fd45f0b88d05e6ae5ddf09f343d63401a37e342f78e2e06')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   patch -Np1 -i "${srcdir}/arpalert-flags.patch"
+  patch -Np1 -i "${srcdir}/debian-fixes.patch"
   autoreconf -fiv
 }
 

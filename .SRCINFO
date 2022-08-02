@@ -2,15 +2,16 @@ pkgbase = arpalert
 	pkgdesc = Monitor ARP changes in ethernet networks
 	pkgver = 2.0.12
 	pkgrel = 1
-	url = http://www.arpalert.org/
+	url = https://www.arpalert.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = libpcap
-	source = http://www.arpalert.org/src/arpalert-2.0.12.tar.gz
+	source = https://www.arpalert.org/src/arpalert-2.0.12.tar.gz
 	source = arpalert-flags.patch
+	source = debian-fixes.patch
 	sha256sums = ca3ef80d89cbca64e5964cbbcdae8652dc69aa09e1a58f630f835a6349f489ab
 	sha256sums = 19d3f3c5e1ce4795aaea1ee625aa0098a2d331dc566f774a8dde395a058e354e
+	sha256sums = f1604cdd991b0d363fd45f0b88d05e6ae5ddf09f343d63401a37e342f78e2e06
 
 pkgname = arpalert
-
