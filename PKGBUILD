@@ -27,7 +27,7 @@ package() {
     install -Dm644 "${srcdir}/lazap.desktop" "${pkgdir}/usr/share/applications/lazap.desktop"
     install -d "$pkgdir/opt/"
     install -d "$pkgdir/usr/bin/"
-    ln -sf "src/usr/bin" "${pkgdir}/usr/bin/lazap"
+    ln -sf "${srcdir}/usr/bin/lazap" "${pkgdir}/usr/bin/lazap"
 
     echo "Packaging Complete!"
 }
