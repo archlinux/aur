@@ -30,6 +30,12 @@ pkgbase = systemback
 	depends = xterm
 	depends = xz
 	depends = mkinitcpio-live-boot
+	depends = libx11
+	depends = zenity
+	depends = libsystemback
+	depends = systemback-efiboot-amd64
+	depends = systemback-locales
+	depends = systemback-scheduler
 	optdepends = grub
 	optdepends = btrfs-progs
 	optdepends = jfsutils
@@ -40,77 +46,4 @@ pkgbase = systemback
 	source = systemback-archlinux::git+https://github.com/shadichy/systemback-archlinux.git
 	md5sums = SKIP
 
-pkgname = libsystemback
-	pkgdesc = Libary for Systemback
-
-pkgname = systemback-cli
-	depends = util-linux
-	depends = util-linux-libs
-	depends = parted
-	depends = qt5-base>=5.5.0
-	depends = gcc-libs
-	depends = procps-ng
-	depends = gnu-free-fonts
-	depends = dosfstools
-	depends = libisoburn
-	depends = squashfs-tools
-	depends = syslinux
-	depends = xterm
-	depends = xz
-	depends = mkinitcpio-live-boot
-	depends = ncurses
-	depends = libsystemback
-	depends = systemback-efiboot-amd64
-
-pkgname = systemback-efiboot-amd64
-	pkgdesc = Systemback EFI bootloader support
-	depends = syslinux
-	depends = libsystemback
-	optdepends = grub
-	optdepends = systemback
-
-pkgname = systemback-locales
-	pkgdesc = Systemback language support
-	depends = libsystemback
-	optdepends = systemback
-
-pkgname = systemback-scheduler
-	pkgdesc = Systemback scheduler
-	depends = util-linux
-	depends = util-linux-libs
-	depends = parted
-	depends = qt5-base>=5.5.0
-	depends = gcc-libs
-	depends = procps-ng
-	depends = gnu-free-fonts
-	depends = dosfstools
-	depends = libisoburn
-	depends = squashfs-tools
-	depends = syslinux
-	depends = xterm
-	depends = xz
-	depends = mkinitcpio-live-boot
-	depends = libsystemback
-	optdepends = systemback
-
 pkgname = systemback
-	depends = util-linux
-	depends = util-linux-libs
-	depends = parted
-	depends = qt5-base>=5.5.0
-	depends = gcc-libs
-	depends = procps-ng
-	depends = gnu-free-fonts
-	depends = dosfstools
-	depends = libisoburn
-	depends = squashfs-tools
-	depends = syslinux
-	depends = xterm
-	depends = xz
-	depends = mkinitcpio-live-boot
-	depends = libx11
-	depends = zenity
-	depends = libsystemback
-	depends = systemback-efiboot-amd64
-	depends = systemback-locales
-	depends = systemback-scheduler
