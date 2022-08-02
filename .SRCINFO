@@ -1,0 +1,18 @@
+pkgbase = gum-git
+	pkgdesc = A tool for glamorous shell scripts
+	pkgver = 0.2.0.r8.g378a000
+	pkgrel = 1
+	url = https://github.com/charmbracelet/gum
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = gum=0.2.0.r8.g378a000
+	conflicts = gum
+	options = staticlibs
+	source = git+https://github.com/charmbracelet/gum.git
+	sha256sums = SKIP
+
+pkgname = gum-git
