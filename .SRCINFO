@@ -1,0 +1,17 @@
+pkgbase = skate-git
+	pkgdesc = A personal key value store
+	pkgver = 0.2.0.r9.g693df1f
+	pkgrel = 1
+	url = https://github.com/charmbracelet/skate
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = skate=0.2.0.r9.g693df1f
+	conflicts = skate
+	source = git+https://github.com/charmbracelet/skate.git
+	sha256sums = SKIP
+
+pkgname = skate-git
