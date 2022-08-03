@@ -1,6 +1,6 @@
 # Maintainer: demented <dev@snipesharp.xyz>
 pkgname=snipesharp
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="Minecraft Name Sniper"
 arch=('arm64' 'x86_64')
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd $pkgname
-	printf "1.8.3.r%s" "$(git rev-list --count HEAD)"
+	printf "1.8.4.r%s" "$(git rev-list --count HEAD)"
 }
 
 package() {
