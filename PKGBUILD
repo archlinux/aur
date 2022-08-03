@@ -1,8 +1,8 @@
 # Maintainer: Miguel Revilla <yo at miguelrevilla dot com>
 
 pkgname=libodb-pgsql
-pkgver=2.5.0b21
-pkgrel=2
+pkgver=2.5.0b23
+pkgrel=1
 pkgdesc="The ODB PostreSQL runtime library"
 url="https://www.codesynthesis.com/products/odb/"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ build() {
 	mkdir -p "${srcdir}/${pkgname}-${pkgver}"
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	GPPVER="$(${CXX:-g++} --version | grep 'g++ (GCC)' | sed 's/g++ (GCC) //')"
+	GPPVER="$(${CXX:-g++} --version | grep 'g++ (GCC)' | sed 's/g++ (GCC) //' | sed 's/\s.*$//')"
 
 	bpkg create -d gcc-${GPPVER} cc \
 	config.cxx=${CXX:-g++} \
@@ -31,7 +31,7 @@ build() {
 
 package() {
 
-	GPPVER="$(${CXX:-g++} --version | grep 'g++ (GCC)' | sed 's/g++ (GCC) //')"
+	GPPVER="$(${CXX:-g++} --version | grep 'g++ (GCC)' | sed 's/g++ (GCC) //' | sed 's/\s.*$//')"
 	cd "${srcdir}/${pkgname}-${pkgver}/gcc-${GPPVER}"
 
 	bpkg install libodb-pgsql

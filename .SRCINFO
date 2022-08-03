@@ -1,7 +1,7 @@
 pkgbase = libodb-pgsql
 	pkgdesc = The ODB PostreSQL runtime library
-	pkgver = 2.5.0b21
-	pkgrel = 2
+	pkgver = 2.5.0b23
+	pkgrel = 1
 	url = https://www.codesynthesis.com/products/odb/
 	arch = i686
 	arch = x86_64
