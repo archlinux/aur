@@ -6,4 +6,5 @@ tmp/
 pkg
 src
 naxalnet
+pybatmesh
 *.pkg.tar.*
