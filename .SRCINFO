@@ -1,18 +1,17 @@
 pkgbase = luvit
 	pkgdesc = node.js style APIs for luvi as either a luvi app or library.
-	pkgver = 2.14.1
+	pkgver = 2.18.1
 	pkgrel = 1
 	url = https://github.com/luvit/luvit
 	arch = any
 	license = Apache
 	makedepends = lit
 	depends = luvi
-	noextract = luvit-2.14.1.zip
+	noextract = luvit-2.18.1.zip
 	options = !strip
-	source = luvit-2.14.1.zip::https://lit.luvit.io/packages/luvit/luvit/v2.14.1.zip
+	source = luvit-2.18.1.zip::https://lit.luvit.io/packages/luvit/luvit/v2.18.1.zip
 	source = fakeluvi
-	sha256sums = d163880a8ef8e6db17179d6c5529d5bb1cad14d7c1a2aefd23758210467759b7
+	sha256sums = SKIP
 	sha256sums = c152cdc2d87b031302234b5b6b6047d34017119354fee312a81bb349989fbe7b
 
 pkgname = luvit
-
