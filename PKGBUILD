@@ -1,7 +1,7 @@
 # Maintainer: ejiek <ejiek@mail.ru>
 # Contributor: jskier <jay @jskier.com>
 pkgname=keeper-commander
-pkgver=4.37
+pkgver=16.6.14
 pkgrel=1
 pkgdesc="CLI, SDK and interactive shell for Keeper® Password Manager."
 arch=('any')
@@ -19,7 +19,7 @@ depends=('python'
          'python-pyperclip'
          )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('79e55edec11840fe48e505935d2c69df00b352ced956e22cd219c0bc2d44ab53cc5e8eb0c14b59e2eacf29280e520059c650e6135cdc7c7d605f6411c52a9a9b')
+sha512sums=('44f174c1e9f49020cc52b014f27763d2b4daf60a818309cd3780dee046b8f8e6db2715e876fffb8f2dac2dd4608bf2da856b6ad8d65feac8893f1cb05e926b73')
 
 package() {
   cd "Commander-$pkgver"
