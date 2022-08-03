@@ -1,0 +1,34 @@
+diff -ur CalculiX_orig/cgx_2.20/src/Makefile CalculiX/cgx_2.20/src/Makefile
+--- CalculiX_orig/cgx_2.20/src/Makefile
++++ CalculiX/cgx_2.20/src/Makefile
+@@ -59,1 +53,1 @@
+- ../../libSNL/src/*.cpp
++# ../../libSNL/src/*.cpp
+diff -ur CalculiX_orig/cgx_2.20/src/cgx.h CalculiX/cgx_2.20/src/cgx.h
+--- CalculiX_orig/cgx_2.20/src/cgx.h
++++ CalculiX/cgx_2.20/src/cgx.h
+@@ -85,12 +85,12 @@
+ #elif defined AFLIB
+-  #define     HELPFILE        {"/usr/local/CalculiX/cgx_2.20/doc/cgx/cgx.html",\
+-    "/usr/local/CalculiX/ccx_2.20/doc/ccx/ccx.html",\
+-    "/usr/local/CalculiX/cgx_2.16/doc/aflib/aflib.pdf"}
++  #define     HELPFILE        {"/usr/share/doc/cgx/cgx.html",\
++    "/usr/share/doc/doc/ccx/ccx.html",\
++    "/usr/share/doc/doc/aflib/aflib.pdf"}
+   /* default tet mesher, 0:Netgen ng_vol, 1:tetgen */
+   #define     TETMESHER  1
+ #else
+-  #define     HELPFILE        {"/usr/local/CalculiX/cgx_2.20/doc/cgx/cgx.html",\
+-    "/usr/local/CalculiX/ccx_2.20/doc/ccx/ccx.html"}
++  #define     HELPFILE        {"/usr/share/doc/cgx/cgx.html",\
++    "/usr/share/doc/ccx/ccx.html"}
+   /* default tet mesher, 0:Netgen ng_vol, 1:tetgen */
+   #define     TETMESHER  1
+ #endif
+diff -ur CalculiX_orig/cgx_2.20/src/uselibSNL.h CalculiX/cgx_2.20/src/uselibSNL.h
+--- CalculiX_orig/cgx_2.20/src/uselibSNL.h
++++ CalculiX/cgx_2.20/src/uselibSNL.h
+@@ -8,1 +8,3 @@
+ #include <cgx.h>
++#undef max
++#undef min

@@ -6,7 +6,7 @@
 #       may fail if make uses more than one job.
 
 pkgname=calculix
-pkgver=2.19
+pkgver=2.20
 pkgrel=1
 pkgdesc="CalculiX: 3D finite element solver and post-processor (executables)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,8 @@ options=(!makeflags !buildflags)
 url="http://www.calculix.de/"
 license=('GPL2')
 depends=('arpack' 'spooles' 'libsnl-svn' 'blas' 'mesa' 'glu' 'libxmu' 'libxi')
-optdepends=('calculix-doc: documentation and examples')
+optdepends=('calculix-doc: documentation and examples'
+            'tetgen: for tet meshing')
 makedepends=('gcc-fortran' 'perl')
 checkdepends=('perl')
 
@@ -25,12 +26,12 @@ source=("http://www.dhondt.de/ccx_${pkgver}.src.tar.bz2"
       	"http://www.dhondt.de/cgx_${pkgver}.all.tar.bz2"
         "calculix_${pkgver}_archlinux.patch")
 
-sha256sums=('c75a69685811e7996c9428b491c82f0eff777cc9a0999f469d10156d75f26d07'
-            'e7376881f7a7e5f0730e2aaa9fd518665ba380cc9fae7140919050e7752cdc01'
-            '12a525137c98ddde703b06dbd57f9e54d785bfe775cf7bded9d3b94f971e64a4'
-            'b8f0f5e685bf6635bac6f28246f3526e17ac0d645737d50abf165871f9fc8d19'
-            '598121372373b679a228c85d25c7e549489a38535d82f025acb750f831afe546'
-            '3faaa3b48d2e7a59f443c71fee48689caee4d1a7936086c04efd44c753dedbc0')
+sha256sums=('63bf6ea09e7edcae93e0145b1bb0579ea7ae82e046f6075a27c8145b72761bcf'
+            '79848d88dd1e51839d1aed68fb547ff12ad3202c3561c02c2f3a8ceda0f2eb82'
+            '1b73ab8df8d7266fd612846f3052114c1a7dceb1d28edebec1701bda64cd1240'
+            '85026b25f2753178b5a1ab36f0f86faafb08df27acbba7b73ebda33ddd04aa6b'
+            'd8e35837a493e55099375397562ae36b315d02c633ddeca8f3e5da4a93291b02'
+            '6d9e86c9bcbe2953a3e7697c3c84945e8abeac4607ca519f69cd6f43cc8eb4e5')
 
 prepare()
 {
@@ -72,7 +73,7 @@ check()
          'massflow_percent_ccx' 'membrane1' 'metalforming' 'modelchel'
          'networkmpc' 'oneel' 'pendel' 'resstress1'
          'restrictor' 'segment' 'sensitivity_I' 'shell1'
-         'shellbeam' 'shellf' 'simplebeam' 'slant' 'spring1' 'spring2'
+         'shellbeam' 'shellf' 'simplebeam' 'spring1' 'spring2'
          'small_pressure_gradient' 'square' 'substructure' 'swing'
          'thermomech' 'transition' 'truss' 'vortex1' 'wire')
 
