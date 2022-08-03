@@ -1,6 +1,6 @@
 pkgbase = petsc
 	pkgdesc = Portable, extensible toolkit for scientific computation
-	pkgver = 3.17.3
+	pkgver = 3.17.4
 	pkgrel = 1
 	url = https://www.mcs.anl.gov/petsc
 	install = petsc.install
@@ -30,9 +30,9 @@ pkgbase = petsc
 	optdepends = valgrind: support for valgrind to help find memory-management problems in programs
 	provides = petsc4py
 	options = staticlibs
-	source = http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-3.17.3.tar.gz
+	source = http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-3.17.4.tar.gz
 	source = test_optdepends.sh
-	sha256sums = 5c24ade5e4b32cc04935ba0db1dafe48d633bebaaa30a3033f1e58788d37875f
+	sha256sums = 99c127486722a3ffd95a268b4ceb0976cbf217926c681a9631bd7246eab8cb2a
 	sha256sums = 2d253a7b4bb4efe0200b7c1b57f71e423f135dc439945981c5fe2298d8066dba
 
 pkgname = petsc
