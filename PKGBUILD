@@ -5,7 +5,7 @@ pkgver='1.0.0'
 pkgrel=1
 pkgdesc="Upload images via APIs"
 url="https://github.com/DeadNews/images-upload-cli"
-depends=('python' 'python-click' 'python-dotenv' 'python-pillow' 'python-pyperclip' 'python-requests')
+depends=('python>=3.9' 'python-click' 'python-dotenv' 'python-pillow' 'python-pyperclip' 'python-requests')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')

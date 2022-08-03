@@ -6,7 +6,7 @@ pkgbase = python-images-upload-cli
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python
+	depends = python>=3.9
 	depends = python-click
 	depends = python-dotenv
 	depends = python-pillow
@@ -16,7 +16,7 @@ pkgbase = python-images-upload-cli
 	sha256sums = 7506306dfcccdb12f442211e38208739399919b36a09bacf9282dd8e472bbad7
 
 pkgname = python-images-upload-cli
-	depends = python
+	depends = python>=3.9
 	depends = python-click
 	depends = python-dotenv
 	depends = python-pillow
