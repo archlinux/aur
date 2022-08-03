@@ -10,12 +10,12 @@ license=('GPL3')
 makedepends=('git' 'cargo' 'nasm' 'clang')
 depends=('ffmpeg' 'aom' 'vapoursynth')
 optdepends=('svt-av1: SVT-AV1 encoder support'
-            'rav1e: rav1e encoder support'
-            'libvpx: vpx encoder support'
-            'vmaf: VMAF calculation support'
-            'mkvtoolnix-cli: mkvmerge support'
-            'ffms2'
-            'vapoursynth-plugin-lsmashsource')
+  'rav1e: rav1e encoder support'
+  'libvpx: vpx encoder support'
+  'vmaf: VMAF calculation support'
+  'mkvtoolnix-cli: mkvmerge support'
+  'ffms2'
+  'vapoursynth-plugin-lsmashsource')
 provides=('av1an')
 conflicts=('av1an')
 source=("git+https://github.com/master-of-zen/Av1an.git")
