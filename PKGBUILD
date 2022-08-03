@@ -2,7 +2,7 @@
 # Contributor: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _name=rapidfuzz_capi
-pkgname=python-$_name
+pkgname=python-${_name/_/-}
 pkgver=1.0.5
 pkgrel=3
 pkgdesc='C-API of RapidFuzz, which can be used to extend RapidFuzz from separate packages'
