@@ -2,9 +2,9 @@
 _pkgname=linux
 _kernver=5.18.15
 _archver=arch1
-_pkgrel=1
+_pkgrel=2
 _pkgver="${_kernver}.${_archver}"
-_KERNNAME=5.18.15-arch1-1
+_KERNNAME=5.18.15-arch1-2
 pkgbase="${_pkgname}-versioned-bin"
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}"
 pkgname=("${_pkgname}-versioned-bin"
@@ -44,9 +44,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('db2c6c728d361c6606248e3d7ee06a3b4046794ccb5e38972fdb1b470e49cd6f'
-            '5b57f7d981ddb255ebee57e4ef9662fb0caec9df0b9d028360bb62e114337f4e'
-            '33920e7291dbfe733af7b61b452cfba57fc42a3c5c54d8e8f3ae778e81de9310')
+sha256sums=('bdcb4593ae1f6de655642ac5b70b7b121971ff652f0226b488f35d6aa717f6a1'
+            '57aa0bbcfed02e3a767171339ecaadb3a07e483718ed38ec263509cc11388f9d'
+            '8c5e0c98dad2437be5eeb5657e693ea545c0bbbadb72efe94d502d8d7dd84811')
 
 package_linux-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -64,7 +64,7 @@ package_linux-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.18.15.arch1-1-bin() {
+package_linux5.18.15.arch1-2-bin() {
   pkgdesc="The Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -81,7 +81,7 @@ package_linux5.18.15.arch1-1-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux5.18.15.arch1-1-headers-bin() {
+package_linux5.18.15.arch1-2-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -90,7 +90,7 @@ package_linux5.18.15.arch1-1-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.18.15.arch1-1-docs-bin() {
+package_linux5.18.15.arch1-2-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
