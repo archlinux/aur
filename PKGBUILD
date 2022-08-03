@@ -3,9 +3,9 @@ _pkgname=linux-zen
 _pkgver=5.18.15.zen1
 _kernver=5.18.15
 _zenver=zen1
-_pkgrel=1
+_pkgrel=2
 pkgbase="${_pkgname}-versioned-bin"
-_KERNNAME=5.18.15-zen1-1-zen
+_KERNNAME=5.18.15-zen1-2-zen
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}-zen"
 pkgname=("${_pkgname}-versioned-bin"
          "${_pkgname}-versioned-headers-bin"
@@ -44,9 +44,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('9ac46b23511a1d21b624a7d437a6b556a6757c87b638293bb4a722a86e99d6bb'
-            '9f4748677153c8a3ca7a8f908afcef9a77fd60844167b7d0c7ce89dea7ced89a'
-            'a4aa5d9622401e3fadea57b5352bf22cb4bfc1c02e17b4eeb8c4696d5bc22116')
+sha256sums=('0d39d7da4c005fa59c89562c290255ec0aeaf466e9d213d14b5bf9baaac0528a'
+            'da75c0b3ff92245cefd8a016fc062a1e3fc9101302a2de6c68d2e72b9779646d'
+            '5201ee1aade0ebeb8e3e2082ffbad091d7af89034407cb860e60330b0a72c346')
 
 package_linux-zen-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -64,7 +64,7 @@ package_linux-zen-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.18.15.zen1-1-zen-bin() {
+package_linux5.18.15.zen1-2-zen-bin() {
   pkgdesc="The Linux ZEN kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -81,7 +81,7 @@ package_linux5.18.15.zen1-1-zen-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux5.18.15.zen1-1-zen-headers-bin() {
+package_linux5.18.15.zen1-2-zen-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux ZEN kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -90,7 +90,7 @@ package_linux5.18.15.zen1-1-zen-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.18.15.zen1-1-zen-docs-bin() {
+package_linux5.18.15.zen1-2-zen-docs-bin() {
   pkgdesc="Documentation for the Linux ZEN kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
