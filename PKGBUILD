@@ -1,24 +1,30 @@
 # Maintainer: Juliette Cordor
 pkgname=ignoreit
-pkgver=2.4.3
-pkgrel=2
+pkgver=2.4.4
+pkgrel=1
 url="https://github.com/jewlexx/ignoreit"
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Quickly load .gitignore templates"
 license=('MIT')
-source=(
-    "$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate"
-)
 
-sha256sums=('b7593635324db58c1a7ae5981a6087f9584737452d3ac9477f1d44a6b6840d2e')
+# Generated in accordance to https://wiki.archlinux.org/title/Rust_package_guidelines.
+# Might require further modification depending on the package involved.
+prepare() {
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
-    return 0
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --all-features
+}
+
+check() {
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen --all-features
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo install --no-track --all-features --root="$pkgdir/usr/" --path .
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
