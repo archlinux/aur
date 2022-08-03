@@ -2,15 +2,15 @@
 
 pkgbase=czkawka
 pkgname=('czkawka-cli' 'czkawka-gui')
-pkgver=5.0.0
-pkgrel=2
+pkgver=5.0.1
+pkgrel=1
 pkgdesc='Multi functional app to find duplicates, empty folders, similar images etc.'
 url='https://github.com/qarmin/czkawka'
 arch=('x86_64')
 license=('MIT')
 makedepends=('cargo' 'rust' 'git' 'gtk4')
 checkdepends=(xorg-server-xvfb)
-_commit=390f4751e842d1c045602a9ec36dfd83737048db # tags/5.0.0^0
+_commit=ae87489f3b52a4d1f9681f5ba71010a37550b9ef # tags/5.0.1^0
 source=("git+https://github.com/qarmin/czkawka.git#commit=${_commit}")
 sha512sums=('SKIP')
 
