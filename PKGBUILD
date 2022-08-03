@@ -2,7 +2,7 @@
 # Maintainer: jonah <me@jon4hz.io>
 
 pkgname='fztea-bin'
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='TUI to interact with your flipper zero'
 url='https://jon4hz.io'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('fztea')
 conflicts=('fztea')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jon4hz/fztea/releases/download/v0.4.0/fztea-v0.4.0-linux-arm64.tar.gz")
-sha256sums_aarch64=('8ab8cb65d255cbc891c9520dcd5b75c1a526f61c8891d58efa166d7661616b94')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jon4hz/fztea/releases/download/v0.5.0/fztea-v0.5.0-linux-arm64.tar.gz")
+sha256sums_aarch64=('35737139f36dd6faec7d17e6e221cf9fbbe15c683a2ad5219b11fb1e44d8ecff')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jon4hz/fztea/releases/download/v0.4.0/fztea-v0.4.0-linux-armv7.tar.gz")
-sha256sums_armv7h=('3f8dfd5ca7c144dcfe3950261641dea0c5c69281528086e975d078c771fe5d4b')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jon4hz/fztea/releases/download/v0.5.0/fztea-v0.5.0-linux-armv7.tar.gz")
+sha256sums_armv7h=('66cadd06ae59152e1ffd3143b0b15b9e01da937649eaff8e92cf04b636f74728')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/jon4hz/fztea/releases/download/v0.4.0/fztea-v0.4.0-linux-386.tar.gz")
-sha256sums_i686=('d9f2ebe2ba6b106bd8b972c0c8379f3b8dccf2ecfcd63659b7257822f5b6fde4')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/jon4hz/fztea/releases/download/v0.5.0/fztea-v0.5.0-linux-386.tar.gz")
+sha256sums_i686=('aa2a7fb02cf9deb2bd59be190c13f6629f330bd682618fddf9b43bf2d92aee77')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jon4hz/fztea/releases/download/v0.4.0/fztea-v0.4.0-linux-amd64.tar.gz")
-sha256sums_x86_64=('67c790e0edc5b5beb07c2a3df83a8a9eeddc9467d9a7a6a42a45e1605170868e')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jon4hz/fztea/releases/download/v0.5.0/fztea-v0.5.0-linux-amd64.tar.gz")
+sha256sums_x86_64=('a6910c864f507ef57c904df5c752267be242f52e655e1b74828c94bc2f467b3e')
 
 package() {
   # bin
