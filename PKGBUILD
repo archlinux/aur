@@ -4,14 +4,15 @@
 _name=tabulate
 pkgdesc='Pretty-print tabular data in Python, a library and a command-line utility.'
 url="https://github.com/astanin/python-${_name}"
-pkgbase="python-${_name}-git"
-pkgname=("python-${_name}-git" "python2-${_name}-git")
-pkgver=0.8.8.r437.2552e6d
+pkgname="python-${_name}-git"
+pkgver=0.8.11.r556.3f0757e
 pkgrel=1
 arch=('any')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools')
 license=('MIT')
 source=("${_name}::git+${url}.git")
+provides=( "python-${_name}" )
+conflicts=( "python-${_name}" )
 sha1sums=('SKIP')
 
 pkgver() {
@@ -23,19 +24,7 @@ pkgver() {
 	)
 }
 
-package_python2-tabulate-git() {
-	provides=( 'python2-tabulate' )
-	conflicts=( 'python2-tabulate' )
-	cd "${srcdir}/${_name}"
-	python2 setup.py install --root="${pkgdir}" --optimize=1
-	# Waiting for https://github.com/axiros/terminal_markdown_viewer/pull/42
-	mv "${pkgdir}/usr/bin/${_name}"  "${pkgdir}/usr/bin/${_name}2"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"LICENSE
-}
-
-package_python-tabulate-git() {
-	provides=( 'python-tabulate' )
-	conflicts=( 'python-tabulate' )
+package() {
 	cd "${srcdir}/${_name}"
 	python setup.py install --root="${pkgdir}" --optimize=1
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"LICENSE
