@@ -1,6 +1,6 @@
 pkgbase = tiempo
 	pkgdesc = A command line time tracker application
-	pkgver = 1.2.6
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://gitlab.com/categulario/tiempo-rs
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = tiempo
 	provides = tiempo
 	conflicts = tiempo-git
 	conflicts = tiempo-bin
-	source = https://gitlab.com/categulario/tiempo-rs/-/archive/v1.2.6/tiempo-rs-v1.2.6.tar.gz
-	sha256sums = edb68a349316c6cfa62da08cb00d540c9958e8430983103276a1304110d66795
+	source = https://gitlab.com/categulario/tiempo-rs/-/archive/v1.3.0/tiempo-rs-v1.3.0.tar.gz
+	sha256sums = dfefd921e7f8cfa96c8bc9280f87806d7e7d631640dee83facef68f6aafcb05b
 
 pkgname = tiempo
