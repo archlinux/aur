@@ -5,6 +5,8 @@ CURA_VERSION="VERSION_PLACEHOLDER"
 CURA_BIN_PATH="/opt/Ultimaker-Cura/Ultimaker-Cura-$CURA_VERSION.AppImage"
 FIXUPS="LD_PRELOAD=/usr/lib/libstdc++.so.6"
 
+[ -n "$WAYLAND_DISPLAY" ] && FIXUPS="$FIXUPS QT_QPA_PLATFORMN=xcb"
+
 # Get full path to avoid Error Message in cura 
 [ -n $(dirname "$1") ] && filePath="$(realpath "$1")" || filePath="$1"
 
