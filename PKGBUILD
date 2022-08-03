@@ -48,9 +48,9 @@ sha256sums=('9cc662f1a84c796521ee17ed2808795ca937fe7f77bc605e788f0304a81dabf3'
 provides=('chromium')
 conflicts=('chromium')
 _uc_usr=ungoogled-software
-_uc_ver=$pkgver-1
+_uc_ver=104.0.5112.81-1
 source=(${source[@]}
-        $pkgname-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz
+        $pkgname-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz
         chromium-drirc-disable-10bpc-color-configs.conf
         ozone-add-va-api-support-to-wayland.patch)
 sha256sums=(${sha256sums[@]}
