@@ -4,7 +4,7 @@
 # Contributor: Niels Abspoel <aboe76 (at) Gmail (dot) com>
 
 pkgname=puppetserver
-pkgver=7.8.0
+pkgver=7.9.0
 pkgrel=1
 pkgdesc="Server automation framework and application"
 arch=('any')
@@ -26,7 +26,7 @@ install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://downloads.puppetlabs.com/puppet/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::https://downloads.puppetlabs.com/puppet/${pkgname}-${pkgver}.tar.gz.asc"
         'facter-3.14.9.gemspec')
-sha512sums=('82503c79e3d24ae2700537c8acdd410ddd3b400993d51f392f30664f6d259c224ba782c8ebeaf21e49c4acfb503b2f1a8ac880359a67c8d008797abcaa3210ab'
+sha512sums=('6f0acabbf332072306386b4d942532270e202801bf98dcd436884c85b969437ca51adefb51a0f99556432c4c204e03ee8d3fecdecadf5e046b037ce06619a27c'
             'SKIP'
             '3341d62606d9426b4f810d873ec93b1c2888032dc5a1eb17afb38382f4f4463489a338d470367e8d129c1103efb9183bb941cc9de56815184f859823c99e91f9')
 validpgpkeys=('D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26')
@@ -35,7 +35,6 @@ prepare() {
   cd "${pkgname}-${pkgver}"
 
   echo 'hiera-eyaml 3.3.0' >> ext/build-scripts/jruby-gem-list.txt
-  sed -i '1imultipart-post 2.2.0' ext/build-scripts/dropsonde-gem.txt
   sed -i 's:sysconfig:default:' ext/redhat/puppetserver.service
   sed -i "s:\[/opt/puppetlabs/puppet/lib/ruby/vendor_ruby\]:\[$( ruby -e \
     'puts RbConfig::CONFIG["vendorlibdir"]' ),$( ruby -e \
