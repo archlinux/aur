@@ -12,33 +12,37 @@
 # Primary bug report: https://bugs.winehq.org/show_bug.cgi?id=47198
 
 pkgname=wine-lol
-pkgver=5.18
+pkgver=7.14
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
+_winever=$_pkgbasever
 
-source=("wine-tkg-5.18.tar.gz::https://github.com/Tk-Glitch/wine-tkg/archive/e379f968e8c8e693be4330bfa5ac03595e7ed1ce.tar.gz"
-        30-win32-aliases.conf
-        $pkgname-autoconf-2.70.patch
-        $pkgname-bug-47198-fix.patch
-        0001-Updated-wow64cpu-Wow64Transition-patchset.patch
-        0001-ntdll-Stub-NtQueryInformationThread-ThreadHideFromDe.patch
-        0001-Revert-winex11.drv-Update-_NET_WM_STATE-before-resiz.patch
-        0001-Fix-ldap_connect-name-conflict.patch
-       )
-sha512sums=('85ea388e711b2a659b37233bcfd423d6bed3a56190d6cff3a9465eb8c0590cbc73b69479ec25749d43be9de7d8a37833e1c5c5f908d8e3c69f131ffa79dcbde3'
-            '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
-            '8c8b7932573b028b58653dce0d307bcdd2910309e5c137c27ddcdfaa07aa46337b85c288e1fa67fde8dea75a67b632bbd5288e3abd5df06eea5b37a87ec7a1e8'
-            'e8207a4cf79fe83c20d6f2257b469127baf81876f3de240a24744b23ab1c2b0b523afae6acb1fc95edfc1e2cb5db34adea87e36047455b82f42b29228681b9d5'
-            '78680db42591fc882c50c4fc5156a1d3db915d71b8982b42b2affc6701d55bc5dacfd2d7a435a7b1424f9480b1e2db332321d9b4dae7122a3a0ad1efdcbe1d59'
-            '68c027c748faf1ea86c4b01f2decadb3240d1e98f1f16a9fc6f6a841bb5240efc91237e77aedd188c450b6f47e1ca89620ef924ec44e3f0bc2c9097361c1ac08'
-            'ff6ea107598bd681bb5534d977e2f40fe8104bcf53148284fdd2be14f67db1dfe6d8176ff8200fc982ab3902c28e4186876c4d1870fd7362d98e8b3b6d8efe31'
-            '9be470762bfa4bf098e919bf94210103e1e9147693e74bfbc88fa539b3d1c8bd2da017005380dbe21ace39cc4fa949e923b3682cb9265d61bbd0e2f988562dbd')
+source=(https://dl.winehq.org/wine/source/7.x/wine-$_winever.tar.xz
+        "https://github.com/wine-staging/wine-staging/archive/v$_pkgbasever/wine-staging-v$_pkgbasever.tar.gz"
+        "LoL-6.17+-syscall-fix.patch"
+        "LoL-abi.vsyscall32-alternative_patch_by_using_a_fake_cs_segment.patch"
+        "LoL-abi-vsyscall-fix.patch"
+        "LoL-broken-client-update-fix.patch"
+        "LoL-client-slow-start-fix.patch"
+        "LoL-garena-childwindow.patch"
+        "LoL-launcher-client-connectivity-fix-0001-ws2_32-Return-a-valid-value-for-WSAIoctl-SIO_IDEAL_S.patch"
+        30-win32-aliases.conf)
+sha512sums=('6727be4a23b1911b36c44ac8d347be1c98bb53e67101355d6ae829d14a3a0867ba83f77a52f4dbc02a35c3b513291dd4800148a31d28f50069d199fdee04b6e9'
+            '40ffa7a64780a054bdace9fd5f294a45f7648f6db933ba0a74450b5412df5cc989b7aa442dcba1f185f8d0e5a7740a9508203f1ee323f26fd77867caa9d4fcb3'
+            '27397de7008680f25d173bc22937f69e2bdcbf7e5706b4cf595eb90a391db425cdc5b2be672b43325433b190fbc696fc8028b3e1d69fedd76010b2c193ad7add'
+            '02b2cc049c0254ed1fc1dc1dabcf50322dd1db9f0e17d5869288ee607824662a333fdae58119a7a80c93d9ab4c980a7a77a6eaf9f4a219a71e42749c5fdff064'
+            '34d8cbc8a9e06ab814b96c1f25f7068b09fb15236b31f65687afc2ec0114d4f11006ede31f6ce49c00c84faeb77d86026644abf8e115e25d5561e1f49e19e8ca'
+            '8960ae5e9d9dfb08e1ed9fa506cc71f62f78f195197b5293940d35fea9a9707abf42834c778a21f39533d2f59d2cb7b9b3e10e0de1ee241b0c8ffdca16724cd0'
+            '5ae6b2cff7510a940a1e77edcff9f5afeb858893655adb9180823ed7000f6abd3f0504a9ea55134995a8953d9440b78bc382bb63fec7b0a21411886f45a5762c'
+            'e09b1377c4d05ec38032d83f7d930929dcbab0e4a1df6073599311a2d108dbfba7192177377d7efd31e424866036786fae8448c20cbac24b619126fad006e6f7'
+            '887b3531d4c74b281dbfbb7ff3d78c2546bfe8088961a6d5ac82b65ceffe94f599be8712aa565f05f2ac593a0171e32e6bcc51d3d16f17231fbc6922aa3fd57d'
+            '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb')
 
 pkgdesc="A compatibility layer for running Windows programs - Wine Tk-Glitch with League Of Legends fixes"
 url="https://github.com/M-Reimer/wine-lol"
 arch=(x86_64)
-options=(staticlibs)
+options=(staticlibs !lto)
 license=(LGPL)
 
 depends=(
@@ -57,7 +61,6 @@ depends=(
   gcc-libs         lib32-gcc-libs
   libpcap          lib32-libpcap
   desktop-file-utils
-  wine-lol-glibc
 )
 
 makedepends=(autoconf ncurses bison perl fontforge flex
@@ -129,30 +132,27 @@ install=wine.install
 
 prepare() {
   # Allow ccache to work
-  mv $(tar -tf wine-tkg-$pkgver.tar.gz | head -n1) $pkgname
+  mv wine-$_winever $pkgname
 
-  # Apply fix for autoconf 2.70
-  patch -d "$srcdir/$pkgname" -p1 -i "$srcdir/$pkgname-autoconf-2.70.patch"
-
-  # Apply Tk-Glitch missing patches
-  pushd "$srcdir/$pkgname"
-  patch -p1 -i "$srcdir/0001-Updated-wow64cpu-Wow64Transition-patchset.patch"
-  patch -p1 -i "$srcdir/0001-ntdll-Stub-NtQueryInformationThread-ThreadHideFromDe.patch"
+  # apply wine-staging patchset
+  pushd wine-staging-$_pkgbasever/patches
+  ./patchinstall.sh DESTDIR="$srcdir/$pkgname" --all
   popd
 
   # Apply League Of Legends fixes
-  patch -d "$srcdir/$pkgname" -p1 -i "$srcdir/$pkgname-bug-47198-fix.patch"
-
-  # Revert commit that breaks _net_active in league-client since wine-5.8
-  pushd "$srcdir/$pkgname"
-  patch -p1 -i "$srcdir/0001-Revert-winex11.drv-Update-_NET_WM_STATE-before-resiz.patch"
-  popd
+  patch -d $pkgname -Np1 -i "$srcdir/LoL-6.17+-syscall-fix.patch"
+  patch -d $pkgname -Np1 -i "$srcdir/LoL-abi.vsyscall32-alternative_patch_by_using_a_fake_cs_segment.patch"
+  patch -d $pkgname -Np1 -i "$srcdir/LoL-broken-client-update-fix.patch"
+  # patch -d $pkgname -Np1 -i "$srcdir/LoL-launcher-client-connectivity-fix-0001-ws2_32-Return-a-valid-value-for-WSAIoctl-SIO_IDEAL_S.patch" # Seems to be already fixed in wine
+  #patch -d $pkgname -Np1 -i "$srcdir/LoL-garena-childwindow.patch" # Does not apply
+  patch -d $pkgname -Np1 -i "$srcdir/LoL-client-slow-start-fix.patch"
+  patch -d $pkgname -Np1 -i "$srcdir/LoL-abi-vsyscall-fix.patch"
 
   # Fix opencl header path
   sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i $pkgname/configure*
 
-  # Fix ldap_connect
-  patch -d "$srcdir/$pkgname" -p1 -i "$srcdir/0001-Fix-ldap_connect-name-conflict.patch"
+  # Fix openldap 2.5+ detection
+  sed 's/-lldap_r/-lldap/' -i $pkgname/configure
 }
 
 build() {
@@ -166,13 +166,6 @@ build() {
   export CFLAGS="${CFLAGS/-fno-plt/}"
   export LDFLAGS="${LDFLAGS/,-z,now/}"
 
-  # We need RPATH to point to the "lib32" in our prefix
-  _RPATH="-rpath=/opt/wine-lol/lib32"
-  # Dyamic linker has to be the one in wine-lol-glibc
-  _LINKER="-dynamic-linker=/opt/wine-lol/lib32/ld-linux.so.2"
-  # Export all this via LDFLAGS
-  export LDFLAGS="$LDFLAGS,$_RPATH,$_LINKER"
-
   # Make sure everything builds for 32bit
   export CFLAGS="-m32 $CFLAGS"
 
@@ -180,11 +173,7 @@ build() {
 
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
   cd "$srcdir/$pkgname-32-build"
-
-  # TODO: Remove "--disable-tests" for wine-tkg higher than 5.18. Some patches
-  #       in wine-tkg seem to corrupt some tests in 5.18rc3
   ../$pkgname/configure \
-    --disable-tests \
     --prefix=/opt/wine-lol \
     --with-x \
     --with-gstreamer \
@@ -192,7 +181,6 @@ build() {
     --without-mingw \
     --libdir=/opt/wine-lol/lib32
 
-  make depend LDRPATH_INSTALL="-Wl,$_RPATH,$_LINKER" # Use wine-lib-glibc for -install
   make
 }
 
