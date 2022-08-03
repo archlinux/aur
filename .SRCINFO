@@ -1,7 +1,7 @@
 pkgbase = python-kazoo-git
 	pkgdesc = kazoo implements a higher level API to Apache Zookeeper for Python clients.
 	pkgver = 2.6.0.r60.g9bb8499
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/python-zk/kazoo
 	arch = any
 	license = APACHE
@@ -9,6 +9,7 @@ pkgbase = python-kazoo-git
 	depends = python
 	depends = python-objgraph
 	provides = python-kazoo
+	conflicts = python-kazoo
 	source = kazoo::git+https://github.com/python-zk/kazoo.git
 	sha1sums = SKIP
 

@@ -4,13 +4,14 @@
 _name=kazoo
 pkgname="python-${_name}-git"
 pkgver=2.6.0.r60.g9bb8499
-pkgrel=1
+pkgrel=2
 pkgdesc='kazoo implements a higher level API to Apache Zookeeper for Python clients.'
 arch=('any')
 url="https://github.com/python-zk/kazoo"
 makedepends=('python-setuptools')
 license=('APACHE')
 provides=("python-${_name}")
+conflicts=("python-${_name}")
 depends=('python' 'python-objgraph')
 source=("${_name}::git+${url}.git")
 sha1sums=('SKIP')
