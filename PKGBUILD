@@ -3,8 +3,8 @@
 
 _gemname=timers
 pkgname=ruby-${_gemname}
-pkgver=4.3.2
-pkgrel=2
+pkgver=4.3.3
+pkgrel=1
 pkgdesc='Schedule procs to run after a certain time, or at periodic intervals, using any API that accepts a timeout'
 url='https://github.com/celluloid/timers'
 arch=('any')
@@ -13,8 +13,8 @@ depends=('ruby' 'ruby-hitimes')
 makedepends=('ruby-rdoc')
 options=('!emptydirs')
 source=(https://github.com/celluloid/timers/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('306669da275e26f2902c05c94fd94caf15a37dafa6dc5ec16b3780091dea72ed6c2ff41d05139244ff1191f5630d3ffbab2718e04be67f784643386ca456f450')
-b2sums=('2f04c012f161c3af53103e5c5f05da53f089b2db2b356cb271f3ad318c2b66d78a2275665b27fb718dfeab7e8f76993637153eae193616f84f3da1c3db42680d')
+sha512sums=('4a715e4a786f98ec429a250de53cfa67bed6b5a99b6298c21251e6dcf1315f1185d8c45bea01025832046381ebac462cd35415f7573d58c55c30b47c2567d4bf')
+b2sums=('af64b44116565a8cb6b68349de6a46e8b67d22508e16e204af104ed7a59cc1db1dae0c36917ccde1932c33e53d9d71fc57cb317570cc24aaee82531ce178f37c')
 
 prepare() {
   cd ${_gemname}-${pkgver}
