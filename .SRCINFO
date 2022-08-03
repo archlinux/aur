@@ -1,7 +1,7 @@
 pkgbase = foxtelgo-bin
 	pkgdesc = Unnofficial FoxtelGo desktop application
 	pkgver = 1.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/foxtelgo/application
 	arch = x86_64
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = foxtelgo-bin
 	depends = gtk3
 	depends = libxss
 	conflicts = foxtelgo-git
-	source_x86_64 = https://gitlab.com/foxtelgo/binaries/1.0.5-2/-/raw/main/FoxtelGo-linux-x64.tar.xz
+	source_x86_64 = https://gitlab.com/foxtelgo/binaries/1.0.5-3/-/raw/main/FoxtelGo-linux-x64.tar.xz
 	sha256sums_x86_64 = SKIP
 
 pkgname = foxtelgo-bin
