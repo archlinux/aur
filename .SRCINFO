@@ -9,8 +9,6 @@ pkgbase = perl-file-pid
 	depends = perl-class-accessor
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/C/CW/CWEST/File-Pid-1.01.tar.gz
-	md5sums = d927b40215cbfbff233d9feb53529532
-	sha512sums = 37deaa427b6b3ec2126d53f78eb437fe3b06af4167cdf46455434843c64b780f6d9941a3264d714eb8c1d46ed57dd6113d2ee17abbd1a7299a31e5a1a541999a
+	sha256sums = bafeee8fdc96eb06306a0c58bbdb7209b6de45f850e75fdc6b16db576e05e422
 
 pkgname = perl-file-pid
-

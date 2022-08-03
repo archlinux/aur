@@ -1,5 +1,6 @@
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
 # Generator  : CPANPLUS::Dist::Arch 1.25
+# Maintainer: nyxkn <dev@nyxkn.net>
 
 pkgname='perl-file-pid'
 pkgver='1.01'
@@ -11,9 +12,8 @@ options=('!emptydirs')
 depends=('perl-class-accessor')
 makedepends=()
 url='http://search.cpan.org/dist/File-Pid'
-source=('http://search.cpan.org/CPAN/authors/id/C/CW/CWEST/File-Pid-1.01.tar.gz')
-md5sums=('d927b40215cbfbff233d9feb53529532')
-sha512sums=('37deaa427b6b3ec2126d53f78eb437fe3b06af4167cdf46455434843c64b780f6d9941a3264d714eb8c1d46ed57dd6113d2ee17abbd1a7299a31e5a1a541999a')
+source=("http://search.cpan.org/CPAN/authors/id/C/CW/CWEST/File-Pid-$pkgver.tar.gz")
+sha256sums=('bafeee8fdc96eb06306a0c58bbdb7209b6de45f850e75fdc6b16db576e05e422')
 _distdir="File-Pid-1.01"
 
 build() {
@@ -43,8 +43,9 @@ package() {
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
+prepare() {
+  # apply patch to fix bug #18960 as per https://rt.cpan.org/Public/Bug/Display.html?id=18960
+  sed -i 's/my $pid  = $self->_get_pid_from_file;/my $pid  = $self->_get_pid_from_file or return undef;/' "$srcdir/$_distdir/lib/File/Pid.pm"
+}
+
+sha256sums=('bafeee8fdc96eb06306a0c58bbdb7209b6de45f850e75fdc6b16db576e05e422')
