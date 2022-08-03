@@ -1,0 +1,59 @@
+--- a/pdfcrop	2011-08-08 00:37:46.000000000 +0200
++++ b/pdfcrop	2022-08-03 18:03:42.838776316 +0200
+@@ -14,7 +14,7 @@
+ ##  generates.
+ 
+ 
+-##  Syntax:   pdfcrop input.pdf [papersize] [output.pdf]
++##  Syntax:   @APPEXECNAME@ input.pdf [papersize] [output.pdf]
+ ##  
+ ##  Function: 
+ ##    calculates the page metrics and scale factor of a PDF file, 
+@@ -29,16 +29,16 @@
+ ##    legal   Legal         if you want legal size paper 
+ ##  
+ ##  Details:
+-##    pdfcrop attempts to determine your desired paper size by
++##    @APPEXECNAME@ attempts to determine your desired paper size by
+ ##    reading /etc/papersize. If that file cannot be read, it 
+ ##    assumes that you want letter size pages.
+ ##  
+-##    If an output file name is not given, then pdfcrop assumes
++##    If an output file name is not given, then @APPEXECNAME@ assumes
+ ##    that the input file should be cropped and scaled.
+ ##  
+ ##  Examples:
+-##    pdfcrop input.pdf
+-##    pdfcrop input.pdf A4 output.pdf
++##    @APPEXECNAME@ input.pdf
++##    @APPEXECNAME@ input.pdf A4 output.pdf
+ 
+ use strict ; 
+ use warnings ; 
+@@ -50,7 +50,7 @@
+ 
+ ## create a randomly named directory in /tmp/
+ my $random = sprintf( "%04d" , int( 1000*rand() ) )  ; 
+-my $tmpdir = "/tmp/pdfcrop_$random/" ; 
++my $tmpdir = "/tmp/@APPEXECNAME@_$random/" ; 
+ mkdir( $tmpdir ) ; 
+ 
+ ## if a different output file is desired, then create it
+@@ -159,7 +159,7 @@
+     my $otfile ; 
+     if ( ! $pdffiles[1] ) { 
+ 	$otfile = $infile ;
+-	$otfile =~ s/pdf$/pdfcrop.pdf/i ; 
++	$otfile =~ s/pdf$/@APPEXECNAME@.pdf/i ; 
+     } else {
+ 	$otfile = $pdffiles[1] ;
+     }
+@@ -369,7 +369,7 @@
+ 
+ sub print_usage {
+ 
+-    my $program = "pdfcrop" ;
++    my $program = "@APPEXECNAME@" ;
+ 
+ my $usage = <<"END_OF_USAGE";
+ Syntax:   \L$program\E input.pdf [papersize] [output.pdf]
