@@ -4,7 +4,7 @@ pkgname=lizzie-improve
 _pkgname=lizzie
 pkgver=20220803
 _pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Analysis interface for KataGo/Leela Zero, more features added by yzy"
 arch=('x86_64')
 url="https://github.com/yzyray/lizzieyzy"
@@ -21,7 +21,7 @@ source=("https://github.com/yzyray/lizzieyzy/releases/download/2.5.1/$_zipname.z
         "config.txt")
 sha256sums=('3cda6af3a425022c9055647aa583d9ab8eb1b181a01e741b121fa432f672d8e9'
         '7c003e045833fa24962e3165c8f3a7fb9cb0e24443023a629c2a477f58b3c2d0'
-        '926a9ff12c6fa809a515793e272878a741fe97e6540f5f2e29ae2706ac88b6ac'
+        'cf5d1651023f04294e580243aa7ef05bc9ebedb468631f4035fd3d5ce0f212f0'
         '2d42917fd7a3b905696bcfcb7b0be96260cf88207db0cb4983e3082447fa7336')
 prepare(){
     unzip -o "$_zipname.zip"
