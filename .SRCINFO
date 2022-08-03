@@ -9,6 +9,6 @@ pkgbase = gtklock-userinfo-module
 	depends = accountsservice
 	depends = gtklock=1.3.4
 	source = https://github.com/jovanlanik/gtklock-userinfo-module/archive/refs/tags/v1.3.4.tar.gz
-	sha256sums = 1721649441a7ed15eb3b9d22b793392c644d0ddd50002c51c8e76739dfe45b5e
+	sha256sums = cca270e62be447ba9a97214323ca1b91ee2764aeae462dcad7de5c1be3aef8a1
 
 pkgname = gtklock-userinfo-module

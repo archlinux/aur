@@ -8,7 +8,7 @@ url="https://github.com/jovanlanik/gtklock-userinfo-module"
 license=('GPL3')
 depends=(gtk3 accountsservice gtklock=$pkgver)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1721649441a7ed15eb3b9d22b793392c644d0ddd50002c51c8e76739dfe45b5e')
+sha256sums=('cca270e62be447ba9a97214323ca1b91ee2764aeae462dcad7de5c1be3aef8a1')
 
 build() {
 	cd "$pkgname-$pkgver"
