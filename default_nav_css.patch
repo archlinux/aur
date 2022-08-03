@@ -1,0 +1,21 @@
+description: modify default navigation css
+
+--- old/src/BookManipulation/Book.cpp
++++ new/src/BookManipulation/Book.cpp
+@@ -126,6 +126,16 @@
+     "}\n\n"
+     "ol {\n"
+     "    list-style-type: none;\n"
++    "    padding-left: 1.5rem;\n"
++    "}\n\n"
++    "li > ol {\n"
++    "    margin-bottom: 0.75rem;\n"
++    "}\n\n"
++    "li {\n"
++    "    margin-top: 0.25rem;\n"
++    "}\n\n"
++    "a {\n"
++    "    text-decoration: none;\n"
+     "}\n\n";
+ 
+ 

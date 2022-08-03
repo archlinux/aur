@@ -1,0 +1,68 @@
+description: don't write version and modified tags
+
+--- sigil.old/src/ResourceObjects/OPFResource.cpp
++++ sigil.new/src/ResourceObjects/OPFResource.cpp
+@@ -422,18 +422,11 @@
+             QString name = me.m_atts[QString("name")];
+             if (name == SIGIL_VERSION_META_NAME) {
+                 me.m_atts["content"] = QString(SIGIL_VERSION);
+-                p.m_metadata.replace(i, me);
+-                UpdateText(p);
++                p.m_metadata.removeAt(i);
+                 return;
+             }
+         }
+     }
+-    MetaEntry me;
+-    me.m_name = "meta";
+-    me.m_atts[QString("name")] = QString("Sigil version");
+-    me.m_atts[QString("content")] = QString(SIGIL_VERSION);
+-    p.m_metadata.append(me);
+-    UpdateText(p);
+ }
+ 
+ 
+@@ -1199,19 +1192,11 @@
+                 QString property = me.m_atts.value(QString("property"), QString(""));
+                 if (property == QString("dcterms:modified")) {
+                     me.m_content = datetime;
+-                    p.m_metadata.replace(i, me);
+-                    UpdateText(p);
++                    p.m_metadata.removeAt(i);
+                     return datetime;
+                 }
+             }
+         }
+-        // otherwize create a new entry
+-        MetaEntry me;
+-        me.m_name = QString("meta");
+-        me.m_content = datetime;
+-        me.m_atts["property"]="dcterms:modified";
+-        p.m_metadata.append(me);
+-        UpdateText(p);
+         return datetime;
+     }   
+     // epub 2 version 
+@@ -1228,21 +1213,12 @@
+             QString etype = me.m_atts.value(QString("opf:event"), QString(""));
+             if (etype == QString("modification")) {
+                 me.m_content = date;
+-                p.m_metadata.replace(i, me);
+-                UpdateText(p);
++                p.m_metadata.removeAt(i);
+                 return datetime;
+             }
+             
+         }
+     }
+-    // otherwize create a new entry
+-    MetaEntry me;
+-    me.m_name = QString("dc:date");
+-    me.m_content = date;
+-    me.m_atts["xmlns:opf"]="http://www.idpf.org/2007/opf";
+-    me.m_atts[QString("opf:event")] = QString("modification");
+-    p.m_metadata.append(me);
+-    UpdateText(p);
+     return datetime;
+ }
+ 
