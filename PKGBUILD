@@ -1,4 +1,5 @@
 # Maintainer: mekb https://github.com/mekb-turtle
+# Maintainer: Enzo Barrett <enzobarrett@gmail.com>
 pkgname=npiano-git
 pkgver=V0.9.r9.g49b743d
 pkgrel=1
