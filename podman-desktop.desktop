@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Podman Desktop
+Comment=Manage Podman and other container engines from a single UI and tray.
+Exec=podman-desktop
+Icon=podman-desktop
+Terminal=false
+Categories=Utility;
