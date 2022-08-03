@@ -1,0 +1,12 @@
+pkgbase = bass-git
+	pkgdesc = Table-based, multi-architecture, cross-platform macro assembler
+	pkgver = r79.c3962ec
+	pkgrel = 1
+	url = https://github.com/ARM9/bass
+	arch = x86_64
+	license = custom:none
+	makedepends = git
+	source = git+https://github.com/ARM9/bass.git
+	md5sums = SKIP
+
+pkgname = bass-git
