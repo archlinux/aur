@@ -1,15 +1,15 @@
 pkgbase = betterbird-zh-bin
 	pkgdesc = CHINESE // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will.
-	pkgver = 91.11.0
+	pkgver = 91.12.0
 	pkgrel = 1
 	url = https://www.betterbird.eu/index.html
 	arch = x86_64
 	license = MPL2
 	depends = dbus-glib
-	provides = betterbird=91.11.0
-	source = https://www.betterbird.eu/downloads/LinuxArchive/betterbird-91.11.0-bb34.zh-CN.linux-x86_64.tar.bz2
+	provides = betterbird=91.12.0
+	source = https://www.betterbird.eu/downloads/LinuxArchive/betterbird-91.12.0-bb35.zh-CN.linux-x86_64.tar.bz2
 	source = betterbird.desktop
-	sha256sums = fafdfe73d1a938ef3c66266d0a2afd6efb55a69af6e3b81aefc843087efb46f0
+	sha256sums = 4e9ec9a37eb2ee69426d41920bd41e7a702d23a34391dbec2ed628582e75b2dc
 	sha256sums = c99879de5ec8e8f98c2436bf414c7c167762c06df0846b42bb51195d6c8a3031
 
 pkgname = betterbird-zh-bin
