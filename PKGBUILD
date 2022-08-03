@@ -3,8 +3,8 @@
 
 pkgname=inform
 pkgver=6.40.r1
-_ifrel="6.40-r1"
-pkgrel=2
+_ifrel="6.41-r1"
+pkgrel=1
 pkgdesc="The Inform 6 compiler, standard library, and PunyInform library"
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://gitlab.com/DavidGriffith/inform6unix"
