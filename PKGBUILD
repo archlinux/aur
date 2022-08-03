@@ -1,6 +1,7 @@
 # Maintainer: randomnobody <nobody "at" 420blaze "dot" it>
 # Contributor: Sebastian <sebastianmontoya209@protonmail.com>
 # Contributor: Finlay Maroney <finman292004@protonmail.com>
+# Contributor: thatmadhacker <finman292004@gmail.com>
 # Contributor: Marc Boocha <marcboocha@gmail.com>
 
 _target=x86_64-elf
