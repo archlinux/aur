@@ -1,6 +1,6 @@
 pkgbase = sfwbar
 	pkgdesc = Sway Floating Window taskBar
-	pkgver = 1.0_beta6
+	pkgver = 1.0_beta8
 	pkgrel = 1
 	url = https://github.com/LBCrion/sfwbar
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = sfwbar
         depends = json-c
         depends = gtk-layer-shell
         depends = wayland-protocols
-	source = https://github.com/LBCrion/sfwbar/archive/v1.0_beta6.tar.gz
-	sha256sums = 4967c4565cf231e7701c74dba0aa5ae14df443acf3c551f961f9b6f12b94abde
+	source = https://github.com/LBCrion/sfwbar/archive/v1.0_beta8.tar.gz
+	sha256sums = cc3d3b48f804a90df9de29782021f2bac7de30a466a26af6582912ab52e624de
 
 pkgname = sfwbar
