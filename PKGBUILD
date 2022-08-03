@@ -33,7 +33,7 @@ sha256sums=('40094504531bedee0e5a8b2f91d7f1a0312a1176ff416fe4fb09a33aa5c1d562'
             'e6ea2c7471bcf5bc83e8fd831c047ba61b98eab58ca7c055475714dcf6066539'
             'ec24750a99f5cda8d8a8dc94743943218e1b2088c2b2c7dc1644ee78d954fe7e'
             'a6941680b5858ca3e0c85d9bf5824455a0c95524b61e42352462f2abbb750495'
-            'ecb8c206ff44dbc3d06d26398551fb5d52bff1dd98eb069dd0b8673807025aed'
+            'c8d9f7394763997bb3917c55dd288d431d7054c7f1edec55540a4c02600dd7d3'
             '55293e05c5d6c877397eb4c52123bb02e8bc92aeaf663ba70e1cfab318ce727c')
 prepare() {
 # https://wiki.archlinux.org/index.php/Go_package_guidelines
