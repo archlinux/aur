@@ -34,6 +34,7 @@ fiptool --verbose create $1/boot/fip.bin \
        --nt-fw-config $1/boot/dtbs/${dtb}.dtb
 fiptool info $1/boot/fip.bin
 fipdev="/dev/disk/by-partlabel/bpir64-${fipdev}-fip"
+[ ! -L $fipdev ] && exit 0
 echo Writing to: $fipdev
 dd of=$fipdev if=/dev/zero 2>/dev/null
 dd of=$fipdev if=$1/boot/fip.bin
