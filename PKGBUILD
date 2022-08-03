@@ -1,12 +1,12 @@
 # Maintainer: Steffen Hansen <steffengrundsoe@gmail.com>
 pkgname=quickemu
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Quickly create and run optimised Windows, macOS and Linux desktop virtual machines."
 arch=(any)
 url="https://github.com/quickemu-project/quickemu"
 license=('MIT')
-depends=('qemu' 'coreutils' 'grep' 'jq' 'procps' 'python3' 'cdrtools' 'usbutils' 'util-linux' 'sed' 'spice-gtk' 'swtpm' 'wget' 'xorg-xrandr' 'zsync' 'edk2-ovmf')
+depends=('qemu' 'coreutils' 'grep' 'jq' 'procps' 'python3' 'cdrtools' 'usbutils' 'util-linux' 'sed' 'spice-gtk' 'swtpm' 'wget' 'xorg-xrandr' 'zsync' 'edk2-ovmf' 'xdg-user-dirs')
 optdepends=('quickgui: graphical user interface' 'aria2: faster downloads')
 provides=("$pkgname")
 conflicts=("$pkgname")
