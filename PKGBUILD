@@ -1,7 +1,7 @@
 # Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
 pkgname=python-libclang
 _pkgname=${pkgname:7}
-pkgver=14.0.1
+pkgver=14.0.6
 pkgrel=1
 pkgdesc="Clang Python Bindings"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=('Apache')
 makedepends=(python-build python-installer python-wheel)
 depends=(python)
 source=(https://files.pythonhosted.org/packages/py2.py3/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver-py2.py3-none-manylinux1_x86_64.whl)
-sha256sums=('02bacd219959601c627872f2c7c7090ce57cf6bd497618388e41813c7ee75a3a')
+sha256sums=('e429853939423f276a25140b0b702442d7da9a09e001c05e48df888336947614')
 
 package() {
     python -m installer --destdir="$pkgdir" *.whl
