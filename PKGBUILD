@@ -2,8 +2,10 @@
 
 pkgbase=linux-amd-raven
 _srcname=linux
-gitver=v5.4.208
-pkgver=5.4.v.208
+gitver=v5.19
+patchver=20220315
+patchname=more-uarches-for-kernel-5.17+.patch
+pkgver=5.19.v.0
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -19,17 +21,17 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
         # linux package install directives for pacman
         'linux.install'
 	# patch from graysky (https://github.com/graysky2/kernel_compiler_patch/) hosted on gentoo
-	'5010_enable-cpu-optimizations-universal.patch'
+	'more-uarches-for-kernel-5.17+.patch'
 )
 sha256sums=('SKIP'
             #config.x86_64
-            'cac444da985011b902cf02b9346b49c22256225fc602c319704318accdee3e2f'
+            '8c6e77d40f7d6315f7521b39fdf0a9cd1d5913024a7fe465d056610bd00fe2d8'
             #.preset file
             'fd220b9f47a86162247b042f06311848678f9acb64b92f716572972f3aeb3d18'
             #linux install file
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
-            #gentoopatch file
-            '09ea06911535871042973be08d65b923508eb38859a50a10ed68d88ff482395d'
+            #grayskypatch file
+            'dea86a521603414a8c7bf9cf1f41090d5d6f8035ce31407449e25964befb1e50'
 )
 
 _kernelname=${pkgbase#linux}
