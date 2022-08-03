@@ -1,8 +1,8 @@
-pkgbase = naxalnet-git
-	pkgdesc = Helper to create a batman-adv mesh network (development version)
-	pkgver = 0.3.0.r0.gfeb362b
+pkgbase = pybatmesh-git
+	pkgdesc = Python script to create a batman-adv mesh network (development version)
+	pkgver = 0.5.3.r0.g0c6bdea
 	pkgrel = 1
-	url = https://git.disroot.org/pranav/naxalnet
+	url = https://git.disroot.org/pranav/pybatmesh
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -12,8 +12,12 @@ pkgbase = naxalnet-git
 	depends = systemd>=248
 	depends = python-systemd
 	optdepends = batctl: for debugging
-	provides = naxalnet
-	source = git+https://git.disroot.org/pranav/naxalnet.git
+	provides = pybatmesh
+	conflicts = naxalnet
+	conflicts = naxalnet-git
+	conflicts = pybatmesh
+	replaces = naxalnet-git
+	source = git+https://git.disroot.org/pranav/pybatmesh.git
 	sha256sums = SKIP
 
-pkgname = naxalnet-git
+pkgname = pybatmesh-git

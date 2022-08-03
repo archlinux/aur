@@ -1,22 +1,25 @@
 # Maintainer: Pranav Jerry <libreinator at disroot dot org>
-_basename=naxalnet
+_basename=pybatmesh
 pkgname="$_basename-git"
-pkgver=0.3.0.r11.g33156e6
+pkgver=0.5.3.r0.g0c6bdea
 pkgrel=1
-pkgdesc="Helper to create a batman-adv mesh network (development version)"
+pkgdesc="Python script to create a batman-adv mesh network (development version)"
 arch=("any")
-url="https://git.disroot.org/pranav/${_basename}"
+url="https://git.disroot.org/pranav/$_basename"
 license=("GPL3")
 depends=("iwd" "python-dasbus" "systemd>=248" "python-systemd")
 optdepends=("batctl: for debugging")
 makedepends=('git' 'python-setuptools')
-provides=(naxalnet)
+replaces=(naxalnet-git)
+provides=($_basename)
+conflicts=(naxalnet naxalnet-git $_basename)
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/$_basename"
 	git describe --long --tags|sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+	#./setup.py --version
 }
 
 build() {
