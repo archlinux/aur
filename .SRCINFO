@@ -7,6 +7,7 @@ pkgbase = hiprompt-gtk-py
 	license = GPL3
 	makedepends = meson
 	depends = python
+	depends = python-gobject
 	depends = gtk3
 	depends = gtk-layer-shell
 	source = hiprompt-gtk-py-r18.f744993.tar.gz::https://git.sr.ht/~sircmpwn/hiprompt-gtk-py/archive/f744993.tar.gz
