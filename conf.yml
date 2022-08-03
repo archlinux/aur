@@ -3,7 +3,7 @@
 # editor: vim
 
 # Should 'cheat' always colorize output?
-colorize: true
+colorize: false
 
 # Which 'chroma' colorscheme should be applied to the output?
 # Options are available here:
@@ -14,8 +14,7 @@ colorize: true
 # One of: "terminal", "terminal256", "terminal16m"
 formatter: terminal
 
-# Through which pager should output be piped? (Unset this key for no pager.)
-pager: more
+# Through which pager should output be piped?
 # pager: less -FRX # <- recommended where available
 
 # The paths at which cheatsheets are available. Tags associated with a cheatpath
