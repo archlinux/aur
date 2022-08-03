@@ -1,6 +1,6 @@
 # Maintainer: Taylor Allen
 pkgname=shortsync
-pkgver=1.r6.bf2795a
+pkgver=1.r7.f4ea3d5
 pkgrel=1
 epoch=
 pkgdesc="This application makes it easy to keep track of alias, file, and folder shortcuts across multiple applications and shells."
@@ -14,7 +14,7 @@ checkdepends=()
 optdepends=('entr')
 provides=('shortsync')
 conflicts=()
-replaces=()
+replaces=('shortsync')
 backup=()
 options=()
 install=
@@ -36,9 +36,10 @@ build() {
 
 package() {
 	cd shortsync
-	mkdir -p $HOME/.config/shortsync/shortcut-configs
-	cp -n config.yaml $HOME/.config/shortsync
-	cp -nr shortcut-configs $HOME/.config/shortsync/shortcut-configs
+	mkdir -p $HOME/.config/shortsync/
+	chmod 755 config/*
+	cp -nru config/* -t /$HOME/.config/shortsync
+	# install -CDm755 config "$pkgdir$HOME/.config/shortsync/config"
 	install -Dm755 bin/$pkgname "$pkgdir/usr/local/bin/$pkgname"
 	install -Dm644 $pkgname.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

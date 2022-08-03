@@ -1,6 +1,6 @@
 pkgbase = shortsync
 	pkgdesc = This application makes it easy to keep track of alias, file, and folder shortcuts across multiple applications and shells.
-	pkgver = 1.r6.bf2795a
+	pkgver = 1.r7.f4ea3d5
 	pkgrel = 1
 	url = https://github.com/taylo2allen/shortsync.git
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = shortsync
 	makedepends = yaml-cpp
 	optdepends = entr
 	provides = shortsync
+	replaces = shortsync
 	source = git+https://github.com/taylo2allen/shortsync.git
 	md5sums = SKIP
 
