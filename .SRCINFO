@@ -51,6 +51,3 @@ pkgname = linux-mainline-um5302ta
 pkgname = linux-mainline-um5302ta-headers
 	pkgdesc = Headers and scripts for building modules for the Linux kernel
 	depends = pahole
-
-pkgname = linux-mainline-um5302ta-docs
-	pkgdesc = Documentation for the Linux kernel
