@@ -1,7 +1,7 @@
 pkgbase = inform
 	pkgdesc = The Inform 6 compiler, standard library, and PunyInform library
-	pkgver = 6.40.r1
-	pkgrel = 1
+	pkgver = 6.41.r1
+	pkgrel = 2
 	url = https://gitlab.com/DavidGriffith/inform6unix
 	arch = aarch64
 	arch = arm
