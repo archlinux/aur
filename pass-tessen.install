@@ -1,0 +1,21 @@
+post_install() {
+  printf "%s" "\
+pass-tessen needs at least one
+
+- fuzzy data selection backend (fzf or skim or fzy)
+- clipboard backend (wl-clipboard or xlcip)
+
+to work. Please install the backends you prefer to use after installing pass-tessen.
+"
+}
+
+post_upgrade() {
+  printf "%s" "\
+pass-tessen v2.0.1 has some major changes since the v1.5.3 release. Please read
+the output of
+
+pass tessen -h
+
+for more details
+"
+}

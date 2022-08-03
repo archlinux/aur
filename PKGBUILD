@@ -1,20 +1,25 @@
-# Maintainer: Ayush Agarwal <ayush at fastmail dot in>
+# Maintainer: Ayush Agarwal <ayushnix at fastmail dot com>
 
 pkgname=pass-tessen
-pkgver=1.5.3
+pkgver=2.0.1
 pkgrel=1
-pkgdesc="A fuzzy data selection and copying interface for pass"
-arch=(x86_64)
-url="https://github.com/ayushnix/pass-tessen"
-license=('GPL')
-depends=('pass'
-         'fzf')
-optdepends=('wl-clipboard: to copy text in wayland'
-            'wl-clipboard-rs: to copy text in wayland'
-            'xclip: to copy text in xorg')
+pkgdesc="fuzzy data selection and copy-paste from password store"
+arch=(any)
+url="https://git.sr.ht/~ayushnix/pass-tessen"
+license=('GPL2')
+depends=('pass')
+optdepends=(
+            'fzf: supported fuzzy selection backend'
+            'skim: supported fuzzy selection backend'
+            'fzy: supported fuzzy selection backend'
+            'wl-clipboard: to copy text in wayland'
+            'xclip: to copy text in xorg'
+            'xdg-utils: to open URLs in default web browser'
+            'pass-otp: to generate and copy OTPs')
 conflicts=('pass-tessen-git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ayushnix/pass-tessen/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('67a7b17d7a3099c0660f54a638238b8250d5fdef319ba10f5a147fc7cd39f600')
+source=("$url/refs/download/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('83ae103ba8c21018b104f748716240724a0a56d7ede4773fef31c6e77c20d0d7')
+install=pass-tessen.install
 
 package() {
     cd "$pkgname-$pkgver"
