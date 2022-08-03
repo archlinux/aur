@@ -3,12 +3,12 @@
 
 pkgname=pure-stldict
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="This package provides a light-weight, no frills interface to the C++ dictionary containers map and unordered_map."
 arch=("i686" "x86_64")
 license=('LGPL3')
 url="http://purelang.bitbucket.org/"
-depends=('pure' 'libstdc++5')
+depends=('pure')
 makedepends=()
 groups=(pure-complete pure-util)
 source=("https://bitbucket.org/purelang/pure-lang/downloads/$pkgname-$pkgver.tar.gz")
