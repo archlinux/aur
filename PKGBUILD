@@ -5,7 +5,7 @@
 # Contributor: Angel "angvp" Velasquez <angvp[at]archlinux.com.ve> 
 
 pkgname="python-numpy-openblas"
-pkgver=1.22.3
+pkgver=1.23.1
 pkgrel=1
 pkgdesc="Scientific tools for Python - built with openblas"
 arch=("i686" "x86_64")
@@ -19,12 +19,7 @@ makedepends=('cblas' 'lapack' 'python' 'python-setuptools' 'gcc-fortran' 'python
 checkdepends=('python-pytest')
 options=('staticlibs')
 source=("python-numpy-$pkgver.tar.gz::https://github.com/numpy/numpy/releases/download/v$pkgver/numpy-$pkgver.tar.gz")
-sha256sums=('a906c0b4301a3d62ccf66d058fe779a65c1c34f6719ef2058f96e1856f48bca5')
-
-prepare() {
-  # https://github.com/numpy/numpy/issues/17390
-  sed -i '/error/a \    ignore:Module already imported so cannot be rewritten' numpy-$pkgver/pytest.ini
-}
+sha256sums=('d748ef349bfef2e1194b59da37ed5a29c19ea8d7e6342019921ba2ba4fd8b624')
 
 build() {
   export Atlas=None
@@ -49,7 +44,6 @@ package() {
   python setup.py config_fc --fcompiler=gnu95 install \
     --prefix=/usr --root="${pkgdir}" --optimize=1
 
-  install -m755 -d "${pkgdir}/usr/share/licenses/python-numpy"
-  install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/python-numpy/"
+  install -D -m644 LICENSE.txt -t "$pkgdir"/usr/share/licenses/python-numpy/
 }
 
