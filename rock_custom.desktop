@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Rock
+TryExec=rock_so
+Exec=rock_so
+Terminal=false
+Type=Application
+Icon=rock_so
+X-AppImage-Version=1.2.1
+Comment=Stop slacking, Start rocking.
+GenericName=Message & Manage Tasks
+MimeType=x-scheme-handler/rock;
+Categories=Network;

@@ -1,0 +1,19 @@
+pkgbase = rock.so
+	pkgdesc = All In One Messaging - Manage Tasks, Files & Notes
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://rock.so/
+	arch = x86_64
+	license = Unlicensed
+	depends = fuse2
+	provides = rock.so
+	conflicts = rock.so
+	options = !strip
+	source = https://desktop.rock.so/Rock-1.2.1.AppImage
+	source = rock_custom.desktop
+	source = getSha512.sh
+	sha512sums = 3f2d7893d8659174956fcd3d06960e6256e0ef394a800c32db0f71c84a778d12ed2b6da263e65a2b53374d5347415e42d094924958048ca6427248b4ffd142a3
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = rock.so
