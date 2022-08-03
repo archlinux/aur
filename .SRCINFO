@@ -70,7 +70,7 @@ pkgbase = qemu-system-loongarch64-git
 	depends = edk2-ovmf-loongarch64
 	provides = qemu-system-loongarch64
 	conflicts = qemu-system-loongarch64
-	source = git+https://github.com/loongson/qemu.git#branch=tcg-dev
+	source = git+https://github.com/qemu/qemu
 	sha512sums = SKIP
 
 pkgname = qemu-system-loongarch64-git

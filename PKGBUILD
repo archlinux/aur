@@ -73,7 +73,7 @@ makedepends=(
   zlib
   zstd 
 )
-source=('git+https://github.com/loongson/qemu.git#branch=tcg-dev')
+source=('git+https://github.com/qemu/qemu')
 sha512sums=('SKIP')
 
 pkgver() {
