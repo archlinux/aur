@@ -3,22 +3,22 @@
 
 pkgname=freetube
 _pkgname=FreeTube
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc='An open source desktop YouTube player built with privacy in mind.'
-arch=('x86_64' 'aarch64' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('AGPL3')
-depends=( 'gtk3' 'nss' 'electron' )
+depends=( 'gtk3' 'nss' 'electron16' )
 makedepends=('npm' 'yarn')
 url=https://freetubeapp.io
 source=(https://github.com/FreeTubeApp/FreeTube/archive/v$pkgver-beta.tar.gz
         package-only-necessary.diff
         freetube.desktop
         freetube.sh)
-sha256sums=(d1d60c0cea854986b2ab5a20d47af82d021ea79082c273c53d983b1797e2604f
-            ccb774571df6fcf7b1cd62cdf45c0345179a682fe8856c0011f846fe9bf50c8a
+sha256sums=(4cc438bcc6dc6fd4c895e209708d89c7210de2e05cd24989973f38fa7a37b96e
+            babebfdd34de7b67a59e9f3dd08746d2b70c519ed2414fb56efec24f82393605
             928f0d7f07afdecf35fcf48ba109ab7e28f51bb233327263faa2c0499d669581
-            9a8b5f1a5fabd1c6cbd9300163dd079d7663c8a7571402678ee1d875ef9c030d)
+            802c0ce0c894f7b5ddb7aba35e4447ddc5d10d1e2232dcec820a4b5a5cafef71)
 
 prepare() {
   patch "$srcdir/$_pkgname-$pkgver-beta/_scripts/build.js" < package-only-necessary.diff
