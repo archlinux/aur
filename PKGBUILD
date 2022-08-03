@@ -7,7 +7,7 @@
 
 pkgname=firefox-appmenu
 _pkgname=firefox
-pkgver=102.0.1
+pkgver=103.0.1
 pkgrel=1
 pkgdesc="Firefox from extra with appmenu patch"
 arch=(x86_64)
@@ -28,16 +28,14 @@ provides=("firefox=$pkgver")
 conflicts=("firefox")
 options=(!emptydirs !makeflags !strip !lto !debug)
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
-        cbindgen-0.24.0.diff
         zstandard-0.18.0.diff
         $_pkgname.desktop
         identity-icons-brand.svg
         fix-wayland-build.patch
         unity-menubar.patch
         fix_csd_window_buttons.patch)
-sha256sums=('7bba6ffd6e8e42d5c38aa2a453f5fa30dfc9ef150f2175aa0625edb68fddae70'
+sha256sums=('b2db4df5fae0801e6406686876e8115d9529fb93a01566f22548908ca6c2cf82'
             'SKIP'
-            '4628d136c3beada292e83cd8e89502cac4aa3836851b34259a665582a7713978'
             'a6857ad2f2e2091c6c4fdcde21a59fbeb0138914c0e126df64b50a5af5ff63be'
             '34514a657d6907a159594c51e674eeb81297c431ec26a736417c2fdb995c2c0c'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
@@ -64,9 +62,6 @@ prepare() {
 
   # Unbreak build with python-zstandard 0.18.0
   patch -Np1 -i ../zstandard-0.18.0.diff
-
-  # Unbreak build with cbindgen 0.24.0
-  patch -Np1 -i ../cbindgen-0.24.0.diff
 
   #https://aur.archlinux.org/packages/firefox-appmenu nicman32 comment 2021-08-16
   patch -Np1 -i ../fix-wayland-build.patch
