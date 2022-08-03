@@ -2,8 +2,8 @@
 
 pkgname=lizzie-improve
 _pkgname=lizzie
-pkgver=20220513
-_pkgver=2.5.0
+pkgver=20220803
+_pkgver=2.5.1
 pkgrel=1
 pkgdesc="Analysis interface for KataGo/Leela Zero, more features added by yzy"
 arch=('x86_64')
@@ -13,25 +13,26 @@ depends=('bash' 'java-runtime' 'unzip')
 makedepends=('git')
 provides=('lizzie')
 conflicts=('lizzie')
-source=("https://github.com/yzyray/lizzieyzy/releases/download/2.5.0/2022-05-13-other-systems.zip"
+_filename=2022-08-03-other-systems
+_zipname=2022-08-03-other-systems.without.engine
+source=("https://github.com/yzyray/lizzieyzy/releases/download/2.5.1/$_zipname.zip"
         "lizzie.sh"
         "lizzie.desktop"
         "config.txt")
-sha256sums=('392f2820ea3ce6028418bd1d264e76817129704db80dcc4949842caf12a08ad8'
-        'SKIP'
-        'SKIP'
-        'SKIP')
-_zipname=2022-05-13-other-systems
+sha256sums=('3cda6af3a425022c9055647aa583d9ab8eb1b181a01e741b121fa432f672d8e9'
+        '7c003e045833fa24962e3165c8f3a7fb9cb0e24443023a629c2a477f58b3c2d0'
+        '926a9ff12c6fa809a515793e272878a741fe97e6540f5f2e29ae2706ac88b6ac'
+        '2d42917fd7a3b905696bcfcb7b0be96260cf88207db0cb4983e3082447fa7336')
 prepare(){
     unzip -o "$_zipname.zip"
 }
 package() {
 
-    install -Dm644 "$_zipname"/Lizzieyzy/lizzie-yzy"$_pkgver"-shaded.jar "$pkgdir"/usr/share/java/"$_pkgname"/"$_pkgname".jar
+    install -Dm644 "$_filename"/Lizzieyzy/lizzie-yzy"$_pkgver"-shaded.jar "$pkgdir"/usr/share/java/"$_pkgname"/"$_pkgname".jar
         install -Dm644 config.txt "$pkgdir"/usr/share/"$_pkgname"/config.txt
         install -Dm755 "$_pkgname".sh "$pkgdir"/usr/bin/"$_pkgname"
         install -Dm644 "$_pkgname".desktop "$pkgdir"/usr/share/applications/"$_pkgname".desktop
-        for _file in $_zipname/Lizzieyzy/sound/*.wav
+        for _file in $_filename/Lizzieyzy/sound/*.wav
         do
             install -Dm644 "${_file}" "$pkgdir"/usr/share/"$_pkgname"/sound/"$(basename ${_file})"
         done

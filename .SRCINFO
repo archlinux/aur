@@ -1,6 +1,6 @@
 pkgbase = lizzie-improve
 	pkgdesc = Analysis interface for KataGo/Leela Zero, more features added by yzy
-	pkgver = 20220513
+	pkgver = 20220803
 	pkgrel = 1
 	url = https://github.com/yzyray/lizzieyzy
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = lizzie-improve
 	depends = unzip
 	provides = lizzie
 	conflicts = lizzie
-	source = https://github.com/yzyray/lizzieyzy/releases/download/2.5.0/2022-05-13-other-systems.zip
+	source = https://github.com/yzyray/lizzieyzy/releases/download/2.5.1/2022-08-03-other-systems.without.engine.zip
 	source = lizzie.sh
 	source = lizzie.desktop
 	source = config.txt
-	sha256sums = 392f2820ea3ce6028418bd1d264e76817129704db80dcc4949842caf12a08ad8
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 3cda6af3a425022c9055647aa583d9ab8eb1b181a01e741b121fa432f672d8e9
+	sha256sums = 7c003e045833fa24962e3165c8f3a7fb9cb0e24443023a629c2a477f58b3c2d0
+	sha256sums = 926a9ff12c6fa809a515793e272878a741fe97e6540f5f2e29ae2706ac88b6ac
+	sha256sums = 2d42917fd7a3b905696bcfcb7b0be96260cf88207db0cb4983e3082447fa7336
 
 pkgname = lizzie-improve
