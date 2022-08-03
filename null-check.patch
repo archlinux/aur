@@ -1,0 +1,14 @@
+diff --git a/cpp/src/command_classes/AssociationCommandConfiguration.cpp b/cpp/src/command_classes/AssociationCommandConfiguration.cpp
+index 57644125..744757da 100644
+--- a/cpp/src/command_classes/AssociationCommandConfiguration.cpp
++++ b/cpp/src/command_classes/AssociationCommandConfiguration.cpp
+@@ -182,8 +182,7 @@ namespace OpenZWave
+ 
+ 					if (Node* node = GetNodeUnsafe())
+ 					{
+-						Group* group = node->GetGroup(groupIdx);
+-						if ( NULL == group)
++            if (Group* group = node->GetGroup(groupIdx))
+ 						{
+ 							if (firstReports)
+ 							{

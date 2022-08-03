@@ -1,8 +1,10 @@
-# Maintainer: Melvin Vermeeren <mail@mel.vin>
+# Maintainer: Reza Jahanbakhshi <reza.jahanbakhshi at gmail dot com
+# Co-Maintainer: Melvin Vermeeren <mail@mel.vin>
 # Co-Maintainer: IanDury <iandury@xs4all.nl>
+
 pkgname=openzwave-git
-_gitname="open-zwave"
-pkgver=r4171.25076055
+basename=${pkgname%-git}
+pkgver=7528.4887754f.97f47476b8675683144a4278a4c93271
 pkgrel=1
 pkgdesc="Opensource Z-Wave control"
 url="http://www.openzwave.com"
@@ -13,19 +15,43 @@ makedepends=('doxygen' 'git')
 conflicts=('openzwave' 'openzwave-svn')
 provides=('openzwave')
 install="$pkgname.install"
-source=("git://github.com/OpenZWave/open-zwave.git")
-sha256sums=('SKIP')
+source=(
+  "${basename}::git+https://github.com/OpenZWave/open-zwave.git"
+  null-check.patch
+)
+sha256sums=('SKIP'
+            'a7d4f12eb5ff3cb29f12a896bf7e0da5c36ea4c5c0d5a77f9bff481b48fc7774')
 
 pkgver() {
-  cd "$_gitname"
+    cd "${basename}"
 
-  printf 'r%s.%s' \
-    "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short HEAD)"
+    local _patchver
+    local _patchfile
+    for _patchfile in "${source[@]}"; do
+        _patchfile="${_patchfile%%::*}"
+        _patchfile="${_patchfile##*/}"
+        [[ $_patchfile = *.patch ]] || continue
+        _patchver="${_patchver}$(md5sum ${srcdir}/${_patchfile} | cut -c1-32)"
+    done
+    _patchver="$(echo -n $_patchver | md5sum | cut -c1-32)"
+
+    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD).${_patchver}
+}
+
+prepare() {
+  local _patchfile
+  for _patchfile in "${source[@]}"; do
+    _patchfile="${_patchfile%%::*}"
+    _patchfile="${_patchfile##*/}"
+    [[ $_patchfile = *.patch ]] || continue
+    echo "Applying patch $_patchfile..."
+    patch --directory=${basename} --forward --strip=1 --input="${srcdir}/${_patchfile}"
+  done
+  find ${srcdir}/${basename} -name Makefile | xargs sed -e 's/-Wno-format//' -i
 }
 
 build() {
-  cd "$_gitname"
+  cd "${basename}"
 
   if [[ -f cpp/src/vers.cpp ]]
   then
@@ -37,7 +63,7 @@ build() {
 }
 
 package() {
-  cd "$_gitname"
+  cd "${basename}"
 
   make \
     DESTDIR="$pkgdir" \
