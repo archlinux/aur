@@ -13,7 +13,7 @@ pkgbase = qemu-loongarch64-static-git
 	makedepends = pcre-static
 	conflicts = qemu-loongarch64-static
 	provides = qemu-loongarch64-static
-	source = git+https://github.com/loongson/qemu.git#branch=tcg-dev
+	source = git+https://github.com/qemu/qemu
 	sha512sums = SKIP
 
 pkgname = qemu-loongarch64-static-git
