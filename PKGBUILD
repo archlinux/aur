@@ -2,7 +2,7 @@
 
 pkgname=asar-git
 pkgver=v1.81.r171.g634d6ba
-pkgrel=1
+pkgrel=2
 pkgdesc='SNES assembler for applying patches to existing ROMs or creating new ROMs from scratch'
 arch=('x86_64')
 url='https://github.com/RPGHacker/asar'
@@ -23,6 +23,5 @@ build() {
 }
 
 package() {
-    cd "$srcdir/asar"
     install -Dm755 "$srcdir/asar/asar/bin/asar" "$pkgdir/usr/bin/asar"
 }
