@@ -9,7 +9,7 @@ pkgname=(
     "${_pkgbase}-gx701-git"
     "${_pkgbase}-g533-git"
 )
-pkgver=r184.2b5c27d
+pkgver=r189.2cd3d92
 pkgrel=1
 pkgdesc="Linux newest feature-rich configurable driver for Asus numpad"
 arch=('any')
