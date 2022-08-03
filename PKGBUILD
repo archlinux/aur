@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=timeline
-pkgver=1.8
+pkgver=1.9
 pkgrel=1
 pkgdesc="A plain-text based distributed social network build on top of git configuration manager"
 arch=('any')
@@ -10,10 +10,10 @@ license=('GPL3')
 depends=('bash' 'git')
 makedepends=('pandoc')
 conflicts=('timeline-git')
-source=("https://github.com/ajdiaz/${pkgname}/archive/${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ajdiaz/${pkgname}/archive/${pkgver}.tar.gz"
         "${pkgname}.service")
-sha256sums=('e4a11c24d5934521952f21580af570fbf86d81c94529b952c808b9796b54f4b2'
-            'ef063a64b2e38988cf7b7395161351e537e50719f4d77fa3d180e25b911371fd')
+b2sums=('f492c9dc1da6f07ad8e5b6894bc4a5abbfbb35ee4b479f084f001d6b8bc45c42d2bcced5f0415d239e2b51506f192f5d9df7f6412af458a706d89f255dec7cb0'
+        '1ea9905ee31a8f722111e7aad4197326f5cbeffa7953c1678432172af1fbd72c8363ea00a94d2c1f3b332a3e85f6eeadd551a05b62ac00c3d42562b333e475f9')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -22,7 +22,7 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}"
-  make clean && make
+  make clean && make tl && make doc
   cd man
   gzip -fk *.[0-9]
 }
