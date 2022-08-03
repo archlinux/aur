@@ -5,7 +5,7 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 pkgname=obs-studio-rc
 _pkgver=28.0.0-beta1
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("i686" "x86_64" "aarch64")
@@ -178,7 +178,7 @@ package() {
   cd obs-studio/build
 
   make install DESTDIR="$pkgdir"
-  cmake --install . --component obs_libraries --prefix="$pkgdir"
+  cmake --install . --component obs_libraries --prefix="$pkgdir/usr"
 
   if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
     install -D -m644 "$srcdir/$pkgname.hook" -t "${pkgdir}"/usr/share/libalpm/hooks/
