@@ -1,8 +1,8 @@
 Author: Daniel van Vugt <daniel.van.vugt@canonical.com>
-Source: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1441
+Source: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2487
 Editor: Sung Mingi <FiestaLake@protonmail.com>
-Commit: 20d804f2931b3166299d7baf4d38933cdc129638
-Last Updated: 04/26/22 (Mutter 42.0+r74+g6c8e8fbba-1)
+Commit: a4dbd8882508f0344e1d80df1940c5a084ce57d4
+Last Updated: 08/03/22 (Mutter 42.3+r15+g91ac40448-1)
 ---
 
 Use triple buffering if and when the previous frame is running late.
@@ -14,6 +14,8 @@ Although frequency scaling is not required to get a performance gain here
 because even a fixed frequency GPU will benefit from not over-sleeping anymore.
 If the previous frame is not running late then we stick to double buffering so
 there's no latency penalty when the system is able to maintain full frame rate.
+
+Derived from !1441 for GNOME 42 maintenance.
 
 ---
 diff --git a/clutter/clutter/clutter-frame-clock.c b/clutter/clutter/clutter-frame-clock.c
@@ -774,7 +776,7 @@ index 96c54baf026d304465aa2f343df4b04d03fb9104..f80f31a93dd8bcba3937ad79021bb944
      return;
  
 diff --git a/src/backends/native/meta-kms-crtc.c b/src/backends/native/meta-kms-crtc.c
-index 8c2f8d7839f530ecfee9c02921a5b95d7396d64e..f5e7d28d91c2e8bc87e9a7cd12efd139f7dbbddd 100644
+index e9bd9308b20f00e6e45dcb435688b50756ebdbe3..dead599d573adb1cc6a4f3e39483338cc49b76cf 100644
 --- a/src/backends/native/meta-kms-crtc.c
 +++ b/src/backends/native/meta-kms-crtc.c
 @@ -32,6 +32,12 @@ typedef struct _MetaKmsCrtcPropTable
@@ -799,7 +801,7 @@ index 8c2f8d7839f530ecfee9c02921a5b95d7396d64e..f5e7d28d91c2e8bc87e9a7cd12efd139
  };
  
  G_DEFINE_TYPE (MetaKmsCrtc, meta_kms_crtc, G_TYPE_OBJECT)
-@@ -460,20 +468,91 @@ meta_kms_crtc_new (MetaKmsImplDevice  *impl_device,
+@@ -454,20 +462,91 @@ meta_kms_crtc_new (MetaKmsImplDevice  *impl_device,
    return crtc;
  }
  
@@ -891,7 +893,7 @@ index 8c2f8d7839f530ecfee9c02921a5b95d7396d64e..f5e7d28d91c2e8bc87e9a7cd12efd139
  }
  
  static void
-@@ -481,5 +560,6 @@ meta_kms_crtc_class_init (MetaKmsCrtcClass *klass)
+@@ -475,5 +554,6 @@ meta_kms_crtc_class_init (MetaKmsCrtcClass *klass)
  {
    GObjectClass *object_class = G_OBJECT_CLASS (klass);
  
@@ -958,7 +960,7 @@ index 73dd8e69717ccac77cda6e360c25163187bd8ec7..787d05acda62a93a15f3de467de8d911
                          &error))
      goto err;
 diff --git a/src/backends/native/meta-kms-impl-device-simple.c b/src/backends/native/meta-kms-impl-device-simple.c
-index fa6bca3486730ce7b2bd01fb4d436962aed75d96..6f9669a8bc3e65c204badef24ca834f47e319468 100644
+index ca4ffe245444f159da4b3a9c8c462fc700c1913e..679dd8600ab98b023cb367281b054a2f5476a8ad 100644
 --- a/src/backends/native/meta-kms-impl-device-simple.c
 +++ b/src/backends/native/meta-kms-impl-device-simple.c
 @@ -470,6 +470,8 @@ process_mode_set (MetaKmsImplDevice  *impl_device,
@@ -1063,7 +1065,7 @@ index fa6bca3486730ce7b2bd01fb4d436962aed75d96..6f9669a8bc3e65c204badef24ca834f4
                                      refresh_rate,
                                      page_flip_data,
                                      g_steal_pointer (&custom_page_flip));
-@@ -1279,7 +1289,7 @@ process_plane_assignment (MetaKmsImplDevice       *impl_device,
+@@ -1286,7 +1296,7 @@ process_plane_assignment (MetaKmsImplDevice       *impl_device,
      {
      case META_KMS_PLANE_TYPE_PRIMARY:
        /* Handled as part of the mode-set and page flip. */
@@ -1072,7 +1074,7 @@ index fa6bca3486730ce7b2bd01fb4d436962aed75d96..6f9669a8bc3e65c204badef24ca834f4
      case META_KMS_PLANE_TYPE_CURSOR:
        if (!process_cursor_plane_assignment (impl_device, update,
                                              plane_assignment,
-@@ -1293,7 +1303,7 @@ process_plane_assignment (MetaKmsImplDevice       *impl_device,
+@@ -1300,7 +1310,7 @@ process_plane_assignment (MetaKmsImplDevice       *impl_device,
          }
        else
          {
@@ -1081,7 +1083,7 @@ index fa6bca3486730ce7b2bd01fb4d436962aed75d96..6f9669a8bc3e65c204badef24ca834f4
          }
      case META_KMS_PLANE_TYPE_OVERLAY:
        error = g_error_new_literal (G_IO_ERROR, G_IO_ERROR_FAILED,
-@@ -1306,6 +1316,12 @@ process_plane_assignment (MetaKmsImplDevice       *impl_device,
+@@ -1313,6 +1323,12 @@ process_plane_assignment (MetaKmsImplDevice       *impl_device,
      }
  
    g_assert_not_reached ();
@@ -1150,7 +1152,7 @@ index a613cbc5d6799180d2de130c037da9cee248e2c4..1d964ff21f30a85840a84bc0514f4a7a
                                               uint64_t                rotation);
  
 diff --git a/src/backends/native/meta-kms-update.c b/src/backends/native/meta-kms-update.c
-index 53fc92eb86c8cbb9ea253c55bc29a5e6cc31eeab..dfa293dcde8a7b61bfbd7c81f40c4edef516cc49 100644
+index 53fc92eb86c8cbb9ea253c55bc29a5e6cc31eeab..0d457c49e6df34d32d79d0b5339f638957d850c4 100644
 --- a/src/backends/native/meta-kms-update.c
 +++ b/src/backends/native/meta-kms-update.c
 @@ -25,12 +25,14 @@
@@ -1221,7 +1223,7 @@ index 53fc92eb86c8cbb9ea253c55bc29a5e6cc31eeab..dfa293dcde8a7b61bfbd7c81f40c4ede
  
    for (l = update->connector_updates; l; l = l->next)
      {
-@@ -306,6 +317,20 @@ ensure_connector_update (MetaKmsUpdate    *update,
+@@ -306,6 +317,23 @@ ensure_connector_update (MetaKmsUpdate    *update,
  
    update->connector_updates = g_list_prepend (update->connector_updates,
                                                connector_update);
@@ -1236,13 +1238,16 @@ index 53fc92eb86c8cbb9ea253c55bc29a5e6cc31eeab..dfa293dcde8a7b61bfbd7c81f40c4ede
 +          MetaKmsCrtc *kms_crtc = l->data;
 +
 +          if (meta_kms_crtc_get_id (kms_crtc) == state->current_crtc_id)
-+            g_hash_table_add (update->crtcs, kms_crtc);
++            {
++              g_hash_table_add (update->crtcs, kms_crtc);
++              break;
++            }
 +        }
 +    }
  
    return connector_update;
  }
-@@ -402,6 +427,8 @@ meta_kms_update_set_crtc_gamma (MetaKmsUpdate  *update,
+@@ -402,6 +430,8 @@ meta_kms_update_set_crtc_gamma (MetaKmsUpdate  *update,
    gamma = meta_kms_crtc_gamma_new (crtc, size, red, green, blue);
  
    update->crtc_gammas = g_list_prepend (update->crtc_gammas, gamma);
@@ -1251,7 +1256,7 @@ index 53fc92eb86c8cbb9ea253c55bc29a5e6cc31eeab..dfa293dcde8a7b61bfbd7c81f40c4ede
  }
  
  void
-@@ -665,6 +692,20 @@ meta_kms_update_get_device (MetaKmsUpdate *update)
+@@ -665,6 +695,20 @@ meta_kms_update_get_device (MetaKmsUpdate *update)
    return update->device;
  }
  
@@ -1272,7 +1277,7 @@ index 53fc92eb86c8cbb9ea253c55bc29a5e6cc31eeab..dfa293dcde8a7b61bfbd7c81f40c4ede
  MetaKmsCustomPageFlip *
  meta_kms_update_take_custom_page_flip_func (MetaKmsUpdate *update)
  {
-@@ -693,12 +734,15 @@ meta_kms_update_new (MetaKmsDevice *device)
+@@ -693,12 +737,15 @@ meta_kms_update_new (MetaKmsDevice *device)
    update->device = device;
    update->sequence_number = sequence_number++;
  
@@ -2488,10 +2493,10 @@ index 3a85ace267016a33dec52bdda1dcefe3c52b6c7d..676c4c4459aec6f8bd43c2fc537fb628
                                                              MetaDrmBuffer *fb);
  
 diff --git a/src/backends/native/meta-renderer-native.c b/src/backends/native/meta-renderer-native.c
-index d538cc25a4cf0d6800439409ca9de10d110825f5..6ad3dba3bdf7e6377a1f625cbd20cc0684facc79 100644
+index f5f22c7b1e7be57bf8bd1e4abe13249dc731cc63..d896114624a2618002635a95de46ed53110aa8f9 100644
 --- a/src/backends/native/meta-renderer-native.c
 +++ b/src/backends/native/meta-renderer-native.c
-@@ -661,12 +661,18 @@ static gboolean
+@@ -677,12 +677,18 @@ static gboolean
  dummy_power_save_page_flip_cb (gpointer user_data)
  {
    MetaRendererNative *renderer_native = user_data;
@@ -2512,7 +2517,7 @@ index d538cc25a4cf0d6800439409ca9de10d110825f5..6ad3dba3bdf7e6377a1f625cbd20cc06
    renderer_native->power_save_page_flip_source_id = 0;
  
    return G_SOURCE_REMOVE;
-@@ -678,6 +684,9 @@ meta_renderer_native_queue_power_save_page_flip (MetaRendererNative *renderer_na
+@@ -694,6 +700,9 @@ meta_renderer_native_queue_power_save_page_flip (MetaRendererNative *renderer_na
  {
    const unsigned int timeout_ms = 100;
  
@@ -2522,7 +2527,7 @@ index d538cc25a4cf0d6800439409ca9de10d110825f5..6ad3dba3bdf7e6377a1f625cbd20cc06
    if (!renderer_native->power_save_page_flip_source_id)
      {
        renderer_native->power_save_page_flip_source_id =
-@@ -1386,6 +1395,26 @@ meta_renderer_native_create_view (MetaRenderer       *renderer,
+@@ -1402,6 +1411,26 @@ meta_renderer_native_create_view (MetaRenderer       *renderer,
    return view;
  }
  
@@ -2549,7 +2554,7 @@ index d538cc25a4cf0d6800439409ca9de10d110825f5..6ad3dba3bdf7e6377a1f625cbd20cc06
  static void
  keep_current_onscreens_alive (MetaRenderer *renderer)
  {
-@@ -1414,6 +1443,7 @@ meta_renderer_native_rebuild_views (MetaRenderer *renderer)
+@@ -1430,6 +1459,7 @@ meta_renderer_native_rebuild_views (MetaRenderer *renderer)
    MetaRendererClass *parent_renderer_class =
      META_RENDERER_CLASS (meta_renderer_native_parent_class);
  
