@@ -1,0 +1,18 @@
+pkgbase = chkb-git
+	pkgdesc = Turns a regular keyboard into a quasi fully programmable keyboard by hooking up into Linux' uinput. Similar to kmonad.
+	pkgver = 0.2.2+1.r143.20210301.6681d1d
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/MetalBlueberry/chkb
+	arch = i686
+	arch = x86_64
+	license = custom:MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = chkb=0.2.2+1.r143.20210301.6681d1d
+	conflicts = chkb
+	source = chkb::git+https://github.com/MetalBlueberry/chkb.git
+	sha256sums = SKIP
+
+pkgname = chkb-git
