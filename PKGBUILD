@@ -3,9 +3,9 @@
 DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=obs-studio-rc
-_pkgver=27.2.4
+_pkgver=28.0.0-beta1
 pkgver=${_pkgver//-/_}
-pkgrel=4
+pkgrel=1
 epoch=2
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("i686" "x86_64" "aarch64")
@@ -14,14 +14,14 @@ license=("GPL3")
 _mbedtlsver=2.28
 _pythonver=3.10
 depends=(
-  "jack" "gtk-update-icon-cache" "x264" "rnnoise" "pciutils"
+  "jack" "gtk-update-icon-cache" "x264" "rnnoise" "pciutils" "qt6-svg"
 
   # "libxinerama" "qt5-svg" provided by "vlc-luajit"
   # "libxkbcommon-x11" provided by "qt5-base"
   # "jansson" "curl" provided by "ftl-sdk"
 
   # Needed to use Qt on Wayland platform
-  "qt5-wayland"
+  "qt6-wayland"
 
   # Both needed to load linux-capture, so those two are no longer optional
   "libxcomposite" "pipewire"
@@ -54,6 +54,9 @@ fi
 makedepends=(
   "cmake" "git" "libfdk-aac" "swig" "luajit" "sndio" "lsb-release"
 
+  # Needed by obs-websocket
+  'asio' 'nlohmann-json' 'websocketpp'
+
   # AUR Packages
   "libajantv2"
 )
@@ -82,15 +85,17 @@ if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
 else
   optdepends+=("python>=$_pythonver: Python scripting")
 fi
-provides=("obs-studio=$pkgver" "obs-vst")
-conflicts=("obs-studio" "obs-vst")
+provides=("obs-studio=$pkgver" "obs-vst" "obs-websocket")
+conflicts=("obs-studio" "obs-vst" "obs-websocket")
 options=('debug')
 source=(
   "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$_pkgver"
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
-  "obs-vst::git+https://github.com/obsproject/obs-vst.git#commit=cca219fa3613dbc65de676ab7ba29e76865fa6f8"
+  "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
+  "qr::git+https://github.com/nayuki/QR-Code-generator.git"
 )
 sha256sums=(
+  "SKIP"
   "SKIP"
   "SKIP"
   "SKIP"
@@ -112,47 +117,59 @@ if [[ $CARCH == 'x86_64' ]] || [[ $CARCH == 'i686' ]]; then
 fi
 
 if [[ $CARCH == 'x86_64' ]]; then
-  makedepends+=("cef-minimal-obs=95.0.0_MediaHandler.2462+g95e19b8+chromium_95.0.4638.69_3")
+  _cefbranch=5060
+  source+=("https://cdn-fastly.obsproject.com/downloads/cef_binary_${_cefbranch}_linux64.tar.bz2")
+  sha256sums+=("1fe9c09bb43e8d2be2c07b792e69fb51250782e68f2c8d1d30da2559cfb9ae0e")
   provides+=("obs-browser")
   conflicts+=("obs-linuxbrowser" "obs-browser")
   _browser=ON
+  _arch=64
+  _parch=x86_64
 else
   _browser=OFF
 fi
 
 prepare() {
   cd "$srcdir/obs-studio"
-  git config submodule.plugins/obs-vst.url $srcdir/obs-vst
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
+  git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
   git submodule update
 
-  ## linux-capture: Don't initialize format info if init_obs_pipewire fails (https://github.com/obsproject/obs-studio/commit/9903d73f36809c20795d5a918f2898fa6b8b88f8)
-  sed -i '1438 a return NULL; }' plugins/linux-capture/pipewire.c
-  sed -i '1437 a {' plugins/linux-capture/pipewire.c
-
-  ## linux-pipewire: Version check call to pw_deinit (https://github.com/obsproject/obs-studio/commit/bf660b1d8dc1905527bb5919b1034c7b43c55dac)
-  sed -i '74,77d' plugins/linux-capture/linux-capture.c
-
-  ## libobs,obs-outputs: Fix librtmp1 dependency interference on some linuxes (https://github.com/obsproject/obs-studio/pull/6377)
-  sed -i 's/#define EXPORT/#define EXPORT __attribute__((visibility("default")))/g' libobs/util/c99defs.h
-
-  ## obs-ffmpeg: Several fixes allowing support of FFmpeg 5 (https://github.com/obsproject/obs-studio/pull/6423)
-  git cherry-pick -n e66542075d5d2cb51a14a0bdf3458ac10757de64
-  git cherry-pick -n 5b6cc73c2475abe6a85647604b9ce937dec09000
-  git cherry-pick -n 12d1f1c3358f7231244db0b971a333445e346f80
+  cd plugins/obs-websocket
+  sed -i 's|EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/deps/json/CMakeLists.txt||' CMakeLists.txt
+  sed -i 's|AND EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/deps/websocketpp/CMakeLists.txt||' CMakeLists.txt
+  sed -i 's|AND EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/deps/asio/asio/include/asio.hpp||' CMakeLists.txt
+  sed -i "s|AND EXISTS|EXISTS|" CMakeLists.txt
+  sed -i "s|add_subdirectory(deps/json)|find_package(nlohmann_json 3.10.0 REQUIRED)|" CMakeLists.txt
+  git config submodule.deps/qr.url $srcdir/qr
+  git submodule update deps/qr
 }
 
 build() {
-  cd obs-studio
+  cd "$srcdir"/cef_binary_${_cefbranch}_linux${_arch}
+
+  #The arm64 CEF set the wrong arch for the project
+  cmake \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DPROJECT_ARCH=$_parch .
+
+  make libcef_dll_wrapper
+
+  cd "$srcdir"/obs-studio
   mkdir -p build; cd build
 
   cmake \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DBUILD_BROWSER=$_browser \
-    -DCEF_ROOT_DIR=/opt/cef-obs \
-    -DOBS_VERSION_OVERRIDE="$_pkgver-rc-$pkgrel" ..
+    -DENABLE_RTMPS=ON \
+    -DQT_VERSION=6 \
+    -DENABLE_LIBFDK=ON \
+    -DENABLE_JACK=ON \
+    -DENABLE_SNDIO=ON \
+    -DENABLE_BROWSER=$_browser \
+    -DCEF_ROOT_DIR="$srcdir/cef_binary_${_cefbranch}_linux${_arch}" \
+    -DOBS_VERSION_OVERRIDE="$_pkgver-$pkgrel" ..
 
   make
 }
@@ -161,6 +178,7 @@ package() {
   cd obs-studio/build
 
   make install DESTDIR="$pkgdir"
+  cmake --install . --component obs_libraries --prefix="$pkgdir"
 
   if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
     install -D -m644 "$srcdir/$pkgname.hook" -t "${pkgdir}"/usr/share/libalpm/hooks/

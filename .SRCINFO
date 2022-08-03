@@ -1,7 +1,7 @@
 pkgbase = obs-studio-rc
 	pkgdesc = Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration
-	pkgver = 27.2.4
-	pkgrel = 4
+	pkgver = 28.0.0_beta1
+	pkgrel = 1
 	epoch = 2
 	url = https://github.com/obsproject/obs-studio
 	arch = i686
@@ -15,15 +15,18 @@ pkgbase = obs-studio-rc
 	makedepends = luajit
 	makedepends = sndio
 	makedepends = lsb-release
+	makedepends = asio
+	makedepends = nlohmann-json
+	makedepends = websocketpp
 	makedepends = libajantv2
 	makedepends = python
-	makedepends = cef-minimal-obs=95.0.0_MediaHandler.2462+g95e19b8+chromium_95.0.4638.69_3
 	depends = jack
 	depends = gtk-update-icon-cache
 	depends = x264
 	depends = rnnoise
 	depends = pciutils
-	depends = qt5-wayland
+	depends = qt6-svg
+	depends = qt6-wayland
 	depends = libxcomposite
 	depends = pipewire
 	depends = xdg-desktop-portal
@@ -46,19 +49,25 @@ pkgbase = obs-studio-rc
 	optdepends = libajantv2: AJA NTV 2 support
 	optdepends = python: Python scripting
 	optdepends = decklink: Blackmagic Design DeckLink support
-	provides = obs-studio=27.2.4
+	provides = obs-studio=28.0.0_beta1
 	provides = obs-vst
+	provides = obs-websocket
 	provides = obs-browser
 	conflicts = obs-studio
 	conflicts = obs-vst
+	conflicts = obs-websocket
 	conflicts = obs-linuxbrowser
 	conflicts = obs-browser
 	options = debug
-	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=27.2.4
+	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=28.0.0-beta1
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
-	source = obs-vst::git+https://github.com/obsproject/obs-vst.git#commit=cca219fa3613dbc65de676ab7ba29e76865fa6f8
+	source = obs-websocket::git+https://github.com/obsproject/obs-websocket.git
+	source = qr::git+https://github.com/nayuki/QR-Code-generator.git
+	source = https://cdn-fastly.obsproject.com/downloads/cef_binary_5060_linux64.tar.bz2
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 1fe9c09bb43e8d2be2c07b792e69fb51250782e68f2c8d1d30da2559cfb9ae0e
 
 pkgname = obs-studio-rc
