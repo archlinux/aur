@@ -1,6 +1,6 @@
 pkgbase = murex-git
 	pkgdesc = Bash-like shell designed for greater commandline productivity and safer shell scripts
-	pkgver = 2f1b9.b93531a3
+	pkgver = 8f135.9ad3d0db
 	pkgrel = 1
 	url = https://github.com/lmorg/murex
 	arch = i686
