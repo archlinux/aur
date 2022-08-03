@@ -11,14 +11,6 @@
 # there's also the purr-data-git package which builds straight from the latest
 # upstream source, also available from the AUR.
 
-# NOTE: This is BETA software which is still under development, so expect some
-# bugs and ongoing changes in some parts of the program and its library. If
-# you want a stable version of Pd-L2Ork ready for production use, you may want
-# to use the pd-l2ork or pd-l2ork-git package instead. That said, purr-data
-# has been coming along nicely and should be ready for daily use already. If
-# necessary, you can also install both purr-data and pd-l2ork on the same
-# system.
-
 # This package can be installed alongside pd-l2ork, as well as vanilla pd or
 # pd-extended. To avoid conflicts with any of these, the main contents of the
 # package can be found under /opt/purr-data by default (you can change this
@@ -31,7 +23,7 @@
 # /usr/lib/purr-data, so that 3rd party externals know where to find these.
 
 pkgname=purr-data
-pkgver=2.12.0.r4346.aeb24d89
+pkgver=2.17.0.r4864.8345b481
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://agraef.github.io/purr-data/"
@@ -40,7 +32,7 @@ license=('BSD')
 depends=('bluez-libs' 'desktop-file-utils' 'dssi' 'fftw'
   'flite' 'fluidsynth' 'freeglut' 'ftgl' 'glew'
   'gsl' 'gsm' 'hicolor-icon-theme' 'imagemagick' 'jack' 'ladspa' 'lame'
-  'libdc1394' 'libdv' 'libgl' 'libiec61883' 'libjpeg' 'libquicktime'
+  'libdc1394' 'libdv' 'libgl' 'libiec61883' 'libjpeg'
   'libxxf86vm' 'libtiff' 'libraw1394'
   'libv4l' 'libvorbis' 'portaudio'
   'smpeg' 'speex' 'stk' 'zlib' 'lua'
@@ -49,25 +41,21 @@ makedepends=('autoconf' 'automake' 'libtool' 'git' 'rsync' 'python2')
 conflicts=('purr-data')
 install=purr-data.install
 options=('!makeflags' '!strip')
-# This is jwilkes' upstream repo:
+# jwilkes' upstream repo is available at:
 # "$pkgname::git+https://git.purrdata.net/jwilkes/purr-data.git"
-# But we rather use a special "release" branch in our own fork instead, which
-# is used solely for packaging purposes. This branch gets updated whenever we
-# have a new (and tested) revision to be pushed out (as well as official
-# releases once they start coming out). This is easier to maintain, doesn't
-# depend on upstream tagging releases and candidates, and also allows us to
-# deal with situations where upstream lags behind on already submitted merge
-# requests with important bugfixes and additions.
+# But we use the "release" branch in our own fork instead, which is used
+# solely for packaging purposes.
 source=("$pkgname::git+https://bitbucket.org/agraef/purr-data.git#branch=release")
-md5sums=('SKIP')
 # nw.js sdk binaries
 nwjsname=nwjs-sdk
-nwjsver=0.24.4
+nwjsver=0.28.1
 source_common="http://dl.nwjs.io/v$nwjsver/$nwjsname-v$nwjsver-linux"
 source_i686=("$source_common-ia32.tar.gz")
 source_x86_64=("$source_common-x64.tar.gz")
-md5sums_i686=('a7afcd35d2891e7b7c78db5ca7a625a3')
-md5sums_x86_64=('82f20fe9081201db81652eb066c29f9b')
+
+sha256sums=('SKIP')
+sha256sums_i686=('3957c21f2fd7902bb940e6d02c33a30afdaddf76cf1972ac3828524859cb3304')
+sha256sums_x86_64=('016cff36d5a79eb2163d5b399c00456b898613c3de4839c56325a2dcc0822c19')
 
 if [ "$CARCH" = "i686" ]; then
   _arch="ia32"
