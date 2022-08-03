@@ -1,6 +1,6 @@
 # Maintainer: Jovan Lanik <jox969@gmail.com>
 pkgname=gtklock-example-module
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="Example module for gtklock"
 arch=('x86_64')
