@@ -1,6 +1,6 @@
 pkgbase = godot-mono-bin
 	pkgdesc = Godot is an advanced, feature packed, multi-platform 2D and 3D game engine. It provides a huge set of common tools, so you can just focus on making your game without reinventing the wheel.
-	pkgver = 3.4.4
+	pkgver = 3.4.5
 	pkgrel = 1
 	url = https://www.godotengine.org
 	arch = i686
@@ -16,9 +16,9 @@ pkgbase = godot-mono-bin
 	source = icons.tar.gz
 	md5sums = c8ba9f7656b2c2db9a3ec385b3848bf5
 	md5sums = 281c83d55c6a4d39fb9710e6f143bc5a
-	source_i686 = godot-mono-bin-3.4.4-i686.zip::https://downloads.tuxfamily.org/godotengine/3.4.4/mono/Godot_v3.4.4-stable_mono_x11_32.zip
+	source_i686 = godot-mono-bin-3.4.5-i686.zip::https://downloads.tuxfamily.org/godotengine/3.4.5/mono/Godot_v3.4.5-stable_mono_x11_32.zip
 	md5sums_i686 = 088bc7a613715c0fedf384f8f8a284db
-	source_x86_64 = godot-mono-bin-3.4.4-x86_64.zip::https://downloads.tuxfamily.org/godotengine/3.4.4/mono/Godot_v3.4.4-stable_mono_x11_64.zip
+	source_x86_64 = godot-mono-bin-3.4.5-x86_64.zip::https://downloads.tuxfamily.org/godotengine/3.4.5/mono/Godot_v3.4.5-stable_mono_x11_64.zip
 	md5sums_x86_64 = 07b06f3852161f4b3aa757cab8771e2a
 
 pkgname = godot-mono-bin
