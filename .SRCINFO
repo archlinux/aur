@@ -9,5 +9,6 @@ pkgbase = epick
 	makedepends = rust
 	provides = epick
 	source = epick-0.7.0.tar.gz::https://github.com/vv9k/epick/archive/refs/tags/0.7.0.tar.gz
+	sha256sums = 4ffd47d8be40479a3a2fb44b00d15e095bb66e390e352320de4b9f682be95123
 
 pkgname = epick

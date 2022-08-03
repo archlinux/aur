@@ -11,7 +11,7 @@ depends=()
 makedepends=('cargo' 'rust')
 provides=("$pkgname")
 conflicts=()
-sha256sums=('d01ab6974c9400adab452770e923821646c69c5493d0d2033e718fb06f0170e2')
+sha256sums=('4ffd47d8be40479a3a2fb44b00d15e095bb66e390e352320de4b9f682be95123')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 
 prepare() {
