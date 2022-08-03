@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-shell-extension-material-you-theme-git
-pkgver=r31.a3de984
+pkgver=r50.328cd4e
 pkgrel=1
 pkgdesc="Applies generated libadwaita theme from wallpaper using Material You"
 arch=('any')
@@ -22,20 +22,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/material-you-theme"
-
-  pushd "${_uuid}"
-  gnome-extensions pack \
-    --extra-source=blend/ \
-    --extra-source=hct/ \
-    --extra-source=palettes/ \
-    --extra-source=quantize/ \
-    --extra-source=scheme/ \
-    --extra-source=score/ \
-    --extra-source=utils/ \
-    --extra-source=base_presets.js \
-    --extra-source=color_mappings.js \
-    --force
-  popd
+  make build
 }
 
 package() {
@@ -43,6 +30,6 @@ package() {
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
   bsdtar xvf "${_uuid}/${_uuid}.shell-extension.zip" -C "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/"
 
-  install -Dm644 "${_uuid}/schemas/org.gnome.shell.extensions.material-you-theme.gschema.xml" -t "$pkgdir/usr/share/glib-2.0/schemas/"
-  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas/"
+#  install -Dm644 "${_uuid}/schemas/org.gnome.shell.extensions.material-you-theme.gschema.xml" -t "$pkgdir/usr/share/glib-2.0/schemas/"
+#  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas/"
 }
