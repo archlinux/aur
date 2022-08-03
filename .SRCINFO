@@ -6,7 +6,7 @@ pkgbase = gtklock-example-module
 	arch = x86_64
 	license = MIT
 	depends = gtk3
-	depends = gtklock
+	depends = gtklock=1.3.3
 	source = https://github.com/jovanlanik/gtklock-example-module/archive/refs/tags/v1.3.3.tar.gz
 	sha256sums = 4b17a0e336ac99b5618ac989c15c13d42d1d0969fd75a976156aca77515532ad
 
