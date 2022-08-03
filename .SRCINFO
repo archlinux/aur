@@ -1,6 +1,6 @@
 pkgbase = nvfand-git
 	pkgdesc = a daemon that sets the fan speed of your nvidia GPU(s) based on a custom curve.
-	pkgver = r43.ce9a6b3
+	pkgver = r44.9183dd6
 	pkgrel = 1
 	url = https://gitlab.com/chrooti/nvfand
 	arch = any

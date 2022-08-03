@@ -4,7 +4,7 @@
 
 _pkgbase=nvfand
 pkgname=nvfand-git
-pkgver=r43.ce9a6b3
+pkgver=r44.9183dd6
 pkgrel=1
 pkgdesc='a daemon that sets the fan speed of your nvidia GPU(s) based on a custom curve.'
 arch=('any')
