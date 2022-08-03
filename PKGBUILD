@@ -2,10 +2,10 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-mainline-um5302ta
-pkgver=5.19.rc8
-pkgrel=3
+pkgver=5.19
+pkgrel=1
 pkgdesc='Linux'
-_srctag=v${pkgver%.*}-${pkgver##*.}
+_srctag=v5.19
 url="https://git.kernel.org/torvalds/h/$_srctag"
 arch=(x86_64)
 license=(GPL2)

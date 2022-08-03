@@ -1,8 +1,8 @@
 pkgbase = linux-mainline-um5302ta
 	pkgdesc = Linux
-	pkgver = 5.19.rc8
-	pkgrel = 3
-	url = https://git.kernel.org/torvalds/h/v5.19-rc8
+	pkgver = 5.19
+	pkgrel = 1
+	url = https://git.kernel.org/torvalds/h/v5.19
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -20,7 +20,7 @@ pkgbase = linux-mainline-um5302ta
 	makedepends = texlive-latexextra
 	makedepends = git
 	options = !strip
-	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v5.19-rc8
+	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v5.19
 	source = config
 	source = v6-ACPI-skip-IRQ-override-on-AMD-Zen-platforms.patch
 	source = v0-ALSA-hda-realtek-Add-quirk-for-ASUS-UM5302TA.patch
