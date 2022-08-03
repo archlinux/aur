@@ -3,20 +3,20 @@
 # -*- mode: sh -*-
 
 pkgname='mycorrhiza'
-pkgver=1.10.0
-pkgrel=0
+pkgver=1.11.0
+pkgrel=1
 pkgdesc='Filesystem and git-based wiki engine written in Go using mycomarkup'
 arch=('x86_64' 'armv7h')
-url="https://github.com/bouncepaw/$pkgname"
+url="https://codeberg.org/bouncepaw/$pkgname"
 license=('AGPL3')
 depends=('git')
 makedepends=('go')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 provides=('mycorrhiza')
 conflicts=('mycorrhiza')
 
 build() {
-  cd "$pkgname-$pkgver" || exit 1
+  cd "$pkgname" || exit 1
 
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CFLAGS="$CFLAGS"
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver" || exit 1
+  cd "$pkgname" || exit 1
 
   install -Dm0755 "mycorrhiza"        "$pkgdir/usr/bin/mycorrhiza"
   install -Dm0644 "README.md"         "$pkgdir/usr/share/doc/$pkgname/README.md"
@@ -43,13 +43,13 @@ package() {
 }
 
 sha256sums=(
-  'f263fc45ab1c17face335def7df44f478ccd8db3562c548e9e4a8487e33f18c9'
+  '139f40b22f6535fc10ac229fe18c1b140917901a8582d14999f1585ea057fcb8'
 )
 sha512sums=(
-  '763f1f3d6cfbacafa8ea5d26c36e6dad0a7dcf82efdbf7ba2e4773740504ea9949f58422a1ecdae1ca95708ada91a5790b1c5d7eb49415027ec1e7be9e633bbd'
+  'ce4f326de3c8b2b75d6fbc742886057cebfe97ad79d8903a6fa061720db666c39e19ea4c0f0180b1ddff63703111190ec7e9b97e25f7c12575d197972763e5fb'
 )
 b2sums=(
-  'f039aabf8711e5872ec9c372dc98a1a77fec2e8b2027a686ac2e506bc6a2439e82ca737b1e00a2e8ee40e8f4ec798aeb55386cdd72289546eca97e3e3b1b5cb1'
+  'a372a543be2c7c744c338352f1ca1a6df60a478da70c16dd8b5394cee701b16f5737b7789bc602a468a6a346f74a62252678690910431c0f915ebdebcf75d498'
 )
 
 # eof
