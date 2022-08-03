@@ -1,0 +1,26 @@
+--- Makefile-orig	2022-08-03 15:40:46.109985000 +1000
++++ Makefile	2022-08-03 15:41:41.438289698 +1000
+@@ -1,5 +1,5 @@
+ # Build mode (dev or prod)
+-BUILD_MODE=dev
++BUILD_MODE=prod
+ 
+ GPRBUILD_FLAGS = -p -j0
+ PREFIX                 ?= /usr
+@@ -18,8 +18,9 @@
+ 
+ 
+ all:
+-	gprbuild $(GPRBUILD_FLAGS) gnat/vss_text.gpr -XVSS_BUILD_MODE=$(BUILD_MODE) -cargs $(ADAFLAGS)
+-	gprbuild $(GPRBUILD_FLAGS) gnat/vss_json.gpr -XVSS_BUILD_MODE=$(BUILD_MODE) -cargs $(ADAFLAGS)
++	gprbuild $(GPRBUILD_FLAGS) gnat/vss_text.gpr   -XVSS_BUILD_MODE=$(BUILD_MODE) -cargs $(ADAFLAGS)
++	gprbuild $(GPRBUILD_FLAGS) gnat/vss_json.gpr   -XVSS_BUILD_MODE=$(BUILD_MODE) -cargs $(ADAFLAGS)
++	gprbuild $(GPRBUILD_FLAGS) gnat/vss_regexp.gpr -XVSS_BUILD_MODE=$(BUILD_MODE) -cargs $(ADAFLAGS)
+ 
+ generate:
+ 	gprbuild $(GPRBUILD_FLAGS) gnat/tools/gen_ucd.gpr
+@@ -105,3 +106,4 @@
+ 	gprinstall $(GPRINSTALL_FLAGS)/gnat -p -P gnat/vss_gnat.gpr
+ 	gprinstall $(GPRINSTALL_FLAGS)/text -p -P gnat/vss_text.gpr
+ 	gprinstall $(GPRINSTALL_FLAGS)/json -p -P gnat/vss_json.gpr
++	gprinstall $(GPRINSTALL_FLAGS)/json -p -P gnat/vss_regexp.gpr
