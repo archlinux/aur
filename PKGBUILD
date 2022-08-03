@@ -59,6 +59,7 @@ package_python-celerite() {
 
 package_python-celerite-doc() {
     pkgdesc="Documentation for Python celerite"
+    arch=('any')
     cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
 
     install -D -m644 ../../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
