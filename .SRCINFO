@@ -1,6 +1,6 @@
 pkgbase = disk-benchmark
 	pkgdesc = Tool to benchmark disks, devices, filesystems or even files, like CrystalDiskMark but for the command line
-	pkgver = 1.0.0
+	pkgver = r19.a82f4e7
 	pkgrel = 1
 	url = https://github.com/rigon/disk-benchmark
 	arch = i686
@@ -8,9 +8,8 @@ pkgbase = disk-benchmark
 	arch = arm
 	arch = armv6h
 	arch = armv7h
-	license = MIT
+	license = GPL3
 	makedepends = git
-	makedepends = gcc
 	source = git+https://github.com/rigon/disk-benchmark.git
 	sha256sums = SKIP
 
