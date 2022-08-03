@@ -8,7 +8,7 @@ url="https://github.com/jovanlanik/gtklock-example-module"
 license=('MIT')
 depends=(gtk3 gtklock=$pkgver)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4b17a0e336ac99b5618ac989c15c13d42d1d0969fd75a976156aca77515532ad')
+sha256sums=('1721649441a7ed15eb3b9d22b793392c644d0ddd50002c51c8e76739dfe45b5e')
 
 build() {
 	cd "$pkgname-$pkgver"
