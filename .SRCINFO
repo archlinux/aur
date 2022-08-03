@@ -4,15 +4,20 @@ pkgbase = gtkcord4-bin
 	pkgrel = 1
 	url = https://github.com/diamondburned/gtkcord4
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	depends = gtk4
 	depends = gobject-introspection
 	provides = gtkcord4
 	conflicts = gtkcord4
 	conflicts = gtkcord4-git
-	source = https://github.com/diamondburned/gtkcord4/releases/download/v0.0.3-2/gtkcord4-linux-x86_64.tar.gz
-	source = gtkcord4.desktop::https://aur.archlinux.org/cgit/aur.git/plain/gtkcord4.desktop?h=gtkcord4-git
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source_x86_64 = https://github.com/diamondburned/gtkcord4/releases/download/v0.0.3-2/gtkcord4-linux-x86_64.tar.gz
+	source_x86_64 = gtkcord4.desktop::https://aur.archlinux.org/cgit/aur.git/plain/gtkcord4.desktop?h=gtkcord4-git
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/diamondburned/gtkcord4/releases/download/v0.0.3-2/gtkcord4-linux-aarch64.tar.gz
+	source_aarch64 = gtkcord4.desktop::https://aur.archlinux.org/cgit/aur.git/plain/gtkcord4.desktop?h=gtkcord4-git
+	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = SKIP
 
 pkgname = gtkcord4-bin
