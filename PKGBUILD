@@ -1,11 +1,11 @@
 pkgname=bytesize-git
-pkgver=0.3.0
+pkgver=1.6.3
 pkgrel=1
 arch=('any')
 pkgdesc='Convert between Binary & SI Bytes' 
 url='https://github.com/jmdaemon/bytesize'
 license=('AGPL3')
-depends=('logc')
+depends=('logc' 'glibc' 'gmp' 'mpfr')
 optdepends=()
 makedepends=('make')
 source=("$pkgname::git+https://github.com/jmdaemon/bytesize")
@@ -15,10 +15,12 @@ sha512sums=("SKIP")
 
 build() {
     cd "$pkgname"
+    git submodule init
+    git submodule update
     export DESTDIR="$pkgdir"
     export PREFIX="/usr"
-    make release lib
     make release bin
+    make release lib
 }
 
 package-bin() {
@@ -29,8 +31,10 @@ package-bin() {
 
 package-lib() {
     LIB_DIR="$pkgdir"/usr/lib
-    mkdir -p $LIB_DIR
+    INC_DIR="$pkgdir"/usr/include
+    mkdir -p $LIB_DIR $INC_DIR
     install build/release/lib/libbytesize.so $LIB_DIR/libbytesize.so
+    install include/bytesize.h $INC_DIR/bytesize.h
 }
 
 package() {
