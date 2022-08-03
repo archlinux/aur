@@ -44,7 +44,7 @@ optdepends=(
 provides=("${pkgname_}")
 conflicts=("${pkgname_}")
 source=(
-    "${pkgname_}-${pkgver}"::"git+${url}"
+    "${pkgname}"::"git+${url}"
     default_nav_css.patch
     skip_ver_mod_tags.patch
     skip_version_check.patch
@@ -57,7 +57,7 @@ sha256sums=(
 )
 
 prepare() {
-    cd "${srcdir}/${pkgname_}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
 
     patch -p1 < "${srcdir}/default_nav_css.patch"
     patch -p1 < "${srcdir}/skip_ver_mod_tags.patch"
@@ -73,13 +73,13 @@ prepare() {
 }
 
 pkgver() {
-    cd "${srcdir}/${pkgname_}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    mkdir -p "${srcdir}/${pkgname_}-${pkgver}/build"
-    cd "${srcdir}/${pkgname_}-${pkgver}/build"
+    mkdir -p "${srcdir}/${pkgname}/build"
+    cd "${srcdir}/${pkgname}/build"
 
     cmake -G "Unix Makefiles" \
         -DUSE_SYSTEM_LIBS=1 \
@@ -97,7 +97,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname_}-${pkgver}/build"
+    cd "${srcdir}/${pkgname}/build"
     make install DESTDIR="${pkgdir}"
 
     # Compile python bytecode
