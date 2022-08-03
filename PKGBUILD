@@ -46,16 +46,15 @@ options=('!makeflags' '!strip')
 # But we use the "release" branch in our own fork instead, which is used
 # solely for packaging purposes.
 source=("$pkgname::git+https://bitbucket.org/agraef/purr-data.git#branch=release")
+md5sums=('SKIP')
 # nw.js sdk binaries
 nwjsname=nwjs-sdk
 nwjsver=0.28.1
 source_common="http://dl.nwjs.io/v$nwjsver/$nwjsname-v$nwjsver-linux"
 source_i686=("$source_common-ia32.tar.gz")
 source_x86_64=("$source_common-x64.tar.gz")
-
-sha256sums=('SKIP')
-sha256sums_i686=('3957c21f2fd7902bb940e6d02c33a30afdaddf76cf1972ac3828524859cb3304')
-sha256sums_x86_64=('016cff36d5a79eb2163d5b399c00456b898613c3de4839c56325a2dcc0822c19')
+md5sums_i686=('6f2a2b0a58f50babbf3fb89163ca801f')
+md5sums_x86_64=('7557def0771c6fc9919aabde0a78730a')
 
 if [ "$CARCH" = "i686" ]; then
   _arch="ia32"
@@ -74,6 +73,11 @@ prefix=${prefix:-/opt/purr-data}
 # recompiling Gem which takes a *long* time to build) or 'makepkg
 # buildopt=light' for a light one (only essential externals).
 buildopt=${buildopt:-}
+# Use this for parallel Gem builds (much faster) and less verbose make output
+# (this only works with externals using automake-generated Makefiles, i.e. Gem).
+# We also add dpkg=disabled to prevent the deb build in case you have the
+# Debian packaging tools installed.
+#buildopt=${buildopt:-GEM_MAKEFLAGS=-j12 V=0 dpkg=disabled}
 
 pkgver() {
   cd $srcdir/$pkgname
