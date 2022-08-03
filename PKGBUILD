@@ -2,7 +2,7 @@
 _pkgname='xkblayout-remember'
 pkgname="${_pkgname}-git"
 pkgver=r23.bf028b1
-pkgrel=3
+pkgrel=4
 pkgdesc='Program to remember the keyboard layout for X11 windows.'
 url='https://github.com/ghesy/xkblayout-remember'
 arch=('x86_64')
@@ -11,6 +11,8 @@ depends=('libx11' 'glib2')
 makedepends=('git' 'pkgconf')
 source=("git+${url}.git")
 md5sums=('SKIP')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 pkgver() {
     cd "$_pkgname"
