@@ -1,6 +1,6 @@
 pkgbase = gtree
 	pkgdesc = Generates tree from Markdown or programmatically
-	pkgver = 1.7.10
+	pkgver = 1.7.11
 	pkgrel = 1
 	url = https://github.com/ddddddO/gtree
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = gtree
 	license = BSD
 	makedepends = go
 	depends = glibc
-	source = gtree-1.7.10.tar.gz::https://github.com/ddddddO/gtree/archive/v1.7.10.tar.gz
-	sha256sums = f083f49b78f7b46da5675c3df50493f7ecee7e67376172eee33dab840c80ac44
+	source = gtree-1.7.11.tar.gz::https://github.com/ddddddO/gtree/archive/v1.7.11.tar.gz
+	sha256sums = e0b3eda22040e6e8fac58de0048144cccca20be3681a5d6ef2a177a84a70fa6d
 
 pkgname = gtree
