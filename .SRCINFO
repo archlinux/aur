@@ -1,14 +1,17 @@
 pkgbase = ruri
-	pkgdesc = Calculates the CRC-32 of a file and checks it against the filename.
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgdesc = Calculates the CRC-32 of files and checks them against their filename
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://gitlab.com/Timmy1e/ruri
-	arch = any
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
 	license = AGPL3
 	makedepends = cargo
 	depends = gcc-libs
-	source = https://gitlab.com/Timmy1e/ruri/-/archive/v2.0.0/ruri-v2.0.0.tar.gz
-	sha256sums = 65638f066d5f1f319b4a3ba82ed214a31dbdd8a5ab34d3bbff9b85df38c67b2e
+	provides = ruri
+	source = https://gitlab.com/Timmy1e/ruri/-/archive/v2.0.1/ruri-v2.0.1.tar.gz
+	sha256sums = ef7883661b0f145b6bf9b7d6be172b2c17198003625f28ce7950065d489f5a20
 
 pkgname = ruri
-
