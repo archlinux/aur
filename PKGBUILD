@@ -1,30 +1,35 @@
-# Maintainer: 2ion <dev@2ion.de>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: 2ion <dev@2ion.de>
+
 pkgname=uchardet-git
-pkgver=r186.602c1ab
+_pkgname="${pkgname%-git}"
+pkgver=0.0.7.r11.g143b3fe
 pkgrel=1
 pkgdesc="Encoding detector library ported from Mozilla"
-arch=('i686' 'x86_64')
-url="https://github.com/BYVoid/uchardet"
+arch=('x86_64')
+url="https://www.freedesktop.org/wiki/software/uchardet"
 license=('MPL')
 depends=('gcc-libs')
-makedepends=('git' 'gcc' 'cmake' 'make')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=('uchardet::git+https://github.com/BYVoid/uchardet.git')
-md5sums=('SKIP')
+makedepends=('git' 'cmake')
+provides=("$_pkgname" 'libuchardet.so')
+conflicts=("$_pkgname")
+source=("$_pkgname::git+https://gitlab.freedesktop.org/uchardet/uchardet")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git -C "$_pkgname" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR=lib .
-  make
+	cmake \
+		-B build \
+		-S "$_pkgname" \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DCMAKE_BUILD_TYPE=None
+	make -C build
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
-  make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir" -C build install
 }
