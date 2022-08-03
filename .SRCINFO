@@ -1,12 +1,11 @@
 pkgbase = mongodb
 	pkgdesc = A high-performance, open source, schema-free document-oriented database
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mongodb.com/
 	arch = x86_64
 	license = Apache
 	license = custom:SSPL1
-	makedepends = scons
 	makedepends = python-psutil
 	makedepends = python-setuptools
 	makedepends = python-regex
