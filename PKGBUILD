@@ -1,16 +1,18 @@
 # Maintainer: Ehsan Ghorbannezad <ehsan at disroot dot org>
-_pkgname=xkblayout-subscribe
-pkgname=$_pkgname-git
+_pkgname='xkblayout-subscribe'
+pkgname="${_pkgname}-git"
 pkgver=r1.bc13b72
-pkgrel=2
+pkgrel=3
 pkgdesc='Subscribe to X keyboard layout events. useful for updating statusbars.'
-url=https://github.com/soystemd/xkblayout-subscribe
-arch=(x86_64)
-license=(GPL)
-depends=(libpulse)
-makedepends=(git pkgconf)
-source=("git+$url.git")
-md5sums=(SKIP)
+url='https://github.com/ghesy/xkblayout-subscribe'
+arch=('x86_64')
+license=('GPL')
+depends=('libpulse')
+makedepends=('git' 'pkgconf')
+source=("git+${url}.git")
+md5sums=('SKIP')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 pkgver() {
     cd "$_pkgname"
@@ -25,5 +27,5 @@ build() {
 package() {
     cd "$_pkgname"
     make PREFIX=/usr DESTDIR="$pkgdir" install
-    install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
