@@ -1,7 +1,7 @@
 # Maintainer: Frederick Zhang <frederick888@tsundere.moe>
 
 pkgname=external-editor-revived
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="External Editor Revived is a Thunderbird MailExtension which allows editing emails in programs such as Vim, Neovim, Emacs and etc."
 arch=('x86_64')
@@ -13,9 +13,9 @@ source=(
     "https://github.com/Frederick888/external-editor-revived/archive/refs/tags/v${pkgver}.tar.gz"
     "external_editor_revived.json"
 )
-md5sums=('8d3cb7ab2743fc1bfcd03f9b19134652'
+md5sums=('6d8e606419dbe8957cc9978064ffbca7'
          '7834086c41c5f319c2796374ac8fa16e')
-sha256sums=('8e9ced3407943c07de1c8805273800c0f5b5864142cde0a9442df319d0e2e7f1'
+sha256sums=('1ec82ba7925db8a54a5c621fb3a3d7c42a915a7a531d9c8a6457c120718bc8af'
             '2f026c1225f83ace07670dac4b7058e646363d8c6ce540abfe6dddaeb2880db7')
 
 build() {
