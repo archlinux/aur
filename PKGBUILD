@@ -4,7 +4,7 @@
 
 _pkgname=airgeddon
 pkgname=$_pkgname-git
-pkgver=r2636.afa8db2
+pkgver=r2649.88bc4c0
 pkgrel=1
 pkgdesc='Multi-use bash script for Linux systems to audit wireless networks'
 url='https://github.com/v1s1t0r1sh3r3/airgeddon'
