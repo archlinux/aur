@@ -5,10 +5,9 @@ pkgbase = cufflinks-bin
 	url = http://cole-trapnell-lab.github.io/cufflinks/
 	arch = x86_64
 	license = Boost Software License v1
-	provides = cufflinks=2.2.1
+	provides = cufflinks
 	conflicts = cufflinks
-	source = http://cole-trapnell-lab.github.io/cufflinks/assets/downloads/cufflinks-2.2.1.Linux_x86_64.tar.gz
+	source = https://cole-trapnell-lab.github.io/cufflinks/assets/downloads/cufflinks-2.2.1.Linux_x86_64.tar.gz
 	sha1sums = 55fcb817faae45f465ccfaddceacc217307fc33a
 
 pkgname = cufflinks-bin
-
