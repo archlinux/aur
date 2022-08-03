@@ -3,12 +3,12 @@
 
 pkgname=pure-stllib
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="An 'umbrella' package that contains a pair of Pure addons, pure-stlvec and pure-stlmap. These addons provide Pure interfaces to a selection of containers provided by the C++ Standard Library, specialized to hold pointers to arbitrary Pure expressions."
 arch=("i686" "x86_64")
 license=('BSD')
 url="http://purelang.bitbucket.org/"
-depends=('pure' 'libstdc++5')
+depends=('pure')
 makedepends=()
 provides=('pure-stlvec')
 conflicts=('pure-stlvec')
