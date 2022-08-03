@@ -10,11 +10,11 @@ pkgbase = nvml-fix-git
 	conflicts = nvml-fix-
 	options = !ccache
 	source = git+https://github.com/CFSworks/nvml_fix.git
-	source = 80-nvml-fix-install.hook
+	source = nvml-fix-install.hook
 	source = 80-nvml-fix-upgrade.hook
 	source = 81-nvml-fix-reapply.hook
 	sha256sums = SKIP
-	sha256sums = 76254dcf6673e8fe6ff20cbe3af2e7379d300551835c7b510ec840602e7ca5bc
+	sha256sums = 51c2e28e88193a8b2435ff23eb4d1818f8cdaaba32f7c2562862fae2223d3a35
 	sha256sums = 5491bb06bf06d52b15457454f21a06041454545e6e814bea1af444d2122ab490
 	sha256sums = bb8fc6e57cf6d7ac1e1af0bf33099e885e0fbbd14c2a224cd8b832b9b8a3c86d
 
