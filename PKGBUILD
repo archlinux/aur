@@ -2,8 +2,8 @@
 
 pkgname=lightspeed-git
 _realname=lightspeed
-pkgver=r24.e7150f3
-pkgrel=1
+pkgver=r29.61dbfcb
+pkgrel=2
 pkgdesc="Interactively illustrates the effects of special relativity on the appearance of moving objects, git version"
 arch=('i686' 'x86_64')
 url="https://github.com/Photon89/lightspeed"
@@ -25,7 +25,7 @@ build() {
 	cd ${srcdir}/${_realname}
 	sed -i 's|"objects"|"/usr/share/lightspeed/objects"|g' src/menu_cbs.c
 	autoreconf -i
-	./configure --prefix=/usr || return 1
+	./configure --prefix=/usr --with-gtkgl-prefix=/usr || return 1
 	make || return 1
 }
 

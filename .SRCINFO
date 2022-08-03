@@ -1,7 +1,7 @@
 pkgbase = lightspeed-git
 	pkgdesc = Interactively illustrates the effects of special relativity on the appearance of moving objects, git version
-	pkgver = r24.e7150f3
-	pkgrel = 1
+	pkgver = r29.61dbfcb
+	pkgrel = 2
 	url = https://github.com/Photon89/lightspeed
 	arch = i686
 	arch = x86_64
