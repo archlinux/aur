@@ -2,7 +2,7 @@
 # Maintainer: Enzo Barrett <enzobarrett@gmail.com>
 pkgname=npiano-git
 pkgver=V0.9.r9.g49b743d
-pkgrel=1
+pkgrel=2
 pkgdesc="A piano in ncurses"
 arch=('any')
 url="https://github.com/enzobarrett/npiano"

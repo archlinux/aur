@@ -1,7 +1,7 @@
 pkgbase = npiano-git
 	pkgdesc = A piano in ncurses
 	pkgver = V0.9.r9.g49b743d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/enzobarrett/npiano
 	arch = any
 	license = GPL
