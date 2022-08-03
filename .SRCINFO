@@ -1,14 +1,13 @@
 pkgbase = python2-lazy-object-proxy
 	pkgdesc = A fast and thorough lazy object proxy
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ionelmc/python-lazy-object-proxy
 	arch = x86_64
 	license = BSD
 	makedepends = python2-setuptools
-	source = -1.6.0.tar.gz::https://github.com/ionelmc/python-lazy-object-proxy/archive/v1.6.0.tar.gz
+	source = python2-lazy-object-proxy-1.6.0.tar.gz::https://github.com/ionelmc/python-lazy-object-proxy/archive/v1.6.0.tar.gz
 	sha512sums = 08fd5e76a6e892a9390ae3bc3025c2fe9255437823fba9aa804f2c7cac09c5f9b57c791d3c9b137aa96c4c78fc2c494eca629cc60d21d23d59713f7a418491a1
 
 pkgname = python2-lazy-object-proxy
 	depends = python2
-
