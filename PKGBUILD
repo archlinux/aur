@@ -9,6 +9,7 @@ license=('GPL3')
 depends=(gtk3 accountsservice gtklock=$pkgver)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('88702a95a34464f8185d21a319dba02314bf01a0312ad1ce64176d1c0d93cbda')
+LDFLAGS="${LDFLAGS/--as-needed/--no-as-needed}"
 
 build() {
 	cd "$pkgname-$pkgver"
