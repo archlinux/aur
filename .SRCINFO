@@ -1,0 +1,15 @@
+pkgbase = php7-xdebug
+	pkgdesc = PHP debugging extension
+	pkgver = 3.1.5
+	pkgrel = 1
+	url = https://xdebug.org/
+	arch = x86_64
+	license = GPL
+	depends = php7
+	backup = etc/php7/conf.d/xdebug.ini
+	source = https://xdebug.org/files/xdebug-3.1.5.tgz
+	source = xdebug.ini
+	sha256sums = 55f6ef381245da079b2fc5ce1cfbcb7961197d0c0e04f9d977613cf9aa969a79
+	sha256sums = 7c66883dc2ade69069ef84e30188b25630748aa9c8b0dd123727c00505421205
+
+pkgname = php7-xdebug
