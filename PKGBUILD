@@ -13,7 +13,7 @@ install=akia.install
 source=(https://akiskart.bilgem.tubitak.gov.tr/dosyalar/akia-linux-deb-${pkgver}.zip
         bilgem-tubitak-gov-tr-chain.pem)
 sha256sums=('ba0b455fb74353b5d151013126bddc5c8ac83a8dd66fa67851a4f154a876ebea'
-            'ff36350b5c74a23b1f0454b973cd9fd0d840936bba32137e35c966143d7d1ae4')
+            'ddc8bed4f770625299b811034da954a674f39c1ad749b3cfd9737da682cd9b8f')
 
 DLAGENTS=("https::/usr/bin/curl --cacert bilgem-tubitak-gov-tr-chain.pem -o %o %u")
 
