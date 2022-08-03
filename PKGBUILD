@@ -79,7 +79,6 @@ filter-flags() {
   return 0
 }
 
-
 prepare() {
   cd "${srcdir}/${_pkgname}-src-r${pkgver}"
 
