@@ -1,0 +1,13 @@
+pkgbase = npiano-git
+	pkgdesc = A piano in ncurses
+	pkgver = V0.9.r9.g49b743d
+	pkgrel = 1
+	url = https://github.com/enzobarrett/npiano
+	arch = any
+	license = GPL
+	depends = ncurses
+	depends = beep
+	source = npiano::git+https://github.com/enzobarrett/npiano.git
+	sha256sums = SKIP
+
+pkgname = npiano-git
