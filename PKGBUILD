@@ -6,7 +6,7 @@ pkgdesc="A high-performance, POSIX-ish S3 (Yandex, Amazon) file system written i
 license=("Apache")
 url="https://github.com/yandex-cloud/geesefs"
 pkgver="0.31.5"
-pkgrel=2
+pkgrel=3
 arch=("x86_64")
 depends=("fuse3")
 provides=("$_pkgbin")
@@ -24,5 +24,5 @@ package() {
 
   # Install Binary
   mv geesefs-linux-amd64 geesefs-linux-amd64-${pkgver}-${pkgrel}
-  install -Dm755 geesefs-linux-amd64 ${pkgdir}/usr/bin/$_pkgbin
+  install -Dm755 geesefs-linux-amd64-${pkgver}-${pkgrel} ${pkgdir}/usr/bin/$_pkgbin
 }

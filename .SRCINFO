@@ -1,7 +1,7 @@
 pkgbase = geesefs-bin
 	pkgdesc = A high-performance, POSIX-ish S3 (Yandex, Amazon) file system written in Go.
 	pkgver = 0.31.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/yandex-cloud/geesefs
 	arch = x86_64
 	license = Apache
