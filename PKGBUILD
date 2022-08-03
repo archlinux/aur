@@ -9,7 +9,7 @@
 
 pkgname=gazebo
 pkgver=11.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
@@ -30,12 +30,6 @@ makedepends=('cmake' 'doxygen' 'ruby-ronn')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/osrf/gazebo/archive/${pkgname}11_$pkgver.tar.gz")
 sha256sums=('e6a1965198378a8360ab7fce465990f11951629a833e518c2163c645d015354a')
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgname}11_$pkgver"
-
-  sed -i 's/putstr/printf/g' gazebo/gui/qgv/private/QGVCore.h
-}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgname}11_$pkgver"
