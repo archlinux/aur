@@ -1,9 +1,9 @@
 # Maintainer: arthur <mr.x-important@gmx.de>
 pkgname=tutel
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 epoch=1
-pkgdesc="a minimalist todo app for terminal enthusiasts"
+pkgdesc="a minimalistic todo app for terminal enthusiasts"
 url="https://www.github.com/InvalidName662/tutel"
 license=("MIT")
 arch=("x86_64" "i686")
