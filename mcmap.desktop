@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Mcmap
+Comment=Pixel-art map visualizer for Minecraft. Maps are drawn from an isometric perspective.
+Exec=mcmap-gui
+Icon=mcmap
+Terminal=false
+StartupNotify=false
+Categories=Game;Application;

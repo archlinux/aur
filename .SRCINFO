@@ -1,7 +1,7 @@
 pkgbase = mcmap
 	pkgdesc = Pixel-art map visualizer for Minecraft. Maps are drawn from an isometric perspective.
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/spoutn1k/mcmap
 	arch = x86_64
 	license = GPL3
@@ -10,11 +10,14 @@ pkgbase = mcmap
 	makedepends = make
 	makedepends = cmake
 	makedepends = gtest
+	depends = zlib
 	depends = libpng
 	depends = spdlog
 	depends = fmt
 	depends = qt5-tools
 	source = mcmap::git+https://github.com/spoutn1k/mcmap.git
+	source = mcmap.desktop
 	sha256sums = SKIP
+	sha256sums = 67dff6174f3ef3c072560b6b2c161470d5f76a6282bf9bf6afa9d14750459714
 
 pkgname = mcmap
