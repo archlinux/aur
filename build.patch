@@ -1,6 +1,6 @@
---- build.sh.orig	2021-10-19 12:09:01.000000000 +0200
-+++ build.sh	2021-10-20 23:01:48.918991188 +0200
-@@ -516,7 +516,7 @@
+--- build.sh.orig	2022-07-28 15:16:00.000000000 +0200
++++ build.sh	2022-08-02 22:15:53.761448625 +0200
+@@ -597,7 +597,7 @@
    run build2/build2/b-boot $verbose configure \
  config.config.hermetic=true \
  config.cxx="$cxx" \
@@ -9,12 +9,3 @@
  config.bin.lib=shared \
  config.bin.rpath="$conf_rpath" \
  config.install.root="$idir" \
-@@ -620,7 +620,7 @@
- 
- run "$bpkg_stage" $verbose add "$BUILD2_REPO"
- run "$bpkg_stage" $verbose $bpkg_fetch_ops fetch
--run "$bpkg_stage" $verbose $jobs $bpkg_build_ops build --for install --yes --plan= $packages
-+run "$bpkg_stage" $verbose $jobs $bpkg_build_ops build --for install --yes --plan= $packages ?sys:libsqlite3 ?sys:libpkgconf
- run "$bpkg_stage" $verbose $jobs install --all
- 
- run command -v "$b"

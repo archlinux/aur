@@ -3,8 +3,8 @@
 # Contributor: Filipe Verri <filipeverri@gmail.com>
 
 pkgname=build2
-pkgver=0.14.0
-pkgrel=2
+pkgver=0.15.0
+pkgrel=1
 pkgdesc="build2 build system"
 arch=(i686 x86_64)
 url="https://build2.org/"
@@ -15,8 +15,8 @@ depends=('sqlite3' 'pkgconf')
 source=("https://download.build2.org/${pkgver}/build2-toolchain-${pkgver}.tar.xz"
 		"build.patch")
 
-sha256sums=('18efc6b2d41498f7516e7a8a5c91023f6182c867d423792398390dd0c004cfdd'
-            '8405b849e6dc68830102d9e1ce9e934b6bbb63fee05d3dd000c3ed943e5e3638')
+sha256sums=('5152f679daeb9627f9710c60ef88de1591c02097146268be2f5aea929d2837c4'
+            'fa551d0fa42c622caa147acc42944ea709d6147ce91847bb9bc86be321b09fdf')
 
 build() {
   cd ${srcdir}/build2-toolchain-${pkgver}
@@ -24,7 +24,7 @@ build() {
   patch -p0 < ${srcdir}/build.patch
 
   mkdir -p ${srcdir}/build/usr
-  ./build.sh --trust yes --install-dir ${srcdir}/build/usr ${CXX:-g++} $CXXFLAGS
+  ./build.sh --trust yes --local --system libsqlite3,libpkgconfig --install-dir ${srcdir}/build/usr ${CXX:-g++} $CXXFLAGS
 
   for f in ${srcdir}/build/usr/lib/pkgconfig/*.pc; do sed -i "s|${srcdir}/build||" ${f}; done
 }
