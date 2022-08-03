@@ -2,8 +2,10 @@
 
 pkgname=comby-bin
 pkgver=1.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A code rewrite tool for structural search and replace that supports ~every language."
+provides=('comby')
+conflicts=('comby')
 arch=('x86_64')
 url="https://comby.dev/"
 license=('Apache')

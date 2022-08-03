@@ -1,7 +1,7 @@
 pkgbase = comby-bin
 	pkgdesc = A code rewrite tool for structural search and replace that supports ~every language.
 	pkgver = 1.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://comby.dev/
 	arch = x86_64
 	license = Apache
@@ -11,6 +11,8 @@ pkgbase = comby-bin
 	depends = libev
 	depends = glibc
 	depends = pcre
+	provides = comby
+	conflicts = comby
 	source = comby-1.8.1.tar.gz::https://github.com/comby-tools/comby/releases/download/1.8.1/comby-1.8.1-x86_64-linux.tar.gz
 	sha256sums = ec0ca6477822154d71033e0b0a724c23a0608b99028ecab492bc9876ae8c458a
 
