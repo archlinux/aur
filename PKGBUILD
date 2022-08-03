@@ -34,7 +34,6 @@ prepare() {
 build() {
   cd "Av1an"
   export CFLAGS+=" -ffat-lto-objects"
-  export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
   RUSTUP_TOOLCHAIN=stable cargo build --release --target-dir=target --frozen --no-default-features
 }
 
