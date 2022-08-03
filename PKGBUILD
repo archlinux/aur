@@ -2,8 +2,8 @@
 
 _pkgname='heros-hour'
 pkgname="${_pkgname}-gog"
-pkgver=2.1.0
-_pkgverbuild=55257
+pkgver=2.2.3
+_pkgverbuild=57420
 pkgrel=1
 
 arch=('x86_64')
@@ -32,7 +32,7 @@ source=(
 )
 
 sha512sums=(
-	'2f3c85494416e16dd5b833be144bab5171bb5168dfa0554341e8d1a1e7f9a83b36a047fd800b92215b33c0766390334d1f3e6b4dda259ce3806df740cef8faee'
+	'417ea404a1535db01f6b802babd342502c5e0932199fb3590d1ec126421db276a35c674661efa13b2e0feccbdd69c3928c6a877874a863ce6abb9d0b1748f98d'
 	'SKIP'
 	'SKIP'
 	'SKIP'
