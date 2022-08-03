@@ -18,7 +18,7 @@
 # /usr/lib/purr-data, so that 3rd party externals know where to find these.
 
 pkgname=purr-data-git
-pkgver=2.12.0.r4366.6d94e10b
+pkgver=2.17.0.r4863.fa783023c
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://git.purrdata.net/jwilkes/purr-data"
@@ -27,7 +27,7 @@ license=('BSD')
 depends=('bluez-libs' 'desktop-file-utils' 'dssi' 'fftw'
   'flite' 'fluidsynth' 'freeglut' 'ftgl' 'glew'
   'gsl' 'gsm' 'hicolor-icon-theme' 'imagemagick' 'jack' 'ladspa' 'lame'
-  'libdc1394' 'libdv' 'libgl' 'libiec61883' 'libjpeg' 'libquicktime'
+  'libdc1394' 'libdv' 'libgl' 'libiec61883' 'libjpeg'
   'libxxf86vm' 'libtiff' 'libiec61883' 'libraw1394'
   'libv4l' 'libvorbis' 'portaudio'
   'smpeg' 'speex' 'stk' 'zlib' 'lua'
@@ -41,12 +41,12 @@ source=("$pkgname::git+https://git.purrdata.net/jwilkes/purr-data.git")
 md5sums=('SKIP')
 # nw.js sdk binaries
 nwjsname=nwjs-sdk
-nwjsver=0.24.4
+nwjsver=0.28.1
 source_common="http://dl.nwjs.io/v$nwjsver/$nwjsname-v$nwjsver-linux"
 source_i686=("$source_common-ia32.tar.gz")
 source_x86_64=("$source_common-x64.tar.gz")
-md5sums_i686=('a7afcd35d2891e7b7c78db5ca7a625a3')
-md5sums_x86_64=('82f20fe9081201db81652eb066c29f9b')
+md5sums_i686=('6f2a2b0a58f50babbf3fb89163ca801f')
+md5sums_x86_64=('7557def0771c6fc9919aabde0a78730a')
 
 if [ "$CARCH" = "i686" ]; then
   _arch="ia32"
@@ -75,9 +75,9 @@ prepare() {
   cd $srcdir/$pkgname
   # first make sure that we get any checked out submodules in pristine state
   # again, so that our patches apply cleanly
-  git submodule foreach git checkout .
+  make realclean
   # check out the latest source of all submodules
-  git submodule update --init
+  make checkout
   # copy the nw.js sources to where purr-data wants them
   rm -rf pd/nw/nw
   cp -a $srcdir/$nwjsname-v$nwjsver-linux-$_arch pd/nw/nw
