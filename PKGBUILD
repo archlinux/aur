@@ -1,7 +1,7 @@
 # Maintainer: github.com/lmorg
 pkgname=murex
 replaces=('murex-git')
-pkgver=2.10.2300
+pkgver=2.10.2400
 pkgrel=1
 pkgdesc="Bash-like shell designed for greater commandline productivity and safer shell scripts"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL2')
 makedepends=('go')
 optdepends=('aspell: inline spell checking')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0ea18936bf9b77e0198124bb6cfb0cc1f6487c483e84aafb9063b4434e2e777d')
+sha256sums=('4503e20d144cdadf60e01b97d420bc3ab7d35b3c079712fd3e37477bdeac67b3')
 
 prepare(){
   cd "$pkgname-$pkgver"
