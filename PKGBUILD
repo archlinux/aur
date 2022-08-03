@@ -3,24 +3,19 @@
 _pkgbase=asus-touchpad-numpad-driver
 pkgbase="${_pkgbase}-git"
 pkgname=(
-    "${_pkgbase}-ux433fa-qwerty-git"
-    "${_pkgbase}-ux433fa-azerty-git"
-    "${_pkgbase}-up5401ea-qwerty-git"
-    "${_pkgbase}-up5401ea-azerty-git"
-    "${_pkgbase}-ux581l-qwerty-git"
-    "${_pkgbase}-ux581l-azerty-git"
-    "${_pkgbase}-gx701-qwerty-git"
-    "${_pkgbase}-gx701-azerty-git"
-    "${_pkgbase}-g533-qwerty-git"
-    "${_pkgbase}-g533-azerty-git"
+    "${_pkgbase}-ux433fa-git"
+    "${_pkgbase}-up5401ea-git"
+    "${_pkgbase}-ux581l-git"
+    "${_pkgbase}-gx701-git"
+    "${_pkgbase}-g533-git"
 )
-pkgver=r168.83d4866
+pkgver=r184.2b5c27d
 pkgrel=1
 pkgdesc="Linux newest feature-rich configurable driver for Asus numpad"
 arch=('any')
 url="https://github.com/asus-linux-drivers/asus-touchpad-numpad-driver"
 license=('GPL3')
-depends=('libevdev' 'python-libevdev' 'i2c-tools' 'python-numpy' 'python-evdev')
+depends=('libevdev' 'python-libevdev' 'i2c-tools' 'python-numpy' 'python-evdev' 'xorg-xinput')
 makedepends=('git')
 provides=("${_pkgbase}")
 source=("git+${url}.git")
@@ -34,12 +29,7 @@ pkgver() {
 
 _package() {
     cd "${srcdir}/${_pkgbase}"
-    if [ "$layout" == "qwerty" ]; then
-        PERCENTAGE_KEY=6
-    elif [ "$layout" == "azerty" ]; then
-        PERCENTAGE_KEY=40
-    fi
-    sed -i "s/\$LAYOUT \$PERCENTAGE_KEY/${model} ${PERCENTAGE_KEY}/" "asus_touchpad.service"
+    sed -i "s/\$PERCENTAGE_KEY/${model}/" "asus_touchpad.service"
     sed -i "s#/usr/share/asus_touchpad_numpad-driver/asus_touchpad.py#${pkgdir}/usr/share/asus_touchpad_numpad-driver/asus_touchpad.py#" "asus_touchpad.service"
     install -Dm755 asus_touchpad.py "${pkgdir}/usr/share/asus_touchpad_numpad-driver/asus_touchpad.py"
     install -Dm644 "asus_touchpad.service" "${pkgdir}/usr/lib/systemd/system/asus_touchpad_numpad.service"
@@ -50,7 +40,6 @@ main() {
     for _pkgname in "${pkgname[@]}"; do
         eval "package_${_pkgname}() {
             model="$(echo ${_pkgname%-*} | sed "s/${_pkgbase}-//" | awk -F '-' '{print $1}')"
-            layout="$(echo ${_pkgname%-*} | sed "s/${_pkgbase}-//" | awk -F '-' '{print $2}')"
             _package
         }"
     done

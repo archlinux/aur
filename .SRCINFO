@@ -1,6 +1,6 @@
 pkgbase = asus-touchpad-numpad-driver-git
 	pkgdesc = Linux newest feature-rich configurable driver for Asus numpad
-	pkgver = r168.83d4866
+	pkgver = r184.2b5c27d
 	pkgrel = 1
 	url = https://github.com/asus-linux-drivers/asus-touchpad-numpad-driver
 	install = asus-touchpad-numpad-driver-git.install
@@ -12,26 +12,17 @@ pkgbase = asus-touchpad-numpad-driver-git
 	depends = i2c-tools
 	depends = python-numpy
 	depends = python-evdev
+	depends = xorg-xinput
 	provides = asus-touchpad-numpad-driver
 	source = git+https://github.com/asus-linux-drivers/asus-touchpad-numpad-driver.git
 	sha256sums = SKIP
 
-pkgname = asus-touchpad-numpad-driver-ux433fa-qwerty-git
+pkgname = asus-touchpad-numpad-driver-ux433fa-git
 
-pkgname = asus-touchpad-numpad-driver-ux433fa-azerty-git
+pkgname = asus-touchpad-numpad-driver-up5401ea-git
 
-pkgname = asus-touchpad-numpad-driver-up5401ea-qwerty-git
+pkgname = asus-touchpad-numpad-driver-ux581l-git
 
-pkgname = asus-touchpad-numpad-driver-up5401ea-azerty-git
+pkgname = asus-touchpad-numpad-driver-gx701-git
 
-pkgname = asus-touchpad-numpad-driver-ux581l-qwerty-git
-
-pkgname = asus-touchpad-numpad-driver-ux581l-azerty-git
-
-pkgname = asus-touchpad-numpad-driver-gx701-qwerty-git
-
-pkgname = asus-touchpad-numpad-driver-gx701-azerty-git
-
-pkgname = asus-touchpad-numpad-driver-g533-qwerty-git
-
-pkgname = asus-touchpad-numpad-driver-g533-azerty-git
+pkgname = asus-touchpad-numpad-driver-g533-git
