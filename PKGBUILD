@@ -2,31 +2,30 @@
 _base=scikit-fem
 pkgname=python-${_base}
 pkgdesc="Simple finite element assemblers"
-pkgver=6.0.0
-pkgrel=2
+pkgver=7.0.1
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/kinnala/${_base}"
 license=('custom:BSD-3-clause')
 depends=(python-scipy)
 makedepends=(python-setuptools python-wheel)
-checkdepends=(python-pytest python-matplotlib python-h5py python-meshio python-pyamg)
+checkdepends=(python-pytest python-matplotlib python-meshio python-h5py python-autograd)
 source=(${url}/archive/${pkgver}.tar.gz)
-sha512sums=('dd61c4a00711b2628efcf718aca5bf3cf696002db910d39fc2c8ea4d351556ce512f09ab18aedcb1ddf78ed4d036b77008b8f8f923bc6c6cb468eb751d8b250a')
+sha512sums=('dad67b8d0a94e5efcd2a8775ea0d5e09d3aeb4249139ebc6b0c2d8aa78c11c16ecd5fc84050afe7db5de6aa1a863f41b54356ddf8b19c494cf6b08fd2952941c')
 
 build() {
-  cd "${_base}-${pkgver}"
+  cd ${_base}-${pkgver}
   python -c "from setuptools import setup; setup();" build
 }
 
 check() {
-  cd "${_base}-${pkgver}"
+  cd ${_base}-${pkgver}
   python -c "from setuptools import setup; setup();" install --root="${PWD}/tmp_install" --optimize=1 --skip-build
-  MPLBACKEND=Agg PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest -k 'not Ex23 and not Ex27'
+  MPLBACKEND=Agg PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest
 }
 
 package() {
-  cd "${_base}-${pkgver}"
-  export PYTHONHASHSEED=0
+  cd ${_base}-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -c "from setuptools import setup; setup();" install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
