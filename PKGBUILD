@@ -5,12 +5,12 @@
 # Contributor: Chris Salzberg <chris@dejimata.com>
 _pkgname=neomutt
 pkgname=neomutt-git
-pkgver=20220429.r89.g5dfb39759
+pkgver=20220429.r168.g8280a6351
 pkgrel=1
 pkgdesc='A version of mutt with added features - development branch'
 url='http://www.neomutt.org/'
 license=('GPL')
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 depends=('glibc' 'gpgme' 'lua53' 'notmuch-runtime' 'krb5' 'gnutls' 'sqlite'
          'libsasl' 'ncurses' 'libidn2' 'lmdb' 'gdbm' 'kyotocabinet'
          'lz4' 'zlib' 'zstd' 'db')
