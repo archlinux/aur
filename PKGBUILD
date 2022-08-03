@@ -1,6 +1,6 @@
 # Maintainer: Taylor Allen
 pkgname=shortsync-git
-pkgver=1
+pkgver=$(printf "1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
 pkgrel=1
 epoch=
 pkgdesc="This application makes it easy to keep track of alias, file, and folder shortcuts across multiple applications and shells."
