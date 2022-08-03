@@ -1,6 +1,6 @@
 pkgbase = gaiad-bin
 	pkgdesc = Cosmos SDK application for the Cosmos Hub
-	pkgver = 7.0.2
+	pkgver = 7.0.3
 	pkgrel = 1
 	url = https://github.com/cosmos/gaia
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = gaiad-bin
 	license = Apache
 	provides = gaiad
 	conflicts = gaiad
-	source = https://raw.githubusercontent.com/cosmos/gaia/v7.0.2/LICENSE
+	source = https://raw.githubusercontent.com/cosmos/gaia/v7.0.3/LICENSE
 	sha256sums = 98bf5ef31e3c439d9d721a2b919fa285ad6a1ee607d71fb062a8b1849ae1e1fc
-	source_x86_64 = gaiad-v7.0.2-linux::https://github.com/cosmos/gaia/releases/download/v7.0.2/gaiad-v7.0.2-linux-amd64
-	sha256sums_x86_64 = 803d41f7a047f6c08264bf6c857800d683de9ba4ad958ad41625590dab954be7
-	source_aarch64 = gaiad-v7.0.2-linux::https://github.com/cosmos/gaia/releases/download/v7.0.2/gaiad-v7.0.2-linux-arm64
-	sha256sums_aarch64 = 803d41f7a047f6c08264bf6c857800d683de9ba4ad958ad41625590dab954be7
+	source_x86_64 = gaiad-v7.0.3-linux::https://github.com/cosmos/gaia/releases/download/v7.0.3/gaiad-v7.0.3-linux-amd64
+	sha256sums_x86_64 = 83ab17f90bedb4106f911f90adbccac229e50d1c65230fb02d2c53efaf1d232c
+	source_aarch64 = gaiad-v7.0.3-linux::https://github.com/cosmos/gaia/releases/download/v7.0.3/gaiad-v7.0.3-linux-arm64
+	sha256sums_aarch64 = 83ab17f90bedb4106f911f90adbccac229e50d1c65230fb02d2c53efaf1d232c
 
 pkgname = gaiad-bin
