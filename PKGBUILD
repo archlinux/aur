@@ -1,6 +1,6 @@
 # Maintainer: herzrasen <dennis.mellert@gmail.com>
 pkgname=pkghist
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Query your pacman logs"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('pkghist')
 conflicts=('pkghist-bin')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/herzrasen/pkghist/archive/v${pkgver}.tar.gz")
-sha1sums=('d264bfd6f7aa491ed32392a73a5ca972db560dc4')
+sha1sums=('8753dcc85c2dd549ae1e3186d407f948a6590eba')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
