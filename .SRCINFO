@@ -1,6 +1,6 @@
 pkgbase = r-jaspreliability
 	pkgdesc = Reliability Module for JASP
-	pkgver = 0.16.2
+	pkgver = 0.16.4
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspReliability
 	arch = x86_64
