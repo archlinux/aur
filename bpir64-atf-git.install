@@ -2,7 +2,7 @@ post_upgrade() {
   if [ -d "/boot/bootcfg/" ]; then
     dev=$(cat /boot/bootcfg/device)
     atfdev="/dev/disk/by-partlabel/bpir64-${dev}-atf"
-    if [ ! -L $fipdev ]; then
+    if [ -L $fipdev ]; then
       device="/dev/"$(lsblk -no pkname ${atfdev})
       dd of="${atfdev}" if=/dev/zero 2>/dev/null
       dd of="${device}" if=/boot/bpir64-atf-${dev}-header.bin
