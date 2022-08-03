@@ -1,0 +1,36 @@
+pkgbase = gcr-git
+	pkgdesc = A library for bits of crypto UI and parsing
+	pkgver = 3.90.0+r8+g2c8cb33
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/gcr
+	arch = x86_64
+	license = GPL2
+	makedepends = gobject-introspection
+	makedepends = vala
+	makedepends = libxslt
+	makedepends = git
+	makedepends = gi-docgen
+	makedepends = meson
+	depends = gtk3
+	depends = gtk4
+	depends = libgcrypt
+	depends = p11-kit
+	depends = openssh
+	depends = libsecret
+	options = debug
+	source = git+https://gitlab.gnome.org/GNOME/gcr.git
+	sha256sums = SKIP
+
+pkgname = gcr-git
+	install = gcr.install
+	provides = gcr
+	provides = libgck-2.so
+	provides = libgcr-4-gtk3.so
+	provides = libgcr-4-gtk4.so
+	conflicts = gcr
+	backup = etc/security/limits.d/10-gcr.conf
+
+pkgname = gcr-docs-git
+	pkgdesc = A library for bits of crypto UI and parsing (documentation)
+	depends = 
+	provides = gcr-docs
