@@ -1,6 +1,6 @@
 pkgbase = disneyplus-bin
 	pkgdesc = Unnofficial Disney+ desktop application
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://gitlab.com/d6838/application
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = disneyplus-bin
 	depends = gtk3
 	depends = libxss
 	conflicts = disneyplus-git
-	source_x86_64 = https://gitlab.com/d6838/binaries/1.0.1-1/-/raw/main/DisneyPlus-linux-x64.tar.gz
+	source_x86_64 = https://gitlab.com/d6838/binaries/1.0.2-1/-/raw/main/DisneyPlus-linux-x64.tar.xz
 	sha256sums_x86_64 = SKIP
 
 pkgname = disneyplus-bin
