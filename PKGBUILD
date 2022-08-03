@@ -1,6 +1,6 @@
 # Maintainer: Angelo Dalzotto <angelodalzotto97 at gmail dot com>
 pkgname=ns-usbloader
-pkgver=5.2
+pkgver=6.0
 pkgrel=1
 pkgdesc="Awoo Installer/TinFoil/GoldLeaf NSPs (and other files) uploader and RCM tool."
 arch=('any')
@@ -18,7 +18,7 @@ source=(
 	"$pkgname.desktop"
 )
 sha256sums=(
-	"261a99d583e516dfb19ec6fa2b1595b8287c47c00fe3df9a948c3bbc29d47f1a"
+	"270625bd94148ecbb5912ab6535abc6a10c719a4dac1fefad12643cd578b9f03"
 	"d00fc704b669bb00f9e26bd70ea784015921c1f4825a8320b1e8f1f1f70ba6e5"
 	"f78baea7e90bc5c48215c938add3fc49e11b51208df69d9460769d2e27ca9877"
 )
