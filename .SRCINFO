@@ -1,6 +1,6 @@
 pkgbase = pkghist-bin
 	pkgdesc = Query your pacman logs. Precompiled binary.
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/herzrasen/pkghist
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = pkghist-bin
 	depends = git
 	provides = pkghist
 	conflicts = pkghist
-	source = pkghist-0.6.0.tar.gz::https://github.com/herzrasen/pkghist/releases/download/v0.6.0/pkghist.tar.gz
-	sha1sums = 80c890b66e844fbc44e412966580dc8994a06d38
+	source = pkghist-0.6.1.tar.gz::https://github.com/herzrasen/pkghist/releases/download/v0.6.1/pkghist.tar.gz
+	sha1sums = 8753dcc85c2dd549ae1e3186d407f948a6590eba
 
 pkgname = pkghist-bin
 

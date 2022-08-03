@@ -1,6 +1,6 @@
 # Maintainer: herzrasen <dennis@herzrasen.me>
 pkgname=pkghist-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Query your pacman logs. Precompiled binary."
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('pkghist')
 conflicts=('pkghist')
 
 source=("${pkgname/-bin/}-${pkgver}.tar.gz::https://github.com/herzrasen/${pkgname/-bin/}/releases/download/v${pkgver}/${pkgname/-bin/}.tar.gz")
-sha1sums=('80c890b66e844fbc44e412966580dc8994a06d38')
+sha1sums=('8753dcc85c2dd549ae1e3186d407f948a6590eba')
 
 package() {
   _pkg="${pkgname/-bin/}" 
