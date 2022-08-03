@@ -3,7 +3,7 @@
 
 _pkgname='got'
 pkgname="${_pkgname}-bin"
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='CLI tool to download large files faster than cURL and Wget'
 arch=('x86_64' 'armv6h' 'aarch64' 'i686')
@@ -17,10 +17,10 @@ source_armv6h=("${_pkgname}-${pkgver}-armv6h.tar.gz::${url}/releases/download/v$
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_arm64.tar.gz")
 source_i686=("${_pkgname}-${pkgver}-i686.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_32bit.tar.gz")
 
-sha256sums_x86_64=('162ec0115478f88d47de6a1a32d6003d41d2c6134504a8588b3db32a7d10d547')
-sha256sums_armv6h=('e0c8a0e2fb0a8d0c20f39028b61b9960b09c9e4ea34fec69830b8c13e583878b')
-sha256sums_aarch64=('b2be2ad1ef419865548633efc9e1c358bb8897bd3ff206cf6531f14e5e97adfe')
-sha256sums_i686=('b2be2ad1ef419865548633efc9e1c358bb8897bd3ff206cf6531f14e5e97adfe')
+sha256sums_x86_64=('b8a31b3e7de91f150cb87ed1e22bd2313bba06653add3b0342108cb4fcac9549')
+sha256sums_armv6h=('37d99890495c9fd04458115167cbdc6ab7ed70413762220b824cc9f5984b2c52')
+sha256sums_aarch64=('c14a0686c47e9f9eb68aa8c40fc45bcfefbec1ca1b5b22db607166148236c83a')
+sha256sums_i686=('da57a36dc8fb193eb558528832f399c0f1b0d022aa110556b3853b34873dd0ca')
 
 package() {
   install -Dvm755 "${_pkgname}" -t "${pkgdir}/usr/bin"
