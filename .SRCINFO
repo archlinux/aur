@@ -1,13 +1,13 @@
 pkgbase = cosmosvanity-bin
 	pkgdesc = CLI tool for generating Cosmos vanity addresses
-	pkgver = 0.2.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/hukkin/cosmosvanity
 	arch = x86_64
 	license = MIT
 	provides = cosmosvanity
 	conflicts = cosmosvanity
-	source_x86_64 = https://github.com/hukkin/cosmosvanity/releases/download/0.2.1/cosmosvanity_0.2.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 676c239dae809d1698f629af1fdfcf1672cf4562f59841f06d2fe0cdd2025c61
+	source_x86_64 = https://github.com/hukkin/cosmosvanity/releases/download/1.0.0/cosmosvanity_1.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8ed9e168960431c79edefa8ef429f4539d0172a7671ca85c6af05a9520f9862c
 
 pkgname = cosmosvanity-bin
