@@ -17,7 +17,7 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -d "$pkgdir"/usr/share/licenses/gtklock
-	install -m644 LICENCE "$pkgdir"/usr/share/licenses/gtklock/LICENCE
+	install -d "$pkgdir"/usr/share/licenses/"$pkgname"
+	install -m644 LICENCE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENCE
 	make PREFIX="/usr" DESTDIR="$pkgdir/" install
 }
