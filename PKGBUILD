@@ -1,11 +1,14 @@
-# Maintainer: Sebastian <sebastianmontoya209@protonmail.com>
+# Maintainer: randomnobody <nobody "at" 420blaze "dot" it>
+# Contributor: Sebastian <sebastianmontoya209@protonmail.com>
+# Contributor: Finlay Maroney <finman292004@protonmail.com>
+# Contributor: Marc Boocha <marcboocha@gmail.com>
 
 _target=x86_64-elf
 _sysroot=/usr/lib/${_target}
 _pkgname=binutils
 
 pkgname=$_target-${_pkgname}
-pkgver=2.37
+pkgver=2.38
 pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the x86_64-elf target'
 arch=(x86_64)
@@ -16,7 +19,7 @@ options=(!emptydirs !docs)
 source=("https://mirrors.kernel.org/gnu/binutils/binutils-$pkgver.tar.xz"
         "https://mirrors.kernel.org/gnu/binutils/binutils-$pkgver.tar.xz.sig")
 
-sha256sums=('820d9724f020a3e69cb337893a0b63c2db161dadcb0e06fc11dc29eb1e84a32c'
+sha256sums=('e316477a914f567eccc34d5d29785b8b0f5a10208d36bbacedcc39048ecfe024'
             'SKIP')
 _basedir=binutils-$pkgver
 validpgpkeys=("3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F")
