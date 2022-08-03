@@ -1,6 +1,6 @@
 pkgbase = notepadnext
 	pkgdesc = Cross-platform reimplementation of Notepad++
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/dail8859/NotepadNext
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = notepadnext
 	makedepends = qt6-tools
 	depends = qt6-5compat
 	depends = hicolor-icon-theme
-	source = notepadnext::git+https://github.com/dail8859/NotepadNext#tag=v0.5.3
+	source = notepadnext::git+https://github.com/dail8859/NotepadNext#tag=v0.5.4
 	source = git+https://github.com/alex-spataru/QSimpleUpdater
 	source = git+https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System
 	source = git+https://github.com/editorconfig/editorconfig-core-qt
