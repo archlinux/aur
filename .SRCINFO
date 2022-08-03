@@ -1,6 +1,6 @@
 pkgbase = timeline-git
 	pkgdesc = A plain-text based distributed social network build on top of git configuration manager
-	pkgver = r62.10bb4af
+	pkgver = r103.ccd3fc3
 	pkgrel = 1
 	url = https://ajdiaz.me/timeline/
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = timeline-git
 	conflicts = timeline
 	source = timeline::git+https://github.com/ajdiaz/timeline.git
 	source = timeline.service
-	sha256sums = SKIP
-	sha256sums = ef063a64b2e38988cf7b7395161351e537e50719f4d77fa3d180e25b911371fd
+	b2sums = SKIP
+	b2sums = 1ea9905ee31a8f722111e7aad4197326f5cbeffa7953c1678432172af1fbd72c8363ea00a94d2c1f3b332a3e85f6eeadd551a05b62ac00c3d42562b333e475f9
 
 pkgname = timeline-git
-

@@ -2,7 +2,7 @@
 
 _pkgname=timeline
 pkgname=${_pkgname}-git
-pkgver=r62.10bb4af
+pkgver=r103.ccd3fc3
 pkgrel=1
 pkgdesc="A plain-text based distributed social network build on top of git configuration manager"
 arch=('any')
@@ -13,8 +13,8 @@ makedepends=('pandoc')
 conflicts=('timeline')
 source=("${_pkgname}"::"git+https://github.com/ajdiaz/${_pkgname}.git"
         "${_pkgname}.service")
-sha256sums=('SKIP'
-            'ef063a64b2e38988cf7b7395161351e537e50719f4d77fa3d180e25b911371fd')
+b2sums=('SKIP'
+        '1ea9905ee31a8f722111e7aad4197326f5cbeffa7953c1678432172af1fbd72c8363ea00a94d2c1f3b332a3e85f6eeadd551a05b62ac00c3d42562b333e475f9')
 
 pkgver() {
   cd "${_pkgname}"
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
   cd "${_pkgname}"
-  make clean && make
+  make clean && make tl && make doc
   cd man
   gzip -fk *.[0-9]
 }
