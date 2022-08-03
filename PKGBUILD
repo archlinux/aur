@@ -1,6 +1,6 @@
 pkgname=sui
 pkgver=0.6.3.devnet
-pkgrel=1
+pkgrel=2
 pkgdesc='Sui, a next-generation smart contract platform with high throughput, low latency, and an asset-oriented programming model powered by the Move programming language.'
 url='https://sui.io'
 arch=('x86_64')
@@ -39,9 +39,11 @@ package() {
   install -Dm 755 "target/release/${pkgname}-node" "${pkgdir}/usr/bin/${pkgname}d"
 
   install -Dm644 "../${pkgname}d.conf" -t "$pkgdir/etc"
-  install -Dm644 "../${pkgname}.sysusers" -t "${pkgdir}/usr/lib/sysusers.d"
-  install -Dm644 "../${pkgname}.tmpfiles" -t "${pkgdir}/usr/lib/tmpfiles.d"
+  install -Dm644 "../${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+  install -Dm644 "../${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
   install -Dm644 "../${pkgname}d.service" -t "${pkgdir}/usr/lib/systemd/system"
+
+  install -Dm644 "../genesis.blob" -t "${pkgdir}/var/lib/${pkgname}"
 
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
