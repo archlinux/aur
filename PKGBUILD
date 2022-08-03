@@ -8,7 +8,7 @@ pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd' 'apparmor')
 optdepends=('bash-completion: bash completion support'
             'xdg-desktop-portal: desktop integration')
-pkgver=2.56.3
+pkgver=2.57
 pkgrel=1
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/snapcore/snapd"
@@ -20,7 +20,7 @@ install=snapd.install
 source=(
     "$pkgname-$pkgver.tar.xz::https://github.com/snapcore/${pkgname}/releases/download/${pkgver}/${pkgname}_${pkgver}.vendor.tar.xz"
 )
-sha256sums=('302747ed9e854af1740ee6660be7a17fd36fb4de0e1dedf42a4020b78c6c06fa')
+sha256sums=('b0e7df310dc434a1023846a62cf2c6338f24b9a7a9101189d1d04ae148029919')
 
 
 _gourl=github.com/snapcore/snapd
@@ -56,8 +56,6 @@ build() {
   # build only.
   GOFLAGS=""
   GOFLAGS_SNAP="-tags nomanagers"
-  # snapd does not support modules yet, explicitly disable Go modules
-  export GO111MODULE=off
 
   export CGO_ENABLED="1"
   export CGO_CFLAGS="${CFLAGS}"
@@ -70,13 +68,14 @@ build() {
   # because argument expansion with quoting in bash is hard, and -ldflags=-extldflags='-foo'
   # is not exactly the same as -ldflags "-extldflags '-foo'" use the array trick
   # to pass exactly what we want
-  flags=(-buildmode=pie -ldflags "-w -s -linkmode external -extldflags '$LDFLAGS'" -trimpath)
-  staticflags=(-buildmode=pie -ldflags "-w -s -linkmode external -extldflags '$LDFLAGS -static'" -trimpath)
+  flags=(-buildmode=pie -ldflags "-w -s -linkmode external -extldflags '$LDFLAGS'" -trimpath -mod=vendor)
+  staticflags=(-buildmode=pie -ldflags "-w -s -linkmode external -extldflags '$LDFLAGS -static'" -trimpath -mod=vendor)
   # Build/install snap and snapd
   go build "${flags[@]}" -o "$srcdir/go/bin/snap" $GOFLAGS_SNAP "${_gourl}/cmd/snap"
   go build "${flags[@]}" -o "$srcdir/go/bin/snapd" $GOFLAGS "${_gourl}/cmd/snapd"
   go build "${flags[@]}" -o "$srcdir/go/bin/snap-seccomp" $GOFLAGS "${_gourl}/cmd/snap-seccomp"
   go build "${flags[@]}" -o "$srcdir/go/bin/snap-failure" $GOFLAGS "${_gourl}/cmd/snap-failure"
+  go build "${flags[@]}" -o "$srcdir/go/bin/snapd-apparmor" $GOFLAGS "${_gourl}/cmd/snapd-apparmor"
   # build snap-exec and snap-update-ns completely static for base snaps
   go build "${staticflags[@]}" -o "$srcdir/go/bin/snap-update-ns" $GOFLAGS "${_gourl}/cmd/snap-update-ns"
   go build "${staticflags[@]}" -o "$srcdir/go/bin/snap-exec" $GOFLAGS "${_gourl}/cmd/snap-exec"
@@ -119,9 +118,6 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   export GOPATH="$srcdir/go"
-  # snapd does not use modules, setting GO111MODULE=on in the environment breaks
-  # the build
-  unset GO111MODULE
 
   # Install bash completion
   install -Dm644 data/completion/bash/snap \
@@ -141,8 +137,6 @@ package() {
      SYSTEMDSYSTEMUNITDIR=/usr/lib/systemd/system \
      SNAP_MOUNT_DIR=/var/lib/snapd/snap \
      DESTDIR="$pkgdir"
-  # no tweaks for sudo are needed
-  rm -rfv "$pkgdir/etc/sudoers.d"
 
   # Install polkit policy
   install -Dm644 data/polkit/io.snapcraft.snapd.policy \
@@ -154,6 +148,7 @@ package() {
   install -Dm755 "$srcdir/go/bin/snapd" "$pkgdir/usr/lib/snapd/snapd"
   install -Dm755 "$srcdir/go/bin/snap-seccomp" "$pkgdir/usr/lib/snapd/snap-seccomp"
   install -Dm755 "$srcdir/go/bin/snap-failure" "$pkgdir/usr/lib/snapd/snap-failure"
+  install -Dm755 "$srcdir/go/bin/snapd-apparmor" "$pkgdir/usr/lib/snapd/snapd-apparmor"
   install -Dm755 "$srcdir/go/bin/snap-update-ns" "$pkgdir/usr/lib/snapd/snap-update-ns"
   install -Dm755 "$srcdir/go/bin/snap-exec" "$pkgdir/usr/lib/snapd/snap-exec"
   # Ensure /usr/bin/snapctl is a symlink to /usr/libexec/snapd/snapctl
