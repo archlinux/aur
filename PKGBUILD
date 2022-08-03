@@ -18,7 +18,7 @@ source=("git+https://github.com/CFSworks/nvml_fix.git"
 		)
 sha256sums=('SKIP'
 '51c2e28e88193a8b2435ff23eb4d1818f8cdaaba32f7c2562862fae2223d3a35'
-'5491bb06bf06d52b15457454f21a06041454545e6e814bea1af444d2122ab490'
+'c65e56533719917f1d22c6c01dab9ac93ac88a6e8f45e7c5442ced53081c336f'
 'bb8fc6e57cf6d7ac1e1af0bf33099e885e0fbbd14c2a224cd8b832b9b8a3c86d'
 )
 
