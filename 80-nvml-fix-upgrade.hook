@@ -1,0 +1,9 @@
+[Trigger]
+Type = Package
+Operation = Upgrade
+Target = nvidia*-utils*
+
+[Action]
+Description = Re-Applying nvml_fix...
+When = PostTransaction
+Exec = /bin/sh -c 'cd /usr/src/nvml-fix-1 && make TARGET_VER=$(pacman -Qs nvidia-utils | head -n1 | awk \'{print $2}\' | sed  \'s/-[0-9]$//\') libdir=/usr/lib && install -Dm644 libnvidia-ml.so.1 /usr/lib/libnvidia-ml.so.1.fix'

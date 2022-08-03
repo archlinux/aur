@@ -12,11 +12,15 @@ provides=(${pkgname%-git})
 options=(!ccache)
 depends=('nvidia-utils')
 source=("git+https://github.com/CFSworks/nvml_fix.git"
-		"nvml-fix-install.hook"
-		"nvml-fix-upgrade.hook")
+		"80-nvml-fix-install.hook"
+		"80-nvml-fix-upgrade.hook"
+		"81-nvml-fix-reapply.hook"
+		)
 sha256sums=('SKIP'
-'51c2e28e88193a8b2435ff23eb4d1818f8cdaaba32f7c2562862fae2223d3a35'
-'93aba7a7d07593672cda2b65ae7d2de2230e6da7422b913b5e6c76adafe745b2')
+'76254dcf6673e8fe6ff20cbe3af2e7379d300551835c7b510ec840602e7ca5bc'
+'5491bb06bf06d52b15457454f21a06041454545e6e814bea1af444d2122ab490'
+'bb8fc6e57cf6d7ac1e1af0bf33099e885e0fbbd14c2a224cd8b832b9b8a3c86d'
+)
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -32,7 +36,13 @@ build() {
 	make TARGET_VER=$NVIDIA_VERSION libdir=/usr/lib
 }
 package() {
+	install -Dm644 "${srcdir}/${_pkgname}/Makefile" "${pkgdir}/usr/src/nvml-fix-1/Makefile"
+	install -Dm644 "${srcdir}/${_pkgname}/empty.c" "${pkgdir}/usr/src/nvml-fix-1/empty.c"
+	install -Dm644 "${srcdir}/${_pkgname}/nvml_fix.c" "${pkgdir}/usr/src/nvml-fix-1/nvml_fix.c"
+	install -Dm644 "${srcdir}/${_pkgname}/nvml_v9.h" "${pkgdir}/usr/src/nvml-fix-1/nvml_v9.h1"
+	install -Dm644 "${srcdir}/${_pkgname}/nvml_v3.h" "${pkgdir}/usr/src/nvml-fix-1/nvml_v3.h1"
 	install -Dm755 "${srcdir}/${_pkgname}/libnvidia-ml.so.1" "${pkgdir}/usr/lib/libnvidia-ml.so.1.fix"
-	install -Dm644 "${srcdir}/nvml-fix-install.hook" "${pkgdir}/usr/share/libalpm/hooks/nvml-fix-install.hook"
-	install -Dm644 "${srcdir}/nvml-fix-upgrade.hook" "${pkgdir}/usr/share/libalpm/hooks/nvml-fix-upgrade.hook"
+	install -Dm644 "${srcdir}/80-nvml-fix-install.hook" "${pkgdir}/usr/share/libalpm/hooks/80-nvml-fix-upgrade.hook"
+	install -Dm644 "${srcdir}/80-nvml-fix-upgrade.hook" "${pkgdir}/usr/share/libalpm/hooks/80-nvml-fix-upgrade.hook"
+	install -Dm644 "${srcdir}/81-nvml-fix-reapply.hook" "${pkgdir}/usr/share/libalpm/hooks/81-nvml-fix-install.hook"
 }
