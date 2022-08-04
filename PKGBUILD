@@ -3,7 +3,7 @@
 # Contributor: Dan Fuhry <dan@fuhry.com>
 
 pkgname=envoyproxy
-pkgver=1.21.1
+pkgver=1.23.0
 pkgrel=1
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
 arch=('i686' 'x86_64')
@@ -20,15 +20,14 @@ makedepends=(
     'llvm'
     'perl'
     'python'
+    'libxcrypt-compat'
 )
 source=(
     "https://github.com/$pkgname/envoy/archive/v$pkgver.tar.gz"
     use_bazelisk.patch
-    fix_wee8_build.patch
 )
-sha512sums=('520fc2958e48b4e472f855bc5e0a923c25ed44091d3d137ed981457eeb98b29fa468efa0958e9b6555e6177cf881ad6e3909813fe8e0bddfafb2ed17a128a0c7'
-            '248d0903c0aaa680065cdb308068e7f999f2ba7e2ffbc3b743715d2db968858f41cf104c59e1e98d6cda74baea54755e7c9edc29711c3b1daa87d63107ee4017'
-            'e16e4949c7b66797f85d4e9547f4e47be689c2e3eb320514ba83a2c54f22f860bfc5a729b3be56b89c31336f0e414880d373b5f4d1f8b859710f80da650e9c31')
+sha512sums=('050a2dbae6c0b3666a30331b8abf90d98724e7c1cc287fbdc10418d3cde85bdbd923d1a0d81ea280cccc43cbbf22731577a22fc0003cb57dd438a7fe19444426'
+            '248d0903c0aaa680065cdb308068e7f999f2ba7e2ffbc3b743715d2db968858f41cf104c59e1e98d6cda74baea54755e7c9edc29711c3b1daa87d63107ee4017')
 
 
 prepare() {
