@@ -4,7 +4,7 @@
 _pkgname="vita3k"
 _remoteurl="https://github.com/Vita3K/Vita3K"
 pkgname="${_pkgname}-git"
-pkgver=r2746.75b12013
+pkgver=r2780.53d40544
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
