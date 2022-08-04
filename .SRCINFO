@@ -1,6 +1,6 @@
 pkgbase = surge-xt-bin
 	pkgdesc = Surge XT Synthesizer Plugin (VST3 & LV2, original binary release)
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://surge-synthesizer.github.io
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = surge-xt-bin
 	options = !strip
 	options = !libtool
 	options = !emptydirs
-	source = https://github.com/surge-synthesizer/releases-xt/releases/download/1.0.1/surge-xt-linux-x64-1.0.1.deb
-	md5sums = 7b8514cade7ef8399bd22c4b706dc330
+	source = https://github.com/surge-synthesizer/releases-xt/releases/download/1.1.0/surge-xt-linux-x64-1.1.0.deb
+	md5sums = 24e2489b22d93fb6dcd8097f98fb47b9
 
 pkgname = surge-xt-bin
