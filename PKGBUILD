@@ -1,15 +1,15 @@
-# Maintainer: niyanhhhhh <2093615664@qq.com>
+# Maintainer: splatch
 
 pkgname=mvnd
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Maven Deamon, which aims at providing faster Maven builds using techniques known from Gradle and Takari."
 arch=(x86_64)
-url=https://github.com/mvndaemon/mvnd
+url=https://github.com/apache/maven-mvnd
 license=('Apache')
 depends=('java-environment>=7' 'bash' 'maven')
-source=("${pkgname}-${pkgver}.zip::https://github.com/mvndaemon/mvnd/releases/download/${pkgver}/${pkgname}-${pkgver}-linux-amd64.zip")
-sha256sums=('ac0b276d4d7472d042ddaf3ad46170e5fcb9350981af91af6c5c13e602a07393')
+source=("${pkgname}-${pkgver}.zip::https://github.com/apache/maven-mvnd/releases/download/${pkgver}/maven-mvnd-${pkgver}-linux-amd64.zip")
+sha256sums=('ab959b606455e0576c5cf39d5f8252f5d2b4d67978a84cd669720f1c2d18fb73')
 install=.install
 
 package() {
