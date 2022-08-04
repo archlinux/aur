@@ -1,0 +1,44 @@
+diff --git a/pure/etc/flycheck-pure.el b/pure/etc/flycheck-pure.el
+index 152489ae..448d12d2 100644
+--- a/pure/etc/flycheck-pure.el
++++ b/pure/etc/flycheck-pure.el
+@@ -60,7 +60,7 @@
+   "A Pure syntax checker using the Pure interpreter.
+ 
+ See URL `https://agraef.github.io/pure-lang/'."
+-  :command ("pure" "--check" (option-flag "-w" flycheck-pure-warnings) source)
++  :command ("pure" "--check" "-I." (option-flag "-w" flycheck-pure-warnings) source)
+   :error-patterns
+   ((warning line-start (file-name) ", line " line ": warning: " (message) line-end)
+    (error line-start (file-name) ", line " line ": " (message) line-end))
+diff --git a/pure/etc/pure-mode.el.in b/pure/etc/pure-mode.el.in
+index 221bfa52..5807a43a 100644
+--- a/pure/etc/pure-mode.el.in
++++ b/pure/etc/pure-mode.el.in
+@@ -874,7 +874,7 @@ Commands
+   "Starts a pdsend process to communicate with Pd via UDP port 4711."
+   (interactive)
+   (start-process "pdsend" nil "pdsend" "4711" "localhost" "udp")
+-  (process-kill-without-query (get-process "pdsend")))
++  (set-process-query-on-exit-flag (get-process "pdsend") nil))
+ 
+ (defun pd-pure-send-stop-process ()
+   "Stops a previously started pdsend process."
+@@ -1421,7 +1421,7 @@ sending input, manipulating the command history, etc."
+ 	    pure-last-dir dir)
+       (set-process-sentinel (get-process "pure-eval") 'pure-eval-sentinel)
+       (if (not pure-query-before-kill)
+-	  (process-kill-without-query (get-process "pure-eval")))
++	  (set-process-query-on-exit-flag (get-process "pure-eval") nil))
+       ;; switch to and go to the end of the eval buffer
+       (pop-to-buffer "*pure-eval*")
+       (goto-char (point-max))
+@@ -2270,7 +2270,7 @@ If prefix ARG is not nil, remove an existing tracepoint instead."
+ 	   (indent-to (eval (cdr indent-fun)))
+ 	   ))))
+ 
+-(defun pure-alignment-column (&optional lim &optional flag)
++(defun pure-alignment-column (&optional lim flag)
+   "Look for an alignment column (`=') in the vicinity of
+ point. LIM, if given, limits the search to the region between
+ point and LIM. Return a list of two elements: (EQUALS-COL
