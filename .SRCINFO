@@ -1,7 +1,7 @@
 pkgbase = an-anime-game-launcher-gtk-bin
 	pkgdesc = An GTK4 alternative to an-anime-game-launcher-bin
 	pkgver = 1.0.0_rc2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/an-anime-team/alternatives/an-anime-game-launcher-gtk
 	arch = x86_64
 	license = GPL3

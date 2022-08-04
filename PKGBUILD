@@ -2,7 +2,7 @@
 
 pkgname=an-anime-game-launcher-gtk-bin
 pkgver=1.0.0_rc2
-pkgrel=1
+pkgrel=2
 pkgdesc="An GTK4 alternative to an-anime-game-launcher-bin"
 url="https://gitlab.com/an-anime-team/alternatives/an-anime-game-launcher-gtk"
 conflicts=("an-anime-game-launcher-bin" "an-anime-game-launcher")
@@ -48,10 +48,10 @@ prepare() {
 package() {
     install -dm755 "${pkgdir}/usr/lib/${pkgname}"
     install -dm755 "${pkgdir}/usr/bin/"
-    cp -dr --no-preserve=ownership an-anime-game-launcher "${pkgdir}/usr/lib/${pkgname}/"
+    cp an-anime-game-launcher "${pkgdir}/usr/lib/${pkgname}/"
 
     install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/an-anime-game-launcher.png"
-    ln -s "${pkgdir}/usr/lib/${pkgname}/an-anime-game-launcher" "${pkgdir}/usr/bin/an-anime-game-launcher"
+    ln -s "/usr/lib/${pkgname}/an-anime-game-launcher" "${pkgdir}/usr/bin/an-anime-game-launcher"
     install -Dm644 "${srcdir}/an-anime-game-launcher.desktop" -t "${pkgdir}/usr/share/applications"
 }
 
