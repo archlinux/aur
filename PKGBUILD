@@ -1,39 +1,29 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ffmpeg-full-git
-pkgver=5.1.r107098.g4d45f5acbd
+pkgver=5.2.r107654.g101e154c28
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac; git version)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
 license=('custom: nonfree and unredistributable')
-depends=(
-    # official repositories:
-        'alsa-lib' 'avisynthplus' 'bzip2' 'frei0r-plugins' 'libgcrypt' 'gmp' 'gnutls'
-        'ladspa' 'lcms2' 'aom' 'aribb24' 'libass' 'libbluray' 'libbs2b' 'libcaca'
-        'celt' 'libcdio-paranoia' 'codec2' 'dav1d' 'libdc1394' 'libavc1394' 'libfdk-aac'
-        'fontconfig' 'freetype2' 'fribidi' 'glslang' 'spirv-tools' 'libgme' 'gsm'
-        'libiec61883' 'libilbc' 'jack' 'libjxl-git' 'kvazaar' 'libmodplug' 'lame'
-        'opencore-amr' 'openjpeg2' 'opus' 'libplacebo' 'libpulse' 'librabbitmq-c'
-        'rav1e' 'librsvg' 'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex'
-        'srt' 'libssh' 'svt-av1' 'svt-hevc' 'svt-vp9' 'tesseract' 'libtheora' 'twolame'
-        'v4l-utils' 'vid.stab' 'vmaf' 'libvorbis' 'libvpx' 'libwebp' 'x264' 'x265'
-        'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz'
-        'libmysofa' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
-        'vulkan-icd-loader' 'libxv' 'libx11' 'libxext' 'zlib' 'cuda'
-        'libomxil-bellagio' 'libdrm' 'intel-media-sdk' 'libva' 'libvdpau'
-    # AUR:
-        'chromaprint-fftw' 'davs2' 'flite1' 'libklvanc-git' 'openh264'
-        'libopenmpt-svn' 'librist' 'shine' 'uavs3d-git' 'vo-amrwbenc' 'xavs'
-        'xavs2' 'pocketsphinx' 'rockchip-mpp' 'lensfun-git'
-)
-makedepends=(
-    # official repositories:
-        'git' 'nasm' 'opencl-headers' 'vulkan-headers' 'ffnvcodec-headers' 'clang'
-        'amf-headers'
-    # AUR:
-        'decklink-sdk'
-)
+depends=('alsa-lib' 'aom' 'aribb24' 'avisynthplus' 'bzip2' 'celt' 'codec2' 'cuda'
+         'dav1d' 'fontconfig' 'freetype2' 'fribidi' 'glslang' 'frei0r-plugins' 'gmp'
+         'gnutls' 'gsm' 'intel-media-sdk' 'jack' 'kvazaar' 'ladspa' 'lame' 'libavc1394'
+         'lcms2' 'lensfun-git' 'libass' 'libbluray' 'libbs2b' 'libcaca' 'libcdio-paranoia'
+         'libdc1394' 'libdrm' 'libfdk-aac' 'libgme' 'libgl' 'libgcrypt' 'libiec61883'
+         'libilbc' 'libjxl-git' 'libmodplug' 'libmysofa' 'libomxil-bellagio' 'libplacebo'
+         'libpulse' 'librabbitmq-c' 'librsvg' 'libssh' 'libsoxr' 'libtheora' 'libva'
+         'libvdpau' 'libvorbis' 'libvpx' 'libx11' 'libxcb' 'libxext' 'libxml2' 'libxv'
+         'libwebp' 'lilv' 'lv2' 'ocl-icd' 'openal' 'opencore-amr' 'openh264' 'openjpeg2'
+         'libopenmpt' 'opus' 'rav1e' 'rubberband' 'rtmpdump' 'sdl2' 'smbclient' 'snappy'
+         'sndio' 'speex' 'spirv-tools' 'srt' 'svt-av1' 'svt-hevc' 'svt-vp9' 'tesseract'
+         'twolame' 'v4l-utils' 'vapoursynth' 'vid.stab' 'vmaf' 'vulkan-icd-loader' 'x264'
+         'x265' 'xvidcore' 'xz' 'zeromq' 'zimg' 'zlib' 'zvbi'
+         'chromaprint-fftw' 'davs2' 'flite1' 'libklvanc-git' 'librist' 'pocketsphinx'
+         'rockchip-mpp' 'shine' 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2')
+makedepends=('git' 'clang' 'amf-headers' 'ffnvcodec-headers' 'nasm' 'opencl-headers'
+             'vulkan-headers' 'decklink-sdk')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libswscale.so' 'libswresample.so'
           'ffmpeg' 'ffmpeg-full' 'ffmpeg-git')
@@ -51,7 +41,7 @@ sha256sums=('SKIP'
             '4da3826aa370572273ef9fb4c0bf2c93a840595b07a671a0412ad0dc9ed8d689'
             'e310eedb3dc88c8ad6ffcd6cb6bde1f593ded330ea99b0356724c9d22bcfde4c'
             '2df82046908015bf26bc1303275cf52ba01fa380029a54ea6415373e389e423c'
-            '0d6b53940a81ebaf4e6b1a2208a178eb8a824d6a3d8e863bf9c4c7e0060d88ec'
+            'b1d68f626168f2409a4b0987acf5b208e7ced2ddab49b11990a10f458d377e9a'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 prepare() {
