@@ -2,12 +2,12 @@
 
 pkgname='openwebrx'
 pkgver='1.2.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('i686' 'x86_64')
 url='https://www.openwebrx.de/'
 license=('AGPL3')
-depends=('csdr>=0.17' 'rtl-sdr' 'js8py' 'owrx_connector' 'netcat')
+depends=('csdr>=0.17' 'python-csdr' 'rtl-sdr' 'python-js8py' 'owrx_connector' 'netcat')
 optdepends=('sox' 'mbelib' 'digiham' 'dsd' 'codec2' 'direwolf')
 backup=('etc/openwebrx/config_webrx.py')
 source=("https://github.com/jketterl/openwebrx/archive/$pkgver.tar.gz")
@@ -29,4 +29,5 @@ package() {
     find htdocs -type f -exec install -Dm 0644 "{}" "${pkgdir}/usr/lib/openwebrx/{}" \;
     install -Dm 0644 config_webrx.py ${pkgdir}/etc/openwebrx/config_webrx.py
     install -Dm 0644 systemd/openwebrx.service ${pkgdir}/usr/lib/systemd/system/openwebrx.service
+    install -dm 0755 -o openwebrx -g openwebrx ${pkgdir}/var/lib/openwebrx
 }
