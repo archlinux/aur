@@ -1,14 +1,14 @@
 # Maintainer: Albert Graef <aggraef at gmail.com>
 
 pkgname=faustlive-git
-pkgver=2.5.5.r978.baf1175
+pkgver=2.5.11.r1013.5c1b850
 pkgrel=1
 epoch=2
 pkgdesc="A graphical frontend to the Faust compiler."
 arch=('i686' 'x86_64')
 url="http://faust.grame.fr/"
 license=('GPL')
-depends=('qt5-base' 'faust' 'jack2' 'qrencode' 'libmicrohttpd' 'openssl' 'liblo' 'curl')
+depends=('qt5-base' 'faust' 'jack' 'qrencode' 'libmicrohttpd' 'openssl' 'liblo' 'curl')
 makedepends=('git')
 provides=('faustlive')
 conflicts=('faustlive')
