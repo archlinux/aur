@@ -4,7 +4,7 @@
 
 pkgname=lib32-libspiro
 _pkgbase=libspiro
-pkgver=20200505
+pkgver=20220722
 pkgrel=1
 pkgdesc='Simplifies the drawing of beautiful curves (32-bit)'
 url="https://github.com/fontforge/libspiro"
@@ -12,7 +12,7 @@ license=('GPL')
 arch=('x86_64')
 depends=('libspiro')
 source=("https://github.com/fontforge/${_pkgbase}/archive/${pkgver}.tar.gz")
-sha256sums=('00be530b5c0ea9274baadf6c05521f0b192d4c3c1db636ac8b08efd44aaea8f5')
+sha256sums=('22409086ac07b482267c5328acde1956ca84cee8b4fa6c386f89e7014ea331da')
 
 prepare() {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
