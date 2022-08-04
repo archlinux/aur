@@ -17,7 +17,7 @@ pkgname=(
 )
 pkgdesc="A generic and open source machine emulator and virtualizer. Git version."
 pkgver=7.1.0.rc1.r4.g2480f3bbd0
-pkgrel=1
+pkgrel=2
 epoch=16
 arch=(i686 x86_64)
 license=(GPL2 LGPL2.1)
@@ -312,7 +312,7 @@ _package() {
       # provided by seabios package
       bios.bin|bios-256k.bin|vgabios-cirrus.bin|vgabios-qxl.bin|\
       vgabios-stdvga.bin|vgabios-vmware.bin|vgabios-virtio.bin|vgabios-bochs-display.bin|\
-      vgabios-ramfb.bin) rm "$_blob"; continue ;;
+      vgabios-ramfb.bin|bios-microvm.bin|vgabios-ati.bin) rm "$_blob"; continue ;;
 
       # provided by edk2-ovmf package
       edk2-*) rm "$_blob"; continue ;;
