@@ -5,13 +5,13 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=python-djlint
 epoch=
-pkgver=1.9.2
+pkgver=1.9.4
 pkgrel=00
 pkgdesc='HTML Template Linter and Formatter'
 arch=(any)
 url=https://github.com/Riverside-Healthcare/djlint
 license=(GPL3)
-depends=(python python-click python-colorama python-coverage python-cssbeautifier python-html-tag-names python-html-void-elements python-importlib-metadata python-jsbeautifier python-pathspec python-pytest python-pytest-cov python-yaml python-regex python-tomli python-tqdm)
+depends=(python python-click python-colorama python-cssbeautifier python-html-tag-names python-html-void-elements python-importlib-metadata python-jsbeautifier python-pathspec python-yaml python-regex python-tomli python-tqdm)
 ## EXTRA_DEPENDS ##
 makedepends=(python-pip)
 checkdepends=()
@@ -20,9 +20,9 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/75/47/78a1c11bc9bb04848ab51316344d7d0fddb7a1a2634223bc0b7d9a32d909/djlint-1.9.2-py3-none-any.whl)
-md5sums+=(2a1117dbb93a2c598e7d6c33cf71a45c)
-noextract+=(djlint-1.9.2-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/7e/fd/9e2d05d6f0fea2bb16877800466dba51de6562c989fc9967cfbfdc243449/djlint-1.9.4-py3-none-any.whl)
+md5sums+=(3b5f4c3c791e519dfaa15b415aff801c)
+noextract+=(djlint-1.9.4-py3-none-any.whl)
 source+=(LICENSE)
 md5sums+=(97a733ff40c50b4bfc74471e1f6ca88b)
 
