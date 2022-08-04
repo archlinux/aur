@@ -2,43 +2,42 @@
 
 pkgname=hdfview
 _pkgname=HDFView
-pkgver=3.1.2
+pkgver=3.2.0
 pkgrel=1
-pkgdesc="a GUI browser for reading hdf files"
+pkgdesc="A visual tool for browsing and editing HDF4 and HDF5 files."
 arch=('x86_64')
-url="https://portal.hdfgroup.org/display/support/Download+HDFView"
+url="https://portal.hdfgroup.org/display/HDFVIEW/HDFView"
 license=('custom')
-depends=(
-hdf5110
-java-environment-openjdk=15
-)
+depends=(hdf5 java-runtime)
+makedepends=(ant gendesk hdf4 inetutils 'java-environment>=15')
 optdepends=(hdf4)
-replaces=('hdfview-beta')
-conflicts=('hdfview-beta')
-makedepends=(ant gendesk)
-source=("${pkgname}-${pkgver}.tar.gz::https://support.hdfgroup.org/ftp/HDF5/releases/HDF-JAVA/hdfview-${pkgver}/src/hdfview-${pkgver}.tar.gz")
-sha256sums=('ec0c738464475de5e9ac05505760fa5a75cc0185fa4c056838ff04e4464cdc4f')
+source=("https://support.hdfgroup.org/ftp/HDF5/releases/HDF-JAVA/hdfview-${pkgver}/src/hdfview-${pkgver}.tar.gz")
+sha256sums=('d3c0deff2cbd959508c4da9c712da72fb204ff6818a3434f00a7071f8e8cf2b8')
 
-prepare() {
-  cd hdfview-${pkgver}
+#check() {
+#  cd "${srcdir}/${pkgname}-${pkgver}"
+#
+#  export HDFLIBS=/opt/hdf4
+#  export HDF5LIBS=/usr
+#  ant junit
+#}
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  export HDFLIBS=/opt/hdf4
+  export HDF5LIBS=/usr
+  ant createJPackage
+
   gendesk -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name ${_pkgname}
 }
 
-check(){
-  cd hdfview-${pkgver}
-  export HDFLIBS=/opt/hdf4
-  export HDF5LIBS=/opt/hdf5110
-  ant junit
-}
-
 package() {
-  cd hdfview-${pkgver}
-  export HDFLIBS=/opt/hdf4
-  export HDF5LIBS=/opt/hdf5110
-  ant createJPackage
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-  mkdir -p "${pkgdir}/opt"
+  mkdir -p "${pkgdir}/opt/"
   mkdir -p "${pkgdir}/usr/bin"
+
   cp -a build/dist/${_pkgname} "${pkgdir}/opt/${pkgname}"
   ln -s /opt/${pkgname}/bin/${_pkgname} "${pkgdir}/usr/bin/${pkgname}"
 
