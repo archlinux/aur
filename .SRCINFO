@@ -1,6 +1,6 @@
 pkgbase = go-kbdgrab
 	pkgdesc = Key grabber written in golang for cleaning your keyboard
-	pkgver = r24.b10f98f
+	pkgver = r25.dce9421
 	pkgrel = 1
 	url = https://github.com/tonylambiris/go-kbdgrab
 	arch = i686
