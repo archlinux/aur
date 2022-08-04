@@ -2,12 +2,13 @@
 
 pkgname=python-eduvpn-client
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux client and Python client API for eduVPN"
 arch=('any')
 url="https://github.com/eduvpn/python-eduvpn-client"
 license=('Apache')
 depends=('python-requests-oauthlib' 'python-pynacl' 'mypy' 'dbus-python' 'python-gobject' 'hicolor-icon-theme' 'python-wheel')
+optdepends=('networkmanager-openvpn: For using NM to manage OpenVPN tun devices')
 makedepends=('python-build' 'python-installer')
 source=("https://github.com/eduvpn/python-eduvpn-client/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('252557ceae38b4a05aad0ffbe9f381bedbebed895007a7c018794dedc561142f')
