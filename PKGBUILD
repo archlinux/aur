@@ -3,7 +3,7 @@
 _pkgname=Flatseal
 pkgname=flatseal
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A permissions manager for Flatpak.'
 url="https://github.com/tchx84/Flatseal/"
 arch=('x86_64' 'aarch64')

@@ -1,7 +1,7 @@
 pkgbase = flatseal
 	pkgdesc = A permissions manager for Flatpak.
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tchx84/Flatseal/
 	arch = x86_64
 	arch = aarch64
