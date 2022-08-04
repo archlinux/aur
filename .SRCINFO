@@ -1,7 +1,7 @@
 pkgbase = uair
 	pkgdesc = An extensible pomodoro timer
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/metent/uair
 	arch = x86_64
 	license = MIT
