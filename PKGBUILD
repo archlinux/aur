@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=gomplate-git
-pkgver=3.10.0.r216.g795ddbd8
-pkgrel=2
+pkgver=3.11.0.r65.g3c2a2c2b
+pkgrel=1
 pkgdesc='A flexible commandline tool for template rendering.'
 arch=(i686 x86_64)
 url='https://gomplate.hairyhenderson.ca/'
@@ -10,7 +10,7 @@ license=(BSD)
 conflicts=('gomplate')
 provides=('gomplate')
 makedepends=(go)
-source=("${pkgname}::git+https://github.com/hairyhenderson/gomplate")
+source=("${pkgname}::git+https://github.com/hairyhenderson/gomplate#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
