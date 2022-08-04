@@ -1,4 +1,5 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: JustKidding <jk@vin.ovh>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=libva-vdpau-driver-wayland
