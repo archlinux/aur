@@ -39,8 +39,8 @@ package() {
 	# [ ! -d $HOME/.config/shortsync ] && mkdir -p $HOME/.config/shortsync/
 	# chmod 777 config/*
 	# cp -nru config/* -t /$HOME/.config/shortsync
-	install -m777 config/* -Ct .config/shortsync/
-	install -m777 config/*/* -Ct .config/shortsync/shortcut-configs/
+	install -m777 config/* -Ct "$HOME/.config/shortsync/"
+	install -m777 config/*/* -Ct "$HOME/.config/shortsync/shortcut-configs/"
 	install -Dm755 bin/shortsync "$pkgdir/usr/local/bin/shortsync"
 	install -Dm644 shortsync.1 "$pkgdir/usr/share/man/man1/shortsync.1"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/shortsync/LICENSE"
