@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=An Anime Game Launcher
+Comment=An Launcher for a specific anime game with auto-patching, discord rpc and time tracking
+Exec=an-anime-game-launcher
+Terminal=false
+Type=Application
+Icon=an-anime-game-launcher
+Categories=Game
