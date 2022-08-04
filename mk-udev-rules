@@ -1,17 +1,17 @@
 #!/usr/bin/gawk -f
 
 BEGIN {
-	FS = ",";
-	print "ACTION==\"add\", ATTR{idVendor}==\"04f9\", GOTO=\"brscan5\"";
-	print "GOTO=\"brscan5_end\"";
-	print "LABEL=\"brscan5\"";
+  FS = ",";
+  print "ACTION==\"add\", ATTR{idVendor}==\"04f9\", GOTO=\"brscan5\"";
+  print "GOTO=\"brscan5_end\"";
+  print "LABEL=\"brscan5\"";
 }
 NF >= 3 && $1 ~ /^ *0[xX][[:xdigit:]]+ *$/ {
-	id = "000" tolower( substr( $1, 3 ));
-	id = substr( id, length( id ) - 3 );
-	#print "ATTR{idProduct}==\"" id "\", MODE=\"0664\", GROUP=\"scanner\", ENV{libsane_matched}=\"yes\"";
-	print "ATTR{idProduct}==\"" id "\", MODE=\"0664\", GROUP=\"lp\", ENV{libsane_matched}=\"yes\"";
+  id = "000" tolower( substr( $1, 3 ));
+  id = substr( id, length( id ) - 3 );
+  print "ATTR{idProduct}==\"" id "\", MODE=\"0664\", GROUP=\"lp\", ENV{libsane_matched}=\"yes\"";
 }
 END {
-	print "LABEL=\"brscan5_end\"";
+  print "ATTR{idProduct}==\"0468\", MODE=\"0664\", GROUP=\"lp\", ENV{libsane_matched}=\"yes\"";
+  print "LABEL=\"brscan5_end\"";
 }
