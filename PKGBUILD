@@ -1,9 +1,9 @@
 # Maintainer: Jonas Malaco <jonas@protocubo.io>
 pkgname=cargo-criterion
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Cargo plugin for analyzing and reporting on Criterion-rs benchmarks.'
-arch=('any')
+arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url='https://github.com/bheisler/cargo-criterion'
 license=('Apache' 'MIT')
 depends=('cargo' 'rust')

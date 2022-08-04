@@ -1,9 +1,12 @@
 pkgbase = cargo-criterion
 	pkgdesc = Cargo plugin for analyzing and reporting on Criterion-rs benchmarks.
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bheisler/cargo-criterion
-	arch = any
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
 	license = Apache
 	license = MIT
 	depends = cargo
