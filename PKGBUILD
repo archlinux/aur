@@ -3,15 +3,15 @@
 # Contributor: bitwave
 
 pkgname=('textadept' 'textadept-gtk3' 'textadept-curses')
-pkgver=11.3
+pkgver=11.4
 pkgrel=1
-pkgdesc="A fast, minimalist, and remarkably extensible cross-platform text editor"
+pkgdesc="Fast, minimalist, and remarkably extensible cross-platform text editor"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/orbitalquark/textadept"
 license=('MIT')
 makedepends=('gtk2' 'gtk3' 'ncurses' 'wget' 'unzip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/${pkgname}_$pkgver.tar.gz")
-sha256sums=('1c7a9ce9dac812aadab2c4e01cf9028f5edd67bf287931d3dd6bb7d432ac7396')
+sha256sums=('2484c69cc9557c815be30e0eac563fad437557e5c356276ba4d54a295d66689b')
 
 prepare() {
 	cd "textadept-textadept_$pkgver/src"
