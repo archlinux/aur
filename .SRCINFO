@@ -1,7 +1,7 @@
 pkgbase = algernon-bin
 	pkgdesc = Web server with Lua, Markdown, QUIC, Redis and PostgreSQL support
-	pkgver = 1.13.0
-	pkgrel = 2
+	pkgver = 1.14.0
+	pkgrel = 1
 	url = https://algernon.roboticoverlords.org/
 	arch = aarch64
 	arch = armv6
@@ -14,7 +14,7 @@ pkgbase = algernon-bin
 	optdepends = redis: For using the Redis database backend
 	conflicts = algernon
 	replaces = algernon
-	source = algernon-1.13.0.tar.gz::https://github.com/xyproto/algernon/releases/download/v1.13.0/algernon-1.13.0-linux_x86_64_static.tar.xz
-	b2sums = bd2a56b01850c1040ef1f63dd4fcc0b3b0c45dbac9251f3864d2cc9b9c3bc8b8fe8905e180274105c7bd9f5004a7d37a1627d60ddd33fa3f10e67b76f81422b1
+	source = algernon-1.14.0.tar.gz::https://github.com/xyproto/algernon/releases/download/v1.14.0/algernon-1.14.0-linux_x86_64_static.tar.xz
+	b2sums = d904c37d67c76038967ee6babd166b5aa76d829e328d9e41d571dcf27ac83d2c386b1ed7b708f2f3d2d43285e9671717d55b6af9a32e5013d4b35267ff53435a
 
 pkgname = algernon-bin
