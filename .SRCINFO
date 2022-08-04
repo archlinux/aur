@@ -1,6 +1,6 @@
 pkgbase = python-mariadb-connector
 	pkgdesc = A Python DB API 2.0 compliant API for access to MariaDB and MySQL databases
-	pkgver = 1.0.10
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://mariadb.com/kb/en/mariadb-connector-python/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-mariadb-connector
 	makedepends = python-setuptools
 	depends = python
 	depends = mariadb-connector-c
-	source = https://dlm.mariadb.com/2220851/Connectors/python/connector-python-1.0.10/mariadb-connector-python-1.0.10.tar.gz
-	sha512sums = cd803bc06b8c75f985c21cdfc948f6a1d20acb92c691ceed893bf89f4a12ebb0db52d99ad5164bc4468047bd6fd41b40d47dbbdad748b4ac7e71e043eb0cb877
+	source = https://dlm.mariadb.com/2338783/Connectors/python/connector-python-1.1.3/mariadb-connector-python-1.1.3.tar.gz
+	sha512sums = 0981fecaf2d6c2b08481b3b2e5c027e130ac25380b9d85d3ec8918a32205373aed5375d559238c424e75cc406d97c41067647d5442eab37eae9c40b4e16bc13f
 
 pkgname = python-mariadb-connector
