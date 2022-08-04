@@ -16,6 +16,7 @@ depends=(
   'jsoncpp'
   'mathjax'
   'pcre'
+  'python-ipykernel'
   'python-matplotlib'
   'python-sympy'
   'texlive-latexextra'
