@@ -1,13 +1,14 @@
 pkgbase = ngrok
 	pkgdesc = A tunneling, reverse proxy for developing and understanding networked, HTTP services
 	pkgver = 3.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ngrok.com
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = custom
+	options = !strip
 	source_i686 = https://bin.equinox.io/a/g4Tc7cHZv8h/ngrok-v3-3.0.6-linux-386
 	sha256sums_i686 = 83adc0e65ac46f1c8cdcc0d5035acc6b41c0223e2b812de79ec092d0004fcc9a
 	source_x86_64 = https://bin.equinox.io/a/5BJEsxAFwT/ngrok-v3-3.0.6-linux-amd64

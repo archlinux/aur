@@ -5,7 +5,7 @@
 
 pkgname=ngrok
 pkgver=3.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A tunneling, reverse proxy for developing and understanding networked, HTTP services'
 url='https://ngrok.com'
 license=('custom')
@@ -18,6 +18,9 @@ sha256sums_i686=('83adc0e65ac46f1c8cdcc0d5035acc6b41c0223e2b812de79ec092d0004fcc
 sha256sums_x86_64=('38b9c0279e2a5a0faf6258d1b6ac7f36134a960531b0558c3169652dfa74c6e0')
 sha256sums_armv7h=('10d9b89507d253b2dab1d9a3bde0c0f596c1ea2652b02c470a9262fa5d8aa8b8')
 sha256sums_aarch64=('825d02c244432f19fa9dad9189034a251701bf74dc5d9ea75559b1f2ca398569')
+
+# In order to make Ngrok's built-in updater happy, we need to avoid modifying the binary
+options=(!strip)
 
 package() {
   cd "${srcdir}"
