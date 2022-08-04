@@ -2,13 +2,11 @@ usr/bin/gnat
 usr/bin/gnatbind 
 usr/bin/gnatchop 
 usr/bin/gnatclean 
-usr/bin/gnatfind 
 usr/bin/gnatkr 
 usr/bin/gnatlink 
 usr/bin/gnatls 
 usr/bin/gnatmake 
 usr/bin/gnatname 
 usr/bin/gnatprep 
-usr/bin/gnatxref
 
-usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/gnat1
+usr/lib/gcc/x86_64-pc-linux-gnu/12.1.1/gnat1

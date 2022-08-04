@@ -1,11 +1,11 @@
 usr/lib/libgnarl.so
 
-usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/32/adalib/libgmem.a
-usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/32/adalib/libgnarl.a
-usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/32/adalib/libgnarl_pic.a
+usr/lib/gcc/x86_64-pc-linux-gnu/12.1.1/32/adalib/libgmem.a
+usr/lib/gcc/x86_64-pc-linux-gnu/12.1.1/32/adalib/libgnarl.a
+usr/lib/gcc/x86_64-pc-linux-gnu/12.1.1/32/adalib/libgnarl_pic.a
 
-usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/adalib/libgmem.a
-usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/adalib/libgnarl.a
-usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/adalib/libgnarl_pic.a
+usr/lib/gcc/x86_64-pc-linux-gnu/12.1.1/adalib/libgmem.a
+usr/lib/gcc/x86_64-pc-linux-gnu/12.1.1/adalib/libgnarl.a
+usr/lib/gcc/x86_64-pc-linux-gnu/12.1.1/adalib/libgnarl_pic.a
 
 usr/lib32/libgnarl.so
