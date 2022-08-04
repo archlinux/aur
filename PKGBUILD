@@ -21,31 +21,12 @@ sha256sums=('SKIP'
             'c41e9b1019411019fce8509e32f770edf33c9e864bf707c30ffe2e3f2dcf1571')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-	STABLE_SHA=$(curl -s https://api.github.com/repos/ciderapp/Cider/branches/stable | grep sha | cut -d '"' -f 4 | sed 's/v//' | xargs | cut -d' ' -f1)
-	STABLE_DATE=$(git show -s --format=%ci $STABLE_SHA)
-    COMMITSINCESTABLE=$(git rev-list $STABLE_SHA..HEAD --count --since="$STABLE_DATE")
-    CURRENT_VERSION=$(node -p -e "require('./package.json').version")
-    if [[ $COMMITSINCESTABLE -gt 0 ]]; then
-        if [[ $CURRENT_VERSION == *"beta"* ]]; then
-            NEW_VERSION="${CURRENT_VERSION%.*}.$COMMITSINCESTABLE"
-        else 
-            NEW_VERSION="${CURRENT_VERSION}-beta.${COMMITSINCESTABLE}"
-        fi
-        echo ${NEW_VERSION//-/.}
-        sed -i "0,/$CURRENT_VERSION/s//$NEW_VERSION/" package.json
-    else
-        echo ${CURRENT_VERSION/0/$COMMITSINCESTABLE}
-    fi
-
+  cd "${srcdir}/${_pkgname}"
+  printf "$pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
     cd "${srcdir}/${_pkgname}"
-
-    if [ -f cider.lock ]; then
-        mv cider.lock yarn.lock
-    fi
 
     echo "Building ${_pkgname} on v${pkgver} : [Install Build Dependencies] | Build | Done"
     yarn install --non-interactive --pure-lockfile --cache-folder "${srcdir}/yarn-cache"
