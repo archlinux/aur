@@ -2,6 +2,7 @@
 # Contributor: Severin Kaderli <severin@kaderli.dev>
 # Contributor: aimileus < $(echo YWltaWxpdXNAcHJvdG9ubWFpbC5jb20K | base64 -d)
 _pkgname="vita3k"
+_remoteurl="https://github.com/Vita3K/Vita3K"
 pkgname="${_pkgname}-git"
 pkgver=r2746.75b12013
 pkgrel=1
@@ -49,11 +50,10 @@ prepare() {
 build() {
 	cd "${srcdir}/${pkgname}"
 
-	export CC="/usr/bin/clang"
-	export CXX="/usr/bin/clang++"
-	export CMAKE_MAKE_PROGRAM=ninja
-
 	export BUILDPRESET=linux-ninja-clang
+
+	# Needed to have correct title version
+	git remote set-url origin ${_remoteurl}
 
 	# Configure
 	cmake --preset ${BUILDPRESET} -DCI=ON -DUSE_VULKAN=ON -DUSE_DISCORD_RICH_PRESENCE=OFF -DUSE_VITA3K_UPDATE=OFF
