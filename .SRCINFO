@@ -1,7 +1,7 @@
 pkgbase = pcem
 	pkgdesc = Emulator for various IBM PC computers and clones.
 	pkgver = 17
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pcem-emulator.co.uk/
 	arch = x86_64
 	arch = i686
