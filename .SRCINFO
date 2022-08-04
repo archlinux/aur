@@ -1,0 +1,17 @@
+pkgbase = password-for-gnome-vala
+	pkgdesc = Calculator and random generator password for GNOME
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://gitlab.com/elescoute/password-for-gnome-vala
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = meson
+	makedepends = vala
+	depends = libadwaita
+	depends = libsoup3
+	source = https://gitlab.com/elescoute/password-for-gnome-vala/-/archive/1.4.0/password-for-gnome-vala-1.4.0.tar.gz
+	b2sums = e809f25e5aba27ac3fc5df8c01432d5c20ceef6f4e200b8f4f6cba165667b6cd0c542ca180e2d068b62d5e7128ad2ab22aee7f57b0ef47bb408a218c523f9a8b
+
+pkgname = password-for-gnome-vala
