@@ -2,7 +2,7 @@
 
 pkgname=chatty-git
 _pkgname=${pkgname%-git}
-pkgver=0.19.b3.r0.gca65b6cc
+pkgver=0.20.b1.r0.ge1b4616b
 pkgrel=1
 pkgdesc='Twitch Chat Client for Desktop'
 arch=('any')
@@ -29,7 +29,6 @@ pkgver() {
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
-
 prepare() {
     cd "${srcdir}/${pkgname}"
 
@@ -50,7 +49,7 @@ package(){
     pushd "${srcdir}/Chatty_${pkgver}"
     _zipfile="$(ls -t ${srcdir}/${pkgname}/build/releases/Chatty_*.zip | head -1)"
     bsdcpio -i -m --make-directories < "${_zipfile}"
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "readme.txt" "${pkgdir}/usr/share/doc/${pkgname}/readme.txt"
     install -Dm644 "Chatty.jar" "${pkgdir}/usr/share/${pkgname}/Chatty.jar"
     cp -a "img" "sounds" "${pkgdir}/usr/share/${pkgname}/"
