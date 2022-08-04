@@ -1,7 +1,7 @@
 pkgbase = swift-bin-development
 	pkgdesc = Binary builds of the Swift programming language (dev snapshot)
 	pkgver = 5.7.DEVELOPMENT
-	pkgrel = 5
+	pkgrel = 6
 	epoch = 4
 	url = https://swift.org
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = swift-bin-development
 	provides = swift-language
 	replaces = swift-language-bin
 	options = !strip
-	source = https://swift.org/builds/swift-5.7-branch/centos7/swift-5.7-DEVELOPMENT-SNAPSHOT-2022-07-23-a/swift-5.7-DEVELOPMENT-SNAPSHOT-2022-07-23-a-centos7.tar.gz
+	source = https://swift.org/builds/swift-5.7-branch/centos7/swift-5.7-DEVELOPMENT-SNAPSHOT-2022-08-02-a/swift-5.7-DEVELOPMENT-SNAPSHOT-2022-08-02-a-centos7.tar.gz
 	sha256sums = SKIP
 
 pkgname = swift-bin-development
