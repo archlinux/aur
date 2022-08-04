@@ -1,6 +1,6 @@
 # Maintainer: Reinhold Gschweicher <pyro4hell@gmail.com>
 pkgname=infinisim-git
-pkgver=r46.ae9a020
+pkgver=r50.8861b98
 pkgrel=1
 pkgdesc="Simulator for InfiniTime user interface without needing a PineTime "
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -23,9 +23,11 @@ source=(
 	"git+https://github.com/joaquimorg/lvgl.git"
 	"git+https://github.com/laurencelundblade/QCBOR.git"
 	"git+https://github.com/littlefs-project/littlefs.git"
+	"git+https://github.com/HowardHinnant/date.git"
 )
 noextract=()
 md5sums=(
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -58,9 +60,11 @@ prepare() {
 	git config submodule.src/libs/lvgl.url "${srcdir}/lvgl"
 	git config submodule.src/libs/QCBOR.url "${srcdir}/QCBOR"
 	git config submodule.src/libs/littlefs.url "${srcdir}/littlefs"
+	git config submodule.src/libs/date.url "${srcdir}/date"
 	git submodule update --init src/libs/lvgl
 	git submodule update --init src/libs/QCBOR
 	git submodule update --init src/libs/littlefs
+	git submodule update --init src/libs/date
 }
 
 build() {
