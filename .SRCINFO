@@ -15,6 +15,7 @@ pkgbase = cadabra2-git
 	depends = jsoncpp
 	depends = mathjax
 	depends = pcre
+        depends = python-ipykernel
 	depends = python-matplotlib
 	depends = python-sympy
 	depends = texlive-latexextra
