@@ -1,11 +1,11 @@
 pkgbase = openbve-bin
 	pkgdesc = Realistic 3D train/railway simulator
-	pkgver = 1.8.3.2
+	pkgver = 1.8.4.0
 	pkgrel = 1
 	url = https://github.com/leezer3/OpenBVE
 	arch = x86_64
 	depends = mono
-	source = https://github.com/leezer3/OpenBVE/releases/download/1.8.3.2/OpenBVE-1.8.3.2.deb
-	sha256sums = a3b6b9bc5264e7af3a2aa98735bce6a2ef29f9557b582474c5de0d0f5e6170b8
+	source = https://github.com/leezer3/OpenBVE/releases/download/1.8.4.0/OpenBVE-1.8.4.0.deb
+	sha256sums = 938dd6667bfde61afd2debab54dd2c8d63dc95fcecffba8a5b384efc9a56fbd9
 
 pkgname = openbve-bin
