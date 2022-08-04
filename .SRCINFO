@@ -1,0 +1,24 @@
+pkgbase = python-theano-pymc
+	pkgdesc = Optimizing compiler for evaluating mathematical expressions on CPUs and GPUs
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://pypi.org/project/Theano-PyMC
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python-scipy
+	checkdepends = python-filelock
+	checkdepends = python-pydot
+	makedepends = python-setuptools
+	makedepends = python-sphinx
+	source = https://files.pythonhosted.org/packages/source/T/Theano-PyMC/Theano-PyMC-1.1.2.tar.gz
+	md5sums = 5ed1cb188fbe417946480219b5ba334b
+
+pkgname = python-theano-pymc
+	depends = python>=3.6
+	depends = python-scipy>=0.14
+	depends = python-filelock
+	optdepends = python-theano-pymc-doc: Documentation for Theano-PyMC
+
+pkgname = python-theano-pymc-doc
+	pkgdesc = Documentation for Python Theano-PyMC
