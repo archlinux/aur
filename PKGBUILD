@@ -11,8 +11,7 @@ url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
 _electronpkg='electron13'
 depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release')
-# We're depending on node v16 until https://github.com/nodejs/node-gyp/issues/2534 is fixed
-makedepends=('git' 'nodejs-lts-gallium' 'npm>=7.0.0' 'python' 'unzip')
+makedepends=('git' 'nodejs' 'npm>=7.0.0' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
@@ -62,7 +61,7 @@ build() {
 	# and let electron-packager use it for building
 	# https://github.com/electron/electron-packager/issues/187
 
-	HADRON_DISTRIBUTION="${_target%-beta}" npm run package-compass
+	HADRON_DISTRIBUTION="${_target%-beta}" npm run package-compass --openssl_fips=''
 }
 
 package() {
