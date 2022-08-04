@@ -2,7 +2,7 @@
 
 pkgname=virusgotal-git
 pkgver=1.0.2.r5.g295d2dc
-pkgrel=3
+pkgrel=4
 pkgdesc='VirusTotal zero dependency command line client.'
 arch=(x86_64)
 url="https://github.com/moldabekov/virusgotal"
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 prepare() {
