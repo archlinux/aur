@@ -1,13 +1,13 @@
 pkgbase = perl-ora2pg
 	pkgdesc = Ora2Pg - Oracle to PostgreSQL database schema converter
 	pkgver = 23.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ora2pg.darold.net
 	arch = any
 	license = GPL
 	license = PerlArtistic
 	depends = perl
-	optdepends = perl-dbd-oracle: connect to an Oracle db
+	depends = perl-dbd-oracle
 	optdepends = perl-dbd-pg: connect to a PostgreSQL db
 	optdepends = perl-dbd-mysql: connect to a MySQL db
 	options = !emptydirs
