@@ -1,48 +1,52 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
-
+# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-shell-extension-rounded-window-corners-git
-_pkgname=rounded-window-corners
-pkgver=r62.59b903b
+pkgver=4.r10.g508abee
 pkgrel=1
-pkgdesc="A gnome-shell extensions that try to add rounded corners for all windows"
+pkgdesc="A GNOME Shell extension that adds rounded corners for all windows"
 arch=('any')
 url="https://github.com/yilozt/rounded-window-corners"
 license=('GPL3')
 depends=('gnome-shell')
-makedepends=('git' 'yarn' 'zip')
+makedepends=('git' 'gobject-introspection' 'yarn')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=(git+$url.git)
-b2sums=('SKIP')
+source=('git+https://github.com/yilozt/rounded-window-corners.git')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname%-git}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd "$srcdir/rounded-window-corners"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${_pkgname%-git}"
-
+  cd "$srcdir/rounded-window-corners"
+  yarn config set cache-folder "$srcdir/yarn-cache"
   yarn install
   yarn build
+
+  pushd _build
+  gnome-extensions pack \
+            --extra-source=dbus \
+            --extra-source=effect \
+            --extra-source=manager \
+            --extra-source=preferences \
+            --extra-source=utils \
+            --extra-source=app.js \
+            --extra-source=stylesheet.css \
+            --extra-source=stylesheet-prefs.css \
+            --force
+  popd
 }
 
 package() {
-  cd "${_pkgname%-git}"/_build
-  glib-compile-schemas schemas
-  gnome-extensions pack \
-            --force \
-            --extra-source="dbus" \
-            --extra-source="effect" \
-            --extra-source="manager" \
-            --extra-source="preferences" \
-            --extra-source="schemas" \
-            --extra-source="utils"
+  cd "$srcdir/rounded-window-corners"
+  local uuid=$(grep -Po '(?<="uuid": ")[^"]*' _build/metadata.json)
 
-  local uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${uuid}"
-  bsdtar -xvf ${uuid}.shell-extension.zip -C "$pkgdir/usr/share/gnome-shell/extensions/${uuid}"
+  bsdtar -xvf "_build/${uuid}.shell-extension.zip" -C "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/"
+
+  install -Dm644 _build/schemas/org.gnome.shell.extensions.rounded-window-corners.gschema.xml -t \
+    "$pkgdir/usr/share/glib-2.0/schemas/"
+  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/schemas/"
 }
