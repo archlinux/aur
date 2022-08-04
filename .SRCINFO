@@ -1,17 +1,23 @@
 pkgbase = ocaml-fileutils
-	pkgdesc = A library to provide pure OCaml functions to manipulate real file and filename.
-	pkgver = 0.5.3
+	pkgdesc = OCaml API to manipulate real files and filenames
+	pkgver = 0.6.3
 	pkgrel = 1
-	url = http://forge.ocamlcore.org/projects/ocaml-fileutils
-	arch = i686
+	url = https://github.com/gildor478/ocaml-fileutils
 	arch = x86_64
-	license = LGPL
-	makedepends = ocaml-findlib
-	makedepends = ocaml-ounit
-	makedepends = ocamlbuild
-	depends = ocaml
-	source = https://forge.ocamlcore.org/frs/download.php/1728/ocaml-fileutils-0.5.3.tar.gz
-	md5sums = 9b719b19b96525004c88bf7bc846fa1d
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = custom:LGPL2.1 with linking exception
+	checkdepends = ocaml-ounit>=2.0.0
+	makedepends = dune>=1.11.0
+	depends = ocaml>=4.03.0
+	depends = ocaml-stdlib-shims
+	options = !strip
+	source = ocaml-fileutils-0.6.3-1.tar.gz::https://github.com/gildor478/ocaml-fileutils/archive/v0.6.3.tar.gz
+	source = fix-ounit-name.diff
+	sha512sums = 491c01347714b9caf69e184be7e031d82d3602b91ce52c5c995b25897090d9af79b2ae058ff92b91ab31b44dd1fdf15fbe1a428d2f3a50872d3f0f7689a64e8c
+	sha512sums = e68fcb4cd54603573d7175579d7d78045d5b9faf6c3c3dc149f5d6908e301e6518bad41a8793df666b3441331d275040342e5bcb6012851e884b9eeca8f028d9
 
 pkgname = ocaml-fileutils
-

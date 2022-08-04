@@ -1,0 +1,10 @@
+diff --git a/test/dune b/test/dune
+index 38ebc4e..eecfe54 100644
+--- a/test/dune
++++ b/test/dune
+@@ -6,4 +6,4 @@
+ (test
+   (name test)
+   (modules test)
+-  (libraries fileutils fileutils_str oUnit stdlib-shims))
++  (libraries fileutils fileutils_str ounit2 stdlib-shims))
