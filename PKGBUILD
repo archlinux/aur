@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=chigo-git
-pkgver=1.4.0.r0.gb1fdfed
+pkgver=1.4.0.r2.gb3cb538
 pkgrel=1
 pkgdesc='Lolcat port for Golang'
 url="https://github.com/UltiRequiem/chigo"
