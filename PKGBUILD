@@ -1,14 +1,14 @@
 # Maintainer: Jesus Alvarez <jeezusjr at gmail dot com>
 
 pkgname=jakt-git
-pkgver=r637.f07cd13
+pkgver=r1645.f8649c0
 pkgrel=1
 pkgdesc="The Jakt Programming Language from SerenityOS"
 arch=("x86_64")
 url="https://github.com/SerenityOS/jakt"
 license=("BSD")
 depends=("clang")
-makedepends=("cargo" "git")
+makedepends=("ninja" "cmake" "git")
 provides=("jakt")
 conflicts=("jakt")
 source=("${pkgname}::git+https://github.com/SerenityOS/jakt.git")
@@ -24,12 +24,23 @@ pkgver() {
 
 build() {
     cd "${pkgname}"
-    cargo build --release --help
+    # stage1
+    cmake -GNinja -B build -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_BUILD_TYPE=Release -DFINAL_STAGE=1
+    cmake --build build
+
+    # test stage1
+    ninja -C jakttest
+    ./jakttest/build/jakttest --assume-updated-selfhost --assume-updated
+
+    # stage2
+    cmake -B build -DFINAL_STAGE=2
+    cmake --build build
 }
 
 check() {
     cd "${pkgname}"
-    cargo test
+    ninja -C jakttest
+    ./jakttest/build/jakttest --assume-updated-selfhost --assume-updated
 }
 
 package() {
@@ -40,7 +51,7 @@ package() {
 
     cd "${pkgname}"
 
-    install -Dm755 "target/release/jakt" "${pkgdir}/usr/bin/jakt"
+    install -Dm755 "build/jakt" "${pkgdir}/usr/bin/jakt"
     find runtime -maxdepth 1 -mindepth 1 -exec cp -r {} ${pkgdir}/usr/lib/jakt/ \;
     install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/jakt"
     install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/jakt"
