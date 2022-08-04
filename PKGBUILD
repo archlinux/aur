@@ -7,7 +7,7 @@
 
 pkgname=calculix
 pkgver=2.20
-pkgrel=1
+pkgrel=2
 pkgdesc="CalculiX: 3D finite element solver and post-processor (executables)"
 arch=('i686' 'x86_64')
 options=(!makeflags !buildflags)
@@ -30,7 +30,7 @@ sha256sums=('63bf6ea09e7edcae93e0145b1bb0579ea7ae82e046f6075a27c8145b72761bcf'
             '79848d88dd1e51839d1aed68fb547ff12ad3202c3561c02c2f3a8ceda0f2eb82'
             '1b73ab8df8d7266fd612846f3052114c1a7dceb1d28edebec1701bda64cd1240'
             '85026b25f2753178b5a1ab36f0f86faafb08df27acbba7b73ebda33ddd04aa6b'
-            'd8e35837a493e55099375397562ae36b315d02c633ddeca8f3e5da4a93291b02'
+            'f4c840c3633718547e33f86b2d7bc6b35608dd8d6cbf9fa192cecef34f2dc908'
             '6d9e86c9bcbe2953a3e7697c3c84945e8abeac4607ca519f69cd6f43cc8eb4e5')
 
 prepare()
