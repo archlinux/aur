@@ -1,7 +1,7 @@
 pkgbase = system76-io-dkms-git
 	pkgdesc = DKMS module for controlling System76 Io board
-	pkgver = 1.0.1.r1.g57c15ff
-	pkgrel = 3
+	pkgver = 1.0.2.r0.g0217576
+	pkgrel = 1
 	url = https://github.com/pop-os/system76-io-dkms
 	arch = x86_64
 	license = GPL3

@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=system76-io-dkms-git
-pkgver=1.0.1.r1.g57c15ff
-pkgrel=3
+pkgver=1.0.2.r0.g0217576
+pkgrel=1
 pkgdesc="DKMS module for controlling System76 Io board"
 arch=('x86_64')
 url="https://github.com/pop-os/system76-io-dkms"
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname}"
 
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 package() {
