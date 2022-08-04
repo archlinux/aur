@@ -45,6 +45,7 @@ check() {
 package_python-theano-pymc() {
     depends=('python>=3.6' 'python-scipy>=0.14' 'python-filelock')
     optdepends=('python-theano-pymc-doc: Documentation for Theano-PyMC')
+    provides=('python-theano')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.txt

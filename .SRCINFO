@@ -18,6 +18,7 @@ pkgname = python-theano-pymc
 	depends = python-scipy>=0.14
 	depends = python-filelock
 	optdepends = python-theano-pymc-doc: Documentation for Theano-PyMC
+	provides = python-theano
 
 pkgname = python-theano-pymc-doc
 	pkgdesc = Documentation for Python Theano-PyMC
