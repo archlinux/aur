@@ -9,7 +9,7 @@ url="https://github.com/tchx84/Flatseal/"
 arch=('x86_64' 'aarch64')
 license=('GPL3')
 depends=('flatpak' 'gjs' 'webkit2gtk')
-makedepends=('meson' 'flatpak-builder' 'ninja')
+makedepends=('meson' 'flatpak-builder' 'ninja' 'libhandy')
 source=("$pkgname-$pkgver::https://github.com/tchx84/Flatseal/archive/v$pkgver.tar.gz")
 sha1sums=('93aff8de7171fb92ef50f28ff8bf72351808d6d9')
 

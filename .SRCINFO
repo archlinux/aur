@@ -9,6 +9,7 @@ pkgbase = flatseal
 	makedepends = meson
 	makedepends = flatpak-builder
 	makedepends = ninja
+	makedepends = libhandy
 	depends = flatpak
 	depends = gjs
 	depends = webkit2gtk
