@@ -1,0 +1,14 @@
+pkgbase = deepin-wine-formatfactory
+	pkgdesc = Format Factory（格式工厂）on Deepin Wine
+	pkgver = 4.9.5
+	pkgrel = 3
+	url = http://www.pcfreetime.com/formatfactory/CN/index.html
+	arch = x86_64
+	license = custom
+	depends = lib32-libxext
+	depends = xdg-utils
+	depends = gtk2
+	source = https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.pcfreetime.formatfactory.deepin/com.pcfreetime.formatfactory.deepin_4.9.5deepin3_i386.deb
+	sha512sums = 66cf08877557faa876e3b38af309182f5de4d0f9ddebbc7919ad926dca9cd35aad326428b9faec8f6f46daa80a697c8eb54ab8dabc16af3cf4ed6f2a92b19ffd
+
+pkgname = deepin-wine-formatfactory
