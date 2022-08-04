@@ -3,11 +3,12 @@
 
 pkgname='offpunk-git'
 _pkgname='offpunk'
-pkgver=1.4.r0.g63ebb80
+pkgver=1.2.r60.gd646c9d
 pkgrel=1
+epoch=1
 pkgdesc='Fork of the command-line Gemini client AV-98 with added offline capabilities'
 arch=('any')
-url='https://tildegit.org/ploum/offpunk'
+url='https://notabug.org/ploum/offpunk.git'
 license=('BSD')
 depends=(
   'python'
@@ -32,7 +33,7 @@ optdepends=(
   'xdg-utils: xdg-open opens a URL in the preferred application'
 )
 conflicts=('av-98-offline')
-source=("git+$url.git")
+source=("git+$url")
 noextract=("$_pkgname")
 sha256sums=('SKIP')
 
