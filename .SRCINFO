@@ -1,8 +1,7 @@
 pkgbase = ignoreit
 	pkgdesc = Quickly load .gitignore templates
-	pkgver = 2.4.4
+	pkgver = 2.4.6
 	pkgrel = 1
-	url = https://github.com/jewlexx/ignoreit
 	arch = i686
 	arch = x86_64
 	arch = armv6h
