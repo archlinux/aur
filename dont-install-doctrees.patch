@@ -1,0 +1,24 @@
+From 8f2b5fe74d34ba8bb20a362a4daa6cc5a99a2010 Mon Sep 17 00:00:00 2001
+From: Jelle van der Waa <jelle@vdwaa.nl>
+Date: Fri, 29 May 2020 23:19:16 +0200
+Subject: [PATCH] Don't install sphinx cache files
+
+When building documentation sphinx creates cached files in the .doctrees
+directory and aren't required for viewing documentation only for
+building. As added benefit this makes fmt reprodcubile as the cached
+files are different when the build environment is varied.
+---
+ doc/CMakeLists.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/doc/CMakeLists.txt b/doc/CMakeLists.txt
+index f3dae606e..108aa71e8 100644
+--- a/doc/CMakeLists.txt
++++ b/doc/CMakeLists.txt
+@@ -9,4 +9,5 @@ add_custom_target(doc
+   SOURCES api.rst syntax.rst usage.rst build.py conf.py _templates/layout.html)
+ 
+ install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/html/
+-        DESTINATION share/doc/fmt OPTIONAL)
++        DESTINATION share/doc/fmt OPTIONAL
++        PATTERN ".doctrees" EXCLUDE)
