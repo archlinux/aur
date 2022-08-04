@@ -17,8 +17,8 @@ source_aarch64=(
   "curl-impersonate_aarch64.tar.gz::https://github.com/lwthiker/curl-impersonate/releases/download/${pkgver}/curl-impersonate-${pkgver}.aarch64-linux-gnu.tar.gz"
 )
 
-md5sums_x86_64=('c86b7acd030b170adf6fa81cf8b4c515')
-md5sums_aarch64=('2838eb9b2a8b38e64fcffebd73a06807')
+md5sums_x86_64=('540c6ac7e8cb8bdf0a30d424e599143e')
+md5sums_aarch64=('c67b509e89c715aae8580c1f3125535c')
 
 package () {
   mkdir -p "${pkgdir}/usr/local/bin/"
