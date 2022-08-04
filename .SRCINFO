@@ -1,0 +1,17 @@
+pkgbase = xdao
+	pkgdesc = An Xdnmb TUI cli written in Python.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.nmbxd1.com/t/50750950
+	arch = any
+	license = AGPL-3.0
+	makedepends = git
+	depends = python-beautifulsoup4
+	depends = python-lxml
+	depends = python-prompt_toolkit
+	depends = python-requests
+	depends = chafa
+	source = xdao::git+https://hub.fastgit.xyz/TransparentLC/xdcmd.git
+	sha256sums = SKIP
+
+pkgname = xdao
