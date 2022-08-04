@@ -1,6 +1,6 @@
 # Maintainer: mekb https://github.com/mekb-turtle
 pkgname=mekfetch-git
-pkgver=1.0.0.r0.g5575983
+pkgver=1.1.0.r0.gf2736d9
 pkgrel=1
 pkgdesc='Simple neofetch alternative written in C'
 arch=('any')
