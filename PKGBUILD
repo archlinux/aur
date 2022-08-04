@@ -6,7 +6,7 @@ _mainpkgname="$_projectname-emu"
 _noguipkgname="$_projectname-emu-nogui"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git")
-pkgver='5.0.r16907.g537fe33997'
+pkgver='5.0.r17132.g5508c52a95'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -14,9 +14,8 @@ arch=('x86_64' 'aarch64')
 url="https://$_mainpkgname.org"
 license=('GPL2')
 depends=(
-	'alsa-lib' 'bluez-libs' 'enet' 'hidapi' 'libevdev' 'libgl' 'libpng'
-	'libpulse' 'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls' 'pugixml' 'qt6-base'
-	'sfml' 'zlib'
+	'alsa-lib' 'bluez-libs' 'enet' 'hidapi' 'libevdev' 'libgl' 'libpulse'
+	'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls' 'pugixml' 'qt6-base' 'sfml'
 	'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so'
 	'libminiupnpc.so' 'libswscale.so' 'libudev.so' 'libusb-1.0.so'
 )
@@ -26,8 +25,12 @@ source=(
 	"$pkgname::git+https://github.com/$_mainpkgname/$_projectname"
 	"$pkgname-mgba::git+https://github.com/mgba-emu/mgba.git"
 	"$pkgname-spirvcross::git+https://github.com/KhronosGroup/SPIRV-Cross.git"
+	"$pkgname-zlibng::git+https://github.com/zlib-ng/zlib-ng.git"
+	"$pkgname-libspng::git+https://github.com/randy408/libspng.git"
 )
 sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP')
 
@@ -49,6 +52,18 @@ prepare() {
 	git submodule init "$_spirvcrosspath"
 	git config "submodule.$_spirvcrosspath.url" "$srcdir/$pkgname-spirvcross/"
 	git submodule update "$_spirvcrosspath"
+
+	# Provide zlib-ng submodule
+	_zlibngpath='Externals/zlib-ng/zlib-ng'
+	git submodule init "$_zlibngpath"
+	git config "submodule.$_zlibngpath.url" "$srcdir/$pkgname-zlibng/"
+	git submodule update "$_zlibngpath"
+
+	# Provide libspng submodule
+	_libspngpath='Externals/libspng/libspng'
+	git submodule init "$_libspngpath"
+	git config "submodule.$_libspngpath.url" "$srcdir/$pkgname-libspng/"
+	git submodule update "$_libspngpath"
 }
 
 pkgver() {
