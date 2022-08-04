@@ -2,7 +2,7 @@
 
 pkgname=python-bloodhound
 _pkgname=bloodhound
-pkgver=1.2.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Python based ingestor for BloodHound, based on Impacket"
 arch=('any')
@@ -12,7 +12,7 @@ groups=()
 depends=('python' 'impacket' 'python-ldap3' 'python-dnspython' 'python-future' 'python-pyasn1')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('73be03b93027f8bd71ee66c6f724fb3ae32c92ec5ca1927fecb56edbb092a737')
+sha256sums=('609389fcbd0dbf37f56b3e282ee8f584b51c7bbd5235833d9dcd76d476bb591c')
 
 package() {
   cd ${_pkgname}-${pkgver}
