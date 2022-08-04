@@ -6,7 +6,7 @@ arch=('x86_64')
 url="https://github.com/Jarred-Sumner/bun"
 license=('MIT')
 provides=("bun=$pkgver" 'bun')
-source=("https://github.com/Jarred-Sumner/bun/releases/download/bun-v${pkgver}/bun-linux-x64-${pkgver}.zip")
+source=("bun-linux-x64-${pkgver}.zip::https://github.com/Jarred-Sumner/bun/releases/download/bun-v${pkgver}/bun-linux-x64.zip")
 sha512sums=('SKIP')
 
 
