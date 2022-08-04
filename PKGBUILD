@@ -6,7 +6,7 @@
 _pkgname="matomo"
 
 pkgname="matomo-git"
-pkgver="4.10.1"
+pkgver="4.11.0"
 pkgrel="1"
 pkgdesc="A powerful web analytics platform."
 arch=("any")
@@ -15,9 +15,9 @@ license=("GPL3")
 depends=("php" "php-fpm" "php-gd")
 makedepends=("composer" "curl" "git" "git-lfs")
 optdepends=("apache: HTTP server"
-"certbot: Creates SSL certificates."
-"mariadb: Database"
-"nginx: HTTP server")
+    "certbot: Creates SSL certificates."
+    "mariadb: Database"
+    "nginx: HTTP server")
 provides=("${_pkgname}")
 conflicts=("matomo")
 source=("git+${url}.git")
@@ -48,17 +48,14 @@ package()
     current_year=$(date +"%Y")
     current_month=$(date +"%m")
 
-    while [[ "$(curl -s -o /dev/null/ -w "%{http_code}" https://download.db-ip.com/free/dbip-city-lite-"${current_year}"-"${current_month}".mmdb.gz || true)" != "200" ]]
-    do
+    while [[ "$(curl -s -o /dev/null/ -w "%{http_code}" https://download.db-ip.com/free/dbip-city-lite-"${current_year}"-"${current_month}".mmdb.gz || true)" != "200" ]]; do
         ### Remove the preceding 0.
-        if [[ "${current_month::1}" == "0" ]]
-        then
+        if [[ "${current_month::1}" == "0" ]]; then
             current_month=${current_month:1}
         fi
 
         ### Take the last month.
-        if [[ "${current_month}" -gt "1" ]]
-        then
+        if [[ "${current_month}" -gt "1" ]]; then
             ((current_month--))
         else
             ((current_year--))
@@ -66,8 +63,7 @@ package()
         fi
 
         ### Put a 0 at the beginning again.
-        if [[ "${#current_month}" == "2" ]]
-        then
+        if [[ "${#current_month}" == "2" ]]; then
             current_month="0${current_month}"
         fi
     done
