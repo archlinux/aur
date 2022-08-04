@@ -1,0 +1,19 @@
+pkgbase = karlender-git
+	pkgdesc = An apative GTK-4 calendar app.
+	pkgver = r100.5844090
+	pkgrel = 1
+	url = https://gitlab.com/loers/karlender
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = cargo
+	depends = libadwaita
+	depends = libnotify
+	provides = karlender
+	conflicts = karlender
+	source = git+https://gitlab.com/loers/karlender.git
+	b2sums = SKIP
+
+pkgname = karlender-git
