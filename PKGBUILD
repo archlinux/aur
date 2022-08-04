@@ -3,7 +3,7 @@
 
 pkgname=xdao
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An nmbXD TUI cli written in Python."
 arch=('any')
 url="https://github.com/TransparentLC/xdcmd"
