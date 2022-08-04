@@ -3,13 +3,13 @@
 _pkgname=wayfarer
 pkgname=wayfarer-git
 pkgver=r24.4cbbb04
-pkgrel=1
+pkgrel=2
 pkgdesc='Screen recorder for GNOME / Wayland / Pipewire / XDG Portal'
 arch=('i686' 'x86_64' 'arm' 'aarch64' 'armv7h' 'pentium4')
 url='https://github.com/stronnag/wayfarer.git'
 license=('GPLv3')
 makedepends=('git' 'vala' 'meson')
-depends=('gtk3' 'gstreamer' 'libappindicator-gtk3' 'libportal')
+depends=('gtk4' 'gstreamer' 'libportal')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url")
