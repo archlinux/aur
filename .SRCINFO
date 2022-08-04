@@ -1,16 +1,16 @@
 pkgbase = makoureactor-git
 	pkgdesc = Final Fantasy 7 Field Editor
-	pkgver = continuous.r25.g7e237cd
+	pkgver = continuous.r5.g4c8c82c
 	pkgrel = 1
 	url = https://github.com/myst6re/makoureactor
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = qt5-base
+	depends = qt6-base
 	depends = zlib
+	depends = libff7tk
 	conflicts = makoureactor
 	source = git://github.com/myst6re/makoureactor.git#branch=develop
 	md5sums = SKIP
 
 pkgname = makoureactor-git
-
