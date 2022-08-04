@@ -2,7 +2,7 @@
 pkgname=taskade
 pkgbase=taskade-appimage
 pkgver=4.2.6
-pkgrel=1.0
+pkgrel=1.1
 pkgdesc='Get things done with task lists, workflow automation, and real-time collaboration.'
 arch=('x86_64')
 url='https://taskade.com/'
