@@ -1,0 +1,31 @@
+pkgbase = bishengjdk-17
+	pkgdesc = BiSheng JDK is a high-performance OpenJDK distribution for production environments.
+	pkgver = 17.0.3
+	pkgrel = 1
+	url = https://gitee.com/openeuler/bishengjdk-17
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	source = https://mirrors.huaweicloud.com/kunpeng/archive/compiler/bisheng_jdk/bisheng-jdk-17.0.3-linux-x64.tar.gz
+	source = https://mirrors.huaweicloud.com/kunpeng/archive/compiler/bisheng_jdk/bisheng-jre-17.0.3-linux-x64.tar.gz
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = bishengjdk-17
+	install = bishengjdk.install
+	depends = java-environment-common
+	depends = java-runtime-common
+	provides = java-environment=17
+	provides = java-environment-bishengjdk=17
+	provides = java-runtime=17
+	provides = java-runtime-bishengjdk=17
+	provides = java-runtime-headless=17
+	provides = java-runtime-headless-bishengjdk=17
+
+pkgname = bishengjre-17
+	install = bishengjre.install
+	depends = java-runtime-common
+	provides = java-runtime=17
+	provides = java-runtime-bishengjdk=17
+	provides = java-runtime-headless=17
+	provides = java-runtime-headless-bishengjdk=17
