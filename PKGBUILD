@@ -1,8 +1,8 @@
 # Maintainer: slashformotion <slashformotion@archlinux.org>
 # Author: slashformotion <slashformotion@archlinux.org>
 pkgname=radioboat
-pkgver=0.2.1
-pkgrel=4
+pkgver=0.2.2
+pkgrel=5
 pkgdesc="A terminal web radio client, built with simplicity in mind"
 arch=('x86_64')
 url="https://github.com/slashformotion/radioboat"
@@ -10,7 +10,7 @@ license=('APACHE')
 makedepends=('go' 'git')
 depends=('mpv')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('225a50aea76cf3fcf9332b964867b7cfb88b16f627baca2643cc26b3787d87b5')
+sha256sums=('16285c68ff897ce973ae5c2c4491d030b37aabeda050f92cbc93c533d9af77bc')
 provides=('radioboat')
 
 prepare() {
