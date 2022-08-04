@@ -2,7 +2,7 @@
 
 pkgname=platypush
 pkgver=0.23.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
 license=('MIT')
@@ -16,15 +16,15 @@ optdepends=('python-paho-mqtt: MQTT integrations support'
 	'python-aiohttp: SmartThings support'
 	'python-pyserial: Arduino/serial device support')
 options=(!strip)
-source=("${pkgname}-v${pkgver}.tar.gz::https://git.platypush.tech/${pkgname}/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
+source=("v${pkgver}.tar.gz::https://git.platypush.tech/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
 sha512sums=('45601877d055e4ceafae266e9c4058d8cd102ec0f9d91604f2103a977fa2505d68d15124ffe99d045a0ff3659672c2aa4ddb0f57585fae33ef60844a31e41a3d')
 
 package() {
-    cd "${srcdir}/${pkgname}-v${pkgver}"
+    cd "${srcdir}/${pkgname}"
     python3 setup.py build install --root="${pkgdir}/" --optimize=1
 
     install -m755 -d "${pkgdir}/usr/lib/systemd/user"
-    install -m644 "${srcdir}/${pkgname}-v${pkgver}/examples/systemd/platypush.service" "${pkgdir}/usr/lib/systemd/user"
+    install -m644 "${srcdir}/${pkgname}/examples/systemd/platypush.service" "${pkgdir}/usr/lib/systemd/user"
 
     echo
     echo

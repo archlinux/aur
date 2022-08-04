@@ -1,7 +1,7 @@
 pkgbase = platypush
 	pkgdesc = Universal multi-platform command executor and automation manager
 	pkgver = 0.23.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.platypush.tech/platypush/platypush
 	arch = any
 	license = MIT
@@ -33,7 +33,7 @@ pkgbase = platypush
 	optdepends = python-aiohttp: SmartThings support
 	optdepends = python-pyserial: Arduino/serial device support
 	options = !strip
-	source = platypush-v0.23.3.tar.gz::https://git.platypush.tech/platypush/platypush/-/archive/v0.23.3/platypush-v0.23.3.tar.gz
+	source = v0.23.3.tar.gz::https://git.platypush.tech/platypush/platypush/archive/v0.23.3.tar.gz
 	sha512sums = 45601877d055e4ceafae266e9c4058d8cd102ec0f9d91604f2103a977fa2505d68d15124ffe99d045a0ff3659672c2aa4ddb0f57585fae33ef60844a31e41a3d
 
 pkgname = platypush
