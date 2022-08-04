@@ -34,6 +34,6 @@ pkgbase = platypush
 	optdepends = python-pyserial: Arduino/serial device support
 	options = !strip
 	source = platypush-v0.23.3.tar.gz::https://git.platypush.tech/platypush/platypush/-/archive/v0.23.3/platypush-v0.23.3.tar.gz
-	sha512sums = cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e
+	sha512sums = 45601877d055e4ceafae266e9c4058d8cd102ec0f9d91604f2103a977fa2505d68d15124ffe99d045a0ff3659672c2aa4ddb0f57585fae33ef60844a31e41a3d
 
 pkgname = platypush
