@@ -1,6 +1,6 @@
 pkgbase = nauz-file-detector-git
 	pkgdesc = Nauz File Detector is a portable linker/compiler/packer identifier utility.
-	pkgver = 0.08.r130.g48af4ce
+	pkgver = 0.08.r456.g2f501c5
 	pkgrel = 1
 	url = http://n10info.blogspot.com/2018/12/nauz-file-detector.html
 	arch = x86_64
