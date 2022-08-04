@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=darktile-git
-pkgver=0.0.11.r0.g93392fc
+pkgver=0.0.11.r1.g159932f
 pkgrel=1
 pkgdesc="A GPU-rendered terminal emulator designed for tiling window managers"
 arch=('x86_64')
