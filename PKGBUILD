@@ -2,7 +2,7 @@
 _pkgname=faraday
 __pkgname=fr
 pkgname=${_pkgname}-bin
-pkgver=0.2.5_alpha
+pkgver=0.2.8_alpha
 _pkgver="${pkgver//_/-}"
 pkgrel=3
 pkgdesc="Faraday is a suite of tools built to help node operators and businesses run lnd, the leading implementation of the Lightning Network."
@@ -13,10 +13,12 @@ license=("MIT")
 depends=("lnd")
 provides=("${_pkgname}" "${__pkgname}cli")
 
-developer=carlakirkcohen
+developer=""
+#developer=carlakirkcohen
+_developer="-${pkgver}"
 source=(
 ${_pkgname}-${_arch}-v${_pkgver}.tar.gz::"${url}/releases/download/v${_pkgver}/${_pkgname}-${_arch}-v${_pkgver}.tar.gz"
-manifest-v${_pkgver}.txt.sig::"${url}/releases/download/v${_pkgver}/manifest-${developer}-v${_pkgver}.sig"
+manifest-v${_pkgver}.txt.sig::"${url}/releases/download/v${_pkgver}/manifest${_developer}-v${_pkgver}.sig"
 manifest-v${_pkgver}.txt::"${url}/releases/download/v${_pkgver}/manifest-v${_pkgver}.txt"
 )
 
