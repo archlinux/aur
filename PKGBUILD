@@ -2,12 +2,12 @@
 
 pkgname=digiham-git
 pkgver=0.6.0.r1.g08b923a
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for decoding digital ham communication."
 arch=('x86_64')
 url="https://github.com/jketterl/digiham"
 license=('GPL3')
-depends=('mbelib' 'icu' 'codecserver')
+depends=('mbelib' 'icu' 'codecserver' 'libsamplerate' 'csdr' 'protobuf')
 makedepends=('git' 'cmake')
 conflicts=('digiham')
 provides=('digiham')
