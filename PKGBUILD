@@ -16,7 +16,7 @@ pkgname=(
   qemu-guest-agent-git
 )
 pkgdesc="A generic and open source machine emulator and virtualizer. Git version."
-pkgver=7.1.0.rc0.r0.g7b17a1a841
+pkgver=7.1.0.rc1.r4.g2480f3bbd0
 pkgrel=1
 epoch=16
 arch=(i686 x86_64)
@@ -86,10 +86,12 @@ makedepends=(
 )
 source=(git://git.qemu.org/qemu.git
         qemu-guest-agent.service
-        65-kvm.rules)
+        65-kvm.rules
+        qemu-7.0.0-glibc-2.36.patch)
 sha256sums=('SKIP'
             'c39bcde4a09165e64419fd2033b3532378bba84d509d39e2d51694d44c1f8d88'
-            'a66f0e791b16b03b91049aac61a25950d93e962e1b2ba64a38c6ad7f609b532c')
+            'a66f0e791b16b03b91049aac61a25950d93e962e1b2ba64a38c6ad7f609b532c'
+            '1eee1b5d839fdfc5cd5a18f0c769b01228c14781de1368670e2c589cd6903a6e')
 
 case $CARCH in
   i?86) _corearch=i386 ;;
@@ -103,6 +105,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_gitname}"
+  patch -Np1 < ../qemu-7.0.0-glibc-2.36.patch
   mkdir build-{full,headless}
   mkdir -p extra-arch-{full,headless}/usr/{bin,share/qemu}
 }
