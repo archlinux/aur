@@ -1,7 +1,7 @@
 pkgbase = threema-desktop
 	pkgdesc = Threema Desktop (Threema Web in Electron).
 	pkgver = 1.2.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/threema-ch/threema-web-electron
 	arch = any
 	license = AGPL
@@ -11,8 +11,12 @@ pkgbase = threema-desktop
 	source = threema-web-electron-v1.2.18.tar.gz::https://github.com/threema-ch/threema-web-electron/archive/refs/tags/1.2.18.tar.gz
 	source = threema-web-v2.4.2.tar.gz::https://github.com/threema-ch/threema-web/archive/refs/tags/v2.4.2.tar.gz
 	source = threema.desktop
+	source = 0001-When-browser-detection-fails-don-t-return-undefined.patch
+	source = 0002-Remove-browser-warning.patch
 	sha256sums = 87938d1329d55159717c87dbdab7e59e615457c8528aef638e313e4233c3b86f
 	sha256sums = 61942d1ea93746580e0219eefa38114e8aa597355c4fd620bbd31dfd1b270b09
 	sha256sums = ccfdae3416e2a1f096cfaf67fd8f8dacb0d8348582fc666ecc8b5b0d08ef5bf2
+	sha256sums = 5079f273e325a9206ae31e1537a63862cadd4e93471b1ec715c1587b808a6c08
+	sha256sums = 75be30059dab96e015a9030477c3a7e55584b408761f9c50a9491d1bed152c78
 
 pkgname = threema-desktop

@@ -1,0 +1,29 @@
+From 7793ff845953ba9b9051961b9a28ae1b2e64166e Mon Sep 17 00:00:00 2001
+From: Danilo Bargen <danilo.bargen@threema.ch>
+Date: Thu, 4 Aug 2022 09:50:13 +0200
+Subject: [PATCH] When browser detection fails, don't return undefined
+
+---
+ src/services/browser.ts | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/services/browser.ts b/src/services/browser.ts
+index c405e0d4..c65b1541 100644
+--- a/src/services/browser.ts
++++ b/src/services/browser.ts
+@@ -124,6 +124,12 @@ export class BrowserService {
+             if (browser.opera) {
+                 this.browser = new BrowserInfo(uagent, BrowserName.Opera, version);
+             }
++
++            // Detection failed
++            if (this.browser === undefined) {
++                this.log.warn(`Browser could not be recognized. User agent: ${uagent}`);
++                this.browser = new BrowserInfo(uagent, null, null);
++            }
+         }
+ 
+         return this.browser;
+-- 
+2.37.1
+

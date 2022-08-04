@@ -1,0 +1,57 @@
+From b57759918627e0b26b3cdac367c3046bceef0406 Mon Sep 17 00:00:00 2001
+From: Danilo Bargen <danilo.bargen@threema.ch>
+Date: Thu, 4 Aug 2022 10:22:20 +0200
+Subject: [PATCH] Remove browser warning
+
+---
+ src/partials/welcome.ts | 34 ----------------------------------
+ 1 file changed, 34 deletions(-)
+
+diff --git a/src/partials/welcome.ts b/src/partials/welcome.ts
+index 03a58b31..1d68efd6 100644
+--- a/src/partials/welcome.ts
++++ b/src/partials/welcome.ts
+@@ -143,40 +143,6 @@ class WelcomeController {
+         this.log.info('Detected browser:', this.browser.description());
+         if (!this.browser.wasDetermined()) {
+             this.log.warn('Could not determine browser version');
+-            this.showBrowserWarning();
+-        } else if (this.browser.name === threema.BrowserName.Chrome) {
+-            if (version < minVersions.CHROME) {
+-                this.log.warn('Chrome is too old (' + version + ' < ' + minVersions.CHROME + ')');
+-                this.showBrowserWarning();
+-            }
+-        } else if (this.browser.name === threema.BrowserName.Firefox) {
+-            if (version < minVersions.FF) {
+-                this.log.warn('Firefox is too old (' + version + ' < ' + minVersions.FF + ')');
+-                this.showBrowserWarning();
+-            }
+-        } else if (this.browser.name === threema.BrowserName.FirefoxIos) {
+-            if (version < minVersions.FF_IOS) {
+-                this.log.warn('Firefox on iOS is too old (WebKit ' + version + ' < ' + minVersions.FF_IOS + ')');
+-                this.showBrowserWarning();
+-            }
+-        } else if (this.browser.name === threema.BrowserName.Opera) {
+-            if (version < minVersions.OPERA) {
+-                this.log.warn('Opera is too old (' + version + ' < ' + minVersions.OPERA + ')');
+-                this.showBrowserWarning();
+-            }
+-        } else if (this.browser.name === threema.BrowserName.Safari) {
+-            if (version < minVersions.SAFARI) {
+-                this.log.warn('Safari is too old (' + version + ' < ' + minVersions.SAFARI + ')');
+-                this.showBrowserWarning();
+-            }
+-        } else if (this.browser.name === threema.BrowserName.Edge) {
+-            if (version < minVersions.EDGE) {
+-                this.log.warn('Edge is too old (' + version + ' < ' + minVersions.EDGE + ')');
+-                this.showBrowserWarning();
+-            }
+-        } else {
+-            this.log.warn('Non-supported browser, please use Chrome, Firefox, Edge or Opera');
+-            this.showBrowserWarning();
+         }
+ 
+         // Determine whether local storage is available
+-- 
+2.37.1
+
