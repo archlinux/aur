@@ -1,7 +1,7 @@
 pkgbase = xdao
 	pkgdesc = An nmbXD TUI cli written in Python.
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/TransparentLC/xdcmd
 	install = xdao.install
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = xdao
 	depends = python-prompt_toolkit
 	depends = python-requests
 	optdepends = chafa
-	source = xdao::git+https://hub.fastgit.xyz/TransparentLC/xdcmd.git
+	source = xdao::git+https://ghproxy.com/https://github.com/TransparentLC/xdcmd.git
 	sha256sums = SKIP
 
 pkgname = xdao
