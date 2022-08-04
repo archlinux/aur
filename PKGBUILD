@@ -1,5 +1,5 @@
 pkgname=bytesize-git
-pkgver=1.6.3
+pkgver=1.10.0
 pkgrel=1
 arch=('any')
 pkgdesc='Convert between Binary & SI Bytes' 
