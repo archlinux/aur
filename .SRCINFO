@@ -1,6 +1,6 @@
 pkgbase = textpieces-git
 	pkgdesc = Transform text without using random websites
-	pkgver = 3.0.2.r70.g183f494
+	pkgver = 3.1.0.r0.g5fd7a4c
 	pkgrel = 1
 	url = https://github.com/liferooter/textpieces
 	arch = x86_64
@@ -8,7 +8,6 @@ pkgbase = textpieces-git
 	license = GPL3
 	checkdepends = appstream-glib
 	makedepends = git
-	makedepends = blueprint-compiler
 	makedepends = gobject-introspection
 	makedepends = meson
 	makedepends = vala
