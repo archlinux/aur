@@ -1,6 +1,6 @@
 # Maintainer: Juliette Cordor
 pkgname=ignoreit-bin
-pkgver=2.4.3
+pkgver=2.4.6
 pkgrel=1
 provides=("ignoreit")
 conflicts=("ignoreit")
@@ -12,7 +12,7 @@ source=(
     "$pkgname-$pkgver-bin::https://github.com/jewlexx/ignoreit/releases/download/v$pkgver/ignoreit-$arch-linux"
 )
 
-sha256sums=('468b73468f2c7e6c3539e45449a9094d2bbb2e758d158238b1ed40976d55e90e')
+sha256sums=('2ac051a6bfeb8d529785d78a5962b8d3679aa6f8209cf60af6fe2d4a4ef5d9a2')
 
 build() {
     return 0
