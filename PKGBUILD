@@ -1,10 +1,10 @@
 # Maintainer: Jonas Malaco <jonas@protocubo.io>
 _pkgbase=liquidtux
 pkgname=liquidtux-dkms-git
-pkgver=0.1.0.r24.dd6c337
+pkgver=0.1.0.r68.3b80daf
 pkgrel=1
 pkgdesc="Linux kernel hwmon drivers for AIO liquid coolers and other devices (DKMS, Git)"
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/liquidctl/liquidtux"
 license=('GPL')
 depends=('dkms')
