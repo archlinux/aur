@@ -4,7 +4,7 @@
 pkgname=xdao
 pkgver=1.0.0
 pkgrel=3
-pkgdesc="An Xdnmb TUI cli written in Python."
+pkgdesc="An nmbXD TUI cli written in Python."
 arch=('any')
 url="https://github.com/TransparentLC/xdcmd"
 license=('AGPL-3.0')

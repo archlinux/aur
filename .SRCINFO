@@ -1,5 +1,5 @@
 pkgbase = xdao
-	pkgdesc = An Xdnmb TUI cli written in Python.
+	pkgdesc = An nmbXD TUI cli written in Python.
 	pkgver = 1.0.0
 	pkgrel = 3
 	url = https://github.com/TransparentLC/xdcmd
