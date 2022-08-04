@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-caffeine-plus-git
 pkgver=r174.a6fba34
-pkgrel=1
+pkgrel=2
 pkgdesc="Disable screensaver and auto suspend"
 arch=('any')
 url="https://github.com/tonylambiris/gnome-shell-extension-caffeine-plus.git"
