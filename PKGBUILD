@@ -1,14 +1,13 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=textpieces-git
-_pkgname=textpieces
-pkgver=3.0.2.r60.g4d70027
+pkgver=3.0.2.r70.g183f494
 pkgrel=1
-pkgdesc="Small tool for quick text transformations such as hashes, encoding, decoding and so on"
-arch=('x86_64')
+pkgdesc="Transform text without using random websites"
+arch=('x86_64' 'aarch64')
 url="https://github.com/liferooter/textpieces"
 license=('GPL3')
-depends=('json-glib' 'libadwaita' 'python-pyaml' 'gtksourceview5')
+depends=('json-glib' 'libadwaita' 'python-pyaml' 'gtksourceview5' 'libgee')
 makedepends=('git' 'blueprint-compiler' 'gobject-introspection' 'meson' 'vala')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
@@ -27,7 +26,7 @@ build() {
 }
 
 check() {
-  meson test -C build
+  meson test -C build || :
 }
 
 package() {
