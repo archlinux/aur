@@ -1,0 +1,22 @@
+pkgbase = jira-cli-bin
+	pkgdesc = Feature-rich interactive Jira command line.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ankitpokhrel/jira-cli
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv6h
+	license = MIT
+	provides = jira
+	conflicts = jira-cli
+	source_x86_64 = https://github.com/ankitpokhrel/jira-cli/releases/download/v1.0.0/jira_1.0.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 13e179f241547a9f8f206f351ebcfa7b31aea2aa742ae04da1da72b7a84620da
+	source_i686 = https://github.com/ankitpokhrel/jira-cli/releases/download/v1.0.0/jira_1.0.0_linux_i386.tar.gz
+	sha256sums_i686 = 276f7b2918d6785082051adccc384c42bac56f865093888f715b960cb6fcb997
+	source_aarch64 = https://github.com/ankitpokhrel/jira-cli/releases/download/v1.0.0/jira_1.0.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 95f885fcf06f7c1b5837556aabfbd7f429770771aabf68403953aafb89dfc19f
+	source_armv6h = https://github.com/ankitpokhrel/jira-cli/releases/download/v1.0.0/jira_1.0.0_linux_armv6.tar.gz
+	sha256sums_armv6h = 97ca651b51690158272e3b779e4c6a074376eb13d39a11a89173f151be14d91f
+
+pkgname = jira-cli-bin
