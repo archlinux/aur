@@ -1,6 +1,6 @@
 pkgbase = r-hdf5array
 	pkgdesc = HDF5 backend for DelayedArray objects
-	pkgver = 1.24.1
+	pkgver = 1.24.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/HDF5Array
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = r-hdf5array
 	optdepends = r-summarizedexperiment
 	optdepends = r-tenxbraindata
 	optdepends = r-zellkonverter
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/HDF5Array_1.24.1.tar.gz
-	sha256sums = 5e35b79abd1115d98dda6551bf61a4adba50f723edfad91322eb6160e67934e4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HDF5Array_1.24.2.tar.gz
+	sha256sums = 29673afb6a001694fffb40b27378082d16bc2461541fa2c4796abc380c29fdb7
 
 pkgname = r-hdf5array
