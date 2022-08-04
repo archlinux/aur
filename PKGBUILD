@@ -2,7 +2,7 @@
 # Maintainer: Randy Fay <randy at randyfay.com>
 
 pkgname='ddev-edge-bin'
-pkgver=1.19.5
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='DDEV-Local: a local web development environment (edge)'
 url='https://github.com/drud/ddev'
@@ -11,11 +11,11 @@ license=('Apache 2')
 provides=('ddev')
 conflicts=('ddev')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/drud/ddev/releases/download/v1.19.5/ddev_linux-arm64.v1.19.5.tar.gz")
-sha256sums_aarch64=('fa2399e2031f1c7f3698e1eb71c3256c685c8dba61475dc574ccd79f12173a76')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/drud/ddev/releases/download/v1.20.0/ddev_linux-arm64.v1.20.0.tar.gz")
+sha256sums_aarch64=('966cfb4526881e34d211117516061ce9e0b1581bdae80f4add50757287ec6512')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/drud/ddev/releases/download/v1.19.5/ddev_linux-amd64.v1.19.5.tar.gz")
-sha256sums_x86_64=('287547c7b2f7ae02c32a6bef23c2623cc12da061f67c2bb2434368f3faa5b2f5')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/drud/ddev/releases/download/v1.20.0/ddev_linux-amd64.v1.20.0.tar.gz")
+sha256sums_x86_64=('accf8e859ab57dd69a0593faa7f38b12404c66dd18f9c9621a7513b3e72d080b')
 
 package() {
   # bin
