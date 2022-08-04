@@ -7,7 +7,7 @@
 pkgname=pure-pcre
 _pkgname=pure
 pkgver=0.68
-pkgrel=3
+pkgrel=4
 pkgdesc="Pure is a modern-style functional programming language based on term rewriting (variant with Perl regex support)."
 arch=("i686" "x86_64")
 license=('GPL3' 'LGPL3')
@@ -21,8 +21,15 @@ optdepends=("clang35: needed for inlining C/C++ code"
             "texmacs-pure: embedding Pure sessions in TeXmacs")
 provides=('pure')
 conflicts=('pure')
-source=("https://github.com/agraef/pure-lang/releases/download/$_pkgname-$pkgver/$_pkgname-$pkgver.tar.gz")
-md5sums=('082d522d05e58e55dc8094ba4c3d3eda')
+source=("https://github.com/agraef/pure-lang/releases/download/$_pkgname-$pkgver/$_pkgname-$pkgver.tar.gz"
+       "emacs27.patch")
+md5sums=('082d522d05e58e55dc8094ba4c3d3eda'
+         'fe62166e277a6accefbfa81e2e307900')
+
+prepare() {
+  cd $srcdir/$_pkgname-$pkgver
+  patch -p2 -i ../emacs27.patch
+}
 
 build() {
   cd $srcdir/$_pkgname-$pkgver
