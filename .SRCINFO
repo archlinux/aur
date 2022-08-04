@@ -1,8 +1,9 @@
 pkgbase = xdao
 	pkgdesc = An Xdnmb TUI cli written in Python.
 	pkgver = 1.0.0
-	pkgrel = 2
-	url = https://www.nmbxd1.com/t/50750950
+	pkgrel = 3
+	url = https://github.com/TransparentLC/xdcmd
+	install = xdao.install
 	arch = any
 	license = AGPL-3.0
 	makedepends = git
