@@ -3,13 +3,14 @@
 
 pkgname=xdao
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An nmbXD TUI cli written in Python."
 arch=('any')
 url="https://github.com/TransparentLC/xdcmd"
 license=('AGPL-3.0')
 sha256sums=('SKIP')
 depends=(
+  'python'
   'python-beautifulsoup4'
   'python-lxml'
   'python-prompt_toolkit'
