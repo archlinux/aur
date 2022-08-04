@@ -1,6 +1,6 @@
 pkgbase = dendrite
 	pkgdesc = A second-generation Matrix homeserver written in Go
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://matrix-org.github.io/dendrite/
 	install = dendrite.install
@@ -12,11 +12,11 @@ pkgbase = dendrite
 	license = Apache
 	makedepends = go>=1.16
 	optdepends = postgresql: recommended database for large instances
-	source = dendrite-0.9.0.tar.gz::https://github.com/matrix-org/dendrite/archive/v0.9.0/dendrite-v0.9.0.tar.gz
+	source = dendrite-0.9.1.tar.gz::https://github.com/matrix-org/dendrite/archive/v0.9.1/dendrite-v0.9.1.tar.gz
 	source = dendrite.sysusers
 	source = dendrite.tmpfiles
 	source = dendrite.service
-	sha256sums = b2993ec608200df9d9d596b84255e9e069205333ac8deeb1c6c5c573d5fd974c
+	sha256sums = 5a65eb07b47dffefab2e8abe48cd7d37bc59e08c5163b09c63ec1d30cc808d35
 	sha256sums = aba328d7a7244e82f866f9d0ead0a53e79e1590b9c449ad6d18ff2659cb5e035
 	sha256sums = 8da956f9fcc7c6ea844cea53c823fcfa4376acf04ecd9bceb1a908a85846c90f
 	sha256sums = 2ce2e6fd819087bc47f4b369205afeaf0070dacf3305efcfbec5365bd11af6e7
