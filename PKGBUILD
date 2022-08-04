@@ -9,7 +9,7 @@ url='https://github.com/matteocorti/check_ssl_cert/'
 license=('GPL3')
 depends=('monitoring-plugins' 'curl' 'expect' 'perl-timedate' 'inetutils')
 source=("https://github.com/matteocorti/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('f6e57aa2f4878b860110bd2f2e8783d9')
+md5sums=('c7f621f361cb33cc1b9057a029d5e074')
 
 package() {
 	cd "$srcdir"/$pkgname-$pkgver
