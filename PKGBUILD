@@ -4,8 +4,8 @@ url="https://github.com/clearlinux-pkgs/linux"
 pkgname=linux-clear-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=5.18
-_minor=14
-_clr=1162
+_minor=15
+_clr=1163
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
@@ -23,7 +23,7 @@ provides=("WIREGUARD-MODULE")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=36700
+_clear_version=36710
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 
 source=("Manifest.kernel-native.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.kernel-native"
@@ -78,5 +78,5 @@ package() {
     msg2 "Fixing permissions..."
     chmod -Rc u=rwX,go=rX "$pkgdir"
 }
-b2sums=('2672ee7f2dd89ccb620f69033d3a8c85979eb807c9bc87308cbabe39e29190952097aa529c1bb345e8fdd12b213ce7994c9e3f6a74061a7321998a2db8ead675'
-        '34cd9ad15fb7b9b7cbcb714ec253473c88c094ce1e4573a66f7c50428f78497ae9f5d4a0129fa15690e8d6ed587be5ef3b395f5d7331228e71f5ef113e97a910')
+b2sums=('e072b16d1dc776e18ae30ecbdd2f14b274d1e24c62778c985be8a43cdb1fde966406f42f6888a9e80070cf3c35a026519ead425e8bce732765d6a812c311a047'
+        '399f68fbcaebbe6235246114811d1d565d829711a01bb4edfdf3f2c0e1dc719f3efee5c2836545ded1a1a72c91701abcfbcc1e9fa4581f5f1302b5e5a5b12429')
