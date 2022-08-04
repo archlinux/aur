@@ -1,6 +1,6 @@
 pkgbase = otis-theme-git
 	pkgdesc = An elegant dark theme for gnome
-	pkgver = r51.5842557
+	pkgver = r59.c614a20
 	pkgrel = 1
 	url = https://github.com/EliverLara/Otis
 	arch = any
