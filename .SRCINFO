@@ -1,7 +1,7 @@
 pkgbase = gobuster-git
 	pkgdesc = A directory/file & DNS busting tool.
-	pkgver = 3.1.0.r27.gf7bc132
-	pkgrel = 2
+	pkgver = 3.1.0.r28.g95896a2
+	pkgrel = 1
 	url = https://github.com/OJ/gobuster
 	arch = x86_64
 	license = Apache
