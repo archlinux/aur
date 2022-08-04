@@ -5,7 +5,7 @@
 
 _npmname=nodemon
 pkgname=nodejs-$_npmname
-pkgver=2.0.18
+pkgver=2.0.19
 pkgrel=1
 pkgdesc="Simple monitor script for use during development of a node.js app."
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=(npm)
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz
         https://raw.githubusercontent.com/remy/nodemon/master/LICENSE)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('f70d6ed32ef05e5505d8f1edc25e5413f7da8bc537acad2fe58937e111ca0c92'
+sha256sums=('abb530c99412a29e494f2ceaf1c3e5f62d1fb0353b62a63de9f4d7fe028f2568'
             '0fa6b5d2902f7ac42db390dfd2cb3b4ce82ed45cb5ad5dea41c11d1d67e0934d')
 
 package() {

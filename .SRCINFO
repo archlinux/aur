@@ -1,16 +1,16 @@
 pkgbase = nodejs-nodemon
 	pkgdesc = Simple monitor script for use during development of a node.js app.
-	pkgver = 2.0.18
+	pkgver = 2.0.19
 	pkgrel = 1
 	url = https://nodemon.io
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = nodemon-2.0.18.tgz
-	source = https://registry.npmjs.org/nodemon/-/nodemon-2.0.18.tgz
+	noextract = nodemon-2.0.19.tgz
+	source = https://registry.npmjs.org/nodemon/-/nodemon-2.0.19.tgz
 	source = https://raw.githubusercontent.com/remy/nodemon/master/LICENSE
-	sha256sums = f70d6ed32ef05e5505d8f1edc25e5413f7da8bc537acad2fe58937e111ca0c92
+	sha256sums = abb530c99412a29e494f2ceaf1c3e5f62d1fb0353b62a63de9f4d7fe028f2568
 	sha256sums = 0fa6b5d2902f7ac42db390dfd2cb3b4ce82ed45cb5ad5dea41c11d1d67e0934d
 
 pkgname = nodejs-nodemon
