@@ -1,0 +1,22 @@
+pkgbase = elementary-store-monitor-git
+	pkgdesc = Manage processes and monitor system resources
+	pkgver = 0.14.0.ci3.r4.g37f7ca1
+	pkgrel = 1
+	url = https://github.com/stsdc/monitor
+	arch = x86_64
+	license = GPL
+	makedepends = vala
+	makedepends = meson
+	makedepends = sassc
+	depends = libhandy
+	depends = gtk3
+	depends = libwnck3
+	depends = libgtop
+	depends = wingpanel
+	depends = udisks2
+	depends = libxnvctrl
+	conflicts = pantheon-system-monitor-git
+	source = elementary-store-monitor-git::git+https://github.com/stsdc/monitor.git
+	sha256sums = SKIP
+
+pkgname = elementary-store-monitor-git
