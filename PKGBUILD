@@ -1,9 +1,10 @@
-# Maintainer: Erhad Husovic <xdaemonx@protonmail.ch>
+# Maintainer : talleyhoe <talleyhoe at protonmail dot com>
+# Contributor: Erhad Husovic
 pkgname='cadabra2-git'
-pkgver=2.2.7
+pkgver=2.3.9.3
 pkgrel=1
 pkgdesc="A computer algebra system (pre-release version) designed specifically for the solution of problems encountered in field theory."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://cadabra.science/"
 license=('GPL')
 conflicts=('cadabra2')
@@ -17,24 +18,31 @@ depends=(
   'pcre'
   'python-matplotlib'
   'python-sympy'
-  'texlive-core'
+  'texlive-latexextra'
+  'texlive-science'
 )
 makedepends=(
+  'git'
   'boost'
   'cmake'
 )
-source=("https://github.com/kpeeters/cadabra2/archive/${pkgver}.tar.gz")
-md5sums=('95feb70c09aca94a2149adbe4e754f4f')
+source=("git+https://github.com/kpeeters/cadabra2.git")
+sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/cadabra2-$pkgver"
+  cd "$srcdir/cadabra2"
   mkdir -p build
   cd build
   cmake -DCMAKE_SKIP_RPATH=true -DCMAKE_INSTALL_PREFIX=/usr ..
   make
 }
 
+check() {
+  cd "$srcdir/cadabra2/build"
+  make test
+}
+
 package() {
-  cd "$srcdir/cadabra2-$pkgver/build"
+  cd "$srcdir/cadabra2/build"
   make DESTDIR="${pkgdir}" install
 }
