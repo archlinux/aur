@@ -2,7 +2,7 @@
 
 pkgname=feeluown-bilibili
 epoch=1
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Bilibili provider for FeelUOwn"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('feeluown' 'python-cachetools' 'python-beautifulsoup4' 'python-pycryptodomex')
 makedepends=('python-setuptools' 'python-pip')
 source=("https://pypi.io/packages/source/f/feeluown_bilibili/feeluown-bilibili-$pkgver.tar.gz")
-sha512sums=('b14f84c8785ec7a792fe39fe92ed7f6f1316a87b5c8042d427ad0bb8d82ac3631bdd2f82933b1a11833e45dc04246491e853242f838a244877c4cf9392bac5a9')
+sha512sums=('8f15fbaf8b56489d7083893cd334edb3b6c0b72a5edabad1cac3a8142782e36939688049735c1d9014c652ee7002bfebc547b0c2cd125b7d679eaaa84e950b09')
 
 build() {
   cd feeluown-bilibili-$pkgver
