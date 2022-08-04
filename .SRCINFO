@@ -1,14 +1,15 @@
 pkgbase = otf-hasklig
 	pkgdesc = A font with symbol ligatures, intended for Haskell code
-	pkgver = 1.1
-	pkgrel = 3
+	pkgver = 1.2
+	pkgrel = 1
 	url = https://github.com/i-tu/Hasklig
 	arch = any
 	license = OFL
-	source = https://github.com/i-tu/Hasklig/releases/download/1.1/Hasklig-1.1.zip
+	source = https://github.com/i-tu/Hasklig/releases/download/v1.2/Hasklig-1.2.zip
 	source = LICENSE
-	sha512sums = 7621747399c1155faf3f1ba5c73dc4ce829141730fd22c58e97e2f3acf79a45b49dc1cf314af80226dbf3bfbf9a38ceb2de812b46a5d424b6181582429bcc081
+	sha512sums = fd8254f6aa14569147bbdb3940a08a99a04b601a56226fa65d73fe3ddb917b49b2234e12f4ea10ac59ba707579ed333e61fa1f1d5f141d9a9b3581cc56c38750
 	sha512sums = 25f5196ce0954bd91a3da62fc5044a28a2a1d372c02be5328f74d672005de51f542eb1178f8ab8b0ba1da879ad5c8b67102b555ffb25209238ac0ae0eebe8e74
 
 pkgname = otf-hasklig
 
+pkgname = ttf-hasklig
