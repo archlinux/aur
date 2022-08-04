@@ -1,8 +1,8 @@
 pkgbase = xboxdrv-cebtenzzre-git
-	pkgver = 0.8.8.r40.gc887ab9
-	pkgdesc = An XBox/XBox 360 gamepad driver - as alternative to the xpad-kernel module - with more configurability, runs in userspace and supports a multitude of controllers (Cebtenzzre's fork)
+	pkgdesc = An XBox/XBox 360 gamepad driver - extended mappings and rumble passthrough
+	pkgver = 0.8.8.r47.gaa0b96e
 	pkgrel = 1
-	url = https://xboxdrv.gitlab.io/
+	url = https://gitlab.com/cebtenzzre/xboxdrv
 	arch = x86_64
 	arch = i686
 	arch = arm
@@ -19,8 +19,8 @@ pkgbase = xboxdrv-cebtenzzre-git
 	depends = python2
 	provides = xboxdrv
 	conflicts = xboxdrv
-	source = xboxdrv-cebtenzzre-git::git+https://gitlab.com/cebtenzzre/xboxdrv.git#branch=stable
 	backup = etc/conf.d/xboxdrv
+	source = xboxdrv::git+https://gitlab.com/cebtenzzre/xboxdrv.git#branch=stable
 	source = xboxdrv.service
 	source = xboxdrv.conf
 	sha256sums = SKIP
@@ -28,4 +28,3 @@ pkgbase = xboxdrv-cebtenzzre-git
 	sha256sums = 68a286300d28bbfc97eb694c6cc413776f0bc16e35de6d1969f13ef1e7d1cac5
 
 pkgname = xboxdrv-cebtenzzre-git
-

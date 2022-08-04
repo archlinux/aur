@@ -5,17 +5,17 @@
 
 _pkgname=xboxdrv
 pkgname=${_pkgname}-cebtenzzre-git
-pkgver=0.8.8.r40.gc887ab9
+pkgver=0.8.8.r47.gaa0b96e
 pkgrel=1
-pkgdesc="An XBox/XBox 360 gamepad driver - as alternative to the xpad-kernel module - with more configurability, runs in userspace and supports a multitude of controllers (Cebtenzzre's fork)"
+pkgdesc="An XBox/XBox 360 gamepad driver - extended mappings and rumble passthrough"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
-url="https://xboxdrv.gitlab.io/"
+url="https://gitlab.com/cebtenzzre/xboxdrv"
 license=(GPL3)
 depends=(libx11 dbus-glib libusb python2)
 makedepends=(git scons boost)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${pkgname}::git+https://gitlab.com/cebtenzzre/xboxdrv.git#branch=stable"
+source=("${_pkgname}::git+https://gitlab.com/cebtenzzre/xboxdrv.git#branch=stable"
          'xboxdrv.service'
          'xboxdrv.conf')
 sha256sums=('SKIP'
@@ -25,17 +25,17 @@ sha256sums=('SKIP'
 backup=(etc/conf.d/xboxdrv)
 
 pkgver() {
-  cd "$pkgname"
+  cd "$_pkgname"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$pkgname"
+  cd "$_pkgname"
   sed 's|python|python2|g' -i examples/*.py
 }
 
 build() {
-  cd "$pkgname"
+  cd "$_pkgname"
   scons \
     LINKFLAGS="${LDFLAGS}" \
     CXXFLAGS="${CPPFLAGS} ${CXXFLAGS}" \
@@ -43,10 +43,10 @@ build() {
 }
 
 package() {
-  cd "$pkgname"
+  cd "$_pkgname"
   make PREFIX=/usr DESTDIR="$pkgdir" install
 
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_pkgname}"
   install -Dm644 "${srcdir}/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
   install -Dm644 "${srcdir}/${_pkgname}.conf" "${pkgdir}/etc/conf.d/${_pkgname}"
   install -Dm644 README.md NEWS PROTOCOL -t "${pkgdir}/usr/share/doc/${_pkgname}"
