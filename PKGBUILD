@@ -1,7 +1,7 @@
 # Maintainer: tjbp (archlinux@tjbp.net)
 
 pkgname='openwebrx'
-pkgver='0.20.3'
+pkgver='1.2.0'
 pkgrel='1'
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('csdr>=0.17' 'rtl-sdr' 'js8py' 'owrx_connector' 'netcat')
 optdepends=('sox' 'mbelib' 'digiham' 'dsd' 'codec2' 'direwolf')
 backup=('etc/openwebrx/config_webrx.py')
 source=("https://github.com/jketterl/openwebrx/archive/$pkgver.tar.gz")
-sha256sums=('eb473140ca3e5c1334b6e047738d1f992b3994a799665772858d37ce0cc2605a')
+sha256sums=('77a9573a22f6c65277ec0aeb4599aa6aee3a7873e3f651e7438f41baa12c38b3')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -23,8 +23,9 @@ package() {
     install -Dm 0644 ../sysusers.conf ${pkgdir}/usr/lib/sysusers.d/openwebrx.conf
     cd "$srcdir/$pkgname-$pkgver"
     install -Dm 0755 openwebrx.py ${pkgdir}/usr/bin/openwebrx
-    find owrx -type f -exec install -Dm 0644 "{}" "${pkgdir}/usr/lib/python3.9/{}" \;
-    find csdr -type f -exec install -Dm 0644 "{}" "${pkgdir}/usr/lib/python3.9/{}" \;
+    PYTHON_VER=$(python --version | grep -E -o '[0-9]+\.[0-9]+')
+    find owrx -type f -exec install -Dm 0644 "{}" "${pkgdir}/usr/lib/python$PYTHON_VER/{}" \;
+    find csdr -type f -exec install -Dm 0644 "{}" "${pkgdir}/usr/lib/python$PYTHON_VER/{}" \;
     find htdocs -type f -exec install -Dm 0644 "{}" "${pkgdir}/usr/lib/openwebrx/{}" \;
     install -Dm 0644 config_webrx.py ${pkgdir}/etc/openwebrx/config_webrx.py
     install -Dm 0644 systemd/openwebrx.service ${pkgdir}/usr/lib/systemd/system/openwebrx.service

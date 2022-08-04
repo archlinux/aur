@@ -1,6 +1,6 @@
 pkgbase = openwebrx
 	pkgdesc = Open source, multi-user SDR receiver software with a web interface
-	pkgver = 0.20.3
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://www.openwebrx.de/
 	arch = i686
@@ -18,8 +18,7 @@ pkgbase = openwebrx
 	optdepends = codec2
 	optdepends = direwolf
 	backup = etc/openwebrx/config_webrx.py
-	source = https://github.com/jketterl/openwebrx/archive/0.20.3.tar.gz
-	sha256sums = eb473140ca3e5c1334b6e047738d1f992b3994a799665772858d37ce0cc2605a
+	source = https://github.com/jketterl/openwebrx/archive/1.2.0.tar.gz
+	sha256sums = 77a9573a22f6c65277ec0aeb4599aa6aee3a7873e3f651e7438f41baa12c38b3
 
 pkgname = openwebrx
-
