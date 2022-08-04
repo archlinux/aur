@@ -1,12 +1,10 @@
 pkgbase = zfsbootmenu
 	pkgdesc = ZFS bootloader for root-on-ZFS systems
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/zbm-dev/zfsbootmenu
 	arch = x86_64
 	license = MIT
-	makedepends = fakeroot
-	makedepends = make
 	depends = zfs
 	depends = kexec-tools
 	depends = fzf
