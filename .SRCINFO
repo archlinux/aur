@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly
 	pkgdesc = Development version of the popular Firefox web browser
-	pkgver = 105.0a1+20220727.1+ha948931a2595
+	pkgver = 105.0a1+20220804.1+h23d50b5617de
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/channel/#nightly
 	arch = x86_64
@@ -54,12 +54,14 @@ pkgbase = firefox-nightly
 	source = hg+https://hg.mozilla.org/mozilla-central
 	source = firefox-install-dir.patch
 	source = zstandard-0.18.0.diff
+	source = arc4random.diff
 	source = firefox-nightly.desktop
 	source = identity-icons-brand.svg
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha256sums = SKIP
 	sha256sums = c80937969086550237b0e89a02330d438ce17c3764e43cc5d030cb21c2abce5f
 	sha256sums = a6857ad2f2e2091c6c4fdcde21a59fbeb0138914c0e126df64b50a5af5ff63be
+	sha256sums = 714ca50b2ce0cac470dbd5a60e9a0101b28072f08a5e7a9bba94fef2058321c4
 	sha256sums = 7d90a9abacb5cc9870a31323ef31e361f620538c56609001d6d9e789b99b5e97
 	sha256sums = a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9
 
