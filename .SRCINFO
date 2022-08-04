@@ -1,6 +1,6 @@
 pkgbase = android-studio
 	pkgdesc = The official Android IDE (Stable branch)
-	pkgver = 2021.2.1.15
+	pkgver = 2021.2.1.16
 	pkgrel = 1
 	url = https://developer.android.com/
 	arch = i686
@@ -15,10 +15,10 @@ pkgbase = android-studio
 	optdepends = libgl: emulator support
 	optdepends = ncurses5-compat-libs: native debugger support
 	options = !strip
-	source = https://dl.google.com/dl/android/studio/ide-zips/2021.2.1.15/android-studio-2021.2.1.15-linux.tar.gz
+	source = https://dl.google.com/dl/android/studio/ide-zips/2021.2.1.16/android-studio-2021.2.1.16-linux.tar.gz
 	source = android-studio.desktop
 	source = license.html
-	sha256sums = 0018e0dfc0dd2921700516f7a2c443377c557788da7fb0a45243ecb4300745be
+	sha256sums = aa5773a9e1da25bdb2367a8bdd2b623dbe0345170ed231a15b3f40e8888447dc
 	sha256sums = 73cd2dde1d0f99aaba5baad1e2b91c834edd5db3c817f6fb78868d102360d3c4
 	sha256sums = 9a7563f7fb88c9a83df6cee9731660dc73a039ab594747e9e774916275b2e23e
 
