@@ -1,9 +1,9 @@
 # Maintainer: Marcin Kornat <rarvolt@gmail.com>
 pkgname=jlc-kicad-tools-git
 _pkgname=jlc-kicad-tools
-pkgver=v1.0.5_r168.c427532
+pkgver=v1.0.5
 _ver="1.0.5"
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for using JLCPCB assembly service with KiCad "
 arch=('any')
 url="https://github.com/matthewlai/JLCKicadTools"
