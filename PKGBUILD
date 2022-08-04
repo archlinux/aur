@@ -1,7 +1,7 @@
 # Maintainer: solopasha <daron439 at gmail dot com>
 pkgname=remnote
 pkgver=1.8.11
-pkgrel=1
+pkgrel=2
 pkgdesc="All-in-one workspace for note-taking, learning, organizing thoughts and growing knowledge"
 arch=('x86_64')
 url="https://www.remnote.com"
@@ -22,7 +22,7 @@ prepare() {
 }
 
 package() {
-	depends=('electron')
+	depends=('electron19')
 	install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 	install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
 	install -Dm644 "${srcdir}/squashfs-root/remnote.png" -t "${pkgdir}/usr/share/pixmaps"

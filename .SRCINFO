@@ -1,7 +1,7 @@
 pkgbase = remnote
 	pkgdesc = All-in-one workspace for note-taking, learning, organizing thoughts and growing knowledge
 	pkgver = 1.8.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.remnote.com
 	arch = x86_64
 	license = custom:Commercial
@@ -13,4 +13,4 @@ pkgbase = remnote
 	sha256sums = 25f625c75af753260ed530a759f7adb09fe8cc164ec2f566923a1d229e6a2485
 
 pkgname = remnote
-	depends = electron
+	depends = electron19
