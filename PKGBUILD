@@ -1,7 +1,7 @@
 # Maintainer: Devin Lin <devin@kde.org>
 pkgname=plasma-mobile
-pkgver=5.25.2
-pkgrel=2
+pkgver=5.25.4
+pkgrel=1
 pkgdesc="Plasma Mobile shell components."
 arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
 url="https://invent.kde.org/plasma/plasma-mobile"
@@ -16,18 +16,19 @@ depends=(
   plasma-wayland-session
   qqc2-breeze-style
   qt5-feedback
+  kirigami-addons
+  maliit-keyboard
 )
 optdepends=(
   'plasma-mobile-nm: Mobile networking settings modules for WiFi, etc.'
   'plasma-settings: Settings application for Plasma Mobile'
   'plasma-dialer: Phone application'
   'plasma-workspace-wallpapers: A large wallpaper selection for Plasma'
-  'maliit-keyboard: Virtual keyboard'
   'plasma-mobile-sounds: Plasma Mobile sound theme'
 )
 makedepends=(cmake extra-cmake-modules)
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('e857ae8338ad47e2966a3b0d405f5b273dc9fe7915e4fbbc4e48507079e2f949')
+sha256sums=('9eff8803d26b8e57f180b1a146bea3cf165fc65cb823fd6448610c49651d162c')
 
 prepare() {
   mkdir -p build
