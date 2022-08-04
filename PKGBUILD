@@ -1,13 +1,13 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _pkgname='bitw'
 pkgname="$_pkgname-git"
-pkgver='r85.g78c6df8'
+pkgver='r86.g9da6ca0'
 pkgrel='1'
 pkgdesc='Minimalist BitWarden client with Secret Service API implementation - git version'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/mvdan/$_pkgname"
 license=('BSD')
-makedepends=('git' 'go>=1.17')
+makedepends=('git' 'go>=1.18')
 optdepends=(
 	'wl-clipboard: clipboard utility for Wayland (one of the optdepends is required for the tests to pass - build time dep)'
 	'xclip: clipboard utility for X11 (one of the optdepends is required for the tests to pass - build time dep)'
