@@ -2,8 +2,8 @@
 
 _name=pyfastani
 pkgname=python-${_name}
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Cython bindings and Python interface to FastANI, a method for fast whole-genome similarity estimation"
 url="https://github.com/althonos/${_name}"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'cython' 'python-build' 'python-installer')
 depends=('python')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=(4e07d52017183ab58f78df881f82be5e18ca720153f12566eab5224cfbdd8637)
+sha256sums=(c1396d0108354c100c2b7a9934f18d7c22dd56b9120dd31fa7ae36a4793f0d61)
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
@@ -23,7 +23,7 @@ build() {
 check() {
     local pyver=$(python -c 'import sys; print("{}.{}".format(*sys.version_info[:2]))')
     local machine=$(python -c 'import platform; print(platform.machine())')
-    cd "${srcdir}/${_name}-${pkgver}/build/"lib.linux-*
+    cd "${srcdir}/${_name}-${pkgver}/build/lib.linux-${machine}"-*
     python -m unittest ${_name}.tests
 }
 
