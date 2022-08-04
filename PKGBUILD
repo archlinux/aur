@@ -1,41 +1,38 @@
 # Maintainer: Bruno Pagani <archange@archlinux.org>
 
 pkgname=cozy-desktop
-pkgver=3.36.0
+pkgver=3.36.1b1
 pkgrel=1
 pkgdesc="File synchronisation for Cozy Cloud on Desktop"
 arch=(x86_64)
 url="https://cozy-labs.github.io/cozy-desktop/"
 license=(AGPL3)
-_electron=electron
+_electron=electron19
 depends=(${_electron})
 makedepends=(nodejs-lts-fermium yarn git node-gyp python)
-source=(https://github.com/cozy-labs/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz
-        https://github.com/cozy-labs/${pkgname}/releases/download/v${pkgver}/Cozy-Drive-${pkgver}-x86_64.AppImage
-        ${pkgname}-fix-native-unpacking.patch::https://github.com/cozy-labs/cozy-desktop/pull/2253.patch
+source=(https://github.com/cozy-labs/${pkgname}/archive/v${pkgver/b/-beta.}/${pkgname}-${pkgver/b/-beta.}.tar.gz
+        https://github.com/cozy-labs/${pkgname}/releases/download/v${pkgver/b/-beta.}/Cozy-Drive-${pkgver/b/-beta.}-x86_64.AppImage
         ${pkgname}.desktop
         ${pkgname}.sh)
-sha256sums=('adcf47613b9d64669d5da39657dce541643f1b5fa15a2f81a80793ad3f6458b7'
-            '75a0b65ae44095a900dce4097fece8ac0aad70a64e71341bebcd2caecd65c7f1'
-            '77a123b0ecc1de242d6bbdc1e355339535599e4e3654c067ecbc35bbdeb36d43'
+sha256sums=('35eb8ded00eb662b60de070c9f20f1b3a19566a23e0ae917ec744a0d9753550e'
+            'c9285623d1908a97f83ca889a168c783c3f7d18f0581cdf0022b014405394fa2'
             '563edd5a43c7f06080e03bec5f4e46154227f7e163500950ea39ecad466b198a'
             'a8783d3f6ce2da344ffe403f8e1a4f9da8de3b59e8bfda10e15a4ff5643244cf')
 
 prepare() {
     # Specify electron version in launcher
     sed -i "s|@ELECTRON@|${_electron}|" ${pkgname}.sh
-    cd ${pkgname}-${pkgver}
-    patch -p1 < ../${pkgname}-fix-native-unpacking.patch
+    cd ${pkgname}-${pkgver/b/-beta.}
     yarn install --no-fund
 }
 
 build() {
-    cd ${pkgname}-${pkgver}
+    cd ${pkgname}-${pkgver/b/-beta.}
     yarn build --offline
 }
 
 package() {
-    cd ${pkgname}-${pkgver}
+    cd ${pkgname}-${pkgver/b/-beta.}
     yarn dist --dir -c.electronDist=/usr/lib/${_electron} -c.electronVersion=$(tail -c +1 /usr/lib/${_electron}/version)
 
     install -d "${pkgdir}"/usr/lib/${pkgname}
@@ -43,8 +40,8 @@ package() {
     rm -r "${pkgdir}"/usr/lib/cozy-desktop/regedit
 
     cd "${srcdir}"
-    chmod +x Cozy-Drive-${pkgver}-x86_64.AppImage
-    ./Cozy-Drive-${pkgver}-x86_64.AppImage --appimage-extract
+    chmod +x Cozy-Drive-${pkgver/b/-beta.}-x86_64.AppImage
+    ./Cozy-Drive-${pkgver/b/-beta.}-x86_64.AppImage --appimage-extract
     cp -r squashfs-root/usr/share "${pkgdir}"/usr/
     chmod a+rX -R "${pkgdir}"/usr/share
 
