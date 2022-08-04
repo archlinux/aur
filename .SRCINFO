@@ -1,13 +1,19 @@
 pkgbase = ignoreit
 	pkgdesc = Quickly load .gitignore templates
 	pkgver = 2.4.6
-	pkgrel = 1
+	pkgrel = 2
 	arch = i686
+	arch = pentium4
 	arch = x86_64
-	arch = armv6h
+	arch = arm
 	arch = armv7h
+	arch = armv6h
+	arch = aarch64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
+	depends = openssl
+	source = ignoreit-2.4.6.tar.gz::https://github.com/jewlexx/ignoreit/archive/v2.4.6.tar.gz
+	sha256sums = da4b301e8874aad048b5eff2f507ee05dc1e60ef010b74de225c6ab2bceccf0f
 
 pkgname = ignoreit
