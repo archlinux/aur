@@ -3,7 +3,7 @@
 
 pkgname=xdao
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An Xdnmb TUI cli written in Python."
 arch=('any')
 url="https://www.nmbxd1.com/t/50750950"
@@ -14,12 +14,13 @@ depends=(
   'python-lxml'
   'python-prompt_toolkit'
   'python-requests'
-  'chafa'
 )
 makedepends=(
   'git'
 )
-optdepends=()
+optdepends=(
+  'chafa'
+)
 source=("${pkgname}::git+https://hub.fastgit.xyz/TransparentLC/xdcmd.git")
 
 package() {
