@@ -11,12 +11,12 @@ commit_msg="update to $pk_name ver $pk_ver, rel version $pk_rel"
 
 git add PKGBUILD .SRCINFO
 git commit -m "$commit_msg"
+git checkout master
+git merge main
 git push aur master
 git status
 
 # push to gitlab too
 git checkout main
 git pull
-git merge master
 git push origin main
-git checkout master

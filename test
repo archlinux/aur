@@ -12,5 +12,5 @@ makepkg --printsrcinfo > .SRCINFO
 makepkg --check --clean build -f
 
 # cleanup
-rm *.tar.zst
-rm *.AppImage
+rm -f *.tar.zst
+rm -f *.AppImage
