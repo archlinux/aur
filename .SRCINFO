@@ -1,8 +1,8 @@
 pkgbase = linux-bnx2x-2.5g
 	pkgdesc = Linux
-	pkgver = 5.18.15.arch1
+	pkgver = 5.18.16.arch1
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v5.18.15-arch1
+	url = https://github.com/archlinux/linux/commits/v5.18.16-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -14,7 +14,7 @@ pkgbase = linux-bnx2x-2.5g
 	makedepends = xz
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.18.15-arch1
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.18.16-arch1
 	source = bnx2x_warpcore+8727_2_5g_sgmii_arch.patch
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
@@ -23,7 +23,7 @@ pkgbase = linux-bnx2x-2.5g
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha256sums = SKIP
 	sha256sums = d655669179109ae8e801a259c35dbe442ca67a49b9ceb6ca3ef0e56f48149a7d
-	sha256sums = 6f0fd44dd87dd0ad23f782a26752bb7200d0d163e3a50df6ad3cf5cec7fe948e
+	sha256sums = 77fdfe47d8ab448787ac9cc4b73ad6d44ded735a4a001005e39301f6ddb553b4
 
 pkgname = linux-bnx2x-2.5g
 	pkgdesc = The Linux kernel and modules
