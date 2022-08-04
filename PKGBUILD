@@ -2,7 +2,7 @@
 # Contributor: Lucki
 
 pkgname="asf"
-pkgver="5.2.7.7"
+pkgver="5.2.8.3"
 pkgrel=1
 pkgdesc="Steam cards farmer."
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -26,7 +26,7 @@ sha256sums=('SKIP'
             '636f3a125071cabfcb0c3828c6f9b0ec613789ab846ff71448d1a6eb110aee3f')
 
 prepare() {
-    cd ${srcdir}/asf/ArchiSteamFarm/overlay/linux
+    cd ${srcdir}/asf/ArchiSteamFarm/overlay/variant-base/linux
     patch --forward --input="${srcdir}/service.patch"
 }
 
@@ -49,7 +49,7 @@ package() {
     install -D -m644 "${srcdir}/NLog.config" "${pkgdir}/usr/lib/${pkgname}/NLog.config"
 
     install -D -m644 "${srcdir}/asf.env" "${pkgdir}/etc/asf/asf"
-    install -D -m644 "${srcdir}/asf/ArchiSteamFarm/overlay/linux/ArchiSteamFarm@.service" "${pkgdir}/usr/lib/systemd/system/ArchiSteamFarm@.service"
+    install -D -m644 "${srcdir}/asf/ArchiSteamFarm/overlay/variant-base/linux/ArchiSteamFarm@.service" "${pkgdir}/usr/lib/systemd/system/ArchiSteamFarm@.service"
 
     # Setup system user and group
     echo 'u asf - "ArchiSteamFarm" /var/lib/asf' |

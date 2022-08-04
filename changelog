@@ -1,3 +1,11 @@
+2022-07-31 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.2.8.3-1:
+    Added /Api/NLog/File ASF API endpoint, mainly for new ASF-ui usage (@JustArchi).
+    Optimized Steam web session checks which should result in overall increase in web requests performance (@JustArchi).
+    Fixed fetching 2FA confirmations sometimes taking longer than necessary (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2022-07-02 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.2.7.7-1:
     Fixed regression introduced recently which caused custom game played never being displayed (@JustArchi).
