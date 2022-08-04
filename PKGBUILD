@@ -1,8 +1,9 @@
-# Maintainer: Aaron Paden <aaronbpaden@gmail.com>
+# Maintainer: Nathan Jensen <nathanjensen1@outlook.com>
+# Contributor: Aaron Paden <aaronbpaden@gmail.com>
 # Contributor: Natalia Portillo <claunia@clania.com>
 pkgname=pcem
 pkgver=17
-pkgrel=1
+pkgrel=2
 pkgdesc="Emulator for various IBM PC computers and clones."
 url="http://pcem-emulator.co.uk/"
 arch=('x86_64' 'i686')
@@ -13,7 +14,7 @@ source=("http://pcem-emulator.co.uk/files/PCemV${pkgver}Linux.tar.gz")
 build() {
   cd "${srcdir}"
   autoreconf
-  ./configure --enable-alsa --enable-release-build --enable-networking --prefix=/usr
+  ./configure --with-wx-config=wx-config-gtk2 --enable-alsa --enable-release-build --enable-networking --prefix=/usr
   make
 }
 
