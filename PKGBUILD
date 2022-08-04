@@ -29,9 +29,10 @@ pkgver() {
 
 # ;s/\"yarn\": \".*\"/\"yarn\": \"$(yarn -v)\"/g"
 
+_electronDist=/usr/lib/electron
+_electronVer="$(tail /usr/lib/electron/version)"
+
 prepare() {
-  export _electronDist=/usr/lib/electron
-  export _electronVer="$(tail /usr/lib/electron/version)"
   cd "${srcdir}/${pkgname%-git}"
   sed -i "s/\"electron\": \".*\"/\"electron\": \"$_electronVer\"/g;s/\"yarn\": \".*\"/\"yarn\": \"$(yarn -v)\"/g" package.json
 }
