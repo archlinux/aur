@@ -2,8 +2,8 @@
 
 pkgname=blurble
 _pkgname=Blurble
-pkgver=0.1.0
-pkgrel=3
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Word guessing game"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.gnome.org/World/Blurble"
@@ -12,7 +12,7 @@ depends=('libadwaita')
 makedepends=('meson' 'blueprint-compiler' 'gobject-introspection' 'vala')
 checkdepends=('appstream-glib')
 source=($url/-/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz)
-b2sums=('39e18bffeee9d56d4384fe9ccd5fd86edc6f49bb1b31a6559e2fd06a569592169894f94d33af1f7f75f01a2f7d028f4abcdd92185e43800b13ff08c60a02f800')
+b2sums=('ac43860ddb0864723f0fbd1be350c0ab9f43a134e0dd45de3e1fbc300ee13435a8159bc014c3f74706d788fca1d9a3b0bc68dbe2bd535bab86c9f7e10aed5461')
 
 build() {
   arch-meson "$_pkgname-v$pkgver" build

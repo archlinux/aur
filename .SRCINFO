@@ -1,7 +1,7 @@
 pkgbase = blurble
 	pkgdesc = Word guessing game
-	pkgver = 0.1.0
-	pkgrel = 3
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://gitlab.gnome.org/World/Blurble
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = blurble
 	makedepends = gobject-introspection
 	makedepends = vala
 	depends = libadwaita
-	source = https://gitlab.gnome.org/World/Blurble/-/archive/v0.1.0/Blurble-v0.1.0.tar.gz
-	b2sums = 39e18bffeee9d56d4384fe9ccd5fd86edc6f49bb1b31a6559e2fd06a569592169894f94d33af1f7f75f01a2f7d028f4abcdd92185e43800b13ff08c60a02f800
+	source = https://gitlab.gnome.org/World/Blurble/-/archive/v0.2.0/Blurble-v0.2.0.tar.gz
+	b2sums = ac43860ddb0864723f0fbd1be350c0ab9f43a134e0dd45de3e1fbc300ee13435a8159bc014c3f74706d788fca1d9a3b0bc68dbe2bd535bab86c9f7e10aed5461
 
 pkgname = blurble
