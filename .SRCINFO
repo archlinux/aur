@@ -1,7 +1,7 @@
 pkgbase = yamux
 	pkgdesc = Yandex Music client
-	pkgver = v58
-	pkgrel = 3
+	pkgver = v59
+	pkgrel = 1
 	url = https://gitlab.com/KirMozor/Yamux
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = yamux
 	depends = gstreamer
 	depends = dotnet-runtime>=6.0.0
 	depends = gtk3
-	source = https://gitlab.com/KirMozor/Yamux/-/archive/Yamux-v58.1/Yamux-Yamux-v58.1.tar
+	source = https://gitlab.com/KirMozor/Yamux/-/archive/Yamux-v59/Yamux-Yamux-v59.tar.gz
 	md5sums = SKIP
 
 pkgname = yamux
