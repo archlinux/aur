@@ -10,7 +10,6 @@ pkgbase = python-theano-pymc
 	checkdepends = python-filelock
 	checkdepends = python-pydot
 	makedepends = python-setuptools
-	makedepends = python-sphinx
 	source = https://files.pythonhosted.org/packages/source/T/Theano-PyMC/Theano-PyMC-1.1.2.tar.gz
 	md5sums = 5ed1cb188fbe417946480219b5ba334b
 

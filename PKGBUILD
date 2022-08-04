@@ -9,11 +9,11 @@ pkgdesc="Optimizing compiler for evaluating mathematical expressions on CPUs and
 arch=('any')
 url="https://pypi.org/project/Theano-PyMC"
 license=('BSD')
-makedepends=('python-setuptools'
+makedepends=('python-setuptools')
 #            'python-wheel'
 #            'python-build'
 #            'python-installer'
-             'python-sphinx')
+#            'python-sphinx')
 checkdepends=('python-pytest' 'python-scipy' 'python-filelock' 'python-pydot')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       'Makefile')
