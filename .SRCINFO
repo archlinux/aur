@@ -1,6 +1,6 @@
 pkgbase = biscuit
 	pkgdesc = A browser where you can organize your apps
-	pkgver = 1.2.26
+	pkgver = 1.2.27
 	pkgrel = 1.8
 	url = https://eatbiscuit.com/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = biscuit
 	depends = nss
 	depends = dbus-glib
 	depends = libdbusmenu-gtk2
-	source = https://github.com/agata/dl.biscuit/releases/download/v1.2.26/Biscuit-1.2.26.AppImage
-	sha256sums = 0c47284ffafdad05230ac5e4ee08edbf10580d0343633bf3a512c15db4709592
+	source = https://github.com/agata/dl.biscuit/releases/download/v1.2.27/Biscuit-1.2.27.AppImage
+	sha256sums = a1cec154f0f5ae2b676e28c60c486ff69f457ff71e976d8c1df80a5a4b8c717b
 
 pkgname = biscuit
