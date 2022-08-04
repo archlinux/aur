@@ -7,7 +7,7 @@ pkgbase = bun-bin
 	license = MIT
 	provides = bun=0.1.6
 	provides = bun
-	source = https://github.com/Jarred-Sumner/bun/releases/download/bun-v0.1.6/bun-linux-x64.zip
+	source = https://github.com/Jarred-Sumner/bun/releases/download/bun-v0.1.6/bun-linux-x64-0.1.6.zip
 	sha512sums = SKIP
 
 pkgname = bun-bin
