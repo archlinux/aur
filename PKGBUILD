@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PhyloProfile
-_pkgver=1.10.4
+_pkgver=1.10.5
 pkgname=r-${_pkgname,,}
-pkgver=1.10.4
+pkgver=1.10.5
 pkgrel=1
 pkgdesc='PhyloProfile'
 arch=('any')
@@ -41,7 +41,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('019760bb33c87a999be3d42f0e8c80c7c5540dedf03997cdc5bf337acbddd11f')
+sha256sums=('6fdb8524070dd77d98166baf8631cfaa062ee0b8d56cb98fb9ee6695beac40c6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
