@@ -74,9 +74,9 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.10
-_minor=127
+_minor=135
 _srcname=linux-${_major}
-_clr=${_major}.113-64
+_clr=${_major}.134-66
 pkgbase=linux-clear-lts2020
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -113,7 +113,7 @@ prepare() {
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
     ### Add Clearlinux patches
-    for i in $(grep '^Patch' ${srcdir}/$pkgbase/linux-lts2020.spec | grep -Ev '^Patch0110' | sed -n 's/.*: //p'); do
+    for i in $(grep '^Patch' ${srcdir}/$pkgbase/linux-lts2020.spec | sed -n 's/.*: //p'); do
         echo "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/$pkgbase/${i}"
     done
@@ -355,7 +355,7 @@ done
 
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'SKIP'
-            '463aedbd94798afc9307c283d23026c2dca27df24328e9fe09d1ded53da0066c'
+            'fdedeccb9008c6ec1fb32db2fb474c7b4a16822400c346a721f1cc63e10032fe'
             'SKIP'
             'fffcd3b2c139e6a0b80c976a4ce407d450cf8f454e697d5ed39d85e8232ddeba')
 
