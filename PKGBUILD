@@ -34,18 +34,12 @@ build() {
 	make -C build
 }
 
-check() {
-	make -C build
-}
-
 package() {
 	make -C build DESTDIR="$pkgdir/" install
 	
 	install -Dm 644 "$pkgdir/lib/systemd/system/codecserver.service" "$pkgdir/usr/lib/systemd/system/codecserver.service"
 	rm "$pkgdir/lib/systemd/system/codecserver.service"
 	find "$pkgdir/lib" -type d -empty -delete
-
-	install -Dm 644 "$srcdir/codecserver.sysusers" "$pkgdir/usr/lib/sysusers.d/codecserver.conf"
 
 	install -Dm 644 "$srcdir/codecserver.sysusers" "$pkgdir/usr/lib/sysusers.d/codecserver.conf"
 	install -Dm 644 "$srcdir/$pkgname/conf/codecserver.conf" "$pkgdir/etc/codecserver/codecserver.conf"
