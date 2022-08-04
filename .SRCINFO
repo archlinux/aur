@@ -7,7 +7,7 @@ pkgbase = xdao
 	arch = any
 	license = AGPL-3.0
 	makedepends = git
-	depends = python
+	depends = python>=3.10.0
 	depends = python-beautifulsoup4
 	depends = python-lxml
 	depends = python-prompt_toolkit

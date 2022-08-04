@@ -10,7 +10,7 @@ url="https://github.com/TransparentLC/xdcmd"
 license=('AGPL-3.0')
 sha256sums=('SKIP')
 depends=(
-  'python'
+  'python>=3.10.0'
   'python-beautifulsoup4'
   'python-lxml'
   'python-prompt_toolkit'
