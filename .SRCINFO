@@ -1,6 +1,6 @@
 pkgbase = websocat-git
 	pkgdesc = Command-line client for WebSockets
-	pkgver = 1.9.0.r6.g7c95eb7
+	pkgver = 1.10.1.r0.g1fdfe8e
 	pkgrel = 1
 	url = https://github.com/vi/websocat
 	arch = x86_64

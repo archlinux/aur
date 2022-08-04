@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=websocat-git
-pkgver=1.9.0.r6.g7c95eb7
+pkgver=1.10.1.r3.g708b8d5
 pkgrel=1
 pkgdesc="Command-line client for WebSockets"
 arch=(x86_64)
@@ -20,7 +20,7 @@ pkgver() {
 build() {
 	cd "${srcdir}/${pkgname}"
 
-	cargo build --release --locked --features=ssl
+	cargo build --release --features=ssl
 }
 
 package() {
