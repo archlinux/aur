@@ -1,6 +1,6 @@
 pkgbase = lutris-git
 	pkgdesc = Open Gaming Platform
-	pkgver = 0.5.10.1.r143.g069b098a
+	pkgver = 0.5.10.1.r147.g7e035c36
 	pkgrel = 1
 	url = https://lutris.net/
 	arch = any
@@ -47,8 +47,6 @@ pkgbase = lutris-git
 	provides = lutris
 	conflicts = lutris
 	source = git+https://github.com/lutris/lutris.git
-	source = https://github.com/lutris/lutris/pull/4395.patch
 	sha256sums = SKIP
-	sha256sums = 718a3beb54ea15bcadda40dbd463afd3e5e05f91bb417f2e73f88c111aca93e4
 
 pkgname = lutris-git

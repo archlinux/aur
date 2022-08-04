@@ -5,7 +5,7 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.10.1.r143.g069b098a
+pkgver=0.5.10.1.r147.g7e035c36
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
@@ -40,22 +40,12 @@ optdepends=(
   'xorg-xgamma: Restore gamma on game exit')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/lutris/lutris.git'
-        'https://github.com/lutris/lutris/pull/4395.patch')
-sha256sums=('SKIP'
-            '718a3beb54ea15bcadda40dbd463afd3e5e05f91bb417f2e73f88c111aca93e4')
+source=('git+https://github.com/lutris/lutris.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$srcdir/${pkgname%-git}"
-
-  # Correct syntax of fi.po
-  # https://github.com/lutris/lutris/issues/4394
-  patch -Np1 -i ../4395.patch
 }
 
 build() {
