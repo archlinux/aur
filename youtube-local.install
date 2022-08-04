@@ -1,0 +1,4 @@
+post_install(){
+	echo "This Youtube-local package provides a systemd service for users"
+	echo "To enable the service run 'systemctl --user enable youtube-local'."
+}

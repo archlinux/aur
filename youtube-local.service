@@ -1,0 +1,11 @@
+[Unit]
+Description=Youtube-local
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/youtube-local
+ExecStart=/usr/bin/python3 /opt/youtube-local/server.py
+
+[Install]
+WantedBy=default.target
