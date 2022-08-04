@@ -1,12 +1,12 @@
 # Maintainer: Shengyu Zhang <la@archlinuxcn.org>
 
 pkgname=srain-git
-pkgver=1.3.0
-pkgrel=1
+pkgver=1.4.1
+pkgrel=3
 pkgdesc="Modern IRC client written in GTK, git version"
-arch=('i686' 'x86_64')
+arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 license=('GPL')
-url="https://srain.im"
+url="https://srain.silverrainz.me"
 makedepends=('git' 'meson' 'gcc' 'pkg-config' 'gettext' 'python-sphinx')
 depends=('glib2' 'gtk3' 'libconfig' 'libsoup')
 optdepends=(
