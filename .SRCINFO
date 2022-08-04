@@ -1,6 +1,6 @@
 pkgbase = minima-bin
 	pkgdesc = A completely decentralized network for information and value transfer
-	pkgver = 0.103.7
+	pkgver = 0.103.10
 	pkgrel = 1
 	url = https://github.com/minima-global/Minima
 	install = minima.install
@@ -15,7 +15,7 @@ pkgbase = minima-bin
 	source = minima.sysusers
 	source = minima.tmpfiles
 	source = minima@.service
-	sha512sums = 4bae0b2d6b89ee35c3a2783b078c5ec4904e4efc459900fd43a2008fa5cc16549310c1262e0b6cffab0498a6a2fcaf00f7aa828f90807053661e0d0182c3939b
+	sha512sums = 8b3cf96c444c3e0501423d01a5db028e8e9050fb3f3454c6ddd92775ec1240a6611ccd6814b7605b43afb77166af4861a69265e728832e5140abe7545dc2709c
 	sha512sums = c1dc29ed6b7fe84bad8e4d61737b5f47ef231bf27bdd5ebcb3db409e5ca994281d881f7840a37bf5c1667e1cbeba80628dea7e9af5afe4ff84160db028c38033
 	sha512sums = eff286fa2f722bb1de82898a2552aa726c97f7fb9558426dad6802749bcd00792140b703e73da4491b85f883d92b8a8c6ffbb4ebf77a14d9cadbdad2e8af1e77
 	sha512sums = 8f7de769d1c382bdcf6f0560bfe8bac53295ede13c0f01dbbca2395bb0d828adc4200c60579c1bd9f9f6ba499a0940a0b344194cfc47b6500f333798c2bacc78
