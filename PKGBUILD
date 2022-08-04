@@ -1,28 +1,25 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
-pkgname=autodiff
-pkgver=0.6.8
-pkgrel=2
+pkgbase=autodiff
+pkgname=('autodiff' 'python-autodiff')
+pkgver=0.6.9
+pkgrel=1
 pkgdesc="Automatic differentiation made easier for C++"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/autodiff/autodiff"
 license=('MIT')
-depends=('gcc-libs')
 makedepends=(
+	'catch2'
 	'cmake'
 	'eigen'
-	'catch2'
 	'pybind11'
-	'python'
 	'python-build'
 	'python-installer'
 	'python-setuptools'
 	'python-wheel')
-optdepends=('ccache: faster compilations')
-provides=('python-autodiff')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('680fc476ed218a3a0eeb0de017d427921189b50c99e1c509395f10957627fb1a')
+sha256sums=('eae26c9dcd8b423ebcecd1a65365c2af2be80cb6cd273602787900939626a961')
 
 build() {
 	cmake \
@@ -43,9 +40,16 @@ check() {
 	cmake --build build --target tests
 }
 
-package() {
+package_autodiff() {
 	DESTDIR="$pkgdir/" cmake --build build --target install
-	cd "$pkgname-$pkgver"
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	python -m installer --destdir="$pkgdir/" "$srcdir"/build/python/package/dist/*.whl
+	install -Dm644 "$pkgname-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+}
+
+package_python-autodiff() {
+	depends=('python')
+	arch=('x86_64')
+	pkgdesc+=' -- Python bindings'
+
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" build/python/package/dist/*.whl
+	install -Dm644 "$pkgbase-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
