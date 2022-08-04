@@ -1,6 +1,6 @@
 pkgbase = taskade-appimage
 	pkgdesc = Get things done with task lists, workflow automation, and real-time collaboration.
-	pkgver = 4.2.3
+	pkgver = 4.2.6
 	pkgrel = 1.0
 	url = https://taskade.com/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = taskade-appimage
 	depends = nss
 	depends = dbus-glib
 	depends = libdbusmenu-gtk2
-	source = https://apps.taskade.com/updates/Taskade-4.2.3.AppImage
+	source = https://apps.taskade.com/updates/Taskade-4.2.6.AppImage
 	sha256sums = 10bafbbaf7e9702428072dea12e42a399b97ef446fef2195a0f4a7f01a238c61
 
 pkgname = taskade
