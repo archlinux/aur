@@ -1,5 +1,6 @@
 # Maintainer : talleyhoe <talleyhoe at protonmail dot com>
 # Contributor: Erhad Husovic
+
 pkgname='cadabra2-git'
 pkgver=2.3.9.3
 pkgrel=1
@@ -19,6 +20,7 @@ depends=(
   'python-ipykernel'
   'python-matplotlib'
   'python-sympy'
+  'sqlite'
   'texlive-latexextra'
   'texlive-science'
 )
@@ -30,11 +32,15 @@ makedepends=(
 source=("git+https://github.com/kpeeters/cadabra2.git")
 sha256sums=('SKIP')
 
+prepare() {
+  mkdir -p "$srcdir/cadabra2/build"
+}
+
 build() {
-  cd "$srcdir/cadabra2"
-  mkdir -p build
-  cd build
-  cmake -DCMAKE_SKIP_RPATH=true -DCMAKE_INSTALL_PREFIX=/usr ..
+  cd "$srcdir/cadabra2/build"
+  cmake .. \
+        -DCMAKE_SKIP_RPATH=true \
+        -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
