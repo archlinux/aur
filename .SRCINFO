@@ -10,7 +10,9 @@ pkgbase = miru-bin
 	depends = xdg-utils
 	options = !strip
 	options = !emptydirs
+	source_x86_64 = https://github.com/ThaUnknown/miru/releases/download/v2.14.0/linux-amd64-Miru-2.14.0.deb
 	sha512sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/ThaUnknown/miru/releases/download/v2.14.0/linux-arm64-Miru-2.14.0.deb
 	sha512sums_aarch64 = SKIP
 
 pkgname = miru-bin

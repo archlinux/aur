@@ -9,9 +9,9 @@ license=('GPL-3.0')
 depends=('xdg-utils')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-pkgver=2.14.0
+source_x86_64=("https://github.com/ThaUnknown/miru/releases/download/v${pkgver}/linux-amd64-Miru-${pkgver}.deb")
 sha512sums_x86_64=('SKIP')
-pkgver=2.14.0
+source_aarch64=("https://github.com/ThaUnknown/miru/releases/download/v${pkgver}/linux-arm64-Miru-${pkgver}.deb")
 sha512sums_aarch64=('SKIP')
 
 package(){
