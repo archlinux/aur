@@ -19,3 +19,4 @@ git checkout main
 git pull
 git merge master
 git push origin main
+git checkout master
