@@ -74,9 +74,9 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.4
-_minor=202
+_minor=209
 _srcname=linux-${_major}
-_clr=${_major}.195-187
+_clr=${_major}.208-190
 pkgbase=linux-clear-lts2019
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -114,7 +114,7 @@ prepare() {
 
     ### Add Clearlinux patches
     for i in $(grep '^Patch' ${srcdir}/$pkgbase/linux-lts2019.spec |\
-        grep -Ev '^Patch0123|^Patch0111' | sed -n 's/.*: //p'); do
+        grep -Ev '^Patch0123' | sed -n 's/.*: //p'); do
         echo "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/$pkgbase/${i}"
     done
@@ -356,7 +356,7 @@ done
 
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            '772492b67ec7b9813c8c04086b702aacd251bd0aaa9f11241198a489adeb6d74'
+            'a5750366c2cfb9e58ef6c1e3c917d0f371b460dc2c706fc8a1c0045b1ed9a96a'
             'SKIP'
             'fffcd3b2c139e6a0b80c976a4ce407d450cf8f454e697d5ed39d85e8232ddeba')
 
