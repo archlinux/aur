@@ -9,7 +9,7 @@ pkgbase = mongodb-compass-readonly
 	arch = aarch64
 	license = custom:SSPL
 	makedepends = git
-	makedepends = nodejs-lts-gallium
+	makedepends = nodejs
 	makedepends = npm>=7.0.0
 	makedepends = python
 	makedepends = unzip
