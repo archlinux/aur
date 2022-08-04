@@ -1,8 +1,8 @@
 # Maintainer: Platon Pronko <platon7pronko@gmail.com>
 
 pkgname='python-num2words'
-pkgver=0.5.10
-pkgrel=2
+pkgver=0.5.11
+pkgrel=1
 pkgdesc="Python modules to convert numbers to words."
 arch=('any')
 url='https://github.com/savoirfairelinux/num2words'
@@ -10,7 +10,7 @@ license=('LGPL')
 makedepends=('python-setuptools')
 checkdepends=('python')
 source=("https://github.com/savoirfairelinux/num2words/archive/v${pkgver}.tar.gz")
-sha256sums=('ff107ecc0b6709bedf31fdb9e2ca45d29d3fd34b9eb6a0b89a862f337ac5ff00')
+sha256sums=('0d2ef40ce732428a48b1012d6b342edef6d9a71cce12dcaab9347bd305392beb')
 
 prepare() {
   cd "${srcdir}/num2words-${pkgver}"
