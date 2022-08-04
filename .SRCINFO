@@ -1,0 +1,16 @@
+pkgbase = spmn
+	pkgdesc = Patch Manager for Suckless software
+	pkgver = 1.0_5
+	pkgrel = 1
+	url = https://github.com/slamko/spmn
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glibc
+	depends = libbsd
+	depends = xdg-utils
+	depends = git
+	source = spmn-1.0_5.tar.gz::https://github.com/slamko/spmn/releases/download/v1.0_5d/spmn-1.0_5.tar.gz
+	sha256sums = e3713e098ad1a018e9f5ab8c0997a705883b42d4ef2f9fe8b8a678235685838b
+
+pkgname = spmn
