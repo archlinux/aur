@@ -3,24 +3,24 @@
 # Contributor: Vasiliy Stelmachenok <ventureo@yandex.ru>
 pkgname=yamux
 pkgver=v59
-pkgrel=1
+pkgrel=2
 pkgdesc="Yandex Music client"
 arch=('x86_64')
 url="https://gitlab.com/KirMozor/Yamux"
 license=('GPL3')
 depends=('gstreamer' 'dotnet-runtime>=6.0.0' 'gtk3')
 makedepends=("dotnet-sdk>=6.0.0")
-source=("https://gitlab.com/KirMozor/Yamux/-/archive/Yamux-v59/Yamux-Yamux-v59.tar.gz")
+source=("https://gitlab.com/KirMozor/Yamux/-/archive/Yamux-v59/Yamux-Yamux-v59.1.tar.gz")
 md5sums=(SKIP)
 
 build() {
-    cd Yamux-Yamux-v58.1
+    cd Yamux-Yamux-v59.1
     dotnet build -c Release
 }
 
 package() {
-	tar -czvf Yamux-Yamux-v58.1.tar .
-	cd "${srcdir}/Yamux-Yamux-v59"
+	tar -czvf Yamux-Yamux-v59.1.tar .
+	cd "${srcdir}/Yamux-Yamux-v59.1"
     
     # Copy desktop file and icon
     mkdir -p "$pkgdir/usr/share/applications"
