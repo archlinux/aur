@@ -1,7 +1,7 @@
 # Maintainer: Marco <marcomania2012 at gmail dot com>
 
 pkgname=kde-servicemenus-flacconvert
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc='KDE service menus for flac file converting'
 arch=('any')
