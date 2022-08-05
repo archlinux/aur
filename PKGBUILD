@@ -10,7 +10,7 @@ _basepkgpath='upload/software/2022/202207/20220729'
 arch=('x86_64')
 url='https://www.tp-link.com/us/support/download/omada-software-controller/#Controller_Software'
 license=('custom')
-depends=('jre11-openjdk' 'java-jsvc' 'curl' 'mongodb>=3.0' 'mongodb<5')
+depends=('jre17-openjdk' 'java-jsvc' 'curl' 'mongodb>=3.0' 'mongodb<5')
 makedepends=('git')
 #provides=('sdn-controller')
 conflicts=('omada-sdn-controller')
