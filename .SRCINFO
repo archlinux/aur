@@ -1,0 +1,14 @@
+pkgbase = python-dnsrecon
+	pkgdesc = A DNS Enumeration and Scanning tool in Python
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/darkoperator/dnsrecon
+	arch = any
+	license = GNU General Public License v2.0
+	makedepends = python-setuptools
+	depends = python
+	depends = python-netaddr
+	source = python-dnsrecon-1.1.2.tar.gz::https://github.com/darkoperator/dnsrecon/archive/1.1.2.tar.gz
+	sha256sums = 2edb6435350dea05579a22635deb02719523a3389cc190dd61de310b4c9c5e86
+
+pkgname = python-dnsrecon
