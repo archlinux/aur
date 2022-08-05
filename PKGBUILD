@@ -3,18 +3,18 @@
 # Contributor: Natalia Portillo <claunia@clania.com>
 pkgname=pcem
 pkgver=17
-pkgrel=2
+pkgrel=3
 pkgdesc="Emulator for various IBM PC computers and clones."
 url="http://pcem-emulator.co.uk/"
 arch=('x86_64' 'i686')
 license=('GPL2')
-depends=('wxgtk2' 'openal' 'sdl2' 'alsa-lib')
+depends=('wxwidgets-gtk3' 'openal' 'sdl2' 'alsa-lib')
 source=("http://pcem-emulator.co.uk/files/PCemV${pkgver}Linux.tar.gz")
 
 build() {
   cd "${srcdir}"
   autoreconf
-  ./configure --with-wx-config=wx-config-gtk2 --enable-alsa --enable-release-build --enable-networking --prefix=/usr
+  ./configure --enable-alsa --enable-release-build --enable-networking --prefix=/usr
   make
 }
 
