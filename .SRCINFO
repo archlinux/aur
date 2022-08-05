@@ -1,6 +1,6 @@
 pkgbase = vim-oscyank-git
 	pkgdesc = A Vim plugin copy text to system clipboard
-	pkgver = r59.23b0846
+	pkgver = r64.360ccdc
 	pkgrel = 1
 	url = https://github.com/ojroques/vim-oscyank
 	arch = any
