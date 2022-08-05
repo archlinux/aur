@@ -39,7 +39,8 @@ User=http
 Group=http
 StateDirectory=microbin
 WorkingDirectory=/var/lib/microbin
-ExecStart=microbin --port 8080 --highlightsyntax --editable --private --wide
+EnvironmentFile=/etc/microbin.conf
+ExecStart=microbin
 Restart=on-failure
 KillSignal=SIGINT
 
