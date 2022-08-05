@@ -1,14 +1,15 @@
 # Maintainer: Fabrix Xm <fabrix.xm@gmail.com>
 _pkgname=lesana
 pkgname=lesana-git
-pkgver=v0.8.1.r22.gfea348c
+pkgver=v0.9.1.r18.g744139f
 pkgrel=1
 pkgdesc="Manage collection inventories throught yaml files, develop version"
-arch=('x86_64' 'aarch64')
+arch=('any')
 url="https://lesana.trueelena.org/"
 license=(GPL3)
-depends=('python-dateutil' 'python-jinja' 'python-ruamel-yaml' 'python-xapian' 'python-gitpython')
-makedepends=('python-setuptools')
+depends=('python-dateutil' 'python-jinja' 'python-ruamel-yaml' 'python-xapian' 'python-setuptools' 'python-hazwaz')
+optdepends=('python-argcomplete: enable commandline tab completion' 'python-gitpython: git integration') 
+makedepends=('git' 'python-setuptools')
 provides=(lesana)
 conflicts=(lesana)
 source=("git+https://git.sr.ht/~valhalla/lesana")
