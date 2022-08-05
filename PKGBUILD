@@ -5,7 +5,7 @@ pkgname=slrn-snapshot
 _pkgname=slrn
 pkgver=1.0.4.6
 _prever='pre1.0.4-6'
-pkgrel=2
+pkgrel=3
 pkgdesc='An easy-to-use, text-mode, threaded Usenet/NNTP client/newsreader (development snapshot)'
 arch=('x86_64' 'armv7h')
 url='https://jedsoft.org/snapshots/'
@@ -52,7 +52,6 @@ build() {
         --prefix=/usr \
 	--sysconfdir=/etc \
 	--enable-setgid-code \
-	--without-uu \
 	--with-slrnpull \
 	--with-ssl \
 	--with-uu \
