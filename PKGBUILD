@@ -1,6 +1,6 @@
 # Maintainer: solnce <echo c29sbmNlQHJhdGFqY3phay5vbmU= | base64 -d>
 pkgname=pacdef
-pkgver=0.7.3
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='declarative package manager for Arch Linux'
 url='https://github.com/steven-omaha/pacdef'
@@ -8,21 +8,17 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/steven-omaha/${pkgname}
 arch=('any')
 license=('GPL3')
 depends=('python' 'pyalpm')
+makedepends=('python-pip')
 checkdepends=('python-pytest' 'python-mock')
-sha256sums=('9b425b9bbb45d40dd3db001da12c0343337e4e54ecf91071d2d203c1d3536cf6')
-
-build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  sed -i -e "s/VERSION = \"unknown\"/VERSION = \"${pkgver}\"/" pacdef.py
-}
+sha256sums=('ddd013d083bd62f0611ff1cfb396b029866f21183f9ada3c5d0fd9e01f264766')
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  pytest -v
+  python -m pytest -v
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  install -Dm755 pacdef.py "${pkgdir}/usr/bin/pacdef"
+  pip install --root="${pkgdir}/" --no-deps --ignore-installed .
   install -Dm644 _completion.zsh "${pkgdir}/usr/share/zsh/site-functions/_pacdef"
 }
