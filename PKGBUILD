@@ -5,7 +5,7 @@
 # Contributor: tty0 <vt.tty0[d0t]gmail.com>
 
 pkgname=teensyduino
-pkgver=1.56
+pkgver=1.57
 _arduinover=1.8.19
 _pkgname_loader="teensy_loader_cli"
 _pkgver_loader=2.2
@@ -35,7 +35,7 @@ sha256sums=('473b82156505e9bd903e4d8484e8d183f2e3bf3c1f7e29940b815929ae597b68'
             '17f56b63603271e2cdae291fed347b66dfbdfd089b2847cf0b4383c877ffacfb'
             '25980feb5927b8bea8b8e999f5002e110825b1bc3d546fa902c2db5c824d33f3'
             'eb68bddc1d1c0120be2fca1350a03ee34531cf37f51847b21210b6e70545bc9b'
-            'e036e19a662bc7eac20690eb605682d00f3c42ff5411e3654009058b7cc0b2d9')
+            '0864870639593f4b1df5e9cf7cb6eb6e8e1d9446d0745e6f448d813288ace400')
 
 build() {
   echo "Installing Teensyduino"

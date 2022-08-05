@@ -1,6 +1,6 @@
 pkgbase = teensyduino
 	pkgdesc = Arduino SDK with Teensyduino
-	pkgver = 1.56
+	pkgver = 1.57
 	pkgrel = 1
 	url = http://www.pjrc.com/teensy/teensyduino.html
 	install = teensyduino.install
@@ -32,13 +32,13 @@ pkgbase = teensyduino
 	source = https://www.pjrc.com/teensy/00-teensy.rules
 	source = LICENSE
 	source = http://downloads.arduino.cc/arduino-1.8.19-linux64.tar.xz
-	source = TeensyduinoInstall_156_x86_64::http://www.pjrc.com/teensy/td_156/TeensyduinoInstall.linux64
+	source = TeensyduinoInstall_157_x86_64::http://www.pjrc.com/teensy/td_157/TeensyduinoInstall.linux64
 	sha256sums = 473b82156505e9bd903e4d8484e8d183f2e3bf3c1f7e29940b815929ae597b68
 	sha256sums = 837a865ab3bf81163c95a8a5898f9d5f0de7740a4207949bc331409cbb40faba
 	sha256sums = 103c691f412d04906c4f46038c234d3e5f78322c1b78ded102df9f900724cd54
 	sha256sums = 17f56b63603271e2cdae291fed347b66dfbdfd089b2847cf0b4383c877ffacfb
 	sha256sums = 25980feb5927b8bea8b8e999f5002e110825b1bc3d546fa902c2db5c824d33f3
 	sha256sums = eb68bddc1d1c0120be2fca1350a03ee34531cf37f51847b21210b6e70545bc9b
-	sha256sums = e036e19a662bc7eac20690eb605682d00f3c42ff5411e3654009058b7cc0b2d9
+	sha256sums = 0864870639593f4b1df5e9cf7cb6eb6e8e1d9446d0745e6f448d813288ace400
 
 pkgname = teensyduino
