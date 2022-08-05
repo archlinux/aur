@@ -4,7 +4,7 @@ pkgver=2019_0917.r8.gc485ecc
 pkgrel=1
 pkgdesc="An elegant and customizable skin for Steam"
 arch=('any')
-url="https://github.com/airforsteam/Air-for-Steam"
+url="https://github.com/leskal/Air-for-Steam"
 license=('custom:cc-by-nc-4.0')
 depends=('steam' 'sssm>=1.2.0')
 makedepends=('git')
