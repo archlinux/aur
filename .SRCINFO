@@ -1,7 +1,7 @@
 pkgbase = dinit
 	pkgdesc = Service monitoring / "init" system
 	pkgver = 0.15.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/davmac314/dinit
 	arch = i686
 	arch = pentium4
