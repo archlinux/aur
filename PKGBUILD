@@ -1,6 +1,6 @@
 # Maintainer: Aditya Mishra <https://github.com/pegvin/goxel2/issues>
 pkgname=goxel2
-pkgver=0.14.2
+pkgver=0.15.0
 pkgrel=3 # Update if you changed something but that is so minor change you don't want to change the version
 pkgdesc="a cross-platform 3d voxel art editor"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=(
 )
 
 sha512sums=(
-	d8fac1a3628fbd42712d25e7c2e9f5873071caba7104ffce3e28bb34789ff7dcee31909c738b4009746d00b0635985ad91f916c935878fc01c1a81f7db1a11a1
+	ab5862c51e67a20ab73cadac8236900ce7f64cdbd92952b0ea8bf7c5c1815d730ebc6cfc339c5fdab4ef6063d87902f01d8d10ff1fbe27acb6e80f8dc98cb957
 )
 
 build() {

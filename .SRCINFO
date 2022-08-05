@@ -1,6 +1,6 @@
 pkgbase = goxel2
 	pkgdesc = a cross-platform 3d voxel art editor
-	pkgver = 0.14.2
+	pkgver = 0.15.0
 	pkgrel = 3
 	url = https://github.com/pegvin/goxel2
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = goxel2
 	conflicts = goxel2
 	conflicts = goxel2-git
 	conflicts = goxel2-bin
-	source = goxel2-0.14.2.tar.gz::https://github.com/pegvin/goxel2/archive/refs/tags/v0.14.2.tar.gz
-	sha512sums = d8fac1a3628fbd42712d25e7c2e9f5873071caba7104ffce3e28bb34789ff7dcee31909c738b4009746d00b0635985ad91f916c935878fc01c1a81f7db1a11a1
+	source = goxel2-0.15.0.tar.gz::https://github.com/pegvin/goxel2/archive/refs/tags/v0.15.0.tar.gz
+	sha512sums = ab5862c51e67a20ab73cadac8236900ce7f64cdbd92952b0ea8bf7c5c1815d730ebc6cfc339c5fdab4ef6063d87902f01d8d10ff1fbe27acb6e80f8dc98cb957
 
 pkgname = goxel2
