@@ -1,7 +1,7 @@
 pkgbase = dab-scanner
 	pkgdesc = A simple command line program based on the DAB library
 	pkgver = 0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/JvanKatwijk/dab-cmdline
 	arch = armv6h
 	arch = armv7h
@@ -12,11 +12,7 @@ pkgbase = dab-scanner
 	depends = gcc-libs
 	depends = rtl-sdr
 	source = https://github.com/vale-max/dab-cmdline/archive/refs/heads/master.zip
-	source = rtsp-simple-server.service
-	source = rtsp-simple-server.yml
 	sha256sums = 6ccd6391b357117f85c59aa79b9764aff32eace56e263e9a57b734a36e3bf811
-	sha256sums = ce98603e2546897a24c0da21a10ebebd5cc6dd843a8a79cdacfab7150a95b8b5
-	sha256sums = ae447a0ef6b23b95fd16f6ff27de793f8eaa9044ea243c2d976da6eb3cf8607d
 
 pkgname = dab-scanner
 	depends = gcc>=
