@@ -1,0 +1,16 @@
+pkgbase = python-preggy
+	pkgdesc = assertion library for Python
+	pkgver = 1.4.4
+	pkgrel = 1
+	url = https://pypi.org/project/preggy
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-six
+	depends = python-colorama
+	depends = python-unidecode
+	source = https://files.pythonhosted.org/packages/source/p/preggy/preggy-1.4.4.tar.gz
+	b2sums = ed656f848349c0cdb0f44151ded15db1b68b7358a4633417a6889b4be9397dc0de96dbd5f43bb26f748d9cd4f16532f1954f3978690afa9e792ce24fbe942b20
+
+pkgname = python-preggy
