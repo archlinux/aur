@@ -8,7 +8,7 @@
 
 pkgname=tenacity-wxgtk3-git
 pkgver=r13942.g91f8b4340
-pkgrel=2
+pkgrel=3
 pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity - stable wxgtk3"
 arch=(i686 x86_64)
 url="https://tenacityaudio.org"
@@ -54,7 +54,7 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DWX_CONFIG=/usr/bin/wx-config \
-    audacity_use_ffmpeg:STRING=loaded \
+    -Daudacity_use_ffmpeg:STRING=loaded \
     ..
   cmake --build .
   make .
