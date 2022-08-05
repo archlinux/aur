@@ -1,16 +1,15 @@
 pkgbase = memavaild
-	pkgdesc = Improve responsiveness during heavy swapping: keep amount of available memory.
+	pkgdesc = Memory daemon that improves responsiveness during heavy swapping
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hakavlad/memavaild
-	install = memavaild.install
 	arch = any
 	license = MIT
 	depends = python
-	conflicts = memavaild
 	backup = etc/memavaild.conf
-	source = memavaild::https://github.com/hakavlad/memavaild/archive/v0.6.tar.gz
-	md5sums = SKIP
+	source = memavaild-0.6.tar.gz::https://github.com/hakavlad/memavaild/archive/v0.6.tar.gz
+	source = memavaild.sysusers.conf
+	sha256sums = 3730b7f76211c62e0853a4ac026bd54fb87de360e2bd0eabb7c5ef1c099e4247
+	sha256sums = f422f477870f55670270c1e26c04adba4ebb9dccecbba190b47c6f136bcb059f
 
 pkgname = memavaild
-
