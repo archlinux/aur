@@ -1,5 +1,5 @@
 pkgname=weechat-wee-most-git
-pkgver=r375.3e0d1b1
+pkgver=r376.1559821
 pkgrel=1
 pkgdesc='A WeeChat plugin for Mattermost'
 url='https://sr.ht/~tardypad/wee-most/'
@@ -30,5 +30,5 @@ pkgver() {
 
 package() {
   cd wee-most
-  make DESTDIR="${pkgdir}" WEECHAT_DATA_DIR=/usr/lib/weechat
+  make DESTDIR="${pkgdir}" WEECHAT_DATA_DIR=/usr/share/weechat
 }
