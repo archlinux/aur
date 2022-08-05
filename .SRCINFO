@@ -1,6 +1,6 @@
 pkgbase = python-gr-framework-git
 	pkgdesc = A universal framework for cross-platform visualization applications (Python bindings).
-	pkgver = 1.21.0.r11.g72abd6e
+	pkgver = 1.21.0.r13.gf922187
 	pkgrel = 1
 	url = https://gr-framework.org
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-gr-framework-git
 	depends = gr-framework
 	depends = python
 	depends = python-numpy
-	provides = python-gr-framework=1.21.0.r11.g72abd6e
+	provides = python-gr-framework=1.21.0.r13.gf922187
 	conflicts = python-gr-framework
 	source = python-gr-framework::git+https://github.com/sciapp/python-gr.git#branch=develop
 	sha256sums = SKIP
