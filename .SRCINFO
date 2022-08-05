@@ -1,6 +1,6 @@
 pkgbase = jack2-git
 	pkgdesc = The JACK low-latency audio server
-	pkgver = 1.9.20.r0.ga2fe7ec2
+	pkgver = 1.9.21.r14.gd732afcb
 	pkgrel = 1
 	epoch = 2
 	url = http://jackaudio.org/
@@ -18,6 +18,7 @@ pkgbase = jack2-git
 	makedepends = opus
 	makedepends = systemd
 	makedepends = waf
+	options = !lto
 	source = jack2-git::git+https://github.com/jackaudio/jack2#branch=develop
 	md5sums = SKIP
 
@@ -34,13 +35,14 @@ pkgname = jack2-git
 	optdepends = libffado: for firewire support using FFADO
 	optdepends = jack-example-tools: for official JACK example-clients and tools
 	optdepends = jack2-dbus: for dbus integration
+	optdepends = jack2-docs: for developer documentation
 	optdepends = realtime-privileges: for realtime privileges
 	provides = jack
 	provides = jack2
 	provides = libjack.so
 	provides = libjacknet.so
 	provides = libjackserver.so
-	provides = jack2=1.9.20
+	provides = jack2=1.9.21
 	conflicts = jack
 	conflicts = jack2
 
