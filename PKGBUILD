@@ -1,6 +1,6 @@
 # Maintainer: Relwi <theofficialdork@hotmail.com>
 pkgname=fast-discord-git
-pkgver=3c6ce0c46bd80c20f32b340da3ea68af32e36304
+pkgver=r206.3c6ce0c
 pkgrel=1
 pkgdesc='A new Discord client made in C++ and Qt'
 url='https://github.com/EnyoYoen/Fast-Discord'
@@ -10,6 +10,11 @@ license=('MIT')
 makedepends=('cmake')
 depends=('git' 'pacman' 'qt5-base' 'opus' 'libsodium')
 md5sums=('SKIP')
+
+pkgver() {
+	cd "${pkgname}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build () {
   cd "$pkgname/bin"
