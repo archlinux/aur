@@ -1,0 +1,24 @@
+pkgbase = homeassistant-supervised
+	pkgdesc = Home Assistant Supervised
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://www.home-assistant.io/
+	install = .INSTALL
+	arch = x86_64
+	license = APACHE
+	makedepends = git
+	depends = docker>=20.10
+	depends = systemd>=239
+	depends = networkmanager>=1.14.6
+	depends = jq
+	depends = wget
+	depends = curl
+	depends = udisks2
+	depends = glib2
+	depends = dbus
+	depends = homeassistant-osagent
+	conflicts = docker-desktop
+	source = git+https://github.com/home-assistant/supervised-installer.git#tag=2f62e65aab05fba7dbbf70d6c91a02f98067631f
+	md5sums = SKIP
+
+pkgname = homeassistant-supervised
