@@ -1,6 +1,6 @@
 pkgbase = earth-wallpaper-nightly
 	pkgdesc = 实时获取地球照片作为壁纸
-	pkgver = 1.6.0.r4.g3d50835
+	pkgver = 1.6.0.r5.g8d9cef5
 	pkgrel = 0
 	url = https://jihulab.com/ambition-echo/earth_wallpaper
 	arch = x86_64
