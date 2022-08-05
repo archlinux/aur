@@ -1,0 +1,15 @@
+pkgbase = python-hazwaz
+	pkgdesc = A python library to write command line scripts
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://hazwaz.trueelena.org/
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-coloredlogs: pretty log output
+	provides = python-hazwaz
+	source = https://git.sr.ht/~valhalla/hazwaz/archive/v0.0.2.tar.gz
+	sha256sums = 26c047356a3e9f44bd3b6f61c774e1f7a06ce8cebe8f6e73cd98ea6bb2b4851d
+
+pkgname = python-hazwaz
