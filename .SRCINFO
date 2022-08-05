@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-gst-plugins-ugly
 	pkgdesc = GStreamer Multimedia Framework Ugly Plugins (mingw-w64)
-	pkgver = 1.20.2
+	pkgver = 1.20.3
 	pkgrel = 1
 	url = http://gstreamer.freedesktop.org/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = mingw-w64-gst-plugins-ugly
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.20.2.tar.xz
-	sha256sums = b43fb4df94459afbf67ec22003ca58ffadcd19e763f276dca25b64c848adb7bf
+	source = http://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.20.3.tar.xz
+	sha256sums = 8caa20789a09c304b49cf563d33cca9421b1875b84fcc187e4a385fa01d6aefd
 
 pkgname = mingw-w64-gst-plugins-ugly
