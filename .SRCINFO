@@ -1,6 +1,6 @@
 pkgbase = firebase-tools
 	pkgdesc = The Firebase Command Line Tools
-	pkgver = 11.4.0
+	pkgver = 11.4.1
 	pkgrel = 1
 	url = https://github.com/firebase/firebase-tools
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = firebase-tools
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	noextract = firebase-tools-11.4.0.tgz
-	source = https://registry.npmjs.org/firebase-tools/-/firebase-tools-11.4.0.tgz
-	sha256sums = ed65d771780e4f69277485a7be8958c2673014000e6af9405d7cedc82d90b6ab
+	noextract = firebase-tools-11.4.1.tgz
+	source = https://registry.npmjs.org/firebase-tools/-/firebase-tools-11.4.1.tgz
+	sha256sums = ffa2a72e494c00b1e74559b72dc416280e1f80dcdd7b0701584640127b097d91
 
 pkgname = firebase-tools
