@@ -11,7 +11,7 @@ depends=('dolphin' 'kdialog' 'imagemagick' 'perl-image-exiftool' 'optipng')
 
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('e7cb2ed79689c37652050988f397bea737e254c9248b0645cc6b81487c15fbfa')
+sha256sums=('ad2e1fa77b7335cf72398e22a9cbdc376463a5d6347cc147704861d4c55d7f5d')
 
 package() {
     cd "${srcdir}"
