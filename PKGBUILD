@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.1116
+pkgver=mainline.0.1123
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('x86_64')
@@ -36,7 +36,10 @@ makedepends=(
 	'xbyak>=6'
 	'zstd>=1.5'
 )
-checkdepends=('catch2>=2.13.7')
+checkdepends=(
+	'catch2>=2.13.7'
+	'catch2<3'
+)
 source=(
 	"yuzu-mainline::git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=${pkgver//./-}"
 	'yuzu-mbedtls::git+https://github.com/yuzu-emu/mbedtls.git'
