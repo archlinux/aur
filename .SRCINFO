@@ -1,12 +1,12 @@
 pkgbase = pridefetch-laureegrd-git
 	pkgdesc = An extension for pfetch with pride flags instead of ascii logos.
 	pkgver = r16.b2ee637
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/laureegrd/pridefetch
 	arch = any
 	license = GPL
 	makedepends = git
-	depends = pfetch
+	depends = pfetch-git
 	conflicts = pridefetch
 	conflicts = pridefetch-git
 	source = pridefetch-laureegrd-git::git+https://gitlab.com/laureegrd/pridefetch.git
