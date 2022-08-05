@@ -1,14 +1,13 @@
 pkgbase = tutel
 	pkgdesc = a minimalistic todo app for terminal enthusiasts
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://www.github.com/InvalidName662/tutel
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = cargo
-	makedepends = git
-	source = tutel::git+https://github.com/InvalidName662/tutel.git#tag=v0.2.5
+	source = tutel::git+https://github.com/InvalidName662/tutel.git#tag=v0.2.6
 	md5sums = SKIP
 
 pkgname = tutel
