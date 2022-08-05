@@ -2,15 +2,15 @@
 
 pkgname=pokete
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal based Pokemon like game'
 url='https://lxgr-linux.github.io/pokete'
 license=('GPL3')
 arch=('any')
 depends=('python' 'python-scrap_engine')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lxgr-linux/pokete/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('1015ec6b47c3eb77ae14cdfc2ff03a21c7c473ea625c8f508c8c947430579e77')
-b2sums=('643e4b7401323a1c8df1ee1ac67d99690f9d2f505bfff6d446161f6a9d655ccd21a19915452562622caa8e60742c1693f4afa2d1eb93916fff843c5776c4894b')
+sha256sums=('44477ca3153babfa705bd45239f34fd048f21025f061fe92051aee3accba6e1b')
+b2sums=('80ac114f03ce363fbf152ce2cc837e4f1430501e6647d5fbd5c96e6b93c51e1bd939e3f15b0329cde3d255bccb596c2fc2caf479917389e9ccb16b113251a1de')
 
 build() {
   cd "$pkgname-$pkgver"
