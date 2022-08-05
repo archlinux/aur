@@ -1,7 +1,7 @@
 # Maintainer: Relwi <theofficialdork@hotmail.com>
 pkgname=fast-discord-git
 pkgver=r212.f8d97ba
-pkgrel=1
+pkgrel=2
 pkgdesc='A new Discord client made in C++ and Qt'
 url='https://github.com/EnyoYoen/Fast-Discord'
 source=("${pkgname}::git+https://github.com/EnyoYoen/Fast-Discord")
