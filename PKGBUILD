@@ -19,7 +19,9 @@ build () {
 }
 
 package() {
-  cd "$pkgname/bin"
+  cd "$pkgname"
   
-  install -Dm644 Fast-Discord "${pkgdir}/usr/bin/fast-discord"
+  install -Dm755 bin/Fast-Discord "${pkgdir}/usr/bin/fast-discord"
+  #install -Dm644 "resources/com.enyoyoen.fast-discord.desktop" "$pkgdir/usr/share/applications/com.enyoyoen.fast-discord.desktop"
+  #install -Dm644 "doc/images/Fast-Discord-Logo.png" "$pkgdir/usr/share/pixmaps/fast-discord.png"
 }
