@@ -9,7 +9,7 @@
 
 _pkgname=calibre
 pkgname=calibre-unicode-path
-pkgver=5.42.0
+pkgver=6.2.1
 pkgrel=1
 pkgdesc='Ebook management application. With unicode filename and path patch.'
 arch=(x86_64)
@@ -31,13 +31,15 @@ _pydeps=(apsw
          mechanize
          msgpack
          netifaces
+         pdftotext
          pillow
          psutil
          py7zr
          pychm
+         pycryptodome
          pygments
-         pyqt5
-         pyqtwebengine
+         pyqt6
+         pyqt6-webengine
          regex
          unrardll
          zeroconf)
@@ -54,12 +56,14 @@ depends=(hunspell
          optipng
          podofo
          "${_pydeps[@]/#/python-}"
-         qt5-imageformats
-         qt5-svg
+         qt6-imageformats
+         qt6-svg
+         qt6-webengine
          ttf-liberation
+         uchardet
          udisks2)
-makedepends=(pyqt-builder
-             qt5-x11extras
+makedepends=(cmake
+             pyqt-builder
              rapydscript-ng
              sip
              xdg-utils)
@@ -69,12 +73,12 @@ provides=("$_pkgname")
 conflicts=("$_pkgname"
            calibre-common
            calibre-python3)
-replaces=("${replaces[@]}")
+replaces=("${conflicts[@]}")
 _archive="$_pkgname-$pkgver"
 source=("https://download.calibre-ebook.com/$pkgver/$_archive.tar.xz"
         "$url/signatures/$_archive.tar.xz.sig"
         "000-fix-unicode-filename.patch")
-sha256sums=('a686fd1999775a2932e5a3061af70d41d0eb2a1d7d6e8fa7e6285d4b8e57f958'
+sha256sums=('eae23824750360d4486aa6275364dd00926b1f363c50404171fcacefbf8f7476'
             'SKIP'
             'SKIP')
 validpgpkeys=('3CE1780F78DD88DF45194FD706BC317B515ACE7C') # Kovid Goyal (New longer key) <kovid@kovidgoyal.net>
