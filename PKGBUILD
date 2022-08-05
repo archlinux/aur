@@ -1,6 +1,6 @@
 # Maintainer: Relwi <theofficialdork@hotmail.com>
 pkgname=fast-discord-git
-pkgver=r206.3c6ce0c
+pkgver=r212.f8d97ba
 pkgrel=1
 pkgdesc='A new Discord client made in C++ and Qt'
 url='https://github.com/EnyoYoen/Fast-Discord'
@@ -27,6 +27,6 @@ package() {
   cd "$pkgname"
   
   install -Dm755 bin/Fast-Discord "${pkgdir}/usr/bin/fast-discord"
-  #install -Dm644 "resources/com.enyoyoen.fast-discord.desktop" "$pkgdir/usr/share/applications/com.enyoyoen.fast-discord.desktop"
-  #install -Dm644 "doc/images/Fast-Discord-Logo.png" "$pkgdir/usr/share/pixmaps/fast-discord.png"
+  install -Dm644 "resources/com.enyoyoen.fast-discord.desktop" "$pkgdir/usr/share/applications/com.enyoyoen.fast-discord.desktop"
+  install -Dm644 "doc/images/Fast-Discord-Logo.png" "$pkgdir/usr/share/pixmaps/fast-discord.png"
 }
