@@ -1,16 +1,15 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
 # Contributor: Timofey Titovets <nefelim4ag@gmail.com>
 
-pkgbase=leagueoflegends-git
-pkgname=(leagueoflegends-git leagueoflegends-ge-git)
-_srcname=${pkgbase%-git}
-pkgver=0.12.6.r3.g61b9381
+pkgname=(leagueoflegends-git)
+_srcname=${pkgname%-git}
+pkgver=12.14.r0.g37e8a6e
 pkgrel=1
 pkgdesc="League of Legends helper script"
 arch=('any')
 url="https://github.com/kyechou/leagueoflegends"
 license=('GPL3')
-depends=('winetricks' 'bash' 'curl' 'openssl' 'samba' 'mesa-utils'
+depends=('wine-lol' 'winetricks' 'bash' 'curl' 'openssl' 'samba' 'mesa-utils'
          'lib32-gnutls' 'lib32-libldap' 'lib32-openal' 'lib32-libpulse'
          'lib32-alsa-lib' 'lib32-mpg123' 'lib32-unixodbc' 'lib32-vkd3d'
          'vulkan-icd-loader' 'lib32-vulkan-icd-loader' 'vulkan-driver'
@@ -35,18 +34,7 @@ pkgver() {
     fi
 }
 
-package_leagueoflegends-git() {
-    depends+=('wine-lol')
-    conflicts+=('leagueoflegends-ge-git')
-
+package() {
     cd "$srcdir/$_srcname"
     make DESTDIR="$pkgdir" install
-}
-
-package_leagueoflegends-ge-git() {
-    depends+=('wine-ge-lol')
-    conflicts+=('leagueoflegends-git')
-
-    cd "$srcdir/$_srcname"
-    make DESTDIR="$pkgdir" install-ge
 }
