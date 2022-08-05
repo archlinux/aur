@@ -1,7 +1,8 @@
 pkgbase = most-snapshot
 	pkgdesc = A terminal pager similar to ‘more’ and ‘less’ (latest development snapshot)
-	pkgver = 5.2.13
+	pkgver = 5.2.0
 	pkgrel = 1
+	epoch = 1
 	url = https://www.jedsoft.org/most/
 	arch = x86_64
 	arch = armv7h
@@ -9,10 +10,10 @@ pkgbase = most-snapshot
 	depends = slang
 	provides = most
 	conflicts = most
-	source = https://jedsoft.org/snapshots/most-pre5.2-13.tar.gz
-	md5sums = dff130cde10f7681462e9387e2e02d2a
-	sha256sums = b123681acdff9b337bf76fd660b121bc5b8390d3ff0be170ab4edae58ae6b88a
-	sha512sums = 62e3202650320e3b092a37b2f8ad3171499a2f629db949a0457efcca92f901fe57779e9e997a4ff2f06d3c960dde8921ff544967b83818c7bb2e635348bb0662
-	b2sums = c783aff43b8bc31174c96ff13b528427133462b84f3311b983719bffeb3844de885f5a02ec7b6b7b003ee85c2951a9858dcaf0fe363f6dc2797e141f069d7ccf
+	source = https://jedsoft.org/snapshots/most-5.2.0.tar.gz
+	md5sums = 9677a974b85ca60c05f2c86063316faa
+	sha256sums = a8babadf68a7e01608340efe4d987eb954e782731232f4aa090d935068610e9f
+	sha512sums = fea73d2c5212829a7871cd2fdde25e78a6dc865cdb9ae5d52b1a469190e2fddd2a214edf51ee942fe60d9f3346da21444858c6b70fcf55a76b725c56ed24fbd2
+	b2sums = e26bdb7ecf85baecb50998c6c54ba0cb8ebd81ba4e6b4790c5c85f39b96ffbc109ff5735b30e1df782f2949890185d6024ffffe62ff885b8c772644ee70e0a24
 
 pkgname = most-snapshot

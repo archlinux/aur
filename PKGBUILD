@@ -3,9 +3,10 @@
 
 pkgname=most-snapshot
 _pkgname=most
-pkgver=5.2.13
-_prever='pre5.2-13'
+pkgver=5.2.0
+_prever='5.2.0'
 pkgrel=1
+epoch=1
 pkgdesc="A terminal pager similar to ‘more’ and ‘less’ (latest development snapshot)"
 arch=('x86_64' 'armv7h')
 depends=('slang')
@@ -15,9 +16,8 @@ source=("https://jedsoft.org/snapshots/${_pkgname}-${_prever}.tar.gz")
 #validpgpkeys=('AE962A02D29BFE4A4BB2805FDE401E0D5873000A')  # John E. Davis <davis@space.mit.edu>
 provides=('most')
 conflicts=('most')
-md5sums=(
-  'dff130cde10f7681462e9387e2e02d2a'
-)
+# Taken from https://jedsoft.org/snapshots/
+md5sums=('9677a974b85ca60c05f2c86063316faa')
 
 build() {
   cd "${srcdir}/${_pkgname}-${_prever}" || exit 1
@@ -32,14 +32,15 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
+# Calculated
 sha256sums=(
-  'b123681acdff9b337bf76fd660b121bc5b8390d3ff0be170ab4edae58ae6b88a'
+  'a8babadf68a7e01608340efe4d987eb954e782731232f4aa090d935068610e9f'
 )
 sha512sums=(
-  '62e3202650320e3b092a37b2f8ad3171499a2f629db949a0457efcca92f901fe57779e9e997a4ff2f06d3c960dde8921ff544967b83818c7bb2e635348bb0662'
+  'fea73d2c5212829a7871cd2fdde25e78a6dc865cdb9ae5d52b1a469190e2fddd2a214edf51ee942fe60d9f3346da21444858c6b70fcf55a76b725c56ed24fbd2'
 )
 b2sums=(
-  'c783aff43b8bc31174c96ff13b528427133462b84f3311b983719bffeb3844de885f5a02ec7b6b7b003ee85c2951a9858dcaf0fe363f6dc2797e141f069d7ccf'
+  'e26bdb7ecf85baecb50998c6c54ba0cb8ebd81ba4e6b4790c5c85f39b96ffbc109ff5735b30e1df782f2949890185d6024ffffe62ff885b8c772644ee70e0a24'
 )
 
 # eof
