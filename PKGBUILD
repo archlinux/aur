@@ -4,7 +4,7 @@
 
 pkgname="araste-git"
 _gitname="araste"
-pkgver=r1.3_350.45eb90f
+pkgver=r1.3_352.c893c71
 pkgrel=1
 pkgdesc="Making ascii-art out of Persian/Arabic text"
 arch=("any")
@@ -33,7 +33,7 @@ package() {
     cd "${srcdir}/${_gitname}"
 
     install -d "${pkgdir}/usr/share/licenses/${_gitname}"
-    install -d "${pkgdir}/usr/share/man/man1/${_gitname}.1.gz"
+    install -d "${pkgdir}/usr/share/man/man1/"
 
     install -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
     install -m644 "assest/${_gitname}.1.gz" "${pkgdir}/usr/share/man/man1/${_gitname}.1.gz"
