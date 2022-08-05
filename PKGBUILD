@@ -1,7 +1,7 @@
 # Maintainer: Relwi <theofficialdork@hotmail.com>
 pkgname=dinit
 pkgver=0.15.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Service monitoring / "init" system'
 url='https://github.com/davmac314/dinit'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/davmac314/dinit/archive/v$pkgver.tar.gz")
