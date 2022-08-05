@@ -5,7 +5,7 @@ pkgbase=python-sunpy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=4.0.3
+pkgver=4.0.4
 pkgrel=1
 pkgdesc="Python library for solar physics"
 arch=('i686' 'x86_64')
@@ -63,7 +63,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #        "http://data.sunpy.org/sunpy/v1/aiacalibim5.fits.gz"
 #        "http://data.sunpy.org/sunpy/v1/glg_cspec_n5_110607_v00.pha")
 ##       "http://netdrms01.nispdc.nso.edu/VSO/WSDL/VSOi_rpc_literal.wsdl")
-md5sums=('26ea8fc6c15c359f9a6204deb53a89be')
+md5sums=('331566e09009d1259d28e5bfa0483d3c')
 #        'bde3bd7a691b38e2e4c4e1d17b143b24'
 #        '01efaf052d81efc32a92050a249aa557'
 #        'ead6d3ce4c183c471d76bf1bc3be44a3'
