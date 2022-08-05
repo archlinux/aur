@@ -1,0 +1,17 @@
+pkgbase = air-for-steam-git
+	pkgdesc = An elegant and customizable skin for Steam
+	pkgver = 2019_0917.r8.gc485ecc
+	pkgrel = 1
+	url = https://github.com/airforsteam/Air-for-Steam
+	install = air-for-steam.install
+	arch = any
+	license = custom:cc-by-nc-4.0
+	makedepends = git
+	depends = steam
+	depends = sssm>=1.2.0
+	provides = air-for-steam
+	conflicts = air-for-steam
+	source = git+https://github.com/leskal/Air-for-Steam.git
+	sha256sums = SKIP
+
+pkgname = air-for-steam-git
