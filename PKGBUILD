@@ -1,6 +1,6 @@
 # Maintainer: Xinkai Chen <xinkai.chen@qq.com>
 pkgname=printenv2
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="A printenv2 rewrite in Rust"
 arch=('i686' 'x86_64')
