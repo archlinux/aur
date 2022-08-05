@@ -3,7 +3,7 @@
 pkgname=yeganesh
 pkgdesc='dmenu with a sense of history (cabal sandbox build)'
 pkgver=2.5
-pkgrel=26
+pkgrel=28
 
 url='http://dmwit.com/yeganesh/'
 license=('custom:BSD3')
@@ -30,13 +30,15 @@ build() {
     --enable-shared \
     --enable-executable-dynamic \
     --disable-library-vanilla \
+    --enable-tests \
     --prefix=/usr \
     --dynlibdir=/usr/lib \
     --docdir="/usr/share/doc/${pkgname}" \
     --datasubdir="${pkgname}" \
     --libsubdir=\$compiler/site-local/\$pkgid \
     --ghc-option=-optl-Wl\,-z\,relro\,-z\,now \
-    --ghc-option='-pie'
+    --ghc-option='-pie' \
+    -f-profiling
   runhaskell Setup build
 }
 
