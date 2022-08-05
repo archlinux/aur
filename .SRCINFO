@@ -1,6 +1,6 @@
 pkgbase = pure-gen
 	pkgdesc = A C interface generator for Pure
-	pkgver = 0.23
+	pkgver = 0.24
 	pkgrel = 1
 	url = https://agraef.github.io/pure-lang/
 	arch = i686
@@ -15,8 +15,7 @@ pkgbase = pure-gen
 	makedepends = alex
 	makedepends = happy
 	depends = pure
-	source = https://github.com/agraef/pure-lang/releases/download/pure-gen-0.23/pure-gen-0.23.tar.gz
-	sha1sums = 205d18ee7fff502f90b0fa741eabb52c8c5fd72b
+	source = https://github.com/agraef/pure-lang/releases/download/pure-gen-0.24/pure-gen-0.24.tar.gz
+	sha1sums = 37e40208ed0432f2ab12246bbd4836547af9394a
 
 pkgname = pure-gen
-
