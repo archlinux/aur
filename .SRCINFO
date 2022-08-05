@@ -1,7 +1,7 @@
 pkgbase = goxel2-git
 	pkgdesc = a cross-platform 3d voxel art editor
-	pkgver = 0.15.0
-	pkgrel = 3
+	pkgver = 0.15.0.r14.g91f156a
+	pkgrel = 1
 	url = https://github.com/pegvin/goxel2
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,11 @@ pkgbase = goxel2-git
 	makedepends = pkg-config
 	depends = glfw
 	depends = gtk3
-	provides = goxel2
+	provides = goxel2-git
 	conflicts = goxel2
+	conflicts = goxel2-git
+	conflicts = goxel2-bin
+	source = git+https://github.com/goxel2/goxel2.git
+	sha512sums = SKIP
 
 pkgname = goxel2-git

@@ -1,7 +1,7 @@
 # Maintainer: Aditya Mishra <https://github.com/pegvin/goxel2/issues>
 pkgname=goxel2-git
-pkgver=0.15.0
-pkgrel=3 # Update if you changed something but that is so minor change you don't want to change the version
+pkgver=0.15.0.r14.g91f156a
+pkgrel=1 # Update if you changed something but that is so minor change you don't want to change the version
 pkgdesc="a cross-platform 3d voxel art editor"
 arch=('i686' 'x86_64')
 url="https://github.com/pegvin/goxel2"
@@ -9,32 +9,23 @@ license=('GPL3')
 depends=(glfw gtk3)
 makedepends=(git make tar curl scons pkg-config)
 optdepends=()
-provides=('goxel2')
-conflicts=('goxel2')
+provides=('goxel2-git')
+conflicts=('goxel2' 'goxel2-git' 'goxel2-bin')
+source=(git+https://github.com/goxel2/goxel2.git)
+sha512sums=(SKIP)
 
-# Name of the directory the cloned repository will be in.
-_gitname=goxel2
+pkgver() {
+	cd goxel2
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-	echo "Getting Goxel2 v$pkgver Source Code from GitHub Release..."
-	curl -L "https://github.com/pegvin/goxel2/archive/refs/tags/v$pkgver.tar.gz" --output $_gitname.tar.gz
-
-	echo "Extracting $_gitname.tar.gz..."
-	tar -xf $_gitname.tar.gz
-	cd $_gitname-$pkgver/
-
-	# don't fail on warnings:
-	CFLAGS="${CFLAGS} -Wno-all"
-	CXXFLAGS="${CFLAGS}"
-
-	echo "Building Goxel2..."
+    cd goxel2
 	make release
 }
 
 package() {
-	echo "Installing Goxel2..."
-
-	cd $_gitname-$pkgver/
+    cd goxel2
 	install -Dm644 data/goxel2.desktop "$pkgdir/usr/share/applications/goxel2.desktop"
 	install -Dm644 icon.png "$pkgdir/usr/share/icons/goxel2.png"
 	install -Dm755 goxel2 "$pkgdir/usr/bin/goxel2"
