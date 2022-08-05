@@ -1,0 +1,13 @@
+pkgbase = android-sources-32
+	pkgdesc = Android SDK Sources, API-32
+	pkgver = 32_12.1.0_r01
+	pkgrel = 1
+	url = https://developer.android.com/studio/index.html
+	arch = any
+	license = custom
+	provides = android-sources
+	options = !strip
+	source = https://dl.google.com/android/repository/sources-32_r01.zip
+	sha256sums = 7ebf6cb75df1b1838aedaf9eba15663f786611e1bcfbd36db2765ba410c4f345
+
+pkgname = android-sources-32
