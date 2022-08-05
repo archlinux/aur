@@ -6,7 +6,7 @@ After=network.target postgresql.service mariadb.service mysqld.service
 User=grafana
 Group=grafana
 WorkingDirectory=/usr/share/grafana
-ExecStart=/usr/bin/grafana-server --config=/etc/grafana/grafana.ini
+ExecStart=/usr/bin/grafana-server --config=/etc/grafana.ini
 LimitNOFILE=10000
 TimeoutStopSec=20
 SuccessExitStatus=0 2

@@ -6,7 +6,7 @@
 pkgname=grafana-bin
 _pkgname=grafana
 pkgver=9.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A general purpose dashboard and graph composer. It supports graphite, influxdb or opentsdb - binary version"
 url="http://grafana.org"
 conflicts=('grafana')
