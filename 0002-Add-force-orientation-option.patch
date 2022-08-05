@@ -1,3 +1,16 @@
+From a1cad389afb4ae25b298883f8c4498fe064389b3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Joaqu=C3=ADn=20Ignacio=20Aramend=C3=ADa?=
+ <samsagax@gmail.com>
+Date: Mon, 18 Jul 2022 19:59:41 -0300
+Subject: [PATCH 2/2] Add --force-orientation option
+
+---
+ src/drm.cpp      | 51 +++++++++++++++++++++++++++++++-----
+ src/drm.hpp      | 34 +++++++++++++++++-------
+ src/main.cpp     | 23 ++++++++++++++++-
+ src/wlserver.cpp | 67 ++++++++++++++++++++++++++++++++++++++----------
+ 4 files changed, 146 insertions(+), 29 deletions(-)
+
 diff --git a/src/drm.cpp b/src/drm.cpp
 index 42cd0ee..28b613d 100644
 --- a/src/drm.cpp
@@ -247,7 +260,7 @@ index 792d872..4f84d23 100644
  
  	setenv("DISPLAY", base_server->get_nested_display_name(), 1);
 diff --git a/src/wlserver.cpp b/src/wlserver.cpp
-index cbf5df8..a9c9489 100644
+index 0862f51..c2d7d2c 100644
 --- a/src/wlserver.cpp
 +++ b/src/wlserver.cpp
 @@ -6,7 +6,7 @@
@@ -267,14 +280,13 @@ index cbf5df8..a9c9489 100644
  static struct wl_list pending_surfaces = {0};
  
  static void wlserver_surface_set_wlr( struct wlserver_surface *surf, struct wlr_surface *wlr_surf );
-@@ -972,6 +973,176 @@ void wlserver_send_frame_done( struct wlr_surface *surf, const struct timespec *
- 	wlr_surface_send_frame_done( surf, when );
- }
- 
-+void wlserver_touchmotion( double x, double y, int touch_id, uint32_t time )
-+{
-+	if ( wlserver.mouse_focus_surface != NULL )
-+	{
+@@ -861,18 +862,38 @@ void wlserver_touchmotion( double x, double y, int touch_id, uint32_t time )
+ {
+ 	if ( wlserver.mouse_focus_surface != NULL )
+ 	{
+-		double tx = g_bRotated ? y : x;
+-		double ty = g_bRotated ? 1.0 - x : y;
+-
 +		double tx = 0;
 +		double ty = 0;
 +		switch ( g_drmModeOrientation )
@@ -301,39 +313,25 @@ index cbf5df8..a9c9489 100644
 +				ty = g_bRotated ? 1.0 - x : y;
 +				break;
 +		}
-+		tx *= g_nOutputWidth;
-+		ty *= g_nOutputHeight;
-+		tx += focusedWindowOffsetX;
-+		ty += focusedWindowOffsetY;
-+		tx *= focusedWindowScaleX;
-+		ty *= focusedWindowScaleY;
-+		wlserver.mouse_surface_cursorx = tx;
-+		wlserver.mouse_surface_cursory = ty;
-+
-+		if ( g_nTouchClickMode == WLSERVER_TOUCH_CLICK_PASSTHROUGH )
-+		{
-+			wlr_seat_touch_notify_motion( wlserver.wlr.seat, time, touch_id, wlserver.mouse_surface_cursorx, wlserver.mouse_surface_cursory );
-+		}
-+		else if ( g_nTouchClickMode == WLSERVER_TOUCH_CLICK_DISABLED )
-+		{
-+			return;
-+		}
-+		else
-+		{
-+			g_bPendingTouchMovement = true;
-+
-+			wlr_seat_pointer_notify_motion( wlserver.wlr.seat, time, wlserver.mouse_surface_cursorx, wlserver.mouse_surface_cursory );
-+			wlr_seat_pointer_notify_frame( wlserver.wlr.seat );
-+		}
-+	}
-+
-+	bump_input_counter();
-+}
-+
-+void wlserver_touchdown( double x, double y, int touch_id, uint32_t time )
-+{
-+	if ( wlserver.mouse_focus_surface != NULL )
-+	{
+ 		tx *= g_nOutputWidth;
+ 		ty *= g_nOutputHeight;
+-
+ 		tx += focusedWindowOffsetX;
+ 		ty += focusedWindowOffsetY;
+-
+ 		tx *= focusedWindowScaleX;
+ 		ty *= focusedWindowScaleY;
+-
+ 		wlserver.mouse_surface_cursorx = tx;
+ 		wlserver.mouse_surface_cursory = ty;
+ 
+@@ -900,18 +921,38 @@ void wlserver_touchdown( double x, double y, int touch_id, uint32_t time )
+ {
+ 	if ( wlserver.mouse_focus_surface != NULL )
+ 	{
+-		double tx = g_bRotated ? y : x;
+-		double ty = g_bRotated ? 1.0 - x : y;
+-
 +		double tx = 0;
 +		double ty = 0;
 +		switch ( g_drmModeOrientation )
@@ -360,87 +358,18 @@ index cbf5df8..a9c9489 100644
 +				ty = g_bRotated ? 1.0 - x : y;
 +				break;
 +		}
-+		tx *= g_nOutputWidth;
-+		ty *= g_nOutputHeight;
-+		tx += focusedWindowOffsetX;
-+		ty += focusedWindowOffsetY;
-+		tx *= focusedWindowScaleX;
-+		ty *= focusedWindowScaleY;
-+		wlserver.mouse_surface_cursorx = tx;
-+		wlserver.mouse_surface_cursory = ty;
-+
-+		if ( g_nTouchClickMode == WLSERVER_TOUCH_CLICK_PASSTHROUGH )
-+		{
-+			if ( touch_id >= 0 && touch_id < WLSERVER_TOUCH_COUNT )
-+			{
-+				wlr_seat_touch_notify_down( wlserver.wlr.seat, wlserver.mouse_focus_surface, time, touch_id,
-+											wlserver.mouse_surface_cursorx, wlserver.mouse_surface_cursory );
-+
-+				wlserver.touch_down[ touch_id ] = true;
-+			}
-+		}
-+		else if ( g_nTouchClickMode == WLSERVER_TOUCH_CLICK_DISABLED )
-+		{
-+			return;
-+		}
-+		else
-+		{
-+			g_bPendingTouchMovement = true;
-+
-+			wlr_seat_pointer_notify_motion( wlserver.wlr.seat, time, wlserver.mouse_surface_cursorx, wlserver.mouse_surface_cursory );
-+			wlr_seat_pointer_notify_frame( wlserver.wlr.seat );
-+
-+			uint32_t button = steamcompmgr_button_to_wlserver_button( g_nTouchClickMode );
-+
-+			if ( button != 0 && g_nTouchClickMode < WLSERVER_BUTTON_COUNT )
-+			{
-+				wlr_seat_pointer_notify_button( wlserver.wlr.seat, time, button, WLR_BUTTON_PRESSED );
-+				wlr_seat_pointer_notify_frame( wlserver.wlr.seat );
-+
-+				wlserver.button_held[ g_nTouchClickMode ] = true;
-+			}
-+		}
-+	}
-+
-+	bump_input_counter();
-+}
-+
-+void wlserver_touchup( int touch_id, uint32_t time )
-+{
-+	if ( wlserver.mouse_focus_surface != NULL )
-+	{
-+		bool bReleasedAny = false;
-+		for ( int i = 0; i < WLSERVER_BUTTON_COUNT; i++ )
-+		{
-+			if ( wlserver.button_held[ i ] == true )
-+			{
-+				uint32_t button = steamcompmgr_button_to_wlserver_button( i );
-+
-+				if ( button != 0 )
-+				{
-+					wlr_seat_pointer_notify_button( wlserver.wlr.seat, time, button, WLR_BUTTON_RELEASED );
-+					bReleasedAny = true;
-+				}
-+
-+				wlserver.button_held[ i ] = false;
-+			}
-+		}
-+
-+		if ( bReleasedAny == true )
-+		{
-+			wlr_seat_pointer_notify_frame( wlserver.wlr.seat );
-+		}
-+
-+		if ( touch_id >= 0 && touch_id < WLSERVER_TOUCH_COUNT && wlserver.touch_down[ touch_id ] == true )
-+		{
-+			wlr_seat_touch_notify_up( wlserver.wlr.seat, time, touch_id );
-+			wlserver.touch_down[ touch_id ] = false;
-+		}
-+	}
-+
-+	bump_input_counter();
-+}
-+
- gamescope_xwayland_server_t *wlserver_get_xwayland_server( size_t index )
- {
- 	if (index >= wlserver.wlr.xwayland_servers.size() )
+ 		tx *= g_nOutputWidth;
+ 		ty *= g_nOutputHeight;
+-
+ 		tx += focusedWindowOffsetX;
+ 		ty += focusedWindowOffsetY;
+-
+ 		tx *= focusedWindowScaleX;
+ 		ty *= focusedWindowScaleY;
+-
+ 		wlserver.mouse_surface_cursorx = tx;
+ 		wlserver.mouse_surface_cursory = ty;
+ 
+-- 
+2.37.1
+
