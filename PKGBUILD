@@ -2,7 +2,7 @@
 pkgname=mekhq
 pkgver=0.48.0
 _pkgver=
-pkgrel=5
+pkgrel=6
 epoch=
 install=mekhq.install
 pkgdesc="MekHQ is a java helper program for the MegaMek game that allows users to load a list of entities from an XML file, perform repairs and customizations, and then save the new entities to another XML file that can be loaded into MegaMek."
@@ -32,7 +32,7 @@ sha256sums=('69bee526358f576453b51fae8ef2c3aa83f09c044d032f6c587c4fe267b9d2ba'
             'a6c0cc72c6f3ad773bdcec24c8036ae7d09dcaea4908f5b6d4e5ac6091cff772'
             'caf5bf3e7294029c7b6dec974eed0253d6caf3804a6a9fcc953edc3c9be98b16'
             '6e6bb03f14a0ce6e06fd9009fd9f159d22a34a7020ba85b13ad6dbf649ca9e38'
-            '19358e7d4a2c1c9c066148d4f23498d67aa4f8eab1faec8dd6de3451cadc104e')
+            '977b1292555b1a8f82636f292460b06c6c12c0dd06c3e20a23fbc4cf4fc7452d')
 
 build() {
     rm -rf megamek megameklab
