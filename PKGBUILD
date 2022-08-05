@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-wavpack
-pkgver=5.4.0
+pkgver=5.5.0
 pkgrel=1
 pkgdesc="Audio compression format with lossless, lossy and hybrid compression modes (mingw-w64)"
 arch=('any')
@@ -10,7 +10,7 @@ makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 source=(http://www.wavpack.com/wavpack-${pkgver}.tar.xz)
-sha512sums=('de4e75539c9b949d22f39ab73721c8a4ee7c38ff08835aa28b1d56bea08c332bcb601a54998efe520f3653a2e29c73dcfd716ad19707bb2815403786d9ed9c11')
+sha512sums=('9758e8079618e45e585330cd472f8ddae6e0ffd9a79032e7ec60251fff331390a619855dcdcf92942f5192d6ae12e05b6feca36394d30f0fe7e65222ee2696fc')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
