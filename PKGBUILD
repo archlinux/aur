@@ -12,8 +12,8 @@ depends=('git' 'pacman' 'qt5-base' 'opus' 'libsodium')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "${pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build () {
