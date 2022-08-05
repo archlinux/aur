@@ -1,4 +1,4 @@
-# Maintainer: Marco <marco at maniatek dot de>
+# Maintainer: Marco <marcomania2012 at gmail dot com>
 
 pkgname=kde-servicemenus-flacconvert
 pkgver=1
