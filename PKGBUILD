@@ -1,31 +1,31 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Ivan Smolyakov <smol.ivan97@gmail.com>
 
 pkgname=mcron
 pkgver=1.2.1
-pkgrel=1
-pkgdesc="This is a tool to run jobs at scheduled times. It is a complete replacement for Vixie cron."
-url="https://www.gnu.org/software/mcron/"
+pkgrel=2
+pkgdesc="Pure Guile, compatible replacement for cron"
+url="https://gnu.org/software/mcron/"
 arch=('x86_64')
-license=("GPL3")
-depends=("guile")
-makedepends=()
-provides=("cron")
-conflicts=("cron") 
-source=("$pkgname-$pkgver.tar.gz::https://ftp.gnu.org/gnu/mcron/${pkgname}-${pkgver}.tar.gz")
-md5sums=('6fa2659cb026502e6be800a29214662b')
+license=('GPL3')
+depends=('guile')
+provides=('cron')
+conflicts=('cron')
+options=('!strip')
+source=("$pkgname-$pkgver.tar.gz::https://ftp.gnu.org/gnu/mcron/$pkgname-$pkgver.tar.gz"
+        "$pkgname-$pkgver.tar.gz.sig::https://ftp.gnu.org/gnu/mcron/$pkgname-$pkgver.tar.gz.sig")
+sha256sums=('20fe726c8c53e00261a3a8e191051228b07558292de5abe3714445f1ca10762e'
+            'SKIP')
+validpgpkeys=('961AB15C62EF3B92DAB5965988C3D2BEA81462EB') ## Adam Bilbrough
 
 build() {
-  cd "$pkgname-$pkgver"
-
-  ./configure --prefix "${pkgdir}/usr" --sbindir "${pkgdir}/usr/bin"
-  make
- 
+	cd "$pkgname-$pkgver"
+	./configure --prefix=/usr --sbindir=/usr/bin
+	make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-
-  make install
-
+	cd "$pkgname-$pkgver"
+	make install DESTDIR="$pkgdir"
 }

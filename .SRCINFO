@@ -1,14 +1,18 @@
 pkgbase = mcron
-	pkgdesc = This is a tool to run jobs at scheduled times. It is a complete replacement for Vixie cron.
+	pkgdesc = Pure Guile, compatible replacement for cron
 	pkgver = 1.2.1
-	pkgrel = 1
-	url = https://www.gnu.org/software/mcron/
+	pkgrel = 2
+	url = https://gnu.org/software/mcron/
 	arch = x86_64
 	license = GPL3
 	depends = guile
 	provides = cron
 	conflicts = cron
+	options = !strip
 	source = mcron-1.2.1.tar.gz::https://ftp.gnu.org/gnu/mcron/mcron-1.2.1.tar.gz
-	md5sums = 6fa2659cb026502e6be800a29214662b
+	source = mcron-1.2.1.tar.gz.sig::https://ftp.gnu.org/gnu/mcron/mcron-1.2.1.tar.gz.sig
+	validpgpkeys = 961AB15C62EF3B92DAB5965988C3D2BEA81462EB
+	sha256sums = 20fe726c8c53e00261a3a8e191051228b07558292de5abe3714445f1ca10762e
+	sha256sums = SKIP
 
 pkgname = mcron
