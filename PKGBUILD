@@ -1,7 +1,7 @@
 # Maintainer: Laureano Passafaro <laureegrd at gmail dot com>
 pkgname='pridefetch-laureegrd-git'
 pkgver=r16.b2ee637
-pkgrel=1
+pkgrel=2
 pkgdesc="An extension for pfetch with pride flags instead of ascii logos."
 arch=(any)
 url="https://gitlab.com/laureegrd/pridefetch"
