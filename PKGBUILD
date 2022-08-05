@@ -1,17 +1,17 @@
 # Maintainer: Fraser P. Newton <fpnewton90@gmail.com>
 pkgname=azure-storage-explorer
-pkgver=1.24.2
+pkgver=1.25.0
 pkgrel=1
 pkgdesc="Storage Explorer allows you to view and interact with your Azure Storage resources."
 arch=('x86_64')
 url="https://github.com/microsoft/AzureStorageExplorer"
 license=('CCPL' 'MIT')
-depends=('nodejs' 'gtk3' 'nss' 'libsecret' 'dotnet-runtime-3.1')
+depends=('nodejs' 'gtk3' 'nss' 'libsecret' 'alsa-lib')
 provides=('azure-storage-explorer')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/microsoft/AzureStorageExplorer/releases/download/v${pkgver}/Linux_StorageExplorer-linux-x64.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/microsoft/AzureStorageExplorer/releases/download/v${pkgver}/Linux_StorageExplorer-x64.tar.gz"
         "https://raw.githubusercontent.com/microsoft/AzureStorageExplorer/master/LICENSE"
 	"StorageExplorer.desktop")
-sha256sums=('13c36def5065431cb5c305593d6962908793fa02d525333f9407b6aa1aa14b19'
+sha256sums=('a1a9ff041fcbdb839c4cb5e387d8223f55382f937a11ca5352a20a4986a2aac1'
             '9bbc1ea9fe5c96df01b311a2ac864d5b18fc87b9948bfd14770e4b44db755ee9'
             'ed90ef85054cd2860d6c0e123a0db52a81014a6433e02952a57926ab115b7717')
 
@@ -24,6 +24,7 @@ package() {
     install -d "${pkgdir}/opt/${pkgname}"
     install -m 644 "chrome_100_percent.pak" "${pkgdir}/opt/${pkgname}/"
     install -m 644 "chrome_200_percent.pak" "${pkgdir}/opt/${pkgname}/"
+    install -m 755 "chrome_crashpad_handler" "${pkgdir}/opt/${pkgname}/"
     install -m 755 "chrome-sandbox" "${pkgdir}/opt/${pkgname}/"
     install -m 644 "icudtl.dat" "${pkgdir}/opt/${pkgname}/"
     install -m 644 "libEGL.so" "${pkgdir}/opt/${pkgname}/"
@@ -40,7 +41,6 @@ package() {
     install -m 644 "vk_swiftshader_icd.json" "${pkgdir}/opt/${pkgname}/"
     cp -r "locales" "${pkgdir}/opt/${pkgname}/"
     cp -r "resources" "${pkgdir}/opt/${pkgname}/"
-    cp -r "swiftshader" "${pkgdir}/opt/${pkgname}/"
 
     # Symlink the application in /usr/bin
     install -d "${pkgdir}/usr/bin"
