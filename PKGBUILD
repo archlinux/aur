@@ -6,7 +6,9 @@ pkgdesc="An extension for pfetch with pride flags instead of ascii logos."
 arch=(any)
 url="https://gitlab.com/laureegrd/pridefetch"
 license=('GPL')
-depends=('pfetch')
+# pfetch (non-git) is behind and does not have
+# the required features as of August 4, 2022.
+depends=('pfetch-git')
 makedepends=('git')
 # The conflict exists only because the script has the same name.
 conflicts=('pridefetch' 'pridefetch-git')
