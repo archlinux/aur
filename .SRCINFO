@@ -1,6 +1,6 @@
 pkgbase = python-onnxruntime
 	pkgdesc = Cross-platform, high performance scoring engine for ML models
-	pkgver = 1.12.0
+	pkgver = 1.12.1
 	pkgrel = 1
 	url = https://github.com/microsoft/onnxruntime
 	arch = x86_64
@@ -39,7 +39,7 @@ pkgbase = python-onnxruntime
 	optdepends = python-cerberus: for orttraining
 	optdepends = python-h5py: for orttraining
 	options = !lto
-	source = git+https://github.com/microsoft/onnxruntime#tag=v1.12.0
+	source = git+https://github.com/microsoft/onnxruntime#tag=v1.12.1
 	source = git+https://github.com/onnx/onnx.git
 	source = git+https://github.com/dcleblanc/SafeInt.git
 	source = git+https://github.com/tensorflow/tensorboard.git

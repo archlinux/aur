@@ -6,7 +6,7 @@ pkgbase=python-onnxruntime
 # Not split DNNL EP to another package as it's needed unconditionally at runtime if built at compile time
 # https://github.com/microsoft/onnxruntime/blob/v1.9.1/onnxruntime/python/onnxruntime_pybind_state.cc#L533
 pkgname=(python-onnxruntime)
-pkgver=1.12.0
+pkgver=1.12.1
 pkgdesc='Cross-platform, high performance scoring engine for ML models'
 pkgrel=1
 arch=(x86_64)
