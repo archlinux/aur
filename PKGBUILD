@@ -2,8 +2,9 @@
 
 pkgname=mailctl-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.6.2
-pkgrel=2
+pkgver=0.6.3
+release_bin="${_pkgname}-${pkgver}-Linux-x86_64"
+pkgrel=1
 pkgdesc="Provide OAuth2 renewal and authorization capabilities"
 arch=(x86_64)
 url="https://github.com/pdobsan/${_pkgname}"
@@ -16,21 +17,21 @@ optdepends=('pass: stores, retrieves, generates, and synchronizes passwords secu
            )
 provides=(${_pkgname})
 conflicts=(${_pkgname} ${_pkgname}-git)
-source=(https://github.com/pdobsan/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}-Linux
-        https://github.com/pdobsan/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}-Linux.sha256
+source=(https://github.com/pdobsan/${_pkgname}/releases/download/${pkgver}/${release_bin}
+        https://github.com/pdobsan/${_pkgname}/releases/download/${pkgver}/${release_bin}.sha256
         https://github.com/pdobsan/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz
        )
-noextract=(${_pkgname}-${pkgver}-Linux ${_pkgname}-${pkgver}-Linux.sha256)
+noextract=(${release_bin} ${release_bin}.sha256)
 sha256sums=(SKIP SKIP SKIP)
 
 install=.INSTALL
 
 prepare() {
-  sha256sum -c ${_pkgname}-${pkgver}-Linux.sha256
+  sha256sum -c ${release_bin}.sha256
 }
 
 package() {
-  install -Dm755 ${_pkgname}-${pkgver}-Linux ${pkgdir}/usr/bin/${_pkgname}
+  install -Dm755 ${release_bin} ${pkgdir}/usr/bin/${_pkgname}
 
   cd $_pkgname-$pkgver
   install -Dm644 LICENSE ${pkgdir}/usr/share/${_pkgname}/LICENSE
