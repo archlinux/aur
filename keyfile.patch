@@ -1,12 +1,11 @@
 diff --git a/pkg/keychain/helper_linux.go b/pkg/keychain/helper_linux.go
-index 2a517ae..5d36ddb 100644
+index 86db75d..1805a79 100644
 --- a/pkg/keychain/helper_linux.go
 +++ b/pkg/keychain/helper_linux.go
 @@ -18,57 +18,39 @@
  package keychain
  
  import (
--	"os/exec"
 +	"os/user"
 +	"path/filepath"
  	"reflect"
@@ -15,6 +14,7 @@ index 2a517ae..5d36ddb 100644
 -	"github.com/docker/docker-credential-helpers/pass"
 -	"github.com/docker/docker-credential-helpers/secretservice"
  	"github.com/sirupsen/logrus"
+-	"golang.org/x/sys/execabs"
  )
  
  const (
@@ -24,18 +24,18 @@ index 2a517ae..5d36ddb 100644
 +	secrets = "~/.config/protonmail/bridge/secrets"
  )
  
- func init() { // nolint[noinit]
+ func init() { //nolint:gochecknoinits
  	Helpers = make(map[string]helperConstructor)
  
 -	if isUsable(newDBusHelper("")) {
 -		Helpers[SecretServiceDBus] = newDBusHelper
 -	}
 -
--	if _, err := exec.LookPath("gnome-keyring"); err == nil && isUsable(newSecretServiceHelper("")) {
+-	if _, err := execabs.LookPath("gnome-keyring"); err == nil && isUsable(newSecretServiceHelper("")) {
 -		Helpers[SecretService] = newSecretServiceHelper
 -	}
 -
--	if _, err := exec.LookPath("pass"); err == nil && isUsable(newPassHelper("")) {
+-	if _, err := execabs.LookPath("pass"); err == nil && isUsable(newPassHelper("")) {
 -		Helpers[Pass] = newPassHelper
 -	}
 -
