@@ -3,7 +3,7 @@ pkgname=mekhq-development-snapshot-bin
 _pkgname=mekhq
 pkgver=0.49.8
 _pkgver=
-pkgrel=2
+pkgrel=3
 epoch=
 install=mekhq.install
 pkgdesc="Development snapshot release of the MekHQ/MegaMek suite."
@@ -28,7 +28,7 @@ sha256sums=('31ebe969e807bccf54a42af1776de0b7bbad52cacc8f356ae6571bba5cc0cc00'
             'a6c0cc72c6f3ad773bdcec24c8036ae7d09dcaea4908f5b6d4e5ac6091cff772'
             'caf5bf3e7294029c7b6dec974eed0253d6caf3804a6a9fcc953edc3c9be98b16'
             '6e6bb03f14a0ce6e06fd9009fd9f159d22a34a7020ba85b13ad6dbf649ca9e38'
-            '765cdbf2a7983168fc7a284c0d1f2a8503cb054f2518b9e40d4d82a8322af667')
+            '7479a602ec847e26f247e4a5512b96ff9ef979fde46c5d170c33326af8c59377')
 
 package() {
 

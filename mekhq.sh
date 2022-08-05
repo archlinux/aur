@@ -18,9 +18,8 @@ fi
 if [[ ! -d "$conf" ]]
 then
     mkdir -p "$conf"
+    rsync -avc /usr/lib/mekhq/ "$conf/"
 fi
-
-rsync -avc /usr/lib/mekhq/ "$conf/"
 
 startup_name="mhq-startup"
 
