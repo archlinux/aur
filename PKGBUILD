@@ -2,16 +2,16 @@
 
 pkgname=m4-git
 pkgver=r359.gd69fa528
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU macro processor"
 arch=('i686' 'x86_64')
 url="https://www.gnu.org/software/m4/m4.html"
 license=('GPL3')
 depends=('glibc')
-makedepends=('git' 'gettext' 'gperf' 'rsync' 'texinfo')
+makedepends=('git' 'gettext' 'gperf' 'help2man' 'rsync' 'texinfo')
 provides=('m4')
 conflicts=('m4')
-source=("git+https://git.savannah.gnu.org/git/m4.git")
+source=("git+https://git.savannah.gnu.org/git/m4.git#branch=branch-2.0")
 sha256sums=('SKIP')
 
 
@@ -25,7 +25,8 @@ build() {
   cd "m4"
 
   ./bootstrap
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr"
   make
 }
 

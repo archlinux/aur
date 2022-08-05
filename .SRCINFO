@@ -1,7 +1,7 @@
 pkgbase = m4-git
 	pkgdesc = The GNU macro processor
 	pkgver = r359.gd69fa528
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/m4/m4.html
 	arch = i686
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = m4-git
 	makedepends = git
 	makedepends = gettext
 	makedepends = gperf
+	makedepends = help2man
 	makedepends = rsync
 	makedepends = texinfo
 	depends = glibc
 	provides = m4
 	conflicts = m4
-	source = git+https://git.savannah.gnu.org/git/m4.git
+	source = git+https://git.savannah.gnu.org/git/m4.git#branch=branch-2.0
 	sha256sums = SKIP
 
 pkgname = m4-git
-
