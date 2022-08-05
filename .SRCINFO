@@ -1,0 +1,16 @@
+pkgbase = araste-git
+	pkgdesc = Making ascii-art out of Persian/Arabic text
+	pkgver = r1.3_350.45eb90f
+	pkgrel = 1
+	url = https://github.com/ekm507/araste
+	install = beauty.install
+	arch = any
+	license = AGPLv3
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	depends = python-pip
+	source = araste::git+https://github.com/ekm507/araste.git
+	md5sums = SKIP
+
+pkgname = araste-git
