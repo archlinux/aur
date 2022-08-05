@@ -1,15 +1,15 @@
 # Maintainer: Relwi <theofficialdork@hotmail.com>
 pkgname=fast-discord-git
 pkgver=r213.17e593e
-pkgrel=1
+pkgrel=2
 pkgdesc='A new Discord client made in C++ and Qt'
 url='https://github.com/EnyoYoen/Fast-Discord'
 source=("${pkgname}::git+https://github.com/EnyoYoen/Fast-Discord")
-arch=('any')
-license=('MIT')
-makedepends=('cmake')
-depends=('git' 'pacman' 'qt5-base' 'opus' 'libsodium' 'qt5-websockets' 'qt5-multimedia')
-md5sums=('SKIP')
+arch=(x86_64 arm aarch64)
+license=(MIT)
+depends=(qt5-base qt5-multimedia qt5-websockets opus libsodium)
+makedepends=(cmake git)
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
@@ -29,4 +29,5 @@ package() {
   install -Dm755 bin/Fast-Discord "${pkgdir}/usr/bin/fast-discord"
   install -Dm644 "resources/com.enyoyoen.fast-discord.desktop" "$pkgdir/usr/share/applications/com.enyoyoen.fast-discord.desktop"
   install -Dm644 "doc/images/Fast-Discord-Logo.png" "$pkgdir/usr/share/pixmaps/fast-discord.png"
+  install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
