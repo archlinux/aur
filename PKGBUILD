@@ -32,11 +32,6 @@ build() {
     make build-nogui
 }
 
-check() {
-    cd proton-bridge-$pkgver
-    make test
-}
-
 package() {
     install -D proton-bridge-$pkgver/proton-bridge "$pkgdir/usr/bin/protonmail-bridge"
     install -D -m644 protonmail-bridge.service "$pkgdir/usr/lib/systemd/user/protonmail-bridge.service"
