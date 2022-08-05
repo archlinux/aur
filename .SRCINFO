@@ -1,6 +1,6 @@
 pkgbase = nodejs-nativefier
 	pkgdesc = A command-line tool to easily create a desktop app for any web site with minimal configuration
-	pkgver = 47.2.0
+	pkgver = 49.0.0
 	pkgrel = 1
 	url = https://github.com/nativefier/nativefier/
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = nodejs-nativefier
 	makedepends = npm
 	depends = nodejs
 	depends = unzip
-	noextract = nodejs-nativefier-47.2.0.tgz
-	source = nodejs-nativefier-47.2.0.tgz::http://registry.npmjs.org/nativefier/-/nativefier-47.2.0.tgz
-	sha1sums = 0061fa34ffa01830410f2a2bd3a4fb28a8cd30b8
-	sha256sums = 0e0d1c3d0869a0b369dbc4448df2f10d1f450518c3568b423ac0d33c004a658b
+	noextract = nodejs-nativefier-49.0.0.tgz
+	source = nodejs-nativefier-49.0.0.tgz::http://registry.npmjs.org/nativefier/-/nativefier-49.0.0.tgz
+	sha1sums = 972adcfaee35304cf3cec9cbb53b152a7dd92dc6
+	sha256sums = 046845198389b35ab15361c7cebed5337ebb6ddb7737db19df6f01afa85791f7
 
 pkgname = nodejs-nativefier
