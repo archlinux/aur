@@ -2,7 +2,7 @@
 # Maintainer: Justin Kromlinger <hashworks@archlinux.org>
 # Contributor: Wesley Moore <wes@wezm.net>
 pkgname=mdcat
-pkgver=0.27.1
+pkgver=0.28.0
 pkgrel=1
 pkgdesc='Sophisticated Markdown rendering for the terminal'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ makedepends=('asciidoctor'
 optdepends=('less: for mdless'
             'librsvg: used to render SVG images in kitty')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('79961e0a842ee0f68aee3d54b39458352664c67388e56175a9d18d80f357bf14')
+sha256sums=('5d7b4f4b4c1066a679cd171e7d784b4ab8cad37c44d1e1b4250a21683abff9ca')
 
 prepare() {
   cd "$pkgname"
