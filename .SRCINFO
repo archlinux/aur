@@ -1,0 +1,11 @@
+pkgbase = wsrx-bin
+pkgdesc = WebSocket Reflector X
+pkgver = 1.0
+pkgrel = 1
+url = https://github.com/XDSEC/WebSocketReflectorX
+arch = x86_64
+license = custom
+source = https://github.com/XDSEC/WebSocketReflectorX/releases/download/v1.0/wsrx-1.0-linux-amd64.tar.gz
+sha256sums = ba2a0414a7081940c3e3b6314b2451e2b0658e01debd9b41b5f2b791ce65fd1d
+
+pkgname = wsrx-bin
