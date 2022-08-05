@@ -1,0 +1,22 @@
+diff --git a/pyrage-stubs/pyproject.toml b/pyrage-stubs/pyproject.toml
+index 79b77d2..8cd8c8b 100644
+--- a/pyrage-stubs/pyproject.toml
++++ b/pyrage-stubs/pyproject.toml
+@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
+ 
+ [project]
+ name = "pyrage-stubs"
+-version = "0.1.1"
++version = "1.0.1"
+ description = "A PEP 561 stub package for pyrage's types"
+ readme = "README.md"
+ license = { file = "LICENSE" }
+@@ -17,7 +17,7 @@ classifiers = [
+   "Typing :: Stubs Only",
+ ]
+ dependencies = [
+-  "pyrage>=0.1.0,<1.0"
++  "pyrage>=1.0.0,<2.0"
+ ]
+ requires-python = ">= 3.7"
+ 
