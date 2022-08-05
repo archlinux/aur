@@ -23,6 +23,8 @@ makedepends=(
     'go'
     'python-grpcio-tools'
     'python-setuptools'
+    'python-nspektr'
+    'python-jaraco.text'
     'qt5-tools'
 )
 optdepends=(
