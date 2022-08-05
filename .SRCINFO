@@ -7,7 +7,6 @@ pkgbase = ryzenadj-git
 	license = LGPL3
 	makedepends = git
 	makedepends = cmake
-	makedepends = make
 	depends = pciutils
 	optdepends = ryzen_smu-dkms-git: (AUR) kernel module needed to access pm_table on systems with strict memory access policy
 	provides = ryzenadj
