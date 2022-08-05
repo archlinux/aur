@@ -2,13 +2,13 @@
 # Contributor: Daniel "dtubber" Wanner <daniel.wanner@tubber.xyz>
 
 pkgname="ryzenadj-git"
-pkgver=0.9.0.r5.g4dff748
+pkgver=0.11.0.r0.gf937c16
 pkgrel=1
 pkgdesc="RyzenAdj tool for adjusting Ryzen Mobile power states"
 url="https://github.com/FlyGoat/RyzenAdj"
 arch=("x86_64")
 depends=("pciutils")
-makedepends=("git" "cmake")
+makedepends=("git" "cmake" "make")
 optdepends=("ryzen_smu-dkms-git: (AUR) kernel module needed to access pm_table on systems with strict memory access policy")
 license=("LGPL3")
 provides=("${pkgname%-git}")
