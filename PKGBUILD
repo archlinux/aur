@@ -1,7 +1,7 @@
 # Maintainer: Franco Bugnano <franco@bugnano.it>
 
 pkgname=rnr-fm
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Text mode file manager combining the best features of ranger and mc"
 arch=(any)
@@ -11,8 +11,8 @@ depends=(python python-pyxdg python-atomicwrites python-fuzzyfinder python-urwid
 makedepends=(python-pip)
 optdepends=('archivefs: compressed archive support')
 conflicts=(rnr rnr-bin)
-source=(https://files.pythonhosted.org/packages/04/0d/65333fd58563f2111d429e2ce29d1effe9fffbb601adda109fca27a9b71e/rnr-1.0.8-py3-none-any.whl)
-md5sums=(bfbac7b4eee41801338e56088ff38aaa)
+source=(https://files.pythonhosted.org/packages/78/dd/ba4d9e424f2d1555247de0960134295ba0440911ef4ac1c339e316a553af/rnr-1.0.9-py3-none-any.whl)
+md5sums=(0bf9887634c6996ef3896f430e630f1c)
 package() {
 	cd "$srcdir"
 	# pypa/pip#3063: pip always checks for a globally installed version.
