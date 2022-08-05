@@ -1,0 +1,17 @@
+pkgbase = python-azure-mgmt-subscription
+	pkgdesc = Microsoft Azure Subscription Management Client Library for Python
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/Azure/azure-sdk-for-python
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-msrest>=0.6.21
+	depends = python-azure-common>=1.1
+	depends = python-azure-common<=1.2
+	depends = python-azure-mgmt-core>=1.3.1
+	depends = python-azure-mgmt-core<2.0.0
+	source = https://files.pythonhosted.org/packages/py3/a/azure_mgmt_subscription/azure_mgmt_subscription-3.0.0-py3-none-any.whl
+	sha256sums = 826dd252d7483b2f374d41685f63700b2d9bd98aaf73317f5a2a04a6109ef640
+
+pkgname = python-azure-mgmt-subscription
