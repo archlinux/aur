@@ -1,7 +1,7 @@
 pkgbase = odin2-synthesizer
 	pkgdesc = 24 voice polyphonic synthesizer, with modulation and FX. (Standalone, VST3, LV2, CLAP)
 	pkgver = 2.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.thewavewarden.com/odin2
 	install = .install
 	arch = x86_64
@@ -24,6 +24,8 @@ pkgbase = odin2-synthesizer
 	backup = opt/odin2/Soundbanks/User Patches
 	source = git+https://github.com/TheWaveWarden/odin2.git
 	source = add-missing-include.patch
+	source = fix-lv2-include.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 

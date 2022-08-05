@@ -1,0 +1,13 @@
+diff --git a/modules/juce_audio_plugin_client/LV2/includes/lv2_programs.h b/modules/juce_audio_plugin_client/LV2/includes/lv2_programs.h
+index 40d5ef767..0e2997dfd 100644
+--- a/modules/juce_audio_plugin_client/LV2/includes/lv2_programs.h
++++ b/modules/juce_audio_plugin_client/LV2/includes/lv2_programs.h
+@@ -23,7 +23,7 @@
+ #ifndef LV2_PROGRAMS_H
+ #define LV2_PROGRAMS_H
+ 
+-#include "lv2.h"
++#include "lv2/lv2plug.in/ns/lv2core/lv2.h"
+ #include "lv2/lv2plug.in/ns/extensions/ui/ui.h"
+ 
+ #define LV2_PROGRAMS_URI    "http://kxstudio.sf.net/ns/lv2ext/programs"

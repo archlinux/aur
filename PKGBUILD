@@ -3,7 +3,7 @@
 
 pkgname=odin2-synthesizer
 pkgver=2.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='24 voice polyphonic synthesizer, with modulation and FX. (Standalone, VST3, LV2, CLAP)'
 license=('GPL3')
 arch=('x86_64')
@@ -25,8 +25,9 @@ optdepends=('ttf-dejavu: One of these may be needed for fonts to render correctl
 
 source=(
     "git+https://github.com/TheWaveWarden/odin2.git"
-    "add-missing-include.patch")
-sha256sums=('SKIP' 'SKIP')
+    "add-missing-include.patch"
+    "fix-lv2-include.patch")
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 backup=('opt/odin2/odin2.conf' 'opt/odin2/Soundbanks/User Patches')
 install='.install'
 
@@ -35,9 +36,10 @@ prepare() {
     # Checkout the correct branch and generate the build files
     cd "${srcdir}/odin2"
     git checkout -q v2.3.3
-    git submodule update --init --recursive
+    git submodule update --init --recursive --progress
     cd "${srcdir}/odin2/libs/JUCELV2"
     git apply "${srcdir}/add-missing-include.patch"
+    git apply "${srcdir}/fix-lv2-include.patch"
     cd "${srcdir}/odin2"
     cmake -B build -D CMAKE_BUILD_TYPE=Release
 }
