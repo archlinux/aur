@@ -1,6 +1,6 @@
 pkgbase = overgrive
 	pkgdesc = A complete Google Drive™ desktop client solution for Linux
-	pkgver = 3.4.3
+	pkgver = 3.4.5
 	pkgrel = 0
 	url = https://www.thefanclub.co.za/overgrive
 	install = overgrive.install
@@ -14,7 +14,7 @@ pkgbase = overgrive
 	depends = python-pyinotify
 	provides = overgrive
 	conflicts = overgrive
-	source = https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive-3.4.3-0-any.pkg.tar.xz
-	md5sums = e5dd2d82e3f1a23e83e20bacded9e207
+	source = https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive-3.4.5-0-any.pkg.tar.xz
+	md5sums = 0c3f03c7708313d378bfa4f894bd058a
 
 pkgname = overgrive
