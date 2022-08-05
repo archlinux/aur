@@ -4,7 +4,7 @@
 
 pkgname=rustdesk
 pkgver=1.1.9
-pkgrel=5
+pkgrel=6
 pkgdesc="Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!"
 arch=('any')
 url="https://github.com/rustdesk/rustdesk"
@@ -66,27 +66,20 @@ package() {
     install -Dm0644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
     install -Dm0644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-    echo "[Desktop Entry]                                                                                                                                                                                                                               
-Version=${pkgver}
+    echo "[Desktop Entry]
 Name=RustDesk
 GenericName=Remote Desktop
 GenericName[zh_CN]=远程桌面
 Comment=Remote Desktop
 Comment[zh_CN]=远程桌面
 Exec=${pkgname} %u
-Icon=${pkgname}.png
+Icon=${pkgname}
 Terminal=false
 Type=Application
 MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;
 StartupNotify=true
-Categories=Other;
-Keywords=internet;
-Actions=new-window;
-
-X-Desktop-File-Install-Version=0.23
-
-[Desktop Action new-window]
-Name=Open a New Window" > "${srcdir}/${pkgname}.desktop"
+Categories=Network;
+Keywords=internet;" > "${srcdir}/${pkgname}.desktop"
     install -Dm0644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
