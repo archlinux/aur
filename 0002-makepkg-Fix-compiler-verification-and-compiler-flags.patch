@@ -1,0 +1,54 @@
+From 2f628584a74eb1e78669777fe66778349516a3d5 Mon Sep 17 00:00:00 2001
+From: KokaKiwi <kokakiwi+git@kokakiwi.net>
+Date: Fri, 5 Aug 2022 14:21:06 +0200
+Subject: [PATCH 2/4] makepkg: Fix compiler verification and compiler flags
+
+---
+ cmake/build_helpers.cmake | 17 ++++++++++-------
+ 1 file changed, 10 insertions(+), 7 deletions(-)
+
+diff --git a/cmake/build_helpers.cmake b/cmake/build_helpers.cmake
+index d7de1739..924f860b 100644
+--- a/cmake/build_helpers.cmake
++++ b/cmake/build_helpers.cmake
+@@ -307,15 +307,14 @@ function(loadVersion version)
+     set(${version} ${read_version} PARENT_SCOPE)
+ endfunction()
+ 
+-set(IMHEX_REQUIRED_COMPILER "GNU")
+-set(IMHEX_MIN_COMPILER_VERSION "12.0.0")
++set(IMHEX_MIN_GCC_VERSION "12.0.0")
+ function(verifyCompiler)
+     if (IMHEX_IGNORE_BAD_COMPILER)
+         return()
+     endif()
+ 
+-    if (NOT CMAKE_CXX_COMPILER_ID STREQUAL ${IMHEX_REQUIRED_COMPILER} OR CMAKE_CXX_COMPILER_VERSION VERSION_LESS ${IMHEX_MIN_COMPILER_VERSION})
+-        message(FATAL_ERROR "ImHex requires GCC ${IMHEX_MIN_COMPILER_VERSION} or newer. Please use the latest GCC version.")
++    if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" AND CMAKE_CXX_COMPILER_VERSION VERSION_LESS ${IMHEX_MIN_GCC_VERSION})
++        message(FATAL_ERROR "ImHex requires GCC ${IMHEX_MIN_GCC_VERSION} or newer. Please use the latest GCC version.")
+     endif()
+ endfunction()
+ 
+@@ -354,10 +353,14 @@ function(downloadImHexPatternsFiles dest)
+ endfunction()
+ 
+ macro(setupCompilerWarnings target)
+-    set(IMHEX_COMMON_FLAGS "-Wall -Wextra -Werror")
+-    set(IMHEX_C_FLAGS "${IMHEX_COMMON_FLAGS} -Wno-restrict -Wno-stringop-overread")
++    set(IMHEX_COMMON_FLAGS "")
++    set(IMHEX_C_FLAGS "${IMHEX_COMMON_FLAGS}")
++
++    if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
++        set(IMHEX_C_FLAGS "${IMHEX_C_FLAGS} -Wno-restrict -Wno-stringop-overread")
++    endif()
+ 
+     set(CMAKE_C_FLAGS    "${CMAKE_C_FLAGS}    ${IMHEX_C_FLAGS}")
+     set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS}  ${IMHEX_C_FLAGS}")
+     set(CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} ${IMHEX_COMMON_FLAGS}")
+-endmacro()
+\ No newline at end of file
++endmacro()
+-- 
+2.37.1
+

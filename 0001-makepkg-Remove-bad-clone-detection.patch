@@ -1,0 +1,51 @@
+From c18cbe5a6f3fd7731de6d634ebf4e399eae1130d Mon Sep 17 00:00:00 2001
+From: KokaKiwi <kokakiwi+git@kokakiwi.net>
+Date: Fri, 5 Aug 2022 12:10:10 +0200
+Subject: [PATCH 1/4] makepkg: Remove "bad clone" detection
+
+---
+ CMakeLists.txt            |  1 -
+ cmake/build_helpers.cmake | 15 ---------------
+ 2 files changed, 16 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3832b24d..bcb71795 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -21,7 +21,6 @@ project(imhex VERSION ${IMHEX_VERSION})
+ 
+ # Make sure project is configured correctly
+ setDefaultBuiltTypeIfUnset()
+-detectBadClone()
+ verifyCompiler()
+ 
+ # List plugin names here. Project name must match folder name
+diff --git a/cmake/build_helpers.cmake b/cmake/build_helpers.cmake
+index b7f8ff51..d7de1739 100644
+--- a/cmake/build_helpers.cmake
++++ b/cmake/build_helpers.cmake
+@@ -307,21 +307,6 @@ function(loadVersion version)
+     set(${version} ${read_version} PARENT_SCOPE)
+ endfunction()
+ 
+-function(detectBadClone)
+-    if (IMHEX_IGNORE_BAD_CLONE)
+-        return()
+-    endif()
+-
+-    file (GLOB EXTERNAL_DIRS "lib/external/*")
+-    foreach (EXTERNAL_DIR ${EXTERNAL_DIRS})
+-        file(GLOB RESULT "${EXTERNAL_DIR}/*")
+-        list(LENGTH RESULT ENTRY_COUNT)
+-        if(ENTRY_COUNT LESS_EQUAL 1)
+-            message(FATAL_ERROR "External dependency ${EXTERNAL_DIR} is empty!\nMake sure to correctly clone ImHex using the --recurse-submodules git option or initialize the submodules manually.")
+-        endif()
+-    endforeach ()
+-endfunction()
+-
+ set(IMHEX_REQUIRED_COMPILER "GNU")
+ set(IMHEX_MIN_COMPILER_VERSION "12.0.0")
+ function(verifyCompiler)
+-- 
+2.37.1
+

@@ -1,19 +1,19 @@
-From 217207da194cdf9136fd4cee16d4ba6f57491f68 Mon Sep 17 00:00:00 2001
+From 766c9858a975a66eacf2d798e9cb9f9ec177eca9 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Sat, 11 Jun 2022 23:08:31 +0200
-Subject: [PATCH 3/3] fix: Deduplicate resources directories
+Subject: [PATCH 4/4] fix: Deduplicate resources directories
 
 It seems to actually happens despite xdgpp already doing that...
 ---
  lib/libimhex/include/hex/helpers/utils.hpp | 11 +++++++++++
- lib/libimhex/source/helpers/fs.cpp         |  4 ++++
- 2 files changed, 15 insertions(+)
+ lib/libimhex/source/helpers/fs.cpp         |  5 +++++
+ 2 files changed, 16 insertions(+)
 
 diff --git a/lib/libimhex/include/hex/helpers/utils.hpp b/lib/libimhex/include/hex/helpers/utils.hpp
-index 5f4e29af..26ff62df 100644
+index 025b5f76..f6baaaa6 100644
 --- a/lib/libimhex/include/hex/helpers/utils.hpp
 +++ b/lib/libimhex/include/hex/helpers/utils.hpp
-@@ -234,6 +234,17 @@ namespace hex {
+@@ -182,6 +182,17 @@ namespace hex {
          return result;
      }
  
@@ -32,7 +32,7 @@ index 5f4e29af..26ff62df 100644
      std::string combineStrings(const std::vector<std::string> &strings, const std::string &delimiter = "");
  
 diff --git a/lib/libimhex/source/helpers/fs.cpp b/lib/libimhex/source/helpers/fs.cpp
-index 392237af..53cce4c3 100644
+index 55dc08b2..8e52cfce 100644
 --- a/lib/libimhex/source/helpers/fs.cpp
 +++ b/lib/libimhex/source/helpers/fs.cpp
 @@ -1,4 +1,5 @@
@@ -41,16 +41,24 @@ index 392237af..53cce4c3 100644
  
  #include <hex/api/content_registry.hpp>
  #include <hex/helpers/fs_macos.hpp>
-@@ -256,6 +257,9 @@ namespace hex::fs {
-         if (exePath && !exePath->empty())
-             dataDirs.push_back(exePath->parent_path());
+@@ -159,6 +160,8 @@ namespace hex::fs {
+         auto additionalDirs = ImHexApi::System::getAdditionalFolderPaths();
+         std::copy(additionalDirs.begin(), additionalDirs.end(), std::back_inserter(paths));
  
-+        hex::deduplicateVector(configDirs);
-+        hex::deduplicateVector(dataDirs);
++        hex::deduplicateVector(paths);
 +
-         switch (path) {
-             case ImHexPath::Patterns:
-                 addUserDirs(dataDirs);
+         return paths;
+     }
+ 
+@@ -175,6 +178,8 @@ namespace hex::fs {
+             auto dataDirs = xdg::DataDirs();
+             std::copy(dataDirs.begin(), dataDirs.end(), std::back_inserter(paths));
+ 
++            hex::deduplicateVector(paths);
++
+             return paths;
+         #endif
+     }
 -- 
 2.37.1
 
