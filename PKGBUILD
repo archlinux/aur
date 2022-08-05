@@ -1,7 +1,7 @@
 # Maintainer: Relwi <theofficialdork@hotmail.com>
 pkgname=dinit
 pkgver=0.15.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Service monitoring / "init" system'
 url='https://github.com/davmac314/dinit'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/davmac314/dinit/archive/v$pkgver.tar.gz")
@@ -20,10 +20,10 @@ build () {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   
-  install -Dm644 src/dinit "${pkgdir}/usr/bin/dinit"
-  install -Dm644 src/dinit-monitor "${pkgdir}/usr/bin/dinit-monitor"
-  install -Dm644 src/dinitcheck "${pkgdir}/usr/bin/dinitcheck"
-  install -Dm644 src/dinitctl "${pkgdir}/usr/bin/dinitctl"
+  install -Dm755 src/dinit "${pkgdir}/usr/bin/dinit"
+  install -Dm755 src/dinit-monitor "${pkgdir}/usr/bin/dinit-monitor"
+  install -Dm755 src/dinitcheck "${pkgdir}/usr/bin/dinitcheck"
+  install -Dm755 src/dinitctl "${pkgdir}/usr/bin/dinitctl"
   
   install -Dm644 doc/manpages/dinit-service.5 "${pkgdir}/usr/share/man/man5/dinit-service.5.gz"
   install -Dm644 doc/manpages/dinit-monitor.8 "${pkgdir}/usr/share/man/man8/dinit-monitor.8.gz"
