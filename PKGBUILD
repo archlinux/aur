@@ -1,7 +1,7 @@
 # Maintainer: Lucas Mindello <lucas at mindello dot com dot br>
 pkgname=homeassistant-supervised
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Home Assistant Supervised"
 arch=('x86_64')
 url="https://www.home-assistant.io/"
@@ -10,6 +10,7 @@ depends=(
     'docker>=20.10'
     'systemd>=239'
     'networkmanager>=1.14.6'
+    'apparmor'
     'jq'
     'wget'
     'curl'

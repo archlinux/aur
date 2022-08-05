@@ -1,7 +1,7 @@
 pkgbase = homeassistant-supervised
 	pkgdesc = Home Assistant Supervised
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.home-assistant.io/
 	install = .INSTALL
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = homeassistant-supervised
 	depends = docker>=20.10
 	depends = systemd>=239
 	depends = networkmanager>=1.14.6
+	depends = apparmor
 	depends = jq
 	depends = wget
 	depends = curl

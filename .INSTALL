@@ -174,14 +174,15 @@ EOF
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 pre_upgrade() {
-	# Stop Supervisor 
+    systemctl stop hassio-apparmor.service
     systemctl stop hassio-supervisor.service
 }
 
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 post_upgrade() {
-    :
+    systemctl start hassio-apparmor.service
+    systemctl start hassio-supervisor.service
 }
 
 ## arg 1:  the old package version
