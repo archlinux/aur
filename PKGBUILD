@@ -2,7 +2,7 @@
 # Maintainer: Manuel Reimer <mail+wine@m-reimer.de>
 
 pkgname=wine-lol-bin
-pkgver=7.0_4
+pkgver=7.14_1
 pkgrel=1
 
 _ver=${pkgver%_*}
@@ -10,7 +10,7 @@ _rev=${pkgver#*_}
 
 source=(https://github.com/GloriousEggroll/wine-ge-custom/releases/download/$_ver-GE-$_rev-LoL/wine-lutris-ge-lol-$_ver-$_rev-x86_64.tar.xz
         30-win32-aliases.conf)
-sha512sums=('a357e5f8159eea2a096197879a9136378bbf3d004701f7b7393f8dc82db820f4644d59915ecb72adc09e0855020f7430f3e8b1ccfecac40d3d8b7bb3fbb0d997'
+sha512sums=('5c3241aea22e679b7faac7dd29a2c591c98a93bc48ed894fe6e09074bf90d322421421c696ea6cf04db6730a68bc5fe0f15cc3ccd80d0c0b95143b3d00e2a91b'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb')
 
 pkgdesc="A compatibility layer for running Windows programs - GloriousEggroll custom wine build for running League of Legends"
