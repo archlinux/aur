@@ -7,7 +7,7 @@
 _hkgname=language-c
 pkgname=haskell-language-c5
 pkgver=0.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Analysis and generation of C code"
 url="http://visq.github.io/language-c/"
 license=("custom:BSD3")
@@ -16,8 +16,15 @@ makedepends=('happy' 'alex')
 depends=("ghc" "haskell-syb")
 provides=('haskell-language-c')
 conflicts=('haskell-language-c')
-source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha256sums=('86d58bc017a7bba157fc4d5d0ab9e3a3d3f3a2f98bfe46b5b0d5d72a0f5d2222')
+source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz"
+	"ghc-8+.patch")
+sha256sums=('86d58bc017a7bba157fc4d5d0ab9e3a3d3f3a2f98bfe46b5b0d5d72a0f5d2222'
+            'c718fd258a7a227aaad14f6abe8e6742e81c57f83b63b95bde1a3bfba71542b0')
+
+prepare() {
+    cd "${srcdir}/${_hkgname}-${pkgver}"
+    patch -p2 -i ../ghc-8+.patch
+}
 
 build() {
     cd "${srcdir}/${_hkgname}-${pkgver}"
