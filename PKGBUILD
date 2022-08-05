@@ -4,7 +4,7 @@
 
 pkgname=barman
 _realname=barman
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Backup and recovery manager for PostgreSQL"
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
   streaming-server.conf-template
 )
 
-md5sums=('060a2853c385e9965c4e257df0c8655b'
+md5sums=('315b0c9ced352a7a75d4a63610effb46'
          '0e48345895f88b3939543c00928a199b'
          '58c5b20b8e1272ab4ce46757f6613e0d'
          'b43254374978938f7d21035a3356b531'
