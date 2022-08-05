@@ -8,7 +8,7 @@ arch=('any')
 url='https://github.com/missinglinkelectronics/sphinxcontrib-svg2pdfconverter'
 license=('BSD')
 depends=('python-sphinx')
-makedepends=('python-packaging')
+makedepends=('python-pip')
 optdepends=('librsvg: Use librsvg engine'
             'inkscape: Use inkscape engine'
             )
