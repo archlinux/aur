@@ -20,7 +20,7 @@ source=(
 	"$_launcher::$_url/download/v$_tagname/$_launcher"
 	"$_sd::$_url/download/v$_tagname/$_sd"
 )
-sha256sums=('7dcf3d08c591ac087ea766eff8e88c4b0f4f8db2d6011bfd11b7bffb8f3d13ff' '3f9653caecb57ad9ce678d19e68daca962203692f81ca130b9f1b3fa50759552' '5616a049b05f72695e276d8d4b0e49f856f71c9d00c0bf49083b3ccb1644d3a6')
+sha256sums=('7dcf3d08c591ac087ea766eff8e88c4b0f4f8db2d6011bfd11b7bffb8f3d13ff' '3f9653caecb57ad9ce678d19e68daca962203692f81ca130b9f1b3fa50759552' '1e862f963046a01d5d315c247e2cff068fa8f7f78de6beb4e1fa0a55ab5352b7')
 
 prepare() {
 	chmod +x "$srcdir/$_package"
