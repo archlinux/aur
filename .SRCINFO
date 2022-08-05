@@ -1,0 +1,27 @@
+pkgbase = mepo-git
+	pkgdesc = Fast, simple, and hackable OSM map viewer for Linux (development version)
+	pkgver = 0.4.1.250.gcd3c8e4
+	pkgrel = 1
+	url = https://git.sr.ht/~mil/mepo
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = GPL3
+	checkdepends = zig>=0.9
+	makedepends = git
+	makedepends = zig>=0.9
+	depends = dmenu
+	depends = jq
+	depends = xdotool
+	depends = curl
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_ttf
+	depends = sdl2_gfx
+	provides = mepo
+	conflicts = mepo
+	source = mepo::git+https://git.sr.ht/~mil/mepo
+	sha512sums = SKIP
+
+pkgname = mepo-git
