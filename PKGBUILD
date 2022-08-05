@@ -11,7 +11,7 @@ depends=('dolphin' 'kdialog' 'flac' 'lame' 'opus-tools')
 
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('b131e2d526aeb23cd8ccbed739d81136cc0c9aa429e563d27a5a477ce212ea94')
+sha256sums=('b32743f631708146a86509f6f83fe0b833795a5d9e3c07350061bbcaf0bdaf35')
 
 package() {
     cd "${srcdir}"
