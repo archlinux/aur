@@ -5,7 +5,7 @@
 pkgbase=nvidia-510xx-utils
 pkgname=('nvidia-510xx-utils' 'opencl-510xx-nvidia' 'nvidia-510xx-dkms')
 pkgver=510.85.02
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -222,12 +222,8 @@ package_nvidia-510xx-utils() {
     install -Dm644 systemd/system/*.service -t "${pkgdir}/usr/lib/systemd/system"
     install -Dm755 systemd/system-sleep/nvidia "${pkgdir}/usr/lib/systemd/system-sleep/nvidia"
     install -Dm755 systemd/nvidia-sleep.sh "${pkgdir}/usr/bin/nvidia-sleep.sh"
-
-    # Power Boost feature, https://download.nvidia.com/XFree86/Linux-x86_64/$pkgver/README/dynamicboost.html
-    # Narrow hardware compatibility range, dbus rules appear insecure,
-    # https://forums.developer.nvidia.com/t/nvidia-dbus-conf-lead-to-high-security-concerns/215303
-    #install -Dm755 nvidia-powerd "${pkgdir}/usr/bin/nvidia-powerd"
-    #install -Dm644 nvidia-dbus.conf "${pkgdir}"/usr/share/dbus-1/system.d/nvidia-dbus.conf
+    install -Dm755 nvidia-powerd "${pkgdir}/usr/bin/nvidia-powerd"
+    install -Dm644 nvidia-dbus.conf "${pkgdir}"/usr/share/dbus-1/system.d/nvidia-dbus.conf
 
     # distro specific files must be installed in /usr/share/X11/xorg.conf.d
     install -Dm644 "${srcdir}/nvidia-drm-outputclass.conf" "${pkgdir}/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf"
