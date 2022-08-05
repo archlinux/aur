@@ -5,7 +5,7 @@
 # Contributor: wahnby <wahnby AT yahoo DOT fr>
 
 pkgname='gnunet'
-pkgver='0.17.2'
+pkgver='0.17.3'
 pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ depends=('brotli' 'gettext' 'gnurl' 'gnutls' 'iptables' 'jansson'
          'libtool' 'libunistring' 'miniupnpc' 'nss' 'openssl' 'sqlite' 'which'
          'zlib')
 makedepends=('bluez-libs' 'libpulse' 'libtool' 'opus' 'pkgconfig' 'postgresql'
-             'python')
+             'python' 'python-sphinx' 'python-sphinx_rtd_theme')
 optdepends=('bluez: for bluetooth transport'
             'gnunet-gtk: for handling the gnunet:// URI scheme'
             'jose: for re:claimID OpenID Connect plugin'
@@ -37,17 +37,15 @@ source=("ftp://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig}
         "${pkgname}-system.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
-        "${pkgname}-uri.desktop"
         "${pkgname}-user.conf"
         "${pkgname}-user.service")
 install="${pkgname}.install"
 validpgpkeys=('3D11063C10F98D14BD24D1470B0998EF86F59B6A')
-sha256sums=('38b13b578e2490a99222757c64727deb97939fdf797107f986287c2944ee7541'
+sha256sums=('74c767b8d0c34f60ddfa4e77a1657365d34c484b5ffaeb3796e3f520a9d50c9e'
             'SKIP'
             '163818b89beddcaf78937daba5bdf0ae060b2975de0731aa13d1ccdd813cf262'
             '66299dbbdd0219d2f5f0520e69fc094f38f789724d973c2f63a421257ea4f755'
             '5c34e1ecc6208900426f8e399e8c3edbef12cce19eba605fd7364ddb3547d9f0'
-            '98e4e1d6d4fd7c7fd05d9e16402c95f1e7afeb4b97c8c68ac63e8abd11ff4ee7'
             '3f17b9ed2c1f8cc0f919fe477df99678c17778a31f1eeb56517e285e3cef30f2'
             '60caee20b53bcc69522556b35ac3d35d89e28c49b9a22a2ed5121df4a2c33be5')
 
@@ -90,10 +88,6 @@ package() {
 	install -dm755 "${pkgdir}/usr/lib/tmpfiles.d"
 	install -Dm644 "${srcdir}/${pkgname}.tmpfiles" \
 		"${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
-
-	install -dm755 "${pkgdir}/usr/share/applications"
-	install -Dm644 "${srcdir}/${pkgname}-uri.desktop" \
-		"${pkgdir}/usr/share/applications/${pkgname}-uri.desktop"
 
 	install -dm700 "${pkgdir}/etc/skel/.config"
 	install -Dm600 "${srcdir}/${pkgname}-user.conf" \
