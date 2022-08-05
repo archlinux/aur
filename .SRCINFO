@@ -1,0 +1,14 @@
+pkgbase = python-azure-mgmt-core
+	pkgdesc = Microsoft Azure Management Core Library for Python
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/core/azure-mgmt-core
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-azure-core>=1.23.0
+	depends = python-azure-core<2.0.0
+	source = https://files.pythonhosted.org/packages/py3/a/azure_mgmt_core/azure_mgmt_core-1.3.1-py3-none-any.whl
+	sha256sums = 9667b9d65f2b41fed854e9d3a56f293739d327bf0d4e16252d9e785a6f4fe581
+
+pkgname = python-azure-mgmt-core
