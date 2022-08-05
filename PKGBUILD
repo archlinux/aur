@@ -4,7 +4,7 @@
 
 pkgname=rustdesk
 pkgver=1.1.9
-pkgrel=6
+pkgrel=7
 pkgdesc="Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!"
 arch=('any')
 url="https://github.com/rustdesk/rustdesk"
@@ -22,14 +22,12 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rustdesk/rustdesk/archi
         "libsciter-gtk.so::https://github.com/c-smile/sciter-sdk/raw/0298f1b34e9a0ff1dffb889d82c506a5da8bfb1e/bin.lnx/x64/libsciter-gtk.so" # This is horrible. Unfortunately the AUR package for this seems abandoned.
         "${pkgname}.install"
 	"rustdesk"
-        "${pkgname}.service"
         "${pkgname}.png::https://avatars.githubusercontent.com/u/71636191?v=4")
 sha256sums=('e26ee7de1b788962e12940a1b46708b9576ee5ade9e935ef5fa1a3108601b055'
             'SKIP'
             'a1682fbf55e004f1862d6ace31b5220121d20906bdbf308d0a9237b451e4db86'
             '830d3985e6292851cb33f703f58c1513a9162cca3ccd5ebf669ffe7b14637f3e'
-            '4d98c459e7387d30790bc7a337b0db873775e1483c756037bc42931cac010a0f'
-            '642d5ee9d8286d1b95e3580fdea135832f609a643b98a13874e9bfe8eb8e71a4'
+            'ced3951b69cf32324b6b90f198281a1bd55e6d5308928c7ec47a6414de0a0b63'
             '04b2457a0eff7c82ec499a6f7a4e5474de054a93c1760bd91833a4aef5c881a9')
 build() {
 # install vcpkg
@@ -65,7 +63,7 @@ package() {
 
     install -Dm0644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
-    install -Dm0644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    install -Dm0644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
     echo "[Desktop Entry]
 Name=RustDesk
 GenericName=Remote Desktop
