@@ -3,7 +3,8 @@
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 # Contributor: x-demon
 pkgname=nicotine-plus-git
-pkgver=3.3.0.dev1.r7557.e6be39c8
+_appdata_id=org.nicotine_plus.Nicotine
+pkgver=3.3.0.dev1.r7838.b88a6b7a
 pkgrel=1
 pkgdesc="A graphical client for the SoulSeek peer-to-peer system"
 arch=('any')
@@ -20,8 +21,8 @@ checkdepends=('appstream-glib' 'desktop-file-utils' 'python-pytest-xvfb')
 provides=("${pkgname%-git}" 'nicotine+' 'nicotine')
 conflicts=("${pkgname%-git}" 'nicotine+' 'nicotine')
 source=('git+https://github.com/Nicotine-Plus/nicotine-plus.git'
-        'org.nicotine_plus.Nicotine-gtk4.desktop'
-        'org.nicotine_plus.Nicotine-libadwaita.desktop')
+        "${_appdata_id}-gtk4.desktop"
+        "${_appdata_id}-libadwaita.desktop")
 sha256sums=('SKIP'
             'e92495dfede12d88797fe0bcaa03517399da6e0f8411b567005f65cb571aa97f'
             'ae4f84de9070ad57f43d6a801f20fce164560f0ecb88056e917aed41c4c967a8')
@@ -39,7 +40,6 @@ build() {
 
 check() {
   cd "$srcdir/${pkgname%-git}"
-  _appdata_id=org.nicotine_plus.Nicotine
 
   # Some tests require an X server
   _display=":70"
