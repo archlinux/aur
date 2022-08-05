@@ -1,7 +1,7 @@
 pkgbase = gonano
 	pkgdesc = Go language support for NANO — a digital currency
 	pkgver = 0.1.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hectorchu/gonano
 	arch = x86_64
 	arch = armv7h

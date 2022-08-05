@@ -3,7 +3,7 @@
 
 pkgname=gonano
 pkgver=0.1.17
-pkgrel=1
+pkgrel=2
 _pkgdate=1644501572
 pkgdesc='Go language support for NANO — a digital currency'
 arch=('x86_64' 'armv7h')
@@ -25,6 +25,11 @@ build() {
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_LDFLAGS="$LDFLAGS"
+
+  # »unrecognized import path "launchpad.net/gocheck":
+  #  GOVCS disallows using bzr for public launchpad.net/gocheck;
+  #  see 'go help vcs'«
+  export GOVCS='*:all'
 
   go build \
     -buildmode=pie \
