@@ -1,0 +1,15 @@
+pkgbase = python-azure-core
+	pkgdesc = Microsoft Azure Core Library for Python
+	pkgver = 1.24.2
+	pkgrel = 1
+	url = https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/core/azure-core
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-requests>=2.18.4
+	depends = python-six>=1.11.0
+	depends = python-typing_extensions>=4.0.1
+	source = https://files.pythonhosted.org/packages/py3/a/azure_core/azure_core-1.24.2-py3-none-any.whl
+	sha256sums = a76856fa83efe1925a4fd917dc179c7daa15917dd71da2774833fa82a96f3dfa
+
+pkgname = python-azure-core
