@@ -1,7 +1,7 @@
 pkgbase = kalliope
 	pkgdesc = Modular always-on voice controlled personal assistant designed for home automation
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kalliope-project/kalliope
 	arch = any
 	license = MIT

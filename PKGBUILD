@@ -1,7 +1,7 @@
 # Maintainer: BrainDamage
 pkgname=kalliope
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Modular always-on voice controlled personal assistant designed for home automation"
 depends=(python svox-pico-bin
@@ -46,6 +46,10 @@ package()
 
 	#replace the embedded snowboy lib with a symlink to the official package's lib
 	_systemSitePackages="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	find "${_systemSitePackages}/snowboy" -type f -name '_snowboydetect.*' -exec ln -sfv -t "${pkgdir}/${_systemSitePackages}/${_targetSnowboyDir}" {} \;
 	find "${_systemSitePackages}/snowboy" -type f -name 'snowboydetect.*' -exec ln -sfv -t "${pkgdir}/${_systemSitePackages}/${_targetSnowboyDir}" {} \;
 	ln -sv -t "${pkgdir}/${_systemSitePackages}/${_targetSnowboyDir}" "${_systemSitePackages}/snowboy/resources"
+
+	#delete the bogus tests dir
+	find "${pkgdir}/${_systemSitePackages}/Tests" -delete
 }
