@@ -1,7 +1,7 @@
 # Maintainer: moonshadow565 <moonshadow565@hotmail.com>
 
 pkgname=wine-lol-staging
-pkgver=7.13
+pkgver=7.14
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (staging branch) with LoL patches(abi.vsyscall32=0 version)'
 arch=('x86_64')

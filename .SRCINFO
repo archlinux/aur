@@ -1,6 +1,6 @@
 pkgbase = wine-lol-staging
 	pkgdesc = A compatibility layer for running Windows programs (staging branch) with LoL patches(abi.vsyscall32=0 version)
-	pkgver = 7.13
+	pkgver = 7.14
 	pkgrel = 1
 	url = https://www.wine-staging.com/
 	install = wine-lol-staging.install
@@ -153,8 +153,8 @@ pkgbase = wine-lol-staging
 	options = staticlibs
 	options = !lto
 	options = !strip
-	source = git+https://github.com/wine-staging/wine-staging.git#tag=v7.13
-	source = git+https://github.com/wine-mirror/wine.git#tag=wine-7.13
+	source = git+https://github.com/wine-staging/wine-staging.git#tag=v7.14
+	source = git+https://github.com/wine-mirror/wine.git#tag=wine-7.14
 	source = 0002-LoL-6.17+-syscall-fix.patch
 	source = 0003-LoL-abi.vsyscall32-alternative_patch_by_using_a_fake_cs_segment.patch
 	source = 0004-LoL-broken-client-update-fix.patch
