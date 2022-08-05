@@ -1,10 +1,11 @@
 pkgbase = extra-cmake-modules-git
-	pkgdesc = Extra modules and scripts for CMake
-	pkgver = 5.83.0.r3302.001f901e
+	pkgdesc = Extra modules and scripts for CMake. (GIT version)
+	pkgver = 5.97.0.r3506.ce726d38
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kdesupport/extra-cmake-modules
 	arch = any
 	license = LGPL
+	checkdepends = reuse
 	makedepends = git
 	makedepends = python-sphinx
 	makedepends = python-requests
@@ -16,4 +17,3 @@ pkgbase = extra-cmake-modules-git
 	sha256sums = SKIP
 
 pkgname = extra-cmake-modules-git
-

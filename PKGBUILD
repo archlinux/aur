@@ -3,9 +3,9 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=extra-cmake-modules-git
-pkgver=5.83.0.r3302.001f901e
+pkgver=5.97.0.r3506.ce726d38
 pkgrel=1
-pkgdesc='Extra modules and scripts for CMake'
+pkgdesc='Extra modules and scripts for CMake. (GIT version)'
 arch=('any')
 url='https://projects.kde.org/projects/kdesupport/extra-cmake-modules'
 license=('LGPL')
@@ -15,6 +15,7 @@ makedepends=('git'
              'python-requests'
              'qt5-tools'
              )
+checkdepends=('reuse')
 conflicts=('extra-cmake-modules')
 provides=('extra-cmake-modules')
 source=('git+https://invent.kde.org/frameworks/extra-cmake-modules.git')
@@ -27,20 +28,24 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
+  sed 's|frameworks/||g' -i extra-cmake-modules/tests/KDEFetchTranslations/CMakeLists.txt
 }
 
 build() {
-  cd build
-  cmake ../extra-cmake-modules \
+  cmake -S extra-cmake-modules -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_QTHELP_DOCS=ON \
-    -DBUILD_TESTING=OFF
-  make
+    -DBUILD_TESTING=ON
+
+  cmake --build build
+}
+
+check() {
+  cd build
+  ctest --output-on-failure -E ECMPoQmToolsTest
 }
 
 package() {
-  cd build
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
