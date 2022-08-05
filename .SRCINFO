@@ -1,0 +1,17 @@
+pkgbase = fast-discord
+	pkgdesc = A new Discord client made in C++ and Qt
+	pkgver = 3c6ce0c46bd80c20f32b340da3ea68af32e36304
+	pkgrel = 1
+	url = https://github.com/EnyoYoen/Fast-Discord
+	arch = any
+	license = MIT
+	makedepends = cmake
+	depends = git
+	depends = pacman
+	depends = qt5-base
+	depends = opus
+	depends = libsodium
+	source = fast-discord::git+https://github.com/EnyoYoen/Fast-Discord
+	md5sums = SKIP
+
+pkgname = fast-discord
