@@ -59,6 +59,6 @@ package() {
   cd "$srcdir/${pkgname%-git}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 "$srcdir"/org.nicotine_plus.Nicotine{-gtk4.desktop,-libadwaita.desktop} -t \
+  install -Dm644 "$srcdir/${_appdata_id}"{-gtk4.desktop,-libadwaita.desktop} -t \
     "$pkgdir/usr/share/applications/"
 }
