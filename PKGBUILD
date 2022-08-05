@@ -3,13 +3,13 @@
 pkgname=earth-wallpaper-bin
 appid=cn.huguoyang.earthwallpaper
 name=earth-wallpaper
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=0
 pkgdesc="实时获取地球照片作为桌面壁纸"
 arch=('x86_64')
 url="https://jihulab.com/ambition-echo/earth_wallpaper"
 license=('GPL3')
-source=("https://jihulab.com/api/v4/projects/40487/packages/generic/earth_wallpaper/$pkgver/earth-wallpaper-deepin-amd64.deb")
+source=("https://jihulab.com/api/v4/projects/40487/packages/generic/earth_wallpaper/$pkgver/earth-wallpaper-deepin-amd64-$pkgver.deb")
 sha256sums=('SKIP')
 depends=('qt5-base' 'python' 'python-pillow' 'python-requests')
 build() {
