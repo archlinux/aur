@@ -1,15 +1,16 @@
 pkgbase = python-libthumbor
 	pkgdesc = Python's extensions to thumbor
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/thumbor/libthumbor
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
-	makedepends = python-dephell
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
+	makedepends = python-poetry-core
 	depends = python
-	source = https://github.com/thumbor/libthumbor/archive/2.0.1.tar.gz
-	b2sums = 79bf3f48db8eef6f2eb19aae1b66484651b4a15a68bfd8ae310653a256f5a4e16009fcaa87d1ab98178f5cdeeaa1d16b5f04107b369481942d4411be589b1ce7
+	source = https://github.com/thumbor/libthumbor/archive/2.0.2.tar.gz
+	b2sums = 7682aeff1b7ea0cb026d08c16e73ffed2f3b9d59aa2329ca7d3fcb910860c9f495de53cfb17b651402af5e7166043634c1df334b8a8cc2c912a352b9e36157a1
 
 pkgname = python-libthumbor
-
