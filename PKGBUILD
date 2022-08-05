@@ -3,7 +3,7 @@
 pkgname=earth-wallpaper-bin
 appid=cn.huguoyang.earthwallpaper
 name=earth-wallpaper
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=0
 pkgdesc="实时获取地球照片作为桌面壁纸"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("https://jihulab.com/api/v4/projects/40487/packages/generic/earth_wallpa
 sha256sums=('SKIP')
 depends=('qt5-base' 'python' 'python-pillow' 'python-requests')
 build() {
-    bsdtar -xpf "$srcdir/earth-wallpaper-deepin-amd64.deb"
+    bsdtar -xpf "$srcdir/earth-wallpaper-deepin-amd64-$pkgver.deb"
     bsdtar -xpf "$srcdir/data.tar.xz"
 }
 package() {
