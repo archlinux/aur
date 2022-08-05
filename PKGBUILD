@@ -7,7 +7,7 @@ _pkgver_main=2022.7.28
 _release_name=brescia
 _pkgver_sub=2
 pkgver="$_pkgver_main.$_pkgver_sub"
-pkgrel=1
+pkgrel=2
 pkgdesc='Run Windows software on Linux with Bottles!'
 arch=(any)
 changelog=changelog.md
@@ -50,6 +50,7 @@ depends=(
 	libsignon-glib
 	libblockdev
 	fvs
+	appstream-glib
 
 	# from dependency list
 	'cabextract>=1.9.0'

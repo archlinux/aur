@@ -1,7 +1,7 @@
 pkgbase = bottles-fixed
 	pkgdesc = Run Windows software on Linux with Bottles!
 	pkgver = 2022.7.28.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bottlesdevs/bottles
 	changelog = changelog.md
 	arch = any
@@ -36,6 +36,7 @@ pkgbase = bottles-fixed
 	depends = libsignon-glib
 	depends = libblockdev
 	depends = fvs
+	depends = appstream-glib
 	depends = cabextract>=1.9.0
 	depends = p7zip>=16.02
 	depends = xorg-xdpyinfo
