@@ -1,12 +1,12 @@
 pkgbase = petrified
 	pkgver = 2.0.3
-	pkgrel = 1
-	url = https://gitlab.com/troyengel/petrified
+	pkgrel = 2
+	url = https://git.dwarvenruins.com/tengel/petrified
 	arch = any
 	license = GPL3
 	options = emptydirs
-	source = https://gitlab.com/troyengel/petrified/-/archive/v2.0.3/petrified-v2.0.3.tar.gz
-	sha256sums = bb01029abc7796d2dd824f88beb2da05fb8da10ceb3ec7a0c1682631d670fc27
+	source = https://git.dwarvenruins.com/tengel/petrified/archive/v2.0.3.tar.gz
+	sha256sums = b65780fa31bc2ff83ebfe904edc59d17c83759b3619fbd5d6ecd7e4b5c3eb96e
 
 pkgname = petrified
 	pkgdesc = Bash client to update dynamic DNS at freedns.afraid.org
@@ -22,4 +22,3 @@ pkgname = petrified-systemd
 	pkgdesc = Unit files for petrified systemd usage
 	depends = petrified
 	depends = systemd
-
