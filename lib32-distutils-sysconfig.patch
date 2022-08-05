@@ -1,20 +1,21 @@
---- Python-3.7.1/Lib/distutils/sysconfig.py.orig	2018-04-21 18:06:40.371199062 -0400
-+++ Python-3.7.1/Lib/distutils/sysconfig.py	2018-04-21 18:09:31.972264882 -0400
-@@ -99,7 +99,7 @@
+diff -ruN Python-3.10.5/Lib/distutils/sysconfig.py Python-3.10.5.new/Lib/distutils/sysconfig.py
+--- Python-3.10.5/Lib/distutils/sysconfig.py	2022-06-06 16:23:30.000000000 +0430
++++ Python-3.10.5.new/Lib/distutils/sysconfig.py	2022-08-05 16:49:54.486224272 +0430
+@@ -292,7 +292,7 @@
                  incdir = os.path.join(get_config_var('srcdir'), 'Include')
                  return os.path.normpath(incdir)
          python_dir = 'python' + get_python_version() + build_flags
 -        return os.path.join(prefix, "include", python_dir)
-+        return os.path.join(prefix, "lib32/python3.7m/include", python_dir)
++        return os.path.join(prefix, "lib32/python3.10/include", python_dir)
      elif os.name == "nt":
-         return os.path.join(prefix, "include")
-     else:
-@@ -130,7 +130,7 @@
- 
-     if os.name == "posix":
-         libpython = os.path.join(prefix,
--                                 "lib", "python" + get_python_version())
-+                                 "lib32", "python" + get_python_version())
-         if standard_lib:
-             return libpython
+         if python_build:
+             # Include both the include and PC dir to ensure we can find
+@@ -333,7 +333,7 @@
+             libdir = sys.platlibdir
          else:
+             # Pure Python
+-            libdir = "lib"
++            libdir = "lib32"
+         libpython = os.path.join(prefix, libdir,
+                                  "python" + get_python_version())
+         if standard_lib:

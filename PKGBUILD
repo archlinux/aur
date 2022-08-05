@@ -1,9 +1,10 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Behnam Momeni <sbmomeni [at the] gmail [dot] com>
+# Contributor: Andrew Sun <adsun701@gmail.com>
 
 pkgname=lib32-python
-pkgver=3.7.2
+pkgver=3.10.5
 pkgrel=1
-_pybasever=3.7
+_pybasever=3.10
 pkgdesc="Next generation of the python high-level scripting language"
 arch=('x86_64')
 license=('custom')
@@ -16,14 +17,14 @@ optdepends=('lib32-sqlite'
 provides=('lib32-python3')
 source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz"{,.asc}
         "lib32-distutils-sysconfig.patch"
-        "python-config-32.patch"
-        "dont-make-libpython-readonly.patch")
-sha512sums=('6cd2d6d8455558783b99d55985cd7b22d67b98f41a09b4fdd96f680a630a4e035220d2b903f8c59ed513aa5ffe6730fa947ddb55bb72ce36f0e945ef8af5d971'
+        "python-config-32.patch")
+sha512sums=('aa7f58a9b31de9824185b3e7bfa7da0dcf64ae9e89840664eae9d98d9048a650fa012cd5b873a62ff44b65b856db86f095c4003117406ec5e9583ec5f7e78e90'
             'SKIP'
-            'c6aeb74260740155b3ccee350230613b91567ae945026ce2a7f1f568cd0092d6fc7c49ad8d217dab3ad2e8b2ebe40b95c45b7e6feda2eb8849217ba6c31d7796'
-            'f6119c9fb535e28d19c7500d8ce4859f9fa71738520357f4f7b418af25574380861381e911622b8cb85a21297083a3a96252d01595ba5803374b3f3f09d0e647'
-            '2ef96708d5b13ae2a3d2cc62c87b4780e60ecfce914e190564492def3a11d5e56977659f41c7f9d12266e58050c766bce4e2b5d50b708eb792794fa8357920c4')
-validpgpkeys=('0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D')  # Ned Deily (Python release signing key) <nad@python.org>
+            'e541d608b809ee04d9249a8b1a952c02a8d024efc87458bb96a999b8952cefc50be66e36e9f821b96691460b41792fea4b045c51a1aa064d66d0cf32eb3472c9'
+            'cba0c7204239abbbc20754e6f66717d2b6ac9f10f4af03bc170c71dfc02310fd03005d9e771fb38d4d672ed01b79ef68e87d3111f9e1145047a650d18568e0d5')
+validpgpkeys=('0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D'  # Ned Deily (Python release signing key) <nad@python.org>
+              'E3FF2839C048B25C084DEBE9B26995E310250568'  # Łukasz Langa (GPG langa.pl) <lukasz@langa.pl>
+              'A035C8C19219BA821ECEA86B64E628F8D684696D') # Pablo Galindo Salgado <pablogsal@gmail.com>
 
 prepare() {
   cd "${srcdir}/Python-${pkgver}"
@@ -33,7 +34,6 @@ prepare() {
   # Give the configuration script an extention
   patch -Np1 -i "${srcdir}/python-config-32.patch"
   
-  
   # Fix hard-coded paths
   sed -i "s|base}/lib|base}/lib32|g" "${srcdir}/Python-${pkgver}/Lib/sysconfig.py"
   sed -i "s|/include|/lib32/python{py_version_short}/include|g" "${srcdir}/Python-${pkgver}/Lib/sysconfig.py"
@@ -41,9 +41,6 @@ prepare() {
   sed -i "s|base/lib|base/lib32|g" "${srcdir}/Python-${pkgver}/Lib/distutils/command/install.py"
   sed -i "s|/include|/lib32/python{py_version_short}/include|g" "${srcdir}/Python-${pkgver}/Lib/distutils/command/install.py"
   sed -i "s|prefix)/lib|prefix)/lib32|g" "${srcdir}/Python-${pkgver}/Makefile.pre.in"
-  
-  # FS#45809
-  patch -p1 -i "${srcdir}/dont-make-libpython-readonly.patch"
 
   # FS#23997
   sed -i -e "s|^#.* /usr/local/bin/python|#!/usr/bin/python|" Lib/cgi.py
@@ -69,11 +66,10 @@ build() {
   # Disable bundled pip & setuptools
   ./configure --prefix=/usr \
               --libdir=/usr/lib32 \
+              --with-platlibdir=lib32 \
               --enable-shared \
               --with-threads \
               --with-computed-gotos \
-              --enable-optimizations \
-              --with-lto \
               --enable-ipv6 \
               --with-system-expat \
               --with-dbmliborder=gdbm:ndbm \
@@ -81,7 +77,7 @@ build() {
               --enable-loadable-sqlite-extensions \
               --without-ensurepip \
               --libexecdir=/usr/lib32 \
-              --includedir=/usr/lib32/python${_pybasever}m/include \
+              --includedir=/usr/lib32/python${_pybasever}/include \
               --exec_prefix=/usr/lib32/python${_pybasever}/ \
               --bindir=/usr/bin \
               --sbindir=/usr/sbin \
@@ -104,9 +100,9 @@ package() {
   install -m755 Tools/scripts/{README,*py} "${pkgdir}"/usr/lib32/python${_pybasever}/Tools/scripts/
   
   # create symlinks
-  ln -s python${_pybasever}m-32-config ${pkgdir}/usr/bin/python3-32-config
-  ln -s python${_pybasever}m-32 ${pkgdir}/usr/bin/python-32
-  ln -s python${_pybasever}m-32-config ${pkgdir}/usr/bin/python-32-config
+  ln -s python${_pybasever}-32-config ${pkgdir}/usr/bin/python3-32-config
+  ln -s python${_pybasever}-32 ${pkgdir}/usr/bin/python-32
+  ln -s python${_pybasever}-32-config ${pkgdir}/usr/bin/python-32-config
 
   # remove python3-config, conflicts with regular python
   rm -rf ${pkgdir}/usr/bin/python3-config
@@ -115,9 +111,9 @@ package() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   
   # Clean up
-  rm -rf "${pkgdir}"/{etc,usr/{share,include}} # needs bin/
+  rm -rf "${pkgdir}"/{etc,usr/share} # needs bin/ and include/
 
   # Leave the python binary and configure script for dependants to find the headers
   cd "${pkgdir}"/usr/bin
-  rm pydoc* idle* 2to3* pyvenv*
+  rm pydoc* idle* 2to3*
 }
