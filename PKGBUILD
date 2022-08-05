@@ -10,7 +10,6 @@ license=(GPL3)
 depends=('python')
 optdepends=('python-coloredlogs: pretty log output')
 makedepends=('python-setuptools')
-provides=(python-hazwaz)
 source=("https://git.sr.ht/~valhalla/$_pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('26c047356a3e9f44bd3b6f61c774e1f7a06ce8cebe8f6e73cd98ea6bb2b4851d')
 
