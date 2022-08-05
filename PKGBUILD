@@ -4,7 +4,7 @@
 
 pkgname=rustdesk
 pkgver=1.1.9
-pkgrel=4
+pkgrel=5
 pkgdesc="Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!"
 arch=('any')
 url="https://github.com/rustdesk/rustdesk"
@@ -21,14 +21,14 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rustdesk/rustdesk/archi
 	"vcpkg::git+https://github.com/microsoft/vcpkg#commit=ec6fe06e8da05a8157dc8581fa96b36b571c1bd5"
         "libsciter-gtk.so::https://github.com/c-smile/sciter-sdk/raw/0298f1b34e9a0ff1dffb889d82c506a5da8bfb1e/bin.lnx/x64/libsciter-gtk.so" # This is horrible. Unfortunately the AUR package for this seems abandoned.
         "${pkgname}.install"
-	"50-rustdesk.conf"
+	"rustdesk"
         "${pkgname}.service"
         "${pkgname}.png::https://avatars.githubusercontent.com/u/71636191?v=4")
 sha256sums=('e26ee7de1b788962e12940a1b46708b9576ee5ade9e935ef5fa1a3108601b055'
             'SKIP'
             'a1682fbf55e004f1862d6ace31b5220121d20906bdbf308d0a9237b451e4db86'
             '830d3985e6292851cb33f703f58c1513a9162cca3ccd5ebf669ffe7b14637f3e'
-            '6548464155d2bbd012236b1410957c12f3c0d43a4eaa80a364d01013e3de022c'
+            '4d98c459e7387d30790bc7a337b0db873775e1483c756037bc42931cac010a0f'
             '642d5ee9d8286d1b95e3580fdea135832f609a643b98a13874e9bfe8eb8e71a4'
             '04b2457a0eff7c82ec499a6f7a4e5474de054a93c1760bd91833a4aef5c881a9')
 build() {
@@ -53,16 +53,15 @@ build() {
 # }
 
 package() {
-    install -Dm0755 "${srcdir}/${pkgname}-${pkgver}/target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    # I have to replace the bin with a bash script that does a cd to share and then runs the real binary
+    install -Dm0755 "${srcdir}/${pkgname}-${pkgver}/target/release/${pkgname}" "${pkgdir}/usr/share/${pkgname}/${pkgname}"
+    install -Dm0755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
 # install ui
-    install -Ddm0755 "${srcdir}/${pkgname}-${pkgver}/src" "${pkgdir}/usr/share/${pkgname}"
+    cp -r "${srcdir}/${pkgname}-${pkgver}/src" "${pkgdir}/usr/share/${pkgname}"
 
 # Install libsciter-gtk.so
-    install -Dm755 "${srcdir}/libsciter-gtk.so" "${pkgdir}/usr/lib/rustdesk/libsciter-gtk.so"
-
-# Make libsciter actually work
-    install -Dm755 "${srcdir}/50-rustdesk.conf" "${pkgdir}/etc/ld.so.conf.d/50-rustdesk.conf"
+    install -Dm755 "${srcdir}/libsciter-gtk.so" "${pkgdir}/usr/share/${pkgname}/libsciter-gtk.so"
 
     install -Dm0644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
