@@ -9,7 +9,7 @@
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
 
 pkgname=aseprite
-pkgver=1.2.37
+pkgver=1.2.39
 _skiaver=m102
 _skiahash=861e4743af
 pkgrel=1
@@ -51,7 +51,7 @@ source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprit
         optional-pixman.patch)
 noextract=("Aseprite-v$pkgver-Source.zip"
            "skia-$_skiaver.tar.gz") # Don't extract Aseprite or skia sources at the root
-sha256sums=('74989ac5e57e4cba9cc16212d81f058c3aff70749d929e2e35eb38688c994c9e'
+sha256sums=('b84e67061a9600c6c508af26944851ce277f4e912bf73d8e9e83a2eba5510c21'
             '8d76c1ad3693e1fc019eb14d806082148eb4ed7d601474aeeaae601b05a9b3ad'
             '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9'
             '821f1354dbbc0bb3fa700e63037ed3c89b0d32bd2ab253450f91eeacd7d47c06'
