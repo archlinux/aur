@@ -313,9 +313,9 @@
 +		$(RANLIB) $(LIBGSM)
 +
 +$(LIBGSMDLL):	$(LIB) $(GSM_OBJECTS)
-+	$(LD) -shared -Wl,-soname,libgsm.dll.1 -Wl,-out-implib,$(LIBGSMIMPLIB) -o $@.1.0.14 $(GSM_OBJECTS)
-+	$(LN) libgsm.dll.1.0.14 $(LIBGSMDLL).1
-+	$(LN) libgsm.dll.1.0.14 $(LIBGSMDLL)
++	$(LD) -shared -Wl,-soname,libgsm.dll.1 -Wl,-out-implib,$(LIBGSMIMPLIB) -o $@.1.0.22 $(GSM_OBJECTS)
++	$(LN) libgsm.dll.1.0.22 $(LIBGSMDLL).1
++	$(LN) libgsm.dll.1.0.22 $(LIBGSMDLL)
 +
 +
 +# Toast, Untoast and Tcat -- the compress-like frontends to gsm.
@@ -412,11 +412,11 @@
 +		chmod 444 $@
 +
 +$(GSM_INSTALL_BIN)/libgsm.dll:	$(LIBGSMDLL)
-+		-rm $(RMFLAGS) $@ $@.1 $@.1.0.14
-+		cp $?.1.0.14 $@.1.0.14
-+		chmod 755 $@.1.0.14
-+		$(LN) libgsm.dll.1.0.14 $@
-+		$(LN) libgsm.dll.1.0.14 $@.1
++		-rm $(RMFLAGS) $@ $@.1 $@.1.0.22
++		cp $?.1.0.22 $@.1.0.22
++		chmod 755 $@.1.0.22
++		$(LN) libgsm.dll.1.0.22 $@
++		$(LN) libgsm.dll.1.0.22 $@.1
 +
 +$(GSM_INSTALL_LIB)/libgsm.dll.a:	$(LIBGSMIMPLIB)
 +		-rm $(RMFLAGS) $@
