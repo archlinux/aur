@@ -1,6 +1,6 @@
 pkgbase = kde-servicemenus-flacconvert
 	pkgdesc = KDE service menus for flac file converting
-	pkgver = 3
+	pkgver = 4
 	pkgrel = 1
 	url = https://github.com/marco-mania/kde-servicemenus-flacconvert
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = kde-servicemenus-flacconvert
 	depends = flac
 	depends = lame
 	depends = opus-tools
-	source = https://github.com/marco-mania/kde-servicemenus-flacconvert/archive/refs/tags/v3.tar.gz
-	sha256sums = d106493163a6be4bf4cf7768524ddb4462c628255459bc8ca411a89a58e6b29f
+	source = https://github.com/marco-mania/kde-servicemenus-flacconvert/archive/refs/tags/v4.tar.gz
+	sha256sums = 60399bd0e79549fd19770a715b9f02ecc2d89263c6b5d8c894683999678abad4
 
 pkgname = kde-servicemenus-flacconvert
