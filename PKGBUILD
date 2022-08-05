@@ -6,7 +6,7 @@
 
 pkgname=dropbox-cli
 pkgver=2020.03.04
-pkgrel=5
+pkgrel=6
 pkgdesc="Command line interface for Dropbox"
 arch=("any")
 url="http://www.${pkgname%-cli}.com"
@@ -14,7 +14,7 @@ license=("GPL")
 depends=("${pkgname%-cli}" "python-gobject")
 install="${pkgname}.install"
 source=(
-  "${pkgname}-${pkgver}.py::https://linux.${pkgname%-cli}.com/packages/${pkgname%-cli}.py"
+  "${pkgname}-${pkgver}.py::https://www.${pkgname%-cli}.com/download?dl=packages/${pkgname%-cli}.py"
   "${pkgname%-cli}d-fallback.patch"
   "isSet-deprecation.patch"
 )

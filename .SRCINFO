@@ -1,14 +1,14 @@
 pkgbase = dropbox-cli
 	pkgdesc = Command line interface for Dropbox
 	pkgver = 2020.03.04
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.dropbox.com
 	install = dropbox-cli.install
 	arch = any
 	license = GPL
 	depends = dropbox
 	depends = python-gobject
-	source = dropbox-cli-2020.03.04.py::https://linux.dropbox.com/packages/dropbox.py
+	source = dropbox-cli-2020.03.04.py::https://www.dropbox.com/download?dl=packages/dropbox.py
 	source = dropboxd-fallback.patch
 	source = isSet-deprecation.patch
 	sha256sums = 7889ce1d872bce85b3e94b929abacd6086e7f378644519fd8ebd8acf0316e59f
