@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=GNUnet URI
-Exec=gnunet-uri %u
-GenericName=URI handler for the GNUnet network
-Icon=gnunet
-Type=Application
-Terminal=false
-NoDisplay=true
-MimeType=x-scheme-handler/gnunet;

@@ -6,7 +6,7 @@
 
 _appname='gnunet'
 pkgname="${_appname}-git"
-pkgver=0.17.1.r21.g6a60c7d43
+pkgver=0.17.2.r22.g8582b511a
 pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
@@ -19,7 +19,8 @@ depends=('brotli' 'gettext' 'gnurl' 'gnutls' 'iptables' 'jansson'
          'libtool' 'libunistring' 'miniupnpc' 'nss' 'openssl' 'sqlite' 'which'
          'zlib')
 makedepends=('bluez-libs' 'gettext' 'git' 'libpulse' 'libtool' 'opus'
-             'pkgconfig' 'postgresql' 'python' 'recutils')
+             'pkgconfig' 'postgresql' 'python' 'python-sphinx'
+             'python-sphinx_rtd_theme' 'recutils')
 optdepends=('bluez: for bluetooth transport'
             'gnunet-gtk: for handling the gnunet:// URI scheme'
             'jose: for re:claimID OpenID Connect plugin'
@@ -39,7 +40,6 @@ source=("git+https://git.${_appname}.org/${_appname}.git"
         "${_appname}-system.service"
         "${_appname}.sysusers"
         "${_appname}.tmpfiles"
-        "${_appname}-uri.desktop"
         "${_appname}-user.conf"
         "${_appname}-user.service")
 install="${_appname}.install"
@@ -47,7 +47,6 @@ sha256sums=('SKIP'
             '163818b89beddcaf78937daba5bdf0ae060b2975de0731aa13d1ccdd813cf262'
             '66299dbbdd0219d2f5f0520e69fc094f38f789724d973c2f63a421257ea4f755'
             '5c34e1ecc6208900426f8e399e8c3edbef12cce19eba605fd7364ddb3547d9f0'
-            '98e4e1d6d4fd7c7fd05d9e16402c95f1e7afeb4b97c8c68ac63e8abd11ff4ee7'
             '3f17b9ed2c1f8cc0f919fe477df99678c17778a31f1eeb56517e285e3cef30f2'
             '60caee20b53bcc69522556b35ac3d35d89e28c49b9a22a2ed5121df4a2c33be5')
 
@@ -99,10 +98,6 @@ package() {
 	install -dm755 "${pkgdir}/usr/lib/tmpfiles.d"
 	install -Dm644 "${srcdir}/${_appname}.tmpfiles" \
 		"${pkgdir}/usr/lib/tmpfiles.d/${_appname}.conf"
-
-	install -dm755 "${pkgdir}/usr/share/applications"
-	install -Dm644 "${srcdir}/${_appname}-uri.desktop" \
-		"${pkgdir}/usr/share/applications/${_appname}-uri.desktop"
 
 	install -dm700 "${pkgdir}/etc/skel/.config"
 	install -Dm600 "${srcdir}/${_appname}-user.conf" \
