@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=icon-git
-pkgver=9.5.22d
+pkgver=9.5.22e
 pkgrel=1
 epoch=1
 pkgdesc="The Icon programming language"
@@ -18,7 +18,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --tags | sed 's+-+.r+' | tr - .
+  git describe --tags | sed 's+-+.r+' | cut -c2- | tr - .
 }
 
 build() {
