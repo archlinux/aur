@@ -19,20 +19,16 @@ post_install() {
 	>> Example:
 	source /usr/share/doc/find-the-command/ftc.zsh noprompt quiet
 
-	>> You may also want to enable timer for regular
-	>> pacman or pkgile files database update:
-	# systemctl enable pacman-files.timer
+	>> You may also want to enable timer for regular files database updates:
+	>> When using pacman (and have package "pacman-contrib" installed):
+	# systemctl enable pacman-filesdb-refresh.timer
+	>> Or when using pkgfile
 	# systemctl enable pkgfile-update.timer
 EOF
 }
 
 post_upgrade() {
 	post_install
-}
-
-pre_remove() {
-	printf "\t>> Disabling pacman files systemd timer\n"
-	systemctl disable pacman-files.timer
 }
 
 post_remove() {
