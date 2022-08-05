@@ -1,15 +1,17 @@
 pkgbase = python2-numexpr
 	pkgdesc = Fast numerical array expression evaluator for Python, NumPy, PyTables, pandas
-	pkgver = 2.6.9
+	pkgver = 2.7.3
 	pkgrel = 1
 	url = https://github.com/pydata/numexpr
 	arch = x86_64
+	arch = i686
+	arch = pentium4
 	license = MIT
 	makedepends = python2-setuptools
-	makedepends = python2-numpy
-	source = python2-numexpr-2.6.9.tar.gz::https://github.com/pydata/numexpr/archive/v2.6.9.tar.gz
-	sha1sums = db6cbb412fb1f85f87814002b88d0e479cf3ac51
+	depends = python2>=2.7
+	depends = python2<2.8
+	depends = python2-numpy
+	source = python2-numexpr-2.7.3.tar.gz::https://github.com/pydata/numexpr/archive/v2.7.3.tar.gz
+	sha256sums = 00d6b1518605afe0ed10417e0ff07123e5d531c02496c6eed7dd4b9923238e1e
 
 pkgname = python2-numexpr
-	depends = python2-numpy
-
