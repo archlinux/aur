@@ -1,1 +1,1 @@
-* * * * *    panopta-agent    /usr/bin/python2 /usr/bin/panopta-agent/panopta_agent.py --from-cron &> /dev/null
+* * * * *    panopta-agent    /usr/bin/python /usr/bin/panopta-agent/panopta_agent.py --from-cron &> /dev/null
