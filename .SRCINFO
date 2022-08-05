@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-openh264
 	pkgdesc = OpenH264 is a codec library which supports H.264 encoding and decoding (mingw-w64)
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = http://www.openh264.org/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = mingw-w64-openh264
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/cisco/openh264/archive/v2.2.0.tar.gz
-	sha256sums = e4e5c8ba48e64ba6ce61e8b6e2b76b2d870c74c270147649082feabb40f25905
+	source = https://github.com/cisco/openh264/archive/v2.3.0.tar.gz
+	sha256sums = 99b0695272bee73a3b3a5fcb1afef462c11a142d1dc35a2c61fef5a4b7d60bc0
 
 pkgname = mingw-w64-openh264
