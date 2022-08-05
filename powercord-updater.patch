@@ -1,39 +1,13 @@
 diff --git a/src/Powercord/index.js b/src/Powercord/index.js
-index 1ddfd14..408b5d2 100644
+index edcecb5f..5f810080 100644
 --- a/src/Powercord/index.js
 +++ b/src/Powercord/index.js
-@@ -248,6 +248,58 @@ class Powercord extends Updatable {
+@@ -244,6 +244,32 @@ class Powercord extends Updatable {
      }
      return success;
    }
 +
 +  async _getUpdateCommits () {
-+    // const abort = new AbortController();
-+    // const timeout = setTimeout(() => {
-+    //   abort.abort();
-+    //   throw new Error('Timed out.');
-+    // }, TIMEOUT);
-+
-+    // const branch = await this.getBranch();
-+    // const commits = [];
-+
-+    // const gitLog = await exec(`git log --format="%H -- %an -- %s" ..origin/${branch}`, {
-+    //   cwd: this.entityPath,
-+    //   signal: abort.signal
-+    // }).then(({ stdout }) => stdout.toString());
-+
-+    // const lines = gitLog.split('\n');
-+    // lines.pop();
-+    // lines.forEach(line => {
-+    //   const data = line.split(' -- ');
-+    //   commits.push({
-+    //     id: data.shift(),
-+    //     author: data.shift(),
-+    //     message: data.shift()
-+    //   });
-+    // });
-+
-+    // clearTimeout(timeout);
 +    return [];
 +  }
 +  async getBranch () {return this.gitInfos.branch;}
@@ -62,7 +36,7 @@ index 1ddfd14..408b5d2 100644
  
  module.exports = Powercord;
 diff --git a/src/Powercord/plugins/pc-updater/components/Settings.jsx b/src/Powercord/plugins/pc-updater/components/Settings.jsx
-index edbc97e..2d8ee92 100644
+index a1b8b9b3..eb1cbd4a 100644
 --- a/src/Powercord/plugins/pc-updater/components/Settings.jsx
 +++ b/src/Powercord/plugins/pc-updater/components/Settings.jsx
 @@ -83,7 +83,7 @@ module.exports = class UpdaterSettings extends React.PureComponent {
@@ -75,7 +49,7 @@ index edbc97e..2d8ee92 100644
            <div>
              <span>{Messages.POWERCORD_UPDATES_REVISION}</span>
 diff --git a/src/Powercord/plugins/pc-updater/components/Update.jsx b/src/Powercord/plugins/pc-updater/components/Update.jsx
-index d2d9fb7..337e158 100644
+index d2d9fb79..337e158f 100644
 --- a/src/Powercord/plugins/pc-updater/components/Update.jsx
 +++ b/src/Powercord/plugins/pc-updater/components/Update.jsx
 @@ -33,6 +33,7 @@ module.exports = class Update extends React.PureComponent {
@@ -87,10 +61,10 @@ index d2d9fb7..337e158 100644
            <a href={`https://github.com/${repo}/commit/${commit.id}`} target='_blank'>
              <code>{commit.id.substring(0, 7)}</code>
 diff --git a/src/Powercord/plugins/pc-updater/index.js b/src/Powercord/plugins/pc-updater/index.js
-index 6456798..71e40e1 100644
+index e445159e..23a74241 100644
 --- a/src/Powercord/plugins/pc-updater/index.js
 +++ b/src/Powercord/plugins/pc-updater/index.js
-@@ -150,14 +150,14 @@ module.exports = class Updater extends Plugin {
+@@ -147,14 +147,14 @@ module.exports = class Updater extends Plugin {
      const updates = this.settings.get('updates', []);
      const failed = [];
      for (const update of [ ...updates ]) {
@@ -107,11 +81,11 @@ index 6456798..71e40e1 100644
        updates.shift();
        this.settings.get('updates', updates);
        if (!success) {
-@@ -246,26 +246,10 @@ module.exports = class Updater extends Plugin {
+@@ -243,26 +243,10 @@ module.exports = class Updater extends Plugin {
    }
  
    async getGitInfos () {
--    const branch = await exec('git branch', this.cwd)
+-    const branch = await PowercordNative.exec('git branch', this.cwd)
 -      .then(({ stdout }) =>
 -        stdout
 -          .toString()
@@ -121,10 +95,10 @@ index 6456798..71e40e1 100644
 -          .trim()
 -      );
 -
--    const revision = await exec(`git rev-parse ${branch}`, this.cwd)
+-    const revision = await PowercordNative.exec(`git rev-parse ${branch}`, this.cwd)
 -      .then(r => r.stdout.toString().trim());
 -
--    const upstream = await exec('git remote get-url origin', this.cwd)
+-    const upstream = await PowercordNative.exec('git remote get-url origin', this.cwd)
 -      .then(r => r.stdout.toString().match(/github\.com[:/]([\w-_]+\/[\w-_]+)/)[1]);
 -
      return {

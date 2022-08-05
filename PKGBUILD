@@ -1,8 +1,8 @@
 # Maintainer: Łukasz Mariański <lmarianski at protonmail dot com>
 pkgname=powercord-electron-git
 _pkgname=${pkgname%-electron-*}
-pkgver=r1372.b4103b08
-pkgrel=4
+pkgver=r1420.bb30f258
+pkgrel=1
 pkgdesc="A lightweight discord client mod focused on simplicity and performance."
 arch=('any')
 url="https://github.com/powercord-org/powercord"
@@ -26,10 +26,10 @@ md5sums=('SKIP'
          'eca60a4608bfa313cafb2f1032e6e54d'
          'ed7e42f11938c61e00c8c07cd1a96427'
          '567d9d8abddefa0417035759348230d1'
-         '4fb3e5258f0f6a380798c989463ac39a'
-         'ecf6cd5b74cf81762fad6f82985b3c95'
-         'fcf9ec514f003a1711fe85394f924491'
-         '4370ed3647d62b1f1cb0e791d960f253')
+         '48c86519998cea43876ee940b773dcc9'
+         '765cdae376346f6e00748e5cfae6a493'
+         'da933087c7183124c658b656397e1fc6'
+         '02be4a13e993b42ab1c88376461dd281')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
@@ -44,7 +44,6 @@ prepare() {
 	patch -p1 -i "$srcdir/$_pkgname-themes.patch"
 	patch -p1 -i "$srcdir/$_pkgname-updater.patch"
 
-	# git log -1 --pretty=format:%H
 	sed -i "s:@PKG_UPSTREAM@:powercord-org/powercord:;s:@PKG_BRANCH@:${_branch}:;s:@PKG_REVISION@:$(git rev-parse ${_branch}):" src/Powercord/plugins/pc-updater/index.js
 
 	patch -p1 -i "$srcdir/$_pkgname-plugins.patch"
@@ -53,7 +52,7 @@ prepare() {
 build() {
 	cd "$srcdir/$_pkgname"
 
-	npm install --cache "${srcdir}/npm-cache" --only=prod
+	npm install --cache "${srcdir}/npm-cache" --omit=dev
 }
 
 check() {

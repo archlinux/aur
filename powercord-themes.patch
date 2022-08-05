@@ -1,8 +1,8 @@
 diff --git a/src/Powercord/managers/styles.js b/src/Powercord/managers/styles.js
-index 65b97b7f..ab4ac64c 100644
+index 1179d315..c9e59f7d 100644
 --- a/src/Powercord/managers/styles.js
 +++ b/src/Powercord/managers/styles.js
-@@ -13,10 +13,12 @@ const ErrorTypes = Object.freeze({
+@@ -14,10 +14,12 @@ const ErrorTypes = Object.freeze({
    INVALID_MANIFEST: 'INVALID_MANIFEST'
  });
  
@@ -17,19 +17,18 @@ index 65b97b7f..ab4ac64c 100644
  
      if (!window.__SPLASH__) {
 diff --git a/src/Powercord/plugins/pc-moduleManager/components/manage/Base.jsx b/src/Powercord/plugins/pc-moduleManager/components/manage/Base.jsx
-index fd5134cf..c08c3820 100644
+index 67af7601..61675cf3 100644
 --- a/src/Powercord/plugins/pc-moduleManager/components/manage/Base.jsx
 +++ b/src/Powercord/plugins/pc-moduleManager/components/manage/Base.jsx
-@@ -4,6 +4,8 @@ const { React, getModule, contextMenu, i18n: { Messages } } = require('powercord
+@@ -3,6 +3,7 @@ const { shell } = require('electron');
+ const { React, getModule, contextMenu, i18n: { Messages } } = require('powercord/webpack');
  const { Button, Tooltip, ContextMenu, Divider, Icons: { Overflow } } = require('powercord/components');
  const { TextInput } = require('powercord/components/settings');
- 
 +const XDG_DATA_HOME = process.env.XDG_DATA_HOME || join(process.env.HOME, '.local', 'share');
-+
+ 
  class Base extends React.Component {
    constructor () {
-     super();
-@@ -91,7 +93,7 @@ class Base extends React.Component {
+@@ -91,7 +92,7 @@ class Base extends React.Component {
            {
              type: 'button',
              name: Messages[`POWERCORD_${this.state.key}_OPEN_FOLDER`],
@@ -39,7 +38,7 @@ index fd5134cf..c08c3820 100644
            {
              type: 'button',
 diff --git a/src/Powercord/plugins/pc-moduleManager/index.js b/src/Powercord/plugins/pc-moduleManager/index.js
-index 0cd00cdd..63c31899 100644
+index e184cc40..4cc643f4 100644
 --- a/src/Powercord/plugins/pc-moduleManager/index.js
 +++ b/src/Powercord/plugins/pc-moduleManager/index.js
 @@ -5,7 +5,7 @@ const { PopoutWindow } = require('powercord/components');
@@ -49,9 +48,9 @@ index 0cd00cdd..63c31899 100644
 -const { SpecialChannels: { CSS_SNIPPETS } } = require('powercord/constants');
 +const { SpecialChannels: { CSS_SNIPPETS }, SETTINGS_FOLDER } = require('powercord/constants');
  const { join } = require('path');
- 
+ const { get } = require('powercord/http');
  const commands = require('./commands');
-@@ -48,7 +48,7 @@ module.exports = class ModuleManager extends Plugin {
+@@ -51,7 +51,7 @@ module.exports = class ModuleManager extends Plugin {
      });
  
      this._quickCSS = '';
@@ -59,4 +58,4 @@ index 0cd00cdd..63c31899 100644
 +    this._quickCSSFile = join(SETTINGS_FOLDER, 'themes', 'quickcss.css');
      this._loadQuickCSS();
      this._injectSnippets();
-     this.loadStylesheet('scss/style.scss');
+     await this._installerInjectPopover();

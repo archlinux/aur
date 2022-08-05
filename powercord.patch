@@ -1,18 +1,17 @@
 diff --git a/src/browserWindow.js b/src/browserWindow.js
-index 27e87cbb..25790102 100644
+index 82620e56..cafc41a0 100644
 --- a/src/browserWindow.js
 +++ b/src/browserWindow.js
-@@ -28,7 +28,7 @@ class PatchedBrowserWindow extends BrowserWindow {
+@@ -28,7 +28,6 @@ class PatchedBrowserWindow extends BrowserWindow {
        if (opts.webPreferences.nativeWindowOpen) {
          // Discord Client
          opts.webPreferences.preload = join(__dirname, './preload.js');
 -        opts.webPreferences.contextIsolation = false; // shrug
-+        // opts.webPreferences.contextIsolation = false; // shrug
        } else {
          // Splash Screen on macOS (Host 0.0.262+) & Windows (Host 0.0.293 / 1.0.17+)
          opts.webPreferences.preload = join(__dirname, './preloadSplash.js');
 diff --git a/src/fake_node_modules/powercord/constants.js b/src/fake_node_modules/powercord/constants.js
-index dc25a156..979d7640 100644
+index 452712d5..8be6545a 100644
 --- a/src/fake_node_modules/powercord/constants.js
 +++ b/src/fake_node_modules/powercord/constants.js
 @@ -1,5 +1,9 @@
@@ -20,7 +19,7 @@ index dc25a156..979d7640 100644
  
 +const XDG_CONFIG_HOME = process.env.XDG_CONFIG_HOME || join(process.env.HOME, '.config');
 +const XDG_CACHE_HOME  = process.env.XDG_CACHE_HOME  || join(process.env.HOME, '.cache');
-+const XDG_DATA_HOME   = process.env.XDG_DATA_HOME   || join(process.env.HOME, '.local', 'share');
++const XDG_DATA_HOME  = process.env.XDG_DATA_HOME    || join(process.env.HOME, '.local', 'share');
 +
  module.exports = Object.freeze({
    // Powercord
@@ -39,7 +38,7 @@ index dc25a156..979d7640 100644
    // Discord Server
    DISCORD_INVITE: 'gs4ZMbBfCh',
 diff --git a/src/patcher.js b/src/patcher.js
-index 2cb52dcb..41a44354 100644
+index ba487630..e9b988a1 100644
 --- a/src/patcher.js
 +++ b/src/patcher.js
 @@ -4,7 +4,7 @@ const { existsSync, unlinkSync } = require('fs');
