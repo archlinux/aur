@@ -1,5 +1,5 @@
 # Arch64 kernel for BananaPi R64
-# Maintainer: yjun <ericwouds@gmail.com>
+# Maintainer: Eric Woudstra <ericwouds@gmail.com>
 
 # PKGBUILD: https://github.com/archlinuxarm/PKGBUILDs/tree/master/core/linux-aarch64
 
