@@ -1,13 +1,13 @@
 pkgbase = gnome-schedule
 	pkgdesc = Graphical interface to crontab and at for GNOME
 	pkgver = 2.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gnome-schedule.sourceforge.net
 	arch = any
 	license = GPL
 	makedepends = gnome-common
 	makedepends = gnome-doc-utils
-	depends = python2-gconf
+	depends = gnome-python
 	depends = at
 	depends = cron
 	optdepends = gnome-terminal: run tasks manually
@@ -15,4 +15,3 @@ pkgbase = gnome-schedule
 	sha256sums = 9992acb12ed52ec781d623fbc33c5dd3428ef863956fb8088b937c401cbe7b5a
 
 pkgname = gnome-schedule
-

@@ -8,12 +8,12 @@
 
 pkgname=gnome-schedule
 pkgver=2.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Graphical interface to crontab and at for GNOME"
 arch=('any')
 url="http://gnome-schedule.sourceforge.net"
 license=('GPL')
-depends=('python2-gconf' 'at' 'cron')
+depends=('gnome-python' 'at' 'cron')
 makedepends=('gnome-common' 'gnome-doc-utils')
 optdepends=('gnome-terminal: run tasks manually')
 source=("https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
