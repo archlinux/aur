@@ -13,9 +13,9 @@ sha256sums=('9c24d352a0ee08cad7a566f2bcaacd03d94ca405596a1ce5d3128dbb04e3963a')
 
 package() {
     cd "${srcdir}"
-    DESTDIR="${pkgdir}/usr/share/steam/skins/${pkgname}"
-    LCNSDIR="${pkgdir}/usr/share/licenses/${pkgname}"
-    FONTDIR="${pkgdir}/usr/share/fonts/${pkgname}"
+    DESTDIR="${pkgdir}/usr/share/steam/skins/air-for-steam"
+    LCNSDIR="${pkgdir}/usr/share/licenses/air-for-steam"
+    FONTDIR="${pkgdir}/usr/share/fonts/air-for-steam"
 
     mkdir -p "${DESTDIR}"
     mkdir -p "${LCNSDIR}"
