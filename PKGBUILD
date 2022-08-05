@@ -1,11 +1,11 @@
-# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Guenther Starnberger <gst@sysfrog.org>
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=gpshell
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
-_commit=3a2240428891746fe404c7aecbf76599a4598fdf
+_commit=e690b51b0f346fbdcd916b795433ca9da4a3b12f
 pkgdesc="gpshell GlobalPlatform command shell"
 license=('GPL3')
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url="https://github.com/kaoh/globalplatform"
 depends=('glibc' 'globalplatform')
 makedepends=('pandoc' 'cmake')
 source=(https://github.com/kaoh/globalplatform/archive/$_commit.zip)
-md5sums=('d91f9d1c9b7ef2c53834170308f93cfe')
+md5sums=('6eb114f27959686b06968bdfa9f1a07d')
 
 build() {
   cd globalplatform-$_commit/gpshell
