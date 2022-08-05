@@ -1,16 +1,16 @@
 pkgbase = wireguard-dkms
 	pkgdesc = next generation secure network tunnel - module sources
-	pkgver = 1.0.20211208
+	pkgver = 1.0.20220627
 	pkgrel = 1
 	url = https://www.wireguard.com/
 	arch = x86_64
 	license = GPL
 	depends = dkms
 	provides = WIREGUARD-MODULE
-	source = https://git.zx2c4.com/wireguard-linux-compat/snapshot/wireguard-linux-compat-1.0.20211208.tar.xz
-	source = https://git.zx2c4.com/wireguard-linux-compat/snapshot/wireguard-linux-compat-1.0.20211208.tar.asc
+	source = https://git.zx2c4.com/wireguard-linux-compat/snapshot/wireguard-linux-compat-1.0.20220627.tar.xz
+	source = https://git.zx2c4.com/wireguard-linux-compat/snapshot/wireguard-linux-compat-1.0.20220627.tar.asc
 	validpgpkeys = AB9942E6D4A4CFC3412620A749FC7012A5DE03AE
-	sha256sums = c0e607138a17daac656f508d8e63ea3737b5221fa5d9288191ddeb099f5a3b92
+	sha256sums = 362d412693c8fe82de00283435818d5c5def7f15e2433a07a9fe99d0518f63c0
 	sha256sums = SKIP
 
 pkgname = wireguard-dkms
