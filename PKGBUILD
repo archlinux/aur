@@ -3,25 +3,17 @@
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=globalplatform
-pkgver=7.2.0
-_commit=3a2240428891746fe404c7aecbf76599a4598fdf
-pkgrel=2
+pkgver=7.3.0
+_commit=e690b51b0f346fbdcd916b795433ca9da4a3b12f
+pkgrel=1
 pkgdesc="GlobalPlatform libraries"
 license=('GPL3')
 arch=('i686' 'x86_64')
 url="https://github.com/kaoh/globalplatform"
 depends=('glibc' 'pcsclite' 'openssl')
 makedepends=('cmake')
-source=(https://github.com/kaoh/globalplatform/archive/$_commit.zip
-        https://github.com/kaoh/globalplatform/commit/3e592f1e1c0ef15a2b5bc1517c6d10f2116d4c13.patch)
-md5sums=('d91f9d1c9b7ef2c53834170308f93cfe'
-         'be7032ed50b061f78600b8601dd913d5')
-
-prepare() {
-  cd globalplatform-$_commit/
-  # CMAC fixes OpenSSL < 3
-  patch -Np1 -i ../3e592f1e1c0ef15a2b5bc1517c6d10f2116d4c13.patch
-}
+source=(https://github.com/kaoh/globalplatform/archive/$_commit.zip)
+md5sums=('6eb114f27959686b06968bdfa9f1a07d')
 
 build() {
   cd globalplatform-$_commit/globalplatform
