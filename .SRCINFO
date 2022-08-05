@@ -1,0 +1,17 @@
+pkgbase = lobster
+	pkgdesc = Shell script to watch Movies/Webseries/Shows from the terminal.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/justchokingaround/lobster.git
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = fzf
+	depends = curl
+	depends = grep
+	depends = sed
+	depends = mpv
+	source = lobster::git+https://github.com/justchokingaround/lobster.git
+	md5sums = SKIP
+
+pkgname = lobster
