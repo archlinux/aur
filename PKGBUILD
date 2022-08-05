@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('cargo')
 conflicts=('printenv2-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('167c2d3501d65c224ae73d2e0a5c13941b5ad7407592606b3406e6b786fd8277')
+sha256sums=('14a5a3d959688c87a09384fb694885fc9885d659db46dd8af0784bfe1c44b19b')
 
 build() {
   cd "$pkgname-$pkgver"
