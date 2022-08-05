@@ -150,14 +150,14 @@ package() {
 		"${pkgdir}/usr/share/icons/hicolor/scalable/apps" \
 		"${pkgdir}/usr/share/icons/hicolor/128x128/apps"
 
-	install -Dm 644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png"
-	install -Dm 644 "${srcdir}/${pkgname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+	install -Dm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png"
+	install -Dm644 "${srcdir}/${pkgname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 
 	install -dm755 "${pkgdir}/usr/share/applications"
 	sed "${_sed_subst}" "${pkgname}.desktop.in" > \
 		"${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-	install -Dm 444 "${pkgname}-${_archstr}-${pkgver}_${_language}.tar.xz" \
+	install -Dm444 "${pkgname}-${_archstr}-${pkgver}_${_language}.tar.xz" \
 		"${pkgdir}/opt/${pkgname}/${pkgname}-${_archstr}-${pkgver}_${_language}.tar.xz"
 
 }
