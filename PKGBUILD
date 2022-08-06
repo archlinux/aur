@@ -3,7 +3,7 @@
 _pkgname=iminuit
 pkgbase="python-${_pkgname}"
 pkgname=("python-${_pkgname}" "python-${_pkgname}-docs")
-pkgver=2.11.2
+pkgver=2.15.2
 pkgrel=1
 pkgdesc="Python interface for MINUIT, a physics analysis tool for function minimization."
 arch=('x86_64')
@@ -11,13 +11,14 @@ url="https://iminuit.readthedocs.io"
 license=('GPL' 'MIT')
 depends=('python-numpy')
 makedepends=('git' 'cmake' 'python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-joblib'
-             'python-boost-histogram' 'python-nbsphinx' 'python-sphinx_rtd_theme' 'python-matplotlib' 'python-pillow' 'pandoc')
+             'python-boost-histogram' 'python-nbsphinx' 'python-sphinx_rtd_theme' 'python-matplotlib' 'python-pillow' 'pandoc' 'python-ipywidgets')
 checkdepends=('python-pytest' 'python-scipy' 'python-tabulate')
 options=(!emptydirs)
 source=(
   "${pkgbase}::git+https://github.com/scikit-hep/iminuit#tag=v${pkgver}"
   "${pkgbase}-pybind11::git+https://github.com/pybind/pybind11.git"
-  "${pkgbase}-root::git+https://github.com/root-project/root.git"
+  # remote refernce is broken, fix it
+  "${pkgbase}-root::git+https://github.com/root-project/root.git#commit=195f87330295e1ecdace9e99fc1b7e9558bf61d4"
 )
 sha256sums=('SKIP'
             'SKIP'
@@ -34,7 +35,9 @@ prepare() {
   git config submodule."extern/root".url "${srcdir}/${pkgname}"-root
   git config submodule."extern/pybind11".url "${srcdir}/${pkgname}"-pybind11
 
-  git submodule update --init --recursive
+  # root submodule reference is broken, fix it
+  git submodule update --init --recursive extern/pybind11
+  git submodule update --recursive --remote --merge extern/root
 
   # python-cmake is not needed
   sed -i '/cmake/d' pyproject.toml
