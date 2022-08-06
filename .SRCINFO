@@ -1,0 +1,26 @@
+pkgbase = clash-meta-alpha-git
+	pkgdesc = A rule-based tunnel in Go
+	pkgver = Prerelease.Alpha.r0.g2899a12
+	pkgrel = 1
+	url = https://github.com/MetaCubeX/Clash.Meta
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = clash
+	provides = clash-dev
+	conflicts = clash
+	conflicts = clash-dev
+	options = !lto
+	backup = etc/clash/config.yaml
+	source = git+https://github.com/MetaCubeX/Clash.Meta.git#branch=Alpha
+	source = config.yaml
+	source = clash.service
+	source = clash@.service
+	sha256sums = SKIP
+	sha256sums = c4af03523b8006d206440163406ee9b4de1a10bb5023fb3194490b8225a5e481
+	sha256sums = e7370a0c60147839d923a61189968a0e781857d036c9e0751b16ddce1fb61b0c
+	sha256sums = 3ba4a71955e8f4676eda68e7c5a1d9c02ad9d8e9fd4bbf8f35487bdc768290ef
+
+pkgname = clash-meta-alpha-git

@@ -1,0 +1,13 @@
+[Unit]
+Description=Clash-Meta Daemon, Another Clash Kernel.
+After=network.target NetworkManager.service systemd-networkd.service iwd.service
+
+[Service]
+Type=exec
+CapabilityBoundingSet=cap_net_admin cap_sys_admin
+AmbientCapabilities=cap_net_admin cap_sys_admin
+Restart=on-abort
+ExecStart=/usr/bin/clash -d /etc/clash
+
+[Install]
+WantedBy=multi-user.target
