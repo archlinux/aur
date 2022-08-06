@@ -27,7 +27,7 @@ check() {
   # source /etc/profile.d/intel-oneapi-mkl.sh
   # local MKL_VERSION=$(pacman -Q intel-oneapi-mkl | sed -e 's/.* //; s/-.*//g')
   # MKLROOT=/opt/intel/oneapi/mkl/${MKL_VERSION::8}
-  MPLBACKEND=Agg python -m pytest --no-header -vv -k 'not basis and not cli'
+  MPLBACKEND=Agg python -m pytest -k 'not basis and not cli'
 }
 
 package() {
