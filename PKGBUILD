@@ -1,17 +1,17 @@
-# Maintainer: skrewball <jason at joickle dot com>
+# Maintainer: skrewball <aur at joickle dot com>
 
 pkgname=gnome-shell-extension-color-picker
 _pkgbase=tuberry-color-picker
-pkgver=29
-_commit=f78fe63
+pkgver=30
+_commit=8b9bc6c
 pkgrel=1
 pkgdesc='Simple color picker for Gnome Shell'
 arch=(any)
 url='https://github.com/tuberry/color-picker'
 license=('GPL3')
-depends=('dconf' 'gnome-shell>=1:42')
+depends=('dconf' 'gnome-shell')
 source=("${_pkgbase}-${pkgver}.tar.gz::${url}/tarball/${_commit}")
-sha256sums=('42d4976330307d7b123a5d03345583b760c04466d9af074a279d0576239150dd')
+sha256sums=('903d60aa21f5d15a8301d7073d9aa1e280d3ac7e8ef404e6b5ba6ab9da74a4bd')
 
 build() {
   cd "${_pkgbase}-${_commit}"
