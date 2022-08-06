@@ -1,0 +1,8 @@
+# exclude everything
+/*
+
+# except these files
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!launcher.sh

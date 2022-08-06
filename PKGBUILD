@@ -1,7 +1,8 @@
-# Maintainer: Johannes Wienke <languitar@semipol.de>
+# Maintainer: Tom Knight-Markiegi <tom.knight@gmail.com>
+# Contributor: Johannes Wienke <languitar@semipol.de>
 
 pkgname=structurizr-cli
-pkgver=1.14.0
+pkgver=1.19.0
 pkgrel=2
 pkgdesc="A command line utility for Structurizr"
 arch=(any)
@@ -10,7 +11,7 @@ license=('apache')
 depends=('java-runtime')
 makedepends=()
 source=("https://github.com/structurizr/cli/releases/download/v${pkgver}/structurizr-cli-${pkgver}.zip" "launcher.sh")
-sha256sums=('3239d0da724de4daa157f64097e5fe01cd9ef04aa205b7a521b30eb7c56ffc6e'
+sha256sums=('aad505e9e48b89a30fe411990981205433bb650e4148ca2f5d877477c80fe42d'
             'd360ef7d8ac0106c3e735d3f74628ed24e6604ad7bc254d4b85a49a5b933bf27')
 
 package() {
