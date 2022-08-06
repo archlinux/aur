@@ -2,8 +2,8 @@
 
 pkgname=piscesde-qt-plugins-git
 _pkgname=piscesde-qt-plugins
-pkgver=0
-pkgrel=2
+pkgver=0.9
+pkgrel=1
 pkgdesc="Unify Qt application style of piscesDE"
 arch=('x86_64')
 url="https://github.com/piscesys/qt-plugins"
@@ -15,6 +15,11 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd qt-plugins
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   cd qt-plugins
