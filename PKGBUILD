@@ -13,8 +13,8 @@
 # Orginally based on a Debian Squeeze package
 
 pkgname=zoneminder
-pkgver=1.36.21
-pkgrel=4
+pkgver=1.36.24
+pkgrel=1
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('any')
 url='https://www.zoneminder.com/'
@@ -57,7 +57,7 @@ source=("https://github.com/ZoneMinder/zoneminder/archive/refs/tags/${pkgver}.ta
         'zoneminder-httpd.conf'
         'zoneminder-php.ini'
         'fcgiwrap-multiwatch.service')
-sha256sums=('ca83cf52233db39daabdb13e280da4eff04a428b73e3e1e36f42174cf43c43ed'
+sha256sums=('dcecc2e4708e7066902edd188c8a5d653ffdee05abbb24f574c04241b9116342'
             'dbd231e97b950c698f0f501d6a53c7291c9985e766b09e3afe00cfe69a969f44'
             '55be29e1eccb44d4ad0db8b23c37cec50f5341f8e498583d472ed1f0493876e3'
             'SKIP'
