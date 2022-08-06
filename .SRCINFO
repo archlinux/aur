@@ -1,0 +1,24 @@
+pkgbase = libpiscesde-git
+	pkgdesc = System library for piscesDE applications
+	pkgver = 0
+	pkgrel = 2
+	url = https://github.com/piscesys/libpisces
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	makedepends = qt5-tools
+	makedepends = git
+	depends = kscreen
+	depends = modemmanager-qt
+	depends = networkmanager-qt
+	depends = qt5-quickcontrols2
+	depends = accountsservice
+	depends = bluez
+	depends = bluez-qt
+	provides = libpiscesde
+	conflicts = libpiscesde
+	source = git+https://github.com/piscesys/libpisces.git
+	sha512sums = SKIP
+
+pkgname = libpiscesde-git
