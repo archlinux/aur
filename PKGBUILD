@@ -1,7 +1,7 @@
 # Maintainer: zhuangzhuang <xufengyuan20080802@outlook.com>
 
 pkgname=piscesde-fishui-git
-pkgbase=piscesde-fishui
+pkgbase=piscesde-fishui-git
 _pkgname=piscesde-fishui
 pkgver=0
 pkgrel=2

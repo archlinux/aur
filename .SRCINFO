@@ -1,4 +1,4 @@
-pkgbase = piscesde-fishui
+pkgbase = piscesde-fishui-git
 	pkgdesc = GUI library based on QQC2 for piscesDE applications
 	pkgver = 0
 	pkgrel = 2
