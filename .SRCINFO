@@ -10,7 +10,7 @@ pkgbase = python-pyfnutils
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = https://github.com/vejnar/pyfnutils/archive/refs/tags/v1.3.tar.gz
+	source = python-pyfnutils-1.3.tar.gz::https://github.com/vejnar/pyfnutils/archive/refs/tags/v1.3.tar.gz
 	sha1sums = 055825e6dbeebde50e955535c22a7af973ea4d41
 
 pkgname = python-pyfnutils
