@@ -1,7 +1,7 @@
 pkgbase = piscesde-fishui-git
 	pkgdesc = GUI library based on QQC2 for piscesDE applications
-	pkgver = 0
-	pkgrel = 2
+	pkgver = 0.9
+	pkgrel = 1
 	url = https://github.com/piscesys/fishui
 	arch = x86_64
 	license = GPL
