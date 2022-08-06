@@ -2,7 +2,7 @@
 
 pkgname=mailnotify-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.2.0
+pkgver=0.2.3
 release_bin="${_pkgname}-${pkgver}-Linux-x86_64"
 pkgrel=1
 pkgdesc="Generate pop-up notifications about incoming email messages"
