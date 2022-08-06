@@ -2,8 +2,8 @@
 
 pkgname=piscesde-icons-git
 _pkgname=piscesde-icons
-pkgver=0
-pkgrel=2
+pkgver=0.9
+pkgrel=1
 pkgdesc="System default icon theme of piscesDE"
 arch=('any')
 url="https://github.com/piscesys/icons"
@@ -15,6 +15,11 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd icons
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   cd icons
