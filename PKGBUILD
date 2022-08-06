@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=opencl-headers-git
-pkgver=2022.01.04.3.gdcd5bed
+pkgver=2022.05.18.1.g7f216e8
 pkgrel=1
 pkgdesc='OpenCL (Open Computing Language) header files. (GIT Version)'
 arch=('any')
@@ -42,7 +42,7 @@ check() {
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --build build --target install
+  DESTDIR="${pkgdir}" cmake --install build
 
   install -Dm644 OpenCL-Headers/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
