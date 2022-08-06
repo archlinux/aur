@@ -7,7 +7,7 @@ pkgdesc="The Common Data Access toolset"
 arch=('x86_64')
 url="https://www.stcorp.nl"
 license=('BSD')
-depends=('python' 'hdf4' 'java-environment')
+depends=('python' 'hdf4' 'hdf5' 'java-environment')
 provides=('hdf-coda')
 source=("https://github.com/stcorp/coda/releases/download/${pkgver}/coda-${pkgver}.tar.gz")
 md5sums=('b0bbb6aab6719e94db128126457fd8a2')
@@ -22,7 +22,6 @@ build() {
 package() {
 	cd coda-$pkgver
 	make DESTDIR=${pkgdir} install
-	#install -dm 755 "${pkgdir}/usr/share/licenses/${pkgname}"
-    	#install -Dm 644 "../src/coda-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}"
+    	#install -Dm 644 "coda-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
