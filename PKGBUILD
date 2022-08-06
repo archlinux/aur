@@ -15,6 +15,7 @@ pkgrel=1
 pkgdesc="Generic pre- and post-processing platform for numerical simulation (openmpi version) (Documentation)"
 url="https://www.salome-platform.org/downloads"
 license=('LGPL')
+depends=("med=$pkgver")
 makedepends=('gcc-fortran'
              'hdf5-openmpi'
              'cmake'

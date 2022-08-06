@@ -10,6 +10,7 @@ pkgbase = med-openmpi-docs
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = graphviz
+	depends = med=4.1.1
 	options = debug
 	source = http://files.salome-platform.org/Salome/other/med-4.1.1.tar.gz
 	source = hdf5-1.12.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/sci-libs/med/files/med-4.1.0-0003-build-against-hdf5-1.12.patch?id=350ea3e89d0e87e35a3a4b5f2ce92b55aae9d226
