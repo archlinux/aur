@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec electron /usr/lib/sunamu/app.asar "$@"
+exec electron19 /usr/lib/sunamu/app.asar "$@"

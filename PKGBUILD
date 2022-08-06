@@ -2,7 +2,7 @@
 
 pkgname=sunamu-git
 _pkgname=sunamu
-pkgver=r236.6948d1fc89
+pkgver=r338.720a09fa75
 pkgrel=1
 pkgdesc="Show your currently playing song in a stylish way! (Development version)"
 url="https://github.com/NyaomiDEV/Sunamu"
@@ -17,7 +17,7 @@ source=("${_pkgname}::git+https://github.com/NyaomiDEV/Sunamu"
         "${_pkgname}.sh")
 sha256sums=("SKIP"
             "61e7326922b6f1a58d894488df27264ed307e1c1e8a0bb3aea61f0fcaa9c2bd4"
-            "3ec100c03e6653aeed2400109501c3209295d58e74e4dbc71dadcfad86ef910c")
+            "0011819bc377cc6e39dd413f3c968ea45478d6ea140c2774bdba88ae343db410")
 
 pkgver() {
   cd "${srcdir}/$_pkgname"
