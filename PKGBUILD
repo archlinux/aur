@@ -2,8 +2,8 @@
 
 pkgname=piscesde-screenlocker-git
 _pkgname=piscesde-screenlocker
-pkgver=0
-pkgrel=2
+pkgver=0.9
+pkgrel=1
 pkgdesc="piscesDE system screen locker"
 arch=('x86_64')
 url="https://github.com/piscesys/screenlocker"
@@ -15,6 +15,11 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd screenlocker
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   cd screenlocker
