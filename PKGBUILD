@@ -1,12 +1,12 @@
-# Maintainer: Ali Nabipour <alinabipour01@gmail.com>
+# Maintainer: zhuangzhuang <xufengyuan20080802@outlook.com>
 
 pkgname=piscesde-dock-git
 _pkgname=piscesde-dock
 pkgver=0
 pkgrel=2
-pkgdesc="CutefishOS application dock"
+pkgdesc="piscesDE application dock"
 arch=('x86_64')
-url="https://github.com/cutefishos/dock"
+url="https://github.com/piscesys/dock"
 license=('GPL')
 groups=('piscesde-git')
 depends=('piscesde-fishui-git' 'libpiscesde-git' 'qt5-svg')

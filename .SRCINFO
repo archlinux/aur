@@ -1,8 +1,8 @@
 pkgbase = piscesde-dock-git
-	pkgdesc = CutefishOS application dock
+	pkgdesc = piscesDE application dock
 	pkgver = 0
 	pkgrel = 2
-	url = https://github.com/cutefishos/dock
+	url = https://github.com/piscesys/dock
 	arch = x86_64
 	groups = piscesde-git
 	license = GPL
@@ -15,7 +15,7 @@ pkgbase = piscesde-dock-git
 	depends = qt5-svg
 	provides = piscesde-dock
 	conflicts = piscesde-dock
-	source = git+https://github.com/cutefishos/dock.git
+	source = git+https://github.com/piscesys/dock.git
 	sha512sums = SKIP
 
 pkgname = piscesde-dock-git
