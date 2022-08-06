@@ -1,0 +1,19 @@
+pkgbase = gluctl-bin
+	pkgdesc = The glue that helps maintain a Kubernetes Home Lab
+	pkgver = v0.1.0
+	pkgrel = 1
+	url = https://github.com/onedr0p/gluctl
+	arch = aarch64
+	arch = x86_64
+	license = custom:WTFPL
+	provides = gluctl
+	conflicts = gluctl
+	options = !strip
+	source = https://raw.githubusercontent.com/onedr0p/gluctl/v0.1.0/LICENSE.md
+	sha256sums = SKIP
+	source_aarch64 = gluctl-bin_v0.1.0::https://github.com/onedr0p/gluctl/releases/download/v0.1.0/gluctl-linux-arm64
+	sha256sums_aarch64 = 23466b9e1daac74040937bdb603220602fc846addc563de3a25ca99744393f22
+	source_x86_64 = gluctl-bin_v0.1.0::https://github.com/onedr0p/gluctl/releases/download/v0.1.0/gluctl-linux-amd64
+	sha256sums_x86_64 = cb5da40d5c04fdf9b173796a564a3b91d098cac7223a88aa42d3a0792a499d72
+
+pkgname = gluctl-bin
