@@ -8,9 +8,9 @@
 
 pkgbase="joplin"
 pkgname=('joplin' 'joplin-desktop')
-pkgver=2.7.15
+pkgver=2.8.8
 groups=('joplin')
-pkgrel=4
+pkgrel=2
 install="joplin.install"
 depends=('electron' 'gtk3' 'libexif' 'libgsf' 'libjpeg-turbo' 'libwebp' 'libxss' 'nodejs>=17.3'
          'nss' 'orc' 'rsync' 'libvips')
@@ -24,7 +24,7 @@ source=("joplin.desktop" "joplin-desktop.sh" "joplin.sh"
 sha256sums=('c7c5d8b0ff9edb810ed901ea21352c9830bfa286f3c18b1292deca5b2f8febd2'
             'a450284fe66d89aa463d129ce8fff3a0a1a783a64209e4227ee47449d5737be8'
             '16aed6c4881efcef3fd86f7c07afb4c743e24d9da342438a8167346a015629e0'
-            '1e605cf5519d8bd32cda541f5c693083183ddde6edeb5ce3cb440f14bb32d999')
+            'b6e0a3a5d59882de37494c0b3b1d28df407e86d06e81bc8201cb912e2711949b')
 
 # local npm cache directory
 _yarn_cache="yarn-cache"
@@ -62,10 +62,6 @@ prepare() {
     msg2 "WARNING: Using path ${w_node} beware its not the defualt path, check if you are using nvm or similar"
   fi
 
-  msg2 "Deleting all package-locks.json"
-  find "${srcdir}/joplin-${pkgver}" -type f -name package-lock.json -delete
-  msg2 "Appliying patches..."
-
   msg2 "Tweaking .yarnrc"
   yq -i -y ".cacheFolder=(\"${cache}\")" "${srcdir}/joplin-${pkgver}/.yarnrc.yml"
 
@@ -75,20 +71,7 @@ prepare() {
 
   msg2 "Deleting app-mobile"
   rm -r "${srcdir}/joplin-${pkgver}/packages/app-mobile"
-
-
-  msg2 "Fixing electron-rebuild"
-  # More info: https://github.com/electron/electron-rebuild/issues/913
-  local tmp_desktop_json="$(mktemp --tmpdir="$srcdir")"
-  local desktop_package_json="${srcdir}/joplin-${pkgver}/packages/app-desktop/package.json"
-  jq '.devDependencies."electron-rebuild"=("3.2.7")' \
-    "$desktop_package_json" > "$tmp_desktop_json"
-  cat "$tmp_desktop_json" > "$desktop_package_json"
-  rm "$tmp_desktop_json"
-  cat "$desktop_package_json" | grep "electron-rebuild"
-
-  msg2 "Removing yarn.lock"
-  rm "${srcdir}/joplin-${pkgver}/yarn.lock"
+  rm -r "${srcdir}/joplin-${pkgver}/packages/app-clipper"
 }
 
 
@@ -145,11 +128,6 @@ package_joplin() {
   # You also need to pipe yes, for depeendy
   yes | yarn add ./package.tgz
 
-  #msg2 "Rsyncing files"
-  #rsync -avp "./" "${pkgdir}/usr/share/joplin/app-cli"
-  #rsync -avp "../lib/" "${pkgdir}/usr/share/joplin/lib"
-  #rsync -avp "../renderer/" "${pkgdir}/usr/share/joplin/renderer"
-
   msg2 "Fixing Directories Permissions"
   # Non-deterministic race in npm gives 777 permissions to random directories.
   # See https://github.com/npm/cli/issues/1103 for details.
@@ -157,13 +135,6 @@ package_joplin() {
 
   msg2 "Removing References to \$pkgdir"
   find "$pkgdir" -name package.json -print0 | xargs -0 sed -i "/_where/d"
-
-  msg2 "Removing References to \$srcdir"
-  #local tmppackage="$(mktemp --tmpdir="$srcdir")"
-  #local pkgjson="$pkgdir/usr/share/joplin/app-cli/package.json" # TODO joplin name
-  #jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
-  #mv "$tmppackage" "$pkgjson"
-  #chmod 644 "$pkgjson"
 
   msg2 "Fixing Permissions set by npm"
   # npm gives ownership of ALL FILES to build user
