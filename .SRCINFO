@@ -1,6 +1,6 @@
 pkgbase = python-google-cloud-bigquery
 	pkgdesc = Google BigQuery API client library
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/googleapis/python-bigquery
 	changelog = CHANGELOG.md
@@ -29,7 +29,7 @@ pkgbase = python-google-cloud-bigquery
 	optdepends = python-fastparquet: fastparquet support
 	optdepends = python-snappy: fastparquet support
 	optdepends = python-llvmlite: fastparquet support
-	source = python-google-cloud-bigquery-3.2.0.tar.gz::https://github.com/googleapis/python-bigquery/archive/v3.2.0.tar.gz
-	sha256sums = 1f7986eec231e817704f922d61d8ec88b3411c8c04fc44e87fb77600c6c26d7f
+	source = python-google-cloud-bigquery-3.3.0.tar.gz::https://github.com/googleapis/python-bigquery/archive/v3.3.0.tar.gz
+	sha256sums = 9eb15a14b8b0f9768402ef042d2971466449f0c79313a57769dca5f4c1874635
 
 pkgname = python-google-cloud-bigquery
