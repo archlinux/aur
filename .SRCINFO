@@ -1,6 +1,6 @@
 pkgbase = sunamu-git
 	pkgdesc = Show your currently playing song in a stylish way! (Development version)
-	pkgver = r226.3937e3f94d
+	pkgver = r236.6948d1fc89
 	pkgrel = 1
 	url = https://github.com/NyaomiDEV/Sunamu
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = sunamu-git
 	makedepends = yarn
 	makedepends = node-gyp
 	makedepends = nvm
-	depends = electron
+	depends = electron19
 	depends = libvips
 	conflicts = sunamu
 	conflicts = sunamu-bin
