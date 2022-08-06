@@ -3,8 +3,8 @@
 # Contributor: Martin F. Schumann
 
 pkgname=unvanquished
-pkgver=0.52.1
-pkgrel=2
+pkgver=0.53.1
+pkgrel=1
 pkgdesc='A team-based, fast-paced, fps/rts hybrid game which pits aliens against humans.'
 arch=('x86_64')
 url='https://www.unvanquished.net'
@@ -39,6 +39,11 @@ _naclsdk_ver="linux64-${_naclsdk_base_ver}"
 _naclsdk="${_naclsdk_ver}"
 
 source=("unvanquished.install"
+        "unvanquished.sh"
+        "unvanquished-tty.sh"
+        "unvanquished.conf"
+        "unvanquished.desktop"
+        "unvanquished.service"
         "unvanquished_${pkgver}.tar.gz::https://github.com/Unvanquished/Unvanquished/${_archive}"
         "daemon_${pkgver}.tar.gz::https://github.com/DaemonEngine/Daemon/${_archive}"
         "breakpad_${pkgver}.tar.gz::https://github.com/DaemonEngine/breakpad/${_archive}"
@@ -47,11 +52,16 @@ source=("unvanquished.install"
         "naclsdk_${_naclsdk_ver}.tar.bz2::https://dl.unvanquished.net/deps/${_naclsdk_ver}.tar.bz2")
 
 md5sums=('6d9430b5b06b93a43a1cb79e14637f0b'
-         '8eaf06371e13bbd09e192dcea08b7ce6'
-         '7b9bef4e73797f522510692a0d6229e3'
-         '3cafdb19b9d21c2d1c70045cf9eb99f3'
-         'fb870952a4df15b5ace446facd8d6fae'
-         'c8623945ec57cf4a356c6f3768a28436'
+         '8d89d015e13f39f1849dfa40146dbfb6'
+         '705d8ad238356cd8fc97f63060f9b2e9'
+         'fd69458c8aa7fa8e71cea6a5993fdcbc'
+         '6d0c7f32cb46e2a3a3901f0ad745fa39'
+         'acf733d3389af8806edc54c872212e53'
+         '2fd9691518840c0314d9eb2d02453501'
+         '1f8759356464950943e078d71b706485'
+         '7fd25b2fa114983dd582c7ded4e4c4b5'
+         'aaa0eff1d63b3bee5792317c704b3966'
+         'fef72bfaa6e82cbe74c9f5089d4282fe'
          '3c2cceeb5c653c4e53543fc892377f38')
 
 # The prepare function mimics the git submodule dance.
@@ -76,10 +86,6 @@ prepare() {
 
 	# Link the NaCL SDK in the Dæmon source tree.
 	ln -sfr "${_naclsdk}"            "${_daemon}/external_deps/${_naclsdk}"
-
-	# Patch breakpad.
-	# TODO: This is fixed upstream; remove this with the next release.
-	sed -i 's/16384, SIGSTKSZ/16384u, static_cast<unsigned>(SIGSTKSZ)/g' $(find ${_breakpad} -name "exception_handler.cc")
 }
 
 build() {
@@ -113,13 +119,15 @@ package() {
 		var/lib/unvanquished-server/game
 
 	# Install content.
-	cd "${srcdir}/${_unvanquished}"
+	cd "${srcdir}"
 
-	for resolution in $(ls -c1 dist/icons/); do
-		icondir="${pkgdir}/usr/share/icons/hicolor/${resolution}/apps"
-		install -d -m 755 "${icondir}"
-		install -m 644 "dist/icons/${resolution}/unvanquished.png" "${icondir}"
-	done
+	install -m 755 unvanquished.sh         "${pkgdir}/usr/bin/unvanquished"
+	install -m 755 unvanquished-tty.sh     "${pkgdir}/usr/bin/unvanquished-tty"
+	install -m 644 unvanquished.conf       "${pkgdir}/etc/conf.d/"
+	install -m 644 unvanquished.service    "${pkgdir}/usr/lib/systemd/system/"
+	install -m 644 unvanquished.desktop    "${pkgdir}/usr/share/applications/"
+
+	cd "${srcdir}/${_unvanquished}"
 
 	install -m 644 COPYING.txt             "${pkgdir}/usr/share/licenses/unvanquished/"
 
@@ -133,18 +141,18 @@ package() {
 	install -m 755 nacl_helper_bootstrap   "${pkgdir}/usr/lib/unvanquished/"
 	install -m 755 nacl_loader             "${pkgdir}/usr/lib/unvanquished/"
 
-	# install starters and dedicated server config
-	# TODO: Use the distro-independent distribution files as much as possible,
-	#       ship all archlinux-specific files with the AUR package.
-	cd "${srcdir}/${_unvanquished}/archlinux"
+	cd "${srcdir}/${_unvanquished}/dist/configs"
 
-	install -m 755 unvanquished.sh         "${pkgdir}/usr/bin/unvanquished"
-	install -m 755 unvanquished-tty.sh     "${pkgdir}/usr/bin/unvanquished-tty"
-	install -m 644 unvanquished.conf       "${pkgdir}/etc/conf.d/"
-	install -m 644 unvanquished.service    "${pkgdir}/usr/lib/systemd/system/"
-	install -m 644 unvanquished.desktop    "${pkgdir}/usr/share/applications/"
-	install -m 644 configs/maprotation.cfg "${pkgdir}/etc/unvanquished/"
-	install -m 644 configs/server.cfg      "${pkgdir}/etc/unvanquished/"
+	install -m 644 game/maprotation.cfg    "${pkgdir}/etc/unvanquished/"
+	install -m 644 config/server.cfg       "${pkgdir}/etc/unvanquished/"
+
+	cd "${srcdir}/${_unvanquished}/dist/icons"
+
+	for resolution in $(ls -c1); do
+		icondir="${pkgdir}/usr/share/icons/hicolor/${resolution}/apps"
+		install -d -m 755 "${icondir}"
+		install -m 644 "${resolution}/unvanquished.png" "${icondir}"
+	done
 
 	# setup server home directory
 	cd "${pkgdir}/var/lib/unvanquished-server/config"
