@@ -1,5 +1,5 @@
 pkgbase = libpisces
-	pkgdesc = System library for Cutefish applications
+	pkgdesc = System library for piscesDE applications
 	pkgver = 0
 	pkgrel = 2
 	url = https://github.com/piscesys/libpisces
