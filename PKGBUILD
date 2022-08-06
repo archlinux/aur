@@ -2,7 +2,7 @@
 
 _pkgname='mplhep'
 pkgname="python-${_pkgname}"
-pkgver='0.3.23'
+pkgver='0.3.26'
 pkgrel=1
 pkgdesc="A set of helpers for matplotlib to more easily produce plots typically needed in HEP."
 arch=('any')
