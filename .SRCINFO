@@ -1,0 +1,20 @@
+pkgbase = piscesde-terminal-git
+	pkgdesc = A terminal emulator for piscesDE
+	pkgver = 0
+	pkgrel = 2
+	url = https://github.com/piscesys/terminal
+	arch = x86_64
+	groups = piscesde-git
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	makedepends = git
+	depends = piscesde-fishui-git
+	depends = libpiscesde-git
+	depends = qt5-svg
+	provides = piscesde-terminal
+	conflicts = piscesde-terminal
+	source = git+https://github.com/piscesys/terminal.git
+	sha512sums = SKIP
+
+pkgname = piscesde-terminal-git
