@@ -1,7 +1,7 @@
 pkgbase = r-flexdashboard
 	pkgdesc = R Markdown Format for Flexible Dashboards
-	pkgver = 0.5.2
-	pkgrel = 4
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=flexdashboard
 	arch = any
 	license = MIT
@@ -12,8 +12,9 @@ pkgbase = r-flexdashboard
 	depends = r-knitr
 	depends = r-rmarkdown
 	depends = r-shiny
+	depends = r-scales
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/flexdashboard_0.5.2.tar.gz
-	sha256sums = 6445e98e082a91f74fd5518c1667959b203e2e6a7df32c7aeeae844b692a07ae
+	source = https://cran.r-project.org/src/contrib/flexdashboard_0.6.0.tar.gz
+	sha256sums = 75462d53e6df4e858e0ecea08df57df31b27372ea0e00d898a4cf76e14137c2f
 
 pkgname = r-flexdashboard

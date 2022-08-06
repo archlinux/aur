@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flexdashboard
-_pkgver=0.5.2
+_pkgver=0.6.0
 pkgname=r-${_pkgname,,}
-pkgver=0.5.2
-pkgrel=4
+pkgver=0.6.0
+pkgrel=1
 pkgdesc='R Markdown Format for Flexible Dashboards'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,12 +17,13 @@ depends=(
   r-knitr
   r-rmarkdown
   r-shiny
+  r-scales
 )
 optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6445e98e082a91f74fd5518c1667959b203e2e6a7df32c7aeeae844b692a07ae')
+sha256sums=('75462d53e6df4e858e0ecea08df57df31b27372ea0e00d898a4cf76e14137c2f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
