@@ -1,7 +1,6 @@
 # Maintainer: zhuangzhuang <xufengyuan20080802@outlook.com>
 
 pkgname=libpiscesde-git
-pkgbase=libpiscesde-git
 _pkgname=libpiscesde
 pkgver=0
 pkgrel=2
@@ -18,14 +17,19 @@ conflicts=("$_pkgname")
 source=("git+$url.git")
 sha512sums=('SKIP')
 
+pkgver() {
+  cd libpisces
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
-  cd $_pkgname
+  cd libpisces
 
   cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr .
   ninja
 }
 
 package() {
-  cd $_pkgname
+  cd libpisces
   DESTDIR="$pkgdir" ninja install
 }
