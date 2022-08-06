@@ -2,8 +2,8 @@
 
 pkgname=piscesde-kwin-plugins-git
 _pkgname=piscesde-kwin-plugins
-pkgver=0
-pkgrel=2
+pkgver=0.9
+pkgrel=1
 pkgdesc="piscesDE KWin Plugins"
 arch=('x86_64')
 url="https://github.com/piscesys/kwin-plugins"
@@ -16,6 +16,11 @@ provides=("$_pkgname")
 conflicts=("$_pkgname" "deepin-kwin")
 source=("git+$url.git")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd kwin-plugins
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   cd kwin-plugins
