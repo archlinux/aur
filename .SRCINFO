@@ -1,7 +1,7 @@
 pkgbase = sunamu
 	pkgdesc = Show your currently playing song in a stylish way!
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NyaomiDEV/Sunamu
 	arch = x86_64
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = sunamu
 	makedepends = yarn
 	makedepends = node-gyp
 	makedepends = nvm
-	depends = electron
+	depends = electron19
 	depends = libvips
 	conflicts = sunamu-git
 	conflicts = sunamu-bin
@@ -22,6 +22,6 @@ pkgbase = sunamu
 	source = sunamu.sh
 	sha256sums = SKIP
 	sha256sums = 61e7326922b6f1a58d894488df27264ed307e1c1e8a0bb3aea61f0fcaa9c2bd4
-	sha256sums = 3ec100c03e6653aeed2400109501c3209295d58e74e4dbc71dadcfad86ef910c
+	sha256sums = 0011819bc377cc6e39dd413f3c968ea45478d6ea140c2774bdba88ae343db410
 
 pkgname = sunamu

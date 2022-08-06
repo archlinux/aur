@@ -2,28 +2,28 @@
 
 pkgname=sunamu
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Show your currently playing song in a stylish way!"
 url="https://github.com/NyaomiDEV/Sunamu"
 license=("MPL-2.0")
 arch=("x86_64" "i686" "armv7h" "aarch64")
 conflicts=(sunamu-git sunamu-bin)
 makedepends=("git" "npm" "yarn" "node-gyp" "nvm")
-depends=("electron" "libvips")
+depends=("electron19" "libvips")
 
 source=("${pkgname}::git+https://github.com/NyaomiDEV/Sunamu#tag=v$pkgver"
         "${pkgname}.desktop"
         "${pkgname}.sh")
 sha256sums=("SKIP"
             "61e7326922b6f1a58d894488df27264ed307e1c1e8a0bb3aea61f0fcaa9c2bd4"
-            "3ec100c03e6653aeed2400109501c3209295d58e74e4dbc71dadcfad86ef910c")
+            "0011819bc377cc6e39dd413f3c968ea45478d6ea140c2774bdba88ae343db410")
 
 build() {
   cd "$srcdir/$pkgname"
 
   # use system electron version
   # see: https://wiki.archlinux.org/index.php/Electron_package_guidelines
-  electronDist="/usr/lib/electron"
+  electronDist="/usr/lib/electron19"
   electronVer=$(pacman -Q $(pacman -Qqo $electronDist) | cut -d " " -f2 | cut -d "-" -f1)
 
   # use nvm but isolate it for this shell
