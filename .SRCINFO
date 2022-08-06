@@ -1,7 +1,7 @@
 pkgbase = piscesde-videoplayer-git
 	pkgdesc = Cirily Video Player
-	pkgver = 0
-	pkgrel = 2
+	pkgver = 0.9
+	pkgrel = 1
 	url = https://github.com/piscesys/videoplayer
 	arch = x86_64
 	groups = piscesde-git

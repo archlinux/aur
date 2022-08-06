@@ -2,8 +2,8 @@
 
 pkgname=piscesde-videoplayer-git
 _pkgname=piscesde-videoplayer
-pkgver=0
-pkgrel=2
+pkgver=0.9
+pkgrel=1
 pkgdesc="Cirily Video Player"
 arch=('x86_64')
 url="https://github.com/piscesys/videoplayer"
@@ -15,6 +15,11 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd videoplayer
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   cd videoplayer
