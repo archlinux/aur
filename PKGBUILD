@@ -2,8 +2,8 @@
 
 pkgname=piscesde-core-git
 _pkgname=piscesde-core
-pkgver=0
-pkgrel=2
+pkgver=0.9
+pkgrel=1
 pkgdesc="System components and backend of piscesDE"
 arch=('x86_64')
 url="https://github.com/piscesys/core"
@@ -17,6 +17,11 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd core
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   cd core

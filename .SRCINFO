@@ -1,7 +1,7 @@
 pkgbase = piscesde-core-git
 	pkgdesc = System components and backend of piscesDE
-	pkgver = 0
-	pkgrel = 2
+	pkgver = 0.9
+	pkgrel = 1
 	url = https://github.com/piscesys/core
 	arch = x86_64
 	groups = piscesde-git
