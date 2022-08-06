@@ -117,6 +117,8 @@ prepare() {
   sed 's/OPENEXR_FOUND/OpenEXR_FOUND/g' -i "${srcdir}"/AliceVision-${pkgver}/src/CMakeLists.txt
 # fix openimageio:2 target library
   sed 's/${OPENIMAGEIO_LIBRARIES};dl/OpenImageIO::OpenImageIO/g' -i "${srcdir}"/AliceVision-${pkgver}/src/CMakeLists.txt
+# fix [io]fstream(path) initializer
+  sed '1 i#include <fstream>' -i $(grep -Rl std::[io]fstream "${srcdir}"/AliceVision-${pkgver}/src)
 }
 
 
