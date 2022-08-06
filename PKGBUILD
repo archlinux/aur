@@ -2,7 +2,7 @@
 
 pkgbase=yesplaymusic-git
 pkgname=(yesplaymusic-git yesplaymusic-electron-git)
-pkgver=0.4.5.r9.gc3aea5e
+pkgver=0.4.5.r28.gf9e6164
 pkgrel=1
 pkgdesc="高颜值的第三方网易云播放器，支持 Windows / macOS / Linux"
 arch=("x86_64" "aarch64")
@@ -11,7 +11,7 @@ license=("MIT")
 provides=("yesplaymusic")
 conflicts=("yesplaymusic")
 depends=("gtk3" "nss" "libxss" "c-ares" "ffmpeg" "http-parser" "libevent" "libvpx" "libxslt" "minizip" "re2" "snappy" "libnotify" "libappindicator-gtk3")
-makedepends=("yarn" "git" "libvips" "nodejs<=17.9.0" "nodejs>=14.0.0")
+makedepends=("yarn" "git" "libvips" "nodejs-lts-gallium")
 optdepends=('yt-dlp: Youtube source for built-in UnblockNeteaseMusic')
 source=("git+https://github.com/qier222/YesPlayMusic" "yesplaymusic.desktop" "yesplaymusic")
 sha256sums=('SKIP'
