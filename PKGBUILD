@@ -21,7 +21,7 @@ conflicts=('dualsensectl-git')
 url='https://github.com/nowrep/dualsensectl'
 license=('GPL2')
 depends=('dbus' 'hidapi')
-makedepends=('git' 'gcc')
+makedepends=( 'make' 'git' 'gcc')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nowrep/dualsensectl/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('SKIP')
 
