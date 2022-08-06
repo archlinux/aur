@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=fGarch
-_pkgver=4021.86
+_pkgver=4021.87
 pkgname=r-${_pkgname,,}
-pkgver=4021.86
+pkgver=4021.87
 pkgrel=1
 pkgdesc='Rmetrics - Autoregressive Conditional Heteroskedastic Modelling'
 arch=('x86_64')
@@ -24,7 +24,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('731269e78d81ee63a98f5ec6837c7f3fd4735eeb034ad02dff2cb5c6f5475970')
+sha256sums=('3d3d0fa9865e5e74548b46b824222f4bfea836dec886e6d8d6004a109b66c766')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
