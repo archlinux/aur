@@ -13,8 +13,8 @@ _pkgvariant="${_TOOLKIT}"
 _gitbranch="${_TOOLKIT}"
 pkgname="${_pkgname}-${_pkgvariant}-git"
 epoch=0
-pkgver=3.19.0+48.r11565.20220713.5d76d2a7f
-pkgrel=3
+pkgver=3.19.0+61.r11578.20220802.c51af48dd
+pkgrel=1
 pkgdesc='A GTK based e-mail client. Latest git checkout of GTK2 branch.'
 arch=(
   'i686'
@@ -146,7 +146,7 @@ build() {
 
   _configure_opts=(
     --prefix=/usr
-    # --disable-static # Specifying this would break compilation with `--enable-tests`. See https://www.thewildbeast.co.uk/claws-mail/bugzilla/show_bug.cgi?id=4547.
+    --disable-static
     --enable-shared
     --enable-nls
     --enable-manual
@@ -167,7 +167,6 @@ build() {
     --disable-valgrind
     --disable-alternate-addressbook # add --enable-alternate-addressbook to the options to use the new/alternate address book (which could break things!). Do not forget to add claws-contacts to the dependencies then
     --enable-svg
-    --enable-tests
     --enable-deprecated
     --enable-acpi_notifier-plugin
     --enable-address_keeper-plugin
@@ -214,12 +213,6 @@ build() {
   pushd tools 2>/dev/null
   make
   popd 2>/dev/null
-}
-
-check() {
-  cd "${srcdir}/${_pkgname}"
-
-  make test
 }
 
 package() {
