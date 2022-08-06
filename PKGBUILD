@@ -1,9 +1,9 @@
 # Maintainer: # Maintainer: kpj <kpjkpjkpjkpjkpjkpj@gmail.com>
 
 pkgname=nvidia-gpu-exporter-bin
-_pkgname=nvidia_gpu_exporter
+_pkgname=nvidia-gpu-exporter
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Nvidia GPU exporter for prometheus using nvidia-smi binary"
 arch=(x86_64)
 url="https://github.com/utkuozdemir/nvidia_gpu_exporter"
@@ -22,12 +22,12 @@ b2sums=(
 
 package() {
     # systemd
-    install -Dm644 "$srcdir/$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-    install -Dm644 "$srcdir/$_pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+    install -Dm644 "$srcdir/$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
+    install -Dm644 "$srcdir/$_pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
 
     # binary
-    install -Dm755 "$srcdir/$_pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 "$srcdir/${_pkgname//-/_}" "$pkgdir/usr/bin/$_pkgname"
 
     # license
-    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }

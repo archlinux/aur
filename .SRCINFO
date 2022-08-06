@@ -1,13 +1,13 @@
 pkgbase = nvidia-gpu-exporter-bin
 	pkgdesc = Nvidia GPU exporter for prometheus using nvidia-smi binary
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/utkuozdemir/nvidia_gpu_exporter
 	arch = x86_64
 	license = MIT
 	source = https://github.com/utkuozdemir/nvidia_gpu_exporter/releases/download/v1.0.0/nvidia_gpu_exporter_1.0.0_linux_x86_64.tar.gz
-	source = nvidia_gpu_exporter.sysusers
-	source = nvidia_gpu_exporter.service
+	source = nvidia-gpu-exporter.sysusers
+	source = nvidia-gpu-exporter.service
 	b2sums = de10069fe962efa7d8c0cc12d56aec001d7e1e87c36991bdcf9c3e8b8571586ae3a0ae547cff169b59de17d07cf45a1275a0719757e5d3db6ea66734d712a7c8
 	b2sums = fb56cec66cfcbb783715f29f287034fb7c9d92afacce5944f1a36eda94a803defc725fb865b7a548db26ca049ae2f471e2cebea06a11ff4a95d0d74e3b953c99
 	b2sums = 5fe6c6f9bbdcb16c6b3495ad900a5387ab311963507a424c3c468d084e37940c4dec8451660caa5c77cf0aec31005b4bc7764d6a42aaccc0ea88edb18dae1ac6
