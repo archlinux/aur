@@ -2,8 +2,8 @@
 
 pkgname=piscesde-filemanager-git
 _pkgname=piscesde-filemanager
-pkgver=0
-pkgrel=2
+pkgver=0.9
+pkgrel=1
 pkgdesc="piscesDE File Manager"
 arch=('x86_64')
 url="https://github.com/piscesys/filemanager"
@@ -15,6 +15,11 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd filemanager
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   cd filemanager
