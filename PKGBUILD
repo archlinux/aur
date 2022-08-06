@@ -6,7 +6,7 @@
 pkgname=kotatogram-desktop-beta
 _pkgname=kotatogram-desktop
 pkgver=1.4.9
-pkgrel=3
+pkgrel=4
 pkgdesc='Kotatogram – experimental Telegram Desktop fork - Beta version'
 arch=('x86_64')
 url="https://kotatogram.github.io"
@@ -74,6 +74,7 @@ source=("${_pkgname}::git+https://github.com/kotatogram/${_pkgname}.git#tag=k${p
 
         "0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch"
         "block-sponsored_messages.patch"
+        "allow-downloading-and-copying-from-restricted-channels.patch"
         )
 
 b2sums=('SKIP'
@@ -122,7 +123,8 @@ b2sums=('SKIP'
         '9321818ba47c1d0bb5e49f5def7b96f21e8a9b49a14359a82f6ef57d43ce5357d93099f406eea731b2dc1a6f4dc113da6ce35bc6a945ffe96d202200d1c8359a'
         '3029740444c95cc99eb39fcb255ae1969e4111d6d21caef50481b183713e787c489ef8b3944f06dd27310c1a6dbaa5ae4639f5406e31c09e67b532e1f0da942c'
         '63c912c53b7c259d97162f96acdb67a88b625c99ac2144869abc88a08d96e940bfdefcf9478c3c20a95f03c19ac16428e3fa6f6a2fa16a879de29b2856b4b617'
-        '96a703e3c7e4a2e2229c386daa24af0ca0228d130a35a6ba25e5da4885297d5d0b33fe37f26f71955cac01e3250dc4f811ebb6ff0fe58f3f7e5d5380a970347f')
+        '96a703e3c7e4a2e2229c386daa24af0ca0228d130a35a6ba25e5da4885297d5d0b33fe37f26f71955cac01e3250dc4f811ebb6ff0fe58f3f7e5d5380a970347f'
+        '5aca335099867de975d5ff1f05d2117c4c7d637213ad6636d6c892ae5249ee352b491195a8133023fdac79af7ce642bf6991e3d54e2d026580ddd02d3a950cd2')
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
@@ -174,6 +176,7 @@ prepare() {
 
     patch -Np1 -i "${srcdir}/0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch"
     patch -Np1 -i "${srcdir}/block-sponsored_messages.patch"
+    patch -Np1 -i "${srcdir}/allow-downloading-and-copying-from-restricted-channels.patch"
 
     cd "${srcdir}/${_pkgname}-tg_owt"
     git config submodule.src/third_party/libvpx/source/libvpx.url "${srcdir}/${_pkgname}-tg_owt-libvpx"

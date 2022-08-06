@@ -1,7 +1,7 @@
 pkgbase = kotatogram-desktop-beta
 	pkgdesc = Kotatogram – experimental Telegram Desktop fork - Beta version
 	pkgver = 1.4.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://kotatogram.github.io
 	arch = x86_64
 	license = GPL3
@@ -112,6 +112,7 @@ pkgbase = kotatogram-desktop-beta
 	source = https://patch-diff.githubusercontent.com/raw/desktop-app/tg_owt/pull/101.patch
 	source = 0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch
 	source = block-sponsored_messages.patch
+	source = allow-downloading-and-copying-from-restricted-channels.patch
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -159,5 +160,6 @@ pkgbase = kotatogram-desktop-beta
 	b2sums = 3029740444c95cc99eb39fcb255ae1969e4111d6d21caef50481b183713e787c489ef8b3944f06dd27310c1a6dbaa5ae4639f5406e31c09e67b532e1f0da942c
 	b2sums = 63c912c53b7c259d97162f96acdb67a88b625c99ac2144869abc88a08d96e940bfdefcf9478c3c20a95f03c19ac16428e3fa6f6a2fa16a879de29b2856b4b617
 	b2sums = 96a703e3c7e4a2e2229c386daa24af0ca0228d130a35a6ba25e5da4885297d5d0b33fe37f26f71955cac01e3250dc4f811ebb6ff0fe58f3f7e5d5380a970347f
+	b2sums = 5aca335099867de975d5ff1f05d2117c4c7d637213ad6636d6c892ae5249ee352b491195a8133023fdac79af7ce642bf6991e3d54e2d026580ddd02d3a950cd2
 
 pkgname = kotatogram-desktop-beta
