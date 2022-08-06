@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec /opt/JabRef/bin/JabRef $@
+exec /opt/jabref/bin/JabRef $@
