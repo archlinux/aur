@@ -1,7 +1,7 @@
 pkgbase = kotatogram-desktop-beta-dynamic-bin
 	pkgdesc = Kotatogram – experimental Telegram Desktop fork - Beta version precompiled package
 	pkgver = 1.4.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://kotatogram.github.io
 	arch = x86_64
 	license = GPL3
@@ -48,7 +48,7 @@ pkgbase = kotatogram-desktop-beta-dynamic-bin
 	provides = kotatogram-desktop
 	conflicts = kotatogram-desktop
 	conflicts = kotatogram-desktop-bin
-	source = https://github.com/3JlOy-PYCCKUi/kotatogram-desktop-betaAUR/releases/download/k1.4.9-3/kotatogram-desktop-beta-1.4.9-3-x86_64.pkg.tar.zst
-	b2sums = 69b693affc3f736ca176a2e438b1493b22a2e10c55b06750b040fd156fa43b718151275bbdc9fda2f1cbf053c772d3e848489ef5023ca2fa02312a8ad7ed3cd7
+	source = https://github.com/3JlOy-PYCCKUi/kotatogram-desktop-betaAUR/releases/download/k1.4.9-4/kotatogram-desktop-beta-1.4.9-4-x86_64.pkg.tar.zst
+	b2sums = e1f8ac507605fafb266d3485606e0a399b60355630b828a0baac0227c3b1ee32c3bc3ab56b164fd3cb079b636de31692dd8cec7ff295a7f668f616838cfbde1e
 
 pkgname = kotatogram-desktop-beta-dynamic-bin
