@@ -1,7 +1,7 @@
 pkgbase = piscesde-screenshot-git
 	pkgdesc = Screenshot tool for piscesDE
-	pkgver = 0
-	pkgrel = 2
+	pkgver = 0.9
+	pkgrel = 1
 	url = https://github.com/piscesys/screenshot
 	arch = x86_64
 	groups = piscesde-git
