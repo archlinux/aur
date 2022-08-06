@@ -1,32 +1,37 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=libevdevplus
-pkgver=0.1.1
-pkgrel=2
+_pkg=libevdevPlus
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Easy-to-use event device library in C++"
 url="https://github.com/YukiWorkshop/libevdevPlus"
 license=('MIT')
 arch=('x86_64')
-source=("$url/archive/v$pkgver.tar.gz"
-        "$url/commit/7d4ff7dc76d135f2fab1c22fa3c2e11110d3507a.patch")
-sha256sums=('c941b6b45f784c1e6c6f316f59256fabd604ac392db405cf7fd99de2686aaab0'
-            '131ac2d9736b588818d024aee34bfa90703114ab6450164655c3f5d15a78c338')
-makedepends=('cmake' 'ninja')
+depends=('gcc-libs')
+makedepends=('cmake')
+provides=('libevdevPlus.so')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+        "001-install-directives.patch::$url/commit/cb3ca40.patch")
+sha256sums=('c656a29258222c3f058f2ddd7e4f7f5f30fb92c74a25cf0db460139cce0668b9'
+            '10b66dbbb7d977471ff6f095cb4d607e090dcec23a099a2fdd93fe45a01f321a')
 
 prepare() {
-  cd "libevdevPlus-$pkgver"
-  patch -sp1 -i ../7d4ff7dc76d135f2fab1c22fa3c2e11110d3507a.patch
+	patch -p1 -d "$_pkg-$pkgver" < 001-install-directives.patch
 }
 
 build() {
-  cmake \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -G Ninja \
-    -S "libevdevPlus-$pkgver" -B build
-  ninja -C build
+	cmake \
+		-B build \
+		-S "$_pkg-$pkgver" \
+		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DBUILD_SHARED_LIBS=ON \
+		-Wno-dev
+	make -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+	make -C build install DESTDIR="$pkgdir"
+	install -Dm644 "$_pkg-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
