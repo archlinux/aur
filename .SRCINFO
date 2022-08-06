@@ -1,7 +1,7 @@
 pkgbase = python-onnxoptimizer
 	pkgdesc = ONNX model optimizer
-	pkgver = 0.2.7
-	pkgrel = 3
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/onnx/optimizer
 	arch = x86_64
 	license = MIT
@@ -16,8 +16,8 @@ pkgbase = python-onnxoptimizer
 	depends = python
 	depends = python-onnx
 	options = debug
-	source = onnx-optimizer::git+https://github.com/onnx/optimizer.git#tag=v0.2.7
-	source = git+https://github.com/onnx/onnx.git
+	source = onnx-optimizer::git+https://github.com/onnx/optimizer.git#tag=v0.3.0
+	source = onnx-daquexian::git+https://github.com/daquexian/onnx.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
