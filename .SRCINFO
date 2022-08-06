@@ -1,7 +1,7 @@
 pkgbase = bibtex-tidy
 	pkgdesc = BibTeX Tidy - Cleaner and Formatter for BibTeX files
 	pkgver = 1.8.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/FlamingTempura/bibtex-tidy
 	arch = any
 	license = MIT

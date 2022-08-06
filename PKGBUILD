@@ -1,7 +1,7 @@
 # Maintainer: Cristóbal Tapia <crtapia at gmail dot com>
 pkgname=bibtex-tidy
 pkgver=1.8.5
-pkgrel=4
+pkgrel=5
 pkgdesc="BibTeX Tidy - Cleaner and Formatter for BibTeX files "
 arch=('any')
 url="https://github.com/FlamingTempura/bibtex-tidy"
@@ -34,6 +34,7 @@ package() {
   gzip -f "$pkgname.1"
   mkdir -p "$pkgdir/usr/share/man/man1/"
   install -g 0 -o 0 -m 0644 "$pkgname.1.gz" "$pkgdir/usr/share/man/man1/"
+  chown -R root:root "${pkgdir}"
 }
 
 # vim:set ts=2 sw=2 et:`
