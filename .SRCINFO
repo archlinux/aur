@@ -2,7 +2,7 @@ pkgbase = piscesde-settings-git
 	pkgdesc = System Settings application for piscesDE
 	pkgver = 0
 	pkgrel = 2
-	url = https://github.com/cutefishos/settings
+	url = https://github.com/piscesys/settings
 	arch = x86_64
 	groups = piscesde-git
 	license = GPL
@@ -20,7 +20,7 @@ pkgbase = piscesde-settings-git
 	depends = networkmanager-qt
 	provides = piscesde-settings
 	conflicts = piscesde-settings
-	source = git+https://github.com/cutefishos/settings.git
+	source = git+https://github.com/piscesys/settings.git
 	sha512sums = SKIP
 
 pkgname = piscesde-settings-git
