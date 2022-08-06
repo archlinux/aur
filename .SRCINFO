@@ -1,0 +1,17 @@
+pkgbase = piscesde-wallpapers-git
+	pkgdesc = piscesDE's system wallpaper
+	pkgver = 0
+	pkgrel = 2
+	url = https://github.com/piscesys/wallpapers
+	arch = any
+	groups = piscesde-git
+	license = GPL
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	provides = piscesde-wallpapers
+	conflicts = piscesde-wallpapers
+	source = git+https://github.com/piscesys/wallpapers.git
+	sha512sums = SKIP
+
+pkgname = piscesde-wallpapers-git
