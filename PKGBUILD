@@ -4,7 +4,7 @@
 
 pkgname=python-pyperf
 _pkg="${pkgname#python-}"
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='Toolkit to run Python benchmarks'
 url='https://github.com/vstinner/pyperf'
@@ -16,7 +16,7 @@ checkdepends=('python-psutil')
 changelog=changelog.rst
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         '001-setup.py.patch')
-sha256sums=('cac2614f5ddb71b9102ce6252df5d2d5a28f69807aae4d7789dadfad4ee39332'
+sha256sums=('9b18558bfb55ea1e752c221439e842ec837763b7a52dba794d11ca9baf172f73'
             '925fb3cc19ca60295ebfdccdb55d805a3f372f9597ef151f77609b520171c23e')
 
 prepare() {

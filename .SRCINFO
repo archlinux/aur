@@ -1,6 +1,6 @@
 pkgbase = python-pyperf
 	pkgdesc = Toolkit to run Python benchmarks
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/vstinner/pyperf
 	changelog = changelog.rst
@@ -13,9 +13,9 @@ pkgbase = python-pyperf
 	makedepends = python-sphinx
 	makedepends = python-wheel
 	depends = python
-	source = python-pyperf-2.4.0.tar.gz::https://github.com/vstinner/pyperf/archive/2.4.0.tar.gz
+	source = python-pyperf-2.4.1.tar.gz::https://github.com/vstinner/pyperf/archive/2.4.1.tar.gz
 	source = 001-setup.py.patch
-	sha256sums = cac2614f5ddb71b9102ce6252df5d2d5a28f69807aae4d7789dadfad4ee39332
+	sha256sums = 9b18558bfb55ea1e752c221439e842ec837763b7a52dba794d11ca9baf172f73
 	sha256sums = 925fb3cc19ca60295ebfdccdb55d805a3f372f9597ef151f77609b520171c23e
 
 pkgname = python-pyperf
