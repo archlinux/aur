@@ -2,9 +2,9 @@
 # Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=rcompanion
-_pkgver=2.4.16
+_pkgver=2.4.18
 pkgname=r-${_pkgname,,}
-pkgver=2.4.16
+pkgver=2.4.18
 pkgrel=1
 pkgdesc='Functions to Support Extension Education Program Evaluation'
 arch=('any')
@@ -20,7 +20,7 @@ depends=(
   r-plyr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f4d2f628e44c7c0b19105b5a5f97c78bd88c4fe579eb34dd6696ee6d69469227')
+sha256sums=('8b5f8a10f31dee31386ee1f99f3c8b6ceadab8e290f56bcba4d37bd6c48ace3a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
