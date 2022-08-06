@@ -22,6 +22,6 @@ build() {
 package() {
 	cd coda-$pkgver
 	make DESTDIR=${pkgdir} install
-    	install -Dm 644 "coda-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}"
+    	install -Dm 644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
