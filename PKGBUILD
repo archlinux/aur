@@ -2,8 +2,8 @@
 
 pkgname=piscesde-wallpapers-git
 _pkgname=piscesde-wallpapers
-pkgver=0
-pkgrel=2
+pkgver=0.9
+pkgrel=1
 pkgdesc="piscesDE's system wallpaper"
 arch=('any')
 url="https://github.com/piscesys/wallpapers"
