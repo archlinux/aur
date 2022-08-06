@@ -68,20 +68,14 @@ prepare() {
 	mkdir -p skia
 	bsdtar xf skia-$_skiaver.tar.gz  --strip-components=1 -C skia
 	# Fix up Aseprite's desktop integration
-	echo desktop
 	env -C aseprite patch -tp1 <desktop.patch
 	# Allow using more shared libs
-	echo fmt
 	env -C aseprite patch -tp1 <shared-fmt.patch
-	echo libarchive
 	env -C aseprite patch -tp1 <shared-libarchive.patch
-	echo libwebp
 	env -C aseprite patch -tp1 <shared-libwebp.patch
-	echo pixman
 	env -C aseprite patch -tp1 <optional-pixman.patch
 	# Their "FindSkia" module forcefully tries to use Skia's FreeType and HarfBuzz,
 	# but we don't clone those because we use the shared ones. Avoid overwriting the settings instead.
-	echo skiadeps
 	env -C aseprite patch -tp1 <shared-skia-deps.patch
 }
 
