@@ -1,7 +1,7 @@
 pkgbase = piscesde-cursor-themes-git
 	pkgdesc = piscesDE cursor dark/light themes
-	pkgver = 0
-	pkgrel = 2
+	pkgver = 0.9
+	pkgrel = 1
 	url = https://github.com/piscesys/cursor-themes
 	arch = any
 	groups = piscesde-git
