@@ -2,7 +2,7 @@
 # Submitter: Schala Zeal <schalaalexiazeal@gmail.com>
 
 pkgname=spigot
-_pkgver=1.19.1
+_pkgver=1.19.2
 _build=148
 pkgver="${_pkgver}+b${_build}"
 pkgrel=1
