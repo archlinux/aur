@@ -1,6 +1,6 @@
 pkgbase = python-torchvision-rocm
 	pkgdesc = Datasets, transforms, and models specific to computer vision (with ROCM GPU support)
-	pkgver = 0.13.0
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = https://github.com/pytorch/vision
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = python-torchvision-rocm
 	optdepends = python-pycocotools: support for MS-COCO dataset
 	provides = python-torchvision
 	conflicts = python-torchvision
-	source = vision-0.13.0.tar.gz::https://github.com/pytorch/vision/archive/v0.13.0.tar.gz
+	source = vision-0.13.1.tar.gz::https://github.com/pytorch/vision/archive/v0.13.1.tar.gz
 	source = force_disable_nvjpeg.patch
-	sha512sums = e4ca6d3764b4114e5f485acf255021e18597715b8d7a53d700537c62a84ae1bb241c3cc561b86b236675973667a57ef8ca701657cb629a2ec9c8ae4bc023950e
+	sha512sums = 219e787cd04632f480120d6ff74d092f6804beb9543dbc9fc9be6cc0dd0c7271bb91508a2183c11f2faf6365e73ed16c2501dc6f6e7cb49f61deb6ce44476e70
 	sha512sums = SKIP
 
 pkgname = python-torchvision-rocm

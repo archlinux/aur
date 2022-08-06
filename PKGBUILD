@@ -8,7 +8,7 @@
 
 pkgname=python-torchvision-rocm
 _pkgname='vision'
-pkgver=0.13.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc='Datasets, transforms, and models specific to computer vision (with ROCM GPU support)'
 arch=('x86_64')
@@ -41,7 +41,7 @@ source=(
   'force_disable_nvjpeg.patch'
 )
 sha512sums=(
-  'e4ca6d3764b4114e5f485acf255021e18597715b8d7a53d700537c62a84ae1bb241c3cc561b86b236675973667a57ef8ca701657cb629a2ec9c8ae4bc023950e'
+  '219e787cd04632f480120d6ff74d092f6804beb9543dbc9fc9be6cc0dd0c7271bb91508a2183c11f2faf6365e73ed16c2501dc6f6e7cb49f61deb6ce44476e70'
   'SKIP'
 )
 
