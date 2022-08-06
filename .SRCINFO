@@ -1,7 +1,7 @@
 pkgbase = xdao
 	pkgdesc = An nmbXD TUI cli written in Python.
-	pkgver = 1.0.1
-	pkgrel = 3
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://github.com/TransparentLC/xdcmd
 	install = xdao.install
 	arch = any

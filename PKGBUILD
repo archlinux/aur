@@ -2,8 +2,8 @@
 # Packager: Malingshu <myy0222@gmail.com>
 
 pkgname=xdao
-pkgver=1.0.1
-pkgrel=3
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="An nmbXD TUI cli written in Python."
 arch=('any')
 url="https://github.com/TransparentLC/xdcmd"
