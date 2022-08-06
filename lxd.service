@@ -1,16 +1,23 @@
 [Unit]
-Description=Daemon based on liblxc offering a REST API to manage containers.
-After=network.target
+Description=LXD Container Hypervisor
+After=network-online.target lxcfs.service
+Requires=network-online.target lxcfs.service lxd.socket
+Documentation=file:///usr/share/doc/lxd/
 
 [Service]
-Type=simple
 Environment=LXD_OVMF_PATH=/usr/share/ovmf/x64
-ExecStart=/usr/bin/lxd --group lxd
+ExecStart=/usr/bin/lxd --group=lxd --logfile=/var/log/lxd/lxd.log
+ExecStartPost=/usr/bin/lxd waitready --timeout=600
 ExecStop=/usr/bin/lxd shutdown
-KillMode=process
+TimeoutStartSec=600s
+TimeoutStopSec=30s
+Restart=on-failure
 LimitNOFILE=1048576
 LimitNPROC=infinity
+LimitCORE=infinity
 TasksMax=infinity
+Delegate=yes
+KillMode=process
 
 [Install]
 WantedBy=multi-user.target

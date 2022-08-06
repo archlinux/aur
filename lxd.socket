@@ -1,12 +1,13 @@
 [Unit]
 Description=LXD - unix socket
-After=network.target
+Documentation=file:///usr/share/doc/lxd/
 
 [Socket]
 ListenStream=/var/lib/lxd/unix.socket
 SocketMode=0660
-SocketUser=root
 SocketGroup=lxd
+Service=lxd.service
 
 [Install]
 WantedBy=sockets.target
+

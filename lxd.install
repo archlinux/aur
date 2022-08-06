@@ -1,5 +1,4 @@
 post_install() {
-    getent group lxd || groupadd lxd
     echo "LXD allows everyone in the lxd group to talk to LXD."
     echo ""
     echo "LXD needs sub{u,g}ids for root, so that it can create unprivileged containers."
