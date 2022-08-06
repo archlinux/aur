@@ -42,6 +42,7 @@
 # ALICEVISION_USE_NVTX_PROFILING "Use CUDA NVTX for profiling." OFF
 # ALICEVISION_NVCC_WARNINGS      "Switch on several additional warnings for CUDA nvcc." OFF
 _CMAKE_FLAGS+=(
+              -DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON
               -DCMAKE_INSTALL_PREFIX=/usr
               -DCMAKE_INSTALL_LIBDIR=lib
               -DEIGEN_INCLUDE_DIR_HINTS=/usr/include/eigen3
@@ -112,6 +113,8 @@ prepare() {
   grep -lR "std::numeric_limits"|xargs sed -i '1 i\#include <limits>'
 # fix doc build
   ((BUILD_DOXYGEN)) && sed -i '/^ *install.*doc/s/doc/htmlDoc/' src/CMakeLists.txt || true
+# fix CMAKE_FIND_PACKAGE_PREFER_CONFIG=ON preserve target name capitalisation
+  sed 's/OPENEXR_FOUND/OpenEXR_FOUND/g' -i "${srcdir}"/AliceVision-${pkgver}/src/CMakeLists.txt
 }
 
 
