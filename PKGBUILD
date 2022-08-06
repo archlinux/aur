@@ -2,7 +2,8 @@
 
 pkgname=mesa-d3d12
 pkgdesc="Mesa optimized for D3D12 Gallium backend"
-pkgver=22.1.4
+_pkgver=22.2.0-rc1
+pkgver=${_pkgver/-/.}
 pkgrel=1
 arch=('x86_64')
 depends=(
@@ -23,7 +24,7 @@ provides=(
   'mesa' 'mesa-libgl' 'opengl-driver'
   'vulkan-mesa-layers'
   'opencl-mesa' 'opencl-driver'
-  'vulkan-swrast' 'vulkan-driver'
+  'vulkan-d3d12' 'vulkan-swrast' 'vulkan-driver'
 )
 conflicts=(
   'mesa'
@@ -44,9 +45,9 @@ makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence
 
 url="https://www.mesa3d.org/"
 license=('custom')
-source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig}
+source=(https://mesa.freedesktop.org/archive/mesa-${_pkgver}.tar.xz{,.sig}
         LICENSE)
-sha512sums=('64f584a70c3c7554682c861444c75433eaa858e86725d9de4c067c234bcae535dffa9dcbab16fb86a1d30680772bd23ea6af336afdf99a50960d6c133592950f'
+sha512sums=('ce7176a01d64e0bb9b62c2152f4ff4e99c795f9fbeff140c059e0c011a6f8823001bb89f04fc61abc13b9d76747103f31f44891128413769fe695e27b48ab23b'
             'SKIP'
             'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7')
 validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D'  # Emil Velikov <emil.l.velikov@gmail.com>
@@ -61,11 +62,11 @@ build() {
   CFLAGS+=' -mtls-dialect=gnu'
   CXXFLAGS+=' -mtls-dialect=gnu'
 
-  arch-meson mesa-$pkgver build \
+  arch-meson mesa-$_pkgver build \
     -D b_ndebug=true \
     -D platforms=x11,wayland \
     -D gallium-drivers=swrast,d3d12 \
-    -D vulkan-drivers=swrast \
+    -D vulkan-drivers=swrast,microsoft-experimental \
     -D vulkan-layers=device-select,overlay \
     -D dri3=enabled \
     -D egl=enabled \
