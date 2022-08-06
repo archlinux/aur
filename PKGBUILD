@@ -3,11 +3,13 @@
 
 pkgname=("iease-music-daihy-git" "iease-music-daihy-electron-git")
 pkgver=1.0.0.r134.g280ad50
-pkgrel=1
+pkgrel=2
 pkgdesc='网易云音乐第三方(daihy fork)'
 license=('MIT')
-depends=('gconf' 'libnotify' 'nss' 'libxss' 'libappindicator-gtk3' 'libxtst')
-makedepends=('yarn' 'git' 'jq')
+depends=(
+    'c-ares' 'ffmpeg' 'http-parser' 'libevent' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy'
+    'libnotify' 'libappindicator-gtk3' )
+makedepends=('yarn' 'git' 'jq' 'npm')
 arch=('aarch64' 'x86_64' 'i686')
 url="https://github.com/daihy8759/ieaseMusic"
 provides=('iease-music' 'iease-music-daihy')
