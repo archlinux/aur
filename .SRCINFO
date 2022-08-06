@@ -1,14 +1,13 @@
 pkgbase = xorg-listres
 	pkgdesc = List resources in widgets
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = http://www.x.org/
 	arch = x86_64
 	arch = i686
 	license = custom
 	depends = libxaw
-	source = http://xorg.freedesktop.org/releases/individual/app/listres-1.0.4.tar.bz2
-	md5sums = 24e05349f2881aaa58cbe160e49223ac
+	source = http://xorg.freedesktop.org/releases/individual/app/listres-1.0.5.tar.gz
+	md5sums = 966221006de8095d575517dfb0dad9cd
 
 pkgname = xorg-listres
-
