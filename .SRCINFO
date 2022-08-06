@@ -1,4 +1,4 @@
-pkgbase = piscesde-cursor-themes
+pkgbase = piscesde-cursor-themes-git
 	pkgdesc = piscesDE cursor dark/light themes
 	pkgver = 0
 	pkgrel = 2

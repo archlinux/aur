@@ -1,7 +1,6 @@
 # Maintainer: zhuangzhuang <xufengyuan20080802@outlook.com>
 
 pkgname=piscesde-cursor-themes-git
-pkgbase=piscesde-cursor-themes
 _pkgname=piscesde-cursor-themes
 pkgver=0
 pkgrel=2
