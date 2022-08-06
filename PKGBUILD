@@ -1,18 +1,26 @@
-# Maintainer: demian <mikar ατ gmx δοτ de>
+# Contributor: demian <mikar ατ gmx δοτ de>
+_commit=6b2000d4bddc7a0008ba347cdb084391cbe9bf73
 pkgname=thinkwatt
-pkgver=0.3
+pkgver=0.3.r36.6b2000d
 pkgrel=1
 pkgdesc="record power consumption, calculate the average and create a gnuplot graphic"
 arch=('any')
-url="https://github.com/mikar/thinkwatt"
-license=('GPL')
+url="https://github.com/serialoverflow/thinkwatt"
+license=('MIT')
 depends=("gnuplot")
 optdepends=("tp_smapi")
-source=(https://github.com/mikar/thinkwatt/raw/master/thinkwatt)
-sha256sums=('531c0eceebe74f632ab9e70a6c3b419c0d933a7329d3037cf9a514569451d702')
+makedepends=("git")
+source=("git+${url}#commit=${_commit}")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd ${pkgname}
+  # old maintainer/developer used pkgver=0.3 so we honor that
+  printf "0.3.r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+}
 
 package() {
-  install -d    ${pkgdir}/usr/bin
-  install -m755 ${srcdir}/${pkgname} ${pkgdir}/usr/bin/
-  ln -s /usr/bin/${pkgname} ${pkgdir}/usr/bin/twat
+  cd ${pkgname}
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+  install -Dm755 -t "${pkgdir}/usr/bin" ${pkgname}
 }
