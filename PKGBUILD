@@ -12,6 +12,10 @@
 
 [[ -v CUDA_ARCH ]] && _cuda_arch="-DALICEVISION_CUDA_CC_LIST=${CUDA_ARCH}"
 
+# Use CMAKE_FLAGS=xxx:yyy:zzz to define extra CMake flags
+[[ -v CMAKE_FLAGS ]] && mapfile -t -d: _CMAKE_FLAGS < <(echo -n "$CMAKE_FLAGS")
+
+
 ((DISABLE_CUDA))    && eval DISABLE_{CCTAG,POPSIFT,UTE}=1   # Disable other components that requires cuda
 ((DISABLE_OPENCV))  && DISABLE_CCTAG=1                      # CCTag requires OpenCV
 ((DISABLE_CUDA))    &&    _use_cuda=OFF ||    _use_cuda=ON  # Alow user to build without cuda
