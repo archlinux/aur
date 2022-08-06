@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=opencl-clhpp-git
-pkgver=2.0.16.4.g61a5c9a
+pkgver=2022.05.18.0.g0af4767
 pkgrel=1
 pkgdesc='OpenCLTM API C++ bindings. (GIT Version)'
 arch=('any')
@@ -66,8 +66,7 @@ check() {
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --build build --target install
-
+  DESTDIR="${pkgdir}" cmake --install build
   install -d "${pkgdir}/usr/share/doc/OpenCL-CLHPP"
   (cd build/docs; doxygen -u)
   cmake --build build --target docs
