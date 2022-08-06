@@ -1,5 +1,5 @@
 pkgname=webcord
-pkgver=3.5.1
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="A Discord and Fosscord client made with the Electron."
 arch=('any')
@@ -19,7 +19,7 @@ source=(
 )
 
 sha256sums=(
-    'ca19e2ef743fd9b108dc18067ab147b5be888e3d4887c9b61faeaf58e7729ceb'
+    '3191f1420a51e13840a6ecc518c9560c9044282f0a6bc055285b7cc53273e118'
     '0f907649efc3dc60320ea84bfc6489996d2664523348641c9b6e7642bd062be0'
     'c803c7227982fad22390a8d6d11f3707171d5e9b1a394731a6a07773eab75b1f'
     '3a9b6df6be84741b5839d559301b95cb75e012fd7f20f3f8eac10cc11bccc4a1'
@@ -38,7 +38,7 @@ prepare() {
         "electron"@"^19.0.1"
 
     cd "${_srcname}"
-    npm i --omit=dev --ignore-scripts
+    npm i --omit=dev --ignore-scripts "@types/node"@"^18.0.0"
     rm -r "sources/code/build"
 }
 
@@ -63,6 +63,7 @@ package() {
     cd "${_srcname}"
     install -Dm644 -t "${lib}" "package.json"
     cp -rdt "${lib}" "node_modules"
+    rm -r "${lib}/node_modules/@types"
 
     local sources="${lib}/sources"
     install -dm755 "${sources}"
