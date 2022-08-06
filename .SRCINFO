@@ -1,21 +1,19 @@
 pkgbase = fsharp-mono-bin
 	pkgdesc = The legacy Mono F# Compiler, Core Library & Tools (Xamarin binary build). Newer versions are included in dotnet-core.
-	pkgver = 4.5.0
+	pkgver = 5.0.0.0
 	pkgrel = 1
 	url = http://fsharp.org/
 	arch = any
 	license = MIT
 	depends = mono
-	depends = msbuild-stable
-	provides = fsharp=4.5.0
+	provides = fsharp=5.0.0.0
 	conflicts = fsharp
 	replaces = fsharp-bin
-	noextract = fsharp_4.5-0xamarin9+ubuntu1804b1_all.deb
-	noextract = libfsharp-core4.5-cil_4.5-0xamarin9+ubuntu1804b1_all.deb
-	source = https://download.mono-project.com/repo/ubuntu/pool/main/f/fsharp/fsharp_4.5-0xamarin9+ubuntu1804b1_all.deb
-	source = https://download.mono-project.com/repo/ubuntu/pool/main/f/fsharp/libfsharp-core4.5-cil_4.5-0xamarin9+ubuntu1804b1_all.deb
-	sha256sums = a475d3053c9747a0d85b15722d3bd77ab9a3efe15a4cf3df7f1817a53313d1db
-	sha256sums = 3e4c87ad762121460215a853e9cba6933e679b03ab4459a1d4236399ec2afb56
+	noextract = fsharp_5.0-0xamarin15+ubuntu2004b1_all.deb
+	noextract = libfsharp-core5.0-cil_5.0-0xamarin15+ubuntu2004b1_all.deb
+	source = https://download.mono-project.com/repo/ubuntu/pool/main/f/fsharp/fsharp_5.0.0.0-0xamarin15+ubuntu2004b1_all.deb
+	source = https://download.mono-project.com/repo/ubuntu/pool/main/f/fsharp/libfsharp-core5.0-cil_5.0.0.0-0xamarin15+ubuntu2004b1_all.deb
+	sha256sums = cc5fb438e5e05f569c7960fc840f75b5520db0430cb603693c4b5845a52201f9
+	sha256sums = 8e29923ae7f8643c3f0f74727743ab9f369e31864c2505fa734ba16108b533a6
 
 pkgname = fsharp-mono-bin
-
