@@ -1,6 +1,6 @@
 pkgbase = pulseway-bin
 	pkgdesc = Pulseway (Remotely Monitor and Control IT Systems)
-	pkgver = 8.8.9
+	pkgver = 8.11
 	pkgrel = 1
 	url = https://www.pulseway.com/
 	install = pulseway-bin.install
@@ -11,8 +11,8 @@ pkgbase = pulseway-bin
 	depends = wget
 	options = !strip
 	source_x86_64 = https://www.pulseway.com/download/pulseway_x64.pkg.tar.xz
-	sha256sums_x86_64 = 984bc8f7d638a32a4af72ecf1987844a719d372f9982b8523de33bd604e610fe
+	sha256sums_x86_64 = 518973a430e705325bac98ef501d9aa78d6b96c22ac413cac290d42a322e3b6a
 	source_i686 = https://www.pulseway.com/download/pulseway_x86.pkg.tar.xz
-	sha256sums_i686 = 9540d395dc7424308ddbd8b4d976f979a9ee567a1a474565c8f1d249b9bd9630
+	sha256sums_i686 = 7767dc89328d06c25c66cff9ea17771e4bf6587a48351e59d980cce1bdd5f326
 
 pkgname = pulseway-bin
