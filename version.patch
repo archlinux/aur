@@ -5,4 +5,4 @@
  
  if __name__ == "__main__":
 -    setuptools.setup(use_scm_version=True)
-+    setuptools.setup(version='3.1.1')
++    setuptools.setup(version='3.3.1')

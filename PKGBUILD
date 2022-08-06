@@ -21,7 +21,7 @@ makedepends=('python-setuptools')
 source=("https://github.com/pycontribs/jira/archive/refs/tags/$pkgver.tar.gz"
         "version.patch")
 sha256sums=('fe8f62fe7491a50f745696444f2b6eeaffbdf574506ed4a5ec0e111316e69926'
-            'd77b1bbc6b27a1d100bf4362ada5ef6bf887cc2b25f8fd72d8d169a354cdf9a4')
+            'fabe77f2cbdddfb23a6f7b3d574bd531a4b77184be9ab218e7389c36e5bb3193')
 
 
 prepare() {
