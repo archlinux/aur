@@ -3,20 +3,20 @@
 
 pkgname=jamulus
 _pkgname=Jamulus
-pkgver=3.8.2
+pkgver=3.9.0
 pkgrel=1
 pkgdesc="Internet jam session software"
 arch=('x86_64')
 url='https://jamulus.io/'
 license=('GPL2')
-depends=('glibc' 'gcc-libs' 'qt5-base' 'qt5-translations')
+depends=('gcc-libs' 'qt6-base' 'qt6-multimedia' 'libjack.so')
 conflicts=('jamulus-git')
 makedepends=('jack')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jamulussoftware/jamulus/archive/r${pkgver//./_}.tar.gz")
 
 build() {
   cd "${srcdir}/${pkgname}-r${pkgver//./_}"
-  qmake
+  qmake6
   make
 }
 
@@ -31,4 +31,4 @@ package() {
   install -vDm 644 {ChangeLog,README.md} -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
-sha1sums=('f1d53f904daac66c0567f0a8379797563ec88c00')
+sha1sums=('858b62646f23a04e876badfdf0799e6bcd5a5190')
