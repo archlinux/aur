@@ -1,0 +1,26 @@
+pkgbase = ypbind-mt-git
+	pkgdesc = Linux NIS daemon
+	pkgver = 2.7.2.r0.g044299c
+	pkgrel = 1
+	url = https://github.com/thkukuk/ypbind-mt
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = libxslt
+	makedepends = libxml2
+	makedepends = docbook-xml
+	makedepends = docbook-xsl
+	depends = yp-tools
+	depends = libsystemd
+	provides = ypbind-mt=2.7.2-1
+	conflicts = ypbind-mt
+	backup = etc/yp.conf
+	source = ypbind-mt-git::git+https://github.com/thkukuk/ypbind-mt
+	source = ypbind.service
+	source = ypbind.conf
+	md5sums = SKIP
+	md5sums = 8318400dbf455d5f8e63d4aeea68b29f
+	md5sums = 3d6a8eb44771f81abb47d14d9e4f301d
+
+pkgname = ypbind-mt-git
