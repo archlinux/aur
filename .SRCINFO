@@ -1,0 +1,22 @@
+pkgbase = piscesde-launcher-git
+	pkgdesc = piscesDE's full-screen application launcher
+	pkgver = 0
+	pkgrel = 2
+	url = https://github.com/cutefishos/launcher
+	arch = x86_64
+	groups = piscesde-git
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	makedepends = qt5-tools
+	makedepends = git
+	depends = piscesde-fishui-git
+	depends = kwindowsystem
+	depends = libpiscesde-git
+	provides = piscesde-launcher
+	conflicts = piscesde-launcher
+	conflicts = deepin-kwin
+	source = git+https://github.com/cutefishos/launcher.git
+	sha512sums = SKIP
+
+pkgname = piscesde-launcher-git
