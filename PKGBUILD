@@ -12,7 +12,7 @@ pkgname=aseprite
 pkgver=1.2.39
 _skiaver=m102
 _skiahash=861e4743af
-pkgrel=1
+pkgrel=2
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
@@ -56,7 +56,7 @@ sha256sums=('b84e67061a9600c6c508af26944851ce277f4e912bf73d8e9e83a2eba5510c21'
             '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9'
             '821f1354dbbc0bb3fa700e63037ed3c89b0d32bd2ab253450f91eeacd7d47c06'
             'd7f2f8c43d24382453273ed17b1c0e05928980a36ad0b7c988da3aa0fe32de53'
-            '2d6b5f33f23adc4f9912511ac35311a776ce34519ef40e9db3659e4c5457f055'
+            '19352033f2e5787229b2b71f7e961aeb24f293fb0b188a774140a7830f2b344b'
             'eb9f544e68b41b5cb1a9ab7a6648db51587e67e94f1a452cb5a84f3d224bf5d0'
             'c2d14f9738a96a9db3695c00ac3d14b1312b6a595b151bd56e19422c86517654')
 
@@ -68,14 +68,20 @@ prepare() {
 	mkdir -p skia
 	bsdtar xf skia-$_skiaver.tar.gz  --strip-components=1 -C skia
 	# Fix up Aseprite's desktop integration
+	echo desktop
 	env -C aseprite patch -tp1 <desktop.patch
 	# Allow using more shared libs
+	echo fmt
 	env -C aseprite patch -tp1 <shared-fmt.patch
+	echo libarchive
 	env -C aseprite patch -tp1 <shared-libarchive.patch
+	echo libwebp
 	env -C aseprite patch -tp1 <shared-libwebp.patch
+	echo pixman
 	env -C aseprite patch -tp1 <optional-pixman.patch
 	# Their "FindSkia" module forcefully tries to use Skia's FreeType and HarfBuzz,
 	# but we don't clone those because we use the shared ones. Avoid overwriting the settings instead.
+	echo skiadeps
 	env -C aseprite patch -tp1 <shared-skia-deps.patch
 }
 

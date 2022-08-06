@@ -11,10 +11,10 @@ Making optional linking with shared system webp library with
  2 files changed, 10 insertions(+), 4 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index f16f09660d..40065905d3 100644
+index af077f6..fed17ff 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -66,6 +66,7 @@ option(USE_SHARED_TINYXML "Use your installed copy of tinyxml" off)
+@@ -58,6 +58,7 @@ option(USE_SHARED_TINYXML "Use your installed copy of tinyxml" off)
  option(USE_SHARED_PIXMAN  "Use your installed copy of pixman" off)
  option(USE_SHARED_FREETYPE "Use shared FreeType library" off)
  option(USE_SHARED_HARFBUZZ "Use shared HarfBuzz library" off)
@@ -22,13 +22,11 @@ index f16f09660d..40065905d3 100644
  option(ENABLE_ASEPRITE_EXE "Compile main Aseprite executable" on)
  option(ENABLE_MEMLEAK      "Enable memory-leaks detector (only for developers)" off)
  option(ENABLE_NEWS         "Enable the news in Home tab" on)
-@@ -229,9 +230,17 @@ add_definitions(-DPNG_NO_MMX_CODE) # Do not use MMX optimizations in PNG code
- 
+@@ -350,14 +353,18 @@ add_subdirectory(laf)
  # libwebp
  if(ENABLE_WEBP)
--  set(WEBP_LIBRARIES webp webpdemux libwebpmux)
--  set(WEBP_INCLUDE_DIR ${LIBWEBP_DIR}/src)
--  include_directories(${WEBP_INCLUDE_DIR})
+   # Use libwebp from Skia
+-  if(LAF_BACKEND STREQUAL "skia")
 +  if(USE_SHARED_WEBP)
 +    find_library(WEBP_LIBRARY NAMES webp)
 +    find_library(WEBPDEMUX_LIBRARY NAMES webpdemux)
@@ -36,13 +34,17 @@ index f16f09660d..40065905d3 100644
 +    set(WEBP_LIBRARIES ${WEBP_LIBRARY} ${WEBPDEMUX_LIBRARY} ${WEBPMUX_LIBRARY})
 +    find_path(WEBP_INCLUDE_DIRS NAMES decode.h PATH_SUFFIXES webp)
 +  else()
-+    set(WEBP_LIBRARIES webp webpdemux libwebpmux)
-+    set(WEBP_INCLUDE_DIR ${LIBWEBP_DIR}/src)
-+    include_directories(${WEBP_INCLUDE_DIR})
-+  endif()
++    if(LAF_BACKEND STREQUAL "skia")
+     find_library(WEBP_LIBRARIES webp
+       NAMES libwebp # required for Windows
+       PATHS "${SKIA_LIBRARY_DIR}" NO_DEFAULT_PATH)
+     set(WEBP_INCLUDE_DIR "${SKIA_DIR}/third_party/externals/libwebp/src")
+-  else()
+-    set(WEBP_LIBRARIES webp webpdemux libwebpmux)
+-    set(WEBP_INCLUDE_DIR ${LIBWEBP_DIR}/src)
+   endif()
+   include_directories(${WEBP_INCLUDE_DIR})
  endif()
- 
- # tinyxml
 diff --git a/third_party/CMakeLists.txt b/third_party/CMakeLists.txt
 index 4839d4097c..e8c3e83cbc 100644
 --- a/third_party/CMakeLists.txt
@@ -51,8 +53,8 @@ index 4839d4097c..e8c3e83cbc 100644
    add_subdirectory(giflib)
  endif()
  
--if(ENABLE_WEBP)
-+if(ENABLE_WEBP AND NOT USE_SHARED_WEBP)
+-if(ENABLE_WEBP AND NOT LAF_BACKEND STREQUAL "skia")
++if(ENABLE_WEBP AND NOT LAF_BACKEND STREQUAL "skia" AND NOT USE_SHARED_WEBP)
    set(WEBP_BUILD_EXTRAS OFF CACHE BOOL "Build extras.")
    add_subdirectory(libwebp)
  endif()
