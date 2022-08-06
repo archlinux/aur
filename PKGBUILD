@@ -2,7 +2,7 @@
 # Contributor:  Julien Nicoulaud <julien DOT nicoulaud AT gmail DOT com>
 
 pkgname=ffmpeg-normalize
-pkgver=1.23.1
+pkgver=1.24.0
 pkgrel=1
 pkgdesc="Audio normalization using ffmpeg."
 arch=(any)
@@ -12,18 +12,18 @@ depends=('ffmpeg' 'python-ffmpeg-progress-yield')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha512sums=('ea619605c5ae93acfaf367e889f5265fa846c5239d9e018a18e2cfd17d64b0937b8e83ac1995d17e4046682c47db8cae8581ae86a4d8dca79865bc5773065cb0')
+sha512sums=('27e1e0f87431e0c02a82b3542f35f7a7afd07d4cc6c80dacf36d30296335f53d31921346e913f61b86c5f3c0c028388fbbc716071223b8de01e834bd6b45dfb7')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   python setup.py build
 }
 check() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   pytest test/test.py
 }
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
