@@ -2,8 +2,8 @@
 
 pkgname=piscesde-gtk-themes-git
 _pkgname=piscesde-gtk-themes
-pkgver=0
-pkgrel=2
+pkgver=0.9
+pkgrel=1
 pkgdesc="piscesDE gtk dark/light themes"
 arch=('any')
 url="https://github.com/piscesys/gtk-themes"
@@ -15,6 +15,11 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd gtk-themes
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   cd gtk-themes
