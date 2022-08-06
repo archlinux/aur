@@ -39,6 +39,7 @@ index af077f6..fed17ff 100644
        NAMES libwebp # required for Windows
        PATHS "${SKIA_LIBRARY_DIR}" NO_DEFAULT_PATH)
      set(WEBP_INCLUDE_DIR "${SKIA_DIR}/third_party/externals/libwebp/src")
++    endif() 
 -  else()
 -    set(WEBP_LIBRARIES webp webpdemux libwebpmux)
 -    set(WEBP_INCLUDE_DIR ${LIBWEBP_DIR}/src)
