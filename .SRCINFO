@@ -1,7 +1,7 @@
 pkgbase = video-downloader
 	pkgdesc = GTK application to download videos from websites like YouTube and many others (based on yt-dlp)
 	pkgver = 0.9.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Unrud/video-downloader
 	arch = any
 	license = GPL3
