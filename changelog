@@ -1,3 +1,6 @@
+2022-08-06 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.2.8.4-1:
+    Fixed regression introduced in previous release that rarely could affect HTML parsing on a few pages (@JustArchi).
 2022-07-31 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.2.8.3-1:
     Added /Api/NLog/File ASF API endpoint, mainly for new ASF-ui usage (@JustArchi).
