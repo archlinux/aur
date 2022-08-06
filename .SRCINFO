@@ -1,4 +1,4 @@
-pkgbase = piscesde-gtk-themes-git
+pkgbase = piscesde-gtk-themes
 	pkgdesc = piscesDE gtk dark/light themes
 	pkgver = 0
 	pkgrel = 2

@@ -1,6 +1,7 @@
 # Maintainer: zhuangzhuang <xufengyuan20080802@outlook.com>
 
 pkgname=piscesde-gtk-themes-git
+pkgbase=piscesde-gtk-themes
 _pkgname=piscesde-gtk-themes
 pkgver=0
 pkgrel=2
