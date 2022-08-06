@@ -1,7 +1,7 @@
 pkgbase = piscesde-dock-git
 	pkgdesc = piscesDE application dock
-	pkgver = 0
-	pkgrel = 2
+	pkgver = 0.9
+	pkgrel = 1
 	url = https://github.com/piscesys/dock
 	arch = x86_64
 	groups = piscesde-git
