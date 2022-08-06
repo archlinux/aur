@@ -1,7 +1,7 @@
 pkgbase = r-rockchalk
 	pkgdesc = Regression Estimation and Presentation
-	pkgver = 1.8.152
-	pkgrel = 4
+	pkgver = 1.8.157
+	pkgrel = 1
 	url = https://cran.r-project.org/package=rockchalk
 	arch = any
 	license = GPL
@@ -15,7 +15,7 @@ pkgbase = r-rockchalk
 	optdepends = r-mvtnorm
 	optdepends = r-scatterplot3d
 	optdepends = r-tables
-	source = https://cran.r-project.org/src/contrib/rockchalk_1.8.152.tar.gz
-	sha256sums = 031acb78612fa5da7d33530ee6d392aa540ef327ad35c5a2dab70ccf1e9525b4
+	source = https://cran.r-project.org/src/contrib/rockchalk_1.8.157.tar.gz
+	sha256sums = 814099ca8b1193992cd6e0af759a7d5bac74b891fbb4518c7f0e7fd56dcbe28d
 
 pkgname = r-rockchalk
