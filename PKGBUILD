@@ -1,4 +1,4 @@
-# Maintainer: Ali Nabipour <alinabipour01@gmail.com>
+# Maintainer: zhuangzhuang <xufengyuan20080802@outlook.com>
 
 pkgname=piscesde-icons-git
 _pkgname=piscesde-icons
