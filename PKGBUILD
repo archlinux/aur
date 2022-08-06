@@ -1,6 +1,7 @@
 # Maintainer: zhuangzhuang <xufengyuan20080802@outlook.com>
 
 pkgname=piscesde-cursor-themes-git
+pkgbase=piscesde-cursor-themes
 _pkgname=piscesde-cursor-themes
 pkgver=0
 pkgrel=2
@@ -15,6 +16,11 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd cursor-themes
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 
 package() {
