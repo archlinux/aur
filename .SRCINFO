@@ -1,20 +1,30 @@
 pkgbase = python-sphinx-asdf
 	pkgdesc = Sphinx plugin for generating documentation from ASDF schemas
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
-	url = https://github.com/spacetelescope/sphinx-asdf
+	url = https://github.com/asdf-format/sphinx-asdf
 	arch = any
 	license = BSD
 	checkdepends = python-pytest
 	checkdepends = python-sphinx
-	checkdepends = python-yaml
+	checkdepends = python-asdf
 	checkdepends = python-mistune=0.8.4
 	makedepends = python-setuptools-scm
-	source = https://files.pythonhosted.org/packages/source/s/sphinx-asdf/sphinx-asdf-0.1.3.tar.gz
-	sha256sums = 9b594350a1ddb7464d598584c541883e57736a275f976dfb2ea90835a3084e67
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/s/sphinx-asdf/sphinx-asdf-0.1.4.tar.gz
+	sha256sums = 4f79db5412d7d1cd2649ce5fa42160e54942758beba2de30605a74f12a23365c
 
 pkgname = python-sphinx-asdf
-	depends = python-yaml
+	depends = python-asdf
+	depends = python-astropy>=5.0.4
+	depends = python-graphviz
+	depends = python-matplotlib
+	depends = python-myst-parser
 	depends = python-mistune=0.8.4
-	depends = python-sphinx
+	depends = python-sphinx-astropy
 	depends = python-sphinx-bootstrap-theme
+	depends = python-sphinx_rtd_theme
+	depends = python-sphinx-inline-tabs
+	depends = python-toml

@@ -3,20 +3,22 @@
 pkgbase=python-sphinx-asdf
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Sphinx plugin for generating documentation from ASDF schemas"
 arch=('any')
-url="https://github.com/spacetelescope/sphinx-asdf"
+url="https://github.com/asdf-format/sphinx-asdf"
 license=('BSD')
-makedepends=('python-setuptools-scm')
-#            'python-wheel'
-#            'python-build'
-#            'python-installer')
-checkdepends=('python-pytest' 'python-sphinx' 'python-yaml' 'python-mistune=0.8.4')
-#checkdepends=('python-pytest' 'python-sphinx' 'python-yaml' 'python-mistune=0.8.4' 'python-sphinx-bootstrap-theme')
+makedepends=('python-setuptools-scm'
+             'python-wheel'
+             'python-build'
+             'python-installer')
+checkdepends=('python-pytest'
+              'python-sphinx'
+              'python-asdf'
+              'python-mistune=0.8.4')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('9b594350a1ddb7464d598584c541883e57736a275f976dfb2ea90835a3084e67')
+sha256sums=('4f79db5412d7d1cd2649ce5fa42160e54942758beba2de30605a74f12a23365c')
 
 get_pyver() {
     python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
@@ -25,8 +27,7 @@ get_pyver() {
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    python setup.py build
-#   python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation
 }
 
 check() {
@@ -34,16 +35,24 @@ check() {
 
     ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
         build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver).egg-info
-    PYTHONPATH="build/lib" pytest || warning "Tests failed"
-#   python setup.py test
+    PYTHONPATH="build/lib" pytest #|| warning "Tests failed"
 }
 
 package() {
-    depends=('python-yaml' 'python-mistune=0.8.4' 'python-sphinx' 'python-sphinx-bootstrap-theme')
+    depends=('python-asdf'
+             'python-astropy>=5.0.4'
+             'python-graphviz'
+             'python-matplotlib'
+             'python-myst-parser'
+             'python-mistune=0.8.4'
+             'python-sphinx-astropy'
+             'python-sphinx-bootstrap-theme'
+             'python-sphinx_rtd_theme'
+             'python-sphinx-inline-tabs'
+             'python-toml')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
     install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
-    python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
-#   python -m installer --destdir="${pkgdir}" dist/*.whl
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
