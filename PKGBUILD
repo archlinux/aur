@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='网易云音乐第三方(daihy fork)'
 license=('MIT')
 depends=('gconf' 'libnotify' 'nss' 'libxss' 'libappindicator-gtk3' 'libxtst')
-makedepends=('yarn' 'git')
+makedepends=('yarn' 'git' 'jq')
 arch=('aarch64' 'x86_64' 'i686')
 url="https://github.com/daihy8759/ieaseMusic"
 provides=('iease-music' 'iease-music-daihy')
@@ -16,22 +16,16 @@ source=("ieaseMusic::git+${url}" "iease-music.desktop" "iease-music")
 sha256sums=('SKIP'
             'e90c3f0a5b153a7e8ad261c627a06bc6a7f4df9bd7cbf425e57cf7803c7bb4c8'
             '5d51192adb5a78dfb4ba9b9eaafe22d443c686b32b0564f3c6990ffaacf12f79')
-_electron=electron
-_lastver=1.0.0
+_electron=electron18
 
 pkgver(){
     cd "${srcdir}/ieaseMusic"
-    echo ${_lastver}.r$(git rev-list --count HEAD).g$(git describe --always)
-}
-prepare(){
-    cd "${srcdir}/ieaseMusic"
-    yarn install
+    echo $(jq .version package.json --raw-output).r$(git rev-list --count HEAD).g$(git describe --always)
 }
 build(){
     cd "${srcdir}/ieaseMusic"
-    yarn run build:main
-    yarn run build:vite
-    yarn run electron-builder --dir
+    yarn install
+    yarn run build --dir
 }
 package_iease-music-daihy-git(){
     case ${CARCH} in
@@ -67,7 +61,6 @@ package_iease-music-daihy-electron-git(){
         "*")
             _arch="-${CARCH}-";;
     esac
-    mkdir -p "${pkgdir}/usr/share/iease-music"
     mkdir -p "${pkgdir}/usr/bin"
     cd "${srcdir}/ieaseMusic/release/linux${_arch}unpacked"
     install -Dm644 "resources/app.asar" "${pkgdir}/usr/lib/iease-music/iease-music.asar"
