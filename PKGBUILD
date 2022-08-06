@@ -1,7 +1,7 @@
 # Maintainer: Konstantin Gizdov <arch at kge dot pw>
 # Co-Maintainer: Achilleas Pipinellis <axilleas at archlinux dot gr>
 pkgname=vale
-pkgver=2.17.0
+pkgver=2.20.1
 pkgrel=1
 pkgdesc="A customizable, syntax-aware linter for prose"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/errata-ai/vale"
 license=('MIT')
 makedepends=('go' 'go-bindata' 'rsync')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('cea5c46aa6671f078d3a701df3f9ad9f6bf1fc618415bae101c7518be8e252b0')
+sha256sums=('48cb6e37579b83fb75b919021c79e92c6b0519998818bf0080b2c7a53cf5f563')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -35,6 +35,4 @@ package() {
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}/bin/vale" "${pkgdir}/usr/bin/vale"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/README.md" "${pkgdir}/usr/share/doc/vale/README.md"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/vale/LICENSE"
-    install -d "${pkgdir}/usr/share/vale/styles"
-    cp -r "${srcdir}/${pkgname}-${pkgver}/styles"/* "${pkgdir}/usr/share/vale/styles/"
 }
