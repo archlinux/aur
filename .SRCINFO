@@ -1,5 +1,5 @@
 pkgbase = khronos-ocl-icd-git
-	pkgver = 2022.01.04.3.gc8490f9
+	pkgver = 2022.05.18.2.g7072cf2
 	pkgrel = 1
 	url = http://www.khronos.org/registry/cl
 	arch = x86_64

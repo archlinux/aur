@@ -4,7 +4,7 @@ pkgbase=khronos-ocl-icd-git
 pkgname=('khronos-ocl-icd-git'
          'lib32-khronos-ocl-icd-git'
         )
-pkgver=2022.01.04.3.gc8490f9
+pkgver=2022.05.18.2.g7072cf2
 pkgrel=1
 arch=('x86_64')
 url="http://www.khronos.org/registry/cl"
@@ -65,7 +65,7 @@ conflicts=('khronos-ocl-icd'
            'opencl-icd-loader'
            'ocl-icd'
            )
-  DESTDIR="${pkgdir}" cmake --build build64 --target install
+  DESTDIR="${pkgdir}" cmake --install build64
 
   install -Dm644 OpenCL-ICD-Loader/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
@@ -81,7 +81,7 @@ conflicts=('lib32-khronos-ocl-icd'
            'lib32-opencl-icd-loader'
            'lib32-ocl-icd'
            )
-  DESTDIR="${pkgdir}" cmake --build build32 --target install
+  DESTDIR="${pkgdir}" cmake --install build32
 
   install -Dm644 OpenCL-ICD-Loader/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
