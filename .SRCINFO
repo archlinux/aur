@@ -1,0 +1,21 @@
+pkgbase = piscesde-videoplayer-git
+	pkgdesc = Cirily Video Player
+	pkgver = 0
+	pkgrel = 2
+	url = https://github.com/piscesys/videoplayer
+	arch = x86_64
+	groups = piscesde-git
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	makedepends = git
+	depends = piscesde-fishui-git
+	depends = libpiscesde-git
+	depends = mpv
+	depends = qt5-quickcontrols2
+	provides = piscesde-videoplayer
+	conflicts = piscesde-videoplayer
+	source = git+https://github.com/piscesys/videoplayer.git
+	sha512sums = SKIP
+
+pkgname = piscesde-videoplayer-git
