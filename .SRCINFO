@@ -5,6 +5,7 @@ pkgbase = rsync-readcap
 	url = https://doc.vejnar.org/doc/storage/backup
 	install = rsync-readcap.install
 	arch = any
+	license = Unlicense
 	depends = rsync
 	source = rsync-readcap.hook
 	source = rsync-readcap.sysusers
