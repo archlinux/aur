@@ -4,7 +4,7 @@ _pname=${pkgbase#python-}
 _pyname=Theano-PyMC
 pkgname=("python-${_pname}" "python-${_pname}-doc")
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Optimizing compiler for evaluating mathematical expressions on CPUs and GPUs"
 arch=('any')
 url="https://pypi.org/project/Theano-PyMC"
@@ -18,6 +18,10 @@ checkdepends=('python-pytest' 'python-scipy' 'python-filelock' 'python-pydot')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       'Makefile')
 md5sums=('5ed1cb188fbe417946480219b5ba334b')
+
+get_pyver() {
+    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
+}
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
@@ -52,6 +56,8 @@ package_python-theano-pymc() {
     install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.rst
 #   python -m installer --destdir="${pkgdir}" dist/*.whl
     python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+    rm -r "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/tests"
+    rm -r "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/bin/"/__{init__.py,pycache__}
 }
 
 package_python-theano-pymc-doc() {

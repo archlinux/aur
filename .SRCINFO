@@ -1,7 +1,7 @@
 pkgbase = python-theano-pymc
 	pkgdesc = Optimizing compiler for evaluating mathematical expressions on CPUs and GPUs
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/Theano-PyMC
 	arch = any
 	license = BSD
