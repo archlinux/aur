@@ -1,7 +1,7 @@
 pkgbase = libpiscesde-git
 	pkgdesc = System library for piscesDE applications
-	pkgver = 0
-	pkgrel = 2
+	pkgver = 0.9
+	pkgrel = 1
 	url = https://github.com/piscesys/libpisces
 	arch = x86_64
 	license = GPL
