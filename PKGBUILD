@@ -2,7 +2,7 @@
 pkgbase=python-asdf
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.10.1
+pkgver=2.12.0
 pkgrel=1
 pkgdesc="A Python tool for reading and writing Advanced Scientific Data Format (ASDF) files"
 arch=('any')
@@ -12,28 +12,35 @@ makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
              'python-installer'
+             'python-sphinx-astropy'
              'python-numpy>=1.10'
-             'python-jsonschema<4'
+             'python-jsonschema>=4.0.1'
              'python-yaml>=3.10'
              'python-semantic-version>=2.8'
-             'python-astropy'
-             'python-sphinx-astropy'
+             'python-astropy>=5.0.4'
              'graphviz'
              'python-jmespath>=0.6.2'
              'python-asdf-standard>=1.0.1'
              'python-asdf_transform_schemas>=0.2.2')
-checkdepends=('python-pytest-doctestplus' 'python-pytest-remotedata' 'python-pytest-openfiles' 'python-lz4')
+checkdepends=('python-pytest-doctestplus'
+              'python-pytest-remotedata'
+              'python-pytest-openfiles'
+              'python-lz4'
+              'python-psutil')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('59f8397780fbab6e0b9b8d786bf3dc18')
+md5sums=('77e6cfcd7bad817a2204ad80295d5568')
+
+get_pyver() {
+    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
+}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
-    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
     ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
-        build/lib/${_pyname/-/_}-${pkgver}-py${_pyver}.egg-info
+        build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver).egg-info
     cd ${srcdir}/${_pyname}-${pkgver}/docs
     PYTHONPATH="../build/lib" make html
 }
@@ -41,12 +48,20 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    PYTHONPATH="build/lib:${PYTHONPATH}" pytest "build/lib" || warning "Tests failed"
+    PYTHONPATH="build/lib:${PYTHONPATH}" pytest "build/lib" --remote-data || warning "Tests failed"
 }
 
 package_python-asdf() {
-    depends=('python>=3.7' 'python-numpy>=1.10' 'python-jsonschema<4' 'python-yaml>=3.10' 'python-semantic-version>=2.8' 'python-jmespath>=0.6.2' 'python-packaging>=16.0' 'python-asdf-standard>=1.0.1' 'python-asdf_transform_schemas>=0.2.2')
-    optdepends=('python-astropy>=3.0: Support for units, time, transform, wcs, or running the tests'
+    depends=('python>=3.8'
+             'python-numpy>=1.10'
+             'python-jmespath>=0.6.2'
+             'python-jsonschema>=4.0.1'
+             'python-packaging>=16.0'
+             'python-yaml>=3.10'
+             'python-semantic-version>=2.8'
+             'python-asdf-standard>=1.0.1'
+             'python-asdf_transform_schemas>=0.2.2')
+    optdepends=('python-astropy: Support for units, time, transform, wcs, or running the tests'
                 'python-lz4>=0.10: Support for lz4 compression'
                 'python-asdf-doc: Documentation for Python-ASDF'
                 'python-pytest-astropy: For testing')

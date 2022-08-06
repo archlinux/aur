@@ -1,6 +1,6 @@
 pkgbase = python-asdf
 	pkgdesc = A Python tool for reading and writing Advanced Scientific Data Format (ASDF) files
-	pkgver = 2.10.1
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://asdf.readthedocs.io
 	arch = any
@@ -9,34 +9,35 @@ pkgbase = python-asdf
 	checkdepends = python-pytest-remotedata
 	checkdepends = python-pytest-openfiles
 	checkdepends = python-lz4
+	checkdepends = python-psutil
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-sphinx-astropy
 	makedepends = python-numpy>=1.10
-	makedepends = python-jsonschema<4
+	makedepends = python-jsonschema>=4.0.1
 	makedepends = python-yaml>=3.10
 	makedepends = python-semantic-version>=2.8
-	makedepends = python-astropy
-	makedepends = python-sphinx-astropy
+	makedepends = python-astropy>=5.0.4
 	makedepends = graphviz
 	makedepends = python-jmespath>=0.6.2
 	makedepends = python-asdf-standard>=1.0.1
 	makedepends = python-asdf_transform_schemas>=0.2.2
-	source = https://files.pythonhosted.org/packages/source/a/asdf/asdf-2.10.1.tar.gz
-	md5sums = 59f8397780fbab6e0b9b8d786bf3dc18
+	source = https://files.pythonhosted.org/packages/source/a/asdf/asdf-2.12.0.tar.gz
+	md5sums = 77e6cfcd7bad817a2204ad80295d5568
 
 pkgname = python-asdf
-	depends = python>=3.7
+	depends = python>=3.8
 	depends = python-numpy>=1.10
-	depends = python-jsonschema<4
+	depends = python-jmespath>=0.6.2
+	depends = python-jsonschema>=4.0.1
+	depends = python-packaging>=16.0
 	depends = python-yaml>=3.10
 	depends = python-semantic-version>=2.8
-	depends = python-jmespath>=0.6.2
-	depends = python-packaging>=16.0
 	depends = python-asdf-standard>=1.0.1
 	depends = python-asdf_transform_schemas>=0.2.2
-	optdepends = python-astropy>=3.0: Support for units, time, transform, wcs, or running the tests
+	optdepends = python-astropy: Support for units, time, transform, wcs, or running the tests
 	optdepends = python-lz4>=0.10: Support for lz4 compression
 	optdepends = python-asdf-doc: Documentation for Python-ASDF
 	optdepends = python-pytest-astropy: For testing
