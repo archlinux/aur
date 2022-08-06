@@ -1,6 +1,6 @@
 pkgbase = kubeswitch
 	pkgdesc = kubeswitch (lazy: switch) is the single pane of glass for all of your kubeconfig files. Caters to operators of large scale Kubernetes installations. Designed as a drop-in replacement for kubectx.
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/danielfoehrKn/kubeswitch
 	install = switcher.install
