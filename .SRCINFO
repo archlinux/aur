@@ -1,0 +1,19 @@
+pkgbase = piscesys-screenlocker-git
+	pkgdesc = CutefishOS system screen locker
+	pkgver = 0
+	pkgrel = 2
+	url = https://github.com/piscesys/screenlocker
+	arch = x86_64
+	groups = piscesys-git
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	makedepends = git
+	depends = piscesys-fishui-git
+	depends = libpiscesys-git
+	provides = piscesys-screenlocker
+	conflicts = piscesys-screenlocker
+	source = git+https://github.com/piscesys/screenlocker.git
+	sha512sums = SKIP
+
+pkgname = piscesys-screenlocker-git
