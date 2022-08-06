@@ -1,7 +1,7 @@
 pkgbase = piscesde-launcher-git
 	pkgdesc = piscesDE's full-screen application launcher
-	pkgver = 0
-	pkgrel = 2
+	pkgver = 0.9
+	pkgrel = 1
 	url = https://github.com/cutefishos/launcher
 	arch = x86_64
 	groups = piscesde-git
