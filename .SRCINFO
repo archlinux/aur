@@ -1,0 +1,20 @@
+pkgbase = piscesde-screenshot-git
+	pkgdesc = Screenshot tool for piscesDE
+	pkgver = 0
+	pkgrel = 2
+	url = https://github.com/piscesys/screenshot
+	arch = x86_64
+	groups = piscesde-git
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-base
+	makedepends = git
+	depends = piscesde-fishui-git
+	depends = libpiscesde-git
+	depends = qt5-quickcontrols2
+	provides = piscesde-screenshot
+	conflicts = piscesde-screenshot
+	source = git+https://github.com/piscesys/screenshot.git
+	sha512sums = SKIP
+
+pkgname = piscesde-screenshot-git
