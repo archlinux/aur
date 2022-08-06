@@ -16,6 +16,11 @@ makedepends=('cmake' 'ninja' 'git')
 source=("git+$url.git")
 sha512sums=('SKIP')
 
+pkgver() {
+  cd wallpapers
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
   cd wallpapers
 
