@@ -1,8 +1,7 @@
-# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-# Contributor: Ionut Biru <ibiru@archlinux.org>
+# Maintainer: Debasish Patra (depatra) <patradebasish1987@gmail.com>
 
 pkgname=networkmanager-openconnect-useragent-git
-pkgver=1.2.7dev+95+gee7776b
+pkgver=1.2.9dev+79+g351610a
 pkgrel=1
 pkgdesc="NetworkManager VPN plugin for OpenConnect with support for custom useragent"
 url="https://wiki.gnome.org/Projects/NetworkManager"
@@ -13,7 +12,7 @@ conflicts=(networkmanager-openconnect)
 depends=(libnm libsecret openconnect libopenconnect.so)
 makedepends=(libnma intltool python git)
 optdepends=('libnma: GUI support')
-source=("git+https://gitlab.gnome.org/patradebasish1987/NetworkManager-openconnect.git")
+source=("git+https://gitlab.gnome.org/GNOME/NetworkManager-openconnect.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -29,7 +28,7 @@ prepare() {
 
 build() {
   cd NetworkManager-openconnect
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+  ./configure --prefix=/usr --with-gtk4=yes --sysconfdir=/etc --localstatedir=/var \
     --libexecdir=/usr/lib --disable-static
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
