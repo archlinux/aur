@@ -1,6 +1,6 @@
 pkgbase = azure-cli-bin
 	pkgdesc = Azure Command-Line Interface (Debian package)
-	pkgver = 2.38.0
+	pkgver = 2.39.0
 	pkgrel = 1
 	url = https://github.com/Azure/azure-cli
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = azure-cli-bin
 	depends = python
 	conflicts = azure-cli
 	conflicts = python-azure-cli
-	source = https://packages.microsoft.com/repos/azure-cli/pool/main/a/azure-cli/azure-cli_2.38.0-1~bullseye_all.deb
-	md5sums = eb1e943715e2ab6c2ac51929faa66e3e
+	source = https://packages.microsoft.com/repos/azure-cli/pool/main/a/azure-cli/azure-cli_2.39.0-1~bullseye_all.deb
+	md5sums = 12e0514511e2ce19f9c2b3d3a5d66215
 
 pkgname = azure-cli-bin
