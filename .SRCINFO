@@ -1,0 +1,15 @@
+pkgbase = stc-coda
+	pkgdesc = The Common Data Access toolset
+	pkgver = 2.24
+	pkgrel = 1
+	url = https://www.stcorp.nl
+	arch = x86_64
+	license = BSD
+	depends = python
+	depends = hdf4
+	depends = java-environment
+	provides = hdf-coda
+	source = https://github.com/stcorp/coda/releases/download/2.24/coda-2.24.tar.gz
+	md5sums = b0bbb6aab6719e94db128126457fd8a2
+
+pkgname = stc-coda
