@@ -1,0 +1,24 @@
+pkgbase = mailnotify-bin
+	pkgdesc = Generate pop-up notifications about incoming email messages
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/pdobsan/mailnotify
+	install = .INSTALL
+	arch = x86_64
+	license = BSD
+	depends = libnotify
+	depends = gtk2
+	optdepends = dunst: Customizable and lightweight notification-daemon
+	provides = mailnotify
+	conflicts = mailnotify
+	conflicts = mailnotify-git
+	noextract = mailnotify-0.2.0-Linux-x86_64
+	noextract = mailnotify-0.2.0-Linux-x86_64.sha256
+	source = https://github.com/pdobsan/mailnotify/releases/download/0.2.0/mailnotify-0.2.0-Linux-x86_64
+	source = https://github.com/pdobsan/mailnotify/releases/download/0.2.0/mailnotify-0.2.0-Linux-x86_64.sha256
+	source = https://github.com/pdobsan/mailnotify/archive/refs/tags/0.2.0.tar.gz
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mailnotify-bin

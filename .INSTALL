@@ -1,0 +1,23 @@
+
+# Compare package version numbers using pacman's version comparison logic.
+# Usage: vercmp <ver1> <ver2>
+# Output values:
+#   < 0 : if ver1 < ver2    -lt
+#     0 : if ver1 == ver2   -eq
+#   > 0 : if ver1 > ver2    -gt
+
+## post_upgrade() is called at the end of package installation
+## arg 1:  the new package version
+## arg 2:  the old package version
+
+post_upgrade() {
+  if [[ $(vercmp $2 0.2.0) -lt 0 ]]
+  then
+    cat <<EOF
+EOF
+  fi
+}
+
+# test
+#echo $@
+#post_upgrade $1 $2
