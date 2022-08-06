@@ -1,0 +1,16 @@
+pkgbase = wipe-term
+	pkgdesc = Wipe the content of your terminal with a random animation.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/ricoriedel/wipe
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	conflicts = wipe
+	source = wipe-2.0.0.tar.gz::https://github.com/ricoriedel/wipe/archive/refs/tags/v2.0.0.tar.gz
+	source = wipe-2.0.0.tar.gz.sig::https://github.com/ricoriedel/wipe/releases/download/v2.0.0/wipe-2.0.0.tar.gz.sig
+	validpgpkeys = F9A7D7F04CF97BE30275A9BA75AC868575DE7B18
+	b2sums = d53786c64a7b730d06ddb3402c7a4d321bdc0458b87a62195b1fba14a6bc3c8808a6b1712fbc6f9a548cae104f738d692deb25f346c12d7560f52a9f74e04e19
+	b2sums = 4c6a3606010d3f2aed7be942efc0d782b1f70692301ce57788160881f187857b0c24cecae115b0343e9294527d86c8e782f6c4698d3c54b8712a0530bf2c9f13
+
+pkgname = wipe-term
