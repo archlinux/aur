@@ -22,6 +22,6 @@ build() {
 package() {
 	cd $pkgname-$pkgver
 	make DESTDIR=${pkgdir} install
-    	install -Dm 644 "../src/${pkgname}-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}"
+    	install -Dm 644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
