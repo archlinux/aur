@@ -1,24 +1,28 @@
 pkgbase = python-pymc3
 	pkgdesc = Probabilistic Programming in Python. Uses Theano as a backend, supports NUTS and ADVI.
-	pkgver = 3.9.3
+	pkgver = 3.11.5
 	pkgrel = 1
-	url = http://docs.pymc.io
+	url = https://www.pymc.io/projects/docs/en/v3.11.5
 	arch = any
 	license = APACHE
-	depends = python>=3.4
-	depends = python-scipy
-	depends = python-numpy
-	depends = python-matplotlib
-	depends = python-theano
-	depends = python-pandas
-	depends = python-tqdm
-	depends = python-joblib
-	depends = python-h5py
-	optdepends = python-patsy
-	optdepends = python-six
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
 	options = !emptydirs
-	source = https://github.com/pymc-devs/pymc3/archive/v3.9.3.tar.gz
-	sha256sums = 4b023a694cb569aaaa4a7268708f9db89a723c7f6baa28023f2f5fabd1384d5c
+	source = https://files.pythonhosted.org/packages/source/p/pymc3/pymc3-3.11.5.tar.gz
+	sha256sums = 3341cbbd962909138b7d5ebe4ed7cfee29f40b2fe7cadeb888b39d6bbc17138c
 
 pkgname = python-pymc3
-
+	depends = python>=3.7
+	depends = python-arviz>=0.11.0
+	depends = python-cachetools
+	depends = python-deprecat
+	depends = python-dill
+	depends = python-fastprogress>=0.2.0
+	depends = python-pandas>=0.24.0
+	depends = python-patsy>=0.5.1
+	depends = python-scipy>=1.7.3
+	depends = python-semver>=2.13.0
+	depends = python-theano-pymc
+	depends = python-typing_extensions>=3.7.4
