@@ -1,7 +1,7 @@
 pkgbase = piscesde-git
 	pkgdesc = piscesDE meta package(Fork from Cutefish)(Thanks:Ali Nabipour <alinabipour01@gmail.com> and his PKGBUILD for Cutefish
-	pkgver = 0
-	pkgrel = 2
+	pkgver = 0.9
+	pkgrel = 1
 	url = https://github.com/piscesys/
 	arch = x86_64
 	license = GPL

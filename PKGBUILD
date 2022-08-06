@@ -1,8 +1,8 @@
 # Maintainer: zhuangzhuang <xufengyuan20080802@outlook.com>
 
 pkgname=piscesde-git
-pkgver=0
-pkgrel=2
+pkgver=0.9
+pkgrel=1
 pkgdesc='piscesDE meta package(Fork from Cutefish)(Thanks:Ali Nabipour <alinabipour01@gmail.com> and his PKGBUILD for Cutefish'
 arch=('x86_64')
 url='https://github.com/piscesys/'
