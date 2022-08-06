@@ -1,32 +1,37 @@
-# Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=libuinputplus
-pkgver=0.1.4
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Easy-to-use uinput library in C++"
 url="https://github.com/YukiWorkshop/libuInputPlus"
 license=('MIT')
 arch=('x86_64')
-source=("$url/archive/v$pkgver.tar.gz"
-        "$url/commit/70007571963792487064f4b57bdbe5694283ef97.patch")
-sha256sums=('a537e156d11ad00c643b93cbd9b712d3ec9d0ae8e40731ff763fe9a6ffe97458'
-            'c7476024f241c4e80116c72ebd85f0b722152beef2e96b402702ea80f7c61666')
-makedepends=('cmake' 'ninja')
+depends=('gcc-libs')
+makedepends=('cmake')
+provides=('libuInputPlus.so')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+        "001-install-directives.patch::$url/commit/0edb383.patch")
+sha256sums=('af53e4727068f5f66d03d63beecdb24f44342ce1aa352d4f32c18892fa86e67a'
+            '09346612127312f732eb51da2020dd272395bcdd4691f81a3df02f4ca7789dda')
 
 prepare() {
-  cd "libuInputPlus-$pkgver"
-  patch -sp1 -i ../70007571963792487064f4b57bdbe5694283ef97.patch
+	patch -p1 -d "libuInputPlus-$pkgver" < 001-install-directives.patch
 }
 
 build() {
-  cmake \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -G Ninja \
-    -S "libuInputPlus-$pkgver" -B build
-  ninja -C build
+	cmake \
+		-B build \
+		-S "libuInputPlus-$pkgver" \
+		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DBUILD_SHARED_LIBS=ON \
+		-Wno-dev
+	make -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+	make -C build install DESTDIR="$pkgdir"
+	install -Dm644 "libuInputPlus-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

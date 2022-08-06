@@ -1,16 +1,16 @@
 pkgbase = libuinputplus
 	pkgdesc = Easy-to-use uinput library in C++
-	pkgver = 0.1.4
-	pkgrel = 2
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://github.com/YukiWorkshop/libuInputPlus
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	makedepends = ninja
-	source = https://github.com/YukiWorkshop/libuInputPlus/archive/v0.1.4.tar.gz
-	source = https://github.com/YukiWorkshop/libuInputPlus/commit/70007571963792487064f4b57bdbe5694283ef97.patch
-	sha256sums = a537e156d11ad00c643b93cbd9b712d3ec9d0ae8e40731ff763fe9a6ffe97458
-	sha256sums = c7476024f241c4e80116c72ebd85f0b722152beef2e96b402702ea80f7c61666
+	depends = gcc-libs
+	provides = libuInputPlus.so
+	source = libuinputplus-0.2.1.tar.gz::https://github.com/YukiWorkshop/libuInputPlus/archive/v0.2.1.tar.gz
+	source = 001-install-directives.patch::https://github.com/YukiWorkshop/libuInputPlus/commit/0edb383.patch
+	sha256sums = af53e4727068f5f66d03d63beecdb24f44342ce1aa352d4f32c18892fa86e67a
+	sha256sums = 09346612127312f732eb51da2020dd272395bcdd4691f81a3df02f4ca7789dda
 
 pkgname = libuinputplus
-
