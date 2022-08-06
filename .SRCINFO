@@ -1,13 +1,14 @@
 pkgbase = xorg-rstart
 	pkgdesc = Remote Start client
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = http://www.x.org/
 	arch = x86_64
 	arch = i686
 	license = BSD
-	source = http://xorg.freedesktop.org/releases/individual/app/rstart-1.0.5.tar.bz2
-	md5sums = 960f4fa5e7e87ae05febd02e9e96d158
+	makedepends = xorgproto
+	depends = bash
+	source = http://xorg.freedesktop.org/releases/individual/app/rstart-1.0.6.tar.gz
+	md5sums = e8e74a62d1270d02370ca6828f6ba625
 
 pkgname = xorg-rstart
-
