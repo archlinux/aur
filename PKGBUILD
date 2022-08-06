@@ -2,8 +2,8 @@
 
 pkgname=piscesde-settings-git
 _pkgname=piscesde-settings
-pkgver=0
-pkgrel=2
+pkgver=0.9
+pkgrel=1
 pkgdesc="System Settings application for piscesDE"
 arch=('x86_64')
 url="https://github.com/piscesys/settings"
@@ -15,6 +15,11 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd settings
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   cd settings
