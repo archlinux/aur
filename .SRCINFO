@@ -1,7 +1,7 @@
 pkgbase = ulauncher
 	pkgdesc = Application launcher for Linux
 	pkgver = 5.14.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ulauncher.io
 	install = ulauncher.install
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = ulauncher
 	depends = gobject-introspection-runtime
 	depends = libkeybinder3
 	depends = gtk3
-	depends = webkit2gtk-4.1
+	depends = webkit2gtk
 	depends = libnotify
 	depends = gdk-pixbuf2
 	depends = wmctrl
