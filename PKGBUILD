@@ -4,7 +4,7 @@ pkgname="nominatim"
 pkgdesc="Geocoding tool using OpenStreetmap data"
 url="https://nominatim.org"
 
-pkgver=4.0.1
+pkgver=4.1.0
 pkgrel=1
 
 arch=("x86_64")
@@ -65,7 +65,7 @@ source=(
     "0001-Fix-configuration-to-point-to-installed-files.patch"
     "0002-Set-default-project-directory-to-package-provided-di.patch"
 )
-sha256sums=('8f0c7ab93e6341713da40d034e689c4b9c3f257de485624abe4dc78b175267fc'
+sha256sums=('a6bcc5925815be6d3238ba65a7f515ff79218c9e83a640697a4eaeae3ac392a4'
             'fe66393aaf561749255cebf4c61d13a8425e326b8ce50409d88c4035165de049'
             '7f71b5217cbe0713fa5f8baa138348c9cd49f42c2b6025c059076042e0c04c6d'
             '50bf612ad951bcf3c1969aa79b0c7ab78745983720bc5f2deb37d1704c0e37d8'
@@ -73,8 +73,8 @@ sha256sums=('8f0c7ab93e6341713da40d034e689c4b9c3f257de485624abe4dc78b175267fc'
             'ed00242d06d6a17297a30675befef110f354a6f4bd2804d58796d956a9ae54a2'
             '37c4b17463f8317d39bb741b07bbb693afc0bbf584eec590f89b849542b98b7d'
             'c2d5391160704bc636fde73c0e92346529ae1698f1cc909a8341271e0e4967d4'
-            '2d6b5aced7a5a3fba2d3009f0806eb8a79677f9a62e9de90cd3c9cb4452746a3'
-            '7e931eb36bc77a754bf22fa34e8d3c589b14d3668f14b73cf59121be5026bf24')
+            'ed051533ad83fb93e458e31d4e116ad9717ff8d4edc7af0dec2b2a3bb61c7172'
+            '4650a98992bb0371cffa740c9ffc3b92032346d0ae13fb78e34aeeb534ee5255')
 noextract=(
     "country_grid.sql.gz"
 )

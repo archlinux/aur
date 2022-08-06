@@ -1,27 +1,28 @@
-From 62c2e1a8a78c25ac06c3f7b663c73e6b9cb0f4b6 Mon Sep 17 00:00:00 2001
+From d3c44ed4f48e1650caada7f67a2e9256495f149c Mon Sep 17 00:00:00 2001
 From: Xiretza <xiretza@xiretza.xyz>
 Date: Sun, 22 May 2022 10:50:31 +0200
 Subject: [PATCH 2/2] Set default project directory to package-provided
  directory
 
 ---
- nominatim/cli.py | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ nominatim/cli.py | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/nominatim/cli.py b/nominatim/cli.py
-index 6c01a68a..47a5ef3b 100644
+index 8c2136f4..4f686dcd 100644
 --- a/nominatim/cli.py
 +++ b/nominatim/cli.py
-@@ -16,6 +16,8 @@ from nominatim.clicmd.args import NominatimArgs
+@@ -24,6 +24,9 @@ from nominatim.clicmd.args import NominatimArgs, Subcommand
  
  LOG = logging.getLogger()
  
 +# Patched in by nominatim AUR package
 +DEFAULT_PROJECT_DIR = '/var/lib/nominatim/'
- 
++
  class CommandlineParser:
      """ Wraps some of the common functions for parsing the command line
-@@ -40,8 +42,8 @@ class CommandlineParser:
+         and setting up subcommands.
+@@ -51,8 +54,8 @@ class CommandlineParser:
                             help='Print only error messages')
          group.add_argument('-v', '--verbose', action='count', default=1,
                             help='Increase verboseness of output')
@@ -33,5 +34,5 @@ index 6c01a68a..47a5ef3b 100644
                             help='Number of parallel threads to use')
  
 -- 
-2.36.1
+2.37.1
 
