@@ -1,7 +1,7 @@
 # Maintainer Joost Bremmer <contact@madeofmagicandowires.online>
 pkgbase=shortcut-git
 pkgname=('shortcut-pages-git' 'shortcut-pages-extra-git' 'shortcut-c-client-git')
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A commandline client to list shortcuts"
 url="https://github.com/mt-empty/shortcut-c-client"
@@ -13,18 +13,16 @@ source=("shortcut-pages::git+https://github.com/mt-empty/shortcut-pages.git"
         "shortcut-c-client.patch")
 sha256sums=('SKIP'
             'SKIP'
-            '61511fb1b61e7d07e3819d6bae477537ab14d4acd27490ddab5fa1a121822464')
+            'f9b9c032afda9f3312bc4cc3edd6890bc7ad0d76174aaaeac1af03a0f134bfc2')
 
 pkgver() {
   cd "${srcdir}/shortcut-pages"
-  git describe --long --tags 2>/dev/null | sed 's/[^[:digit:]]*\(.\+\)-\([[:digit:]]\+\)-g\([[:xdigit:]]\{7\}\)/\1.r\2.g\3/;t;q1'
-    [ ${PIPESTATUS[0]} -eq 0 ] || \
-    printf "0.1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "0.2.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd "${srcdir}/shortcut-c-client"
-  patch -Np1 --input "${srcdir}/shortcut-c-client.patch"
+  # patch -Np1 --input "${srcdir}/shortcut-c-client.patch"
 
 }
 

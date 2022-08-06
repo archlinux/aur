@@ -1,15 +1,16 @@
 Only in old: .git
+Only in old: .github
 Only in old: .gitignore
 Only in new: old
 diff -aur old/shortcut.c new/shortcut.c
---- old/shortcut.c	2020-04-04 23:59:27.301091762 +0200
-+++ new/shortcut.c	2020-04-05 00:01:08.758271659 +0200
-@@ -28,7 +28,7 @@
-
- #define VERSION "0.1.0"
+--- old/shortcut.c	2022-08-06 16:11:39.356002537 +0200
++++ new/shortcut.c	2022-08-06 16:14:07.570579912 +0200
+@@ -35,7 +35,7 @@
  #define BUFFER_SIZE 1000
--#define PAGES_BASE_DIR "/opt/shortcut/pages/"
-+#define PAGES_BASE_DIR "/usr/share/shortcut/pages/"
- #define PAGES_FILE_EXT ".md"
-
- #define ANSI_COLOR_RESET_FG "\x1b[39m"
+ 
+ #ifndef PAGES_DIR
+-    #define PAGES_BASE_DIR "/opt/shortcut/pages/"
++    #define PAGES_BASE_DIR "/usr/share/shortcut/pages/"
+ #else
+     #define PAGES_BASE_DIR PAGES_DIR
+ #endif
