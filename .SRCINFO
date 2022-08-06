@@ -1,0 +1,22 @@
+pkgbase = piscesde-statusbar-git
+	pkgdesc = Top status bar of piscesDE
+	pkgver = 0
+	pkgrel = 2
+	url = https://github.com/piscesys/statusbar
+	arch = x86_64
+	groups = piscesde-git
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	makedepends = qt5-tools
+	makedepends = git
+	depends = piscesde-fishui-git
+	depends = libpiscesde-git
+	depends = libdbusmenu-qt5
+	depends = qt5-svg
+	provides = piscesde-statusbar
+	conflicts = piscesde-statusbar
+	source = git+https://github.com/piscesys/statusbar.git
+	sha512sums = SKIP
+
+pkgname = piscesde-statusbar-git
