@@ -1,0 +1,17 @@
+pkgbase = piscesde-icons-git
+	pkgdesc = System default icon theme of piscesDE
+	pkgver = 0
+	pkgrel = 2
+	url = https://github.com/piscesys/icons
+	arch = any
+	groups = piscesde-icons-git
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	makedepends = git
+	provides = piscesde-icons
+	conflicts = piscesde-icons
+	source = git+https://github.com/piscesys/icons.git
+	sha512sums = SKIP
+
+pkgname = piscesde-icons-git
