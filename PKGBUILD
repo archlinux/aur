@@ -3,12 +3,12 @@
 _pkgname=uproot
 pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-docs")
-pkgver=4.2.2
+pkgver=4.3.4
 pkgrel=1
 pkgdesc="Minimalist CERN ROOT I/O in pure Python and Numpy"
 arch=('any')
 makedepends=('python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-mock' 'python-pkgconfig' 'python-pandas' 'python-pytest-runner' 'python-requests'
+checkdepends=('python-mock' 'python-pkgconfig' 'python-pandas' 'python-pytest-runner' 'python-requests' 'python-dask'
               'python-matplotlib' 'python-hist' 'python-scikit-hep-testdata' 'python-xxhash' 'root' 'xrootd')
 depends=('python-awkward>=1.7.0' 'python-cachetools' 'python-lz4' 'python-numpy' 'python-zstandard')
 optdepends=('xrootd: access remote files over XRootD'
@@ -19,10 +19,10 @@ url="https://github.com/scikit-hep/${_pkgname}4"
 license=('BSD')
 
 source=("${_pkgname}-${pkgver}::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('2ba34c18a75af60c3b3e25703b2d5bd373cddfa22682827844ea7087ff899427')
+sha256sums=('a97a57766fcac813e177076bb757fcc2d8f92a932c9f78c696340c2f5fffef6d')
 
 prepare() {
-    cd "${srcdir}/${_pkgname}4-${pkgver}"
+    cd "${srcdir}/${_pkgname}5-${pkgver}"
     sed \
         -e 's/setuptools.extern.packaging.version.parse/packaging.version.parse/' \
         -e 's/import setuptools/import packaging/' \
@@ -30,12 +30,12 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}4-${pkgver}"
+    cd "${srcdir}/${_pkgname}5-${pkgver}"
     python -m build --wheel --no-isolation
 }
 
 check() {
-    cd "${srcdir}/${_pkgname}4-${pkgver}"
+    cd "${srcdir}/${_pkgname}5-${pkgver}"
     find tests -type f -exec sed \
       -e 's@scikit-hep.org/uproot/examples@scikit-hep.org/uproot3/examples@g' \
       -e 's@scikit-hep.org:443/uproot/examples@scikit-hep.org:443/uproot3/examples@g' \
@@ -46,7 +46,7 @@ check() {
 
 package_python-uproot() {
     optdepends+=('python-uproot-docs: docs')
-    cd "${srcdir}/${_pkgname}4-${pkgver}"
+    cd "${srcdir}/${_pkgname}5-${pkgver}"
 
     python -m installer --destdir="$pkgdir" dist/*.whl
 
@@ -55,7 +55,7 @@ package_python-uproot() {
 
 package_python-uproot-docs() {
     depends=('python-sphinx')
-    cd "${srcdir}/${_pkgname}4-${pkgver}"
+    cd "${srcdir}/${_pkgname}5-${pkgver}"
 
     install -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -D README.md "${pkgdir}/usr/share/${pkgname}/README.md"
