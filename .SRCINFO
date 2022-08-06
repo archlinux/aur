@@ -1,4 +1,4 @@
-pkgbase = libpisces-git
+pkgbase = libpisces
 	pkgdesc = System library for Cutefish applications
 	pkgver = 0
 	pkgrel = 2
