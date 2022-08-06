@@ -2,6 +2,25 @@
 
 // scriv-insert-here
 
+== 3.7.0 (2022-08-05)
+
+## Bugfixes
+
+* Fix `globus session update` help text not handling missing domain errors from Transfer
+
+## Enhancements
+
+* `globus group member invite` now supports provisioning new identities in
+  Globus Auth in order to support inviting new users who have not created
+  Globus accounts. Use `--provision-identity` to indicate that new users
+  should be auto-provisioned in Globus Auth
+
+* Add new `globus timer` commands for interacting with the Timer service:
+** `globus timer list` to list jobs
+** `globus timer show` to show a particular job
+
+* Add `globus search index delete` command
+
 == 3.6.0 (2022-06-08)
 
 Enhancements:

@@ -1,6 +1,6 @@
 pkgbase = globus-cli
 	pkgdesc = CLI for Globus
-	pkgver = 3.6.0
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = https://github.com/globus/globus-cli
 	changelog = changelog.adoc
@@ -18,7 +18,7 @@ pkgbase = globus-cli
 	depends = python-requests
 	depends = python-cryptography
 	replaces = python-globus-cli
-	source = globus-cli::git+https://github.com/globus/globus-cli#tag=3.6.0?signed
+	source = globus-cli::git+https://github.com/globus/globus-cli#tag=3.7.0?signed
 	validpgpkeys = FC694E40DC03A8B702D96372CF7E843C41E814C9
 	sha256sums = SKIP
 

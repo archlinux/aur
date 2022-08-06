@@ -2,7 +2,7 @@
 # Contributor: Aetf <aetf at unlimitedcodeworks dot xyz>
 
 pkgname=globus-cli
-pkgver=3.6.0
+pkgver=3.7.0
 pkgrel=1
 pkgdesc='CLI for Globus'
 arch=('any')
