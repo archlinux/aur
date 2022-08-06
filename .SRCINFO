@@ -1,7 +1,7 @@
 pkgbase = webkit2gtk-imgpaste
 	pkgdesc = Web content engine for GTK
 	pkgver = 2.36.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://webkitgtk.org
 	arch = x86_64
 	license = custom
@@ -66,12 +66,14 @@ pkgbase = webkit2gtk-imgpaste
 	conflicts = webkit2gtk
 	source = https://webkitgtk.org/releases/webkitgtk-2.36.5.tar.xz
 	source = https://webkitgtk.org/releases/webkitgtk-2.36.5.tar.xz.asc
+	source = https://github.com/WebKit/WebKit/commit/a6277d4834cce0dea2f999d4c06ffa57abfbb82d.patch
 	source = PasteBoardGtk.patch
 	source = EnlargeObjectSize.patch
 	validpgpkeys = D7FCF61CF9A2DEAB31D81BD3F3D322D0EC4582C3
 	validpgpkeys = 5AA3BC334FD7E3369E7C77B291C559DBE4C9123B
 	sha256sums = d5532fa884c943dc48f1911473dd663aba407a3b35caa7b04bac1419b41e5908
 	sha256sums = SKIP
+	sha256sums = ef40fe4f989103d3e81b8a5885bcf78c7cabe7fab6160f2404aaae0daf6f7951
 	sha256sums = 909eb44783d093c89400494a8b57eee3a5b926e1a5b5f1e922e1dff1a6dc3c7b
 	sha256sums = a5d2149d55190a15bc806bfddd85f43b6c714722b04ce0c1e476f9cb58985bac
 
