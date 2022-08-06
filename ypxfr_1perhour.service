@@ -1,0 +1,7 @@
+[Unit]
+Description=Update ypxfr maps once an hour
+Documentation=man:ypxfr
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/yp/ypxfr_1perhour

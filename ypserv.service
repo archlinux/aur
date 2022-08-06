@@ -1,0 +1,13 @@
+[Unit]
+Description=NIS/YP (Network Information Service) Server
+Requires=rpcbind.service
+After=network.target rpcbind.service 
+Before=ypbind.service
+
+[Service]
+Type=forking
+PIDFile=/run/ypserv.pid
+ExecStart=/usr/bin/ypserv
+
+[Install]
+WantedBy=multi-user.target

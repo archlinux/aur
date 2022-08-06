@@ -1,0 +1,12 @@
+[Unit]
+Description=NIS/YP (Network Information Service) Users Passwords Change Server
+Requires=rpcbind.service
+After=network.target rpcbind.service
+
+[Service]
+Type=forking
+PIDFile=/run/yppasswdd.pid
+ExecStart=/usr/bin/rpc.yppasswdd
+
+[Install]
+WantedBy=multi-user.target
