@@ -1,0 +1,22 @@
+pkgbase = piscesde-qt-plugins-git
+	pkgdesc = Unify Qt application style of piscesDE
+	pkgver = 0
+	pkgrel = 2
+	url = https://github.com/piscesys/qt-plugins
+	arch = x86_64
+	groups = piscesde-git
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	makedepends = qt5-tools
+	makedepends = git
+	depends = kwindowsystem
+	depends = libdbusmenu-qt5
+	depends = libqtxdg
+	depends = qt5-quickcontrols2
+	provides = piscesde-qt-plugins
+	conflicts = piscesde-qt-plugins
+	source = git+https://github.com/piscesys/qt-plugins.git
+	sha512sums = SKIP
+
+pkgname = piscesde-qt-plugins-git
