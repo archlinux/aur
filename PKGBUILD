@@ -1,7 +1,7 @@
-# Maintainer: Andrew Crerar <crerar@archlinux.org>
+# Maintainer: Syboxez Blank <@Syboxez:matrix.org>
 pkgbase=gtk4-git
 pkgname=(gtk4-git gtk-update-icon-cache-git)
-pkgver=4.1.2.r108.gb539c92312
+pkgver=4.7.1.r138.gaf6432aa67
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (GIT Version)"
 arch=('x86_64')
@@ -17,7 +17,8 @@ depends=('at-spi2-atk' 'cairo' 'atk' 'dconf' 'glib2' 'libepoxy' 'fribidi'
          'cantarell-fonts')
 makedepends=('gobject-introspection' 'cmake' 'git' 'meson' 'wayland-protocols'
              'sysprof' 'python' 'shaderc' 'sassc' 'glib2-docs' 'pandoc' 'python-toml'
-             'python-jinja' 'python-typogrify' 'python-pygments' 'libxslt' 'docbook-xsl')
+             'python-jinja' 'python-typogrify' 'python-pygments' 'libxslt' 'docbook-xsl'
+             'gi-docgen' 'python-docutils')
 source=('git+https://gitlab.gnome.org/GNOME/gtk.git'
         'gtk4-querymodules.hook'
         'gtk4-update-icon-cache.hook'
@@ -70,8 +71,8 @@ build() {
 
 package_gtk4-git() {
   depends+=('gtk-update-icon-cache-git')
-  provides+=('gtk4')
-  conflicts=('gtk4')
+  provides+=('gtk4' 'pango' 'gtk4-demos')
+  conflicts=('gtk4' 'pango' 'gtk4-demos')
 
   DESTDIR="$pkgdir" meson install -C build
 
