@@ -2,8 +2,8 @@
 
 pkgname=libpiscesde-git
 _pkgname=libpiscesde
-pkgver=0
-pkgrel=2
+pkgver=0.9
+pkgrel=1
 pkgdesc="System library for piscesDE applications"
 arch=('x86_64')
 url="https://github.com/piscesys/libpisces"
