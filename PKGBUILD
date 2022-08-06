@@ -115,6 +115,8 @@ prepare() {
   ((BUILD_DOXYGEN)) && sed -i '/^ *install.*doc/s/doc/htmlDoc/' src/CMakeLists.txt || true
 # fix CMAKE_FIND_PACKAGE_PREFER_CONFIG=ON preserve target name capitalisation
   sed 's/OPENEXR_FOUND/OpenEXR_FOUND/g' -i "${srcdir}"/AliceVision-${pkgver}/src/CMakeLists.txt
+# fix openimageio:2 target library
+  sed 's/${OPENIMAGEIO_LIBRARIES};dl/OpenImageIO::OpenImageIO/g' -i "${srcdir}"/AliceVision-${pkgver}/src/CMakeLists.txt
 }
 
 
