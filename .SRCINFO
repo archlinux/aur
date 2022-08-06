@@ -1,0 +1,16 @@
+pkgbase = piscesde-gtk-themes-git
+	pkgdesc = piscesDE gtk dark/light themes
+	pkgver = 0
+	pkgrel = 2
+	url = https://github.com/piscesys/gtk-themes
+	arch = any
+	groups = piscesde-git
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	provides = piscesde-gtk-themes
+	conflicts = piscesde-gtk-themes
+	source = git+https://github.com/piscesys/gtk-themes.git
+	sha512sums = SKIP
+
+pkgname = piscesde-gtk-themes-git
