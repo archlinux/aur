@@ -1,0 +1,21 @@
+pkgbase = piscesde-fishui
+	pkgdesc = GUI library based on QQC2 for piscesDE applications
+	pkgver = 0
+	pkgrel = 2
+	url = https://github.com/piscesys/fishui.git
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	makedepends = qt5-tools
+	depends = kwindowsystem
+	depends = qt5-declarative
+	depends = qt5-graphicaleffects
+	depends = qt5-quickcontrols2
+	provides = piscesde-fishui
+	conflicts = piscesde-fishui
+	source = git+https://github.com/piscesys/fishui.git.git
+	sha512sums = SKIP
+
+pkgname = piscesde-fishui-git
