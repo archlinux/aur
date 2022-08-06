@@ -1,0 +1,21 @@
+pkgbase = sslproxy-git
+	pkgdesc = Transparent SSL/TLS proxy for decrypting and diverting network traffic to other programs, such as UTM services, for deep SSL inspection
+	pkgver = v0.9.3_0_ge456f56
+	pkgrel = 1
+	url = https://github.com/sonertari/SSLproxy
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = BSD
+	makedepends = git
+	makedepends = libnet
+	depends = openssl
+	provides = sslproxy
+	conflicts = sslproxy
+	source = git+https://github.com/sonertari/SSLproxy#branch=master
+	sha512sums = SKIP
+
+pkgname = sslproxy-git
