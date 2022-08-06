@@ -1,6 +1,6 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=libff7tk-git
-pkgver=0.82.0.0
+pkgver=0.82.1.4
 pkgrel=1
 provides=('libff7tk')
 conflicts=('libff7tk')
@@ -18,7 +18,7 @@ options+=(!strip)
 
 pkgver() {
   cd "ff7tk"
-  git describe --long --match=v* | cut -c2- | rev | cut -c11- | rev | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe | cut -c2-9 | sed 's/-/./g'
 }
 
 build() {
