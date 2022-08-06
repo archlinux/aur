@@ -2,13 +2,17 @@
 
 pkgname=youki
 pkgver=0.0.3
-pkgrel=1
-pkgdesc="A container runtime written in Rust"
+pkgrel=2
+pkgdesc='A container runtime written in Rust'
 arch=('x86_64')
-url="https://containers.github.io/youki"
+url='https://containers.github.io/youki'
 license=('Apache')
-depends=('gcc-libs' 'libseccomp' 'dbus' 'docker')
+depends=('gcc-libs' 'libseccomp' 'dbus')
 makedepends=('rust' 'git' 'dbus-glib' 'systemd')
+optdepends=(
+  'docker: run via docker'
+  'podman: run via podman'
+)
 options=('!lto')
 _commit='541bf4a26cc0c3ec397398ed5971f08285a24076'
 source=("$pkgname::git+https://github.com/containers/youki.git#commit=$_commit")
