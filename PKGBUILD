@@ -1,7 +1,7 @@
 # Maintainer: zhuangzhuang <xufengyuan20080802@outlook.com>
 
 pkgname=libpisces-git
-_pkgname=libpisces
+_pkgname=libpisces-git
 pkgver=0
 pkgrel=2
 pkgdesc="System library for Cutefish applications"

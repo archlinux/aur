@@ -16,8 +16,8 @@ pkgbase = libpisces-git
 	depends = accountsservice
 	depends = bluez
 	depends = bluez-qt
-	provides = libpisces
-	conflicts = libpisces
+	provides = libpisces-git
+	conflicts = libpisces-git
 	source = git+https://github.com/piscesys/libpisces.git
 	sha512sums = SKIP
 
