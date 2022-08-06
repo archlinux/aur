@@ -1,6 +1,7 @@
 # Maintainer: zhuangzhuang <xufengyuan20080802@outlook.com>
 
 pkgname=libpisces-git
+pkgbase=libpisces-git
 _pkgname=libpisces-git
 pkgver=0
 pkgrel=2
