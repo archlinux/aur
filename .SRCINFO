@@ -1,6 +1,6 @@
 pkgbase = xorg-proxymngr
 	pkgdesc = Proxy manager service
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = http://www.x.org/
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = xorg-proxymngr
 	makedepends = xproxymngproto
 	depends = xorg-lbxproxy
 	depends = libxt
-	source = http://xorg.freedesktop.org/releases/individual/app/proxymngr-1.0.3.tar.bz2
-	md5sums = b0dad55abda277f919f6213751badb04
+	source = http://xorg.freedesktop.org/releases/individual/app/proxymngr-1.0.4.tar.gz
+	md5sums = a165cf704f6a413f0bacf65ea470331f
 
 pkgname = xorg-proxymngr
-
