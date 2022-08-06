@@ -5,7 +5,7 @@
 # Contributor: Jon Nordby <jononor@gmail.com>
 
 pkgname=lib32-libwebp
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="WebP library (32-bit)"
 url="https://developers.google.com/speed/webp/"
@@ -15,7 +15,7 @@ depends=(lib32-glibc libwebp)
 provides=(libwebp{,decoder,demux,mux}.so)
 options=(debug)
 source=(https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-$pkgver.tar.gz{,.asc})
-sha256sums=('f5d7ab2390b06b8a934a4fc35784291b3885b557780d099bd32f09241f9d83f9'
+sha256sums=('7bf5a8a28cc69bcfa8cb214f2c3095703c6b73ac5fba4d5480c205331d9494df'
             'SKIP')
 validpgpkeys=('6B0E6B70976DE303EDF2F601F9C3D6BDB8232B5D') # WebP release signing key
 
