@@ -1,7 +1,7 @@
 pkgbase = ypbind-mt
 	pkgdesc = Linux NIS daemon
-	pkgver = 2.6.1
-	pkgrel = 2
+	pkgver = 2.7.2
+	pkgrel = 1
 	url = https://github.com/thkukuk/ypbind-mt
 	arch = i686
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = ypbind-mt
 	depends = yp-tools
 	depends = libsystemd
 	backup = etc/yp.conf
-	source = https://github.com/thkukuk/ypbind-mt/archive/v2.6.1.tar.gz
+	source = ypbind-mt-2.7.2.tar.gz::https://github.com/thkukuk/ypbind-mt/archive/v2.7.2.tar.gz
 	source = ypbind.service
 	source = ypbind.conf
-	md5sums = 47cbdbc290421140e5ccbaffe1c07ff5
+	md5sums = 18e83b9889b81481ca78002b54a67ba9
 	md5sums = 50e05f057ec0603243e3d334aaa0934f
 	md5sums = 3d6a8eb44771f81abb47d14d9e4f301d
 
