@@ -6,8 +6,8 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=ypserv
-pkgver=4.1
-pkgrel=2
+pkgver=4.2
+pkgrel=1
 pkgdesc='Linux NIS Server'
 arch=('i686' 'x86_64')
 url='https://github.com/thkukuk/ypserv'
@@ -29,6 +29,7 @@ source=("$url/releases/download/v$pkgver/ypserv-$pkgver.tar.xz"
 
 prepare() {
   cd $pkgname-$pkgver
+  sed -i -r -e '/AM_CFLAGS/s/ -Werror//' lib/Makefile.am
   sed -i -r -e 's,AC_CHECK_HEADERS\(crypt.h\),AC_CHECK_HEADERS([paths.h crypt.h]),' \
       configure.ac
   autoreconf -fiv
@@ -60,7 +61,7 @@ package() {
   rm -fr "${pkgdir}/var"
 }
 
-md5sums=('27df9000c34cb300e9b6425cd299cb2f'
+md5sums=('7c1c6d042acefd74a6665233e4ad22c9'
          '0639cc2e8f667272335649eeede77206'
          '3428dcc728b2ac6c4edda9f43e834238'
          '9ff147310a5b83749357b6587cccdf34'
