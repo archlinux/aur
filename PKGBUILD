@@ -12,8 +12,10 @@ depends=('windowmaker-crm-git' 'libdbus')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-git")
-source=("$pkgname::git+https://github.com/bbidulock/wdm.git#branch=next")
-md5sums=('SKIP')
+source=("$pkgname::git+https://github.com/bbidulock/wdm.git#branch=next"
+	build.patch)
+md5sums=('SKIP'
+         '38cc79eaa37e8fc0fb6967c25b3afc07')
 
 pkgver() {
   cd $pkgname
@@ -22,6 +24,7 @@ pkgver() {
 
 prepare() {
   cd $pkgname
+  patch -Np2 -b -z .orig <../build.patch
   autoreconf -fiv
 }
 

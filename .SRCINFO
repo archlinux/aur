@@ -13,7 +13,8 @@ pkgbase = wdm-crm-git
 	conflicts = wdm
 	conflicts = wdm-git
 	source = wdm-crm-git::git+https://github.com/bbidulock/wdm.git#branch=next
+	source = build.patch
 	md5sums = SKIP
+	md5sums = 38cc79eaa37e8fc0fb6967c25b3afc07
 
 pkgname = wdm-crm-git
-

@@ -1,0 +1,23 @@
+diff -up src/wdm-crm-git/src/wdm/consolekit.c.orig src/wdm-crm-git/src/wdm/consolekit.c
+--- src/wdm-crm-git/src/wdm/consolekit.c.orig	2022-08-05 22:04:04.560000000 -0600
++++ src/wdm-crm-git/src/wdm/consolekit.c	2022-08-05 22:04:18.910000000 -0600
+@@ -27,6 +27,7 @@
+ #include <string.h>
+ #include <pwd.h>
+ 
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ 
+ #ifdef WITH_CONSOLE_KIT
+diff -up src/wdm-crm-git/src/wdmPrefs/prefs.c.orig src/wdm-crm-git/src/wdmPrefs/prefs.c
+--- src/wdm-crm-git/src/wdmPrefs/prefs.c.orig	2022-08-05 22:03:30.020000000 -0600
++++ src/wdm-crm-git/src/wdmPrefs/prefs.c	2022-08-05 22:03:30.140000000 -0600
+@@ -80,7 +80,7 @@ void AddSectionButton(Panel * panel, con
+ 		color.alpha = 0;
+ 		filename = WMPathForResourceOfType((char *)iconfile, NULL);
+ 		if (filename) {
+-			icon = WMCreateBlendedPixmapFromFile(WMWidgetScreen(button), filename, &color, 0, 0);
++			icon = WMCreateBlendedPixmapFromFile(WMWidgetScreen(button), filename, &color);
+ 			WMSetButtonImage(button, icon);
+ 			if (icon)
+ 				WMReleasePixmap(icon);
