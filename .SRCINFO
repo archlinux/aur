@@ -1,12 +1,12 @@
 pkgbase = discord-canary-electron-bin
 	pkgdesc = Discord Canary (popular voice + video app) using the system provided electron for increased security and performance
 	pkgver = 0.0.136
-	pkgrel = 1
+	pkgrel = 2
 	url = https://canary.discordapp.com
 	arch = x86_64
 	license = custom
 	makedepends = asar
-	depends = electron15
+	depends = electron
 	depends = gtk3
 	depends = libnotify
 	depends = libxss
