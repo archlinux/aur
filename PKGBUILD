@@ -16,7 +16,7 @@ optdepends=('pcsclite: for use with PC/SC readers'
             'ccid: PC/SC reader generic driver')
 conflicts=('oscam-svn')
 install='oscam.install'
-source=("$pkgname::svn+http://www.streamboard.tv/svn/oscam/trunk"
+source=("$pkgname::svn+https://svn.streamboard.tv/oscam/trunk"
         'oscam.service'
         'oscam.sysuser')
 sha256sums=('SKIP'
@@ -33,7 +33,8 @@ build() {
 
   make allyesconfig
 
-  make CONF_DIR=/var/lib/oscam \
+  make -j$(getconf _NPROCESSORS_ONLN) \
+       CONF_DIR=/var/lib/oscam \
        USE_SSL=1 \
        USE_LIBUSB=1 \
        USE_PCSC=1 \
