@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-braintree
-pkgver=4.15.2
+pkgver=4.16.0
 pkgrel=1
 pkgdesc="Braintree Python Library"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-requests')
 makedepends=('python-setuptools')
 checkdepends=('python-nose')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/braintree/braintree_python/archive/$pkgver.tar.gz")
-sha512sums=('324823a078bc4068577793b169dd6b3d67e05d77850cebfe09602c0f6c3626ef1098f612c0ddfb7cc72b4b734d7319944c30297658f77edaf906334d27393f13')
+sha512sums=('6eaed1dec96032f3522e59e66c64ab674324518b7086ed9aefd2cdd5ae70e2d3e114a2e422f3edcae47dd95a5f332182dd65800cacb20bcbdf7e01a1e96498bb')
 
 build() {
   cd braintree_python-$pkgver
