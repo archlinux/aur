@@ -5,7 +5,7 @@
 pkgbase=noto-fonts-cjk-vf
 pkgname=(noto-fonts-{cjk,{cjk-,}{hk,jp,kr,sc,tc}}-vf)
 pkgver=20220126
-pkgrel=4
+pkgrel=5
 pkgdesc='Google Noto CJK variable fonts'
 url='https://www.google.com/get/noto/'
 license=(custom:SIL)
@@ -19,12 +19,10 @@ _sansver=2.004  # commit/165c01b46ea533872e002e0785ff17e44f6d97d8 from 20210430
 _serifver=2.001  # commit/473da44c32fec739db7e5458c81a833513cb4084 from 20220126
 #source=("noto-cjk-${pkgver}.tar.gz::https://github.com/googlefonts/noto-cjk/archive/${_commit}.tar.gz"
 source=("noto-cjk-sans-${_sansver}.zip::https://github.com/googlefonts/noto-cjk/releases/download/Sans2.004/01_NotoSansCJK-OTF-VF.zip"
-        "NotoSansMonoCJK-VF-${_sansver}.otf.ttc::https://github.com/googlefonts/noto-cjk/raw/${_sanscommit}/Sans/Variable/OTC/NotoSansMonoCJK-VF.otf.ttc"
         "noto-cjk-serif-${_serifver}.zip::https://github.com/googlefonts/noto-cjk/releases/download/Serif2.001/02_NotoSerifCJK-OTF-VF.zip"
         70-noto-{cjk,hk,jp,kr,sc,tc}.conf)
-sha256sums=('d1e143273cc7ad37b710cdb0d188a32553cee9cfd60129dcee9d59f91e3c6b48'
-            '3a73c225abcfd5742ab84e613b427fb5b40c9e59b70fe3d1683f9b1da96568a0'
-            'bedeb86226fefd5fd69b54ed4660415861864f879c0b7da08b1fd71ca35a78b0'
+sha256sums=('d5e33aebad9f8a0c0896a4a29199ef85ca966134db164426c74e83e6f13c43cd'
+            'a4c5df681f6fb35000e79c6472006a1504d5fde76470ec0c686999d5d849229c'
             '357e9ed6553087567ec5a28f835db5c43d3cd68a688e4677f759cca465379a32'
             '70f5ad3bd3e3d90c98c6a9ea2f3a28c2564fe18f0d7b8d78926a284cec398fd0'
             '0b5bd14a869234e50b735505e96257cd8e0851031a02735353895b7408abd313'
@@ -36,11 +34,10 @@ noextract=(noto-cjk-sans-${_sansver}.zip noto-cjk-serif-${_serifver}.zip)
 _langs=(hk jp kr sc tc)
 
 prepare() {
+  # adjust to match git source/snapshot
   mkdir -p noto-cjk/{Sans,Serif}
   bsdtar -xf noto-cjk-sans-${_sansver}.zip -C noto-cjk/Sans
-  # variable mono otc is missing https://github.com/googlefonts/noto-cjk/issues/214
-  cp NotoSansMonoCJK-VF-${_sansver}.otf.ttc noto-cjk/Sans/Variable/OTC/NotoSansMonoCJK-VF.otf.ttc
-  bsdtar -xf noto-cjk-serif-${_serifver}.zip -C noto-cjk/Serif --exclude=../LICENSE
+  bsdtar -xf noto-cjk-serif-${_serifver}.zip -C noto-cjk/Serif
   cp noto-cjk/Sans/LICENSE noto-cjk/LICENSE
 }
 
