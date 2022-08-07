@@ -1,6 +1,6 @@
 pkgbase = python-lhotse-git
 	pkgdesc = Speech and audio data preparation toolkit
-	pkgver = 1.5.0.dev0+git.7cce6476.clean
+	pkgver = 1.5.0.dev0+git.08a613a0.clean
 	pkgrel = 1
 	url = https://github.com/lhotse-speech/lhotse
 	arch = any
