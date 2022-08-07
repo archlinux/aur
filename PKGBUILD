@@ -2,26 +2,24 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hip-runtime-nvidia
 pkgver=5.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
 url='https://rocmdocs.amd.com/en/latest/Installation_Guide/HIP.html'
 license=('MIT')
-depends=('cuda' 'rocm-llvm')
-makedepends=('libelf' 'cmake' 'python' 'git')
+depends=('cuda' 'rocm-llvm' 'libelf')
+makedepends=('cmake' 'python' 'git')
 provides=('hip')
 conflicts=('hip')
 _hip='https://github.com/ROCm-Developer-Tools/HIP'
 _hipamd='https://github.com/ROCm-Developer-Tools/hipamd'
 source=("$pkgname-$pkgver.tar.gz::$_hip/archive/rocm-$pkgver.tar.gz"
         "$pkgname-hipamd-$pkgver.tar.gz::$_hipamd/archive/rocm-$pkgver.tar.gz"
-        "git-hash.patch"
-        "config-path.patch::https://patch-diff.githubusercontent.com/raw/ROCm-Developer-Tools/hipamd/pull/32.patch"
+        "git-hash.patch::https://github.com/ROCm-Developer-Tools/hipamd/commit/56b32604729cca08bdcf00c7a69da8a75cc95b8a.patch"
         "nvcc.patch::https://patch-diff.githubusercontent.com/raw/ROCm-Developer-Tools/HIP/pull/2623.patch")
 sha256sums=('7d4686a2f8a9124bb21f7f3958e451c57019f48a0cbb42ffdc56ed02860a46c3'
             '4feaa3883cbc54ddcd5d2d5becbe0f3fe3edd5b3b468dc73b5104893029eefac'
-            '84cd40751e041edd48489eca59f1702bba08a402b25162e4cf061de45abc2bde'
-            'SKIP'
+            '3b0ec136c9bad206697087df0908922df705ec76085f57e36d0d15f52a5fd981'
             'SKIP')
 _dirhip="$(basename "$_hip")-$(basename "${source[0]}" ".tar.gz")"
 _dirhipamd="$(basename "$_hipamd")-$(basename "${source[1]}" ".tar.gz")"
@@ -29,7 +27,6 @@ _dirhipamd="$(basename "$_hipamd")-$(basename "${source[1]}" ".tar.gz")"
 prepare() {
     cd "$_dirhipamd"
     patch -Np1 -i "$srcdir/git-hash.patch"
-    patch -N   -i "$srcdir/config-path.patch"
 
     cd "$srcdir/$_dirhip"
     patch -Np1 -i "$srcdir/nvcc.patch"
