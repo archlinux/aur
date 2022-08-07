@@ -1,6 +1,6 @@
 pkgbase = webbrowser-git
 	pkgdesc = A Goanna/UXP based browser with no spyware.
-	pkgver = 29.3.1.r1.g61f7aaa
+	pkgver = v29.3.1.r2.g29fbfac
 	pkgrel = 1
 	url = https://git.nuegia.net/webbrowser.git/
 	arch = i686

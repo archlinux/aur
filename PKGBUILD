@@ -1,9 +1,9 @@
-# Maintainer <veryangry at snopyta dot org>
+# Maintainer <yetanothermaintainer at danwin1210 dot de>
 _pkgname=webbrowser
 _pkgver=29.3.1
 pkgname="$_pkgname"-git
 pkgrel=1
-pkgver=29.3.1.r1.g61f7aaa
+pkgver=v29.3.1.r2.g29fbfac
 pkgrel=1
 pkgdesc="A Goanna/UXP based browser with no spyware."
 arch=('i686' 'x86_64')
