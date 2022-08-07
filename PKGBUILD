@@ -7,9 +7,12 @@ pkgname=(
     "${_pkgbase}-up5401ea-git"
     "${_pkgbase}-ux581l-git"
     "${_pkgbase}-gx701-git"
+    "${_pkgbase}-b7402-git"
+    "${_pkgbase}-e210ma-git"
+    "${_pkgbase}-gx551-git"
     "${_pkgbase}-g533-git"
 )
-pkgver=r205.5cffd28
+pkgver=r211.070bb1e
 pkgrel=1
 pkgdesc="Linux newest feature-rich configurable driver for Asus numpad"
 arch=('any')
