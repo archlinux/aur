@@ -15,14 +15,14 @@
 pkgname=discord-canary-electron-bin
 _pkgname=discord-canary
 pkgver=0.0.136
-pkgrel=2
+pkgrel=3
 pkgdesc="Discord Canary (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('x86_64')
 provides=('discord-canary')
 conflicts=('discord-canary')
 url='https://canary.discordapp.com'
 license=('custom')
-depends=('electron' 'gtk3' 'libnotify' 'libxss' 'glibc' 'alsa-lib' 'nspr' 'nss' 'xdg-utils' 'libcups')
+depends=('electron19' 'gtk3' 'libnotify' 'libxss' 'glibc' 'alsa-lib' 'nspr' 'nss' 'xdg-utils' 'libcups')
 makedepends=('asar')
 optdepends=('libpulse: Pulseaudio support'
             'xdg-utils: Open files'
@@ -59,7 +59,7 @@ package() {
   asar e $_tarname/resources/app.asar $_tarname/resources/app
   sed -i "s|process.resourcesPath|'/usr/lib/$_pkgname'|" $_tarname/resources/app/app_bootstrap/buildInfo.js
   sed -i "s|exeDir,|'/usr/share/pixmaps',|" $_tarname/resources/app/app_bootstrap/autoStart/linux.js
-  sed -i "s|module.paths = \[\]|module.paths = \['/home/' + process.env.USER + '/.config/discordcanary/$pkgver/modules'\]|" $_tarname/resources/app/app_bootstrap/requireNative.js
+  sed -i "s|module.paths = \[\]|module.paths = \[process.env.HOME + '/.config/discordcanary/$pkgver/modules'\]|" $_tarname/resources/app/app_bootstrap/requireNative.js
   asar p $_tarname/resources/app $_tarname/resources/app.asar --unpack-dir '**'
   rm -rf $_tarname/resources/app 
   
@@ -68,7 +68,7 @@ package() {
   
   # Create starter script for discord
   echo "#!/bin/sh" >> "$srcdir"/$_pkgname
-  echo "exec electron /usr/lib/$_pkgname/app.asar \$@" >> "$srcdir"/$_pkgname
+  echo "exec electron19 /usr/lib/$_pkgname/app.asar \$@" >> "$srcdir"/$_pkgname
   
   install -d "$pkgdir"/usr/{bin,share/{pixmaps,applications}}
   install -Dm 755 $_pkgname "$pkgdir"/usr/bin/$_pkgname
