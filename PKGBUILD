@@ -1,8 +1,8 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=gnome-shell-extension-just-perfection-desktop
-pkgver=20
-_commit=3d1a61da574e9f47a5cf709465d135394ef0b7c8
+pkgver=21
+_commit=a9947bd8f8691a352a41b6534686ce48c4f6ece4
 pkgrel=1
 pkgdesc='Just Perfection GNOME Shell Desktop'
 arch=(any)
