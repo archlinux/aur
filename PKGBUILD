@@ -1,0 +1,95 @@
+# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
+# Contributor: John Sowiak <john@archlinux.org>
+# Contributor: tobias <tobias@archlinux.org>
+
+pkgname=blender-rocm
+pkgver=3.2.2
+pkgrel=1
+epoch=1
+pkgdesc="A fully integrated 3D graphics creation suite (with ROCm)"
+arch=('x86_64')
+license=('GPL')
+url="https://www.blender.org"
+depends=('libpng' 'libtiff' 'openexr' 'python' 'desktop-file-utils' 'python-requests' 'potrace'
+         'shared-mime-info' 'hicolor-icon-theme' 'xdg-utils' 'glew' 'openjpeg2' 'python-numpy'
+         'freetype2' 'openal' 'ffmpeg' 'fftw' 'boost-libs' 'opencollada' 'alembic' 'openxr'
+         'openimageio' 'libsndfile' 'jack' 'opencolorio' 'openshadinglanguage' 'openimagedenoise'
+         'jemalloc' 'libspnav' 'ptex' 'opensubdiv' 'openvdb' 'log4cplus' 'sdl2' 'embree' 'libharu'
+         'draco')
+makedepends=('cmake' 'boost' 'mesa' 'git' 'llvm' 'hip-runtime-amd' 'ninja')
+options=(!strip)
+provides=('blender')
+conflicts=('blender')
+source=("git+https://git.blender.org/blender.git#tag=v$pkgver"
+        "git+https://git.blender.org/blender-addons.git"
+        "git+https://git.blender.org/blender-addons-contrib.git"
+        "git+https://git.blender.org/blender-translations.git"
+        "git+https://git.blender.org/blender-dev-tools.git"
+        force-draco1.patch
+        force-draco2.patch)
+sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'e239da4f3906f1b54265435181cf770bae3d269c8d915df9a73861e6ee71ec70bf2339426e7c81a91e5a567273b3b3742d7a99feefd3398d821b26e1ff3a56d0'
+            '527ab66e5eace777de0043c1ca5787a488f6471450ce67fd6d08137ad0ef56177bc0c17696f30a5fca23fa55d8ca9c3f30cb7b17550dba2dbd8e89ca0b361990')
+
+_pkgname=blender
+
+prepare() {
+  cd "$_pkgname"
+
+  git submodule init
+  git config submodule."release/scripts/addons".url "${srcdir}/blender-addons"
+  git config submodule."release/scripts/addons_contrib".url "${srcdir}/blender-addons-contrib"
+  git config submodule."release/datafiles/locale".url "${srcdir}/blender-translations"
+  git config submodule."source/tools".url "${srcdir}/blender-dev-tools"
+  git submodule update
+  git submodule foreach git checkout v${pkgver}
+
+  patch -p1 -i "$srcdir"/force-draco1.patch
+  patch -p1 -d release/scripts/addons -i "$srcdir"/force-draco2.patch
+}
+
+build() {
+  cd "$_pkgname"
+
+  local PYTHON_VER=3.10
+
+  cmake \
+    -Bbuild \
+    -GNinja \
+    -Cbuild_files/cmake/config/blender_release.cmake \
+    -DWITH_CYCLES_HIP_BINARIES=ON \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DWITH_INSTALL_PORTABLE=OFF \
+    -DWITH_PYTHON_INSTALL=OFF \
+    -DPYTHON_VERSION=$PYTHON_VER \
+    -DPYTHON_LIBPATH=/usr/lib \
+    -DPYTHON_LIBRARY=python$PYTHON_VER \
+    -DPYTHON_INCLUDE_DIRS=/usr/include/python$PYTHON_VER \
+    -DCMAKE_CXX_FLAGS="-I /usr/include/python$PYTHON_VER"
+  ninja -C build
+}
+
+package() {
+  cd "$_pkgname"
+
+  DESTDIR="${pkgdir}" ninja -C build install
+  install -Dm755 release/bin/blender-softwaregl "${pkgdir}/usr/bin/blender-softwaregl"
+  python -m compileall "${pkgdir}/usr/share/blender"
+  python -O -m compileall "${pkgdir}/usr/share/blender"
+
+  install -Dm644 release/freedesktop/org.blender.Blender.appdata.xml "${pkgdir}/usr/share/metainfo/org.blender.Blender.appdata.xml"
+
+  # Manually install additional scripts (See FS#69351)
+  cp -r release/scripts/addons_contrib/* "${pkgdir}"/usr/share/blender/3*/scripts/addons_contrib/
+
+  # Manually install draco bindings (See FS#73415)
+  mkdir -p "${pkgdir}"/usr/lib/python3.10/
+  mv "${pkgdir}"/usr/share/blender/3*/python/lib/* "${pkgdir}"/usr/lib/
+  rm -r "${pkgdir}"/usr/share/blender/3*/python
+}
