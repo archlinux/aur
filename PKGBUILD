@@ -16,6 +16,11 @@ sha256sums=('1f5e517ccf4cb3a09cffe31ac52de70d8f076fe024a4a2453e07db57bb64febb'
             'SKIP')
 validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy <unifoundry@unifoundry.com>
 
+build() {
+  cd "$srcdir/unifont-$pkgver/src"
+  make
+}
+
 package_pcf-unifont() {
   pkgdesc="A free bitmap font with wide Unicode support (PCF version)"
 
@@ -47,7 +52,6 @@ package_unifont-utils() {
   )
 
   cd "$srcdir/unifont-$pkgver"
-  mkdir -p bin
-  make -C src all install PREFIX="$pkgdir/usr" LOCALBINDIR=../bin
+  make -C src install PREFIX="$pkgdir/usr" LOCALBINDIR=../bin
   make -C man install PREFIX="$pkgdir/usr" COMPRESS=1
 }
