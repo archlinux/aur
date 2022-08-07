@@ -1,11 +1,15 @@
 pkgbase = most-snapshot
 	pkgdesc = A terminal pager similar to ‘more’ and ‘less’ (latest development snapshot)
 	pkgver = 5.2.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.jedsoft.org/most/
+	arch = i686
 	arch = x86_64
+	arch = arm
+	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = GPL
 	depends = slang
 	provides = most
