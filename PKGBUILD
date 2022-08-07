@@ -2,25 +2,25 @@
 
 pkgname=cosma
 _PkgName=COSMA
-pkgver=2.5.1
-_costaver=2.0
+pkgver=2.6.1
+_costaver=2.1
 pkgrel=1
 pkgdesc="Distributed Communication-Optimal Matrix-Matrix Multiplication Algorithm"
 arch=("x86_64")
 url="https://github.com/eth-cscs/COSMA"
 license=('BSD')
-depends=('scalapack')
+depends=('scalapack' 'cblas')
 makedepends=('cmake')
 source=($pkgname-$pkgver.tar.gz::"$url/archive/refs/tags/v$pkgver.tar.gz"
-        costa-$_costaver.tar.gz::"https://github.com/eth-cscs/COSTA/releases/download/v2.0/COSTA-v2.0.tar.gz")
-sha256sums=('593d764056cc27d3d2188a22bc830684498c86f572bfed570b0ffd980839962a'
-            'de250197f31f7d23226c6956a687c3ff46fb0ff6c621a932428236c3f7925fe4')
+        costa-$_costaver.tar.gz::"https://github.com/eth-cscs/COSTA/archive/refs/tags/v$_costaver.tar.gz")
+sha256sums=('e356bae7082895a90657026bd80a50b589cf7f4f1b257625ee6634c73ce25e05'
+            'c1e86452415083f7470b292d93ec60708b7c8dbafc2bac383636bb4b28135866')
 
 prepare() {
   cd "$srcdir/$_PkgName-$pkgver"
   mkdir ../build
   sed -i "/adjust_mpiexec_flags/d" CMakeLists.txt
-  cp -r ../COSTA-v$_costaver/* libs/COSTA
+  cp -r ../COSTA-$_costaver/* libs/COSTA
 }
 
 build() {
@@ -40,7 +40,7 @@ package() {
   cd "$srcdir/build"
   make DESTDIR="$pkgdir" install
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-  install -m755 "$srcdir/$_PkgName-$pkgver/LICENCE" \
+  install -m755 "$srcdir/$_PkgName-$pkgver/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname"
   rm -rf "$pkgdir/usr/bin"
 }
