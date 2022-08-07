@@ -1,7 +1,7 @@
 # Maintainer: Barış İnandıoğlu <68742481+baris-inandi@users.noreply.github.com>
 
 pkgname=fe
-pkgver=1.1.3
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="AUR helper with a familiar subcommand system"
 arch=(x86_64)
