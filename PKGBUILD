@@ -1,8 +1,8 @@
 # Maintainer: Rick van Lieshout <info@rickvanlieshout.com>
 
 pkgname=tidal-hifi-git
-pkgrel=2
-pkgver=4.0.1.r0.gfa9ab22
+pkgrel=1
+pkgver=4.1.0.r0.g1439a11
 pkgdesc="The web version of listen.tidal.com running in electron with hifi support thanks to widevine. If the install fails use nvm to temporarily downgrade npm"
 arch=(x86_64)
 url="https://github.com/Mastermindzh/tidal-hifi"
@@ -13,9 +13,11 @@ provides=(tidal-hifi)
 conflicts=(tidal-hifi)
 
 source=("git+https://github.com/Mastermindzh/tidal-hifi.git"
-    "tidal-hifi.desktop")
+    "tidal-hifi.desktop"
+    "tidal-hifi.xml")
 sha512sums=('SKIP'
-    '31cf40fb3ac81c4a64a8410a78e97c268a440577bce54347ce62f8a9566c8897f8083cd1e5afa40b0fbe9a149fc4fb4f29cad91a12e5b47cf8e300e56351a4f1')
+    '402a73f4bc4c543208d518044607af8b71da428d58b37397a2d74bad1f0d4b854a0a037fd2d29ac157e7185165afe13865a87c57abe8019617de73a767087918'
+    "e06fce55c2d9fcaeff514b97e8b003dca4c1a0aa8c8e14c3e3b99febbc2e8af7402d2e2009147f3f57a9b6447fafd23dd69e7b4de63cf43c5d67825836ebecb5")
 
 getnvm() {
     if command -v nvm; then
@@ -78,11 +80,15 @@ package() {
     ln -s "/opt/tidal-hifi/tidal-hifi" "${pkgdir}/usr/bin/tidal-hifi"
 
     install -Dm 644 "build/icon.png" "${pkgdir}/usr/share/pixmaps/tidal-hifi.png"
+    install -Dm 644 "build/icon.png" "${pkgdir}/usr/share/icons/${_pkgname}/tidal-hifi.png"
+    install -Dm 644 "build/icon.png" "${pkgdir}/usr/share/icons/hicolor/0x0/apps/tidal-hifi.png"
     install -Dm 644 "${srcdir}/tidal-hifi.desktop" "${pkgdir}/usr/share/applications/tidal-hifi.desktop"
+    install -Dm 644 "${srcdir}/tidal-hifi.xml" "${pkgdir}/usr/share/mime/packages/tidal-hifi.xml"
 
     install -Dm 644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm 644 "build/icon.png" "${pkgdir}/usr/share/icons/hicolor/0x0/apps/tidal-hifi.png"
+
     ln -s "/opt/tidal-hifi/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
     ln -s "/opt/tidal-hifi/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
 }

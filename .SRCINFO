@@ -1,7 +1,7 @@
 pkgbase = tidal-hifi-git
 	pkgdesc = The web version of listen.tidal.com running in electron with hifi support thanks to widevine. If the install fails use nvm to temporarily downgrade npm
-	pkgver = 4.0.1.r0.gfa9ab22
-	pkgrel = 2
+	pkgver = 4.1.0.r0.g1439a11
+	pkgrel = 1
 	url = https://github.com/Mastermindzh/tidal-hifi
 	arch = x86_64
 	license = custom:MIT
@@ -14,7 +14,9 @@ pkgbase = tidal-hifi-git
 	conflicts = tidal-hifi
 	source = git+https://github.com/Mastermindzh/tidal-hifi.git
 	source = tidal-hifi.desktop
+	source = tidal-hifi.xml
 	sha512sums = SKIP
-	sha512sums = 31cf40fb3ac81c4a64a8410a78e97c268a440577bce54347ce62f8a9566c8897f8083cd1e5afa40b0fbe9a149fc4fb4f29cad91a12e5b47cf8e300e56351a4f1
+	sha512sums = 402a73f4bc4c543208d518044607af8b71da428d58b37397a2d74bad1f0d4b854a0a037fd2d29ac157e7185165afe13865a87c57abe8019617de73a767087918
+	sha512sums = e06fce55c2d9fcaeff514b97e8b003dca4c1a0aa8c8e14c3e3b99febbc2e8af7402d2e2009147f3f57a9b6447fafd23dd69e7b4de63cf43c5d67825836ebecb5
 
 pkgname = tidal-hifi-git
