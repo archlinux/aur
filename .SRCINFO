@@ -1,12 +1,13 @@
 pkgbase = xorg-xfs
 	pkgdesc = X Font Server
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xorg.freedesktop.org/
 	arch = x86_64
 	groups = xorg-apps
 	groups = xorg
 	license = custom
+	makedepends = xtrans
 	depends = libxfont2
 	source = https://xorg.freedesktop.org/archive/individual/app/xfs-1.2.1.tar.gz
 	sha512sums = 716bb6b85cd6ece72f035eb5a7aaa4f36dfa4b2e899bef224c5080910bb91dd442c4e5e2a175d53a23702b1d3d7d8e403e8f092b590f5decaa72827d95adf96c
