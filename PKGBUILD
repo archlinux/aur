@@ -1,19 +1,34 @@
 # Maintainer: Miguel Barrio Orsikowsky <megamik79@protonmail.com>
 
 pkgname=(lsp-plugins-noicons)
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Collection of free plugins compatible with LADSPA, LV2 and LinuxVST (without XDG icons)"
 arch=(x86_64)
 url="https://lsp-plug.in"
 license=(LGPL3)
-makedepends=(cairo gcc-libs glibc hicolor-icon-theme libglvnd libx11 jack ladspa libsndfile lv2 php)
-checkdepends=(lv2lint)
+makedepends=(cairo gcc-libs glibc hicolor-icon-theme libglvnd libx11 libxrandr jack ladspa libsndfile lv2 php)
+checkdepends=(jq lv2lint)
 provides=(lsp-plugins)
 conflicts=(lsp-plugins)
-source=(https://github.com/sadko4u/${pkgname%-noicons}/releases/download/$pkgver/${pkgname%-noicons}-src-$pkgver.tar.gz)
-sha512sums=('7246d60cd34313aa05a9167218d84cfd7a8d839520de44d1cb52e9da4df25a3f76a4cc1af17b5914532f0aa7227071e9b0cc4d9b87cab57d77feb759f26bd461')
-b2sums=('d07f0bb6b5ce2ddc40ebdd56bc0270ea4d439d728051a9e39312ecb104efe4c961d7a2389fcd2869aa2503b403641db0e8f07eee5796e96887a37cb13878198e')
+source=(
+  https://github.com/sadko4u/${pkgname%-noicons}/releases/download/$pkgver/${pkgname%-noicons}-src-$pkgver.tar.gz
+  ${pkgname%-noicons}-1.2.2-default_make_flags.patch
+  ${pkgname%-noicons}-1.2.2-lv2_h_include.patch
+)
+sha512sums=('63a1da2007a91db0e9bed97c26de5c5621b429d801b8d0eaf0e8d26aba2a57631824566e2c0ad48ea5943a5050cc40d4328c30427e4986b85d2878773a51dae1'
+            '4b8e3950bb0fd4d5492b283dd93cd585d0577b5c078c343b9a9b3cd60d39ace7884439f97eedb59ad5f3673d0d5e0a2fda7ec955511d542f26ae49fbc7d5b12a'
+            '55ac71d022caa3faf4cd1edcc84cf0b1ca90601da176cb1003aeca63985bfc3e0451d152c2c866614e9c1c35483967d6aa843fccc82067114c182bd8fd70d1a0')
+b2sums=('4c72745d3aeb81cfddc5aef6214062a26016ea8ee092f9167abf56f602eaf1f9e1e5e113adc679089109180ebfedc9a70ac58df3178027bc2f1054a464337899'
+        '1cf5b69d712a3cb8aeeab2a587a5be277af37dea5b2d8d113b4fb94726197361d0e3cfff383d0ba8290e1237455fae990f517766130898e93bfc9619396629d5'
+        'd4e1592e395f99e859c008e9b797b72a60fe8b5fff64a2b49289441759b3489e76fbba5546a597e66a858e3b953038f0fddf892022bb190d37d5e8c00acd99b4')
+
+prepare() {
+  # fix issues with default CFLAGS/CXXFLAGS: https://github.com/sadko4u/lsp-plugins/issues/257
+  patch -Np1 -d ${pkgname%-noicons} -i ../${pkgname%-noicons}-1.2.2-default_make_flags.patch
+  # fix lv2.h include path
+  patch -Np1 -d ${pkgname%-noicons} -i ../${pkgname%-noicons}-1.2.2-lv2_h_include.patch
+}
 
 build() {
   make config VERBOSE=1 FEATURES='lv2 vst2 jack ladspa' PREFIX=/usr -C ${pkgname%-noicons}
@@ -23,48 +38,19 @@ build() {
 check() {
   local _plugin
   local _lv2_uri="http://lsp-plug.in/plugins/lv2/"
-  local _lv2_plugins=(art_delay_mono art_delay_stereo comp_delay_mono
-  comp_delay_stereo comp_delay_x2_stereo compressor_lr compressor_mono
-  compressor_ms compressor_stereo crossover_lr crossover_mono crossover_ms
-  crossover_stereo dyna_processor_lr dyna_processor_mono dyna_processor_ms
-  dyna_processor_stereo expander_lr expander_mono expander_ms expander_stereo
-  gate_lr gate_mono gate_ms gate_stereo graph_equalizer_x16_lr
-  graph_equalizer_x16_mono graph_equalizer_x16_ms graph_equalizer_x16_stereo
-  graph_equalizer_x32_lr graph_equalizer_x32_mono graph_equalizer_x32_ms
-  graph_equalizer_x32_stereo impulse_responses_mono impulse_responses_stereo
-  impulse_reverb_mono impulse_reverb_stereo latency_meter limiter_mono
-  limiter_stereo loud_comp_mono loud_comp_stereo mb_compressor_lr
-  mb_compressor_mono mb_compressor_ms mb_compressor_stereo mb_expander_lr
-  mb_expander_mono mb_expander_ms mb_expander_stereo mb_gate_lr mb_gate_mono
-  mb_gate_ms mb_gate_stereo multisampler_x12 multisampler_x12_do
-  multisampler_x24 multisampler_x24_do multisampler_x48 multisampler_x48_do
-  oscillator_mono oscilloscope_x1 oscilloscope_x2 oscilloscope_x4
-  para_equalizer_x16_lr para_equalizer_x16_mono para_equalizer_x16_ms
-  para_equalizer_x16_stereo para_equalizer_x32_lr para_equalizer_x32_mono
-  para_equalizer_x32_ms para_equalizer_x32_stereo phase_detector profiler_mono
-  profiler_stereo room_builder_mono room_builder_stereo sampler_mono
-  sampler_stereo sc_compressor_lr sc_compressor_mono sc_compressor_ms
-  sc_compressor_stereo sc_dyna_processor_lr sc_dyna_processor_mono
-  sc_dyna_processor_ms sc_dyna_processor_stereo sc_expander_lr sc_expander_mono
-  sc_expander_ms sc_expander_stereo sc_gate_lr sc_gate_mono sc_gate_ms
-  sc_gate_stereo sc_limiter_mono sc_limiter_stereo sc_mb_compressor_lr
-  sc_mb_compressor_mono sc_mb_compressor_ms sc_mb_compressor_stereo
-  sc_mb_expander_lr sc_mb_expander_mono sc_mb_expander_ms sc_mb_expander_stereo
-  sc_mb_gate_lr sc_mb_gate_mono sc_mb_gate_ms sc_mb_gate_stereo slap_delay_mono
-  slap_delay_stereo spectrum_analyzer_x1 spectrum_analyzer_x12
-  spectrum_analyzer_x16 spectrum_analyzer_x2 spectrum_analyzer_x4
-  spectrum_analyzer_x8 surge_filter_mono surge_filter_stereo trigger_midi_mono
-  trigger_midi_stereo trigger_mono trigger_stereo)
 
+  # install to temporary location
   make FEATURES=lv2 DESTDIR="$PWD/test" install -C ${pkgname%-noicons}
-  for _plugin in "${_lv2_plugins[@]}"; do
+
+  for _plugin in $(jq -r '.plugins[].id' ${pkgname%-noicons}/.build/target/lsp-plugin-fw/plugins.json); do
+    printf "Testing plugin %s\n" "$_plugin"
     lv2lint -Mpack -I "$PWD/test/usr/lib/lv2/${pkgname%-noicons}.lv2/" $_lv2_uri$_plugin
   done
 }
 
 package() {
   groups=(ladspa-plugins lv2-plugins pro-audio vst-plugins)
-  depends=(cairo gcc-libs glibc hicolor-icon-theme libglvnd libsndfile.so libx11)
+  depends=(cairo gcc-libs glibc hicolor-icon-theme libglvnd libsndfile.so libx11 libxrandr)
   optdepends=(
     'jack: for standalone applications'
     'ladspa-host: for LADSPA plugins'
