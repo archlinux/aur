@@ -1,6 +1,6 @@
 pkgbase = proxy-ns
 	pkgdesc = Run programs in a network namespace where all traffic go through proxy
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/OkamiW/proxy-ns
 	arch = x86_64
