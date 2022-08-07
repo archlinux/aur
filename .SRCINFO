@@ -1,7 +1,7 @@
 pkgbase = hs-client
 	pkgdesc = Handshake daemon node and wallet client
-	pkgver = 0.0.10
-	pkgrel = 2
+	pkgver = 0.0.11
+	pkgrel = 1
 	url = https://handshake.org
 	arch = any
 	license = MIT
@@ -11,10 +11,10 @@ pkgbase = hs-client
 	provides = hsd-rpc
 	provides = hsw-cli
 	provides = hsw-rpc
-	source = https://handshake.org/files/hs-client-0.0.10.tar.gz
-	source = https://handshake.org/files/hs-client-0.0.10.tar.gz.asc
+	source = https://handshake.org/files/hs-client-0.0.11.tar.gz
+	source = https://handshake.org/files/hs-client-0.0.11.tar.gz.asc
 	validpgpkeys = E61773CD6E01040E2F1BD78CE7E2984B6289C93A
-	sha256sums = 6cdb40a11dd25b908ea8fd7f806752bd50bffb4ef62aa621f604453910336d38
+	sha256sums = 3852296b992e0e9ab61017fc46b59fc570017cefe0d5b5d23822fd4d1391feb7
 	sha256sums = SKIP
 
 pkgname = hs-client
