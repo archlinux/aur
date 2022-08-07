@@ -3,7 +3,7 @@
 # Contributor: Ewhal <ewhal@pantsu.cat>
 pkgname=session-desktop-bin
 pkgver=1.8.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Private messaging from your desktop"
 arch=(x86_64)
 url="https://getsession.org"
