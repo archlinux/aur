@@ -1,0 +1,15 @@
+pkgbase = proyconwayout-git
+	pkgdesc = Wayout takes text from standard input and outputs it to a desktop-widget on Wayland desktops
+	pkgver = r63.3e18a3d
+	pkgrel = 1
+	url = https://git.sr.ht/~proycon/wayout
+	arch = x86_64
+	license = GPLV3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	options = !buildflags
+	source = wayout::git+https://git.sr.ht/~proycon/wayout
+	md5sums = SKIP
+
+pkgname = proyconwayout-git
