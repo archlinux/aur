@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gert
-_pkgver=1.6.0
+_pkgver=1.7.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
-pkgrel=3
+pkgver=1.7.0
+pkgrel=1
 pkgdesc='Simple Git Client for R'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8c440aeebabf1cb3b57124ec9280e0f46b2ab56f2bca07d72b5c7a7f4edc2964')
+sha256sums=('1df88320b557291bb1465a34cffd94d83f369a1842689b1cc753ae9ba9adb8dd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
