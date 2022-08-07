@@ -2,7 +2,7 @@
 
 pkgname=elpa
 PkgName=ELPA
-pkgver=2021.11.002
+pkgver=2022.05.001
 _pkgver=${pkgver}
 pkgrel=1
 arch=('x86_64' 'aarch64')
@@ -11,9 +11,10 @@ url="https://elpa.mpcdf.mpg.de"
 license=("LGPL3")
 depends=('scalapack' 'python-mpi4py' 'python-numpy')
 makedepends=('gcc-fortran' 'vim' 'cython')
+checkdepends=('python-pytest')
 provides=('elpa')
 source=("$url/software/tarball-archive/Releases/$_pkgver/$pkgname-$_pkgver.tar.gz")
-sha256sums=('576f1caeed7883b81396640fda0f504183866cf6cbd4bc71d1383ba2208f1f97')
+sha256sums=('207e6f26d6532fb70373afc3ef3d38255213af61def659c25dad3a30e4fca38b')
 options=(!makeflags !buildflags)
 
 prepare() {
@@ -22,8 +23,8 @@ prepare() {
   unset FCFLAGS
 
   # Detecting vectorization compatibility
-  _AVXCOMP=$( gcc -march=native -dM -E - < /dev/null \
-      | egrep "AVX" | sort | tail -n 1 | awk -F'_' '{print $3}' )
+  _AVXCOMP=$( $CC -march=native -dM -E - < /dev/null \
+      | egrep "AVX" | sort -d | tail -n 1 | awk -F'_' '{print $3}' )
   case $_AVXCOMP in
       AVX512*)
           _AVX=yes
@@ -62,6 +63,12 @@ prepare() {
     _AVX512=no
     echo "No vectorization is enabled"
   fi
+
+  # Python 3 semantics
+  sed -i 's/cython/cython -3/' "$srcdir/$pkgname-$_pkgver/Makefile.am"
+
+  cd "$srcdir/$pkgname-$_pkgver"
+  autoreconf -if
 }
 
 build() {
@@ -73,13 +80,15 @@ build() {
                --enable-avx=$_AVX                                    \
                --enable-avx2=$_AVX2                                  \
                --enable-avx512=$_AVX512                              \
-               --enable-autotuning                                   \
                --enable-autotune-redistribute-matrix                 \
-               --enable-scalapack-tests                              \
                --enable-python                                       \
-               CFLAGS="-O2 -march=native"                            \
-               FCFLAGS="-O2 -march=native -fallow-argument-mismatch" \
-               LIBS='-lscalapack -lblas -llapack'
+               --enable-python-tests                                 \
+               --enable-scalapack-tests                              \
+               --without-threading-support-check-during-build        \
+               CFLAGS='-O2 -march=native'                            \
+               FCFLAGS='-O2 -march=native -fallow-argument-mismatch' \
+               LIBS='-lscalapack -lblas -llapack'                    \
+               CPP='cpp'
   make
 }
 
