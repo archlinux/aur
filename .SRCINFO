@@ -1,7 +1,7 @@
 pkgbase = python-readchar
 	pkgdesc = Python library to read characters and key strokes
-	pkgver = 3.0.5
-	pkgrel = 8
+	pkgver = 3.1.0
+	pkgrel = 1
 	url = https://github.com/magmax/python-readchar
 	arch = any
 	license = MIT
@@ -10,9 +10,9 @@ pkgbase = python-readchar
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = python-readchar-3.0.5.tar.gz::https://github.com/magmax/python-readchar/archive/v3.0.5.tar.gz
+	source = python-readchar-3.1.0.tar.gz::https://github.com/magmax/python-readchar/archive/v3.1.0.tar.gz
 	source = LICENSE
-	md5sums = 827709aca051803b086f2b5d966fe61d
+	md5sums = 99b33910013ad441350e462b314a7cd9
 	md5sums = 688183518094c78c59f08f1b74493a98
 
 pkgname = python-readchar
