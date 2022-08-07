@@ -1,26 +1,26 @@
 pkgbase = catppuccin-grub-theme-git
 	pkgdesc = Soothing pastel theme for GRUB2
 	pkgver = r25.4f6ac65
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/catppuccin/grub
 	arch = any
 	license = MIT
 	makedepends = git
-	source = git+https://github.com/catppuccin/grub.git
+	source = catppuccin-grub-theme::git+https://github.com/catppuccin/grub
 	sha256sums = SKIP
 
 pkgname = catppuccin-frappe-grub-theme-git
-	pkgdesc = Soothing pastel theme for GRUB2 - frappe color scheme
+	pkgdesc = Soothing pastel theme for GRUB2 -- Frappe colorscheme
 	install = catppuccin-frappe-grub-theme-git.install
 
 pkgname = catppuccin-latte-grub-theme-git
-	pkgdesc = Soothing pastel theme for GRUB2 - latte color scheme
+	pkgdesc = Soothing pastel theme for GRUB2 -- Latte colorscheme
 	install = catppuccin-latte-grub-theme-git.install
 
 pkgname = catppuccin-macchiato-grub-theme-git
-	pkgdesc = Soothing pastel theme for GRUB2 - macchiato color scheme
+	pkgdesc = Soothing pastel theme for GRUB2 -- Macchiato colorscheme
 	install = catppuccin-macchiato-grub-theme-git.install
 
 pkgname = catppuccin-mocha-grub-theme-git
-	pkgdesc = Soothing pastel theme for GRUB2 - mocha color scheme
+	pkgdesc = Soothing pastel theme for GRUB2 -- Mocha colorscheme
 	install = catppuccin-mocha-grub-theme-git.install
