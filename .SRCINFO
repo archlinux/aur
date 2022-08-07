@@ -1,7 +1,7 @@
 pkgbase = insomnia
 	pkgdesc = Cross-platform HTTP and GraphQL Client
 	pkgver = 2022.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kong/insomnia
 	arch = any
 	license = MIT
