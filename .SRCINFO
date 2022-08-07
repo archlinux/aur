@@ -1,15 +1,15 @@
 pkgbase = focalboard-bin
 	pkgdesc = A self-hosted alternative to Trello, Notion, and Asana.
-	pkgver = v7.0.1
+	pkgver = v7.1.0
 	pkgrel = 1
 	url = https://github.com/mattermost/focalboard
 	arch = x86_64
 	license = MIT
 	depends = webkit2gtk
-	source = focalboard-bin-v7.0.1.tar.gz::https://github.com/mattermost/focalboard/releases/download/v7.0.1/focalboard-linux.tar.gz
+	source = focalboard-bin-v7.1.0.tar.gz::https://github.com/mattermost/focalboard/releases/download/v7.1.0/focalboard-linux.tar.gz
 	source = focalboard.desktop
 	source = focalboard_launcher.sh
-	sha256sums = 11a1202e802f9f8cbde07eb49c91136dcb1448e23eb72fd08f1580636cf4f658
+	sha256sums = 9e5eaf4458fc6c7ff834a75b29200f980c1db16a43516279c925ef803781e899
 	sha256sums = beaa7a13fa7f8df7b7d65a35e5c56432fbf543cd7cd85dd8e83ad55cf6865fc9
 	sha256sums = 2a76b99b190bdaf347eef3c4b92e63a2164204455094653a9231a535881cd18b
 
