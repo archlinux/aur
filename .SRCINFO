@@ -1,6 +1,6 @@
 pkgbase = caddy-dnspod
 	pkgdesc = Caddy web server
-	pkgver = 2.5.1
+	pkgver = 2.5.2
 	pkgrel = 1
 	url = https://github.com/caddyserver/caddy
 	arch = any
