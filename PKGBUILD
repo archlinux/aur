@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=V8
-_pkgver=4.2.0
+_pkgver=4.2.1
 pkgname=r-${_pkgname,,}
-pkgver=4.2.0
-pkgrel=3
+pkgver=4.2.1
+pkgrel=1
 pkgdesc='Embedded JavaScript and WebAssembly Engine for R'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -24,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6c62fdc974cc30fa975cad4ccb1e3796112fc2490a807f6e3d7878c3a5544743')
+sha256sums=('99881af4798d11da0adccd8e4e1aa5dc4adccf5e3572724c14f6f90c2b8c3ff0')
 options=(staticlibs)
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
