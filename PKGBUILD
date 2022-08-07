@@ -14,7 +14,7 @@ groups=(pure-complete pure-util)
 source=("https://github.com/agraef/pure-lang/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz"
 	"enums.patch")
 sha1sums=('c77a63a5f6456aee4a5ad0676fdd2f8925c16412'
-          '982d929a1a0d4e40fc3754c1290c344c950e0148')
+          'eb17b98bacedaf89e84b47c0904e47cda37002fa')
 
 prepare() {
 	cd $srcdir/$pkgname-$pkgver

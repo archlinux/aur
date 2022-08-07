@@ -1,11 +1,11 @@
-commit 94259306f5407dd28d9417f87c118ed1f6326601
+commit f5cf7841209ff9e0cd0e7b0b2e3fbd0314ceddac
 Author: Albert Graef <aggraef@gmail.com>
 Date:   Sun Aug 7 23:29:46 2022 +0200
 
     pure-gen: Improve diagnostics for unrecognized enum values.
 
 diff --git a/pure-gen/pure-gen.pure b/pure-gen/pure-gen.pure
-index 694aeeab..15b38f4d 100755
+index 694aeeab..f74daf35 100755
 --- a/pure-gen/pure-gen.pure
 +++ b/pure-gen/pure-gen.pure
 @@ -588,10 +588,21 @@ get_enum dict _ = dict;
@@ -13,11 +13,11 @@ index 694aeeab..15b38f4d 100755
  
  calc_enum_values dict prev ((name,Just e):more) =
 -  case eval_expr dict e of
-+case catch id (eval_expr dict e) of
++  case catch id (eval_expr dict e) of
      val::int = calc_enum_values (insert dict (name => val)) val more;
 -    x = warning 0 $ "Couldn't evaluate enum expression for "+name+" : "+str e
 -          $$ calc_enum_values dict prev more;
-+    x = warning level $ "Unknown enum value: "+name+" = "+str e
++    x = warning level $ "Unknown enum value: "+name+" = "+estr
 +          $$ calc_enum_values dict prev more when
 +	    estr = str e;
 +	    // Most of the time e will be 'Pass' which indicates a part of the
