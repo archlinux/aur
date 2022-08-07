@@ -8,7 +8,7 @@ pkgver='1.0.1'
 _rc=''
 _pkgver="${pkgver}${_rc}"
 _tag_ver="v${_pkgver}"
-pkgrel=3
+pkgrel=4
 _pkgrel=${pkgrel}
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
 _pkgarch=$(dpkg --print-architecture)
@@ -81,7 +81,7 @@ for i in ${_pkgarches[@]}; do
 _msg2 "_pkgarch=${i}"
 local _pkgarch=${i}
 local _pkgarch1=${_pkgarch}
-if [[ ${_pkgarch} == "armel" ]] ; then
+if [[ ${_pkgarch} == "armel" || ${_pkgarch} == "armhf" ]] ; then
   local _pkgarch1=arm
 fi
 
