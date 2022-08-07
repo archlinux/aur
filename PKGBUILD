@@ -2,8 +2,8 @@
 # Signature: Matthew Zipkin (https://keybase.io/pinheadmz)
 # Upstream: https://github.com/handshake-org/hsd
 pkgname=hsd
-pkgver=3.0.0
-pkgrel=2
+pkgver=4.0.1
+pkgrel=1
 arch=(any)
 license=('MIT')
 pkgdesc="Handshake daemon node"
@@ -28,7 +28,7 @@ source=(
 	"https://handshake.org/files/${pkgname}-${pkgver}.tar.gz.asc"
 )
 sha256sums=(
-	'ff69a6d0fefb096a5cabafe08dc2e8414da46109886b06d12b2a2447f725fa87'
+	'7d5ca7be4068d4ee3c737ccc8e6c62a7bbeb7d69e0dbc100612e65e090190c55'
 	'SKIP'
 )
 validpgpkeys=('E61773CD6E01040E2F1BD78CE7E2984B6289C93A')
