@@ -1,7 +1,7 @@
 pkgbase = sqlmap-bin
 	pkgdesc = Automatic SQL injection and database takeover tool
 	pkgver = 1.6.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sqlmap.org
 	arch = any
 	license = GPL2

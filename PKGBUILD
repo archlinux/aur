@@ -2,7 +2,7 @@
 
 pkgname=sqlmap-bin
 pkgver=1.6.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Automatic SQL injection and database takeover tool'
 url='http://sqlmap.org'
 arch=('any')
