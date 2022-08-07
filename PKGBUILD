@@ -4,9 +4,9 @@ resname=earth_wallpaper
 appid=cn.huguoyang.earthwallpaper
 pkgname=earth-wallpaper-nightly
 name=earth-wallpaper
-pkgver=1.7.0
+pkgver=nightly
 pkgrel=0
-pkgdesc="实时获取地球照片作为壁纸"
+pkgdesc="实时获取地球照片作为桌面壁纸"
 arch=('x86_64')
 url="https://jihulab.com/ambition-echo/earth_wallpaper"
 license=('GPL3')
@@ -17,17 +17,9 @@ makedepends=('cmake' 'git' 'ninja')
 source=("git+$url.git")
 sha256sums=("SKIP")
 
-pkgver() {
-    cd $resname
-    ( set -o pipefail
-        git describe --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
-}
-
 prepare() {
     cd $srcdir/$resname/src
-    sed -i "s/#define VERSION .*/#define VERSION \"$(git describe --tags |  sed  's/\([^-]*-g\)/r\1/;s/-/./g')\"/g" about.h
+    sed -i "s/#define VERSION .*/#define VERSION nightly/g" about.h
 }
 
 build() {
