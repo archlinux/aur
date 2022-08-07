@@ -1,7 +1,7 @@
 pkgbase = haskell-language-c5
 	pkgdesc = Analysis and generation of C code
 	pkgver = 0.5.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://visq.github.io/language-c/
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,10 @@ pkgbase = haskell-language-c5
 	source = http://hackage.haskell.org/packages/archive/language-c/0.5.0/language-c-0.5.0.tar.gz
 	source = ghc-8+.patch
 	source = gcc-11.patch
+	source = float128.patch
 	sha256sums = 86d58bc017a7bba157fc4d5d0ab9e3a3d3f3a2f98bfe46b5b0d5d72a0f5d2222
 	sha256sums = c718fd258a7a227aaad14f6abe8e6742e81c57f83b63b95bde1a3bfba71542b0
 	sha256sums = fcfce6b3f6b701398bbd18ddc1b593b8136d147b2ace8c61284751939dcac858
+	sha256sums = 724e6eecb614ccaac16ce7d5e764a6514cbfc5974342419283d18667e0c0467a
 
 pkgname = haskell-language-c5

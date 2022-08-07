@@ -1,0 +1,147 @@
+commit dc418ad569d756688fa0011629a383531026aaea
+Author: Albert Graef <aggraef@gmail.com>
+Date:   Sun Aug 7 04:11:15 2022 +0200
+
+    pure-gen/language-c: Backport 128 bit float support from upstream.
+    
+    cf. https://github.com/visq/language-c/commit/2021974d
+    and https://github.com/visq/language-c/commit/266c88f8
+
+diff --git a/language-c/src/Language/C/Parser/Lexer.x b/language-c/src/Language/C/Parser/Lexer.x
+index eb8514f8..3bba4c63 100644
+--- a/language-c/src/Language/C/Parser/Lexer.x
++++ b/language-c/src/Language/C/Parser/Lexer.x
+@@ -119,7 +119,8 @@ $infname  = . # [ \\ \" ]             -- valid character in a filename
+ @hexmant   = @hexdigits?\.@hexdigits|@hexdigits\.
+ @binexp    = [pP][\+\-]?@digits
+ 
+-@floatsuffix    = [fFlL]
++-- Suffixes `qQwW` are GNU floating type extensions: <https://gcc.gnu.org/onlinedocs/gcc/Floating-Types.html>
++@floatsuffix    = [fFlLqQwW]
+ @floatgnusuffix = @floatsuffix@gnusuffix?|@gnusuffix@floatsuffix?
+ 
+ 
+@@ -288,7 +289,7 @@ label __label__
+ (CTokGnuC GnuCOffsetof) __builtin_offsetof
+ (CTokGnuC GnuCTyCompat) __builtin_types_compatible_p
+ -}
+--- Tokens: alignof __alignof __alignof__ asm __asm __asm__ __attribute __attribute__ auto _Bool break __builtin_offsetof __builtin_types_compatible_p __builtin_va_arg case char _Complex __complex__ const __const __const__ continue default do double else enum __extension__ extern float for goto if __imag __imag__ inline __inline __inline__ int __int128 __label__ long __real __real__ register __restrict __restrict__ return short signed __signed __signed__ sizeof static struct switch __thread typedef typeof __typeof __typeof__ union unsigned void volatile __volatile __volatile__ while
++-- Tokens: alignof __alignof __alignof__ asm __asm __asm__ __attribute __attribute__ auto _Bool break __builtin_offsetof __builtin_types_compatible_p __builtin_va_arg case char _Complex __complex__ const __const __const__ continue default do double else enum __extension__ extern float __float128 _Float128 for goto if __imag __imag__ inline __inline __inline__ int __int128 __label__ long __real __real__ register __restrict __restrict__ return short signed __signed __signed__ sizeof static struct switch __thread typedef typeof __typeof __typeof__ union unsigned void volatile __volatile __volatile__ while
+ idkwtok ('_' : 'B' : 'o' : 'o' : 'l' : []) = tok 5 CTokBool
+ idkwtok ('_' : 'C' : 'o' : 'm' : 'p' : 'l' : 'e' : 'x' : []) = tok 8 CTokComplex
+ idkwtok ('_' : '_' : 'a' : 'l' : 'i' : 'g' : 'n' : 'o' : 'f' : []) = tok 9 CTokAlignof
+@@ -319,6 +320,8 @@ idkwtok ('e' : 'n' : 'u' : 'm' : []) = tok 4 CTokEnum
+ idkwtok ('_' : '_' : 'e' : 'x' : 't' : 'e' : 'n' : 's' : 'i' : 'o' : 'n' : '_' : '_' : []) = tok 13 (CTokGnuC GnuCExtTok)
+ idkwtok ('e' : 'x' : 't' : 'e' : 'r' : 'n' : []) = tok 6 CTokExtern
+ idkwtok ('f' : 'l' : 'o' : 'a' : 't' : []) = tok 5 CTokFloat
++idkwtok ('_' : '_' : 'f' : 'l' : 'o' : 'a' : 't' : '1' : '2' : '8' : []) = tok 10 CTokFloat128
++idkwtok ('_' : 'F' : 'l' : 'o' : 'a' : 't' : '1' : '2' : '8' : []) = tok 9 CTokFloat128
+ idkwtok ('f' : 'o' : 'r' : []) = tok 3 CTokFor
+ idkwtok ('g' : 'o' : 't' : 'o' : []) = tok 4 CTokGoto
+ idkwtok ('i' : 'f' : []) = tok 2 CTokIf
+diff --git a/language-c/src/Language/C/Parser/Parser.y b/language-c/src/Language/C/Parser/Parser.y
+index 7648cc39..5f90feea 100644
+--- a/language-c/src/Language/C/Parser/Parser.y
++++ b/language-c/src/Language/C/Parser/Parser.y
+@@ -198,6 +198,8 @@ else		{ CTokElse	_ }
+ enum		{ CTokEnum	_ }
+ extern		{ CTokExtern	_ }
+ float		{ CTokFloat	_ }
++"__float128"	{ CTokFloat128	_ }
++"_Float128"	{ CTokFloat128	_ }
+ for		{ CTokFor	_ }
+ goto		{ CTokGoto	_ }
+ if		{ CTokIf	_ }
+@@ -833,6 +835,8 @@ basic_type_name
+   | "_Bool"			{% withNodeInfo $1 $ CBoolType }
+   | "_Complex"			{% withNodeInfo $1 $ CComplexType }
+   | "__int128"      {% withNodeInfo $1 $ CInt128Type }
++  | "__float128"      {% withNodeInfo $1 $ CFloat128Type }
++  | "_Float128"      {% withNodeInfo $1 $ CFloat128Type }
+ 
+ 
+ -- A mixture of type qualifiers, storage class and basic type names in any
+diff --git a/language-c/src/Language/C/Parser/Tokens.hs b/language-c/src/Language/C/Parser/Tokens.hs
+index d6de860f..88d4e261 100644
+--- a/language-c/src/Language/C/Parser/Tokens.hs
++++ b/language-c/src/Language/C/Parser/Tokens.hs
+@@ -90,6 +90,7 @@ data CToken = CTokLParen   !PosLength            -- `('
+             | CTokEnum     !PosLength            -- `enum'
+             | CTokExtern   !PosLength            -- `extern'
+             | CTokFloat    !PosLength            -- `float'
++            | CTokFloat128 !PosLength            -- `__float128' or `_Float128`
+             | CTokFor      !PosLength            -- `for'
+             | CTokGoto     !PosLength            -- `goto'
+             | CTokIf       !PosLength            -- `if'
+@@ -212,6 +213,7 @@ posLenOfTok (CTokElse     pos  ) = pos
+ posLenOfTok (CTokEnum     pos  ) = pos
+ posLenOfTok (CTokExtern   pos  ) = pos
+ posLenOfTok (CTokFloat    pos  ) = pos
++posLenOfTok (CTokFloat128 pos  ) = pos
+ posLenOfTok (CTokFor      pos  ) = pos
+ posLenOfTok (CTokGoto     pos  ) = pos
+ posLenOfTok (CTokInt      pos  ) = pos
+@@ -310,6 +312,7 @@ instance Show CToken where
+   showsPrec _ (CTokEnum     _  ) = showString "enum"
+   showsPrec _ (CTokExtern   _  ) = showString "extern"
+   showsPrec _ (CTokFloat    _  ) = showString "float"
++  showsPrec _ (CTokFloat128 _  ) = showString "__float128"
+   showsPrec _ (CTokFor      _  ) = showString "for"
+   showsPrec _ (CTokGoto     _  ) = showString "goto"
+   showsPrec _ (CTokIf       _  ) = showString "if"
+diff --git a/language-c/src/Language/C/Pretty.hs b/language-c/src/Language/C/Pretty.hs
+index 11f5fa1a..5112a55a 100644
+--- a/language-c/src/Language/C/Pretty.hs
++++ b/language-c/src/Language/C/Pretty.hs
+@@ -235,6 +235,7 @@ instance Pretty CTypeSpec where
+     pretty (CIntType _)         = text "int"
+     pretty (CLongType _)        = text "long"
+     pretty (CFloatType _)       = text "float"
++    pretty (CFloat128Type _)    = text "__float128"
+     pretty (CDoubleType _)      = text "double"
+     pretty (CSignedType _)      = text "signed"
+     pretty (CUnsigType _)       = text "unsigned"
+diff --git a/language-c/src/Language/C/Syntax/AST.hs b/language-c/src/Language/C/Syntax/AST.hs
+index a93b8681..152e6b05 100644
+--- a/language-c/src/Language/C/Syntax/AST.hs
++++ b/language-c/src/Language/C/Syntax/AST.hs
+@@ -425,6 +425,7 @@ data CTypeSpecifier a
+   | CIntType     a
+   | CLongType    a
+   | CFloatType   a
++  | CFloat128Type a
+   | CDoubleType  a
+   | CSignedType  a
+   | CUnsigType   a
+@@ -1030,6 +1031,7 @@ instance (CNode t1) => CNode (CTypeSpecifier t1) where
+         nodeInfo (CIntType d) = nodeInfo d
+         nodeInfo (CLongType d) = nodeInfo d
+         nodeInfo (CFloatType d) = nodeInfo d
++        nodeInfo (CFloat128Type d) = nodeInfo d
+         nodeInfo (CDoubleType d) = nodeInfo d
+         nodeInfo (CSignedType d) = nodeInfo d
+         nodeInfo (CUnsigType d) = nodeInfo d
+@@ -1053,6 +1055,7 @@ instance Functor CTypeSpecifier where
+         fmap _f (CIntType a1) = CIntType (_f a1)
+         fmap _f (CLongType a1) = CLongType (_f a1)
+         fmap _f (CFloatType a1) = CFloatType (_f a1)
++        fmap _f (CFloat128Type a1) = CFloat128Type (_f a1)
+         fmap _f (CDoubleType a1) = CDoubleType (_f a1)
+         fmap _f (CSignedType a1) = CSignedType (_f a1)
+         fmap _f (CUnsigType a1) = CUnsigType (_f a1)
+@@ -1073,6 +1076,7 @@ instance Annotated CTypeSpecifier where
+         annotation (CIntType n) = n
+         annotation (CLongType n) = n
+         annotation (CFloatType n) = n
++        annotation (CFloat128Type n) = n
+         annotation (CDoubleType n) = n
+         annotation (CSignedType n) = n
+         annotation (CUnsigType n) = n
+@@ -1090,6 +1094,7 @@ instance Annotated CTypeSpecifier where
+         amap f (CIntType a_1) = CIntType (f a_1)
+         amap f (CLongType a_1) = CLongType (f a_1)
+         amap f (CFloatType a_1) = CFloatType (f a_1)
++        amap f (CFloat128Type a_1) = CFloat128Type (f a_1)
+         amap f (CDoubleType a_1) = CDoubleType (f a_1)
+         amap f (CSignedType a_1) = CSignedType (f a_1)
+         amap f (CUnsigType a_1) = CUnsigType (f a_1)
