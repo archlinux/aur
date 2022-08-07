@@ -1,6 +1,6 @@
 type            = process
 command         = /usr/bin/ananicy-cpp start
 smooth-recovery = true
-restart			= true
+restart         = true
 logfile         = /var/log/dinit/ananicy-cpp.log
 waits-for       = udev-settle
