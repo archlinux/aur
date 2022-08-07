@@ -3,7 +3,7 @@ _pkgname=kaiju
 pkgname=ghidra-extension-kaiju-bin
 pkgdesc="Binary analysis improvements for Ghidra. Can import C++ symbols from OOAnalyer"
 pkgver=10.1.5
-pkgrel=20220806
+pkgrel=20220807
 arch=('any')
 url=https://github.com/CERTCC/kaiju
 license=('BSD')
@@ -13,7 +13,7 @@ optdepends=(
 )
 makedepends=('unzip')
 source=("https://github.com/CERTCC/kaiju/releases/download/ghidra-${pkgver}/ghidra_${pkgver}_PUBLIC_${pkgrel%.*}_kaiju.zip")
-sha512sums=('80e550bb161100ce759a7b1f82865d17e873571f6ad5eadae5938e11cb01ecb6afb75d95ec2c09c63dd1de880908adb9f3d8e44483ec912c01de6680d03d5c35')
+sha512sums=('488f0b538c9c67403ebe6da02812cb5b758ad3f90d2a9fd650b1a51ec47506b76fdb43de597d39175ae5778101bee5ace6577aa736141f3c0851f1f55fa97644')
 
 package() {
   cd $srcdir
