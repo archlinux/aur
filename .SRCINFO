@@ -1,6 +1,6 @@
 pkgbase = python-cmyt
 	pkgdesc = A collection of Matplotlib colormaps from the yt project.
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = http://yt-project.org
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = python-cmyt
 	depends = python-more-itertools
 	depends = python-numpy
 	options = !emptydirs
-	source = https://pypi.io/packages/source/c/cmyt/cmyt-1.1.1.tar.gz
+	source = https://pypi.io/packages/source/c/cmyt/cmyt-1.1.2.tar.gz
 	source = LICENSE
-	sha256sums = 9d43c28a39a7532e09d3162fc176601f79dd03d8aed787be82a337803c77dd8f
+	sha256sums = 7027514a89331ee5cd672999e34c15feae218c8ed9b127832b6618c6771a869e
 	sha256sums = 6e13969520b08a454eed4e15bef8926babca14ab65f4f9936c9adc1860c00e1d
 
 pkgname = python-cmyt
