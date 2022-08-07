@@ -39,6 +39,10 @@ pkgbase = skywire-bin
 	sha256sums_armv8 = 61dc18d71d766e707ccbdc9c0f5b0bbf0a992e6acdc0c53c1c9cba6ecc85f601
 	source_armv7 = https://github.com/skycoin/skywire/releases/download/v1.0.1/skywire-v1.0.1-linux-armhf.tar.gz
 	sha256sums_armv7 = 1633c917e1468de0295d7d3b30059156f194e18722578cb90fd49cd683a7f5d0
+	source_armv7l = https://github.com/skycoin/skywire/releases/download/v1.0.1/skywire-v1.0.1-linux-armhf.tar.gz
+	sha256sums_armv7l = 1633c917e1468de0295d7d3b30059156f194e18722578cb90fd49cd683a7f5d0
+	source_armv7h = https://github.com/skycoin/skywire/releases/download/v1.0.1/skywire-v1.0.1-linux-armhf.tar.gz
+	sha256sums_armv7h = 1633c917e1468de0295d7d3b30059156f194e18722578cb90fd49cd683a7f5d0
 	source_arm = https://github.com/skycoin/skywire/releases/download/v1.0.1/skywire-v1.0.1-linux-arm.tar.gz
 	sha256sums_arm = 6182f947e66a41c6793addd08ab8cc00fa09c132001e13f05e8f11464987c7ea
 

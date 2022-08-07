@@ -36,6 +36,8 @@ sha256sums_x86_64=('6cbbadb07ca6668dc04a91565b08e590e844422a28a813f1bb76a184b422
 sha256sums_aarch64=('61dc18d71d766e707ccbdc9c0f5b0bbf0a992e6acdc0c53c1c9cba6ecc85f601')
 sha256sums_armv8=('61dc18d71d766e707ccbdc9c0f5b0bbf0a992e6acdc0c53c1c9cba6ecc85f601')
 sha256sums_armv7=('1633c917e1468de0295d7d3b30059156f194e18722578cb90fd49cd683a7f5d0')
+sha256sums_armv7l=('1633c917e1468de0295d7d3b30059156f194e18722578cb90fd49cd683a7f5d0')
+sha256sums_armv7h=('1633c917e1468de0295d7d3b30059156f194e18722578cb90fd49cd683a7f5d0')
 sha256sums_arm=('6182f947e66a41c6793addd08ab8cc00fa09c132001e13f05e8f11464987c7ea')
 #https://github.com/skycoin/skywire/releases/download/v1.0.0/skywire-v1.0.0-linux-amd64.tar.gz
 #https://github.com/skycoin/skywire/releases/download/v1.0.0/skywire-v1.0.0-linux-arm64.tar.gz
@@ -48,8 +50,8 @@ source_aarch64=("${_release_url}-arm64.tar.gz")
 source_armv8=( ${source_aarch64[@]} )
 source_arm=("${_release_url}-arm.tar.gz")
 source_armv7=("${_release_url}-armhf.tar.gz")
-source_armv7l=( ${source_armhf[@]} )
-source_armv7h=( ${source_armhf[@]} )
+source_armv7l=( ${source_armv7[@]} )
+source_armv7h=( ${source_armv7[@]} )
 
 package() {
 _msg2 'Creating dirs'
