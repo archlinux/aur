@@ -1,7 +1,7 @@
 # Maintainer: Folke H. 'joru' Gleumes <folke-aur@gleumes.org>
 pkgname=kickoff-git
 _pkgname=kickoff
-pkgver=123.82ed674
+pkgver=156.9e6fcf9
 pkgrel=1
 pkgdesc="A simple and uncomplicated program launcher for wayland"
 makedepends=('git' 'cargo' 'cmake' 'freetype2' 'fontconfig')
