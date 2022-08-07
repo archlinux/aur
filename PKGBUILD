@@ -1,8 +1,8 @@
 # Maintainer: Ysblokje <ysblokje at gmail dot com>
 pkgname=('gamemode-git')
 _pkgname=('gamemode')
-pkgver=r326.0074faf
-pkgrel=1
+pkgver=r612.55b799e
+pkgrel=2
 pkgdesc="A daemon/lib combo for Linux that allows games to request a set of optimisations be temporarily applied to the host OS."
 arch=('x86_64')
 url="https://github.com/FeralInteractive/gamemode.git"
@@ -20,7 +20,7 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 build() {
-  meson ${_pkgname} build --prefix /usr -Dwith-systemd-user-unit-dir=/usr/lib/systemd/user -Dwith-pam-group=gamemode
+  meson ${_pkgname} build --prefix /usr -Dwith-systemd-user-unit-dir=/usr/lib/systemd/user -Dwith-privileged-group=gamemode
   ninja -C build
 }
 
