@@ -1,18 +1,18 @@
 pkgbase = libp11-static
 	pkgdesc = A library implementing a small layer on top of the PKCS11 API (with static libs)
-	pkgver = 0.4.11
+	pkgver = 0.4.12
 	pkgrel = 1
 	url = https://github.com/OpenSC/libp11/wiki
 	arch = x86_64
 	license = LGPL
 	depends = openssl
-	provides = libp11=0.4.11
+	provides = libp11=0.4.12
 	conflicts = libp11
 	options = staticlibs
-	source = https://github.com/OpenSC/libp11/releases/download/libp11-0.4.11/libp11-0.4.11.tar.gz
-	source = https://github.com/OpenSC/libp11/releases/download/libp11-0.4.11/libp11-0.4.11.tar.gz.asc
+	source = https://github.com/OpenSC/libp11/releases/download/libp11-0.4.12/libp11-0.4.12.tar.gz
+	source = https://github.com/OpenSC/libp11/releases/download/libp11-0.4.12/libp11-0.4.12.tar.gz.asc
 	validpgpkeys = AC915EA30645D9D3D4DAE4FEB1048932DD3AAAA3
-	sha256sums = 57d47a12a76fd92664ae30032cf969284ebac1dfc25bf824999d74b016d51366
+	sha256sums = 1e1a2533b3fcc45fde4da64c9c00261b1047f14c3f911377ebd1b147b3321cfd
 	sha256sums = SKIP
 
 pkgname = libp11-static
