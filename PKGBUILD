@@ -5,6 +5,7 @@ pkgdesc='A very small utility to test variable refresh rate.'
 arch=('x86_64')
 url='https://github.com/Nixola/VRRTest'
 license=('zlib')
+makedepends=('git')
 depends=('love')
 source=(
   'vrrtest_src::git+https://github.com/Nixola/VRRTest.git'
