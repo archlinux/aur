@@ -1,4 +1,4 @@
-From 0948f6ce6d898c598f8fe88240954e578fdc8387 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Mon, 16 Sep 2019 04:53:20 +0200
 Subject: [PATCH] ZEN: Add sysctl and CONFIG to disallow unprivileged
@@ -14,7 +14,7 @@ Our default behavior continues to match the vanilla kernel.
  5 files changed, 53 insertions(+)
 
 diff --git a/include/linux/user_namespace.h b/include/linux/user_namespace.h
-index 33a4240e6a6f1..82213f9c4c17f 100644
+index 33a4240e6a6f..82213f9c4c17 100644
 --- a/include/linux/user_namespace.h
 +++ b/include/linux/user_namespace.h
 @@ -139,6 +139,8 @@ static inline void set_rlimit_ucount_max(struct user_namespace *ns,
@@ -36,10 +36,10 @@ index 33a4240e6a6f1..82213f9c4c17f 100644
  {
  	return &init_user_ns;
 diff --git a/init/Kconfig b/init/Kconfig
-index 11f8a845f259d..02b7a0e455a5d 100644
+index d19ed66aba3b..a67689ca1929 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
-@@ -1226,6 +1226,22 @@ config USER_NS
+@@ -1231,6 +1231,22 @@ config USER_NS
  
  	  If unsure, say N.
  
@@ -63,7 +63,7 @@ index 11f8a845f259d..02b7a0e455a5d 100644
  	bool "PID Namespaces"
  	default y
 diff --git a/kernel/fork.c b/kernel/fork.c
-index 10885c649ca42..e0fe98e1afbdb 100644
+index 89475c994ca9..a00b3f26f241 100644
 --- a/kernel/fork.c
 +++ b/kernel/fork.c
 @@ -98,6 +98,10 @@
@@ -88,7 +88,7 @@ index 10885c649ca42..e0fe98e1afbdb 100644
  	/*
  	 * Thread groups must share signals as well, and detached threads
  	 * can only be started up within the thread group.
-@@ -3056,6 +3064,12 @@ int ksys_unshare(unsigned long unshare_flags)
+@@ -3066,6 +3074,12 @@ int ksys_unshare(unsigned long unshare_flags)
  	if (unshare_flags & CLONE_NEWNS)
  		unshare_flags |= CLONE_FS;
  
@@ -102,7 +102,7 @@ index 10885c649ca42..e0fe98e1afbdb 100644
  	if (err)
  		goto bad_unshare_out;
 diff --git a/kernel/sysctl.c b/kernel/sysctl.c
-index 083be6af29d70..42aa3c7835b96 100644
+index 23c08bf3db58..63ab60778e5d 100644
 --- a/kernel/sysctl.c
 +++ b/kernel/sysctl.c
 @@ -105,6 +105,9 @@
@@ -115,7 +115,7 @@ index 083be6af29d70..42aa3c7835b96 100644
  
  #if defined(CONFIG_SYSCTL)
  
-@@ -1949,6 +1952,15 @@ static struct ctl_table kern_table[] = {
+@@ -1953,6 +1956,15 @@ static struct ctl_table kern_table[] = {
  		.proc_handler	= proc_dointvec,
  	},
  #endif
@@ -132,7 +132,7 @@ index 083be6af29d70..42aa3c7835b96 100644
  	{
  		.procname	= "tainted",
 diff --git a/kernel/user_namespace.c b/kernel/user_namespace.c
-index 6b2e3ca7ee993..0253002184f1d 100644
+index 5481ba44a8d6..423ab2563ad7 100644
 --- a/kernel/user_namespace.c
 +++ b/kernel/user_namespace.c
 @@ -21,6 +21,13 @@

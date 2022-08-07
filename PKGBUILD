@@ -2,7 +2,7 @@
 
 pkgbase=linux-vfio-lts
 pkgver=5.15.59
-pkgrel=1
+pkgrel=2
 pkgdesc='LTS Linux VFIO'
 url="https://www.kernel.org/"
 arch=(x86_64)
@@ -17,11 +17,11 @@ source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-PCI_Add_more_NVIDIA_controllers_to_the_MSI_masking_quirk.patch
-  0003-iommu_intel_do_deep_dma-unmapping_to_avoid_kernel-flooding.patch
-  0004-Bluetooth_btintel_Fix_bdaddress_comparison_with_garbage_value.patch
-  0005-lg-laptop_Recognize_more_models.patch
-  0006_fix_NFSv4_mount_regression.diff
+  0002-PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch
+  0003-iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch
+  0004-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch
+  0005-lg-laptop-Recognize-more-models.patch
+  0006-Fix-NFSv4-mount-regression.patch
   add-acs-overrides.patch
   i915-vga-arbiter.patch
 )
@@ -32,13 +32,13 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
 sha256sums=('e6ddc642057340db06b3b921c2b31bfed2c611359e8f144c3e5cf9c3ac33bccb'
             'SKIP'
-            '52f0a13ca48e36032d3d4df06ec8a477d5ae151af992441a5fc68ab07f33c45d'
-            '99df282c594cc269d9a5d19bb86ea887892d3654cfc53c4ce94a644cf3278423'
-            'c35018601f04ae81e0a2018a8597595db6ae053158c206845399cdebb2d2b706'
-            '7c7707c738983f3683d76295b496f578996b7341fa39ad334ec2833bfe4b966e'
-            '3fa8a4af66d5a3b99b48ca979a247c61e81c9b2d3bcdffa9d3895a5532a420b4'
-            '79266c6cc970733fd35881d9a8f0a74c25c00b4d81741b8d4bba6827c48f7c78'
-            'e9527ad81d5b1821a7b17c56cb3abaec85785563f51e448cb3c06f1c68e2966f'
+            'd54ffc9e42ceed0a6b53b9ce0c707743c60986fd0919e282aedcca9a7746160c'
+            '7bd64ff894475b3415d792ba8466ba7e8f872af56dbf1aeed0d261fe4008b8b5'
+            '39649dc1dfcb06b411ad124e123769e955a78961b4ea17538c0919a930925549'
+            '56c12551e859cc67520909e64feecbf1b190cee8addef150c5b9d1bb1d40981e'
+            '5c1ee81fdd5818442af6081de987f9c1a9ce3c8d183566b3dfc19a8433aa3dde'
+            '067e8995fcd6f6ed25e0253e9374c0e179a000c154da3e59ce62634945ac5be9'
+            '95dad02b01937681af0a207e22a6bf64c33e067bf7a14cb98262dd8f69194eb8'
             'b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77'
             '856230cfbdc2bb53a4920dfbcb6fb2d58427b7b184e5f94e21f08011d0a2fcc6')
 
@@ -48,10 +48,6 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 
 prepare() {
   cd $_srcname
-
-  # fix NFSv4 mounting issue regression - FS#73838 / FS#73860
-  # https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/patch/?id=6f2836341d8a39e1e000572b10959347d7e61fd9
-  patch -Rp1 -i ../0006_fix_NFSv4_mount_regression.diff
 
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion
@@ -70,6 +66,7 @@ prepare() {
   echo "Setting config..."
   cp ../config .config
   make olddefconfig
+  diff -u ../config .config || :
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
@@ -77,8 +74,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  make all
-  make htmldocs
+  make htmldocs all
 }
 
 _package() {
@@ -86,7 +82,7 @@ _package() {
   depends=(coreutils kmod initramfs)
   optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
   replaces=(wireguard-lts)
 
   cd $_srcname
@@ -123,11 +119,11 @@ _package-headers() {
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
 
-  # add objtool for external module building and enabled VALIDATION_STACK option
+  # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  # add xfs and shmem for aufs building
-  mkdir -p "$builddir"/{fs/xfs,mm}
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include

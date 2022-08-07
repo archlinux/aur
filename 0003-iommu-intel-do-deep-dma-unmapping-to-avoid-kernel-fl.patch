@@ -1,4 +1,4 @@
-From 32803dc7c2ffc29db15a46034d818f6e6c5775ef Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Ajay Garg <ajaygargnsit@gmail.com>
 Date: Tue, 12 Oct 2021 19:26:53 +0530
 Subject: [PATCH] iommu: intel: do deep dma-unmapping, to avoid
@@ -71,10 +71,10 @@ Link: https://lore.kernel.org/linux-iommu/20211012135653.3852-1-ajaygargnsit@gma
  1 file changed, 2 insertions(+)
 
 diff --git a/drivers/iommu/intel/iommu.c b/drivers/iommu/intel/iommu.c
-index 78f8c8e6803e9..d8da48a91ba3b 100644
+index a1ffb3d6d901..c41788ea1a03 100644
 --- a/drivers/iommu/intel/iommu.c
 +++ b/drivers/iommu/intel/iommu.c
-@@ -5092,6 +5092,8 @@ static size_t intel_iommu_unmap(struct iommu_domain *domain,
+@@ -5113,6 +5113,8 @@ static size_t intel_iommu_unmap(struct iommu_domain *domain,
  	gather->freelist = domain_unmap(dmar_domain, start_pfn,
  					last_pfn, gather->freelist);
  

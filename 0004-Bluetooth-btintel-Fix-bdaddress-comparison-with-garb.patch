@@ -1,4 +1,4 @@
-From a6d4fb4f5e7fe795d9e3b28b261a0f86f1026d03 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Kiran K <kiran.k@intel.com>
 Date: Wed, 13 Oct 2021 13:35:11 +0530
 Subject: [PATCH] Bluetooth: btintel: Fix bdaddress comparison with garbage
@@ -16,7 +16,7 @@ Reviewed-by: Tedd Ho-Jeong An <tedd.an@intel.com>
  1 file changed, 14 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/bluetooth/btintel.c b/drivers/bluetooth/btintel.c
-index f1705b46fc889..b9055a3e61ed7 100644
+index d122cc973917..a828fcd05d83 100644
 --- a/drivers/bluetooth/btintel.c
 +++ b/drivers/bluetooth/btintel.c
 @@ -2006,14 +2006,16 @@ static int btintel_prepare_fw_download_tlv(struct hci_dev *hdev,
@@ -44,7 +44,7 @@ index f1705b46fc889..b9055a3e61ed7 100644
  	}
  
  	btintel_get_fw_name_tlv(ver, fwname, sizeof(fwname), "sfi");
-@@ -2303,6 +2305,10 @@ static int btintel_setup_combined(struct hci_dev *hdev)
+@@ -2309,6 +2311,10 @@ static int btintel_setup_combined(struct hci_dev *hdev)
  		goto exit_error;
  	}
  
