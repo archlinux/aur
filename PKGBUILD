@@ -43,6 +43,9 @@ _localmodcfg=
 # a new kernel is released, but again, convenient for package bumps.
 _use_current=
 
+### Enable KBUILD_CFLAGS -O3
+_cc_harder=y
+
 ### Set performance governor as default
 _per_gov=y
 
@@ -50,7 +53,7 @@ _per_gov=y
 _tcp_bbr2=y
 
 ### Running with a 1000HZ, 750Hz, 600 Hz or 500Hz tick rate
-_HZ_ticks=1000
+_HZ_ticks=750
 
 ## Choose between perodic, idle or full
 ### Full tickless can give higher performances in various cases but, depending on hardware, lower consistency.
@@ -67,19 +70,13 @@ _kyber_disable=y
 
 ### Enable multigenerational LRU
 # ATTENTION - one of three predefined values should be selected!
-# 'standard' - enable multigenerational LRU 
+# 'standard' - enable multigenerational LRU
 # 'stats' - enable multigenerational LRU with stats
 # 'none' - disable multigenerational LRU
 _lru_config='standard'
 
 ## Enable DAMON
 _damon=y
-
-### Enable SPECULATIVE_PAGE_FAULT
-# ATTENTION - one of two predefined values should be selected!
-# 'standard' - enable SPECULATIVE_PAGE_FAULT
-# 'stats' - enable support SPECULATIVE_PAGE_FAULT with stats
-_spf_config='standard'
 
 ## Enable Linux Random Number Generator
 _lrng_enable=y
@@ -103,25 +100,27 @@ _disable_debug=y
 ## Enable zram/zswap ZSTD compression
 _zstd_compression=y
 
-# Enable FULLCONENAT
-_nf_cone=y
-
 # Clang LTO mode, only available with the "llvm" compiler - options are "no", "full" or "thin".
 # "full: uses 1 thread for Linking, slow and uses more memory, theoretically with the highest performance gains."
 # "thin: uses multiple threads, faster and uses less memory, may have a lower runtime performance than Full."
 _use_llvm_lto=
+
+# KCFI is a proposed forward-edge control-flow integrity scheme for
+# Clang, which is more suitable for kernel use than the existing CFI
+# scheme used by CONFIG_CFI_CLANG. KCFI doesn't require LTO, doesn't
+# alter function references to point to a jump table, and won't break
+# function address equality.
+# ATTENTION!: you do need a patched llvm for the usage of kcfi,
+# you can find a patched llvm-git in the cachyos-repo's.
+# The packagename is called "llvm-kcfi"
+# ATTENTION!: This is very experimental and could fail and the compilation or have other bugs in the kernel
+_use_kcfi=
 
 # Build the zfs module builtin in to the kernel
 _build_zfs=
 
 # Enable bcachefs
 _bcachefs=
-
-# Enable aufsfs
-_aufs=
-
-# Enable spadefs
-_spadfs=
 
 if [ -n "$_use_llvm_lto" ]; then
     pkgsuffix=cachyos-${_cpusched}-lto
@@ -131,18 +130,18 @@ else
     pkgsuffix=cachyos-${_cpusched}
     pkgbase=linux-$pkgsuffix
 fi
-_major=5.18
-_minor=15
+_major=5.19
+_minor=0
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
-_stable=${_major}.${_minor}
-#_stable=${_major}
+#_stable=${_major}.${_minor}
+_stable=${_major}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
-pkgdesc='Linux hardened kernel with the BORE scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=1
+pkgdesc='Linux BORE scheduler Kernel by CachyOS with other patches and improvements'
+pkgrel=2
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -169,46 +168,53 @@ source=(
     "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz"
     "config"
     "auto-cpu-optimization.sh"
-    "${_patchsource}/all/0001-cachyos-base-all.patch"
-)
+    "${_patchsource}/all/0001-cachyos-base-all.patch")
+## ZFS Support
 if [ -n "$_build_zfs" ]; then
-source+=("git+https://github.com/openzfs/zfs.git#commit=98315be03600dee78f5c844ed4ef422098493a24")
+    source+=("git+https://github.com/openzfs/zfs.git#commit=17512aba0c33f73b74e5bd10f11e6d41c10f709f")
 fi
+## BMQ Scheduler
 if [ "$_cpusched" = "bmq" ]; then
-source+=("${_patchsource}/sched/0001-prjc.patch")
+    source+=("${_patchsource}/sched/0001-prjc-cachy.patch")
 fi
+## PDS Scheduler
 if [ "$_cpusched" = "pds" ]; then
-source+=("${_patchsource}/sched/0001-prjc.patch")
+    source+=("${_patchsource}/sched/0001-prjc-cachy.patch")
 fi
+## BORE Scheduler
 if [ "$_cpusched" = "bore" ]; then
-source+=("${_patchsource}/sched/0001-bore-sched.patch")
+    source+=("${_patchsource}/sched/0001-bore.patch")
 fi
+## CacULE Scheduler
 if [ "$_cpusched" = "cacule" ]; then
-source+=("${_patchsource}/sched/0001-cacULE-5.18-migrate.patch")
+    source+=("${_patchsource}/sched/0001-cacULE-cachy.patch")
 fi
+## CacULE-RDB Scheduler
 if [ "$_cpusched" = "cacule-rdb" ]; then
-source+=("${_patchsource}/sched/0001-cacULE-5.18-migrate.patch")
+    source+=("${_patchsource}/sched/0001-cacULE-cachy.patch")
 fi
+#ä TT Scheduler
 if [ "$_cpusched" = "tt" ]; then
-source+=(
-    "${_patchsource}/sched/0001-tt-cachy-5.18.patch")
+    source+=("${_patchsource}/sched/0001-tt-cachy.patch")
 fi
+## Hardened Patches with BORE Scheduler
 if [ "$_cpusched" = "hardened" ]; then
-source+=("${_patchsource}/sched/0001-bore-sched.patch"
-         "${_patchsource}/0001-hardening.patch"
-         "${_patchsource}/0001-hardened.patch")
+    source+=("${_patchsource}/sched/0001-bore.patch"
+         "${_patchsource}/misc/0001-hardened.patch")
 fi
-
+## Kernel CFI Patch
+if [ -n "$_use_kcfi" ]; then
+    source+=("${_patchsource}/misc/0001-kcfi.patch")
+    depends+=(llvm-git llvm-libs-git python)
+    BUILD_FLAGS=(
+        CC=clang
+        LD=ld.lld
+        LLVM=1
+    )
+fi
+## bcachefs Support
 if [ -n "$_bcachefs" ]; then
-source+=("${_patchsource}/0001-bcachefs-after-lru.patch")
-fi
-
-if [ -n "$_aufs" ]; then
-source+=("${_patchsource}/0001-aufs-20220620.patch")
-fi
-
-if [ -n "$_spadfs" ]; then
-source+=("${_patchsource}/0001-spadfs-5.18-merge-v1.0.16.patch")
+    source+=("${_patchsource}/misc/0001-bcachefs-after-lru.patch")
 fi
 
 export KBUILD_BUILD_HOST=archlinux
@@ -279,7 +285,7 @@ prepare() {
     elif [ "$_cpusched" = "cfs" ]; then
         echo "Selecting Completely Fair Scheduler..."
     elif [ "$_cpusched" = "hardened" ]; then
-        echo "Selecting hardened..."
+        echo "Selecting hardened patches with the BORE Scheduler..."
     else
         if [ -n "$_cpusched" ]; then
             error "The value $_cpusched is invalid. Choose the correct one again."
@@ -480,32 +486,6 @@ prepare() {
             --set-str DEFAULT_TCP_CONG bbr2
     fi
 
-    ### Enable FULLCONENAT
-    if [ -n "$_nf_cone" ]; then
-        echo "Enabling FULLCONENAT..."
-        scripts/config --module IP_NF_TARGET_FULLCONENAT \
-            --module NETFILTER_XT_TARGET_FULLCONENAT
-    fi
-
-    ### Select SPF config
-    if [ "$_spf_config" = "standard" ]; then
-       echo "Enabling SPECULATIVE_PAGE_FAULT..."
-       scripts/config --enable CONFIG_SPECULATIVE_PAGE_FAULT \
-           --disable CONFIG_SPECULATIVE_PAGE_FAULT_STATS
-    elif [ "$_spf_config" = "stats" ]; then
-       echo "Enabling SPECULATIVE_PAGE_FAULT with stats..."
-       scripts/config --enable CONFIG_SPECULATIVE_PAGE_FAULT \
-           --enable CONFIG_SPECULATIVE_PAGE_FAULT_STATS
-    else
-        if [ -n "$_spf_config" ]; then
-           error "The value $_spf_config is invalid. Choose the correct one again."
-        else
-           error "The value is empty. Choose the correct one again."
-        fi
-          error "Enabling SPECULATIVE_PAGE_FAULT failed!"
-          exit
-    fi
-
     ### Select LRU config
     if [ "$_lru_config" = "standard" ]; then
        echo "Enabling multigenerational LRU..."
@@ -617,12 +597,7 @@ prepare() {
     ### Enable ZSTD swap/zram compression
     if [ -n "$_zstd_swap_compression" ]; then
         echo "Enabling zram ZSTD compression..."
-        scripts/config --disable ZRAM_DEF_COMP_LZORLE \
-            --enable ZRAM_DEF_COMP_ZSTD \
-            --set-str ZRAM_DEF_COMP zstd \
-            --disable ZSWAP_COMPRESSOR_DEFAULT_LZ4 \
-            --enable ZSWAP_COMPRESSOR_DEFAULT_ZSTD \
-            --set-str ZSWAP_COMPRESSOR_DEFAULT zstd \
+        scripts/config --disable CONFIG_ZSWAP_DEFAULT_ON \
             --enable ZRAM_ENTROPY \
             --set-val ZRAM_ENTROPY_THRESHOLD 100000
     fi
@@ -694,9 +669,6 @@ prepare() {
     ### Save configuration for later reuse
     echo "Save configuration for later reuse..."
     cat .config > "${startdir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
-
-    ### Save configuration for later reuse
-    # cp -Tf ./.config "${startdir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
 
 }
 
@@ -862,10 +834,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('69804febdc388a69dfb64493b7b58d402853de3a14144ea8db7fd67c30dcbe3c'
+sha256sums=('ff240c579b9ee1affc318917de07394fc1c3bb49dac25ec1287370c2e15005a8'
             'b75e5c656f6e3909e3607a8427f9d68494063f6ffa802489bc31120639b19653'
             'ce8bf7807b45a27eed05a5e1de5a0bf6293a3bbc2085bacae70cd1368f368d1f'
-            '0b256630b9f79e776cf447a825dad88e5a6daf8693de35b2ff892e14b9212365'
-            '7a36fe0a53a644ade0ce85f08f9ca2ebaddd47876966b7cc9d4cae8844649271'
-            'd09b35736cf6b5b9b269bfe3b8f32a68463d1ae9d591a256f94bcc6a62425c28'
-            'acf8ca58f229a487e6a3654bee4ce63e8b8679985e0a1e1f26406e3f1a092b02')
+            '4575169c1ed71ddc0ae0d832d0c8df75b506f1bf6891b9166dbb23e628fbfb21'
+            '0fe7f1698639df033709c6d32e651d378fc6e320dfc6387f8aee83d9ed0231a8'
+            '311f69f3123281febd9d9049024b1e7b975cb3c06b9d24f46275ad89dcf67462')
