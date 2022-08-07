@@ -3,7 +3,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=webkit2gtk-4.1-imgpaste
-pkgver=2.36.5
+pkgver=2.36.6
 pkgrel=1
 pkgdesc="Web content engine for GTK"
 url="https://webkitgtk.org"
@@ -26,7 +26,7 @@ optdepends=('geoclue: Geolocation support'
 source=($url/releases/webkitgtk-$pkgver.tar.xz{,.asc}
         PasteBoardGtk.patch
         EnlargeObjectSize.patch)
-sha256sums=('d5532fa884c943dc48f1911473dd663aba407a3b35caa7b04bac1419b41e5908'
+sha256sums=('1193bc821946336776f0dfa5e0dca5651f1e57157eda12da4721d2441f24a61a'
             'SKIP'
             '909eb44783d093c89400494a8b57eee3a5b926e1a5b5f1e922e1dff1a6dc3c7b'
             'a5d2149d55190a15bc806bfddd85f43b6c714722b04ce0c1e476f9cb58985bac')
