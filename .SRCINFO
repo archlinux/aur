@@ -30,7 +30,7 @@ pkgbase = linux-clang
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha256sums = SKIP
-	sha256sums = 0fb4be3aa342dc366f10cb11d504dcca6ec0a7296859a5ee061262d5ed8a26d0
+	sha256sums = 8a7acc62c4a4380cfd65d52bc60267bd3ed960df3a1ec4f33e82a4588630d9d0
 
 pkgname = linux-clang
 	pkgdesc = The Linux but built with clang kernel and modules
