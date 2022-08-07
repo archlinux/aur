@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=nleqslv
-_pkgver=3.3.2
+_pkgver=3.3.3
 pkgname=r-${_pkgname,,}
-pkgver=3.3.2
-pkgrel=4
+pkgver=3.3.3
+pkgrel=1
 pkgdesc='Solve Systems of Nonlinear Equations'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,7 +16,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f54956cf67f9970bb3c6803684c84a27ac78165055745e444efc45cfecb63fed')
+sha256sums=('2e46dfce95ddfd7ed5208413ee41f6bdf1ae18414fb1d0c146d9da3af12ac633')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
