@@ -9,7 +9,6 @@ pkgbase = mpd-server-minimal
 	license = GPL
 	makedepends = boost
 	makedepends = meson
-	makedepends = python-sphinx
 	makedepends = systemd
 	depends = alsa-lib
 	depends = flac

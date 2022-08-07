@@ -9,7 +9,7 @@ arch=(i686 x86_64 armv7h)
 url="https://www.musicpd.org/"
 license=(GPL)
 depends=(alsa-lib flac fmt icu libmpdclient liburing systemd-libs zlib)
-makedepends=(boost meson python-sphinx systemd)
+makedepends=(boost meson systemd)
 provides=("${_pkgname}=${pkgver}")
 conflicts=(${_pkgname})
 backup=(etc/${_pkgname}.conf)
@@ -34,9 +34,9 @@ validpgpkeys=(0392335A78083894A4301C43236E8A58C6DB4512) # Max Kellermann <max@mu
 
 build() {
   _meson_options=(
-    -D documentation=enabled
+    -D documentation=disabled
     -D html_manual=false
-    -D manpages=true
+    -D manpages=false
     -D test=false
     -D syslog=disabled
     -D inotify=true
