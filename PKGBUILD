@@ -1,7 +1,7 @@
 # Maintainer: Etienne Charland <mysteryx93 at protonmail dot com>
 _pkgname=converter432hz
 pkgname=${_pkgname}-appimage
-pkgver=2.1.2
+pkgver=2.2
 pkgrel=1
 pkgdesc="Converts and re-encodes music to 432hz"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/mysteryx93/NaturalGroundingPlayer/releases/download/v${pkgver}/Converter432hz-${pkgver}_Linux_x64.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('8523179d162400d22d06dfa31942ac146ce5651ca832df6d41edee6cf59edea0')
+sha256sums_x86_64=('6fd17c7b823e8cd8bee349d6055bd357f2a5cbf45b924fc87c57ba30b3553433')
 
 prepare() {
     chmod +x "${_appimage}"
