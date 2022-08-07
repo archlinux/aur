@@ -2,7 +2,7 @@
 # Contributor: bjoern lindig <bjoern dot lindig at googlemail dot com>
 
 pkgname=pure-gen
-pkgver=0.24
+pkgver=0.25
 pkgrel=1
 pkgdesc="A C interface generator for Pure"
 arch=("i686" "x86_64")
@@ -12,7 +12,7 @@ depends=('pure' 'numactl')
 makedepends=('ghc' 'ghc-static' 'ghc-pristine' 'cabal-install' 'alex' 'happy')
 groups=(pure-complete pure-util)
 source=("https://github.com/agraef/pure-lang/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
-sha1sums=('37e40208ed0432f2ab12246bbd4836547af9394a')
+sha1sums=('c77a63a5f6456aee4a5ad0676fdd2f8925c16412')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
