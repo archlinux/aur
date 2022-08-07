@@ -1,15 +1,13 @@
 pkgbase = ruut
 	pkgdesc = Print arbitrary trees on the command line.
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/HarrisonB/ruut
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	conflicts = ruut-git
-	source = 0.6.1.tar.gz::https://github.com/HarrisonB/ruut/archive/v0.6.1.tar.gz
-	sha256sums = db306a022211dae74c9b4fb1e10bdb532fbcbde9d4502fde89c15b5d364d5826
+	source = 0.7.0.tar.gz::https://github.com/HarrisonB/ruut/archive/v0.7.0.tar.gz
+	sha256sums = 595b91cf2f66ff3263379b271ab09ae8d0d9f72d22f4044dc492a10de8918f5e
 
 pkgname = ruut
-
