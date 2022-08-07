@@ -1,11 +1,11 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 
-_commit=6539eef7be69c3f7089489c9a8f39d085e677bad  # tags/2.54.4
+_commit=8d1fef1f16a39caaa1ab150ae2de2135624649a6  # tags/2.55.0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-librsvg
-pkgver=2.54.4
+pkgver=2.55.0
 pkgrel=1
 pkgdesc="SVG rendering library (mingw-w64)"
 arch=('any')
@@ -17,7 +17,7 @@ depends=('mingw-w64-gdk-pixbuf2'
          'mingw-w64-libxml2'
          'mingw-w64-freetype2')
 makedepends=('mingw-w64-configure'
-             'mingw-w64-rust'
+             'mingw-w64-rust>=1.58'
              'mingw-w64-wine'
              'gdk-pixbuf2'
              'gobject-introspection'
