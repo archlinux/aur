@@ -1,7 +1,7 @@
 pkgbase = vlang
 	pkgdesc = Simple, fast, safe, compiled language for developing maintainable software
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vlang.io
 	arch = x86_64
 	arch = aarch64

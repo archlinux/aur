@@ -1,13 +1,15 @@
 # Maintainer: Jef Roosens
 # Contributor: Logan Magee <mageelog@gmail.com>
 
-# Commit hashes of 0.3 release in v & vc repositories
+# Commit hashes for the 0.3 release in the v & vc repositories
+# Using the direct downloads for the commits greatly reduces the time needed to
+# pull down the sources, as the vlang repository is >100MB.
 _v_commit_sha=ec758604538c00cceb142d324609a241e665f7c7
 _vc_commit_sha=5dc8384638f515a098f75296fa7123c5e6a4964a
 
 pkgname=vlang
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software'
 arch=('x86_64' 'aarch64')
 url='https://vlang.io'
@@ -33,6 +35,9 @@ prepare() {
     # version. This flag also disables downloading tcc, so we do that
     # beforehand.
     make -C "v-${_v_commit_sha}" fresh_tcc
+
+    # `v up` should be disabled, as it can break the installed package.
+    echo "println('v up is disabled; see the AUR page for more information.')" > "v-${_v_commit_sha}/cmd/tools/vup.v"
 }
 
 build() {
