@@ -19,7 +19,7 @@ sha256sums=("SKIP")
 
 prepare() {
     cd $srcdir/$resname/src
-    sed -i "s/#define VERSION .*/#define VERSION nightly/g" about.h
+    sed -i "s/#define VERSION .*/#define VERSION \"nightly\"/g" about.h
 }
 
 build() {
