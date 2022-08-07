@@ -1,0 +1,17 @@
+pkgbase = perl-algorithm-backoff
+	pkgdesc = Various backoff strategies for retry
+	pkgver = 0.009
+	pkgrel = 1
+	url = https://metacpan.org/release/Algorithm-Backoff
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-exception>=0
+	checkdepends = perl-test-number-delta>=0
+	depends = perl>=5.10.1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PE/PERLANCAR/Algorithm-Backoff-0.009.tar.gz
+	md5sums = edcad674b720e218fa049c857da088ea
+	sha512sums = e3764518941d11f6dcd0b69aa6206bf382a7ad00ad77eee96493ae237ffd0a6a54b1796e8947974a112fe5fcf6b148fc60c9d1cf8b073ee9b4a22e44640bccfc
+
+pkgname = perl-algorithm-backoff
