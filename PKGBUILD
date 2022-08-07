@@ -1,21 +1,20 @@
 # vim: ft=bash
 # Maintainer: Jef Roosens
 
-pkgbase='vieter'
 pkgname='vieter'
 pkgver='0.3.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='Archlinux repository server & package build system, written in V.'
 depends=('glibc' 'openssl' 'libarchive' 'sqlite')
-makedepends=('git' 'vlang-git')
+makedepends=('vlang')
 arch=('x86_64' 'aarch64')
 url='https://git.rustybever.be/vieter-v/vieter'
 license=('AGPL3')
-source=("$pkgname::git+https://git.rustybever.be/vieter-v/vieter#tag=${pkgver//_/-}")
-md5sums=('SKIP')
+source=("${pkgname}-${pkgver}.tar.gz::https://git.rustybever.be/vieter-v/vieter/archive/${pkgver}.tar.gz")
+sha256sums=('829c2f5a755c64b21b7b30df20848f679b1e05af5b446a67a75ae0e0c3279fac')
 
 build() {
-    cd "$pkgname"
+    cd "${pkgname}"
 
     make prod
 
@@ -26,9 +25,11 @@ build() {
 }
 
 package() {
-    install -dm755 "$pkgdir/usr/bin"
-    install -Dm755 "$pkgname/pvieter" "$pkgdir/usr/bin/vieter"
+    cd "${pkgname}"
 
-    install -dm755 "$pkgdir/usr/share/man/man1"
-    install -Dm644 "$pkgname/man"/*.1 "$pkgdir/usr/share/man/man1"
+    install -dm755 "${pkgdir}/usr/bin"
+    install -Dm755 'pvieter' "${pkgdir}/usr/bin/vieter"
+
+    install -dm755 "${pkgdir}/usr/share/man/man1"
+    install -Dm644 man/*.1 "${pkgdir}/usr/share/man/man1"
 }
