@@ -10,7 +10,7 @@ _pkgarch=$(dpkg --print-architecture)
 #leave arch package as any
 arch=('any')
 pkgver='1.0.1'
-pkgrel=3
+pkgrel=4
 _rc=''
 _pkgver="${pkgver}${_rc}"
 _tag_ver="v${_pkgver}"
