@@ -1,13 +1,12 @@
 # Maintainer: Anarcoco <archlinux.dn4qx@slmail.me>
 pkgname=youtube-local-git
 pkgver=2022.08.05.4a81f50
-pkgrel=1
+pkgrel=2
 pkgdesc="browser-based client for watching Youtube anonymously with greater page performance"
 arch=('any')
 url="https://github.com/user234683/youtube-local"
 license=('AGPL3')
 depends=('python-flask>=1.0.3' 'python-gevent>=1.2.2' 'brotli>=1.0.7' 'python-pysocks>=1.6.8' 'python-urllib3>=1.24.1' 'python-defusedxml>=0.5.0' 'python-cachetools>=4.0.0' 'python-stem>=1.8.0')
-makedepends=('git')
 optdepends=('python-pytest: development requirement')
 provides=(youtube-local)
 replaces=(youtube-local)

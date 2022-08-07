@@ -1,12 +1,11 @@
 pkgbase = youtube-local-git
 	pkgdesc = browser-based client for watching Youtube anonymously with greater page performance
 	pkgver = 2022.08.05.4a81f50
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/user234683/youtube-local
 	install = youtube-local.install
 	arch = any
 	license = AGPL3
-	makedepends = git
 	depends = python-flask>=1.0.3
 	depends = python-gevent>=1.2.2
 	depends = brotli>=1.0.7
