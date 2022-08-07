@@ -1,7 +1,7 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=cambalache
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 pkgdesc='A new RAD tool for Gtk 4 and 3'
 arch=(x86_64)
