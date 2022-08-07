@@ -2,7 +2,7 @@
 # Contributor: erm67
 # Contributor: Stefan Husmann <Stefan-Husmann@t-online.de>
 pkgname=xpaint
-pkgver=3.1.3
+pkgver=3.1.4
 pkgrel=1
 pkgdesc="A color image editing tool which features most standard paint program options."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('libxaw3dxft' 'libpng' 'libtiff' 'libxft' 'libxpm' 'netpbm' 'hicolor-ic
 optdepends=('gv: external viewer for PostScript output' 'imagemagick: external viewer for pixel graphics')
 makedepends=('git')
 source=(http://downloads.sourceforge.net/sourceforge/sf-$pkgname/$pkgname-$pkgver.tar.bz2 git+https://gist.github.com/10018613.git X11app.patch)
-md5sums=('f7b909ae0a73bc74fd65d268a5eb8bc4'
+md5sums=('e20c3283db9513d204090d6b67f62a3a'
          'SKIP'
          '10b3d1053a8a9f8d1707fd45b7154b68')
 #options=('!makeflags')
@@ -29,7 +29,7 @@ build() {
   aclocal 
   XAPPLOADIR=$SHAREDIR/X11 automake --add-missing
   CC=gcc ./configure --prefix=/usr
-  make 
+  make -j1
 }
 
 package() {
