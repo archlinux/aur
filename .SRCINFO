@@ -1,7 +1,7 @@
 pkgbase = darksnow
 	pkgdesc = simple GTK2 GUI for darkice
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://darksnow.radiolivre.org/index.en.html
 	install = darksnow.install
 	arch = i686
@@ -16,4 +16,3 @@ pkgbase = darksnow
 	sha256sums = c35b2679a1d439cc6aff7acadd73a8af3bd0f878bb77e82db32c66f0ef646eb1
 
 pkgname = darksnow
-

@@ -1,3 +1,4 @@
+# Maintainer: weilinfox <weilinfox at inuyasha dot love>
 # Contributor: Lex Black <autumn-wind at web dot de>
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 # Contributor: nggtony <nggtony@yahoo.it>
@@ -20,6 +21,7 @@ sha256sums=('7c7c55761f7536cea2e8b6d8037c9ce7ca71f6a044c1b6026ea80e13d35b04fd'
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
+  export CFLAGS="-fcommon $CFLAGS"
   ./configure --prefix=/usr
   make
 }
