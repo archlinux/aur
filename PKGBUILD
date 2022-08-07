@@ -3,12 +3,12 @@
 
 pkgname=tracy
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Real-time, nanosecond resolution frame profiler"
 arch=('i686' 'x86_64')
 url="https://github.com/wolfpld/tracy"
 license=('BSD')
-depends=('glfw-x11' 'gtk3' 'intel-tbb' 'capstone')
+depends=('glfw-x11' 'gtk3' 'intel-tbb' 'capstone' 'xdg-desktop-portal')
 makedepends=('pkgconf' 'git')
 provides=('tracy')
 conflicts=('tracy')
