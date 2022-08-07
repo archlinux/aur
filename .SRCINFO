@@ -1,7 +1,7 @@
 pkgbase = ttf-ligaconsolas-nerd-font
   pkgdesc = Consolas font family patched with ligatures and glyphs
   pkgver = 1.0
-  pkgrel = 2
+  pkgrel = 3
   install = ttf-ligaconsolas-nerd-font.install
   arch = any
   depends = fontconfig
