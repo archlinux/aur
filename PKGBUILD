@@ -3,7 +3,7 @@
 pkgname=earth-wallpaper-bin
 appid=cn.huguoyang.earthwallpaper
 name=earth-wallpaper
-pkgver=1.6.5
+pkgver=1.7.0
 pkgrel=0
 pkgdesc="实时获取地球照片作为桌面壁纸"
 arch=('x86_64')
