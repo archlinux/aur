@@ -1,37 +1,34 @@
 # vim: ft=bash
 # Maintainer: Jef Roosens
 
-pkgbase='vieter-git'
 pkgname='vieter-git'
-pkgver=0.2.0.r25.g20112b8
+pkgver=0.3.0.r42.g8a2b121
 pkgrel=1
-pkgdesc='Archlinux repository server & package build system, written in V.'
+pkgdesc='Archlinux repository server & package build system, written in V (development version)'
 depends=('glibc' 'openssl' 'libarchive' 'sqlite')
-makedepends=('git' 'vlang-git')
+makedepends=('git' 'vlang')
 arch=('x86_64' 'aarch64')
 url='https://git.rustybever.be/vieter-v/vieter'
 license=('AGPL3')
-source=("$pkgname::git+https://git.rustybever.be/vieter-v/vieter#branch=dev")
+source=("${pkgname}::git+https://git.rustybever.be/vieter-v/vieter#branch=dev")
 md5sums=('SKIP')
-provides=('vieter')
 conflicts=('vieter')
+provides=('vieter')
 
 pkgver() {
-    cd "$pkgname"
-
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git -C "${pkgname}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    export VMODULES="$srcdir/.vmodules"
+    export VMODULES="${srcdir}/.vmodules"
 
-    cd "$pkgname/src" && v install
+    cd "${pkgname}/src" && v install
 }
 
 build() {
-    export VMODULES="$srcdir/.vmodules"
+    export VMODULES="${srcdir}/.vmodules"
 
-    cd "$pkgname"
+    cd "${pkgname}"
 
     make prod
 
@@ -42,9 +39,9 @@ build() {
 }
 
 package() {
-    install -dm755 "$pkgdir/usr/bin"
-    install -Dm755 "$pkgname/pvieter" "$pkgdir/usr/bin/vieter"
+    install -dm755 "${pkgdir}/usr/bin"
+    install -Dm755 "${pkgname}/pvieter" "${pkgdir}/usr/bin/vieter"
 
-    install -dm755 "$pkgdir/usr/share/man/man1"
-    install -Dm644 "$pkgname/man"/*.1 "$pkgdir/usr/share/man/man1"
+    install -dm755 "${pkgdir}/usr/share/man/man1"
+    install -Dm644 "${pkgname}/man"/*.1 "${pkgdir}/usr/share/man/man1"
 }
