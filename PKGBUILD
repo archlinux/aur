@@ -2,7 +2,7 @@
 
 pkgname=an-anime-game-launcher-gtk-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An GTK4 alternative to an-anime-game-launcher-bin"
 url="https://gitlab.com/an-anime-team/alternatives/an-anime-game-launcher-gtk"
 conflicts=("an-anime-game-launcher-bin" "an-anime-game-launcher")
@@ -42,7 +42,7 @@ md5sums=(
 )
 
 prepare() {
-    chmod +x "${srcdir}/an-anime-game-launcher"
+    chmod +x "${srcdir}/an-anime-game-launcher_${pkgver}"
 }
 
 package() {
