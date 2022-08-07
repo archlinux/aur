@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=PhilipsTV GUI
+GenericName=TV remote control
+Comment=GUI remote for Philips Android-powered TVs.
+Icon=tv-symbolic
+TryExec=philipstv-gui
+Exec=philipstv-gui
+Terminal=false
+Type=Application
+Categories=Utility;TV;
+Keywords=remote;tv;philips;
