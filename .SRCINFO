@@ -1,6 +1,6 @@
 pkgbase = newsboat-git
 	pkgdesc = An RSS/Atom feed reader for text terminals
-	pkgver = 2.23.r191.gf570c8ac
+	pkgver = 2.23.r225.g643dae9d
 	pkgrel = 1
 	url = https://newsboat.org/
 	arch = x86_64
@@ -21,8 +21,8 @@ pkgbase = newsboat-git
 	provides = newsboat
 	conflicts = newsboat
 	replaces = newsbeuter
+	options = !lto
 	source = git+https://github.com/newsboat/newsboat.git
 	sha256sums = SKIP
 
 pkgname = newsboat-git
-

@@ -4,7 +4,7 @@
 # Contributor: Sven Pfleiderer <pfleidi@roothausen.de>
 
 pkgname=newsboat-git
-pkgver=2.23.r191.gf570c8ac
+pkgver=2.23.r225.g643dae9d
 pkgrel=1
 pkgdesc="An RSS/Atom feed reader for text terminals"
 arch=('x86_64')
@@ -18,6 +18,7 @@ optdepends=('perl: for pinboard.pl'
 provides=('newsboat')
 conflicts=('newsboat')
 replaces=('newsbeuter')
+options=('!lto')
 source=('git+https://github.com/newsboat/newsboat.git')
 sha256sums=('SKIP')
 
