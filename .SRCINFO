@@ -1,15 +1,14 @@
 pkgbase = nextinspace
 	pkgdesc = Print upcoming space-related events to your terminal
-	pkgver = 2.0.3
+	pkgver = 2.0.5
 	pkgrel = 1
-	url = https://github.com/not-stirred/nextinspace
+	url = https://github.com/gideonshaked/nextinspace
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python-colorama>=0.4.3
 	depends = python-requests>=2.24
-	depends = python-tzlocal
-	source = https://files.pythonhosted.org/packages/source/n/nextinspace/nextinspace-2.0.3.tar.gz
-	sha256sums = 80937972053a8411b5a145488dbec8e4049320f9014d012776ae9561c70d418e
+	source = https://files.pythonhosted.org/packages/source/n/nextinspace/nextinspace-2.0.5.tar.gz
+	sha256sums = 03e417b34a95920b0d7a67e39042181ca6cd2401f93885a514cedf42630a1268
 
 pkgname = nextinspace
