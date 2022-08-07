@@ -4,14 +4,13 @@ pkgname=elpa
 PkgName=ELPA
 pkgver=2022.05.001
 _pkgver=${pkgver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 pkgdesc="Eigenvalue SoLvers for Petaflop-Applications"
 url="https://elpa.mpcdf.mpg.de"
 license=("LGPL3")
 depends=('scalapack' 'python-mpi4py' 'python-numpy')
 makedepends=('gcc-fortran' 'vim' 'cython')
-checkdepends=('python-pytest')
 provides=('elpa')
 source=("$url/software/tarball-archive/Releases/$_pkgver/$pkgname-$_pkgver.tar.gz")
 sha256sums=('207e6f26d6532fb70373afc3ef3d38255213af61def659c25dad3a30e4fca38b')
@@ -82,7 +81,6 @@ build() {
                --enable-avx512=$_AVX512                              \
                --enable-autotune-redistribute-matrix                 \
                --enable-python                                       \
-               --enable-python-tests                                 \
                --enable-scalapack-tests                              \
                --without-threading-support-check-during-build        \
                CFLAGS='-O2 -march=native'                            \

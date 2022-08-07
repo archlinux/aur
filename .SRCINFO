@@ -1,12 +1,11 @@
 pkgbase = elpa
 	pkgdesc = Eigenvalue SoLvers for Petaflop-Applications
 	pkgver = 2022.05.001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://elpa.mpcdf.mpg.de
 	arch = x86_64
 	arch = aarch64
 	license = LGPL3
-	checkdepends = python-pytest
 	makedepends = gcc-fortran
 	makedepends = vim
 	makedepends = cython
