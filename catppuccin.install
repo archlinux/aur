@@ -1,0 +1,9 @@
+post_install() {
+	echo ':: This plugin requires manual setup.'
+	echo ':: Consult upstream documentation for more information.'
+	echo ':: A copy has been installed under /usr/share/doc/neovim-catppuccin-git/README.md for your reference.'
+}
+
+post_remove() {
+	echo ':: Remember to remove all references to this plugin from your init scripts.'
+}
