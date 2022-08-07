@@ -1,0 +1,12 @@
+pkgbase = gutu
+	pkgdesc = The init system for your desktop session
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/alexcoder04/gutu
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	source = https://github.com/alexcoder04/gutu/archive/refs/tags/v0.1.0.tar.gz
+	md5sums = dcc9756a43248647e4b8c38931e02dc4
+
+pkgname = gutu
