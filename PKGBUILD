@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-nettle
-pkgver=3.8
+pkgver=3.8.1
 pkgrel=1
 pkgdesc="A low-level cryptographic library (mingw-w64)"
 arch=(any)
@@ -10,7 +10,7 @@ makedepends=('mingw-w64-configure')
 depends=('mingw-w64-gmp')
 options=('staticlibs' '!strip' '!buildflags')
 source=("https://ftp.gnu.org/gnu/nettle/nettle-$pkgver.tar.gz")
-sha256sums=('7576c68481c198f644b08c160d1a4850ba9449e308069455b5213319f234e8e6')
+sha256sums=('364f3e2b77cd7dcde83fd7c45219c834e54b0c75e428b6f894a23d12dd41cbfe')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
