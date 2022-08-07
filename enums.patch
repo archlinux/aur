@@ -1,0 +1,44 @@
+commit 94259306f5407dd28d9417f87c118ed1f6326601
+Author: Albert Graef <aggraef@gmail.com>
+Date:   Sun Aug 7 23:29:46 2022 +0200
+
+    pure-gen: Improve diagnostics for unrecognized enum values.
+
+diff --git a/pure-gen/pure-gen.pure b/pure-gen/pure-gen.pure
+index 694aeeab..15b38f4d 100755
+--- a/pure-gen/pure-gen.pure
++++ b/pure-gen/pure-gen.pure
+@@ -588,10 +588,21 @@ get_enum dict _ = dict;
+ 
+ 
+ calc_enum_values dict prev ((name,Just e):more) =
+-  case eval_expr dict e of
++case catch id (eval_expr dict e) of
+     val::int = calc_enum_values (insert dict (name => val)) val more;
+-    x = warning 0 $ "Couldn't evaluate enum expression for "+name+" : "+str e
+-          $$ calc_enum_values dict prev more;
++    x = warning level $ "Unknown enum value: "+name+" = "+str e
++          $$ calc_enum_values dict prev more when
++	    estr = str e;
++	    // Most of the time e will be 'Pass' which indicates a part of the
++	    // AST we (or rather dump-ast) doesn't recognize. These values are
++	    // considered unsupported by design, so a simple warning should
++	    // suffice, which the user can get rid of with the -w0 option.
++	    // OTOH, if we get anything else then it is a part of the AST that
++	    // we probably *should* recognize, indicating a possible bug in
++	    // pure-gen or dump-ast, or both. In that case we want to ensure
++	    // that a warning is printed no matter what.
++	    level = estr == "Pass";
++	  end;
+   end;
+ 
+ calc_enum_values dict () ((name,Nothing):more) =
+@@ -639,7 +650,7 @@ eval_expr d (CBinary CXorOp e1 e2) = xor (eval_expr d e1) (eval_expr d e2)
+   with
+   xor a b = (a and not b) or (not a and b); // why exclude poor xor?
+   end;
+-eval_expr d x = warning 0$"Unknown expression type "+str x+" in enum definition. Defaulting to 0." $$ 0;
++eval_expr d x = throw "Unknown expression type";
+ 
+ 
+ // Dissect cpp lines (#define's and # lineno only).

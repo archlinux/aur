@@ -1,7 +1,7 @@
 pkgbase = pure-gen
 	pkgdesc = A C interface generator for Pure
 	pkgver = 0.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://agraef.github.io/pure-lang/
 	arch = i686
 	arch = x86_64
@@ -17,6 +17,8 @@ pkgbase = pure-gen
 	depends = pure
 	depends = numactl
 	source = https://github.com/agraef/pure-lang/releases/download/pure-gen-0.25/pure-gen-0.25.tar.gz
+	source = enums.patch
 	sha1sums = c77a63a5f6456aee4a5ad0676fdd2f8925c16412
+	sha1sums = 982d929a1a0d4e40fc3754c1290c344c950e0148
 
 pkgname = pure-gen
