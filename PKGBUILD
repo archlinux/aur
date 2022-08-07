@@ -1,6 +1,6 @@
 # Maintainer: Alan Placidina Maria <placidina[at]protonmail[dot]com>
 
-pkgname=sqlmap
+pkgname=sqlmap-bin
 pkgver=1.6.8
 pkgrel=1
 pkgdesc='Automatic SQL injection and database takeover tool'
