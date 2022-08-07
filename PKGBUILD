@@ -2,7 +2,7 @@
 
 _pkgname=perl-scripts
 pkgname=markdown2pdf-git
-pkgver=22.07.r4.g34f39e2
+pkgver=22.07.r14.gedf9cd3
 pkgrel=1
 pkgdesc="Markdown to PDF converter with syntax highlighting, using md2html (md4c), highlight and wkhtmltopdf."
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('git')
 provides=()
 conflicts=()
 
-depends=('perl>=5.10.0' 'perl-ipc-run3' 'perl-html-tree' 'wkhtmltopdf' 'highlight' 'md4c')
+depends=('perl>=5.10.0' 'perl-html-tree' 'wkhtmltopdf' 'highlight' 'md4c')
 
 optdepends=(
     'wkhtmltopdf-static: to generate PDF outlines'
