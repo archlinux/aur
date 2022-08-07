@@ -1,7 +1,7 @@
 pkgbase = cosma
 	pkgdesc = Distributed Communication-Optimal Matrix-Matrix Multiplication Algorithm
 	pkgver = 2.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eth-cscs/COSMA
 	arch = x86_64
 	license = BSD

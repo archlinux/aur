@@ -4,7 +4,7 @@ pkgname=cosma
 _PkgName=COSMA
 pkgver=2.6.1
 _costaver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Distributed Communication-Optimal Matrix-Matrix Multiplication Algorithm"
 arch=("x86_64")
 url="https://github.com/eth-cscs/COSMA"
@@ -18,7 +18,7 @@ sha256sums=('e356bae7082895a90657026bd80a50b589cf7f4f1b257625ee6634c73ce25e05'
 
 prepare() {
   cd "$srcdir/$_PkgName-$pkgver"
-  mkdir ../build
+  mkdir -p ../build
   sed -i "/adjust_mpiexec_flags/d" CMakeLists.txt
   cp -r ../COSTA-$_costaver/* libs/COSTA
 }
@@ -27,6 +27,7 @@ build() {
   cd "$srcdir/build"
   cmake ../"$_PkgName-$pkgver" \
           -DCMAKE_INSTALL_PREFIX=/usr \
+          -DCMAKE_EXE_LINKER_FLAGS="-lcblas" \
           -DBUILD_SHARED_LIBS=ON \
           -DCOSMA_WITH_TESTS=OFF \
           -DCOSMA_BLAS=CUSTOM \
