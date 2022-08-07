@@ -3,7 +3,7 @@
 pkgname=archtorify-git
 _pkgname=archtorify
 pkgver=v1.30.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Transparent proxy through Tor for Arch Linux"
 arch=('any')
 url="https://github.com/brainfucksec/archtorify/"
