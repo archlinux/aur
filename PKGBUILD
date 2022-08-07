@@ -5,8 +5,8 @@
 
 pkgname=phoenicis-playonlinux
 _pkgname=phoenicis
-pkgver=5.0_alpha3
-_pkgver=5.0-alpha.3
+pkgver=5.0_snapshot
+_pkgver=5.0-snapshot
 pkgrel=1
 pkgdesc="Phoenicis PlayOnLinux allows you to install and use non-native applications on linux"
 arch=('any')
@@ -16,11 +16,12 @@ makedepends=('maven' 'java-environment-openjdk=11' 'git')
 depends=('cabextract' 'curl' 'icoutils' 'imagemagick'
          'p7zip' 'unzip' 'wget' 'wine' 'xterm')
 options=(!strip)
-source=("https://github.com/PhoenicisOrg/${_pkgname}/archive/v${_pkgver}.tar.gz")
-sha256sums=('6b3be12e08db85ef800cf7a03c26daf7689c8d541a40592d8560cfb5e132ec79')
+commit=1d3957a8c03218167c7f6472afc6b4a72f5e2da6
+source=("$pkgname-$pkgver.zip::https://github.com/PhoenicisOrg/${_pkgname}/archive/$commit.zip")
+sha256sums=('763794a0f776bc3626448793dc96803f828696638123fe5c9b914bebf67fd7fc')
 
 build() {
-  cd "${_pkgname}-${_pkgver}"
+  cd "${_pkgname}-$commit"
   if test -d "/usr/lib/jvm/java-11-openjdk"; then
     export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
   elif test -d "/usr/lib/jvm/java-11-jdk11"; then
@@ -34,6 +35,6 @@ build() {
 }
 
 package() {
-  cd "${_pkgname}-${_pkgver}/phoenicis-dist/target/Phoenicis_5.0-alpha-3"
+  cd "${_pkgname}-$commit/phoenicis-dist/target/Phoenicis_5.0-SNAPSHOT"
   cp -a usr "${pkgdir}"
 }
