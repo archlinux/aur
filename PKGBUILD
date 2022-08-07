@@ -24,4 +24,4 @@ package() {
   python -c "from setuptools import setup; setup();" install --root="$pkgdir/" --optimize=1
 }
 
-# vim:set ts=2 sw=2 et:
+# vim:set ts=2 sw=2 et: 
