@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spam
-_pkgver=2.9-0
+_pkgver=2.9-1
 pkgname=r-${_pkgname,,}
-pkgver=2.9.0
+pkgver=2.9.1
 pkgrel=1
 pkgdesc='SPArse Matrix'
 arch=('x86_64')
@@ -27,7 +27,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0ab69af44e48f7db0fecfd8d79cc9baba96872d6d5ae1b17c75b6cc0a8106d1c')
+sha256sums=('c32e219279988b1bfc258aaf64f5a46efa558202848a9ae64946ffbe8b497ddb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
