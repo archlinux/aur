@@ -1,6 +1,6 @@
 pkgbase = glibc-linux4
-	pkgver = 2.35
-	pkgrel = 2
+	pkgver = 2.36
+	pkgrel = 1
 	url = https://www.gnu.org/software/libc/
 	arch = x86_64
 	license = GPL
@@ -9,12 +9,11 @@ pkgbase = glibc-linux4
 	makedepends = gd
 	makedepends = lib32-gcc-libs
 	makedepends = python
-	optdepends = perl: for mtrace
-	options = !strip
+	options = debug
 	options = staticlibs
 	options = !lto
-	source = https://ftp.gnu.org/gnu/glibc/glibc-2.35.tar.xz
-	source = https://ftp.gnu.org/gnu/glibc/glibc-2.35.tar.xz.sig
+	source = https://ftp.gnu.org/gnu/glibc/glibc-2.36.tar.xz
+	source = https://ftp.gnu.org/gnu/glibc/glibc-2.36.tar.xz.sig
 	source = glibc-linux4.patch
 	source = locale.gen.txt
 	source = locale-gen
@@ -23,11 +22,11 @@ pkgbase = glibc-linux4
 	source = sdt-config.h
 	validpgpkeys = 7273542B39962DF7B299931416792B4EA25340F8
 	validpgpkeys = BC7C7372637EC10C57D7AA6579C43DFBF1CF2187
-	sha256sums = 5123732f6b67ccd319305efd399971d58592122bcc2a6518a1bd2510dd0cf52e
+	sha256sums = 1c959fea240906226062cb4b1e7ebce71a9f0e3c0836c09e7e3423d434fcfe75
 	sha256sums = SKIP
-	sha256sums = 640450afbcb4a0951e56e89d1d8d384e09589032ef32605c08d9894311dda852
+	sha256sums = 69573c1c4eee6216f4f345647aed938d13994bf19a7e3a6ba9ed8bab85f23bef
 	sha256sums = fbd57987ca24d71305eda9e0dd76143b422118e12f76b2b0d555f86763e14cd2
-	sha256sums = 83f108f915863c7ed0338e2d3e8f2e071a531a090ef8f8b2eb3a956a3c4f04d7
+	sha256sums = 7503947e23cecc8307e8f7ce2a792eecb6f72f22d6838b34417c2489a259fde9
 	sha256sums = c27424154a6096ae32c0824b785e05de6acef33d9224fd6147d1936be9b4962b
 	sha256sums = 774061aff612a377714a509918a9e0e0aafce708b87d2d7e06b1bd1f6542fe70
 	sha256sums = cdc234959c6fdb43f000d3bb7d1080b0103f4080f5e67bcfe8ae1aaf477812f0
@@ -39,7 +38,8 @@ pkgname = glibc-linux4
 	depends = tzdata
 	depends = filesystem
 	optdepends = gd: for memusagestat
-	provides = glibc=2.35
+	optdepends = perl: for mtrace
+	provides = glibc=2.36
 	conflicts = glibc
 	backup = etc/gai.conf
 	backup = etc/locale.gen
@@ -47,10 +47,10 @@ pkgname = glibc-linux4
 
 pkgname = lib32-glibc-linux4
 	pkgdesc = GNU C Library (32-bit, linux 4.x compat)
-	depends = glibc=2.35
-	provides = lib32-glibc=2.35
+	depends = glibc=2.36
+	provides = lib32-glibc=2.36
 	conflicts = lib32-glibc
-	options = !strip
+	options = debug
 	options = staticlibs
 	options = !lto
 	options = !emptydirs
