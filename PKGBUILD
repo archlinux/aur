@@ -2,13 +2,13 @@
 
 pkgname=figma-agent-linux
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Figma Agent for Linux"
 url="https://github.com/neetly/figma-agent-linux"
 license=(MIT)
 arch=(x86_64 aarch64)
 depends=(freetype2 fontconfig)
-makedepends=(git rust)
+makedepends=(git rust clang)
 source=("$pkgname::git+https://github.com/neetly/figma-agent-linux.git#tag=v$pkgver")
 cksums=(SKIP)
 
