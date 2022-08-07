@@ -1,7 +1,7 @@
 # Maintainer: Ayaka Mikazuki <ayaka@mail.shn.hk>
 
 pkgname=grain-bin
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="A modern web staple. A new language that puts academic language features to work"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('grain')
 conflicts=('grain')
 depends=('gcc-libs')
 source=("grain::$url/releases/download/grain-v$pkgver/grain-linux-x64")
-sha256sums=('bd8884202b015496bab8f6649fe56d309cc778777cc157e799447cfa01d4532d')
+sha256sums=('ed00ef978cf881b653eb2b3d4259f4e25833cc8faa1862f72ec13c0fe9c9c690')
 options=(!strip)
 
 package() {
