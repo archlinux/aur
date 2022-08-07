@@ -12,6 +12,7 @@ pkgbase = tracy-git
 	depends = gtk3
 	depends = intel-tbb
 	depends = capstone
+	depends = xdg-desktop-portal
 	provides = tracy
 	conflicts = tracy
 	source = git+https://github.com/wolfpld/tracy

@@ -1,13 +1,13 @@
 # Maintainer: Angelo Theodorou <encelo at gmail dot com>
 
 pkgname=tracy-git
-pkgver=v0.8.r49.gcd3f9c88
+pkgver=v0.8.2.1.r156.g73be35ea
 pkgrel=1
 pkgdesc="Real-time, nanosecond resolution frame profiler"
 arch=('i686' 'x86_64')
 url="https://github.com/wolfpld/tracy"
 license=('BSD')
-depends=('glfw-x11' 'gtk3' 'intel-tbb' 'capstone')
+depends=('glfw-x11' 'gtk3' 'intel-tbb' 'capstone' 'xdg-desktop-portal')
 makedepends=('pkgconf' 'git')
 provides=('tracy')
 conflicts=('tracy')
