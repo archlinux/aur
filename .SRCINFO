@@ -1,6 +1,6 @@
 pkgbase = xlockmore-blank
 	pkgdesc = screen saver / locker for the X Window System - blank only
-	pkgver = 5.68
+	pkgver = 5.70
 	pkgrel = 1
 	url = http://sillycycle.com/xlockmore.html
 	install = xlockmore.install
@@ -15,15 +15,15 @@ pkgbase = xlockmore-blank
 	depends = libxmu
 	depends = glu
 	optdepends = fortune-mod
-	provides = xlockmore=5.68-1
+	provides = xlockmore=5.70-1
 	conflicts = xlockmore
 	conflicts = xlockmore-nomotif
 	options = !makeflags
-	source = http://sillycycle.com/xlock/xlockmore-5.68.tar.xz
-	source = http://sillycycle.com/xlock/xlockmore-5.68.tar.xz.asc
+	source = http://sillycycle.com/xlock/xlockmore-5.70.tar.xz
+	source = http://sillycycle.com/xlock/xlockmore-5.70.tar.xz.asc
 	source = LICENSE
 	validpgpkeys = 1B79C8478F236DCDADC0D6ACCF159707377919AE
-	sha256sums = 30731fdcb203f16eb5c1c43c05d42e452ad0eb4555c97c55566a6ecb1877cd6e
+	sha256sums = 0f3bcb9b802416cd87bb6e163a3843fea5d7fad90ff04838da122c292c3d0da2
 	sha256sums = SKIP
 	sha256sums = f9f41a5590c5c3ee9780f6013d9f03c229674e8d72e086b22f07c399be0f5b39
 
