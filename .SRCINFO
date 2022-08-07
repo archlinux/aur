@@ -1,13 +1,13 @@
 pkgbase = r-rclipboard
 	pkgdesc = Shiny/R Wrapper for 'clipboard.js'
-	pkgver = 0.1.5
-	pkgrel = 4
+	pkgver = 0.1.6
+	pkgrel = 1
 	url = https://cran.r-project.org/package=rclipboard
 	arch = any
 	license = MIT
 	depends = r
 	depends = r-shiny
-	source = https://cran.r-project.org/src/contrib/rclipboard_0.1.5.tar.gz
-	sha256sums = d6d5fd76f2bc4f39b4297c12e40957432a8023b8b5681d14d43a86b4ff3a9030
+	source = https://cran.r-project.org/src/contrib/rclipboard_0.1.6.tar.gz
+	sha256sums = 7e83f6355869eee1630849981abf930fa048cd3861407466a4ee4e07a1466269
 
 pkgname = r-rclipboard
