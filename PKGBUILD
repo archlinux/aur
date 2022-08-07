@@ -3,7 +3,7 @@
 
 pkgname=mautrix-whatsapp
 pkgver=0.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A Matrix-WhatsApp puppeting bridge"
 arch=('any')
 license=('AGPL')

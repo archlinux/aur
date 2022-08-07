@@ -1,7 +1,7 @@
 pkgbase = mautrix-whatsapp
 	pkgdesc = A Matrix-WhatsApp puppeting bridge
 	pkgver = 0.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tulir/mautrix-whatsapp
 	arch = any
 	license = AGPL
