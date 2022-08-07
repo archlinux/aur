@@ -1,0 +1,24 @@
+pkgbase = python-sentinelsat
+	pkgdesc = Search and download Copernicus Sentinel satellite images
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/sentinelsat
+	arch = x86_64
+	license = GPL3
+	depends = python
+	depends = python-pandas
+	depends = python-geopandas
+	depends = python-shapely
+	depends = python-pytest-socket
+	depends = python-pytest-vcr
+	depends = python-yaml
+	depends = rstcheck
+	depends = python-sphinx
+	depends = python-sphinx_rtd_theme
+	depends = python-flaky
+	depends = python-geomet
+	provides = python-sentinelsat
+	source = https://github.com/sentinelsat/sentinelsat/archive/refs/tags/v1.1.1.tar.gz
+	md5sums = 5deee310c0f5a0a108b9dad6e2260116
+
+pkgname = python-sentinelsat
