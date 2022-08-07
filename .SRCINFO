@@ -1,0 +1,21 @@
+pkgbase = fish-catppuccin-git
+	pkgdesc = Soothing pastel theme for Fish Shell
+	pkgver = r54.cb79527
+	pkgrel = 1
+	url = https://github.com/catppuccin/fish
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = fish
+	provides = fish-catppuccin-frappe
+	provides = fish-catppuccin-latte
+	provides = fish-catppuccin-macciato
+	provides = fish-catppuccin-mocha
+	conflicts = fish-catppuccin-frappe
+	conflicts = fish-catppuccin-latte
+	conflicts = fish-catppuccin-macciato
+	conflicts = fish-catppuccin-mocha
+	source = fish-catppuccin::git+https://github.com/catppuccin/fish
+	sha256sums = SKIP
+
+pkgname = fish-catppuccin-git
