@@ -1,7 +1,7 @@
 pkgbase = vlang-git
 	pkgdesc = Simple, fast, safe, compiled language for developing maintainable software (development version)
 	pkgver = 0.3.r275.gd6b594c4e8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vlang.io
 	arch = x86_64
 	arch = aarch64

@@ -7,7 +7,7 @@
 
 pkgname=vlang-git
 pkgver=0.3.r275.gd6b594c4e8
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software (development version)'
 arch=('x86_64' 'aarch64')
 url='https://vlang.io'
@@ -26,6 +26,11 @@ pkgver() {
   # Weekly tags are considered older than semantic tags that are older than
   # them, so to prevent version resolution problems we exclude weekly tags.
   git -C v describe --long --tags --exclude "weekly*" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    # `v up` should be disabled, as it can break the installed package.
+    echo "println('v up is disabled; see the AUR page for more information.')" > 'v/cmd/tools/vup.v'
 }
 
 build() {
