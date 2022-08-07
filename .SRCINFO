@@ -1,0 +1,18 @@
+pkgbase = libdogecoin-git
+	pkgdesc = libdogecoin is a c library to enable the direct integration of dogecoin into many different platforms in a lightweight manner, without developers having to procure deep blockchain experience.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dogecoinfoundation/libdogecoin/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	makedepends = git
+	depends = libevent
+	provides = libdogecoin
+	provides = libdogecoin.so
+	source = git+https://github.com/dogecoinfoundation/libdogecoin.git
+	sha256sums = SKIP
+
+pkgname = libdogecoin-git
