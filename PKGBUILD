@@ -1,5 +1,6 @@
 # Maintainer: Francois Menning <f.menning@protonmail.com>
 # Contributor: Michael Lass <bevan@bi-co.net>
+# Contributor: Julian Xhokaxhiu <https://julianxhokaxhiu.com>
 
 _gitname=pvr.iptvsimple
 pkgname=kodi-addon-pvr-iptvsimple-git
