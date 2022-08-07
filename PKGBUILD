@@ -2,7 +2,7 @@
 # Co-Maintainer: Joost Bremmer <contact at madeofmagicandwires dot online>
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
-pkgver=4.2.7
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -14,13 +14,13 @@ optdepends=('bash-completion: for bash completions'
 conflicts=("python-$pkgname")
 replaces=("python-$pkgname")
 backup=("etc/$pkgname/conf.yml")
-_commit=4b9940506bc5bcb6563780f9cc883b64328d0440
+_commit=df5970738603bf613366b18a5d87d93fb127eb16
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         'chris.pgp' # Christopher Allen Lane <chris@chris-allen-lane.com>
         'conf.yml'
         "git+https://github.com/cheat/cheatsheets.git#commit=$_commit"
         "cheatsheets-$pkgver-LICENSE::https://raw.githubusercontent.com/cheat/cheatsheets/master/.github/LICENSE.txt")
-sha256sums=('124ddb6aeefdd954bbb8ab71c6da35a7c75cfabda55c437b0f00a10bfde50084'
+sha256sums=('1e5bbaeca1bd3406afb03d696bd5e250189b4e11574c0077554150c2f054b8ce'
             '6318f816e4c8f2e9c34b8dc1855adeff58c1254809b8aa86c2b39ed155f3d2b6'
             '7d530961f1896016d23e9009c4c6210214f35588e95e17675be4a41578f52a3c'
             'SKIP'
