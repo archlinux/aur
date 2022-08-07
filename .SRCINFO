@@ -1,6 +1,6 @@
 pkgbase = godot-mono
 	pkgdesc = An advanced, feature packed, multi-platform 2D and 3D game engine.
-	pkgver = 3.4.5
+	pkgver = 3.5
 	pkgrel = 1
 	url = https://godotengine.org/
 	arch = i686

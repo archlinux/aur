@@ -1,6 +1,6 @@
 # Maintainer: Marvin Dalheimer <me@marvin-dalheimer.de>
 pkgname=godot-mono
-pkgver=3.4.5
+pkgver=3.5
 pkgrel=1
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine."
 arch=('i686' 'x86_64')
