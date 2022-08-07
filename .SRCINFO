@@ -1,7 +1,7 @@
 pkgbase = spoof-dpi-bin
 	pkgdesc = A simple and fast software designed to bypass Deep Packet Inspection
 	pkgver = 0.62
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/xvzc/SpoofDPI
 	arch = x86_64
 	license = MIT
@@ -9,9 +9,9 @@ pkgbase = spoof-dpi-bin
 	conflicts = spoof-dpi
 	source = spoof-dpi.service
 	source = https://github.com/xvzc/SpoofDPI/raw/main/LICENSE
-	source = spoof-dpi-0.62.tar.gz::https://github.com/xvzc/SpoofDPI/releases/download/0.62/spoof-dpi-linux.tar.gz
+	source = spoof-dpi-0.62-1.tar.gz::https://github.com/xvzc/SpoofDPI/releases/download/0.62/spoof-dpi-linux.tar.gz
 	md5sums = d6d5ee0dfa44d0503e75d8f2fa3178d9
 	md5sums = fdfc8c7b3ca5899d9adff76f0083298a
-	md5sums = 7066e0edc934ea55a77a0e6c746388ed
+	md5sums = f4c7b33b6569d5f72d2ef9e360e462da
 
 pkgname = spoof-dpi-bin
