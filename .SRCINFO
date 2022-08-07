@@ -1,0 +1,19 @@
+pkgbase = watchpage
+	pkgdesc = Watch webpages for changes
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://www.muflone.com/watchpage
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-yaml
+	depends = python-beautifulsoup4
+	depends = python-lxml
+	depends = python-html5lib
+	source = watchpage-0.1.0.tar.gz::https://github.com/muflone/watchpage/archive/0.1.0.tar.gz
+	sha256sums = 55aff4a7e8329a6f894447ddb279fe371bb6df614b23675f5d92b0bb5c18f18e
+
+pkgname = watchpage
