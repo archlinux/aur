@@ -3,8 +3,8 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=webkit2gtk-imgpaste
-pkgver=2.36.5
-pkgrel=3
+pkgver=2.36.6
+pkgrel=1
 pkgdesc="Web content engine for GTK"
 url="https://webkitgtk.org"
 arch=(x86_64)
@@ -24,12 +24,10 @@ optdepends=('geoclue: Geolocation support'
             'gst-plugins-bad: media decoding'
             'gst-libav: nonfree media decoding')
 source=($url/releases/webkitgtk-$pkgver.tar.xz{,.asc}
-	https://github.com/WebKit/WebKit/commit/a6277d4834cce0dea2f999d4c06ffa57abfbb82d.patch
         PasteBoardGtk.patch
         EnlargeObjectSize.patch)
-sha256sums=('d5532fa884c943dc48f1911473dd663aba407a3b35caa7b04bac1419b41e5908'
+sha256sums=('1193bc821946336776f0dfa5e0dca5651f1e57157eda12da4721d2441f24a61a'
             'SKIP'
-            'ef40fe4f989103d3e81b8a5885bcf78c7cabe7fab6160f2404aaae0daf6f7951'
             '909eb44783d093c89400494a8b57eee3a5b926e1a5b5f1e922e1dff1a6dc3c7b'
             'a5d2149d55190a15bc806bfddd85f43b6c714722b04ce0c1e476f9cb58985bac')
 validpgpkeys=('D7FCF61CF9A2DEAB31D81BD3F3D322D0EC4582C3'  # Carlos Garcia Campos <cgarcia@igalia.com>
@@ -37,7 +35,6 @@ validpgpkeys=('D7FCF61CF9A2DEAB31D81BD3F3D322D0EC4582C3'  # Carlos Garcia Campos
 
 prepare() {
   cd webkitgtk-$pkgver
-  patch --forward --strip=1 --input="${srcdir}/a6277d4834cce0dea2f999d4c06ffa57abfbb82d.patch"
   patch --forward --strip=0 --input="${srcdir}/PasteBoardGtk.patch"
   patch --forward --strip=0 --input="${srcdir}/EnlargeObjectSize.patch"
 }
