@@ -16,16 +16,6 @@ sha256sums=('6a53f644252aac7e0b48021d65d55a0ebea7cadaecec06338bf6f0b995ee52ea')
 package() {
   bsdtar xf data.tar.xz -C "$pkgdir"
 
-  # Install locales
-#  cd "$pkgdir/usr/share/$pkgname/src/translations"
-#  for lang in $(ls -d */); do
-#    install -d "$pkgdir/usr/share/locale/${lang}LC_MESSAGES"
-#    mv "$pkgdir/usr/share/$pkgname/src/translations/${lang}LC_MESSAGES"/*.mo \
-#      "$pkgdir/usr/share/locale/${lang}LC_MESSAGES"
-#  done
-#  rm -rf "$pkgdir/usr/share/$pkgname/src/translations"
-#  rm "$pkgdir/usr/share/$pkgname/src/update_po.sh"
-
   # App permissions
   chmod +x "$pkgdir/usr/lib/systemd/system-sleep/$pkgname"
 }
