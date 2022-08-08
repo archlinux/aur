@@ -8,7 +8,7 @@ pkgbase="python-${_pkgname}-rocm"
 pkgname=("${pkgbase}" "python-pytorch-opt-rocm")
 pkgver=1.12.0
 _pkgver=1.12.0
-pkgrel=7
+pkgrel=8
 _pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -276,11 +276,11 @@ _package() {
   install -d "${pkgdir}/usr/lib"
 
   # put CMake files in correct place
-  mv "${pkgdir}/${pytorchpath}/share/cmake" "${pkgdir}/usr/lib/cmake"
+  #mv "${pkgdir}/${pytorchpath}/share/cmake" "${pkgdir}/usr/lib/cmake"
 
   # put C++ API in correct place
-  mv "${pkgdir}/${pytorchpath}/include" "${pkgdir}/usr/include"
-  mv "${pkgdir}/${pytorchpath}/lib"/*.so* "${pkgdir}/usr/lib/"
+  #mv "${pkgdir}/${pytorchpath}/include" "${pkgdir}/usr/include"
+  #mv "${pkgdir}/${pytorchpath}/lib"/*.so* "${pkgdir}/usr/lib/"
 
   # clean up duplicates
   # TODO: move towards direct shared library dependecy of:
