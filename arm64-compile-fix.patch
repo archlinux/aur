@@ -1,0 +1,11 @@
+--- src/nntp/mime/Mime.cpp	2022-06-28 17:07:04.610994313 -0400
++++ src/nntp/mime/Mime.cpp	2022-06-28 17:07:04.610994313 -0400
+@@ -532,7 +532,7 @@
+ #ifdef _WIN32
+ 	#include <io.h>
+ #else
+-	#if !defined(__APPLE__) && !defined(__DARWIN__)
++	#if !defined(__APPLE__) && !defined(__DARWIN__) && !defined(__aarch64__)
+ 		#if !defined(__FreeBSD__) && !defined(solaris) && !defined(__sun) && !defined(__OpenBSD__)
+ 			#include <sys/io.h>
+ 		#else
