@@ -2,7 +2,7 @@
 
 pkgname=etwm
 pkgver=3.8.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Claude's Tab Window Manager with full ICCCM/EMWH support."
 arch=('i686' 'x86_64')		
 url="https://github.com/bbidulock/etwm/"
@@ -12,6 +12,8 @@ options=('!emptydirs')
 backup=('usr/share/X11/etwm/system.etwmrc')
 source=("https://github.com/bbidulock/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('0e4122799dc141fe803b8632821377d9')
+
+CFLAGS="${CFLAGS} -fcommon"
 
 build() {
   cd ${pkgname}-${pkgver}
