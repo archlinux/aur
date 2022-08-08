@@ -81,9 +81,15 @@ backup=(
   'etc/sasl2/libvirt.conf'
 )
 options=(debug)
-source=("https://libvirt.org/sources/$pkgname-$pkgver.tar.xz"{,.asc})
+source=(
+  "https://libvirt.org/sources/$pkgname-$pkgver.tar.xz"{,.asc}
+  glibc-2.36-lxc-fix.patch
+  glibc-2.36-virfile-fix.patch
+)
 sha256sums=('a81847c43ac9ade61b6f8447c44e8ba2cc544ab49bac5c0b18a5b105f5da3ae2'
-            'SKIP')
+            'SKIP'
+            '766b998644d29bb8ea173a5911d5afc0f8e84f1845e19a65b349dd686d85aeed'
+            '5ba526edc7f486588ccde4d8a4d1b9f4afeba9517029126d981705eb16e32495')
 validpgpkeys=('453B65310595562855471199CA68BE8010084C9C') # Jiří Denemark <jdenemar@redhat.com>
 
 prepare() {
@@ -98,6 +104,9 @@ prepare() {
   sed -i 's|/usr/libexec/qemu-bridge-helper|/usr/lib/qemu/qemu-bridge-helper|g' \
     src/qemu/qemu.conf.in \
     src/qemu/test_libvirtd_qemu.aug.in
+
+  patch -Np1 < ../glibc-2.36-lxc-fix.patch
+  patch -Np1 < ../glibc-2.36-virfile-fix.patch
 }
 
 build() {
