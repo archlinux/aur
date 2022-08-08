@@ -1,7 +1,7 @@
 pkgbase = electron-fiddle
 	pkgdesc = The easiest way to get started with Electron
 	pkgver = 0.29.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/electron/fiddle/
 	arch = x86_64
 	arch = aarch64
