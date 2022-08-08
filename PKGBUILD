@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-shell-extension-rounded-window-corners-git
-pkgver=4.r10.g508abee
+pkgver=4.r33.ge76dc9a
 pkgrel=1
 pkgdesc="A GNOME Shell extension that adds rounded corners for all windows"
 arch=('any')
@@ -27,13 +27,12 @@ build() {
 
   pushd _build
   gnome-extensions pack \
-            --extra-source=dbus \
-            --extra-source=effect \
-            --extra-source=manager \
-            --extra-source=preferences \
-            --extra-source=utils \
+            --extra-source=dbus/ \
+            --extra-source=effect/ \
+            --extra-source=manager/ \
+            --extra-source=preferences/ \
+            --extra-source=utils/ \
             --extra-source=app.js \
-            --extra-source=stylesheet.css \
             --extra-source=stylesheet-prefs.css \
             --force
   popd
