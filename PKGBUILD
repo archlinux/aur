@@ -28,7 +28,7 @@ sha256sums=(
 
 prepare() {
     cd "${srcdir}"
-    npm i --ignore-scripts \
+    npm i --ignore-scripts --prefix=. \
         "@tsconfig/node16-strictest@^1.0.0" \
         "@types/dompurify@^2.3.3" \
         "@types/marked@^4.0.2" \
@@ -39,11 +39,11 @@ prepare() {
         "@types/ws@^8.5.1" \
         "electron@^20.0.0"
 
-    rm -rf "node_modules/electron/node_modules/@types/node"
+    rm -r "node_modules/electron/node_modules/@types/node"
 
     cd "${_srcname}"
-    npm i --omit=dev --ignore-scripts
-    rm -rf "sources/code/build"
+    npm i --omit=dev --ignore-scripts --prefix=.
+    rm -r "sources/code/build"
 }
 
 build() {
@@ -69,7 +69,7 @@ package() {
     install -Dm644 -t "${lib}" "package.json"
     cp -rdt "${lib}" "node_modules"
     cp -rdt "${sources}" "sources/assets"
-    rm -f "${sources}/assets/icons/app.ic"*
+    rm "${sources}/assets/icons/app.ic"*
     ln -s "${sources#"${pkgdir}"}/assets/icons/app.png" "${icons}/${pkgname}.png"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "LICENSE"
 }
