@@ -1,3 +1,2 @@
 #!/bin/sh
-#LD_LIBRARY_PATH=/usr/lib/annix exec /usr/lib/annix/annix --bundle=/usr/share/annix/bundle "$@"
 exec /usr/lib/annix/bundle/annix "$@"
