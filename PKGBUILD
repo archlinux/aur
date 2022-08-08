@@ -1,5 +1,5 @@
 pkgname=kavpass
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 epoch=
 pkgdesc="Release of my password generator called kavpass."
