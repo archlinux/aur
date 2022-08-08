@@ -8,7 +8,7 @@ _tinydir_commit=64fb1d4376d7580aa1013fdbacddbbeba67bb085
 
 pkgname=openfx-arena
 pkgver=2.4.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="Extra OpenFX plugins for Natron"
 url="https://github.com/NatronGitHub/openfx-arena"
@@ -64,6 +64,10 @@ prepare() {
 # caused by a misconfiguration of pkgconfig in the "libzip" package
   sed -i '/ZIP_LINKFLAGS/ s|\$.*libs.*|-lbz2 -llzma -lzstd -lgnutls -lnettle -lz|' \
           "${_pkgname}/Makefile.master"
+
+# The ReadPDF plugin needs Poppler, which uses C++17 features
+  sed -i "/POPPLER_CXXFLAGS/ s/$/ -std=c++17/" \
+         "${_pkgname}/Makefile.master"
 }
 
 build() {
