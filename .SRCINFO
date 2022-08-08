@@ -1,25 +1,21 @@
 pkgbase = python-pyspeckit
 	pkgdesc = Toolkit for fitting and manipulating spectroscopic data in python
-	pkgver = 0.1.24
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://pyspeckit.readthedocs.io
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
 	license = BSD
 	checkdepends = python-pytest-astropy
+	checkdepends = tk
 	checkdepends = python-spectral-cube
 	checkdepends = python-scipy
 	makedepends = python-setuptools
 	makedepends = python-astropy
 	makedepends = python-astropy-helpers>=3.1
 	makedepends = python-sphinx-astropy
-	source = https://files.pythonhosted.org/packages/source/p/pyspeckit/pyspeckit-0.1.24.tar.gz
-	source = correct_doc_examples.patch
-	source = fix_for_new_matplotlib.patch
-	md5sums = 3c4c73493c412f3248e9667e69b151cf
-	md5sums = b1ea9f4f4d2c467c26c34293bfbd387f
-	md5sums = a9a13077c3a3b3d039266450d9318aae
+	source = https://files.pythonhosted.org/packages/source/p/pyspeckit/pyspeckit-1.0.1.tar.gz
+	md5sums = c99b5d87854f0739f7777758e1f414d0
 
 pkgname = python-pyspeckit
 	depends = python-astropy
