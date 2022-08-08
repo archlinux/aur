@@ -20,11 +20,13 @@ pkgbase = xboxdrv-develop-git
 	provides = xboxdrv-git
 	provides = xboxdrv-sl6566bk
 	provides = xboxdrv-cebtenzzre-git
+	provides = xboxdrv-stable-git
 	conflicts = xboxdrv
 	conflicts = xboxdrv-git
 	conflicts = xboxdrv-sl6566bk
 	conflicts = xboxdrv-cebtenzzre-git
-	source = git+https://gitlab.com/xboxdrv/xboxdrv.git#commit=1d267b92326375f2b8f3dd895c34f8eacc703a4e
+	conflicts = xboxdrv-stable-git
+	source = xboxdrv-develop-git::git+https://gitlab.com/xboxdrv/xboxdrv.git#commit=1d267b92326375f2b8f3dd895c34f8eacc703a4e
 	source = xboxdrv.service
 	source = xboxdrv.conf
 	sha256sums = SKIP
