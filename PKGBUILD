@@ -1,4 +1,5 @@
-# Maintainer: Simon Legner <Simon.Legner@gmail.com>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: Simon Legner <Simon.Legner@gmail.com>
 # Contributor: Xavion <Xavion (dot) 0 (at) Gmail (dot) com>
 # Contributor: Christopher Loen <christopherloen at gmail dot com>
 # Contributor: Artem Vorotnikov <artem@vorotnikov.me>
@@ -6,10 +7,10 @@
 
 _gemname_="curses"
 pkgname="ruby-${_gemname_}"
-pkgver=1.4.2
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Ruby binding for curses, ncurses, and PDCurses"
-arch=("any")
+arch=("x86_64")
 url="https://github.com/ruby/curses"
 license=("Ruby" "BSD-2-Clause")
 depends=("ruby")
@@ -25,4 +26,4 @@ package() {
 	rm "${pkgdir}/${_gemdir_}/cache/${_gemname_}-${pkgver}.gem"
 }
 
-sha256sums=('e568e16f21f49d168516fa5b4a71a36c9c00b699ead76523165125cb45d00048')
+sha256sums=('a360d7aef049b3a60343b086d47f3cdd5b4dd7b4b0e621b3eaceb94fd379c903')
