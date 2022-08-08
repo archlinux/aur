@@ -4,18 +4,18 @@
 _arch=aarch64
 _target=$_arch-unknown-linux-gnu
 pkgname=$_arch-glibc
-pkgver=2.35
-pkgrel=2
+pkgver=2.36
+pkgrel=1
 _commit=be176490b818b65b5162c332eb6b581690b16e5c
 pkgdesc="GNU C Library ARM64 target"
 arch=(any)
 url='https://www.gnu.org/software/libc/'
 license=('GPL' 'LGPL')
 depends=()
-makedepends=($_arch-gcc $_arch-linux-api-headers)
+makedepends=($_arch-gcc $_arch-linux-api-headers python)
 options=(!strip staticlibs)
 source=(https://ftp.gnu.org/gnu/libc/glibc-$pkgver.tar.xz{,.sig})
-sha256sums=('5123732f6b67ccd319305efd399971d58592122bcc2a6518a1bd2510dd0cf52e'
+sha256sums=('1c959fea240906226062cb4b1e7ebce71a9f0e3c0836c09e7e3423d434fcfe75'
             'SKIP')
 validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8  # "Carlos O'Donell <carlos@systemhalted.org>"
               BC7C7372637EC10C57D7AA6579C43DFBF1CF2187) # Siddhesh Poyarekar
@@ -31,16 +31,26 @@ build() {
   echo "slibdir=/usr/lib" >> configparms
   echo "rtlddir=/usr/lib" >> configparms
 
-  unset CFLAGS
+#Use CFLAGS/CXXFLAGS from Arch Linux ARM
+CFLAGS="-march=armv8-a -O2 -pipe -fstack-protector-strong -fno-plt -fexceptions \
+        -Wformat -Werror=format-security \
+        -fstack-clash-protection"
+
   ../glibc-$pkgver/configure \
       --prefix=/usr \
       --host=$_target \
       --libdir=/usr/lib \
       --with-bugurl=https://aur.archlinux.org/packages/aarch64-glibc \
       --enable-kernel=5.10 \
+      --enable-add-ons \
       --enable-bind-now \
+      --enable-lock-elision \
+      --disable-multi-arch \
       --enable-stack-protector=strong \
-      --disable-timezone-tools CFLAGS="-O2 -pipe"
+      --enable-stackguard-randomization \
+      --disable-profile \
+      --disable-werror \
+      --disable-timezone-tools
 
   make
 }
