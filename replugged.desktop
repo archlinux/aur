@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Powercord
+StartupWMClass=discord
+Comment=A lightweight discord client mod focused on simplicity and performance.
+GenericName=Internet Messenger
+Exec=/usr/bin/powercord
+Icon=powercord
+Type=Application
+Categories=Network;InstantMessaging;
+Path=/usr/bin

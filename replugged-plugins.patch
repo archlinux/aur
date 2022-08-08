@@ -1,0 +1,33 @@
+diff --git a/src/Powercord/apis/commands.js b/src/Powercord/apis/commands.js
+index a8239208..356ad129 100644
+--- a/src/Powercord/apis/commands.js
++++ b/src/Powercord/apis/commands.js
+@@ -51,9 +51,6 @@ class CommandsAPI extends API {
+    * @param {PowercordChatCommand} command Command to register
+    */
+   registerCommand (command) {
+-    // @todo: remove this once there's a proper implemention (if any) for fetching the command origin.
+-    const stackTrace = (new Error()).stack;
+-    const [ , origin ] = stackTrace.match(new RegExp(`${global._.escapeRegExp(powercord.pluginManager.pluginDir)}.([-\\w]+)`));
+ 
+     if (typeof command === 'string') {
+       console.error('no');
+diff --git a/src/Powercord/managers/plugins.js b/src/Powercord/managers/plugins.js
+index de8cd14d..3eeedbab 100644
+--- a/src/Powercord/managers/plugins.js
++++ b/src/Powercord/managers/plugins.js
+@@ -1,10 +1,12 @@
+-const { resolve } = require('path');
++const { resolve, join } = require('path');
+ const { readdirSync } = require('fs');
+ const { rmdirRf } = require('powercord/util');
+ 
++const XDG_DATA_HOME = process.env.XDG_DATA_HOME || join(process.env.HOME, '.local', 'share');
++
+ module.exports = class PluginManager {
+   constructor () {
+-    this.pluginDir = resolve(__dirname, '..', 'plugins');
++    this.pluginDir = resolve(XDG_DATA_HOME, 'replugged', 'plugins');
+     this.plugins = new Map();
+ 
+     this.manifestKeys = [ 'name', 'version', 'description', 'author', 'license' ];

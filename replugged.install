@@ -1,0 +1,6 @@
+#!/bin/sh
+
+post_install() {
+	echo "Use the 'replugged' command to launch discord with Replugged loaded"
+	echo "also, please report bugs/errors to the AUR package page before reporting upstream."
+}
