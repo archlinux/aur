@@ -3,7 +3,7 @@
 pkgname=linux-xanmod-edge-linux-headers-bin-x64v2
 _major=5.19
 pkgver=${_major}.0
-xanmod=1
+xanmod=2
 pkgrel=${xanmod}
 pkgdesc='Headers and scripts for building modules for the Linux Xanmod - Latest Mainline (EDGE) - Prebuilt version'
 url="http://www.xanmod.org/"
@@ -20,7 +20,7 @@ validpgpkeys=(
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
 
-sha256sums=('fcdac95632d089d4a69e0a9b754309ce6c64ee2f8d568d7615415ccdcd192133')
+sha256sums=('a2388de69c8a1c33a3d0c30bd183bbebe3a00983bac1c9a65a8338763a887342')
 
 prepare() {
   bsdtar -xf data.tar.xz
