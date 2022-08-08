@@ -1,16 +1,18 @@
 pkgbase = php-swoole
-	pkgdesc = Event-driven asynchronous and concurrent networking engine with high performance for PHP.
-	pkgver = 4.8.8
+	pkgdesc = Coroutine-based concurrency library for PHP
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/swoole/swoole-src
-	install = php-swoole.install
 	arch = x86_64
 	license = Apache
-	depends = nghttp2
-	depends = php
-	provides = php-swoole
-	backup = etc/php/conf.d/swoole.ini
-	source = php-swoole-4.8.8.src.tar.gz::https://github.com/swoole/swoole-src/archive/v4.8.8.tar.gz
-	sha256sums = 36a942e894d83057404ef849e87ca344f31dda0d4277f99cef46023e2ba70c52
+	makedepends = gcc
+	makedepends = make
+	depends = brotli
+	depends = openssl
+	depends = zlib
+	source = https://github.com/swoole/swoole-src/archive/refs/tags/v5.0.0.tar.gz
+	source = swoole.ini
+	sha256sums = 460ae95865af17bdd986720c775b3752cedfc27c2b0efe96cc28ff24d5b1ffdc
+	sha256sums = 58d1d032fe130fee8666238d14013e51c75683d7b806c61d1ada3bb8470adb44
 
 pkgname = php-swoole
