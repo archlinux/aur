@@ -5,10 +5,10 @@ pkgname=pihpsdr-git
 _pkgname=pihpsdr
 pkgver=r1493.a415f5c
 pkgrel=1
-pikgdesc='SDR software for HPSDR radios like Anan and Hermes Lite 2'
+pkgdesc='SDR software for HPSDR radios like Anan and Hermes Lite 2'
 arch=('x86_64')
 # we use this insted of g0orx because it contains
-# a lot of fixes and it currently developed
+# a lot of fixes and it is currently developed
 url='https://github.com/dl1ycf/pihpsdr'
 license=('GPL2')
 depends=('wdsp' 'fftw' 'libpulse' 'gtk3' 'soapysdr' 'alsa-lib')
