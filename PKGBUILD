@@ -1,50 +1,38 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
-
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
+_hkgname=curl-aeson
 pkgname=haskell-curl-aeson
-pkgver=0.0.4
+pkgver=0.1.0.1
 pkgrel=1
-pkgdesc="Communicate with HTTP service using JSON"
-arch=('i686' 'x86_64')
-makedepends=('ghc'
-             'haskell-aeson'
-             'haskell-curl'
-             'haskell-text'
-             'haskell-utf8-string')
+pkgdesc="Haskell library for communicating with HTTP service using JSON"
 url="https://github.com/zouppen/haskell-curl-aeson"
-license=('BSD3')
-source=(https://hackage.haskell.org/package/${pkgname#haskell-}-$pkgver/${pkgname#haskell-}-$pkgver.tar.gz)
-sha256sums=('3defd8313d3e34657bd4c5aa7f0c4e1b7a6e533eaeffc1571eee2de31021f1ba')
-options=('strip')
-install=curl-aeson.install
+license=('BSD')
+arch=('x86_64')
+depends=('haskell-curl' 'haskell-aeson')
+makedepends=('ghc')
+source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
+sha512sums=('cae2746b92bd846256d1f20fdb3d4e87f73d65c0c2c35106d3f4b7d16777fe26bd7e13987358e08d417af745c93b84bdcc318456a6f1b147a8481086ea28e5a8')
 
 build() {
-  cd "$srcdir/${pkgname#haskell-}-$pkgver"
+    cd $_hkgname-$pkgver
 
-  msg 'Building...'
-  runhaskell Setup configure \
-              --prefix=/usr \
-              --docdir=/usr/share/doc/curl-aeson \
-              --enable-split-objs \
-              --enable-shared \
-              -O -p
-  runhaskell Setup build
-  runhaskell Setup haddock
-  runhaskell Setup register --gen-script
-  runhaskell Setup unregister --gen-script
-  sed -i -r -e "s|ghc-pkg.*unregister[^ ]* |&'--force' |" unregister.sh
+    runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
+        --prefix=/usr --docdir=/usr/share/doc/$pkgname \
+        --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid --ghc-option=-fllvm
+    runhaskell Setup build $MAKEFLAGS
+    runhaskell Setup register --gen-script
+    runhaskell Setup unregister --gen-script
+    sed -i -r -e "s|ghc-pkg.*update[^ ]* |&'--force' |" register.sh
+    sed -i -r -e "s|ghc-pkg.*unregister[^ ]* |&'--force' |" unregister.sh
 }
 
 package() {
-  cd "$srcdir/${pkgname#haskell-}-$pkgver"
+    cd $_hkgname-$pkgver
 
-  msg 'Installing license...'
-  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  msg 'Installing...'
-  install -Dm 744 register.sh "$pkgdir/usr/share/haskell/${pkgname#haskell-}/register.sh"
-  install -Dm 744 unregister.sh "$pkgdir/usr/share/haskell/${pkgname#haskell-}/unregister.sh"
-  install -dm 755 "$pkgdir/usr/share/doc/ghc/html/libraries"
-  ln -s /usr/share/doc/${pkgname#haskell-}/html "$pkgdir/usr/share/doc/ghc/html/libraries/${pkgname#haskell-}"
-  runhaskell Setup copy --destdir="$pkgdir"
-  rm -f "$pkgdir/usr/share/doc/${pkgname#haskell-}/LICENSE"
+    install -D -m744 register.sh "$pkgdir"/usr/share/haskell/register/$pkgname.sh
+    install -D -m744 unregister.sh "$pkgdir"/usr/share/haskell/unregister/$pkgname.sh
+    runhaskell Setup copy --destdir="$pkgdir"
+    install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    rm -f "$pkgdir"/usr/share/doc/$pkgname/LICENSE
 }
+
