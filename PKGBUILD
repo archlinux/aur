@@ -1,10 +1,11 @@
-# Maintainer: Lukas Fleischer <lfleischer@archlinux.org>
+# Maintainer: Chinmay Dalal <00foahcd7@mozmail.com>
+# Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname=autoconf2.69
 pkgver=2.69
-pkgrel=7
+pkgrel=8
 pkgdesc="A GNU tool for automatically configuring source code (Legacy 2.69 version)"
 arch=('any')
 license=('GPL2' 'GPL3' 'custom')
@@ -23,6 +24,7 @@ md5sums=('50f97f4159805e374639a73e2636f22e'
          'f450ce6001458d800907e5d4ad8023fb'
          '87bceda7922ebc2a453568b2ae179e1b'
          'd656c3a43462f678cf72848ca16ad6e2')
+conflicts=('autoconf')
 
 
 prepare() {

@@ -1,7 +1,7 @@
 pkgbase = autoconf2.69
 	pkgdesc = A GNU tool for automatically configuring source code (Legacy 2.69 version)
 	pkgver = 2.69
-	pkgrel = 7
+	pkgrel = 8
 	url = https://www.gnu.org/software/autoconf
 	arch = any
 	groups = base-devel
@@ -15,6 +15,7 @@ pkgbase = autoconf2.69
 	depends = diffutils
 	depends = perl
 	depends = sh
+	conflicts = autoconf
 	source = https://ftp.gnu.org/pub/gnu/autoconf/autoconf-2.69.tar.xz
 	source = 0001-autoconf-2.69-perl-5.22-autoscan.patch
 	source = 0002-autoconf-2.69-perl-5.28.patch
