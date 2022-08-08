@@ -1,12 +1,15 @@
 pkgbase = jupyterlab-language-pack-no-no
 	pkgdesc = Norwegian Bokmål (Norway) language pack for JupyterLab
-	pkgver = 3.4.post2
+	pkgver = 3.4.post3
 	pkgrel = 1
 	url = https://github.com/jupyterlab/language-packs/tree/master/language-packs/jupyterlab-language-pack-no-NO
 	arch = any
 	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/j/jupyterlab-language-pack-no-NO/jupyterlab-language-pack-no-NO-3.4.post2.tar.gz
-	sha256sums = e97b6d571e3fc1faf164fe2a00f83dfa1eeef3056469a1b31c6382da990c9c92
+	makedepends = python-wheel
+	source = https://files.pythonhosted.org/packages/source/j/jupyterlab-language-pack-no-NO/jupyterlab-language-pack-no-NO-3.4.post3.tar.gz
+	sha256sums = f083339951a8c6fb7c7a98b9e0cf90a4ceefc82b90cfb2442d95dfe5a4b443cd
 
 pkgname = jupyterlab-language-pack-no-no
