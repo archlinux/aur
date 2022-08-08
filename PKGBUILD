@@ -260,8 +260,8 @@ fi
   patch -Np1 -i "${_patches_dir}"/custom/add_firedragon_svg.patch
 
   # Needed build fix
-  #patch -Np1 -i "${_patches_dir}"/gentoo/0032-bmo-1773259-cbindgen-root_clip_chain-fix.patch
   patch -Np1 -i "${_cachyos_patches_dir}"/zstandard-0.18.0.patch
+  patch -Np1 -i "${_patches_dir}"/custom/glibc236.patch
 
   rm -f "${srcdir}"/common/source_files/mozconfig
   cp -r "${srcdir}"/common/source_files/* ./
