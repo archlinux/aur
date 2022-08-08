@@ -7,7 +7,7 @@ pkgdesc="A fork of Powercord, the lightweight discord client mod focused on simp
 arch=('any')
 url="https://github.com/${_pkgname}-org/${_pkgname}"
 license=('MIT')
-depends=('electron16' 'discord-canary-electron-bin' 'curl' 'jq')
+depends=('electron19' 'discord-canary-electron-bin' 'curl' 'jq')
 makedepends=('git' 'npm')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -22,7 +22,7 @@ source=("git+https://github.com/${_pkgname}-org/${_pkgname}.git#branch=${_branch
 		"$_pkgname-plugins.patch"
 		"$_pkgname-updater.patch")
 md5sums=('SKIP'
-         '4629b45658120fcd87a5f14a6e6c3cf7'
+         '87244a6226fcee70e748356b0f63cca5'
          '9698a7fbd4af735bee89e74fa0b03dfe'
          '4ddcb11a1ec0a8a9585a6f0b685286b4'
          'c989b875ff29492629f90e8f6b19c194'
@@ -46,6 +46,9 @@ prepare() {
 	sed -i "s:@PKG_UPSTREAM@:$_pkgname-org/$_pkgname:;s:@PKG_BRANCH@:${_branch}:;s:@PKG_REVISION@:$(git rev-parse ${_branch}):" src/Powercord/plugins/pc-updater/index.js
 
 	patch -p1 -i "$srcdir/$_pkgname-plugins.patch"
+
+	# Bring back the "new" webpack backend, needed because of contextIsolation
+	git revert -n 8dbf24d9ec3cf0ea6589707230e1d2cd5285e187
 }
 
 build() {
@@ -67,11 +70,14 @@ package() {
 	install -dm755 "$pkgdir/usr/share/$_pkgname"
 
 	cp -ar * "$pkgdir/usr/share/$_pkgname"
-	rm -rf "$pkgdir/usr/share/$_pkgname/"{test,LICENSE,README.md,release.sh,jsconfig.json,injectors,changelogs.json}
+	rm -rf "$pkgdir/usr/share/$_pkgname/"{test,LICENSE,README.md,release.sh,jsconfig.json,injectors}
+
+	ln -s "/usr/share/$_pkgname/src/fake_node_modules/powercord" "$pkgdir/usr/share/$_pkgname/node_modules/"
+	ln -s "/usr/share/$_pkgname/src/fake_node_modules/keybindutils" "$pkgdir/usr/share/$_pkgname/node_modules/"
+
+	echo "require('./src/patcher.js');" > "$pkgdir/usr/share/$_pkgname/index.js"
 
 	# chmod -R u+rwX,go+rX,go-w "$pkgdir/usr/share/$_pkgname"
-
-	echo "require('./src/patcher.js')" > "$pkgdir/usr/share/$_pkgname/index.js"
 
 	install -D "$srcdir/$_pkgname.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 	install -D "$srcdir/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"

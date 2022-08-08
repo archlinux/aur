@@ -8,4 +8,4 @@ do
 	ln -s "$DIR" "$XDG_DATA_HOME/replugged/plugins/" &>/dev/null
 done
 
-exec electron16 /usr/share/replugged "$@"
+exec electron19 /usr/share/replugged "$@"
