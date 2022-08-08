@@ -47,7 +47,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20220722.r0.g18c107a1f120
+pkgver=20220808.r0.gca688bff68bc
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -56,12 +56,12 @@ url="http://www.kernel.org/"
 license=('GPL2')
 options=('!strip')
 makedepends=('bc' 'libelf' 'git' 'pahole' 'cpio' 'perl' 'tar' 'xz')
-_lucjanver=5.18
+_lucjanver=5.19
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_lucjanver}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver}"
 
 source=("git://git.kernel.org/pub/scm/linux/kernel/git/next/${_srcname}.git"
-        "${_lucjanpath}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
          # the main kernel config files
         'config')
 
@@ -173,7 +173,7 @@ _package() {
     optdepends=('wireless-regdb: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
-    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
 
   cd $_srcname
   local kernver="$(<version)"
@@ -286,5 +286,5 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha512sums=('SKIP'
-            '654552b89b93cb78f1fd7cc7687db1e6d0a86789e0c31f812e61fbc1440e8135f3e5c46ff0abfd74d53d7bd81a60406bf262745697a9034f10bb5c464342febf'
-            '64db9f3bc2f2bf11002bfbbf76aa65089a92b36a003585b4444b75355cdeacbde2dae6c9f629713b734946e1bbfc8c20f5c701e1d44ef27e2a9866984a8eeba2')
+            '4317397491d032decd2f6bbae8e9983c7e131bab7d4710d3d299174dd5f1ee146c76ae7de42265be9679a5cac5c56244de113439c12127ffeb34dabc8c0f88d1'
+            '5306660dc7fdcef6ed0ce54e2c7bd184137475b0df582714c05d9015a78b671b7adb7d184d1690bd66ce59798a569aa963a401d42ebb0764c9775961fdfdad9b')

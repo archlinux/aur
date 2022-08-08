@@ -1,6 +1,6 @@
 pkgbase = linux-next-git
 	pkgdesc = Linux NEXT
-	pkgver = 20220722.r0.g18c107a1f120
+	pkgver = 20220808.r0.gca688bff68bc
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = x86_64
@@ -15,11 +15,11 @@ pkgbase = linux-next-git
 	makedepends = xz
 	options = !strip
 	source = git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
-	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/5.18/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/5.19/arch-patches-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 	source = config
 	sha512sums = SKIP
-	sha512sums = 654552b89b93cb78f1fd7cc7687db1e6d0a86789e0c31f812e61fbc1440e8135f3e5c46ff0abfd74d53d7bd81a60406bf262745697a9034f10bb5c464342febf
-	sha512sums = 64db9f3bc2f2bf11002bfbbf76aa65089a92b36a003585b4444b75355cdeacbde2dae6c9f629713b734946e1bbfc8c20f5c701e1d44ef27e2a9866984a8eeba2
+	sha512sums = 4317397491d032decd2f6bbae8e9983c7e131bab7d4710d3d299174dd5f1ee146c76ae7de42265be9679a5cac5c56244de113439c12127ffeb34dabc8c0f88d1
+	sha512sums = 5306660dc7fdcef6ed0ce54e2c7bd184137475b0df582714c05d9015a78b671b7adb7d184d1690bd66ce59798a569aa963a401d42ebb0764c9775961fdfdad9b
 
 pkgname = linux-next-git
 	pkgdesc = The Linux NEXT kernel and modules
@@ -31,6 +31,7 @@ pkgname = linux-next-git
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
+	provides = KSMBD-MODULE
 
 pkgname = linux-next-git-headers
 	pkgdesc = Headers and scripts for building modules for the Linux NEXT kernel
