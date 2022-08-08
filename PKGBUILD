@@ -70,6 +70,12 @@ source=(
   # https://tracker.ceph.com/issues/45147
   # https://github.com/ceph/ceph/pull/34846
   # 'backport_mgr_disabled_modules_workaround_PR34846.patch'
+
+  # Fix breaking change to PY_SSIZE_T_CLEAN macro defintion requirements in python >= 3.10
+  # by defining the macro ahead of any calls.
+  # https://tracker.ceph.com/issues/53441
+  # https://github.com/ceph/ceph/pull/44112
+  'fix-python310-ssize-macro.patch'
 )
 sha512sums=('eacc4dea0d8dfe2753aff78d89324d81c5634a784313c3da8ded778e2734958c216f8c705b25f070d7ba66b559424ad3c47cb68852f66f8c9c83a83ca78ad5a5'
             '4354001c1abd9a0c385ba7bd529e3638fb6660b6a88d4e49706d4ac21c81b8e829303a20fb5445730bdac18c4865efb10bc809c1cd56d743c12aa9a52e160049'
@@ -85,7 +91,8 @@ sha512sums=('eacc4dea0d8dfe2753aff78d89324d81c5634a784313c3da8ded778e2734958c216
             '2234d005df71b3b6013e6b76ad07a5791e3af7efec5f41c78eb1a9c92a22a67f0be9560be59b52534e90bfe251bcf32c33d5d40163f3f8f7e7420691f0f4a222'
             '204741c65b8ceeddae0a58a49e2b4249ee7ffc624ce8d9faa6284af198abe63bffb6758e064eeff6d1857be044647f99749a45443e258b35e92cc36b9edeba80'
             '79e337a78cc4bd9ed8c8ab66831b3efd5a3a34e16d2c73ecedef03d2a34c7ac65ea25641a808913cd2dc2dc0f992fac35822efe4188622add6898dce1e5f13e3'
-            '4b4d0528d909fb735975db290bc8495ee626fc78d68b82b3525326cb69326cfc310c3078c529246f3d76cec590a3a7c4e92950009211590ebfe55583c4f5b71d')
+            '4b4d0528d909fb735975db290bc8495ee626fc78d68b82b3525326cb69326cfc310c3078c529246f3d76cec590a3a7c4e92950009211590ebfe55583c4f5b71d'
+            'cc9f198692ab67ffdf2071c755ab7369fcaa4e1211d1428bb49db3bca5956ae4fbe98ead80a8f691d61e80402b4a06ce9b046a97cb4a3376334f64a4fd16bfb5')
 
 
 # -fno-plt causes linker errors (undefined reference to internal methods)
