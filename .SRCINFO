@@ -1,5 +1,5 @@
 pkgbase = dwm-kav
-        pkgdesc = My fork of Suckless DWM
+        pkgdesc = My fork of Suckless's DWM
         pkgver = 1.0
         pkgrel = 1
         url = https://github.com/kavulox/dwm.git
@@ -12,4 +12,5 @@ pkgbase = dwm-kav
         source = git+https://github.com/kavulox/dwm.git
         md5sums = SKIP
 
-pkgname = dwm-kav
+pkgname = dwm-kav 
+
