@@ -6,7 +6,7 @@
 
 pkgname=webcord-git
 pkgver=3.7.0.r617.4039fda
-pkgrel=2
+pkgrel=3
 pkgdesc="A Discord and Fosscord client made with the Electron."
 arch=("any")
 
@@ -15,7 +15,7 @@ _author="SpacingBat3"
 
 url="https://github.com/${_author}/${_repo}"
 license=('MIT')
-makedepends=('npm' 'git' 'imagemagick' 'typescript' 'jq')
+makedepends=('npm' 'git' 'imagemagick' 'typescript' 'jq' 'asar')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/${_author}/${_repo}.git"
@@ -26,7 +26,7 @@ md5sums=('SKIP'
 ### CONFIGURABLE VARIABLES ###
 
 # Set to "true" if you want to have update notifications enabled.
-_UPDATE_NOTIFICATIONS=false
+_UPDATE_NOTIFICATIONS=true
 
 # Set to "release" if you want to disable an access to the development tools.
 _RELEASE_TYPE=devel
@@ -43,6 +43,21 @@ depends+=(
 )
 
 _NODE_MODULES=/usr/lib/node_modules/
+
+### TYPE CHECKS ###
+
+_typecorrect=0
+
+if [[ -n "${_UPDATE_NOTIFICATIONS}" && "${_UPDATE_NOTIFICATIONS}" != "true" && "${_UPDATE_NOTIFICATIONS}" != "false" ]]; then
+  echo "PKGBUILD: _UPDATE_NOTIFICATIONS: Invalid type (should be boolean or empty)." >&2
+  _typecorrect=$((_typecorrect+1)) || true
+fi
+if [[ -n "${_RELEASE_TYPE}" && "${_RELEASE_TYPE}" != "devel" && "${_RELEASE_TYPE}" != "release" ]]; then
+  echo "PKGBUILD: _RELEASE_TYPE: Invalid type (should be 'devel','release' or empty)." >&2
+  _typecorrect=$((_typecorrect+2)) || true
+fi
+
+[[ "${_typecorrect}" != 0 ]] && exit "${_typecorrect}"
 
 ### PKGBUILD STANDARD FUNCTIONS ###
 
@@ -117,7 +132,7 @@ _gen_buildinfo() {
   _echo_times "Generating build configuration..."
   cd "${srcdir:?}/${pkgname%-git}"
   printf '{"type":"%s","commit":"%s","features":{"updateNotifications":%s}}' \
-    "${_RELEASE_TYPE}" "$(git rev-parse HEAD)" "${_DISABLE_UPDATES}" > buildInfo.json
+    "${_RELEASE_TYPE:=devel}" "$(git rev-parse HEAD)" "${_UPDATE_NOTIFICATIONS:=true}" > buildInfo.json
 }
 
 # Internal "echo" command to show a progress on current PKGBUILD step.
@@ -136,10 +151,11 @@ _cleanup() {
   cd "${srcdir:?}/${pkgname%-git}"
   _echo_times "Cleaning up workspace..."
 
-  _PACKAGE_IGNORE=("../${pkgname%-git}.asar" "../iconThemes" "sources/assets/icons/app.ico"
-          "sources/assets/icons/app.icns" "sources/app/build/forge.js"
-          "sources/app/build/forge.js.map" "sources/code/build/forge.ts"
-          ".gitignore" ".eslintrc.json" "../docs" "build" ".github" "../extra")
+  _PACKAGE_IGNORE=(
+    "../${pkgname%-git}.asar" "../iconThemes" "sources/assets/icons/app.ico"
+    "sources/assets/icons/app.icns" "app/code/build" "sources/code/build" 
+    "schemas" "../docs" "build"
+  )
 
   for _target in "${_PACKAGE_IGNORE[@]}"; do
     if [[ -f "${_target}" ]]; then
@@ -204,21 +220,20 @@ _pack() {
   cd "${srcdir:?}/${pkgname%-git}"
   # Package to ASAR
   _echo_times "Packaging app to ASAR archive..."
-  [[ -d .git ]] && mv .git ../git-data
   install -dm755 "${1}/${pkgname%-git}"
-  npx asar pack . "${1}/${pkgname%-git}/app.asar" || {
+  asar pack --exclude-hidden . "${1}/${pkgname%-git}/app.asar" || {
     echo "Failed to package to ASAR!"
-    [[ -d ../git-data ]] && mv ../git-data .git
     exit 2
   }
-  [[ -d ../git-data ]] && mv ../git-data .git
 }
 
 # A postcompile step to remove build dependencies.
 _postcompile() {
   cd "${srcdir:?}/${pkgname%-git}"
   _echo_times "Removing build dependencies..."
-  _npm --omit=dev i
+  rm -R tsconfig.json sources/code &
+  _npm --omit=dev i &
+  wait
   [[ -n "${_LOCAL_PACKAGES[*]}" ]] && _npm --omit=dev r "${_LOCAL_PACKAGES[@]}"
   rmdir node_modules/* --ignore-fail-on-non-empty
 }
