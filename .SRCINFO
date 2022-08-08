@@ -1,6 +1,6 @@
 pkgbase = xboxdrv-stable-git
 	pkgdesc = XBox/XBox 360 userspace gamepad driver and emulator - git stable branch
-	pkgver = 0.8.8.18.g662952a
+	pkgver = 0.8.8.r18.g662952a
 	pkgrel = 1
 	url = https://xboxdrv.gitlab.io/
 	arch = i686
@@ -27,7 +27,7 @@ pkgbase = xboxdrv-stable-git
 	conflicts = xboxdrv-cebtenzzre-git
 	conflicts = xboxdrv-develop-git
 	backup = etc/default/xboxdrv
-	source = xboxdrv-0.8.8.18.g662952a::git+https://gitlab.com/xboxdrv/xboxdrv.git#branch=stable
+	source = xboxdrv-stable-git::git+https://gitlab.com/xboxdrv/xboxdrv.git#branch=stable
 	source = xboxdrv.service
 	source = xboxdrv.default
 	source = fix-60-sec-delay.patch
