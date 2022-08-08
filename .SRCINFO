@@ -1,7 +1,7 @@
 pkgbase = etwm-git
 	pkgdesc = Claude's Tab Window Manager with full ICCCM/EMWH support.
 	pkgver = 3.8.3.r0.g3488e96
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bbidulock/etwm/
 	arch = i686
 	arch = x86_64
@@ -20,4 +20,3 @@ pkgbase = etwm-git
 	md5sums = SKIP
 
 pkgname = etwm-git
-
