@@ -23,9 +23,6 @@ prepare() {
 
 	cd "$srcdir/$_pkgname-$pkgver"
 
-	# Fix dependencies
-	sed -i 's#"monaco-editor": "^0.21.3"#"monaco-editor": "^0.17.0"#' "package.json"
-
 	# Workaround for Husky error
 	mkdir .git
 	
