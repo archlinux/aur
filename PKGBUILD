@@ -3,8 +3,8 @@
 
 pkgname=go-task
 _pkgname=task
-pkgver=3.14.0
-pkgrel=2
+pkgver=3.14.1
+pkgrel=1
 pkgdesc="Task runner & Make alternative that runs taskfiles (Installs as go-task to avoid conflict with taskwarrior)"
 arch=('any')
 url="https://github.com/go-task/task"
@@ -15,7 +15,7 @@ makedepends=('go')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 
-sha256sums=('6d4036566ba94ad6217c064435ae275f26b504918259ee068c4e663276689d20')
+sha256sums=('60999d5fa263bdb9e08a2f332ec5fcc32fb18771be7d12526f62291d3acaad2a')
 
 prepare() {
   cd "$_pkgname-$pkgver"
@@ -46,7 +46,6 @@ check() {
 
 package() {
   cd "$_pkgname-$pkgver"
-
 
   install -Dm755 bin/task "${pkgdir}/usr/bin/go-task"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
