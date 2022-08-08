@@ -18,15 +18,15 @@ noextract=("${_archive}")
 sha256sums=('79885ffa464734a49ee73e60eaf78a0cf9c7d2cf310664a8b7c5c90c403644b1')
 
 package() {
+    local icons="${pkgdir}/usr/share/icons"
+    local licenses="${pkgdir}/usr/share/licenses/${pkgname}"
+    install -dm755 "${icons}" "${licenses}"
+
     cd "${srcdir}"
 
-    local icons="${pkgdir}/usr/share/icons"
-    install -dm755 "${icons}"
     tar -C "${icons}" --strip-components=1 --no-same-owner --no-same-permissions \
         -xf "${_archive}" "${_snapshot}/Papirus" "${_snapshot}/Papirus-Dark"
 
-    local licenses="${pkgdir}/usr/share/licenses/${pkgname}"
-    install -dm755 "${licenses}"
     tar -C "${licenses}" --strip-components=1 --no-same-owner --no-same-permissions \
         -xf "${_archive}" "${_snapshot}/LICENSE"
 }
