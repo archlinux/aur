@@ -1,7 +1,7 @@
 # Maintainer: Arisu <arisuuwu32@gmail.com>
 
 pkgname="zeroc-ice-php"
-pkgver=3.7.7
+pkgver=3.7.8
 pkgrel=1
 pkgdesc="PHP bindings for Ice RPC framework"
 arch=("i686" "x86_64")
@@ -16,7 +16,7 @@ depends=("zeroc-ice=$pkgver" "php")
 
 source=("ice-${pkgver}.tar.gz::https://github.com/zeroc-ice/ice/archive/v${pkgver}.tar.gz")
 
-sha256sums=('3aef143a44a664f3101cfe02fd13356c739c922e353ef0c186895b5843a312ae')
+sha256sums=('f2ab6b151ab0418fab30bafc2524d9ba4c767a1014f102df88d735fc775f9824')
 
 make_args=(
     "OPTIMIZE=yes"
