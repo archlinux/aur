@@ -1,7 +1,7 @@
 pkgbase = nvidia-utils-nvlax
 	pkgdesc = NVIDIA drivers utilities with NVENC and NvFBC patched with nvlax
 	pkgver = 515.65.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/illnyang/nvlax/
 	install = nvidia-utils.install
 	arch = x86_64

@@ -3,7 +3,7 @@
 _pkgname=nvidia-utils
 pkgname=${_pkgname}-nvlax
 pkgver=515.65.01
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA drivers utilities with NVENC and NvFBC patched with nvlax"
 arch=('x86_64')
 license=('custom')
@@ -211,8 +211,7 @@ package() {
   install -Dm755 systemd/nvidia-sleep.sh "${pkgdir}/usr/bin/nvidia-sleep.sh"
   install -Dm755 nvidia-powerd "${pkgdir}/usr/bin/nvidia-powerd"
 
-  # Not installing DBUS file for the time beimg, see https://bugs.archlinux.org/task/74894
-  #install -Dm644 nvidia-dbus.conf "${pkgdir}"/usr/share/dbus-1/system.d/nvidia-dbus.conf
+  install -Dm644 nvidia-dbus.conf "${pkgdir}"/usr/share/dbus-1/system.d/nvidia-dbus.conf
 
   # distro specific files must be installed in /usr/share/X11/xorg.conf.d
   install -Dm644 "${srcdir}/nvidia-drm-outputclass.conf" "${pkgdir}/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf"
