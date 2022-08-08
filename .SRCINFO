@@ -1,13 +1,13 @@
 pkgbase = herokuish
 	pkgdesc = Utility for emulating Heroku build and runtime tasks in containers
-	pkgver = 0.5.36
+	pkgver = 0.5.37
 	pkgrel = 1
 	url = https://github.com/gliderlabs/herokuish
 	arch = x86_64
 	license = MIT
-	source = https://github.com/gliderlabs/herokuish/releases/download/v0.5.36/herokuish_0.5.36_linux_x86_64.tgz
+	source = https://github.com/gliderlabs/herokuish/releases/download/v0.5.37/herokuish_0.5.37_linux_x86_64.tgz
 	source = https://raw.githubusercontent.com/gliderlabs/herokuish/master/LICENSE
-	sha256sums = df1a3d729b6dc3fea2ab0cb98e3339e78a3051e0db92c06029cd2907d3427526
+	sha256sums = cc5e49a782fa63614cf16b3f105f0a1f3dd29d7f146711d1e2f46983d59144f8
 	sha256sums = 10265a1dd53faef4513b728a16b1eff3e5d5fc0bacc79e692ede34529bb8d1d1
 
 pkgname = herokuish
