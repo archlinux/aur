@@ -1,0 +1,13 @@
+pkgbase = kavpass
+	pkgdesc = Release of my password generator called kavpass.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/kavulox/kavpass.git
+	arch = x86_64
+	arch = i686
+	license = AGPL
+	makedepends = git
+	source = git+https://github.com/kavulox/kavpass.git
+	md5sums = SKIP
+
+pkgname = kavpass
