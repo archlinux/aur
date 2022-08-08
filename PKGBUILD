@@ -9,16 +9,39 @@ pkgrel=1
 epoch=5
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master"
 url="https://gitlab.com/inkscape"
-arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
-depends=('double-conversion' 'gc' 'poppler-glib' 'libxslt' 'gsl' 'libyaml' 'potrace' 'gdl>=3.8.0.25'
-	 'gtkmm3' 'libcdr' 'libvisio' 'gtkspell3' 'libsm' 'libmagick6' 'libsoup' 'python')
-optdepends=('python-numpy: some extensions'
-            'python-lxml: some extensions and filters'
-            'uniconvertor: reading/writing to some proprietary formats'
-            'ruby: for simplepath extension'
-            'imagemagick: for some file conversions')
-makedepends=('cmake' 'boost' 'intltool' 'git' 'gettext' 'gtest' 'gmock' 'pango' 'python' 'fontconfig')
+arch=('i686' 'x86_64')
+makedepends=('cmake' 'boost' 'git')
+depends=(
+	'dbus-glib'
+	'double-conversion'
+	'gc'
+	'graphicsmagick'
+	'gsl'
+	'gspell'
+	'gtkmm3'
+	'lcms2'
+	'lib2geom'
+	'libcdr'
+	'libjpeg-turbo'
+	'libmagick6'
+	'libvisio'
+	'libxslt'
+	'poppler-glib'
+	'potrace'
+	'python'
+	'python-lxml'
+	'python-numpy'
+	'ttf-font'
+)
+
+optdepends=(
+	'fig2dev: xfig input'
+	'gvfs: import clip art'
+	'pstoedit: latex formulas'
+	'scour: optimized SVG output, some extensions'
+	'texlive-core: latex formulas'
+)
 provides=('inkscape')
 conflicts=('inkscape')
 options=('!libtool' '!buildflags')
