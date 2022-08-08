@@ -31,6 +31,7 @@ package() {
     install -dm 644 "${srcdir}"/plik-${pkgver}-linux-amd64/clients "${pkgdir}"/usr/share/webapps/plikd/clients
     mv -T "${srcdir}"/plik-${pkgver}-linux-amd64/clients "${pkgdir}"/usr/share/webapps/plikd/clients
     install -dm 600 "${pkgdir}"/var/lib/plikd
+    install -Dm 644 "${srcdir}"/plikd.service "${pkgdir}"/usr/lib/systemd/system/plikd.service
 }
 
 
