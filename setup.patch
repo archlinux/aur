@@ -1,0 +1,12 @@
+--- setup.py.orig	2022-08-08 16:21:19.503533696 +0300
++++ setup.py	2022-08-08 16:22:07.854211550 +0300
+@@ -26,8 +26,7 @@
+ 
+ setup(
+     name='itango',
+-    use_scm_version=True,
+-    setup_requires=["setuptools_scm"],
++    version='0.1.9',
+ 
+     packages=find_packages(),
+     package_data={'itango': [
