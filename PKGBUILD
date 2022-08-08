@@ -1,8 +1,8 @@
-# maintainer: libele <libele@disroot.org>
+# Contributor: libele <libele@disroot.org>
 
 pkgname=inform7-ide-bin
 pkgver=2.0.0.rc2
-pkgrel=3
+pkgrel=4
 pkgdesc="Inform 7 IDE for the Inform 7 programming language for interactive fiction"
 arch=('x86_64')
 url="https://github.com/ptomato/inform7-ide"

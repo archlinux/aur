@@ -1,7 +1,7 @@
 pkgbase = inform7-ide-bin
 	pkgdesc = Inform 7 IDE for the Inform 7 programming language for interactive fiction
 	pkgver = 2.0.0.rc2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ptomato/inform7-ide
 	install = inform7-ide.install
 	arch = x86_64
