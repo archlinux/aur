@@ -1,7 +1,0 @@
-Binary files nmeasim-python.orig/.git/index and nmeasim-python.new/.git/index differ
-diff -U0 -r nmeasim-python.orig/nmeasim/gui.py nmeasim-python.new/nmeasim/gui.py
---- nmeasim-python.orig/nmeasim/gui.py	2022-02-16 21:33:42.909957711 +0100
-+++ nmeasim-python.new/nmeasim/gui.py	2022-02-16 21:36:07.739953181 +0100
-@@ -192 +192 @@
--        self._root.iconbitmap(str(base_dir / "icon.ico"))
-+        # self._root.iconbitmap(str(base_dir / "icon.ico")) # Comment out to workaround https://gitlab.com/nmeasim/nmeasim/-/issues/1: `_tkinter.TclError: bitmap "/usr/lib/python3.10/site-packages/nmeasim/icon.ico" not defined`.
