@@ -1,6 +1,6 @@
 pkgbase = dogecoin
 	pkgver = 1.14.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dogecoin.com
 	arch = x86_64
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = dogecoin
 	source = https://raw.githubusercontent.com/dogecoin/dogecoin/v1.14.6/COPYING
 	sha256sums = 49df5d7e132a9ec1ccce2a680cc14298391f4ee7b3e4c8f007c99f5850ed040c
 	sha256sums = a69139912fd61a4e785d6b31840b70b053fbdd9f4e82bee02049f254b50968b4
-	sha256sums = ea6fb939303585677397af476a4061bc21e8840da24d349e73b5d4c48843aa27
+	sha256sums = b063686ca71d93ceb816ee48eb3a381dcb1dec22b21a4985d3cee5361ceaf3cc
 	source_x86_64 = https://github.com/dogecoin/dogecoin/releases/download/v1.14.6/dogecoin-1.14.6-x86_64-linux-gnu.tar.gz
 	sha256sums_x86_64 = fe9c9cdab946155866a5bd5a5127d2971a9eed3e0b65fb553fe393ad1daaebb0
 	source_i686 = https://github.com/dogecoin/dogecoin/releases/download/v1.14.6/dogecoin-1.14.6-i686-pc-linux-gnu.tar.gz
