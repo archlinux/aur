@@ -21,7 +21,7 @@ pkgbase = firefox-bin
 	optdepends = hunspell-en_US: Spell checking, American English
 	provides = firefox=103.0.2
 	conflicts = firefox
-	source = https://archive.mozilla.org/pub/firefox/candidates/103.0.2-candidates/build1/linux-x86_64/en-US/firefox-103.0.2.tar.bz2
+	source = https://archive.mozilla.org/pub/firefox/releases/103.0.2/linux-x86_64/en-US/firefox-103.0.2.tar.bz2
 	source = firefox.sh
 	source = firefox.desktop
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
