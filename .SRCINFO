@@ -1,6 +1,6 @@
 pkgbase = firefox-pwa-bin
 	pkgdesc = A tool to install, manage and use Progressive Web Apps (PWAs) in Mozilla Firefox (native component)
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/filips123/PWAsForFirefox
 	install = package.install
@@ -11,11 +11,11 @@ pkgbase = firefox-pwa-bin
 	optdepends = firefox: Support for browser extension
 	provides = firefox-pwa
 	conflicts = firefox-pwa
-	source_x86_64 = https://github.com/filips123/PWAsForFirefox/releases/download/v2.0.1/firefoxpwa_2.0.1_amd64.deb
-	sha256sums_x86_64 = d778586ecb182c0c6c25503ec14cbab385df8b115cbbb7b368ac9cafedd0bf3b
-	b2sums_x86_64 = 8d22b6ba8b2d80f1d0bf9ce95e9ba04750bbd2fb0f7fde6cf50e35410d647fcf397f81e3d68902af35f241e0e219827738bb06f91122cba0aa06c54bf63174f5
-	source_i686 = https://github.com/filips123/PWAsForFirefox/releases/download/v2.0.1/firefoxpwa_2.0.1_i386.deb
-	sha256sums_i686 = 3db36a5fc8854bd663711b5dcc925096ae2fb5df6d7048fb7ccffab2ad797336
-	b2sums_i686 = 5d82141cc352bc47fbf8fec6c38e4cb5935b3ef52ba8614afb54b96b3bb2a8d16439a3354cf420098ae5700457562fd48936f94ef3a092fe085f1d6e016d8f02
+	source_x86_64 = https://github.com/filips123/PWAsForFirefox/releases/download/v2.0.2/firefoxpwa_2.0.2_amd64.deb
+	sha256sums_x86_64 = 3bab5fa0d3f250952765f1f3922465f8e5c95abac21d1386bd0f4d930abaed79
+	b2sums_x86_64 = b88f1cad0e7d920461ad09bf511bab6d7be35f67fde490bcf650a3e6892034dc25718f0cedc143e40a2cdceabe08b8ad00d510005b4711b2de58791343b679c6
+	source_i686 = https://github.com/filips123/PWAsForFirefox/releases/download/v2.0.2/firefoxpwa_2.0.2_i386.deb
+	sha256sums_i686 = e5ce76a28462dc8d7cbecff56e6a1a327a27cb3c6809f39256292f22cef862a5
+	b2sums_i686 = 9ee4c2b4beb095c5ca987b51e2f834a1b815545ccf2fe4c29d84385daaa124834d5cad7a0dcd7d9150d320c16583adcef5118687c4684161d75630e2793a6088
 
 pkgname = firefox-pwa-bin
