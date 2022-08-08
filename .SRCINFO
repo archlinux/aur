@@ -1,7 +1,7 @@
 pkgbase = nicos
 	pkgdesc = The Networked Instrument Control System of the MLZ
 	pkgver = 3.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nicos-controls.org/
 	arch = x86_64
 	groups = nicos
@@ -46,7 +46,7 @@ pkgbase = nicos
 	depends = python-requests
 	depends = python-pillow
 	depends = python-markdown
-	depends = python-h5py
+	depends = python-h5py-openmpi
 	depends = python-pyqt5
 	depends = python-pyqt5-webengine
 	depends = python-qscintilla-qt5

@@ -3,7 +3,7 @@
 
 pkgname=nicos
 pkgver=3.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Networked Instrument Control System of the MLZ"
 arch=('x86_64')
 url="https://nicos-controls.org/"
@@ -52,7 +52,7 @@ depends=(
   'python-requests'
   'python-pillow'
   'python-markdown'
-  'python-h5py'
+  'python-h5py-openmpi'
   # Gui
   'python-pyqt5'
   'python-pyqt5-webengine'
