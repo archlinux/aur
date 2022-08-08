@@ -7,7 +7,7 @@ arch=("any")
 url="https://github.com/0x454d505459/portmaster-runit.git"
 license=('GPLv3')
 groups=()
-# depends=("portmaster")
+depends=("portmaster-stub-bin")
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/0x454d505459/portmaster-runit/tar.gz/refs/tags/$pkgver")
 md5sums=("SKIP")
 
