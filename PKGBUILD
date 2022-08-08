@@ -39,11 +39,11 @@ prepare() {
         "@types/ws@^8.5.1" \
         "electron@^20.0.0"
 
-    rm -r "node_modules/electron/node_modules/@types/node"
+    rm -rf "node_modules/electron/node_modules/@types/node"
 
     cd "${_srcname}"
     npm i --omit=dev --ignore-scripts
-    rm -r "sources/code/build"
+    rm -rf "sources/code/build"
 }
 
 build() {
@@ -69,7 +69,7 @@ package() {
     install -Dm644 -t "${lib}" "package.json"
     cp -rdt "${lib}" "node_modules"
     cp -rdt "${sources}" "sources/assets"
-    rm -r "${sources}/assets/icons/app.ic"*
+    rm -f "${sources}/assets/icons/app.ic"*
     ln -s "${sources#"${pkgdir}"}/assets/icons/app.png" "${icons}/${pkgname}.png"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "LICENSE"
 }
