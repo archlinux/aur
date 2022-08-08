@@ -28,7 +28,7 @@ pkgver() {
     printf "1.0.0"
 }
 package() { 
-    cd dwm-kav 
+    cd dwm
     mkdir -p ${pkgdir}/opt/${pkgname}
     cp -rf * ${pkgdir}/opt/${pkgname}
     make PREFIX=/usr DESTDIR="${pkgdir}" install
