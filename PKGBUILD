@@ -7,7 +7,7 @@ pkgdesc="A fork of Powercord, the lightweight discord client mod focused on simp
 arch=('any')
 url="https://github.com/${_pkgname}-org/${_pkgname}"
 license=('MIT')
-depends=('electron19' 'discord-canary-electron-bin' 'curl' 'jq')
+depends=('electron16' 'discord-canary-electron-bin' 'curl' 'jq')
 makedepends=('git' 'npm')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -22,8 +22,8 @@ source=("git+https://github.com/${_pkgname}-org/${_pkgname}.git#branch=${_branch
 		"$_pkgname-plugins.patch"
 		"$_pkgname-updater.patch")
 md5sums=('SKIP'
-         '732a69778eed5923c08f57bba4dee67d'
-         'ed7e42f11938c61e00c8c07cd1a96427'
+         '4629b45658120fcd87a5f14a6e6c3cf7'
+         '9698a7fbd4af735bee89e74fa0b03dfe'
          '4ddcb11a1ec0a8a9585a6f0b685286b4'
          'c989b875ff29492629f90e8f6b19c194'
          'd2dc5683278a2fbc677e917d557623fb'
