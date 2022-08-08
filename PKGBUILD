@@ -3,9 +3,9 @@
 _rockname=lcmark
 _project=$_rockname
 pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname" "$_rockname")
-pkgver=0.29.0
-_rockrel=5
-pkgrel=2
+pkgver=0.30.2
+_rockrel=1
+pkgrel=1
 pkgdesc='A higher level Lua interface exposing lua-cmark features'
 arch=('x86_64' 'i686')
 url="https://github.com/jgm/$_project"
@@ -13,7 +13,7 @@ license=('BSD')
 _lua_deps=('cmark' 'lpeg' 'optparse' 'yaml')
 makedepends=('lua' 'lua53' 'lua52' 'lua51' 'luarocks')
 source=("$_rockname-$pkgver-$_rockrel.tar.gz::$url/archive/$pkgver-$_rockrel.tar.gz")
-sha256sums=('b78dc23b1db47b482ab0d36ffada9c52713179643f3fc4470d0f309ad5ce9d37')
+sha256sums=('141aedbba8afc46258e2b80223c789326f11f506e297e2e4d70971dd4c15968f')
 
 prepare() {
   cp -a "$_project-$pkgver-$_rockrel"{,-5.1}
