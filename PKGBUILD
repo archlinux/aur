@@ -10,11 +10,11 @@ source=('hoholsay::https://github.com/IfkumRfnl/hoholsay.git')
 md5sums=('SKIP')
 
 build() {
-  cd $pkgname
+  cd "$srcdir"
   make
 }
 
 package() {
-  cd $pkgname
-  make install
+  cd "$srcdir"
+  cp ./hoholsay "$pkgdir/usr/bin/hoholsay"
 }
