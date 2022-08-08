@@ -1,0 +1,20 @@
+pkgbase = 7plus-bin
+	pkgdesc = Unofficial 7Plus desktop application.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/7plus-application
+	arch = x86_64
+	arch = arm7h
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = nss
+	depends = gtk3
+	depends = libxss
+	conflicts = 7plus-git
+	source_x86_64 = https://gitlab.com/7plus-application/binaries/1.0.0-1/-/raw/main/7Plus-linux-x64.tar.gz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://gitlab.com/7plus-application/binaries/1.0.0-1/-/raw/main/7Plus-linux-arm64.tar.gz
+	sha256sums_aarch64 = SKIP
+
+pkgname = 7plus-bin
