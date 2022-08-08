@@ -1,6 +1,6 @@
 pkgbase = r-rsample
 	pkgdesc = General Resampling Infrastructure
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rsample
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = r-rsample
 	optdepends = r-testthat
 	optdepends = r-utils
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/rsample_1.0.0.tar.gz
-	sha256sums = c5af8def9912679ff7670d11b2a4dcd945a396d42142aaee62409bd5bafc7758
+	source = https://cran.r-project.org/src/contrib/rsample_1.1.0.tar.gz
+	sha256sums = 4b06c00d766d131cc9b5c1d1c2b94e53034467d6909f692af90932c9630ec6c7
 
 pkgname = r-rsample
