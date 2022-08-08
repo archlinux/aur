@@ -1,0 +1,28 @@
+diff '--color=auto' --unified --recursive --text src_ori/urbackup-client-2.4.11.0/client/main.cpp src_neu/urbackup-client-2.4.11.0/client/main.cpp
+--- src_ori/urbackup-client-2.4.11.0/client/main.cpp	2020-12-04 21:46:10.000000000 +0100
++++ src_neu/urbackup-client-2.4.11.0/client/main.cpp	2022-07-30 13:06:26.313191211 +0200
+@@ -351,7 +351,7 @@
+ 	case wxLANGUAGE_SPANISH_GUATEMALA:
+ 	case wxLANGUAGE_SPANISH_HONDURAS:
+ 	case wxLANGUAGE_SPANISH_MEXICAN:
+-	case wxLANGUAGE_SPANISH_MODERN:
++    //case wxLANGUAGE_SPANISH_MODERN:
+ 	case wxLANGUAGE_SPANISH_NICARAGUA:
+ 	case wxLANGUAGE_SPANISH_PANAMA:
+ 	case wxLANGUAGE_SPANISH_PARAGUAY:
+@@ -371,7 +371,7 @@
+ 		lang= sysdef;
+ 		g_lang="zh_CN";
+ 		break;
+-	case wxLANGUAGE_CHINESE_TRADITIONAL:
++    //case wxLANGUAGE_CHINESE_TRADITIONAL:
+ 	case wxLANGUAGE_CHINESE_TAIWAN:
+ 		lang= sysdef;
+ 		g_lang="zh_TW";
+@@ -994,4 +994,4 @@
+ }
+ #else
+ IMPLEMENT_APP(MyApp)
+-#endif
+\ Kein Zeilenumbruch am Dateiende.
++#endif
