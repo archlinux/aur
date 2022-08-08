@@ -2,12 +2,12 @@
 
 pkgname=krunvm-git
 pkgver=r48.ba9e585
-pkgrel=3
+pkgrel=4
 pkgdesc="Create microVMs from OCI images"
 arch=("x86_64")
 url="https://github.com/containers/krunvm"
 license=("GPL2")
-depends=("libkrun" "buildah")
+depends=("libkrun" "buildah" "podman")
 makedepends=("cargo" "git" "gcc" "asciidoctor")
 provides=("krunvm")
 conflicts=("krunvm")
