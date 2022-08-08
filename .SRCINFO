@@ -1,7 +1,7 @@
 pkgbase = python-aeppl
 	pkgdesc = Tools for an Aesara-based PPL
 	pkgver = 0.0.33
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aesara-devs/aeppl
 	arch = any
 	license = MIT
@@ -10,6 +10,6 @@ pkgbase = python-aeppl
 	depends = python-scipy
 	depends = python-aesara
 	source = python-aeppl-0.0.33.tar.gz::https://github.com/aesara-devs/aeppl/archive/refs/tags/v0.0.33.tar.gz
-	sha256sums = 21dd1d63d67e59d70a832c5bcf94050d9b4067c0b27e5865a42a348513f19150
+	sha256sums = ea464f5e7b0a13242c8e1a4a7340d91f977db5a451184b4b9d1145364ba939a0
 
 pkgname = python-aeppl
