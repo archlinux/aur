@@ -1,3 +1,5 @@
+*.deb
+
 *.tar
 *.tar.*
 *.jar

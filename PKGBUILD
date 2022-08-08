@@ -1,6 +1,6 @@
 # Maintainer: jmcb <joelsgp@protonmail.com>
 pkgname=parallels-client
-pkgver=18.3.22907
+pkgver=19.0.23304
 pkgrel=1
 epoch=
 pkgdesc="A remote work tool (RASClient)"
@@ -19,12 +19,20 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://download.parallels.com/ras/v18/18.3.1.22907/RASClient-${pkgver}_x86_64.tar.bz2")
+source=("https://download.parallels.com/ras/v19/19.0.0.23304/RASClient-${pkgver}_x86_64.deb")
 noextract=()
-sha256sums=('298b61d4bf8b19da16c6a36341f14afb8e0151cf5d90da8afb331e9f57bf7963')
+sha256sums=('908a8b78d20691dd349b767082e5c4bf9e9086db92f24a6e27cac53c08aad947')
 validpgpkeys=()
 
 
 package() {
-    ./opt/2X/Client/scripts/install.sh
+    bsdtar --cd "${pkgdir}" -xf "${srcdir}/data.tar.xz"
+
+    # Permission fix
+    find "${pkgdir}" -type d -exec chmod 755 {} +
+
+    # Move license
+    rm -rf "${pkgdir}/usr/share/doc"
+    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+    ln -s "${pkgdir}/opt/2X/Client/doc/EULA.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
