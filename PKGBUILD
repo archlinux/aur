@@ -1,44 +1,42 @@
 # Maintainer:    Lukas1818 aur at lukas1818 dot de
 # Co-Maintainer: Mckol <mckol363@gmail.com>
 
-export GIT_LFS_SKIP_SMUDGE=1
 pkgname=veloren-nightly
-pkgver=0.10.0.r243.78961e895
-pkgrel=3
-pkgdesc="An open-world, open-source multiplayer voxel RPG"
+pkgver=0.13.0.r37.525866816
+pkgrel=1
+pkgdesc="This version is compatible with the official server."
 arch=('x86_64' 'i686')
 url='https://veloren.net/'
 license=('GPL3')
 options=('!strip') # This makes debugging issues easier sometimes, comment out if small package size is needed
 depends=('systemd-libs' 'alsa-lib' 'libxcb' 'pulseaudio-alsa')
-makedepends=('systemd' 'git' 'git-lfs' 'rustup' 'cairo' 'pango' 'atk' 'gdk-pixbuf2' 'python' 'openssl' 'cmake')
+makedepends=('git' 'git-lfs' 'rustup' 'cairo' 'pango' 'atk' 'gdk-pixbuf2' 'python' 'openssl' 'cmake' 'udev')
 provides=('veloren')
 conflicts=('veloren')
 _repo='https://gitlab.com/veloren/veloren.git'
-source=("$pkgname"::"git+$_repo")
+source=()
 noextract=()
-sha512sums=('SKIP')
-
-pkgver() {
-    cd "$srcdir/$pkgname"
-    git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/v//'
-}
+sha512sums=()
 
 prepare() {
-    cd "$srcdir/$pkgname"
-    git remote set-url origin "$_repo"
-    git checkout master
-    git pull
-    git checkout $(wget -qO - https://download.veloren.net/version/linux)
-    unset GIT_LFS_SKIP_SMUDGE
+    cd "$srcdir"
+    git clone "$_repo" "$pkgname" || true
+    cd "$pkgname"
+    git fetch
+    git checkout $(wget -qO - https://download.veloren.net/version/linux/x86_64/weekly)
     git lfs install
     git lfs fetch
     git lfs checkout
 }
 
+pkgver() {
+    cd "$srcdir/$pkgname"
+    git describe --long --match 'v*' | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/v//'
+}
+
 build() {
     cd "$srcdir/$pkgname"
-    export VELOREN_USERDATA_STRATEGY='system' 
+    export VELOREN_USERDATA_STRATEGY='system'
     cargo build --release --bin veloren-voxygen --no-default-features --features="default-publish"
     cargo build --release --bin veloren-server-cli
 }
