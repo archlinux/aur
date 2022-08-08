@@ -1,10 +1,9 @@
 # Maintainer: Jef Roosens
 
-pkgbase='cinny-desktop'
 pkgname='cinny-desktop'
-pkgver='2.0.4'
-pkgrel='3'
-pkgdesc='Cinny is a matrix client focusing primarily on a simple, elegant and secure interface.'
+pkgver='2.1.1'
+pkgrel='1'
+pkgdesc='Matrix client focusing primarily on a simple, elegant and secure interface.'
 arch=('x86_64')
 
 url='https://cinny.in/'
@@ -26,14 +25,14 @@ makedepends=('rust' 'nodejs' 'npm')
 
 # This makes sure dirty builds still pull down the newest version
 source=("${pkgname}-${pkgver}.zip::https://github.com/cinnyapp/cinny-desktop/releases/download/v${pkgver}/cinny-desktop-v${pkgver}.zip")
-sha256sums=('4142c672bb421f1694eaf7d266296b00860885931a436378e72ae2a3ba81c7e7')
+sha256sums=('cfaf9bd2b6e41acfc6ce548d6f6c84586cc32bc6ee78f3561900ae4e48f673f4')
 install="${pkgname}.install"
 
 build() {
     cd "${pkgname}"
 
     msg2 'Installing Node dependencies...'
-    cd 'cinny' && npm ci
+    cd 'cinny' && npm --legacy-peer-deps ci
     cd .. && npm ci
 
     msg2 'Running Tauri build...'
@@ -44,3 +43,5 @@ package() {
     ar x "${pkgname}/src-tauri/target/release/bundle/deb/cinny_${pkgver}_amd64.deb" 'data.tar.gz'
     tar xzf 'data.tar.gz' -C "${pkgdir}"
 }
+
+# vim: ft=bash
