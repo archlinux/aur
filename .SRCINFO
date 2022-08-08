@@ -1,7 +1,7 @@
 pkgbase = vim-colors-zenburn-git
-	pkgdesc = Nothing too fancy, just some alien fruit salad to keep you in the zone
+	pkgdesc = A low-contrast color scheme for Vim
 	pkgver = 20210915
-	pkgrel = 2
+	pkgrel = 3
 	url = http://kippura.org/zenburnpage/
 	arch = any
 	license = GPL
