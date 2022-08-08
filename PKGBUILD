@@ -2,7 +2,7 @@
 
 pkgname=libkrunfw-git
 pkgver=v2.0.0.r25.gb7b6746
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic library bundling the guest payload consumed by libkrun"
 arch=("x86_64")
 url="https://github.com/containers/libkrunfw"
