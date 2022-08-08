@@ -1,35 +1,27 @@
-# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Maintainer: Iaroslav Sorokin <iaroslav.sorokin@gmail.com>
 
 pkgname=mingw-w64-pangomm
-pkgver=2.42.1
+pkgver=2.46.2
 pkgrel=1
 pkgdesc="C++ bindings for Pango (mingw-w64)"
 arch=('any')
 url="https://www.gtkmm.org/"
 license=('LGPL')
 makedepends=('mingw-w64-configure')
-depends=('mingw-w64-pango' 'mingw-w64-glibmm' 'mingw-w64-cairomm')
+depends=('mingw-w64-pango' 'mingw-w64-glibmm' 'mingw-w64-cairomm' 'mm-common')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://download.gnome.org/sources/pangomm/${pkgver%.*}/pangomm-${pkgver}.tar.xz")
-md5sums=('339c48dd92ebd3a9911b231708f7a819')
+sha256sums=('57442ab4dc043877bfe3839915731ab2d693fc6634a71614422fb530c9eaa6f4')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-
-prepare() {
-  cd "${srcdir}/pangomm-${pkgver}"
-  sed -i -e "s,AC_DISABLE_STATIC,AC_DISABLE_STATIC\nlt_cv_deplibs_check_method='pass_all'," configure.ac
-  autoconf --force
-}
 
 build() {
   CPPFLAGS+=" -D_REENTRANT"
   cd "${srcdir}/pangomm-$pkgver/"
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure \
-    --disable-documentation \
-    ..
-    make
+    ${_arch}-meson --prefix /usr/${_arch} --libdir lib build-${_arch}
+    pushd build-${_arch}
+    ninja
     popd
   done
 }
@@ -37,7 +29,8 @@ build() {
 package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/pangomm-$pkgver/build-${_arch}"
-    make DESTDIR="${pkgdir}" install
+    # make DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" ninja install
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
