@@ -1,0 +1,15 @@
+pkgbase = cern-ca-certs
+	pkgdesc = CERN CA certificates
+	pkgver = 20220329_1
+	pkgrel = 1
+	url = https://ca.cern.ch/ca/
+	install = cern-ca-certs.install
+	arch = any
+	license = unknown
+	makedepends = rpmextract
+	depends = p11-kit
+	depends = ca-certificates-utils
+	source = https://linuxsoft.cern.ch/cern/centos/s9/CERN/x86_64/Packages/CERN-CA-certs-20220329-1.el9.cern.noarch.rpm
+	sha256sums = d82bac52431c2294b6690989ede74525354898ec3662dcbaa611ce3232be7888
+
+pkgname = cern-ca-certs
