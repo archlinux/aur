@@ -1,6 +1,6 @@
 pkgbase = r-jaspbsts
 	pkgdesc = Bsts Module for JASP
-	pkgver = 0.1.0
+	pkgver = 0.16.4
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspBsts
 	arch = x86_64
