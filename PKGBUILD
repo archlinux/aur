@@ -1,7 +1,7 @@
 # Maintainer: Seraph_JACK <seraphjack@outlook.com>
 pkgname=annix-bin
 pkgver=nightly
-pkgrel=1
+pkgrel=2
 pkgdesc="Music player for Project Anni. (Binary version)"
 arch=('x86_64')
 url="https://github.com/ProjectAnni/annix"

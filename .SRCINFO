@@ -1,7 +1,7 @@
 pkgbase = annix-bin
 	pkgdesc = Music player for Project Anni. (Binary version)
 	pkgver = nightly
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ProjectAnni/annix
 	arch = x86_64
 	license = Apache
