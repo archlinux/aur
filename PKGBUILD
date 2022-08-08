@@ -11,7 +11,7 @@ pkgdesc="An Open Source vector graphics editor, using SVG file format, from git 
 url="https://gitlab.com/inkscape"
 license=('GPL' 'LGPL')
 arch=('i686' 'x86_64')
-makedepends=('cmake' 'boost' 'git')
+makedepends=('cmake' 'boost' 'git' 'ninja')
 depends=(
 	'dbus-glib'
 	'double-conversion'
@@ -65,12 +65,12 @@ pkgver() {
 }
 
 build() {
-  cmake -S "${_gitname}" -B build \
+  cmake -S "${_gitname}" -B build -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=RELEASE 
-  make -C build
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
 }

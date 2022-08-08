@@ -11,6 +11,7 @@ pkgbase = inkscape-git
 	makedepends = cmake
 	makedepends = boost
 	makedepends = git
+	makedepends = ninja
 	depends = dbus-glib
 	depends = double-conversion
 	depends = gc
