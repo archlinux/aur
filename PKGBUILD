@@ -2,7 +2,7 @@
 
 pkgbase=libjxl-git
 pkgname=('libjxl-git' 'libjxl-doc-git')
-pkgver=0.6.1.r808.g980c90f6
+pkgver=0.6.1.r809.ga4ad91a2
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
@@ -47,7 +47,7 @@ prepare() {
 
 pkgver() {
     local _tag
-    _tag="$(git -C libjxl tag --list --sort='-v:refname' 'v[[:digit:]]*' | sed -n 's/^v//;1p')"
+    _tag="$(git -C libjxl tag --list --sort='-v:refname' 'v[[:digit:]]*' | sed 's/^v//;/-base/d' | head -n1)"
     printf "${_tag}.r%s.g%s" "$(git -C libjxl rev-list --count "v${_tag}..HEAD")" \
                              "$(git -C libjxl rev-parse --short HEAD)"
 }
