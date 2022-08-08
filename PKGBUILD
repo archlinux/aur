@@ -1,6 +1,7 @@
-#Maintainer: Dmytro Aleksandrov <alkersan@gmail.com>
+# Maintainer: Sergii Fesenko <sergii underscore f dot at outlook dot com>
+# Contributor: Dmytro Aleksandrov <alkersan@gmail.com>
 
-pkgname=docker-compose-bin
+pkgname=docker-compose-v1-bin
 pkgver=1.29.2
 pkgrel=1
 pkgdesc="Pythonless package of a a tool for defining and running multi-container applications"

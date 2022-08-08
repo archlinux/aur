@@ -1,4 +1,4 @@
-pkgbase = docker-compose-bin
+pkgbase = docker-compose-v1-bin
 	pkgdesc = Pythonless package of a a tool for defining and running multi-container applications
 	pkgver = 1.29.2
 	pkgrel = 1
@@ -14,5 +14,4 @@ pkgbase = docker-compose-bin
 	sha256sums = f3f10cf3dbb8107e9ba2ea5f23c1d2159ff7321d16f0a23051d68d8e2547b323
 	sha256sums = 99a9b91d476062d280c889ae4e9993d7dd6a186327bafb2bb39521f9351b96eb
 
-pkgname = docker-compose-bin
-
+pkgname = docker-compose-v1-bin
