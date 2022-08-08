@@ -8,6 +8,7 @@ pkgbase = libkrunfw-git
 	makedepends = cargo
 	makedepends = git
 	makedepends = gcc
+	makedepends = python-pyelftools
 	provides = libkrunfw
 	conflicts = libkrunfw
 	source = libkrunfw-git::git+https://github.com/containers/libkrunfw
