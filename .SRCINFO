@@ -1,5 +1,4 @@
 pkgbase = pihpsdr-git
-	pkgdesc = piHPSDR
 	pkgver = r1493.a415f5c
 	pkgrel = 1
 	url = https://github.com/dl1ycf/pihpsdr
