@@ -1,0 +1,12 @@
+22,24c22,24
+< WebappDirectory     = "../webapp/dist" # Root directory for webapp static content
+< ClientsDirectory    = "../clients"     # Root directory for client binaries
+< ChangelogDirectory  = "../changelog"   # Root directory for changelog (to be displayed when updating clients)
+---
+> WebappDirectory     = "/usr/share/webapps/plikd" # Root directory for webapp static content
+> ClientsDirectory    = "/usr/share/webapps/plikd/clients"     # Root directory for client binaries
+> ChangelogDirectory  = "/usr/share/webapps/plikd/changelog"   # Root directory for changelog (to be displayed when updating clients)
+104c104
+<     Directory = "files"
+---
+>     Directory = "/var/lib/plikd"
