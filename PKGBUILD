@@ -7,7 +7,7 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=103.0.1
+pkgver=103.0.2
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
@@ -40,8 +40,8 @@ install=cachy-browser.install
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
     $pkgname.desktop
     "git+https://github.com/cachyos/cachyos-browser-settings.git"
-"git+https://github.com/cachyos/cachyos-browser-common.git")
-sha256sums=('b2db4df5fae0801e6406686876e8115d9529fb93a01566f22548908ca6c2cf82'
+    "git+https://github.com/cachyos/cachyos-browser-common.git")
+sha256sums=('766183e8e39c17a84305a85da3237919ffaeb018c6c9d97a7324aea51bd453aa'
             'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
@@ -63,7 +63,7 @@ ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
-ac_add_options --enable-linker=lld
+ac_add_options --enable-linker=mold
 ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
@@ -102,7 +102,7 @@ export MOZ_APP_REMOTINGNAME=${pkgname//-/}
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 # ac_add_options --with-system-zlib
-ac_add_options --enable-optimize=-O2
+ac_add_options --enable-optimize=-O3
 # Features
 ac_add_options --enable-pulseaudio
 ac_add_options --enable-alsa
@@ -227,6 +227,8 @@ END
   	
   	msg2 "Debian patch to enable global menubar"
     patch -Np1 -i ${_patches_dir}/fix-psutil-dev.patch
+    msg2 "fix for glibc 2.36"
+    patch -Np1 -i ${_patches_dir}/glibc236.patch
     rm -f ${srcdir}/cachyos-browser-common/source_files/mozconfig
     cp -r ${srcdir}/cachyos-browser-common/source_files/browser ./
 }
@@ -238,7 +240,7 @@ build() {
     export MOZ_NOSPAM=1
     export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
     #export MOZ_ENABLE_FULL_SYMBOLS=1
-    export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
+    export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
     export PIP_NETWORK_INSTALL_RESTRICTED_VIRTUALENVS=mach # let us hope this is a working _new_ workaround for the pip env issues?
 
     # LTO needs more open files
