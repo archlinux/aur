@@ -2,7 +2,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=python-cadquery-git
-pkgver=2.1.r311.g9ef08d6
+pkgver=2.1.r474.gec54a38
 pkgrel=1
 pkgdesc="A parametric CAD scripting framework based on PythonOCC built from git"
 arch=(x86_64)
@@ -18,6 +18,7 @@ python-ezdxf
 python-typing_extensions
 nlopt
 openvr
+casadi
 )
 checkdepends=(
 python-pytest
