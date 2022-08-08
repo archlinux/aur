@@ -2,7 +2,7 @@
 
 _pkgbase=mwgp
 pkgname=$_pkgbase
-pkgver=2.1.4
+pkgver=2.1.5
 pkgrel=1
 pkgdesc='A WireGuard proxy designed to reuse one UDP port for multiple WireGuard interfaces'
 arch=('x86_64')
