@@ -3,7 +3,7 @@
 pkgname=veloren-bin
 pkgver=0.13.0
 pkgrel=1
-pkgdesc="An open-world, open-source multiplayer voxel RPG"
+pkgdesc="The last stable release of an open-world, open-source multiplayer voxel RPG"
 arch=('x86_64')
 url="https://veloren.net/"
 license=('GPL3')
