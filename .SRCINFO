@@ -1,5 +1,5 @@
 pkgbase = veloren
-	pkgdesc = An open-world, open-source multiplayer voxel RPG
+	pkgdesc = The last stable release of an open-world, open-source multiplayer voxel RPG.
 	pkgver = 0.13.0
 	pkgrel = 2
 	url = https://veloren.net/
