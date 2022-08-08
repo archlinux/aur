@@ -1,7 +1,7 @@
 # Maintainer: Martchus <martchus@gmx.net>
 
 pkgname=mingw-w64-gnutls
-pkgver=3.7.6
+pkgver=3.7.7
 pkgrel=1
 pkgdesc='A library which provides a secure layer over a reliable transport layer (mingw-w64)'
 arch=('any')
@@ -14,7 +14,7 @@ options=(staticlibs !strip !buildflags)
 optdepends=("mingw-w64-openssl: libgnutls-openssl")
 source=(https://www.gnupg.org/ftp/gcrypt/gnutls/v${pkgver%.*}/${pkgname#mingw-w64-}-${pkgver}.tar.xz{,.sig}
         gnutls-fix-external-libtasn1-detection.patch)
-sha256sums=('77065719a345bfb18faa250134be4c53bef70c1bd61f6c0c23ceb8b44f0262ff'
+sha256sums=('be9143d0d58eab64dba9b77114aaafac529b6c0d7e81de6bdf1c9b59027d2106'
             'SKIP'
             '8525da75852a516be0cb05df0a770daf19ce0583033260d6cac03a1e40fd2072')
 #validpgpkeys=('462225C3B46F34879FC8496CD605848ED7E69871') # "Daiki Ueno <ueno@unixuser.org>"
