@@ -5,6 +5,7 @@ pkgbase = portmaster-runit
 	url = https://github.com/0x454d505459/portmaster-runit.git
 	arch = any
 	license = GPLv3
+	depends = portmaster-stub-bin
 	source = portmaster-runit-0.7.1.tar.gz::https://codeload.github.com/0x454d505459/portmaster-runit/tar.gz/refs/tags/0.7.1
 	md5sums = SKIP
 
