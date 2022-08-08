@@ -1,17 +1,17 @@
 # Maintainer: Bogomil Vasilev <smirky@smirky.net>
 
 pkgname=roundcubemail-plugin-persistent_login
-pkgver=1.0.2
-pkgrel=3
+pkgver=5.3.0
+pkgrel=1
 pkgdesc='Roundcube plugin that provides a "Keep me logged in" aka "Remember Me" functionality.'
 arch=('any')
-url='https://plugins.roundcube.net/#/packages/texxasrulez/persistent_login'
+url='https://plugins.roundcube.net/#/packages/mfreiholz/persistent_login'
 license=('GPL3')
 depends=('roundcubemail')
-source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/texxasrulez/persistent_login/archive/${pkgver}.tar.gz")
-sha256sums=('f46ee86543bd15abc1fe0c572d8184ce84c2668d4a63fddb42f7f5701ac72a65')
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/mfreiholz/persistent_login/archive/refs/tags/version-${pkgver}.tar.gz")
+sha256sums=('0f5ee3eb62a631eaf5f838d7eaff94066312522ff3da8d8273ff1c42c5ff3dec')
 
 package() {
     mkdir -p "${pkgdir}/usr/share/webapps/roundcubemail/plugins"
-    cp -r "${srcdir}/persistent_login-${pkgver}" "${pkgdir}/usr/share/webapps/roundcubemail/plugins/persistent_login"
+    cp -r "${srcdir}/persistent_login-version-${pkgver}" "${pkgdir}/usr/share/webapps/roundcubemail/plugins/persistent_login"
 }
