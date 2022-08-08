@@ -4,7 +4,7 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
-pkgname=(libvirt libvirt-storage-gluster libvirt-storage-iscsi-direct libvirt-storage-rbd)
+pkgname=(libvirt libvirt-storage-gluster libvirt-storage-iscsi-direct)
 epoch=1
 pkgver=8.6.0
 pkgrel=1
@@ -13,11 +13,10 @@ arch=('x86_64')
 url="https://libvirt.org/"
 license=('LGPL' 'GPL3') #libvirt_parthelper links to libparted which is GPL3 only
 depends=('libpciaccess' 'yajl' 'fuse3' 'gnutls' 'parted' 'libssh' 'libxml2' 'numactl' 'polkit')
-makedepends=('meson' 'libxslt' 'python-docutils' 'lvm2' 'open-iscsi' 'libiscsi' 'ceph-libs' 'glusterfs'
+makedepends=('meson' 'libxslt' 'python-docutils' 'lvm2' 'open-iscsi' 'libiscsi' 'glusterfs'
              'bash-completion' 'rpcsvc-proto' 'dnsmasq' 'iproute2' 'qemu-base')
 optdepends=('libvirt-storage-gluster: Gluster storage backend'
             'libvirt-storage-iscsi-direct: iSCSI-direct storage backend'
-            'libvirt-storage-rbd: RBD storage backend'
             'gettext: required for libvirt-guests.service'
             'openbsd-netcat: for remote management over ssh'
             'dmidecode: DMI system info support'
@@ -126,8 +125,8 @@ build() {
     -Dstorage_vstorage=disabled \
     -Ddtrace=disabled \
     -Dnumad=disabled \
-    -Dstorage_zfs=enabled \
-    -Dstorage_rbd=enabled
+    -Dstorage_zfs=enabled\
+    -Dstorage_rbd=disabled
 
   ninja -C build
 }
@@ -164,7 +163,7 @@ package_libvirt() {
   rm -f "$pkgdir/etc/libvirt/qemu/networks/autostart/default.xml"
 
   # move split modules
-  mv "$pkgdir"/usr/lib/libvirt/storage-backend/libvirt_storage_backend_{rbd,gluster}.so "$pkgdir/../"
+  mv "$pkgdir"/usr/lib/libvirt/storage-backend/libvirt_storage_backend_gluster.so "$pkgdir/../"
   mv "$pkgdir/usr/lib/libvirt/storage-backend/libvirt_storage_backend_iscsi-direct.so" "$pkgdir/../"
   mv "$pkgdir/usr/lib/libvirt/storage-file/libvirt_storage_file_gluster.so" "$pkgdir/../"
 }
@@ -186,13 +185,4 @@ package_libvirt-storage-iscsi-direct() {
   backup=()
 
   install -Dv -t "$pkgdir/usr/lib/libvirt/storage-backend" "$pkgdir/../libvirt_storage_backend_iscsi-direct.so"
-}
-
-package_libvirt-storage-rbd() {
-  pkgdesc="Libvirt RBD storage backend"
-  depends=("libvirt=$pkgver" 'ceph-libs')
-  optdepends=()
-  backup=()
-
-  install -Dv -t "$pkgdir/usr/lib/libvirt/storage-backend" "$pkgdir/../libvirt_storage_backend_rbd.so"
 }
