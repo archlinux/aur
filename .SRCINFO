@@ -1,6 +1,6 @@
 pkgbase = python-tcod
 	pkgdesc = High-performance Python port of libtcod
-	pkgver = 13.6.1
+	pkgver = 13.7.0
 	pkgrel = 1
 	url = https://github.com/libtcod/python-tcod
 	changelog = CHANGELOG.md
@@ -19,8 +19,8 @@ pkgbase = python-tcod
 	depends = python-numpy
 	depends = python-typing_extensions
 	depends = sdl2
-	source = python-tcod::git+https://github.com/libtcod/python-tcod#tag=13.6.1?signed
-	source = libtcod::git+https://github.com/libtcod/libtcod#tag=1.20.1?signed
+	source = python-tcod::git+https://github.com/libtcod/python-tcod#tag=13.7.0?signed
+	source = libtcod::git+https://github.com/libtcod/libtcod#tag=1.21.0?signed
 	validpgpkeys = 9EF1E80F3817BC043097A7C15814977902B194CC
 	sha256sums = SKIP
 	sha256sums = SKIP

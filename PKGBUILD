@@ -5,7 +5,7 @@
 ## Cannot use libtcod as dependency; statically linked
 
 pkgname=python-tcod
-pkgver=13.6.1
+pkgver=13.7.0
 pkgrel=1
 pkgdesc='High-performance Python port of libtcod'
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=(
 changelog=CHANGELOG.md
 source=(
 	"$pkgname::git+$url#tag=$pkgver?signed"
-	'libtcod::git+https://github.com/libtcod/libtcod#tag=1.20.1?signed')
+	'libtcod::git+https://github.com/libtcod/libtcod#tag=1.21.0?signed')
 sha256sums=('SKIP'
             'SKIP')
 validpgpkeys=('9EF1E80F3817BC043097A7C15814977902B194CC') # Kyle Benesch @ GitHub
@@ -43,11 +43,9 @@ build() {
 # }
 
 package() {
-	export PYTHONHASHSEED=0
 	cd "$pkgname"
-	python -m installer --destdir="$pkgdir/" dist/*.whl
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 docs/_build/man/python-tcod.1 -t "$pkgdir/usr/share/man/man1/"
-
 	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
 	install -d "$pkgdir/usr/share/licenses/$pkgname/"
 	ln -s \
