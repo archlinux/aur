@@ -3,7 +3,7 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com> ([community] package)
 
 pkgname=remmina-git
-pkgver=1.4.27.r118.g3a0710851
+pkgver=1.4.27.r124.gb253e31c8
 pkgrel=1
 pkgdesc='A remote desktop client written in GTK+ - git checkout'
 arch=(i686 x86_64)
