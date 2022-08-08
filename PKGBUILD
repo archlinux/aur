@@ -3,13 +3,13 @@
 _pkgname=dotdrop
 pkgname="${_pkgname}-git"
 pkgver=1.3.7.r13.g18b156e
-pkgrel=4
+pkgrel=5
 pkgdesc="Save your dotfiles once, deploy them everywhere "
 arch=('any')
 url="https://github.com/deadc0de6/dotdrop"
 license=('GPL')
 groups=()
-depends=('python' 'python-setuptools' 'python-jinja' 'python-docopt' 'python-ruamel-yaml' 'python-magic-ahupp' 'python-requests' 'python-packaging' 'python-toml')
+depends=('python' 'python-setuptools' 'python-jinja' 'python-docopt' 'python-ruamel-yaml' 'python-magic' 'python-requests' 'python-packaging' 'python-toml')
 makedepends=('git')
 provides=(dotdrop)
 conflicts=(dotdrop)
