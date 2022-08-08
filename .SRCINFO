@@ -1,7 +1,7 @@
 pkgbase = ivpn
 	pkgdesc = IVPN - Secure VPN for Privacy (CLI)
 	pkgver = 3.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ivpn.net
 	install = ivpn.install
 	arch = x86_64

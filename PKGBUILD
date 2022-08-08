@@ -3,7 +3,7 @@
 # PKGBUILD config
 pkgname="ivpn"
 pkgver=3.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="IVPN - Secure VPN for Privacy (CLI)"
 arch=('x86_64')
 url="https://www.ivpn.net"
@@ -74,5 +74,5 @@ package() {
   install -Dm755 -g root -o root References/Linux/_out_bin/ivpn "$pkgdir/usr/bin/ivpn"
 
   cd "$srcdir"
-  install -D "ivpn-service.service" "$pkgdir/usr/lib/systemd/system/ivpn-service.service"
+  install -Dm644 "ivpn-service.service" "$pkgdir/usr/lib/systemd/system/ivpn-service.service"
 }
