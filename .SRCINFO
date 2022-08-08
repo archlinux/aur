@@ -1,10 +1,9 @@
 pkgbase = qdirstat-bin
 	pkgdesc = Qt-based directory statistics (KDirStat/K4DirStat without any KDE - from the original KDirStat author)
-	pkgver = 1.8
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/shundhammer/qdirstat
 	install = qdirstat-bin.install
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = qt5-base
@@ -13,7 +12,7 @@ pkgbase = qdirstat-bin
 	depends = desktop-file-utils
 	conflicts = qdirstat
 	conflicts = qdirstat-git
-	source = https://github.com/LeSnake04/aur-lesnake04-sources/raw/main/qdirstat-bin/qdirstat-bin-1.8-1-x86_64.tar.gz
-	sha512sums = 99cfc3a406ffa5bd58410d6f2e8f822926ff9f27c77f2918a133baa1b54073554776c76f31a2bbcbbf501b19f5aabef147e10191e0cacdab309c299d8452689b
+	source = https://github.com/LeSnake04/aur-lesnake04-sources/raw/main/qdirstat-bin/qdirstat-bin-1.8.1-1-x86_64.tar.gz
+	sha512sums = 189dd4c9690af4c67a3a0f89db6852188d9df28155cfb3c35d3545f8f8f2cad0cbcff35b0126aebabfedb95632376eabb7b68b7ac6139087d39cee11363f43e8
 
 pkgname = qdirstat-bin
