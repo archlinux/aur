@@ -1,7 +1,7 @@
 pkgbase = librewolf
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
-	pkgver = 103.0
-	pkgrel = 3
+	pkgver = 103.0.1
+	pkgrel = 1
 	url = https://librewolf.net/
 	install = librewolf.install
 	arch = x86_64
@@ -57,16 +57,17 @@ pkgbase = librewolf
 	options = !debug
 	backup = usr/lib/librewolf/librewolf.cfg
 	backup = usr/lib/librewolf/distribution/policies.json
-	source = https://archive.mozilla.org/pub/firefox/releases/103.0/source/firefox-103.0.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/103.0/source/firefox-103.0.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/103.0.1/source/firefox-103.0.1.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/103.0.1/source/firefox-103.0.1.source.tar.xz.asc
 	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/1f6f9abcdcb2a03f259602b4671208b15cc6d4b9/trunk/zstandard-0.18.0.diff
 	source = librewolf.desktop
-	source = git+https://gitlab.com/librewolf-community/browser/source.git#tag=103.0-3
-	source = git+https://gitlab.com/librewolf-community/settings.git#commit=02212c3f44e7aa68b22c8febd9158580d7e4b74f
+	source = git+https://gitlab.com/librewolf-community/browser/source.git#tag=103.0.1-1
+	source = git+https://gitlab.com/librewolf-community/settings.git#tag=6.7
 	source = default192x192.png
 	source = 0018-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
+	source = glibc236.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = acc41d050560db4c4177ea86e2d00e47d74229041fea4c02c0e9e87e64093773
+	sha256sums = b2db4df5fae0801e6406686876e8115d9529fb93a01566f22548908ca6c2cf82
 	sha256sums = SKIP
 	sha256sums = a6857ad2f2e2091c6c4fdcde21a59fbeb0138914c0e126df64b50a5af5ff63be
 	sha256sums = 21054a5f41f38a017f3e1050ccc433d8e59304864021bef6b99f0d0642ccbe93
@@ -74,5 +75,6 @@ pkgbase = librewolf
 	sha256sums = SKIP
 	sha256sums = 959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1
 	sha256sums = 1d713370fe5a8788aa1723ca291ae2f96635b92bc3cb80aea85d21847c59ed6d
+	sha256sums = 7c6277d6ac1d31b0733d2e04600e2304545cede8810afc691142a94c0a517bd1
 
 pkgname = librewolf
