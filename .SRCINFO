@@ -1,0 +1,19 @@
+pkgbase = gtkcord4-libadwaita-git
+	pkgdesc = Discord client written in go and gtk4 and libadwaita
+	pkgver = 766661a
+	pkgrel = 3
+	url = https://github.com/diamondburned/gtkcord4
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	depends = gtk4
+	depends = gobject-introspection
+	provides = gtkcord4
+	conflicts = gtkcord4
+	source = git+https://github.com/diamondburned/gtkcord4
+	source = gtkcord4.desktop
+	sha256sums = SKIP
+	sha256sums = 93a0b3698e44d2f4af3a9276b31ce0889b79858d5992e25af5bc1b258d8f2b88
+
+pkgname = gtkcord4-libadwaita-git
