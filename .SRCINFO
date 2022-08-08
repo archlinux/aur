@@ -1,0 +1,11 @@
+pkgbase = parallels-client
+	pkgdesc = A remote work tool (RASClient)
+	pkgver = 18.3.22907
+	pkgrel = 1
+	url = https://www.parallels.com/products/ras/capabilities/parallels-client/
+	arch = x86_64
+	license = custom:parallels-client
+	source = https://download.parallels.com/ras/v18/18.3.1.22907/RASClient-18.3.22907_x86_64.tar.bz2
+	sha256sums = 298b61d4bf8b19da16c6a36341f14afb8e0151cf5d90da8afb331e9f57bf7963
+
+pkgname = parallels-client
