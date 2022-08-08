@@ -3,8 +3,8 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=dvdisaster
-pkgver=0.79.9
-pkgrel=2
+pkgver=0.79.10
+pkgrel=1
 provides=('dvdisaster')
 pkgdesc="Provides a margin of safety against data loss on newly created ISO, CD, DVD, and BDR media caused by aging or scratches"
 arch=('x86_64')
@@ -14,8 +14,8 @@ depends=('gtk2')
 options=('!makeflags')
 source=(${pkgname}-${pkgver}.tar.bz2::${url}/downloads/${pkgname}-${pkgver}.tar.bz2
         ${pkgname}-${pkgver}.tar.bz2.gpg::${url}/downloads/${pkgname}-${pkgver}.tar.bz2.gpg)
-sha1sums=('8ba9d605488a87c2c48c60712f431d22a6972dc6'
-         'a701d2cf3844579e41f3502736e70e95bc5a758b')
+sha1sums=('848f6dea242de90201df3eabf445a5825131ebc6'
+         '5b0378d3130c600f8f7a1eb4b603cb2fca82bc71')
 validpgpkeys=('12B31535AF903ADE9E73BA7E5A590EFEF5F6C46C')
 
 prepare() {
