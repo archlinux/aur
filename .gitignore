@@ -1,6 +1,5 @@
 pkg/
 src/
-.AURINFO
 hydrogen/
 hydrogen-docs/
 hydrogen-git-*.pkg.tar.xz
