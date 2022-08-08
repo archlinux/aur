@@ -11,12 +11,12 @@ _tinydir_commit=64fb1d4376d7580aa1013fdbacddbbeba67bb085
 
 pkgname=natron-compositor
 pkgver=2.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source compositing software"
 arch=('x86_64')
 url="https://natrongithub.github.io/"
 license=('GPL')
-depends=('boost-libs' 'cairo' 'glfw-x11' 'python-pyside')
+depends=('boost-libs' 'cairo' 'glfw-x11' 'python2-pyside')
 makedepends=('boost' 'expat' 'openmp')
 optdepends=('openfx-arena: Extra OpenFX plugins for Natron'
             'openfx-gmic: OpenFX wrapper for the GMIC framework'

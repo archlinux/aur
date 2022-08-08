@@ -1,7 +1,7 @@
 pkgbase = natron-compositor
 	pkgdesc = Open source compositing software
 	pkgver = 2.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://natrongithub.github.io/
 	arch = x86_64
 	license = GPL
@@ -11,7 +11,7 @@ pkgbase = natron-compositor
 	depends = boost-libs
 	depends = cairo
 	depends = glfw-x11
-	depends = python-pyside
+	depends = python2-pyside
 	optdepends = openfx-arena: Extra OpenFX plugins for Natron
 	optdepends = openfx-gmic: OpenFX wrapper for the GMIC framework
 	optdepends = openfx-io: Readers/Writers plugins
