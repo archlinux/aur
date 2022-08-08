@@ -1,5 +1,5 @@
 pkgbase = portmaster-stub-bin
-	pkgdesc = Application Firewall: Block Mass Surveillance - Love Freedom
+	pkgdesc = Privacy Suite and Firewall: Installer to download the current binaries
 	pkgver = 0.8.8
 	pkgrel = 2
 	url = https://safing.io/portmaster
