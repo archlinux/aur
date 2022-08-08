@@ -1,0 +1,13 @@
+pkgbase = auth-get-sso-cookie
+	pkgdesc = auth-get-sso-cookie acquires CERN Single Sign-On cookie using Kerberos credentials allowing for automated access to CERN SSO protected pages using tools alike wget, curl or similar.
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://gitlab.cern.ch/authzsvc/docs/auth-get-sso-cookie
+	arch = any
+	license = MIT
+	makedepends = python-installer
+	depends = python-requests-gssapi
+	source = https://files.pythonhosted.org/packages/py3/a/auth-get-sso-cookie/auth_get_sso_cookie-2.2.0-py3-none-any.whl
+	sha256sums = 0e0668fb71339f0150d71248200c847ede3e60d0dac5fa15f4ace9caa4b613aa
+
+pkgname = auth-get-sso-cookie
