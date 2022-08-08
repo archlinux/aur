@@ -1,14 +1,14 @@
 pkgbase = libreoffice-extension-dictionaries-es
 	pkgdesc = Spanish dictionaries extension for LibreOffice
-	pkgver = 2.5
+	pkgver = 2.6
 	pkgrel = 1
 	url = https://extensions.libreoffice.org/extensions/spanish-dictionaries
 	arch = any
 	groups = libreoffice-extensions
 	license = GPL3
 	conflicts = languagetool
-	noextract = e217baa9_es-any.oxt
-	source = https://extensions.libreoffice.org/assets/downloads/z/e217baa9_es-any.oxt
-	sha256sums = 55a7be2423dc106557fa762c8f921c89071ff7cc8a54019af8cafc3c833e3571
+	noextract = 
+	source = https://extensions.libreoffice.org/assets/downloads/98/1659525229/es.oxt
+	sha256sums = 10fa51dffb78f0fc15fd791770813f551da43cf007b52cb8fb6ccb0b4117e85f
 
 pkgname = libreoffice-extension-dictionaries-es
