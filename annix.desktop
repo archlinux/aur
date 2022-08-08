@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Annix
+GenericName=Annix
+Comment=Music player for Project Anni
+Exec=/usr/bin/annix %F
+Icon=/usr/share/pixmaps/annix.png
+Terminal=false
+Type=Application
+Categories=AudioVideo;Player;
+Keywords=Music;MPD;
