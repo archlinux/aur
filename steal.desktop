@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Comment=Game launcher and bittorrent client
+Terminal=false
+Exec=/usr/bin/steal
+Name=Steal
+Categories=Game

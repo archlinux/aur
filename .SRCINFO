@@ -1,7 +1,7 @@
 pkgbase = steal-git
 	pkgdesc = Free and OpenSource game-center/bittorrent client
-	pkgver = r73.942a873
-	pkgrel = 1
+	pkgver = r90.736bc20
+	pkgrel = 2
 	url = https://github.com/AbdelrhmanNile/steal
 	arch = x86_64
 	depends = python
@@ -16,7 +16,10 @@ pkgbase = steal-git
 	depends = wine-staging
 	depends = webtorrent-cli
 	depends = dwarfs-bin
+	depends = zpaq
 	source = git+https://github.com/AbdelrhmanNile/steal
+	source = steal.desktop
 	sha256sums = SKIP
+	sha256sums = c4b61d58df723c8bb71f173c415e86b157f65cc5f40d7984134861b59844e7e4
 
 pkgname = steal-git
