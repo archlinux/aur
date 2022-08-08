@@ -65,8 +65,6 @@ pkgver() {
 }
 
 build() {
-  export PKG_CONFIG_PATH="/usr/lib/imagemagick6/pkgconfig"
-  export CXXFLAGS="${CXXFLAGS} -fpermissive"
   cmake -S "${_gitname}" -B build \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=RELEASE 
