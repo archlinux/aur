@@ -1,8 +1,8 @@
 # Maintainer: MelianMiko <melianmiko@gmail.com>
 pkgname=openfreebuds
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
-pkgdesc="Manager for HUAWEI FreeBuds (beta)"
+pkgdesc="Manager for HUAWEI FreeBuds"
 arch=(any)
 url="https://melianmiko.ru/openfreebuds"
 license=('GPLv3')
