@@ -17,7 +17,8 @@ pkgname="${_pkgname}${_major}"
 #_minor='301'; _build='b09'; _hash='d3c52aa6bfa54d3ca74e617f18309292'
 #_minor='311'; _build='b11'; _hash='4d5417147a92418ea8b615e228bb6935'
 #_minor='331'; _build='b09'; _hash='165374ff4ea84ef0bbd821706e29b123'
-_minor='333'; _build='b02'; _hash='2dee051a5d0647d5be72a7c0abff270e'
+#_minor='333'; _build='b02'; _hash='2dee051a5d0647d5be72a7c0abff270e'
+_minor='341'; _build='b10'; _hash='424b9da4b48848379167015dcc250d8d'
 pkgver="${_major}u${_minor}"
 pkgrel='1'
 pkgdesc="Oracle Java ${_major} Development Kit"
@@ -101,13 +102,13 @@ unset _srcfil
 unset XDG_DOWNLOAD_DIR
 fi
 
-md5sums=('913c45332b22860b096217d9952c2ea4'
+md5sums=('84d9c1dfd1617cbeac7e00f8945c8581'
          '8a66f50efdc867ffd6a27168bc93b210'
          '1cbde70639abd98db4bace284dbf2bc4'
          'f0b39865361437f3778ecbe6ffbc0a06'
          '89704501aff8efe859c31968d8d168e6'
          '46d719bf4872333ad6d138b050f1ad2d')
-sha256sums=('5390619a722eaccabd3b496f462b7f87cf69f98d3662fdc8452562b7bcb17e09'
+sha256sums=('c98e57cfc6ac9947d9aa9a31c5878d52e2bf764f8d90f20eec08f3c3fcaee0e7'
             '65282603bd0804d162f3f7da47bc7f3c91373e87504297d6a6fd6f2f8a1ec4ee'
             '8f865b52946a9ab98556c56306c7e70ae7aa432b4d005c70df0bba9d2c3111b1'
             '144e6651fcea08d95f3148d3a8ad17deb93fec4dd9236d37d27d7c648230b870'
