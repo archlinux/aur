@@ -27,12 +27,17 @@ validpgpkeys=()
 
 package() {
     bsdtar --cd "${pkgdir}" -xf "${srcdir}/data.tar.xz"
+    _optdir="2X/Client"
 
     # Permission fix
     find "${pkgdir}" -type d -exec chmod 755 {} +
 
+    # Fix udev symlink
+    rm "${pkgdir}/lib/udev/rules.d/90-rasusb.rules"
+    ln -s "/opt/${optdir}/share/udev.rules" "${pkgdir}/lib/udev/rules.d/90-rasusb.rules"
+
     # Move license
     rm -rf "${pkgdir}/usr/share/doc"
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-    ln -s "${pkgdir}/opt/2X/Client/doc/EULA.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    ln -s "/opt/${optdir}/doc/EULA.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
