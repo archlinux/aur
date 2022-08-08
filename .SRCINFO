@@ -1,6 +1,6 @@
 pkgbase = python-pytango
 	pkgdesc = Python binding for Tango, a library dedicated to distributed control systems.
-	pkgver = 9.3.3
+	pkgver = 9.3.4
 	pkgrel = 1
 	url = http://pytango.readthedocs.io/
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = python-pytango
 	depends = tango-cpp
 	depends = boost
 	conflicts = python-pytango-git
-	source = https://gitlab.com/tango-controls/pytango/-/archive/v9.3.3/pytango-v9.3.3.tar.gz
-	sha256sums = 5926e06fba42acd5c2376178fe87756ef42494ab3bc3e96f5289589ef2ff72fe
+	source = https://gitlab.com/tango-controls/pytango/-/archive/v9.3.4/pytango-v9.3.4.tar.gz
+	sha256sums = f1cf08b2ca6a62c7f6e77920b5d0ece98f90a5fd0d291ff6e35c6134c66e887e
 
 pkgname = python-pytango
