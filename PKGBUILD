@@ -1,6 +1,6 @@
 # Maintainer: Artem Klevtsov <a.a.klevtsov@gmail.com>
 pkgname=fanctl
-pkgver=0.6.2
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="replacement for fancontrol with more fine-grained control interface in its config file"
 arch=('i686' 'x86_64')

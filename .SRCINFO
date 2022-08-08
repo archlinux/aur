@@ -1,6 +1,6 @@
 pkgbase = fanctl
 	pkgdesc = replacement for fancontrol with more fine-grained control interface in its config file
-	pkgver = 0.6.2
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://gitlab.com/mcoffin/fanctl
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = fanctl
 	depends = lm_sensors
 	provides = fanctl-git
 	conflicts = fanctl-git
-	source = fanctl::git+https://git.sr.ht/~mcoffin/fanctl#tag=v0.6.2
+	source = fanctl::git+https://git.sr.ht/~mcoffin/fanctl#tag=v0.6.4
 	source = fanctl.service
 	sha512sums = SKIP
 	sha512sums = 577ab00c5cca64cc26dd882d9c6da05f3455cdaa7121ec041e53d5d046c65b8aeb29fd5aa59f0ea1a40ac9d3b9670df9854165ec8fee1ed1644e2c023d7caf00
