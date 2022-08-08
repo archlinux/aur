@@ -44,7 +44,6 @@ optdepends=(
 )
 provides=('inkscape')
 conflicts=('inkscape')
-options=('!libtool' '!buildflags')
 source=("inkscape.git::git+$url/inkscape.git"
 	"extensions.git::git+$url/extensions.git"
 	"lib2geom.git::git+$url/lib2geom.git")
