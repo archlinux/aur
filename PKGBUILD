@@ -1,5 +1,5 @@
 pkgname=papirus-icon-theme-stripped
-pkgver=20220710
+pkgver=20220808
 pkgrel=1
 pkgdesc="Papirus icon theme, stripped to only base (default + dark) variations."
 _name="${pkgname%-stripped}"
@@ -15,16 +15,18 @@ _archive="${_snapshot}.tar.gz"
 
 source=("${_archive}::${url}/archive/${pkgver}.tar.gz")
 noextract=("${_archive}")
-sha256sums=('9aa81b51b73bfafeae7dbf7ef411db7c74fcff983e4b13c0e05e481dc65971b2')
+sha256sums=('79885ffa464734a49ee73e60eaf78a0cf9c7d2cf310664a8b7c5c90c403644b1')
 
 package() {
     cd "${srcdir}"
 
-    install -dm755 "${pkgdir}/usr/share/icons" &&
-        tar -C "$_" --strip-components=1 --no-same-owner --no-same-permissions \
-            -xf "${_archive}" "${_snapshot}/Papirus" "${_snapshot}/Papirus-Dark"
+    local icons="${pkgdir}/usr/share/icons"
+    install -dm755 "${icons}"
+    tar -C "${icons}" --strip-components=1 --no-same-owner --no-same-permissions \
+        -xf "${_archive}" "${_snapshot}/Papirus" "${_snapshot}/Papirus-Dark"
 
-    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}" &&
-        tar -C "$_" --strip-components=1 --no-same-owner --no-same-permissions \
-            -xf "${_archive}" "${_snapshot}/LICENSE"
+    local licenses="${pkgdir}/usr/share/licenses/${pkgname}"
+    install -dm755 "${licenses}"
+    tar -C "${licenses}" --strip-components=1 --no-same-owner --no-same-permissions \
+        -xf "${_archive}" "${_snapshot}/LICENSE"
 }
