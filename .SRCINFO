@@ -1,0 +1,26 @@
+pkgbase = atoms-git
+	pkgver = r115.05c7d96
+	pkgrel = 1
+	url = https://github.com/mirkobrombin/Atoms
+	arch = any
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	depends = libadwaita-git
+	depends = proot
+	depends = python-certifi
+	depends = python-chardet
+	depends = python-idna
+	depends = python-orjson
+	depends = python-requests
+	depends = python-uproot
+	depends = python-urllib3
+	depends = talloc
+	depends = vte4
+	provides = atoms
+	conflicts = atoms
+	source = git+https://github.com/mirkobrombin/Atoms.git
+	b2sums = SKIP
+
+pkgname = atoms-git
