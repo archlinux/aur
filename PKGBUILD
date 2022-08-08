@@ -10,7 +10,8 @@ url="http://ora2pg.darold.net"
 license=('GPL' 'PerlArtistic')
 depends=('perl' 'perl-dbd-oracle')
 optdepends=('perl-dbd-pg: connect to a PostgreSQL db'
-            'perl-dbd-mysql: connect to a MySQL db')
+            'perl-dbd-mysql: connect to a MySQL db'
+            'perl-term-readkey: read input from terminal')
 options=('!emptydirs')
 source=("https://github.com/darold/ora2pg/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('e6c0e92ae9058c14480ec4a26db60796714a721eaf223ac53e1fe4e37d9ce2f6')
