@@ -12,7 +12,7 @@ pkgbase=openoffice-bin2
 pkgname=openoffice-bin2
 _vmaj=4
 pkgver=$_vmaj.1.13
-pkgrel=2
+pkgrel=3
 pkgdesc="The Free and Open Productivity Suite"
 arch=('x86_64' 'i686')
 url="https://www.openoffice.org"
@@ -42,8 +42,8 @@ conflicts=('openoffice-base-bin-unstable')
 replaces=('openoffice-base-bin' 'openoffice')
 backup=("opt/openoffice$_vmaj/program/sofficerc")
 options=(!strip docs)
-source_x86_64=('https://downloads.apache.org/openoffice/${pkgver}/binaries/${_lang}/Apache_OpenOffice_${pkgver}_Linux_x86-64_install-rpm_${_lang}.tar.gz')
-source_i686=('https://downloads.apache.org/openoffice/${pkgver}/binaries/${_lang}/Apache_OpenOffice_${pkgver}_Linux_x86_install-rpm_${_lang}.tar.gz')
+source_x86_64=("https://downloads.apache.org/openoffice/${pkgver}/binaries/${_lang}/Apache_OpenOffice_${pkgver}_Linux_x86-64_install-rpm_${_lang}.tar.gz")
+source_i686=("https://downloads.apache.org/openoffice/${pkgver}/binaries/${_lang}/Apache_OpenOffice_${pkgver}_Linux_x86_install-rpm_${_lang}.tar.gz")
 sha256sums_x86_64=('e0180206e59134f352706ac748a2fbb031441c39e10f496ceeb1a046c05dd7d5')
 sha256sums_i686=('7d127b36d01853e55690634e17708e33c4fb3496fbdb8d98828376b288466392')
 
@@ -79,18 +79,14 @@ _ln_s_t() {
 }
 
 package() {
-    cd $pkgdir
+    cd "${pkgdir}"
     local file
     for file in $( _find_rpms ); do
         echo "Extracting ${file##*/}"
         bsdtar -xf "${file}"
     done
     echo "Completing package"
-    echo "Link Binary"
-    local binaries=$(find opt/openoffice$_vmaj/program/ -executable -type f | grep -v -e .bin -e .sh | grep "/s")
-    for binary in binaries; do
-        ln -sf binary usr/bin/
-    done
+
     # remove symlink to avoid conflict with libreoffice-common 3.5.2-1
     # (not used in the desktop files)
     # [[ -h usr/bin/soffice ]] && rm -f usr/bin/soffice
