@@ -54,8 +54,8 @@ _gitname="inkscape.git"
 
 prepare() {
   cd  "$_gitname"
-  git config submodule.share/extensions.url ${srcdir}/extensions.git
-  git config submodule.src/3rdparty/2geom.url ${srcdir}/lib2geom.git
+  git config submodule.share/extensions.url "${srcdir}"/extensions.git
+  git config submodule.src/3rdparty/2geom.url "${srcdir}"/lib2geom.git
   git submodule update --init --remote
 }
 
