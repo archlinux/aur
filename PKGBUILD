@@ -3,7 +3,7 @@
 
 _basename=wsjtx
 pkgname="${_basename}-system-hamlib"
-pkgver=2.4.0
+pkgver=2.5.4
 pkgrel=1
 pkgdesc="Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - no superbuild (uses system hamlib and boost)"
 arch=('i686' 'x86_64')
@@ -19,10 +19,9 @@ depends=(
     )
 source=("${_basename}-${pkgver}.tar.gz::http://physics.princeton.edu/pulsar/K1JT/${_basename}-${pkgver}.tgz"
         cmakelists.patch
-        findhamlib.patch)
-sha1sums=('17308cf69c80e9159b7b68c88de3b2da6b0d92e9'
-          'a82a513bd8e9c83a0ef0292d544bad5b10a62a51'
-          'f406cde650b080184bc3e2e9e8d42eceb7da5cd5')
+        )
+sha1sums=('ccc5c187dd5c8608f49e44eec70c1da4fee1c09f'
+          'SKIP')
 
 prepare() {
     cd "$srcdir"
@@ -30,7 +29,6 @@ prepare() {
     bsdtar -xf "${_basename}-${pkgver}/src/wsjtx.tgz"
 
     patch -u -p1 -i cmakelists.patch
-    patch -u -p1 -i findhamlib.patch
 
     cd "$srcdir/$_basename"
     rm -rf boost

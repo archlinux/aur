@@ -1,8 +1,0 @@
---- old/wsjtx/CMake/Modules/Findhamlib.cmake	2020-05-14 02:03:53.289004152 +0200
-+++ new/wsjtx/CMake/Modules/Findhamlib.cmake	2020-05-14 02:04:10.002649459 +0200
-@@ -85,4 +85,4 @@
- # Handle the  QUIETLY and REQUIRED  arguments and set  HAMLIB_FOUND to
- # TRUE if all listed variables are TRUE
- include (FindPackageHandleStandardArgs)
--find_package_handle_standard_args (hamlib DEFAULT_MSG hamlib_INCLUDE_DIRS hamlib_LIBRARIES hamlib_LIBRARY_DIRS)
-+find_package_handle_standard_args (hamlib DEFAULT_MSG hamlib_INCLUDE_DIRS hamlib_LIBRARIES)
