@@ -1,7 +1,7 @@
 pkgbase = aide-selinux
 	pkgdesc = A file integrity checker and intrusion detection program.
-	pkgver = 0.16.2
-	pkgrel = 1
+	pkgver = 0.17.4
+	pkgrel = 2
 	url = http://aide.github.io/
 	arch = i686
 	arch = x86_64
@@ -12,16 +12,17 @@ pkgbase = aide-selinux
 	depends = libelf
 	depends = libselinux
 	depends = mhash
+	depends = e2fsprogs
+	depends = pcre
 	provides = aide
 	conflicts = aide
 	backup = etc/aide.conf
-	source = https://github.com/aide/aide/releases/download/v0.16.2/aide-0.16.2.tar.gz
-	source = https://github.com/aide/aide/releases/download/v0.16.2/aide-0.16.2.tar.gz.asc
+	source = https://github.com/aide/aide/releases/download/v0.17.4/aide-0.17.4.tar.gz
+	source = https://github.com/aide/aide/releases/download/v0.17.4/aide-0.17.4.tar.gz.asc
 	source = aide.conf
 	validpgpkeys = 2BBBD30FAAB29B3253BCFBA6F6947DAB68E7B931
-	md5sums = 9835914273bb06f9b3263ce36ef7149b
-	md5sums = SKIP
-	md5sums = d029f9796de01dc8a791f89ac931d7fb
+	sha256sums = c81505246f3ffc2e76036d43a77212ae82895b5881d9b9e25c1361b1a9b7a846
+	sha256sums = SKIP
+	sha256sums = dd8f40a6e0a298dd0f457e6d814bc29c3fd5e5061cc9007386e2c2c3c7887f1a
 
 pkgname = aide-selinux
-
