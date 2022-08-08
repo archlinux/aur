@@ -12,12 +12,13 @@ arch=("x86_64")
 provides=("pupbin")
 conflicts=("pupbin")
 source=("https://github.com/NavinShrinivas/PupBin/blob/main/arch-releases/pupbin-$pkgver-$CARCH.tar.gz")
-sha256sums=("639013699d0cba408705149b2da205c0878c6d6fedd6b6fc7f96b8509f11087e")
+sha256sums=("96655f2fce0a4714dd7f1d224725b0ab0159fd4368895cf1d5a9eeea5db29ef2")
 
 makedepends=(cargo openssl)
 
 
 package() {
+    cd $srcdir/Frontend
     cargo build --release
-    install -Dm755 "$srcdir/target/release/pupbin" "$pkgdir/usr/bin"
+    install -Dm755 "$srcdir/Frontend/target/release/pupbin" "$pkgdir/usr/bin/pupbin"
 }
