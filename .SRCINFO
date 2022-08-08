@@ -1,0 +1,14 @@
+pkgbase = cglm-git
+	pkgdesc = Highly Optimized Graphics Math (glm) for C
+	pkgver = v0.8.5.r40.g7dfe67c
+	pkgrel = 1
+	url = https://github.com/recp/cglm
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = cglm
+	conflicts = cglm
+	source = git+https://github.com/recp/cglm.git
+	md5sums = SKIP
+
+pkgname = cglm-git
