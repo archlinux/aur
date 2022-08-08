@@ -4,14 +4,14 @@
 
 pkgname=('textadept' 'textadept-gtk3' 'textadept-curses')
 pkgver=11.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, minimalist, and remarkably extensible cross-platform text editor"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/orbitalquark/textadept"
 license=('MIT')
 makedepends=('gtk2' 'gtk3' 'ncurses' 'wget' 'unzip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/${pkgname}_$pkgver.tar.gz")
-sha256sums=('2484c69cc9557c815be30e0eac563fad437557e5c356276ba4d54a295d66689b')
+sha256sums=('f23deb6e178c0eab2d91f5f43d74945aa7d7e90ceb5cc043fc900f9e61562383')
 
 prepare() {
 	cd "textadept-textadept_$pkgver/src"
@@ -35,9 +35,9 @@ package_textadept() {
 	if [[ -f ../textadept ]]; then
 		make clean
 	fi
-	make
+	make GTK2=1
 	make curses
-	make PREFIX=/usr DESTDIR="$pkgdir" install
+	make GTK2=1 PREFIX=/usr DESTDIR="$pkgdir" install
 	rm "$pkgdir/usr/share/pixmaps/"textadept{.svg,.png}
 	make curses PREFIX=/usr DESTDIR="$pkgdir" install
 
@@ -58,9 +58,9 @@ package_textadept-gtk3() {
 	if [[ -f ../textadept ]]; then
 		make clean
 	fi
-	make GTK3=1
+	make
 	make curses
-	make GTK3=1 PREFIX=/usr DESTDIR="$pkgdir" install
+	make PREFIX=/usr DESTDIR="$pkgdir" install
 	rm "$pkgdir/usr/share/pixmaps/"textadept{.svg,.png}
 	make curses PREFIX=/usr DESTDIR="$pkgdir" install
 
