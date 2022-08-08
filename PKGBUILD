@@ -1,7 +1,7 @@
 # Maintainer: Jonas Riedel <jonasriedel@protonmail.com>
 
 pkgname=rustyfetch
-pkgver=0.1.5
+pkgver=0.1.6
 pkgdesc="Fetch stuff with Rust!"
 pkgrel=1
 arch=('x86_64')
