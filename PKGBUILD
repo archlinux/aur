@@ -1,12 +1,14 @@
-# Maintainer:  twa022 <twa022 at gmail dot com>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor:  twa022 <twa022 at gmail dot com>
 
 _pkgname=basilisk
 pkgname=${_pkgname}-bin
 epoch=1
-_buildid=20220127145527
-pkgver=52.9.2022.01.27
+_buildid=20220806041504
+_date=2022.08.06
+pkgver=52.9.2022.08.06
 pkgrel=1
-pkgdesc="Basilisk Browser from the makers of Pale Moon"
+pkgdesc="A XUL-based web-browser demonstrating the Unified XUL Platform (UXP)."
 url="https://www.basilisk-browser.org"
 arch=('x86_64')
 license=('GPL')
@@ -14,11 +16,10 @@ depends=('gtk2' 'gtk3' 'dbus-glib' 'libxt' 'mime-types' 'nss' 'alsa-lib' 'icu')
 optdepends=('hunspell: spell checker and morphological analyzer'
             'hyphen: library for hyphenation and justification'
             'ffmpeg: record, convert, and stream audio and video')
-source=(https://archive.palemoon.org/basilisk/basilisk-${_buildid}.linux-x86_64.{tar.xz,json}
-#source=("${_pkgname}-${pkgver}.tar.xz::http://us.basilisk-browser.org/release/basilisk-latest.linux64.tar.xz"
+source=(https://archive.basilisk-browser.org/${_date}/linux/x86_64/gtk3/basilisk-${_buildid}.linux-x86_64.{tar.xz,json}
         'basilisk.desktop')
-sha256sums=('c2365732d7df1633a43d1ed3dffbed8610091cd45a22821f7033edad501e477b'
-            '7319d87fdb7691bb1fd02d3412f08b83eb1a21411c2224fc3c14e082e3920248'
+sha256sums=('c419870aaccf23f8e4f87c0336d286d0f06af529b6c0453a72b17e352337b406'
+            '1b3ece408159e7ca4542b3591808b2fcddf9621063cc3dc9937bf9d96fb13f2d'
             'c4223e966bc404467fece4a524cc2db3e99c12455087da2ade9a47b8d99d3a45')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")

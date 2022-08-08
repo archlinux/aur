@@ -1,6 +1,6 @@
 pkgbase = basilisk-bin
-	pkgdesc = Basilisk Browser from the makers of Pale Moon
-	pkgver = 52.9.2022.01.27
+	pkgdesc = A XUL-based web-browser demonstrating the Unified XUL Platform (UXP).
+	pkgver = 52.9.2022.08.06
 	pkgrel = 1
 	epoch = 1
 	url = https://www.basilisk-browser.org
@@ -17,13 +17,13 @@ pkgbase = basilisk-bin
 	optdepends = hunspell: spell checker and morphological analyzer
 	optdepends = hyphen: library for hyphenation and justification
 	optdepends = ffmpeg: record, convert, and stream audio and video
-	provides = basilisk=52.9.2022.01.27
+	provides = basilisk=52.9.2022.08.06
 	conflicts = basilisk
-	source = https://archive.palemoon.org/basilisk/basilisk-20220127145527.linux-x86_64.tar.xz
-	source = https://archive.palemoon.org/basilisk/basilisk-20220127145527.linux-x86_64.json
+	source = https://archive.basilisk-browser.org/2022.08.06/linux/x86_64/gtk3/basilisk-20220806041504.linux-x86_64.tar.xz
+	source = https://archive.basilisk-browser.org/2022.08.06/linux/x86_64/gtk3/basilisk-20220806041504.linux-x86_64.json
 	source = basilisk.desktop
-	sha256sums = c2365732d7df1633a43d1ed3dffbed8610091cd45a22821f7033edad501e477b
-	sha256sums = 7319d87fdb7691bb1fd02d3412f08b83eb1a21411c2224fc3c14e082e3920248
+	sha256sums = c419870aaccf23f8e4f87c0336d286d0f06af529b6c0453a72b17e352337b406
+	sha256sums = 1b3ece408159e7ca4542b3591808b2fcddf9621063cc3dc9937bf9d96fb13f2d
 	sha256sums = c4223e966bc404467fece4a524cc2db3e99c12455087da2ade9a47b8d99d3a45
 
 pkgname = basilisk-bin
