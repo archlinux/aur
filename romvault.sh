@@ -1,4 +1,4 @@
 #!/bin/sh
 
 cd /opt/romvault/
-mono /opt/romvault/ROMVault3.exe "$@"
+mono /opt/romvault/ROMVault35.exe "$@"
