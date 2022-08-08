@@ -4,7 +4,7 @@
 
 set -u
 pkgname='rush'
-pkgver='2.2'
+pkgver='2.3'
 pkgrel='1'
 pkgdesc='GNU Restricted User Shell'
 arch=('i686' 'x86_64')
@@ -17,11 +17,11 @@ _verwatch=("${url}download.html" "${pkgname}-\([0-9\.]\+\)\.tar.xz" 't')
 source=("http://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz"
         'rush-1.7-glib-2.16-gets.patch')
 # md5 and sha1 are published by gnu
-md5sums=('8acf915dd6354fd2ff2294faf368adc4'
+md5sums=('a1b0efc99714c5d6385c98b2d7d1b01f'
          'dcd87b8bf9738796621030930384f97d')
-sha1sums=('86ae9d9d2a47c56de687af642e488cd895e977f7'
+sha1sums=('6ccce567b260688b23881cdd05c4365f8f3638f6'
           'adb33d34f04846734ec3457517b46fb7a73efa6f')
-sha256sums=('b1fb69dcd2b082cc5bca804307baeec4ed6da77f747df0066c7d1ad2c353797f'
+sha256sums=('8cae258247cd2623e856ea5e2c62cd7f09e9e3e043e6fc63bbd1abec3d3fdd93'
             '159dd2fc0fd4feec5d43cf7763a429b9c2da5c50597b157de9e5b376d9ff85a8')
 
 prepare() {
