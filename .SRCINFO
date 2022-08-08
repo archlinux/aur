@@ -1,6 +1,6 @@
 pkgbase = go-task-bin
 	pkgdesc = Task runner & Make alternative that runs taskfiles (Installs as go-task to avoid conflict with taskwarrior)
-	pkgver = 3.14.0
+	pkgver = 3.14.1
 	pkgrel = 1
 	url = https://github.com/go-task/task
 	arch = x86_64
@@ -12,14 +12,14 @@ pkgbase = go-task-bin
 	conflicts = go-task
 	conflicts = gotask-taskfile-bin
 	replaces = gotask-taskfile-bin
-	noextract = go-task-bin-3.14.0.tar.gz
-	source_x86_64 = go-task-bin-3.14.0.tar.gz::https://github.com/go-task/task/releases/download/v3.14.0/task_linux_amd64.tar.gz
+	noextract = go-task-bin-3.14.1.tar.gz
+	source_x86_64 = go-task-bin-3.14.1.tar.gz::https://github.com/go-task/task/releases/download/v3.14.1/task_linux_amd64.tar.gz
 	sha256sums_x86_64 = e5786c1bfe1f503c5f1f61141988969bb51517669cb8b6b97001d03e0e482757
-	source_i686 = go-task-bin-3.14.0.tar.gz::https://github.com/go-task/task/releases/download/v3.14.0/task_linux_386.tar.gz
+	source_i686 = go-task-bin-3.14.1.tar.gz::https://github.com/go-task/task/releases/download/v3.14.1/task_linux_386.tar.gz
 	sha256sums_i686 = 65900f4f34ff64f9b7943d9dcae46d36775d6ab756289d7cbe4c188437592354
-	source_armv7h = go-task-bin-3.14.0.tar.gz::https://github.com/go-task/task/releases/download/v3.14.0/task_linux_arm.tar.gz
+	source_armv7h = go-task-bin-3.14.1.tar.gz::https://github.com/go-task/task/releases/download/v3.14.1/task_linux_arm.tar.gz
 	sha256sums_armv7h = 1fc5e4b6dd6a4423fcde5185012aa864305833f78104481e9876b76232cd71ed
-	source_aarch64 = go-task-bin-3.14.0.tar.gz::https://github.com/go-task/task/releases/download/v3.14.0/task_linux_arm64.tar.gz
+	source_aarch64 = go-task-bin-3.14.1.tar.gz::https://github.com/go-task/task/releases/download/v3.14.1/task_linux_arm64.tar.gz
 	sha256sums_aarch64 = bab30228a135fceb202c7f0d52bfdafbfda40581a271c41aea6b32cd8376e600
 
 pkgname = go-task-bin
