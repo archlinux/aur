@@ -1,5 +1,5 @@
 pkgbase = veloren-nightly
-	pkgdesc = This version is compatible with the official server.
+	pkgdesc = An open-world, open-source multiplayer voxel RPG. Version matches official server.
 	pkgver = 0.13.0.r37.525866816
 	pkgrel = 1
 	url = https://veloren.net/

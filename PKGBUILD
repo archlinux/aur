@@ -4,7 +4,7 @@
 pkgname=veloren-nightly
 pkgver=0.13.0.r37.525866816
 pkgrel=1
-pkgdesc="This version is compatible with the official server."
+pkgdesc="An open-world, open-source multiplayer voxel RPG. Version matches official server."
 arch=('x86_64' 'i686')
 url='https://veloren.net/'
 license=('GPL3')
