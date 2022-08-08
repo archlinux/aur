@@ -3,7 +3,7 @@
 # Contributor: Michael Spradling <mike@mspradling.com>
 
 pkgname='passhole'
-pkgver='1.9.7'
+pkgver='1.9.8'
 pkgrel=1
 pkgdesc='KeePass CLI + dmenu interface'
 arch=('any')
