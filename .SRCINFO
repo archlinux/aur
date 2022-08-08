@@ -1,0 +1,27 @@
+pkgbase = portmaster-stub-bin
+	pkgdesc = Application Firewall: Block Mass Surveillance - Love Freedom
+	pkgver = 0.8.8
+	pkgrel = 2
+	url = https://safing.io/portmaster
+	install = arch.install
+	arch = x86_64
+	license = AGPL3
+	makedepends = imagemagick
+	depends = libnetfilter_queue
+	optdepends = libappindicator-gtk3: for systray indicator
+	provides = portmaster
+	conflicts = portmaster
+	noextract = portmaster-start
+	options = !strip
+	source = portmaster-start::https://updates.safing.io/linux_amd64/start/portmaster-start_v0-8-8
+	source = portmaster.desktop
+	source = portmaster_notifier.desktop
+	source = portmaster_logo.png
+	source = portmaster.service
+	sha256sums = 36fd91e85d69618cea4a8f4590ceb52893edad601f0231bfdf53ce3f5dddb37e
+	sha256sums = 7b0c03e4552dd86caeff2d628b13346cfe70a646af11abac6555e348e46c28da
+	sha256sums = 490b586f185218fdd947e8f12aa2dc412d78d89c8ce9b8ef5a75cb2e5ffb94ae
+	sha256sums = ecb02625952594af86d3b53762363c1e227c2b9604fc9c9423682fc87a92a957
+	sha256sums = bc26dd37e6953af018ad3676ee77570070e075f2b9f5df6fa59d65651a481468
+
+pkgname = portmaster-stub-bin

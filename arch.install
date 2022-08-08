@@ -1,0 +1,185 @@
+
+
+post_install() {
+    log() {
+        echo "$@" 
+    }
+    #
+    # Prepares systemd support by creating a symlink for the .service file
+    # and enabling/disabling certain features of our .service unit based on
+    # the available systemd version. 
+    #
+    installSystemdSupport() {
+        local changed="False"
+        if command -V systemctl >/dev/null 2>&1; then
+            local systemd_version="$(systemctl --version | head -1 | sed -n 's/systemd \([0-9]*\).*/\1/p')"
+            # not all distros have migrated /lib to /usr/lib yet but all that
+            # have provide a symlink from /lib -> /usr/lib so we just prefix with
+            # /lib here.
+            ln -s /opt/safing/portmaster/portmaster.service /lib/systemd/system/portmaster.service 2>/dev/null >&2 || 
+                log error "Failed to install systemd unit file. Please copy /opt/safing/portmaster/portmaster.service to /etc/systemd/system manually"
+
+            # rhel/centos8 does not yet have ProtectKernelLogs available
+            if [ "${systemd_version}" -lt 244 ]; then
+                sed -i "s/^ProtectKernelLogs/#ProtectKernelLogs/g" /opt/safing/portmaster/portmaster.service ||:
+                changed="True"
+            fi
+
+            if [ "${changed}" = "True" ] && [ "$1" = "upgrade" ]; then
+                systemctl daemon-reload ||:
+            fi
+
+            log "info" "Configuring portmaster.service to launch at boot"
+            systemctl enable portmaster.service ||:
+        fi
+    }
+    #
+    # install .desktop files, either using desktop-file-install when available
+    # or by just copying the files into /usr/share/applications.
+    #
+    if command -V desktop-file-install >/dev/null 2>&1; then
+        desktop-file-install /opt/safing/portmaster/portmaster.desktop 2>/dev/null ||:
+        desktop-file-install /opt/safing/portmaster/portmaster_notifier.desktop 2>/dev/null ||
+            log error "Failed to install .desktop files. Please copy /opt/safing/portmaster/*.desktop manually"
+    elif [ -d /usr/share/applications ]; then
+        cp /opt/safing/portmaster/portmaster.desktop /opt/safing/portmaster/portmaster_notifier.desktop /usr/share/applications 2>/dev/null ||
+            log error "Failed to install .desktop files. Please copy /opt/safing/portmaster/*.desktop manually"
+    fi
+
+    installSystemdSupport
+
+    #
+    # Fix selinux permissions for portmaster-start if we have semanage
+    # available.
+    #
+    if command -V semanage >/dev/null 2>&1; then
+        semanage fcontext -a -t bin_t -s system_u $(realpath /opt)'/safing/portmaster/portmaster-start' || :
+        semanage fcontext -a -t bin_t -s system_u $(realpath /opt)'/safing/portmaster/updates/linux_(.*)' || :
+        restorecon -R /opt/safing/portmaster 2>/dev/null >&2 || :
+    fi
+
+    #
+    # Prepare the installation directory tree
+    #
+    /opt/safing/portmaster/portmaster-start --data /opt/safing/portmaster clean-structure
+
+    #
+    # Finally, trigger downloading modules. As this requires internet access
+    # it is more likely to fail and is thus the last thing we do.
+    #
+    if [ "${skip_downloads}" = "True" ]; then
+        log "info" "Downloading of Portmaster modules skipped!"
+        log "info" "Please run '/opt/safing/portmaster/portmaster-start --data /opt/safing/portmaster update' manually.\n"
+        return
+    fi
+    log "Downloading portmaster modules. This may take a while ..."
+    /opt/safing/portmaster/portmaster-start --data /opt/safing/portmaster update --update-agent "${download_agent}" 2>/dev/null >/dev/null || (
+        log "error" "Failed to download modules"
+        log "error" "Please run '/opt/safing/portmaster/portmaster-start --data /opt/safing/portmaster update' manually.\n"
+    )
+
+    # finally, once we donwloaded the modules restore the SE-linux context
+    # for all downloaded files
+    if command -V semanage >/dev/null 2>&1; then
+        restorecon -R /opt/safing/portmaster 2>/dev/null >&2 || :
+    fi
+}
+
+post_upgrade() {
+    log() {
+        echo "$@" 
+    }
+    #
+    # Prepares systemd support by creating a symlink for the .service file
+    # and enabling/disabling certain features of our .service unit based on
+    # the available systemd version. 
+    #
+    installSystemdSupport() {
+        local changed="False"
+        if command -V systemctl >/dev/null 2>&1; then
+            local systemd_version="$(systemctl --version | head -1 | sed -n 's/systemd \([0-9]*\).*/\1/p')"
+            # not all distros have migrated /lib to /usr/lib yet but all that
+            # have provide a symlink from /lib -> /usr/lib so we just prefix with
+            # /lib here.
+            ln -s /opt/safing/portmaster/portmaster.service /lib/systemd/system/portmaster.service 2>/dev/null >&2 || 
+                log error "Failed to install systemd unit file. Please copy /opt/safing/portmaster/portmaster.service to /etc/systemd/system manually"
+
+            # rhel/centos8 does not yet have ProtectKernelLogs available
+            if [ "${systemd_version}" -lt 244 ]; then
+                sed -i "s/^ProtectKernelLogs/#ProtectKernelLogs/g" /opt/safing/portmaster/portmaster.service ||:
+                changed="True"
+            fi
+
+            if [ "${changed}" = "True" ] && [ "$1" = "upgrade" ]; then
+                systemctl daemon-reload ||:
+            fi
+
+            log "info" "Configuring portmaster.service to launch at boot"
+            systemctl enable portmaster.service ||:
+        fi
+    }
+    #
+    # As of 0.4.0 portmaster-control has been renamed to portmaster-start
+    # and is not placed in /usr/bin anymore. Unfortunately, the postrm script
+    # of the old installer does not get rid of portmaster-control so we should
+    # take care during an upgrade.
+    #
+    rm /usr/bin/portmaster-control 2>/dev/null >&2 ||:
+
+    #
+    # If there's already a /var/lib/portmaster installation we're going to move
+    # configs and databases and remove the complete directory
+    # The preinstall.sh already checked that /var/lib/portmaster/updates MUST NOT
+    # exist so we should be safe to touch the databases here.
+    #
+    if [ -d /var/lib/portmaster ]; then
+        if [ ! -d /opt/safing/portmaster/config.json ]; then
+            log "info" "Migrating from previous installation at /var/lib/portmaster to /opt/safing/portmaster ..."
+            mv /var/lib/portmaster/databases /opt/safing/portmaster/databases ||:
+            mv /var/lib/portmaster/config.json /opt/safing/portmaster/config.json ||:
+        fi
+        log "info" "Removing previous installation directory at /var/lib/portmaster"
+        rm -r /var/lib/portmaster 2>/dev/null >&2 ||:
+    fi
+
+}
+
+pre_remove() {
+    log() {
+        echo "$@" 
+    }
+    # stop the portmaster service and disable it if it's enabled.
+    if command -V systemctl >/dev/null 2>&1; then
+        if (systemctl -q is-active portmaster.service); then
+            log "info" "Stopping portmaster.service"
+            systemctl stop portmaster.service ||:
+        fi
+        if (systemctl -q is-enabled portmaster.service); then
+            log "info" "Disabling portmaster.service to launch at boot"
+            systemctl disable portmaster.service ||:
+        fi
+    fi
+}
+
+post_remove() {
+    log() {
+        echo "$@" 
+    }
+    rm -rf /opt/safing/portmaster/updates ||:
+
+    # file is marked as a ghost on RPM system so it might have
+    # been automatically deleted by the package manager.
+    rm /lib/systemd/system/portmaster.service 2>/dev/null >&2 ||:
+    rm /usr/share/applications/portmaster.desktop 2>/dev/null >&2 ||:
+    rm /usr/share/applications/portmaster_notifier.desktop 2>/dev/null >&2 ||:
+
+    if command -V semanage >/dev/null 2>&1; then
+        semanage fcontext --delete $(realpath /opt)'/safing/portmaster/portmaster-start' || :
+        semanage fcontext --delete $(realpath /opt)'/safing/portmaster/updates/linux_(.*)' || :
+        restorecon -R /opt/safing/portmaster 2>/dev/null >&2 || :
+    fi
+
+    if [ "$1" = "purge" ]; then
+        rm -rf /opt/safing/portmaster ||:
+    fi
+}
