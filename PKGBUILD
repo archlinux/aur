@@ -11,7 +11,7 @@ pkgdesc="Coroutine-based concurrency library for PHP"
 arch=('x86_64')
 url="https://github.com/swoole/swoole-src"
 license=('Apache')
-depends=('brotli' 'openssl' 'zlib')
+depends=('php')
 makedepends=('gcc' 'make')
 
 source=("https://github.com/swoole/swoole-src/archive/refs/tags/v$pkgver.tar.gz"
