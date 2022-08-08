@@ -1,0 +1,14 @@
+pkgbase = zaman
+	pkgdesc = Print man pages in a PDF file (with vim keys support) for an easier reading
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Antiz96/zaman
+	arch = any
+	license = GPL3
+	depends = zathura
+	depends = zathura-pdf-poppler
+	depends = dmenu
+	source = zaman-1.0.0.tar.gz::https://github.com/Antiz96/zaman/archive/v1.0.0.tar.gz
+	sha256sums = c689ec4886aea672a38d61c69edd88a195a10fbffdbc6d6f0ffaa48994fddb53
+
+pkgname = zaman
