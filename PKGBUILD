@@ -2,8 +2,8 @@
 
 pkgname=vim-colors-zenburn-git
 pkgdesc='A low-contrast color scheme for Vim'
-pkgver=20210915
-pkgrel=3
+pkgver=r44.de2fa06
+pkgrel=1
 url='http://kippura.org/zenburnpage/'
 arch=('any')
 license=('GPL')
@@ -15,9 +15,8 @@ source=("$pkgname::git+https://github.com/jnurmine/Zenburn.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
-    local _tmpver="$(git log -n 1 --format="%cd" --date=short)"
-    echo "${_tmpver//-/}"
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
