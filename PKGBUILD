@@ -4,14 +4,14 @@
 # Contributor: liberodark
 
 pkgname=natron-compositor-git
-pkgver=2.5.0.alpha.1.r15.g240306877
+pkgver=2.5.0.alpha.2.r81.g6588ac043
 pkgrel=1
 pkgdesc="Open source compositing software"
 arch=('x86_64')
 url="https://natrongithub.github.io/"
 license=('GPL')
-depends=('boost-libs' 'cairo' 'glfw-x11' 'python2-pyside')
-makedepends=('boost' 'expat' 'openmp')
+depends=('boost-libs' 'cairo' 'glfw-x11' 'pyside2' 'python-qtpy' 'shiboken2')
+makedepends=('boost' 'extra-cmake-modules' 'expat' 'git' 'openmp' 'ninja')
 optdepends=('openfx-arena: Extra OpenFX plugins for Natron'
             'openfx-gmic: OpenFX wrapper for the GMIC framework'
             'openfx-io: Readers/Writers plugins'
@@ -20,17 +20,16 @@ optdepends=('openfx-arena: Extra OpenFX plugins for Natron'
 _pkgname=${pkgname%%-*}
 _url="https://github.com/NatronGitHub"
 
-conflicts=("${_pkgname}")
+conflicts=("$_pkgname")
 
-source=("${_pkgname}::git+${_url}/${_pkgname^}"
-        "openfx::git+${_url}/openfx"
-        "OpenColorIO-Configs::git+${_url}/OpenColorIO-Configs"
-        "google-breakpad::git+${_url}/google-breakpad"
-        "google-mock::git+${_url}/google-mock"
-        "google-test::git+${_url}/google-test"
-        "SequenceParsing::git+${_url}/SequenceParsing"
-        "tinydir::git+${_url}/tinydir"
-        "config.pri")
+source=("$_pkgname::git+$_url/${_pkgname^}"
+        "openfx::git+$_url/openfx"
+        "OpenColorIO-Configs::git+$_url/OpenColorIO-Configs"
+        "google-breakpad::git+$_url/google-breakpad"
+        "google-mock::git+$_url/google-mock"
+        "google-test::git+$_url/google-test"
+        "SequenceParsing::git+$_url/SequenceParsing"
+	"tinydir::git+$_url/tinydir")
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -38,58 +37,69 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            '48017b7b9cd1854064b9ddffecedef89a4d38070f9a7d2cd506aad481a8061c5cffe5e5c84fc9b0ac5216fc99e093481db367e91ce52cb2a8a66223c4209402a')
+	    'SKIP')
 
 pkgver() {
-  cd ${_pkgname}
+  cd $_pkgname
   git describe --long --tags| sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
-  mv -f OpenColorIO-Configs config.pri ${_pkgname}
-
-  cd ${_pkgname}
+  cd $_pkgname
   git submodule init
-  git config submodule.libs/google-breakpad.url $srcdir/google-breakpad
-  git config submodule.libs/OpenFX.url $srcdir/openfx
-  git config submodule.libs/SequenceParsing.url $srcdir/SequenceParsing
-  git config submodule.Tests/google-mock.url $srcdir/google-mock
-  git config submodule.Tests/google-test.url $srcdir/google-test
+  git config submodule.libs/google-breakpad.url "$srcdir/google-breakpad"
+  git config submodule.libs/OpenFX.url "$srcdir/openfx"
+  git config submodule.libs/SequenceParsing.url "$srcdir/SequenceParsing"
+  git config submodule.Tests/google-mock.url "$srcdir/google-mock"
+  git config submodule.Tests/google-test.url "$srcdir/google-test"
   git submodule update
 
   cd libs/SequenceParsing
-  git config submodule.tinydir.url $srcdir/tinydir
+  git config submodule.tinydir.url "$srcdir/tinydir"
   git submodule update
+
+  # Adjustments to CMake rules
+  sed -i '/target_include_directories/ s/(.*/(glog PUBLIC src)/' \
+         "$srcdir/natron/libs/glog/CMakeLists.txt"
+  sed -i '/target_compile_definitions/d' \
+         "$srcdir/natron/libs/glog/CMakeLists.txt"
+  echo "target_include_directories(qhttpserver PUBLIC http-parser)" >> \
+       "$srcdir/natron/libs/qhttpserver/CMakeLists.txt"
 }
 
 build() {
-  cd ${_pkgname}
+  cd $_pkgname
 
-  [[ -d build ]] && rm -r build; mkdir build; cd build
+  cmake -G Ninja \
+        -B build \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DNATRON_BUILD_TESTS=OFF
 
-  qmake-qt4 -r ../Project.pro \
-               PREFIX=/usr \
-               BUILD_USER_NAME="Arch_Linux" \
-               CONFIG+=custombuild \
-               CONFIG+=openmp \
-               DEFINES+=QT_NO_DEBUG_OUTPUT \
-               QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
-               QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
-               QMAKE_LFLAGS_RELEASE="${LDFLAGS}"
-
-  make
+  ninja -C build/
 }
 
 package() {
-  cd ${_pkgname}/build
-  make INSTALL_ROOT="${pkgdir}" install
-  
-  install -d "${pkgdir}/usr/share/Natron/Plugins/"
-  cp -r "../Gui/Resources/PyPlugs" \
-        "${pkgdir}/usr/share/Natron/Plugins/"
+  cd $_pkgname
 
-  install -d "${pkgdir}/etc/profile.d"
-  echo -e "export FONTCONFIG_PATH=/etc/fonts\n" > "${pkgdir}/etc/profile.d/${pkgname%-*}.sh"
-  echo -e "setenv FONTCONFIG_PATH /etc/fonts\n" > "${pkgdir}/etc/profile.d/${pkgname%-*}.csh"
+  DESTDIR="$pkgdir" ninja -C build/ install
+
+  install -d "$pkgdir/usr/share/Natron/Plugins/"
+  cp -r "Gui/Resources/PyPlugs" \
+        "$pkgdir/usr/share/Natron/Plugins/"
+
+  install -d "$pkgdir/usr/share/mime/application/"
+  mv "$pkgdir/usr/share/mime/x-natron.xml" \
+     "$pkgdir/usr/share/mime/application/"
+
+  install -d "$pkgdir/usr/share/OpenColorIO-Configs/"
+  for directory in blender natron nuke-default
+  do
+    cp -r "$srcdir/OpenColorIO-Configs/$directory/" \
+          "$pkgdir/usr/share/OpenColorIO-Configs/"
+  done
+
+  install -d "$pkgdir/etc/profile.d"
+  echo -e "export FONTCONFIG_PATH=/etc/fonts\n" > "$pkgdir/etc/profile.d/$_pkgname.sh"
+  echo -e "setenv FONTCONFIG_PATH /etc/fonts\n" > "$pkgdir/etc/profile.d/$_pkgname.csh"
 }
