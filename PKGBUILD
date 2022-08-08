@@ -12,7 +12,7 @@ arch=("x86_64")
 provides=("pupbin")
 conflicts=("pupbin")
 source=("https://github.com/NavinShrinivas/PupBin/blob/main/arch-releases/pupbin-$pkgver-$CARCH.tar.gz")
-sha256sums=("96655f2fce0a4714dd7f1d224725b0ab0159fd4368895cf1d5a9eeea5db29ef2")
+sha256sums=("ee94297fd4efdef05054ab53d2ec00b1f4819bb944ae3087ec6a53ffd169a3d7")
 
 makedepends=(cargo openssl)
 
