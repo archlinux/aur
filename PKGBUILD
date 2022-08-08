@@ -2,13 +2,13 @@
 # Co-Maintainer:    zzjzxq33 <wojiushixxx at 126 dot com>
 pkgname=bbg-git
 _pkgname=${pkgname%-git}
-pkgver=20220717.r0.40686ab
+pkgver=20220809.r9.2b91f0f
 pkgrel=1
 pkgdesc="A static blog generator built with electron"
 arch=('any')
 url="https://github.com/bbg-contributors/bbg"
 license=('Unlicense')
-depends=('electron19')
+depends=('electron20')
 makedepends=('git' 'yarn' 'asar')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -19,7 +19,7 @@ source=(
 	"${_pkgname}::git+${url}.git"
 )
 sha256sums=(
-	'94dec4c60fa1e124569bd9ff75cf29b51eeb85025e27dde1b15979f4525f25e6'
+	'd42008985970863855628fe7e65b43ad3c07bf18e51b4f770a95d6aef1bb3e56'
 	'SKIP'
 	'f503d93639c1f4d4e050eceb11adf64d369908e5941cfdbda3af30b2f3c73d96'
 	'SKIP'
@@ -28,6 +28,11 @@ sha256sums=(
 pkgver() {
 	cd "$srcdir/${_pkgname}"
 	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
+prepare() {
+	cd "$srcdir/${_pkgname}"
+	git submodule update --init --recursive
 }
 
 build() {
