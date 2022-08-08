@@ -4,14 +4,14 @@
 
 pkgname='passhole'
 pkgver='1.9.8'
-pkgrel=1
+pkgrel=2
 pkgdesc='KeePass CLI + dmenu interface'
 arch=('any')
 url="https://github.com/Evidlo/passhole"
 makedepends=('python-setuptools' 'git')
 depends=("python-pynput" "python-pykeepass" "python-pykeepass_cache" "python-colorama" "python-future" "python-pyotp" )
 source=("https://github.com/Evidlo/passhole/archive/v$pkgver.tar.gz")
-sha512sums=('69af37addc902b024e2dc343ca779dcc3884c0c6bdf06740a9dfb76d13205611e43c6b775fc2103ebe9c5dc89bbec98b719bf0df7461618a258c6536923533c0')
+sha512sums=('941a3b12587f3c97baf420a679639394f801b1880ccb8f95a084a58478826bc1f462d5d902a9fca893d9e750c90bc387eddcabd1b7ba73da5c84ec3097e28de4')
 
 package() {
   cd "$srcdir/passhole-$pkgver"
