@@ -1,9 +1,9 @@
-#Maintainer: Davide Gerhard <rainbow@irh.it>
+# Maintainer: Davide Gerhard <rainbow@irh.it>
 # Contributor: Joshua Rubin <me at jawa dot dev>
 
 pkgname=pihpsdr-git
 _pkgname=pihpsdr
-pkgver=r1486.c2304f6
+pkgver=r1493.a415f5c
 pkgrel=1
 pkgdesc='piHPSDR'
 arch=('x86_64')
