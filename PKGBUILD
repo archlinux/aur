@@ -4,7 +4,7 @@
 _arch=armv7l
 _target=$_arch-unknown-linux-gnueabihf
 pkgname=$_arch-glibc
-pkgver=2.35
+pkgver=2.36
 pkgrel=1
 _commit=be176490b818b65b5162c332eb6b581690b16e5c
 pkgdesc="GNU C Library ARM (32bit) target"
@@ -15,7 +15,7 @@ depends=()
 makedepends=($_arch-gcc $_arch-linux-api-headers)
 options=(!strip staticlibs)
 source=(https://ftp.gnu.org/gnu/libc/glibc-$pkgver.tar.xz{,.sig})
-sha256sums=('5123732f6b67ccd319305efd399971d58592122bcc2a6518a1bd2510dd0cf52e'
+sha256sums=('1c959fea240906226062cb4b1e7ebce71a9f0e3c0836c09e7e3423d434fcfe75'
             'SKIP')
 validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8  # "Carlos O'Donell <carlos@systemhalted.org>"
               BC7C7372637EC10C57D7AA6579C43DFBF1CF2187) # Siddhesh Poyarekar
@@ -34,7 +34,6 @@ build() {
   CFLAGS="-march=armv7-a -mfloat-abi=hard -mfpu=neon -O2 -pipe -fstack-protector-strong -fno-plt -fexceptions \
 -Wformat -Werror=format-security \
 -fstack-clash-protection"
-CXXFLAGS="$CFLAGS -Wp,-D_GLIBCXX_ASSERTIONS"
 
   "$srcdir"/glibc-$pkgver/configure \
       --prefix=/usr \
