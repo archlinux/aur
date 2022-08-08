@@ -1,5 +1,6 @@
 pkgbase = atoms-git
-	pkgver = r115.05c7d96
+	pkgdesc = Easily manage Linux chroot(s)
+	pkgver = r117.522ef8f
 	pkgrel = 1
 	url = https://github.com/mirkobrombin/Atoms
 	arch = any
@@ -8,6 +9,7 @@ pkgbase = atoms-git
 	makedepends = git
 	makedepends = meson
 	depends = libadwaita-git
+	depends = podman
 	depends = proot
 	depends = python-certifi
 	depends = python-chardet
