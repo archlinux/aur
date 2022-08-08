@@ -2,13 +2,13 @@
 
 pkgname=libkrun-git
 pkgver=v0.2.0.r52.gc3c18b1
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic library providing Virtualization-based process isolation capabilities"
 arch=("x86_64")
 url="https://github.com/containers/libkrun"
 license=("GPL2")
 depends=("libkrunfw")
-makedepends=("cargo" "git" "gcc")
+makedepends=("cargo" "git" "gcc" "patchelf")
 provides=("libkrun")
 conflicts=("libkrun")
 source=("${pkgname}::git+https://github.com/containers/libkrun")
