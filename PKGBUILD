@@ -7,7 +7,7 @@ _pkgrel_armv7h=1
 _pkgrel_aarch64=1
 pkgdesc="Unofficial 7Plus desktop application."
 arch=('x86_64' 'arm7h' 'aarch64')
-url="https://gitlab.com/7plus-application"
+url="hhttps://gitlab.com/7plus"
 license=('GPL')
 depends=('nss' 'gtk3' 'libxss')
 makedepends=('unzip')
@@ -15,9 +15,9 @@ conflicts=("7plus-git")
 sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
 sha256sums_armv7h=('SKIP')
-source_x86_64=("https://gitlab.com/7plus-application/binaries/"$pkgver"-"$pkgrel"/-/raw/main/7Plus-linux-x64.tar.gz")
-source_armv7h=("https://gitlab.com/7plus-application/binaries/"$pkgver"-"$pkgrel"/-/raw/main/7Plus-linux-armv7l.tar.gz")
-source_aarch64=("https://gitlab.com/7plus-application/binaries/"$pkgver"-"$pkgrel"/-/raw/main/7Plus-linux-arm64.tar.gz")
+source_x86_64=("https://gitlab.com/7plus/binaries/"$pkgver"-"$pkgrel"/-/raw/main/7Plus-linux-x64.tar.xz")
+source_armv7h=("https://gitlab.com/7plus/binaries/"$pkgver"-"$pkgrel"/-/raw/main/7Plus-linux-armv7l.tar.xz")
+source_aarch64=("https://gitlab.com/7plus/binaries/"$pkgver"-"$pkgrel"/-/raw/main/7Plus-linux-arm64.tar.xz")
 
 package() {
     for dir in 7Plus-linux-*/ ; do mv "${dir}" "$_pkgname" ;done
