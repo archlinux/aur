@@ -1,23 +1,29 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Philip Goto <philip.goto@gmail.com>
+
+## GPG keys: https://github.com/randy408.gpg
+## Note that they expired in 2020
 
 pkgname=libspng
 pkgver=0.7.2
-pkgrel=1
-pkgdesc='C library for reading and writing PNG format files with a focus on security and ease of use'
-arch=(x86_64 aarch64)
-url='https://libspng.org/'
-license=(BSD)
-depends=(zlib)
-makedepends=(meson)
-source=("libspng-${pkgver}.tar.gz::https://github.com/randy408/libspng/archive/v${pkgver}.tar.gz")
-b2sums=('f6721c15b4ab9118e659d565ddd37fac9d2ceacf96dfe334c90a1c7d2ddf12ebfb6d216b8b6bb5a9c4c2e0acbdbac8574e7d036948e67c7d2484e98862bafa12')
+pkgrel=2
+pkgdesc='Simple, modern libpng alternative'
+arch=('x86_64' 'aarch64')
+url='https://github.com/randy408/libspng'
+license=('BSD')
+depends=('zlib')
+makedepends=('git' 'meson')
+provides=("$pkgname.so")
+source=("$pkgname::git+$url#tag=v$pkgver?signed")
+sha256sums=('SKIP')
+validpgpkeys=('4570C3DB9C3B37ABCC9086CB3EBDF887C2E2C548') ## Randy
 
 build() {
-	arch-meson build "libspng-${pkgver}"
+	arch-meson build "$pkgname"
 	meson compile -C build
 }
 
 package() {
 	DESTDIR="$pkgdir" meson install -C build
-	install -D "libspng-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/libspng/LICENSE"
+	install -Dm644 "$pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
