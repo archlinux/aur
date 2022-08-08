@@ -1,4 +1,5 @@
-# Maintainer: Thore Bödecker <foxxx0@archlinux.org>
+# Maintainer: Paul Stemmet <aur@luxolus.com>
+# Contributor: Thore Bödecker <foxxx0@archlinux.org>
 # Contributor: Sébastien "Seblu" Luttringer <seblu@archlinux.org>
 
 pkgbase='ceph'
