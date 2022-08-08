@@ -1,0 +1,12 @@
+--- a/common/flatpak-run.c    2022-08-06 17:22:32.275764357 +0200
++++ b/common/flatpak-run.c    2022-08-06 17:22:55.071886221 +0200
+@@ -3113,9 +3113,6 @@
+     {SCMP_SYS (uselib), EPERM},
+     /* Don't allow disabling accounting */
+     {SCMP_SYS (acct), EPERM},
+-    /* 16-bit code is unnecessary in the sandbox, and modify_ldt is a
+-       historic source of interesting information leaks. */
+-    {SCMP_SYS (modify_ldt), EPERM},
+     /* Don't allow reading current quota use */
+     {SCMP_SYS (quotactl), EPERM},
+
