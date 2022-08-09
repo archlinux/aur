@@ -1,6 +1,6 @@
 pkgbase = cheat
 	pkgdesc = Allows you to create and view interactive cheatsheets on the command-line
-	pkgver = 4.3.0
+	pkgver = 4.3.1
 	pkgrel = 1
 	url = https://github.com/cheat/cheat
 	arch = x86_64
@@ -19,12 +19,12 @@ pkgbase = cheat
 	conflicts = python-cheat
 	replaces = python-cheat
 	backup = etc/cheat/conf.yml
-	source = cheat-4.3.0.tar.gz::https://github.com/cheat/cheat/archive/refs/tags/4.3.0.tar.gz
+	source = cheat-4.3.1.tar.gz::https://github.com/cheat/cheat/archive/refs/tags/4.3.1.tar.gz
 	source = chris.pgp
 	source = conf.yml
 	source = git+https://github.com/cheat/cheatsheets.git#commit=df5970738603bf613366b18a5d87d93fb127eb16
-	source = cheatsheets-4.3.0-LICENSE::https://raw.githubusercontent.com/cheat/cheatsheets/master/.github/LICENSE.txt
-	sha256sums = 1e5bbaeca1bd3406afb03d696bd5e250189b4e11574c0077554150c2f054b8ce
+	source = cheatsheets-4.3.1-LICENSE::https://raw.githubusercontent.com/cheat/cheatsheets/master/.github/LICENSE.txt
+	sha256sums = 10011b4dd8e66976decd7f3252e3221cb2c5a290740648ac3a70f3b20bac3109
 	sha256sums = 6318f816e4c8f2e9c34b8dc1855adeff58c1254809b8aa86c2b39ed155f3d2b6
 	sha256sums = 7d530961f1896016d23e9009c4c6210214f35588e95e17675be4a41578f52a3c
 	sha256sums = SKIP
