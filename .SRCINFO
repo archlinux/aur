@@ -1,13 +1,13 @@
 pkgbase = wargus
 	pkgdesc = Warcraft2 Mod that allows you to play Warcraft2 with the Stratagus engine
-	pkgver = 3.2.0
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://github.com/wargus/wargus
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
-	depends = stratagus=3.2.0
+	depends = stratagus=3.3.1
 	depends = ffmpeg2theora
 	depends = cdparanoia
 	depends = timidity++
@@ -16,7 +16,7 @@ pkgbase = wargus
 	optdepends = dialog: console UI for data extractor
 	optdepends = fluidsynth: midi music support
 	optdepends = soundfont-fluid: sound font for midi music support
-	source = https://github.com/Wargus/wargus/archive/v3.2.0.tar.gz
-	md5sums = cf44515426df08736f38cba9d2f5cf36
+	source = https://github.com/Wargus/wargus/archive/v3.3.1.tar.gz
+	md5sums = bf45f3cb353b6051413f81feecf34fc3
 
 pkgname = wargus

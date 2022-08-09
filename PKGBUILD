@@ -2,7 +2,7 @@
 # Contributor: Thaodan <theodorstormgrade@gmail.com>
 
 pkgname=wargus
-pkgver=3.2.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Warcraft2 Mod that allows you to play Warcraft2 with the Stratagus engine"
 arch=("i686" "x86_64")
@@ -23,11 +23,11 @@ optdepends=(
 	'soundfont-fluid: sound font for midi music support'
 )
 source=("https://github.com/Wargus/$pkgname/archive/v${pkgver}.tar.gz")
-md5sums=('cf44515426df08736f38cba9d2f5cf36')
+md5sums=('bf45f3cb353b6051413f81feecf34fc3')
 
 build() {
   cd ${srcdir}
-  cmake "${pkgname}-${pkgver}" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DGAMEDIR=/usr/bin -Bbuild
+  cmake "${pkgname}-${pkgver}" -DCMAKE_INSTALL_PREFIX=/usr -DGAMEDIR=/usr/bin -Bbuild
   make -C build
 }
 
