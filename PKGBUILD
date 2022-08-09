@@ -27,10 +27,8 @@ optdepends=(
 provides=('alchemy-viewer')
 options=(!emptydirs !makeflags !strip !lto)
 install=alchemy.install
-source=("${pkgname}"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch=main')
-md5sums=('SKIP')
-sha256sums=('SKIP')
-b2sums=('SKIP')
+source=("${pkgname}"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch=main'
+'build_linux64.bash')
 
 pkgver() {
     cd "${pkgname}" || exit 1
@@ -62,3 +60,5 @@ package() {
     sed -i 's;alchemy-viewer\.desktop;'"${pkgname}\.desktop"';' "${pkgname}/build-linux-64/newview/packaged/etc/refresh_desktop_app_entry.sh"
     mv "${pkgname}/build-linux-64/newview/packaged" "${pkgdir}/opt/${pkgname}"
 }
+sha256sums=('SKIP'
+            'c9748e0c52156fef1cc8ba156d7056334332a0e75f305beabad571569b02698d')

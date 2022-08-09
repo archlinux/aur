@@ -46,8 +46,8 @@ pkgbase = alchemy-next-viewer-git
 	options = !strip
 	options = !lto
 	source = alchemy-next-viewer-git::git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch=main
-	md5sums = SKIP
+	source = build_linux64.bash
 	sha256sums = SKIP
-	b2sums = SKIP
+	sha256sums = c9748e0c52156fef1cc8ba156d7056334332a0e75f305beabad571569b02698d
 
 pkgname = alchemy-next-viewer-git
