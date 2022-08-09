@@ -1,6 +1,6 @@
 pkgbase = tomate-breakscreen-plugin
 	pkgdesc = Tomate plugin that shows a full screen window which prevents users from using the computer during a break
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/eliostvs/tomate-breakscreen-plugin
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = tomate-breakscreen-plugin
 	depends = python
 	depends = tomate-gtk
 	options = !emptydirs
-	source = https://github.com/eliostvs/tomate-breakscreen-plugin/archive/0.6.1.tar.gz
-	md5sums = f282072a193a725779291bd93f6f017c
+	source = https://github.com/eliostvs/tomate-breakscreen-plugin/archive/0.6.2.tar.gz
+	md5sums = 75c0eb6eec72f158270a45c99713aa7b
 
 pkgname = tomate-breakscreen-plugin
