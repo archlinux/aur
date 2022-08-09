@@ -2,20 +2,20 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=dmidiplayer
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='MIDI file player based on Drumstick'
-arch=('x86_64')
-url='https://sourceforge.net/projects/dmidiplayer/'
-license=('GPL3')
-depends=('drumstick' 'uchardet')
-makedepends=('cmake' 'qt5-tools' 'pandoc')
+arch=(x86_64)
+url='https://dmidiplayer.sourceforge.io/'
+license=(GPL3)
+depends=(drumstick uchardet)
+makedepends=(cmake qt5-tools pandoc)
 source=(https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
-sha512sums=('5385dc5ad4273fdaa9f1fdd5f95ed88549a9d957c89eb24e4de80017ee847610e850178c389e4f428f048d7233377845921f0d733d19b25835735cfe4250ab55')
+sha512sums=(3778a29de8660b21dff7534595afd69d7e8bcac3a6e4b390986b44c19725ff3a956f679742cade53d78b4a8254341d5ac57e61722b2428c3e63ca316e9c7fb7e)
+#options=(debug)
 
 build() {
-	cmake -B build \
-	      -S $pkgname-$pkgver \
+	cmake -B build -S $pkgname-$pkgver \
 	      -DCMAKE_BUILD_TYPE=None \
 	      -DCMAKE_INSTALL_PREFIX=/usr \
 	      -DCMAKE_INSTALL_LIBDIR=lib \
