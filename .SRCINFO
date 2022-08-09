@@ -1,6 +1,6 @@
 pkgbase = logseq-desktop-git
 	pkgdesc = A privacy-first, open-source platform for knowledge sharing and management.
-	pkgver = 0.6.5.r45.93b49b59d
+	pkgver = 0.8.0.r2.80fb12b6e
 	pkgrel = 1
 	url = https://github.com/logseq/logseq
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = logseq-desktop-git
 	source = build.patch
 	source = logseq-desktop.desktop
 	md5sums = SKIP
-	md5sums = 134c9eb06b6a4bacc3830ba05edf027c
+	md5sums = bba8acbfbe599e5e1621f9d91a003e21
 	md5sums = 2d78e06c0c7ec7a2215ff9f66db09cfc
 
 pkgname = logseq-desktop-git

@@ -1,6 +1,6 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 pkgname=logseq-desktop-git
-pkgver=0.6.5.r45.93b49b59d
+pkgver=0.8.0.r2.80fb12b6e
 pkgrel=1
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
@@ -17,7 +17,7 @@ source=(
 )
 md5sums=(
     "SKIP"
-    "134c9eb06b6a4bacc3830ba05edf027c"
+    "bba8acbfbe599e5e1621f9d91a003e21"
     "2d78e06c0c7ec7a2215ff9f66db09cfc"
 )
 
@@ -51,11 +51,11 @@ build() {
     cd "${srcdir}/${pkgname}"
 
     # build
-    yarn cljs:release
+    yarn cljs:release-electron
 
     # packaging javescript files to an executable
     cd "${srcdir}/${pkgname}/static"
-    yarn electron-forge package
+    yarn electron:make
 }
 
 package() {
