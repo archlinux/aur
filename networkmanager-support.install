@@ -1,0 +1,8 @@
+post_install() {
+    post_upgrade
+}
+
+post_upgrade() {
+    systemctl is-active NetworkManager.service >/dev/null || systemctl enable NetworkManager.service --force
+    systemctl is-active ModemManager.service >/dev/null || systemctl enable ModemManager.service --force
+}
