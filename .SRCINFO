@@ -1,0 +1,14 @@
+pkgbase = perl-moox-attribute-env
+	pkgdesc = Allow Moo attributes to get their values from %ENV
+	pkgver = 0.04
+	pkgrel = 1
+	url = https://metacpan.org/dist/MooX-Attribute-ENV
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-moo
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETJ/MooX-Attribute-ENV-0.04.tar.gz
+	md5sums = 51a2d5d3be9ff1815ff6b40e689368b5
+
+pkgname = perl-moox-attribute-env
