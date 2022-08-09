@@ -1,7 +1,7 @@
 # Maintainer: Jake <aur@ja-ke.tech>
 
 pkgname=octoprint-venv
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Web interface for 3D printers (venv installation type)"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -17,7 +17,7 @@ source=("https://pypi.io/packages/source/o/octoprint/OctoPrint-${pkgver}.tar.gz"
         'octoprint.service'
         'octoprint.sysusers'
         'octoprint.tmpfiles')
-sha256sums=('d4109d854c6b1a4155af3360597b31aed28a1a20df146d77105060ed74d05f21'
+sha256sums=('6b13246940720213c5bfab4ce04c7914dc13e59f89b1ca646743e0370ce0a002'
             '70be0efa0f6a536ed8a89a81bfdb5a978b1036ffead09a4db2e4d67599e02302'
             '79d0f9fe053181eaa77f472b5235463ce217475d47fada9869f42d313b4651a9'
             '67f7844f39428058d59e2a7cb03b3d3077b5f4b0a136fc9dd123e6538a92e851')
