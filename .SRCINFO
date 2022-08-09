@@ -1,6 +1,6 @@
 pkgbase = proton-ge-custom
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build
-	pkgver = GE.Proton7.28
+	pkgver = GE.Proton7.29
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/GloriousEggroll/proton-ge-custom
@@ -209,7 +209,7 @@ pkgbase = proton-ge-custom
 	options = !staticlibs
 	options = !lto
 	options = emptydirs
-	source = proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#tag=GE-Proton7-28
+	source = proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#tag=GE-Proton7-29
 	source = wine-valve::git+https://github.com/ValveSoftware/wine.git
 	source = dxvk::git+https://github.com/doitsujin/dxvk.git
 	source = openvr::git+https://github.com/ValveSoftware/openvr.git
