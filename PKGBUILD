@@ -1,6 +1,6 @@
 pkgname=matebook-applet
 pkgver=3.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="System tray applet/control app for Huawei Matebook"
 arch=('x86_64')
 url="https://github.com/nekr0z/matebook-applet"
@@ -10,7 +10,7 @@ optdepends=('huawei-wmi-dkms: for kernels without huawei-wmi.')
 makedepends=('go' 'libayatana-appindicator')
 provides=("$pkgname")
 conflicts=("$pkgname-bin" "$pkgname-git")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/nekr0z/$pkgname/archive/$pkgname-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/nekr0z/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('a948673d5fd51b8a53fe11397982dc80245339936d3f9f47f47e520622862eb1')
 
 build() {
