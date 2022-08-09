@@ -1,4 +1,4 @@
-# Maintainer : Thanos Apostolou <thanosapostolou@outlook.com>
+# Maintainer : Ahmed Moselhi <ahmedmoselhi55@gmail.com>
 
 # Build notes:
 # https://phoenicisorg.github.io/phoenicis/Users/build/
@@ -10,7 +10,7 @@ _pkgver=5.0-snapshot
 pkgrel=1
 pkgdesc="Phoenicis PlayOnLinux allows you to install and use non-native applications on linux"
 arch=('any')
-url="https://www.phoenicis.org/"
+url="https://github.com/PhoenicisOrg/phoenicis.git"
 license=('LGPL3')
 makedepends=('maven' 'java-environment-openjdk=11' 'git')
 depends=('cabextract' 'curl' 'icoutils' 'imagemagick'
