@@ -2,10 +2,10 @@
 # Contributor: Maxime "pep" Buquet <archlinux@bouah.net>
 
 _pkgname=git-pw
-_tag=2.0.0
+_tag=2.3.0
 pkgname=${_pkgname}
 pkgver=${_tag}
-pkgrel=2
+pkgrel=1
 pkgdesc="A tool for integrating Git with Patchwork, the web-based patch tracking system"
 url='https://github.com/getpatchwork/git-pw'
 license=('MIT')
@@ -17,6 +17,7 @@ depends=(
   'python-pbr'
   'python-arrow'
   'python-tabulate'
+  'python-yaml'
 )
 makedepends=('python-setuptools')
 source=("${_pkgname}::git+https://github.com/getpatchwork/git-pw.git#tag=${_tag}")
