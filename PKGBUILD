@@ -6,15 +6,17 @@ pkgdesc="Cowsay but better"
 arch=('any')
 url="https://github.com/IfkumRfnl/hoholsay"
 license=('GPL')
-source=('hoholsay::https://github.com/IfkumRfnl/hoholsay.git')
+source=('hoholsay::git+https://github.com/IfkumRfnl/hoholsay.git')
 md5sums=('SKIP')
 
 build() {
   cd "$srcdir"
+  cd hoholsay
   make
 }
 
 package() {
   cd "$srcdir"
-  cp ./hoholsay "$pkgdir/usr/bin/hoholsay"
+  cd hoholsay
+  install -D -m755 "hoholsay" "$pkgdir/usr/bin/hoholsay"
 }
