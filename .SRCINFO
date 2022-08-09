@@ -1,6 +1,6 @@
 pkgbase = balena-cli-bin
 	pkgdesc = balena.io command line interface
-	pkgver = 13.7.1
+	pkgver = 14.1.0
 	pkgrel = 1
 	url = https://balena.io/
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = balena-cli-bin
 	provides = balena-cli
 	replaces = resin-cli
 	options = !strip
-	source = https://github.com/balena-io/balena-cli/releases/download/v13.7.1/balena-cli-v13.7.1-linux-x64-standalone.zip
-	source = https://raw.githubusercontent.com/balena-io/balena-cli/v13.7.1/completion/balena-completion.bash
-	sha256sums = fdba887cb7b154e43766c4f1e846f4209f0f096dde167f6a2869e2881507da36
+	source = https://github.com/balena-io/balena-cli/releases/download/v14.1.0/balena-cli-v14.1.0-linux-x64-standalone.zip
+	source = https://raw.githubusercontent.com/balena-io/balena-cli/v14.1.0/completion/balena-completion.bash
+	sha256sums = 3b36459609d580b27b1f088fdc1d7a6cca268300dea1e4423392552bcb67b6d6
 	sha256sums = e426be016354b1003d7579c8c6deacae5902ecd7383280d9720084fbe541fe88
 	optdepends_x86_64 = lib32-glibc: emulated builds
 
