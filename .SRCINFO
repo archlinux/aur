@@ -14,8 +14,8 @@ pkgbase = unlinkmkv-git
 	depends = perl-ipc-run3
 	depends = perl-file-which
 	depends = ffmpeg
+	depends = perl-json
 	source = git+https://github.com/gnoling/UnlinkMKV.git
 	sha256sums = SKIP
 
 pkgname = unlinkmkv-git
-

@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/gnoling/UnlinkMKV"
 license=('GPL')
 makedepends=('git')
-depends=('perl' 'mkvtoolnix-cli' 'perl-xml-libxml' 'perl-log-log4perl' 'perl-string-crc32' 'perl-ipc-run3' 'perl-file-which' 'ffmpeg')
+depends=('perl' 'mkvtoolnix-cli' 'perl-xml-libxml' 'perl-log-log4perl' 'perl-string-crc32' 'perl-ipc-run3' 'perl-file-which' 'ffmpeg' 'perl-json')
 source=('git+https://github.com/gnoling/UnlinkMKV.git')
 sha256sums=('SKIP')
 
