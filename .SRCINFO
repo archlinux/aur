@@ -1,6 +1,6 @@
 pkgbase = schismtracker
 	pkgdesc = An oldschool sample-based music composition tool
-	pkgver = 20220506
+	pkgver = 20220807
 	pkgrel = 1
 	url = http://schismtracker.org/
 	arch = i686
@@ -10,9 +10,9 @@ pkgbase = schismtracker
 	license = GPL
 	makedepends = python
 	depends = libxv
-	depends = sdl12-compat
+	depends = sdl2
 	conflicts = schismtracker-git
-	source = schismtracker-20220506.tar.gz::https://github.com/schismtracker/schismtracker/archive/refs/tags/20220506.tar.gz
-	sha512sums = 8dacd1fd719c20fdc8ef157d1487202a39d4f36a37560ad62680655addde0ceb78bbce51e4f640d3979c91f6a4dfe4bc006785aa35d45a00206773d41adf9f42
+	source = schismtracker-20220807.tar.gz::https://github.com/schismtracker/schismtracker/archive/refs/tags/20220807.tar.gz
+	sha512sums = 36944581ef88ba256764d1acec0f6d38fb83027ebca7bfea7d313693d9e4062bd217ba6c4dee6a262753b186398b89035d371c5428b35c33eaf95e901bd7304d
 
 pkgname = schismtracker
