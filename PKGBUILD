@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HH
-_pkgver=3.1-47
+_pkgver=3.1-49
 pkgname=r-${_pkgname,,}
-pkgver=3.1.47
-pkgrel=3
+pkgver=3.1.49
+pkgrel=1
 pkgdesc='Statistical Analysis and Data Display: Heiberger and Holland'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -33,7 +33,7 @@ optdepends=(
   r-teachingdemos
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('50910ac7de49122df56c6e42413535601c74bbef9240ad8977e3267273d087c0')
+sha256sums=('12cef0cb0a07c745026d925aee2970913e1f3f0705a58bc2741bf4940c80b87b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
