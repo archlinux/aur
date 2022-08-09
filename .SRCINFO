@@ -1,5 +1,5 @@
 pkgbase = gimp-devel-noconflict
-	pkgdesc = GNU Image Manipulation Program (Development version)
+	pkgdesc = GNU Image Manipulation Program (Development version, doesn't conflict with gimp 2.0)
 	pkgver = 2.99.10
 	pkgrel = 1
 	url = https://www.gimp.org/
