@@ -1,7 +1,7 @@
 pkgbase = pdf-xchange
 	pkgdesc = Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more.
-	pkgver = 9.3.361.0
-	pkgrel = 2
+	pkgver = 9.4.362.0
+	pkgrel = 1
 	url = https://www.tracker-software.com/product/pdf-xchange-editor
 	arch = x86_64
 	license = Custom
@@ -137,7 +137,7 @@ pkgbase = pdf-xchange
 	optdepends = tesseract-data-vie
 	optdepends = tesseract-data-yid
 	optdepends = tesseract-data-yor
-	source = pdf-xchange-9.3.361.0.msi::https://www.tracker-software.com/downloads/EditorV9.x64.msi
-	md5sums = 24671b987186dfe527f32732b5cbf32f
+	source = pdf-xchange-9.4.362.0.msi::https://www.tracker-software.com/downloads/EditorV9.x64.msi
+	md5sums = 43537cc3edf20b9a131cb040e930e147
 
 pkgname = pdf-xchange

@@ -1,7 +1,7 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="9.3.361.0"
-pkgrel="2"
+pkgver="9.4.362.0"
+pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
 arch=('x86_64')
@@ -20,7 +20,7 @@ _redactpatterns="$_commonfiles/RedactPatterns"
 _tesseract="$_commonfiles/Tesseract"
 
 source=("$pkgname-$pkgver.msi::$_downloadsource/$_x64file")
-md5sums=('24671b987186dfe527f32732b5cbf32f')
+md5sums=('43537cc3edf20b9a131cb040e930e147')
 
 prepare()
 {
@@ -377,7 +377,7 @@ package()
  install -Dm644 "$srcdir/FID_OD_uk_UA" "$pkgdir${_installdir}/$pkgname/${_languages}/OneDrive.uk-UA.xcl"
  install -Dm644 "$srcdir/FID_OD_zh_CN" "$pkgdir${_installdir}/$pkgname/${_languages}/OneDrive.zh-CN.xcl"
  install -Dm644 "$srcdir/FID_PDFA_ar_SA" "$pkgdir${_installdir}/$pkgname/${_languages}/PDFAConverter.ar-SA.xcl"
- install -Dm644 "$srcdir/FID_CONV_az_Latn_AZ" "$pkgdir${_installdir}/$pkgname/${_languages}/PDFAConverter.az-Latn-AZ.xcl"
+ install -Dm644 "$srcdir/FID_PDFA_az_Latn_AZ" "$pkgdir${_installdir}/$pkgname/${_languages}/PDFAConverter.az-Latn-AZ.xcl"
  install -Dm644 "$srcdir/FID_PDFA_cs_CZ" "$pkgdir${_installdir}/$pkgname/${_languages}/PDFAConverter.cs-CZ.xcl"
  install -Dm644 "$srcdir/FID_PDFA_da_DK" "$pkgdir${_installdir}/$pkgname/${_languages}/PDFAConverter.da-DK.xcl"
  install -Dm644 "$srcdir/FID_PDFA_de_DE" "$pkgdir${_installdir}/$pkgname/${_languages}/PDFAConverter.de-DE.xcl"
@@ -717,7 +717,7 @@ fi
 
 if [ ! -f "$prefix/system.reg" ] || [ ! -f "$prefix/user.reg" ]; then
    WINEPREFIX="$prefix" /usr/bin/wineboot
-   while [ ! -f "$prefix/system.reg" ] && [ ! -f "$prefix/user.reg" ]; do
+   while [ ! -f "$prefix/system.reg" ] || [ ! -f "$prefix/user.reg" ]; do
       echo Waiting...
    done
 fi
