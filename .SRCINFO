@@ -1,0 +1,16 @@
+pkgbase = crepl
+	pkgdesc = compile and execute C code as you type it
+	pkgver = 0.1.0
+	pkgrel = 0
+	url = https://github.com/l1mey112/crepl
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = vlang
+	makedepends = tcc
+	source = crepl::git+https://github.com/l1mey112/crepl
+	sha512sums = SKIP
+
+pkgname = crepl
