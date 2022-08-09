@@ -1,7 +1,7 @@
 pkgbase = tomate-notify-plugin
 	pkgdesc = Tomate plugin that shows screen notifications
-	pkgver = 0.14.0
-	pkgrel = 2
+	pkgver = 0.14.1
+	pkgrel = 1
 	url = https://github.com/eliostvs/tomate-notify-plugin
 	install = tomate-notify-plugin.install
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = tomate-notify-plugin
 	depends = python
 	depends = tomate-gtk
 	options = !emptydirs
-	source = https://github.com/eliostvs/tomate-notify-plugin/archive/0.14.0.tar.gz
-	md5sums = 4d5caa437eb322947ce6795eb803f710
+	source = https://github.com/eliostvs/tomate-notify-plugin/archive/0.14.1.tar.gz
+	md5sums = 187c96a2db49eb4c26f6f6881a0531db
 
 pkgname = tomate-notify-plugin
