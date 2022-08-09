@@ -2,7 +2,7 @@
 _pkgname=aretext
 pkgname=${_pkgname}-bin
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="[BETA] Minimalist text editor that never slows you down."
 url="https://github.com/aretext/aretext"
 license=(GPL3)
