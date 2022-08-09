@@ -90,3 +90,6 @@ pkgname = qubes-vm-networking
 pkgname = qubes-vm-keyring
 	pkgdesc = Qubes OS Binary Repository Activation package and Keyring
 	install = PKGBUILD-keyring.install
+
+pkgname = qubes-vm-passwordless-root
+	pkgdesc = Qubes OS Passwordless root access from normal user

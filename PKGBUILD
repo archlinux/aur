@@ -3,7 +3,7 @@
 # Ref.: https://github.com/QubesOS/qubes-core-agent-linux/tree/master/archlinux
 
 pkgbase=qubes-core-agent-linux
-pkgname=(qubes-vm-core qubes-vm-networking qubes-vm-keyring)
+pkgname=(qubes-vm-core qubes-vm-networking qubes-vm-keyring qubes-vm-passwordless-root)
 _gitname=${pkgname%-git*}
 pkgver=4.1.36
 pkgrel=1
@@ -154,5 +154,7 @@ package_qubes-vm-keyring() {
 
 package_qubes-vm-passwordless-root() {
     pkgdesc="Qubes OS Passwordless root access from normal user"
+
+    cd "${srcdir}/${_gitname}/"
     make -C passwordless-root install DESTDIR="$pkgdir" SBINDIR=/usr/bin LIBDIR=/usr/lib SYSLIBDIR=/usr/lib SYSTEM_DROPIN_DIR=/usr/lib/systemd/system USER_DROPIN_DIR=/usr/lib/systemd/user DIST=archlinux
 }
