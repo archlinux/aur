@@ -7,7 +7,7 @@ pkgdesc="Home Assistant OS Agent"
 arch=('x86_64')
 url="https://github.com/home-assistant/os-agent"
 license=('APACHE')
-depends=('udisks2')s
+depends=('udisks2')
 makedepends=(
     'go'
     'git'
