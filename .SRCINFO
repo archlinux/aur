@@ -1,6 +1,6 @@
 pkgbase = tomate-alarm-plugin
 	pkgdesc = Tomate plugin that plays a alrm when timer ends
-	pkgver = 0.9.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/eliostvs/tomate-alarm-plugin
 	arch = any
@@ -13,8 +13,7 @@ pkgbase = tomate-alarm-plugin
 	depends = gst-plugins-good
 	depends = tomate-gtk
 	options = !emptydirs
-	source = https://github.com/eliostvs/tomate-alarm-plugin/archive/0.9.0.tar.gz
-	md5sums = acbaffcfc1a7ab8506a308c951374076
+	source = https://github.com/eliostvs/tomate-alarm-plugin/archive/0.11.0.tar.gz
+	md5sums = db2782b9a735e1171259cb0a0b9576bc
 
 pkgname = tomate-alarm-plugin
-
