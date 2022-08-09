@@ -12,7 +12,7 @@ _transparency=
 pkgbase=corefreq
 pkgname=(corefreq-client corefreq-server corefreq-dkms)
 _gitname=CoreFreq
-pkgver=1.91.4
+pkgver=1.91.5
 pkgrel=1
 pkgdesc="A CPU monitoring software with BIOS like functionalities"
 arch=('x86_64')
@@ -22,7 +22,7 @@ depends=('dkms')
 source=(${pkgbase}-${pkgver}.tar.gz::"${url}/archive/${pkgver}.tar.gz"
         'dkms.conf'
         'honor-archlinux-compiler-flags.patch')
-b2sums=('fd4431de326d9043e4ef887c89868b2bcfdec374414cbb5ef15e84e464c20501d4a216262694e183937b11906e597fdb226d9353c96273b5a50134e95464b1ce'
+b2sums=('346c3b6ea25a1021aacbed5237f63b2dc80a46c1c02fd4144c12009b83e67ce67c77a4f16f707b909847e5d05660f1caeb6b618c2978811afbc1adaae5d86dd2'
         'c6d8849944f99195038ac252d010d3e3001cd1dcaee57218c4a7f58fa313aa38842e4ea991d4d9ff7d04063ebaa9900c06ff1eacfa6270341cf37fb752adc00c'
         '3f5f9a27863412d620864e8c19e2683e3ef2103c4b95c126438330a9b532e2434664ce4860b6191552298131e434c09f5531428696dde7d70a1cb171b4f13edf')
 
