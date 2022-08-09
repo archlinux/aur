@@ -25,16 +25,19 @@ sha256sums=(
   "7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f"
 )
 
-package() {
+build() {
   rm -rf "${srcdir}/${pkgname}/bin/cache" "${srcdir}/${pkgname}/.pub-cache"
+  "${srcdir}/${pkgname}/bin/internal/update_dart_sdk.sh"
+  "${srcdir}/${pkgname}/bin/flutter" precache
+}
+
+package() {
   install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/etc/profile.d/${pkgname}.sh"
   install -Dm755 "${srcdir}/${pkgname}.csh" "${pkgdir}/etc/profile.d/${pkgname}.csh"
   install -dm755 "${pkgdir}/opt/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
   cp -ra "${srcdir}/${pkgname}" "${pkgdir}/opt/"
-  "${pkgdir}/opt/${pkgname}/bin/internal/update_dart_sdk.sh"
-  "${pkgdir}/opt/${pkgname}/bin/flutter" precache
   find "${pkgdir}/opt/${pkgname}" -type d -exec chmod a+rx {} +
   find "${pkgdir}/opt/${pkgname}" -type f -exec chmod a+r {} +
   # those files *must* be read-write for end-users; not my fault *grumble*
