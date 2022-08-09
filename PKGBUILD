@@ -1,18 +1,18 @@
 # Maintainer: Alexandr Stelnykovych <alexandr dot stelnykovych at ivpn dot net>
 
 pkgname="ivpn-ui"
-pkgver=3.9.0
+pkgver=3.9.8
 pkgrel=1
 pkgdesc="IVPN - Secure VPN for Privacy"
 arch=('x86_64')
 url="https://www.ivpn.net"
 license=('GPL3')
-depends=('ivpn')
+depends=('ivpn>=3.9.8')
 makedepends=('npm' 'nvm')
 install="ivpn-ui.install"
 
 source=("ivpn-ui-src-v${pkgver}.tar.gz::https://github.com/ivpn/desktop-app/archive/v${pkgver}.tar.gz")
-sha256sums=('44a6660e62f5e60ce1d4ca5c9fd4469e1075b88a3f96ce61e10fcb22d1739a47')
+sha256sums=('03b6a488bf460b72d3f85e4b5c027876ca2b32ba71f0aab0710c99c34ef8ce78')
 
 _ensure_local_nvm() {
     # https://wiki.archlinux.org/title/Node.js_package_guidelines
