@@ -4,7 +4,7 @@
 pkgname=vivaldi-snapshot
 _rpmversion=5.4.2753.27-1
 pkgver=5.4.2753.27
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced browser made with the power user in mind. Snapshot'
 url="https://vivaldi.com"
 options=(!strip !zipman)
