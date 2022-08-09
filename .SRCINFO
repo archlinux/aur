@@ -1,7 +1,7 @@
 pkgbase = gitlab-gitaly-git
 	pkgdesc = Speed up Git access using caching
 	pkgver = 15.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/gitlab-org/gitaly
 	arch = x86_64
 	license = MIT
@@ -17,7 +17,7 @@ pkgbase = gitlab-gitaly-git
 	conflicts = gitlab-gitaly
 	options = !buildflags
 	backup = etc/gitlab-gitaly/config.toml
-	source = git+https://gitlab.com/gitlab-org/gitaly#branch=15-1-stable
+	source = git+https://gitlab.com/gitlab-org/gitaly.git#branch=15-2-stable
 	source = configs.patch
 	source = gitlab-gitaly.service
 	source = ruby27.patch
