@@ -1,0 +1,30 @@
+diff --git a/setup.py b/setup.py
+index 98b8341..ebd9d09 100755
+--- a/setup.py
++++ b/setup.py
+@@ -36,14 +36,14 @@ def get_existing_ccbin(nvcc_args: List[str]) -> Optional[str]:
+ 
+ def get_extensions():
+     this_dir = os.path.dirname(os.path.abspath(__file__))
+-    extensions_dir = os.path.join(this_dir, "pytorch3d", "csrc")
++    extensions_dir = os.path.join("pytorch3d", "csrc")
+     sources = glob.glob(os.path.join(extensions_dir, "**", "*.cpp"), recursive=True)
+     source_cuda = glob.glob(os.path.join(extensions_dir, "**", "*.cu"), recursive=True)
+     extension = CppExtension
+ 
+     extra_compile_args = {"cxx": ["-std=c++14"]}
+     define_macros = []
+-    include_dirs = [extensions_dir]
++    include_dirs = [os.path.join(this_dir, extensions_dir)]
+ 
+     force_cuda = os.getenv("FORCE_CUDA", "0") == "1"
+     if (torch.cuda.is_available() and CUDA_HOME is not None) or force_cuda:
+@@ -100,8 +100,6 @@ def get_extensions():
+ 
+         extra_compile_args["nvcc"] = nvcc_args
+ 
+-    sources = [os.path.join(extensions_dir, s) for s in sources]
+-
+     ext_modules = [
+         extension(
+             "pytorch3d._C",
