@@ -1,5 +1,6 @@
 pkgbase = xcursor-cz-viator
-	pkgver = 20210407
+	pkgdesc = Understated cursor theme
+	pkgver = 20220613
 	pkgrel = 1
 	url = https://github.com/charakterziffer/cursor-toolbox
 	arch = any
@@ -7,28 +8,38 @@ pkgbase = xcursor-cz-viator
 	makedepends = git
 	makedepends = inkscape
 	makedepends = xorg-xcursorgen
-	makedepends = python2
+	makedepends = python
 	makedepends = patch
-	source = xcursor-cz-viator-20210407::git+https://github.com/charakterziffer/cursor-toolbox#commit=4777dfc09de1720528170dcfbf217c28681df83b
+	source = xcursor-cz-viator::git+https://github.com/charakterziffer/cursor-toolbox#commit=99ddf571428b51b6985c364e0b17e9d94263c746
 	source = build.patch
+	source = py3.patch
 	sha512sums = SKIP
 	sha512sums = c2b8792e0a9afd639864608dc674acbc1a368d9a83cd46dd3422403961af2b001c3eb004269eb701fcd34f4cfceaca5912a751a6ecd68ad08901ec94e0afb972
+	sha512sums = e61eedf83f08534eec71a2418aedc58e887069aa6c532d90b39409da7ef8bb60492616a919dddfc10aac901edf4fb6d7a816c14b621ee566e6f056b6fbb7776c
 
 pkgname = xcursor-cz-viator-hourglass-white
+	pkgdesc = Understated cursor theme - white, hourglass wait icon
 
 pkgname = xcursor-cz-viator-hourglass-black
+	pkgdesc = Understated cursor theme - black, hourglass wait icon
 
 pkgname = xcursor-cz-viator-ring-white
+	pkgdesc = Understated cursor theme - white, ring wait icon
 
 pkgname = xcursor-cz-viator-ring-black
+	pkgdesc = Understated cursor theme - black, ring wait icon
 
 pkgname = xcursor-cz-viator-rotor-white
+	pkgdesc = Understated cursor theme - white, rotor wait icon
 
 pkgname = xcursor-cz-viator-rotor-black
+	pkgdesc = Understated cursor theme - black, rotor wait icon
 
 pkgname = xcursor-cz-viator-windmill-white
+	pkgdesc = Understated cursor theme - white, windmill wait icon
 
 pkgname = xcursor-cz-viator-windmill-black
+	pkgdesc = Understated cursor theme - black, windmill wait icon
 
 pkgname = xcursor-cz-hickson
-
+	pkgdesc = Understated cursor theme - brownish
