@@ -3,7 +3,7 @@
 
 pkgname=libuinputplus
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy-to-use uinput library in C++"
 url="https://github.com/YukiWorkshop/libuInputPlus"
 license=('MIT')
@@ -18,6 +18,7 @@ sha256sums=('af53e4727068f5f66d03d63beecdb24f44342ce1aa352d4f32c18892fa86e67a'
 
 prepare() {
 	patch -p1 -d "libuInputPlus-$pkgver" < 001-install-directives.patch
+	sed -i "s|include/|include/$pkgname/|" "libuInputPlus-$pkgver/CMakeLists.txt"
 }
 
 build() {
