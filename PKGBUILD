@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Your Name <youremail@domain.com>
-pkgname=crepl
+pkgname=crepl-git
 pkgver=0.1.0
 pkgrel=0
 pkgdesc="compile and execute C code as you type it"
