@@ -1,0 +1,11 @@
+--- xor_single.cpp.bad	2022-08-09 19:15:24.812204716 +0000
++++ xor_single.cpp	2022-08-09 19:15:31.518871323 +0000
+@@ -1,7 +1,7 @@
+ #include <ciphey/ciphers.hpp>
+ 
+ #include <iostream>
+-
++#include <utility>
+ #include <array>
+ 
+ namespace ciphey::xor_single {
