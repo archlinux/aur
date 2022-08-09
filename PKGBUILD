@@ -4,7 +4,7 @@
 
 pkgname=clearlooks-phenix-gtk-theme
 pkgver=7.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="GTK3 theme visually close to Clearlooks"
 arch=('any')
 url="https://github.com/jpfleury/clearlooks-phenix"
@@ -43,7 +43,8 @@ build() {
   cd "clearlooks-phenix-${pkgver}"
 
   # Prefer building icons from SVG source
-  make -C _src clean all
+  make -C _src clean
+  make -C _src
 }
 
 package() {
