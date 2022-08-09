@@ -1,6 +1,6 @@
 pkgbase = python-cipheydists
 	pkgdesc = A collection of sample distributions for use in Ciphey's frequency analysis
-	pkgver = 0.3.22
+	pkgver = 0.3.35
 	pkgrel = 1
 	url = https://github.com/Ciphey/CipheyDists
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-cipheydists
 	makedepends = python-setuptools
 	makedepends = python-poetry
 	depends = python
-	source = python-cipheydists-0.3.22.tar.gz::https://github.com/Ciphey/CipheyDists/archive/refs/tags/v0.3.22.tar.gz
-	sha256sums = 3a433013e7c34c9525dd66a8e6182391d4e5cfcdb5c236792d1ffd883c0d49d1
+	source = python-cipheydists-0.3.35.tar.gz::https://files.pythonhosted.org/packages/source/c/cipheydists/cipheydists-0.3.35.tar.gz
+	sha256sums = 3436fde3f57df732e1a65fb03a565a564dd9d0c8d130c2e94f8b852e6a199a88
 
 pkgname = python-cipheydists

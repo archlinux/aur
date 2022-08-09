@@ -2,7 +2,7 @@
 # Contributor: Hao Long <aur@esd.cc>
 
 pkgname=python-cipheydists
-pkgver=0.3.22
+pkgver=0.3.35
 pkgrel=1
 pkgdesc="A collection of sample distributions for use in Ciphey's frequency analysis"
 arch=("any")
@@ -13,11 +13,11 @@ makedepends=(
     "python-setuptools"
     "python-poetry"
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("3a433013e7c34c9525dd66a8e6182391d4e5cfcdb5c236792d1ffd883c0d49d1")
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/c/cipheydists/cipheydists-$pkgver.tar.gz")
+sha256sums=("3436fde3f57df732e1a65fb03a565a564dd9d0c8d130c2e94f8b852e6a199a88")
 
 build() {
-    cd "$srcdir/CipheyDists-$pkgver"
+    cd "$srcdir/cipheydists-$pkgver"
     poetry build
 
     cd dist
@@ -27,7 +27,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/CipheyDists-$pkgver/dist/cipheydists-$pkgver"
+    cd "$srcdir/cipheydists-$pkgver/dist/cipheydists-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-    install -Dm644 "$srcdir/CipheyDists-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/cipheydists-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
