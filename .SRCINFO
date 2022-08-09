@@ -1,6 +1,6 @@
 pkgbase = qprompt
 	pkgdesc = Teleprompter software for video creators
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://qprompt.app/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = qprompt
 	makedepends = kirigami2
 	makedepends = ninja
 	depends = hicolor-icon-theme
-	depends = kcoreaddons
+	depends = kcrash
 	depends = ki18n
-	source = QPrompt-1.0.0.tar.gz::https://github.com/Cuperino/QPrompt/archive/refs/tags/v1.0.0.tar.gz
-	sha512sums = c52ca2b40a7ddefb699268bbca039642ddc3d875bb8fd23858809fa7ac9bf25d5f86f6e5de7057a933ecdc21e7ba8d6074f101f9cea481f1801a76af83a0066b
+	source = QPrompt-1.1.0.tar.gz::https://github.com/Cuperino/QPrompt/archive/refs/tags/v1.1.0.tar.gz
+	sha512sums = ea2972c31f40b9712a572231a7b5e7e9106746cc64cec9db9dcc79f012609380dd19eb7b75c85204bac952c5da3fb9cb5fe0699023030b0b9201e07288852720
 
 pkgname = qprompt
