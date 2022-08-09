@@ -1,6 +1,6 @@
 pkgbase = fe
 	pkgdesc = AUR helper with a familiar subcommand system
-	pkgver = 1.1.6
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://github.com/baris-inandi/fe
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = fe
 	depends = pacman-contrib
 	backup = etc/feparu.conf
 	backup = etc/fepacman.conf
-	source = git+https://github.com/baris-inandi/fe
-	md5sums = SKIP
+	source = fe-1.1.8.tar.gz::https://github.com/baris-inandi/fe/archive/refs/tags/1.1.8.tar.gz
+	sha256sums = 08ceb8e6f4b59376783f5acc3130935ecd37b6bc602e676a84d801323c8cf0d1
 
 pkgname = fe

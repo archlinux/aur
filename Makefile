@@ -12,6 +12,7 @@ install:
 
 release:
 	make clean
+	makepkg -god
 	make srcinfo
 	git add -A
 	git commit --allow-empty -am "new release"
