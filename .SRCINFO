@@ -1,6 +1,6 @@
 pkgbase = r-saturn
 	pkgdesc = Scalable Analysis of Differential Transcript Usage for Bulk and Single-Cell RNA-sequencing Applications
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/satuRn
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = r-saturn
 	optdepends = r-rmarkdown
 	optdepends = r-stager
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/satuRn_1.4.1.tar.gz
-	sha256sums = 325b64bcfe565214c7f4dc2f31e98444b58cdce0546965b737ddb7248d137377
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/satuRn_1.4.2.tar.gz
+	sha256sums = 9ff3e48f5be48bf59314d904c8d9976bc691ca7cfbcdfad8368dffa9a0a9dec7
 
 pkgname = r-saturn
