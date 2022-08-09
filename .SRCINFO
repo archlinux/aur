@@ -1,16 +1,16 @@
 pkgbase = libceed
-	pkgdesc = Performance Visualization for Parallel Program
+	pkgdesc = Performance portable operators for element-based discretizations
 	pkgver = 0.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ceed/libceed
 	arch = x86_64
 	license = BSD
 	makedepends = gcc-fortran
 	makedepends = git
-	makedepends = python-cffi
-	makedepends = python-setuptools
 	makedepends = python-build
+	makedepends = python-cffi
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	source = libceed::git+https://github.com/ceed/libceed#tag=v0.10.1?signed
 	validpgpkeys = BA543CE09D732BE604D53F6FCA6D4A3B32D335A0

@@ -5,18 +5,18 @@
 
 pkgname=('libceed' 'python-ceed')
 pkgver=0.10.1
-pkgrel=1
-pkgdesc="Performance Visualization for Parallel Program"
+pkgrel=2
+pkgdesc="Performance portable operators for element-based discretizations"
 arch=('x86_64')
 license=('BSD')
 url='https://github.com/ceed/libceed'
 makedepends=(
 	'gcc-fortran'
 	'git'
-	'python-cffi'
-	'python-setuptools'
 	'python-build'
+	'python-cffi'
 	'python-installer'
+	'python-setuptools'
 	'python-wheel')
 source=("$pkgname::git+$url#tag=v$pkgver?signed")
 sha256sums=('SKIP')
