@@ -1,4 +1,19 @@
+msg_blue() {
+    printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
 post_install() {
-	  echo "使用愉快"
+	  msg_blue "使用愉快"
+}
+post_upgrade() {
+    post_install
 }
 
