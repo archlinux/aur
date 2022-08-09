@@ -2,7 +2,7 @@
 
 pkgname=fe
 pkgver=1.1.10
-pkgrel=2
+pkgrel=3
 pkgdesc="AUR helper with a familiar subcommand system"
 arch=(x86_64)
 url="https://github.com/baris-inandi/fe"
@@ -11,6 +11,7 @@ depends=(bash sudo paru pacman-contrib)
 makedepends=(git go)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/baris-inandi/fe/archive/refs/tags/$pkgver.tar.gz")
 backup=("etc/feparu.conf" "etc/fepacman.conf")
+md5sums=("skip")
 
 build() {
   tar xvf fe-$pkgver.tar.gz
