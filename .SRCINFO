@@ -6,16 +6,17 @@ pkgbase = vte3-notification
 	arch = i686
 	arch = x86_64
 	license = LGPL
-	makedepends = git
 	makedepends = gobject-introspection
-	makedepends = gtk-doc
-	makedepends = meson
 	makedepends = vala
+	makedepends = git
+	makedepends = gtk-doc
 	makedepends = gperf
-	depends = fribidi
-	depends = gnutls
+	makedepends = meson
+	makedepends = gi-docgen
 	depends = gtk3
 	depends = pcre2
+	depends = gnutls
+	depends = fribidi
 	depends = systemd-libs
 	options = !emptydirs
 	source = git+https://gitlab.gnome.org/GNOME/vte#tag=0.68.0
@@ -24,10 +25,10 @@ pkgbase = vte3-notification
 	sha256sums = 52ac9f2e6116d40701d89d342336d6533cec78a512835a8c72d947b4db1c60f3
 
 pkgname = vte3-notification
-	depends = fribidi
-	depends = gnutls
 	depends = gtk3
 	depends = pcre2
+	depends = gnutls
+	depends = fribidi
 	depends = systemd-libs
 	depends = vte-notification-common
 	provides = vte3=0.68.0
