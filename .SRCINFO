@@ -2,7 +2,7 @@ pkgbase = guish
 	pkgdesc = A versatile graphical DSL and army knife to make and modify GUIs.
 	pkgver = 1.0.7
 	pkgrel = 1
-	url = https://codeberg.org/phranz/guish
+	url = https://codeberg.org/phranz/guish_old
 	changelog = changelog
 	arch = x86_64
 	license = GPL3
@@ -16,7 +16,7 @@ pkgbase = guish
 	depends = libxtst
 	provides = guish
 	conflicts = guish
-	source = guish-1.0.7.tar.gz::https://codeberg.org/phranz/guish/archive/1.0.7.tar.gz
+	source = guish-1.0.7.tar.gz::https://codeberg.org/phranz/guish_old/archive/1.0.7.tar.gz
 	sha512sums = e3bb68fb57f977e1756e3ae344195fd590b23cf9b057b5a7a0a39724a38ce370f76dfacbf2890f5a3593b1bee46db6776b40b3bc894dceee0ae6ec2c9b568644
 
 pkgname = guish
