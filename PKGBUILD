@@ -1,8 +1,8 @@
 # Maintainer: Naomi Calabretta <me@arytonex.pw>
 
 pkgname=sunamu
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Show your currently playing song in a stylish way!"
 url="https://github.com/NyaomiDEV/Sunamu"
 license=("MPL-2.0")
