@@ -15,7 +15,7 @@ backup=("etc/feparu.conf" "etc/fepacman.conf")
 
 pkgver() {
 	cd "$pkgname"
-	git describe --tags --abbrev=0
+	git describe --tags --long
 }
 
 prepare() {
