@@ -1,6 +1,6 @@
 pkgbase = mprocs-bin
 	pkgdesc = Run multiple commands in parallel
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/pvolok/mprocs
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = mprocs-bin
 	license = MIT
 	provides = mprocs
 	conflicts = mprocs
-	source_x86_64 = https://github.com/pvolok/mprocs/releases/download/v0.6.1/mprocs-0.6.1-linux64.tar.gz
-	sha256sums_x86_64 = 9c4778a21b3322729ae9e62e832c2fa55a6ddf8013d65fb4fb6167bdc26511da
-	source_aarch64 = https://github.com/pvolok/mprocs/releases/download/v0.6.1/mprocs-0.6.1-aarch64.tar.gz
-	sha256sums_aarch64 = 7f060d7ddcd2460acd23028c4c219275a51c94a072abb4dfdba2a39a70fa805e
+	source_x86_64 = https://github.com/pvolok/mprocs/releases/download/v0.6.2/mprocs-0.6.2-linux64.tar.gz
+	sha256sums_x86_64 = d2a3f6847664712bfeddc50f4b7d3c20c62e8ce5760a9541c793e09d62c5fcff
+	source_aarch64 = https://github.com/pvolok/mprocs/releases/download/v0.6.2/mprocs-0.6.2-aarch64.tar.gz
+	sha256sums_aarch64 = 742795dfd0e945c4df419f9706081395bce1cf55662f71353a5c4de92e754ada
 
 pkgname = mprocs-bin

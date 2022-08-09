@@ -1,7 +1,7 @@
 # Maintainer: Parham Alvani <parham.alvani@gmail.com>
 
 pkgname=mprocs-bin
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Run multiple commands in parallel"
 arch=('x86_64' 'aarch64')
@@ -12,10 +12,10 @@ conflicts=('mprocs')
 provides=('mprocs')
 
 source_x86_64=("https://github.com/pvolok/mprocs/releases/download/v${pkgver}/mprocs-${pkgver}-linux64.tar.gz")
-sha256sums_x86_64=('9c4778a21b3322729ae9e62e832c2fa55a6ddf8013d65fb4fb6167bdc26511da')
+sha256sums_x86_64=('d2a3f6847664712bfeddc50f4b7d3c20c62e8ce5760a9541c793e09d62c5fcff')
 
 source_aarch64=("https://github.com/pvolok/mprocs/releases/download/v${pkgver}/mprocs-${pkgver}-aarch64.tar.gz")
-sha256sums_aarch64=('7f060d7ddcd2460acd23028c4c219275a51c94a072abb4dfdba2a39a70fa805e')
+sha256sums_aarch64=('742795dfd0e945c4df419f9706081395bce1cf55662f71353a5c4de92e754ada')
 
 package() {
 	install -D -m755 $srcdir/mprocs $pkgdir/usr/bin/mprocs
