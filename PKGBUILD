@@ -1,7 +1,7 @@
 # Maintainer: Torben <git at letorbi dot com>
 
 pkgname=processing4-git
-pkgver=4.0b8.r0.g951d38eb3
+pkgver=4.0.1.r0.g58ff6a3c
 pkgrel=1
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
@@ -17,7 +17,7 @@ source=(disable_update_check.patch
         no_jdk_download.patch)
 sha256sums=('35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
             'b0742db84e6a6b148b56df6d4d1e8a3266461fe0f514f703301a310e99f1d126'
-            '5c3314d6a63955fa472aa87c6c99a9675eed3db9c589b784593c9f14432ef201')
+            'f8bde916aa0c3c816ba6cc8c22d180001109982f1640f3bff140a57e5100fc64')
 
 pkgver() {
   cd "$srcdir/$pkgname"
