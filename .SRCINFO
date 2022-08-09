@@ -1,6 +1,6 @@
 pkgbase = python-scipy-mkl
 	pkgdesc = SciPy is open-source software for mathematics, science, and engineering.
-	pkgver = 1.8.1
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = http://www.scipy.org/
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = python-scipy-mkl
 	depends = intel-oneapi-mkl
 	depends = python-numpy
 	optdepends = python-pillow: for image saving module
-	provides = python-scipy=1.8.1
+	provides = python-scipy=1.9.0
 	conflicts = python-scipy
-	source = https://github.com/scipy/scipy/releases/download/v1.8.1/scipy-1.8.1.tar.gz
-	sha256sums = 9e3fb1b0e896f14a85aa9a28d5f755daaeeb54c897b746df7a55ccb02b340f33
+	source = https://github.com/scipy/scipy/releases/download/v1.9.0/scipy-1.9.0.tar.gz
+	sha256sums = c0dfd7d2429452e7e94904c6a3af63cbaa3cf51b348bd9d35b42db7e9ad42791
 
 pkgname = python-scipy-mkl
