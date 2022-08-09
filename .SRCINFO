@@ -1,6 +1,6 @@
 pkgbase = fftune-git
 	pkgdesc = A modern pitch detection library
-	pkgver = r68.4e58333
+	pkgver = 1.0.r0.gcfd0b9f
 	pkgrel = 1
 	url = https://github.com/fftune/fftune
 	arch = i686

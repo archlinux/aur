@@ -1,7 +1,7 @@
 # Maintainer: Magnus Groß, for email contact see AUR commit author email
 _pkgname=fftune
 pkgname="$_pkgname"-git
-pkgver=r68.4e58333
+pkgver=1.0.r0.gcfd0b9f
 pkgrel=1
 pkgdesc="A modern pitch detection library"
 arch=('i686' 'x86_64')
