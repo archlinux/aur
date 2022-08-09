@@ -3,7 +3,7 @@ pkgdesc='Understated cursor theme'
 pkgbase=xcursor-cz-viator
 pkgname=(xcursor-cz-viator-{hourglass,ring,rotor,windmill}-{white,black} xcursor-cz-hickson)
 pkgver=20220613
-pkgrel=1
+pkgrel=2
 _commit=99ddf571428b51b6985c364e0b17e9d94263c746
 license=(GPL3)
 url=https://github.com/charakterziffer/cursor-toolbox
@@ -98,6 +98,6 @@ package_xcursor-cz-viator-windmill-black () {
 }
 
 package_xcursor-cz-hickson () {
-	pkgdesc="${pkgdesc} - brownish"
+	pkgdesc="${pkgdesc} - tailless"
 	_package cz-Hickson
 }

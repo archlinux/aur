@@ -1,7 +1,7 @@
 pkgbase = xcursor-cz-viator
 	pkgdesc = Understated cursor theme
 	pkgver = 20220613
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/charakterziffer/cursor-toolbox
 	arch = any
 	license = GPL3
@@ -42,4 +42,4 @@ pkgname = xcursor-cz-viator-windmill-black
 	pkgdesc = Understated cursor theme - black, windmill wait icon
 
 pkgname = xcursor-cz-hickson
-	pkgdesc = Understated cursor theme - brownish
+	pkgdesc = Understated cursor theme - tailless
