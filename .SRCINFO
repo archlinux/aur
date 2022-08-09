@@ -1,7 +1,7 @@
 pkgbase = torus-trooper
 	pkgdesc = Fast-paced abstract scrolling shooter game
 	pkgver = 0.22
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.asahi-net.or.jp/~cs8k-cyu/windows/tt_e.html
 	arch = x86_64
 	license = custom
@@ -10,9 +10,8 @@ pkgbase = torus-trooper
 	depends = sdl
 	depends = sdl_mixer
 	source = http://deb.debian.org/debian/pool/main/t/torus-trooper/torus-trooper_0.22.dfsg1.orig.tar.gz
-	source = http://ftp.debian.org/debian/pool/main/t/torus-trooper/torus-trooper_0.22.dfsg1-12.debian.tar.xz
+	source = http://ftp.debian.org/debian/pool/main/t/torus-trooper/torus-trooper_0.22.dfsg1-13.debian.tar.xz
 	md5sums = a88b2f2b0a6e4abccda657d83385f375
 	md5sums = cda3c10835840de4f9f67e8b1bbcc214
 
 pkgname = torus-trooper
-

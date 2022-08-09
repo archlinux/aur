@@ -6,16 +6,16 @@
 
 pkgname=torus-trooper
 pkgver=0.22
-pkgrel=2
+pkgrel=3
 url="http://www.asahi-net.or.jp/~cs8k-cyu/windows/tt_e.html"
 pkgdesc="Fast-paced abstract scrolling shooter game"
 license=('custom')
 depends=(libbulletml gcc-d sdl sdl_mixer)
 arch=('x86_64')
 source=(http://deb.debian.org/debian/pool/main/t/$pkgname/torus-trooper_$pkgver.dfsg1.orig.tar.gz
-    http://ftp.debian.org/debian/pool/main/t/$pkgname/torus-trooper_$pkgver.dfsg1-12.debian.tar.xz)
+    http://ftp.debian.org/debian/pool/main/t/$pkgname/torus-trooper_$pkgver.dfsg1-13.debian.tar.xz)
 md5sums=('a88b2f2b0a6e4abccda657d83385f375'
-         'cda3c10835840de4f9f67e8b1bbcc214')
+         '5b65c38f53e455d84a8aca3aea7c5857')
 
 prepare() {
   cd "$srcdir"/tt
