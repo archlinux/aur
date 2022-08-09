@@ -2,16 +2,16 @@
 # Maintainer: Dawid Weglarz <dawid.weglarz95@gmail.com>
 
 pkgname=nyrna
-pkgver=2.4.1
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='Suspend games and applications at any time and resume whenever you wish'
 arch=('x86_64')
 url="https://github.com/Merrit/nyrna"
 license=('GPL3')
-depends=('glib2' 'gtk3' 'util-linux' 'wmctrl' 'xdotool' 'xz')
+depends=('glib2' 'gtk3' 'libkeybinder3' 'util-linux' 'wmctrl' 'xdotool' 'xz')
 makedepends=('flutter' 'clang' 'cmake' 'ninja')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Merrit/nyrna/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2c613f6a06a18298fce584175b0f592e7cb0f340b1824fd2691037b3fd32f05a')
+sha256sums=('bf63de43b03d694a2736b933f45f2442adffec061021b3a29a6b629bbe32a866')
 
 # Check Flutter configuration
 flutter="flutter --suppress-analytics"
@@ -65,4 +65,3 @@ package() {
   install -Dm0644 "$srcdir/$pkgname-$pkgver/packaging/linux/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm0644 "$srcdir/$pkgname-$pkgver/assets/icons/$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
-
