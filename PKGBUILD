@@ -4,13 +4,13 @@
 
 pkgname=("yesplaymusicosd-origin-git" "yesplaymusicosd-origin-electron-git")
 pkgver=0.4.5.r37.g1d43e60
-pkgrel=1
+pkgrel=2
 pkgdesc="高颜值的第三方网易云播放器，支持 Windows / macOS / Linux :electron: 支持桌面歌词！(no fork)."
 arch=("x86_64" "aarch64")
 url="https://github.com/shih-liang/YesPlayMusicOSD" 
 license=("MIT")
-provides=("yesplaymusicosd")
-conflicts=("yesplaymusicosd")
+provides=("yesplaymusicosd" "yesplaymusic")
+conflicts=("yesplaymusicosd" "yesplaymusic")
 depends=(
     "gtk3" "nss" "libxss" "c-ares" "ffmpeg" "http-parser" "libevent" "libvpx" "libxslt" "minizip" "re2" 
     "snappy" "libnotify" "libappindicator-gtk3")
