@@ -2,8 +2,7 @@
 
 pkgname=python-pywhat
 pkgver=5.1.0
-_pyproject_version=5.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Identify emails, IP addresses and more"
 arch=("any")
 url="https://github.com/bee-san/pyWhat"
@@ -20,21 +19,21 @@ makedepends=(
 optdepends=(
     "python-orjson: faster JSON serialization and deserialization"
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=("1e8d8052e007c30165b9cb51466dcdc1cfdea555aab0986bf7f11731095f1400")
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/pywhat/pywhat-5.1.0.tar.gz")
+sha256sums=("8a6f2b3060f5ce9808802b9ca3eaf91e19c932e4eaa03a4c2e5255d0baad85c4")
 
 build() {
-    cd "$srcdir/pyWhat-$pkgver"
+    cd "$srcdir/pywhat-$pkgver"
     poetry build
 
     cd dist
-    tar xf "pywhat-$_pyproject_version.tar.gz"
-    cd "pywhat-$_pyproject_version"
+    tar xf "pywhat-$pkgver.tar.gz"
+    cd "pywhat-$pkgver"
     python setup.py build
 }
 
 package() {
-    cd "$srcdir/pyWhat-$pkgver/dist/pywhat-$_pyproject_version"
+    cd "$srcdir/pywhat-$pkgver/dist/pywhat-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-    install -Dm644 "$srcdir/pyWhat-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/pywhat-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
