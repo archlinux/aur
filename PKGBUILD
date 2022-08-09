@@ -1,16 +1,16 @@
 # Maintainer: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 pkgname=titanion
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 url="http://www.asahi-net.or.jp/~cs8k-cyu/windows/ttn_e.html"
 pkgdesc=" Strike down super high-velocity swooping insects."
 license=('custom')
 depends=(libbulletml gcc-d sdl sdl_mixer)
 arch=('x86_64')
 source=(http://deb.debian.org/debian/pool/main/t/$pkgname/titanion_$pkgver.dfsg1.orig.tar.gz
-    http://ftp.debian.org/debian/pool/main/t/$pkgname/titanion_$pkgver.dfsg1-7.debian.tar.xz)
+    http://ftp.debian.org/debian/pool/main/t/$pkgname/titanion_$pkgver.dfsg1-8.debian.tar.xz)
 md5sums=('cb173a81a66f7a214db58f1e7507aea1'
-         '33046f2000924dc9138cbfcc40c982bd')
+         '84fc0311eb79ee2c8aff76ed336866c5')
 
 prepare() {
   cd "$srcdir"/ttn

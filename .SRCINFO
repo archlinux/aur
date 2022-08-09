@@ -1,7 +1,7 @@
 pkgbase = titanion
 	pkgdesc = Strike down super high-velocity swooping insects.
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.asahi-net.or.jp/~cs8k-cyu/windows/ttn_e.html
 	arch = x86_64
 	license = custom
@@ -10,9 +10,8 @@ pkgbase = titanion
 	depends = sdl
 	depends = sdl_mixer
 	source = http://deb.debian.org/debian/pool/main/t/titanion/titanion_0.3.dfsg1.orig.tar.gz
-	source = http://ftp.debian.org/debian/pool/main/t/titanion/titanion_0.3.dfsg1-7.debian.tar.xz
+	source = http://ftp.debian.org/debian/pool/main/t/titanion/titanion_0.3.dfsg1-8.debian.tar.xz
 	md5sums = cb173a81a66f7a214db58f1e7507aea1
 	md5sums = 33046f2000924dc9138cbfcc40c982bd
 
 pkgname = titanion
-
