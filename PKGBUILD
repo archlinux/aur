@@ -15,7 +15,7 @@ makedepends=('python-setuptools-scm'
              'python-installer')
 checkdepends=('python-pytest'
               'python-sphinx'
-              'python-asdf'
+#             'python-asdf'
               'python-mistune=0.8.4')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 sha256sums=('4f79db5412d7d1cd2649ce5fa42160e54942758beba2de30605a74f12a23365c')
@@ -35,7 +35,7 @@ check() {
 
     ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
         build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver).egg-info
-    PYTHONPATH="build/lib" pytest #|| warning "Tests failed"
+    PYTHONPATH="build/lib" pytest || warning "Tests failed"
 }
 
 package() {

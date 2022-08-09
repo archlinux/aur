@@ -7,7 +7,6 @@ pkgbase = python-sphinx-asdf
 	license = BSD
 	checkdepends = python-pytest
 	checkdepends = python-sphinx
-	checkdepends = python-asdf
 	checkdepends = python-mistune=0.8.4
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
