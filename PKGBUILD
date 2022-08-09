@@ -15,7 +15,7 @@ backup=("etc/feparu.conf" "etc/fepacman.conf")
 
 pkgver() {
 	cd "$pkgname"
-	printf "%s" "$(git describe --tags --long)"
+	printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
