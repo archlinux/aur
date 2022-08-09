@@ -2,8 +2,8 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=astah-uml
-pkgver=8.4.1.827bdf.0
-_pkgver=8.4.1.827bdf-0
+pkgver=8.5.0.39c620.0
+_pkgver=8.5.0.39c620-0
 pkgrel=1
 url='https://astah.net/products/astah-uml'
 pkgdesc='Lightweight and easy-to-use UML2.x modeler (With trial)'
@@ -16,7 +16,7 @@ depends=('java-runtime=8'
 conflicts=('astah-community' 'astah-professional')
 options=('!emptydirs' '!strip')
 source=("http://cdn.change-vision.com/files/astah-uml-${_pkgver}.noarch.rpm")
-md5sums=('2190341221d68562fee625b33388616f')
+md5sums=('9eb0ad869c4cb8c521586cdd723434c5')
 
 package() {
   cp -aR "${srcdir}/usr" "${pkgdir}"
