@@ -1,7 +1,7 @@
 pkgbase = gunroar
 	pkgdesc = 360-degree gunboat shooter
 	pkgver = 0.15
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.asahi-net.or.jp/~cs8k-cyu/windows/gr_e.html
 	arch = x86_64
 	license = custom
@@ -10,9 +10,8 @@ pkgbase = gunroar
 	depends = sdl
 	depends = sdl_mixer
 	source = http://ftp.debian.org/debian/pool/main/g/gunroar/gunroar_0.15.dfsg1.orig.tar.gz
-	source = http://ftp.debian.org/debian/pool/main/g/gunroar/gunroar_0.15.dfsg1-9.debian.tar.xz
+	source = http://ftp.debian.org/debian/pool/main/g/gunroar/gunroar_0.15.dfsg1-10.debian.tar.xz
 	md5sums = a2a5637f590fcc9369646fcb4a91bd1d
 	md5sums = 4c6c147fd8f32e69703a1578ad9d461c
 
 pkgname = gunroar
-

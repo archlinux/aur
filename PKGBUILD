@@ -1,16 +1,16 @@
 # Maintainer: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 pkgname=gunroar
 pkgver=0.15
-pkgrel=1
+pkgrel=2
 url="http://www.asahi-net.or.jp/~cs8k-cyu/windows/gr_e.html"
 pkgdesc="360-degree gunboat shooter"
 license=('custom')
 depends=(libbulletml gcc-d sdl sdl_mixer)
 arch=('x86_64')
 source=(http://ftp.debian.org/debian/pool/main/g/gunroar/gunroar_$pkgver.dfsg1.orig.tar.gz
-    http://ftp.debian.org/debian/pool/main/g/gunroar/gunroar_$pkgver.dfsg1-9.debian.tar.xz)
+    http://ftp.debian.org/debian/pool/main/g/gunroar/gunroar_$pkgver.dfsg1-10.debian.tar.xz)
 md5sums=('a2a5637f590fcc9369646fcb4a91bd1d'
-         '4c6c147fd8f32e69703a1578ad9d461c')
+         '63aede6fe872c1308da79b16fbb8fc48')
 
 prepare() {
   cd "$srcdir"/gr
