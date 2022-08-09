@@ -20,17 +20,15 @@ pkgver() {
 
 build() {
 	cd "$_pkgname"
-	sh autogen.sh
-	./configure --prefix=/usr
-	make
+	cmake -Bbuild -DCMAKE_INSTALL_PREFIX=/usr/ -DCMAKE_BUILD_TYPE=Release
+	cmake --build build --config release
 }
 
 package() {
-	ls
 	cd "$_pkgname"
-	make DESTDIR="$pkgdir/" install
+	make -C build DESTDIR="$pkgdir/" install
 	install -d "$pkgdir/usr/share/licenses/cglm/"
 	install LICENSE "$pkgdir/usr/share/licenses/cglm/"
 	install -d "$pkgdir/usr/lib/pkgconfig/"
-	install cglm.pc "$pkgdir/usr/lib/pkgconfig/"
+	install build/cglm.pc "$pkgdir/usr/lib/pkgconfig/"
 }
