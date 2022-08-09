@@ -2,7 +2,7 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-bin"
-pkgver="0.9.1beta"
+pkgver="0.10.0beta"
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=('x86_64' 'i686')
@@ -38,7 +38,7 @@ depends=(
 	vulkan-validation-layers
 	xorg-xwayland)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hyprwm/Hyprland/releases/download/v${pkgver}/v${pkgver}.tar.gz")
-sha256sums=('efa5efc31f1aeaf7caaca383ebf9b5f67d283fe8f16316f1804b97587ae88332')
+sha256sums=('350e3422aed1a9b5bf5ab7215b0a4d64d98d9d558e9687df6adfba9c9df6551b')
 conflicts=("${_pkgname}")
 provides=(hyprland)
 
