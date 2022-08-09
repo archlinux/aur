@@ -1,7 +1,7 @@
 pkgbase = tomate-gtk
 	pkgdesc = A timer for the Pomodoro Technique
-	pkgver = 0.18.0
-	pkgrel = 2
+	pkgver = 0.18.1
+	pkgrel = 1
 	url = https://github.com/eliostvs/tomate-gtk
 	install = tomate-gtk.install
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = tomate-gtk
 	depends = python-wrapt
 	depends = python-yapsy
 	options = !emptydirs
-	source = https://github.com/eliostvs/tomate-gtk/archive/0.18.0.tar.gz
-	md5sums = 92349f5e0acc3debd1532dc4871a036c
+	source = https://github.com/eliostvs/tomate-gtk/archive/0.18.1.tar.gz
+	md5sums = aa9a6c23731a44ce52354118377d4b31
 
 pkgname = tomate-gtk
