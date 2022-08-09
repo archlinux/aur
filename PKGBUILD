@@ -4,13 +4,13 @@
 
 _pkgname=corectrl
 pkgname=${_pkgname}-git
-pkgver=1.2.0.r41.ga2892df
+pkgver=1.2.0.r76.g2d3823f
 pkgrel=1
 pkgdesc="Application to control your hardware with ease using application profiles"
 url="https://gitlab.com/corectrl/corectrl"
 license=(GPL3)
 arch=(i686 x86_64)
-depends=('botan>=2.2.0' 'qt5-base>=5.9' qt5-quickcontrols2 qt5-charts qt5-svg qt5-xmlpatterns kauth karchive procps-ng hwdata)
+depends=('botan>=2.2.0' 'qt5-base>=5.9' qt5-quickcontrols2 qt5-charts qt5-svg procps-ng hwdata quazip-qt5)
 makedepends=(git 'cmake>=3.3' extra-cmake-modules 'gcc>=8' qt5-tools)
 optdepends=(
     'vulkan-tools: for vulkaninfo'
