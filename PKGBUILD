@@ -5,7 +5,7 @@
 pkgname=electron-fiddle
 _pkgname=fiddle
 pkgver=0.29.2
-pkgrel=4
+pkgrel=5
 pkgdesc="The easiest way to get started with Electron"
 arch=('x86_64' 'aarch64' 'armhf')
 provides=("${pkgname%-bin}")
@@ -24,7 +24,7 @@ prepare() {
 	cd "$srcdir/$_pkgname-$pkgver"
 
 	# Fix dependencies
- 	sed -i 's#"monaco-editor": "^0.21.3"#"monaco-editor": "^0.17.0"#' "package.json"
+ 	#sed -i 's#"monaco-editor": "^0.21.3"#"monaco-editor": "^0.21.0"#' "package.json"
 
 	# Workaround for Husky error
 	mkdir .git
