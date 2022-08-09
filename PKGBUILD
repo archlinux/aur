@@ -3,15 +3,13 @@
 
 _pkgbase=systemd
 pkgbase=${_pkgbase}-pr23511
-pkgname=("$pkgbase" "$pkgbase-libs" "$pkgbase-resolvconf" "$pkgbase-sysvcompat")
-_tag='069e2b0ddd3a1b5bcff48530be165c56117d7134' # git rev-parse v${_tag_name}
-_tag_name=251.3
+pkgname=("${pkgbase}" "${pkgbase}-libs" "${pkgbase}-resolvconf" "${pkgbase}-sysvcompat")
+_tag='46cf27a20eb6fb676ac987533415d499b77dd0af' # git rev-parse v${_tag_name}
+_tag_name=251.4
 pkgver="${_tag_name/-/}"
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
-provides=("${_pkgbase}" "${_pkgbase}-libs" "${_pkgbase}-resolvconf" "${_pkgbase}-sysvcompat")
-conflicts=("${provides[@]}")
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'intltool' 'iptables' 'kmod' 'libcap' 'libidn2' 'libgcrypt'
              'libmicrohttpd' 'libxcrypt' 'libxslt' 'util-linux' 'linux-api-headers'
@@ -67,13 +65,6 @@ sha512sums=('SKIP'
             '769bed0244d583c01de644b297aded75d3bdd9f5baffdefd4575a02bf7f8b8cb1910892699f9d7726ee266604ed54d2c416233abf4894340f3df5a282cf7d4e1')
 
 _backports=(
-  # glibc: Remove #include <linux/fs.h> to resolve fsconfig_command/mount_attr conflict with glibc 2.36
-  '3657d3a01c7e25ff86d7a4642065b367c4ff7484'
-  # home: drop conflicted headers
-  '0a58cd00454cc7b57b04f3a4a334584d743d7f7a'
-
-  # Do not fail EFI build with newer binutils
-  'b0e5bf0451a6bc94e6e7b2a1de668b75c63f38c8'
 )
 
 _reverts=(

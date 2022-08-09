@@ -1,6 +1,6 @@
 pkgbase = systemd-pr23511
-	pkgver = 251.3
-	pkgrel = 2
+	pkgver = 251.4
+	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
 	makedepends = acl
@@ -40,17 +40,9 @@ pkgbase = systemd-pr23511
 	makedepends = libfido2
 	makedepends = tpm2-tss
 	makedepends = rsync
-	provides = systemd
-	provides = systemd-libs
-	provides = systemd-resolvconf
-	provides = systemd-sysvcompat
-	conflicts = systemd
-	conflicts = systemd-libs
-	conflicts = systemd-resolvconf
-	conflicts = systemd-sysvcompat
 	options = debug
 	options = !strip
-	source = git+https://github.com/systemd/systemd-stable#tag=069e2b0ddd3a1b5bcff48530be165c56117d7134?signed
+	source = git+https://github.com/systemd/systemd-stable#tag=46cf27a20eb6fb676ac987533415d499b77dd0af?signed
 	source = git+https://github.com/systemd/systemd#tag=v251?signed
 	source = 0001-Use-Arch-Linux-device-access-groups.patch
 	source = initcpio-hook-udev
@@ -143,8 +135,8 @@ pkgname = systemd-pr23511
 	optdepends = libfido2: unlocking LUKS2 volumes with FIDO2 token
 	optdepends = tpm2-tss: unlocking LUKS2 volumes with TPM2
 	provides = nss-myhostname
-	provides = systemd-tools=251.3
-	provides = udev=251.3
+	provides = systemd-tools=251.4
+	provides = udev=251.4
 	provides = systemd
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
