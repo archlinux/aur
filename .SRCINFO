@@ -1,16 +1,16 @@
 pkgbase = ccextractor
 	pkgdesc = A closed captions and teletext subtitles extractor for video streams.
 	pkgver = 0.94
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.ccextractor.org
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = rust
 	makedepends = clang
+	makedepends = ffmpeg4.4
 	depends = gcc-libs
 	depends = tesseract
-	depends = ffmpeg
+	depends = ffmpeg4.4
 	source = https://github.com/CCExtractor/ccextractor/releases/download/v0.94/ccextractor_minimal.tar.gz
 	sha512sums = 35ddcfb540f2b9a9354b81885c31c4fedd4385700401f71db59048a855f74bff045de8787e13dc8d772e1d3bf7d75ae8732c2d97a8148475502f0e0586b47aa9
 
