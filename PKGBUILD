@@ -6,7 +6,7 @@
 
 _pkgname='gnome-terminal'
 pkgname="${_pkgname}-fedora"
-pkgver=3.44.1
+pkgver=3.45.90
 pkgrel=1
 pkgdesc='The GNOME Terminal Emulator with Fedora patches'
 url='https://wiki.gnome.org/Apps/Terminal'
@@ -47,18 +47,21 @@ source=(
   "git+https://gitlab.gnome.org/GNOME/gnome-terminal.git#tag=${pkgver}"
   "${_fpatchfile100}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile100}"
   "${_fgsoverridefile}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fgsoverridefile}"
+  "gnome-terminal-fedora_3.45.90.patch"
 )
 sha256sums=(
   'SKIP'
   'cf8c1ccc822e7198bf9a9598b7e0cc3c958c542ba138a5874302b730f0d76eec'
   'a4a22834d6524fb697a8edf91c9489617d5ab2e513413fc84c6b8575320938f9'
+  'e54426ce4ebc2c93dc96b566e7867f4a2b06b6d52f68271029a34d0faf20609b'
 )
 
 prepare () {
   cd ${_pkgname}
 
   # Apply patches
-  patch -p1 -i "../${_fpatchfile100}-${_fcommit}"
+  #patch -p1 -i "../${_fpatchfile100}-${_fcommit}"
+  patch -p1 -i "${srcdir}/gnome-terminal-fedora_3.45.90.patch"  # Fixed patch
 }
 
 build() {
