@@ -40,6 +40,14 @@ pkgbase = systemd-pr23511
 	makedepends = libfido2
 	makedepends = tpm2-tss
 	makedepends = rsync
+	provides = systemd
+	provides = systemd-libs
+	provides = systemd-resolvconf
+	provides = systemd-sysvcompat
+	conflicts = systemd
+	conflicts = systemd-libs
+	conflicts = systemd-resolvconf
+	conflicts = systemd-sysvcompat
 	options = debug
 	options = !strip
 	source = git+https://github.com/systemd/systemd-stable#tag=46cf27a20eb6fb676ac987533415d499b77dd0af?signed

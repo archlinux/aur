@@ -10,6 +10,8 @@ pkgver="${_tag_name/-/}"
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
+provides=("${_pkgbase}" "${_pkgbase}-libs" "${_pkgbase}-resolvconf" "${_pkgbase}-sysvcompat")
+conflicts=("${provides[@]}")
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'intltool' 'iptables' 'kmod' 'libcap' 'libidn2' 'libgcrypt'
              'libmicrohttpd' 'libxcrypt' 'libxslt' 'util-linux' 'linux-api-headers'
