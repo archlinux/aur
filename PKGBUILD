@@ -2,7 +2,7 @@
 # TODO: fall back to /builds/old in case the build artifact disappears
 
 pkgname=bombsquad
-pkgver=1.7.3
+pkgver=1.7.6
 pkgrel=1
 pkgdesc='An explosive arcade-style party game'
 arch=('x86_64' 'aarch64')
@@ -14,15 +14,13 @@ source=(
   'bombsquad.sh'
   'bombsquad.desktop'
 )
-sha256sums=(
-  '31f3af8d59a384b7a3ac999d2e8fe0a0033d0d31ae6e760686537ab85d86ba00'
-  '850f8a66eb045ce833f8d7dae4533f69b629ac648bd205d98bf5f851339d4515'
-  '900ffdf250eb2c59a2944703ccab9b69e58b5cdd7809f8349f6291db0301935c'
-)
+sha256sums=('31f3af8d59a384b7a3ac999d2e8fe0a0033d0d31ae6e760686537ab85d86ba00'
+            '850f8a66eb045ce833f8d7dae4533f69b629ac648bd205d98bf5f851339d4515'
+            '900ffdf250eb2c59a2944703ccab9b69e58b5cdd7809f8349f6291db0301935c')
+sha256sums_x86_64=('9ec79c784ed55661059dbb57bda2be8b7bba205908ae355be77a0995f942fa4d')
+sha256sums_aarch64=('bf9fbf995287b87e06775d5ac86fbccbbfb99214b56da6f6d0aa4d1841a0cd66')
 source_x86_64=("https://files.ballistica.net/bombsquad/builds/BombSquad_Linux_x86_64_${pkgver}.tar.gz")
 source_aarch64=("https://files.ballistica.net/bombsquad/builds/BombSquad_Linux_Arm64_${pkgver}.tar.gz")
-sha256sums_x86_64=("e3cedf97b0ca96dde04706043f514920de1d2a3784bd1705e4ae333731125f13")
-sha256sums_aarch64=("cc583915afd2b888dadbb3314617b67c3779886e79734c36e8fd5eaa0f47a04c")
 
 
 package() {
