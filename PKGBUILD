@@ -6,9 +6,9 @@
 _pkgname="pytorch"
 pkgbase="python-${_pkgname}-rocm"
 pkgname=("${pkgbase}" "python-pytorch-opt-rocm")
-pkgver=1.12.0
-_pkgver=1.12.0
-pkgrel=8
+pkgver=1.12.1
+_pkgver=1.12.1
+pkgrel=1
 _pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -289,10 +289,10 @@ _package() {
   rm -rf "${pkgdir}/usr/include/pybind11"
 
   # python module is hardcoded to look there at runtime
-  ln -s /usr/include "${pkgdir}/${pytorchpath}/include"
-  find "${pkgdir}"/usr/lib -type f -name "*.so*" -print0 | while read -rd $'\0' _lib; do
-    ln -s ${_lib#"$pkgdir"} "${pkgdir}/${pytorchpath}/lib/"
-  done
+  #ln -s /usr/include "${pkgdir}/${pytorchpath}/include"
+  #find "${pkgdir}"/usr/lib -type f -name "*.so*" -print0 | while read -rd $'\0' _lib; do
+  #  ln -s ${_lib#"$pkgdir"} "${pkgdir}/${pytorchpath}/lib/"
+  #done
 }
 
 package_python-pytorch-rocm() {
