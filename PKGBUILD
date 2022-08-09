@@ -3,6 +3,7 @@ pkgname=principia-git
 pkgver=r27.b5f86f0
 pkgrel=1
 pkgdesc="Physics-based sandbox building game."
+url='https://github.com/Bithack/principia/'
 arch=('x86_64' 'i686')
 license=('bsd-3')
 depends=('gtk2')

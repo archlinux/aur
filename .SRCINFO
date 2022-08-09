@@ -2,6 +2,7 @@ pkgbase = principia-git
 	pkgdesc = Physics-based sandbox building game.
 	pkgver = r27.b5f86f0
 	pkgrel = 1
+	url = https://github.com/Bithack/principia/
 	arch = x86_64
 	arch = i686
 	license = bsd-3
