@@ -2,7 +2,7 @@
 # Contributor: jbpratt <jbpratt78 at gmail dot com>
 
 pkgname=sourcegraph-cli
-pkgver=3.42.2
+pkgver=3.42.3
 pkgrel=1
 pkgdesc='Command line interface to Sourcegraph'
 url='https://github.com/sourcegraph/src-cli'
@@ -28,12 +28,16 @@ build() {
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-
 	cd "$pkgname"
 	go build -o build ./cmd/src
 }
 
 check() {
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 	cd "$pkgname"
 	go test ./...
 }

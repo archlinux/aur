@@ -19,6 +19,16 @@ All notable changes to `src-cli` are documented in this file.
 
 ### Removed
 
+## 3.42.3
+
+### Changed
+
+- **IMPORTANT:** Searches using the command `src search -stream` is updated to use a **new and better search result schema**, improving highlighting and accurate result counts for multiline matches. Please see the new JSON schema for results if you use the `src search -stream -json` output: [#807](https://github.com/sourcegraph/src-cli/pull/807)
+
+### Fixed
+
+- INTERNAL ONLY: Fixed src batch exec not logging errors.
+
 ## 3.42.2
 
 ### Fixed
