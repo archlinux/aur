@@ -1,4 +1,5 @@
-# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
+# Maintainer: Younes Khoudli <khoyobegenn@gmail.com>
+# Contributor: Eli Schwartz <eschwartz@archlinux.org>
 
 _pkgname=FanFicFare
 pkgname=fanficfare
