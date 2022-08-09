@@ -1,7 +1,7 @@
 # Maintainer: Barış İnandıoğlu <68742481+baris-inandi@users.noreply.github.com>
 
 pkgname=fe
-pkgver=1.1.5
+pkgver=0
 pkgrel=1
 pkgdesc="AUR helper with a familiar subcommand system"
 arch=(x86_64)
@@ -12,6 +12,11 @@ makedepends=(git go)
 source=("git+$url")
 md5sums=('SKIP')
 backup=("etc/feparu.conf" "etc/fepacman.conf")
+
+pkgver() {
+	cd "$pkgname"
+	git describe --tags --abbrev=0
+}
 
 prepare() {
 	cd "$pkgname"

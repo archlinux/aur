@@ -1,6 +1,6 @@
 pkgbase = fe
 	pkgdesc = AUR helper with a familiar subcommand system
-	pkgver = 1.1.5
+	pkgver = 0
 	pkgrel = 1
 	url = https://github.com/baris-inandi/fe
 	arch = x86_64
