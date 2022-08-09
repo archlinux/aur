@@ -1,6 +1,7 @@
 # Maintainer: bilibili_xiaok <the_xiaok@qq.com>
+# Maintainer: 	msojocs <jiyecafe@gmail.com>
 # Contributor: bilibili_xiaok <the_xiaok@qq.com>
-
+# Contributor: YidaozhanYa <yidaozhan_ya@outlook.com>
 pkgname=bilibili-bin
 _pkgname=bilibili
 pkgver=1.4.1
