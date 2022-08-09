@@ -1,0 +1,18 @@
+pkgbase = fftune-git
+	pkgdesc = A modern pitch detection library
+	pkgver = r68.4e58333
+	pkgrel = 1
+	url = https://github.com/fftune/fftune
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = cmake
+	depends = fftw
+	depends = libsmf
+	depends = libsndfile
+	depends = sfizz
+	source = git+https://github.com/fftune/fftune.git
+	md5sums = SKIP
+
+pkgname = fftune-git
