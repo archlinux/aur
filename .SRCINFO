@@ -1,6 +1,6 @@
 pkgbase = tomate-statusicon-plugin
 	pkgdesc = Tomate plugin that shows the session progress in notification area
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/eliostvs/
 	install = tomate-statusicon-plugin.install
@@ -14,7 +14,7 @@ pkgbase = tomate-statusicon-plugin
 	depends = tomate-gtk
 	conflicts = tomate-indicator-plugin
 	options = !emptydirs
-	source = https://github.com/eliostvs/tomate-statusicon-plugin/archive/0.8.0.tar.gz
-	md5sums = 32ae3fea0808d4e4e7ce62df466e9a99
+	source = https://github.com/eliostvs/tomate-statusicon-plugin/archive/0.8.1.tar.gz
+	md5sums = b07494861f528ab6d321981a58556526
 
 pkgname = tomate-statusicon-plugin
