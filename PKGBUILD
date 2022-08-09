@@ -8,17 +8,8 @@ pkgdesc="Battery optimization application for portable devices."
 arch=('x86_64')
 url="https://github.com/slimbook/slimbookbattery"
 license=('GPL3')
-depends=('cron'
-         'dbus-python'
-         'dmidecode'
-         'gtk3'
-         'libayatana-appindicator'
-         'libnotify'
-         'python-gobject'
-         'python-pillow'
-         'tlp'
-         'tlp-rdw'
-         'vte3'
+depends=('cron' 'dbus-python' 'dmidecode' 'gtk3' 'libayatana-appindicator'
+         'libnotify' 'python-gobject' 'python-pillow' 'tlp' 'tlp-rdw' 'vte3'
          'xorg-xdpyinfo')
 optdepends=('nvidia-prime: for hybrid graphics switching'
             'slimbookamdcontroller: Synchronize battery mode with CPU TDP mode'
@@ -36,13 +27,4 @@ package() {
   install -d "$pkgdir/usr/lib/systemd/system"
   ln -s "/usr/share/$pkgname/src/service/$pkgname.service" \
     "$pkgdir/usr/lib/systemd/system/"
-
-  # Install locales
-  # cd "$pkgdir/usr/share/$pkgname/src/translations"
-  # for lang in $(ls -d */); do
-  #   install -d "$pkgdir/usr/share/translations/${lang}LC_MESSAGES"
-  #   mv "$pkgdir/usr/share/$pkgname/src/translations/${lang}LC_MESSAGES"/*.mo \
-  #     "$pkgdir/usr/share/translations/${lang}LC_MESSAGES"
-  # done
-  # rm -rf "$pkgdir/usr/share/$pkgname/src/translations/"
 }
