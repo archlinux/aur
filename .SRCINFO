@@ -1,0 +1,13 @@
+pkgbase = xo-rs-bin
+	pkgdesc = TicTacToe terminal game with Rust
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/xXCoolinXx/xo-rs
+	arch = x86_64
+	license = GPL-3.0-or-later
+	provides = xo-rs
+	conflicts = xo-rs
+	source = https://github.com/xXCoolinXx/xo-rs/releases/download/v0.5.1/xo-rs-0.5.1-x86_64.tar.gz
+	sha256sums = eefe26abcdcc9b7f1164f6d49dc05c906b100df7fdafc9ee96f106e54f3a8c17
+
+pkgname = xo-rs-bin
