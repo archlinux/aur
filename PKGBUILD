@@ -1,11 +1,11 @@
 # Maintainer: Jonas Riedel <jonasriedel@protonmail.com>
 
 pkgname=rustyfetch
-pkgver=0.1.8
+pkgver=0.1.9
 pkgdesc="Fetch stuff with Rust!"
 pkgrel=1
 arch=('x86_64')
-url="https://github.com/jonasrdl/rustfetch"
+url="https://github.com/jonasrdl/rustyfetch"
 license=('MPL-2.0')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
