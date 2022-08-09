@@ -1,12 +1,13 @@
 pkgbase = python-sphinx-asdf
 	pkgdesc = Sphinx plugin for generating documentation from ASDF schemas
 	pkgver = 0.1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/asdf-format/sphinx-asdf
 	arch = any
 	license = BSD
 	checkdepends = python-pytest
 	checkdepends = python-sphinx
+	checkdepends = python-asdf
 	checkdepends = python-mistune=0.8.4
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
@@ -16,6 +17,7 @@ pkgbase = python-sphinx-asdf
 	sha256sums = 4f79db5412d7d1cd2649ce5fa42160e54942758beba2de30605a74f12a23365c
 
 pkgname = python-sphinx-asdf
+	depends = python-asdf
 	depends = python-astropy>=5.0.4
 	depends = python-graphviz
 	depends = python-matplotlib
