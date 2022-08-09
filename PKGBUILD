@@ -26,8 +26,7 @@ build() {
   # Instead we need this mess to do it manually
   SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver python setup.py build
   local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
-  local python_version_dot=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-  cp "$PWD/build/lib.linux-$CARCH-${python_version_dot}/portmodlib/portmod.cpython-${python_version}-$CARCH-linux-gnu.so" portmodlib/
+  cp "$PWD/build/lib.linux-$CARCH-cpython-${python_version}/portmodlib/portmod.cpython-${python_version}-$CARCH-linux-gnu.so" portmodlib/
   make -C doc man
 }
 
