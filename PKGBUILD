@@ -4,7 +4,7 @@ pkgbase=python-sphinx-asdf
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Sphinx plugin for generating documentation from ASDF schemas"
 arch=('any')
 url="https://github.com/asdf-format/sphinx-asdf"
@@ -39,8 +39,7 @@ check() {
 }
 
 package() {
-    depends=('python-asdf'
-             'python-astropy>=5.0.4'
+    depends=('python-astropy>=5.0.4'
              'python-graphviz'
              'python-matplotlib'
              'python-myst-parser'
