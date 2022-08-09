@@ -36,7 +36,6 @@ package() {
   ln -s /usr/lib/waydroid/waydroid.py "$pkgdir/usr/bin/waydroid"
 
   install -Dm644 -t "$pkgdir/etc" "$srcdir/gbinder.conf"
-  install -Dm644 -t "$pkgdir/etc/gbinder.d" gbinder/anbox.conf
   install -Dm644 -t "$pkgdir/usr/lib/systemd/system" debian/waydroid-container.service
 }
 
