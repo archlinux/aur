@@ -1,7 +1,7 @@
 pkgbase = tumiki-fighters
 	pkgdesc = sticky 2D shooter
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.asahi-net.or.jp/~cs8k-cyu/windows/tf_e.html
 	arch = x86_64
 	license = custom
@@ -10,9 +10,8 @@ pkgbase = tumiki-fighters
 	depends = sdl
 	depends = sdl_mixer
 	source = http://deb.debian.org/debian/pool/main/t/tumiki-fighters/tumiki-fighters_0.2.dfsg1.orig.tar.gz
-	source = http://http.debian.net/debian/pool/main/t/tumiki-fighters/tumiki-fighters_0.2.dfsg1-9.debian.tar.xz
+	source = http://http.debian.net/debian/pool/main/t/tumiki-fighters/tumiki-fighters_0.2.dfsg1-10.debian.tar.xz
 	md5sums = 3481eaae79df72c0950605c6348311fa
 	md5sums = 45647180f8a4313f851926dec4f7c49f
 
 pkgname = tumiki-fighters
-
