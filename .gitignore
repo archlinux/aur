@@ -1,0 +1,7 @@
+sulis
+sulis-*
+pkg
+src
+.*
+!.SRCINFO
+!.gitignore
