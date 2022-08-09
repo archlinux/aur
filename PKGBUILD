@@ -1,9 +1,10 @@
+# Maintainer: erk <arch@erk.dev>
 # Maintainer: kaptoxic
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: Aeternus Atterratio <atterratio (at) Gmail.com>
 
 pkgname=drakon-editor
-pkgver=1.29
+pkgver=1.31
 pkgrel=1
 pkgdesc="A free cross-platform editor for the DRAKON visual language"
 arch=('any')
@@ -16,7 +17,7 @@ source=("http://downloads.sourceforge.net/project/${pkgname}/drakon_editor${pkgv
         "${pkgname}.sh"
         "LICENSE")
 noextract=("drakon_editor${pkgver}.zip")
-md5sums=('ad044480e438435340ef3ba5a0da5238'
+md5sums=('f9e839f069961fbe0e2e567c0621ab8e'
          'fff9a96ac0e38d735452e935207d2892'
          'eadc8e1b7c72f2f6fb438c254fe556e5'
          '9a3c1ca7b17a8c2f86545fc974277587'
