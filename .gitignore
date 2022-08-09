@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!dreamfinity.profile
+!dreamfinity
+!dreamfinity.desktop

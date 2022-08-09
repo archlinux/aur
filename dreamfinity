@@ -1,0 +1,20 @@
+#!/bin/sh
+
+set -e
+
+JAVA_HOME=/usr/lib/jvm/java-8-jre/jre/
+JAVA=$JAVA_HOME/bin/java
+
+echo
+echo "Java Version:"
+$JAVA -version
+echo
+
+# As project site doesn't have latest version, launcher updates itself so it requires write permission
+# Cannot make launcher world-writable (even though firejail will discard changes made by launcher),
+# so just make launcher sandbox-writable by copying to temporary directory (firejail will discard these changes)
+# If we're not in firejail sandbox, there will be left user-writable file, so -f flag to overwrite in case of restart
+cp -f /opt/Dreamfinity/Dreamfinity.jar /tmp/Dreamfinity.jar
+JAVA_HOME=$JAVA_HOME $JAVA -jar /tmp/Dreamfinity.jar
+# Cannot remove /tmp/Dreamfinity.jar because process calls itself and exits (this implies inability of setting random 
+# file name - /tmp could be flooded with equal files otherwise)

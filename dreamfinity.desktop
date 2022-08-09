@@ -1,0 +1,8 @@
+[Desktop Entry]
+Icon=dreamfinity
+Exec=/usr/bin/sh -c "\\$(command -v firejail) dreamfinity"
+Version=1.0
+Type=Application
+Categories=Game
+Name=Dreamfinity
+Terminal=false
