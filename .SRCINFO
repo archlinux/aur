@@ -1,6 +1,6 @@
 pkgbase = kio_recoll
-	pkgdesc = KDE4 KIO Slave for recoll a full text search tool based on Xapian backend
-	pkgver = 1.21.6
+	pkgdesc = KIO Slave for recoll a full text search tool based on Xapian backend
+	pkgver = 1.32.7
 	pkgrel = 1
 	url = http://www.lesbonscomptes.com/recoll/
 	arch = i686
@@ -9,22 +9,11 @@ pkgbase = kio_recoll
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	depends = xapian-core>=1.0.15-1
-	depends = qt4
 	depends = openssl
 	depends = hicolor-icon-theme
-	depends = automoc4
-	optdepends = unzip: for the OpenOffice.org documents
-	optdepends = xpdf: for pdf
-	optdepends = pstotext: for postscipt
-	optdepends = antiword: for msword
-	optdepends = catdoc: for ms excel and powerpoint
-	optdepends = unrtf: for RTF
-	optdepends = tetex: for dvi support with dvips
-	optdepends = djvulibre: for djvu
-	optdepends = id3lib: for mp3 tags support with id3info
-	optdepends = python2: for using some filters
-	source = http://www.lesbonscomptes.com/recoll/recoll-1.21.6.tar.gz
-	md5sums = 4fb2834d9f761dc3e07ce8569dd4677a
+	depends = kio
+	depends = recoll
+	source = http://www.lesbonscomptes.com/recoll/recoll-1.32.7.tar.gz
+	md5sums = 66e5a45d04f18cb5ace36c096bb30b57
 
 pkgname = kio_recoll
-
