@@ -1,16 +1,16 @@
 # Maintainer: Juliette Cordor
 pkgname=ignoreit
-pkgver=2.4.6
-pkgrel=2
+pkgver=2.4.7
+pkgrel=1
 makedepends=('rust' 'cargo')
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 pkgdesc="Quickly load .gitignore templates"
 license=('MIT')
 depends=('openssl')
+url="https://github.com/jewlexx/ignoreit"
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jewlexx/ignoreit/archive/v$pkgver.tar.gz")
-
-sha256sums=('da4b301e8874aad048b5eff2f507ee05dc1e60ef010b74de225c6ab2bceccf0f')
+sha256sums=('37b00b992ddd842a8dc94e1e52c59983544dadc201447df13e03170bb31cd567')
 
 # Generated in accordance to https://wiki.archlinux.org/title/Rust_package_guidelines.
 # Might require further modification depending on the package involved.
