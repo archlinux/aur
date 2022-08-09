@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Cantrell <jmcantrell at gmail dot com>
 
 pkgname=swaystatus-git
-pkgver=0.2.4.r1.42e32cb
+pkgver=0.2.4.r2.e48ac91
 pkgrel=1
 pkgdesc="Generates a status line for swaybar"
 arch=('any')
