@@ -1,10 +1,11 @@
 pkgbase = ciphey
 	pkgdesc = Automated decryption tool
 	pkgver = 5.14.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/Ciphey/Ciphey
 	arch = any
 	license = MIT
+	makedepends = patch
 	makedepends = python-setuptools
 	makedepends = python-poetry
 	depends = flake8
@@ -25,6 +26,8 @@ pkgbase = ciphey
 	depends = python-typing_inspect
 	provides = ciphey
 	source = ciphey-5.14.0.tar.gz::https://github.com/Ciphey/Ciphey/archive/refs/tags/5.14.0.tar.gz
+	source = what.py.patch
 	sha256sums = 42fd5ea5b462ab37cb2e6aed41c254e7ed44bb190fed9a3918e6bdd56d86e10f
+	sha256sums = 720914463a9004a78ee685a2124c1b1d915609705ef84b1cafdf448d7c796198
 
 pkgname = ciphey
