@@ -1,6 +1,6 @@
 pkgbase = gtk-cyberpunk-neon-theme-git
 	pkgdesc = GTK Cyberpunk Themes credit to Roboron3042 @github.com
-	pkgver = 1.r19.1803739
+	pkgver = 1.r125.587b5aa
 	pkgrel = 1
 	url = https://github.com/Roboron3042/Cyberpunk-Neon.git
 	install = gtk-cyberpunk-neon-theme-git.install
