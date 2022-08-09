@@ -13,13 +13,9 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/baris-inandi/fe/archive/ref
 sha256sums=('08ceb8e6f4b59376783f5acc3130935ecd37b6bc602e676a84d801323c8cf0d1')
 backup=("etc/feparu.conf" "etc/fepacman.conf")
 
-pkgver() {
-	cd "$pkgname"
-	printf "%s" "$(git describe --tags --abbrev=0 | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-}
-
 build() {
-  cd "$pkgname"
+  tar xvf fe-$pkgver.tar.gz
+  cd "$pkgname-$pkgver"
   git checkout $(git describe --tags --abbrev=0)
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -30,7 +26,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   install -Dm644 conf/pacman.conf "$pkgdir"/etc/fepacman.conf
   install -Dm644 conf/paru.conf "$pkgdir"/etc/feparu.conf
   install -Dm755 "$pkgname-$pkgver-$pkgrel" "$pkgdir"/usr/bin/$pkgname

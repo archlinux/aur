@@ -1,5 +1,5 @@
 clean:
-	sudo rm -rf pkg/ src/ fe/ *.zst
+	sudo rm -rf pkg/ src/ fe/ *.zst *.tar.xz
 
 srcinfo:
 	makepkg --printsrcinfo > .SRCINFO
@@ -12,7 +12,7 @@ install:
 
 release:
 	make clean
-	makepkg -god
+	makepkg -g
 	make srcinfo
 	git add -A
 	git commit --allow-empty -am "new release"
