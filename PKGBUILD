@@ -7,9 +7,9 @@
 pkgbase=mesa-steamos
 pkgname=('vulkan-mesa-layers-steamos' 'opencl-mesa-steamos' 'vulkan-intel-steamos' 'vulkan-radeon-steamos' 'vulkan-swrast-steamos' 'libva-mesa-driver-steamos' 'mesa-vdpau-steamos' 'mesa-steamos')
 pkgdesc="An open-source implementation of the OpenGL specification"
-_tag=radeonsi-20220217
-pkgver=22.0.0_devel.148040.radeonsi_20220217
-pkgrel=6
+_tag=radeonsi-20220427
+pkgver=22.0.2.150118.radeonsi_20220427
+pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
              'libxdamage' 'libvdpau' 'libva' 'wayland' 'wayland-protocols' 'zstd' 'elfutils' 'llvm'
@@ -188,6 +188,7 @@ package_mesa-steamos() {
   conflicts=('mesa-libgl')
 
   _install fakeinstall/usr/share/drirc.d/00-mesa-defaults.conf
+  _install fakeinstall/usr/share/drirc.d/00-radv-defaults.conf
   _install fakeinstall/usr/share/glvnd/egl_vendor.d/50_mesa.json
 
   # ati-dri, nouveau-dri, intel-dri, svga-dri, swrast, swr
