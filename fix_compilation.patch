@@ -1,0 +1,22 @@
+diff --git a/common/common-pidfds.c b/common/common-pidfds.c
+index 00929f7..ab9152d 100644
+--- a/common/common-pidfds.c
++++ b/common/common-pidfds.c
+@@ -47,9 +47,6 @@ POSSIBILITY OF SUCH DAMAGE.
+ #include <sys/types.h>
+ #include <unistd.h>
+ 
+-#if !HAVE_FN_PIDFD_OPEN
+-#include <sys/syscall.h>
+-
+ #ifndef __NR_pidfd_open
+ #define __NR_pidfd_open 434
+ #endif
+@@ -58,7 +55,6 @@ static int pidfd_open(pid_t pid, unsigned int flags)
+ {
+ 	return (int)syscall(__NR_pidfd_open, pid, flags);
+ }
+-#endif
+ 
+ /* pidfd functions */
+ int open_pidfds(pid_t *pids, int *fds, int count)

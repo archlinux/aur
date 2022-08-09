@@ -1,7 +1,7 @@
-pkgbase = gamemode-git
+pkgbase = gamemode
 	pkgdesc = A daemon/lib combo for Linux that allows games to request a set of optimisations be temporarily applied to the host OS.
 	pkgver = r612.55b799e
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/FeralInteractive/gamemode.git
 	arch = x86_64
 	license = BSD 3-Clause License (Revised)
@@ -9,11 +9,16 @@ pkgbase = gamemode-git
 	makedepends = ninja
 	makedepends = pkg-config
 	makedepends = git
-	depends = polkit
+	depends = libinih
 	optdepends = systemd
-	provides = gamemode
 	conflicts = gamemode
 	source = git+https://github.com/FeralInteractive/gamemode.git
+	source = fix_compilation.patch
 	sha256sums = SKIP
+	sha256sums = 02a83151ac893d85c558319d6d9ae185c4711affffa20abbdac2dc4d47f550b0
 
 pkgname = gamemode-git
+
+pkgname = lib32-gamemode-git
+	depends = gamemode-git
+	depends = lib32-dbus
