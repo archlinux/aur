@@ -6,8 +6,8 @@
 
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=2022.7.4
-pkgrel=2
+pkgver=2022.8.2
+pkgrel=1
 epoch=1
 arch=(any)
 url=https://home-assistant.io/
@@ -26,8 +26,12 @@ depends=(
   python-certifi
   python-ciso8601
   python-cryptography
+  python-dateutil
   python-defusedxml
+  python-fnvhash
+  python-home-assistant-bluetooth
   python-httpx
+  python-ifaddr
   python-jinja
   python-lru-dict
   python-mutagen
@@ -40,6 +44,7 @@ depends=(
   python-ruamel-yaml
   python-slugify
   python-sqlalchemy
+  python-typing_extensions
   python-voluptuous
   python-voluptuous-serialize
   python-yaml
@@ -49,8 +54,9 @@ depends=(
 makedepends=(
   git
   python-build
-  python-pip
+  python-installer
   python-setuptools
+  python-wheel
 )
 optdepends=(
   'net-tools: Nmap host discovery'
@@ -58,7 +64,7 @@ optdepends=(
   'python-dtlssocket: Ikea Tradfri integration'
   'python-lxml: Meteo France integration'
 )
-_tag=60e170c8631f6771ee55f59c7067e007d8dd6e92
+_tag=bfb2867e8d15ec6d1857f9fd68a43fc91d33535c
 source=(
   git+https://github.com/home-assistant/home-assistant.git#tag=${_tag}
   home-assistant.service
@@ -74,18 +80,20 @@ pkgver() {
 prepare() {
   cd home-assistant
   # lift hard dep constraints, we'll deal with breaking changes ourselves
-  sed 's/==/>=/g' -i requirements.txt setup.cfg homeassistant/package_constraints.txt
+  sed 's/==/>=/g' -i pyproject.toml requirements.txt setup.cfg homeassistant/package_constraints.txt
   # allow pip >= 20.3 to be used
-  sed 's/,<20.3//g' -i requirements.txt setup.cfg homeassistant/package_constraints.txt
+  sed 's/,<20.3//g' -i pyproject.toml requirements.txt setup.cfg homeassistant/package_constraints.txt
+  # allow any setuptools to be used
+  sed 's/~=62.3//' -i pyproject.toml
 }
 
 build() {
   cd home-assistant
-  python -m build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="${pkgdir}" --ignore-installed --no-deps home-assistant/dist/*.whl
+  python -m installer --destdir="${pkgdir}" home-assistant/dist/*.whl
   install -Dm 644 home-assistant.service -t "${pkgdir}"/usr/lib/systemd/system/
 }
 
