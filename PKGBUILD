@@ -1,8 +1,8 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=seer-gdb
-pkgver=1.7
-pkgrel=2
+pkgver=1.8
+pkgrel=1
 pkgdesc="A gui frontend to gdb"
 arch=('x86_64' 'aarch64')
 url="https://github.com/epasveer/seer.git"

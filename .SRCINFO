@@ -1,7 +1,7 @@
 pkgbase = seer-gdb
 	pkgdesc = A gui frontend to gdb
-	pkgver = 1.7
-	pkgrel = 2
+	pkgver = 1.8
+	pkgrel = 1
 	url = https://github.com/epasveer/seer.git
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = seer-gdb
 	depends = qt5-base
 	depends = gdb
 	depends = qt5-charts
-	source = seer-gdb::git+https://github.com/epasveer/seer.git#tag=v1.7
+	source = seer-gdb::git+https://github.com/epasveer/seer.git#tag=v1.8
 	sha256sums = SKIP
 
 pkgname = seer-gdb
