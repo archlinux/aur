@@ -2,8 +2,8 @@
 
 pkgname=kubernetes-helmfile-bin
 pkgver=0.145.2
-pkgrel=2
-pkgdesc="Deploy Kubernetes Helm Charts"
+pkgrel=3
+pkgdesc="(DEPRECATED) Deploy Kubernetes Helm Charts"
 url="https://github.com/helmfile/helmfile"
 license=('MIT')
 arch=('x86_64' 'aarch64' 'i486' 'i686')

@@ -1,7 +1,7 @@
 pkgbase = kubernetes-helmfile-bin
-	pkgdesc = Deploy Kubernetes Helm Charts
+	pkgdesc = (DEPRECATED) Deploy Kubernetes Helm Charts
 	pkgver = 0.145.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/helmfile/helmfile
 	arch = x86_64
 	arch = aarch64
