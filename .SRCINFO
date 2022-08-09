@@ -1,6 +1,6 @@
 pkgbase = neon-logout-git
 	pkgdesc = A logout window manager made for neon-os. inspired from distrotube. credit to flaticons for the icons
-	pkgver = 5.r19.1803739
+	pkgver = 5.r8.f8a205f
 	pkgrel = 1
 	url = https://www.gitlab.com/NEON-MMD/neon-logout.git
 	install = neon-logout-git.install
