@@ -1,0 +1,11 @@
+diff -u3 -r -N a/dep/cubeb/CMakeLists.txt b/dep/cubeb/CMakeLists.txt
+--- a/dep/cubeb/CMakeLists.txt	2022-08-09 13:16:07.605581486 +0300
++++ b/dep/cubeb/CMakeLists.txt	2022-08-09 13:26:38.909929480 +0300
+@@ -331,7 +331,6 @@
+     optimized "${PROJECT_SOURCE_DIR}/src/cubeb-coreaudio-rs/target/release/libcubeb_coreaudio.a")
+ endif()
+ 
+-find_package(Doxygen)
+ if(DOXYGEN_FOUND)
+   configure_file(${CMAKE_CURRENT_SOURCE_DIR}/docs/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/docs/Doxyfile @ONLY)
+   add_custom_target(doc ALL
