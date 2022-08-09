@@ -1,8 +1,8 @@
 pkgbase = linux-steamos
 	pkgdesc = Linux Neptune kernel from SteamOS 3
-	pkgver = 5.13.0.valve10.1
-	pkgrel = 3
-	url = https://github.com/LukeShortCloud/steamos-linux-neptune#branch=5.13.0-valve10.1
+	pkgver = 5.13.0.valve21
+	pkgrel = 1
+	url = https://github.com/LukeShortCloud/steamos-linux-neptune#tag=5.13.0-valve21
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -18,7 +18,7 @@ pkgbase = linux-steamos
 	makedepends = gcc11
 	options = !strip
 	options = !debug
-	source = git+https://github.com/LukeShortCloud/steamos-linux-neptune.git#tag=5.13.0-valve10.1
+	source = git+https://github.com/LukeShortCloud/steamos-linux-neptune.git#tag=5.13.0-valve21
 	source = config
 	source = 90-splash.hook
 	source = splash

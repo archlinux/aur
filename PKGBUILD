@@ -3,11 +3,11 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-steamos
-_tag=5.13.0-valve10.1
+_tag=5.13.0-valve21
 pkgver=${_tag//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc='Linux Neptune kernel from SteamOS 3'
-url="https://github.com/LukeShortCloud/steamos-linux-neptune#branch=$_tag"
+url="https://github.com/LukeShortCloud/steamos-linux-neptune#tag=$_tag"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
