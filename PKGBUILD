@@ -1,6 +1,6 @@
 # Maintainer: pkg_maintainer <archlinuxpackagemaintainer@gmail.com>
 pkgname=neon-browser-git
-pkgver=0.r19.1803739.BETA
+pkgver=0.r33.26f2fe6.BETA
 pkgrel=1
 epoch=
 pkgdesc="A minimalistic web browser"
@@ -25,7 +25,7 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-	cd "${_pkgname}"
+	cd neon-browser
     printf "0.r%s.%s.BETA" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
