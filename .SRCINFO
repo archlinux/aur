@@ -1,7 +1,7 @@
 pkgbase = music-lounge
 	pkgdesc = Yet another music player
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/aercloud-systems/music-lounge
 	arch = i686
 	arch = x86_64
