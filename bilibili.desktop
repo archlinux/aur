@@ -1,14 +1,18 @@
 [Desktop Entry]
-Type=Application
 Categories=AudioVideo;Video;TV;
-Exec=bilibili %u
-Icon=bilibili
-Name=Bilibili
-Name[zh_CN]=哔哩哔哩
-Name[zh_TW]=嗶哩嗶哩
-Comment=Bilibili desktop
+Comment=哔哩哔哩桌面版
 Comment[zh_CN]=哔哩哔哩桌面版
 Comment[zh_TW]=嗶哩嗶哩桌面版
+Exec=bilibili %u
+GenericName[zh_CN]=
+GenericName=
+Icon=bilibili
 StartupWMClass=bilibili
+MimeType=
+Name=哔哩哔哩
+Name[zh_CN]=哔哩哔哩
+Name[zh_TW]=嗶哩嗶哩
 StartupNotify=true
 Terminal=false
+TerminalOptions=
+Type=Application
