@@ -9,7 +9,6 @@ pkgrel=1
 pkgdesc='Bilibili desktop client'
 license=('custom')
 depends=('ffmpeg' 'electron17' 'libappindicator-gtk3')
-makedepends=('asar' 'p7zip' 'nodejs')
 arch=('any')
 url='https://github.com/msojocs/bilibili-linux'
 install="${pkgname}.install"
