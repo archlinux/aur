@@ -4,7 +4,7 @@
 pkgname=glslviewer-git
 pkgver=r1470.99a990a
 pkgrel=1
-pkgdesc="Live GLSL coding render for MacOS and Linux"
+pkgdesc="Console-based GLSL Sandbox for 2D/3D shaders"
 arch=('i686' 'x86_64')
 url="https://github.com/patriciogonzalezvivo/glslViewer"
 license=('BSD-3-Clause')
