@@ -2,7 +2,7 @@
 
 pkgname=python-pglast
 _pkgname="${pkgname#python-}"
-pkgver=3.13
+pkgver=3.14
 pkgrel=1
 pkgdesc='PostgreSQL language AST and statement prettifier'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('python')
 makedepends=('git' 'cython' 'python-setuptools' 'protobuf-c')
 #checkdepends=('python-pytest' 'python-pytest-cov')
-_commit='7b534f16394b775821fb9a59dfcd95aa8760efae'
+_commit='67b4d6662bf576b38e89d794e09d722455ebeb60'
 source=("git+$url#commit=$_commit")
 md5sums=('SKIP')
 
