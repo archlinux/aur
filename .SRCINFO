@@ -1,0 +1,11 @@
+pkgbase = libmemstack-git
+	pkgdesc = A small lib for managing memory
+	pkgver = 1.0.0
+	pkgrel = 5
+	arch = x86_64
+	arch = arm
+	license = custom
+	depends = make
+	depends = gcc
+
+pkgname = libmemstack-git
