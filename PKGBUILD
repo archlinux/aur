@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-ffmpeg
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
 arch=('any')
