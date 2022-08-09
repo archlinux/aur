@@ -1,7 +1,7 @@
 pkgbase = fe
 	pkgdesc = AUR helper with a familiar subcommand system
-	pkgver = 1.1.10
-	pkgrel = 4
+	pkgver = 1.1.11
+	pkgrel = 1
 	url = https://github.com/baris-inandi/fe
 	arch = x86_64
 	license = GPL3
@@ -13,7 +13,7 @@ pkgbase = fe
 	depends = pacman-contrib
 	backup = etc/feparu.conf
 	backup = etc/fepacman.conf
-	source = fe-1.1.10.tar.gz::https://github.com/baris-inandi/fe/archive/refs/tags/1.1.10.tar.gz
-	sha256sums = 3b09e407413e88d3f73e0c6e764da4a76fe48cfcb2a4ee8c0431e6801abc7b7a
+	source = fe-1.1.11.tar.gz::https://github.com/baris-inandi/fe/archive/refs/tags/1.1.11.tar.gz
+	sha256sums = d07df360bda4d94b602b2c85e34558ca2314ffd8b68698fd6d0772495b9f3735
 
 pkgname = fe
