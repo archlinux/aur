@@ -1,4 +1,5 @@
-# Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
+# Maintainer: Younes "khoyo" Khoudli <khoyobegenn@gmail.com>
+# Contributor: Maxime "pep" Buquet <archlinux@bouah.net>
 
 _pkgname=git-pw
 _tag=2.0.0
