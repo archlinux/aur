@@ -193,7 +193,7 @@ package_glibc-linux4() {
 }
 
 package_lib32-glibc-linux4() {
-	pkgdesc="GNU C Library (32-bit, linux 4.x compat)"
+	pkgdesc="GNU C Library (linux 4.x compat, 32-bit)"
 	depends=("glibc=$pkgver")
 	provides=("lib32-glibc=$pkgver")
 	conflicts=("lib32-glibc")

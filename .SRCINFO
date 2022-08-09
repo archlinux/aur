@@ -46,7 +46,7 @@ pkgname = glibc-linux4
 	backup = etc/nscd.conf
 
 pkgname = lib32-glibc-linux4
-	pkgdesc = GNU C Library (32-bit, linux 4.x compat)
+	pkgdesc = GNU C Library (linux 4.x compat, 32-bit)
 	depends = glibc=2.36
 	provides = lib32-glibc=2.36
 	conflicts = lib32-glibc
