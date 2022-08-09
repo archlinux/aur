@@ -1,0 +1,19 @@
+pkgbase = tomate-statusnotifieritem-plugin
+	pkgdesc = Tomate plugin that shows the session progress on the tray icon area
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/eliostvs/tomate-statusnotifieritem-plugin
+	install = tomate-statusnotifieritem-plugin.install
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = gtk-update-icon-cache
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = python
+	depends = tomate-gtk
+	options = !emptydirs
+	source = https://github.com/eliostvs/tomate-statusnotifieritem-plugin/archive/0.1.1.tar.gz
+	sha256sums = e3f7f5f6e28c1d6ba25a6bb43a95ef83dc232a4ac22b7bde585f9a7bab50995a
+
+pkgname = tomate-statusnotifieritem-plugin
