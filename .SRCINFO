@@ -1,6 +1,6 @@
 pkgbase = python-numpy-mkl
 	pkgdesc = Scientific tools for Python, compiled with Intel MKL
-	pkgver = 1.23.0
+	pkgver = 1.23.1
 	pkgrel = 1
 	url = http://numpy.scipy.org/
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = python-numpy-mkl
 	depends = python
 	depends = intel-oneapi-mkl
 	optdepends = python-nose: testsuite
-	provides = python-numpy=1.23.0
+	provides = python-numpy=1.23.1
 	conflicts = python-numpy
 	options = staticlibs
-	source = https://github.com/numpy/numpy/releases/download/v1.23.0/numpy-1.23.0.tar.gz
-	sha256sums = bd3fa4fe2e38533d5336e1272fc4e765cabbbde144309ccee8675509d5cd7b05
+	source = https://github.com/numpy/numpy/releases/download/v1.23.1/numpy-1.23.1.tar.gz
+	sha256sums = d748ef349bfef2e1194b59da37ed5a29c19ea8d7e6342019921ba2ba4fd8b624
 
 pkgname = python-numpy-mkl
