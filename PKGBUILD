@@ -2,7 +2,7 @@
 
 pkgname=ciphey
 pkgver=5.14.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Automated decryption tool"
 arch=("any")
 url="https://github.com/Ciphey/Ciphey"
@@ -16,6 +16,8 @@ depends=(
     "python-click"
     "python-loguru" #aur
     "python-mock"
+    "python-cipheycore"
+    "python-cipheydists"
     "python-pyaml"
     "python-pybase62" #aur
     "python-pylint"
