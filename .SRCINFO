@@ -1,0 +1,15 @@
+pkgbase = artiphon-instrument-one-editor
+	pkgdesc = is an interface for customizing the settings of your INSTRUMENT 1.
+	pkgver = 1.0.20
+	pkgrel = 1
+	url = https://artiphon.com/pages/downloads
+	arch = any
+	license = custom:commercial
+	makedepends = p7zip
+	makedepends = icoutils
+	makedepends = imagemagick
+	depends = electron4
+	source = https://storage.googleapis.com/artiphon-preset-editor/Artiphon%20INSTRUMENT%201%20Editor%20Setup%201.0.20.exe
+	sha256sums = ae07e6be3803bc8339cd250c0681b2c11f5a8cc24fdafa8cc5beedbb85dd4ec8
+
+pkgname = artiphon-instrument-one-editor
