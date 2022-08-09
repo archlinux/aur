@@ -14,6 +14,6 @@ release:
 	make clean
 	make srcinfo
 	git add -A
-	git commit -am "new release"
+	git commit --allow-empty -am "new release"
 	git push
 	make clean
