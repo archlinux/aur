@@ -1,6 +1,6 @@
 pkgbase = stdm-git
 	pkgdesc = A linux man page search engine
-	pkgver = 1.r19.1803739.BETA
+	pkgver = 1.r7.3c93c90.BETA
 	pkgrel = 1
 	url = https://gitlab.com/NEON-MMD/stdm.git
 	install = stdm-git.install
