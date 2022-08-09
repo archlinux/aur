@@ -10,7 +10,7 @@ license=('GPL3')
 depends=(bash sudo paru pacman-contrib)
 makedepends=(git go)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/baris-inandi/fe/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('08ceb8e6f4b59376783f5acc3130935ecd37b6bc602e676a84d801323c8cf0d1')
+sha256sums=('4900012a3c4cbe2701dcf8cbc5ae00688991ba5003b78bee48b33a7bf9216a44')
 backup=("etc/feparu.conf" "etc/fepacman.conf")
 
 build() {
