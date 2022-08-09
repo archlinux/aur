@@ -1,7 +1,7 @@
 pkgbase = teams-for-linux-git
-	pkgdesc = Unofficial Microsoft Teams client for Linux using Electron (develop branch).
-	pkgver = 1.0.25.r0.g72d7b6d
-	pkgrel = 2
+	pkgdesc = Unofficial Microsoft Teams client for Linux using system electron (develop branch).
+	pkgver = 1.0.26.r0.geacbbfc
+	pkgrel = 1
 	url = https://github.com/IsmaelMartinez/teams-for-linux
 	arch = aarch64
 	arch = armv7h

@@ -3,9 +3,9 @@
 # Contributor: Ivelin Velkov <ivelin dot velkov at gmail dot com>
 
 pkgname=teams-for-linux-git
-pkgver=1.0.25.r0.g72d7b6d
-pkgrel=2
-pkgdesc="Unofficial Microsoft Teams client for Linux using Electron (develop branch)."
+pkgver=1.0.26.r0.geacbbfc
+pkgrel=1
+pkgdesc="Unofficial Microsoft Teams client for Linux using system electron (develop branch)."
 arch=("aarch64" "armv7h" "i686" "x86_64")
 url="https://github.com/IsmaelMartinez/${pkgname%-git}"
 license=("GPL3")
