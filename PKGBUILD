@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GeneTonic
-_pkgver=2.0.1
+_pkgver=2.0.2
 pkgname=r-${_pkgname,,}
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='Enjoy Analyzing And Integrating The Results From Differential Expression Analysis And Functional Enrichment Analysis'
 arch=('any')
@@ -59,7 +59,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('359421dca2d05270d27b18978b189ad656c9d5c39e75e7e9d8ca55769a392bcc')
+sha256sums=('e3a20013c6ecadf561f134acd6fc528c68c129449098cfc60aaa8c7e0522b822')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
