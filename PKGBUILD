@@ -6,7 +6,7 @@
 # https://www.gnu.org/licenses/gpl-2.0.html
 
 pkgname=pacman-pstatus
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 arch=('any')
 url='https://gitlab.com/renyuneyun/pacman-ps'
