@@ -2,10 +2,10 @@
 
 pkgname=btrfs-snapshots-git
 pkgver=0.6.1.r11.84d8bb0
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage timestamped collections of btrfs snapshots"
 arch=('any')
-url="https://gitlab.com/jmcantrell/${pkgname%-git}"
+url="https://github.com/jmcantrell/${pkgname%-git}"
 license=('GPL3')
 depends=('btrfs-progs')
 makedepends=('git')
