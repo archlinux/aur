@@ -2,7 +2,7 @@
 
 pkgname=networkmanager-support
 pkgver=1
-pkgrel=4
+pkgrel=5
 arch=('any')
 url="https://wiki.archlinux.org/index.php/NetworkManager"
 license=('GPL')
@@ -21,7 +21,6 @@ depends=("dhclient"
         "networkmanager-strongswan"
         "networkmanager-vpnc"
         "nm-cloud-setup"
-        "ntp"
         "openldap"
         "openresolv"
         "openssh"
@@ -33,7 +32,7 @@ optdepends=('network-manager-applet: Applet for managing network connections'
             'nm-tray: A pure QT NetworkManager front-end residing in panels'
             'modem-manager-gui: A GTK+ Gui for modem manager'
             'qomui: OpenVPN/WireGuard QT Gui with advanced features and support for multiple providers'
-            'gpsd: Using ntpd with GPS (GPS device is required)')
+            'gpsd: Supports querying GPS coordinates from GPS-enabled WWAN cards in ModemManager')
 conflicts=("connman-support")
 install=$pkgname.install
 
