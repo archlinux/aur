@@ -1,7 +1,8 @@
 pkgbase = ignoreit
 	pkgdesc = Quickly load .gitignore templates
-	pkgver = 2.4.6
-	pkgrel = 2
+	pkgver = 2.4.7
+	pkgrel = 1
+	url = https://github.com/jewlexx/ignoreit
 	arch = i686
 	arch = pentium4
 	arch = x86_64
@@ -13,7 +14,7 @@ pkgbase = ignoreit
 	makedepends = rust
 	makedepends = cargo
 	depends = openssl
-	source = ignoreit-2.4.6.tar.gz::https://github.com/jewlexx/ignoreit/archive/v2.4.6.tar.gz
-	sha256sums = da4b301e8874aad048b5eff2f507ee05dc1e60ef010b74de225c6ab2bceccf0f
+	source = ignoreit-2.4.7.tar.gz::https://github.com/jewlexx/ignoreit/archive/v2.4.7.tar.gz
+	sha256sums = 37b00b992ddd842a8dc94e1e52c59983544dadc201447df13e03170bb31cd567
 
 pkgname = ignoreit
