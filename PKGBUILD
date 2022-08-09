@@ -1,20 +1,19 @@
-# Maintainer: JustKidding <jk@vin.ovh>
-# Co-maintainer: Yurii Kolesnykov <root@yurikoles.com>
+# Mantainer: pac85 <antomani103@gmail.com>
+# Contributor: JustKidding <jk@vin.ovh>
+# Contributor: Yurii Kolesnykov <root@yurikoles.com>
 # Based on extra/xorg-server by
-# AndyRTR <andyrtr@archlinux.org>
-# Jan de Groot <jgc@archlinux.org>
 
-pkgbase=xorg-server-git
+pkgbase=xorg-server-multimonitor-vrr-git
 pkgname=(
-  'xorg-server-git'
-  'xorg-server-common-git'
-  'xorg-server-devel-git'
-  'xorg-server-xephyr-git'
-  'xorg-server-xnest-git'
-  'xorg-server-xvfb-git'
+  'xorg-server-multimonitor-vrr-git'
+  'xorg-server-multimonitor-vrr-common-git'
+  'xorg-server-multimonitor-vrr-devel-git'
+  'xorg-server-multimonitor-vrr-xephyr-git'
+  'xorg-server-multimonitor-vrr-xnest-git'
+  'xorg-server-multimonitor-vrr-xvfb-git'
 )
 _pkgbase='xserver'
-pkgver=21.1.99.1.r256.g6907b6ea2
+pkgver=xorgvrrfix
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -27,7 +26,7 @@ makedepends=('xorgproto-git' 'pixman' 'libx11' 'mesa' 'mesa-libgl' 'xtrans'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms'
              'libxshmfence' 'libunwind' 'systemd' 'meson' 'git')
-_srcurl=git+https://gitlab.freedesktop.org/xorg/xserver.git
+_srcurl=xserver::git+https://gitlab.com/pac85/xorg-server.git#branch=cleaned
 source=($_srcurl
         xvfb-run # with updates from FC master
         xvfb-run.1
@@ -37,15 +36,7 @@ sha512sums=('SKIP'
             'de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22')
 
 pkgver() {
-  cd "${_pkgbase}"
-
-  # replace latest tag with version from meson
-  local _meson_ver=`grep -m 1 version meson.build | cut -d\' -f 2`
-  # cutting off 'xorg.server.' prefix that presents in the git tag
-  local _git_ver=`git describe --long --tags | sed 's/^xorg.server.//;s/\([^-]*-g\)/r\1/;s/-/./g'`
-  local _git_tag=`git describe --tags --abbrev=0 | sed 's/^xorg.server.//'`
-
-  printf "${_git_ver/$_git_tag/$_meson_ver}"
+  printf "xorgvrrfix"
 }
 
 build() {
@@ -96,7 +87,7 @@ _install() {
   done
 }
 
-package_xorg-server-common-git() {
+package_xorg-server-multimonitor-vrr-common-git() {
   pkgdesc="Xorg server common files (git version)"
   depends=(xkeyboard-config xorg-xkbcomp xorg-setxkbmap)
   provides=('xorg-server-common')
@@ -110,9 +101,9 @@ package_xorg-server-common-git() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
 }
 
-package_xorg-server-git() {
+package_xorg-server-multimonitor-vrr-git() {
   pkgdesc="Xorg X server (git version)"
-  depends=(libepoxy libxfont2 pixman xorg-server-common-git libunwind
+  depends=(libepoxy libxfont2 pixman xorg-server-multimonitor-vrr-common-git libunwind
            dbus libgl xf86-input-libinput nettle
            libpciaccess libdrm libxshmfence libxcvt) # FS#52949
   # see xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
@@ -137,9 +128,9 @@ package_xorg-server-git() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
 }
 
-package_xorg-server-xephyr-git() {
+package_xorg-server-multimonitor-vrr-xephyr-git() {
   pkgdesc="A nested X server that runs as an X application (git version)"
-  depends=(libxfont2 libgl libepoxy libunwind systemd-libs libxv pixman xorg-server-common-git
+  depends=(libxfont2 libgl libepoxy libunwind systemd-libs libxv pixman xorg-server-multimonitor-vrr-common-git
            xcb-util-image xcb-util-renderutil xcb-util-wm xcb-util-keysyms
            nettle libtirpc)
   provides=('xorg-server-xephyr')
@@ -152,9 +143,9 @@ package_xorg-server-xephyr-git() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
 }
 
-package_xorg-server-xvfb-git() {
+package_xorg-server-multimonitor-vrr-xvfb-git() {
   pkgdesc="Virtual framebuffer X server (git version)"
-  depends=(libxfont2 libunwind pixman xorg-server-common-git xorg-xauth
+  depends=(libxfont2 libunwind pixman xorg-server-multimonitor-vrr-common-git xorg-xauth
            libgl nettle libtirpc systemd-libs)
   provides=('xorg-server-xvfb')
   conflicts=('xorg-server-xvfb')
@@ -169,9 +160,9 @@ package_xorg-server-xvfb-git() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
 }
 
-package_xorg-server-xnest-git() {
+package_xorg-server-multimonitor-vrr-xnest-git() {
   pkgdesc="A nested X server that runs as an X application (git version)"
-  depends=(libxfont2 libunwind libxext pixman xorg-server-common-git nettle libtirpc systemd-libs)
+  depends=(libxfont2 libunwind libxext pixman xorg-server-multimonitor-vrr-common-git nettle libtirpc systemd-libs)
   provides=('xorg-server-xnest')
   conflicts=('xorg-server-xnest')
 
@@ -182,7 +173,7 @@ package_xorg-server-xnest-git() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
 }
 
-package_xorg-server-devel-git() {
+package_xorg-server-multimonitor-vrr-devel-git() {
   pkgdesc="Development files for the X.Org X server (git version)"
   depends=('xorgproto-git' 'mesa' 'libpciaccess'
            # not technically required but almost every Xorg pkg needs it to build
