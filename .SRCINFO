@@ -1,19 +1,22 @@
 pkgbase = glslviewer-git
 	pkgdesc = Live GLSL coding render for MacOS and Linux
-	pkgver = r753.8a4f4d7
+	pkgver = r1470.99a990a
 	pkgrel = 1
 	url = https://github.com/patriciogonzalezvivo/glslViewer
 	arch = i686
 	arch = x86_64
 	license = BSD-3-Clause
+	makedepends = cmake
 	makedepends = git
-	depends = glfw
-	provides = glslviewer-git
-	conflicts = glslviewer-git
-	source = glslviewer-git::git+https://github.com/patriciogonzalezvivo/glslViewer
-	source = floating_wm_workaround.patch
+	depends = glu
+	depends = glfw-x11
+	depends = ncurses
+	depends = ffmpeg
+	provides = glslviewer
+	conflicts = glslviewer
+	source = glslviewer::git+https://github.com/patriciogonzalezvivo/glslViewer
+	source = git+https://github.com/patriciogonzalezvivo/ada
 	md5sums = SKIP
-	md5sums = 20c838d28b2390c9dd6fa3491c920edc
+	md5sums = SKIP
 
 pkgname = glslviewer-git
-
