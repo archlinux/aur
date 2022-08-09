@@ -12,7 +12,7 @@ license=("GPL3")
 conflicts=("teams-for-linux")
 provides=("teams-for-linux")
 depends=("gtk3" "libxss" "nss" "electron")
-makedepends=("git" "nodejs-lts-gallium" "node-gyp" "python3" "yarn")
+makedepends=("git" "nodejs>15" "node-gyp" "python3" "yarn")
 source=(
   "${pkgname%-git}::git+https://github.com/IsmaelMartinez/${pkgname%-git}#branch=develop"
   "${pkgname%-git}.desktop"
@@ -30,14 +30,18 @@ pkgver() {
 # ;s/\"yarn\": \".*\"/\"yarn\": \"$(yarn -v)\"/g"
 
 _electronDist=/usr/lib/electron
-_electronVer="$(tail /usr/lib/electron/version)"
+_electronVerFun() {
+    tail /usr/lib/electron/version
+}
 
 prepare() {
+  _electronVer=$(_electronVerFun) 
   cd "${srcdir}/${pkgname%-git}"
   sed -i "s/\"electron\": \".*\"/\"electron\": \"$_electronVer\"/g;s/\"yarn\": \".*\"/\"yarn\": \"$(yarn -v)\"/g" package.json
 }
 
 build() {
+  _electronVer=$(_electronVerFun) 
   cd "${srcdir}/${pkgname%-git}"
   ELECTRON_SKIP_BINARY_DOWNLOAD=1 yarn install --non-interactive --pure-lockfile --cache-folder "${srcdir}/yarn-cache"
   if [[ ${CARCH} == "aarch64" ]]; then
@@ -65,12 +69,6 @@ package() {
     _unpacked_dirname="linux-unpacked"
   fi
 
-  # pacman -Qql electron | grep -v '/$' - | grep '/usr/lib/electron/' - | sed "s/\/usr\/lib\/electron\//-vf dist\/${_unpacked_dirname}\//g" - | xargs rm
-  # rm -v "dist/${_unpacked_dirname}/LICENSE.electron.txt"
-
-  # cp -r --preserve=mode "${srcdir}/${pkgname%-git}/dist/${_unpacked_dirname}" "${pkgdir}/opt/${pkgname%-git}"
-
-  # cp -r --preserve=mode "${srcdir}/${pkgname%-git}/dist/${_unpacked_dirname}/resources/app.asar.unpacked" "${pkgdir}/opt/${pkgname%-git}"
   install -Dm644 "${srcdir}/${pkgname%-git}/dist/${_unpacked_dirname}/resources/app.asar" "${pkgdir}/opt/${pkgname%-git}/app.asar"
 
   install -Dm644 "${srcdir}/${pkgname%-git}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
