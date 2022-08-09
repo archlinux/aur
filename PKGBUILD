@@ -1,7 +1,7 @@
 # Maintainer: Brodi <me@brodi.space>
 _pkgname=aretext
 pkgname=${_pkgname}-bin
-pkgver=0.5.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="[BETA] Minimalist text editor that never slows you down."
 url="https://github.com/aretext/aretext"
@@ -14,9 +14,9 @@ source_x86_64=("$url/releases/download/v$pkgver/${_pkgname}_${pkgver}_linux_amd6
 source_i686=("$url/releases/download/v$pkgver/${_pkgname}_${pkgver}_linux_386.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
 
-sha256sums_x86_64=("d4873e28208a9c0a4ac7766233b08ea75d064b0f8de02420296d6bfbd4ea80ec")
-sha256sums_i686=("cb8a016938326338156049edc680e8a2f4703faaf4bdf11e40012ead5ac718bf")
-sha256sums_aarch64=("8a98a35cca5e5e5114155cbccf98a265ae77799ea09603e1c80b5cc1298c6c51")
+sha256sums_x86_64=("87bc073f999cd4b2688ba855ae97bd48f2f96998b2165e1692a9f82e3df29153")
+sha256sums_i686=("23ed58002f19f00aaf5bed99bf2e16ad651217cfda8ddb93eac813794084a45c")
+sha256sums_aarch64=("ebda17c53a60609bf0ed1dc6f9bdd3d297b8f59c70aeda699d77eef7f79c6a55")
 
 package() {
 	case ${arch} in
