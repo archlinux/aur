@@ -1,7 +1,7 @@
 pkgbase = ofono
 	pkgdesc = Infrastructure for building mobile telephony (GSM/UMTS) applications
-	pkgver = 1.32
-	pkgrel = 3
+	pkgver = 1.34
+	pkgrel = 1
 	url = https://01.org/ofono
 	arch = i686
 	arch = x86_64
@@ -17,8 +17,7 @@ pkgbase = ofono
 	optdepends = phonesim
 	optdepends = mmsd
 	optdepends = upower
-	source = https://www.kernel.org/pub/linux/network/ofono/ofono-1.32.tar.xz
-	sha256sums = f7d775887b7b80cf3b82e3f0a6c2696c6d01963d222ca2217919d21b9e803042
+	source = https://www.kernel.org/pub/linux/network/ofono/ofono-1.34.tar.xz
+	sha256sums = c0b96d3013447ec2bcb74579bef90e4e59c68dbfa4b9c6fbce5d12401a43aac7
 
 pkgname = ofono
-
