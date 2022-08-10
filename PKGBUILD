@@ -3,7 +3,7 @@
 _projectname='splittable_random'
 pkgname="ocaml-$_projectname"
 pkgver='0.15.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='PRNG that can be split into independent streams'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
