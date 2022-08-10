@@ -2,7 +2,7 @@
 # Contributor: Brenton Horne <brentonhorne77 at gmail dot com>
 
 pkgname=julia-beta-bin
-_pkgver=1.8.0-rc3
+_pkgver=1.8.0-rc4
 pkgver=$(echo $_pkgver | sed 's/-/./g')
 pkgrel=1
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("https://julialang-s3.julialang.org/bin/linux/x64/${pkgver:0:3}/julia-${
 128x128.png::https://github.com/JuliaLang/julia/raw/master/contrib/mac/frameworkapp/JuliaLauncher/Assets.xcassets/AppIcon.appiconset/128.png
 256x256.png::https://github.com/JuliaLang/julia/raw/master/contrib/mac/frameworkapp/JuliaLauncher/Assets.xcassets/AppIcon.appiconset/256.png
 512x512.png::https://github.com/JuliaLang/julia/raw/master/contrib/mac/frameworkapp/JuliaLauncher/Assets.xcassets/AppIcon.appiconset/512.png)
-sha256sums=('7c57ac9aabce9b3cdc0f7bb1c393fe8058b794ddbb4168fcb28800b6459aa815'
+sha256sums=('407dd37c97e117c18806d6bf0bd9b39f0396b7e6c2d10ea5003a2b45b91afb1a'
             '85aff59221938dd83aa3808910fb455c64f3f0936604bfaad7b8d27c01e3a7ed'
             '0310782968fe0ba2910e8a4fc3920ab58c0b8f91c66a66f6cff82cd0d6d31612'
             'aab27b427cb21108d831f2d9ddc89ce0948f7e8cb82e4bb2dc1bc82c6676224f'
