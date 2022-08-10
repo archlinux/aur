@@ -3,13 +3,13 @@
 # Contributor: RoiArthurB
 pkgname=gama-platform
 pkgver=1.8.2.rc2
-pkgrel=1
+pkgrel=2
 pkgdesc="GAMA is a modeling and simulation development environment for building spatially explicit agent-based simulations."
 arch=('x86_64')
 url="https://gama-platform.org"
 license=('GPL-3')
 groups=('')
-depends=('java-environment-common')
+depends=('jdk17-openjdk')
 replaces=('gama-platform')
 conflicts=('gama-platform-jdk')
 options=('!strip' '!emptydirs')
