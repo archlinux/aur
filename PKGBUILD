@@ -1,7 +1,7 @@
 # Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
 pkgname=kubergrunt
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=3
 pkgdesc="Kubergrunt is a standalone go binary with a collection of commands to fill in the gaps between Terraform, Helm, and Kubectl"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('terraform'
 license=('Apache-2')
 makedepends=('go>=1.18' 'git' 'gzip' 'tar' 'gcc')
 source=(  "https://github.com/gruntwork-io/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('8bc05d05ffb61af96c00823ecc1eacc0fdd33de985bfc2501baf0ea829762367')
+sha256sums=('7e7ec360c78ebfc672593d66766e387f95d5a7807e79d13298efb9e0128feb61')
 
 build() {
 	cd "${pkgname}-${pkgver}"
