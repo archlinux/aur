@@ -1,15 +1,17 @@
 pkgbase = watchmate-git
 	pkgdesc = InfiniTime smart watch companion app
-	pkgver = v0.1.0.r0.7ceee2e
-	pkgrel = 1
+	pkgver = v0.1.0
+	pkgrel = 2
 	url = https://gitlab.com/azymohliad/watchmate
 	arch = any
 	license = GPL
 	makedepends = git
 	makedepends = cargo
-	makedepends = gcc
 	depends = gtk4
+	depends = libadwaita
 	depends = bluez
+	provides = watchmate
+	conflicts = watchmate
 	source = watchmate-git::git+https://gitlab.com/azymohliad/watchmate.git
 	md5sums = SKIP
 
