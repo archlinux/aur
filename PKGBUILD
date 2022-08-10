@@ -14,13 +14,13 @@
 
 pkgname=zoneminder
 pkgver=1.36.24
-pkgrel=1
+pkgrel=2
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('any')
 url='https://www.zoneminder.com/'
 license=('GPL2')
 depends=('polkit' 'ffmpeg'
-         'php-fpm' 'php-gd' 'php-intl'
+         'php-apcu' 'php-fpm' 'php-gd' 'php-intl'
          'perl-archive-zip' 'perl-data-dump' 'perl-date-manip' 'perl-datetime' 'perl-dbd-mysql' 'perl-device-serialport' 'perl-file-slurp'
          'perl-image-info' 'perl-libwww' 'perl-mime-lite' 'perl-mime-tools' 'perl-net-sftp-foreign' 'perl-number-bytes-human' 'perl-php-serialization'
          'perl-sys-cpu' 'perl-sys-meminfo' 'perl-sys-mmap' 'perl-uri-encode'
@@ -63,7 +63,7 @@ sha256sums=('dcecc2e4708e7066902edd188c8a5d653ffdee05abbb24f574c04241b9116342'
             'SKIP'
             'c60e855428a56cc327214aa13d02a70011bf3b63a94a0d845b1c5ea1fab28ad2'
             '1f0d2276861065caf0b6c030ba27a6edb6a2988c7a1ac0fdf4e8fcb856972715'
-            '0ed914327b3b1b76086510c67360663bb2182db022787e86318b1cfac2195e8d'
+            '8e1131dd6bf3796f5bcc9422c96ef77388d7ab0d8e8fc17f6b8dd1e8acc2442a'
             'e95f9bef77aef647dd633bd9ad75dc099b6d7184684e133f2f20702de83a6260')
 
 prepare () {

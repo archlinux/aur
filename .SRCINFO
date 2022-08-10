@@ -1,7 +1,7 @@
 pkgbase = zoneminder
 	pkgdesc = A full-featured, open source, state-of-the-art video surveillance software system
 	pkgver = 1.36.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.zoneminder.com/
 	install = zoneminder.install
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = zoneminder
 	makedepends = cmake
 	depends = polkit
 	depends = ffmpeg
+	depends = php-apcu
 	depends = php-fpm
 	depends = php-gd
 	depends = php-intl
@@ -67,7 +68,7 @@ pkgbase = zoneminder
 	sha256sums = SKIP
 	sha256sums = c60e855428a56cc327214aa13d02a70011bf3b63a94a0d845b1c5ea1fab28ad2
 	sha256sums = 1f0d2276861065caf0b6c030ba27a6edb6a2988c7a1ac0fdf4e8fcb856972715
-	sha256sums = 0ed914327b3b1b76086510c67360663bb2182db022787e86318b1cfac2195e8d
+	sha256sums = 8e1131dd6bf3796f5bcc9422c96ef77388d7ab0d8e8fc17f6b8dd1e8acc2442a
 	sha256sums = e95f9bef77aef647dd633bd9ad75dc099b6d7184684e133f2f20702de83a6260
 
 pkgname = zoneminder
