@@ -1,5 +1,5 @@
 pkgname=esbuild-bin
-pkgver=0.15.0
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="An extremely fast JavaScript and CSS bundler and minifier."
 arch=('x86_64')
@@ -14,7 +14,7 @@ _npmpkg="${_name}-linux-64"
 _archive="${_npmpkg}-${pkgver}.tgz"
 
 source=("${_archive}::https://registry.npmjs.org/${_npmpkg}/-/${_archive}")
-sha256sums=('68f4b2bf9cdb36a2d473f607bc1ee55c12c35c7e0f4675dfd4bd09256f429251')
+sha256sums=('c14a4c269fff44f7ded80992ac93687b9262c6ab18ee39c29b8a73ba1659dbb9')
 
 package() {
     cd "${srcdir}/package/bin"
