@@ -1,7 +1,7 @@
 pkgbase = youtube-bin
 	pkgdesc = Unnofficial Youtube desktop application
 	pkgver = 1.0.7
-	pkgrel = 7
+	pkgrel = 8
 	url = https://gitlab.com/youtube/application
 	arch = x86_64
 	arch = arm7h
@@ -12,9 +12,9 @@ pkgbase = youtube-bin
 	depends = gtk3
 	depends = libxss
 	conflicts = youtube-git
-	source_x86_64 = https://gitlab.com/youtube-desktop/binaries/1.0.7-7/-/raw/main/Youtube-linux-x64.tar.gz
+	source_x86_64 = https://gitlab.com/youtube-desktop/binaries/1.0.7-8/-/raw/main/Youtube-linux-x64.tar.xz
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://gitlab.com/youtube-desktop/binaries/1.0.7-7/-/raw/main/Youtube-linux-arm64.tar.gz
+	source_aarch64 = https://gitlab.com/youtube-desktop/binaries/1.0.7-8/-/raw/main/Youtube-linux-arm64.tar.xz
 	sha256sums_aarch64 = SKIP
 
 pkgname = youtube-bin
