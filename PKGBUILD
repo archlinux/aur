@@ -9,32 +9,26 @@
 # Contributor: Steven Nance <steven@devtrw.com>
 
 pkgname=vagrant
-pkgver=2.2.19
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
 url="https://vagrantup.com"
 license=('MIT')
 options=('!emptydirs')
 depends=('curl' 'libarchive' 'libssh2' 'libxml2' 'libxslt' 'rsync'
-         'ruby2.7' 'xz' 'perl')
+         'ruby' 'xz' 'perl')
 makedepends=('git' 'go')
 conflicts=('vagrant-substrate')
 replaces=('vagrant-substrate')
 source=($pkgname-$pkgver.tar.gz::https://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz
-        "git+https://github.com/mitchellh/vagrant-installers.git#commit=751f6b5")
-md5sums=('0738a0384ccd9cbf4d047638ea493625'
+        "git+https://github.com/mitchellh/vagrant-installers.git#commit=4629e74")
+md5sums=('872b623fd3ba919185b4cc671ea7c20f'
          'SKIP')
-
-prepare() {
-  cd vagrant-installers
-
-  sed -i 's/rubyPath = "ruby"$/rubyPath = "ruby-2.7"/' substrate/launcher/main.go
-}
 
 build() {
   cd $pkgname-$pkgver
-  gem-2.7 build $pkgname.gemspec
+  gem build $pkgname.gemspec
 
   export GO111MODULE=off # golang 1.16 uses modules by default and packages below fail to compile
   cd "$srcdir"/vagrant-installers/substrate/launcher
@@ -60,7 +54,7 @@ package() {
 
   GEM_PATH="$EMBEDDED_DIR"/gems/$pkgver GEM_HOME="$GEM_PATH" \
   GEMRC="$EMBEDDED_DIR"/etc/gemrc \
-    gem-2.7 install $pkgname-$pkgver.gem --no-document --prerelease
+    gem install $pkgname-$pkgver.gem --no-document --prerelease
 
   install -Dm755 "$INSTALLERS_DIR"/launcher/vagrant \
     "$pkgdir"/opt/$pkgname/bin/$pkgname
