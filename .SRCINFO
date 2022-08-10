@@ -20,3 +20,9 @@ pkgbase = glslviewer-git
 	md5sums = SKIP
 
 pkgname = glslviewer-git
+
+pkgname = glslviewer-examples-git
+	pkgdesc = Console-based GLSL Sandbox for 2D/3D shaders (shader examples)
+	depends = 
+	provides = glslviewer-examples
+	conflicts = glslviewer-examples
