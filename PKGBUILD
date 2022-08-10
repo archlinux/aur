@@ -6,12 +6,12 @@
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn-beta
 _pkgver=2022.3
-_channel=beta
-_rel=3
+_channel=stable
+_rel=1
 # beta
-pkgver=${_pkgver}.${_channel}${_rel}
+#pkgver=${_pkgver}.${_channel}${_rel}
 # stable
-#pkgver=${_pkgver}.${_channel}
+pkgver=${_pkgver}.${_channel}
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 options=('!lto')
 install="${pkgname%-beta}.install"
-_tag=622628847ed85dbdf529f2729a1d686da567340c # tags/2022.3-beta3^0
+_tag=ca45335dba9f8b2b90263c3b6c08e64c6898f35f # tags/2022.3^0
 _commit=b63c5c8c7977963aeb585b6ddd4537dffe2aeeec
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#commit=${_tag}?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
