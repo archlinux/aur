@@ -1,7 +1,7 @@
 pkgbase = youtubemusic-bin
 	pkgdesc = Youtube Music is a unofficial client to play your music.
 	pkgver = 1.0.4
-	pkgrel = 8
+	pkgrel = 9
 	url = https://gitlab.com/youtube-music/application
 	arch = x86_64
 	arch = arm7h
@@ -12,9 +12,9 @@ pkgbase = youtubemusic-bin
 	depends = gtk3
 	depends = libxss
 	conflicts = youtube-git
-	source_x86_64 = https://gitlab.com/youtube-music/binaries/1.0.4-8/-/raw/main/YoutubeMusic-linux-x64.tar.xz
+	source_x86_64 = https://gitlab.com/youtube-music/binaries/1.0.4-9/-/raw/main/YoutubeMusic-linux-x64.tar.xz
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://gitlab.com/youtube-music/binaries/1.0.4-8/-/raw/main/YoutubeMusic-linux-arm64.tar.xz
+	source_aarch64 = https://gitlab.com/youtube-music/binaries/1.0.4-9/-/raw/main/YoutubeMusic-linux-arm64.tar.xz
 	sha256sums_aarch64 = SKIP
 
 pkgname = youtubemusic-bin
