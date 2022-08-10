@@ -1,0 +1,17 @@
+pkgbase = cranko
+	pkgdesc = Cross-platform, cross-language release automation tool
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/pkgw/cranko
+	changelog = CHANGELOG.md
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = libgit2.so
+	depends = openssl
+	options = !lto
+	source = cranko-0.13.0.tar.gz::https://github.com/pkgw/cranko/archive/cranko@0.13.0.tar.gz
+	sha256sums = 3b6c18f13f66d49d078221175489f5af29d73225cdfcd6c9474ad2f28c2e601c
+
+pkgname = cranko
