@@ -1,7 +1,7 @@
 pkgbase = r-openmx
 	pkgdesc = Extended Structural Equation Modelling
 	pkgver = 2.20.6
-	pkgrel = 4
+	pkgrel = 6
 	url = https://cran.r-project.org/package=OpenMx
 	arch = x86_64
 	license = Apache
