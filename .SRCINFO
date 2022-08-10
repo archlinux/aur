@@ -1,7 +1,7 @@
 pkgbase = openbve-bin
 	pkgdesc = Realistic 3D train/railway simulator
 	pkgver = 1.8.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/leezer3/OpenBVE
 	arch = x86_64
 	license = custom:public domain
