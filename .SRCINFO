@@ -1,0 +1,13 @@
+pkgbase = ammonite-scala3.1
+	pkgdesc = ammonite with scala 3.1
+	pkgver = 2.5.4
+	pkgrel = 1
+	url = https://github.com/com-lihaoyi/Ammonite
+	arch = x86_64
+	groups = ammonite-scala
+	license = MIT
+	noextract = amm-31
+	source = amm-31::https://github.com/com-lihaoyi/Ammonite/releases/download/2.5.4/3.1-2.5.4
+	b2sums = 104190bae8ae6d8efe3b3d43932ecf5f5075516b706dffca04a1fc3710edc476b2042b8b50036fd7719207dabd0771e3239030e866b48adad14a901d155c15c0
+
+pkgname = ammonite-scala3.1
