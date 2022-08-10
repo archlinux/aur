@@ -1,0 +1,13 @@
+pkgbase = rke2-bin
+	pkgdesc = Rancher's next-generation Kubernetes distribution
+	pkgver = 1.24.3+rke2r1
+	pkgrel = 1
+	url = https://rke2.io
+	arch = x86_64
+	license = Apache
+	depends = nm-cloud-setup
+	conflicts = rke2-git
+	source_x86_64 = rke2-bin-1.24.3+rke2r1-x86_64.tar.gz::https://github.com/rancher/rke2/releases/download/v1.24.3+rke2r1/rke2.linux-amd64.tar.gz
+	sha256sums_x86_64 = 3db871046d00153ef68309d4fa0114f4ace2509421650659462e7d4ee41fbce3
+
+pkgname = rke2-bin
