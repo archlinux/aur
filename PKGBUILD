@@ -3,7 +3,7 @@
 
 pkgname=jd-tool
 _pkgname=jd
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="JSON diff and patch"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('go')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 
-sha256sums=('33c996e962094477169ec247ab5bd9f23a303dd5df40d6d5da39710c77ba97aa')
+sha256sums=('3e81a8dadb125628430a31e3ea67b8b3053c346d684b74784c6bf0451cc2def0')
 
 build() {
   cd $_pkgname-$pkgver
