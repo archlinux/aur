@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=enrichR
-_pkgver=3.0
+_pkgver=3.1
 pkgname=r-${_pkgname,,}
-pkgver=3.0
-pkgrel=4
+pkgver=3.1
+pkgrel=1
 pkgdesc="Provides an R Interface to 'Enrichr'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,7 +20,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('43f9b7f66f76fde41bd24781e4df7a2632b4e341aec81f8c3da4d7e908767344')
+sha256sums=('2986ec1cef7c62af08ada5f476ccab806c8891110754ef44ad3b5f94c695a729')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

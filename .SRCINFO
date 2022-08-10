@@ -1,7 +1,7 @@
 pkgbase = r-enrichr
 	pkgdesc = Provides an R Interface to 'Enrichr'
-	pkgver = 3.0
-	pkgrel = 4
+	pkgver = 3.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=enrichR
 	arch = any
 	license = GPL
@@ -11,7 +11,7 @@ pkgbase = r-enrichr
 	depends = r-rjson
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/enrichR_3.0.tar.gz
-	sha256sums = 43f9b7f66f76fde41bd24781e4df7a2632b4e341aec81f8c3da4d7e908767344
+	source = https://cran.r-project.org/src/contrib/enrichR_3.1.tar.gz
+	sha256sums = 2986ec1cef7c62af08ada5f476ccab806c8891110754ef44ad3b5f94c695a729
 
 pkgname = r-enrichr
