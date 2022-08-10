@@ -2,13 +2,13 @@
 
 pkgname=jackal
 pkgver=0.61.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An XMPP/Jabber server'
 arch=('x86_64' 'i686')
 url='https://github.com/ortuman/jackal'
 license=('GPL3')
 depends=('glibc')
-makedepends=('go>=1.17')
+makedepends=('go>=1.18')
 optdepends=('postgresql: PostgreSQL support'
             'mariadb: MariaDB support')
 conflicts=('jackal-git')
