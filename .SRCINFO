@@ -1,29 +1,28 @@
 pkgbase = jackal
 	pkgdesc = An XMPP/Jabber server
-	pkgver = 0.52.4
+	pkgver = 0.61.0
 	pkgrel = 1
 	url = https://github.com/ortuman/jackal
 	install = jackal.install
 	arch = x86_64
 	arch = i686
 	license = GPL3
-	makedepends = go>=1.11
+	makedepends = go>=1.17
 	depends = glibc
 	optdepends = postgresql: PostgreSQL support
 	optdepends = mariadb: MariaDB support
 	conflicts = jackal-git
 	backup = etc/jackal/jackal.yml,
 	backup = etc/jackal/config.yaml
-	source = jackal-0.52.4.tar.gz::https://github.com/ortuman/jackal/archive/v0.52.4.tar.gz
+	source = jackal-0.61.0.tar.gz::https://github.com/ortuman/jackal/archive/v0.61.0.tar.gz
 	source = jackal.service
 	source = jackal.sysusers
 	source = jackal.tmpfiles
 	source = config.yaml
-	sha256sums = 5d8692c9c9eee275203d53b439daa2897a03d494a300af4ca1c113b48f4da355
+	sha256sums = d64a8a3107c26e5186304f9538ad97633d667ce297f930e480490f64640c6b9b
 	sha256sums = 0a9a9065957e5b0576e5443b29bf0cae81281194664376569a91c51f85e7d7ff
 	sha256sums = 5fec4f4053ac15cd597bb32ba03c35d85f52438204fd801edf333403ec2c4bf3
 	sha256sums = 20b7e5a5fee727e72fdbac54182b594a838340c0625036ca9d117e2a9d710045
 	sha256sums = a6b361f52bb1ffb7b872c0ab43086048680cbe462ea95e72d85771d2418e52fe
 
 pkgname = jackal
-

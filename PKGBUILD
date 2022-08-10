@@ -1,14 +1,14 @@
 # Maintainer: Sam Whited <sam@samwhited.com>
 
 pkgname=jackal
-pkgver=0.52.4
+pkgver=0.61.0
 pkgrel=1
 pkgdesc='An XMPP/Jabber server'
 arch=('x86_64' 'i686')
 url='https://github.com/ortuman/jackal'
 license=('GPL3')
 depends=('glibc')
-makedepends=('go>=1.11')
+makedepends=('go>=1.17')
 optdepends=('postgresql: PostgreSQL support'
             'mariadb: MariaDB support')
 conflicts=('jackal-git')
@@ -18,7 +18,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ortuman/jackal/archive/
         jackal.sysusers
         jackal.tmpfiles
         config.yaml)
-sha256sums=('5d8692c9c9eee275203d53b439daa2897a03d494a300af4ca1c113b48f4da355'
+sha256sums=('d64a8a3107c26e5186304f9538ad97633d667ce297f930e480490f64640c6b9b'
             '0a9a9065957e5b0576e5443b29bf0cae81281194664376569a91c51f85e7d7ff'
             '5fec4f4053ac15cd597bb32ba03c35d85f52438204fd801edf333403ec2c4bf3'
             '20b7e5a5fee727e72fdbac54182b594a838340c0625036ca9d117e2a9d710045'
@@ -27,7 +27,6 @@ install=jackal.install
 
 build() {
   cd jackal-${pkgver}
-  export GO111MODULE=on
   go build -tags netgo \
            -trimpath \
            -buildmode=pie \
