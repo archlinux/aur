@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=qs
-_pkgver=0.25.3
+_pkgver=0.25.4
 pkgname=r-${_pkgname,,}
-pkgver=0.25.3
-pkgrel=3
+pkgver=0.25.4
+pkgrel=1
 pkgdesc='Quick Serialization of R Objects'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -24,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('51adf6a112c19f78ceeefa55acf800c7e6bf2664e7d9cea9d932abb24f22be6b')
+sha256sums=('92c49206a9c1c66dbd95f12efc3a57acb728e1f8387b549c437519fb2b98a533')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
