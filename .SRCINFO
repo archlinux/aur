@@ -1,0 +1,15 @@
+pkgbase = ccr
+	pkgdesc = Community codec repository: compression (and other) filters for netCDF/HDF5
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://ccr.github.io/ccr/
+	arch = x86_64
+	license = BSD
+	depends = bzip2
+	depends = hdf5
+	depends = netcdf
+	depends = zstd
+	source = https://github.com/ccr/ccr/releases/download/v1_3_0/ccr-1.3.0.tar.gz
+	sha256sums = bb892e3319e5d748e29453f801286ec2f82bf4074f2f86de0e9b1ba5f08995c6
+
+pkgname = ccr

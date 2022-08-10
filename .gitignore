@@ -1,0 +1,6 @@
+pkg/
+src/
+ccr-*.tar.gz
+ccr-*.pkg*
+ccr-*.log
+PKGBUILD*.log
