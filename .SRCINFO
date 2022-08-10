@@ -1,6 +1,6 @@
 pkgbase = session-desktop-appimage
 	pkgdesc = Session is an end-to-end encrypted messenger that minimises sensitive metadata
-	pkgver = 1.8.6
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/oxen-io/session-desktop
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = session-desktop-appimage
 	conflicts = session-desktop-bin
 	options = !strip
 	options = !emptydirs
-	source = session-desktop-linux-x86_64-1.8.6.AppImage::https://github.com/oxen-io/session-desktop/releases/download/v1.8.6/session-desktop-linux-x86_64-1.8.6.AppImage
+	source = session-desktop-linux-x86_64-1.9.0.AppImage::https://github.com/oxen-io/session-desktop/releases/download/v1.9.0/session-desktop-linux-x86_64-1.9.0.AppImage
 	source = session-desktop.desktop
 	source = session-desktop.png
-	sha256sums = 87bb8477106ea8f356185a79c1659123d56c2b71d83ad2d5823eeb21b78ef646
+	sha256sums = eebb0f03c500ca6af0682a1b1acb2c51225343a2b35a6e1471a6f94378da5be0
 	sha256sums = 2bf3c1718e157626851aa1661388353c9a430635058a6e327f5cf4be3161e47b
 	sha256sums = 8f6f2fa7ac49e24551b6a6324e4fd6cd73b478c24f450296c7fd30556c01575c
 
