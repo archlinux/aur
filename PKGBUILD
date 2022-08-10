@@ -3,16 +3,16 @@ _target='compass-readonly'
 _edition=' Readonly'
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
-pkgver='r14634.g67cb8e1e9'
+pkgver='r14824.gd08bbc6b9'
 pkgrel='1'
 epoch='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
-_electronpkg='electron13'
+_electronpkg='electron15'
 depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release')
-makedepends=('git' 'nodejs' 'npm>=7.0.0' 'python' 'unzip')
+makedepends=('git' 'nodejs>=16.0.0' 'npm>=8.0.0' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -23,7 +23,7 @@ source=(
 
 )
 sha512sums=('SKIP'
-            '1b9bf0ba93cc979953dae1ee2b7e872ef2f8649a033aac5862f650a018b9450ac7a89a20e61718bb41203a206e2e4f193e7853539106fc2d491736645203c3fd'
+            '8d26820139d918c4e9da05b062a86865664218bfbf32b9f002995c30fa22b64e088f59263bee5f8fb4797565fe88b7daf48c383a572c0ced657dab0639e57b94'
             'c7ed26d911cea41cea65ede61d41c22c24296c88c4a21532d81b3092844cd65a866fe8e390570362eb7f0200a897a86e97387e8afb4e1ad8e8398c7265d529d2')
 
 _sourcedirectory="$pkgname"
@@ -31,14 +31,11 @@ _sourcedirectory="$pkgname"
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 
-	# Force the newest version of electron-to-chromium
-	sed -E -i 's|(.*)("electron": ")|\1"electron-to-chromium": "'"$(npm view 'electron-to-chromium@latest' version)"'",\n\1\2|' 'packages/compass/package.json'
-
-	# Loosen node version restriction
-	sed -E -i 's|"node": "\^14.|"node": ">=14.|' 'packages/compass/package.json' 'package-lock.json'
-
 	# Set system Electron version for ABI compatibility
 	sed -E -i 's|("electron": ").*"|\1'"$(cat "/usr/lib/$_electronpkg/version")"'"|' {'configs','packages'}'/'*'/package.json'
+
+	# Force the newest version of electron-to-chromium
+	sed -E -i 's|(.*)("electron": ")|\1"electron-to-chromium": "'"$(npm view 'electron-to-chromium@latest' version)"'",\n\1\2|' 'packages/compass/package.json'
 
 	# Apply hadron-build fixes
 	patch --forward -p1 < "$srcdir/hadron-build.diff"
