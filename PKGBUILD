@@ -1,7 +1,7 @@
 # Maintainer: Łukasz Moroz <lukaszmoroz@gmail.com>
 
 pkgname=nautilus-copy-path
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Configurable extension for Nautilus to copy path, URI, or name"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-nautilus' 'python-gobject')
 backup=("usr/share/nautilus-python/extensions/nautilus-copy-path/config.json")
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chr314/nautilus-copy-path/archive/$pkgver.tar.gz")
-md5sums=('601ed343e22e938fbd49756a54a13e46')
+md5sums=('5a410582657ebf812c1cca7964aa8e1b')
 
 package() {
     cd "$pkgname-$pkgver"
