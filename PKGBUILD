@@ -11,7 +11,7 @@ license=('GPL-3.0-or-later')
 provides=('chwp')
 conflicts=('chwp')
 source=("${_pkgname}::${url}/releases/download/v$pkgver/${_pkgname}-linux-x86-64")
-noextract=('${_pkgname}-linux-x86_64')
+noextract=('${_pkgname}-linux-x86-64')
 sha1sums=('SKIP')
 
 package() {
