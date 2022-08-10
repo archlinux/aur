@@ -3,7 +3,7 @@
 
 pkgname=papermc-14
 _pkgver=1.14.4
-_build=243
+_build=245
 pkgver="${_pkgver}+b${_build}"
 pkgrel=1
 pkgdesc="Next generation of Minecraft server, compatible with Spigot plugins and offering uncompromising performance (version for Minecraft 1.14)"
@@ -16,15 +16,15 @@ optdepends=("tar: needed in order to create world backups"
 conflicts=('papermc-git' 'papermc')
 backup=('etc/conf.d/papermc')
 install="${pkgname}.install"
-source=("papermc.${pkgver}.jar"::"https://papermc.io/api/v1/paper/${_pkgver}/${_build}/download"
+source=("papermc.${pkgver}.jar"::"https://api.papermc.io/v2/projects/paper/versions/${_pkgver}/builds/${_build}/downloads/paper-${_pkgver}-${_build}.jar"
 	"papermc-backup.service"
 	"papermc-backup.timer"
 	"papermc.service"
 	"papermc.conf"
 	"papermc.sh"
-	"papermc_${pkgver}_LICENSE.md"::"https://raw.githubusercontent.com/PaperMC/Paper/master/LICENSE.md")
+	"papermc_${pkgver}_LICENSE.md"::"https://raw.githubusercontent.com/PaperMC/Paper/6f03c0a52975b02b1805702348f9744c6b19e243/LICENSE.md")
 noextract=("papermc.${pkgver}.jar")
-sha512sums=('d7a12bd51fe65bca3abd08ebca4eb6ed7b215f88eadfe34d8da2a0fe23be20b789713f6fd2e522d1f960470830040aa64baca680ac4e3efe4bb68bc979de17d0'
+sha512sums=('5288da626b0db610f4748e3f4e951298c9289a194491852af89d1747b70ffa8a57d1851b90991e81d6e8cc3680f1cdc221d2d2c2cc346e22d90c00ae66f424ec'
             'f4126f9cbb3fa24096c22812c45d33b07891317a5a505646fc11c69a5d25ad8679cd6c82ab1285013b2d29d1b73a753bc85d30b66c375768ab6e27d82c6d2092'
             '51c5345155e8640d4f1eaef0c8cfb890ae46063f2d4e7a0fe181ad4c8ff7b96fea88b0f9fc74031d589dfd61602f37b440f183ca1859835930fe69d37508cd42'
             'f29c4044d9e3cc5ab137c21f7e62399b36d7e1f777d5558a39f7b4a01de75bdf2de0b8678e424accc03934ca7db9ebb6a22c78c8c4497759287dd55e1c3eb456'
