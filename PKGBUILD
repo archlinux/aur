@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bookdown
-_pkgver=0.27
+_pkgver=0.28
 pkgname=r-${_pkgname,,}
-pkgver=0.27
+pkgver=0.28
 pkgrel=1
 pkgdesc='Authoring Books and Technical Documents with R Markdown'
 arch=('any')
@@ -40,7 +40,7 @@ optdepends=(
   r-xml2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2e724abbe63fdceb74fc4ac59fcf1dcaac5f768617f6fbeb752df401e1899f23')
+sha256sums=('425548d1bedfeb0dddddba7df75a70a85889ee200ea8791302ca7b652261192b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
