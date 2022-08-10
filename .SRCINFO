@@ -1,6 +1,6 @@
 pkgbase = smarthome-cli
 	pkgdesc = Terminal client for the smarthome-go/smarthome server.
-	pkgver = 2.14.0
+	pkgver = 2.14.1
 	pkgrel = 1
 	url = https://github.com/smarthome-go/cli
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = smarthome-cli
 	license = GPL2
 	makedepends = go
 	depends = glibc
-	source = smarthome-cli-2.14.0.tar.gz::https://github.com/smarthome-go/cli/archive/refs/tags/v2.14.0.tar.gz
-	b2sums = 7d2900a22dcc75a615128228591fe97ad631c940833b463a953f7d440c54389b68664855c9c7a730acc656d3d16bc538ae96e89d6ee24d33239bee5925953fb3
+	source = smarthome-cli-2.14.1.tar.gz::https://github.com/smarthome-go/cli/archive/refs/tags/v2.14.1.tar.gz
+	b2sums = 13001fb0c39cbae289ca4dec27445eb36cab0e196ed55cb85fc6d219fa3bf1e859bad93803d3c678941f43afe7f82c908a3e82e8a675c716d5c5005e41a1b612
 
 pkgname = smarthome-cli
