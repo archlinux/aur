@@ -1,8 +1,8 @@
 diff --git a/packages/hadron-build/commands/release.js b/packages/hadron-build/commands/release.js
-index e84733eaa..f016360bc 100644
+index 117444603..6d7fbd336 100644
 --- a/packages/hadron-build/commands/release.js
 +++ b/packages/hadron-build/commands/release.js
-@@ -480,9 +480,6 @@ exports.run = (argv, done) => {
+@@ -491,9 +491,6 @@ exports.run = (argv, done) => {
      task('write license file', writeLicenseFile),
      task('remove development files', removeDevelopmentFiles),
      !noAsar && task('create application asar', createApplicationAsar),
@@ -12,7 +12,7 @@ index e84733eaa..f016360bc 100644
    ].filter(Boolean));
  
    return async.series(tasks, (_err) => {
-@@ -496,9 +493,5 @@ exports.run = (argv, done) => {
+@@ -507,9 +504,5 @@ exports.run = (argv, done) => {
  exports.handler = (argv) => {
    exports.run(argv, (_err, CONFIG) => {
      cli.abortIfError(_err);
@@ -23,7 +23,7 @@ index e84733eaa..f016360bc 100644
    });
  };
 diff --git a/packages/hadron-build/lib/target.js b/packages/hadron-build/lib/target.js
-index 8911ff4ed..2b60b1865 100644
+index 16a1ec4e3..2a61c3850 100644
 --- a/packages/hadron-build/lib/target.js
 +++ b/packages/hadron-build/lib/target.js
 @@ -10,7 +10,6 @@ const path = require('path');
@@ -34,7 +34,7 @@ index 8911ff4ed..2b60b1865 100644
  const windowsInstallerVersion = require('./windows-installer-version');
  const debug = require('debug')('hadron-build:target');
  const execFile = promisify(childProcess.execFile);
-@@ -213,7 +212,6 @@ class Target {
+@@ -241,7 +240,6 @@ class Target {
        arch: this.arch,
        electronVersion: this.electronVersion,
        sign: null,
