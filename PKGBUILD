@@ -3,7 +3,7 @@
 _pkggit=rover
 
 pkgname=rover-bin
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=3
 pkgdesc="Interactive Terraform visualization. State and configuration explorer."
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('rover')
 provides=('rover')
 license=('MIT')
 source=("${_pkggit}_${pkgver}_linux_amd64.zip::https://github.com/im2nguyen/${_pkggit}/releases/download/v${pkgver}/${_pkggit}_${pkgver}_linux_amd64.zip")
-sha256sums=('f296a3c87558291fc28205172c5856239d28f4112c2c3d42595af3bb62acce83')
+sha256sums=('9af0ccda3b58a87a97cc8a65c6861c209b9118ce048a374ffcf487dc2c27e59b')
 
 package() {
   cd "${srcdir}"
