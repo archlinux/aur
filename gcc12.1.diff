@@ -1,0 +1,13 @@
+diff --git a/vmwgfx/vmwgfx_tex_video.c b/vmwgfx/vmwgfx_tex_video.c
+index acc2b569305de299bf76ec55482cd472853d4df4..480a5f1a825470bfedc62b32d42d514e8cadc368 100644
+--- a/vmwgfx/vmwgfx_tex_video.c
++++ b/vmwgfx/vmwgfx_tex_video.c
+@@ -237,7 +237,7 @@ stop_video(ScrnInfoPtr pScrn, pointer data, Bool shutdown)
+ 
+        for (i=0; i<3; ++i) {
+ 	   for (j=0; j<2; ++j) {
+-	       if (priv->yuv[i]) {
++	       if (priv->yuv[j][i]) {
+ 		   xa_surface_destroy(priv->yuv[j][i]);
+ 		   priv->yuv[j][i] = NULL;
+ 	       }

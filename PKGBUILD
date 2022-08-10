@@ -2,7 +2,7 @@
 
 pkgname=xf86-video-vmware
 pkgver=13.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="X.org vmware video driver"
 arch=(x86_64)
 url="https://xorg.freedesktop.org/"
@@ -11,17 +11,20 @@ depends=('mesa' 'systemd-libs')
 makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=25.2') # 'git')
 conflicts=('xorg-server<21.1.1' 'X-ABI-VIDEODRV_VERSION<25' 'X-ABI-VIDEODRV_VERSION>=26')
 groups=('xorg-drivers')
-options=('!emptydirs')
+options=('!emptydirs' 'debug')
 source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2{,.sig}
-        gcc8.diff)
+        gcc8.diff
+        gcc12.1.diff)
 sha512sums=('c318de893cae7b2b11e11c1b389ee47478b7c8d1f52c27099dbe453efec28f3e9da449217307a8c2251999eada66312f766996be1a6ead413b8b6dedc42c68ca'
             'SKIP'
-            'd05522c84dfa1a88bb9e892087f0a67968142b87f1d7f902e8d77150eae7a26ef7f43cef256d2173be060042b86336123fa7c7f521b37ca98f8fb45871bf30ad')
+            'd05522c84dfa1a88bb9e892087f0a67968142b87f1d7f902e8d77150eae7a26ef7f43cef256d2173be060042b86336123fa7c7f521b37ca98f8fb45871bf30ad'
+            '944fdfac8f7d7feca722ee43f7f3dff8ba3ef82c29012406ed36437ee917e9bfc9aeb33d28891daccc13c323d8862c45f69cb484306737feb8a41a47e8075e60')
 validpgpkeys=('90D027AEAF33CBABC140735BC1F5D3CDF5176580') #  Thomas Hellstrom (VMware) <thellstrom@vmware.com>
 
 prepare() {
   cd $pkgname-${pkgver}
   patch -Np0 -i ../gcc8.diff
+  patch -Np1 -i ../gcc12.1.diff
 }
 
 build() {
