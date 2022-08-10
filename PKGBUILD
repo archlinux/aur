@@ -4,11 +4,11 @@
 
 pkgname=nco
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="netCDF Operators allow users to manipulate and analyse data stored in NetCDF files"
 url="http://nco.sourceforge.net/"
 license=("GPL")
-depends=('netcdf' 'udunits' 'gsl' 'curl')
+depends=('netcdf' 'udunits' 'gsl' 'curl' 'ccr')
 makedepends=('antlr2')
 arch=('x86_64')
 options=('!libtool')
@@ -28,7 +28,10 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr
+  ./configure \
+    --prefix=/usr \
+    --with-hdf5-plugin-path=/usr/lib/hdf5/plugin \
+    --enable-ccr
   make
 }
 
