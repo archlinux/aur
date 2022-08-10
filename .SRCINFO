@@ -1,0 +1,12 @@
+pkgbase = mathematica-documentation-en
+	pkgdesc = Mathematica Documentation (en)
+	pkgver = 13.1.0
+	pkgrel = 1
+	url = http://www.wolfram.com/mathematica/
+	arch = any
+	license = proprietary
+	depends = mathematica
+	source = local://WLDocs_13.1.0_LINUX.sh
+	md5sums = 2e7887e63fafa176a252982fbcbec493
+
+pkgname = mathematica-documentation-en
