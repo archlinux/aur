@@ -1,6 +1,7 @@
 /.vscode
 /src
 /pkg
-/setup_*
+*.log
 *.pkg.*
 *.tar.*
+inscryption_*.sh

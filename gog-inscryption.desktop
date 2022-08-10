@@ -6,6 +6,5 @@ Icon=gog-inscryption
 Type=Application
 Terminal=false
 StartupNotify=true
-StartupWMClass=Inscryption.exe
 Categories=Game;
 Encoding=UTF-8
