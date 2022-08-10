@@ -9,7 +9,7 @@ url="https://github.com/kinnala/${_base}"
 license=('custom:BSD-3-clause')
 depends=(python-scipy)
 makedepends=(python-setuptools python-wheel)
-checkdepends=(python-pytest python-matplotlib python-meshio python-h5py python-autograd)
+checkdepends=(python-pytest python-matplotlib python-meshio python-h5py python-autograd python-pyamg)
 source=(${url}/archive/${pkgver}.tar.gz)
 sha512sums=('dad67b8d0a94e5efcd2a8775ea0d5e09d3aeb4249139ebc6b0c2d8aa78c11c16ecd5fc84050afe7db5de6aa1a863f41b54356ddf8b19c494cf6b08fd2952941c')
 

@@ -10,6 +10,7 @@ pkgbase = python-scikit-fem
 	checkdepends = python-meshio
 	checkdepends = python-h5py
 	checkdepends = python-autograd
+	checkdepends = python-pyamg
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-scipy
