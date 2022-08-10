@@ -1,0 +1,17 @@
+pkgbase = aurora-cli
+	pkgdesc = Command line tools for interacting with NEAR Protocol
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/aurora-is-near/aurora-cli
+	arch = x86_64
+	license = custom:CC0-1.0
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = git
+	depends = nodejs
+	depends = libusb
+	noextract = aurora-cli-0.0.3.tgz
+	source = https://github.com/aurora-is-near/aurora-cli/archive/refs/tags/0.0.3.tar.gz
+	sha256sums = 15241ff15cab4a4f0616536338165ce9b872d6462b0b79f983f08492a329637d
+
+pkgname = aurora-cli
