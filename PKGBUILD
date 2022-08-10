@@ -2,9 +2,10 @@
 # Contributor: linuxer <linuxer@artixlinux.org> 
 
 pkgname=cameracontrol-bin
+alias=cameracontrol
 pkgdesc="Webcam, camera and microphone control for Linux - Έλεγχος webcam και camera και μικροφώνου για Linux"
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 _pkgver="${pkgver//./-}"
 arch=('any')
 url="https://gitea.artixlinux.org/linuxer/camera-control-webcam-switch-indicator"
@@ -21,9 +22,9 @@ sha256sums=('ec781c9981d741ee5ca2aaa8afcabb8abc5e60c6dedfa3a09d4b2065e4ecff2a')
 
 package() {
   cd "$srcdir"
-  install -Dm755 "$pkgname.bin" -t "$pkgdir/opt/CameraControl"
+  install -Dm755 "$alias.bin" -t "$pkgdir/opt/CameraControl"
   install -Dm755 CameraControl.sh "$pkgdir/opt/CameraControl"
-  install -Dm644 "$pkgname.desktop" -t "$pkgdir/usr/share/applications"
+  install -Dm644 "$alias.desktop" -t "$pkgdir/usr/share/applications"
   install -D -m0644 org.artixlinux.cameracontrol.policy \
     -t "${pkgdir}"/usr/share/polkit-1/actions
 }

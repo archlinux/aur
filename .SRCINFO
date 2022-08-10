@@ -1,7 +1,7 @@
 pkgbase = cameracontrol-bin
 	pkgdesc = Webcam, camera and microphone control for Linux - Έλεγχος webcam και camera και μικροφώνου για Linux
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitea.artixlinux.org/linuxer/camera-control-webcam-switch-indicator
 	install = cameracontrol.install
 	arch = any
@@ -20,4 +20,3 @@ pkgbase = cameracontrol-bin
 	sha256sums = ec781c9981d741ee5ca2aaa8afcabb8abc5e60c6dedfa3a09d4b2065e4ecff2a
 
 pkgname = cameracontrol-bin
-
