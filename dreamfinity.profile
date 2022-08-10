@@ -6,7 +6,7 @@ include dreamfinity.local
 # Persistent global definitions
 include globals.local
 
-# Idk what does it executes in these directories
+# Idk what does it execute in these directories
 ignore noexec ${HOME}
 ignore noexec /tmp
 
