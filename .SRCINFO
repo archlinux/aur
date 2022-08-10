@@ -1,6 +1,6 @@
 pkgbase = discord_arch_electron
 	pkgdesc = Discord (popular voice + video app) using the system provided electron for increased security and performance
-	pkgver = 0.0.18
+	pkgver = 0.0.19
 	pkgrel = 1
 	url = https://discord.com
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = discord_arch_electron
 	optdepends = xdg-utils: Open files
 	provides = discord
 	conflicts = discord
-	source = https://dl.discordapp.net/apps/linux/0.0.18/discord-0.0.18.tar.gz
+	source = https://dl.discordapp.net/apps/linux/0.0.19/discord-0.0.19.tar.gz
 	source = LICENSE.html::https://discordapp.com/terms
 	source = OSS-LICENSES.html::https://discordapp.com/licenses
-	sha512sums = a9c5de48186542fa4385c5cf4ffb54484dee008cde5230a9f8a0e71a84e1e7ce680e170aca2018ad2217618ed2d4a4882836a408a5d0a5cab054c0954c1b55be
+	sha512sums = 5b73f0f968ce61f5a844940e1525da80e7b2ce3779cf2050ca3c2b0b7dbee20f16e2bf203f0673d1e275d1e55075b83eb63700731be8324587b3c58c64d3a0e8
 	sha512sums = SKIP
 	sha512sums = SKIP
 

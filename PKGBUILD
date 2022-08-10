@@ -4,7 +4,7 @@
 # Based off the discord community repo PKGBUILD by Filipe Laíns (FFY00) <lains@archlinux.org>
 pkgname=discord_arch_electron
 _pkgname=discord
-pkgver=0.0.18
+pkgver=0.0.19
 pkgrel=1
 pkgdesc="Discord (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=('libpulse: Pulseaudio support'
 source=("https://dl.discordapp.net/apps/linux/$pkgver/$_pkgname-$pkgver.tar.gz"
         'LICENSE.html::https://discordapp.com/terms'
         'OSS-LICENSES.html::https://discordapp.com/licenses')
-sha512sums=('a9c5de48186542fa4385c5cf4ffb54484dee008cde5230a9f8a0e71a84e1e7ce680e170aca2018ad2217618ed2d4a4882836a408a5d0a5cab054c0954c1b55be'
+sha512sums=('5b73f0f968ce61f5a844940e1525da80e7b2ce3779cf2050ca3c2b0b7dbee20f16e2bf203f0673d1e275d1e55075b83eb63700731be8324587b3c58c64d3a0e8'
             SKIP
             SKIP)
 
