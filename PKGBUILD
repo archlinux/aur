@@ -2,7 +2,7 @@
 # Contributor: John Andrews <theunderdog09 at gmail dot com>
 # Contributor: Timo Kramer <fw minus aur at timokramer dot de>
 pkgname=mullvad-vpn-cli
-pkgver=2022.2
+pkgver=2022.3
 pkgrel=1
 pkgdesc="The Mullvad VPN CLI client"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 options=('!lto')
 install="${pkgname%-*}.install"
-_tag=a66504d6b8cc708a1da4b4e6b40fbe51e9dde4d2 # tags/2022.2^0
+_tag=ca45335dba9f8b2b90263c3b6c08e64c6898f35f # tags/2022.3^0
 _commit=b63c5c8c7977963aeb585b6ddd4537dffe2aeeec
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#commit=${_tag}?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
