@@ -5,7 +5,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=caret
-_cranver=6.0-92
+_cranver=6.0-93
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -54,7 +54,7 @@ optdepends=(
     r-themis
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('1d814a2a921a23ad8b9a7da6f788e6abc06f5668b3918bd440d4355bc4b81511')
+sha256sums=('4c156b88879d390436a54779ea19ffbae3f476533d83caaf30400d76130c4a07')
 
 build() {
   mkdir -p build
