@@ -6,7 +6,7 @@
 _projectname='react'
 pkgname="ocaml-$_projectname"
 pkgver='1.2.2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='An OCaml module for functional reactive programming'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://erratique.ch/software/$_projectname"
