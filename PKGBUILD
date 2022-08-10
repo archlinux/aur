@@ -3,7 +3,7 @@
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
 pkgver=4.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/cheat/cheat"
@@ -14,7 +14,7 @@ optdepends=('bash-completion: for bash completions'
 conflicts=("python-$pkgname")
 replaces=("python-$pkgname")
 backup=("etc/$pkgname/conf.yml")
-_commit=df5970738603bf613366b18a5d87d93fb127eb16
+_commit=fffe3c471a27e86e95d98fa1ed142577748c3e08
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         'chris.pgp' # Christopher Allen Lane <chris@chris-allen-lane.com>
         'conf.yml'
@@ -31,7 +31,7 @@ prepare() {
 
   auth-tarball-from-git --keyring ../chris.pgp \
     --tag "$pkgver" --prefix "$pkgname-$pkgver" \
-    https://github.com/cheat/cheat.git ../$pkgname-$pkgver.tar.gz
+    https://github.com/cheat/cheat.git ../"$pkgname-$pkgver.tar.gz"
 
   export GOPATH="$srcdir/gopath"
   go mod vendor
