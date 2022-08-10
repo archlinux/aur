@@ -2,7 +2,7 @@
 # Maintainer:  Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
 pkgname=gomplate-bin
-pkgver=3.11.1
+pkgver=3.11.2
 pkgrel=1
 pkgdesc='A flexible commandline tool for template rendering. Supports lots of local and remote datasources'
 arch=('x86_64')

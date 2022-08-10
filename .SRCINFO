@@ -1,13 +1,13 @@
 pkgbase = gomplate-bin
 	pkgdesc = A flexible commandline tool for template rendering. Supports lots of local and remote datasources
-	pkgver = 3.11.1
+	pkgver = 3.11.2
 	pkgrel = 1
 	url = https://gomplate.ca
 	arch = x86_64
 	license = MIT
 	provides = gomplate
 	conflicts = gomplate
-	source = gomplate-bin-3.11.1::https://github.com/hairyhenderson/gomplate/releases/download/v3.11.1/gomplate_linux-amd64
+	source = gomplate-bin-3.11.2::https://github.com/hairyhenderson/gomplate/releases/download/v3.11.2/gomplate_linux-amd64
 	source = LICENSE::https://raw.githubusercontent.com/hairyhenderson/gomplate/main/LICENSE
 	sha256sums = e3d3c32075c6523bd6d0a999977d1a9619b7d39549381b40dad8a82c963fc13e
 	sha256sums = 623198523f10b6c9b0473c832634cd678b17492e77745c453aaec3f6f9d4fc20
