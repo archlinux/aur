@@ -13,7 +13,8 @@ url="https://meshcentral.com/info/"
 license=(Apache)
 makedepends=('npm')
 depends=('nodejs<18.1.0')
-optdepends=('nodejs-modern-syslog: syslog support'
+optdepends=('nodejs-acme-client: Auto trusted TLS certificate support'
+            'nodejs-modern-syslog: syslog support'
             'nodejs-nodemailer: SMTP support'
             'nodejs-passport-saml: SAML authentication support')
 backup=('etc/meshcentral/config.json' 'var/lib/meshcentral')
