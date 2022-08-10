@@ -1,4 +1,4 @@
-# Maintainer: Chris Roth <(firstname).(lastname) @ usask.ca>
+# Maintainer: Chris Roth <(firstname) @ preteckt.com>
 
 _pkgname=freetds
 pkgname=${_pkgname}-krb5
