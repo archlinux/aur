@@ -13,7 +13,7 @@ provides=('rover')
 license=('MIT')
 makedepends=('go>=1.17' 'git' 'gzip' 'tar' 'gcc')
 source=("${_pkggit}-${pkgver}.tar.gz::https://github.com/im2nguyen/${_pkggit}/archive/v${pkgver}.tar.gz")
-sha256sums=('c49a840030f4f864c1b360f09a50917f9b4ffda08a1ba4834d1c1e3d5b9d152e')
+sha256sums=('491709df11c70c9756e55f4cd203321bf1c6b92793b8db91073012a1f13b42e5')
 
 build() {
 	cd "${_pkggit}-${pkgver}"
