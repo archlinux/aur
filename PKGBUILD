@@ -2,7 +2,7 @@
 _projectname='ppx_string'
 pkgname="ocaml-$_projectname"
 pkgver='0.15.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Ppx extension for string interpolation'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
