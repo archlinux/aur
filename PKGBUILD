@@ -1,13 +1,14 @@
-# Maintainer: alphRomeo323 <alpharomeo323dev@protonmail.com>
-# Contributor: William Brown <glowinthedarkcia@horsefucker.org>
+# Maintainer: su226 <thesu226 at outlook dot com>
+# Contributor: alphRomeo323 <alpharomeo323dev at protonmail dot com>
+# Contributor: William Brown <glowinthedarkcia at horsefucker dot org>
 pkgname=ftba
-pkgver=202206081143_2e021f8e74_release
+pkgver=202207271710_0f9644f5fc_release
 pkgrel=1
 url="https://feed-the-beast.com/app"
 arch=(any)
 pkgdesc="Offers many different styles of Minecraft modpacks to the community."
 source=("https://apps.modpacks.ch/FTBApp/release/${pkgver//_/-}/FTBA_linux_${pkgver//_/-}.deb" "ftbapp.desktop")
-sha256sums=('93a7b3311a250fd4f721cfa96d3ea511c86941f3d28748a1a2b616706c6b63bb'
+sha256sums=('ce87521fedcd0f6ede3f9408a44ac6fe48723d8a2c81105131c3ccdcb1217c32'
             '72e6e0b01e790e416ab1ac215b7179f968156d10be5b36fad656a4f084778db6')
 license=('LGPL2.1')
 depends=("java-runtime=8" "java-runtime=11" "java-runtime=17" "avahi") # Crashes without libavahi-common.so.3
