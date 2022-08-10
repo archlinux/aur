@@ -1,6 +1,6 @@
 pkgbase = r-dt
 	pkgdesc = A Wrapper of the JavaScript Library 'DataTables'
-	pkgver = 0.23
+	pkgver = 0.24
 	pkgrel = 1
 	url = https://cran.r-project.org/package=DT
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-dt
 	optdepends = r-rmarkdown
 	optdepends = r-shiny
 	optdepends = r-testit
-	source = https://cran.r-project.org/src/contrib/DT_0.23.tar.gz
-	sha256sums = 360ae2fcb1141125a1b16448570fc37d14c4dd3f78a872c26df4fda1787cdc70
+	source = https://cran.r-project.org/src/contrib/DT_0.24.tar.gz
+	sha256sums = 0cd74c94849f577489cd2b5fbe44ca8946d29ecafe7e7a0b437e4c984dea6763
 
 pkgname = r-dt
