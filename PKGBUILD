@@ -2,7 +2,7 @@
 _projectname='luv'
 pkgname="ocaml-$_projectname"
 pkgver='0.5.11'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Cross-platform asynchronous I/O and system calls'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/aantron/$_projectname"
