@@ -2,7 +2,7 @@
 _projectname='ppx_cold'
 pkgname="ocaml-$_projectname"
 pkgver='0.15.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Expands [@Cold] into [@inline never][@specialise never][@Local never]'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
