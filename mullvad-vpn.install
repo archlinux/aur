@@ -41,7 +41,7 @@ pre_remove() {
   pkill -x "mullvad-gui" || true
 
   /opt/Mullvad\ VPN/resources/mullvad-setup reset-firewall || echo "Failed to reset firewall"
-  /opt/Mullvad\ VPN/resources/mullvad-setup clear-history || echo "Failed to remove leftover WireGuard keys"
+  /opt/Mullvad\ VPN/resources/mullvad-setup remove-device || echo "Failed to remove device from account"
 }
 
 post_remove() {
