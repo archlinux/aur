@@ -2,7 +2,7 @@
 _name='vim-hug-neovim-rpc'
 pkgname="${_name}-git"
 pkgver=r118.93ae387
-pkgrel=1
+pkgrel=2
 pkgdesc="trying to build a compatibility layer for neovim rpc client working on vim8"
 arch=('any')
 url="https://github.com/roxma/vim-hug-neovim-rpc"
@@ -18,7 +18,7 @@ backup=()
 options=()
 # maybe at some point there will be helptags to update
 install="${_name}.install"
-source=("${_name}::${url//https/git}")
+source=("git+${url}.git")
 noextract=()
 md5sums=('SKIP')
 
