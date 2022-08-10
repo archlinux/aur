@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Lampa
+Comment=Lampa - movies & serials tracker, indexer and player
+Exec=lampa
+Icon=lampa
+Terminal=false
+Type=Application
+Categories=Video,AudioVideo

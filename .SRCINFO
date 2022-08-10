@@ -1,0 +1,18 @@
+pkgbase = lampa
+	pkgdesc = Lampa - movies & serials tracker, indexer and player
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = http://lampa.mx
+	arch = x86_64
+	license = custom
+	makedepends = libarchive
+	depends = nwjs-bin
+	noextract = lampa-1.4.1.zip
+	source = lampa-1.4.1.zip::https://github.com/yumata/lampa/releases/download/v1.4.1/lampa-portable.zip
+	source = lampa
+	source = lampa.desktop
+	sha256sums = 28954740abbd36e38bbcdeff55ce832968ef24d35ecfb4e51353d9de5edf99d1
+	sha256sums = ffdcbc992611975481b098fbae4914bbd4e374ff54d482a9ad45248951d6c858
+	sha256sums = 0225abec9f78f980407da87762cb76cbfb5442288cc0267701a905a2e9ce8db9
+
+pkgname = lampa
