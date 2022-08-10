@@ -1,6 +1,6 @@
 pkgbase = istio-bin
 	pkgdesc = An open platform to connect, manage, and secure microservices
-	pkgver = 1.14.2
+	pkgver = 1.14.3
 	pkgrel = 1
 	url = https://istio.io
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = istio-bin
 	depends = glibc
 	provides = istio
 	conflicts = istio
-	source_x86_64 = https://github.com/istio/istio/releases/download/1.14.2/istio-1.14.2-linux-amd64.tar.gz
-	sha256sums_x86_64 = 53ec5d3442a106eb003bbfa1f323dbde7280888b3091a3bfb35febc86d4bd301
-	source_aarch64 = https://github.com/istio/istio/releases/download/1.14.2/istio-1.14.2-linux-arm64.tar.gz
-	sha256sums_aarch64 = 56b3baae4ad56609e3ec8609663a2202b07148be6d40507c84322ffe4aadbd52
-	source_armv7h = https://github.com/istio/istio/releases/download/1.14.2/istio-1.14.2-linux-armv7.tar.gz
-	sha256sums_armv7h = 820b3cda81eaba01c38a55312fa46ac663adb6b3bd48896eaac716d9b4a29e74
+	source_x86_64 = https://github.com/istio/istio/releases/download/1.14.3/istio-1.14.3-linux-amd64.tar.gz
+	sha256sums_x86_64 = f5e2fbd1b15433fbf9597ee2818e837d221c45714a24f3aa392a46e0e1384eb4
+	source_aarch64 = https://github.com/istio/istio/releases/download/1.14.3/istio-1.14.3-linux-arm64.tar.gz
+	sha256sums_aarch64 = f967801bdf05480b0be3b1a1d866dc4fc08593d17c71e068b7f24f0d21e0dec5
+	source_armv7h = https://github.com/istio/istio/releases/download/1.14.3/istio-1.14.3-linux-armv7.tar.gz
+	sha256sums_armv7h = 72f63ac3468841e32c88bbf32f4903d43da97f7906470bbc5968f95ee0e57606
 
 pkgname = istio-bin
