@@ -12,7 +12,7 @@ arch=('any')
 url="https://github.com/ansible-community/ansible-lint"
 license=('MIT')
 depends=('python' 'python-ruamel-yaml' 'python-pyaml' 'python-rich' 'python-packaging' 'python-jsonschema'
-          'python-wcmatch' 'python-enrich' 'ansible-core' 'yamllint' 'python-ansible-compat')
+          'python-wcmatch' 'python-enrich' 'ansible-core' 'yamllint' 'python-ansible-compat' 'python-filelock')
 makedepends=('git' 'python-pip' 'python-setuptools' 'python-setuptools-scm' 'python-toml')
 checkdepends=('python-pytest')
 optdepends=('ansible: check official ansible collections')
