@@ -2,13 +2,13 @@
 
 pkgname=zotero-translation-server-git
 pkgver=20220803.a30a15d
-pkgrel=2
+pkgrel=3
 pkgdesc='The Zotero translation server lets you use Zotero translators without the Zotero client.'
 arch=('x86_64')
 url='https://github.com/zotero/translation-server'
 license=('AGPL3')
-depends=('nodejs')
-makedepends=('npm' 'git')
+depends=('npm')
+makedepends=('git')
 _src_dir_1=translation-server
 _src_dir_2=translate
 _src_dir_3=translators
@@ -35,10 +35,6 @@ pkgver() {
 prepare() {
   cd ${_src_dir_1}
   sed -i '/"host"/s/0.0.0.0/127.0.0.1/' config/default.json
-}
-
-build() {
-  cd ${_src_dir_1}
   git submodule init
   git config submodule.modules/translate.url "$srcdir/translate"
   git config submodule.modules/translators.url "$srcdir/translators"
