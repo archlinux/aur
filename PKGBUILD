@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gmail-desktop
-_pkgver=3.0.0-alpha.34
+_pkgver=3.0.0-alpha.35
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 _electronversion=20
 pkgdesc="Unofficial Gmail desktop app"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('libnotify: desktop notifications'
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$_pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('d9fcc89e79b1ad5ee091adef8c6ff4284583db09c3e18e7284fe8c57a5d0e2cf'
+sha256sums=('f22b10215586d5d879ea98a1671e6c0aac4b1166cff765f197f8e21f2bd66998'
             'b3b54bafd3d986492a29f6200abe8857f877a7bdb27f3db02578bd43bc9ba131'
             '8c30e207fe88455f63f4c0b2ae9087a2ca2bbeaa68b9be244c31a9ec392373c4')
 
@@ -25,7 +25,6 @@ prepare() {
   # Disable husky
   sed -i '/husky/d' package.json
 
-  # yarn.lock is used
   rm -f package-lock.json
 }
 
