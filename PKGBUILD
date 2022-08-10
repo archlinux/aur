@@ -1,25 +1,22 @@
 pkgname=mathematica-documentation-zh-cn
-pkgver=13.0.1
+pkgver=13.1.0
 pkgrel=1
 pkgdesc="Mathematica Documentation (zh-cn)"
 url="http://www.wolfram.com/mathematica/"
 license=("proprietary")
 arch=('any')
 depends=('mathematica')
-makedepends=('cpio')
-source=('local://WLDocs_13.0.1_Chinese_MAC_CN.pkg')
-md5sums=('812b29049a0ffe9f6df039cd3d9469ee')
+source=("local://WLDocs_${pkgver}_Chinese_LINUX_CN.sh")
+md5sums=('5d3cb30bee1423e42ab3c16cd852e5fd')
 install=install.install
 
-prepare() {
-    cd $srcdir/zh-Hans-cn.pkg
-    mv Payload Payload.gz
-    gzip -d Payload.gz
-    cpio -i < Payload
-}
-
 package() {
-    mkdir -p $pkgdir/opt/Mathematica/Documentation/
-    cd $srcdir/zh-Hans-cn.pkg/Wolfram/Documentation/13.0/zh-hans-cn/Documentation
-    mv ./ChineseSimplified $pkgdir/opt/Mathematica/Documentation/
+    sh ${srcdir}/WLDocs_${pkgver}_Chinese_LINUX_CN.sh -- \
+            -execdir=${pkgdir}/usr/bin \
+            -targetdir=${pkgdir}/opt/Mathematica_doc \
+            -auto
+
+    mkdir -p ${pkgdir}/opt/Mathematica
+    mv ${pkgdir}/opt/Mathematica_doc/Documentation ${pkgdir}/opt/Mathematica/
+    rm -rf ${pkgdir}/opt/Mathematica_doc
 }

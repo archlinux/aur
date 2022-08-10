@@ -1,14 +1,13 @@
 pkgbase = mathematica-documentation-zh-cn
 	pkgdesc = Mathematica Documentation (zh-cn)
-	pkgver = 13.0.1
+	pkgver = 13.1.0
 	pkgrel = 1
 	url = http://www.wolfram.com/mathematica/
 	install = install.install
 	arch = any
 	license = proprietary
-	makedepends = cpio
 	depends = mathematica
-	source = local://WLDocs_13.0.1_Chinese_MAC_CN.pkg
-	md5sums = 812b29049a0ffe9f6df039cd3d9469ee
+	source = local://WLDocs_13.1.0_Chinese_LINUX_CN.sh
+	md5sums = 5d3cb30bee1423e42ab3c16cd852e5fd
 
 pkgname = mathematica-documentation-zh-cn
