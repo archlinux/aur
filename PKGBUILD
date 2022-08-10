@@ -2,7 +2,7 @@
 
 pkgname=zotero-translation-server-git
 pkgver=20220803.a30a15d
-pkgrel=1
+pkgrel=2
 pkgdesc='The Zotero translation server lets you use Zotero translators without the Zotero client.'
 arch=('x86_64')
 url='https://github.com/zotero/translation-server'
@@ -39,15 +39,22 @@ prepare() {
 
 build() {
   cd ${_src_dir_1}
-  git submodule update --init
+  git submodule init
+  git config submodule.modules/translate.url "$srcdir/translate"
+  git config submodule.modules/translators.url "$srcdir/translators"
+  git config submodule.modules/utilities.url "$srcdir/utilities"
+  git config submodule.modules/zotero-schema.url "$srcdir/zotero-schema"
+  git submodule update
+
   cd ../${_src_dir_2}
-  git submodule update --init
-  cd ../${_src_dir_3}
-  git submodule update --init
+  git submodule init
+  git config submodule.modules/utilities.url "$srcdir/utilities"
+  git submodule update
+
   cd ../${_src_dir_4}
-  git submodule update --init
-  cd ../${_src_dir_5}
-  git submodule update --init
+  git submodule init
+  git config submodule.resource/schema/global.url "$srcdir/zotero-schema"
+  git submodule update
 }
 
 package() {
