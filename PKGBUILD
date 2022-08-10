@@ -20,5 +20,4 @@ build() {
 package() {
     cd "${srcdir}/${_pkgbase}-REL${pkgver//\./_}"
     make DESTDIR="${pkgdir}" USE_PGXS=1 install
-    install -D -m644 /usr/share/licenses/postgresql/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
