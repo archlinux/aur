@@ -9,9 +9,8 @@ pkgdesc='The official GUI for MongoDB - Readonly Edition'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
-_electronpkg='electron13'
-depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release')
-makedepends=('git' 'nodejs' 'npm>=7.0.0' 'python' 'unzip')
+depends=('krb5' 'libsecret' 'lsb-release')
+makedepends=('git' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
@@ -19,22 +18,37 @@ source=(
 	'browserslist.diff'
 )
 sha512sums=('1e8a4a5271b66dba8b30a91a7bde4189b764d77156cc8f54a7e2629006ed4281542a8f0b53def3f9a939189da3593d8e4df20abc8c6468322e753b03268de36f'
-            '1b9bf0ba93cc979953dae1ee2b7e872ef2f8649a033aac5862f650a018b9450ac7a89a20e61718bb41203a206e2e4f193e7853539106fc2d491736645203c3fd'
+            '8d26820139d918c4e9da05b062a86865664218bfbf32b9f002995c30fa22b64e088f59263bee5f8fb4797565fe88b7daf48c383a572c0ced657dab0639e57b94'
             'c7ed26d911cea41cea65ede61d41c22c24296c88c4a21532d81b3092844cd65a866fe8e390570362eb7f0200a897a86e97387e8afb4e1ad8e8398c7265d529d2')
+
+# Set up dependencies based on if we're working with a beta release
+if [[ $_target =~ .*-beta ]]; then
+	_electronpkg='electron15'
+	makedepends+=('nodejs>=16.0.0')
+	makedepends+=('npm>=8.0.0')
+else
+	_electronpkg='electron13'
+	makedepends+=('nodejs')
+	makedepends+=('npm>=7.0.0')
+fi
+
+depends+=("$_electronpkg")
 
 _sourcedirectory="compass-$_pkgver"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 
-	# Force the newest version of electron-to-chromium
-	sed -E -i 's|(.*)("electron": ")|\1"electron-to-chromium": "'"$(npm view 'electron-to-chromium@latest' version)"'",\n\1\2|' 'packages/compass/package.json'
-
-	# Loosen node version restriction
-	sed -E -i 's|"node": "\^14.|"node": ">=14.|' 'packages/compass/package.json' 'package-lock.json'
+	# Loosen node version restriction on non-beta releases
+	if [[ ! $_target =~ .*-beta ]]; then
+		sed -E -i 's|"node": "\^14.|"node": ">=14.|' 'packages/compass/package.json' 'package-lock.json'
+	fi
 
 	# Set system Electron version for ABI compatibility
 	sed -E -i 's|("electron": ").*"|\1'"$(cat "/usr/lib/$_electronpkg/version")"'"|' {'configs','packages'}'/'*'/package.json'
+
+	# Force the newest version of electron-to-chromium
+	sed -E -i 's|(.*)("electron": ")|\1"electron-to-chromium": "'"$(npm view 'electron-to-chromium@latest' version)"'",\n\1\2|' 'packages/compass/package.json'
 
 	# Apply hadron-build fixes
 	patch --forward -p1 < "$srcdir/hadron-build.diff"
