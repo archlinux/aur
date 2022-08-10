@@ -8,3 +8,6 @@ User=zotero-translation-server
 WorkingDirectory=/usr/lib/node_modules/translation-server
 ExecStart=/usr/bin/npm start
 Environment=NODE_CONFIG_DIR=/etc/zotero-translation-server
+
+[Install]
+WantedBy=multi-user.target
