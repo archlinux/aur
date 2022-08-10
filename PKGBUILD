@@ -13,7 +13,7 @@ _pgo=true
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=101.0.1
+pkgver=103.0.2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
@@ -63,7 +63,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'xdg-desktop-portal: Screensharing with Wayland')
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
-_patchrev=258c46cb700250b2f131d441e6470e5a23ee8a4b
+_patchrev=f19750bc526806a962eba3682d09086b6bd5292c
 options=('!emptydirs' !lto)
 _patchurl=https://raw.githubusercontent.com/openSUSE/firefox-maintenance/$_patchrev
 _repo=https://hg.mozilla.org/mozilla-unified
@@ -111,9 +111,17 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         fix_csd_window_buttons.patch
         # Workaround #14
         fix-wayland-build.patch
-        # Fix building with cbdingen > 0.23.0 #22 MOZILLA#1773259
-        fix_ftbfs_cbindgen_gt_0.23.patch
-
+        # WebRTC - screen cast sync for Wayland
+        # MOZILLLA#1672944
+        https://src.fedoraproject.org/rpms/firefox/raw/85f5f771e92b10b6b34cf8da8b2dbb0f9f6562c8/f/libwebrtc-screen-cast-sync-1.patch
+        # Unbreak build with python-zstandard 0.18.0 #23
+        bump-pypip-zstandard-0.18.diff
+        # MOZILLA#1782988 #24
+        # Avoid build bustage when building against glibc 2.36 or newer. r=RyanVM
+        mozilla-bmo-1782988-0001.patch
+        # Fix use of arc4random_buf use in ping.cpp. r=gsvelto
+        mozilla-bmo-1782988-0002.patch
+        # end
 )
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -174,8 +182,17 @@ prepare() {
   # Workaround #14
   patch -Np1 -i "$srcdir"/fix-wayland-build.patch
 
-  # Fix building with cbdingen > 0.23.0 #22 MOZILLA#1773259
-  patch -p1 -i "$srcdir"/fix_ftbfs_cbindgen_gt_0.23.patch
+  # WebRTC - screen cast sync for Wayland
+  patch -Np1 -i "$srcdir"/libwebrtc-screen-cast-sync-1.patch
+
+  # Unbreak build with python-zstandard 0.18.0 #23
+  patch -Np1 -i "$srcdir"/bump-pypip-zstandard-0.18.diff
+
+  # Avoid build bustage when building against glibc 2.36 or newer. r=RyanVM
+  # #24 MOZILLA#1782988
+  patch -Np1 -i "$srcdir"/mozilla-bmo-1782988-0001.patch
+  # Fix use of arc4random_buf use in ping.cpp. r=gsvelto #24 MOZILLA#1782988
+  patch -Np1 -i "$srcdir"/mozilla-bmo-1782988-0002.patch
 
   if [ $_pgo ] ; then
     # Fix MOZILLA#1516803
@@ -311,10 +328,10 @@ md5sums=('SKIP'
          '4c23d9c0a691d70919beb1dafbbecbd3'
          '05bb69d25fb3572c618e3adf1ee7b670'
          'b386ac38ffb7e545b9473e516455a25f'
-         '1d5e9215530ef6778299b67dc6dba65e'
-         'd8990ad2a2478aa9b3d8d997337c1b11'
+         '2e2e0721f1c29b2ae786d8c6e34fa65f'
+         'b1bf4eb1f628c90ea07e6453231eb73c'
          '0a5733b7a457a2786c2dd27626a1bf88'
-         '3ff786d079642fcb0065b7e5c609d8c6'
+         '63ebf05aea29545081dab2cb023e2bba'
          'fe24f5ea463013bb7f1c12d12dce41b2'
          '3c383d371d7f6ede5983a40310518715'
          'dc47b8b0582ca8e97d68e5636b72853c'
@@ -328,4 +345,7 @@ md5sums=('SKIP'
          '31f950a94966287bfa6ccf03030781cc'
          'f49ac3b9f5146e33ce587e6b23eb1a86'
          '2cf74781f6b742d6b7e6f7251f49311a'
-         'dc17d808361a7e61e294e40a0bb8371e')
+         'c3e1629c8451ce7576f311a11030a1d1'
+         '29ce7c26f14c9c4169d88d1b05552189'
+         'c6f48b28f327da1ba646517c1c4fe466'
+         '3d0cca4f333d87fcb3a5faf4b1bc6770')

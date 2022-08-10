@@ -1,0 +1,37 @@
+
+# HG changeset patch
+# User Mike Hommey <mh+mozilla@glandium.org>
+# Date 1660077764 0
+# Node ID a61813bd9f0a0048b84a2c56a77a06eb5e269ab2
+# Parent  970ebbe54477a0e518bfee8aeddf487ad9bd4365
+Bug 1782988 - Fix use of arc4random_buf use in ping.cpp. r=gsvelto
+
+The code was probably never built before glibc 2.36, because before
+that, only Android and some BSDs had arc4random_buf, but none of those
+actually built this code.
+
+Differential Revision: https://phabricator.services.mozilla.com/D154024
+
+diff --git a/toolkit/crashreporter/client/ping.cpp b/toolkit/crashreporter/client/ping.cpp
+--- a/toolkit/crashreporter/client/ping.cpp
++++ b/toolkit/crashreporter/client/ping.cpp
+@@ -48,17 +48,17 @@ static string GenerateUUID() {
+     return "";
+   }
+ 
+   CFUUIDBytes bytes = CFUUIDGetUUIDBytes(uuid);
+   memcpy(&id, &bytes, sizeof(UUID));
+ 
+   CFRelease(uuid);
+ #elif defined(HAVE_ARC4RANDOM_BUF)  // Android, BSD, ...
+-  arc4random_buf(id, sizeof(UUID));
++  arc4random_buf(&id, sizeof(UUID));
+ #else                               // Linux
+   int fd = open("/dev/urandom", O_RDONLY);
+ 
+   if (fd == -1) {
+     return "";
+   }
+ 
+   if (read(fd, &id, sizeof(UUID)) != sizeof(UUID)) {
+
