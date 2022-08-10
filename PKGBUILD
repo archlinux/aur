@@ -8,7 +8,7 @@ url="https://github.com/eshrh/ames"
 license=('GPL3')
 depends=('pulseaudio' 'ffmpeg' 'maim' 'xdotool' 'libnotify' 'xclip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/eshrh/ames/archive/refs/tags/$pkgver.tar.gz")
-md5sums=('SKIP')
+sha256sums=('5da565b974880fd22639699baca12bd8d831e886f44a9a8af8fc0b0786dbae46')
 install="ames.install"
 
 package() {

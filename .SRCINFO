@@ -13,6 +13,6 @@ pkgbase = ames
 	depends = libnotify
 	depends = xclip
 	source = ames-v0.1.5.tar.gz::https://github.com/eshrh/ames/archive/refs/tags/v0.1.5.tar.gz
-	md5sums = SKIP
+	sha256sums = 5da565b974880fd22639699baca12bd8d831e886f44a9a8af8fc0b0786dbae46
 
 pkgname = ames
