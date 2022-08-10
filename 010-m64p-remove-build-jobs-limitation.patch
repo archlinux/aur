@@ -16,7 +16,7 @@
  
  mkdir -p $base_dir/mupen64plus-input-qt/build
  cd $base_dir/mupen64plus-input-qt/build
- qmake ../mupen64plus-input-qt.pro
+ qmake6 ../mupen64plus-input-qt.pro
 -make -j4
 +make
  if [[ $UNAME == *"MINGW"* ]]; then
@@ -34,7 +34,7 @@
 @@ -64,7 +64,7 @@ fi
  mkdir -p $base_dir/mupen64plus-gui/build
  cd $base_dir/mupen64plus-gui/build
- qmake ../mupen64plus-gui.pro
+ qmake6 ../mupen64plus-gui.pro
 -make -j4
 +make
  if [[ $UNAME == *"MINGW"* ]]; then
