@@ -1,33 +1,28 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=m64p-git
-pkgver=20220720.r6.gcfcbd24
+pkgver=20220808.r0.gfa634d0
 pkgrel=1
 pkgdesc='Mupen64Plus with custom plugins and Qt6 GUI (git version)'
 arch=('x86_64')
 url='https://m64p.github.io/'
 license=('GPL3')
-depends=('freetype2' 'hidapi' 'libgl' 'libpng' 'libsamplerate' 'qt6-base'
-         'qt6-websockets' 'sdl2' 'sdl2_net' 'vulkan-icd-loader' 'zlib'
-         'discord-game-sdk' 'hicolor-icon-theme')
+depends=('discord-game-sdk' 'libpng' 'qt6-base' 'qt6-websockets' 'sdl2'
+         'sdl2_net' 'vulkan-icd-loader' 'zlib' 'hicolor-icon-theme')
 optdepends=('p7zip: for 7z/zip and VRU support'
             'vosk-api: for VRU support (voice recognition unit)')
-makedepends=('git' 'cmake' 'nasm' 'python' 'zip' 'icoutils' 'vosk-api')
-provides=('m64p' 'mupen64plus-gui' 'mupen64plus-video-gliden64')
-conflicts=('m64p' 'mupen64plus-gui' 'mupen64plus-video-gliden64' 'mupen64plus')
-source=('git+https://github.com/loganmc10/m64p.git'
+makedepends=('git' 'cmake' 'zip' 'icoutils' 'vosk-api')
+provides=('m64p' 'mupen64plus-gui')
+conflicts=('m64p' 'mupen64plus-gui' 'mupen64plus')
+source=('git+https://github.com/m64p/m64p.git'
         '010-m64p-remove-build-jobs-limitation.patch'
-        '020-m64p-change-optimizations.patch'
-        '030-m64p-remove-bundled-discord-and-vosk.patch'
-        '040-m64p-fix-qmake.patch'
-        '050-m64p-fix-paths.patch'
-        '060-m64p-add-pie.patch'
+        '020-m64p-remove-bundled-discord-and-vosk.patch'
+        '030-m64p-fix-paths.patch'
+        '040-m64p-add-pie.patch'
         'm64p.desktop')
 sha256sums=('SKIP'
-            '038d8f811dd4632e87d4775f050dfaf0aea836c6ed4002b8ae1390b857e4e039'
-            '740b571b0cb26413c2f655c0063ad589569bb352a0ca8858c691ec81905157b5'
+            '53fa6d4b5449e5c06a384a12a4a2b38af510269e466db2d53ec7eb7b49d78bd3'
             'e9da860ae7adcdd0a1cc0155c232f81ca8399e9e855bd71fb51269edb708b1cc'
-            '4212cff6311f12ea2af5479a162a183d489dbb4107955c621a4440276a46cb76'
             'a483f645b0a2036485e90c3aeef2e1aa61724e4fbd1cd9a1f807a5aea47c595e'
             'a33a66612343035929eee5d6eb2acb342cc0c5a18a8e113aef83b28fb0f156c7'
             '8df4e8076d28a1bc44f41b0129a9935da9839e8a8cb9944206757e47da561808')
@@ -35,11 +30,9 @@ sha256sums=('SKIP'
 prepare() {
     icotool -x m64p/mupen64plus-gui/mupen64plus.ico -o m64p/mupen64plus-gui
     patch -d m64p -Np1 -i "${srcdir}/010-m64p-remove-build-jobs-limitation.patch"
-    patch -d m64p -Np1 -i "${srcdir}/020-m64p-change-optimizations.patch"
-    patch -d m64p -Np1 -i "${srcdir}/030-m64p-remove-bundled-discord-and-vosk.patch"
-    patch -d m64p -Np1 -i "${srcdir}/040-m64p-fix-qmake.patch"
-    patch -d m64p -Np1 -i "${srcdir}/050-m64p-fix-paths.patch"
-    patch -d m64p -Np1 -i "${srcdir}/060-m64p-add-pie.patch"
+    patch -d m64p -Np1 -i "${srcdir}/020-m64p-remove-bundled-discord-and-vosk.patch"
+    patch -d m64p -Np1 -i "${srcdir}/030-m64p-fix-paths.patch"
+    patch -d m64p -Np1 -i "${srcdir}/040-m64p-add-pie.patch"
     rm -rf m64p/mupen64plus-{gui/discord,input-qt/vosk}
 }
 
