@@ -1,6 +1,6 @@
 pkgbase = glslviewer-git
 	pkgdesc = Console-based GLSL Sandbox for 2D/3D shaders
-	pkgver = r1470.99a990a
+	pkgver = 2.1.2.r77.g99a990a
 	pkgrel = 1
 	url = https://github.com/patriciogonzalezvivo/glslViewer
 	arch = i686

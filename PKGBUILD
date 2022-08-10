@@ -2,7 +2,7 @@
 # Contributor: Agorgianitis Loukas <agorglouk@gmail.com>
 
 pkgname=glslviewer-git
-pkgver=r1470.99a990a
+pkgver=2.1.2.r77.g99a990a
 pkgrel=1
 pkgdesc="Console-based GLSL Sandbox for 2D/3D shaders"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ md5sums=('SKIP'
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
