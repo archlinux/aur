@@ -2,7 +2,7 @@
 
 _pkgname=freetds
 pkgname=${_pkgname}-krb5
-pkgver=1.3.3
+pkgver=1.3.12
 pkgrel=1
 pkgdesc='Library for accessing Sybase and MS SQL Server databases with kerberos support.'
 url='http://www.freetds.org'
@@ -15,7 +15,7 @@ backup=('etc/freetds/freetds.conf'
         'etc/freetds/locales.conf'
         'etc/freetds/pool.conf')
 source=("ftp://ftp.freetds.org/pub/freetds/stable/${_pkgname}-$pkgver.tar.gz")
-md5sums=('308586224d8d929488f35fdaa06f9ce6')
+md5sums=('26fd85c844d42f2d87998b46abbd5015')
 
 build() {
   cd ${_pkgname}-$pkgver
