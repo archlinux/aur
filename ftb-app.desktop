@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=FTB Desktop App
+Exec=/usr/bin/ftb-app
+Icon=ftb-app
+Categories=Game;
