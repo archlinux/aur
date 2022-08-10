@@ -15,6 +15,7 @@ pkgbase = ulauncher-git
 	depends = libnotify
 	depends = libkeybinder3
 	depends = libwnck3
+	depends = python-cairo
 	depends = python-gobject
 	depends = python-levenshtein
 	optdepends = libappindicator-gtk3: tray icon
