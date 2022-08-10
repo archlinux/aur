@@ -4,7 +4,10 @@ pkgbase = openbve-bin
 	pkgrel = 1
 	url = https://github.com/leezer3/OpenBVE
 	arch = x86_64
+	license = custom:public domain
 	depends = mono
+	provides = openbve
+	conflicts = openbve
 	source = https://github.com/leezer3/OpenBVE/releases/download/1.8.4.0/OpenBVE-1.8.4.0.deb
 	sha256sums = 938dd6667bfde61afd2debab54dd2c8d63dc95fcecffba8a5b384efc9a56fbd9
 

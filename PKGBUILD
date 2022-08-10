@@ -7,8 +7,10 @@ pkgrel=1
 pkgdesc="Realistic 3D train/railway simulator"
 arch=('x86_64')
 url="https://github.com/leezer3/OpenBVE"
-license=()
+license=('custom:public domain')
 depends=('mono')
+provides=('openbve')
+conflicts=('openbve')
 source=("https://github.com/leezer3/OpenBVE/releases/download/${pkgver}/OpenBVE-${pkgver}.deb")
 sha256sums=('938dd6667bfde61afd2debab54dd2c8d63dc95fcecffba8a5b384efc9a56fbd9')
 
