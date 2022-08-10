@@ -4,7 +4,7 @@
 _pkgname=rstanarm
 _pkgver=2.21.3
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=2.21.3
 pkgrel=1
 pkgdesc='Bayesian Applied Regression Modeling via Stan'
 arch=('x86_64')
@@ -46,8 +46,6 @@ source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('e9f2d3761b8e4f14a6690beb633b08633cba7269ac8b969aedaa12844d1a32a7')
 
 build() {
-  # restrict the usage of memory and cpu, 1 threads usually consumes 2 GiB memory.
-  export MAKE="make -j5" 
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
