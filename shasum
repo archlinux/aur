@@ -1,0 +1,4 @@
+#! /bin/sh
+
+pkgver=$(grep pkgver PKGBUILD | head -n1 | cut -d= -f2)
+wget "https://github.com/yne/dzr/archive/refs/tags/$pkgver.tar.gz" -qO - 2>/dev/null | sha256sum | cut -d\  -f1 | tr -d "\n" | xclip -f -sel clip
