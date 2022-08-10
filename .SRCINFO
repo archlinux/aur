@@ -1,0 +1,14 @@
+pkgbase = nodejs-acme-client
+	pkgdesc = A simple and unopinionated ACME client.
+	pkgver = 4.2.5
+	pkgrel = 1
+	url = https://github.com/publishlab/node-acme-client
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs<18.1.0
+	noextract = acme-client-4.2.5.tgz
+	source = https://registry.npmjs.org/acme-client/-/acme-client-4.2.5.tgz
+	sha256sums = 4b5f4838e937e38f44ab80d80b2452f774a1d61c5fcbc2fe85303faf9b9fc0d2
+
+pkgname = nodejs-acme-client
