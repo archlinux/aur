@@ -3,7 +3,7 @@
 _projectname='ppx_sexp_message'
 pkgname="ocaml-$_projectname"
 pkgver='0.15.0'
-pkgrel='2'
+pkgrel='3'
 epoch='1'
 pkgdesc='A ppx rewriter for easy construction of s-expressions'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
