@@ -1,13 +1,15 @@
 # Maintainer: Andrii Zymohliad <azymohliad@pm.me>
 pkgname=watchmate-git
-pkgver=v0.1.0.r0.7ceee2e
-pkgrel=1
+pkgver=v0.1.0
+pkgrel=2
 pkgdesc='InfiniTime smart watch companion app'
 arch=('any')
 url='https://gitlab.com/azymohliad/watchmate'
 license=('GPL')
-depends=('gtk4' 'bluez')
-makedepends=('git' 'cargo' 'gcc')
+depends=('gtk4' 'libadwaita' 'bluez')
+makedepends=('git' 'cargo')
+provides=('watchmate')
+conflicts=('watchmate')
 source=("$pkgname::git+https://gitlab.com/azymohliad/watchmate.git")
 md5sums=('SKIP')
 
