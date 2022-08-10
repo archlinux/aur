@@ -2,7 +2,7 @@
 
 _gemname=test-queue
 pkgname=ruby-${_gemname}
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="parallel test runner for CI environments"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=(rubygems ruby-rdoc git)
 url=https://github.com/tmm1/test-queue
 license=(MIT)
 options=(!emptydirs)
-source=(git+https://github.com/tmm1/${_gemname}.git?tag=v${pkgver})
+source=(git+https://github.com/tmm1/${_gemname}.git#tag=v${pkgver})
 sha256sums=('SKIP')
 
 build() {

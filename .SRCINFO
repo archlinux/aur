@@ -1,6 +1,6 @@
 pkgbase = ruby-test-queue
 	pkgdesc = parallel test runner for CI environments
-	pkgver = 0.4.2
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/tmm1/test-queue
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = ruby-test-queue
 	makedepends = git
 	depends = ruby
 	options = !emptydirs
-	source = git+https://github.com/tmm1/test-queue.git?tag=v0.4.2
+	source = git+https://github.com/tmm1/test-queue.git#tag=v0.5.0
 	sha256sums = SKIP
 
 pkgname = ruby-test-queue
