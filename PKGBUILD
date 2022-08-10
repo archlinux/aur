@@ -2,7 +2,7 @@
 _projectname='sexplib'
 pkgname="ocaml-$_projectname"
 pkgver='0.15.1'
-pkgrel='1'
+pkgrel='2'
 epoch='1'
 pkgdesc='Library for serializing OCaml values to and from S-expressions'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
