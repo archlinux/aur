@@ -4,7 +4,7 @@
 # Contributor: Emanuel Fontelles ("emanuelfontelles") <emanuelfontelles@hotmail.com>
 
 pkgname=apache-spark
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=0
 pkgdesc="Apache Spark is a unified analytics engine for large-scale data processing."
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=('python2: python2 support for pyspark'
             'hadoop: support for running on YARN')
 
 install=apache-spark.install
-source=("https://archive.apache.org/dist/spark/spark-${pkgver}/spark-${pkgver}-bin-hadoop3.2.tgz"
+source=("https://archive.apache.org/dist/spark/spark-${pkgver}/spark-${pkgver}-bin-hadoop3.tgz"
         'apache-spark-master.service'
         'apache-spark-slave@.service'
         'spark-env.sh'
@@ -73,6 +73,13 @@ package() {
         ln -sf "/var/lib/apache-spark/work" .
 }
 sha256sums=('a78c30450ac862338dbc77e6e97bae69569e2c30615efa082d28d47c0781afef'
+            'e4333e4a484543786e82d1f7af144ad99d9cc666d2e2742f30b5120996f32183'
+            'e656ef5599d095472641e6fd58e9046d7db3f983b334e9a695e278ba799afc5b'
+            '0e9c3721cfac02e3b67248e1dfe2def49a9fc6408092b291b1c67e89a9c130cb'
+            '6ded9f6b31b8be5fa782fc18ec0991eb7cb18fbea65b8e7560587c3fbe7f20f7'
+            '1134342330c7680e7d9847cc4de2c0f97ecd55ee7db1c6068bc45219b5838e98'
+            '4e1159b25d0f6f3dcdf72d1a5f186e5693a5e9d8690ad1600a9e44aa43022e29')
+sha256sums=('306b550f42ce1b06772d6084c545ef8448414f2bf451e0b1175405488f2a322f'
             'e4333e4a484543786e82d1f7af144ad99d9cc666d2e2742f30b5120996f32183'
             'e656ef5599d095472641e6fd58e9046d7db3f983b334e9a695e278ba799afc5b'
             '0e9c3721cfac02e3b67248e1dfe2def49a9fc6408092b291b1c67e89a9c130cb'
