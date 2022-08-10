@@ -1,11 +1,11 @@
 pkgbase = lima-bin
 	pkgdesc = Linux virtual machines, typically on macOS, for running containerd.
-	pkgver = 0.11.1
+	pkgver = 0.11.3
 	pkgrel = 1
 	url = https://github.com/lima-vm/lima
 	arch = x86_64
 	license = MIT
-	source = https://github.com/lima-vm/lima/releases/download/v0.11.1/lima-0.11.1-Linux-x86_64.tar.gz
-	sha256sums = 6c021b4ff579d5df33eff8d03a97073e3baf36e90c03d2a772ae3f11c7d78432
+	source = https://github.com/lima-vm/lima/releases/download/v0.11.3/lima-0.11.3-Linux-x86_64.tar.gz
+	sha256sums = 00a70555cd63906510bea5d7c2b4f140256ff06a6eae98ff2793d1d5822fe02f
 
 pkgname = lima-bin
