@@ -2,7 +2,7 @@
 # Co-Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=steamtinkerlaunch
-pkgver=10.0
+pkgver=11.0
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
@@ -37,14 +37,14 @@ optdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9337bf239a00c7fe1ccc53b33311391f8bb47b1865d8bbff8b964ade557537b4')
+sha256sums=('4a178cce658c51f6b4b77cd0d078485bcf6793db0ff7393b3c6ec35e14762e87')
 
 package() {
     cd "$srcdir/$pkgname-${pkgver}"
     install -Dm755 "${pkgname}" -t "$pkgdir/usr/bin"
 
     install -d "$pkgdir/usr/share/${pkgname}"
-    cp -r categories eval guicfgs lang misc "$pkgdir/usr/share/${pkgname}"
+    cp -r collections eval guicfgs lang misc "$pkgdir/usr/share/${pkgname}"
 
     install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
     install -Dm644 "misc/${pkgname}.desktop" -t "$pkgdir/usr/share/applications"
