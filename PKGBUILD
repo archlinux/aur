@@ -2,9 +2,9 @@
 # Contributor: Stella <jens300304@gmail.com>
 
 pkgname=python-slider
-url="https://llllllllll.github.io/slider/index.html"
+url="https://github.com/llllllllll/slider"
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities for working with osu! files and data."
 arch=('any')
 license=('LGPL3')
