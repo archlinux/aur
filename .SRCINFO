@@ -1,6 +1,6 @@
 pkgbase = cavecube
 	pkgdesc = An in-development Minecraft/Infiniminer clone
-	pkgver = 0.0.4
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/PQCraft/CaveCube
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = cavecube
 	depends = glibc
 	depends = glfw
 	conflicts = cavecube-bin
-	source = cavecube-0.0.4-1.tar.gz::https://github.com/PQCraft/CaveCube/archive/refs/tags/0.0.4.tar.gz
+	source = cavecube-0.1.0-1.tar.gz::https://github.com/PQCraft/CaveCube/archive/refs/tags/0.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = cavecube

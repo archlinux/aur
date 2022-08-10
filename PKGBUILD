@@ -2,7 +2,7 @@
 
 pkgname=cavecube
 ghpkgname=CaveCube
-pkgver=0.0.4
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="An in-development Minecraft/Infiniminer clone"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
