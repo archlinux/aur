@@ -3,7 +3,7 @@
 _projectname='ppx_deriving'
 pkgname="ocaml-$_projectname"
 pkgver='5.2.1'
-pkgrel='3'
+pkgrel='4'
 epoch='1'
 pkgdesc='Type-driven code generation for OCaml'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
