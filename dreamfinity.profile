@@ -6,7 +6,7 @@ include dreamfinity.local
 # Persistent global definitions
 include globals.local
 
-# Idk what it executes in these directories
+# Idk what does it executes in these directories
 ignore noexec ${HOME}
 ignore noexec /tmp
 
@@ -46,7 +46,7 @@ private-dev
 private-opt Dreamfinity
 private-tmp
 
-# If you're came here with an idea to ignore these to allow launcher to place game files in another directory, STOP
+# If you came here with an idea to ignore these to allow launcher to place game files in another directory, STOP
 # Add this to your dreamfinity.local: 
 # noblacklist /path/to/game/files
 # read-write /path/to/game/files
