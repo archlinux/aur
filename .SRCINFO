@@ -1,7 +1,7 @@
 pkgbase = veracrypt-inyourlanguage
 	pkgdesc = Disk encryption with strong security based on TrueCrypt 7.1a. Choose one of 40+ languages for installation.
 	pkgver = 1.25.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.veracrypt.fr
 	arch = x86_64
 	license = Apache 2.0
@@ -23,9 +23,11 @@ pkgbase = veracrypt-inyourlanguage
 	conflicts = veracrypt-trans
 	source = https://launchpad.net/veracrypt/trunk/1.25.9/+download/VeraCrypt_1.25.9_Source.tar.bz2
 	source = select_lang.sh
-	source = wx-3.2-size-warnings.patch
+	source = veracrypt_starter.sh
+	source = veracrypt.desktop
 	sha512sums = 9b11c8d8e85770ae05960fef8fc9639731e4f9caf0cc4e50bc8c9c92b45d44c80eaeff483d3ab048fd6a82cc873a6027820e21abde7ddb92b3c368f85b837cf2
-	sha512sums = SKIP
-	sha512sums = SKIP
+	sha512sums = 1c6b79ef584958f803a2f2a6268c301ee095db4b2f9f90503cd20dcc9a4558bc27e9bc95f6f73d3c6d116c35eeeb6661b82f6c33c6368f71c35d234efbf98737
+	sha512sums = 631b0a50154e8c99ba8143a27a0146e24aaec34a64fa08be168ea0bce5e0b0b8b3812b880305cd94528638484500c114921c92e164b2acd07440fe689b752d25
+	sha512sums = 31008f51fa85a7bc2542eeefc4e0ba813a5327ce5c0f6e5926de9ca79ec5b9b312ec998984be60e7d623e1f8722a228f78c659d2e4dacee89f0d5abcb1ade7ff
 
 pkgname = veracrypt-inyourlanguage

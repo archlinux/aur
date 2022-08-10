@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=VeraCrypt
+GenericName=VeraCrypt volume manager
+Comment=Create and mount VeraCrypt encrypted volumes
+Icon=veracrypt.xpm
+Exec=bash -c /usr/bin/veracrypt_starter.sh
+Categories=Security;Utility;Filesystem
+Keywords=encryption,filesystem
+Terminal=false
+MimeType=application/x-veracrypt-volume;application/x-truecrypt-volume;
