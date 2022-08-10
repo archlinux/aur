@@ -1,7 +1,7 @@
 pkgbase = r-metabma
 	pkgdesc = Bayesian Model Averaging for Random and Fixed Effects Meta-Analysis
 	pkgver = 0.6.7
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=metaBMA
 	arch = x86_64
 	license = GPL
