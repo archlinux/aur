@@ -1,0 +1,15 @@
+pkgbase = cmus-rpc-rs
+	pkgdesc = A Discord Rich Presence for cmus player using rust 🦀💙
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/anas-elgarhy/cmus-rpc-rs
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = cmus
+	provides = cmus-rpc-rs
+	replaces = cmus-rpc-rs
+	source = cmus-rpc-rs-0.1.3.tar.gz::https://static.crates.io/crates/cmus-rpc-rs/cmus-rpc-rs-0.1.3.crate
+	sha256sums = bb614079c3f144b71d5f2a5f22bb672edf5fe431fdfd20aa18b91e9624b71502
+
+pkgname = cmus-rpc-rs
