@@ -10,7 +10,7 @@
 
 pkgname=vagrant
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
 url="https://vagrantup.com"
@@ -47,7 +47,7 @@ package() {
   INSTALLERS_DIR="$srcdir"/vagrant-installers/substrate
   EMBEDDED_DIR="$pkgdir"/opt/vagrant/embedded
 
-  install -d "$pkgdir"/usr/{bin,share/bash-completion/completions}
+  install -d "$pkgdir"/usr/{bin,share/bash-completion/completions,share/zsh/site-functions}
   install -Dm644 "$INSTALLERS_DIR"/common/gemrc "$EMBEDDED_DIR"/etc/gemrc
 
   echo "{ \"vagrant_version\": \"$pkgver\" }" > "$EMBEDDED_DIR"/manifest.json
@@ -63,6 +63,9 @@ package() {
 
   install -Dm644 contrib/bash/completion.sh \
     "$pkgdir"/usr/share/bash-completion/completions/$pkgname
+
+  install -Dm644 contrib/zsh/_vagrant \
+    "$pkgdir"/usr/share/zsh/site-functions/_vagrant
 
   install -Dm644 contrib/vim/vagrantfile.vim \
     "$pkgdir"/usr/share/vim/vimfiles/ftdetect/vagrantfile.vim
