@@ -2,7 +2,7 @@
 _projectname='logs'
 pkgname="ocaml-$_projectname"
 pkgver='0.7.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Logging infrastructure for OCaml'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://erratique.ch/software/$_projectname"
