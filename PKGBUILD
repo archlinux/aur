@@ -10,7 +10,7 @@ arch=('x86_64')
 license=('GPL-3.0-or-later')
 provides=('chwp')
 conflicts=('chwp')
-source=("${_pkgname}::${url}/releases/download/v$pkgver/${_pkgname}-linux-x86_64")
+source=("${_pkgname}::${url}/releases/download/v$pkgver/${_pkgname}-linux-x86-64")
 noextract=('${_pkgname}-linux-x86_64')
 sha1sums=('SKIP')
 
