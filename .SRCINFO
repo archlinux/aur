@@ -1,5 +1,5 @@
 pkgbase = dotnet-core-3.1-bin
-	pkgver = 3.1.27.sdk421
+	pkgver = 3.1.28.sdk422
 	pkgrel = 1
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
@@ -7,12 +7,12 @@ pkgbase = dotnet-core-3.1-bin
 	arch = aarch64
 	license = MIT
 	options = staticlibs
-	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/9de47381-6c20-4f80-a907-261d35f6157d/bab9b2f375d647e22a14251529328868/dotnet-sdk-3.1.421-linux-x64.tar.gz
-	sha512sums_x86_64 = 9f592db89ddfdfa3254d59c39f227109e0f87f156a8ab00595bcf332fdebd3e873fb9e07c875905aaa8ba5022e6e551e2d9516cfb855d04ec781313521595431
-	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/564f08f3-230e-4476-8ebe-7e1f02dceae4/9da37442bde3f45300c65e9f71e1b24a/dotnet-sdk-3.1.421-linux-arm.tar.gz
-	sha512sums_armv7h = 412b30ee45554de69844e4297354680fdc5111c270b5e41af73db212117ee101878b87eb4592bda4c314ec0d7406ba8ab449d83466267f78198ce09fc32ef425
-	source_aarch64 = https://download.visualstudio.microsoft.com/download/pr/3aa1ef77-157e-4c54-bdc6-1cf589f3e3d1/590f24f95d808144bc18caa0c45b7d9f/dotnet-sdk-3.1.421-linux-arm64.tar.gz
-	sha512sums_aarch64 = c584642469343c2c54fa02a7157009fa36bae9b304512db0a2b0069f71593ee2ba47070896212def0541460f37bf1b0a478b914e08a2c78b985cb2981e5ab6c6
+	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/4fd83694-c9ad-487f-bf26-ef80f3cbfd9e/6ca93b498019311e6f7732717c350811/dotnet-sdk-3.1.422-linux-x64.tar.gz
+	sha512sums_x86_64 = 690759982b12cce7a06ed22b9311ec3b375b8de8600bd647c0257c866d2f9c99d7c9add4a506f4c6c37ef01db85c0f7862d9ae3de0d11e9bec60958bd1b3b72c
+	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/e5ec7845-008a-4b7d-a247-c314f2407b8d/9117e05fa19f0217a030666df6b6eb9d/dotnet-sdk-3.1.422-linux-arm.tar.gz
+	sha512sums_armv7h = 9cbccaf303f693657f797ae81eec2bd2ea55975b7ae71a8add04175a0104545208fa2f9c536b97d91fa48c6ea890678eb0772a448977bce4acbc97726ac47f83
+	source_aarch64 = https://download.visualstudio.microsoft.com/download/pr/fdf76122-e9d5-4f66-b96f-4dd0c64e5bea/d756ca70357442de960db145f9b4234d/dotnet-sdk-3.1.422-linux-arm64.tar.gz
+	sha512sums_aarch64 = 3eb7e066568dfc0135f2b3229d0259db90e1920bb413f7e175c9583570146ad593b50ac39c77fb67dd3f460b4621137f277c3b66c44206767b1d28e27bf47deb
 
 pkgname = dotnet-runtime-3.1-bin
 	pkgdesc = The .NET Core runtime
