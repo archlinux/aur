@@ -39,12 +39,12 @@ sha256sums=('4e0846207bf10311de43451bc99309086fce7990aaf54bf3038608b1981afbe7'
 backup=('etc/apache-spark/spark-env.sh')
 
 package() {
-        cd "$srcdir/spark-${pkgver}-bin-hadoop3.2"
+        cd "$srcdir/spark-${pkgver}-bin-hadoop3"
 
         install -d "${pkgdir}/usr/bin" "${pkgdir}/opt" "${pkgdir}/var/log/apache-spark" "${pkgdir}/var/lib/apache-spark/work"
         chmod 2775 "${pkgdir}/var/log/apache-spark" "${pkgdir}/var/lib/apache-spark/work"
 
-        cp -r "${srcdir}/spark-${pkgver}-bin-hadoop3.2" "${pkgdir}/opt/apache-spark/"
+        cp -r "${srcdir}/spark-${pkgver}-bin-hadoop3" "${pkgdir}/opt/apache-spark/"
 
         cd "${pkgdir}/usr/bin"
         for binary in beeline pyspark sparkR spark-class spark-shell find-spark-home spark-sql spark-submit load-spark-env.sh; do
@@ -65,7 +65,7 @@ package() {
         for script in run-master.sh run-slave.sh spark-daemon-run.sh; do
             install -Dm755 "${srcdir}/${script}" "${pkgdir}/opt/apache-spark/sbin/${script}"
         done
-        install -Dm644 "${srcdir}/spark-${pkgver}-bin-hadoop3.2/conf"/* "${pkgdir}/etc/apache-spark"
+        install -Dm644 "${srcdir}/spark-${pkgver}-bin-hadoop3/conf"/* "${pkgdir}/etc/apache-spark"
 
         cd "${pkgdir}/opt/apache-spark"
         mv conf conf-templates
