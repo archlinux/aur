@@ -1,7 +1,7 @@
 pkgbase = python-niaaml
 	pkgdesc = Python automated machine learning framework
 	pkgver = 1.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lukapecnik/NiaAML
 	arch = any
 	license = MIT
