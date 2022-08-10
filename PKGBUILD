@@ -2,7 +2,7 @@
 # Original work by: Igor Moura <imp2@cin.ufpe.br>
 pkgname=freecad-weekly-appimage
 pkgver=0.20_29997
-pkgrel=1
+pkgrel=2
 pkgdesc="A general purpose 3D CAD modeler"
 arch=('x86_64')
 url="https://www.freecadweb.org/"
@@ -12,7 +12,7 @@ provides=('freecad')
 conflicts=('freecad')
 options=('!strip')
 noextract=("freecad-${pkgver}.AppImage")
-source=("freecad-0.20_29997.AppImage::https://github.com/FreeCAD/FreeCAD-Bundle/releases/download/weekly-builds/FreeCAD_weekly-builds-29997-2022-08-07-conda-Linux-x86_64-py310.AppImage"
+source=("freecad-0.20_29997.AppImage::https://github.com/FreeCAD/FreeCAD-Bundle/releases/download/weekly-builds/FreeCAD_weekly-builds-29997-2022-08-10-conda-Linux-x86_64-py310.AppImage"
   "freecad.sh"
   "freecad_weekly.desktop.patch")
 
@@ -33,9 +33,9 @@ package() {
   install -Dm755 "${srcdir}/freecad.sh" "${pkgdir}/usr/bin/freecad"
 
   install -dm755 "${pkgdir}/usr/share/"
-  install -dm755 "${pkgdir}/usr/share/mime/application"
+  install -dm755 "${pkgdir}/usr/share/mime/packages"
   cp -r --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
-  cp --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/mime/packages/org.freecadweb.FreeCAD.xml" "${pkgdir}/usr/share/mime/application/x-extension-fcstd.xml"
+  cp --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/mime/packages/org.freecadweb.FreeCAD.xml" "${pkgdir}/usr/share/mime/packages/"
 
   install -Dm644 "${srcdir}/squashfs-root/freecad_weekly.desktop" "${pkgdir}/usr/share/applications/freecad_weekly.desktop"
 }
