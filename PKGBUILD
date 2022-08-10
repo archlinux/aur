@@ -12,18 +12,12 @@ depends=(sdl2 qt6-base)
 optdepends=()
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=(git+"$url".git duckstation-cubeb-doxygen-out.patch)
-sha256sums=('SKIP'
-            'e1b264d1037659702691094d44d3221070edeb2c540ad79dc87e1c4effe994ad')
+source=(git+"$url".git)
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd "${srcdir}/${pkgname%-git}"
-    patch -uNp1 -i ../duckstation-cubeb-doxygen-out.patch
 }
 
 build() {
