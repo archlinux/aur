@@ -1,6 +1,6 @@
 pkgbase = lwks-beta
 	pkgdesc = Lightworks is a professional video editing suite
-	pkgver = 2022.2.133542
+	pkgver = 2022.3.136237
 	pkgrel = 1
 	url = http://www.lwks.com/
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = lwks-beta
 	conflicts = lightworks
 	conflicts = lwks
 	options = !strip
-	source = https://lwks.s3.amazonaws.com/betas/public/lightworks/2022.2%20Beta%20Revision%20133542%20%2811th%20March%29/Lightworks-2022.2-Beta-133542.deb
-	sha512sums = 94fbe95b2fa793472f11432c68f7a1de6966bd4ab98cb213d8da4b41d079e313229b6ff904de80ac5527c0173a3ed24768b854663b361dd06a112ed55b28f802
+	source = https://lwks.s3.amazonaws.com/betas/public/lightworks/2022.3%20Beta%20Revision%20136237%20%289th%20August%29/Lightworks-2022.3-Beta-136237.deb
+	sha512sums = d63455809848f177028968373e7c087068be3724c9c01eb2d87b934565d2b7f6d39ad4a210ca5a5b6ce03ca23155d07693bdddfdc2b7c4e8a5059fe843a4787b
 
 pkgname = lwks-beta
