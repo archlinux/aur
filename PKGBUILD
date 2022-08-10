@@ -3,7 +3,7 @@
 _projectname='ppx_inline_test'
 pkgname="ocaml-$_projectname"
 pkgver='0.15.0'
-pkgrel='2'
+pkgrel='3'
 epoch='1'
 pkgdesc='Syntax extension for writing in-line tests in ocaml code'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
