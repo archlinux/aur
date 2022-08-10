@@ -8,19 +8,21 @@
 # ```
 
 pkgname=snowflake-client
-pkgver=1.2.18
+pkgver=1.2.23
 pkgrel=1
 epoch=1
 pkgdesc="Snowflake Database command line client (snowsql)"
 arch=('x86_64')
 url="http://www.snowflake.net/"
-license=('custom: commercial')
-depends=('gcc-libs')
+license=('custom:commercial')
+depends=('gcc-libs'
+         # Needed for libcrypt.so.1
+         'libxcrypt-compat')
 source=(
     "${pkgname}-${pkgver}.bash::https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/$(echo ${pkgver} | awk -F. '{print $1 "." $2}')/linux_x86_64/snowsql-${pkgver}-linux_x86_64.bash"
     "${pkgname}-${pkgver}.bash.sig::https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/$(echo ${pkgver} | awk -F. '{print $1 "." $2}')/linux_x86_64/snowsql-${pkgver}-linux_x86_64.bash.sig"
 )
-sha256sums=('f288b8b8192dd2e6d25ff1c0120f0f4a6c051992831e272ce19fdc408b0f16aa'
+sha256sums=('e0222ed5f75a0e678a1d9a5240dc51a300b8e364d5f209040b43b7afbdbee06d'
             'SKIP')
 
 package() {
