@@ -6,7 +6,6 @@ pkgbase = arduino-ide-beta-bin
 	install = arduino-ide.install
 	arch = x86_64
 	license = AGPL3
-	makedepends = gendesk
 	depends = libxkbfile
 	depends = libxss
 	depends = nss

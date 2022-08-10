@@ -15,7 +15,7 @@ optdepends=('libusb: Needed for some libraries or boards'
             'usbutils: Needed for stm32 boards using st-link'
             'libusb-compat: Needed for the `micronucleus` cli utility'
             'python-pyserial: Needed for esptool')
-makedepends=(gendesk)
+makedepends=()
 provides=(arduino-ide)
 conflicts=(arduino-ide)
 install=arduino-ide.install
@@ -26,7 +26,7 @@ sha256sums=('082443efe0f7e300a92d5e8f71063c91247acd9e4276645b7f9e4dba71601bf8'
             '4137981bcb4057c2e0092f22faea287767f102e0b48497d22cd55e8d6988e4ac')
 
 prepare() {
-	gendesk -f --pkgname arduino-ide --name 'Arduino IDE' --pkgdesc ${pkgdesc} --genericname 'Arduino IDE' --mimetypes 'text/x-arduino' --categories 'Development;IDE;Electronics' --custom 'StartupWMClass=Arduino IDE' --comment 'Open-source electronics prototyping platform v2'
+	echo -e "[Desktop Entry] \nType=Application \nName=Arduino IDE v2 \nGenericName=Arduino IDE v2 \nComment=Open-source electronics prototyping platform \nExec=arduino-ide \nIcon=arduino-ide-v2 \nTerminal=false \nMimeType=text/x-arduino; \nCategories=Development;IDE;Electronics; \nKeywords=embedded electronics;avr;microcontroller; \nStartupWMClass=Arduino IDE" > arduino-ide-v2.desktop
 }
 
 package() {
@@ -36,6 +36,6 @@ package() {
 	cp -r "arduino-ide" "$pkgdir/opt/arduino-ide"
 	install -dm755 "$pkgdir/usr/bin"
 	ln -s "/opt/arduino-ide/arduino-ide" "$pkgdir/usr/bin/arduino-ide"
-	install -Dm644 "arduino-ide.desktop" "$pkgdir/usr/share/applications/arduino-ide.desktop"
-	install -Dm644 "arduino.svg" "$pkgdir/usr/share/pixmaps/arduino-ide.svg"
+	install -Dm644 "arduino-ide-v2.desktop" "$pkgdir/usr/share/applications/arduino-ide-v2.desktop"
+	install -Dm644 "arduino.svg" "$pkgdir/usr/share/pixmaps/arduino-ide-v2.svg"
 }
