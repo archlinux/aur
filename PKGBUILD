@@ -1,21 +1,21 @@
 # Maintainer: workonfire <kolucki62@gmail.com>
 
 pkgname=gadu-gadu
-pkgver=12.4.106.12187
+pkgver=12.4.109.12193
 pkgrel=1
 pkgdesc="A Polish instant messaging client using a proprietary protocol."
 arch=('i686' 'x86_64')
 url="https://gg.pl"
 license=('custom')
 depends=('gtk2' 'alsa-lib' 'dbus-glib' 'libxt')
-source=("${pkgname}".desktop::https://raw.githubusercontent.com/workonfire/PKGBUILDs/master/"${pkgname}"/"${pkgname}".desktop
-        "${pkgname}"::https://raw.githubusercontent.com/workonfire/PKGBUILDs/master/"${pkgname}"/"${pkgname}")
+source=("${pkgname}".desktop
+        "${pkgname}")
 source_x86_64=(gg_64bit_"${pkgver}".tar.bz2::http://im-updates.gg.pl/phoenix/app/release/"${pkgver}"/standard/Linux_x86_64-gcc3/pl/gg_64bit.tar.bz2)
 source_i686=(gg_32bit_"${pkgver}".tar.bz2::http://im-updates.gg.pl/phoenix/app/release/"${pkgver}"/standard/Linux_x86-gcc3/pl/gg_32bit.tar.bz2)
 sha256sums=('8137b434801ad2f7a2a6ec5bf731e41dd381839ce55dca4082634764cea53c78'
             'cfc55261aacbb25bdf65b3a05875cf106e1e1877b220c39ede863ee6a9631b7c')
-sha256sums_i686=('aae18db232fa4f5b64c7ecd5208b75762e6a905463ed353d54d742d13e068a7e')
-sha256sums_x86_64=('853882c90bb5f9c4118cb2a62846218b5a869f6708f2f446d47180fc77661f73')
+sha256sums_i686=('e42955dca47838796319a49275a266ac5bbb1a88cf718bd497f76a33403fa552')
+sha256sums_x86_64=('faae815ce6ba12e1a3bd7e983976ca2dee040a68b8686949667af3e6369a5f20')
 options=(!strip)
 
 package() {
