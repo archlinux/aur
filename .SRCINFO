@@ -1,6 +1,6 @@
 pkgbase = nordpass-bin
 	pkgdesc = Secure and intuitive password manager (snap release)
-	pkgver = 4.27.16
+	pkgver = 4.28.7
 	pkgrel = 1
 	url = https://nordpass.com/
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = nordpass-bin
 	provides = nordpass
 	options = !strip
 	source = LICENSE
-	source = https://api.snapcraft.io/api/v1/snaps/download/00CQ2MvSr0Ex7zwdGhCYTa0ZLMw3H6hf_139.snap
+	source = https://api.snapcraft.io/api/v1/snaps/download/00CQ2MvSr0Ex7zwdGhCYTa0ZLMw3H6hf_140.snap
 	sha256sums = 5df1f0e6fceda22263443143e96311f626e6edff1b2db346b843dfc523ec2ef9
-	sha256sums = a6aea1380e2d27a24f537f5b4dfc19a3f6d841f47aa70d34149c241c1e0d3b8a
+	sha256sums = bf1b1120bb75a38108ffb680ccd6f351a139e0bd9b739ba4f888d7e939933cbf
 
 pkgname = nordpass-bin
