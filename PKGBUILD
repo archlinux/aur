@@ -12,12 +12,12 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=22.2.0_devel.156171.7bb62d9dd859.d41d8cd98f00b204e9800998ecf8427e
+pkgver=22.3.0_devel.157974.50e6a80b5ea5.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libxrandr'
-              'wayland-protocols' 'meson' 'ninja' 'glslang' 'libclc')
+              'wayland-protocols' 'meson' 'ninja' 'glslang' 'directx-headers' 'libclc')
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
          'libomxil-bellagio' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'vulkan-icd-loader' 'zstd' 'expat')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
@@ -116,18 +116,16 @@ prepare() {
 build () {
     meson setup mesa _build \
        -D b_ndebug=true \
-       -D buildtype=plain \
-       --wrap-mode=nofallback \
-       -D prefix=/usr \
-       -D sysconfdir=/etc \
        -D platforms=x11,wayland \
-       -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl,iris,zink,crocus \
+       -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,zink,d3d12 \
        -D vulkan-drivers=amd,intel,swrast,virtio-experimental \
+       -D vulkan-layers=device-select,overlay \
        -D dri3=enabled \
        -D egl=enabled \
        -D gallium-extra-hud=true \
        -D gallium-nine=true \
        -D gallium-omx=bellagio \
+       -D gallium-opencl=icd \
        -D gallium-va=enabled \
        -D gallium-vdpau=enabled \
        -D gallium-xa=enabled \
@@ -142,13 +140,15 @@ build () {
        -D lmsensors=enabled \
        -D osmesa=true \
        -D shared-glapi=enabled \
-       -D gallium-opencl=icd \
+       -D microsoft-clc=disabled \
        -D valgrind=disabled \
-       -D vulkan-layers=device-select,overlay \
        -D tools=[] \
        -D zstd=enabled \
-       -D microsoft-clc=disabled \
-       -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc
+       -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc \
+       -D buildtype=plain \
+       --wrap-mode=nofallback \
+       -D prefix=/usr \
+       -D sysconfdir=/etc
        
     meson configure _build
     
