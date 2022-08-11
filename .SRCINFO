@@ -17,6 +17,7 @@ pkgbase = vscodium
 	makedepends = patch
 	makedepends = python
 	makedepends = pkg-config
+	makedepends = ripgrep
 	depends = fontconfig
 	depends = libxtst
 	depends = gtk3

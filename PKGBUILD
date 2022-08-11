@@ -40,6 +40,7 @@ makedepends=(
     'patch'
     'python'
     'pkg-config'
+    'ripgrep'
 )
 source=(
     "git+${url}#tag=${pkgver}"
@@ -98,13 +99,6 @@ build() {
     which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-
-    # TODO: Remove this when VSCodium adds the .nvmrc file
-    if [ ! -f .nvmrc ]
-    then
-        echo "v14.19.0" > .nvmrc
-    fi
-    # TODO: End remove this
 
 	# Install the correct version of NodeJS (read from .nvmrc)
 	nvm install $(cat .nvmrc)
