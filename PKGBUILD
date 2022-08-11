@@ -1,7 +1,7 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 _pkgname=timesched
 pkgname=python-$_pkgname
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc="Python module providing a simple time event scheduler"
 url="https://github.com/bulletmark/$_pkgname"
@@ -12,7 +12,7 @@ makedepends=("python-setuptools")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 replaces=($_pkgname)
 conflicts=($_pkgname)
-sha1sums=('4b87a1a50c0d6609aa713d1a78c458dcee62c2fd')
+sha1sums=('07262e40c9a27217cfa1fccd61e3394799488606')
 
 package() {
   cd "$_pkgname-$pkgver"
