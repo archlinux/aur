@@ -1,7 +1,7 @@
 # Maintainer: Dennis van der Schagt <dennisschagt@gmail.com>
 pkgname=i18nspector
-pkgver=0.26
-pkgrel=2
+pkgver=0.27.1
+pkgrel=1
 epoch=
 pkgdesc="Checking tool for gettext POT, PO and MO files"
 arch=('any')
@@ -21,7 +21,7 @@ install=
 changelog=
 source=(https://github.com/jwilk/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz{,.asc})
 noextract=()
-sha256sums=('86dbaedbb8c2e3e834b308025cb5161e3ba0a8fcd575ac0a4f778e0f92e59d6f'
+sha256sums=('c705acb8b863c30ef1eed92f655b31f51955919d75efbd292242c5f1f2dc9c9d'
             'SKIP')
 validpgpkeys=(CDB5A1243ACDB63009AD07212D4EB3A6015475F5) # Jakub Wilk
 
