@@ -1,0 +1,12 @@
+pkgbase = kyocera-ecosys-p5021cdw
+	pkgdesc = PPD file for Kyocera ECOSYS P5021cdw
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://kyocera.com
+	arch = any
+	license = other
+	depends = cups
+	source = Kyocera ECOSYS P5021cdw.PPD
+	md5sums = 66c37971d98f4de617c5bf7f20877d33
+
+pkgname = kyocera-ecosys-p5021cdw

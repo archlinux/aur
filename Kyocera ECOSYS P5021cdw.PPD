@@ -1,0 +1,832 @@
+*PPD-Adobe: "4.3"
+*%=============================================================================
+*%
+*%  PPD file for Kyocera ECOSYS P5021cdw (English)
+*%  Linux Version
+*%
+*%  (C) 2015 KYOCERA Document Solutions Inc.
+*%  All Rights Reserved
+*%
+*%  Permission is granted for redistribution of this file as long as this
+*%  copyright notice is intact and the contents of the file are not altered
+*%  in any way from their original form.
+*%
+*%  Permission is hereby granted, free of charge, to any person obtaining
+*%  a copy of this software and associated documentation files (the
+*%  "Software"), to deal in the Software without restriction, including
+*%  without limitation the rights to use, copy, modify, merge, publish,
+*%  distribute, sublicense, and/or sell copies of the Software, and to
+*%  permit persons to whom the Software is furnished to do so, subject to
+*%  the following conditions:
+*%
+*%  The above copyright notice and this permission notice shall be
+*%  included in all copies or substantial portions of the Software.
+*%
+*%  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+*%  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+*%  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+*%  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+*%  LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+*%  OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+*%  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*%
+*%  [this is the MIT open source license -- see www.opensource.org]
+*%
+*%
+*%=============================================================================
+*FileVersion: "8.1602"
+*FormatVersion: "4.3"
+*LanguageEncoding: ISOLatin1
+*LanguageVersion: English
+*Product: "(ECOSYS P5021cdw)"
+*PSVersion: "(3011.103) 1"
+*Manufacturer: "Kyocera"
+*ModelName: "Kyocera ECOSYS P5021cdw KPDL"
+*ShortNickName: "Kyocera ECOSYS P5021cdw (KPDL)"
+*NickName: "Kyocera ECOSYS P5021cdw (KPDL)"
+*PCFileName: "EM6026CE.PPD"
+*1284DeviceID: "MDL:ECOSYS P5021cdw;MFG:Kyocera"
+*% Basic Device Capabilities
+*LanguageLevel: "3"
+*ColorDevice: True
+*DefaultColorSpace: CMYK
+*ContoneOnly: False
+*AccurateScreensSupport: True
+*TTRasterizer: Type42
+*?TTRasterizer: "
+  save
+  42 /FontType resourcestatus
+  { pop pop (Type42) }{ (None) } ifelse
+  = flush restore"
+*End
+*Throughput: "20"
+*% System Management
+*SuggestedJobTimeout: "0"
+*SuggestedManualFeedTimeout: "0"
+*SuggestedWaitTimeout: "120"
+*PrintPSErrors: True
+*Password: "0"
+*ExitServer: "
+  count 0 eq {true}
+  {dup statusdict /checkpassword get exec not} ifelse
+  {(WARNING : Cannot perform the exitserver command.) =
+    (Password supplied is not valid.) =
+    (Please contact the author of this software.) = flush quit} if
+  serverdict /exitserver get exec"
+*End
+*Reset: "
+  count 0 eq { true }
+  {dup statusdict /checkpassword get exec not} ifelse
+  {(WARNING : Cannot perform the exitserver command.) =
+    (Password supplied is not valid.) =
+    (Please contact the author of this software.) = flush quit} if
+  serverdict /exitserver get exec
+  systemdict /quit get exec
+  (WARNING : Printer Reset Failed.) = flush"
+*End
+*% Protocols
+*Protocols: PJL TBCP
+*1284Modes Parallel: Compat Nibble ECP
+*1284DeviceID: "MFG:Kyocera;MODEL:Kyocera ECOSYS P5021cdw;COMMAND SET: POSTSCRIPT,PJL,PCL"
+*OpenGroup: JCL/JCL
+*% JCL Information 
+*JCLBegin: "<1B>%-12345X@PJL JOB<0A>"
+*JCLToPSInterpreter: "@PJL ENTER LANGUAGE=POSTSCRIPT<0A>"
+*JCLEnd: "<1B>%-12345X@PJL EOJ<0A><1B>%-12345X"
+*JCLOpenUI *JCLTrapping/Trapping: PickOne
+*DefaultJCLTrapping: Medium
+*OrderDependency: 6 JCLSetup *JCLTrapping
+*JCLTrapping Off/Off: "@PJL SET KTRAPPING=0<0A>"
+*JCLTrapping Light/Light: "@PJL SET KTRAPPING=1<0A>"
+*JCLTrapping Medium/Medium: "@PJL SET KTRAPPING=2<0A>"
+*JCLTrapping Heavy/Heavy: "@PJL SET KTRAPPING=3<0A>"
+*JCLTrapping VeryHeavy/Very heavy: "@PJL SET KTRAPPING=4<0A>"
+*JCLCloseUI: *JCLTrapping
+*CloseGroup: JCL/JCL
+*% Installable Options
+*OpenGroup: InstallableOptions/Installed Options
+*% Paper Feeders
+*OpenUI *Option20/Paper Feeders: PickOne
+*DefaultOption20: None
+*Option20 None/Not installed: ""
+*Option20 One/One: ""
+*?Option20: "
+  save
+  (None) currentpagedevice dup /InputAttributes known {
+    /InputAttributes get
+    dup 1 known {dup 1 get null ne {exch pop (One) exch} if} if
+    dup 4 known {dup 4 get null ne {exch pop (Two) exch} if} if
+    dup 5 known {dup 5 get null ne {exch pop (Three) exch} if} if
+  } if pop
+  = flush restore"
+*End
+*CloseUI: *Option20
+*% Disk Drive
+*OpenUI *Option18/Optional Disk: PickOne
+*DefaultOption18: RAMDisk
+*Option18 None/Not installed: ""
+*Option18 RAMDisk/RAM disk: ""
+*Option18 SDCard/SD Card: ""
+*CloseUI: *Option18
+*% Installed Memory
+*% Not supported
+*CloseGroup: InstallableOptions
+*% Virtual Memory
+*FreeVM: "32000000"
+*% Constraints
+*UIConstraints: *Option20 None *InputSlot PF5110A
+*UIConstraints: *InputSlot PF5110A *Option20 None
+*UIConstraints: *MediaType Vellum *InputSlot PF5110A
+*UIConstraints: *InputSlot PF5110A *MediaType Vellum
+*UIConstraints: *MediaType Labels *InputSlot PF5110A
+*UIConstraints: *InputSlot PF5110A *MediaType Labels
+*UIConstraints: *MediaType Vellum *InputSlot Internal
+*UIConstraints: *InputSlot Internal *MediaType Vellum
+*UIConstraints: *MediaType Envelope *InputSlot PF5110A
+*UIConstraints: *InputSlot PF5110A *MediaType Envelope
+*UIConstraints: *MediaType Cardstock *InputSlot PF5110A
+*UIConstraints: *InputSlot PF5110A *MediaType Cardstock
+*UIConstraints: *MediaType Transparency *InputSlot PF5110A
+*UIConstraints: *InputSlot PF5110A *MediaType Transparency
+*UIConstraints: *MediaType CoatedPaper *InputSlot PF5110A
+*UIConstraints: *InputSlot PF5110A *MediaType CoatedPaper
+*%UIConstraints: *MediaType Thick *InputSlot Internal
+*%UIConstraints: *InputSlot Internal *MediaType Thick
+*UIConstraints: *PageSize EnvC5 *InputSlot PF5110A
+*UIConstraints: *InputSlot PF5110A *PageSize EnvC5
+*UIConstraints: *PageRegion EnvC5 *InputSlot PF5110A
+*UIConstraints: *InputSlot PF5110A *PageRegion EnvC5
+
+*UIConstraints: *PageSize EnvC5 *InputSlot Internal
+*UIConstraints: *InputSlot Internal *PageSize EnvC5
+*UIConstraints: *PageRegion EnvC5 *InputSlot Internal
+*UIConstraints: *InputSlot Internal *PageRegion EnvC5
+*UIConstraints: *InputSlot PF5110A *PageSize EnvDL
+*UIConstraints: *PageSize EnvDL *InputSlot PF5110A
+*UIConstraints: *InputSlot PF5110A *PageSize Env10
+*UIConstraints: *PageSize Env10 *InputSlot PF5110A
+*UIConstraints: *InputSlot PF5110A *PageSize Env9
+*UIConstraints: *PageSize Env9 *InputSlot PF5110A
+*UIConstraints: *InputSlot PF5110A *PageSize EnvPersonal
+*UIConstraints: *PageSize EnvPersonal *InputSlot PF5110A
+*UIConstraints: *InputSlot PF5110A *PageSize EnvMonarch
+*UIConstraints: *PageSize EnvMonarch *InputSlot PF5110A
+*UIConstraints: *Option18 None *KCCollate QuickCopy
+*UIConstraints: *KCCollate QuickCopy *Option18 None
+*UIConstraints: *Option18 None *KCCollate JobStorage
+*UIConstraints: *KCCollate JobStorage *Option18 None
+*UIConstraints: *Option18 RAMDisk *KCCollate QuickCopy
+*UIConstraints: *KCCollate QuickCopy *Option18 RAMDisk
+*UIConstraints: *Option18 RAMDisk *KCCollate JobStorage
+*UIConstraints: *KCCollate JobStorage *Option18 RAMDisk
+*UIConstraints: *ColorModel Gray *Colorreprod Colortable
+*UIConstraints: *Colorreprod Colortable *ColorModel Gray
+*UIConstraints: *Duplex *MediaType Transparency
+*UIConstraints: *MediaType Transparency *Duplex DuplexTumble
+*UIConstraints: *MediaType Transparency *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *MediaType Labels
+*UIConstraints: *MediaType Labels *Duplex DuplexTumble
+*UIConstraints: *MediaType Labels *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *MediaType Vellum
+*UIConstraints: *MediaType Vellum *Duplex DuplexTumble
+*UIConstraints: *MediaType Vellum *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *MediaType Envelope
+*UIConstraints: *MediaType Envelope *Duplex DuplexTumble
+*UIConstraints: *MediaType Envelope *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *MediaType Cardstock
+*UIConstraints: *MediaType Cardstock *Duplex DuplexTumble
+*UIConstraints: *MediaType Cardstock *Duplex DuplexNoTumble
+*UIConstraints: *MediaType Transparency *InputSlot Internal
+*UIConstraints: *InputSlot Internal *MediaType Transparency
+*UIConstraints: *MediaType Labels *InputSlot Internal
+*UIConstraints: *InputSlot Internal *MediaType Labels
+*UIConstraints: *MediaType Envelope *InputSlot Internal
+*UIConstraints: *InputSlot Internal *MediaType Envelope
+*UIConstraints: *MediaType Cardstock *InputSlot Internal
+*UIConstraints: *InputSlot Internal *MediaType Cardstock
+*UIConstraints: *MediaType CoatedPaper *InputSlot Internal
+*UIConstraints: *InputSlot Internal *MediaType CoatedPaper
+*UIConstraints: *KCEcoprint On *KCGlossmode True
+*UIConstraints: *KCGlossmode True *KCEcoprint On
+*UIConstraints: *Option18 None *KCCollate ProofHold
+*UIConstraints: *KCCollate ProofHold *Option18 None
+*UIConstraints: *Option18 None *KCCollate On
+*UIConstraints: *KCCollate On *Option18 None
+*UIConstraints: *PageSize EnvPersonal *InputSlot Internal
+*UIConstraints: *InputSlot Internal *PageSize EnvPersonal
+*UIConstraints: *PageRegion EnvPersonal *InputSlot Internal
+*UIConstraints: *InputSlot Internal *PageRegion EnvPersonal
+*UIConstraints: *PageSize Env9 *InputSlot Internal
+*UIConstraints: *InputSlot Internal *PageSize Env9
+*UIConstraints: *PageRegion Env9 *InputSlot Internal
+*UIConstraints: *InputSlot Internal *PageRegion Env9
+*UIConstraints: *PageSize Env10 *InputSlot Internal
+*UIConstraints: *InputSlot Internal *PageSize Env10
+*UIConstraints: *PageRegion Env10 *InputSlot Internal
+*UIConstraints: *InputSlot Internal *PageRegion Env10
+*UIConstraints: *PageSize EnvMonarch *InputSlot Internal
+*UIConstraints: *InputSlot Internal *PageSize EnvMonarch
+*UIConstraints: *PageRegion EnvMonarch *InputSlot Internal
+*UIConstraints: *InputSlot Internal *PageRegion EnvMonarch
+*UIConstraints: *PageSize EnvDL *InputSlot Internal
+*UIConstraints: *InputSlot Internal *PageSize EnvDL
+*UIConstraints: *PageRegion EnvDL *InputSlot Internal
+*UIConstraints: *InputSlot Internal *PageRegion EnvDL
+*UIConstraints: *Duplex *PageSize A6
+*UIConstraints: *PageSize A6 *Duplex DuplexTumble
+*UIConstraints: *PageSize A6 *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageRegion A6
+*UIConstraints: *PageRegion A6 *Duplex DuplexTumble
+*UIConstraints: *PageRegion A6 *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageSize B6
+*UIConstraints: *PageSize B6 *Duplex DuplexTumble
+*UIConstraints: *PageSize B6 *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageRegion B6
+*UIConstraints: *PageRegion B6 *Duplex DuplexTumble
+*UIConstraints: *PageRegion B6 *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageSize EnvPersonal
+*UIConstraints: *PageSize EnvPersonal *Duplex DuplexTumble
+*UIConstraints: *PageSize EnvPersonal *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageRegion EnvPersonal
+*UIConstraints: *PageRegion EnvPersonal *Duplex DuplexTumble
+*UIConstraints: *PageRegion EnvPersonal *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageSize Env9
+*UIConstraints: *PageSize Env9 *Duplex DuplexTumble
+*UIConstraints: *PageSize Env9 *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageRegion Env9
+*UIConstraints: *PageRegion Env9 *Duplex DuplexTumble
+*UIConstraints: *PageRegion Env9 *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageSize Env10
+*UIConstraints: *PageSize Env10 *Duplex DuplexTumble
+*UIConstraints: *PageSize Env10 *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageRegion Env10
+*UIConstraints: *PageRegion Env10 *Duplex DuplexTumble
+*UIConstraints: *PageRegion Env10 *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageSize EnvMonarch
+*UIConstraints: *PageSize EnvMonarch *Duplex DuplexTumble
+*UIConstraints: *PageSize EnvMonarch *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageRegion EnvMonarch
+*UIConstraints: *PageRegion EnvMonarch *Duplex DuplexTumble
+*UIConstraints: *PageRegion EnvMonarch *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageSize EnvDL
+*UIConstraints: *PageSize EnvDL *Duplex DuplexTumble
+*UIConstraints: *PageSize EnvDL *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageRegion EnvDL
+*UIConstraints: *PageRegion EnvDL *Duplex DuplexTumble
+*UIConstraints: *PageRegion EnvDL *Duplex DuplexNoTumble
+*UIConstraints: *ColorModel Gray *Colorreprod Textgraph
+*UIConstraints: *Colorreprod Textgraph *ColorModel Gray
+*UIConstraints: *ColorModel Gray *Colorreprod Textphoto
+*UIConstraints: *Colorreprod Textphoto *ColorModel Gray
+*UIConstraints: *ColorModel Gray *Colorreprod Vivid
+*UIConstraints: *Colorreprod Vivid *ColorModel Gray
+*UIConstraints: *ColorModel Gray *Colorreprod Publications
+*UIConstraints: *Colorreprod Publications *ColorModel Gray
+*UIConstraints: *ColorModel Gray *Colorreprod Lineart
+*UIConstraints: *Colorreprod Lineart *ColorModel Gray
+*OpenGroup: GraphicsOptions/Graphics
+*% Resolution 
+*OpenUI *Resolution/Resolution: PickOne
+*OrderDependency: 10 AnySetup *Resolution
+*DefaultResolution: 600dpi
+*Resolution 600dpi/600 dpi: "<</HWResolution [600 600]>> setpagedevice
+<</PreRenderingEnhance true>> setpagedevice
+<</PreRenderingEnhanceDetails <</ResolutionConversion false /BitsPerPixel 8>> >> setpagedevice"
+*Resolution 1200dpi/1200 dpi: "<</HWResolution [600 600]>> setpagedevice
+<</PreRenderingEnhance true>> setpagedevice
+<</PreRenderingEnhanceDetails <</ResolutionConversion true /BitsPerPixel 8>> >> setpagedevice"
+*?Resolution: "save currentpagedevice /HWResolution get 0 get (      ) cvs print (dpi) = flush restore"
+*CloseUI: *Resolution
+*% KCEcoprint
+*OpenUI *KCEcoprint/EcoPrint: PickOne
+*OrderDependency: 10 AnySetup *KCEcoprint
+*DefaultKCEcoprint: Off
+*KCEcoprint Off/Off: "<< /EconoMode false >> setpagedevice"
+*KCEcoprint On/On: "<< /EconoMode true >> setpagedevice"
+*CloseUI: *KCEcoprint
+*% Color Model
+*OpenUI *ColorModel/Color Mode: PickOne
+*OrderDependency: 10 AnySetup *ColorModel
+*DefaultColorModel: CMYK
+*ColorModel CMYK/Full color: "<< /ProcessColorModel /DeviceCMYK >> setpagedevice"
+*ColorModel Gray/Black & White: "<< /ProcessColorModel /DeviceGray >> setpagedevice"
+*?ColorModel: "
+  save
+  currentpagedevice /ProcessColorModel get
+  1 {
+    dup /DeviceGray eq {pop (Gray) exit} if
+    dup /DeviceCMYK eq {pop (CMYK) exit} if
+    pop (Unknown)
+  } repeat
+  = flush restore"
+*End
+*CloseUI: *ColorModel
+*% Halftone 
+*OpenUI *KCHalftone/Halftone Screen: PickOne
+*OrderDependency: 10 AnySetup *KCHalftone
+*DefaultKCHalftone: Gradation
+*KCHalftone Gradation/Optimize for color smoothness: "<< /DefaultHT9  1 >> setpagedevice"
+*KCHalftone Detail/Optimize for detail: "<< /DefaultHT9  2 >> setpagedevice"
+*KCHalftone LineArt/Optimize for line drawing: "<< /DefaultHT9  3 >> setpagedevice"
+*End
+*CloseUI: *KCHalftone
+*% Glossmode 
+*OpenUI *KCGlossmode/Gloss Mode: Boolean
+*OrderDependency: 10 AnySetup *KCGlossmode
+*DefaultKCGlossmode: False
+*KCGlossmode False/Off: "mark 0 statusdict /setglossmode 2 copy known { get exec } if cleartomark"
+*KCGlossmode True/On: "mark 1 statusdict /setglossmode 2 copy known { get exec } if cleartomark"
+*End
+*CloseUI: *KCGlossmode
+*% Color Reproduction 
+*OpenUI *Colorreprod/Color Reproduction: PickOne
+*OrderDependency: 10 AnySetup *Colorreprod
+*DefaultColorreprod: Printersettings
+*Colorreprod Printersettings/Printer settings: "<< /ColorReproductionMode 30 >> setpagedevice"
+*Colorreprod Textgraph/Text and graphics: "<< /ColorReproductionMode 31 >> setpagedevice"
+*Colorreprod Textphoto/Text and photos: "<< /ColorReproductionMode 32 >> setpagedevice"
+*Colorreprod Vivid/Vivid colors: "<< /ColorReproductionMode 33 >> setpagedevice"
+*Colorreprod Publications/Publications: "<< /ColorReproductionMode 34 >> setpagedevice"
+*Colorreprod Lineart/Line art: "<< /ColorReproductionMode 35 >> setpagedevice"
+*Colorreprod Colortable/Custom table: "<< /ColorReproductionMode 128 >> setpagedevice"
+*CloseUI: *Colorreprod
+*% RenderingColorMode 
+*OpenUI *RCM/Color Conversion: PickOne
+*OrderDependency: 11 AnySetup *RCM
+*DefaultRCM: PrnDef
+*RCM PrnDef/Printer settings: ""
+*RCM Color3/Speed priority: "<< /InternalColorMode 0 >> setpagedevice"
+*RCM Color4/Quality priority: "<< /InternalColorMode 2 >> setpagedevice"
+*CloseUI: *RCM
+*% Grays with Black Toner 
+*OpenUI *GRAYBLKTONER/Print Grays with Black Toner: Boolean
+*OrderDependency: 11 AnySetup *GRAYBLKTONER
+*DefaultGRAYBLKTONER:  False
+*GRAYBLKTONER False/Off: "<< /PrintGraysWithBlackToner false >> setpagedevice"
+*GRAYBLKTONER True/On: "<< /PrintGraysWithBlackToner true >> setpagedevice"
+*End
+*CloseUI: *GRAYBLKTONER
+*% CIE 
+*OpenUI *CIE/CIE Optimization: PickOne
+*OrderDependency: 11 AnySetup *CIE
+*DefaultCIE:  PrnDef
+*CIE PrnDef/Printer settings: ""
+*CIE False/Disabled: "<< /RejectionCIEcolor false >> setuserparams"
+*CIE True/Enabled: "<< /RejectionCIEcolor true >> setuserparams"
+*End
+*CloseUI: *CIE
+*CloseGroup: GraphicsOptions/Graphics
+*% Halftone Information 
+*DefaultHalftoneType: 1
+*ScreenFreq: "37.5"
+*ScreenAngle: "45.0"
+*ResScreenFreq 600dpi: "37.5"
+*ResScreenAngle 600dpi: "45.0"
+*DefaultScreenProc: Ellipse
+*ScreenProc Dot: "
+  {abs exch abs 2 copy add 1 gt
+  {1 sub dup mul exch 1 sub dup mul add 1 sub}
+  {dup mul exch dup mul add 1 exch sub} ifelse}"
+*End
+*ScreenProc Line: "{pop}"
+*ScreenProc Ellipse: "{dup 5 mul 8 div mul exch dup mul exch add sqrt 1 exch sub}"
+*DefaultTransfer: Null
+*Transfer Null: "{}"
+*Transfer Null.Inverse: "{1 exch sub}"
+*% Paper Handling 
+*% Page Size Definitions
+*OpenUI *PageSize: PickOne
+*OrderDependency: 40 AnySetup *PageSize
+*DefaultPageSize: A4
+*PageSize A4/A4: "<< /Policies << /PageSize 7 >> /PageSize [595 842] /ImagingBBox null >> setpagedevice"
+*PageSize A5/A5: "<< /Policies << /PageSize 7 >> /PageSize [421 595] /ImagingBBox null >> setpagedevice"
+*PageSize A6/A6: "<< /Policies << /PageSize 7 >> /PageSize [297 421] /ImagingBBox null >> setpagedevice"
+*PageSize B5/B5 (JIS): "<< /Policies << /PageSize 7 >> /PageSize [516 729] /ImagingBBox null >> setpagedevice"
+*PageSize ISOB5/B5 (ISO): "<< /Policies << /PageSize 7 >> /PageSize [499 708] /ImagingBBox null >> setpagedevice"
+*PageSize B6/B6: "<< /Policies << /PageSize 7 >> /PageSize [364 516] /ImagingBBox null >> setpagedevice"
+*PageSize OficioII/Oficio II: "<< /Policies << /PageSize 7 >> /PageSize [612 936] /ImagingBBox null >> setpagedevice"
+*PageSize Folio/Folio (210 x 330mm): "<< /Policies << /PageSize 7 >> /PageSize [595 935] /ImagingBBox null >> setpagedevice"
+*PageSize Statement/Statement: "<< /Policies << /PageSize 7 >> /PageSize [396 612] /ImagingBBox null >> setpagedevice"
+*PageSize P16K/16K: "<< /Policies << /PageSize 7 >> /PageSize [558 774] /ImagingBBox null >> setpagedevice"
+*PageSize OficioMX/216 x 340 mm: "<< /Policies << /PageSize 7 >> /PageSize [612 964] /ImagingBBox null >> setpagedevice"
+*PageSize Letter/Letter: "<< /Policies << /PageSize 7 >> /PageSize [612 792] /ImagingBBox null >> setpagedevice"
+*PageSize Legal/Legal: "<< /Policies << /PageSize 7 >> /PageSize [612 1008] /ImagingBBox null >> setpagedevice"
+*PageSize Executive/Executive: "<< /Policies << /PageSize 7 >> /PageSize [522 756] /ImagingBBox null >> setpagedevice"
+*PageSize EnvPersonal/Envelope #6: "<< /Policies << /PageSize 7 >> /PageSize [261 468] /ImagingBBox null >> setpagedevice"
+*PageSize Env9/Envelope #9: "<< /Policies << /PageSize 7 >> /PageSize [279 639] /ImagingBBox null >> setpagedevice"
+*PageSize Env10/Envelope #10: "<< /Policies << /PageSize 7 >> /PageSize [297 684] /ImagingBBox null >> setpagedevice"
+*PageSize EnvMonarch/Envelope Monarch: "<< /Policies << /PageSize 7 >> /PageSize [279 540] /ImagingBBox null >> setpagedevice"
+*PageSize EnvDL/Envelope DL: "<< /Policies << /PageSize 7 >> /PageSize [312 624] /ImagingBBox null >> setpagedevice"
+*PageSize EnvC5/Envelope C5: "<< /Policies << /PageSize 7 >> /PageSize [459 649] /ImagingBBox null >> setpagedevice"
+*?PageSize: "
+  save
+  currentpagedevice /PageSize get aload pop
+  2 copy gt {exch} if
+  (Unknown)
+  20 dict
+  dup [595 842] (A4) put
+  dup [421 595] (A5) put
+  dup [297 421] (A6) put
+  dup [516 729] (B5) put
+  dup [499 708] (ISOB5) put
+  dup [364 516] (B6) put
+  dup [612 936] (OficioII) put
+  dup [595 935] (Folio) put
+  dup [396 612] (Statement) put
+  dup [558 774] (P16K) put
+  dup [612 964] (OficioMX) put
+  dup [612 792] (Letter) put
+  dup [612 1008] (Legal) put
+  dup [522 756] (Executive) put
+  dup [261 468] (EnvPersonal) put
+  dup [279 639] (Env9) put
+  dup [297 684] (Env10) put
+  dup [279 540] (EnvMonarch) put
+  dup [312 624] (EnvDL) put
+  dup [459 649] (EnvC5) put
+  {exch aload pop 4 index sub abs 5 le exch
+    5 index sub abs 5 le and
+    {exch pop exit}{pop} ifelse
+  } bind forall
+  = flush pop pop restore "
+*End
+*CloseUI: *PageSize
+*% Page Region Definitions for Frame Buffer
+*OpenUI *PageRegion: PickOne
+*OrderDependency: 40 AnySetup *PageRegion
+*DefaultPageRegion: A4
+*PageRegion A4/A4: "<< /Policies << /PageSize 7 >> /PageSize [595 842] /ImagingBBox null >> setpagedevice"
+*PageRegion A5/A5: "<< /Policies << /PageSize 7 >> /PageSize [421 595] /ImagingBBox null >> setpagedevice"
+*PageRegion A6/A6: "<< /Policies << /PageSize 7 >> /PageSize [297 421] /ImagingBBox null >> setpagedevice"
+*PageRegion B5/B5 (JIS): "<< /Policies << /PageSize 7 >> /PageSize [516 729] /ImagingBBox null >> setpagedevice"
+*PageRegion ISOB5/B5 (ISO): "<< /Policies << /PageSize 7 >> /PageSize [499 708] /ImagingBBox null >> setpagedevice"
+*PageRegion B6/B6: "<< /Policies << /PageSize 7 >> /PageSize [364 516] /ImagingBBox null >> setpagedevice"
+*PageRegion Letter/Letter: "<< /Policies << /PageSize 7 >> /PageSize [612 792] /ImagingBBox null >> setpagedevice"
+*PageRegion Legal/Legal: "<< /Policies << /PageSize 7 >> /PageSize [612 1008] /ImagingBBox null >> setpagedevice"
+*PageRegion Executive/Executive: "<< /Policies << /PageSize 7 >> /PageSize [522 756] /ImagingBBox null >> setpagedevice"
+*PageRegion EnvPersonal/Envelope #6: "<< /Policies << /PageSize 7 >> /PageSize [261 468] /ImagingBBox null >> setpagedevice"
+*PageRegion Env9/Envelope #9: "<< /Policies << /PageSize 7 >> /PageSize [279 639] /ImagingBBox null >> setpagedevice"
+*PageRegion Env10/Envelope #10: "<< /Policies << /PageSize 7 >> /PageSize [297 684] /ImagingBBox null >> setpagedevice"
+*PageRegion EnvMonarch/Envelope Monarch: "<< /Policies << /PageSize 7 >> /PageSize [279 540] /ImagingBBox null >> setpagedevice"
+*PageRegion EnvDL/Envelope DL: "<< /Policies << /PageSize 7 >> /PageSize [312 624] /ImagingBBox null >> setpagedevice"
+*PageRegion EnvC5/Envelope C5: "<< /Policies << /PageSize 7 >> /PageSize [459 649] /ImagingBBox null >> setpagedevice"
+*PageRegion OficioII/Oficio II: "<< /Policies << /PageSize 7 >> /PageSize [612 936] /ImagingBBox null >> setpagedevice"
+*PageRegion Folio/Folio (210 x 330mm): "<< /Policies << /PageSize 7 >> /PageSize [595 935] /ImagingBBox null >> setpagedevice"
+*PageRegion Statement/Statement: "<< /Policies << /PageSize 7 >> /PageSize [396 612] /ImagingBBox null >> setpagedevice"
+*PageRegion P16K/16K: "<< /Policies << /PageSize 7 >> /PageSize [558 774] /ImagingBBox null >> setpagedevice"
+*PageRegion OficioMX/216 x 340 mm: "<< /Policies << /PageSize 7 >> /PageSize [612 964] /ImagingBBox null >> setpagedevice"
+*CloseUI: *PageRegion
+*% Imageable Area Definitions
+*DefaultImageableArea: A4
+*ImageableArea A4/A4: "12 10 583 832"
+*ImageableArea A5/A5: "12 10 409 585"
+*ImageableArea A6/A6: "12 10 285 411"
+*ImageableArea B5/B5 (JIS): "21 10 495 719"
+*ImageableArea ISOB5/B5 (ISO): "12 12 487 696"
+*ImageableArea B6/B6: "12 10 352 506"
+*ImageableArea OficioII/Oficio II: "12 12 600 924"
+*ImageableArea Folio/Folio (210 x 330mm): "12 12 583 923"
+*ImageableArea Statement/Statement: "12 12 384 600"
+*ImageableArea P16K/16K: "12 12 547 763"
+*ImageableArea OficioMX/216 x 340 mm: "12 12 600 952"
+*ImageableArea Letter/Letter: "12 08 600 784"
+*ImageableArea Legal/Legal: "12 08 600 1000"
+*ImageableArea Executive/Executive: "12 08 510 748"
+*ImageableArea EnvPersonal/Envelope #6: "12 08 249 460"
+*ImageableArea Env9/Envelope #9: "12 08 267 631"
+*ImageableArea Env10/Envelope #10: "12 08 285 676"
+*ImageableArea EnvMonarch/Envelope Monarch: "12 08 267 532"
+*ImageableArea EnvDL/Envelope DL: "12 10 300 614"
+*ImageableArea EnvC5/Envelope C5: "12 10 447 639"
+*?ImageableArea: "
+  save
+  /cvp {cvi (                   ) cvs
+  print ( ) print} bind def
+  newpath clippath pathbbox
+  4 -2 roll exch 2 {ceiling cvp} repeat
+  exch 2 {floor cvp} repeat ( )
+  = flush restore"
+*End
+*% Physical Dimensions of Media
+*DefaultPaperDimension: A4
+*PaperDimension A4/A4: "595 842"
+*PaperDimension A5/A5: "421 595"
+*PaperDimension A6/A6: "297 421"
+*PaperDimension B5/B5 (JIS): "516 729"
+*PaperDimension ISOB5/B5 (ISO): "499 708"
+*PaperDimension B6/B6: "364 516"
+*PaperDimension OficioII/Oficio II: "612 936"
+*PaperDimension Folio/Folio (210 x 330mm): "595 935"
+*PaperDimension Statement/Statement: "396 612"
+*PaperDimension P16K/16K: "558 774"
+*PaperDimension OficioMX/216 x 340 mm: "612 964"
+*PaperDimension Letter/Letter: "612 792"
+*PaperDimension Legal/Legal: "612 1008"
+*PaperDimension Executive/Executive: "522 756"
+*PaperDimension EnvPersonal/Envelope #6: "261 468"
+*PaperDimension Env9/Envelope #9: "279 639"
+*PaperDimension Env10/Envelope #10: "297 684"
+*PaperDimension EnvMonarch/Envelope Monarch: "279 540"
+*PaperDimension EnvDL/Envelope DL: "312 624"
+*PaperDimension EnvC5/Envelope C5: "459 649"
+*% Custom Page Size Definitions
+*% Smallest = A6, Largest = LEGAL
+*VariablePaperSize: True
+*LeadingEdge Short: ""
+*DefaultLeadingEdge: Short
+*HWMargins: 12 12 12 12
+*MaxMediaWidth: "612"
+*MaxMediaHeight: "1008"
+*NonUIOrderDependency: 40 AnySetup *CustomPageSize
+*CustomPageSize True: "
+  pop pop pop
+  << /PageSize [ 5 -2 roll ] /ImagingBBox null
+     /DeferredMediaSelection true
+  >> setpagedevice"
+*End
+*ParamCustomPageSize Width: 1 points 278 612
+*ParamCustomPageSize Height: 2 points 420 1008
+*ParamCustomPageSize WidthOffset: 3 points 0 0
+*ParamCustomPageSize HeightOffset: 4 points 0 0
+*ParamCustomPageSize Orientation: 5 int 1 1
+*% Input Slot Definitions
+*OpenUI *InputSlot: PickOne
+*OrderDependency: 30 AnySetup *InputSlot
+*DefaultInputSlot: Internal
+*InputSlot Internal/Cassette 1: "<< /ManualFeed false >> setpagedevice statusdict begin 0 setpapertray end"
+*InputSlot PF5110A/Cassette 2: "<< /ManualFeed false >> setpagedevice statusdict begin 1 setpapertray end"
+*InputSlot MF1/MP tray: "<< /ManualFeed false >> setpagedevice statusdict begin 3 setpapertray end"
+*?InputSlot: ""
+*CloseUI: *InputSlot
+*OpenGroup: MediaOptions/Media Type
+*% MediaType Definitions
+*OpenUI *MediaType/Media Type: PickOne
+*OrderDependency: 95 AnySetup *MediaType
+*DefaultMediaType: PrnDef
+*MediaType PrnDef/Unspecified: "<</ManualFeed false /MediaType (None) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Auto/Auto media selection: ""
+*MediaType Plain/Plain: "<</ManualFeed false /MediaType (Plain) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Transparency/Transparency: "<</ManualFeed false /MediaType (Transparency) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Labels/Labels: "<</ManualFeed false /MediaType (Labels) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Letterhead/Letterhead: "<</ManualFeed false /MediaType (Letterhead) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Bond/Bond: "<</ManualFeed false /MediaType (Bond) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Color/Color: "<</ManualFeed false /MediaType (Color) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Preprinted/Preprinted: "<</ManualFeed false /MediaType (Preprinted) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Prepunched/Prepunched: "<</ManualFeed false /MediaType (Prepunched) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Recycled/Recycled: "<</ManualFeed false /MediaType (Recycled) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Cardstock/Cardstock: "<</ManualFeed false /MediaType (Card Stock) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Vellum/Vellum: "<</ManualFeed false /MediaType (Vellum) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Envelope/Envelope: "<</ManualFeed false /MediaType (Envelope) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Rough/Rough: "<</ManualFeed false /MediaType (Rough) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Thick/Thick: "<</ManualFeed false /MediaType (Thick) /DeferredMediaSelection true >> setpagedevice"
+*MediaType CoatedPaper/Coated: "<</ManualFeed false /MediaType (CoatedPaper) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Highqlty/High quality: "<</ManualFeed false /MediaType (Fine) /DeferredMediaSelection true >> setpagedevice"
+*MediaType User1/Custom type 1: "<</ManualFeed false /MediaType (Custom Type1) /DeferredMediaSelection true >> setpagedevice"
+*MediaType User2/Custom type 2: "<</ManualFeed false /MediaType (Custom Type2) /DeferredMediaSelection true >> setpagedevice"
+*MediaType User3/Custom type 3: "<</ManualFeed false /MediaType (Custom Type3) /DeferredMediaSelection true >> setpagedevice"
+*MediaType User4/Custom type 4: "<</ManualFeed false /MediaType (Custom Type4) /DeferredMediaSelection true >> setpagedevice"
+*MediaType User5/Custom type 5: "<</ManualFeed false /MediaType (Custom Type5) /DeferredMediaSelection true >> setpagedevice"
+*MediaType User6/Custom type 6: "<</ManualFeed false /MediaType (Custom Type6) /DeferredMediaSelection true >> setpagedevice"
+*MediaType User7/Custom type 7: "<</ManualFeed false /MediaType (Custom Type7) /DeferredMediaSelection true >> setpagedevice"
+*MediaType User8/Custom type 8: "<</ManualFeed false /MediaType (Custom Type8) /DeferredMediaSelection true >> setpagedevice"
+*?MediaType: "
+  save
+    currentpagedevice /MediaType {get} stopped
+    {pop pop (Unknown)} {dup null eq {pop (Unknown)} if} ifelse = flush
+  restore"
+*End
+*CloseUI: *MediaType
+*CloseGroup: MediaOptions/Media Type
+*RequiresPageRegion All: True
+*%Finishing
+*% Duplex Definitions
+*OpenUI *Duplex/Duplexing: PickOne
+*OrderDependency: 50 AnySetup *Duplex
+*DefaultDuplex: DuplexNoTumble
+*Duplex None/None: "statusdict begin false setduplexmode false settumble end"
+*Duplex DuplexTumble/Short edge: "statusdict begin true setduplexmode true settumble end"
+*Duplex DuplexNoTumble/Long edge: "statusdict begin true setduplexmode false settumble end"
+*?Duplex: "
+  save
+  statusdict begin
+  duplexmode
+  {tumble {(DuplexTumble)}{(DuplexNoTumble)} ifelse}
+  {(None)} ifelse
+  = flush end restore"
+*End
+*CloseUI: *Duplex
+*%Finishing
+*OpenGroup: StorageOptions/Job Settings
+*% Job Spooling Definitions
+*OpenUI *KCCollate/Job Settings: PickOne
+*OrderDependency: 20 AnySetup *KCCollate
+*DefaultKCCollate: PrnDef
+*KCCollate PrnDef/Printer settings: ""
+*KCCollate On/Collate: "<< /Collate true >> setpagedevice"
+*KCCollate None/None: "<< /Collate false >> setpagedevice"
+*KCCollate QuickCopy/Quick copy: "
+  userdict /UICollateDetails known not {userdict /UICollateDetails 10 dict put} if
+  userdict /UICollateDetails get dup /Mode 0 put dup /Type 8 put /Hold 1 put <</Collate true /CollateDetails UICollateDetails>> setpagedevice"
+*End
+*KCCollate ProofHold/Proof and hold: "
+  userdict /UICollateDetails known not {userdict /UICollateDetails 10 dict put} if
+  userdict /UICollateDetails get dup /Mode 0 put dup /Type 8 put /Hold 3 put <</Collate true /CollateDetails UICollateDetails>> setpagedevice"
+*End
+*%remove job storage
+*CloseUI: *KCCollate
+*%*% User Login Definitions
+*% Job Name Definitions
+*OpenUI *JobName/Overwrite Job Name: PickOne
+*OrderDependency: 65 AnySetup *JobName
+*DefaultJobName: 1
+*JobName 0/Replace existing file: ""
+*JobName 1/Use job name + date and time: ""
+*CloseUI: *JobName
+*CloseGroup: StorageOptions/Job Settings
+*OpenGroup: AccountingOptions/Job Accounting
+*% Management Code Definitions
+*OpenUI *KmManagment/Job Accounting: PickOne
+*OrderDependency: 60 AnySetup *KmManagment
+*DefaultKmManagment: Default
+*KmManagment Default/Off: ""
+*KmManagment MG00000000/00000000: "(00000000) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000001/00000001: "(00000001) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000002/00000002: "(00000002) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000003/00000003: "(00000003) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000004/00000004: "(00000004) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000005/00000005: "(00000005) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000006/00000006: "(00000006) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000007/00000007: "(00000007) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000008/00000008: "(00000008) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000009/00000009: "(00000009) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000010/00000010: "(00000010) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000011/00000011: "(00000011) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000012/00000012: "(00000012) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000013/00000013: "(00000013) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000014/00000014: "(00000014) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000015/00000015: "(00000015) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000016/00000016: "(00000016) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000017/00000017: "(00000017) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000018/00000018: "(00000018) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000019/00000019: "(00000019) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000020/00000020: "(00000020) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000021/00000021: "(00000021) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000022/00000022: "(00000022) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000023/00000023: "(00000023) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000024/00000024: "(00000024) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000025/00000025: "(00000025) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000026/00000026: "(00000026) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000027/00000027: "(00000027) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000028/00000028: "(00000028) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000029/00000029: "(00000029) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000030/00000030: "(00000030) statusdict /setmanagementnumber get exec"
+*?KmManagment: ""
+*End
+*CloseUI: *KmManagment
+*CloseGroup: AccountingOptions/Job Accounting
+*% PPD Version Info 
+*OpenUI *KCVersion/PPD Version: PickOne
+*OrderDependency: 25 AnySetup *KCVersion
+*DefaultKCVersion: Default
+*KCVersion Default/8.1602 [02-29-2016]: "
+globaldict /ct_AddStdCIDMap known {
+globaldict /ct_AddStdCIDMap get  length 7 eq
+{globaldict /ct_AddStdCIDMap get  0 get type /stringtype eq
+{globaldict /ct_AddStdCIDMap get  1 get 0 eq
+{globaldict /ct_AddStdCIDMap get  2 get () eq
+{globaldict /ct_AddStdCIDMap get  3 get /SubFileDecode eq
+{globaldict /ct_AddStdCIDMap get  4 get systemdict /filter get eq
+{currentglobal true setglobal globaldict
+/ct_AddStdCIDMap
+globaldict /ct_AddStdCIDMap get dup
+globaldict /ct_AddStdCIDMap get
+0 get length 1 exch
+put put setglobal
+} if} if} if} if} if} if} if"
+*End
+*CloseUI: *KCVersion
+*% Font Information
+*DefaultFont: Courier
+*Font AvantGarde-Book: Standard "(001.006S)" Standard ROM
+*Font AvantGarde-BookOblique: Standard "(001.006S)" Standard ROM
+*Font AvantGarde-Demi: Standard "(001.007S)" Standard ROM
+*Font AvantGarde-DemiOblique: Standard "(001.007S)" Standard ROM
+*Font Bookman-Light: Standard "(001.004S)" Standard ROM
+*Font Bookman-LightItalic: Standard "(001.004S)" Standard ROM
+*Font Bookman-Demi: Standard "(001.004S)" Standard ROM
+*Font Bookman-DemiItalic: Standard "(001.004S)" Standard ROM
+*Font Courier: Standard "(002.004S)" Standard ROM
+*Font Courier-Oblique: Standard "(002.004S)" Standard ROM
+*Font Courier-Bold: Standard "(002.004S)" Standard ROM
+*Font Courier-BoldOblique: Standard "(002.004S)" Standard ROM
+*Font Helvetica: Standard "(001.006S)" Standard ROM
+*Font Helvetica-Oblique: Standard "(001.006S)" Standard ROM
+*Font Helvetica-Bold: Standard "(001.007S)" Standard ROM
+*Font Helvetica-BoldOblique: Standard "(001.007S)" Standard ROM
+*Font Helvetica-Narrow: Standard "(001.006S)" Standard ROM
+*Font Helvetica-Narrow-Oblique: Standard "(001.006S)" Standard ROM
+*Font Helvetica-Narrow-Bold: Standard "(001.007S)" Standard ROM
+*Font Helvetica-Narrow-BoldOblique: Standard "(001.007S)" Standard ROM
+*Font NewCenturySchlbk-Roman: Standard "(001.007S)" Standard ROM
+*Font NewCenturySchlbk-Italic: Standard "(001.006S)" Standard ROM
+*Font NewCenturySchlbk-Bold: Standard "(001.009S)" Standard ROM
+*Font NewCenturySchlbk-BoldItalic: Standard "(001.007S)" Standard ROM
+*Font Palatino-Roman: Standard "(001.005S)" Standard ROM
+*Font Palatino-Italic: Standard "(001.005S)" Standard ROM
+*Font Palatino-Bold: Standard "(001.005S)" Standard ROM
+*Font Palatino-BoldItalic: Standard "(001.005S)" Standard ROM
+*Font Symbol: Special "(001.007S)" Special ROM
+*Font Times-Roman: Standard "(001.007S)" Standard ROM
+*Font Times-Italic: Standard "(001.007S)" Standard ROM
+*Font Times-Bold: Standard "(001.007S)" Standard ROM
+*Font Times-BoldItalic: Standard "(001.009S)" Standard ROM
+*Font ZapfChancery-MediumItalic: Standard "(001.007S)" Standard ROM
+*Font ZapfDingbats: Special "(001.004S)" Special ROM
+*Font Albertus-Medium: Standard "(001.008S)" Standard ROM
+*Font Albertus-ExtraBold: Standard "(001.008S)" Standard ROM
+*Font AntiqueOlive: Standard "(001.008S)" Standard ROM
+*Font AntiqueOlive-Italic: Standard "(001.008S)" Standard ROM
+*Font AntiqueOlive-Bold: Standard "(001.008S)" Standard ROM
+*Font Arial: Standard "(001.008S)" Standard ROM
+*Font Arial-Italic: Standard "(001.008S)" Standard ROM
+*Font Arial-Bold: Standard "(001.008S)" Standard ROM
+*Font Arial-BoldItalic: Standard "(001.008S)" Standard ROM
+*Font CGOmega: Standard "(001.008S)" Standard ROM
+*Font CGOmega-Italic: Standard "(001.008S)" Standard ROM
+*Font CGOmega-Bold: Standard "(001.008S)" Standard ROM
+*Font CGOmega-BoldItalic: Standard "(001.008S)" Standard ROM
+*Font CGTimes: Standard "(001.008S)" Standard ROM
+*Font CGTimes-Italic: Standard "(001.008S)" Standard ROM
+*Font CGTimes-Bold: Standard "(001.008S)" Standard ROM
+*Font CGTimes-BoldItalic: Standard "(001.008S)" Standard ROM
+*Font Clarendon-Condensed-Bold: Standard "(001.008S)" Standard ROM
+*Font Coronet: Standard "(001.008S)" Standard ROM
+*Font CourierHP: Standard "(001.008S)" Standard ROM
+*Font CourierHP-Italic: Standard "(001.008S)" Standard ROM
+*Font CourierHP-Bold: Standard "(001.008S)" Standard ROM
+*Font CourierHP-BoldItalic: Standard "(001.008S)" Standard ROM
+*Font Garamond-Antiqua: Standard "(001.008S)" Standard ROM
+*Font Garamond-Halbfett: Standard "(001.008S)" Standard ROM
+*Font Garamond-Kursiv: Standard "(001.008S)" Standard ROM
+*Font Garamond-KursivHalbfett: Standard "(001.008S)" Standard ROM
+*Font LetterGothic: Standard "(001.008S)" Standard ROM
+*Font LetterGothic-Italic: Standard "(001.008S)" Standard ROM
+*Font LetterGothic-Bold: Standard "(001.008S)" Standard ROM
+*Font Marygold: Standard "(001.008S)" Standard ROM
+*Font SymbolMT: Standard "(001.008S)" Standard ROM
+*Font TimesNewRoman: Standard "(001.008S)" Standard ROM
+*Font TimesNewRoman-Italic: Standard "(001.008S)" Standard ROM
+*Font TimesNewRoman-BoldItalic: Standard "(001.008S)" Standard ROM
+*Font TimesNewRoman-Bold: Standard "(001.008S)" Standard ROM
+*Font Univers-Medium: Standard "(001.008S)" Standard ROM
+*Font Univers-MediumItalic: Standard "(001.008S)" Standard ROM
+*Font Univers-Bold: Standard "(001.008S)" Standard ROM
+*Font Univers-BoldItalic: Standard "(001.008S)" Standard ROM
+*Font Univers-Condensed-Medium: Standard "(001.008S)" Standard ROM
+*Font Univers-Condensed-MediumItalic: Standard "(001.008S)" Standard ROM
+*Font Univers-Condensed-Bold: Standard "(001.008S)" Standard ROM
+*Font Univers-Condensed-BoldItalic: Standard "(001.008S)" Standard ROM
+*Font Wingdings-Regular: Special "(001.008S)" Special ROM
+*?FontQuery: "
+  save
+  /str 80 string dup 0 (fonts/) putinterval def
+  {count 1 gt
+    { exch dup str 6 94 getinterval cvs
+      (/) print print (:) print
+      FontDirectory exch known
+      {(Yes)}{(No)} ifelse =
+    }{exit} ifelse
+  } bind loop (*)
+  = flush restore"
+*End
+*?FontList: "save FontDirectory { pop == } bind forall flush (*) = flush restore"
+*% Printer Messages
+*Message: "%%[ exitserver: permanent state may be changed ]%%"
+*Message: "%%[ Flushing: rest of job (to end-of-file) will be ignored ]%%"
+*Message: "\FontName\ not found, using Courier"
+*% Status (format: %%[ status: <one of these> ]%% )
+*Status: "warming up"/warming up
+*Status: "idle"/idle
+*Status: "busy"/busy
+*Status: "waiting"/waiting
+*Status: "printing"/printing
+*Status: "initializing"/initializing
+*Status: "printing test page"/printing test page
+*% Printer Error (format: %%[ PrinterError: <one of these> ]%% )
+*PrinterError: "paper entry misfeed"
+*PrinterError: "cover open"
+*PrinterError: "no paper tray"
+*PrinterError: "out of paper"
+*PrinterError: "toner low (halt)"
+*PrinterError: "warming up"
+*PrinterError: "other reason"
+*PrinterError: "video interface mode"
+*PrinterError: "offline"
+*PrinterError: "toner low (warning)"
+*% Input Sources (format: %%[ status: <stat>;source:<one of these> ]%% )
+*Source: "Serial"
+*Source: "Parallel"
+*Source: "LocalTalk"
+*Source: "Option"
+*%  End of PPD file for Kyocera ECOSYS P5021cdw (English)
+*%  Linux Version
