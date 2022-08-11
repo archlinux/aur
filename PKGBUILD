@@ -2,15 +2,15 @@
 _base=ufl
 pkgname=python-fenics-${_base}
 pkgdesc="UFL - Unified Form Language"
-pkgver=2022.1.0.post0
+pkgver=2022.2.0
 pkgrel=1
 arch=(any)
 url="https://github.com/FEniCS/${_base}"
 license=(MIT)
 depends=(python-numpy python-setuptools)
 makedepends=(python-wheel)
-source=(${url}/archive/refs/tags/${pkgver}.tar.gz)
-sha512sums=('261c5634fefcdcddd956359e59d5474cf67fe9b3b63cd7740b41b022bee74a564ea637ea288360d46017271b391741d42a74479bd8978cb235627d7a3a7aee00')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz)
+sha512sums=('45c8e603ea99af6cfcd7274fa95aa5bacb349a29390e1b8104a3123823f9f997e7a45bd1be866fd7f06f1aaba9c99681674001483702de168235b4442296f1fc')
 provides=("python-${_base}")
 conflicts=("python-${_base}" "python-${_base}-git")
 
