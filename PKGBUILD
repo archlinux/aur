@@ -1,8 +1,8 @@
 # Maintainer: Ayatale  <ayatale@qq.com>
 
 pkgname=ytui-music-bin
-pkgver=1.0.0b
-_pkgver=1.0.0-beta
+pkgver=2.0.0b
+_pkgver=2.0.0-beta
 pkgrel=1
 pkgdesc="Listen to music from youtube inside terminal with sleek tui"
 arch=("x86_64")
@@ -12,8 +12,8 @@ depends=("mpv" "youtube-dl")
 provides=(${pkgname%-bin})
 source=("${url}/releases/download/v${_pkgver}/ytui_music-linux-amd64"
         "ytui-music.png")
-sha256sums=("8cc871739a56dc61a0a65d1d5c7d348f999c9fbb8eb1e466e96805afed6c06bf"
-            "0427772c908fa26a3cfe20e01c9a22c80a63a5e0503907d861f1ba3396ea6505")
+sha256sums=('27c08cbf5f47a82f902eb7ee2e30103cd2b7de5515b1e774de18fbb0e8dd417c'
+            '0427772c908fa26a3cfe20e01c9a22c80a63a5e0503907d861f1ba3396ea6505')
 prepare() {
 cat > ytui-music.desktop <<- EOF
 [Desktop Entry]
