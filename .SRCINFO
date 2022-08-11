@@ -1,24 +1,15 @@
 pkgbase = libtree-git
 	pkgdesc = ldd as a tree with an option to bundle dependencies into a single folder
-	pkgver = 1.0.4.r8.g02ee2b1
+	pkgver = 2.0.0.r161.g87ea31a
 	pkgrel = 1
 	url = https://github.com/haampie/libtree
 	arch = x86_64
 	license = MIT
-	checkdepends = gtest
 	makedepends = git
-	makedepends = cmake
-	makedepends = cxxopts
-	makedepends = termcolor
-	makedepends = elfio
-	depends = cppglob
 	depends = gcc-libs
-	optdepends = binutils: For the --strip option
-	optdepends = chrpath: For the --chrpath option
 	provides = libtree
 	conflicts = libtree
 	source = git+https://github.com/haampie/libtree.git
 	md5sums = SKIP
 
 pkgname = libtree-git
-
