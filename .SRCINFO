@@ -1,7 +1,7 @@
 pkgbase = python2-pillow
 	pkgdesc = Python Imaging Library (PIL) fork
 	pkgver = 6.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://python-pillow.github.io/
 	arch = x86_64
 	arch = i686
@@ -28,6 +28,7 @@ pkgbase = python2-pillow
 	optdepends = tk: for the ImageTK module
 	optdepends = python2-olefile: OLE2 file support
 	optdepends = python2-pyqt5: for the ImageQt module
+	conflicts = python2-imaging
 	source = https://files.pythonhosted.org/packages/source/P/Pillow/Pillow-6.2.2.tar.gz
 	sha256sums = db9ff0c251ed066d367f53b64827cc9e18ccea001b986d08c265e53625dab950
 
