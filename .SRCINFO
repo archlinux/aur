@@ -1,0 +1,16 @@
+pkgbase = cargo-wapm
+	pkgdesc = Cargo sub-command for publishing Rust crates to the WebAssembly Package Manager
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/Michael-F-Bryan/cargo-wapm
+	arch = x86_64
+	arch = i686
+	license = Apache
+	makedepends = cargo
+	source = cargo-wapm-0.1.3.tar.gz::https://github.com/Michael-F-Bryan/cargo-wapm/archive/refs/tags/v0.1.3.tar.gz
+	sha256sums = 8806ff9162bcea75b1c409a9a143740f8363bc44c0b17faccfe9f425e1268d06
+	b2sums = bb4d966388d72e519e4e4ca6e1aaa209448484e2a337f506c1050fddb27f0f74ea02fca5116e7c4ad06722b9bf41a1c111707d8835b2365050615f52c77f6478
+	depends_x86_64 = gcc-libs
+	depends_i686 = gcc-libs
+
+pkgname = cargo-wapm
