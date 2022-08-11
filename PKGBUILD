@@ -1,5 +1,5 @@
-# Maintainer: jackreeds
-maintainer=jackreeds
+# Maintainer: mh4ckwascut <mh4ckt3mh4ckt1c4s@protonmail.com>
+maintainer=mh4ckwascut
 pkgname_orig=gobuster
 pkgname=gobuster-bin
 pkgver=3.1.0
