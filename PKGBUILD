@@ -1,7 +1,7 @@
 # Maintainer: Daniel Pereira <daniel@garajau.com.br>
 
 pkgname=wmcompanion
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Desktop system event listener for minimal window manager users"
 url="https://github.com/kriansa/wmcompanion"
@@ -10,7 +10,7 @@ license=(Apache)
 depends=(python python-dbus-next)
 makedepends=(python-poetry python-installer)
 source=("https://github.com/kriansa/wmcompanion/archive/v${pkgver}.tar.gz")
-sha256sums=(d4e74afba055b083460137d110668bbeb462d8fefc7b07b625b6c6b3927943ca)
+sha256sums=(ef3c6cb2992d4c57ca8248c4ed52570e725a2c3e3f0d23b9b4a666a3cd53388e)
 
 build() {
   cd "$pkgname-$pkgver" || exit 1
