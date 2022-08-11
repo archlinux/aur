@@ -1,7 +1,7 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=woof-doom
 _pkgname=woof
-pkgver=10.1.0
+pkgver=10.2.0
 pkgrel=1
 pkgdesc="Woof! is a continuation of Lee Killough's Doom source port MBF targeted at modern systems"
 arch=(x86_64)
@@ -14,7 +14,7 @@ depends=(sdl2 sdl2_net sdl2_mixer)
 makedepends=(cmake)
 conflicts=(woof-git)
 source=("https://github.com/fabiangreffrath/${_pkgname}/archive/refs/tags/${_pkgname}_${pkgver}.tar.gz")
-sha256sums=(92f818f5b7082644fd454cdaee80b58e160aaef9cd4a4d82fbe121f685772955)
+sha256sums=(2c72b63a2d08f9cf3fc69e99bfe6b4528141e2adc0b79815e04f9c1af6f4f987)
 
 build() {
     cmake -B build -S "${_pkgname}-${_pkgname}_${pkgver}" \

@@ -1,6 +1,6 @@
 pkgbase = woof-doom
 	pkgdesc = Woof! is a continuation of Lee Killough's Doom source port MBF targeted at modern systems
-	pkgver = 10.1.0
+	pkgver = 10.2.0
 	pkgrel = 1
 	url = https://github.com/fabiangreffrath/woof
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = woof-doom
 	depends = sdl2_net
 	depends = sdl2_mixer
 	conflicts = woof-git
-	source = https://github.com/fabiangreffrath/woof/archive/refs/tags/woof_10.1.0.tar.gz
-	sha256sums = 92f818f5b7082644fd454cdaee80b58e160aaef9cd4a4d82fbe121f685772955
+	source = https://github.com/fabiangreffrath/woof/archive/refs/tags/woof_10.2.0.tar.gz
+	sha256sums = 2c72b63a2d08f9cf3fc69e99bfe6b4528141e2adc0b79815e04f9c1af6f4f987
 
 pkgname = woof-doom
