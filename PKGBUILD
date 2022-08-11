@@ -4,7 +4,7 @@
 
 _target=riscv64-linux-gnu
 pkgname=$_target-binutils
-pkgver=2.36.1
+pkgver=2.38
 pkgrel=1
 pkgdesc='Assemble and manipulate binary and object files for 32-bit and 64-bit RISC-V'
 arch=(x86_64)
@@ -13,7 +13,7 @@ license=(GPL)
 groups=(risc-v)
 makedepends=(setconf)
 source=("https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz")
-sha512sums=('cc24590bcead10b90763386b6f96bb027d7594c659c2d95174a6352e8b98465a50ec3e4088d0da038428abe059bbc4ae5f37b269f31a40fc048072c8a234f4e9')
+sha512sums=('8bf0b0d193c9c010e0518ee2b2e5a830898af206510992483b427477ed178396cd210235e85fd7bd99a96fc6d5eedbeccbd48317a10f752b7336ada8b2bb826d')
 
 prepare() {
   setconf binutils-$pkgver/libiberty/configure ac_cpp "'\$CPP \$CPPFLAGS -O2'"
@@ -36,13 +36,13 @@ build() {
     --with-gnu-ld \
     --with-sysroot=/usr/$_target \
     --with-system-zlib
-  make
+  make -O
 }
 
 check() {
   # * Unset LDFLAGS as testsuite makes assumptions about which ones are active.
   # * Do not abort on errors - manually check log files.
-  make -C "binutils-$pkgver" LDFLAGS="" -k check
+  make -O -C "binutils-$pkgver" LDFLAGS="" -k check
 }
 
 package() {
