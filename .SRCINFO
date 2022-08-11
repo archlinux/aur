@@ -1,6 +1,6 @@
 pkgbase = qbec
 	pkgdesc = Configure Kubernetes objects on multiple clusters using Jsonnet
-	pkgver = 0.13.2
+	pkgver = 0.15.2
 	pkgrel = 0
 	url = https://github.com/splunk/qbec
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = qbec
 	makedepends = go
 	optdepends = jsonnet-bundler-bin: jsonnet package manager
 	provides = qbec
-	source = https://github.com/splunk/qbec/archive/v0.13.2.tar.gz
-	sha256sums = 7c7d5eb36fc7036b998a5255ceb002ff79fa7e867753ceabcecaf4f4e9688c2e
+	source = https://github.com/splunk/qbec/archive/v0.15.2.tar.gz
+	sha256sums = 570c1818028ae66a23bb83448cc6e499dd1c01a34632e8dba0d604fc7c185be7
 
 pkgname = qbec
 
