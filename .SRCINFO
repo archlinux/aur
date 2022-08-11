@@ -1,6 +1,6 @@
 pkgbase = gptrace-git
 	pkgdesc = Trace the activities of an external application
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://www.muflone.com/gptrace/
 	arch = any
