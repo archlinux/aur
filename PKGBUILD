@@ -2,7 +2,7 @@
 # Inspired from the PKGBUILD for vscodium-bin and code-stable-git.
 
 pkgname=vscodium-git
-pkgver=1.68.1.r7.g3fa8eee
+pkgver=1.70.1.r0.gf05272f
 pkgrel=1
 pkgdesc="Free/Libre Open Source Software Binaries of VSCode (git build from latest commit)."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -43,6 +43,7 @@ makedepends=(
     'patch'
     'python'
     'pkg-config'
+    'ripgrep'
 )
 source=(
     "git+${url}#branch=${branch}"
