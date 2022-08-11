@@ -1,0 +1,5 @@
+src/
+pkg/
+hostap/
+*.xz
+*.zst
