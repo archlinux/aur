@@ -1,7 +1,7 @@
 pkgbase = vfu
 	pkgdesc = Versatile text-based file-manager
 	pkgver = 4.23
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cade.noxrun.com/projects/vfu
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = vfu
 	arch = ppc64le
 	license = GPL
 	depends = ncurses
+	depends = pcre2
 	optdepends = perl: for the rx_* archiving utilities
 	optdepends = rpmextract: for rx_rpm
 	optdepends = unrar: for rx_rar

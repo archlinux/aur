@@ -3,12 +3,12 @@
 
 pkgname=vfu
 pkgver=4.23
-pkgrel=1
+pkgrel=2
 pkgdesc="Versatile text-based file-manager"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'ppc64le')
 url="http://cade.noxrun.com/projects/vfu"
 license=('GPL')
-depends=('ncurses')
+depends=('ncurses' 'pcre2')
 optdepends=('perl: for the rx_* archiving utilities'
             'rpmextract: for rx_rpm'
             'unrar: for rx_rar'
@@ -19,7 +19,8 @@ sha256sums=('cb118813fd9b629731e96d70098319193b3415aa60e796596bacc6c482960779')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-
+  cp ../../pcre2_parallel.patch .
+  patch -p1 < pcre2_parallel.patch
   make CCDEF="$CFLAGS -D_FILE_OFFSET_BITS=64"
   ./build.docs
 }
