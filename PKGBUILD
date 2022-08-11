@@ -1,7 +1,7 @@
 # Maintainer: xgjmibzr <xgjmibzr@gmail.com>
 
 pkgname=superslicer-bin
-pkgver=2.3.57.12
+pkgver=2.4.58.4
 _pkgtag=$pkgver
 _appimage=SuperSlicer-ubuntu_18.04-$_pkgtag.AppImage
 pkgrel=1
@@ -16,14 +16,13 @@ conflicts=('superslicer' 'superslicer-git' 'superslicer-prerelease')
 source=("$url/releases/download/$_pkgtag/$_appimage"
         "superslicer.patch"
         )
-sha256sums=('e03c1c23a048a633952b32d21c54e322f9ec019b35fe06d2e1173c88186d84d5'
-            '48a9b58754b02d1ec94a4234644a731708a825ef4d50002bdef94db4ae0815d3'
-	    )
+sha256sums=('a3b9857e68bb2bf3ad936cad118f767b677b350acaf05b0d054bfe320e1c19e8'
+            'a2d8092e5ec12e96d487d55b564f56c2df5bd41a3be066734b94465695a6c404')
 noextract=("${_appimage}")
 
 prepare() {
     chmod +x ${srcdir}/${_appimage}
-    ${srcdir}/${_appimage} --appimage-extract Slic3r.desktop
+    ${srcdir}/${_appimage} --appimage-extract SuperSlicer.desktop
     ${srcdir}/${_appimage} --appimage-extract resources/icons
 }
 
@@ -43,7 +42,7 @@ package() {
     install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${_appimage}"
 
     # Desktop file
-    install -Dm644 "${srcdir}/squashfs-root/Slic3r.desktop"\
+    install -Dm644 "${srcdir}/squashfs-root/SuperSlicer.desktop"\
             "${pkgdir}/usr/share/applications/SuperSlicer.desktop"
 
     # Icon images

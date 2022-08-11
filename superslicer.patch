@@ -1,5 +1,5 @@
---- squashfs-root/Slic3r.desktop
-+++ squashfs-root/Slic3r.desktop
+--- squashfs-root/SuperSlicer.desktop
++++ squashfs-root/SuperSlicer.desktop
 @@ -1,7 +1,8 @@
  [Desktop Entry]
  Name=SuperSlicer
