@@ -3,7 +3,7 @@
 
 pkgname=python-defcon
 _pyname=${pkgname#python-}
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc='A set of UFO based objects for use in font editing applications'
 arch=(any)
@@ -22,7 +22,7 @@ optdepends=(python-fontpens
             'python-lxml: enables faster UFO parsing')
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.zip")
-sha256sums=('fa7964f711b798e092e311f3a79e09fd5fa17bb1cd320d5a32015e4c54eb3070')
+sha256sums=('aee396e6d69e45ae65c8264781392d4c29116934b2737ad76d8230b40c182a44')
 
 build() {
 	cd "$_archive"
