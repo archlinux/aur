@@ -18,11 +18,9 @@ pkgbase = wasi-sdk-git
 	source = git+https://git.savannah.gnu.org/git/config.git
 	source = git+https://github.com/llvm/llvm-project.git
 	source = git+https://github.com/WebAssembly/wasi-libc.git
-	source = 226.patch
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = 574a92bc6774cc72a94bf3e2bc50e697
 
 pkgname = wasi-sdk-git
