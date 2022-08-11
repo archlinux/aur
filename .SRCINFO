@@ -1,0 +1,23 @@
+pkgbase = peak-lin-driver-dkms
+	pkgdesc = Linux driver for PEAK LIN adapter
+	pkgver = 1.0.0
+	pkgrel = 9
+	url = https://forum.peak-system.com/viewtopic.php?t=5875
+	arch = any
+	license = LGPL2.1
+	license = GPL2
+	depends = linux>=2.6.38
+	depends = linux-headers
+	depends = dkms
+	provides = peak-linux-driver
+	conflicts = peak-linux-driver
+	source = https://www.peak-system.com/cupd2/plin_linux.zip
+	source = Makefile
+	source = Kbuild
+	source = dkms.conf
+	md5sums = 237fdbf4dcbfe5d1a1edb1460e4be58e
+	md5sums = 344c9454481b30d84961c84220a82e25
+	md5sums = 129c220ddfe26423eb9a2e62aa680e96
+	md5sums = 277701af599a4b480eb9e079cc805063
+
+pkgname = peak-lin-driver-dkms
