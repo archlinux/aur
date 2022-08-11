@@ -24,17 +24,17 @@ pkgver() {
 }
 
 build() {
-  pushd ${pkgbase}
+  pushd gamemode
   patch -p1 < ${startdir}/fix_compilation.patch
   popd
-  meson ${pkgbase} build --prefix /usr -Dwith-systemd-user-unit-dir=/usr/lib/systemd/user -Dwith-privileged-group=gamemode
+  meson gamemode build --prefix /usr -Dwith-systemd-user-unit-dir=/usr/lib/systemd/user -Dwith-privileged-group=gamemode
   ninja -C build
 
   export CFLAGS+=" -m32"
   export CXXFLAGS+=" -m32"
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  meson ${pkgbase} build32 --prefix /usr \
+  meson gamemode build32 --prefix /usr \
   -Dwith-sd-bus-provider=no-daemon \
   -Dwith-examples=false \
   -Dwith-util=false \
@@ -44,12 +44,12 @@ build() {
 
 package_gamemode-git() {
   DESTDIR=${pkgdir} ninja -C build install
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" ${pkgbase}/LICENSE.txt
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" gamemode/LICENSE.txt
 }
 
 package_lib32-gamemode-git() {
   depends=('gamemode-git' 'lib32-dbus')
   DESTDIR=${pkgdir} ninja -C build32 install
   rm -rf $pkgdir/usr/{include,bin,lib,share}
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" ${pkgbase}/LICENSE.txt
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" gamemode/LICENSE.txt
 }
