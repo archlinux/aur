@@ -5,6 +5,7 @@ pkgbase = gobuster-bin
 	url = https://github.com/OJ/gobuster
 	arch = x86_64
 	license = Apache
+    depends = p7zip
 	provides = gobuster
 	conflicts = gobuster
 	conflicts = gobuster-git
