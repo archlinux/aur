@@ -1,15 +1,4 @@
-# Maintainer: Phillip Smith <fukawi2@NO-SPAM.gmail.com>
-# http://github.com/fukawi2/aur-packages
-
-### I AM ONLY THE PACKAGER, NOT THE DEVELOPER
-### Please ask support questions about this software in one of:
-###   1) The AUR comments; OR
-###   2) Upstream forums/maillist etc; OR
-###   3) The ArchLinux forums
-### I do not always know enough about the software itself, or don't have the
-### time to promptly respond to direct emails.
-### If you have found a problem with the package/PKGBUILD (as opposed to
-### the software) then please do email me or post an AUR comment.
+# Contributor: Phillip Smith <fukawi2@NO-SPAM.gmail.com>
 
 pkgname=katarina
 pkgver=2.0
@@ -19,7 +8,7 @@ arch=('any')
 url="http://katarina.sourceforge.net/"
 license=('GPL2')
 depends=('perl' 'rsync')
-source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
+source=("https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('0fc4aad047c42342ed7d5d656d9bc2fe')
 
 build() {

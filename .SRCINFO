@@ -7,8 +7,7 @@ pkgbase = katarina
 	license = GPL2
 	depends = perl
 	depends = rsync
-	source = http://downloads.sourceforge.net/katarina/katarina-2.0.tar.gz
+	source = https://downloads.sourceforge.net/katarina/katarina-2.0.tar.gz
 	md5sums = 0fc4aad047c42342ed7d5d656d9bc2fe
 
 pkgname = katarina
-
