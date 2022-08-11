@@ -8,7 +8,7 @@ pkgbase = cin-appimage
 	conflicts = cinelerra-gg-git
 	conflicts = cin
 	options = !strip
-	source = https://cinelerra-gg.org/download/images/CinGG-20211031-x86_64.AppImage
-	md5sums = 793eeb744c6cc5b38310acb379baeca9
+	source = https://cinelerra-gg.org/download/images/CinGG-20220731-x86_64.AppImage
+	md5sums = d7f94ec321a3bd2350374d05feb0de7d
 
 pkgname = cin-appimage
