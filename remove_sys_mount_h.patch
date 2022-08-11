@@ -1,0 +1,14 @@
+diff --unified --recursive --text src/snapraid-12.1/cmdline/portable.h new/snapraid-12.1/cmdline/portable.h
+--- src/snapraid-12.1/cmdline/portable.h	2022-01-09 02:46:57.000000000 -0500
++++ new/snapraid-12.1/cmdline/portable.h	2022-08-11 15:47:27.064154515 -0400
+@@ -101,10 +101,6 @@
+ #include <sys/param.h>
+ #endif
+ 
+-#if HAVE_SYS_MOUNT_H
+-#include <sys/mount.h>
+-#endif
+-
+ #if HAVE_SYS_VFS_H
+ #include <sys/vfs.h>
+ #endif
