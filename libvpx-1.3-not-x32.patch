@@ -1,0 +1,13 @@
+diff '--color=auto' -rupN libvpx-1.3.0.orig/build/make/configure.sh libvpx-1.3.0/build/make/configure.sh
+--- libvpx-1.3.0.orig/build/make/configure.sh	2022-08-11 15:36:47.036147259 +0200
++++ libvpx-1.3.0/build/make/configure.sh	2022-08-11 15:37:09.294922277 +0200
+@@ -1019,7 +1019,7 @@ EOF
+         bits=32
+         enabled x86_64 && bits=64
+         check_cpp <<EOF && bits=x32
+-#ifndef __ILP32__
++#if !defined(__ILP32__) || !defined(__x86_64__)
+ #error "not x32"
+ #endif
+ EOF
+
