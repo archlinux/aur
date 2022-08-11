@@ -3,14 +3,14 @@
 
 pkgname=soundfont-personalcopy
 pkgver=5.1f
-pkgrel=1
-pkgdesc="A large free SoundFont."
+pkgrel=2
+pkgdesc="A large free SoundFont"
 arch=(any)
 license=("custom")
 url="http://www.personalcopy.com"
 groups=('soundfonts')
 sha256sums=('e69cf923897022dcf6416ab8d433f877a9f2734fde2ecaa0bb270a17ba63cd16')
-source=("ftp://ftp.personalcopy.net/pub/PC${pkgver/./}.sf2.gz")
+source=("http://www.personalcopy.com/Downloads/PC${pkgver/./}.sf2.gz")
 
 package() {
   cd "$srcdir"
