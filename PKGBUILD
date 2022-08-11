@@ -4,6 +4,7 @@
 pkgname=aisleriot-git
 pkgver=3.22.25.r27
 pkgrel=1
+epoch=1
 pkgdesc="A collection of patience games written in guile scheme"
 url="https://wiki.gnome.org/Apps/Aisleriot"
 arch=('x86_64')
