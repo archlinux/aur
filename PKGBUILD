@@ -1,5 +1,5 @@
 pkgname="runman"
-pkgver="1.0.1"
+pkgver="1.0.2"
 pkgrel="0"
 pkgdesc="A simple C++ code quick compile and run tool."
 arch=("x86_64")

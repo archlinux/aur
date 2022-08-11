@@ -1,7 +1,7 @@
 pkgbase = runman
 	pkgdesc = A simple C++ code quick compile and run tool.
-	pkgver = 1.0.0
-	pkgrel = 1
+	pkgver = 1.0.2
+	pkgrel = 0
 	arch = x86_64
 	license = custom
 	depends = gcc
