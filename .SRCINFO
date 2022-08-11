@@ -1,10 +1,12 @@
 pkgbase = iwgtk
 	pkgdesc = Lightweight wireless network management GUI (front-end for iwd)
 	pkgver = 0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/J-Lentz/iwgtk
 	arch = x86_64
 	license = GPL3
+	makedepends = meson>=0.60.0
+	makedepends = scdoc
 	depends = iwd>=1.28
 	depends = gtk4>=4.6
 	depends = qrencode
