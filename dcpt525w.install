@@ -1,0 +1,89 @@
+# Install script source is official deb packet, control.tar.gz
+install_scripts="/opt/brother/Printers/dcpt525w/scripts"
+
+rm_scripts="/tmp/dcpt525w.rm"
+
+log="/tmp/dcpt525w.log"
+
+## arg 1:  the new package version
+pre_install() {
+  echo "  Install DCP-T525W Driver"
+  echo "  Log file: ${log}"
+  echo "==================================== INSTALL ===================================" >> "${log}"
+}
+
+## arg 1:  the new package version
+post_install() {
+  chmod +x "${install_scripts}/postinst" &>> "${log}"
+  chmod +x "${install_scripts}/prerm" &>> "${log}"
+  chmod +x "${install_scripts}/postrm" &>> "${log}"
+  echo ""
+  echo "  Configure DCP-T525W Driver and add printer to CUPS"
+  echo ""
+
+  echo "Configure DCP-T525W Driver and add printer to CUPS" >> "${log}"
+  "${install_scripts}/postinst" &>> "${log}"
+
+  echo ""
+  echo "ATTENTION: "
+  echo "  The printer has been added to the CUPS as USB connected. "
+  echo "  If you want to use WiFi network, setup the WiFi connection on the printer and"
+  echo "  change connection type in CUPS. Connection string:"
+  echo "    lpd://xxx.xxx.xxx.xxx/BINARY_P1"
+  echo "  where xxx.xxx.xxx.xxx is printer IP address "
+
+  echo ""
+  echo "NOTE: "
+  echo "  Setup sane-airscan package to make the scanner avaliable for the SANE "
+  echo "  OR "
+  echo "  setup brscan5 packege and run command: "
+  echo "    brsaneconfig5 -a name="Brother DCP-T525W" model=DCPT525W ip=xxx.xxx.xxx.xxx"
+  echo "  where xxx.xxx.xxx.xxx is printer IP address "
+  echo ""
+
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+  echo "  Update DCP-T525W Driver"
+  echo "  Log file: ${log}"
+  echo "==================================== UPDATE ====================================" >> "${log}"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  post_install $1
+}
+
+## arg 1:  the old package version
+pre_remove() {
+  echo "  Remove DCP-T525W Driver"
+  echo "  Log file: ${log}"
+  echo "==================================== REMOVE ====================================" >> "${log}"
+  echo "Copy rm scripts to the directory: ${rm_scripts} " >> "${log}"
+
+  mkdir -p "${rm_scripts}"
+  cp "${install_scripts}/prerm" "${rm_scripts}/prerm" &>> "${log}"
+  cp "${install_scripts}/postrm" "${rm_scripts}/postrm" &>> "${log}"
+  echo ""
+  echo "  Remove DCP-T525W printer from CUPS"
+  echo ""
+
+  echo "Remove DCP-T525W printer from CUPS" >> "${log}"
+  "${rm_scripts}/prerm"  &>> "${log}"
+}
+
+## arg 1:  the old package version
+post_remove() {
+  echo ""
+  echo "  Clean up the DCP-T525W links"
+  echo ""
+
+  echo "Clean up the DCP-T525W links" >> "${log}"
+  "${rm_scripts}/postrm" &>> "${log}"
+  rm "${rm_scripts}/prerm" &>> "${log}"
+  rm "${rm_scripts}/postrm" &>> "${log}"
+  rm -r "${rm_scripts}" &>> "${log}"
+}

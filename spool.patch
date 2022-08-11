@@ -1,0 +1,14 @@
+--- opt/brother/Printers/dcpt525w/inf/setupPrintcapij.old	2020-08-08 23:58:20.000000000 +0200
++++ opt/brother/Printers/dcpt525w/inf/setupPrintcapij	2020-08-08 23:58:38.000000000 +0200
+@@ -32,9 +32,9 @@
+ case "$2" in
+ 	-i)
+ 	if [ ! -d $SPOOLER_NAME ]; then
+-	        mkdir $SPOOLER_NAME
++	        mkdir -p $SPOOLER_NAME
+ 	fi
+-	chown lp $SPOOLER_NAME
++	chown root $SPOOLER_NAME
+ 	chgrp lp $SPOOLER_NAME
+ 	chmod 700 $SPOOLER_NAME
+ 

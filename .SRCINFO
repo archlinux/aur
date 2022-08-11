@@ -1,0 +1,24 @@
+pkgbase = brother-dcpt525w
+	pkgdesc = Brother printer driver (lpd/cups) for the DCP-T525W multifuncional printer
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=eu_ot&lang=en&prod=dcpt525w_eu
+	install = dcpt525w.install
+	arch = i686
+	arch = x86_64
+	license = custom: Brother License
+	license = EULA
+	license = GPL
+	depends = a2ps
+	depends = cups
+	optdepends = sane: scanning support
+	optdepends = sane-airscan: SANE backend for AirScan (eSCL) and WSD document scanners
+	optdepends = brscan5: making dcpt525w scaner available to sane
+	optdepends = brscan-skey: scankey support if connected via usb
+	source = https://download.brother.com/welcome/dlf105176/dcpt525wpdrv-3.5.0-1.i386.deb
+	source = spool.patch
+	sha256sums = fe959355e192cadba715d5e1388b2e5cd14023ee6f530d18aaa2488d2781364e
+	sha256sums = 6dd51ead161ee5b287604c5b87f8451a138229260a93a69956091c342a3d7dc0
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-dcpt525w
