@@ -1,16 +1,14 @@
 pkgbase = python-acstools-doc
 	pkgdesc = Documentation for Python ACS Tools
-	pkgver = 3.3.1
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://acstools.readthedocs.io
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = BSD
-	makedepends = python-acstools=3.3.1
+	makedepends = python-acstools=3.4.0
 	makedepends = python-sphinx-automodapi
 	makedepends = python-sphinx_rtd_theme
-	source = https://files.pythonhosted.org/packages/source/a/acstools/acstools-3.3.1.tar.gz
-	md5sums = 70a60fb2076ea289cf898634c82a14c0
+	source = https://files.pythonhosted.org/packages/source/a/acstools/acstools-3.4.0.tar.gz
+	md5sums = e4b333be8a93bf34d88229c8cbbea9f1
 
 pkgname = python-acstools-doc
-
