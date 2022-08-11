@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=openvino
-pkgver=2022.1.0
+pkgver=2022.1.1
 pkgrel=1
 pkgdesc='A toolkit for developing artificial inteligence and deep learning applications'
 arch=('x86_64')
@@ -27,7 +27,7 @@ replaces=('intel-openvino')
 options=('!emptydirs')
 # supported firmwares: VPU_SUPPORTED_FIRMWARES in src/plugins/intel_myriad/myriad_dependencies.cmake
 _firmware_ver=1875 # FIRMWARE_PACKAGE_VERSION in src/plugins/intel_myriad/myriad_dependencies.cmake
-_gnaver=03.00.00.1455.0 # GNA_VERSION (GNA2) in cmake/dependencies.cmake
+_gnaver=03.00.00.1455.0 # GNA_VERSION in cmake/dependencies.cmake
 _tbbver=2020_20200415 # cmake/dependencies.cmake
 _tbbbind_ver=2_5_static_lin_v2 # cmake/dependencies.cmake
 source=("git+https://github.com/openvinotoolkit/openvino.git#tag=${pkgver}"
@@ -140,7 +140,7 @@ build() {
     local _ocvmaj
     _ocvmaj="$(opencv_version | awk -F'.' '{ print $1 }')"
     
-    export OpenCV_DIR="/usr/lib/cmake/opencv${_ocvmaj}"
+    local -x OpenCV_DIR="/usr/lib/cmake/opencv${_ocvmaj}"
     
     # note: does not accept 'None' build type
     cmake -B build -S openvino \
