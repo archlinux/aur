@@ -5,12 +5,12 @@ _projectname='compiler-libs'
 _pkgname="ocaml-$_projectname"
 pkgname="$_pkgname-repackaged"
 pkgver='0.12.4'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='OCaml compiler libraries repackaged'
 arch=('x86_64')
 url="https://github.com/janestreet/$_pkgname"
 license=('MIT')
-depends=('ocaml>=4.04.1')
+depends=('ocaml>=4.04.1' 'ocaml-compiler-libs')
 makedepends=('dune>=2.8.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
@@ -21,11 +21,6 @@ _sourcedirectory="$_pkgname-$pkgver"
 build() {
 	cd "$srcdir/$_sourcedirectory/"
 	dune build --release --verbose
-}
-
-check() {
-	cd "$srcdir/$_sourcedirectory/"
-	dune runtest --release --verbose
 }
 
 package() {
