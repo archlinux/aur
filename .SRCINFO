@@ -1,6 +1,6 @@
 pkgbase = qemu-git
 	pkgdesc = A generic and open source machine emulator and virtualizer. Git version.
-	pkgver = 7.1.0.rc2.r0.g61b6e67171
+	pkgver = 7.1.0.rc2.r2.ga6b1c53e79
 	pkgrel = 1
 	epoch = 16
 	url = https://wiki.qemu.org/
@@ -12,7 +12,6 @@ pkgbase = qemu-git
 	makedepends = brltty
 	makedepends = bzip2
 	makedepends = cairo
-	makedepends = ceph
 	makedepends = curl
 	makedepends = cdrtools
 	makedepends = dtc
@@ -70,11 +69,9 @@ pkgbase = qemu-git
 	source = git://git.qemu.org/qemu.git
 	source = qemu-guest-agent.service
 	source = 65-kvm.rules
-	source = qemu-7.0.0-glibc-2.36.patch
 	sha256sums = SKIP
 	sha256sums = c39bcde4a09165e64419fd2033b3532378bba84d509d39e2d51694d44c1f8d88
 	sha256sums = a66f0e791b16b03b91049aac61a25950d93e962e1b2ba64a38c6ad7f609b532c
-	sha256sums = 1eee1b5d839fdfc5cd5a18f0c769b01228c14781de1368670e2c589cd6903a6e
 
 pkgname = qemu-git
 	pkgdesc = QEMU Git version.
@@ -331,13 +328,6 @@ pkgname = qemu-block-iscsi-git
 	depends = libiscsi
 	provides = qemu-block-iscsi
 	conflicts = qemu-block-iscsi
-
-pkgname = qemu-block-rbd-git
-	pkgdesc = QEMU RBD block module. Git version.
-	depends = glibc
-	depends = ceph-libs
-	provides = qemu-block-rbd
-	conflicts = qemu-block-rbd
 
 pkgname = qemu-block-gluster-git
 	pkgdesc = QEMU GlusterFS block module. Git version.
