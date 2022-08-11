@@ -1,6 +1,6 @@
 # Maintainer: Taylor Allen
 pkgname=shortsync-git
-pkgver=1.r15.ff82a03
+pkgver=1.r16.4585665
 pkgrel=1
 epoch=
 pkgdesc="This application makes it easy to keep track of alias, file, and folder shortcuts across multiple applications and shells."
@@ -38,8 +38,13 @@ package() {
 	cd shortsync
 	mkdir -p /home/$USER/.config/shortsync/shortcut-files/
 	cp -nru config/* -t /home/$USER/.config/shortsync
-	install -Dm755 bin/shortsync "$pkgdir/usr/local/bin/shortsync"
-	install -Dm644 shortsync.1 "$pkgdir/usr/share/man/man1/shortsync.1"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/shortsync/LICENSE"
-	install -Dm644 README.org "$pkgdir/usr/share/doc/shortsync/README.org"
+	install -Dm755 "bin/shortsync" "$pkgdir/usr/local/bin/shortsync"
+	install -Dm644 "shortsync.1" "$pkgdir/usr/share/man/man1/shortsync.1"
+	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/shortsync/LICENSE"
+	install -Dm644 "README.org" "$pkgdir/usr/share/doc/shortsync/README.org"
+
+	find "$pkgdir" -perm 750 -exec chmod 755 {} \;
+	find "$pkgdir" -perm 700 -exec chmod 755 {} \;
+	find "$pkgdir" -perm 640 -exec chmod 644 {} \;
+	find "$pkgdir" -perm 600 -exec chmod 644 {} \;
 }
