@@ -1,8 +1,8 @@
 # Maintainer: Stefan Melmuk <stefan.melmuk@gmail.com>
 
 pkgname=lightdm-guest-account
-pkgver=1.30.0
-pkgrel=4
+pkgver=1.32.0
+pkgrel=1
 pkgdesc="LightDM shell script to enable guest account session."
 arch=('any')
 url="https://github.com/canonical/lightdm"
