@@ -1,6 +1,6 @@
 pkgbase = nym
 	pkgdesc = The next generation of privacy infrastructure (Nym Mixnet)
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://nymtech.net/
 	install = nym.install
@@ -11,10 +11,12 @@ pkgbase = nym
 	makedepends = git
 	makedepends = cargo
 	depends = openssl
+	source = git+https://github.com/nymtech/nym#tag=nym-binaries-1.0.2
 	source = nym.sysusers
 	source = nym.tmpfiles
 	source = nym-mixnode@.service
 	source = nym-gateway@.service
+	sha512sums = SKIP
 	sha512sums = 3646ee43df7904b959f50fcd191d1dfbdf8ed36f6d2cbe420669f4ffcc2886f0d30d5307a073462271ad40cbbf2b930ddd187852926271731beb57690a0abc81
 	sha512sums = 459e9fa6bc24675e4d7d2df448ea60ecb9ed0170f244a9659fb2811589bb6784b307475a4ee4d92c143ac3163446e603d60157b0f1f060d7aa0de96c51abc5d2
 	sha512sums = 7aec10201cf8d51eaf9078911db44a3ec1206f26d45dd4cfbf6213c890c6be295d03707692c33de21dc5e876bfd6c6c9daf5225c5ed55b017085506e041f1b29

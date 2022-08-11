@@ -1,7 +1,7 @@
 # Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=nym
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='The next generation of privacy infrastructure (Nym Mixnet)'
 arch=('x86_64')
@@ -10,16 +10,14 @@ license=('Apache-2.0' 'MIT' 'CC0')
 depends=('openssl')
 makedepends=('git' 'cargo')
 source=(
-    # Can't fetch sources here because of error
-    # > the reference 'HEAD' cannot be peeled ...
-    # from clients/native/build.rs:7:31
-    # "git+https://github.com/nymtech/nym#tag=v$pkgver"
+    "git+https://github.com/nymtech/nym#tag=nym-binaries-$pkgver"
     'nym.sysusers'
     'nym.tmpfiles'
     'nym-mixnode@.service'
     'nym-gateway@.service'
 )
 sha512sums=(
+    'SKIP'
     '3646ee43df7904b959f50fcd191d1dfbdf8ed36f6d2cbe420669f4ffcc2886f0d30d5307a073462271ad40cbbf2b930ddd187852926271731beb57690a0abc81'
     '459e9fa6bc24675e4d7d2df448ea60ecb9ed0170f244a9659fb2811589bb6784b307475a4ee4d92c143ac3163446e603d60157b0f1f060d7aa0de96c51abc5d2'
     '7aec10201cf8d51eaf9078911db44a3ec1206f26d45dd4cfbf6213c890c6be295d03707692c33de21dc5e876bfd6c6c9daf5225c5ed55b017085506e041f1b29'
@@ -28,7 +26,6 @@ sha512sums=(
 install='nym.install'
 
 prepare() {
-    git clone https://github.com/nymtech/nym.git -b v$pkgver
     cd nym
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
@@ -49,7 +46,7 @@ package() {
 
     cd nym
     install -Dm755 \
-        target/release/nym-{client,gateway,mixnode,network-requester,socks5-client,validator-api} \
+        target/release/nym-{client,gateway,mixnode,network-requester,network-statistics,socks5-client,validator-api} \
         -t "$pkgdir/usr/bin"
     install -Dm644 LICENSES/*.txt -t "$pkgdir/usr/share/licenses/nym"
 }
