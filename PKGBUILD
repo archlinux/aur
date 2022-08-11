@@ -2,7 +2,7 @@
 
 _hkgname=config-schema
 pkgname=haskell-$_hkgname
-pkgver=1.2.2.0
+pkgver=1.3.0.0
 pkgrel=1
 pkgdesc='Schema definitions for the config-value package'
 url="https://hackage.haskell.org/package/$_hkgname"
@@ -11,9 +11,9 @@ license=('custom:ISC')
 depends=('ghc-libs' 'haskell-config-value' 'haskell-free' 'haskell-kan-extensions' 'haskell-semigroupoids')
 makedepends=('ghc' 'uusi')
 source=("https://hackage.haskell.org/packages/archive/$_hkgname/$pkgver/$_hkgname-$pkgver.tar.gz")
-cksums=('3713348347')
-sha256sums=('dd8f979736389cefcd826f66c5dd6156b069876366d16250288bf527a439b782')
-b2sums=('464713a368537def66fcbbf764aa82438fba7b9baa6c35fcbb00c0824d8be96f0f3ec016493d1e4c942f4dbefacda8b99fbeaa13261b1cd46460d05e62cb70a3')
+cksums=('2833052830')
+sha256sums=('3c89c55bcf5128f62462eafa0c7bc6c441ccfd8a8d2af27c972a144d7ccaabc8')
+b2sums=('60a41d39da8eb6ab030225f4ed66ca7a81c41b0a70f2bda8e849ab6c6a1af0a6387f2942bc6a659550f5c782c58c0262b633e575a9b92d7649090b8393175134')
 
 prepare() {
   cd "$_hkgname-$pkgver"
