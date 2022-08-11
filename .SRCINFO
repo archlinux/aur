@@ -1,6 +1,6 @@
 pkgbase = gnome-tour-git
 	pkgdesc = A guided tour and greeter for GNOME
-	pkgver = 42.beta.r0.g6818d96
+	pkgver = 43.beta.r0.ged523b7
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-tour
 	arch = x86_64

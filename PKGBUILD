@@ -1,6 +1,6 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=gnome-tour-git
-pkgver=42.beta.r0.g6818d96
+pkgver=43.beta.r0.ged523b7
 pkgrel=1
 pkgdesc="A guided tour and greeter for GNOME"
 arch=(x86_64)
@@ -25,7 +25,7 @@ build() {
 }
 
 check() {
-  meson test -C build
+  meson test -C build --print-errorlogs
 }
 
 package() {
