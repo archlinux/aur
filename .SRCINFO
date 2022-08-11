@@ -1,26 +1,20 @@
 pkgbase = python-nvd3
 	pkgdesc = Python wrapper for the NVD3 chart generator
 	pkgver = 0.15.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/areski/python-nvd3/
 	arch = any
 	license = MIT
+	checkdepends = python-nose
 	makedepends = git
-	makedepends = python
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python2
-	makedepends = python2-setuptools
+	makedepends = python-wheel
+	depends = python-jinja
+	depends = python-slugify
+	optdepends = ipython: for Jupyter notebook support
 	source = git+https://github.com/areski/python-nvd3.git#commit=f9f811ebc5abd625d63da79e936d9015497b5f58
 	sha256sums = SKIP
 
 pkgname = python-nvd3
-	depends = python
-	depends = python-jinja
-	depends = python-slugify
-
-pkgname = python2-nvd3
-	pkgdesc = Python2 wrapper for the NVD3 chart generator
-	depends = python2
-	depends = python2-jinja
-	depends = python2-slugify
-
