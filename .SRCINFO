@@ -1,17 +1,16 @@
 pkgbase = hgweb
 	pkgdesc = Mercurial web interface
-	pkgver = 3.4.1
+	pkgver = 6.2.1
 	pkgrel = 1
-	url = http://mercurial.selenic.com/
+	url = https://mercurial-scm.org/
 	arch = any
 	license = GPL
 	depends = mercurial
-	depends = python2
+	depends = python
 	backup = etc/conf.d/hgweb.conf
-	source = http://mercurial.selenic.com/release/mercurial-3.4.1.tar.gz
+	source = https://mercurial-scm.org/release/mercurial-6.2.1.tar.gz
 	source = hgweb.conf
-	sha256sums = 7a8acf7329beda38ceea29c689212574d9a6bfffe24cf565015ea0066f7cee3f
+	sha256sums = 8ac5d7a20d1c2ad54d4c263d134164646dc34a8e3a6bed69cfbeabaf8d3882da
 	sha256sums = ceccc16a49d074f4981297041f0f526c04838cd8541ecc891d87513f8a8ba62f
 
 pkgname = hgweb
-
