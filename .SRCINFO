@@ -1,6 +1,6 @@
 pkgbase = raider-file-shredder
 	pkgdesc = Securely delete your files
-	pkgver = 1.1.1
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/ADBeveridge/raider
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = raider-file-shredder
 	depends = libadwaita
 	optdepends = libnautilus-extension
 	conflicts = raider
-	source = https://github.com/ADBeveridge/raider/archive/v1.1.1.tar.gz
-	b2sums = 537cbfe062bde85e00831fbf3aa88bcd23a1b99191640038c2cdee50d59596581afecda8275c4ba467056767e26abd28c5c2fc34bddbd5bd58e23780883134ae
+	source = https://github.com/ADBeveridge/raider/archive/v1.2.1.tar.gz
+	b2sums = d82e51c97f9e6b8100229f01fcc5677adca31ebfe6dcba570a300e7e76a3d7c665c4ffb6103ba2f081fdc0faf6547103f4c84e25d7c82024fb67297005cd9dae
 
 pkgname = raider-file-shredder

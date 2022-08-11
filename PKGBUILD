@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=raider-file-shredder
-pkgver=1.1.1
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Securely delete your files"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=('libnautilus-extension')
 checkdepends=('appstream-glib')
 conflicts=("${pkgname%-file-shredder}")
 source=($url/archive/v$pkgver.tar.gz)
-b2sums=('537cbfe062bde85e00831fbf3aa88bcd23a1b99191640038c2cdee50d59596581afecda8275c4ba467056767e26abd28c5c2fc34bddbd5bd58e23780883134ae')
+b2sums=('d82e51c97f9e6b8100229f01fcc5677adca31ebfe6dcba570a300e7e76a3d7c665c4ffb6103ba2f081fdc0faf6547103f4c84e25d7c82024fb67297005cd9dae')
 
 build() {
   arch-meson "${pkgname%-file-shredder}-$pkgver" build
