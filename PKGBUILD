@@ -1,18 +1,14 @@
 pkgname=kmetronome
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="MIDI metronome with KDE interface and based on the ALSA sequencer"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/kmetronome/"
 license=('GPL')
-#depends=('kdelibs' 'alsa-lib' 'phonon-qt4' 'drumstick' 'automoc4')
-#depends=('alsa-lib' 'drumstick' 'automoc4')
 depends=('alsa-lib' 'drumstick' 'pandoc')
 makedepends=('cmake')
-source=(http://downloads.sourceforge.net/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.bz2)
-source=(http://kent.dl.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('6e3b1d48892fdf9f00b6a78058b996a9')
-
+source=(https://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.bz2)
+md5sums=('6bbd4fb806bcc8161c66d72a17ecaed1')
 
 build() {
           cd "${srcdir}/${pkgname}-${pkgver}"
@@ -23,6 +19,7 @@ build() {
           cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
           make || return 1
 }
+
 package() {
 	  cd "${srcdir}/${pkgname}-${pkgver}/build"
           make DESTDIR="${pkgdir}" install || return 1
