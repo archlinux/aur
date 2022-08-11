@@ -1,6 +1,6 @@
 # Maintainer: sp1rit <sp1ritCS@protonmail.com>
 pkgname=dbus-codegen-rust
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="This program takes D-Bus XML Introspection data and generates Rust code for calling and implementing the interfaces in the introspection data."
 arch=("any")
