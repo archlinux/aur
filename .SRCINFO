@@ -1,7 +1,7 @@
 pkgbase = kanata
 	pkgdesc = Bring the customizability of a QMK board to any keyboard near you
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jtroo/kanata
 	arch = i686
 	arch = pentium4
