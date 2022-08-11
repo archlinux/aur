@@ -1,15 +1,15 @@
 pkgbase = sheepit-client-bin
 	pkgdesc = Client for the SheepIt render farm
-	pkgver = 6.22198.0
+	pkgver = 6.22214.0
 	pkgrel = 1
 	url = https://www.sheepit-renderfarm.com
 	arch = x86_64
 	license = GPL2
 	depends = java-runtime>=11
 	conflicts = sheepit-client-git
-	source = https://www.sheepit-renderfarm.com/media/applet/sheepit-client-6.22198.0.jar
+	source = https://www.sheepit-renderfarm.com/media/applet/sheepit-client-6.22214.0.jar
 	source = sheepit-client.sh
-	sha256sums = bd1bfd67b0488e972856f685a2ed94dd010bcb3905f29cefc0de3f313cb89e2e
+	sha256sums = e9ebee8ea94eae078be4e8523425213212507e26296f49d273a799fafd441b4d
 	sha256sums = 18c3c158263861bca6f61204741f7c7c9ea8201b99ec711bc60d096598f4e8ed
 
 pkgname = sheepit-client-bin
