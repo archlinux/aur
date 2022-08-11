@@ -1,7 +1,7 @@
 pkgbase = wifite2-git
 	pkgdesc = A tool to attack multiple WEP and WPA encrypted networks at the same time
-	pkgver = r379.d8a6628
-	pkgrel = 1
+	pkgver = r492.29803917c
+	pkgrel = 2
 	url = https://github.com/kimocoder/wifite2
 	arch = any
 	license = GPL
@@ -11,6 +11,8 @@ pkgbase = wifite2-git
 	depends = wireless_tools
 	depends = net-tools
 	depends = wireshark-cli
+	depends = python-argparse
+	depends = python-chardet
 	optdepends = macchanger
 	optdepends = reaver
 	optdepends = bully
@@ -24,4 +26,3 @@ pkgbase = wifite2-git
 	sha256sums = SKIP
 
 pkgname = wifite2-git
-
