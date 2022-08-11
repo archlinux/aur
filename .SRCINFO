@@ -1,0 +1,22 @@
+pkgbase = python-rioxarray
+	pkgdesc = Geospatial xarray extension powered by rasterio
+	pkgver = 0.11.1
+	pkgrel = 1
+	url = https://github.com/corteva/rioxarray
+	arch = any
+	license = Apache
+	checkdepends = python-netcdf4
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-dask
+	depends = python-packaging
+	depends = python-pyproj
+	depends = python-rasterio
+	depends = python-xarray
+	source = python-rioxarray-0.11.1.tar.gz::https://github.com/corteva/rioxarray/archive/0.11.1.tar.gz
+	sha256sums = 598f29ad7d383fb1c21922a6037ad80a82cc455212ec8ac94404797e60f3c98c
+
+pkgname = python-rioxarray
