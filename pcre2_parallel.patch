@@ -1,0 +1,137 @@
+diff -r -Nau vfu-4.23/vfu/makefile vfu-4.23.patched/vfu/makefile
+--- vfu-4.23/vfu/makefile	2021-11-18 19:25:21.000000000 -0600
++++ vfu-4.23.patched/vfu/makefile	2022-08-10 21:45:17.557333019 -0500
+@@ -39,8 +39,8 @@
+ LD_1       = $(LD)
+ AR_1       = $(AR) rv
+ RANLIB_1   = $(RANLIB)
+-CCFLAGS_1  = -I../vstring -I../vstring/pcre2 -I../vslib -I/usr/include/ncurses -O2 $(CFLAGS) $(CPPFLAGS) $(CCDEF)  
+-LDFLAGS_1  = -L../vstring -L../vstring/pcre2 -L../vslib -lvstring -lvslib -lvscon -lpcre2 -lncurses $(LDFLAGS) $(LDDEF) 
++CCFLAGS_1  = -I../vstring -I../vslib -I/usr/include/ncurses -O2 $(CFLAGS) $(CPPFLAGS) $(CCDEF)  
++LDFLAGS_1  = -L../vstring -L../vslib -lvstring -lvslib -lvscon $(shell pcre2-config --libs-posix) -lncurses $(LDFLAGS) $(LDDEF) 
+ DEPFLAGS_1 = 
+ ARFLAGS_1  = 
+ TARGET_1   = vfu
+@@ -132,8 +132,8 @@
+ LD_2       = $(LD)
+ AR_2       = $(AR) rv
+ RANLIB_2   = $(RANLIB)
+-CCFLAGS_2  = -I../vstring -I../vstring/pcre2 -I../vslib -I../yascreen -DUSE_YASCREEN -O2 $(CFLAGS) $(CPPFLAGS) $(CCDEF)  
+-LDFLAGS_2  = -L../vstring -L../vstring/pcre2 -L../vslib -L../yascreen -lvstring -lvslib -lvscony -lpcre2 ../yascreen/libyascreen.a -lrt $(LDFLAGS) $(LDDEF) 
++CCFLAGS_2  = -I../vstring -I../vslib -I../yascreen -DUSE_YASCREEN -O2 $(CFLAGS) $(CPPFLAGS) $(CCDEF)  
++LDFLAGS_2  = -L../vstring -L../vslib -L../yascreen -lvstring -lvslib -lvscony $(shell pcre2-config --libs-posix) ../yascreen/libyascreen.a -lrt $(LDFLAGS) $(LDDEF) 
+ DEPFLAGS_2 = 
+ ARFLAGS_2  = 
+ TARGET_2   = vfu.yas
+@@ -225,8 +225,8 @@
+ LD_3       = $(LD)
+ AR_3       = $(AR) rv
+ RANLIB_3   = $(RANLIB)
+-CCFLAGS_3  = -I../vstring -I../vstring/pcre2 -I../vslib -I/usr/include/ncurses -O0 -g $(CFLAGS) $(CPPFLAGS) $(CCDEF)  
+-LDFLAGS_3  = -L../vstring -L../vstring/pcre2 -L../vslib -lvstring -lvslib -lvscon -lpcre2 -lncurses -g $(LDFLAGS) $(LDDEF) 
++CCFLAGS_3  = -I../vstring -I../vslib -I/usr/include/ncurses -O0 -g $(CFLAGS) $(CPPFLAGS) $(CCDEF)  
++LDFLAGS_3  = -L../vstring -L../vslib -lvstring -lvslib -lvscon -lncurses -g $(LDFLAGS) $(LDDEF) 
+ DEPFLAGS_3 = 
+ ARFLAGS_3  = 
+ TARGET_3   = vfu-debug
+@@ -318,8 +318,8 @@
+ LD_4       = $(LD)
+ AR_4       = $(AR) rv
+ RANLIB_4   = $(RANLIB)
+-CCFLAGS_4  = -I../vstring -I../vstring/pcre2 -I../vslib -I../yascreen -DUSE_YASCREEN -O0 -g $(CFLAGS) $(CPPFLAGS) $(CCDEF)  
+-LDFLAGS_4  = -L../vstring -L../vstring/pcre2 -L../vslib -L../yascreen -lvstring -lvslib -lvscony -lpcre2 ../yascreen/libyascreen.a -lrt -g $(LDFLAGS) $(LDDEF) 
++CCFLAGS_4  = -I../vstring -I../vslib -I../yascreen -DUSE_YASCREEN -O0 -g $(CFLAGS) $(CPPFLAGS) $(CCDEF)  
++LDFLAGS_4  = -L../vstring -L../vslib -L../yascreen -lvstring -lvslib -lvscony $(shell pcre2-config --libs-posix) ../yascreen/libyascreen.a -lrt -g $(LDFLAGS) $(LDDEF) 
+ DEPFLAGS_4 = 
+ ARFLAGS_4  = 
+ TARGET_4   = vfu.yas-debug
+diff -r -Nau vfu-4.23/vslib/makefile vfu-4.23.patched/vslib/makefile
+--- vfu-4.23/vslib/makefile	2021-11-18 19:17:57.000000000 -0600
++++ vfu-4.23.patched/vslib/makefile	2022-08-10 21:44:47.300537646 -0500
+@@ -39,7 +39,7 @@
+ LD_1       = $(CXX)
+ AR_1       = $(AR) rv
+ RANLIB_1   = $(RANLIB)
+-CCFLAGS_1  = -I../vstring -I../vstring/pcre2 -I. -O2 $(CFLAGS) $(CPPFLAGS) $(CCDEF)  
++CCFLAGS_1  = -I../vstring -I. -O2 $(CFLAGS) $(CPPFLAGS) $(CCDEF)  
+ LDFLAGS_1  = $(LDFLAGS) $(LDDEF) 
+ DEPFLAGS_1 = 
+ ARFLAGS_1  = 
+@@ -122,7 +122,7 @@
+ LD_2       = $(CXX)
+ AR_2       = $(AR) rv
+ RANLIB_2   = $(RANLIB)
+-CCFLAGS_2  = -I../vstring -I../vstring/pcre2 -I. -I/usr/include/ncurses -O2 $(CFLAGS) $(CPPFLAGS) $(CCDEF)  
++CCFLAGS_2  = -I../vstring -I. -I/usr/include/ncurses -O2 $(CFLAGS) $(CPPFLAGS) $(CCDEF)  
+ LDFLAGS_2  = $(LDFLAGS) $(LDDEF) 
+ DEPFLAGS_2 = 
+ ARFLAGS_2  = 
+@@ -185,7 +185,7 @@
+ LD_3       = $(CXX)
+ AR_3       = $(AR) rv
+ RANLIB_3   = $(RANLIB)
+-CCFLAGS_3  = -I../vstring -I../vstring/pcre2 -I. -I../yascreen -DUSE_YASCREEN -O2 $(CFLAGS) $(CPPFLAGS) $(CCDEF)  
++CCFLAGS_3  = -I../vstring -I. -I../yascreen -DUSE_YASCREEN -O2 $(CFLAGS) $(CPPFLAGS) $(CCDEF)  
+ LDFLAGS_3  = $(LDFLAGS) $(LDDEF) 
+ DEPFLAGS_3 = 
+ ARFLAGS_3  = 
+@@ -248,8 +248,8 @@
+ LD_4       = $(CXX)
+ AR_4       = $(AR) rv
+ RANLIB_4   = $(RANLIB)
+-CCFLAGS_4  = -g -I../vstring -I../vstring/pcre2 -I. -I../yascreen -DUSE_YASCREEN -O0 -DTEST $(CFLAGS) $(CPPFLAGS) $(CCDEF)  
+-LDFLAGS_4  = -g -L../vstring -L../vstring/pcre2 -L. -lvstring -lvslib -lvscon -lpcre2 -lncurses $(LDFLAGS) $(LDDEF) 
++CCFLAGS_4  = -g -I../vstring -I. -I../yascreen -DUSE_YASCREEN -O0 -DTEST $(CFLAGS) $(CPPFLAGS) $(CCDEF)  
++LDFLAGS_4  = -g -L../vstring -L. -lvstring -lvslib -lvscon $(shell pcre2-config --libs-posix) -lncurses $(LDFLAGS) $(LDDEF) 
+ DEPFLAGS_4 = 
+ ARFLAGS_4  = 
+ TARGET_4   = test
+diff -r -Nau vfu-4.23/vstring/makefile vfu-4.23.patched/vstring/makefile
+--- vfu-4.23/vstring/makefile	2021-11-18 19:22:06.000000000 -0600
++++ vfu-4.23.patched/vstring/makefile	2022-08-10 21:46:30.060965906 -0500
+@@ -13,13 +13,13 @@
+ 
+ li: mm_update link
+ 
+-all: mm_update modules vstring.a test 
++all: mm_update vstring.a test 
+ 
+-clean: mm_update clean-modules clean-vstring.a clean-test 
++clean: mm_update clean-vstring.a clean-test 
+ 
+-rebuild: mm_update rebuild-modules rebuild-vstring.a rebuild-test 
++rebuild: mm_update rebuild-vstring.a rebuild-test 
+ 
+-link: mm_update link-modules link-vstring.a link-test 
++link: mm_update link-vstring.a link-test 
+ 
+ ### GLOBAL (AND USER) DEFS #####################################################
+ 
+@@ -27,7 +27,6 @@
+ AR ?= ar
+ LD = $(CXX)
+ MKDIR = mkdir -p
+-MODULES = pcre2
+ RANLIB ?= ranlib
+ RMDIR = rm -rf
+ RMFILE = rm -f
+@@ -40,7 +39,7 @@
+ LD_1       = $(CXX)
+ AR_1       = $(AR) rv
+ RANLIB_1   = $(RANLIB)
+-CCFLAGS_1  = -I. -Ipcre2 -O2 $(CFLAGS) $(CPPFLAGS) $(CCDEF)  
++CCFLAGS_1  = -I. -O2 $(CFLAGS) $(CPPFLAGS) $(CCDEF)  
+ LDFLAGS_1  = $(LDFLAGS) $(LDDEF) 
+ DEPFLAGS_1 = 
+ ARFLAGS_1  = 
+@@ -95,8 +94,8 @@
+ LD_2       = $(CXX)
+ AR_2       = $(AR) rv
+ RANLIB_2   = $(RANLIB)
+-CCFLAGS_2  = -I. -Ipcre2 -O2 -g $(CFLAGS) $(CPPFLAGS) $(CCDEF)  
+-LDFLAGS_2  = -Lpcre2 -lpcre2 $(LDFLAGS) $(LDDEF) 
++CCFLAGS_2  = -I. -O2 -g $(CFLAGS) $(CPPFLAGS) $(CCDEF)  
++LDFLAGS_2  = $(shell pcre2-config --libs-posix) $(LDFLAGS) $(LDDEF) 
+ DEPFLAGS_2 = 
+ ARFLAGS_2  = 
+ TARGET_2   = test
