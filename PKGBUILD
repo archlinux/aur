@@ -4,7 +4,7 @@ _gitname=atom
 _pkgname=${_gitname}-community
 
 pkgname=${_pkgname}-git
-pkgver=1.63.0_dev_dbce4205c
+pkgver=1.63.0_dev_6e0539c1e
 pkgrel=1
 pkgdesc="A hackable text editor for the 21st century, built on Electron, and based on everything we love about our favorite editors."
 url="https://github.com/atom-community/atom"
