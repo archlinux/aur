@@ -2,7 +2,7 @@
 # Contributor: Vlad Frolov <frolvlad@gmail.com>
 
 pkgname=cargo-insta
-pkgver=1.17.1
+pkgver=1.18.1
 pkgrel=1
 pkgdesc="Cargo plugin for snapshot testing in Rust"
 url="https://github.com/mitsuhiko/insta"
@@ -11,7 +11,7 @@ makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=('APACHE')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('7fe6c50d5fe7b2ee810ae0cdf9bac22d930cd3d697bd29d72bc7dca903d89e83bba73bbc3d0b57cbb8dc6264806fb822bb0a9e665628643dbb4fd2abb61db9a5')
+sha512sums=('855808e1fa554432910a03aa1eec54f60e2fce44cd0ef5d21020ed58cbee18d1d694a7c30fd7b13dcbca983a99d5149a75e6c431977c706af7b374e766acd50b')
 
 build() {
   cd "$srcdir/insta-$pkgver/cargo-insta"
