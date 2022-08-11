@@ -1,6 +1,6 @@
 _pkgname=discord-development
 pkgname=${_pkgname}-electron-bin
-pkgver=0.0.188
+pkgver=0.0.202
 pkgrel=1
 pkgdesc="Discord Development (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("https://dl-development.discordapp.net/apps/linux/${pkgver}/${_pkgname}-
         'LICENSE.html::https://discordapp.com/terms'
         'OSS-LICENSES.html::https://discordapp.com/licenses')
 # Skip BLAKE2 of licenses, it fails always for some reason.
-b2sums=('42e2217578b48180c4b27b5a606ecced814004c8aa7144dd5728f43ae1c2a7354c558e27fd1df9e1fe1f88382495321afff78738dd186e4919650b70a46c37d0'
+b2sums=('725ca992aa7c7873372d8aa61a2894b4745568d8ba97f9244aaefdbb34f16ddbcc5ccbe97bc922b68a6e281237fc694184588d47b85668fae8f81430a5c1ff05'
         'SKIP'
         'SKIP')
 
