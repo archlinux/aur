@@ -1,0 +1,17 @@
+pkgbase = minq-stopwatch-git
+	pkgdesc = A terminal based timer that remembers where you left off
+	pkgver = r23.1bafe623da15f863411f7df3d79631e235716e38
+	pkgrel = 1
+	url = https://github.com/kuche1/minq-stopwatch.git
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	makedepends = python
+	depends = python
+	depends = python-art
+	provides = minq-stopwatch
+	source = git+https://github.com/kuche1/minq-stopwatch.git
+	md5sums = SKIP
+
+pkgname = minq-stopwatch-git
