@@ -1,4 +1,4 @@
-# Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev> && Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev> && Piotr Gorski <piotrgorski@cachyos.org>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
@@ -20,6 +20,15 @@ _cpusched='cacule-rdb'
 
 ### Tweak kernel options prior to a build via nconfig
 _makenconfig=
+
+### Tweak kernel options prior to a build via menuconfig
+_makemenuconfig=
+
+### Tweak kernel options prior to a build via xconfig
+_makexconfig=
+
+### Tweak kernel options prior to a build via gconfig
+_makegconfig=
 
 # NUMA is optimized for multi-socket motherboards.
 # A single multi-core CPU actually runs slower with NUMA enabled.
@@ -100,6 +109,14 @@ _disable_debug=y
 ## Enable zram/zswap ZSTD compression
 _zstd_compression=y
 
+### Selecting the ZSTD kernel and modules compression level
+# ATTENTION - one of two predefined values should be selected!
+# 'ultra' - highest compression ratio
+# 'normal' - standard compression ratio
+# WARNING: the ultra settings can sometimes
+# be counterproductive in both size and speed.
+_zstd_level_value='normal'
+
 # Clang LTO mode, only available with the "llvm" compiler - options are "no", "full" or "thin".
 # "full: uses 1 thread for Linking, slow and uses more memory, theoretically with the highest performance gains."
 # "thin: uses multiple threads, faster and uses less memory, may have a lower runtime performance than Full."
@@ -131,17 +148,17 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=5.19
-_minor=0
+_minor=1
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
-#_stable=${_major}.${_minor}
-_stable=${_major}
+_stable=${_major}.${_minor}
+#_stable=${_major}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux cacULE-RDB scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=2
+pkgrel=1
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -163,7 +180,7 @@ if [ -n "$_build_zfs" ]; then
     makedepends+=(git)
 
 fi
-_patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/${_major}"
+_patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
 source=(
     "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz"
     "config"
@@ -390,10 +407,7 @@ prepare() {
     if [ -n "$_per_gov" ]; then
         echo "Setting performance governor..."
         scripts/config --disable CPU_FREQ_DEFAULT_GOV_SCHEDUTIL \
-            --enable CPU_FREQ_DEFAULT_GOV_PERFORMANCE \
-            --enable PCIEASPM \
-            --enable PCIEASPM_PERFORMANCE \
-            --enable PCIE_BUS_PERFORMANCE
+            --enable CPU_FREQ_DEFAULT_GOV_PERFORMANCE
     fi
 
     ### Select tick type
@@ -594,12 +608,39 @@ prepare() {
             --disable LRNG_SELFTEST_PANIC
     fi
 
-    ### Enable ZSTD swap/zram compression
-    if [ -n "$_zstd_swap_compression" ]; then
-        echo "Enabling zram ZSTD compression..."
-        scripts/config --disable CONFIG_ZSWAP_DEFAULT_ON \
-            --enable ZRAM_ENTROPY \
-            --set-val ZRAM_ENTROPY_THRESHOLD 100000
+    ### Enable zram/zswap ZSTD compression
+    if [ -n "$_zstd_compression" ]; then
+        echo "Enabling zram/swap ZSTD compression..."
+        scripts/config --disable CONFIG_ZRAM_DEF_COMP_LZORLE \
+            --enable CONFIG_ZRAM_DEF_COMP_ZSTD \
+            --set-str CONFIG_ZRAM_DEF_COMP zstd \
+            --disable CONFIG_ZSWAP_COMPRESSOR_DEFAULT_LZ4 \
+            --enable CONFIG_ZSWAP_COMPRESSOR_DEFAULT_ZSTD \
+            --set-str CONFIG_ZSWAP_COMPRESSOR_DEFAULT zstd \
+            --enable CONFIG_ZRAM_ENTROPY \
+            --set-val CONFIG_ZRAM_ENTROPY_THRESHOLD 100000
+    fi
+
+    ### Selecting the ZSTD modules and kernel compression level
+    if [ "$_zstd_level_value" = "ultra" ]; then
+        echo "Enabling highest ZSTD modules and kernel compression ratio..."
+        scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19 \
+            --enable CONFIG_MODULE_COMPRESS_ZSTD_ULTRA \
+            --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL_ULTRA 22 \
+            --set-val CONFIG_ZSTD_COMP_VAL 22
+    elif [ "$_zstd_level_value" = "normal" ]; then
+        echo "Enabling standard ZSTD modules and kernel compression ratio..."
+        scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 9 \
+            --disable CONFIG_MODULE_COMPRESS_ZSTD_ULTRA \
+            --set-val CONFIG_ZSTD_COMP_VAL 19
+    else
+        if [ -n "$_zstd_level_value" ]; then
+            error "The value $_zstd_level_value is invalid. Choose the correct one again."
+        else
+            error "The value is empty. Choose the correct one again."
+        fi
+        error "Selecting the ZSTD modules and kernel compression level failed!"
+        exit
     fi
 
     ### Disable DEBUG
@@ -665,6 +706,15 @@ prepare() {
 
     ### Running make nconfig
     [[ -z "$_makenconfig" ]] ||  make ${BUILD_FLAGS[*]} nconfig
+
+    ### Running make menuconfig
+    [[ -z "$_makemenuconfig" ]] ||  make ${BUILD_FLAGS[*]} menuconfig
+
+    ### Running make xconfig
+    [[ -z "$_makexconfig" ]] ||  make ${BUILD_FLAGS[*]} xconfig
+
+    ### Running make gconfig
+    [[ -z "$_makegconfig" ]] ||  make ${BUILD_FLAGS[*]} gconfig
 
     ### Save configuration for later reuse
     echo "Save configuration for later reuse..."
@@ -834,8 +884,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('ff240c579b9ee1affc318917de07394fc1c3bb49dac25ec1287370c2e15005a8'
-            '4df524b3253ed3b197c6db24771525902fd8978d2eeabcb2a3a4305c4afc7327'
+sha256sums=('f4e27b926ea2c66b808db1f5706254cf92a8899e2108eedb0c3a7d12499aea55'
+            '6b0338cb4adcc48b0c9db4b2e9d861562fd1e096144c65fc35b93c788ed97eb3'
             'ce8bf7807b45a27eed05a5e1de5a0bf6293a3bbc2085bacae70cd1368f368d1f'
-            '200d69d6188e6d54099959a8efffd17c52732b5a64465d947517edea6c2896f1'
-            'b26fd58b045b853fabc4d14868cd6c709a34c8cfed6cc09ac7a2bcc39a8f2acf')
+            '1d42d128d1a3d414e6fd2b8cf5b5f8867061f749644e8e5600526ac47a770fad'
+            '74742ce442708a77f33c742b92d1a02c43f52149a1e5f328c2d4ada5578b1d00')
