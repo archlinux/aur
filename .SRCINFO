@@ -1,8 +1,8 @@
 pkgbase = linux-simple-bcachefs-git
 	pkgdesc = Linux
-	pkgver = 5.18.arch1.r1355
+	pkgver = 5.19.arch1.r1507
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v5.18-arch1
+	url = https://github.com/archlinux/linux/commits/v5.19-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -15,7 +15,7 @@ pkgbase = linux-simple-bcachefs-git
 	makedepends = git
 	options = !strip
 	source = config
-	sha256sums = 5088714ec20c9c5b063decbf2210f5b153a908a71678aa156f5f3e81394e9c38
+	sha256sums = ded0a8da67ff5ab654beec9435514b598602a2cbd800395070119125e281956a
 
 pkgname = linux-simple-bcachefs-git
 	pkgdesc = The Linux kernel and modules with bcachefs support
@@ -26,6 +26,7 @@ pkgname = linux-simple-bcachefs-git
 	optdepends = linux-firmware: firmware images needed for some devices
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
+	provides = KSMBD-MODULE
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
