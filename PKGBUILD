@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=105.0a1+20220804.1+h23d50b5617de
+pkgver=105.0a1+20220811.1+hd9acc6dde178
 pkgrel=1
 pkgdesc="Development version of the popular Firefox web browser"
 arch=(x86_64)
@@ -25,12 +25,11 @@ options=(!emptydirs !makeflags !strip !lto !debug)
 _repo=https://hg.mozilla.org/mozilla-central
 source=("hg+$_repo"
         firefox-install-dir.patch
-        zstandard-0.18.0.diff arc4random.diff
+        zstandard-0.18.0.diff
         $pkgname.desktop identity-icons-brand.svg)
 sha256sums=('SKIP'
             'c80937969086550237b0e89a02330d438ce17c3764e43cc5d030cb21c2abce5f'
             'a6857ad2f2e2091c6c4fdcde21a59fbeb0138914c0e126df64b50a5af5ff63be'
-            '714ca50b2ce0cac470dbd5a60e9a0101b28072f08a5e7a9bba94fef2058321c4'
             '7d90a9abacb5cc9870a31323ef31e361f620538c56609001d6d9e789b99b5e97'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
@@ -75,9 +74,6 @@ prepare() {
 
   # Unbreak build with python-zstandard 0.18.0
   patch -Np1 -i ../zstandard-0.18.0.diff
-
-  # Unbreak build with glibc 2.36
-  patch -Np1 -i ../arc4random.diff
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
