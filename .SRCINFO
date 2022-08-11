@@ -1,6 +1,6 @@
 pkgbase = lens-bin
 	pkgdesc = The Kubernetes IDE
-	pkgver = 6.0.0
+	pkgver = 6.0.1
 	pkgrel = 1
 	url = https://k8slens.dev
 	install = lens.install
@@ -11,10 +11,10 @@ pkgbase = lens-bin
 	depends = nss
 	provides = lens
 	conflicts = lens
-	source = lens-6.0.0.x86_64.AppImage::https://api.k8slens.dev/binaries/Lens-6.0.0-latest.20220728.2.x86_64.AppImage
+	source = lens-6.0.1.x86_64.AppImage::https://api.k8slens.dev/binaries/Lens-6.0.1-latest.20220810.2.x86_64.AppImage
 	source = lens.install
 	source = lens.desktop
-	b2sums = 13429c3ff028467e06a6b45fbaa378fec1fecec900e7a94281f7ee5a4df062300ad1f0c0aae2f9dbc50045fed50dde5dfddde12ed712d5b49bc0ca8da58e59b8
+	b2sums = 0722cf57b555671beb3a1fe868724a597802bdb27edcc8b9b8b5302e6e3018a9666c57de2851d13a6ecc52a363d665c92f5c77128687fa84fbce58688d2ec28f
 	b2sums = 824c9dcfd5700335632d814c2c1edc3861e18e5f82f0866474895f7b40d0177097d308d6802944ef1c1b6eda2f58b33647a3b2221e3c482f7cf2085fb97ab6b3
 	b2sums = 2aea209098a22d8e4b263a059f6e67b2a3e8f8dfb0c15ac81e33edb4c2be81fd7a6f419a04a77be5b5c8d81b160e6e3f159b4d8639ccab705fffecf149255a36
 
