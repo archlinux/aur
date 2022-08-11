@@ -1,9 +1,9 @@
 # Maintainer: Reza Jahanbakhshi <reza.jahanbakhshi at gmail dot com>
-# Co-Maintainer: Melvin Vermeeren <mail@mel.vin>
+# Contributor: Melvin Vermeeren <mail@mel.vin>
 
 pkgname=domoticz-git
 _gitname="domoticz"
-pkgver=r14445
+pkgver=r14455
 pkgrel=1
 pkgdesc="Web based home automation"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
