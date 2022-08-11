@@ -1,6 +1,6 @@
 pkgbase = r-chipqc
 	pkgdesc = Quality metrics for ChIPseq data
-	pkgver = 1.32.1
+	pkgver = 1.32.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ChIPQC
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = r-chipqc
 	depends = r-txdb.mmusculus.ucsc.mm9.knowngene
 	depends = r-txdb.rnorvegicus.ucsc.rn4.ensgene
 	optdepends = r-biocstyle
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ChIPQC_1.32.1.tar.gz
-	sha256sums = 212206f51cf7aecc820eabc944830e3297dba9a6423238b3b44245c4791c2ad9
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ChIPQC_1.32.2.tar.gz
+	sha256sums = ba228af9cef28a5882d5e7d1daac4f0a1190ea9e6f2a35403a7c39a31e88feb0
 
 pkgname = r-chipqc
