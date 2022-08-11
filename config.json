@@ -27,7 +27,8 @@
             "listenerTFO": true,
             "enableUDP": true,
             "mtu": 1500,
-            "tunnelRemoteAddress": "[2606:4700:4700::1111]:53"
+            "tunnelRemoteAddress": "[2606:4700:4700::1111]:53",
+            "tunnelUDPTargetOnly": false
         },
         {
             "name": "ss-2022",
@@ -149,5 +150,6 @@
         ]
     },
     "udpBatchMode": "",
+    "udpBatchSize": 64,
     "udpPreferIPv6": true
 }
