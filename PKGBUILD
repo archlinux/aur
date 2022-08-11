@@ -1,4 +1,4 @@
-# Maintainer: Serge K <serge.arch@zmail.pro>
+# Maintainer: Serge K <arch@phnx47.net>
 # Contributor: Stephen Argent <steve [at] tuxcon [dot] com>
 
 # https://github.com/phnx47/pkgbuilds
