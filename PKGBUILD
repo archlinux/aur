@@ -2,7 +2,7 @@
 
 pkgname=mailctl-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.6.4
+pkgver=0.6.5
 release_bin="${_pkgname}-${pkgver}-Linux-x86_64"
 pkgrel=1
 pkgdesc="Provide OAuth2 renewal and authorization capabilities"
