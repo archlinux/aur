@@ -1,6 +1,6 @@
 pkgbase = iwgtk
 	pkgdesc = Lightweight wireless network management GUI (front-end for iwd)
-	pkgver = 0.7
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://github.com/J-Lentz/iwgtk
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = iwgtk
 	depends = gtk4>=4.6
 	depends = qrencode
 	depends = adwaita-icon-theme
-	source = iwgtk-0.7.tar.gz::https://github.com/J-Lentz/iwgtk/archive/v0.7.tar.gz
-	sha256sums = ab33211e8e65e723bfe9ac3276dd2fcaec50a6fffe06c44d21615e612755e744
+	source = iwgtk-0.8.tar.gz::https://github.com/J-Lentz/iwgtk/archive/v0.8.tar.gz
+	sha256sums = 38e81e67004bbd246b6551ffc812b6ab019f84a7329f134bb8031eb61d9d732c
 
 pkgname = iwgtk
