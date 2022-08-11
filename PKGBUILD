@@ -9,6 +9,7 @@ arch=('x86_64')
 url="https://github.com/OJ/gobuster"
 provides=('gobuster')
 license=('Apache')
+depends=('p7zip')
 conflicts=('gobuster' 'gobuster-git')
 binname=${pkgname_orig}-${pkgver}-${pkgrel}
 dirname=${pkgname_orig}-linux-amd64
