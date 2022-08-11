@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=onevpl-cpu
-pkgver=2022.2.0
+pkgver=2022.2.1
 pkgrel=1
 pkgdesc='oneVPL runtime implementation for CPU'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'cmake' 'meson' 'nasm' 'onevpl' 'python' 'xxhash' 'yasm')
 provides=('onevpl-runtime')
 source=("https://github.com/oneapi-src/oneVPL-cpu/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         '010-onevpl-cpu-fix-build.patch')
-sha256sums=('c053752c7987142424738d9d5f563745b7319c76387e6678b6ad10933e9104e0'
+sha256sums=('f56ee98343ab97be080dadb6346cf433ef0610db8ad6c9e45bba80930aa677a1'
             'f8a04899239250cd32edde782823cf76be46249a17c3147fc29f3742a21f710c')
 
 prepare() {
