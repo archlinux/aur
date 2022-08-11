@@ -37,10 +37,7 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
-  mkdir -p "$pkgdir/usr/share/licenses/openbgpd/"
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/openbgpd/"
-  mkdir -p "$pkgdir/usr/lib/sysusers.d/"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/openbgpd/LICENSE"
   install -Dm644 "$srcdir/sysusers.conf" "$pkgdir/usr/lib/sysusers.d/bgpd.conf"
-  mkdir -p "$pkgdir/usr/lib/systemd/system/"
   install -Dm644 "$srcdir/bgpd.service" "$pkgdir/usr/lib/systemd/system/bgpd.service"
 }
