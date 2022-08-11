@@ -2,7 +2,7 @@
 # Contributor: meatatt <meatatt at aliyun dot com>
 
 pkgname=waterfox-classic-kpe
-pkgver=2022.04
+pkgver=2022.08
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE"
 arch=('x86_64')
@@ -23,7 +23,7 @@ provides=("waterfox-classic=${pkgver}")
 conflicts=('waterfox-classic' 'waterfox-kde')
 replaces=('waterfox-kde')
 options=('!emptydirs' '!makeflags' 'zipman')
-_filesrev=c6b305eaf1eded6be2702034930a36831cdc86aa
+_filesrev=c89eb86d8e0cf5c2611caf50ef89060ddaad0e56
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-classic-kpe
 _commit=709bbfedcb2750665fbda4993b253737615ee8f8
 #"git+https://github.com/WaterfoxCo/Waterfox-Classic.git#commit=$_commit"
@@ -37,7 +37,9 @@ source=("git+https://github.com/WaterfoxCo/Waterfox-Classic.git#tag=$pkgver-clas
         "dont-statically-link-libstdc++.patch::$_filesurl/patches/dont-statically-link-libstdc%2B%2B.patch"
         pgo_fix_missing_kdejs.patch
         "classic-kde.patch::$_filesurl/patches/classic-kde.patch"
-        "classic-kde-xul.patch::$_filesurl/patches/classic-kde-xul.patch")
+        "classic-kde-xul.patch::$_filesurl/patches/classic-kde-xul.patch"
+        "Bug1782988_p1.patch::$_filesurl/patches/Bug1782988_p1.patch"
+        "Bug1782988_p2.patch::$_filesurl/patches/Bug1782988_p2.patch")
 sha256sums=('SKIP'
             '65601b7b75dc1a5b622201b02f9bd95005ca258b53f1e3d47ffe160dce6a16f3'
             '0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc'
@@ -48,7 +50,9 @@ sha256sums=('SKIP'
             '877bc1f0e768d96118bb739725e590467773dd897c31263099e52b8d7aaaa4c8'
             'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e'
             '6ff820e43a48ce9450e59e02877ff574a1921d0b286737d55949ad40865add08'
-            'b06289812def0ddd289ab2c06b3ea2ee909bf984af7742f9fb930c8a44e1423a')
+            'b06289812def0ddd289ab2c06b3ea2ee909bf984af7742f9fb930c8a44e1423a'
+            '4131daf3b1ce9be83b66c7fd6732d1a8040f6103083e23a349e2d80afe345709'
+            'c15dd4ae00f694cc073db6c573af9b4592c75b78a81da359964a7d7fb8bb6912')
 
 prepare() {
   # Fix openSUSE's patches for Waterfox
@@ -68,6 +72,8 @@ prepare() {
   patch -Np1 -i ../classic-kde.patch
   patch -Np1 -i ../classic-kde-xul.patch
   patch -Np1 -i ../pgo_fix_missing_kdejs.patch
+  patch -Np1 -i ../Bug1782988_p1.patch
+  patch -Np1 -i ../Bug1782988_p2.patch
 
   cat >.mozconfig <<END
 export CC=clang
