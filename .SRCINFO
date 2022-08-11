@@ -1,6 +1,6 @@
 pkgbase = iotas-git
 	pkgdesc = Simple note taking
-	pkgver = r33.8151bf2
+	pkgver = r47.5c9fe89
 	pkgrel = 1
 	url = https://gitlab.gnome.org/cheywood/iotas
 	arch = x86_64

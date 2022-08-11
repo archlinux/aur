@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=iotas-git
-pkgver=r33.8151bf2
+pkgver=r47.5c9fe89
 pkgrel=1
 pkgdesc="Simple note taking"
 arch=('x86_64')
