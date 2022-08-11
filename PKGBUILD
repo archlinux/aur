@@ -2,7 +2,7 @@
 # Contributor: Thaodan <theodorstormgrade@gmail.com>
 
 pkgname=wargus
-pkgver=3.3.1
+pkgver=3.3.2
 pkgrel=1
 pkgdesc="Warcraft2 Mod that allows you to play Warcraft2 with the Stratagus engine"
 arch=("i686" "x86_64")
@@ -23,7 +23,7 @@ optdepends=(
 	'soundfont-fluid: sound font for midi music support'
 )
 source=("https://github.com/Wargus/$pkgname/archive/v${pkgver}.tar.gz")
-md5sums=('bf45f3cb353b6051413f81feecf34fc3')
+md5sums=('00d5aaa6ba11e52fbea81199f3254e09')
 
 build() {
   cd ${srcdir}
