@@ -1,5 +1,19 @@
 # Changelog
 
+## [v3.2.5](https://github.com/fastly/cli/releases/tag/v3.2.5) (2022-08-10)
+
+[Full Changelog](https://github.com/fastly/cli/releases/tag/v3.2.4...v3.2.5)
+
+**Enhancements:**
+
+* Remove dynamic configuration [#620](https://github.com/fastly/cli/pull/620)
+* Static analysis updates [#621](https://github.com/fastly/cli/pull/621)
+* Semgrep updates [#619](https://github.com/fastly/cli/pull/619)
+
+**Bug fixes:**
+
+* Fix `fastly help` tests to work with Go 1.19 [#623](https://github.com/fastly/cli/pull/623)
+
 ## [v3.2.4](https://github.com/fastly/cli/releases/tag/v3.2.4) (2022-07-28)
 
 [Full Changelog](https://github.com/fastly/cli/releases/tag/v3.2.3...v3.2.4)

@@ -1,6 +1,6 @@
 pkgbase = fastly
 	pkgdesc = CLI for the Fastly platform
-	pkgver = 3.2.4
+	pkgver = 3.2.5
 	pkgrel = 1
 	url = https://github.com/fastly/cli
 	changelog = CHANGELOG.md
@@ -11,7 +11,7 @@ pkgbase = fastly
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = fastly::git+https://github.com/fastly/cli#commit=54a460d?signed
+	source = fastly::git+https://github.com/fastly/cli#commit=88df3e5?signed
 	validpgpkeys = A4C2C78656BA5E3DD5F122E4BCE379A5D550C407
 	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
 	sha256sums = SKIP

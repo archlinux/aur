@@ -4,8 +4,8 @@
 ## GPG key: https://github.com/web-flow.gpg
 
 pkgname=fastly
-pkgver=3.2.4
-_commit=54a460d
+pkgver=3.2.5
+_commit=88df3e5
 pkgrel=1
 pkgdesc='CLI for the Fastly platform'
 url='https://github.com/fastly/cli'
