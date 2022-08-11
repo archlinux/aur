@@ -3,7 +3,7 @@
 
 pkgname=rustdesk-bin
 pkgver=1.1.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!"
 arch=('x86_64')
 url="https://github.com/rustdesk/rustdesk"
@@ -18,6 +18,7 @@ sha256sums=('SKIP')
 
 prepare() {
     sed -i "s/^\(Icon=\).*$/\1rustdesk/" "$srcdir/usr/share/rustdesk/files/rustdesk.desktop"
+    sed -i "s/Other/Network/g" "$srcdir/usr/share/rustdesk/files/rustdesk.desktop"
 }
 
 package() {
