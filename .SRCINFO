@@ -1,6 +1,6 @@
 pkgbase = discord_arch_electron_wayland
 	pkgdesc = Discord (popular voice + video app) using system electron (v13) and set up for wayland
-	pkgver = 0.0.18
+	pkgver = 0.0.19
 	pkgrel = 1
 	url = https://discordapp.com
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = discord_arch_electron_wayland
 	optdepends = xdg-utils: Open files
 	provides = discord
 	conflicts = discord
-	source = https://dl.discordapp.net/apps/linux/0.0.18/discord-0.0.18.tar.gz
-	sha256sums = 3462732e5d5d9bb75f901f7ca5047782fe2f96576b208ea538c593ba2a031315
+	source = https://dl.discordapp.net/apps/linux/0.0.19/discord-0.0.19.tar.gz
+	sha256sums = 19f4b275d6c617c580e89987a38b54336edcc87579911032ac48997b58db0390
 
 pkgname = discord_arch_electron_wayland
