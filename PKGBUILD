@@ -18,13 +18,13 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
 	"$pkgname::git+https://github.com/mongodb-js/compass"
+	"$pkgname-browserslist.diff::https://github.com/browserslist/browserslist/pull/378.diff"
 	'hadron-build.diff'
-	'browserslist.diff'
 
 )
 sha512sums=('SKIP'
-            '8d26820139d918c4e9da05b062a86865664218bfbf32b9f002995c30fa22b64e088f59263bee5f8fb4797565fe88b7daf48c383a572c0ced657dab0639e57b94'
-            'c7ed26d911cea41cea65ede61d41c22c24296c88c4a21532d81b3092844cd65a866fe8e390570362eb7f0200a897a86e97387e8afb4e1ad8e8398c7265d529d2')
+            'd7fb3d9d9417bf03aee8a27a813f600756acfd2b8db581f609e13a6c8482f6f70ce1659831c9ddd85bb1a4141430213b79524227b3be775b78b4fa3619fe36d1'
+            '8d26820139d918c4e9da05b062a86865664218bfbf32b9f002995c30fa22b64e088f59263bee5f8fb4797565fe88b7daf48c383a572c0ced657dab0639e57b94')
 
 _sourcedirectory="$pkgname"
 
@@ -46,7 +46,7 @@ prepare() {
 	# Apply browserslist fixes
 	for _folder in 'node_modules/@mongodb-js/'*'/node_modules/browserslist'; do
 		if grep -q '"version": "2' "$_folder/package.json"; then
-			patch -d "$_folder/" --forward -p1 < "$srcdir/browserslist.diff"
+			patch -d "$_folder/" --forward -p1 < "$srcdir/$pkgname-browserslist.diff"
 		fi
 	done
 
