@@ -2,7 +2,7 @@
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 
 pkgname=rollup
-pkgver=2.77.2
+pkgver=2.77.3
 pkgrel=1
 pkgdesc="Next-generation ES6 module bundler"
 arch=('any')
@@ -14,7 +14,7 @@ changelog=CHANGELOG.md
 options=('!emptydirs')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('30ac505e8e4f749c78f93c460624a1095b4a9d89101ffa6fcfb3559098e72ac3')
+sha256sums=('384d550745ee5b9a1a9953f754570c4864c2a691c4d265bf5747e9168b33d7f2')
 
 PURGE_TARGETS=('CHANGELOG.md')
 
@@ -26,8 +26,7 @@ package() {
 		"$pkgname-$pkgver.tgz"
 	chown -R root:root "$pkgdir/"
 
-	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	install -d "$pkgdir/usr/share/doc/$pkgname/"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/" "$pkgdir/usr/share/doc/$pkgname/"
 	ln -s "/usr/lib/node_modules/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	ln -s "/usr/lib/node_modules/$pkgname/README.md" -t "$pkgdir/usr/share/doc/$pkgname/"
 }
