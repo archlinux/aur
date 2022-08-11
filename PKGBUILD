@@ -21,7 +21,7 @@
 
 _basename=clapper
 pkgname="${_basename}"
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="A GNOME media player built using GJS with GTK4 toolkit and powered by GStreamer with OpenGL rendering."
 arch=(any)
@@ -49,11 +49,12 @@ optdepends=(
 	"gstreamer-vaapi>=1.20.0: Intel/AMD video acceleration"
 	"gst-plugins-ugly>=1.20.0: CD/DVD playback"
 	"gst-plugin-va>=1.20.0: Intel/AMD video acceleration (experimental)"
+	"gtuber>=r242: Play videos from various services"
 )
 source=("${_basename}-${pkgver}::https://github.com/Rafostar/${_basename}/archive/${pkgver}.tar.gz")
 provides=("${_basename}" "libgst${_basename}-1.0")
 conflicts=("${_basename}")
-md5sums=("4b17fee0a0c0c7e4e17342060423fd6b")
+md5sums=("e8d358ab1f56e738656220a652af978a")
 
 prepare() {
 	cd "${srcdir}/${_basename}-${pkgver}"
