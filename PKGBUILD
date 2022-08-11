@@ -2,7 +2,7 @@
 
 pkgname=semgrep-bin
 _name=semgrep
-pkgver=0.104.0
+pkgver=0.108.0
 pkgrel=1
 pkgdesc="Fast and syntax-aware semantic code pattern search for many languages: like grep but for code"
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(
   'python' 'python-attrs' 'python-boltons' 'python-colorama' 'python-click'
   'python-click-option-group' 'python-glom' 'python-requests' 'python-ruamel-yaml'
   'python-tqdm' 'python-packaging' 'python-jsonschema' 'python-wcmatch' 'python-peewee'
-  'python-defusedxml' 'python-urllib3'
+  'python-defusedxml' 'python-urllib3' 'python-typing_extensions' 'python-lsp-jsonrpc'
 )
 provides=('semgrep')
 options=('!strip')
@@ -22,8 +22,8 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
 )
 sha256sums=(
-  '182105b5b4b337fd9abc5b61a734cc783a4711fdecf6e6b47e6b5ce4a49a67ce'
-  'f84dcfb55b63fb4b91a63f284da2447329fbdeaffd912f0ac44b2e3b456decdc'
+  '42b1fe80624e3137017035a26d8da0646109e000bf70e2c469446a965a64004a'
+  '02fee38f4d67981fb4f8d97d93999877aae6b4e444d8d82dd9bb1af4fe0ead6d'
 )
 # https://github.com/returntocorp/semgrep/releases/download/v${pkgver}/semgrep-v${pkgver}-ubuntu-16.04.tgz.sha256
 
