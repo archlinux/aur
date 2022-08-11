@@ -2,11 +2,11 @@
 
 pkgname=adwcustomizer-git
 _pkgname=AdwCustomizer
-pkgver=r143.d20bf68
+pkgver=r204.247a682
 pkgrel=1
 pkgdesc="Change the look of Adwaita, with ease"
 arch=('x86_64' 'aarch64')
-url="https://github.com/ArtyIF/AdwCustomizer"
+url="https://github.com/AdwCustomizerTeam/AdwCustomizer"
 license=('GPL3')
 depends=('libadwaita-git>=1.2.alpha' 'python-anyascii' 'libportal-gtk4')
 makedepends=('git' 'meson' 'blueprint-compiler' 'gobject-introspection')
