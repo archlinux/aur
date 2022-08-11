@@ -14,12 +14,12 @@ makedepends=('git' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
+	"$pkgname-$pkgver-$pkgrel-browserslist.diff::https://github.com/browserslist/browserslist/pull/378.diff"
 	'hadron-build.diff'
-	'browserslist.diff'
 )
 sha512sums=('1e8a4a5271b66dba8b30a91a7bde4189b764d77156cc8f54a7e2629006ed4281542a8f0b53def3f9a939189da3593d8e4df20abc8c6468322e753b03268de36f'
-            '8d26820139d918c4e9da05b062a86865664218bfbf32b9f002995c30fa22b64e088f59263bee5f8fb4797565fe88b7daf48c383a572c0ced657dab0639e57b94'
-            'c7ed26d911cea41cea65ede61d41c22c24296c88c4a21532d81b3092844cd65a866fe8e390570362eb7f0200a897a86e97387e8afb4e1ad8e8398c7265d529d2')
+            'd7fb3d9d9417bf03aee8a27a813f600756acfd2b8db581f609e13a6c8482f6f70ce1659831c9ddd85bb1a4141430213b79524227b3be775b78b4fa3619fe36d1'
+            '8d26820139d918c4e9da05b062a86865664218bfbf32b9f002995c30fa22b64e088f59263bee5f8fb4797565fe88b7daf48c383a572c0ced657dab0639e57b94')
 
 # Set up dependencies based on if we're working with a beta release
 if [[ $_target =~ .*-beta ]]; then
@@ -59,7 +59,7 @@ prepare() {
 	# Apply browserslist fixes
 	for _folder in 'node_modules/@mongodb-js/'*'/node_modules/browserslist'; do
 		if grep -q '"version": "2' "$_folder/package.json"; then
-			patch -d "$_folder/" --forward -p1 < "$srcdir/browserslist.diff"
+			patch -d "$_folder/" --forward -p1 < "$srcdir/$pkgname-$pkgver-$pkgrel-browserslist.diff"
 		fi
 	done
 
