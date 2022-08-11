@@ -1,6 +1,6 @@
 pkgbase = python-podman-git
 	pkgdesc = Python bindings for Podman's RESTful API
-	pkgver = 4.0.0
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/containers/podman-py
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-podman-git
 	provides = python-podman
 	provides = python-podman-py
 	conflicts = python-podman
-	source = https://github.com/containers/podman-py
+	source = git+https://github.com/containers/podman-py
 	sha256sums = SKIP
 
 pkgname = python-podman-git
