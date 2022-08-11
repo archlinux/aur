@@ -1,7 +1,7 @@
 pkgbase = gameshell
 	pkgdesc = A game to learn (or teach) how to use standard commands in a Unix shell
-	pkgver = 0.3.1
-	pkgrel = 2
+	pkgver = 0.4.1
+	pkgrel = 1
 	url = https://github.com/phyver/GameShell
 	arch = any
 	license = GPL3
@@ -16,9 +16,9 @@ pkgbase = gameshell
 	optdepends = xorg-xeyes: extra missions
 	optdepends = util-linux: extra missions
 	provides = gameshell
-	source = gameshell-0.3.1.sh::https://github.com/phyver/GameShell/releases/download/v0.3.1/gameshell.sh
+	source = gameshell-0.4.1.sh::https://github.com/phyver/GameShell/releases/download/v0.4.1/gameshell.sh
 	source = run_gameshell.sh
-	b2sums = eda4a17c3376ca61c900d3fcf1431d1608221fe7d2179ec9ab03204dd23e4664c1a710e4b64ad0aa85a337b81c2b6dee2d34a70b2191e3f9afd30c3db1c0733c
+	b2sums = 1864eb931246cbe2691413a2b010a3346ae46f238632bf3c5fd920c92093bf047e97572bfd91b3da50155615c5e8a62aa4727be09a71fd89893d9bd97294d649
 	b2sums = 4efea74d72365dce9c131bf6cd8f7c42ece00072f8a07a1b9e60f95feab6dbf5dd63c434bf37eaab9d90e968d89584fd21e789aa997f1b1d7d1e0b9000bc0001
 
 pkgname = gameshell
