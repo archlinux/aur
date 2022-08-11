@@ -1,7 +1,7 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux-lts
 _pkgver=5.15.59
-_pkgrel=1
+_pkgrel=2
 pkgbase="${_pkgname}-versioned-bin"
 KERNNAME="${_pkgver}-${_pkgrel}-lts"
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}-lts"
@@ -42,9 +42,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('a0cf938500ba34d505ca747c84beb8c74f87f9bfc99a78921a180f5c863088b5'
-            '0a0e019cc69dad51d5a3bbcec4dd3cb4d2db26f62a064de2f2bcb61c631e3938'
-            '84eba5171c63002c420815d664de644833e34f151d925419c5ca753a1889e8ca')
+sha256sums=('347f18fbcdf96260f941739a73210a4de687603eb773e9bdef594751ed9d4bed'
+            'ed63e6953fd35986bf384e5ad2763ad2370ff4e23d5e1124e2db1c2d19d324d5'
+            '0b306b57b873f859d7edcafc69107bdc7107123ec5b0f8f329bc4ef382758e5f')
 
 package_linux-lts-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -62,7 +62,7 @@ package_linux-lts-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.15.59-1-lts-bin() {
+package_linux5.15.59-2-lts-bin() {
   pkgdesc="The LTS Linux kernel and modules, version ${KERNNAME}"
   depends=(coreutils
            initramfs
@@ -70,7 +70,8 @@ package_linux5.15.59-1-lts-bin() {
   conflicts=("${_pkgname}")
   optdepends=('linux-firmware: firmware images needed for some devices'
               'wireless-regdb: to set the correct wireless channels of your country')
-  provides=(VIRTUALBOX-GUEST-MODULES
+  provides=(KSMBD-MODULE
+            VIRTUALBOX-GUEST-MODULES
             WIREGUARD-MODULE)
   replaces=(wireguard-lts)
   tar -xf "${_kernpkg}" -C "${pkgdir}"
@@ -78,7 +79,7 @@ package_linux5.15.59-1-lts-bin() {
   sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
 }
 
-package_linux5.15.59-1-lts-headers-bin() {
+package_linux5.15.59-2-lts-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the LTS Linux kernel ${KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -87,7 +88,7 @@ package_linux5.15.59-1-lts-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.15.59-1-lts-docs-bin() {
+package_linux5.15.59-2-lts-docs-bin() {
   pkgdesc="Documentation for the LTS Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
