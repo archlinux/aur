@@ -1,6 +1,6 @@
 pkgbase = fastmod
 	pkgdesc = A fast partial replacement for the codemod tool
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/facebookincubator/fastmod
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = fastmod
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
-	source = fastmod-0.4.2.tar.gz::https://github.com/facebookincubator/fastmod/archive/v0.4.2.tar.gz
-	sha256sums = 5afb4c449aa7d1efe34e0540507fc1d1f40f7eba0861b2bb10409080faeffc4a
+	source = fastmod-0.4.3.tar.gz::https://github.com/facebookincubator/fastmod/archive/v0.4.3.tar.gz
+	sha256sums = 0c00d7e839caf123c97822542d7f16e6f40267ea0c6b54ce2c868e3ae21de809
 
 pkgname = fastmod
-
