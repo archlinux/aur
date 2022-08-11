@@ -1,19 +1,19 @@
 # Maintainer: Daniel Landau <daniel.landau@iki.fi>
 pkgname=shrinkpdf
-pkgver=1.0
-pkgrel=5
+pkgver=1.1
+pkgrel=1
 pkgdesc="Tiny shell script to shrink an image pdf"
 arch=('any')
-url="http://www.alfredklomp.com/programming/shrinkpdf/"
+url="https://github.com/aklomp/shrinkpdf"
 license=('BSD')
 depends=('ghostscript')
 source=(
-http://www.alfredklomp.com/programming/shrinkpdf/shrinkpdf.sh
+https://github.com/aklomp/shrinkpdf/archive/refs/tags/v${pkgver}.tar.gz
 )
-sha256sums=('2aa47759a945165e119b84b99d1042c63fceb1ec2692145e250b4f78ec032662')
+sha256sums=('e02cd491c6f7abbc5c129227dbcfe5257fc9a18b40129af29967be1542cddaaa')
 
 package() {
-	cd "$srcdir/"
+	cd "$srcdir/$pkgname-$pkgver"
 
 	sed -ne '/Copyright/,/POSSIBILITY OF SUCH DAMAGE/p' shrinkpdf.sh > LICENSE
 	install -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
