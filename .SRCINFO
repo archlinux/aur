@@ -1,6 +1,6 @@
 pkgbase = meanalyzer-git
 	pkgdesc = Intel Management Engine firmware analysis tool
-	pkgver = r269.r0.gc7694e4
+	pkgver = 1.282.0.r295.r0.g5f7ae54
 	pkgrel = 1
 	url = https://github.com/platomav/MEAnalyzer
 	arch = any
@@ -11,10 +11,6 @@ pkgbase = meanalyzer-git
 	depends = python-crccheck
 	depends = python-pltable
 	source = meanalyzer-git::git+https://github.com/platomav/MEAnalyzer#branch=master
-	source = change-mea_dir.patch
-	source = db-location.patch
 	sha256sums = SKIP
-	sha256sums = 8d77dc46728f5dc3b396910f2626f3508b28cfd76de77890e27e3c55b1c09e85
-	sha256sums = b99918610c6b6d949593c0e02af003010d7f5a46846131d8cb83c1969e20510e
 
 pkgname = meanalyzer-git
