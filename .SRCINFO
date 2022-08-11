@@ -1,7 +1,7 @@
 pkgbase = journal-git
 	pkgdesc = An agnostic approach to note management and personal organization.
 	pkgver = v1.1.2.r25.g61507a6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/danisztls/journal
 	arch = any
 	license = GPL3

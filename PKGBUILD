@@ -4,7 +4,7 @@ _gitbranch=main
 _gitauthor=danisztls
 pkgname=journal-git
 pkgver=v1.1.2.r25.g61507a6
-pkgrel=1
+pkgrel=2
 pkgdesc="An agnostic approach to note management and personal organization."
 arch=('any')
 license=('GPL3')
@@ -25,6 +25,6 @@ pkgver() {
 package() {
   cd "$srcdir/${pkgname%-git}"
   make DESTDIR="${pkgdir}/" install
-  install -vDm 644 COPYING "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+  install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname%-git}"
   install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname%-git}"
 }
