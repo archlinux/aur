@@ -1,30 +1,34 @@
-# Maintainer: Christopher Loen <christopherloen at gmail dot com>
+# Maintainer: GI Jack <GI_Jack@hackermail.com>
+# Contributor: Christopher Loen <christopherloen at gmail dot com>
 # Contributor: Sirat18 <aur@sirat18.de>
 # Contributor: Alex Cartwright (alexc223@googlemail.com)
 # Contributor: CRT <crt.011@gmail.com>
+
 pkgname=skipfish
-pkgver=2.10b
-pkgrel=2
+pkgver=2.10b_2kali5
+_pkgver=2.10b-2kali5
+pkgrel=1
 pkgdesc="A fully automated, active web application security reconnaissance tool"
 arch=('any')
 license=('APACHE')
-url='http://code.google.com/p/skipfish/'
+url='https://gitlab.com/kalilinux/packages/skipfish'
 depends=('openssl' 'libidn' 'zlib' 'glibc' 'sh')
-source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/skipfish/${pkgname}-${pkgver}.tgz"
+source=("https://gitlab.com/kalilinux/packages/skipfish/-/archive/kali/${_pkgver}/skipfish-kali-${_pkgver}.tar.gz"
 	"skipfish.patch")
 
-sha256sums=('1a4fbc9d013f1f9b970946ea7228d943266127b7f4100c994ad26c82c5352a9e'
+sha256sums=('f497d8bdce5f68c3ac13fb5144359145b777d55cc83262ad6ea8aafa9610a4e7'
             '096e9f7095a499605c8bf29bb9737397e9d5a168ec47888004dc8c2e7ceb0b62')
-build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
 
+build() {
+	cd "${srcdir}/${pkgname}-kali-${_pkgver}"
 	# Patch fixes application run directory system error
 	patch -Np0 -i ../skipfish.patch
+	patch -Np1 -i debian/patches/Fix-for-openssl-1.1.patch
 	make
 }	
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-kali-${_pkgver}"
 	install -dm755 "${pkgdir}/usr/share/${pkgname}"
 	install -dm755 "${pkgdir}/usr/share/${pkgname}/dictionaries"
         cp -rf  dictionaries/* "${pkgdir}/usr/share/${pkgname}/dictionaries/"
