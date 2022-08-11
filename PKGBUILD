@@ -30,13 +30,13 @@ license=("GPL-3.0")
 depends=(
 	"gtk4"
 	"gjs"
-	"glib2>=2.56.0" # glib-2.0, gmodule-2.0, gio-2.0
+	"glib2>=2.68.0" # glib-2.0, gmodule-2.0, gio-2.0
 	"wayland-protocols" # gtk4 non-default runtime dep
 	"hicolor-icon-theme"
-	"gstreamer>=1.18.0" # gstreamer-1.0, gstreamer-base-1.0
-	"gst-plugins-base>=1.18.0"
-	"gst-plugins-good>=1.18.0"
-	"gst-plugins-bad>=1.18.0"
+	"gstreamer>=1.20.0" # gstreamer-1.0, gstreamer-base-1.0
+	"gst-plugins-base>=1.20.0"
+	"gst-plugins-good>=1.20.0"
+	"gst-plugins-bad>=1.20.0"
 	"libadwaita"
 	"libsoup3"
 )
@@ -46,10 +46,10 @@ makedepends=(
 	"gobject-introspection" # /usr/sbin/g-ir-scanner
 )
 optdepends=(
-	"gst-libav>=1.18.0: Popular video decoders"
-	"gstreamer-vaapi>=1.18.0: Intel/AMD video acceleration"
-	"gst-plugins-ugly>=1.18.0: CD/DVD playback"
-	"gst-plugin-va>=1.18.0: Intel/AMD video acceleration (experimental)"
+	"gst-libav>=1.20.0: Popular video decoders"
+	"gstreamer-vaapi>=1.20.0: Intel/AMD video acceleration"
+	"gst-plugins-ugly>=1.20.0: CD/DVD playback"
+	"gst-plugin-va>=1.20.0: Intel/AMD video acceleration (experimental)"
 	"gtuber>=r242: Play videos from various services"
 )
 source=("${_basename}::git+https://github.com/Rafostar/${_basename}.git")

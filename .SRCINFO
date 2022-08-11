@@ -10,19 +10,19 @@ pkgbase = clapper-git
 	makedepends = gobject-introspection
 	depends = gtk4
 	depends = gjs
-	depends = glib2>=2.56.0
+	depends = glib2>=2.68.0
 	depends = wayland-protocols
 	depends = hicolor-icon-theme
-	depends = gstreamer>=1.18.0
-	depends = gst-plugins-base>=1.18.0
-	depends = gst-plugins-good>=1.18.0
-	depends = gst-plugins-bad>=1.18.0
+	depends = gstreamer>=1.20.0
+	depends = gst-plugins-base>=1.20.0
+	depends = gst-plugins-good>=1.20.0
+	depends = gst-plugins-bad>=1.20.0
 	depends = libadwaita
 	depends = libsoup3
-	optdepends = gst-libav>=1.18.0: Popular video decoders
-	optdepends = gstreamer-vaapi>=1.18.0: Intel/AMD video acceleration
-	optdepends = gst-plugins-ugly>=1.18.0: CD/DVD playback
-	optdepends = gst-plugin-va>=1.18.0: Intel/AMD video acceleration (experimental)
+	optdepends = gst-libav>=1.20.0: Popular video decoders
+	optdepends = gstreamer-vaapi>=1.20.0: Intel/AMD video acceleration
+	optdepends = gst-plugins-ugly>=1.20.0: CD/DVD playback
+	optdepends = gst-plugin-va>=1.20.0: Intel/AMD video acceleration (experimental)
 	optdepends = gtuber>=r242: Play videos from various services
 	provides = clapper
 	provides = libgstclapper-1.0
