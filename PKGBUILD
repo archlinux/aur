@@ -1,6 +1,6 @@
 # Maintainer: Reza Jahanbakhshi <reza.jahanbakhshi at gmail dot com
-# Co-Maintainer: Melvin Vermeeren <mail@mel.vin>
-# Co-Maintainer: IanDury <iandury@xs4all.nl>
+# Contributor: Melvin Vermeeren <mail@mel.vin>
+# Contributor: IanDury <iandury@xs4all.nl>
 
 pkgname=openzwave-git
 basename=${pkgname%-git}

@@ -1,6 +1,6 @@
 pkgbase = openzwave-git
 	pkgdesc = Opensource Z-Wave control
-	pkgver = 7528.4887754f.d41d8cd98f00b204e9800998ecf8427e
+	pkgver = 7528.4887754f.97f47476b8675683144a4278a4c93271
 	pkgrel = 1
 	url = http://www.openzwave.com
 	install = openzwave-git.install
