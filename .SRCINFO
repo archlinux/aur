@@ -1,23 +1,24 @@
 pkgbase = python-acstools
 	pkgdesc = Python Tools for ACS (Advanced Camera for Surveys) Data
-	pkgver = 3.3.1
+	pkgver = 3.4.0
 	pkgrel = 1
-	url = https://acstools.readthedocs.io/
-	arch = i686
-	arch = x86_64
+	url = https://acstools.readthedocs.io
+	arch = any
 	license = BSD
 	checkdepends = python-pytest-astropy-header
-	checkdepends = python-astropy
+	checkdepends = python-pytest-remotedata
+	checkdepends = python-stsci.tools
 	checkdepends = python-beautifulsoup4
 	checkdepends = python-requests
-	checkdepends = python-ci_watson
-	checkdepends = python-yaml
 	checkdepends = python-matplotlib
+	checkdepends = python-ci_watson
+	checkdepends = python-scikit-image>=0.11
 	makedepends = python-setuptools-scm
-	source = https://files.pythonhosted.org/packages/source/a/acstools/acstools-3.3.1.tar.gz
-	source = https://raw.githubusercontent.com/spacetelescope/acstools/master/LICENSE.md
-	md5sums = 70a60fb2076ea289cf898634c82a14c0
-	md5sums = SKIP
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/a/acstools/acstools-3.4.0.tar.gz
+	md5sums = e4b333be8a93bf34d88229c8cbbea9f1
 
 pkgname = python-acstools
 	depends = python>=3.6
@@ -30,4 +31,3 @@ pkgname = python-acstools
 	optdepends = python-scikit-image
 	optdepends = python-stsci.imagestats
 	optdepends = python-acstools-doc: Documentation for Python ACS Tools
-
