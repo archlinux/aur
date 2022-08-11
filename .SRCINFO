@@ -1,6 +1,6 @@
 pkgbase = r-genomicdatacommons
 	pkgdesc = NIH / NCI Genomic Data Commons Access
-	pkgver = 1.20.1
+	pkgver = 1.20.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GenomicDataCommons
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = r-genomicdatacommons
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg38.knowngene
 	optdepends = r-variantannotation
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomicDataCommons_1.20.1.tar.gz
-	sha256sums = a47cd06640e47b9f42466be713711ffde87978927402c0c71f4c647dac2e4770
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomicDataCommons_1.20.2.tar.gz
+	sha256sums = 7fa46db2e360bc0e8213aee73f7d5c32de3155928e1357eafd8e482dd666f545
 
 pkgname = r-genomicdatacommons
