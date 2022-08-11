@@ -1,6 +1,6 @@
 pkgbase = gptrace
 	pkgdesc = Trace the activities of an external application
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://www.muflone.com/gptrace/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = gptrace
 	depends = python-xdg
 	depends = python-gobject
 	depends = python-ptrace
-	source = gptrace-0.5.0.tar.gz::https://github.com/muflone/gptrace/archive/0.5.0.tar.gz
-	sha256sums = 0c0f6c6098f8d49324b81bf3b5393ccadfe935e698b30c70b8b8985f97a1b942
+	source = gptrace-0.6.0.tar.gz::https://github.com/muflone/gptrace/archive/0.6.0.tar.gz
+	sha256sums = 480c38c7b60d298827a29c01e8d74c640ff86ecffb0df2de5d88a2f7518de14a
 
 pkgname = gptrace
