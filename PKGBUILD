@@ -23,7 +23,7 @@
 # /usr/lib/purr-data, so that 3rd party externals know where to find these.
 
 pkgname=purr-data
-pkgver=2.17.0.r4864.8345b481
+pkgver=2.17.0.r4883.d283e5e1
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://agraef.github.io/purr-data/"
@@ -37,7 +37,7 @@ depends=('bluez-libs' 'desktop-file-utils' 'dssi' 'fftw'
   'libv4l' 'libvorbis' 'portaudio'
   'smpeg' 'speex' 'stk' 'zlib' 'lua'
   'alsa-lib' 'gconf' 'gtk2' 'gtk3' 'nss' 'libxtst' 'libxss' 'ttf-dejavu')
-makedepends=('autoconf' 'automake' 'libtool' 'git' 'rsync' 'python2')
+makedepends=('autoconf' 'automake' 'libtool' 'git' 'rsync' 'python2' 'pandoc')
 conflicts=('purr-data')
 install=purr-data.install
 options=('!makeflags' '!strip')
