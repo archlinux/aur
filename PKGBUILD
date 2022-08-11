@@ -1,14 +1,14 @@
 # Maintainer:
 
 pkgname=heroic-games-launcher-git
-pkgver=2.3.10.r0.gf8d0bb88
+pkgver=2.4.0.r1.g45f08b5a
 pkgrel=1
 pkgdesc="Native GOG and Epic Games launcher for Linux"
 arch=(x86_64)
 url="https://heroicgameslauncher.com/"
-license=(GLP3)
-depends=(alsa-lib gtk3 nss)
-makedepends=(git yarn node-gyp python)
+license=(GPL3)
+depends=(alsa-lib gtk3 nss python)
+makedepends=(git yarn node-gyp)
 provides=(heroic-games-launcher)
 conflicts=(heroic-games-launcher)
 source=("git+https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher.git")
@@ -22,7 +22,7 @@ pkgver() {
 build() {
   cd HeroicGamesLauncher
   yarn
-  yarn dist tar.xz
+  yarn dist:linux tar.xz
 }
 
 package() {
