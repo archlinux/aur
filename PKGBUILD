@@ -1,6 +1,6 @@
 # Maintainer: Kenny Rasschaert <kenny@kennyrasschaert.com>
 pkgname=goss-bin
-pkgver=0.3.16
+pkgver=0.3.18
 pkgrel=1
 pkgdesc="Quick and Easy server testing/validation"
 arch=('i686' 'x86_64' 'arm')
@@ -12,11 +12,11 @@ source=("dgoss-${pkgver}::https://github.com/aelsabbahy/goss/releases/download/v
 source_i686=("goss-linux-386-${pkgver}::https://github.com/aelsabbahy/goss/releases/download/v${pkgver}/goss-linux-386")
 source_x86_64=("goss-linux-amd64-${pkgver}::https://github.com/aelsabbahy/goss/releases/download/v${pkgver}/goss-linux-amd64")
 source_arm=("goss-linux-arm-${pkgver}::https://github.com/aelsabbahy/goss/releases/download/v${pkgver}/goss-linux-arm")
-sha1sums=('560b4f6f6724f23a4477197df65c94434c4ee31e'
+sha1sums=('eef874df64a2a689f6120ebad1300d268708a909'
           '669a1e53b9dd9df3474300d3d959bb85bad75945')
-sha1sums_i686=('22cf3313df64a285c2562b1de477b2e2a858f18b')
-sha1sums_x86_64=('0303164cd5c119a36d0856474dde05e741c60324')
-sha1sums_arm=('258529ae447407b8e682b5e03da155b2e5574787')
+sha1sums_i686=('1da5c4024a0f24ee931d30eeeb47065c5fc6cd95')
+sha1sums_x86_64=('81fc498ac2e16d7339c399bc291cb3a8e156ed9b')
+sha1sums_arm=('ac9bb66ab86ff2293f5d602e028b9bd51d5ef049')
 
 package() {
     install -D -m644 LICENSE-${pkgver} "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
