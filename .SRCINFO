@@ -1,0 +1,11 @@
+pkgbase = runman
+	pkgdesc = A simple C++ code quick compile and run tool.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = custom
+	depends = gcc
+	source = Run
+	sha512sums = SKIP
+
+pkgname = runman
