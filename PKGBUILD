@@ -1,6 +1,6 @@
 # Maintainer: Ysblokje <ysblokje at gmail dot com>
 pkgname=('gamemode-git' 'lib32-gamemode-git')
-pkgbase='gamemode'
+pkgbase='gamemode-git'
 pkgver=r612.55b799e
 pkgrel=1
 pkgdesc="A daemon/lib combo for Linux that allows games to request a set of optimisations be temporarily applied to the host OS."
