@@ -4,17 +4,17 @@
 _pkgname=pexip-infinity-connect
 pkgname="${_pkgname}-bin"
 pkgdesc='Pexip Infinity Connect App'
-_buildno_in_url='66240.21.2-1'
-pkgver="1.9.1"
+_buildno_in_url='68467.47.0-1'
+pkgver="1.10.0"
 pkgrel=1
 url='https://www.pexip.com/apps'
 license=('custom')
 arch=('x86_64')
 depends=('nss' 'xdg-utils' 'gtk3' 'libxss')
 source=("https://www.pexip.com/hubfs/pexip-infinity-connect_${pkgver}-${_buildno_in_url}_amd64.deb")
-md5sums=('77b524c2a73a8bf707f06b05130e2891')
-sha1sums=('47bf803aeee50354815031585f5fb63d727d9c16')
-sha512sums=('7141b550ca66da1d085e61fde88c7ff5410faaaa46970300aabf5b19ec7937c4645f06304a987e3764854be2dfca3ec7762d1d2e836348c3577700c79144d8b4')
+md5sums=('eeeabbeb1fcd69e18db66215e0732716')
+sha1sums=('ffdebd886be89c64e4ae8f716e37bb89927952a7')
+sha512sums=('b9f7743d3d42cadc375738b9d380ffdbcba8d5c2311236c31966921b5187a189bc32d4a188951f8beaa3294e2ba3728a8af6ba11045190714c845f81123457c0')
 
 package() {
     tar --no-same-owner -xJC "$pkgdir" -f data.tar.xz
