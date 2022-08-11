@@ -1,6 +1,6 @@
 pkgbase = python-types-setuptools
 	pkgdesc = Typing stubs for setuptools
-	pkgver = 63.4.0
+	pkgver = 63.4.1
 	pkgrel = 1
 	url = https://github.com/python/typeshed
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-types-setuptools
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/t/types-setuptools/types-setuptools-63.4.0.tar.gz
-	sha256sums = f954044034066cd3d8ceccc87e2d5cebe7a96c9f87996f61c3c6a92cd56cc8a4
+	source = https://files.pythonhosted.org/packages/source/t/types-setuptools/types-setuptools-63.4.1.tar.gz
+	sha256sums = 6aad80dd16bb5ee5c78260d7b5536ddbb95470ed8cc3dab19027802a7f8dc362
 
 pkgname = python-types-setuptools
