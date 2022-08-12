@@ -2,7 +2,7 @@
 
 _gemname='mysql2'
 pkgname="ruby-${_gemname}"
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc='A simple, fast Mysql library for Ruby, binding to libmysql'
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=(!emptydirs)
 depends=('ruby')
 makedepends=('mariadb-clients' 'ruby-rake' 'ruby-rake-compiler')
 source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('d704f192b233b78c8ccdc3978dab796ef667ad92f651255daa99ab0f886e8f816094583ff7c091681d42caf9cd3e14b17cc37f8b574ee5a6851adfd65d5bbf87')
+sha512sums=('89958220d2f5454351f4e4b93099e12355cb0a8c36824125650f2366b15cdb3e1aa208f60beb348834cd2ee6fa36aac4102581c16fe1b6bd4f2136cc1a8b5c99')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
