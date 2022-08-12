@@ -1,6 +1,6 @@
 pkgbase = iir1-git
 	pkgdesc = DSP IIR Realtime C++ filter library
-	pkgver = 0.1.0.841cf1353d
+	pkgver = 1.9.3.r4.g48fe77d
 	pkgrel = 1
 	url = https://github.com/berndporr/iir1
 	arch = any

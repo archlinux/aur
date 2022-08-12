@@ -2,7 +2,7 @@
 
 pkgname=iir1-git
 _pkgname=iir1
-pkgver=0.1.0.841cf1353d
+pkgver=1.9.3.r4.g48fe77d
 pkgrel=1
 pkgdesc="DSP IIR Realtime C++ filter library"
 arch=('any')
@@ -26,7 +26,7 @@ prepare() {
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
-  echo "0.1.0.$(git log | head -n 1 | awk '{print $2}' | cut -c1-10)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
