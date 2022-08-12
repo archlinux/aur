@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=jamesdsp
 pkgver=2.3
-pkgrel=3
+pkgrel=4
 pkgdesc="An audio effect processor for PipeWire clients"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/Audio4Linux/JDSP4Linux"
 license=('GPL3')
 depends=('glibmm' 'pipewire' 'qt5-svg')
@@ -45,7 +45,12 @@ build() {
   cd "$srcdir/JDSP4Linux"
 
   pushd build
-  qmake-qt5 ..
+
+  if [ $CARCH == "x86_64" ]; then
+    qmake-qt5 ..
+  elif [ $CARCH == "aarch64" ]; then
+    qmake-qt5 .. CONFIG+=NO_CRASH_HANDLER
+  fi
   make
   popd
 }

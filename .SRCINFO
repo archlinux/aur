@@ -1,9 +1,10 @@
 pkgbase = jamesdsp
 	pkgdesc = An audio effect processor for PipeWire clients
 	pkgver = 2.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Audio4Linux/JDSP4Linux
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = git
 	depends = glibmm
