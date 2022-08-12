@@ -1,12 +1,11 @@
 # Contributor: skydrome <skydrome@protonmail.com>
 # Maintainer:  skydrome <skydrome@protonmail.com>
 
-# 0.4.5 is last release to access onion v2 services
 #_branch=maint-0.4.6 # stable
 #_malloc=jemalloc # tcmalloc
 
 pkgname=tor-git
-pkgver=0.4.7.5.alpha.r1.g84fc754
+pkgver=0.4.7.10.r93.g982c504
 pkgrel=1
 pkgdesc="An anonymizing overlay network (development version)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
