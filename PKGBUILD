@@ -1,40 +1,15 @@
-# Maintainer:  kngfr <9bcfbc1ca230857ba09584697f20708a@kngfr.de>
+# Maintainer: mh4ckwascut <mh4ckt3mh4ckt1c4s@protonmail.com>
 pkgname=phoneinfoga
-_reponame=PhoneInfoga
-pkgver=v1.10.12.r17.g5d93077
+pkgver=v2.6.0
 pkgrel=1
-pkgdesc="Advanced information gathering & OSINT tool for phone numbers."
-arch=('any')
-url="https://sundowndev.github.io/PhoneInfoga/"
-license=('GPL')
-depends=('python3'
-	 'python-requests'
-	 'python-beautifulsoup4'
-	 'python-html5lib'
-	 'python-phonenumbers'
-	 'python-urllib3'
-	 'python-colorama')
-optdepends=('geckodriver')
-source=("git+https://github.com/sundowndev/PhoneInfoga")
-md5sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/$_reponame"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+pkgdesc="Information gathering & OSINT framework for phone numbers"
+arch=('x86_64')
+url="https://sundowndev.github.io/phoneinfoga/"
+license=('GPL3')
+provides=()
+source=("https://github.com/sundowndev/phoneinfoga/releases/download/$pkgver/phoneinfoga_Linux_x86_64.tar.gz")
+sha512sums=("b16d80cbf8341cd10ad77b47d52af80ce40a366b334319f97284ba4785612e528e87dc2a87720689ff2b62393fb0be96f423fa8ac8412c49ed6b8773792c6648")
 
 package() {
-  cd "$srcdir/$_reponame"
-
-  install -Dt "$pkgdir"/usr/share/"$pkgname" phoneinfoga.py
-  install -Dt "$pkgdir"/usr/share/"$pkgname"/lib "$srcdir/$_reponame"/lib/*
-  install -Dt "$pkgdir"/usr/share/"$pkgname"/scanners "$srcdir/$_reponame"/scanners/*
-  install -D config.example.py "$pkgdir"/usr/share/"$pkgname"/config.py
-
-  printf "#!/bin/sh\npython3 '/usr/share/$pkgname/phoneinfoga.py' "'$@' > "$srcdir/$_reponame"/phoneinfoga
-  install -Dm755 "$srcdir/$_reponame"/phoneinfoga "$pkgdir"/usr/bin/phoneinfoga
-  
-  install -Dt "$pkgdir"/usr/share/licenses/"$pkgname" LICENSE
+	install -Dm755 "$pkgname" "$pkgdir"/usr/bin/"$pkgname"
 }
-
-# vim:set ts=2 sw=2 et:
