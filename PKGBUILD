@@ -5,8 +5,8 @@
 pkgname=dmenu-extended-git
 _pkgname=dmenu-extended
 _source=https://github.com/markjones112358/dmenu-extended.git
-pkgver=r358.16bde81
-pkgrel=2
+pkgver=r418.3639b0e
+pkgrel=1
 pkgdesc='An extension to dmenu for quickly opening files and folders and run programs.'
 url='https://github.com/markjones112358/dmenu-extended'
 license=('MIT')
@@ -25,11 +25,11 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  python setup.py build
+  python3 -m build --wheel --no-isolation
 }
 
 package() {
   cd "$_pkgname"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }

@@ -1,7 +1,7 @@
 pkgbase = dmenu-extended-git
 	pkgdesc = An extension to dmenu for quickly opening files and folders and run programs.
-	pkgver = r358.16bde81
-	pkgrel = 2
+	pkgver = r418.3639b0e
+	pkgrel = 1
 	url = https://github.com/markjones112358/dmenu-extended
 	arch = any
 	license = MIT
