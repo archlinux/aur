@@ -1,0 +1,7 @@
+post_install() {
+  ln -sf "/opt/cch/cch" "/usr/bin/cch"
+}
+
+post_remove() {
+  rm -f "/usr/bin/cch"
+}
