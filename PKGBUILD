@@ -5,7 +5,7 @@ pkgbase=python-glymur
 #_pyname=${pkgbase#python-}
 _pyname=Glymur
 pkgname=('python-glymur' 'python-glymur-doc')
-pkgver=0.10.2
+pkgver=0.11.2
 pkgrel=1
 pkgdesc="Tools for accessing JPEG2000 files"
 arch=('any')
@@ -26,11 +26,13 @@ checkdepends=('python-pytest'
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "https://github.com/quintusdias/glymur/raw/master/tests/data/0220000800_uuid.dat"
         "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.10.rst"
+        "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.11.rst"
         "https://raw.githubusercontent.com/quintusdias/glymur/master/tests/data/issue555.xmp"
         "https://github.com/quintusdias/glymur/raw/master/tests/data/issue549.dat"
         "https://github.com/quintusdias/glymur/raw/master/tests/data/issue982.j2k"
         "https://github.com/quintusdias/glymur/raw/master/tests/data/uint16.j2k")
-md5sums=('22a95eed5959b98e0fa0f1b96471a16e'
+md5sums=('f77ee725c4a755290caee5732f68afb2'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -49,6 +51,7 @@ prepare() {
     ln -rs ${srcdir}/0220* tests/data
     ln -rs ${srcdir}/uint* tests/data
     ln -rs ${srcdir}/0.10.rst docs/source/whatsnew
+    ln -rs ${srcdir}/0.11.rst docs/source/whatsnew
 }
 
 build() {
