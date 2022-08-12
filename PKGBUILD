@@ -2,7 +2,7 @@
 
 pkgname=psi-notify-git
 _gitname=psi-notify
-pkgver=1.2.1.r11.gd6f6368
+pkgver=1.3.0.r7.g0eea074
 pkgrel=1
 pkgdesc='Minimalistic PSI notifier using libnotify (git version)'
 url="https://github.com/cdown/psi-notify"
@@ -12,7 +12,7 @@ depends=(libnotify)
 provides=(psi-notify)
 conflicts=(psi-notify)
 makedepends=(git)
-source=(git+https://github.com/cdown/psi-notify.git)
+source=('git+https://github.com/cdown/psi-notify.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -21,12 +21,10 @@ pkgver() {
 }
 build() {
     cd -- "$_gitname"
-    make
+    make prefix="/usr"
 }
 
 package() {
-    mkdir -p "$pkgdir"/usr/bin "$pkgdir"/usr/lib/systemd/user
-    cp -a "${srcdir?}/$_gitname"/psi-notify "$pkgdir"/usr/bin
-    cp -a "${srcdir?}/$_gitname"/psi-notify.service \
-	"$pkgdir"/usr/lib/systemd/user
+    cd -- "$_gitname"
+    make prefix="/usr" DESTDIR="$pkgdir/" install
 }
