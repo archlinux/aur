@@ -1,14 +1,16 @@
 pkgbase = endpoint-verification
 	pkgdesc = Endpoint Verification Helper
 	pkgver = 2022.06.14.c454816986_00
-	pkgrel = 3
+	pkgrel = 4
 	url = https://chrome.google.com/webstore/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg
 	arch = x86_64
 	license = unknown
 	source = https://packages.cloud.google.com/apt/pool/endpoint-verification_2022.06.14.c454816986-00_amd64_8db7d5b96564aafd038d2e016127c8ebac0cf9480c4cdbeadaaec643c020cd39.deb
 	source = endpoint-verification.service
+	source = opera.patch
 	sha256sums = 8db7d5b96564aafd038d2e016127c8ebac0cf9480c4cdbeadaaec643c020cd39
-	sha256sums = SKIP
+	sha256sums = 50d9e83ef1b9d32265eecc6af9d9b762ad7c29e771e136a743f29740975c4932
+	sha256sums = c6368969bb236156c818eb61f7b22adea048a6d89956397fe64918265f1b2679
 
 pkgname = endpoint-verification
 	pkgdesc = Endpoint Verification Helper for Chromium

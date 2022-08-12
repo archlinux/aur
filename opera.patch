@@ -1,0 +1,82 @@
+diff --unified --recursive --text opt.orig/google/endpoint-verification/bin/device_state.sh opt.new/google/endpoint-verification/bin/device_state.sh
+--- opt/google/endpoint-verification/bin/device_state.sh	2000-01-01 01:00:00.000000000 +0100
++++ opt/google/endpoint-verification/bin/device_state.sh	2022-08-12 12:25:07.140577678 +0200
+@@ -12,6 +12,7 @@
+ LSBLK=/bin/lsblk
+ MOUNTPOINT=/bin/mountpoint
+ PRINTF=/usr/bin/printf
++REV=/usr/bin/rev
+ STAT=/usr/bin/stat
+ TR=/usr/bin/tr
+ UDEVADM=/bin/udevadm
+@@ -32,40 +33,26 @@
+   fi
+ }
+ 
+-get_disk_encrypted() {
+-  # Major number of the root device in hexadecimal
+-  ROOT_MAJ_HEX=$("$STAT" / --format="%D" | "$AWK" '{print substr($1, 1, length($1)-2)}')
+-  # Major number of the root device
+-  ROOT_MAJ=$("$PRINTF" "%d" 0x"$ROOT_MAJ_HEX")
+-  if [ "$ROOT_MAJ" = "" ]; then
+-    # Root device taken from boot command line (/proc/cmdline)
+-    # Ubuntu: BOOT_IMAGE=/vmlinuz-5.0.0-31-generic root=/dev/mapper/ubuntu--vg-root ro quiet splash
+-    # Ubuntu: BOOT_IMAGE=/vmlinuz-5.0.0-31-generic root=UUID=2d1f8b16-ea0f-11e9-81b4-2a2ae2dbcce4 ro quiet splash
+-    # Random: console=ttyO0,115200n8 noinitrd mem=256M root=/dev/mmcblk0p2 rw rootfstype=ext4 rootwait=1 ip=none
+-    ROOT_DEV=$("$AWK" -v RS=" " '/^root=/ { print substr($0,6) }' /proc/cmdline)
+-    # udevadmin requires /dev/ file, but cmdline might refer to something else
+-    # or the line itself might have unexpected format.
+-    case "$ROOT_DEV" in
+-      /dev/*) ;;
+-      *) ROOT_DEV=$("$AWK" '$2 == "/" { print $1 }' /proc/mounts) ;;
+-    esac
+-    ROOT_MAJ=$("$UDEVADM" info --query=property "$ROOT_DEV" | "$GREP" MAJOR= | "$CUT" -f2 -d=)
+-  fi
+-
+-  # Bail out if not a number
+-  case "$ROOT_MAJ" in
+-    ''|*[!0-9]*)
++get_disk_encrypted() { 
++  PART_NAME=$("$CAT" /proc/self/mountstats | "$GREP" -i 'mounted on / with' | "$AWK" ' { print $2 }' | "$REV" | "$CUT" -f1 -d/ | "$REV")
++  PART_TYPE=($("$LSBLK" -o NAME,TYPE | "$GREP" -B 20 -i "$PART_NAME*" | "$REV" | "$CUT" -f1 -d ' ' | "$REV"))
++  length=$(( ${#PART_TYPE[@]} - 1 ))
++  for((i=length; i>=0; i--)); do
++    if [[ ${PART_TYPE[i]} != 'lvm' ]]; then
++      PART_TYPE=${PART_TYPE[i]}
++      break
++    fi
++  done
++  case "$PART_TYPE" in
++    '')
+       DISK_ENCRYPTED=UNKNOWN
+-      return
+       ;;
+-  esac
+-
+-  # Parent of the root device shares the same major number and minor is zero.
+-  ROOT_PARENT_DEV_TYPE=$("$LSBLK" -ln -o MAJ:MIN,TYPE | "$AWK" '$1 == "'"$ROOT_MAJ":0'" { print $2 }')
+-  case "$ROOT_PARENT_DEV_TYPE" in
+-    '') DISK_ENCRYPTED=UNKNOWN ;;
+-    'crypt') DISK_ENCRYPTED=ENABLED ;;
+-    *) DISK_ENCRYPTED=DISABLED ;;
++    'crypt')
++      DISK_ENCRYPTED=ENABLED
++      ;;
++    *)
++      DISK_ENCRYPTED=DISABLED
++      ;;
+   esac
+ }
+ 
+@@ -77,7 +64,11 @@
+       *ubuntu*|*debian*)
+         OS_VERSION=$("$GREP" -i '^VERSION_ID=' "$OS_INFO_FILE" | "$AWK" -F= '{ print $2 }' | "$TR" -d '"')
+         ;;
++      *arch*)
++        OS_VERSION="rolling"
++        ;;
+       *)
++        OS_VERSION=""
+         ;;
+     esac
+   else
