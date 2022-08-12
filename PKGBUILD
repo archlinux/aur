@@ -12,17 +12,15 @@ depends=()
 provides=(zcfan)
 conflicts=(zcfan)
 makedepends=(git)
-source=(git+https://github.com/cdown/zcfan.git)
+source=('git+https://github.com/cdown/zcfan.git')
 md5sums=('SKIP')
 
 build() {
     cd -- "$_gitname"
-    make zcfan
+    make prefix="/usr"
 }
 
 package() {
-    mkdir -p "$pkgdir"/usr/bin "$pkgdir"/usr/lib/systemd/system
-    cp -a "${srcdir?}/$_gitname"/zcfan "$pkgdir"/usr/bin
-    cp -a "${srcdir?}/$_gitname"/zcfan.service \
-	"$pkgdir"/usr/lib/systemd/system
+    cd -- "$_gitname"
+    make prefix="/usr" DESTDIR="$pkgdir/" install
 }
