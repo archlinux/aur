@@ -1,0 +1,20 @@
+pkgbase = atomsk-git
+	pkgdesc = Package for Atomsk
+	pkgver = r354.8aba225
+	pkgrel = 1
+	url = https://atomsk.univ-lille.fr/
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	depends = gcc
+	depends = make
+	depends = gcc-fortran
+	depends = lapack
+	depends = blas
+	depends = openmp
+	provides = atomsk
+	conflicts = atomsk
+	source = git+https://github.com/pierrehirel/atomsk.git
+	sha512sums = SKIP
+
+pkgname = atomsk-git
