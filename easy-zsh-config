@@ -1,3 +1,10 @@
+# Set English mode when in tty environment to avoid grab of Asian characters
+if [ `tty | grep tty` ]; then
+	export LC_ALL="en_US.UTF-8"
+	export LANGUAGE="en_US.UTF-8"
+	export LANG="en_US.UTF-8"
+fi
+
 ## Config the theme file from arg. or use fallback theme file
 if [ $# -gt 0 ]; then
   if [[ -r "${1}" ]]; then
