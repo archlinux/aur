@@ -1,6 +1,6 @@
 # Maintainer: Cyrinux <pkgbuilds AT levis DOT name>
 pkgname=gyrolock
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="GyrLock lock sessions when laptop move"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("https://github.com/cyrinux/gyrolock/repository/v${pkgver}/archive.tar.g
 source=("${pkgname}-${pkgver}-src.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-src.tar.gz"
     "${pkgname}-${pkgver}-src.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-src.tar.gz.asc")
 validpgpkeys=('C5DFDE230E7B3DA1E6B5D5316A11D19BDD5F8B5E')
-sha256sums=('dd33512a08411754af4159b5b957fad08c2c52104fdb4077f7eea52ef4f011fd'
+sha256sums=('eb9d194b93037598491558a2bca934f85a5d2709b9158b41ac7bc1d35ae8bd69'
             'SKIP')
 
 build() {
