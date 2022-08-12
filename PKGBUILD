@@ -7,7 +7,7 @@ pkgdesc="Smart card PKCS#11 provider and token manager"
 arch=('x86_64')
 url="https://safesign.gdamericadosul.com.br/download"
 license=('custom:copyright')
-depends=('pcsclite' 'wxgtk3' 'openssl-1.0' 'xdg-utils' 'libmspack' 'ccid')
+depends=('pcsclite' 'wxwidgets3.0' 'openssl-1.0' 'xdg-utils' 'libmspack' 'ccid')
 optdepends=('acsccid: ACS CCID PC/SC driver',
             'scmccid: binary driver for the SCM Smart Card Readers')
 _aet_version="AET.000_ub2004"
