@@ -1,6 +1,6 @@
 pkgbase = gamescope-plus-git
 	pkgdesc = Micro-compositor from Valve with added patches not yet commited upstream
-	pkgver = 3.11.33.beta1.r22.g30b74a7
+	pkgver = 3.11.33.beta1.r32.g65d97cb
 	pkgrel = 1
 	url = https://github.com/Plagman/gamescope
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = gamescope-plus-git
 	depends = libxres
 	depends = sdl2
 	depends = pipewire
-	depends = libliftoff
+	depends = libliftoff-git
 	depends = libdrm
 	depends = libxkbcommon
 	depends = libinput
