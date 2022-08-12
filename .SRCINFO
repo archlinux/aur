@@ -1,7 +1,7 @@
 pkgbase = r-gmm
 	pkgdesc = Generalized Method of Moments and Generalized Empirical Likelihood
-	pkgver = 1.6.6
-	pkgrel = 4
+	pkgver = 1.7
+	pkgrel = 1
 	url = https://cran.r-project.org/package=gmm
 	arch = x86_64
 	license = GPL
@@ -15,7 +15,7 @@ pkgbase = r-gmm
 	optdepends = r-stabledist
 	optdepends = r-timedate
 	optdepends = r-timeseries
-	source = https://cran.r-project.org/src/contrib/gmm_1.6-6.tar.gz
-	sha256sums = b1b321ad1b4a4a14a2825a2c3eb939ce2f2bcef995247a1d638eca250e59739b
+	source = https://cran.r-project.org/src/contrib/gmm_1.7.tar.gz
+	sha256sums = 194075a3e644ca449a60f4e00c37cce457f4d08ed7229aa62b479f7f8c148f8a
 
 pkgname = r-gmm
