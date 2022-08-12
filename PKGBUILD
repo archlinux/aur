@@ -1,10 +1,15 @@
-# Maintainer: Urs Wolfer <uwolfer @ fwo.ch>
+# Maintainer: D. Can Celasun <can[at]dcc[dot]im>
+# Co-Maintainer: Urs Wolfer <uwolfer @ fwo.ch>
+
 
 pkgbase=intellij-idea-ultimate-edition
 pkgname=(intellij-idea-ultimate-edition intellij-idea-ultimate-edition-jre)
 pkgver=2022.2
-_buildver=222.3345.118
 pkgrel=1
+_buildver=222.3345.118
+jbr_ver=17.0.3
+jbr_build=aarch64-b469
+jbr_minor=37
 arch=('any')
 pkgdesc="An intelligent IDE for Java, Groovy and other programming languages with advanced refactoring features intensely focused on developer productivity."
 url="https://www.jetbrains.com/idea/"
@@ -12,13 +17,27 @@ license=('Commercial')
 options=(!strip)
 source=("https://download.jetbrains.com/idea/ideaIU-$pkgver.tar.gz"
         "jetbrains-idea.desktop")
+source_aarch64=("https://cache-redirector.jetbrains.com/intellij-jbr/jbr-$jbr_ver-linux-$jbr_build.$jbr_minor.tar.gz"
+                "https://github.com/JetBrains/intellij-community/raw/master/bin/linux/aarch64/fsnotifier")
 sha256sums=('15654e4b0b27f56427184ceefe5229f2a644218f83dfd735b0e8dcb7041610e7'
             '83af2ba8f9f14275a6684e79d6d4bd9b48cd852c047dacfc81324588fa2ff92b')
+sha256sums_aarch64=('737242bdd6795a14897ff97bb0bb8d99e7a1a5878a6d2f942712147b20312320'
+                    'eb3c61973d34f051dcd3a9ae628a6ee37cd2b24a1394673bb28421a6f39dae29')
 
 prepare() {
   # Extract the JRE from the main pacakge
   rm -rf "$srcdir"/jbr
-  mv idea-IU-$_buildver/jbr "$srcdir"/jbr
+
+  # https://youtrack.jetbrains.com/articles/IDEA-A-48/JetBrains-IDEs-on-AArch64#linux
+  if [ "${CARCH}" == "aarch64" ]; then
+    cp -a "$srcdir"/jbr-$jbr_ver-$jbr_build "$srcdir"/jbr
+    cp -f fsnotifier "$srcdir"/idea-IU-$_buildver/bin/fsnotifier
+    chmod +x "$srcdir"/idea-IU-$_buildver/bin/fsnotifier
+  else
+    mv idea-IU-$_buildver/jbr "$srcdir"/jbr
+  fi
+
+
 }
 
 package_intellij-idea-ultimate-edition() {
@@ -46,7 +65,7 @@ package_intellij-idea-ultimate-edition() {
 }
 
 package_intellij-idea-ultimate-edition-jre() {
-  arch=('x86_64')
+  arch=('x86_64' 'aarch64')
   install -d -m 755 "$pkgdir"/opt/$pkgbase
   mv "$srcdir"/jbr "$pkgdir"/opt/$pkgbase
 }

@@ -22,3 +22,4 @@ pkgname = intellij-idea-ultimate-edition
 
 pkgname = intellij-idea-ultimate-edition-jre
 	arch = x86_64
+	arch = aarch64
