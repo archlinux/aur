@@ -8,14 +8,14 @@
 
 pkgname=tenacity-wxgtk3-git
 pkgver=r13942.g91f8b4340
-pkgrel=3
+pkgrel=2
 pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity - stable wxgtk3"
 arch=(i686 x86_64)
 url="https://tenacityaudio.org"
 license=(GPL2 CCPL)
 groups=(pro-audio)
 depends=(wxwidgets-gtk3 libid3tag lilv portsmf suil libmad twolame vamp-plugin-sdk libsoxr
-         soundtouch portaudio portmidi lame jack sdl2 glibc)
+         soundtouch portaudio portmidi lame jack sdl2 glibc libsbms)
 makedepends=(git cmake clang libsoup libnotify gstreamer gst-plugins-bad-libs
              ffmpeg4.4 nasm chrpath expat gcc-libs gdk-pixbuf2
              flac libogg libsndfile libvorbis ffmpeg)
