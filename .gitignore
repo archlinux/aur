@@ -1,0 +1,12 @@
+
+src
+pkg
+
+*.bz2
+*.gz
+*.tar
+*.xz
+*.zst
+
+qoobar
+

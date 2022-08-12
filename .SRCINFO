@@ -1,0 +1,19 @@
+pkgbase = qoobar-git
+	pkgdesc = Qoobar - Audio Tagger for Classical Music
+	pkgver = 1.7.0.r205.gf6d53d6
+	pkgrel = 1
+	url = http://qoobar.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt6-base
+	depends = ffmpeg
+	depends = libebur128
+	depends = taglib
+	depends = libdiscid
+	depends = enca
+	depends = shntool
+	source = git+https://github.com/alexnovichkov/qoobar.git
+	sha256sums = SKIP
+
+pkgname = qoobar-git
