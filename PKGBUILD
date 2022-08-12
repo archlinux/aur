@@ -1,7 +1,7 @@
 # Maintainer: Marco Martinelli <marco+libzstd-seek@13byte.com>
 
 pkgname=libzstd-seek
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A library that mimic fread, fseek and ftell for reading zstd compressed files."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
