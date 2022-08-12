@@ -1,7 +1,7 @@
 # Maintainer: Pierre Dommerc <dommerc.pierre@gmail.com>
 
 pkgname=baru
-pkgver=0.2.9
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='A system monitor written in Rust and C'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MPL2')
 depends=('libpulse')
 makedepends=('rust' 'cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3a7b920e6d33b68d84fc083dabf34dc4c7201430e5701e21f83ea4844821498b')
+sha256sums=('df653b500f7e9af542d9b5841b3eca59f5bda8911ba8759ff7c295c58006b9a9')
 
 build() {
   cd "$pkgname-$pkgver"
