@@ -70,7 +70,7 @@ _subarch=36
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=5.18.14
+pkgver=5.19.1
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -80,8 +80,8 @@ makedepends=(bc libelf cpio perl tar xz)
 [[ -n "$_clangbuild" ]] && makedepends+=(clang llvm lld python)
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=b0f473972baebfae0c947b6b4b5bd53c3384053c
-_prjc_version=5.18-r2
+_arch_config_commit=6a3eeaa7908512f909a5ef7fc76c45db63caf0aa
+_prjc_version=5.19-r0
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20220315
 source=(
@@ -89,22 +89,26 @@ source=(
   "${pkgbase}-${pkgver}-config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
   "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-${pkgbase}-${pkgver}-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/63cec1d1efdb31caeef17411c7560e8b0f941073.patch"
-  "0002-${pkgbase}-${pkgver}-HID-apple-Properly-handle-function-keys-on-Keychron-.patch::https://github.com/archlinux/linux/commit/4b81eecd4c636d953aaf4ebafd8171716f4c61fe.patch"
-  "0003-${pkgbase}-${pkgver}-soundwire-Raise-DEFAULT_PROBE_TIMEOUT-to-10000-ms.patch::https://github.com/archlinux/linux/commit/2da21cf28e573b84e5a5baecc1eda7372322375d.patch"
+  "0001-${pkgbase}-${pkgver}-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/c13195971c59cf29cb399b3a0ccf667ec95b10fd.patch"
+  "0002-${pkgbase}-${pkgver}-soundwire-Raise-DEFAULT_PROBE_TIMEOUT-to-10000-ms.patch::https://github.com/archlinux/linux/commit/fd3f27d2cb7ff51ec49ddc5f41ea0a0d7bf1bd85.patch"
+  "0003-${pkgbase}-${pkgver}-drm_i915_psr_Use_full_update_In_case_of_area_calcula.patch::https://github.com/archlinux/linux/commit/a38762d4a787abab09f5137034dc0d1edcfa9432.patch"
+  "0004-${pkgbase}-${pkgver}-drm_i915_Ensure_damage_clip_area_is_within_pipe_area.patch::https://github.com/archlinux/linux/commit/9e3c13250fcc42961e0ce53607962c403e6de135.patch"
+  "0005-${pkgbase}-${pkgver}-mm_vmscan_fix_extreme_overreclaim_and_swap_floods.patch::https://github.com/archlinux/linux/commit/b6ab62421fc34e6b1b9b3809c7c9ccac61334566.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('faeadb397c61f3adc70fb03d5ba10c203764d8a43b70cb70838d17780922bf05cd8389c19ba8d323f322d81169d11cf744d86103011c4a17606a2081e18a906f'
+b2sums=('da67a87567253d04d35319381b2051c4c1fa20c0da4ca1983e9e9e39f46ba7fc7a6e95b6385a4b9062b480677b1782b7896d50cd5b7ce87eeb1f2b3b065e8441'
         'SKIP'
-        'aeffb500a9cf0f1265fc62fa9260bdddac8ba47bf01e3b2732d961ea7d58ae4886563bc7076fe920d4fca3ad19588bfe8f9368e77fdc61336c894488bab41638'
-        '15d7ed7a0eb6f7ad37feaf52ab7c383e1c7c3e72fb41a767c8d1151a0ad41255c216ede1e4938a041f3b628874ed61398c61dd7b0e0b62090730f2fd0f6a70db'
+        '3b78ed6ebe8be6df83c6ac9e9f798540cfdf5bf96b2d0d7f0f1027195903531e69ca11a083488a14409bf9f06c3cce91f9f8be617f8e507554e357c93c886190'
+        '6bc109b462670602eba8ccba55cbcf9902402c627e40c62a3a574828847a518d84d35d30e786b2f1edd4365a3eaa3a2b358f20c013bb2789b30804c37fe12d45'
         '20674a8fcc0a85726e06460a7dbccfe731c46bf377cc3bf511b7591175e7df892f271bc1909e77d9a02913c753d241493502c5ab15d9f78e95f31aa4399c2c27'
-        '77b83734aa62dbc78ca6769861d49dc8cfb56e07b42ff2fc95290bbc805e217fa6eba8e09cab7509207de1511e1988557a28f8bd1dec6b25c1aba408c4fedac4'
-        '6b5401f54fafedc3ac1e8a4450b231d1ea6b8e94c805fceaef180edb3664b2b51b663915ef9a82be95d22be8f947594323c6c4acb9c575309f5305f20d46659f'
-        '3ff59eb3dce03cbe7086f24ad07714380b427b306bd6f21ef4c53c405d6e635822db410b71d818d474e4f2452e48722c09af7ce3947f3fcc181488f64a6e7f6e')
+        '8cae366ed8526b813d60e4f6d55ad558d21d158331c04a1b061f3c362601343362043968088e0fcc057ace8cea1b9d0a6f02a38deae3301b1841eaaa6a24b8a4'
+        '9f7eb03ff5973317d39bb0a8803f5ef7d0a7651882b7cdd47d5b1817dda35987c0e1386cc6b7d9428ec9b71f39f94409deaa4596679945d749ee9a58ae8e5589'
+        'f07dbcdd28c9105c5943c4fd9e27572341ef7c13dfd6fa83565f7a32122348fc6227371bb4e9e65c01b29feb039b7903a9f3def42628a3f71a119e010fa99e46'
+        'c767d603a6cbf91dae35fe087ea15f39f058191d3fe5986b43720aeaa54c16acbe6fa9abba30dcf2ed02ee8bf99315daac3fc156636828cfdad2c7c0ae8beda7'
+        '3fc3b613785f147dd67c6f3acf0f9b4a7a2da34bf677b445eed39507c204c20e3c4482d5695f952927efdb22a238db8378218dabd2de05f9d8a1643bfc93bda1')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
