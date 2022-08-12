@@ -15,6 +15,7 @@ sha256sums=('8aacd56b462f42fb6e33b4d8f5d40be5abc3d3b41348ea968aa515cc8285d813')
 
 build() {
 	cd "$__pkgbasename-$pkgver"
+	export CXXFLAGS="$CXXFLAGS -fabi-version=13"
 	./configure --prefix=/usr --with-gtk=3
 	make
 }
