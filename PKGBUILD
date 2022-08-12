@@ -2,7 +2,7 @@
 
 _gemname='secure_headers'
 pkgname="ruby-${_gemname}"
-pkgver=6.3.3
+pkgver=6.4.0
 pkgrel=1
 pkgdesc="Manages application of security headers with many safe defaults"
 arch=('any')
@@ -12,7 +12,7 @@ options=(!emptydirs)
 depends=('ruby')
 makedepends=('ruby-bundler' 'ruby-rake' 'ruby-rspec')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('364d970ea418132f2e685dc5eaf1487c967170a11888ad2817555846d1f43594e385bdc4e99c6b3f1d021baf2f7ba125ff885b03ec7e8cfcc3ae99f6b4c6a1fc')
+sha512sums=('5063649a0a1026a0a4ec9878701d7bd5fbce4e50d5dcfd766de07090d4c700d5468f0067808453d964d0c0b0b869254cebffa0181d301909310b01f53eada2c4')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
