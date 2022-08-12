@@ -1,0 +1,15 @@
+pkgbase = python-nashpy
+	pkgdesc = A python library for 2 player games
+	pkgver = 0.0.35
+	pkgrel = 1
+	url = https://github.com/drvinceknight/Nashpy
+	arch = any
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-flit-core
+	depends = python
+	source = https://github.com/drvinceknight/Nashpy/archive/refs/tags/v0.0.35.tar.gz
+	sha512sums = 1681509c9a2e18d3a706862825006e4fed0fcc6f1096c01d539dc58c70246021265df035f5e98d36a44a82b43fe8804511dd5c391a87b7c66fecf14af1c66671
+
+pkgname = python-nashpy
