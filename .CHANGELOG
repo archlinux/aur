@@ -1,6 +1,20 @@
 Version history
 ===============
 
+0.9.47
+------
+
+2022-08-11
+
+Add Swedish translation of the Lix user interface by Sanchez.
+
+Fix #387: Update skill panel on tweak. Now, after shifting a skill assignment
+forward or backward by a single frame in the replay tweaker, the skill panel
+updates all skill buttons' counts accordingly. This matters when some skills
+assignments have become illegal in the now-edited replay.
+
+
+
 0.9.46
 ------
 
