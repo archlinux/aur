@@ -1,16 +1,18 @@
 # Maintainer: <reg-archlinux AT klein DOT tuxli DOT ch> 
 # Contributor: Demir Yerli <mrquantumoff@protonmail.com>
 pkgname=qfetch
-pkgver=0.8.0
-pkgrel=1
+pkgver=0.9.1
+pkgrel=2
 pkgdesc="A simple fetch tool written in rust"
 arch=('x86_64')
-url="https://github.com/mrquantumoff/qfetch"
+url="https://bultek.synchron.com.ua/bultekdev/software/qfetch"
 license=('BSD-2-Clause')
 makedepends=("rust")
-provides=("qfetch")
-source=("https://github.com/mrquantumoff/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0a6b2ebd064eba0ecaae5fd60ad0c74c5cdadc261c4d46167503fd27b31eacd3')
+provides=("${pkgname}")
+conflicts=("${pkgname}-git" "${pkgname}-bin")
+#source=("https://bultek.synchron.com.ua/bultekdev/software/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://crates.io/api/v1/crates/${pkgname}/${pkgver}/download")
+sha256sums=('9422316216157417ee9cb89dfe8ba6cb6cc2f05004af3d674756f2b5b7d6db04')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"

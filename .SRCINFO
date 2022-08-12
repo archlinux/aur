@@ -1,13 +1,15 @@
 pkgbase = qfetch
 	pkgdesc = A simple fetch tool written in rust
-	pkgver = 0.8.0
-	pkgrel = 1
-	url = https://github.com/mrquantumoff/qfetch
+	pkgver = 0.9.1
+	pkgrel = 2
+	url = https://bultek.synchron.com.ua/bultekdev/software/qfetch
 	arch = x86_64
 	license = BSD-2-Clause
 	makedepends = rust
 	provides = qfetch
-	source = https://github.com/mrquantumoff/qfetch/archive/refs/tags/v0.8.0.tar.gz
-	sha256sums = 0a6b2ebd064eba0ecaae5fd60ad0c74c5cdadc261c4d46167503fd27b31eacd3
+	conflicts = qfetch-git
+	conflicts = qfetch-bin
+	source = qfetch-0.9.1.tar.gz::https://crates.io/api/v1/crates/qfetch/0.9.1/download
+	sha256sums = 9422316216157417ee9cb89dfe8ba6cb6cc2f05004af3d674756f2b5b7d6db04
 
 pkgname = qfetch
