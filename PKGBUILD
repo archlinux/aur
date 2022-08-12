@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=fast-translate
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 epoch=
 pkgdesc="一款适用于Linux系统的翻译软件，支持选中即翻译，方便文献阅读等"
@@ -26,7 +26,7 @@ install=
 changelog=
 source=("https://github.com/kalew515/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 noextract=()
-md5sums=('433dcfff4abc6ed7800675a2764a10fa')
+md5sums=('43a7078db22d1bd73f4973aa71b745d8')
 validpgpkeys=()
 
 prepare() {
