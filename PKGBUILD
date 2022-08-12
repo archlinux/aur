@@ -2,7 +2,7 @@
 # Contributor: Geyslan G. Bem <geyslan@gmail.com>
 pkgname=safesignidentityclient
 pkgver=3.7.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Smart card PKCS#11 provider and token manager"
 arch=('x86_64')
 url="https://safesign.gdamericadosul.com.br/download"
