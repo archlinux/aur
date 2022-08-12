@@ -2,27 +2,33 @@
 # Contributor: akaessens
 
 pkgname=google-keep-nativefier
-pkgver=2022.07.27
+pkgver=2022.08.12
 pkgrel=1
 pkgdesc='Google Keep in shared Electron runtime'
 arch=('x86_64')
 url='https://keep.google.com'
 license=('MIT')
-depends=('electron18')
+depends=('electron19')
 makedepends=(
   'gendesk'
   'nodejs-nativefier'
 )
 
-source=("${pkgname}.png")
-sha256sums=('30bf408abb4d6639864c05a6c829fba7624bbec254eeab52a72ce0d8b91fbb1f')
+source=(
+    "${pkgname}.png"
+    "${pkgname}.profile"
+)
+sha256sums=(
+    '30bf408abb4d6639864c05a6c829fba7624bbec254eeab52a72ce0d8b91fbb1f'
+    '83e01a5c3687ace17bfb73cd9cba4f13bb6b16922f1e822b42697f1878b77d97'
+)
 
 _name='Google Keep'
 
 prepare() {
   cat > "${pkgname}" <<EOF
 #!/usr/bin/env bash
-exec electron18 /usr/share/${pkgname} "\$@"
+exec electron19 /usr/share/${pkgname}
 EOF
   gendesk \
     --pkgname "${pkgname}" \
@@ -56,4 +62,5 @@ package() {
   install -Dm 644 -t "${pkgdir}/usr/share/applications/" "${pkgname}.desktop"
   install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_x}/LICENSE"
   install -Dm 644 -t "${pkgdir}/usr/share/pixmaps/" "${pkgname}.png"
+  install -Dm 644 -t "${pkgdir}/etc/firejail/" "${pkgname}.profile"
 }
