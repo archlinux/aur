@@ -1,14 +1,14 @@
-# Maintainer: Petar Petrov <petar.petrov.georgiev at gmail d0t com>
+# Maintainer: Petar Petrov <ppetrov at vexelon d0t net>
 pkgname=strider
-pkgver=1.0.6
-pkgrel=2
+pkgver=1.0.7
+pkgrel=3
 pkgdesc="Strider is a 2D sci-fi platformer game."
 arch=('i686' 'x86_64')
-url="https://github.com/petarov/game-off-2015"
+url="https://github.com/kenamick/strider"
 license=('MIT')
 groups=()
 depends=()
-makedepends=('nodejs' 'npm' 'nodejs-grunt-cli')
+makedepends=('nodejs' 'npm')
 checkdepends=()
 provides=()
 conflicts=()
@@ -17,8 +17,8 @@ backup=()
 options=()
 install=strider.install
 changelog=
-source=(https://github.com/petarov/game-off-2015/archive/1.0.6.tar.gz)
-sha1sums=('18b2dc5b16937dcd7d974564f2fbe107e9df8f36')
+source=(https://github.com/kenamick/strider/archive/refs/tags/v1.0.7.zip)
+sha1sums=('bfe54915e2305696978649a6068b47c90a33433d')
 
 dirname="game-off-2015"
 if [ "${CARCH}" = 'x86_64' ] ; then
@@ -31,6 +31,7 @@ prepare() {
 	cd $srcdir
 	cd "$srcdir/$dirname-$pkgver"
 	npm install
+	npm install -g grunt
 }
 
 build() {
