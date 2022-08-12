@@ -47,9 +47,9 @@ build() {
   pushd build
 
   if [ $CARCH == "x86_64" ]; then
-    qmake-qt5 ..
+    qmake-qt5 ../JDSP4Linux.pro
   elif [ $CARCH == "aarch64" ]; then
-    qmake-qt5 .. CONFIG+=NO_CRASH_HANDLER
+    qmake-qt5 ../JDSP4Linux.pro CONFIG+=NO_CRASH_HANDLER
   fi
   make
   popd
