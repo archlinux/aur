@@ -1,7 +1,7 @@
 pkgbase = tenacity-wxgtk3-git
 	pkgdesc = An easy-to-use multi-track audio editor and recorder, forked from Audacity - stable wxgtk3
 	pkgver = r13942.g91f8b4340
-	pkgrel = 2
+	pkgrel = 4
 	url = https://tenacityaudio.org
 	arch = i686
 	arch = x86_64
