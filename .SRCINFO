@@ -1,6 +1,6 @@
 pkgbase = lockbook-desktop
 	pkgdesc = A secure, private, minimal, cross-platform document editor.
-	pkgver = 0.4.3
+	pkgver = 0.5.0
 	pkgrel = 3
 	url = https://github.com/lockbook/lockbook
 	arch = x86_64
