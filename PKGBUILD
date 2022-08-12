@@ -4,7 +4,7 @@ pkgbase=python-laspec
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=2022.415.0
+pkgver=2022.804.0
 pkgrel=1
 pkgdesc="A toolkit for LAMOST spectra."
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=('python-setuptools')
 #            'python-sphinx')
 checkdepends=('python-nose')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('02898b514bd4997bc3b2c7c4dbdcace0')
+md5sums=('e5fc7714df52020fbdd1c8e382026bd9')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
