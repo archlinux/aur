@@ -2,7 +2,7 @@
 
 _gemname='rack-cache'
 pkgname="ruby-${_gemname}"
-pkgver=1.12.1
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="Real HTTP Caching for Ruby Web Apps"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 options=(!emptydirs)
 depends=('ruby' 'ruby-rack')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('f850facb28f302db819b6d67fd86e0dd18ae8f5d132044582bbcd6792b287c7d4a29219a47e708b5047fb373b5857632597d9743b4ba530b1258d29924ca4cf9')
+sha512sums=('049302994663703ea593e01194e1c5c3b95afc889e628906e65302dd1fe64fc280bac9d26855db2fc7af1e287201a47c7f6a52329a3151b3efc775c0585d837c')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
