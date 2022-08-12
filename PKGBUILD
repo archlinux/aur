@@ -4,14 +4,10 @@ url='http://ros.org/wiki/LMS1xx'
 pkgname='ros-noetic-lms1xx'
 pkgver='0.3.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('LGPL')
 
 ros_makedepends=(
-  ros-noetic-roscpp
-  ros-noetic-roscpp-serialization
-  ros-noetic-rosconsole-bridge
-  ros-noetic-sensor-msgs
   ros-noetic-catkin
 )
 
@@ -22,10 +18,13 @@ makedepends=(
 )
 
 ros_depends=(
-  ros-noetic-roscpp-serialization
   ros-noetic-rosconsole-bridge
-  ros-noetic-sensor-msgs
   ros-noetic-roscpp
+  ros-noetic-roscpp-serialization
+  ros-noetic-sensor-msgs
+  ros-noetic-roslaunch
+  ros-noetic-roslint
+  ros-noetic-rosunit
 )
 
 depends=(
