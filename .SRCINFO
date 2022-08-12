@@ -1,0 +1,15 @@
+pkgbase = cch
+	pkgdesc = A powerful contest helper for CodeForces, developed by NW.js
+	pkgver = 2.0BETA34
+	pkgrel = 1
+	url = https://github.com/CodeforcesContestHelper/CCHv2
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	options = !strip
+	source_x86_64 = https://github.com/CodeforcesContestHelper/CCHv2/releases/download/v2.0-beta-34/CCHv2.v2.0-beta-34.linux64.zip
+	sha256sums_x86_64 = 1b81a5e943dbf3cda1974db76bb7b1648c3303d174e55344ffa37fa18762ce31
+	source_i686 = https://github.com/CodeforcesContestHelper/CCHv2/releases/download/v2.0-beta-34/CCHv2.v2.0-beta-34.linux32.zip
+	sha256sums_i686 = a914107c3cd66a1b1c064101be3fcb5c2fc2b5d365526dd9b9e950c560105dc1
+
+pkgname = cch
