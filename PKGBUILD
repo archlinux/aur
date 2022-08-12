@@ -2,7 +2,7 @@
 
 pkgname=clipmenu-git
 _gitname=clipmenu
-pkgver=6.2.0.r0.g7c34ace
+pkgver=6.2.0.r19.g87e1641
 pkgrel=1
 pkgdesc='Clipboard management using dmenu'
 url='http://github.com/cdown/clipmenu'
@@ -13,11 +13,11 @@ provides=(clipmenu)
 conflicts=(clipmenu)
 makedepends=(git)
 
-source=(git://github.com/cdown/clipmenu.git)
+source=(git+https://github.com/cdown/clipmenu.git)
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$_gitname"
+    cd "${srcdir?}/$_gitname"
     git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 

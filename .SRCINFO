@@ -1,6 +1,6 @@
 pkgbase = clipmenu-git
 	pkgdesc = Clipboard management using dmenu
-	pkgver = 6.2.0.r0.g7c34ace
+	pkgver = 6.2.0.r19.g87e1641
 	pkgrel = 1
 	url = http://github.com/cdown/clipmenu
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = clipmenu-git
 	depends = clipnotify
 	provides = clipmenu
 	conflicts = clipmenu
-	source = git://github.com/cdown/clipmenu.git
+	source = git+https://github.com/cdown/clipmenu.git
 	md5sums = SKIP
 
 pkgname = clipmenu-git
-
