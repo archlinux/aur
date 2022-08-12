@@ -1,9 +1,9 @@
-# Maintainer: Yurii <yu hrysh at posteo dot net>
+# Maintainer: gardenapple <gardenapple at posteo dot net>
 
 _pkgname=readability-cli
 pkgname="deno-$_pkgname"
 _author=gardenappl
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Firefox Reader Mode in your terminal! - CLI tool for Mozilla's Readability library"
 arch=('any')
@@ -42,6 +42,6 @@ package() {
 	#SHELL=/bin/bash ./readable --completion \
 	#	| install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/readable"
 }
-b2sums=('60c6f69329696836a9faf77c6b56ce650f17dedde35ec081e13558f1b7577f87cc9c56865caffbd86b8b3f15c389f5f5474581a7a4965757fe3564916e28d936'
+b2sums=('b72c42de44c180908e1e488b4612341f6f351dffb4eec579cfba16fc2cb51112885a065851a5efc66010c60a6f0a36112d8b3be1f1535f0073e1859716229173'
         '792be8184fbdf51fc8a4aa90b9c55de9814700bb1396ac24dd7a1759413144ddabd64ff7391f55b9ae602a0415b86a7a51fbfda0e1856cd1a476f232fea4939c'
-        '43611897b8da061ef7bea6513d05c42ea73c17a35020b86f68a62e61a26b0d6cd61d0440cfb6625d30eac9393d8f8d7ce94d40f1c6797f9cf85e45d73f983c86')
+        '55fad2e72126bc7b3253ee6598e3e3c83d63a3d4da03402a828ac8f1a5d321e98f25484e74d4654082f7a41dd1d45465878ac41d91b48391adce15f3921ee0ca')
