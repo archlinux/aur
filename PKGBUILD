@@ -13,7 +13,7 @@ sha1sums=('5d915dcd37b0d024ad09bceb28a48a2c96d62915')
 
 build() {
     cd "$srcdir/failing-disk-reporter-${pkgver}"
-    export GOPATH="${srcdir}" GOROOT_FINAL="/usr/bin" CGO_ENABLED=0
+    export CGO_ENABLED=0
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
     go build ./cmd/...
 }
