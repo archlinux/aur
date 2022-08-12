@@ -6,7 +6,7 @@
 
 _appname='gnunet'
 pkgname="${_appname}-git"
-pkgver=0.17.2.r22.g8582b511a
+pkgver=0.17.3.r8.g460f0d77b
 pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
