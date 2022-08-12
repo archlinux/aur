@@ -11,7 +11,7 @@
 
 pkgname=ungoogled-chromium-xdg
 pkgver=104.0.5112.79
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _gcc_patchset=2
 pkgdesc="A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory"
@@ -142,7 +142,7 @@ prepare() {
   patch -Np1 -i ../ozone-add-va-api-support-to-wayland.patch
 
   # Ungoogled Chromium changes
-  _ungoogled_repo="$srcdir/${pkgname%xdg*}$pkgver-1"
+  _ungoogled_repo="$srcdir/${pkgname%xdg*}$_uc_ver"
   _utils="${_ungoogled_repo}/utils"
   python "$_utils/prune_binaries.py" ./ "$_ungoogled_repo/pruning.list"
   python "$_utils/patches.py" apply ./ "$_ungoogled_repo/patches"
@@ -204,7 +204,7 @@ build() {
   fi
 
   # Append ungoogled chromium flags to _flags array
-  _ungoogled_repo="$srcdir/${pkgname%xdg*}$pkgver-1"
+  _ungoogled_repo="$srcdir/${pkgname%xdg*}$_uc_ver"
   readarray -t -O ${#_flags[@]} _flags < "${_ungoogled_repo}/flags.gn"
 
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
