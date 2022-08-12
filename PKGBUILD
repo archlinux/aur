@@ -35,7 +35,6 @@ prepare() {
     _replace_manual_ref 'https://docs.blender.org/manual/en/dev/'
     _replace_manual_ref 'https://docs.blender.org/manual/en/latest/'
     _replace_api_ref 'https://docs.blender.org/api/current/'
-    _replace_api_ref 'https://docs.blender.org/api/3.1/'
 }
 
 package() {
