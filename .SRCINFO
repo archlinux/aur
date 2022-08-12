@@ -1,21 +1,19 @@
 pkgbase = ladybird
-	pkgdesc = A web browser built from scratch
-	pkgver = 7040a8790c1a8cb4879abe04b1198ec6e64d1c92
+	pkgdesc = A web browser built using LibWeb from SerenityOS
+	pkgver = r64.7040a87
 	pkgrel = 1
 	url = https://github.com/awesomekling/ladybird
 	arch = x86_64
-	license = BSD-2-Clause
+	license = BSD
 	makedepends = cmake
-	makedepends = libgl
 	makedepends = ninja
-	makedepends = qt6-base
 	makedepends = qt6-tools
-	makedepends = qt6-wayland
 	depends = qt6-base
+	depends = qt6-wayland
 	depends = libgl
-	source = https://github.com/awesomekling/ladybird/archive/7040a8790c1a8cb4879abe04b1198ec6e64d1c92.zip
-	source = ladybird
-	sha256sums = 3a516fed8f605c427ef8131633ecd5833ac8f65195de577386cf1c3b07465553
+	source = git+https://github.com/awesomekling/ladybird.git#commit=7040a8790c1a8cb4879abe04b1198ec6e64d1c92
+	source = ladybird.sh
+	sha256sums = SKIP
 	sha256sums = 1d0fc030877f9074443ef71835518c043908360b5dac67d907d8b2317baa37c4
 
 pkgname = ladybird
