@@ -1,8 +1,9 @@
+# Maintainer: Jacqueline Fisher <weretiger95@gmail.com>
 # Maintainer: Justin Jagieniak <justin@jagieniak.net>
 # Contributor: Nicky D
 
 pkgname=firestorm
-pkgver=6.4.21
+pkgver=6.5.6
 pkgrel=1
 pkgdesc="This is the Firestorm Viewer!"
 arch=('i686' 'x86_64')
@@ -21,26 +22,33 @@ optdepends=(
 makedepends=('cmake' 'gcc' 'make' 'python-virtualenv' 'python2-pip' 'git' 'boost' 'xz')
 conflicts=('firestorm-bin' 'firestorm-nightly' 'firestorm-beta-bin')
 provides=('firestorm')
+#options=(debug !strip)
 
 source=("$pkgname"::"git+https://vcs.firestormviewer.org/phoenix-firestorm#branch=Firestorm_$pkgver" "fs-build-variables"::'git+https://vcs.firestormviewer.org/fs-build-variables' 'firestorm.desktop' 'firestorm.launcher')
 md5sums=('SKIP' 'SKIP' '5e3dade65948533ff8412da776029179' '3daa9e24492337e62bcac318df4ab370')
 
 pkgver() {
-	cat "$srcdir/$pkgname/indra/newview/viewer_version.txt"
+	cat $(find "$srcdir/$pkgname/indra/newview/" -type f -iname viewer_version.txt)
 }
 
 prepare() {
 	export AUTOBUILD_VARIABLES_FILE="$srcdir/fs-build-variables/variables"
 	cd "$pkgname"
-	virtualenv ".venv" -p python2
+	virtualenv ".venv" -p python3
 	source .venv/bin/activate
-	pip install git+https://vcs.firestormviewer.org/autobuild-1.1
-
+	pip3 install git+https://vcs.firestormviewer.org/autobuild-3.0
+	pip3 install llbase
+	export CXXFLAGS="$CXXFLAGS -Wno-error"
+	export CFLAGS="$CFLAGS -Wno-error"
 	autobuild configure -A 64 -c ReleaseFS_open -- -DLL_TESTS:BOOL=FALSE -DREVISION_FROM_VCS=ON --chan="ArchLinux"
 }
 
 build() {
-	cd "$pkgname/build-linux-x86_64"
+	cd "$srcdir/$pkgname"
+	source .venv/bin/activate
+	cd "$srcdir/$pkgname/build-linux-x86_64"
+	export CXXFLAGS="$CXXFLAGS -Wno-error"
+	export CFLAGS="$CFLAGS -Wno-error"
 	make
 }
 
