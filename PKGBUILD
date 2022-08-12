@@ -2,7 +2,7 @@
 
 _gemname=factory_bot
 pkgname=ruby-$_gemname
-pkgver=6.1.0
+pkgver=6.2.1
 pkgrel=1
 pkgdesc='Provides a framework and DSL for defining and using factories - less error-prone, more explicit, and all-around easier to work with than fixtures'
 arch=(any)
@@ -12,7 +12,7 @@ options=(!emptydirs)
 depends=(ruby ruby-activesupport)
 makedepends=(ruby-rake)
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('bbb0e6316bdc44a483afba3a8a2e49732900fc5ac93222329514abcebab898f01a2258c77fd16466afcb7ffb5f454bf2b594bd5724aed703e30051cbeea1d243')
+sha512sums=('f09e89f39ede095c230ed82123c269df4caa057315d56e08c131a4366dfc075f547627dbbd8c36520fcf825c8bc103e358390e2a9fe3d8c67059b229c706ce6c')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
