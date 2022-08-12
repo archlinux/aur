@@ -1,7 +1,7 @@
 pkgbase = catppuccin-grub-theme-git
 	pkgdesc = Soothing pastel theme for GRUB2
-	pkgver = r25.4f6ac65
-	pkgrel = 2
+	pkgver = r29.b2919a9
+	pkgrel = 1
 	url = https://github.com/catppuccin/grub
 	arch = any
 	license = MIT

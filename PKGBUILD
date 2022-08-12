@@ -9,8 +9,8 @@ pkgname=(
   catppuccin-mocha-grub-theme-git)
 pkgbase=catppuccin-grub-theme-git
 _pkg="${pkgbase%-git}"
-pkgver=r25.4f6ac65
-pkgrel=2
+pkgver=r29.b2919a9
+pkgrel=1
 pkgdesc='Soothing pastel theme for GRUB2'
 arch=('any')
 url='https://github.com/catppuccin/grub'
@@ -19,12 +19,16 @@ makedepends=('git')
 source=("$_pkg::git+$url")
 sha256sums=('SKIP')
 
+pkgver() {
+	cd "$_pkg"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 _package() {
-	cd "$_pkg/src"
-	find "$1" \
-		-type f \
-		-exec install -Dm644 '{}' "$pkgdir/usr/share/grub/themes/{}" \;
-	install -Dm644 ../LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	cd "$_pkg"
+	install -d "$pkgdir/usr/share/grub/themes/"
+	cp -a --no-preserve=ownership "src/${pkgname%-git}" "$pkgdir/usr/share/grub/themes/${pkgname%-grub-theme-git}"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 package_catppuccin-frappe-grub-theme-git() {
