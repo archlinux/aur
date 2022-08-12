@@ -1,18 +1,18 @@
 # Maintainer: Jan Martin Reckel <jm.reckel@t-online.de>
 pkgname=cantara-bin
-pkgver=2.3
+pkgver=2.3.1
 pkgrel=1
 epoch=
 pkgdesc="Song Presentation Software"
 arch=('x86_64')
-url="https://reckel-jm.github.io/cantara-song/"
+url="https://www.cantara.app"
 license=('GPL3')
 groups=()
 conflicts=('cantara')
 depends=('qt5pas')
 provides=("cantara")
-source=("https://github.com/reckel-jm/cantara/releases/download/v$pkgver/cantara-$pkgver-x86_64_bin.tar.gz")
-md5sums=('ba0180e20c49fdceebd1ed2dd5462469')
+source=("https://github.com/reckel-jm/cantara/releases/download/v$pkgver/cantara-$pkgver-x86_64_bin.zip")
+md5sums=('bac027ce138501bf8e572296973ce8a4')
 
 package() {
 	mkdir -p $pkgdir/usr/bin/
