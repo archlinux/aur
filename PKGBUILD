@@ -13,8 +13,8 @@ source=("blender-manual-$pkgver.zip::https://docs.blender.org/manual/en/latest/b
 	"blender-api-$pkgver.zip::https://docs.blender.org/api/current/blender_python_reference_${_spkgver/./_}.zip"
 	LICENCE)
 
-b2sums=('5a5f77aaf454dbefe8c6fa6aaf84f37bab21ba8e11e67216c777d028ecbb848e2e37d33575f733e23dbba355ab171f58c5a942c800ac27e0c21ed09518083320'
-	'241baa73524722004881ea507957bf9dd31c3e698b80bd19f89bcf30b7dc9ca2ad46727a8429d41fe81c35f268a2419f7fcbc244244edf225fc4fb6ce12abe40'
+b2sums=('d44f9264a38d63473d3c6fcaad07f3187ae63f94c9b6a3403317a2de593b4919bbcdc447b556920eae4e080185a7c50fd12efc6c98838cd7798ac41ace50d124'
+	'99aa7771545a2d5d104292cb4f7656afc91987f6fa16c0707f0791deabc6bb0229f88b7bf2e35aeec90de8245e51e1f393b02e005340770ffd798728a1e4befa'
 	'd1e99ef6842a6b5e4ac63cc3ab5bd7a4fd0fec5a871eec5b8bc031d8a6b2ae89f76eca2f98b0946e78e19d5fa9b2dea51cb2bb0985d064f54ea4ed9759999205')
 
 _replace_manual_ref() {
