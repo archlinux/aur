@@ -1,5 +1,7 @@
 #!/usr/bin/ash
 # shellcheck shell=dash
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 _get_key() {
     IFS=: read ckdev ckarg1 ckarg2 <<EOF
@@ -169,7 +171,7 @@ _set_cryptargs() {
                 cryptargs="${cryptargs} --readonly"
                 ;;
             *)
-                msg "::Encryption option '${cryptopt}' not known, ignoring." >&2
+                msg ":: Encryption option '${cryptopt}' not known, ignoring." >&2
                 ;;
         esac
     done
@@ -261,10 +263,10 @@ EOF
 }
 
 _compare_signatures() {
-    local _cryptdev_sig_sha _keys_sig_sha
+    local _cryptdev_sig_sha _ext_sig_sha
     _cryptdev_sig_sha=$(sha512sum "${cryptdev}.sig")
-    _keys_sig_sha=$(sha512sum "/crypto_sigfile.bin")
-    if [ "${_keys_sig_sha%% *}" != "${_cryptdev_sig_sha%% *}" ]; then
+    _ext_sig_sha=$(sha512sum "/crypto_sigfile.bin")
+    if [ "${_ext_sig_sha%% *}" != "${_cryptdev_sig_sha%% *}" ]; then
         err "Signatures on devices are different."
         return 1
     else
@@ -274,8 +276,9 @@ _compare_signatures() {
 
 _verify() {
     _compare_signatures
+    msg ":: Signature verification requested, please wait..."
     if _verify_signature "${cryptdev}" "/crypto_sigfile.bin"; then
-        msg ":: Signature is OK, continue booting."
+        msg "Signature is OK, continue booting."
         export verify="n"
     else
         err "One or more files are corrupted"
