@@ -2,7 +2,7 @@
 # Contributor: Sergio Schneider <spsf1964 @ g m a i l.c o m>
 
 pkgname=session-desktop-appimage
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 #pkgdesc="Private messaging from your desktop"
 pkgdesc="Session is an end-to-end encrypted messenger that minimises sensitive metadata"
@@ -29,7 +29,7 @@ source=("${_bin}::https://github.com/oxen-io/session-desktop/releases/download/v
         'session-desktop.desktop'
         'session-desktop.png')
 
-sha256sums=('eebb0f03c500ca6af0682a1b1acb2c51225343a2b35a6e1471a6f94378da5be0'
+sha256sums=('65cddbb64bcde22738ec81a281e1491b1e1dc1b33e6fb8ae20ec6999c5a6ad14'
             '2bf3c1718e157626851aa1661388353c9a430635058a6e327f5cf4be3161e47b'
             '8f6f2fa7ac49e24551b6a6324e4fd6cd73b478c24f450296c7fd30556c01575c')
 
