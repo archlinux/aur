@@ -1,24 +1,23 @@
 # Maintainer: Charles Vejnar <first name [dot] last name [at] gmail [dot] com>
 
 pkgname=geneabacus
-pkgver=0.1
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Gene counter and profiler."
 arch=("x86_64")
-url="https://github.com/vejnar/GeneAbacus"
+url="https://git.sr.ht/~vejnar/GeneAbacus"
 license=("MPLv2")
-makedepends=("go")
-source=("https://github.com/vejnar/GeneAbacus/archive/v${pkgver}.tar.gz" )
-sha1sums=("9a582298ffaaa8109eb2a09f40c3804746323c3b")
+makedepends=('go')
+source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~vejnar/GeneAbacus/archive/v${pkgver}.tar.gz")
+sha1sums=('1592f35095e940e228f50bae966e59e4508f81ef')
 
 build() {
-    cd "$srcdir/GeneAbacus-${pkgver}"
-    export GOPATH="${srcdir}" GOROOT_FINAL="/usr/bin"
+    cd "$srcdir/GeneAbacus-v${pkgver}"
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-    go build ./cmd/...
+    go build -ldflags "-X main.version=$pkgver" ./cmd/...
 }
 
 package() {
-    cd "$srcdir/GeneAbacus-${pkgver}"
+    cd "$srcdir/GeneAbacus-v${pkgver}"
     install -Dm 755 geneabacus -t "${pkgdir}/usr/bin"
 }

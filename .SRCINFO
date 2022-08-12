@@ -1,12 +1,12 @@
 pkgbase = geneabacus
 	pkgdesc = Gene counter and profiler.
-	pkgver = 0.1
+	pkgver = 0.1.1
 	pkgrel = 1
-	url = https://github.com/vejnar/GeneAbacus
+	url = https://git.sr.ht/~vejnar/GeneAbacus
 	arch = x86_64
 	license = MPLv2
 	makedepends = go
-	source = https://github.com/vejnar/GeneAbacus/archive/v0.1.tar.gz
-	sha1sums = 9a582298ffaaa8109eb2a09f40c3804746323c3b
+	source = geneabacus-0.1.1.tar.gz::https://git.sr.ht/~vejnar/GeneAbacus/archive/v0.1.1.tar.gz
+	sha1sums = 1592f35095e940e228f50bae966e59e4508f81ef
 
 pkgname = geneabacus
