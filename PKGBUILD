@@ -4,9 +4,9 @@
 
 _pkgname=browser-stable
 pkgname=yandex-browser
-pkgver=22.5.3.673_1
-_pkgver=22.5.3.673-1
-pkgrel=2
+pkgver=22.7.3.811_1
+_pkgver=22.7.3.811-1
+pkgrel=1
 #epoch=1
 
 pkgdesc="The web browser from Yandex.
@@ -27,11 +27,10 @@ optdepends=(
     "vulkan-icd-loader"
     "ttf-font"
     "cryptopro-csp-k1"
-    "yandex-browser-ffmpeg-update-hook"
 )
 
 source=("${pkgname}-${pkgver}.deb::https://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-${_pkgname}/yandex-${_pkgname}_${_pkgver}_amd64.deb")
-sha256sums=("3792b5bca194877cabe5616251ad90deb39a22d09a1e514949f3b51ddfb793fa")
+sha256sums=("8c24f2ad31720b8d977c4964102fb61980bc73972e1cd7b994cbcaca3e7d5e71")
 install=yandex-browser.install
 
 prepare() {
