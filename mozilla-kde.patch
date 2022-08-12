@@ -3,7 +3,7 @@
 # Date 1559294891 -7200
 #      Fri May 31 11:28:11 2019 +0200
 # Node ID c2aa7198fb925e7fde96abf65b6f68b9b755f112
-# Parent  64d0c9c59c2e7f31722466406a4c13cdf5c39a6b
+# Parent  b7a9df31234bb6342e8b01dcfa98b7d8ecdfd1dd
 Description: Add KDE integration to Firefox (toolkit parts)
 Author: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Author: Lubos Lunak <lunak@suse.com>
@@ -31,7 +31,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  #ifdef MOZ_MEMORY
  #  include "mozmemory.h"
  #endif
-@@ -4767,16 +4768,27 @@ nsresult Preferences::InitInitialObjects
+@@ -4791,16 +4792,27 @@ nsresult Preferences::InitInitialObjects
      "unix.js"
  #  if defined(_AIX)
      ,
@@ -59,7 +59,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  
    // Load jar:$app/omni.jar!/defaults/preferences/*.js
    // or jar:$gre/omni.jar!/defaults/preferences/*.js.
-@@ -4841,17 +4853,17 @@ nsresult Preferences::InitInitialObjects
+@@ -4865,17 +4877,17 @@ nsresult Preferences::InitInitialObjects
        }
  
        nsCOMPtr<nsIFile> path = do_QueryInterface(elem);
@@ -1245,7 +1245,7 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
 diff --git a/widget/gtk/moz.build b/widget/gtk/moz.build
 --- a/widget/gtk/moz.build
 +++ b/widget/gtk/moz.build
-@@ -154,16 +154,17 @@ FINAL_LIBRARY = "xul"
+@@ -146,16 +146,17 @@ FINAL_LIBRARY = "xul"
  
  LOCAL_INCLUDES += [
      "/layout/base",
@@ -1789,8 +1789,8 @@ diff --git a/xpcom/components/moz.build b/xpcom/components/moz.build
 diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
 --- a/xpcom/io/nsLocalFileUnix.cpp
 +++ b/xpcom/io/nsLocalFileUnix.cpp
-@@ -54,16 +54,17 @@
- #include "prproces.h"
+@@ -46,16 +46,17 @@
+ #include "nsString.h"
  #include "nsIDirectoryEnumerator.h"
  #include "nsSimpleEnumerator.h"
  #include "private/pprio.h"
@@ -1807,7 +1807,7 @@ diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
  #  include "prmem.h"
  #  include "plbase64.h"
  
-@@ -2097,20 +2098,29 @@ nsLocalFile::SetPersistentDescriptor(con
+@@ -2083,20 +2084,29 @@ nsLocalFile::SetPersistentDescriptor(con
  
  NS_IMETHODIMP
  nsLocalFile::Reveal() {
@@ -1839,7 +1839,7 @@ diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
      ::CFRelease(url);
      return rv;
    }
-@@ -2122,16 +2132,23 @@ nsLocalFile::Reveal() {
+@@ -2108,16 +2118,23 @@ nsLocalFile::Reveal() {
  
  NS_IMETHODIMP
  nsLocalFile::Launch() {

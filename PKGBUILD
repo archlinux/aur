@@ -10,7 +10,7 @@ _patchurl=https://raw.githubusercontent.com/openSUSE/firefox-maintenance/master
 _bazaarurl=https://bazaar.launchpad.net/~mozillateam/firefox/firefox-trunk.head/download/head:/debian/patches
 
 pkgname=firefox-kde
-pkgver=103.0
+pkgver=103.0.2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE and Ubuntu patches"
 arch=(x86_64)
@@ -40,12 +40,12 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         firefox-kde.patch::$_patchurl/firefox/firefox-kde.patch
         # https://bazaar.launchpad.net/~mozillateam/firefox/firefox-trunk.head/files/head:/debian/patches
         unity-menubar.patch::$_bazaarurl/unity-menubar.patch)
-sha256sums=('acc41d050560db4c4177ea86e2d00e47d74229041fea4c02c0e9e87e64093773'
+sha256sums=('766183e8e39c17a84305a85da3237919ffaeb018c6c9d97a7324aea51bd453aa'
             'SKIP'
             'a6857ad2f2e2091c6c4fdcde21a59fbeb0138914c0e126df64b50a5af5ff63be'
             '298eae9de76ec53182f38d5c549d0379569916eebf62149f9d7f4a7edef36abf'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
-            '7bb6e9736b6e48300df89aabe4559da7f0e2c1c3b178a209ced70852942f79dd'
+            'e76d7503ee2fb76b325b98ae952513a0f298fdd820e6451eca3f794b7aec7654'
             'bcedaf4feb3ec56c86cb3b99c0fa99c3f38090485454d4beacf23bd90056433a'
             '19a029be46d89e76239f23d417f290c6a9050056fa2f786cd1ccdbab25cb02e9'
             '49a490199cdb19a1cf2735a35966cf056b2fcc13ec16cbe91f5869b50cac5cfe')
@@ -69,6 +69,9 @@ prepare() {
 
   # Unbreak build with python-zstandard 0.18.0
   patch -Np1 -i ../zstandard-0.18.0.diff
+
+  # Unbreak build with glibc 2.36
+  patch -Np1 -i ../arc4random.diff
 
   # https://github.com/openSUSE/firefox-maintenance/blob/master/firefox/MozillaFirefox.spec
   # Gecko/Toolkit
