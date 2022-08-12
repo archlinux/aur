@@ -6,8 +6,8 @@ pkgrel=1
 # _mod should be '', '_no_xspec_modeldata' or '_plus_older_xspec_modeldata'
 _mod=''
 pkgdesc='NASA high energy astrophysics library'
-makedepends=("glibc" "gcc-fortran" "perl" "python-numpy")
-depends=("ncurses" "readline" "libxpm" "libidn")
+depends=('libxpm' 'libidn' 'ncurses' 'readline')
+makedepends=('glibc' 'gcc-fortran' 'inetutils' 'perl' 'python-numpy')
 optdepends=("python-numpy: python binding")
 url="https://heasarc.gsfc.nasa.gov/docs/software/lheasoft/"
 arch=('x86_64')
@@ -23,6 +23,8 @@ install="$pkgname.install"
 build() {
   cd "heasoft-$pkgver/BUILD_DIR"
 
+  LDFLAGS='-lm' \
+  CFLAGS="$CFLAGS -Wno-error=format-security" \
   ./configure --prefix="/opt/heasoft" --build="$CHOST"
 
   # parallel builds may fail
