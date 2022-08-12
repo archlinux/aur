@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=wow.export
+Exec=/usr/lib/wow.export/wow.export %u
+Terminal=false
+Type=Application
+Icon=wow.export
+StartupWMClass=wow.export
+Comment=Extracting and converting World of Warcraft files
+Categories=Game;

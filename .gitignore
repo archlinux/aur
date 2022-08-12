@@ -1,0 +1,8 @@
+# downloadable source
+wow.export
+
+# build files
+src/
+pkg/
+*.log
+*.tar*

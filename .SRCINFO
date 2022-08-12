@@ -1,0 +1,23 @@
+pkgbase = wow.export-git
+	pkgdesc = Extracting and converting World of Warcraft files
+	pkgver = 0.1.42.r78.g48c3bf0
+	pkgrel = 1
+	url = https://www.kruithne.net/wow.export/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = nodejs-lts-gallium
+	makedepends = npm
+	makedepends = imagemagick
+	makedepends = blender
+	optdepends = blender: Advanced map/model importing
+	source = git+https://github.com/Kruithne/wow.export.git
+	source = disable-updater.js
+	source = wow.export.desktop
+	source = run_wow.export.sh
+	sha256sums = SKIP
+	sha256sums = df1c85ec9910f2fa5e423c786ee274a91bb5d5d751af0cc1d9657e39226896b7
+	sha256sums = 0999c519bdeeb9038f9dae1164b8d953c8abf3e446b0d1af698f975553e558f9
+	sha256sums = 8659e690ae3cc215035132b56795bded32fc81175829c421d8238086a703611c
+
+pkgname = wow.export-git
