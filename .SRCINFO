@@ -1,5 +1,5 @@
 pkgbase = newrelic-php5
-	pkgdesc = NewRelic PHP Monitoring Agent
+	pkgdesc = PHP Monitoring Agent
 	pkgver = 10.0.0.312
 	pkgrel = 1
 	url = https://newrelic.com/php

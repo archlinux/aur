@@ -7,37 +7,36 @@ pkgname=newrelic-php5
 pkgver=10.0.0.312
 _libver=20210902
 pkgrel=1
-pkgdesc="NewRelic PHP Monitoring Agent"
-arch=("x86_64")
-url="https://newrelic.com/php"
-license=("Apache")
-depends=("glibc" "php")
-backup=("etc/php/conf.d/newrelic.ini")
-install="${pkgname}.install"
-source=("https://download.newrelic.com/php_agent/archive/${pkgver}/${pkgname}-${pkgver}-linux.tar.gz"
-        "newrelic-daemon.service")
+pkgdesc='PHP Monitoring Agent'
+arch=('x86_64')
+url='https://newrelic.com/php'
+license=('Apache')
+depends=('glibc' 'php')
+backup=('etc/php/conf.d/newrelic.ini')
+install="$pkgname.install"
+source=("https://download.newrelic.com/php_agent/archive/$pkgver/$pkgname-$pkgver-linux.tar.gz"
+        'newrelic-daemon.service')
 md5sums=('d9c9359ae695d724380f024ccf2f4921'
          '4fc78347663adcb32ed28eddb546619c')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}-linux"
+  cd "$srcdir"/$pkgname-$pkgver-linux
 
-  mkdir -p  ${pkgdir}/usr/bin/ \
-            ${pkgdir}/usr/lib/php/modules/ \
-            ${pkgdir}/usr/share/doc/newrelic-php5/ \
-            ${pkgdir}/usr/lib/systemd/system/ \
-            ${pkgdir}/etc/php/conf.d/;
+  mkdir -p "$pkgdir"/usr/bin/ \
+           "$pkgdir"/usr/lib/php/modules/ \
+           "$pkgdir"/usr/share/doc/newrelic-php5/ \
+           "$pkgdir"/usr/lib/systemd/system/ \
+           "$pkgdir"/etc/php/conf.d/;
 
-  # Binary Daemon
-  install -v -Dm755 ./daemon/newrelic-daemon.x64 ${pkgdir}/usr/bin/newrelic-daemon
-  # PHP extension
-  install -v -Dm755 ./agent/x64/newrelic-${_libver}-zts.so ${pkgdir}/usr/lib/php/modules/newrelic-zts.so
-  install -v -Dm755 ./agent/x64/newrelic-${_libver}.so ${pkgdir}/usr/lib/php/modules/newrelic.so
+  install -v -Dm755 ./daemon/newrelic-daemon.x64 "$pkgdir"/usr/bin/newrelic-daemon
 
-  install -v -Dm644 ./README.txt ./LICENSE ${pkgdir}/usr/share/doc/newrelic-php5/
+  install -v -Dm755 ./agent/x64/newrelic-$_libver-zts.so "$pkgdir"/usr/lib/php/modules/newrelic-zts.so
+  install -v -Dm755 ./agent/x64/newrelic-$_libver.so "$pkgdir"/usr/lib/php/modules/newrelic.so
 
-  install -v -Dm644 ./scripts/newrelic.ini.template ${pkgdir}/etc/php/conf.d/newrelic.ini
-  install -v -Dm644 ./scripts/newrelic.ini.template ${pkgdir}/etc/php/conf.d/newrelic.ini.template
+  install -v -Dm644 ./scripts/newrelic.ini.template "$pkgdir"/etc/php/conf.d/newrelic.ini
+  install -v -Dm644 ./scripts/newrelic.ini.template "$pkgdir"/etc/php/conf.d/newrelic.ini.template
 
-  install -v -Dm644 ../newrelic-daemon.service ${pkgdir}/usr/lib/systemd/system/
+  install -v -Dm644 ./README.txt ./LICENSE "$pkgdir"/usr/share/doc/newrelic-php5/
+
+  install -v -Dm644 ../newrelic-daemon.service "$pkgdir"/usr/lib/systemd/system/
 }
