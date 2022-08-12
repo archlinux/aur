@@ -4,8 +4,9 @@
 # Contributor: Florian Wittmann
 
 pkgname=python-mbstrdecoder
-pkgver=1.1.0
-pkgrel=4
+_pkg="${pkgname#python-}"
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='Multi-byte character string decoder'
 arch=('any')
 url='https://github.com/thombashi/mbstrdecoder'
@@ -17,12 +18,12 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel
 # 'python-faker')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/m/mbstrdecoder/mbstrdecoder-$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/m/mbstrdecoder/mbstrdecoder-$pkgver.tar.gz.asc")
-sha256sums=('f4dfd549e424ad8dfc985e6af8b55cb4ec0c208782f610d57439fe6a9a44c244'
+sha256sums=('0a99413b92bbaddda89d376f496d710dc7131417e98414a756ebcd41374e068d'
             'SKIP')
 validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367') ## Tsuyoshi Thombashi
 
 build() {
-  cd "mbstrdecoder-$pkgver"
+  cd "$_pkg-$pkgver"
   python -m build --wheel --no-isolation
 }
 
@@ -34,11 +35,12 @@ build() {
 # }
 
 package() {
-  export PYTHONHASHSEED=0
-  cd "mbstrdecoder-$pkgver"
-  python -m installer --destdir="$pkgdir/" dist/*.whl
+  cd "$_pkg-$pkgver"
+  PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
   install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  ln -s "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 # vim: ts=2 sw=2 et:
