@@ -9,7 +9,7 @@ pkgbase = git-credential-1password-git
 	arch = armv6h
 	license = ISC
 	makedepends = git
-	makedepends = go>=1.18
+	makedepends = go>=1.19
 	depends = git
 	depends = 1password-cli
 	provides = git-credential-1password

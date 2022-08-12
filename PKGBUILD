@@ -11,7 +11,7 @@ pkgdesc="Git credential.helper using 1Password for storage"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h')
 url="https://$_gourl"
 license=('ISC')
-makedepends=('git' 'go>=1.18')
+makedepends=('git' 'go>=1.19')
 depends=('git' '1password-cli')
 provides=('git-credential-1password')
 conflicts=("$_pkgname-dev-git" "$_pkgname-bin" "$_pkgname")
