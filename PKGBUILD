@@ -23,7 +23,7 @@ provides=("waterfox-classic=${pkgver}")
 conflicts=('waterfox-classic' 'waterfox-kde')
 replaces=('waterfox-kde')
 options=('!emptydirs' '!makeflags' 'zipman')
-_filesrev=c89eb86d8e0cf5c2611caf50ef89060ddaad0e56
+_filesrev=45810c687579916b2be1cbf4ca41bc83264fd8d3
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-classic-kpe
 _commit=709bbfedcb2750665fbda4993b253737615ee8f8
 #"git+https://github.com/WaterfoxCo/Waterfox-Classic.git#commit=$_commit"
@@ -39,7 +39,8 @@ source=("git+https://github.com/WaterfoxCo/Waterfox-Classic.git#tag=$pkgver-clas
         "classic-kde.patch::$_filesurl/patches/classic-kde.patch"
         "classic-kde-xul.patch::$_filesurl/patches/classic-kde-xul.patch"
         "Bug1782988_p1.patch::$_filesurl/patches/Bug1782988_p1.patch"
-        "Bug1782988_p2.patch::$_filesurl/patches/Bug1782988_p2.patch")
+        "Bug1782988_p2.patch::$_filesurl/patches/Bug1782988_p2.patch"
+        "Bug1783784.patch::$_filesurl/patches/Bug1783784.patch")
 sha256sums=('SKIP'
             '65601b7b75dc1a5b622201b02f9bd95005ca258b53f1e3d47ffe160dce6a16f3'
             '0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc'
@@ -52,7 +53,8 @@ sha256sums=('SKIP'
             '6ff820e43a48ce9450e59e02877ff574a1921d0b286737d55949ad40865add08'
             'b06289812def0ddd289ab2c06b3ea2ee909bf984af7742f9fb930c8a44e1423a'
             '4131daf3b1ce9be83b66c7fd6732d1a8040f6103083e23a349e2d80afe345709'
-            'c15dd4ae00f694cc073db6c573af9b4592c75b78a81da359964a7d7fb8bb6912')
+            'c15dd4ae00f694cc073db6c573af9b4592c75b78a81da359964a7d7fb8bb6912'
+            '7ebe117d4ae69ccc3043d2fc0a9e84cd7d6c9354a05ddcc208fbd8f2aeec0492')
 
 prepare() {
   # Fix openSUSE's patches for Waterfox
@@ -74,6 +76,7 @@ prepare() {
   patch -Np1 -i ../pgo_fix_missing_kdejs.patch
   patch -Np1 -i ../Bug1782988_p1.patch
   patch -Np1 -i ../Bug1782988_p2.patch
+  patch -Np1 -i ../Bug1783784.patch
 
   cat >.mozconfig <<END
 export CC=clang
