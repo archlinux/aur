@@ -1,7 +1,7 @@
 pkgbase = wxwidgets3.0
 	pkgdesc = GTK+3 implementation of wxWidgets API for GUI
 	pkgver = 3.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wxwidgets.org/
 	arch = x86_64
 	license = custom:wxWindows
