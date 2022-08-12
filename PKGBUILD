@@ -1,15 +1,16 @@
+# Maintainer: Michael Markevich <m.markevich@gmail.com>
 # Maintainer: Ilango Rajagopal <ilangokul@gmail.com>
 
 pkgbase=endpoint-verification
 pkgname=("endpoint-verification" "endpoint-verification-chrome")
-_pkgver="2021.07.22.c386220900-00"
+_pkgver="2022.06.14.c454816986-00"
 pkgver="$(tr '-' '_' <<< $_pkgver)"
 pkgrel=3
 pkgdesc="Endpoint Verification Helper"
 arch=(x86_64)
 url="https://chrome.google.com/webstore/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg"
 license=(unknown)
-sha256sums=("9599361fdf40c9b4f8bee13aaa6d2ef6f60ba66289cbb7b463677ebf2403dc32" "SKIP")
+sha256sums=("8db7d5b96564aafd038d2e016127c8ebac0cf9480c4cdbeadaaec643c020cd39" "SKIP")
 source=("https://packages.cloud.google.com/apt/pool/${pkgbase}_${_pkgver}_amd64_${sha256sums[0]}.deb"
 	"endpoint-verification.service")
 

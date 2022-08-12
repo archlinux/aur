@@ -1,13 +1,13 @@
 pkgbase = endpoint-verification
 	pkgdesc = Endpoint Verification Helper
-	pkgver = 2021.07.22.c386220900_00
+	pkgver = 2022.06.14.c454816986_00
 	pkgrel = 3
 	url = https://chrome.google.com/webstore/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg
 	arch = x86_64
 	license = unknown
-	source = https://packages.cloud.google.com/apt/pool/endpoint-verification_2021.07.22.c386220900-00_amd64_9599361fdf40c9b4f8bee13aaa6d2ef6f60ba66289cbb7b463677ebf2403dc32.deb
+	source = https://packages.cloud.google.com/apt/pool/endpoint-verification_2022.06.14.c454816986-00_amd64_8db7d5b96564aafd038d2e016127c8ebac0cf9480c4cdbeadaaec643c020cd39.deb
 	source = endpoint-verification.service
-	sha256sums = 9599361fdf40c9b4f8bee13aaa6d2ef6f60ba66289cbb7b463677ebf2403dc32
+	sha256sums = 8db7d5b96564aafd038d2e016127c8ebac0cf9480c4cdbeadaaec643c020cd39
 	sha256sums = SKIP
 
 pkgname = endpoint-verification
