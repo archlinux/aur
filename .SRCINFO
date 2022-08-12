@@ -1,6 +1,6 @@
 pkgbase = httm-bin
 	pkgdesc = Prints the size, date and locations of available unique versions (deduplicated by modify time and size) of files residing on ZFS or BTRFS snapshots. (binary .deb)
-	pkgver = 0.14.8
+	pkgver = 0.14.9
 	pkgrel = 1
 	url = https://github.com/kimono-koans/httm
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = httm-bin
 	conflicts = httm
 	options = !strip
 	options = !emptydirs
-	source = httm-bin-0.14.8.deb::https://github.com/kimono-koans/httm/releases/download/0.14.8/httm_0.14.8_amd64.deb
-	sha512sums = 3bd908be4b27f228e4bd61bd8509ce5ce6f5707957aa9fad62ebe09fb79bdc5f7a296f9d1f3f4abc12f0c8618965c168de0a1a99aa9688ca811807243dc9ecdc
+	source = httm-bin-0.14.9.deb::https://github.com/kimono-koans/httm/releases/download/0.14.9/httm_0.14.9_amd64.deb
+	sha512sums = e84a4eefc5e177496a4b700161dc89652cad89731d1c17b4fb64c96926d7e7b59e36089ce7e127b8b91b4bcf2ccedd04f69448215727de618e9b88bd5d5c0ebb
 
 pkgname = httm-bin
