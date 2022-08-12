@@ -81,10 +81,10 @@
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-_major=5.18
-_minor=17
+_major=5.19
+_minor=1
 _srcname=linux-${_major}
-_clr=${_major}.16-1171
+_clr=${_major}.1-1175
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -104,8 +104,8 @@ source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
   "$pkgbase::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clr}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch::https://raw.githubusercontent.com/xanmod/linux-patches/c34b1963769d0e119a41de1ddf0fa5901019bcfc/linux-${_major}.y-xanmod/pci_acso/0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch"
-  "0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch::https://raw.githubusercontent.com/xanmod/linux-patches/c34b1963769d0e119a41de1ddf0fa5901019bcfc/linux-${_major}.y-xanmod/userns/0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch"
+  "0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch::https://raw.githubusercontent.com/xanmod/linux-patches/8f964c6180f3fba9eca1c3598c93b2b56f421a9c/linux-${_major}.y-xanmod/pci_acso/0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch"
+  "0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch::https://raw.githubusercontent.com/xanmod/linux-patches/8f964c6180f3fba9eca1c3598c93b2b56f421a9c/linux-${_major}.y-xanmod/userns/0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch"
 )
 
 if [ -n "$_use_llvm_lto" ]; then
@@ -416,13 +416,13 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('51f3f1684a896e797182a0907299cc1f0ff5e5b51dd9a55478ae63a409855cee'
+sha256sums=('ff240c579b9ee1affc318917de07394fc1c3bb49dac25ec1287370c2e15005a8'
             'SKIP'
-            'd04aa4d01cb5051f7f1e619b6ca7c8e1da4f097334f3f43477848a1a1fd96a00'
+            'e3b9167a3286441f843220bc3339f7bafc256ec4e7b5a080badca6ce8b6c7926'
             'SKIP'
             '5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c'
-            'c19a16f7cd760d79016c5108ae5d655d7f785d093edb4a186f69531f65889197'
-            '51134394987f1486cc7f3c0a10dcb732a6c79f890eb352469d53cd0ddfa38835')
+            '0c65735f3e636c45e5baffccd0d9cd519c939d95ec5daf3560a7a1338e1016fb'
+            '7d0a9f2d926fab7b12f9248143b4b35fceb765bacb0beea3020a2e0a17123f83')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
