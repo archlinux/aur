@@ -2,7 +2,7 @@
 
 pkgname=octoprint
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The snappy web interface for your 3D printer on Arch Linux"
 arch=(any)
 url="http://octoprint.org/"
