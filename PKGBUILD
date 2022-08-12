@@ -2,8 +2,8 @@
 
 _gemname='database_cleaner-active_record'
 pkgname="ruby-${_gemname}"
-pkgver=2.0.0
-pkgrel=3
+pkgver=2.0.1
+pkgrel=1
 pkgdesc='Strategies for cleaning databases using ActiveRecord. Can be used to ensure a clean state for testing'
 arch=('any')
 url="https://github.com/DatabaseCleaner/${_gemname}"
@@ -12,7 +12,7 @@ options=(!emptydirs)
 depends=('ruby' 'ruby-activerecord' 'ruby-database_cleaner-core')
 makedepends=('ruby-bundler' 'ruby-rake' 'ruby-rspec')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('399ed6fe0374ba463cbb113cbd21e504dc1358bce5ebb64c58fc9e1c8f2fc5441e69c206966123e8c31f27551a5b163a845245dc29866a020c01fdc5a94f58ca')
+sha512sums=('f08ab3413be5fe1b17913d629054971997f95ac6551d7a5c07b5169367d0dcc4c0709487bbdae23c659c0b61548097c30110b6b0850ba6d96e92fa6814e8e926')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
