@@ -1,0 +1,63 @@
+--- a/build/build.xml	2022-08-09 21:02:32.341669755 +0200
++++ b/build/build.xml	2022-08-09 21:13:20.006613526 +0200
+@@ -970,7 +970,7 @@
+     </if>
+   </target>
+ 
+-  <target name="linux-build" depends="revision-check, linux-check-os, jdk-download, subprojects-build, subprojects-build-rpi" description="Build Linux version">
++  <target name="linux-build" depends="revision-check, linux-check-os, subprojects-build, subprojects-build-rpi" description="Build Linux version">
+     <mkdir dir="linux/work" />
+ 
+     <copy todir="linux/work" preservelastmodified="true">
+@@ -1044,51 +1044,6 @@
+     <copy file="linux/processing-pde.xml" todir="linux/work/lib" />
+     <copy file="linux/appdata.xml" todir="linux/work/lib" />
+     <copy file="linux/desktop.template" todir="linux/work/lib" />
+-
+-    <!--
+-    Cannot use ant version of tar because it doesn't preserve properties.
+-    <untar compression="gzip"
+-           dest="linux/work"
+-           src="linux/jdk.tgz"
+-           overwrite="false"/>
+-    -->
+-
+-    <!--
+-      http://www.gnu.org/software/tar/manual/html_section/transform.html
+-    -->
+-    <exec executable="tar" dir="linux">
+-      <!-- Change directory -->
+-      <!--
+-      <arg value="-C" />
+-      <arg value="linux/work" />
+-      <arg value="-xzpf" />
+-      -->
+-      <arg value="xfz" />
+-      <arg value="../${jdk.archive.path}"/>
+-    </exec>
+-
+-    <exec executable="rsync" dir="linux">
+-      <arg value="-a" />
+-      <arg value="--delete" />
+-      <arg value="${jdk.folder}/" />
+-      <arg value="work/java/" />
+-    </exec>
+-
+-    <!-- Remove unused JRE bloat. -->
+-    <delete failonerror="true">
+-      <fileset refid="jdk-optional-linux" />
+-    </delete>
+-
+-    <!-- Throw these 300(!) files into a single zip -->
+-    <zip destfile="linux/work/java/legal.zip"
+-         basedir="linux/work/java"
+-         includes="legal/**" />
+-    <delete dir="linux/work/java/legal" />
+-
+-    <exec executable="rm">
+-      <arg value="-r"/>
+-      <arg line="linux/${jdk.folder}"/>
+-    </exec>
+   </target>
+ 
+   <target name="linux-run" depends="linux-build"

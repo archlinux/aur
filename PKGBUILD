@@ -1,90 +1,70 @@
 # Maintainer: lesto <lestofante88@gmail.com>
+# Maintainer: Torben <git@letorbi.com>
 # Contributor: F. Rødseth <xyproto@archlinux.org>
 
+
 pkgname=processing
-pkgver=3.5.4
-pkgrel=6
+pkgver=4.0.1
+pkgrel=1
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://www.processing.org/'
 license=(GPL LGPL)
-# Can upgrade to OpenJDK 10 once java-openjfx has been upgraded to support it
-depends=(java-runtime=8 libgl)
-makedepends=(apache-ant gendesk java8-openjfx unzip)
+depends=('java-environment-openjdk=17')
+makedepends=('ant' 'gendesk' 'rsync' 'unzip')
 options=(!strip)
-install=openjdkmsg.install
-# The Processing version scheme for the 3.5.x series uses a special magical
-# version number above 0266 in addition to the ordinary version number.
-# https is not available for reference.zip.
-source=("https://github.com/$pkgname/$pkgname/archive/$pkgname-0$((266+${pkgver##3.5.}))-$pkgver.tar.gz"
-        'https://download.processing.org/reference.zip'
-        build.xml
-        errormessage.patch)
-sha256sums=('99a5d3cfccd106e79fe82cafa66b72b15c19e5747eac77e40dd0a82b032c2925'
-            'fabe7420a714f450a6b1430f13fc46f14ba52db57af360365c6a7fd96d0b642f'
-            '9f4050475b3363eb5e966fa891caea0391b3dcc2cdb68245f1a053b0d7ffb220'
-            '3c49143a129c6b3655586bce9f175ee145ab388b78ad4615d6c0b80563ba6f26')
+source=("https://github.com/processing/processing4/archive/processing-$((1285+${pkgver##4.0.}))-$pkgver.tar.gz"
+        disable_update_check.patch
+        no_ffmpeg_download.patch
+        no_jdk_download.patch)
+sha256sums=('22e4cd253b0db58e2d6cbec64f3765fa76ab6a7d3d7741035421ff8d49e619dd'
+            '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
+            'b0742db84e6a6b148b56df6d4d1e8a3266461fe0f514f703301a310e99f1d126'
+            'f8bde916aa0c3c816ba6cc8c22d180001109982f1640f3bff140a57e5100fc64')
 
 prepare() {
-  gendesk -f -n --pkgname=$pkgname --pkgdesc="$pkgdesc"
-
   # Symbolic link for not having to repeat the revision number
-  ln -sf "$pkgname-$pkgname-"*"-$pkgver" $pkgname
+  ln -sf "${pkgname}4-processing-$((1285+${pkgver##4.0.}))-$pkgver" $pkgname
 
-  # Add some details to one of the error messages
-  patch -p0 -i errormessage.patch
+  # Create .desktop file
+  gendesk -f -n --pkgname=processing --pkgdesc="$pkgdesc" --name="Processing" --exec="processing %f" --mimetypes="text/x-processing"
 
-  # Copy reference.zip to the java directory
-  mkdir -p $pkgname/java
-  cp "$srcdir/reference.zip" $pkgname/java/
+  # Don't download JDK and JFX files during Ant's build process
+  patch $pkgname/build/build.xml < no_jdk_download.patch
+  patch $pkgname/build/shared/tools/MovieMaker/build.xml < no_ffmpeg_download.patch
 
-  # Unpack reference.zip
-  mkdir -p $pkgname/build/linux/work/modes/java
-  unzip -q -u "$srcdir/reference.zip" -d $pkgname/build/linux/work/modes/java
-
-  # Disable the "We only like Java from Sun and Oracle" GUI message
-  sed -i 's,Messages.showWarning,\/\*Messages.showWarning,;s,null);,null);\*\/,' \
-    "$pkgname/app/src/processing/app/platform/LinuxPlatform.java"
-
-  # Create missing directories
-  mkdir -p $pkgname/build/linux/work/java
-
-  # Use the font's built-in hinting instructions
-  sed 's|  java|  _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=gasp" java|g' \
-    -i $pkgname/build/linux/processing
-
-  # Use a custom build.xml file for ant
-  cp -fv build.xml $pkgname/build/build.xml
+  # Disable update check in default preferences
+  patch $pkgname/build/shared/lib/defaults.txt < disable_update_check.patch
 }
 
 build() {
   cd "$pkgname/build"
 
-  JAVA_HOME="/usr/lib/jvm/java-8-openjdk" ant build
+  JAVA_HOME="/usr/lib/jvm/java-17-openjdk" ant build
 }
 
 package() {
   cd "$pkgname"
 
-  install -d "$pkgdir/usr/"{bin/,share/$pkgname/}
-  cp -r build/linux/work/* "$pkgdir/usr/share/$pkgname/"
+  install -d "$pkgdir/usr/"{bin/,share/processing/}
+  cp -r build/linux/work/* "$pkgdir/usr/share/processing/"
 
-  # Desktop shortcut
+  # MIME type, icon and desktop shortcut
+  install -Dm644 "build/linux/processing-pde.xml" \
+    "$pkgdir/usr/share/mime/packages/processing-pde.xml"
   install -Dm644 "build/shared/lib/icons/pde-256.png" \
-    "$pkgdir/usr/share/pixmaps/$pkgname.png"
-  install -Dm644 "$srcdir/$pkgname.desktop" \
-    "$pkgdir/usr/share/applications/$pkgname.desktop"
+    "$pkgdir/usr/share/pixmaps/processing.png"
+  install -Dm644 "$srcdir/processing.desktop" \
+    "$pkgdir/usr/share/applications/processing.desktop"
 
   # Symbolic links in /usr/bin
-  ln -s "/usr/share/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
-  ln -s "/usr/share/$pkgname/$pkgname-java" "$pkgdir/usr/bin/$pkgname-java"
+  ln -s "/usr/share/processing/processing" "$pkgdir/usr/bin/processing"
+  ln -s "/usr/share/processing/processing-java" "$pkgdir/usr/bin/processing-java"
 
-  # Use /usr/lib/jvm/default-runtime
-  rmdir "$pkgdir/usr/share/processing/java"
+  # Link processing's internal java-command to the system's one
+  mkdir -p "$pkgdir/usr/share/processing/java/bin/"
+  ln -s /usr/lib/jvm/java-17-openjdk/bin/java "$pkgdir/usr/share/processing/java/bin/java"
 
-  # Processing does not work with OpenJDK 10 or 11, use OpenJDK 8
-  #ln -s /usr/lib/jvm/default-runtime/ "$pkgdir/usr/share/processing/java"
-  ln -s /usr/lib/jvm/java-8-openjdk/ "$pkgdir/usr/share/processing/java"
+  # Link processing's internal ffmpeg-command to the system's one
+  ln -s /usr/bin/ffmpeg "$pkgdir/usr/share/processing/tools/MovieMaker/tool/"
 }
-
-# vim: ts=2 sw=2 et

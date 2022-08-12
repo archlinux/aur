@@ -1,26 +1,24 @@
 pkgbase = processing
 	pkgdesc = Programming environment for creating images, animations and interactions
-	pkgver = 3.5.4
-	pkgrel = 6
+	pkgver = 4.0.1
+	pkgrel = 1
 	url = https://www.processing.org/
-	install = openjdkmsg.install
 	arch = x86_64
 	license = GPL
 	license = LGPL
-	makedepends = apache-ant
+	makedepends = ant
 	makedepends = gendesk
-	makedepends = java8-openjfx
+	makedepends = rsync
 	makedepends = unzip
-	depends = java-runtime=8
-	depends = libgl
+	depends = java-environment-openjdk=17
 	options = !strip
-	source = https://github.com/processing/processing/archive/processing-0270-3.5.4.tar.gz
-	source = https://download.processing.org/reference.zip
-	source = build.xml
-	source = errormessage.patch
-	sha256sums = 99a5d3cfccd106e79fe82cafa66b72b15c19e5747eac77e40dd0a82b032c2925
-	sha256sums = fabe7420a714f450a6b1430f13fc46f14ba52db57af360365c6a7fd96d0b642f
-	sha256sums = 9f4050475b3363eb5e966fa891caea0391b3dcc2cdb68245f1a053b0d7ffb220
-	sha256sums = 3c49143a129c6b3655586bce9f175ee145ab388b78ad4615d6c0b80563ba6f26
+	source = https://github.com/processing/processing4/archive/processing-1286-4.0.1.tar.gz
+	source = disable_update_check.patch
+	source = no_ffmpeg_download.patch
+	source = no_jdk_download.patch
+	sha256sums = 22e4cd253b0db58e2d6cbec64f3765fa76ab6a7d3d7741035421ff8d49e619dd
+	sha256sums = 35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30
+	sha256sums = b0742db84e6a6b148b56df6d4d1e8a3266461fe0f514f703301a310e99f1d126
+	sha256sums = f8bde916aa0c3c816ba6cc8c22d180001109982f1640f3bff140a57e5100fc64
 
 pkgname = processing
