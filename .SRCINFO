@@ -1,6 +1,6 @@
 pkgbase = tomee
 	pkgdesc = Apache TomEE application server.
-	pkgver = 9.0.0_M7
+	pkgver = 9.0.0_M8
 	pkgrel = 1
 	url = https://tomee.apache.org/
 	install = tomee.install
@@ -8,11 +8,11 @@ pkgbase = tomee
 	license = Apache
 	depends = java-environment>=8
 	options = !strip
-	source = https://dlcdn.apache.org/tomee/tomee-9.0.0-M7/apache-tomee-9.0.0-M7-plume.tar.gz
+	source = https://dlcdn.apache.org/tomee/tomee-9.0.0-M8/apache-tomee-9.0.0-M8-plume.tar.gz
 	source = tomee.service
 	source = tomee-sysusers.conf
 	source = tomee-tmpfiles.conf
-	sha256sums = fa13338cddea7c4c0061fbb03f87c6deba93187d4da176eb68e812657d279a68
+	sha256sums = ef49b3fcc7b72886b176f8dd8910608cf82c285a11290b95826a594da14601bb
 	sha256sums = f647a600b1a49dc9981fc6e820c260ca09e044a9dca5a421b5441b7acabebf38
 	sha256sums = d86cd28fb7c26b684eb94d8dff22d95dbe53b9e73dd2df38dfe8a75c31251875
 	sha256sums = 499a574b00d279741e0578e0413af5edbe336f1f9fff6f12cdb58acaef35313f
