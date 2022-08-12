@@ -1,6 +1,6 @@
 # Maintainer: Helhet <hhdev@proton.me>
 
-pkgname=brother-hl5250dn-lpr-bin
+pkgname=brother-hl5250dn-lpr
 pkgver=2.0.1_1
 pkgrel=1
 pkgdesc="LPR printer driver for Brother HL-5250DN"
