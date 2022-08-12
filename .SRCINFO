@@ -1,14 +1,13 @@
 pkgbase = webcord-bin
 	pkgdesc = A Discord and Fosscord client made with the Electron.
 	pkgver = 3.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SpacingBat3/WebCord
 	arch = x86_64
 	license = MIT
 	provides = webcord
 	conflicts = webcord
 	noextract = webcord-3.7.1-1.x86_64.rpm
-	options = !strip
 	options = !emptydirs
 	source = webcord-3.7.1-1.x86_64.rpm::https://github.com/SpacingBat3/WebCord/releases/download/v3.7.1/webcord-3.7.1-1.x86_64.rpm
 	sha256sums = e3f9c6569c852e61d26d2cccfd9e155a25ba8560d75fbd9602b3581a227c1cb9
