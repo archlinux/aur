@@ -4,7 +4,7 @@
 
 pkgname='therion'
 pkgver='6.1.2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Cave surveying: processes survey data and generates maps or 3D models of caves"
 arch=('x86_64' 'i686')
 url="http://therion.speleo.sk"
@@ -25,7 +25,7 @@ depends=(
 	'tk'
 	'tkimg'
 	'vtk' 
-	'wxgtk3'
+	'wxwidgets-gtk3'
 	'zlib'
 )
 
@@ -67,8 +67,6 @@ build() {
     -DUSE_BUNDLED_FMT=OFF \
     -DUSE_BUNDLED_CATCH2=OFF \
     -DUSE_BUNDLED_SHAPELIB=OFF \
-    -DwxWidgets_CONFIG_EXECUTABLE=$(which "wx-config-gtk3") \
-    -DwxWidgets_wxrc_EXECUTABLE=$(which "wxrc-3.0") \
     -DCMAKE_INSTALL_PREFIX='/usr'
 
   make -C "${_builddir}"

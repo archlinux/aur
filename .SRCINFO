@@ -1,7 +1,7 @@
 pkgbase = therion
 	pkgdesc = Cave surveying: processes survey data and generates maps or 3D models of caves
 	pkgver = 6.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://therion.speleo.sk
 	changelog = CHANGELOG
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = therion
 	depends = tk
 	depends = tkimg
 	depends = vtk
-	depends = wxgtk3
+	depends = wxwidgets-gtk3
 	depends = zlib
 	backup = etc/therion.ini
 	backup = etc/xtherion.ini
