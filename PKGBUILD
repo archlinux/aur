@@ -2,14 +2,14 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=conserve-git
-pkgver=0.6.14.r55.g41a3a40
+pkgver=0.6.16.r1.g57df38b
 pkgrel=1
 pkgdesc="Robust portable backup tool written in Rust (git)"
 arch=('x86_64')
 url="https://github.com/sourcefrog/conserve"
 license=('GPL2')
 depends=('gcc-libs')
-makedepends=('rust' 'git')
+makedepends=('cargo' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}")
