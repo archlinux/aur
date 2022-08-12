@@ -1,6 +1,6 @@
 pkgbase = fastfetch
 	pkgdesc = Like Neofetch, but much faster because written in C
-	pkgver = 1.6.2
+	pkgver = 1.6.3
 	pkgrel = 1
 	url = https://github.com/LinusDierheimer/fastfetch
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = fastfetch
 	optdepends = xfconf: Needed for XFWM theme and XFCE Terminal font
 	optdepends = zlib: Faster image output when using kitty graphics protocol
 	backup = etc/fastfetch/config.conf
-	source = fastfetch-1.6.2.tar.gz::https://github.com/LinusDierheimer/fastfetch/archive/refs/tags/1.6.2.tar.gz
-	sha256sums = 55e9bea01ec6d26fcf24287844c82f59f1dd938b3ea1b8b0b787101b44d7d4a0
+	source = fastfetch-1.6.3.tar.gz::https://github.com/LinusDierheimer/fastfetch/archive/refs/tags/1.6.3.tar.gz
+	sha256sums = 3c70531fdc52f36e1fa0a69f99a6b923fce6f775546525e0ad6ff6908365073c
 
 pkgname = fastfetch
