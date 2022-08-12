@@ -1,6 +1,6 @@
 pkgbase = vim-clap
 	pkgdesc = Modern performant generic finder and dispatcher for Vim and Neovim
-	pkgver = 0.35
+	pkgver = 0.36
 	pkgrel = 1
 	url = https://github.com/liuchengxu/vim-clap
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = vim-clap
 	optdepends = git: for the bcommits, commits, files, gfiles or git_files, and git_diff_files providers
 	optdepends = python: for the Python dynamic module
 	optdepends = ripgrep: for the files and grep providers
-	source = vim-clap-0.35.tar.gz::https://github.com/liuchengxu/vim-clap/archive/v0.35.tar.gz
-	sha256sums = 8a7581811903dbc59a582557ed3afdc6ae2ae456691ab74e9c008b1261ebc3e9
+	source = vim-clap-0.36.tar.gz::https://github.com/liuchengxu/vim-clap/archive/v0.36.tar.gz
+	sha256sums = a27cf20ccd7fcc2757821b6cee24b253bc4fcdbba29e699d55518e7dfc09ef04
 
 pkgname = vim-clap
