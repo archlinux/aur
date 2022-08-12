@@ -3,16 +3,16 @@
 # Contributor: Patrick Griffis <tingping@tingping.se>
 
 pkgname=xdg-desktop-portal
-pkgver=1.14.6
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="Desktop integration portals for sandboxed apps"
 url="https://github.com/flatpak/xdg-desktop-portal"
 arch=(x86_64)
 license=(LGPL)
 depends=(glib2 pipewire fuse3 geoclue2 rtkit systemd)
-makedepends=(python xmlto docbook-xsl git flatpak libportal)
+makedepends=(meson xmlto docbook-xsl git flatpak libportal)
 options=(debug)
-_commit=bd1eab9361832f320a83ea3b2a98c8894376fc22  # tags/1.14.6
+_commit=95b70566e05ef493539cdcbe2d9321a529858eb7  # tags/1.15.0
 source=("git+https://github.com/flatpak/xdg-desktop-portal#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -23,18 +23,19 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd $pkgname
-  ./configure --prefix=/usr --libexecdir=/usr/lib
-  make 
+  arch-meson $pkgname build
+  meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
   depends+=(xdg-desktop-portal-impl)
 
-  cd $pkgname
-  make DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir"
 }
