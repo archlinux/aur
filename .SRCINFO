@@ -1,6 +1,6 @@
 pkgbase = batterymon-git
 	pkgdesc = Simple battery monitor
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 2
 	url = https://www.github.com/weebcyberpunk/batterymon
 	arch = any
