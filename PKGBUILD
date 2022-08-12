@@ -9,8 +9,8 @@ _pkgname='xf86-input-wacom'
 _pkgvariantsuffix='-nosystemd'
 _vcssuffix='-git'
 pkgname="${_pkgname}${_pkgvariantsuffix}${_vcssuffix}"
-pkgver=0.40.0.23+r2038.20211122.ef209bc
-pkgrel=3
+pkgver=1.1.0+2.r2287.20220719.18ed769
+pkgrel=1
 pkgdesc="X.Org Wacom tablet driver. Without systemd dependency. Git checkout."
 arch=(
   'i686'
@@ -55,7 +55,7 @@ prepare() {
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  _ver="$(git describe  --tags | sed 's|^xf86-input-wacom-||' | sed 's|-[^-]*$||' | tr '-' '.')"
+  _ver="$(git describe  --tags | sed 's|^xf86-input-wacom-||' | sed 's|-g[0-9a-fA-F]*$||' | tr '-' '+')"
   _rev="$(git rev-list --count HEAD)"
   _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
   _hash="$(git rev-parse --short HEAD)"
@@ -64,7 +64,7 @@ pkgver() {
     error "Version could not be determined."
     return 1
   else
-    printf '%s' "${_ver}+r${_rev}.${_date}.${_hash}"
+    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
   fi
 }
 
