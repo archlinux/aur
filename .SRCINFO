@@ -1,17 +1,16 @@
 pkgbase = strider
 	pkgdesc = Strider is a 2D sci-fi platformer game.
-	pkgver = 1.0.6
-	pkgrel = 2
-	url = https://github.com/petarov/game-off-2015
+	pkgver = 1.0.7
+	pkgrel = 3
+	url = https://github.com/kenamick/strider
 	install = strider.install
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = nodejs
 	makedepends = npm
-	makedepends = nodejs-grunt-cli
-	source = https://github.com/petarov/game-off-2015/archive/1.0.6.tar.gz
-	sha1sums = 18b2dc5b16937dcd7d974564f2fbe107e9df8f36
+	source = https://github.com/kenamick/strider/archive/refs/tags/v1.0.7.tar.gz
+	sha1sums = bfe54915e2305696978649a6068b47c90a33433d
 
 pkgname = strider
 

@@ -17,7 +17,7 @@ backup=()
 options=()
 install=strider.install
 changelog=
-source=(https://github.com/kenamick/strider/archive/refs/tags/v1.0.7.zip)
+source=(https://github.com/kenamick/strider/archive/refs/tags/v1.0.7.tar.gz)
 sha1sums=('bfe54915e2305696978649a6068b47c90a33433d')
 
 dirname="game-off-2015"
