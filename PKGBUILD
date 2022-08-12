@@ -3,7 +3,7 @@
 # based on the PKGBUILD of sulis
 
 pkgname=sulis-git
-pkgver=0.6.0.20220330
+pkgver=0.6.0.20220811
 pkgrel=1
 pkgdesc='Turn based tactical RPG with several campaigns, written in Rust.'
 arch=('x86_64')
