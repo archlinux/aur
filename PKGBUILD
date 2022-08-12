@@ -26,7 +26,7 @@ depends=(
 conflicts=('cinny-desktop')
 provides=('cinny-desktop')
 
-source_x86_64=("https://github.com/cinnyapp/cinny-desktop/releases/download/v${pkgver}/Cinny_desktop-x86_64.deb")
+source_x86_64=("${pkgname}-${pkgver}.deb::https://github.com/cinnyapp/cinny-desktop/releases/download/v${pkgver}/Cinny_desktop-x86_64.deb")
 sha256sums_x86_64=('24bbbac409d469e45333fca3d90b1cee95d34570a7bf1c7c34bd9f0d7c80520d')
 install="${pkgname}.install"
 
