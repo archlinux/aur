@@ -1,15 +1,15 @@
 pkgbase = pggen-bin
 	pkgdesc = Generate type safe Go methods from Postgres SQL queries.
-	pkgver = 2022.02.05
+	pkgver = 2022.07.16
 	pkgrel = 1
 	url = https://github.com/jschaf/pggen
 	arch = x86_64
 	license = MIT
 	provides = pggen
 	conflicts = pggen
-	source_x86_64 = https://github.com/jschaf/pggen/releases/download/2022-02-05/pggen-linux-amd64.zip
-	source_x86_64 = https://raw.githubusercontent.com/jschaf/pggen/2022-02-05/LICENSE
-	sha256sums_x86_64 = 72ff349e76d64ebbf7d0cbc412a48b091b1b37f9530b5ca2081ecf61f1283897
+	source_x86_64 = https://github.com/jschaf/pggen/releases/download/2022-07-16/pggen-linux-amd64.tar.xz
+	source_x86_64 = https://raw.githubusercontent.com/jschaf/pggen/2022-07-16/LICENSE
+	sha256sums_x86_64 = 92eaf7b2c16dab820e2dc3246e1259dd6ec8b6189870b510272a28ec9fcecef2
 	sha256sums_x86_64 = f55840b88fc0081b22cc24ff94fb30a0be81e3998ee05adcffa64f1188958d9d
 
 pkgname = pggen-bin
