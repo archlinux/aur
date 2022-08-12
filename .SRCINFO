@@ -1,7 +1,7 @@
 pkgbase = ruby-activeresource
 	pkgdesc = REST on Rails. Wrap your RESTful web app with Ruby classes and work with them like Active Record models
-	pkgver = 5.1.1
-	pkgrel = 2
+	pkgver = 6.0.0
+	pkgrel = 1
 	url = https://rubyonrails.org
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = ruby-activeresource
 	depends = ruby-activemodel-serializers-xml
 	depends = ruby-activesupport
 	options = !emptydirs
-	source = https://github.com/rails/activeresource/archive/v5.1.1/ruby-activeresource-5.1.1.tar.gz
-	sha512sums = 12cf375f0ec563a06400484341363ce9e8b3a55ca5ed06d6de3ca3b8f1083f0c1073b2c7deec2eb551061a9425d3531d8abf2c05d18f94d187e214b356d43dc7
+	source = https://github.com/rails/activeresource/archive/v6.0.0/ruby-activeresource-6.0.0.tar.gz
+	sha512sums = e9c5d78faaba803aae7bf340f26b2354b60d2905fa2dff0904b99df1c68c9118bfded0e7ee4f19442eb177964a209337a7d9c4c74f494b10880ea9b996e0acb6
 
 pkgname = ruby-activeresource

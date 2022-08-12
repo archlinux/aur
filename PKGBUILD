@@ -2,8 +2,8 @@
 
 _gemname='activeresource'
 pkgname="ruby-${_gemname}"
-pkgver=5.1.1
-pkgrel=2
+pkgver=6.0.0
+pkgrel=1
 pkgdesc='REST on Rails. Wrap your RESTful web app with Ruby classes and work with them like Active Record models'
 arch=('any')
 url='https://rubyonrails.org'
@@ -12,7 +12,7 @@ options=(!emptydirs)
 depends=('ruby' 'ruby-activemodel' 'ruby-activemodel-serializers-xml' 'ruby-activesupport')
 makedepends=('ruby-bundler' 'ruby-rake')
 source=("https://github.com/rails/activeresource/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('12cf375f0ec563a06400484341363ce9e8b3a55ca5ed06d6de3ca3b8f1083f0c1073b2c7deec2eb551061a9425d3531d8abf2c05d18f94d187e214b356d43dc7')
+sha512sums=('e9c5d78faaba803aae7bf340f26b2354b60d2905fa2dff0904b99df1c68c9118bfded0e7ee4f19442eb177964a209337a7d9c4c74f494b10880ea9b996e0acb6')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
@@ -37,5 +37,5 @@ package() {
   rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
 
   install -Dm 644 MIT-LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 CHANGELOG.md CONTRIBUTING.md README.rdoc --target-directory "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 CONTRIBUTING.md README.md --target-directory "${pkgdir}/usr/share/doc/${pkgname}"
 }
