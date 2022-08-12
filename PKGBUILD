@@ -7,7 +7,7 @@
 
 pkgname=wxformbuilder-git
 _gitname=wxFormBuilder
-pkgver=3.9.0.r188.g0eccdbc5
+pkgver=3.10.1.r231.gdf7791bf
 pkgrel=1
 pkgdesc="Designer, GUI builder, and RAD tool For wxWidgets"
 arch=('i686' 'x86_64' 'aarch64')
@@ -16,15 +16,12 @@ license=('GPL')
 provides=('wxformbuilder')
 conflicts=('wxformbuilder' 'wxformbuilder-svn')
 depends=('wxgtk3' 'boost')
-makedepends=('git' 'ninja' 'meson')
+makedepends=('git' 'ninja' 'cmake')
 source=(
-  "git://github.com/wxFormBuilder/wxFormBuilder.git"
-  "nativefile.ini"
+  "git+https://github.com/wxFormBuilder/wxFormBuilder.git"
+  "ticpp.git::git+https://github.com/wxFormBuilder/ticpp.git"
 )
-md5sums=(
-  'SKIP'
-  '124daaf4663d8e4285a17e9e0f1f4d6a'
-)
+md5sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
@@ -33,21 +30,17 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${_gitname}"
-  git submodule update --init
+  git submodule update --init --recursive
+  cmake -S . -B _build -G "Ninja" --install-prefix /usr -DCMAKE_BUILD_TYPE=Release
 }
 
 build() {
   cd "$srcdir/${_gitname}"
-  meson setup _build --native-file "$srcdir"/nativefile.ini --prefix /usr
-  ninja -j$(nproc) -C _build
+  cmake --build _build --config Release
 }
 
 package() {
   cd "$srcdir/${_gitname}"
 
   DESTDIR="${pkgdir}" ninja -C _build install
-
-  mkdir -p "$pkgdir"/usr/share/mime/packages/
-  cp -r install/linux/data/gnome/usr/share "$pkgdir"/usr
-  install -m644 install/linux/debian/wxformbuilder.sharedmimeinfo "$pkgdir"/usr/share/mime/packages/wxformbuilder.xml
 }
