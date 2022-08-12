@@ -15,7 +15,7 @@ url="https://sourceforge.net/projects/wxformbuilder/"
 license=('GPL')
 provides=('wxformbuilder')
 conflicts=('wxformbuilder' 'wxformbuilder-svn')
-depends=('wxgtk3' 'boost')
+depends=('wxwidgets-gtk3' 'boost')
 makedepends=('git' 'ninja' 'cmake')
 source=(
   "git+https://github.com/wxFormBuilder/wxFormBuilder.git"
