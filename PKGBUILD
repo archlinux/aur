@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=pls
-pkgver=5.3.0
+pkgver=5.4.0
 pkgrel=2
 pkgdesc='Prettier `ls` for the pros'
 url='https://dhruvkb.github.io/pls'
@@ -23,7 +23,7 @@ makedepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dhruvkb/pls/archive/$pkgver.tar.gz")
-sha512sums=('7bcb54e7d49568ae763306e2aa1622c3295f5e46e71b2513bfcb6ed99132ebba1ac2991e35b7fa6d4fadf6dd2277ebab54fe576c25201555fc6c695e26b17e55')
+sha512sums=('e3a82d9ac11febc5c7114394d502ceda7fb98eea4951cc12d547a00407dc0a492f1e87071091e8f6fec070f2ddaeda7dedec2bdf879099da370f3af892b085ab')
 
 build() {
   cd $pkgname-$pkgver
