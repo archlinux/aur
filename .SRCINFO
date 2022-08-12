@@ -1,17 +1,17 @@
 pkgbase = ruby-bigdecimal
-	pkgdesc = This library provides arbitrary-precision decimal floating-point number class.
-	pkgver = 3.0.0
+	pkgdesc = This library provides arbitrary-precision decimal floating-point number class
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = https://github.com/ruby/bigdecimal
 	arch = x86_64
 	license = RUBY
+	checkdepends = ruby-minitest
 	makedepends = ruby-bundler
 	makedepends = ruby-rake
 	makedepends = ruby-rake-compiler
 	depends = ruby
 	options = !emptydirs
-	source = ruby-bigdecimal-3.0.0.tar.gz::https://github.com/ruby/bigdecimal/archive/v3.0.0.tar.gz
-	sha512sums = 40939cf68da783164344b1e8b97b9b7c068ca8946b229f00f264d462ff54ef71008108630e5e2606b4cfb51705df15b0428231082a212be614d37ef0bcf28185
+	source = https://github.com/ruby/bigdecimal/archive/v3.1.2/ruby-bigdecimal-3.1.2.tar.gz
+	sha512sums = 43aa08551bec0855223a0ffe787e62f67fc92824b766efc85fffc32f7b81e0850b199f0668fb0d23ed23e07e27030e25f885162bbe08489ea5df2978b69d4716
 
 pkgname = ruby-bigdecimal
-

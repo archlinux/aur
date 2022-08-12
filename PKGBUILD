@@ -2,17 +2,18 @@
 
 _gemname='bigdecimal'
 pkgname="ruby-${_gemname}"
-pkgver=3.0.0
+pkgver=3.1.2
 pkgrel=1
-pkgdesc='This library provides arbitrary-precision decimal floating-point number class.'
+pkgdesc='This library provides arbitrary-precision decimal floating-point number class'
 arch=('x86_64')
 url="https://github.com/ruby/bigdecimal"
-license=(RUBY)
+license=('RUBY')
 options=(!emptydirs)
 depends=('ruby')
 makedepends=('ruby-bundler' 'ruby-rake' 'ruby-rake-compiler')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('40939cf68da783164344b1e8b97b9b7c068ca8946b229f00f264d462ff54ef71008108630e5e2606b4cfb51705df15b0428231082a212be614d37ef0bcf28185')
+checkdepends=('ruby-minitest')
+source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('43aa08551bec0855223a0ffe787e62f67fc92824b766efc85fffc32f7b81e0850b199f0668fb0d23ed23e07e27030e25f885162bbe08489ea5df2978b69d4716')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
@@ -27,6 +28,12 @@ build() {
   rake build
 }
 
+check() {
+  cd "${_gemname}-${pkgver}"
+
+  rake test
+}
+
 package() {
   cd "${_gemname}-${pkgver}"
 
@@ -34,7 +41,31 @@ package() {
 
   gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" "pkg/${_gemname}-${pkgver}.gem"
 
-  rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
+  # remove unrepreducible files
+  rm --force --recursive --verbose \
+    "${pkgdir}/${_gemdir}/cache/" \
+    "${pkgdir}/${_gemdir}/gems/${_gemname}-${pkgver}/vendor/" \
+    "${pkgdir}/${_gemdir}/doc/${_gemname}-${pkgver}/ri/ext/"
+
+  find "${pkgdir}/${_gemdir}/gems/" \
+    -type f \
+    \( \
+      -iname "*.o" -o \
+      -iname "*.c" -o \
+      -iname "*.so" -o \
+      -iname "*.time" -o \
+      -iname "gem.build_complete" -o \
+      -iname "Makefile" \
+    \) \
+    -delete
+
+  find "${pkgdir}/${_gemdir}/extensions/" \
+    -type f \
+    \( \
+      -iname "mkmf.log" -o \
+      -iname "gem_make.out" \
+    \) \
+    -delete
 
   install -Dm 644 CHANGES.md README.md --target-directory "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
