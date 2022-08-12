@@ -5,7 +5,7 @@ pkgbase=endpoint-verification
 pkgname=("endpoint-verification" "endpoint-verification-chrome")
 _pkgver="2022.06.14.c454816986-00"
 pkgver="$(tr '-' '_' <<< $_pkgver)"
-pkgrel=4
+pkgrel=5
 pkgdesc="Endpoint Verification Helper"
 arch=(x86_64)
 url="https://chrome.google.com/webstore/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg"
@@ -21,7 +21,7 @@ prepare() {
 	tar -xf data.tar.gz
 	mv etc/init.d/endpoint-verification opt/google/endpoint-verification/bin
 	rmdir etc/init.d
-	patch --directory="$srcdir" --forward --strip=1 --input="${srcdir}/opera.patch"
+	patch --directory="$srcdir" --forward --strip=0 --input="${srcdir}/opera.patch"
 }
 
 package_endpoint-verification() {
