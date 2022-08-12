@@ -1,0 +1,14 @@
+pkgbase = brother-hl5250dn-lpr-bin
+	pkgdesc = LPR printer driver for Brother HL-5250DN
+	pkgver = 2.0.1_1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=hl5250dn_all
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	optdepends = psutils: PostScript utilities
+	source = https://download.brother.com/welcome/dlf005984/brhl5250dnlpr-2.0.1-1.i386.deb
+	md5sums = acd146a5198f58b8e404d529ae4abe61
+
+pkgname = brother-hl5250dn-lpr-bin

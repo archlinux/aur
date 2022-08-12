@@ -1,0 +1,47 @@
+* Setting up Brother HL-5250DN
+
+You need two AUR packages, installed in same order
+- brother-hl5250dn-lpr
+- brother-hl5250dn-cups-ppd
+
+
+
+`git clone` both of them, then run `makepkg` followed by `makepkg --install` for each
+
+`sudo systemctl restart cups`
+[xx@yy ~]$ lpinfo -v
+file cups-pdf:/
+file cups-brf:/
+network beh
+network http
+network ipp
+network https
+direct hp
+network ipps
+network socket
+network lpd
+network smb
+direct hpfax
+network dnssd://Brother%20HL-5250DN%20series._ipp._tcp.local/
+network socket://192.168.X.YY
+
+[xx@yy ~]$ lpadmin -p "Brother_HL5250DN" -v dnssd://Brother%20HL-5250DN%20series._ipp._tcp.local/
+(or use Add printer at http://localhost:631/admin/)
+
+
+[xx@yy ~]$ lpadmin -p "Brother_HL5250DN" -o pdftops-renderer-default=gs
+Above command removes following complains in /var/log/cups/error_log
+  [Job 1] Grayscale/monochrome printing requested for this job but Poppler is not able to convert to grayscale/monochrome PostScript.
+  [Job 1] Use \"pdftops-renderer\" option (see cups-filters README file) to use Ghostscript or MuPDF for the PDF -> PostScript conversion.
+
+Now open "Print settings" and
+- Right-click your Brother_HL5250DN and 'Set As Default' (if you wish)
+- Double-click it to open its settings. In Policies tab mark checkboxes 'Enabled' and 'Accepting jobs' 
+(otherwise log file will contain  "Returning IPP server-error-not-accepting-jobs for Print-Job (ipp://localhost:631/printers/Brother_HL5250DN) from localhost")
+
+You can now try to print (say something via browser).
+I was asked for '.ppd' file and selected /etc/cups/ppd/Brother_HL5250DN.ppd
+(Not sure for effects of selecting copy or use-in-place option, but selected 'copy')
+
+You should be able to get your first print now.
+
