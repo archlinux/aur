@@ -2,7 +2,7 @@
 pkgbase=python-ablog
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.10.28
+pkgver=0.10.29
 pkgrel=1
 pkgdesc=" ABlog for blogging with Sphinx"
 arch=('any')
@@ -24,7 +24,7 @@ checkdepends=('python-pytest>=6.0.0')
 #'python-sphinx' 'python-feedgen')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #source=("https://github.com/sunpy/ablog/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('8f35ea15f7ba1a89df53e36ea82bb5aa')
+md5sums=('d482fa79ded82904c03a2fbb5746f546')
 
 get_pyver() {
     python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
