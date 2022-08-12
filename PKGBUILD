@@ -18,7 +18,7 @@ _hostver=7.0.0-preview.7.22375.6
 _dotnetruntimever=7.0.0-preview.7.22375.6
 _aspnetruntimever=7.0.0-preview.7.22376.6
 _sdkver=7.0.100-preview.7.22377.5
-pkgrel=1
+pkgrel=2
 arch=(armv7h aarch64 x86_64)
 url=https://www.microsoft.com/net/core
 license=(MIT)
@@ -43,7 +43,7 @@ package_dotnet-host-preview-bin() {
   depends=(glibc)
   provides=(dotnet-host dotnet-host=${_hostver%-*})
   conflicts=(dotnet-host)
-  replaces=(dotnet-host-preview-bin)
+  replaces=(dotnet-host-preview)
 
   install -dm 755 "${pkgdir}"/usr/{bin,lib,share/{dotnet,licenses/dotnet-host-preview-bin}}
   cp -dr --no-preserve='ownership' dotnet host "${pkgdir}"/usr/share/dotnet/
@@ -73,7 +73,7 @@ package_dotnet-runtime-preview-bin() {
               'msquic>=2.0.0: HTTP/3 support with System.Net.Quic')
   provides=(dotnet-runtime=${_dotnetruntimever%-*} dotnet-runtime-7.0)
   conflicts=(dotnet-runtime=${_dotnetruntimever%-*})
-  replaces=(dotnet-runtime-preview-bin)
+  replaces=(dotnet-runtime-preview)
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.NETCore.App "${pkgdir}"/usr/share/dotnet/shared/
@@ -85,7 +85,7 @@ package_aspnet-runtime-preview-bin() {
   depends=(dotnet-runtime-preview-bin)
   provides=(aspnet-runtime=${_aspnetruntimever%-*} aspnet-runtime-7.0)
   conflicts=(aspnet-runtime=${_aspnetruntimever%-*})
-  replaces=(aspnet-runtime-preview-bin)
+  replaces=(aspnet-runtime-preview)
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.AspNetCore.App "${pkgdir}"/usr/share/dotnet/shared/
@@ -103,7 +103,7 @@ package_dotnet-sdk-preview-bin() {
   optdepends=('aspnet-targeting-pack-preview-bin: Build ASP.NET Core applications')
   provides=(dotnet-sdk=${_sdkver%-*} dotnet-sdk-7.0)
   conflicts=(dotnet-sdk=${_sdkver%-*})
-  replaces=(dotnet-sdk-preview-bin)
+  replaces=(dotnet-sdk-preview)
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
   cp -dr --no-preserve='ownership' sdk sdk-manifests templates "${pkgdir}"/usr/share/dotnet/
@@ -114,7 +114,7 @@ package_dotnet-sdk-preview-bin() {
 #   pkgdesc='The .NET Standard targeting pack (preview, binary)'
 #   provides=(netstandard-targeting-pack-2.1)
 #   conflicts=(netstandard-targeting-pack-2.1)
-#   replaces=(netstandard-targeting-pack-preview-bin)
+#   replaces=(netstandard-targeting-pack-preview)
 
 #   install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
 #   cp -dr --no-preserve='ownership' packs/NETStandard.Library.Ref "${pkgdir}"/usr/share/dotnet/packs/
@@ -126,7 +126,7 @@ package_dotnet-targeting-pack-preview-bin() {
   depends=(netstandard-targeting-pack-2.1)
   provides=(dotnet-targeting-pack=${_dotnetruntimever%-*} dotnet-targeting-pack-7.0)
   conflicts=(dotnet-targeting-pack=${_dotnetruntimever%-*})
-  replaces=(dotnet-targeting-pack-preview-bin)
+  replaces=(dotnet-targeting-pack-preview)
 
   if [ $CARCH = 'x86_64' ]; then msarch=x64;
   elif [ $CARCH = 'aarch64' ]; then msarch=arm64;
@@ -142,7 +142,7 @@ package_aspnet-targeting-pack-preview-bin() {
   depends=(dotnet-targeting-pack-preview-bin)
   provides=(aspnet-targeting-pack=${_aspnetruntimever%-*} aspnet-targeting-pack-7.0)
   conflicts=(aspnet-targeting-pack=${_aspnetruntimever%-*})
-  replaces=(aspnet-targeting-pack-preview-bin)
+  replaces=(aspnet-targeting-pack-preview)
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
   cp -dr --no-preserve='ownership' packs/Microsoft.AspNetCore.App.Ref "${pkgdir}"/usr/share/dotnet/packs/

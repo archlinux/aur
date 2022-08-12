@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-preview-bin
 	pkgver = 7.0.0.sdk100+preview.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/net/core
 	arch = armv7h
 	arch = aarch64
@@ -28,7 +28,7 @@ pkgname = dotnet-host-preview-bin
 	provides = dotnet-host
 	provides = dotnet-host=7.0.0
 	conflicts = dotnet-host
-	replaces = dotnet-host-preview-bin
+	replaces = dotnet-host-preview
 
 pkgname = aspnet-runtime-preview-bin
 	pkgdesc = The ASP.NET Core runtime (preview, binary)
@@ -36,7 +36,7 @@ pkgname = aspnet-runtime-preview-bin
 	provides = aspnet-runtime=7.0.0
 	provides = aspnet-runtime-7.0
 	conflicts = aspnet-runtime=7.0.0
-	replaces = aspnet-runtime-preview-bin
+	replaces = aspnet-runtime-preview
 
 pkgname = dotnet-runtime-preview-bin
 	pkgdesc = The .NET Core runtime (preview, binary)
@@ -53,7 +53,7 @@ pkgname = dotnet-runtime-preview-bin
 	provides = dotnet-runtime=7.0.0
 	provides = dotnet-runtime-7.0
 	conflicts = dotnet-runtime=7.0.0
-	replaces = dotnet-runtime-preview-bin
+	replaces = dotnet-runtime-preview
 
 pkgname = dotnet-sdk-preview-bin
 	pkgdesc = The .NET Core SDK (preview, binary)
@@ -65,7 +65,7 @@ pkgname = dotnet-sdk-preview-bin
 	provides = dotnet-sdk=7.0.100
 	provides = dotnet-sdk-7.0
 	conflicts = dotnet-sdk=7.0.100
-	replaces = dotnet-sdk-preview-bin
+	replaces = dotnet-sdk-preview
 
 pkgname = dotnet-targeting-pack-preview-bin
 	pkgdesc = The .NET Core targeting pack (preview, binary)
@@ -73,7 +73,7 @@ pkgname = dotnet-targeting-pack-preview-bin
 	provides = dotnet-targeting-pack=7.0.0
 	provides = dotnet-targeting-pack-7.0
 	conflicts = dotnet-targeting-pack=7.0.0
-	replaces = dotnet-targeting-pack-preview-bin
+	replaces = dotnet-targeting-pack-preview
 
 pkgname = aspnet-targeting-pack-preview-bin
 	pkgdesc = The ASP.NET Core targeting pack (preview, binary)
@@ -81,4 +81,4 @@ pkgname = aspnet-targeting-pack-preview-bin
 	provides = aspnet-targeting-pack=7.0.0
 	provides = aspnet-targeting-pack-7.0
 	conflicts = aspnet-targeting-pack=7.0.0
-	replaces = aspnet-targeting-pack-preview-bin
+	replaces = aspnet-targeting-pack-preview
