@@ -1,24 +1,25 @@
 pkgbase = aws-cli-v2
 	pkgdesc = Universal Command Line Interface for Amazon Web Services (version 2)
-	pkgver = 2.0.60
+	pkgver = 2.7.22
 	pkgrel = 1
 	url = https://github.com/aws/aws-cli
 	arch = x86_64
 	license = Apache
-	depends = python-botocore-v2-git
+	makedepends = python-setuptools
+	depends = python-awscrt
 	depends = python-colorama
 	depends = python-cryptography
 	depends = python-distro
 	depends = python-docutils
+	depends = python-jmespath
 	depends = python-prompt_toolkit
 	depends = python-ruamel-yaml
-	depends = python-s3transfer
+	depends = python-urllib3
 	provides = aws-cli
 	conflicts = aws-cli
 	conflicts = aws-cli-git
 	conflicts = aws-cli-v2-bin
-	source = aws-cli-v2-2.0.60.tar.gz::https://github.com/aws/aws-cli/archive/2.0.60.tar.gz
-	sha256sums = 4b50e804a19b7b029b9fc882f7c9355db59ef64fa9a9a371e094be0ce6c8b98e
+	source = aws-cli-v2-2.7.22.tar.gz::https://github.com/aws/aws-cli/archive/2.7.22.tar.gz
+	sha256sums = 85c5a926daa0ab0ad73a7b97b670e092a0bcdf2749d383291076fd04e1eca502
 
 pkgname = aws-cli-v2
-
