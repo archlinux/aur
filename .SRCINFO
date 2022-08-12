@@ -1,13 +1,13 @@
 pkgbase = python-versioneer
 	pkgdesc = Easy VCS-based management of project version strings
-	pkgver = 0.22
+	pkgver = 0.23
 	pkgrel = 1
 	url = https://github.com/python-versioneer/python-versioneer
 	arch = any
-	license = custom:Public Domain
+	license = custom:CC0
 	depends = python-setuptools
 	optdepends = python-cx-freeze: Executable generation support
-	source = https://files.pythonhosted.org/packages/source/v/versioneer/versioneer-0.22.tar.gz
-	sha256sums = 9f0e9a2cb5ef521cbfd104d43a208dd9124dfb4accfa72d694e0d0430a0142bc
+	source = https://files.pythonhosted.org/packages/source/v/versioneer/versioneer-0.23.tar.gz
+	sha256sums = d6b6d68c299653736a29f199309ee4306e97a0f0d0a78ecb71e21c90ce1322bb
 
 pkgname = python-versioneer
