@@ -1,4 +1,3 @@
-# Maintainer: Samuel Tardieu <sam@rfc1149.net>
 pkgname=geneweb-git
 pkgver=20170321
 pkgrel=2
