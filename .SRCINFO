@@ -1,16 +1,18 @@
 pkgbase = python-scikit-optimize
 	pkgdesc = Sequential model-based optimization toolbox.
-	pkgver = 0.8.1
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://scikit-optimize.github.io
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	depends = python-scikit-learn
-	depends = python-matplotlib
-	depends = python-pyaml
-	source = https://github.com/scikit-optimize/scikit-optimize/archive/v0.8.1.tar.gz
-	sha256sums = 0573037eca0b609be5ac190d4de7d80d79f2531743fab34a8040a9f78034c927
+	depends = python>=3.6
+	depends = python-numpy>=1.13.3
+	depends = python-scipy>=0.19.1
+	depends = python-joblib>=0.11
+	depends = python-scikit-learn>=0.20
+	depends = python-matplotlib>=2.0.0
+	source = https://github.com/scikit-optimize/scikit-optimize/archive/v0.9.0.tar.gz
+	sha256sums = b5602b22c7aacabe3afd36619f662d1f287f2e3fe9a5aa19bbc83f851b30b7bf
 
 pkgname = python-scikit-optimize
-
