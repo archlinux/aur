@@ -1,7 +1,7 @@
 # Contributor: Andrey Mikhaylenko <neithere at gmail dot com>
 # Contributor: Eugene Dvoretsky <radioxoma at gmail dot com>
 pkgname=python-gpxpy
-pkgver=1.4.2
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Python GPX (GPS eXchange format) parser"
 arch=(any)
@@ -16,7 +16,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://github.com/tkrajina/gpxpy/archive/v${pkgver}.tar.gz")
-sha256sums=('f68bfb3d8d3e8d012c485f22bcacc8abf9ad0a0d5e951ab1c2eaf7308d9e8caa')
+sha256sums=('4fd0afe9f8858d340a1481a7ef05de0be498ce19c1e1535407b58b7f1f02d456')
 
 check() {
 	cd "${srcdir}/gpxpy-${pkgver}"
