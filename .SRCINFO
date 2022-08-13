@@ -1,7 +1,7 @@
 pkgbase = rustdesk-server-bin
 	pkgdesc = RustDesk Server Program
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rustdesk/rustdesk-server
 	install = rustdesk-server.install
 	arch = x86_64

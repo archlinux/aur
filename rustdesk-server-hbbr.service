@@ -6,7 +6,7 @@ After=systemd-user-sessions.service
 [Service]
 Type=simple
 WorkingDirectory=/opt/rustdesk-server/data
-ExecStart=/opt/rustdesk-server/hbbr -m demo
+ExecStart=/opt/rustdesk-server/hbbr
 KillMode=mixed
 TimeoutStopSec=30
 User=rustdeskserver
