@@ -1,15 +1,18 @@
 pkgbase = mingw-w64-xcb-proto
 	pkgdesc = XML-XCB protocol descriptions (mingw-w64)
-	pkgver = 1.11.r95.g6b832a0
+	pkgver = 1.15.2
 	pkgrel = 1
-	url = http://xcb.freedesktop.org/
+	url = https://xcb.freedesktop.org/
 	arch = any
 	license = custom
 	makedepends = python
 	makedepends = mingw-w64-libxml2
-	makedepends = git
-	source = xcb-proto::git://git.freedesktop.org/git/xcb/proto
-	sha256sums = SKIP
+	source = https://xorg.freedesktop.org/archive/individual/proto/xcb-proto-1.15.2.tar.xz
+	source = https://xorg.freedesktop.org/archive/individual/proto/xcb-proto-1.15.2.tar.xz.sig
+	source = 0001_xcb-proto_revert_datarootdir.patch::https://gitlab.freedesktop.org/xorg/proto/xcbproto/-/commit/d849b9534a52b0199f26c1dd30ac11aba12db9dc.patch
+	validpgpkeys = 3BB639E56F861FA2E86505690FDD682D974CA72A
+	sha512sums = 9d0b2f0a4dbbf2d64e32ff4658d1663e13d7e5f1bffc1e8d45be7b9dd5bab46e29fc1c2f6e66a7a569e374ba6756faf3c39b0b5e5560df6d7f8b68beec97659d
+	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = mingw-w64-xcb-proto
-
