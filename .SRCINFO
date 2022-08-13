@@ -1,0 +1,27 @@
+pkgbase = wingpanel-monitor-git
+	pkgdesc = Resources indicator for Wingpanel
+	pkgver = 0.1.0.r25.gcac8a9e
+	pkgrel = 1
+	url = https://github.com/PlugaruT/wingpanel-monitor
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = git
+	makedepends = granite
+	makedepends = intltool
+	makedepends = meson
+	makedepends = vala
+	makedepends = wingpanel
+	depends = libgweather
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libgtop
+	depends = libnotify
+	depends = libwingpanel-2.0.so
+	provides = wingpanel-monitor
+	conflicts = wingpanel-monitor
+	source = git+https://github.com/PlugaruT/wingpanel-monitor.git
+	sha256sums = SKIP
+
+pkgname = wingpanel-monitor-git
