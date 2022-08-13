@@ -1,0 +1,16 @@
+pkgbase = waked-git
+	pkgdesc = Daemon to let other applications wake up the system
+	pkgver = v0.1.1.r0.g05729fb
+	pkgrel = 1
+	url = https://gitlab.com/seath1/waked
+	arch = aarch64
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = sdbus-cpp
+	provides = waked
+	source = git+https://gitlab.com/seath1/waked.git
+	sha256sums = SKIP
+
+pkgname = waked-git
