@@ -2,7 +2,7 @@
 
 pkgname=python-benedict
 pkgver=0.25.2
-pkgrel=1
+pkgrel=2
 pkgdesc="dict subclass with keylist/keypath support, I/O shortcuts (base64, csv, json, pickle, plist, query-string, toml, xml, yaml) and many utilities."
 arch=('any')
 url="https://github.com/fabiocaccamo/python-benedict"
@@ -23,6 +23,7 @@ depends=(
 )
 makedepends=(
 	'python-build'
+	'python-installer'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('30f30fb1883bfcd0ab6e70b8a4241a4a32a2db08bf0c6592d14ea9e8d3d944f1')
