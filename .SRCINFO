@@ -1,16 +1,16 @@
 pkgbase = ruby-rake-12
 	pkgdesc = Make-like build tool implemented in Ruby
 	pkgver = 12.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ruby.github.io/rake/
 	arch = any
 	license = MIT
 	depends = ruby
-	provides = rake
+	provides = ruby-rake=12.3.3
+	conflicts = ruby-rake
 	noextract = rake-12.3.3.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/rake-12.3.3.gem
 	sha1sums = f585a1115325f3a64c2fc719b6f6cd7b33a4ab59
 
 pkgname = ruby-rake-12
-

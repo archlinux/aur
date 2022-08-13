@@ -4,9 +4,10 @@
 _gemname=rake
 pkgname=ruby-$_gemname-12
 pkgver=12.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Make-like build tool implemented in Ruby'
-provides=(rake)
+provides=("ruby-rake=$pkgver")
+conflicts=(ruby-rake)
 arch=(any)
 url='https://ruby.github.io/rake/'
 license=(MIT)
