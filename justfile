@@ -10,6 +10,25 @@ Chroot        := env_var_or_default("USE_CHROOT", "1")
 _default:
   @just --list --list-prefix '  > '
 
+# Create and update the base chroot
+chroot: (_update_chroot ChrootBase)
+
+# Initialize the base chroot for building packages
+mkchroot: (_mkchroot ChrootBase)
+
+# Initialize the chroot
+@_mkchroot $cbase:
+  {{ if path_exists(cbase) == "true" { ":" } else { "$Say Initializing chroot @$cbase" } }}
+  {{ if path_exists(cbase) == "true" { ":" } else { "mkarchroot $cbase base-devel" } }}
+
+# Update dependencies in the base chroot
+@_update_chroot $cbase: (_mkchroot cbase)
+  $Say Updating chroot packages @$cbase
+  arch-nspawn $cbase pacman -Syu
+
+# ~~~ Global shell variables ~~~
+export Say              := "echo " + C_RED + "==> " + C_RESET + BuildId
+
 # Nicer name for empty strings
 None := ""
 
