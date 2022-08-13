@@ -1,0 +1,12 @@
+[Unit]
+Description=Prometheus zfsprom exporter
+Documentation=https://github.com/matusnovak/prometheus-zfs
+After=zfs.target
+
+[Service]
+Restart=on-failure
+Environment="ZPOOL_SCRIPTS_AS_ROOT=1"
+ExecStart=/usr/bin/prometheus-zfsprom-exporter
+
+[Install]
+WantedBy=multi-user.target
