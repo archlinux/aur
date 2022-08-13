@@ -12,6 +12,7 @@ pkgbase = natron-git
 	depends = openfx-misc-git
 	depends = natron-compositor-git
 	optdepends = natron-plugins-git: Plugins made by the Natron community
+	provides = natron
 	conflicts = natron
 
 pkgname = natron-git
