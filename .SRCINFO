@@ -1,0 +1,19 @@
+pkgbase = openssl3-git
+	pkgdesc = Toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols: install openssl-3* libraries without openssl-1* conflicts
+	pkgver = 3.0.5.r1329.gd272ef5372
+	pkgrel = 1
+	url = https://www.openssl.org/
+	arch = i686
+	arch = x86_64
+	license = apache
+	makedepends = git
+	depends = glibc
+	depends = perl
+	optdepends = ca-certificates
+	options = staticlibs
+	source = git+https://github.com/openssl/openssl.git
+	source = ca-dir.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/openssl/trunk/ca-dir.patch
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = openssl3-git
