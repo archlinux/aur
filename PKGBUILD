@@ -2,8 +2,8 @@
 # Contributor: Guillaume Horel <guillaume.horel@gmail.com>
 _base=streamz
 pkgname=python-${_base}
-pkgver=0.6.3
-pkgrel=3
+pkgver=0.6.4
+pkgrel=1
 pkgdesc="Real-time stream processing for python"
 arch=(any)
 url="https://github.com/${pkgname}/${_base}"
@@ -12,8 +12,8 @@ makedepends=(python-setuptools)
 checkdepends=(python-pytest python-pandas python-distributed python-flaky python-networkx python-graphviz) #python-dask
 optdepends=('python-pandas: for supports streams of Pandas dataframes or Pandas series')                   #python-cudf'
 license=('custom:BSD-3-clause')
-source=(${url}/archive/${pkgver}.tar.gz)
-sha512sums=('f52770bb6f6139051c628f6eb67fdc2ab8f3657a48d14cdedd68afdf0092f2d372338028e6a7a5e9292ba6bdb29888c5d0d6f01b6c38b7cd95f886fc048d5651')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
+sha512sums=('830c9dfadccce485ab0ee4e669a0a183648f826922fe5c3a7f647b6beb1ca853858e50327a629bc2d8942904fbad6fd4357639edc8a4bca4f8af94ec20263060')
 
 build() {
   cd ${_base}-${pkgver}
