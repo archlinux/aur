@@ -14,7 +14,7 @@ provides=('pkghist')
 conflicts=('pkghist-bin')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/herzrasen/pkghist/archive/v${pkgver}.tar.gz")
-sha1sums=('8753dcc85c2dd549ae1e3186d407f948a6590eba')
+sha1sums=('d095c1f6ae5afd67fb44ac76b335385379f66479')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
