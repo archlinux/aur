@@ -12,7 +12,5 @@ pkgbase = natron
 	depends = openfx-misc
 	depends = natron-compositor
 	optdepends = natron-plugins-git: Plugins made by the Natron community
-	conflicts = natron-git
 
 pkgname = natron
-

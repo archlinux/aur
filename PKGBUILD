@@ -8,6 +8,5 @@ pkgdesc="Open source compositing software (metapackage with the program and stan
 arch=('x86_64')
 url="https://natrongithub.github.io/"
 license=('GPL')
-conflicts=("${pkgname}-git")
 depends=('openfx-arena' 'openfx-gmic' 'openfx-io' 'openfx-misc' 'natron-compositor')
 optdepends=('natron-plugins-git: Plugins made by the Natron community')
