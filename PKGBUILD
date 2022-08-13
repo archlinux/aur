@@ -2,7 +2,7 @@
 
 pkgname=streamrecorder
 _pkgname=Stream-Recorder
-pkgver=1.36
+pkgver=1.45
 pkgrel=1
 pkgdesc="Simple stream viewer and recorder"
 url="https://github.com/sc44/Stream-Recorder"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('python' 'tk' 'ffmpeg') 
 optdepends=('mpv' 'smplayer' 'vlc' 'celluloid' 'mplayer' 'gnome-mplayer')
 source=("https://github.com/sc44/Stream-Recorder/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('e3d5642c40245bb2c88c8800a1400ed682c4d79c58b66f4027c995d8a8bbc262')
+sha256sums=('3dea0913eec51825574c0f141702a4342b50a3c8a7fa1f6f50f4a888949af1e2')
 package() {
   cd "$srcdir"/"$_pkgname"-"$pkgver"
   install -Dm 755 srecorder.py "$pkgdir/usr/bin/srecorder.py"
