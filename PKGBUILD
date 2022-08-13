@@ -2,10 +2,12 @@
 
 pkgname=todesk-bin
 _pkgname=${pkgname%-bin}
-pkgver=4.1.0
-pkgrel=2
+_binaryname=ToDesk
+pkgver=4.3.0.0
+pkgrel=1
 pkgdesc="Remote control and team work"
-arch=('x86_64' 'aarch64' 'armv7h')
+# arch=('x86_64' 'aarch64' 'armv7h')
+arch=('x86_64')
 url="https://www.todesk.com/"
 license=('custom')
 depends=('gtk3')
@@ -22,13 +24,11 @@ conflicts=("${_pkgname}")
 options=('!strip' 'emptydirs')
 install="${_pkgname}.install"
 source=('license.html')
-source_x86_64=("https://dl.todesk.com/linux/${_pkgname}_${pkgver}_amd64.deb")
-source_aarch64=("https://dl.todesk.com/linux/${_pkgname}_${pkgver}_aarch64.deb")
-source_armv7h=("https://dl.todesk.com/linux/${_pkgname}_${pkgver}_armv7l.deb")
+source_x86_64=("https://dl.todesk.com/linux/${_pkgname}-v${pkgver}-amd64.deb")
+source_aarch64=("https://dl.todesk.com/linux/${_pkgname}-v${pkgver}-aarch64.deb")
+source_armv7h=("https://dl.todesk.com/linux/${_pkgname}-v${pkgver}-armv7l.deb")
 sha256sums=('402b2db2586c723af990beb0f96249b9680880f4f30e58a7cbe7cbd20b979a0b')
-sha256sums_x86_64=('5f680225a1366439b7bec8e39e5c88291f68ddee2a311921fd874b036a6a3057')
-sha256sums_aarch64=('4497ed0ceec012273fe97e187e9786f55ddfbbe22889de593dc1a5f133dde151')
-sha256sums_armv7h=('0a467cb8f8f636ea9d8c6fa1ef3a79bfee4a36fe3bed2b01b42e2006912e2a57')
+sha256sums_x86_64=('9da71f8790aa75b796c00d9b75ff42313f4c384c4e09115f88ab901b65629940')
 
 _install() {
   find ${@: 2} -type f -exec install -Dm$1 {} ${pkgdir}/{} \;
@@ -46,9 +46,13 @@ package() {
   # binary wrapper
   install -Dm755 usr/local/bin/${_pkgname} -t ${pkgdir}/usr/bin/
 
+  # binary & scripts
+  install -Dm755 opt/${_pkgname}/bin/${_binaryname}{,_Service,_Session} -t ${pkgdir}/opt/${_pkgname}/bin
+
   # lib
   # find opt/${_pkgname}/lib     -type f -exec install -Dm644 {} ${pkgdir}/{} \;
-  _install 644 opt/${_pkgname}/lib
+  # _install 644 opt/${_pkgname}/bin
+  cp -a opt/${_pkgname}/bin/*.so* ${pkgdir}/opt/${_pkgname}/bin/
 
   # icon
   # find opt/${_pkgname}/res -maxdepth 1 -type f -exec install -Dm644 {} ${pkgdir}/{} \;
@@ -57,9 +61,6 @@ package() {
   # config 
   # empty dir
   install -dm755 ${pkgdir}/opt/${_pkgname}/config
-
-  # binary & scripts
-  install -Dm755 opt/${_pkgname}/bin/${_pkgname}{,c,d} -t ${pkgdir}/opt/${_pkgname}/bin
 
   # desktop entry 
   install -Dm644 usr/share/applications/${_pkgname}.desktop -t ${pkgdir}/usr/share/applications
