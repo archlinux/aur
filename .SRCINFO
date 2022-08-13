@@ -1,11 +1,10 @@
 pkgbase = cebac
 	pkgdesc = Cloud storage backup helper
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/Daerandin/cebac
 	arch = x86_64
 	license = GPL3
-	depends = glibc
 	depends = libarchive
 	depends = gpgme
 	depends = python
