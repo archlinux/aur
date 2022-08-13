@@ -2,7 +2,7 @@
 
 pkgname=coolero
 _app_id="org.$pkgname.Coolero"
-pkgver=0.12.6
+pkgver=0.12.7
 pkgrel=1
 pkgdesc="A program to monitor and control your cooling devices"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('nvidia-utils: NVIDIA GPU support')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("https://gitlab.com/coolero/coolero/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('a07cf7b52c94daec4a85fa937ab608cdb160b242899e3ae74d9c7b5d93718e2e')
+sha256sums=('1b7a5be895c264510637c504e7384075b1a770d1cb4c4d5687540e1e3f257849')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -27,8 +27,7 @@ build() {
 check() {
   cd "$pkgname-$pkgver"
   desktop-file-validate "metadata/$_app_id.desktop"
-  # issue with appstream-util - validation disabled temporarily
-  #appstream-util validate-relax "metadata/$_app_id.metainfo.xml"
+  appstream-util validate-relax "metadata/$_app_id.metainfo.xml"
   python -m coolero -v
 }
 
