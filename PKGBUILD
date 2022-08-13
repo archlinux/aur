@@ -3,7 +3,7 @@
 
 pkgname=autenticacao-gov-pt-bin
 pkgver=3.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Portuguese Citizen Card Application (Portugal eID) - version with pre compiled binaries"
 arch=('x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -20,7 +20,8 @@ depends=('qt5-base'
          'poppler-qt5'
 				 'libxerces-c-3.1'
 				 'libcurl-compat'
-         'xml-security-c')
+         'xml-security-c'
+				 'openssl3-bin')
 makedepends=('zstd' 'tar')
 optdepends=('plugin-autenticacao-gov-pt: Necessário para autenticações online'
 			'autenticacao-gov-pt-pki: PKI que confirma a validade dos certificados dos CC'
@@ -41,6 +42,7 @@ prepare() {
 
 package() {
 	mkdir -p "${pkgdir}/usr/local/"
+	mkdir -p "${pkgdir}/usr/local/lib/"
 	mkdir -p "${pkgdir}/usr/share/"
 	mkdir -p "${pkgdir}/usr/lib"
 	
@@ -48,6 +50,8 @@ package() {
 	mv "${srcdir}"/usr/local/{share,bin} "${pkgdir}/usr/local/"
 	mv "${srcdir}"/usr/local/* "${pkgdir}/usr/"
 	mv "${srcdir}"/usr/share/* "${pkgdir}/usr/share/"
+  # Fix libssl and libcrypto version 3 required upstream
+	sed -i 's/Exec=env QT_QPA_PLATFORMTHEME=gtk3 eidguiV2/Exec=LD_PRELOAD="\/usr\/local\/lib\/libcrypto.so.3 \/usr\/local\/lib\/libssl.so.3" env QT_QPA_PLATFORMTHEME=gtk3 eidguiV2/' "${pkgdir}"/usr/share/applications/pteid-mw-gui.desktop
   # Fix libzip.so.4 depedency: for now just point to the installed version of libzip
 	cd "${pkgdir}/usr/lib" 
 	ln -s libzip.so libzip.so.4
