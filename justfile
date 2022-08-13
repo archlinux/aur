@@ -21,6 +21,36 @@ chroot: (_update_chroot ChrootBase)
 # Initialize the base chroot for building packages
 mkchroot: (_mkchroot ChrootBase)
 
+# Install required dependencies
+deps:
+  pacman -S base-devel sudo devtools ripgrep --needed --noconfirm
+
+# Clean one or more of: chroot|deps|artifacts|logs
+clean +what="chroot":
+  #!/usr/bin/env bash
+  set -euo pipefail
+
+  $Say "cleaning directive(s): {{what}}"
+  for item in {{what}}; do
+    case $item in
+      chroot|c)
+        (set -x; rm -rf {{ChrootActive}})
+      ;;
+      deps|d)
+        (set -x; pacman -Rsc devtools --needed --noconfirm)
+      ;;
+      artifacts|a)
+        (set -x; rm -vf *tar.*)
+      ;;
+      logs|l)
+        (set -x; rm -vf *.log)
+      ;;
+      *)
+        $Say unknown clean directive $item, ignoring
+      ;;
+    esac
+  done
+
 # Initialize the chroot
 @_mkchroot $cbase:
   {{ if path_exists(cbase) == "true" { ":" } else { "$Say Initializing chroot @$cbase" } }}
