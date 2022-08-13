@@ -6,7 +6,7 @@
 
 pkgname=darksnow
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="simple GTK2 GUI for darkice"
 arch=(i686 x86_64)
 url="http://darksnow.radiolivre.org/index.en.html"
