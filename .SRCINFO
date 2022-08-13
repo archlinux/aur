@@ -1,6 +1,6 @@
 pkgbase = wasm4-bin
 	pkgdesc = Build retro games using WebAssembly for a fantasy console
-	pkgver = 2.5.1
+	pkgver = 2.5.2
 	pkgrel = 1
 	url = https://github.com/aduros/wasm4
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = wasm4-bin
 	provides = wasm4
 	conflicts = wasm4
 	options = !strip
-	source = wasm4-2.5.1.zip::https://github.com/aduros/wasm4/releases/download/v2.5.1/w4-linux.zip
+	source = wasm4-2.5.2.zip::https://github.com/aduros/wasm4/releases/download/v2.5.2/w4-linux.zip
 	source = https://raw.githubusercontent.com/aduros/wasm4/main/LICENSE.txt
-	sha256sums = 677efe4d8831553a9be7bb4ff9f0e360966519f457b144b6e6f49161bdc93e00
+	sha256sums = bbed1b91e77ea0687a0a1bdf9237a8d8c317380036de06d65ef6100a0cd0d3c3
 	sha256sums = SKIP
 
 pkgname = wasm4-bin
