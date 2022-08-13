@@ -1,7 +1,7 @@
 # Maintainer: Barış İnandıoğlu <68742481+baris-inandi@users.noreply.github.com>
 
 pkgname=fe
-pkgver=1.1.11
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="AUR helper with a familiar subcommand system"
 arch=(x86_64)
@@ -29,4 +29,4 @@ package() {
   install -Dm644 conf/paru.conf "$pkgdir"/etc/feparu.conf
   install -Dm755 "$pkgname-$pkgver-$pkgrel" "$pkgdir"/usr/bin/$pkgname
 }
-sha256sums=('d07df360bda4d94b602b2c85e34558ca2314ffd8b68698fd6d0772495b9f3735')
+sha256sums=('e647bf58b957a49f6cfb2c52e1c86bbee69d6155a9eca4fee61e2b1627549e7d')
