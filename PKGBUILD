@@ -1,7 +1,7 @@
 # Maintainer: Jonas Leder <info@jonasled.de>
 
 pkgname=repetier-server
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='repetier server component'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
