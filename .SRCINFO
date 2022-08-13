@@ -1,6 +1,6 @@
 pkgbase = gofile-downloader-git
 	pkgdesc = Download files from https://gofile.io
-	pkgver = r16.465ef97
+	pkgver = r17.41119d8
 	pkgrel = 1
 	url = https://github.com/ltsdw/gofile-downloader
 	arch = any

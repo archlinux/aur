@@ -1,7 +1,7 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=gofile-downloader-git
-pkgver=r16.465ef97
+pkgver=r17.41119d8
 pkgrel=1
 pkgdesc='Download files from https://gofile.io'
 arch=(any)
@@ -17,11 +17,6 @@ md5sums=('SKIP')
 pkgver() {
 	cd "${pkgname%-git}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	# Add missing shebang
-	sed -i '1 i #!/usr/bin/env python3' "${pkgname%-git}"/"${pkgname%-git}".py
 }
 
 package() {
