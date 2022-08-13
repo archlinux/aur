@@ -2,8 +2,8 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-zen-e820-patched
-pkgver=5.17.4.zen1
-pkgrel=2
+pkgver=5.18.16.zen1
+pkgrel=1
 pkgdesc='Linux ZEN - patched with e820 PCIe device addresses overlap detection support'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/zen-kernel/zen-kernel/commits/$_srctag"
@@ -28,7 +28,7 @@ validpgpkeys=(
   'C5ADB4F3FEBBCE27A3E54D7D9AE4078033F8024D'  # Steven Barrett <steven@liquorix.net>
 )
 sha256sums=('SKIP'
-            '812250d12684c263c2db878d0d49539cb4f987790d74d42225ae3f51f3e28133'
+            '28b4a6f7655079ff4a9cfe48763fae4c1e26be6956273d832062ceccddf23997'
             'cb338ac3b742ddde14d90e9112bb2caff59afc0d82774b0beba0825ffc9188f4')
 
 export KBUILD_BUILD_HOST=archlinux
