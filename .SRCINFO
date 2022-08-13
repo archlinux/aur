@@ -1,6 +1,6 @@
 pkgbase = yank-note-bin
 	pkgdesc = A Hackable Markdown Note Application for Programmers.
-	pkgver = 3.34.1
+	pkgver = 3.34.2
 	pkgrel = 1
 	url = https://github.com/purocean/yn
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = yank-note-bin
 	depends = pandoc
 	provides = yank-note
 	options = !strip
-	source = yank-note-3.34.1.deb::https://github.com/purocean/yn/releases/download/v3.34.1/Yank-Note-linux-amd64-3.34.1.deb
+	source = yank-note-3.34.2.deb::https://github.com/purocean/yn/releases/download/v3.34.2/Yank-Note-linux-amd64-3.34.2.deb
 	source = yank-note.sh
-	sha256sums = 0988aac4a83b9f763f9521b277795b18ebae8438d64304597940bf2e46fa4e7c
+	sha256sums = 81190e2736a5aa58ef17754bb564ea94385425cffb59c98172b9f017c986806e
 	sha256sums = e12bac7e9f11a03487dea56fb1ac7afb4b2e7eedcc8e7eb1427b2c960cb830de
 
 pkgname = yank-note-bin
