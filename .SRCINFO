@@ -1,7 +1,7 @@
 pkgbase = pandoc-crossref-bin
 	pkgdesc = Pandoc filter for cross-references - executable only
 	pkgver = 0.3.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hackage.haskell.org/package/pandoc-crossref
 	arch = x86_64
 	license = GPL2

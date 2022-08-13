@@ -4,7 +4,7 @@
 
 pkgname=pandoc-crossref-bin
 pkgver=0.3.13.0
-pkgrel=1
+pkgrel=2
 _pandoc_pkgver=2.18
 pkgdesc="Pandoc filter for cross-references - executable only"
 url="https://hackage.haskell.org/package/pandoc-crossref"
