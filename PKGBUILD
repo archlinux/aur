@@ -3,7 +3,7 @@
 # Contributor: Florian Lindner <florian.lindner@xgm.de>
 _base=precice
 pkgname=${_base}-git
-pkgver=2.4.0.r35.g68d8821d
+pkgver=2.5.0.r7.gb8a1fed8
 pkgrel=2
 pkgdesc="A Coupling Library for Partitioned Multi-Physics Simulations on Massively Parallel Systems (git version)"
 arch=(x86_64)
@@ -30,7 +30,7 @@ build() {
     -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_CXX_STANDARD=14 \
+    -DCMAKE_CXX_STANDARD=17 \
     -DPRECICE_MPICommunication=ON \
     -DPRECICE_PETScMapping=ON \
     -DPRECICE_PythonActions=ON \
