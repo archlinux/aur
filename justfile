@@ -10,6 +10,11 @@ Chroot        := env_var_or_default("USE_CHROOT", "1")
 _default:
   @just --list --list-prefix '  > '
 
+# Build the package in a clean chroot
+build:
+  @$Say Building @{{PkgBuild}} via chroot
+  makechrootpkg -c -r {{ChrootPath}} -C -n -l {{PkgVer}}_{{PkgRel}}
+
 # Create and update the base chroot
 chroot: (_update_chroot ChrootBase)
 
