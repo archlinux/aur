@@ -2,7 +2,7 @@
 
 _name=tzdata
 pkgname=python-tzdata
-pkgver=2022.1
+pkgver=2022.2
 pkgrel=1
 pkgdesc='Provider of IANA time zone data'
 arch=('any')
@@ -12,8 +12,8 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-subtests')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('8b536a8ec63dc0751342b3984193a3118f8fca2afe25752bb9b7fffd398552d3')
-b2sums=('b3062514e0ce8a9c3e68cd6b5969292f1a8aafceb37f3bc5518ad37024f08c508e4dad00f477bdaaa2d187fcef7e650cc949af9d273d2d90c3017f4bf3628f0c')
+sha256sums=('21f4f0d7241572efa7f7a4fdabb052e61b55dc48274e6842697ccdf5253e5451')
+b2sums=('5822553a06c3a9f28839e4b07ac10571ad0e122f7dd73f5de889d7a4104465291ab744a604f2d077f75c00538b628b7e325a1ee6efb275b7d9cfa13057b0b59a')
 
 build() {
   cd $_name-$pkgver
@@ -37,5 +37,3 @@ package() {
   ln -s "$site_packages"/$_name-$pkgver.dist-info/LICENSE \
     "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-
-# vim:set ts=2 sw=2 et:
