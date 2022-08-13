@@ -2,7 +2,7 @@
 
 _stablever=2205.0
 _engver=0.0.0.0
-_builddate="20220512"
+_builddate="20220812"
 _debname="O3DE_latest.deb"
 _binname="o3de-nightly"
 
@@ -62,16 +62,9 @@ package() {
         exit 1
     fi
 
-    # Trying to create new project fails if launcher doesn't find clang++-<ver>
-    # Force use of system clang with local symlink in PATH
-    mkdir -p "${pkgdir}"/opt/O3DE/${_engver}/.symbin
-    ln -s $(which clang++) "${pkgdir}"/opt/O3DE/${_engver}/.symbin/clang++-13
-
-    # Script in /usr/bin to run o3de with modified env
+    # Symlink into /usr/bin
     mkdir -p "${pkgdir}/usr/bin"
-    echo '#!/bin/sh' >"${pkgdir}/usr/bin/${_binname}"
-    echo "PATH=\""'$PATH'":/opt/O3DE/${_engver}/.symbin\" /opt/O3DE/${_engver}/bin/Linux/profile/Default/o3de" >>"${pkgdir}/usr/bin/${_binname}"
-    chmod +x "${pkgdir}/usr/bin/${_binname}"
+    ln -s "/opt/O3DE/${_engver}/bin/Linux/profile/Default/o3de" "${pkgdir}/usr/bin/${_binname}"
 
     # Extract .ico and install icons
     icotool -x "${pkgdir}"/opt/O3DE/${_engver}/cmake/Platform/Windows/Packaging/product_icon.ico -o .
