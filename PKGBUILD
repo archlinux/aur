@@ -8,7 +8,7 @@ _binname="o3de"
 
 pkgname=o3de-bin
 pkgver="${_stablever}_${_builddate}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Open 3D Engine - An open-source, real-time 3D development engine'
 arch=('x86_64')
 license=('APACHE' "MIT")
@@ -65,7 +65,10 @@ package() {
     # Trying to create new project fails if launcher doesn't find clang++-<ver>
     # Force use of system clang with local symlink in PATH
     mkdir -p "${pkgdir}"/opt/O3DE/${_engver}/.symbin
+    ln -s $(which clang) "${pkgdir}"/opt/O3DE/${_engver}/.symbin/clang-13
+    ln -s $(which clang) "${pkgdir}"/opt/O3DE/${_engver}/.symbin/clang-14
     ln -s $(which clang++) "${pkgdir}"/opt/O3DE/${_engver}/.symbin/clang++-13
+    ln -s $(which clang++) "${pkgdir}"/opt/O3DE/${_engver}/.symbin/clang++-14
 
     # Script in /usr/bin to run o3de with modified env
     mkdir -p "${pkgdir}/usr/bin"

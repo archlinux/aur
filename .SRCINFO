@@ -1,7 +1,7 @@
 pkgbase = o3de-bin
 	pkgdesc = Open 3D Engine - An open-source, real-time 3D development engine
 	pkgver = 2205.0_20220507
-	pkgrel = 1
+	pkgrel = 2
 	url = https://o3de.org/
 	install = o3de.install
 	arch = x86_64
