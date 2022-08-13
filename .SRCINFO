@@ -1,7 +1,7 @@
 pkgbase = procpath
 	pkgdesc = A process tree analysis workbench
-	pkgver = 1.4.0
-	pkgrel = 2
+	pkgver = 1.5.1
+	pkgrel = 1
 	url = https://heptapod.host/saajns/procpath
 	arch = any
 	license = LGPL3

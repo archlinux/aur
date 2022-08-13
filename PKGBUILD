@@ -1,8 +1,8 @@
 # Maintainer: Andreas 'Segaja' Schleifer <archlinux at segaja dot de>
 
 pkgname=procpath
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 pkgdesc="A process tree analysis workbench"
 arch=(any)
 url="https://heptapod.host/saajns/procpath"
