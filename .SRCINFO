@@ -1,14 +1,13 @@
 pkgbase = foobar2000-component-uie-albumlist-bin
 	pkgdesc = A Columns UI album list panel for foobar2000
-	pkgver = 0.4.1
-	pkgrel = 4
+	pkgver = 0.4.2
+	pkgrel = 1
 	url = https://www.foobar2000.org/components/view/foo_uie_albumlist
 	arch = any
 	license = unknown
 	depends = foobar2000>=1.0.0
 	depends = foobar2000-component-ui-columns-bin>=1.0.0
-	source = https://yuo.be/static/81c3b100e662a761ed8e502ae221866f/foo_uie_albumlist-0.4.1.fb2k-component
-	md5sums = 81c3b100e662a761ed8e502ae221866f
+	source = https://yuo.be/static/02df5f316cef8827660122d31508c145/foo_uie_albumlist-0.4.2.fb2k-component
+	md5sums = 02df5f316cef8827660122d31508c145
 
 pkgname = foobar2000-component-uie-albumlist-bin
-
