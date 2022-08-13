@@ -4,7 +4,7 @@
 
 pkgname=unvanquished
 pkgver=0.53.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A team-based, fast-paced, fps/rts hybrid game which pits aliens against humans.'
 arch=('x86_64')
 url='https://www.unvanquished.net'
@@ -34,7 +34,7 @@ _recast="recastnavigation-${_suffix}"
 
 # NaCL SDK is a buildtime dependency of Dæmon.
 # NOTE: Due to enormous compile times, we use a binary distribution.
-_naclsdk_base_ver=5
+_naclsdk_base_ver=6
 _naclsdk_ver="linux64-${_naclsdk_base_ver}"
 _naclsdk="${_naclsdk_ver}"
 
@@ -62,7 +62,7 @@ md5sums=('6d9430b5b06b93a43a1cb79e14637f0b'
          '7fd25b2fa114983dd582c7ded4e4c4b5'
          'aaa0eff1d63b3bee5792317c704b3966'
          'fef72bfaa6e82cbe74c9f5089d4282fe'
-         '3c2cceeb5c653c4e53543fc892377f38')
+         '8e3e08ca8797e45e8dc01cdadf938676')
 
 # The prepare function mimics the git submodule dance.
 prepare() {
