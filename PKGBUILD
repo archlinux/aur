@@ -15,7 +15,6 @@ url="https://github.com/NatronGitHub/openfx-arena"
 license=('GPL')
 depends=('libcdr' 'libgl' 'libmagick' 'librsvg' 'libxt' 'libzip' 'opencolorio1' 'poppler-glib' 'sox' 'zstd')
 makedepends=('jbigkit' 'openmp' 'pango')
-conflicts=("${pkgname}-git")
 
 _natron_ver="Natron-${pkgver}"
 _pkgname="${pkgname}-${_natron_ver}"

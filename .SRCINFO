@@ -18,7 +18,6 @@ pkgbase = openfx-arena
 	depends = poppler-glib
 	depends = sox
 	depends = zstd
-	conflicts = openfx-arena-git
 	source = openfx-arena-Natron-2.4.3.tar.gz::https://github.com/NatronGitHub/openfx-arena/archive/refs/tags/Natron-2.4.3.tar.gz
 	source = openfx-Natron-2.4.3.tar.gz::https://github.com/NatronGitHub/openfx/archive/refs/tags/Natron-2.4.3.tar.gz
 	source = openfx-io-Natron-2.4.3.tar.gz::https://github.com/NatronGitHub/openfx-io/archive/refs/tags/Natron-2.4.3.tar.gz
