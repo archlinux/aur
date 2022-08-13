@@ -1,4 +1,4 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: jfperini <@jfperini>
 
 pkgname=knowthelist-git
@@ -9,7 +9,7 @@ url="https://github.com/knowthelist/knowthelist"
 license=('GPL v2')
 arch=('any')
 depends=('qt5-base' 'taglib' 'gstreamer' 'gst-plugins-base' 'boost' 'alsa-lib')
-makedepends=('git')
+makedepends=('git' 'qt5-tools')
 conflicts=('knowthelist')
 provides=('knowthelist')
 source=("$pkgname"::'git+https://github.com/knowthelist/knowthelist')

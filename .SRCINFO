@@ -6,6 +6,7 @@ pkgbase = knowthelist-git
 	arch = any
 	license = GPL v2
 	makedepends = git
+	makedepends = qt5-tools
 	depends = qt5-base
 	depends = taglib
 	depends = gstreamer
@@ -18,4 +19,3 @@ pkgbase = knowthelist-git
 	sha256sums = SKIP
 
 pkgname = knowthelist-git
-
