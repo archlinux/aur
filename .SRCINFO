@@ -1,7 +1,7 @@
 pkgbase = python-cas
 	pkgdesc = Python utilities to implement Central Authentication Service protocol
-	pkgver = 1.5.0
-	pkgrel = 2
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = https://github.com/python-cas/python-cas
 	arch = any
 	license = MIT
@@ -9,8 +9,7 @@ pkgbase = python-cas
 	depends = python-six
 	depends = python-requests
 	depends = python-lxml
-	source = python-cas-1.5.0.tar.gz::https://github.com/python-cas/python-cas/archive/v1.5.0.tar.gz
-	sha256sums = b5e2e8b9625aeabfb4d3884db1d264e1f58dcf0b506bdb2ab245f62cdb6c0b0a
+	source = python-cas-1.6.0.tar.gz::https://github.com/python-cas/python-cas/archive/v1.6.0.tar.gz
+	sha256sums = c30918c147e8b2ee43ec13c942391f868ed81d197353db49a160187afcbd2fda
 
 pkgname = python-cas
-

@@ -1,8 +1,8 @@
 # Maintainer: Joffrey <j-off@live.fr>
 
 pkgname=python-cas
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc='Python utilities to implement Central Authentication Service protocol'
 arch=('any')
 url='https://github.com/python-cas/python-cas'
@@ -14,7 +14,7 @@ depends=(
 )
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b5e2e8b9625aeabfb4d3884db1d264e1f58dcf0b506bdb2ab245f62cdb6c0b0a')
+sha256sums=('c30918c147e8b2ee43ec13c942391f868ed81d197353db49a160187afcbd2fda')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
