@@ -1,7 +1,7 @@
 pkgbase = adwcustomizer-git
 	pkgdesc = Change the look of Adwaita, with ease
 	pkgver = r396.36026fe
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdwCustomizerTeam/AdwCustomizer
 	install = xdg-config.install
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = adwcustomizer-git
 	depends = python-anyascii
 	depends = python-pillow
 	depends = python-regex
+	depends = python-material-color-utilities
 	depends = libportal-gtk4
 	optdepends = adw-gtk3: The theme from libadwaita ported to GTK-3
 	optdepends = adw-gtk-theme: LibAdwaita Theme for all GTK3 and GTK4 Apps.
