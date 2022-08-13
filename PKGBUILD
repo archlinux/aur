@@ -1,8 +1,8 @@
 # Maintainer: khhs khhs1671@gmail.com
 
 pkgname="libmemstack-git"
-pkgver="1.0.0"
-pkgrel="5"
+pkgver="1.1.0"
+pkgrel="0"
 pkgdesc="A small lib for managing memory"
 arch=("x86_64" "arm")
 depends=("make" "gcc")
