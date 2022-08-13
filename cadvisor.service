@@ -1,0 +1,12 @@
+[Unit]
+Description=cAdvisor
+Documentation=https://github.com/google/cadvisor
+After=docker.service containerd.service
+
+[Service]
+Restart=on-failure
+EnvironmentFile=-/etc/conf.d/cadvisor
+ExecStart=/usr/bin/cadvisor ${CADVISOR_ARGS}
+
+[Install]
+WantedBy=multi-user.target
