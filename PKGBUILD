@@ -3,8 +3,9 @@
 # Contributor: Funkin-Stoopid <>
 
 pkgname=mkv-extractor-qt
-pkgver=5.5.10
-pkgrel=2
+pkgver=22.08.08
+_gitcommit=841e8d85e04591d7a9e96e93aedf835c9fe9715a
+pkgrel=1
 pkgdesc="Graphical MKV demultiplexer"
 arch=('any')
 url='http://forum.ubuntu-fr.org/viewtopic.php?id=1508741'
@@ -20,11 +21,11 @@ optdepends=('ffmpeg: for DTS conversion'
             'bdsup2subpp: SUP subtitle conversion')
 conflicts=('mkv-extractor-gui')
 replaces=('mkv-extractor-gui')
-source=("https://github.com/Hizoka76/MKV-Extractor-Qt5/archive/v${pkgver}.tar.gz")
-sha256sums=('d7f73af02dcb4b7e19a0a52420f1435497e2d5c208919cc6746a3d564f7785ba')
+source=("https://github.com/Hizoka76/MKV-Extractor-Qt5/archive/${_gitcommit}.tar.gz")
+sha256sums=('fdcc029efe3e9c0f465ddd3025f0eee6b62923a26be668eed40178ae2b9f7137')
 
 prepare() {
-  cd "MKV-Extractor-Qt5-${pkgver}"
+  cd "MKV-Extractor-Qt5-${_gitcommit}"
 
   sed -e 's|/usr/lib/x86_64-linux-gnu/qt5/bin/lrelease|/usr/bin/lrelease-qt5|g' \
       -e 's|/usr/lib/i386-linux-gnu/qt5/bin/lrelease|/usr/bin/lrelease-qt5|g' \
@@ -36,7 +37,8 @@ prepare() {
   sed 's|BDSup2Sub.jar|bdsup2subpp|g' -i MKVExtractorQt5.py
 
   # fix version
-  sed 's|app.setApplicationVersion("5.5.9")|app.setApplicationVersion("5.5.10")|g' -i MKVExtractorQt5.py
+  sed -e 's|app.setApplicationVersion("22.08.05")|app.setApplicationVersion("'"${pkgver}"'")|g' \
+      -i MKVExtractorQt5.py
 
   export IFS=$'\n'
   for i in $(find . -name '*.png' -type f); do
@@ -45,12 +47,12 @@ prepare() {
 }
 
 build() {
-  cd "MKV-Extractor-Qt5-${pkgver}"
+  cd "MKV-Extractor-Qt5-${_gitcommit}"
   sh ./build.sh
 }
 
 package() {
-  cd "MKV-Extractor-Qt5-${pkgver}"
+  cd "MKV-Extractor-Qt5-${_gitcommit}"
 
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/share/${pkgname}/MKVExtractorQt5.py" "${pkgdir}/usr/bin/mkv-extractor-qt5"
@@ -58,16 +60,19 @@ package() {
   install -Dm755 -t "${pkgdir}/usr/share/${pkgname}" MKVExtractorQt5.py
   install -Dm644 -t "${pkgdir}/usr/share/${pkgname}" \
                  CodecListFile.py \
-                 MKVExtractorQt5_cs_CZ.qm \
-                 MKVExtractorQt5_fr_FR.qm \
-                 MKVExtractorQt5_es_ES.qm \
                  MKVRessources_rc.py \
                  ui_MKVExtractorQt5.py
+  install -Dm644 -t "${pkgdir}/usr/share/${pkgname}/Languages" \
+                 Languages/MKVExtractorQt5_cs_CZ.qm \
+                 Languages/MKVExtractorQt5_en_US.qm \
+                 Languages/MKVExtractorQt5_es_ES.qm \
+                 Languages/MKVExtractorQt5_fr_FR.qm
   install -Dm644 -t "${pkgdir}/usr/share/${pkgname}/QFileDialogCustom" \
                  QFileDialogCustom/QFileDialogCustom.py \
                  QFileDialogCustom/QFileDialogCustom_cs_CZ.qm \
-                 QFileDialogCustom/QFileDialogCustom_fr_FR.qm \
-                 QFileDialogCustom/QFileDialogCustom_es_ES.qm
+                 QFileDialogCustom/QFileDialogCustom_es_ES.qm \
+                 QFileDialogCustom/QFileDialogCustom_en_US.qm \
+                 QFileDialogCustom/QFileDialogCustom_fr_FR.qm
   install -Dm644 -t "${pkgdir}/usr/share/${pkgname}/WhatsUp" WhatsUp/WhatsUp.py
   install -Dm644 -t "${pkgdir}/usr/share/${pkgname}/img" img/*
 
