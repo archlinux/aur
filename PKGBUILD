@@ -3,8 +3,8 @@
 # Contributor: Mykola Dolhyi <0xb000@gmail.com>
 # Contributor: Ramdambo <https://github.com/Ramdambo>
 pkgname=ignition-math
-pkgver=6.11.0
-pkgrel=2
+pkgver=6.12.0
+pkgrel=1
 pkgdesc="Math classes and functions for robot applications"
 arch=('i686' 'x86_64')
 url="https://gazebosim.org/libs/math"
@@ -14,7 +14,7 @@ depends=('gcc-libs' 'swig')
 makedepends=('ignition-cmake>=2' 'eigen')
 conflicts=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-math/archive/${pkgname}6_${pkgver}.tar.gz")
-sha256sums=("e6b8901c94147e2c2659323083ce1d151495a07f9bef72a957069ce5b9f3d9e8")
+sha256sums=("4a5da88a45da7763d4551866d0007d270a8ab5ae5bf67ea3f891fc6799c6d84f")
 
 _dir="gz-math-${pkgname}6_${pkgver}"
 
