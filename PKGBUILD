@@ -1,5 +1,5 @@
 pkgname=mentohust-git
-pkgver=fd0da07
+pkgver=4.0.alpha2.r43.g857f5a1
 pkgrel=1
 pkgdesc="A Ruijie V4 supplicant on Linux and MacOS"
 arch=('any')
@@ -7,8 +7,10 @@ license=('GPL')
 url="https://github.com/hyrathb/mentohust"
 depends=('libpcap')
 optdepends=('libnotify')
-makedepends=('autoconf' 'automake' 'make' 'gcc' 'git')
-source=('git://github.com/hyrathb/mentohust.git')
+makedepends=('git')
+provides=('mentohust')
+conflicts=('mentohust')
+source=('git+https://github.com/hyrathb/mentohust.git')
 sha256sums=('SKIP')
 install=$pkgname.install
 
@@ -22,7 +24,7 @@ build()
 
 pkgver() {
     cd mentohust
-    printf "%s" "$(git describe --always | sed 's/-/_/g')"
+    git describe --long --tags | sed 's/^V//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package()
