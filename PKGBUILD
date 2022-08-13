@@ -1,12 +1,12 @@
 # Maintainer: Daniel Jenssen <daerandin@gmail.com>
 pkgname=sh2_mp_ai_enabler
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Stronghold 2 Multiplayer AI Enabler"
 arch=('x86_64')
 url="https://gitlab.com/Daerandin/sh2_mp_ai_enabler"
 license=('GPL3')
-depends=('glibc')
+depends=()
 optdepends=()
 options=('strip')
 source=(https://gitlab.com/Daerandin/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
