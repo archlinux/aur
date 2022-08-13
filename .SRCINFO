@@ -1,0 +1,22 @@
+pkgbase = kaspa_exporter-bin
+	pkgdesc = wishlist using netbox as inventory source
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://jon4hz.io
+	license = MIT
+	conflicts = kaspa_exporter
+	provides = kaspa_exporter
+	arch = aarch64
+	source_aarch64 = https://github.com/jon4hz/kaspa_exporter/releases/download/v0.1.0/kaspa_exporter-v0.1.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 1fdad777fae0bbdee18ee56974a2cfecbe2b5b3f1dc3c2bae3683f96aed1fea3
+	arch = armv7h
+	source_armv7h = https://github.com/jon4hz/kaspa_exporter/releases/download/v0.1.0/kaspa_exporter-v0.1.0-linux-armv7.tar.gz
+	sha256sums_armv7h = 602b9c9312c5c90c0da40a7e6ed49a10f620754ebbadc963eff72a2aa9d23ce7
+	arch = i686
+	source_i686 = https://github.com/jon4hz/kaspa_exporter/releases/download/v0.1.0/kaspa_exporter-v0.1.0-linux-386.tar.gz
+	sha256sums_i686 = 2c133353708f70a8fc499497cc760c23c9b8a66c61ee4b2ebc359961819d009a
+	arch = x86_64
+	source_x86_64 = https://github.com/jon4hz/kaspa_exporter/releases/download/v0.1.0/kaspa_exporter-v0.1.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 74164cf5792f05351ef1989790a741951a3f731de6f939211c599fe6acc283bf
+	
+pkgname = kaspa_exporter-bin
