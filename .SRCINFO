@@ -1,17 +1,16 @@
 pkgbase = pinyin-completion
 	pkgdesc = complete path name based upon the pinyin acronym of Chinese characters
-	pkgver = 34.68173f0
+	pkgver = 56.5feec0b
 	pkgrel = 1
 	url = https://github.com/petronny/pinyin-completion
 	install = pinyin-completion.install
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = python2
+	depends = python
 	source = git+https://github.com/petronny/pinyin-completion
 	source = pinyin-completion.install
 	sha256sums = SKIP
 	sha256sums = f6dbcc8fc15c6de71897281f1d64f05df7dfd1e5ec3b1a70bd46a4f3078f9f13
 
 pkgname = pinyin-completion
-
