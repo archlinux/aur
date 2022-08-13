@@ -1,0 +1,20 @@
+pkgbase = csprite-bin
+	pkgdesc = a tiny pixel art editor
+	pkgver = 1.0.0
+	pkgrel = 3
+	url = https://github.com/pegvin/csprite
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = glfw
+	depends = gtk3
+	provides = csprite-bin
+	conflicts = csprite
+	conflicts = csprite-git
+	conflicts = csprite-bin
+	source = csprite-bin-1.0.0.tar.gz::https://github.com/pegvin/csprite/archive/refs/tags/v1.0.0.tar.gz
+	sha512sums = 85c09a15ab1ebca8210aee6481b23b9262bada2e70173ed058f56cbde9857c7220e16d0200da433093f76e2c9c64441d401913fb24e488c179c9af0881836f47
+	source_x86_64 = csprite-bin-1.0.0.elf::https://github.com/pegvin/csprite/releases/download/v1.0.0/csprite-x86_64.elf
+	sha512sums_x86_64 = 36283d518706a3981e3c946b23e868b9b8f82d5da58d65dc62da6c3319e1d56720bc90dd5c8685064049b71d5a9b1ebb0117f9fefc1021ca02a939b2a618a96d
+
+pkgname = csprite-bin
