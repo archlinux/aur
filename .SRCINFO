@@ -1,7 +1,7 @@
 pkgbase = r-tidytree
 	pkgdesc = A Tidy Tool for Phylogenetic Tree Data Manipulation
-	pkgver = 0.3.9
-	pkgrel = 3
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=tidytree
 	arch = any
 	license = Artistic2.0
@@ -21,7 +21,7 @@ pkgbase = r-tidytree
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-utils
-	source = https://cran.r-project.org/src/contrib/tidytree_0.3.9.tar.gz
-	sha256sums = 12435d4f4c4d734b2a758cb13eb3b44bdfa8fdfa79a6e81fb99f7ce3a5d82edf
+	source = https://cran.r-project.org/src/contrib/tidytree_0.4.0.tar.gz
+	sha256sums = 00e8274375f7518dbe9e7021dabd590918a5f2959fca2194541c8795db0fa736
 
 pkgname = r-tidytree

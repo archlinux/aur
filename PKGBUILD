@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tidytree
-_pkgver=0.3.9
+_pkgver=0.4.0
 pkgname=r-${_pkgname,,}
-pkgver=0.3.9
-pkgrel=3
+pkgver=0.4.0
+pkgrel=1
 pkgdesc='A Tidy Tool for Phylogenetic Tree Data Manipulation'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -30,7 +30,7 @@ optdepends=(
   r-utils
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('12435d4f4c4d734b2a758cb13eb3b44bdfa8fdfa79a6e81fb99f7ce3a5d82edf')
+sha256sums=('00e8274375f7518dbe9e7021dabd590918a5f2959fca2194541c8795db0fa736')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
