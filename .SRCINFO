@@ -1,0 +1,13 @@
+pkgbase = bonnie
+	pkgdesc = Simple, cross-platform, and fast command aliases with superpowers
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/arctic-hen7/bonnie
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = bonnie-0.3.2.tar.gz::https://github.com/arctic-hen7/bonnie/archive/v0.3.2.tar.gz
+	sha256sums = 7b6be42d2149664efe59ea725add6f3f6d55772c6e4378b65417384f2ce5646e
+
+pkgname = bonnie
