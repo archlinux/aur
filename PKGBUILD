@@ -2,7 +2,7 @@
 
 pkgname=foobar2000-component-uie-ptb-bin
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 _fooname='foo_uie_ptb'
 pkgdesc='A toolbar indicating playback status for foobar2000'
 arch=('any')
