@@ -5,7 +5,7 @@ pkgbase = pandoc-crossref-bin
 	url = https://hackage.haskell.org/package/pandoc-crossref
 	arch = x86_64
 	license = GPL2
-	depends = pandoc-bin>=2.18
+	depends = pandoc>=2.18
 	provides = pandoc-crossref
 	conflicts = pandoc-crossref
 	replaces = haskell-pandoc-crossref-bin

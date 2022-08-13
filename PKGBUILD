@@ -13,7 +13,7 @@ arch=('x86_64')
 conflicts=("pandoc-crossref")
 provides=("pandoc-crossref")
 replaces=("haskell-pandoc-crossref-bin" 'pandoc-crossref-static' 'pandoc-crossref-lite')
-depends=("pandoc-bin>=${_pandoc_pkgver}")
+depends=("pandoc>=${_pandoc_pkgver}")
 
 source=(
     "pandoc-crossref-${pkgver}.tar.xz::https://github.com/lierdakil/pandoc-crossref/releases/download/v${pkgver}/pandoc-crossref-Linux.tar.xz"
