@@ -9,6 +9,7 @@ depends=("make" "gcc")
 license=("custom")
 source=()
 sha512sums=()
+conflicts=("libmemstack")
 package() {
 	if [[ -d "memstack" ]]; then 
 		rm -rf memstack

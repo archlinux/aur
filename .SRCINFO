@@ -7,5 +7,6 @@ pkgbase = libmemstack-git
 	license = custom
 	depends = make
 	depends = gcc
+	conflicts = libmemstack
 
 pkgname = libmemstack-git
