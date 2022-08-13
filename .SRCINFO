@@ -1,0 +1,19 @@
+pkgbase = prometheus-exporter-exporter-bin
+	pkgdesc = A reverse proxy designed for Prometheus exporters.
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = https://github.com/QubitProducts/exporter_exporter
+	arch = x86_64
+	license = Apache2
+	backup = etc/conf.d/prometheus-exporter-exporter
+	backup = etc/prometheus-exporter-exporter.yml
+	source = https://github.com/QubitProducts/exporter_exporter/releases/download/v0.4.5/exporter_exporter-0.4.5.linux-amd64.tar.gz
+	source = prometheus-exporter-exporter.yml
+	source = prometheus-exporter-exporter.conf
+	source = prometheus-exporter-exporter.service
+	sha512sums = 29a910130dfe50a35e6a5a55f6da2d61c61ef68036eab531228c27b9a7c507749dfe280826fdcf7ddd5197474560fca5e864e59ad566d5f8c081396b4d25596e
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = prometheus-exporter-exporter-bin

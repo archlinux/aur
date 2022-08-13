@@ -1,0 +1,13 @@
+[Unit]
+Description=Prometheus Exporter Exporter
+Documentation=https://github.com/QubitProducts/exporter_exporter
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Restart=on-failure
+EnvironmentFile=-/etc/conf.d/prometheus-exporter-exporter
+ExecStart=/usr/bin/prometheus-exporter-exporter ${EXPORTER_EXPORTER_ARGS}
+
+[Install]
+WantedBy=multi-user.target
