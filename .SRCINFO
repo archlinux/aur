@@ -16,7 +16,6 @@ pkgbase = natron-compositor
 	optdepends = openfx-gmic: OpenFX wrapper for the GMIC framework
 	optdepends = openfx-io: Readers/Writers plugins
 	optdepends = openfx-misc: Miscellaneous OpenFX plugins
-	conflicts = natron-compositor-git
 	source = Natron-2.4.3.tar.gz::https://github.com/NatronGitHub/Natron/archive/refs/tags/v2.4.3.tar.gz
 	source = openfx-Natron-2.4.3.tar.gz::https://github.com/NatronGitHub/openfx/archive/refs/tags/Natron-2.4.3.tar.gz
 	source = OpenColorIO-Configs-Natron-v2.4.tar.gz::https://github.com/NatronGitHub/OpenColorIO-Configs/archive/refs/tags/Natron-v2.4.tar.gz

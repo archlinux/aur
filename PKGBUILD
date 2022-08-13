@@ -22,7 +22,6 @@ optdepends=('openfx-arena: Extra OpenFX plugins for Natron'
             'openfx-gmic: OpenFX wrapper for the GMIC framework'
             'openfx-io: Readers/Writers plugins'
             'openfx-misc: Miscellaneous OpenFX plugins')
-conflicts=("${pkgname}-git")
 
 _pkgname=${pkgname%-*}
 _pkgname=${_pkgname^}
