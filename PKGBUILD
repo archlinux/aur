@@ -7,7 +7,7 @@ url="http://thonny.org/"
 license=('MIT')
 conflicts=("thonny")
 provides=("thonny")
-depends=('openssl' 'python' 'python-beautifulsoup4' 'python-jedi' 'tcl' 'tk' 'python-distro')
+depends=('openssl' 'python' 'python-beautifulsoup4' 'python-jedi' 'tcl' 'tk' 'python-distro' 'python-pip')
 source=("git+https://github.com/thonny/thonny.git")
 sha256sums=('SKIP')
 

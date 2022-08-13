@@ -12,10 +12,10 @@ pkgbase = thonny-git
 	depends = tcl
 	depends = tk
 	depends = python-distro
+	depends = python-pip
 	provides = thonny
 	conflicts = thonny
 	source = git+https://github.com/thonny/thonny.git
 	sha256sums = SKIP
 
 pkgname = thonny-git
-
