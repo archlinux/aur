@@ -1,7 +1,7 @@
 # Maintainer: Aditya Mishra <https://github.com/pegvin/goxel2/issues>
 pkgname=csprite-bin
 pkgver=1.0.0
-pkgrel=3 # Update if you changed something but that is so minor change you don't want to change the version
+pkgrel=1 # Update if you changed something but that is so minor change you don't want to change the version
 pkgdesc="a tiny pixel art editor"
 arch=('i686' 'x86_64')
 url="https://github.com/pegvin/csprite"
