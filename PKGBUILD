@@ -1,6 +1,6 @@
 # Maintainer: LanjieYou <ylj18926385312@163.com>
 pkgname='brain-fuck'
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 epoch=0
 pkgdesc="brain语言解释器(Chinese Only)"
