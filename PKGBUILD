@@ -2,7 +2,7 @@
 
 pkgname=hyfetch-git
 pkgver=1.3.0.r34.g64a997ed
-pkgrel=1
+pkgrel=2
 pkgdesc="Neofetch with LGBTQ pride flags."
 arch=('any')
 url='https://github.com/hykilpikonna/hyfetch'
@@ -11,6 +11,8 @@ depends=('python' 'python-setuptools' 'python-typing_extensions')
 makedepends=('git')
 source=("$pkgname::git+$url.git")
 md5sums=('SKIP')
+provides=('hyfetch')
+conflicts=('hyfetch')
 
 pkgver() {
   cd "$pkgname"
