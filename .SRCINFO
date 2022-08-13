@@ -1,13 +1,16 @@
 pkgbase = openfx-io-git
 	pkgdesc = A set of Readers/Writers plugins written using the OpenFX standard
-	pkgver = Natron.2.4.1.r1.g7714dd5
+	pkgver = Natron.2.4.3.r6.g9fb5ee9
 	pkgrel = 1
 	url = https://github.com/NatronGitHub/openfx-io
 	arch = x86_64
 	license = GPL
+	makedepends = opencolorio1
+	makedepends = git
 	depends = ffmpeg
 	depends = openimageio
 	depends = libseexpr2
+	provides = openfx-io
 	conflicts = openfx-io
 	source = openfx-io::git+https://github.com/NatronGitHub/openfx-io
 	source = openfx::git+https://github.com/NatronGitHub/openfx

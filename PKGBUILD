@@ -3,18 +3,20 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-io-git
-pkgver=Natron.2.4.1.r1.g7714dd5
+pkgver=Natron.2.4.3.r6.g9fb5ee9
 pkgrel=1
 arch=('x86_64')
 pkgdesc="A set of Readers/Writers plugins written using the OpenFX standard"
 url="https://github.com/NatronGitHub/openfx-io"
 license=('GPL')
 depends=('ffmpeg' 'openimageio' 'libseexpr2')
+makedepends=('opencolorio1' 'git')
 
 _pkgname=${pkgname%-git}
 _url=${url%/${_pkgname}}
 
 conflicts=("${_pkgname}")
+provides=("${_pkgname}")
 
 source=("${_pkgname}::git+${url}"
         "openfx::git+${_url}/openfx"
