@@ -2,14 +2,14 @@
 
 pkgname=olive
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="Free non-linear video editor"
 url="https://www.olivevideoeditor.org/"
 license=('GPL3')
-depends=('ffmpeg' 'qt5-multimedia' 'qt5-svg')
-makedepends=('cmake' 'qt5-tools')
-optdepends=('frei0r-plugins' 'olive-community-effects-git')
+depends=('ffmpeg4.4' 'frei0r-plugins' 'qt5-multimedia' 'qt5-svg')
+makedepends=('cmake' 'doxygen' 'graphviz' 'qt5-tools')
+optdepends=('olive-community-effects-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/olive-editor/olive/archive/$pkgver.tar.gz"
         "olive-0.1.2-appdata-desktop.patch"
         "olive-0.1.2-cacher.patch"
@@ -52,6 +52,7 @@ build() {
   cd build
   cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_PREFIX_PATH="/usr/lib/ffmpeg4.4;/usr/include/ffmpeg4.4" \
         ../$pkgname-$pkgver
   make
 }
