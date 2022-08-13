@@ -1,6 +1,6 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=pgloader
-pkgver=3.6.6
+pkgver=3.6.7
 pkgrel=1
 pkgdesc='A data loading tool for PostgreSQL, using the COPY command.'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('custom:PostgreSQL')
 depends=('freetds' 'zlib')
 makedepends=('sbcl>=1.2.5' 'gawk' 'curl' 'quicklisp' 'sqlite' 'unzip')
 source=("https://github.com/dimitri/$pkgname/archive/v$pkgver.tar.gz" 'LICENSE')
-sha256sums=('35cb67e4a9ab486f02f68c32c4195c4b0b1e7e5a781c61336d2c075b861616c6'
+sha256sums=('0f35b41b4a3e60ed67f8140a0b829ec5f791852ae1268a3d6dae0d5b26b957dc'
             'b34067e89373e1a47367b454862f43061ad1680542b39b6d95ed29c354473e15')
 options=('!strip' '!makeflags')
 
