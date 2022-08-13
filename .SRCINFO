@@ -1,7 +1,7 @@
 pkgbase = serd-git
 	pkgdesc = Lightweight C library for RDF syntax supporting reading / writing Turtle and NTriples (git version)
-	pkgver = 0.30.15.r1032.14f422f6
-	pkgrel = 2
+	pkgver = 0.30.15.r1034.f4f9c9ec
+	pkgrel = 1
 	url = http://drobilla.net/software/serd/
 	arch = i686
 	arch = x86_64
