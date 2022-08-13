@@ -1,0 +1,20 @@
+pkgbase = gofile-downloader-git
+	pkgdesc = Download files from https://gofile.io
+	pkgver = r16.465ef97
+	pkgrel = 1
+	url = https://github.com/ltsdw/gofile-downloader
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-certifi
+	depends = python-charset-normalizer
+	depends = python-idna
+	depends = python-requests
+	depends = python-urllib3
+	provides = gofile-downloader
+	conflicts = gofile-downloader
+	source = git+https://github.com/ltsdw/gofile-downloader.git
+	md5sums = SKIP
+
+pkgname = gofile-downloader-git
