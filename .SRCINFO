@@ -1,11 +1,12 @@
 pkgbase = jakym
 	pkgdesc = JAKYM, Just Another Konsole YouTube-Music. A command line based Youtube music player written in Python with both Spotify and Youtube playlist support and easy on memory.
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/themayankjha/JAKYM
 	arch = any
 	license = GPL3
 	makedepends = python-build
+	makedepends = python-installer
 	depends = python
 	depends = python-setuptools
 	depends = python-pip
