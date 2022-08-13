@@ -1,6 +1,6 @@
 # Maintainer: Luna D. Dragon <luna@lunarequest[dot]gay>
 pkgname=updatecli
-pkgver=0.28.0
+pkgver=0.29.0
 pkgrel=1
 url="https://www.updatecli.io/"
 _url="https://github.com/updatecli/updatecli"
@@ -17,7 +17,7 @@ depends=(
 source=(
   "$pkgname-$pkgver.tar.gz::$_url/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('SKIP')
+sha256sums=('7471486490d2ac6ad3521c077eaf9dfe52535431d78c14b7a1e4aac0bb2300e1')
 
 build() {
   cd "$pkgname-$pkgver"
