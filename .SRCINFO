@@ -7,7 +7,7 @@ pkgbase = foobar2000-component-uie-console-bin
 	license = unknown
 	depends = foobar2000>=1.0.0
 	depends = foobar2000-component-ui-columns-bin>=1.0.0
-	source = https://yuo.be/static/be77fbdf14eaec23fbf99070027b0b68/foo_uie_console-2.0.0.fb2k-component
-	md5sums = be77fbdf14eaec23fbf99070027b0b68
+	source = foo_uie_console-2.0.0-1::https://yuo.be/static/be77fbdf14eaec23fbf99070027b0b68/foo_uie_console-2.0.0.fb2k-component
+	sha256sums = 4bf655b8e4863865131874373ca4c689231fe730bfebbca64e363297bafec29d
 
 pkgname = foobar2000-component-uie-console-bin
