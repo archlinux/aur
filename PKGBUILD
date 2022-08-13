@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=tarantool
-pkgver=2.10.0
+pkgver=2.10.1
 pkgrel=1
 pkgdesc='Lua application server integrated with a database management system'
 arch=(x86_64)
@@ -18,7 +18,7 @@ source=(git+https://github.com/tarantool/tarantool.git#tag=$pkgver
         git+https://github.com/tarantool/test-run.git
         git+https://github.com/tarantool/small.git
         git+https://github.com/tarantool/zstd.git
-        git+https://github.com/tarantool/luarocks.git#branch=luarocks-3.1.1-tarantool
+        git+https://github.com/tarantool/luarocks.git#branch=luarocks-3.1.3-tarantool
         git+https://github.com/tarantool/decNumber.git
         git+https://github.com/tarantool/curl.git
         git+https://github.com/tarantool/c-ares.git
