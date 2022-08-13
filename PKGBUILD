@@ -4,12 +4,12 @@
 
 pkgname=rapidminer-studio
 pkgver=9.10.11
-pkgrel=1
-pkgdesc="Real data science, fast and simple. Reinvents enterprise AI so that anyone has the power to positively shape the future. Empowers data scientists and business analysts to effortlessly design predictive analytics from mashup to modeling to deployment."
+pkgrel=2
+pkgdesc="RapidMiner is the enterprise-ready data science platform"
 arch=('any')
-url="https://rapidminer.com/products/studio/"
+url="https://rapidminer.com/platform/"
 license=('AGPL3')
-depends=('java-runtime=8')
+depends=('java-runtime=8' 'java-environment=8')
 makedepends=('unzip' 'gendesk')
 source=(https://releases.rapidminer.com/latest/rapidminer-studio/rapidminer-studio.zip \
         rapidminer-studio.sh)
