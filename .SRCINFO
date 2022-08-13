@@ -1,12 +1,12 @@
 pkgbase = nodejs-docs
 	pkgdesc = Node.js API documentation.
-	pkgver = 18.2.0
+	pkgver = 18.7.0
 	pkgrel = 1
 	url = https://nodejs.org/en/docs/
 	arch = any
 	license = MIT
 	options = docs
-	source = https://nodejs.org/dist/v18.2.0/node-v18.2.0.tar.gz
-	sha256sums = bb9c117814341676edbfd7c79cfaaac2d809e760a65fe9afe050245d55bb7ca7
+	source = https://nodejs.org/dist/v18.7.0/node-v18.7.0.tar.gz
+	sha256sums = 7dcf86ccd6831032531bcbec0cdcc993f9997bba2f53f6d29c72603ea69285ba
 
 pkgname = nodejs-docs
