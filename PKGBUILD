@@ -1,8 +1,8 @@
 # Maintainer: Connor McFarlane <cm at semtex dot net>
 
 pkgname=flexoptix
-pkgver=5.11.0
-pkgrel=6
+pkgver=5.12.1
+pkgrel=1
 pkgdesc='Flexoptix Flexbox transceiver programmer'
 arch=('any')
 url='https://www.flexoptix.net/en/flexoptix-app'
@@ -13,7 +13,7 @@ install=flexoptix.install
 source=("flexoptix-${pkgver}.AppImage::https://flexbox.reconfigure.me/download/electron/linux/x64/FLEXOPTIX%20App.${pkgver}.AppImage"
         'https://www.flexoptix.net/skin/udev_rules/99-tprogrammer.rules'
         'disable-autoupdate.patch')
-sha256sums=('363e92e776f8c3ce2aa6990607b94ca4984997189f683e1a70faf2b99c58edc3'
+sha256sums=('ba09c97121601043c9f6ac6a9911a05b57eb684e04fc76dbc692bfd344d73e6c'
             '3997b9755e74c6af7da252266e8ec94313e345dee11b204857016fb51f5c2157'
             'b26dfbfd855bccb06d75cdb101c3ff378d58f9277ac35c283323144febba542e')
 

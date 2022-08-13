@@ -1,17 +1,17 @@
 pkgbase = flexoptix
 	pkgdesc = Flexoptix Flexbox transceiver programmer
-	pkgver = 5.11.0
-	pkgrel = 6
+	pkgver = 5.12.1
+	pkgrel = 1
 	url = https://www.flexoptix.net/en/flexoptix-app
 	install = flexoptix.install
 	arch = any
 	license = custom
 	makedepends = asar
 	depends = hidapi
-	source = flexoptix-5.11.0.AppImage::https://flexbox.reconfigure.me/download/electron/linux/x64/FLEXOPTIX%20App.5.11.0.AppImage
+	source = flexoptix-5.12.1.AppImage::https://flexbox.reconfigure.me/download/electron/linux/x64/FLEXOPTIX%20App.5.12.1.AppImage
 	source = https://www.flexoptix.net/skin/udev_rules/99-tprogrammer.rules
 	source = disable-autoupdate.patch
-	sha256sums = 363e92e776f8c3ce2aa6990607b94ca4984997189f683e1a70faf2b99c58edc3
+	sha256sums = ba09c97121601043c9f6ac6a9911a05b57eb684e04fc76dbc692bfd344d73e6c
 	sha256sums = 3997b9755e74c6af7da252266e8ec94313e345dee11b204857016fb51f5c2157
 	sha256sums = b26dfbfd855bccb06d75cdb101c3ff378d58f9277ac35c283323144febba542e
 
