@@ -1,8 +1,8 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 _pkgname=sord
-pkgname="$_pkgname-git"
-pkgver=0.16.12.r502.c1cda16
+pkgname=$_pkgname-git
+pkgver=0.16.13.r503.9960380
 pkgrel=1
 pkgdesc='Lightweight C library for storing RDF statements in memory (git version)'
 arch=(i686 x86_64)
@@ -35,7 +35,7 @@ package() {
   depends+=(libserd-0.so)
   provides+=(libsord-0.so)
   meson install -C $_pkgname-build --destdir "$pkgdir"
-  mv -v "$pkgdir"/usr/share/doc/{sord-0,$pkgname}
+  mv -v "$pkgdir"/usr/share/doc/{$_pkgname-0,$pkgname}
   install -vDm 644 $_pkgname/COPYING -t "$pkgdir"/usr/share/licenses/$pkgname
   install -vDm 644 $_pkgname/{AUTHORS,NEWS,README.md} -t "$pkgdir"/usr/share/doc/$pkgname
 }
