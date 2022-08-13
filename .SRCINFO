@@ -1,4 +1,4 @@
-pkgbase = helvetica-neue
+pkgbase = otf-helvetica-neue
 	pkgdesc = Helvetica Neue font
 	pkgver = 1.0
 	pkgrel = 1
@@ -6,10 +6,10 @@ pkgbase = helvetica-neue
 	arch = any
 	license = custom
 	makedepends = git
-	provides = helvetica-neue
+	provides = otf-helvetica-neue
 	source = git+https://github.com/impostersussy/HelveticaNeue.git
 	source = LICENSE
 	sha256sums = SKIP
 	sha256sums = c9e0c08c58f3edbaa5c1a6a9f1e45a8dabc976d54c540bfef3f51eda9e26ceb5
 
-pkgname = helvetica-neue
+pkgname = otf-helvetica-neue
