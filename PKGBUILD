@@ -1,7 +1,7 @@
 # Maintainer: Kenny Levinsen <aur [at] kl [dot] wtf>
 
 pkgname=seatd-git
-pkgver=r195.2204db5531
+pkgver=r282.a803ba0502
 pkgrel=1
 pkgdesc="Seat management daemon and library"
 arch=(x86_64)
@@ -12,7 +12,7 @@ sha256sums=('SKIP')
 conflicts=(seatd libseat)
 provides=(seatd libseat)
 depends=(systemd)
-makedepends=(meson ninja scdoc)
+makedepends=(meson ninja scdoc git)
 
 pkgver() {
   cd seatd
