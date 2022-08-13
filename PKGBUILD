@@ -36,7 +36,7 @@ package() {
   provides+=(libsratom-0.so)
 
   meson install -C $_pkgname-build --destdir "$pkgdir"
-  mv -v "$pkgdir"/usr/share/doc/{sratom-0,$pkgname}
+  mv -v "$pkgdir"/usr/share/doc/{$_pkgname-0,$pkgname}
   install -vDm 644 $_pkgname/COPYING -t "$pkgdir"/usr/share/licenses/$pkgname
   install -vDm 644 $_pkgname/{NEWS,README.md} -t "$pkgdir"/usr/share/doc/$pkgname
 }
