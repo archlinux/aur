@@ -1,0 +1,10 @@
+# emacs
+*~
+\#*#
+.#*#
+
+# makepkg
+/pkg/
+/src/
+*.tar.bz2
+*.pkg*
