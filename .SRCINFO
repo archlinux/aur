@@ -1,7 +1,7 @@
 pkgbase = libmemstack-git
 	pkgdesc = A small lib for managing memory
-	pkgver = 1.0.0
-	pkgrel = 5
+	pkgver = 1.1.0
+	pkgrel = 0
 	arch = x86_64
 	arch = arm
 	license = custom
