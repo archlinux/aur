@@ -9,7 +9,6 @@ pkgbase = openfx-io
 	depends = opencolorio1
 	depends = openimageio
 	depends = libseexpr2
-	conflicts = openfx-io-git
 	source = openfx-io-22751c949f0992644af2bf70bbffc438fbb10caa.tar.gz::https://github.com/NatronGitHub/openfx-io/archive/22751c949f0992644af2bf70bbffc438fbb10caa.tar.gz
 	source = openfx-Natron-2.4.3.tar.gz::https://github.com/NatronGitHub/openfx/archive/refs/tags/Natron-2.4.3.tar.gz
 	source = openfx-supportext-Natron-2.4.3.tar.gz::https://github.com/NatronGitHub/openfx-supportext/archive/Natron-2.4.3.tar.gz

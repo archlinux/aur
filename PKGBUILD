@@ -14,7 +14,6 @@ pkgdesc="A set of Readers/Writers plugins written using the OpenFX standard"
 url="https://github.com/NatronGitHub/openfx-io"
 license=('GPL')
 depends=('ffmpeg' 'opencolorio1' 'openimageio' 'libseexpr2')
-conflicts=("${pkgname}-git")
 
 _natron_ver="Natron-${pkgver%+*}"
 _pkgname="${pkgname}-${_openfx_io_commit}"
