@@ -1,7 +1,7 @@
 pkgbase = karaokemugen
 	pkgdesc = Karaoke playlist manager/player app used in parties or events.
 	pkgver = 6.1.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mugen.karaokes.moe/
 	install = karaokemugen.install
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = karaokemugen
 	depends = patch
 	depends = electron19
 	optdepends = sudo: for using karaokemugen-install script
-	source = karaokemugen::git+https://gitlab.com/karaokemugen/karaokemugen-app.git#tag=v6.1.8
+	source = karaokemugen::git+https://gitlab.com/karaokemugen/karaokemugen-app.git#tag=v6.1.16
 	source = karaokemugen-lib::git+https://gitlab.com/karaokemugen/lib.git
 	source = karaokemugen-avatars::git+https://gitlab.com/karaokemugen/medias/guest-avatars.git
 	source = install.sh
