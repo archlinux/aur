@@ -1,4 +1,4 @@
-pkgbase = goxel2-git
+pkgbase = csprite-git
 	pkgdesc = a tiny pixel art editor
 	pkgver = continuous.r40.gf065ce8
 	pkgrel = 1
@@ -21,4 +21,4 @@ pkgbase = goxel2-git
 	source = git+https://github.com/pegvin/csprite.git
 	sha512sums = SKIP
 
-pkgname = goxel2-git
+pkgname = csprite-git
