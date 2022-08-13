@@ -1,19 +1,20 @@
 # Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 
 pkgname=openfx-gmic-git
-pkgver=Natron.2.4.1.r0.gad1b6cb
+pkgver=Natron.2.4.3.r0.g100d960
 pkgrel=1
 arch=('x86_64')
 pkgdesc="OpenFX wrapper for the G'MIC framework"
 url="https://github.com/NatronGitHub/openfx-gmic"
 license=('custom:CeCILL-C' 'custom:CeCILLv2')
 depends=('fftw' 'libgl' 'libpng')
-makedepends=('openmp')
+makedepends=('git' 'openmp')
 
 _pkgname=${pkgname%-git}
 _url=${url%/${_pkgname}}
 
 conflicts=("${_pkgname}")
+provides=("${_pkgname}")
 
 source=("${_pkgname}::git+${url}"
         "openfx::git+${_url}/openfx")
