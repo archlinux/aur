@@ -1,6 +1,6 @@
 pkgbase = python-django-statici18n
 	pkgdesc = A Django app that provides helper for generating JavaScript catalog to static files
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/zyegfryed/django-statici18n
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-django-statici18n
 	makedepends = python-setuptools
 	depends = python-django
 	depends = python-django-appconf
-	source = python-django-statici18n-2.2.0.tar.gz::https://github.com/zyegfryed/django-statici18n/archive/v2.2.0.tar.gz
-	sha256sums = c90dfbbef15db83c1059c7acbdd7ca1bcf0cc3023a394e1daafe4a846010155c
+	source = python-django-statici18n-2.3.0.tar.gz::https://github.com/zyegfryed/django-statici18n/archive/v2.3.0.tar.gz
+	sha256sums = ebbdd5de33d97b2d997a5d67f2b6045957ac8f8e2a08f2823ad581f3dd85092d
 
 pkgname = python-django-statici18n
