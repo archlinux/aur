@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=SuperCC
+Comment=Optimize CC levels in Lynx and MS rulesets
+GenericName=Chip's Challenge optimizer
+Exec=SuperCC
+Icon=SuperCC
+Type=Application
+StartupNotify=false
+StartupWMClass=SuperCC
+Categories=Utility;Game;

@@ -1,0 +1,20 @@
+pkgbase = supercc
+	pkgdesc = An optimization focused emulator of the game "Chip's Challenge".
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/SicklySilverMoon/SuperCC
+	arch = any
+	license = GPL2
+	depends = java-runtime>=17
+	source = https://supercc.bitbusters.club/downloads/SuperCC_2.0.2.zip
+	source = https://raw.githubusercontent.com/SicklySilverMoon/SuperCC/master/LICENSE
+	source = https://raw.githubusercontent.com/SicklySilverMoon/SuperCC/master/src/main/resources/icons/windowIcon.png
+	source = SuperCC
+	source = SuperCC.desktop
+	sha256sums = 15e3060a5efe3878877e4c416531f1c5163114c58cee4bc9f717c233f299443f
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = fb4da0254eb1ff76265c2a6aebbd81cbc6d3ea72d25f1ce2493c7b53025144a4
+	sha256sums = 53b95ca77cbe3a6669343ec094a306f15f02df23f5f1dff22e83138e0888ebbd
+
+pkgname = supercc
