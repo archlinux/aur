@@ -9,6 +9,7 @@ depends=("make" "gcc")
 license=("custom")
 source=("memstack-$pkgver.tar.gz")
 sha512sums=("SKIP")
+conflicts=("libmemstack-git")
 package() {
 	mkdir -p "${pkgdir}/usr/lib"
 	mkdir -p "${pkgdir}/usr/include"
