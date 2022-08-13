@@ -1,0 +1,13 @@
+pkgbase = jenv-archlinux
+	pkgdesc = Various jenv subcommands for Arch Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/claui/jenv-archlinux
+	arch = any
+	license = Apache
+	depends = jenv
+	options = !strip
+	source = jenv-archlinux-0.1.0.tar.gz::https://github.com/claui/jenv-archlinux/archive/v0.1.0.tar.gz
+	sha512sums = 0cd0381cd5c8fd328d90d08912c2649fc791344592857f1bbad705451b83012dd00ba8073e9910447ae3689c428145760052ba566a692adef9539a4dd519f966
+
+pkgname = jenv-archlinux
