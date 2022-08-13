@@ -1,12 +1,12 @@
 pkgbase = foobar2000-component-ui-columns-bin
 	pkgdesc = An alternative user interface for foobar2000
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.foobar2000.org/components/view/foo_ui_columns
 	arch = any
 	license = unknown
 	depends = foobar2000>=1.0.0
-	source = https://yuo.be/static/8190fc57de8a5a42057f3022ea79d637/foo_ui_columns-1.7.0.fb2k-component
+	source = foo_ui_columns-1.7.0-2::https://yuo.be/static/8190fc57de8a5a42057f3022ea79d637/foo_ui_columns-1.7.0.fb2k-component
 	sha256sums = 1031ca8f5b9726e8e9a18824928298202ce5ff9f46e3b3a80cbb1f513c4d8cb2
 
 pkgname = foobar2000-component-ui-columns-bin
