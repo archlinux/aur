@@ -3,6 +3,7 @@
 # Contributor: Konstantin Gizdov (kgizdov) <arch@kge.pw>
 # Contributor: Adria Arrufat (archdria) <adria.arrufat+AUR@protonmail.ch>
 # Contributor: Thibault Lorrain (fredszaq) <fredszaq@gmail.com>
+# Contributor: wuxxin <wuxxin@gmail.com>
 
 pkgbase=tensorflow-rocm
 
@@ -14,8 +15,12 @@ pkgname=()
 [ "$_build_no_opt" -eq 1 ] && pkgname+=(tensorflow-rocm python-tensorflow-rocm)
 [ "$_build_opt" -eq 1 ] && pkgname+=(tensorflow-opt-rocm python-tensorflow-opt-rocm)
 
-pkgver=2.9.1
-_pkgver=2.9.1
+# use ROCm fork of tensorflow: https://github.com/ROCmSoftwarePlatform/tensorflow-upstream
+# take branch+commit from docker.io/rocm/tensorflow@lastest Dockerfile
+_id="4f7f7b9d6489de80eb81572ecc188af299e9e495"
+_srcname="tensorflow-upstream-$_id"
+_pkgver=2.9.2
+pkgver=2.9.2
 pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
@@ -27,13 +32,13 @@ makedepends=('bazel' 'python-numpy' 'rocm-hip-sdk' 'miopen' 'rccl' 'git'
              'python-keras-applications' 'python-keras-preprocessing'
              'cython')
 optdepends=('tensorboard: Tensorflow visualization toolkit')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/tensorflow/tensorflow/archive/v${_pkgver}.tar.gz"
-        fix-c++17-compat.patch
-        "rocblas-version.patch::https://github.com/tensorflow/tensorflow/commit/dc68efe693cb58e8d34ee62179cdaad7ce7487a7.patch")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ROCmSoftwarePlatform/tensorflow-upstream/archive/$_id.tar.gz"
+        "fix-c++17-compat.patch"
+        "fix-rocblas-include.patch")
 
-sha512sums=('95ffbee1e50e396065c6f1802fd9668344c45c000e22da859bcd08ec217bcc0a8ff0e84661fdf511f210e8b09d7ae6d26c3fc1ddcf28b8aedf87c0fb1b8b60e4'
+sha512sums=('a0a900ae5134ee8b3e896cd30b87b340c96ffad9cef98b960f3d555b455a4a0c2119249a3d318771d37a73438bc3ab02e03130c0f03594bc449f25c9c3cb6897'
             'f682368bb47b2b022a51aa77345dfa30f3b0d7911c56515d428b8326ee3751242f375f4e715a37bb723ef20a86916dad9871c3c81b1b58da85e1ca202bc4901e'
-            'SKIP')
+            'de7ffe73ee3de04f4534bff0b090081179e0ec367754a25ed7a1facbbc34b7bf64e6011c0ea5c2f5746f2c4efd8e37af4c88f8d22c6f50c7a18ebe7f0316f518')
 
 # consolidate common dependencies to prevent mishaps
 _common_py_depends=(python-termcolor python-astor python-gast03 python-numpy python-protobuf
@@ -68,18 +73,18 @@ check_dir() {
 
 prepare() {
   # Allow any bazel version
-  echo "*" > tensorflow-${_pkgver}/.bazelversion
+  echo "*" > $_srcname/.bazelversion
 
   # Get rid of hardcoded versions. Not like we ever cared about what upstream
   # thinks about which versions should be used anyway. ;) (FS#68772)
-  sed -i -E "s/'([0-9a-z_-]+) .= [0-9].+[0-9]'/'\1'/" tensorflow-${_pkgver}/tensorflow/tools/pip_package/setup.py
+  sed -i -E "s/'([0-9a-z_-]+) .= [0-9].+[0-9]'/'\1'/" $_srcname/tensorflow/tools/pip_package/setup.py
 
-  cd "${srcdir}/tensorflow-${_pkgver}"
-  patch -Np1 -i "${srcdir}/rocblas-version.patch"
+  cd "${srcdir}/$_srcname"
+  patch -Np1 -i "${srcdir}/fix-rocblas-include.patch"
   cd "${srcdir}"
 
-  cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-rocm
-  cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-opt-rocm
+  cp -r $_srcname tensorflow-${_pkgver}-rocm
+  cp -r $_srcname tensorflow-${_pkgver}-opt-rocm
 
   # These environment variables influence the behavior of the configure call below.
   export PYTHON_BIN_PATH=/usr/bin/python
