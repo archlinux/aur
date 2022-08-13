@@ -1,5 +1,7 @@
-# Maintainer: impostersussy <amogus.sussy@fedora.email>
-pkgname=helvetica-now
+# Maintainer: Aria Moradi <aria.moradi007@gmail.com>
+# Contibutor: impostersussy <amogus.sussy@fedora.email>
+
+pkgname=otf-helvetica-now
 pkgver=1.0
 pkgrel=1
 pkgdesc="Helvetica Now font"

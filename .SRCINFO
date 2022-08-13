@@ -1,4 +1,4 @@
-pkgbase = helvetica-now
+pkgbase = otf-helvetica-now
 	pkgdesc = Helvetica Now font
 	pkgver = 1.0
 	pkgrel = 1
@@ -6,10 +6,10 @@ pkgbase = helvetica-now
 	arch = any
 	license = custom
 	makedepends = git
-	provides = helvetica-now
+	provides = otf-helvetica-now
 	source = git+https://github.com/impostersussy/HelveticaNow.git
 	source = LICENSE
 	sha256sums = SKIP
 	sha256sums = 4f287da2055d1b0f7094c0ce34cb1f8a29e8cd3b788bb79ef3a8c6352bbaeee0
 
-pkgname = helvetica-now
+pkgname = otf-helvetica-now
