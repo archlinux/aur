@@ -1,12 +1,11 @@
 pkgbase = fwknop-gui
 	pkgdesc = Official desktop client for the fwknop daemon
-	pkgver = 1.3.release.r6.g1fadc5c
-	pkgrel = 1
+	pkgver = 1.3
+	pkgrel = 2
 	url = https://incomsystems.biz/fwknop-gui/
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = git
 	makedepends = cmake
 	makedepends = asciidoc
 	depends = fwknop
@@ -14,7 +13,7 @@ pkgbase = fwknop-gui
 	depends = qrencode
 	provides = fwknop-gui
 	conflicts = fwknop-gui
-	source = git+https://github.com/jp-bennett/fwknop-gui.git
-	md5sums = SKIP
+	source = https://github.com/jp-bennett/fwknop-gui/archive/refs/tags/v1.3-release.tar.gz
+	md5sums = 2a6312cde3d80cbdbb2d5960dcb51b12
 
 pkgname = fwknop-gui
