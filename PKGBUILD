@@ -1,13 +1,12 @@
 pkgname=pandoc-bin
-pkgver=2.18
+pkgver=2.19
 pkgrel=1
 pkgdesc="Pandoc - executable only, without 750MB Haskell depends/makedepends"
 url="https://pandoc.org"
 license=("GPLv2+")
 arch=('x86_64' 'aarch64')
 conflicts=("pandoc")
-provides=("pandoc")
-replaces=('pandoc-static' 'pandoc-lite')
+provides=("pandoc=$pkgver")
 optdepends=('texlive-core: for pdf output')
 
 # The binary release doesn't have the datafiles, so we need to yoink those out of the source tarball, too.
@@ -15,9 +14,9 @@ source=("$pkgname-source-$pkgver.tar.gz::https://github.com/jgm/pandoc/archive/$
 source_x86_64=("$pkgname-bin-$pkgver.tar.gz::https://github.com/jgm/pandoc/releases/download/${pkgver}/pandoc-${pkgver}-linux-amd64.tar.gz")
 source_aarch64=("$pkgname-bin-$pkgver.tar.gz::https://github.com/jgm/pandoc/releases/download/${pkgver}/pandoc-${pkgver}-linux-arm64.tar.gz")
 
-sha256sums=('dda629db52038c5cce29702886268203330e5a41c7b95d3f71e59b7ab03618dc')
-sha256sums_x86_64=('103df36dc21081b7205d763ef7705e340eb0ea7e18694239b328a549892cc007')
-sha256sums_aarch64=('a48160539c27c6a35413667b064f9af154d59ad592563dcaab8a07d427bda594')
+sha256sums=('19bffe7a2970014080a6a8ef5b365f89a88a18dbe757b771999e19907f0d571a')
+sha256sums_x86_64=('2afd7c0c385a5817003330a2359c2b6e04e0a7e167addd41dda51e523e807426')
+sha256sums_aarch64=('6c2daebcab7f8d6e7c8b91682be047286d9518f2bcb32515aea5206557fb67d1')
 
 package() {
   cd "${srcdir}/pandoc-${pkgver}"
