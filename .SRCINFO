@@ -15,4 +15,3 @@ pkgbase = natron-git
 	conflicts = natron
 
 pkgname = natron-git
-
