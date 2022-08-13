@@ -1,6 +1,6 @@
 pkgbase = plainartwork
 	pkgdesc = plainDE icons, flags, etc.
-	pkgver = 0.2
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://plainde.org
 	arch = x86_64
