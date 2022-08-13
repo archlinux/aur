@@ -3,7 +3,7 @@
 
 pkgname=autenticacao-gov-pt-bin
 pkgver=3.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Portuguese Citizen Card Application (Portugal eID) - version with pre compiled binaries"
 arch=('x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -50,8 +50,6 @@ package() {
 	mv "${srcdir}"/usr/local/{share,bin} "${pkgdir}/usr/local/"
 	mv "${srcdir}"/usr/local/* "${pkgdir}/usr/"
 	mv "${srcdir}"/usr/share/* "${pkgdir}/usr/share/"
-  # Fix libssl and libcrypto version 3 required upstream
-	sed -i 's/Exec=env QT_QPA_PLATFORMTHEME=gtk3 eidguiV2/Exec=LD_PRELOAD="\/usr\/local\/lib\/libcrypto.so.3 \/usr\/local\/lib\/libssl.so.3" env QT_QPA_PLATFORMTHEME=gtk3 eidguiV2/' "${pkgdir}"/usr/share/applications/pteid-mw-gui.desktop
   # Fix libzip.so.4 depedency: for now just point to the installed version of libzip
 	cd "${pkgdir}/usr/lib" 
 	ln -s libzip.so libzip.so.4
