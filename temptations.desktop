@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Temptations Remake
+Comment=Remake of the MSX game Temptations
+Exec=/usr/lib/temptations/temptations.run
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Icon=temptations
+Categories=Games

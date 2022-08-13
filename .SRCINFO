@@ -1,0 +1,21 @@
+pkgbase = temptations-git
+	pkgdesc = Remake of the MSX game Temptations
+	pkgver = 0.7855fbf
+	pkgrel = 1
+	url = https://github.com/pipagerardo/temptations
+	arch = x86_64
+	license = Unknown
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = cmake
+	source = git+https://github.com/pipagerardo/temptations
+	source = temptations.png
+	source = temptations.desktop
+	source = temptations.run
+	sha512sums = SKIP
+	sha512sums = 4235664352bc40450c73ae4e5297dc99ade1388af677d09faa1a4df5ac00069a0988cacf109f1d77f5cadaaa648550aa0ab3a94d49154f7184f1021e15a0d4ee
+	sha512sums = 30254998f8a4da9a5d6f41d8bc4aeabf1dbb3bafeb9e7a55cd6f002e304e4aff48baa3cbc70f3cdc1725949dff40505d1dc621df6aabe7d88d6e96aa078eca98
+	sha512sums = 536e1c5e05e623c4a5b5ed6a0dea3ec658ccee7de61f07189bf943efa842dd2c53717f9c6a2157a7cbba29b88f034a9ad4c7c06482929702fd0e0cf20f17b27e
+
+pkgname = temptations-git

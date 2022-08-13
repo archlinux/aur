@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+cd /usr/lib/temptations
+./temptations
+cd -
