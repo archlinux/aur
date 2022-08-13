@@ -3,20 +3,21 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-misc-git
-pkgver=Natron.2.4.1.r0.g73ee8412
+pkgver=Natron.2.4.3.r2.gaac35191
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Miscellaneous OpenFX plugins"
 url="https://github.com/NatronGitHub/openfx-misc"
 license=('GPL')
-depends=('libgl')
-makedepends=('openmp')
+depends=('libgl' 'python')
+makedepends=('git' 'openmp')
 optdepends=('natron-plugins-git: More presets for the Shadertoy plugin')
 
 _pkgname=${pkgname%-git}
 _url=${url%/${_pkgname}}
 
 conflicts=("${_pkgname}")
+provides=("${_pkgname}")
 
 source=("${_pkgname}::git+${url}"
         "openfx::git+${_url}/openfx"
