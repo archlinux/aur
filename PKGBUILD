@@ -2,7 +2,7 @@
 # Contributor: Jon Wiersma <archaur@jonw.org>
 
 pkgname=ib-tws
-pkgver=10.17.1s
+pkgver=10.17.1t
 pkgrel=1
 epoch=1
 pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers'
@@ -29,7 +29,7 @@ sha256sums=('4b65b33dc88d77fef6e7ba1bdc1ae88b149296d3e1eb87db251bfcdf119a1f22'
             '62fbd49b8c7fb5d4ae7491ca2b9072d42bbe589a2b9f0e14d09d1bf1177a3c46'
             '21070fa89c9053dff06ba799b6f9838bfd5ff209fd8dd710c5a97c3fc684af44'
             '9f74a204c45d47f551861cb231de89f2536f9966942da41f95d8f0ce5bcd13a4'
-            '0fe1e1252cd016f9f2c6649f4ab437b80358811d8ea5ef489b670bc786a145dc')
+            '19044430351eea87d4f739d6862c01ae21b9df5fa9ddf4a45232f5b9845bbcfe')
 
 build() {
   cd ${srcdir}
