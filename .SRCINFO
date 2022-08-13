@@ -1,21 +1,20 @@
 pkgbase = clips
 	pkgdesc = A forward-chaining rule-based programming language written in C that also provides procedural and object-oriented programming facilities.
-	pkgver = 6.31
+	pkgver = 6.40
 	pkgrel = 1
-	url = http://clipsrules.sourceforge.net/
+	url = https://www.clipsrules.net/
 	arch = x86_64
 	license = GPL
 	depends = termcap
 	depends = libxaw
 	depends = xbitmaps
-	source = https://downloads.sourceforge.net/project/clipsrules/CLIPS/6.31/clips_core_source_631.tar.gz
-	source = https://downloads.sourceforge.net/project/clipsrules/CLIPS/6.31/clips_documentation_631.tar.gz
-	source = https://downloads.sourceforge.net/project/clipsrules/CLIPS/6.31/examples_631.tar.gz
-	source = https://downloads.sourceforge.net/project/clipsrules/CLIPS/6.31/feature_tests_631.tar.gz
-	sha256sums = 665b393f1dad63e95ce1ae696899298ef7da25e0d52a2d06c1046cddce07b398
-	sha256sums = 07c7205e4a8bfedc60b70539c95f7432ed97334a2eaf113d19b87155dedb8ebf
-	sha256sums = 00dbc8c60db5f62426a9483fc8ed0f1ac1157056cf5313bb07898d19502f9ab4
-	sha256sums = fad33842efd4abbf713ad715746e53c09fcda0a4f1f2fd1aeccef5650c0aac10
+	source = https://downloads.sourceforge.net/project/clipsrules/CLIPS/6.40/clips_core_source_640.tar.gz
+	source = https://downloads.sourceforge.net/project/clipsrules/CLIPS/6.40/clips_documentation_640.tar.gz
+	source = https://downloads.sourceforge.net/project/clipsrules/CLIPS/6.40/clips_examples_640.tar.gz
+	source = https://downloads.sourceforge.net/project/clipsrules/CLIPS/6.40/clips_feature_tests_640.tar.gz
+	sha256sums = ad6037a6a5b5e55a2871b94abed58bb710acc443022cb19096d3b8fe83a125df
+	sha256sums = f116816748dde1394b055ce7c919557e80cb40fbbc0649e03bf9122fc4d9955c
+	sha256sums = 743e82314c75ab9638717c3621a75a39b41c62d1feb6a56c498847b8389c66d6
+	sha256sums = 8354ed3e2bbc54b98df6cd1e48196d3f28f342296bb6551d4b598967ff254bdf
 
 pkgname = clips
-
