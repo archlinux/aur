@@ -1,14 +1,13 @@
 pkgbase = python-django-post-office
 	pkgdesc = A simple app to send and manage your emails in Django
-	pkgver = 3.5.3
-	pkgrel = 2
+	pkgver = 3.6.1
+	pkgrel = 1
 	url = https://github.com/ui/django-post_office
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-django-jsonfield
-	source = python-django-post-office-3.5.3.tar.gz::https://github.com/ui/django-post_office/archive/v3.5.3.tar.gz
-	sha256sums = d74a8b0e80f245a720a7c0344daba56ec6be03a1aaf8c45f3624405c3a4b7f4d
+	source = python-django-post-office-3.6.1.tar.gz::https://github.com/ui/django-post_office/archive/v3.6.1.tar.gz
+	sha256sums = db3648b2e48d98a6bb8c0c19376c4acd76002702b1524a99f29d1fddfd2c6201
 
 pkgname = python-django-post-office
-
