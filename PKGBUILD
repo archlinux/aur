@@ -2,7 +2,7 @@
 
 pkgname=foobar2000-component-uie-console-bin
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 _buildhash='be77fbdf14eaec23fbf99070027b0b68'
 _fooname='foo_uie_console'
 pkgdesc='A Columns UI console panel for foobar2000'
