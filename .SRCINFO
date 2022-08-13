@@ -1,14 +1,14 @@
 pkgbase = dng
 	pkgdesc = Wrapper around Adobe DNG Converter via wine to provide POSIX command line parsing
 	pkgver = 13.4
-	pkgrel = 1
-	url = https://github.com/thorpelawrence/dng-converter.sh
+	pkgrel = 2
+	url = https://github.com/thorpelawrence/dng
 	arch = x86_64
 	license = ZLIB
 	makedepends = git
 	makedepends = innoextract
 	depends = wine
-	source = dng-13.4::git+https://github.com/thorpelawrence/dng-converter.sh.git
+	source = dng-13.4::git+https://github.com/thorpelawrence/dng.git
 	source = https://download.adobe.com/pub/adobe/dng/win/AdobeDNGConverter_x64_13_4.exe
 	sha512sums = SKIP
 	sha512sums = 524abefab5eda38f7665723214aa82f2e8db9d9fc6923cbebb6e302ace86c51edd95c3cc240874a3d76f83c966731f9d691678342b9e2a158d9e1a71b1f341cd
