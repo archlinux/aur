@@ -1,7 +1,7 @@
 # Maintainer: Kamack38 <kamack38.biznes@gmail.com>
 _pkgname='metro-for-steam-skin'
 pkgname="up-${_pkgname}"
-pkgver=r366.017b3d7
+pkgver=r367.13b1cf4
 pkgrel=1
 pkgdesc="This non-official addon for Metro for Steam fixes bugs with the current version and adds optional content for you to choose from."
 arch=('i686' 'x86_64')
