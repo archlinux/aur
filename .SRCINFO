@@ -1,7 +1,7 @@
 pkgbase = unrealtournament
 	pkgdesc = The classic Unreal Tournament from 1999 (Retail CD or DVD required)
 	pkgver = 469b
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.unrealtournament.com/
 	arch = i686
 	arch = x86_64

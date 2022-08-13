@@ -9,12 +9,12 @@
 UT_PREFS="${HOME}/.loki/ut"
 UT_DATA_PATH="/opt/ut/"
 
-# Function to reveal osspd execution
-a=$(ps -U root | grep osspd) 
-if [ -z $a ]; then
-    notify-send UT -i ut "Please execute <p><b>service osspd start</b></p><p>or</p><b>systemctl start osspd.service</b>";
-    exit 1;
-fi
+# Function to reveal osspd execution - not needed since patch 469b
+#a=$(ps -U root | grep osspd) 
+#if [ -z $a ]; then
+#    notify-send UT -i ut "Please execute <p><b>service osspd start</b></p><p>or</p><b>systemctl start osspd.service</b>";
+#    exit 1;
+#fi
 
 # Function to find the real directory a program resides in.
 # Feb. 17, 2000 - Sam Lantinga, Loki Entertainment Software
