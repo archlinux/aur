@@ -1,0 +1,15 @@
+pkgbase = ruby-httpclient-fixcerts
+	pkgdesc = Gives something like the functionality of libwww-perl (LWP) in Ruby
+	pkgver = 2.8.5
+	pkgrel = 1
+	url = https://github.com/nahi/httpclient
+	arch = any
+	license = custom:RUBY
+	depends = ruby
+	provides = ruby-httpclient
+	noextract = httpclient-fixcerts-2.8.5.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/httpclient-fixcerts-2.8.5.gem
+	sha1sums = 3466f302f0ca6f89f5c7474c8942f09b87a63487
+
+pkgname = ruby-httpclient-fixcerts
