@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=flexo
 pkgrel=1
-pkgver=1.6.6
+pkgver=1.6.7
 pkgdesc='A central pacman cache'
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/nroi/${pkgname}"
@@ -17,7 +17,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nroi/${pkgname}/archive
         'sysuser.conf'
         'flexo.install'
         'flexo.service')
-sha256sums=('052f414b3363d6f2f88d22e088aeded2442c2ae2cc706973e1818a1e26a84fcb'
+sha256sums=('c8f8efbd8fcd84c7c22f1fe1b7e3945b1036134eb546b80d3e8109f44330593f'
             'b6a618c66d3ffb9ad119b0497d2181cdd382ec870cc768606debed40716c1f4e'
             '662e8c6c4d024ec035c2c02d9298a8cb6062cfb30d02bfaecf17a9d3d9b35167'
             '0ba13ff1d92b51433635e1fbf5f1017e3e06b3e408be663acb1fbf65f344a3ad')
