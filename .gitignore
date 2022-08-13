@@ -3,5 +3,6 @@ pkg
 source
 *.tar.gz.zst
 *.tar.gz
+*.tar.xz
 *.tar.zst
 tubefeeder
