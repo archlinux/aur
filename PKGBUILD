@@ -3,7 +3,7 @@
 _pkgname='nmeasim-python'
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=1.0.1.0.r24.20220808.33b56e9
+pkgver=1.0.1.0+1.r25.20220809.a1dd1cc
 pkgrel=1
 pkgdesc='A Python 3 GNSS/NMEA receiver simulation, with GUI.'
 arch=(
@@ -20,7 +20,11 @@ depends=(
 )
 makedepends=(
   'git'
-  'python-setuptools'
+  'python-build'
+  'python-installer'
+  'python-setuptools-scm'
+  'python-wheel'
+  # 'python-setuptools'
 )
 optdepends=()
 provides=(
@@ -34,7 +38,7 @@ conflicts=(
 )
 replaces=()
 source=(
-  "${_pkgname}::git+https://gitlab.com/nmeasim/nmeasim.git"
+  "${_pkgname}::git+https://gitlab.com/nmeasim/nmeasim.git#branch=remove-distutils-build"
 )
 sha256sums=(
   'SKIP'
@@ -62,23 +66,25 @@ pkgver () {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
+  # python setup.py build
 }
 
-check() {
-  cd "${srcdir}/${_pkgname}"
-
-  python setup.py test
-}
+# check() {
+#   cd "${srcdir}/${_pkgname}"
+# 
+#  python setup.py test
+# }
 
 package() {
   cd "${srcdir}/${_pkgname}"
 
   export PYTHONHASHSEED=0
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  # python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
-  local _pyver="$(python -V | awk '{print $2}' | awk -F. '{print $1"."$2}')"
-  install -D -v -m644 nmeasim/icon.ico "${pkgdir}/usr/lib/python${_pyver}/site-packages/nmeasim/icon.ico"
+  #local _pyver="$(python -V | awk '{print $2}' | awk -F. '{print $1"."$2}')"
+  #install -D -v -m644 nmeasim/icon.ico "${pkgdir}/usr/lib/python${_pyver}/site-packages/nmeasim/icon.ico"
 
   mv -v "${pkgdir}/usr/bin/nmeasim" "${pkgdir}/usr/bin/nmeasim-python" # Renaming it, because there is also Java-nmeasim (https://github.com/abuech2s/nmeasim) and a Windows-nmeasim (https://sourceforge.net/projects/nmeasim/), which might be worth to have as Arch Linux packages as well.
 
