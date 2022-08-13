@@ -1,16 +1,17 @@
 pkgbase = ocaml-easy-format
 	pkgdesc = Pretty-printing library for OCaml
 	pkgver = 1.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ocaml-community/easy-format
 	arch = x86_64
 	license = BSD
 	makedepends = dune
+	depends = ocaml
 	depends = glibc
 	provides = ocaml-easy-format
 	options = !strip
 	options = staticlibs
 	source = https://github.com/ocaml-community/easy-format/releases/download/1.3.4/easy-format-1.3.4.tbz
-	sha256sums = eafccae911c26ca23e4ddacee3eaa54654d20f973b8680f84b708cef43adc416
+	sha256sums = 1dbf051e9f68574dde6e2e254a66b9c524ca425e80b36e99af96ed964ab610c3
 
 pkgname = ocaml-easy-format
