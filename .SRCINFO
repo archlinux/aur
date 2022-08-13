@@ -1,7 +1,7 @@
 pkgbase = python-nvidia-dali
 	pkgdesc = A library containing both highly optimized building blocks and an execution engine for data pre-processing in deep learning applications
 	pkgver = 1.16.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/NVIDIA/DALI
 	arch = x86_64
 	license = Apache
@@ -14,8 +14,11 @@ pkgbase = python-nvidia-dali
 	depends = libtar
 	depends = lmdb
 	depends = opencv
-	depends = protobuf
 	depends = python
+	optdepends = python-pytorch
+	optdepends = python-tensorflow
+	options = !emptydirs
+	options = !lto
 	source = python-nvidia-dali::git+https://github.com/NVIDIA/DALI.git#tag=v1.16.0
 	sha512sums = SKIP
 

@@ -1,9 +1,10 @@
 # Maintainer: Butui Hu <hot123tea123@gmail.com>
 
+_CUDA_ARCH_LIST="52;53;60;61;62;70;72;75;80;86"
 pkgname=python-nvidia-dali
 _pkgname=dali
 pkgver=1.16.0
-pkgrel=1
+pkgrel=3
 pkgdesc='A library containing both highly optimized building blocks and an execution engine for data pre-processing in deep learning applications'
 arch=('x86_64')
 url='https://github.com/NVIDIA/DALI'
@@ -14,7 +15,6 @@ depends=(
   libtar
   lmdb
   opencv
-  protobuf
   python
 )
 makedepends=(
@@ -23,7 +23,11 @@ makedepends=(
   git
   python-setuptools
 )
-OPTIONS=(!lto)
+optdepends=(
+  python-pytorch
+  python-tensorflow
+)
+options=(!emptydirs !lto)
 source=("${pkgname}::git+https://github.com/NVIDIA/DALI.git#tag=v${pkgver}")
 sha512sums=('SKIP')
 
@@ -34,20 +38,45 @@ get_pyver() {
 prepare() {
   cd "${srcdir}/${pkgname}"
   git submodule update --init --recursive
+  # quick fix for https://github.com/archlinuxcn/repo/issues/2877
+  export CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
 }
 
 build() {
   cmake \
     -B "${srcdir}/build" \
+    -DBUILD_BENCHMARK=OFF \
+    -DBUILD_CUFILE=ON \
+    -DBUILD_FFTS=ON \
+    -DBUILD_LIBSND=ON \
+    -DBUILD_LIBTAR=ON \
+    -DBUILD_LIBTIFF=ON \
     -DBUILD_LMDB=ON \
+    -DBUILD_NVDEC=ON \
+    -DBUILD_NVJPEG2K=ON \
+    -DBUILD_NVJPEG=ON \
+    -DBUILD_NVML=ON \
+    -DBUILD_NVOF=ON \
+    -DBUILD_NVTX=OFF \
+    -DBUILD_PROTOBUF=ON \
+    -DBUILD_PYTHON=ON \
+    -DBUILD_TEST=OFF \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_SKIP_RPATH=ON \
+    -DCUDA_TARGET_ARCHS=${_CUDA_ARCH_LIST} \
     -DProtobuf_USE_STATIC_LIBS=OFF \
+    -DVERBOSE_LOGS=ON \
+    -DWITH_DYNAMIC_CUDA_TOOLKIT=ON \
     -S "${srcdir}/${pkgname}"
   make -C "${srcdir}/build"
   cd "${srcdir}/build/dali/python"
   python setup.py build
+  # built tf plugin
+  cmake -B ${srcdir}/build-tf \
+    -DCUDA_VERSION=11.7 \
+    -S ${srcdir}/${pkgname}/dali_tf_plugin
+  make -C ${srcdir}/build-tf
 }
 
 package() {
@@ -59,6 +88,8 @@ package() {
   ln -sf "/usr/lib/python$(get_pyver)/site-packages/nvidia/dali/libdali_core.so" "${pkgdir}/usr/lib/libdali_core.so"
   ln -sf "/usr/lib/python$(get_pyver)/site-packages/nvidia/dali/libdali_kernels.so" "${pkgdir}/usr/lib/libdali_kernels.so"
   ln -sf "/usr/lib/python$(get_pyver)/site-packages/nvidia/dali/libdali_operators.so" "${pkgdir}/usr/lib/libdali_operators.so"
+  # install tf plugin
+  make -C ${srcdir}/build-tf
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 # vim:set ts=2 sw=2 et:
-
