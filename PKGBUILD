@@ -3,7 +3,7 @@
 
 pkgname=lceda-pro-bin
 pkgver=1.7.31
-pkgrel=2
+pkgrel=3
 pkgdesc="立创EDA专业版，专业、强大的国产PCB设计工具，永久免费全新的交互式布线引擎，流畅，不卡顿，完全的独立自主知识产权，让您放心专注于设计，下一代工程师的首选EDA工具"
 arch=('x86_64')
 url="https://pro.lceda.cn/"
@@ -45,9 +45,9 @@ package() {
     install -Dm0644 ${pkgdir}/opt/${pkgname%-bin}/LCEDA-PRO.dkt \
                     ${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop
 
-    sed -i 's|/lceda-pro-linux-x64/icon/icon_128x128.png|lceda-pro|g' \
+    sed -i 's|/opt/lceda-pro/icon/icon_128x128.png|lceda-pro|g' \
                                     ${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop
-    sed -i 's|/lceda-pro-linux-x64/||g' ${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop
+    sed -i 's|/opt/lceda-pro/||g' ${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop
 
     rm -rf ${pkgdir}/opt/${pkgname%-bin}/LCEDA-PRO.dkt
 

@@ -1,7 +1,7 @@
 pkgbase = lceda-pro-bin
 	pkgdesc = 立创EDA专业版，专业、强大的国产PCB设计工具，永久免费全新的交互式布线引擎，流畅，不卡顿，完全的独立自主知识产权，让您放心专注于设计，下一代工程师的首选EDA工具
 	pkgver = 1.7.31
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pro.lceda.cn/
 	install = lceda-pro-bin.install
 	arch = x86_64
