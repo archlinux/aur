@@ -3,26 +3,25 @@
 
 _pkgname=OpenTimelineIO
 pkgname=${_pkgname,,}-git
-pkgver=last_pure_python.r221.g6ce63ff7
+pkgver=last_pure_python.r346.g6cd4161a
 pkgrel=1
 pkgdesc='Open Source API and interchange format for editorial timeline information'
+url='http://opentimeline.io/'
+license=(Apache)
 arch=(x86_64)
-url="https://opentimeline.io/"
-license=('custom:Modified Apache')
-depends=(python-aaf2)
-makedepends=(cmake git python-pip)
-provides=(${_pkgname,,})
-conflicts=(${_pkgname,,})
-source=("$_pkgname::git+https://github.com/PixarAnimationStudios/$_pkgname"
-        "any::git+https://github.com/thelink2012/any"
-        "optional-lite::git+https://github.com/martinmoene/optional-lite"
-        "pybind11::git+https://github.com/pybind/pybind11"
-        "rapidjson::git+https://github.com/Tencent/rapidjson")
-sha512sums=('SKIP'
+depends=(python-aaf2 python-setuptools)
+makedepends=(cmake imath python-pip pybind11 git)
+optdepends=('pyside2: Required to run otioview')
+source=($_pkgname::git+https://github.com/AcademySoftwareFoundation/$_pkgname
+        any::git+https://github.com/thelink2012/any
+        optional-lite::git+https://github.com/martinmoene/optional-lite
+        rapidjson::git+https://github.com/Tencent/rapidjson
+        opentimelineio-c++17.patch)
+sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            '36650ae9ab93af5ea9006e3e074a5f33106378dc353ec18345615c1c5f5c0fdc')
 
 pkgver() {
   cd $_pkgname
@@ -30,57 +29,43 @@ pkgver() {
 }
 
 prepare() {
-  python_ver=$(python --version | sed -e 's/^./\L&/;s/[[:space:]]//;s/.[0-9]$//')
-
   cd $_pkgname
   git submodule init
-  for dependency in any optional-lite pybind11 rapidjson; do
+  for dependency in Imath pybind11; do
+    git rm src/deps/$dependency
+  done
+  for dependency in any optional-lite rapidjson; do
     git config submodule.src/deps/$dependency.url $srcdir/$dependency
   done
   git submodule update
 
-  # Enable building of C++ bindings
-  sed -i '/OTIO_CXX_INSTALL/ s/OFF/ON/' setup.py
-  sed -i '/OTIO_SHARED_LIBS/ s/OFF/ON/' setup.py
-  sed -i "/CMAKE_BUILD_TYPE/ a\            \'-DCMAKE_INSTALL_PREFIX=/usr\'," setup.py
+  # Unbundle pybind11
+  sed -e '/set(DEPS_SUBMODULES/ s/pybind11 //' -i src/deps/CMakeLists.txt # Unbundle pybind11
+  sed -e '/if(OTIO_PYTHON_INSTALL)/,+3d' -i src/deps/CMakeLists.txt
+  sed -e '1 i\find_package(pybind11)' -i src/py-opentimelineio/opentime-bindings/CMakeLists.txt \
+                                      -i src/py-opentimelineio/opentimelineio-bindings/CMakeLists.txt
 
-  # Define the installation directory for Python bindings
-  sed -i "/PYTHON_INSTALL_DIR/ s|install_dir|'lib/$python_ver/site-packages'|" setup.py
+  # Unbundle Imath
+  sed -e "/DOTIO_INSTALL_PYTHON_MODULES/ i\            '-DOTIO_FIND_IMATH:BOOL=ON'," -i setup.py
 
-  # Disable installation of C++ bindings during the build
-  sed -i '/target.*install/ d' setup.py
+  #  Use native C++17 types
+  patch -d "$srcdir"/OpenTimelineIO -p2 < "$srcdir"/opentimelineio-c++17.patch
 }
 
 build() {
-  # Configure Makefiles and build Python bindings
-  cd $_pkgname
-  python setup.py build
+  cmake -B build -S OpenTimelineIO \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DOTIO_FIND_IMATH=ON
+  cmake --build build
 
-  # Build C++ bindings
-  cd build/temp.*
-  make
+  cd OpenTimelineIO
+  python setup.py build
 }
 
 package() {
-  python_ver=$(python --version | sed -e 's/^./\L&/;s/[[:space:]]//;s/.[0-9]$//')
+  DESTDIR="$pkgdir" cmake --install build
 
-  # Install Python bindings
-  cd $_pkgname
-  python setup.py install --root=$pkgdir --skip-build --optimize=1
-
-  # Install C++ bindings
-  cd build/temp.*
-  make DESTDIR=$pkgdir install
-
-  # Install license file
-  install -D -m644 ../../LICENSE.txt \
-                   "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
-
-  # Create symlinks in /usr/lib
-  cd $pkgdir/usr/lib
-  ls -1 $python_ver/site-packages/${pkgname%-*}/*.so | \
-    awk -F \/ '{print $(NF)}' | \
-    xargs -I {} ln -s $python_ver/site-packages/${pkgname%-*}/{} {}
+  cd OpenTimelineIO
+  DESTDIR="$pkgdir" python setup.py install --root="$pkgdir" --optimize=1
+  rm -fr "$pkgdir"/build
 }
-
-# vim:set ts=2 sw=2 et:
