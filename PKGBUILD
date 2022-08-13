@@ -3,19 +3,20 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-arena-git
-pkgver=Natron.2.4.1.r0.g2d37552
+pkgver=Natron.2.4.3.r6.g2e56d77
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Extra OpenFX plugins for Natron"
 url="https://github.com/NatronGitHub/openfx-arena"
 license=('GPL')
-depends=('libcdr' 'libgl' 'libmagick' 'librsvg' 'libxt' 'libzip' 'opencolorio1' 'poppler-glib' 'sox')
-makedepends=('jbigkit' 'openmp' 'pango')
+depends=('libcdr' 'libgl' 'libmagick' 'librsvg' 'libxt' 'libzip' 'poppler-glib' 'sox')
+makedepends=('git' 'jbigkit' 'opencolorio1' 'openmp' 'pango')
 
 _pkgname=${pkgname%-git}
 _url=${url%/${_pkgname}}
 
 conflicts=("${_pkgname}")
+provides=("${_pkgname}")
 
 source=("${_pkgname}::git+${url}"
         "openfx::git+${_url}/openfx"
@@ -57,16 +58,21 @@ prepare() {
   git submodule init
   git config submodule.tinydir.url ${srcdir}/tinydir
   git submodule update
+
   cd ../../../
 
 # Change OpenColorIO library references to the version of "opencolorio1" package
   find OpenFX-IO/IOSupport/ -name GenericOCIO.* \
-        -exec sed -i 's/include <OpenColorIO/include <OpenColorIO1/' {} \;
+        -exec sed -i 's|include <OpenColorIO/|include <OpenColorIO1/|' {} \;
 
 # Solve a problem in the linking of the "Extra" plugins,
 # caused by a misconfiguration of pkgconfig in the "libzip" package
   sed -i '/ZIP_LINKFLAGS/ s|\$.*libs.*|-lbz2 -llzma -lzstd -lgnutls -lnettle -lz|' \
           Makefile.master
+
+# The ReadPDF plugin needs Poppler, which uses C++17 features
+  sed -i "/POPPLER_CXXFLAGS/ s/$/ -std=c++17/" \
+         Makefile.master
 }
 
 build() {
