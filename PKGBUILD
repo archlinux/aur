@@ -14,9 +14,9 @@ license=(MPL GPL LGPL)
 url=https://gitlab.com/dr460nf1r3/settings/
 depends=(gtk3 libxt mime-types dbus-glib nss ttf-font libpulse ffmpeg kfiredragonhelper)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
-             autoconf2.13 rust clang llvm jack nodejs cbindgen nasm python-pyqt5 python-cmd2
+             autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
              python-setuptools python-zstandard git binutils lld dump_syms
-             wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi pciutils) # pciutils: only to avoid some PGO warning
+             'wasi-compiler-rt>13' 'wasi-libc>=1:0+258+30094b6' 'wasi-libc++>13' 'wasi-libc++abi>13' pciutils) # pciutils: only to avoid some PGO warning
 optdepends=('firejail-git: Sandboxing the browser using the included profiles'
             'profile-sync-daemon: Load the browser profile into RAM'
             'whoogle: Searching the web using a locally running Whoogle instance'
@@ -52,6 +52,19 @@ validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Rel
 
 # change this to false if you do not want to run a PGO build for aarch64 as well
 _build_profiled_aarch64=true
+
+# Fix some potential Python and a Rust error
+if [ "${CC}" != "gcc" ] || [ "${CXX}" != "g++" ]; then
+  export CC=gcc
+  export CXX=g++
+  export LD=ld
+  export AS=""
+  export NM=""
+  export AR=""
+  export RANLIB=""
+  export OBJCOPY=""
+  export LDFLAGS="${LDFLAGS/-static/}"
+fi
 
 prepare() {
   mkdir -p mozbuild
@@ -262,6 +275,7 @@ fi
   # Needed build fix
   patch -Np1 -i "${_cachyos_patches_dir}"/zstandard-0.18.0.patch
   patch -Np1 -i "${_patches_dir}"/custom/glibc236.patch
+  patch -Np1 -i "${_patches_dir}"/custom/rust163.patch
 
   rm -f "${srcdir}"/common/source_files/mozconfig
   cp -r "${srcdir}"/common/source_files/* ./
