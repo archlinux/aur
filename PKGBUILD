@@ -9,7 +9,6 @@ url="https://github.com/NatronGitHub/openfx-gmic"
 license=('custom:CeCILL-C' 'custom:CeCILLv2')
 depends=('fftw' 'libgl' 'libpng')
 makedepends=('openmp')
-conflicts=("${pkgname}-git")
 
 _natron_ver="Natron-${pkgver}"
 _pkgname="${pkgname}-${_natron_ver}"

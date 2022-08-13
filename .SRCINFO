@@ -10,7 +10,6 @@ pkgbase = openfx-gmic
 	depends = fftw
 	depends = libgl
 	depends = libpng
-	conflicts = openfx-gmic-git
 	source = openfx-gmic-Natron-2.4.3.tar.gz::https://github.com/NatronGitHub/openfx-gmic/archive/refs/tags/Natron-2.4.3.tar.gz
 	source = openfx-Natron-2.4.3.tar.gz::https://github.com/NatronGitHub/openfx/archive/refs/tags/Natron-2.4.3.tar.gz
 	sha512sums = 3ab5d0acbdbfda003f6d465cbcd29bd287cccd536ad1d9d554d5c0422d44b8cd748174c6a9b7b9bdf297d630dbff32113715cccb1e491c1acb7f901069028f0e
