@@ -1,7 +1,7 @@
 # Maintainer: Luna D. Dragon (nullrequest) <nullreques [@] vivaldi.net>
 
 pkgbase=linux-clang
-pkgver=5.18.16.arch1
+pkgver=5.19.1.arch2
 pkgrel=1
 pkgdesc='Linux but built with clang'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -27,7 +27,7 @@ validpgpkeys=(
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
 sha256sums=('SKIP'
-            '8a7acc62c4a4380cfd65d52bc60267bd3ed960df3a1ec4f33e82a4588630d9d0')
+            '5b34d7b2ab00439dc32869e2ae1c2decb38ceb6d3aedf81d0c774c2dd0535011')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

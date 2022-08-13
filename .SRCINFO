@@ -1,8 +1,8 @@
 pkgbase = linux-clang
 	pkgdesc = Linux but built with clang
-	pkgver = 5.18.16.arch1
+	pkgver = 5.19.1.arch2
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v5.18.16-arch1
+	url = https://github.com/archlinux/linux/commits/v5.19.1-arch2
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -23,14 +23,14 @@ pkgbase = linux-clang
 	makedepends = lld
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.18.16-arch1
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.19.1-arch2
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha256sums = SKIP
-	sha256sums = 8a7acc62c4a4380cfd65d52bc60267bd3ed960df3a1ec4f33e82a4588630d9d0
+	sha256sums = 5b34d7b2ab00439dc32869e2ae1c2decb38ceb6d3aedf81d0c774c2dd0535011
 
 pkgname = linux-clang
 	pkgdesc = The Linux but built with clang kernel and modules
