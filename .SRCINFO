@@ -4,6 +4,7 @@ pkgbase = swww
 	pkgrel = 0
 	url = https://github.com/Horus645/swww
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	makedepends = cargo
 	depends = gcc-libs
