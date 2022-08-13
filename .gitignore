@@ -1,0 +1,5 @@
+*.deb
+src/
+pkg/
+repetier-server*.pkg.*
+*.tmp

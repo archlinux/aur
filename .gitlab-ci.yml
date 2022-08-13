@@ -1,0 +1,41 @@
+variables:
+  GIT_STRATEGY: clone
+
+
+check-for-update:
+    image: archlinux:latest
+    before_script:
+      - pacman-key --init
+      - pacman -Sy --noconfirm sudo binutils git openssh
+      - git config --global user.email "${GIT_USER_MAIL}"
+      - git config --global user.name "${GIT_USER_NAME}"
+      - mkdir -p ~/.ssh
+      - echo "${GIT_SSH_KEY}" > ~/.ssh/id_rsa
+      - echo "${AUR_SSH_KEY}" > ~/.ssh/id_rsa_aur
+      - chmod 600 ~/.ssh/id_rsa
+      - chmod 600 ~/.ssh/id_rsa_aur
+      - ssh-keyscan gitlab.jonasled.de >> ~/.ssh/known_hosts
+      - ssh-keyscan aur.archlinux.org >> ~/.ssh/known_hosts
+      - git checkout master
+      - git remote rm origin
+      - git remote add origin git@gitlab.jonasled.de:jonasled/repetier-server-aur.git
+    script:
+      - latest_version=$(curl https://download1.repetier.com/files/server/changelog.txt | grep "Version" | head -n1 | grep -Po "(\d+\.?)+")
+      - source <(grep = PKGBUILD)
+      - |
+        if [ "${pkgver}" == "${latest_version}" ]; then
+          echo "Current Version (${pkgver}) is the latest one, nothing to do"
+          exit 0
+        fi
+      - 'echo "New Version available: ${latest_version} (current: ${pkgver})"'
+      - 'echo "Updating to the latest version"'
+      - ./update.sh ${latest_version}
+      - 'echo "Update finished"'
+      - 'echo "Creating update"'
+      - git add .
+      - git commit -m "Update to ${latest_version}"
+      - git push --set-upstream origin master
+      - git remote add aur ssh://aur@aur.archlinux.org/repetier-server.git
+      - GIT_SSH_COMMAND='ssh -i ~/.ssh/id_rsa_aur' git push --set-upstream aur master
+    only:
+      - schedules

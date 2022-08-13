@@ -16,7 +16,7 @@ for type in source sha256sums; do
     for architecture in ${arch[@]}; do
         if [ "$type" == "source" ]; then
             domain=${type}_${architecture}
-            wget -q ${!domain} -O ${architecture}.tmp
+            curl -o ${architecture}.tmp ${!domain}
             shasum=$(sha256sum ${architecture}.tmp)
             echo "sha256sums_${architecture}=('${shasum%%[[:space:]]*}')"
             sed -i "s/sha256sums_${architecture}=.*/sha256sums_${architecture}=('${shasum%%[[:space:]]*}')/g" PKGBUILD
@@ -25,3 +25,4 @@ for type in source sha256sums; do
         fi
     done
 done
+sudo -u nobody makepkg --printsrcinfo > .SRCINFO
