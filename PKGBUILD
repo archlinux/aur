@@ -1,5 +1,5 @@
-# Maintainer: Aditya Mishra <https://github.com/pegvin/goxel2/issues>
-pkgname=goxel2-git
+# Maintainer: Aditya Mishra <https://github.com/pegvin/csprite/issues>
+pkgname=csprite-git
 pkgver=continuous.r40.gf065ce8
 pkgrel=1 # Update if you changed something but that is so minor change you don't want to change the version
 pkgdesc="a tiny pixel art editor"
