@@ -4,7 +4,7 @@
 pkgname=easyeda-pro-bin
 _pkgname=${pkgname%-bin}
 pkgver=1.7.31
-pkgrel=2
+pkgrel=3
 pkgdesc="EasyEDA Professional Edition"
 arch=('x86_64')
 url="https://pro.easyeda.com/"
@@ -45,9 +45,9 @@ package() {
 	install -Dm644	${pkgdir}/opt/${_pkgname}/EasyEDA-PRO.dkt \
 					${pkgdir}/usr/share/applications/${_pkgname}.desktop
 
-	sed -i 's|/easyeda-pro-linux-x64/icon/icon_128x128.png|easyeda-pro|g' \
+	sed -i 's|/opt/easyeda-pro/icon/icon_128x128.png|easyeda-pro|g' \
 		${pkgdir}/usr/share/applications/${_pkgname}.desktop
-	sed -i 's|/easyeda-pro-linux-x64/||g' \
+	sed -i 's|/opt/easyeda-pro/||g' \
 		${pkgdir}/usr/share/applications/${_pkgname}.desktop
 	rm -rf ${pkgdir}/opt/${_pkgname}/EasyEDA-PRO.dkt
 

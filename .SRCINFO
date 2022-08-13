@@ -1,7 +1,7 @@
 pkgbase = easyeda-pro-bin
 	pkgdesc = EasyEDA Professional Edition
 	pkgver = 1.7.31
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pro.easyeda.com/
 	install = easyeda-pro-bin.install
 	arch = x86_64
