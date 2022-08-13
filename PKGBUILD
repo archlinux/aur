@@ -2,7 +2,7 @@
 
 pkgname=openssl3-git
 pkgver=3.0.5.r1329.gd272ef5372
-pkgrel=1
+pkgrel=2
 pkgdesc="Toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols: install openssl-3* libraries without openssl-1* conflicts"
 arch=('i686' 'x86_64')
 url="https://www.openssl.org/"
@@ -11,6 +11,7 @@ depends=('glibc' 'perl')
 makedepends=('git')
 optdepends=('ca-certificates')
 options=('staticlibs')
+install=${pkgname}.install
 source=("git+https://github.com/openssl/openssl.git"
         "ca-dir.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/openssl/trunk/ca-dir.patch")
 sha512sums=('SKIP'
@@ -49,5 +50,7 @@ build() {
 
 package() {
 	mkdir -p "${pkgdir}/usr/local/lib/"
- 	cp -rf "${srcdir}"/openssl/lib*.so* "${pkgdir}"/usr/local/lib/ 
+	mkdir -p "${pkgdir}/etc/ld.so.conf.d/"
+ 	cp -rf "${srcdir}"/openssl/lib*.so* "${pkgdir}"/usr/local/lib/
+	echo "/usr/local/lib" > "${pkgdir}/etc/ld.so.conf.d/${pkgname}.conf"
 }

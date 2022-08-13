@@ -1,8 +1,9 @@
 pkgbase = openssl3-git
 	pkgdesc = Toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols: install openssl-3* libraries without openssl-1* conflicts
 	pkgver = 3.0.5.r1329.gd272ef5372
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openssl.org/
+	install = openssl3-git.install
 	arch = i686
 	arch = x86_64
 	license = apache
