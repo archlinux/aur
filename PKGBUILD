@@ -5,7 +5,7 @@
 _rubyver=2.5
 _gemname=bundler
 pkgname=ruby${_rubyver}-${_gemname}
-pkgver=2.3.19
+pkgver=2.3.20
 pkgrel=1
 pkgdesc="Manages an application's dependencies through its entire life, across many machines, systematically and repeatably."
 arch=('any')
@@ -15,7 +15,7 @@ depends=('ruby2.5')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-sha512sums=('015fa26fb4aafc2812c84e88501c641761fd0e4b31ba4bfcf6de793922978a6de90ed52a380ec91693e5398a922145377500fb6b4b8b9c466b3820615f654008')
+sha512sums=('7b768b54298bb96f927dd0d422edd5aad4af87b43f9e9897e1cbc35df9da26ee1fd47aac1b9e3291c22a6eadbc9ff62a6131d6558955ec4560983e77e2f47498')
 
 package() {
   cd "$srcdir"
