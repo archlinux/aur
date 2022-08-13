@@ -2,8 +2,8 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 _pkgname=lv2
-pkgname="$_pkgname-git"
-pkgver=1.18.7.r1399.8124b4e
+pkgname=$_pkgname-git
+pkgver=1.18.8.r1419.bd69ed7
 pkgrel=1
 pkgdesc='Plugin standard for audio systems (git version)'
 arch=(i686 x86_64)
@@ -43,7 +43,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  local ver=$(grep -E "^\s+version: '.*'" meson.build | cut -d "'" -f 2)
+  local ver=$(grep -E "^\s+version: '[0-9]+\.[0-9]+\.[0-9]+'" meson.build | cut -d "'" -f 2)
   echo ${ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 

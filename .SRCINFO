@@ -1,6 +1,6 @@
 pkgbase = lv2-git
 	pkgdesc = Plugin standard for audio systems (git version)
-	pkgver = 1.18.7.r1399.8124b4e
+	pkgver = 1.18.8.r1419.bd69ed7
 	pkgrel = 1
 	url = http://lv2plug.in/
 	arch = i686
@@ -29,7 +29,7 @@ pkgbase = lv2-git
 	optdepends = python-pygments: for lv2specgen.py
 	optdepends = python-rdflib: for lv2specgen.py
 	provides = lv2
-	provides = lv2=1.18.7
+	provides = lv2=1.18.8
 	conflicts = lv2
 	source = lv2::git+https://gitlab.com/lv2/lv2.git
 	sha256sums = SKIP
