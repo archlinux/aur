@@ -1,7 +1,7 @@
 # Maintainer: Aleksana QWQ <me@aleksana.moe>
 
 pkgname=hyfetch
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Neofetch with LGBTQ pride flags."
 arch=('any')
