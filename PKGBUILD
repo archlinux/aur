@@ -12,7 +12,6 @@ license=('GPL')
 depends=('libgl')
 makedepends=('openmp')
 optdepends=('natron-plugins-git: More presets for the Shadertoy plugin')
-conflicts=("${pkgname}-git")
 
 _natron_ver="Natron-${pkgver}"
 _pkgname="${pkgname}-${_natron_ver}"

@@ -8,7 +8,6 @@ pkgbase = openfx-misc
 	makedepends = openmp
 	depends = libgl
 	optdepends = natron-plugins-git: More presets for the Shadertoy plugin
-	conflicts = openfx-misc-git
 	source = openfx-misc-Natron-2.4.3.tar.gz::https://github.com/NatronGitHub/openfx-misc/archive/refs/tags/Natron-2.4.3.tar.gz
 	source = openfx-Natron-2.4.3.tar.gz::https://github.com/NatronGitHub/openfx/archive/refs/tags/Natron-2.4.3.tar.gz
 	source = openfx-supportext-Natron-2.4.3.tar.gz::https://github.com/NatronGitHub/openfx-supportext/archive/Natron-2.4.3.tar.gz
