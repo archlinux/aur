@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggpmisc
-_pkgver=0.4.7
+_pkgver=0.5.0
 pkgname=r-${_pkgname,,}
-pkgver=0.4.7
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Miscellaneous Extensions to 'ggplot2'"
 arch=('any')
@@ -24,6 +24,7 @@ depends=(
   r-scales
   r-splus2r
   r-tibble
+  r-confintr
 )
 optdepends=(
   r-broom
@@ -35,7 +36,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fd93e10f23c477cc39e3e776b380afeefc31f89283e09605ad6878b8a86536fc')
+sha256sums=('bcd3793f9f4c9ebdce10764224891acad91fff18d697fc818503c6576175ecc4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
