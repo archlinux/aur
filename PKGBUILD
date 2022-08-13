@@ -3,6 +3,7 @@
 # Contributor: Konstantin Gizdov (kgizdov) <arch@kge.pw>
 # Contributor: Adria Arrufat (archdria) <adria.arrufat+AUR@protonmail.ch>
 # Contributor: Thibault Lorrain (fredszaq) <fredszaq@gmail.com>
+# Contributor: wuxxin <wuxxin@gmail.com>
 
 pkgbase=tensorflow-rocm
 
@@ -69,11 +70,11 @@ check_dir() {
 
 prepare() {
   # Allow any bazel version
-  echo "*" > tensorflow-${_pkgver}/.bazelversion
+  echo "*" > $_srcname/.bazelversion
 
   # Get rid of hardcoded versions. Not like we ever cared about what upstream
   # thinks about which versions should be used anyway. ;) (FS#68772)
-  sed -i -E "s/'([0-9a-z_-]+) .= [0-9].+[0-9]'/'\1'/" tensorflow-${_pkgver}/tensorflow/tools/pip_package/setup.py
+  sed -i -E "s/'([0-9a-z_-]+) .= [0-9].+[0-9]'/'\1'/" $_srcname/tensorflow/tools/pip_package/setup.py
 
   # manually specify cusolver .so version
   patch -Np1 -i "${srcdir}/fix-cusolver-version.patch" -d tensorflow-${_pkgver}
@@ -87,8 +88,8 @@ prepare() {
 
   cd "${srcdir}"
 
-  cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-rocm
-  cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-opt-rocm
+  cp -r $_srcname tensorflow-${_pkgver}-rocm
+  cp -r $_srcname tensorflow-${_pkgver}-opt-rocm
 
   # These environment variables influence the behavior of the configure call below.
   export PYTHON_BIN_PATH=/usr/bin/python
