@@ -3,7 +3,7 @@
 
 pkgname=alist-bin
 _pkgname=${pkgname%-bin}
-pkgver=2.6.3
+pkgver=2.6.4
 _pkgver=${pkgver}
 pkgrel=1
 pkgdesc="Another file list program that supports multiple storage"
@@ -18,8 +18,8 @@ source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz"::"${url}/releases/download/v$
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz"::"${url}/releases/download/v${_pkgver}/alist-linux-amd64.tar.gz")
 sha256sums=('b96d55f7e83310a7556a5b023be60e12f44c484e3e136f1488d737126c9ed34f'
             'ba9cd5b593313183ad8c0f008a6edba539063193c416d3893a5344e104a3fff1')
-sha256sums_aarch64=('e11ea8bd318cf8d27a3bc1e0972740f9c7af8d09fe2c9a83326639dded69fdaa')
-sha256sums_x86_64=('a301066f7c5b88996cea6957ba27b93444e3524487ad2de7c8e3ba16f2c0d853')
+sha256sums_aarch64=('6d8e6d4ea94ab256f60ebbbfd02a0e3f7add52dd556a39996be4e7cb7d966122')
+sha256sums_x86_64=('4fcbc6d9736db48ef60d9bfa127b58d458ab9a1ec59d6d678239faef2bdf44f2')
 
 package() {
     install -Dm755 alist-linux* ${pkgdir}/usr/bin/alist
