@@ -1,0 +1,35 @@
+From 138bc84483e616f24be943c17ba67dce52561e42 Mon Sep 17 00:00:00 2001
+From: KokaKiwi <kokakiwi+git@kokakiwi.net>
+Date: Mon, 8 Aug 2022 00:34:05 +0200
+Subject: [PATCH 1/2] makepkg: Fix compiler flags
+
+---
+ cmake/build_helpers.cmake | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/cmake/build_helpers.cmake b/cmake/build_helpers.cmake
+index 2a313888..8ae42bfc 100644
+--- a/cmake/build_helpers.cmake
++++ b/cmake/build_helpers.cmake
+@@ -384,10 +384,14 @@ function(downloadImHexPatternsFiles dest)
+ endfunction()
+ 
+ macro(setupCompilerWarnings target)
+-    set(IMHEX_COMMON_FLAGS "-Wall -Wextra -Werror")
+-    set(IMHEX_C_FLAGS "${IMHEX_COMMON_FLAGS} -Wno-restrict -Wno-stringop-overread")
++    set(IMHEX_COMMON_FLAGS "")
++    set(IMHEX_C_FLAGS "${IMHEX_COMMON_FLAGS}")
++
++    if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
++        set(IMHEX_C_FLAGS "${IMHEX_C_FLAGS} -Wno-restrict -Wno-stringop-overread")
++    endif()
+ 
+     set(CMAKE_C_FLAGS    "${CMAKE_C_FLAGS}    ${IMHEX_C_FLAGS}")
+     set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS}  ${IMHEX_C_FLAGS}")
+     set(CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} ${IMHEX_COMMON_FLAGS}")
+-endmacro()
+\ No newline at end of file
++endmacro()
+-- 
+2.37.2
+

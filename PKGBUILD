@@ -3,8 +3,8 @@
 
 _pkgname=ImHex
 pkgname=${_pkgname,,}
-pkgver=1.20.0
-pkgrel=2
+pkgver=1.21.0
+pkgrel=1
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://imhex.werwolv.net'
 license=('GPL2')
@@ -22,7 +22,7 @@ source=("$pkgname::git+https://github.com/WerWolv/ImHex.git#tag=v$pkgver"
         "libromfs::git+https://github.com/WerWolv/libromfs"
         "capstone::git+https://github.com/capstone-engine/capstone#branch=next"
         "pattern_language::git+https://github.com/WerWolv/PatternLanguage#tag=ImHex-v$pkgver"
-        0001-makepkg-Fix-compiler-verification-and-compiler-flags.patch
+        0001-makepkg-Fix-compiler-flags.patch
         0002-fix-Deduplicate-resources-directories.patch)
 cksums=('SKIP'
         'SKIP'
@@ -30,24 +30,24 @@ cksums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        '1164761330'
-        '1600868006')
+        '545604144'
+        '3160577462')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'ecc146f00787774d72581fa684064eb42598c0f0cc721b4d72c1d02324377107'
-            'aaeb91e6de14b4f8d59834a44a9209bc2829553b7b11ede72112098a533384ae')
+            'ac4bf097441311abb860c423521eba2fa152194d9294b10ef403bbd8eb6105a1'
+            '091a4824ceb3f1f5da5efc1ee6ac025b1ab9b56d07bd75bdb52fae71f7dec046')
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'c1901108a6f558dc0e3a2695778f1dd633762c726962284de55eb1fd451ab325b4605b801d0dd3471c354e506a3e805c8147908b108a63982d5424baa71a38ce'
-        '51be06849a16eec5180a7523c2c78ac39238cb85d7d0d048691c45d8e38236f96c2b07c735970d5e282ff401a2146fad0764c2d9fa1fcab529865615118d69b1')
+        'e52df3fc4629151b2156f4d75b13b1d7ac7bff07cebb151da391a3982c71608f7797a03cff5c560263ac46f32843f08b23437c31f9ef729e2e4ccc2bdb826900'
+        '456edc844d9934be7fc7918ca15d82242df54563e400b6d58a20dd739793495834a9ac147517a2c88139926bef97f195849cd5a0b4b303cf452d4ef4317cb1af')
 options=(!lto)
 
 prepare() {
@@ -63,12 +63,12 @@ prepare() {
   git submodule update
 
   git apply \
-    "$srcdir/0001-makepkg-Fix-compiler-verification-and-compiler-flags.patch" \
+    "$srcdir/0001-makepkg-Fix-compiler-flags.patch" \
     "$srcdir/0002-fix-Deduplicate-resources-directories.patch"
 }
 
 build() {
-  export CXXFLAGS="$CXXFLAGS -Wno-inconsistent-missing-override"
+  export CXXFLAGS="$CXXFLAGS -Wno-inconsistent-missing-override -Wno-stringop-overflow"
 
   cmake -B build -S "$pkgname" \
     -Wno-dev \

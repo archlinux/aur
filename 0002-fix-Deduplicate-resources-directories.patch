@@ -1,4 +1,4 @@
-From 13a35764a80c550824157149bc433d474ef8f901 Mon Sep 17 00:00:00 2001
+From 8477deede059dfc3a3b413624914f9ed00840e9d Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Sat, 11 Jun 2022 23:08:31 +0200
 Subject: [PATCH 2/2] fix: Deduplicate resources directories
@@ -32,7 +32,7 @@ index 025b5f76..f6baaaa6 100644
      std::string combineStrings(const std::vector<std::string> &strings, const std::string &delimiter = "");
  
 diff --git a/lib/libimhex/source/helpers/fs.cpp b/lib/libimhex/source/helpers/fs.cpp
-index 55dc08b2..8e52cfce 100644
+index dc58ced3..5c346ec8 100644
 --- a/lib/libimhex/source/helpers/fs.cpp
 +++ b/lib/libimhex/source/helpers/fs.cpp
 @@ -1,4 +1,5 @@
@@ -41,7 +41,7 @@ index 55dc08b2..8e52cfce 100644
  
  #include <hex/api/content_registry.hpp>
  #include <hex/helpers/fs_macos.hpp>
-@@ -159,6 +160,8 @@ namespace hex::fs {
+@@ -156,6 +157,8 @@ namespace hex::fs {
          auto additionalDirs = ImHexApi::System::getAdditionalFolderPaths();
          std::copy(additionalDirs.begin(), additionalDirs.end(), std::back_inserter(paths));
  
@@ -51,8 +51,8 @@ index 55dc08b2..8e52cfce 100644
      }
  
 @@ -175,6 +178,8 @@ namespace hex::fs {
-             auto dataDirs = xdg::DataDirs();
-             std::copy(dataDirs.begin(), dataDirs.end(), std::back_inserter(paths));
+             for (auto &path : paths)
+                 path = path / "imhex";
  
 +            hex::deduplicateVector(paths);
 +
@@ -60,5 +60,5 @@ index 55dc08b2..8e52cfce 100644
          #endif
      }
 -- 
-2.37.1
+2.37.2
 
