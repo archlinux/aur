@@ -8,7 +8,7 @@
 _pkgbase=r8168
 pkgname=${_pkgbase}-dkms
 pkgver=8.050.03
-pkgrel=3
+pkgrel=4
 pkgdesc="A kernel module for Realtek 8168 network cards (DKMS version)"
 url="https://github.com/mtorromeo/r8168"
 license=("GPL")
@@ -22,7 +22,7 @@ source=("r8168-dkms::git+https://github.com/mtorromeo/r8168.git"
         "linux-5.18.patch"
         'linux-5.19.patch')
 sha256sums=('SKIP'
-            'e33abcbc8fbe3129459ebc60be3b2f8ed55ddc53755f4956d6feb16c61c43250'
+            'd37b8acbd4fe06f81538581712a04751a96fc37bad3a4bd3ae8329f8744c49b3'
             'd8d542770e504775600f686d03412a37cc32489872be7aeb388b5b08d9806096'
             'f5e08919764bc56d4f11b23fcb7cece663cae3f591992a0ca2be760e6890a9f8')
 install=r8168-dkms.install
@@ -42,4 +42,7 @@ package() {
 
 	cd "${pkgname}"
 	cp -dr --no-preserve='ownership' src "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/src"
+
+	echo "blacklist r8169" | \
+		install -Dm644 /dev/stdin "$pkgdir/usr/lib/modprobe.d/$pkgname.conf"
 }
