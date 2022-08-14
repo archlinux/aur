@@ -1,10 +1,10 @@
 pkgbase = lenovo-legion-wmi-dkms-git
-	pkgdesc = Lenovo Legion WMI Driver
+	pkgdesc = Driver to enable extra features on Lenovo Legion laptops
 	pkgver = r2.3e0e12b
 	pkgrel = 1
 	url = https://github.com/null-dev/lenovo-legion-wmi-dkms
 	arch = x86_64
-	license = GPL3
+	license = GPL2
 	depends = dkms
 	provides = lenovo-legion-wmi
 	conflicts = lenovo-legion-wmi
