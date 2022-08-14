@@ -1,12 +1,12 @@
 pkgbase = anyenv
 	pkgdesc = All in one for **env
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/anyenv/anyenv
 	install = anyenv.install
 	arch = any
 	license = MIT
-	source = https://github.com/anyenv/anyenv/archive/v1.1.4.tar.gz
-	md5sums = 4ba0ca8ac8a8f61c834faac76e8157bc
+	source = https://github.com/anyenv/anyenv/archive/v1.1.5.tar.gz
+	md5sums = 0a39364230131b6779044701c8594723
 
 pkgname = anyenv
