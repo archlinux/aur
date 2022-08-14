@@ -4,13 +4,13 @@
 # Contributor: liberodark
 
 pkgname=natron-compositor-git
-pkgver=2.5.0.alpha.2.r81.g6588ac043
+pkgver=2.5.0.alpha.2.r83.g395c2227a
 pkgrel=1
 pkgdesc="Open source compositing software"
 arch=('x86_64')
 url="https://natrongithub.github.io/"
 license=('GPL')
-depends=('boost-libs' 'cairo' 'glfw-x11' 'pyside2' 'python-qtpy' 'shiboken2')
+depends=('boost-libs' 'cairo' 'glfw' 'pyside2' 'python-qtpy' 'shiboken2')
 makedepends=('boost' 'extra-cmake-modules' 'expat' 'git' 'openmp' 'ninja')
 optdepends=('openfx-arena: Extra OpenFX plugins for Natron'
             'openfx-gmic: OpenFX wrapper for the GMIC framework'
@@ -57,14 +57,6 @@ prepare() {
   cd libs/SequenceParsing
   git config submodule.tinydir.url "$srcdir/tinydir"
   git submodule update
-
-  # Adjustments to CMake rules
-  sed -i '/target_include_directories/ s/(.*/(glog PUBLIC src)/' \
-         "$srcdir/natron/libs/glog/CMakeLists.txt"
-  sed -i '/target_compile_definitions/d' \
-         "$srcdir/natron/libs/glog/CMakeLists.txt"
-  echo "target_include_directories(qhttpserver PUBLIC http-parser)" >> \
-       "$srcdir/natron/libs/qhttpserver/CMakeLists.txt"
 }
 
 build() {

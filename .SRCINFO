@@ -1,6 +1,6 @@
 pkgbase = natron-compositor-git
 	pkgdesc = Open source compositing software
-	pkgver = 2.5.0.alpha.2.r81.g6588ac043
+	pkgver = 2.5.0.alpha.2.r83.g395c2227a
 	pkgrel = 1
 	url = https://natrongithub.github.io/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = natron-compositor-git
 	makedepends = ninja
 	depends = boost-libs
 	depends = cairo
-	depends = glfw-x11
+	depends = glfw
 	depends = pyside2
 	depends = python-qtpy
 	depends = shiboken2
