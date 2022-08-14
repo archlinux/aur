@@ -1,6 +1,6 @@
 pkgbase = cinny-web-git
 	pkgdesc = Yet another matrix client — web version
-	pkgver = r254.5b0f95f
+	pkgver = r853.af69955
 	pkgrel = 1
 	url = https://github.com/ajbura/cinny
 	arch = any

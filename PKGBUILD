@@ -1,7 +1,7 @@
 # Maintainer: Andy Bao <contact@andybao.me>
 _pkgname=cinny-web
 pkgname="${_pkgname}-git"
-pkgver=r254.5b0f95f
+pkgver=r853.af69955
 pkgrel=1
 pkgdesc="Yet another matrix client — web version"
 arch=('any')
@@ -18,7 +18,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  npm install
+  npm install --legacy-peer-deps
   npm run build
 }
 
