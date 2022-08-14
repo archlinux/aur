@@ -1,12 +1,12 @@
 pkgbase = mythes-uk
 	pkgdesc = Ukrainian thesaurus
-	pkgver = 7.2.0
-	pkgrel = 2.1
+	pkgver = 7.4.0_rc2
+	pkgrel = 4.1
 	url = http://ftp.br.debian.org/debian/pool/main/libr/libreoffice-dictionaries
 	arch = any
 	license = GPL
 	optdepends = libmythes: offers thesaurus library functions
-	source = http://ftp.br.debian.org/debian/pool/main/libr/libreoffice-dictionaries/mythes-uk_7.2.0-2_all.deb
-	sha256sums = 4fe423b464bc141cfca9f1186b2559a3aa9f5c12919cfcee09f065562bc676f5
+	source = http://ftp.br.debian.org/debian/pool/main/libr/libreoffice-dictionaries/mythes-uk_7.4.0~rc2-4_all.deb
+	sha256sums = a9adba50e3c7149bc055b8614eb1bedadf801b356b6a77d79b03a02ef02f6852
 
 pkgname = mythes-uk
