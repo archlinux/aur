@@ -1,0 +1,22 @@
+pkgbase = cask-server-git
+	pkgdesc = Public server and API to interface with Cask features
+	pkgver = r3.e442424
+	pkgrel = 1
+	url = https://github.com/Nitrux/cask-server
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	groups = maui
+	license = GPL3
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = qt5-base
+	provides = cask-server
+	conflicts = cask-server
+	source = git+https://github.com/Nitrux/cask-server.git
+	sha256sums = SKIP
+
+pkgname = cask-server-git
