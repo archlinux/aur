@@ -1,0 +1,26 @@
+pkgbase = sessiond
+	pkgdesc = Standalone X session manager for systemd-logind
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://sessiond.org/
+	arch = x86_64
+	license = GPL
+	license = custom:GPL3 or any later version
+	makedepends = git
+	makedepends = systemd
+	makedepends = meson
+	makedepends = perl
+	makedepends = glib2
+	makedepends = libx11
+	makedepends = libxi
+	makedepends = libxext
+	makedepends = python-setuptools
+	depends = dbus-python
+	depends = wireplumber
+	depends = python-pyqt5
+	source = sessiond-0.6.1.tar.gz::https://github.com/jcrd/sessiond/archive/refs/tags/v0.6.1.tar.gz
+	source = pod2man.patch
+	sha256sums = d2b8e81eb33c0cbce1e9fcdd37db03b1ec93afb984479f2ab4d7e9ce25d0c5ae
+	sha256sums = fe0708f9eada5d72d472ed110e8c53b236746fdca9be8598b89edfa41bdaab09
+
+pkgname = sessiond

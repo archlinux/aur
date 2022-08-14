@@ -1,0 +1,17 @@
+Index: meson.build
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/meson.build b/meson.build
+--- a/meson.build	(revision 618d2ad6cde986f01a2c0332c49d5418ef56821b)
++++ b/meson.build	(date 1660462661668)
+@@ -110,7 +110,7 @@
+ 
+ # install manpages built with pod2man
+ mandir = get_option('mandir')
+-pod2man = find_program('pod2man')
++pod2man = find_program('/usr/bin/core_perl/pod2man')
+ 
+ foreach name, section : manpages
+   manpage = '.'.join([name, section])
