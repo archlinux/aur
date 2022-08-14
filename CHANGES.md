@@ -1,3 +1,7 @@
+### Version 0.3.3 (2022-08-11)
+* Drop support for all python versions prior to 3.7
+* Upgrade to docutils 0.19
+
 ### Version 0.3.2 (2021-12-10)
 * Pin mistune version
 
