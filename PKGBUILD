@@ -3,7 +3,7 @@ _pkgname=harvesttimer-qt
 _appname=harvest
 pkgname=harvest-timer-qt
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop app for Harvest, a simple time tracker and reporting tool for companies'
 arch=('x86_64')
 url='https://github.com/jorge-barroso/harvesttimer-qt'
@@ -17,7 +17,7 @@ source=(
 	"https://github.com/jorge-barroso/${_pkgname}/archive/refs/tags/${apptag}.tar.gz"
 )
 srcdir_name="${_pkgname}-${pkgver}"
-sha256sums=('63ce00112b90e64f43995081a8cf336c0511236f46c1b7baa220594c21f4fdfa')
+sha256sums=('7a3e09f8112a542b0785da589905e94ee2b7a09f24775255ec7fc946c365902c')
 
 build() {
 	cd "${srcdir}"
