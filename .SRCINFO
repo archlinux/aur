@@ -24,6 +24,7 @@ pkgbase = pollymc-qt5-git
 	optdepends = xorg-xrandr: for older minecraft versions
 	provides = pollymc
 	provides = pollymc-qt5
+	conflicts = polymc
 	source = git+https://github.com/fn2006/PollyMC
 	source = git+https://github.com/PolyMC/libnbtplusplus
 	source = git+https://github.com/stachenov/quazip
