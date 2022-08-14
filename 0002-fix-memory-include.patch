@@ -1,0 +1,24 @@
+diff --git a/Telegram/SourceFiles/ffmpeg/ffmpeg_emoji.h b/Telegram/SourceFiles/ffmpeg/ffmpeg_emoji.h
+index ac896903e..d1e4acd96 100644
+--- a/Telegram/SourceFiles/ffmpeg/ffmpeg_emoji.h
++++ b/Telegram/SourceFiles/ffmpeg/ffmpeg_emoji.h
+@@ -10,6 +10,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
+ #include "ui/effects/frame_generator.h"
+ 
+ #include <QtGui/QImage>
++#include <memory>
+ 
+ namespace FFmpeg {
+ 
+diff --git a/lottie/lottie_emoji.h b/lottie/lottie_emoji.h
+index ec2221c..d882e87 100644
+--- a/Telegram/lib_lottie/lottie/lottie_emoji.h
++++ b/Telegram/lib_lottie/lottie/lottie_emoji.h
+@@ -9,6 +9,7 @@
+ #include "ui/effects/frame_generator.h"
+ 
+ #include <QtGui/QImage>
++#include <memory>
+ 
+ namespace rlottie {
+ class Animation;

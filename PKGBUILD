@@ -3,8 +3,8 @@
 # Contributor: hexchain <i@hexchain.org>
 # Based on official PKGBUILD from Arch Linux with an annoying bug reverted
 pkgname=telegram-desktop-kdefix
-pkgver=4.0.2
-pkgrel=4
+pkgver=4.1.0
+pkgrel=1
 pkgdesc='Telegram Desktop client with KDE unread counter bug reverted'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
@@ -21,18 +21,18 @@ optdepends=('webkit2gtk: embedded browser features'
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
         fix-tgcalls-cstdint.patch
         "0001-kde-theme-injection-fix.patch"
-        "0002-qt5-wayland-generator.patch")
-sha512sums=('0078b627d06dd8e655bd2bcc222ecbb3b15b7d88f858810bccdca84793ad02a60f4a4bf3808838752d65d4f6cffa3ddb5f70c5afc8e94cb6edae52101362feeb'
+        "0002-fix-memory-include.patch")
+sha512sums=('d58ad4b3eaf72b4885612ecca0b29057a1f0e7efc7a539c4ed7cdfa9f6b8dd19e378f1e4b9f28a644d8c8559a5310a168e0b949aafac6902bd21155795db2574'
             'ba24a2f1524010b4891764aacee2e27a5ebae44cf7626ab2aaf9e6c48b0f8088bf920886ceeb497b3c463fa0c3b885dd63db273d4c29cab6c96c8193c0c5c888'
             'ceb8135301abbb39dd1e88bb283f83e83c52ec6236f13b527ed25a138f1d870d35ecd9f1c4e080164320f0b34c30d882b1167e0ef4ded7f886f9ba0966570e4d'
-            '12a646b0c31c67019c061aae7924031057583a4ff0df98e4ddb5132395321ecd5fce2ba90d3463d0c4da9fe6ab6f4c091287cf8ca8d9d90c279bc9d6c48ab28b')
+            '3e10935ad4b053ddf6f459658decc1e36e2181825b4bc686c9dc391fae498cf34bd0c8c64235172ca5fca24418385e977b34589db3ca5d885cdfefbcaf64c7b4')
 
 prepare() {
     cd tdesktop-$pkgver-full
     rm -rf Telegram/ThirdParty/libtgvoip/webrtc_dsp/absl
     patch -Np1 -i "$srcdir"/fix-tgcalls-cstdint.patch -d Telegram/ThirdParty/tgcalls
     patch -Np1 -i "$srcdir"/0001-kde-theme-injection-fix.patch
-    patch -Np1 -i "$srcdir"/0002-qt5-wayland-generator.patch -d Telegram/lib_base
+    patch -Np1 -i "$srcdir"/0002-fix-memory-include.patch
 }
 
 build() {
