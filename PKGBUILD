@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=waveslim
-_pkgver=1.8.3
+_pkgver=1.8.4
 pkgname=r-${_pkgname,,}
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 pkgdesc='Basic Wavelet Routines for One-, Two-, and Three-Dimensional Signal Processing'
 arch=('x86_64')
@@ -20,7 +20,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('988bdce52ce1c31cb0abb4fb7a9f1e9192283f597c2a418f0010f780dbe3b37b')
+sha256sums=('408eeea72a218ef3458f0934ff556733cacf1a63ddaa52491abcc1fce6ed2094')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
