@@ -8,7 +8,7 @@ arch=('any')
 url="http://www.silx.org"
 license=('MIT' 'LGPL')
 depends=('python-numpy' 'python-pyqt5' 'python-matplotlib')
-optdepends=('python-h5py: for HDF5 input/output'
+optdepends=('python-h5py-openmpi: for HDF5 input/output'
             'ipython: for interactive console'
             'python-qtconsole: for GUI console'
             'python-pyopencl: for sift - OpenCL implementation'
