@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=cov-analysis
-pkgver=2021.12
+pkgver=2022.06
 pkgrel=1
 pkgdesc='Coverity Scan Build Tool for C/C++ - REQUIRES MANUAL DOWNLOAD'
 url='https://scan.coverity.com/download'
@@ -13,12 +13,12 @@ options=('!strip')
 
 source_i686=(  "file://cov-analysis-linux-$pkgver.tar.gz")
 source_x86_64=("file://cov-analysis-linux64-$pkgver.tar.gz")
-sha256sums_i686=('797f0441478bca947d22146dd1a85182ca2b2d823e3fee05c100527b382af44a')
-sha256sums_x86_64=('27cab83852aa86dd701398d7d74b1a619d5f9d1a26d0e4ac57543de5565be6d9')
+sha256sums_i686=('e12173d5ba71b76212aaf24b3c863807aa8fa02781aafacd8d661542e36a5f6e')
+sha256sums_x86_64=('5708070dc9d7e2e9468f8ab766d70ea00e6017b06698556ca1557a513b5724dc')
 
 package() {
   install -dm755 "$pkgdir/opt/$pkgname"
-  mv $pkgname-*-$pkgver*/* "$pkgdir/opt/$pkgname"
+  mv $pkgname-*-${pkgver//.0/.}*/* "$pkgdir/opt/$pkgname"
   chown root: -R "$pkgdir/opt/$pkgname/"
 
   cd "$srcdir"
