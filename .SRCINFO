@@ -1,0 +1,17 @@
+pkgbase = wm-launch
+	pkgdesc = Tool to launch X11 clients with unique IDs
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/jcrd/wm-launch
+	arch = x86_64
+	license = GPL
+	license = custom:GPL3 or any later version
+	makedepends = go
+	makedepends = perl
+	depends = libx11
+	source = wm-launch-0.5.1.tar.gz::https://github.com/jcrd/wm-launch/archive/refs/tags/v0.5.1.tar.gz
+	source = pod2man.patch
+	sha256sums = aedd313507ee44ea9b98094e3435b6677cd316b7e847d42e80089d31a6f00492
+	sha256sums = bbd22ae11c45efd75ea43f032e76736afdf947557010fbf5671579bb6a4dafc6
+
+pkgname = wm-launch

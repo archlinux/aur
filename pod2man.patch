@@ -1,0 +1,17 @@
+Index: Makefile
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Makefile b/Makefile
+--- a/Makefile	(revision a72500c975a1ab6af7cc94c090fc1244ee27a9d6)
++++ b/Makefile	(date 1660459678425)
+@@ -35,7 +35,7 @@
+ 	go build $<
+ 
+ $(MANPAGE): man/$(MANPAGE).pod
+-	pod2man -n=wm-launch -c=wm-launch -r=$(VERSION) $< $(MANPAGE)
++	/usr/bin/core_perl/pod2man -n=wm-launch -c=wm-launch -r=$(VERSION) $< $(MANPAGE)
+ 
+ install:
+ 	mkdir -p $(DESTDIR)$(BINPREFIX)
