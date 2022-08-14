@@ -6,7 +6,7 @@ pkgver=1.5.78.11833.51218
 pkgrel=1
 # Fix upstream versioning shenanigans:
 epoch=1
-pkgdesc="Hollow Knight is a challenging 2D action-adventure. You’ll explore twisting caverns, battle tainted creatures and escape intricate traps, all to solve an ancient long-hidden mystery."
+pkgdesc="Challenging 2D side-scrolling Metroidvania soulslike game"
 url='http://hollowknight.com/'
 license=('custom')
 arch=('x86_64')
