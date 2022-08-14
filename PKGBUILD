@@ -3,7 +3,7 @@
 pkgname='gog-enter-the-gungeon'
 pkgver=2.1.9.33951
 pkgrel=1
-pkgdesc="A gunfight dungeon crawler following a band of misfits seeking to shoot, loot, dodge roll and table-flip their way to personal absolution by reaching the legendary Gungeon’s ultimate treasure: the gun that can kill the past."
+pkgdesc="Fast-paced bullet hell dungeon crawler with roguelike elements"
 url='http://dodgeroll.com/gungeon/'
 license=('custom')
 arch=('x86_64' 'i686')
