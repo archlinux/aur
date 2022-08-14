@@ -1,15 +1,5 @@
 --- a/script/bootstrap.py
 +++ b/script/bootstrap.py
-@@ -546,7 +546,8 @@ def build_dav1d_decoder(install_dir):
-         cmd('meson', 'build', '--prefix', os.path.join(install_dir,
-                                                        ''), '--libdir',
-             os.path.join(install_dir, 'lib'), '--buildtype', 'release',
--            '--default-library=static', '-Denable_avx512=false')
-+            '--default-library=static', '-Denable_avx512=false',
-+            '-Dc_args=${CFLAGS} -fno-lto', '-Dcpp_args=${CXXFLAGS} -fno-lto')
-         cmd('ninja', '-C', 'build')
-         with pushd('build'):
-             cmd('ninja', 'install')
 @@ -662,6 +663,7 @@ def build_gpl_x264_encoder(install_dir):
              f'--prefix={posix_install_dir}',
              '--enable-static',
@@ -22,7 +12,7 @@
          '--enable-filter=select',
          '--enable-filter=concat',
          '--enable-filter=ssim',
-+        '--extra-cflags=-fno-lto',
++        '--enable-lto',
      ]
      if os.name == 'nt':
          result.extend([

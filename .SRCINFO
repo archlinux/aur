@@ -1,7 +1,7 @@
 pkgbase = onevpl-cpu-git
 	pkgdesc = oneVPL runtime implementation for CPU (git version)
-	pkgver = 2022.1.4.r0.g83a0537
-	pkgrel = 3
+	pkgver = 2022.2.1.r0.ga091605
+	pkgrel = 1
 	url = https://www.intel.com/content/www/us/en/developer/tools/oneapi/onevpl.html
 	arch = x86_64
 	license = MIT
@@ -20,6 +20,6 @@ pkgbase = onevpl-cpu-git
 	source = git+https://github.com/oneapi-src/oneVPL-cpu.git
 	source = 010-onevpl-cpu-fix-build.patch
 	sha256sums = SKIP
-	sha256sums = f8a04899239250cd32edde782823cf76be46249a17c3147fc29f3742a21f710c
+	sha256sums = b3d77713f62240140fe743e2bf6cd747469c8c070b18f31f0efc572c68af20ca
 
 pkgname = onevpl-cpu-git
