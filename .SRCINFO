@@ -1,7 +1,7 @@
 pkgbase = zulip-desktop-electron
 	pkgdesc = Real-time team chat based on the email threading model
 	pkgver = 5.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zulip.com
 	arch = x86_64
 	license = Apache

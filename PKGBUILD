@@ -3,7 +3,7 @@
 # Contributor: aspen <aspen@aspenuwu.me>
 pkgname=zulip-desktop-electron
 pkgver=5.9.3
-pkgrel=1
+pkgrel=2
 _electronversion=18
 pkgdesc="Real-time team chat based on the email threading model"
 arch=('x86_64')
@@ -22,8 +22,9 @@ sha256sums=('2d5288204a0395ac2c9303678c4c0dcb852083e4806a1e4e885e096be5b6664c'
 
 build() {
   cd "${pkgname%-*}-$pkgver"
-  electronDist="/usr/lib/electron" # $_electronversion"
+  electronDist="/usr/lib/electron$_electronversion"
   electronVer="$(sed s/^v// $electronDist/version)"
+  export ELECTRON_SKIP_BINARY_DOWNLOAD=1
   HOME="$srcdir/.electron-gyp" npm install --cache "$srcdir/npm-cache"
   ./node_modules/.bin/tsc
   ./node_modules/.bin/electron-builder --linux --x64 --dir \
