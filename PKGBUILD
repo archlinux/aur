@@ -11,7 +11,7 @@ _bazaarurl=https://bazaar.launchpad.net/~mozillateam/firefox/firefox-trunk.head/
 
 pkgname=firefox-kde
 pkgver=103.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE and Ubuntu patches"
 arch=(x86_64)
 license=(MPL GPL LGPL)

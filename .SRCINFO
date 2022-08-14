@@ -1,7 +1,7 @@
 pkgbase = firefox-kde
 	pkgdesc = Standalone web browser from mozilla.org with OpenSUSE and Ubuntu patches
 	pkgver = 103.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
 	license = MPL
