@@ -2,7 +2,7 @@
 
 pkgname=resolvconf-symlink-systemd-stub
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Make /etc/resolv.conf a symlink to a runtime-writable location (systemd-resolved stub mode version)"
 arch=('any')
 license=('Unlicense')
