@@ -1,6 +1,6 @@
 # Maintainer: ovk <mail@okosh.xyz>
 pkgname=dotref
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Simple tool to manage dotfiles"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/source/d/dotref/dotref-${pkgver}.tar.gz")
-sha256sums=('7055c74fe43a30244a50a43f65d9a1c46916c912ab624ee9657c76e19c51206e')
+sha256sums=('18ddca5414230e119cb6ab3f034771c3c01ec45eb0db5cf29e0fa4ed1d4d53bf')
 
 build() {
   cd "dotref-${pkgver}"
@@ -19,6 +19,6 @@ build() {
 package() {
   cd "dotref-${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1
-  install -Dm644 ${srcdir}/${pkgname}/completions/completion.bash "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
-  install -Dm644 ${srcdir}/${pkgname}/completions/completion.fish "${pkgdir}/usr/share/fish/completions/${pkgname}.fish"
+  install -Dm644 completion.bash "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  install -Dm644 completion.fish "${pkgdir}/usr/share/fish/completions/${pkgname}.fish"
 }
