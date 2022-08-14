@@ -2,27 +2,28 @@
 # Contributor:  Joakim Hernberg <jbh@alchemy.lu>
 
 pkgbase=linux-rt
-pkgver=5.17.1.17.realtime2
-pkgrel=3
+pkgver=5.19.0.10.realtime1
+pkgrel=1
 pkgdesc='Linux RT'
 arch=(x86_64)
 url="https://gitlab.archlinux.org/dvzrv/linux-rt/-/commits/v${pkgver}"
 license=(GPL2)
-makedepends=(bc cpio git graphviz imagemagick kmod libelf pahole perl
-python-sphinx python-sphinx_rtd_theme texlive-latexextra xmlto)
+makedepends=(bc cpio git graphviz imagemagick libelf pahole perl
+python-sphinx python-sphinx_rtd_theme tar texlive-latexextra xmlto xz)
 options=(!strip)
 source=(
   "git+https://gitlab.archlinux.org/dvzrv/linux-rt#tag=v${pkgver}?signed"
   config
 )
 sha512sums=('SKIP'
-            '238205183b23467f8f6d24d84992252b914e49b30c6e2f0aadebec69d5d74d94ed91d899b270045de3d7ac862ef2c656bf5f916c26cc357c659ae3bea76c008e')
+            '69eb836b614e83c4784155fa61fc93f7f21f74d6105158d24c7242a5c5fe5a80a1d37c9112b8ebacb018a0da110711b3a65b51fd55e5c3f9b24d6f3addef8530')
 b2sums=('SKIP'
-        '065e9b9fb9cfa0c1a6918758afae3c63181bbdedb0ca88851b34308932bb71bcd6dbc6dc4fa7b4db2dcd6dcbf4d4be10c4e7a8c226dd0f10abff4152dae1e62a')
+        '101432624cf2efae07acc0bc940648a70d1dc7696e8067430607a21cf9b33a81a07ca7c228cba344f3cfb47ff0fb9b0215eaa7d6abee937e90fd8d39458f2705')
 validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@kernel.org>
   '64254695FFF0AA4466CC19E67B96E8162A8CF5D1'  # Sebastian Andrzej Siewior
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
+  '991F6E3F0765CF6295888586139B09DA5BF0D338'  # David Runge <dvzrv@archlinux.org>
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -51,7 +52,7 @@ prepare() {
   echo "Setting config..."
   cp ../config .config
   make olddefconfig
-#  make nconfig
+  # make nconfig
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
@@ -68,7 +69,7 @@ _package() {
   depends=(coreutils initramfs kmod)
   optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
 
   cd $pkgbase
   local kernver="$(<version)"
@@ -83,7 +84,8 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
