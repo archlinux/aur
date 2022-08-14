@@ -1,0 +1,16 @@
+pkgbase = gr-nrsc5-rx-git
+	pkgdesc = GNU Radio module for receiving NRSC-5
+	pkgver = r28.49cfa80
+	pkgrel = 1
+	url = https://github.com/Albert-S-Briscoe/gr-nrsc5-rx
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = gnuradio
+	depends = nrsc5
+	provides = gr-nrsc5-rx
+	source = gr-nrsc5-rx-git::git+https://github.com/Albert-S-Briscoe/gr-nrsc5-rx.git
+	md5sums = SKIP
+
+pkgname = gr-nrsc5-rx-git
