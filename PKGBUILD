@@ -1,10 +1,10 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux
-_kernver=5.18.16
-_archver=arch1
+_kernver=5.19.1
+_archver=arch2
 _pkgrel=1
 _pkgver="${_kernver}.${_archver}"
-_KERNNAME=5.18.16-arch1-1
+_KERNNAME=5.19.1-arch2-1
 pkgbase="${_pkgname}-versioned-bin"
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}"
 pkgname=("${_pkgname}-versioned-bin"
@@ -16,7 +16,7 @@ pkgname=("${_pkgname}-versioned-bin"
 pkgver=${_pkgver}
 pkgrel=${_pkgrel}
 pkgdesc="The Linux kernel and modules | repackaged with a unique package name for each version"
-url="https://github.com/archlinux/linux/commits/v5.18.16-arch1"
+url="https://github.com/archlinux/linux/commits/v5.19.1-arch2"
 arch=(x86_64)
 license=(GPL2)
 options=('!strip')
@@ -44,9 +44,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('38f2829bd55e269e94c45e2cad1fcda5ec7b0f4c3d34b17c0f545befcdd4a33c'
-            '5964abc8200d626ef7e4cd57e64c9c264aad639df6b66fbb22693fe339d90404'
-            '52c4fed38c9a857ac493e7a0ad9133a56640b7d1914be2afd5ab696066e843b6')
+sha256sums=('f5d543e7919ed7a276feda9a7f2c6243fb1f955a09dc5516bea5c4cdc8c56a8f'
+            'd457a00fdba107d44b4f2f1980752430e4a565a59022d71e28ce223834bcd580'
+            '0d7d60d7e16276528594072f872d761691e39940b563e7b5a4bc99389ce670c1')
 
 package_linux-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -64,7 +64,7 @@ package_linux-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.18.16.arch1-1-bin() {
+package_linux5.19.1.arch2-1-bin() {
   pkgdesc="The Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -72,7 +72,8 @@ package_linux5.18.16.arch1-1-bin() {
   conflicts=("${_pkgname}")
   optdepends=('linux-firmware: firmware images needed for some devices'
               'wireless-regdb: to set the correct wireless channels of your country')
-  provides=(VIRTUALBOX-GUEST-MODULES
+  provides=(KSMBD-MODULE
+            VIRTUALBOX-GUEST-MODULES
             WIREGUARD-MODULE)
   replaces=(virtualbox-guest-modules-arch
             wireguard-arch)
@@ -81,7 +82,7 @@ package_linux5.18.16.arch1-1-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux5.18.16.arch1-1-headers-bin() {
+package_linux5.19.1.arch2-1-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -90,7 +91,7 @@ package_linux5.18.16.arch1-1-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.18.16.arch1-1-docs-bin() {
+package_linux5.19.1.arch2-1-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"

@@ -1,52 +1,53 @@
 pkgbase = linux-versioned-bin
 	pkgdesc = The Linux kernel and modules | repackaged with a unique package name for each version
-	pkgver = 5.18.16.arch1
+	pkgver = 5.19.1.arch2
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v5.18.16-arch1
+	url = https://github.com/archlinux/linux/commits/v5.19.1-arch2
 	arch = x86_64
 	license = GPL2
-	noextract = linux-5.18.16.arch1-1-x86_64.pkg.tar.zst
-	noextract = linux-headers-5.18.16.arch1-1-x86_64.pkg.tar.zst
-	noextract = linux-docs-5.18.16.arch1-1-x86_64.pkg.tar.zst
+	noextract = linux-5.19.1.arch2-1-x86_64.pkg.tar.zst
+	noextract = linux-headers-5.19.1.arch2-1-x86_64.pkg.tar.zst
+	noextract = linux-docs-5.19.1.arch2-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-5.18.16.arch1-1-x86_64.pkg.tar.zst
-	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-headers-5.18.16.arch1-1-x86_64.pkg.tar.zst
-	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-docs-5.18.16.arch1-1-x86_64.pkg.tar.zst
-	sha256sums = 38f2829bd55e269e94c45e2cad1fcda5ec7b0f4c3d34b17c0f545befcdd4a33c
-	sha256sums = 5964abc8200d626ef7e4cd57e64c9c264aad639df6b66fbb22693fe339d90404
-	sha256sums = 52c4fed38c9a857ac493e7a0ad9133a56640b7d1914be2afd5ab696066e843b6
+	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-5.19.1.arch2-1-x86_64.pkg.tar.zst
+	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-headers-5.19.1.arch2-1-x86_64.pkg.tar.zst
+	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-docs-5.19.1.arch2-1-x86_64.pkg.tar.zst
+	sha256sums = f5d543e7919ed7a276feda9a7f2c6243fb1f955a09dc5516bea5c4cdc8c56a8f
+	sha256sums = d457a00fdba107d44b4f2f1980752430e4a565a59022d71e28ce223834bcd580
+	sha256sums = 0d7d60d7e16276528594072f872d761691e39940b563e7b5a4bc99389ce670c1
 
 pkgname = linux-versioned-bin
-	pkgdesc = Metapackage depending on linux5.18.16.arch1-1-bin
-	depends = linux5.18.16.arch1-1-bin
+	pkgdesc = Metapackage depending on linux5.19.1.arch2-1-bin
+	depends = linux5.19.1.arch2-1-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-versioned-headers-bin
-	pkgdesc = Metapackage depending on linux5.18.16.arch1-1-headers-bin
-	depends = linux5.18.16.arch1-1-headers-bin
+	pkgdesc = Metapackage depending on linux5.19.1.arch2-1-headers-bin
+	depends = linux5.19.1.arch2-1-headers-bin
 
 pkgname = linux-versioned-docs-bin
-	pkgdesc = Metapackage depending on linux5.18.16.arch1-1-docs-bin
-	depends = linux5.18.16.arch1-1-docs-bin
+	pkgdesc = Metapackage depending on linux5.19.1.arch2-1-docs-bin
+	depends = linux5.19.1.arch2-1-docs-bin
 
-pkgname = linux5.18.16.arch1-1-bin
-	pkgdesc = The Linux kernel and modules, version 5.18.16-arch1-1
+pkgname = linux5.19.1.arch2-1-bin
+	pkgdesc = The Linux kernel and modules, version 5.19.1-arch2-1
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
 	optdepends = linux-firmware: firmware images needed for some devices
 	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	provides = KSMBD-MODULE
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 	conflicts = linux
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
-pkgname = linux5.18.16.arch1-1-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.18.16-arch1-1
+pkgname = linux5.19.1.arch2-1-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.19.1-arch2-1
 	depends = pahole
 	conflicts = linux-headers
 
-pkgname = linux5.18.16.arch1-1-docs-bin
-	pkgdesc = Documentation for the Linux kernel 5.18.16-arch1-1
+pkgname = linux5.19.1.arch2-1-docs-bin
+	pkgdesc = Documentation for the Linux kernel 5.19.1-arch2-1
 	conflicts = linux-docs
