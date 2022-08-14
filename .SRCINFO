@@ -5,7 +5,6 @@ pkgbase = kwin-script-grid-tiling-git
 	url = https://github.com/lingtjien/Grid-Tiling-Kwin
 	arch = any
 	license = GPL3
-	makedepends = kpackage
 	depends = kwin
 	provides = kwin-script-grid-tiling
 	conflicts = kwin-script-grid-tiling
@@ -13,4 +12,3 @@ pkgbase = kwin-script-grid-tiling-git
 	md5sums = SKIP
 
 pkgname = kwin-script-grid-tiling-git
-
