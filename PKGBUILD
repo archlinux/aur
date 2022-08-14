@@ -2,7 +2,7 @@
 # Contributor:  Joakim Hernberg <jbh@alchemy.lu>
 
 pkgbase=linux-rt-lts
-pkgver=5.15.40.43.realtime1
+pkgver=5.15.55.48.realtime1
 pkgrel=1
 pkgdesc='Linux RT LTS'
 arch=(x86_64)
@@ -16,13 +16,14 @@ source=(
   config
 )
 sha512sums=('SKIP'
-            'f51de038534786aad78b62f0414368a6e3dde5bc80d7719a1338569ddb429a899ceeb63725d373895fcc416b02d1f2d20ac9b967cf545ef1f97dc861c8761da3')
+            'd8e8a9df3ce628c4aad3a388693175896581b59c4af16d885ef11f2e556b49fde3d40ebc7502793226e40af31cd5fb788d11b2521014a052671c3304d3ad83c7')
 b2sums=('SKIP'
-        '8f91f3e1ffb8b6ba2a16a87819589d1f3e86eb2447517c6a0aa4d5faa4ae5a7a666740a0027a76c81ee1c6d9effad3270472b649666c230a2cece6961b3c3d78')
+        '1048525ac8a9ba90cf31b46309c131b1c18ddac852b6b0150e4d1e497bb2ebe85625019de4fda02d403e6ccfdf541829b11cb54148305eddc8f9097ca0082dd8')
 validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@linuxfoundation.org>
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt (Der Hacker) <rostedt@goodmis.org>
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
+  '991F6E3F0765CF6295888586139B09DA5BF0D338'  # David Runge <dvzrv@archlinux.org>
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -51,7 +52,7 @@ prepare() {
   echo "Setting config..."
   cp ../config .config
   make olddefconfig
-#  make nconfig
+  # make nconfig
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
