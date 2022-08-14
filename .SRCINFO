@@ -1,0 +1,21 @@
+pkgbase = neovim-cmp
+	pkgdesc = Autocompletion plugin for Neovim
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/hrsh7th/nvim-cmp
+	install = cmp.install
+	arch = any
+	groups = neovim-plugins
+	license = MIT
+	depends = neovim
+	optdepends = neovim-cmp-nvim-lsp: source for Neovim builtin LSP client
+	optdepends = neovim-cmp-buffer: buffer autocompletion
+	optdepends = neovim-cmp-path: path autocompletion
+	optdepends = neovim-cmp-emoji: emoji autocompletion
+	optdepends = neovim-cmp-latex-symbols: LaTeX symbol autocompletion
+	optdepends = neovim-cmp-omni: omnifunc autocompletion
+	optdepends = neovim-cmp-vsnip: vsnip autocompletion
+	source = neovim-cmp-0.0.1.tar.gz::https://github.com/hrsh7th/nvim-cmp/archive/v0.0.1.tar.gz
+	sha256sums = bf09327702142ad46ee0344ea50dea7e249f8bfae728592a4ea8a2bc6ca8f5d6
+
+pkgname = neovim-cmp
