@@ -3,7 +3,7 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=treefrog-framework
-pkgver=2.3.1
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="High-speed C++ MVC Framework for Web Application"
 arch=(x86_64)
@@ -11,8 +11,8 @@ url="https://github.com/${pkgname/-/}/${pkgname}"
 license=('custom:BSD-3-clause')
 depends=(qt5-declarative libmongoc)
 makedepends=(cmake qt5-tools)
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('cc6dd66cd0dbe715ecac6e081adaff244c3b951755513d6edc03274e31029e33b1ebe74c0e720884e5b1fadaaf0e335d879dd00322dd157213d40e116c3c960e')
+source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('f06a77695fc242bac2058eb0207aae37648677afa15b5c613fe37f5865fd6705cac59b2bef65ca4e1bff34806f9653eb9989666667769aa50e44fcff3f8936fa')
 
 prepare() {
   cd ${pkgname}-${pkgver}
