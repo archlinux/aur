@@ -1,0 +1,16 @@
+pkgbase = vscodium-git-marketplace
+	pkgdesc = Enable vscode marketplace in vscodium
+	pkgver = 1.70.0
+	pkgrel = 1
+	url = https://marketplace.visualstudio.com/vscode
+	install = vscodium-git-marketplace.install
+	arch = any
+	license = unknown
+	depends = vscodium-git
+	depends = sed
+	source = vscodium-marketplace.hook
+	source = patch.sh
+	sha512sums = 4b0101d3cdc48036bf264afe58ba1c2c2dc6852e24ed837b25f39a61f332145cf168910410ff6123f41a980c0991f31c4167ed5883ad576d046d6c421f110a0f
+	sha512sums = 92b5f4bb8eb191d346d5f8d4a79b3a955c244af0b38864d42a6545cc251cdf7ddc6715dd4e64ee85be4125425162612675835e880b155999de512fe552f19b9f
+
+pkgname = vscodium-git-marketplace
