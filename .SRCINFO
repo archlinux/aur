@@ -1,0 +1,16 @@
+pkgbase = docker-compose-v2-bin
+	pkgdesc = Standalone Golang-based package of a tool for running multi-container applications on Docker defined using the Compose file format
+	pkgver = 2.9.0
+	pkgrel = 1
+	url = https://github.com/docker/compose
+	arch = x86_64
+	license = Apache
+	provides = docker-compose
+	conflicts = docker-compose
+	options = !strip
+	source = docker-compose-v2.9.0::https://github.com/docker/compose/releases/download/v2.9.0/docker-compose-linux-x86_64
+	source = https://github.com/docker/compose/archive/v2.9.0.tar.gz
+	sha256sums = 3be9ce88ecba41b734e3fc8e59a9b11531133761414a78827d1615aadb5ef1f5
+	sha256sums = 582f3dacb3e96e9a07ff3b9d137b508377a769309b84f6faa8722d7f5a226353
+
+pkgname = docker-compose-v2-bin
