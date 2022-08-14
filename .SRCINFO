@@ -1,12 +1,12 @@
 pkgbase = pysolfc-music
 	pkgdesc = Music for PySol Fan Club Edition
 	pkgver = 4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pysolfc.sourceforge.io/
 	arch = any
 	license = GPL3
 	depends = pysolfc
-	source = https://deac-ams.dl.sourceforge.net/project/pysolfc/PySol-Music/PySol-Music-4.50/pysol-music-4.50.tar.xz
+	source = https://github.com/shlomif/pysol-music/archive/refs/tags/4.50.tar.gz
 	sha512sums = SKIP
 
 pkgname = pysolfc-music
