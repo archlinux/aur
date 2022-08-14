@@ -11,7 +11,6 @@ pkgbase = openfx-gmic-git
 	depends = fftw
 	depends = libgl
 	depends = libpng
-	provides = openfx-gmic
 	conflicts = openfx-gmic
 	source = openfx-gmic::git+https://github.com/NatronGitHub/openfx-gmic
 	source = openfx::git+https://github.com/NatronGitHub/openfx

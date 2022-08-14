@@ -14,7 +14,6 @@ _pkgname=${pkgname%-git}
 _url=${url%/${_pkgname}}
 
 conflicts=("${_pkgname}")
-provides=("${_pkgname}")
 
 source=("${_pkgname}::git+${url}"
         "openfx::git+${_url}/openfx")
