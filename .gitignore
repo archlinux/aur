@@ -1,8 +1,6 @@
-autowaf/
 pkg/
 src/
 mda-lv2/
 mda-lv2-git-*.tar.xz
 mda-lv2-git-*.tar.zst
 mda-lv2-git-*.src.tar.gz
-.AURINFO
