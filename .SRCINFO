@@ -1,17 +1,15 @@
 pkgbase = gstreamer-meta
-	pkgdesc = Meta package for gstreamer support.
+	pkgdesc = Metapkg for GStreamer support
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.archlinux.org/index.php/GStreamer
 	arch = any
 	license = GPL
-	depends = gstreamer-vaapi
 	depends = gst-libav
 	depends = gst-plugins-bad
 	depends = gst-plugins-base
 	depends = gst-plugins-good
 	depends = gst-plugins-ugly
-	replaces = garuda-gstreamer
+	depends = gstreamer-vaapi
 
 pkgname = gstreamer-meta
-
