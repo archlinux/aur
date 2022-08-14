@@ -3,13 +3,13 @@
 
 pkgname=gsas2-svn
 _pkgname=gsas2
-pkgver=5182
+pkgver=5319
 pkgrel=1
 pkgdesc="General Structure Analysis System II - refinement for powder diffraction patterns"
 arch=(i686 x86_64)
 url="https://subversion.xray.aps.anl.gov/trac/pyGSAS"
 license=(unknown)
-depends=(python python-scipy python-matplotlib python-opengl python-numpy python-pillow python-h5py python-wxpython-dev python-numpy python-spglib)
+depends=(python python-scipy python-matplotlib python-opengl python-numpy python-pillow python-h5py python-wxpython python-numpy python-requests ipython)
 [ "${CARCH}" = "x86_64" ] && depends=("${depends[@]}")
 makedepends=(subversion scons gcc-fortran)
 
