@@ -8,7 +8,7 @@ pkgbase = treefrog-framework
 	makedepends = cmake
 	makedepends = qt5-tools
 	depends = qt5-declarative
-	depends = libmongoc
+	depends = mongo-c-driver
 	source = treefrog-framework-2.4.0.tar.gz::https://github.com/treefrogframework/treefrog-framework/archive/v2.4.0.tar.gz
 	sha512sums = f06a77695fc242bac2058eb0207aae37648677afa15b5c613fe37f5865fd6705cac59b2bef65ca4e1bff34806f9653eb9989666667769aa50e44fcff3f8936fa
 
