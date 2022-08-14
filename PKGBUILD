@@ -1,14 +1,16 @@
 # Maintainer: kpcyrd <kpcyrd[at]archlinux[dot]org>
 
 pkgname=gss
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='GNU Generic Security Service'
 url='https://www.gnu.org/software/gss/'
 arch=('x86_64')
 license=('GPL3')
-source=("https://ftp.gnu.org/gnu/gss/gss-${pkgver}.tar.gz")
-b2sums=('3f535fc152c72490a536b55dfdf175d6df6f4da7f9eb7454457d1e098763be604506006681f82d2d49325cb38e9a6f5454cb5b20462ff06b1b1084e79e95621e')
+source=("https://ftp.gnu.org/gnu/gss/gss-${pkgver}.tar.gz"{,.sig})
+b2sums=('fdcb59fa26c7bef917e2fd75bea58478b33342a516ecf80caeab5dfeebfeed80bbf87eec47415968dd0b326d10386237b167e7f6090066bc0ccf928f0ec53643'
+        'SKIP')
+validpgpkeys=('B1D2BD1375BECB784CF4F8C4D73CF638C53C06BE')
 
 build() {
   cd ${pkgname}-${pkgver}
