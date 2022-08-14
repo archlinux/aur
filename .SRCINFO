@@ -1,0 +1,19 @@
+pkgbase = gss-git
+	pkgdesc = GNU Generic Security Service
+	pkgver = 1.0.4.r1.gb20ac80
+	pkgrel = 1
+	url = https://www.gnu.org/software/gss/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gengetopt
+	makedepends = help2man
+	depends = glibc
+	provides = gss=1.0.4.r1.gb20ac80
+	conflicts = gss
+	options = staticlibs
+	source = git+https://git.savannah.gnu.org/git/gss.git
+	sha256sums = SKIP
+
+pkgname = gss-git
