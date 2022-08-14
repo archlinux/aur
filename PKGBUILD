@@ -1,6 +1,6 @@
 # Maintainer: sseneca <me@ssene.ca>
 pkgname=mopidy-jellyfin
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Mopidy extension for playing music from jellyfin"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('python'
   'python-websocket-client')
 replaces=('python-mopidy-jellyfin')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('890753089413da2d02464d6c9585b6b3004292569dff8898ecfe66ae023ea413afafd77d47756e620d9f87a03a04bfe2c051a2f26d2911c8e96d27d98c34d75b')
+sha512sums=('e78d61ab1c4029fcc472a55c30eb4f75d18427d5ca5759ea03bb1dcb6bf9626570c5e2a84f7727ec59be07dd5ce78c63228c08524e703042950f087ae3878823')
 
 package() {
   cd "$pkgname-$pkgver"
