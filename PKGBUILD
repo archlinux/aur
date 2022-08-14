@@ -2,7 +2,7 @@
 
 pkgname=dell-g5se-fanctl
 pkgver=3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Script to automatically set fan speed according to cpu and gpu thermals on Dell G5SE laptops.'
 url='https://github.com/DavidLapous/DellG5SE-Fan-Linux'
 arch=('x86_64')
@@ -35,8 +35,8 @@ build() {
 package() {
 	install -Dm755 'build/dell-g5se-fanctl' -t "${pkgdir}/usr/bin/"
 	install -Dm755 "${_srcdir}/DellG5SEFan.py" "${pkgdir}/usr/bin/dell-g5se-fanctl.py"
-	install -Dm644 'dell-smm-hwmon-module.conf' -t "${pkgdir}/etc/modules-load.d/"
-	install -Dm644 'dell-smm-hwmon-modprobe.conf' -t "${pkgdir}/etc/modprobe.d/"
+	install -Dm644 'dell-smm-hwmon-module.conf' -t "${pkgdir}/usr/lib/modules-load.d/"
+	install -Dm644 'dell-smm-hwmon-modprobe.conf' -t "${pkgdir}/usr/lib/modprobe.d/"
 	install -Dm644 'dell-g5se-fanctl.conf' -t "${pkgdir}/etc/"
 	install -Dm644 'dell-g5se-fanctl.service' -t "${pkgdir}/usr/lib/systemd/system/"
 	install -Dm644 'dell-g5se-fanctl-sleep.service' -t "${pkgdir}/usr/lib/systemd/system/"
