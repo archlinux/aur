@@ -1,0 +1,21 @@
+pkgbase = pam_usb-git
+	pkgdesc = Hardware authentication for Linux using ordinary USB Flash Drives.
+	pkgver = 0.8.2_r500.g7a785de
+	pkgrel = 1
+	url = https://github.com/mcdope/pam_usb
+	arch = x86_64
+	license = GPLv2
+	makedepends = git
+	depends = pam
+	depends = dbus
+	depends = python
+	depends = python-dbus
+	depends = python-lxml
+	depends = python-gobject
+	depends = udisks2
+	options = !emptydirs
+	backup = etc/security/pam_usb.conf
+	source = git+https://github.com/mcdope/pam_usb
+	sha256sums = SKIP
+
+pkgname = pam_usb-git
