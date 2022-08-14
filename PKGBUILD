@@ -1,13 +1,13 @@
 # Maintainer: Albert Briscoe <albertsbriscoe@gmail.com>
 
 pkgname=gqrx-nrsc5-git
-pkgver=v2.15.9.r11.ga9254f0
+pkgver=v2.15.9.r13.g78992b2
 pkgrel=1
 pkgdesc="Interactive SDR receiver, with NRSC-5 (HD Radio) support"
 arch=('x86_64')
 url="https://github.com/Albert-S-Briscoe/gqrx/tree/nrsc5"
 license=('GPL')
-depends=('qt6-svg' 'libpulse' 'gnuradio-osmosdr' 'gr-nrsc5-rx')
+depends=('qt6-svg' 'libpulse' 'gnuradio-osmosdr' 'nrsc5')
 makedepends=('git' 'cmake' 'boost')
 provides=('gqrx')
 conflicts=('gqrx')
