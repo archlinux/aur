@@ -1,7 +1,7 @@
 pkgbase = python-pyfai
 	pkgdesc = Fast Azimuthal Integration in Python.
 	pkgver = 0.21.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.silx.org
 	arch = any
 	license = GPLv3
@@ -12,7 +12,7 @@ pkgbase = python-pyfai
 	depends = python-scipy
 	depends = python-matplotlib
 	depends = python-fabio
-	depends = python-h5py
+	depends = python-h5py-openmpi
 	depends = python-pyopencl
 	depends = python-pyqt5
 	depends = fftw
