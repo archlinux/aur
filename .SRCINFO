@@ -1,6 +1,6 @@
 pkgbase = whalebird
 	pkgdesc = An Electron based Mastodon, Pleroma and Misskey client
-	pkgver = 4.6.2
+	pkgver = 4.6.3
 	pkgrel = 1
 	url = https://whalebird.social
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = whalebird
 	makedepends = yarn
 	makedepends = tar
 	makedepends = nodejs>=16.0.0
-	depends = electron17>=17.3.1
-	depends = electron17<18.0.0
+	depends = electron18>=18.3.6
+	depends = electron18<19.0.0
 	provides = whalebird
-	source = https://github.com/h3poteto/whalebird-desktop/archive/refs/tags/4.6.2.tar.gz
+	source = https://github.com/h3poteto/whalebird-desktop/archive/refs/tags/4.6.3.tar.gz
 	source = whalebird.desktop
 	source = electron-builder.yml
-	md5sums = 31e2f7c369b6615f1c2ce714f37c3f23
+	md5sums = 896272bfeb8818a61ef33bf4aab3ab01
 	md5sums = 2cf7ef689d208d2fa41ce3622dce3545
 	md5sums = 68af72623ba3763c9a1ea440b72a253d
 
