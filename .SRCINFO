@@ -7,6 +7,7 @@ pkgbase = python-audioread
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
 	source = https://github.com/beetbox/audioread/archive/v3.0.0.tar.gz
