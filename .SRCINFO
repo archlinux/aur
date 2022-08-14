@@ -1,11 +1,12 @@
 pkgbase = harvest-timer-qt
 	pkgdesc = Desktop app for Harvest, a simple time tracker and reporting tool for companies
 	pkgver = 0.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jorge-barroso/harvesttimer-qt
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
+	makedepends = qt6-tools
 	depends = qt6-base
 	provides = harvest-timer
 	conflicts = harvest-timer
