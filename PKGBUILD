@@ -16,7 +16,7 @@ license=('GPL')
 provides=('wxformbuilder')
 conflicts=('wxformbuilder' 'wxformbuilder-svn')
 depends=('wxwidgets-gtk3' 'boost')
-makedepends=('git' 'ninja' 'cmake')
+makedepends=('git' 'cmake')
 source=(
   "git+https://github.com/wxFormBuilder/wxFormBuilder.git"
   "ticpp.git::git+https://github.com/wxFormBuilder/ticpp.git"
@@ -31,16 +31,15 @@ pkgver() {
 prepare() {
   cd "$srcdir/${_gitname}"
   git submodule update --init --recursive
-  cmake -S . -B _build -G "Ninja" --install-prefix /usr -DCMAKE_BUILD_TYPE=Release
 }
 
 build() {
   cd "$srcdir/${_gitname}"
+  cmake -S . -B _build --install-prefix /usr -DCMAKE_BUILD_TYPE=Release
   cmake --build _build --config Release
 }
 
 package() {
   cd "$srcdir/${_gitname}"
-
-  DESTDIR="${pkgdir}" ninja -C _build install
+  DESTDIR="${pkgdir}" cmake --install _build --config Release
 }

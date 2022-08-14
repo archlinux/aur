@@ -8,7 +8,6 @@ pkgbase = wxformbuilder-git
 	arch = aarch64
 	license = GPL
 	makedepends = git
-	makedepends = ninja
 	makedepends = cmake
 	depends = wxwidgets-gtk3
 	depends = boost
