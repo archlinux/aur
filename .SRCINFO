@@ -1,0 +1,17 @@
+pkgbase = python-wheezy-captcha
+	pkgdesc = Lightweight CAPTCHA library
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://github.com/akornatskyy/wheezy.captcha
+	arch = x86_64
+	license = MIT
+	makedepends = cython
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = python-wheezy-captcha-3.0.2.tar.gz::https://files.pythonhosted.org/packages/source/w/wheezy.captcha/wheezy.captcha-3.0.2.tar.gz
+	sha256sums = 3ddb4e86854ea2942c5f6ada3ea8743fc99e33cfcccac80ab087b6ec736d977b
+
+pkgname = python-wheezy-captcha
