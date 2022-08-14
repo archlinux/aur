@@ -1,14 +1,14 @@
 pkgbase = hysteria
 	pkgdesc = A feature-packed network utility optimized for networks of poor quality
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/HyNetwork/hysteria
 	arch = x86_64
-	license = MIT
+	license = GPL3
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = hysteria::git+https://github.com/HyNetwork/hysteria.git#tag=v1.1.0
+	source = hysteria::git+https://github.com/HyNetwork/hysteria.git#tag=v1.2.0
 	source = hysteria@.service
 	source = hysteria-server@.service
 	source = sysusers.conf
