@@ -1,0 +1,15 @@
+pkgbase = perseus
+	pkgdesc = The CLI for the Perseus frontend framework
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://github.com/arctic-hen7/perseus
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = bonnie
+	makedepends = npm
+	options = !lto
+	source = perseus-0.3.5.tar.gz::https://github.com/arctic-hen7/perseus/archive/v0.3.5.tar.gz
+	sha256sums = 91fafa505feb0b27dbbc89811ef990ffc12ebc72155d017dfed6ba372a5199ed
+
+pkgname = perseus
