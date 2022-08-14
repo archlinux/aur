@@ -2,14 +2,13 @@
 
 pkgname=enve-git
 _pkgname=${pkgname%-git}
-pkgver=continuous.linux.r52.gc39be6f4
-pkgrel=2
-epoch=1
+pkgver=continuous.linux.r65.gc0062e63
+pkgrel=1
 arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="2D animation software"
 url="https://maurycyliebner.github.io/"
 license=('GPL3')
-depends=('gperftools' 'qt5-multimedia' 'qt5-svg' 'qt5-webengine' 'qscintilla-qt5' 'quazip')
+depends=('ffmpeg4.4' 'gperftools' 'qt5-multimedia' 'qt5-svg' 'qt5-webengine' 'qscintilla-qt5' 'quazip')
 makedepends=('git' 'gn' 'intltool' 'ninja' 'openmp' 'python')
 source=("git+https://github.com/MaurycyLiebner/enve.git"
         "git+https://github.com/gperftools/gperftools.git"
@@ -66,6 +65,10 @@ prepare() {
   then
     make patch
   fi
+
+  # Configure qmake to use FFmpeg 4.4 libraries
+  sed -i '/Linux/ a\        LIBS += -L/usr/lib/ffmpeg4.4\n        INCLUDEPATH += /usr/include/ffmpeg4.4' \
+         "$srcdir/$_pkgname/src/core/core.pri"
 }
 
 build() {
