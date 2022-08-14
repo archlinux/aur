@@ -21,7 +21,6 @@ _pkgname=${pkgname%%-*}
 _url="https://github.com/NatronGitHub"
 
 conflicts=("${pkgname%-*}")
-provides=("${pkgname%-*}")
 
 source=("$_pkgname::git+$_url/${_pkgname^}"
         "openfx::git+$_url/openfx"
