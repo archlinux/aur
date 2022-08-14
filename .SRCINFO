@@ -1,7 +1,7 @@
 pkgbase = openmsx
 	pkgdesc = The MSX emulator that aims for perfection.
 	pkgver = 18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://openmsx.org/
 	install = openmsx.install
 	arch = i686
@@ -14,10 +14,12 @@ pkgbase = openmsx
 	depends = tcl
 	depends = libpng
 	depends = zlib
+	depends = glew
+	depends = libgl
 	optdepends = python
 	optdepends = jack-audio-connection-kit
-	optdepends = glew
-	optdepends = libgl
+	provides = openmsx
+	conflicts = openmsx-git
 	source = https://github.com/openMSX/openMSX/releases/download/RELEASE_18_0/openmsx-18.0.tar.gz
 	md5sums = 4e92b65c457ef0cca0c5b335a8dd37ae
 

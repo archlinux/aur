@@ -3,14 +3,16 @@
 
 pkgname=openmsx
 pkgver=18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The MSX emulator that aims for perfection."
 arch=('i686' 'x86_64')
 url="http://openmsx.org/"
 license=('custom')
-depends=('libxml2' 'sdl' 'sdl_image' 'sdl2_ttf' 'tcl' 'libpng' 'zlib')
-optdepends=('python' 'jack-audio-connection-kit' 'glew' 'libgl')
+depends=('libxml2' 'sdl' 'sdl_image' 'sdl2_ttf' 'tcl' 'libpng' 'zlib' 'glew' 'libgl')
+optdepends=('python' 'jack-audio-connection-kit')
 install=${pkgname}.install
+provides=("openmsx")
+conflicts=("openmsx-git")
 source=("https://github.com/openMSX/openMSX/releases/download/RELEASE_${pkgver//./_}/${pkgname}-${pkgver}.tar.gz")
 
 build() {
