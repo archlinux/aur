@@ -1,0 +1,17 @@
+pkgbase = nginx-mod-traffic-accounting
+	pkgdesc = Monitor the incoming and outgoing traffic metrics in realtime for NGINX
+	pkgver = 2.0+16+g98af5fc
+	pkgrel = 1
+	url = https://github.com/Lax/traffic-accounting-nginx-module
+	arch = x86_64
+	license = BSD
+	makedepends = nginx-src
+	depends = nginx
+	source = https://github.com/Lax/traffic-accounting-nginx-module/archive/v2.0/traffic-accounting-nginx-module-v2.0.tar.gz
+	source = d53a4a6.patch
+	source = server_addr.patch
+	sha256sums = 8c99c5313e5c822aa5683691c8a0641499b2fa8c67f9e55652817042e21f5986
+	sha256sums = 9bad093fba01d67098d98122202693ffba20feb20668f73e7712d9d9b9915bf1
+	sha256sums = e25f170801179e067c7186f1e27fcb3f4273ac5683f6a4962dee821d5eddc8d0
+
+pkgname = nginx-mod-traffic-accounting

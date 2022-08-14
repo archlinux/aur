@@ -1,0 +1,80 @@
+diff --git a/src/http/ngx_http_accounting_module.c b/src/http/ngx_http_accounting_module.c
+index 23a5fc3..ecc62d2 100644
+--- a/src/http/ngx_http_accounting_module.c
++++ b/src/http/ngx_http_accounting_module.c
+@@ -237,7 +237,6 @@ ngx_http_accounting_request_handler(ngx_http_request_t *r)
+     ngx_time_t                  *tp = ngx_timeofday();
+     ngx_msec_int_t               ms = 0;
+     ngx_http_upstream_state_t   *state;
+-
+     accounting_id = ngx_http_accounting_get_accounting_id(r);
+     if (accounting_id == NULL) { return NGX_ERROR; }
+ 
+@@ -251,6 +250,27 @@ ngx_http_accounting_request_handler(ngx_http_request_t *r)
+ 
+     amcf->current->updated_at = ngx_timeofday();
+ 
++    if (0 == metrics->server_addr.len) {
++        u_char   var_name_buf[256] = {0};
++        ngx_str_t                   server_addr_var_name = ngx_string("server_addr");
++        ngx_uint_t                  server_addr_key = ngx_hash_strlow(var_name_buf, server_addr_var_name.data, server_addr_var_name.len);
++        ngx_http_variable_value_t*  server_addr_val = ngx_http_get_variable(r, &server_addr_var_name, server_addr_key);
++
++        if (NULL == server_addr_val)  {
++            // ngx_log_error(NGXTA_LOG_LEVEL, amcf->log, ngx_errno,
++            //             ngx_realpath_n " get server_addr failed");
++            return NGX_ERROR;
++        } else {
++            // ngx_log_error(NGXTA_LOG_LEVEL, amcf->log, 0,
++            //             ngx_realpath_n " %s", server_addr_val->data);
++        }
++        metrics->server_addr.data = ngx_calloc(server_addr_val->len + 1, amcf->log);
++        if (NULL == metrics->server_addr.data) {
++            return NGX_ERROR;
++        }
++        memcpy(metrics->server_addr.data, server_addr_val->data, server_addr_val->len);
++        metrics->server_addr.len = server_addr_val->len;
++    }
+     metrics->nr_entries += 1;
+     metrics->bytes_in += r->request_length;
+     metrics->bytes_out += r->connection->sent;
+diff --git a/src/ngx_traffic_accounting.h b/src/ngx_traffic_accounting.h
+index 462becf..6046d78 100644
+--- a/src/ngx_traffic_accounting.h
++++ b/src/ngx_traffic_accounting.h
+@@ -24,6 +24,7 @@ typedef struct {
+     ngx_rbtree_node_t   rbnode;
+ 
+     ngx_str_t           name;
++    ngx_str_t           server_addr;
+ 
+     ngx_uint_t          nr_entries;
+     ngx_uint_t          bytes_in;
+diff --git a/src/ngx_traffic_accounting_log.c b/src/ngx_traffic_accounting_log.c
+index 9b4cd46..652cefb 100644
+--- a/src/ngx_traffic_accounting_log.c
++++ b/src/ngx_traffic_accounting_log.c
+@@ -35,9 +35,10 @@ ngx_traffic_accounting_log_metrics(void *val, void *para1, void *para2,
+     last = msg_buf + NGX_MAX_ERROR_STR;
+ 
+     p = ngx_slprintf(p, last,
+-        "pid:%i|from:%i|to:%i|accounting_id:%V|%s:%ui|bytes_in:%ui|bytes_out:%ui|latency_ms:%ui|upstream_latency_ms:%ui",
++        "pid:%i|from:%i|to:%i|server_addr:%V|accounting_id:%V|%s:%ui|bytes_in:%ui|bytes_out:%ui|latency_ms:%ui|upstream_latency_ms:%ui",
+         ngx_getpid(),
+         created_at->sec, updated_at->sec,
++        &metrics->server_addr,
+         &metrics->name, entry_n,
+         metrics->nr_entries,
+         metrics->bytes_in, metrics->bytes_out,
+diff --git a/src/ngx_traffic_accounting_period_metrics.c b/src/ngx_traffic_accounting_period_metrics.c
+index 7376ad9..d454a3c 100644
+--- a/src/ngx_traffic_accounting_period_metrics.c
++++ b/src/ngx_traffic_accounting_period_metrics.c
+@@ -161,6 +161,7 @@ ngx_traffic_accounting_period_rbtree_iterate(ngx_traffic_accounting_period_t *pe
+             ngx_free(n->nr_status);
+             ngx_free(n->nr_upstream_status);
+             ngx_free(n->name.data);
++            ngx_free(n->server_addr.data);
+             ngx_free(n);
+ 
+             goto done;
