@@ -18,7 +18,6 @@ pkgbase = openfx-arena-git
 	depends = libzip
 	depends = poppler-glib
 	depends = sox
-	provides = openfx-arena
 	conflicts = openfx-arena
 	source = openfx-arena::git+https://github.com/NatronGitHub/openfx-arena
 	source = openfx::git+https://github.com/NatronGitHub/openfx
