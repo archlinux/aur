@@ -2,7 +2,7 @@
 pkgdesc='Dynamic, bytecode-compiled programming language and a dialect of Python'
 pkgname=kuroko
 pkgver=1.2.5
-pkgrel=1
+pkgrel=2
 url=https://kuroko-lang.github.io
 license=(custom:MIT)
 arch=(x86_64)
@@ -12,6 +12,10 @@ b2sums=('f9d1d595121f671586fe65ac94bb01fcd8e44668081b57f6a634d56f9d0f2978ba6217c
 
 build () {
 	make -C "${pkgname}-${pkgver}" prefix=/usr
+}
+
+check () {
+	make -C "${pkgname}-${pkgver}" prefix=/usr test
 }
 
 package () {

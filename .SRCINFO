@@ -1,7 +1,7 @@
 pkgbase = kuroko
 	pkgdesc = Dynamic, bytecode-compiled programming language and a dialect of Python
 	pkgver = 1.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kuroko-lang.github.io
 	arch = x86_64
 	license = custom:MIT
