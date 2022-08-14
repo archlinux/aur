@@ -1,8 +1,8 @@
 # Maintainer: Torge Matthies <openglfreak at googlemail dot com>
 
 pkgname=efistubmgr-git
-pkgver=1.0.0.r1.gcf8aa14
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="Script for managing Linux EFISTUB boot entries"
 arch=('any')
 url='https://github.com/openglfreak/efistubmgr'
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 pkgver() {(
     cd "$srcdir/efistubmgr"
     set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/^v//;s/^[a-z][a-z]*-//;s/\([^-]*-g\)/r\1/;s/-/./g' || \
+    git describe --long --tags 2>/dev/null | sed 's/^v//;s/^[a-z][a-z]*-//;s/\([^-]*-g\)/r\1/;s/-/./g;s/\.r0\.g.*$//' || \
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 );}
 
