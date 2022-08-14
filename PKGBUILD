@@ -1,54 +1,53 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 _pkgname=suil
-pkgname="${_pkgname}-git"
-pkgver=0.10.11.r396.6e556e0
+pkgname="$_pkgname-git"
+pkgver=0.10.16.r414.78bf2c7
 pkgrel=1
-pkgdesc="Lightweight C library for loading and wrapping LV2 plugin UIs (git version)"
-arch=('i686' 'x86_64')
-url="http://drobilla.net/software/suil/"
+pkgdesc='Lightweight C library for loading and wrapping LV2 plugin UIs (git version)'
+arch=(x86_64)
+url='http://drobilla.net/software/suil/'
 license=('custom:ISC')
-makedepends=('git' 'gtk2' 'gtk3' 'lv2' 'python' 'qt5-base')
+makedepends=(
+  doxygen
+  git
+  gtk2
+  gtk3
+  lv2
+  meson
+  python
+  python-sphinx
+  python-sphinx-lv2-theme
+  qt5-base
+)
 optdepends=('gtk2: GTK+ 2.x UI wrapping support'
             'gtk3: GTK+ 3.x UI wrapping support'
             'qt5-base: Qt 5.x UI wrapping support')
-provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}" "lib${_pkgname}-${pkgver::1}.so")
-conflicts=("${_pkgname}" "${_pkgname}-svn")
-source=("${_pkgname}::git+https://gitlab.com/lv2/${_pkgname}.git"
-        'autowaf::git+https://gitlab.com/drobilla/autowaf.git')
-md5sums=('SKIP'
-         'SKIP')
+provides=($_pkgname "$_pkgname=${pkgver//.r*/}")
+conflicts=($_pkgname $_pkgname-svn)
+source=("$_pkgname::git+https://gitlab.com/lv2/$_pkgname.git")
+md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-
-  local ver=`grep "^SUIL_VERSION" wscript | cut -d "'" -f 2`
-  echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-
-  git submodule init
-  git config submodule.waflib.url "${srcdir}/autowaf"
-  git submodule update
-
-  # remove local call to ldconfig
-  sed -i "/ldconfig/d" wscript
+  cd $_pkgname
+  local ver=$(grep -E "^\s+version: '[0-9]+\.[0-9]+\.[0-9]+'" meson.build | cut -d "'" -f 2)
+  echo $ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
-
-  python waf configure \
-    --prefix=/usr \
-    --configdir=/etc
-  python waf build $MAKEFLAGS
+  arch-meson $_pkgname $_pkgname-build -Dcocoa=disabled
+  meson compile -C $_pkgname-build
 }
 
-package() {
-  cd "${srcdir}/${_pkgname}"
+# project has no tests (yet?)
+#check() {
+#  meson test -C $_pkgname-build
+#}
 
-  python waf install --destdir="${pkgdir}"
-  install -Dm644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
+package() {
+  provides+=(libsuil-0.so)
+  meson install -C $_pkgname-build --destdir "$pkgdir"
+  mv -v "$pkgdir"/usr/share/doc/{$_pkgname-0,$pkgname}
+  install -vDm 644 $_pkgname/COPYING -t "$pkgdir"/usr/share/licenses/$pkgname
+  install -vDm 644 $_pkgname/{AUTHORS,NEWS,README.md} -t "$pkgdir"/usr/share/doc/$pkgname
 }
