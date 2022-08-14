@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="You are a solar powered craft, racing against the sunset at insane speeds through an infinite procedural world that changes every day."
 url='http://flippfly.com/racethesun/'
 license=('custom')
-arch=('x86_64')
+arch=('x86_64' 'i686')
 depends=('zlib' 'libGL.so')
 source=(
   "${pkgname}"

@@ -4,6 +4,7 @@ pkgbase = gog-race-the-sun
 	pkgrel = 1
 	url = http://flippfly.com/racethesun/
 	arch = x86_64
+	arch = i686
 	license = custom
 	depends = zlib
 	depends = libGL.so
