@@ -1,6 +1,6 @@
 # Maintainer: ovk <mail@okosh.xyz>
 pkgname=dotref
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Simple tool to manage dotfiles"
 arch=('any')
@@ -9,10 +9,10 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/source/d/dotref/dotref-${pkgver}.tar.gz")
-sha256sums=('56fdbc4db06b0c8127d09ba4ea346d13366dfe75bd62a80a665ce77bede5a096')
+sha256sums=('a02c559581e8dc7b63637ce7f76db49a9fbe99ec1ba27564181c2d496cd6042c')
 
 build() {
-  cd "dotref-${pkgname}"
+  cd "dotref-${pkgver}"
   python setup.py build
 }
 
