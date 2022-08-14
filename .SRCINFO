@@ -10,7 +10,6 @@ pkgbase = openfx-misc-git
 	depends = libgl
 	depends = python
 	optdepends = natron-plugins-git: More presets for the Shadertoy plugin
-	provides = openfx-misc
 	conflicts = openfx-misc
 	source = openfx-misc::git+https://github.com/NatronGitHub/openfx-misc
 	source = openfx::git+https://github.com/NatronGitHub/openfx
