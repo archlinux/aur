@@ -1,7 +1,7 @@
 # Maintainer: Lawrence Thorpe <lawrence at lawrencethorpe.uk>
 pkgname=dng
 pkgver=13.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Wrapper around Adobe DNG Converter via wine to provide POSIX command line parsing"
 arch=('x86_64')
 url="https://github.com/thorpelawrence/dng"
