@@ -1,7 +1,7 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname='pyload-ng'
 pkgver=0.5.0b3.dev24
-pkgrel=1
+pkgrel=2
 pkgdesc="The free and open-source Download Manager written in pure Python"
 url="https://pyload.net/"
 license=('AGPL3')
@@ -20,8 +20,8 @@ sha256sums=('5daffd2a8991b94b7b06bf9d76b03e028919e1ece787d84434b5379bc659f1cc')
 
 prepare() {
   cd "$srcdir/${pkgname}-${pkgver}"
-  # fix library versions flask-babel
-  sed -e 's/l~=1.0/l>=1.0/g' -i setup.cfg
+  # Allow higher library versions
+  sed -e 's/~=/>=/g' -i setup.cfg
 }
 
 build() {
