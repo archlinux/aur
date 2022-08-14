@@ -1,0 +1,17 @@
+pkgbase = l2md-git
+	pkgdesc = Import public-inbox archives via Git
+	pkgver = r23.9db252b
+	pkgrel = 1
+	url = https://git.kernel.org/pub/scm/linux/kernel/git/dborkman/l2md.git
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = libgit2
+	depends = git
+	depends = libgit2
+	provides = l2md
+	conflicts = l2md
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/dborkman/l2md.git
+	md5sums = SKIP
+
+pkgname = l2md-git
