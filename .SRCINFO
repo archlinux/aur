@@ -1,0 +1,24 @@
+pkgbase = calculix-cgx
+	pkgdesc = CalculiX: 3D Structural Finite Element Program - Post Processor
+	pkgver = 2.20
+	pkgrel = 1
+	url = http://www.calculix.de/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	checkdepends = perl
+	makedepends = gcc-fortran
+	makedepends = perl
+	depends = libsnl-svn
+	depends = mesa
+	depends = glu
+	depends = libxmu
+	depends = libxi
+	optdepends = calculix-doc: documentation and examples
+	options = !buildflags
+	source = http://www.dhondt.de/cgx_2.20.all.tar.bz2
+	source = calculix_cgx_2.20_archlinux.patch
+	sha256sums = f4c840c3633718547e33f86b2d7bc6b35608dd8d6cbf9fa192cecef34f2dc908
+	sha256sums = 6d9e86c9bcbe2953a3e7697c3c84945e8abeac4607ca519f69cd6f43cc8eb4e5
+
+pkgname = calculix-cgx
