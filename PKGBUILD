@@ -6,7 +6,7 @@
 
 pkgname=stgit-git
 _pkgname=stgit
-pkgver=r2526.48258d29
+pkgver=r2587.4b5e4358
 pkgrel=1
 pkgdesc="Pushing/popping patches to/from a stack on top of Git, similar to Quilt"
 url="https://stacked-git.github.io/"
@@ -15,7 +15,7 @@ makedepends=('cargo')
 license=('GPL2')
 depends=('git')
 conflicts=('stgit')
-source=("${_pkgname}::git+https://github.com/stacked-git/stgit.git#branch=rust")
+source=("${_pkgname}::git+https://github.com/stacked-git/stgit.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -23,45 +23,29 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+	cd "${_pkgname}"
+	cargo --locked fetch --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
 	cd "${_pkgname}"
-	cargo build --release --locked --all-features
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=${PWD}/target
+	make build doc
+	make -C completion all
 }
 
 check() {
 	cd "${_pkgname}"
-	cargo test --all-features
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=${PWD}/target
+	make unit-test
 }
 
 package() {
 	cd "${_pkgname}"
-
-	install -D -m 0755 "target/release/stg" "${pkgdir}/usr/bin/stg"
-
-	install -d "${pkgdir}/usr/share/stgit/completion"
-	target/release/stg completion bash -o "${pkgdir}/usr/share/stgit/completion/stg.bash"
-	target/release/stg completion fish -o "${pkgdir}/usr/share/stgit/completion/stg.fish"
-	target/release/stg completion  zsh -o "${pkgdir}/usr/share/stgit/completion/stg.zsh"
-	chmod 0644 "${pkgdir}/usr/share/stgit/completion/stg.bash"
-	chmod 0644 "${pkgdir}/usr/share/stgit/completion/stg.fish"
-	chmod 0644 "${pkgdir}/usr/share/stgit/completion/stg.zsh"
-	install -d "${pkgdir}/usr/share/bash-completion/completions"
-	install -d "${pkgdir}/usr/share/zsh/site-functions"
-	install -d "${pkgdir}/usr/share/fish/vendor_completions.d"
-	ln -s "/usr/share/stgit/completion/stg.bash" "${pkgdir}/usr/share/bash-completion/completions/stg"
-	ln -s "/usr/share/stgit/completion/stg.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/stg.fish"
-	ln -s "/usr/share/stgit/completion/stg.zsh"  "${pkgdir}/usr/share/zsh/site-functions/_stg"
-
-	install -d "${pkgdir}/usr/share/emacs/site-lisp"
-	install -D -m 0644 ./contrib/stgit.el "${pkgdir}/usr/share/emacs/site-lisp"
-
-	install -d "${pkgdir}/usr/share/vim/vimfiles/ftdetect"
-	install -d "${pkgdir}/usr/share/vim/vimfiles/syntax"
-	install -D -m 0644 ./contrib/vim/ftdetect/stg.vim "${pkgdir}/usr/share/vim/vimfiles/ftdetect"
-	for vimsyntax in ./contrib/vim/syntax/*.vim; do
-		install -D -m 0644 "${vimsyntax}" "${pkgdir}/usr/share/vim/vimfiles/syntax/$(basename $vimsyntax)"
-	done
-
+	make prefix=/usr DESTDIR=${pkgdir} install-all
 	install -D -m 0644 "COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
 }
 
