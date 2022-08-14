@@ -1,0 +1,16 @@
+{
+    "Name": "微信（wine）",
+    "Version": "3.7.5.11spark7",
+    "Filename": "com.qq.weixin.spark_3.7.5.11spark7_i386.deb",
+    "Torrent_address": "com.qq.weixin.spark_3.7.5.11spark7_i386.deb.torrent",
+    "Pkgname": "com.qq.weixin.spark",
+    "Author": "腾讯",
+    "Contributor": "sgb76",
+    "Website": "https://weixin.qq.com/",
+    "Update": "2022-07-10 12:27:04",
+    "Size": "211.07 MB",
+    "More": "微信PC客户端 \n\n更新说明：\n1.deepin下运行效果较好，各项功能（包括朋友圈、小程序、视频通话、截图等）均可正常使用；\n2.修复了Ubuntu22.04下不显示图片的问题，但摄像头、小程序、截图等仍然存在问题。",
+    "Tags": "deepin;ubuntu;dwine5",
+    "img_urls": "[\"https://examine-spark.oss-cn-shanghai.aliyuncs.com/images/2022/07/10/40257b50-0008-11ed-af5d-3bbfdc90d8e6.png\",\"https://examine-spark.oss-cn-shanghai.aliyuncs.com/images/2022/07/10/4268b490-0008-11ed-af5d-3bbfdc90d8e6.png\",\"https://examine-spark.oss-cn-shanghai.aliyuncs.com/images/2022/07/10/454b6220-0008-11ed-af5d-3bbfdc90d8e6.png\"]",
+    "icons": "https://examine-spark.oss-cn-shanghai.aliyuncs.com/icons/2022/07/10/3d7f1370-0008-11ed-af5d-3bbfdc90d8e6.png"
+}

@@ -1,6 +1,6 @@
 pkgbase = com.qq.weixin.spark
 	pkgdesc = Tencent WeChat Client on Deepin Wine 5 (from Spark Store)
-	pkgver = 3.2.1.127spark0
+	pkgver = 3.7.5.11spark7
 	pkgrel = 1
 	url = http://weixin.qq.com/
 	install = wechat.install
@@ -14,7 +14,9 @@ pkgbase = com.qq.weixin.spark
 	optdepends = noto-fonts-cjk: Google Noto CJK fonts
 	conflicts = com.qq.weixin.dcs
 	replaces = com.qq.weixin.dcs
-	source = https://sucdn.jerrywang.top/store/chat/com.qq.weixin.spark/com.qq.weixin.spark_3.2.1.127spark0_i386.deb
-	md5sums = d4c75622d33e5ae5f8d59f0b6b70de00
+	source = http://d.store.deepinos.org.cn//store/chat/com.qq.weixin.spark/app.json
+	source = http://d.store.deepinos.org.cn//store/chat/com.qq.weixin.spark/com.qq.weixin.spark_3.7.5.11spark7_i386.deb
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = com.qq.weixin.spark

@@ -1,28 +1,27 @@
-# Maintainer: Sam L. Yes <samlukeyes123@gmail.com>
+# Maintainer: zhuangzhuang <xufengyuan20080802@outlook.com>
 pkgname=com.qq.weixin.spark
-pkgver=3.2.1.127spark0
+pkgver=3.7.5.11spark7
 pkgrel=1
-epoch=
 pkgdesc="Tencent WeChat Client on Deepin Wine 5 (from Spark Store)"
 arch=('i686' 'x86_64')
 url="http://weixin.qq.com/"
 license=('unknown')
-groups=()
 depends=('deepin-wine5' 'deepin-wine-helper' 'xdg-utils')
 #makedepends=('tar')
-checkdepends=()
 optdepends=('ttf-ms-fonts: Microsoft Core fonts (You might also need Microsoft YaHei additionally)'
-			'noto-fonts-cjk: Google Noto CJK fonts')
-provides=()
+	'noto-fonts-cjk: Google Noto CJK fonts')
 conflicts=('com.qq.weixin.dcs')
 replaces=('com.qq.weixin.dcs')
-backup=()
-options=()
 install=wechat.install
-changelog=
-source=("https://sucdn.jerrywang.top/store/chat/${pkgname}/${pkgname}_${pkgver}_i386.deb")
-md5sums=('d4c75622d33e5ae5f8d59f0b6b70de00')
-validpgpkeys=()
+source=("http://d.store.deepinos.org.cn//store/chat/com.qq.weixin.spark/app.json"
+	"http://d.store.deepinos.org.cn//store/chat/com.qq.weixin.spark/${pkgname}_${pkgver}_i386.deb")
+md5sums=('SKIP'
+	'SKIP')
+
+pkgver() {
+	cat app.json | sed 's/,/\n/g' | grep "Version" | sed 's/:/\n/g' | sed '1d' | sed 's/}//g' | sed 's/"//g' | python -c "s=input();print(s.strip())"
+}
+
 
 package() {
 	cd ${pkgdir}
