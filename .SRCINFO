@@ -1,0 +1,14 @@
+pkgbase = spotify-fixer
+	pkgdesc = Fixes Spotify scaling and launching behavior
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/friday/spotify-fixer
+	arch = any
+	license = MIT
+	depends = spotify
+	depends = python-gobject
+	optdepends = libwnck3: Fix single window app behavior (X11 only)
+	source = spotify
+	sha256sums = a1707932b52b6f8ea78336a26faba1216809183c5ff1508b5e621f17420640c4
+
+pkgname = spotify-fixer

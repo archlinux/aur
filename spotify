@@ -1,0 +1,68 @@
+#!/usr/bin/env python3
+
+#########################################################################################
+# This small scripts does two things:                                                   #
+# 1. On X11 it attempts to activate (raise) Spotify if it's already running,            #
+#    instead of trying to open a new Window (Spotify should be a single window app)     #
+#    The fix only woirks for X11 (but the issue happens on Wayland too).                #
+# 2. It checks for and tries to use your HiDPI settings from _your_ gsettings (dconf),  #
+#    including both screen and font scaling.                                            #
+#                                                                                       #
+# It should be placed in PATH, in a location that overrules /usr/bin/.                  #
+# It expects spotify to be located in /usr/bin/spotify                                  #
+#########################################################################################
+
+import os
+import sys
+import subprocess
+import gi
+gi.require_versions({"Gdk": "3.0"})
+from gi.repository import Gdk, Gio
+
+cmd = ["/usr/bin/spotify"]
+scaling = 1
+
+
+# Try to raise extisting window (There is a DBUS MPRIS method to raise, but it doesn't do anything)
+# https://github.com/flathub/com.spotify.Client/issues/4
+try:
+    gi.require_versions({"GdkX11": "3.0", "Wnck": "3.0"})
+    from gi.repository import Gdk, GdkX11, Gio, Wnck
+    if os.environ.get("XDG_SESSION_TYPE", "").lower() == "x11":
+        wnck_screen = Wnck.Screen.get_default()
+        wnck_screen.force_update()
+        for win in reversed(wnck_screen.get_windows_stacked()):
+            if win.get_name() == "Spotify":
+                win.activate(GdkX11.x11_get_server_time(Gdk.get_default_root_window()))
+                sys.exit(0)
+except Exception:
+    pass
+
+# Don't infer --force-device-scale-factor if it was set manually
+for arg in sys.argv[1:]:
+    if arg.lower().startswith("--force-device-scale-factor="):
+        subprocess.call(cmd + sys.argv[1:])
+        sys.exit(0)
+
+
+# Apply text scaling (used for fractional scaling)
+try:
+    text_scaling = Gio.Settings.new("org.gnome.desktop.interface").get_double("text-scaling-factor")
+    if text_scaling > 1:
+        scaling *= text_scaling
+except Exception:
+    pass
+
+# Apply display/monitor scaling (non-fractional scaling)
+try:
+    display = Gdk.Display.get_default()
+    monitor = display.get_primary_monitor() or display.get_monitor(0)
+    if monitor.get_scale_factor() > 1:
+        scaling *= monitor.get_scale_factor()
+except Exception:
+    pass
+
+if scaling > 1:
+    cmd.append(f"--force-device-scale-factor={scaling}")
+
+subprocess.call(cmd)
