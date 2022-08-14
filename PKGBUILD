@@ -2,7 +2,7 @@
 
 pkgname=lceda-bin
 _pkgname=${pkgname%-bin}
-pkgver=6.5.11
+pkgver=6.5.12
 pkgrel=1
 pkgdesc="免费、强大、易用的在线电路设计软件"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}-${pkgver}.zip::https://image.lceda.cn/files/${_pkgname}-linux-x64-${pkgver}.zip"
         "LICENSE")
-sha256sums=('f520c9b3e9902ba5a996cea72e24da138ddad4f5fc7c824a45447fdcb1f95d68'
+sha256sums=('f0a02b342899ff80369d4cacadc1d16bd9c49710a7b6143f9850085cdbb3be68'
             '9b53bc19a98498c86019cc32a3ade6ad0ee4b12ba30686feb93132a5f0da52f5')
 
 package() {
