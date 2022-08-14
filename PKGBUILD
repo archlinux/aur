@@ -3,7 +3,7 @@
 # Contributor: aimileus <me at aimileus dot nl>
 
 pkgname=protonmail-bridge
-pkgver=2.1.3
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
@@ -20,7 +20,7 @@ conflicts=('protonmail-bridge-bin')
 options=('!emptydirs' '!strip')
 
 # Source to compile to a specific tag
-source=("git+https://github.com/ProtonMail/proton-bridge.git#tag=br-${pkgver}"
+source=("git+https://github.com/ProtonMail/proton-bridge.git#tag=v${pkgver}"
         "protonmail-bridge.desktop")
 
 # Source to compile to a specific commit
