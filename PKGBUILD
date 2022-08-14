@@ -2,8 +2,8 @@
 _pkgname=harvesttimer-qt
 _appname=harvest
 pkgname=harvest-timer-qt
-pkgver=0.9.2
-pkgrel=2
+pkgver=0.9.3
+pkgrel=1
 pkgdesc='Desktop app for Harvest, a simple time tracker and reporting tool for companies'
 arch=('x86_64')
 url='https://github.com/jorge-barroso/harvesttimer-qt'
