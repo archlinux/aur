@@ -1,13 +1,13 @@
 pkgbase = dotref
 	pkgdesc = Simple tool to manage dotfiles
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/ovk/dotref
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://pypi.python.org/packages/source/d/dotref/dotref-1.2.3.tar.gz
-	sha256sums = 18ddca5414230e119cb6ab3f034771c3c01ec45eb0db5cf29e0fa4ed1d4d53bf
+	source = https://pypi.python.org/packages/source/d/dotref/dotref-1.2.4.tar.gz
+	sha256sums = 8a6ee15be1f3514c6c520c621b475501b78c87a387cd13bf8a24e5c3dea23c2f
 
 pkgname = dotref
