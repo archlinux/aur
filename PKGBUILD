@@ -7,6 +7,7 @@ pkgdesc="A gunfight dungeon crawler following a band of misfits seeking to shoot
 url='http://dodgeroll.com/gungeon/'
 license=('custom')
 arch=('x86_64')
+depends=('sdl2' 'gtk2' 'gdk-pixbuf2' 'zlib')
 source=(
   "${pkgname}"
   "${pkgname}.desktop"
