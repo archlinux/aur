@@ -2,7 +2,7 @@
 
 pkgname=spotify-fixer
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fixes Spotify scaling and launching behavior'
 arch=('any')
 url="https://github.com/friday/spotify-fixer"
@@ -13,5 +13,5 @@ source=('spotify')
 sha256sums=('a1707932b52b6f8ea78336a26faba1216809183c5ff1508b5e621f17420640c4')
 
 package() {
-  install -D --mode +x spotify "${pkgdir}/usr/local/bin/spotify"
+  install -Dm755 spotify "${pkgdir}/usr/local/bin/spotify"
 }

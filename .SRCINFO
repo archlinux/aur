@@ -1,7 +1,7 @@
 pkgbase = spotify-fixer
 	pkgdesc = Fixes Spotify scaling and launching behavior
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/friday/spotify-fixer
 	arch = any
 	license = MIT
