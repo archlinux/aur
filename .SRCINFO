@@ -10,7 +10,6 @@ pkgbase = openfx-io-git
 	depends = ffmpeg
 	depends = openimageio
 	depends = libseexpr2
-	provides = openfx-io
 	conflicts = openfx-io
 	source = openfx-io::git+https://github.com/NatronGitHub/openfx-io
 	source = openfx::git+https://github.com/NatronGitHub/openfx
