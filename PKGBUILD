@@ -3,12 +3,12 @@
 
 pkgname=kalker
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A calculator program that supports user-defined variables, functions, derivation, and integration."
 url="https://github.com/PaddiM8/kalker"
 depends=('gcc-libs')
 makedepends=('cargo')
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/PaddiM8/$pkgname/archive/v$pkgver.tar.gz")
 
