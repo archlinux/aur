@@ -7,6 +7,7 @@ pkgdesc="Hike, climb, and soar through the peaceful mountainside landscapes of H
 url='http://ashorthike.com/'
 license=('custom')
 arch=('x86_64')
+depends=('libxml2' 'zlib')
 source=(
   "${pkgname}"
   "${pkgname}.desktop"
