@@ -1,0 +1,21 @@
+pkgbase = slang-snapshot
+	pkgdesc = S-Lang is a powerful interpreted language (development snapshot)
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = https://jedsoft.org/snapshots/
+	arch = x86_64
+	arch = armv7h
+	license = GPL
+	depends = pcre
+	provides = slang
+	conflicts = slang
+	options = !makeflags
+	backup = etc/slsh.rc
+	source = https://jedsoft.org/snapshots/slang-2.3.3.tar.gz
+	validpgpkeys = AE962A02D29BFE4A4BB2805FDE401E0D5873000A
+	md5sums = 4d6049513ae780ea6e288a46c3dc4d15
+	sha256sums = 3d091652ccb27026034093ba261de94492337e9ae69ed4e37f5a3ca22c74ccc2
+	sha512sums = 97cd6c704f9a7bc4e4f062443c56e51b2b26f4943fdc8bf54c86d427df608f4bcb8d5f7b2c6d26fa417c7a9905850fd9ad4ed84b91a8e8499446348ffa398d74
+	b2sums = e8a2adc2f8bd81a8d5137e1a8e25a99110b56fb89db12afe8a2133b54ea0cec07a747cf04744f99f7e34d0e1ad278696b71f84e373c23c6f2c7fdf6dda0869a8
+
+pkgname = slang-snapshot
