@@ -2,8 +2,8 @@
 _name=ffly
 _loc="firefly/server"
 pkgname=${_name}
-pkgver=0.0.1
-pkgrel=2
+pkgver=0.0.2
+pkgrel=1
 pkgdesc="An \"blazingly\" fast key-value pair database without bloat written in rust"
 arch=(x86_64 i686)
 url="https://github.com/Arthurdw/firefly"
@@ -38,6 +38,5 @@ check() {
     export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --all-features
 }
-
 
 
