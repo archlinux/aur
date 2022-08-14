@@ -5,7 +5,7 @@
 # Contributor: Fredy García <frealgagu at gmail dot com>
 
 pkgname=mongodb-tools-git
-pkgver=100.5.1_1_g1f3678fa.1f3678fa
+pkgver=100.5.4.r6.g1d46e6e7
 pkgrel=1
 pkgdesc="The MongoDB tools provide import, export, and diagnostic capabilities."
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ sha512sums=('SKIP')
 
 pkgver(){
     cd "${srcdir}/mongo-tools"
-    echo $(git describe --tags).$(git rev-parse --short HEAD) | sed "s/-/_/g"
+    git describe --tags --long | sed 's/v//;s/-/.r/;s/-/./g'
 }
 build(){
     cd "${srcdir}/mongo-tools"
