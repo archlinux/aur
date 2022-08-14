@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A gunfight dungeon crawler following a band of misfits seeking to shoot, loot, dodge roll and table-flip their way to personal absolution by reaching the legendary Gungeon’s ultimate treasure: the gun that can kill the past."
 url='http://dodgeroll.com/gungeon/'
 license=('custom')
-arch=('x86_64')
+arch=('x86_64' 'i686')
 depends=('sdl2' 'gtk2' 'gdk-pixbuf2' 'zlib')
 source=(
   "${pkgname}"

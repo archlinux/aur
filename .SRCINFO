@@ -4,6 +4,7 @@ pkgbase = gog-enter-the-gungeon
 	pkgrel = 1
 	url = http://dodgeroll.com/gungeon/
 	arch = x86_64
+	arch = i686
 	license = custom
 	depends = sdl2
 	depends = gtk2
