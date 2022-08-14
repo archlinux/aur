@@ -1,7 +1,7 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 pkgname=rusty_ulid
-pkgver=0.10.1
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Rust ULID generation and processing"
 arch=('x86_64')
 url="https://crates.io/crates/rusty_ulid"
@@ -10,7 +10,7 @@ makedepends=('cargo')
 depends=('gcc-libs')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/huxi/rusty_ulid/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('493b7e228d5e61b95b816626c71cd03ffcb3987a2cbf90de704fba33d2f78ab4a3ac4cacdfc351e4f5789f7d2417d7a93c8022304a1f0c8fda87be286e863346')
+b2sums=('e7e3ae0e3edff7e90112a77be640510e51c155bbb2a497c86a6f99994755ff4d040b23f221a626eb3cf945ba0e3a69c26a1b885a119b0309492f799a42a71a0b')
 
 build() {
     cd "$pkgname-$pkgver"
