@@ -15,7 +15,7 @@ url="https://github.com/fn2006/PollyMC"
 license=('GPL3')
 depends=('java-runtime' 'libgl' 'qt5-base' 'qt5-svg' 'qt5-imageformats' 'zlib' 'hicolor-icon-theme')
 provides=('pollymc' 'pollymc-qt5')
-conflicts=( )
+conflicts=('polymc')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'java-environment' 'scdoc')
 optdepends=('glfw: to use system GLFW libraries'
             'openal: to use system OpenAL libraries'
