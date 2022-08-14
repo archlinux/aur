@@ -1,6 +1,6 @@
 pkgbase = python-onnx-tensorflow
 	pkgdesc = Open Neural Network Exchange Tensorflow Backend
-	pkgver = 1.9.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://onnx.ai
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = python-onnx-tensorflow
 	optdepends = mxnet
 	optdepends = python-pytorch
 	optdepends = python-tensorflow
-	source = python-onnx-tensorflow::git+https://github.com/onnx/onnx-tensorflow.git#tag=v1.9.0
+	source = python-onnx-tensorflow::git+https://github.com/onnx/onnx-tensorflow.git#tag=v1.10.0
 	sha512sums = SKIP
 
 pkgname = python-onnx-tensorflow
