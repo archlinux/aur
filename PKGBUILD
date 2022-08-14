@@ -7,6 +7,7 @@ pkgdesc="You are a solar powered craft, racing against the sunset at insane spee
 url='http://flippfly.com/racethesun/'
 license=('custom')
 arch=('x86_64')
+depends=('zlib' 'libGL.so')
 source=(
   "${pkgname}"
   "${pkgname}.desktop"
