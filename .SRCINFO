@@ -1,13 +1,13 @@
 pkgbase = quickredis
 	pkgdesc = A free forever Redis GUI tool. It supports direct connection, sentinel, and cluster mode, supports multiple languages, supports hundreds of millions of keys and has an amazing UI
-	pkgver = 2.6.2
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://quick123.net
 	arch = x86_64
 	license = custom:unknown
 	makedepends = gendesk
-	noextract = quickredis-2.6.2.AppImage
-	source = quickredis-2.6.2.AppImage::https://github.com/quick123official/quick_redis_blog/releases/download/v2.6.2/QuickRedis-2.6.2-linux-x86_64.AppImage
-	sha256sums = 1ab223c07a8964aade030fd663edfc2efdd9675368a5549edd42da40f66ab611
+	noextract = quickredis-2.7.1.AppImage
+	source = quickredis-2.7.1.AppImage::https://github.com/quick123official/quick_redis_blog/releases/download/v2.7.1/QuickRedis-2.7.1-linux-x86_64.AppImage
+	sha256sums = b59036bf29799e46ae322ba3f906ca4b7dab29cabf92981365c81d6ae93e97dd
 
 pkgname = quickredis
