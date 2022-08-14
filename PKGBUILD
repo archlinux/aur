@@ -41,5 +41,5 @@ package() {
 	install -Dm755 "bin/shortsync" "$pkgdir/usr/local/bin/shortsync"
 	install -Dm644 "shortsync.1" "$pkgdir/usr/share/man/man1/shortsync.1"
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/shortsync/LICENSE"
-	install -Dm644 "README.org" "$pkgdir/usr/share/doc/shortsync/README.org"
+	install -Dm644 "README.md" "$pkgdir/usr/share/doc/shortsync/README.md"
 }
