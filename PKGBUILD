@@ -2,7 +2,7 @@
 # Contributor: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=buck
-pkgver=2021.05.05.01
+pkgver=2022.05.05.01
 pkgrel=1
 pkgdesc="A fast build system that encourages the creation of small,`
   ` reusable modules over a variety of platforms and languages."
@@ -13,12 +13,12 @@ optdepends=('watchman: prevent Buck from parsing all of your build files every t
 url='https://buckbuild.com'
 license=('Apache')
 source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/facebook/${pkgname}/archive/v${pkgver}.tar.gz"
-    'buck.shim'
+  "$pkgname-$pkgver.tar.gz::https://github.com/facebook/${pkgname}/archive/v${pkgver}.tar.gz"
+  'buck.shim'
 )
 sha512sums=(
-    'a86c947ddfa365b43c61fdcd9fae09ac79b3ae44297b6df9f86d20d1f6e26767263d2a38b16f06d04194bbfee75b17892c181f6a0fe0c5e9acf79482331396d0'
-    '59655cf08e9b4c823893dc1b5eaa9f5e6c10c3f423ff814ea70e83af23f357c75c849c9648345d0c8fe3ed16f4ccf77867ddf62d134a618e745dfaeb9b7f571b'
+  'b6b9c778756418025eafaa3b130fc2edf7d7455b17590af86e2b41d4d66568c235c03715f72de46523c7463fdcf04e4125c3c4df2a5718148c43880e92ef8592'
+  '59655cf08e9b4c823893dc1b5eaa9f5e6c10c3f423ff814ea70e83af23f357c75c849c9648345d0c8fe3ed16f4ccf77867ddf62d134a618e745dfaeb9b7f571b'
 )
 
 prepare() {
