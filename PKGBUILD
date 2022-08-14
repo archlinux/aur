@@ -20,5 +20,5 @@ build() {
 
 package() {
     cd "$pkgname-$pkgver"
-    make prefix="/usr" DESTDIR="$pkgdir" install
+    make prefix="/usr" SKIPCHECKSUM="true" DESTDIR="$pkgdir" install
 }
