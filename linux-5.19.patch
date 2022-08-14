@@ -1,0 +1,41 @@
+diff -u -r r8168-8.050.03/src/r8168_n.c r8168-8.050.03-linux519/src/r8168_n.c
+--- r8168-8.050.03/src/r8168_n.c	2022-08-04 07:29:41.416222834 +0000
++++ r8168-8.050.03-linux519/src/r8168_n.c	2022-08-04 07:38:13.202069962 +0000
+@@ -26898,6 +26898,10 @@
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,22)
+                 if ((tp->mcfg == CFG_METHOD_1) || (tp->mcfg == CFG_METHOD_2) || (tp->mcfg == CFG_METHOD_3)) {
+                         dev->hw_features &= ~NETIF_F_IPV6_CSUM;
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,19,0)
++                        netif_set_tso_max_size(dev, LSO_32K);
++                        netif_set_tso_max_segs(dev, NIC_MAX_PHYS_BUF_COUNT_LSO_64K);
++#else
+                         netif_set_gso_max_size(dev, LSO_32K);
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(3,18,0)
+                         dev->gso_max_segs = NIC_MAX_PHYS_BUF_COUNT_LSO_64K;
+@@ -26905,6 +26909,7 @@
+                         dev->gso_min_segs = NIC_MIN_PHYS_BUF_COUNT;
+ #endif //LINUX_VERSION_CODE < KERNEL_VERSION(4,7,0)
+ #endif //LINUX_VERSION_CODE >= KERNEL_VERSION(3,18,0)
++#endif //LINUX_VERSION_CODE >= KERNEL_VERSION(5,19,0)
+                 } else {
+                         dev->hw_features |= NETIF_F_IPV6_CSUM;
+                         dev->features |=  NETIF_F_IPV6_CSUM;
+@@ -26912,6 +26917,10 @@
+                                 dev->hw_features |= NETIF_F_TSO6;
+                                 //dev->features |=  NETIF_F_TSO6;
+                         }
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,19,0)
++                        netif_set_tso_max_size(dev, LSO_64K);
++                        netif_set_tso_max_segs(dev, NIC_MAX_PHYS_BUF_COUNT_LSO2);
++#else
+                         netif_set_gso_max_size(dev, LSO_64K);
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(3,18,0)
+                         dev->gso_max_segs = NIC_MAX_PHYS_BUF_COUNT_LSO2;
+@@ -26919,6 +26928,7 @@
+                         dev->gso_min_segs = NIC_MIN_PHYS_BUF_COUNT;
+ #endif //LINUX_VERSION_CODE < KERNEL_VERSION(4,7,0)
+ #endif //LINUX_VERSION_CODE >= KERNEL_VERSION(3,18,0)
++#endif //LINUX_VERSION_CODE >= KERNEL_VERSION(5,19,0)
+                 }
+ #endif //LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,22)
+ #endif //LINUX_VERSION_CODE < KERNEL_VERSION(3,0,0)
