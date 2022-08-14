@@ -6,7 +6,7 @@
 pkgbase=mp-5
 #pkgname=(mp-5-gtk mp-5-nc mp-5-qt5)
 pkgname=(mp-5-gtk mp-5-nc)
-pkgver=5.58
+pkgver=5.59
 pkgrel=1
 arch=('x86_64')
 url="https://triptico.com/software/mp.html"
@@ -17,7 +17,7 @@ makedepends=('gtk3')
 options=(!makeflags)
 #source=("$pkgbase-$pkgver.tar.gz::https://triptico.com/download/mp/mp-$pkgver.tar.gz")
 source=("$pkgbase-$pkgver.tar.gz::https://triptico.com/download/mp-5.tar.gz")
-sha256sums=('3bdbacef1016ad2f05cd0d24a62e2002d2eaa735811c07a71337c97c7148ec14')
+sha256sums=('34f3f1daaf667dc8e15d01b4a7d6967a2b75002b03f1826d3024defe51b9a13a')
 
 prepare() {
   # Patch hard-coded install paths
