@@ -1,6 +1,6 @@
 pkgbase = mkv-extractor-qt
 	pkgdesc = Graphical MKV demultiplexer
-	pkgver = 22.08.08
+	pkgver = 22.08.13
 	pkgrel = 1
 	url = http://forum.ubuntu-fr.org/viewtopic.php?id=1508741
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = mkv-extractor-qt
 	optdepends = bdsup2subpp: SUP subtitle conversion
 	conflicts = mkv-extractor-gui
 	replaces = mkv-extractor-gui
-	source = https://github.com/Hizoka76/MKV-Extractor-Qt5/archive/841e8d85e04591d7a9e96e93aedf835c9fe9715a.tar.gz
-	sha256sums = fdcc029efe3e9c0f465ddd3025f0eee6b62923a26be668eed40178ae2b9f7137
+	source = https://github.com/Hizoka76/MKV-Extractor-Qt5/archive/v22.08.13.tar.gz
+	sha256sums = b08a242f5749e4a9a8ced99089909a8305cd316218c20944a249a9df0b04bc1d
 
 pkgname = mkv-extractor-qt

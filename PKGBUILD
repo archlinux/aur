@@ -3,8 +3,7 @@
 # Contributor: Funkin-Stoopid <>
 
 pkgname=mkv-extractor-qt
-pkgver=22.08.08
-_gitcommit=841e8d85e04591d7a9e96e93aedf835c9fe9715a
+pkgver=22.08.13
 pkgrel=1
 pkgdesc="Graphical MKV demultiplexer"
 arch=('any')
@@ -21,11 +20,11 @@ optdepends=('ffmpeg: for DTS conversion'
             'bdsup2subpp: SUP subtitle conversion')
 conflicts=('mkv-extractor-gui')
 replaces=('mkv-extractor-gui')
-source=("https://github.com/Hizoka76/MKV-Extractor-Qt5/archive/${_gitcommit}.tar.gz")
-sha256sums=('fdcc029efe3e9c0f465ddd3025f0eee6b62923a26be668eed40178ae2b9f7137')
+source=("https://github.com/Hizoka76/MKV-Extractor-Qt5/archive/v${pkgver}.tar.gz")
+sha256sums=('b08a242f5749e4a9a8ced99089909a8305cd316218c20944a249a9df0b04bc1d')
 
 prepare() {
-  cd "MKV-Extractor-Qt5-${_gitcommit}"
+  cd "MKV-Extractor-Qt5-${pkgver}"
 
   sed -e 's|/usr/lib/x86_64-linux-gnu/qt5/bin/lrelease|/usr/bin/lrelease-qt5|g' \
       -e 's|/usr/lib/i386-linux-gnu/qt5/bin/lrelease|/usr/bin/lrelease-qt5|g' \
@@ -47,12 +46,12 @@ prepare() {
 }
 
 build() {
-  cd "MKV-Extractor-Qt5-${_gitcommit}"
+  cd "MKV-Extractor-Qt5-${pkgver}"
   sh ./build.sh
 }
 
 package() {
-  cd "MKV-Extractor-Qt5-${_gitcommit}"
+  cd "MKV-Extractor-Qt5-${pkgver}"
 
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/share/${pkgname}/MKVExtractorQt5.py" "${pkgdir}/usr/bin/mkv-extractor-qt5"
@@ -66,13 +65,15 @@ package() {
                  Languages/MKVExtractorQt5_cs_CZ.qm \
                  Languages/MKVExtractorQt5_en_US.qm \
                  Languages/MKVExtractorQt5_es_ES.qm \
-                 Languages/MKVExtractorQt5_fr_FR.qm
+                 Languages/MKVExtractorQt5_fr_FR.qm \
+                 Languages/MKVExtractorQt5_tr_TR.qm
   install -Dm644 -t "${pkgdir}/usr/share/${pkgname}/QFileDialogCustom" \
                  QFileDialogCustom/QFileDialogCustom.py \
                  QFileDialogCustom/QFileDialogCustom_cs_CZ.qm \
                  QFileDialogCustom/QFileDialogCustom_es_ES.qm \
                  QFileDialogCustom/QFileDialogCustom_en_US.qm \
-                 QFileDialogCustom/QFileDialogCustom_fr_FR.qm
+                 QFileDialogCustom/QFileDialogCustom_fr_FR.qm \
+                 QFileDialogCustom/QFileDialogCustom_tr_TR.qm
   install -Dm644 -t "${pkgdir}/usr/share/${pkgname}/WhatsUp" WhatsUp/WhatsUp.py
   install -Dm644 -t "${pkgdir}/usr/share/${pkgname}/img" img/*
 
