@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='Fast-paced shooter that places you in an abyssal arena to face endless legions of progressively more dreadful demons.'
 url='http://devildaggers.com/'
 license=('custom')
-depends=('libcurl-openssl-1.0')
+depends=('openal' 'libx11' 'openssl' 'zlib' 'libGL.so')
 arch=('x86_64')
 source=(
   "${pkgname}"
