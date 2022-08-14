@@ -726,10 +726,10 @@ index 0000000000000000000000000000000000000000..0462f0952043112cddf1b1fcacbf777d
 +module_init(i2c_nct6775_init);
 +module_exit(i2c_nct6775_exit);
 diff --git a/drivers/i2c/busses/i2c-piix4.c b/drivers/i2c/busses/i2c-piix4.c
-index ac8e7d60672a1b49322cbfeb85c9e96015de7b45..79057903415ad8fe3c9708f817b87f8ffac3cd7d 100644
+index 39cb1b7bb8656c6f34bc194b9ed7537ad70cf293..9d0b0c24b94eb0a1ed2ba740f94474d50f56f06d 100644
 --- a/drivers/i2c/busses/i2c-piix4.c
 +++ b/drivers/i2c/busses/i2c-piix4.c
-@@ -570,11 +570,11 @@ static int piix4_transaction(struct i2c_adapter *piix4_adapter)
+@@ -568,11 +568,11 @@ static int piix4_transaction(struct i2c_adapter *piix4_adapter)
  	if (srvrworks_csb5_delay) /* Extra delay for SERVERWORKS_CSB5 */
  		usleep_range(2000, 2100);
  	else

@@ -8,10 +8,10 @@ Subject: [PATCH] ZEN: INTERACTIVE: Base config item
  1 file changed, 6 insertions(+)
 
 diff --git a/init/Kconfig b/init/Kconfig
-index 4fa2a49b23fae016f8b44394c026073939d2a712..ac7fccdfa0bee8c8644d40b28829aeda12949a74 100644
+index 5b5f9ea153d3ea7d54601950d6332ee1cec21df2..40b922be8c2af3b67156290a06a92f7bd1517bab 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
-@@ -111,6 +111,12 @@ config THREAD_INFO_IN_TASK
+@@ -116,6 +116,12 @@ config THREAD_INFO_IN_TASK
  
  menu "General setup"
  

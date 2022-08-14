@@ -30,10 +30,10 @@ Contains:
  3 files changed, 17 insertions(+), 4 deletions(-)
 
 diff --git a/mm/internal.h b/mm/internal.h
-index cf16280ce132187e5652c5d9088bac716f879a27..b9ad231c84fa97fb927c3f38d899657c9a7ed2f3 100644
+index c0f8fbe0445b5f1704c41e2a4f2b664456b9768f..cd447101241b1e7245c84cf25c2fba4d56c1df72 100644
 --- a/mm/internal.h
 +++ b/mm/internal.h
-@@ -256,6 +256,7 @@ extern void prep_compound_page(struct page *page, unsigned int order);
+@@ -361,6 +361,7 @@ extern void prep_compound_page(struct page *page, unsigned int order);
  extern void post_alloc_hook(struct page *page, unsigned int order,
  					gfp_t gfp_flags);
  extern int user_min_free_kbytes;
@@ -42,10 +42,10 @@ index cf16280ce132187e5652c5d9088bac716f879a27..b9ad231c84fa97fb927c3f38d899657c
  extern void free_unref_page(struct page *page, unsigned int order);
  extern void free_unref_page_list(struct list_head *list);
 diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-index fa30891058e1e1c7cc262560736c45fed66fd377..7e43b957aa2dbbdc20586848d51dd03e785a269b 100644
+index d6fc4723c4e9137a3bf8193fcbad1bb23f041c43..d86f3da635751e00a5ca5f9c386415523d2ff40a 100644
 --- a/mm/page_alloc.c
 +++ b/mm/page_alloc.c
-@@ -121,6 +121,8 @@ typedef int __bitwise fpi_t;
+@@ -122,6 +122,8 @@ typedef int __bitwise fpi_t;
   */
  #define FPI_SKIP_KASAN_POISON	((__force fpi_t)BIT(2))
  
@@ -54,7 +54,7 @@ index fa30891058e1e1c7cc262560736c45fed66fd377..7e43b957aa2dbbdc20586848d51dd03e
  /* prevent >1 _updater_ of zone percpu pageset ->high and ->batch fields */
  static DEFINE_MUTEX(pcp_batch_high_lock);
  #define MIN_PERCPU_PAGELIST_HIGH_FRACTION (8)
-@@ -4897,6 +4899,7 @@ __alloc_pages_slowpath(gfp_t gfp_mask, unsigned int order,
+@@ -4921,6 +4923,7 @@ __alloc_pages_slowpath(gfp_t gfp_mask, unsigned int order,
  	int no_progress_loops;
  	unsigned int cpuset_mems_cookie;
  	int reserve_flags;
@@ -62,7 +62,7 @@ index fa30891058e1e1c7cc262560736c45fed66fd377..7e43b957aa2dbbdc20586848d51dd03e
  
  	/*
  	 * We also sanity check to catch abuse of atomic reserves being used by
-@@ -4943,8 +4946,13 @@ __alloc_pages_slowpath(gfp_t gfp_mask, unsigned int order,
+@@ -4967,8 +4970,13 @@ __alloc_pages_slowpath(gfp_t gfp_mask, unsigned int order,
  			goto nopage;
  	}
  
@@ -77,7 +77,7 @@ index fa30891058e1e1c7cc262560736c45fed66fd377..7e43b957aa2dbbdc20586848d51dd03e
  
  	/*
  	 * The adjusted alloc_flags might result in immediate success, so try
-@@ -5149,9 +5157,12 @@ __alloc_pages_slowpath(gfp_t gfp_mask, unsigned int order,
+@@ -5173,9 +5181,12 @@ __alloc_pages_slowpath(gfp_t gfp_mask, unsigned int order,
  		goto retry;
  	}
  fail:
@@ -93,10 +93,10 @@ index fa30891058e1e1c7cc262560736c45fed66fd377..7e43b957aa2dbbdc20586848d51dd03e
  }
  
 diff --git a/mm/vmscan.c b/mm/vmscan.c
-index 1678802e03e78577c3366afeed00f23fdaa95aca..48652f0523ac6e334522e0989e09d3ec2e80056b 100644
+index f7d9a683e3a7d38fe1ffd0265b9f7d7acad938b4..c1936a256ed1e858febfe8f090f889f4a6238ff0 100644
 --- a/mm/vmscan.c
 +++ b/mm/vmscan.c
-@@ -4204,7 +4204,8 @@ static int balance_pgdat(pg_data_t *pgdat, int order, int highest_zoneidx)
+@@ -4228,7 +4228,8 @@ static int balance_pgdat(pg_data_t *pgdat, int order, int highest_zoneidx)
  		__fs_reclaim_release(_THIS_IP_);
  		ret = try_to_freeze();
  		__fs_reclaim_acquire(_THIS_IP_);

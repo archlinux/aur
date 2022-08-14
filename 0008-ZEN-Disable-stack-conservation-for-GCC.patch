@@ -14,10 +14,10 @@ Signed-off-by: Sultan Alsawaf <sultan@kerneltoast.com>
  1 file changed, 5 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index 80364f3624d49ef4b2226d2ff2b42478ebd56b9f..485187ea284d42b08a13ca5d49a8d70ba74acd54 100644
+index 158e3bda7d35644e1fe978d66e72382c665d1079..09576ba3a533234686e803a0c1665b82ad4b745a 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -987,11 +987,6 @@ KBUILD_CFLAGS	+= -fno-strict-overflow
+@@ -992,11 +992,6 @@ KBUILD_CFLAGS	+= -fno-strict-overflow
  # Make sure -fstack-check isn't enabled (like gentoo apparently did)
  KBUILD_CFLAGS  += -fno-stack-check
  

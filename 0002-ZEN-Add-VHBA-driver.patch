@@ -17,10 +17,10 @@ tag    vhba-module-20211218
  create mode 100644 drivers/scsi/vhba/vhba.c
 
 diff --git a/drivers/scsi/Kconfig b/drivers/scsi/Kconfig
-index 6e3a04107bb657a83e5dc31758b6b343b3b817df..78de7aecd8528d658575f19596341a548a765bb8 100644
+index a9fe5152addd3a6703cee5b480a4d698d1ebb565..c971da97ad5271c3875b6ef9aba4e109256b38bc 100644
 --- a/drivers/scsi/Kconfig
 +++ b/drivers/scsi/Kconfig
-@@ -1535,4 +1535,6 @@ endif # SCSI_LOWLEVEL
+@@ -1534,4 +1534,6 @@ endif # SCSI_LOWLEVEL
  
  source "drivers/scsi/device_handler/Kconfig"
  
@@ -28,10 +28,10 @@ index 6e3a04107bb657a83e5dc31758b6b343b3b817df..78de7aecd8528d658575f19596341a54
 +
  endmenu
 diff --git a/drivers/scsi/Makefile b/drivers/scsi/Makefile
-index 19814c26c9084bdf086ef363e07d9b0d57a4ba71..e65448e9a8bcfe58377b9e2d3664dfad18f1dc50 100644
+index 2ad3bc0525316ad7cce702724b6d4f3321856596..840d41493f0501ce687b41a7aa20b85f6f7b5730 100644
 --- a/drivers/scsi/Makefile
 +++ b/drivers/scsi/Makefile
-@@ -153,6 +153,7 @@ obj-$(CONFIG_CHR_DEV_SCH)	+= ch.o
+@@ -152,6 +152,7 @@ obj-$(CONFIG_CHR_DEV_SCH)	+= ch.o
  obj-$(CONFIG_SCSI_ENCLOSURE)	+= ses.o
  
  obj-$(CONFIG_SCSI_HISI_SAS) += hisi_sas/

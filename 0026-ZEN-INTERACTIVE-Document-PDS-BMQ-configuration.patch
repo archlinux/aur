@@ -8,10 +8,10 @@ Subject: [PATCH] ZEN: INTERACTIVE: Document PDS/BMQ configuration
  1 file changed, 4 insertions(+)
 
 diff --git a/init/Kconfig b/init/Kconfig
-index 277a7ba25cc9430730caa02e11fb36a0e7af6090..96e6511aa009543b871bd28bd9246cd68411286e 100644
+index 7a6abc935e069d420b680567f2c48523effabce4..6a409356b1aae9bf11399a031e0b3c69962f1370 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
-@@ -134,6 +134,10 @@ config ZEN_INTERACTIVE
+@@ -140,6 +140,10 @@ config ZEN_INTERACTIVE
  	    Bandwidth slice size...........:   5    ->   3    ms
  	    Task rebalancing threshold.....:  32    ->  64
  

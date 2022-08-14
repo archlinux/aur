@@ -18,10 +18,10 @@ Signed-off-by: Sultan Alsawaf <sultan@kerneltoast.com>
  1 file changed, 12 insertions(+), 5 deletions(-)
 
 diff --git a/mm/vmscan.c b/mm/vmscan.c
-index 48652f0523ac6e334522e0989e09d3ec2e80056b..f8c20a80a7d526a55c42ddc3af607d0418b6acaa 100644
+index c1936a256ed1e858febfe8f090f889f4a6238ff0..cd9d3535a2f757e464b3a41b24001fd51bc33aa7 100644
 --- a/mm/vmscan.c
 +++ b/mm/vmscan.c
-@@ -3584,7 +3584,7 @@ static unsigned long do_try_to_free_pages(struct zonelist *zonelist,
+@@ -3608,7 +3608,7 @@ static unsigned long do_try_to_free_pages(struct zonelist *zonelist,
  	return 0;
  }
  
@@ -30,7 +30,7 @@ index 48652f0523ac6e334522e0989e09d3ec2e80056b..f8c20a80a7d526a55c42ddc3af607d04
  {
  	struct zone *zone;
  	unsigned long pfmemalloc_reserve = 0;
-@@ -3613,6 +3613,10 @@ static bool allow_direct_reclaim(pg_data_t *pgdat)
+@@ -3637,6 +3637,10 @@ static bool allow_direct_reclaim(pg_data_t *pgdat)
  
  	wmark_ok = free_pages > pfmemalloc_reserve / 2;
  
@@ -41,7 +41,7 @@ index 48652f0523ac6e334522e0989e09d3ec2e80056b..f8c20a80a7d526a55c42ddc3af607d04
  	/* kswapd must be awake if processes are being throttled */
  	if (!wmark_ok && waitqueue_active(&pgdat->kswapd_wait)) {
  		if (READ_ONCE(pgdat->kswapd_highest_zoneidx) > ZONE_NORMAL)
-@@ -3678,7 +3682,7 @@ static bool throttle_direct_reclaim(gfp_t gfp_mask, struct zonelist *zonelist,
+@@ -3702,7 +3706,7 @@ static bool throttle_direct_reclaim(gfp_t gfp_mask, struct zonelist *zonelist,
  
  		/* Throttle based on the first usable node */
  		pgdat = zone->zone_pgdat;
@@ -50,7 +50,7 @@ index 48652f0523ac6e334522e0989e09d3ec2e80056b..f8c20a80a7d526a55c42ddc3af607d04
  			goto out;
  		break;
  	}
-@@ -3700,11 +3704,14 @@ static bool throttle_direct_reclaim(gfp_t gfp_mask, struct zonelist *zonelist,
+@@ -3724,11 +3728,14 @@ static bool throttle_direct_reclaim(gfp_t gfp_mask, struct zonelist *zonelist,
  	 */
  	if (!(gfp_mask & __GFP_FS))
  		wait_event_interruptible_timeout(pgdat->pfmemalloc_wait,
@@ -67,7 +67,7 @@ index 48652f0523ac6e334522e0989e09d3ec2e80056b..f8c20a80a7d526a55c42ddc3af607d04
  
  	if (fatal_signal_pending(current))
  		return true;
-@@ -4197,7 +4204,7 @@ static int balance_pgdat(pg_data_t *pgdat, int order, int highest_zoneidx)
+@@ -4221,7 +4228,7 @@ static int balance_pgdat(pg_data_t *pgdat, int order, int highest_zoneidx)
  		 * able to safely make forward progress. Wake them
  		 */
  		if (waitqueue_active(&pgdat->pfmemalloc_wait) &&

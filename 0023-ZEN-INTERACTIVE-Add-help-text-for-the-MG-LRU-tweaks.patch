@@ -9,10 +9,10 @@ The tweaks themselves get merged with the MG-LRU patchset.
  1 file changed, 1 insertion(+)
 
 diff --git a/init/Kconfig b/init/Kconfig
-index 3a89cebdd80f756a0d5d7a553d64b463e0ec1365..bf583d6054804b213f3d6a484403ee3197b8760b 100644
+index 73b95d3f50300fb82220fb30dfe91bb12052f111..d687aecdae2852f6737a13b7ef0ce821b3b1c196 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
-@@ -124,6 +124,7 @@ config ZEN_INTERACTIVE
+@@ -130,6 +130,7 @@ config ZEN_INTERACTIVE
  	  --- Virtual Memory Subsystem ---------------------------
  
  	    Background-reclaim hugepages...:   no   ->   yes

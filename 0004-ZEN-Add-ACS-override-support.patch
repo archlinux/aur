@@ -10,10 +10,10 @@ Source: https://gitlab.com/Queuecumber/linux-acs-override/-/raw/master/workspace
  2 files changed, 110 insertions(+)
 
 diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentation/admin-guide/kernel-parameters.txt
-index 3b43975427fca63c3403d10003059a482f3b0420..84562bd4ad51f2ae50becb72f49647880848308e 100644
+index cc3ea8febc623e84abec9a28a73174c60fc1f57f..0185df52bb49883434327779aa6fc37383f9e7e4 100644
 --- a/Documentation/admin-guide/kernel-parameters.txt
 +++ b/Documentation/admin-guide/kernel-parameters.txt
-@@ -4012,6 +4012,15 @@
+@@ -4084,6 +4084,15 @@
  		nomsi		[MSI] If the PCI_MSI kernel config parameter is
  				enabled, this kernel boot option can be used to
  				disable the use of MSI interrupts system-wide.
@@ -30,10 +30,10 @@ index 3b43975427fca63c3403d10003059a482f3b0420..84562bd4ad51f2ae50becb72f4964788
  				Safety option to keep boot IRQs enabled. This
  				should never be necessary.
 diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-index da829274fc66dcf449db9f0387288eb64edaafa3..bdad55569dadd00e5a82516fad73debcc1ffc8bc 100644
+index 41aeaa23513224a3836910a39ea12abac291ccbc..f76b7abd7d11af5c3b8250f738d8ef4a26fd8da6 100644
 --- a/drivers/pci/quirks.c
 +++ b/drivers/pci/quirks.c
-@@ -3600,6 +3600,106 @@ static void quirk_no_bus_reset(struct pci_dev *dev)
+@@ -3601,6 +3601,106 @@ static void quirk_no_bus_reset(struct pci_dev *dev)
  	dev->dev_flags |= PCI_DEV_FLAGS_NO_BUS_RESET;
  }
  
@@ -140,7 +140,7 @@ index da829274fc66dcf449db9f0387288eb64edaafa3..bdad55569dadd00e5a82516fad73debc
  /*
   * Some NVIDIA GPU devices do not work with bus reset, SBR needs to be
   * prevented for those affected devices.
-@@ -4965,6 +5065,7 @@ static const struct pci_dev_acs_enabled {
+@@ -4966,6 +5066,7 @@ static const struct pci_dev_acs_enabled {
  	{ PCI_VENDOR_ID_NXP, 0x8d9b, pci_quirk_nxp_rp_acs },
  	/* Zhaoxin Root/Downstream Ports */
  	{ PCI_VENDOR_ID_ZHAOXIN, PCI_ANY_ID, pci_quirk_zhaoxin_pcie_ports_acs },

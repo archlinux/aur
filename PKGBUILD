@@ -56,14 +56,14 @@ _BATCH_MODE=n # enable batch mode
 ##
 
 _major=5
-_minor=18
+_minor=19
 #_patchlevel=0
 #_subversion=1
 _basekernel=${_major}.${_minor}
 _srcname=linux-pf
 pkgbase=linux-pf
-_unpatched_sublevel=15
-_pfrel=5
+_unpatched_sublevel=1
+_pfrel=2
 _kernelname=pf
 _projectcpatchname=prjc_v5.15-r1.patch
 _CPUSUFFIXES_KBUILD=(
@@ -100,21 +100,21 @@ source=("linux-pf::git+https://codeberg.org/pf-kernel/linux.git#tag=v${_major}.$
         # ZEN
         0002-ZEN-Add-VHBA-driver.patch
         0003-ZEN-Add-OpenRGB-patches.patch
-        0006-ZEN-Disable-stack-conservation-for-GCC.patch
-        0007-ZEN-Initialize-ata-before-graphics.patch
-        0008-ZEN-Input-evdev-use-call_rcu-when-detaching-client.patch
-        0010-ZEN-Add-CONFIG-to-rename-the-mq-deadline-scheduler.patch
-        0011-ZEN-intel-pstate-Implement-enable-parameter.patch
-        0012-ZEN-Add-ACS-override-support.patch
-        0013-ZEN-PCI-Add-Intel-remapped-NVMe-device-support.patch
-        0014-ZEN-futex-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch
-        0015-ZEN-mm-Disable-watermark-boosting-by-default.patch
-        0016-ZEN-mm-Stop-kswapd-early-when-nothing-s-waiting-for-.patch
-        0017-ZEN-mm-Increment-kswapd_waiters-for-throttled-direct.patch
-        0018-ZEN-mm-Lower-the-non-hugetlbpage-pageblock-size-to-r.patch
-        0019-ZEN-mm-Don-t-hog-the-CPU-and-zone-lock-in-rmqueue_bu.patch
-        0020-ZEN-INTERACTIVE-Base-config-item.patch
-        0021-ZEN-INTERACTIVE-Use-BFQ-as-our-elevator.patch
+        0004-ZEN-Add-ACS-override-support.patch
+        0005-ZEN-PCI-Add-Intel-remapped-NVMe-device-support.patch
+        0008-ZEN-Disable-stack-conservation-for-GCC.patch
+        0009-ZEN-Initialize-ata-before-graphics.patch
+        0010-ZEN-Input-evdev-use-call_rcu-when-detaching-client.patch
+        0012-ZEN-cpufreq-Remove-schedutil-dependency-on-Intel-AMD.patch
+        0013-ZEN-intel-pstate-Implement-enable-parameter.patch
+        0014-ZEN-mm-Disable-watermark-boosting-by-default.patch
+        0015-ZEN-mm-Stop-kswapd-early-when-nothing-s-waiting-for-.patch
+        0016-ZEN-mm-Increment-kswapd_waiters-for-throttled-direct.patch
+        0017-ZEN-mm-Lower-the-non-hugetlbpage-pageblock-size-to-r.patch
+        0018-ZEN-mm-Don-t-hog-the-CPU-and-zone-lock-in-rmqueue_bu.patch
+        0019-ZEN-INTERACTIVE-Base-config-item.patch
+        0020-ZEN-INTERACTIVE-Use-BFQ-as-our-elevator.patch
+        0021-ZEN-INTERACTIVE-Use-Kyber-as-our-elevator-for-multi-.patch
         0022-ZEN-INTERACTIVE-Enable-background-reclaim-of-hugepag.patch
         0023-ZEN-INTERACTIVE-Add-help-text-for-the-MG-LRU-tweaks.patch
         0024-ZEN-INTERACTIVE-Tune-CFS-for-interactivity.patch
@@ -122,12 +122,8 @@ source=("linux-pf::git+https://codeberg.org/pf-kernel/linux.git#tag=v${_major}.$
         0026-ZEN-INTERACTIVE-Document-PDS-BMQ-configuration.patch
         0027-ZEN-INTERACTIVE-mm-Disable-unevictable-compaction.patch
         0028-ZEN-INTERACTIVE-mm-Disable-proactive-compaction-by-d.patch
-        0029-ZEN-HID-lenovo-Add-support-for-ThinkPad-TrackPoint-K.patch
-        0030-ZEN-dm-crypt-Disable-workqueues-for-crypto-operation.patch
+        0029-ZEN-INTERACTIVE-dm-crypt-Disable-workqueues-for-cryp.patch
         # ZEN END
-        # MGLRU
-        0015-ZEN-Tune-mgLRU-to-protect-cache-used-in-the-last-sec.patch
-        # MGLRU END
         # https://bugzilla.kernel.org/show_bug.cgi?id=211005
         'asus_zenith_ii_map.patch::https://bugzilla.kernel.org/attachment.cgi?id=294489'
        )
@@ -140,27 +136,27 @@ prepare() {
 
   patch -p1 -i ${srcdir}/0002-ZEN-Add-VHBA-driver.patch
   patch -p1 -i ${srcdir}/0003-ZEN-Add-OpenRGB-patches.patch
+  patch -p1 -i ${srcdir}/0004-ZEN-Add-ACS-override-support.patch
+  patch -p1 -i ${srcdir}/0005-ZEN-PCI-Add-Intel-remapped-NVMe-device-support.patch
   # already applied by pf
-  # patch -p1 -i ${srcdir}/0004-ZEN-Add-graysky-s-more-uarches.patch
+  # patch -p1 -i ${srcdir}/0006-ZEN-Add-graysky-s-more-uarches.patch
   # already applied by pf
-  # patch -p1 -i ${srcdir}/0005-ZEN-Unrestrict-CONFIG_OPTIMIZE_FOR_PERFORMANCE_O3.patch
-  patch -p1 -i ${srcdir}/0006-ZEN-Disable-stack-conservation-for-GCC.patch
-  patch -p1 -i ${srcdir}/0007-ZEN-Initialize-ata-before-graphics.patch
-  patch -p1 -i ${srcdir}/0008-ZEN-Input-evdev-use-call_rcu-when-detaching-client.patch
+  # patch -p1 -i ${srcdir}/0007-ZEN-Unrestrict-CONFIG_OPTIMIZE_FOR_PERFORMANCE_O3.patch
+  patch -p1 -i ${srcdir}/0008-ZEN-Disable-stack-conservation-for-GCC.patch
+  patch -p1 -i ${srcdir}/0009-ZEN-Initialize-ata-before-graphics.patch
+  patch -p1 -i ${srcdir}/0010-ZEN-Input-evdev-use-call_rcu-when-detaching-client.patch
   # already applied by pf
-  # 0009-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  patch -p1 -i ${srcdir}/0010-ZEN-Add-CONFIG-to-rename-the-mq-deadline-scheduler.patch
-  patch -p1 -i ${srcdir}/0011-ZEN-intel-pstate-Implement-enable-parameter.patch
-  patch -p1 -i ${srcdir}/0012-ZEN-Add-ACS-override-support.patch
-  patch -p1 -i ${srcdir}/0013-ZEN-PCI-Add-Intel-remapped-NVMe-device-support.patch
-  patch -p1 -i ${srcdir}/0014-ZEN-futex-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch
-  patch -p1 -i ${srcdir}/0015-ZEN-mm-Disable-watermark-boosting-by-default.patch
-  patch -p1 -i ${srcdir}/0016-ZEN-mm-Stop-kswapd-early-when-nothing-s-waiting-for-.patch
-  patch -p1 -i ${srcdir}/0017-ZEN-mm-Increment-kswapd_waiters-for-throttled-direct.patch
-  patch -p1 -i ${srcdir}/0018-ZEN-mm-Lower-the-non-hugetlbpage-pageblock-size-to-r.patch
-  patch -p1 -i ${srcdir}/0019-ZEN-mm-Don-t-hog-the-CPU-and-zone-lock-in-rmqueue_bu.patch
-  patch -p1 -i ${srcdir}/0020-ZEN-INTERACTIVE-Base-config-item.patch
-  patch -p1 -i ${srcdir}/0021-ZEN-INTERACTIVE-Use-BFQ-as-our-elevator.patch
+  # patch -p1 -i ${srcdir}/0011-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  patch -p1 -i ${srcdir}/0012-ZEN-cpufreq-Remove-schedutil-dependency-on-Intel-AMD.patch
+  patch -p1 -i ${srcdir}/0013-ZEN-intel-pstate-Implement-enable-parameter.patch
+  patch -p1 -i ${srcdir}/0014-ZEN-mm-Disable-watermark-boosting-by-default.patch
+  patch -p1 -i ${srcdir}/0015-ZEN-mm-Stop-kswapd-early-when-nothing-s-waiting-for-.patch
+  patch -p1 -i ${srcdir}/0016-ZEN-mm-Increment-kswapd_waiters-for-throttled-direct.patch
+  patch -p1 -i ${srcdir}/0017-ZEN-mm-Lower-the-non-hugetlbpage-pageblock-size-to-r.patch
+  patch -p1 -i ${srcdir}/0018-ZEN-mm-Don-t-hog-the-CPU-and-zone-lock-in-rmqueue_bu.patch
+  patch -p1 -i ${srcdir}/0019-ZEN-INTERACTIVE-Base-config-item.patch
+  patch -p1 -i ${srcdir}/0020-ZEN-INTERACTIVE-Use-BFQ-as-our-elevator.patch
+  patch -p1 -i ${srcdir}/0021-ZEN-INTERACTIVE-Use-Kyber-as-our-elevator-for-multi-.patch
   patch -p1 -i ${srcdir}/0022-ZEN-INTERACTIVE-Enable-background-reclaim-of-hugepag.patch
   patch -p1 -i ${srcdir}/0023-ZEN-INTERACTIVE-Add-help-text-for-the-MG-LRU-tweaks.patch
   patch -p1 -i ${srcdir}/0024-ZEN-INTERACTIVE-Tune-CFS-for-interactivity.patch
@@ -168,11 +164,7 @@ prepare() {
   patch -p1 -i ${srcdir}/0026-ZEN-INTERACTIVE-Document-PDS-BMQ-configuration.patch
   patch -p1 -i ${srcdir}/0027-ZEN-INTERACTIVE-mm-Disable-unevictable-compaction.patch
   patch -p1 -i ${srcdir}/0028-ZEN-INTERACTIVE-mm-Disable-proactive-compaction-by-d.patch
-  patch -p1 -i ${srcdir}/0029-ZEN-HID-lenovo-Add-support-for-ThinkPad-TrackPoint-K.patch
-  patch -p1 -i ${srcdir}/0030-ZEN-dm-crypt-Disable-workqueues-for-crypto-operation.patch
-
-  # MLGRU
-  patch -p1 -i ${srcdir}/0015-ZEN-Tune-mgLRU-to-protect-cache-used-in-the-last-sec.patch
+  patch -p1 -i ${srcdir}/0029-ZEN-INTERACTIVE-dm-crypt-Disable-workqueues-for-cryp.patch
 
 
   # Add port map for ASUS Zenith II
@@ -791,38 +783,36 @@ eval "package_linux-pf-headers-variant${LCPU+-$LCPU}() {
      }"
 
 sha256sums=('SKIP'
-            '5770ad7cc2d34367193cfbeb2a8a37e46c73470b3f6ec7ad63a1cadab4245fbc'
-            '93ebf63c9e95a9b8a7ae325ce11508334ca83fd00db9677c483216a6bdef3c68'
+            '28b4a6f7655079ff4a9cfe48763fae4c1e26be6956273d832062ceccddf23997'
+            '2b4b6887e75c9e6d40d1fa00e4405745da4c0649f7bf8c48e1bb35d511270443'
             '30566498a4f549e972fcd430d2fc44b2bd643c55bae20096f083f8837d8c43e4'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            '7ef319249df009695b5477e30536e3edb07bcc93a58a76a63e58b012bb7debb1'
-            'c49395f97c834ccfa3d92b83576338f37795a5a47d32bade5ec8673d13004839'
-            '2a80815da46a474de6562244fe946f5c4f87f93f3ed3b8bf15338081f737e1dd'
-            'b6304b30b52bcafd2e04c0d894b076027212aa5e9619dab76914408a41bb9091'
+            'f78b6b40cad97fd38b15e161d2dcfbdc98b2681a180c6a4f493b6ea362ad311b'
+            '764bbbad55f251627f7c93a08a70f3a4004e03c74f162df349267686b2167a00'
+            '28df2ac08a81fc720d46908f239e0e8bfd70d5ba7d6e576c8598c3982a9a2cc4'
+            '7b2b7cd3846aeadefd5d1e9978078e3feaff53456378cb31489b9cf0971f958f'
+            '1137f4d0d65ef8985307d1deccdc6fc47f68ef2a0d549ab5a27d5c9a45bec9a7'
+            '39a6dafe65ae512d3802dd25976bce171826a947568c236ce382f8a12836c9b5'
             'fd0ecbc2948a490ece2cbd90623c80e210c1674ea8d8f95642c6f67cef435c4a'
-            'da8e88fe8875d6dccba50adebca3bdc255733d542f8eff7feb02b1849c8ee10f'
-            '05d14fdd0c145df91c9c411a5b54f064c604064ba92dd7d38e5317ba2d8a2f81'
-            'e89e7bd096e2275da3247cfd030accadad153aee12621935ebf4366bd19f09cb'
-            '69104795df1a9f1e862f7cb1c62d62fe3f44456835eea25ee0c6af806ff3c1b3'
-            '25ce02c9f0f29474562125e6da14bdb1de0aee1a22eff5b01ff8a55aca387d0e'
-            'ff8145711cb5bc602576966aea29be64b2ece7dc21141483972ab72a75d35a61'
-            'bb751904717f2937813c572fac430632cce54adbd776a272c51cf1debedea85e'
-            '2ef05b3b80ee83d997b738c069be3971c4092633f61d816c7a45910267b37905'
+            'cdeacc91b32801c2e46691f5f2bb3612bffd42619cb7b025f4ecba29dec9eaf1'
+            '20892d64352398893920f48507709d0ff5494c3853c157b87917a086155ce723'
+            'f40434c60dee7731ae88107046dd1400ffe11c1ba4de58850a8319f9bb4847b9'
+            '70d269b5e1d9b5259481f87e00f7b17d96fa5b389e4b500f1e6862c0116bfa4f'
+            '8bef9463e0cebb578d4df15b06a447c3b4c850a5eef9ff80c59fb8e2cac81474'
             'ec795347155a2f509491fb60c9f4e01704d86a2af432278d7bf5efd7db29f9a2'
-            '05d1d9003c39ee62d50801fe6bde1003e4b13167756d5c68b9b70f7ca2c60c6c'
-            '4549aed2ef400173b86bc7b3ea22209ec7cff44796e1e366d5c39ae6bdc07cef'
-            'c0d6660291bb2ea1fb39e03f1ff2044b0cc1514080e22be73540affbd331dd25'
-            '0fec274551ed3ef1a9bf5580ca09b31645924bb3f91915626ebdd666b6d426eb'
-            '1eef8aa1a26c14dc41c8e5df1a29b812e9f44f04dd99544e4ec6d275522d3592'
-            'a95a8596b88d94284dbc80c1c2238e7484602d322de688342b758088afca918e'
-            '4ebe0a97c42d2f8645c5e2339f8c0bb1d8dde1bce2680dd1199672eff14d582e'
-            'd826fee5724d223e56b77da0f048ce9b247ee33bbe333b896f3941233583647b'
-            '1d7bebd7851d6ef0e1d1c9325f3ea310a45eab2c7d2ff798df94b67ea1302077'
-            '93b9b6124929ad689226b055be89cfd13be36ca927d0bed8508b069e080b7149'
-            '76c90c2615b431c20d74926c03648dc482b5959951d4a10dddcac1c8cdde1f55'
-            'cc78995e6475785477e89733697492b962f3b393ad59dbf49ef34865dc2a073b'
-            '6a7f697265eca470f6ef5129ab2659dd870c6846d492c23f7b9f091086f067c7'
+            '07775d7a0e3ba474976f7a28f069aaf009cdc70576aabf861b630268df2ad469'
+            'f1828a4c636138bc53432a057922362399a72055f635a577b791449304d98afe'
+            '5e6d6aee7f79c9c97c822d3eec8cfa3ca725bf01a60b249175dc0e3b0ca5390f'
+            'aa93dd01631204ac71b902662f58a48186049e2e573e06e6818ab72fa139bdd4'
+            '854a432bdaf6f94baa92c03e78e10f00c53bc666c4b367adf2d5d330f872c8c5'
+            'f52b1703f39ab0b52978e48d129ec38ace74d3dec790cb87ca7030fd187354fd'
+            '3d85f031166d16ebb41430b3f17ed4683b85e7640819b0fb61bd927e6cec5139'
+            'ca52bf43327f2c6b0941d3da8fd2a25055bf8f74564be331944c123d18e54330'
+            '9676de79d5ab66565ab8e19de3f1f70c8ad5994eaf8d5ca1fb6e9ed8426787d9'
+            '1a2598a00966da4e9985644edb900af7204409411464771c31d67d472595d817'
+            '3d329b5153230184e270355f61697f5f7248787a4da045ac7b660e837c088630'
+            'c6730df729723340475fa64cf0ce4fee02ff0a1739f355166324bb2abeca5168'
             '67558840c3e1f1de229b23a54342cb126735282353a4d0a8cd10e4d582e6d9d6')
 # vim:set ts=2 sw=2 tw=0 et:

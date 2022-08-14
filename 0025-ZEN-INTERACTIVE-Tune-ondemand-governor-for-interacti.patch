@@ -76,10 +76,10 @@ index e8fbf970ff07888c7aa82eb67ee6c388d92c9fc7..4f57f8c568907384d9f017bbcee55a17
  #define MIN_FREQUENCY_UP_THRESHOLD		(1)
  #define MAX_FREQUENCY_UP_THRESHOLD		(100)
 diff --git a/init/Kconfig b/init/Kconfig
-index 7c832dd05941a231ad1c7dbbeeb914811d540591..277a7ba25cc9430730caa02e11fb36a0e7af6090 100644
+index b93204f59bba0f0faa98082a0e358d6d83da54f0..7a6abc935e069d420b680567f2c48523effabce4 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
-@@ -134,6 +134,12 @@ config ZEN_INTERACTIVE
+@@ -140,6 +140,12 @@ config ZEN_INTERACTIVE
  	    Bandwidth slice size...........:   5    ->   3    ms
  	    Task rebalancing threshold.....:  32    ->  64
  

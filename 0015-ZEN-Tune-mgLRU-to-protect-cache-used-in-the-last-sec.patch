@@ -15,10 +15,10 @@ that don't know they need it.
  1 file changed, 4 insertions(+)
 
 diff --git a/mm/vmscan.c b/mm/vmscan.c
-index aef71c45c424f046fe850a57c6b3fce10c63d93a..421e5a6eaedc2958e68dd67322b5725278ae5f38 100644
+index 7096ff7836dbf133ca2f6d4c13258780e98d72d8..adcaf8250b2b497a99f9394ee3fd476dc339df0d 100644
 --- a/mm/vmscan.c
 +++ b/mm/vmscan.c
-@@ -4355,7 +4355,11 @@ static bool age_lruvec(struct lruvec *lruvec, struct scan_control *sc,
+@@ -4434,7 +4434,11 @@ static bool age_lruvec(struct lruvec *lruvec, struct scan_control *sc, unsigned
  }
  
  /* to protect the working set of the last N jiffies */

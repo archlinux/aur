@@ -11,7 +11,7 @@ in parallel
  1 file changed, 8 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/Makefile b/drivers/Makefile
-index 020780b6b4d221c4dd18cd0af9ec21b4590715ad..9cf43ac81930c3a2f196d48fecd543bd781a43da 100644
+index 9a30842b22c5411bf00245761f472da9c13370b7..32afd317d95ecab6f1fe9a42d3977b6c0a917023 100644
 --- a/drivers/Makefile
 +++ b/drivers/Makefile
 @@ -59,15 +59,8 @@ obj-y				+= char/

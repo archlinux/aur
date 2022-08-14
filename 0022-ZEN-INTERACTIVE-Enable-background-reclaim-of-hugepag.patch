@@ -31,12 +31,12 @@ Reasoning and details in the original patch: https://lwn.net/Articles/711248/
  2 files changed, 8 insertions(+)
 
 diff --git a/init/Kconfig b/init/Kconfig
-index 58bea73b06fc6f759b4f3ef2ace11a07987f3714..3a89cebdd80f756a0d5d7a553d64b463e0ec1365 100644
+index 3714f60c7aff537f1bd4e8aa8979a745ebe587f1..73b95d3f50300fb82220fb30dfe91bb12052f111 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
-@@ -121,6 +121,10 @@ config ZEN_INTERACTIVE
- 
- 	    Default scheduler.........: mq-deadline -> bfq
+@@ -127,6 +127,10 @@ config ZEN_INTERACTIVE
+ 	    Default scheduler for SQ..: mq-deadline -> bfq
+ 	    Default scheduler for MQ..:        none -> kyber
  
 +	  --- Virtual Memory Subsystem ---------------------------
 +
@@ -46,10 +46,10 @@ index 58bea73b06fc6f759b4f3ef2ace11a07987f3714..3a89cebdd80f756a0d5d7a553d64b463
  	bool
  
 diff --git a/mm/huge_memory.c b/mm/huge_memory.c
-index 910a138e9859e9a6c02e7bf234c5431c8e3cebb5..9e4760e2ae587de6f443ffb628dfc2a4d0671b6b 100644
+index 834f288b376909c351fc2a21d77e200f8e83a802..a78a758f9815b043dd03f03bc8028b7d483a2a9c 100644
 --- a/mm/huge_memory.c
 +++ b/mm/huge_memory.c
-@@ -58,7 +58,11 @@ unsigned long transparent_hugepage_flags __read_mostly =
+@@ -59,7 +59,11 @@ unsigned long transparent_hugepage_flags __read_mostly =
  #ifdef CONFIG_TRANSPARENT_HUGEPAGE_MADVISE
  	(1<<TRANSPARENT_HUGEPAGE_REQ_MADV_FLAG)|
  #endif

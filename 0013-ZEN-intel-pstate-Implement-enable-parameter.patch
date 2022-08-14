@@ -29,10 +29,10 @@ selection.
  2 files changed, 5 insertions(+)
 
 diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentation/admin-guide/kernel-parameters.txt
-index 3f1cc5e317ed4a5ad001082c9c589b6008f68db9..3b43975427fca63c3403d10003059a482f3b0420 100644
+index 0185df52bb49883434327779aa6fc37383f9e7e4..7dd12dc178f9db6b043f0e2ab3cfa344906a1ef6 100644
 --- a/Documentation/admin-guide/kernel-parameters.txt
 +++ b/Documentation/admin-guide/kernel-parameters.txt
-@@ -2026,6 +2026,9 @@
+@@ -2057,6 +2057,9 @@
  			disable
  			  Do not enable intel_pstate as the default
  			  scaling driver for the supported processors
@@ -43,10 +43,10 @@ index 3f1cc5e317ed4a5ad001082c9c589b6008f68db9..3b43975427fca63c3403d10003059a48
  			  Use intel_pstate as a scaling driver, but configure it
  			  to work with generic cpufreq governors (instead of
 diff --git a/drivers/cpufreq/intel_pstate.c b/drivers/cpufreq/intel_pstate.c
-index 846bb3a7878803344bd9b916a046071ff0957620..3eac15cb57c5ecd671713198dda5e28a42282fef 100644
+index 57cdb36798854a941d1258b611c6e57bceddafcb..08091cfac5550a0e107a931e6ef6e625b2235cfb 100644
 --- a/drivers/cpufreq/intel_pstate.c
 +++ b/drivers/cpufreq/intel_pstate.c
-@@ -3538,6 +3538,8 @@ static int __init intel_pstate_setup(char *str)
+@@ -3540,6 +3540,8 @@ static int __init intel_pstate_setup(char *str)
  
  	if (!strcmp(str, "disable"))
  		no_load = 1;

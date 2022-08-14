@@ -29,10 +29,10 @@ total number of tasks that can be migrated at once to 32.
  3 files changed, 34 insertions(+), 1 deletion(-)
 
 diff --git a/init/Kconfig b/init/Kconfig
-index bf583d6054804b213f3d6a484403ee3197b8760b..7c832dd05941a231ad1c7dbbeeb914811d540591 100644
+index d687aecdae2852f6737a13b7ef0ce821b3b1c196..b93204f59bba0f0faa98082a0e358d6d83da54f0 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
-@@ -126,6 +126,14 @@ config ZEN_INTERACTIVE
+@@ -132,6 +132,14 @@ config ZEN_INTERACTIVE
  	    Background-reclaim hugepages...:   no   ->   yes
  	    MG-LRU minimum cache TTL.......:   0    ->   1000 ms
  
@@ -48,10 +48,10 @@ index bf583d6054804b213f3d6a484403ee3197b8760b..7c832dd05941a231ad1c7dbbeeb91481
  	bool
  
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index d58c0389eb23c9fb8f87afc73b2bc7c5a0cd4439..9987bb069ef0f4aca573f38fa7a9a5b35d29f3fb 100644
+index da0bf6fe9ecdcf697a1f9dff304c71d0d3433155..3cbef426d646e63711343e1e58867fe654ec296f 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
-@@ -139,7 +139,9 @@ __read_mostly int sysctl_resched_latency_warn_once = 1;
+@@ -142,7 +142,9 @@ __read_mostly int sysctl_resched_latency_warn_once = 1;
   * Number of tasks to iterate in a single balance run.
   * Limited because this is done with IRQs disabled.
   */
@@ -63,10 +63,10 @@ index d58c0389eb23c9fb8f87afc73b2bc7c5a0cd4439..9987bb069ef0f4aca573f38fa7a9a5b3
  #else
  const_debug unsigned int sysctl_sched_nr_migrate = 32;
 diff --git a/kernel/sched/fair.c b/kernel/sched/fair.c
-index a68482d66535588d0b8dd9b0738482fda17f2fb6..416cfec3cd0b7981cefb0c620e6cbaeaa553d200 100644
+index 77b2048a932622a0188f8f93680d9215559a941c..5d0a04b72787745ff785ef195812233ed77bd7d4 100644
 --- a/kernel/sched/fair.c
 +++ b/kernel/sched/fair.c
-@@ -67,8 +67,13 @@
+@@ -68,8 +68,13 @@
   *
   * (default: 6ms * (1 + ilog(ncpus)), units: nanoseconds)
   */
@@ -80,7 +80,7 @@ index a68482d66535588d0b8dd9b0738482fda17f2fb6..416cfec3cd0b7981cefb0c620e6cbaea
  
  /*
   * The initial- and re-scaling of tunables is configurable
-@@ -88,8 +93,13 @@ unsigned int sysctl_sched_tunable_scaling = SCHED_TUNABLESCALING_LOG;
+@@ -89,8 +94,13 @@ unsigned int sysctl_sched_tunable_scaling = SCHED_TUNABLESCALING_LOG;
   *
   * (default: 0.75 msec * (1 + ilog(ncpus)), units: nanoseconds)
   */
@@ -94,7 +94,7 @@ index a68482d66535588d0b8dd9b0738482fda17f2fb6..416cfec3cd0b7981cefb0c620e6cbaea
  
  /*
   * Minimal preemption granularity for CPU-bound SCHED_IDLE tasks.
-@@ -102,7 +112,11 @@ unsigned int sysctl_sched_idle_min_granularity			= 750000ULL;
+@@ -103,7 +113,11 @@ unsigned int sysctl_sched_idle_min_granularity			= 750000ULL;
  /*
   * This value is kept at sysctl_sched_latency/sysctl_sched_min_granularity
   */
@@ -106,7 +106,7 @@ index a68482d66535588d0b8dd9b0738482fda17f2fb6..416cfec3cd0b7981cefb0c620e6cbaea
  
  /*
   * After fork, child runs first. If set to 0 (default) then
-@@ -119,8 +133,13 @@ unsigned int sysctl_sched_child_runs_first __read_mostly;
+@@ -120,8 +134,13 @@ unsigned int sysctl_sched_child_runs_first __read_mostly;
   *
   * (default: 1 msec * (1 + ilog(ncpus)), units: nanoseconds)
   */
@@ -120,16 +120,16 @@ index a68482d66535588d0b8dd9b0738482fda17f2fb6..416cfec3cd0b7981cefb0c620e6cbaea
  
  const_debug unsigned int sysctl_sched_migration_cost	= 500000UL;
  
-@@ -173,8 +192,12 @@ int __weak arch_asym_cpu_priority(int cpu)
+@@ -174,8 +193,12 @@ int __weak arch_asym_cpu_priority(int cpu)
   *
   * (default: 5 msec, units: microseconds)
   */
 +#ifdef CONFIG_ZEN_INTERACTIVE
-+unsigned int sysctl_sched_cfs_bandwidth_slice		= 3000UL;
++static unsigned int sysctl_sched_cfs_bandwidth_slice		= 3000UL;
 +#else
- unsigned int sysctl_sched_cfs_bandwidth_slice		= 5000UL;
+ static unsigned int sysctl_sched_cfs_bandwidth_slice		= 5000UL;
  #endif
 +#endif
  
- static inline void update_load_add(struct load_weight *lw, unsigned long inc)
- {
+ #ifdef CONFIG_SYSCTL
+ static struct ctl_table sched_fair_sysctls[] = {

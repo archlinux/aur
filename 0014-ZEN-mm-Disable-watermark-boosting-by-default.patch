@@ -31,10 +31,10 @@ Signed-off-by: Sultan Alsawaf <sultan@kerneltoast.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-index 0e42038382c12503dac6a1fb9f370850bd41f86b..fa30891058e1e1c7cc262560736c45fed66fd377 100644
+index b5b14b78c4fd4844cb071022570fd4b7e6959eb2..d6fc4723c4e9137a3bf8193fcbad1bb23f041c43 100644
 --- a/mm/page_alloc.c
 +++ b/mm/page_alloc.c
-@@ -341,7 +341,7 @@ compound_page_dtor * const compound_page_dtors[NR_COMPOUND_DTORS] = {
+@@ -342,7 +342,7 @@ compound_page_dtor * const compound_page_dtors[NR_COMPOUND_DTORS] = {
  
  int min_free_kbytes = 1024;
  int user_min_free_kbytes = -1;
