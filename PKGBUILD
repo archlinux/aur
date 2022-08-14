@@ -2,33 +2,32 @@
 
 _pkgbase=nanoboyadvance
 pkgbase="${_pkgbase}-git"
-pkgname=(${_pkgbase}-git ${_pkgbase}-qt-git)
+pkgname="${_pkgbase}-git"
 pkgdesc="Accuracy-focused Game Boy Advance emulator."
-pkgver=1.4.r4.g9b08775e
+pkgver=1.6.r5.gf6311092
 pkgrel=1
 arch=(x86_64)
-url="https://github.com/fleroviux/NanoboyAdvance"
+url="https://github.com/nba-emu/NanoBoyAdvance"
 license=(GPL3)
-makedepends=(cmake make gcc imagemagick)
+makedepends=(cmake make git gcc imagemagick)
+depends=(qt5-base glew sdl2)
 
 _vendor="com.github.nba-emu"
 _identifier="${_vendor}.NanoBoyAdvance"
 
 source=(
-	"git+https://github.com/fleroviux/NanoBoyAdvance.git" 
+	"git+https://github.com/nba-emu/NanoBoyAdvance.git" 
 	"git+https://github.com/fmtlib/fmt.git"
 	"git+https://github.com/ToruNiina/toml11.git"
-	NanoBoyAdvance.sh
 	NanoBoyAdvance-Qt.sh
 	NanoBoyAdvance.desktop
 )
 
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         '66a11acbf54f009b0d54e208e9b71aa2'
-         '5ba7183c24bdf63a9c4638f92d26b04b'
-         '4f1b46e13ebab49bd45e8c49e1bf7685')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'd4518786256bbe6c5525c9200b3978cd774ffa74b7a3cd411de0aa483903f4ea'
+            'c7bb57aa68471e06b98ba85bcc5260ce58570fdfc3812b0e8241c9ccdbbd2874')
 
 pkgver() {
 	cd NanoBoyAdvance
@@ -46,26 +45,14 @@ prepare() {
 build() {
 	cd "$srcdir/NanoBoyAdvance"
 	cmake -B build -DCMAKE_BUILD_TYPE=Release
-	make -C build
+	cmake --build build
 }
 
-package_nanoboyadvance-git() {
-	cd "$srcdir/NanoBoyAdvance"
-
-	install -Dm755 build/bin/sdl/NanoBoyAdvance -t "${pkgdir}/usr/lib"
-	install -Dm755 "${srcdir}/../NanoBoyAdvance.sh" "${pkgdir}/usr/bin/NanoBoyAdvance"
-	
-	mkdir -p "${pkgdir}/usr/share/NanoBoyAdvance"
-	cp -r src/platform/sdl/resource/. "${pkgdir}/usr/share/NanoBoyAdvance"
-	rm "${pkgdir}/usr/share/NanoBoyAdvance/shader.cmake"
-	sed -i -E 's@^shader_(.s) = "(.*)"$@shader_\1 = "/usr/share/NanoBoyAdvance/\2"@' "${pkgdir}/usr/share/NanoBoyAdvance/config.toml"
-}
-
-package_nanoboyadvance-qt-git() {
+package() {
 	cd "$srcdir/NanoBoyAdvance"
 
 	install -Dm755 build/bin/qt/NanoBoyAdvance "${pkgdir}/usr/lib/NanoBoyAdvance-Qt"
-	install -Dm755 "${srcdir}/../NanoBoyAdvance-Qt.sh" "${pkgdir}/usr/bin/NanoBoyAdvance-Qt"
+	install -Dm755 "${srcdir}/NanoBoyAdvance-Qt.sh" "${pkgdir}/usr/bin/NanoBoyAdvance-Qt"
 	install -Dm644 "${srcdir}/NanoBoyAdvance.desktop" "${pkgdir}/usr/share/applications/${_identifier}.desktop"
 	
 	convert "${srcdir}/NanoBoyAdvance/src/platform/qt/rc/app.ico" icon.png
