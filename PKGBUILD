@@ -32,6 +32,7 @@ provides=('firefox')
 conflicts=('firefox')
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
         zstandard-0.18.0.diff
+        arc4random.diff
         $_pkgname.desktop
         identity-icons-brand.svg
         # https://github.com/openSUSE/firefox-maintenance
@@ -43,6 +44,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
 sha256sums=('766183e8e39c17a84305a85da3237919ffaeb018c6c9d97a7324aea51bd453aa'
             'SKIP'
             'a6857ad2f2e2091c6c4fdcde21a59fbeb0138914c0e126df64b50a5af5ff63be'
+            '714ca50b2ce0cac470dbd5a60e9a0101b28072f08a5e7a9bba94fef2058321c4'
             '298eae9de76ec53182f38d5c549d0379569916eebf62149f9d7f4a7edef36abf'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
             'e76d7503ee2fb76b325b98ae952513a0f298fdd820e6451eca3f794b7aec7654'
