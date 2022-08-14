@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=19.0.7
+Type=Application
+Name=Alicorn
+Comment=这是 Alicorn，一个全新设计的启动器。
+Exec=alicorn-bin
+Icon=/usr/share/alicorn-bin/alicorn.png
+Terminal=false
+StartupNotify=false
+Categories=Game;
+StartupWMClass=Alicorn

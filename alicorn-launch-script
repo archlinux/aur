@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [[ "$1" != "-p" ]]; then
+    WORKDIR=${XDG_CONFIG_HOME:-$HOME/.config}/Alicorn
+    mkdir -p $WORKDIR
+    cd $WORKDIR
+fi
+
+exec /usr/share/alicorn-bin/Alicorn

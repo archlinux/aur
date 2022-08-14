@@ -1,0 +1,31 @@
+# Maintainer: UnKown <80520429 at domain dot com>
+pkgname="alicorn-bin"
+
+pkgver="19.0.7"
+pkgrel="1"
+pkgdesc="这是 Alicorn，一个全新设计的启动器。"
+
+arch=("x86_64")
+url="https://alc.pages.dev"
+license=('GPL3')
+
+source=(
+        "alicorn.png"
+        "alicorn.desktop"
+        "alicorn-launch-script"
+        "LICENSE::https://github.com/Andy-K-Sparklight/Alicorn/blob/main/LICENSE"
+        "${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://pan.bilnn.com/api/v3/file/sourcejump/E5YQXbc9/qb3x77XW1_7hitnNK-JySdK3V7Xv92Y2u1GMgWkbNsY*")
+sha256sums=('5832ef795d0d75233763ee94f7fa048902d2d74eaaad72ba704b9210861dc123'
+            '4a67e1c8bb4417ba9ec7d84016d4a56af2ebf7b40f1f47b99f34ab36ae8f703e'
+            'dc0ff9f12b9d90b8e2314977e9795a71935ad589e658363aaae9a94b010ea956'
+            'fc9e71610f5e439786c7d639eb7626cedc5ad353a5880649bec856ffe685394a'
+            '4f92bfb352aba05a990fdff8efd8f6ff91ab692af63aaa4a9fdfe43945cdd080')
+
+package() {
+  install -d "${pkgdir}/usr/share/${pkgname}"
+  cp -r "Alicorn-linux-x64/"* "${pkgdir}/usr/share/${pkgname}/" -R
+  install -Dm644 "alicorn.png" "${pkgdir}/usr/share/${pkgname}/alicorn.png"
+  install -Dm755 "alicorn-launch-script" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 "alicorn.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "LICENSE" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+}
