@@ -3,7 +3,7 @@
 
 pkgname=heroic-games-launcher-electron
 _pkgbase=HeroicGamesLauncher
-pkgver=2.3.10
+pkgver=2.4.0
 pkgrel=1
 _electronversion=19
 pkgdesc="HGL, a Native alternative Linux Launcher for Epic Games"
@@ -17,7 +17,7 @@ conflicts=("${pkgname%-*}")
 source=("https://github.com/Heroic-Games-Launcher/$_pkgbase/archive/refs/tags/v$pkgver.tar.gz"
         electron-is-dev-env.patch
         "${pkgname%-*}.sh.in")
-sha256sums=('38b4a3dfdcec08423dae6a98a827502fca135bb980ba08452cc3cbbe99664dfc'
+sha256sums=('8b2fc17adcf8b916f436c0666343e8928070180e5668c2c4d8c1fe3595afce61'
             'd4fad8a579a8a955fe2176da0b2fa14cdc010d750c00651c1193a6fba914d4d8'
             '01840a1e45da355cea9205eb1724615d27ea0b9c8115b9ee811ff545cac5bbfc')
 
@@ -34,7 +34,7 @@ build() {
   electronVer="$(sed s/^v// $electronDist/version)"
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1
   yarn install
-  yarn dist --dir -c.electronDist=$electronDist -c.electronVersion=$electronVer
+  yarn dist:linux --dir -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
 
 package() {
