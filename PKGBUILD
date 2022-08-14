@@ -62,8 +62,8 @@ _minor=18
 _basekernel=${_major}.${_minor}
 _srcname=linux-pf
 pkgbase=linux-pf
-_unpatched_sublevel=12
-_pfrel=4
+_unpatched_sublevel=15
+_pfrel=5
 _kernelname=pf
 _projectcpatchname=prjc_v5.15-r1.patch
 _CPUSUFFIXES_KBUILD=(
@@ -80,7 +80,7 @@ _CPUSUFFIXES_KBUILD=(
 pkgname=('linux-pf')
 pkgdesc="Linux with the pf-kernel patch (uksm, ZSTD, FSGSBASE and more)"
 pkgname=('linux-pf' 'linux-pf-headers-variant'
-         'linux-pf-headers' 'linux-pf-preset-default')
+         'linux-pf-headers')
 pkgver=${_basekernel}.${_unpatched_sublevel}.${_kernelname}${_pfrel}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -538,7 +538,7 @@ _set_variant_appendix()
         ;;
     esac
 
-    conflicts=("$_pkg")
+    conflicts+=("$_pkg")
     provides+=(${_pkg}=$pkgver)
 
   fi
@@ -553,7 +553,7 @@ _set_variant_appendix()
 
 _package() {
   pkgdesc="The $pkgdesc kernel and modules"
-  depends=('coreutils' 'kmod>=9-2' 'mkinitcpio>=0.7' 'linux-pf-preset')
+  depends=('coreutils' 'kmod>=9-2' 'mkinitcpio>=0.7')
   optdepends=('wireless-regdb: to set the correct wireless channels of your country'
 	            'nvidia-pf: NVIDIA drivers for linux-pf'
               'uksmd: Userspace KSM helper daemon'
@@ -567,7 +567,8 @@ _package() {
             UKSMD-BUILTIN
             V4L2LOOPBACK-MODULE
             VHBA-MODULE)
-  replaces=('kernel26-pf')
+  conflicts=('linux-pf-preset')
+  replaces=('linux-pf-preset')
 
   cd "${srcdir}/${_srcname}"
 
@@ -762,53 +763,8 @@ _package-headers() {
   mkdir -p "$pkgdir/usr/src"
   ln -sr "${_builddir}" "$pkgdir/usr/src/$pkgbase"
 }
-_package-preset-default()
-{
-  pkgname=linux-pf-preset-default
-  provides=( "linux-pf-preset=$pkgver")
-  pkgdesc="Linux-pf default preset"
-  install=linux.install
-  depends=("linux-pf=$pkgver")
-  backup=("etc/mkinitcpio.d/${pkgbase}.preset")
 
-  # install fallback mkinitcpio.conf file and preset file for kernel
-  install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-
-  # sed expression for following substitutions
-  local _subst="
-    s|%PKGBASE%|${pkgbase}|g
-    s|%KERNVER%|${_kernver}|g
-    s|%EXTRAMODULES%|${_extramodules}|g
-  "
-
-  # hack to allow specifying an initially nonexisting install file
-  sed "${_subst}" "${startdir}/${install}" > "${startdir}/${install}.pkg"
-  true && install=${install}.pkg
-
-  # install mkinitcpio preset file
-  #sed "${_subst}" ../linux-pf.preset |
-  #  install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-
-  # install pacman hooks
-  sed "${_subst}" "${srcdir}"/60-linux.hook |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
-  sed "${_subst}" "${srcdir}"/90-linux.hook |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
-
-  # set correct depmod command for install
-  #sed \
-    #  -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
-    #  -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
-    #  -i "${startdir}/linux.install"
-  sed \
-    -e "1s|'linux.*'|'${pkgbase}'|" \
-    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
-    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
-    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
-    -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-}
-
-for _p in linux-pf-headers linux-pf-preset-default ; do
+for _p in linux-pf-headers; do
   eval "package_${_p}() {
     $(declare -f "_package${_p#${pkgbase}}")
     _package${_p#${pkgbase}}
