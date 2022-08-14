@@ -1,6 +1,6 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=aliyundrive-webdav
-pkgver=1.8.9
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="阿里云盘 WebDAV 服务"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 #options=('!lto')
 source=("https://github.com/messense/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('e769a758463ff42d3b39ee098df6f8320a8c32204824173783225b3bbaf0bbf1')
+sha256sums=('06e746f06c3737b3d41f7ee31b49a94787d3a857e4a6c1567f85b6af5facc1c8')
 
 # template start; name=rust; version=1;
 prepare() {
