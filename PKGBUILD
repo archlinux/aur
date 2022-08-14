@@ -3,7 +3,7 @@
 pkgname=input-devices-support
 pkgdesc="Metapkg for commonly used input devices such as fingerprint sensors or Wacom tablets"
 pkgver=1.0.3
-pkgrel=2
+pkgrel=4
 arch=('any')
 url="https://wiki.archlinux.org/index.php/Category:Input_devices"
 license=('GPL')
@@ -13,7 +13,6 @@ depends=("android-udev"
         "bolt"
         "brightnessctl"
         "fprintd"
-        "game-devices-udev"
         "iio-sensor-proxy"
         "linuxconsole"
         "lirc"
@@ -28,7 +27,9 @@ optdepends=('piper: GTK application to configure gaming mice'
             'antimicrox: GUI for mapping keyboard keys to controller'
             'plasma-thunderbolt: Plasma integration for managing Thunderbolt devices'
             'libinput-gestures: Gesture support for non-Gnome DE'
-            'touchegg: Default backend for the X11-Gestures Gnome extension')
+            'touchegg: Default backend for the X11-Gestures Gnome extension'
+            'game-devices-udev: Required for some gamepads to work. If your gamepad works without this package, dont install it!')        
+            
 replaces=('manjaro-input')
 install=$pkgname.install
 #package() {
