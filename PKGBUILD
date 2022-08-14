@@ -1,13 +1,13 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=pokeshell-git
-pkgver=r90.e283991
+pkgver=r91.52b3ec2
 pkgrel=1
 pkgdesc="A shell program to show pokemon sprites in the terminal."
 arch=('any')
 url='https://github.com/acxz/pokeshell'
 license=('GPLv3')
-depends=('curl' 'jq' 'imagemagick' 'timg')
+depends=('curl' 'jq' 'imagemagick' 'chafa')
 makedepends=('git')
 provides=('pokeshell')
 conflicts=('pokeshell')
