@@ -10,7 +10,7 @@ license=(Apache-2.0)
 makedepends=("python" "python-pip")
 
 build() {
-  pip install --no-deps --target="home-assistant-frontend" home-assistant-frontend==20220127.0
+  pip install --no-deps --target="home-assistant-frontend" home-assistant-frontend==${pkgver}
 }
 package() {
   sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
