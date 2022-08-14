@@ -1,13 +1,14 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+
 pkgname=logistics-git
 pkgver=r18.16ae35a
-pkgrel=1
+pkgrel=2
 pkgdesc="Gtk/Python native Docker client for GNOME"
-arch=(any)
+arch=('any')
 url="https://github.com/cameronthecoder/logistics"
 license=('GPL3')
-depends=('libadwaita' 'docker')
-makedepends=('git' 'meson' 'blueprint-compiler')
+depends=('libadwaita' 'docker' 'python-gobject')
+makedepends=('git' 'meson' 'blueprint-compiler' 'gobject-introspection')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
