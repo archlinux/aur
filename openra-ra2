@@ -1,8 +1,8 @@
 #!/bin/sh
-cd "/usr/lib/openra-ra2"
+cd "/usr/lib/openra"
 
 # Run the game
-mono --debug OpenRA.Game.exe Game.Mod=ra2 Engine.LaunchPath="/usr/bin/openra-ra2" "Engine.ModSearchPaths=/usr/lib/openra-ra2/mods" "$@"
+mono --debug OpenRA.Game.exe Game.Mod=ra2 Engine.LaunchPath="/usr/bin/openra-ra2" "Engine.ModSearchPaths=/usr/lib/openra/mods" "$@"
 
 # Show a crash dialog if something went wrong
 if [ $? != 0 ] && [ $? != 1 ]; then
@@ -16,4 +16,3 @@ if [ $? != 0 ] && [ $? != 1 ]; then
   fi
   exit 1
 fi
-
