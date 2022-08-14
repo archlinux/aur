@@ -2,13 +2,14 @@
 
 pkgname=maui-shell-git
 _pkgname=${pkgname%-git}
-pkgver=v0.5.0.r43.g4feaa5c
+pkgver=v0.5.0.r72.ge969251
 pkgrel=1
 pkgdesc='Maui Shell is a convergent shell for desktops, tablets, and phones.'
 url='https://github.com/Nitrux/maui-shell'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 license=(GPL3)
 depends=(bluedevil
+         cask-server-git
          fontconfig
          kactivities
          kactivities-stats

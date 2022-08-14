@@ -1,6 +1,6 @@
 pkgbase = maui-shell-git
 	pkgdesc = Maui Shell is a convergent shell for desktops, tablets, and phones.
-	pkgver = v0.5.0.r43.g4feaa5c
+	pkgver = v0.5.0.r72.ge969251
 	pkgrel = 1
 	url = https://github.com/Nitrux/maui-shell
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = maui-shell-git
 	makedepends = git
 	makedepends = extra-cmake-modules
 	depends = bluedevil
+	depends = cask-server-git
 	depends = fontconfig
 	depends = kactivities
 	depends = kactivities-stats
