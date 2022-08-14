@@ -7,7 +7,7 @@ pkgdesc="An app made to get weather information through the terminal written in 
 arch=('x86_64')
 url="https://github.com/Rayrsn/Weather-Cli"
 license=('GPL')
-makedepends=('cargo')
+makedepends=('go')
 source=("https://github.com/Rayrsn/Weather-Cli/archive/refs/tags/$pkgver.zip")
 md5sums=('7c670163a2c57538eb915aa19947c630')
 build() {
