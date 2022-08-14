@@ -3,7 +3,8 @@
 # Contributor: Funkin-Stoopid <>
 
 pkgname=mkv-extractor-qt
-pkgver=22.08.13
+pkgver=22.08.14b
+_gitcommit=0f371743292a38abfec01fba4f6b0b90f809569f
 pkgrel=1
 pkgdesc="Graphical MKV demultiplexer"
 arch=('any')
@@ -20,11 +21,11 @@ optdepends=('ffmpeg: for DTS conversion'
             'bdsup2subpp: SUP subtitle conversion')
 conflicts=('mkv-extractor-gui')
 replaces=('mkv-extractor-gui')
-source=("https://github.com/Hizoka76/MKV-Extractor-Qt5/archive/v${pkgver}.tar.gz")
-sha256sums=('b08a242f5749e4a9a8ced99089909a8305cd316218c20944a249a9df0b04bc1d')
+source=("https://github.com/Hizoka76/MKV-Extractor-Qt5/archive/${_gitcommit}.tar.gz")
+sha256sums=('2399bfde19257d88e24d7da938e3852b58982a88b754493ef3a62b04f6cb2a3c')
 
 prepare() {
-  cd "MKV-Extractor-Qt5-${pkgver}"
+  cd "MKV-Extractor-Qt5-${_gitcommit}"
 
   sed -e 's|/usr/lib/x86_64-linux-gnu/qt5/bin/lrelease|/usr/bin/lrelease-qt5|g' \
       -e 's|/usr/lib/i386-linux-gnu/qt5/bin/lrelease|/usr/bin/lrelease-qt5|g' \
@@ -35,10 +36,6 @@ prepare() {
   # Use bdsup2subpp instead of java app
   sed 's|BDSup2Sub.jar|bdsup2subpp|g' -i MKVExtractorQt5.py
 
-  # fix version
-  sed -e 's|app.setApplicationVersion("22.08.05")|app.setApplicationVersion("'"${pkgver}"'")|g' \
-      -i MKVExtractorQt5.py
-
   export IFS=$'\n'
   for i in $(find . -name '*.png' -type f); do
     mogrify "${i}" &> /dev/null
@@ -46,12 +43,12 @@ prepare() {
 }
 
 build() {
-  cd "MKV-Extractor-Qt5-${pkgver}"
+  cd "MKV-Extractor-Qt5-${_gitcommit}"
   sh ./build.sh
 }
 
 package() {
-  cd "MKV-Extractor-Qt5-${pkgver}"
+  cd "MKV-Extractor-Qt5-${_gitcommit}"
 
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/share/${pkgname}/MKVExtractorQt5.py" "${pkgdir}/usr/bin/mkv-extractor-qt5"
