@@ -1,0 +1,22 @@
+pkgbase = licenseutils
+	pkgdesc = Create copyright and license notices at the beginning of source code files
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = http://sv.gnu.org/p/licenseutils
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	makedepends = help2man
+	depends = source-highlight
+	depends = libpng
+	depends = curl
+	depends = glib2
+	conflicts = licenseutils-bin
+	conflicts = licenseutils-git
+	source = http://download.savannah.nongnu.org/releases/licenseutils/licenseutils-0.0.9.tar.gz
+	source = io_eof_seen.patch
+	sha256sums = cec455e207ca5fce8c09a9a2ac658d39b79324eba335f671f9cb5141deb912cc
+	sha256sums = cddd1e43af1b8bae800004477f5d2f51f8bccdd303de2753a5f6e49f5e646c9c
+
+pkgname = licenseutils
