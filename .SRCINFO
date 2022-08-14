@@ -1,6 +1,6 @@
 pkgbase = nmeasim-python-git
 	pkgdesc = A Python 3 GNSS/NMEA receiver simulation, with GUI.
-	pkgver = 1.0.1.0+1.r25.20220809.a1dd1cc
+	pkgver = 1.0.2.0.r25.20220809.66ecf14
 	pkgrel = 1
 	epoch = 0
 	url = https://gitlab.com/nmeasim/nmeasim
@@ -9,18 +9,19 @@ pkgbase = nmeasim-python-git
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools-scm
+	makedepends = python-setuptools>=61.2
+	makedepends = python-setuptools-scm>=3.4.3
 	makedepends = python-wheel
 	depends = python>=3.8
 	depends = python-geographiclib
 	depends = python-pyserial
 	depends = tk
-	provides = nmeasim-python=1.0.1.0+1.r25.20220809.a1dd1cc
-	provides = python-nmeasim=1.0.1.0+1.r25.20220809.a1dd1cc
-	provides = python-nmeasim-git=1.0.1.0+1.r25.20220809.a1dd1cc
+	provides = nmeasim-python=1.0.2.0.r25.20220809.66ecf14
+	provides = python-nmeasim=1.0.2.0.r25.20220809.66ecf14
+	provides = python-nmeasim-git=1.0.2.0.r25.20220809.66ecf14
 	conflicts = nmeasim-python
 	conflicts = python-nmeasim
-	source = nmeasim-python::git+https://gitlab.com/nmeasim/nmeasim.git#branch=remove-distutils-build
+	source = nmeasim-python::git+https://gitlab.com/nmeasim/nmeasim.git
 	sha256sums = SKIP
 
 pkgname = nmeasim-python-git

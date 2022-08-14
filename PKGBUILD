@@ -3,7 +3,7 @@
 _pkgname='nmeasim-python'
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=1.0.1.0+1.r25.20220809.a1dd1cc
+pkgver=1.0.2.0.r25.20220809.66ecf14
 pkgrel=1
 pkgdesc='A Python 3 GNSS/NMEA receiver simulation, with GUI.'
 arch=(
@@ -22,7 +22,8 @@ makedepends=(
   'git'
   'python-build'
   'python-installer'
-  'python-setuptools-scm'
+  'python-setuptools>=61.2'
+  'python-setuptools-scm>=3.4.3'
   'python-wheel'
   # 'python-setuptools'
 )
@@ -38,7 +39,7 @@ conflicts=(
 )
 replaces=()
 source=(
-  "${_pkgname}::git+https://gitlab.com/nmeasim/nmeasim.git#branch=remove-distutils-build"
+  "${_pkgname}::git+https://gitlab.com/nmeasim/nmeasim.git"
 )
 sha256sums=(
   'SKIP'
