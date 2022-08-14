@@ -9,9 +9,10 @@ arch=('i686' 'x86_64')
 url="http://qoobar.sourceforge.net"
 license=('GPL')
 
-depends=('qt6-base' 'ffmpeg' 'libebur128' 'taglib' 'libdiscid' 'enca' 'shntool')
+depends=('qt6-base' 'qt6-5compat' 'ffmpeg4.4' 'libebur128' 'taglib' 'libdiscid' 'enca' 'shntool')
 
 source=("git+https://github.com/alexnovichkov/qoobar.git")
+#source=("git+https://github.com/alexnovichkov/qoobar.git#tag=v1.7.0")
 sha256sums=('SKIP')
 
 pkgver() {
