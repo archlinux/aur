@@ -2,7 +2,7 @@
 
 pkgname=weather-cli
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An app made to get weather information through the terminal written in Go"
 arch=('x86_64')
 url="https://github.com/Rayrsn/Weather-Cli"
