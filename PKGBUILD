@@ -1,6 +1,6 @@
 # Maintainer: Grzegorz Koperwas <admin@grzegorzkoperwas.site>
 pkgname=swww
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=0
 pkgdesc="Efficient animated wallpaper daemon for wayland, controlled at runtime."
 arch=('x86_64' 'aarch64')
@@ -9,11 +9,12 @@ license=('GPL')
 depends=('gcc-libs' 'lz4')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Horus645/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e5f7854bdf5abe539c9c27e62b3c23e9199ed0b42b2cef9cde66bd48a94326e9')
+sha256sums=('c1faa54efde504b7b2b3300a853b87f9dd6c289d71439492bd03596bd8f3d042')
 
 prepare() {
     cd "$pkgname-$pkgver"
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    # tag v0.4.1 needs to write version to the lockfile
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
@@ -31,4 +32,3 @@ package() {
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
-
