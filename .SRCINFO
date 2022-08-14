@@ -1,7 +1,7 @@
 pkgbase = iran-nastaliq-fonts
 	pkgdesc = A free Unicode calligraphic Persian font.
-	pkgver = 20150704
-	pkgrel = 3
+	pkgver = 2.001
+	pkgrel = 1
 	url = https://github.com/font-store/font-IranNastaliq
 	arch = any
 	license = OFL
@@ -11,8 +11,7 @@ pkgbase = iran-nastaliq-fonts
 	conflicts = ttf-iran-nastaliq
 	conflicts = iran-nastaliq-fonts
 	replaces = ttf-iran-nastaliq
-	source = iran-nastaliq-fonts::git+https://github.com/font-store/font-IranNastaliq.git
-	sha256sums = SKIP
+	source = iran-nastaliq-fonts.zip::https://github.com/font-store/font-IranNastaliq/releases/download/v1/font-IranNastaliq-1.zip
+	sha256sums = 27b8d9d38858b93f6e8ac82b52d534e03aa233530181aefaf7887113c029a248
 
 pkgname = iran-nastaliq-fonts
-
