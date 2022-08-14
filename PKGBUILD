@@ -3,7 +3,7 @@
 pkgname='gog-race-the-sun'
 pkgver=2.4.0.8
 pkgrel=1
-pkgdesc="You are a solar powered craft, racing against the sunset at insane speeds through an infinite procedural world that changes every day."
+pkgdesc="Race against the sunset at insane speeds through an infinite procedural world."
 url='http://flippfly.com/racethesun/'
 license=('custom')
 arch=('x86_64' 'i686')
