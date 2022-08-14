@@ -1,0 +1,20 @@
+pkgbase = gqrx-nrsc5-git
+	pkgdesc = Interactive SDR receiver, with NRSC-5 (HD Radio) support
+	pkgver = v2.15.9.r11.ga9254f0
+	pkgrel = 1
+	url = https://github.com/Albert-S-Briscoe/gqrx/tree/nrsc5
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	depends = qt6-svg
+	depends = libpulse
+	depends = gnuradio-osmosdr
+	depends = gr-nrsc5-rx
+	provides = gqrx
+	conflicts = gqrx
+	source = gqrx-nrsc5-git::git+https://github.com/Albert-S-Briscoe/gqrx.git#branch=nrsc5
+	md5sums = SKIP
+
+pkgname = gqrx-nrsc5-git
