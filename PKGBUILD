@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="http://weixin.qq.com/"
 license=('unknown')
 depends=('deepin-wine5' 'deepin-wine-helper' 'xdg-utils')
-#makedepends=('tar')
+makedepends=('python')
 optdepends=('ttf-ms-fonts: Microsoft Core fonts (You might also need Microsoft YaHei additionally)'
 	'noto-fonts-cjk: Google Noto CJK fonts')
 conflicts=('com.qq.weixin.dcs')
