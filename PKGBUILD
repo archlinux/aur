@@ -2,13 +2,12 @@
 
 pkgname=calculix-doc
 pkgver=2.20
-pkgrel=1
-pkgdesc="CalculiX: 3D finite element solver and post-processor (documentation and examples)"
+pkgrel=2
+pkgdesc="CalculiX: 3D Structural Finite Element Program - Docs and Examples"
 arch=('any')
 options=(docs !strip)
 url="http://www.calculix.de/"
 license=('GPL2')
-depends=('calculix' )
 
 source=("http://www.dhondt.de/ccx_${pkgver}.htm.tar.bz2"
         "http://www.dhondt.de/cgx_${pkgver}.htm.tar.bz2"
@@ -27,14 +26,10 @@ prepare()
 
 package() 
 {
-    msg "Copying files"
-
     install -Dm755 -d ${pkgdir}/usr/share/doc/ccx
     install -Dm755 -d ${pkgdir}/usr/share/doc/cgx/examples
     
     cp -dr --no-preserve=ownership ${srcdir}/CalculiX/cgx_${pkgver}/examples/* ${pkgdir}/usr/share/doc/cgx/examples
     cp -dr --no-preserve=ownership ${srcdir}/CalculiX/ccx_${pkgver}/doc/ccx/* ${pkgdir}/usr/share/doc/ccx
     cp -dr --no-preserve=ownership ${srcdir}/CalculiX/cgx_${pkgver}/doc/cgx/* ${pkgdir}/usr/share/doc/cgx
-
-    msg2 "Done"  
 }

@@ -1,11 +1,10 @@
 pkgbase = calculix-doc
-	pkgdesc = CalculiX: 3D finite element solver and post-processor (documentation and examples)
+	pkgdesc = CalculiX: 3D Structural Finite Element Program - Docs and Examples
 	pkgver = 2.20
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.calculix.de/
 	arch = any
 	license = GPL2
-	depends = calculix
 	options = docs
 	options = !strip
 	source = http://www.dhondt.de/ccx_2.20.htm.tar.bz2
