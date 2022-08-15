@@ -1,0 +1,18 @@
+pkgbase = python-autopwn-suite
+	pkgdesc = AutoPWN Suite is a project for scanning vulnerabilities and exploiting systems automatically.
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://auto.pwnspot.com
+	arch = any
+	license = EULA
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-rich
+	depends = python-nmap
+	depends = python-bs4
+	depends = python-distro
+	source = autopwn-suite-2.1.2.tar.gz::https://files.pythonhosted.org/packages/source/a/autopwn-suite/autopwn-suite-2.1.2.tar.gz
+	sha512sums = SKIP
+
+pkgname = python-autopwn-suite
