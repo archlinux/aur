@@ -2,7 +2,7 @@
 
 pkgname=rustcat
 _binname=rcat
-pkgver=2.0.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='A Modern Port Listener & Reverse Shell.'
 arch=('x86_64')
