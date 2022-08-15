@@ -1,5 +1,5 @@
 pkgbase = stardict-langdao-ce-gb
-	pkgdesc = LangDao Chinese-English dictionary for StarDict
+	pkgdesc = LangDao Chinese-English Dictionary for StarDict
 	pkgver = 2.4.2
 	pkgrel = 5
 	url = http://download.huzheng.org/
