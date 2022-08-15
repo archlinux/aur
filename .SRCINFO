@@ -6,7 +6,6 @@ pkgbase = meld-git
 	arch = any
 	license = GPL
 	makedepends = git
-	makedepends = intltool
 	makedepends = meson
 	makedepends = yelp-tools
 	depends = dconf
