@@ -29,6 +29,7 @@ pkgver() {
 }
 package() { 
     cd kavpass
+    mkdir -p include bin objs
     mkdir -p ${pkgdir}/opt/${pkgname}
     cp -rf * ${pkgdir}/opt/${pkgname}
     make PREFIX=/usr DESTDIR="${pkgdir}" install
