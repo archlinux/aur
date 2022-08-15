@@ -1,6 +1,6 @@
 pkgbase = soketi
 	pkgdesc = Just another simple, fast, and resilient open-source WebSockets server.
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/soketi/soketi
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = soketi
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	noextract = soketi-1.2.0.tar.gz
-	source = https://registry.npmjs.org/@soketi/soketi/-/soketi-1.2.0.tgz
+	noextract = soketi-1.3.0.tar.gz
+	source = https://registry.npmjs.org/@soketi/soketi/-/soketi-1.3.0.tgz
 	sha512sums = 23b2849a65ed379f78ea541a7d6b7be59c9a9a1c6750191aa0d7e4c8d5250cb06cc8d38439caf1c2ef5066dd5984ad4e8ad7f34bf75de5e554d95df07baab1fd
 
 pkgname = soketi

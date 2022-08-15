@@ -5,7 +5,7 @@
 _npmname=@soketi/soketi
 pkgname=soketi
 pkgdesc='Just another simple, fast, and resilient open-source WebSockets server.'
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 arch=('any')
 url='https://github.com/soketi/soketi'
