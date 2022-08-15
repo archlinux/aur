@@ -11,7 +11,7 @@ license=('AGPL3')
 optdepends=('waked: for scheduled wake-ups'
            'feedbackd: for vibrating notifications')
 makedepends=('cargo')
-provides=('signal-notify')
+provides=('messenger-notify')
 # FIXME rename remote repo when new one created
 source=(git+https://gitlab.com/Schmiddiii/signal-notify)
 sha256sums=(SKIP)
