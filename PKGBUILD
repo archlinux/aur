@@ -1,7 +1,7 @@
 # Maintainer: Pando85 <pando855@gmail.com>
 
 pkgname=rash
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Declarative shell scripting using Rust native bindings"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
