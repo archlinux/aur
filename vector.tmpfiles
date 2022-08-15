@@ -1,0 +1,3 @@
+d /var/lib/vector 0750 vector vector
+d /etc/vector 0550 vector vector
+f /etc/vector/vector.toml 0400 vector vector
