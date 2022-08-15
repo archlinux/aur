@@ -1,15 +1,15 @@
 # Maintainer: Misaka 19465 <misaka19465@olddoctor.net>
-pkgname="efistub-helper"
-pkgdesc="An easy way to update EFISTUB configuration"
-url="https://github.com/misaka19465/EFISTUBHelper"
-pkgver=1.2
-pkgrel=1
 arch=("any")
-license=("GPL3")
 depends=("efibootmgr")
-source=("update-efistub")
-md5sums=("e3620140cdb49529b3cdf87f33a107e6")
 install="efistub-helper.install"
+license=("GPL3")
+md5sums=("e3620140cdb49529b3cdf87f33a107e6")
+pkgdesc="An easy way to update EFISTUB configuration"
+pkgname="efistub-helper"
+pkgrel=2
+pkgver=1.2
+source=("update-efistub")
+url="https://github.com/misaka19465/EFISTUBHelper"
 
 package() {
   mkdir $pkgdir/usr
