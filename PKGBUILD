@@ -5,7 +5,7 @@
 pkgname=mupdf-git
 _pkgname=mupdf
 pkgver=20220811.2225118e7
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight PDF, XPS, and E-book viewer'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://mupdf.com/'
@@ -44,8 +44,8 @@ prepare() {
 build() {
 	cd "${srcdir}/${_pkgname}"
 	export USE_SYSTEM_LIBS=yes
-	export CFLAGS+=' -D NOTO_SMALL -D NO_CJK'
-	sed 's/$(HAVE_X11)/no/g' -i Makefile
+	export CFLAGS+=' -D TOFU_CJK -D TOFU_NOTO' # only embed Base14 fonts and Charis SIL
+	sed 's/$(HAVE_X11)/no/g' -i Makefile # prevent building useless binaries
 	sed 's/$(USE_SYSTEM_MUJS)/yes/g' -i Makethird
 	sed 's/$(USE_SYSTEM_GLUT)/no/g' -i Makethird Makefile
 	make release
