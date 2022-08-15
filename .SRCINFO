@@ -1,0 +1,16 @@
+pkgbase = bobcat-git
+	pkgdesc = CLI script to browse and solve problems on Kattis, the online judge
+	pkgver = r38.7cb1846
+	pkgrel = 1
+	url = https://github.com/0WN463/bobcat
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-requests
+	depends = python-lxml
+	depends = python-beautifulsoup4
+	source = git+https://github.com/0WN463/bobcat
+	sha256sums = SKIP
+
+pkgname = bobcat-git
