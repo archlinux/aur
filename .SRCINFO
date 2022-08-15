@@ -1,7 +1,7 @@
 pkgbase = thtagger
 	pkgdesc = 一个简单的，基于 Python3 、 PySide6 和 Mutagen 的音乐元数据编辑器
-	pkgver = 0.0.2
-	pkgrel = 2
+	pkgver = 0.0.3
+	pkgrel = 1
 	url = https://github.com/weilinfox/haku-thtagger
 	install = thtagger.install
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = thtagger
 	depends = pyside6
 	depends = python-mutagen
 	depends = python-requests
-	source = https://github.com/weilinfox/haku-thtagger/archive/refs/tags/0.0.2.tar.gz
-	sha256sums = d39cd18221e32bdb40d0d11db332d579fe74a0e24acb678576773da8624bc0c5
+	source = https://github.com/weilinfox/haku-thtagger/archive/refs/tags/0.0.3.tar.gz
+	sha256sums = 7cf50de0b2620d69902ab9022aca6852d3bae11459d4a15b638e6e5335213f70
 
 pkgname = thtagger
