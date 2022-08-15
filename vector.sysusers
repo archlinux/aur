@@ -1,0 +1,3 @@
+u vector - "Vector" /var/lib/vector
+u vector - "A high-performance observability data pipeline." /var/lib/vector
+m vector systemd-journal
