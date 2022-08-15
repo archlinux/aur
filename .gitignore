@@ -3,7 +3,5 @@
 !/PKGBUILD
 !/.SRCINFO
 !/config
-!/v6-ACPI-skip-IRQ-override-on-AMD-Zen-platforms.patch
-!/v0-ALSA-hda-realtek-Add-quirk-for-ASUS-UM5302TA.patch
-!/v0-ASoC-cs35l41-CSC3551.patch
-!/v4-Bluetooth-btusb-Add-a-new-VID-PID-0489-e0e2-for-MT7922.patch
+!/cs35l42-hda-no-acpi-dsd-csc3551.patch
+!/patch-realtek-um5302ta-quirk.patch

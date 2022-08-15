@@ -1,0 +1,13 @@
+diff --git a/sound/pci/hda/cs35l41_hda.c b/sound/pci/hda/cs35l41_hda.c
+index 129bffb431c2..ca3f53bba93d 100644
+--- a/sound/pci/hda/cs35l41_hda.c
++++ b/sound/pci/hda/cs35l41_hda.c
+@@ -1156,7 +1156,7 @@ static int cs35l41_no_acpi_dsd(struct cs35l41_hda *cs35l41, struct device *physd
+ 	hw_cfg->valid = true;
+ 	put_device(physdev);
+ 
+-	if (strncmp(hid, "CLSA0100", 8) == 0) {
++	if (strncmp(hid, "CLSA0100", 8) == 0 || strncmp(hid, "CSC3551", 7) == 0) {
+ 		hw_cfg->bst_type = CS35L41_EXT_BOOST_NO_VSPK_SWITCH;
+ 	} else if (strncmp(hid, "CLSA0101", 8) == 0) {
+ 		hw_cfg->bst_type = CS35L41_EXT_BOOST;

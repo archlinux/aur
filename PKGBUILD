@@ -2,10 +2,10 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-mainline-um5302ta
-pkgver=5.19
+pkgver=6.0rc1
 pkgrel=1
 pkgdesc='Linux'
-_srctag=v5.19
+_srctag=v6.0-rc1
 url="https://git.kernel.org/torvalds/h/$_srctag"
 arch=(x86_64)
 license=(GPL2)
@@ -19,10 +19,8 @@ _srcname=linux-mainline
 source=(
   "$_srcname::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=$_srctag"
   config         # the main kernel config file
-  v6-ACPI-skip-IRQ-override-on-AMD-Zen-platforms.patch
-  v0-ALSA-hda-realtek-Add-quirk-for-ASUS-UM5302TA.patch
-  v0-ASoC-cs35l41-CSC3551.patch
-  v4-Bluetooth-btusb-Add-a-new-VID-PID-0489-e0e2-for-MT7922.patch
+  cs35l42-hda-no-acpi-dsd-csc3551.patch
+  patch-realtek-um5302ta-quirk.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -30,11 +28,9 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '2242592a373547224b158e43eb3d8cc144efe56f4ec22bc6952b1caf7183e870'
-            'b34496cca01243a0805582cb656b9cfb2781c706cc4d13cea0ac4598364d3425'
-            '6b86f4d857af3622f66da8ad9ea059ea39693fe80e5fbb507b0f8d9bc4616f88'
-            '66ecbd41168b1fb7fe8c8bba8a374456130aeceb64df2708d62f7ac3e700df1f'
-            '5212ffc69ba29c5b29365849e8bdb621c8cadac4025de5a503f55af923f123f0')
+            'e14a79f9d4f80190d8705e1f2477be51d6ddfa4e07267d941363f031954f2b7b'
+            '405100dba08840def4e9546f6e49616cc6bb3d9d25d26c58fa32cd82b4d3df82'
+            '132ece1b42f359fcbb4c97e96615747d34355f2f682efe744257f3310de77a98')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
