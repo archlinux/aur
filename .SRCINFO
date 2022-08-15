@@ -1,7 +1,7 @@
 pkgbase = python-genpy
 	pkgdesc = AST for Python code generation, in Python
-	pkgver = 2021.1
-	pkgrel = 2
+	pkgver = 2022.1
+	pkgrel = 1
 	url = https://documen.tician.de/genpy
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = python-genpy
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python-pytools
-	source = git+https://github.com/inducer/genpy.git?signed#tag=v2021.1
+	source = git+https://github.com/inducer/genpy.git?signed#tag=v2022.1
 	validpgpkeys = 900A958D9A0ACA58B1468F2471AA298BCA171145
 	sha512sums = SKIP
 
