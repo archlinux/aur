@@ -1,2 +1,2 @@
 #!/bin/bash
-exec /usr/bin/java -cp "/usr/share/java/audiveris/*" Audiveris "$@"
+exec /usr/bin/archlinux-java-run -a 17 -b 18 -- -cp "/usr/share/java/audiveris/*" Audiveris "$@"
