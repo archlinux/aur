@@ -3,8 +3,8 @@
 
 pkgname=yank-note-bin
 _pkgname=yank-note
-_electron=electron19
-pkgver=3.34.2
+_electron=electron
+pkgver=3.34.3
 pkgrel=1
 pkgdesc='A Hackable Markdown Note Application for Programmers.'
 arch=('x86_64')
@@ -12,11 +12,11 @@ url='https://github.com/purocean/yn'
 license=('AGPL3')
 provides=("${_pkgname}")
 depends=(${_electron} 'pandoc')
-makedepends=('asar' 'yarn')
+makedepends=('asar' 'yarn' 'jq' 'moreutils')
 source=("$_pkgname-$pkgver.deb::${url}/releases/download/v${pkgver}/Yank-Note-linux-amd64-${pkgver}.deb"
         "$_pkgname.sh"
         )
-sha256sums=('81190e2736a5aa58ef17754bb564ea94385425cffb59c98172b9f017c986806e'
+sha256sums=('c4e6dfa7dadf5bb7225cdabb29df7cd86ec8be50eaf27ec274b89d64401e819a'
             'e12bac7e9f11a03487dea56fb1ac7afb4b2e7eedcc8e7eb1427b2c960cb830de')
 options=(!strip)
 prepare() {
@@ -31,6 +31,10 @@ prepare() {
     sed -i "s|^exports.BIN_DIR.*|exports.BIN_DIR='/usr/bin';|g" constant.js
     # disable autoupdate checker.
     sed -i "s|^var disabled.*|var disabled = true;|g" updater.js
+
+    # fix for electron20, see https://github.com/electron/electron/issues/35193
+    cd "$srcdir/opt/Yank Note/resources"/apps
+    jq '.resolutions.nan = "github:jkleinsc/nan#remove_accessor_signature"' package.json|sponge package.json
 
     cd $srcdir/usr/share/applications
     sed -i "s|^Exec.*|Exec=yank-note %U|g"   ${_pkgname}.desktop
