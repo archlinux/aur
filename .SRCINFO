@@ -1,6 +1,6 @@
 pkgbase = timer-rs
 	pkgdesc = Simple countdown terminal alarm
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/pando85/timer
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = timer-rs
 	makedepends = git
 	depends = gcc-libs
 	depends = alsa-lib
-	source = git+https://github.com/pando85/timer.git#tag=v0.3.3?signed
+	source = git+https://github.com/pando85/timer.git#tag=v0.3.4?signed
 	validpgpkeys = C15CDDF9318F14398300B917C6CB8A1793CA3F94
 	sha512sums = SKIP
 
