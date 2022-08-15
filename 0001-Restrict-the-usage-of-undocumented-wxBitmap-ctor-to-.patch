@@ -1,0 +1,35 @@
+From 5f235ff459e6a7ec36639894d1f45a638a9d73f3 Mon Sep 17 00:00:00 2001
+From: wangqr <wangqr@wangqr.tk>
+Date: Sun, 23 Feb 2020 00:42:45 -0500
+Subject: [PATCH] Restrict the usage of undocumented wxBitmap ctor to wxWidgets
+ > 3.1.0
+
+Fix build for wxWidgets 3.0
+---
+ src/libresrc/libresrc.cpp | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/src/libresrc/libresrc.cpp b/src/libresrc/libresrc.cpp
+index 79dc0f16cb..b308c69d58 100644
+--- a/src/libresrc/libresrc.cpp
++++ b/src/libresrc/libresrc.cpp
+@@ -22,9 +22,17 @@
+ 
+ wxBitmap libresrc_getimage(const unsigned char *buff, size_t size, double scale, int dir) {
+ 	wxMemoryInputStream mem(buff, size);
++#if wxCHECK_VERSION(3, 1, 0)
++	// Since wxWidgets 3.1.0, there is an undocumented third parameter in the ctor of wxBitmap from wxImage
++	// This "scale" parameter sets the logical scale factor of the created wxBitmap
+ 	if (dir != wxLayout_RightToLeft)
+-		return wxBitmap(wxImage(mem), -1, scale);
+-	return wxBitmap(wxImage(mem).Mirror(), -1, scale);
++		return wxBitmap(wxImage(mem), wxBITMAP_SCREEN_DEPTH, scale);
++	return wxBitmap(wxImage(mem).Mirror(), wxBITMAP_SCREEN_DEPTH, scale);
++#else
++	if (dir != wxLayout_RightToLeft)
++		return wxBitmap(wxImage(mem));
++	return wxBitmap(wxImage(mem).Mirror());
++#endif
+ }
+ 
+ wxIcon libresrc_geticon(const unsigned char *buff, size_t size) {

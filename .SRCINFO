@@ -1,7 +1,7 @@
 pkgbase = aegisub-git
 	pkgdesc = A general-purpose subtitle editor with ASS/SSA support
 	pkgver = 3.2.2.r407.6f546951b
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.aegisub.org
 	arch = x86_64
 	license = GPL
@@ -23,18 +23,17 @@ pkgbase = aegisub-git
 	depends = libgl
 	depends = libpulse
 	depends = uchardet
-	depends = wxgtk3
+	depends = wxwidgets
 	depends = zlib
 	provides = aegisub
 	conflicts = aegisub
 	source = aegisub::git+https://github.com/Aegisub/Aegisub.git
 	source = git+https://github.com/Aegisub/assdraw.git
-	source = 0001-Use-target-name-without-directory-in-_OBJ-macro.patch::https://github.com/Aegisub/Aegisub/commit/6bd3f4c26b8fc1f76a8b797fcee11e7611d59a39.patch
-	source = 0001-Restrict-the-usage-of-undocumented-wxBitmap-ctor-to-.patch::https://github.com/Aegisub/Aegisub/commit/5f235ff459e6a7ec36639894d1f45a638a9d73f3.patch
+	source = 0001-Use-target-name-without-directory-in-_OBJ-macro.patch
+	source = 0001-Restrict-the-usage-of-undocumented-wxBitmap-ctor-to-.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 12b191b104fc8fa8745fd98f4aa9d2425699f2e2e719ef2062bdf6a025a045c0
-	sha256sums = 9859311688dd4a6f3e2b330109c96aa3d16f54c76a8d2be31b2e505cb9a5e843
+	sha256sums = ce90cd9a9c56abcbafeb88d33280d53bee5af98cd9e15f50d6a9e49ae1edda30
+	sha256sums = c4039f693996dd20be4e8a460fffb984fd34fd810b16b9b1ca7fc4f35df2cc17
 
 pkgname = aegisub-git
-

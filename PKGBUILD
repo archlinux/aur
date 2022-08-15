@@ -3,7 +3,7 @@
 
 pkgname=aegisub-git
 pkgver=3.2.2.r407.6f546951b
-pkgrel=1
+pkgrel=2
 pkgdesc='A general-purpose subtitle editor with ASS/SSA support'
 arch=(x86_64)
 url=http://www.aegisub.org
@@ -23,7 +23,7 @@ depends=(
   libgl
   libpulse
   uchardet
-  wxgtk3
+  wxwidgets
   zlib
 )
 makedepends=(
@@ -39,13 +39,15 @@ conflicts=(aegisub)
 source=(
   aegisub::git+https://github.com/Aegisub/Aegisub.git
   git+https://github.com/Aegisub/assdraw.git
-  0001-Use-target-name-without-directory-in-_OBJ-macro.patch::https://github.com/Aegisub/Aegisub/commit/6bd3f4c26b8fc1f76a8b797fcee11e7611d59a39.patch
-  0001-Restrict-the-usage-of-undocumented-wxBitmap-ctor-to-.patch::https://github.com/Aegisub/Aegisub/commit/5f235ff459e6a7ec36639894d1f45a638a9d73f3.patch
+  # https://github.com/Aegisub/Aegisub/commit/6bd3f4c26b8fc1f76a8b797fcee11e7611d59a39.patch
+  0001-Use-target-name-without-directory-in-_OBJ-macro.patch
+  # https://github.com/Aegisub/Aegisub/commit/5f235ff459e6a7ec36639894d1f45a638a9d73f3.patch
+  0001-Restrict-the-usage-of-undocumented-wxBitmap-ctor-to-.patch
 )
 sha256sums=('SKIP'
             'SKIP'
-            '12b191b104fc8fa8745fd98f4aa9d2425699f2e2e719ef2062bdf6a025a045c0'
-            '9859311688dd4a6f3e2b330109c96aa3d16f54c76a8d2be31b2e505cb9a5e843')
+            'ce90cd9a9c56abcbafeb88d33280d53bee5af98cd9e15f50d6a9e49ae1edda30'
+            'c4039f693996dd20be4e8a460fffb984fd34fd810b16b9b1ca7fc4f35df2cc17')
 
 pkgver() {
   cd aegisub
@@ -82,7 +84,6 @@ build() {
 
   ./configure \
     --prefix=/usr \
-    --with-wx-config=/usr/bin/wx-config-gtk3 \
     --without-{portaudio,openal,oss} \
     --disable-update-checker
   make
