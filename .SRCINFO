@@ -1,0 +1,13 @@
+pkgbase = libviperfx
+	pkgdesc = ViPER FX core library
+	pkgver = r11.6f7d0da
+	pkgrel = 1
+	url = https://github.com/vipersaudio/viperfx_core_binary
+	arch = x86_64
+	license = custom
+	source = git+https://github.com/vipersaudio/viperfx_core_binary.git#commit=6f7d0da725affe854f083baf5d90c70e172e4488
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = dae3ec0afb199748ea89393181a296ae2e5ee41d5c87570d16c8d8e24d891cc7
+
+pkgname = libviperfx
