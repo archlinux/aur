@@ -1,7 +1,7 @@
 pkgbase = lib32-mozjpeg
 	pkgdesc = JPEG image codec with accelerated baseline decoding and superior encoding (32-bit)
-	pkgver = 4.0.3
-	pkgrel = 2
+	pkgver = 4.1.1
+	pkgrel = 1
 	url = https://github.com/mozilla/mozjpeg
 	arch = x86_64
 	license = BSD
@@ -17,7 +17,7 @@ pkgbase = lib32-mozjpeg
 	provides = lib32-libjpeg-turbo
 	conflicts = lib32-libjpeg
 	conflicts = lib32-libjpeg-turbo
-	source = git+https://github.com/mozilla/mozjpeg.git#tag=v4.0.3
+	source = git+https://github.com/mozilla/mozjpeg.git#tag=v4.1.1
 	md5sums = SKIP
 
 pkgname = lib32-mozjpeg

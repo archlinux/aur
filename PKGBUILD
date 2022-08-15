@@ -1,8 +1,8 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=lib32-mozjpeg
-pkgver=4.0.3
-pkgrel=2
+pkgver=4.1.1
+pkgrel=1
 pkgdesc='JPEG image codec with accelerated baseline decoding and superior encoding (32-bit)'
 url=https://github.com/mozilla/mozjpeg
 license=(BSD)
@@ -29,7 +29,6 @@ build() {
 	make -C build
 }
 
-# much too slow for default, can be enabled if desired
 #check() {
 #	make -C build test
 #}
