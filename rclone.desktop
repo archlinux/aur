@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Categories=Network
+Name=Rclone WebUi
+#Exec=rclone rcd --rc-web-gui
+Exec=/bin/bash -c "killall rclone ; rclone rcd --rc-web-gui ; /usr/bin/xdg-open http://localhost:5572" 
+Icon=/usr/share/pixmaps/rclone.svg
+Terminal=false
+StartupNotify=false
+Comment=Syncthing Web Interface
