@@ -3,7 +3,7 @@
 
 pkgname=bobcat-git
 pkgver=r38.7cb1846
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI script to browse and solve problems on Kattis, the online judge"
 arch=('any')
 url="https://github.com/0WN463/bobcat"
@@ -21,6 +21,6 @@ pkgver() {
 package() {
   cd "${srcdir}/bobcat"
   python setup.py install --root="$pkgdir/" #--prefix=/usr --root="$pkgdir/" --optimize=1 --skip-build
-  #install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 

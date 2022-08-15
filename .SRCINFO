@@ -1,7 +1,7 @@
 pkgbase = bobcat-git
 	pkgdesc = CLI script to browse and solve problems on Kattis, the online judge
 	pkgver = r38.7cb1846
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/0WN463/bobcat
 	arch = any
 	license = MIT
