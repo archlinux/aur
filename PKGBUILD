@@ -16,32 +16,33 @@ provides=('signal-notify')
 source=(git+https://gitlab.com/Schmiddiii/signal-notify)
 sha256sums=(SKIP)
 
+# FIXME change paths when repo renamed
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/signal-notify"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/signal-notify"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/signal-notify"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
 }
 
 check() {
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/signal-notify"
     export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --all-features
 }
 
 package() {
-  install -Dm0755 -t "$pkgdir/usr/bin/" "$srcdir/$_pkgname/target/release/$_pkgname_bin"
-  install -Dm0755 -t "$pkgdir/usr/lib/systemd/user/" "$srcdir/$_pkgname/$_pkgname".service
+  install -Dm0755 -t "$pkgdir/usr/bin/" "$srcdir/signal-notify/target/release/$_pkgname_bin"
+  install -Dm0755 -t "$pkgdir/usr/lib/systemd/user/" "$srcdir/signal-notify/$_pkgname".service
 }
 
 # vim:set ts=2 sw=2 et:
