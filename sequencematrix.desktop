@@ -1,0 +1,18 @@
+[Desktop Entry]
+Categories=
+Encoding=UTF-8
+Exec=java -jar /usr/share/sequencematrix/sequencematrix.jar
+GenericName=
+GenericName[zh]=
+Icon=java15-openjdk
+MimeType=
+Name=SequenceMatrix
+Name[zh]=SequenceMatrix
+ServiceTypes=
+SwallowExec=
+SwallowTitle=
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=root
