@@ -11,11 +11,6 @@ makedepends=('python-build' 'python-installer' 'python-wheel')
 source=($pkgname-$pkgver.tar.gz::https://github.com/Garmelon/PFERD/archive/refs/tags/v${pkgver}.tar.gz)
 sha256sums=('918e5c8c6cda9a05cc5cff9408515ab6d4038ffb543449b01559b30f53315503')
 
-prepare() {
-    cd "PFERD-$pkgver"
-    # dephell deps convert --from pyproject.toml --to setup.py
-}
-
 build() {
     cd "PFERD-$pkgver"
     python -m build --wheel --no-isolation
@@ -26,14 +21,3 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/MIT
 }
-#
-# build() {
-#   cd "PFERD-$pkgver"
-#   python setup.py build
-# }
-
-# package() {
-#   cd "PFERD-$pkgver"
-#   python setup.py install --root="$pkgdir" --optimize 1 --skip-build
-#   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/MIT
-# }
