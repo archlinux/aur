@@ -28,10 +28,10 @@ pkgver() {
     printf "1.0.0"
 }
 package() { 
-    cd kavpass
     mkdir -p include bin objs
     mkdir -p ${pkgdir}/opt/${pkgname}
     cp -rf * ${pkgdir}/opt/${pkgname}
+    make
     make PREFIX=/usr DESTDIR="${pkgdir}" install
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
