@@ -1,9 +1,11 @@
 [Desktop Entry]
 Categories=Network
-Exec=/usr/bin/xdg-open http://localhost:8384
+#Exec=/usr/bin/xdg-open http://localhost:8384
+#Exec=syncthing
+Exec=/bin/bash -c "syncthing ; /usr/bin/xdg-open http://localhost:8384"
 Icon=/usr/share/pixmaps/syncthing.svg
 StartupNotify=false
 Terminal=false
 Type=Application
-Name=Syncthing
+Name=Syncthing WebGui
 Comment=Syncthing Web Interface
