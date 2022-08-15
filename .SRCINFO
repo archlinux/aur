@@ -1,0 +1,20 @@
+pkgbase = qemacs-git
+	pkgdesc = QEmacs (Quick Emacs) is a very small editor with Emacs look and feel, syntax highlighting, UTF-8, dired mode with preview window, and many other features.
+	pkgver = r1120.f7c1621
+	pkgrel = 1
+	url = https://github.com/qemacs/qemacs
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	makedepends = libxrender
+	makedepends = texi2html
+	depends = libpng
+	depends = libxv
+	optdepends = jp2a: for converting JPG images to ASCII
+	provides = qemacs
+	conflicts = qemacs
+	conflicts = qemacs-cvs
+	source = git+https://github.com/qemacs/qemacs.git
+	md5sums = SKIP
+
+pkgname = qemacs-git
