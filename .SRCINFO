@@ -13,7 +13,7 @@ pkgbase = mingw-w64-raylib
 	options = staticlibs
 	source = raylib_4.2.0.tar.gz::https://github.com/raysan5/raylib/archive/refs/tags/4.2.0.tar.gz
 	source = raylib_glfw.patch
-	md5sums = 5f44f310d13f64f04d03ce6f4127cac7
+	md5sums = 8b63a4d4a1e4356fc332fa16eb85d87e
 	md5sums = a44c1130eac923910f3047696c9a7363
 
 pkgname = mingw-w64-raylib
