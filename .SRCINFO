@@ -1,6 +1,6 @@
 pkgbase = chataigne-beta-bin
 	pkgdesc = Artist-friendly Modular Machine for Art and Technology.
-	pkgver = 1.9.4b1
+	pkgver = 1.9.8b1
 	pkgrel = 1
 	url = https://benjamin.kuperberg.fr/chataigne/en
 	arch = x86_64
@@ -29,9 +29,9 @@ pkgbase = chataigne-beta-bin
 	depends = ttf-bitstream-vera
 	depends = libcurl-gnutls
 	conflicts = chataigne-stable-bin
-	noextract = Chataigne-linux-x64-1.9.4b1.AppImage
+	noextract = Chataigne-linux-x64-1.9.8b1.AppImage
 	options = !strip
-	source_x86_64 = Chataigne-linux-x64-1.9.4b1.AppImage::https://benjamin.kuperberg.fr/chataigne/user/data/Chataigne-linux-x64-1.9.4b1.AppImage
-	sha256sums_x86_64 = ef00b4565271015d275e6355e95b874e6e74031070ecd4345df6306fee2721f4
+	source_x86_64 = Chataigne-linux-x64-1.9.8b1.AppImage::https://benjamin.kuperberg.fr/chataigne/user/data/Chataigne-linux-x64-1.9.8b1.AppImage
+	sha256sums_x86_64 = 7b309a6d6e77d8e2128d5fa3219e1adcd16964af8070405a487d057e27a977aa
 
 pkgname = chataigne-beta-bin
