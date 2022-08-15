@@ -4,11 +4,11 @@
 
 pkgname=mongosh-git
 pkgver=1.5.4.r11.g1db42a4c
-pkgrel=1
+pkgrel=2
 pkgdesc="The MongoDB Shell."
 arch=("x86_64" "aarch64")
 depends=("krb5")
-makedepends=("npm" "python")
+makedepends=("npm" "python" "git")
 provides=("mongosh" "mongosh-bin")
 conflicts=("mongosh" "mongosh-bin")
 url="https://github.com/mongodb-js/mongosh"
@@ -24,6 +24,8 @@ build(){
     cd "${srcdir}/mongosh"
     npm run bootstrap
     npm install --save-dev pretty-repl
+    ./node_modules/.bin/lerna version ${pkgver%%.r*} \
+        --no-changelog --no-push --exact --no-git-tag-version --yes
     SEGMENT_API_KEY=makepkg npm run compile-exec 
     # Anything except empty string in key is OK. But I am not sure the actual meaning of this.
     case ${CARCH} in
