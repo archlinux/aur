@@ -1,3 +1,5 @@
-genie/*
-pkg/*
-src/*
+*.tar.*
+*.log
+genie/
+pkg/
+src/

@@ -1,7 +1,9 @@
+# Maintainer: seth <getchoo at tuta dot io>
 # Contributor: Ong Yong Xin <ongyongxin2020+github AT gmail DOT com>
 # Contributor: Xuanrui Qi <me@xuanruiqi.com>
 # Contributor: Rayfalling <Rayfalling@outlook.com>
 # Contributor: facekapow, rayfalling, Ducksoft
+
 _pkgname=genie
 pkgname=${_pkgname}-systemd-git
 pkgver=2.4.r0.g9225f28
