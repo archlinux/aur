@@ -1,6 +1,6 @@
 pkgbase = fsearch
 	pkgdesc = A fast graphical file search utility.
-	pkgver = 0.1.4
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://cboxdoerfer.github.io/fsearch
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = fsearch
 	depends = icu
 	depends = pcre
 	conflicts = fsearch-git
-	source = fsearch-0.1.4.tar.gz::https://github.com/cboxdoerfer/fsearch/archive/0.1.4.tar.gz
-	sha256sums = 289c19136f89712100ff8f6ad4e7cbbdfbd2938a7c076c85c45658f5c36fc7fd
+	source = fsearch-0.2.tar.gz::https://github.com/cboxdoerfer/fsearch/archive/0.2.tar.gz
+	sha256sums = 96d1eac47fec8eb4e76a4fb8dfbc0b45365569a62c6f0e91d69b8a5e2ca1eaea
 
 pkgname = fsearch
