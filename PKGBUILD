@@ -1,15 +1,14 @@
 # Maintainer: Alisson Lauffer <alissonvitortc@gmail.com>
 # Contributor: TBK <aur at jjtc dot eu>
+# Contributor: D. Can Celasun <can[at]dcc[dot]im>
 
 pkgname=bluemail
 pkgver=1.131.13
-pkgrel=1
+pkgrel=2
 pkgdesc="BlueMail is a free, secure, universal email app, capable of managing an unlimited number of mail accounts"
 arch=('x86_64')
 url="https://www.bluemail.me"
 license=('custom')
-conflicts=('bluemail-bin')
-provides=('bluemail')
 
 depends=('libnotify' 'libappindicator-gtk3' 'libxtst' 'nss' 'libxss')
 makedepends=('squashfs-tools' 'imagemagick')
@@ -20,10 +19,12 @@ options=(!strip)
 # curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/bluemail | jq '.download_url' -r
 # curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/bluemail | jq '.version' -r
 source=('LICENSE'
-        "${pkgname}-${pkgver}.snap::https://api.snapcraft.io/api/v1/snaps/download/ZVlj0qw0GOFd5JgTfL8kk2Y5eIG1IpiH_135.snap")
+        "${pkgname}-${pkgver}.snap::https://api.snapcraft.io/api/v1/snaps/download/ZVlj0qw0GOFd5JgTfL8kk2Y5eIG1IpiH_135.snap"
+        "${pkgname}.sh")
 
 sha512sums=('546994dbf25972659db6130402926020fdfc763b3f41580d812aeb785824218bae1204babe99af51ad91fd758ad0e7f4d0636a00e9130ce13fc6ebb90540e9dc'
-            '9c0a1b56290e0f964dac8bda4f376d36ebb22f2ffebbf0b1e87a8736158cf58468bee75459535d3368168f1eaa96f20620a78acdd2db21bc218f2cbeb75c06a1')
+            '9c0a1b56290e0f964dac8bda4f376d36ebb22f2ffebbf0b1e87a8736158cf58468bee75459535d3368168f1eaa96f20620a78acdd2db21bc218f2cbeb75c06a1'
+            '4f435819d7cd4db345c92858619618a693764dbab8fe9bec8155af9b2236f0e8a671a724fee06773e478bae2924694d0c2bf9a53ae2649fb5964b8b6cc739fba')
 
 package() {
     mkdir -p "${pkgdir}/opt"
@@ -31,8 +32,11 @@ package() {
 
     unsquashfs -f -d "${pkgdir}/opt/bluemail" "${pkgname}-${pkgver}.snap"
 
+    # Fix too open folder permission
     chmod 755 "${pkgdir}/opt/bluemail"
-    ln -sf /opt/bluemail/bluemail "${pkgdir}/usr/bin/bluemail"
+
+    # Install launcher
+    install -m755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/bluemail"
 
     # Fix and install desktop icons
     for size in 22 24 32 48 64 128 256 512; do
