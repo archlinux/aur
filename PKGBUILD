@@ -22,7 +22,7 @@ depends=(
   'fontconfig'
   'freetype2'
   'hicolor-icon-theme'
-  'libavif'
+  'libheif'
   'libjxl'
   'librsvg'
   'libwebp'
@@ -43,7 +43,7 @@ pkgver() {
 
 build() {
   local meson_options=(
-    -D avif=enabled
+    -D heif=enabled
     -D bash=enabled
     -D exif=enabled
     -D gif=enabled
