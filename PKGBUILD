@@ -25,4 +25,5 @@ build() {
 package() {
   cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
+  install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
