@@ -7,13 +7,14 @@ pkgrel=1
 arch=("any")
 license=("GPL3")
 depends=("efibootmgr")
-source=(update-efistub)
-md5sums=("ce9c583a784bc4a738c491acab885ded")
+source=("update-efistub" "efistub-helper.install")
+md5sums=("ce9c583a784bc4a738c491acab885ded" "1d9a9ac2df83f66c84cefb7ef9fab80d")
 
 package() {
   mkdir $pkgdir/bin
   mkdir $pkgdir/etc
   mkdir $pkgdir/etc/efistub.d
+  touch $pkgdir/etc/efistub.conf
   install -m755 $srcdir/update-efistub $pkgdir/bin/update-efistub
 
   esp=$(df --output=source /boot | sed -n '2p')
@@ -29,10 +30,5 @@ package() {
   partnum=$(echo ${esp: ${#disk}} | tr -cd "[0-9]")
 
 
-  cat>$pkgdir/etc/efistub.conf<<EOF
-start-bootnum: 0000
-disk: ${disk}
-partnum: ${partnum}
-default-cmdline: root=PARTUUID=$(lsblk -no partuuid $(df --output=source / | sed -n '2p')) rw
-EOF
+
 }
