@@ -36,5 +36,5 @@ check() {
 }
 
 package() {
-  meson install --destdir="$pkgdir" -C build
+  meson install -C build --destdir="$pkgdir"
 }
