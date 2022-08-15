@@ -1,0 +1,12 @@
+pkgbase = stardict-wikt-en-en
+	pkgdesc = Wiktionary English-English Dictionary for StarDict
+	pkgver = 2018_10_07
+	pkgrel = 1
+	url = https://www.dictinfo.com/
+	arch = any
+	license = cc-by-sa-3.0
+	depends = stardict
+	source = https://www.dictinfo.com/stardict/wikt-en-en-2018-10-07.7z
+	b2sums = 0c7c5ebc04b754a8fc47210d2de2b8fea69854d5274a60520249e5f0f87d44b07a0e7e53f7023206c2e705e4fbf796796c65c82e554c413b1f76311a11963122
+
+pkgname = stardict-wikt-en-en
