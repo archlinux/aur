@@ -7,13 +7,13 @@
 _electron=electron
 pkgbase=element-desktop-git
 pkgname=(element-web-git element-desktop-git)
-pkgver=1.11.1.r31.g070f4735cd
+pkgver=1.11.2.rc.1.r41.g39eee10c57
 pkgrel=1
 pkgdesc="Glossy Matrix collaboration client — "
 arch=(x86_64)
 url="https://element.io"
 license=(Apache)
-makedepends=(npm git yarn python rust tcl ${_electron} nodejs-lts-gallium sqlcipher)
+makedepends=(npm git yarn python rust tcl ${_electron} nodejs sqlcipher)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 _giturl="git+https://github.com/vector-im"

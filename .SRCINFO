@@ -1,6 +1,6 @@
 pkgbase = element-desktop-git
 	pkgdesc = Glossy Matrix collaboration client —
-	pkgver = 1.11.1.r31.g070f4735cd
+	pkgver = 1.11.2.rc.1.r41.g39eee10c57
 	pkgrel = 1
 	url = https://element.io
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = element-desktop-git
 	makedepends = rust
 	makedepends = tcl
 	makedepends = electron
-	makedepends = nodejs-lts-gallium
+	makedepends = nodejs
 	makedepends = sqlcipher
 	provides = element-web
 	conflicts = element-web
@@ -36,7 +36,7 @@ pkgname = element-web-git
 
 pkgname = element-desktop-git
 	pkgdesc = Glossy Matrix collaboration client — desktop version.
-	depends = element-web-git=1.11.1.r31.g070f4735cd
+	depends = element-web-git=1.11.2.rc.1.r41.g39eee10c57
 	depends = electron
 	depends = libsecret
 	provides = element-desktop
