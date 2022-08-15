@@ -15,6 +15,7 @@ sha512sums=('SKIP')
 
 package() {
 	cd "${srcdir}/${_pyname}-${pkgver}"
+	sed -i "s/[0-9]\.[0-9]\.[0-9]/${pkgver}/g" autopwn_suite/autopwn.py
 	python setup.py install -O1 --root="${pkgdir}"
 	install -Dm 644 README.md "${pkgdir}/usr/share/licenses/${pkgname}/README"
 }
