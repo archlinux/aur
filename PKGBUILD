@@ -13,11 +13,6 @@ conflicts=('kops' 'kops-bin')
 source=("${pkgname}::git+https://github.com/kubernetes/kops")
 md5sums=('SKIP')
 
-pkgver() {
-  cd "$pkgname"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 prepare(){
   export GOPATH=$srcdir
   mkdir -p "$GOPATH/src/k8s.io"
