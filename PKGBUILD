@@ -6,7 +6,8 @@ pkgrel=1
 pkgver=r19.4924e2c
 pkgdesc="A background service that can be connected to messengers (such as Signal) and will show a desktop notification on message receive."
 arch=('x86_64' 'aarch64')
-url="https://gitlab.com/Schmiddiii/messenger-notify"
+# FIXME rename remote repo when new one created
+url="https://gitlab.com/Schmiddiii/signal-notify"
 license=('AGPL3')
 optdepends=('waked: for scheduled wake-ups')
 makedepends=('cargo')
