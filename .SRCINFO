@@ -1,6 +1,6 @@
 pkgbase = libcprime
 	pkgdesc = A library for bookmarking, saving recent activites, managing settings of C-Suite
-	pkgver = 4.4.0
+	pkgver = 4.4.1
 	pkgrel = 1
 	url = https://gitlab.com/cubocore/coreapps/libcprime
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = libcprime
 	makedepends = cmake
 	makedepends = ninja
 	depends = qt5-base
-	source = https://gitlab.com/cubocore/coreapps/libcprime/-/archive/v4.4.0/libcprime-v4.4.0.tar.gz
-	md5sums = 07f608f6ba761a11c9bb3fe20b734ec2
+	source = https://gitlab.com/cubocore/coreapps/libcprime/-/archive/v4.4.1/libcprime-v4.4.1.tar.gz
+	md5sums = 0395f2e54bedb7ec48debc418868ddac
 
 pkgname = libcprime
