@@ -1,6 +1,5 @@
 # Maintainer:  Edgar Vincent <e-v@posteo.net>
 _pkgname=messenger-notify
-_pkgname_bin=messenger_notify
 pkgname=${_pkgname}-git
 pkgrel=1
 pkgver=r19.4924e2c
@@ -41,7 +40,7 @@ check() {
 }
 
 package() {
-  install -Dm0755 -t "$pkgdir/usr/bin/" "$srcdir/signal-notify/target/release/$_pkgname_bin"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "$srcdir/signal-notify/target/release/$_pkgname"
   install -Dm0755 -t "$pkgdir/usr/lib/systemd/user/" "$srcdir/signal-notify/$_pkgname".service
 }
 
