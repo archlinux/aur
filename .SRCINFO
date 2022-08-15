@@ -1,19 +1,19 @@
 pkgbase = pretty-exec-bin
 	pkgdesc = Print command and execute it
-	pkgver = 0.0.37
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/KSXGitHub/pretty-exec
 	arch = x86_64
 	license = MIT
 	provides = pretty-exec
 	conflicts = pretty-exec
-	source = pretty-exec-bbceef7c29d5867638fa1b8e4381e699a238e3b7::https://github.com/KSXGitHub/pretty-exec/releases/download/0.0.37/pretty-exec-x86_64-unknown-linux-gnu
-	source = completion.0.0.37.bash::https://github.com/KSXGitHub/pretty-exec/releases/download/0.0.37/completion.bash
-	source = completion.0.0.37.fish::https://github.com/KSXGitHub/pretty-exec/releases/download/0.0.37/completion.fish
-	source = completion.0.0.37.zsh::https://github.com/KSXGitHub/pretty-exec/releases/download/0.0.37/completion.zsh
-	source = https://raw.githubusercontent.com/KSXGitHub/pretty-exec/0.0.37/README.md
-	source = https://raw.githubusercontent.com/KSXGitHub/pretty-exec/0.0.37/LICENSE.md
-	sha1sums = bbceef7c29d5867638fa1b8e4381e699a238e3b7
+	source = pretty-exec-959e29572769d697d6bbaaac67a55a2ee197f3ea::https://github.com/KSXGitHub/pretty-exec/releases/download/0.1.0/pretty-exec-x86_64-unknown-linux-gnu
+	source = completion.0.1.0.bash::https://github.com/KSXGitHub/pretty-exec/releases/download/0.1.0/completion.bash
+	source = completion.0.1.0.fish::https://github.com/KSXGitHub/pretty-exec/releases/download/0.1.0/completion.fish
+	source = completion.0.1.0.zsh::https://github.com/KSXGitHub/pretty-exec/releases/download/0.1.0/completion.zsh
+	source = https://raw.githubusercontent.com/KSXGitHub/pretty-exec/0.1.0/README.md
+	source = https://raw.githubusercontent.com/KSXGitHub/pretty-exec/0.1.0/LICENSE.md
+	sha1sums = 959e29572769d697d6bbaaac67a55a2ee197f3ea
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
@@ -21,4 +21,3 @@ pkgbase = pretty-exec-bin
 	sha1sums = SKIP
 
 pkgname = pretty-exec-bin
-
