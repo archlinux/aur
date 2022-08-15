@@ -4,7 +4,7 @@
 _pkgname=ImHex
 pkgname=${_pkgname,,}
 pkgver=1.21.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://imhex.werwolv.net'
 license=('GPL2')
@@ -25,27 +25,30 @@ source=("$pkgname::git+https://github.com/WerWolv/ImHex.git#tag=v$pkgver"
         0001-makepkg-Fix-compiler-flags.patch
         0002-makepkg-Fix-compiler-check.patch
         0003-fix-Deduplicate-resources-directories.patch
-        0004-makepkg-Fix-build-with-clang.patch)
+        0004-makepkg-Fix-build-with-clang.patch
+        0005-fix-Some-occurrences-of-undefined-behaviour.patch)
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'a75f6b2c5193c937aa692d4c787fe9438b7ff2258eb185d40f6a273fd4b27103'
-            'a8e03e3528cbc81d725ff26eb4e41a6db38178f4db1700c8c6e9063076d3256f'
-            '9df4ae1d85df0d9612d7cc0f029ca27da19fe9c43ad2609f84c39f2f2ad27cf2'
-            'fb15c08769ae5c8f31a113204fd0cb8b0e5ee8defc3c8f773e2a1a2e06c1abd4')
+            '7cfdbcb6352991fb6291e05b9962121fc7bce4462dfc09353830fa826f8d5383'
+            '8cd77697c42945f207092175728468613992ca33d47974132cc39c378ea16e00'
+            '0be236fcd1a1d67eed8bfcb3950c04e1040e783acd60893e72756f8e19b7fc40'
+            '64d198eff9b9d7129bcbde1c0035d6d45d97454ccf2102190c163846622c5bb5'
+            'cf4162fc661eb3684e060126d02b9ca68f40ed67cfff3fee2e7e01a900c525da')
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        '44609518926b99d480373fff1164804329979eed5c3cf9cf0645896c774c4bd382a73d04dfb7a86ff33a30a816c22f8b7f9f5adf3bad11403b8484638cfdf9e0'
-        '4474e4566253b32b22270b0ef32353b536bc8f7a08b2405e32a6ed270a6283b168978c500bf0921ded1e1884adf87bc01d1c98b3b58c893549aea4108d4a50bd'
-        '1792a1bcb469c821c0ee8f82bbd6515e9d7d3a925967573a858364b7eabc4411e596670639fb1be915ca804827e3b14dd1703d2868571b604e022989c694bd23'
-        '9d30839adf346de25a8ef49837b0c78e8bc2d07737216759889b5f7df7ac1e66f1acb33bc207d4d81ee2db4033a4feabbb67aafa8188b8b273ece93f0f499601')
+        '13b7ec6ecb7043f672b1ddf6ead34d2f523ffa1509916c496105c3a0a675783ca10d90f5c0c8662da750a769fb3f1b76914918b60317c90bacf21c207f04b100'
+        '624197c84cd3f812453b471632d24c7cf446da8be31b8997892bb96148dfba480fbf748c05629886a3de846ace9725331e192fdf0d43e72d4850606b40da8401'
+        'ab99e00d4db4c65eda48be90f0eb7c42e2032b593ab0d4219980210c8d1aa6d8f61efef867b9d87def427ab0e3404d4aa358f7870c581ebdc48c06e25e6524d4'
+        '56775e9156b9a029b40268ddacc41d6a184d4d42bd000a464a8f6de7429ef07b83cf87e48b45ec78394a602a5228769a6535caa321589de3cab88caf8ae436a9'
+        'be5b9f3299337139a00819bdc87ec321a1ea961f2eea54877e9f9bfaea7b365dd772d5b85d44357c6054b57df0a2232f53e535d9b5ead9b1c2e7a0eb9a138c08')
 options=(!lto !strip)
 
 prepare() {
@@ -64,7 +67,8 @@ prepare() {
     "$srcdir/0001-makepkg-Fix-compiler-flags.patch" \
     "$srcdir/0002-makepkg-Fix-compiler-check.patch" \
     "$srcdir/0003-fix-Deduplicate-resources-directories.patch" \
-    "$srcdir/0004-makepkg-Fix-build-with-clang.patch"
+    "$srcdir/0004-makepkg-Fix-build-with-clang.patch" \
+    "$srcdir/0005-fix-Some-occurrences-of-undefined-behaviour.patch"
 }
 
 build() {

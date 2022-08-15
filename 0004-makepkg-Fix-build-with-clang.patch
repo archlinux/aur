@@ -1,7 +1,7 @@
 From 795d0c33f56bd22a5676d44c2b814830575797c5 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Sun, 14 Aug 2022 23:59:30 +0200
-Subject: [PATCH 4/4] makepkg: Fix build with clang
+Subject: [PATCH 4/5] makepkg: Fix build with clang
 
 clang does not support some C++20 features
 ---

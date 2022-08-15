@@ -1,7 +1,7 @@
 From d8ad620ca5fa63bb5a01c9c8f6bc8c1e586890f5 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Mon, 8 Aug 2022 00:34:05 +0200
-Subject: [PATCH 1/4] makepkg: Fix compiler flags
+Subject: [PATCH 1/5] makepkg: Fix compiler flags
 
 ---
  cmake/build_helpers.cmake | 10 +++++++---

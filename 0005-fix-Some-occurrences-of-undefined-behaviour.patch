@@ -1,0 +1,48 @@
+From 2deca6840be6014e256d0f83a905082d1b0ba69f Mon Sep 17 00:00:00 2001
+From: WerWolv <werwolv98@gmail.com>
+Date: Mon, 15 Aug 2022 21:08:09 +0200
+Subject: [PATCH 5/5] fix: Some occurrences of undefined behaviour
+
+---
+ lib/libimhex/include/hex/helpers/utils.hpp        | 2 +-
+ plugins/builtin/source/content/data_inspector.cpp | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/lib/libimhex/include/hex/helpers/utils.hpp b/lib/libimhex/include/hex/helpers/utils.hpp
+index f6baaaa6..f414f4e7 100644
+--- a/lib/libimhex/include/hex/helpers/utils.hpp
++++ b/lib/libimhex/include/hex/helpers/utils.hpp
+@@ -68,7 +68,7 @@ namespace hex {
+     }
+ 
+     constexpr inline i128 signExtend(size_t numBits, i128 value) {
+-        i128 mask = 1U << (numBits - 1);
++        i128 mask = 1ULL << (numBits - 1);
+         return (value ^ mask) - mask;
+     }
+ 
+diff --git a/plugins/builtin/source/content/data_inspector.cpp b/plugins/builtin/source/content/data_inspector.cpp
+index 6642e939..e4419c1f 100644
+--- a/plugins/builtin/source/content/data_inspector.cpp
++++ b/plugins/builtin/source/content/data_inspector.cpp
+@@ -86,7 +86,7 @@ namespace hex::plugin::builtin {
+         auto format = (style == Style::Decimal) ? "{0:d}" : ((style == Style::Hexadecimal) ? hex::format("0x{{0:0{}X}}", Size * 2) : hex::format("0o{{0:0{}o}}", Size * 3));
+ 
+         T value = 0x00;
+-        std::memcpy(&value, buffer.data(), Size);
++        std::memcpy(&value, buffer.data(), std::min(sizeof(T), Size));
+         return hex::format(format, hex::changeEndianess(value, Size, endian));
+     }
+ 
+@@ -98,7 +98,7 @@ namespace hex::plugin::builtin {
+         auto format = (style == Style::Decimal) ? "{0}{1:d}" : ((style == Style::Hexadecimal) ? hex::format("{{0}}0x{{1:0{}X}}", Size * 2) : hex::format("{{0}}0o{{1:0{}o}}", Size * 3));
+ 
+         T value = 0x00;
+-        std::memcpy(&value, buffer.data(), Size);
++        std::memcpy(&value, buffer.data(), std::min(sizeof(T), Size));
+         auto number   = hex::signExtend(Size * 8, hex::changeEndianess(value, Size, endian));
+         bool negative = number < 0;
+ 
+-- 
+2.37.2
+

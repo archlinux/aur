@@ -1,7 +1,7 @@
 From 451ed119bd4ab284bdf8e85f6fafb04d67516dd8 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Sun, 14 Aug 2022 23:01:45 +0200
-Subject: [PATCH 2/4] makepkg: Fix compiler check
+Subject: [PATCH 2/5] makepkg: Fix compiler check
 
 ---
  cmake/build_helpers.cmake | 2 +-
