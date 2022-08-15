@@ -1,7 +1,7 @@
 # Maintainer: <reg-archlinux AT klein DOT tuxli DOT ch> 
 
 pkgname=spidy
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='Expired Domain Name Scraper - scrap the web and find expired domains'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}archive/refs/tags/v${pkgver}.tar.gz")
 conflicts=("${pkgname}-bin" ${pkgname}-git)
 provides=('spidy')
-sha256sums=('39e9ccc39b82de3db06d427e08eb91866aff67c8807c94a4bac0273e38117f28')
+sha256sums=('e45aba7fe2093682953d0ff4914fab864ab2329ccb4d1f6505771b12ccf70a6f')
 
 prepare(){
   cd "${pkgname}-${pkgver}"
