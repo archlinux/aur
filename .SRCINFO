@@ -1,14 +1,15 @@
 pkgbase = zcash-bin
-	pkgdesc = Official Zcash client, binary tarball version.
-	pkgver = 1.0.14
-	pkgrel = 2
-	url = https://z.cash
+	pkgdesc = Permissionless financial system employing zero-knowledge security (bin)
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = https://z.cash/
 	arch = x86_64
 	license = MIT
-	source = https://z.cash/downloads/zcash-1.0.14-linux64.tar.gz
-	source = zcash.service
-	sha256sums = 352ea2a67ae3484046a6bd43af9a5ce125e2d103a6a32ac71805658918f7076a
-	sha256sums = 47c67da9e9ae8870a1b0e24ea352bd4778f9c51b4447410b85fe79d7f84974ef
+	provides = zcash=$pkgver
+	conflicts = zcash
+	source = https://z.cash/downloads/zcash-5.2.0-linux64-debian-bullseye.tar.gz
+	source = zcashd.service
+	sha256sums = ce7113843862f04470d1260e293c393e523b36f8e5cb7b942ed56fa63a8ae77f
+	sha256sums = 7b0919ac447824199aff8c17b5a5799b46414818c6aed314506c5295d0ce9ccd
 
 pkgname = zcash-bin
-

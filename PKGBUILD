@@ -1,27 +1,20 @@
-# Maintainer: grmat <grmat@sub.red>
-
+# Maintainer: nekgem2 <nekgem2@firemail.cc>
 pkgname=zcash-bin
-pkgdesc='Official Zcash client, binary tarball version.'
-pkgver=1.0.14
-pkgrel=2
+pkgver=5.2.0
+pkgrel=1
+pkgdesc="Permissionless financial system employing zero-knowledge security (bin)"
 arch=('x86_64')
-url='https://z.cash'
+url="https://z.cash/"
 license=('MIT')
-makedepends=('')
-depends=()
-
-source=("https://z.cash/downloads/zcash-${pkgver}-linux64.tar.gz"
-        'zcash.service')
-sha256sums=('352ea2a67ae3484046a6bd43af9a5ce125e2d103a6a32ac71805658918f7076a'
-            '47c67da9e9ae8870a1b0e24ea352bd4778f9c51b4447410b85fe79d7f84974ef')
+provides=('zcash=$pkgver')
+conflicts=('zcash')
+source=("https://z.cash/downloads/zcash-$pkgver-linux64-debian-bullseye.tar.gz"
+        'zcashd.service')
+sha256sums=('ce7113843862f04470d1260e293c393e523b36f8e5cb7b942ed56fa63a8ae77f'
+            '7b0919ac447824199aff8c17b5a5799b46414818c6aed314506c5295d0ce9ccd')
 
 package() {
-  mkdir -p "${pkgdir}/usr/lib/systemd/user"
-  cp "${srcdir}/zcash.service" "${pkgdir}/usr/lib/systemd/user/"
-
-  cp -r "${srcdir}/zcash-${pkgver}/bin" "${pkgdir}/usr/"
-  cp -r "${srcdir}/zcash-${pkgver}/lib" "${pkgdir}/usr/"
-  cp -r "${srcdir}/zcash-${pkgver}/include" "${pkgdir}/usr/"
-  cp -r "${srcdir}/zcash-${pkgver}/share" "${pkgdir}/usr/"
+  install -d "$pkgdir/usr"
+  cp -r "zcash-$pkgver/"* "$pkgdir/usr/"
+  install -Dm644 -t "$pkgdir/usr/lib/systemd/user" zcashd.service
 }
-
