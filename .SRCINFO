@@ -1,7 +1,7 @@
 pkgbase = gnome-browser-connector
 	pkgdesc = Native browser connector for integration with extensions.gnome.org
 	pkgver = 42.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/GnomeShellIntegration
 	arch = any
 	license = GPL3
