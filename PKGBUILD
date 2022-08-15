@@ -2,13 +2,13 @@
 pkgname="efistub-helper"
 pkgdesc="An easy way to update EFISTUB configuration"
 url="https://github.com/misaka19465/EFISTUBHelper"
-pkgver=1.0
-pkgrel=5
+pkgver=1.1
+pkgrel=1
 arch=("any")
 license=("GPL3")
 depends=("efibootmgr")
 source=("update-efistub")
-md5sums=("ce9c583a784bc4a738c491acab885ded")
+md5sums=("a404883f450ef67f5843cea0a25b0f1f")
 install="efistub-helper.install"
 
 package() {

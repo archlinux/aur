@@ -68,7 +68,7 @@ do
         label=${kernel}
         echo -e "\033[33m Warning: No config for &i. Using defaults. \033[0m"
     fi
-    initramfs="initramfs-${kernel}"
+    initramfs="initramfs-${kernel}.img"
 
     if [ ! -s "${initramfs}" ];then
         echo -e "\033[31m Error: ${initramfs} does not exist or empty. \033[0m" >&2
