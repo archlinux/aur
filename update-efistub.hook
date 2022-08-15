@@ -1,0 +1,12 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = usr/lib/modules/*
+
+[Action]
+Description = Updating EFISTUB entries...
+When = PostTransaction
+Exec = /usr/bin/update-efistub
+Depends = efistub-helper
