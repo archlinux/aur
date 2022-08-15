@@ -8,7 +8,7 @@ arch=("any")
 license=("GPL3")
 depends=("efibootmgr")
 source=("update-efistub" "efistub-helper.install")
-md5sums=("ce9c583a784bc4a738c491acab885ded" "1d9a9ac2df83f66c84cefb7ef9fab80d")
+md5sums=("ce9c583a784bc4a738c491acab885ded" "3d460cb6523ab14e316ccf449818ae97")
 
 package() {
   mkdir $pkgdir/bin

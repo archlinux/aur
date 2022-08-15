@@ -9,6 +9,6 @@ pkgbase = efistub-helper
 	source = update-efistub
 	source = efistub-helper.install
 	md5sums = ce9c583a784bc4a738c491acab885ded
-	md5sums = 1d9a9ac2df83f66c84cefb7ef9fab80d
+	md5sums = 3d460cb6523ab14e316ccf449818ae97
 
 pkgname = efistub-helper
