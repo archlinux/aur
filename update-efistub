@@ -1,0 +1,88 @@
+#!/bin/bash
+CONFIG=/etc/efistub.conf
+
+if [[ ! -s "${CONFIG}" ]];then
+    echo -e "\033[31m Error: config does not exist or empty. \033[0m" >&2
+    exit -1
+fi
+
+startBootnum=$(eval echo $(awk -F: '/^start\-bootnum/{print $2}' "${CONFIG}"))
+disk=$(eval echo $(awk -F: '/^disk/{print $2}' "${CONFIG}"))
+partnum=$(eval echo $(awk -F: '/^partnum/{print $2}' "${CONFIG}"))
+defaultCmdline=$(eval echo $(awk -F: '/^default-cmdline/{print $2}' "${CONFIG}"))
+
+if [ -z "${startBootnum}" ];then
+    echo -e "\033[31m Error: No start-bootnum specified. \033[0m" >&2
+    exit -2
+fi
+
+if [ -z "${disk}" ];then
+    echo -e "\033[31m Error: No disk specified. \033[0m" >&2
+    exit -2
+fi
+
+if [ -z "${partnum}" ];then
+    echo -e "\033[31m Error: No partnum specified. \033[0m" >&2
+    exit -2
+fi
+
+if [ -z "${defaultCmdline}" ];then
+    echo -e "\033[31m Error: No default-cmdline specified. \033[0m" >&2
+    exit -2
+fi
+
+if [[ -s "/boot/intel-ucode.img" ]];then
+    ucode="initrd=\\intel-ucode.img"
+    echo -e "\e[32m Found intel ucode. \e[0m"
+fi
+
+if [[ -s "/boot/amd-ucode.img" ]];then
+    ucode="${ucode} initrd=\\intel-ucode.img"
+    echo -e "\e[32m Found amd ucode. \e[0m"
+fi
+
+bootnum="${startBootnum}"
+for i in /boot/vmlinuz*
+do
+    if [[ ${i} == "/boot/vmlinuz" ]];then
+        kernel="default"
+    else
+        kernel=${i: 14}
+    fi
+    configEach=/etc/efistub.d/${kernel}.conf
+    if [[ -s "${configEach}" ]];then
+        cmdline=$(eval echo $(awk -F: '/^cmdline/{print $2}' "${configEach}"))
+        label=$(eval echo $(awk -F: '/^label/{print $2}' "${configEach}"))
+
+        if [ -z "${label}" ];then
+            label=${i: 14}
+            echo -e "\033[33m Warning: ${configEach}: No label specified. Using ${kernel}. \033[0m"
+        fi
+
+        if [ -z "${cmdline}" ];then
+            echo -e "\033[31m Error: ${configEach}: No cmdline specified. \033[0m" >&2
+            exit -3
+        fi
+    else
+        cmdline="${defaultCmdline}"
+        label=${kernel}
+        echo -e "\033[33m Warning: No config for &i. Using defaults. \033[0m"
+    fi
+    initramfs="initramfs-${kernel}"
+
+    if [ ! -s "${initramfs}" ];then
+        echo -e "\033[31m Error: ${initramfs} does not exist or empty. \033[0m" >&2
+        exit -4
+    fi
+
+    cmdline="${cmdline} ${ucode} initrd=\\${initramfs}"
+
+    efibootmgr -q -b ${bootnum} -B
+    efibootmgr -q -b ${bootnum} --disk ${disk} --part ${partnum} --create --label "${label}" --loader ${i: 6} --unicode "${cmdline}"
+
+    echo "Updated ${i: 6}. Label: ${label}, cmdline: ${cmdline}"
+
+    bootnum=$(expr ${bootnum} + 1)
+done
+
+echo -e "\e[32m Complete! \e[0m"
