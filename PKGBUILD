@@ -32,7 +32,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '5e34f17f45b3623bd8350b4d2c23ad7525b75c327cc49ec3dc37e3ee168d2f46')
+            'e14a79f9d4f80190d8705e1f2477be51d6ddfa4e07267d941363f031954f2b7b')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -58,6 +58,7 @@ prepare() {
   echo "Setting config..."
   cp ../config .config
   make olddefconfig
+  diff -u ../config .config || :
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
@@ -65,8 +66,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  make all
-  make htmldocs
+  make htmldocs all
 }
 
 _package() {
