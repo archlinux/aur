@@ -1,0 +1,17 @@
+pkgbase = rocm-developer-tools
+	pkgdesc = Packages required to debug and profile HIP-based applications
+	pkgver = 5.2.1
+	pkgrel = 1
+	url = https://docs.amd.com
+	arch = x86_64
+	depends = rocm-core
+	depends = rocm-hip-sdk
+	depends = rocprofiler
+	depends = roctracer
+	depends = rocm-gdb
+	depends = rocm-dbgapi
+	depends = rocm-debug-agent
+	source = rocm-developer-tools-5.2.1.deb::https://repo.radeon.com/rocm/apt/5.2.1/pool/main/r/rocm-developer-tools/rocm-developer-tools_5.2.1.50201-79_amd64.deb
+	sha256sums = f73ba6f950429313d9755061e2e896375ab2a90defb9e93557a457ce606a96a0
+
+pkgname = rocm-developer-tools
