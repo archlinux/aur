@@ -15,12 +15,16 @@ depends=('qt5-x11extras' 'qt5-svg'
 # FS#48088
 optdepends=('xorg-xauth: may be required by X2goservers running a different linux distribution giving MIT-COOKIE errors')
 source=(https://code.x2go.org/releases/source/${pkgname}/${pkgname}-${pkgver}.tar.gz{,.asc}
-        reproducible-man-gzip.patch)
+        reproducible-man-gzip.patch 0001-Fix-redefinition-compile-error.patch)
 sha256sums=('c9953267c40fa67119ad96a73bacb1f266196da2059f0cdcd1b8d5199421d12a'
             'SKIP'
-            '8b309f0cc99d89737f47e57b79afdc9cccdd36ca3d0772040b1c3fdc0399a4d2')
+            '8b309f0cc99d89737f47e57b79afdc9cccdd36ca3d0772040b1c3fdc0399a4d2'
+            'afdb3a67d3ab875dbd924112350cc662f354e6dd6a6159c8349cad369f86f30d')
 validpgpkeys=('9BFBAEE86C0AA5FFBF2207829AF46B3025771B31'  # Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
               '1AD23D1B8F087A35AB74BDE9F4A7678C9C6B0B2B') #  "X2go Git Administrator <git-admin@x2go.org>"
+
+export CFLAGS+=' -fcommon'
+export CXXFLAGS+=' -fcommon'
 
 prepare() {
   cd ${pkgname}-${pkgver}
@@ -29,6 +33,7 @@ prepare() {
 
   # remove timestamp to solve reproducible build
   patch -Np1 -i ../reproducible-man-gzip.patch
+  patch -Np1 -i ../0001-Fix-redefinition-compile-error.patch
 }
 
 build() {

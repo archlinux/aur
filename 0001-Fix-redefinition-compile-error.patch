@@ -1,0 +1,25 @@
+From b6d591bf246f65aba75a822364215b8bcb08fafe Mon Sep 17 00:00:00 2001
+From: Reibax <reibax@gmail.com>
+Date: Tue, 16 Aug 2022 00:13:36 +0200
+Subject: [PATCH] Fix redefinition compile error
+
+---
+ src/onmainwindow_privat.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/onmainwindow_privat.h b/src/onmainwindow_privat.h
+index d37f4c9..f4002bd 100644
+--- a/src/onmainwindow_privat.h
++++ b/src/onmainwindow_privat.h
+@@ -84,7 +84,7 @@
+ #include "contest.h"
+
+ #if !defined Q_OS_WIN
+-#include <sys/mount.h>
++#include <linux/mount.h>
+ #ifdef Q_OS_LINUX
+ #include <X11/Xatom.h>
+ #include <X11/xpm.h>
+--
+2.37.2
+
