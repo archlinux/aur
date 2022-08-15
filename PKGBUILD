@@ -6,7 +6,7 @@ pkgdesc="Permissionless financial system employing zero-knowledge security (bin)
 arch=('x86_64')
 url="https://z.cash/"
 license=('MIT')
-provides=('zcash=$pkgver')
+provides=("zcash=$pkgver")
 conflicts=('zcash')
 source=("https://z.cash/downloads/zcash-$pkgver-linux64-debian-bullseye.tar.gz"
         'zcashd.service')

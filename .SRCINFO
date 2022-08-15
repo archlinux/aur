@@ -5,7 +5,7 @@ pkgbase = zcash-bin
 	url = https://z.cash/
 	arch = x86_64
 	license = MIT
-	provides = zcash=$pkgver
+	provides = zcash=5.2.0
 	conflicts = zcash
 	source = https://z.cash/downloads/zcash-5.2.0-linux64-debian-bullseye.tar.gz
 	source = zcashd.service
