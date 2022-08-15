@@ -12,7 +12,7 @@ arch=('x86_64')
 url='https://www.broadcom.com/products/storage'
 license=('custom:Broadcom')
 makedepends=('setconf')
-source=("${pkgver}_MSM_Linux-x64.zip::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_MSM_Linux-x64.zip"
+source=("${pkgver}_MSM_Linux-x64.zip::https://docs.broadcom.com/docs-and-downloads/${pkgver}_MSM_Linux-x64.zip"
         'MegaRAID_SAS_Software_User_Guide-rev2.8.pdf::https://docs.broadcom.com/wcs-public/user-guide/products/design--reference-guides/user-guide/574/208/pub-005110_db15-001199-08_2017-06-09_mr-6.14-sw-ug.pdf'
         'https://github.com/javaee/activation/releases/download/JAF-1_2_0/javax.activation.jar'
         'msm_profile.sh'
