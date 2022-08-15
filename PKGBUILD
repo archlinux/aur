@@ -3,7 +3,7 @@
 
 pkgname=nali-go
 _pkgname=nali
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='An offline tool for querying IP geographic information and CDN provider.'
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=("go>=1.18")
 provides=('nali')
 conflicts=('nali')
 source=("https://github.com/zu1k/nali/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fd3dabda33a381d0072f9c657098c3c01c793195bc6326015b36c8a168943f1c')
+sha256sums=('7c1d76bfb805af51d43439309263512fc0fa49d9b506a3f87a8da4435b54e746')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
