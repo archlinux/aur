@@ -3,8 +3,8 @@
 
 _pkgname=ImHex
 pkgname=${_pkgname,,}
-pkgver=1.21.0
-pkgrel=2
+pkgver=1.21.1
+pkgrel=1
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://imhex.werwolv.net'
 license=('GPL2')
@@ -26,37 +26,27 @@ source=("$pkgname::git+https://github.com/WerWolv/ImHex.git#tag=v$pkgver"
         0002-makepkg-Fix-compiler-check.patch
         0003-fix-Deduplicate-resources-directories.patch
         0004-makepkg-Fix-build-with-clang.patch)
-cksums=('SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        '1066455740'
-        '3728933864'
-        '3790563809'
-        '3339828254')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '872a53436a9da0bcc37ecdca4d9d424cfe6be2a025f6e52f554893caba1a0e24'
-            '77bbee581bfdfcbca3c500aaeb5dc7a73e34aa242058ffea4ada32d9a84d21e4'
-            'ebb93f6cd2f60dddeae1a1d2437587a32d5ab9e17dafd74bbea1545834e515e8'
-            '6131226f02f39d5161d4da92c55a622b617310c3296abe6c964f8658b61a4667')
+            'a75f6b2c5193c937aa692d4c787fe9438b7ff2258eb185d40f6a273fd4b27103'
+            'a8e03e3528cbc81d725ff26eb4e41a6db38178f4db1700c8c6e9063076d3256f'
+            '9df4ae1d85df0d9612d7cc0f029ca27da19fe9c43ad2609f84c39f2f2ad27cf2'
+            'fb15c08769ae5c8f31a113204fd0cb8b0e5ee8defc3c8f773e2a1a2e06c1abd4')
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        '20cb9b639996d3ae5c8b85e81cefd370a17f2a6e23e5bc29c642a24bb8ab3bc1ba3577d295817f632b48bc7109a330aa6ba86f3369e6630c64c04a75dc580bb2'
-        '5cd535a49c396d0c05f6b6e832c04b28ebe51314331406be0159fc1a3301c0512330411707f8e302967d8bc7a62216b6ce583fd6224447a5251b9b74c2d731cc'
-        '18a081bbea1c6dc5b59243654a7b959140a4280c7736c8df8d720d5d3fcbfef4d5fa6c99635287b06ddf6411059071c8c9463e6ead74d411f95011e415e7c438'
-        '11715a412414d9e6a31791508c45449f8a0570f9cfc51fcfcbff5b1bb4be765272c95b63fb22128be7e7e7066904802ede826230865decae5eef7837b13be531')
-options=(!lto)
+        '44609518926b99d480373fff1164804329979eed5c3cf9cf0645896c774c4bd382a73d04dfb7a86ff33a30a816c22f8b7f9f5adf3bad11403b8484638cfdf9e0'
+        '4474e4566253b32b22270b0ef32353b536bc8f7a08b2405e32a6ed270a6283b168978c500bf0921ded1e1884adf87bc01d1c98b3b58c893549aea4108d4a50bd'
+        '1792a1bcb469c821c0ee8f82bbd6515e9d7d3a925967573a858364b7eabc4411e596670639fb1be915ca804827e3b14dd1703d2868571b604e022989c694bd23'
+        '9d30839adf346de25a8ef49837b0c78e8bc2d07737216759889b5f7df7ac1e66f1acb33bc207d4d81ee2db4033a4feabbb67aafa8188b8b273ece93f0f499601')
+options=(!lto !strip)
 
 prepare() {
   cd "$pkgname"

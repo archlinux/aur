@@ -1,4 +1,4 @@
-From 874372b23468ca4bce29b12c9d08967df1240409 Mon Sep 17 00:00:00 2001
+From 451ed119bd4ab284bdf8e85f6fafb04d67516dd8 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Sun, 14 Aug 2022 23:01:45 +0200
 Subject: [PATCH 2/4] makepkg: Fix compiler check
