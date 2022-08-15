@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=shader-slang-git
-pkgver=0.23.13+2.gd9fd0ff3f0
+pkgver=0.24.12+2.g786f48d323
 pkgrel=1
 pkgdesc='Shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion'
 url='https://github.com/shader-slang/slang'
@@ -13,7 +13,7 @@ source=("git+$url"
         "git+https://github.com/g-truc/glm"
         "git+https://github.com/ocornut/imgui"
         "git+https://github.com/shader-slang/slang-binaries"
-        "spirv-tools::git+https://github.com/KhronosGroup/SPIRV-Tools"
+        "spirv-tools::git+https://github.com/shader-slang/SPIRV-Tools"
         "spirv-headers::git+https://github.com/KhronosGroup/SPIRV-Headers"
         "git+https://github.com/richgel999/miniz"
         "git+https://github.com/lz4/lz4"

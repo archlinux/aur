@@ -1,6 +1,6 @@
 pkgbase = shader-slang-git
 	pkgdesc = Shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion
-	pkgver = 0.23.13+2.gd9fd0ff3f0
+	pkgver = 0.24.12+2.g786f48d323
 	pkgrel = 1
 	url = https://github.com/shader-slang/slang
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = shader-slang-git
 	source = git+https://github.com/g-truc/glm
 	source = git+https://github.com/ocornut/imgui
 	source = git+https://github.com/shader-slang/slang-binaries
-	source = spirv-tools::git+https://github.com/KhronosGroup/SPIRV-Tools
+	source = spirv-tools::git+https://github.com/shader-slang/SPIRV-Tools
 	source = spirv-headers::git+https://github.com/KhronosGroup/SPIRV-Headers
 	source = git+https://github.com/richgel999/miniz
 	source = git+https://github.com/lz4/lz4
