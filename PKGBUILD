@@ -1,7 +1,7 @@
 # Maintainer: Parham Alvani <parham.alvani@gmail.com>
 
 pkgname=jira-cli
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Feature-rich interactive Jira command line."
 arch=(x86_64)
@@ -10,12 +10,12 @@ license=('MIT')
 
 makedepends=("go")
 
-conflicts=('jira-cli-bin')
+conflicts=('jira-cli-bin' 'go-jira' 'go-jira-bin')
 provides=('jira')
 
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('50b9d4f86d26d2f3eb43a0eaa400d22ada4cbb5fb742f0ea0a9283c41089799c')
+sha256sums=('c076d3c263619a4f8efaaa06dfc9cb4c709a106523c04dd056713711497cbe6f')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}/cmd/jira"
