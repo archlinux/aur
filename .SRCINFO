@@ -1,10 +1,11 @@
 pkgbase = teeworlds-git
-	pkgdesc = Multiplayer 2D shooter
-	pkgver = 0.7.5.5677.d8a4c0e2b
+	pkgdesc = Fast-paced multiplayer 2D shooter game
+	pkgver = 0.7.5.6245.26d24ec06
 	pkgrel = 1
 	url = https://teeworlds.com
 	arch = x86_64
 	license = custom
+	license = CCPL:by-nc-sa
 	makedepends = python
 	makedepends = git
 	makedepends = cmake
@@ -28,4 +29,3 @@ pkgbase = teeworlds-git
 	md5sums = SKIP
 
 pkgname = teeworlds-git
-

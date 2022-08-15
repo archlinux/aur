@@ -2,7 +2,7 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=teeworlds-git
-pkgver=0.7.5.5677.d8a4c0e2b
+pkgver=0.7.5.6245.26d24ec06
 pkgrel=1
 pkgdesc='Fast-paced multiplayer 2D shooter game'
 arch=('x86_64')
