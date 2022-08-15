@@ -1,36 +1,38 @@
-# Maintainer: Jonathon Fernyhough <jonathon_at_m2x.dev>
+# Maintainer: Emma Tebibyte <emma@tebibyte.media>
 
-pkgname=hopper
-_pkgname=hopperv4
-pkgver=4.9.5
+pkgname="hopper"
+pkgver=0.1.0
 pkgrel=1
-pkgdesc="Reverse engineering tool that lets you disassemble, decompile and debug your applications"
-arch=(x86_64)
-url="https://www.hopperapp.com/"
-license=('Commercial')
-depends=('hicolor-icon-theme' 'libbsd' 'libdispatch' 'qt5-base')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=("https://d2ap6ypl1xbe4k.cloudfront.net/Hopper-v4-$pkgver-Linux.pkg.tar.xz"
-        'LICENSE')
-# sha1 on https://www.hopperapp.com/download.html
-sha1sums=('afffdd2dd86df24ddfd8a3e6bfe91a34b007e28e'
-          'c3f410d29524eb02a8bf3dc1b29aaeb82b1844e6')
-changelog=ChangeLog
+pkgdesc="A Minecraft mod manager for the terminal"
+arch=("x86_64")
+url="https://git.tebibyte.media/minecrust/hopper"
+license=("AGPL3")
+source=("git+https://git.tebibyte.media/minecrust/hopper")
+
+depends=()
+optdepends=()
+makedepends=("rust" "cargo" "git")
+provides=("hopper")
+
+sha256sums=("SKIP")
+
+pkgver() {
+  cd $pkgname
+  cargo pkgid | cut -d# -f2 | cut -d: -f2
+}
+
+prepare() {
+    cd $srcdir/$pkgname
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
+check() {
+    cd $srcdir/$pkgname
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen --all-features
+}
 
 package() {
-  # Copy package content
-  cp -r "$srcdir"/opt "$pkgdir"/opt
-  cp -r "$srcdir"/usr "$pkgdir"/usr
-
-  # Move docs to /opt
-  mv "$pkgdir"/usr/share/doc/hopperv4 "$pkgdir"/opt/hopper-v4/doc
-  ln -s /opt/hopper-v4/doc "$pkgdir"/usr/share/doc/hopperv4
-
-  # Remove launcher from Accessories
-  sed -i '10s|Utility;||' "$pkgdir"/usr/share/applications/hopper-v4.desktop
-
-  # Install license file
-  # https://www.hopperapp.com/license_agreement.html @ 2017-08-14
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    cd $srcdir/$pkgname
+    cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
 }
