@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=invidtui
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="TUI-based Invidious client"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('mpv' 'ffmpeg' 'youtube-dl')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c753e949f9443d28ce0526ba9d605eea3505c557b855a7a81336e95b3cca262a')
+sha256sums=('c19c3040d4119379613c97867ed1b7decf1ec548f387510486866d29db2ed087')
 
 prepare() {
 	cd "$pkgname-$pkgver"
