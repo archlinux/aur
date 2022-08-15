@@ -1,6 +1,6 @@
 _srcname=SPIRV-LLVM-Translator
 pkgname=mingw-w64-${_srcname,,}
-pkgver=13.0.0.r27+gd7a03044
+pkgver=14.0.0.r57+g33898cef
 pkgrel=1
 pkgdesc="Tool and a library for bi-directional translation between SPIR-V and LLVM IR (mingw-w64)"
 arch=(any)
@@ -9,8 +9,8 @@ license=(custom)
 depends=(mingw-w64-llvm)
 makedepends=(git mingw-w64-cmake mingw-w64-llvm mingw-w64-spirv-headers mingw-w64-spirv-tools)
 options=('!buildflags' 'staticlibs' '!strip')
-# Required by ISPC
-_commit=d7a030447802718de76355c248b6bb292669683b
+# Current point in the used LLVM branch
+_commit=33898cef1093f67c73f0623bae941f00034b2db9
 source=(git+${url}.git#commit=$_commit)
 sha256sums=(SKIP)
 

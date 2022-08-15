@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-spirv-llvm-translator
 	pkgdesc = Tool and a library for bi-directional translation between SPIR-V and LLVM IR (mingw-w64)
-	pkgver = 13.0.0.r27+gd7a03044
+	pkgver = 14.0.0.r57+g33898cef
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/SPIRV-LLVM-Translator
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = mingw-w64-spirv-llvm-translator
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = git+https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git#commit=d7a030447802718de76355c248b6bb292669683b
+	source = git+https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git#commit=33898cef1093f67c73f0623bae941f00034b2db9
 	sha256sums = SKIP
 
 pkgname = mingw-w64-spirv-llvm-translator
