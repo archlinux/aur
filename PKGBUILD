@@ -14,7 +14,7 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=(https://registry.npmjs.org/$_npmname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tar.gz)
-sha512sums=('23b2849a65ed379f78ea541a7d6b7be59c9a9a1c6750191aa0d7e4c8d5250cb06cc8d38439caf1c2ef5066dd5984ad4e8ad7f34bf75de5e554d95df07baab1fd')
+sha512sums=('8253a944522b839d50c4a77f9f45a063f71f03effcf00d925e5c232e4857ecb5f6c80533f649ffb02ad9554612829490d6a63806026243304f3d4a1de88b1175')
 
 # see: https://wiki.archlinux.org/index.php/Node.js_package_guidelines
 
