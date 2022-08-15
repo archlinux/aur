@@ -1,6 +1,6 @@
 pkgbase = jump
 	pkgdesc = Quick and fuzzy directory jumper
-	pkgver = 0.41.0
+	pkgver = 0.51.0
 	pkgrel = 1
 	url = https://github.com/gsamokovarov/jump
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = jump
 	makedepends = go
 	depends = glibc
 	conflicts = jump-git
-	source = jump-0.41.0.tar.gz::https://github.com/gsamokovarov/jump/archive/v0.41.0.tar.gz
-	sha256sums = 833151da3e9dc09190588c0a381116e3dfdf5b728869cb7b96681eb59c452b4c
+	source = jump-0.51.0.tar.gz::https://github.com/gsamokovarov/jump/archive/v0.51.0.tar.gz
+	sha256sums = ce297cada71e1dca33cd7759e55b28518d2bf317cdced1f3b3f79f40fa1958b5
 
 pkgname = jump

@@ -1,6 +1,6 @@
 # Maintainer: Perttu Luukko (firstname at lastname dot fi)
 pkgname=jump
-pkgver=0.41.0
+pkgver=0.51.0
 pkgrel=1
 pkgdesc="Quick and fuzzy directory jumper"
 arch=("i686" "x86_64")
@@ -10,7 +10,7 @@ depends=("glibc")
 makedepends=("go")
 conflicts=("jump-git")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gsamokovarov/jump/archive/v${pkgver}.tar.gz")
-sha256sums=('833151da3e9dc09190588c0a381116e3dfdf5b728869cb7b96681eb59c452b4c')
+sha256sums=('ce297cada71e1dca33cd7759e55b28518d2bf317cdced1f3b3f79f40fa1958b5')
 
 build() {
     cd "$srcdir/jump-${pkgver}"
