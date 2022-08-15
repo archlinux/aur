@@ -8,7 +8,8 @@ url=https://github.com/soreau/wf-info
 license=(unknow)
 depends=(wayfire)
 makedepends=(meson ninja pkg-config git cmake  wayland-protocols glm)
-conflicts=("${pkgname}-git")
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
 source=("git+https://github.com/soreau/wf-info.git")
 sha256sums=('SKIP')
 pkgver() {

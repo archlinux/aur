@@ -13,7 +13,8 @@ pkgbase = wf-info-git
 	makedepends = wayland-protocols
 	makedepends = glm
 	depends = wayfire
-	conflicts = wf-info-git-git
+	provides = wf-info
+	conflicts = wf-info
 	source = git+https://github.com/soreau/wf-info.git
 	sha256sums = SKIP
 
