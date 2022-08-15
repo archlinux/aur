@@ -2,7 +2,7 @@
 Categories=Network
 #Exec=/usr/bin/xdg-open http://localhost:8384
 #Exec=syncthing
-Exec=/bin/bash -c "syncthing ; /usr/bin/xdg-open http://localhost:8384"
+Exec=/bin/bash -c "killall syncthing ; syncthing ; /usr/bin/xdg-open http://localhost:8384"
 Icon=/usr/share/pixmaps/syncthing.svg
 StartupNotify=false
 Terminal=false
