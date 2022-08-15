@@ -1,18 +1,23 @@
 pkgbase = cppman-git
 	pkgdesc = C++ 98/11/14 manual pages for Linux/MacOS
-	pkgver = 20220122
+	pkgver = 0.5.3.r2.g5b39e69
 	pkgrel = 1
 	url = https://github.com/aitjcize/cppman
 	arch = any
-	license = GPL
+	license = GPL3
 	makedepends = git
-	depends = python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-beautifulsoup4
 	depends = python-html5lib
-	optdepends = vim: For using vim as a pager
-	provides = cppman
+	optdepends = vim: Pager option
+	provides = cppman=0.5.3
 	conflicts = cppman
-	source = git+https://github.com/aitjcize/cppman
+	source = cppman::git+https://github.com/aitjcize/cppman
+	source = setup.py.patch
 	sha256sums = SKIP
+	sha256sums = 525deb610fae6c6222164154c34c3290663bcd522b339c659f338f2cbc120033
 
 pkgname = cppman-git

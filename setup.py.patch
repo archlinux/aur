@@ -1,0 +1,13 @@
+diff --git a/setup.py b/setup.py
+index 350e6ae..ac0da87 100644
+--- a/setup.py
++++ b/setup.py
+@@ -9,7 +9,7 @@ _package_data = [
+         ]
+ 
+ _data_files = [
+-        ('share/doc/cppman', ['README.rst', 'AUTHORS', 'COPYING', 'ChangeLog']),
++        ('share/doc/cppman', ['README.rst']),
+         ('share/man/man1', ['misc/cppman.1']),
+         ('share/bash-completion/completions', ['misc/completions/cppman.bash']),
+         ('share/zsh/vendor-completions/', ['misc/completions/zsh/_cppman'])
