@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sortable
-_pkgver=0.4.5
+_pkgver=0.4.6
 pkgname=r-${_pkgname,,}
-pkgver=0.4.5
-pkgrel=4
+pkgver=0.4.6
+pkgrel=1
 pkgdesc="Drag-and-Drop in 'shiny' Apps with 'SortableJS'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -32,7 +32,7 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a37d6739041d088a167f0d542b75b54aa565aa284f00869b69ec169b66667ec5')
+sha256sums=('76275c7c321edee84d642e4c49bbed356b383a45511f237aef93cddf90271e12')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
