@@ -16,9 +16,7 @@ disk: ${disk}
 partnum: ${partnum}
 default-cmdline: root=PARTUUID=$(lsblk -no partuuid $(df --output=source / | sed -n '2p')) rw
 EOF
-}
 
-info() {
     echo -e "\e[32m Default config has been written to /etc/efistub.conf \e[0m"
     echo -e "\e[32m For more infomation, see https://github.com/misaka19465/EFISTUBHelper \e[0m"
 }
