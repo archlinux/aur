@@ -1,0 +1,15 @@
+pkgbase = ubrowse
+	pkgdesc = Unicode character browser for the terminal
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://www.muppetlabs.com/~breadbox/software/ubrowse.html
+	arch = x86_64
+	license = MIT
+	makedepends = curl
+	makedepends = pkgconf
+	makedepends = python
+	depends = ncurses
+	source = http://www.muppetlabs.com/~breadbox/pub/software/ubrowse-1.6.tar.gz
+	sha256sums = f52314b5419a60f2caf9f7674c278df098792f6226b0fc4cb03880eda6d86902
+
+pkgname = ubrowse
