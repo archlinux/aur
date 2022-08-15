@@ -2,7 +2,7 @@
 # Contributor: Fabio 'Lolix' Loli <lolix@disroot.org>
 
 pkgname=gittyup
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='Graphical Git client (GitAhead fork)'
 url="https://github.com/Murmele/${pkgname^}"
@@ -25,7 +25,7 @@ makedepends=(cmake
 optdepends=('git-lfs: git-lfs support'
             'libgnome-keyring: for GNOME Keyring for auth credentials'
             'qt5-translations: translations')
-source=("$pkgname::git+https://github.com/Murmele/Gittyup.git#tag=${pkgname}_v$pkgver"
+source=("$pkgname::git+$url.git#tag=${pkgname}_v$pkgver"
         "$pkgname-cmark::git+https://github.com/commonmark/cmark.git"
         "$pkgname-git::git+https://github.com/git/git.git"
         "$pkgname-hunspell::git+https://github.com/hunspell/hunspell.git"
@@ -33,7 +33,7 @@ source=("$pkgname::git+https://github.com/Murmele/Gittyup.git#tag=${pkgname}_v$p
         "$pkgname-libssh2::git+https://github.com/libssh2/libssh2.git"
         "$pkgname-openssl::git+https://github.com/openssl/openssl.git"
         "$pkgname-zip::git+https://github.com/kuba--/zip.git"
-        'gittyup.desktop')
+        "$pkgname.desktop")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -57,11 +57,6 @@ prepare() {
 	git config submodule.dep/cmark/cmark.url "$srcdir/$pkgname-cmark"
 	git submodule update
 	sed -i -e 's/cmark_exe/cmark/' src/app/CMakeLists.txt
-	# https://github.com/Murmele/Gittyup/issues/167
-	sed -i \
-		-e '/CONF_DIR/{s!SOURCE!BINARY!;s!/conf!/Resources!}' \
-		-e '/L10N_DIR/{s!/l10n!/Resources/l10n!}' \
-		src/conf/CMakeLists.txt
 }
 
 build() {
@@ -69,8 +64,9 @@ build() {
 		-G Ninja \
 		-W no-dev \
 		-D CMAKE_BUILD_TYPE=None \
-		-D CMAKE_INSTALL_PREFIX=/usr/lib/gittyup \
+		-D CMAKE_INSTALL_PREFIX=/usr/lib/$pkgname \
 		-D CMAKE_INSTALL_MANDIR=/usr/share/man \
+		-D DATA_INSTALL_DIR=/usr/share/$pkgname \
 		-D ENABLE_REPRODUCIBLE_BUILDS=ON \
 		-D BUILD_SHARED_LIBS=OFF \
 		-D BUILD_TESTS=OFF \
@@ -86,6 +82,8 @@ package() {
 	local _bin="$pkgdir/usr/lib/$pkgname/${pkgname^}"
 	install -Dm0755 "$_bin" "$pkgdir/usr/bin/$pkgname"
 	rm "$_bin"
+	mv "$pkgdir/usr/"{lib/$pkgname/Resources,share/$pkgname}
+	rm -rf "$pkgdir/usr/lib/$pkgname/"{include,lib/cmake}
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.md
 	install -Dm0644 -t "$pkgdir/usr/share/applications/" ../$pkgname.desktop
 	install -Dm0644 rsrc/Gittyup.iconset/gittyup_logo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/gittyup.svg"

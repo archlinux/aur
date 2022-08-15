@@ -1,6 +1,6 @@
 pkgbase = gittyup
 	pkgdesc = Graphical Git client (GitAhead fork)
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/Murmele/Gittyup
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = gittyup
 	optdepends = git-lfs: git-lfs support
 	optdepends = libgnome-keyring: for GNOME Keyring for auth credentials
 	optdepends = qt5-translations: translations
-	source = gittyup::git+https://github.com/Murmele/Gittyup.git#tag=gittyup_v1.1.1
+	source = gittyup::git+https://github.com/Murmele/Gittyup.git#tag=gittyup_v1.1.2
 	source = gittyup-cmark::git+https://github.com/commonmark/cmark.git
 	source = gittyup-git::git+https://github.com/git/git.git
 	source = gittyup-hunspell::git+https://github.com/hunspell/hunspell.git
