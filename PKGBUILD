@@ -2,7 +2,7 @@
 
 pkgname=kops-git
 pkgver=1.25.0.alpha.2.r85.g429ebecdca
-pkgrel=2
+pkgrel=3
 pkgdesc="Kubernetes Operations (kops) - Production Grade K8s Installation, Upgrades, and Management. (git version)"
 arch=('x86_64')
 url="https://github.com/kubernetes/kops"
