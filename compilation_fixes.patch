@@ -9,3 +9,13 @@
                                const featureseq_t &s2);
  
  private:
+--- src/sonic-lineup-1.1/svcore/data/model/RelativelyFineZoomConstraint.cpp	2020-08-18 18:20:29.000000000 +0200
++++ RelativelyFineZommConstraint.cpp	2022-08-15 20:46:07.519644306 +0200
+@@ -17,6 +17,7 @@
+ #include <vector>
+ #include <algorithm>
+ #include <iostream>
++#include <utility>
+ 
+ using namespace std;
+ 
