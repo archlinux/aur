@@ -12,4 +12,4 @@ pkgbase = hopper
 	source = git+https://git.tebibyte.media/minecrust/hopper
 	sha256sums = SKIP
 
-pkgname = hopper-git
+pkgname = hopper
