@@ -1,0 +1,13 @@
+diff --git a/external/qt/package.cmake b/external/qt/package.cmake
+index bae8405..c732da1 100644
+--- a/external/qt/package.cmake
++++ b/external/qt/package.cmake
+@@ -23,7 +23,7 @@ if (NOT DESKTOP_APP_USE_PACKAGED)
+ endif()
+ 
+ if (DESKTOP_APP_QT6)
+-    find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
++    find_package(QT NAMES Qt6 REQUIRED COMPONENTS Core)
+ else()
+     find_package(QT NAMES Qt5 REQUIRED COMPONENTS Core)
+ endif()

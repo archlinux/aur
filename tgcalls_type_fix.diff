@@ -1,12 +1,12 @@
 diff --git a/tgcalls/utils/gzip.h b/tgcalls/utils/gzip.h
-index a3f3ea2..f71b2a5 100644
+index a3f3ea2..056205b 100644
 --- a/tgcalls/utils/gzip.h
 +++ b/tgcalls/utils/gzip.h
 @@ -1,6 +1,7 @@
  #ifndef TGCALLS_UTILS_GZIP_H
  #define TGCALLS_UTILS_GZIP_H
  
-+#include<cstdint>
++#include <cstdint>
  #include <absl/types/optional.h>
  #include <vector>
  

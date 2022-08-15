@@ -5,7 +5,7 @@
 # Thanks Nicholas Guriev <guriev-ns@ya.ru> for the initial patches!
 # https://github.com/mymedia2/tdesktop
 pkgname=telegram-desktop-dev
-pkgver=4.0.2
+pkgver=4.1.0
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -16,7 +16,7 @@ license=('GPL3')
 depends=('hunspell' 'ffmpeg4.4' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
          'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'qt6-5compat' 'xxhash' 'glibmm'
          'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch')
-makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
+makedepends=('cmake' 'git' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
              'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt')
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
@@ -28,12 +28,13 @@ _commit="tag=v$pkgver"
 # These files might require modifications to be up-to-date.
 # In such situation, extra patches will be added.
 # An easy way to clone the repo since the last update is:
-# git clone --shallow-since=vOLDVER https://github.com/telegramdesktop/tdesktop WORKDIR
+# git clone --recurse-submodules --shallow-submodules --remote-submodules --shallow-since=vOLDVER https://github.com/telegramdesktop/tdesktop WORKDIR
 # All the submodules "source" definitions are generated them via:
 # git submodule foreach --quiet 'echo \"${name##*/}::git+`git remote get-url origin`\"' | sort
 source=(
     "tdesktop::git+https://github.com/telegramdesktop/tdesktop#$_commit"
     "tgcalls_type_fix.diff"
+    "use_qt6_only.diff"
     # Here are all the repos. See the commands above for populating them
     "cmake::git+https://github.com/desktop-app/cmake_helpers.git"
     "codegen::git+https://github.com/desktop-app/codegen.git"
@@ -69,7 +70,8 @@ source=(
     "xxHash::git+https://github.com/Cyan4973/xxHash.git"
 )
 sha512sums=('SKIP'
-            'd161ed9fc01dff6b9a0e812a7ea2f4ab8f03d96990706ba96d8e11f54f17e768a7aee97d9c9fc92279ccd70394c240864d8a7fb61987e5332b69a9dad544a1bf'
+            'e1328de1bf2dfc26a834aae855c9ee4734ff00e92f8c31fcfe633b0b5365456daa5ae1736a590a57889597f8703214829e0809d7e6d13e8fb02165c731b1ea88'
+            'd6569a4b9d77647f268ee09cfcbc78102165098cda3732938c8e89a37d3d92a65ecaac0af1ade6494d00b106a604bcd0de6722de162abf394912018cd3c06e13'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -155,6 +157,8 @@ prepare() {
     cd "$srcdir/tdesktop/Telegram/ThirdParty/tgcalls"
     patch -Np1 -i "$srcdir/tgcalls_type_fix.diff"
 
+    cd "$srcdir/tdesktop/cmake"
+    patch -Np1 -i "$srcdir/use_qt6_only.diff"
     # Official package patches
 }
 
@@ -168,17 +172,17 @@ build() {
     # Thanks @primeos!
     cmake \
         -B build \
-        -G Ninja \
+        -G "Unix Makefiles" \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
         -DTDESKTOP_API_ID=611335 \
         -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
-    ninja -C build
+    make -C build -j `nproc`
 }
 
 package() {
     cd "$srcdir/tdesktop"
-    DESTDIR="$pkgdir" ninja -C build install
+    DESTDIR="$pkgdir" make -C build install
     # They botched the release and put a lot of stuff here.
     rm -rf "$pkgdir/build"
 }
