@@ -1,7 +1,7 @@
 pkgbase = python-autopwn-suite
 	pkgdesc = AutoPWN Suite is a project for scanning vulnerabilities and exploiting systems automatically.
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://auto.pwnspot.com
 	arch = any
 	license = EULA
