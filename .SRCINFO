@@ -1,0 +1,20 @@
+pkgbase = mongosh-git
+	pkgdesc = The MongoDB Shell.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mongodb-js/mongosh
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	license = MPL
+	license = custom:Customer Agreement
+	makedepends = npm
+	makedepends = python
+	depends = krb5
+	provides = mongosh
+	provides = mongosh-bin
+	conflicts = mongosh
+	conflicts = mongosh-bin
+	source = git+https://github.com/mongodb-js/mongosh.git
+
+pkgname = mongosh-git
