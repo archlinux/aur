@@ -1,0 +1,21 @@
+pkgbase = wf-ctrl-git
+	pkgdesc = A wayfire plugin and program to control wayfire surfaces and desktop
+	pkgver = r10.d63ab76
+	pkgrel = 1
+	url = https://github.com/soreau/wf-ctrl
+	arch = x86_64
+	license = unknow
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkg-config
+	makedepends = git
+	makedepends = cmake
+	makedepends = wayland-protocols
+	makedepends = glm
+	depends = wayfire-git
+	provides = wf-ctrl
+	conflicts = wf-ctrl
+	source = git+https://github.com/soreau/wf-ctrl.git
+	sha256sums = SKIP
+
+pkgname = wf-ctrl-git
