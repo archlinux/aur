@@ -1,7 +1,7 @@
 Fixes issues with name conflicts building with external glfw
 --- a/src/rcore.c
 +++ b/src/rcore.c
-@@ -196,7 +196,7 @@
+@@ -214,7 +214,7 @@
  
      // Support retrieving native window handlers
      #if defined(_WIN32)
