@@ -3,7 +3,7 @@
 
 pkgname=python-uqbar
 _pkg="${pkgname#python-}"
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='Tools for building documentation with Sphinx, Graphviz and LaTeX'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python>=3.7' 'python-sphinx' 'python-unidecode' 'python-black')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-cov')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5562adbe1cbf33cc993c14d64c1126eab1cde2404cf858631f2bfba95642b660')
+sha256sums=('df5d6ad2202aea1555aff2c156d4253a2958e34bbef5482a19d0bf72b25dcc24')
 
 prepare() {
 	cd "$_pkg-$pkgver"
