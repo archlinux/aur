@@ -1,9 +1,0 @@
-[Unit]
-Description=Zcash Daemon
-
-[Service]
-Type=forking
-ExecStart=/usr/bin/zcashd -daemon -printtoconsole
-
-[Install]
-WantedBy=default.target
