@@ -1,4 +1,4 @@
-# Maintainer: bin <bin at datacowboy dot cf>
+# Maintainer: Jack Roehr <jack at roe dot hr>
 pkgname=vim_cubed-git
 pkgver=r0.0
 pkgrel=1
@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/oakes/vim_cubed"
 license=('UNLICENSE')
 depends=('mesa' 'ncurses')
-makedepends=('nim' 'nimble' 'xorg-server-devel')
+makedepends=('nim' 'nimble' 'xorg-server-devel' 'libxcursor' 'libxrandr' 'libxinerama' 'libxi')
 source=("vim_cubed::git+https://github.com/oakes/vim_cubed#branch=master")
 sha256sums=("SKIP")
 
