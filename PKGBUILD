@@ -2,7 +2,7 @@
 
 pkgname=csvq-bin
 _pkgname=csvq
-pkgver=1.17.8
+pkgver=1.17.10
 pkgrel=1
 pkgdesc='SQL-like query language for csv'
 url='https://mithrandie.github.io/csvq/'
@@ -13,7 +13,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source=("https://github.com/mithrandie/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-amd64.tar.gz")
-sha256sums=('f7bbf72a192259b787e5e3b67534f74281d3a88b754628811efd21b1c82059f0')
+sha256sums=('962501ae0a54e1e618d1317120aec369071e323d90b03086997565737a5f9dbc')
 
 package() {
 	cd "${srcdir}/${_pkgname}-v${pkgver}-linux-amd64"
