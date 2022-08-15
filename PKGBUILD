@@ -13,7 +13,7 @@ provides=('cura')
 options=(!strip)
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 source=(
-    "${_pkgname}.AppImage::https://github.com/Ultimaker/Cura/releases/download/5.1-beta/Ultimaker-Cura_5.1.0-beta-linux.AppImage"
+    "${_pkgname}.AppImage::https://github.com/Ultimaker/Cura/releases/download/5.1.0/Ultimaker-Cura-5.1.0-linux.AppImage"
     "${_shortname}.sh"
 )
 
