@@ -1,0 +1,29 @@
+--- src/tony-2.1.1/svgui/view/Overview.cpp	2019-12-10 10:48:58.000000000 +0100
++++ src/tony-2.1.1/svgui/view/Overview.cpp.patched	2020-12-29 23:19:48.800278120 +0100
+@@ -19,6 +19,7 @@
+ #include "base/ZoomConstraint.h"
+ 
+ #include <QPaintEvent>
++#include <QPainterPath>
+ #include <QPainter>
+ #include <iostream>
+ 
+--- src/tony-2.1.1/svgui/layer/WaveformLayer.cpp	2019-12-10 10:48:58.000000000 +0100
++++ src/tony-2.1.1/svgui/layer/WaveformLayer.cpp.patched	2020-12-29 23:19:01.368670199 +0100
+@@ -27,6 +27,7 @@
+ #include "data/model/WaveformOversampler.h"
+ 
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QPixmap>
+ #include <QTextStream>
+ 
+--- src/tony-2.1.1/svcore/data/model/RelativelyFineZoomConstraint.cpp	2020-08-18 18:20:29.000000000 +0200
++++ RelativelyFineZommConstraint.cpp	2022-08-15 20:46:07.519644306 +0200
+@@ -17,6 +17,7 @@
+ #include <vector>
+ #include <algorithm>
+ #include <iostream>
++#include <utility>
+ 
+ using namespace std;

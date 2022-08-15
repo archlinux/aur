@@ -1,7 +1,7 @@
 pkgbase = tony
 	pkgdesc = Tony: a tool for melody transcription
 	pkgver = 2.1.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.sonicvisualiser.org/tony/
 	arch = x86_64
 	license = GPL2
@@ -22,10 +22,8 @@ pkgbase = tony
 	depends = sord
 	depends = hicolor-icon-theme
 	source = tony-2.1.1.tar.gz::https://code.soundsoftware.ac.uk/attachments/download/2616/tony-2.1.1.tar.gz
-	source = Overview.cpp.patch
-	source = WaveformLayer.cpp.patch
+	source = compilation_fixes.patch
 	sha256sums = d79d85be738b00aef7859473f2c0385632d6cb30cd3752e07e952220695de20d
-	sha256sums = dea76b31d82213d4d9ffdd388f2cf5e0408319cbd48b4e5269eee1489bd9d002
-	sha256sums = a38ba18245e8dc3e42491e1c0e033689ac489112787d52a9505747a1e2096635
+	sha256sums = b5b1105e1cd00b31da1264b301d37898b46585f8885c2d1bd3d76c6d38365897
 
 pkgname = tony
