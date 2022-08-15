@@ -13,7 +13,7 @@ optdepends=('waked: for scheduled wake-ups'
 makedepends=('cargo')
 provides=('messenger-notify')
 # FIXME rename remote repo when new one created
-source=(git+https://gitlab.com/Schmiddiii/signal-notify)
+source=('git+https://gitlab.com/Schmiddiii/signal-notify')
 sha256sums=(SKIP)
 
 # FIXME change paths when repo renamed
