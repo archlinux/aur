@@ -1,7 +1,7 @@
 pkgbase = efistub-helper
 	pkgdesc = An easy way to update EFISTUB configuration
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/misaka19465/EFISTUBHelper
 	arch = any
 	license = GPL3
