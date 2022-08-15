@@ -1,0 +1,11 @@
+pkgbase = vim-local-history-git
+	pkgdesc = Use viminfo file relative to current working directory.
+	pkgver = r4.db671dc
+	pkgrel = 1
+	url = https://github.com/maxboisvert/vim-local-history
+	arch = any
+	license = GPL3
+	source = git+https://github.com/maxboisvert/vim-local-history.git
+	md5sums = SKIP
+
+pkgname = vim-local-history-git
