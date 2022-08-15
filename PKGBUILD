@@ -20,7 +20,7 @@ source_aarch64=("https://github.com/darkhz/${_pkgname}/releases/download/v${pkgv
 source_armv6h=("https://github.com/darkhz/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_armv6.tar.gz")
 source_armv7h=("https://github.com/darkhz/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_armv7.tar.gz")
 
-sha256sums_x86_64=("372c72099a9e52ccd9ca41ae3f509fff6ab8cd8bc5d18308297e5e1d95ccb6ee")
+sha256sums_x86_64=("63d132a636361db8fc4a12ff582a6421757e1ad67d7114b22fb86398bc4ad2f3")
 sha256sums_arm=("d61b206207482c8afaba98680fcfc63a95760c0ba17e30cf7dda908fc2cb79e5")
 sha256sums_aarch64=("773f87a2b95e09bf583da7147a5d80efbe663cd9a2c88f003b3a450a96033071")
 sha256sums_armv6h=("15cbfc9984aff53c385d08d9e10331b3ec30349bf7ac86e67786c542343d15c3")
