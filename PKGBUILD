@@ -1,23 +1,27 @@
-# Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
+
 pkgname=gita
-pkgver=0.16.2
+pkgver=0.16.2.2
 pkgrel=1
-pkgdesc="A command-line tool to manage multiple git repos"
+pkgdesc="Command-line tool to manage multiple git repos"
 arch=('any')
 url="https://github.com/nosarthur/gita"
 license=('MIT')
-depends=('python-yaml')
-makedepends=('python-setuptools')
-source=(
-	"$pkgname-$pkgver.tar.gz::https://github.com/nosarthur/gita/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('91b3ab226ad760e8b6a43765c4f49c4f71a3af451342ced534ef00ebfbea6d7e3c6737a7497a0b139194c3bb2874d6a1f3cc2c30e0ad23aea9e8be82f1242e2d')
+depends=('python-setuptools' 'git')
+makedepends=('python-build' 'python-installer' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/g/$pkgname/$pkgname-$pkgver.tar.gz")
+sha256sums=('daf1894cac0699d658e9ae7179b0811e4f94f68d016ef7a9ebbc5071e0760299')
 
 build() {
 	cd "$pkgname-$pkgver"
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s "$_site/$pkgname-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
