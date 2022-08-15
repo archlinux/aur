@@ -41,6 +41,9 @@ prepare() {
     git config submodule."external/$external_lib".url "$srcdir/$external_lib"
   done
   git submodule update
+
+  # Allow building the project on a newer system than the upstream devs use
+  sed /FatalWarnings/d -i premake5.lua
 }
 
 pkgver() {
