@@ -1,6 +1,6 @@
 pkgbase = transmission-gtk-git
 	pkgdesc = Fast, easy, and free BitTorrent client (GTK+ GUI)(Git version from github repository)
-	pkgver = 3.00.r1285.ga700259cc
+	pkgver = 3.00.r1301.ga4c1a23fa
 	pkgrel = 1
 	epoch = 2
 	url = http://www.transmissionbt.com/
@@ -12,7 +12,6 @@ pkgbase = transmission-gtk-git
 	makedepends = cmake
 	makedepends = gtkmm3
 	depends = gtkmm3
-	depends = libevent
 	depends = libappindicator-gtk3
 	depends = libnatpmp
 	depends = libb64
