@@ -3,7 +3,7 @@
 
 pkgname=openbgpd
 pkgver=7.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A FREE implementation of the Border Gateway Protocol, Version 4"
 arch=(x86_64)
 url="https://www.openbgpd.org"
@@ -40,4 +40,5 @@ package() {
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/openbgpd/LICENSE"
   install -Dm644 "$srcdir/sysusers.conf" "$pkgdir/usr/lib/sysusers.d/bgpd.conf"
   install -Dm644 "$srcdir/bgpd.service" "$pkgdir/usr/lib/systemd/system/bgpd.service"
+  rm -rf "$pkgdir"/var
 }
