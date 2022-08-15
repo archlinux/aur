@@ -9,7 +9,6 @@ pkgrel=2
 epoch=2
 pkgdesc="Noto CJK-SC fonts for Simplified Chinese"
 arch=(any)
-# https://github.com/googlefonts/noto-cjk/blob/main/Sans/OTF/SimplifiedChinese/NotoSansCJKsc-DemiLight.otf?raw=true
 source=("https://github.com/googlefonts/noto-cjk/releases/download/Sans2.004/08_NotoSansCJKsc.zip"
         "https://github.com/googlefonts/noto-cjk/releases/download/Sans2.004/13_NotoSansMonoCJKsc.zip"
         "https://github.com/googlefonts/noto-cjk/releases/download/Serif2.001/09_NotoSerifCJKsc.zip")
