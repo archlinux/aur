@@ -3,9 +3,9 @@
 # Github Contributors: https://github.com/SampsonCrowley/arch_packages/contributors.md
 
 pkgname=heroku-cli
-pkgver=7.60.2
+pkgver=7.62.0
 pkgrel=1
-_commit_id="b8292f347101f13c2bb833b1dcf088886c8aa984"
+_commit_id="13db7c5e684c5c44682a5115b9a29632a46fb69c"
 pkgdesc="CLI to manage Heroku apps and services with forced auto-update removed"
 arch=('any')
 url="https://devcenter.heroku.com/articles/heroku-cli"
@@ -43,38 +43,24 @@ prepare() {
   pushd "$srcdir"
 
     pushd "cli"
-
-      # install packaging tools, must be done with yarn
-      yarn install
-
       pushd packages/cli
-
         # remove forced auto-update plugin
         sed -i "/oclif\/plugin-update/d" ./package.json
 
         # install dependencies, must be done with yarn as of 7.60
         yarn install
 
-        # remove dist folder if necessary
-        if [[ -d "./dist" ]]; then
-          rm -r ./dist
-        fi
-
-        npx oclif-dev pack --targets="linux-x64"
-
-        pushd dist/heroku-v$pkgver/
-
-          # move package source to src root
-          mv -f ./heroku-v$pkgver-linux-x64.tar.xz "$srcdir"/
-
-        popd
-
+        # create base package
+        yarn pack --filename "heroku-v$VERSION-linux-x64.tar.xz"
+        tar -xzvf "heroku-v$VERSION-linux-x64.tar.xz" -C "$srcdir/"
       popd
-
     popd
 
-    # extract oclif package
-    tar -xvf "heroku-v$pkgver-linux-x64.tar.xz" -C "$srcdir/"
+    # final installation
+    mv package heroku
+    pushd heroku
+      yarn --prod
+    popd
 
     # unneeded compilation files
     for file in *; do
@@ -84,12 +70,6 @@ prepare() {
         rm -rf "$file"
       fi
     done
-
-    # remove packaged node binary and fall back to whatever node is on the PATH
-    rm -f ./heroku/bin/heroku
-    rm -f ./heroku/bin/heroku.cmd
-    rm -f ./heroku/bin/node
-
   popd
 }
 
