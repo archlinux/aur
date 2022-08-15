@@ -9,7 +9,7 @@ pkgbase = messenger-notify-git
 	makedepends = cargo
 	optdepends = waked: for scheduled wake-ups
 	provides = signal-notify
-	source = git+https://gitlab.com/Schmiddiii/messenger-notify
+	source = git+https://gitlab.com/Schmiddiii/signal-notify
 	sha256sums = SKIP
 
 pkgname = messenger-notify-git
