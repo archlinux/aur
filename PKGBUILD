@@ -3,7 +3,7 @@
 pkgname=watt-toolkit-bin
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
 pkgver=2.8.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url=https://steampp.net/
 license=('GPL3')
@@ -26,7 +26,7 @@ package(){
     mkdir -p "${pkgdir}/usr/share/icons/hicolor/64x64/apps"
     mkdir -p "${pkgdir}/usr/bin"
     cd "${pkgdir}/opt/watt-toolkit"
-    tar -xvf "${srcdir}/Steam++_${CARCH}.tar.zst"
+    tar -xvf "${srcdir}/Steam++_${pkgver}_${CARCH}.tar.zst"
     for file in Steam++ libHarfBuzzSharp.so libSkiaSharp.so libe_sqlite3.so
     do
         chmod 755 "${pkgdir}/opt/watt-toolkit/${file}"
