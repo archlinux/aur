@@ -37,7 +37,7 @@ if [[ -s "/boot/intel-ucode.img" ]];then
 fi
 
 if [[ -s "/boot/amd-ucode.img" ]];then
-    ucode="${ucode} initrd=\\intel-ucode.img"
+    ucode="${ucode} initrd=\\amd-ucode.img"
     echo -e "\e[32m Found amd ucode. \e[0m"
 fi
 

@@ -1,13 +1,13 @@
 pkgbase = efistub-helper
 	pkgdesc = An easy way to update EFISTUB configuration
-	pkgver = 1.2
-	pkgrel = 2
+	pkgver = 1.3
+	pkgrel = 1
 	url = https://github.com/misaka19465/EFISTUBHelper
 	install = efistub-helper.install
 	arch = any
 	license = GPL3
 	depends = efibootmgr
 	source = update-efistub
-	md5sums = e3620140cdb49529b3cdf87f33a107e6
+	md5sums = 2848c51f6780345190c682e02d4e3a22
 
 pkgname = efistub-helper
