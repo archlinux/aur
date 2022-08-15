@@ -2,8 +2,8 @@
 
 pkgname=cch
 _pkgname="CodeForces Contest Helper v2"
-pkgver=2.0BETA34
-pkgrel=2
+pkgver=2.0BETA35
+pkgrel=1
 pkgdesc="A powerful contest helper for CodeForces, developed by NW.js"
 
 arch=(x86_64 i686)
@@ -26,11 +26,11 @@ options=('!strip')
 install="${pkgname}.install"
 
 _orgname="CodeforcesContestHelper"
-_pkgver="v2.0-beta-34"
+_pkgver="v2.0-beta-35"
 source_x86_64=(https://github.com/${_orgname}/CCHv2/releases/download/${_pkgver}/CCHv2.${_pkgver}.linux64.zip)
 source_i686=(https://github.com/${_orgname}/CCHv2/releases/download/${_pkgver}/CCHv2.${_pkgver}.linux32.zip)
-sha256sums_x86_64=('1b81a5e943dbf3cda1974db76bb7b1648c3303d174e55344ffa37fa18762ce31')
-sha256sums_i686=('a914107c3cd66a1b1c064101be3fcb5c2fc2b5d365526dd9b9e950c560105dc1')
+sha256sums_x86_64=('c588a6a7541b5b288cb0ad365071e7cc304a8f927ddf1626463147db15b82aba')
+sha256sums_i686=('3d9ba4d8c57f392ab5188470ce9ae96c6842180023fc77612d1f0872e9f7534e')
 
 package() {
   _arch=linux64
