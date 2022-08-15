@@ -5,7 +5,7 @@ _orga=develerik
 _gourl=github.com/$_orga/$_pkgname
 
 pkgname="${_pkgname}"
-pkgver="1.1.0"
+pkgver="1.2.0"
 pkgrel=1
 pkgdesc="Git credential.helper using 1Password for storage"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h')

@@ -1,6 +1,6 @@
 pkgbase = git-credential-1password
 	pkgdesc = Git credential.helper using 1Password for storage
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/develerik/git-credential-1password
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = git-credential-1password
 	conflicts = git-credential-1password-dev-git
 	conflicts = git-credential-1password-bin
 	conflicts = git-credential-1password-git
-	source = git+https://github.com/develerik/git-credential-1password.git#tag=v1.1.0
+	source = git+https://github.com/develerik/git-credential-1password.git#tag=v1.2.0
 	md5sums = SKIP
 
 pkgname = git-credential-1password
