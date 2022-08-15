@@ -4,7 +4,7 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20220124.c285dd695
+pkgver=20220811.2225118e7
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS, and E-book viewer'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -33,42 +33,29 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
-
-	# update forks of thirdparty libraries
 	sed "/extract.git/c url = $(pwd)/../thirdparty-extract" -i .gitmodules
 	sed "/freeglut.git/c url = $(pwd)/../thirdparty-freeglut" -i .gitmodules
 	sed "/lcms2.git/c url = $(pwd)/../thirdparty-lcms2" -i .gitmodules
 	git submodule update --init thirdparty/extract
 	git submodule update --init thirdparty/freeglut
 	git submodule update --init thirdparty/lcms2
-
-	# embedding CJK fonts into binaries is madness...
-	sed '/TOFU_CJK /c #define TOFU_CJK 1/' -i include/mupdf/fitz/config.h
-
-	# force internal freeglut; see e.g. 06c999fec01863a90824ba2f9f3ce98ea1a967d3
-	sed 's/USE_SYSTEM_GLUT :=/& no #/g' -i Makethird
-
-	# force system mujs
-	sed 's/$(USE_SYSTEM_MUJS)/yes/g' -i Makethird
 }
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-
 	export USE_SYSTEM_LIBS=yes
+	export CFLAGS+=' -D NOTO_SMALL -D NO_CJK'
+	sed 's/$(HAVE_X11)/no/g' -i Makefile
+	sed 's/$(USE_SYSTEM_MUJS)/yes/g' -i Makethird
+	sed 's/$(USE_SYSTEM_GLUT)/no/g' -i Makethird Makefile
 	make release
 }
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-
 	make install DESTDIR="${pkgdir}" prefix=/usr
 	mv "${pkgdir}"/usr/bin/mupdf{-gl,}
-	rm "${pkgdir}"/usr/bin/mupdf-x11*
-
-	install -Dm644 ../desktop "${pkgdir}"/usr/share/applications/mupdf.desktop
-	find "${pkgdir}"/usr/share -type f -exec chmod 0644 {} +
-
-	# prevent the static-linking disease from spreading...
 	rm -fr "${pkgdir}"/usr/{include,lib}
+	find "${pkgdir}"/usr/share -type f -exec chmod 0644 {} +
+	install -Dm644 ../desktop "${pkgdir}"/usr/share/applications/mupdf.desktop
 }
