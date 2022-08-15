@@ -33,7 +33,7 @@ post_install(){
     >>> 3) Run this command to add the printer to CUPS:
     >>>     /usr/bin/lpadmin -p <name> -m <corresponding ppd> -v <device path in lpinfo -v> -E
     >>> eg.
-    >>>     /usr/bin/lpadmin -p 'LBP2900' -m CANON-LBP2900-3000.ppd -v 'usb://Canon/LBP2900?serial=0000C3J0LGaQ' -E
+    >>>     /usr/bin/lpadmin -p 'LBP2900' -m CanonLBP-2900-3000.ppd -v 'usb://Canon/LBP2900?serial=0000C3J0LGaQ' -E
     >>> (you can find ppds in the /usr/share/cups/model/ directory)
     >>> 4) Optionally, you can set the newly-installed printer as default with this command:
     >>>     lpadmin -d 'LBP3000'
