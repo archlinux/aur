@@ -1,7 +1,7 @@
 pkgbase = cubicsdr
 	pkgdesc = Cross-Platform Software-Defined Radio Application
-	pkgver = 0.2.5
-	pkgrel = 2
+	pkgver = 0.2.7
+	pkgrel = 1
 	url = https://github.com/cjcliffe/CubicSDR
 	install = cubicsdr.install
 	arch = i686
@@ -13,10 +13,10 @@ pkgbase = cubicsdr
 	makedepends = cmake
 	makedepends = libicns
 	depends = libpulse
-	depends = wxgtk2-dev
-	depends = wxgtk-common-dev
+	depends = wxwidgets-gtk3
+	depends = wxwidgets-common
 	depends = soapysdr
-	depends = liquid-dsp
+	depends = liquid-dsp-git
 	optdepends = fftw: FFTW support
 	optdepends = soapyrtlsdr: support for RTL-SDR (RTL2832U) dongles
 	optdepends = soapyairspy: support for Airspy R2 and Airspy Mini
@@ -27,8 +27,7 @@ pkgbase = cubicsdr
 	optdepends = soapyplutosdr: support for PlutoSDR
 	optdepends = soapyremote: use any SoapySDR device remotely over network
 	optdepends = hamlib: hamlib support
-	source = cubicsdr-0.2.5.tar.gz::https://github.com/cjcliffe/CubicSDR/archive/0.2.5.tar.gz
-	sha256sums = 5cb44c110fcbbb70a468b7fa402cf35f84d8901b3dd42d471a90ac3f5db00f4d
+	source = cubicsdr-0.2.7.tar.gz::https://github.com/cjcliffe/CubicSDR/archive/0.2.7.tar.gz
+	sha256sums = 790f851e08f1068081a8593dfd4a149c7414e7d70c1f5cafd287331df493b811
 
 pkgname = cubicsdr
-

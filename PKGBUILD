@@ -6,13 +6,13 @@
 # Contributor: Tom Swartz <tom@tswartz.net>
 
 pkgname=cubicsdr
-pkgver=0.2.5
-pkgrel=2
+pkgver=0.2.7
+pkgrel=1
 pkgdesc="Cross-Platform Software-Defined Radio Application"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://github.com/cjcliffe/CubicSDR"
 license=('GPL')
-depends=('libpulse' 'wxgtk2-dev' 'wxgtk-common-dev' 'soapysdr' 'liquid-dsp')
+depends=('libpulse' 'wxwidgets-gtk3' 'wxwidgets-common' 'soapysdr' 'liquid-dsp-git')
 optdepends=('fftw: FFTW support'
             'soapyrtlsdr: support for RTL-SDR (RTL2832U) dongles'
             'soapyairspy: support for Airspy R2 and Airspy Mini'
@@ -26,7 +26,7 @@ optdepends=('fftw: FFTW support'
 makedepends=('git' 'cmake' 'libicns')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cjcliffe/CubicSDR/archive/${pkgver}.tar.gz")
-sha256sums=('5cb44c110fcbbb70a468b7fa402cf35f84d8901b3dd42d471a90ac3f5db00f4d')
+sha256sums=('790f851e08f1068081a8593dfd4a149c7414e7d70c1f5cafd287331df493b811')
 
 build() {
   cd "CubicSDR-${pkgver}"
