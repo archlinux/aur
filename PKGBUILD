@@ -10,7 +10,7 @@
 
 pkgbase=networkmanager-iwd
 pkgname=(networkmanager-iwd libnm-iwd nm-iwd-cloud-setup)
-pkgver=1.38.2
+pkgver=1.38.4
 pkgrel=1
 pkgdesc="Network connection manager and user applications; using iwd backend instead of wpa_supplicant"
 url="https://networkmanager.dev/"
@@ -24,7 +24,7 @@ makedepends=(intltool dhclient gobject-introspection gtk-doc
              openresolv libpsl audit meson)
 checkdepends=(libx11 python-dbus)
 options=(debug)
-_commit=abfd2d6ea729926bff0ddafa1367a54f6d6f4230  # tags/1.38.2^0
+_commit=89f351d4534fd9d88dc07c7d23bb254145a93178  # tags/1.38.4^0
 source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=$_commit"
         "$pkgbase.install")
 sha256sums=('SKIP' '6f77a626ec3fd7583beb45ffcac236cdc1fe2b5e5b8ccc5d90983312a265e818')
@@ -149,6 +149,9 @@ END
 
   _pick cloud usr/lib/**/*nm-cloud-setup*
   _pick cloud usr/share/man/*/nm-cloud-setup*
+
+  # Not actually packaged (https://bugs.archlinux.org/task/69138)
+  _pick ovs usr/lib/systemd/system/NetworkManager.service.d/NetworkManager-ovs.conf
 
   # Restore empty dir
   install -d usr/lib/NetworkManager/dispatcher.d/no-wait.d
