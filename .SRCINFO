@@ -1,6 +1,6 @@
 pkgbase = qgis-ltr
 	pkgdesc = Geographic Information System (GIS); Long Term Release
-	pkgver = 3.22.9
+	pkgver = 3.22.10
 	pkgrel = 1
 	url = https://qgis.org/
 	arch = x86_64
@@ -40,11 +40,11 @@ pkgbase = qgis-ltr
 	depends = spatialindex
 	optdepends = fcgi: Map server
 	optdepends = gpsbabel: GPS Tools plugin
-	provides = qgis=3.22.9
+	provides = qgis=3.22.10
 	conflicts = qgis
-	source = https://download.qgis.org/downloads/qgis-3.22.9.tar.bz2
+	source = https://download.qgis.org/downloads/qgis-3.22.10.tar.bz2
 	source = qgstyle-infinite-loop.patch::https://github.com/qgis/QGIS/commit/19823b76.patch
-	sha256sums = 2dd2807de179dc5b6f89a86ac31b4b7b11fb015dcce5531fd01decefa24cc443
+	sha256sums = 4f8da41adf38d993149cf6f10f986fc47e6d3fc87bf68d54ac3bc0ff46303c45
 	sha256sums = c5bc388da987c7c21451b3f0f74220c8bd82cfba04657ff599d1896e6ae4b304
 
 pkgname = qgis-ltr
