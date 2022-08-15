@@ -4,7 +4,7 @@
 
 pkgname=treefrog-framework
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="High-speed C++ MVC Framework for Web Application"
 arch=(x86_64)
 url="https://github.com/${pkgname/-/}/${pkgname}"
@@ -22,9 +22,9 @@ prepare() {
 
   sed -i 's|LIBS += ../3rdparty/lz4/lib/liblz4.a|LIBS += -llz4|' src/corelib.pro
 
-  sed -i 's|INCLUDEPATH += ../3rdparty/mongo-driver/src/mongoc ../3rdparty/mongo-driver/src/libbson/src/bson|INCLUDEPATH += /usr/include/libmongoc-1.0 /usr/include/libbson-1.0|' src/corelib.pro
+  sed -i 's|INCLUDEPATH += ../3rdparty/mongo-driver/src/libmongoc/src/mongoc ../3rdparty/mongo-driver/src/libbson/src|INCLUDEPATH += /usr/include/libmongoc-1.0 /usr/include/libbson-1.0|' src/corelib.pro
 
-  sed -i 's|LIBS += ../3rdparty/mongo-driver/libmongoc-static-1.0.a ../3rdparty/mongo-driver/src/libbson/libbson-static-1.0.a|LIBS += -lmongoc-1.0 -lbson-1.0|' src/corelib.pro
+  sed -i 's|LIBS += ../3rdparty/mongo-driver/src/libmongoc/libmongoc-static-1.0.a ../3rdparty/mongo-driver/src/libbson/libbson-static-1.0.a|LIBS += -lmongoc-1.0 -lbson-1.0|' src/corelib.pro
 
   sed -i 's|exit $RET||' configure
 }

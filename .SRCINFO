@@ -1,7 +1,7 @@
 pkgbase = treefrog-framework
 	pkgdesc = High-speed C++ MVC Framework for Web Application
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/treefrogframework/treefrog-framework
 	arch = x86_64
 	license = custom:BSD-3-clause
