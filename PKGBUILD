@@ -8,7 +8,8 @@ arch=('x86_64' 'aarch64')
 # FIXME rename remote repo when new one created
 url="https://gitlab.com/Schmiddiii/signal-notify"
 license=('AGPL3')
-optdepends=('waked: for scheduled wake-ups')
+optdepends=('waked: for scheduled wake-ups'
+           'feedbackd: for vibrating notifications')
 makedepends=('cargo')
 provides=('signal-notify')
 # FIXME rename remote repo when new one created
