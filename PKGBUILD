@@ -2,7 +2,7 @@
 
 pkgname=kops-git
 pkgver=1.25.0.alpha.2.r85.g429ebecdca
-pkgrel=1
+pkgrel=2
 pkgdesc="Kubernetes Operations (kops) - Production Grade K8s Installation, Upgrades, and Management. (git version)"
 arch=('x86_64')
 url="https://github.com/kubernetes/kops"
@@ -21,7 +21,7 @@ pkgver() {
 prepare(){
   export GOPATH=$srcdir
   mkdir -p "$GOPATH/src/k8s.io"
-  mv $pkgname-$pkgver $GOPATH/src/k8s.io/kops
+  mv $pkgname $GOPATH/src/k8s.io/kops
 }
 
 build() {
