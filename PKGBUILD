@@ -1,5 +1,6 @@
 # Maintainer: Christian Heusel <christian@heusel.eu>
 # Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
+# Contributor: Christoph Vigano <mail at cvigano dot de>
 pkgname='molly-guard'
 pkgver=0.7.2
 pkgrel=1
