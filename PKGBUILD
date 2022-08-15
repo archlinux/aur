@@ -10,7 +10,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium-xdg-bin
-pkgver=103.0.5060.53
+pkgver=104.0.5112.79
 pkgrel=1
 _launcher_ver=8
 pkgdesc="A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory (binary version)"
@@ -28,7 +28,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://github.com/noahvogt/${pkgname%-*}-aur/releases/download/$pkgver-$pkgrel/$pkgname-$pkgver.tar.gz
         index.html)
-sha256sums=('905440a8769b1f99be115afbf2b3fc26432fbe7f04ecb82bc5db40aef4c6cc85'
+sha256sums=('8155c9c5bc23d2db090c9b45f812487d3293847ab173bf157aba89a97e797b1d'
             'a4cdd2b86f32d5302c2792be841ff40d982b19bb58a4e63df9d77f4c706b8665')
 provides=('chromium')
 conflicts=('chromium')
