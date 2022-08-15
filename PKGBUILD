@@ -1,7 +1,7 @@
 # Maintainer: Jason Edson <jaysonedson@gmail.com>
 
 pkgname=meld-git
-pkgver=3.21.1.16.g7d285ecc
+pkgver=3.21.3.4.g68f5dd8e
 pkgrel=1
 pkgdesc='Visual diff and merge tool'
 url='http://meldmerge.org/'
@@ -43,4 +43,5 @@ build() {
 
 package() {
   meson install -C build --destdir "${pkgdir}"
+  chmod +x "${pkgdir}/usr/bin/meld"
 }
