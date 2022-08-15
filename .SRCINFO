@@ -1,6 +1,6 @@
 pkgbase = ironbar-git
 	pkgdesc = Customisable wlroots/sway bar written in rust
-	pkgver = v0.1.0.r0.gc3e354f
+	pkgver = v0.3.0.r0.917838c
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = ironbar-git
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
+	depends = gtk3
+	depends = gtk-layer-shell
 	source = git+https://github.com/JakeStanger/ironbar
 	md5sums = SKIP
 
