@@ -1,13 +1,12 @@
 pkgbase = pretty-exec
 	pkgdesc = Print command and execute it
-	pkgver = 0.0.37
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/KSXGitHub/pretty-exec
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = pretty-exec-0.0.37.tar.gz::https://github.com/KSXGitHub/pretty-exec/archive/0.0.37.tar.gz
+	source = pretty-exec-0.1.0.tar.gz::https://github.com/KSXGitHub/pretty-exec/archive/0.1.0.tar.gz
 	sha1sums = SKIP
 
 pkgname = pretty-exec
-
