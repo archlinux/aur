@@ -70,7 +70,7 @@ do
     fi
     initramfs="initramfs-${kernel}.img"
 
-    if [ ! -s "${initramfs}" ];then
+    if [ ! -s "/boot/${initramfs}" ];then
         echo -e "\033[31m Error: ${initramfs} does not exist or empty. \033[0m" >&2
         exit -4
     fi
