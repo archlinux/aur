@@ -1,7 +1,7 @@
 pkgbase = plymouth-nosystemd
 	pkgdesc = A graphical boot splash screen with kernel mode-setting support for non-systemd setups
 	pkgver = 22.02.122
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.freedesktop.org/wiki/Software/Plymouth
 	arch = i686
 	arch = x86_64

@@ -1,13 +1,14 @@
-# Maintainer: TankMissile <alecfeldman@disroot.org>
+# Maintainer: oscareczek <at gmail dot com>
+# Contributor: TankMissile <alecfeldman@disroot.org>
 # Contributor: Chris Cromer <chris@cromer.cl>
 # Contributor: Sebastian Lau <lauseb644@gmail.com>
-# Contributor Damian01w <damian01w@gmail.com>
+# Contributor: Damian01w <damian01w@gmail.com>
 # Contributor: Padfoot <padfoot@exemail.com.au>
 
 _pkgname=plymouth
 pkgname=${_pkgname}-nosystemd
 pkgver=22.02.122
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical boot splash screen with kernel mode-setting support for non-systemd setups"
 url="http://www.freedesktop.org/wiki/Software/Plymouth"
 arch=('i686' 'x86_64')
@@ -50,6 +51,8 @@ prepare() {
 # systemd
 # patch -p1 -i $srcdir/plymouth-quit.service.in.patch
   patch -p1 -i $srcdir/plymouthd.conf.patch
+# comment on plymouth from 2022-08-15T12:25
+  sed -i '/linux\/fs.h/d' src/libply/ply-utils.c
 }
 
 build() {
