@@ -1,24 +1,25 @@
-# Maintainer: David Rodriguez <dissonant.tech@gmail.com>
+# Maintainer: João Figueiredo <islandc0der@chaotic.cx>
+# Contributor: Pekka Helenius <fincer89 [at] hotmail [dot] com>
+# Contributor: David Rodriguez <dissonant.tech@gmail.com>
 
 pkgname=pam_usb
-pkgver=0.5.0
-pkgrel=5
-pkgdesc="PAM modules that enables either two-factor or password-less authentication using an USB storage device (such as an USB flash memory stick)"
-url="https://github.com/aluzzardi/pam_usb"
-license=("GPL")
-depends=(libxml2 pam pmount udisks dbus-python python2-gobject2)
-arch=('i686' 'x86_64')
-backup=('etc/pamusb.conf')
-md5sums=('df8404aeb625eca1d3cad7a67d35f225')
-source=(https://github.com/aluzzardi/$pkgname/archive/$pkgver.tar.gz)
+pkgver=0.8.2
+pkgrel=1
+pkgdesc='Hardware authentication for Linux using ordinary flash media (USB & Card based).'
+arch=($CARCH)
+url='https://github.com/mcdope/pam_usb'
+license=(GPLv2)
+depends=(pam dbus python python-dbus python-lxml python-gobject udisks2)
+options=(!emptydirs)
+backup=("etc/security/pam_usb.conf")
+source=("$url/releases/tag/$pkgver")
+sha256sums=('8c24c792376d99d150e29e5bca9ecfe43f0432573a6c275d898fb7ea0ac27f16')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
-    make LIBS="`pkg-config --libs libxml-2.0` `pkg-config --libs dbus-1` -lpam" || return 1
+  make -C $pkgname
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    make DESTDIR="$pkgdir" PAM_USB_DEST="$pkgdir/usr/lib/security" install
-    sed -i 1s/python/python2/ "$pkgdir/usr/bin/pamusb-"{agent,conf}
+  make -C $pkgname DESTDIR="$pkgdir" PAM_USB_DEST="$pkgdir/usr/lib/security" install
+  install -Dt $pkgdir/usr/lib/systemd/system -m0644 $pkgname/arch_linux/pamusb-agent.service
 }

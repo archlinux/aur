@@ -1,20 +1,20 @@
 pkgbase = pam_usb
-	pkgdesc = PAM modules that enables either two-factor or password-less authentication using an USB storage device (such as an USB flash memory stick)
-	pkgver = 0.5.0
-	pkgrel = 4
-	url = https://github.com/aluzzardi/pam_usb
-	arch = i686
+	pkgdesc = Hardware authentication for Linux using ordinary flash media (USB & Card based).
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/mcdope/pam_usb
 	arch = x86_64
-	license = GPL
-	depends = libxml2
+	license = GPLv2
 	depends = pam
-	depends = pmount
-	depends = udisks
-	depends = dbus-python
-	depends = python2-gobject2
-	backup = etc/pamusb.conf
-	source = https://github.com/aluzzardi/pam_usb/archive/0.5.0.tar.gz
-	md5sums = df8404aeb625eca1d3cad7a67d35f225
+	depends = dbus
+	depends = python
+	depends = python-dbus
+	depends = python-lxml
+	depends = python-gobject
+	depends = udisks2
+	options = !emptydirs
+	backup = etc/security/pam_usb.conf
+	source = https://github.com/mcdope/pam_usb/releases/tag/0.8.2
+	sha256sums = 8c24c792376d99d150e29e5bca9ecfe43f0432573a6c275d898fb7ea0ac27f16
 
 pkgname = pam_usb
-
