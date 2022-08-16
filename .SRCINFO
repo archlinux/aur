@@ -1,0 +1,14 @@
+pkgbase = fxz-git
+	pkgdesc = FXZ Utils is a fork of XZ Utils. It adds a multi-threaded radix match finder and optimized encode
+	pkgver = 1.1.0alpha.r94.gf12d7eb
+	pkgrel = 1
+	url = https://github.com/conor42/fxz
+	arch = x86_64
+	license = GPL
+	license = custom:xz
+	makedepends = git
+	makedepends = autoconf
+	source = git+https://github.com/conor42/fxz#branch=master
+	sha256sums = SKIP
+
+pkgname = fxz-git
