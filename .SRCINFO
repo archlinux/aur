@@ -1,7 +1,7 @@
 pkgbase = r-desolve
 	pkgdesc = Solvers for Initial Value Problems of Differential Equations ('ODE', 'DAE', 'DDE')
 	pkgver = 1.33
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=deSolve
 	arch = x86_64
 	license = GPL
