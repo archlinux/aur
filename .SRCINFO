@@ -1,0 +1,22 @@
+pkgbase = wf-extra-protos-git
+	pkgdesc = Extra wayland protocol support for wayfire, featuring wf-menu
+	pkgver = r3.8df1337
+	pkgrel = 1
+	url = https://github.com/soreau/wf-extra-protos
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkg-config
+	makedepends = git
+	makedepends = cmake
+	makedepends = wayland-protocols
+	makedepends = glm
+	depends = wayfire
+	depends = gtkmm-4.0
+	provides = wf-extra-protos
+	conflicts = wf-extra-protos
+	source = git+https://github.com/soreau/wf-extra-protos.git
+	sha256sums = SKIP
+
+pkgname = wf-extra-protos-git
