@@ -28,6 +28,6 @@ post_install() {
 }
 
 post_upgrade() {
-    systemctl --global enable libinput-gestures
+    systemctl  enable touchegg
     add_group
 }
