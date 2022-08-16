@@ -56,7 +56,7 @@ build() {
 		-GNinja
 
 	msg "Building the project"
-	ninja -C build -j12 # only increase if you have a lot of ram
+	ninja -C build -j4 # only increase if you have a lot of ram
 }
 
 package() {
