@@ -29,7 +29,6 @@ replaces=('manjaro-input')
 optdepends=('piper: GTK application to configure gaming mice'
             'antimicrox: GUI for mapping keyboard keys to controller'
             'plasma-thunderbolt: Plasma integration for managing Thunderbolt devices'
-            'libinput-gestures: Gesture support for non-Gnome DE'
             'touche: The desktop application to configure Touchegg')
 
 install=$pkgname.install

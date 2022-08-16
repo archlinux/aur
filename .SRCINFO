@@ -25,7 +25,6 @@ pkgbase = input-devices-support
 	optdepends = piper: GTK application to configure gaming mice
 	optdepends = antimicrox: GUI for mapping keyboard keys to controller
 	optdepends = plasma-thunderbolt: Plasma integration for managing Thunderbolt devices
-	optdepends = libinput-gestures: Gesture support for non-Gnome DE
 	optdepends = touche: The desktop application to configure Touchegg
 	conflicts = libinput-gestures
 	replaces = manjaro-input
