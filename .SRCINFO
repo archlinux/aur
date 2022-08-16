@@ -1,0 +1,18 @@
+pkgbase = haskell-safe-coloured-text
+	pkgdesc = Safely output coloured text
+	pkgver = 0.2.0.1
+	pkgrel = 1
+	url = https://github.com/NorfairKing/safe-coloured-text#readme
+	arch = x86_64
+	license = MIT
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-validity
+	depends = haskell-validity-bytestring
+	depends = haskell-validity-text
+	source = https://hackage.haskell.org/packages/archive/safe-coloured-text/0.2.0.1/safe-coloured-text-0.2.0.1.tar.gz
+	source = Setup.hs
+	sha256sums = b1604a221ee28e672a5b876a9f368ebbd65d56cc93afeb486083857d7c9b1759
+	sha256sums = f2a37c4a254ff8eb780133ca568ae5f4f4dcdee5219982154e6faef749b8327c
+
+pkgname = haskell-safe-coloured-text
