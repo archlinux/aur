@@ -1,6 +1,6 @@
 pkgbase = stm32cubeide
 	pkgdesc = Integrated Development Environment for STM32
-	pkgver = 1.10.0
+	pkgver = 1.10.1
 	pkgrel = 1
 	url = https://www.st.com/en/development-tools/stm32cubeide.html
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = stm32cubeide
 	optdepends = jlink-software-and-documentation
 	optdepends = stlink
 	options = !strip
-	source = local://en.st-stm32cubeide_1.10.0_12671_20220627_1643_amd64.sh.zip
+	source = local://en.st-stm32cubeide_1.10.1_12716_20220707_0928_amd64.sh.zip
 	source = 99-jlink.rules.patch
 	source = https://www.st.com/resource/en/license_agreement/dm00218346.pdf
-	sha256sums = 272f8968c2cba5afbcb54cae6277c38afade49657a5cef61b2e7ab01d24d38a3
+	sha256sums = d657b57a837ca523ac43f03e65ce9cceff2a7f914e49a33a75ce4471f600e93b
 	sha256sums = 0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3
 	sha256sums = SKIP
 
