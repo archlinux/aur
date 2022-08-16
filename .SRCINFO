@@ -8,6 +8,7 @@ pkgbase = fxz-git
 	license = custom:xz
 	makedepends = git
 	makedepends = autoconf
+	depends = sh
 	source = git+https://github.com/conor42/fxz#branch=master
 	sha256sums = SKIP
 
