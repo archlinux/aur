@@ -1,7 +1,7 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=softmaker-office-2021-bin
-pkgver=2021.1046
+pkgver=2021.1050
 pkgrel=1
 pkgdesc="Proprietary office suite; word processing, spreadsheets, presentations"
 url="https://www.softmaker.com"
@@ -26,7 +26,7 @@ md5sums=('977caa68fee4db85d1c6c565fdfa4256'
          'e1ddaf11756afede521fad32ab5207cd'
          '35c13675d6e89033c1897ca2457c70c2'
          '66f9488ab5e2b93f82534b1d8e7b20d3')
-md5sums_x86_64=('f27b24f0b003e2f5dc7b014ba4eb937b')
+md5sums_x86_64=('c9e80a9075d21c8a6734b8bb857c379e')
 sha512sums=('7c8af74aad1b36412e24b0d8f4d3ead3ae2dafa8af832795e202cdfb2536e38fed905da8894d85dbe9b8d3aa2991974c992bbdd38b7dbc68cea10b7e6bffdfcb'
             'fecf6db647218fe8b2c0288675db225ca992e7e245a06a9d442a3674418f94730a782baeddf9eb482447432bd9543ba60ddaa471a80b56741b4a55c4edac3dc0'
             'b0a1a665a7affae304a34b453dac9b4a8ef2ac17b64e8fe701900f954b494daf0c75a7e62cc53e1b70becc5a3320e372c208787655965c2244d7824a939b5d3f'
@@ -35,7 +35,7 @@ sha512sums=('7c8af74aad1b36412e24b0d8f4d3ead3ae2dafa8af832795e202cdfb2536e38fed9
             '1677ab6b31683f55bc0b144b787968729048bc4cd66e3e4e334c935488c64bab6baa92258d90ef0dac9fc2b7ec3ae5dd0cf451c63954b07f2d885c4e15937dc4'
             '334d90369b026ef773b7c778ca2fb09e38cae5cb64be0f9bd200010f149364c742f9ac991d597df0a71ee14c082c2fd2fa327df2ef85c6e4693c7e5da8cb14c1'
             '41fd130546ed40b4241e2e97187286742d3d0e033c16448e6d644e27c763196196e839f663d462a00a01f94e2becba4700b487b668a4fd356f6b91bacc29ab7a')
-sha512sums_x86_64=('bdf534200d058341f2f0387078a550b305a2fa5bd9711823d388fd4050df6d92489aa0f13ce6bf939239b92aa71a3f0e7be1d333fec960e09077ca74b1735ebf')
+sha512sums_x86_64=('b090a59a9fefc8a1f61e641c1856fb482f6be6853cf2b227d90d560236abd71dba9e1e283c25a05459f58fac78a5df4add1766fcc93c3b18812277f4433e7cef')
 
 package() {
   install -dm755 "${pkgdir}/usr/share/office2021"
