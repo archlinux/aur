@@ -1,0 +1,16 @@
+pkgbase = haskell-validity-text
+	pkgdesc = Validity instances for text
+	pkgver = 0.3.1.3
+	pkgrel = 1
+	url = https://github.com/NorfairKing/validity#readme
+	arch = x86_64
+	license = MIT
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-validity
+	source = https://hackage.haskell.org/packages/archive/validity-text/0.3.1.3/validity-text-0.3.1.3.tar.gz
+	source = Setup.hs
+	sha256sums = 7aee83b507181886d824a0c45b835888494874d7d22f1aa5859062354a93fd45
+	sha256sums = f2a37c4a254ff8eb780133ca568ae5f4f4dcdee5219982154e6faef749b8327c
+
+pkgname = haskell-validity-text
