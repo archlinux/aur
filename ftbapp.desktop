@@ -1,7 +1,0 @@
-#!/usr/bin/env xdg-open
-[Desktop Entry]
-Type=Application
-Name=FTB Desktop App
-Exec=/usr/bin/FTBApp
-Icon=/opt/FTBA/.install4j/FTBApp.png
-Categories=Game;
