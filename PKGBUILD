@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="9.4.362.0"
+pkgver="9.4.363.0"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -20,7 +20,7 @@ _redactpatterns="$_commonfiles/RedactPatterns"
 _tesseract="$_commonfiles/Tesseract"
 
 source=("$pkgname-$pkgver.msi::$_downloadsource/$_x64file")
-md5sums=('43537cc3edf20b9a131cb040e930e147')
+md5sums=('1017fb9d91f58d4ea80aa8e2e77004ff')
 
 prepare()
 {
@@ -651,6 +651,7 @@ package()
  install -Dm644 "$srcdir/FID_U3D_uk_UA" "$pkgdir${_installdir}/$pkgname/${_languages}/U3DPlugin.uk-UA.xcl"
  install -Dm644 "$srcdir/FID_U3D_zh_CN" "$pkgdir${_installdir}/$pkgname/${_languages}/U3DPlugin.zh-CN.xcl"
  install -Dm644 "$srcdir/FID_U3D_zh_TW" "$pkgdir${_installdir}/$pkgname/${_languages}/U3DPlugin.zh-TW.xcl"
+ install -Dm644 "$srcdir/FID_REDACT_PAT_cs_CZ" "$pkgdir${_installdir}/$pkgname/${_redactpatterns}/cs_CZ.json"
  install -Dm644 "$srcdir/FID_REDACT_PAT_en_CA" "$pkgdir${_installdir}/$pkgname/${_redactpatterns}/en_CA.json"
  install -Dm644 "$srcdir/FID_REDACT_PAT_en_GB" "$pkgdir${_installdir}/$pkgname/${_redactpatterns}/en_GB.json"
  install -Dm644 "$srcdir/FID_REDACT_PAT_jp_JP" "$pkgdir${_installdir}/$pkgname/${_redactpatterns}/jp_JP.json"
