@@ -1,14 +1,14 @@
 pkgbase = r-ontologyindex
 	pkgdesc = Functions for Reading Ontologies into R
-	pkgver = 2.7
-	pkgrel = 4
+	pkgver = 2.9
+	pkgrel = 1
 	url = https://cran.r-project.org/package=ontologyIndex
 	arch = any
 	license = GPL
 	depends = r
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/ontologyIndex_2.7.tar.gz
-	sha256sums = 33f4918cafb983635f9f831553daf15e10103dc375475e170f104a8eaf0e7048
+	source = https://cran.r-project.org/src/contrib/ontologyIndex_2.9.tar.gz
+	sha256sums = ba1d22ecc206364b92e8ec21d0621f0253c5cebd03f8407abfd9577abe6a490f
 
 pkgname = r-ontologyindex
