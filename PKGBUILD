@@ -1,7 +1,7 @@
 # Maintainer: ccat3z <c0ldcat3z@gmail.com>
 
 pkgname=miktex-git
-pkgver=22.7.r0.07c2f1810
+pkgver=22.8.r0.d6646aba6
 pkgrel=1
 pkgdesc="a distribution of the TeX/LaTeX typesetting system"
 arch=('x86_64')
@@ -27,7 +27,7 @@ prepare() {
     cd "$srcdir/${pkgname%-git}"	
     [ -d build ] || mkdir build
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/opt/miktex -DWITH_UI_QT=ON -DUSE_SYSTEM_POPPLER=TRUE -DUSE_SYSTEM_POPPLER_QT5=TRUE ..
+    cmake -DCMAKE_INSTALL_PREFIX=/opt/miktex -DWITH_UI_QT=ON -DUSE_SYSTEM_POPPLER=TRUE -DUSE_SYSTEM_POPPLER_QT=TRUE ..
 }
 
 build() {
