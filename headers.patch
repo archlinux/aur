@@ -1,0 +1,36 @@
+From 31a1d216816205c9c9a3a46eb2e04b5599336178 Mon Sep 17 00:00:00 2001
+From: HurricanePootis <hurricanepootis@protonmail.com>
+Date: Fri, 26 Feb 2021 10:21:25 -0600
+Subject: [PATCH] Update include path to point to the arch vtflib-git shits
+
+---
+ ValveTextureFile.cpp | 2 +-
+ ValveTextureFile.h   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/ValveTextureFile.cpp b/ValveTextureFile.cpp
+index 57a9955..d6262b1 100644
+--- a/ValveTextureFile.cpp
++++ b/ValveTextureFile.cpp
+@@ -18,7 +18,7 @@
+ 
+ #include "ValveTextureFile.h"
+ 
+-#include <VTFLib.h>
++#include <VTFLib13/VTFLib.h>
+ #include <QImage>
+ #include <QVariant>
+ 
+diff --git a/ValveTextureFile.h b/ValveTextureFile.h
+index 2b628a7..4f5782b 100644
+--- a/ValveTextureFile.h
++++ b/ValveTextureFile.h
+@@ -20,7 +20,7 @@
+ #define QVTF_LOAD_VALVE_TEXTURE_FILE_H
+ 
+ #include <QImageIOPlugin>
+-#include <VTFFile.h>
++#include <VTFLib13/VTFFile.h>
+ 
+ class ValveTextureFilePlugin : public QImageIOPlugin {
+     Q_OBJECT

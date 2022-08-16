@@ -1,0 +1,22 @@
+From bd8fd969996fe99936faf3f321e2826b8d2e1781 Mon Sep 17 00:00:00 2001
+From: HurricanePootis <hurricanepootis@protonmail.com>
+Date: Fri, 26 Feb 2021 10:56:55 -0600
+Subject: [PATCH] Update CmakeLists.txt
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7dd1c17..f4ea686 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -28,7 +28,7 @@ find_package(PkgConfig REQUIRED)
+ 
+ find_program(XDG_MIME_EXECUTABLE xdg-mime) # optional, for MIME type installation
+ 
+-pkg_check_modules(VTFLIB REQUIRED VTFLib)
++pkg_check_modules(VTFLIB REQUIRED VTFLib13)
+ 
+ # ---- compiler flags ---------------------------------------------------------
+ if(MSVC)
