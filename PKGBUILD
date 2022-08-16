@@ -5,7 +5,7 @@ pkgname=python-${_base}
 pkgdesc="Algebraic Multigrid Solvers in Python"
 _gitcommit=1fd1ef6915969ebd24cf16cf6b9532644e0e0e23
 pkgver=4.2.3
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://github.com/${_base}/${_base}"
 license=(MIT)
@@ -18,13 +18,12 @@ sha512sums=('SKIP')
 # https://bbs.archlinux.org/viewtopic.php?id=249188
 build() {
   cd ${_base}-${pkgver}
-  export PYTHONHASHSEED=0
   python setup.py build
 }
 
 check() {
-  local _pyversion=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
-  PYTHONPATH="${srcdir}/${_base}-${pkgver}/build/lib.linux-${CARCH}-${_pyversion}:${PYTHONPATH}" python -c "import pyamg; pyamg.test()"
+  local _pyversion=$(python -c "import sys; print(f'{sys.version_info.major}{sys.version_info.minor}')")
+  PYTHONPATH="${srcdir}/${_base}-${pkgver}/build/lib.linux-${CARCH}-cpython-${_pyversion}:${PYTHONPATH}" python -c "import pyamg; pyamg.test()"
 }
 
 package() {
