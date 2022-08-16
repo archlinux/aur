@@ -3,7 +3,7 @@
 
 pkgname=dotter-rs-git
 _pkgname=dotter
-pkgver=0.12.13.r0.g957f382
+pkgver=0.12.14.r0.g29b3cf2
 pkgrel=1
 pkgdesc="A dotfile manager and templater written in Rust (git)"
 arch=('x86_64')
@@ -24,11 +24,16 @@ pkgver() {
 prepare() {
   cd "$_pkgname"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  mkdir completions
 }
 
 build() {
   cd "$_pkgname"
   cargo build --release --frozen
+  local _completion="target/release/$_pkgname gen-completions --shell"
+  $_completion bash > "completions/$_pkgname"
+  $_completion fish > "completions/$_pkgname.fish"
+  $_completion zsh  > "completions/_$_pkgname"
 }
 
 check() {
@@ -40,4 +45,7 @@ package() {
   cd "$_pkgname"
   install -Dm 755 "target/release/$_pkgname" -t "$pkgdir/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 "completions/$_pkgname" -t "$pkgdir/usr/share/bash-completion/completions/"
+  install -Dm 644 "completions/$_pkgname.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+  install -Dm 644 "completions/_$_pkgname" -t "$pkgdir/usr/share/zsh/site-functions/"
 }
