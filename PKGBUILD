@@ -2,7 +2,7 @@
 # Contributor: alphRomeo323 <alpharomeo323dev at protonmail dot com>
 # Contributor: William Brown <glowinthedarkcia at horsefucker dot org>
 pkgname=ftba-electron
-pkgver=202207271710_0f9644f5fc_release
+pkgver=202208131844_e5790011d3_release
 pkgrel=1
 url="https://feed-the-beast.com/app"
 arch=(any)
@@ -10,7 +10,7 @@ pkgdesc="Offers many different styles of Minecraft modpacks to the community. (U
 source=("https://apps.modpacks.ch/FTBApp/release/${pkgver//_/-}/FTBA_linux_${pkgver//_/-}.deb"
         "ftb-app.desktop"
         "ftb-app")
-sha256sums=("ce87521fedcd0f6ede3f9408a44ac6fe48723d8a2c81105131c3ccdcb1217c32"
+sha256sums=("52b771025d09e327a55b26a86570e6cdc3c8428cdd8b0c93a9659b7405d9349f"
             "2b50da4dc2811b175e5602e91dfe18e981cba3e2e80deccb8f12b59776d8c530"
             "c4a3af22ae74b5398e257763d099e0345dccf37d9652d24557878e1b7053ca6d")
 license=("LGPL2.1")
@@ -22,10 +22,10 @@ provides=("ftba")
 conflicts=("ftba")
 
 package() {
-  tar -xzf "$srcdir/data.tar.gz"
+  tar -xzf data.tar.gz
 
-  jar="launcher-${pkgver//_/-}-all.jar"
-  install -Dm644 "$srcdir/opt/FTBA/$jar" "$pkgdir/usr/lib/ftb-app/$jar"
+  _jar="launcher-${pkgver//_/-}-all.jar"
+  install -Dm644 "$srcdir/opt/FTBA/$_jar" "$pkgdir/usr/lib/ftb-app/$_jar"
   install -Dm755 "$srcdir/opt/FTBA/FTBApp" "$pkgdir/usr/lib/ftb-app/ftb-app"
   cp -r "$srcdir/opt/FTBA/.install4j" "$pkgdir/usr/lib/ftb-app/.install4j"
   install -Dm755 "$srcdir/ftb-app" "$pkgdir/usr/lib/ftb-app/bin/ftb-app"

@@ -1,6 +1,6 @@
 pkgbase = ftba-electron
 	pkgdesc = Offers many different styles of Minecraft modpacks to the community. (Use system Electron)
-	pkgver = 202207271710_0f9644f5fc_release
+	pkgver = 202208131844_e5790011d3_release
 	pkgrel = 1
 	url = https://feed-the-beast.com/app
 	arch = any
@@ -11,10 +11,10 @@ pkgbase = ftba-electron
 	optdepends = java-runtime=8: For playing some version of Minecraft with system Java.
 	provides = ftba
 	conflicts = ftba
-	source = https://apps.modpacks.ch/FTBApp/release/202207271710-0f9644f5fc-release/FTBA_linux_202207271710-0f9644f5fc-release.deb
+	source = https://apps.modpacks.ch/FTBApp/release/202208131844-e5790011d3-release/FTBA_linux_202208131844-e5790011d3-release.deb
 	source = ftb-app.desktop
 	source = ftb-app
-	sha256sums = ce87521fedcd0f6ede3f9408a44ac6fe48723d8a2c81105131c3ccdcb1217c32
+	sha256sums = 52b771025d09e327a55b26a86570e6cdc3c8428cdd8b0c93a9659b7405d9349f
 	sha256sums = 2b50da4dc2811b175e5602e91dfe18e981cba3e2e80deccb8f12b59776d8c530
 	sha256sums = c4a3af22ae74b5398e257763d099e0345dccf37d9652d24557878e1b7053ca6d
 
