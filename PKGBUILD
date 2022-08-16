@@ -10,7 +10,7 @@ depends=(
   'dbus'
   'python'
   'python-appdirs'
-  'python-plover_stroke'
+  'python-plover_stroke>=1.1.0'
   'python-pyqt5'
   'python-pyserial'
   'python-rtf_tokenize'
