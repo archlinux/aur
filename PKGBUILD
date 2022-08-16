@@ -4,7 +4,7 @@
 
 pkgname=picgo-appimage
 _ver=2.3.1
-_beta=beta.3
+_beta=beta.5
 pkgver=${_ver}_${_beta}
 _release=${_ver}-${_beta}
 pkgrel=1
@@ -22,7 +22,7 @@ source=(
     "picgo.desktop"
 )
 sha256sums=(
-    '46d2bbaee419f97e582cd2e0f04ac1eb2e84f0750332ee41c19d86ef93560cfe'
+    'bacfb5b754050c97fd9d25b65db502c3a9243363818356ec0849aecd6d87110a'
     '9cf46faad2b6b431e2fb8cc9ece7c4f2638fc04bff1089679686b7c53c8fc31e'
     'SKIP'
     'SKIP'
