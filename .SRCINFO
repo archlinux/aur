@@ -1,12 +1,11 @@
 pkgbase = bluetooth-support
 	pkgdesc = Metapkg containing needed packages for using Bluetooth
 	pkgver = 1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://wiki.archlinux.org/index.php/Bluetooth
 	install = bluetooth-support.install
 	arch = any
 	license = GPL
-	depends = bluetooth-autoconnect
 	depends = bluez
 	depends = bluez-hid2hci
 	depends = bluez-libs
