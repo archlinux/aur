@@ -1,0 +1,14 @@
+pkgbase = pdmaner
+	pkgdesc = 一款多操作系统开源免费的桌面版关系数据库模型建模工具
+	pkgver = 4.1.4
+	pkgrel = 1
+	url = https://gitee.com/robergroup/pdmaner
+	arch = x86_64
+	license = MulanPubL-2.0
+	provides = pdmaner
+	source = git+https://gitee.com/robergroup/pdmaner.git
+	source = pdmaner.desktop
+	sha256sums = SKIP
+	sha256sums = 730f1cdeb08dcd306fa52bc2b8a1128e96edfb6d1eb6902d03df2057b0067ab8
+
+pkgname = pdmaner

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=PDManer
+Name[zh_CN]=PDManer元数建模
+Exec=pdmaner
+Terminal=false
+Type=Application
+Icon=/opt/pdmaner/logo.png
+StartupWMClass=pdmaner
+Comment=PDManer元数建模
+MimeType=x-scheme-handler/pdma;
+Categories=Utility;
