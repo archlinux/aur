@@ -3,7 +3,7 @@
 
 pkgname=dotter-rs
 _pkgname=dotter
-pkgver=0.12.13
+pkgver=0.12.14
 pkgrel=1
 pkgdesc="A dotfile manager and templater written in Rust"
 arch=('x86_64')
@@ -13,16 +13,21 @@ conflicts=("$_pkgname")
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('0c04c168e9876d8e61ba11030a045fbc7d65aaad149d911a5c0dd24c9e73ab4d8de9cf1ab01c9431f112560227eddf1c4f224528b50e60037ed15a1a35afde03')
+sha512sums=('b61f855bdb01257f4f3f72630918a4c2d0b94be0d0e4b47e81f6ecf2517413b7ebc44645f28f58f2fb11db22d2739ed2845ee324fdfd215e102c0301ccc7ee5a')
 
 prepare() {
   cd "$_pkgname-$pkgver"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  mkdir completions
 }
 
 build() {
   cd "$_pkgname-$pkgver"
   cargo build --release --frozen
+  local _completion="target/release/$_pkgname gen-completions --shell"
+  $_completion bash > "completions/$_pkgname"
+  $_completion fish > "completions/$_pkgname.fish"
+  $_completion zsh  > "completions/_$_pkgname"
 }
 
 check() {
@@ -34,4 +39,7 @@ package() {
   cd "$_pkgname-$pkgver"
   install -Dm 755 "target/release/$_pkgname" -t "$pkgdir/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 "completions/$_pkgname" -t "$pkgdir/usr/share/bash-completion/completions/"
+  install -Dm 644 "completions/$_pkgname.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+  install -Dm 644 "completions/_$_pkgname" -t "$pkgdir/usr/share/zsh/site-functions/"
 }
