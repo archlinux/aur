@@ -1,6 +1,6 @@
 pkgbase = argc-git
 	pkgdesc = A bash cli framework also a task runner
-	pkgver = 0.10.1.r1.gf2fac42
+	pkgver = 0.10.1.r16.gd09f305
 	pkgrel = 1
 	url = https://github.com/sigoden/argc
 	arch = x86_64

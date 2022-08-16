@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=argc-git
-pkgver=0.10.1.r1.gf2fac42
+pkgver=0.10.1.r16.gd09f305
 pkgrel=1
 pkgdesc="A bash cli framework also a task runner"
 arch=('x86_64')
