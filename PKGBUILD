@@ -1,7 +1,7 @@
 # Maintainer: Peter Kaplan <peter@pkap.de>
 pkgname=stacktile
-pkgver=0.1.1
-pkgrel=3
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Layout generator for the river Wayland compositor"
 arch=('x86_64')
 url="https://sr.ht/~leon_plickat/stacktile/"
