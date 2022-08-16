@@ -1,0 +1,20 @@
+pkgbase = cura-5
+	pkgdesc = Uncompressed version of Ultimaker Cura 5.1
+	pkgver = 5.1.0
+	pkgrel = 0
+	url = https://ultimaker.com/software/ultimaker-cura
+	arch = x86_64
+	license = LGPL3
+	depends = fuse2
+	depends = xdg-desktop-portal
+	depends = xdg-desktop-portal-gtk
+	provides = cura
+	options = !strip
+	source = cura-5.AppImage::https://github.com/Ultimaker/Cura/releases/download/5.1.0/Ultimaker-Cura-5.1.0-linux.AppImage
+	source = cura5.sh
+	source = cura.desktop.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = cura-5
