@@ -1,0 +1,17 @@
+pkgbase = nvim-treesitter-parsers-git
+	pkgdesc = All of the registered tree sitter parsers used by Neovim
+	pkgver = r595.a0251c98
+	pkgrel = 1
+	url = https://github.com/nvim-treesitter/nvim-treesitter
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = npm
+	depends = tree-sitter
+	depends = neovim
+	provides = nvim-treesitter-parsers
+	conflicts = nvim-treesitter-parsers
+	source = nvim-treesitter::git+https://github.com/nvim-treesitter/nvim-treesitter
+	sha256sums = SKIP
+
+pkgname = nvim-treesitter-parsers-git
