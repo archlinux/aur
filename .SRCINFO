@@ -1,7 +1,7 @@
 pkgbase = calculix-precice
 	pkgdesc = preCICE-adapter for the CSM code CalculiX
 	pkgver = 2.19.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/precice/calculix-adapter
 	arch = x86_64
 	license = GPL3
