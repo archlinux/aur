@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RNOmni
-_pkgver=1.0.0
+_pkgver=1.0.1
 pkgname=r-${_pkgname,,}
-pkgver=1.0.0
-pkgrel=4
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='Rank Normal Transformation Omnibus Test'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,7 +19,7 @@ optdepends=(
   r-r.rsp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7b4ea6b98167dff4632d9d546368cb652d291641f6b45cea1aec6fe6b9f6c0fe')
+sha256sums=('86d6240ace51b9f34d319fc7b16c994c6e48a7bce3bb28946eaaa588ae238755')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
