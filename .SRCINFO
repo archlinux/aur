@@ -1,6 +1,6 @@
 pkgbase = python-bitbox02
 	pkgdesc = Python code to communicate with BitBox02 cryptocurrency wallet
-	pkgver = 6.1.0
+	pkgver = 6.1.1
 	pkgrel = 1
 	url = https://github.com/digitalbitbox/bitbox02-firmware
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-bitbox02
 	depends = python-semver
 	depends = python-noiseprotocol-git
 	options = !emptydirs
-	source = https://github.com/digitalbitbox/bitbox02-firmware/archive/py-bitbox02-6.1.0.tar.gz
-	sha256sums = 65dbd89eec4039e117ed420a58e63c6ed9cac173d04e16c050dc57620301bc1a
+	source = https://github.com/digitalbitbox/bitbox02-firmware/archive/py-bitbox02-6.1.1.tar.gz
+	sha256sums = a81ba69d9a1cfacf16217a650485aabfda253fcaf6e887326b1560033dda283b
 
 pkgname = python-bitbox02
