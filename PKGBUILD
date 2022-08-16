@@ -4,7 +4,7 @@
 # Contributor: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname='python-jax-rocm'
 pkgver=0.3.16
-pkgrel=1
+pkgrel=2
 pkgdesc='Differentiate, compile, and transform Numpy code (with ROCM)'
 _srcname="jax-jax-v${pkgver}"
 # develop-upstream@2022-08-10:17:10:MESZ
@@ -44,8 +44,8 @@ sha512sums=(
     '04c9ece4cb782f52925b1e7ee18ccc916a65dde051554b106164d371b3b7b96037218e635c235c8f38d088066421c0c5a4a7e201ed435b3e69c128f5ac20f0ac'
     '36596fd586cbdac990466a53cc0683de759b2f0646ed08edf04e88e3ee4de1a7381cf1b3a4784aa9a240e2ad894d55e8728226b95071539f774bc5d9b790b5fc'
 )
-conflicts=('python-jax')
-provides=('python-jax')
+conflicts=('python-jax' 'python-jaxlib')
+provides=('python-jax' 'python-jaxlib')
 
 # test
 # python -c "import jax; print(jax.devices(),jax.devices()[0].device_kind); x=jax.numpy.array([1.2,3.4,5.6]); y=jax.numpy.exp(x); print(y)"
