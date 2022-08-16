@@ -1,0 +1,15 @@
+pkgbase = haskell-validity-scientific
+	pkgdesc = Validity instances for scientific
+	pkgver = 0.2.0.3
+	pkgrel = 1
+	url = https://github.com/NorfairKing/validity#readme
+	arch = x86_64
+	license = MIT
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-scientific
+	depends = haskell-validity
+	source = https://hackage.haskell.org/packages/archive/validity-scientific/0.2.0.3/validity-scientific-0.2.0.3.tar.gz
+	sha256sums = 773a4a35933637d0bade859dd0e8acadc781d9ccd3b057d60e7ffaaa20e5186f
+
+pkgname = haskell-validity-scientific
