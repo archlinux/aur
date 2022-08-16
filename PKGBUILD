@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/raoulh/$pkgname"
 license=('GPL3')
 makedepends=('git' 'go')
-source=("$pkgname"::"git://github.com/raoulh/$pkgname")
+source=("$pkgname"::"git+https://github.com/raoulh/$pkgname")
 sha256sums=('SKIP')
 
 pkgver() {
