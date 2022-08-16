@@ -1,13 +1,14 @@
 pkgbase = waybar-eyes
 	pkgdesc = Waybar toy to help you blinking eyes and move your ass away from computer.
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cyrinux/waybar-eyes
 	arch = x86_64
 	license = ISC
 	makedepends = go
 	makedepends = make
 	makedepends = git
+	makedepends = opencv
 	depends = glibc
 	depends = otf-font-awesome
 	source = waybar-eyes-v0.3-src.tar.gz::https://github.com/cyrinux/waybar-eyes/releases/download/v0.3/waybar-eyes-v0.3-src.tar.gz
