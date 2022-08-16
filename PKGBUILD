@@ -6,7 +6,7 @@
 # Contributor: Nathan Hulse <nat.hulse@gmail.com>
 
 pkgname=compiz-git
-pkgver=0.9.14.1.r0.g8b3fdfd7c
+pkgver=0.9.14.1.r0.ga1b21174b
 pkgrel=1
 _gitname=compiz
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM (development version)"
