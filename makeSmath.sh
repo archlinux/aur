@@ -1,7 +1,7 @@
 #!/bin/bash
 
-_pkgcode=YGSRa
-pkgver=1_00_8238
+_pkgcode=gxE6v
+pkgver=1_00_8253
 pkgrel=1
 
 wget --post-data "RefMem=&PostBack=${_pkgcode}" https://smath.com/file/${_pkgcode}/SMathStudioDesktop.${pkgver}.Mono.tar.gz
