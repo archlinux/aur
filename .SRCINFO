@@ -1,0 +1,16 @@
+pkgbase = haskell-fixed-vector
+	pkgdesc = Generic vectors with statically known size.
+	pkgver = 1.2.1.0
+	pkgrel = 1
+	url = http://github.com/Shimuuar/fixed-vector
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	makedepends = haskell-doctest
+	makedepends = haskell-filemanip
+	depends = ghc-libs
+	depends = haskell-primitive
+	source = https://hackage.haskell.org/packages/archive/fixed-vector/1.2.1.0/fixed-vector-1.2.1.0.tar.gz
+	sha256sums = aefd2839fc7a7c69f7f9b170b088846be1257e7527ccc84fb002bcea77c4a317
+
+pkgname = haskell-fixed-vector
