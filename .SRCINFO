@@ -1,5 +1,5 @@
 pkgbase = pam_usb-git
-	pkgdesc = Hardware authentication for Linux using ordinary USB Flash Drives.
+	pkgdesc = Hardware authentication for Linux using ordinary flash media (USB & Card based).
 	pkgver = 0.8.2_r500.g7a785de
 	pkgrel = 1
 	url = https://github.com/mcdope/pam_usb

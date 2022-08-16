@@ -4,14 +4,14 @@
 pkgname=pam_usb-git
 pkgver=0.8.2_r500.g7a785de
 pkgrel=1
-pkgdesc='Hardware authentication for Linux using ordinary USB Flash Drives.'
+pkgdesc='Hardware authentication for Linux using ordinary flash media (USB & Card based).'
 arch=($CARCH)
 url='https://github.com/mcdope/pam_usb'
 license=(GPLv2)
 depends=(pam dbus python python-dbus python-lxml python-gobject udisks2)
 makedepends=(git)
 options=(!emptydirs)
-backup=(etc/security/pam_usb.conf)
+backup=("etc/security/pam_usb.conf")
 source=("git+$url")
 sha256sums=('SKIP')
 
@@ -27,5 +27,5 @@ build() {
 
 package() {
   make -C ${pkgname%-git} DESTDIR="$pkgdir" PAM_USB_DEST="$pkgdir/usr/lib/security" install
-  install -Dt ${pkgdir}/usr/lib/systemd/system -m0644 ${pkgname%-git}/arch_linux/pamusb-agent.service
+  install -Dt $pkgdir/usr/lib/systemd/system -m0644 ${pkgname%-git}/arch_linux/pamusb-agent.service
 }
