@@ -2,8 +2,8 @@
 #             <ranaivoarivony-razanajato@hareno.me>
 
 pkgname=osl-git
-pkgver=0.9.2.r0.gf32f625
-pkgrel=2
+pkgver=0.9.5.r0.g0a1d5ba
+pkgrel=1
 pkgdesc="OpenScop Library"
 arch=('i686' 'x86_64')
 url="http://icps.u-strasbg.fr/people/bastoul/public_html/development/openscop/index.html"
