@@ -12,7 +12,7 @@ pkgbase = dynarmic-git
 	makedepends = fmt>=8.1.1
 	makedepends = git
 	makedepends = robin-map>=0.6.2
-	makedepends = xbyak>=6.60.1
+	makedepends = xbyak>=6.61
 	makedepends = zydis>=3.1
 	makedepends = zydis<4
 	provides = dynarmic=6.2.3.r2.gf33c6f06

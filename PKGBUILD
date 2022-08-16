@@ -13,7 +13,7 @@ makedepends=(
 	'fmt>=8.1.1'
 	'git'
 	'robin-map>=0.6.2'
-	'xbyak>=6.60.1'
+	'xbyak>=6.61'
 	'zydis>=3.1'
 	'zydis<4'
 )
