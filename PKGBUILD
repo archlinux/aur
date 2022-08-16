@@ -1,7 +1,7 @@
 # Maintainer: SimPilotAdamT <adam_tazul@outlook.com>
 
 pkgname=vmware-unlocker-git
-pkgver=4.2.1
+pkgver=4.2.2
 pkgrel=0
 pkgdesc="VMware macOS utilities, from the dev branch of the upstream repo"
 arch=("x86_64")
