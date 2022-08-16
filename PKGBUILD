@@ -11,6 +11,8 @@ arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/VSCodium/vscodium.git'
 # The vscode repo that will also be checked out.
 microsofturl='https://github.com/microsoft/vscode.git'
+# The tag of Microsoft that will be checked out, will be determined automatically, just like VSCodium itself does, with the following url
+stableversionurl='https://update.code.visualstudio.com/api/update/darwin/stable/lol'
 license=('MIT')
 
 depends=(
@@ -44,7 +46,7 @@ makedepends=(
 )
 source=(
     "git+${url}#tag=${pkgver}"
-    "git+${microsofturl}#tag=${pkgver}"
+    "git+${microsofturl}#tag="$(curl ${stableversionurl} 2>/dev/null | jq -r '.name')
     'vscodium.desktop'
 )
 sha256sums=(

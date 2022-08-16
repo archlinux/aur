@@ -32,7 +32,7 @@ pkgbase = vscodium
 	optdepends = libdbusmenu-glib: For KDE global menu
 	provides = codium
 	source = git+https://github.com/VSCodium/vscodium.git#tag=1.70.1.22228
-	source = git+https://github.com/microsoft/vscode.git#tag=1.70.1.22228
+	source = git+https://github.com/microsoft/vscode.git#tag=1.70.1
 	source = vscodium.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
