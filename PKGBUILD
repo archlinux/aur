@@ -1,7 +1,7 @@
 # Maintainer: Torge Matthies <openglfreak at googlemail dot com>
 # Contributor: Krzysztof Bogacki <krzysztof dot bogacki at leancode dot pl>
 
-_provide_nondkms=true
+_provide_nondkms=false
 _provide_dkms=true
 _provide_header=true
 _provide_udev_rule=true
@@ -9,7 +9,7 @@ _provide_udev_rule=true
 pkgbase='winesync'
 pkgname=()
 pkgver=5.16
-pkgrel=3
+pkgrel=4
 pkgdesc="Wine synchronization primitive driver"
 arch=('any')
 url='https://repo.or.cz/linux/zf.git/shortlog/refs/heads/winesync4'
@@ -39,7 +39,7 @@ sha256sums=('0da3cfeb8ab2f6b16083d92e7fa9a526a402802cd2a114d86a8a6947a42e8be8'
             'd21b36d59c6cd69190fe51b6e60505464053cf5450b05a1625bbfcf9b0f26620'
             '9b22d9976a83785e6a1cfc4a3aa230a8c5e4e903730bbafc598ec86bfaa35c3e'
             '05735aa1fef1eda3c6dca8b7a0c2a7eebf1eba8af38f608b4b1c34d4acbad453'
-            'dec74d835e8f96ace131b7a16441d99b49d2e0ea4bb292dd17c617c8f156d812')
+            '6c6e611dea280973933135aa9c9a37bc95d542f2cd029b51cb71e4a28ee95cf7')
 
 if [ "${PRINTSRCINFO:-0}" -eq 1 ]; then
     _provide_nondkms=true
@@ -64,10 +64,7 @@ fi
 
 if [ "$_provide_nondkms" = true ] || [ "$_provide_dkms" = true ]; then
 prepare() {
-    _supported_kernvers=('5.15' '5.16' '5.17' '5.18')
-    _regex=("${_supported_kernvers[@]//./\\\\.}")
-    _regex="^($(IFS='|'; printf '%s' "${_regex[*]}"))(\\.|\$)"
-    sed -i -e "s/@PACKAGE_VERSION@/$pkgver/g" -e "s/@KERNVER_REGEX@/$_regex/g" "$srcdir/dkms.conf"
+    sed -i -e "s/@PACKAGE_VERSION@/$pkgver/g" "$srcdir/dkms.conf"
 }
 fi
 
