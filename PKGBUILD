@@ -1,6 +1,6 @@
 # Maintainer: Elio Esteves Duarte <elio.esteves.duarte@gmail.com>
 pkgname=tomate-alarm-plugin
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc="Tomate plugin that plays a alrm when timer ends"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('gtk3'
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://github.com/eliostvs/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('c5f27e1ef5b6001220d0184e40d657e5')
+md5sums=('434f72896b79eecba3cd8a25fafcb07f')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
