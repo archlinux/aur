@@ -1,15 +1,15 @@
 pkgbase = python-cheap_repr
-	pkgdesc = Better version of repr/reprlib for short, cheap string representations.
+	pkgdesc = Better version of repr/reprlib for short, cheap string representations
 	pkgver = 0.5.1
 	pkgrel = 1
 	url = http://github.com/alexmojaki/cheap_repr
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	checkdepends = python-pytest
+	checkdepends = python-django
+	makedepends = python-setuptools-scm
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/c/cheap_repr/cheap_repr-0.5.1.tar.gz
-	source = LICENSE
-	sha256sums = 31ec63b9d8394aa23d746c8376c8307f75f9fca0b983566b8bcf13cc661fe6dd
-	sha256sums = a476a2cb0ef4c41450340a577a28b91ac4c7f669136b2ee148047fabd5fc4181
+	source = cheap_repr-0.5.1.tar.gz::http://github.com/alexmojaki/cheap_repr/archive/v0.5.1.tar.gz
+	sha512sums = fc4531da1c8618a85bc6957ac8410f3594f603e71943efa5fa37d2263dbde83a0f1c3a88357e3c7338595e5c4b7378b713a5bcfa18067eba8435633fcccb624a
 
 pkgname = python-cheap_repr
