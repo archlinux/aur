@@ -24,7 +24,7 @@ optdepends=('libva-intel-driver: hardware acceleration support for Intel GPU'
             'libbdplus: BD+ decryption for Blu-ray support')
 provides=('bomi')
 conflicts=('cmplayer' 'bomi')
-source=(git+https://github.com/demokritos/${_pkgbase}.git)
+source=(git+https://github.com/mans0n/${_pkgbase}.git)
 md5sums=('SKIP')
 #options=(debug !strip)
 #options=(!buildflags)

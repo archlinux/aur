@@ -42,7 +42,7 @@ pkgbase = bomi-git
 	provides = bomi
 	conflicts = cmplayer
 	conflicts = bomi
-	source = git+https://github.com/demokritos/bomi.git
+	source = git+https://github.com/mans0n/bomi.git
 	md5sums = SKIP
 
 pkgname = bomi-git
