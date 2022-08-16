@@ -1,0 +1,13 @@
+pkgbase = igrep
+	pkgdesc = Interactive Grep
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/konradsz/igrep
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = igrep-0.5.1.tar.gz::https://github.com/konradsz/igrep/archive/v0.5.1.tar.gz
+	sha512sums = e8933c93c71e4ac130ccecd41b1372164774ca244b870bb0c15d2c9e459eec953acc2c8988b59c907e7ca1262bfe4759e8c2bb7dfa2fd31cf2dfa08f8bacca94
+
+pkgname = igrep
