@@ -1,6 +1,6 @@
 # Maintainer: Grant G <grant@fig.io>
 pkgname='fig'
-pkgver='2.2.3'
+pkgver='2.2.5'
 pkgrel=1
 pkgdesc='Fig adds IDE-style autocomplete to your existing terminal.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('fig' 'fig_desktop' 'figterm' 'fig_ibus_engine')
 conflicts=('fig')
 source=("${pkgname}-${pkgver//_/-}.tgz::https://pkg.fig.io/download?kind=archlinux&platform=archlinux&version=${pkgver//_/-}&arch=${arch}")
 
-sha256sums=('35510a7643b418222d25455ed1df2d198eb0ba81311355c7498a5023bbcc7a8a')
+sha256sums=('35ac572cf7f2274372193dfa7c9588fd6acf517997386523f6f6a63f3317fe8a')
 
 package() {
   find "${srcdir}/usr" -type f | sed "s|${srcdir}/||" | xargs -I{} install -Dm644 "${srcdir}/{}" "${pkgdir}/{}"
