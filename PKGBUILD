@@ -16,6 +16,7 @@ license=('Apache')
 depends=(
     'absl-py'
     'miopen'
+    'python-etils'
     'python-numpy'
     'python-opt_einsum'
     'python-scipy'
@@ -45,6 +46,9 @@ sha512sums=(
 )
 conflicts=('python-jax')
 provides=('python-jax')
+
+# test
+# python -c "import jax; print(jax.devices(),jax.devices()[0].device_kind); x=jax.numpy.array([1.2,3.4,5.6]); y=jax.numpy.exp(x); print(y)"
 
 prepare() {
   # loosen acceptable bazel version
