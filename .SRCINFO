@@ -1,6 +1,6 @@
 pkgbase = gxrfetch-git
 	pkgdesc = A simple and customizable fetch program written in rust.
-	pkgver = 0.8.1.r31.f9e1579
+	pkgver = 0.8.1.r33.e53a27c
 	pkgrel = 1
 	url = https://github.com/Goxore/gxrfetch
 	arch = i686

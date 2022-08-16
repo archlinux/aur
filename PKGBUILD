@@ -1,6 +1,6 @@
 # Maintainer: Goxore <ggooxxoorree@gmail.com>
 pkgname=gxrfetch-git
-pkgver=0.8.1.r31.f9e1579
+pkgver=0.8.1.r33.e53a27c
 pkgrel=1
 epoch=
 pkgdesc="A simple and customizable fetch program written in rust."
@@ -34,6 +34,5 @@ build() {
 }
 
 package() {
-    #cargo install --root="$pkgdir" gxrfetch
-    cargo install --root="$pkgdir/opt" gxrfetch
+    cargo install --no-track --all-features --root "$pkgdir/usr/" gxrfetch
 }
