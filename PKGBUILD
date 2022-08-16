@@ -1,19 +1,19 @@
-# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Maintainer: wuxxin <wuxxin@gmail.com>
+# Contributor: acxz <akashpatel2008 at yahoo dot com>
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Konstantin Gizdov (kgizdov) <arch@kge.pw>
 # Contributor: Adria Arrufat (archdria) <adria.arrufat+AUR@protonmail.ch>
 # Contributor: Thibault Lorrain (fredszaq) <fredszaq@gmail.com>
-# Contributor: wuxxin <wuxxin@gmail.com>
 
-pkgbase=tensorflow-rocm
+pkgbase=tensorflow-amd
 
 # Flags for building without/with cpu optimizations
 _build_no_opt=1
 _build_opt=1
 
 pkgname=()
-[ "$_build_no_opt" -eq 1 ] && pkgname+=(tensorflow-rocm python-tensorflow-rocm)
-[ "$_build_opt" -eq 1 ] && pkgname+=(tensorflow-opt-rocm python-tensorflow-opt-rocm)
+[ "$_build_no_opt" -eq 1 ] && pkgname+=(tensorflow-amd python-tensorflow-amd)
+[ "$_build_opt" -eq 1 ] && pkgname+=(tensorflow-opt-amd python-tensorflow-opt-amd)
 
 # use ROCm fork of tensorflow: https://github.com/ROCmSoftwarePlatform/tensorflow-upstream
 # take branch+commit from docker.io/rocm/tensorflow@lastest Dockerfile
@@ -21,13 +21,13 @@ _id="4f7f7b9d6489de80eb81572ecc188af299e9e495"
 _srcname="tensorflow-upstream-$_id"
 _pkgver=2.9.2
 pkgver=2.9.2
-pkgrel=1
-pkgdesc="Library for computation using data flow graphs for scalable machine learning"
+pkgrel=2
+pkgdesc="Library for computation using data flow graphs for scalable machine learning (AMD upstream)"
 url="https://www.tensorflow.org/"
 license=('APACHE')
 arch=('x86_64')
 depends=('c-ares' 'intel-mkl' 'onednn' 'pybind11' 'openssl' 'lmdb' 'libpng' 'curl' 'giflib' 'icu' 'libjpeg-turbo')
-makedepends=('bazel' 'python-numpy' 'rocm-hip-sdk' 'miopen' 'rccl' 'git'
+makedepends=('bazel' 'python-numpy' 'rocm-hip-sdk' 'miopen' 'hipsolver' 'rccl' 'git'
              'python-pip' 'python-wheel' 'python-setuptools' 'python-h5py'
              'python-keras-applications' 'python-keras-preprocessing'
              'cython')
@@ -83,8 +83,8 @@ prepare() {
   patch -Np1 -i "${srcdir}/fix-rocblas-include.patch"
   cd "${srcdir}"
 
-  cp -r $_srcname tensorflow-${_pkgver}-rocm
-  cp -r $_srcname tensorflow-${_pkgver}-opt-rocm
+  cp -r $_srcname tensorflow-${_pkgver}-amd
+  cp -r $_srcname tensorflow-${_pkgver}-opt-amd
 
   # These environment variables influence the behavior of the configure call below.
   export PYTHON_BIN_PATH=/usr/bin/python
@@ -139,7 +139,7 @@ prepare() {
 build() {
   if [ "$_build_no_opt" -eq 1 ]; then
     echo "Building with rocm and without non-x86-64 optimizations"
-    cd "${srcdir}"/tensorflow-${_pkgver}-rocm
+    cd "${srcdir}"/tensorflow-${_pkgver}-amd
     export CC_OPT_FLAGS="-march=x86-64"
     export TF_NEED_CUDA=0
     export TF_NEED_ROCM=1
@@ -157,7 +157,7 @@ build() {
 
   if [ "$_build_opt" -eq 1 ]; then
     echo "Building with rocm and with non-x86-64 optimizations"
-    cd "${srcdir}"/tensorflow-${_pkgver}-opt-rocm
+    cd "${srcdir}"/tensorflow-${_pkgver}-opt-amd
     export CC_OPT_FLAGS="-march=haswell -O3"
     export TF_NEED_CUDA=0
     export TF_NEED_ROCM=1
@@ -240,43 +240,43 @@ _python_package() {
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 
-package_tensorflow-rocm() {
-  pkgdesc="Library for computation using data flow graphs for scalable machine learning (with ROCM)"
-  depends+=(rocm-hip-sdk miopen rccl)
-  conflicts=(tensorflow)
-  provides=(tensorflow)
+package_tensorflow-amd() {
+  pkgdesc="Library for computation using data flow graphs for scalable machine learning (AMD upstream with ROCM)"
+  depends+=(rocm-hip-libraries hipsolver miopen rccl)
+  conflicts=(tensorflow tensorflow-rocm)
+  provides=(tensorflow tensorflow-rocm)
 
-  cd "${srcdir}"/tensorflow-${_pkgver}-rocm
+  cd "${srcdir}"/tensorflow-${_pkgver}-amd
   _package tmprocm
 }
 
-package_tensorflow-opt-rocm() {
-  pkgdesc="Library for computation using data flow graphs for scalable machine learning (with ROCM and AVX2 CPU optimizations)"
-  depends+=(rocm-hip-sdk miopen rccl)
-  conflicts=(tensorflow)
-  provides=(tensorflow tensorflow-rocm)
+package_tensorflow-opt-amd() {
+  pkgdesc="Library for computation using data flow graphs for scalable machine learning (AMD upstream with ROCM and AVX2 CPU optimizations)"
+  depends+=(rocm-hip-libraries hipsolver miopen rccl)
+  conflicts=(tensorflow tensorflow-rocm)
+  provides=(tensorflow tensorflow-rocm tensorflow-amd)
 
-  cd "${srcdir}"/tensorflow-${_pkgver}-opt-rocm
+  cd "${srcdir}"/tensorflow-${_pkgver}-opt-amd
   _package tmpoptrocm
 }
 
-package_python-tensorflow-rocm() {
-  pkgdesc="Library for computation using data flow graphs for scalable machine learning (with ROCM)"
-  depends+=(tensorflow-rocm rocm-hip-sdk miopen rccl "${_common_py_depends[@]}")
-  conflicts=(python-tensorflow)
-  provides=(python-tensorflow)
+package_python-tensorflow-amd() {
+  pkgdesc="Library for computation using data flow graphs for scalable machine learning (AMD upstream with ROCM)"
+  depends+=(tensorflow-amd rocm-hip-libraries hipsolver miopen rccl "${_common_py_depends[@]}")
+  conflicts=(python-tensorflow python-tensorflow-rocm)
+  provides=(python-tensorflow python-tensorflow-rocm)
 
-  cd "${srcdir}"/tensorflow-${_pkgver}-rocm
+  cd "${srcdir}"/tensorflow-${_pkgver}-amd
   _python_package tmprocm
 }
 
-package_python-tensorflow-opt-rocm() {
-  pkgdesc="Library for computation using data flow graphs for scalable machine learning (with ROCM and AVX2 CPU optimizations)"
-  depends+=(tensorflow-opt-rocm rocm-hip-sdk miopen rccl "${_common_py_depends[@]}")
-  conflicts=(python-tensorflow)
-  provides=(python-tensorflow python-tensorflow-rocm)
+package_python-tensorflow-opt-amd() {
+  pkgdesc="Library for computation using data flow graphs for scalable machine learning (AMD upstream with ROCM and AVX2 CPU optimizations)"
+  depends+=(tensorflow-opt-amd rocm-hip-libraries hipsolver miopen rccl "${_common_py_depends[@]}")
+  conflicts=(python-tensorflow python-tensorflow-rocm)
+  provides=(python-tensorflow python-tensorflow-rocm python-tensorflow-amd)
 
-  cd "${srcdir}"/tensorflow-${_pkgver}-opt-rocm
+  cd "${srcdir}"/tensorflow-${_pkgver}-opt-amd
   _python_package tmpoptrocm
 }
 
