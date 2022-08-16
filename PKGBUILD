@@ -10,6 +10,7 @@ pkgdesc='Patches needed to build VMware Player host modules against recent kerne
 arch=('x86_64' 'aarch64' 'i386')
 license=('GPL2')
 provides=(vmware-host-modules-dkms vmware-host-modules)
+conflicts=(vmware-host-modules-dkms vmware-host-modules vmware-workstation)
 depends=('dkms')
 makedepends=('git' 'findutils')
 source=("git+https://github.com/mkubecek/${_pkgname}.git#branch=player-$_pkgver"
