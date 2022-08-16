@@ -1,0 +1,22 @@
+pkgbase = cura-5-plugin-octoprint
+	pkgdesc = Cura plugin which enables printing directly to OctoPrint and monitoring the progress
+	pkgver = r580.eb68bc6
+	pkgrel = 1
+	url = https://github.com/fieldofview/OctoPrintPlugin
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = python
+	depends = cura-5
+	depends = python-zeroconf
+	source = cura-5-plugin-octoprint::git+https://github.com/fieldofview/OctoPrintPlugin.git#branch=master
+	source = git+https://github.com/jstasiak/python-zeroconf.git
+	source = git+https://github.com/pydron/ifaddr.git
+	source = CMakeLists.txt.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = cura-5-plugin-octoprint

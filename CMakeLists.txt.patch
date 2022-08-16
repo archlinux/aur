@@ -1,0 +1,35 @@
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -15,25 +15,25 @@
+     WebcamsModel.py
+     LICENSE
+     README.md
+-    DESTINATION lib/cura/plugins/OctoPrintPlugin
++    DESTINATION cura/plugins/OctoPrintPlugin
+ )
+ 
+ install(DIRECTORY qml
+-    DESTINATION lib/cura/plugins/OctoPrintPlugin/qml
++    DESTINATION cura/plugins/OctoPrintPlugin
+ )
+ 
+ install(DIRECTORY qml_qt5
+-    DESTINATION lib/cura/plugins/OctoPrintPlugin/qml_qt5
++    DESTINATION cura/plugins/OctoPrintPlugin
+ )
+ 
+ install(DIRECTORY python-zeroconf
+-    DESTINATION lib/cura/plugins/OctoPrintPlugin/python-zeroconf
++    DESTINATION cura/plugins/OctoPrintPlugin
+ )
+ 
+ install(DIRECTORY ifaddr
+-    DESTINATION lib/cura/plugins/OctoPrintPlugin/ifaddr
++    DESTINATION cura/plugins/OctoPrintPlugin
+ )
+ 
+ install(DIRECTORY i18n
+-    DESTINATION lib/cura/plugins/OctoPrintPlugin/i18n
++    DESTINATION cura/plugins/OctoPrintPlugin
+ )
+
