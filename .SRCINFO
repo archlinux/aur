@@ -1,6 +1,6 @@
 pkgbase = luxtorpeda-git
 	pkgdesc = Steam Play compatibility tool to run games using native Linux engines
-	pkgver = 46.0.0.r321.989a5a9
+	pkgver = 57.0.0.r359.9c1a138
 	pkgrel = 1
 	url = https://github.com/luxtorpeda-dev/luxtorpeda
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = luxtorpeda-git
 	makedepends = rust
 	depends = libusb
 	depends = sdl2
+	depends = sdl2_image
 	optdepends = steam: The Steam client
 	provides = luxtorpeda
 	conflicts = luxtorpeda
