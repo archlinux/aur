@@ -13,8 +13,8 @@ md5sums=('cfc66b5f5b12440249cb05a412a2041f' 'a8b55518d979465737523088a9007e74')
 
 package() {
   cd "${srcdir}"
-  mkdir -p "${pkgdir}/usr/share/javascript/angularjs"
-  install -m644 "angular.js" "${pkgdir}/usr/share/javascript/angularjs"
-  install -m644 "angular.min.js" "${pkgdir}/usr/share/javascript/angularjs"
+  mkdir -p "${pkgdir}/usr/share/javascript/${pkgname}"
+  install -m644 "angular.js" "${pkgdir}/usr/share/javascript/${pkgname}"
+  install -m644 "angular.min.js" "${pkgdir}/usr/share/javascript/${pkgname}"
 }
 
