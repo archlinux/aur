@@ -1,0 +1,20 @@
+diff --git a/src-unix/Network/Socket/IOCtl.hs b/src-unix/Network/Socket/IOCtl.hs
+index bfd6d31..683c0b0 100644
+--- a/src-unix/Network/Socket/IOCtl.hs
++++ b/src-unix/Network/Socket/IOCtl.hs
+@@ -23,13 +23,14 @@ import Foreign
+ import Foreign.C
+ import Network.Socket
+ import System.IOControl
++import System.IO.Unsafe (unsafePerformIO)
+ 
+ foreign import ccall "ioctl" c_ioctl :: CInt -> CInt -> Ptr () -> IO CInt
+ 
+ c_ioctl' :: IOControl req d => Socket -> req -> Ptr d -> IO ()
+ c_ioctl' f req p =
+     throwErrnoIfMinus1_ "ioctl" $
+-        c_ioctl (fdSocket f) (ioctlReq req) (castPtr p)
++        c_ioctl (unsafePerformIO $ fdSocket f) (ioctlReq req) (castPtr p)
+ 
+ -- | Calls a ioctl reading the structure after the call
+ ioctlsocket :: IOControl req d

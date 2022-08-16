@@ -1,0 +1,16 @@
+pkgbase = haskell-ioctl
+	pkgdesc = Type-safe I/O control package
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/ioctl
+	arch = x86_64
+	license = MIT
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-network
+	source = https://hackage.haskell.org/packages/archive/ioctl/0.0.1/ioctl-0.0.1.tar.gz
+	source = fix.patch
+	sha256sums = 1a9f21bc8f03d4729ef936d543d463e9ab5656699b2cf27fb344b4c6693d9067
+	sha256sums = 7e9ac869d968beb1f77a9899b9a910e6f552749539be8eaf5833e3545979cf29
+
+pkgname = haskell-ioctl
