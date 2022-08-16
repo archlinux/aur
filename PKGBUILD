@@ -5,14 +5,14 @@
 pkgname=dmenu-extended-git
 _pkgname=dmenu-extended
 _source=https://github.com/markjones112358/dmenu-extended.git
-pkgver=r418.3639b0e
+pkgver=r421.7ad25c0
 pkgrel=1
 pkgdesc='An extension to dmenu for quickly opening files and folders and run programs.'
 url='https://github.com/markjones112358/dmenu-extended'
 license=('MIT')
 arch=('any')
-depends=('python' 'dmenu')
-makedepends=('git')
+depends=('python' 'dmenu' 'python-setuptools')
+makedepends=('git' 'python-installer' 'python-build' 'python-wheel')
 provides=('dmenu-extended')
 conflicts=('dmenu-extended')
 source=("${_pkgname}"::"git+${_source}")
