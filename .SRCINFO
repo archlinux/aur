@@ -1,0 +1,17 @@
+pkgbase = wadcli
+	pkgdesc = Command-line Doom WAD file manipulator
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/JugadorXEI/wadcli
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = BSD
+	depends = gcc-libs
+	depends = liblzf
+	source = https://github.com/JugadorXEI/wadcli/archive/refs/tags/1.0.tar.gz
+	sha256sums = 573140e6edb2579d9cbc83d698dcf25aebd784d9387e66c075c356f087955b64
+	b2sums = f134bf1c9138df9baee20d6b57b8b6651903721612eddbb90ac2956738cda8f22e895a0b28485b92797274113754dfc57e6533646037c3ff08c3a52249d59ba4
+
+pkgname = wadcli
