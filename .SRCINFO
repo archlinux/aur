@@ -1,7 +1,7 @@
 pkgbase = python-triangle
 	pkgdesc = Python bindings to the triangle library
 	pkgver = 20220202
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/drufat/triangle
 	arch = any
 	license = LGPL3

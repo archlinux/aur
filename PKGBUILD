@@ -3,7 +3,7 @@
 _base=triangle
 pkgname=python-${_base}
 pkgver=20220202
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings to the triangle library"
 url="https://github.com/drufat/${_base}"
 arch=(any)
@@ -18,15 +18,14 @@ sha512sums=('SKIP')
 build() {
   cd ${_base}
   git submodule init && git submodule update
-  export PYTHONHASHSEED=0
   python setup.py clean --all
   python setup.py build
 }
 
 check() {
-  local _pyversion=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
+  local _pyversion=$(python -c "import sys; print(f'{sys.version_info.major}{sys.version_info.minor}')")
   cd ${_base}
-  PYTHONPATH="build/lib.linux-$CARCH-${_pyversion}:${PYTHONPATH}" \
+  PYTHONPATH="build/lib.linux-$CARCH-cpython-${_pyversion}:${PYTHONPATH}" \
     PYTHONDONTWRITEBYTECODE=1 \
     pytest -v tests
 }
