@@ -1,7 +1,7 @@
 # Maintainer: sukanka <su975853527[AT]gmail.com>
 
 pkgname=bark-server
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="Backend of Bark"
 arch=("x86_64" "aarch64")
@@ -13,12 +13,12 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Finb/bark-server/archiv
 )
 backup=("etc/nginx/conf.d/${pkgname}.conf")
 
-sha512sums=('d9eee902bb93c27d2eddd3ba9726684c84edd767cf063c73869a76ccb4262b6f5820c30eeb294f365104fe573e11453c860395e90699ad7e9d6baf11ee4ba2ca'
+sha512sums=('cc02a2d5670d7cbfab49a28945aa5b2e7512d0c7cf13def6470fe45eddcb2ff0458e1935b3e6cd023f0fbdfd8fb1e8a85fa811d2ce285dfac2d51421f51626a2'
             '977ea6e0a6d4052181353f015beb72ea448e365c886e49b898865bae2cd70f53ed20a610b2ce637b78da3767bdbb9cacb0d64cdad4d3034bd1895617d8592e2e')
 
 prepare(){
     cd $srcdir/${pkgname}-${pkgver}
-    sed -i "7c ExecStart=/usr/bin/bark-server -addr 0.0.0.0:18080 -data /var/${pkgname}/data"\
+    sed -i "s|^ExecStart=.*|ExecStart=/usr/bin/bark-server -addr 0.0.0.0:18080 -data /var/${pkgname}/data|g" \
             deploy/${pkgname}.service
 }
 
