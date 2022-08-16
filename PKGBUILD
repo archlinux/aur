@@ -21,7 +21,7 @@ prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   # Work around issue #362 (breakage on recent glibc)
-  sed -i $'1i#define _LINUX_MOUNT_H' toys/other/{blkdiscard,blockdev,fsfreeze,lsattr}.c
+  sed -i $'1i#define _LINUX_MOUNT_H\n' toys/other/{blkdiscard,blockdev,fsfreeze,lsattr}.c
 }
 
 build() {
