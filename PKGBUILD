@@ -1,25 +1,39 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Philip Goto <philip.goto@gmail.com>
 
-_pkgname=wasabi
-pkgname=python-${_pkgname}
-pkgver=0.9.1
+pkgname=python-wasabi
+_pkg="${pkgname#python-}"
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='Lightweight console printing and formatting toolkit'
-arch=(any)
-url='https://pypi.org/project/wasabi/'
-license=(MIT)
-depends=(python)
-makedepends=(python-setuptools)
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('e3a8e230501575bf0c507adc8c6a014b3630005fbb2347695038b79c86b677338d8ad8f075be29618eff3b0900e9fdaf6fd06a54187272e1a49384ed13b66ece')
+arch=('any')
+url='https://github.com/explosion/wasabi'
+license=('MIT')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+checkdepends=('python-pytest')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/w/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('c8e372781be19272942382b14d99314d175518d7822057cb7a97010c4259d249')
+
+prepare() {
+	cd "$_pkg-$pkgver"
+	sed -i '/packages=/c\packages=["wasabi"],' setup.py
+}
 
 build() {
-	cd "wasabi-${pkgver}"
-	python setup.py build
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
+}
+
+check() {
+	cd "$_pkg-$pkgver"
+	pytest -x
 }
 
 package() {
-	cd "wasabi-${pkgver}"
-	python setup.py install --skip-build --root="${pkgdir}" --optimize=1
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/python-wasabi/LICENSE"
+	cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
