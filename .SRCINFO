@@ -1,0 +1,15 @@
+pkgbase = xsudo-git
+    pkgdesc = A script to run GUI applications with pkexec
+    pkgver = 1.0
+    pkgrel = 1
+    url = https://gitlab.com/davisrichard437/xsudo
+    arch = any
+    license = MIT
+    makedepends = git
+    depends = bash
+    depends = polkit
+    depends = coreutils
+    source = git+https://gitlab.com/davisrichard437/xsudo.git
+    sha256sums = SKIP
+
+pkgname = xsudo-git
