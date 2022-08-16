@@ -5,7 +5,7 @@ _pkgname=IRkernel
 _pkgver=1.3
 pkgname=r-${_pkgname,,}
 pkgver=1.3
-pkgrel=3
+pkgrel=6
 pkgdesc="Native R Kernel for the 'Jupyter Notebook'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,7 +20,7 @@ depends=(
   r-pbdzmq
   r-repr
   r-uuid
-  jupyter
+  jupyterlab
 )
 optdepends=(
   r-roxygen2
