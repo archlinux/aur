@@ -3,13 +3,15 @@
 
 pkgname=pam_usb-git
 pkgver=0.8.2_r500.g7a785de
-pkgrel=3
+pkgrel=4
 pkgdesc='Hardware authentication for Linux using ordinary flash media (USB & Card based).'
 arch=($CARCH)
 url='https://github.com/mcdope/pam_usb'
 license=(GPL2)
 depends=(python-gobject libxml2 udisks2)
 makedepends=(git)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
 options=(!emptydirs)
 backup=("etc/security/pam_usb.conf")
 source=("git+$url"
