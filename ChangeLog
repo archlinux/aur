@@ -453,3 +453,13 @@ Fixes:
 - Sometimes subtasks coming from external sources (Todoist, Microsoft To Do) were displayed in the wrong order. Now they are always anchored to the parent task.
 - We fixed a synchronization issue that could arise with some CalDAV providers.
 - We fixed a problem causing the memory usage of Morgen to grow over time - now Morgen will be less resource intensive on your system.
+
+
+=== Morgen 2.5.10
+New Features:
+- Morgen introduces support for basic formatting options (bold, italic, etc.) for your event notes. This makes it easier to structure your meeting agenda and action items. This is only the first step towards better meeting notes in Morgen, stay tuned ;)
+
+Fixes:
+- we fixed a problem sometimes causing a cryptic error message Missing iCalUID when importing events from a .ics file.
+- we fixed the due date on tasks coming from the Microsoft To Do integrations, which was sometimes off by one day
+
