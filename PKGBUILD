@@ -1,18 +1,18 @@
 # Maintainer: luisbocanegra <luis.bocanegra0 at protonmail dot com>
 pkgname=kde-material-you-colors
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Automatic Material You Colors Generator from your wallpaper for the Plasma Desktop"
 arch=('x86_64')
 url="https://github.com/luisbocanegra/kde-material-you-colors"
-license=('APACHE')
-depends=("dbus-python" "python-numpy")
+license=('GPL3')
+depends=("dbus-python" "python-numpy" "python-pillow" "python-regex" "python-material-color-utilities")
 optdepends=('python-colr: colored hex codes printing'
             'python-pywal: theme other programs using Material You Colors'
 )
 options=('!strip')
-source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha256sums=('72bd590acb3e5132833fabd2991833556fbfb9034dd6b21f09e420b68b9cf4da')
+source=("${pkgname}-${pkgver}.tar.gz::$url/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('7d3c5cd8a92cdab8bad4805cea2953c70af5bde46122d989ab316bd2b30f4992')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -24,13 +24,8 @@ package() {
   install -Dm644 kde-material-you-colors.desktop ${pkgdir}/usr/lib/${pkgname}/kde-material-you-colors.desktop
   install -Dm644 sample_config.conf ${pkgdir}/usr/lib/${pkgname}/sample_config.conf
   install -Dm755 kde-material-you-colors ${pkgdir}/usr/lib/${pkgname}/kde-material-you-colors
-  install -Dm755 utils.py ${pkgdir}/usr/lib/${pkgname}/utils.py
-  install -Dm755 color_utils.py ${pkgdir}/usr/lib/${pkgname}/color_utils.py
-  install -Dm755 schemeconfigs.py ${pkgdir}/usr/lib/${pkgname}/schemeconfigs.py
-  install -Dm755 material-color-utility-bin ${pkgdir}/usr/lib/${pkgname}/material-color-utility-bin
-  install -Dm755 libSkiaSharp.so ${pkgdir}/usr/lib/${pkgname}/libSkiaSharp.so
+  find . -type f -name "*.py" -exec install -Dm755 {,${pkgdir}/usr/lib/${pkgname}/}{} \;
   install -dm755 ${pkgdir}/usr/bin
-  ln -s /usr/lib/${pkgname}/material-color-utility-bin ${pkgdir}/usr/bin/material-color-utility
   ln -s /usr/lib/${pkgname}/kde-material-you-colors ${pkgdir}/usr/bin/kde-material-you-colors
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
