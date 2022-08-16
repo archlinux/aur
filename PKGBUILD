@@ -1,6 +1,6 @@
 # Maintainer: Daniel Jenssen <daerandin@gmail.com>
 pkgname=cebac
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Cloud storage backup helper"
 arch=('x86_64')
@@ -11,7 +11,7 @@ optdepends=('python-boto3' 'python-dropbox')
 options=('strip')
 source=(https://gitlab.com/Daerandin/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
 validpgpkeys=('40EB5B887AF9E9AB68C06179CCDE95DE8A5C8CC6')
-sha256sums=('3e9ddee0bcfe7eb459dea6700884db38f3d68d0d9d20f58fed572500b734077b')
+sha256sums=('82c0e7e21c6d21fce118ce501286196da5608b1ddd859cf9d007405fb69effe3')
 
 build() {
   cd "$pkgname-$pkgver"
