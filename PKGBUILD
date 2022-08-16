@@ -1,27 +1,32 @@
-# Maintainer: Patrick Wu <me@patrickwu.space>
+# Maintainer: seth <getchoo at tuta dot io>
+# Contributor: Patrick Wu <me@patrickwu.space>
 
 pkgname=wslu
-pkgver=3.2.1
-pkgrel=0
-pkgdesc="A collection of utilities for Windows 10 Linux Subsystems"
-arch=('any')
-url='https://github.com/wslutilities/wslu'
-license=('GPL-3.0-or-later')
-depends=('bc' 'imagemagick' 'bash-completion')
-makedepends=("make" "git" "gzip")
-source=("git+https://github.com/wslutilities/wslu.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+pkgver=3.2.4
+pkgrel=1
+pkgdesc="A collection of utilities for Windows Subsystem for Linux"
+arch=(any)
+url="https://wslutiliti.es/wslu"
+license=('GPL3')
+depends=('bc' 'imagemagick' 'psmisc')
+optdepends=('bash-completion: for CLI args completion')
+install=wslu.install
+source=("$pkgname-$pkgver.tar.gz::https://github.com/wslutilities/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('40eaadaddbab82154985966690c686679abdc59446c79555de1798fa356e1680')
 
 build() {
-  cd wslu
-  make
+	cd "${srcdir}/$pkgname-$pkgver"
+
+  chmod 755 configure.sh
+  ./configure.sh --build
+	make
 }
 
 package() {
-  cd wslu
+	cd "${srcdir}/$pkgname-$pkgver"
 
-  make DESTDIR="${pkgdir}" install
-  install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/wslu/
+	make DESTDIR="${pkgdir}" install
+  install -Dm0644 LICENSE -t "${pkgdir}/usr/share/licenses/wslu/"
 }
 
-# vim: ts=2 sw=2 et:
+# nvim: ts=2 sw=2 et:

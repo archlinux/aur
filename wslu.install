@@ -1,0 +1,11 @@
+post_install() {
+  date +"%s" | tee /usr/share/wslu/updated_time >/dev/null
+}
+
+post_upgrade() {
+  date +"%s" | tee /usr/share/wslu/updated_time >/dev/null
+}
+
+pre_remove() {
+  rm /usr/share/wslu/updated_time
+}
