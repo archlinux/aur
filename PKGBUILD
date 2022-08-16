@@ -1,7 +1,7 @@
 # Maintainer: Joshua Wong <joshuawong AT anticentri DOT st>
 # Contributor: Joshua Wong <joshuawong AT anticentri DOT st>
 pkgname=vcluster
-pkgver=0.6.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc='Create fully functional virtual Kubernetes clusters'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glibc')
 conflicts=('vcluster-bin')
 replaces=('vcluster-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/loft-sh/vcluster/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e7a15f68f4080c28b522fc1f1c7072a0f104d9529727f8948adbb7705e4dca4d')
+sha256sums=('6e5392cedbf2d7f6c05c02bcd87c32fcecc3f2f350d62aa32e19a24520781676')
 
 prepare() {
 	cd "$pkgname-$pkgver"
