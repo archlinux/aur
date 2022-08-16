@@ -1,6 +1,6 @@
 pkgbase = scangearmp2-sane-git
 	pkgdesc = Canon ScanGear MP v2 scanner utility and sane backend
-	pkgver = 4.30.0.rgtk3+subnet.2.gdf5d76c
+	pkgver = 4.40
 	pkgrel = 1
 	url = https://github.com/Ordissimo/scangearmp2
 	arch = x86_64
