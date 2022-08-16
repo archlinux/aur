@@ -2,7 +2,7 @@
 
 pkgname=waybar-eyes
 pkgver=0.5
-pkgrel=1
+pkgrel=3
 pkgdesc='Waybar toy to help you blinking eyes and move your ass away from computer.'
 arch=('x86_64')
 url="https://github.com/cyrinux/${pkgname}"
