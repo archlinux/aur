@@ -1,30 +1,44 @@
-# Maintainer: Thomas Jost <schnouki@schnouki.net>
-pkgname=git-wip-git
-pkgver=r55.9655ff9
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Thomas Jost <schnouki@schnouki.net>
+
+pkgname=('git-wip-git' 'vim-git-wip-git' 'emacs-git-wip-git')
+_pkg="${pkgname%-git}"
+pkgver=0.1.r2.g1c095e9
 pkgrel=1
-pkgdesc="Help track git Work In Progress branches "
-arch=(any)
+pkgdesc='Script for tracking work-in-progress git branches'
+arch=('any')
 url="https://github.com/bartman/git-wip"
 license=('GPL')
-depends=('git' 'bash')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=('git+https://github.com/bartman/git-wip')
-md5sums=('SKIP')
+makedepends=('git')
+provides=("$_pkg")
+conflicts=("$_pkg")
+source=("$_pkg::git+$url")
+sha256sums=('SKIP')
+
+# FIXME: where should the Sublime Text plugin be installed?
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git -C "$_pkg" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
-package() {
-  cd "$srcdir/${pkgname%-git}"
-  install -Dm755 git-wip "$pkgdir"/usr/bin/git-wip
+package_git-wip-git() {
+	depends=('git' 'bash')
+	cd "$_pkg"
+	install -D "$_pkg" -t "$pkgdir/usr/bin/"
+}
 
-  for f in git-wip git-wip-mode; do
-    install -Dm644 emacs/$f.el "$pkgdir"/usr/share/emacs/site-lisp/$f.el
-  done
-  install -Dm644 vim/plugin/git-wip.vim "$pkgdir"/usr/share/vim/vimfiles/plugin/git-wip.vim
+package_emacs-git-wip-git() {
+	depends=('emacs' 'git-wip')
+	provides=("${pkgname%-git}")
+	conflicts=("${pkgname%-git}")
+	cd "$_pkg"
+	install -Dm644 emacs/*.el -t "$pkgdir/usr/share/emacs/site-lisp/"
+}
 
-  # FIXME: where should the Sublime Text plugin be installed?
+package_vim-git-wip-git() {
+	depends=('vim-plugin-runtime' 'git-wip')
+	provides=("${pkgname%-git}")
+	conflicts=("${pkgname%-git}")
+	cd "$_pkg"
+	install -Dm644 vim/plugin/git-wip.vim -t "$pkgdir/usr/share/vim/vimfiles/plugin/"
 }
