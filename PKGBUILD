@@ -5,7 +5,7 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-plus-git
-pkgver=3.11.33.beta1.r32.g65d97cb
+pkgver=3.11.33.beta1.r33.gdb99b92
 pkgrel=1
 pkgdesc="Micro-compositor from Valve with added patches not yet commited upstream"
 arch=(x86_64)
@@ -20,11 +20,11 @@ depends=(
 makedepends=("git" "meson" "ninja" "patch" "vulkan-headers" "glslang" "wayland-protocols" "cmake")
 provides=($_pkgname "steamcompmgr")
 conflicts=($_pkgname "steamcompmgr")
-source=("add_force_rotation_option.patch"
-        "$_pkgname::git+https://github.com/Plagman/gamescope.git"
+source=("0001-Add-force-orientation-option.patch"
+				"$_pkgname::git+https://github.com/Plagman/gamescope.git"
         "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
         "git+https://github.com/nothings/stb.git")
-sha512sums=('591e77b2e5a758471fd7250c5b9baf5e7b82b56bb6563d3fe49f0cb16419424d2dee73c009144eef7e3d26aca8f8e995853165cb872188cf543e26c88459ef42'
+sha512sums=('ffd979c735721364490978922bd14a0657f76a273a1d799dd5f6fc4656983510be93f2ab01ae34daa25844f51e5373a3a20c7472f500077f14d5b2bc0bb2119d'
             'SKIP'
             'SKIP'
             'SKIP')

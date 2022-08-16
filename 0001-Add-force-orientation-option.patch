@@ -1,5 +1,18 @@
+From 1c469811709321db35f7eb3a8d06147360cfc67e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Joaqu=C3=ADn=20Ignacio=20Aramend=C3=ADa?=
+ <samsagax@gmail.com>
+Date: Mon, 18 Jul 2022 19:59:41 -0300
+Subject: [PATCH] Add --force-orientation option
+
+---
+ src/drm.cpp      | 51 +++++++++++++++++++++++++++++++-----
+ src/drm.hpp      | 27 ++++++++++++-------
+ src/main.cpp     | 22 +++++++++++++++-
+ src/wlserver.cpp | 67 ++++++++++++++++++++++++++++++++++++++----------
+ 4 files changed, 138 insertions(+), 29 deletions(-)
+
 diff --git a/src/drm.cpp b/src/drm.cpp
-index 96389da..1da17a2 100644
+index df294b4..324849c 100644
 --- a/src/drm.cpp
 +++ b/src/drm.cpp
 @@ -41,6 +41,8 @@ bool g_bDebugLayers = false;
@@ -75,7 +88,7 @@ index 96389da..1da17a2 100644
  
  			liftoff_layer_set_property( drm->lo_layers[ i ], "CRTC_X", crtcX);
  			liftoff_layer_set_property( drm->lo_layers[ i ], "CRTC_Y", crtcY);
-@@ -1823,7 +1862,7 @@ bool drm_update_color_mtx(struct drm_t *drm)
+@@ -1834,7 +1873,7 @@ bool drm_update_color_mtx(struct drm_t *drm)
  		drm_ctm.matrix[i] = color.s31_32;
  	}
  
@@ -84,7 +97,7 @@ index 96389da..1da17a2 100644
  	if (drmModeCreatePropertyBlob(drm->fd, &drm_ctm,
  			sizeof(struct drm_color_ctm), &blob_id) != 0) {
  		drm_log.errorf_errno("Unable to create CTM property blob");
-@@ -1898,7 +1937,7 @@ bool drm_update_gamma_lut(struct drm_t *drm)
+@@ -1909,7 +1948,7 @@ bool drm_update_gamma_lut(struct drm_t *drm)
  		gamma_lut[i].blue  = drm_calc_lut_value( b_exp, drm->pending.color_linear_gain[2], drm->pending.color_gain[2], drm->pending.gain_blend );
  	}
  
@@ -93,7 +106,7 @@ index 96389da..1da17a2 100644
  	if (drmModeCreatePropertyBlob(drm->fd, gamma_lut,
  			lut_entries * sizeof(struct drm_color_lut), &blob_id) != 0) {
  		drm_log.errorf_errno("Unable to create gamma LUT property blob");
-@@ -1946,7 +1985,7 @@ bool drm_update_degamma_lut(struct drm_t *drm)
+@@ -1957,7 +1996,7 @@ bool drm_update_degamma_lut(struct drm_t *drm)
  		degamma_lut[i].blue  = drm_quantize_lut_value( safe_pow( input, drm->pending.color_degamma_exponent[2] ) );
  	}
  
@@ -178,7 +191,7 @@ index 84a726b..995856b 100644
  bool init_drm(struct drm_t *drm, int width, int height, int refresh);
  void finish_drm(struct drm_t *drm);
 diff --git a/src/main.cpp b/src/main.cpp
-index 32104a7..718e386 100644
+index a7c6f86..ec94acb 100644
 --- a/src/main.cpp
 +++ b/src/main.cpp
 @@ -78,6 +78,7 @@ const struct option *gamescope_options = (struct option[]){
@@ -191,9 +204,9 @@ index 32104a7..718e386 100644
  };
 @@ -106,6 +107,7 @@ const char usage[] =
  	"  -e, --steam                    enable Steam integration\n"
- 	" --xwayland-count                create N xwayland servers\n"
- 	" --prefer-vk-device              prefer Vulkan device for compositing (ex: 1002:7300)\n"
-+	" --force-orientation             rotate the display (left, right, normal, upsidedown)\n"
+ 	"  --xwayland-count               create N xwayland servers\n"
+ 	"  --prefer-vk-device             prefer Vulkan device for compositing (ex: 1002:7300)\n"
++	"  --force-orientation             rotate the display (left, right, normal, upsidedown)\n"
  	"\n"
  	"Nested mode options:\n"
  	"  -o, --nested-unfocused-refresh game refresh rate when unfocused\n"
@@ -349,3 +362,6 @@ index 08faeb9..94f0ecf 100644
  		wlserver.mouse_surface_cursorx = tx;
  		wlserver.mouse_surface_cursory = ty;
  
+-- 
+2.37.2
+
