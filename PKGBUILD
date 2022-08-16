@@ -18,6 +18,22 @@ source=("git+https://github.com/morrownr/8821cu-20210118#branch=main"
 sha256sums=('SKIP'
 	    'a0552ddb8658b5416ae373db569f7fef9a111c9b995a85071bd89fd4cf8c804f')
 
+prepare() {
+    if [ $CARCH = "armv7h" ]; then
+        cp /lib/modules/$(uname -r)/build/arch/arm/Makefile \
+            /lib/modules/$(uname -r)/build/arch/arm/Makefile.$(date +%Y%m%d%H%M)
+        sed -i 's/-msoft-float//' \
+            /lib/modules/$(uname -r)/build/arch/arm/Makefile
+        ln -s /lib/modules/$(uname -r)/build/arch/arm \
+            /lib/modules/$(uname -r)/build/arch/armv7l
+    elif [ $CARCH = "aarch64" ]; then
+        cp /lib/modules/$(uname -r)/build/arch/arm64/Makefile \
+            /lib/modules/$(uname -r)/build/arch/arm64/Makefile.$(date +%Y%m%d%H%M)
+        sed -i 's/-mgeneral-regs-only//' \
+            /lib/modules/$(uname -r)/build/arch/arm64/Makefile
+    fi
+}
+
 pkgver() {
     cd ${srcdir}/8821cu-20210118
     printf "%s" ${_pkgver} "." "$(git rev-list --count HEAD)" "." "$(git rev-parse --short HEAD)"
