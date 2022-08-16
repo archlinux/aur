@@ -1,6 +1,6 @@
 pkgbase = dptfxtract-bin
 	pkgdesc = Intel's Linux DPTF Extract Utility for generating thermald's thermal_conf.xml
-	pkgver = 1.4.3
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://github.com/intel/dptfxtract
 	arch = x86_64
@@ -8,8 +8,9 @@ pkgbase = dptfxtract-bin
 	depends = thermald
 	provides = dptfxtract
 	conflicts = dptfxtract
-	source = https://github.com/intel/dptfxtract/archive/v1.4.3.tar.gz
-	sha256sums = b8df8d91c356b553fb82ad9c5a06193a51c872c6f9bb87eeef713cb99c30a82d
+	source = https://github.com/intel/dptfxtract/raw/015f8e845fd9f201d7b9ccb72024da0623cb0514/dptfxtract
+	source = https://github.com/intel/dptfxtract/raw/015f8e845fd9f201d7b9ccb72024da0623cb0514/COPYING
+	sha256sums = c32e05631a85569e7ac48489dba4b2a3fa7528d8c9dd4e2431f96d7a99a803ce
+	sha256sums = f4005b643f5bb944ecd864992e8b4699dd97cb8086301a198be1bcb0728415f0
 
 pkgname = dptfxtract-bin
-
