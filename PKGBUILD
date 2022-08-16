@@ -8,7 +8,9 @@
 pkgname=vscodium-bin
 _pkgname=VSCodium
 pkgver=1.70.1.22228
-pkgrel=1
+# hack for the .xxxxx version scheme.
+_pkgver=${pkgver::-6}
+pkgrel=2
 pkgdesc="Binary releases of VS Code without MS branding/telemetry/licensing."
 arch=('x86_64' 'aarch64')
 url="https://github.com/VSCodium/vscodium"
@@ -30,8 +32,8 @@ sha256sums_x86_64=('4fd509dd190887a874dae2b2d9ebbdbcbd1b0248fcecec522a4968394477
 sha256sums_aarch64=('c3379f4829eb67e1524fe581d6c143efcd370809da414fff85194303e11adcb9')
 source=('vscodium-bin.desktop'
         'vscodium-bin-uri-handler.desktop')
-source_x86_64=("https://github.com/VSCodium/vscodium/releases/download/${pkgver}/${_pkgname}-linux-x64-${pkgver}.tar.gz")
-source_aarch64=("https://github.com/VSCodium/vscodium/releases/download/${pkgver}/${_pkgname}-linux-arm64-${pkgver}.tar.gz")
+source_x86_64=("https://github.com/VSCodium/vscodium/releases/download/${_pkgver}/${_pkgname}-linux-x64-${_pkgver}.tar.gz")
+source_aarch64=("https://github.com/VSCodium/vscodium/releases/download/${_pkgver}/${_pkgname}-linux-arm64-${_pkgver}.tar.gz")
 
 shopt -s extglob
 
@@ -39,7 +41,7 @@ package() {
   install -d -m755 ${pkgdir}/opt/${pkgname}
   install -d -m755 ${pkgdir}/usr/bin
   install -d -m755 ${pkgdir}/usr/share/{applications,pixmaps}
-  cp -r ${srcdir}/!(vscodium-bin?(-uri-handler).desktop|${_pkgname}-linux-@(x|arm)64-${pkgver}.tar.gz) ${pkgdir}/opt/${pkgname}
+  cp -r ${srcdir}/!(vscodium-bin?(-uri-handler).desktop|${_pkgname}-linux-@(x|arm)64-${_pkgver}.tar.gz) ${pkgdir}/opt/${pkgname}
   ln -s /opt/${pkgname}/bin/codium ${pkgdir}/usr/bin/codium
   ln -s /opt/${pkgname}/bin/codium ${pkgdir}/usr/bin/vscodium
   install -D -m644 ${srcdir}/vscodium-bin.desktop ${pkgdir}/usr/share/applications/codium.desktop
