@@ -1,12 +1,14 @@
-# Maintainer: William Brown <glowinthedarkcia@horsefucker.org>
+# Maintainer: Ricahrd Neumann aka. Schard <mail ar richard dash neumann period de>
+# Contributor: William Brown <glowinthedarkcia@horsefucker.org>
 pkgname="processing-bin"
-pkgver="4.0b8"
+pkgver="4.0.1"
+_build=1286
 pkgrel="1"
 arch=("x86_64")
 pkgdesc="Programming environment for creating images, animations and interactions."
 url="https://processing.org/"
-source=("https://github.com/processing/processing4/releases/download/processing-1283-${pkgver}/processing-${pkgver}-linux-x64.tgz")
-sha256sums=('1a82a6761c5683488983fa74f35d9be1be604f48b1608670198a5378af1991fe')
+source=("https://github.com/processing/processing4/releases/download/processing-${_build}-${pkgver}/processing-${pkgver}-linux-x64.tgz")
+sha256sums=('e9067c0b39511c85c1a58b3f59dd33918509ecb824657584e9660ad337fe0136')
 options=("!strip")
 install="$pkgname.install"
 license=("GPL" "LGPL")
