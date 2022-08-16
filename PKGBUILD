@@ -4,11 +4,11 @@
 
 pkgname=mongosh-git
 pkgver=1.5.4.r11.g1db42a4c
-pkgrel=2
+pkgrel=3
 pkgdesc="The MongoDB Shell."
 arch=("x86_64" "aarch64")
 depends=("krb5")
-makedepends=("npm" "python" "git")
+makedepends=("npm" "python" "git" "procps-ng")
 provides=("mongosh" "mongosh-bin")
 conflicts=("mongosh" "mongosh-bin")
 url="https://github.com/mongodb-js/mongosh"
@@ -43,10 +43,10 @@ build(){
     install -Dm644 tmp/crypt-store/linux-${_arch}/mongodb-linux-none-${_arch}-stable-enterprise/LICENSE-Enterprise.txt \
         "LICENSE-Customer Agreement.txt"
 }
-check(){
-    cd "${srcdir}/mongosh"
-    npm run test
-}
+# check(){
+#     cd "${srcdir}/mongosh"
+#     ./node_modules/.bin/lerna run test --scope @mongosh/cli-repl
+# }
 package(){
     cd "${srcdir}/mongosh"
     install -Dm755 dist/mongosh "${pkgdir}/usr/bin/mongosh"
