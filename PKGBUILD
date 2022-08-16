@@ -25,3 +25,5 @@ package() {
   gzip -c README >$pkgdir/usr/share/doc/$pkgname/README.gz
   install -t $pkgdir/usr/share/licenses/$pkgname/ -D LICENSE
 }
+
+# vim:set ts=2 sw=2 et:
