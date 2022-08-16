@@ -2,7 +2,7 @@
 # Packager: Malingshu <myy0222@gmail.com>
 
 pkgname=xdao
-pkgrel=1
+pkgrel=2
 pkgver=1.0.5.r12.469378a
 pkgdesc="An nmbXD TUI cli written in Python."
 arch=('any')
@@ -32,7 +32,6 @@ package() {
   cd "${pkgdir}"
   mkdir -p usr/bin
   mkdir -p usr/share/xdao
-  mkdir -p XDG_CONFIG_HOME/xdcmd
   echo "python /usr/share/xdao/main.py" > usr/bin/xdao
   mv ${srcdir}/xdao/* usr/share/xdao
   chmod +x usr/bin/xdao
