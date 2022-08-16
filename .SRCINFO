@@ -1,20 +1,16 @@
 pkgbase = pam_usb
 	pkgdesc = Hardware authentication for Linux using ordinary flash media (USB & Card based).
 	pkgver = 0.8.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mcdope/pam_usb
 	arch = x86_64
-	license = GPLv2
-	depends = pam
-	depends = dbus
-	depends = python
-	depends = python-dbus
-	depends = python-lxml
+	license = GPL2
 	depends = python-gobject
+	depends = libxml2
 	depends = udisks2
 	options = !emptydirs
 	backup = etc/security/pam_usb.conf
-	source = https://github.com/mcdope/pam_usb/archive/refs/tags/0.8.2.tar.gz
+	source = pam_usb-0.8.2.tar.gz::https://github.com/mcdope/pam_usb/archive/refs/tags/0.8.2.tar.gz
 	sha256sums = e6d49c1a8b01af165c7c98ead9dc28020e8da138cb9c7e0906350477af5ae531
 
 pkgname = pam_usb
