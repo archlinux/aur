@@ -1,0 +1,21 @@
+pkgbase = wf-kill-git
+	pkgdesc = A way to close a wayfire view by clicking on it. Returns the client PID
+	pkgver = r6.c667279
+	pkgrel = 1
+	url = https://github.com/soreau/wf-kill
+	arch = x86_64
+	license = unknow
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkg-config
+	makedepends = git
+	makedepends = cmake
+	makedepends = wayland-protocols
+	makedepends = glm
+	depends = wayfire
+	provides = wf-kill
+	conflicts = wf-kill
+	source = git+https://github.com/soreau/wf-kill.git
+	sha256sums = SKIP
+
+pkgname = wf-kill-git
