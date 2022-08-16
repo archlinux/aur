@@ -4,7 +4,7 @@ _pkgname=ccdrAlgorithm
 _pkgver=0.0.6
 pkgname=r-${_pkgname,,}
 pkgver=0.0.6
-pkgrel=3
+pkgrel=4
 pkgdesc='CCDr Algorithm for Learning Sparse Gaussian Bayesian Networks'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,7 +20,7 @@ optdepends=(
   r-matrix
   r-testthat
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('e55e2b9a4cc39442e2621b2131f1ffba330ced0fa8fe12ae750340c0b5188b5f')
 
 build() {
