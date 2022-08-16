@@ -1,7 +1,7 @@
 # Maintainer: Árni Dagur <arnidg@protonmail.ch>
 
 pkgname='xcp'
-pkgver='0.9.0'
+pkgver='0.9.1'
 pkgrel=1
 pkgdesc="An exctended 'cp', written in Rust"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL-3.0')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tarka/xcp/archive/v$pkgver.tar.gz")
-sha512sums=('861050137b425ca6b4d79a35c03d7b66ca79c8b6cbc98c66f6d35a6399e6e555e67d215ae837bfb60f5096bf82eb48a4f0e21181c5b7f2cd510c08cc523f0bc8')
+sha512sums=('8801eb5c62b969c9f6189e1a3856fb5414a191bb5951851dc85feacbf00d4b1b34b81c0e88c33e7a2e4dd8746e8832c89512a928436d89f1e1813b745d2ad7fe')
 
 build() {
   cd $pkgname-$pkgver
