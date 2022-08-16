@@ -1,0 +1,14 @@
+pkgbase = haskell-validity-bytestring
+	pkgdesc = Validity instances for bytestring
+	pkgver = 0.4.1.1
+	pkgrel = 1
+	url = https://github.com/NorfairKing/validity#readme
+	arch = x86_64
+	license = MIT
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-validity
+	source = https://hackage.haskell.org/packages/archive/validity-bytestring/0.4.1.1/validity-bytestring-0.4.1.1.tar.gz
+	sha256sums = 7db8912c29ceff3fd8943a61845f9c0738d7238ca49bce2e6f3c6bc490bd6732
+
+pkgname = haskell-validity-bytestring
