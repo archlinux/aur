@@ -1,7 +1,7 @@
 pkgbase = r-pairsd3
 	pkgdesc = D3 Scatterplot Matrices
-	pkgver = 0.1.0
-	pkgrel = 4
+	pkgver = 0.1.3
+	pkgrel = 2
 	url = https://cran.r-project.org/package=pairsD3
 	arch = any
 	license = GPL
@@ -9,7 +9,7 @@ pkgbase = r-pairsd3
 	depends = r-htmlwidgets
 	depends = r-shiny
 	optdepends = r-knitr
-	source = https://cran.r-project.org/src/contrib/pairsD3_0.1.0.tar.gz
-	sha256sums = 02a37d885dd25e6ce74eff90aa87628113585d71158ad2a27797082723be8662
+	source = https://cran.r-project.org/src/contrib/pairsD3_0.1.3.tar.gz
+	sha256sums = f90bf49217af2cece05c394ce3dbe0dee4366aabdfcd5892fe07687a4b4b31f0
 
 pkgname = r-pairsd3
