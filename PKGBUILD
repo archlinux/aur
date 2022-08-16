@@ -1,15 +1,15 @@
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-moosex-app'
 pkgver='1.42'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Write user-friendly command line apps with even less suffering"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-config-any' 'perl-module-pluggable' 'perl-moose' 'perl-moosex-types-path-class' 'perl-path-class' 'perl-pod-elemental' 'perl-namespace-autoclean' 'perl')
-checkdepends=('perl-test-most' 'perl-test-nowarnings')
+depends=('perl-module-pluggable' 'perl-moose' 'perl-pod-elemental')
+checkdepends=('perl-test-most' 'perl-test-nowarnings' 'perl-config-any')
 url='https://metacpan.org/release/MooseX-App'
 source=(https://cpan.metacpan.org/authors/id/M/MA/MAROS/MooseX-App-$pkgver.tar.gz)
 sha256sums=('029108abf9867f3cb1d40b30d43e93921b7f339927938f427401420342a6b327')
