@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Description: This is a script to update the version
-# Run it with `sh update.sh` and it will do the following:
+# Run it with `sh update.sh <version>` and it will do the following:
 # 1. Update the `pkgver` in `PKGBUILD` to the latest version
 # 2. Run `updpkgsums` to update the sha256 sums
 # 	- If you don't have it installed, run `sudo pacman -S pacman-contrib`
@@ -10,7 +10,6 @@
 # makepkg --printsrcinfo > .SRCINFO
 # ```
 # 4. Push changes to GitHub: `git push`
-# If you want to perform a dry run of this script run DRY_RUN=1 yarn release:prep
 
 set -euo pipefail
 
@@ -26,11 +25,15 @@ main() {
   ls
   grep "pkgver=" PKGBUILD
   CODE_SERVER_CURRENT_VERSION=$(grep "pkgver=" PKGBUILD | cut -d "=" -f2-)
-  # Ask which version we should update to
-  # In the future, we'll automate this and determine the latest version automatically
   echo "Current version: ${CODE_SERVER_CURRENT_VERSION}"
 
-  read -r -p "What version of code-server do you want to update to?"$'\n' CODE_SERVER_VERSION_TO_UPDATE
+  CODE_SERVER_VERSION_TO_UPDATE=${1:-""}
+
+  if [ "$CODE_SERVER_VERSION_TO_UPDATE" == "" ]; then
+    echo "Please call this script with the version to update to."
+    echo "i.e. 4.5.2"
+    exit 1
+  fi
 
   echo -e "Great! We'll update to $CODE_SERVER_VERSION_TO_UPDATE\n"
 
