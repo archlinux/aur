@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rols
-_pkgver=2.24.2
+_pkgver=2.24.3
 pkgname=r-${_pkgname,,}
-pkgver=2.24.2
+pkgver=2.24.3
 pkgrel=1
 pkgdesc='An R interface to the Ontology Lookup Service'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('33b010e6c338aeddb57d625b4fba3d8ae30b2f1a0b5c2f8434bb255df432d630')
+sha256sums=('844d5c5af86185016eec6caf017135d3182df56ea85768e4824d196736a3db76')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
