@@ -2,7 +2,7 @@
 # Contributor: Morten Linderud <foxboron@archlinux.org>
 
 pkgname=smenu
-pkgver=0.9.19
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A powerful and versatile selection tool for interactive or scripting use"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/p-gen/smenu"
 license=('GPL')
 depends=('ncurses')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/p-gen/smenu/archive/v${pkgver}.tar.gz")
-sha256sums=('179b0b57db5a9a8606d8d9d364f0662d4e5dd57592bf7896ada4022c9acc83cb')
+sha256sums=('da59622147717965a5f84ce89c8128dd2ccc65e0ccc51a05211259fdaaca7bcf')
 
 build() {
     cd "${pkgname}-${pkgver}"

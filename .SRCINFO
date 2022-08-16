@@ -1,12 +1,12 @@
 pkgbase = smenu
 	pkgdesc = A powerful and versatile selection tool for interactive or scripting use
-	pkgver = 0.9.19
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/p-gen/smenu
 	arch = x86_64
 	license = GPL
 	depends = ncurses
-	source = smenu-0.9.19.tar.gz::https://github.com/p-gen/smenu/archive/v0.9.19.tar.gz
-	sha256sums = 179b0b57db5a9a8606d8d9d364f0662d4e5dd57592bf7896ada4022c9acc83cb
+	source = smenu-1.0.0.tar.gz::https://github.com/p-gen/smenu/archive/v1.0.0.tar.gz
+	sha256sums = da59622147717965a5f84ce89c8128dd2ccc65e0ccc51a05211259fdaaca7bcf
 
 pkgname = smenu
