@@ -1,11 +1,11 @@
 # Maintainer: Nogweii <packages@nogweii.net>
 pkgname=nvim-treesitter-parsers-git
 pkgver=r595.a0251c98
-pkgrel=1
+pkgrel=2
 pkgdesc="All of the registered tree sitter parsers used by Neovim"
 arch=(x86_64)
 url="https://github.com/nvim-treesitter/nvim-treesitter"
-license=('GPL')
+license=('Apache')
 depends=('tree-sitter' 'neovim')
 makedepends=('git' 'npm') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("${pkgname%-git}")
@@ -33,4 +33,6 @@ package() {
 	cd "$srcdir/${_dirname}"
 	mkdir -p "$pkgdir/usr/share/nvim/runtime/parser/"
 	cp parser/*.so -t "$pkgdir/usr/share/nvim/runtime/parser/"
+	mkdir -p "$pkgdir/usr/share/nvim/runtime/parser-info/"
+	cp parser-info/*.revision -t "$pkgdir/usr/share/nvim/runtime/parser-info/"
 }
