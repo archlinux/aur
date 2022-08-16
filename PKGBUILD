@@ -4,7 +4,7 @@ _pkgname=udapi
 _pkgver=0.1.3
 pkgname=r-${_pkgname,,}
 pkgver=0.1.3
-pkgrel=4
+pkgrel=5
 pkgdesc='Urban Dictionary API Client'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,7 @@ depends=(
 optdepends=(
   r-testthat
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('c8986a63be002c4fb9b65a94fa91be4054dd53ea803661e1084945049b33d663')
 
 build() {
