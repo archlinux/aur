@@ -5,13 +5,13 @@ _pkgname=vmware-host-modules
 pkgver=16.2.4.k5.18.r3.gc06f22f
 _pkgver=$(echo $pkgver | cut -c 1-6)
 url='https://github.com/mkubecek/vmware-host-modules'
-pkgrel=2
+pkgrel=3
 pkgdesc='Patches needed to build VMware Player host modules against recent kernels'
 arch=('x86_64' 'aarch64' 'i386')
 license=('GPL2')
 provides=(vmware-host-modules-dkms vmware-host-modules)
 depends=('dkms')
-makedepends=('git' 'fd')
+makedepends=('git' 'findutils')
 source=("git+https://github.com/mkubecek/${_pkgname}.git#branch=player-$_pkgver"
         dkms-vmmon.conf
         dkms-vmnet.conf)
@@ -31,12 +31,19 @@ package() {
   cp "${srcdir}/dkms-vmmon.conf" "${pkgdir}/usr/src/vmmon-1/dkms.conf"
   cp "${srcdir}/dkms-vmnet.conf" "${pkgdir}/usr/src/vmnet-1/dkms.conf"
   cd "${srcdir}/${_pkgname}/"
-  make clean
-  make
-  make DESTDIR="${pkgdir}/usr/src/" install
-  for file in o cmd symvers order ko mod mod.c
-  do
-  fd -HIig0 \*.${file} ${pkgdir}/usr/src/ | xargs -0 rm
-  done
+  # is there even a point to doing this?
+  #make clean
+  #make
+  #make DESTDIR="${pkgdir}/usr/src/" install
+
+  # nuke files we don't want
+  # messy I know, but I don't know a better way to do this.
+  find "${pkgdir}" -type f -name '*.ko' -print -delete
+  find "${pkgdir}" -type f -name '*.o' -print -delete
+  find "${pkgdir}" -type f -name '*.symvers' -print -delete
+  find "${pkgdir}" -type f -name '*.order' -print -delete
+  find "${pkgdir}" -type f -name '*.mod' -print -delete
+  find "${pkgdir}" -type f -name '*.mod.c' -print -delete
+  find "${pkgdir}" -type f -name '*.cmd' -print -delete
 }
 # vim:set ts=2 sw=2 etc
