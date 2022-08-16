@@ -5,8 +5,9 @@ function info() {
   echo "put this in your zshrc to use it!"
   echo "
   source '/usr/share/antidote/antidote.zsh'
-  antidote bundle < $ZDOTDIR/.zsh_plugins.txt > $ZDOTDIR/.zsh_plugins.zsh
-  source $ZDOTDIR/.zsh_plugins.zsh
+  [[ ! -f \"\$ZDOTDIR/.zsh_plugins.zsh\" ]] && \\
+    antidote bundle < \"\$ZDOTDIR/.zsh_plugins.txt\" > \"\$ZDOTDIR/.zsh_plugins.zsh\"
+  source \"\$ZDOTDIR/.zsh_plugins.zsh\"
   "
   echo "--------------------------------------------------"
 }
