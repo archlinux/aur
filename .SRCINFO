@@ -1,12 +1,13 @@
 pkgbase = wind-bin
 	pkgdesc = Wind financial terminal, 万得金融终端
 	pkgver = 22.2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.wind.com.cn
 	install = wind-bin.install
 	arch = x86_64
 	license = unknown
 	depends = libidn11
+	depends = libxcrypt-compat
 	provides = wind
 	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.wind.wft/com.wind.wft_22.2.1.1_amd64.deb
 	source = wind.sh

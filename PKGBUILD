@@ -3,12 +3,12 @@
 pkgname=wind-bin
 _pkgname=wind
 pkgver=22.2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Wind financial terminal, 万得金融终端"
 arch=("x86_64")
 url="http://www.wind.com.cn"
 license=("unknown")
-depends=('libidn11')
+depends=('libidn11' 'libxcrypt-compat')
 provides=("$_pkgname")
 install=wind-bin.install
 source=("https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.wind.wft/com.wind.wft_${pkgver}_amd64.deb"
