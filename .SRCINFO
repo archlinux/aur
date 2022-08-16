@@ -1,0 +1,16 @@
+pkgbase = caerbannog-git
+	pkgdesc = A GUI frontend for pass, particularly suited for mobile use
+	pkgver = 0.1.r7.gbc3e4f4
+	pkgrel = 1
+	url = https://git.sr.ht/~craftyguy/caerbannog
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = meson
+	depends = pass
+	depends = python-gpgme
+	depends = python-gobject
+	source = git+https://git.sr.ht/~craftyguy/caerbannog
+	sha256sums = SKIP
+
+pkgname = caerbannog-git
