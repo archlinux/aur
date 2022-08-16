@@ -1,14 +1,13 @@
 pkgbase = wslu
 	pkgdesc = A collection of utilities for Windows Subsystem for Linux
 	pkgver = 3.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wslutiliti.es/wslu
 	install = wslu.install
 	arch = any
 	license = GPL3
 	depends = bc
 	depends = imagemagick
-	depends = psmisc
 	optdepends = bash-completion: for CLI args completion
 	source = wslu-3.2.4.tar.gz::https://github.com/wslutilities/wslu/archive/refs/tags/v3.2.4.tar.gz
 	sha256sums = 40eaadaddbab82154985966690c686679abdc59446c79555de1798fa356e1680

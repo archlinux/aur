@@ -3,12 +3,12 @@
 
 pkgname=wslu
 pkgver=3.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of utilities for Windows Subsystem for Linux"
 arch=(any)
 url="https://wslutiliti.es/wslu"
 license=('GPL3')
-depends=('bc' 'imagemagick' 'psmisc')
+depends=('bc' 'imagemagick')
 optdepends=('bash-completion: for CLI args completion')
 install=wslu.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wslutilities/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
