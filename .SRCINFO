@@ -1,0 +1,22 @@
+pkgbase = haskell-autodocodec
+	pkgdesc = Self-documenting encoder and decoder
+	pkgver = 0.2.0.0
+	pkgrel = 1
+	url = https://github.com/NorfairKing/autodocodec#readme
+	arch = x86_64
+	license = MIT
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-aeson
+	depends = haskell-hashable
+	depends = haskell-scientific
+	depends = haskell-unordered-containers
+	depends = haskell-validity
+	depends = haskell-validity-scientific
+	depends = haskell-vector
+	source = https://hackage.haskell.org/packages/archive/autodocodec/0.2.0.0/autodocodec-0.2.0.0.tar.gz
+	source = Setup.hs
+	sha256sums = af3abe177924979cfe7ca734a4ddc27966ca563974e50450f577e191c145b637
+	sha256sums = f2a37c4a254ff8eb780133ca568ae5f4f4dcdee5219982154e6faef749b8327c
+
+pkgname = haskell-autodocodec
