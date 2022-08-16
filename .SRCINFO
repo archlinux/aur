@@ -1,7 +1,7 @@
 pkgbase = cura-5
 	pkgdesc = Uncompressed version of Ultimaker Cura 5.1
 	pkgver = 5.1.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://ultimaker.com/software/ultimaker-cura
 	arch = x86_64
 	license = LGPL3
