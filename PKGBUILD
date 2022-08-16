@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=FMStable
-_pkgver=0.1-3
+_pkgver=0.1-4
 pkgname=r-${_pkgname,,}
-pkgver=0.1.3
-pkgrel=3
+pkgver=0.1.4
+pkgrel=2
 pkgdesc='Finite Moment Stable Distributions'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8c882a6a36b98b83748ca85586acb9cacf1e6c2348644b593f56af5ada47719f')
+sha256sums=('2a391061dc2d2e89f6639aada07e839fdf950c0b20e27566219bb89befb4e93a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
