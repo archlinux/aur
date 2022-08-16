@@ -4,8 +4,8 @@
 # Contributor: BlackLotus89 <maxmusterm@gmail.com>
 
 pkgname=toybox
-pkgver=0.8.7
-pkgrel=2
+pkgver=0.8.8
+pkgrel=1
 pkgdesc='All-in-one Linux command line'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://landley.net/toybox'
@@ -15,10 +15,14 @@ source=(
     "https://landley.net/${pkgname}/downloads/${pkgname}-${pkgver}.tar.gz"
     # Alternative link (checksum will be different due to compression): "https://github.com/landley/${pkgname}/archive/${pkgver}.tar.gz"
 )
-sha256sums=(
-    'b508bf336f82cb0739b77111f945931d1a143b5a53905cb753cd2607cfdd1494'
-    # github version 0.8.7: b6f43d5738df54623ed21c32f430d1d5c5ac7ef465a6a883890f104b59d5d9e4
-)
+sha256sums=('dafd41978d40f02a61cf1be99a2b4a25812bbfb9c3157e679ee7611202d6ac58')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  # Work around issue #362 (breakage on recent glibc)
+  sed -i $'1i#define _LINUX_MOUNT_H' toys/other/{blkdiscard,blockdev,fsfreeze,lsattr}.c
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
