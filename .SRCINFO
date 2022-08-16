@@ -1,7 +1,7 @@
 pkgbase = python-cheap_repr
 	pkgdesc = Better version of repr/reprlib for short, cheap string representations
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/alexmojaki/cheap_repr
 	arch = any
 	license = MIT
