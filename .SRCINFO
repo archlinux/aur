@@ -1,13 +1,13 @@
 pkgbase = guess-that-lang-bin
 	pkgdesc = CLI game to see how fast you can guess the language of a code block!
-	pkgver = 1.0.17
+	pkgver = 1.0.18
 	pkgrel = 1
 	url = https://github.com/Lioness100/guess-that-lang
 	arch = x86_64
 	license = Apache-2.0
 	provides = guess-that-lang
 	conflicts = guess-that-lang
-	source_x86_64 = https://github.com/Lioness100/guess-that-lang/releases/download/v1.0.17/guess-that-lang_v1.0.17_x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 594b68068fa17036adf5cb346d55bec5f22cdb48adbf11dbf8e264ce39ce91a7
+	source_x86_64 = https://github.com/Lioness100/guess-that-lang/releases/download/v1.0.18/guess-that-lang_v1.0.18_x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 3ed9a7bf597b11aeef405d52e6f6345ea44c53d835bd262337335439c8e31b1f
 
 pkgname = guess-that-lang-bin
