@@ -1,6 +1,6 @@
 # Maintainer:  Paul van der Linden <mail@paultjuh.org>
 pkgname=scangearmp2-sane-git
-pkgver=4.30.0.rgtk3+subnet.2.gdf5d76c
+pkgver=4.40
 pkgrel=1
 pkgdesc="Canon ScanGear MP v2 scanner utility and sane backend"
 arch=('x86_64')
