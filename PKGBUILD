@@ -25,7 +25,12 @@ build() {
 
 check() {
   cd "plover_stroke-$pkgver"
-  PYTHONPATH="$PWD/build/lib.linux-$CARCH-$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')" pytest test
+  (cd "$(python <<\EOF
+cmd =__import__("setuptools").Distribution().get_command_obj("build")
+cmd.finalize_options()
+print(cmd.build_platlib)
+EOF
+  )" && PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python -m pytest "$OLDPWD/test")
 }
 
 package() {
