@@ -1,17 +1,17 @@
 pkgbase = fchat-rising-appimage
 	pkgdesc = A heavily customized version of the mainline F-Chat 3.0 client.
-	pkgver = 1.18.1
+	pkgver = 1.19.1
 	pkgrel = 1
 	url = https://github.com/mrstallion/fchat-rising/
 	arch = x86_64
 	license = MIT
 	provides = fchat
 	conflicts = fchat
-	noextract = fchat-rising-appimage-1.18.1.AppImage
+	noextract = fchat-rising-appimage-1.19.1.AppImage
 	options = !strip
-	source_x86_64 = fchat-rising-appimage-1.18.1.AppImage::https://github.com/mrstallion/fchat-rising/releases/download/v1.18.1/F-Chat-Rising-1.18.1-linux.AppImage
-	source_x86_64 = https://raw.githubusercontent.com/mrstallion/fchat-rising/v1.18.1/LICENSE
-	sha256sums_x86_64 = 51aa4f2c569570bec848e359b86b7b58074efb26b5fc93c1f804b6da9104b615
+	source_x86_64 = fchat-rising-appimage-1.19.1.AppImage::https://github.com/mrstallion/fchat-rising/releases/download/v1.19.1/F-Chat-Rising-1.19.1-linux.AppImage
+	source_x86_64 = https://raw.githubusercontent.com/mrstallion/fchat-rising/v1.19.1/LICENSE
+	sha256sums_x86_64 = 87b8eac95ba10044af32b75c477930531f6a76841106fcefb2161296cf342fe4
 	sha256sums_x86_64 = SKIP
 
 pkgname = fchat-rising-appimage
