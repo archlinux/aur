@@ -1,6 +1,6 @@
 pkgbase = angularjs
 	pkgdesc = An open-source JavaScript framework, whose goal is to augment browser-based applications with model–view–controller (MVC) capability, in an effort to make both development and testing easier.
-	pkgver = 1.8.0
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = http://angularjs.org
 	arch = any
