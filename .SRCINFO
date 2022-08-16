@@ -1,6 +1,6 @@
 pkgbase = sawsge
 	pkgdesc = Simple Markdown static site generator for blogs or projects
-	pkgver = 0.2.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/sawshep/sawsge
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = sawsge
 	depends = ruby-pandoc-ruby
 	depends = ruby-nokogiri
 	depends = ruby-parallel
-	noextract = sawsge-0.2.1.gem
+	noextract = sawsge-1.0.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/sawsge-0.2.1.gem
-	sha256sums = 3704f446da8466841131e283f83aa54a2f1e2e1243c84273d8834312d4087b7f
+	source = https://rubygems.org/downloads/sawsge-1.0.0.gem
+	sha256sums = 547b45701d41ff452fce88ac5d76da7cf3e18a82a1026f44dce8c0a464e99489
 
 pkgname = sawsge
