@@ -2,7 +2,7 @@
 pkgname='ttf-elice-digital-baeum'
 fontname='EliceDigitalBaeum'
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A digital sans-serif font with JP/KR support, made by elice."
 arch=('any')
 provides=('ttf-elice-digital-baeum')
@@ -14,8 +14,8 @@ sha256sums=('9e2fc40ac8dc1e6faa5aff5d89dd45462b498513a9918f2f80200876f7ecc72b')
 
 package_ttf-elice-digital-baeum() {
 	install -dm 755 "$pkgdir/usr/share/fonts/TTF"
-	install -m 644 ${fontname}_Regular.ttf "${pkgdir}/usr/share/fonts/TTF/{fontname}-Regular.ttf"
-	install -m 644 ${fontname}_Bold.ttf "${pkgdir}/usr/share/fonts/TTF/{fontname}-Bold.ttf"
+	install -m 644 ${fontname}_Regular.ttf "${pkgdir}/usr/share/fonts/TTF/${fontname}-Regular.ttf"
+	install -m 644 ${fontname}_Bold.ttf "${pkgdir}/usr/share/fonts/TTF/${fontname}-Bold.ttf"
 	fc-cache -f
 }
 
