@@ -1,8 +1,8 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/um 5.19.0 Kernel Configuration
+# Linux/um 5.19.2 Kernel Configuration
 #
-CONFIG_CC_VERSION_TEXT="gcc (GCC) 12.1.1 20220801"
+CONFIG_CC_VERSION_TEXT="gcc (GCC) 12.1.1 20220730"
 CONFIG_CC_IS_GCC=y
 CONFIG_GCC_VERSION=120101
 CONFIG_CLANG_VERSION=0
@@ -1424,7 +1424,6 @@ CONFIG_CRYPTO_CRC32C=y
 # CONFIG_CRYPTO_CRC32 is not set
 # CONFIG_CRYPTO_XXHASH is not set
 # CONFIG_CRYPTO_BLAKE2B is not set
-# CONFIG_CRYPTO_BLAKE2S is not set
 # CONFIG_CRYPTO_CRCT10DIF is not set
 # CONFIG_CRYPTO_GHASH is not set
 # CONFIG_CRYPTO_POLY1305 is not set
