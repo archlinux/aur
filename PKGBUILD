@@ -21,5 +21,6 @@ package() {
 	make IDIR="${pkgdir}/usr/bin" install
 
 	install -Dm644 "${srcdir}/${_appname}-${pkgver}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
 }
 
