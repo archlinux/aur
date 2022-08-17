@@ -1,4 +1,4 @@
-# Maintainer: Chris Lane <aur at chrislane dot com>
+# Maintainer: syntheit <daniel@matv.io>
 
 _pkgname=icu
 pkgname=icu67
