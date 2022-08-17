@@ -3,7 +3,7 @@
 
 pkgname=fluffychat-bin
 _pkgname=fluffychat
-pkgver=1.5.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('x86_64' )
@@ -14,10 +14,10 @@ makedepends=('unzip')
 optdepends=('libolm: E2E Encryption support')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source_x86_64=("fluffychat-v${pkgver}_x86_64.tar.zst::https://gap.cdn.entr0py.cloud/garionion/fluffychat/releases/download/tag:v${pkgver}/fluffychat-linux-x86.tar.zst")
-#source_aarch64=("fluffychat-v${pkgver}_aarch64.tar.gz::https://gitlab.com/api/v4/projects/16112282/packages/generic/fluffychat/${pkgver}/fluffychat-linux-arm64.tar.gz")
-sha256sums_x86_64=('ba7975b95d32ed902d7b92271a41a3c2f484a844d96ec3acb401702572a0d343')
-#sha256sums_aarch64=('e4e927f9b5a5db6b4836700a19b6e7a64f409ca3aba4c09ffa8793456f7e4008')
+source_x86_64=("fluffychat-v${pkgver}_x86_64.tar.gz::https://gitlab.com/api/v4/projects/16112282/packages/generic/fluffychat/${pkgver}/fluffychat-linux-x86.tar.gz")
+source_aarch64=("fluffychat-v${pkgver}_aarch64.tar.gz::https://gitlab.com/api/v4/projects/16112282/packages/generic/fluffychat/${pkgver}/fluffychat-linux-arm64.tar.gz")
+sha256sums_x86_64=('c5c821d7b0ce3364663c6dee20b257894aafc9939e5f216a843b82bce9b276c9')
+sha256sums_aarch64=('3167d9a9fcdd80d0456f2517828e7524a357200ca91cbcb53abbebd373d4ebc3')
 
 
 package() {  
