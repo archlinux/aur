@@ -14,6 +14,7 @@ optdepends=(
   'slop: OCR support on Xorg'
   'slurp: OCR support on wlroots'
   'grim: OCR support on wlroots'
+  'mpv: media playback integration'
 )
 provides=()
 conflicts=()
