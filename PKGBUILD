@@ -7,7 +7,7 @@ pkgrel=1
 arch=(x86_64 aarch64)
 url=https://github.com/stenzek/duckstation
 license=(GPL3)
-makedepends=(git cmake extra-cmake-modules qt6-tools libdrm gtk3 ninja)
+makedepends=(git cmake extra-cmake-modules qt6-tools libdrm libpulse alsa-lib jack2 sndio gtk3 ninja)
 depends=(sdl2 qt6-base)
 optdepends=()
 provides=("${pkgname%-git}")
@@ -39,8 +39,17 @@ package() {
     ln -svt "${pkgdir}/usr/bin" /opt/"${pkgname%-git}"/"${pkgname%-git}"-qt
 
     # Desktop file
-    install -Dm644 -t "${pkgdir}/usr/share/applications/" "${pkgname%-git}"/extras/linux-desktop-files/duckstation-qt.desktop
-    sed -e 's/Icon=duckstation-qt/Icon=duckstation/' -i "${pkgdir}/usr/share/applications/duckstation-qt.desktop"
-    #sed -e 's/Icon=duckstation-qt/Icon=duckstation/' -i "${pkgdir}/usr/share/applications/duckstation-nogui.desktop"
-    install -Dm644 "${pkgname%-git}"/extras/icons/icon-256px.png "${pkgdir}/usr/share/pixmaps/duckstation.png"
+    cat > "${pkgname%-git}/data/resources/.desktop" << EOF
+[Desktop Entry]
+Type=Application
+Name=DuckStation
+GenericName=PlayStation 1 Emulator
+Comment=Fast PlayStation 1 emulator
+Icon=duckstation
+TryExec=duckstation-qt
+Exec=duckstation-qt %f
+Categories=Game;Emulator;Qt;
+EOF
+    install -Dm644 "${pkgname%-git}/data/resources/.desktop" "${pkgdir}/usr/share/applications/duckstation-qt.desktop"
+    install -Dm644 "${pkgname%-git}/data/resources/images/duck.png" "${pkgdir}/usr/share/pixmaps/duckstation.png"
 }
