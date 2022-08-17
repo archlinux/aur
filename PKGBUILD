@@ -2,7 +2,7 @@
 pkgname='elice-digital-baeum-variable'
 fontname='EliceDigitalBaeum'
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A digital sans-serif font with JP/KR support, made by elice."
 arch=('any')
 provides=(
@@ -27,18 +27,18 @@ sha256sums=(
 
 package_otf-elice-digital-baeum_all() {
 	install -dm 755 "$pkgdir/usr/share/fonts/OTF"
-	install -m 644 ${fontname}OTF_Regular.otf "${pkgdir}/usr/share/fonts/OTF/{fontname}-Regular.otf"
-	install -m 644 __MACOSX/._${fontname}OTF_Regular.otf "${pkgdir}/usr/share/fonts/OTF/{fontname}-MacOS-Regular.otf"
-	install -m 644 ${fontname}OTF_Bold.otf "${pkgdir}/usr/share/fonts/OTF/{fontname}-Bold.otf"
-	install -m 644 __MACOSX/._${fontname}OTF_Bold.otf "${pkgdir}/usr/share/fonts/OTF/{fontname}-MacOS-Bold.otf"
+	install -m 644 ${fontname}OTF_Regular.otf "${pkgdir}/usr/share/fonts/OTF/${fontname}-Regular.otf"
+	install -m 644 __MACOSX/._${fontname}OTF_Regular.otf "${pkgdir}/usr/share/fonts/OTF/${fontname}-MacOS-Regular.otf"
+	install -m 644 ${fontname}OTF_Bold.otf "${pkgdir}/usr/share/fonts/OTF/${fontname}-Bold.otf"
+	install -m 644 __MACOSX/._${fontname}OTF_Bold.otf "${pkgdir}/usr/share/fonts/OTF/${fontname}-MacOS-Bold.otf"
 	fc-cache -f
 }
 
 package_ttf-elice-digital-baeum_all() {
 	install -dm 755 "$pkgdir/usr/share/fonts/TTF"
-	install -m 644 ${fontname}_Regular.ttf "${pkgdir}/usr/share/fonts/TTF/{fontname}-Regular.ttf"
-	install -m 644 __MACOSX/._${fontname}_Regular.ttf "${pkgdir}/usr/share/fonts/TTF/{fontname}-MacOS-Regular.ttf"
-	install -m 644 ${fontname}_Bold.ttf "${pkgdir}/usr/share/fonts/TTF/{fontname}-Bold.ttf"
-	install -m 644 __MACOSX/._${fontname}_Bold.ttf "${pkgdir}/usr/share/fonts/TTF/{fontname}-MacOS-Bold.ttf"
+	install -m 644 ${fontname}_Regular.ttf "${pkgdir}/usr/share/fonts/TTF/${fontname}-Regular.ttf"
+	install -m 644 __MACOSX/._${fontname}_Regular.ttf "${pkgdir}/usr/share/fonts/TTF/${fontname}-MacOS-Regular.ttf"
+	install -m 644 ${fontname}_Bold.ttf "${pkgdir}/usr/share/fonts/TTF/${fontname}-Bold.ttf"
+	install -m 644 __MACOSX/._${fontname}_Bold.ttf "${pkgdir}/usr/share/fonts/TTF/${fontname}-MacOS-Bold.ttf"
 	fc-cache -f
 }
