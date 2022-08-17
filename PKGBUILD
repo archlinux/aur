@@ -1,10 +1,10 @@
 # Maintainer: Anders Pedersen <silwerspawn+aur.archlinux.org@gmail.com>
 pkgname=edrawmax-bin
-pkgver=11.5.6
+pkgver=12.0.1
 pkgrel=2
-pkgmaver=11
+pkgmaver=12
 pkgmaname=EdrawMax
-_pkgname_=edrawmax
+_pkgmaname_=edrawmax
 epoch=
 pkgdesc="All-in-One Diagram Software"
 arch=('x86_64')
@@ -22,37 +22,36 @@ backup=()
 options=(!strip)
 install=
 changelog=
-source=(http://download.edrawsoft.com/archives/${_pkgname_}_${pkgver}_en_${arch}.rpm edrawmax.desktop)
-sha256sums=('2f58d4ee0705084255b18d8def6e609aa23cfcf9922632e38f13c17d790eb4f1'
+source=(http://download.edrawsoft.com/archives/${pkgmaname}_${pkgver}_en.rpm edrawmax.desktop)
+sha256sums=('f6a64c3f9a0b9757c45a82c7d10fb70ffa095ac285528934b962e47e23c19b05'
 '6ef72d55814737c3d49497857377ebadcf2f985da378605202e643e8cc450fc6')
 noextract=()
 
 package() {
-  mkdir -p "${pkgdir}/opt/${pkgmaname}-${pkgmaver}"
-  mv "${srcdir}/opt/EdrawMax-${pkgmaver}/"* "${pkgdir}/opt/${pkgmaname}-${pkgmaver}/"
-  mkdir -p "${pkgdir}/usr/share/applications/"
-  mkdir -p "${pkgdir}/usr/share/mime/packages/"
-  mkdir -p "${pkgdir}/usr/share/icons/gnome/scalable/mimetypes/"
+  mkdir -p "${pkgdir}/opt/${_pkgmaname_}/${pkgmaver}"
+  mkdir -p "${pkgdir}/usr/share"
+  mv "${srcdir}/opt/EdrawMax-${pkgmaver}/"* "${pkgdir}/opt/${_pkgmaname_}/${pkgmaver}/"
+  mv "${srcdir}/usr/share/"* "${pkgdir}/usr/share"
   mkdir -p "${pkgdir}/usr/bin/"
-  cd "${pkgdir}/opt/${pkgmaname}-${pkgmaver}"
-  cp -f edrawmax.xml "${pkgdir}/usr/share/mime/packages/"
-  cp -f eddx.svg "${pkgdir}/usr/share/icons/gnome/scalable/mimetypes/"
-  cp -f edrawmax.desktop "${pkgdir}/usr/share/applications/"
-  ln -f -s "/opt/${pkgmaname}-${pkgmaver}/${pkgmaname}" "${pkgdir}/usr/bin/edrawmax"
+  sed -i "s#/opt/EdrawMax-12#/opt/edrawmax/12#" ${pkgdir}/opt/${_pkgmaname_}/${pkgmaver}/edrawmax.sh
+  sed -i "s#/opt/EdrawMax-12#/opt/edrawmax/12#" ${pkgdir}/usr/share/applications/edrawmax.desktop
+  chmod +x ${pkgdir}/opt/${_pkgmaname_}/${pkgmaver}/edrawmax.sh
+  cd "${pkgdir}/opt/${_pkgmaname_}/${pkgmaver}"
+  ln -f -s "/opt/${_pkgmaname_}/${pkgmaver}/${_pkgmaname_}.sh" "${pkgdir}/usr/bin/edrawmax"
 }
 
 post_install() {
   chmod +x /opt/${pkgmaname}-${pkgmaver}/${pkgmaname}
   update-desktop-database /usr/share/applications
   update-mime-database /usr/share/mime
-  gtk-update-icon-cache /usr/share/icons/gnome/ -f
+  gtk-update-icon-cache /usr/share/icons/hicolor/ -f
   ldconfig
 }
 
 post_upgrade() {
   update-desktop-database /usr/share/applications
   update-mime-database /usr/share/mime
-  gtk-update-icon-cache /usr/share/icons/gnome/ -f
+  gtk-update-icon-cache /usr/share/icons/hicolor/ -f
   ldconfig
 }
 
