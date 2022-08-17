@@ -2,7 +2,7 @@
 
 pkgname=go-livepeer-bin
 _pkgname=go-livepeer
-pkgver=0.5.33
+pkgver=0.5.34
 pkgrel=1
 pkgdesc='Official Go binaries of the Livepeer protocol'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("https://github.com/livepeer/${_pkgname}/releases/download/v${pkgver}/li
   "https://raw.githubusercontent.com/livepeer/go-livepeer/master/LICENSE"
   "livepeer.conf"
   "livepeer.service")
-sha256sums=('93207cba5d5ea15cb0e9396811d15bcf039b351db53bef522626fd42d0afd877'
+sha256sums=('1a53c8ee0be0c93b9f1f6a2458ce469401b7623e577a3c22708446c0c21df5a9'
             'c4de4cf3034bc69b6832f22ea3e18957639e41f2ad7d4cfed6919f6e0dbf99ba'
             '82a7bc93294938bd4621f7515c29ffe01c5e9fbc795dff59b82a5ad0ded42cca'
             '7c2f96d5410bb9d8249c90431e97833686bf0909f8c673226c8436a6f3abdadc')
