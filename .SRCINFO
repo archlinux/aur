@@ -1,7 +1,7 @@
 pkgbase = cura-5-plugin-octoprint
 	pkgdesc = Cura plugin which enables printing directly to OctoPrint and monitoring the progress
 	pkgver = 3.7.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/fieldofview/OctoPrintPlugin
 	arch = any
 	license = GPL3
