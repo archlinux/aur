@@ -1,6 +1,6 @@
 pkgbase = lottieconv
-	pkgdesc = Convert lottie files to WEBP
-	pkgver = 0.1.0
+	pkgdesc = Convert lottie files to WEBP or GIF
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://crates.io/crates/lottieconv
 	arch = aarch64
@@ -16,7 +16,7 @@ pkgbase = lottieconv
 	conflicts = lottie2webp
 	replaces = lottie2gif
 	replaces = lottie2webp
-	source = lottieconv-0.1.0.tar.gz::https://crates.io/api/v1/crates/lottieconv/0.1.0/download
-	sha512sums = 579b767e6829c7973a3f2cd1e870709e101e10e8a82f08aeafefa0d37057020a05f076cc037cc925a4799761e9f8ffc4718427a1fb499a4ed195f68b63f9c674
+	source = lottieconv-0.2.0.tar.gz::https://crates.io/api/v1/crates/lottieconv/0.2.0/download
+	sha512sums = a2b1ec0b16dfbab1f1efe1573e8c9a5b61509a58ae843c317772db70d205431673190a06d0c0854a43febe0008f227ab8264f3c3b48799e1ead5d373dc07e715
 
 pkgname = lottieconv
