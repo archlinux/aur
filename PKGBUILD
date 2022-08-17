@@ -4,24 +4,24 @@
 
 pkgbase=intellij-idea-ultimate-edition
 pkgname=(intellij-idea-ultimate-edition intellij-idea-ultimate-edition-jre)
-pkgver=2022.2
+pkgver=2022.2.1
 pkgrel=1
-_buildver=222.3345.118
+_buildver=222.3739.54
 jbr_ver=17.0.3
 jbr_build=aarch64-b469
-jbr_minor=37
+jbr_minor=44
 arch=('any')
 pkgdesc="An intelligent IDE for Java, Groovy and other programming languages with advanced refactoring features intensely focused on developer productivity."
 url="https://www.jetbrains.com/idea/"
-license=('Commercial')
+license=('custom:commercial')
 options=(!strip)
 source=("https://download.jetbrains.com/idea/ideaIU-$pkgver.tar.gz"
         "jetbrains-idea.desktop")
 source_aarch64=("https://cache-redirector.jetbrains.com/intellij-jbr/jbr-$jbr_ver-linux-$jbr_build.$jbr_minor.tar.gz"
                 "https://github.com/JetBrains/intellij-community/raw/master/bin/linux/aarch64/fsnotifier")
-sha256sums=('15654e4b0b27f56427184ceefe5229f2a644218f83dfd735b0e8dcb7041610e7'
+sha256sums=('69d3600b94cdd45a0954d7424e6e87d86fb4c86f64974ff678ba6a4e2a885c47'
             '83af2ba8f9f14275a6684e79d6d4bd9b48cd852c047dacfc81324588fa2ff92b')
-sha256sums_aarch64=('737242bdd6795a14897ff97bb0bb8d99e7a1a5878a6d2f942712147b20312320'
+sha256sums_aarch64=('74af20d7e7dfe765301e73e8fe93b78d619a22b02c2cdd45c962616928bc008e'
                     'eb3c61973d34f051dcd3a9ae628a6ee37cd2b24a1394673bb28421a6f39dae29')
 
 prepare() {
