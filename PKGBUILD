@@ -3,12 +3,12 @@
 pkgname=watt-toolkit-bin
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
 pkgver=2.8.4
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64')
 url=https://steampp.net/
 license=('GPL3')
 depends=('libcap')
-makedepends=('tar' 'zstd' 'libcap')
+makedepends=('tar' 'zstd')
 optdepends=('steam: need official or flatpak version of steam')
 provides=('steam++' 'watt-toolkit')
 conflicts=('steam++' 'watt-toolkit')

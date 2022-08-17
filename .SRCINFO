@@ -1,14 +1,13 @@
 pkgbase = watt-toolkit-bin
 	pkgdesc = 一个开源跨平台的多功能Steam工具箱。
 	pkgver = 2.8.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://steampp.net/
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	makedepends = tar
 	makedepends = zstd
-	makedepends = libcap
 	depends = libcap
 	optdepends = steam: need official or flatpak version of steam
 	provides = steam++
