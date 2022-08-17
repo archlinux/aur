@@ -1,7 +1,7 @@
  # Maintainer: wszqkzqk <wszqkzqk@qq.com>
  
  pkgname=easy-zsh-config
- pkgver=0.5.3
+ pkgver=0.5.4
  pkgrel=1
  pkgdesc="A simple but fast and out of the box configuration of zsh powered by oh-my-posh and zsh pulgins."
  arch=(any)
@@ -25,7 +25,7 @@ source=("zshrc"
         "easy-zsh-config")
 sha256sums=('7395fad38d918d699763f53bbc75764d9318e755591099fc625b3e5f23ed4d94'
             '191f93567e767c599cfd843bb8343f311396d8e80d423ec38af2ad3dc52551a3'
-            '715479e91e44ed39c45ef22e3dd873ea9e13eec0c1a2f90fcb00aa1776df8d68')
+            '84f30cb57a0b63dfc434490b5eada4cab25e28c60c387056f3775a60b550f35e')
 
 package(){
     install -Dm644 zshrc "${pkgdir}/etc/skel/.zshrc"
