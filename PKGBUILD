@@ -16,7 +16,7 @@ depends=(
   'glibc'
   'pango'
   'python-cairocffi'
-  'python-pywlroots>=0.15.13' 'python-pywlroots<0.16.0'
+  'python-pywlroots>=0.15.19' 'python-pywlroots<0.16.0'
   'xorg-xwayland'
 )
 

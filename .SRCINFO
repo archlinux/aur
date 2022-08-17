@@ -27,7 +27,7 @@ pkgbase = qtile-wayland-git
 	depends = glibc
 	depends = pango
 	depends = python-cairocffi
-	depends = python-pywlroots>=0.15.13
+	depends = python-pywlroots>=0.15.19
 	depends = python-pywlroots<0.16.0
 	depends = xorg-xwayland
 	optdepends = alsa-utils: volume widget
