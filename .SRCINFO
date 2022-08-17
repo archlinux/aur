@@ -1,26 +1,27 @@
 pkgbase = polkit-consolekit
 	pkgdesc = PolicyKit with ConsoleKit support for non-systemd systems
-	pkgver = 0.118
+	pkgver = 121
 	pkgrel = 1
-	url = http://www.freedesktop.org/wiki/Software/polkit
-	install = polkit.install
+	url = https://gitlab.freedesktop.org/polkit/polkit
 	arch = i686
 	arch = x86_64
 	license = LGPL
-	makedepends = intltool
+	makedepends = meson
 	makedepends = gtk-doc
 	makedepends = gobject-introspection
 	depends = glib2
 	depends = pam
 	depends = expat
 	depends = js78
-	provides = polkit=0.118
+	depends = duktape
+	provides = polkit=121
 	conflicts = polkit
 	options = !libtool
-	source = http://www.freedesktop.org/software/polkit/releases/polkit-0.118.tar.gz
-	source = polkit.pam
-	md5sums = ae3f2a742740069922589ad20ffd54d2
-	md5sums = 6564f95878297b954f0572bc1610dd15
+	source = http://www.freedesktop.org/software/polkit/releases/polkit-121.tar.gz
+	source = polkit.conf
+	source = 99-default.rules
+	sha256sums = 9dc7ae341a797c994a5a36da21963f0c5c8e3e5a1780ccc2a5f52e7be01affaa
+	sha256sums = f12f590cf5ad621710f75a40b5af88e186d3a0a17d682a8bbe03b833525a3a39
+	sha256sums = c7f887e1a8429106b43e8e81849c731e18b3055ef5e9ce0d44706ec23e9ef99e
 
 pkgname = polkit-consolekit
-
