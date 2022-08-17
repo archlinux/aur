@@ -7,7 +7,7 @@ pkgname=phoenicis-playonlinux
 _pkgname=phoenicis
 pkgver=5.0_snapshot
 _pkgver=5.0-snapshot
-pkgrel=1
+pkgrel=2
 pkgdesc="Phoenicis PlayOnLinux allows you to install and use non-native applications on linux"
 arch=('any')
 url="https://github.com/PhoenicisOrg/phoenicis.git"
@@ -16,9 +16,9 @@ makedepends=('maven' 'java-environment-openjdk=11' 'git')
 depends=('cabextract' 'curl' 'icoutils' 'imagemagick'
          'p7zip' 'unzip' 'wget' 'wine' 'xterm')
 options=(!strip)
-commit=1d3957a8c03218167c7f6472afc6b4a72f5e2da6
+commit=7d14425c5d4200289310b3d31b5bed942fa9b6c0
 source=("$pkgname-$pkgver.zip::https://github.com/PhoenicisOrg/${_pkgname}/archive/$commit.zip")
-sha256sums=('763794a0f776bc3626448793dc96803f828696638123fe5c9b914bebf67fd7fc')
+sha256sums=('3432a252f9b4cdfa82dedf5c35da0b966886a4f14675ef0e0be98142d31bba59')
 
 build() {
   cd "${_pkgname}-$commit"
