@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _cranname=tweenr
-_cranver=1.0.2
+_cranver=2.0.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -10,16 +10,17 @@ arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(MIT)
 depends=(
-    r-rcpp
     r-farver
     r-magrittr
     r-rlang
+    r-vctrs
 )
+makedepends=(r-cpp11)
 checkdepends=(r-testthat)
 optdepends=(r-testthat r-covr)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
         "CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT")
-sha256sums=('1805f575da6705ca4e5ec1c4605222fc826ba806d9ff9af41770294fe08ff69f'
+sha256sums=('2a0880c7397f021c930b778374948d0580c2473564cd9c322266877c055cd867'
             'e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b')
 
 build() {
