@@ -1,0 +1,13 @@
+pkgbase = icu71-bin
+	pkgdesc = International Components for Unicode library (binary release)
+	pkgver = 71.1
+	pkgrel = 1
+	url = https://github.com/unicode-org/icu
+	arch = x86_64
+	license = custom:icu
+	depends = bash
+	provides = icu71
+	source = https://github.com/unicode-org/icu/releases/download/release-71-1/icu4c-71_1-Fedora32-x64.tgz
+	sha512sums = ed3cf1aa7fcbf6e7f10d1a873876d8b493f338bf839086da0bf1ef1df9dae2f635b8e80ba70159a1d243a423aef99108bc2a03046fd63f28599429d9dcdae38e
+
+pkgname = icu71-bin
