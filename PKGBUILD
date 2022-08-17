@@ -23,10 +23,6 @@ build() {
   python setup.py build
 }
 
-check() {
-  cd ${_base}-${pkgver}
-}
-
 package() {
   cd ${_base}-${pkgver}
   python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
