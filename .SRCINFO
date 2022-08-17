@@ -1,6 +1,6 @@
 pkgbase = chromium-no-extras
 	pkgdesc = Chromium without hangout services, widevine, pipewire, or chromedriver
-	pkgver = 104.0.5112.79
+	pkgver = 104.0.5112.101
 	pkgrel = 1
 	url = https://www.chromium.org/Home
 	arch = x86_64
@@ -47,11 +47,11 @@ pkgbase = chromium-no-extras
 	optdepends = kdialog: support for native dialogs in Plasma
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
-	provides = chromium=104.0.5112.79
+	provides = chromium=104.0.5112.101
 	conflicts = chromium
 	options = debug
 	options = !lto
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-104.0.5112.79.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-104.0.5112.101.tar.xz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	source = https://github.com/stha09/chromium-patches/releases/download/chromium-104-patchset-2/chromium-104-patchset-2.tar.xz
 	source = x11-ozone-fix-X11-screensaver-suspension.patch
@@ -60,7 +60,7 @@ pkgbase = chromium-no-extras
 	source = chromium-tflite-system-zlib.patch
 	source = remove-no-opaque-pointers-flag.patch
 	source = use-oauth2-client-switches-as-default.patch
-	sha256sums = 9cc662f1a84c796521ee17ed2808795ca937fe7f77bc605e788f0304a81dabf3
+	sha256sums = 60f015e1559de4044cdfa3bdc1f8fde535927c8ab15b0959ccc9b6feec832f5b
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = ce702099849465927cf47f7bc3a4a27045d0e35e16b17481ebf35e14506bafa7
 	sha256sums = 9956a843bc8a765c130080616ccd3ebc46ea95c3a2324c4b403bc293a8705eb2
