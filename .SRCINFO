@@ -1,6 +1,6 @@
 pkgbase = printenv2
 	pkgdesc = A printenv2 rewrite in Rust
-	pkgver = 0.0.4
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/Xinkai/printenv2
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = printenv2
 	license = MIT
 	makedepends = cargo
 	conflicts = printenv2-bin
-	source = printenv2-0.0.4.tar.gz::https://github.com/Xinkai/printenv2/archive/v0.0.4.tar.gz
-	sha256sums = 14a5a3d959688c87a09384fb694885fc9885d659db46dd8af0784bfe1c44b19b
+	source = printenv2-0.1.0.tar.gz::https://github.com/Xinkai/printenv2/archive/v0.1.0.tar.gz
+	sha256sums = 65c635b0f8e59bbae722e312e0a1cf73e34dd6bd0884a68cb825def8a8364aa3
 
 pkgname = printenv2
