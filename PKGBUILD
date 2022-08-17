@@ -22,6 +22,6 @@ build() {
 
 package() {
   cd "${srcdir}/${_gitpkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -BI setup.py install --root="$pkgdir" --optimize=1
   install -Dm644 mit.LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
