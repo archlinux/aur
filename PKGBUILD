@@ -1,14 +1,14 @@
 # Maintainer: Mirko Scholz <srtlg>
 pkgname=gmat
 pkgver=R2020a
-pkgrel=1
+pkgrel=2
 pkgdesc="General Mission Analysis Tool: An open-source space mission analysis tool"
 arch=('x86_64')
 url="https://sourceforge.net/projects/gmat/"
 license=('Apache')
 conflicts=('gmat-bin')
 makedepends=('cspice' 'cmake' 'swig' 'patchelf' 'f2c')
-depends=('xerces-c' 'python' 'wxgtk2' 'glu')
+depends=('xerces-c' 'python' 'wxgtk30' 'glu')
 source=("GMAT.in"
 	"010-fix-f2c-typedefs.patch"
 	"https://sourceforge.net/projects/gmat/files/GMAT/GMAT-${pkgver}/GMAT-src_and_data-${pkgver}.zip")
@@ -22,10 +22,16 @@ prepare() {
 }
 
 build() {
+	env WX_CONFIG=/opt/wxgtk-3.0.5/bin/wx-config \
+	    WXRC_CMD=/opt/wxgtk-3.0.5/bin/wxrc \
 	cmake -B build -S "GMAT-$pkgver" \
 		-D CSPICE_DIR:PATH=/usr \
 		-D F2C_DIR:PATH=/usr/include \
-		-D CMAKE_INSTALL_PREFIX:PATH=/usr
+		-D CMAKE_THREAD_LIBS_INIT="-lpthread" \
+		-D CMAKE_HAVE_THREADS_LIBRARY=1 \
+		-D CMAKE_USE_PTHREADS_INIT=1 \
+		-D CMAKE_INSTALL_PREFIX:PATH=/usr \
+		-Wno-dev
 	make -C build
 }
 

@@ -1,7 +1,7 @@
 pkgbase = gmat
 	pkgdesc = General Mission Analysis Tool: An open-source space mission analysis tool
 	pkgver = R2020a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/gmat/
 	arch = x86_64
 	license = Apache
@@ -12,7 +12,7 @@ pkgbase = gmat
 	makedepends = f2c
 	depends = xerces-c
 	depends = python
-	depends = wxgtk2
+	depends = wxgtk30
 	depends = glu
 	conflicts = gmat-bin
 	options = !strip
