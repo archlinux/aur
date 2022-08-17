@@ -2,13 +2,12 @@ pkgbase = disktype
 	pkgdesc = a utility to detect the content format of a disk or disk image
 	pkgver = 9
 	pkgrel = 5
-	url = http://disktype.sourceforge.net/
+	url = http://disktype.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = glibc
 	source = https://prdownloads.sourceforge.net/disktype/disktype-9.tar.gz
-	md5sums = 25a673f162b9c01cd565109202559489
+	sha512sums = 3642e35af55341db089d3b671ddecb026eca67a9f63ba55456a0c63c3fa611e3888104e5c14c18959435577a08d1fd93f1794fbb37e0d8118ab9be65f474bdf3
 
 pkgname = disktype
-
