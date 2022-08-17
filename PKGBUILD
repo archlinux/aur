@@ -1,7 +1,7 @@
 # Maintainer: JianQing Liu <me at pegasis dot site>
 pkgname=reemod-bin
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Low latency desktop streaming for everyone"
 arch=('x86_64')
 url="https://reemo.io/"
