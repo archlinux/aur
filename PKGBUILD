@@ -1,24 +1,33 @@
 # Maintainer: Jose Riha < jose 1711 gmail com >
-# Contributor: twiggers
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Thom Wiggers <thom@thomwiggers.nl>
 
-pkgname=python-pympress
+_base=pympress
+pkgname=python-${_base}
+pkgdesc="Simple and powerful dual-screen PDF reader designed for presentations"
 pkgver=1.7.2
-pkgrel=1
-pkgdesc="Dual-screen PDF reader designed for presentations"
-url="https://cimbali.github.io/pympress/"
-license=('GPL-2')
-arch=('any')
-makedepends=('python-setuptools')
-depends=('python-vlc' 'poppler' 'python-gobject' 'python-cairo' 'gtk3' 'perl-x11-protocol' 'perl-net-dbus' 'python-watchdog' 'poppler')
-source=("https://github.com/Cimbali/pympress/archive/v${pkgver}.tar.gz")
-md5sums=('2de2b520a11f22db3f97d0c1a789cc8b')
- 
+pkgrel=2
+arch=(any)
+url="https://github.com/Cimbali/${_base}"
+license=(GPL)
+depends=(poppler-glib gtk3 python-cairo gdk-pixbuf2 python-gobject gobject-introspection python-watchdog perl-x11-protocol perl-net-dbus)
+makedepends=(python-setuptools python-babel)
+optdepends=('vlc: for play videos'
+  'python-vlc: for play videos'
+  'gstreamer: for play videos')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('430de8bc8746610cb84a72bbcfc6fb5783e2737cf5eddfb5fb4244c34125a7c86007dd404868c4e235cb85f9bb4e09dc087861e999c01f8b6317276d966a3805')
+
 build() {
-	cd $srcdir/pympress-$pkgver
-	python setup.py build
+  cd ${_base}-${pkgver}
+  python setup.py build
+}
+
+check() {
+  cd ${_base}-${pkgver}
 }
 
 package() {
-	cd $srcdir/pympress-$pkgver
-	python setup.py install --root="${pkgdir}" --optimize=1
+  cd ${_base}-${pkgver}
+  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }
