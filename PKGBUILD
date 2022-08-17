@@ -1,8 +1,8 @@
 # Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname=qt-aseman
-pkgver=3.1.5
-pkgrel=5
+pkgver=3.1.6
+pkgrel=1
 pkgdesc="A set of C++ and QML tools and modules that helps you develop your projects easier and better."
 arch=('x86_64')
 url="https://github.com/Aseman-Land/QtAseman"

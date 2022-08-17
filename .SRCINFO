@@ -1,7 +1,7 @@
 pkgbase = qt-aseman
 	pkgdesc = A set of C++ and QML tools and modules that helps you develop your projects easier and better.
-	pkgver = 3.1.5
-	pkgrel = 5
+	pkgver = 3.1.6
+	pkgrel = 1
 	url = https://github.com/Aseman-Land/QtAseman
 	arch = x86_64
 	license = LGPL3
@@ -13,7 +13,7 @@ pkgbase = qt-aseman
 	makedepends = qt5-quickcontrols2
 	options = !emptydirs
 	options = !strip
-	source = git+https://github.com/Aseman-Land/QtAseman.git#tag=v3.1.5
+	source = git+https://github.com/Aseman-Land/QtAseman.git#tag=v3.1.6
 	sha256sums = SKIP
 
 pkgname = qt-aseman
