@@ -1,25 +1,7 @@
-diff --git a/src/Powercord/managers/styles.js b/src/Powercord/managers/styles.js
-index e9475199..33119333 100644
---- a/src/Powercord/managers/styles.js
-+++ b/src/Powercord/managers/styles.js
-@@ -14,10 +14,12 @@ const ErrorTypes = Object.freeze({
-   INVALID_MANIFEST: 'INVALID_MANIFEST'
- });
- 
-+const XDG_DATA_HOME = process.env.XDG_DATA_HOME || join(process.env.HOME, '.local', 'share');
-+
- module.exports = class StyleManager {
-   constructor () {
-     this._coreStyles = [];
--    this.themesDir = join(__dirname, '../themes');
-+    this.themesDir = join(XDG_DATA_HOME, 'replugged', 'themes');
-     this.themes = new Map();
- 
-     if (!window.__SPLASH__) {
-diff --git a/src/Powercord/plugins/pc-moduleManager/components/manage/Base.jsx b/src/Powercord/plugins/pc-moduleManager/components/manage/Base.jsx
+diff --git a/src/Powercord/coremods/moduleManager/components/manage/Base.jsx b/src/Powercord/coremods/moduleManager/components/manage/Base.jsx
 index f5750344..3e69cf77 100644
---- a/src/Powercord/plugins/pc-moduleManager/components/manage/Base.jsx
-+++ b/src/Powercord/plugins/pc-moduleManager/components/manage/Base.jsx
+--- a/src/Powercord/coremods/moduleManager/components/manage/Base.jsx
++++ b/src/Powercord/coremods/moduleManager/components/manage/Base.jsx
 @@ -3,6 +3,7 @@ const { shell } = require('electron');
  const { React, getModule, contextMenu, i18n: { Messages } } = require('powercord/webpack');
  const { Button, Tooltip, ContextMenu, Divider, Icons: { Overflow } } = require('powercord/components');
@@ -37,25 +19,43 @@ index f5750344..3e69cf77 100644
            },
            {
              type: 'button',
-diff --git a/src/Powercord/plugins/pc-moduleManager/index.js b/src/Powercord/plugins/pc-moduleManager/index.js
-index 1d0b483e..90c9790a 100644
---- a/src/Powercord/plugins/pc-moduleManager/index.js
-+++ b/src/Powercord/plugins/pc-moduleManager/index.js
-@@ -5,7 +5,7 @@ const { PopoutWindow } = require('powercord/components');
+diff --git a/src/Powercord/coremods/moduleManager/index.js b/src/Powercord/coremods/moduleManager/index.js
+index f3a2aa2b..9c5fb35c 100644
+--- a/src/Powercord/coremods/moduleManager/index.js
++++ b/src/Powercord/coremods/moduleManager/index.js
+@@ -6,7 +6,7 @@ const { React, getModule, i18n: { Messages } } = require('powercord/webpack');
+ const { PopoutWindow } = require('powercord/components');
  const { inject, uninject } = require('powercord/injector');
  const { findInReactTree, forceUpdateElement } = require('powercord/util');
- const { Plugin } = require('powercord/entities');
 -const { SpecialChannels: { CSS_SNIPPETS, STORE_PLUGINS, STORE_THEMES }, WEBSITE } = require('powercord/constants');
 +const { SpecialChannels: { CSS_SNIPPETS, STORE_PLUGINS, STORE_THEMES }, WEBSITE, SETTINGS_FOLDER } = require('powercord/constants');
  const { join } = require('path');
  const commands = require('./commands');
  const deeplinks = require('./deeplinks');
-@@ -65,7 +65,7 @@ module.exports = class ModuleManager extends Plugin {
-     });
+@@ -23,7 +23,7 @@ const { injectContextMenu } = require('powercord/util');
+ const Menu = getModule([ 'MenuItem' ], false);
  
-     this._quickCSS = '';
--    this._quickCSSFile = join(__dirname, 'quickcss.css');
-+    this._quickCSSFile = join(SETTINGS_FOLDER, 'themes', 'quickcss.css');
-     this._loadQuickCSS();
-     this._injectSnippets();
-     await this._installerInjectPopover();
+ let _quickCSS = '';
+-const _quickCSSFile = join(__dirname, 'quickcss.css');
++const _quickCSSFile = join(SETTINGS_FOLDER, 'themes', 'quickcss.css');
+ let _quickCSSElement;
+ 
+ async function _installerInjectCtxMenu () {
+diff --git a/src/Powercord/managers/styles.js b/src/Powercord/managers/styles.js
+index e9475199..3a3a82c5 100644
+--- a/src/Powercord/managers/styles.js
++++ b/src/Powercord/managers/styles.js
+@@ -14,10 +14,12 @@ const ErrorTypes = Object.freeze({
+   INVALID_MANIFEST: 'INVALID_MANIFEST'
+ });
+ 
++const XDG_DATA_HOME = process.env.XDG_DATA_HOME || join(process.env.HOME, '.local', 'share');
++
+ module.exports = class StyleManager {
+   constructor () {
+     this._coreStyles = [];
+-    this.themesDir = join(__dirname, '../themes');
++    this.themesDir = join(XDG_DATA_HOME, 'replugged', 'themes');
+     this.themes = new Map();
+ 
+     if (!window.__SPLASH__) {

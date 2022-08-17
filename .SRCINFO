@@ -1,6 +1,6 @@
 pkgbase = replugged-electron-git
 	pkgdesc = A fork of Powercord, the lightweight discord client mod focused on simplicity and performance.
-	pkgver = r1543.86ae1cb8
+	pkgver = r1589.f45fadd1
 	pkgrel = 1
 	url = https://github.com/replugged-org/replugged
 	install = replugged.install
@@ -23,12 +23,12 @@ pkgbase = replugged-electron-git
 	source = replugged-plugins.patch
 	source = replugged-updater.patch
 	md5sums = SKIP
-	md5sums = 94637a686a6ef32d2ae46cd6b171603b
+	md5sums = 4fe21f924e724bfa674f95c5304e2e3b
 	md5sums = 9698a7fbd4af735bee89e74fa0b03dfe
 	md5sums = 4ddcb11a1ec0a8a9585a6f0b685286b4
-	md5sums = c989b875ff29492629f90e8f6b19c194
-	md5sums = d2dc5683278a2fbc677e917d557623fb
-	md5sums = 048616be03e800a9e64ebbf02a20b96f
-	md5sums = 655900c956345ab932b2b2b766a3ac6d
+	md5sums = 2161d9d235f06c9369c75dff9a8d4b45
+	md5sums = 9c106139d90753565af113bd80b4ef25
+	md5sums = 1103abb2af26c44a3024ad580d2ff4cd
+	md5sums = e67b9f1b0af92f638f238bc72691031f
 
 pkgname = replugged-electron-git

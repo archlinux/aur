@@ -11,7 +11,7 @@ index 82620e56..cafc41a0 100644
          // Splash Screen on macOS (Host 0.0.262+) & Windows (Host 0.0.293 / 1.0.17+)
          opts.webPreferences.preload = join(__dirname, './preloadSplash.js');
 diff --git a/src/fake_node_modules/powercord/constants.js b/src/fake_node_modules/powercord/constants.js
-index 452712d5..8be6545a 100644
+index e10288a8..add2b3f0 100644
 --- a/src/fake_node_modules/powercord/constants.js
 +++ b/src/fake_node_modules/powercord/constants.js
 @@ -1,5 +1,9 @@
@@ -22,10 +22,10 @@ index 452712d5..8be6545a 100644
 +const XDG_DATA_HOME  = process.env.XDG_DATA_HOME    || join(process.env.HOME, '.local', 'share');
 +
  module.exports = Object.freeze({
-   // Powercord
-   WEBSITE: 'https://powercord.dev',
+   // Replugged
+   WEBSITE: 'https://replugged.dev',
 @@ -7,9 +11,9 @@ module.exports = Object.freeze({
-   REPO_URL: 'powercord-org/powercord',
+   REPO_URL: 'replugged-org/replugged',
  
    // Runtime
 -  SETTINGS_FOLDER: join(__dirname, '..', '..', '..', 'settings'),
@@ -36,12 +36,12 @@ index 452712d5..8be6545a 100644
 +  LOGS_FOLDER: join(XDG_DATA_HOME, 'replugged', 'logs'),
  
    // Discord Server
-   DISCORD_INVITE: 'gs4ZMbBfCh',
+   DISCORD_INVITE: 'B2TcnXV9Rg',
 diff --git a/src/patcher.js b/src/patcher.js
-index ba487630..e9b988a1 100644
+index 372e41f5..a8d59761 100644
 --- a/src/patcher.js
 +++ b/src/patcher.js
-@@ -4,7 +4,7 @@ const { existsSync, unlinkSync } = require('fs');
+@@ -7,7 +7,7 @@ const { existsSync, unlinkSync } = require('fs');
  
  // Restore the classic path; The updater relies on it and it makes Discord go corrupt
  const electronPath = require.resolve('electron');
