@@ -14,8 +14,6 @@ license=('custom')
 # A valid licence is required to use the full version of snapgene
 source=("https://cdn.snapgene.com/downloads/SnapGene/"$_pkgver_major".x/"$_pkgver_major_middle"/"$pkgver"/snapgene_"$pkgver"_linux.rpm")
 sha512sums=('7163910825bc701b4c4a5671bf2279b860531f2560a39b7f4d19a83b176790d533c599b8770d886800944d510cafa73896a0ed1d6691559421e9ab0a61595f3c')
-conflicts=()
-options=()
 
 package() {
     cd "$pkgdir"
