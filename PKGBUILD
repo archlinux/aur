@@ -2,7 +2,7 @@
 # Acknowledgment: Borrowed a lot from logseq-desktop-git, thank @pychuang 
 pkgname=logseq-desktop
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
 url="https://github.com/logseq/logseq"
@@ -22,9 +22,6 @@ prepare() {
 
     # patch :parallel-build true in shadow-cljs.edn
     patch -p1 -i "${srcdir}/build.patch"
-
-    # patch electron version (temporary fix; should be remove fro version > 0.8)
-    sed -i "s/15\.1\.2/19\.0\.10/g" resources/package.json
 
     # download required js modules
     yarn install
