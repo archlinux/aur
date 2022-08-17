@@ -5,7 +5,7 @@
 pkgbase=lib32-poppler
 _pkgbase=poppler
 pkgname=('lib32-poppler' 'lib32-poppler-glib')
-pkgver=22.07.0
+pkgver=22.08.0
 _commit=920c89f8f43bdfe8966c8e397e7f67f5302e9435
 pkgrel=1
 arch=(x86_64)
@@ -21,7 +21,7 @@ url="https://poppler.freedesktop.org/"
 source=(https://poppler.freedesktop.org/${_pkgbase}-${pkgver}.tar.xz{,.sig}
         test::git+https://anongit.freedesktop.org/git/poppler/test.git/#commit=$_commit
         pkgconf32)
-sha512sums=('d3d8a0f50ddcf2020bbbc3c21c6fcdd6f31b431d984622c2a4ae4986b82a14d79969d7113588ba5d9a672babe4dc01fe2f5e8d9ce73a9fbce14685220d914f02'
+sha512sums=('bbff6d51eaafe58891357069c83e43ea25b4077755fa715a17b38660cd3cd546fa21d2e17a272d9b375f7e440e6e3661e84a20f18d445e0f28d06971abc04666'
             'SKIP'
             'SKIP'
             'f704e11f3054312e35974194af845e00fdc795aa97e82d425fb52ff8e628702926551b583f0354f9f9e7eafeb71c7f348c288457ff19a8c4807c58f637d0d946')
@@ -83,7 +83,7 @@ package_lib32-poppler-glib() {
   make -C glib DESTDIR="${pkgdir}" install
   install -m755 -d "${pkgdir}/usr/lib32/pkgconfig"
   install -m644 poppler-glib.pc "${pkgdir}/usr/lib32/pkgconfig/"
-  rm -r "${pkgdir}/usr/include"
+  rm -r "${pkgdir}/usr/"{include,share}
   rm -vf "${pkgdir}"/usr/lib32/libpoppler.*
 }
 
