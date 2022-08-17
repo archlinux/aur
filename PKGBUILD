@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tweedie
-_pkgver=2.3.3
+_pkgver=2.3.5
 pkgname=r-${_pkgname,,}
-pkgver=2.3.3
-pkgrel=4
+pkgver=2.3.5
+pkgrel=1
 pkgdesc='Evaluation of Tweedie Exponential Family Models'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,7 +20,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a032cad512dac37a8619e6f66cb513eb82a88a5a2ffbe91e92c2d44d1756d0d9')
+sha256sums=('983c745fee5a780d46e8dd04c2eb1c10cb2e222d3679654f0d6934d3db7b1c3e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
