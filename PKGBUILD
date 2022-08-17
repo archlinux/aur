@@ -1,5 +1,4 @@
-# Maintainer: Topik <topik@topik.tech>
-
+# Maintainer: syntheit <daniel@matv.io>
 pkgname='google-messages'
 pkgver=1.3.0
 pkgrel=1
