@@ -1,15 +1,15 @@
 pkgbase = mementodb
 	pkgdesc = A user-friendly database.
-	pkgver = 1.11.1
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://mementodatabase.com/
 	arch = x86_64
 	license = custom:MementoDB Inc
-	source = https://mementodatabase.com/download/mementodb-1.10.1-x86_64.deb
+	source = https://mementodatabase.com/download/mementodb-1.12.0-x86_64.deb
 	source = LICENSE
-	sha256sums = 45cbbdec1ae283fc2375d4641f3314102cca2e1ad6d89f6ccb412d7abbfa7771
+	sha256sums = b279240ed2e100c6c1b50b1af13f6ce5225b8f5aecfd8893cc236f578244bfd3
 	sha256sums = f976f46272474b7c18862bd7459bde0ac1638def332253a0b71c7d7d98d9e380
-	sha512sums = a64573265978372c89f0757f5e4fb9c515b58e004cbd7af0fb4eb28d218d7d2560e0b6515397a55e6c3e268f059260379cf8ec61dc1761fc701722845baad562
+	sha512sums = 067e3045b9caf86e44495c7c0f49c2107253294c5e782f915515c85e330e66b9fb27795981f417dea564d7233391de6c23ad3a22e14fbdcf72f94bf29b31a10b
 	sha512sums = 3479ecc5eacfe1fbac842004facdf3d2a9813d9a155971ddfd29328f57b6ca919c8337e21d6735d67de60896480de666d6994dbc65990ebdb076a9f88dfe2f59
 
 pkgname = mementodb
