@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=IPO
-_pkgver=1.21.0
+_pkgver=1.22.1
 pkgname=r-${_pkgname,,}
-pkgver=1.21.0
+pkgver=1.22.1
 pkgrel=1
 pkgdesc='Automated Optimization of XCMS Data Processing parameters'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e0d635915a0350e8e2c6d2274e01f3d2b6390973ce87caa8c05805a78c25c8cd')
+sha256sums=('8588463e8b729ac944e65e76621c67aa7b31223fe91b2235e68d62c4f1569f03')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
