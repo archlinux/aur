@@ -1,10 +1,12 @@
+# Maintainer: syntheit <daniel@matv.io>
+
 pkgname=ogre-pagedgeometry-git
-pkgver=1.1.3
+pkgver=1.2.0
 pkgrel=5
 pkgdesc="Paged Geometry plugin for OGRE for fast rendering of trees and grass."
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/ogre-paged"
-license=('MIT')
+url="https://github.com/RigsOfRods/ogre-pagedgeometry"
+license=('custom')
 makedepends=('ogre' 'boost' 'cmake' 'git')
 provides=('ogre-pagedgeometry')
 source=(git+https://github.com/RigsOfRods/ogre-pagedgeometry)
