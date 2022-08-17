@@ -9,6 +9,6 @@ pkgbase = pdmaner
 	source = git+https://gitee.com/robergroup/pdmaner.git
 	source = pdmaner.desktop
 	sha256sums = SKIP
-	sha256sums = 730f1cdeb08dcd306fa52bc2b8a1128e96edfb6d1eb6902d03df2057b0067ab8
+	sha256sums = ddf5e4a6833ef668e956dcf67fe5714b622f04ab42d93c61dfc8d62f5e97a599
 
 pkgname = pdmaner

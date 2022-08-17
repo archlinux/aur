@@ -14,7 +14,7 @@ source=(
 )
 sha256sums=(
     'SKIP'
-    '730f1cdeb08dcd306fa52bc2b8a1128e96edfb6d1eb6902d03df2057b0067ab8'
+    'ddf5e4a6833ef668e956dcf67fe5714b622f04ab42d93c61dfc8d62f5e97a599'
 )
 
 prepare() {
@@ -37,7 +37,7 @@ package() {
 
     mkdir -p "$pkgdir"/usr/bin
     ln -sf /opt/$pkgname/pdmaner "$pkgdir"/usr/bin/$pkgname
-    cp "$srcdir/pdmaner/public/256x256.png" "$pkgdir/opt/${pkgname}/logo.png"
-    install -Dm0644 $pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
+    install -Dm0644 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+    install -Dm0644 $srcdir/pdmaner/public/256x256.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
 }
 
