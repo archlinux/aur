@@ -1,7 +1,7 @@
 # Maintainer: Jonas Riedel <jonasriedel@protonmail.com>
 
 pkgname=rustyfetch
-pkgver=0.1.9
+pkgver=0.1.91
 pkgdesc="Fetch stuff with Rust!"
 pkgrel=1
 arch=('x86_64')
@@ -12,15 +12,15 @@ source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/$pkgname/$
 sha512sums=('SKIP')
 
 build(){
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
-	# use cargo to build from a tagged release
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	cargo build --release --all-features
-	cd -
+        export RUSTUP_TOOLCHAIN=stable
+        export CARGO_TARGET_DIR=target
+        # use cargo to build from a tagged release
+        cd "${srcdir}/${pkgname}-${pkgver}"
+        cargo build --release --all-features
+        cd -
 }
 
 package(){
-	# install executable
-	install -Dm755 "${srcdir}/${pkgname}-${pkgver}/target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+        # install executable
+        install -Dm755 "${srcdir}/${pkgname}-${pkgver}/target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
