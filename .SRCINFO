@@ -1,0 +1,18 @@
+pkgbase = labelplus-bin
+	pkgdesc = Easy tool for comic translation. Reduce communication costs of translator. Export text to Photoshop..
+	pkgver = 1.2.6
+	pkgrel = 1
+	url = https://noodlefighter.com/label_plus/
+	arch = any
+	license = GPL2
+	makedepends = p7zip
+	depends = mono
+	provides = labelplus
+	conflicts = labelplus
+	options = !strip
+	source = labelplus
+	source = labelplus-1.2.6.7z::https://github.com/LabelPlus/LabelPlus/releases/download/v1.2.6/LabelPlus1.2.6.7z
+	sha1sums = caf11dc83e6da4b153d1b45b8d2d9425dabfe419
+	sha1sums = 375a7808112d2101fcfc440c5883f1e73135176c
+
+pkgname = labelplus-bin

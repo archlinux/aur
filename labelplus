@@ -1,0 +1,11 @@
+#!/bin/sh
+
+CONF="$HOME"/.labelplus
+
+[ -e "$CONF" ] || {
+  echo
+  cp -rv /usr/share/labelplus "$CONF"
+  echo
+}
+
+cd "$CONF" && exec /usr/bin/mono /usr/lib/LabelPlus.exe "$@"

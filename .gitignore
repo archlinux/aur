@@ -1,0 +1,13 @@
+*
+
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
+
+# Warning: files in source=() will be wiped if not explicitly excluded here!
+!/*.desktop
+!/*.install
+!/*.patch
+!/*.service
+!/LICENSE
+!/labelplus
