@@ -1,0 +1,13 @@
+pkgbase = loramon
+	pkgdesc = LoRa packet sniffer for RNode hardware
+	pkgver = 0.9.7
+	pkgrel = 1
+	url = https://github.com/markqvist/loramon
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-pyserial
+	source = https://files.pythonhosted.org/packages/source/l/loramon/loramon-0.9.7.tar.gz
+	sha256sums = d21c3692836b3870da9625f403288d55c9ab4aa59f6c235b98382ee2f3d36338
+
+pkgname = loramon
