@@ -1,0 +1,13 @@
+pkgbase = otf-elice-digital-coding
+	pkgdesc = A digital monospaced font with JP/KR support, made by elice.
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://elice.io
+	arch = any
+	license = custom:SIL Open Font License v1.1
+	provides = otf-elice-digital-coding
+	conflicts = elice-digital-coding-variable
+	source = https://elice.io/font/EliceDigitalCoding_OTF.zip
+	sha256sums = 7f524a63d4d1503ead833ec8986eef81547e251d82628bd1ebaf2f7a4a9fe025
+
+pkgname = otf-elice-digital-coding
