@@ -2,7 +2,7 @@
 # thanks to celogeek, sseneca, dr460nf1r3, dr460nf1r3 and AverytheFurry for pointing out multiple things
 
 pkgname=fluffychat
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ optdepends=('libolm: E2E Encryption support')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("fluffychat-v${pkgver}.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v${pkgver}/fluffychat-v${pkgver}.tar.gz")
-sha256sums=('fc6a60cb7a86711a450584e3fe693a9c89fd0617a2410c5b2ef8ff594940d5d0')
+sha256sums=('5608fc564c362739822f66165ab1738df410a34868ee48b14abb5d894f1992fb')
 
 prepare() {
   flutter --no-version-check --suppress-analytics config --enable-linux-desktop
