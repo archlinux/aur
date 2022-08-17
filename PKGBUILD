@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _cranname=palmerpenguins
-_cranver=0.1.0
+_cranver=0.1.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
     r-recipes
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
-        "${_cranname}-LICENSE.md::https://raw.githubusercontent.com/allisonhorst/${_cranname}/v${_cranver}/LICENSE.md")
-sha256sums=('fdcc58bcf1311b962e94b13d0ab3729e4b6656d21bd8f0329f07473a1b1b3360'
+        "${_cranname}-LICENSE.md::https://raw.githubusercontent.com/allisonhorst/${_cranname}/v0.1.0/LICENSE.md")
+sha256sums=('2a40d48ba6c7978fdf2a6daf647ccb39cd17590680138931d11194d3dd1a30b4'
             '8e2c443dd9aea6fcd6c293dbf66935bd5ef502fc0ca9b466c773cf9316d5e04c')
 
 build() {
