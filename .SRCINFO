@@ -1,7 +1,7 @@
 pkgbase = beyond-identity-bin
 	pkgdesc = Beyond Identity Linux authenticator (official binary)
 	pkgver = 2.63.1_0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://app.byndid.com/downloads
 	install = beyond-identity-bin.install
 	arch = x86_64
