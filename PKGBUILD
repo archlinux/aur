@@ -11,8 +11,8 @@
 pkgbase=linux-acs-manjaro
 pkgname=('linux-acs-manjaro' 'linux-acs-manjaro-headers')
 _kernelname=-ACS-MANJARO
-_basekernel=5.18
-pkgver=5.18.17
+_basekernel=5.19
+pkgver=5.19.1
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -23,8 +23,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         "https://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
         'config'
         # ARCH Patches
-        0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch
-        0102-HID_apple_Properly_handle_function_keys_on_Keychron_keyboards.patch
+        '0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch'
+        '0102-soundwire_Raise_DEFAULT_PROBE_TIMEOUT_to_10000_ms.patch'
+        '0103-drm_i915_psr_Use_full_update_In_case_of_area_calculation_fails.patch'
+        '0104-drm_i915_Ensure_damage_clip_area_is_within_pipe_area.patch'
+        '0105-mm_vmscan_fix_extreme_overreclaim_and_swap_floods.patch'
         # MANJARO Patches
 
         # Bootsplash
@@ -46,16 +49,19 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         '0413-bootsplash.gitpatch'
         # ACS override patch
         '0999-acs.gitpatch')
-sha256sums=('51f3f1684a896e797182a0907299cc1f0ff5e5b51dd9a55478ae63a409855cee'
-            'd04aa4d01cb5051f7f1e619b6ca7c8e1da4f097334f3f43477848a1a1fd96a00'
-            '562ca681cb5a91ceae3d56fb6998ba2fe008766b97af45ada338bfb4523106ef'
+sha256sums=('ff240c579b9ee1affc318917de07394fc1c3bb49dac25ec1287370c2e15005a8'
+            'e3b9167a3286441f843220bc3339f7bafc256ec4e7b5a080badca6ce8b6c7926'
+            '826f50bdd86393897014c7da0f71970a05814b22a1f7b1a89fc9f783db707579'
             '05f04019d4a2ee072238c32860fa80d673687d84d78ef436ae9332b6fb788467'
-            '0586d4e1295264ab86104e19835d94d71c4b5f69edafc99d2d14a8f3322f58aa'
+            '02b035fa598f9e281b9b5b645809d1bcacfa189c733dc291b4305c77cde52960'
+            'c0a9c427b55bd1c13ccebbb503926c4ce30823fcec6d1a949fec981a4ec3a367'
+            'b8701a6316fb286b44adb703528462303f361d9c7af9667fb19553c4ac90816c'
+            '2c2c72e5f72cf306d38f91869619c6f808b5f694341eeba398de1b0919bf755b'
             '2b11905b63b05b25807dd64757c779da74dd4c37e36d3f7a46485b1ee5a9d326'
             '94a8538251ad148f1025cc3de446ce64f73dc32b01815426fb159c722e8fa5bc'
-            '1f18c5c10a3c63e41ecd05ad34cd9f6653ba96e9f1049ce2b7bb6da2578ae710'
-            '59202940d4f12bad23c194a530edc900e066866c9945e39748484a6545af96de'
-            'e096b127a5208f56d368d2cb938933454d7200d70c86b763aa22c38e0ddb8717'
+            '85d39aa2c229081a329ca93ee2e353d1538730389c978a8539f8f4923b274b49'
+            '57ce3e0ba6bf400d36358a9d30589905f6e51bc037d7165f5a2658b6bdc86793'
+            'a26b3abaec1cd5731bc8431fecb8b3eb0ba47c1992e614643320df14ff859556'
             '8c1c880f2caa9c7ae43281a35410203887ea8eae750fe8d360d0c8bf80fcc6e0'
             '1144d51e5eb980fceeec16004f3645ed04a60fac9e0c7cf88a15c5c1e7a4b89e'
             'dd4b69def2efacf4a6c442202ad5cb93d492c03886d7c61de87696e5a83e2846'
@@ -63,9 +69,9 @@ sha256sums=('51f3f1684a896e797182a0907299cc1f0ff5e5b51dd9a55478ae63a409855cee'
             'a0c548c5703d25ae34b57931f1162de8b18937e676e5791a0f039922090881e7'
             '8dbb5ab3cb99e48d97d4e2f2e3df5d0de66f3721b4f7fd94a708089f53245c77'
             'a7aefeacf22c600fafd9e040a985a913643095db7272c296b77a0a651c6a140a'
-            'e9f22cbb542591087d2d66dc6dc912b1434330ba3cd13d2df741d869a2c31e89'
+            'cf06d959a53eff6d3c287327f1cb2a68346d725cfd1370bc7482a0edc75692fc'
             '27471eee564ca3149dd271b0817719b5565a9594dc4d884fe3dc51a5f03832bc'
-            '60e295601e4fb33d9bf65f198c54c7eb07c0d1e91e2ad1e0dd6cd6e142cb266d'
+            'b6e695edbe349505a89c98054a54443acd90830a312cd035393c5c0a624e45c0'
             '035ea4b2a7621054f4560471f45336b981538a40172d8f17285910d4e0e0b3ef'
             '2542b5cea79ab5817ce3d30c54acd045966b9c14587bfb0b2f50d473da48a1d5')
 
