@@ -1,7 +1,7 @@
 # Maintainer: Gleb Liutsko <gleb@liutsko.ru>
 
 pkgname=sqltoolsservice
-pkgver=4.2.0.1
+pkgver=4.3.0.3
 pkgrel=1
 pkgdesc='SQL Tools API service that provides SQL Server data management capabilities.'
 url='https://github.com/microsoft/sqltoolsservice'
@@ -12,7 +12,7 @@ depends=('dotnet-runtime')
 makedepends=('dotnet-sdk')
 
 source=("https://github.com/microsoft/${pkgname}/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('404941d6f56e3162aa3d3775e276ac1cb7495f31af9c96c5f5d2fbcb1c090e70')
+sha256sums=('2c19b9d307decbe0e8d5dfab9d60e893026ecd9377e560958690aed87805bbf5')
 
 fixLocaleName() {
     oldName=$1
