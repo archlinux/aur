@@ -1,0 +1,18 @@
+pkgbase = python-ikernel-remote
+	pkgdesc = Running IPython kernels remotely and through batch queues
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/macdems/ikernel_remote
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pexpect
+	depends = jupyter-notebook
+	source = https://files.pythonhosted.org/packages/source/i/ikernel-remote/ikernel-remote-1.0.1.tar.gz
+	sha256sums = 255ba3c80b8d0ed9e78b8b70c47074b291e37eef886f515d812a87b9d0e2c0e6
+
+pkgname = python-ikernel-remote
+	depends = python
+	depends = python-pexpect
+	depends = jupyter-notebook
