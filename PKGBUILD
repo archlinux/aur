@@ -65,20 +65,21 @@ with open(emoji_file, "w") as ef:
     json.dump(combined, ef, ensure_ascii=False)'
 
   # Adding custom emoji picker CSS...
-  cd -- './node_modules/matrix-react-sdk/res/css/views/emojipicker/' &&
-  patch -p1 --forward <<< '
---- a/_EmojiPicker.scss
-+++ b/_EmojiPicker.scss
-@@ -155,6 +155,9 @@
- }
-
- .mx_EmojiPicker_item_wrapper {
-+    text-overflow: clip;
-+    white-space: nowrap;
-+    overflow: hidden;
-     display: inline-block;
-     list-style: none;
-     width: 38px;' || true
+  # TODO Help needed
+#  cd -- './node_modules/matrix-react-sdk/res/css/views/emojipicker/' &&
+#  patch -p1 --forward <<< '
+#--- a/_EmojiPicker.scss
+#+++ b/_EmojiPicker.scss
+#@@ -155,6 +155,9 @@
+# }
+#
+# .mx_EmojiPicker_item_wrapper {
+#+    text-overflow: clip;
+#+    white-space: nowrap;
+#+    overflow: hidden;
+#     display: inline-block;
+#     list-style: none;
+#     width: 38px;' || true
 
   cd -- "$srcdir/element-desktop-${pkgver}"
   patch -p1 < ../autolaunch.patch
