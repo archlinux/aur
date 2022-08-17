@@ -3,7 +3,7 @@
 pkgname=currencyconverter
 pkgver=1.0.2
 pkgrel=1
-pkgdesc="A CLI program that converts currencies"
+pkgdesc="A CLI program that converts currencies using currency exchange rates"
 arch=('x86_64')
 url="https://github.com/Rayrsn/currencyConverter"
 license=('GPL')

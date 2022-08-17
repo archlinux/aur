@@ -1,5 +1,5 @@
 pkgbase = currencyconverter
-	pkgdesc = A CLI program that converts currencies
+	pkgdesc = A CLI program that converts currencies using currency exchange rates
 	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/Rayrsn/currencyConverter
