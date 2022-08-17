@@ -3,7 +3,7 @@
 
 pkgname=ananicy-cpp-runit
 pkgver=1
-pkgrel=5
+pkgrel=6
 pkgdesc="Ananicy rewritten in C++ for much lower CPU and memory usage. (runit service)"
 url="https://gitlab.com/ananicy-cpp/ananicy-cpp/"
 license=(GPLv3)
@@ -19,7 +19,7 @@ install=ananicy-cpp-runit.install
 
 package() {
   mkdir -p "$pkgdir/etc/runit/sv/ananicy-cpp"
-  install -D -m0644 "${srcdir}/ananicy-cpp-runit.finish" "${pkgdir}/etc/runit/sv/ananicy-cpp/finish"
-  install -D -m0644 "${srcdir}/ananicy-cpp-runit.run" "${pkgdir}/etc/runit/sv/ananicy-cpp/run"
-  install -D -m0644 "${srcdir}/ananicy-cpp-runit.start" "${pkgdir}/etc/runit/sv/ananicy-cpp/start"
+  install -D -m0755 "${srcdir}/ananicy-cpp-runit.finish" "${pkgdir}/etc/runit/sv/ananicy-cpp/finish"
+  install -D -m0755 "${srcdir}/ananicy-cpp-runit.run" "${pkgdir}/etc/runit/sv/ananicy-cpp/run"
+  install -D -m0755 "${srcdir}/ananicy-cpp-runit.start" "${pkgdir}/etc/runit/sv/ananicy-cpp/start"
 }
