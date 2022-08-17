@@ -1,0 +1,12 @@
+pkgbase = pdfscale
+	pkgdesc = Bash Script to Scale and Resize PDFs using Ghostscript
+	pkgver = 2.5.3
+	pkgrel = 1
+	url = https://github.com/tavinus/pdfScale
+	arch = any
+	license = GPL
+	conflicts = pdfscale-git
+	source = https://github.com/tavinus/pdfScale/archive/refs/tags/v2.5.3.tar.gz
+	sha256sums = 7e37316d39111c05d65c11837f72ad53885e6da3cced69b3e7cebd70ab1e4bb9
+
+pkgname = pdfscale
