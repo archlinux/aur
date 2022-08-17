@@ -1,0 +1,22 @@
+pkgbase = reemod-bin
+	pkgdesc = Low latency desktop streaming for everyone
+	pkgver = 1.8.2
+	pkgrel = 1
+	url = https://reemo.io/
+	install = INSTALL
+	arch = x86_64
+	license = unknown
+	depends = ffmpeg
+	depends = glib2
+	depends = libpulse
+	depends = libx11
+	depends = libxcb
+	depends = libxtst
+	source = reemod-bin-1.8.2.deb::https://download.reemo.io/linux/deb/1.8.2/jammy/reemo.deb
+	source = reemod.service::https://download.reemo.io/linux/deb/reemod.service
+	source = reemo.ini
+	md5sums = bf18fe8676f6fae783e4e0e9c579748f
+	md5sums = bc60c405a23e954f5f41a02fbf217022
+	md5sums = e016da41d1e4fe4b3ab9687cf9e4e108
+
+pkgname = reemod-bin

@@ -1,0 +1,5 @@
+post_install() {
+    echo '  -> Reemo daemon is installed, to start using it:'
+    echo '  -> 1. Add your reemo key to /opt/reemo/reemo.ini'
+    echo '  -> 2. Start reemod service by "sudo systemctl start reemod"'
+}

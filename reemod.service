@@ -1,0 +1,11 @@
+[Unit]
+Description=Reemo Daemon
+
+[Service]
+Type=simple
+ExecStart=/opt/reemo/reemod
+User=root
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
