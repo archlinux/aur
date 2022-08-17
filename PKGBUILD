@@ -3,7 +3,7 @@
 pkgname=cura-5-plugin-octoprint
 pkgver=3.7.2
 _pkgname=Cura-OctoPrintPlugin-${pkgver}
-pkgrel=3
+pkgrel=4
 pkgdesc="Cura plugin which enables printing directly to OctoPrint and monitoring the progress"
 arch=('any')
 license=('GPL3')
