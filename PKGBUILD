@@ -3,16 +3,17 @@
 pkgname=watt-toolkit-bin
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
 pkgver=2.8.4
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url=https://steampp.net/
 license=('GPL3')
+depends=('libcap')
 makedepends=('tar' 'zstd' 'libcap')
 optdepends=('steam: need official or flatpak version of steam')
 provides=('steam++' 'watt-toolkit')
 conflicts=('steam++' 'watt-toolkit')
 options=('!strip')
-source=('watt-toolkit.desktop' 'icon.png::https://github.com/BeyondDimension/SteamTools/raw/develop/resources/AppIcon/Logo_64.png')
+source=('watt-toolkit.desktop' 'set-cap.hook' 'icon.png::https://github.com/BeyondDimension/SteamTools/raw/develop/resources/AppIcon/Logo_64.png')
 source_aarch64=("Steam++_${pkgver}_aarch64.tar.zst::https://github.com/BeyondDimension/SteamTools/releases/download/${pkgver}/Steam++_linux_arm64_v${pkgver}.tar.zst")
 source_x86_64=("Steam++_${pkgver}_x86_64.tar.zst::https://github.com/BeyondDimension/SteamTools/releases/download/${pkgver}/Steam++_linux_x64_v${pkgver}.tar.zst")
 sha256sums=('251dceba9814b53e56e175d60965ffab8160b5cc58640c3069f927dae5b7a46f'
@@ -36,6 +37,5 @@ package(){
     install -Dm644 "${srcdir}/watt-toolkit.desktop" "${pkgdir}/usr/share/applications/watt-toolkit.desktop"
     # Fix font issue, will remove once upstream fix this, enable this to fix crash at About page
     #sed -i "s|Exec=/usr/bin/watt-toolkit|Exec=env LANG=en_US.UTF-8 /usr/bin/watt-toolkit|" "${pkgdir}/usr/share/applications/watt-toolkit.desktop"
-    setcap cap_net_bind_service=+eip "${pkgdir}/opt/watt-toolkit/Steam++"
-    # Allow unprivileged user use 443, thanks @plokid
+    install -Dm644 "${srcdir}/set-cap.hook" "${pkgdir}/usr/share/libalpm/hooks/watt-toolkit-set-cap.hook"
 }
