@@ -39,8 +39,13 @@ build() {
   export TF_NEED_ROCM=0
   export TF_DOWNLOAD_CLANG=0
   export TF_NEED_CUDA=0
-  export CC=/usr/bin/gcc-10
-  export CXX=/usr/bin/g++-10
+  if [[ $arch == "x86_64" ]]; then
+    export CC=/usr/bin/gcc-10
+    export CXX=/usr/bin/g++-10
+  elif [[ $arch == "aarch64" ]]; then
+    export CC=/usr/bin/aarch64-none-elf-gcc
+    export CXX=/usr/bin/aarch64-none-elf-g++
+  fi;
   export CC_OPT_FLAGS="-march=${arch}"
   #rm .bazelversion
   ./configure
