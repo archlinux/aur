@@ -9,7 +9,7 @@
 
 pkgname=ntfsprogs-ntfs3
 pkgver=2022.5.17
-pkgrel=5
+pkgrel=6
 pkgdesc='NTFS filesystem utilities without NTFS-3G driver. For system with kernel >= 5.15'
 url='https://github.com/tuxera/ntfs-3g'
 arch=('x86_64')
@@ -40,6 +40,7 @@ build() {
     --enable-posix-acls
     --enable-extras
     --enable-crypto
+    --without-hd
     --disable-ntfs-3g
   )
 
