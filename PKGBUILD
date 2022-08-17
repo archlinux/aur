@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=np
-_pkgver=0.60-11
+_pkgver=0.60-13
 pkgname=r-${_pkgname,,}
-pkgver=0.60.11
-pkgrel=3
+pkgver=0.60.13
+pkgrel=1
 pkgdesc='Nonparametric Kernel Smoothing Methods for Mixed Data Types'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,7 +19,7 @@ optdepends=(
   r-mass
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a3b31b8ad70c42826076786b2b1b63b79cdbadfa55fe126773bc357686fd33a9')
+sha256sums=('20e0126c4940bd6427f4db1270f6261df2451ce04faa6c186451306aaf4878bf')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
