@@ -1,4 +1,4 @@
-# Maintainer: Topik topik@topik.tech
+# Maintainer: syntheit <daniel@matv.io>
 
 pkgname=ogre-pagedgeometry-bin
 pkgver=1.2.0
