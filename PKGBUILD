@@ -2,7 +2,7 @@
 
 pkgname=drgn
 pkgver=0.0.20
-pkgrel=1
+pkgrel=2
 pkgdesc='Programmable debugger'
 arch=('x86_64')
 url='https://github.com/osandov/drgn'
