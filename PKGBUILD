@@ -3,7 +3,7 @@
 pkgname=python-yadisk
 _name=${pkgname#python-}
 _py=py3
-pkgver=1.2.15
+pkgver=1.2.16
 pkgrel=1
 pkgdesc="Yandex.Disk REST API client library for Python"
 arch=('any')
@@ -12,7 +12,7 @@ license=('LGPL3')
 depends=('python' 'python-requests')
 makedepends=('python-pip')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-$pkgver.tar.gz")
-sha256sums=("73312c1263d660ac79401400e65c7b7a93d90f132d33107e25c8ac88ebf01110")
+sha256sums=("a27706c00b6cf20d7fda5fb010e75b0ff4380bbc3d8ee45ae846f1bef602a161")
 
 package() {
     PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps *.tar.gz
