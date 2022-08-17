@@ -1,24 +1,39 @@
 # Maintainer: Jose Riha <jose 1711 gmail com>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 
-pkgname=python-textual
-pkgver=0.1.17
+_base=textual
+pkgname=python-${_base}
+pkgver=0.1.18
 pkgrel=1
-pkgdesc='TUI (Text User Interface) framework for Python inspired by modern web development.'
+pkgdesc="Text User Interface using Rich"
 arch=(any)
-url='https://github.com/willmcgugan/textual'
-license=('MIT')
-depends=('python-rich' 'python-pyfiglet')
-makedepends=('python-pip' 'python-poetry')
-source=("https://github.com/willmcgugan/textual/archive/v${pkgver}.tar.gz")
-md5sums=('ddfd1440c2025df803eaaf3761a77fc9')
+url="https://github.com/Textualize/${_base}"
+license=(MIT)
+depends=(python-rich)
+makedepends=(python-build python-install python-poetry-core)
+checkdepends=(python-pytest)
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('c43f5d317f0b9e15e9e830b8baad7c4725fd05d2e7ed4908c9bad30ddc61a246d1bb31c1dcb54d391d39129d2ebbe8515fd0007a0e9f6687f88734a76223ed14')
 
 build() {
-  cd textual-${pkgver}
-  poetry build --format wheel
+  cd ${_base}-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
+}
+
+check() {
+  cd ${_base}-${pkgver}
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m install --optimize=1 dist/*.whl
+  test-env/bin/python -m pytest
 }
 
 package() {
-  cd textual-${pkgver}
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="${pkgdir}" --ignore-installed --no-deps dist/*.whl
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  cd ${_base}-${pkgver}
+  python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
+
+  # Symlink license file
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  install -d ${pkgdir}/usr/share/licenses/${pkgname}
+  ln -s "${site_packages}/${_base}-${pkgver}.dist-info/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
