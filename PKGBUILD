@@ -1,5 +1,5 @@
 pkgname=arkenfox-user.js
-pkgver=102.1
+pkgver=103.0
 pkgrel=1
 pkgdesc="Firefox privacy, security and anti-tracking: a comprehensive user.js template for configuration and hardening."
 arch=('any')
@@ -18,7 +18,7 @@ source=(
 )
 
 sha256sums=(
-    '039b43118298d7a06f7cdd44df9abdb7daa56bb7d9ad26133cd2e036ac9904f3'
+    '96586c9c0be979c68c627492ea180b78c2baaf4f5596d5d950fd2fb57c90de51'
     '61d9058c971e732dfe7626851b4b2380622b931578fe009b7c5f143fb3135362'
     '4d54a6c1787be81201e735cdd905181dc57d7906cb9b21419b236f3b8b6db983'
 )
@@ -36,8 +36,8 @@ package() {
     local cleaner="prefsCleaner.sh"
 
     install -dm755 "${bin}"
-    ln -s "${lib#${pkgdir}}/${updater}" "${bin}/${_name}-updater"
-    ln -s "${lib#${pkgdir}}/${cleaner}" "${bin}/${_name}-cleaner"
+    ln -s "${lib#"${pkgdir}"}/${updater}" "${bin}/${_name}-updater"
+    ln -s "${lib#"${pkgdir}"}/${cleaner}" "${bin}/${_name}-cleaner"
 
     cd "${srcdir}/${_snapshot}"
     install -Dm755 -t "${lib}" "${updater}" "${cleaner}"
