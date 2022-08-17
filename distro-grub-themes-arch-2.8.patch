@@ -1,0 +1,12 @@
+diff --unified --recursive --text package.orig/theme.txt package.new/theme.txt
+--- package.orig/theme.txt	2022-07-30 14:36:28.000000000 +0100
++++ package.new/theme.txt	2022-08-17 18:16:30.715680963 +0100
+@@ -14,7 +14,7 @@
+ + boot_menu {
+   left = 15%
+   top = 40%
+-  width = 27%
++  width = 45%
+   height = 65%
+   item_font = "Ubuntu Regular 20"
+   item_color = "#cccccc"
