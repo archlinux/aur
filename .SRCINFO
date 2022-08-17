@@ -1,0 +1,16 @@
+pkgbase = cpuwatch
+	pkgdesc = A program to report CPU usage
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/jasonmxyz/cpuwatch
+	arch = x86_64
+	license = MIT
+	makedepends = coreutils
+	makedepends = gcc
+	makedepends = gzip
+	makedepends = make
+	depends = glibc
+	source = cpuwatch.tar.gz::https://github.com/jasonmxyz/cpuwatch/archive/refs/tags/v0.1.tar.gz
+	sha256sums = f43098e0596bd42312b26dd7fd9bcd7d96a25a8021a179667d2797d6bc2812f6
+
+pkgname = cpuwatch
