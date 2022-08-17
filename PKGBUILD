@@ -1,7 +1,7 @@
 # Maintainer: Florian Maunier <fmauneko@dissidence.ovh>
 
 pkgname=httpie-desktop-appimage
-pkgver=2022.11.1
+pkgver=2022.12.0
 pkgrel=1
 pkgdesc="HTTPie for Desktop (AppImage)"
 arch=(x86_64 aarch64)
@@ -9,12 +9,12 @@ url="https://httpie.io/product"
 license=('unknown')
 depends=('fuse2')
 options=(!strip) # necessary otherwise the AppImage file in the package is truncated
-_filename=HTTPie-$pkgver.AppImage
-_filename_aarch64=HTTPie-$pkgver-arm64.AppImage
-source_x86_64=("https://github.com/httpie/desktop/releases/download/v$pkgver/$_filename")
-source_aarch64=("$_filename::https://github.com/httpie/desktop/releases/download/v$pkgver/$_filename_aarch64")
-sha256sums_x86_64=('69eda1c247912ce205f9df9e8b77a2ac6d4f65026cb11800c256330182a5a15c')
-sha256sums_aarch64=('1df86ad015ed3d3e21307246ef52985faed11bb90979acca580b6935797c98f1')
+source_x86_64=("https://github.com/httpie/desktop/releases/download/v$pkgver/HTTPie-$pkgver.AppImage")
+source_aarch64=("https://github.com/httpie/desktop/releases/download/v$pkgver/HTTPie-$pkgver-arm64.AppImage")
+b2sums_x86_64=('5feb1cf600a54fcb45e7bc9abd601adf355e803b1fe36ee50560e83728bd18528b90ed17cea39ecb9aa8cb7c089cffba389f078e4e31def09e0a1232d47df9bf')
+b2sums_aarch64=('250ae5db12bff10e3bb293d5672dabf7f17325bd0367721751e294d198737e51dc61497b8ecbb7baf3cb6f602f58d9790b0cb512b9391268c2ee5b390c0aabcb')
+[ $CARCH = "x86_64" ] && _filename=HTTPie-$pkgver.AppImage
+[ $CARCH = "aarch64" ] && _filename=HTTPie-$pkgver-arm64.AppImage
 _appimage_name=$(echo "${_filename}"|sed -E 's/-[0-9]*.[0-9]*.[0-9]*//')
 _install_path="/opt/appimages/$_appimage_name"
 
