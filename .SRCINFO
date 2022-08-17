@@ -1,7 +1,7 @@
 pkgbase = r-imcrtools
 	pkgdesc = Methods for imaging mass cytometry data analysis
-	pkgver = 1.2.2
-	pkgrel = 1
+	pkgver = 1.2.3
+	pkgrel = 2
 	url = https://bioconductor.org/packages/imcRtools
 	arch = any
 	license = GPL
@@ -40,7 +40,7 @@ pkgbase = r-imcrtools
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tidyr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/imcRtools_1.2.2.tar.gz
-	sha256sums = 1fc16c049ddf9829d527adb8d7c30c59a46a6829a619e1b94e5eaec03c762569
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/imcRtools_1.2.3.tar.gz
+	sha256sums = dc7d7dc805ad18d23fce68c5fd60fe036343af2b89b254893a5d1093ea554fa8
 
 pkgname = r-imcrtools
