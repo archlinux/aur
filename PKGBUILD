@@ -1,24 +1,24 @@
-# $Id$
-# Maintainer: Balló György <ballogyor+arch at gmail dot com>
+# Maintainer: Kevin MacMartin <prurigro@gmail.com>
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=gps-share
-pkgver=0.1.0
+pkgver=0.3.1
 pkgrel=1
-pkgdesc="Utility to share your GPS device on local network"
-arch=('x86_64' 'i686')
-url="https://github.com/zeenix/gps-share"
-license=('GPL')
+pkgdesc='Utility to share your GPS device on local network'
+url='https://github.com/zeenix/gps-share'
+license=('GPL2')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('dbus')
-makedepends=('cargo' 'systemd')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/zeenix/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('3af9f03d2be9c55a6f21e1d2360ced00e980d301e54525cf8d9b29ddc426a10e')
+makedepends=('cargo')
+source=("https://github.com/zeenix/gps-share/archive/refs/tags/${pkgver}.tar.gz")
+sha512sums=('e2552b99169b7e914c225362db1b58cea0e7b0fb22340b1f6a7969f96a7fc497f921241a60166ed4712353de0808e99a859b7e270e9452963e5b86e913a1a949')
 
 build() {
-	cd $pkgname-$pkgver
-	cargo build --release
+  cd $pkgname-$pkgver
+  cargo build --release
 }
 
 package() {
-	cd $pkgname-$pkgver
-	install -Dm755 target/release/gps-share "$pkgdir/usr/bin/gps-share"
+  cd $pkgname-$pkgver
+  install -Dm755 target/release/$pkgname "$pkgdir/usr/bin/$pkgname"
 }
