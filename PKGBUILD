@@ -1,9 +1,10 @@
 # Maintainer: Nestor Cagnoli <nestor[DOT]cagnoli[at]gmail[DOT]com>
+# Maintainer: Michael Gruz <michael.gruz@gmail.com>
 pkgname=cura-5-bin
 _pkgname=cura-5-bin
 _shortname=cura5
 pkgver=5.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Uncompressed version of Ultimaker Cura 5.1'
 arch=('x86_64')
 url="https://ultimaker.com/software/ultimaker-cura"
@@ -20,7 +21,7 @@ source=(
 
 sha256sums=('eab92e31c12c1b101fbaf2664df00bed182528e282874e4f379c87b29692ac76'
             'b54488562c7305072f00fa5e2125458403ec0609fe849a195c977b70a37108a8'
-            '9c36e7c8ee07ae47f5756ad4298c31919b02d0d554e0b7a039a10d09ee5e43a8')
+            'f6efcbfb7ac0e64b7289934cb8992099858aa2752a907cbbbc9b045158551170')
    
 prepare() {
     cd "${srcdir}"
@@ -31,7 +32,7 @@ prepare() {
     # Simplify life
     cp /usr/lib/libstdc++* ${srcdir}
     cp /usr/lib/librsvg-2.so* ${srcdir}
-#    patch -Np0 < ${srcdir}/cura.desktop.patch
+    patch -Np0 < ${srcdir}/cura.desktop.patch
 
 }
 
