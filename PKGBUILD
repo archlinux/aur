@@ -1,5 +1,4 @@
-# Maintainer: Topik <topik@topik.tech>
-
+# Maintainer: syntheit <daniel@matv.io>
 pkgname=oomd
 pkgver=0.5.0
 pkgrel=1
