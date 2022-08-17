@@ -1,7 +1,7 @@
 # Maintainer: Sematre <sematre at gmx dot de>
 pkgname=discimagecreator
 pkgver=20220707
-pkgrel=1
+pkgrel=2
 
 pkgdesc="This is the disc (CD, GD, DVD, HD-DVD, BD, GC/Wii, XBOX, XBOX 360) and disk (Floppy, MO, USB etc) image creation tool."
 arch=('any')
@@ -21,8 +21,8 @@ package() {
 	make -C DiscImageCreator/ DESTDIR="${pkgdir}" PREFIX="/usr" install
 	ln -s "DiscImageCreator" "${pkgdir}/usr/bin/${pkgname}"
 
-	install -Dm 644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	# Install missing offset file
+	install -Dm 644 "Release_ANSI/driveOffset.txt" "${pkgdir}/usr/local/share/DiscImageCreator/driveOffset.txt"
 
-	# Workaround
-	ln -s "/usr/local/share/DiscImageCreator/driveOffset.txt" "${pkgdir}/usr/bin/driveOffset.txt"
+	install -Dm 644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
