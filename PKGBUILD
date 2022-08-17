@@ -1,7 +1,7 @@
 # Maintainer: taotieren  <admin@taotieren.com>
 
 pkgname=aliyundrive-fuse
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc="阿里云盘 FUSE 磁盘挂载"
 arch=("any")
@@ -13,7 +13,7 @@ provides=("${pkgname}")
 # options=("!strip" "emptydirs")
 install=
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('57fb8ffc7d54700ae3b34d05c54b22622d8f867e458b82459dcbf4063235dd13')
+sha256sums=('0c6b349364868fe76258b0f368219ba22659f8837747504d65babaf258a7cf5b')
 
 # prepare() {
 #     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
