@@ -1,0 +1,79 @@
+From 928a0c25a874a13d69d58ef68fede866259b039b Mon Sep 17 00:00:00 2001
+From: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+Date: Tue, 21 Jun 2022 17:56:40 -0500
+Subject: [PATCH] soundwire: intel: use pm_runtime_resume() on component probe
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+During the card registration, transactions on the SoundWire bus can be
+initiated. If the ALSA card is registered after the bus suspends,
+timeouts can be seen while reading/writing codec registers. This is
+extremely easy to reproduce in driver bind/unbind tests.
+
+In an initial experiment, the ASoC soc-component.c code was modified
+to initiate a pm_runtime resume on a component probe. The results
+showed this was too invasive. Instead this patch suggests resuming the
+SoundWire component only.
+
+Because of the parent-child hierarchy enforced by the pm_runtime
+framework, it can be argued that the codec component probe should be
+enough to resume all necessary devices, and indeed the same resume
+will be applied to SoundWire codecs used on Intel platforms.
+
+Calling pm_runtime_resume() on both the Intel and codec sides has the
+benefit of resuming the bus without assuming any order during the card
+registration. The first component on a dailink to be probed will
+resume the bus. In addition, if a codec driver did not implement this
+transition, the Intel component would still resume the bus and avoid
+timeouts on card registration.
+
+BugLink: https://github.com/thesofproject/linux/issues/3651
+Reviewed-by: Rander Wang <rander.wang@intel.com>
+Reviewed-by: Ranjani Sridharan <ranjani.sridharan@linux.intel.com>
+Reviewed-by: Bard Liao <yung-chuan.liao@linux.intel.com>
+Reviewed-by: Péter Ujfalusi <peter.ujfalusi@linux.intel.com>
+Signed-off-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+Link: https://lore.kernel.org/r/20220621225641.221170-4-pierre-louis.bossart@linux.intel.com
+Signed-off-by: Vinod Koul <vkoul@kernel.org>
+---
+ drivers/soundwire/intel.c | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+diff --git a/drivers/soundwire/intel.c b/drivers/soundwire/intel.c
+index 505c5ef061e3f5..95ce292994ccb6 100644
+--- a/drivers/soundwire/intel.c
++++ b/drivers/soundwire/intel.c
+@@ -1043,6 +1043,23 @@ static int intel_trigger(struct snd_pcm_substream *substream, int cmd, struct sn
+ 	return ret;
+ }
+
++static int intel_component_probe(struct snd_soc_component *component)
++{
++	int ret;
++
++	/*
++	 * make sure the device is pm_runtime_active before initiating
++	 * bus transactions during the card registration.
++	 * We use pm_runtime_resume() here, without taking a reference
++	 * and releasing it immediately.
++	 */
++	ret = pm_runtime_resume(component->dev);
++	if (ret < 0 && ret != -EACCES)
++		return ret;
++
++	return 0;
++}
++
+ static int intel_component_dais_suspend(struct snd_soc_component *component)
+ {
+ 	struct snd_soc_dai *dai;
+@@ -1098,6 +1115,7 @@ static const struct snd_soc_dai_ops intel_pcm_dai_ops = {
+
+ static const struct snd_soc_component_driver dai_component = {
+ 	.name           = "soundwire",
++	.probe		= intel_component_probe,
+ 	.suspend	= intel_component_dais_suspend
+ };
+
+
