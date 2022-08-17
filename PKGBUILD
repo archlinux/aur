@@ -1,18 +1,20 @@
-#Maintainer: Jeanbon
-#Contributors: tritonas00 tritonas00@gmail.com, sp33dyx
+# Maintainer: syntheit <daniel@matv.io>
 
 _pkgname=rigsofrods _gitname=rigs-of-rods
 
 pkgname=$_pkgname-git
-pkgver=0.4.7.0.r285.gc37e6b5f
+pkgver=2021.10.r10.gcab4c279c
 pkgrel=1
 pkgdesc="An open source vehicle simulator based on soft-body physics"
 arch=('i686' 'x86_64')
 url="http://rigsofrods.org" 
 license=('GPL')
-depends=('openal' 'wxgtk' 'ogre-1.9' 'caelum-ogre1.9' 'mygui-ogre1.9' 'ogre-1.9-pagedgeometry' 'angelscript' 'jsoncpp' 'boost')
-optdepends=('sh: for being able to run the commands rigsofrods and rigsofrods-config instead of /opt/rigsofrods/RoR and /opt/rigsofrods/RoRConfig')
-makedepends=('cmake' 'git') 
+depends=('boost>=1.50' 'curl' 'openssl' 'gtk2' 'mygui>=3.2.2' 'ogre' 'ois>=1.3' 'openal' 'rapidjson>=1.1.0')
+optdepends=('angelscript=2.31.2' 'caelum>=0.6.2' 'nvidia-cg-toolkit')
+makedepends=('gcc' 'cmake>=2.8' 'git')
+# depends=('openal' 'wxgtk' 'ogre-1.9' 'caelum-ogre1.9' 'mygui-ogre1.9' 'ogre-1.9-pagedgeometry' 'angelscript' 'jsoncpp' 'boost')
+# optdepends=('sh: for being able to run the commands rigsofrods and rigsofrods-config instead of /opt/rigsofrods/RoR and /opt/rigsofrods/RoRConfig')
+# makedepends=('cmake' 'git') 
 conflicts=('rigsofrods' 'rigsofrods-hg' 'rigsofrods-noangelscript-git')
 provides=('rigsofrods')
 source=("git+https://github.com/RigsOfRods/$_gitname.git" "plugins.cfg" "rigsofrods.png" "RoRConfig.desktop" "RoR.desktop" "rigsofrods.sh" "rigsofrods-config.sh")
