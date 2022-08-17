@@ -1,19 +1,19 @@
 pkgbase = bbg
 	pkgdesc = A static blog generator built with electron
-	pkgver = 20220809
+	pkgver = 20220817
 	pkgrel = 1
 	url = https://github.com/bbg-contributors/bbg
 	arch = any
 	license = Unlicense
-	depends = electron19
+	depends = electron20
 	conflicts = bbg-git
 	source = bbg.sh
 	source = icon.png::https://github.com/bbg-contributors/bbg-resources/raw/30dfd1cbdfbed040a74f05b0312302f3bf0c1c85/icon.png
 	source = bbg.desktop
-	source = app-20220809.asar::https://github.com/bbg-contributors/bbg/releases/download/20220809/app.asar
-	sha256sums = 94dec4c60fa1e124569bd9ff75cf29b51eeb85025e27dde1b15979f4525f25e6
+	source = app-20220817.asar::https://github.com/bbg-contributors/bbg/releases/download/20220817/app.asar
+	sha256sums = d42008985970863855628fe7e65b43ad3c07bf18e51b4f770a95d6aef1bb3e56
 	sha256sums = d5f8f191d914a140ab11999a176b226523dd78e6865a75b483013846503a5228
 	sha256sums = f503d93639c1f4d4e050eceb11adf64d369908e5941cfdbda3af30b2f3c73d96
-	sha256sums = e6e8a2d5a88b962fc484a9ef8d974e1b46daedbb5be45ec302832f46b690f786
+	sha256sums = a9b7322c710c4f5a4bb7901b3aa4239dfde444564766e4d996d48c44d50295dd
 
 pkgname = bbg

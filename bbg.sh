@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec electron19 /usr/share/bbg/app.asar "$@"
+exec electron20 /usr/share/bbg/app.asar "$@"
