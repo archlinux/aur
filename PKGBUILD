@@ -1,4 +1,4 @@
-# Maintainer: Topik topik@topik.tech
+# Maintainer: syntheit <daniel@matv.io>
 pkgname=icu68-bin
 pkgver=68.2
 pkgrel=1
