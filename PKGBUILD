@@ -1,7 +1,7 @@
 # Maintainer: jmcb <joelsgp@protonmail.com>
 pkgname=distro-grub-themes-arch
 pkgver=2.8
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A GRUB2 theme for Arch Linux"
 arch=('any')

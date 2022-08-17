@@ -1,7 +1,7 @@
 pkgbase = distro-grub-themes-arch
 	pkgdesc = A GRUB2 theme for Arch Linux
 	pkgver = 2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdisonCavani/distro-grub-themes
 	arch = any
 	license = GPL3
