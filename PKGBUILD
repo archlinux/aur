@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gghighlight
-_pkgver=0.3.2
+_pkgver=0.3.3
 pkgname=r-${_pkgname,,}
-pkgver=0.3.2
-pkgrel=4
+pkgver=0.3.3
+pkgrel=2
 pkgdesc="Highlight Lines and Points in 'ggplot2'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -27,7 +27,7 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5b543e550acb216beb1f80d2a41c9fb13c88ee29932185b98238fc9e35b1af2f')
+sha256sums=('018d26b23a0918e5191501997daf9ccb9680692d879e56fef017cb086cb94e47')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
