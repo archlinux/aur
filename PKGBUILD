@@ -5,7 +5,7 @@
 pkgname=nccl
 pkgver=2.13.4
 _upstr_pkgrel=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for NVIDIA multi-GPU and multi-node collective communication primitives'
 arch=('x86_64')
 url='https://developer.nvidia.com/nccl/'
@@ -48,7 +48,8 @@ build() {
                        -gencode=arch=compute_75,code=sm_75 \
                        -gencode=arch=compute_80,code=sm_80 \
                        -gencode=arch=compute_86,code=sm_86 \
-                       -gencode=arch=compute_86,code=compute_86"
+                       -gencode=arch=compute_87,code=sm_87 \
+                       -gencode=arch=compute_87,code=compute_87"
 
   export CXXFLAGS+=" -ffat-lto-objects"
   make CUDA_HOME=/opt/cuda PREFIX=/usr src.build
