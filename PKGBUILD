@@ -1,16 +1,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
-# Contributor: E-Hern Lee <ehern.lee@gmail.com>
-# Contributor: anon@sansorgan.es
-# Contributor: heavysink <winstonwu91 at gmail>
 
 pkgname=proton
-_srctag=7.0-3
+_srctag=7.0-4
 _commit=
 pkgver=${_srctag//-/.}
-_geckover=2.47.2
+_geckover=2.47.3
 _monover=7.3.0
-_asyncver=1111b69
-pkgrel=2
+pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 url="https://github.com/ValveSoftware/Proton"
@@ -35,7 +31,6 @@ depends=(
   libpcap          lib32-libpcap
   lzo              lib32-lzo
   libxkbcommon     lib32-libxkbcommon
-  faudio           lib32-faudio
   libvpx           lib32-libvpx
   'sdl2>=2.0.16'   'lib32-sdl2>=2.0.16'
   desktop-file-utils
@@ -44,7 +39,7 @@ depends=(
 )
 
 makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc
-  git wget rsync mingw-w64-tools lld nasm meson cmake python-virtualenv python-pip
+  git wget rsync mingw-w64-tools lld nasm meson cmake afdko python-pefile
   glslang vulkan-headers
   clang
   giflib                lib32-giflib
@@ -129,12 +124,8 @@ source=(
     dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
-    dxvk-async-${_asyncver}.patch::https://raw.githubusercontent.com/Sporif/dxvk-async/${_asyncver}/dxvk-async.patch
     0001-wldap32-25946b48148784e8275c1685f6498ab88f553ca3.patch
-    wine-winevulkan_fsr.patch
-    wine-winevulkan_fsr_autogen.patch
     0001-AUR-pkgbuild-changes.patch
-    proton-user_compat_data.patch
 )
 noextract=(
     wine-gecko-${_geckover}-{x86,x86_64}.tar.xz
@@ -149,7 +140,7 @@ _make_wrappers () {
     declare -n _opt
     for _opt in "${_opts[@]}"; do
         for l in ar ranlib nm; do
-            ln -s /usr/bin/$l wrappers/${_opt[0]}-pc-linux-gnu-$l
+            ln -s /usr/bin/gcc-$l wrappers/${_opt[0]}-pc-linux-gnu-$l
         done
         for t in gcc g++; do
             install -Dm755 /dev/stdin wrappers/${_opt[0]}-pc-linux-gnu-$t <<EOF
@@ -173,15 +164,6 @@ EOF
 }
 
 prepare() {
-    # I know this is fugly and it should NOT be done
-    # but the afdko package from AUR breaks regularly.
-    # Install it from pip in a virtualenv
-    [ -d build_venv ] && rm -rf build_venv
-    virtualenv --app-data "$srcdir"/build_venv/cache --no-wheel build_venv
-    source build_venv/bin/activate
-    pip install --no-cache-dir meson==0.59.3
-    pip install --no-cache-dir afdko
-    pip install --no-cache-dir pefile
 
     # Provide wrappers to compiler tools
     rm -rf wrappers && mkdir wrappers
@@ -262,22 +244,9 @@ prepare() {
         sed 's/-lldap_r/-lldap/' -i configure
         # Fix wldap32 compilation on 32bit
         patch -p1 -i "$srcdir"/0001-wldap32-25946b48148784e8275c1685f6498ab88f553ca3.patch
-        # Add FSR for fshack
-        #patch -p1 -i "$srcdir"/wine-winevulkan_fsr.patch
-        # Adds more 16:10 resolutions for use with FSR
-        #patch -p1 -i "$srcdir"/wine-winevulkan_fsr_autogen.patch
-    popd
-
-    pushd dxvk
-        # Uncomment to enable dxvk async patch.
-        # Enable at your own risk. If you don't know what it is,
-        # and its implications, leave it as is. You have been warned.
-        # I am not liable if anything happens to you by using it.
-        #patch -p1 -i "$srcdir"/dxvk-async-${_asyncver}.patch
     popd
 
     patch -p1 -i "$srcdir"/0001-AUR-pkgbuild-changes.patch
-    patch -p1 -i "$srcdir"/proton-user_compat_data.patch
 
     # Remove repos from srcdir to save space
     for submodule in "${_submodules[@]}"; do
@@ -289,7 +258,6 @@ prepare() {
 }
 
 build() {
-    source build_venv/bin/activate
     export PATH="$(pwd)/wrappers:$PATH"
 
     cd build
@@ -305,10 +273,9 @@ build() {
     # This overrides FLAGS from makepkg.conf, if you comment these you are on your own
     # If you want the "best" possible optimizations for your system you can use
     # `-march=native` and remove the `-mtune=core-avx2` option.
-    # `-O2` is adjusted to `-O3` since AVX is disabled
-    export CFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
-    export CXXFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
-    export RUSTFLAGS="-C opt-level=3 -C target-cpu=nocona"
+    export CFLAGS="-O2 -march=nocona -mtune=core-avx2 -pipe"
+    export CXXFLAGS="-O2 -march=nocona -mtune=core-avx2 -pipe"
+    export RUSTFLAGS="-C opt-level=2 -C target-cpu=nocona"
     export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
     # If using -march=native and the CPU supports AVX, launching a d3d9
@@ -389,12 +356,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
-            'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
+            '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
+            '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
             '60314f255031b2f4dc49f22eacfcd2b3b8b2b491120d703b4b62cc1fef0f9bdd'
-            '14e9011b9aa40fe3dcc7a248735eec717a525aa2866e2bba5fd6fa5662c3dec0'
             '11aa65bb6b8da1814557edf18a3cdada80135b021634236feabf93d2a194838b'
-            'd76b87410047f623accc846f15f849fe13275924c685ccfb95a91a8b22943e51'
-            '373a7465822504c37f9787e49475ac144ee89b0f4b52fa0795c7a12a7e120fb4'
-            'e258b4111e3ec8b0720db2b789ef8dcd9e482770c70a2f4a12ad470f587b83ad'
-            '3cebd3d1bc920bcfacb7b0dfe2bdf386bdb9c031317e7f7b45148853b618ed78')
+            '7816c01f28d90ace7f1200d30a6cf371fff6c5746312c463adecc91f701908ab')
