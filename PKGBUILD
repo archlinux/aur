@@ -1,4 +1,5 @@
-# Maintainer: George Katevenis <george_kate[at]hotmail[dot]com>
+# Maintainer: Mirko Scholz <srtlg>
+# wxgtk-3.1.5 maintainer: George Katevenis <george_kate[at]hotmail[dot]com>
 # wxgtk-dev (non-opt) maintainer: Qirui Wang <wqr.prg@gmail.com>
 
 pkgname=wxgtk30
@@ -29,7 +30,7 @@ build() {
 
 package() {
   cd wxWidgets-${pkgver}
-  make DESTDIR="${pkgdir}" install  
+  make DESTDIR="${pkgdir}" install
   install -D -m644  ../${pkgname}.conf -t "${pkgdir}/etc/ld.so.conf.d/"
   install -D -m644 docs/licence.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
