@@ -1,6 +1,6 @@
 pkgbase = r-matrixextra
 	pkgdesc = Extra Methods for Sparse Matrices
-	pkgver = 0.1.11
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://cran.r-project.org/package=MatrixExtra
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = r-matrixextra
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/MatrixExtra_0.1.11.tar.gz
-	sha256sums = 558d8ede4bced4a4d4c1b886fd7fd00d1a205e7a8baf978509473724285a6234
+	source = https://cran.r-project.org/src/contrib/MatrixExtra_0.1.12.tar.gz
+	sha256sums = 3ecb53335d3f49d17a5da2c2b2be7c292f1adac199555f3417d7d7ab218d0cbf
 
 pkgname = r-matrixextra
