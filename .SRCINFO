@@ -1,6 +1,6 @@
 pkgbase = r-biocpkgtools
 	pkgdesc = Collection of simple tools for learning about Bioc Packages
-	pkgver = 1.14.0
+	pkgver = 1.14.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BiocPkgTools
 	arch = any
@@ -40,7 +40,7 @@ pkgbase = r-biocpkgtools
 	optdepends = r-testthat
 	optdepends = r-tm
 	optdepends = r-visnetwork
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocPkgTools_1.14.0.tar.gz
-	sha256sums = 30250e946d30bd3a8bb0591802eb36dc4eef73b4bebd08204d389157371108ec
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocPkgTools_1.14.1.tar.gz
+	sha256sums = 6df62f55401775d55b95bb78985181c0809dcaa220a31c913a42d826a1f6792a
 
 pkgname = r-biocpkgtools
