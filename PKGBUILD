@@ -7,7 +7,9 @@ pkgdesc="Coqui-STT for inference"
 arch=('x86_64' 'aarch64' 'armv7' 'amd64')
 url="https://github.com/coqui-ai/STT"
 license=('MPL2')
-makedepends=('gcc10' 'cmake' 'bazel' 'git' 'sox' 'wget' 'swig')
+makedepends=('cmake' 'bazel' 'git' 'sox' 'wget' 'swig')
+makedepends_x86_64=('gcc10')
+makedepends_aarch64=('aarch64-none-elf-gcc-10.3-bin')
 depends=('python' 'sox')
 source=("${_pkgname}-${pkgver}::git+https://github.com/coqui-ai/STT.git#tag=v${pkgver}")
 sha256sums=('SKIP')
