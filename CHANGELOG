@@ -1,16 +1,15 @@
-### v0.29.0 (Apr 20, 2022)
+## v0.29.2 (Aug 16, 2022)
 
 IMPROVEMENTS:
-* Nomad Service Discovery! [[GH-1565](https://github.com/hashicorp/consul-template/pull/1565)]
-* New `pkiCert` template function provides self-caching certificates [[GH-1559](https://github.com/hashicorp/consul-template/pull/1559), [GH-1259](https://github.com/hashicorp/consul-template/issues/1259)]
-* Add string trim template functions [[GH-1558](https://github.com/hashicorp/consul-template/pull/1558), [GH-1544](https://github.com/hashicorp/consul-template/issues/1544)]
+* Nomad services support use of `byTab` template function. [[GH-1594](https://github.com/hashicorp/consul-template/pull/1594)]
 
 BUG FIXES:
-* Fix issue with multiple identical templates using the same path [[GH-1573](https://github.com/hashicorp/consul-template/pull/1573)]
-* Reduce signal processing overhead [[GH-1575](https://github.com/hashicorp/consul-template/pull/1575), [GH-1548](https://github.com/hashicorp/consul-template/issues/1548)]
-* Fix issue with template user/group setting [[GH-1571](https://github.com/hashicorp/consul-template/pull/1571), [GH-1570](https://github.com/hashicorp/consul-template/issues/1570)]# v0.28.1 (Apr 04, 2022)
+* Fix issue with pkiCert caching certificate based on consul key path. [[GH-1611](https://github.com/hashicorp/consul-template/pull/1611), [GH-1607](https://github.com/hashicorp/consul-template/issues/1607)]
+* Fix issue with setting the reload_signal to an empty string ("") not disabling the reload_signal as documented. [[GH-1610](https://github.com/hashicorp/consul-template/pull/1610), [GH-1428](https://github.com/hashicorp/consul-template/issues/1428), [GH-1442](https://github.com/hashicorp/consul-template/issues/1442)]
+* Limit Setgpid setting to strictly `sh -c` wrapped calls. [[GH-1600](https://github.com/hashicorp/consul-template/pull/1600), [GH-1604](https://github.com/hashicorp/consul-template/issues/1604)]
+* Fix potential for nil pointer dereference in vault config debug output. [[GH-1586](https://github.com/hashicorp/consul-template/issues/1586)]
 
-IMPROVEMENTS:
-* Allow setting template destination file ownership by name (with uid/gid compatibilty) [[GH-1541](https://github.com/hashicorp/consul-template/pull/1541), [GH-1551](https://github.com/hashicorp/consul-template/pull/1551)]
-* better writeToFile user/group ownership behaviors [[GH-1549](https://github.com/hashicorp/consul-template/pull/1549)]
-* configurable lease check wait for non-renewable secrets [[GH-1546](https://github.com/hashicorp/consul-template/pull/1546)]
+SECURITY:
+* Filter Vault Secrets from text/template error messages, [CVE-2022-38149](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-38149). [[GH-1613](https://github.com/hashicorp/consul-template/pull/1613)]
+* Updates dependencies several of which had known CVEs. [[GH-1622](https://github.com/hashicorp/consul-template/pull/1622), [GH-1614](https://github.com/hashicorp/consul-template/issues/1614)]
+
