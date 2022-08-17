@@ -1,6 +1,7 @@
 # Based on snapgene-viewer package by Antony Lee <anntzer dot lee at gmail dot com>
 # Maintainer: Matthijs Tadema <M dot J dot Tadema at gmail dot com>
 # Co-Maintainer: Lorenzo Gaifas <brisvag at gmail dot com>
+# Co-Maintainer: Bitals <me at bitals dot xyz>
 pkgname=snapgene
 pkgver=6.1.0
 _pkgver_major=$(cut -d '.' -f 1 <<<"$pkgver")
