@@ -2,7 +2,7 @@
 pkgname='elice-digital-baeum-variable'
 fontname='EliceDigitalBaeum'
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A digital sans-serif font with JP/KR support, made by elice."
 arch=('any')
 provides=(
@@ -10,7 +10,10 @@ provides=(
 	'ttf-elice-digital-baeum'
 	'otf-elice-digital-baeum'
 )
-conflicts=('elice-digital-baeum-variable')
+conflicts=(
+	'ttf-elice-digital-baeum'
+	'otf-elice-digital-baeum'
+)
 url='https://font.elice.io'
 license=('custom:SIL Open Font License v1.1')
 source=(
