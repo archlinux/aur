@@ -1,7 +1,7 @@
 pkgbase = otf-elice-digital-baeum
 	pkgdesc = A digital sans-serif font with JP/KR support, made by elice.
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://font.elice.io
 	arch = any
 	license = custom:SIL Open Font License v1.1
