@@ -2,7 +2,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 pkgname=haruna
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Video player built with Qt/QML on top of libmpv.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('kfilemetadata' 'kio' 'mpv' 'qt5-quickcontrols2' 'kirigami2' 'breeze-icons')
 makedepends=('extra-cmake-modules' 'kdoctools')
 source=("$url/-/archive/v$pkgver/haruna-v$pkgver.tar.gz")
-sha256sums=('7af284278a482758c55a85c38eda386f8ea1a16d383e36ce03f9b02e76ebf44d')
+sha256sums=('7bd4a4693b3e609ae9833375421c4d87a58ce54b39c90b34bb3a0cd547ada35b')
 
 build() {
   export CFLAGS+=" $CPPFLAGS"
