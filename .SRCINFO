@@ -1,0 +1,18 @@
+pkgbase = python-pip-requirements-parser
+	pkgdesc = Mostly correct pip requirements parsing library
+	pkgver = 31.2.0
+	pkgrel = 1
+	url = https://github.com/nexB/pip-requirements-parser
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python-packaging
+	conflicts = python-pip-requirements-parser-git
+	options = !strip
+	source = pip-requirements-parser-31.2.0.tar.gz::https://github.com/nexB/pip-requirements-parser/archive/v31.2.0.tar.gz
+	sha512sums = 56b7a0c4dd8c12be6dfa016164ff0a5773256bffd7e32a1c8b010303a353c299f2a6f9959cc6aa2b88454cc3529dc6526eaeacea1832e45d3768df44d7c9d52b
+
+pkgname = python-pip-requirements-parser
