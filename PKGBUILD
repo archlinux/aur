@@ -12,7 +12,7 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=22.3.0_devel.157974.50e6a80b5ea5.d41d8cd98f00b204e9800998ecf8427e
+pkgver=22.3.0_devel.158200.854e8797ac3b.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -113,9 +113,12 @@ prepare() {
     done
 }
 
+# cpp_std=c++17 can be removed once https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/17966 is merged
+
 build () {
     meson setup mesa _build \
        -D b_ndebug=true \
+       -D cpp_std=c++17 \
        -D platforms=x11,wayland \
        -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,zink,d3d12 \
        -D vulkan-drivers=amd,intel,swrast,virtio-experimental \
