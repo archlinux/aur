@@ -1,5 +1,5 @@
 pkgname=lsky-pro
-pkgver=2.0.4
+pkgver=2.1
 pkgrel=1
 pkgdesc='Your photo album on the cloud.'
 license=('GPL3')
@@ -23,4 +23,4 @@ package() {
     chown -R http:http ${pkgdir}/usr/share/webapps/${pkgname}
 }
 
-sha256sums=('b3166fe8970c3b31e06d7d20d26bb5eb9d1b4cc7d7b98cc14d1ef6ef0b5409db')
+sha256sums=('335ce172eeb2316db79641cafde8fcbf452f3fc641e5a33c99893c113d7ba722')

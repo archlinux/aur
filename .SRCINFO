@@ -1,6 +1,6 @@
 pkgbase = lsky-pro
 	pkgdesc = Your photo album on the cloud.
-	pkgver = 2.0.4
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/lsky-org/lsky-pro
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = lsky-pro
 	optdepends = mysql: database
 	optdepends = postgresql: database
 	optdepends = sqlite: database
-	noextract = lsky-pro-2.0.4.zip
-	source = lsky-pro-2.0.4.zip::https://github.com/lsky-org/lsky-pro/releases/download/2.0.4/lsky-pro-2.0.4.zip
-	sha256sums = b3166fe8970c3b31e06d7d20d26bb5eb9d1b4cc7d7b98cc14d1ef6ef0b5409db
+	noextract = lsky-pro-2.1.zip
+	source = lsky-pro-2.1.zip::https://github.com/lsky-org/lsky-pro/releases/download/2.1/lsky-pro-2.1.zip
+	sha256sums = 335ce172eeb2316db79641cafde8fcbf452f3fc641e5a33c99893c113d7ba722
 
 pkgname = lsky-pro
