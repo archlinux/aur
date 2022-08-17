@@ -1,5 +1,6 @@
 # Set English mode when in tty environment to avoid grab of Asian characters
 if [ "$(tty | grep tty)" ]; then
+	export LC_ALL="en_US.UTF-8"
 	export LANG="en_US.UTF-8"
 fi
 

@@ -25,7 +25,7 @@ source=("zshrc"
         "easy-zsh-config")
 sha256sums=('7395fad38d918d699763f53bbc75764d9318e755591099fc625b3e5f23ed4d94'
             '191f93567e767c599cfd843bb8343f311396d8e80d423ec38af2ad3dc52551a3'
-            '84f30cb57a0b63dfc434490b5eada4cab25e28c60c387056f3775a60b550f35e')
+            'cc96b29d6ea5a08609a18116929452e9fb8f060cd3af1d084b9028602bc31c81')
 
 package(){
     install -Dm644 zshrc "${pkgdir}/etc/skel/.zshrc"
