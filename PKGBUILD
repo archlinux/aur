@@ -1,33 +1,36 @@
+# Maintainer: picokan <todaysoracle@protonmail.com>
+# Contributor: artoo <artoo@manjaro.org>
+# Contributor: micwoj92 <micwoj9292@gmail.com>
+
 _pkgname=ConsoleKit2
 
 pkgname=consolekit
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A framework for defining and tracking users, login sessions, and seats"
 arch=('i686' 'x86_64')
 url="https://github.com/ConsoleKit2/ConsoleKit2"
 license=('GPL')
 provides=('consolekit2')
 depends=('dbus' 'glib2' 'libx11' 'polkit-consolekit' 'udev' 'zlib')
-optdepends=('consolekit-openrc: consolekit openrc initscript'
-            'pm-utils: suspend/hibernate support')
 makedepends=('acl' 'xmlto' 'docbook-xsl')
 options=('libtool')
 install=consolekit.install
-source=("$url/archive/refs/tags/$pkgver.tar.gz"
-        'consolekit.tmpfiles.conf')
+source=("$url/archive/refs/tags/$pkgver/$_pkgname-$pkgver.tar.gz"
+        'consolekit.tmpfiles.conf'
+        'generic-power-commands.diff')
 sha256sums=('7c5ca07cc7ecb2743446c4ab5a66ae02667acab6214268d76f0fdf73eaf141e8'
-            '778552dc12b3c235bde200e476d4262da0c135f3f6f8b3e975a87881d1f154d1')
+            '778552dc12b3c235bde200e476d4262da0c135f3f6f8b3e975a87881d1f154d1'
+            SKIP)
 
 prepare(){
-	cd $srcdir/$_pkgname-$pkgver
-    autoreconf -fiv
+    patch -d "$srcdir/$_pkgname-$pkgver" -p1 < generic-power-commands.diff
 }
 
 build(){
 	cd $srcdir/$_pkgname-$pkgver
 
-    ./configure  \
+    ./autogen.sh  \
         --prefix=/usr \
         --sysconfdir=/etc \
         --sbindir=/usr/bin \
