@@ -1,12 +1,12 @@
 pkgbase = build-fs-tree
 	pkgdesc = Create a filesystem tree from YAML
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/KSXGitHub/build-fs-tree
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = build-fs-tree-0.3.0.tar.gz::https://github.com/KSXGitHub/build-fs-tree/archive/0.3.0.tar.gz
+	source = build-fs-tree-0.3.1.tar.gz::https://github.com/KSXGitHub/build-fs-tree/archive/0.3.1.tar.gz
 	sha1sums = SKIP
 
 pkgname = build-fs-tree
