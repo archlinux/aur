@@ -1,0 +1,34 @@
+pkgbase = elice-digital-baeum-variable
+	pkgdesc = A digital sans-serif font with JP/KR support, made by elice.
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://font.elice.io
+	arch = any
+	license = custom:SIL Open Font License v1.1
+	provides = elice-digital-baeum-variable
+	provides = ttf-elice-digital-baeum
+	provides = otf-elice-digital-baeum
+	conflicts = elice-digital-baeum-variable
+	source = https://font.elice.io/static/archives/EliceDigitalBaeum_OTF.zip
+	source = https://font.elice.io/static/archives/EliceDigitalBaeum_TTF.zip
+	sha256sums = a660d3a9ec25f1516a3b2401c4857bf9422f9b0d29788d032ee82114ebc41821
+	sha256sums = 9e2fc40ac8dc1e6faa5aff5d89dd45462b498513a9918f2f80200876f7ecc72b
+
+pkgname = elice-digital-baeum-variable
+pkgbase = elice-digital-baeum-variable
+	pkgdesc = A digital sans-serif font with JP/KR support, made by elice.
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://font.elice.io
+	arch = any
+	license = custom:SIL Open Font License v1.1
+	provides = elice-digital-baeum-variable
+	provides = ttf-elice-digital-baeum
+	provides = otf-elice-digital-baeum
+	conflicts = elice-digital-baeum-variable
+	source = https://font.elice.io/static/archives/EliceDigitalBaeum_OTF.zip
+	source = https://font.elice.io/static/archives/EliceDigitalBaeum_TTF.zip
+	sha256sums = a660d3a9ec25f1516a3b2401c4857bf9422f9b0d29788d032ee82114ebc41821
+	sha256sums = 9e2fc40ac8dc1e6faa5aff5d89dd45462b498513a9918f2f80200876f7ecc72b
+
+pkgname = elice-digital-baeum-variable
