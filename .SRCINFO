@@ -1,0 +1,13 @@
+pkgbase = antique-penguin-launcher
+	pkgdesc = A launcher for Antique Penguin
+	pkgver = 1.0.3
+	pkgrel = 1
+	arch = any
+	license = LGPL
+	makedepends = yarn
+	makedepends = git
+	options = !strip
+	source = git+https://github.com/darktohka/antique-penguin-client.git
+	sha256sums = SKIP
+
+pkgname = antique-penguin-launcher
