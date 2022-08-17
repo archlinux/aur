@@ -1,7 +1,7 @@
-# Maintainer: Anthony Wang <ta180m@pm.me>
+# Maintainer: Anthony Wang <ta180m@proton.me>
 
 pkgname=libretro-meta
-pkgver=2021.08.29
+pkgver=2022.08.17
 pkgrel=1
 pkgdesc='Meta package for the libretro group.'
 arch=('any')
@@ -26,6 +26,8 @@ depends=(
 	'libretro-gambatte'
 	'libretro-genesis-plus-gx'
 	'libretro-kronos'
+	'libretro-mame'
+	'libretro-mame2016'
 	'libretro-melonds'
 	'libretro-mesen'
 	'libretro-mesen-s'
