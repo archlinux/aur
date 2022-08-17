@@ -1,16 +1,16 @@
 pkgbase = ddev-edge-bin
 	pkgdesc = DDEV-Local: a local web development environment (edge)
-	pkgver = 1.20.0
+	pkgver = 1.21.1
 	pkgrel = 1
 	url = https://github.com/drud/ddev
 	license = Apache 2
 	conflicts = ddev
 	provides = ddev
 	arch = aarch64
-	source_aarch64 = https://github.com/drud/ddev/releases/download/v1.20.0/ddev_linux-arm64.v1.20.0.tar.gz
-	sha256sums_aarch64 = 966cfb4526881e34d211117516061ce9e0b1581bdae80f4add50757287ec6512
+	source_aarch64 = https://github.com/drud/ddev/releases/download/v1.21.1/ddev_linux-arm64.v1.21.1.tar.gz
+	sha256sums_aarch64 = 692fa720a7d8cd9f7b6ae1f039e19576eafd6d01974994c13bcf5370dcfda4f7
 	arch = x86_64
-	source_x86_64 = https://github.com/drud/ddev/releases/download/v1.20.0/ddev_linux-amd64.v1.20.0.tar.gz
-	sha256sums_x86_64 = accf8e859ab57dd69a0593faa7f38b12404c66dd18f9c9621a7513b3e72d080b
+	source_x86_64 = https://github.com/drud/ddev/releases/download/v1.21.1/ddev_linux-amd64.v1.21.1.tar.gz
+	sha256sums_x86_64 = 296c224efc7ba7d991f3ccf3790fe819d0b883c6e8794065c88fd997ba526ea8
 	
 pkgname = ddev-edge-bin
