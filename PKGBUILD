@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-ray
-pkgver=1.13.0
+pkgver=1.13.1
 pkgrel=1
 pkgdesc='A fast and simple framework for building and running distributed
 applications.'
@@ -46,13 +46,14 @@ optdepends=(
             'python-pyaml: for ray[rllib]'
             'python-scipy: for ray[rllib]'
            )
-makedepends=(python python-setuptools python-wheel python-pip cython bazel)
+makedepends=(python python-build python-installer python-wheel python-setuptools
+             python-pip cython bazel)
 _pkgname=ray
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ray-project/ray/archive/${_pkgname}-$pkgver.tar.gz"
         "init_order.patch"::"https://github.com/ray-project/ray/commit/85fe5346c83233af8e3aa36a3a9e3001a05f972f.patch"
         "py310.patch"::"https://patch-diff.githubusercontent.com/raw/ray-project/ray/pull/21221.patch")
 
-sha256sums=('f877891804c60b404ddb6eabe5896902ffdf5b6e8830e8150803a2b64b56a79f'
+sha256sums=('085937d1873e3108e0f180abaeb4f73bee9450cf8753e683229da69d4ab4f985'
             '539f9881e686281a71ca72d3a9a62c926960f400e36f3007d2bb8079b59fd07b'
             'SKIP')
 
@@ -70,10 +71,10 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}/python"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}/python"
-  python setup.py install --root="$pkgdir"/ --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
