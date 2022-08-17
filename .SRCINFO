@@ -1,0 +1,18 @@
+pkgbase = python-aesedb
+	pkgdesc = Asynchronous parser for JET.
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/skelsec/aesedb
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-unicrypto
+	depends = python-aiowinreg
+	depends = python-tqdm
+	depends = python-colorama
+	depends = python-pycryptodomex
+	source = https://files.pythonhosted.org/packages/source/a/aesedb/aesedb-0.0.5.tar.gz
+	sha256sums = da6e15c6a4c3f73bd4a59d4ef3f481a6b0331b8bd45f8cf72ed84ca4fe4773c8
+
+pkgname = python-aesedb
