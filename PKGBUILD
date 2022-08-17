@@ -12,7 +12,7 @@
 
 pkgname=mesa-minimal-git
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=22.2.0_devel.154303.e8eb6d13a5d
+pkgver=22.3.0_devel.158187.adb4934d59c3
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto' 'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libxrandr'
@@ -52,15 +52,21 @@ prepare() {
 }
 
 build () {
+
+# llvm 16 switchted to c++17 by default in https://github.com/llvm/llvm-project/commit/b4e9977fc18405d4a11cbaf1975bcadbf75920b8
+# use cpp_std=c++17 to force that version
+# can be removed once https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/17966 is merged to master
+
     meson setup mesa _build \
        -D b_ndebug=true \
        -D buildtype=plain \
+       -D cpp_std=c++17 \
        --wrap-mode=nofallback \
        -D prefix=/usr \
        -D sysconfdir=/etc \
        -D platforms=x11,wayland \
        -D dri-drivers=[] \
-       -D gallium-drivers=radeonsi,swrast,iris,zink \
+       -D gallium-drivers=radeonsi,swrast,iris,zink,virgl \
        -D vulkan-drivers=amd,intel,swrast \
        -D dri3=enabled \
        -D egl=enabled \
