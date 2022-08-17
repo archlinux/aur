@@ -6,14 +6,14 @@
 
 pkgname=darksnow
 pkgver=0.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc="simple GTK2 GUI for darkice"
 arch=(i686 x86_64)
 url="http://darksnow.radiolivre.org/index.en.html"
 license=('GPL')
 depends=('darkice' 'gtk2' 'hicolor-icon-theme')
 install="$pkgname.install"
-source=("http://darksnow.radiolivre.org/pacotes/$pkgname-$pkgver.tar.gz"
+source=("http://deb.debian.org/debian/pool/main/d/darksnow/darksnow_0.7.1.orig.tar.gz"
         "$pkgname.desktop")
 sha256sums=('7c7c55761f7536cea2e8b6d8037c9ce7ca71f6a044c1b6026ea80e13d35b04fd'
             'c35b2679a1d439cc6aff7acadd73a8af3bd0f878bb77e82db32c66f0ef646eb1')
