@@ -1,0 +1,25 @@
+pkgbase = dero-stratum-miner-bin
+	pkgdesc = Dero Stratum Miner
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = whalesburg.com
+	license = custom
+	conflicts = dero-stratum-miner
+	provides = dero-stratum-miner
+	arch = aarch64
+	source_aarch64 = https://github.com/whalesburg/dero-stratum-miner/releases/download/v1.0.0/dero-stratum-miner-v1.0.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 92ab873c82eb78ab36eaed67d786b31a657b450bb728b92b941225a32f541c63
+	arch = armv7h
+	source_armv7h = https://github.com/whalesburg/dero-stratum-miner/releases/download/v1.0.0/dero-stratum-miner-v1.0.0-linux-armv7.tar.gz
+	sha256sums_armv7h = 098be7c59ca17fb206c568d37f33311166b3b7e2b54b19ef938435f777871e8a
+	arch = i686
+	source_i686 = https://github.com/whalesburg/dero-stratum-miner/releases/download/v1.0.0/dero-stratum-miner-v1.0.0-linux-386.tar.gz
+	sha256sums_i686 = 33d883cad8a34b5755ce9ae6de6bcf80e9585cb945bdc69b5845bac2f201e391
+	arch = x86_64
+	source_x86_64 = https://github.com/whalesburg/dero-stratum-miner/releases/download/v1.0.0/dero-stratum-miner-v1.0.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 2b71e069841b345afcbe6f9d2c16fd6fdc8437db1d7ab71ba4aa9923c62ab7ad
+	arch = x86_64
+	source_x86_64 = https://github.com/whalesburg/dero-stratum-miner/releases/download/v1.0.0/dero-stratum-miner-1.0.0.hiveOS.tar.gz
+	sha256sums_x86_64 = 76dc5ee4b68363bab159c3ad8411a634c818d77ae7a4c155a86cab0933b7ff5a
+	
+pkgname = dero-stratum-miner-bin
