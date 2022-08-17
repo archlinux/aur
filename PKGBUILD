@@ -3,19 +3,20 @@
 # Maintainer: Mahor1221 <mahor1221 at pm dot me>
 
 pkgname=codelldb
+_pkgname="$pkgname"
 _reponame=vscode-lldb
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="A native debugger extension for VSCode based on LLDB. Also known as vscode-lldb (NOT lldb-vscode)"
 arch=("x86_64" "arm7h" "aarch64")
 url="https://github.com/vadimcn/$_reponame"
 license=("MIT")
-provides=("$pkgname" "$_reponame")
+provides=("$_pkgname" "$_reponame")
 depends=(lldb)
 makedepends=(cmake cargo npm python)
 options=(!debug strip) #Debug package is broken
 source=("$_reponame-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('699d3e7041a72d5ab5bd2004906223a4ced4ec316fa4d76fdab8b5e8ee83c32e')
+sha256sums=('a3278f06ddd75016e68aed225ad4862c9c39eb344eb71ef6fc37d34fc9be51a4')
 
 build() {
   export RUSTUP_TOOLCHAIN=stable
@@ -31,7 +32,7 @@ package() {
   shopt -s globstar
 
   cd "$_reponame-$pkgver"
-  local _lib_dir="$pkgdir/usr/lib/$pkgname"
+  local _lib_dir="$pkgdir/usr/lib/$_pkgname"
 
   # <https://github.com/vadimcn/vscode-lldb/blob/v1.7.0/CMakeLists.txt#L173-L186>
   install -Dm644 -t "$_lib_dir" build/platform.ok
@@ -43,8 +44,8 @@ package() {
   ln -s -t "$_lib_dir"/lldb /usr/{bin,lib}
 
   install -d "$pkgdir"/usr/bin
-  ln -s -t "$pkgdir"/usr/bin /usr/lib/"$pkgname"/adapter/codelldb
+  ln -s -t "$pkgdir"/usr/bin /usr/lib/"$_pkgname"/adapter/codelldb
 
-  install -Dm644 -t "$pkgdir"/usr/share/licenses/"$pkgname" LICENSE
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/"$_pkgname" LICENSE
   eval "$reset_shopt"
 }
