@@ -1,6 +1,6 @@
 pkgbase = r-pmcmrplus
 	pkgdesc = Calculate Pairwise Multiple Comparisons of Mean Rank Sums Extended
-	pkgver = 1.9.5
+	pkgver = 1.9.6
 	pkgrel = 1
 	url = https://cran.r-project.org/package=PMCMRplus
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = r-pmcmrplus
 	optdepends = r-pwr
 	optdepends = r-rmarkdown
 	optdepends = r-xtable
-	source = https://cran.r-project.org/src/contrib/PMCMRplus_1.9.5.tar.gz
-	sha256sums = 63e0d44be005a8de6db2c153c6db83c4cac843f82487790f4ef8ed3004e6b097
+	source = https://cran.r-project.org/src/contrib/PMCMRplus_1.9.6.tar.gz
+	sha256sums = 7f4791566d7dfaed0883187c52fbb845797ff6a1066e77667683ce96391b72d7
 
 pkgname = r-pmcmrplus

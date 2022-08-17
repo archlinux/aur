@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PMCMRplus
-_pkgver=1.9.5
+_pkgver=1.9.6
 pkgname=r-${_pkgname,,}
-pkgver=1.9.5
+pkgver=1.9.6
 pkgrel=1
 pkgdesc='Calculate Pairwise Multiple Comparisons of Mean Rank Sums Extended'
 arch=('x86_64')
@@ -37,7 +37,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('63e0d44be005a8de6db2c153c6db83c4cac843f82487790f4ef8ed3004e6b097')
+sha256sums=('7f4791566d7dfaed0883187c52fbb845797ff6a1066e77667683ce96391b72d7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
