@@ -1,0 +1,11 @@
+post_install() {
+  echo -e "
+    Before using wava, you need to create it's config file
+    in \e[3m~/.config/wava/\e[0m.
+    
+    The default file is located at \e[3m/usr/share/wava/wava.cfg\e[0m.
+
+    This can be copied to the config directory with:
+    \e[1minstall -D /usr/share/wava/wava.cfg ~/.config/wava/wava.cfg\033[0m
+"
+}
