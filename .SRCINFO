@@ -1,6 +1,6 @@
 pkgbase = ldproxy
 	pkgdesc = A linker proxy tool
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://crates.io/crates/ldproxy
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = ldproxy
 	makedepends = cargo
 	depends = gcc-libs
 	depends = clang
-	source = ldproxy-0.3.1.tar.gz::https://crates.io/api/v1/crates/ldproxy/0.3.1/download
-	sha512sums = 60d654ce08e194f21ea80f576bae0d40e608fd17735fafef01d5be06aec29a7e937b99e918fb0da2c7745abe37342ec6cf36ce26d867c443fca1b6dcaf944835
+	source = ldproxy-0.3.2.tar.gz::https://crates.io/api/v1/crates/ldproxy/0.3.2/download
+	sha512sums = 19e3eed00724edad93282f9dbcf6ead7467fe4585d2c04c46be33b67ac71088076d8fd7c0d394d044649a8a975ad55e0191ca6758ab3b4d72b7b3db02f92cf74
 
 pkgname = ldproxy
