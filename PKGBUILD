@@ -1,12 +1,16 @@
 # Maintainer: Daniel Albers <daniel@lbe.rs>
+# Co-Maintainer: Mubashshir <ahmubashshir@gmail.com>
 # Source: <https://github.com/AlD/archlinux/tree/master/pkgbuilds/quassel>
 # from: git
 
 pkgbase='quassel'
+pkgdesc='QT-based distributed IRC client'
 pkgname=("${pkgbase}-git"
          "${pkgbase}-light-git"
+         "${pkgbase}-light-webengine-git"
          "${pkgbase}-client-git"
          "${pkgbase}-client-light-git"
+         "${pkgbase}-client-light-webengine-git"
          "${pkgbase}-core-git"
          "${pkgbase}-common-git"
         )
@@ -18,7 +22,7 @@ license=('GPL')
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'hicolor-icon-theme'
              'knotifyconfig' 'python' 'qca' 'qt5-base' 'qt5-script'
-             'qt5-tools' 'qt5-webkit' 'boost' 'rsync')
+             'qt5-tools' 'qt5-webengine' 'boost' 'rsync')
 source=(
   'git+https://github.com/quassel/quassel.git'
   'git+https://github.com/quassel/quassel-i18n.git'
@@ -36,33 +40,45 @@ _build_client_common=(
   -DWANT_MONO=OFF
   -DWANT_CORE=OFF
   -DWANT_QTCLIENT=ON
+  -DWITH_WEBKIT=OFF
 )
 _build_mono_common=(
   -DWANT_MONO=ON
   -DWANT_CORE=OFF
   -DWANT_QTCLIENT=OFF
+  -DWITH_WEBKIT=OFF
 )
 
 ## pkg specific build options
 _build_git=(
   "${_build_mono_common[@]}"
   -DWITH_KDE=ON
-  -DWITH_WEBKIT=ON
+  -DWITH_WEBENGINE=ON
 )
 _build_light_git=(
   "${_build_mono_common[@]}"
   -DWITH_KDE=OFF
-  -DWITH_WEBKIT=OFF
+  -DWITH_WEBENGINE=OFF
+)
+_build_light_webengine_git=(
+  "${_build_mono_common[@]}"
+  -DWITH_KDE=OFF
+  -DWITH_WEBENGINE=ON
 )
 _build_client_git=(
   "${_build_client_common[@]}"
   -DWITH_KDE=ON
-  -DWITH_WEBKIT=ON
+  -DWITH_WEBENGINE=ON
 )
 _build_client_light_git=(
   "${_build_client_common[@]}"
   -DWITH_KDE=OFF
-  -DWITH_WEBKIT=OFF
+  -DWITH_WEBENGINE=OFF
+)
+_build_client_light_webengine_git=(
+  "${_build_client_common[@]}"
+  -DWITH_KDE=OFF
+  -DWITH_WEBENGINE=ON
 )
 _build_core_git=(
   -DWANT_MONO=OFF
@@ -131,7 +147,7 @@ package_quassel-common-git() {
 
 package_quassel-client-git() {
 
-  depends=("${pkgbase}-common-git" 'knotifyconfig' 'qt5-base' 'qt5-webkit')
+  depends=("${pkgbase}-common-git" 'knotifyconfig' 'qt5-base' 'qt5-webengine')
   pkgdesc='KDE-based distributed IRC client (client only)'
   provides=("${pkgbase}-client")
   conflicts=("${pkgbase}-client")
@@ -149,6 +165,15 @@ package_quassel-client-light-git() {
   _install
 }
 
+package_quassel-client-light-webengine-git() {
+
+  pkgdesc='Qt-based distributed IRC client (client only, w/o kde deps)'
+  depends=("${pkgbase}-common-git" 'qt5-base' 'qt5-webengine')
+  provides=("${pkgbase}-client")
+  conflicts=("${pkgbase}-client")
+    _install
+}
+
 package_quassel-core-git() {
 
   pkgdesc='KDE/Qt-based distributed IRC client (core only)'
@@ -163,7 +188,7 @@ package_quassel-git() {
 
   pkgdesc='KDE-based IRC client (monolithic version)'
   depends=("${pkgbase}-common-git" 'knotifyconfig' 'qca' 'qt5-base'
-           'qt5-script' 'qt5-webkit')
+           'qt5-script' 'qt5-webengine')
   provides=("${pkgbase}-monolithic")
   conflicts=("${pkgbase}-monolithic")
 
@@ -177,5 +202,13 @@ package_quassel-light-git() {
   provides=("${pkgbase}-monolithic")
   conflicts=("${pkgbase}-monolithic")
 
+  _install
+}
+
+package_quassel-light-webengine-git() {
+  pkgdesc='Qt-based IRC client (monolithic version, w/o kde deps)'
+  depends=("${pkgbase}-common-git" 'qt5-base' 'qt5-webengine')
+  provides=("${pkgbase}-monolithic")
+  conflicts=("${pkgbase}-monolithic")
   _install
 }

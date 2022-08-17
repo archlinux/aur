@@ -1,4 +1,5 @@
 pkgbase = quassel
+	pkgdesc = QT-based distributed IRC client
 	pkgver = 0.14.0.r6.gced8ef76
 	pkgrel = 1
 	url = http://quassel-irc.org
@@ -17,7 +18,7 @@ pkgbase = quassel
 	makedepends = qt5-base
 	makedepends = qt5-script
 	makedepends = qt5-tools
-	makedepends = qt5-webkit
+	makedepends = qt5-webengine
 	makedepends = boost
 	makedepends = rsync
 	source = git+https://github.com/quassel/quassel.git
@@ -32,7 +33,7 @@ pkgname = quassel-git
 	depends = qca
 	depends = qt5-base
 	depends = qt5-script
-	depends = qt5-webkit
+	depends = qt5-webengine
 	provides = quassel-monolithic
 	conflicts = quassel-monolithic
 
@@ -43,12 +44,20 @@ pkgname = quassel-light-git
 	provides = quassel-monolithic
 	conflicts = quassel-monolithic
 
+pkgname = quassel-light-webengine-git
+	pkgdesc = Qt-based IRC client (monolithic version, w/o kde deps)
+	depends = quassel-common-git
+	depends = qt5-base
+	depends = qt5-webengine
+	provides = quassel-monolithic
+	conflicts = quassel-monolithic
+
 pkgname = quassel-client-git
 	pkgdesc = KDE-based distributed IRC client (client only)
 	depends = quassel-common-git
 	depends = knotifyconfig
 	depends = qt5-base
-	depends = qt5-webkit
+	depends = qt5-webengine
 	provides = quassel-client
 	conflicts = quassel-client
 
@@ -56,6 +65,14 @@ pkgname = quassel-client-light-git
 	pkgdesc = Qt-based distributed IRC client (client only, w/o kde deps)
 	depends = quassel-common-git
 	depends = qt5-base
+	provides = quassel-client
+	conflicts = quassel-client
+
+pkgname = quassel-client-light-webengine-git
+	pkgdesc = Qt-based distributed IRC client (client only, w/o kde deps)
+	depends = quassel-common-git
+	depends = qt5-base
+	depends = qt5-webengine
 	provides = quassel-client
 	conflicts = quassel-client
 
