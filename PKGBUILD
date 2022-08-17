@@ -1,4 +1,4 @@
-# Maintainer: Topik topik@topik.tech
+# Maintainer: syntheit <daniel@matv.io>
 pkgname=icu67-bin
 pkgver=67.1
 pkgrel=1
