@@ -1,8 +1,8 @@
 # Maintainer: Michael Gruz <michael.gruz@gmail.com>
 
 pkgname=cura-5-plugin-octoprint
-_pkgname=cura-5-plugin-octoprint
 pkgver=3.7.2
+_pkgname=Cura-OctoPrintPlugin-${pkgver}
 pkgrel=3
 pkgdesc="Cura plugin which enables printing directly to OctoPrint and monitoring the progress"
 arch=('any')
@@ -11,22 +11,21 @@ url="https://github.com/fieldofview/OctoPrintPlugin"
 depends=('python' 'cura-5-bin' 'python-zeroconf')
 conflicts=('cura-5-plugin-octoprint-git')
 makedepends=('git' 'cmake')
-source=("$_pkgname::git+https://github.com/fieldofview/OctoPrintPlugin.git#tag=v${pkgver}"
+source=("https://github.com/fieldOfView/Cura-OctoPrintPlugin/archive/refs/tags/v${pkgver}.tar.gz"
         "git+https://github.com/jstasiak/python-zeroconf.git"
         "git+https://github.com/pydron/ifaddr.git"
         "CMakeLists.txt.patch")
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         '9e2e7daae3b9d62cb51a617926e8ba1f')
+sha256sums=('ad61c8320c78ae884ec55748758c8c04c077e381471a1471fa074c9772d80035'
+            'SKIP'
+            'SKIP'
+            'a2f55c90ff9ec928b6f204d31d5d2c7a604bfc91ee057ca5c820970526d9fb3b')
 
 prepare() {
-  cd "$_pkgname"
+  cd $srcdir/$_pkgname
   git submodule init
   git config submodule.python-zeroconf.url $srcdir/python-zeroconf
   git config submodule.ifaddr.url $srcdir/ifaddr
   git submodule update
-  cd $srcdir/$_pkgname
   patch -Np0 < $srcdir/CMakeLists.txt.patch
 }
 

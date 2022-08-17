@@ -11,13 +11,13 @@ pkgbase = cura-5-plugin-octoprint
 	depends = cura-5-bin
 	depends = python-zeroconf
 	conflicts = cura-5-plugin-octoprint-git
-	source = cura-5-plugin-octoprint::git+https://github.com/fieldofview/OctoPrintPlugin.git#tag=v3.7.2
+	source = https://github.com/fieldOfView/Cura-OctoPrintPlugin/archive/refs/tags/v3.7.2.tar.gz
 	source = git+https://github.com/jstasiak/python-zeroconf.git
 	source = git+https://github.com/pydron/ifaddr.git
 	source = CMakeLists.txt.patch
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = 9e2e7daae3b9d62cb51a617926e8ba1f
+	sha256sums = ad61c8320c78ae884ec55748758c8c04c077e381471a1471fa074c9772d80035
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = a2f55c90ff9ec928b6f204d31d5d2c7a604bfc91ee057ca5c820970526d9fb3b
 
 pkgname = cura-5-plugin-octoprint
