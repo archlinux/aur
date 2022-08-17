@@ -1,32 +1,38 @@
 # -*- mode: Shell-script; eval: (setq indent-tabs-mode 't); eval: (setq tab-width 4) -*-
 # Maintainer: Dominic Meiser [git at msrd0 dot de]
 
-# Package Information
 _crate="faketty"
-pkgname="$_crate"
-pkgver=1.0.5
+pkgname="faketty"
+pkgver=1.0.9
 pkgrel=1
 pkgdesc='Wrapper to exec a command in a pty, even if redirecting the output'
+url='https://crates.io/crates/faketty'
 license=('Apache' 'MIT')
+
+depends=('gcc-libs')
+makedepends=('cargo')
+
+source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/faketty/1.0.9/download")
+sha512sums=('892d2873287e0bd0977e89be69532dd16e3d090fe67d69bdcae543702125067a81e3ad5324b46f8c89e21549b9b06713a95df12d83607c3e067cc83fe08ab622')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
 
-# Generic Stuff for cargo packages
-url="https://crates.io/crates/$_crate"
-depends=('gcc-libs')
-makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$_crate/$pkgver/download")
-sha512sums=('f969f65cc2638b5fadde60b39bdd232beb59749da9e76b0c0186d7bc123d31efda64b5aab6d6de66f603d4386583456ad5aac9f0dfc630c3cd42b9e91d558f68')
+prepare() {
+	cd "$srcdir/$_crate-$pkgver"
+
+	cargo fetch --locked
+}
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$_crate-$pkgver"
 	cargo build \
+		--offline \
 		--locked \
 		--release
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$_crate-$pkgver"
 	install -Dm755 "target/release/faketty" -t "$pkgdir/usr/bin"
 }
