@@ -1,0 +1,22 @@
+pkgbase = wxgtk30
+	pkgdesc = GTK+3 implementation of wxWidgets API for GUI, v3.0.5 installed in /opt/wxgtk-3.0.5/
+	pkgver = 3.0.5.1
+	pkgrel = 1
+	url = https://wxwidgets.org
+	arch = x86_64
+	license = custom:wxWindows
+	makedepends = glu
+	makedepends = webkit2gtk
+	depends = gtk3
+	depends = libsm
+	depends = zlib
+	depends = gcc-libs
+	depends = expat
+	optdepends = webkit2gtk: for webview support
+	options = !emptydirs
+	source = https://github.com/wxWidgets/wxWidgets/releases/download/v3.0.5.1/wxWidgets-3.0.5.1.tar.bz2
+	source = wxgtk30.conf
+	sha256sums = 440f6e73cf5afb2cbf9af10cec8da6cdd3d3998d527598a53db87099524ac807
+	sha256sums = f89cd15e685a9614b1b5d55c202391a8eac81740c2bd1b51e53eb6362e9ffd80
+
+pkgname = wxgtk30
