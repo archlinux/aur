@@ -1,2 +1,4 @@
 *.pkg*
 *.pacman
+src
+pkg
