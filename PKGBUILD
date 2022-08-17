@@ -15,6 +15,7 @@ optdepends=(
   'slurp: OCR support on wlroots'
   'grim: OCR support on wlroots'
   'mpv: media playback integration'
+  'tesseract: Tesseract OCR engine'
 )
 provides=()
 conflicts=()

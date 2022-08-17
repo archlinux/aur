@@ -8,6 +8,8 @@ pkgbase = kamite-bin
 	optdepends = slop: OCR support on Xorg
 	optdepends = slurp: OCR support on wlroots
 	optdepends = grim: OCR support on wlroots
+	optdepends = mpv: media playback integration
+	optdepends = tesseract: Tesseract OCR engine
 	source = https://github.com/fauu/Kamite/releases/download/v0.3/Kamite_0.3_Linux.zip
 	b2sums = fd9f37379497dd621dd138d23f874f946ba5b19dba4b8809824bb44cfc6be171e42e880b497749f29eb6ff0f8d05e5e81c7e8d5ffee9323aeeb2192c8340ce1c
 
