@@ -12,7 +12,7 @@
 
 pkgname=lib32-mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=22.2.0_devel.156171.7bb62d9dd859.d41d8cd98f00b204e9800998ecf8427e
+pkgver=22.3.0_devel.158201.93fa687808f7.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -115,6 +115,8 @@ prepare() {
     done
 }
 
+# cpp_std=c++17 can be removed once https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/17966 is merged
+
 build () {
     export CC="${CC:-gcc}"
     export CXX="${CXX:-g++}"
@@ -126,6 +128,7 @@ build () {
     meson setup mesa _build \
         --native-file llvm32.native \
         -D b_ndebug=true \
+        -D cpp_std=c++17 \
         -D buildtype=plain \
         --wrap-mode=nofallback \
         -D prefix=/usr \
