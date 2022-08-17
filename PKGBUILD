@@ -3,7 +3,7 @@
 
 pkgname=gnome-shell-extension-blur-my-shell
 _pkgbase=blur-my-shell
-pkgver=39
+pkgver=40
 pkgrel=1
 pkgdesc="Extension that adds a blur look to different parts of the GNOME Shell"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('dconf' 'gnome-shell')
 makedepends=('unzip')
 conflicts=('gnome-shell-extension-blur-my-shell-git')
 source=("${_pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a5d31c92595957c00baaebb617b67305ea19a160de2964e9a8129f621cacf9e9')
+sha256sums=('4295ca6ee5e91cdceb85e5b733dc350745a211a303ce682f39bbeebec3cf2670')
 
 build() {
   cd "${_pkgbase}-${pkgver}"
@@ -29,6 +29,7 @@ package() {
   install -Dm644 -t "${_destdir}" metadata.json *.js *.css
   install -Dm644 -t "${_destdir}/components" components/*.js
   install -Dm644 -t "${_destdir}/conveniences" conveniences/*.js
+  install -Dm644 -t "${_destdir}/dbus" dbus/*.{js,xml}
   install -Dm644 -t "${_destdir}/effects" effects/*.{js,glsl}
   install -Dm644 -t "${_destdir}/preferences" preferences/*.js
   install -Dm644 -t "${_destdir}/ui" ui/*.ui
