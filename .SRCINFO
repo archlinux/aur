@@ -1,0 +1,17 @@
+pkgbase = distro-grub-themes-endeavouros
+	pkgdesc = A GRUB2 theme for EndeavourOS
+	pkgver = 3.2
+	pkgrel = 1
+	url = https://github.com/AdisonCavani/distro-grub-themes
+	arch = any
+	license = GPL3
+	depends = grub
+	optdepends = grub-customizer: GUI tool to configure grub
+	provides = distro-grub-theme-endeavouros
+	provides = grub-theme-endeavouros
+	provides = grub-theme
+	noextract = endeavouros-3.2.tar
+	source = endeavouros-3.2.tar::https://github.com/AdisonCavani/distro-grub-themes/releases/download/v3.2/endeavouros.tar
+	sha256sums = SKIP
+
+pkgname = distro-grub-themes-endeavouros
