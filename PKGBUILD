@@ -1,7 +1,7 @@
 # Maintainer: Łukasz Mariański <lmarianski at protonmail dot com>
 pkgname=replugged-electron-git
 _pkgname="${pkgname%-electron-*}"
-pkgver=r1543.86ae1cb8
+pkgver=r1589.f45fadd1
 pkgrel=1
 pkgdesc="A fork of Powercord, the lightweight discord client mod focused on simplicity and performance."
 arch=('any')
@@ -17,18 +17,12 @@ source=("git+https://github.com/${_pkgname}-org/${_pkgname}.git#branch=${_branch
 		"$_pkgname.sh"
 		"$_pkgname.desktop"
 		"$_pkgname.png"
-		"$_pkgname.patch"
-		"$_pkgname-themes.patch"
-		"$_pkgname-plugins.patch"
-		"$_pkgname-updater.patch")
+		"$_pkgname.patch")
 md5sums=('SKIP'
-         '94637a686a6ef32d2ae46cd6b171603b'
+         '4fe21f924e724bfa674f95c5304e2e3b'
          '9698a7fbd4af735bee89e74fa0b03dfe'
          '4ddcb11a1ec0a8a9585a6f0b685286b4'
-         'c989b875ff29492629f90e8f6b19c194'
-         'd2dc5683278a2fbc677e917d557623fb'
-         '048616be03e800a9e64ebbf02a20b96f'
-         '655900c956345ab932b2b2b766a3ac6d')
+         'ebc1031e6bc3a2ecbc194bb5c0c02412')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
@@ -40,15 +34,11 @@ prepare() {
 	cd "$srcdir/$_pkgname"
 
 	patch -p1 -i "$srcdir/$_pkgname.patch"
-	patch -p1 -i "$srcdir/$_pkgname-themes.patch"
-	patch -p1 -i "$srcdir/$_pkgname-updater.patch"
 
-	sed -i "s:@PKG_UPSTREAM@:$_pkgname-org/$_pkgname:;s:@PKG_BRANCH@:${_branch}:;s:@PKG_REVISION@:$(git rev-parse ${_branch}):" src/Powercord/plugins/pc-updater/index.js
-
-	patch -p1 -i "$srcdir/$_pkgname-plugins.patch"
+	sed -i "s:@PKG_UPSTREAM@:$_pkgname-org/$_pkgname:;s:@PKG_BRANCH@:${_branch}:;s:@PKG_REVISION@:$(git rev-parse ${_branch}):" src/Powercord/coremods/updater/index.js
 
 	# Bring back the "new" webpack backend, needed because of contextIsolation
-	git revert -n 8dbf24d9ec3cf0ea6589707230e1d2cd5285e187
+	git revert -X ours -n 8dbf24d9ec3cf0ea6589707230e1d2cd5285e187
 }
 
 build() {

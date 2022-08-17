@@ -19,16 +19,10 @@ pkgbase = replugged-electron-git
 	source = replugged.desktop
 	source = replugged.png
 	source = replugged.patch
-	source = replugged-themes.patch
-	source = replugged-plugins.patch
-	source = replugged-updater.patch
 	md5sums = SKIP
 	md5sums = 4fe21f924e724bfa674f95c5304e2e3b
 	md5sums = 9698a7fbd4af735bee89e74fa0b03dfe
 	md5sums = 4ddcb11a1ec0a8a9585a6f0b685286b4
-	md5sums = 2161d9d235f06c9369c75dff9a8d4b45
-	md5sums = 9c106139d90753565af113bd80b4ef25
-	md5sums = 1103abb2af26c44a3024ad580d2ff4cd
-	md5sums = e67b9f1b0af92f638f238bc72691031f
+	md5sums = ebc1031e6bc3a2ecbc194bb5c0c02412
 
 pkgname = replugged-electron-git
