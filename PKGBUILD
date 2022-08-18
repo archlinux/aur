@@ -9,15 +9,14 @@
 
 pkgbase=tensorrt
 pkgname=('tensorrt' 'python-tensorrt' 'tensorrt-doc')
-pkgver=8.4.1.5
-_ossver=22.07
+pkgver=8.4.2.4
+_ossver=22.08
 _cudaver=11.6
 _cudnnver=8.4
 _protobuf_ver=3.17.3
 _pybind11_ver=2.9.2
 _graphsurgeon_ver=0.4.6
 _uffver=0.6.9
-_license_ver=2022.07.25
 pkgrel=1
 pkgdesc='A platform for high-performance deep learning inference on NVIDIA hardware'
 arch=('x86_64')
@@ -36,9 +35,9 @@ source=("local://TensorRT-${pkgver}.Linux.${CARCH}-gnu.cuda-${_cudaver}.cudnn${_
         "https://github.com/google/protobuf/releases/download/v${_protobuf_ver}/protobuf-cpp-${_protobuf_ver}.tar.gz"
         '010-tensorrt-use-local-protobuf-sources.patch'
         '020-tensorrt-fix-python.patch'
-		"TensorRT-SLA-${_license_ver}.txt")
+        'TensorRT-SLA.txt')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('8107861af218694130f170e071f49814fa3e27f1386ce7cb6d807ac05a7fcf0e'
+sha256sums=('530d38d631c86a289df465ff0f31b6653b6338aecfa68c2f4c363fac5f81d7b6'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -49,7 +48,7 @@ sha256sums=('8107861af218694130f170e071f49814fa3e27f1386ce7cb6d807ac05a7fcf0e'
             '51cec99f108b83422b7af1170afd7aeb2dd77d2bcbb7b6bad1f92509e9ccf8cb'
             'ea25bb1b188d53cbfbec35d242ab2a2fa8d6009c547c9f5f67bc2f1ad127ceac'
             'ab18bcaebc59620a0b97b67c4bfb7646d9310fffbeb15b8441552c600b0212c9'
-            '0e28e9bc9a633f0e8b5587321859e30f78cf5116bd8d5c379fc18d17b7efadd2')
+            'a3e33bbee568e03e7f32481df930c78edc95b49b6b667b37db57cedb1967faed')
 
 prepare() {
     # tensorrt git submodules
@@ -131,7 +130,7 @@ package_tensorrt() {
     ln -s "libnvinfer_builder_resource.so.${pkgver%.*}" "${pkgdir}/usr/lib/libnvinfer_builder_resource.so.${pkgver%%.*}"
     ln -s "libnvinfer_builder_resource.so.${pkgver%%.*}" "${pkgdir}/usr/lib/libnvinfer_builder_resource.so"
     
-    install -D -m644 "TensorRT-SLA-${_license_ver}.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 TensorRT-SLA.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -D -m644 "TensorRT-${pkgver}/doc/Acknowledgements.txt" "${pkgdir}/usr/share/licenses/${pkgname}/ACKNOWLEDGEMENTS"
     install -D -m644 TensorRT/NOTICE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
@@ -162,7 +161,7 @@ package_python-tensorrt() {
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-graphsurgeon"
     ln -s "../../../lib/python${_pyver}/site-packages/uff-${_uffver}.dist-info/LICENSE.txt" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-uff"
-    install -D -m644 "${srcdir}/TensorRT-SLA-${_license_ver}.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-NVIDIA-SLA"
+    install -D -m644 "${srcdir}/TensorRT-SLA.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-NVIDIA-SLA"
     install -D -m644 "${srcdir}/TensorRT-${pkgver}/doc/Acknowledgements.txt" "${pkgdir}/usr/share/licenses/${pkgname}/ACKNOWLEDGEMENTS"
     install -D -m644 "${srcdir}/TensorRT/NOTICE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
@@ -174,6 +173,6 @@ package_tensorrt-doc() {
     
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
     cp -dr --no-preserve='ownership' "TensorRT-${pkgver}/doc"/{cpp,python} "${pkgdir}/usr/share/doc/${pkgbase}"
-    install -D -m644 "TensorRT-SLA-${_license_ver}.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 TensorRT-SLA.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -D -m644 "TensorRT-${pkgver}/doc/Acknowledgements.txt" "${pkgdir}/usr/share/licenses/${pkgname}/ACKNOWLEDGEMENTS"
 }

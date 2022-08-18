@@ -5,7 +5,7 @@ Software License Agreement | NVIDIA Docs
 
 
 
-SLA-08835-001 _v8.4.2   |   July 2022
+SLA-08835-001 _v8.4.3   |   August 2022
                                                                                                     Table of Contents
 Chapter 1. License................................................................................................................1
     1.1. Grant.......................................................................................................................................... 1
@@ -25,7 +25,7 @@ Chapter 7. General..............................................................
 
 
 
-    NVIDIA TensorRT                                                                                                  SLA-08835-001 _v8.4.2 | ii
+    NVIDIA TensorRT                                                                                                  SLA-08835-001 _v8.4.3 | ii
 Chapter 1.                    License.
 
 
@@ -64,7 +64,7 @@ These are the distribution requirements for you to exercise the distribution gra
 
 
 
-NVIDIA TensorRT                                                           SLA-08835-001 _v8.4.2 | 1
+NVIDIA TensorRT                                                           SLA-08835-001 _v8.4.3 | 1
                                                                                            License.
 
 
@@ -115,7 +115,7 @@ held by the copyright holders indicated in the third-party software or license.
 
 
 
-NVIDIA TensorRT                                                           SLA-08835-001 _v8.4.2 | 2
+NVIDIA TensorRT                                                           SLA-08835-001 _v8.4.3 | 2
                                                                                           License.
 
 
@@ -128,7 +128,7 @@ under this Agreement.
 
 
 
-NVIDIA TensorRT                                                          SLA-08835-001 _v8.4.2 | 3
+NVIDIA TensorRT                                                          SLA-08835-001 _v8.4.3 | 3
 Chapter 2.                     Limitations.
 
 
@@ -173,7 +173,7 @@ compliance with its terms.
 
 
 
-NVIDIA TensorRT                                                           SLA-08835-001 _v8.4.2 | 4
+NVIDIA TensorRT                                                           SLA-08835-001 _v8.4.3 | 4
 Chapter 3.                    Ownership.
 
 
@@ -198,7 +198,7 @@ feedback to NVIDIA through the developer portal at https://developer.nvidia.com.
 
 
 
-NVIDIA TensorRT                                                          SLA-08835-001 _v8.4.2 | 5
+NVIDIA TensorRT                                                          SLA-08835-001 _v8.4.3 | 5
 Chapter 4.              No Warranties.
 
 
@@ -214,7 +214,7 @@ USAGE, COURSE OF DEALING OR COURSE OF TRADE.
 
 
 
-NVIDIA TensorRT                                           SLA-08835-001 _v8.4.2 | 6
+NVIDIA TensorRT                                           SLA-08835-001 _v8.4.3 | 6
 Chapter 5.                    Limitations of Liability.
 
 
@@ -240,7 +240,7 @@ would be substantially different.
 
 
 
-NVIDIA TensorRT                                                           SLA-08835-001 _v8.4.2 | 7
+NVIDIA TensorRT                                                           SLA-08835-001 _v8.4.3 | 7
 Chapter 6.                    Termination.
 
 
@@ -264,7 +264,7 @@ granted to you.
 
 
 
-NVIDIA TensorRT                                                          SLA-08835-001 _v8.4.2 | 8
+NVIDIA TensorRT                                                          SLA-08835-001 _v8.4.3 | 8
 Chapter 7.                     General.
 
 
@@ -306,7 +306,7 @@ administered by the U.S. Department of Treasury’s Office of Foreign Assets Con
 
 
 
-NVIDIA TensorRT                                                           SLA-08835-001 _v8.4.2 | 9
+NVIDIA TensorRT                                                           SLA-08835-001 _v8.4.3 | 9
                                                                                          General.
 
 
@@ -332,7 +332,7 @@ representatives of both parties.
 
 
 
-NVIDIA TensorRT                                                         SLA-08835-001 _v8.4.2 | 10
+NVIDIA TensorRT                                                         SLA-08835-001 _v8.4.3 | 10
 Chapter 8.                    TensorRT SUPPLEMENT
                               TO SOFTWARE LICENSE
                               AGREEMENT FOR NVIDIA
@@ -364,7 +364,7 @@ license-questions@nvidia.com.
 
 
 
-NVIDIA TensorRT                                                          SLA-08835-001 _v8.4.2 | 11
+NVIDIA TensorRT                                                          SLA-08835-001 _v8.4.3 | 11
 Notice
 This document is provided for information purposes only and shall not be regarded as a warranty of a certain functionality, condition, or quality of a product. NVIDIA
 Corporation (“NVIDIA”) makes no representations or warranties, expressed or implied, as to the accuracy or completeness of the information contained in this
