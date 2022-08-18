@@ -1,6 +1,6 @@
 pkgbase = thrust
 	pkgdesc = A C++ parallel programming library which resembles the C++ Standard Library
-	pkgver = 1.17.0
+	pkgver = 1.17.1
 	pkgrel = 1
 	url = https://github.com/thrust/thrust
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = thrust
 	optdepends = cuda: for CUDA backend
 	optdepends = openmp: for OMP backend
 	optdepends = intel-tbb: for TBB backend
-	source = thrust-1.17.0.tar.gz::https://github.com/thrust/thrust/archive/1.17.0.tar.gz
-	source = cub-1.17.0.tar.gz::https://github.com/thrust/cub/archive/1.17.0.tar.gz
-	sha256sums = b02aca5d2325e9128ed9d46785b8e72366f758b873b95001f905f22afcf31bbf
-	sha256sums = 16fd4860ae3196bc3eb08bf5754fa2a9697951ddae36dc9721e6614388893618
+	source = thrust-1.17.1.tar.gz::https://github.com/thrust/thrust/archive/1.17.1.tar.gz
+	source = cub-1.17.1.tar.gz::https://github.com/thrust/cub/archive/1.17.1.tar.gz
+	sha256sums = 5b67fefc55cc858b5ec211828f1df6fc8740b4f5493e877fee451d249d577ee9
+	sha256sums = a0f0f40ad4dade8223b2bbea9d70e6cd6a8c74f81cf4f475ee0b22c6429e2187
 
 pkgname = thrust
