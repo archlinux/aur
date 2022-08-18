@@ -1,0 +1,38 @@
+From 5017e864ac5a4dbe7e97920c24e39a4dae89e92c Mon Sep 17 00:00:00 2001
+From: Techcable <Techcable@techcable.net>
+Date: Wed, 10 Aug 2022 15:19:17 -0700
+Subject: [PATCH] Temporary hack to workaround WHO flooding bug
+
+From #senpai IRC:
+<cc0> yeah thats a known bug, will be fixed later with a soju patch
+<Techcable> Oh, it's a soju problem?
+<Techcable> Here's the soju log if that's helpful: https://paste.sr.ht/~techcable/23d75d1d75ecda9a02ba0238bf524f4d8ffa7622
+<cc0> this just affects the initial view of whether people are here or away (shown in grey)
+<Techcable> Cool - I'll probably patch senpai to disable WHO status in the meantime ;)
+<cc0> are you getting flooded with these error messages or is it just printed once?
+---
+ irc/session.go | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/irc/session.go b/irc/session.go
+index 0776436..6275862 100644
+--- a/irc/session.go
++++ b/irc/session.go
+@@ -790,12 +790,12 @@ func (s *Session) handleMessageRegistered(msg Message, playback bool) (Event, er
+ 				Name:    msg.Params[0],
+ 				Members: map[*User]string{},
+ 			}
+-			if _, ok := s.enabledCaps["away-notify"]; ok {
++			/* if _, ok := s.enabledCaps["away-notify"]; ok {
+ 				// Only try to know who is away if the list is
+ 				// updated by the server via away-notify.
+ 				// Otherwise, it'll become outdated over time.
+ 				s.out <- NewMessage("WHO", channel)
+-			}
++			} */
+ 		} else if c, ok := s.channels[channelCf]; ok {
+ 			if _, ok := s.users[nickCf]; !ok {
+ 				s.users[nickCf] = &User{Name: msg.Prefix.Copy()}
+-- 
+2.32.1 (Apple Git-133)
+

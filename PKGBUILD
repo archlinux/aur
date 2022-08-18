@@ -21,11 +21,15 @@ conflicts=('senpai-irc-git' 'senpai')
 makedepends=('go' 'scdoc')
 source=(
   "senpai-v${pkgver}.tar.gz::https://git.sr.ht/~taiite/senpai/archive/v0.1.0.tar.gz"
+  # This is needed until issue 95 is resolved: https://todo.sr.ht/~taiite/senpai/95
+  "0001-Temporary-hack-to-workaround-WHO-flooding-bug.patch"
 )
-sha256sums=('98e1f16ed97433e1e8c8bdabac1cac1920ddcab90e6cef36d8817a41b45a94ff')
+sha256sums=('98e1f16ed97433e1e8c8bdabac1cac1920ddcab90e6cef36d8817a41b45a94ff'
+            'e86dc1bcb4d7cd1c39ed38a7b5c036065345a5af9b9f119762997e109cd22ceb')
 
 prepare () {
     cd "${srcdir}/senpai-v${pkgver}"
+    patch --strip=1 --input="${srcdir}/0001-Temporary-hack-to-workaround-WHO-flooding-bug.patch"
     make clean
 }
 

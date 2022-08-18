@@ -11,6 +11,8 @@ pkgbase = senpai-irc
 	conflicts = senpai-irc-git
 	conflicts = senpai
 	source = senpai-v0.1.0.tar.gz::https://git.sr.ht/~taiite/senpai/archive/v0.1.0.tar.gz
+	source = 0001-Temporary-hack-to-workaround-WHO-flooding-bug.patch
 	sha256sums = 98e1f16ed97433e1e8c8bdabac1cac1920ddcab90e6cef36d8817a41b45a94ff
+	sha256sums = e86dc1bcb4d7cd1c39ed38a7b5c036065345a5af9b9f119762997e109cd22ceb
 
 pkgname = senpai-irc
