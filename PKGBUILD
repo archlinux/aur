@@ -1,4 +1,4 @@
-# Maintainer: Alex S. alex at panoptic.onl
+# Maintainer: Alex S. <alex at panoptic.onl>
 pkgname=cryptlib
 pkgver=3.4.5
 _pkgverdotless=345
