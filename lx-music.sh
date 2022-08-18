@@ -1,3 +1,3 @@
 #!/bin/sh
-cd /usr/share/lx-music/
-electron ./ $@
+cd /usr/lib/lx-music/
+electron ./ "$@"
