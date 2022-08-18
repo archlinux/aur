@@ -3,9 +3,9 @@
 # Contributor: TDY <tdy@archlinux.info>
 
 pkgname=foxitreader
-pkgver=2.4.4.0911
-_foxitrevision=r057d814
-pkgrel=4
+pkgver=2.4.5.0727
+_foxitrevision=rb70e8df
+pkgrel=1
 pkgdesc="A fast, secure and complete PDF viewer"
 arch=('x86_64')
 url="https://www.foxitsoftware.com/products/pdf-reader/"
@@ -18,9 +18,9 @@ source=("http://cdn09.foxitsoftware.com/pub/foxit/reader/desktop/linux/2.x/${pkg
         "eula.html"
         "${pkgname}.patch"
         "${pkgname}-excluded_files")
-sha256sums=('6b579bd4ecdf86f7e70a009886c511da0b5085b831b0d6afc42442cabc249b90'
+sha256sums=('633279b6c9fcfa3c45e055df321a87d633ecfea11f668a06e838bb91b5bf6247'
             '4ca287e0c47f46df4185be7ff273c0cced304672ebc750aad6236590e1a772e6'
-            'ee0f65819d00fea89f40112c769c704c7b663ff852e9d1d6e36d1b6d054d9c05'
+            'ef4438f745f719f03a06a14ff220f0629409b9729c62418e0be7250b4c9e4daf'
             'e558529c6dbea047eee744b011ffcc214547c503896b14211ebf5f6309ef4e9f')
 
 build() {
@@ -98,7 +98,7 @@ package() {
   install -m 644 "images/FoxitReader.png" \
     "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install -m 755 -d "${pkgdir}/usr/share/applications"
-  install -m 755 "FoxitReader.desktop" \
+  install -m 644 "FoxitReader.desktop" \
     "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   rm FoxitReader.desktop
   # Install license file
