@@ -1,13 +1,17 @@
 pkgbase = python-twiggy
-	pkgdesc = a Pythonic logger
+	pkgdesc = Pythonic logger
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wearpants/twiggy
 	arch = any
-	license = custom:BSD-3-clause
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-six
-	source = https://github.com/wearpants/twiggy/archive/0.5.1.tar.gz
-	sha512sums = d8cc2fe85ac6b58a451129c5bcd54f7d4b61d55833b9869b48bea1572a74f0fc73ac29370f1e3dc4fc618256fbaa681e3322a5684419504f898a20370e502314
+	source = python-twiggy-0.5.1.tar.gz::https://github.com/wearpants/twiggy/archive/0.5.1.tar.gz
+	sha256sums = b5acfc81647475f9f734d59d15e5eb6490d8bafd4e1886e01058c24c29e64a5f
 
 pkgname = python-twiggy
