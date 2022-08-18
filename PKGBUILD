@@ -28,7 +28,7 @@ build() {
 check() {
 	cd "$pkgname"
 	local _py="$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')"
-	PYTHONPATH="$PWD/build/lib.linux-cpython-$CARCH-$_py" python setup.py test || true
+	PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-$_py" python setup.py test || true
 }
 
 package() {
