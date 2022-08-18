@@ -1,7 +1,7 @@
 pkgbase = claws-mail-gtk2-git
 	pkgdesc = A GTK based e-mail client. Latest git checkout of GTK2 branch.
 	pkgver = 3.19.0+63.r11580.20220817.b79a25c21
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 0
 	url = https://www.claws-mail.org/
 	arch = i686

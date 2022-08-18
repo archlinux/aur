@@ -16,7 +16,7 @@ _gitbranch="${_TOOLKIT}"
 pkgname="${_pkgname}-${_pkgvariant}-git"
 epoch=0
 pkgver=3.19.0+63.r11580.20220817.b79a25c21
-pkgrel=2
+pkgrel=3
 pkgdesc='A GTK based e-mail client. Latest git checkout of GTK2 branch.'
 arch=(
   'i686'
@@ -131,7 +131,7 @@ prepare() {
   git log > "${srcdir}/git.log"
 
   # Generate ./configure
-  msg2 "Generating ./configure ..."
+  msg2 "Generating './configure' ..."
   if [ ! -e configure ]; then
     NOCONFIGURE=1 ./autogen.sh
   fi
@@ -213,14 +213,14 @@ build() {
     --enable-demo-plugin
   )
 
-  msg2 "Running ./configure ..."
+  msg2 "Running './configure <options>' ..."
   ./configure "${_configure_opts[@]}"
-  msg2 "Running make ..."
+  msg2 "Running 'make' ..."
   make
 
   # build extra tools
   pushd tools 2>/dev/null
-  msg2 "Running make in ./tools/ ..."
+  msg2 "Running 'make' in './tools/' ..."
   make
   popd 2>/dev/null
 }
@@ -228,9 +228,11 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
 
+  msg2 "Runnung 'make install' ..."
   make DESTDIR="${pkgdir}" install
 
   # install extra tools
+  msg2 "Installing extra tools ..."
   # all executables and .conf files; only top directory
   pushd tools 2>/dev/null
   for _file in *.pl *.sh *.py tb2claws-mail update-po uudec uuooffice; do
@@ -244,7 +246,8 @@ package() {
   done
   popd 2>/dev/null
 
-  # Install more information files.
+  # Install more information
+  msg2 "Installing extra documentation and license ..."
   for _docfile in ABOUT-NLS AUTHORS ChangeLog* INSTALL NEWS README RELEASE_NOTES TODO version; do
       install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
@@ -254,5 +257,6 @@ package() {
   install -D -v -m644 'COPYING' "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 
   # Install bash completion
+  msg2 "Installing bash completion ..."
   install -D -v -m644 "tools/bash_completion/claws-mail" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
 }
