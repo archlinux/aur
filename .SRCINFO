@@ -1,8 +1,8 @@
 pkgbase = 7-zip
 	pkgdesc = File archiver with a high compression ratio
 	pkgver = 22.01
-	pkgrel = 1
-	url = https://www.7-zip.org
+	pkgrel = 2
+	url = https://7-zip.org
 	arch = x86_64
 	license = LGPL
 	license = BSD
@@ -12,6 +12,6 @@ pkgbase = 7-zip
 	source = https://7-zip.org/a/7z2201-src.tar.xz
 	source = meson.build
 	sha256sums = 393098730c70042392af808917e765945dc2437dee7aae3cfcc4966eb920fbc5
-	sha256sums = 9ed64c321a4425a8874c56aa0c64132829001be5ad8fdda28426254b723829a1
+	sha256sums = 8b47dd17a5094b487dc343f00113db3c08e94e929a494fbd582bd8c067e539e3
 
 pkgname = 7-zip

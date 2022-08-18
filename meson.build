@@ -360,20 +360,13 @@ add_project_arguments(
     '-D_7ZIP_ASM',
     '-Waddress',
     '-Waddress-of-packed-member',
-    '-Waggressive-loop-optimizations',
     '-Wattributes',
-    '-Wbool-compare',
     '-Wbool-operation',
     '-Wcast-align',
-    '-Wcast-align=strict',
     '-Wcomment',
     '-Wconversion',
     '-Wdangling-else',
     '-Wdiv-by-zero',
-    '-Wduplicated-branches',
-    '-Wduplicated-cond',
-    '-Wformat-contains-nul',
-    '-Wimplicit-fallthrough=5',
     '-Winit-self',
     '-Wint-in-bool-context',
     '-Wint-to-pointer-cast',
@@ -385,6 +378,35 @@ add_project_arguments(
     'cpp',
   ],
 )
+
+if cpp.get_id() == 'gcc'
+  add_project_arguments(
+    [
+      '-Waggressive-loop-optimizations',
+      '-Wbool-compare',
+      '-Wcast-align=strict',
+      '-Wduplicated-branches',
+      '-Wduplicated-cond',
+      '-Wformat-contains-nul',
+      '-Wimplicit-fallthrough=5',
+    ],
+    language: [
+      'c',
+      'cpp',
+    ],
+  )
+elif cpp.get_id() == 'clang'
+  add_project_arguments(
+    [
+      '-Wno-sign-conversion',
+      '-Wno-unused-but-set-variable',
+    ],
+    language: [
+      'c',
+      'cpp',
+    ],
+  )
+endif
 
 add_project_arguments(
   [
