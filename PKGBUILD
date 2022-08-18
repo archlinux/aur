@@ -1,9 +1,11 @@
-# Maintainer: Sean Haugh <seanphaugh@gmail.com>
+# Contributor: Sean Haugh <seanphaugh@gmail.com>
 # Contributor: Frank Lenormand <lenormf@gmail.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 _pkgname=dvtm
-_owner=mthowe
+_owner=wurosh
 pkgname=dvtm-git
-pkgver=0.15.56.g9c8cd04
+pkgver=0.15.67.g1cee8c3
 pkgrel=1
 pkgdesc='Dynamic virtual terminal manager'
 arch=('i686' 'x86_64')

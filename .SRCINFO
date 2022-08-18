@@ -1,16 +1,16 @@
 pkgbase = dvtm-git
 	pkgdesc = Dynamic virtual terminal manager
-	pkgver = 0.15.56.g9c8cd04
+	pkgver = 0.15.67.g1cee8c3
 	pkgrel = 1
-	url = https://github.com/mthowe/dvtm
+	url = https://github.com/wurosh/dvtm
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	depends = sh
-	provides = dvtm=0.15.56.g9c8cd04-1
+	provides = dvtm=0.15.67.g1cee8c3-1
 	conflicts = dvtm
-	source = git+https://github.com/mthowe/dvtm
+	source = git+https://github.com/wurosh/dvtm
 	md5sums = SKIP
 
 pkgname = dvtm-git
