@@ -1,8 +1,9 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-asdf
 _pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.12.0
+pkgname=("python-${_pyname}")
+#"python-${_pyname}-doc")
+pkgver=2.12.1
 pkgrel=1
 pkgdesc="A Python tool for reading and writing Advanced Scientific Data Format (ASDF) files"
 arch=('any')
@@ -11,38 +12,55 @@ license=('BSD')
 makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
-             'python-installer'
-             'python-sphinx-astropy'
-             'python-numpy>=1.10'
-             'python-jsonschema>=4.0.1'
-             'python-yaml>=3.10'
-             'python-semantic-version>=2.8'
-             'python-astropy>=5.0.4'
-             'graphviz'
-             'python-jmespath>=0.6.2'
-             'python-asdf-standard>=1.0.1'
-             'python-asdf_transform_schemas>=0.2.2')
+             'python-installer')
+#            'python-sphinx-astropy'
+#            'python-numpy>=1.10'
+#            'python-jsonschema>=4.0.1'
+#            'python-yaml>=3.10'
+#            'python-semantic-version>=2.8'
+#            'python-astropy>=5.0.4'
+#            'graphviz'
+#            'python-jmespath>=0.6.2'
+#            'python-asdf-standard>=1.0.1'
+#            'python-asdf_transform_schemas>=0.2.2'
+#            'python-toml'
+#            'python-sphinx-asdf')
 checkdepends=('python-pytest-doctestplus'
               'python-pytest-remotedata'
               'python-pytest-openfiles'
+              'python-numpy'
+              'python-jsonschema'
+              'python-yaml'
+              'python-semantic-version'
+              'python-astropy'
+              'python-asdf-standard'
+              'python-jmespath'
+              'python-asdf_transform_schemas'
               'python-lz4'
-              'python-psutil')
+              'python-psutil'
+              'python-virtualenv')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('77e6cfcd7bad817a2204ad80295d5568')
+md5sums=('bbf5b46696f01edc89a774b94557673b')
 
 get_pyver() {
     python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
+}
+
+prepare() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    sed -i "s/2.3.0/2.4.0/" compatibility_tests/test_file_compatibility.py
 }
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
     python -m build --wheel --no-isolation
 
-    msg "Building Docs"
-    ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
-        build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver).egg-info
-    cd ${srcdir}/${_pyname}-${pkgver}/docs
-    PYTHONPATH="../build/lib" make html
+#   msg "Building Docs"
+#   ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
+#       build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver).egg-info
+#   cd ${srcdir}/${_pyname}-${pkgver}/docs
+#   PYTHONPATH="../build/lib" make html
 }
 
 check() {
@@ -55,7 +73,7 @@ package_python-asdf() {
     depends=('python>=3.8'
              'python-numpy>=1.10'
              'python-jmespath>=0.6.2'
-             'python-jsonschema>=4.0.1'
+             'python-jsonschema<=4.10.0'
              'python-packaging>=16.0'
              'python-yaml>=3.10'
              'python-semantic-version>=2.8'
@@ -72,11 +90,11 @@ package_python-asdf() {
     python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
-package_python-asdf-doc() {
-    pkgdesc="Documentation for Python ASDF module"
-    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
-
-    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE
-    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
-    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
-}
+#package_python-asdf-doc() {
+#    pkgdesc="Documentation for Python ASDF module"
+#    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
+#
+#    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE
+#    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
+#    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
+#}
