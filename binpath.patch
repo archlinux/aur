@@ -1,0 +1,12 @@
+diff --unified --recursive --text kbd.orig/kbdaemon.service kbd.new/kbdaemon.service
+--- kbd.orig/kbdaemon.service	2022-03-14 21:12:20.592367910 +0100
++++ kbd.new/kbdaemon.service	2022-03-14 21:14:15.360645609 +0100
+@@ -4,7 +4,7 @@
+ [Service]
+ Type=simple
+ ExecStartPre=modprobe i2c-dev
+-ExecStart=/usr/sbin/keyboard-battery-daemon
++ExecStart=/usr/bin/keyboard-battery-daemon
+ Restart=on-failure
+ ProtectControlGroups=true
+ ProtectSystem=strict
