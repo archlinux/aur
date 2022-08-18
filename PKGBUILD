@@ -3,8 +3,8 @@
 _pkgname=aTSA
 _pkgver=3.1.2
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
-pkgrel=1
+pkgver=3.1.2
+pkgrel=2
 pkgdesc='Alternative Time Series Analysis'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
