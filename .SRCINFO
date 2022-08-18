@@ -1,9 +1,9 @@
 pkgbase = r-jaspbase
 	pkgdesc = Package contains the JASP Bayesian and Frequentist analyses.
 	pkgver = 0.16.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/jasp-stats/jaspBase
-	arch = x86_64
+	arch = any
 	groups = r-jasp
 	groups = r-jaspbase
 	license = GPL
