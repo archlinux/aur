@@ -1,11 +1,12 @@
 pkgbase = python-astlib
 	pkgdesc = A set of Python modules that provides some tools for research astronomers
-	pkgver = 0.11.7
+	pkgver = 0.11.8
 	pkgrel = 1
 	url = https://astlib.readthedocs.io
 	arch = i686
 	arch = x86_64
 	license = LGPL
+	checkdepends = python-nose
 	makedepends = python-setuptools
 	makedepends = wcstools-all
 	makedepends = swig
@@ -15,9 +16,9 @@ pkgbase = python-astlib
 	makedepends = python-astropy
 	makedepends = python-scipy
 	makedepends = python-matplotlib
-	source = https://files.pythonhosted.org/packages/source/a/astLib/astLib-0.11.7.tar.gz
+	source = https://files.pythonhosted.org/packages/source/a/astLib/astLib-0.11.8.tar.gz
 	source = use_system_wcstools.patch
-	sha256sums = d6a9ab522a93c706810ad4d099026ddb2e492af661df5daf0e2dd45d9d31bc1f
+	sha256sums = 2bb3619a71bada2375d5b10ad364a85a0bc631f6580c48537c192b40f70bc5fd
 	sha256sums = cb8e9bfabc91992c49daae7d5bc6a476caedd5c3b5c60f26f32bcbb216daf6cd
 
 pkgname = python-astlib
@@ -29,3 +30,4 @@ pkgname = python-astlib
 
 pkgname = python-astlib-doc
 	pkgdesc = Documentation for astLib
+	arch = any
