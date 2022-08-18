@@ -12,7 +12,7 @@ conflicts=('techmino-client')
 provides=('techmino-client')
 source=("git+https://github.com/26F-Studio/Techmino.git"
         "git+https://github.com/26F-Studio/Zframework.git"
-        "https://github.com/26F-Studio/cold_clear_ai_love2d_wrapper/releases/download/11.4/Linux.zip"
+        "CC_Linux.zip::https://github.com/26F-Studio/cold_clear_ai_love2d_wrapper/releases/download/11.4/Linux.zip"
         "Techmino.desktop")
 sha256sums=('SKIP'
             'SKIP'
@@ -28,7 +28,7 @@ prepare() {
     cd ..
     cp ./Techmino/.github/build/linux/dev/icon.png ./Techmino.png
 
-    7z x -y Linux.zip
+    7z x -y CC_Linux.zip
 }
 
 package() {
