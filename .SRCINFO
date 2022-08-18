@@ -1,9 +1,9 @@
 pkgbase = r-jaspdistributions
 	pkgdesc = Distributions Module for JASP
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jasp-stats/jaspDistributions
-	arch = x86_64
+	arch = any
 	groups = r-jasp
 	groups = r-jaspextra
 	license = GPL
