@@ -19,6 +19,11 @@ o3de_python_install() {
 
 post_install() {
     o3de_python_install
+
+    tput bold
+    echo NOTE: You may need to increase the maximum file descriptor limit according to the needs of your O3DE Project
+    echo See https://wiki.archlinux.org/title/Limits.conf#nofile
+    tput sgr0
 }
 
 post_upgrade() {
