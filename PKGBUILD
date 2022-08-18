@@ -1,7 +1,8 @@
-# Maintainer: Marius Lindvall <(firstname) {cat} varden {dog} info>
+# Maintainer: Giovanni Harting <539@idlegandalf.com>
+# Contributor: Marius Lindvall <(firstname) {cat} varden {dog} info>
 
 pkgname=jellyfin-mpv-shim
-pkgver='2.0.2'
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Cast media from Jellyfin Mobile and Web apps to MPV"
 arch=('any')
@@ -16,8 +17,7 @@ optdepends=('python-pystray: systray support'
 	'mpv-shim-default-shaders: default shader pack'
 	'python-pypresence: Discord Rich Presence integration')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jellyfin/jellyfin-mpv-shim/archive/v$pkgver.tar.gz")
-sha256sums=('38dd5096babe97f87969db70c503be3cefd5af901f1055109a7817b6ee724bed')
-install="$pkgname.install"
+b2sums=('48109d9b6d75086ff9c256a6898cb4b55c9e6825c625faffe0abde4340839088e4f1db7d8377d08b8f7ac2e3165a18b462c0fa282fb6326ce2aa7fdcb53c3086')
 
 build() {
 	cd "${srcdir}/jellyfin-mpv-shim-${pkgver}"
