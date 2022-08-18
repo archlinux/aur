@@ -1,7 +1,7 @@
 pkgbase = blockbench-bin
 	pkgdesc = A free, modern block model editor.
-	pkgver = 4.3.0
-	pkgrel = 2
+	pkgver = 4.3.1
+	pkgrel = 1
 	url = https://blockbench.net/
 	arch = x86_64
 	license = MIT
@@ -18,7 +18,7 @@ pkgbase = blockbench-bin
 	depends = libsecret
 	provides = blockbench
 	conflicts = blockbench
-	source = https://github.com/JannisX11/blockbench/releases/download/v4.3.0/Blockbench_4.3.0.deb
-	sha512sums = 965e4afeba83f20fb32015bacf38feb788857d0ad107636d3bae51c39e7f5e3ba9c4425e1235f4c7e5385f56755eac51b4efdff74126b63bcf96a220a69c139b
+	source = https://github.com/JannisX11/blockbench/releases/download/v4.3.1/Blockbench_4.3.1.deb
+	sha512sums = 478f6d6afa0e4657e93178aa6bdf75c9314a1900ab313a8f2ef5ee83ffea182806738df926c7c19c749aaabc6074c1d973cf6ecdc402bd728f15809965ec219c
 
 pkgname = blockbench-bin
