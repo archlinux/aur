@@ -1,0 +1,17 @@
+pkgbase = nav
+	pkgdesc = A means of quick navigation through directories in the CLI
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://gitlab.com/a4to/nav
+	arch = any
+	license = MIT
+	depends = dialog
+	source = https://concise.cc/pkg/nav-1.0.1-1-any.pkg.tar.zst
+	source = https://concise.cc/pkg/nav-1.0.1-1-any.pkg.tar.zst.sig
+	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
+	md5sums = 4bc2a6d116246859961f806bf0d8c8cb
+	md5sums = e09e1a70917b45ba182cd7438221d5c2
+	sha512sums = a0a7f859bd7013dde6281071a7b078493c540cfde1b2c1876e09a1969ea08b8e46a8207aab26c60105859358beb6e5e8fda862c9746011596171c3565c184bad
+	sha512sums = e1bd527e75cbd392f4449b3eb5c0995699f97903454dc439be46680a4df280a06b258ec87bed21c4a16bf78c7156815237ec9440e115115af9dc9a2b31f1e693
+
+pkgname = nav
