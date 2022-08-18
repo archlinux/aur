@@ -1,41 +1,22 @@
 pkgbase = python-ngmix-git
-	pkgdesc = Gaussian mixture models and other code for working with for 2d images, implemented in python
-	pkgver = v1.3.7.r14.97d96cb
+	pkgdesc = Gaussian mixtures and image processing
+	pkgver = 2.1.0.r5.g892fd4a
 	pkgrel = 1
-	url = https://github.com/esheldon/ngmix.git
-	arch = i686
-	arch = x86_64
+	url = https://github.com/esheldon/ngmix
+	arch = any
 	license = GPL
-	checkdepends = python-nose
-	checkdepends = python2-nose
-	checkdepends = python2-galsim-git
-	checkdepends = python-galsim-git
-	checkdepends = python2-singledispatch
 	makedepends = git
-	makedepends = python
-	makedepends = python2
-	makedepends = python-numpy
-	makedepends = python2-numpy
-	makedepends = python-numba
-	makedepends = python2-numba
-	optdepends = python-scipy
-	optdepends = python2-scipy
-	optdepends = python-galsim-git
-	optdepends = python2-galsim-git
-	optdepends = python-scikit-learn
-	optdepends = python2-scikit-learn
-	optdepends = python-statsmodels
-	optdepends = python2-statsmodels
-	optdepends = python-emcee-git
-	optdepends = python2-emcee-git
-	source = python-ngmix::git+https://github.com/esheldon/ngmix.git
-	md5sums = SKIP
-
-pkgname = python-ngmix-git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-numpy
 	depends = python-numba
+	provides = python-ngmix=2.1.0
+	conflicts = python-ngmix
+	source = python-ngmix::git+https://github.com/esheldon/ngmix
+	source = setup.py.patch
+	sha256sums = SKIP
+	sha256sums = 85057d5ec4f082a3599084dbe0e874be2af2a0f91786a10933b3368e6e025898
 
-pkgname = python2-ngmix-git
-	depends = python2-numpy
-	depends = python2-numba
-
+pkgname = python-ngmix-git

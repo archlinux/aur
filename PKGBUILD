@@ -1,59 +1,47 @@
-# Maintainer: Andres Alejandro Navarro Alsina <aanavarroa@unal.edu.co>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Andres Alejandro Navarro Alsina <aanavarroa@unal.edu.co>
 # Contributor: Erin Sheldon
-_pkgname=python-ngmix
-pkgbase=python-ngmix-git
-pkgname=("python-ngmix-git" "python2-ngmix-git")
-pkgver=v1.3.7.r14.97d96cb
+
+pkgname=python-ngmix-git
+_pkg="${pkgname%-git}"
+pkgver=2.1.0.r5.g892fd4a
+_pkgver="${pkgver%.r*}"
 pkgrel=1
-pkgdesc=" Gaussian mixture models and other code for working with for 2d images, implemented in python "
-arch=('i686' 'x86_64')
-url="https://github.com/esheldon/ngmix.git"
+pkgdesc='Gaussian mixtures and image processing'
+arch=('any')
+url="https://github.com/esheldon/ngmix"
 license=('GPL')
-makedepends=('git' 'python' 'python2' 'python-numpy' 'python2-numpy' 'python-numba' 'python2-numba' )
-optdepends=('python-scipy' 'python2-scipy' 'python-galsim-git' 'python2-galsim-git' 'python-scikit-learn' 'python2-scikit-learn' 'python-statsmodels' 'python2-statsmodels' 'python-emcee-git' 'python2-emcee-git')
-checkdepends=('python-nose' 'python2-nose' 'python2-galsim-git' 'python-galsim-git' 'python2-singledispatch')
-source=("${_pkgname}::git+${url}")
-md5sums=('SKIP')
+depends=('python-numpy' 'python-numba')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+# checkdepends=('python-pytest' 'python-fitsio' 'python-galsim')
+provides=("$_pkg=$_pkgver")
+conflicts=("$_pkg")
+source=("$_pkg::git+$url"
+        'setup.py.patch')
+sha256sums=('SKIP'
+            '85057d5ec4f082a3599084dbe0e874be2af2a0f91786a10933b3368e6e025898')
 
 pkgver() {
-	 cd $_pkgname
-	 printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	git -C "$_pkg" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 prepare() {
-	  cp -a $_pkgname{,-py2}
+	patch -p1 -d "$_pkg" < setup.py.patch
+	sed -i "s/__version__/$_pkgver/" "$_pkg/setup.py"
 }
 
 build() {
-	cd "$srcdir"/$_pkgname
-	python setup.py build
-
-	cd "$srcdir"/$_pkgname-py2
-	python2 setup.py build
+	cd "$_pkg"
+	python -m build --wheel --no-isolation
 }
 
-check() {
-	cd "$srcdir"/$_pkgname
-	nosetests -v || warning 'Tests failed'
+## conflicting dependencies
+# check() {
+# 	cd "$_pkg"
+# 	pytest -x
+# }
 
-	cd "$srcdir"/$_pkgname-py2
-	nosetests2 -v || warning 'Tests2 failed'
-
+package() {
+	cd "$_pkg"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
 }
-
-package_python-ngmix-git() {
-			   depends=('python-numpy' 'python-numba')
-	  		   cd "${_pkgname}"
-	  		   python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
-			   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
-
-}
-
-package_python2-ngmix-git() {
-			    depends=('python2-numpy' 'python2-numba')
-	 		    cd "${_pkgname}"
-	 		    python2 setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
-			    install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
-
-}
-
