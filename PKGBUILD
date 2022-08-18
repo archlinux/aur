@@ -8,6 +8,7 @@ url='https://gitlab.com/davisrichard437/xsudo'
 license=('MIT')
 depends=('bash' 'polkit' 'coreutils')
 makedepends=('git')
+provides=('xsudo')
 source=('xsudo::git+https://gitlab.com/davisrichard437/xsudo.git')
 sha256sums=('SKIP')
 
