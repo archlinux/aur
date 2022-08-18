@@ -2,7 +2,7 @@
 
 pkgname=vmware-unlocker-git
 pkgver=4.2.2
-pkgrel=0
+pkgrel=2
 pkgdesc="VMware macOS utilities, from the dev branch of the upstream repo"
 arch=("x86_64")
 url="https://github.com/DrDonk/unlocker/"
@@ -19,7 +19,7 @@ sha512sums=("SKIP"
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  printf "$pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "$pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" | rev | cut -c 2- | rev
 }
 
 build() {
