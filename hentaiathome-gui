@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+WORKING_DIR=${XDG_CACHE_HOME:-${HOME}/.cache}/hath
+mkdir -p ${WORKING_DIR}
+cd ${WORKING_DIR}
+for file in HentaiAtHome.jar HentaiAtHomeGUI.jar sqlite-jdbc.jar
+do
+    [[ ! -f ${WORKING_DIR}/${file} ]] && \
+        ln -s /usr/lib/hath/${file} ${WORKING_DIR}/${file}
+done
+java -jar HentaiAtHomeGUI.jar $@ 

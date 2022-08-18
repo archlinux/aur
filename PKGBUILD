@@ -1,45 +1,44 @@
-# Maintainer: Coelacanthus <coelacanthus@outlook.com.com>
+# Maintainer: Zhang Hua <zhanghuadedn at gmail dot com>
+# Contributor: Coelacanthus <coelacanthus@outlook.com.com>
 # Contributor: yjun <jerrysteve1101@gmail.com>
 
-pkgbase=hentaiathome
-pkgname=('hentaiathome-cli' 'hentaiathome-gui')
-_pkgname=HentaiAtHome
+pkgname='hentaiathome'
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source Peer-2-Peer gallery distribution system which reduces the load on the E-Hentai Galleries"
 arch=('x86_64')
 url="https://ehwiki.org/wiki/Hentai@Home"
 license=('GPL3')
-provides=('hentaiathome-bin')
-install="${pkgbase}.INSTALL"
-source=("${pkgbase}-${pkgver}.zip::https://repo.e-hentai.org/hath/${_pkgname}_${pkgver}.zip"
-        "${pkgbase}.sh"
-        "${pkgbase}-gui.sh"
-        "${pkgbase}.service"
-        "${pkgbase}.desktop"
-        "${pkgbase}.png::https://ehwiki.org/images/e/ef/H%40Hicon.png")
-sha256sums=('b8889b2c35593004be061064fcb6d690ff8cbda9564d89f706f7e3ceaf828726'
-            '6067fe31e5cdb9e05df2218f4761b7630d834725316099ed74609c86b11fe101'
-            '49b8165512b981e73260b82686ed0c4004b626de1dcaa59039675e6ddc9041a4'
-            'b3ddd3425c34c6872a471ed94b53a52ba77896aa2cc4295ead35f2e3728214d1'
-            'f44c49afe7637b5bfbabd1c7fdee2c35acc2bb8e1d42a517c5c9a66715c0ac4e'
-            '2f3461521c2eb9d5ee2d964169b2f502758b7679bef70ffe5d0dcfd04ecd7d97')
+provides=('hentaiathome-bin' 'hentaiathome-cli' 'hentaiathome-gui')
+conflicts=('hentaiathome-bin' 'hentaiathome-cli' 'hentaiathome-gui')
+depends=('java-runtime>=8' 'sqlite-jdbc')
+source=("HentaiAtHome_${pkgver}.zip::https://repo.e-hentai.org/hath/HentaiAtHome_${pkgver}_src.zip"
+        "hentaiathome@.service"
+        "hentaiathome.desktop"
+        "hentaiathome-cli"
+        "hentaiathome-gui")
+sha256sums=('9d843b4af8c109450938206f7d72e7a90bd0fca6b3922ac555aaf328ee7c0e5b'
+            '5bde26294110d8454c40772ed147238741ab7d992e7c5f8054e2cd139222258f'
+            'c50d1fb930990b033445351d7186634ed55bd083dbbb634680507300211145a6'
+            '6f9896d1311cc10a4fe5104e77362422eedd58198ba85b1f9093f7a290189f1e'
+            '809101ea8371bb3a5f8ebd17cd6cd4bf325f32273b44ea186424c6e6e7f4e66e')
 
-package_hentaiathome-cli() {
-  depends=('java-runtime>=8')
-
-  install -Dm 644 "${_pkgname}.jar" ${pkgdir}/usr/share/java/${pkgbase}/${_pkgname}.jar
-  install -Dm 755 "${pkgbase}.sh"  ${pkgdir}/usr/bin/${pkgbase}
-
-  install -dm 755 "${pkgdir}/usr/lib/systemd/system"
-  install -Dm 755 "${pkgbase}.service" ${pkgdir}/usr/lib/systemd/system/hentaiathome.service
+build(){
+    cd "${srcdir}"
+    ln -s /usr/share/java/sqlite-jdbc/sqlite-jdbc.jar sqlite-jdbc.jar
+    make hath
+    make jar
+}
+package(){
+    cd "${srcdir}"
+    install -Dm644 build/HentaiAtHome.jar "${pkgdir}/usr/lib/hath/HentaiAtHome.jar"
+    install -Dm644 build/HentaiAtHomeGUI.jar "${pkgdir}/usr/lib/hath/HentaiAtHomeGUI.jar"
+    install -Dm644 src/hath/gui/icon16.png "${pkgdir}/usr/share/icons/hicolor/16x16/hentaiathome.png"
+    install -Dm644 src/hath/gui/icon32.png "${pkgdir}/usr/share/icons/hicolor/32x32/hentaiathome.png"
+    install -Dm644 hentaiathome.desktop "${pkgdir}/usr/share/applications/hentaiathome.desktop"
+    install -Dm644 hentaiathome@.service "${pkgdir}/usr/lib/systemd/user/hentaiathome@.service"
+    install -Dm755 hentaiathome-cli "${pkgdir}/usr/bin/hentaiathome-cli"
+    install -Dm755 hentaiathome-gui "${pkgdir}/usr/bin/hentaiathome-gui"
+    ln -sf /usr/share/java/sqlite-jdbc/sqlite-jdbc.jar "${pkgdir}/usr/lib/hath/sqlite-jdbc.jar"
 }
 
-package_hentaiathome-gui() {
-  depends=('java-runtime>=8' 'hentaiathome-cli')
-  install -Dm 644 "${_pkgname}GUI.jar" ${pkgdir}/usr/share/java/${pkgbase}/${_pkgname}GUI.jar
-  install -Dm 755 "${pkgbase}-gui.sh"  ${pkgdir}/usr/bin/${pkgbase}-gui
-
-  install -Dm 644 "${pkgbase}.png" ${pkgdir}/usr/share/pixmaps/${pkgbase}.png
-}
-# vim:set sw=2 ts=2 et:

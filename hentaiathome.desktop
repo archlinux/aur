@@ -1,12 +1,9 @@
-#!/usr/bin/env xdg-open
 [Desktop Entry]
-Version=1.0
 Name=Hentai@Home
 Type=Application
-GenericName=An open-source Peer-2-Peer gallery distribution system which reduces the load on the E-Hentai Galleries
 Comment=An open-source Peer-2-Peer gallery distribution system which reduces the load on the E-Hentai Galleries
-Keywords=Hentai;
-Categories=Utility;
-Terminal=false
-Exec=/usr/bin/hentaiathome-gui
+Exec=/usr/bin/hentaiathome-gui %U
 Icon=hentaiathome
+Categories=Network;
+Keywords=Hentai;
+Terminal=false

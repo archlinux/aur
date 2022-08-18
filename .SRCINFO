@@ -1,29 +1,27 @@
 pkgbase = hentaiathome
 	pkgdesc = An open-source Peer-2-Peer gallery distribution system which reduces the load on the E-Hentai Galleries
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ehwiki.org/wiki/Hentai@Home
-	install = hentaiathome.INSTALL
 	arch = x86_64
 	license = GPL3
+	depends = java-runtime>=8
+	depends = sqlite-jdbc
 	provides = hentaiathome-bin
-	source = hentaiathome-1.6.1.zip::https://repo.e-hentai.org/hath/HentaiAtHome_1.6.1.zip
-	source = hentaiathome.sh
-	source = hentaiathome-gui.sh
-	source = hentaiathome.service
+	provides = hentaiathome-cli
+	provides = hentaiathome-gui
+	conflicts = hentaiathome-bin
+	conflicts = hentaiathome-cli
+	conflicts = hentaiathome-gui
+	source = HentaiAtHome_1.6.1.zip::https://repo.e-hentai.org/hath/HentaiAtHome_1.6.1_src.zip
+	source = hentaiathome@.service
 	source = hentaiathome.desktop
-	source = hentaiathome.png::https://ehwiki.org/images/e/ef/H%40Hicon.png
-	sha256sums = b8889b2c35593004be061064fcb6d690ff8cbda9564d89f706f7e3ceaf828726
-	sha256sums = 6067fe31e5cdb9e05df2218f4761b7630d834725316099ed74609c86b11fe101
-	sha256sums = 49b8165512b981e73260b82686ed0c4004b626de1dcaa59039675e6ddc9041a4
-	sha256sums = b3ddd3425c34c6872a471ed94b53a52ba77896aa2cc4295ead35f2e3728214d1
-	sha256sums = f44c49afe7637b5bfbabd1c7fdee2c35acc2bb8e1d42a517c5c9a66715c0ac4e
-	sha256sums = 2f3461521c2eb9d5ee2d964169b2f502758b7679bef70ffe5d0dcfd04ecd7d97
+	source = hentaiathome-cli
+	source = hentaiathome-gui
+	sha256sums = 9d843b4af8c109450938206f7d72e7a90bd0fca6b3922ac555aaf328ee7c0e5b
+	sha256sums = 5bde26294110d8454c40772ed147238741ab7d992e7c5f8054e2cd139222258f
+	sha256sums = c50d1fb930990b033445351d7186634ed55bd083dbbb634680507300211145a6
+	sha256sums = 6f9896d1311cc10a4fe5104e77362422eedd58198ba85b1f9093f7a290189f1e
+	sha256sums = 809101ea8371bb3a5f8ebd17cd6cd4bf325f32273b44ea186424c6e6e7f4e66e
 
-pkgname = hentaiathome-cli
-	depends = java-runtime>=8
-
-pkgname = hentaiathome-gui
-	depends = java-runtime>=8
-	depends = hentaiathome-cli
-
+pkgname = hentaiathome

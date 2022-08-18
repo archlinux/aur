@@ -1,4 +1,0 @@
-post_install() {
-  mkdir -p var/lib/hath
-  ln -fs /usr/share/java/hentaiathome/HentaiAtHome.jar var/lib/hath/HentaiAtHome.jar
-}

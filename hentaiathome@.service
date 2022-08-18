@@ -1,11 +1,11 @@
 [Unit]
-Description=Hentai At Home
+Description=Hentai At Home for User %i
 After=network-online.target
 
 [Service]
 Type=simple
-WorkingDirectory=/var/lib/${_username}
-ExecStart=/usr/bin/${pkgbase}
+User=%i
+ExecStart=/usr/bin/hentaiathome-cli
 
 [Install]
 WantedBy=multi-user.target
