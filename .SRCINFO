@@ -1,0 +1,22 @@
+pkgbase = fluent-reader-electron
+	pkgdesc = Modern desktop RSS reader built with Electron, React, and Fluent UI
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://hyliu.me/fluent-reader/
+	arch = any
+	license = BSD
+	makedepends = nodejs
+	makedepends = node-gyp
+	makedepends = npm
+	depends = hicolor-icon-theme
+	depends = electron19
+	provides = fluent-reader
+	conflicts = fluent-reader
+	source = https://github.com/yang991178/fluent-reader/archive/v1.1.2.tar.gz
+	source = fluent-reader.desktop
+	source = fluent-reader.sh
+	sha256sums = 313bf3d0a3ac607d919434234828064f6739b6f009a39088b44531a6c91ff060
+	sha256sums = 5774f9dcd354761fb94d5f8ee8a534d879a7497c1e1834273dd3f55fbfdd0be4
+	sha256sums = 6ba3512d8e8c5f95e00ca2ada566c22aabfb90b6f53f4b639735fcbf1a06f998
+
+pkgname = fluent-reader-electron

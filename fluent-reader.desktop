@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Fluent Reader
+Comment=Modern desktop RSS reader
+Exec=fluent-reader %U
+Terminal=false
+Type=Application
+Icon=fluent-reader
+Categories=Network;Internet
