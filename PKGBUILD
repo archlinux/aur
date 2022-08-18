@@ -6,7 +6,7 @@
 
 _pkgname=dpkt
 pkgname="python-${_pkgname}"
-pkgver=1.9.7.2
+pkgver=1.9.8
 pkgrel=1
 pkgdesc='Fast, simple packet creation / parsing, with definitions for the basic TCP/IP protocols'
 arch=('any')
@@ -16,7 +16,7 @@ license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('80f977667ebbad2b5c4f7b7f45ee8bea6622fb71723f68a9a8fe6274520c853b')
+sha256sums=('43f8686e455da5052835fd1eda2689d51de3670aac9799b1b00cfd203927ee45')
 
 build() {
   cd "${_pkgname}-${pkgver}"
