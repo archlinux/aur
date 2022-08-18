@@ -1,0 +1,10 @@
+pkgbase = vidoas-visudo
+	pkgdesc = A symlink for using vidoas as a drop-in replacement to visudo
+	pkgver = 1.0
+	pkgrel = 1.0
+	arch = any
+	depends = opendoas
+	depends = vidoas
+	conflicts = sudo
+
+pkgname = vidoas-visudo
