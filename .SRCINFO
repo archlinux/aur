@@ -1,6 +1,6 @@
 pkgbase = m64p
 	pkgdesc = Mupen64Plus with custom plugins and Qt6 GUI
-	pkgver = 20220808
+	pkgver = 20220816
 	pkgrel = 1
 	url = https://m64p.github.io/
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = m64p
 	provides = mupen64plus-gui
 	conflicts = mupen64plus-gui
 	conflicts = mupen64plus
-	source = git+https://github.com/m64p/m64p.git#tag=v2022.08.6
+	source = git+https://github.com/m64p/m64p.git#tag=v2022.08.8
 	source = 010-m64p-remove-build-jobs-limitation.patch
 	source = 020-m64p-remove-bundled-discord-and-vosk.patch
 	source = 030-m64p-fix-paths.patch

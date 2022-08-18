@@ -1,9 +1,9 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=m64p
-pkgver=20220808
+pkgver=20220816
 pkgrel=1
-_tag=v2022.08.6
+_tag=v2022.08.8
 pkgdesc='Mupen64Plus with custom plugins and Qt6 GUI'
 arch=('x86_64')
 url='https://m64p.github.io/'
@@ -15,7 +15,6 @@ optdepends=('p7zip: for 7z/zip and VRU support'
 makedepends=('git' 'cmake' 'zip' 'icoutils' 'vosk-api')
 provides=('mupen64plus-gui')
 conflicts=('mupen64plus-gui' 'mupen64plus')
-#_tag="v$(sed -E 's/^([0-9]{4})([0-9]{2})([0-9])([0-9])/\1.\2.\4/' <<< "$pkgver")"
 source=("git+https://github.com/m64p/m64p.git#tag=${_tag}"
         '010-m64p-remove-build-jobs-limitation.patch'
         '020-m64p-remove-bundled-discord-and-vosk.patch'
