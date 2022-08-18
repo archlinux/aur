@@ -51,7 +51,7 @@ index f3a2aa2b..9c5fb35c 100644
  
  let _quickCSS = '';
 -const _quickCSSFile = join(__dirname, 'quickcss.css');
-+const _quickCSSFile = join(SETTINGS_FOLDER, 'themes', 'quickcss.css');
++const _quickCSSFile = join(SETTINGS_FOLDER, 'quickcss.css');
  let _quickCSSElement;
  
  async function _installerInjectCtxMenu () {
