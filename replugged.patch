@@ -34,7 +34,7 @@ index f5750344..3e69cf77 100644
            {
              type: 'button',
 diff --git a/src/Powercord/coremods/moduleManager/index.js b/src/Powercord/coremods/moduleManager/index.js
-index f3a2aa2b..9c5fb35c 100644
+index f3a2aa2b..61d7f3db 100644
 --- a/src/Powercord/coremods/moduleManager/index.js
 +++ b/src/Powercord/coremods/moduleManager/index.js
 @@ -6,7 +6,7 @@ const { React, getModule, i18n: { Messages } } = require('powercord/webpack');
@@ -55,8 +55,32 @@ index f3a2aa2b..9c5fb35c 100644
  let _quickCSSElement;
  
  async function _installerInjectCtxMenu () {
+diff --git a/src/Powercord/coremods/moduleManager/util/cloneRepo.js b/src/Powercord/coremods/moduleManager/util/cloneRepo.js
+index b3b9743f..0ce92e71 100644
+--- a/src/Powercord/coremods/moduleManager/util/cloneRepo.js
++++ b/src/Powercord/coremods/moduleManager/util/cloneRepo.js
+@@ -3,15 +3,17 @@ const { spawn } = require('child_process');
+ const fs = require('fs');
+ const { REPO_URL_REGEX } = require('./misc');
+ 
++const XDG_DATA_HOME = process.env.XDG_DATA_HOME || join(process.env.HOME, '.local', 'share');
++
+ module.exports = async function download (url, powercord, type) {
+   // const dir = type === 'plugin' ? join(__dirname, '..', '..') : join(__dirname, '..', '..', 'themes');
+   let dir;
+   switch (type) {
+     case 'plugin':
+-      dir = join(__dirname, '..', '..', '..', 'plugins');
++      dir = join(XDG_DATA_HOME, 'replugged', 'plugins');
+       break;
+     case 'theme':
+-      dir = join(__dirname, '..', '..', '..', 'themes');
++      dir = join(XDG_DATA_HOME, 'replugged', 'themes');
+       break;
+   }
+ 
 diff --git a/src/Powercord/coremods/updater/components/Settings.jsx b/src/Powercord/coremods/updater/components/Settings.jsx
-index 579606a6..11775a89 100644
+index 7c021676..7635380d 100644
 --- a/src/Powercord/coremods/updater/components/Settings.jsx
 +++ b/src/Powercord/coremods/updater/components/Settings.jsx
 @@ -82,7 +82,7 @@ module.exports = class UpdaterSettings extends React.PureComponent {
@@ -81,10 +105,10 @@ index 7d8fbcaa..ab5be0e9 100644
            <a href={`https://github.com/${repo}/commit/${commit.id}`} target='_blank'>
              <code>{commit.id.substring(0, 7)}</code>
 diff --git a/src/Powercord/coremods/updater/index.js b/src/Powercord/coremods/updater/index.js
-index a5109349..cfefb627 100644
+index 113c2540..8b115124 100644
 --- a/src/Powercord/coremods/updater/index.js
 +++ b/src/Powercord/coremods/updater/index.js
-@@ -121,14 +121,14 @@ class Updater {
+@@ -124,14 +124,14 @@ class Updater {
      const updates = settings.get('updates', []);
      const failed = [];
      for (const update of [ ...updates ]) {
@@ -101,7 +125,7 @@ index a5109349..cfefb627 100644
        updates.shift();
        settings.get('updates', updates);
        if (!success) {
-@@ -217,26 +217,10 @@ class Updater {
+@@ -220,26 +220,10 @@ class Updater {
    }
  
    async getGitInfos () {
@@ -125,9 +149,9 @@ index a5109349..cfefb627 100644
 -      upstream,
 -      branch,
 -      revision
-+      upstream: "@PKG_UPSTREAM@",
-+      branch: "@PKG_BRANCH@",
-+      revision: "@PKG_REVISION@"
++      upstream: "replugged-org/replugged",
++      branch: "main",
++      revision: "237fe5c9ab6ae9026f3a7f4a19b0c416627d797f"
      };
    }
  
@@ -244,6 +268,428 @@ index e10288a8..add2b3f0 100644
  
    // Discord Server
    DISCORD_INVITE: 'B2TcnXV9Rg',
+diff --git a/src/fake_node_modules/powercord/webpack/index.js b/src/fake_node_modules/powercord/webpack/index.js
+index efe6bfe6..7a2e0e62 100644
+--- a/src/fake_node_modules/powercord/webpack/index.js
++++ b/src/fake_node_modules/powercord/webpack/index.js
+@@ -1,210 +1,212 @@
+-const { sleep } = require('powercord/util');
+-const moduleFilters = require('./modules.json');
+-
+-/**
+-* @typedef WebpackInstance
+-* @property {object} cache
+-* @property {function} require
+-* @property {function} loadChunk
+-*/
+-
+-/**
+-* @typedef ContextMenuModule
+-* @property {function} openContextMenu
+-* @property {function} closeContextMenu
+-*/
+-
+-
+-/**
+- * @typedef ModuleInfo
+- * @property {number} id The module's id.
+- * @property {boolean} loaded Whether the module is loaded
+- * @property {object} exports The module's exports
+- */
+-
+-/**
+-* @typedef {number[]} chunkIds The chunk's ids.
+-* @typedef {object.<number, function>} chunkMdls A map of module ids to module source functions.
+-* @typedef {[chunkIds, chunkMdls]} Chunk
+-*/
+-
+-/**
+-* @property {ContextMenuModule} contextMenu
+-* @property {WebpackInstance} instance
+-*/
+-const webpack = {
+-  ...require('./lazy'),
+-
+-  /**
+-  * Grabs a module from the Webpack store
+-  * @param {function|string[]} filter Filter used to grab the module. Can be a function or an array of keys the object must have.
+-  * @param {boolean} retry Whether or not to retry fetching if the module is not found. Each try will be delayed by 100ms and max retries is 20.
+-  * @param {boolean} forever If Replugged should try to fetch the module forever. Should be used only if you're in early stages of startup.
+-  * @returns {Promise<object>|object} The found module. A promise will always be returned, unless retry is false.
+-  */
+-  getModule (filter, retry = true, forever = false) {
+-    if (Array.isArray(filter)) {
+-      const keys = filter;
+-      filter = m => keys.every(key => m.hasOwnProperty(key) || (m.__proto__ && m.__proto__.hasOwnProperty(key)));
+-    }
+-
+-    if (!retry) {
+-      return webpack._getModules(filter);
+-    }
+-
+-    return new Promise(async (res) => {
+-      let mdl;
+-      for (let i = 0; i < 21; !forever && i++) {
+-        mdl = webpack._getModules(filter);
+-        if (mdl) {
+-          return res(mdl);
+-        }
+-        await sleep(100);
+-      }
+-
+-      res(mdl);
+-    });
+-  },
+-
+-  /**
+-  * Grabs all found modules from the webpack store
+-  * @param {function|string[]} filter Filter used to grab the module. Can be a function or an array of keys the object must have.
+-  * @returns {object[]} The found modules.
+-  */
+-  getAllModules (filter) {
+-    if (Array.isArray(filter)) {
+-      const keys = filter;
+-      filter = m => keys.every(key => m.hasOwnProperty(key) || (m.__proto__ && m.__proto__.hasOwnProperty(key)));
+-    }
+-
+-    return webpack._getModules(filter, true);
+-  },
+-
+-  /**
+-  * Grabs a React component by its display name
+-  * @param {string} displayName Component's display name.
+-  * @param {boolean} retry Whether or not to retry fetching if the module is not found. Each try will be delayed by 100ms and max retries is 20.
+-  * @param {boolean} forever If Replugged should try to fetch the module forever. Should be used only if you're in early stages of startup.
+-  * @returns {Promise<object>|object} The component. A promise will always be returned, unless retry is false.
+-  */
+-  getModuleByDisplayName (displayName, retry = true, forever = false) {
+-    return webpack.getModule(m => m.displayName && m.displayName.toLowerCase() === displayName.toLowerCase(), retry, forever);
+-  },
+-
++if (!global.NEW_BACKEND) {
++	module.exports = require('./old.webpack.js');
++	return;
++  }
++  
++  const { join } = require('path');
++  const { readFile } = require('fs').promises;
++  const { webFrame, contextBridge } = require('electron');
++  const { deserialize, freePointer, setCommandHandler } = require('./serialize.js');
++  const moduleFilters = require('./modules.json');
++  const MODULE_ID = Symbol.for('powercord.webpack.moduleId');
++  
+   /**
+-  * Grabs a React component's module info by its display name
+-  * @param {string} displayName Component's display name.
+-  * @returns {ModuleInfo} The module info.
+-  */
+-  getModuleInfoByDisplayName (displayName) {
+-    return Object.values(webpack.instance.cache).find(m => m?.exports?.displayName === displayName || m?.exports?.default?.displayName === displayName);
+-  },
+-
++   * @typedef WebpackInstance
++   * @property {object} cache
++   * @property {function} require
++   */
++  
+   /**
+-  * Grabs a chunk by one of its modules' id
+-  * @param {number} id The module id.
+-  * @returns {Chunk} The chunk.
+-  */
+-  getChunkByModuleId (id) {
+-    return webpackChunkdiscord_app.find((c) => id in c[1]);
+-  },
+-
++   * @typedef ContextMenuModule
++   * @property {function} openContextMenu
++   * @property {function} closeContextMenu
++   */
++  
++  // --
++  // Webpack interface
++  // --
++  let commandHandler = null;
++  const DISPLAY_NAME_FN = /=>\s*(?:\w+\??.(\w+)(?:\?\.|\s*&&\s*\w+\.\1\.)displayName|_optionalChain\(\[\w+, 'optionalAccess', _2 => _2\.(\w+), 'optionalAccess', _3 => _3\.displayName]\))\s*={2,3}\s*['"](.*)['"]/;
++  
++  function processResult (res, all) {
++	if (!res) {
++	  return res;
++	}
++  
++	if (res instanceof Promise) {
++	  return res.then((r) => processResult(r, all));
++	}
++  
++	if (all) {
++	  return res.map((r) => processResult(r));
++	}
++  
++	const mdl = deserialize(res[1]);
++	if (mdl && (typeof mdl === 'function' || typeof mdl === 'object')) {
++	  // eslint-disable-next-line prefer-destructuring
++	  mdl[MODULE_ID] = res[0];
++	}
++  
++	return mdl;
++  }
++  
+   /**
+-  * Gets the source function of a module by its id
+-  * @param {number} id The module id.
+-  * @returns {function} The source function.
+-  */
+-  getModuleSourceById (id) {
+-    const chunk = webpack.getChunkByModuleId(id);
+-    return chunk?.[1][id] ?? null;
+-  },
+-
++   * Grabs a module from the Webpack store
++   * @param {function|string[]} filter Filter used to grab the module. Can be a function or an array of keys the object must have.
++   * @param {boolean} retry Whether or not to retry fetching if the module is not found. Each try will be delayed by 100ms and max retries is 20.
++   * @param {boolean} forever If Replugged should try to fetch the module forever. Should be used only if you're in early stages of startup.
++   * @returns {Promise<object>|object} The found module. A promise will always be returned, unless retry is false.
++   */
++  function getModule (filter, retry = true, forever = false) {
++	if (typeof filter === 'function') {
++	  const match = filter.toString().match(DISPLAY_NAME_FN);
++	  if (match) {
++		const res = commandHandler('getModuleByDisplayNameRaw', match[1] || match[2], match[3], retry, forever);
++		return processResult(res);
++	  }
++  
++	  const _filter = filter;
++	  filter = (e) => !!_filter(deserialize(e));
++	}
++  
++	const res = commandHandler('getModule', filter, retry, forever);
++	return processResult(res);
++  }
++  
+   /**
+-  * From a given module id, gets a list of chunk ids that said module might lazy load.
+-  * @param {number} id The module id.
+-  * @returns {number[]} The 'to be lazy-loaded' chunk ids
+-  */
+-  getLazyLoadedChunkIdsByModuleId (id) {
+-    const srcStr = webpack.getModuleSourceById(id)?.toString();
+-    if (!srcStr) {
+-      return [];
+-    }
+-    const requireArgument = srcStr.match(/^\(.,.,(.)\)/)?.[1];
+-
+-    if (!requireArgument) {
+-      return [];
+-    }
+-
+-    const importPattern = new RegExp(`\\b${requireArgument}\\.e\\(\\d+\\)`, 'g');
+-    const imports = srcStr.match(importPattern);
+-    const ids = imports.map(e => e.slice(4, -1));
+-    return ids;
+-  },
+-
+-
++   * Grabs all found modules from the webpack store
++   * @param {function|string[]} filter Filter used to grab the module. Can be a function or an array of keys the object must have.
++   * @returns {object[]} The found modules.
++   */
++  function getAllModules (filter) {
++	if (typeof filter === 'function') {
++	  const _filter = filter;
++	  filter = (e) => !!_filter(deserialize(e));
++	}
++  
++	const res = commandHandler('getAllModules', filter);
++	return processResult(res, true);
++  }
++  
+   /**
+-  * Initializes the injection into Webpack
+-  * @returns {Promise<void>}
+-  */
+-  async init () {
+-    delete webpack.init;
+-
+-    // Wait until webpack is ready
+-    while (!window.webpackChunkdiscord_app || !window._) {
+-      await sleep(100);
+-    }
+-
+-    // Extract values from webpack
+-    webpack.instance = {};
+-    webpackChunkdiscord_app.push([
+-      [ [ '_powercord' ] ],
+-      {},
+-      (r) => {
+-        webpack.instance.cache = r.c;
+-        webpack.instance.require = (m) => r(m);
+-
+-        webpack.instance.loadChunk = (c) => r.e(c)
+-          .then(() => {
+-            // Get chunk
+-            const chunk = webpackChunkdiscord_app.find(C => `${C[0][0]}` === c);
+-            // Cache all the modules
+-            Object.keys(chunk[1]).forEach(m => r(m));
+-          });
+-      }
+-    ]);
+-    webpackChunkdiscord_app.pop();
+-
+-    // Patch push to enable webpack chunk listeners
+-    webpack._patchPush();
+-    delete webpack._patchPush;
+-
+-    // Load modules pre-fetched
+-    for (const mdl in moduleFilters) {
+-      // noinspection JSUnfilteredForInLoop
+-      this[mdl] = await webpack.getModule(moduleFilters[mdl]);
+-    }
+-
+-    this.i18n = webpack.getAllModules([ 'Messages', 'getLanguages' ]).find((m) => m.Messages.ACCOUNT);
+-  },
+-
+-  _getModules (filter, all = false) {
+-    const moduleInstances = Object.values(webpack.instance.cache).filter(m => m.exports);
+-    if (all) {
+-      const exports = moduleInstances.filter(m => filter(m.exports)).map(m => m.exports);
+-      const expDefault = moduleInstances.filter(m => m.exports.default && filter(m.exports.default)).map(m => m.exports.default);
+-      return exports.concat(expDefault);
+-    }
+-
+-    const exports = moduleInstances.find(m => filter(m.exports));
+-    if (exports) {
+-      return exports.exports;
+-    }
+-    const expDefault = moduleInstances.find(m => m.exports.default && filter(m.exports.default));
+-    if (expDefault) {
+-      return expDefault.exports.default;
+-    }
+-    return null;
++   * Grabs a React component by its display name
++   * @param {string} displayName Component's display name.
++   * @param {boolean} retry Whether or not to retry fetching if the module is not found. Each try will be delayed by 100ms and max retries is 20.
++   * @param {boolean} forever If Replugged should try to fetch the module forever. Should be used only if you're in early stages of startup.
++   * @returns {Promise<object>|object} The component. A promise will always be returned, unless retry is false.
++   */
++  function getModuleByDisplayName (displayName, retry = true, forever = false) {
++	const res = commandHandler('getModuleByDisplayName', displayName.toLowerCase(), retry, forever);
++	return processResult(res);
++  }
++  
++  function getModuleById (id) {
++	const res = commandHandler('getModuleById', id);
++	return processResult(res);
+   }
+-};
+-
+-module.exports = webpack;
++  
++  let elementPointer = 0;
++  function lookupReactReference (element) {
++	if (!element) {
++	  return;
++	}
++  
++	if (!('__reactFiber$' in element)) {
++	  Object.defineProperty(element, '__reactFiber$', {
++		get: () => {
++		  element.dataset.powercordPointer = elementPointer;
++		  const res = commandHandler('lookupReactReference', elementPointer++);
++		  element.removeAttribute('data-powercord-pointer');
++		  return deserialize(res);
++		}
++	  });
++	}
++  }
++  
++  /**
++   * @property {ContextMenuModule} contextMenu
++   * @property {WebpackInstance} instance
++   */
++  const webpack = {
++	getModule,
++	getAllModules,
++	getModuleByDisplayName,
++	require: getModuleById,
++  
++	// Internal tape stuff
++	__lookupReactReference: lookupReactReference,
++  
++	/**
++	 * Initializes the injection into Webpack
++	 * @returns {Promise<void>}
++	 */
++	async init () {
++	  delete webpack.init;
++  
++	  // Init proxy script
++	  const serializeScript = await readFile(join(__dirname, 'serialize.js'), 'utf8');
++	  const proxyScript = await readFile(join(__dirname, 'proxy.js'), 'utf8');
++	  await webFrame.executeJavaScript(`(function () { ${serializeScript} ${proxyScript} return init() }())`);
++  
++	  // Load modules pre-fetched
++	  for (const mdl in moduleFilters) {
++		// noinspection JSUnfilteredForInLoop
++		this[mdl] = await getModule(moduleFilters[mdl]);
++	  }
++  
++	  this.i18n = getAllModules([ 'Messages', 'getLanguages' ]).find((m) => m.Messages.ACCOUNT);
++  
++	  // Expose window stuff
++	  this.proxiedWindow = await commandHandler('getWindowProps');
++	  this.proxiedWindow.DiscordSentry = deserialize(this.proxiedWindow.DiscordSentry);
++	  this.proxiedWindow.__SENTRY__ = deserialize(this.proxiedWindow.__SENTRY__);
++	  this.proxiedWindow._ = deserialize(this.proxiedWindow._);
++	}
++  };
++  
++  contextBridge.exposeInMainWorld('__$$WebpackProxyIPC', {
++	freePointer: (ptr) => freePointer(ptr),
++	registerCommandHandler: (h) => {
++	  if (commandHandler) {
++		throw new Error('no');
++	  }
++  
++	  commandHandler = h;
++	  setCommandHandler(h);
++	}
++  });
++  
++  console.inspect = function (obj) {
++	if ('__$$pointer' in obj) {
++	  commandHandler('inspect', obj.__$$pointer);
++	  return;
++	}
++  
++	console.log(obj);
++  };
++  
++  const remoteUrls = new Set();
++  const cou = URL.createObjectURL;
++  const rou = URL.revokeObjectURL;
++  URL.createObjectURL = function (blob) {
++	if ('__$$pointer' in blob) {
++	  const url = commandHandler('createUrlObject', blob.__$$pointer);
++	  remoteUrls.add(url);
++	  return url;
++	}
++  
++	return cou.call(URL, blob);
++  };
++  
++  URL.revokeObjectURL = function (url) {
++	if (remoteUrls.has(url)) {
++	  remoteUrls.delete(url);
++	  webFrame.executeJavaScript(`URL.revokeObjectURL(${JSON.stringify(url)})`);
++	  return;
++	}
++  
++	rou.call(URL, url);
++  };
++  
++  module.exports = webpack;
++  
+\ No newline at end of file
 diff --git a/src/patcher.js b/src/patcher.js
 index 372e41f5..a8d59761 100644
 --- a/src/patcher.js
