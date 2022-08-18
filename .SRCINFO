@@ -1,6 +1,6 @@
 pkgbase = mailchecker
 	pkgdesc = Cross-language email validation. Backed by a database of over 30 000 throwable email domains.
-	pkgver = 4.1.16
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/FGRibreau/mailchecker/
 	arch = any
@@ -8,8 +8,10 @@ pkgbase = mailchecker
 	makedepends = python-setuptools
 	makedepends = nodejs
 	makedepends = npm
-	source = https://github.com/FGRibreau/mailchecker//archive/v4.1.16.tar.gz
-	sha256sums = ba5dca4e613251615a1d2a39ec9ea66c454b21427ded4263150df3c0c4dfa158
+	makedepends = python-installer
+	makedepends = python-build
+	source = mailchecker-5.0.0.tar.gz::https://github.com/FGRibreau/mailchecker//archive/v5.0.0.tar.gz
+	sha256sums = 6518f4e4deb04ccd6d84f2244c0e0fc060c427efc47fd1a9b2993c02add96d3d
 
 pkgname = python-mailchecker
 	depends = python-distribute

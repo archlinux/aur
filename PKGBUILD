@@ -10,20 +10,22 @@ pkgname=(
 	#"rust-mailchecker"
 )
 _pkgname="mailchecker"
-pkgver="4.1.16"
+pkgver="5.0.0"
 pkgrel="1"
 pkgdesc='Cross-language email validation. Backed by a database of over 30 000 throwable email domains.'
 arch=('any')
 url='https://github.com/FGRibreau/mailchecker/'
 license=('MIT')
-source=("${url}/archive/v${pkgver}.tar.gz")
+source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=(
-  'ba5dca4e613251615a1d2a39ec9ea66c454b21427ded4263150df3c0c4dfa158'
+  '6518f4e4deb04ccd6d84f2244c0e0fc060c427efc47fd1a9b2993c02add96d3d'
 )
 makedepends=(
 'python-setuptools'
 'nodejs'
 'npm'
+'python-installer'
+'python-build'
 #'rubygems'
 )
 
@@ -36,7 +38,7 @@ build() {
   msg "Building Python 3"
   cd "$srcdir/${_pkgname}-${pkgver}/platform/python"
   sed -E -i "s/version[[:space:]]*=(.*)/version = '${pkgver}',/g" setup.py
-  python setup.py build
+  python3 -m build --wheel --skip-dependency-check
 
   #msg "Building Ruby Gem"
   #cd "$srcdir/${_pkgname}-${pkgver}"
@@ -50,7 +52,7 @@ package_python-mailchecker() {
 	'python-distribute'
   )
   cd "$srcdir/${_pkgname}-${pkgver}/platform/python"
-  python setup.py install --root="$pkgdir"/ --optimize=1 --skip-build
+  python3 -m installer --destdir="$pkgdir" dist/*.whl
   cd "$srcdir/${_pkgname}-${pkgver}"
   install -Dm644 LICENSE-MIT "${pkgdir}/usr/share/licenses/python-mailchecker/LICENSE.txt"
 }
