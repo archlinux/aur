@@ -1,9 +1,9 @@
 pkgbase = r-jaspmixedmodels
 	pkgdesc = Mixed Models Module for JASP
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jasp-stats/jaspMixedModels
-	arch = x86_64
+	arch = any
 	groups = r-jasp
 	groups = r-jaspcommon
 	license = GPL
