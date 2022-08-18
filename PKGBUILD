@@ -3,13 +3,14 @@
 
 pkgname=calibre-web
 pkgver=0.6.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Web app for browsing, reading and downloading eBooks stored in a Calibre database"
 arch=('any')
 url="https://github.com/janeczku/calibre-web"
 license=('GPL3')
 depends=(
   'python'
+  'python-advocate'
   'python-babel'
   'python-flask-babel'
   'python-flask-login'
@@ -38,10 +39,10 @@ source=(
   'calibre-web.sysusers'
   'calibre-web.tmpfiles'
 )
-md5sums=('52db457e650ddac5426f6d6b21dd6103'
-         'e8bd98c32daa92e0dc32fddde579d30f'
-         'a0a99595f01f35e5b3f78fa5379d10ae'
-         '40101a01e29b944c7eb889b34849d8c5')
+sha256sums=('917710392f8b73cfb102b5c63c592117bb005d16ce2c8142033a7983588e987b'
+            '216c5443424aa9b38b71c53186d0369d2eacd2cb03d742e01c881ab7bac9ea2d'
+            'b5d6c225761244b6c698af0279c9501bb9514e3e2a5151ca6e3212a4f5d0d76a'
+            '82fae88cbed6d69e5a04586293de81bdc55994a4fe003178c39b5a35f2c87c1a')
 
 package() {
   cd $pkgname-$pkgver
