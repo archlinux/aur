@@ -1,0 +1,7 @@
+# AUR
+src
+pkg
+*.pkg*.zst
+
+# Senpai
+senpai-v*.tar.gz

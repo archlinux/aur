@@ -1,17 +1,15 @@
-pkgbase = senpai-irc-git
+pkgbase = senpai-irc
 	pkgdesc = TUI IRC Client Created by ~taiite
-	pkgver = r220.6be7183
+	pkgver = 0.1.0
 	pkgrel = 1
-	url = https://ellidri.org/senpai/
+	url = https://sr.ht/~taiite/senpai/
 	arch = x86_64
 	arch = aarch64
 	license = ISC
-	makedepends = git
 	makedepends = go
 	makedepends = scdoc
-	provides = senpai-irc
-	conflicts = senpai-irc
-	source = senpai-irc::git+https://git.sr.ht/~taiite/senpai
-	sha512sums = SKIP
+	conflicts = senpai-irc-git
+	source = senpai-v0.1.0.tar.gz::https://git.sr.ht/~taiite/senpai/archive/v0.1.0.tar.gz
+	sha256sums = 98e1f16ed97433e1e8c8bdabac1cac1920ddcab90e6cef36d8817a41b45a94ff
 
-pkgname = senpai-irc-git
+pkgname = senpai-irc

@@ -1,37 +1,27 @@
-# Maintainer: Dan Shick <dan.shick@gmail.com>
+# Maintainer: Techcable <$username @ techcable.net>
+# Contributor: Dan Shick <dan.shick@gmail.com>
 
-pkgname=senpai-irc-git
-_pkgname=senpai-irc
-pkgver=r220.6be7183
+pkgname=senpai-irc
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='TUI IRC Client Created by ~taiite'
-url=https://ellidri.org/senpai/
+url=https://sr.ht/~taiite/senpai/
 arch=(x86_64 aarch64)
 license=('ISC')
-provides=("senpai-irc")
-conflicts=("senpai-irc")
-makedepends=('git' 'go' 'scdoc')
+conflicts=("senpai-irc-git")
+makedepends=('go' 'scdoc')
 source=(
-  "${_pkgname}::git+https://git.sr.ht/~taiite/senpai"
+  "senpai-v${pkgver}.tar.gz::https://git.sr.ht/~taiite/senpai/archive/v0.1.0.tar.gz"
 )
-sha512sums=('SKIP')
-
-pkgver () {
-	cd "${_pkgname}"
-	(
-		set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
-}
+sha256sums=('98e1f16ed97433e1e8c8bdabac1cac1920ddcab90e6cef36d8817a41b45a94ff')
 
 prepare () {
-	cd "${srcdir}/${_pkgname}"
+	cd "${srcdir}/senpai-v${pkgver}"
 	make clean
 }
 
 build () {
-	cd "${srcdir}/${_pkgname}"
+	cd "${srcdir}/senpai-v${pkgver}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -46,8 +36,8 @@ package () {
 	mkdir -p "${pkgdir}/usr/bin"
 	mkdir -p "${pkgdir}/usr/share/man/man1"
 	mkdir -p "${pkgdir}/usr/share/man/man5"
-	cp "${srcdir}/${_pkgname}/senpai" "${pkgdir}/usr/bin/senpai-irc"
-	cp "${srcdir}/${_pkgname}/doc/senpai.1" "${pkgdir}/usr/share/man/man1/"
-	cp "${srcdir}/${_pkgname}/doc/senpai.5" "${pkgdir}/usr/share/man/man5/"
+	cp "${srcdir}/senpai-v${pkgver}/senpai" "${pkgdir}/usr/bin/senpai-irc"
+	cp "${srcdir}/senpai-v${pkgver}/doc/senpai.1" "${pkgdir}/usr/share/man/man1/"
+	cp "${srcdir}/senpai-v${pkgver}/doc/senpai.5" "${pkgdir}/usr/share/man/man5/"
 }
 
