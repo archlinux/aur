@@ -1,0 +1,23 @@
+pkgbase = lbry-gtk
+	pkgdesc = Native desktop LBRY client
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://codeberg.org/MorsMortium/
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	depends = python
+	depends = python-appdirs
+	depends = python-gobject
+	depends = python-cairo
+	depends = python-requests
+	depends = python-pillow
+	depends = python-markdown
+	depends = gtk3
+	depends = lbrynet
+	depends = python-setproctitle
+	provides = lbry-gtk
+	source = lbry-gtk::https://codeberg.org/MorsMortium//archive/0.7.tar.gz
+	sha1sums = 487e33eac0ae0d455f2c8522d376cc8340619e6d
+
+pkgname = lbry-gtk
