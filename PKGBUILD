@@ -1,7 +1,7 @@
 # Maintainer : MorsMortium <morsmortium@gmail.com>
 
 pkgname=lbry-gtk
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc='Native desktop LBRY client'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL-3.0')
 depends=('python' 'python-appdirs' 'python-gobject' 'python-cairo' 'python-requests' 'python-pillow' 'python-markdown' 'gtk3' 'lbrynet' 'python-setproctitle')
 provides=("${pkgname}")
 makedepends=('git')
-sha1sums=('dc4477c212d16955e887ae8e3b1969f9cb8d790c')
+sha1sums=('a1a5638ed5ed581968a48d3cd72634894cdc7c4b')
 source=("${pkgname}::${url}/archive/${pkgver}.tar.gz")
 
 package() {
