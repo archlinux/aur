@@ -6,7 +6,7 @@
 
 pkgname=bind-development
 _pkgname=bind
-pkgver=9.19.3
+pkgver=9.19.4
 pkgrel=1
 pkgdesc='A complete, highly portable implementation of the DNS protocol (development version)'
 url='https://www.isc.org/bind/'
@@ -53,7 +53,7 @@ backup=(
   'var/named/localhost.zone'
   'var/named/localhost.ip6.zone'
 )
-_commit='c043bad469ae13a313e6bcb407c26b1856f07ee8'
+_commit='a33f2df30bb75ddfe2e921e7bbeacbb353e48ed0'
 source=(
   "git+https://gitlab.isc.org/isc-projects/bind9.git#commit=$_commit"
   'tmpfiles.conf'
