@@ -1,8 +1,8 @@
 pkgbase = fb2edit
 	pkgdesc = FB2 ebooks editor, qt5 version
-	pkgver = 20220717
+	pkgver = 20220809
 	pkgrel = 1
-	url = https://github.com/vitlav/fb2edit
+	url = https://github.com/lintest/fb2edit
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -10,12 +10,11 @@ pkgbase = fb2edit
 	makedepends = cmake
 	makedepends = qt5-tools
 	depends = qt5-webkit
-	depends = libxml2
 	depends = qt5-xmlpatterns
 	depends = qt5-imageformats
 	depends = qt5-translations
 	depends = hicolor-icon-theme
-	source = git+https://github.com/vitlav/fb2edit
+	source = git+https://github.com/lintest/fb2edit
 	sha256sums = SKIP
 
 pkgname = fb2edit
