@@ -3,12 +3,12 @@
 # Contributor: Clansty <i at gao4 dot pw>
 
 pkgname=("icalingua++-git" "icalingua++-electron-git")
-pkgver=2.6.4.r0.g25b4423
+pkgver=2.6.6.r31.g8dff371
 pkgrel=1
 pkgdesc='A Linux client for QQ and more(fork to upgrading)'
 license=('AGPL')
 depends=('ffmpeg' 'libappindicator-gtk3')
-makedepends=('yarn' 'git')
+makedepends=('nodejs' 'git')
 optdepends=('mongodb-bin: Provides storage'
             'redis: Provides storage')
 arch=('aarch64' 'x86_64' 'i686')
@@ -24,13 +24,12 @@ pkgver(){
     cd "${srcdir}/Icalingua"
     git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
 }
-prepare(){
-    cd "${srcdir}/Icalingua/icalingua"
-    yarn install --immutable
-}
+
 build(){
-    cd "${srcdir}/Icalingua/icalingua"
-    yarn run build:dir
+    cd "${srcdir}/Icalingua"
+    node /usr/lib/node_modules/corepack/dist/pnpm.js install
+    cd icalingua
+    node /usr/lib/node_modules/corepack/dist/pnpm.js run build:dir
 }
 package_icalingua++-git(){
     case ${CARCH} in
