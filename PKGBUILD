@@ -2,7 +2,7 @@
 # Contributor: jfperini <@jfperini>
 
 pkgname=veusz-git
-pkgver=3.3.99.r0.g3605b232
+pkgver=3.4.r7.g74b557f2
 pkgrel=1
 pkgdesc="A scientific plotting and graphing package, designed to create publication-ready Postscript or PDF output."
 url="https://github.com/veusz/veusz"
@@ -11,10 +11,9 @@ license=('GPL2')
 depends=('python-pyqt5' 'python-numpy' 'hicolor-icon-theme' 'cblas')
 makedepends=('git' 'sip>=5.0')
 optdepends=('ghostscript: for EPS/PS output'
-            'python-pyfits: for reading files in FITS format'
             'python-dbus: for dbus interface'
             'python-iminuit: improved fitting'
-            'python-astropy: for VO table import')
+            'python-astropy: for VO table import or FITS import')
 conflicts=('veusz')
 provides=('veusz')
 source=('git+https://github.com/veusz/veusz')
