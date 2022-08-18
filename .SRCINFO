@@ -1,16 +1,15 @@
 pkgbase = adb-sync-git
-	pkgdesc = A tool to synchronize files between a PC and an Android device using the ADB
-	pkgver = r23.b8813dc
+	pkgdesc = Synchronize files between a PC and an Android device using the ADB (Android Debug Bridge)
+	pkgver = r35.fb7c549
 	pkgrel = 1
 	url = https://github.com/google/adb-sync
 	arch = any
 	license = Apache
 	makedepends = git
-	depends = python
 	depends = android-tools
 	depends = android-udev
-	source = git+https://github.com/google/adb-sync
-	sha1sums = SKIP
+	depends = python
+	source = adb-sync-git::git+https://github.com/google/adb-sync.git
+	sha256sums = SKIP
 
 pkgname = adb-sync-git
-

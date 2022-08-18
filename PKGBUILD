@@ -1,26 +1,24 @@
-# Maintainer: Anatol Pomozov <anatol dot pomozov at gmail>
+# Maintainer: willemw <willemw12@gmail.com>
+# Contributor: Anatol Pomozov <anatol dot pomozov at gmail>
 
 pkgname=adb-sync-git
-pkgver=r23.b8813dc
+pkgver=r35.fb7c549
 pkgrel=1
-pkgdesc='A tool to synchronize files between a PC and an Android device using the ADB'
+pkgdesc='Synchronize files between a PC and an Android device using the ADB (Android Debug Bridge)'
+arch=('any')
 url='https://github.com/google/adb-sync'
-arch=(any)
-depends=(python android-tools android-udev)
-makedepends=(git)
-license=(Apache)
-source=(git+https://github.com/google/adb-sync)
-sha1sums=('SKIP')
+license=('Apache')
+depends=('android-tools' 'android-udev' 'python')
+makedepends=('git')
+source=("$pkgname::git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd adb-sync
+  cd $pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd adb-sync
-  install -m755 -d "$pkgdir/usr/bin"
-  install -m755 -t "$pkgdir/usr/bin" adb-sync adb-channel
-
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 $pkgname/{adb-sync,adb-channel} -t "$pkgdir/usr/bin"
 }
+
