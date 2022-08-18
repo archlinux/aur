@@ -1,15 +1,20 @@
 pkgbase = python-leveldb
 	pkgdesc = Python bindings for leveldb database library
 	pkgver = 0.201
-	pkgrel = 1
-	url = https://pypi.python.org/pypi/leveldb/
+	pkgrel = 2
+	url = https://github.com/rjpower/py-leveldb/
 	arch = x86_64
 	license = BSD
 	checkdepends = python-nose
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
-	source = python-leveldb-0.201.tar.gz::https://files.pythonhosted.org/packages/source/l/leveldb/leveldb-0.201.tar.gz
-	sha256sums = 1cffe776842917e09f073bd6ea5856c64136aebddbe51bd17ea29913472fecbf
+	source = git+https://github.com/rjpower/py-leveldb.git#tag=0.201
+	source = git+https://github.com/google/leveldb.git
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = python-leveldb
-
