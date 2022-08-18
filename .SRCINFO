@@ -1,7 +1,7 @@
 pkgbase = r-cointreg
 	pkgdesc = Parameter Estimation and Inference in a Cointegrating Regression
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=cointReg
 	arch = any
 	license = GPL

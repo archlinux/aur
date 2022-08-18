@@ -3,8 +3,8 @@
 _pkgname=cointReg
 _pkgver=0.2.0
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
-pkgrel=1
+pkgver=0.2.0
+pkgrel=2
 pkgdesc='Parameter Estimation and Inference in a Cointegrating Regression'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
