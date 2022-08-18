@@ -4,7 +4,7 @@
 
 pkgname=river-noxwayland-git
 _pkgname=river
-pkgver=0.1.0.r107.gbc610c8
+pkgver=0.2.0_dev.r115.g844ffce
 pkgrel=1
 pkgdesc='A dynamic tiling wayland compositor.'
 arch=('x86_64')
@@ -27,7 +27,6 @@ source=(
 	'git+https://github.com/ifreund/zig-wayland.git'
 	'git+https://github.com/swaywm/zig-wlroots.git'
 	'git+https://github.com/ifreund/zig-xkbcommon.git'
-	'river.desktop'
 )
 sha256sums=(
 	'SKIP'
@@ -35,7 +34,6 @@ sha256sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
-	'6ccc55e95666904cbdeeeeed841a16f728cbae2609646130a4c53785e588e4b0'
 )
 
 prepare() {
@@ -48,18 +46,21 @@ prepare() {
 }
 
 pkgver() {
+	local version commit_count commit_hash
+
 	cd "$srcdir/$_pkgname"
-	git describe --long | sed 's/^v//;s/-/.r/;s/-/./'
+	version=$(sed -n 's/^const version = "\(.*\)";/\1/p' build.zig | tr '-' '_')
+	commit_count=$(git describe --long | cut -d- -f2)
+	commit_hash=$(git describe --long | cut -d- -f3)
+	printf '%s.r%s.%s\n' "$version" "$commit_count" "${commit_hash}"
 }
 
 package() {
 	cd "$srcdir/$_pkgname"
-	DESTDIR="$pkgdir" zig build --prefix '/usr'
+	DESTDIR="$pkgdir" zig build --prefix '/usr' -Drelease-safe
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
+	install -Dm644 contrib/river.desktop -t "$pkgdir/usr/share/wayland-sessions"
 	install -d "$pkgdir/usr/share/$_pkgname"
 	cp -fR example "$pkgdir/usr/share/$_pkgname"
-
-	cd "$srcdir"
-	install -Dm644 river.desktop -t "$pkgdir/usr/share/wayland-sessions"
 }

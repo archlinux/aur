@@ -1,6 +1,6 @@
 pkgbase = river-noxwayland-git
 	pkgdesc = A dynamic tiling wayland compositor.
-	pkgver = 0.1.0.r107.gbc610c8
+	pkgver = 0.2.0_dev.r115.g844ffce
 	pkgrel = 1
 	url = https://github.com/riverwm/river
 	arch = x86_64
@@ -28,12 +28,10 @@ pkgbase = river-noxwayland-git
 	source = git+https://github.com/ifreund/zig-wayland.git
 	source = git+https://github.com/swaywm/zig-wlroots.git
 	source = git+https://github.com/ifreund/zig-xkbcommon.git
-	source = river.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 6ccc55e95666904cbdeeeeed841a16f728cbae2609646130a4c53785e588e4b0
 
 pkgname = river-noxwayland-git
