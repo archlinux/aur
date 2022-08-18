@@ -68,7 +68,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=5.18.16
+pkgver=5.18.18
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -100,7 +100,7 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('f1f586251e63de14c86e5f95b96beb15a0434f1e6e21df788d123564af0d11ce'
+sha256sums=('c1c376c8dcc5c226c5f190f6eaf687495d3cf87b927d5e1a8fed9bcfa966402b'
             'SKIP'
             '03843566d43e1335cc950038537f6b4e594018f34a9510ca52dc37af6e6ac411'
             '5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c'
