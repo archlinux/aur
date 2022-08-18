@@ -1,14 +1,13 @@
 pkgbase = renoise-redux
 	pkgdesc = A sampler VST plugin from Renoise
-	pkgver = 1.1.2
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://www.renoise.com/products/redux
 	arch = x86_64
 	license = custom:redux
 	conflicts = renoise-redux-beta
 	options = !strip
-	source = file://rns_rdx_112_linux.tar.gz
-	md5sums = SKIP
+	source = file://rns_rdx_132_linux_x86_64.tar.gz
+	md5sums = 75aa11f3ecf6fb7b867821f6a0479377
 
 pkgname = renoise-redux
-
