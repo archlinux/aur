@@ -5,7 +5,7 @@
 
 pkgname=gamescope
 pkgver=3.11.36
-pkgrel=1
+pkgrel=2
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
 url=https://github.com/Plagman/gamescope
