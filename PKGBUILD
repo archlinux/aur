@@ -2,8 +2,8 @@
 
 pkgname=vim-colors-zenburn-git
 pkgdesc='A low-contrast color scheme for Vim'
-pkgver=r44.de2fa06
-pkgrel=2
+pkgver=r45.8df7653
+pkgrel=1
 epoch=1
 url='http://kippura.org/zenburnpage/'
 arch=('any')
