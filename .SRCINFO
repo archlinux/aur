@@ -1,0 +1,11 @@
+pkgbase = cautious-launcher
+	pkgdesc = A wrapper program that only opens a file if exec bit is set.(from mailcap on ubuntu)
+	pkgver = 3.70
+	pkgrel = 1
+	url = https://packages.ubuntu.com/search?keywords=mailcap
+	arch = any
+	license = GPL
+	source = http://archive.ubuntu.com/ubuntu/pool/main/m/mailcap/mailcap_3.70+nmu1ubuntu1.tar.xz
+	sha256sums = caebcf23d9d47ea6b75fda5e191521e495e527e47b4fca74ac3802de4adcce71
+
+pkgname = cautious-launcher
