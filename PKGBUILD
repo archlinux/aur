@@ -1,7 +1,7 @@
 pkgname=googlekeep-bin
 _pkgname=GoogleKeep-bin
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 _pkgrel_x86_64=1
 _pkgrel_armv7h=1
 _pkgrel_aarch64=1
@@ -15,9 +15,10 @@ conflicts=("googlekeep-git")
 sha256sums_x86_64=('SKIP')
 sha256sums_armv7h=('SKIP')
 sha256sums_aarch64=('SKIP')
-source_x86_64=("https://gitlab.com/googlekeep-desktop/binaries/$pkgver-$pkgrel/-/raw/main/GoogleKeep-linux-x64.tar.gz")
-source_armv7h=("https://gitlab.com/googlekeep-desktop/binaries/$pkgver-$pkgrel/-/raw/main/GoogleKeep-linux-armv7l.tar.gz")
-source_aarch64=("https://gitlab.com/googlekeep-desktop/binaries/$pkgver-$pkgrel/-/raw/main/GoogleKeep-linux-arm64.tar.gz")
+source_x86_64=("https://gitlab.com/googlekeep-desktop/binaries/$pkgver-$pkgrel/-/raw/main/GoogleKeep-linux-x64.tar.xz")
+source_armv7h=("https://gitlab.com/googlekeep-desktop/binaries/$pkgver-$pkgrel/-/raw/main/GoogleKeep-linux-armv7l.tar.xz")
+source_aarch64=("https://gitlab.com/googlekeep-desktop/binaries/$pkgver-$pkgrel/-/raw/main/GoogleKeep-linux-arm64.tar.xz")
+
 
 package() {
     for dir in GoogleKeep-linux-*/ ; do mv "${dir}" "$_pkgname" ;done
