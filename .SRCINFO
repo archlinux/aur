@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-battery-status-git
 	pkgdesc = Get information about your battery status
-	pkgver = 4.r7.g7e435e2
+	pkgver = 4.r23.g15be81a
 	pkgrel = 1
 	url = https://github.com/atareao/battery-status
 	arch = any

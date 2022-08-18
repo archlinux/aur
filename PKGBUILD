@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-shell-extension-battery-status-git
-pkgver=4.r7.g7e435e2
+pkgver=4.r23.g15be81a
 pkgrel=1
 pkgdesc="Get information about your battery status"
 arch=('any')
@@ -35,7 +35,8 @@ package() {
 
   install -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
   bsdtar xvf "$_uuid.shell-extension.zip" -C "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/"
-  install -Dm644 schemas/battery-status.gschema.xml -t "$pkgdir/usr/share/glib-2.0/schemas/"
+  install -Dm644 schemas/es.atareao.battery-status.gschema.xml -t \
+    "$pkgdir/usr/share/glib-2.0/schemas/"
 
   rm -rf "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/schemas/"
 }
