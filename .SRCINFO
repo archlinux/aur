@@ -17,7 +17,6 @@ pkgname = wps-office-cn
 	depends = fontconfig
 	depends = xorg-mkfontdir
 	depends = libxrender
-	depends = gtk2
 	depends = desktop-file-utils
 	depends = shared-mime-info
 	depends = xdg-utils
