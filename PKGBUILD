@@ -25,30 +25,30 @@ source=(
 sha256sums=('98e1f16ed97433e1e8c8bdabac1cac1920ddcab90e6cef36d8817a41b45a94ff')
 
 prepare () {
-	cd "${srcdir}/senpai-v${pkgver}"
-	make clean
+    cd "${srcdir}/senpai-v${pkgver}"
+    make clean
 }
 
 build () {
-	cd "${srcdir}/senpai-v${pkgver}"
-	export CGO_LDFLAGS="${LDFLAGS}"
-	export CGO_CFLAGS="${CFLAGS}"
-	export CGO_CPPFLAGS="${CPPFLAGS}"
-	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	go build ./cmd/senpai
-	make doc/senpai.1
-	make doc/senpai.5
+    cd "${srcdir}/senpai-v${pkgver}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    go build ./cmd/senpai
+    make doc/senpai.1
+    make doc/senpai.5
 }
 
 package () {
-	mkdir -p "${pkgdir}/usr/bin"
-	mkdir -p "${pkgdir}/usr/share/man/man1"
-	mkdir -p "${pkgdir}/usr/share/man/man5"
-	cp "${srcdir}/senpai-v${pkgver}/senpai" "${pkgdir}/usr/bin/senpai"
-	cp "${srcdir}/senpai-v${pkgver}/doc/senpai.1" "${pkgdir}/usr/share/man/man1/"
-	cp "${srcdir}/senpai-v${pkgver}/doc/senpai.5" "${pkgdir}/usr/share/man/man5/"
-	# Alias binary as "senpai-irc" (gives compat with senpai-irc-git)
-	ln -s "${pkgdir}/usr/bin/senpai" "senpai-irc"
+    mkdir -p "${pkgdir}/usr/bin"
+    mkdir -p "${pkgdir}/usr/share/man/man1"
+    mkdir -p "${pkgdir}/usr/share/man/man5"
+    cp "${srcdir}/senpai-v${pkgver}/senpai" "${pkgdir}/usr/bin/senpai"
+    cp "${srcdir}/senpai-v${pkgver}/doc/senpai.1" "${pkgdir}/usr/share/man/man1/"
+    cp "${srcdir}/senpai-v${pkgver}/doc/senpai.5" "${pkgdir}/usr/share/man/man5/"
+    # Alias binary as "senpai-irc" (gives compat with senpai-irc-git)
+    ln -s "${pkgdir}/usr/bin/senpai" "senpai-irc"
 }
 
