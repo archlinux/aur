@@ -2,7 +2,7 @@
 
 pkgname=oxen-core-bin
 _pkgname=oxen-core
-pkgver=9.2.0
+pkgver=10.1.3
 pkgrel=1
 pkgdesc='OXEN core for cryptocurrency based on Monero (Loki)'
 url='https://github.com/oxen-io/oxen-core'
@@ -12,7 +12,7 @@ makedepends=('wget' 'git' 'curl')
 conflicts=('loki-core-git')
 source=("$url/releases/download/v$pkgver/oxen-linux-$arch-$pkgver.tar.xz"
         "https://raw.githubusercontent.com/oxen-io/oxen-core/dev/LICENSE")
-sha256sums=('cd0c45af4c59520e37a1461efebd75948569d2df34575ef6366c3a767a156c22'
+sha256sums=('77c2a1746ad7308aba40ba3ca378e67d466fa8e66794ed2e5d3c65350167aa4d'
             '11075d9b10225bbaa5d77801888ab15aa13bef9e53a3fea442eb9f2f02ae818b')
 
 package() {
