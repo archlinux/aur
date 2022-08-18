@@ -1,6 +1,7 @@
 # Maintainer: Colin Adler <colin@coder.com>
 # Maintainer: Asher <ash@coder.com>
 # Maintainer: Joe Previte <joe@coder.com>
+# Maintainer: cdrci <joe+cdrci@coder.com>
 # Contributor: Teffen Ellis <teffen@coder.com>
 # Contributor: Anmol <anmol@coder.com>
 
