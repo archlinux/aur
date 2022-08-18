@@ -6,6 +6,7 @@ pkgbase = anyenv
 	install = anyenv.install
 	arch = any
 	license = MIT
+	depends = bash
 	source = https://github.com/anyenv/anyenv/archive/v1.1.5.tar.gz
 	md5sums = 0a39364230131b6779044701c8594723
 
