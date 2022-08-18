@@ -1,0 +1,9 @@
+post_install() {
+	echo "======================================="
+	echo "   To properly use 'tere', configure   "
+	echo "   your shell to 'cd' to the folder    "
+	echo "      'tere' prints when in exits.     "
+	echo
+	echo " https://github.com/mgunyho/tere#setup "
+	echo "======================================="
+}

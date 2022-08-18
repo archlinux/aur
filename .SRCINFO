@@ -1,0 +1,16 @@
+pkgbase = tere-bin
+	pkgdesc = Faster alternative to using cd and ls to browse folders in your terminal
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/mgunyho/tere
+	install = tere-bin.install
+	arch = x86_64
+	license = custom:EUPL-1.2
+	provides = tere
+	conflicts = tere
+	source = https://github.com/mgunyho/tere/releases/download/v1.1.0/tere-1.1.0-x86_64-unknown-linux-gnu.zip
+	source = https://github.com/mgunyho/tere/raw/v1.1.0/LICENSE
+	sha256sums = 202ff43a4e6979bc578a3fe4796fc685b6aa3baee8436d40f0e9ecc690a08fcc
+	sha256sums = 6fc9e709ccbfe0d77fbffa2427a983282be2eb88e47b1cdb49f21a83b4d1e665
+
+pkgname = tere-bin
