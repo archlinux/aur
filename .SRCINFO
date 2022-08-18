@@ -1,26 +1,21 @@
-pkgbase = supermodel-svn
+pkgbase = supermodel-git
 	pkgdesc = A Sega Model 3 Arcade Emulator
-	pkgver = 20200703.807
+	pkgver = r918.a60f998
 	pkgrel = 1
 	url = http://www.supermodel3.com/
 	install = supermodel.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = svn
+	makedepends = git
 	depends = mesa
 	depends = sdl
 	depends = zlib
 	depends = glu
 	depends = sdl2_net
 	source = supermodel.sh
-	source = multiuser.patch
-	source = R3DScrollFog.patch
-	source = supermodel-svn::svn+https://svn.code.sf.net/p/model3emu/code/trunk
+	source = supermodel::git+https://github.com/trzy/Supermodel.git
 	md5sums = ea8274c2a37acddd026fce9c831530cc
-	md5sums = 2169d888da85c9baf9f55fc18c738ef8
-	md5sums = 5577ca768ef106f0ff69ca875a36a62f
 	md5sums = SKIP
 
-pkgname = supermodel-svn
-
+pkgname = supermodel-git

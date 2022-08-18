@@ -1,43 +1,34 @@
-# Maintainer: Marcin (CTRL) Wieczorek <marcin@marcin.co>
+# Maintainer: Marcin Wieczorek <marcin@marcin.co>
 # Contributor: Anton Shestakov <engored@ya.ru>
 
-pkgname=supermodel-svn
-pkgver=20200703.807
+_pkgname=supermodel
+pkgname=$_pkgname-git
+pkgver=r918.a60f998
 pkgrel=1
 pkgdesc='A Sega Model 3 Arcade Emulator'
 arch=('i686' 'x86_64')
 url='http://www.supermodel3.com/'
 license=('GPL3')
 depends=('mesa' 'sdl' 'zlib' 'glu' 'sdl2_net')
-makedepends=('svn')
+makedepends=('git')
 install=supermodel.install
 source=('supermodel.sh'
-        'multiuser.patch'
-        'R3DScrollFog.patch'
-        "${pkgname}::svn+https://svn.code.sf.net/p/model3emu/code/trunk")
-
+        "$_pkgname::git+https://github.com/trzy/Supermodel.git")
 md5sums=('ea8274c2a37acddd026fce9c831530cc'
-         '2169d888da85c9baf9f55fc18c738ef8'
-         '5577ca768ef106f0ff69ca875a36a62f'
          'SKIP')
 
-MAKEFLAGS="-j1"
-
 pkgver() {
-	cd "${srcdir}/${pkgname}"
-	svn info | awk '/Revision/{r=$2}/Date/{gsub(/-/,"");d=$4}END{print d"."r}'
+  cd "$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/supermodel-svn/"
-  sed -e "s/-Wall -O3/$CFLAGS/" -i 'Makefiles/Makefile.UNIX'
-  # patch -p1 < ../multiuser.patch
-  # patch -p1 < ../R3DScrollFog.patch
+  cd "$srcdir/$pkgname"
   make -f 'Makefiles/Makefile.UNIX'
 }
 
 package() {
-  cd "${srcdir}/supermodel-svn/"
+  cd "$srcdir/$pkgname"
 
   install -Dm755 "$srcdir/supermodel.sh" "$pkgdir/usr/bin/supermodel"
 
