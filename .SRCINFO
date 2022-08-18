@@ -1,9 +1,9 @@
 pkgbase = r-jaspreliability
 	pkgdesc = Reliability Module for JASP
 	pkgver = 0.16.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jasp-stats/jaspReliability
-	arch = x86_64
+	arch = any
 	groups = r-jasp
 	groups = r-jaspextra
 	license = GPL
@@ -20,7 +20,7 @@ pkgbase = r-jaspreliability
 	depends = r-psych
 	depends = r-lme4
 	depends = r-irr
-	source = git+https://github.com/jasp-stats/jaspReliability.git
+	source = git+https://github.com/jasp-stats/jaspReliability.git#commit=b93bbd102e
 	sha256sums = SKIP
 
 pkgname = r-jaspreliability
