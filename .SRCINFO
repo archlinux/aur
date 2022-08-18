@@ -1,9 +1,9 @@
 pkgbase = r-jaspnetwork
 	pkgdesc = Network Module for JASP
 	pkgver = 0.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jasp-stats/jaspNetwork
-	arch = x86_64
+	arch = any
 	groups = r-jasp
 	groups = r-jaspextra
 	license = GPL
