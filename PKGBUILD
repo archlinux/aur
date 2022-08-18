@@ -75,7 +75,7 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-mini
-pkgver=5.18.4
+pkgver=5.19.2
 pkgrel=1
 pkgdesc='Linux kernel and modules with minimal configuration'
 
@@ -100,11 +100,11 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-b2sums=('e2745a69eb70169e90505a9318a3993046eab3020496eecde7d8352ecda0eb71a25b21becf7ce93fc593507dce7d1cd61b94ddcdf82b3094d79c0d3d48508eeb'
+b2sums=('4db03a6830a3b3bbf0837e1912182a443d9a4aa8af20a12e6ec814ed708038452d3c0ccee1258cca671c464d76461536363a8adc56e9d098c9a44ae3484a297a'
         'SKIP'
-        '6ab25a0b36539608f8d0cfb42a6d41afa4d1810dfa4bdd85fe478465044e481a734ed31baf2de3c41741d07ac41bc943ea2f8a1da76c5d285f971f53edca1756'
+        'e1a3238a1cfb33178d1d9608821ad1f275165b0df0f4883dfd136ebe2ff31839d4cb82af60a874673b256653a0eca625dcb9016179ae9d1522099465b2014642'
         '20674a8fcc0a85726e06460a7dbccfe731c46bf377cc3bf511b7591175e7df892f271bc1909e77d9a02913c753d241493502c5ab15d9f78e95f31aa4399c2c27'
-        'b5389898492e6dddd1e94fe2bac1d19e29c3b206d45f06eea671ca94f4c7d9efe1334ae5078ca9f35cef046ed916234a9c0a81c73be13abc83fc996982703daf')
+        '3e80b6f403371fb87cd3a4a756c66b2cd75e872dcd4c8ef02c8d2584f3b9a8d483ab8ff31c367b9c8fa079c706b94f332bb45733daa855874adef4a5862ee5af')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
