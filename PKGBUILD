@@ -19,6 +19,7 @@ optdepends=(
 'system76-io-dkms: some systems might need this driver'
 )
 makedepends=('rust')
+options=('!lto') # see https://aur.archlinux.org/packages/system76-power#comment-846879
 source=(
 "https://github.com/pop-os/${pkgname}/archive/${pkgver}.tar.gz"
 'use-mkinitcpio.patch'
