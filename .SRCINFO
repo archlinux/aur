@@ -1,10 +1,13 @@
 pkgbase = r-rmpi
 	pkgdesc = Interface (Wrapper) to MPI (Message-Passing Interface)
 	pkgver = 0.6.9.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cran.r-project.org/package=Rmpi
 	arch = x86_64
 	license = GPL
+	makedepends = openssh
+	makedepends = inetutils
+	makedepends = nvidia-utils
 	depends = r
 	depends = openmpi
 	source = https://cran.r-project.org/src/contrib/Rmpi_0.6-9.2.tar.gz
