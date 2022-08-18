@@ -2,6 +2,7 @@ pkgbase = vidoas
 	pkgdesc = vidoas - safely edit the doas.conf file (like visudo for doas)
 	pkgver = 1.0
 	pkgrel = 1.0
+	url = https://github.com/solisinvictum/vidoas
 	arch = any
 	depends = opendoas
 	source = git+https://github.com/solisinvictum/vidoas.git
