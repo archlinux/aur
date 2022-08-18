@@ -5,6 +5,8 @@ _USE_CCACHE=false
 # _USE_CCACHE=true
 _WITH_NETWORKMANAGER=false
 # _WITH_NETWORKMANAGER=true
+_WITH_VALGRIND=false
+# _WITH_VALGRIND=true
 _TOOLKIT='gtk2'
 # _TOOLKIT='gtk3'
 
@@ -14,7 +16,7 @@ _gitbranch="${_TOOLKIT}"
 pkgname="${_pkgname}-${_pkgvariant}-git"
 epoch=0
 pkgver=3.19.0+61.r11578.20220802.c51af48dd
-pkgrel=4
+pkgrel=5
 pkgdesc='A GTK based e-mail client. Latest git checkout of GTK2 branch.'
 arch=(
   'i686'
@@ -113,6 +115,13 @@ if "${_WITH_NETWORKMANAGER}"; then
 else
   _networkmanager_config_opts=('--disable-networkmanager')
 fi
+if "${_WITH_VALGRIND}"; then
+  makedepends+=('valgrind')
+  _valgrind_config_opts=('--enable-valgrind')
+else
+  _valgrind_config_opts=('--disable-valgrind')
+fi
+
 
 
 prepare() {
@@ -122,6 +131,7 @@ prepare() {
   git log > "${srcdir}/git.log"
 
   # Generate ./configure
+  msg2 "Generating ./configure ..."
   if [ ! -e configure ]; then
     NOCONFIGURE=1 ./autogen.sh
   fi
@@ -166,7 +176,7 @@ build() {
     --enable-jpilot
     "${_networkmanager_config_opts[@]}"
     --enable-libetpan
-    --disable-valgrind
+    "${_valgrind_config_opts[@]}"
     --disable-alternate-addressbook # add --enable-alternate-addressbook to the options to use the new/alternate address book (which could break things!). Do not forget to add claws-contacts to the dependencies then
     --enable-svg
     --enable-deprecated
@@ -208,11 +218,13 @@ build() {
 #   unset CXXFLAGS
 #   unset LDFLAGS
 
+  msg2 "Running ./configure ..."
   ./configure "${_configure_opts[@]}"
   make
 
   # build extra tools
   pushd tools 2>/dev/null
+  msg2 "Running make ..."
   make
   popd 2>/dev/null
 }
