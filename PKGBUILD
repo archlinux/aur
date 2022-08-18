@@ -15,8 +15,8 @@ _pkgvariant="${_TOOLKIT}"
 _gitbranch="${_TOOLKIT}"
 pkgname="${_pkgname}-${_pkgvariant}-git"
 epoch=0
-pkgver=3.19.0+61.r11578.20220802.c51af48dd
-pkgrel=5
+pkgver=3.19.0+63.r11580.20220817.b79a25c21
+pkgrel=1
 pkgdesc='A GTK based e-mail client. Latest git checkout of GTK2 branch.'
 arch=(
   'i686'

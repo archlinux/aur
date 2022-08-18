@@ -1,7 +1,7 @@
 pkgbase = claws-mail-gtk2-git
 	pkgdesc = A GTK based e-mail client. Latest git checkout of GTK2 branch.
-	pkgver = 3.19.0+61.r11578.20220802.c51af48dd
-	pkgrel = 5
+	pkgver = 3.19.0+63.r11580.20220817.b79a25c21
+	pkgrel = 1
 	epoch = 0
 	url = https://www.claws-mail.org/
 	arch = i686
@@ -53,11 +53,11 @@ pkgbase = claws-mail-gtk2-git
 	optdepends = python2: needed for some tools and python plugin.
 	optdepends = python: for some tools/ plugins.
 	optdepends = spamassassin: adds support for spamfiltering.
-	provides = claws=3.19.0+61.r11578.20220802.c51af48dd
-	provides = claws-mail=3.19.0+61.r11578.20220802.c51af48dd
-	provides = claws-mail-gtk2=3.19.0+61.r11578.20220802.c51af48dd
+	provides = claws=3.19.0+63.r11580.20220817.b79a25c21
+	provides = claws-mail=3.19.0+63.r11580.20220817.b79a25c21
+	provides = claws-mail-gtk2=3.19.0+63.r11580.20220817.b79a25c21
 	provides = claws-mail-bash-completion
-	provides = claws-mail-extra-plugins=3.19.0+61.r11578.20220802.c51af48dd
+	provides = claws-mail-extra-plugins=3.19.0+63.r11580.20220817.b79a25c21
 	conflicts = claws
 	conflicts = claws-mail
 	conflicts = claws-mail-gtk2
