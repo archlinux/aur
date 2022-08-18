@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=nbdkit
-pkgver=1.32.0
+pkgver=1.32.2
 pkgrel=1
 pkgdesc="NBD server toolkit"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ optdepends=(
   'curl'
   'libguestfs'
   'libssh'
-  'libtorrent-rasterbar'
+  'libtorrent-rasterbar' 'boost'
   'libselinux'
 )
 checkdepends=('qemu')
@@ -66,6 +66,6 @@ check() {
   make check
 }
 
-sha256sums=('867330d9d348feeea588d2bc66a8eea64c4e4f0154bf69a0d89404eeebc537a9'
+sha256sums=('ecff2b5724c82955d8f4e5c4fc8323aac53d4c9758dd8363cd1596a254063478'
             'SKIP'
             '4ae58421aa6cc59868f6ca11c82d308ceb5972cbcbd3c09416837bb98377911e')
