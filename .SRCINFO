@@ -1,15 +1,24 @@
 pkgbase = easycodeml
 	pkgdesc = A visual tool for analysis of selection using CodeML. https://doi.org/10.1002/ece3.5015
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/BioEasy/EasyCodeML
 	arch = x86_64
 	license = LGPL3
 	depends = java-runtime
+	depends = paml
 	source = https://raw.githubusercontent.com/BioEasy/EasyCodeML/master/EasyCodeML.jar
+	source = https://raw.githubusercontent.com/BioEasy/EasyCodeML/master/Custom/codeml.ctl
+	source = https://raw.githubusercontent.com/BioEasy/EasyCodeML/master/Custom/default.ctl
+	source = https://github.com/BioEasy/EasyCodeML/raw/master/Preset/chi2.exe
+	source = https://github.com/BioEasy/EasyCodeML/raw/master/Preset/codeml.exe
 	source = easycodeml.desktop
 	source = EasyCodeML.png
 	sha256sums = 16eef77a21be47ac2b2cf2e04ded75dc76546a71e0ca227aa21e0418ec8caf36
+	sha256sums = 2a369a9497cf9435322dc2dad32787f0178685d483ed12aa407e7702b68071a1
+	sha256sums = b665482ad39736725dbf8b21081ddb9761c7e35c68fc93860889bd52b2429756
+	sha256sums = 3f6e8b9fcfb161d7e920bf3958b6820ad2a8cdb666b3faa4cf538d14e3ba0428
+	sha256sums = f5884da79e69c972570225a2f2562e43c47f2935b4dd858aae4789440b691adb
 	sha256sums = e20af3e0e14be4f95d634bf5c34cb35dc37edfada7d97f9c0e9dd10afa7cbf6f
 	sha256sums = 5393db9477bd071511788ea6255c49005274b4aebe792a7631eaa296ada14987
 
