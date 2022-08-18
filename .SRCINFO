@@ -1,7 +1,7 @@
 pkgbase = r-comprehenr
 	pkgdesc = List Comprehensions
 	pkgver = 0.6.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=comprehenr
 	arch = any
 	license = GPL

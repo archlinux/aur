@@ -3,8 +3,8 @@
 _pkgname=comprehenr
 _pkgver=0.6.10
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
-pkgrel=1
+pkgver=0.6.10
+pkgrel=2
 pkgdesc='List Comprehensions'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
