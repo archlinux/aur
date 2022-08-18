@@ -4,12 +4,12 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 # Contributor: Julian Schacher <jspp@posteo.net>
 
-_electron=electron17
+_electron=electron19
 _nodeversion=16
 pkgname=schildichat-desktop-git
 _pkgname=schildichat-desktop
-pkgver=1.10.12.sc.1.r1.3d5935f
-pkgrel=1
+pkgver=1.11.1.sc.0.test.1.r0.2bccbdb
+pkgrel=2
 pkgdesc="A Matrix client based on Element with a more traditional instant messaging experience"
 arch=(x86_64)
 url="https://schildi.chat"
@@ -31,7 +31,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'e44bd0eec6693a08c368cbeb7707241221c77efa940d4100716c8cd1e1813724'
+            '20533d63ffadf03dbfd173e6d4f1f1048746a628db7b2a70f5bc02390e812302'
             '6450af411fea039cb76357ff4ea7f1ef336601315de4d27b848a75d7960cef17'
             '8084211fe11ba23be956ef4b8bb0fffaa6aaa721b79f9753ecc3574666ef95ce')
 
@@ -74,6 +74,7 @@ build() {
   export npm_config_cache="$srcdir/npm_cache"
   _ensure_local_nvm
   nvm use ${_nodeversion}
+  export SQLCIPHER_STATIC=1
 
   # yarn --cwd element-desktop run build:64 --linux -c.linux.target=dir -c.electronDist=${_electron_dist} -c.electronVersion=${_electron_ver}
   # let's use the ready-made build script instead - otherwise, we'd have to do a lot more work to get the webapp build etc.
