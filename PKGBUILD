@@ -8,7 +8,16 @@ pkgdesc='TUI IRC Client Created by ~taiite'
 url=https://sr.ht/~taiite/senpai/
 arch=(x86_64 aarch64)
 license=('ISC')
-conflicts=("senpai-irc-git")
+# NOTE: The `senpai` package is unrelated, but provides a binary with a similar name
+#
+# As a result, our packages conflicts. Both packages seem to be low-usage in practice,
+# so I am going to stick with the binary's original name.
+#
+# Please comment on the AUR board or email me if you want to install both packages and
+# this is an issue for you (I'm sure I can work something out)
+#
+# Also the binary is aliased to "senpai-irc" as a secondary name
+conflicts=('senpai-irc-git' 'senpai')
 makedepends=('go' 'scdoc')
 source=(
   "senpai-v${pkgver}.tar.gz::https://git.sr.ht/~taiite/senpai/archive/v0.1.0.tar.gz"
@@ -36,8 +45,10 @@ package () {
 	mkdir -p "${pkgdir}/usr/bin"
 	mkdir -p "${pkgdir}/usr/share/man/man1"
 	mkdir -p "${pkgdir}/usr/share/man/man5"
-	cp "${srcdir}/senpai-v${pkgver}/senpai" "${pkgdir}/usr/bin/senpai-irc"
+	cp "${srcdir}/senpai-v${pkgver}/senpai" "${pkgdir}/usr/bin/senpai"
 	cp "${srcdir}/senpai-v${pkgver}/doc/senpai.1" "${pkgdir}/usr/share/man/man1/"
 	cp "${srcdir}/senpai-v${pkgver}/doc/senpai.5" "${pkgdir}/usr/share/man/man5/"
+	# Alias binary as "senpai-irc" (gives compat with senpai-irc-git)
+	ln -s "${pkgdir}/usr/bin/senpai" "senpai-irc"
 }
 

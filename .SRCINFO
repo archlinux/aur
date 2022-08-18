@@ -9,6 +9,7 @@ pkgbase = senpai-irc
 	makedepends = go
 	makedepends = scdoc
 	conflicts = senpai-irc-git
+	conflicts = senpai
 	source = senpai-v0.1.0.tar.gz::https://git.sr.ht/~taiite/senpai/archive/v0.1.0.tar.gz
 	sha256sums = 98e1f16ed97433e1e8c8bdabac1cac1920ddcab90e6cef36d8817a41b45a94ff
 
