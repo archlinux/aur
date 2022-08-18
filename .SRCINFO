@@ -1,7 +1,7 @@
 pkgbase = r-jaspregression
 	pkgdesc = Regression Module for JASP
 	pkgver = 0.16.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jasp-stats/jaspRegression
 	arch = x86_64
 	groups = r-jasp
