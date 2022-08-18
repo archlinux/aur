@@ -3,8 +3,8 @@
 # 
 
 pkgname=graphite-cli-git
-pkgver=0.19.2.r0.9df94d9d
-pkgrel=3
+pkgver=0.20.10.r21.2a14f33d
+pkgrel=1
 pkgdesc="CLI that makes creating stacked git changes fast & intuitive"
 url=https://graphite.dev/
 license=('AGPL3')
@@ -13,16 +13,10 @@ depends=('nodejs' 'git')
 makedepends=('npm' 'yarn' 'findutils')
 provides=('graphite-cli')
 conflicts=('graphite-cli')
-source=('git+https://github.com/withgraphite/graphite-cli' 'graphite-cli.patch')
-md5sums=('SKIP'
-         '2ac3a50dfce2a35dba19f355b4a308f8')
+source=('git+https://github.com/withgraphite/graphite-cli')
+md5sums=('SKIP')
 
 _srcname="graphite-cli"
-
-prepare() {
-    cd "$srcdir/$_srcname"
-    patch --forward --strip=1 --input="$srcdir/graphite-cli.patch"
-}
 
 pkgver() {
     cd "$srcdir/$_srcname"
@@ -35,7 +29,6 @@ build() {
     export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
     yarn install --immutable
     yarn run build
-    rm -r dist/scripts
     rm -r dist/test
     find dist -type f \( -name '*.map' -o -name '*.d.ts' \) -delete
 
