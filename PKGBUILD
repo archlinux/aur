@@ -1,20 +1,20 @@
 # Maintainer: grimi <grimi at poczta dot fm>
 
 pkgname=uade
-pkgver=2.13
-pkgrel=2
+pkgver=3.02
+pkgrel=3
 pkgdesc="Unix Amiga Delitracker Emulator"
 arch=('i686' 'x86_64')
 url="https://zakalwe.fi/uade"
 license=('GPL')
-depends=('libao' 'fuse2')
+depends=('libao' 'fuse2' 'bencodetools')
 install=uade.install
-source=("https://zakalwe.fi/uade/uade2/$pkgname-$pkgver.tar.bz2")
-md5sums=('29bb1018b7fa58f93b246264c160bdc6')
+source=("https://zakalwe.fi/uade/uade3/$pkgname-$pkgver.tar.bz2")
+md5sums=('57cb58c3da91c1fb2d391966c44d5739')
 
 build() {
   cd $pkgname-$pkgver
-  ./configure --prefix=/usr --package-prefix="$pkgdir" --without-audacious
+  ./configure --prefix=/usr --package-prefix="$pkgdir"
   make
 }
 
