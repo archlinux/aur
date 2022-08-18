@@ -1,4 +1,5 @@
 post_install() {
+    printf "${bold}${yellow}==============================================================================${reset}\n"
     echo ""
     note_header "Important information about kubectl versions < 1.25"
     echo ""
@@ -17,6 +18,7 @@ post_install() {
     note ""
     note "https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke"
     echo ""
+    printf "${bold}${yellow}==============================================================================${reset}\n"
 }
 
 post_upgrade() {
