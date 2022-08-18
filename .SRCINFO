@@ -1,22 +1,20 @@
 pkgbase = python-ngmix
-	pkgdesc = Gaussian mixture models and other code for working with for 2d images, implemented in python
-	pkgver = v0.9.4.r0.28e501c
+	pkgdesc = Gaussian mixtures and image processing
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/esheldon/ngmix
+	changelog = CHANGES.md
 	arch = any
 	license = GPL
-	checkdepends = make
-	makedepends = git
-	makedepends = python
-	makedepends = python-numpy
-	makedepends = python2
-	makedepends = python2-numpy
-	source = python-ngmix::git+https://github.com/esheldon/ngmix#tag=v0.9.4
-	md5sums = SKIP
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-numpy
+	depends = python-numba
+	source = python-ngmix-2.1.0.tar.gz::https://github.com/esheldon/ngmix/archive/v2.1.0.tar.gz
+	source = setup.py.patch
+	sha256sums = 5bda6377f6ecf41b9301cde0e62e55e990292c7825ffba6d5b2a0d3adcbbd50e
+	sha256sums = 85057d5ec4f082a3599084dbe0e874be2af2a0f91786a10933b3368e6e025898
 
 pkgname = python-ngmix
-	depends = python-numpy
-
-pkgname = python2-ngmix
-	depends = python2-numpy
-

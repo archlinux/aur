@@ -1,56 +1,34 @@
-# Maintainer: Andres Alejandro Navarro Alsina <aanavarroa@unal.edu.co>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Andres Alejandro Navarro Alsina <aanavarroa@unal.edu.co>
 # Contributor: Erin Sheldon
-_pkgname=python-ngmix
-pkgbase=python-ngmix
-pkgname=("python-ngmix" "python2-ngmix")
-pkgver=v0.9.4.r0.28e501c
+
+pkgname=python-ngmix
+_pkg="${pkgname#python-}"
+pkgver=2.1.0
 pkgrel=1
-pkgdesc=" Gaussian mixture models and other code for working with for 2d images, implemented in python "
+pkgdesc='Gaussian mixtures and image processing'
 arch=('any')
 url="https://github.com/esheldon/ngmix"
 license=('GPL')
-checkdepends=('make')
-makedepends=('git' 'python' 'python-numpy' 'python2' 'python2-numpy'  )
-source=("${_pkgname}::git+${url}#tag=v0.9.4")
-md5sums=('SKIP')
-
-pkgver() {
-	 cd $_pkgname
-	 printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-}
+depends=('python-numpy' 'python-numba')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+changelog=CHANGES.md
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+        'setup.py.patch')
+sha256sums=('5bda6377f6ecf41b9301cde0e62e55e990292c7825ffba6d5b2a0d3adcbbd50e'
+            '85057d5ec4f082a3599084dbe0e874be2af2a0f91786a10933b3368e6e025898')
 
 prepare() {
-	  cp -a $_pkgname{,-py2}
+	patch -p1 -d "$_pkg-$pkgver" < setup.py.patch
+	sed -i "s/__version__/$pkgver/" "$_pkg-$pkgver/setup.py"
 }
 
 build() {
-	cd "$srcdir"/$_pkgname
-	python setup.py build
-
-	cd "$srcdir"/$_pkgname-py2
-	python2 setup.py build
-}
-
-check() {
-	cd "$srcdir"/$_pkgname/test
-	make test/test-gmix test/test-gmix-model test/test-fastexp test/test-fastexp-speed test/test-image test/test-shape
-	./test/test-gmix
-	./test/test-gmix-model
-	./test/test-fastexp
-	./test/test-fastexp-speed
-	./test/test-image
-	./test/test-shape
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
 package_python-ngmix() {
-		       depends=('python-numpy')
-		       cd "${_pkgname}"
-		       python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
-}
-
-package_python2-ngmix() {
-			depends=('python2-numpy')			    
-			cd "${_pkgname}"
-			python2 setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
-
+	cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
 }
