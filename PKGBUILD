@@ -2,7 +2,7 @@
 
 _upstream_pkgname=trane-cli
 pkgname=trane
-pkgver=0.2.6
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='Automated system for learning complex skills'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
 )
 
 sha512sums=(
-  '94a359676118602cb6cc7ac060625e357e5be0ab54cfaed2928def7f06901915e49ae4b8565a7d3f3e465b232de9e9dd6f340ee331d120e906e2d409cab7ed29'
+  'e0714a96121a64eec60059b10de88a1bc364fc2f70ed85ec4087e80ea8dabbe6d93b0f9692d59d1d6c688c88e3f806c83208732f39c6dfe923880491639ac925'
 )
 
 prepare() {
@@ -26,7 +26,14 @@ prepare() {
 }
 
 build() {
-  export RUSTUP_TOOLCHAIN=stable
+  # The `parking_lot` dependency requires Rust 1.59 or newer.
+  # See also upstream PR:
+  # https://github.com/Amanieu/parking_lot/pull/347
+  #
+  # Set the following value back to `stable` once upstream has
+  # released a fixed version of the `parking_lot` crate.
+  export RUSTUP_TOOLCHAIN=1.59
+
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features \
     --manifest-path "${_upstream_pkgname}-${pkgver}/Cargo.toml"
