@@ -1,7 +1,7 @@
 pkgbase = claws-mail-gtk2-git
 	pkgdesc = A GTK based e-mail client. Latest git checkout of GTK2 branch.
 	pkgver = 3.19.0+61.r11578.20220802.c51af48dd
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 0
 	url = https://www.claws-mail.org/
 	arch = i686
@@ -10,7 +10,6 @@ pkgbase = claws-mail-gtk2-git
 	makedepends = git
 	makedepends = python
 	makedepends = spamassassin
-	makedepends = valgrind
 	makedepends = bogofilter
 	makedepends = dillo
 	makedepends = gumbo-parser

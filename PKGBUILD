@@ -14,7 +14,7 @@ _gitbranch="${_TOOLKIT}"
 pkgname="${_pkgname}-${_pkgvariant}-git"
 epoch=0
 pkgver=3.19.0+61.r11578.20220802.c51af48dd
-pkgrel=3
+pkgrel=4
 pkgdesc='A GTK based e-mail client. Latest git checkout of GTK2 branch.'
 arch=(
   'i686'
@@ -39,7 +39,6 @@ makedepends=(
   'git'
   'python'
   'spamassassin'
-  'valgrind'
   # dependencies for plugins:
   'bogofilter'
   'dillo'
