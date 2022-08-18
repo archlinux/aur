@@ -16,7 +16,7 @@ _gitbranch="${_TOOLKIT}"
 pkgname="${_pkgname}-${_pkgvariant}-git"
 epoch=0
 pkgver=3.19.0+63.r11580.20220817.b79a25c21
-pkgrel=1
+pkgrel=2
 pkgdesc='A GTK based e-mail client. Latest git checkout of GTK2 branch.'
 arch=(
   'i686'
@@ -213,18 +213,14 @@ build() {
     --enable-demo-plugin
   )
 
-#   unset MAKEFLAGS
-#   unset CFLAGS
-#   unset CXXFLAGS
-#   unset LDFLAGS
-
   msg2 "Running ./configure ..."
   ./configure "${_configure_opts[@]}"
+  msg2 "Running make ..."
   make
 
   # build extra tools
   pushd tools 2>/dev/null
-  msg2 "Running make ..."
+  msg2 "Running make in ./tools/ ..."
   make
   popd 2>/dev/null
 }
