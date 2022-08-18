@@ -1,24 +1,24 @@
 # Maintainer: syntheit <daniel@matv.io>
-
 pkgname=tagspaces
-pkgver=4.1.3
+pkgver=4.4.3
 pkgrel=1
-pkgdesc='Offline file organizer and browser with tagging support'
+pkgdesc='An offline, open source, document manager with tagging support'
 arch=('i686' 'x86_64')
 url='https://www.tagspaces.org'
 license=('AGPL3')
-depends=('gtk3' 'nss' 'libxtst' 'at-spi2-core' 'util-linux-libs' 'ffmpeg' 'libvips')
+depends=('gtk3' 'nss' 'libxtst' 'at-spi2-core' 'util-linux-libs' 'ffmpeg' 'libvips' 'libxcrypt-compat')
 makedepends=('git' 'yarn' 'python')
 source=("https://github.com/tagspaces/tagspaces/archive/v${pkgver}.tar.gz" "tagspaces.desktop")
-sha512sums=('5d41ca763034a8bdcf2a68ea5fc62737baa395f69bf6923769564f7b70b556c5533b1f816f38c89b2aa8c8c89274a3f5a97e72ba7a51986b9dae2042dbb8812c' 'cb241109c6a2d721bb629014062b59fdb6c55408c02de4c3decb0e83ddfb3fdb6d0eaac8c7ce0492e3a38ded352a9868335caf1cd75355bcda15f73ac8e2cdc7')
+sha512sums=('6480f30467bc5131ad06af9fd4563d5a7b0b820655c9289956cb22a5c9dd0ca9f0320ec6812f4ef45335967c26b222254b5e57d87d19103b09064cb0128dd554' 'cb241109c6a2d721bb629014062b59fdb6c55408c02de4c3decb0e83ddfb3fdb6d0eaac8c7ce0492e3a38ded352a9868335caf1cd75355bcda15f73ac8e2cdc7')
 
 prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}
   mkdir -p ${srcdir}/yarn_cache
+  # Make .git directory because husky must be run in the same directory as .git
+  mkdir -p .git
   yarn --cache-folder=${srcdir}/yarn_cache install 
   yarn --cache-folder=${srcdir}/yarn_cache install-ext-node
   yarn --cache-folder=${srcdir}/yarn_cache global add node-gyp
-  # export PATH="$PATH:/home/daniel/.local/bin"
   cd app
   touch .env
   generated_key=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 128)

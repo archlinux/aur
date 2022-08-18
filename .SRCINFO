@@ -1,6 +1,6 @@
 pkgbase = tagspaces
 	pkgdesc = Offline file organizer and browser with tagging support
-	pkgver = 4.0.9
+	pkgver = 4.4.3
 	pkgrel = 1
 	url = https://www.tagspaces.org
 	arch = i686
@@ -16,9 +16,10 @@ pkgbase = tagspaces
 	depends = util-linux-libs
 	depends = ffmpeg
 	depends = libvips
-	source = https://github.com/tagspaces/tagspaces/archive/v4.0.9.tar.gz
+	depends = libxcrypt-compat
+	source = https://github.com/tagspaces/tagspaces/archive/v4.4.3.tar.gz
 	source = tagspaces.desktop
-	sha512sums = 31f873c53ee5505f54b43dfe95eff254756a7e0e337fba15ceeadf89f2cbba6e2ca51745befb2b68aed1f3372b50acad61c32886392acc1440a50f44ef94c885
+	sha512sums = 6480f30467bc5131ad06af9fd4563d5a7b0b820655c9289956cb22a5c9dd0ca9f0320ec6812f4ef45335967c26b222254b5e57d87d19103b09064cb0128dd554
 	sha512sums = cb241109c6a2d721bb629014062b59fdb6c55408c02de4c3decb0e83ddfb3fdb6d0eaac8c7ce0492e3a38ded352a9868335caf1cd75355bcda15f73ac8e2cdc7
 
 pkgname = tagspaces
