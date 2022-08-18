@@ -1,0 +1,39 @@
+# arg 1:  the new package version
+# pre_install() {
+        # do something here
+# }
+
+# arg 1:  the new package version
+post_install() {
+        ln -sf /opt/focalboard-$1 /opt/focalboard
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+pre_upgrade() {
+        systemctl stop focalboard.service
+        if [[ ! -h /opt/focalboard ]]; then
+                mv -v /opt/focalboard /opt/focalboard-$2
+        fi
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+        ln -sf /opt/focalboard-$1 /opt/focalboard
+        rsync -a /opt/focalboard-$2/files /opt/focalboard-$1/
+        cp /opt/focalboard-$2/config.json /opt/focalboard-$1/config.json
+        systemctl start focalboard.service
+}
+
+# # arg 1:  the old package version
+# pre_remove() {
+        # do something here
+# }
+
+# arg 1:  the old package version
+post_remove() {
+        systemctl stop focalboard.service
+        rm -rf /opt/focalboard-$1
+        rm -f /opt/focalboard
+}
