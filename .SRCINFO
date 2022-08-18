@@ -1,7 +1,7 @@
 pkgbase = r-bayesfm
 	pkgdesc = Bayesian Inference for Factor Modeling
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=BayesFM
 	arch = x86_64
 	license = GPL
