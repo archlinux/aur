@@ -8,11 +8,6 @@ warn() {
 }
 
 post_install() {
-  if [ -x /usr/bin/update-desktop-database ]; then
-    update-desktop-database -q
-  else
-    warn "Could not rebuild MIME database, update-desktop-database is not found or not executable"
-  fi
   warn "If you want to use the upgraded version immediately, please stop your beyond-identity services by:"
   warn "killall --verbose --quiet byndid"
   warn "Running 'beyond-identity --help' will restore them."
