@@ -1,0 +1,16 @@
+pkgbase = cryptlib
+	pkgdesc = A high-level security interface toolkit providing encryption and authentication
+	pkgver = 3.4.5
+	pkgrel = 1
+	url = https://www.cs.auckland.ac.nz/~pgut001/cryptlib/
+	arch = x86_64
+	arch = i686
+	license = custom:sleepycat
+	makedepends = unzip
+	makedepends = make
+	depends = zlib
+	noextract = cryptlib345.zip
+	source = https://cryptlib-release.s3-ap-southeast-1.amazonaws.com/cryptlib345.zip
+	sha256sums = 7b757a41b2e146d6b5676936eab51526396d2058c0263e613e3795041e240c31
+
+pkgname = cryptlib
