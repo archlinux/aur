@@ -1,16 +1,16 @@
 pkgbase = element-web-bin
 	pkgdesc = Glossy Matrix collaboration client — web version (built files without electron dependencies).
-	pkgver = 1.11.2
+	pkgver = 1.11.3
 	pkgrel = 1
 	url = https://github.com/vector-im/element-web
 	arch = any
 	license = Apache
 	provides = element-web
 	conflicts = element-web
-	source = element-web-1.11.2.tar.gz::https://github.com/vector-im/element-web/releases/download/v1.11.2/element-v1.11.2.tar.gz
-	source = element-web-1.11.2.tar.gz.asc::https://github.com/vector-im/element-web/releases/download/v1.11.2/element-v1.11.2.tar.gz.asc
+	source = element-web-1.11.3.tar.gz::https://github.com/vector-im/element-web/releases/download/v1.11.3/element-v1.11.3.tar.gz
+	source = element-web-1.11.3.tar.gz.asc::https://github.com/vector-im/element-web/releases/download/v1.11.3/element-v1.11.3.tar.gz.asc
 	validpgpkeys = 712BFBEE92DCA45252DB17D7C7BE97EFA179B100
-	sha256sums = d3a4c497141517af9ac284c19b5647c44bd52a8fb5b8a75b87f260bc13402ce6
+	sha256sums = f0c872416813c4a09a1831d681803dfecb9b9cac76f63a988ed876de6e5333ae
 	sha256sums = SKIP
 
 pkgname = element-web-bin
