@@ -1,9 +1,9 @@
 pkgbase = r-jaspprophet
 	pkgdesc = Prophet Module (Beta) for JASP
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jasp-stats/jaspProphet
-	arch = x86_64
+	arch = any
 	groups = r-jasp
 	groups = r-jaspextra
 	license = GPL
