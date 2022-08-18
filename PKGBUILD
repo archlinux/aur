@@ -3,12 +3,12 @@
 
 pkgname=w_scan_cpp
 pkgver=20220105
-pkgrel=1
+pkgrel=2
 
 # These are versions of dependencies used by w_scan_cpp
 _wirbelscan_version=wirbelscan-2022.01.05
 _satip_gitver=a89ad423e9a3994572d3bbbbf2958b470afa8de1
-_vdr_gitver=0d50ec57f50375c8fda92d117e348dd8fd5a77a9
+_vdr_gitver=d05765c670befc42e55b05a0fd75bb7771076c04
 
 pkgdesc="A dtv channel scanner based on VDR. Successor of w_scan"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
