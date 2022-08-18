@@ -1,4 +1,4 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=insaneaa
 pkgname=vapoursynth-plugin-${_plug}-git
@@ -13,6 +13,7 @@ depends=('vapoursynth-plugin-descale-git'
          'vapoursynth-plugin-nnedi3-git'
          'vapoursynth-plugin-znedi3-git'
          'vapoursynth-plugin-eedi3m-git'
+         'vapoursynth-plugin-finedehalo-git'
          )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")

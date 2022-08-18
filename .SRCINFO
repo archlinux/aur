@@ -11,6 +11,7 @@ pkgbase = vapoursynth-plugin-insaneaa-git
 	depends = vapoursynth-plugin-nnedi3-git
 	depends = vapoursynth-plugin-znedi3-git
 	depends = vapoursynth-plugin-eedi3m-git
+	depends = vapoursynth-plugin-finedehalo-git
 	provides = vapoursynth-plugin-insaneaa
 	conflicts = vapoursynth-plugin-insaneaa
 	source = insaneaa::git+https://github.com/Beatrice-Raws/VapourSynth-insaneAA.git
