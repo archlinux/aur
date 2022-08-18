@@ -1,6 +1,6 @@
 pkgbase = psiphon-tunnel-core
 	pkgdesc = Psiphon Internet censorship circumvention system.
-	pkgver = 2.0.23
+	pkgver = 2.0.24
 	pkgrel = 1
 	url = https://github.com/Psiphon-Labs/psiphon-tunnel-core
 	install = psiphon.install
@@ -8,8 +8,8 @@ pkgbase = psiphon-tunnel-core
 	arch = x86_64
 	license = GPL
 	makedepends = go
-	source = psiphon-tunnel-core-2.0.23.tar.gz::https://github.com/Psiphon-Labs/psiphon-tunnel-core/archive/v2.0.23.tar.gz
-	sha256sums = 5fcdd5dd8ab4bbf09d3c23016602a20583c5f8a84a2e8120c45cd5c0a3558a98
+	source = psiphon-tunnel-core-2.0.24.tar.gz::https://github.com/Psiphon-Labs/psiphon-tunnel-core/archive/v2.0.24.tar.gz
+	sha256sums = 761e08141946844f4e2ee86ffab704698666b7e40efeb8dcb668ae15e275f38c
 
 pkgname = psiphon-console-client
 
