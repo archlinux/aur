@@ -2,7 +2,7 @@
 
 pkgname=netbird
 pkgver=0.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc='A WireGuard-based mesh network that connects your devices into a single private network'
 url='https://netbird.io'
 arch=(x86_64 aarch64 armv7h armv7l armv6h)
@@ -15,8 +15,10 @@ makedepends=(go)
 optdepends=()
 replaces=(wiretrustee)
 
+_package=github.com/netbirdio/$pkgname
+
 source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/netbirdio/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz::https://$_package/archive/refs/tags/v$pkgver.tar.gz"
   'environment'
   'netbird@.service'
   'wiretrustee@.service'
@@ -46,13 +48,20 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
 
   go build \
-    -ldflags "-s -w -linkmode=external -extldflags \"$LDFLAGS\"" \
+    -ldflags "-s -w -linkmode=external -X $_package/client/system.version=$pkgver -extldflags \"$LDFLAGS\"" \
     -o build/"$pkgname" \
     client/main.go
 
   for shell in bash fish; do
     ./build/"$pkgname" completion $shell >build/completion.$shell
   done
+}
+
+check() {
+  cd "$srcdir/$pkgname-$pkgver/build"
+
+  # check that version was set and it works
+  [[ "$(./$pkgname version)" == $pkgver ]]
 }
 
 package() {
