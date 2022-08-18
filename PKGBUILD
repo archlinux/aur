@@ -3,7 +3,7 @@
 # Contributor: Roman Kupriyanov <mr.eshua@gmail.com>
 
 pkgname=jitsi-meet-desktop
-pkgver=2022.4.1
+pkgver=2022.8.1
 pkgrel=1
 pkgdesc="Jitsi Meet desktop application"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ replaces=('jitsi-meet-electron')
 depends=('gtk3'
          'libxss'
          'nss')
-depends=('electron17')
+depends=('electron19')
 makedepends=('coreutils'
              'git'
              'npm'
@@ -29,7 +29,7 @@ options=(!strip)
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/jitsi/jitsi-meet-electron/archive/v${pkgver}.tar.gz"
         'no_targets.patch'
         'jitsi-meet-desktop.desktop')
-sha256sums=('f94ee927d5261cb55c87da679c731d86183279c1e661090cd11c66a4f81941cd'
+sha256sums=('5f4e961cf73c01455f4e72621bb42bb3e614e5aed5237be3b64082df45fc1fd3'
             'ab22749aa1570cc5d6050711011f849ec3f4fa49080231f98957255fa5250e36'
             '36a30a15613d53b2a01626a5551315c6970889ce3c2688bce71e26c3333081a4')
 
@@ -55,7 +55,7 @@ prepare() {
   # target when calling electron-builder..
   patch -Np1 -i ${srcdir}/no_targets.patch
 
-  _electron_dist=/usr/lib/electron17
+  _electron_dist=/usr/lib/electron19
   _electron_ver=$(cat ${_electron_dist}/version)
   sed -r 's#("electron": ").*"#\1'${_electron_ver}'"#' -i package.json
   sed 's#git+ssh://git@github.com#git+https://github.com#g' -i package-lock.json
@@ -71,7 +71,7 @@ build() {
   _ensure_local_nvm
   nvm use ${_node_version}
 
-  _electron_dist=/usr/lib/electron17
+  _electron_dist=/usr/lib/electron19
   _electron_ver=$(cat ${_electron_dist}/version)
 
   # npm run build
@@ -95,7 +95,7 @@ package() {
   cat << EOF > "$pkgdir"/usr/bin/$pkgname
 #!/bin/sh
 
-NODE_ENV=production ELECTRON_IS_DEV=false exec electron17 /opt/$pkgname/app.asar "\$@"
+NODE_ENV=production ELECTRON_IS_DEV=false exec electron19 /opt/$pkgname/app.asar "\$@"
 EOF
 
   chmod +x "$pkgdir"/usr/bin/$pkgname
