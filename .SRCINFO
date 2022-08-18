@@ -1,7 +1,7 @@
 pkgbase = r-paper
 	pkgdesc = A Toolbox for Writing Pretty Papers and Reports
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=papeR
 	arch = any
 	license = GPL
