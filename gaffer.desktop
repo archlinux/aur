@@ -1,0 +1,12 @@
+[Desktop Entry]
+Categories=Graphics;3DGraphics;
+Comment=Gaffer is a free, open-source, node-based VFX application that enables look developers, lighters, and compositors to easily build, tweak, iterate, and render scenes.
+Encoding=UTF-8
+Exec=gaffer %f
+Icon=gafferhq
+Keywords=3d;cd;lighting;arnold;usd
+MimeType=application/x-gaffer
+Name=Gaffer
+StartupNotify=true
+Terminal=false
+Type=Application

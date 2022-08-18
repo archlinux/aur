@@ -1,8 +1,8 @@
 pkgbase = gaffer-bin
 	pkgdesc = Gaffer is a VFX application that enables look developers, lighters, and compositors to easily build, tweak, iterate, and render scenes.
 	pkgver = 1.0.2.1
-	pkgrel = 1
-	url = https://github.com/GafferHQ/gaffer
+	pkgrel = 2
+	url = https://www.gafferhq.org/
 	arch = any
 	license = BSD-3
 	depends = python

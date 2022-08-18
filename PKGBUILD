@@ -1,10 +1,10 @@
 # Maintainer: Adrià Cabello <adriacabellocrespo at gmail dot com>
 pkgname=gaffer-bin
 pkgver=1.0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Gaffer is a VFX application that enables look developers, lighters, and compositors to easily build, tweak, iterate, and render scenes."
 arch=('any')
-url="https://github.com/GafferHQ/gaffer"
+url="https://www.gafferhq.org/"
 license=('BSD-3')
 depends=('python')
 provides=('gaffer')
@@ -19,6 +19,18 @@ prepare() {
 
 package() {
   mkdir -p "${pkgdir}/opt"
+  mkdir -p "${pkgdir}/usr/bin"
+  mkdir -p "${pkgdir}/usr/share/icons"
+  mkdir -p "${pkgdir}/usr/share/mime/application"
+  mkdir -p "${pkgdir}/usr/share/applications"
 
   mv "$provides-$pkgver-linux-python3" "${pkgdir}/opt/gaffer"
+
+  cp "$srcdir/../gaffer.desktop" "${pkgdir}/usr/share/applications/"
+  cp "$srcdir/../x-gaffer.xml" "${pkgdir}/usr/share/mime/application/"
+
+  ln -s "/opt/gaffer/graphics/GafferLogoMini.png" "${pkgdir}/usr/share/icons/gafferhq.png"
+
+  ln -s "/opt/gaffer/bin/gaffer" "${pkgdir}/usr/bin/"
+
 }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mime-type xmlns="http://www.freedesktop.org/standards/shared-mime-info" type="application/x-gaffer">
+  <comment>GafferHQ</comment>
+  <icon name="/usr/share/icons/gafferhq.png"/>
+  <glob-deleteall/>
+  <glob pattern="*.GFR"/>
+  <glob pattern="*.gfr"/>
+</mime-type>
