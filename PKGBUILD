@@ -17,7 +17,7 @@ source=("git+https://github.com/26F-Studio/Techmino.git"
 sha256sums=('SKIP'
             'SKIP'
             '51b329331a978d592033feec9dbdc9acfcf5bd89ae1b9bfe33b6b00033ddf913'
-            'd0bfc4853617db15d7b5c4f0a5ca25bc6cda7cc0228efc96dd8c54063acab75a')
+            '8db2bf0e696c7a11883d735876f0ec81d9abd1596ead3db0eb041ee4a1941db2')
 
 prepare() {
 	cd ${srcdir}/Techmino
