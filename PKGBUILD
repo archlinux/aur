@@ -5,7 +5,7 @@
 _base=imread
 pkgname=python-${_base}
 pkgdesc="Read images to numpy arrays"
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 arch=(any)
 url="https://github.com/luispedro/${_base}"

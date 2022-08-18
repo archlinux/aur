@@ -1,6 +1,6 @@
 pkgbase = python-imread
 	pkgdesc = Read images to numpy arrays
-	pkgver = 0.7.3
+	pkgver = 0.7.4
 	pkgrel = 1
 	url = https://github.com/luispedro/imread
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-imread
 	makedepends = xcftools
 	makedepends = git
 	depends = python-numpy
-	source = git+https://github.com/luispedro/imread.git?signed#tag=v0.7.3
+	source = git+https://github.com/luispedro/imread.git?signed#tag=v0.7.4
 	validpgpkeys = 6FB8B07A620CC7A7FB5B2AB4110D6C98E760BEF2
 	sha512sums = SKIP
 
