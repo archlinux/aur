@@ -5,13 +5,18 @@
 pkgname=python-ngmix
 _pkg="${pkgname#python-}"
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Gaussian mixtures and image processing'
 arch=('any')
 url="https://github.com/esheldon/ngmix"
 license=('GPL')
 depends=('python-numpy' 'python-numba')
+optdepends=(
+	'python-galsim: for metacalibration operations'
+	'python-scikit-learn: for sampling multivariate PDFs'
+	'python-scipy: for image fitting using Levenberg-Marquardt fitter')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+# checkdepends=('python-pytest')
 changelog=CHANGES.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'setup.py.patch')
@@ -27,6 +32,12 @@ build() {
 	cd "$_pkg-$pkgver"
 	python -m build --wheel --no-isolation
 }
+
+## FIXME: optdepends required
+# check() {
+# 	cd "$_pkg-$pkgver"
+# 	pytest -x
+# }
 
 package_python-ngmix() {
 	cd "$_pkg-$pkgver"
