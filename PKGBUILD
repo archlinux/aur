@@ -17,15 +17,14 @@ _build_platforms="i386-pc ${_target_arch}-efi"
 [[ "${_grub_emu_build}" == "1" ]] && _build_platforms+=" ${_target_arch}-emu"
 
 pkgname="grub-git"
-pkgver=2.06.rc1.r0.ga53e530f8
+pkgver=2.06.r297.g0c6c1aff2
 pkgrel=1
 pkgdesc="GNU GRand Unified Bootloader (2)"
 arch=('x86_64' 'i686')
 url="https://www.gnu.org/software/grub/"
 license=('GPL3')
 depends=('device-mapper' 'freetype2' 'fuse2' 'gettext')
-makedepends=('autogen' 'bdf-unifont' 'git' 'help2man'
-             'python' 'rsync' 'texinfo' 'ttf-dejavu')
+makedepends=('autogen' 'bdf-unifont' 'git' 'help2man' 'python' 'rsync' 'texinfo' 'ttf-dejavu')
 optdepends=('dosfstools: For grub-mkrescue FAT FS and EFI support'
             'efibootmgr: For grub-install EFI support'
             'libisoburn: Provides xorriso for generating grub rescue iso using grub-mkrescue'
@@ -46,25 +45,27 @@ install="${pkgname}.install"
 source=("grub::git+https://git.savannah.gnu.org/git/grub.git"
         "grub-extras::git+https://git.savannah.gnu.org/git/grub-extras.git"
         "gnulib::git+https://git.savannah.gnu.org/git/gnulib.git"
-        'add-GRUB_COLOR_variables.patch'
-        'detect-archlinux-initramfs.patch'
-        'grub.default')
+        '0001-00_header-add-GRUB_COLOR_-variables.patch'
+        '0002-10_linux-detect-archlinux-initramfs.patch'
+        'grub.default'
+        'sbat.csv')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '5dee6628c48eef79812bb9e86ee772068d85e7fcebbd2b2b8d1e19d24eda9dab'
-            '580a81b00088773d554832b0d74c85bf16fec37728802973c45993bcb97cd7d5'
-            '791fadf182edf8d5bee4b45c008b08adce9689a9624971136527891a8f67d206')
+            '8488aec30a93e8fe66c23ef8c23aefda39c38389530e9e73ba3fbcc8315d244d'
+            'c17bf255a41103f6b71a1710afc7e9addaebc578bcf51a48845e227b2f651682'
+            '98b23d41e223bdc0a6e20bdcb3aa77e642f29b64081b1fd2f575314172fc89df')
  
 prepare() {
     cd grub
 
     # Patch to enable GRUB_COLOR_* variables in grub-mkconfig.
     # Based on http://lists.gnu.org/archive/html/grub-devel/2012-02/msg00021.html
-    patch -Np1 -i "$srcdir"/add-GRUB_COLOR_variables.patch
+    patch -Np1 -i "${srcdir}/0001-00_header-add-GRUB_COLOR_-variables.patch"
 
     # Patch grub-mkconfig to detect Arch Linux initramfs images.
-    patch -Np1 -i "$srcdir"/detect-archlinux-initramfs.patch
+    patch -Np1 -i "${srcdir}/0002-10_linux-detect-archlinux-initramfs.patch"
 
     # Fix DejaVuSans.ttf location so that grub-mkfont can create *.pf2 files for starfield theme.
     sed 's|/usr/share/fonts/dejavu|/usr/share/fonts/dejavu /usr/share/fonts/TTF|g' -i "configure.ac"
@@ -102,11 +103,8 @@ build() {
         mkdir "$srcdir"/grub/build_"$_arch"
         cd "$srcdir"/grub/build_"$_arch"
 
-        # * _FORTIFY_SOURCE requires compiling with optimization warnings
-        #   become errors due to a -Werror added during ./configure tests.
-        #   This results in an incorrect configuration and only by adding -O2
-        #   to CPPFLAGS does this problem seem to be worked around.
-        ../configure --with-platform="${_arch##*-}" \
+       ../configure PACKAGE_VERSION="${pkgver}-${pkgrel}" \
+                --with-platform="${_arch##*-}" \
                 --target="${_arch%%-*}"  \
                 --prefix="/usr" \
                 --sbindir="/usr/bin" \
@@ -119,8 +117,7 @@ build() {
                 --enable-mm-debug \
                 --enable-nls \
                 --disable-silent-rules \
-                --disable-werror \
-                CPPFLAGS="$CPPFLAGS -O2" 
+                --disable-werror
         make
     done
 }
@@ -135,6 +132,8 @@ package() {
 
     # Install /etc/default/grub (used by grub-mkconfig)
     install -D -m0644 "$srcdir"/grub.default "$pkgdir"/etc/default/grub
+
+   sed -e "s/%PKGVER%/${pkgver}-${pkgrel}/" < "${srcdir}/sbat.csv" > "${pkgdir}/usr/share/grub/sbat.csv"
 
     # Tidy up
     find "$pkgdir"/usr/lib/grub \( -name '*.module' -o \
