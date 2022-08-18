@@ -4,7 +4,7 @@
 pkgname=gnome-voice
 pkgver=0.0.9
 pkgrel=1
-pkgdesc="Record Audio with GNOME Voice"
+pkgdesc="Voice is Public Voice Communication Software for GNOME 43 more information on on https://wiki.gnome.org/Apps/Voice and http://www.gnomevoice.org/"
 arch=('x86_64')
 url="https://wiki.gnome.org/Apps/Radio"
 license=(GPL3)
