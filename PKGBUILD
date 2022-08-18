@@ -2,23 +2,23 @@
 
 _plug=soifunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=15.e9fc239
+pkgver=25.857d4b8
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://gitlab.com/shssoichiro/soifunc'
 license=('MIT')
 depends=('vapoursynth'
-  'vapoursynth-plugin-vsutil'
-  'vapoursynth-plugin-muvsfunc'
-  'vapoursynth-plugin-mvsfunc'
-  'vapoursynth-plugin-kagefunc'
-  'vapoursynth-plugin-debandshit'
-  'vapoursynth-plugin-neo_f3kdb'
-  'vapoursynth-plugin-nnedi3_resample'
-  'vapoursynth-plugin-znedi3'
+  'vapoursynth-plugin-vsutil-git'
+  'vapoursynth-plugin-muvsfunc-git'
+  'vapoursynth-plugin-mvsfunc-git'
+  'vapoursynth-plugin-kagefunc-git'
+  'vapoursynth-plugin-debandshit-git'
+  'vapoursynth-plugin-neo_f3kdb-git'
+  'vapoursynth-plugin-nnedi3_resample-git'
+  'vapoursynth-plugin-znedi3-git'
 )
-optdepends=('vapoursynth-plugin-bm3dcuda: Fast BM3D cuda/cuda_rtc/cpu support')
+optdepends=('vapoursynth-plugin-bm3dcuda-git: Fast BM3D cuda/cuda_rtc/cpu support')
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
