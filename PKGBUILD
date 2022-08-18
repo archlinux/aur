@@ -12,10 +12,11 @@ pkgdesc='The Open Source build of Visual Studio Code (vscode) editor - with tran
 #   - dubnium: 10
 #   - erbium: 12
 #   - fermium: 14
+#   - gallium: 16
 # Important: Remember to check https://github.com/microsoft/vscode/blob/master/.yarnrc (choose correct tag) for target electron version
-_electron=electron17
-pkgver=1.67.2
-pkgrel=2
+_electron=electron18
+pkgver=1.70.2
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/microsoft/vscode'
 license=('MIT')
@@ -159,4 +160,3 @@ package() {
   install -Dm 644 VSCode-linux-$_vscode_arch/resources/app/LICENSE.txt "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
   install -Dm 644 VSCode-linux-$_vscode_arch/resources/app/ThirdPartyNotices.txt "$pkgdir"/usr/share/licenses/$_pkgname/ThirdPartyNotices.txt
 }
-

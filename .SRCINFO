@@ -1,7 +1,7 @@
 pkgbase = code-transparent
 	pkgdesc = The Open Source build of Visual Studio Code (vscode) editor - with transparency enabled.
-	pkgver = 1.67.2
-	pkgrel = 2
+	pkgver = 1.70.2
+	pkgrel = 1
 	url = https://github.com/microsoft/vscode
 	install = code-transparent.install
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = code-transparent
 	makedepends = python
 	makedepends = yarn
 	makedepends = nodejs-lts-gallium
-	depends = electron17
+	depends = electron18
 	depends = libsecret
 	depends = libx11
 	depends = libxkbfile
@@ -23,7 +23,7 @@ pkgbase = code-transparent
 	provides = code
 	provides = vscode
 	conflicts = code
-	source = code::git+https://github.com/microsoft/vscode.git#tag=1.67.2
+	source = code::git+https://github.com/microsoft/vscode.git#tag=1.70.2
 	source = code.js
 	source = code.sh
 	source = product_json.diff
