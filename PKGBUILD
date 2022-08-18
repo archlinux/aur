@@ -1,12 +1,12 @@
 # Maintainer: Jakob Kreuze <jakob@memeware.net>
 pkgname=pince-git
-pkgver=r642.78d9020
+pkgver=r643.95dbae2
 pkgrel=1
 pkgdesc="A Linux reverse engineering tool inspired by Cheat Engine."
 arch=('any')
 url="https://github.com/korcankaraokcu/PINCE"
 license=('GPL3')
-depends=('python' 'python-pexpect' 'python-psutil' 'python-pyqt5' 'python-distorm' 'python-pygdbmi' 'python-gobject' 'gdb' 'sudo')
+depends=('python' 'python-pexpect' 'python-psutil' 'python-pyqt5' 'python-distorm' 'python-pygdbmi' 'python-gobject' 'python-keyboard' 'gdb' 'sudo')
 makedepends=('git' 'intltool')
 source=("$pkgname::git+https://github.com/korcankaraokcu/PINCE.git")
 md5sums=('SKIP')
