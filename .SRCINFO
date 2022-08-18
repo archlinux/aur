@@ -1,6 +1,6 @@
 pkgbase = paxchange
 	pkgdesc = Simple dart script to passively synchronize installed pacman packages between systems.
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/Skycoder42/paxchange
@@ -16,7 +16,7 @@ pkgbase = paxchange
 	depends = pacman
 	options = !strip
 	backup = etc/paxchange.json
-	source = paxchange-1.0.1.tar.gz::https://github.com/Skycoder42/paxchange/archive/refs/tags/v1.0.1.tar.gz
-	b2sums = 6132b0088e48584ff757650ec66205b533b4c528d8c36deb8f73f71ce4bfa794f8851c3f6d63f09074ab8746a8f54d59fcda40f1c9772ed1a3cf9f717d3fb8da
+	source = paxchange-1.0.2.tar.gz::https://github.com/Skycoder42/paxchange/archive/refs/tags/v1.0.2.tar.gz
+	b2sums = e7b338efea5db22111db6e84bfb8ee491927681f48edc7abce197df2c4d43ed73c8c089a9115734aad2b226fe2e8dce567fbccf1e4649f717ca92288775da9ab
 
 pkgname = paxchange
