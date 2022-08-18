@@ -1,0 +1,21 @@
+--- a/h5pyd/_hl/h5type_test.py	2021-11-01 02:08:16.000000000 +0800
++++ b/h5pyd/_hl/h5type_test.py	2022-08-18 14:45:30.721320418 +0800
+@@ -12,10 +12,14 @@
+ import unittest
+ import logging
+ import numpy as np
+-from h5type import special_dtype
+-from h5type import check_dtype
+-from base import Reference
+-import h5type
++try: from h5type import special_dtype
++except Exception: from .h5type import special_dtype
++try: from h5type import check_dtype
++except Exception: from .h5type import check_dtype
++try: from base import Reference
++except Exception: from .base import Reference
++try: import h5type
++except Exception: from . import h5type
+ 
+ 
+ class H5TypeTest(unittest.TestCase):

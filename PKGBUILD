@@ -3,7 +3,7 @@
 pkgbase=python-h5pyd
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.10.1
+pkgver=0.10.3
 pkgrel=1
 pkgdesc="h5py distributed - Python client library for HDF Rest API "
 arch=('any')
@@ -15,15 +15,20 @@ makedepends=('python-setuptools'
 #            'python-build'
 #            'python-installer'
              'python-sphinx-furo')
-#checkdepends=('python-pytest' 'python-numpy' 'python-requests-unixsocket' 'python-adal')
+checkdepends=('python-pytest'
+              'python-numpy'
+              'python-requests-unixsocket'
+              'python-adal')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/h5py/h5py/master/examples/bytesio.py"
         "https://raw.githubusercontent.com/h5py/h5py/master/examples/swmr_inotify_example.py"
-        "https://raw.githubusercontent.com/h5py/h5py/master/examples/swmr_multiprocess.py")
-md5sums=('e4df4642e23b42d8ad42d51501575fab'
+        "https://raw.githubusercontent.com/h5py/h5py/master/examples/swmr_multiprocess.py"
+        'fix-h5type-test.patch')
+md5sums=('f1d84241e73d026ccc4ae9681272c554'
          'SKIP'
          'SKIP'
-         'SKIP')
+         'SKIP'
+         'fce3d7b92909be61507392ab33bfce0a')
 
 #get_pyver() {
 #    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
@@ -33,6 +38,8 @@ prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     ln -rs ${srcdir}/*.py examples
+    sed -i -e "/GH/s/GH/GH\%s/" -e "/PR/s/PR/PR\%s/" docs/conf.py
+    patch -Np1 -i "${srcdir}/fix-h5type-test.patch"
 }
 
 build() {
@@ -48,12 +55,12 @@ build() {
 #   PYTHONPATH="../build/lib" make html
 }
 
-#check() {
-#    cd ${srcdir}/${_pyname}-${pkgver}
-#
-#    PYTHONPATH="build/lib" pytest ${PWD}/test \
-#        --ignore=build/lib/h5pyd/_hl/h5type_test.py #|| warning "Tests failed"
-#}
+check() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    PYTHONPATH="build/lib" pytest || warning "Tests failed" #${PWD}/test \
+#       --ignore=build/lib/h5pyd/_hl/h5type_test.py #|| warning "Tests failed"
+}
 
 package_python-h5pyd() {
     depends=('python-numpy>=1.17.3'
