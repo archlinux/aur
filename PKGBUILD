@@ -4,13 +4,13 @@ pkgname=mongodb44
 _pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
 pkgver=4.4.15
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-performance, open source, schema-free document-oriented database (last version to support non-avx CPUs)"
 arch=("x86_64" "aarch64")
 url="https://www.mongodb.com/"
 license=("Apache" "custom:SSPL1")
 depends=('libstemmer' 'snappy' 'boost-libs' 'pcre' 'yaml-cpp' 'curl')
-makedepends=('scons' 'python-psutil' 'python-setuptools' 'python-regex' 'python-cheetah3' 'python-yaml' 'python-requests' 'boost')
+makedepends=('python-psutil' 'python-setuptools' 'python-regex' 'python-cheetah3' 'python-yaml' 'python-requests' 'boost')
 optdepends=('mongodb-tools: mongoimport, mongodump, mongotop, etc'
             'mongosh-bin: interactive shell to connect with MongoDB')
 backup=("etc/mongodb.conf")
@@ -24,16 +24,18 @@ source=(https://fastdl.mongodb.org/src/mongodb-src-r$pkgver.tar.gz
         mongodb-4.4.1-boost.patch
         mongodb-4.4.1-gcc11.patch
         mongodb-4.4.10-boost-1.79.patch
-        mongodb-4.4.10-no-force-lld.patch)
+        mongodb-4.4.10-no-force-lld.patch
+        mongodb-4.4.15-adjust-cache-alignment-assumptions.patch)
 sha256sums=('fb7ef14e2539df0addc1e350ad2a0fdb7dd078a60d49ab15d9932f193ea1da33'
             '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
             'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39'
-            '631513598bf0e00b4f133d3f253ea76ae2958317fc2acc2d420726f1b76f09dd'
+            '184b67c3a9fa894bd4eb8a79fd8bb580904b96c361cd30fd55fe4b1f2e46f507'
             '50c7d3968ee37bf25694f0fe8a92bb097c52c26361c78da620caa2ffa8cf4375'
             'd3bc20d0cb4b8662b5326b8a3f2215281df5aed57550fa13de465e05e2044c25'
             'f7e6d87b68f7703cdbd45e255962ed5a4f6d583aa76d6fcf4fdc7005211fbf06'
             '4202e039944fde80daa1bd3a5f332c522d8db96b4c3cf7c764355c5fc9089137'
-            '76e61d1d4f5b4e7c8cd760b1fc0dc86978a8e180d184cdfc7f61fba7d5543a95')
+            '76e61d1d4f5b4e7c8cd760b1fc0dc86978a8e180d184cdfc7f61fba7d5543a95'
+            'e748b669bca526a08c06e5d8ec2bd371b938e57f83a2339d62e38a4527810e47')
 
 _scons_args=(
   --use-system-pcre # wait for pcre 8.44+ https://jira.mongodb.org/browse/SERVER-40836 and https://jira.mongodb.org/browse/SERVER-42990
@@ -71,8 +73,9 @@ prepare() {
   # See: https://jira.mongodb.org/browse/SERVER-38086
   sed -i 's/\[Service]/[Service]\nTimeoutStartSec=infinity/' rpm/mongod.service
 
-  if [[ "$CARCH" == "aarch64" ]]; then
+  if [[ $CARCH == "aarch64" ]]; then
     _scons_args+=(--use-hardware-crc32=off)
+    patch -Np1 -i ../mongodb-4.4.15-adjust-cache-alignment-assumptions.patch
   fi
 
   if check_option debug y; then
@@ -84,17 +87,19 @@ prepare() {
   fi
 
   # apply gentoo patches
-  for file in $srcdir/*.patch; do
-    echo "Applying patch $file..."
-    patch -Np1 -i $file
-  done
+  patch -Np1 -i ../mongodb-4.4.1-fix-scons.patch
+  patch -Np1 -i ../mongodb-4.4.8-no-compass.patch
+  patch -Np1 -i ../mongodb-4.4.1-boost.patch
+  patch -Np1 -i ../mongodb-4.4.1-gcc11.patch
+  patch -Np1 -i ../mongodb-4.4.10-boost-1.79.patch
+  patch -Np1 -i ../mongodb-4.4.10-no-force-lld.patch
 }
 
 build() {
   cd "${srcdir}/${_pkgname}-src-r${pkgver}"
 
   export SCONSFLAGS="$MAKEFLAGS"
-  scons install-devcore "${_scons_args[@]}"
+  ./buildscripts/scons.py install-devcore "${_scons_args[@]}"
 }
 
 package() {

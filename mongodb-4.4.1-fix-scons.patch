@@ -27,7 +27,7 @@ index 89c044ab..a6d02072 100644
 -    #make scons colorgcc friendly
 -    for key in ('HOME', 'TERM'):
 +    #make scons colorgcc, distcc, ccache friendly
-+    for key in ('HOME', 'PATH', 'TERM'):
++    for key in ('HOME', 'PATH', 'TERM', 'DISTCC_HOSTS'):
          try:
              env['ENV'][key] = os.environ[key]
          except KeyError:
