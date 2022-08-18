@@ -8,10 +8,10 @@ pkgbase = pcbmodelgen-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = gcc
-	makedepends = tinyxml2
 	makedepends = tclap
 	depends = openems
 	depends = appcsxcad
+	depends = tinyxml2
 	provides = pcbmodelgen
 	source = git+https://github.com/jcyrax/pcbmodelgen.git#branch=master
 	sha512sums = SKIP

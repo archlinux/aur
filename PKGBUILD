@@ -10,8 +10,8 @@ _last_tagged_version="0.2.0"
 arch=('x86_64')
 url='https://github.com/jcyrax/pcbmodelgen'
 license=('GPL3')
-depends=('openems' 'appcsxcad')
-makedepends=('git' 'cmake' 'gcc' 'tinyxml2' 'tclap' )
+depends=('openems' 'appcsxcad' 'tinyxml2')
+makedepends=('git' 'cmake' 'gcc' 'tclap' )
 source=(git+"${url}.git#branch=master")
 sha512sums=('SKIP')
 
