@@ -5,7 +5,7 @@ _pkgname=vmware-host-modules
 pkgver=16.2.4.k5.18.r3.gc06f22f
 _pkgver=$(echo $pkgver | cut -c 1-6)
 url='https://github.com/mkubecek/vmware-host-modules'
-pkgrel=5
+pkgrel=6
 pkgdesc='Patches needed to build VMware Player host modules against recent kernels'
 arch=('x86_64' 'aarch64' 'i386')
 license=('GPL2')
@@ -17,8 +17,8 @@ source=("git+https://github.com/mkubecek/${_pkgname}.git#branch=player-$_pkgver"
         dkms-vmmon.conf
         dkms-vmnet.conf)
 sha256sums=('SKIP'
-            '82e8cddffbc272e854867c6c82bae509c9687b100a5aa770d6d528eb441759ee'
-            'aa5d53732ea414d51648e9275dd3f8ffd48fd742a96c634df9ec545bdc8904db')
+            'ed52e41b8f2b525915d47c350f4e6dec064b01d6f894e32b513a01e0f1162c4d'
+            'b218e4ec45f5c2f960333d209442a0a98fa525ee034947c0be724f2f77d0a4a9')
 pkgver(){
   cd ${srcdir}/${_pkgname}
   git describe --long | sed 's/p//;s/\([^-]*-g\)/r\1/;s/-/./g'
