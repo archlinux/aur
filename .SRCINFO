@@ -1,14 +1,14 @@
 pkgbase = qddcswitch
 	pkgdesc = A Simple Qt frontend for switching display inputs with ddcutil.
-	pkgver = 1.1.0.1
-	pkgrel = 2
+	pkgver = 1.1.0.2
+	pkgrel = 1
 	url = https://codeberg.org/Okxa/qddcswitch
 	arch = x86_64
 	license = GPL3
 	makedepends = qt5-tools
 	depends = qt5-base
 	depends = ddcutil
-	source = https://codeberg.org/Okxa/qddcswitch/archive/qddcswitch-1.1.0.1.tar.gz
-	md5sums = bd407467f829b7529eb059d316eac6cf
+	source = https://codeberg.org/Okxa/qddcswitch/archive/qddcswitch-1.1.0.2.tar.gz
+	md5sums = f3f3cfc0aac836efcfd2106a1c6f939b
 
 pkgname = qddcswitch
