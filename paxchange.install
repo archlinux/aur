@@ -1,0 +1,8 @@
+post_install() {
+  systemd-sysusers
+
+  mkdir -p /var/lib/paxchange
+  chown :paxchange /var/lib/paxchange
+  chmod g+ws /var/lib/paxchange
+  setfacl -d -m g::rwx /var/lib/paxchange
+}
