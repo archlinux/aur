@@ -1,7 +1,7 @@
 # Maintainer: Martin Reboredo <yakoyoku@gmail.com>
 
 pkgname=godot-headers
-pkgver=3.4.4
+pkgver=3.5
 pkgrel=1
 pkgdesc='Headers for the Godot API supplied by the GDNative module'
 arch=('any')
@@ -11,7 +11,7 @@ source=(
   https://github.com/godotengine/$pkgname/archive/refs/tags/godot-$pkgver-stable.tar.gz
   godot.pc.in
 )
-sha256sums=('bb0eac00a4d5b800a4ca2555d11b4a35981bdb730b630e9bd31a0649fa1d6fd7'
+sha256sums=('6e03cf439025d8c64861d574f70cec0688c53dd2821c2f210458e88bdf326702'
             'f8e4f4cc7e5a221d6364ad5b520cafebdafb5de4f139d200f028b8cdc229647a')
 
 prepare() {
