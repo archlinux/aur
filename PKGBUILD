@@ -2,7 +2,7 @@
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 _base=rasterio
 pkgname=python-${_base}
-pkgver=1.3.0.post1
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Rasterio reads and writes geospatial raster datasets"
 url="https://github.com/${_base}/${_base}"
@@ -12,7 +12,7 @@ depends=(gdal python-affine python-attrs python-certifi python-cligj python-snug
 makedepends=(cython)
 # checkdepends=(python-pytest python-hypothesis python-boto3 python-shapely)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('46b0a1f057eb72ab15335ec491b9cf34359ee5357fa8db11c2da10f6d5d8c408d1d454f0b3011c8d3136ccd361723718c8a2ac9c884f3826d17eebbb673d4838')
+sha512sums=('1941744fdbad6e8c5dc7404906dea7534bd21347693a9a379986546eb41173025cf8d67caa0a98b2fe6ed6dd731a07a9f126114f2e4c6e2b3bb15828ca105c08')
 
 build() {
   cd ${_base}-${pkgver}
