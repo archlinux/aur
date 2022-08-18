@@ -1,8 +1,8 @@
 pkgbase = mstickereditor
-	pkgdesc = import sticker packs from telegram, to be used at the Maunium sticker picker for Matrix
-	pkgver = 0.2.0
+	pkgdesc = import sticker packs from telegram, to be used at the Maunium sticker picker ...
+	pkgver = 0.3.0
 	pkgrel = 1
-	url = https://github.com/LuckyTurtleDev/mstickereditor
+	url = https://crates.io/crates/mstickereditor
 	arch = aarch64
 	arch = i686
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = mstickereditor
 	makedepends = clang
 	makedepends = lld
 	depends = gcc-libs
-	depends = rlottie
 	depends = libwebp
-	source = mstickereditor-0.2.0.tar.gz::https://crates.io/api/v1/crates/mstickereditor/0.2.0/download
-	sha512sums = 6b057c617a6f9ae45fe60d737b38f085c18c38efa361af44b1f88799b00167b9d2d0cecf182e768dea463c3e848860b4f94a69ab58fd1f73be5dc20a132c3054
+	depends = rlottie
+	source = mstickereditor-0.3.0.tar.gz::https://crates.io/api/v1/crates/mstickereditor/0.3.0/download
+	sha512sums = 5d20694fd0c73408fd88b2cfc3dad2e332d92cdb0c93e95e82413ddb04a46e8e270cbdc1c6b1cdbda8ebfc05d9e23b68ea216fb1f244edd98ed378c5cfb905af
 
 pkgname = mstickereditor
