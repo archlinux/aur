@@ -2,7 +2,7 @@
 
 pkgname=buckets-bin
 _pkgname=Buckets
-pkgver=0.66.5
+pkgver=0.67.1
 pkgrel=1
 pkgdesc="Private budgeting with the envelope budgeting method"
 arch=('x86_64')
