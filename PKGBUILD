@@ -1,7 +1,7 @@
 # Maintainer: elParaguayo <elparaguayocode@gmail.com>
 pkgname=qtile-extras-git
 _pkgname=qtile-extras
-pkgver=r91.5466a62
+pkgver=r142.e522e59
 pkgrel=1
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -10,6 +10,13 @@ url="https://github.com/elparaguayo/qtile-extras.git"
 arch=("any")
 license=("MIT")
 depends=("python" "qtile")
+makedepends=(
+  "git"
+  "python-setuptools"
+  "python-setuptools-scm"
+  "python-pip"
+  "python-wheel"
+)
 source=("git+https://github.com/elparaguayo/$_pkgname.git")
 md5sums=("SKIP")
 
