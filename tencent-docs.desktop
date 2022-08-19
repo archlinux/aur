@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=腾讯文档
+Exec="/opt/tencent/tencent-docs/tdappdesktop" %U
+Terminal=false
+Type=Application
+Icon=tdappdesktop
+StartupWMClass=腾讯文档
+Comment=腾讯文档
+Categories=Utility;
