@@ -1,4 +1,4 @@
-*
-!.gitignore
-!.SRCINFO
-!PKGBUILD
+/pkg
+/src
+/git-remote-hg
+/*.tar.*
