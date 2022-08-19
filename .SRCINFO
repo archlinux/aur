@@ -1,36 +1,36 @@
 pkgbase = linux-hardened-versioned-bin
 	pkgdesc = The Security-Hardened Linux kernel and modules | repackaged with a unique package name for each version
-	pkgver = 5.18.17.hardened1
+	pkgver = 5.18.18.hardened1
 	pkgrel = 1
 	url = https://github.com/anthraxx/linux-hardened
 	arch = x86_64
 	license = GPL2
-	noextract = linux-hardened-5.18.17.hardened1-1-x86_64.pkg.tar.zst
-	noextract = linux-hardened-headers-5.18.17.hardened1-1-x86_64.pkg.tar.zst
-	noextract = linux-hardened-docs-5.18.17.hardened1-1-x86_64.pkg.tar.zst
+	noextract = linux-hardened-5.18.18.hardened1-1-x86_64.pkg.tar.zst
+	noextract = linux-hardened-headers-5.18.18.hardened1-1-x86_64.pkg.tar.zst
+	noextract = linux-hardened-docs-5.18.18.hardened1-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://syd.mirror.rackspace.com/archlinux/extra/os/x86_64/linux-hardened-5.18.17.hardened1-1-x86_64.pkg.tar.zst
-	source = https://syd.mirror.rackspace.com/archlinux/extra/os/x86_64/linux-hardened-headers-5.18.17.hardened1-1-x86_64.pkg.tar.zst
-	source = https://syd.mirror.rackspace.com/archlinux/extra/os/x86_64/linux-hardened-docs-5.18.17.hardened1-1-x86_64.pkg.tar.zst
-	sha256sums = 9483321ce4c3a7b535e4d7e75c3c7a4d34e90fc2f71b7cbee036e68937c66d00
-	sha256sums = 53bfa24754e1b731171ca13ecb810f6ccc33cd76e3d9cc746c341d289fd358a5
-	sha256sums = d6a641c26e7a10e520ca27f5e594b734f3a419b59151fdf4a38fa69da486a273
+	source = https://syd.mirror.rackspace.com/archlinux/extra/os/x86_64/linux-hardened-5.18.18.hardened1-1-x86_64.pkg.tar.zst
+	source = https://syd.mirror.rackspace.com/archlinux/extra/os/x86_64/linux-hardened-headers-5.18.18.hardened1-1-x86_64.pkg.tar.zst
+	source = https://syd.mirror.rackspace.com/archlinux/extra/os/x86_64/linux-hardened-docs-5.18.18.hardened1-1-x86_64.pkg.tar.zst
+	sha256sums = 7171fa257dfa8e8f8dcc7c2455a65a17f45a287aa0edc39a11952c8d7f5074ec
+	sha256sums = a3368b503be75e1e4c957a7a172454a7f4aef58baa66287a6167c0936ee73389
+	sha256sums = 7599e9f5ddcafca14bc0b68269730fb2498211bea90bd3d8e7a38bc6f72f3188
 
 pkgname = linux-hardened-versioned-bin
-	pkgdesc = Metapackage depending on linux5.18.17.hardened1-1-hardened-bin
-	depends = linux5.18.17.hardened1-1-hardened-bin
+	pkgdesc = Metapackage depending on linux5.18.18.hardened1-1-hardened-bin
+	depends = linux5.18.18.hardened1-1-hardened-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-hardened-versioned-headers-bin
-	pkgdesc = Metapackage depending on linux5.18.17.hardened1-1-hardened-headers-bin
-	depends = linux5.18.17.hardened1-1-hardened-headers-bin
+	pkgdesc = Metapackage depending on linux5.18.18.hardened1-1-hardened-headers-bin
+	depends = linux5.18.18.hardened1-1-hardened-headers-bin
 
 pkgname = linux-hardened-versioned-docs-bin
-	pkgdesc = Metapackage depending on linux5.18.17.hardened1-1-hardened-docs-bin
-	depends = linux5.18.17.hardened1-1-hardened-docs-bin
+	pkgdesc = Metapackage depending on linux5.18.18.hardened1-1-hardened-docs-bin
+	depends = linux5.18.18.hardened1-1-hardened-docs-bin
 
-pkgname = linux5.18.17.hardened1-1-hardened-bin
-	pkgdesc = The Security-Hardened Linux kernel and modules, version 5.18.17-hardened1-1-hardened
+pkgname = linux5.18.18.hardened1-1-hardened-bin
+	pkgdesc = The Security-Hardened Linux kernel and modules, version 5.18.18-hardened1-1-hardened
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
@@ -41,11 +41,11 @@ pkgname = linux5.18.17.hardened1-1-hardened-bin
 	provides = WIREGUARD-MODULE
 	conflicts = linux-hardened
 
-pkgname = linux5.18.17.hardened1-1-hardened-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Security-Hardened Linux kernel 5.18.17-hardened1-1-hardened
+pkgname = linux5.18.18.hardened1-1-hardened-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Security-Hardened Linux kernel 5.18.18-hardened1-1-hardened
 	depends = pahole
 	conflicts = linux-hardened-headers
 
-pkgname = linux5.18.17.hardened1-1-hardened-docs-bin
-	pkgdesc = Documentation for the Security-Hardened Linux kernel 5.18.17-hardened1-1-hardened
+pkgname = linux5.18.18.hardened1-1-hardened-docs-bin
+	pkgdesc = Documentation for the Security-Hardened Linux kernel 5.18.18-hardened1-1-hardened
 	conflicts = linux-hardened-docs
