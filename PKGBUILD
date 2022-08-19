@@ -1,7 +1,7 @@
 # Maintainer: Rene Hickersberger <r@renehsz.com>
 # Contributor: Robert Hamblin <hamblingreen@hotmail.com>
 pkgname=mepo
-pkgver=0.4.2
+pkgver=0.5
 pkgrel=1
 pkgdesc="Fast, simple, and hackable OSM map viewer for Linux"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
@@ -12,12 +12,8 @@ makedepends=('zig>=0.9')
 checkdepends=('zig>=0.9')
 changelog=
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('d136c38aeab869713df4a79d9bde40674a828fdcfa0cb2af92a30d7f11f0c8ef0ea7cc7fd162d329dea4a279d71363afcdd53913f8dbeb8cc33be08cc86257ae')
-sha256sums=('2f929ce248321c70a9f5504f10991d6da08f110501a7f1a257bc7ffcd286652d')
-
-prepare() {
-    patch --directory="$pkgname-$pkgver" --forward --strip=1 --input="$startdir/remove_zig_version_check.patch"
-}
+sha512sums=('76aa81e4644e5727b1ab54379f92377243e237fa9c17b302978b86c332377995a1059ad608fe8974c6c426267352b450fc8b2f9265973ef1b99e44e79375cc94')
+sha256sums=('9107c0783f9e9daad983060cf16013e0ee919524d2b323fa8a5dc81d88754f1c')
 
 build() {
   cd "$pkgname-$pkgver"
