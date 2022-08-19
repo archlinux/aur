@@ -6,17 +6,15 @@ pkgbase = graphqlmap-git
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python
-	depends = python-setuptools
 	depends = python-argparse
 	depends = python-requests
+	depends = python-rl
 	provides = graphqlmap
 	conflicts = graphqlmap
 	options = !emptydirs
-	source = git://github.com/swisskyrepo/graphqlmap.git
-	source = setup.py
-	sha512sums = SKIP
-	sha512sums = f8298ccecb9010627a80e12ae736ba2d7b4526bd668585cbc8a3cb1245866d1ea1d762e69511ce55c04824138f4c9bcaddf7c96149efd24f191ca06147633346
+	source = https://github.com/swisskyrepo/graphqlmap.git
+	sha512sums = 28a6def2655bc71b0914231d779d2efa140a6fd9c5b1c2de1361cd4669cff251bd6052ac1d3bf988f9f554f44c8e71176b3099327e922cee5794ac82de3cb317
 
 pkgname = graphqlmap-git
-

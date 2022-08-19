@@ -10,22 +10,21 @@ url="https://github.com/swisskyrepo/GraphQLmap"
 license=('MIT')
 depends=(
   'python'
-  'python-setuptools'
   'python-argparse'
   'python-requests'
+  'python-rl'
 )
 makedepends=(
   'git'
+  'python-setuptools'
 )
 provides=("$_pyname")
 conflicts=(graphqlmap)
 options=(!emptydirs)
 source=(
-	git://github.com/swisskyrepo/$_pyname.git
-  setup.py
+	https://github.com/swisskyrepo/$_pyname.git
 )
-sha512sums=('SKIP'
-            'f8298ccecb9010627a80e12ae736ba2d7b4526bd668585cbc8a3cb1245866d1ea1d762e69511ce55c04824138f4c9bcaddf7c96149efd24f191ca06147633346')
+sha512sums=('28a6def2655bc71b0914231d779d2efa140a6fd9c5b1c2de1361cd4669cff251bd6052ac1d3bf988f9f554f44c8e71176b3099327e922cee5794ac82de3cb317')
 
 pkgver() {
   cd "$_pyname"
@@ -34,14 +33,6 @@ pkgver() {
 
 package() {
   cd "$_pyname"
-  sed -i "s#from attacks#from graphqlmap.attacks#" graphqlmap.py
-  sed -i "s#from utils#from graphqlmap.utils#" attacks.py
-  mkdir bin
-  mv graphqlmap.py bin/graphqlmap
-  mkdir graphqlmap
-  mv *.py graphqlmap/
-  touch graphqlmap/__init__.py
-  mv ../setup.py .
   python setup.py install --root="$pkgdir/" --optimize=1
   install -Dm 644 LICENSE $pkgdir/usr/share/licenses/${pkgname}/LICENSE
 }
