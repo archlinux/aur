@@ -9,6 +9,7 @@ pkgbase = handygccs-git
 	depends = python
 	depends = python-evdev
 	depends = dbus-python
+	depends = python-bmi160-i2c
 	source = HandyGCCS::git+https://github.com/ShadowBlip/HandyGCCS.git#tag=f3f7b7944e06a1efa13c9ef67a2b241d165c1bea
 	sha256sums = SKIP
 
