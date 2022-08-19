@@ -2,7 +2,7 @@
 
 pkgname=tnl-git
 _pkgname=tnl
-pkgver=r6408.3b9e14d95
+pkgver=r6458.78d6c24ce
 pkgrel=1
 pkgdesc="An efficient C++ library providing parallel algorithms and data structures for high-performance computing on GPUs, multicore CPUs and distributed clusters"
 arch=('x86_64')
@@ -62,10 +62,10 @@ build() {
 
   # build the documentation itself
   (
-    # TODO: doxygen expects the output snippets in the source tree (cmake puts it there, but it violates the separate builddir)
     cd "$_pkgname/Documentation"
     export PROJECT_NUMBER="version $pkgver"
     export OUTPUT_DIRECTORY="$srcdir/build-doc"
+    export OUTPUT_SNIPPETS_PATH="$srcdir/build-doc/output_snippets"
     doxygen
   )
 }
