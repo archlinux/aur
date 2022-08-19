@@ -1,7 +1,7 @@
 # Maintainer:ston<2424284164@qq.com>
 pkgname=gtk-qq-git
-pkgver=0.2.0.r137.g0be2283
-pkgrel=2
+pkgver=0.2.0.r157.g8248cb3
+pkgrel=1
 pkgdesc="Unofficial Linux QQ client, based on GTK4."
 arch=('any')
 url="https://github.com/lomirus/gtk-qq"
@@ -24,14 +24,23 @@ pkgver() {
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
+prepare() {
 	cd gtk-qq
-	#force to use nightly
-	rustup install nightly
-	rustup override set nightly
+	# check rustc-nightly
+	set -e;
+	rustup run nightly rustc --version|| EXIT_CODE=$? && true ; 
+	if [ '$EXIT_CODE' == '1' ];then
+		rustup install nightly
+	fi
 	# setup
 	meson setup builddir
 	meson compile -C builddir
+}
+
+build() {
+	cd gtk-qq
+	#force to use nightly
+	rustup override set nightly
 	cargo build --release
 }
 
@@ -51,5 +60,4 @@ package() {
 	install -Dm644 ${srcdir}/gtk-qq.png ${pkgdir}/usr/share/icons/hicolor/256x256/apps/gtk-qq.png
 	# desktop
 	install -Dm644 ${srcdir}/gtk-qq.desktop ${pkgdir}/usr/share/applications/gtk-qq.desktop
-
 }
