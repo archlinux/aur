@@ -1,8 +1,8 @@
-# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
+# Maintainer: romanra <romanra (at) posteo (dot) net>
 
 pkgname=quickbms
-pkgver=0.10.1
-pkgrel=2
+pkgver=0.11.0
+pkgrel=1
 pkgdesc="Files extractor and reimporter, archives and file formats parser, advanced tool for reversers and power users and much more."
 url="http://aluigi.altervista.org/quickbms.htm"
 arch=('x86_64' 'i686')
@@ -12,12 +12,12 @@ depends_x86_64=('lib32-lzo' 'lib32-bzip2' 'lib32-zlib' 'lib32-openssl' 'lib32-gc
 makedepends_x86_64=('gcc-multilib')
 source=("https://aluigi.altervista.org/papers/quickbms-src-$pkgver.zip"
         "fix-compile.patch")
-sha512sums=('f207859ca8f81ce115d2700be0932324b1ad51de7d0571d86fab2d34cc0b3a73c71270edfeb6f16f31962750e18a2ee8906b4a16c242be30db1abd336dd7d3e1'
-            'ce584f7f390694edee87110e9d88f175c9b96a7fa00c81afaac4ceb6e9926dbd751bc2e0b94b840ca89d2cd0d86300c75de769c52487ba38a4efc73b4ddebcad')
+sha512sums=('edc50882650449b64afa5900f861766ce1c3d6a11eceffdc52f3cae0158df7d13ff33af0c9ced21fda01f575930b331bf003c314c7c37b4786ca93cbacb851df'
+            '4b3086cff280700f88ddc9d9d48037e76358a6995d6862014a602d54fd19a759095294ea0ea679f68b63d5cef1ae14d9c86bd1fe739c7a4c8276a322dbdf6549')
 
 prepare() {
   cd src
-  patch -Np1 < ../fix-compile.patch
+  patch -Np2 < ../fix-compile.patch
 }
 
 build() {
