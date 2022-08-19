@@ -1,16 +1,17 @@
 pkgbase = python-fenics-dolfinx
 	pkgdesc = Next generation FEniCS problem solving environment (python interface)
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/FEniCS/dolfinx
-	arch = any
+	arch = x86_64
 	license = LGPL3
 	makedepends = cmake
 	makedepends = python-setuptools
 	makedepends = pybind11
 	depends = dolfinx
 	depends = python-mpi4py
-	source = https://github.com/FEniCS/dolfinx/archive/v0.4.1.tar.gz
-	sha512sums = b0824e48ad2ea23db7ca93af390891a09bd6a975f28501fc870dcf555d951764625b04614d4c28eeecb690bb95e9443ba6be52ae4e31ea51c5475fdd7710c56b
+	optdepends = gmsh: for extract data from Gmsh models
+	source = dolfinx-0.5.0.tar.gz::https://github.com/FEniCS/dolfinx/archive/v0.5.0.tar.gz
+	sha512sums = 9bb93c155ca16386934e2643e8afa93fbbc5ffaf2fdf176013cf1eb4bad702a2d2b424568ac41dbe87a43d872fccc2eea66508fafd287748a99c5632c6b76e97
 
 pkgname = python-fenics-dolfinx
