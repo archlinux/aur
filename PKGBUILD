@@ -10,7 +10,7 @@
 # https://docs.nvidia.com/video-technologies/video-codec-sdk/ffmpeg-with-nvidia-gpu/
 
 pkgname=ffmpeg-cuda
-pkgver=5.0.1
+pkgver=5.1
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video. Includes cuda support.'
@@ -100,15 +100,13 @@ provides=(
   ffmpeg
 )
 conflicts=('ffmpeg')
-_tag=9687cae2b468e09e35df4cea92cc2e6a0e6c93b3
+_tag=e0723b7e4e22492275d476fcd30d759e1198bc5b
 source=(
   "git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}"
-  'ffmpeg-vmaf2.x.patch'
   'add-av_stream_get_first_dts-for-chromium.patch'
 )
-sha256sums=('SKIP'
-            '42bd572442a4eba4e9559953c72f9e980b78286ab288ac01e659be39d8bc7298'
-            '91973c465f01446a999f278f0c2a3763304994dba1ac35de0e4c72f12f39409e')
+b2sums=('SKIP'
+        '555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de')
 
 pkgver() {
   cd ffmpeg
@@ -118,9 +116,8 @@ pkgver() {
 
 prepare() {
   cd ffmpeg
-  git cherry-pick -n 988f2e9eb063db7c1a678729f58aab6eba59a55b # fix nvenc on older gpus
-  patch -Np1 -i ../ffmpeg-vmaf2.x.patch # vmaf 2.x support
-  patch -Np1 -i ../'add-av_stream_get_first_dts-for-chromium.patch' # https://crbug.com/1251779
+  git cherry-pick -n e0723b7e4e22492275d476fcd30d759e1198bc5b # remove default IPFS gateway
+  patch -Np1 -i ../add-av_stream_get_first_dts-for-chromium.patch # https://crbug.com/1251779
 }
 
 build() {
