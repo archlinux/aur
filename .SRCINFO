@@ -1,0 +1,21 @@
+pkgbase = devilutionx-graphics-tools-git
+	pkgdesc = DevilutionX graphics format conversion tools (git version)
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/diasurgical/devilutionx-graphics-tools
+	arch = armv6h
+	arch = armv7h
+	arch = arm
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = custom:unlicense
+	makedepends = git
+	makedepends = cmake
+	depends = fmt
+	provides = devilutionx-graphics-tools
+	conflicts = devilutionx-graphics-tools
+	source = devilutionx-graphics-tools::git+https://github.com/diasurgical/devilutionx-graphics-tools
+	sha256sums = SKIP
+
+pkgname = devilutionx-graphics-tools-git
