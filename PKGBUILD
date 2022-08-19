@@ -25,10 +25,10 @@ build() {
   cd qt-plugins
 
   cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr .
-  ninja
+  make
 }
 
 package() {
   cd qt-plugins
-  DESTDIR="$pkgdir" ninja install
+  make DESTDIR="$pkgdir" install
 }
