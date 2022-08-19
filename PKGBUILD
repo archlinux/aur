@@ -5,7 +5,7 @@ _pkgname=V8
 _pkgver=4.2.1
 pkgname=r-${_pkgname,,}
 pkgver=4.2.1
-pkgrel=1
+pkgrel=4
 pkgdesc='Embedded JavaScript and WebAssembly Engine for R'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,6 +16,8 @@ depends=(
   r-jsonlite
   r-rcpp
   v8
+)
+makedepends=(
   make
 )
 optdepends=(
