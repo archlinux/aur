@@ -1,7 +1,7 @@
 # Maintainer: Martin Thierer <thierer@web.de>
 
 pkgname=cc1541-git
-pkgver=3.3.r1.g26ce560
+pkgver=4.0.r0.gdec8ab8
 pkgrel=1
 pkgdesc='Tool for creating .d64 images with custom sector interleaving etc.'
 url='https://bitbucket.org/PTV_Claus/cc1541/src/master/'
@@ -37,4 +37,5 @@ package() {
   install -D -m644 -t ${pkgdir}/usr/share/doc/${pkgname}/ README.md
   install -D -m644 -t ${pkgdir}/usr/share/licenses/${pkgname}/ LICENSE.txt
   install -D -m644 -t ${pkgdir}/usr/share/man/man1/ cc1541.1
+  install -D -m644 -t ${pkgdir}/usr/share/${pkgname}/ transwarp*.prg
 }
