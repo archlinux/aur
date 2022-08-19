@@ -35,8 +35,8 @@ package() {
   mkdir -p "${pkgdir}/${_modpath}"
 
   # Unzipping with flattened paths
-  unzip -jo "${pkgname}-${pkgver}.zip" -d "${pkgdir}${_modpath}"
-  unzip -jo "${pkgname}-ita-${pkgver}.zip" -d "${pkgdir}${_itapath}"
+  unzip -jo "${pkgname}-${pkgver}.zip" -d "${pkgdir}/${_modpath}"
+  unzip -jo "${pkgname}-ita-${pkgver}.zip" -d "${pkgdir}/${_itapath}"
 
   # Make Venom Mod available in Italian
   ln -s -r "${_modpath}/mp_vpak6.pk3" \
@@ -66,6 +66,11 @@ package() {
     "${pkgdir}${_moditapath}"
   ln -s -r "${_itapath}/sp_pak3.pk3" \
     "${pkgdir}${_moditapath}"
+
+  # Clean unneeded files
+  find "${pkgdir}/${_itapath}/" -type f \
+    ! -iname "*.pk3" \
+    ! -iname "*.cfg" -exec rm {} \;
 }
 
 sha256sums=('f353639595dbae36e506547015b18dffcf8e057928f83406afe51af846fcc08d'
