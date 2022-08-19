@@ -2,8 +2,8 @@
 
 pkgname=blender-lts-bin
 pkgdesc='LTS blender version'
-pkgver='2.93.9'
-_mirror="https://mirror.clarkson.edu/blender/release"
+pkgver='2.93.10'
+_mirror="https://mirror.clarkson.edu"
 #_mirror="https://mirror.clarkson.edu/"
 _pkgfile=${pkgname%-lts-bin}-$pkgver-linux-x64.tar.xz
 source=("${_mirror}/blender/release/Blender${pkgver%.*}/$_pkgfile" 'blender.sh')
@@ -12,7 +12,7 @@ license=('GPL')
 arch=('x86_64')
 url='https://www.blender.org'
 
-b2sums=('6a8f81dd48ab0a29e95340c3629062e32ebe3a3a62a6bba2fbc5b962a8fd04515f734f72a56559f79fce344f272cf122a5a62ae1172bf472d7885c9bfbab164b'
+b2sums=('d8e07628672f3f361f9cf56b80ed2057d6a5c405a632f3779daf3fbceb9ef3425a24bb64c633074d38452531c85b0c42c81f45ea5be6442ea609a9eca49a18bd'
 '903039ab42d250063286fa6a5e3687e84c9c6018a0e6654423e7649542d8394c19e6ed8ccaa549bd373ad66bc8e5b7b65203781cde26420f4e00183935e766f3')
 
 _setvars() {
