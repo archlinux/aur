@@ -4,7 +4,7 @@
 
 pkgname='hentaiathome'
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source Peer-2-Peer gallery distribution system which reduces the load on the E-Hentai Galleries"
 arch=('x86_64')
 url="https://ehwiki.org/wiki/Hentai@Home"
@@ -33,10 +33,10 @@ package(){
     cd "${srcdir}"
     install -Dm644 build/HentaiAtHome.jar "${pkgdir}/usr/lib/hath/HentaiAtHome.jar"
     install -Dm644 build/HentaiAtHomeGUI.jar "${pkgdir}/usr/lib/hath/HentaiAtHomeGUI.jar"
-    install -Dm644 src/hath/gui/icon16.png "${pkgdir}/usr/share/icons/hicolor/16x16/hentaiathome.png"
-    install -Dm644 src/hath/gui/icon32.png "${pkgdir}/usr/share/icons/hicolor/32x32/hentaiathome.png"
+    install -Dm644 src/hath/gui/icon16.png "${pkgdir}/usr/share/icons/hicolor/16x16/apps/hentaiathome.png"
+    install -Dm644 src/hath/gui/icon32.png "${pkgdir}/usr/share/icons/hicolor/32x32/apps/hentaiathome.png"
     install -Dm644 hentaiathome.desktop "${pkgdir}/usr/share/applications/hentaiathome.desktop"
-    install -Dm644 hentaiathome@.service "${pkgdir}/usr/lib/systemd/user/hentaiathome@.service"
+    install -Dm644 hentaiathome@.service "${pkgdir}/usr/lib/systemd/system/hentaiathome@.service"
     install -Dm755 hentaiathome-cli "${pkgdir}/usr/bin/hentaiathome-cli"
     install -Dm755 hentaiathome-gui "${pkgdir}/usr/bin/hentaiathome-gui"
     ln -sf /usr/share/java/sqlite-jdbc/sqlite-jdbc.jar "${pkgdir}/usr/lib/hath/sqlite-jdbc.jar"
