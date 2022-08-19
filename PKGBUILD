@@ -15,7 +15,8 @@ makedepends=('meson'
              'glslang'
              'libglvnd'
              'vulkan-headers'
-             'vulkan-icd-loader')
+             'vulkan-icd-loader'
+             'appstream')
 
 depends=('gcc-libs' 'dbus' 'spdlog')
 
