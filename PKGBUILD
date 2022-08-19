@@ -6,7 +6,7 @@
 
 pkgname=veusz
 pkgver=3.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A 2D and 3D scientific plotting package, designed to create publication-ready PDF or SVG output"
 arch=('x86_64')
 url="https://veusz.github.io/"
