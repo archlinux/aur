@@ -3,7 +3,7 @@ pkgbase=python-asdf
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=2.12.1
+pkgver=2.13.0
 pkgrel=1
 pkgdesc="A Python tool for reading and writing Advanced Scientific Data Format (ASDF) files"
 arch=('any')
@@ -40,17 +40,17 @@ checkdepends=('python-pytest-doctestplus'
               'python-psutil'
               'python-virtualenv')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('bbf5b46696f01edc89a774b94557673b')
+md5sums=('c3a1a5bc1cc7f03ebeb93f37d5dca21e')
 
 get_pyver() {
     python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
 }
 
-prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-    sed -i "s/2.3.0/2.4.0/" compatibility_tests/test_file_compatibility.py
-}
+#prepare() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+#    sed -i "s/2.3.0/2.4.0/" compatibility_tests/test_file_compatibility.py
+#}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -73,7 +73,7 @@ package_python-asdf() {
     depends=('python>=3.8'
              'python-numpy>=1.10'
              'python-jmespath>=0.6.2'
-             'python-jsonschema<=4.10.0'
+             'python-jsonschema<4.10.0'
              'python-packaging>=16.0'
              'python-yaml>=3.10'
              'python-semantic-version>=2.8'
