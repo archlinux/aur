@@ -2,6 +2,7 @@
 /src
 /pip-audit
 /pkg
+*.log
 *.pkg.*
 *.tar.*
 *.zip
