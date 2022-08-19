@@ -1,7 +1,7 @@
 # Maintainer: quietvoid <tcChlisop0@gmail.com>
 
 pkgname=hdr10plus_tool-git
-pkgver=1.3.1.r0.gc18ab21
+pkgver=1.3.1.r1.g2a0c681
 pkgrel=1
 pkgdesc='CLI utility to work with HDR10+ in HEVC files'
 arch=('x86_64')
@@ -48,4 +48,6 @@ package() {
     --no-track \
     --path . \
     --root "${pkgdir}"/usr
+
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/hdr10plus_tool/LICENSE"
 }
