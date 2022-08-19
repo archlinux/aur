@@ -26,17 +26,17 @@ _modpath="/opt/iortcw/venom-mod"
 
 package() {
   # Vanilla with Italian localization
-  mkdir -p "${pkgdir}/${_itapath}"
+  mkdir -p "${pkgdir}${_itapath}"
 
   # Venom Mod with Italian localization
-  mkdir -p "${pkgdir}/${_moditapath}"
+  mkdir -p "${pkgdir}${_moditapath}"
 
   # Venom Mod
-  mkdir -p "${pkgdir}/${_modpath}"
+  mkdir -p "${pkgdir}${_modpath}"
 
   # Unzipping with flattened paths
-  unzip -jo "${pkgname}-${pkgver}.zip" -d "${pkgdir}/${_modpath}"
-  unzip -jo "${pkgname}-ita-${pkgver}.zip" -d "${pkgdir}/${_itapath}"
+  unzip -jo "${pkgname}-${pkgver}.zip" -d "${pkgdir}${_modpath}"
+  unzip -jo "${pkgname}-ita-${pkgver}.zip" -d "${pkgdir}${_itapath}"
 
   # Make Venom Mod available in Italian
   ln -s -r "${_modpath}/mp_vpak6.pk3" \
@@ -68,7 +68,7 @@ package() {
     "${pkgdir}${_moditapath}"
 
   # Clean unneeded files
-  find "${pkgdir}/${_itapath}/" -type f \
+  find "${pkgdir}${_itapath}" -type f \
     ! -iname "*.pk3" \
     ! -iname "*.cfg" -exec rm {} \;
 }
