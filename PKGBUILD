@@ -12,10 +12,10 @@ url="https://natrongithub.github.io/"
 license=('GPL')
 depends=('boost-libs' 'cairo' 'glfw' 'pyside2' 'python-qtpy' 'shiboken2')
 makedepends=('boost' 'extra-cmake-modules' 'expat' 'git' 'openmp' 'ninja')
-optdepends=('openfx-arena: Extra OpenFX plugins for Natron'
-            'openfx-gmic: OpenFX wrapper for the GMIC framework'
-            'openfx-io: Readers/Writers plugins'
-            'openfx-misc: Miscellaneous OpenFX plugins')
+optdepends=('openfx-arena-git: Extra OpenFX plugins for Natron'
+            'openfx-gmic-git: OpenFX wrapper for the GMIC framework'
+            'openfx-io-git: Readers/Writers plugins'
+            'openfx-misc-git: Miscellaneous OpenFX plugins')
 
 _pkgname=${pkgname%%-*}
 _url="https://github.com/NatronGitHub"
