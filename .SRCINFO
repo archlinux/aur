@@ -1,0 +1,12 @@
+pkgbase = socks-relay
+	pkgdesc = Simple socks5 server and relay
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/guillon/socks-relay
+	arch = x86_64
+	license = MIT
+	depends = python-pysocks
+	source = https://github.com/guillon/socks-relay/archive/refs/tags/v1.0.1.zip
+	sha256sums = 59e02359aa61caab1ff4504df64da91d1a43eea419479d82ed530fef26ffb58a
+
+pkgname = socks-relay
