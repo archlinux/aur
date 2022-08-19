@@ -30,4 +30,5 @@ package() {
   install -D -m644 -t ${pkgdir}/usr/share/doc/${pkgname}/ README.md
   install -D -m644 -t ${pkgdir}/usr/share/licenses/${pkgname}/ LICENSE.txt
   install -D -m644 -t ${pkgdir}/usr/share/man/man1/ cc1541.1
+  install -D -m644 -t ${pkgdir}/usr/share/${pkgname}/ transwarp*.prg
 }
