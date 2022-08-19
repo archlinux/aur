@@ -1,7 +1,7 @@
 # Maintainer: Daniel Kessler <dkess@dkess.me>
 
 pkgname=alertmanager-matrix
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc='Alertmanager webhook receiver that sends to a Matrix channel'
 arch=('x86_64' 'i686')
@@ -15,7 +15,7 @@ source=("alertmanager_matrix-$pkgver.tar.gz::https://github.com/dkess/alertmanag
         alertmanager-matrix.service
         alertmanager-matrix.sysusers
         alertmanager-matrix.tmpfiles)
-sha256sums=('12cda014c86b21b429c83c4b8970d56e06e574071c6668c97d86e4ab8e91eb50'
+sha256sums=('036e32685d2e83f1e63fb628c92d9bae438705eeee82630718b105666632518c'
             '20c89a35a4af468d99ee16a9960a8d00e90c47fd377e83b0c77e89864829b5d4'
             '7214f94ad898305e8054c0382eca49136ba82d4f97fc3e747a5e2a9a18fa7573'
             'e91e9be3b0c25daddf38cb18ad792bffe040e88074b49043c9a49638e17d73bc')
