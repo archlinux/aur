@@ -3,7 +3,7 @@
 # Contributor: JP-Ellis <josh at jpellis dot me>
 pkgname=lhapdf
 pkgver=6.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A particle physics tool for evaluating PDFs from discretised data files"
 arch=('x86_64')
 url="https://lhapdf.hepforge.org/"
@@ -21,6 +21,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/LHAPDF-${pkgver}"
+  export CXXFLAGS="$CFLAGS"  # do not define _GLIBCXX_ASSERTIONS
   autoreconf -i
   ## need to rebuild Python extension code with up-to-date Cython for Python 3.7+
   ## will eventually be fixed upstream
