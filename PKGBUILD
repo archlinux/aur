@@ -4,7 +4,7 @@ pkgname=cura-5-bin
 _pkgname=cura-5-bin
 _shortname=cura5
 pkgver=5.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Uncompressed version of Ultimaker Cura 5.1'
 arch=('x86_64')
 url="https://ultimaker.com/software/ultimaker-cura"
@@ -21,7 +21,7 @@ source=(
 
 sha256sums=('eab92e31c12c1b101fbaf2664df00bed182528e282874e4f379c87b29692ac76'
             'b54488562c7305072f00fa5e2125458403ec0609fe849a195c977b70a37108a8'
-            'f6efcbfb7ac0e64b7289934cb8992099858aa2752a907cbbbc9b045158551170')
+            '4db683cf5424c97553ba3b6ab834b838ffec731441b240e6451e4ffc12a66976')
    
 prepare() {
     cd "${srcdir}"

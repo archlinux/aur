@@ -1,6 +1,11 @@
 --- cura.desktop
 +++ cura.desktop
-@@ -4,9 +4,11 @@
+@@ -1,12 +1,14 @@
+ [Desktop Entry]
+-Name=Ultimaker Cura
+-Name[de]=Ultimaker Cura
++Name=Ultimaker Cura 5
++Name[de]=Ultimaker Cura 5
  GenericName=3D Printing Software
  GenericName[de]=3D-Druck-Software
  GenericName[nl]=3D-Print Software
