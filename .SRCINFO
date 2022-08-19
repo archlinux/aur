@@ -1,13 +1,14 @@
 pkgbase = ausweisapp2
 	pkgdesc = A software application that you install on your computer to use your national identity card or your electronic residence permit for online identification
 	pkgver = 1.24.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ausweisapp.bund.de/
 	arch = i686
 	arch = x86_64
 	license = custom:EUPL1.2
 	makedepends = cmake
 	makedepends = qt6-tools
+	makedepends = qt6-shadertools
 	depends = qt6-declarative
 	depends = qt6-svg
 	depends = qt6-websockets
