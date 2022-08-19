@@ -1,12 +1,13 @@
 pkgbase = budgie-screenshot-applet
 	pkgdesc = A Budgie applet for taking and uploading screenshots to Imgur and Imagebin.
 	pkgver = 0.4.3.r0.gd92b06c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cybre/budgie-screenshot-applet
 	changelog = CHANGELOG
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	makedepends = intltool
 	makedepends = meson
 	makedepends = ninja
@@ -16,8 +17,8 @@ pkgbase = budgie-screenshot-applet
 	depends = budgie-desktop
 	depends = json-glib
 	depends = gnome-desktop
-	source = git+https://github.com/cybre/budgie-screenshot-applet.git#tag=v0.4.3
+	depends = graphviz
+	source = budgie-screenshot-applet::git+https://github.com/cybre/budgie-screenshot-applet.git#tag=v0.4.3
 	sha256sums = SKIP
 
 pkgname = budgie-screenshot-applet
-
