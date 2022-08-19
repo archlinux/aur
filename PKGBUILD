@@ -2,8 +2,8 @@
 
 pkgbase=gnome-control-center-vrr
 pkgname=(gnome-control-center-vrr)
-pkgver=42.2
-pkgrel=2
+pkgver=42.3
+pkgrel=1
 pkgdesc="A window manager for GNOME (with VRR)"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 arch=(x86_64)
@@ -20,14 +20,14 @@ optdepends=('system-config-printer: Printer settings'
             'rygel: media sharing'
             'openssh: remote login'
             'power-profiles-daemon: Power profiles support')
-_commit=0bbcc3b8b30583908be7ec129b63bb40d8697b7b  # tags/42.2^0
+_commit=ff5ab8f715ea02f75cff567ce86830040b0f38cc  # tags/42.3
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
         'mr734.patch')
 
 sha256sums=('SKIP'
             'SKIP'
-            '6afc213f165056eb180692d65baf2fe3b5ec9f7397e1511e515790294aa4aa61')
+            '575f770b3ef3da1d3a3c75b198577ceb32e25e72ccdd311ca143d205317112bd')
 
 pkgver() {
   cd $pkgname

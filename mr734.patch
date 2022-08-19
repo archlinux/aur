@@ -1,4 +1,4 @@
-From 937f7155f5972b1fde1ca775e45ba45b16c00772 Mon Sep 17 00:00:00 2001
+From f95dd8e141b32828fd9d2debe792e7e9bf5f1de9 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Sat, 28 Mar 2020 19:29:59 +0300
 Subject: [PATCH] display: Add a switch for variable refresh rate
@@ -14,7 +14,7 @@ that support it.
  5 files changed, 131 insertions(+), 1 deletion(-)
 
 diff --git a/panels/display/cc-display-config-dbus.c b/panels/display/cc-display-config-dbus.c
-index 83a49ade9..0e17a5e4f 100644
+index 83a49ade9..91ca02da0 100644
 --- a/panels/display/cc-display-config-dbus.c
 +++ b/panels/display/cc-display-config-dbus.c
 @@ -280,7 +280,6 @@ cc_display_logical_monitor_class_init (CcDisplayLogicalMonitorClass *klass)
@@ -32,8 +32,8 @@ index 83a49ade9..0e17a5e4f 100644
 +typedef enum _CcDisplayMonitorVariableRefreshRate
 +{
 +  VRR_UNSUPPORTED = 0,
-+  VRR_DISABLED,
-+  VRR_ENABLED
++  VRR_DISALLOWED,
++  VRR_ALLOWED
 +} CcDisplayMonitorVariableRefreshRate;
 +
  struct _CcDisplayMonitorDBus
@@ -64,22 +64,22 @@ index 83a49ade9..0e17a5e4f 100644
 +{
 +  CcDisplayMonitorDBus *self = CC_DISPLAY_MONITOR_DBUS (pself);
 +
-+  return self->vrr_mode == VRR_ENABLED;
++  return self->vrr_mode == VRR_ALLOWED;
 +}
 +
 +static void
 +cc_display_monitor_dbus_set_variable_refresh_rate (CcDisplayMonitor *pself,
-+                                                   gboolean enabled)
++                                                   gboolean allowed)
 +{
 +  CcDisplayMonitorDBus *self = CC_DISPLAY_MONITOR_DBUS (pself);
 +
 +  if (self->vrr_mode == VRR_UNSUPPORTED)
 +    return;
 +
-+  if (enabled)
-+    self->vrr_mode = VRR_ENABLED;
++  if (allowed)
++    self->vrr_mode = VRR_ALLOWED;
 +  else
-+    self->vrr_mode = VRR_DISABLED;
++    self->vrr_mode = VRR_DISALLOWED;
 +}
 +
  static CcDisplayMode *
@@ -107,14 +107,14 @@ index 83a49ade9..0e17a5e4f 100644
            else
              self->underscanning = UNDERSCANNING_DISABLED;
          }
-+      else if (g_str_equal (s, "is-vrr-enabled"))
++      else if (g_str_equal (s, "is-vrr-allowed"))
 +        {
-+          gboolean vrr_enabled = FALSE;
-+          g_variant_get (v, "b", &vrr_enabled);
-+          if (vrr_enabled)
-+            self->vrr_mode = VRR_ENABLED;
++          gboolean vrr_allowed = FALSE;
++          g_variant_get (v, "b", &vrr_allowed);
++          if (vrr_allowed)
++            self->vrr_mode = VRR_ALLOWED;
 +          else
-+            self->vrr_mode = VRR_DISABLED;
++            self->vrr_mode = VRR_DISALLOWED;
 +        }
        else if (g_str_equal (s, "max-screen-size"))
          {
@@ -124,8 +124,8 @@ index 83a49ade9..0e17a5e4f 100644
                               g_variant_new_boolean (monitor->underscanning == UNDERSCANNING_ENABLED));
  
 +      g_variant_builder_add (&props_builder, "{sv}",
-+                             "enable_vrr",
-+                             g_variant_new_boolean (monitor->vrr_mode == VRR_ENABLED));
++                             "allow_vrr",
++                             g_variant_new_boolean (monitor->vrr_mode == VRR_ALLOWED));
 +
        mode_dbus = CC_DISPLAY_MODE_DBUS (monitor->current_mode);
        g_variant_builder_add (&builder, "(ss@*)",
@@ -141,7 +141,7 @@ index 83a49ade9..0e17a5e4f 100644
          return FALSE;
  
 diff --git a/panels/display/cc-display-config.c b/panels/display/cc-display-config.c
-index a78b33fc9..0fb1998c0 100644
+index a78b33fc9..c66128265 100644
 --- a/panels/display/cc-display-config.c
 +++ b/panels/display/cc-display-config.c
 @@ -322,6 +322,26 @@ cc_display_monitor_set_underscanning (CcDisplayMonitor *self,
@@ -162,9 +162,9 @@ index a78b33fc9..0fb1998c0 100644
 +
 +void
 +cc_display_monitor_set_variable_refresh_rate (CcDisplayMonitor *self,
-+                                              gboolean enabled)
++                                              gboolean allowed)
 +{
-+  return CC_DISPLAY_MONITOR_GET_CLASS (self)->set_variable_refresh_rate (self, enabled);
++  return CC_DISPLAY_MONITOR_GET_CLASS (self)->set_variable_refresh_rate (self, allowed);
 +}
 +
 +
@@ -172,7 +172,7 @@ index a78b33fc9..0fb1998c0 100644
  cc_display_monitor_set_mode (CcDisplayMonitor *self, CcDisplayMode *m)
  {
 diff --git a/panels/display/cc-display-config.h b/panels/display/cc-display-config.h
-index d83fa8edc..3d98167f2 100644
+index d83fa8edc..065435ca7 100644
 --- a/panels/display/cc-display-config.h
 +++ b/panels/display/cc-display-config.h
 @@ -121,6 +121,10 @@ struct _CcDisplayMonitorClass
@@ -193,7 +193,7 @@ index d83fa8edc..3d98167f2 100644
 +gboolean          cc_display_monitor_supports_variable_refresh_rate (CcDisplayMonitor *monitor);
 +gboolean          cc_display_monitor_get_variable_refresh_rate      (CcDisplayMonitor *monitor);
 +void              cc_display_monitor_set_variable_refresh_rate      (CcDisplayMonitor *monitor,
-+                                                                     gboolean          enabled);
++                                                                     gboolean          allowed);
 +
  CcDisplayMode*    cc_display_monitor_get_mode               (CcDisplayMonitor  *monitor);
  void              cc_display_monitor_get_geometry           (CcDisplayMonitor  *monitor,
