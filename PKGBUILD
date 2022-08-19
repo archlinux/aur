@@ -1,6 +1,4 @@
-# Maintainer: Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
-# Contributor: Carlos Mogas da Silva <r3pek@r3pek.org>
-# Contributor: ELmoussaoui Bilal <bil.elmoussaoui@gmail.com>
+# Maintainer: Campbell Jones <arch at serebit dot com>
 
 pkgname='budgie-screenshot-applet'
 pkgver='0.4.3.r0.gd92b06c'
