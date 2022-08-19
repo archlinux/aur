@@ -7,7 +7,7 @@
 _pkgname=gamescope
 pkgname=gamescope-plus
 pkgver=3.11.36
-pkgrel=1
+pkgrel=2
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
 url=https://github.com/Plagman/gamescope
@@ -86,8 +86,8 @@ package() {
   install -Dm 644 gamescope/LICENSE -t "${pkgdir}"/usr/share/licenses/gamescope/
 
   # Avoid conflicting with libliftoff
-  rm -r ${pkgdir}/usr/lib/pkgconfig
-  rm -r ${pkgdir}/usr/include
+  rm -r "${pkgdir}"/usr/lib/pkgconfig
+  rm -r "${pkgdir}"/usr/include
 }
 
 # vim: ts=2 sw=2 et:
