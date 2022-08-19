@@ -2,16 +2,16 @@
 # Contributor: Felipe Contreras <felipe.contreras@gmail.com>
 
 pkgname=git-remote-hg
-pkgver=0.3
+pkgver=0.6
 pkgrel=1
 pkgdesc='Bidirectional bridge between Git and Mercurial'
 arch=('any')
 url='https://github.com/felipec/git-remote-hg'
 license=('GPL2')
 depends=('git' 'mercurial')
-makedepends=('asciidoc')
+makedepends=('asciidoctor')
 source=("https://github.com/felipec/git-remote-hg/archive/v${pkgver}.tar.gz")
-md5sums=('40346d361c41c2cef02dae2eed7a86d9')
+md5sums=('8a1acaba6d5f2acd453870b136695eba')
 
 build () {
 	cd "$srcdir/${pkgname}-${pkgver/+/-}"
