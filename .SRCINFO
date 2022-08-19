@@ -1,6 +1,6 @@
 pkgbase = mangohud-nonvidia
 	pkgdesc = A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more (without NVIDIA support)
-	pkgver = 0.6.7
+	pkgver = 0.6.8
 	pkgrel = 1
 	url = https://github.com/flightlessmango/MangoHud
 	arch = x86_64
@@ -15,12 +15,12 @@ pkgbase = mangohud-nonvidia
 	depends = gcc-libs
 	depends = dbus
 	depends = spdlog
-	provides = mangohud=0.6.7-1
+	provides = mangohud=0.6.8
 	conflicts = mangohud
-	source = mangohud-0.6.7-1.tar.gz::https://github.com/flightlessmango/MangoHud/archive/v0.6.7-1.tar.gz
+	source = mangohud-0.6.8.tar.gz::https://github.com/flightlessmango/MangoHud/archive/v0.6.8.tar.gz
 	source = imgui-1.81.tar.gz::https://github.com/ocornut/imgui/archive/refs/tags/v1.81.tar.gz
-	source = imgui-1.81-1-wrap.zip::https://wrapdb.mesonbuild.com/v1/projects/imgui/1.81/1/get_zip
-	sha256sums = 9cad2b04a1df49e4095b0808da46d269be1b84e7e56018a3184fec270473d966
+	source = https://wrapdb.mesonbuild.com/v2/imgui_1.81-1/get_patch#/imgui-1.81-1-wrap.zip
+	sha256sums = d82b98aa54161c820b061676b7791b5f0e2ded2c288845252905215ead816593
 	sha256sums = f7c619e03a06c0f25e8f47262dbc32d61fd033d2c91796812bf0f8c94fca78fb
 	sha256sums = 6d00b442690b6a5c5d8f898311daafbce16d370cf64f53294c3b8c5c661e435f
 
