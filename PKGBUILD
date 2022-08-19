@@ -3,7 +3,7 @@
 # Contributor: JP-Ellis <josh at jpellis dot me>
 pkgname=lhapdf
 pkgver=6.5.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A particle physics tool for evaluating PDFs from discretised data files"
 arch=('x86_64')
 url="https://lhapdf.hepforge.org/"
@@ -11,21 +11,24 @@ license=('GPL3')
 makedepends=('cython')
 depends=('python-numpy')
 install=lhapdf.install
-source=("https://www.hepforge.org/archive/lhapdf/LHAPDF-${pkgver}.tar.gz")
-sha256sums=('608a2753455e067a9940b5c16bc86ab6c47e2c749bc9dd19796996eb4352b2fd')
+source=("https://www.hepforge.org/archive/lhapdf/LHAPDF-${pkgver}.tar.gz"
+        'fix_installed_pdf_permissions.patch')
+b2sums=('630846f6105351d0561619f59810d23d936043842b0524d3818153416d116833ca550a940824a74ee9c6684d8d2ea59e72f3a74b3238fd3dc2828937c1422185'
+        'c875018d666331588051adc394b24c40321d78573ec33ef9312ea8779eeb6cf15ea845a5267d4dc6530cc82050e782affc908b9a6727aa3125b9f0086f1917a2')
 
 prepare() {
   cd "${srcdir}/LHAPDF-${pkgver}"
-  sed -e 's/print Cython.Compiler.Version.version/print (Cython.Compiler.Version.version)/g' -i m4/cython.m4
+
+  # add in correct flags
+  sed -e 's/-L@abs_top_builddir@\/src\/.libs/-L@abs_top_builddir@\/src\/.libs '"${LDFLAGS} ${LTOFLAGS}"'/g' -i wrappers/python/build.py.in
+  # installed PDFs must respect system permissions and ownership structure
+  patch -Np1 -i "${srcdir}/fix_installed_pdf_permissions.patch"
 }
 
 build() {
   cd "${srcdir}/LHAPDF-${pkgver}"
   export CXXFLAGS="$CFLAGS"  # do not define _GLIBCXX_ASSERTIONS
   autoreconf -i
-  ## need to rebuild Python extension code with up-to-date Cython for Python 3.7+
-  ## will eventually be fixed upstream
-  touch wrappers/python/lhapdf.pyx
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \

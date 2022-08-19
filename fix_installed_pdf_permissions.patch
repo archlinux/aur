@@ -1,0 +1,30 @@
+diff --color -aur LHAPDF-6.5.2-old/bin/lhapdf LHAPDF-6.5.2-new/bin/lhapdf
+--- LHAPDF-6.5.2-old/bin/lhapdf	2022-08-19 17:25:17.896370763 +0300
++++ LHAPDF-6.5.2-new/bin/lhapdf	2022-08-19 17:26:41.193035357 +0300
+@@ -169,8 +169,26 @@
+ 
+     tarpath = os.path.join(dest_dir, tar_filename)
+     try:
++        import stat
+         import tarfile
++        stat_info = os.stat(tarpath)
++        # we only really care if destination is world readable
++        world_readable = bool(stat_info.st_mode & stat.S_IROTH)
++        file_mode = 0o644 if world_readable else 0o640
++        dir_mode = 0o755 if world_readable else 0o750
++        # load PDF tar file
+         tar_file = tarfile.open(tarpath, "r:gz")
++        for tar_info in tar_file.getmembers():
++            # adjust tar file properties
++            tar_info.uid = 0
++            tar_info.gid = 0
++            tar_info.uname = ""
++            tar_info.gname = ""
++            if tar_info.isfile():
++                tar_info.mode = file_mode
++            if tar_info.isdir():
++                tar_info.mode = dir_mode
++        # extract PDF tar file
+         tar_file.extractall(dest_dir)
+         tar_file.close()
+     except:
