@@ -1,7 +1,7 @@
 pkgbase = quickbms
 	pkgdesc = Files extractor and reimporter, archives and file formats parser, advanced tool for reversers and power users and much more.
 	pkgver = 0.11.0
-	pkgrel = 2
+	pkgrel = 1
 	url = http://aluigi.altervista.org/quickbms.htm
 	arch = x86_64
 	arch = i686
