@@ -1,6 +1,6 @@
 pkgbase = tbb2019
 	pkgdesc = High level abstract threading library
-	pkgver = 2019.9
+	pkgver = 2019.6
 	pkgrel = 1
 	url = https://www.threadingbuildingblocks.org/
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = tbb2019
 	makedepends = cmake
 	makedepends = inetutils
 	depends = gcc-libs
-	provides = tbb=2019.9
+	provides = tbb=2019.6
 	conflicts = intel-tbb
 	conflicts = intel-oneapi-tbb
-	source = https://github.com/oneapi-src/oneTBB/archive/refs/tags/2019_U9.tar.gz
-	sha512sums = ac1710ddfccfc431ffee2b9083b0892ee51b51929fe4de6444587c470d5274e22b265a63a4ea6c84471214aae42ec5c9f13c6512d33ef0d915e6235279b8f61e
+	source = https://github.com/oneapi-src/oneTBB/archive/refs/tags/2019_U6.tar.gz
+	sha512sums = 6bcc014ec90cd62293811ac436eab03c7f7c7e3e03109efcab1c42cfed48d8bf83073d03ab381e5e63ee8c905f1792a7fdab272ec7e585df14102bad714ffc15
 
 pkgname = tbb2019
