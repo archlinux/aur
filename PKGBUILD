@@ -55,4 +55,3 @@ package() {
   install -Dm644 ../$pkgname.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/$pkgname.conf
   make DESTDIR="$pkgdir" install-strip
 }
-
