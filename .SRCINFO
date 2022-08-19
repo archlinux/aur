@@ -1,7 +1,7 @@
 pkgbase = python-tables
 	pkgdesc = Hierarchical datasets for Python
 	pkgver = 3.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/tables
 	arch = any
 	license = BSD
@@ -9,6 +9,7 @@ pkgbase = python-tables
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
+	depends = hdf5
 	depends = python-numpy
 	depends = python-oldest-supported-numpy
 	depends = python-numexpr
