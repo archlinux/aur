@@ -7,7 +7,7 @@ url="https://github.com/FelixEcker/pasfetch"
 license=('ISC')
 depends=('fpc>=3.2.2-5')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('05b2c6999385c8a80cda51cf2f7f85bbbfcf61c29834ab02a13b910852e9936a')
+sha256sums=('c5099d4b65699442a002e8a52790d3e6eaec3ce5b7cc1f56a957db95f4f3ba14')
 
 build() {
 	cd "$pkgname-$pkgver"
