@@ -3,6 +3,7 @@
 pkgname="3bc-lang-git"
 pkgver="0.1.3"
 license=('GPL3')
+url="https://github.com/RodrigoDornelles/3bc-lang/"
 pkgrel=1
 pkgdesc="Low level language, tiny virtual machine that works on computers and microcontrollers. (Friendly Punched cards)"
 source=("3bc::git+https://github.com/RodrigoDornelles/3bc-lang.git#branch=master")
