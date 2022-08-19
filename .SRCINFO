@@ -1,11 +1,12 @@
 pkgbase = python-nurbs
 	pkgdesc = Object-oriented pure Python B-Spline and NURBS library
 	pkgver = 5.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://onurraufbingol.com/NURBS-Python
 	arch = x86_64
 	license = MIT
 	checkdepends = python-pytest
+	checkdepends = python-matplotlib
 	makedepends = python-setuptools
 	makedepends = cython
 	depends = python
