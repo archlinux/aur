@@ -6,7 +6,7 @@
 _pkgname=gamescope
 pkgname=${_pkgname}-plus-git
 pkgver=3.11.36.r0.gcb59480
-pkgrel=1
+pkgrel=2
 pkgdesc="Micro-compositor from Valve with added patches not yet commited upstream"
 arch=(x86_64)
 url="https://github.com/Plagman/gamescope"
@@ -84,9 +84,5 @@ package() {
 
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-
-  # Avoid conflicting with libliftoff
-  rm -r ${pkgdir}/usr/lib/pkgconfig
-  rm -r ${pkgdir}/usr/include
 }
 

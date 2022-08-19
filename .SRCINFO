@@ -1,7 +1,7 @@
 pkgbase = gamescope-plus-git
 	pkgdesc = Micro-compositor from Valve with added patches not yet commited upstream
 	pkgver = 3.11.36.r0.gcb59480
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Plagman/gamescope
 	arch = x86_64
 	license = custom:BSD-2-Clause
