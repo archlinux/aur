@@ -45,7 +45,7 @@ build() {
     -DGAMEPACKS_LICENSE_LIST=free \
     -DGAMEPACKS_NAME_LIST=none
 
-    cmake --build build -- -j$(nproc)
+    cmake --build build
 }
 
 package() {
