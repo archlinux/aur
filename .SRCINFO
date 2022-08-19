@@ -1,6 +1,6 @@
 pkgbase = dovi_tool-git
 	pkgdesc = CLI tool combining multiple utilities for working with Dolby Vision
-	pkgver = 1.5.3.r4.g80aa8af
+	pkgver = 1.5.6.r0.g9444267
 	pkgrel = 1
 	url = https://github.com/quietvoid/dovi_tool
 	arch = x86_64
