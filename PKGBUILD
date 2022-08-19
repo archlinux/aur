@@ -1,21 +1,14 @@
 # Maintainer: quietvoid <tcChlisop0@gmail.com>
 
 pkgname=libdovi-git
-pkgver=1.6.5.g80aa8af
+pkgver=1.7.0.g9444267
 pkgrel=1
 pkgdesc='Library to read and write Dolby Vision metadata (C-API)'
 arch=('any')
 url='https://github.com/quietvoid/dovi_tool/tree/main/dolby_vision'
 license=('MIT')
-depends=(
-  gcc-libs
-  glibc
-)
-makedepends=(
-  cargo-c
-  git
-  rust
-)
+depends=('gcc-libs' 'glibc')
+makedepends=('git' 'cargo' 'cargo-c')
 conflicts=('libdovi.so')
 provides=('libdovi.so')
 source=(git+https://github.com/quietvoid/dovi_tool.git)
