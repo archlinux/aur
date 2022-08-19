@@ -9,7 +9,7 @@
 # Intel's TBB (2019) is required to build Pixar's USD v22
 
 _pkgmajorver=2019
-_pkgminorver=9
+_pkgminorver=6
 pkgname=tbb2019
 pkgver=${_pkgmajorver}.${_pkgminorver}
 pkgrel=1
@@ -22,7 +22,7 @@ makedepends=('cmake' 'inetutils')
 provides=("tbb=$pkgver")
 conflicts=('intel-tbb' 'intel-oneapi-tbb')
 source=(https://github.com/oneapi-src/oneTBB/archive/refs/tags/${_pkgmajorver}_U${_pkgminorver}.tar.gz)
-sha512sums=('ac1710ddfccfc431ffee2b9083b0892ee51b51929fe4de6444587c470d5274e22b265a63a4ea6c84471214aae42ec5c9f13c6512d33ef0d915e6235279b8f61e')
+sha512sums=('6bcc014ec90cd62293811ac436eab03c7f7c7e3e03109efcab1c42cfed48d8bf83073d03ab381e5e63ee8c905f1792a7fdab272ec7e585df14102bad714ffc15')
 
 build() {
   cd oneTBB-${_pkgmajorver}_U${_pkgminorver}
