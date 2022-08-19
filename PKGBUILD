@@ -5,7 +5,7 @@
 # Contributor: Emīls Piņķis <emil at mullvad dot net>
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn-beta
-_pkgver=2022.3
+_pkgver=2022.4
 _channel=stable
 _rel=1
 # beta
@@ -23,7 +23,7 @@ provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 options=('!lto')
 install="${pkgname%-beta}.install"
-_tag=ca45335dba9f8b2b90263c3b6c08e64c6898f35f # tags/2022.3^0
+_tag=06c847a7a7d72a148bd5dba0a44860eb1b3aa182 # tags/2022.4^0
 _commit=b63c5c8c7977963aeb585b6ddd4537dffe2aeeec
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#commit=${_tag}?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
