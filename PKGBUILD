@@ -1,16 +1,16 @@
 # Maintainer: Sylvain POULAIN <sylvain dot poulain at giscan dot com>
 
 pkgname=pcraster
-pkgver=4.3.2
-pkgrel=2
+pkgver=4.3.3
+pkgrel=1
 pkgdesc='Environmental modelling software'
 arch=('i686' 'x86_64')
-url='https://pcraster.edu/'
+url='https://pcraster.geo.uu.nl'
 license=('GPL3')
 depends=('python-pyqt5-chart' 'boost' 'python-numpy' 'xerces-c' 'gdal' 'ncurses')
 makedepends=('cmake')
 source=("https://github.com/pcraster/pcraster/archive/refs/tags/pcraster-$pkgver.tar.gz")
-sha512sums=('78e6b9d2970a9b9d55dba3312e4bd613d3fab714db67139dcc6ae102e62a220543d8e6d15afd343c76d1c02187e6c3626419d9997add65aaf1f66ad1b0738475')
+sha512sums=('d8a1d428827ccf75ec7f7bfa8e2a20289f65b59f6f50f672202c7ad6bf237f7fa0c4d0036b4e8db702aaf4c219e6e2eb283e37699a7489158834f4742be8180f')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
