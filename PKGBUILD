@@ -2,35 +2,26 @@
 # Contributor: Sander Smid-Merlijn <sander..smid@gmail.com>
 pkgname=stencyl
 pkgver=4.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Create amazing games without code.'
-arch=(x86_64)
+arch=('x86_64')
 url='http://www.stencyl.com'
 license=(custom)
-#depends=()
-#makedepends=()
-#conflicts=()
-#provides=()
 options=('!strip')
-#install=
-source=(stencyl
-        stencyl.desktop
-        stencyl.png
-        LICENSE)
-md5sums=('e97ff31637ae4f223062269bfce3f8ab'
+source=("https://static.stencyl.com/downloads/stencyl/release/$pkgver/Stencyl-$pkgver-linux.tar.gz"
+        "stencyl"
+        "stencyl.desktop"
+        "stencyl.png"
+        "LICENSE")
+md5sums=('4cffaf180e5038c3c211859b31c295e3'
+         'e97ff31637ae4f223062269bfce3f8ab'
          '6b52a9ecce3bddda2e77b3884503b888'
          'c99ae55db267e86c0936e01662ee12ea'
          '986e231db4a39dd7fa59c93a7e06b7c2')
 
-archive="Stencyl-64-full.tar.gz"
-source+=("$archive::http://www.stencyl.com/download/get/lin64/")
-md5sums+=('3c1691239496ca02be97bb9fcd5266b5')
-noextract=("$archive")
-
 package() {
-    # Uncompress the source into the final directory
-    install -Ddm755 "$pkgdir"/usr/share/stencyl
-    tar -xzf "$srcdir/$archive" -C "$pkgdir"/usr/share/stencyl/
+    install -Ddm755 "$pkgdir"/usr/share
+    cp -r "Stencyl-$pkgver-linux" "$pkgdir"/usr/share/stencyl
 
     # Install the custom launch script, the .desktop and the icon
     install -Dm755 "$srcdir/stencyl" "$pkgdir/usr/bin/stencyl"

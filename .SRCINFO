@@ -1,22 +1,20 @@
 pkgbase = stencyl
 	pkgdesc = Create amazing games without code.
 	pkgver = 4.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.stencyl.com
 	arch = x86_64
 	license = custom
-	noextract = Stencyl-64-full.tar.gz
 	options = !strip
+	source = https://static.stencyl.com/downloads/stencyl/release/4.0.4/Stencyl-4.0.4-linux.tar.gz
 	source = stencyl
 	source = stencyl.desktop
 	source = stencyl.png
 	source = LICENSE
-	source = Stencyl-64-full.tar.gz::http://www.stencyl.com/download/get/lin64/
+	md5sums = 4cffaf180e5038c3c211859b31c295e3
 	md5sums = e97ff31637ae4f223062269bfce3f8ab
 	md5sums = 6b52a9ecce3bddda2e77b3884503b888
 	md5sums = c99ae55db267e86c0936e01662ee12ea
 	md5sums = 986e231db4a39dd7fa59c93a7e06b7c2
-	md5sums = 3c1691239496ca02be97bb9fcd5266b5
 
 pkgname = stencyl
-
