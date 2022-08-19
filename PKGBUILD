@@ -4,7 +4,7 @@ _pkgname=Herper
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=6
 pkgdesc='The Herper package is a simple toolset to install and manage conda packages and environments from R'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -25,7 +25,7 @@ optdepends=(
 makedepends=(
   git
 )
-source=("git+https://git.bioconductor.org/packages/${_pkgname}")
+source=("git+https://github.com/RockefellerUniversity/Herper.git")
 sha256sums=('SKIP')
 
 build() {
