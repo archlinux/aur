@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Herper
-_pkgver=1.6.0
+_pkgver=1.7.1
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
-pkgrel=6
+pkgver=1.7.1
+pkgrel=1
 pkgdesc='The Herper package is a simple toolset to install and manage conda packages and environments from R'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
