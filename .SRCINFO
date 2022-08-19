@@ -1,0 +1,27 @@
+pkgbase = dev-sidecar-git
+	pkgdesc = 开发者边车，github打不开，github加速，git clone加速，git release下载加速，stackoverflow加速
+	pkgver = 1.7.3.r20.gfc0821f
+	pkgrel = 1
+	url = https://github.com/docmirror/dev-sidecar
+	arch = any
+	license = MPL-2.0
+	makedepends = npm
+	makedepends = lerna
+	makedepends = libxcrypt-compat
+	provides = dev-sidecar
+	conflicts = dev-sidecar
+	source = git+https://github.com/docmirror/dev-sidecar.git
+	source = dev-sidecar.desktop
+	source = dev-sidecar.sh
+	sha256sums = SKIP
+	sha256sums = 4fbb8418638f73fb845e187c599b099377c340dc9a2121844ec08944378011f9
+	sha256sums = 251d5d03fbb807960055af37d1bf2e93a81c198e816c7238aa6e61c84cbddcc3
+
+pkgname = dev-sidecar-git
+	depends = nss
+	depends = alsa-lib
+	depends = gtk3
+
+pkgname = dev-sidecar-git-electron
+	pkgdesc = 开发者边车，github打不开，github加速，git clone加速，git release下载加速，stackoverflow加速（使用系统Electron）
+	depends = electron17

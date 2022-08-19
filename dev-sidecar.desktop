@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=dev-sidecar
+GenericName=A sidecar tool for developers.
+Comment=Speedup GitHub, StackOverflow and some other sites.
+Name[zh_CN]=开发者边车
+GenericName[zh_CN]=给开发者的边车辅助工具
+Comment[zh_CN]=加速GitHub、StackOverflow等网站
+Exec=/usr/bin/dev-sidecar
+Icon=dev-sidecar
+StartupWMClass=dev-sidecar
+Categories=Utility;Network;Delelopment
