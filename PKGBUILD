@@ -48,7 +48,6 @@ makedepends=(
   vulkan-headers
 )
 _tag=cb59480be00a28bbd7462df6abd17d4c752121f0
-source=(git+https://github.com/Plagman/gamescope.git#tag=${_tag})
 source=("git+https://github.com/Plagman/gamescope.git#tag=${_tag}"
     "0001-Add-force-orientation-option.patch")
 b2sums=('SKIP'
