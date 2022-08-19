@@ -3,7 +3,7 @@
 # Contributor: JP-Ellis <josh at jpellis dot me>
 pkgname=lhapdf
 pkgver=6.5.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A particle physics tool for evaluating PDFs from discretised data files"
 arch=('x86_64')
 url="https://lhapdf.hepforge.org/"
@@ -20,7 +20,7 @@ prepare() {
   cd "${srcdir}/LHAPDF-${pkgver}"
 
   # add in correct flags
-  sed -e 's/-L@abs_top_builddir@\/src\/.libs/-L@abs_top_builddir@\/src\/.libs '"${LDFLAGS} ${LTOFLAGS}"'/g' -i wrappers/python/build.py.in
+  sed '/linkargs =/a linkargs += " '"${LDFLAGS} ${LTOFLAGS}"' "' -i wrappers/python/build.py.in
   # installed PDFs must respect system permissions and ownership structure
   patch -Np1 -i "${srcdir}/fix_installed_pdf_permissions.patch"
 }
