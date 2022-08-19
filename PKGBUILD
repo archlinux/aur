@@ -2,7 +2,7 @@
 # Maintainer: fkxxyz <fkxxyz@163.com>
 
 pkgname=rime-solarpinyin
-pkgver=1.2.0.20220816
+pkgver=1.2.0.20220819
 pkgrel=1
 pkgdesc="Simplified pinyin input for rime"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('librime')
 provides=('rime-cloverpinyin')
 conflicts=('rime-cloverpinyin')
 source=(https://github.com/so1ar/rime-cloverpinyin/releases/download/${pkgver}/clover.schema-${pkgver}.zip)
-sha256sums=('a621d540e2017d3757d55032444a51f895ce8d7cd964a4aabb11af338e4bec01')
+sha256sums=('fee1263413b9f95e7f776cf8dd28492e707811a078dc1b9f6c6097be4500f8ba')
 
 build(){
   cd $srcdir
