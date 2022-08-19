@@ -2,7 +2,7 @@ pkgbase = piscesde-calculator-git
 	pkgdesc = piscesDE Calculator
 	pkgver = 0.9
 	pkgrel = 1
-	url = https://github.com/piscesys/calculator.git
+	url = https://github.com/piscesys/calculator
 	arch = x86_64
 	groups = piscesde-git
 	license = GPL
@@ -14,7 +14,7 @@ pkgbase = piscesde-calculator-git
 	depends = libpiscesde-git
 	provides = piscesde-calculator
 	conflicts = piscesde-calculator
-	source = git+https://github.com/piscesys/calculator.git.git
+	source = git+https://github.com/piscesys/calculator.git
 	sha512sums = SKIP
 
 pkgname = piscesde-calculator-git
