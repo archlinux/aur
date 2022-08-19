@@ -3,7 +3,7 @@
 
 pkgname=aegisub-git
 pkgver=3.2.2.r407.6f546951b
-pkgrel=2
+pkgrel=3
 pkgdesc='A general-purpose subtitle editor with ASS/SSA support'
 arch=(x86_64)
 url=http://www.aegisub.org
@@ -43,11 +43,13 @@ source=(
   0001-Use-target-name-without-directory-in-_OBJ-macro.patch
   # https://github.com/Aegisub/Aegisub/commit/5f235ff459e6a7ec36639894d1f45a638a9d73f3.patch
   0001-Restrict-the-usage-of-undocumented-wxBitmap-ctor-to-.patch
+  Remove-second-argument-to-StartStyling.patch
 )
 sha256sums=('SKIP'
             'SKIP'
             'ce90cd9a9c56abcbafeb88d33280d53bee5af98cd9e15f50d6a9e49ae1edda30'
-            'c4039f693996dd20be4e8a460fffb984fd34fd810b16b9b1ca7fc4f35df2cc17')
+            'c4039f693996dd20be4e8a460fffb984fd34fd810b16b9b1ca7fc4f35df2cc17'
+            '42d2c03d19eb6d64b0eb26c6c591fc142f61fcc251b0efcb91377f40448d9778')
 
 pkgver() {
   cd aegisub
@@ -70,6 +72,9 @@ prepare() {
 
   # Fix build with wxWidgets 3.0
   patch -p1 -i ../0001-Restrict-the-usage-of-undocumented-wxBitmap-ctor-to-.patch
+
+  # Fix runtime warning "The second argument passed to StartStyling should be 0"
+  patch -p1 -i ../Remove-second-argument-to-StartStyling.patch
 
   cp -f /usr/share/aclocal/ax_boost_{chrono,filesystem,locale,regex,system,thread}.m4 m4macros/
 

@@ -1,7 +1,7 @@
 pkgbase = aegisub-git
 	pkgdesc = A general-purpose subtitle editor with ASS/SSA support
 	pkgver = 3.2.2.r407.6f546951b
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.aegisub.org
 	arch = x86_64
 	license = GPL
@@ -31,9 +31,11 @@ pkgbase = aegisub-git
 	source = git+https://github.com/Aegisub/assdraw.git
 	source = 0001-Use-target-name-without-directory-in-_OBJ-macro.patch
 	source = 0001-Restrict-the-usage-of-undocumented-wxBitmap-ctor-to-.patch
+	source = Remove-second-argument-to-StartStyling.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = ce90cd9a9c56abcbafeb88d33280d53bee5af98cd9e15f50d6a9e49ae1edda30
 	sha256sums = c4039f693996dd20be4e8a460fffb984fd34fd810b16b9b1ca7fc4f35df2cc17
+	sha256sums = 42d2c03d19eb6d64b0eb26c6c591fc142f61fcc251b0efcb91377f40448d9778
 
 pkgname = aegisub-git
