@@ -7,7 +7,7 @@ _pkgbase=poppler
 pkgname=('lib32-poppler' 'lib32-poppler-glib')
 pkgver=22.08.0
 _commit=920c89f8f43bdfe8966c8e397e7f67f5302e9435
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 license=('GPL')
 makedepends=('lib32-libjpeg' 'lib32-gcc-libs' 'lib32-cairo'
@@ -67,7 +67,7 @@ package_lib32-poppler() {
   make DESTDIR="${pkgdir}" install
 
   # cleanup for splitted build
-  rm -r "${pkgdir}/usr/"{bin,include,share}
+  rm -vrf "${pkgdir}/usr/"{bin,include,share}
   rm -vf "${pkgdir}"/usr/lib32/libpoppler-glib.*
   rm -vf "${pkgdir}"/usr/lib32/pkgconfig/poppler-glib.pc
   rm -vrf "${pkgdir}"/usr/lib32/gir*
@@ -83,7 +83,7 @@ package_lib32-poppler-glib() {
   make -C glib DESTDIR="${pkgdir}" install
   install -m755 -d "${pkgdir}/usr/lib32/pkgconfig"
   install -m644 poppler-glib.pc "${pkgdir}/usr/lib32/pkgconfig/"
-  rm -r "${pkgdir}/usr/"{include,share}
+  rm -vrf "${pkgdir}/usr/"{include,share}
   rm -vf "${pkgdir}"/usr/lib32/libpoppler.*
 }
 
