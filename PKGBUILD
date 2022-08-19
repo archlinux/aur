@@ -13,7 +13,7 @@ source=(
 source_x86_64=("${pkgname}-${pkgver}-${pkgrel}-x86_64.deb::https://github.com/V0IDPlusPlus/Tencent-Docs-Debian-Package-Archive/releases/download/v${pkgver}-${pkgrel}/LinuxTencentDocsAmd64.deb")
 source_aarch64=("${pkgname}-${pkgver}-${pkgrel}-aarch64.deb::https://github.com/V0IDPlusPlus/Tencent-Docs-Debian-Package-Archive/releases/download/v${pkgver}-${pkgrel}/LinuxTencentDocsArm64.deb")
 
-sha256sums=("7a247583cbc260b7bdf6cb4524f44da787177e2ec86e3e080598a9e668f8af4f")
+sha256sums=("7dd7432ece74ddd5d5fd6de07e6b521a4b84206a8fa099b754f2a994641404d7")
 sha256sums_x86_64=("c62359c9c05e3ffb171494b80757fd5fe814a9d71c906e25f0686b1fee6a40e6")
 sha256sums_aarch64=("e7a795647af406614113fe8fd3941c9b18f5705010953e94d424408591b32800")
 
