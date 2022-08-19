@@ -2,7 +2,7 @@
 
 pkgname=kafkactl
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command Line Tool for managing Apache Kafka"
 url="https://github.com/deviceinsight/kafkactl/"
 arch=("i686" "x86_64" "aarch64")
