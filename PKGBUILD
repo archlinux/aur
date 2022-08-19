@@ -3,11 +3,26 @@
 pkgname=blender-lts-bin
 pkgdesc='LTS blender version'
 pkgver='2.93.10'
+#USA Mirror
 _mirror="https://mirror.clarkson.edu"
-#_mirror="https://mirror.clarkson.edu/"
+
+##Alternate Mirrors##
+#China
+#_mirror="https://mirrors.aliyun.com"
+#Germany
+#_mirror="https://ftp.halifax.rwth-aachen.de"
+#Denmark
+#_mirror="https://mirrors.dotsrc.org"
+#Netherlands
+#_mirror="https://ftp.nluug.nl"
+#Singapore
+#https://mirror.freedif.org/blender/release/Blender2.93/blender-2.93.10-linux-x64.tar.xz
+#Brazil
+#_mirror="https://mirrors.ocf.berkeley.edu"
+
 _pkgfile=${pkgname%-lts-bin}-$pkgver-linux-x64.tar.xz
 source=("${_mirror}/blender/release/Blender${pkgver%.*}/$_pkgfile" 'blender.sh')
-pkgrel=1
+pkgrel=2
 license=('GPL')
 arch=('x86_64')
 url='https://www.blender.org'
