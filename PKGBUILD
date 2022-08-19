@@ -6,30 +6,28 @@ _base=imread
 pkgname=python-${_base}
 pkgdesc="Read images to numpy arrays"
 pkgver=0.7.4
-pkgrel=1
-arch=(any)
+pkgrel=2
+arch=(x86_64)
 url="https://github.com/luispedro/${_base}"
 license=(MIT)
 depends=(python-numpy)
-makedepends=(python-setuptools libpng libjpeg-turbo libtiff libwebp xcftools git)
+makedepends=(python-setuptools libpng libjpeg-turbo libtiff libwebp xcftools)
 checkdepends=(python-nose)
-source=("git+${url}.git?signed#tag=v${pkgver}")
-sha512sums=('SKIP')
-validpgpkeys=('6FB8B07A620CC7A7FB5B2AB4110D6C98E760BEF2') # Lu\xed\x73 Pedro Coelho <lpc@cmu.edu>
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('6ec445ede6a25f57f2ab6ab3b4a89b91015edc6a73cb03124c746a21c4fcb1486abb88cf8d9980347afb4ed6b916bfd450b003ded1dc21aa1732c84472a90d28')
 
 build() {
-  cd ${_base}
-  export PYTHONHASHSEED=0
+  cd ${_base}-${pkgver}
   python setup.py build
 }
 
 check() {
-  cd ${_base}
+  cd ${_base}-${pkgver}
   python setup.py test
 }
 
 package() {
-  cd ${_base}
+  cd ${_base}-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 COPYING.MIT -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
