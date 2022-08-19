@@ -1,7 +1,7 @@
 pkgbase = wxmaxima
 	pkgdesc = A wxWidgets GUI for the computer algebra system Maxima
 	pkgver = 22.05.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/wxmaxima-developers/wxmaxima
 	arch = x86_64
 	license = GPL2
@@ -13,10 +13,8 @@ pkgbase = wxmaxima
 	optdepends = man-db: manual pages for wxMaxima
 	source = wxmaxima-22.05.0::https://github.com/wxmaxima-developers/wxmaxima/archive/Version-22.05.0/wxmaxima-Version-22.05.0.tar.gz
 	source = wxmaxima-22.05.0.asc::https://github.com/wxmaxima-developers/wxmaxima/releases/download/Version-22.05.0/Version-22.05.0.tar.gz.asc
-	source = private-fonts.patch::https://github.com/wxmaxima-developers/wxmaxima/commit/05251f68470e44bc0db3cc2e3a1aa14bf8c02fee.patch
 	validpgpkeys = 53F047CE66B91B0F724C545D5C86C0E4211D5B8E
 	sha512sums = e78ce86d3265b8c5d1d9b110075bdc8e3ff180a0a017142f852b022a1984e7e9bf0a4b7d2fb829f8c87b09899ef57a6e8ee203ec7edac52e7d05f0a05d2c9fe8
 	sha512sums = SKIP
-	sha512sums = 04a5e0274d07ef826432d63846af35c578fddd6b9c832dd1406b6deede6161cf0f4295de1acd9564dc8ebbee6d7e2067d47b1ae422366616d51f1e4d2851e039
 
 pkgname = wxmaxima
