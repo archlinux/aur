@@ -1,5 +1,5 @@
 pkgbase = tencent-docs-bin
-	pkgdesc = 让协作更高效，创作更轻松
+	pkgdesc = 腾讯文档 Tencent Docs - 让协作更高效，创作更轻松
 	pkgver = 2.3.15
 	pkgrel = 1
 	url = https://docs.qq.com/home/
