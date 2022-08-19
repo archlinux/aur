@@ -7,10 +7,7 @@ pkgdesc='CLI tool combining multiple utilities for working with Dolby Vision'
 arch=('x86_64')
 url='https://github.com/quietvoid/dovi_tool'
 license=('MIT')
-makedepends=(
-  'git'
-  'rust'
-)
+makedepends=('git' 'cargo')
 conflicts=('dovi_tool')
 provides=('dovi_tool')
 source=(git+https://github.com/quietvoid/dovi_tool.git)
