@@ -1,11 +1,11 @@
 # Maintainer: Slips slipfox(underscore)xyz(at)riseup(dot)net
 _pkgname=pow
 pkgname=${_pkgname}-git
-pkgver=r39.7d20037
+pkgver=r52.d9e1541
 pkgrel=1
 pkgdesc="A lightning fast AUR search utility written in C."
 arch=('i386' 'x86_64')
-url="https://git.envs.net/Slips/pow"
+url="https://git.slipfox.xyz/Slips/pow"
 license=('GPL3')
 groups=()
 depends=('json-c')
