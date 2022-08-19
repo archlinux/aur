@@ -1,27 +1,28 @@
-# Maintainer: Felix von Perger <frekkvb@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Felix von Perger <frekkvb@gmail.com>
 
 pkgname=libthreadar
-pkgver=1.3.1
-pkgrel=2
-pkgdesc='A C++ library providing an abstracted set of C++ classes to manipulate threads in a very simple and efficient way.'
-arch=('i686' 'x86_64')
+pkgver=1.4.0
+pkgrel=1
+pkgdesc='C++ library manage threads and any type to exception between them'
+arch=('x86_64')
 url='http://libthreadar.sourceforge.net/'
 license=('LGPL3')
-makedepends=('doxygen')
-source=("https://downloads.sourceforge.net/project/libthreadar/${pkgver}/libthreadar-${pkgver}.tar.gz")
-sha512sums=('6eefe4d2262a170ed04e6e9e7efaae2945b68012cfed2e4606f0d6089050f3e4059d4dca2141ae862c158f5161c5ebaaa35c3eeb431fab10263787e5b74deddf')
-options=('!libtool')
+depends=('gcc-libs')
+provides=('libthreadar.so')
+source=("$pkgname-$pkgver.tar.gz::https://downloads.sourceforge.net/project/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('2e4715178027bac973a4883f4bcb063494327ba886710446a82a80860f1a3791')
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "$pkgname-$pkgver"
 	./configure --prefix=/usr --sysconfdir=/etc --disable-static --disable-build-html
+	sed -i '/^test_barrier_LDFLAGS/s/-all-static//' -i doc/examples/Makefile{,.am,.in}
 	make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	make DESTDIR="${pkgdir}" pkgdatadir="/usr/share/doc/${pkgname}/html" install
-	install -d "${pkgdir}/usr/share/doc/${pkgname}"
-	install -pm644 AUTHORS ChangeLog NEWS README THANKS "${pkgdir}/usr/share/doc/${pkgname}"
+	cd "$pkgname-$pkgver"
+	make DESTDIR="$pkgdir" pkgdatadir="/usr/share/doc/$pkgname/html" install
+	install -Dm644 AUTHORS README THANKS -t "$pkgdir/usr/share/doc/$pkgname/"
 	rm -rf "${pkgdir}/usr/share/doc/dar/html/man"
 }

@@ -1,15 +1,13 @@
 pkgbase = libthreadar
-	pkgdesc = A C++ library providing an abstracted set of C++ classes to manipulate threads in a very simple and efficient way.
-	pkgver = 1.3.1
-	pkgrel = 2
+	pkgdesc = C++ library manage threads and any type to exception between them
+	pkgver = 1.4.0
+	pkgrel = 1
 	url = http://libthreadar.sourceforge.net/
-	arch = i686
 	arch = x86_64
 	license = LGPL3
-	makedepends = doxygen
-	options = !libtool
-	source = https://downloads.sourceforge.net/project/libthreadar/1.3.1/libthreadar-1.3.1.tar.gz
-	sha512sums = 6eefe4d2262a170ed04e6e9e7efaae2945b68012cfed2e4606f0d6089050f3e4059d4dca2141ae862c158f5161c5ebaaa35c3eeb431fab10263787e5b74deddf
+	depends = gcc-libs
+	provides = libthreadar.so
+	source = libthreadar-1.4.0.tar.gz::https://downloads.sourceforge.net/project/libthreadar/1.4.0/libthreadar-1.4.0.tar.gz
+	sha256sums = 2e4715178027bac973a4883f4bcb063494327ba886710446a82a80860f1a3791
 
 pkgname = libthreadar
-
