@@ -3,7 +3,7 @@ pkgdesc="IMU complementary filter based on http://www.mdpi.com/1424-8220/15/8/19
 url='https://wiki.ros.org/imu_complementary_filter?distro=noetic'
 
 pkgname='ros-noetic-imu-complementary-filter'
-pkgver=1.2.4
+pkgver=1.2.5
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -39,7 +39,7 @@ depends=(
 # Tarball version (faster download)
 _dir="imu_tools-${pkgver}/imu_complementary_filter "
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ccny-ros-pkg/imu_tools/archive/${pkgver}.tar.gz")
-sha256sums=('ff3ddceb244c9f9112682274287b2a0bb15ae019e64bf70aed5c28142d6e0769')
+sha256sums=('1ef8a181653114807c61875639c207fd20e8c8c76df47db181c3c9c7e2c13aa1')
 
 build() {
     # Use ROS environment variables
