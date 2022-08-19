@@ -376,7 +376,7 @@ index c2cf76abf..0f34cf5b8 100644
  
  CLUTTER_EXPORT
 diff --git a/clutter/clutter/clutter-stage.c b/clutter/clutter/clutter-stage.c
-index e97cd54a3..f40df1017 100644
+index 17186c229..5a0583ca3 100644
 --- a/clutter/clutter/clutter-stage.c
 +++ b/clutter/clutter/clutter-stage.c
 @@ -127,8 +127,6 @@ struct _ClutterStagePrivate
@@ -507,7 +507,7 @@ index af7cd6472..2a663b00b 100644
  	@properties may effect the global monitor configuration state. Possible
  	properties are:
 diff --git a/meson.build b/meson.build
-index 78f94b112..fa0cc23f0 100644
+index 05aeb4609..8925469a6 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -427,6 +427,7 @@ if buildtype != 'plain'
@@ -1026,15 +1026,15 @@ index 3f21c7c48..355e75e96 100644
 +
  #endif /* META_RENDERER_VIEW_H */
 diff --git a/src/backends/meta-screen-cast-stream-src.c b/src/backends/meta-screen-cast-stream-src.c
-index 1e009070c..0d8bc1751 100644
+index 806fa806c..817ec338b 100644
 --- a/src/backends/meta-screen-cast-stream-src.c
 +++ b/src/backends/meta-screen-cast-stream-src.c
 @@ -78,7 +78,7 @@ static guint signals[N_SIGNALS];
  
  typedef struct _MetaPipeWireSource
  {
--  GSource base;
-+  GSource source;
+-  GSource source;
++  GSource base;
  
    MetaScreenCastStreamSrc *src;
    struct pw_loop *pipewire_loop;
@@ -1042,94 +1042,94 @@ index 1e009070c..0d8bc1751 100644
  
    struct pw_context *pipewire_context;
    struct pw_core *pipewire_core;
--  MetaPipeWireSource *pipewire_source;
-+  GSource *pipewire_source;
+-  GSource *pipewire_source;
++  MetaPipeWireSource *pipewire_source;
    struct spa_hook pipewire_core_listener;
  
    gboolean is_enabled;
-@@ -1145,7 +1145,7 @@ on_core_error (void       *data,
+@@ -1167,7 +1167,7 @@ on_core_error (void       *data,
  }
  
  static gboolean
--pipewire_loop_source_prepare (GSource *base,
-+pipewire_loop_source_prepare (GSource *source,
+-pipewire_loop_source_prepare (GSource *source,
++pipewire_loop_source_prepare (GSource *base,
                                int     *timeout)
  {
    *timeout = -1;
-@@ -1190,24 +1190,21 @@ static GSourceFuncs pipewire_source_funcs =
+@@ -1212,21 +1212,24 @@ static GSourceFuncs pipewire_source_funcs =
    pipewire_loop_source_finalize
  };
  
--static MetaPipeWireSource *
--create_pipewire_source (MetaScreenCastStreamSrc *src)
-+static GSource *
-+create_pipewire_source (MetaScreenCastStreamSrc *src,
-+                        struct pw_loop          *pipewire_loop)
+-static GSource *
+-create_pipewire_source (MetaScreenCastStreamSrc *src,
+-                        struct pw_loop          *pipewire_loop)
++static MetaPipeWireSource *
++create_pipewire_source (MetaScreenCastStreamSrc *src)
  {
    GSource *source;
    MetaPipeWireSource *pipewire_source;
  
    source = g_source_new (&pipewire_source_funcs, sizeof (MetaPipeWireSource));
    g_source_set_name (source, "[mutter] PipeWire");
-+
+-
    pipewire_source = (MetaPipeWireSource *) source;
    pipewire_source->src = src;
--  pipewire_source->pipewire_loop = pw_loop_new (NULL);
--  if (!pipewire_source->pipewire_loop)
--    {
--      g_source_unref ((GSource *) pipewire_source);
--      return NULL;
--    }
-+  pipewire_source->pipewire_loop = pipewire_loop;
+-  pipewire_source->pipewire_loop = pipewire_loop;
++  pipewire_source->pipewire_loop = pw_loop_new (NULL);
++  if (!pipewire_source->pipewire_loop)
++    {
++      g_source_unref ((GSource *) pipewire_source);
++      return NULL;
++    }
  
--  g_source_add_unix_fd (&pipewire_source->base,
-+  g_source_add_unix_fd (source,
+-  g_source_add_unix_fd (source,
++  g_source_add_unix_fd (&pipewire_source->base,
                          pw_loop_get_fd (pipewire_source->pipewire_loop),
                          G_IO_IN | G_IO_ERR);
  
-@@ -1215,7 +1212,7 @@ create_pipewire_source (MetaScreenCastStreamSrc *src)
+@@ -1234,7 +1237,7 @@ create_pipewire_source (MetaScreenCastStreamSrc *src,
    g_source_attach (source, NULL);
    g_source_unref (source);
  
--  return pipewire_source;
-+  return source;
+-  return source;
++  return pipewire_source;
  }
  
  static const struct pw_core_events core_events = {
-@@ -1231,8 +1228,17 @@ meta_screen_cast_stream_src_initable_init (GInitable     *initable,
+@@ -1250,17 +1253,8 @@ meta_screen_cast_stream_src_initable_init (GInitable     *initable,
    MetaScreenCastStreamSrc *src = META_SCREEN_CAST_STREAM_SRC (initable);
    MetaScreenCastStreamSrcPrivate *priv =
      meta_screen_cast_stream_src_get_instance_private (src);
-+  struct pw_loop *pipewire_loop;
-+
-+  pipewire_loop = pw_loop_new (NULL);
-+  if (!pipewire_loop)
-+    {
-+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-+                   "Failed to create PipeWire loop");
-+      return FALSE;
-+    }
+-  struct pw_loop *pipewire_loop;
+-
+-  pipewire_loop = pw_loop_new (NULL);
+-  if (!pipewire_loop)
+-    {
+-      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+-                   "Failed to create PipeWire loop");
+-      return FALSE;
+-    }
  
--  priv->pipewire_source = create_pipewire_source (src);
-+  priv->pipewire_source = create_pipewire_source (src, pipewire_loop);
+-  priv->pipewire_source = create_pipewire_source (src, pipewire_loop);
++  priv->pipewire_source = create_pipewire_source (src);
    if (!priv->pipewire_source)
      {
        g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-@@ -1240,7 +1246,7 @@ meta_screen_cast_stream_src_initable_init (GInitable     *initable,
+@@ -1268,7 +1262,7 @@ meta_screen_cast_stream_src_initable_init (GInitable     *initable,
        return FALSE;
      }
  
--  priv->pipewire_context = pw_context_new (priv->pipewire_source->pipewire_loop,
-+  priv->pipewire_context = pw_context_new (pipewire_loop,
+-  priv->pipewire_context = pw_context_new (pipewire_loop,
++  priv->pipewire_context = pw_context_new (priv->pipewire_source->pipewire_loop,
                                             NULL, 0);
    if (!priv->pipewire_context)
      {
-@@ -1298,7 +1304,7 @@ meta_screen_cast_stream_src_dispose (GObject *object)
+@@ -1326,7 +1320,7 @@ meta_screen_cast_stream_src_dispose (GObject *object)
    g_clear_pointer (&priv->dmabuf_handles, g_hash_table_destroy);
    g_clear_pointer (&priv->pipewire_core, pw_core_disconnect);
    g_clear_pointer (&priv->pipewire_context, pw_context_destroy);
--  g_clear_pointer ((GSource **) &priv->pipewire_source, g_source_destroy);
-+  g_clear_pointer (&priv->pipewire_source, g_source_destroy);
+-  g_clear_pointer (&priv->pipewire_source, g_source_destroy);
++  g_clear_pointer ((GSource **) &priv->pipewire_source, g_source_destroy);
  
    G_OBJECT_CLASS (meta_screen_cast_stream_src_parent_class)->dispose (object);
  }
@@ -1616,7 +1616,7 @@ index f31e36aad..4e963833f 100644
                                                const int              *rectangles,
                                                int                     n_rectangles);
 diff --git a/src/backends/native/meta-output-kms.c b/src/backends/native/meta-output-kms.c
-index fb658f29d..a6196f0af 100644
+index f60d5ad0d..2f0425f2c 100644
 --- a/src/backends/native/meta-output-kms.c
 +++ b/src/backends/native/meta-output-kms.c
 @@ -97,6 +97,32 @@ meta_output_kms_set_underscan (MetaOutputKms *output_kms,
@@ -1652,7 +1652,7 @@ index fb658f29d..a6196f0af 100644
  static MetaPrivacyScreenState
  meta_output_kms_get_privacy_screen_state (MetaOutput *output)
  {
-@@ -405,6 +431,9 @@ meta_output_kms_new (MetaGpuKms        *gpu_kms,
+@@ -400,6 +426,9 @@ meta_output_kms_new (MetaGpuKms        *gpu_kms,
    output_info->supports_underscanning =
      meta_kms_connector_is_underscanning_supported (kms_connector);
  
@@ -1677,7 +1677,7 @@ index 52acc6032..54b1721a4 100644
                                      MetaOutputKms *other_output_kms);
  
 diff --git a/src/backends/native/meta-renderer-native.c b/src/backends/native/meta-renderer-native.c
-index d538cc25a..d1b0df07c 100644
+index f5f22c7b1..199e14f78 100644
 --- a/src/backends/native/meta-renderer-native.c
 +++ b/src/backends/native/meta-renderer-native.c
 @@ -62,6 +62,7 @@
@@ -1688,7 +1688,7 @@ index d538cc25a..d1b0df07c 100644
  #include "cogl/cogl.h"
  #include "core/boxes-private.h"
  
-@@ -1240,7 +1241,7 @@ meta_renderer_native_create_view (MetaRenderer       *renderer,
+@@ -1256,7 +1257,7 @@ meta_renderer_native_create_view (MetaRenderer       *renderer,
    int onscreen_width;
    int onscreen_height;
    MetaRectangle view_layout;
@@ -1697,7 +1697,7 @@ index d538cc25a..d1b0df07c 100644
    EGLSurface egl_surface;
    GError *error = NULL;
  
-@@ -1352,26 +1353,28 @@ meta_renderer_native_create_view (MetaRenderer       *renderer,
+@@ -1368,26 +1369,28 @@ meta_renderer_native_create_view (MetaRenderer       *renderer,
    meta_rectangle_from_graphene_rect (&crtc_config->layout,
                                       META_ROUNDING_STRATEGY_ROUND,
                                       &view_layout);
@@ -1740,7 +1740,7 @@ index d538cc25a..d1b0df07c 100644
  
        /* Ensure we don't point to stale surfaces when creating the offscreen */
        cogl_display_egl = cogl_display->winsys;
-@@ -1383,7 +1386,7 @@ meta_renderer_native_create_view (MetaRenderer       *renderer,
+@@ -1399,7 +1402,7 @@ meta_renderer_native_create_view (MetaRenderer       *renderer,
                                       cogl_display_egl->egl_context);
      }
  
@@ -1749,7 +1749,7 @@ index d538cc25a..d1b0df07c 100644
  }
  
  static void
-@@ -1451,6 +1454,7 @@ meta_renderer_native_prepare_frame (MetaRendererNative *renderer_native,
+@@ -1467,6 +1470,7 @@ meta_renderer_native_prepare_frame (MetaRendererNative *renderer_native,
    kms_device = meta_kms_crtc_get_device (kms_crtc);
  
    meta_crtc_kms_maybe_set_gamma (crtc_kms, kms_device);
@@ -1757,277 +1757,6 @@ index d538cc25a..d1b0df07c 100644
  }
  
  void
-diff --git a/src/backends/native/meta-renderer-view-native.c b/src/backends/native/meta-renderer-view-native.c
-new file mode 100644
-index 000000000..d3abcd021
---- /dev/null
-+++ b/src/backends/native/meta-renderer-view-native.c
-@@ -0,0 +1,220 @@
-+/* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
-+
-+/*
-+ * Copyright (C) 2020-2022 Dor Askayo
-+ *
-+ * This program is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU General Public License as
-+ * published by the Free Software Foundation; either version 2 of the
-+ * License, or (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but
-+ * WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program; if not, write to the Free Software
-+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
-+ * 02111-1307, USA.
-+ *
-+ * Written by:
-+ *     Dor Askayo <dor.askayo@gmail.com>
-+ */
-+
-+#include "backends/native/meta-renderer-view-native.h"
-+
-+#include "backends/meta-output.h"
-+#include "backends/native/meta-crtc-kms.h"
-+#include "backends/native/meta-kms.h"
-+#include "backends/native/meta-kms-device.h"
-+#include "backends/native/meta-output-kms.h"
-+#include "clutter/clutter.h"
-+
-+typedef enum _MetaFrameSyncMode
-+{
-+  META_FRAME_SYNC_MODE_INIT,
-+  META_FRAME_SYNC_MODE_ENABLED,
-+  META_FRAME_SYNC_MODE_DISABLED,
-+} MetaFrameSyncMode;
-+
-+struct _MetaRendererViewNative
-+{
-+  MetaRendererView parent;
-+
-+  gboolean frame_sync_mode_update_queued;
-+
-+  MetaFrameSyncMode frame_sync_mode;
-+  ClutterActor *frame_sync_actor;
-+
-+  gulong frame_sync_actor_frozen_id;
-+  gulong frame_sync_actor_destroy_id;
-+};
-+
-+G_DEFINE_TYPE (MetaRendererViewNative, meta_renderer_view_native,
-+               META_TYPE_RENDERER_VIEW)
-+
-+static void
-+on_frame_sync_actor_frozen (ClutterActor           *actor,
-+                            MetaRendererViewNative *view_native)
-+{
-+  meta_renderer_view_native_set_frame_sync_actor (view_native, NULL);
-+}
-+
-+static void
-+on_frame_sync_actor_destroyed (ClutterActor           *actor,
-+                               MetaRendererViewNative *view_native)
-+{
-+  meta_renderer_view_native_set_frame_sync_actor (view_native, NULL);
-+}
-+
-+static void
-+meta_renderer_view_native_schedule_actor_update (ClutterStageView *stage_view,
-+                                                 ClutterActor     *actor)
-+{
-+  MetaRendererViewNative *view_native = META_RENDERER_VIEW_NATIVE (stage_view);
-+  ClutterFrameClock *frame_clock;
-+
-+  g_return_if_fail (actor != NULL);
-+
-+  frame_clock = clutter_stage_view_get_frame_clock (stage_view);
-+
-+  if (view_native->frame_sync_mode == META_FRAME_SYNC_MODE_ENABLED &&
-+      actor == view_native->frame_sync_actor)
-+    clutter_frame_clock_schedule_update_now (frame_clock);
-+  else
-+    clutter_frame_clock_schedule_update (frame_clock);
-+}
-+
-+void
-+meta_renderer_view_native_set_frame_sync_actor (MetaRendererViewNative *view_native,
-+                                                ClutterActor           *actor)
-+{
-+  if (G_LIKELY (actor == view_native->frame_sync_actor))
-+    return;
-+
-+  g_clear_signal_handler (&view_native->frame_sync_actor_frozen_id,
-+                          view_native->frame_sync_actor);
-+  g_clear_signal_handler (&view_native->frame_sync_actor_destroy_id,
-+                          view_native->frame_sync_actor);
-+
-+  if (actor)
-+    {
-+      view_native->frame_sync_actor_frozen_id =
-+        g_signal_connect (actor, "frozen",
-+                          G_CALLBACK (on_frame_sync_actor_frozen),
-+                          view_native);
-+      view_native->frame_sync_actor_destroy_id =
-+        g_signal_connect (actor, "destroy",
-+                          G_CALLBACK (on_frame_sync_actor_destroyed),
-+                          view_native);
-+    }
-+
-+  view_native->frame_sync_actor = actor;
-+
-+  view_native->frame_sync_mode_update_queued = TRUE;
-+}
-+
-+static void
-+meta_renderer_view_native_set_frame_sync (MetaRendererViewNative *view_native,
-+                                          MetaOutput             *output,
-+                                          MetaFrameSyncMode       sync_mode)
-+{
-+  ClutterFrameClock *frame_clock =
-+    clutter_stage_view_get_frame_clock (CLUTTER_STAGE_VIEW (view_native));
-+  MetaOutputKms *output_kms = META_OUTPUT_KMS (output);
-+
-+  switch (sync_mode)
-+    {
-+    case META_FRAME_SYNC_MODE_ENABLED:
-+      clutter_frame_clock_set_mode (frame_clock,
-+                                    CLUTTER_FRAME_CLOCK_MODE_VARIABLE);
-+      meta_output_kms_set_vrr_mode (output_kms, TRUE);
-+      break;
-+    case META_FRAME_SYNC_MODE_DISABLED:
-+      clutter_frame_clock_set_mode (frame_clock,
-+                                    CLUTTER_FRAME_CLOCK_MODE_FIXED);
-+      meta_output_kms_set_vrr_mode (output_kms, FALSE);
-+      break;
-+    case META_FRAME_SYNC_MODE_INIT:
-+      g_assert_not_reached ();
-+    }
-+
-+  view_native->frame_sync_mode = sync_mode;
-+}
-+
-+static MetaFrameSyncMode
-+meta_renderer_view_native_get_applicable_sync_mode (MetaRendererViewNative *view_native)
-+{
-+  MetaRendererView *view = META_RENDERER_VIEW (view_native);
-+  MetaOutput *output = meta_renderer_view_get_output (view);
-+
-+  if (view_native->frame_sync_actor != NULL &&
-+      meta_output_is_vrr_allowed (output))
-+    return META_FRAME_SYNC_MODE_ENABLED;
-+  else
-+    return META_FRAME_SYNC_MODE_DISABLED;
-+}
-+
-+void
-+meta_renderer_view_native_maybe_set_frame_sync (MetaRendererViewNative *view_native)
-+{
-+  MetaRendererView *view;
-+  MetaOutput *output;
-+  MetaFrameSyncMode applicable_sync_mode;
-+
-+  if (G_LIKELY (!view_native->frame_sync_mode_update_queued))
-+    return;
-+
-+  view_native->frame_sync_mode_update_queued = FALSE;
-+
-+  view = META_RENDERER_VIEW (view_native);
-+  output = meta_renderer_view_get_output (view);
-+
-+  if (!meta_output_is_vrr_capable (output))
-+    return;
-+
-+  applicable_sync_mode =
-+    meta_renderer_view_native_get_applicable_sync_mode (view_native);
-+
-+  if (applicable_sync_mode != view_native->frame_sync_mode)
-+    {
-+      meta_renderer_view_native_set_frame_sync (view_native,
-+                                                output,
-+                                                applicable_sync_mode);
-+    }
-+}
-+
-+static void
-+meta_renderer_view_native_dispose (GObject *object)
-+{
-+  MetaRendererViewNative *view_native = META_RENDERER_VIEW_NATIVE (object);
-+
-+  if (view_native->frame_sync_actor)
-+    {
-+      g_clear_signal_handler (&view_native->frame_sync_actor_destroy_id,
-+                              view_native->frame_sync_actor);
-+      g_clear_signal_handler (&view_native->frame_sync_actor_frozen_id,
-+                              view_native->frame_sync_actor);
-+    }
-+
-+  G_OBJECT_CLASS (meta_renderer_view_native_parent_class)->dispose (object);
-+}
-+
-+static void
-+meta_renderer_view_native_class_init (MetaRendererViewNativeClass *klass)
-+{
-+  GObjectClass *object_class = G_OBJECT_CLASS (klass);
-+  ClutterStageViewClass *clutter_stage_view_class = CLUTTER_STAGE_VIEW_CLASS (klass);
-+
-+  object_class->dispose = meta_renderer_view_native_dispose;
-+
-+  clutter_stage_view_class->schedule_actor_update = meta_renderer_view_native_schedule_actor_update;
-+}
-+
-+static void
-+meta_renderer_view_native_init (MetaRendererViewNative *view_native)
-+{
-+  view_native->frame_sync_mode_update_queued = TRUE;
-+  view_native->frame_sync_mode = META_FRAME_SYNC_MODE_INIT;
-+}
-diff --git a/src/backends/native/meta-renderer-view-native.h b/src/backends/native/meta-renderer-view-native.h
-new file mode 100644
-index 000000000..16e3a8d48
---- /dev/null
-+++ b/src/backends/native/meta-renderer-view-native.h
-@@ -0,0 +1,39 @@
-+/* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
-+
-+/*
-+ * Copyright (C) 2020-2022 Dor Askayo
-+ *
-+ * This program is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU General Public License as
-+ * published by the Free Software Foundation; either version 2 of the
-+ * License, or (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but
-+ * WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program; if not, write to the Free Software
-+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
-+ * 02111-1307, USA.
-+ *
-+ * Written by:
-+ *     Dor Askayo <dor.askayo@gmail.com>
-+ */
-+
-+#ifndef META_RENDERER_VIEW_NATIVE_H
-+#define META_RENDERER_VIEW_NATIVE_H
-+
-+#include "backends/meta-renderer-view.h"
-+
-+#define META_TYPE_RENDERER_VIEW_NATIVE (meta_renderer_view_native_get_type ())
-+G_DECLARE_FINAL_TYPE (MetaRendererViewNative, meta_renderer_view_native,
-+                      META, RENDERER_VIEW_NATIVE, MetaRendererView)
-+
-+void meta_renderer_view_native_set_frame_sync_actor (MetaRendererViewNative *view_native,
-+                                                     ClutterActor           *actor);
-+
-+void meta_renderer_view_native_maybe_set_frame_sync (MetaRendererViewNative *view_native);
-+
-+#endif /* META_RENDERER_VIEW_NATIVE_H */
 diff --git a/src/backends/native/meta-udev.c b/src/backends/native/meta-udev.c
 index 0a9ed5fd1..fa854ce0c 100644
 --- a/src/backends/native/meta-udev.c
@@ -2532,445 +2261,6 @@ index f0d469172..990aa1e77 100644
    compositor_class->grab_end = meta_compositor_server_grab_end;
 +  compositor_class->create_view = meta_compositor_server_create_view;
  }
-diff --git a/src/compositor/meta-compositor-view-native.c b/src/compositor/meta-compositor-view-native.c
-new file mode 100644
-index 000000000..9a4558c67
---- /dev/null
-+++ b/src/compositor/meta-compositor-view-native.c
-@@ -0,0 +1,127 @@
-+/* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
-+
-+/*
-+ * Copyright (C) 2022 Dor Askayo
-+ *
-+ * This program is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU General Public License as
-+ * published by the Free Software Foundation; either version 2 of the
-+ * License, or (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but
-+ * WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program; if not, write to the Free Software
-+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
-+ * 02111-1307, USA.
-+ *
-+ * Written by:
-+ *     Dor Askayo <dor.askayo@gmail.com>
-+ */
-+
-+#include "compositor/meta-compositor-view-native.h"
-+
-+#include "backends/native/meta-renderer-view-native.h"
-+#include "clutter/clutter.h"
-+#include "compositor/compositor-private.h"
-+#include "core/window-private.h"
-+
-+struct _MetaCompositorViewNative
-+{
-+  MetaCompositorView parent;
-+};
-+
-+G_DEFINE_TYPE (MetaCompositorViewNative, meta_compositor_view_native,
-+               META_TYPE_COMPOSITOR_VIEW)
-+
-+static ClutterActor *
-+find_frame_sync_actor (MetaCompositorView *compositor_view,
-+                       MetaCompositor     *compositor)
-+{
-+  MetaWindowActor *window_actor;
-+  MetaWindow *window;
-+  ClutterStageView *stage_view;
-+  MetaRectangle view_layout;
-+  MetaSurfaceActor *surface_actor;
-+
-+  if (meta_compositor_is_unredirect_inhibited (compositor))
-+    return NULL;
-+
-+  window_actor =
-+    meta_compositor_view_get_top_window_actor (compositor_view);
-+  if (!window_actor)
-+    return NULL;
-+
-+  if (meta_window_actor_is_frozen (window_actor))
-+    return NULL;
-+
-+  if (meta_window_actor_effect_in_progress (window_actor))
-+    return NULL;
-+
-+  if (clutter_actor_has_transitions (CLUTTER_ACTOR (window_actor)))
-+    return NULL;
-+
-+  window = meta_window_actor_get_meta_window (window_actor);
-+  if (!window)
-+    return NULL;
-+
-+  stage_view = meta_compositor_view_get_stage_view (compositor_view);
-+
-+  clutter_stage_view_get_layout (stage_view, &view_layout);
-+
-+  if (!meta_window_frame_contains_rect (window, &view_layout))
-+    return NULL;
-+
-+  surface_actor = meta_window_actor_get_scanout_candidate (window_actor);
-+  if (!surface_actor)
-+    return NULL;
-+
-+  if (!meta_surface_actor_contains_rect (surface_actor,
-+                                         &view_layout))
-+    return NULL;
-+
-+  return CLUTTER_ACTOR (surface_actor);
-+}
-+
-+void
-+meta_compositor_view_native_maybe_set_frame_sync (MetaCompositorViewNative *view_native,
-+                                                  MetaCompositor           *compositor)
-+{
-+  MetaCompositorView *compositor_view =
-+    META_COMPOSITOR_VIEW (view_native);
-+  ClutterActor *frame_sync_actor;
-+  MetaRendererViewNative *renderer_view_native;
-+  ClutterStageView *stage_view;
-+
-+  frame_sync_actor = find_frame_sync_actor (compositor_view,
-+                                            compositor);
-+
-+  stage_view = meta_compositor_view_get_stage_view (compositor_view);
-+  renderer_view_native = META_RENDERER_VIEW_NATIVE (stage_view);
-+
-+  meta_renderer_view_native_set_frame_sync_actor (renderer_view_native,
-+                                                  frame_sync_actor);
-+}
-+
-+MetaCompositorViewNative *
-+meta_compositor_view_native_new (ClutterStageView *stage_view)
-+{
-+  g_assert (stage_view);
-+
-+  return g_object_new (META_TYPE_COMPOSITOR_VIEW_NATIVE,
-+                       "stage-view", stage_view,
-+                       NULL);
-+}
-+
-+static void
-+meta_compositor_view_native_class_init (MetaCompositorViewNativeClass *klass)
-+{
-+}
-+
-+static void
-+meta_compositor_view_native_init (MetaCompositorViewNative *view_native)
-+{
-+}
-diff --git a/src/compositor/meta-compositor-view-native.h b/src/compositor/meta-compositor-view-native.h
-new file mode 100644
-index 000000000..301e26f7d
---- /dev/null
-+++ b/src/compositor/meta-compositor-view-native.h
-@@ -0,0 +1,41 @@
-+/* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
-+
-+/*
-+ * Copyright (C) 2022 Dor Askayo
-+ *
-+ * This program is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU General Public License as
-+ * published by the Free Software Foundation; either version 2 of the
-+ * License, or (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but
-+ * WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program; if not, write to the Free Software
-+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
-+ * 02111-1307, USA.
-+ *
-+ * Written by:
-+ *     Dor Askayo <dor.askayo@gmail.com>
-+ */
-+
-+#ifndef META_COMPOSITOR_VIEW_NATIVE_H
-+#define META_COMPOSITOR_VIEW_NATIVE_H
-+
-+#include "clutter/clutter-mutter.h"
-+#include "compositor/meta-compositor-view.h"
-+#include "meta/compositor.h"
-+
-+#define META_TYPE_COMPOSITOR_VIEW_NATIVE (meta_compositor_view_native_get_type ())
-+G_DECLARE_FINAL_TYPE (MetaCompositorViewNative, meta_compositor_view_native,
-+                      META, COMPOSITOR_VIEW_NATIVE, MetaCompositorView)
-+
-+MetaCompositorViewNative *meta_compositor_view_native_new (ClutterStageView *stage_view);
-+
-+void meta_compositor_view_native_maybe_set_frame_sync (MetaCompositorViewNative *view_native,
-+                                                       MetaCompositor           *compositor);
-+
-+#endif /* META_COMPOSITOR_VIEW_NATIVE_H */
-diff --git a/src/compositor/meta-compositor-view.c b/src/compositor/meta-compositor-view.c
-new file mode 100644
-index 000000000..8febba936
---- /dev/null
-+++ b/src/compositor/meta-compositor-view.c
-@@ -0,0 +1,196 @@
-+/* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
-+
-+/*
-+ * Copyright (C) 2022 Dor Askayo
-+ *
-+ * This program is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU General Public License as
-+ * published by the Free Software Foundation; either version 2 of the
-+ * License, or (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but
-+ * WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program; if not, write to the Free Software
-+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
-+ * 02111-1307, USA.
-+ *
-+ * Written by:
-+ *     Dor Askayo <dor.askayo@gmail.com>
-+ */
-+
-+#include "compositor/meta-compositor-view.h"
-+
-+#include "core/window-private.h"
-+#include "meta/boxes.h"
-+#include "meta/window.h"
-+
-+enum
-+{
-+  PROP_0,
-+
-+  PROP_STAGE_VIEW,
-+
-+  N_PROPS
-+};
-+
-+static GParamSpec *obj_props[N_PROPS];
-+
-+typedef struct _MetaCompositorViewPrivate
-+{
-+  ClutterStageView *stage_view;
-+
-+  MetaWindowActor *top_window_actor;
-+} MetaCompositorViewPrivate;
-+
-+G_DEFINE_TYPE_WITH_PRIVATE (MetaCompositorView, meta_compositor_view,
-+                            G_TYPE_OBJECT)
-+
-+MetaCompositorView *
-+meta_compositor_view_new (ClutterStageView *stage_view)
-+{
-+  g_assert (stage_view);
-+
-+  return g_object_new (META_TYPE_COMPOSITOR_VIEW,
-+                       "stage-view", stage_view,
-+                       NULL);
-+}
-+
-+static MetaWindowActor *
-+find_top_window_actor_on_view (ClutterStageView *stage_view,
-+                               GList            *window_actors)
-+{
-+  GList *l;
-+
-+  for (l = g_list_last (window_actors); l; l = l->prev)
-+    {
-+      MetaWindowActor *window_actor = l->data;
-+      MetaWindow *window =
-+        meta_window_actor_get_meta_window (window_actor);
-+      MetaRectangle buffer_rect;
-+      MetaRectangle view_layout;
-+
-+      if (!window->visible_to_compositor)
-+        continue;
-+
-+      meta_window_get_buffer_rect (window, &buffer_rect);
-+      clutter_stage_view_get_layout (stage_view,
-+                                     &view_layout);
-+
-+      if (meta_rectangle_overlap (&view_layout, &buffer_rect))
-+        return window_actor;
-+    }
-+
-+  return NULL;
-+}
-+
-+void
-+meta_compositor_view_update_top_window_actor (MetaCompositorView *compositor_view,
-+                                              GList              *window_actors)
-+{
-+  MetaCompositorViewPrivate *priv =
-+    meta_compositor_view_get_instance_private (compositor_view);
-+  MetaWindowActor *top_window_actor;
-+
-+  top_window_actor = find_top_window_actor_on_view (priv->stage_view,
-+                                                    window_actors);
-+
-+  g_set_weak_pointer (&priv->top_window_actor,
-+                      top_window_actor);
-+}
-+
-+MetaWindowActor *
-+meta_compositor_view_get_top_window_actor (MetaCompositorView *compositor_view)
-+{
-+  MetaCompositorViewPrivate *priv =
-+    meta_compositor_view_get_instance_private (compositor_view);
-+
-+  return priv->top_window_actor;
-+}
-+
-+ClutterStageView *
-+meta_compositor_view_get_stage_view (MetaCompositorView *compositor_view)
-+{
-+  MetaCompositorViewPrivate *priv =
-+    meta_compositor_view_get_instance_private (compositor_view);
-+
-+  return priv->stage_view;
-+}
-+
-+static void
-+meta_compositor_view_set_property (GObject      *object,
-+                                   guint         prop_id,
-+                                   const GValue *value,
-+                                   GParamSpec   *pspec)
-+{
-+  MetaCompositorView *compositor_view = META_COMPOSITOR_VIEW (object);
-+  MetaCompositorViewPrivate *priv =
-+    meta_compositor_view_get_instance_private (compositor_view);
-+
-+  switch (prop_id)
-+    {
-+    case PROP_STAGE_VIEW:
-+      priv->stage_view = g_value_get_object (value);
-+      break;
-+    default:
-+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-+    }
-+}
-+
-+static void
-+meta_compositor_view_get_property (GObject    *object,
-+                                   guint       prop_id,
-+                                   GValue     *value,
-+                                   GParamSpec *pspec)
-+{
-+  MetaCompositorView *compositor_view = META_COMPOSITOR_VIEW (object);
-+  MetaCompositorViewPrivate *priv =
-+    meta_compositor_view_get_instance_private (compositor_view);
-+
-+  switch (prop_id)
-+    {
-+    case PROP_STAGE_VIEW:
-+      g_value_set_object (value, priv->stage_view);
-+      break;
-+    default:
-+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-+    }
-+}
-+
-+static void
-+meta_compositor_view_finalize (GObject *object)
-+{
-+  MetaCompositorView *compositor_view = META_COMPOSITOR_VIEW (object);
-+  MetaCompositorViewPrivate *priv =
-+    meta_compositor_view_get_instance_private (compositor_view);
-+
-+  g_clear_weak_pointer (&priv->top_window_actor);
-+}
-+
-+static void
-+meta_compositor_view_class_init (MetaCompositorViewClass *klass)
-+{
-+  GObjectClass *object_class = G_OBJECT_CLASS (klass);
-+
-+  object_class->set_property = meta_compositor_view_set_property;
-+  object_class->get_property = meta_compositor_view_get_property;
-+  object_class->finalize = meta_compositor_view_finalize;
-+
-+  obj_props[PROP_STAGE_VIEW] =
-+    g_param_spec_object ("stage-view",
-+                         "stage-view",
-+                         "ClutterStageView",
-+                         CLUTTER_TYPE_STAGE_VIEW,
-+                         G_PARAM_READWRITE |
-+                         G_PARAM_CONSTRUCT_ONLY |
-+                         G_PARAM_STATIC_STRINGS);
-+  g_object_class_install_properties (object_class, N_PROPS, obj_props);
-+}
-+
-+static void
-+meta_compositor_view_init (MetaCompositorView *compositor_view)
-+{
-+}
-diff --git a/src/compositor/meta-compositor-view.h b/src/compositor/meta-compositor-view.h
-new file mode 100644
-index 000000000..7adc41fc1
---- /dev/null
-+++ b/src/compositor/meta-compositor-view.h
-@@ -0,0 +1,51 @@
-+/* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
-+
-+/*
-+ * Copyright (C) 2022 Dor Askayo
-+ *
-+ * This program is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU General Public License as
-+ * published by the Free Software Foundation; either version 2 of the
-+ * License, or (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but
-+ * WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program; if not, write to the Free Software
-+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
-+ * 02111-1307, USA.
-+ *
-+ * Written by:
-+ *     Dor Askayo <dor.askayo@gmail.com>
-+ */
-+
-+#ifndef META_COMPOSITOR_VIEW_H
-+#define META_COMPOSITOR_VIEW_H
-+
-+#include <glib-object.h>
-+
-+#include "clutter/clutter-mutter.h"
-+#include "meta/meta-window-actor.h"
-+
-+struct _MetaCompositorViewClass
-+{
-+  GObjectClass parent_class;
-+};
-+
-+#define META_TYPE_COMPOSITOR_VIEW (meta_compositor_view_get_type ())
-+G_DECLARE_DERIVABLE_TYPE (MetaCompositorView, meta_compositor_view,
-+                          META, COMPOSITOR_VIEW, GObject)
-+
-+MetaCompositorView *meta_compositor_view_new (ClutterStageView *stage_view);
-+
-+void meta_compositor_view_update_top_window_actor (MetaCompositorView *compositor_view,
-+                                                   GList              *window_actors);
-+
-+MetaWindowActor *meta_compositor_view_get_top_window_actor (MetaCompositorView *compositor_view);
-+
-+ClutterStageView *meta_compositor_view_get_stage_view (MetaCompositorView *compositor_view);
-+
-+#endif /* META_COMPOSITOR_VIEW_H */
 diff --git a/src/compositor/meta-compositor-x11.c b/src/compositor/meta-compositor-x11.c
 index 614bec674..e7cb39abe 100644
 --- a/src/compositor/meta-compositor-x11.c
@@ -3148,7 +2438,7 @@ index ae1fa4d90..9fd9f758c 100644
  
    g_clear_object (&priv->window);
 diff --git a/src/core/window-private.h b/src/core/window-private.h
-index 8d2d4a020..9765aa5c8 100644
+index 4f269ff37..6cddde7d6 100644
 --- a/src/core/window-private.h
 +++ b/src/core/window-private.h
 @@ -716,6 +716,9 @@ void        meta_window_get_session_geometry (MetaWindow  *window,
@@ -3162,10 +2452,10 @@ index 8d2d4a020..9765aa5c8 100644
  
  void        meta_window_update_appears_focused (MetaWindow *window);
 diff --git a/src/core/window.c b/src/core/window.c
-index 95a8e33e0..af68011f1 100644
+index e7278e48c..e08b57a91 100644
 --- a/src/core/window.c
 +++ b/src/core/window.c
-@@ -4250,6 +4250,14 @@ meta_window_get_session_geometry (MetaWindow  *window,
+@@ -4266,6 +4266,14 @@ meta_window_get_session_geometry (MetaWindow  *window,
      window->size_hints.height_inc;
  }
  
@@ -3253,35 +2543,6 @@ index 988a4115e..8d3c6ceda 100644
  } MonitorTestCaseMonitor;
  
  typedef struct _MonitorTestCaseLogicalMonitor
-diff --git a/src/tests/monitor-configs/vrr-allowed.xml b/src/tests/monitor-configs/vrr-allowed.xml
-new file mode 100644
-index 000000000..36846e0b2
---- /dev/null
-+++ b/src/tests/monitor-configs/vrr-allowed.xml
-@@ -0,0 +1,23 @@
-+<monitors version="2">
-+  <configuration>
-+    <logicalmonitor>
-+      <x>0</x>
-+      <y>0</y>
-+      <primary>yes</primary>
-+      <monitor>
-+	<monitorspec>
-+	  <connector>DP-1</connector>
-+	  <vendor>MetaProduct&apos;s Inc.</vendor>
-+	  <product>MetaMonitor</product>
-+	  <serial>0x123456</serial>
-+	</monitorspec>
-+	<mode>
-+	  <width>1024</width>
-+	  <height>768</height>
-+	  <rate>60.000495910644531</rate>
-+	</mode>
-+	<vrr-allowed>yes</vrr-allowed>
-+      </monitor>
-+    </logicalmonitor>
-+  </configuration>
-+</monitors>
 diff --git a/src/tests/monitor-store-unit-tests.c b/src/tests/monitor-store-unit-tests.c
 index 38f4bc52f..6e85c9a3d 100644
 --- a/src/tests/monitor-store-unit-tests.c
@@ -3592,99 +2853,99 @@ index 6a807c60e..4c4cdefbb 100644
                      meta_test_monitor_custom_scale_config);
    add_monitor_test ("/backends/monitor/custom/fractional-scale-config",
 diff --git a/src/tests/screen-cast-client.c b/src/tests/screen-cast-client.c
-index cdf0d7dcf..afd6f17b0 100644
+index afd6f17b0..cdf0d7dcf 100644
 --- a/src/tests/screen-cast-client.c
 +++ b/src/tests/screen-cast-client.c
 @@ -83,18 +83,18 @@ typedef struct _ScreenCast
  
  typedef struct _PipeWireSource
  {
--  GSource base;
-+  GSource source;
+-  GSource source;
++  GSource base;
  
    struct pw_loop *pipewire_loop;
  } PipeWireSource;
  
--static PipeWireSource *_pipewire_source;
-+static GSource *_pipewire_source;
+-static GSource *_pipewire_source;
++static PipeWireSource *_pipewire_source;
  static struct pw_context *_pipewire_context;
  static struct pw_core *_pipewire_core;
  static struct spa_hook _pipewire_core_listener;
  
  static gboolean
--pipewire_loop_source_prepare (GSource *base,
-+pipewire_loop_source_prepare (GSource *source,
+-pipewire_loop_source_prepare (GSource *source,
++pipewire_loop_source_prepare (GSource *base,
                                int     *timeout)
  {
    *timeout = -1;
-@@ -133,24 +133,26 @@ static GSourceFuncs pipewire_source_funcs =
+@@ -133,26 +133,24 @@ static GSourceFuncs pipewire_source_funcs =
    pipewire_loop_source_finalize
  };
  
--static PipeWireSource *
--create_pipewire_source (void)
-+static GSource *
-+create_pipewire_source (struct pw_loop *pipewire_loop)
+-static GSource *
+-create_pipewire_source (struct pw_loop *pipewire_loop)
++static PipeWireSource *
++create_pipewire_source (void)
  {
-+  GSource *source;
+-  GSource *source;
    PipeWireSource *pipewire_source;
  
--  pipewire_source =
--    (PipeWireSource *) g_source_new (&pipewire_source_funcs,
--                                     sizeof (PipeWireSource));
--  pipewire_source->pipewire_loop = pw_loop_new (NULL);
--  g_assert_nonnull (pipewire_source->pipewire_loop);
--  g_source_add_unix_fd (&pipewire_source->base,
-+  source = g_source_new (&pipewire_source_funcs,
-+                         sizeof (PipeWireSource));
-+
-+  pipewire_source = (PipeWireSource *) source;
-+  pipewire_source->pipewire_loop = pipewire_loop;
-+
-+  g_source_add_unix_fd (source,
+-  source = g_source_new (&pipewire_source_funcs,
+-                         sizeof (PipeWireSource));
+-
+-  pipewire_source = (PipeWireSource *) source;
+-  pipewire_source->pipewire_loop = pipewire_loop;
+-
+-  g_source_add_unix_fd (source,
++  pipewire_source =
++    (PipeWireSource *) g_source_new (&pipewire_source_funcs,
++                                     sizeof (PipeWireSource));
++  pipewire_source->pipewire_loop = pw_loop_new (NULL);
++  g_assert_nonnull (pipewire_source->pipewire_loop);
++  g_source_add_unix_fd (&pipewire_source->base,
                          pw_loop_get_fd (pipewire_source->pipewire_loop),
                          G_IO_IN | G_IO_ERR);
  
    pw_loop_enter (pipewire_source->pipewire_loop);
--  g_source_attach (&pipewire_source->base, NULL);
-+  g_source_attach (source, NULL);
+-  g_source_attach (source, NULL);
++  g_source_attach (&pipewire_source->base, NULL);
  
--  return pipewire_source;
-+  return source;
+-  return source;
++  return pipewire_source;
  }
  
  static void
-@@ -171,9 +173,15 @@ static const struct pw_core_events core_events = {
+@@ -173,15 +171,9 @@ static const struct pw_core_events core_events = {
  static void
  init_pipewire (void)
  {
-+  struct pw_loop *pipewire_loop;
-+
+-  struct pw_loop *pipewire_loop;
+-
    pw_init (NULL, NULL);
--  _pipewire_source = create_pipewire_source ();
--  _pipewire_context = pw_context_new (_pipewire_source->pipewire_loop,
-+
-+  pipewire_loop = pw_loop_new (NULL);
-+  g_assert_nonnull (pipewire_loop);
-+
-+  _pipewire_source = create_pipewire_source (pipewire_loop);
-+  _pipewire_context = pw_context_new (pipewire_loop,
+-
+-  pipewire_loop = pw_loop_new (NULL);
+-  g_assert_nonnull (pipewire_loop);
+-
+-  _pipewire_source = create_pipewire_source (pipewire_loop);
+-  _pipewire_context = pw_context_new (pipewire_loop,
++  _pipewire_source = create_pipewire_source ();
++  _pipewire_context = pw_context_new (_pipewire_source->pipewire_loop,
                                        NULL, 0);
    g_assert_nonnull (_pipewire_context);
    _pipewire_core = pw_context_connect (_pipewire_context, NULL, 0);
-@@ -192,8 +200,8 @@ release_pipewire (void)
+@@ -200,8 +192,8 @@ release_pipewire (void)
    g_clear_pointer (&_pipewire_context, pw_context_destroy);
    if (_pipewire_source)
      {
--      g_source_destroy ((GSource *) _pipewire_source);
--      g_source_unref ((GSource *) _pipewire_source);
-+      g_source_destroy (_pipewire_source);
-+      g_source_unref (_pipewire_source);
+-      g_source_destroy (_pipewire_source);
+-      g_source_unref (_pipewire_source);
++      g_source_destroy ((GSource *) _pipewire_source);
++      g_source_unref ((GSource *) _pipewire_source);
        _pipewire_source = NULL;
      }
  }
 diff --git a/src/wayland/meta-wayland-actor-surface.c b/src/wayland/meta-wayland-actor-surface.c
-index b6d26fdc1..096b46aa2 100644
+index 1230f6cf0..1e987912e 100644
 --- a/src/wayland/meta-wayland-actor-surface.c
 +++ b/src/wayland/meta-wayland-actor-surface.c
 @@ -307,7 +307,8 @@ meta_wayland_actor_surface_apply_state (MetaWaylandSurfaceRole  *surface_role,
