@@ -54,8 +54,8 @@ fi
 DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=ffmpeg-obs
-pkgver=5.0.1
-pkgrel=2
+pkgver=5.1
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('i686' 'x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -163,21 +163,17 @@ provides=(
 )
 conflicts=(ffmpeg)
 options=('debug')
-_tag=9687cae2b468e09e35df4cea92cc2e6a0e6c93b3
-_deps_tag=15072cd42722d87c6b3ed1636b22e98c08575f20
+_tag=e0723b7e4e22492275d476fcd30d759e1198bc5b
+_deps_tag=2022-08-02
 source=(
   "ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}"
   "obs-deps::git+https://github.com/obsproject/obs-deps.git#tag=${_deps_tag}"
-  "ffmpeg-vmaf2.x.patch"
   "add-av_stream_get_first_dts-for-chromium.patch"
-  "rist.patch"
 )
 sha256sums=(
   'SKIP'
   'SKIP'
-  '42bd572442a4eba4e9559953c72f9e980b78286ab288ac01e659be39d8bc7298'
-  '91973c465f01446a999f278f0c2a3763304994dba1ac35de0e4c72f12f39409e'
-  '5d6a9f381c528fa2b46c88cf138dfe11150ee1708e2126ec9677796305c3bc7e'
+  '1027369d704834588f09f1854541584444dda4f8c6407f83fec090d80e6e6ad2'
 )
 
 if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
@@ -346,20 +342,20 @@ fi
 
 if [[ $FFMPEG_OBS_SVT == 'ON' ]]; then
   depends+=(svt-vp9 svt-hevc)
-  _svt_hevc_ver='111eef187fd7b91ad27573421c7238ef787e164f'
-  _svt_vp9_ver='308ef4464568a824f1f84c4491cb08ab4f535f6c'
+  _svt_hevc_ver='b62f72e752243cee4104cfb41dc7ee409d3ac3e9'
+  _svt_vp9_ver='d9ef3cc13159143b9afc776c04f67cdfa6284046'
   source+=(
     "020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
     "030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
     "040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
   )
   sha256sums+=(
-    'efd01f96c1f48ea599881dfc836d20ba18c758a3588d616115546912aebeb77f'
+    '4da3826aa370572273ef9fb4c0bf2c93a840595b07a671a0412ad0dc9ed8d689'
     '837cac5a64234f34d136d18c8f7dc14203cdea11406fdb310cef2f62504d9e0c'
-    '9565b3eed177ce5d109876f2a56f3781a2c7fae41e32601bf6ec805ea199d21b'
+    'e310eedb3dc88c8ad6ffcd6cb6bde1f593ded330ea99b0356724c9d22bcfde4c'
   )
   _args+=(--enable-libsvtvp9 --enable-libsvthevc)
-  provides+=(ffmpeg-svt-av1)
+  provides+=(ffmpeg-svt-hevc)
   provides+=(ffmpeg-svt-vp9)
 fi
 
@@ -374,15 +370,17 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
   _nonfree_enabled=ON
   # uavs3d >= 1.1.41 is required by ffmpeg so switch to uavs3d-git
   # lensfun >= 0.3.95 seems to needed with ffmpeg so switch to lensfun-git
+  # libjxl >= 0.7.0 is required by ffmpeg so switch to libjxl-git
   depends+=(
     sndio 'chromaprint-fftw' frei0r-plugins libgcrypt
-    aribb24 libbs2b libcaca celt libcdio-paranoia codec2
+    aribb24 libbs2b libcaca 'celt' libcdio-paranoia codec2
     'davs2' libdc1394 flite1 libgme libilbc 'libklvanc-git'
     kvazaar 'lensfun-git' 'openh264' libopenmpt librabbitmq-c rubberband
     rtmpdump 'shine' smbclient snappy tesseract
     twolame 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2' zeromq
     zvbi lv2 lilv libmysofa openal ocl-icd libgl
     'pocketsphinx' vapoursynth libomxil-bellagio 'rockchip-mpp' libplacebo
+    lcms2 'libjxl-git'
   )
   makedepends+=(opencl-headers)
   _args+=(
@@ -394,6 +392,7 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     --enable-libtwolame --enable-libuavs3d --enable-libvo-amrwbenc --enable-libxavs --enable-libxavs2 --enable-libzmq
     --enable-libzvbi --enable-lv2 --enable-libmysofa --enable-openal --enable-opencl --enable-opengl
     --enable-pocketsphinx --enable-vapoursynth --enable-omx --enable-rkmpp --enable-libplacebo
+    --enable-lcms2 --enable-libjxl
   )
   provides+=(ffmpeg-full)
 else
@@ -419,24 +418,21 @@ prepare() {
 
   ### ffmpeg-full changes
 
-  ## Fixes for SVT-AV1 0.9.0
-  # avcodec/libsvtav1: add a svtav1-params option to pass a list of key=value parameters
-  # https://github.com/FFmpeg/FFmpeg/commit/c33b4048859a191acf9b6aa22acaea248a4eb18f
-  git cherry-pick -n c33b4048859a191acf9b6aa22acaea248a4eb18f
-  # avcodec/libsvtav1: update some options and defaults
-  # https://github.com/FFmpeg/FFmpeg/commit/1dddb930aaf0cadaa19f86e81225c9c352745262
-  git cherry-pick -n 1dddb930aaf0cadaa19f86e81225c9c352745262
   ## Fix segfault with avisynthplus
   sed -i 's/RTLD_LOCAL/RTLD_DEEPBIND/g' libavformat/avisynth.c
 
+  ## avdevice/v4l2: fix leak of timefilter
+  git cherry-pick -n 30aa0c3f4873a92c5e3da8ba8cf030de56bf4cf7
+
   ### Arch Linux changes
+
+  ## Remove default IPFS gateway
+  # ipfsgateway: Remove default gateway
+  # https://github.com/FFmpeg/FFmpeg/commit/412922cc6fa790897ef6bb2be5d6f9a5f030754d
+  git cherry-pick -n 412922cc6fa790897ef6bb2be5d6f9a5f030754d
 
   ## https://crbug.com/1251779
   patch -Np1 -i "${srcdir}"/add-av_stream_get_first_dts-for-chromium.patch
-  ## Add libvmaf 2 compatibility based on
-  # avfilter/vf_libvmaf: update filter for libvmaf v2.0.0
-  # https://github.com/FFmpeg/FFmpeg/commit/3d29724c008d8f27fecf85757152789b074e8ef9
-  patch -Np1 -i "${srcdir}"/ffmpeg-vmaf2.x.patch
 
   ### OBS changes
 
@@ -445,23 +441,7 @@ prepare() {
   # This patch applies:
   #  - Fix decoding of certain malformed FLV files
   #  - Add additional CPU levels for libaom
-  patch -Np1 -i "${srcdir}"/obs-deps/CI/patches/FFmpeg-4.4.1-OBS.patch
-
-  # avformat/hlsenc: remove unnecessary http/https shutdown status operate
-  # https://patchwork.ffmpeg.org/project/ffmpeg/patch/20210913021204.22138-1-lq@chinaffmpeg.org/
-  # https://github.com/FFmpeg/FFmpeg/commit/f1c19867d72a14699277175101b2bcf1e333af88
-  patch -Np1 -i "${srcdir}"/obs-deps/CI/patches/FFmpeg-9010.patch
-
-  # libRIST: allow setting fifo size and fail on overflow
-  # https://patchwork.ffmpeg.org/project/ffmpeg/patch/20211117141929.1164334-2-gijs@peskens.net/
-  patch -Np1 -i "${srcdir}"/rist.patch
-
-  # Fix "error: unknown type name ‘bool’" made by the patch because stdbool.h is only added through librist from version 0.2.7
-  sed -i '49 a #if FF_LIBRIST_VERSION < FF_LIBRIST_VERSION_42\n#include <stdbool.h>\n#endif' libavformat/librist.c
-
-  # Fix some typo made in the patch if built against librist 0.2.6
-  sed -i 's/FF_LIBRIST_FIFO_DEFAULT)/FF_LIBRIST_FIFO_DEFAULT_SHIFT)/g' libavformat/librist.c
-  sed -i 's/fifo_buffer_size/fifo_shift/g' libavformat/librist.c
+  patch -Np1 -i "${srcdir}"/obs-deps/deps.ffmpeg/patches/FFmpeg/0002-FFmpeg-5.0.1-OBS.patch
 
   ### Package features changes
 

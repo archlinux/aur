@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-obs
 	pkgdesc = Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD
-	pkgver = 5.0.1
-	pkgrel = 2
+	pkgver = 5.1
+	pkgrel = 1
 	url = https://ffmpeg.org/
 	arch = i686
 	arch = x86_64
@@ -72,7 +72,7 @@ pkgbase = ffmpeg-obs
 	optdepends = ladspa: LADSPA filters
 	optdepends = nvidia-utils: Nvidia NVDEC/NVENC support
 	optdepends = intel-media-sdk: Intel QuickSync support
-	provides = ffmpeg=5.0.1
+	provides = ffmpeg=5.1
 	provides = libavcodec.so
 	provides = libavdevice.so
 	provides = libavfilter.so
@@ -83,15 +83,11 @@ pkgbase = ffmpeg-obs
 	provides = libswscale.so
 	conflicts = ffmpeg
 	options = debug
-	source = ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=9687cae2b468e09e35df4cea92cc2e6a0e6c93b3
-	source = obs-deps::git+https://github.com/obsproject/obs-deps.git#tag=15072cd42722d87c6b3ed1636b22e98c08575f20
-	source = ffmpeg-vmaf2.x.patch
+	source = ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=e0723b7e4e22492275d476fcd30d759e1198bc5b
+	source = obs-deps::git+https://github.com/obsproject/obs-deps.git#tag=2022-08-02
 	source = add-av_stream_get_first_dts-for-chromium.patch
-	source = rist.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 42bd572442a4eba4e9559953c72f9e980b78286ab288ac01e659be39d8bc7298
-	sha256sums = 91973c465f01446a999f278f0c2a3763304994dba1ac35de0e4c72f12f39409e
-	sha256sums = 5d6a9f381c528fa2b46c88cf138dfe11150ee1708e2126ec9677796305c3bc7e
+	sha256sums = 1027369d704834588f09f1854541584444dda4f8c6407f83fec090d80e6e6ad2
 
 pkgname = ffmpeg-obs
