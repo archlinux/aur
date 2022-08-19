@@ -5,7 +5,7 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-plus-git
-pkgver=3.11.33.beta1.r33.gdb99b92
+pkgver=3.11.36.r0.gcb59480
 pkgrel=1
 pkgdesc="Micro-compositor from Valve with added patches not yet commited upstream"
 arch=(x86_64)
@@ -13,7 +13,7 @@ url="https://github.com/Plagman/gamescope"
 license=("custom:BSD-2-Clause")
 depends=(
     # gamescope
-    "libxcomposite" "libxtst" "libxres" "sdl2" "pipewire" "libliftoff-git"
+    "libxcomposite" "libxtst" "libxres" "sdl2" "pipewire" "libliftoff"
     # wlroots
     "libdrm" "libxkbcommon" "libinput" "pixman" "xorg-xwayland" "xcb-util-renderutil" "xcb-util-wm" "xcb-util-errors" "seatd"
 )
@@ -24,7 +24,7 @@ source=("0001-Add-force-orientation-option.patch"
 				"$_pkgname::git+https://github.com/Plagman/gamescope.git"
         "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
         "git+https://github.com/nothings/stb.git")
-sha512sums=('ffd979c735721364490978922bd14a0657f76a273a1d799dd5f6fc4656983510be93f2ab01ae34daa25844f51e5373a3a20c7472f500077f14d5b2bc0bb2119d'
+sha512sums=('876968d16c4b3d680f89d261d0b7b195406769f612d2b032791819818cfef547e841020c1851f6fdb1eeaa375e36b70d3245fe1a800fcc06fdf700cb1d02025b'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -84,5 +84,9 @@ package() {
 
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+
+  # Avoid conflicting with libliftoff
+  rm -r ${pkgdir}/usr/lib/pkgconfig
+  rm -r ${pkgdir}/usr/include
 }
 
