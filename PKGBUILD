@@ -2,21 +2,16 @@
 _base=ffcx
 pkgname=python-fenics-${_base}
 pkgdesc="The FEniCSx Form Compiler"
-pkgver=0.4.2
-pkgrel=2
-arch=(any)
+pkgver=0.5.0
+pkgrel=1
+arch=(x86_64)
 url="https://github.com/FEniCS/${_base}"
 license=(MIT)
-depends=(python-fenics-ufl python-fenics-basix python-cffi)
-makedepends=(python-setuptools python-wheel)
-source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('84860e2ad9a178b7840d6ad0827a38ea177fe4a1c4d56159e7aa284a0e08b64137c1354ceaec3d0974d29874aec6c0a08f1da19a8877d6cebf01cadd6e3588fb')
-
-prepare() {
-  # https://github.com/FEniCS/ffcx/pull/468
-  sed -i 's/setuptools>=58,<61/setuptools>=58/' ${_base}-${pkgver}/pyproject.toml
-  sed -i 's/setuptools >= 58, < 61/setuptools >= 58/' ${_base}-${pkgver}/setup.cfg
-}
+depends=(python-setuptools python-fenics-ufl python-fenics-basix python-cffi)
+makedepends=(python-wheel)
+optdepends=('python-pygraphviz: utility to draw graph')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('6c87c64a16880bd7b327bfae147ce46a5bc22c2c9fed055b8ac240becd7a34c4037557c4f6142a8edbb4c49738a4b6ea497d4324c8d4f1bd7c1d342363f06579')
 
 build() {
   cd ${_base}-${pkgver}
