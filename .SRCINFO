@@ -1,0 +1,13 @@
+pkgbase = bday-git
+	pkgdesc = CLI birthday tracker.
+	pkgver = 1.0.0.32.g508b2f6
+	pkgrel = 1
+	url = https://github.com/rv178/bday
+	arch = x86_64
+	license = MIT
+	makedepends = rustup
+	makedepends = git
+	source = bday::git+https://github.com/rv178/bday.git
+	sha256sums = SKIP
+
+pkgname = bday-git
