@@ -1,13 +1,13 @@
 pkgbase = tuifeed
 	pkgdesc = A terminal feed reader with a fancy ui
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/veeso/tuifeed
 	arch = x86_64
 	license = MIT
 	provides = tuifeed
 	options = strip
-	source = https://github.com/veeso/tuifeed/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 8b11ac2f021ce3bd67a470a11ebcbdbe5c8667e55cac7014335f9a0ee82be097
+	source = https://github.com/veeso/tuifeed/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 95c649ce2e2aba8574a87a5e9b0f099bdff570c426b43ddf4dd4f6cc9d04cf7f
 
 pkgname = tuifeed
