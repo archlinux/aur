@@ -17,11 +17,10 @@ build() {
 	make all doc
 }
 
-# Cannot run tests until https://bugs.archlinux.org/task/32296 is resolved.
-# check() {
-# 	cd "$pkgname-$pkgver"
-# 	make test
-# }
+check() {
+	cd "$pkgname-$pkgver"
+	make test
+}
 
 package() {
 	cd "$pkgname-$pkgver"
