@@ -42,10 +42,8 @@ package_dev-sidecar-git() {
   cp -rT "$srcdir/dev-sidecar/packages/gui/dist_electron/linux-unpacked" "$pkgdir/usr/lib/dev-sidecar"
   mv "$pkgdir/usr/lib/dev-sidecar/@docmirrordev-sidecar-gui" "$pkgdir/usr/lib/dev-sidecar/dev-sidecar"
 
-  mkdir -p "$pkgdir/usr/share/applications/apps"
-  install -Dm644 "$srcdir/dev-sidecar.desktop" "$pkgdir/usr/share/applications/apps"
+  install -Dm644 "$srcdir/dev-sidecar.desktop" "$pkgdir/usr/share/applications/dev-sidecar.desktop"
 
-  mkdir -p "$pkgdir/usr/share/icons/hicolor/16x16/apps/{16x16,24x24,32x32,48x48,64x64,128x128,256x256,512x512,1024x1024}"
   install -Dm644 "$srcdir/dev-sidecar/packages/gui/dist_electron/linux-unpacked/resources/extra/icons/16x16.png" "$pkgdir/usr/share/icons/hicolor/16x16/apps/dev-sidecar.png"
   install -Dm644 "$srcdir/dev-sidecar/packages/gui/dist_electron/linux-unpacked/resources/extra/icons/24x24.png" "$pkgdir/usr/share/icons/hicolor/24x24/apps/dev-sidecar.png"
   install -Dm644 "$srcdir/dev-sidecar/packages/gui/dist_electron/linux-unpacked/resources/extra/icons/32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/dev-sidecar.png"
@@ -61,7 +59,6 @@ package_dev-sidecar-git-electron() {
   depends+=(electron17)
   pkgdesc+="（使用系统Electron）"
 
-  mkdir -p "$pkgdir/usr/bin"
   install -Dm755 "$srcdir/dev-sidecar.sh" "$pkgdir/usr/bin/dev-sidecar"
 
   mkdir -p "$pkgdir/usr/lib/dev-sidecar"
@@ -69,10 +66,8 @@ package_dev-sidecar-git-electron() {
   cp "$srcdir/dev-sidecar/packages/gui/dist_electron/linux-unpacked/resources/app-update.yml" "$pkgdir/usr/lib/dev-sidecar/app-unpacked/dev-app-update.yml"
   cp -rT "$srcdir/dev-sidecar/packages/gui/dist_electron/linux-unpacked/resources/extra" "$pkgdir/usr/lib/dev-sidecar/extra"
 
-  mkdir -p "$pkgdir/usr/share/applications/apps"
-  install -Dm644 "$srcdir/dev-sidecar.desktop" "$pkgdir/usr/share/applications/apps"
+  install -Dm644 "$srcdir/dev-sidecar.desktop" "$pkgdir/usr/share/applications/dev-sidecar.desktop"
 
-  mkdir -p "$pkgdir/usr/share/icons/hicolor/16x16/apps/{16x16,24x24,32x32,48x48,64x64,128x128,256x256,512x512,1024x1024}"
   install -Dm644 "$srcdir/dev-sidecar/packages/gui/dist_electron/linux-unpacked/resources/extra/icons/16x16.png" "$pkgdir/usr/share/icons/hicolor/16x16/apps/dev-sidecar.png"
   install -Dm644 "$srcdir/dev-sidecar/packages/gui/dist_electron/linux-unpacked/resources/extra/icons/24x24.png" "$pkgdir/usr/share/icons/hicolor/24x24/apps/dev-sidecar.png"
   install -Dm644 "$srcdir/dev-sidecar/packages/gui/dist_electron/linux-unpacked/resources/extra/icons/32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/dev-sidecar.png"
