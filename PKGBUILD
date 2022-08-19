@@ -1,7 +1,7 @@
 # Maintainer: quietvoid <tcChlisop0@gmail.com>
 
 pkgname=dovi_tool-git
-pkgver=1.5.3.r4.g80aa8af
+pkgver=1.5.6.r0.g9444267
 pkgrel=1
 pkgdesc='CLI tool combining multiple utilities for working with Dolby Vision'
 arch=('x86_64')
@@ -48,4 +48,6 @@ package() {
     --no-track \
     --path . \
     --root "${pkgdir}"/usr
+
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/dovi_tool/LICENSE"
 }
