@@ -8,10 +8,12 @@ pkgbase = tbb2019
 	makedepends = cmake
 	makedepends = inetutils
 	depends = gcc-libs
-	provides = tbb=2019.6
+	provides = intel-tbb=2019.6
 	conflicts = intel-tbb
 	conflicts = intel-oneapi-tbb
 	source = https://github.com/oneapi-src/oneTBB/archive/refs/tags/2019_U6.tar.gz
+	source = gcc12.patch
 	sha512sums = 6bcc014ec90cd62293811ac436eab03c7f7c7e3e03109efcab1c42cfed48d8bf83073d03ab381e5e63ee8c905f1792a7fdab272ec7e585df14102bad714ffc15
+	sha512sums = 36e42247c67e44765c2d0c64e5835ff47cb4e44866d7f78664e139fdf2d71284e36ea9cd902a739bd4b5134f1731222117653b918a5a1fb4f175a468af76074d
 
 pkgname = tbb2019
