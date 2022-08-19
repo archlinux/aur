@@ -1,8 +1,8 @@
 pkgbase = hg-git-hg
 	pkgdesc = the Hg-Git mercurial plugin
-	pkgver = 1741.f3718f693038
+	pkgver = 1774.b963d11cc1c8
 	pkgrel = 1
-	url = http://hg-git.github.com/
+	url = http://hg-git.github.io/
 	arch = any
 	license = GPL2
 	makedepends = mercurial
