@@ -1,6 +1,6 @@
 # Maintainer: ml <>
 pkgname=ionosctl
-pkgver=6.3.0
+pkgver=6.3.1
 pkgrel=1
 pkgdesc='IONOS Cloud CLI'
 arch=('x86_64' 'i686' 'aarch64' 'arm' 'armv6h' 'armv7h')
@@ -9,7 +9,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('02269f8b937767526bbfe3e82585d6ad94166e235ac4ea10a1712f27eac017e4')
+sha256sums=('8485a84301b91ca9c125b5dda413b4d8be7cfbe8e661f8c6ef93fdd519c66382')
 
 build() {
   cd "$pkgname-$pkgver"
