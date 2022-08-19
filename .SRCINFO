@@ -1,6 +1,6 @@
 pkgbase = djgpp-gcc
 	pkgdesc = GCC for the djgpp cross-compiler
-	pkgver = 12.1.0
+	pkgver = 12.2.0
 	pkgrel = 2
 	url = http://gcc.gnu.org
 	arch = i686
@@ -20,11 +20,12 @@ pkgbase = djgpp-gcc
 	options = !strip
 	options = staticlibs
 	options = !emptydirs
-	source = https://ftp.gnu.org/gnu/gcc/gcc-12.1.0/gcc-12.1.0.tar.xz
+	options = !buildflags
+	source = https://ftp.gnu.org/gnu/gcc/gcc-12.2.0/gcc-12.2.0.tar.xz
 	source = lto.patch
 	source = gcc-djgpp.diff
-	sha256sums = 62fd634889f31c02b64af2c468f064b47ad1ca78411c45abe6ac4b5f8dd19c7b
+	sha256sums = e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff
 	sha256sums = c03dbd61274e1ce14f84366abf348d75779bbd6e0bc32b9f4fd74f1ce54a5ef0
-	sha256sums = 2832a5290bebf8c6c3b58775197dd4b1cbe5bce4d5488de5710b53ed052cff16
+	sha256sums = 0c93c245f791d638cd775b00f9919873b229a4dda04a7a4072735d12d47737ce
 
 pkgname = djgpp-gcc
