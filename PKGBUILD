@@ -3,7 +3,7 @@
 pkgbase=gnome-control-center-vrr
 pkgname=(gnome-control-center-vrr)
 pkgver=42.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME (with VRR)"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 arch=(x86_64)
@@ -23,11 +23,11 @@ optdepends=('system-config-printer: Printer settings'
 _commit=ff5ab8f715ea02f75cff567ce86830040b0f38cc  # tags/42.3
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
-        'mr734.patch')
+        '42.3.patch')
 
 sha256sums=('SKIP'
             'SKIP'
-            '575f770b3ef3da1d3a3c75b198577ceb32e25e72ccdd311ca143d205317112bd')
+            '516b671b788a4d7922f642003307eda024b3f076c7ec19217b0fc2431da9bfd7')
 
 pkgver() {
   cd $pkgname
@@ -36,7 +36,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
-  patch -p1 < "$srcdir/mr734.patch"
+  patch -p1 < "$srcdir/42.3.patch"
   
   # Install bare logos into pixmaps, not icons
   sed -i "/install_dir/s/'icons'/'pixmaps'/" panels/info-overview/meson.build

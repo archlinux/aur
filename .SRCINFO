@@ -1,7 +1,7 @@
 pkgbase = gnome-control-center-vrr
 	pkgdesc = A window manager for GNOME (with VRR)
 	pkgver = 42.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/gnome-control-center
 	arch = x86_64
 	license = GPL
@@ -45,10 +45,10 @@ pkgbase = gnome-control-center-vrr
 	optdepends = power-profiles-daemon: Power profiles support
 	source = gnome-control-center-vrr::git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=ff5ab8f715ea02f75cff567ce86830040b0f38cc
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
-	source = mr734.patch
+	source = 42.3.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 575f770b3ef3da1d3a3c75b198577ceb32e25e72ccdd311ca143d205317112bd
+	sha256sums = 516b671b788a4d7922f642003307eda024b3f076c7ec19217b0fc2431da9bfd7
 
 pkgname = gnome-control-center-vrr
 	groups = gnome
