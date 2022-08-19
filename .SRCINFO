@@ -1,11 +1,11 @@
 pkgbase = pasfetch
 	pkgdesc = A fetch program written in Pascal
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/FelixEcker/pasfetch
 	arch = x86_64
 	license = ISC
-	source = pasfetch-1.0.0.tar.gz::https://github.com/FelixEcker/pasfetch/archive/refs/tags/1.0.0.tar.gz
-	sha256sums = 170050d4108ef3de601293da975940fe3f4b6c85fd21df5e2657a0d08cb7b241
+	source = pasfetch-1.1.0.tar.gz::https://github.com/FelixEcker/pasfetch/archive/refs/tags/1.1.0.tar.gz
+	sha256sums = 5f29a2d914068ede0b0d3ac498c624c3c75e53faebb140be8ff6106c0bee9f00
 
 pkgname = pasfetch
