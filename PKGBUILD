@@ -2,7 +2,7 @@
 
 pkgname=aria2cd
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A systemd Service to start aria2 automatically."
 arch=(any)
 url="https://aur.archlinux.org/aria2cd.git"
@@ -28,7 +28,7 @@ package(){
 	touch ${pkgdir}/usr/share/aria2/dht6.dat
 	touch ${pkgdir}/usr/share/aria2/aria2.session
 	install -Dm644 ${srcdir}/aria2@.service ${pkgdir}/usr/lib/systemd/system/aria2@.service
-	install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licences/${pkgname}/LICENSE
+	install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 	install -Dm644 ${srcdir}/${pkgname}.hook ${pkgdir}/usr/share/libalpm/hooks/${pkgname}.hook
 	install -Dm755 ${srcdir}/notify-user ${pkgdir}/usr/share/libalpm/scripts/notify-user
 	install -Dm755 ${srcdir}/aria2cd-install ${pkgdir}/usr/bin/aria2cd-install

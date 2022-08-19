@@ -1,4 +1,4 @@
 pkg
 src
-*.pkg.tar.zst
-keys
+*.pkg.tar.*
+LICENSE
