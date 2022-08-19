@@ -11,7 +11,6 @@ pkgbase = remmina-appindicator
 	makedepends = gobject-introspection
 	makedepends = gtk-vnc
 	makedepends = harfbuzz
-	makedepends = kwallet
 	makedepends = libvncserver
 	makedepends = spice-gtk
 	makedepends = spice-protocol

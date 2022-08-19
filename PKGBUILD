@@ -34,7 +34,6 @@ makedepends=(
     gobject-introspection
     gtk-vnc
     harfbuzz
-    kwallet
     libvncserver
     spice-gtk
     spice-protocol
