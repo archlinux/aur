@@ -16,10 +16,10 @@ conflicts=("$_pkgname")
 source=("git+$url.git")
 sha512sums=('SKIP')
 
-pkgver() {
-  cd cursor-themes
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+#pkgver() {
+#  cd cursor-themes
+#  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+#}
 
 
 package() {
