@@ -75,6 +75,6 @@ package() {
 	chmod +x "$EXEC_PATH"
 }
 
-md5sums=('d3e9588e793d7af5243a81e845eaa0c5'
+md5sums=('092adeacf384a0bba6c3be456e9c2beb'
          'ba5f16b0d7eeef5b124cd68078a38672'
          '7cf4ae1f6777f0c610125a59b0fefca6')
