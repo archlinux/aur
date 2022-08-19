@@ -3,8 +3,8 @@
 _pkgname=RefManageR
 _pkgver=1.3.0
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
-pkgrel=2
+pkgver=1.3.0
+pkgrel=6
 pkgdesc="Straightforward 'BibTeX' and 'BibLaTeX' Bibliography Management"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
