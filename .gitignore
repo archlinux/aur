@@ -1,0 +1,5 @@
+!PKGBUILD
+/src
+/pkg
+/asciidoc-static-pages
+*.zst
