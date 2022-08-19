@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RcppArmadillo
-_pkgver=0.11.2.0.0
+_pkgver=0.11.2.3.1
 pkgname=r-${_pkgname,,}
-pkgver=0.11.2.0.0
+pkgver=0.11.2.3.1
 pkgrel=1
 pkgdesc="'Rcpp' Integration for the 'Armadillo' Templated Linear Algebra Library"
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f9e17af85ef5c0c8d63771b6e7da0cdcdbecc7ac8bd40d5035a64952c4ce1938')
+sha256sums=('817a8479727e54680e9ac2d8c35a5c30bc053acdb81af869da9cb5ad5fba80e4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
