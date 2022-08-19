@@ -29,7 +29,7 @@ prepare() {
 	# check rustc-nightly
 	set -e;
 	rustup run nightly rustc --version|| EXIT_CODE=$? && true ; 
-	if [ '$EXIT_CODE' == '1' ];then
+	if [ $EXIT_CODE == '1' ];then
 		rustup install nightly
 	fi
 	# setup
