@@ -1,0 +1,4621 @@
+diff --git a/NEWS b/NEWS
+index 218d68a3a..59b0c0ecb 100644
+--- a/NEWS
++++ b/NEWS
+@@ -1,31 +1,3 @@
+-42.4
+-====
+-* screencast: Set correct stride when using dmabufs [Pascal; !2514]
+-* Fix glitches in apps using subsurfaces [Robert; !2501, !2530]
+-* Reduce client work when entering overview [Robert; !2502]
+-* Highlight actors becoming reactive under the pointer [Carlos; !2533]
+-* Fall back to ARGB if XRGB is not supported [Daniel; !2519]
+-* Support direct scanout on GPUs without modifiers support [Dor; !2510]
+-* Fix registering as X11 window manager if GDK_BACKEND is set [Michel; !2496]
+-* Fixed crash [Jonas Å.; !2554]
+-* Plugged leak [Sebastian; !2497]
+-* Misc. bug fixes and cleanups [Jonas D., Dor; !2348, !2406]
+-
+-Contributors:
+-  Dor Askayo, Jonas Dreßler, Michel Dänzer, Carlos Garnacho, Sebastian Keller,
+-  Robert Mader, Pascal Nowack, Daniel van Vugt, Jonas Ådahl
+-
+-42.3
+-====
+-* wayland: Fix rotation transform [Robert; !1055]
+-* Fix dma-buf screencast regression [Jonas; !2462]
+-* Fix monitor mirroring in some cases [Jonas; !2492]
+-* Fixed crash [Jonas; !2364]
+-* Plugged leak [Michel; !2469]
+-
+-Contributors:
+-  Michel Dänzer, Robert Mader, Jonas Ådahl
+-
+ 42.2
+ ====
+ * Don't use direct scanout for transparent windows [Sebastian; !2409]
+diff --git a/clutter/clutter/clutter-actor.c b/clutter/clutter/clutter-actor.c
+index 0a08d1863..b31a4d01d 100644
+--- a/clutter/clutter/clutter-actor.c
++++ b/clutter/clutter/clutter-actor.c
+@@ -803,8 +803,6 @@ struct _ClutterActorPrivate
+   GList *stage_views;
+   GList *grabs;
+ 
+-  unsigned int n_pointers;
+-
+   /* bitfields: KEEP AT THE END */
+ 
+   /* fixed position and sizes */
+@@ -824,6 +822,7 @@ struct _ClutterActorPrivate
+   guint clip_to_allocation          : 1;
+   guint enable_model_view_transform : 1;
+   guint enable_paint_unmapped       : 1;
++  guint has_pointer                 : 1;
+   guint has_key_focus               : 1;
+   guint propagated_one_redraw       : 1;
+   guint paint_volume_valid          : 1;
+@@ -1702,7 +1701,7 @@ clutter_actor_real_unmap (ClutterActor *self)
+    */
+   g_object_notify_by_pspec (G_OBJECT (self), obj_props[PROP_MAPPED]);
+ 
+-  if (priv->n_pointers > 0)
++  if (priv->has_pointer)
+     {
+       ClutterActor *stage = _clutter_actor_get_stage_internal (self);
+ 
+@@ -1771,18 +1770,6 @@ clutter_actor_real_show (ClutterActor *self)
+    * and the branch of the scene graph is in a stable state
+    */
+   clutter_actor_update_map_state (self, MAP_STATE_CHECK);
+-
+-  if (clutter_actor_has_mapped_clones (self))
+-    {
+-      ClutterActorPrivate *priv = self->priv;
+-
+-      /* Avoid the early return in clutter_actor_queue_relayout() */
+-      priv->needs_width_request = FALSE;
+-      priv->needs_height_request = FALSE;
+-      priv->needs_allocation = FALSE;
+-
+-      clutter_actor_queue_relayout (self);
+-    }
+ }
+ 
+ static inline void
+@@ -5416,7 +5403,7 @@ clutter_actor_get_property (GObject    *object,
+       break;
+ 
+     case PROP_HAS_POINTER:
+-      g_value_set_boolean (value, priv->n_pointers > 0);
++      g_value_set_boolean (value, priv->has_pointer);
+       break;
+ 
+     case PROP_LAYOUT_MANAGER:
+@@ -5766,9 +5753,7 @@ clutter_actor_update_default_paint_volume (ClutterActor       *self,
+            * allocation, because apparently some code above Clutter allows
+            * them.
+            */
+-          if ((!CLUTTER_ACTOR_IS_MAPPED (child) &&
+-               !clutter_actor_has_mapped_clones (child)) ||
+-              !clutter_actor_has_allocation (child))
++          if (!CLUTTER_ACTOR_IS_MAPPED (child) || !clutter_actor_has_allocation (child))
+             continue;
+ 
+           child_volume = clutter_actor_get_transformed_paint_volume (child, self);
+@@ -11566,7 +11551,7 @@ clutter_actor_add_child_internal (ClutterActor              *self,
+   if (self == child)
+     {
+       g_warning ("Cannot add the actor '%s' to itself.",
+-                 _clutter_actor_get_debug_name (self));
++                  _clutter_actor_get_debug_name (self));
+       return;
+     }
+ 
+@@ -11719,18 +11704,6 @@ clutter_actor_add_child_internal (ClutterActor              *self,
+   if (CLUTTER_ACTOR_IS_MAPPED (child))
+     clutter_actor_queue_redraw (child);
+ 
+-  if (clutter_actor_has_mapped_clones (self))
+-    {
+-      ClutterActorPrivate *priv = self->priv;
+-
+-      /* Avoid the early return in clutter_actor_queue_relayout() */
+-      priv->needs_width_request = FALSE;
+-      priv->needs_height_request = FALSE;
+-      priv->needs_allocation = FALSE;
+-
+-      clutter_actor_queue_relayout (self);
+-    }
+-
+   if (emit_actor_added)
+     _clutter_container_emit_actor_added (CLUTTER_CONTAINER (self), child);
+ 
+@@ -12490,36 +12463,12 @@ clutter_actor_set_reactive (ClutterActor *actor,
+ 
+   g_object_notify_by_pspec (G_OBJECT (actor), obj_props[PROP_REACTIVE]);
+ 
+-  if (!CLUTTER_ACTOR_IS_REACTIVE (actor) && priv->n_pointers > 0)
++  if (!CLUTTER_ACTOR_IS_REACTIVE (actor) && priv->has_pointer)
+     {
+       ClutterActor *stage = _clutter_actor_get_stage_internal (actor);
+ 
+       clutter_stage_invalidate_focus (CLUTTER_STAGE (stage), actor);
+     }
+-  else if (CLUTTER_ACTOR_IS_REACTIVE (actor))
+-    {
+-      ClutterActor *parent;
+-
+-      /* Check whether the closest parent has pointer focus,
+-       * and whether it should move to this actor.
+-       */
+-      parent = priv->parent;
+-
+-      while (parent)
+-        {
+-          if (CLUTTER_ACTOR_IS_REACTIVE (parent))
+-            break;
+-
+-          parent = parent->priv->parent;
+-        }
+-
+-      if (parent && parent->priv->n_pointers > 0)
+-        {
+-          ClutterActor *stage = _clutter_actor_get_stage_internal (actor);
+-
+-          clutter_stage_maybe_invalidate_focus (CLUTTER_STAGE (stage), parent);
+-        }
+-    }
+ }
+ 
+ /**
+@@ -14721,21 +14670,12 @@ _clutter_actor_set_has_pointer (ClutterActor *self,
+ {
+   ClutterActorPrivate *priv = self->priv;
+ 
+-  if (has_pointer)
++  if (priv->has_pointer != has_pointer)
+     {
+-      g_assert (CLUTTER_IS_STAGE (self) || CLUTTER_ACTOR_IS_MAPPED (self));
++      priv->has_pointer = has_pointer;
+ 
+-      priv->n_pointers++;
++      g_object_notify_by_pspec (G_OBJECT (self), obj_props[PROP_HAS_POINTER]);
+     }
+-  else
+-    {
+-      g_assert (priv->n_pointers > 0);
+-
+-      priv->n_pointers--;
+-    }
+-
+-  if (priv->n_pointers == 0 || priv->n_pointers == 1)
+-    g_object_notify_by_pspec (G_OBJECT (self), obj_props[PROP_HAS_POINTER]);
+ }
+ 
+ void
+@@ -14806,7 +14746,7 @@ clutter_actor_has_pointer (ClutterActor *self)
+ {
+   g_return_val_if_fail (CLUTTER_IS_ACTOR (self), FALSE);
+ 
+-  return self->priv->n_pointers > 0;
++  return self->priv->has_pointer;
+ }
+ 
+ /**
+@@ -16070,8 +16010,7 @@ clutter_actor_finish_layout (ClutterActor *self,
+   ClutterActorPrivate *priv = self->priv;
+   ClutterActor *child;
+ 
+-  if ((!CLUTTER_ACTOR_IS_MAPPED (self) &&
+-       !clutter_actor_has_mapped_clones (self)) ||
++  if (!CLUTTER_ACTOR_IS_MAPPED (self) ||
+       CLUTTER_ACTOR_IN_DESTRUCTION (self))
+     return;
+ 
+diff --git a/clutter/clutter/clutter-frame-clock.c b/clutter/clutter/clutter-frame-clock.c
+index 6fa2b2588..a28a09e37 100644
+--- a/clutter/clutter/clutter-frame-clock.c
++++ b/clutter/clutter/clutter-frame-clock.c
+@@ -47,6 +47,8 @@ typedef struct _EstimateQueue
+ 
+ #define SYNC_DELAY_FALLBACK_FRACTION 0.875
+ 
++#define MINIMUM_REFRESH_RATE 30
++
+ typedef struct _ClutterFrameListener
+ {
+   const ClutterFrameListenerIface *iface;
+@@ -64,6 +66,7 @@ typedef enum _ClutterFrameClockState
+ {
+   CLUTTER_FRAME_CLOCK_STATE_INIT,
+   CLUTTER_FRAME_CLOCK_STATE_IDLE,
++  CLUTTER_FRAME_CLOCK_STATE_IDLE_TIMEOUT,
+   CLUTTER_FRAME_CLOCK_STATE_SCHEDULED,
+   CLUTTER_FRAME_CLOCK_STATE_DISPATCHING,
+   CLUTTER_FRAME_CLOCK_STATE_PENDING_PRESENTED,
+@@ -75,6 +78,8 @@ struct _ClutterFrameClock
+ 
+   float refresh_rate;
+   int64_t refresh_interval_us;
++  int64_t minimum_refresh_interval_us;
++
+   ClutterFrameListener listener;
+ 
+   GSource *source;
+@@ -82,6 +87,8 @@ struct _ClutterFrameClock
+   int64_t frame_count;
+ 
+   ClutterFrameClockState state;
++  ClutterFrameClockMode mode;
++
+   int64_t last_dispatch_time_us;
+   int64_t last_dispatch_lateness_us;
+   int64_t last_presentation_time_us;
+@@ -270,7 +277,8 @@ clutter_frame_clock_notify_presented (ClutterFrameClock *frame_clock,
+     }
+ #endif
+ 
+-  frame_clock->last_presentation_time_us = frame_info->presentation_time;
++  if (frame_info->presentation_time > 0)
++    frame_clock->last_presentation_time_us = frame_info->presentation_time;
+ 
+   frame_clock->got_measurements_last_frame = FALSE;
+ 
+@@ -314,6 +322,7 @@ clutter_frame_clock_notify_presented (ClutterFrameClock *frame_clock,
+     {
+     case CLUTTER_FRAME_CLOCK_STATE_INIT:
+     case CLUTTER_FRAME_CLOCK_STATE_IDLE:
++    case CLUTTER_FRAME_CLOCK_STATE_IDLE_TIMEOUT:
+     case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
+       g_warn_if_reached ();
+       break;
+@@ -334,6 +343,7 @@ clutter_frame_clock_notify_ready (ClutterFrameClock *frame_clock)
+     {
+     case CLUTTER_FRAME_CLOCK_STATE_INIT:
+     case CLUTTER_FRAME_CLOCK_STATE_IDLE:
++    case CLUTTER_FRAME_CLOCK_STATE_IDLE_TIMEOUT:
+     case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
+       g_warn_if_reached ();
+       break;
+@@ -406,8 +416,6 @@ calculate_next_update_time_us (ClutterFrameClock *frame_clock,
+   int64_t refresh_interval_us;
+   int64_t min_render_time_allowed_us;
+   int64_t max_render_time_allowed_us;
+-  int64_t last_next_presentation_time_us;
+-  int64_t time_since_last_next_presentation_time_us;
+   int64_t next_presentation_time_us;
+   int64_t next_update_time_us;
+ 
+@@ -509,28 +517,30 @@ calculate_next_update_time_us (ClutterFrameClock *frame_clock,
+         refresh_interval_us;
+     }
+ 
+-  /*
+-   * Skip one interval if we got an early presented event.
+-   *
+-   *        last frame this was last_presentation_time
+-   *       /       frame_clock->next_presentation_time_us
+-   *      /       /
+-   * |---|-o-----|-x----->
+-   *       |       \
+-   *       \        next_presentation_time_us is thus right after the last one
+-   *        but got an unexpected early presentation
+-   *             \_/
+-   *             time_since_last_next_presentation_time_us
+-   *
+-   */
+-  last_next_presentation_time_us = frame_clock->next_presentation_time_us;
+-  time_since_last_next_presentation_time_us =
+-    next_presentation_time_us - last_next_presentation_time_us;
+-  if (frame_clock->is_next_presentation_time_valid &&
+-      time_since_last_next_presentation_time_us < (refresh_interval_us / 2))
++  if (frame_clock->is_next_presentation_time_valid)
+     {
+-      next_presentation_time_us =
+-        frame_clock->next_presentation_time_us + refresh_interval_us;
++      int64_t time_since_last_next_presentation_time_us =
++        next_presentation_time_us - frame_clock->next_presentation_time_us;
++
++      /*
++       * Skip one interval if we got an early presented event.
++       *
++       *        last frame this was last_presentation_time
++       *       /       frame_clock->next_presentation_time_us
++       *      /       /
++       * |---|-o-----|-x----->
++       *       |       \
++       *       \        next_presentation_time_us is thus right after the last one
++       *        but got an unexpected early presentation
++       *             \_/
++       *             time_since_last_next_presentation_time_us
++       *
++       */
++      if (time_since_last_next_presentation_time_us < (refresh_interval_us / 2))
++        {
++          next_presentation_time_us =
++            frame_clock->next_presentation_time_us + refresh_interval_us;
++        }
+     }
+ 
+   while (next_presentation_time_us < now_us + min_render_time_allowed_us)
+@@ -542,6 +552,39 @@ calculate_next_update_time_us (ClutterFrameClock *frame_clock,
+   *out_next_presentation_time_us = next_presentation_time_us;
+ }
+ 
++static void
++calculate_next_idle_timeout_us (ClutterFrameClock *frame_clock,
++                                int64_t           *out_next_update_time_us)
++{
++  int64_t now_us;
++  int64_t last_presentation_time_us;
++  int64_t next_presentation_time_us;
++  int64_t timeout_interval_us;
++
++  now_us = g_get_monotonic_time ();
++
++  last_presentation_time_us = frame_clock->last_presentation_time_us;
++
++  timeout_interval_us = frame_clock->minimum_refresh_interval_us;
++
++  if (last_presentation_time_us == 0)
++    {
++      *out_next_update_time_us =
++        frame_clock->last_dispatch_time_us ?
++        ((frame_clock->last_dispatch_time_us -
++          frame_clock->last_dispatch_lateness_us) + timeout_interval_us) :
++        now_us;
++      return;
++    }
++
++  next_presentation_time_us = last_presentation_time_us + timeout_interval_us;
++
++  while (next_presentation_time_us < now_us)
++    next_presentation_time_us += timeout_interval_us;
++
++  *out_next_update_time_us = next_presentation_time_us;
++}
++
+ void
+ clutter_frame_clock_inhibit (ClutterFrameClock *frame_clock)
+ {
+@@ -554,6 +597,7 @@ clutter_frame_clock_inhibit (ClutterFrameClock *frame_clock)
+         case CLUTTER_FRAME_CLOCK_STATE_INIT:
+         case CLUTTER_FRAME_CLOCK_STATE_IDLE:
+           break;
++        case CLUTTER_FRAME_CLOCK_STATE_IDLE_TIMEOUT:
+         case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
+           frame_clock->pending_reschedule = TRUE;
+           frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_IDLE;
+@@ -594,6 +638,7 @@ clutter_frame_clock_schedule_update_now (ClutterFrameClock *frame_clock)
+     {
+     case CLUTTER_FRAME_CLOCK_STATE_INIT:
+     case CLUTTER_FRAME_CLOCK_STATE_IDLE:
++    case CLUTTER_FRAME_CLOCK_STATE_IDLE_TIMEOUT:
+       next_update_time_us = g_get_monotonic_time ();
+       break;
+     case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
+@@ -627,14 +672,12 @@ clutter_frame_clock_schedule_update (ClutterFrameClock *frame_clock)
+     {
+     case CLUTTER_FRAME_CLOCK_STATE_INIT:
+       next_update_time_us = g_get_monotonic_time ();
+-      break;
++      g_source_set_ready_time (frame_clock->source, next_update_time_us);
++      frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_SCHEDULED;
++      return;
+     case CLUTTER_FRAME_CLOCK_STATE_IDLE:
+-      calculate_next_update_time_us (frame_clock,
+-                                     &next_update_time_us,
+-                                     &frame_clock->next_presentation_time_us);
+-      frame_clock->is_next_presentation_time_valid =
+-        (frame_clock->next_presentation_time_us != 0);
+       break;
++    case CLUTTER_FRAME_CLOCK_STATE_IDLE_TIMEOUT:
+     case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
+       return;
+     case CLUTTER_FRAME_CLOCK_STATE_DISPATCHING:
+@@ -643,10 +686,54 @@ clutter_frame_clock_schedule_update (ClutterFrameClock *frame_clock)
+       return;
+     }
+ 
++  switch (frame_clock->mode)
++    {
++    case CLUTTER_FRAME_CLOCK_MODE_FIXED:
++      calculate_next_update_time_us (frame_clock,
++                                     &next_update_time_us,
++                                     &frame_clock->next_presentation_time_us);
++      frame_clock->is_next_presentation_time_valid =
++            (frame_clock->next_presentation_time_us != 0);
++      frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_SCHEDULED;
++      break;
++    case CLUTTER_FRAME_CLOCK_MODE_VARIABLE:
++      calculate_next_idle_timeout_us (frame_clock,
++                                      &next_update_time_us);
++      frame_clock->is_next_presentation_time_valid = FALSE;
++      frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_IDLE_TIMEOUT;
++      break;
++    }
++
+   g_warn_if_fail (next_update_time_us != -1);
+ 
+   g_source_set_ready_time (frame_clock->source, next_update_time_us);
+-  frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_SCHEDULED;
++}
++
++void
++clutter_frame_clock_set_mode (ClutterFrameClock     *frame_clock,
++                              ClutterFrameClockMode  mode)
++{
++  if (frame_clock->mode == mode)
++    return;
++
++  frame_clock->mode = mode;
++
++  switch (frame_clock->state)
++    {
++    case CLUTTER_FRAME_CLOCK_STATE_INIT:
++    case CLUTTER_FRAME_CLOCK_STATE_IDLE:
++      break;
++    case CLUTTER_FRAME_CLOCK_STATE_IDLE_TIMEOUT:
++    case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
++      frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_IDLE;
++      frame_clock->pending_reschedule = TRUE;
++      break;
++    case CLUTTER_FRAME_CLOCK_STATE_DISPATCHING:
++    case CLUTTER_FRAME_CLOCK_STATE_PENDING_PRESENTED:
++      break;
++    }
++
++  maybe_reschedule_update (frame_clock);
+ }
+ 
+ static void
+@@ -710,6 +797,7 @@ clutter_frame_clock_dispatch (ClutterFrameClock *frame_clock,
+       g_warn_if_reached ();
+       break;
+     case CLUTTER_FRAME_CLOCK_STATE_IDLE:
++    case CLUTTER_FRAME_CLOCK_STATE_IDLE_TIMEOUT:
+     case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
+       break;
+     case CLUTTER_FRAME_CLOCK_STATE_DISPATCHING:
+@@ -850,6 +938,10 @@ clutter_frame_clock_new (float                            refresh_rate,
+   init_frame_clock_source (frame_clock);
+ 
+   clutter_frame_clock_set_refresh_rate (frame_clock, refresh_rate);
++
++  frame_clock->minimum_refresh_interval_us =
++    (int64_t) (0.5 + G_USEC_PER_SEC / MINIMUM_REFRESH_RATE);
++
+   frame_clock->vblank_duration_us = vblank_duration_us;
+ 
+   return frame_clock;
+@@ -881,6 +973,7 @@ static void
+ clutter_frame_clock_init (ClutterFrameClock *frame_clock)
+ {
+   frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_INIT;
++  frame_clock->mode = CLUTTER_FRAME_CLOCK_MODE_FIXED;
+ }
+ 
+ static void
+diff --git a/clutter/clutter/clutter-frame-clock.h b/clutter/clutter/clutter-frame-clock.h
+index 91e6b3a13..380f56c6b 100644
+--- a/clutter/clutter/clutter-frame-clock.h
++++ b/clutter/clutter/clutter-frame-clock.h
+@@ -53,6 +53,12 @@ typedef struct _ClutterFrameListenerIface
+                                 gpointer           user_data);
+ } ClutterFrameListenerIface;
+ 
++typedef enum _ClutterFrameClockMode
++{
++  CLUTTER_FRAME_CLOCK_MODE_FIXED,
++  CLUTTER_FRAME_CLOCK_MODE_VARIABLE,
++} ClutterFrameClockMode;
++
+ CLUTTER_EXPORT
+ ClutterFrameClock * clutter_frame_clock_new (float                            refresh_rate,
+                                              int64_t                          vblank_duration_us,
+@@ -62,6 +68,10 @@ ClutterFrameClock * clutter_frame_clock_new (float                            re
+ CLUTTER_EXPORT
+ void clutter_frame_clock_destroy (ClutterFrameClock *frame_clock);
+ 
++CLUTTER_EXPORT
++void clutter_frame_clock_set_mode (ClutterFrameClock     *frame_clock,
++                                   ClutterFrameClockMode  mode);
++
+ CLUTTER_EXPORT
+ void clutter_frame_clock_notify_presented (ClutterFrameClock *frame_clock,
+                                            ClutterFrameInfo  *frame_info);
+diff --git a/clutter/clutter/clutter-stage-private.h b/clutter/clutter/clutter-stage-private.h
+index 72917853f..b1a8105d2 100644
+--- a/clutter/clutter/clutter-stage-private.h
++++ b/clutter/clutter/clutter-stage-private.h
+@@ -159,9 +159,6 @@ void clutter_stage_unlink_grab (ClutterStage *self,
+ void clutter_stage_invalidate_focus (ClutterStage *self,
+                                      ClutterActor *actor);
+ 
+-void clutter_stage_maybe_invalidate_focus (ClutterStage *self,
+-                                           ClutterActor *actor);
+-
+ G_END_DECLS
+ 
+ #endif /* __CLUTTER_STAGE_PRIVATE_H__ */
+diff --git a/clutter/clutter/clutter-stage-view-private.h b/clutter/clutter/clutter-stage-view-private.h
+index 39d8601ea..5c1ce9645 100644
+--- a/clutter/clutter/clutter-stage-view-private.h
++++ b/clutter/clutter/clutter-stage-view-private.h
+@@ -72,6 +72,10 @@ void clutter_stage_view_transform_rect_to_onscreen (ClutterStageView
+ CLUTTER_EXPORT
+ void clutter_stage_view_schedule_update (ClutterStageView *view);
+ 
++CLUTTER_EXPORT
++void clutter_stage_view_schedule_actor_update (ClutterStageView *view,
++                                               ClutterActor     *actor);
++
+ CLUTTER_EXPORT
+ void clutter_stage_view_notify_presented (ClutterStageView *view,
+                                           ClutterFrameInfo *frame_info);
+diff --git a/clutter/clutter/clutter-stage-view.c b/clutter/clutter/clutter-stage-view.c
+index 2e47237f0..55d4368bc 100644
+--- a/clutter/clutter/clutter-stage-view.c
++++ b/clutter/clutter/clutter-stage-view.c
+@@ -1047,6 +1047,22 @@ clutter_stage_view_schedule_update (ClutterStageView *view)
+   clutter_frame_clock_schedule_update (priv->frame_clock);
+ }
+ 
++void
++clutter_stage_view_schedule_actor_update (ClutterStageView *view,
++                                          ClutterActor     *actor)
++{
++  ClutterStageViewClass *view_class = CLUTTER_STAGE_VIEW_GET_CLASS (view);
++
++  view_class->schedule_actor_update (view, actor);
++}
++
++static void
++clutter_stage_view_real_schedule_actor_update (ClutterStageView *view,
++                                               ClutterActor     *actor)
++{
++  clutter_stage_view_schedule_update (view);
++}
++
+ float
+ clutter_stage_view_get_refresh_rate (ClutterStageView *view)
+ {
+@@ -1443,6 +1459,8 @@ clutter_stage_view_class_init (ClutterStageViewClass *klass)
+   object_class->dispose = clutter_stage_view_dispose;
+   object_class->finalize = clutter_stage_view_finalize;
+ 
++  klass->schedule_actor_update = clutter_stage_view_real_schedule_actor_update;
++
+   obj_props[PROP_NAME] =
+     g_param_spec_string ("name",
+                          "Name",
+diff --git a/clutter/clutter/clutter-stage-view.h b/clutter/clutter/clutter-stage-view.h
+index c2cf76abf..0f34cf5b8 100644
+--- a/clutter/clutter/clutter-stage-view.h
++++ b/clutter/clutter/clutter-stage-view.h
+@@ -50,6 +50,9 @@ struct _ClutterStageViewClass
+                                        int                          dst_width,
+                                        int                          dst_height,
+                                        cairo_rectangle_int_t       *dst_rect);
++
++  void (* schedule_actor_update) (ClutterStageView *view,
++                                  ClutterActor     *actor);
+ };
+ 
+ CLUTTER_EXPORT
+diff --git a/clutter/clutter/clutter-stage.c b/clutter/clutter/clutter-stage.c
+index 17186c229..f40df1017 100644
+--- a/clutter/clutter/clutter-stage.c
++++ b/clutter/clutter/clutter-stage.c
+@@ -127,8 +127,6 @@ struct _ClutterStagePrivate
+ 
+   int update_freeze_count;
+ 
+-  gboolean pending_finish_queue_redraws;
+-
+   GHashTable *pointer_devices;
+   GHashTable *touch_sequences;
+ 
+@@ -2467,6 +2465,36 @@ clutter_stage_schedule_update (ClutterStage *stage)
+     }
+ }
+ 
++/**
++ * clutter_stage_schedule_actor_update:
++ * @stage: a #ClutterStage actor
++ * @actor: a #ClutterActor which requires an update
++ *
++ * Schedules a redraw of the #ClutterStage at the next optimal timestamp
++ * for the specified actor.
++ */
++void
++clutter_stage_schedule_actor_update (ClutterStage *stage,
++                                     ClutterActor *actor)
++{
++  ClutterStageWindow *stage_window;
++  GList *l;
++
++  if (CLUTTER_ACTOR_IN_DESTRUCTION (stage))
++    return;
++
++  stage_window = _clutter_stage_get_window (stage);
++  if (stage_window == NULL)
++    return;
++
++  for (l = clutter_stage_peek_stage_views (stage); l; l = l->next)
++    {
++      ClutterStageView *view = l->data;
++
++      clutter_stage_view_schedule_actor_update (view, actor);
++    }
++}
++
+ ClutterPaintVolume *
+ _clutter_stage_paint_volume_stack_allocate (ClutterStage *stage)
+ {
+@@ -2518,19 +2546,7 @@ clutter_stage_queue_actor_redraw (ClutterStage             *stage,
+   CLUTTER_NOTE (CLIPPING, "stage_queue_actor_redraw (actor=%s, clip=%p): ",
+                 _clutter_actor_get_debug_name (actor), clip);
+ 
+-  if (!priv->pending_finish_queue_redraws)
+-    {
+-      GList *l;
+-
+-      for (l = clutter_stage_peek_stage_views (stage); l; l = l->next)
+-        {
+-          ClutterStageView *view = l->data;
+-
+-          clutter_stage_view_schedule_update (view);
+-        }
+-
+-      priv->pending_finish_queue_redraws = TRUE;
+-    }
++  clutter_stage_schedule_actor_update (stage, actor);
+ 
+   entry = g_hash_table_lookup (priv->pending_queue_redraws, actor);
+ 
+@@ -2654,11 +2670,6 @@ clutter_stage_maybe_finish_queue_redraws (ClutterStage *stage)
+ 
+   COGL_TRACE_BEGIN_SCOPED (ClutterStageFinishQueueRedraws, "FinishQueueRedraws");
+ 
+-  if (!priv->pending_finish_queue_redraws)
+-    return;
+-
+-  priv->pending_finish_queue_redraws = FALSE;
+-
+   g_hash_table_iter_init (&iter, priv->pending_queue_redraws);
+   while (g_hash_table_iter_next (&iter, &key, &value))
+     {
+@@ -3175,8 +3186,8 @@ clutter_stage_set_actor_needs_immediate_relayout (ClutterStage *stage)
+ }
+ 
+ void
+-clutter_stage_maybe_invalidate_focus (ClutterStage *self,
+-                                      ClutterActor *actor)
++clutter_stage_invalidate_focus (ClutterStage *self,
++                                ClutterActor *actor)
+ {
+   ClutterStagePrivate *priv = self->priv;
+   GHashTableIter iter;
+@@ -3185,6 +3196,8 @@ clutter_stage_maybe_invalidate_focus (ClutterStage *self,
+   if (CLUTTER_ACTOR_IN_DESTRUCTION (self))
+     return;
+ 
++  g_assert (!clutter_actor_is_mapped (actor) || !clutter_actor_get_reactive (actor));
++
+   g_hash_table_iter_init (&iter, priv->pointer_devices);
+   while (g_hash_table_iter_next (&iter, NULL, &value))
+     {
+@@ -3218,18 +3231,6 @@ clutter_stage_maybe_invalidate_focus (ClutterStage *self,
+                                             entry->coords,
+                                             CLUTTER_CURRENT_TIME);
+     }
+-}
+-
+-void
+-clutter_stage_invalidate_focus (ClutterStage *self,
+-                                ClutterActor *actor)
+-{
+-  if (CLUTTER_ACTOR_IN_DESTRUCTION (self))
+-    return;
+-
+-  g_assert (!clutter_actor_is_mapped (actor) || !clutter_actor_get_reactive (actor));
+-
+-  clutter_stage_maybe_invalidate_focus (self, actor);
+ 
+   if (actor != CLUTTER_ACTOR (self))
+     g_assert (!clutter_actor_has_pointer (actor));
+diff --git a/clutter/clutter/clutter-stage.h b/clutter/clutter/clutter-stage.h
+index 5412c4d72..a579820a4 100644
+--- a/clutter/clutter/clutter-stage.h
++++ b/clutter/clutter/clutter-stage.h
+@@ -210,6 +210,10 @@ gboolean        clutter_stage_is_redraw_queued_on_view          (ClutterStage
+ CLUTTER_EXPORT
+ void clutter_stage_schedule_update (ClutterStage *stage);
+ 
++CLUTTER_EXPORT
++void clutter_stage_schedule_actor_update (ClutterStage *stage,
++                                          ClutterActor *actor);
++
+ CLUTTER_EXPORT
+ gboolean clutter_stage_get_capture_final_size (ClutterStage          *stage,
+                                                cairo_rectangle_int_t *rect,
+diff --git a/data/61-mutter.rules b/data/61-mutter.rules
+index 7c2b96349..37847acab 100644
+--- a/data/61-mutter.rules
++++ b/data/61-mutter.rules
+@@ -1,2 +1,2 @@
+-DRIVERS=="i915", SUBSYSTEM=="drm", TAG+="mutter-device-disable-kms-modifiers"
++DRIVERS=="i915", SUBSYSTEM=="drm", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
+ ENV{ID_PATH}=="platform-vkms", TAG+="mutter-device-ignore"
+diff --git a/data/dbus-interfaces/org.gnome.Mutter.DisplayConfig.xml b/data/dbus-interfaces/org.gnome.Mutter.DisplayConfig.xml
+index af7cd6472..2a663b00b 100644
+--- a/data/dbus-interfaces/org.gnome.Mutter.DisplayConfig.xml
++++ b/data/dbus-interfaces/org.gnome.Mutter.DisplayConfig.xml
+@@ -336,6 +336,10 @@
+ 	    - "is-underscanning" (b): whether underscanning is enabled
+ 				      (absence of this means underscanning
+ 				      not being supported)
++	    - "is-vrr-allowed" (b): whether variable refresh rate is allowed
++	                            (absence of this means variable refresh
++	                            rate not being supported)
++
+ 	    - "max-screen-size" (ii): the maximum size a screen may have
+ 				      (absence of this means unlimited screen
+ 				      size)
+@@ -454,6 +458,9 @@
+ 	        - "enable_underscanning" (b): enable monitor underscanning;
+ 					      may only be set when underscanning
+ 					      is supported (see GetCurrentState).
++	        - "allow_vrr" (b): allow variable refresh rate; may only be set
++	                           when variable refresh rate is supported (see
++	                           GetCurrentState).
+ 
+ 	@properties may effect the global monitor configuration state. Possible
+ 	properties are:
+diff --git a/meson.build b/meson.build
+index 05aeb4609..fa0cc23f0 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1,5 +1,5 @@
+ project('mutter', 'c',
+-  version: '42.4',
++  version: '42.2',
+   meson_version: '>= 0.55.0',
+   license: 'GPLv2+'
+ )
+@@ -427,6 +427,7 @@ if buildtype != 'plain'
+     '-Werror=pointer-to-int-cast',
+     '-Werror=empty-body',
+     '-Werror=write-strings',
++    '-Werror=strict-aliasing',
+     '-Wno-sign-compare',
+     '-Wno-cast-function-type',
+     '-Wno-unused-parameter',
+diff --git a/src/backends/meta-crtc-mode.h b/src/backends/meta-crtc-mode.h
+index 6f1648403..2ac90e408 100644
+--- a/src/backends/meta-crtc-mode.h
++++ b/src/backends/meta-crtc-mode.h
+@@ -55,7 +55,6 @@ typedef struct _MetaCrtcModeInfo
+   int height;
+   float refresh_rate;
+   int64_t vblank_duration_us;
+-  uint32_t pixel_clock_khz;
+   MetaCrtcModeFlag flags;
+ } MetaCrtcModeInfo;
+ 
+diff --git a/src/backends/meta-monitor-config-manager.c b/src/backends/meta-monitor-config-manager.c
+index da3f1dd54..95fd3ad6c 100644
+--- a/src/backends/meta-monitor-config-manager.c
++++ b/src/backends/meta-monitor-config-manager.c
+@@ -286,7 +286,8 @@ assign_monitor_crtc (MetaMonitor         *monitor,
+     .output = output,
+     .is_primary = assign_output_as_primary,
+     .is_presentation = assign_output_as_presentation,
+-    .is_underscanning = data->monitor_config->enable_underscanning
++    .is_underscanning = data->monitor_config->enable_underscanning,
++    .is_vrr_allowed = data->monitor_config->allow_vrr,
+   };
+ 
+   g_ptr_array_add (data->crtc_assignments, crtc_assignment);
+@@ -691,7 +692,8 @@ create_monitor_config (MetaMonitor     *monitor,
+   *monitor_config = (MetaMonitorConfig) {
+     .monitor_spec = meta_monitor_spec_clone (monitor_spec),
+     .mode_spec = g_memdup2 (mode_spec, sizeof (MetaMonitorModeSpec)),
+-    .enable_underscanning = meta_monitor_is_underscanning (monitor)
++    .enable_underscanning = meta_monitor_is_underscanning (monitor),
++    .allow_vrr = meta_monitor_is_vrr_allowed (monitor),
+   };
+ 
+   return monitor_config;
+@@ -953,7 +955,8 @@ clone_monitor_config_list (GList *monitor_configs_in)
+         .monitor_spec = meta_monitor_spec_clone (monitor_config_in->monitor_spec),
+         .mode_spec = g_memdup2 (monitor_config_in->mode_spec,
+                                 sizeof (MetaMonitorModeSpec)),
+-        .enable_underscanning = monitor_config_in->enable_underscanning
++        .enable_underscanning = monitor_config_in->enable_underscanning,
++        .allow_vrr = monitor_config_in->allow_vrr,
+       };
+       monitor_configs_out =
+         g_list_append (monitor_configs_out, monitor_config_out);
+diff --git a/src/backends/meta-monitor-config-manager.h b/src/backends/meta-monitor-config-manager.h
+index a789e2f08..fdf2db3a7 100644
+--- a/src/backends/meta-monitor-config-manager.h
++++ b/src/backends/meta-monitor-config-manager.h
+@@ -34,6 +34,7 @@ typedef struct _MetaMonitorConfig
+   MetaMonitorSpec *monitor_spec;
+   MetaMonitorModeSpec *mode_spec;
+   gboolean enable_underscanning;
++  gboolean allow_vrr;
+ } MetaMonitorConfig;
+ 
+ typedef struct _MetaLogicalMonitorConfig
+diff --git a/src/backends/meta-monitor-config-store.c b/src/backends/meta-monitor-config-store.c
+index 5d48ec2ea..bb8c73c7f 100644
+--- a/src/backends/meta-monitor-config-store.c
++++ b/src/backends/meta-monitor-config-store.c
+@@ -167,6 +167,7 @@ typedef enum
+   STATE_MONITOR_MODE_RATE,
+   STATE_MONITOR_MODE_FLAG,
+   STATE_MONITOR_UNDERSCANNING,
++  STATE_MONITOR_VRR_ALLOWED,
+   STATE_DISABLED,
+   STATE_POLICY,
+   STATE_STORES,
+@@ -451,6 +452,10 @@ handle_start_element (GMarkupParseContext  *context,
+           {
+             parser->state = STATE_MONITOR_UNDERSCANNING;
+           }
++        else if (g_str_equal (element_name, "vrr-allowed"))
++          {
++            parser->state = STATE_MONITOR_VRR_ALLOWED;
++          }
+         else
+           {
+             g_set_error (error, G_MARKUP_ERROR, G_MARKUP_ERROR_UNKNOWN_ELEMENT,
+@@ -544,6 +549,13 @@ handle_start_element (GMarkupParseContext  *context,
+         return;
+       }
+ 
++    case STATE_MONITOR_VRR_ALLOWED:
++      {
++        g_set_error (error, G_MARKUP_ERROR, G_MARKUP_ERROR_UNKNOWN_ELEMENT,
++                     "Invalid element '%s' under vrr-allowed", element_name);
++        return;
++      }
++
+     case STATE_DISABLED:
+       {
+         if (!g_str_equal (element_name, "monitorspec"))
+@@ -818,6 +830,14 @@ handle_end_element (GMarkupParseContext  *context,
+         return;
+       }
+ 
++    case STATE_MONITOR_VRR_ALLOWED:
++      {
++        g_assert (g_str_equal (element_name, "vrr-allowed"));
++
++        parser->state = STATE_MONITOR;
++        return;
++      }
++
+     case STATE_MONITOR:
+       {
+         MetaLogicalMonitorConfig *logical_monitor_config;
+@@ -1301,6 +1321,14 @@ handle_text (GMarkupParseContext *context,
+         return;
+       }
+ 
++    case STATE_MONITOR_VRR_ALLOWED:
++      {
++        read_bool (text, text_len,
++                   &parser->current_monitor_config->allow_vrr,
++                   error);
++        return;
++      }
++
+     case STATE_STORE:
+       {
+         MetaConfigStore store;
+@@ -1476,6 +1504,8 @@ append_monitors (GString *buffer,
+       g_string_append (buffer, "        </mode>\n");
+       if (monitor_config->enable_underscanning)
+         g_string_append (buffer, "        <underscanning>yes</underscanning>\n");
++      if (monitor_config->allow_vrr)
++        g_string_append (buffer, "        <vrr-allowed>yes</vrr-allowed>\n");
+       g_string_append (buffer, "      </monitor>\n");
+     }
+ }
+diff --git a/src/backends/meta-monitor-manager-private.h b/src/backends/meta-monitor-manager-private.h
+index edf7e4501..19a5e1359 100644
+--- a/src/backends/meta-monitor-manager-private.h
++++ b/src/backends/meta-monitor-manager-private.h
+@@ -102,6 +102,7 @@ struct _MetaOutputAssignment
+   gboolean     is_primary;
+   gboolean     is_presentation;
+   gboolean     is_underscanning;
++  gboolean     is_vrr_allowed;
+ };
+ 
+ /*
+diff --git a/src/backends/meta-monitor-manager.c b/src/backends/meta-monitor-manager.c
+index be99b4664..5185bfa92 100644
+--- a/src/backends/meta-monitor-manager.c
++++ b/src/backends/meta-monitor-manager.c
+@@ -1977,6 +1977,15 @@ meta_monitor_manager_handle_get_current_state (MetaDBusDisplayConfig *skeleton,
+                                  g_variant_new_boolean (is_underscanning));
+         }
+ 
++      if (meta_monitor_is_vrr_capable (monitor))
++        {
++          gboolean vrr_allowed = meta_monitor_is_vrr_allowed (monitor);
++
++          g_variant_builder_add (&monitor_properties_builder, "{sv}",
++                                 "is-vrr-allowed",
++                                 g_variant_new_boolean (vrr_allowed));
++        }
++
+       is_builtin = meta_monitor_is_laptop_panel (monitor);
+       g_variant_builder_add (&monitor_properties_builder, "{sv}",
+                              "is-builtin",
+@@ -2296,6 +2305,8 @@ create_monitor_config_from_variant (MetaMonitorManager *manager,
+   g_autoptr (GVariant) properties_variant = NULL;
+   gboolean enable_underscanning = FALSE;
+   gboolean set_underscanning = FALSE;
++  gboolean allow_vrr = FALSE;
++  gboolean set_allow_vrr = FALSE;
+ 
+   g_variant_get (monitor_config_variant, "(ss@a{sv})",
+                  &connector,
+@@ -2331,6 +2342,19 @@ create_monitor_config_from_variant (MetaMonitorManager *manager,
+         }
+     }
+ 
++  set_allow_vrr =
++    g_variant_lookup (properties_variant, "allow_vrr", "b",
++                      &allow_vrr);
++  if (set_allow_vrr)
++    {
++      if (allow_vrr && !meta_monitor_is_vrr_capable (monitor))
++        {
++          g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
++                       "Variable refresh rate requested but unsupported");
++          return NULL;
++        }
++    }
++
+   monitor_spec = meta_monitor_spec_clone (meta_monitor_get_spec (monitor));
+ 
+   monitor_mode_spec = g_new0 (MetaMonitorModeSpec, 1);
+@@ -2340,7 +2364,8 @@ create_monitor_config_from_variant (MetaMonitorManager *manager,
+   *monitor_config = (MetaMonitorConfig) {
+     .monitor_spec = monitor_spec,
+     .mode_spec = monitor_mode_spec,
+-    .enable_underscanning = enable_underscanning
++    .enable_underscanning = enable_underscanning,
++    .allow_vrr = allow_vrr,
+   };
+ 
+   return monitor_config;
+diff --git a/src/backends/meta-monitor.c b/src/backends/meta-monitor.c
+index 46cb05a66..4ccfadb7f 100644
+--- a/src/backends/meta-monitor.c
++++ b/src/backends/meta-monitor.c
+@@ -358,6 +358,25 @@ meta_monitor_is_underscanning (MetaMonitor *monitor)
+   return meta_output_is_underscanning (output);
+ }
+ 
++gboolean
++meta_monitor_is_vrr_capable (MetaMonitor *monitor)
++{
++  const MetaOutputInfo *output_info =
++    meta_monitor_get_main_output_info (monitor);
++
++  return output_info->vrr_capable;
++}
++
++gboolean
++meta_monitor_is_vrr_allowed (MetaMonitor *monitor)
++{
++  MetaOutput *output;
++
++  output = meta_monitor_get_main_output (monitor);
++
++  return meta_output_is_vrr_allowed (output);
++}
++
+ gboolean
+ meta_monitor_is_laptop_panel (MetaMonitor *monitor)
+ {
+diff --git a/src/backends/meta-monitor.h b/src/backends/meta-monitor.h
+index 066caa7f4..aaf68ecca 100644
+--- a/src/backends/meta-monitor.h
++++ b/src/backends/meta-monitor.h
+@@ -118,6 +118,10 @@ gboolean meta_monitor_supports_underscanning (MetaMonitor *monitor);
+ 
+ gboolean meta_monitor_is_underscanning (MetaMonitor *monitor);
+ 
++gboolean meta_monitor_is_vrr_capable (MetaMonitor *monitor);
++
++gboolean meta_monitor_is_vrr_allowed (MetaMonitor *monitor);
++
+ gboolean meta_monitor_is_laptop_panel (MetaMonitor *monitor);
+ 
+ gboolean meta_monitor_is_same_as (MetaMonitor *monitor,
+diff --git a/src/backends/meta-output.c b/src/backends/meta-output.c
+index ed4807507..4dca7981f 100644
+--- a/src/backends/meta-output.c
++++ b/src/backends/meta-output.c
+@@ -55,6 +55,8 @@ typedef struct _MetaOutputPrivate
+ 
+   gboolean is_underscanning;
+ 
++  gboolean is_vrr_allowed;
++
+   int backlight;
+ } MetaOutputPrivate;
+ 
+@@ -177,6 +179,22 @@ meta_output_is_underscanning (MetaOutput *output)
+   return priv->is_underscanning;
+ }
+ 
++gboolean
++meta_output_is_vrr_capable (MetaOutput *output)
++{
++  const MetaOutputInfo *output_info = meta_output_get_info (output);
++
++  return output_info->vrr_capable;
++}
++
++gboolean
++meta_output_is_vrr_allowed (MetaOutput *output)
++{
++  MetaOutputPrivate *priv = meta_output_get_instance_private (output);
++
++  return priv->is_vrr_allowed;
++}
++
+ void
+ meta_output_set_backlight (MetaOutput *output,
+                            int         backlight)
+@@ -235,6 +253,7 @@ meta_output_assign_crtc (MetaOutput                 *output,
+   priv->is_primary = output_assignment->is_primary;
+   priv->is_presentation = output_assignment->is_presentation;
+   priv->is_underscanning = output_assignment->is_underscanning;
++  priv->is_vrr_allowed = output_assignment->is_vrr_allowed;
+ }
+ 
+ void
+diff --git a/src/backends/meta-output.h b/src/backends/meta-output.h
+index 6c90d7e69..27b1e32a9 100644
+--- a/src/backends/meta-output.h
++++ b/src/backends/meta-output.h
+@@ -103,6 +103,8 @@ typedef struct _MetaOutputInfo
+   gboolean supports_underscanning;
+   gboolean supports_color_transform;
+ 
++  gboolean vrr_capable;
++
+   /*
+    * Get a new preferred mode on hotplug events, to handle dynamic guest
+    * resizing.
+@@ -178,6 +180,11 @@ gboolean meta_output_is_presentation (MetaOutput *output);
+ META_EXPORT_TEST
+ gboolean meta_output_is_underscanning (MetaOutput *output);
+ 
++gboolean meta_output_is_vrr_capable (MetaOutput *output);
++
++META_EXPORT_TEST
++gboolean meta_output_is_vrr_allowed (MetaOutput *output);
++
+ void meta_output_set_backlight (MetaOutput *output,
+                                 int         backlight);
+ 
+diff --git a/src/backends/meta-renderer-view.c b/src/backends/meta-renderer-view.c
+index 55617fc68..348ce0fb8 100644
+--- a/src/backends/meta-renderer-view.c
++++ b/src/backends/meta-renderer-view.c
+@@ -33,6 +33,7 @@
+ #include "backends/meta-renderer-view.h"
+ 
+ #include "backends/meta-crtc.h"
++#include "backends/meta-output.h"
+ #include "backends/meta-renderer.h"
+ #include "clutter/clutter-mutter.h"
+ #include "compositor/region-utils.h"
+@@ -43,34 +44,49 @@ enum
+ 
+   PROP_TRANSFORM,
+   PROP_CRTC,
++  PROP_OUTPUT,
+ 
+   PROP_LAST
+ };
+ 
+ static GParamSpec *obj_props[PROP_LAST];
+ 
+-struct _MetaRendererView
++typedef struct _MetaRendererViewPrivate
+ {
+-  MetaStageView parent;
+-
+   MetaMonitorTransform transform;
+ 
+   MetaCrtc *crtc;
+-};
++  MetaOutput *output;
++} MetaRendererViewPrivate;
+ 
+-G_DEFINE_TYPE (MetaRendererView, meta_renderer_view,
+-               META_TYPE_STAGE_VIEW)
++G_DEFINE_TYPE_WITH_PRIVATE (MetaRendererView, meta_renderer_view,
++                            META_TYPE_STAGE_VIEW)
+ 
+ MetaMonitorTransform
+ meta_renderer_view_get_transform (MetaRendererView *view)
+ {
+-  return view->transform;
++  MetaRendererViewPrivate *priv =
++    meta_renderer_view_get_instance_private (view);
++
++  return priv->transform;
+ }
+ 
+ MetaCrtc *
+ meta_renderer_view_get_crtc (MetaRendererView *view)
+ {
+-  return view->crtc;
++  MetaRendererViewPrivate *priv =
++    meta_renderer_view_get_instance_private (view);
++
++  return priv->crtc;
++}
++
++MetaOutput *
++meta_renderer_view_get_output (MetaRendererView *view)
++{
++  MetaRendererViewPrivate *priv =
++    meta_renderer_view_get_instance_private (view);
++
++  return priv->output;
+ }
+ 
+ static void
+@@ -78,10 +94,12 @@ meta_renderer_view_get_offscreen_transformation_matrix (ClutterStageView  *view,
+                                                         graphene_matrix_t *matrix)
+ {
+   MetaRendererView *renderer_view = META_RENDERER_VIEW (view);
++  MetaRendererViewPrivate *priv =
++    meta_renderer_view_get_instance_private (renderer_view);
+ 
+   graphene_matrix_init_identity (matrix);
+ 
+-  switch (renderer_view->transform)
++  switch (priv->transform)
+     {
+     case META_MONITOR_TRANSFORM_NORMAL:
+       break;
+@@ -136,10 +154,12 @@ meta_renderer_view_transform_rect_to_onscreen (ClutterStageView            *view
+                                                cairo_rectangle_int_t       *dst_rect)
+ {
+   MetaRendererView *renderer_view = META_RENDERER_VIEW (view);
++  MetaRendererViewPrivate *priv =
++    meta_renderer_view_get_instance_private (renderer_view);
+   MetaMonitorTransform inverted_transform;
+ 
+   inverted_transform =
+-    meta_monitor_transform_invert (renderer_view->transform);
++    meta_monitor_transform_invert (priv->transform);
+   return meta_rectangle_transform (src_rect,
+                                    inverted_transform,
+                                    dst_width,
+@@ -151,10 +171,13 @@ static void
+ meta_renderer_view_set_transform (MetaRendererView     *view,
+                                   MetaMonitorTransform  transform)
+ {
+-  if (view->transform == transform)
++  MetaRendererViewPrivate *priv =
++    meta_renderer_view_get_instance_private (view);
++
++  if (priv->transform == transform)
+     return;
+ 
+-  view->transform = transform;
++  priv->transform = transform;
+   clutter_stage_view_invalidate_offscreen_blit_pipeline (CLUTTER_STAGE_VIEW (view));
+ }
+ 
+@@ -165,14 +188,19 @@ meta_renderer_view_get_property (GObject    *object,
+                                  GParamSpec *pspec)
+ {
+   MetaRendererView *view = META_RENDERER_VIEW (object);
++  MetaRendererViewPrivate *priv =
++    meta_renderer_view_get_instance_private (view);
+ 
+   switch (prop_id)
+     {
+     case PROP_TRANSFORM:
+-      g_value_set_uint (value, view->transform);
++      g_value_set_uint (value, priv->transform);
+       break;
+     case PROP_CRTC:
+-      g_value_set_object (value, view->crtc);
++      g_value_set_object (value, priv->crtc);
++      break;
++    case PROP_OUTPUT:
++      g_value_set_object (value, priv->output);
+       break;
+     default:
+       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+@@ -187,6 +215,8 @@ meta_renderer_view_set_property (GObject      *object,
+                                  GParamSpec   *pspec)
+ {
+   MetaRendererView *view = META_RENDERER_VIEW (object);
++  MetaRendererViewPrivate *priv =
++    meta_renderer_view_get_instance_private (view);
+ 
+   switch (prop_id)
+     {
+@@ -194,7 +224,10 @@ meta_renderer_view_set_property (GObject      *object,
+       meta_renderer_view_set_transform (view, g_value_get_uint (value));
+       break;
+     case PROP_CRTC:
+-      view->crtc = g_value_get_object (value);
++      priv->crtc = g_value_get_object (value);
++      break;
++    case PROP_OUTPUT:
++      priv->output = g_value_get_object (value);
+       break;
+     default:
+       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+@@ -243,5 +276,14 @@ meta_renderer_view_class_init (MetaRendererViewClass *klass)
+                          G_PARAM_CONSTRUCT_ONLY |
+                          G_PARAM_STATIC_STRINGS);
+ 
++  obj_props[PROP_OUTPUT] =
++    g_param_spec_object ("output",
++                         "MetaOutput",
++                         "MetaOutput",
++                         META_TYPE_OUTPUT,
++                         G_PARAM_READWRITE |
++                         G_PARAM_CONSTRUCT_ONLY |
++                         G_PARAM_STATIC_STRINGS);
++
+   g_object_class_install_properties (object_class, PROP_LAST, obj_props);
+ }
+diff --git a/src/backends/meta-renderer-view.h b/src/backends/meta-renderer-view.h
+index 3f21c7c48..355e75e96 100644
+--- a/src/backends/meta-renderer-view.h
++++ b/src/backends/meta-renderer-view.h
+@@ -22,13 +22,20 @@
+ #include "backends/meta-stage-impl-private.h"
+ #include "backends/meta-stage-view-private.h"
+ 
++struct _MetaRendererViewClass
++{
++  MetaStageViewClass parent_class;
++};
++
+ #define META_TYPE_RENDERER_VIEW (meta_renderer_view_get_type ())
+-G_DECLARE_FINAL_TYPE (MetaRendererView, meta_renderer_view,
+-                      META, RENDERER_VIEW,
+-                      MetaStageView)
++G_DECLARE_DERIVABLE_TYPE (MetaRendererView, meta_renderer_view,
++                          META, RENDERER_VIEW,
++                          MetaStageView)
+ 
+ MetaMonitorTransform meta_renderer_view_get_transform (MetaRendererView *view);
+ 
+ MetaCrtc *meta_renderer_view_get_crtc (MetaRendererView *view);
+ 
++MetaOutput *meta_renderer_view_get_output (MetaRendererView *view);
++
+ #endif /* META_RENDERER_VIEW_H */
+diff --git a/src/backends/meta-screen-cast-monitor-stream-src.c b/src/backends/meta-screen-cast-monitor-stream-src.c
+index 3c449e022..f30a52d1d 100644
+--- a/src/backends/meta-screen-cast-monitor-stream-src.c
++++ b/src/backends/meta-screen-cast-monitor-stream-src.c
+@@ -552,13 +552,13 @@ meta_screen_cast_monitor_stream_src_record_to_framebuffer (MetaScreenCastStreamS
+ {
+   MetaScreenCastMonitorStreamSrc *monitor_src =
+     META_SCREEN_CAST_MONITOR_STREAM_SRC (src);
+-  MetaScreenCastStream *stream = meta_screen_cast_stream_src_get_stream (src);
+-  ClutterStage *stage = get_stage (monitor_src);
++  MetaBackend *backend = get_backend (monitor_src);
++  MetaRenderer *renderer = meta_backend_get_renderer (backend);
+   MetaMonitor *monitor;
+   MetaLogicalMonitor *logical_monitor;
+   MetaRectangle logical_monitor_layout;
++  GList *l;
+   float view_scale;
+-  ClutterPaintFlag paint_flags = CLUTTER_PAINT_FLAG_CLEAR;
+ 
+   monitor = get_monitor (monitor_src);
+   logical_monitor = meta_monitor_get_logical_monitor (monitor);
+@@ -569,22 +569,44 @@ meta_screen_cast_monitor_stream_src_record_to_framebuffer (MetaScreenCastStreamS
+   else
+     view_scale = 1.0;
+ 
+-  switch (meta_screen_cast_stream_get_cursor_mode (stream))
++  for (l = meta_renderer_get_views (renderer); l; l = l->next)
+     {
+-    case META_SCREEN_CAST_CURSOR_MODE_METADATA:
+-    case META_SCREEN_CAST_CURSOR_MODE_HIDDEN:
+-      paint_flags |= CLUTTER_PAINT_FLAG_NO_CURSORS;
+-      break;
+-    case META_SCREEN_CAST_CURSOR_MODE_EMBEDDED:
+-      paint_flags |= CLUTTER_PAINT_FLAG_FORCE_CURSORS;
+-      break;
+-    }
++      ClutterStageView *view = CLUTTER_STAGE_VIEW (l->data);
++      CoglFramebuffer *view_framebuffer;
++      CoglScanout *scanout;
++      MetaRectangle view_layout;
++      int x, y;
++
++      clutter_stage_view_get_layout (view, &view_layout);
++
++      if (!meta_rectangle_overlap (&logical_monitor_layout, &view_layout))
++        continue;
++
++      x = (int) roundf ((view_layout.x - logical_monitor_layout.x) * view_scale);
++      y = (int) roundf ((view_layout.y - logical_monitor_layout.y) * view_scale);
+ 
+-  clutter_stage_paint_to_framebuffer (stage,
++      scanout = clutter_stage_view_peek_scanout (view);
++      if (scanout)
++        {
++          if (!cogl_scanout_blit_to_framebuffer (scanout,
++                                                 framebuffer,
++                                                 x, y,
++                                                 error))
++            return FALSE;
++        }
++      else
++        {
++          view_framebuffer = clutter_stage_view_get_framebuffer (view);
++          if (!cogl_blit_framebuffer (view_framebuffer,
+                                       framebuffer,
+-                                      &logical_monitor_layout,
+-                                      view_scale,
+-                                      paint_flags);
++                                      0, 0,
++                                      x, y,
++                                      cogl_framebuffer_get_width (view_framebuffer),
++                                      cogl_framebuffer_get_height (view_framebuffer),
++                                      error))
++            return FALSE;
++        }
++    }
+ 
+   cogl_framebuffer_flush (framebuffer);
+ 
+diff --git a/src/backends/meta-screen-cast-stream-src.c b/src/backends/meta-screen-cast-stream-src.c
+index 806fa806c..0d8bc1751 100644
+--- a/src/backends/meta-screen-cast-stream-src.c
++++ b/src/backends/meta-screen-cast-stream-src.c
+@@ -569,26 +569,6 @@ maybe_schedule_follow_up_frame (MetaScreenCastStreamSrc *src,
+                                                    src);
+ }
+ 
+-static int32_t
+-meta_screen_cast_stream_src_calculate_stride (MetaScreenCastStreamSrc *src,
+-                                              struct spa_data         *spa_data)
+-{
+-  MetaScreenCastStreamSrcPrivate *priv =
+-    meta_screen_cast_stream_src_get_instance_private (src);
+-  CoglDmaBufHandle *dmabuf_handle = NULL;
+-
+-  if (spa_data->type == SPA_DATA_DmaBuf)
+-    {
+-      dmabuf_handle = g_hash_table_lookup (priv->dmabuf_handles,
+-                                           GINT_TO_POINTER (spa_data->fd));
+-    }
+-
+-  if (dmabuf_handle)
+-    return cogl_dma_buf_handle_get_stride (dmabuf_handle);
+-  else
+-    return priv->video_stride;
+-}
+-
+ void
+ meta_screen_cast_stream_src_maybe_record_frame (MetaScreenCastStreamSrc  *src,
+                                                 MetaScreenCastRecordFlag  flags)
+@@ -651,12 +631,10 @@ meta_screen_cast_stream_src_maybe_record_frame (MetaScreenCastStreamSrc  *src,
+       g_clear_handle_id (&priv->follow_up_frame_source_id, g_source_remove);
+       if (do_record_frame (src, flags, spa_buffer, data, &error))
+         {
+-          struct spa_data *spa_data = &spa_buffer->datas[0];
+           struct spa_meta_region *spa_meta_video_crop;
+ 
+-          spa_data->chunk->size = spa_data->maxsize;
+-          spa_data->chunk->stride =
+-            meta_screen_cast_stream_src_calculate_stride (src, spa_data);
++          spa_buffer->datas[0].chunk->size = spa_buffer->datas[0].maxsize;
++          spa_buffer->datas[0].chunk->stride = priv->video_stride;
+ 
+           /* Update VideoCrop if needed */
+           spa_meta_video_crop =
+diff --git a/src/backends/meta-virtual-monitor.h b/src/backends/meta-virtual-monitor.h
+index 6699c8ece..c127c46ca 100644
+--- a/src/backends/meta-virtual-monitor.h
++++ b/src/backends/meta-virtual-monitor.h
+@@ -70,7 +70,6 @@ void meta_virtual_monitor_info_free (MetaVirtualMonitorInfo *info);
+ 
+ MetaCrtc * meta_virtual_monitor_get_crtc (MetaVirtualMonitor *virtual_monitor);
+ 
+-META_EXPORT_TEST
+ MetaCrtcMode * meta_virtual_monitor_get_crtc_mode (MetaVirtualMonitor *virtual_monitor);
+ 
+ META_EXPORT_TEST
+diff --git a/src/backends/native/meta-backend-native.c b/src/backends/native/meta-backend-native.c
+index 224538787..cca074504 100644
+--- a/src/backends/native/meta-backend-native.c
++++ b/src/backends/native/meta-backend-native.c
+@@ -448,6 +448,9 @@ create_gpu_from_udev_device (MetaBackendNative  *native,
+   if (meta_is_udev_device_disable_modifiers (device))
+     flags |= META_KMS_DEVICE_FLAG_DISABLE_MODIFIERS;
+ 
++  if (meta_is_udev_device_disable_vrr (device))
++    flags |= META_KMS_DEVICE_FLAG_DISABLE_VRR;
++
+   if (meta_is_udev_device_preferred_primary (device))
+     flags |= META_KMS_DEVICE_FLAG_PREFERRED_PRIMARY;
+ 
+diff --git a/src/backends/native/meta-crtc-mode-kms.c b/src/backends/native/meta-crtc-mode-kms.c
+index e108349c4..053367cfd 100644
+--- a/src/backends/native/meta-crtc-mode-kms.c
++++ b/src/backends/native/meta-crtc-mode-kms.c
+@@ -57,7 +57,6 @@ meta_crtc_mode_kms_new (MetaKmsMode *kms_mode,
+     meta_calculate_drm_mode_refresh_rate (drm_mode);
+   crtc_mode_info->vblank_duration_us =
+     meta_calculate_drm_mode_vblank_duration_us (drm_mode);
+-  crtc_mode_info->pixel_clock_khz = drm_mode->clock;
+ 
+   crtc_mode_name = g_strndup (drm_mode->name, DRM_DISPLAY_MODE_LEN);
+   mode_kms = g_object_new (META_TYPE_CRTC_MODE_KMS,
+diff --git a/src/backends/native/meta-gpu-kms.c b/src/backends/native/meta-gpu-kms.c
+index 97b47f9f9..f30363dc9 100644
+--- a/src/backends/native/meta-gpu-kms.c
++++ b/src/backends/native/meta-gpu-kms.c
+@@ -143,6 +143,15 @@ meta_gpu_kms_disable_modifiers (MetaGpuKms *gpu_kms)
+   return !!(flags & META_KMS_DEVICE_FLAG_DISABLE_MODIFIERS);
+ }
+ 
++gboolean
++meta_gpu_kms_disable_vrr (MetaGpuKms *gpu_kms)
++{
++  MetaKmsDeviceFlag flags;
++
++  flags = meta_kms_device_get_flags (gpu_kms->kms_device);
++  return !!(flags & META_KMS_DEVICE_FLAG_DISABLE_VRR);
++}
++
+ static int
+ compare_outputs (gconstpointer one,
+                  gconstpointer two)
+diff --git a/src/backends/native/meta-gpu-kms.h b/src/backends/native/meta-gpu-kms.h
+index e6f8b3e87..77daba2e2 100644
+--- a/src/backends/native/meta-gpu-kms.h
++++ b/src/backends/native/meta-gpu-kms.h
+@@ -48,6 +48,7 @@ gboolean meta_gpu_kms_is_crtc_active (MetaGpuKms *gpu_kms,
+ gboolean meta_gpu_kms_is_boot_vga (MetaGpuKms *gpu_kms);
+ gboolean meta_gpu_kms_is_platform_device (MetaGpuKms *gpu_kms);
+ gboolean meta_gpu_kms_disable_modifiers (MetaGpuKms *gpu_kms);
++gboolean meta_gpu_kms_disable_vrr (MetaGpuKms *gpu_kms);
+ 
+ MetaKmsDevice * meta_gpu_kms_get_kms_device (MetaGpuKms *gpu_kms);
+ 
+diff --git a/src/backends/native/meta-kms-connector.c b/src/backends/native/meta-kms-connector.c
+index b7550e12e..dc906035b 100644
+--- a/src/backends/native/meta-kms-connector.c
++++ b/src/backends/native/meta-kms-connector.c
+@@ -298,6 +298,9 @@ state_set_properties (MetaKmsConnectorState *state,
+                 META_KMS_CONNECTOR_PROP_PRIVACY_SCREEN_HW_STATE))
+         set_privacy_screen (state, connector, prop,
+                             drm_connector->prop_values[i]);
++      else if ((prop->flags & DRM_MODE_PROP_RANGE) &&
++               strcmp (prop->name, "vrr_capable") == 0)
++        state->vrr_capable = drm_connector->prop_values[i];
+ 
+       drmModeFreeProperty (prop);
+     }
+@@ -541,6 +544,7 @@ meta_kms_connector_state_new (void)
+   state = g_new0 (MetaKmsConnectorState, 1);
+   state->suggested_x = -1;
+   state->suggested_y = -1;
++  state->vrr_capable = FALSE;
+ 
+   return state;
+ }
+@@ -636,6 +640,9 @@ meta_kms_connector_state_changes (MetaKmsConnectorState *state,
+   if (!kms_modes_equal (state->modes, new_state->modes))
+     return META_KMS_UPDATE_CHANGE_FULL;
+ 
++  if (state->vrr_capable != new_state->vrr_capable)
++    return META_KMS_UPDATE_CHANGE_FULL;
++
+   if (state->privacy_screen_state != new_state->privacy_screen_state)
+     return META_KMS_UPDATE_CHANGE_PRIVACY_SCREEN;
+ 
+diff --git a/src/backends/native/meta-kms-connector.h b/src/backends/native/meta-kms-connector.h
+index c2b763548..381edca97 100644
+--- a/src/backends/native/meta-kms-connector.h
++++ b/src/backends/native/meta-kms-connector.h
+@@ -59,6 +59,8 @@ typedef struct _MetaKmsConnectorState
+   gboolean hotplug_mode_update;
+ 
+   MetaMonitorTransform panel_orientation_transform;
++
++  gboolean vrr_capable;
+ } MetaKmsConnectorState;
+ 
+ META_EXPORT_TEST
+diff --git a/src/backends/native/meta-kms-crtc-private.h b/src/backends/native/meta-kms-crtc-private.h
+index 65bda3f10..9575b61e1 100644
+--- a/src/backends/native/meta-kms-crtc-private.h
++++ b/src/backends/native/meta-kms-crtc-private.h
+@@ -30,9 +30,17 @@ typedef enum _MetaKmsCrtcProp
+   META_KMS_CRTC_PROP_MODE_ID = 0,
+   META_KMS_CRTC_PROP_ACTIVE,
+   META_KMS_CRTC_PROP_GAMMA_LUT,
++  META_KMS_CRTC_PROP_VRR_ENABLED,
+   META_KMS_CRTC_N_PROPS
+ } MetaKmsCrtcProp;
+ 
++typedef enum _MetaKmsCrtcVRRMode
++{
++  META_KMS_CRTC_VRR_MODE_DISABLED = 0,
++  META_KMS_CRTC_VRR_MODE_ENABLED,
++  META_KMS_CRTC_VRR_MODE_N_PROPS,
++} MetaKmsCrtcVRRMode;
++
+ MetaKmsCrtc * meta_kms_crtc_new (MetaKmsImplDevice  *impl_device,
+                                  drmModeCrtc        *drm_crtc,
+                                  int                 idx,
+diff --git a/src/backends/native/meta-kms-crtc.c b/src/backends/native/meta-kms-crtc.c
+index e9bd9308b..b00ccca71 100644
+--- a/src/backends/native/meta-kms-crtc.c
++++ b/src/backends/native/meta-kms-crtc.c
+@@ -390,6 +390,11 @@ init_properties (MetaKmsCrtc       *crtc,
+           .name = "GAMMA_LUT",
+           .type = DRM_MODE_PROP_BLOB,
+         },
++      [META_KMS_CRTC_PROP_VRR_ENABLED] =
++        {
++          .name = "VRR_ENABLED",
++          .type = DRM_MODE_PROP_RANGE,
++        },
+     }
+   };
+ 
+diff --git a/src/backends/native/meta-kms-impl-device-atomic.c b/src/backends/native/meta-kms-impl-device-atomic.c
+index 73dd8e697..0a26d2780 100644
+--- a/src/backends/native/meta-kms-impl-device-atomic.c
++++ b/src/backends/native/meta-kms-impl-device-atomic.c
+@@ -261,6 +261,39 @@ add_crtc_property (MetaKmsImplDevice  *impl_device,
+   return TRUE;
+ }
+ 
++static gboolean
++process_crtc_update (MetaKmsImplDevice  *impl_device,
++                     MetaKmsUpdate      *update,
++                     drmModeAtomicReq   *req,
++                     GArray             *blob_ids,
++                     gpointer            update_entry,
++                     gpointer            user_data,
++                     GError            **error)
++{
++  MetaKmsCrtcUpdate *crtc_update = update_entry;
++  MetaKmsCrtc *crtc = crtc_update->crtc;
++
++  if (crtc_update->vrr_mode.has_update)
++    {
++      meta_topic (META_DEBUG_KMS,
++                  "[atomic] Setting VRR mode to %d on CRTC %u (%s)",
++                  crtc_update->vrr_mode.is_enabled ?
++                    META_KMS_CRTC_VRR_MODE_ENABLED :
++                    META_KMS_CRTC_VRR_MODE_DISABLED,
++                  meta_kms_crtc_get_id (crtc),
++                  meta_kms_impl_device_get_path (impl_device));
++
++      if (!add_crtc_property (impl_device,
++                              crtc, req,
++                              META_KMS_CRTC_PROP_VRR_ENABLED,
++                              crtc_update->vrr_mode.is_enabled,
++                              error))
++        return FALSE;
++    }
++
++  return TRUE;
++}
++
+ static gboolean
+ process_mode_set (MetaKmsImplDevice  *impl_device,
+                   MetaKmsUpdate      *update,
+@@ -948,6 +981,16 @@ meta_kms_impl_device_atomic_process_update (MetaKmsImplDevice *impl_device,
+                         &error))
+     goto err;
+ 
++  if (!process_entries (impl_device,
++                        update,
++                        req,
++                        blob_ids,
++                        meta_kms_update_get_crtc_updates (update),
++                        NULL,
++                        process_crtc_update,
++                        &error))
++    goto err;
++
+   if (!process_entries (impl_device,
+                         update,
+                         req,
+@@ -978,7 +1021,7 @@ meta_kms_impl_device_atomic_process_update (MetaKmsImplDevice *impl_device,
+                         &error))
+     goto err;
+ 
+-  if (meta_kms_update_get_mode_sets (update))
++  if (meta_kms_update_needs_allow_modeset (update))
+     commit_flags |= DRM_MODE_ATOMIC_ALLOW_MODESET;
+   else
+     commit_flags |= DRM_MODE_ATOMIC_NONBLOCK;
+diff --git a/src/backends/native/meta-kms-impl-device-simple.c b/src/backends/native/meta-kms-impl-device-simple.c
+index ca4ffe245..89310ce0f 100644
+--- a/src/backends/native/meta-kms-impl-device-simple.c
++++ b/src/backends/native/meta-kms-impl-device-simple.c
+@@ -180,6 +180,47 @@ set_connector_property (MetaKmsImplDevice     *impl_device,
+   return TRUE;
+ }
+ 
++static gboolean
++set_crtc_property (MetaKmsImplDevice  *impl_device,
++                   MetaKmsCrtc        *crtc,
++                   MetaKmsCrtcProp     prop,
++                   uint64_t            value,
++                   GError            **error)
++{
++  uint32_t prop_id;
++  int fd;
++  int ret;
++
++  prop_id = meta_kms_crtc_get_prop_id (crtc, prop);
++  if (!prop_id)
++    {
++      g_set_error (error, G_IO_ERROR, G_IO_ERROR_NOT_SUPPORTED,
++                   "Property (%s) not found on CRTC %u",
++                   meta_kms_crtc_get_prop_name (crtc, prop),
++                   meta_kms_crtc_get_id (crtc));
++      return FALSE;
++    }
++
++  fd = meta_kms_impl_device_get_fd (impl_device);
++
++  ret = drmModeObjectSetProperty (fd,
++                                  meta_kms_crtc_get_id (crtc),
++                                  DRM_MODE_OBJECT_CRTC,
++                                  prop_id,
++                                  value);
++  if (ret != 0)
++    {
++      g_set_error (error, G_IO_ERROR, g_io_error_from_errno (-ret),
++                   "Failed to set CRTC %u property %u: %s",
++                   meta_kms_crtc_get_id (crtc),
++                   prop_id,
++                   g_strerror (-ret));
++      return FALSE;
++    }
++
++  return TRUE;
++}
++
+ static gboolean
+ process_connector_update (MetaKmsImplDevice  *impl_device,
+                           MetaKmsUpdate      *update,
+@@ -253,6 +294,36 @@ process_connector_update (MetaKmsImplDevice  *impl_device,
+   return TRUE;
+ }
+ 
++static gboolean
++process_crtc_update (MetaKmsImplDevice  *impl_device,
++                     MetaKmsUpdate      *update,
++                     gpointer            update_entry,
++                     GError            **error)
++{
++  MetaKmsCrtcUpdate *crtc_update = update_entry;
++  MetaKmsCrtc *crtc = crtc_update->crtc;
++
++  if (crtc_update->vrr_mode.has_update)
++    {
++      meta_topic (META_DEBUG_KMS,
++                  "[simple] Setting VRR mode to %d on CRTC %u (%s)",
++                  crtc_update->vrr_mode.is_enabled ?
++                    META_KMS_CRTC_VRR_MODE_ENABLED :
++                    META_KMS_CRTC_VRR_MODE_DISABLED,
++                  meta_kms_crtc_get_id (crtc),
++                  meta_kms_impl_device_get_path (impl_device));
++
++      if (!set_crtc_property (impl_device,
++                              crtc,
++                              META_KMS_CRTC_PROP_VRR_ENABLED,
++                              crtc_update->vrr_mode.is_enabled,
++                              error))
++        return FALSE;
++    }
++
++  return TRUE;
++}
++
+ static CachedModeSet *
+ cached_mode_set_new (GList                 *connectors,
+                      const drmModeModeInfo *drm_mode,
+@@ -1492,6 +1563,13 @@ meta_kms_impl_device_simple_process_update (MetaKmsImplDevice *impl_device,
+                         &error))
+     goto err;
+ 
++  if (!process_entries (impl_device,
++                        update,
++                        meta_kms_update_get_crtc_updates (update),
++                        process_crtc_update,
++                        &error))
++    goto err;
++
+   if (!process_entries (impl_device,
+                         update,
+                         meta_kms_update_get_crtc_gammas (update),
+diff --git a/src/backends/native/meta-kms-types.h b/src/backends/native/meta-kms-types.h
+index f532f3821..d2089640a 100644
+--- a/src/backends/native/meta-kms-types.h
++++ b/src/backends/native/meta-kms-types.h
+@@ -60,8 +60,9 @@ typedef enum _MetaKmsDeviceFlag
+   META_KMS_DEVICE_FLAG_BOOT_VGA = 1 << 0,
+   META_KMS_DEVICE_FLAG_PLATFORM_DEVICE = 1 << 1,
+   META_KMS_DEVICE_FLAG_DISABLE_MODIFIERS = 1 << 2,
+-  META_KMS_DEVICE_FLAG_PREFERRED_PRIMARY = 1 << 3,
+-  META_KMS_DEVICE_FLAG_NO_MODE_SETTING = 1 << 4,
++  META_KMS_DEVICE_FLAG_DISABLE_VRR = 1 << 3,
++  META_KMS_DEVICE_FLAG_PREFERRED_PRIMARY = 1 << 4,
++  META_KMS_DEVICE_FLAG_NO_MODE_SETTING = 1 << 5,
+ } MetaKmsDeviceFlag;
+ 
+ typedef enum _MetaKmsUpdateChanges
+diff --git a/src/backends/native/meta-kms-update-private.h b/src/backends/native/meta-kms-update-private.h
+index a613cbc5d..442da6b4c 100644
+--- a/src/backends/native/meta-kms-update-private.h
++++ b/src/backends/native/meta-kms-update-private.h
+@@ -84,6 +84,16 @@ typedef struct _MetaKmsConnectorUpdate
+   } privacy_screen;
+ } MetaKmsConnectorUpdate;
+ 
++typedef struct _MetaKmsCrtcUpdate
++{
++  MetaKmsCrtc *crtc;
++
++  struct {
++    gboolean has_update;
++    gboolean is_enabled;
++  } vrr_mode;
++} MetaKmsCrtcUpdate;
++
+ typedef struct _MetaKmsPageFlipListener
+ {
+   MetaKmsCrtc *crtc;
+@@ -157,9 +167,15 @@ void meta_kms_update_drop_defunct_page_flip_listeners (MetaKmsUpdate *update);
+ META_EXPORT_TEST
+ GList * meta_kms_update_get_connector_updates (MetaKmsUpdate *update);
+ 
++META_EXPORT_TEST
++GList * meta_kms_update_get_crtc_updates (MetaKmsUpdate *update);
++
+ META_EXPORT_TEST
+ GList * meta_kms_update_get_crtc_gammas (MetaKmsUpdate *update);
+ 
++META_EXPORT_TEST
++gboolean meta_kms_update_needs_allow_modeset (MetaKmsUpdate *update);
++
+ MetaKmsCustomPageFlip * meta_kms_update_take_custom_page_flip_func (MetaKmsUpdate *update);
+ 
+ void meta_kms_update_drop_plane_assignment (MetaKmsUpdate *update,
+diff --git a/src/backends/native/meta-kms-update.c b/src/backends/native/meta-kms-update.c
+index 53fc92eb8..dc3dc3fef 100644
+--- a/src/backends/native/meta-kms-update.c
++++ b/src/backends/native/meta-kms-update.c
+@@ -38,8 +38,11 @@ struct _MetaKmsUpdate
+   GList *mode_sets;
+   GList *plane_assignments;
+   GList *connector_updates;
++  GList *crtc_updates;
+   GList *crtc_gammas;
+ 
++  gboolean needs_allow_modeset;
++
+   MetaKmsCustomPageFlip *custom_page_flip;
+ 
+   GList *page_flip_listeners;
+@@ -284,6 +287,8 @@ meta_kms_update_mode_set (MetaKmsUpdate *update,
+   };
+ 
+   update->mode_sets = g_list_prepend (update->mode_sets, mode_set);
++
++  update->needs_allow_modeset = TRUE;
+ }
+ 
+ static MetaKmsConnectorUpdate *
+@@ -404,6 +409,45 @@ meta_kms_update_set_crtc_gamma (MetaKmsUpdate  *update,
+   update->crtc_gammas = g_list_prepend (update->crtc_gammas, gamma);
+ }
+ 
++static MetaKmsCrtcUpdate *
++ensure_crtc_update (MetaKmsUpdate *update,
++                    MetaKmsCrtc   *crtc)
++{
++  GList *l;
++  MetaKmsCrtcUpdate *crtc_update;
++
++  for (l = update->crtc_updates; l; l = l->next)
++    {
++      crtc_update = l->data;
++
++      if (crtc_update->crtc == crtc)
++        return crtc_update;
++    }
++
++  crtc_update = g_new0 (MetaKmsCrtcUpdate, 1);
++  crtc_update->crtc = crtc;
++
++  update->crtc_updates = g_list_prepend (update->crtc_updates,
++                                         crtc_update);
++
++  return crtc_update;
++}
++
++void
++meta_kms_update_set_vrr_mode (MetaKmsUpdate *update,
++                              MetaKmsCrtc   *crtc,
++                              gboolean       enabled)
++{
++  MetaKmsCrtcUpdate *crtc_update;
++
++  g_assert (!meta_kms_update_is_locked (update));
++  g_assert (meta_kms_crtc_get_device (crtc) == update->device);
++
++  crtc_update = ensure_crtc_update (update, crtc);
++  crtc_update->vrr_mode.has_update = TRUE;
++  crtc_update->vrr_mode.is_enabled = enabled;
++}
++
+ void
+ meta_kms_update_add_page_flip_listener (MetaKmsUpdate                       *update,
+                                         MetaKmsCrtc                         *crtc,
+@@ -635,12 +679,24 @@ meta_kms_update_get_connector_updates (MetaKmsUpdate *update)
+   return update->connector_updates;
+ }
+ 
++GList *
++meta_kms_update_get_crtc_updates (MetaKmsUpdate *update)
++{
++  return update->crtc_updates;
++}
++
+ GList *
+ meta_kms_update_get_crtc_gammas (MetaKmsUpdate *update)
+ {
+   return update->crtc_gammas;
+ }
+ 
++gboolean
++meta_kms_update_needs_allow_modeset (MetaKmsUpdate *update)
++{
++  return update->needs_allow_modeset;
++}
++
+ void
+ meta_kms_update_lock (MetaKmsUpdate *update)
+ {
+@@ -692,6 +748,7 @@ meta_kms_update_new (MetaKmsDevice *device)
+   update = g_new0 (MetaKmsUpdate, 1);
+   update->device = device;
+   update->sequence_number = sequence_number++;
++  update->needs_allow_modeset = FALSE;
+ 
+   return update;
+ }
+@@ -708,6 +765,7 @@ meta_kms_update_free (MetaKmsUpdate *update)
+   g_list_free_full (update->page_flip_listeners,
+                     (GDestroyNotify) meta_kms_page_flip_listener_free);
+   g_list_free_full (update->connector_updates, g_free);
++  g_list_free_full (update->crtc_updates, g_free);
+   g_list_free_full (update->crtc_gammas, (GDestroyNotify) meta_kms_crtc_gamma_free);
+   g_clear_pointer (&update->custom_page_flip, meta_kms_custom_page_flip_free);
+ 
+diff --git a/src/backends/native/meta-kms-update.h b/src/backends/native/meta-kms-update.h
+index f31e36aad..4e963833f 100644
+--- a/src/backends/native/meta-kms-update.h
++++ b/src/backends/native/meta-kms-update.h
+@@ -123,6 +123,10 @@ void meta_kms_update_set_crtc_gamma (MetaKmsUpdate  *update,
+                                      const uint16_t *green,
+                                      const uint16_t *blue);
+ 
++void meta_kms_update_set_vrr_mode (MetaKmsUpdate *update,
++                                   MetaKmsCrtc   *crtc,
++                                   gboolean       enabled);
++
+ void meta_kms_plane_assignment_set_fb_damage (MetaKmsPlaneAssignment *plane_assignment,
+                                               const int              *rectangles,
+                                               int                     n_rectangles);
+diff --git a/src/backends/native/meta-output-kms.c b/src/backends/native/meta-output-kms.c
+index f60d5ad0d..a6196f0af 100644
+--- a/src/backends/native/meta-output-kms.c
++++ b/src/backends/native/meta-output-kms.c
+@@ -97,6 +97,32 @@ meta_output_kms_set_underscan (MetaOutputKms *output_kms,
+     }
+ }
+ 
++void
++meta_output_kms_set_vrr_mode (MetaOutputKms *output_kms,
++                              gboolean       enabled)
++{
++  MetaOutput *output = META_OUTPUT (output_kms);
++  const MetaOutputInfo *output_info = meta_output_get_info (output);
++  MetaCrtc *crtc;
++  MetaKmsCrtc *kms_crtc;
++  MetaKmsDevice *kms_device;
++  MetaKms *kms;
++  MetaKmsUpdate *kms_update;
++
++  g_assert (output_info->vrr_capable);
++
++  crtc = meta_output_get_assigned_crtc (output);
++  kms_crtc = meta_crtc_kms_get_kms_crtc (META_CRTC_KMS (crtc));
++  kms_device = meta_kms_crtc_get_device (kms_crtc);
++  kms = meta_kms_device_get_kms (kms_device);
++
++  kms_update = meta_kms_ensure_pending_update (kms, kms_device);
++
++  meta_kms_update_set_vrr_mode (kms_update,
++                                kms_crtc,
++                                enabled);
++}
++
+ static MetaPrivacyScreenState
+ meta_output_kms_get_privacy_screen_state (MetaOutput *output)
+ {
+@@ -178,7 +204,7 @@ add_common_modes (MetaOutputInfo *output_info,
+   unsigned max_hdisplay = 0;
+   unsigned max_vdisplay = 0;
+   float max_refresh_rate = 0.0;
+-  uint32_t max_pixel_clock = 0;
++  float max_bandwidth = 0.0;
+   MetaKmsDevice *kms_device;
+   MetaKmsModeFlag flag_filter;
+   GList *l;
+@@ -187,11 +213,14 @@ add_common_modes (MetaOutputInfo *output_info,
+     {
+       const MetaCrtcModeInfo *crtc_mode_info =
+         meta_crtc_mode_get_info (output_info->modes[i]);
++      float bandwidth;
+ 
++      bandwidth = crtc_mode_info->refresh_rate * crtc_mode_info->width *
++                  crtc_mode_info->height;
+       max_hdisplay = MAX (max_hdisplay, crtc_mode_info->width);
+       max_vdisplay = MAX (max_vdisplay, crtc_mode_info->height);
+       max_refresh_rate = MAX (max_refresh_rate, crtc_mode_info->refresh_rate);
+-      max_pixel_clock = MAX (max_pixel_clock, crtc_mode_info->pixel_clock_khz);
++      max_bandwidth = MAX (max_bandwidth, bandwidth);
+     }
+ 
+   max_refresh_rate = MAX (max_refresh_rate, 60.0);
+@@ -210,6 +239,7 @@ add_common_modes (MetaOutputInfo *output_info,
+     {
+       MetaKmsMode *fallback_mode = l->data;
+       const drmModeModeInfo *drm_mode;
++      float bandwidth;
+       float refresh_rate;
+       gboolean is_duplicate = FALSE;
+ 
+@@ -218,10 +248,11 @@ add_common_modes (MetaOutputInfo *output_info,
+ 
+       drm_mode = meta_kms_mode_get_drm_mode (fallback_mode);
+       refresh_rate = meta_calculate_drm_mode_refresh_rate (drm_mode);
++      bandwidth = refresh_rate * drm_mode->hdisplay * drm_mode->vdisplay;
+       if (drm_mode->hdisplay > max_hdisplay ||
+           drm_mode->vdisplay > max_vdisplay ||
+           refresh_rate > max_refresh_rate ||
+-          drm_mode->clock > max_pixel_clock)
++          bandwidth > max_bandwidth)
+         continue;
+ 
+       for (i = 0; i < output_info->n_modes; i++)
+@@ -400,6 +431,9 @@ meta_output_kms_new (MetaGpuKms        *gpu_kms,
+   output_info->supports_underscanning =
+     meta_kms_connector_is_underscanning_supported (kms_connector);
+ 
++  output_info->vrr_capable = (connector_state->vrr_capable &&
++                              !meta_gpu_kms_disable_vrr (gpu_kms));
++
+   meta_output_info_parse_edid (output_info, connector_state->edid_data);
+ 
+   drm_connector_type = meta_kms_connector_get_connector_type (kms_connector);
+diff --git a/src/backends/native/meta-output-kms.h b/src/backends/native/meta-output-kms.h
+index 52acc6032..54b1721a4 100644
+--- a/src/backends/native/meta-output-kms.h
++++ b/src/backends/native/meta-output-kms.h
+@@ -40,6 +40,9 @@ void meta_output_kms_set_power_save_mode (MetaOutputKms *output_kms,
+ void meta_output_kms_set_underscan (MetaOutputKms *output_kms,
+                                     MetaKmsUpdate *kms_update);
+ 
++void meta_output_kms_set_vrr_mode (MetaOutputKms *output_kms,
++                                   gboolean       enabled);
++
+ gboolean meta_output_kms_can_clone (MetaOutputKms *output_kms,
+                                     MetaOutputKms *other_output_kms);
+ 
+diff --git a/src/backends/native/meta-pointer-constraint-native.c b/src/backends/native/meta-pointer-constraint-native.c
+index 0e347d945..6a1c066ad 100644
+--- a/src/backends/native/meta-pointer-constraint-native.c
++++ b/src/backends/native/meta-pointer-constraint-native.c
+@@ -469,7 +469,7 @@ meta_pointer_constraint_impl_native_constraint (MetaPointerConstraintImpl *const
+   MetaPointerConstraintImplNative *constraint_impl_native;
+   cairo_region_t *region;
+   float x, y;
+-  g_autoptr (GArray) borders = NULL;
++  GArray *borders;
+   MetaLine2 motion;
+   MetaBorder *closest_border;
+   uint32_t directions;
+@@ -527,6 +527,7 @@ meta_pointer_constraint_impl_native_constraint (MetaPointerConstraintImpl *const
+ 
+   *x_inout = motion.b.x;
+   *y_inout = motion.b.y;
++  g_array_free (borders, FALSE);
+ }
+ 
+ static float
+@@ -615,7 +616,7 @@ meta_pointer_constraint_impl_native_ensure_constrained (MetaPointerConstraintImp
+ 
+   if (!cairo_region_contains_point (region, (int) x, (int) y))
+     {
+-      g_autoptr (GArray) borders = NULL;
++      GArray *borders;
+       float closest_distance_2 = FLT_MAX;
+       MetaBorder *closest_border = NULL;
+       ClutterSeat *seat;
+diff --git a/src/backends/native/meta-renderer-native.c b/src/backends/native/meta-renderer-native.c
+index f5f22c7b1..d1b0df07c 100644
+--- a/src/backends/native/meta-renderer-native.c
++++ b/src/backends/native/meta-renderer-native.c
+@@ -62,6 +62,7 @@
+ #include "backends/native/meta-render-device-gbm.h"
+ #include "backends/native/meta-render-device-surfaceless.h"
+ #include "backends/native/meta-renderer-native-private.h"
++#include "backends/native/meta-renderer-view-native.h"
+ #include "cogl/cogl.h"
+ #include "core/boxes-private.h"
+ 
+@@ -416,28 +417,12 @@ meta_renderer_native_choose_egl_config (CoglDisplay  *cogl_display,
+   switch (renderer_gpu_data->mode)
+     {
+     case META_RENDERER_NATIVE_MODE_GBM:
+-      {
+-        static const uint32_t formats[] = {
+-          GBM_FORMAT_XRGB8888,
+-          GBM_FORMAT_ARGB8888,
+-        };
+-        int i;
+-
+-        for (i = 0; i < G_N_ELEMENTS (formats); i++)
+-          {
+-            g_clear_error (error);
+-
+-            if (choose_egl_config_from_gbm_format (egl,
+-                                                   egl_display,
+-                                                   attributes,
+-                                                   formats[i],
+-                                                   out_config,
+-                                                   error))
+-              return TRUE;
+-          }
+-
+-        return FALSE;
+-      }
++      return choose_egl_config_from_gbm_format (egl,
++                                                egl_display,
++                                                attributes,
++                                                GBM_FORMAT_XRGB8888,
++                                                out_config,
++                                                error);
+     case META_RENDERER_NATIVE_MODE_SURFACELESS:
+       *out_config = EGL_NO_CONFIG_KHR;
+       return TRUE;
+@@ -1256,7 +1241,7 @@ meta_renderer_native_create_view (MetaRenderer       *renderer,
+   int onscreen_width;
+   int onscreen_height;
+   MetaRectangle view_layout;
+-  MetaRendererView *view;
++  MetaRendererViewNative *view_native;
+   EGLSurface egl_surface;
+   GError *error = NULL;
+ 
+@@ -1368,26 +1353,28 @@ meta_renderer_native_create_view (MetaRenderer       *renderer,
+   meta_rectangle_from_graphene_rect (&crtc_config->layout,
+                                      META_ROUNDING_STRATEGY_ROUND,
+                                      &view_layout);
+-  view = g_object_new (META_TYPE_RENDERER_VIEW,
+-                       "name", meta_output_get_name (output),
+-                       "stage", meta_backend_get_stage (backend),
+-                       "layout", &view_layout,
+-                       "crtc", crtc,
+-                       "scale", scale,
+-                       "framebuffer", framebuffer,
+-                       "offscreen", offscreen,
+-                       "use-shadowfb", use_shadowfb,
+-                       "transform", view_transform,
+-                       "refresh-rate", crtc_mode_info->refresh_rate,
+-                       "vblank-duration-us", crtc_mode_info->vblank_duration_us,
+-                       NULL);
++  view_native = g_object_new (META_TYPE_RENDERER_VIEW_NATIVE,
++                              "name", meta_output_get_name (output),
++                              "stage", meta_backend_get_stage (backend),
++                              "layout", &view_layout,
++                              "crtc", crtc,
++                              "output", output,
++                              "scale", scale,
++                              "framebuffer", framebuffer,
++                              "offscreen", offscreen,
++                              "use-shadowfb", use_shadowfb,
++                              "transform", view_transform,
++                              "refresh-rate", crtc_mode_info->refresh_rate,
++                              "vblank-duration-us", crtc_mode_info->vblank_duration_us,
++                              NULL);
+ 
+   if (META_IS_ONSCREEN_NATIVE (framebuffer))
+     {
+       CoglDisplayEGL *cogl_display_egl;
+       CoglOnscreenEgl *onscreen_egl;
+ 
+-      meta_onscreen_native_set_view (COGL_ONSCREEN (framebuffer), view);
++      meta_onscreen_native_set_view (COGL_ONSCREEN (framebuffer),
++                                     META_RENDERER_VIEW (view_native));
+ 
+       /* Ensure we don't point to stale surfaces when creating the offscreen */
+       cogl_display_egl = cogl_display->winsys;
+@@ -1399,7 +1386,7 @@ meta_renderer_native_create_view (MetaRenderer       *renderer,
+                                      cogl_display_egl->egl_context);
+     }
+ 
+-  return view;
++  return META_RENDERER_VIEW (view_native);
+ }
+ 
+ static void
+@@ -1467,6 +1454,7 @@ meta_renderer_native_prepare_frame (MetaRendererNative *renderer_native,
+   kms_device = meta_kms_crtc_get_device (kms_crtc);
+ 
+   meta_crtc_kms_maybe_set_gamma (crtc_kms, kms_device);
++  meta_renderer_view_native_maybe_set_frame_sync (META_RENDERER_VIEW_NATIVE (view));
+ }
+ 
+ void
+diff --git a/src/backends/native/meta-renderer-view-native.c b/src/backends/native/meta-renderer-view-native.c
+new file mode 100644
+index 000000000..d3abcd021
+--- /dev/null
++++ b/src/backends/native/meta-renderer-view-native.c
+@@ -0,0 +1,220 @@
++/* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
++
++/*
++ * Copyright (C) 2020-2022 Dor Askayo
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License as
++ * published by the Free Software Foundation; either version 2 of the
++ * License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
++ * 02111-1307, USA.
++ *
++ * Written by:
++ *     Dor Askayo <dor.askayo@gmail.com>
++ */
++
++#include "backends/native/meta-renderer-view-native.h"
++
++#include "backends/meta-output.h"
++#include "backends/native/meta-crtc-kms.h"
++#include "backends/native/meta-kms.h"
++#include "backends/native/meta-kms-device.h"
++#include "backends/native/meta-output-kms.h"
++#include "clutter/clutter.h"
++
++typedef enum _MetaFrameSyncMode
++{
++  META_FRAME_SYNC_MODE_INIT,
++  META_FRAME_SYNC_MODE_ENABLED,
++  META_FRAME_SYNC_MODE_DISABLED,
++} MetaFrameSyncMode;
++
++struct _MetaRendererViewNative
++{
++  MetaRendererView parent;
++
++  gboolean frame_sync_mode_update_queued;
++
++  MetaFrameSyncMode frame_sync_mode;
++  ClutterActor *frame_sync_actor;
++
++  gulong frame_sync_actor_frozen_id;
++  gulong frame_sync_actor_destroy_id;
++};
++
++G_DEFINE_TYPE (MetaRendererViewNative, meta_renderer_view_native,
++               META_TYPE_RENDERER_VIEW)
++
++static void
++on_frame_sync_actor_frozen (ClutterActor           *actor,
++                            MetaRendererViewNative *view_native)
++{
++  meta_renderer_view_native_set_frame_sync_actor (view_native, NULL);
++}
++
++static void
++on_frame_sync_actor_destroyed (ClutterActor           *actor,
++                               MetaRendererViewNative *view_native)
++{
++  meta_renderer_view_native_set_frame_sync_actor (view_native, NULL);
++}
++
++static void
++meta_renderer_view_native_schedule_actor_update (ClutterStageView *stage_view,
++                                                 ClutterActor     *actor)
++{
++  MetaRendererViewNative *view_native = META_RENDERER_VIEW_NATIVE (stage_view);
++  ClutterFrameClock *frame_clock;
++
++  g_return_if_fail (actor != NULL);
++
++  frame_clock = clutter_stage_view_get_frame_clock (stage_view);
++
++  if (view_native->frame_sync_mode == META_FRAME_SYNC_MODE_ENABLED &&
++      actor == view_native->frame_sync_actor)
++    clutter_frame_clock_schedule_update_now (frame_clock);
++  else
++    clutter_frame_clock_schedule_update (frame_clock);
++}
++
++void
++meta_renderer_view_native_set_frame_sync_actor (MetaRendererViewNative *view_native,
++                                                ClutterActor           *actor)
++{
++  if (G_LIKELY (actor == view_native->frame_sync_actor))
++    return;
++
++  g_clear_signal_handler (&view_native->frame_sync_actor_frozen_id,
++                          view_native->frame_sync_actor);
++  g_clear_signal_handler (&view_native->frame_sync_actor_destroy_id,
++                          view_native->frame_sync_actor);
++
++  if (actor)
++    {
++      view_native->frame_sync_actor_frozen_id =
++        g_signal_connect (actor, "frozen",
++                          G_CALLBACK (on_frame_sync_actor_frozen),
++                          view_native);
++      view_native->frame_sync_actor_destroy_id =
++        g_signal_connect (actor, "destroy",
++                          G_CALLBACK (on_frame_sync_actor_destroyed),
++                          view_native);
++    }
++
++  view_native->frame_sync_actor = actor;
++
++  view_native->frame_sync_mode_update_queued = TRUE;
++}
++
++static void
++meta_renderer_view_native_set_frame_sync (MetaRendererViewNative *view_native,
++                                          MetaOutput             *output,
++                                          MetaFrameSyncMode       sync_mode)
++{
++  ClutterFrameClock *frame_clock =
++    clutter_stage_view_get_frame_clock (CLUTTER_STAGE_VIEW (view_native));
++  MetaOutputKms *output_kms = META_OUTPUT_KMS (output);
++
++  switch (sync_mode)
++    {
++    case META_FRAME_SYNC_MODE_ENABLED:
++      clutter_frame_clock_set_mode (frame_clock,
++                                    CLUTTER_FRAME_CLOCK_MODE_VARIABLE);
++      meta_output_kms_set_vrr_mode (output_kms, TRUE);
++      break;
++    case META_FRAME_SYNC_MODE_DISABLED:
++      clutter_frame_clock_set_mode (frame_clock,
++                                    CLUTTER_FRAME_CLOCK_MODE_FIXED);
++      meta_output_kms_set_vrr_mode (output_kms, FALSE);
++      break;
++    case META_FRAME_SYNC_MODE_INIT:
++      g_assert_not_reached ();
++    }
++
++  view_native->frame_sync_mode = sync_mode;
++}
++
++static MetaFrameSyncMode
++meta_renderer_view_native_get_applicable_sync_mode (MetaRendererViewNative *view_native)
++{
++  MetaRendererView *view = META_RENDERER_VIEW (view_native);
++  MetaOutput *output = meta_renderer_view_get_output (view);
++
++  if (view_native->frame_sync_actor != NULL &&
++      meta_output_is_vrr_allowed (output))
++    return META_FRAME_SYNC_MODE_ENABLED;
++  else
++    return META_FRAME_SYNC_MODE_DISABLED;
++}
++
++void
++meta_renderer_view_native_maybe_set_frame_sync (MetaRendererViewNative *view_native)
++{
++  MetaRendererView *view;
++  MetaOutput *output;
++  MetaFrameSyncMode applicable_sync_mode;
++
++  if (G_LIKELY (!view_native->frame_sync_mode_update_queued))
++    return;
++
++  view_native->frame_sync_mode_update_queued = FALSE;
++
++  view = META_RENDERER_VIEW (view_native);
++  output = meta_renderer_view_get_output (view);
++
++  if (!meta_output_is_vrr_capable (output))
++    return;
++
++  applicable_sync_mode =
++    meta_renderer_view_native_get_applicable_sync_mode (view_native);
++
++  if (applicable_sync_mode != view_native->frame_sync_mode)
++    {
++      meta_renderer_view_native_set_frame_sync (view_native,
++                                                output,
++                                                applicable_sync_mode);
++    }
++}
++
++static void
++meta_renderer_view_native_dispose (GObject *object)
++{
++  MetaRendererViewNative *view_native = META_RENDERER_VIEW_NATIVE (object);
++
++  if (view_native->frame_sync_actor)
++    {
++      g_clear_signal_handler (&view_native->frame_sync_actor_destroy_id,
++                              view_native->frame_sync_actor);
++      g_clear_signal_handler (&view_native->frame_sync_actor_frozen_id,
++                              view_native->frame_sync_actor);
++    }
++
++  G_OBJECT_CLASS (meta_renderer_view_native_parent_class)->dispose (object);
++}
++
++static void
++meta_renderer_view_native_class_init (MetaRendererViewNativeClass *klass)
++{
++  GObjectClass *object_class = G_OBJECT_CLASS (klass);
++  ClutterStageViewClass *clutter_stage_view_class = CLUTTER_STAGE_VIEW_CLASS (klass);
++
++  object_class->dispose = meta_renderer_view_native_dispose;
++
++  clutter_stage_view_class->schedule_actor_update = meta_renderer_view_native_schedule_actor_update;
++}
++
++static void
++meta_renderer_view_native_init (MetaRendererViewNative *view_native)
++{
++  view_native->frame_sync_mode_update_queued = TRUE;
++  view_native->frame_sync_mode = META_FRAME_SYNC_MODE_INIT;
++}
+diff --git a/src/backends/native/meta-renderer-view-native.h b/src/backends/native/meta-renderer-view-native.h
+new file mode 100644
+index 000000000..16e3a8d48
+--- /dev/null
++++ b/src/backends/native/meta-renderer-view-native.h
+@@ -0,0 +1,39 @@
++/* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
++
++/*
++ * Copyright (C) 2020-2022 Dor Askayo
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License as
++ * published by the Free Software Foundation; either version 2 of the
++ * License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
++ * 02111-1307, USA.
++ *
++ * Written by:
++ *     Dor Askayo <dor.askayo@gmail.com>
++ */
++
++#ifndef META_RENDERER_VIEW_NATIVE_H
++#define META_RENDERER_VIEW_NATIVE_H
++
++#include "backends/meta-renderer-view.h"
++
++#define META_TYPE_RENDERER_VIEW_NATIVE (meta_renderer_view_native_get_type ())
++G_DECLARE_FINAL_TYPE (MetaRendererViewNative, meta_renderer_view_native,
++                      META, RENDERER_VIEW_NATIVE, MetaRendererView)
++
++void meta_renderer_view_native_set_frame_sync_actor (MetaRendererViewNative *view_native,
++                                                     ClutterActor           *actor);
++
++void meta_renderer_view_native_maybe_set_frame_sync (MetaRendererViewNative *view_native);
++
++#endif /* META_RENDERER_VIEW_NATIVE_H */
+diff --git a/src/backends/native/meta-udev.c b/src/backends/native/meta-udev.c
+index 0a9ed5fd1..fa854ce0c 100644
+--- a/src/backends/native/meta-udev.c
++++ b/src/backends/native/meta-udev.c
+@@ -102,6 +102,13 @@ meta_is_udev_device_disable_modifiers (GUdevDevice *device)
+                                    "mutter-device-disable-kms-modifiers");
+ }
+ 
++gboolean
++meta_is_udev_device_disable_vrr (GUdevDevice *device)
++{
++  return meta_has_udev_device_tag (device,
++                                   "mutter-device-disable-vrr");
++}
++
+ gboolean
+ meta_is_udev_device_ignore (GUdevDevice *device)
+ {
+diff --git a/src/backends/native/meta-udev.h b/src/backends/native/meta-udev.h
+index dfd6337a0..dee8430f6 100644
+--- a/src/backends/native/meta-udev.h
++++ b/src/backends/native/meta-udev.h
+@@ -34,6 +34,8 @@ gboolean meta_is_udev_device_boot_vga (GUdevDevice *device);
+ 
+ gboolean meta_is_udev_device_disable_modifiers (GUdevDevice *device);
+ 
++gboolean meta_is_udev_device_disable_vrr (GUdevDevice *device);
++
+ gboolean meta_is_udev_device_ignore (GUdevDevice *device);
+ 
+ gboolean meta_is_udev_test_device (GUdevDevice *device);
+diff --git a/src/backends/x11/nested/meta-renderer-x11-nested.c b/src/backends/x11/nested/meta-renderer-x11-nested.c
+index 7c1a4facf..2f9eca5ba 100644
+--- a/src/backends/x11/nested/meta-renderer-x11-nested.c
++++ b/src/backends/x11/nested/meta-renderer-x11-nested.c
+@@ -223,6 +223,7 @@ meta_renderer_x11_nested_create_view (MetaRenderer       *renderer,
+                        "stage", meta_backend_get_stage (backend),
+                        "layout", &view_layout,
+                        "crtc", crtc,
++                       "output", output,
+                        "refresh-rate", mode_info->refresh_rate,
+                        "framebuffer", COGL_FRAMEBUFFER (fake_onscreen),
+                        "offscreen", COGL_FRAMEBUFFER (offscreen),
+diff --git a/src/compositor/compositor-private.h b/src/compositor/compositor-private.h
+index d3b3145a3..4262f23cc 100644
+--- a/src/compositor/compositor-private.h
++++ b/src/compositor/compositor-private.h
+@@ -7,6 +7,7 @@
+ 
+ #include "clutter/clutter-mutter.h"
+ #include "clutter/clutter.h"
++#include "compositor/meta-compositor-view.h"
+ #include "compositor/meta-plugin-manager.h"
+ #include "compositor/meta-window-actor-private.h"
+ #include "meta/compositor.h"
+@@ -24,16 +25,19 @@ struct _MetaCompositorClass
+   gboolean (* manage) (MetaCompositor  *compositor,
+                        GError         **error);
+   void (* unmanage) (MetaCompositor *compositor);
+-  void (* before_paint) (MetaCompositor   *compositor,
+-                         ClutterStageView *stage_view);
+-  void (* after_paint) (MetaCompositor   *compositor,
+-                        ClutterStageView *stage_view);
++  void (* before_paint) (MetaCompositor     *compositor,
++                         MetaCompositorView *compositor_view);
++  void (* after_paint) (MetaCompositor     *compositor,
++                        MetaCompositorView *compositor_view);
+   void (* remove_window) (MetaCompositor *compositor,
+                           MetaWindow     *window);
+   int64_t (* monotonic_to_high_res_xserver_time) (MetaCompositor *compositor,
+                                                   int64_t         time_us);
+   void (* grab_begin) (MetaCompositor *compositor);
+   void (* grab_end) (MetaCompositor *compositor);
++
++  MetaCompositorView * (* create_view) (MetaCompositor   *compositor,
++                                        ClutterStageView *stage_view);
+ };
+ 
+ gboolean meta_compositor_do_manage (MetaCompositor  *compositor,
+@@ -42,6 +46,8 @@ gboolean meta_compositor_do_manage (MetaCompositor  *compositor,
+ void meta_compositor_remove_window_actor (MetaCompositor  *compositor,
+                                           MetaWindowActor *window_actor);
+ 
++void meta_compositor_window_actor_stage_views_changed (MetaCompositor *compositor);
++
+ void meta_switch_workspace_completed (MetaCompositor *compositor);
+ 
+ MetaPluginManager * meta_compositor_get_plugin_manager (MetaCompositor *compositor);
+diff --git a/src/compositor/compositor.c b/src/compositor/compositor.c
+index 6f4982553..fe5c0f0e9 100644
+--- a/src/compositor/compositor.c
++++ b/src/compositor/compositor.c
+@@ -108,6 +108,7 @@ typedef struct _MetaCompositorPrivate
+   gulong before_paint_handler_id;
+   gulong after_paint_handler_id;
+   gulong window_visibility_updated_id;
++  gulong monitors_changed_internal_id;
+ 
+   int64_t server_time_query_time;
+   int64_t server_time_offset;
+@@ -122,6 +123,8 @@ typedef struct _MetaCompositorPrivate
+ 
+   CoglContext *context;
+ 
++  gboolean needs_update_top_window_actors;
++
+   MetaWindowActor *top_window_actor;
+   gulong top_window_actor_destroy_id;
+ 
+@@ -129,6 +132,8 @@ typedef struct _MetaCompositorPrivate
+ 
+   int switch_workspace_in_progress;
+ 
++  gboolean frame_in_progress;
++
+   MetaPluginManager *plugin_mgr;
+ 
+   MetaLaters *laters;
+@@ -137,6 +142,8 @@ typedef struct _MetaCompositorPrivate
+ G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (MetaCompositor, meta_compositor,
+                                      G_TYPE_OBJECT)
+ 
++static GQuark quark_compositor_view;
++
+ static void
+ on_presented (ClutterStage     *stage,
+               ClutterStageView *stage_view,
+@@ -410,6 +417,14 @@ meta_compositor_redirect_x11_windows (MetaCompositor *compositor)
+     redirect_windows (display->x11_display);
+ }
+ 
++static MetaCompositorView *
++meta_compositor_create_view (MetaCompositor   *compositor,
++                             ClutterStageView *stage_view)
++{
++  return META_COMPOSITOR_GET_CLASS (compositor)->create_view (compositor,
++                                                              stage_view);
++}
++
+ gboolean
+ meta_compositor_do_manage (MetaCompositor  *compositor,
+                            GError         **error)
+@@ -587,6 +602,23 @@ meta_compositor_window_opacity_changed (MetaCompositor *compositor,
+   meta_window_actor_update_opacity (window_actor);
+ }
+ 
++static void
++meta_compositor_set_needs_update_top_window_actors (MetaCompositor *compositor)
++{
++  MetaCompositorPrivate *priv =
++    meta_compositor_get_instance_private (compositor);
++
++  g_assert (!priv->frame_in_progress);
++
++  priv->needs_update_top_window_actors = TRUE;
++}
++
++void
++meta_compositor_window_actor_stage_views_changed (MetaCompositor *compositor)
++{
++  meta_compositor_set_needs_update_top_window_actors (compositor);
++}
++
+ gboolean
+ meta_compositor_filter_keybinding (MetaCompositor *compositor,
+                                    MetaKeyBinding *binding)
+@@ -908,6 +940,7 @@ meta_compositor_sync_stack (MetaCompositor  *compositor,
+   sync_actor_stacking (compositor);
+ 
+   update_top_window_actor (compositor);
++  meta_compositor_set_needs_update_top_window_actors (compositor);
+ }
+ 
+ void
+@@ -926,6 +959,66 @@ meta_compositor_sync_window_geometry (MetaCompositor *compositor,
+     meta_plugin_manager_event_size_changed (priv->plugin_mgr, window_actor);
+ }
+ 
++static void
++maybe_update_top_window_actor_for_views (MetaCompositor *compositor)
++{
++  MetaCompositorPrivate *priv =
++    meta_compositor_get_instance_private (compositor);
++  ClutterStage *stage;
++  GList *l;
++
++  if (!priv->needs_update_top_window_actors)
++    return;
++
++  priv->needs_update_top_window_actors = FALSE;
++
++  stage = CLUTTER_STAGE (meta_backend_get_stage (priv->backend));
++
++  for (l = clutter_stage_peek_stage_views (stage); l; l = l->next)
++    {
++      ClutterStageView *stage_view = l->data;
++      MetaCompositorView *compositor_view;
++
++      compositor_view = g_object_get_qdata (G_OBJECT (stage_view),
++                                            quark_compositor_view);
++
++      g_assert (compositor_view);
++
++      meta_compositor_view_update_top_window_actor (compositor_view,
++                                                    priv->windows);
++    }
++}
++
++static void
++meta_compositor_ensure_compositor_views (MetaCompositor *compositor)
++{
++  MetaCompositorPrivate *priv =
++    meta_compositor_get_instance_private (compositor);
++  ClutterStage *stage =
++    CLUTTER_STAGE (meta_backend_get_stage (priv->backend));
++  GList *l;
++
++  for (l = clutter_stage_peek_stage_views (stage); l; l = l->next)
++    {
++      ClutterStageView *stage_view = l->data;
++      MetaCompositorView *compositor_view;
++
++      compositor_view = g_object_get_qdata (G_OBJECT (stage_view),
++                                            quark_compositor_view);
++
++      if (compositor_view)
++        continue;
++
++      compositor_view = meta_compositor_create_view (compositor,
++                                                     stage_view);
++
++      g_object_set_qdata_full (G_OBJECT (stage_view),
++                               quark_compositor_view,
++                               compositor_view,
++                               g_object_unref);
++    }
++}
++
+ static void
+ on_presented (ClutterStage     *stage,
+               ClutterStageView *stage_view,
+@@ -953,34 +1046,46 @@ on_presented (ClutterStage     *stage,
+ }
+ 
+ static void
+-meta_compositor_real_before_paint (MetaCompositor   *compositor,
+-                                   ClutterStageView *stage_view)
++meta_compositor_real_before_paint (MetaCompositor     *compositor,
++                                   MetaCompositorView *compositor_view)
+ {
+   MetaCompositorPrivate *priv =
+     meta_compositor_get_instance_private (compositor);
++  ClutterStageView *stage_view;
+   GList *l;
+ 
++  stage_view = meta_compositor_view_get_stage_view (compositor_view);
++
+   for (l = priv->windows; l; l = l->next)
+     meta_window_actor_before_paint (l->data, stage_view);
+ }
+ 
+ static void
+-meta_compositor_before_paint (MetaCompositor   *compositor,
+-                              ClutterStageView *stage_view)
++meta_compositor_before_paint (MetaCompositor     *compositor,
++                              MetaCompositorView *compositor_view)
+ {
++  MetaCompositorPrivate *priv =
++    meta_compositor_get_instance_private (compositor);
++
+   COGL_TRACE_BEGIN_SCOPED (MetaCompositorPrePaint,
+                            "Compositor (before-paint)");
+-  META_COMPOSITOR_GET_CLASS (compositor)->before_paint (compositor, stage_view);
++
++  maybe_update_top_window_actor_for_views (compositor);
++
++  priv->frame_in_progress = TRUE;
++
++  META_COMPOSITOR_GET_CLASS (compositor)->before_paint (compositor, compositor_view);
+ }
+ 
+ static void
+-meta_compositor_real_after_paint (MetaCompositor   *compositor,
+-                                  ClutterStageView *stage_view)
++meta_compositor_real_after_paint (MetaCompositor     *compositor,
++                                  MetaCompositorView *compositor_view)
+ {
+   MetaCompositorPrivate *priv =
+     meta_compositor_get_instance_private (compositor);
+   ClutterActor *stage_actor = meta_backend_get_stage (priv->backend);
+   CoglGraphicsResetStatus status;
++  ClutterStageView *stage_view;
+   GList *l;
+ 
+   status = cogl_get_graphics_reset_status (priv->context);
+@@ -1007,6 +1112,8 @@ meta_compositor_real_after_paint (MetaCompositor   *compositor,
+       break;
+     }
+ 
++  stage_view = meta_compositor_view_get_stage_view (compositor_view);
++
+   for (l = priv->windows; l; l = l->next)
+     {
+       ClutterActor *actor = l->data;
+@@ -1019,12 +1126,17 @@ meta_compositor_real_after_paint (MetaCompositor   *compositor,
+ }
+ 
+ static void
+-meta_compositor_after_paint (MetaCompositor   *compositor,
+-                             ClutterStageView *stage_view)
++meta_compositor_after_paint (MetaCompositor     *compositor,
++                             MetaCompositorView *compositor_view)
+ {
++  MetaCompositorPrivate *priv =
++    meta_compositor_get_instance_private (compositor);
++
+   COGL_TRACE_BEGIN_SCOPED (MetaCompositorPostPaint,
+                            "Compositor (after-paint)");
+-  META_COMPOSITOR_GET_CLASS (compositor)->after_paint (compositor, stage_view);
++  META_COMPOSITOR_GET_CLASS (compositor)->after_paint (compositor, compositor_view);
++
++  priv->frame_in_progress = FALSE;
+ }
+ 
+ static void
+@@ -1032,7 +1144,14 @@ on_before_paint (ClutterStage     *stage,
+                  ClutterStageView *stage_view,
+                  MetaCompositor   *compositor)
+ {
+-  meta_compositor_before_paint (compositor, stage_view);
++  MetaCompositorView *compositor_view;
++
++  compositor_view = g_object_get_qdata (G_OBJECT (stage_view),
++                                        quark_compositor_view);
++
++  g_assert (compositor_view);
++
++  meta_compositor_before_paint (compositor, compositor_view);
+ }
+ 
+ static void
+@@ -1040,7 +1159,14 @@ on_after_paint (ClutterStage     *stage,
+                 ClutterStageView *stage_view,
+                 MetaCompositor   *compositor)
+ {
+-  meta_compositor_after_paint (compositor, stage_view);
++  MetaCompositorView *compositor_view;
++
++  compositor_view = g_object_get_qdata (G_OBJECT (stage_view),
++                                        quark_compositor_view);
++
++  g_assert (compositor_view);
++
++  meta_compositor_after_paint (compositor, compositor_view);
+ }
+ 
+ static void
+@@ -1051,6 +1177,14 @@ on_window_visibility_updated (MetaDisplay    *display,
+                               MetaCompositor *compositor)
+ {
+   update_top_window_actor (compositor);
++  meta_compositor_set_needs_update_top_window_actors (compositor);
++}
++
++static void
++on_monitors_changed_internal (MetaMonitorManager *monitor_manager,
++                              MetaCompositor     *compositor)
++{
++  meta_compositor_ensure_compositor_views (compositor);
+ }
+ 
+ static void
+@@ -1102,6 +1236,7 @@ meta_compositor_get_property (GObject    *object,
+ static void
+ meta_compositor_init (MetaCompositor *compositor)
+ {
++  meta_compositor_set_needs_update_top_window_actors (compositor);
+ }
+ 
+ static void
+@@ -1113,6 +1248,8 @@ meta_compositor_constructed (GObject *object)
+   ClutterBackend *clutter_backend =
+     meta_backend_get_clutter_backend (priv->backend);
+   ClutterActor *stage = meta_backend_get_stage (priv->backend);
++  MetaMonitorManager *monitor_manager =
++    meta_backend_get_monitor_manager (priv->backend);
+ 
+   priv->context = clutter_backend->cogl_context;
+ 
+@@ -1133,9 +1270,17 @@ meta_compositor_constructed (GObject *object)
+                       G_CALLBACK (on_window_visibility_updated),
+                       compositor);
+ 
++  priv->monitors_changed_internal_id =
++    g_signal_connect (monitor_manager,
++                      "monitors-changed-internal",
++                      G_CALLBACK (on_monitors_changed_internal),
++                      compositor);
++
+   priv->laters = meta_laters_new (compositor);
+ 
+   G_OBJECT_CLASS (meta_compositor_parent_class)->constructed (object);
++
++  meta_compositor_ensure_compositor_views (compositor);
+ }
+ 
+ static void
+@@ -1190,6 +1335,9 @@ meta_compositor_class_init (MetaCompositorClass *klass)
+                          G_PARAM_CONSTRUCT_ONLY |
+                          G_PARAM_STATIC_STRINGS);
+   g_object_class_install_properties (object_class, N_PROPS, obj_props);
++
++  quark_compositor_view =
++    g_quark_from_static_string ("-meta-compositor-view");
+ }
+ 
+ /**
+diff --git a/src/compositor/meta-compositor-native.c b/src/compositor/meta-compositor-native.c
+index bc17704e1..63680b6d8 100644
+--- a/src/compositor/meta-compositor-native.c
++++ b/src/compositor/meta-compositor-native.c
+@@ -24,6 +24,7 @@
+ 
+ #include "backends/meta-logical-monitor.h"
+ #include "backends/native/meta-crtc-kms.h"
++#include "compositor/meta-compositor-view-native.h"
+ #include "compositor/meta-surface-actor-wayland.h"
+ 
+ struct _MetaCompositorNative
+@@ -156,17 +157,33 @@ done:
+ #endif /* HAVE_WAYLAND */
+ 
+ static void
+-meta_compositor_native_before_paint (MetaCompositor   *compositor,
+-                                     ClutterStageView *stage_view)
++meta_compositor_native_before_paint (MetaCompositor     *compositor,
++                                     MetaCompositorView *compositor_view)
+ {
++  MetaCompositorViewNative *compositor_view_native =
++    META_COMPOSITOR_VIEW_NATIVE (compositor_view);
+   MetaCompositorClass *parent_class;
+ 
+ #ifdef HAVE_WAYLAND
+   maybe_assign_primary_plane (compositor);
+ #endif
+ 
++  meta_compositor_view_native_maybe_set_frame_sync (compositor_view_native,
++                                                    compositor);
++
+   parent_class = META_COMPOSITOR_CLASS (meta_compositor_native_parent_class);
+-  parent_class->before_paint (compositor, stage_view);
++  parent_class->before_paint (compositor, compositor_view);
++}
++
++static MetaCompositorView *
++meta_compositor_native_create_view (MetaCompositor   *compositor,
++                                    ClutterStageView *stage_view)
++{
++  MetaCompositorViewNative *compositor_view_native;
++
++  compositor_view_native = meta_compositor_view_native_new (stage_view);
++
++  return META_COMPOSITOR_VIEW (compositor_view_native);
+ }
+ 
+ MetaCompositorNative *
+@@ -203,4 +220,5 @@ meta_compositor_native_class_init (MetaCompositorNativeClass *klass)
+   object_class->finalize = meta_compositor_native_finalize;
+ 
+   compositor_class->before_paint = meta_compositor_native_before_paint;
++  compositor_class->create_view = meta_compositor_native_create_view;
+ }
+diff --git a/src/compositor/meta-compositor-server.c b/src/compositor/meta-compositor-server.c
+index f0d469172..990aa1e77 100644
+--- a/src/compositor/meta-compositor-server.c
++++ b/src/compositor/meta-compositor-server.c
+@@ -22,6 +22,7 @@
+ 
+ #include "backends/meta-dnd-private.h"
+ #include "compositor/meta-compositor-server.h"
++#include "compositor/meta-compositor-view.h"
+ #include "core/display-private.h"
+ 
+ G_DEFINE_TYPE (MetaCompositorServer, meta_compositor_server, META_TYPE_COMPOSITOR)
+@@ -66,6 +67,13 @@ meta_compositor_server_grab_end (MetaCompositor *compositor)
+   meta_display_sync_wayland_input_focus (display);
+ }
+ 
++static MetaCompositorView *
++meta_compositor_server_create_view (MetaCompositor   *compositor,
++                                    ClutterStageView *stage_view)
++{
++  return meta_compositor_view_new (stage_view);
++}
++
+ MetaCompositorServer *
+ meta_compositor_server_new (MetaDisplay *display,
+                             MetaBackend *backend)
+@@ -91,4 +99,5 @@ meta_compositor_server_class_init (MetaCompositorServerClass *klass)
+    meta_compositor_server_monotonic_to_high_res_xserver_time;
+   compositor_class->grab_begin = meta_compositor_server_grab_begin;
+   compositor_class->grab_end = meta_compositor_server_grab_end;
++  compositor_class->create_view = meta_compositor_server_create_view;
+ }
+diff --git a/src/compositor/meta-compositor-view-native.c b/src/compositor/meta-compositor-view-native.c
+new file mode 100644
+index 000000000..9a4558c67
+--- /dev/null
++++ b/src/compositor/meta-compositor-view-native.c
+@@ -0,0 +1,127 @@
++/* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
++
++/*
++ * Copyright (C) 2022 Dor Askayo
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License as
++ * published by the Free Software Foundation; either version 2 of the
++ * License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
++ * 02111-1307, USA.
++ *
++ * Written by:
++ *     Dor Askayo <dor.askayo@gmail.com>
++ */
++
++#include "compositor/meta-compositor-view-native.h"
++
++#include "backends/native/meta-renderer-view-native.h"
++#include "clutter/clutter.h"
++#include "compositor/compositor-private.h"
++#include "core/window-private.h"
++
++struct _MetaCompositorViewNative
++{
++  MetaCompositorView parent;
++};
++
++G_DEFINE_TYPE (MetaCompositorViewNative, meta_compositor_view_native,
++               META_TYPE_COMPOSITOR_VIEW)
++
++static ClutterActor *
++find_frame_sync_actor (MetaCompositorView *compositor_view,
++                       MetaCompositor     *compositor)
++{
++  MetaWindowActor *window_actor;
++  MetaWindow *window;
++  ClutterStageView *stage_view;
++  MetaRectangle view_layout;
++  MetaSurfaceActor *surface_actor;
++
++  if (meta_compositor_is_unredirect_inhibited (compositor))
++    return NULL;
++
++  window_actor =
++    meta_compositor_view_get_top_window_actor (compositor_view);
++  if (!window_actor)
++    return NULL;
++
++  if (meta_window_actor_is_frozen (window_actor))
++    return NULL;
++
++  if (meta_window_actor_effect_in_progress (window_actor))
++    return NULL;
++
++  if (clutter_actor_has_transitions (CLUTTER_ACTOR (window_actor)))
++    return NULL;
++
++  window = meta_window_actor_get_meta_window (window_actor);
++  if (!window)
++    return NULL;
++
++  stage_view = meta_compositor_view_get_stage_view (compositor_view);
++
++  clutter_stage_view_get_layout (stage_view, &view_layout);
++
++  if (!meta_window_frame_contains_rect (window, &view_layout))
++    return NULL;
++
++  surface_actor = meta_window_actor_get_scanout_candidate (window_actor);
++  if (!surface_actor)
++    return NULL;
++
++  if (!meta_surface_actor_contains_rect (surface_actor,
++                                         &view_layout))
++    return NULL;
++
++  return CLUTTER_ACTOR (surface_actor);
++}
++
++void
++meta_compositor_view_native_maybe_set_frame_sync (MetaCompositorViewNative *view_native,
++                                                  MetaCompositor           *compositor)
++{
++  MetaCompositorView *compositor_view =
++    META_COMPOSITOR_VIEW (view_native);
++  ClutterActor *frame_sync_actor;
++  MetaRendererViewNative *renderer_view_native;
++  ClutterStageView *stage_view;
++
++  frame_sync_actor = find_frame_sync_actor (compositor_view,
++                                            compositor);
++
++  stage_view = meta_compositor_view_get_stage_view (compositor_view);
++  renderer_view_native = META_RENDERER_VIEW_NATIVE (stage_view);
++
++  meta_renderer_view_native_set_frame_sync_actor (renderer_view_native,
++                                                  frame_sync_actor);
++}
++
++MetaCompositorViewNative *
++meta_compositor_view_native_new (ClutterStageView *stage_view)
++{
++  g_assert (stage_view);
++
++  return g_object_new (META_TYPE_COMPOSITOR_VIEW_NATIVE,
++                       "stage-view", stage_view,
++                       NULL);
++}
++
++static void
++meta_compositor_view_native_class_init (MetaCompositorViewNativeClass *klass)
++{
++}
++
++static void
++meta_compositor_view_native_init (MetaCompositorViewNative *view_native)
++{
++}
+diff --git a/src/compositor/meta-compositor-view-native.h b/src/compositor/meta-compositor-view-native.h
+new file mode 100644
+index 000000000..301e26f7d
+--- /dev/null
++++ b/src/compositor/meta-compositor-view-native.h
+@@ -0,0 +1,41 @@
++/* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
++
++/*
++ * Copyright (C) 2022 Dor Askayo
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License as
++ * published by the Free Software Foundation; either version 2 of the
++ * License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
++ * 02111-1307, USA.
++ *
++ * Written by:
++ *     Dor Askayo <dor.askayo@gmail.com>
++ */
++
++#ifndef META_COMPOSITOR_VIEW_NATIVE_H
++#define META_COMPOSITOR_VIEW_NATIVE_H
++
++#include "clutter/clutter-mutter.h"
++#include "compositor/meta-compositor-view.h"
++#include "meta/compositor.h"
++
++#define META_TYPE_COMPOSITOR_VIEW_NATIVE (meta_compositor_view_native_get_type ())
++G_DECLARE_FINAL_TYPE (MetaCompositorViewNative, meta_compositor_view_native,
++                      META, COMPOSITOR_VIEW_NATIVE, MetaCompositorView)
++
++MetaCompositorViewNative *meta_compositor_view_native_new (ClutterStageView *stage_view);
++
++void meta_compositor_view_native_maybe_set_frame_sync (MetaCompositorViewNative *view_native,
++                                                       MetaCompositor           *compositor);
++
++#endif /* META_COMPOSITOR_VIEW_NATIVE_H */
+diff --git a/src/compositor/meta-compositor-view.c b/src/compositor/meta-compositor-view.c
+new file mode 100644
+index 000000000..8febba936
+--- /dev/null
++++ b/src/compositor/meta-compositor-view.c
+@@ -0,0 +1,196 @@
++/* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
++
++/*
++ * Copyright (C) 2022 Dor Askayo
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License as
++ * published by the Free Software Foundation; either version 2 of the
++ * License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
++ * 02111-1307, USA.
++ *
++ * Written by:
++ *     Dor Askayo <dor.askayo@gmail.com>
++ */
++
++#include "compositor/meta-compositor-view.h"
++
++#include "core/window-private.h"
++#include "meta/boxes.h"
++#include "meta/window.h"
++
++enum
++{
++  PROP_0,
++
++  PROP_STAGE_VIEW,
++
++  N_PROPS
++};
++
++static GParamSpec *obj_props[N_PROPS];
++
++typedef struct _MetaCompositorViewPrivate
++{
++  ClutterStageView *stage_view;
++
++  MetaWindowActor *top_window_actor;
++} MetaCompositorViewPrivate;
++
++G_DEFINE_TYPE_WITH_PRIVATE (MetaCompositorView, meta_compositor_view,
++                            G_TYPE_OBJECT)
++
++MetaCompositorView *
++meta_compositor_view_new (ClutterStageView *stage_view)
++{
++  g_assert (stage_view);
++
++  return g_object_new (META_TYPE_COMPOSITOR_VIEW,
++                       "stage-view", stage_view,
++                       NULL);
++}
++
++static MetaWindowActor *
++find_top_window_actor_on_view (ClutterStageView *stage_view,
++                               GList            *window_actors)
++{
++  GList *l;
++
++  for (l = g_list_last (window_actors); l; l = l->prev)
++    {
++      MetaWindowActor *window_actor = l->data;
++      MetaWindow *window =
++        meta_window_actor_get_meta_window (window_actor);
++      MetaRectangle buffer_rect;
++      MetaRectangle view_layout;
++
++      if (!window->visible_to_compositor)
++        continue;
++
++      meta_window_get_buffer_rect (window, &buffer_rect);
++      clutter_stage_view_get_layout (stage_view,
++                                     &view_layout);
++
++      if (meta_rectangle_overlap (&view_layout, &buffer_rect))
++        return window_actor;
++    }
++
++  return NULL;
++}
++
++void
++meta_compositor_view_update_top_window_actor (MetaCompositorView *compositor_view,
++                                              GList              *window_actors)
++{
++  MetaCompositorViewPrivate *priv =
++    meta_compositor_view_get_instance_private (compositor_view);
++  MetaWindowActor *top_window_actor;
++
++  top_window_actor = find_top_window_actor_on_view (priv->stage_view,
++                                                    window_actors);
++
++  g_set_weak_pointer (&priv->top_window_actor,
++                      top_window_actor);
++}
++
++MetaWindowActor *
++meta_compositor_view_get_top_window_actor (MetaCompositorView *compositor_view)
++{
++  MetaCompositorViewPrivate *priv =
++    meta_compositor_view_get_instance_private (compositor_view);
++
++  return priv->top_window_actor;
++}
++
++ClutterStageView *
++meta_compositor_view_get_stage_view (MetaCompositorView *compositor_view)
++{
++  MetaCompositorViewPrivate *priv =
++    meta_compositor_view_get_instance_private (compositor_view);
++
++  return priv->stage_view;
++}
++
++static void
++meta_compositor_view_set_property (GObject      *object,
++                                   guint         prop_id,
++                                   const GValue *value,
++                                   GParamSpec   *pspec)
++{
++  MetaCompositorView *compositor_view = META_COMPOSITOR_VIEW (object);
++  MetaCompositorViewPrivate *priv =
++    meta_compositor_view_get_instance_private (compositor_view);
++
++  switch (prop_id)
++    {
++    case PROP_STAGE_VIEW:
++      priv->stage_view = g_value_get_object (value);
++      break;
++    default:
++      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
++    }
++}
++
++static void
++meta_compositor_view_get_property (GObject    *object,
++                                   guint       prop_id,
++                                   GValue     *value,
++                                   GParamSpec *pspec)
++{
++  MetaCompositorView *compositor_view = META_COMPOSITOR_VIEW (object);
++  MetaCompositorViewPrivate *priv =
++    meta_compositor_view_get_instance_private (compositor_view);
++
++  switch (prop_id)
++    {
++    case PROP_STAGE_VIEW:
++      g_value_set_object (value, priv->stage_view);
++      break;
++    default:
++      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
++    }
++}
++
++static void
++meta_compositor_view_finalize (GObject *object)
++{
++  MetaCompositorView *compositor_view = META_COMPOSITOR_VIEW (object);
++  MetaCompositorViewPrivate *priv =
++    meta_compositor_view_get_instance_private (compositor_view);
++
++  g_clear_weak_pointer (&priv->top_window_actor);
++}
++
++static void
++meta_compositor_view_class_init (MetaCompositorViewClass *klass)
++{
++  GObjectClass *object_class = G_OBJECT_CLASS (klass);
++
++  object_class->set_property = meta_compositor_view_set_property;
++  object_class->get_property = meta_compositor_view_get_property;
++  object_class->finalize = meta_compositor_view_finalize;
++
++  obj_props[PROP_STAGE_VIEW] =
++    g_param_spec_object ("stage-view",
++                         "stage-view",
++                         "ClutterStageView",
++                         CLUTTER_TYPE_STAGE_VIEW,
++                         G_PARAM_READWRITE |
++                         G_PARAM_CONSTRUCT_ONLY |
++                         G_PARAM_STATIC_STRINGS);
++  g_object_class_install_properties (object_class, N_PROPS, obj_props);
++}
++
++static void
++meta_compositor_view_init (MetaCompositorView *compositor_view)
++{
++}
+diff --git a/src/compositor/meta-compositor-view.h b/src/compositor/meta-compositor-view.h
+new file mode 100644
+index 000000000..7adc41fc1
+--- /dev/null
++++ b/src/compositor/meta-compositor-view.h
+@@ -0,0 +1,51 @@
++/* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
++
++/*
++ * Copyright (C) 2022 Dor Askayo
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License as
++ * published by the Free Software Foundation; either version 2 of the
++ * License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
++ * 02111-1307, USA.
++ *
++ * Written by:
++ *     Dor Askayo <dor.askayo@gmail.com>
++ */
++
++#ifndef META_COMPOSITOR_VIEW_H
++#define META_COMPOSITOR_VIEW_H
++
++#include <glib-object.h>
++
++#include "clutter/clutter-mutter.h"
++#include "meta/meta-window-actor.h"
++
++struct _MetaCompositorViewClass
++{
++  GObjectClass parent_class;
++};
++
++#define META_TYPE_COMPOSITOR_VIEW (meta_compositor_view_get_type ())
++G_DECLARE_DERIVABLE_TYPE (MetaCompositorView, meta_compositor_view,
++                          META, COMPOSITOR_VIEW, GObject)
++
++MetaCompositorView *meta_compositor_view_new (ClutterStageView *stage_view);
++
++void meta_compositor_view_update_top_window_actor (MetaCompositorView *compositor_view,
++                                                   GList              *window_actors);
++
++MetaWindowActor *meta_compositor_view_get_top_window_actor (MetaCompositorView *compositor_view);
++
++ClutterStageView *meta_compositor_view_get_stage_view (MetaCompositorView *compositor_view);
++
++#endif /* META_COMPOSITOR_VIEW_H */
+diff --git a/src/compositor/meta-compositor-x11.c b/src/compositor/meta-compositor-x11.c
+index 614bec674..e7cb39abe 100644
+--- a/src/compositor/meta-compositor-x11.c
++++ b/src/compositor/meta-compositor-x11.c
+@@ -28,6 +28,7 @@
+ #include "backends/x11/meta-backend-x11.h"
+ #include "backends/x11/meta-clutter-backend-x11.h"
+ #include "backends/x11/meta-event-x11.h"
++#include "compositor/meta-compositor-view.h"
+ #include "compositor/meta-sync-ring.h"
+ #include "compositor/meta-window-actor-x11.h"
+ #include "core/display-private.h"
+@@ -385,8 +386,8 @@ on_after_update (ClutterStage     *stage,
+ }
+ 
+ static void
+-meta_compositor_x11_before_paint (MetaCompositor   *compositor,
+-                                  ClutterStageView *stage_view)
++meta_compositor_x11_before_paint (MetaCompositor     *compositor,
++                                  MetaCompositorView *compositor_view)
+ {
+   MetaCompositorX11 *compositor_x11 = META_COMPOSITOR_X11 (compositor);
+   MetaCompositorClass *parent_class;
+@@ -394,7 +395,7 @@ meta_compositor_x11_before_paint (MetaCompositor   *compositor,
+   maybe_unredirect_top_window (compositor_x11);
+ 
+   parent_class = META_COMPOSITOR_CLASS (meta_compositor_x11_parent_class);
+-  parent_class->before_paint (compositor, stage_view);
++  parent_class->before_paint (compositor, compositor_view);
+ }
+ 
+ static void
+@@ -458,6 +459,13 @@ meta_compositor_x11_grab_end (MetaCompositor *compositor)
+   meta_backend_x11_sync_pointer (backend_x11);
+ }
+ 
++static MetaCompositorView *
++meta_compositor_x11_create_view (MetaCompositor   *compositor,
++                                 ClutterStageView *stage_view)
++{
++  return meta_compositor_view_new (stage_view);
++}
++
+ Window
+ meta_compositor_x11_get_output_xwindow (MetaCompositorX11 *compositor_x11)
+ {
+@@ -532,4 +540,5 @@ meta_compositor_x11_class_init (MetaCompositorX11Class *klass)
+    meta_compositor_x11_monotonic_to_high_res_xserver_time;
+   compositor_class->grab_begin = meta_compositor_x11_grab_begin;
+   compositor_class->grab_end = meta_compositor_x11_grab_end;
++  compositor_class->create_view = meta_compositor_x11_create_view;
+ }
+diff --git a/src/compositor/meta-surface-actor.c b/src/compositor/meta-surface-actor.c
+index c2bf6696a..d5a32085c 100644
+--- a/src/compositor/meta-surface-actor.c
++++ b/src/compositor/meta-surface-actor.c
+@@ -51,6 +51,7 @@ enum
+ {
+   REPAINT_SCHEDULED,
+   SIZE_CHANGED,
++  FROZEN,
+ 
+   LAST_SIGNAL,
+ };
+@@ -269,6 +270,13 @@ meta_surface_actor_class_init (MetaSurfaceActorClass *klass)
+                                         0,
+                                         NULL, NULL, NULL,
+                                         G_TYPE_NONE, 0);
++
++  signals[FROZEN] = g_signal_new ("frozen",
++                                  G_TYPE_FROM_CLASS (object_class),
++                                  G_SIGNAL_RUN_LAST,
++                                  0,
++                                  NULL, NULL, NULL,
++                                  G_TYPE_NONE, 0);
+ }
+ 
+ gboolean
+@@ -513,6 +521,22 @@ meta_surface_actor_is_obscured_on_stage_view (MetaSurfaceActor *self,
+                                                       stage_view);
+ }
+ 
++gboolean
++meta_surface_actor_contains_rect (MetaSurfaceActor *surface_actor,
++                                  MetaRectangle    *rect)
++{
++  ClutterActor *actor = CLUTTER_ACTOR (surface_actor);
++  graphene_rect_t bounding_rect;
++  graphene_rect_t bound_rect;
++
++  clutter_actor_get_transformed_extents (actor, &bounding_rect);
++
++  _clutter_util_rect_from_rectangle (rect, &bound_rect);
++
++  return graphene_rect_contains_rect (&bounding_rect,
++                                      &bound_rect);
++}
++
+ void
+ meta_surface_actor_set_input_region (MetaSurfaceActor *self,
+                                      cairo_region_t   *region)
+@@ -594,6 +618,9 @@ meta_surface_actor_set_frozen (MetaSurfaceActor *self,
+ 
+   priv->frozen = frozen;
+ 
++  if (frozen)
++    g_signal_emit (self, signals[FROZEN], 0);
++
+   if (!frozen && priv->pending_damage)
+     {
+       int i, n_rects = cairo_region_num_rectangles (priv->pending_damage);
+diff --git a/src/compositor/meta-surface-actor.h b/src/compositor/meta-surface-actor.h
+index f69cb1527..3128f513c 100644
+--- a/src/compositor/meta-surface-actor.h
++++ b/src/compositor/meta-surface-actor.h
+@@ -40,6 +40,9 @@ gboolean meta_surface_actor_is_obscured_on_stage_view (MetaSurfaceActor *self,
+                                                        ClutterStageView *stage_view,
+                                                        float            *unobscurred_fraction);
+ 
++gboolean meta_surface_actor_contains_rect (MetaSurfaceActor *surface_actor,
++                                           MetaRectangle    *rect);
++
+ void meta_surface_actor_set_input_region (MetaSurfaceActor *self,
+                                           cairo_region_t   *region);
+ void meta_surface_actor_set_opaque_region (MetaSurfaceActor *self,
+diff --git a/src/compositor/meta-window-actor-wayland.c b/src/compositor/meta-window-actor-wayland.c
+index f1ac2eab2..e1f341048 100644
+--- a/src/compositor/meta-window-actor-wayland.c
++++ b/src/compositor/meta-window-actor-wayland.c
+@@ -38,43 +38,28 @@ typedef struct _SurfaceTreeTraverseData
+   int index;
+ } SurfaceTreeTraverseData;
+ 
+-static gboolean
+-get_surface_actor_list (GNode    *node,
+-                        gpointer  data)
+-{
+-  MetaWaylandSurface *surface = node->data;
+-  MetaSurfaceActor *surface_actor = meta_wayland_surface_get_actor (surface);
+-  GList **surface_actors = data;
+-
+-  *surface_actors = g_list_prepend (*surface_actors, surface_actor);
+-  return FALSE;
+-}
+-
+ static gboolean
+ set_surface_actor_index (GNode    *node,
+                          gpointer  data)
+ {
+   MetaWaylandSurface *surface = node->data;
++  MetaSurfaceActor *surface_actor = meta_wayland_surface_get_actor (surface);
+   SurfaceTreeTraverseData *traverse_data = data;
+-  ClutterActor *window_actor = CLUTTER_ACTOR (traverse_data->window_actor);
+-  ClutterActor *surface_actor =
+-    CLUTTER_ACTOR (meta_wayland_surface_get_actor (surface));
+ 
+-  if (clutter_actor_contains (window_actor, surface_actor))
++  if (clutter_actor_contains (CLUTTER_ACTOR (traverse_data->window_actor),
++                              CLUTTER_ACTOR (surface_actor)))
+     {
+-      if (clutter_actor_get_child_at_index (window_actor, traverse_data->index) !=
+-          surface_actor)
+-        {
+-          clutter_actor_set_child_at_index (window_actor,
+-                                            surface_actor,
+-                                            traverse_data->index);
+-        }
++      clutter_actor_set_child_at_index (
++        CLUTTER_ACTOR (traverse_data->window_actor),
++        CLUTTER_ACTOR (surface_actor),
++        traverse_data->index);
+     }
+   else
+     {
+-      clutter_actor_insert_child_at_index (window_actor,
+-                                           surface_actor,
+-                                           traverse_data->index);
++      clutter_actor_insert_child_at_index (
++        CLUTTER_ACTOR (traverse_data->window_actor),
++        CLUTTER_ACTOR (surface_actor),
++        traverse_data->index);
+     }
+   traverse_data->index++;
+ 
+@@ -89,28 +74,8 @@ meta_window_actor_wayland_rebuild_surface_tree (MetaWindowActor *actor)
+   MetaWaylandSurface *surface = meta_surface_actor_wayland_get_surface (
+     META_SURFACE_ACTOR_WAYLAND (surface_actor));
+   GNode *root_node = surface->subsurface_branch_node;
+-  g_autoptr (GList) surface_actors = NULL;
+-  g_autoptr (GList) children = NULL;
+-  GList *l;
+   SurfaceTreeTraverseData traverse_data;
+ 
+-  g_node_traverse (root_node,
+-                   G_IN_ORDER,
+-                   G_TRAVERSE_LEAVES,
+-                   -1,
+-                   get_surface_actor_list,
+-                   &surface_actors);
+-
+-  children = clutter_actor_get_children (CLUTTER_ACTOR (actor));
+-  for (l = children; l; l = l->next)
+-    {
+-      ClutterActor *child_actor = l->data;
+-
+-      if (META_IS_SURFACE_ACTOR_WAYLAND (child_actor) &&
+-          !g_list_find (surface_actors, child_actor))
+-        clutter_actor_remove_child (CLUTTER_ACTOR (actor), child_actor);
+-    }
+-
+   traverse_data = (SurfaceTreeTraverseData) {
+     .window_actor = actor,
+     .index = 0,
+diff --git a/src/compositor/meta-window-actor.c b/src/compositor/meta-window-actor.c
+index ae1fa4d90..9fd9f758c 100644
+--- a/src/compositor/meta-window-actor.c
++++ b/src/compositor/meta-window-actor.c
+@@ -53,6 +53,8 @@ typedef struct _MetaWindowActorPrivate
+   MetaWindow *window;
+   MetaCompositor *compositor;
+ 
++  gulong stage_views_changed_id;
++
+   MetaSurfaceActor *surface;
+ 
+   int geometry_scale;
+@@ -402,6 +404,15 @@ init_surface_actor (MetaWindowActor *self)
+     meta_window_actor_assign_surface_actor (self, surface_actor);
+ }
+ 
++static void
++on_stage_views_changed (MetaWindowActor *self)
++{
++  MetaWindowActorPrivate *priv =
++    meta_window_actor_get_instance_private (self);
++
++  meta_compositor_window_actor_stage_views_changed (priv->compositor);
++}
++
+ static void
+ meta_window_actor_constructed (GObject *object)
+ {
+@@ -412,6 +423,12 @@ meta_window_actor_constructed (GObject *object)
+ 
+   priv->compositor = window->display->compositor;
+ 
++  priv->stage_views_changed_id =
++    g_signal_connect (self,
++                      "stage-views-changed",
++                      G_CALLBACK (on_stage_views_changed),
++                      NULL);
++
+   /* Hang our compositor window state off the MetaWindow for fast retrieval */
+   meta_window_set_compositor_private (window, object);
+ 
+@@ -445,6 +462,8 @@ meta_window_actor_dispose (GObject *object)
+ 
+   priv->disposed = TRUE;
+ 
++  g_clear_signal_handler (&priv->stage_views_changed_id, self);
++
+   meta_compositor_remove_window_actor (compositor, self);
+ 
+   g_clear_object (&priv->window);
+diff --git a/src/core/window-private.h b/src/core/window-private.h
+index 4f269ff37..9765aa5c8 100644
+--- a/src/core/window-private.h
++++ b/src/core/window-private.h
+@@ -716,6 +716,9 @@ void        meta_window_get_session_geometry (MetaWindow  *window,
+                                               int         *width,
+                                               int         *height);
+ 
++gboolean    meta_window_frame_contains_rect (MetaWindow    *window,
++                                             MetaRectangle *rect);
++
+ void        meta_window_update_unfocused_button_grabs (MetaWindow *window);
+ 
+ void        meta_window_update_appears_focused (MetaWindow *window);
+@@ -849,9 +852,7 @@ void meta_window_activate_full (MetaWindow     *window,
+                                 MetaWorkspace  *workspace);
+ 
+ META_EXPORT_TEST
+-MetaLogicalMonitor * meta_window_find_monitor_from_frame_rect (MetaWindow *window);
+-
+-MetaLogicalMonitor * meta_window_find_monitor_from_id (MetaWindow *window);
++MetaLogicalMonitor * meta_window_calculate_main_logical_monitor (MetaWindow *window);
+ 
+ MetaLogicalMonitor * meta_window_get_main_logical_monitor (MetaWindow *window);
+ void meta_window_update_monitor (MetaWindow                   *window,
+diff --git a/src/core/window.c b/src/core/window.c
+index e7278e48c..af68011f1 100644
+--- a/src/core/window.c
++++ b/src/core/window.c
+@@ -934,7 +934,7 @@ meta_window_main_monitor_changed (MetaWindow               *window,
+ }
+ 
+ MetaLogicalMonitor *
+-meta_window_find_monitor_from_frame_rect (MetaWindow *window)
++meta_window_calculate_main_logical_monitor (MetaWindow *window)
+ {
+   MetaBackend *backend = meta_get_backend ();
+   MetaMonitorManager *monitor_manager =
+@@ -1160,7 +1160,7 @@ _meta_window_shared_new (MetaDisplay         *display,
+   window->compositor_private = NULL;
+ 
+   if (window->rect.width > 0 && window->rect.height > 0)
+-    window->monitor = meta_window_find_monitor_from_frame_rect (window);
++    window->monitor = meta_window_calculate_main_logical_monitor (window);
+   else
+     window->monitor = meta_backend_get_current_logical_monitor (backend);
+ 
+@@ -3646,38 +3646,12 @@ find_monitor_by_winsys_id (MetaWindow *window,
+   return NULL;
+ }
+ 
+-MetaLogicalMonitor *
+-meta_window_find_monitor_from_id (MetaWindow *window)
+-{
+-  MetaContext *context = meta_display_get_context (window->display);
+-  MetaBackend *backend = meta_context_get_backend (context);
+-  MetaMonitorManager *monitor_manager =
+-    meta_backend_get_monitor_manager (backend);
+-  MetaLogicalMonitor *old_monitor = window->monitor;
+-  MetaLogicalMonitor *new_monitor;
+-
+-  new_monitor = find_monitor_by_winsys_id (window,
+-                                           window->preferred_output_winsys_id);
+-
+-  if (old_monitor && !new_monitor)
+-    new_monitor = find_monitor_by_winsys_id (window, old_monitor->winsys_id);
+-
+-  if (!new_monitor)
+-    {
+-      new_monitor =
+-        meta_monitor_manager_get_primary_logical_monitor (monitor_manager);
+-    }
+-
+-  return new_monitor;
+-}
+-
+ /* This is called when the monitor setup has changed. The window->monitor
+  * reference is still "valid", but refer to the previous monitor setup */
+ void
+ meta_window_update_for_monitors_changed (MetaWindow *window)
+ {
+-  MetaContext *context = meta_display_get_context (window->display);
+-  MetaBackend *backend = meta_context_get_backend (context);
++  MetaBackend *backend = meta_get_backend ();
+   MetaMonitorManager *monitor_manager =
+     meta_backend_get_monitor_manager (backend);
+   const MetaLogicalMonitor *old, *new;
+@@ -3693,7 +3667,17 @@ meta_window_update_for_monitors_changed (MetaWindow *window)
+     }
+ 
+   old = window->monitor;
+-  new = meta_window_find_monitor_from_id (window);
++
++  /* Try the preferred output first */
++  new = find_monitor_by_winsys_id (window, window->preferred_output_winsys_id);
++
++  /* Otherwise, try to find the old output on a new monitor */
++  if (old && !new)
++    new = find_monitor_by_winsys_id (window, old->winsys_id);
++
++  /* Fall back to primary if everything else failed */
++  if (!new)
++    new = meta_monitor_manager_get_primary_logical_monitor (monitor_manager);
+ 
+   if (window->tile_mode != META_TILE_NONE)
+     {
+@@ -4266,6 +4250,14 @@ meta_window_get_session_geometry (MetaWindow  *window,
+     window->size_hints.height_inc;
+ }
+ 
++gboolean
++meta_window_frame_contains_rect (MetaWindow    *window,
++                                 MetaRectangle *rect)
++{
++  return meta_rectangle_contains_rect (&window->rect,
++                                       rect);
++}
++
+ /**
+  * meta_window_get_buffer_rect:
+  * @window: a #MetaWindow
+diff --git a/src/meson.build b/src/meson.build
+index 13a69c1a6..820efa0a5 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -320,6 +320,8 @@ mutter_sources = [
+   'compositor/meta-background-private.h',
+   'compositor/meta-compositor-server.c',
+   'compositor/meta-compositor-server.h',
++  'compositor/meta-compositor-view.c',
++  'compositor/meta-compositor-view.h',
+   'compositor/meta-compositor-x11.c',
+   'compositor/meta-compositor-x11.h',
+   'compositor/meta-cullable.c',
+@@ -769,6 +771,8 @@ if have_native_backend
+     'backends/native/meta-renderer-native-private.h',
+     'backends/native/meta-renderer-native.c',
+     'backends/native/meta-renderer-native.h',
++    'backends/native/meta-renderer-view-native.c',
++    'backends/native/meta-renderer-view-native.h',
+     'backends/native/meta-seat-impl.c',
+     'backends/native/meta-seat-impl.h',
+     'backends/native/meta-seat-native.c',
+@@ -785,6 +789,8 @@ if have_native_backend
+     'backends/native/meta-xkb-utils.h',
+     'compositor/meta-compositor-native.c',
+     'compositor/meta-compositor-native.h',
++    'compositor/meta-compositor-view-native.c',
++    'compositor/meta-compositor-view-native.h',
+   ]
+ endif
+ 
+diff --git a/src/tests/meson.build b/src/tests/meson.build
+index ae8c0ca60..14d817937 100644
+--- a/src/tests/meson.build
++++ b/src/tests/meson.build
+@@ -354,7 +354,6 @@ stacking_tests = [
+   'modals',
+   'map-fixed-size',
+   'client-resize-respect-constraints',
+-  'map-on-hotplug',
+ ]
+ 
+ foreach stacking_test: stacking_tests
+diff --git a/src/tests/meta-monitor-test-utils.c b/src/tests/meta-monitor-test-utils.c
+index aab9e1858..e74504750 100644
+--- a/src/tests/meta-monitor-test-utils.c
++++ b/src/tests/meta-monitor-test-utils.c
+@@ -392,6 +392,9 @@ meta_check_monitor_configuration (MetaContext           *context,
+           g_assert_cmpint (expect->monitors[i].is_underscanning,
+                            ==,
+                            meta_output_is_underscanning (output));
++          g_assert_cmpint (expect->monitors[i].is_vrr_allowed,
++                           ==,
++                           meta_output_is_vrr_allowed (output));
+         }
+ 
+       meta_monitor_get_physical_dimensions (monitor, &width_mm, &height_mm);
+@@ -778,6 +781,7 @@ meta_create_monitor_test_setup (MetaBackend          *backend,
+ 
+           output_assignment = (MetaOutputAssignment) {
+             .is_underscanning = setup->outputs[i].is_underscanning,
++            .is_vrr_allowed = setup->outputs[i].is_vrr_allowed,
+           };
+           meta_output_assign_crtc (output, crtc, &output_assignment);
+         }
+diff --git a/src/tests/meta-monitor-test-utils.h b/src/tests/meta-monitor-test-utils.h
+index 988a4115e..8d3c6ceda 100644
+--- a/src/tests/meta-monitor-test-utils.h
++++ b/src/tests/meta-monitor-test-utils.h
+@@ -106,6 +106,7 @@ typedef struct _MonitorTestCaseOutput
+   float scale;
+   gboolean is_laptop_panel;
+   gboolean is_underscanning;
++  gboolean is_vrr_allowed;
+   const char *serial;
+   MetaMonitorTransform panel_orientation_transform;
+   gboolean hotplug_mode;
+@@ -157,6 +158,7 @@ typedef struct _MonitorTestCaseMonitor
+   int width_mm;
+   int height_mm;
+   gboolean is_underscanning;
++  gboolean is_vrr_allowed;
+ } MonitorTestCaseMonitor;
+ 
+ typedef struct _MonitorTestCaseLogicalMonitor
+diff --git a/src/tests/monitor-configs/vrr-allowed.xml b/src/tests/monitor-configs/vrr-allowed.xml
+new file mode 100644
+index 000000000..36846e0b2
+--- /dev/null
++++ b/src/tests/monitor-configs/vrr-allowed.xml
+@@ -0,0 +1,23 @@
++<monitors version="2">
++  <configuration>
++    <logicalmonitor>
++      <x>0</x>
++      <y>0</y>
++      <primary>yes</primary>
++      <monitor>
++	<monitorspec>
++	  <connector>DP-1</connector>
++	  <vendor>MetaProduct&apos;s Inc.</vendor>
++	  <product>MetaMonitor</product>
++	  <serial>0x123456</serial>
++	</monitorspec>
++	<mode>
++	  <width>1024</width>
++	  <height>768</height>
++	  <rate>60.000495910644531</rate>
++	</mode>
++	<vrr-allowed>yes</vrr-allowed>
++      </monitor>
++    </logicalmonitor>
++  </configuration>
++</monitors>
+diff --git a/src/tests/monitor-store-unit-tests.c b/src/tests/monitor-store-unit-tests.c
+index 38f4bc52f..6e85c9a3d 100644
+--- a/src/tests/monitor-store-unit-tests.c
++++ b/src/tests/monitor-store-unit-tests.c
+@@ -48,6 +48,7 @@ typedef struct _MonitorStoreTestCaseMonitor
+   const char *serial;
+   MonitorStoreTestCaseMonitorMode mode;
+   gboolean is_underscanning;
++  gboolean is_vrr_allowed;
+ } MonitorStoreTestCaseMonitor;
+ 
+ typedef struct _MonitorStoreTestCaseLogicalMonitor
+@@ -196,6 +197,9 @@ check_monitor_store_configuration (MetaMonitorConfigStore        *config_store,
+           g_assert_cmpint (monitor_config->enable_underscanning,
+                            ==,
+                            test_monitor->is_underscanning);
++          g_assert_cmpint (monitor_config->allow_vrr,
++                           ==,
++                           test_monitor->is_vrr_allowed);
+         }
+     }
+ }
+@@ -446,6 +450,51 @@ meta_test_monitor_store_underscanning (void)
+   check_monitor_store_configurations (&expect);
+ }
+ 
++static void
++meta_test_monitor_store_vrr_allowed (void)
++{
++  MonitorStoreTestExpect expect = {
++    .configurations = {
++      {
++        .logical_monitors = {
++          {
++            .layout = {
++              .x = 0,
++              .y = 0,
++              .width = 1024,
++              .height = 768
++            },
++            .scale = 1,
++            .is_primary = TRUE,
++            .is_presentation = FALSE,
++            .monitors = {
++              {
++                .connector = "DP-1",
++                .vendor = "MetaProduct's Inc.",
++                .product = "MetaMonitor",
++                .serial = "0x123456",
++                .is_vrr_allowed = TRUE,
++                .mode = {
++                  .width = 1024,
++                  .height = 768,
++                  .refresh_rate = 60.000495910644531
++                }
++              }
++            },
++            .n_monitors = 1,
++          },
++        },
++        .n_logical_monitors = 1
++      }
++    },
++    .n_configurations = 1
++  };
++
++  meta_set_custom_monitor_config (test_context, "vrr-allowed.xml");
++
++  check_monitor_store_configurations (&expect);
++}
++
+ static void
+ meta_test_monitor_store_scale (void)
+ {
+@@ -1013,6 +1062,8 @@ init_monitor_store_tests (void)
+                    meta_test_monitor_store_primary);
+   g_test_add_func ("/backends/monitor-store/underscanning",
+                    meta_test_monitor_store_underscanning);
++  g_test_add_func ("/backends/monitor-store/vrr-allowed",
++                   meta_test_monitor_store_vrr_allowed);
+   g_test_add_func ("/backends/monitor-store/scale",
+                    meta_test_monitor_store_scale);
+   g_test_add_func ("/backends/monitor-store/fractional-scale",
+diff --git a/src/tests/monitor-unit-tests.c b/src/tests/monitor-unit-tests.c
+index 6a807c60e..4c4cdefbb 100644
+--- a/src/tests/monitor-unit-tests.c
++++ b/src/tests/monitor-unit-tests.c
+@@ -3276,6 +3276,100 @@ meta_test_monitor_underscanning_config (void)
+   check_monitor_test_clients_state ();
+ }
+ 
++static void
++meta_test_monitor_vrr_allowed_config (void)
++{
++  MonitorTestCase test_case = {
++    .setup = {
++      .modes = {
++        {
++          .width = 1024,
++          .height = 768,
++          .refresh_rate = 60.0
++        }
++      },
++      .n_modes = 1,
++      .outputs = {
++        {
++          .crtc = 0,
++          .modes = { 0 },
++          .n_modes = 1,
++          .preferred_mode = 0,
++          .possible_crtcs = { 0 },
++          .n_possible_crtcs = 1,
++          .width_mm = 222,
++          .height_mm = 125,
++          .is_vrr_allowed = TRUE,
++        }
++      },
++      .n_outputs = 1,
++      .crtcs = {
++        {
++          .current_mode = 0
++        }
++      },
++      .n_crtcs = 1
++    },
++
++    .expect = {
++      .monitors = {
++        {
++          .outputs = { 0 },
++          .n_outputs = 1,
++          .modes = {
++            {
++              .width = 1024,
++              .height = 768,
++              .refresh_rate = 60.0,
++              .crtc_modes = {
++                {
++                  .output = 0,
++                  .crtc_mode = 0
++                }
++              }
++            }
++          },
++          .n_modes = 1,
++          .current_mode = 0,
++          .width_mm = 222,
++          .height_mm = 125,
++          .is_vrr_allowed = TRUE,
++        }
++      },
++      .n_monitors = 1,
++      .logical_monitors = {
++        {
++          .monitors = { 0 },
++          .n_monitors = 1,
++          .layout = { .x = 0, .y = 0, .width = 1024, .height = 768 },
++          .scale = 1
++        }
++      },
++      .n_logical_monitors = 1,
++      .primary_logical_monitor = 0,
++      .n_outputs = 1,
++      .crtcs = {
++        {
++          .current_mode = 0,
++        }
++      },
++      .n_crtcs = 1,
++      .screen_width = 1024,
++      .screen_height = 768
++    }
++  };
++  MetaMonitorTestSetup *test_setup;
++
++  test_setup = meta_create_monitor_test_setup (test_backend,
++                                               &test_case.setup,
++                                               MONITOR_TEST_FLAG_NO_STORED);
++  emulate_hotplug (test_setup);
++  META_TEST_LOG_CALL ("Checking monitor configuration",
++                      meta_check_monitor_configuration (test_context,
++                                                        &test_case.expect));
++  check_monitor_test_clients_state ();
++}
++
+ static void
+ meta_test_monitor_preferred_non_first_mode (void)
+ {
+@@ -5522,6 +5616,102 @@ meta_test_monitor_custom_underscanning_config (void)
+   check_monitor_test_clients_state ();
+ }
+ 
++static void
++meta_test_monitor_custom_vrr_allowed_config (void)
++{
++  MonitorTestCase test_case = {
++    .setup = {
++      .modes = {
++        {
++          .width = 1024,
++          .height = 768,
++          .refresh_rate = 60.000495910644531
++        }
++      },
++      .n_modes = 1,
++      .outputs = {
++        {
++          .crtc = 0,
++          .modes = { 0 },
++          .n_modes = 1,
++          .preferred_mode = 0,
++          .possible_crtcs = { 0 },
++          .n_possible_crtcs = 1,
++          .width_mm = 222,
++          .height_mm = 125
++        },
++      },
++      .n_outputs = 1,
++      .crtcs = {
++        {
++          .current_mode = 0
++        },
++      },
++      .n_crtcs = 1
++    },
++
++    .expect = {
++      .monitors = {
++        {
++          .outputs = { 0 },
++          .n_outputs = 1,
++          .modes = {
++            {
++              .width = 1024,
++              .height = 768,
++              .refresh_rate = 60.000495910644531,
++              .crtc_modes = {
++                {
++                  .output = 0,
++                  .crtc_mode = 0
++                }
++              }
++            }
++          },
++          .n_modes = 1,
++          .current_mode = 0,
++          .width_mm = 222,
++          .height_mm = 125,
++          .is_vrr_allowed = TRUE,
++        }
++      },
++      .n_monitors = 1,
++      .logical_monitors = {
++        {
++          .monitors = { 0 },
++          .n_monitors = 1,
++          .layout = { .x = 0, .y = 0, .width = 1024, .height = 768 },
++          .scale = 1
++        }
++      },
++      .n_logical_monitors = 1,
++      .primary_logical_monitor = 0,
++      .n_outputs = 1,
++      .crtcs = {
++        {
++          .current_mode = 0,
++        }
++      },
++      .n_crtcs = 1,
++      .n_tiled_monitors = 0,
++      .screen_width = 1024,
++      .screen_height = 768
++    }
++  };
++  MetaMonitorTestSetup *test_setup;
++
++  test_setup = meta_create_monitor_test_setup (test_backend,
++                                               &test_case.setup,
++                                               MONITOR_TEST_FLAG_NONE);
++  meta_set_custom_monitor_config (test_context, "vrr-allowed.xml");
++  emulate_hotplug (test_setup);
++
++  META_TEST_LOG_CALL ("Checking monitor configuration",
++                      meta_check_monitor_configuration (test_context,
++                                                        &test_case.expect));
++  check_monitor_test_clients_state ();
++}
++
+ static void
+ meta_test_monitor_custom_scale_config (void)
+ {
+@@ -9118,6 +9308,8 @@ init_monitor_tests (void)
+                     meta_test_monitor_no_outputs);
+   add_monitor_test ("/backends/monitor/underscanning-config",
+                     meta_test_monitor_underscanning_config);
++  add_monitor_test ("/backends/monitor/vrr-allowed-config",
++                    meta_test_monitor_vrr_allowed_config);
+   add_monitor_test ("/backends/monitor/preferred-non-first-mode",
+                     meta_test_monitor_preferred_non_first_mode);
+   add_monitor_test ("/backends/monitor/non-upright-panel",
+@@ -9148,6 +9340,8 @@ init_monitor_tests (void)
+                     meta_test_monitor_custom_primary_config);
+   add_monitor_test ("/backends/monitor/custom/underscanning-config",
+                     meta_test_monitor_custom_underscanning_config);
++  add_monitor_test ("/backends/monitor/custom/vrr-allowed-config",
++                    meta_test_monitor_custom_vrr_allowed_config);
+   add_monitor_test ("/backends/monitor/custom/scale-config",
+                     meta_test_monitor_custom_scale_config);
+   add_monitor_test ("/backends/monitor/custom/fractional-scale-config",
+diff --git a/src/tests/stacking/client-resize-respect-constraints.metatest b/src/tests/stacking/client-resize-respect-constraints.metatest
+index fd524784e..021e0ed0e 100644
+--- a/src/tests/stacking/client-resize-respect-constraints.metatest
++++ b/src/tests/stacking/client-resize-respect-constraints.metatest
+@@ -4,8 +4,6 @@
+ #  3. Resize such that the following resize will extend beyond the screen
+ #  4. Check that the window was moved to the position that would allow it to fit on the screen
+ 
+-resize_monitor primary 800 600
+-
+ new_client w wayland
+ create w/1 csd
+ 
+diff --git a/src/tests/stacking/map-on-hotplug.metatest b/src/tests/stacking/map-on-hotplug.metatest
+deleted file mode 100644
+index 664ae21f1..000000000
+--- a/src/tests/stacking/map-on-hotplug.metatest
++++ /dev/null
+@@ -1,20 +0,0 @@
+-# Test that monitor hotplugs with unmapped windows are handled
+-
+-new_client w wayland
+-
+-create w/1 csd
+-freeze w/1
+-resize w/1 100 200
+-show w/1 async
+-
+-resize_monitor primary 1024 768
+-
+-wait
+-
+-thaw w/1
+-wait
+-sync_shown w/1
+-assert_stacking w/1
+-assert_size w/1 100 200
+-
+-destroy w/1
+diff --git a/src/tests/test-runner.c b/src/tests/test-runner.c
+index 9a9fb9631..c691ef6ef 100644
+--- a/src/tests/test-runner.c
++++ b/src/tests/test-runner.c
+@@ -24,7 +24,6 @@
+ #include <stdlib.h>
+ #include <string.h>
+ 
+-#include "backends/meta-virtual-monitor.h"
+ #include "core/window-private.h"
+ #include "meta-test/meta-context-test.h"
+ #include "meta/util.h"
+@@ -42,7 +41,6 @@ typedef struct {
+   GString *warning_messages;
+   GMainLoop *loop;
+   gulong x11_display_opened_handler_id;
+-  MetaVirtualMonitor *virtual_monitor;
+ } TestCase;
+ 
+ static gboolean
+@@ -84,22 +82,25 @@ test_case_new (MetaContext *context)
+   TestCase *test = g_new0 (TestCase, 1);
+   MetaDisplay *display = meta_context_get_display (context);
+ 
+-  if (display->x11_display)
++  if (!meta_is_wayland_compositor ())
+     {
++      meta_context_test_wait_for_x11_display (META_CONTEXT_TEST (context));
+       on_x11_display_opened (display, test);
+     }
+   else
+     {
+-      test->x11_display_opened_handler_id =
+-        g_signal_connect (meta_get_display (), "x11-display-opened",
+-                          G_CALLBACK (on_x11_display_opened),
+-                          test);
++      if (display->x11_display)
++        on_x11_display_opened (display, test);
++      else
++        test->x11_display_opened_handler_id =
++          g_signal_connect (meta_get_display (), "x11-display-opened",
++                            G_CALLBACK (on_x11_display_opened),
++                            test);
+     }
+ 
+   test->context = context;
+   test->clients = g_hash_table_new (g_str_hash, g_str_equal);
+   test->loop = g_main_loop_new (NULL, FALSE);
+-  test->virtual_monitor = meta_create_test_monitor (context, 800, 600, 60.0);
+ 
+   return test;
+ }
+@@ -118,9 +119,6 @@ static gboolean
+ test_case_dispatch (TestCase *test,
+                     GError  **error)
+ {
+-  MetaBackend *backend = meta_context_get_backend (test->context);
+-  ClutterActor *stage = meta_backend_get_stage (backend);
+-
+   /* Wait until we've done any outstanding queued up work.
+    * Though we add this as BEFORE_REDRAW, the iteration that runs the
+    * BEFORE_REDRAW idles will proceed on and do the redraw, so we're
+@@ -130,8 +128,6 @@ test_case_dispatch (TestCase *test,
+                   test_case_loop_quit,
+                   test,
+                   NULL);
+-
+-  clutter_stage_schedule_update (CLUTTER_STAGE (stage));
+   g_main_loop_run (test->loop);
+ 
+   return TRUE;
+@@ -443,7 +439,7 @@ parse_window_size (MetaWindow *window,
+   MetaRectangle logical_monitor_layout;
+   int value;
+ 
+-  logical_monitor = meta_window_find_monitor_from_frame_rect (window);
++  logical_monitor = meta_window_calculate_main_logical_monitor (window);
+   g_assert_nonnull (logical_monitor);
+ 
+   logical_monitor_layout = meta_logical_monitor_get_layout (logical_monitor);
+@@ -638,24 +634,6 @@ test_case_do (TestCase *test,
+       if (!show_async)
+         meta_test_client_wait_for_window_shown (client, window);
+     }
+-  else if (strcmp (argv[0], "sync_shown") == 0)
+-    {
+-      MetaWindow *window;
+-      MetaTestClient *client;
+-      const char *window_id;
+-
+-      if (argc != 2)
+-        BAD_COMMAND("usage: %s <client-id>/<window-id>", argv[0]);
+-
+-      if (!test_case_parse_window_id (test, argv[1], &client, &window_id, error))
+-        return FALSE;
+-
+-      window = meta_test_client_find_window (client, window_id, error);
+-      if (!window)
+-        return FALSE;
+-
+-      meta_test_client_wait_for_window_shown (client, window);
+-    }
+   else if (strcmp (argv[0], "resize") == 0)
+     {
+       if (argc != 4)
+@@ -1007,29 +985,6 @@ test_case_do (TestCase *test,
+       if (!meta_test_client_do (client, error, argv[0], argv[2], argv[3], NULL))
+         return FALSE;
+     }
+-  else if (strcmp (argv[0], "resize_monitor") == 0)
+-    {
+-      MetaBackend *backend = meta_context_get_backend (test->context);
+-      MetaMonitorManager *monitor_manager =
+-        meta_backend_get_monitor_manager (backend);
+-      MetaCrtcMode *crtc_mode;
+-      const MetaCrtcModeInfo *crtc_mode_info;
+-
+-      if (argc != 4)
+-        BAD_COMMAND ("usage: %s <monitor-id> <width> <height>", argv[0]);
+-
+-      if (strcmp (argv[1], "0") != 0 &&
+-          strcmp (argv[1], "primary") != 0)
+-        BAD_COMMAND ("Unknown monitor %s", argv[1]);
+-
+-      crtc_mode = meta_virtual_monitor_get_crtc_mode (test->virtual_monitor);
+-      crtc_mode_info = meta_crtc_mode_get_info (crtc_mode);
+-      meta_virtual_monitor_set_mode (test->virtual_monitor,
+-                                     atoi (argv[2]),
+-                                     atoi (argv[3]),
+-                                     crtc_mode_info->refresh_rate);
+-      meta_monitor_manager_reload (monitor_manager);
+-    }
+   else
+     {
+       BAD_COMMAND("Unknown command %s", argv[0]);
+@@ -1076,7 +1031,6 @@ test_case_destroy (TestCase *test,
+     meta_x11_display_set_alarm_filter (display->x11_display, NULL, NULL);
+ 
+   g_hash_table_destroy (test->clients);
+-  g_object_unref (test->virtual_monitor);
+   g_free (test);
+ 
+   return TRUE;
+@@ -1211,7 +1165,6 @@ run_tests (MetaContext  *context,
+         success = FALSE;
+     }
+ 
+-
+   return success ? 0 : 1;
+ }
+ 
+@@ -1290,7 +1243,7 @@ main (int argc, char **argv)
+   GPtrArray *tests;
+   RunTestsInfo info;
+ 
+-  context = meta_create_test_context (META_CONTEXT_TEST_TYPE_HEADLESS,
++  context = meta_create_test_context (META_CONTEXT_TEST_TYPE_NESTED,
+                                       META_CONTEXT_TEST_FLAG_TEST_CLIENT);
+ 
+   meta_context_add_option_entries (context, options, NULL);
+diff --git a/src/wayland/meta-wayland-actor-surface.c b/src/wayland/meta-wayland-actor-surface.c
+index 1230f6cf0..096b46aa2 100644
+--- a/src/wayland/meta-wayland-actor-surface.c
++++ b/src/wayland/meta-wayland-actor-surface.c
+@@ -307,7 +307,8 @@ meta_wayland_actor_surface_apply_state (MetaWaylandSurfaceRole  *surface_role,
+       MetaBackend *backend = meta_get_backend ();
+       ClutterActor *stage = meta_backend_get_stage (backend);
+ 
+-      clutter_stage_schedule_update (CLUTTER_STAGE (stage));
++      clutter_stage_schedule_actor_update (CLUTTER_STAGE (stage),
++                                           CLUTTER_ACTOR (priv->actor));
+     }
+ 
+   meta_wayland_actor_surface_queue_frame_callbacks (actor_surface, pending);
+@@ -321,29 +322,42 @@ meta_wayland_actor_surface_is_on_logical_monitor (MetaWaylandSurfaceRole *surfac
+ {
+   MetaWaylandActorSurfacePrivate *priv =
+     meta_wayland_actor_surface_get_instance_private (META_WAYLAND_ACTOR_SURFACE (surface_role));
+-  MetaBackend *backend = meta_get_backend ();
+-  MetaRenderer *renderer = meta_backend_get_renderer (backend);
+   ClutterActor *actor = CLUTTER_ACTOR (priv->actor);
++  float x, y, width, height;
++  cairo_rectangle_int_t actor_rect;
++  cairo_region_t *region;
+   MetaRectangle logical_monitor_layout;
+-  GList *l;
++  gboolean is_on_monitor;
+ 
+-  logical_monitor_layout = meta_logical_monitor_get_layout (logical_monitor);
++  if (!clutter_actor_is_mapped (actor) &&
++      !clutter_actor_has_mapped_clones (actor))
++    return FALSE;
+ 
+-  for (l = meta_renderer_get_views (renderer); l; l = l->next)
+-    {
+-      ClutterStageView *stage_view = l->data;
+-      MetaRectangle view_layout;
++  clutter_actor_get_transformed_position (actor, &x, &y);
++  clutter_actor_get_transformed_size (actor, &width, &height);
+ 
+-      clutter_stage_view_get_layout (stage_view, &view_layout);
++  actor_rect.x = (int) roundf (x);
++  actor_rect.y = (int) roundf (y);
++  actor_rect.width = (int) roundf (x + width) - actor_rect.x;
++  actor_rect.height = (int) roundf (y + height) - actor_rect.y;
+ 
+-      if (meta_rectangle_overlap (&logical_monitor_layout,
+-                                  &view_layout) &&
+-          clutter_actor_is_effectively_on_stage_view (CLUTTER_ACTOR (actor),
+-                                                      stage_view))
+-        return TRUE;
+-    }
++  /* Calculate the scaled surface actor region. */
++  region = cairo_region_create_rectangle (&actor_rect);
++
++  logical_monitor_layout = meta_logical_monitor_get_layout (logical_monitor);
++
++  cairo_region_intersect_rectangle (region,
++				    &((cairo_rectangle_int_t) {
++				      .x = logical_monitor_layout.x,
++				      .y = logical_monitor_layout.y,
++				      .width = logical_monitor_layout.width,
++				      .height = logical_monitor_layout.height,
++				    }));
++
++  is_on_monitor = !cairo_region_is_empty (region);
++  cairo_region_destroy (region);
+ 
+-  return FALSE;
++  return is_on_monitor;
+ }
+ 
+ static void
+diff --git a/src/wayland/meta-wayland-dma-buf.c b/src/wayland/meta-wayland-dma-buf.c
+index 9b708abd3..6af20cd01 100644
+--- a/src/wayland/meta-wayland-dma-buf.c
++++ b/src/wayland/meta-wayland-dma-buf.c
+@@ -1024,7 +1024,7 @@ ensure_scanout_tranche (MetaWaylandDmaBufSurfaceFeedback *surface_feedback,
+           if (format.drm_modifier != DRM_FORMAT_MOD_INVALID)
+             continue;
+ 
+-          if (!meta_crtc_kms_supports_format (crtc_kms, format.drm_format))
++          if (!meta_crtc_kms_get_modifiers (crtc_kms, format.drm_format))
+             continue;
+ 
+           g_array_append_val (formats, format);
+@@ -1104,8 +1104,6 @@ surface_feedback_surface_destroyed_cb (gpointer user_data)
+                   NULL);
+   g_list_free (surface_feedback->resources);
+ 
+-  meta_wayland_dma_buf_feedback_free (surface_feedback->feedback);
+-
+   g_free (surface_feedback);
+ }
+ 
+diff --git a/src/wayland/meta-wayland-subsurface.c b/src/wayland/meta-wayland-subsurface.c
+index 92490332f..1e9b65528 100644
+--- a/src/wayland/meta-wayland-subsurface.c
++++ b/src/wayland/meta-wayland-subsurface.c
+@@ -292,16 +292,31 @@ meta_wayland_subsurface_class_init (MetaWaylandSubsurfaceClass *klass)
+     meta_wayland_subsurface_sync_actor_state;
+ }
+ 
++static void
++unparent_actor (MetaWaylandSurface *surface)
++{
++  ClutterActor *actor;
++  ClutterActor *parent_actor;
++
++  actor = CLUTTER_ACTOR (meta_wayland_surface_get_actor (surface));
++  if (!actor)
++    return;
++
++  parent_actor = clutter_actor_get_parent (actor);
++  if (parent_actor)
++    clutter_actor_remove_child (parent_actor, actor);
++}
++
+ static void
+ wl_subsurface_destructor (struct wl_resource *resource)
+ {
+   MetaWaylandSurface *surface = wl_resource_get_user_data (resource);
+ 
+   g_node_unlink (surface->subsurface_branch_node);
++  unparent_actor (surface);
+ 
+   if (surface->sub.parent)
+     {
+-      meta_wayland_surface_notify_subsurface_state_changed (surface->sub.parent);
+       wl_list_remove (&surface->sub.parent_destroy_listener.link);
+       surface->sub.parent = NULL;
+     }
+diff --git a/src/wayland/meta-window-wayland.c b/src/wayland/meta-window-wayland.c
+index d8ece0bd7..2b389bfbf 100644
+--- a/src/wayland/meta-window-wayland.c
++++ b/src/wayland/meta-window-wayland.c
+@@ -490,17 +490,14 @@ meta_window_wayland_update_main_monitor (MetaWindow                   *window,
+     }
+ 
+   if (window->rect.width == 0 || window->rect.height == 0)
+-    {
+-      window->monitor = meta_window_find_monitor_from_id (window);
+-      return;
+-    }
++    return;
+ 
+   /* Require both the current and the new monitor would be the new main monitor,
+    * even given the resulting scale the window would end up having. This is
+    * needed to avoid jumping back and forth between the new and the old, since
+    * changing main monitor may cause the window to be resized so that it no
+    * longer have that same new main monitor. */
+-  to = meta_window_find_monitor_from_frame_rect (window);
++  to = meta_window_calculate_main_logical_monitor (window);
+ 
+   if (from == to)
+     return;
+diff --git a/src/x11/meta-x11-display.c b/src/x11/meta-x11-display.c
+index 51a7a3b75..9a2f02e9e 100644
+--- a/src/x11/meta-x11-display.c
++++ b/src/x11/meta-x11-display.c
+@@ -1028,7 +1028,6 @@ meta_x11_init_gdk_display (GError **error)
+ {
+   const char *xdisplay_name;
+   GdkDisplay *gdk_display;
+-  const char *gdk_backend_env = NULL;
+   const char *gdk_gl_env = NULL;
+   const char *old_no_at_bridge;
+   Display *xdisplay;
+@@ -1043,10 +1042,6 @@ meta_x11_init_gdk_display (GError **error)
+ 
+   gdk_set_allowed_backends ("x11");
+ 
+-  gdk_backend_env = g_getenv ("GDK_BACKEND");
+-  /* GDK would fail to initialize with e.g. GDK_BACKEND=wayland */
+-  g_unsetenv ("GDK_BACKEND");
+-
+   gdk_gl_env = g_getenv ("GDK_GL");
+   g_setenv ("GDK_GL", "disable", TRUE);
+ 
+@@ -1077,9 +1072,6 @@ meta_x11_init_gdk_display (GError **error)
+       return FALSE;
+     }
+ 
+-  if (gdk_backend_env)
+-    g_setenv("GDK_BACKEND", gdk_backend_env, TRUE);
+-
+   if (gdk_gl_env)
+     g_setenv("GDK_GL", gdk_gl_env, TRUE);
+   else
+diff --git a/src/x11/window-x11.c b/src/x11/window-x11.c
+index 0c528c17a..617a1dfaa 100644
+--- a/src/x11/window-x11.c
++++ b/src/x11/window-x11.c
+@@ -1860,7 +1860,7 @@ static void
+ meta_window_x11_update_main_monitor (MetaWindow                   *window,
+                                      MetaWindowUpdateMonitorFlags  flags)
+ {
+-  window->monitor = meta_window_find_monitor_from_frame_rect (window);
++  window->monitor = meta_window_calculate_main_logical_monitor (window);
+ }
+ 
+ static void
