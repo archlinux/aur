@@ -7,6 +7,7 @@ pkgdesc='a cli system trash manager, alternative to rm and trash-cli'
 url="https://github.com/oberblastmeister/trashy"
 license=('MIT' 'Apache')
 arch=('x86_64' 'aarch64')
+conflicts=('trash-cli')
 depends_x86_64=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
