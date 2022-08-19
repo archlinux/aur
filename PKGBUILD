@@ -4,8 +4,8 @@
 # Contributor: Tom <reztho at archlinux dot org>
 
 pkgname=tuned
-pkgver=2.18.0
-pkgrel=2
+pkgver=2.19.0
+pkgrel=1
 pkgdesc='Daemon that performs monitoring and adaptive configuration of devices in the system'
 arch=('any')
 url="https://github.com/redhat-performance/${pkgname}"
@@ -16,7 +16,7 @@ makedepends=('desktop-file-utils')
 backup=('etc/tuned/active_profile')
 install="${pkgname}.install"
 source=("https://github.com/redhat-performance/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('b00c92cc21fa8595e95aba95042e7f590ea4146328491a655936a811e2590d80')
+sha256sums=('3cb2aeb9ecebd66a1a1c3aaff9589f5c5402201d16f7caa01acf0b9374ed8724')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
@@ -32,8 +32,8 @@ package() {
 	make DESTDIR="${pkgdir}" install
 	rm -r "${pkgdir}"/{run,var}
 
-	python -m compileall -d /usr/lib "$pkgdir/usr/lib"
-	python -O -m compileall -d /usr/lib "$pkgdir/usr/lib"
+	python -m compileall -d /usr/lib "${pkgdir}/usr/lib"
+	python -O -m compileall -d /usr/lib "${pkgdir}/usr/lib"
 
 	install -Dm644 tuned.service "${pkgdir}/usr/lib/systemd/system/"
 }
