@@ -1,15 +1,17 @@
 pkgbase = iortcw-venom-mod
-	pkgdesc = Venom Mod is a general improvement of original Rtcw game, with a new challenging and aggressive AI and some exploitation of features of id tech 3 engine, keeping the original gameplay
-	pkgver = 6.5.6
+	pkgdesc = A general improvement of original RTCW game, with a new challenging and aggressive AI, keeping the original gameplay
+	pkgver = 6.8u
 	pkgrel = 1
 	url = https://www.moddb.com/mods/rtcw-venom-mod
 	arch = any
 	license = CUSTOM
 	makedepends = unzip
+	depends = iortcw
 	depends = iortcw-data
-	noextract = iortcw-venom-mod-6.5.6.zip
-	source = iortcw-venom-mod-6.5.6.zip::https://www.moddb.com/downloads/mirror/173653/119/c90d40bdbeea743b5f31f401391f3ce4
-	md5sums = 1eb9a668b79d3d3a675eb57af192e283
+	noextract = iortcw-venom-mod-6.8u.zip
+	source = iortcw-venom-mod-6.8u.zip::moddb://www.moddb.com/downloads/start/173653/all
+	source = iortcw-venom-mod-ita-6.8u.zip::moddb://www.moddb.com/downloads/start/224261/all
+	sha256sums = f353639595dbae36e506547015b18dffcf8e057928f83406afe51af846fcc08d
+	sha256sums = 877a4a19d80deda2e4a05022f1b63ba39c4d6a1c960757bd8a969595be5164ba
 
 pkgname = iortcw-venom-mod
-
