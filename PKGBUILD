@@ -7,10 +7,7 @@ pkgdesc='CLI utility to work with HDR10+ in HEVC files'
 arch=('x86_64')
 url='https://github.com/quietvoid/hdr10plus_tool'
 license=('MIT')
-makedepends=(
-  'git'
-  'cargo'
-)
+makedepends=('git' 'cargo')
 conflicts=('hdr10plus_tool')
 provides=('hdr10plus_tool')
 source=(git+https://github.com/quietvoid/hdr10plus_tool.git)
