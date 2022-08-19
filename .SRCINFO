@@ -1,0 +1,17 @@
+pkgbase = 3bc-lang-git
+	pkgdesc = Low level language, tiny virtual machine that works on computers and microcontrollers. (Friendly Punched cards)
+	pkgver = 0.1.3
+	pkgrel = 1
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL3
+	makedepends = gcc
+	source = 3bc::git+https://github.com/RodrigoDornelles/3bc-lang.git#branch=master
+	md5sums = SKIP
+
+pkgname = 3bc-lang-git
