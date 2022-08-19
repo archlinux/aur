@@ -1,7 +1,7 @@
 # Maintainer: Funami
 pkgname=aegisub-arch1t3cht-git
 pkgver=3.2.2.r801.3b8cc6deb
-pkgrel=1
+pkgrel=2
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=('x86_64')
 url="https://github.com/arch1t3cht/Aegisub"
@@ -14,6 +14,7 @@ depends=('alsa-lib'
          'ffms2'
          'fftw'
          'fontconfig'
+         'hicolor-icon-theme'
          'hunspell'
          'icu'
          'jansson'
