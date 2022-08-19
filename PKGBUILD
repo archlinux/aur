@@ -31,5 +31,5 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}"
   make install
-  install -Dm644 "${srcdir}/s3backer-git/nbdkit-s3backer-plugin.so" "${pkgdir}/usr/lib/nbdkit/plugins/nbdkit-s3backer-plugin.so"
+  install -Dm644 "${srcdir}/${pkgname}/nbdkit-s3backer-plugin.so" "${pkgdir}/usr/lib/nbdkit/plugins/nbdkit-s3backer-plugin.so"
 }
