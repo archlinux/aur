@@ -1,0 +1,18 @@
+pkgbase = re2g-git
+	pkgdesc = A grep-alike built on re2 pcre-like fast regexp library.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/akamai/re2g
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = re2
+	source = re2g::git+https://github.com/akamai/re2g
+	source = 0001_ondrik-re2g-0d906520.patch
+	source = 0002_fix-makefile.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = re2g-git

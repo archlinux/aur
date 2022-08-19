@@ -1,0 +1,67 @@
+From 0d906520c53343c2285a65351ec7d08e79f8fbe3 Mon Sep 17 00:00:00 2001
+From: Ondra Lengal <ondra.lengal@gmail.com>
+Date: Thu, 31 Oct 2019 17:12:20 +0100
+Subject: [PATCH] :bug: Bugfix (could not compile)
+
+Changing RE2::RE2 to re2::RE2 (probably change in RE2 not reflected in newer versions).
+---
+ Makefile    | 2 +-
+ src/re2g.cc | 8 ++++----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 78e47a3..1212486 100644
+--- a/Makefile
++++ b/Makefile
+@@ -8,7 +8,7 @@ PREFIX?=/usr/local
+ BINDIR?=$(PREFIX)/bin
+ INSTALL?=install
+ CXX?=g++
+-CXXFLAGS?=-I$(src) -I$(build) -L$(build) -Wall $(RE2_INC) $(RE2_LIB)
++CXXFLAGS?=-std=c++11 -I$(src) -I$(build) -L$(build) -Wall $(RE2_INC) $(RE2_LIB)
+ LDFLAGS?=-lre2 -pthread
+ 
+ xargp=$(shell echo J|xargs -J% echo % 2>/dev/null|| echo I)
+diff --git a/src/re2g.cc b/src/re2g.cc
+index 9daa155..40b0701 100644
+--- a/src/re2g.cc
++++ b/src/re2g.cc
+@@ -573,7 +573,7 @@ int main(int argc, const char **argv) {
+     opts.set_posix_syntax(true);
+   }
+ 
+-  std::deque<RE2::RE2*> pats;
++  std::deque<re2::RE2*> pats;
+ 
+   while (!pat_files.empty()) {
+     std::ifstream patf(pat_files.front().c_str());
+@@ -595,7 +595,7 @@ int main(int argc, const char **argv) {
+   }
+ 
+   while (!pat_strs.empty()) {
+-    pats.push_back(new RE2::RE2(pat_strs.front(), opts));
++    pats.push_back(new re2::RE2(pat_strs.front(), opts));
+     pat_strs.pop_front();
+   }
+ 
+@@ -657,7 +657,7 @@ int main(int argc, const char **argv) {
+   const char **uargv = NULL;
+   std::size_t uargc = uargs.size();
+   std::size_t rargc = 0;
+-  RE2::RE2 uarg_pat("\\{\\}");
++  re2::RE2 uarg_pat("\\{\\}");
+   if (!uargs.empty()) {
+     uargv = new const char*[uargc + 1];
+     uargv[uargc] = NULL;
+@@ -765,7 +765,7 @@ int main(int argc, const char **argv) {
+           std::string obuf;
+           std::size_t num_pats_matched = 0;
+           obuf.clear();
+-          for (std::deque<RE2::RE2*>::iterator pat = pats.begin();
++          for (std::deque<re2::RE2*>::iterator pat = pats.begin();
+               pat != pats.end();
+               ++pat) {
+             bool this_pat_matched = false;
+-- 
+2.37.1
+
