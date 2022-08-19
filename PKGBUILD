@@ -12,7 +12,7 @@ _pkgmajorver=2019
 _pkgminorver=6
 pkgname=tbb2019
 pkgver=${_pkgmajorver}.${_pkgminorver}
-pkgrel=1
+pkgrel=2
 pkgdesc='High level abstract threading library'
 arch=('x86_64')
 url='https://www.threadingbuildingblocks.org/'
@@ -36,7 +36,9 @@ package() {
   cp -a include/tbb "$pkgdir"/usr/include
   cmake \
     -DINSTALL_DIR="$pkgdir"/usr/lib/cmake/TBB \
-    -DSYSTEM_NAME=Linux -DTBB_VERSION_FILE="$pkgdir"/usr/include/tbb/tbb_stddef.h \
+    -DSYSTEM_NAME=Linux \
+    -DTBB_ENABLE_IPO=OFF \
+    -DTBB_VERSION_FILE="$pkgdir"/usr/include/tbb/tbb_stddef.h \
     -P cmake/tbb_config_installer.cmake
 }
 
