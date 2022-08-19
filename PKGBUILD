@@ -2,7 +2,7 @@
 
 pkgname=python-types-requests
 _name=${pkgname#python-}
-pkgver=2.28.8
+pkgver=2.28.9
 pkgrel=1
 pkgdesc="Typing stubs for requests"
 arch=('any')
