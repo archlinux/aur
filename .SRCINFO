@@ -1,0 +1,19 @@
+pkgbase = python-bmi160-i2c
+	pkgdesc = An I2C driver library to use the BMI160 sensor (acclerometer/gyro)
+	pkgver = 0.6
+	pkgrel = 00
+	url = https://github.com/lefuturiste/BMI160-i2c
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	depends = python-smbus2
+	noextract = BMI160_i2c-0.6-py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/69/3e/f23bb307632a72163554cc2c2786251be01b01e0a4f162d4dffb581233c7/BMI160_i2c-0.6-py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 2ba1c948ffa81cbc56a242788d666efd
+	md5sums = b4d0dfcad8a111f65190f20e3b3e5911
+
+pkgname = python-bmi160-i2c
