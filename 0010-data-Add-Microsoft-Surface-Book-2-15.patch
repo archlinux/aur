@@ -1,4 +1,4 @@
-From 8dd1032c390c7ff433be285b210c342d731b57e8 Mon Sep 17 00:00:00 2001
+From 7e9ec922e91ccc194dca364bf348a99608103e23 Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Tue, 18 Aug 2020 20:20:13 +0200
 Subject: [PATCH 10/12] data: Add Microsoft Surface Book 2 (15")
@@ -29,5 +29,5 @@ index 0000000..ad98cc7
 +Touch=true
 +Buttons=0
 -- 
-2.36.1
+2.37.2
 
