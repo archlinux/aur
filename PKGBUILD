@@ -19,6 +19,7 @@ DLAGENTS+=("moddb::${BASH_SOURCE[0]%/*}/moddb-downloader.sh %u %o")
 
 source=("${pkgname}-${pkgver}.zip::moddb://www.moddb.com/downloads/start/${_mainid}/all"
   "${pkgname}-ita-${pkgver}.zip::moddb://www.moddb.com/downloads/start/${_itaid}/all"
+  moddb-downloader.sh
 )
 _itapath="/opt/iortcw/italian"
 _moditapath="/opt/iortcw/venom-mod-italian"
@@ -74,4 +75,5 @@ package() {
 }
 
 sha256sums=('f353639595dbae36e506547015b18dffcf8e057928f83406afe51af846fcc08d'
-            '877a4a19d80deda2e4a05022f1b63ba39c4d6a1c960757bd8a969595be5164ba')
+            '877a4a19d80deda2e4a05022f1b63ba39c4d6a1c960757bd8a969595be5164ba'
+            '6482482e637d38ce6eff6ab740f971f86b7e0d205797b2c5044aecfcf5701364')
