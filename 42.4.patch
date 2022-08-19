@@ -1,8 +1,28 @@
+Index: meson.build
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/meson.build b/meson.build
+--- a/meson.build	(revision cd52c57bc65a25363a25ee575b0c9d1d4e471ba8)
++++ b/meson.build	(revision 80fbd6945ee70f82cc9a18ddc76267fb3157fb6a)
+@@ -427,6 +427,7 @@
+     '-Werror=pointer-to-int-cast',
+     '-Werror=empty-body',
+     '-Werror=write-strings',
++    '-Werror=strict-aliasing',
+     '-Wno-sign-compare',
+     '-Wno-cast-function-type',
+     '-Wno-unused-parameter',
+Index: clutter/clutter/clutter-frame-clock.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
 diff --git a/clutter/clutter/clutter-frame-clock.c b/clutter/clutter/clutter-frame-clock.c
-index 6fa2b2588..a28a09e37 100644
---- a/clutter/clutter/clutter-frame-clock.c
-+++ b/clutter/clutter/clutter-frame-clock.c
-@@ -47,6 +47,8 @@ typedef struct _EstimateQueue
+--- a/clutter/clutter/clutter-frame-clock.c	(revision 9c177490316ab3b6b522e108383130f976ea6b2d)
++++ b/clutter/clutter/clutter-frame-clock.c	(revision 987ecd15f89297437f181e9cc7528fe45a44baf2)
+@@ -47,6 +47,8 @@
  
  #define SYNC_DELAY_FALLBACK_FRACTION 0.875
  
@@ -11,7 +31,7 @@ index 6fa2b2588..a28a09e37 100644
  typedef struct _ClutterFrameListener
  {
    const ClutterFrameListenerIface *iface;
-@@ -64,6 +66,7 @@ typedef enum _ClutterFrameClockState
+@@ -64,6 +66,7 @@
  {
    CLUTTER_FRAME_CLOCK_STATE_INIT,
    CLUTTER_FRAME_CLOCK_STATE_IDLE,
@@ -19,7 +39,7 @@ index 6fa2b2588..a28a09e37 100644
    CLUTTER_FRAME_CLOCK_STATE_SCHEDULED,
    CLUTTER_FRAME_CLOCK_STATE_DISPATCHING,
    CLUTTER_FRAME_CLOCK_STATE_PENDING_PRESENTED,
-@@ -75,6 +78,8 @@ struct _ClutterFrameClock
+@@ -75,6 +78,8 @@
  
    float refresh_rate;
    int64_t refresh_interval_us;
@@ -28,7 +48,7 @@ index 6fa2b2588..a28a09e37 100644
    ClutterFrameListener listener;
  
    GSource *source;
-@@ -82,6 +87,8 @@ struct _ClutterFrameClock
+@@ -82,6 +87,8 @@
    int64_t frame_count;
  
    ClutterFrameClockState state;
@@ -37,7 +57,7 @@ index 6fa2b2588..a28a09e37 100644
    int64_t last_dispatch_time_us;
    int64_t last_dispatch_lateness_us;
    int64_t last_presentation_time_us;
-@@ -270,7 +277,8 @@ clutter_frame_clock_notify_presented (ClutterFrameClock *frame_clock,
+@@ -270,7 +277,8 @@
      }
  #endif
  
@@ -47,7 +67,7 @@ index 6fa2b2588..a28a09e37 100644
  
    frame_clock->got_measurements_last_frame = FALSE;
  
-@@ -314,6 +322,7 @@ clutter_frame_clock_notify_presented (ClutterFrameClock *frame_clock,
+@@ -314,6 +322,7 @@
      {
      case CLUTTER_FRAME_CLOCK_STATE_INIT:
      case CLUTTER_FRAME_CLOCK_STATE_IDLE:
@@ -55,7 +75,7 @@ index 6fa2b2588..a28a09e37 100644
      case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
        g_warn_if_reached ();
        break;
-@@ -334,6 +343,7 @@ clutter_frame_clock_notify_ready (ClutterFrameClock *frame_clock)
+@@ -334,6 +343,7 @@
      {
      case CLUTTER_FRAME_CLOCK_STATE_INIT:
      case CLUTTER_FRAME_CLOCK_STATE_IDLE:
@@ -63,7 +83,7 @@ index 6fa2b2588..a28a09e37 100644
      case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
        g_warn_if_reached ();
        break;
-@@ -406,8 +416,6 @@ calculate_next_update_time_us (ClutterFrameClock *frame_clock,
+@@ -406,8 +416,6 @@
    int64_t refresh_interval_us;
    int64_t min_render_time_allowed_us;
    int64_t max_render_time_allowed_us;
@@ -72,7 +92,7 @@ index 6fa2b2588..a28a09e37 100644
    int64_t next_presentation_time_us;
    int64_t next_update_time_us;
  
-@@ -509,28 +517,30 @@ calculate_next_update_time_us (ClutterFrameClock *frame_clock,
+@@ -509,28 +517,30 @@
          refresh_interval_us;
      }
  
@@ -95,10 +115,11 @@ index 6fa2b2588..a28a09e37 100644
 -    next_presentation_time_us - last_next_presentation_time_us;
 -  if (frame_clock->is_next_presentation_time_valid &&
 -      time_since_last_next_presentation_time_us < (refresh_interval_us / 2))
-+  if (frame_clock->is_next_presentation_time_valid)
-     {
+-    {
 -      next_presentation_time_us =
 -        frame_clock->next_presentation_time_us + refresh_interval_us;
++  if (frame_clock->is_next_presentation_time_valid)
++    {
 +      int64_t time_since_last_next_presentation_time_us =
 +        next_presentation_time_us - frame_clock->next_presentation_time_us;
 +
@@ -124,7 +145,7 @@ index 6fa2b2588..a28a09e37 100644
      }
  
    while (next_presentation_time_us < now_us + min_render_time_allowed_us)
-@@ -542,6 +552,39 @@ calculate_next_update_time_us (ClutterFrameClock *frame_clock,
+@@ -542,6 +552,39 @@
    *out_next_presentation_time_us = next_presentation_time_us;
  }
  
@@ -164,7 +185,7 @@ index 6fa2b2588..a28a09e37 100644
  void
  clutter_frame_clock_inhibit (ClutterFrameClock *frame_clock)
  {
-@@ -554,6 +597,7 @@ clutter_frame_clock_inhibit (ClutterFrameClock *frame_clock)
+@@ -554,6 +597,7 @@
          case CLUTTER_FRAME_CLOCK_STATE_INIT:
          case CLUTTER_FRAME_CLOCK_STATE_IDLE:
            break;
@@ -172,7 +193,7 @@ index 6fa2b2588..a28a09e37 100644
          case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
            frame_clock->pending_reschedule = TRUE;
            frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_IDLE;
-@@ -594,6 +638,7 @@ clutter_frame_clock_schedule_update_now (ClutterFrameClock *frame_clock)
+@@ -594,6 +638,7 @@
      {
      case CLUTTER_FRAME_CLOCK_STATE_INIT:
      case CLUTTER_FRAME_CLOCK_STATE_IDLE:
@@ -180,36 +201,33 @@ index 6fa2b2588..a28a09e37 100644
        next_update_time_us = g_get_monotonic_time ();
        break;
      case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
-@@ -627,14 +672,12 @@ clutter_frame_clock_schedule_update (ClutterFrameClock *frame_clock)
+@@ -627,26 +672,68 @@
      {
      case CLUTTER_FRAME_CLOCK_STATE_INIT:
        next_update_time_us = g_get_monotonic_time ();
--      break;
 +      g_source_set_ready_time (frame_clock->source, next_update_time_us);
 +      frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_SCHEDULED;
 +      return;
-     case CLUTTER_FRAME_CLOCK_STATE_IDLE:
--      calculate_next_update_time_us (frame_clock,
--                                     &next_update_time_us,
--                                     &frame_clock->next_presentation_time_us);
--      frame_clock->is_next_presentation_time_valid =
--        (frame_clock->next_presentation_time_us != 0);
++    case CLUTTER_FRAME_CLOCK_STATE_IDLE:
        break;
+-    case CLUTTER_FRAME_CLOCK_STATE_IDLE:
 +    case CLUTTER_FRAME_CLOCK_STATE_IDLE_TIMEOUT:
-     case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
-       return;
-     case CLUTTER_FRAME_CLOCK_STATE_DISPATCHING:
-@@ -643,10 +686,54 @@ clutter_frame_clock_schedule_update (ClutterFrameClock *frame_clock)
-       return;
-     }
- 
++    case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
++      return;
++    case CLUTTER_FRAME_CLOCK_STATE_DISPATCHING:
++    case CLUTTER_FRAME_CLOCK_STATE_PENDING_PRESENTED:
++      frame_clock->pending_reschedule = TRUE;
++      return;
++    }
++
 +  switch (frame_clock->mode)
 +    {
 +    case CLUTTER_FRAME_CLOCK_MODE_FIXED:
-+      calculate_next_update_time_us (frame_clock,
-+                                     &next_update_time_us,
-+                                     &frame_clock->next_presentation_time_us);
-+      frame_clock->is_next_presentation_time_valid =
+       calculate_next_update_time_us (frame_clock,
+                                      &next_update_time_us,
+                                      &frame_clock->next_presentation_time_us);
+       frame_clock->is_next_presentation_time_valid =
+-        (frame_clock->next_presentation_time_us != 0);
 +            (frame_clock->next_presentation_time_us != 0);
 +      frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_SCHEDULED;
 +      break;
@@ -218,13 +236,14 @@ index 6fa2b2588..a28a09e37 100644
 +                                      &next_update_time_us);
 +      frame_clock->is_next_presentation_time_valid = FALSE;
 +      frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_IDLE_TIMEOUT;
-+      break;
+       break;
+-    case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
+-      return;
 +    }
 +
-   g_warn_if_fail (next_update_time_us != -1);
- 
-   g_source_set_ready_time (frame_clock->source, next_update_time_us);
--  frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_SCHEDULED;
++  g_warn_if_fail (next_update_time_us != -1);
++
++  g_source_set_ready_time (frame_clock->source, next_update_time_us);
 +}
 +
 +void
@@ -246,16 +265,22 @@ index 6fa2b2588..a28a09e37 100644
 +      frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_IDLE;
 +      frame_clock->pending_reschedule = TRUE;
 +      break;
-+    case CLUTTER_FRAME_CLOCK_STATE_DISPATCHING:
-+    case CLUTTER_FRAME_CLOCK_STATE_PENDING_PRESENTED:
+     case CLUTTER_FRAME_CLOCK_STATE_DISPATCHING:
+     case CLUTTER_FRAME_CLOCK_STATE_PENDING_PRESENTED:
+-      frame_clock->pending_reschedule = TRUE;
+-      return;
 +      break;
-+    }
-+
+     }
+ 
+-  g_warn_if_fail (next_update_time_us != -1);
+-
+-  g_source_set_ready_time (frame_clock->source, next_update_time_us);
+-  frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_SCHEDULED;
 +  maybe_reschedule_update (frame_clock);
  }
  
  static void
-@@ -710,6 +797,7 @@ clutter_frame_clock_dispatch (ClutterFrameClock *frame_clock,
+@@ -710,6 +797,7 @@
        g_warn_if_reached ();
        break;
      case CLUTTER_FRAME_CLOCK_STATE_IDLE:
@@ -263,7 +288,7 @@ index 6fa2b2588..a28a09e37 100644
      case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
        break;
      case CLUTTER_FRAME_CLOCK_STATE_DISPATCHING:
-@@ -850,6 +938,10 @@ clutter_frame_clock_new (float                            refresh_rate,
+@@ -850,6 +938,10 @@
    init_frame_clock_source (frame_clock);
  
    clutter_frame_clock_set_refresh_rate (frame_clock, refresh_rate);
@@ -274,7 +299,7 @@ index 6fa2b2588..a28a09e37 100644
    frame_clock->vblank_duration_us = vblank_duration_us;
  
    return frame_clock;
-@@ -881,6 +973,7 @@ static void
+@@ -881,6 +973,7 @@
  clutter_frame_clock_init (ClutterFrameClock *frame_clock)
  {
    frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_INIT;
@@ -282,39 +307,78 @@ index 6fa2b2588..a28a09e37 100644
  }
  
  static void
-diff --git a/clutter/clutter/clutter-frame-clock.h b/clutter/clutter/clutter-frame-clock.h
-index 91e6b3a13..380f56c6b 100644
---- a/clutter/clutter/clutter-frame-clock.h
-+++ b/clutter/clutter/clutter-frame-clock.h
-@@ -53,6 +53,12 @@ typedef struct _ClutterFrameListenerIface
-                                 gpointer           user_data);
- } ClutterFrameListenerIface;
+Index: src/compositor/meta-surface-actor.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/compositor/meta-surface-actor.c b/src/compositor/meta-surface-actor.c
+--- a/src/compositor/meta-surface-actor.c	(revision 52c0b2de5e326e99465de0f892fce9ca87ee7f62)
++++ b/src/compositor/meta-surface-actor.c	(revision a53f9ddda70ad261d659a124fd9fc1c07c19f9c0)
+@@ -51,6 +51,7 @@
+ {
+   REPAINT_SCHEDULED,
+   SIZE_CHANGED,
++  FROZEN,
  
-+typedef enum _ClutterFrameClockMode
+   LAST_SIGNAL,
+ };
+@@ -269,6 +270,13 @@
+                                         0,
+                                         NULL, NULL, NULL,
+                                         G_TYPE_NONE, 0);
++
++  signals[FROZEN] = g_signal_new ("frozen",
++                                  G_TYPE_FROM_CLASS (object_class),
++                                  G_SIGNAL_RUN_LAST,
++                                  0,
++                                  NULL, NULL, NULL,
++                                  G_TYPE_NONE, 0);
+ }
+ 
+ gboolean
+@@ -513,6 +521,22 @@
+                                                       stage_view);
+ }
+ 
++gboolean
++meta_surface_actor_contains_rect (MetaSurfaceActor *surface_actor,
++                                  MetaRectangle    *rect)
 +{
-+  CLUTTER_FRAME_CLOCK_MODE_FIXED,
-+  CLUTTER_FRAME_CLOCK_MODE_VARIABLE,
-+} ClutterFrameClockMode;
++  ClutterActor *actor = CLUTTER_ACTOR (surface_actor);
++  graphene_rect_t bounding_rect;
++  graphene_rect_t bound_rect;
 +
- CLUTTER_EXPORT
- ClutterFrameClock * clutter_frame_clock_new (float                            refresh_rate,
-                                              int64_t                          vblank_duration_us,
-@@ -62,6 +68,10 @@ ClutterFrameClock * clutter_frame_clock_new (float                            re
- CLUTTER_EXPORT
- void clutter_frame_clock_destroy (ClutterFrameClock *frame_clock);
++  clutter_actor_get_transformed_extents (actor, &bounding_rect);
++
++  _clutter_util_rect_from_rectangle (rect, &bound_rect);
++
++  return graphene_rect_contains_rect (&bounding_rect,
++                                      &bound_rect);
++}
++
+ void
+ meta_surface_actor_set_input_region (MetaSurfaceActor *self,
+                                      cairo_region_t   *region)
+@@ -594,6 +618,9 @@
  
-+CLUTTER_EXPORT
-+void clutter_frame_clock_set_mode (ClutterFrameClock     *frame_clock,
-+                                   ClutterFrameClockMode  mode);
+   priv->frozen = frozen;
+ 
++  if (frozen)
++    g_signal_emit (self, signals[FROZEN], 0);
 +
- CLUTTER_EXPORT
- void clutter_frame_clock_notify_presented (ClutterFrameClock *frame_clock,
-                                            ClutterFrameInfo  *frame_info);
+   if (!frozen && priv->pending_damage)
+     {
+       int i, n_rects = cairo_region_num_rectangles (priv->pending_damage);
+Index: clutter/clutter/clutter-stage-view-private.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
 diff --git a/clutter/clutter/clutter-stage-view-private.h b/clutter/clutter/clutter-stage-view-private.h
-index 39d8601ea..5c1ce9645 100644
---- a/clutter/clutter/clutter-stage-view-private.h
-+++ b/clutter/clutter/clutter-stage-view-private.h
-@@ -72,6 +72,10 @@ void clutter_stage_view_transform_rect_to_onscreen (ClutterStageView
+--- a/clutter/clutter/clutter-stage-view-private.h	(revision 77f36bf28a5da2a504284cd1a6c2a1486eb02a5b)
++++ b/clutter/clutter/clutter-stage-view-private.h	(revision 9e6bc2763a4160fb8269dfcc51716de27fc75ec3)
+@@ -72,6 +72,10 @@
  CLUTTER_EXPORT
  void clutter_stage_view_schedule_update (ClutterStageView *view);
  
@@ -325,11 +389,15 @@ index 39d8601ea..5c1ce9645 100644
  CLUTTER_EXPORT
  void clutter_stage_view_notify_presented (ClutterStageView *view,
                                            ClutterFrameInfo *frame_info);
+Index: clutter/clutter/clutter-stage-view.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
 diff --git a/clutter/clutter/clutter-stage-view.c b/clutter/clutter/clutter-stage-view.c
-index 2e47237f0..55d4368bc 100644
---- a/clutter/clutter/clutter-stage-view.c
-+++ b/clutter/clutter/clutter-stage-view.c
-@@ -1047,6 +1047,22 @@ clutter_stage_view_schedule_update (ClutterStageView *view)
+--- a/clutter/clutter/clutter-stage-view.c	(revision 77f36bf28a5da2a504284cd1a6c2a1486eb02a5b)
++++ b/clutter/clutter/clutter-stage-view.c	(revision 9e6bc2763a4160fb8269dfcc51716de27fc75ec3)
+@@ -1047,6 +1047,22 @@
    clutter_frame_clock_schedule_update (priv->frame_clock);
  }
  
@@ -352,7 +420,7 @@ index 2e47237f0..55d4368bc 100644
  float
  clutter_stage_view_get_refresh_rate (ClutterStageView *view)
  {
-@@ -1443,6 +1459,8 @@ clutter_stage_view_class_init (ClutterStageViewClass *klass)
+@@ -1443,6 +1459,8 @@
    object_class->dispose = clutter_stage_view_dispose;
    object_class->finalize = clutter_stage_view_finalize;
  
@@ -361,11 +429,15 @@ index 2e47237f0..55d4368bc 100644
    obj_props[PROP_NAME] =
      g_param_spec_string ("name",
                           "Name",
+Index: clutter/clutter/clutter-stage-view.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
 diff --git a/clutter/clutter/clutter-stage-view.h b/clutter/clutter/clutter-stage-view.h
-index c2cf76abf..0f34cf5b8 100644
---- a/clutter/clutter/clutter-stage-view.h
-+++ b/clutter/clutter/clutter-stage-view.h
-@@ -50,6 +50,9 @@ struct _ClutterStageViewClass
+--- a/clutter/clutter/clutter-stage-view.h	(revision 77f36bf28a5da2a504284cd1a6c2a1486eb02a5b)
++++ b/clutter/clutter/clutter-stage-view.h	(revision 9e6bc2763a4160fb8269dfcc51716de27fc75ec3)
+@@ -50,6 +50,9 @@
                                         int                          dst_width,
                                         int                          dst_height,
                                         cairo_rectangle_int_t       *dst_rect);
@@ -375,11 +447,15 @@ index c2cf76abf..0f34cf5b8 100644
  };
  
  CLUTTER_EXPORT
+Index: clutter/clutter/clutter-stage.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
 diff --git a/clutter/clutter/clutter-stage.c b/clutter/clutter/clutter-stage.c
-index 17186c229..5a0583ca3 100644
---- a/clutter/clutter/clutter-stage.c
-+++ b/clutter/clutter/clutter-stage.c
-@@ -127,8 +127,6 @@ struct _ClutterStagePrivate
+--- a/clutter/clutter/clutter-stage.c	(revision 77f36bf28a5da2a504284cd1a6c2a1486eb02a5b)
++++ b/clutter/clutter/clutter-stage.c	(revision 7091693ad07ea2f554a01a35b7270171eda9d4f9)
+@@ -127,8 +127,6 @@
  
    int update_freeze_count;
  
@@ -388,7 +464,7 @@ index 17186c229..5a0583ca3 100644
    GHashTable *pointer_devices;
    GHashTable *touch_sequences;
  
-@@ -2467,6 +2465,36 @@ clutter_stage_schedule_update (ClutterStage *stage)
+@@ -2467,6 +2465,36 @@
      }
  }
  
@@ -425,7 +501,7 @@ index 17186c229..5a0583ca3 100644
  ClutterPaintVolume *
  _clutter_stage_paint_volume_stack_allocate (ClutterStage *stage)
  {
-@@ -2518,19 +2546,7 @@ clutter_stage_queue_actor_redraw (ClutterStage             *stage,
+@@ -2518,19 +2546,7 @@
    CLUTTER_NOTE (CLIPPING, "stage_queue_actor_redraw (actor=%s, clip=%p): ",
                  _clutter_actor_get_debug_name (actor), clip);
  
@@ -446,7 +522,7 @@ index 17186c229..5a0583ca3 100644
  
    entry = g_hash_table_lookup (priv->pending_queue_redraws, actor);
  
-@@ -2654,11 +2670,6 @@ clutter_stage_maybe_finish_queue_redraws (ClutterStage *stage)
+@@ -2654,11 +2670,6 @@
  
    COGL_TRACE_BEGIN_SCOPED (ClutterStageFinishQueueRedraws, "FinishQueueRedraws");
  
@@ -458,11 +534,15 @@ index 17186c229..5a0583ca3 100644
    g_hash_table_iter_init (&iter, priv->pending_queue_redraws);
    while (g_hash_table_iter_next (&iter, &key, &value))
      {
+Index: clutter/clutter/clutter-stage.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
 diff --git a/clutter/clutter/clutter-stage.h b/clutter/clutter/clutter-stage.h
-index 5412c4d72..a579820a4 100644
---- a/clutter/clutter/clutter-stage.h
-+++ b/clutter/clutter/clutter-stage.h
-@@ -210,6 +210,10 @@ gboolean        clutter_stage_is_redraw_queued_on_view          (ClutterStage
+--- a/clutter/clutter/clutter-stage.h	(revision 77f36bf28a5da2a504284cd1a6c2a1486eb02a5b)
++++ b/clutter/clutter/clutter-stage.h	(revision 9e6bc2763a4160fb8269dfcc51716de27fc75ec3)
+@@ -210,6 +210,10 @@
  CLUTTER_EXPORT
  void clutter_stage_schedule_update (ClutterStage *stage);
  
@@ -473,362 +553,46 @@ index 5412c4d72..a579820a4 100644
  CLUTTER_EXPORT
  gboolean clutter_stage_get_capture_final_size (ClutterStage          *stage,
                                                 cairo_rectangle_int_t *rect,
-diff --git a/data/61-mutter.rules b/data/61-mutter.rules
-index 7c2b96349..37847acab 100644
---- a/data/61-mutter.rules
-+++ b/data/61-mutter.rules
-@@ -1,2 +1,2 @@
--DRIVERS=="i915", SUBSYSTEM=="drm", TAG+="mutter-device-disable-kms-modifiers"
-+DRIVERS=="i915", SUBSYSTEM=="drm", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
- ENV{ID_PATH}=="platform-vkms", TAG+="mutter-device-ignore"
-diff --git a/data/dbus-interfaces/org.gnome.Mutter.DisplayConfig.xml b/data/dbus-interfaces/org.gnome.Mutter.DisplayConfig.xml
-index af7cd6472..2a663b00b 100644
---- a/data/dbus-interfaces/org.gnome.Mutter.DisplayConfig.xml
-+++ b/data/dbus-interfaces/org.gnome.Mutter.DisplayConfig.xml
-@@ -336,6 +336,10 @@
- 	    - "is-underscanning" (b): whether underscanning is enabled
- 				      (absence of this means underscanning
- 				      not being supported)
-+	    - "is-vrr-allowed" (b): whether variable refresh rate is allowed
-+	                            (absence of this means variable refresh
-+	                            rate not being supported)
-+
- 	    - "max-screen-size" (ii): the maximum size a screen may have
- 				      (absence of this means unlimited screen
- 				      size)
-@@ -454,6 +458,9 @@
- 	        - "enable_underscanning" (b): enable monitor underscanning;
- 					      may only be set when underscanning
- 					      is supported (see GetCurrentState).
-+	        - "allow_vrr" (b): allow variable refresh rate; may only be set
-+	                           when variable refresh rate is supported (see
-+	                           GetCurrentState).
+Index: clutter/clutter/clutter-frame-clock.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/clutter/clutter/clutter-frame-clock.h b/clutter/clutter/clutter-frame-clock.h
+--- a/clutter/clutter/clutter-frame-clock.h	(revision bbcd4e22d74c0ef6765e98c9d94f3f1857dbf422)
++++ b/clutter/clutter/clutter-frame-clock.h	(revision 987ecd15f89297437f181e9cc7528fe45a44baf2)
+@@ -53,6 +53,12 @@
+                                 gpointer           user_data);
+ } ClutterFrameListenerIface;
  
- 	@properties may effect the global monitor configuration state. Possible
- 	properties are:
-diff --git a/meson.build b/meson.build
-index 05aeb4609..8925469a6 100644
---- a/meson.build
-+++ b/meson.build
-@@ -427,6 +427,7 @@ if buildtype != 'plain'
-     '-Werror=pointer-to-int-cast',
-     '-Werror=empty-body',
-     '-Werror=write-strings',
-+    '-Werror=strict-aliasing',
-     '-Wno-sign-compare',
-     '-Wno-cast-function-type',
-     '-Wno-unused-parameter',
-diff --git a/src/backends/meta-monitor-config-manager.c b/src/backends/meta-monitor-config-manager.c
-index da3f1dd54..95fd3ad6c 100644
---- a/src/backends/meta-monitor-config-manager.c
-+++ b/src/backends/meta-monitor-config-manager.c
-@@ -286,7 +286,8 @@ assign_monitor_crtc (MetaMonitor         *monitor,
-     .output = output,
-     .is_primary = assign_output_as_primary,
-     .is_presentation = assign_output_as_presentation,
--    .is_underscanning = data->monitor_config->enable_underscanning
-+    .is_underscanning = data->monitor_config->enable_underscanning,
-+    .is_vrr_allowed = data->monitor_config->allow_vrr,
-   };
- 
-   g_ptr_array_add (data->crtc_assignments, crtc_assignment);
-@@ -691,7 +692,8 @@ create_monitor_config (MetaMonitor     *monitor,
-   *monitor_config = (MetaMonitorConfig) {
-     .monitor_spec = meta_monitor_spec_clone (monitor_spec),
-     .mode_spec = g_memdup2 (mode_spec, sizeof (MetaMonitorModeSpec)),
--    .enable_underscanning = meta_monitor_is_underscanning (monitor)
-+    .enable_underscanning = meta_monitor_is_underscanning (monitor),
-+    .allow_vrr = meta_monitor_is_vrr_allowed (monitor),
-   };
- 
-   return monitor_config;
-@@ -953,7 +955,8 @@ clone_monitor_config_list (GList *monitor_configs_in)
-         .monitor_spec = meta_monitor_spec_clone (monitor_config_in->monitor_spec),
-         .mode_spec = g_memdup2 (monitor_config_in->mode_spec,
-                                 sizeof (MetaMonitorModeSpec)),
--        .enable_underscanning = monitor_config_in->enable_underscanning
-+        .enable_underscanning = monitor_config_in->enable_underscanning,
-+        .allow_vrr = monitor_config_in->allow_vrr,
-       };
-       monitor_configs_out =
-         g_list_append (monitor_configs_out, monitor_config_out);
-diff --git a/src/backends/meta-monitor-config-manager.h b/src/backends/meta-monitor-config-manager.h
-index a789e2f08..fdf2db3a7 100644
---- a/src/backends/meta-monitor-config-manager.h
-+++ b/src/backends/meta-monitor-config-manager.h
-@@ -34,6 +34,7 @@ typedef struct _MetaMonitorConfig
-   MetaMonitorSpec *monitor_spec;
-   MetaMonitorModeSpec *mode_spec;
-   gboolean enable_underscanning;
-+  gboolean allow_vrr;
- } MetaMonitorConfig;
- 
- typedef struct _MetaLogicalMonitorConfig
-diff --git a/src/backends/meta-monitor-config-store.c b/src/backends/meta-monitor-config-store.c
-index 5d48ec2ea..bb8c73c7f 100644
---- a/src/backends/meta-monitor-config-store.c
-+++ b/src/backends/meta-monitor-config-store.c
-@@ -167,6 +167,7 @@ typedef enum
-   STATE_MONITOR_MODE_RATE,
-   STATE_MONITOR_MODE_FLAG,
-   STATE_MONITOR_UNDERSCANNING,
-+  STATE_MONITOR_VRR_ALLOWED,
-   STATE_DISABLED,
-   STATE_POLICY,
-   STATE_STORES,
-@@ -451,6 +452,10 @@ handle_start_element (GMarkupParseContext  *context,
-           {
-             parser->state = STATE_MONITOR_UNDERSCANNING;
-           }
-+        else if (g_str_equal (element_name, "vrr-allowed"))
-+          {
-+            parser->state = STATE_MONITOR_VRR_ALLOWED;
-+          }
-         else
-           {
-             g_set_error (error, G_MARKUP_ERROR, G_MARKUP_ERROR_UNKNOWN_ELEMENT,
-@@ -544,6 +549,13 @@ handle_start_element (GMarkupParseContext  *context,
-         return;
-       }
- 
-+    case STATE_MONITOR_VRR_ALLOWED:
-+      {
-+        g_set_error (error, G_MARKUP_ERROR, G_MARKUP_ERROR_UNKNOWN_ELEMENT,
-+                     "Invalid element '%s' under vrr-allowed", element_name);
-+        return;
-+      }
-+
-     case STATE_DISABLED:
-       {
-         if (!g_str_equal (element_name, "monitorspec"))
-@@ -818,6 +830,14 @@ handle_end_element (GMarkupParseContext  *context,
-         return;
-       }
- 
-+    case STATE_MONITOR_VRR_ALLOWED:
-+      {
-+        g_assert (g_str_equal (element_name, "vrr-allowed"));
-+
-+        parser->state = STATE_MONITOR;
-+        return;
-+      }
-+
-     case STATE_MONITOR:
-       {
-         MetaLogicalMonitorConfig *logical_monitor_config;
-@@ -1301,6 +1321,14 @@ handle_text (GMarkupParseContext *context,
-         return;
-       }
- 
-+    case STATE_MONITOR_VRR_ALLOWED:
-+      {
-+        read_bool (text, text_len,
-+                   &parser->current_monitor_config->allow_vrr,
-+                   error);
-+        return;
-+      }
-+
-     case STATE_STORE:
-       {
-         MetaConfigStore store;
-@@ -1476,6 +1504,8 @@ append_monitors (GString *buffer,
-       g_string_append (buffer, "        </mode>\n");
-       if (monitor_config->enable_underscanning)
-         g_string_append (buffer, "        <underscanning>yes</underscanning>\n");
-+      if (monitor_config->allow_vrr)
-+        g_string_append (buffer, "        <vrr-allowed>yes</vrr-allowed>\n");
-       g_string_append (buffer, "      </monitor>\n");
-     }
- }
-diff --git a/src/backends/meta-monitor-manager-private.h b/src/backends/meta-monitor-manager-private.h
-index edf7e4501..19a5e1359 100644
---- a/src/backends/meta-monitor-manager-private.h
-+++ b/src/backends/meta-monitor-manager-private.h
-@@ -102,6 +102,7 @@ struct _MetaOutputAssignment
-   gboolean     is_primary;
-   gboolean     is_presentation;
-   gboolean     is_underscanning;
-+  gboolean     is_vrr_allowed;
- };
- 
- /*
-diff --git a/src/backends/meta-monitor-manager.c b/src/backends/meta-monitor-manager.c
-index be99b4664..5185bfa92 100644
---- a/src/backends/meta-monitor-manager.c
-+++ b/src/backends/meta-monitor-manager.c
-@@ -1977,6 +1977,15 @@ meta_monitor_manager_handle_get_current_state (MetaDBusDisplayConfig *skeleton,
-                                  g_variant_new_boolean (is_underscanning));
-         }
- 
-+      if (meta_monitor_is_vrr_capable (monitor))
-+        {
-+          gboolean vrr_allowed = meta_monitor_is_vrr_allowed (monitor);
-+
-+          g_variant_builder_add (&monitor_properties_builder, "{sv}",
-+                                 "is-vrr-allowed",
-+                                 g_variant_new_boolean (vrr_allowed));
-+        }
-+
-       is_builtin = meta_monitor_is_laptop_panel (monitor);
-       g_variant_builder_add (&monitor_properties_builder, "{sv}",
-                              "is-builtin",
-@@ -2296,6 +2305,8 @@ create_monitor_config_from_variant (MetaMonitorManager *manager,
-   g_autoptr (GVariant) properties_variant = NULL;
-   gboolean enable_underscanning = FALSE;
-   gboolean set_underscanning = FALSE;
-+  gboolean allow_vrr = FALSE;
-+  gboolean set_allow_vrr = FALSE;
- 
-   g_variant_get (monitor_config_variant, "(ss@a{sv})",
-                  &connector,
-@@ -2331,6 +2342,19 @@ create_monitor_config_from_variant (MetaMonitorManager *manager,
-         }
-     }
- 
-+  set_allow_vrr =
-+    g_variant_lookup (properties_variant, "allow_vrr", "b",
-+                      &allow_vrr);
-+  if (set_allow_vrr)
-+    {
-+      if (allow_vrr && !meta_monitor_is_vrr_capable (monitor))
-+        {
-+          g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-+                       "Variable refresh rate requested but unsupported");
-+          return NULL;
-+        }
-+    }
-+
-   monitor_spec = meta_monitor_spec_clone (meta_monitor_get_spec (monitor));
- 
-   monitor_mode_spec = g_new0 (MetaMonitorModeSpec, 1);
-@@ -2340,7 +2364,8 @@ create_monitor_config_from_variant (MetaMonitorManager *manager,
-   *monitor_config = (MetaMonitorConfig) {
-     .monitor_spec = monitor_spec,
-     .mode_spec = monitor_mode_spec,
--    .enable_underscanning = enable_underscanning
-+    .enable_underscanning = enable_underscanning,
-+    .allow_vrr = allow_vrr,
-   };
- 
-   return monitor_config;
-diff --git a/src/backends/meta-monitor.c b/src/backends/meta-monitor.c
-index 46cb05a66..4ccfadb7f 100644
---- a/src/backends/meta-monitor.c
-+++ b/src/backends/meta-monitor.c
-@@ -358,6 +358,25 @@ meta_monitor_is_underscanning (MetaMonitor *monitor)
-   return meta_output_is_underscanning (output);
- }
- 
-+gboolean
-+meta_monitor_is_vrr_capable (MetaMonitor *monitor)
++typedef enum _ClutterFrameClockMode
 +{
-+  const MetaOutputInfo *output_info =
-+    meta_monitor_get_main_output_info (monitor);
++  CLUTTER_FRAME_CLOCK_MODE_FIXED,
++  CLUTTER_FRAME_CLOCK_MODE_VARIABLE,
++} ClutterFrameClockMode;
 +
-+  return output_info->vrr_capable;
-+}
-+
-+gboolean
-+meta_monitor_is_vrr_allowed (MetaMonitor *monitor)
-+{
-+  MetaOutput *output;
-+
-+  output = meta_monitor_get_main_output (monitor);
-+
-+  return meta_output_is_vrr_allowed (output);
-+}
-+
- gboolean
- meta_monitor_is_laptop_panel (MetaMonitor *monitor)
- {
-diff --git a/src/backends/meta-monitor.h b/src/backends/meta-monitor.h
-index 066caa7f4..aaf68ecca 100644
---- a/src/backends/meta-monitor.h
-+++ b/src/backends/meta-monitor.h
-@@ -118,6 +118,10 @@ gboolean meta_monitor_supports_underscanning (MetaMonitor *monitor);
+ CLUTTER_EXPORT
+ ClutterFrameClock * clutter_frame_clock_new (float                            refresh_rate,
+                                              int64_t                          vblank_duration_us,
+@@ -62,6 +68,10 @@
+ CLUTTER_EXPORT
+ void clutter_frame_clock_destroy (ClutterFrameClock *frame_clock);
  
- gboolean meta_monitor_is_underscanning (MetaMonitor *monitor);
- 
-+gboolean meta_monitor_is_vrr_capable (MetaMonitor *monitor);
++CLUTTER_EXPORT
++void clutter_frame_clock_set_mode (ClutterFrameClock     *frame_clock,
++                                   ClutterFrameClockMode  mode);
 +
-+gboolean meta_monitor_is_vrr_allowed (MetaMonitor *monitor);
-+
- gboolean meta_monitor_is_laptop_panel (MetaMonitor *monitor);
- 
- gboolean meta_monitor_is_same_as (MetaMonitor *monitor,
-diff --git a/src/backends/meta-output.c b/src/backends/meta-output.c
-index ed4807507..4dca7981f 100644
---- a/src/backends/meta-output.c
-+++ b/src/backends/meta-output.c
-@@ -55,6 +55,8 @@ typedef struct _MetaOutputPrivate
- 
-   gboolean is_underscanning;
- 
-+  gboolean is_vrr_allowed;
-+
-   int backlight;
- } MetaOutputPrivate;
- 
-@@ -177,6 +179,22 @@ meta_output_is_underscanning (MetaOutput *output)
-   return priv->is_underscanning;
- }
- 
-+gboolean
-+meta_output_is_vrr_capable (MetaOutput *output)
-+{
-+  const MetaOutputInfo *output_info = meta_output_get_info (output);
-+
-+  return output_info->vrr_capable;
-+}
-+
-+gboolean
-+meta_output_is_vrr_allowed (MetaOutput *output)
-+{
-+  MetaOutputPrivate *priv = meta_output_get_instance_private (output);
-+
-+  return priv->is_vrr_allowed;
-+}
-+
- void
- meta_output_set_backlight (MetaOutput *output,
-                            int         backlight)
-@@ -235,6 +253,7 @@ meta_output_assign_crtc (MetaOutput                 *output,
-   priv->is_primary = output_assignment->is_primary;
-   priv->is_presentation = output_assignment->is_presentation;
-   priv->is_underscanning = output_assignment->is_underscanning;
-+  priv->is_vrr_allowed = output_assignment->is_vrr_allowed;
- }
- 
- void
-diff --git a/src/backends/meta-output.h b/src/backends/meta-output.h
-index 6c90d7e69..27b1e32a9 100644
---- a/src/backends/meta-output.h
-+++ b/src/backends/meta-output.h
-@@ -103,6 +103,8 @@ typedef struct _MetaOutputInfo
-   gboolean supports_underscanning;
-   gboolean supports_color_transform;
- 
-+  gboolean vrr_capable;
-+
-   /*
-    * Get a new preferred mode on hotplug events, to handle dynamic guest
-    * resizing.
-@@ -178,6 +180,11 @@ gboolean meta_output_is_presentation (MetaOutput *output);
- META_EXPORT_TEST
- gboolean meta_output_is_underscanning (MetaOutput *output);
- 
-+gboolean meta_output_is_vrr_capable (MetaOutput *output);
-+
-+META_EXPORT_TEST
-+gboolean meta_output_is_vrr_allowed (MetaOutput *output);
-+
- void meta_output_set_backlight (MetaOutput *output,
-                                 int         backlight);
- 
+ CLUTTER_EXPORT
+ void clutter_frame_clock_notify_presented (ClutterFrameClock *frame_clock,
+                                            ClutterFrameInfo  *frame_info);
+Index: src/backends/meta-renderer-view.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
 diff --git a/src/backends/meta-renderer-view.c b/src/backends/meta-renderer-view.c
-index 55617fc68..348ce0fb8 100644
---- a/src/backends/meta-renderer-view.c
-+++ b/src/backends/meta-renderer-view.c
+--- a/src/backends/meta-renderer-view.c	(revision 987ecd15f89297437f181e9cc7528fe45a44baf2)
++++ b/src/backends/meta-renderer-view.c	(revision 41ce95b3db266019c855eadd5e560c9c6ddeb57d)
 @@ -33,6 +33,7 @@
  #include "backends/meta-renderer-view.h"
  
@@ -837,7 +601,7 @@ index 55617fc68..348ce0fb8 100644
  #include "backends/meta-renderer.h"
  #include "clutter/clutter-mutter.h"
  #include "compositor/region-utils.h"
-@@ -43,34 +44,49 @@ enum
+@@ -43,34 +44,49 @@
  
    PROP_TRANSFORM,
    PROP_CRTC,
@@ -895,7 +659,7 @@ index 55617fc68..348ce0fb8 100644
  }
  
  static void
-@@ -78,10 +94,12 @@ meta_renderer_view_get_offscreen_transformation_matrix (ClutterStageView  *view,
+@@ -78,10 +94,12 @@
                                                          graphene_matrix_t *matrix)
  {
    MetaRendererView *renderer_view = META_RENDERER_VIEW (view);
@@ -909,7 +673,7 @@ index 55617fc68..348ce0fb8 100644
      {
      case META_MONITOR_TRANSFORM_NORMAL:
        break;
-@@ -136,10 +154,12 @@ meta_renderer_view_transform_rect_to_onscreen (ClutterStageView            *view
+@@ -136,10 +154,12 @@
                                                 cairo_rectangle_int_t       *dst_rect)
  {
    MetaRendererView *renderer_view = META_RENDERER_VIEW (view);
@@ -923,7 +687,7 @@ index 55617fc68..348ce0fb8 100644
    return meta_rectangle_transform (src_rect,
                                     inverted_transform,
                                     dst_width,
-@@ -151,10 +171,13 @@ static void
+@@ -151,10 +171,13 @@
  meta_renderer_view_set_transform (MetaRendererView     *view,
                                    MetaMonitorTransform  transform)
  {
@@ -939,7 +703,7 @@ index 55617fc68..348ce0fb8 100644
    clutter_stage_view_invalidate_offscreen_blit_pipeline (CLUTTER_STAGE_VIEW (view));
  }
  
-@@ -165,14 +188,19 @@ meta_renderer_view_get_property (GObject    *object,
+@@ -165,14 +188,19 @@
                                   GParamSpec *pspec)
  {
    MetaRendererView *view = META_RENDERER_VIEW (object);
@@ -961,7 +725,7 @@ index 55617fc68..348ce0fb8 100644
        break;
      default:
        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-@@ -187,6 +215,8 @@ meta_renderer_view_set_property (GObject      *object,
+@@ -187,6 +215,8 @@
                                   GParamSpec   *pspec)
  {
    MetaRendererView *view = META_RENDERER_VIEW (object);
@@ -970,7 +734,7 @@ index 55617fc68..348ce0fb8 100644
  
    switch (prop_id)
      {
-@@ -194,7 +224,10 @@ meta_renderer_view_set_property (GObject      *object,
+@@ -194,7 +224,10 @@
        meta_renderer_view_set_transform (view, g_value_get_uint (value));
        break;
      case PROP_CRTC:
@@ -982,10 +746,11 @@ index 55617fc68..348ce0fb8 100644
        break;
      default:
        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-@@ -243,5 +276,14 @@ meta_renderer_view_class_init (MetaRendererViewClass *klass)
+@@ -242,6 +275,15 @@
+                          G_PARAM_READWRITE |
                           G_PARAM_CONSTRUCT_ONLY |
                           G_PARAM_STATIC_STRINGS);
- 
++
 +  obj_props[PROP_OUTPUT] =
 +    g_param_spec_object ("output",
 +                         "MetaOutput",
@@ -994,13 +759,17 @@ index 55617fc68..348ce0fb8 100644
 +                         G_PARAM_READWRITE |
 +                         G_PARAM_CONSTRUCT_ONLY |
 +                         G_PARAM_STATIC_STRINGS);
-+
+ 
    g_object_class_install_properties (object_class, PROP_LAST, obj_props);
  }
+Index: src/backends/meta-renderer-view.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
 diff --git a/src/backends/meta-renderer-view.h b/src/backends/meta-renderer-view.h
-index 3f21c7c48..355e75e96 100644
---- a/src/backends/meta-renderer-view.h
-+++ b/src/backends/meta-renderer-view.h
+--- a/src/backends/meta-renderer-view.h	(revision 987ecd15f89297437f181e9cc7528fe45a44baf2)
++++ b/src/backends/meta-renderer-view.h	(revision 41ce95b3db266019c855eadd5e560c9c6ddeb57d)
 @@ -22,13 +22,20 @@
  #include "backends/meta-stage-impl-private.h"
  #include "backends/meta-stage-view-private.h"
@@ -1025,661 +794,14 @@ index 3f21c7c48..355e75e96 100644
 +MetaOutput *meta_renderer_view_get_output (MetaRendererView *view);
 +
  #endif /* META_RENDERER_VIEW_H */
-diff --git a/src/backends/meta-screen-cast-stream-src.c b/src/backends/meta-screen-cast-stream-src.c
-index 806fa806c..817ec338b 100644
---- a/src/backends/meta-screen-cast-stream-src.c
-+++ b/src/backends/meta-screen-cast-stream-src.c
-@@ -78,7 +78,7 @@ static guint signals[N_SIGNALS];
- 
- typedef struct _MetaPipeWireSource
- {
--  GSource source;
-+  GSource base;
- 
-   MetaScreenCastStreamSrc *src;
-   struct pw_loop *pipewire_loop;
-@@ -90,7 +90,7 @@ typedef struct _MetaScreenCastStreamSrcPrivate
- 
-   struct pw_context *pipewire_context;
-   struct pw_core *pipewire_core;
--  GSource *pipewire_source;
-+  MetaPipeWireSource *pipewire_source;
-   struct spa_hook pipewire_core_listener;
- 
-   gboolean is_enabled;
-@@ -1167,7 +1167,7 @@ on_core_error (void       *data,
- }
- 
- static gboolean
--pipewire_loop_source_prepare (GSource *source,
-+pipewire_loop_source_prepare (GSource *base,
-                               int     *timeout)
- {
-   *timeout = -1;
-@@ -1212,21 +1212,24 @@ static GSourceFuncs pipewire_source_funcs =
-   pipewire_loop_source_finalize
- };
- 
--static GSource *
--create_pipewire_source (MetaScreenCastStreamSrc *src,
--                        struct pw_loop          *pipewire_loop)
-+static MetaPipeWireSource *
-+create_pipewire_source (MetaScreenCastStreamSrc *src)
- {
-   GSource *source;
-   MetaPipeWireSource *pipewire_source;
- 
-   source = g_source_new (&pipewire_source_funcs, sizeof (MetaPipeWireSource));
-   g_source_set_name (source, "[mutter] PipeWire");
--
-   pipewire_source = (MetaPipeWireSource *) source;
-   pipewire_source->src = src;
--  pipewire_source->pipewire_loop = pipewire_loop;
-+  pipewire_source->pipewire_loop = pw_loop_new (NULL);
-+  if (!pipewire_source->pipewire_loop)
-+    {
-+      g_source_unref ((GSource *) pipewire_source);
-+      return NULL;
-+    }
- 
--  g_source_add_unix_fd (source,
-+  g_source_add_unix_fd (&pipewire_source->base,
-                         pw_loop_get_fd (pipewire_source->pipewire_loop),
-                         G_IO_IN | G_IO_ERR);
- 
-@@ -1234,7 +1237,7 @@ create_pipewire_source (MetaScreenCastStreamSrc *src,
-   g_source_attach (source, NULL);
-   g_source_unref (source);
- 
--  return source;
-+  return pipewire_source;
- }
- 
- static const struct pw_core_events core_events = {
-@@ -1250,17 +1253,8 @@ meta_screen_cast_stream_src_initable_init (GInitable     *initable,
-   MetaScreenCastStreamSrc *src = META_SCREEN_CAST_STREAM_SRC (initable);
-   MetaScreenCastStreamSrcPrivate *priv =
-     meta_screen_cast_stream_src_get_instance_private (src);
--  struct pw_loop *pipewire_loop;
--
--  pipewire_loop = pw_loop_new (NULL);
--  if (!pipewire_loop)
--    {
--      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
--                   "Failed to create PipeWire loop");
--      return FALSE;
--    }
- 
--  priv->pipewire_source = create_pipewire_source (src, pipewire_loop);
-+  priv->pipewire_source = create_pipewire_source (src);
-   if (!priv->pipewire_source)
-     {
-       g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-@@ -1268,7 +1262,7 @@ meta_screen_cast_stream_src_initable_init (GInitable     *initable,
-       return FALSE;
-     }
- 
--  priv->pipewire_context = pw_context_new (pipewire_loop,
-+  priv->pipewire_context = pw_context_new (priv->pipewire_source->pipewire_loop,
-                                            NULL, 0);
-   if (!priv->pipewire_context)
-     {
-@@ -1326,7 +1320,7 @@ meta_screen_cast_stream_src_dispose (GObject *object)
-   g_clear_pointer (&priv->dmabuf_handles, g_hash_table_destroy);
-   g_clear_pointer (&priv->pipewire_core, pw_core_disconnect);
-   g_clear_pointer (&priv->pipewire_context, pw_context_destroy);
--  g_clear_pointer (&priv->pipewire_source, g_source_destroy);
-+  g_clear_pointer ((GSource **) &priv->pipewire_source, g_source_destroy);
- 
-   G_OBJECT_CLASS (meta_screen_cast_stream_src_parent_class)->dispose (object);
- }
-diff --git a/src/backends/native/meta-backend-native.c b/src/backends/native/meta-backend-native.c
-index 224538787..cca074504 100644
---- a/src/backends/native/meta-backend-native.c
-+++ b/src/backends/native/meta-backend-native.c
-@@ -448,6 +448,9 @@ create_gpu_from_udev_device (MetaBackendNative  *native,
-   if (meta_is_udev_device_disable_modifiers (device))
-     flags |= META_KMS_DEVICE_FLAG_DISABLE_MODIFIERS;
- 
-+  if (meta_is_udev_device_disable_vrr (device))
-+    flags |= META_KMS_DEVICE_FLAG_DISABLE_VRR;
-+
-   if (meta_is_udev_device_preferred_primary (device))
-     flags |= META_KMS_DEVICE_FLAG_PREFERRED_PRIMARY;
- 
-diff --git a/src/backends/native/meta-gpu-kms.c b/src/backends/native/meta-gpu-kms.c
-index 97b47f9f9..f30363dc9 100644
---- a/src/backends/native/meta-gpu-kms.c
-+++ b/src/backends/native/meta-gpu-kms.c
-@@ -143,6 +143,15 @@ meta_gpu_kms_disable_modifiers (MetaGpuKms *gpu_kms)
-   return !!(flags & META_KMS_DEVICE_FLAG_DISABLE_MODIFIERS);
- }
- 
-+gboolean
-+meta_gpu_kms_disable_vrr (MetaGpuKms *gpu_kms)
-+{
-+  MetaKmsDeviceFlag flags;
-+
-+  flags = meta_kms_device_get_flags (gpu_kms->kms_device);
-+  return !!(flags & META_KMS_DEVICE_FLAG_DISABLE_VRR);
-+}
-+
- static int
- compare_outputs (gconstpointer one,
-                  gconstpointer two)
-diff --git a/src/backends/native/meta-gpu-kms.h b/src/backends/native/meta-gpu-kms.h
-index e6f8b3e87..77daba2e2 100644
---- a/src/backends/native/meta-gpu-kms.h
-+++ b/src/backends/native/meta-gpu-kms.h
-@@ -48,6 +48,7 @@ gboolean meta_gpu_kms_is_crtc_active (MetaGpuKms *gpu_kms,
- gboolean meta_gpu_kms_is_boot_vga (MetaGpuKms *gpu_kms);
- gboolean meta_gpu_kms_is_platform_device (MetaGpuKms *gpu_kms);
- gboolean meta_gpu_kms_disable_modifiers (MetaGpuKms *gpu_kms);
-+gboolean meta_gpu_kms_disable_vrr (MetaGpuKms *gpu_kms);
- 
- MetaKmsDevice * meta_gpu_kms_get_kms_device (MetaGpuKms *gpu_kms);
- 
-diff --git a/src/backends/native/meta-kms-connector.c b/src/backends/native/meta-kms-connector.c
-index b7550e12e..dc906035b 100644
---- a/src/backends/native/meta-kms-connector.c
-+++ b/src/backends/native/meta-kms-connector.c
-@@ -298,6 +298,9 @@ state_set_properties (MetaKmsConnectorState *state,
-                 META_KMS_CONNECTOR_PROP_PRIVACY_SCREEN_HW_STATE))
-         set_privacy_screen (state, connector, prop,
-                             drm_connector->prop_values[i]);
-+      else if ((prop->flags & DRM_MODE_PROP_RANGE) &&
-+               strcmp (prop->name, "vrr_capable") == 0)
-+        state->vrr_capable = drm_connector->prop_values[i];
- 
-       drmModeFreeProperty (prop);
-     }
-@@ -541,6 +544,7 @@ meta_kms_connector_state_new (void)
-   state = g_new0 (MetaKmsConnectorState, 1);
-   state->suggested_x = -1;
-   state->suggested_y = -1;
-+  state->vrr_capable = FALSE;
- 
-   return state;
- }
-@@ -636,6 +640,9 @@ meta_kms_connector_state_changes (MetaKmsConnectorState *state,
-   if (!kms_modes_equal (state->modes, new_state->modes))
-     return META_KMS_UPDATE_CHANGE_FULL;
- 
-+  if (state->vrr_capable != new_state->vrr_capable)
-+    return META_KMS_UPDATE_CHANGE_FULL;
-+
-   if (state->privacy_screen_state != new_state->privacy_screen_state)
-     return META_KMS_UPDATE_CHANGE_PRIVACY_SCREEN;
- 
-diff --git a/src/backends/native/meta-kms-connector.h b/src/backends/native/meta-kms-connector.h
-index c2b763548..381edca97 100644
---- a/src/backends/native/meta-kms-connector.h
-+++ b/src/backends/native/meta-kms-connector.h
-@@ -59,6 +59,8 @@ typedef struct _MetaKmsConnectorState
-   gboolean hotplug_mode_update;
- 
-   MetaMonitorTransform panel_orientation_transform;
-+
-+  gboolean vrr_capable;
- } MetaKmsConnectorState;
- 
- META_EXPORT_TEST
-diff --git a/src/backends/native/meta-kms-crtc-private.h b/src/backends/native/meta-kms-crtc-private.h
-index 65bda3f10..9575b61e1 100644
---- a/src/backends/native/meta-kms-crtc-private.h
-+++ b/src/backends/native/meta-kms-crtc-private.h
-@@ -30,9 +30,17 @@ typedef enum _MetaKmsCrtcProp
-   META_KMS_CRTC_PROP_MODE_ID = 0,
-   META_KMS_CRTC_PROP_ACTIVE,
-   META_KMS_CRTC_PROP_GAMMA_LUT,
-+  META_KMS_CRTC_PROP_VRR_ENABLED,
-   META_KMS_CRTC_N_PROPS
- } MetaKmsCrtcProp;
- 
-+typedef enum _MetaKmsCrtcVRRMode
-+{
-+  META_KMS_CRTC_VRR_MODE_DISABLED = 0,
-+  META_KMS_CRTC_VRR_MODE_ENABLED,
-+  META_KMS_CRTC_VRR_MODE_N_PROPS,
-+} MetaKmsCrtcVRRMode;
-+
- MetaKmsCrtc * meta_kms_crtc_new (MetaKmsImplDevice  *impl_device,
-                                  drmModeCrtc        *drm_crtc,
-                                  int                 idx,
-diff --git a/src/backends/native/meta-kms-crtc.c b/src/backends/native/meta-kms-crtc.c
-index e9bd9308b..b00ccca71 100644
---- a/src/backends/native/meta-kms-crtc.c
-+++ b/src/backends/native/meta-kms-crtc.c
-@@ -390,6 +390,11 @@ init_properties (MetaKmsCrtc       *crtc,
-           .name = "GAMMA_LUT",
-           .type = DRM_MODE_PROP_BLOB,
-         },
-+      [META_KMS_CRTC_PROP_VRR_ENABLED] =
-+        {
-+          .name = "VRR_ENABLED",
-+          .type = DRM_MODE_PROP_RANGE,
-+        },
-     }
-   };
- 
-diff --git a/src/backends/native/meta-kms-impl-device-atomic.c b/src/backends/native/meta-kms-impl-device-atomic.c
-index 73dd8e697..0a26d2780 100644
---- a/src/backends/native/meta-kms-impl-device-atomic.c
-+++ b/src/backends/native/meta-kms-impl-device-atomic.c
-@@ -261,6 +261,39 @@ add_crtc_property (MetaKmsImplDevice  *impl_device,
-   return TRUE;
- }
- 
-+static gboolean
-+process_crtc_update (MetaKmsImplDevice  *impl_device,
-+                     MetaKmsUpdate      *update,
-+                     drmModeAtomicReq   *req,
-+                     GArray             *blob_ids,
-+                     gpointer            update_entry,
-+                     gpointer            user_data,
-+                     GError            **error)
-+{
-+  MetaKmsCrtcUpdate *crtc_update = update_entry;
-+  MetaKmsCrtc *crtc = crtc_update->crtc;
-+
-+  if (crtc_update->vrr_mode.has_update)
-+    {
-+      meta_topic (META_DEBUG_KMS,
-+                  "[atomic] Setting VRR mode to %d on CRTC %u (%s)",
-+                  crtc_update->vrr_mode.is_enabled ?
-+                    META_KMS_CRTC_VRR_MODE_ENABLED :
-+                    META_KMS_CRTC_VRR_MODE_DISABLED,
-+                  meta_kms_crtc_get_id (crtc),
-+                  meta_kms_impl_device_get_path (impl_device));
-+
-+      if (!add_crtc_property (impl_device,
-+                              crtc, req,
-+                              META_KMS_CRTC_PROP_VRR_ENABLED,
-+                              crtc_update->vrr_mode.is_enabled,
-+                              error))
-+        return FALSE;
-+    }
-+
-+  return TRUE;
-+}
-+
- static gboolean
- process_mode_set (MetaKmsImplDevice  *impl_device,
-                   MetaKmsUpdate      *update,
-@@ -948,6 +981,16 @@ meta_kms_impl_device_atomic_process_update (MetaKmsImplDevice *impl_device,
-                         &error))
-     goto err;
- 
-+  if (!process_entries (impl_device,
-+                        update,
-+                        req,
-+                        blob_ids,
-+                        meta_kms_update_get_crtc_updates (update),
-+                        NULL,
-+                        process_crtc_update,
-+                        &error))
-+    goto err;
-+
-   if (!process_entries (impl_device,
-                         update,
-                         req,
-@@ -978,7 +1021,7 @@ meta_kms_impl_device_atomic_process_update (MetaKmsImplDevice *impl_device,
-                         &error))
-     goto err;
- 
--  if (meta_kms_update_get_mode_sets (update))
-+  if (meta_kms_update_needs_allow_modeset (update))
-     commit_flags |= DRM_MODE_ATOMIC_ALLOW_MODESET;
-   else
-     commit_flags |= DRM_MODE_ATOMIC_NONBLOCK;
-diff --git a/src/backends/native/meta-kms-impl-device-simple.c b/src/backends/native/meta-kms-impl-device-simple.c
-index ca4ffe245..89310ce0f 100644
---- a/src/backends/native/meta-kms-impl-device-simple.c
-+++ b/src/backends/native/meta-kms-impl-device-simple.c
-@@ -180,6 +180,47 @@ set_connector_property (MetaKmsImplDevice     *impl_device,
-   return TRUE;
- }
- 
-+static gboolean
-+set_crtc_property (MetaKmsImplDevice  *impl_device,
-+                   MetaKmsCrtc        *crtc,
-+                   MetaKmsCrtcProp     prop,
-+                   uint64_t            value,
-+                   GError            **error)
-+{
-+  uint32_t prop_id;
-+  int fd;
-+  int ret;
-+
-+  prop_id = meta_kms_crtc_get_prop_id (crtc, prop);
-+  if (!prop_id)
-+    {
-+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_NOT_SUPPORTED,
-+                   "Property (%s) not found on CRTC %u",
-+                   meta_kms_crtc_get_prop_name (crtc, prop),
-+                   meta_kms_crtc_get_id (crtc));
-+      return FALSE;
-+    }
-+
-+  fd = meta_kms_impl_device_get_fd (impl_device);
-+
-+  ret = drmModeObjectSetProperty (fd,
-+                                  meta_kms_crtc_get_id (crtc),
-+                                  DRM_MODE_OBJECT_CRTC,
-+                                  prop_id,
-+                                  value);
-+  if (ret != 0)
-+    {
-+      g_set_error (error, G_IO_ERROR, g_io_error_from_errno (-ret),
-+                   "Failed to set CRTC %u property %u: %s",
-+                   meta_kms_crtc_get_id (crtc),
-+                   prop_id,
-+                   g_strerror (-ret));
-+      return FALSE;
-+    }
-+
-+  return TRUE;
-+}
-+
- static gboolean
- process_connector_update (MetaKmsImplDevice  *impl_device,
-                           MetaKmsUpdate      *update,
-@@ -253,6 +294,36 @@ process_connector_update (MetaKmsImplDevice  *impl_device,
-   return TRUE;
- }
- 
-+static gboolean
-+process_crtc_update (MetaKmsImplDevice  *impl_device,
-+                     MetaKmsUpdate      *update,
-+                     gpointer            update_entry,
-+                     GError            **error)
-+{
-+  MetaKmsCrtcUpdate *crtc_update = update_entry;
-+  MetaKmsCrtc *crtc = crtc_update->crtc;
-+
-+  if (crtc_update->vrr_mode.has_update)
-+    {
-+      meta_topic (META_DEBUG_KMS,
-+                  "[simple] Setting VRR mode to %d on CRTC %u (%s)",
-+                  crtc_update->vrr_mode.is_enabled ?
-+                    META_KMS_CRTC_VRR_MODE_ENABLED :
-+                    META_KMS_CRTC_VRR_MODE_DISABLED,
-+                  meta_kms_crtc_get_id (crtc),
-+                  meta_kms_impl_device_get_path (impl_device));
-+
-+      if (!set_crtc_property (impl_device,
-+                              crtc,
-+                              META_KMS_CRTC_PROP_VRR_ENABLED,
-+                              crtc_update->vrr_mode.is_enabled,
-+                              error))
-+        return FALSE;
-+    }
-+
-+  return TRUE;
-+}
-+
- static CachedModeSet *
- cached_mode_set_new (GList                 *connectors,
-                      const drmModeModeInfo *drm_mode,
-@@ -1492,6 +1563,13 @@ meta_kms_impl_device_simple_process_update (MetaKmsImplDevice *impl_device,
-                         &error))
-     goto err;
- 
-+  if (!process_entries (impl_device,
-+                        update,
-+                        meta_kms_update_get_crtc_updates (update),
-+                        process_crtc_update,
-+                        &error))
-+    goto err;
-+
-   if (!process_entries (impl_device,
-                         update,
-                         meta_kms_update_get_crtc_gammas (update),
-diff --git a/src/backends/native/meta-kms-types.h b/src/backends/native/meta-kms-types.h
-index f532f3821..d2089640a 100644
---- a/src/backends/native/meta-kms-types.h
-+++ b/src/backends/native/meta-kms-types.h
-@@ -60,8 +60,9 @@ typedef enum _MetaKmsDeviceFlag
-   META_KMS_DEVICE_FLAG_BOOT_VGA = 1 << 0,
-   META_KMS_DEVICE_FLAG_PLATFORM_DEVICE = 1 << 1,
-   META_KMS_DEVICE_FLAG_DISABLE_MODIFIERS = 1 << 2,
--  META_KMS_DEVICE_FLAG_PREFERRED_PRIMARY = 1 << 3,
--  META_KMS_DEVICE_FLAG_NO_MODE_SETTING = 1 << 4,
-+  META_KMS_DEVICE_FLAG_DISABLE_VRR = 1 << 3,
-+  META_KMS_DEVICE_FLAG_PREFERRED_PRIMARY = 1 << 4,
-+  META_KMS_DEVICE_FLAG_NO_MODE_SETTING = 1 << 5,
- } MetaKmsDeviceFlag;
- 
- typedef enum _MetaKmsUpdateChanges
-diff --git a/src/backends/native/meta-kms-update-private.h b/src/backends/native/meta-kms-update-private.h
-index a613cbc5d..442da6b4c 100644
---- a/src/backends/native/meta-kms-update-private.h
-+++ b/src/backends/native/meta-kms-update-private.h
-@@ -84,6 +84,16 @@ typedef struct _MetaKmsConnectorUpdate
-   } privacy_screen;
- } MetaKmsConnectorUpdate;
- 
-+typedef struct _MetaKmsCrtcUpdate
-+{
-+  MetaKmsCrtc *crtc;
-+
-+  struct {
-+    gboolean has_update;
-+    gboolean is_enabled;
-+  } vrr_mode;
-+} MetaKmsCrtcUpdate;
-+
- typedef struct _MetaKmsPageFlipListener
- {
-   MetaKmsCrtc *crtc;
-@@ -157,9 +167,15 @@ void meta_kms_update_drop_defunct_page_flip_listeners (MetaKmsUpdate *update);
- META_EXPORT_TEST
- GList * meta_kms_update_get_connector_updates (MetaKmsUpdate *update);
- 
-+META_EXPORT_TEST
-+GList * meta_kms_update_get_crtc_updates (MetaKmsUpdate *update);
-+
- META_EXPORT_TEST
- GList * meta_kms_update_get_crtc_gammas (MetaKmsUpdate *update);
- 
-+META_EXPORT_TEST
-+gboolean meta_kms_update_needs_allow_modeset (MetaKmsUpdate *update);
-+
- MetaKmsCustomPageFlip * meta_kms_update_take_custom_page_flip_func (MetaKmsUpdate *update);
- 
- void meta_kms_update_drop_plane_assignment (MetaKmsUpdate *update,
-diff --git a/src/backends/native/meta-kms-update.c b/src/backends/native/meta-kms-update.c
-index 53fc92eb8..dc3dc3fef 100644
---- a/src/backends/native/meta-kms-update.c
-+++ b/src/backends/native/meta-kms-update.c
-@@ -38,8 +38,11 @@ struct _MetaKmsUpdate
-   GList *mode_sets;
-   GList *plane_assignments;
-   GList *connector_updates;
-+  GList *crtc_updates;
-   GList *crtc_gammas;
- 
-+  gboolean needs_allow_modeset;
-+
-   MetaKmsCustomPageFlip *custom_page_flip;
- 
-   GList *page_flip_listeners;
-@@ -284,6 +287,8 @@ meta_kms_update_mode_set (MetaKmsUpdate *update,
-   };
- 
-   update->mode_sets = g_list_prepend (update->mode_sets, mode_set);
-+
-+  update->needs_allow_modeset = TRUE;
- }
- 
- static MetaKmsConnectorUpdate *
-@@ -404,6 +409,45 @@ meta_kms_update_set_crtc_gamma (MetaKmsUpdate  *update,
-   update->crtc_gammas = g_list_prepend (update->crtc_gammas, gamma);
- }
- 
-+static MetaKmsCrtcUpdate *
-+ensure_crtc_update (MetaKmsUpdate *update,
-+                    MetaKmsCrtc   *crtc)
-+{
-+  GList *l;
-+  MetaKmsCrtcUpdate *crtc_update;
-+
-+  for (l = update->crtc_updates; l; l = l->next)
-+    {
-+      crtc_update = l->data;
-+
-+      if (crtc_update->crtc == crtc)
-+        return crtc_update;
-+    }
-+
-+  crtc_update = g_new0 (MetaKmsCrtcUpdate, 1);
-+  crtc_update->crtc = crtc;
-+
-+  update->crtc_updates = g_list_prepend (update->crtc_updates,
-+                                         crtc_update);
-+
-+  return crtc_update;
-+}
-+
-+void
-+meta_kms_update_set_vrr_mode (MetaKmsUpdate *update,
-+                              MetaKmsCrtc   *crtc,
-+                              gboolean       enabled)
-+{
-+  MetaKmsCrtcUpdate *crtc_update;
-+
-+  g_assert (!meta_kms_update_is_locked (update));
-+  g_assert (meta_kms_crtc_get_device (crtc) == update->device);
-+
-+  crtc_update = ensure_crtc_update (update, crtc);
-+  crtc_update->vrr_mode.has_update = TRUE;
-+  crtc_update->vrr_mode.is_enabled = enabled;
-+}
-+
- void
- meta_kms_update_add_page_flip_listener (MetaKmsUpdate                       *update,
-                                         MetaKmsCrtc                         *crtc,
-@@ -635,12 +679,24 @@ meta_kms_update_get_connector_updates (MetaKmsUpdate *update)
-   return update->connector_updates;
- }
- 
-+GList *
-+meta_kms_update_get_crtc_updates (MetaKmsUpdate *update)
-+{
-+  return update->crtc_updates;
-+}
-+
- GList *
- meta_kms_update_get_crtc_gammas (MetaKmsUpdate *update)
- {
-   return update->crtc_gammas;
- }
- 
-+gboolean
-+meta_kms_update_needs_allow_modeset (MetaKmsUpdate *update)
-+{
-+  return update->needs_allow_modeset;
-+}
-+
- void
- meta_kms_update_lock (MetaKmsUpdate *update)
- {
-@@ -692,6 +748,7 @@ meta_kms_update_new (MetaKmsDevice *device)
-   update = g_new0 (MetaKmsUpdate, 1);
-   update->device = device;
-   update->sequence_number = sequence_number++;
-+  update->needs_allow_modeset = FALSE;
- 
-   return update;
- }
-@@ -708,6 +765,7 @@ meta_kms_update_free (MetaKmsUpdate *update)
-   g_list_free_full (update->page_flip_listeners,
-                     (GDestroyNotify) meta_kms_page_flip_listener_free);
-   g_list_free_full (update->connector_updates, g_free);
-+  g_list_free_full (update->crtc_updates, g_free);
-   g_list_free_full (update->crtc_gammas, (GDestroyNotify) meta_kms_crtc_gamma_free);
-   g_clear_pointer (&update->custom_page_flip, meta_kms_custom_page_flip_free);
- 
-diff --git a/src/backends/native/meta-kms-update.h b/src/backends/native/meta-kms-update.h
-index f31e36aad..4e963833f 100644
---- a/src/backends/native/meta-kms-update.h
-+++ b/src/backends/native/meta-kms-update.h
-@@ -123,6 +123,10 @@ void meta_kms_update_set_crtc_gamma (MetaKmsUpdate  *update,
-                                      const uint16_t *green,
-                                      const uint16_t *blue);
- 
-+void meta_kms_update_set_vrr_mode (MetaKmsUpdate *update,
-+                                   MetaKmsCrtc   *crtc,
-+                                   gboolean       enabled);
-+
- void meta_kms_plane_assignment_set_fb_damage (MetaKmsPlaneAssignment *plane_assignment,
-                                               const int              *rectangles,
-                                               int                     n_rectangles);
-diff --git a/src/backends/native/meta-output-kms.c b/src/backends/native/meta-output-kms.c
-index f60d5ad0d..2f0425f2c 100644
---- a/src/backends/native/meta-output-kms.c
-+++ b/src/backends/native/meta-output-kms.c
-@@ -97,6 +97,32 @@ meta_output_kms_set_underscan (MetaOutputKms *output_kms,
-     }
- }
- 
-+void
-+meta_output_kms_set_vrr_mode (MetaOutputKms *output_kms,
-+                              gboolean       enabled)
-+{
-+  MetaOutput *output = META_OUTPUT (output_kms);
-+  const MetaOutputInfo *output_info = meta_output_get_info (output);
-+  MetaCrtc *crtc;
-+  MetaKmsCrtc *kms_crtc;
-+  MetaKmsDevice *kms_device;
-+  MetaKms *kms;
-+  MetaKmsUpdate *kms_update;
-+
-+  g_assert (output_info->vrr_capable);
-+
-+  crtc = meta_output_get_assigned_crtc (output);
-+  kms_crtc = meta_crtc_kms_get_kms_crtc (META_CRTC_KMS (crtc));
-+  kms_device = meta_kms_crtc_get_device (kms_crtc);
-+  kms = meta_kms_device_get_kms (kms_device);
-+
-+  kms_update = meta_kms_ensure_pending_update (kms, kms_device);
-+
-+  meta_kms_update_set_vrr_mode (kms_update,
-+                                kms_crtc,
-+                                enabled);
-+}
-+
- static MetaPrivacyScreenState
- meta_output_kms_get_privacy_screen_state (MetaOutput *output)
- {
-@@ -400,6 +426,9 @@ meta_output_kms_new (MetaGpuKms        *gpu_kms,
-   output_info->supports_underscanning =
-     meta_kms_connector_is_underscanning_supported (kms_connector);
- 
-+  output_info->vrr_capable = (connector_state->vrr_capable &&
-+                              !meta_gpu_kms_disable_vrr (gpu_kms));
-+
-   meta_output_info_parse_edid (output_info, connector_state->edid_data);
- 
-   drm_connector_type = meta_kms_connector_get_connector_type (kms_connector);
-diff --git a/src/backends/native/meta-output-kms.h b/src/backends/native/meta-output-kms.h
-index 52acc6032..54b1721a4 100644
---- a/src/backends/native/meta-output-kms.h
-+++ b/src/backends/native/meta-output-kms.h
-@@ -40,6 +40,9 @@ void meta_output_kms_set_power_save_mode (MetaOutputKms *output_kms,
- void meta_output_kms_set_underscan (MetaOutputKms *output_kms,
-                                     MetaKmsUpdate *kms_update);
- 
-+void meta_output_kms_set_vrr_mode (MetaOutputKms *output_kms,
-+                                   gboolean       enabled);
-+
- gboolean meta_output_kms_can_clone (MetaOutputKms *output_kms,
-                                     MetaOutputKms *other_output_kms);
- 
+Index: src/backends/native/meta-renderer-native.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
 diff --git a/src/backends/native/meta-renderer-native.c b/src/backends/native/meta-renderer-native.c
-index f5f22c7b1..199e14f78 100644
---- a/src/backends/native/meta-renderer-native.c
-+++ b/src/backends/native/meta-renderer-native.c
+--- a/src/backends/native/meta-renderer-native.c	(revision 987ecd15f89297437f181e9cc7528fe45a44baf2)
++++ b/src/backends/native/meta-renderer-native.c	(revision 41ce95b3db266019c855eadd5e560c9c6ddeb57d)
 @@ -62,6 +62,7 @@
  #include "backends/native/meta-render-device-gbm.h"
  #include "backends/native/meta-render-device-surfaceless.h"
@@ -1688,7 +810,7 @@ index f5f22c7b1..199e14f78 100644
  #include "cogl/cogl.h"
  #include "core/boxes-private.h"
  
-@@ -1256,7 +1257,7 @@ meta_renderer_native_create_view (MetaRenderer       *renderer,
+@@ -1240,7 +1241,7 @@
    int onscreen_width;
    int onscreen_height;
    MetaRectangle view_layout;
@@ -1697,7 +819,7 @@ index f5f22c7b1..199e14f78 100644
    EGLSurface egl_surface;
    GError *error = NULL;
  
-@@ -1368,26 +1369,28 @@ meta_renderer_native_create_view (MetaRenderer       *renderer,
+@@ -1352,26 +1353,28 @@
    meta_rectangle_from_graphene_rect (&crtc_config->layout,
                                       META_ROUNDING_STRATEGY_ROUND,
                                       &view_layout);
@@ -1740,7 +862,7 @@ index f5f22c7b1..199e14f78 100644
  
        /* Ensure we don't point to stale surfaces when creating the offscreen */
        cogl_display_egl = cogl_display->winsys;
-@@ -1399,7 +1402,7 @@ meta_renderer_native_create_view (MetaRenderer       *renderer,
+@@ -1383,7 +1386,7 @@
                                       cogl_display_egl->egl_context);
      }
  
@@ -1749,7 +871,7 @@ index f5f22c7b1..199e14f78 100644
  }
  
  static void
-@@ -1467,6 +1470,7 @@ meta_renderer_native_prepare_frame (MetaRendererNative *renderer_native,
+@@ -1451,6 +1454,7 @@
    kms_device = meta_kms_crtc_get_device (kms_crtc);
  
    meta_crtc_kms_maybe_set_gamma (crtc_kms, kms_device);
@@ -1757,99 +879,341 @@ index f5f22c7b1..199e14f78 100644
  }
  
  void
-diff --git a/src/backends/native/meta-udev.c b/src/backends/native/meta-udev.c
-index 0a9ed5fd1..fa854ce0c 100644
---- a/src/backends/native/meta-udev.c
-+++ b/src/backends/native/meta-udev.c
-@@ -102,6 +102,13 @@ meta_is_udev_device_disable_modifiers (GUdevDevice *device)
-                                    "mutter-device-disable-kms-modifiers");
- }
- 
-+gboolean
-+meta_is_udev_device_disable_vrr (GUdevDevice *device)
+Index: src/backends/native/meta-renderer-view-native.c
+===================================================================
+diff --git a/src/backends/native/meta-renderer-view-native.c b/src/backends/native/meta-renderer-view-native.c
+new file mode 100644
+--- /dev/null	(revision 8c5a0881e1cbfc14cce0825101eb28cc871e08c2)
++++ b/src/backends/native/meta-renderer-view-native.c	(revision 8c5a0881e1cbfc14cce0825101eb28cc871e08c2)
+@@ -0,0 +1,220 @@
++/* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
++
++/*
++ * Copyright (C) 2020-2022 Dor Askayo
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License as
++ * published by the Free Software Foundation; either version 2 of the
++ * License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
++ * 02111-1307, USA.
++ *
++ * Written by:
++ *     Dor Askayo <dor.askayo@gmail.com>
++ */
++
++#include "backends/native/meta-renderer-view-native.h"
++
++#include "backends/meta-output.h"
++#include "backends/native/meta-crtc-kms.h"
++#include "backends/native/meta-kms.h"
++#include "backends/native/meta-kms-device.h"
++#include "backends/native/meta-output-kms.h"
++#include "clutter/clutter.h"
++
++typedef enum _MetaFrameSyncMode
 +{
-+  return meta_has_udev_device_tag (device,
-+                                   "mutter-device-disable-vrr");
++  META_FRAME_SYNC_MODE_INIT,
++  META_FRAME_SYNC_MODE_ENABLED,
++  META_FRAME_SYNC_MODE_DISABLED,
++} MetaFrameSyncMode;
++
++struct _MetaRendererViewNative
++{
++  MetaRendererView parent;
++
++  gboolean frame_sync_mode_update_queued;
++
++  MetaFrameSyncMode frame_sync_mode;
++  ClutterActor *frame_sync_actor;
++
++  gulong frame_sync_actor_frozen_id;
++  gulong frame_sync_actor_destroy_id;
++};
++
++G_DEFINE_TYPE (MetaRendererViewNative, meta_renderer_view_native,
++               META_TYPE_RENDERER_VIEW)
++
++static void
++on_frame_sync_actor_frozen (ClutterActor           *actor,
++                            MetaRendererViewNative *view_native)
++{
++  meta_renderer_view_native_set_frame_sync_actor (view_native, NULL);
 +}
 +
- gboolean
- meta_is_udev_device_ignore (GUdevDevice *device)
- {
-diff --git a/src/backends/native/meta-udev.h b/src/backends/native/meta-udev.h
-index dfd6337a0..dee8430f6 100644
---- a/src/backends/native/meta-udev.h
-+++ b/src/backends/native/meta-udev.h
-@@ -34,6 +34,8 @@ gboolean meta_is_udev_device_boot_vga (GUdevDevice *device);
- 
- gboolean meta_is_udev_device_disable_modifiers (GUdevDevice *device);
- 
-+gboolean meta_is_udev_device_disable_vrr (GUdevDevice *device);
++static void
++on_frame_sync_actor_destroyed (ClutterActor           *actor,
++                               MetaRendererViewNative *view_native)
++{
++  meta_renderer_view_native_set_frame_sync_actor (view_native, NULL);
++}
 +
- gboolean meta_is_udev_device_ignore (GUdevDevice *device);
- 
- gboolean meta_is_udev_test_device (GUdevDevice *device);
-diff --git a/src/backends/x11/nested/meta-renderer-x11-nested.c b/src/backends/x11/nested/meta-renderer-x11-nested.c
-index 7c1a4facf..2f9eca5ba 100644
---- a/src/backends/x11/nested/meta-renderer-x11-nested.c
-+++ b/src/backends/x11/nested/meta-renderer-x11-nested.c
-@@ -223,6 +223,7 @@ meta_renderer_x11_nested_create_view (MetaRenderer       *renderer,
-                        "stage", meta_backend_get_stage (backend),
-                        "layout", &view_layout,
-                        "crtc", crtc,
-+                       "output", output,
-                        "refresh-rate", mode_info->refresh_rate,
-                        "framebuffer", COGL_FRAMEBUFFER (fake_onscreen),
-                        "offscreen", COGL_FRAMEBUFFER (offscreen),
-diff --git a/src/compositor/compositor-private.h b/src/compositor/compositor-private.h
-index d3b3145a3..4262f23cc 100644
---- a/src/compositor/compositor-private.h
-+++ b/src/compositor/compositor-private.h
-@@ -7,6 +7,7 @@
- 
- #include "clutter/clutter-mutter.h"
- #include "clutter/clutter.h"
-+#include "compositor/meta-compositor-view.h"
- #include "compositor/meta-plugin-manager.h"
- #include "compositor/meta-window-actor-private.h"
- #include "meta/compositor.h"
-@@ -24,16 +25,19 @@ struct _MetaCompositorClass
-   gboolean (* manage) (MetaCompositor  *compositor,
-                        GError         **error);
-   void (* unmanage) (MetaCompositor *compositor);
--  void (* before_paint) (MetaCompositor   *compositor,
--                         ClutterStageView *stage_view);
--  void (* after_paint) (MetaCompositor   *compositor,
--                        ClutterStageView *stage_view);
-+  void (* before_paint) (MetaCompositor     *compositor,
-+                         MetaCompositorView *compositor_view);
-+  void (* after_paint) (MetaCompositor     *compositor,
-+                        MetaCompositorView *compositor_view);
-   void (* remove_window) (MetaCompositor *compositor,
-                           MetaWindow     *window);
-   int64_t (* monotonic_to_high_res_xserver_time) (MetaCompositor *compositor,
-                                                   int64_t         time_us);
-   void (* grab_begin) (MetaCompositor *compositor);
-   void (* grab_end) (MetaCompositor *compositor);
++static void
++meta_renderer_view_native_schedule_actor_update (ClutterStageView *stage_view,
++                                                 ClutterActor     *actor)
++{
++  MetaRendererViewNative *view_native = META_RENDERER_VIEW_NATIVE (stage_view);
++  ClutterFrameClock *frame_clock;
 +
-+  MetaCompositorView * (* create_view) (MetaCompositor   *compositor,
-+                                        ClutterStageView *stage_view);
- };
- 
- gboolean meta_compositor_do_manage (MetaCompositor  *compositor,
-@@ -42,6 +46,8 @@ gboolean meta_compositor_do_manage (MetaCompositor  *compositor,
- void meta_compositor_remove_window_actor (MetaCompositor  *compositor,
-                                           MetaWindowActor *window_actor);
- 
-+void meta_compositor_window_actor_stage_views_changed (MetaCompositor *compositor);
++  g_return_if_fail (actor != NULL);
 +
- void meta_switch_workspace_completed (MetaCompositor *compositor);
++  frame_clock = clutter_stage_view_get_frame_clock (stage_view);
++
++  if (view_native->frame_sync_mode == META_FRAME_SYNC_MODE_ENABLED &&
++      actor == view_native->frame_sync_actor)
++    clutter_frame_clock_schedule_update_now (frame_clock);
++  else
++    clutter_frame_clock_schedule_update (frame_clock);
++}
++
++void
++meta_renderer_view_native_set_frame_sync_actor (MetaRendererViewNative *view_native,
++                                                ClutterActor           *actor)
++{
++  if (G_LIKELY (actor == view_native->frame_sync_actor))
++    return;
++
++  g_clear_signal_handler (&view_native->frame_sync_actor_frozen_id,
++                          view_native->frame_sync_actor);
++  g_clear_signal_handler (&view_native->frame_sync_actor_destroy_id,
++                          view_native->frame_sync_actor);
++
++  if (actor)
++    {
++      view_native->frame_sync_actor_frozen_id =
++        g_signal_connect (actor, "frozen",
++                          G_CALLBACK (on_frame_sync_actor_frozen),
++                          view_native);
++      view_native->frame_sync_actor_destroy_id =
++        g_signal_connect (actor, "destroy",
++                          G_CALLBACK (on_frame_sync_actor_destroyed),
++                          view_native);
++    }
++
++  view_native->frame_sync_actor = actor;
++
++  view_native->frame_sync_mode_update_queued = TRUE;
++}
++
++static void
++meta_renderer_view_native_set_frame_sync (MetaRendererViewNative *view_native,
++                                          MetaOutput             *output,
++                                          MetaFrameSyncMode       sync_mode)
++{
++  ClutterFrameClock *frame_clock =
++    clutter_stage_view_get_frame_clock (CLUTTER_STAGE_VIEW (view_native));
++  MetaOutputKms *output_kms = META_OUTPUT_KMS (output);
++
++  switch (sync_mode)
++    {
++    case META_FRAME_SYNC_MODE_ENABLED:
++      clutter_frame_clock_set_mode (frame_clock,
++                                    CLUTTER_FRAME_CLOCK_MODE_VARIABLE);
++      meta_output_kms_set_vrr_mode (output_kms, TRUE);
++      break;
++    case META_FRAME_SYNC_MODE_DISABLED:
++      clutter_frame_clock_set_mode (frame_clock,
++                                    CLUTTER_FRAME_CLOCK_MODE_FIXED);
++      meta_output_kms_set_vrr_mode (output_kms, FALSE);
++      break;
++    case META_FRAME_SYNC_MODE_INIT:
++      g_assert_not_reached ();
++    }
++
++  view_native->frame_sync_mode = sync_mode;
++}
++
++static MetaFrameSyncMode
++meta_renderer_view_native_get_applicable_sync_mode (MetaRendererViewNative *view_native)
++{
++  MetaRendererView *view = META_RENDERER_VIEW (view_native);
++  MetaOutput *output = meta_renderer_view_get_output (view);
++
++  if (view_native->frame_sync_actor != NULL &&
++      meta_output_is_vrr_allowed (output))
++    return META_FRAME_SYNC_MODE_ENABLED;
++  else
++    return META_FRAME_SYNC_MODE_DISABLED;
++}
++
++void
++meta_renderer_view_native_maybe_set_frame_sync (MetaRendererViewNative *view_native)
++{
++  MetaRendererView *view;
++  MetaOutput *output;
++  MetaFrameSyncMode applicable_sync_mode;
++
++  if (G_LIKELY (!view_native->frame_sync_mode_update_queued))
++    return;
++
++  view_native->frame_sync_mode_update_queued = FALSE;
++
++  view = META_RENDERER_VIEW (view_native);
++  output = meta_renderer_view_get_output (view);
++
++  if (!meta_output_is_vrr_capable (output))
++    return;
++
++  applicable_sync_mode =
++    meta_renderer_view_native_get_applicable_sync_mode (view_native);
++
++  if (applicable_sync_mode != view_native->frame_sync_mode)
++    {
++      meta_renderer_view_native_set_frame_sync (view_native,
++                                                output,
++                                                applicable_sync_mode);
++    }
++}
++
++static void
++meta_renderer_view_native_dispose (GObject *object)
++{
++  MetaRendererViewNative *view_native = META_RENDERER_VIEW_NATIVE (object);
++
++  if (view_native->frame_sync_actor)
++    {
++      g_clear_signal_handler (&view_native->frame_sync_actor_destroy_id,
++                              view_native->frame_sync_actor);
++      g_clear_signal_handler (&view_native->frame_sync_actor_frozen_id,
++                              view_native->frame_sync_actor);
++    }
++
++  G_OBJECT_CLASS (meta_renderer_view_native_parent_class)->dispose (object);
++}
++
++static void
++meta_renderer_view_native_class_init (MetaRendererViewNativeClass *klass)
++{
++  GObjectClass *object_class = G_OBJECT_CLASS (klass);
++  ClutterStageViewClass *clutter_stage_view_class = CLUTTER_STAGE_VIEW_CLASS (klass);
++
++  object_class->dispose = meta_renderer_view_native_dispose;
++
++  clutter_stage_view_class->schedule_actor_update = meta_renderer_view_native_schedule_actor_update;
++}
++
++static void
++meta_renderer_view_native_init (MetaRendererViewNative *view_native)
++{
++  view_native->frame_sync_mode_update_queued = TRUE;
++  view_native->frame_sync_mode = META_FRAME_SYNC_MODE_INIT;
++}
+Index: src/backends/native/meta-renderer-view-native.h
+===================================================================
+diff --git a/src/backends/native/meta-renderer-view-native.h b/src/backends/native/meta-renderer-view-native.h
+new file mode 100644
+--- /dev/null	(revision f551dd4d5b5de8bfc6f5b80d2a53d1b008460f9f)
++++ b/src/backends/native/meta-renderer-view-native.h	(revision f551dd4d5b5de8bfc6f5b80d2a53d1b008460f9f)
+@@ -0,0 +1,39 @@
++/* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
++
++/*
++ * Copyright (C) 2020-2022 Dor Askayo
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License as
++ * published by the Free Software Foundation; either version 2 of the
++ * License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
++ * 02111-1307, USA.
++ *
++ * Written by:
++ *     Dor Askayo <dor.askayo@gmail.com>
++ */
++
++#ifndef META_RENDERER_VIEW_NATIVE_H
++#define META_RENDERER_VIEW_NATIVE_H
++
++#include "backends/meta-renderer-view.h"
++
++#define META_TYPE_RENDERER_VIEW_NATIVE (meta_renderer_view_native_get_type ())
++G_DECLARE_FINAL_TYPE (MetaRendererViewNative, meta_renderer_view_native,
++                      META, RENDERER_VIEW_NATIVE, MetaRendererView)
++
++void meta_renderer_view_native_set_frame_sync_actor (MetaRendererViewNative *view_native,
++                                                     ClutterActor           *actor);
++
++void meta_renderer_view_native_maybe_set_frame_sync (MetaRendererViewNative *view_native);
++
++#endif /* META_RENDERER_VIEW_NATIVE_H */
+Index: src/meson.build
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/meson.build b/src/meson.build
+--- a/src/meson.build	(revision 987ecd15f89297437f181e9cc7528fe45a44baf2)
++++ b/src/meson.build	(revision 9513e54fd12235ec306dd53fcea9ed28fa7f9f60)
+@@ -320,6 +320,8 @@
+   'compositor/meta-background-private.h',
+   'compositor/meta-compositor-server.c',
+   'compositor/meta-compositor-server.h',
++  'compositor/meta-compositor-view.c',
++  'compositor/meta-compositor-view.h',
+   'compositor/meta-compositor-x11.c',
+   'compositor/meta-compositor-x11.h',
+   'compositor/meta-cullable.c',
+@@ -769,6 +771,8 @@
+     'backends/native/meta-renderer-native-private.h',
+     'backends/native/meta-renderer-native.c',
+     'backends/native/meta-renderer-native.h',
++    'backends/native/meta-renderer-view-native.c',
++    'backends/native/meta-renderer-view-native.h',
+     'backends/native/meta-seat-impl.c',
+     'backends/native/meta-seat-impl.h',
+     'backends/native/meta-seat-native.c',
+@@ -785,6 +789,8 @@
+     'backends/native/meta-xkb-utils.h',
+     'compositor/meta-compositor-native.c',
+     'compositor/meta-compositor-native.h',
++    'compositor/meta-compositor-view-native.c',
++    'compositor/meta-compositor-view-native.h',
+   ]
+ endif
  
- MetaPluginManager * meta_compositor_get_plugin_manager (MetaCompositor *compositor);
+Index: src/wayland/meta-wayland-actor-surface.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/wayland/meta-wayland-actor-surface.c b/src/wayland/meta-wayland-actor-surface.c
+--- a/src/wayland/meta-wayland-actor-surface.c	(revision f551dd4d5b5de8bfc6f5b80d2a53d1b008460f9f)
++++ b/src/wayland/meta-wayland-actor-surface.c	(revision 9b2f34238b99b36bdc5533ce0487110f34e2d559)
+@@ -307,7 +307,8 @@
+       MetaBackend *backend = meta_get_backend ();
+       ClutterActor *stage = meta_backend_get_stage (backend);
+ 
+-      clutter_stage_schedule_update (CLUTTER_STAGE (stage));
++      clutter_stage_schedule_actor_update (CLUTTER_STAGE (stage),
++                                           CLUTTER_ACTOR (priv->actor));
+     }
+ 
+   meta_wayland_actor_surface_queue_frame_callbacks (actor_surface, pending);
+Index: src/compositor/compositor.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
 diff --git a/src/compositor/compositor.c b/src/compositor/compositor.c
-index 6f4982553..fe5c0f0e9 100644
---- a/src/compositor/compositor.c
-+++ b/src/compositor/compositor.c
-@@ -108,6 +108,7 @@ typedef struct _MetaCompositorPrivate
+--- a/src/compositor/compositor.c	(revision 7091693ad07ea2f554a01a35b7270171eda9d4f9)
++++ b/src/compositor/compositor.c	(revision 9513e54fd12235ec306dd53fcea9ed28fa7f9f60)
+@@ -108,6 +108,7 @@
    gulong before_paint_handler_id;
    gulong after_paint_handler_id;
    gulong window_visibility_updated_id;
@@ -1857,7 +1221,7 @@ index 6f4982553..fe5c0f0e9 100644
  
    int64_t server_time_query_time;
    int64_t server_time_offset;
-@@ -122,6 +123,8 @@ typedef struct _MetaCompositorPrivate
+@@ -122,6 +123,8 @@
  
    CoglContext *context;
  
@@ -1866,7 +1230,7 @@ index 6f4982553..fe5c0f0e9 100644
    MetaWindowActor *top_window_actor;
    gulong top_window_actor_destroy_id;
  
-@@ -129,6 +132,8 @@ typedef struct _MetaCompositorPrivate
+@@ -129,6 +132,8 @@
  
    int switch_workspace_in_progress;
  
@@ -1875,7 +1239,7 @@ index 6f4982553..fe5c0f0e9 100644
    MetaPluginManager *plugin_mgr;
  
    MetaLaters *laters;
-@@ -137,6 +142,8 @@ typedef struct _MetaCompositorPrivate
+@@ -137,6 +142,8 @@
  G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (MetaCompositor, meta_compositor,
                                       G_TYPE_OBJECT)
  
@@ -1884,7 +1248,7 @@ index 6f4982553..fe5c0f0e9 100644
  static void
  on_presented (ClutterStage     *stage,
                ClutterStageView *stage_view,
-@@ -410,6 +417,14 @@ meta_compositor_redirect_x11_windows (MetaCompositor *compositor)
+@@ -410,6 +417,14 @@
      redirect_windows (display->x11_display);
  }
  
@@ -1899,7 +1263,7 @@ index 6f4982553..fe5c0f0e9 100644
  gboolean
  meta_compositor_do_manage (MetaCompositor  *compositor,
                             GError         **error)
-@@ -587,6 +602,23 @@ meta_compositor_window_opacity_changed (MetaCompositor *compositor,
+@@ -587,6 +602,23 @@
    meta_window_actor_update_opacity (window_actor);
  }
  
@@ -1923,7 +1287,7 @@ index 6f4982553..fe5c0f0e9 100644
  gboolean
  meta_compositor_filter_keybinding (MetaCompositor *compositor,
                                     MetaKeyBinding *binding)
-@@ -908,6 +940,7 @@ meta_compositor_sync_stack (MetaCompositor  *compositor,
+@@ -908,6 +940,7 @@
    sync_actor_stacking (compositor);
  
    update_top_window_actor (compositor);
@@ -1931,7 +1295,7 @@ index 6f4982553..fe5c0f0e9 100644
  }
  
  void
-@@ -926,6 +959,66 @@ meta_compositor_sync_window_geometry (MetaCompositor *compositor,
+@@ -926,6 +959,66 @@
      meta_plugin_manager_event_size_changed (priv->plugin_mgr, window_actor);
  }
  
@@ -1998,7 +1362,7 @@ index 6f4982553..fe5c0f0e9 100644
  static void
  on_presented (ClutterStage     *stage,
                ClutterStageView *stage_view,
-@@ -953,34 +1046,46 @@ on_presented (ClutterStage     *stage,
+@@ -953,34 +1046,46 @@
  }
  
  static void
@@ -2052,7 +1416,7 @@ index 6f4982553..fe5c0f0e9 100644
    GList *l;
  
    status = cogl_get_graphics_reset_status (priv->context);
-@@ -1007,6 +1112,8 @@ meta_compositor_real_after_paint (MetaCompositor   *compositor,
+@@ -1007,6 +1112,8 @@
        break;
      }
  
@@ -2061,7 +1425,7 @@ index 6f4982553..fe5c0f0e9 100644
    for (l = priv->windows; l; l = l->next)
      {
        ClutterActor *actor = l->data;
-@@ -1019,12 +1126,17 @@ meta_compositor_real_after_paint (MetaCompositor   *compositor,
+@@ -1019,12 +1126,17 @@
  }
  
  static void
@@ -2082,7 +1446,7 @@ index 6f4982553..fe5c0f0e9 100644
  }
  
  static void
-@@ -1032,7 +1144,14 @@ on_before_paint (ClutterStage     *stage,
+@@ -1032,7 +1144,14 @@
                   ClutterStageView *stage_view,
                   MetaCompositor   *compositor)
  {
@@ -2098,7 +1462,7 @@ index 6f4982553..fe5c0f0e9 100644
  }
  
  static void
-@@ -1040,7 +1159,14 @@ on_after_paint (ClutterStage     *stage,
+@@ -1040,7 +1159,14 @@
                  ClutterStageView *stage_view,
                  MetaCompositor   *compositor)
  {
@@ -2114,7 +1478,7 @@ index 6f4982553..fe5c0f0e9 100644
  }
  
  static void
-@@ -1051,6 +1177,14 @@ on_window_visibility_updated (MetaDisplay    *display,
+@@ -1051,6 +1177,14 @@
                                MetaCompositor *compositor)
  {
    update_top_window_actor (compositor);
@@ -2129,7 +1493,7 @@ index 6f4982553..fe5c0f0e9 100644
  }
  
  static void
-@@ -1102,6 +1236,7 @@ meta_compositor_get_property (GObject    *object,
+@@ -1102,6 +1236,7 @@
  static void
  meta_compositor_init (MetaCompositor *compositor)
  {
@@ -2137,7 +1501,7 @@ index 6f4982553..fe5c0f0e9 100644
  }
  
  static void
-@@ -1113,6 +1248,8 @@ meta_compositor_constructed (GObject *object)
+@@ -1113,6 +1248,8 @@
    ClutterBackend *clutter_backend =
      meta_backend_get_clutter_backend (priv->backend);
    ClutterActor *stage = meta_backend_get_stage (priv->backend);
@@ -2146,7 +1510,7 @@ index 6f4982553..fe5c0f0e9 100644
  
    priv->context = clutter_backend->cogl_context;
  
-@@ -1133,9 +1270,17 @@ meta_compositor_constructed (GObject *object)
+@@ -1133,9 +1270,17 @@
                        G_CALLBACK (on_window_visibility_updated),
                        compositor);
  
@@ -2164,7 +1528,7 @@ index 6f4982553..fe5c0f0e9 100644
  }
  
  static void
-@@ -1190,6 +1335,9 @@ meta_compositor_class_init (MetaCompositorClass *klass)
+@@ -1190,6 +1335,9 @@
                           G_PARAM_CONSTRUCT_ONLY |
                           G_PARAM_STATIC_STRINGS);
    g_object_class_install_properties (object_class, N_PROPS, obj_props);
@@ -2174,10 +1538,324 @@ index 6f4982553..fe5c0f0e9 100644
  }
  
  /**
+Index: src/compositor/meta-compositor-view.c
+===================================================================
+diff --git a/src/compositor/meta-compositor-view.c b/src/compositor/meta-compositor-view.c
+new file mode 100644
+--- /dev/null	(revision 2ba361d6dc82a16c8b1c9ae0754bea5e78319982)
++++ b/src/compositor/meta-compositor-view.c	(revision 2ba361d6dc82a16c8b1c9ae0754bea5e78319982)
+@@ -0,0 +1,196 @@
++/* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
++
++/*
++ * Copyright (C) 2022 Dor Askayo
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License as
++ * published by the Free Software Foundation; either version 2 of the
++ * License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
++ * 02111-1307, USA.
++ *
++ * Written by:
++ *     Dor Askayo <dor.askayo@gmail.com>
++ */
++
++#include "compositor/meta-compositor-view.h"
++
++#include "core/window-private.h"
++#include "meta/boxes.h"
++#include "meta/window.h"
++
++enum
++{
++  PROP_0,
++
++  PROP_STAGE_VIEW,
++
++  N_PROPS
++};
++
++static GParamSpec *obj_props[N_PROPS];
++
++typedef struct _MetaCompositorViewPrivate
++{
++  ClutterStageView *stage_view;
++
++  MetaWindowActor *top_window_actor;
++} MetaCompositorViewPrivate;
++
++G_DEFINE_TYPE_WITH_PRIVATE (MetaCompositorView, meta_compositor_view,
++                            G_TYPE_OBJECT)
++
++MetaCompositorView *
++meta_compositor_view_new (ClutterStageView *stage_view)
++{
++  g_assert (stage_view);
++
++  return g_object_new (META_TYPE_COMPOSITOR_VIEW,
++                       "stage-view", stage_view,
++                       NULL);
++}
++
++static MetaWindowActor *
++find_top_window_actor_on_view (ClutterStageView *stage_view,
++                               GList            *window_actors)
++{
++  GList *l;
++
++  for (l = g_list_last (window_actors); l; l = l->prev)
++    {
++      MetaWindowActor *window_actor = l->data;
++      MetaWindow *window =
++        meta_window_actor_get_meta_window (window_actor);
++      MetaRectangle buffer_rect;
++      MetaRectangle view_layout;
++
++      if (!window->visible_to_compositor)
++        continue;
++
++      meta_window_get_buffer_rect (window, &buffer_rect);
++      clutter_stage_view_get_layout (stage_view,
++                                     &view_layout);
++
++      if (meta_rectangle_overlap (&view_layout, &buffer_rect))
++        return window_actor;
++    }
++
++  return NULL;
++}
++
++void
++meta_compositor_view_update_top_window_actor (MetaCompositorView *compositor_view,
++                                              GList              *window_actors)
++{
++  MetaCompositorViewPrivate *priv =
++    meta_compositor_view_get_instance_private (compositor_view);
++  MetaWindowActor *top_window_actor;
++
++  top_window_actor = find_top_window_actor_on_view (priv->stage_view,
++                                                    window_actors);
++
++  g_set_weak_pointer (&priv->top_window_actor,
++                      top_window_actor);
++}
++
++MetaWindowActor *
++meta_compositor_view_get_top_window_actor (MetaCompositorView *compositor_view)
++{
++  MetaCompositorViewPrivate *priv =
++    meta_compositor_view_get_instance_private (compositor_view);
++
++  return priv->top_window_actor;
++}
++
++ClutterStageView *
++meta_compositor_view_get_stage_view (MetaCompositorView *compositor_view)
++{
++  MetaCompositorViewPrivate *priv =
++    meta_compositor_view_get_instance_private (compositor_view);
++
++  return priv->stage_view;
++}
++
++static void
++meta_compositor_view_set_property (GObject      *object,
++                                   guint         prop_id,
++                                   const GValue *value,
++                                   GParamSpec   *pspec)
++{
++  MetaCompositorView *compositor_view = META_COMPOSITOR_VIEW (object);
++  MetaCompositorViewPrivate *priv =
++    meta_compositor_view_get_instance_private (compositor_view);
++
++  switch (prop_id)
++    {
++    case PROP_STAGE_VIEW:
++      priv->stage_view = g_value_get_object (value);
++      break;
++    default:
++      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
++    }
++}
++
++static void
++meta_compositor_view_get_property (GObject    *object,
++                                   guint       prop_id,
++                                   GValue     *value,
++                                   GParamSpec *pspec)
++{
++  MetaCompositorView *compositor_view = META_COMPOSITOR_VIEW (object);
++  MetaCompositorViewPrivate *priv =
++    meta_compositor_view_get_instance_private (compositor_view);
++
++  switch (prop_id)
++    {
++    case PROP_STAGE_VIEW:
++      g_value_set_object (value, priv->stage_view);
++      break;
++    default:
++      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
++    }
++}
++
++static void
++meta_compositor_view_finalize (GObject *object)
++{
++  MetaCompositorView *compositor_view = META_COMPOSITOR_VIEW (object);
++  MetaCompositorViewPrivate *priv =
++    meta_compositor_view_get_instance_private (compositor_view);
++
++  g_clear_weak_pointer (&priv->top_window_actor);
++}
++
++static void
++meta_compositor_view_class_init (MetaCompositorViewClass *klass)
++{
++  GObjectClass *object_class = G_OBJECT_CLASS (klass);
++
++  object_class->set_property = meta_compositor_view_set_property;
++  object_class->get_property = meta_compositor_view_get_property;
++  object_class->finalize = meta_compositor_view_finalize;
++
++  obj_props[PROP_STAGE_VIEW] =
++    g_param_spec_object ("stage-view",
++                         "stage-view",
++                         "ClutterStageView",
++                         CLUTTER_TYPE_STAGE_VIEW,
++                         G_PARAM_READWRITE |
++                         G_PARAM_CONSTRUCT_ONLY |
++                         G_PARAM_STATIC_STRINGS);
++  g_object_class_install_properties (object_class, N_PROPS, obj_props);
++}
++
++static void
++meta_compositor_view_init (MetaCompositorView *compositor_view)
++{
++}
+Index: src/compositor/meta-compositor-view.h
+===================================================================
+diff --git a/src/compositor/meta-compositor-view.h b/src/compositor/meta-compositor-view.h
+new file mode 100644
+--- /dev/null	(revision 9513e54fd12235ec306dd53fcea9ed28fa7f9f60)
++++ b/src/compositor/meta-compositor-view.h	(revision 9513e54fd12235ec306dd53fcea9ed28fa7f9f60)
+@@ -0,0 +1,51 @@
++/* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
++
++/*
++ * Copyright (C) 2022 Dor Askayo
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License as
++ * published by the Free Software Foundation; either version 2 of the
++ * License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
++ * 02111-1307, USA.
++ *
++ * Written by:
++ *     Dor Askayo <dor.askayo@gmail.com>
++ */
++
++#ifndef META_COMPOSITOR_VIEW_H
++#define META_COMPOSITOR_VIEW_H
++
++#include <glib-object.h>
++
++#include "clutter/clutter-mutter.h"
++#include "meta/meta-window-actor.h"
++
++struct _MetaCompositorViewClass
++{
++  GObjectClass parent_class;
++};
++
++#define META_TYPE_COMPOSITOR_VIEW (meta_compositor_view_get_type ())
++G_DECLARE_DERIVABLE_TYPE (MetaCompositorView, meta_compositor_view,
++                          META, COMPOSITOR_VIEW, GObject)
++
++MetaCompositorView *meta_compositor_view_new (ClutterStageView *stage_view);
++
++void meta_compositor_view_update_top_window_actor (MetaCompositorView *compositor_view,
++                                                   GList              *window_actors);
++
++MetaWindowActor *meta_compositor_view_get_top_window_actor (MetaCompositorView *compositor_view);
++
++ClutterStageView *meta_compositor_view_get_stage_view (MetaCompositorView *compositor_view);
++
++#endif /* META_COMPOSITOR_VIEW_H */
+Index: src/compositor/compositor-private.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/compositor/compositor-private.h b/src/compositor/compositor-private.h
+--- a/src/compositor/compositor-private.h	(revision a7a577ded7020d7a907530a1c8f7c4bd2941a344)
++++ b/src/compositor/compositor-private.h	(revision 9513e54fd12235ec306dd53fcea9ed28fa7f9f60)
+@@ -7,6 +7,7 @@
+ 
+ #include "clutter/clutter-mutter.h"
+ #include "clutter/clutter.h"
++#include "compositor/meta-compositor-view.h"
+ #include "compositor/meta-plugin-manager.h"
+ #include "compositor/meta-window-actor-private.h"
+ #include "meta/compositor.h"
+@@ -24,16 +25,19 @@
+   gboolean (* manage) (MetaCompositor  *compositor,
+                        GError         **error);
+   void (* unmanage) (MetaCompositor *compositor);
+-  void (* before_paint) (MetaCompositor   *compositor,
+-                         ClutterStageView *stage_view);
+-  void (* after_paint) (MetaCompositor   *compositor,
+-                        ClutterStageView *stage_view);
++  void (* before_paint) (MetaCompositor     *compositor,
++                         MetaCompositorView *compositor_view);
++  void (* after_paint) (MetaCompositor     *compositor,
++                        MetaCompositorView *compositor_view);
+   void (* remove_window) (MetaCompositor *compositor,
+                           MetaWindow     *window);
+   int64_t (* monotonic_to_high_res_xserver_time) (MetaCompositor *compositor,
+                                                   int64_t         time_us);
+   void (* grab_begin) (MetaCompositor *compositor);
+   void (* grab_end) (MetaCompositor *compositor);
++
++  MetaCompositorView * (* create_view) (MetaCompositor   *compositor,
++                                        ClutterStageView *stage_view);
+ };
+ 
+ gboolean meta_compositor_do_manage (MetaCompositor  *compositor,
+@@ -42,6 +46,8 @@
+ void meta_compositor_remove_window_actor (MetaCompositor  *compositor,
+                                           MetaWindowActor *window_actor);
+ 
++void meta_compositor_window_actor_stage_views_changed (MetaCompositor *compositor);
++
+ void meta_switch_workspace_completed (MetaCompositor *compositor);
+ 
+ MetaPluginManager * meta_compositor_get_plugin_manager (MetaCompositor *compositor);
+Index: src/compositor/meta-compositor-native.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
 diff --git a/src/compositor/meta-compositor-native.c b/src/compositor/meta-compositor-native.c
-index bc17704e1..63680b6d8 100644
---- a/src/compositor/meta-compositor-native.c
-+++ b/src/compositor/meta-compositor-native.c
+--- a/src/compositor/meta-compositor-native.c	(revision a7a577ded7020d7a907530a1c8f7c4bd2941a344)
++++ b/src/compositor/meta-compositor-native.c	(revision 28a51a2b394f0dfd100685c80a4bd585abf3bcd1)
 @@ -24,6 +24,7 @@
  
  #include "backends/meta-logical-monitor.h"
@@ -2186,7 +1864,7 @@ index bc17704e1..63680b6d8 100644
  #include "compositor/meta-surface-actor-wayland.h"
  
  struct _MetaCompositorNative
-@@ -156,17 +157,33 @@ done:
+@@ -156,17 +157,33 @@
  #endif /* HAVE_WAYLAND */
  
  static void
@@ -2223,48 +1901,20 @@ index bc17704e1..63680b6d8 100644
  }
  
  MetaCompositorNative *
-@@ -203,4 +220,5 @@ meta_compositor_native_class_init (MetaCompositorNativeClass *klass)
+@@ -203,4 +220,5 @@
    object_class->finalize = meta_compositor_native_finalize;
  
    compositor_class->before_paint = meta_compositor_native_before_paint;
 +  compositor_class->create_view = meta_compositor_native_create_view;
  }
-diff --git a/src/compositor/meta-compositor-server.c b/src/compositor/meta-compositor-server.c
-index f0d469172..990aa1e77 100644
---- a/src/compositor/meta-compositor-server.c
-+++ b/src/compositor/meta-compositor-server.c
-@@ -22,6 +22,7 @@
- 
- #include "backends/meta-dnd-private.h"
- #include "compositor/meta-compositor-server.h"
-+#include "compositor/meta-compositor-view.h"
- #include "core/display-private.h"
- 
- G_DEFINE_TYPE (MetaCompositorServer, meta_compositor_server, META_TYPE_COMPOSITOR)
-@@ -66,6 +67,13 @@ meta_compositor_server_grab_end (MetaCompositor *compositor)
-   meta_display_sync_wayland_input_focus (display);
- }
- 
-+static MetaCompositorView *
-+meta_compositor_server_create_view (MetaCompositor   *compositor,
-+                                    ClutterStageView *stage_view)
-+{
-+  return meta_compositor_view_new (stage_view);
-+}
-+
- MetaCompositorServer *
- meta_compositor_server_new (MetaDisplay *display,
-                             MetaBackend *backend)
-@@ -91,4 +99,5 @@ meta_compositor_server_class_init (MetaCompositorServerClass *klass)
-    meta_compositor_server_monotonic_to_high_res_xserver_time;
-   compositor_class->grab_begin = meta_compositor_server_grab_begin;
-   compositor_class->grab_end = meta_compositor_server_grab_end;
-+  compositor_class->create_view = meta_compositor_server_create_view;
- }
+Index: src/compositor/meta-compositor-x11.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
 diff --git a/src/compositor/meta-compositor-x11.c b/src/compositor/meta-compositor-x11.c
-index 614bec674..e7cb39abe 100644
---- a/src/compositor/meta-compositor-x11.c
-+++ b/src/compositor/meta-compositor-x11.c
+--- a/src/compositor/meta-compositor-x11.c	(revision a7a577ded7020d7a907530a1c8f7c4bd2941a344)
++++ b/src/compositor/meta-compositor-x11.c	(revision 9513e54fd12235ec306dd53fcea9ed28fa7f9f60)
 @@ -28,6 +28,7 @@
  #include "backends/x11/meta-backend-x11.h"
  #include "backends/x11/meta-clutter-backend-x11.h"
@@ -2273,7 +1923,7 @@ index 614bec674..e7cb39abe 100644
  #include "compositor/meta-sync-ring.h"
  #include "compositor/meta-window-actor-x11.h"
  #include "core/display-private.h"
-@@ -385,8 +386,8 @@ on_after_update (ClutterStage     *stage,
+@@ -385,8 +386,8 @@
  }
  
  static void
@@ -2284,7 +1934,7 @@ index 614bec674..e7cb39abe 100644
  {
    MetaCompositorX11 *compositor_x11 = META_COMPOSITOR_X11 (compositor);
    MetaCompositorClass *parent_class;
-@@ -394,7 +395,7 @@ meta_compositor_x11_before_paint (MetaCompositor   *compositor,
+@@ -394,7 +395,7 @@
    maybe_unredirect_top_window (compositor_x11);
  
    parent_class = META_COMPOSITOR_CLASS (meta_compositor_x11_parent_class);
@@ -2293,7 +1943,7 @@ index 614bec674..e7cb39abe 100644
  }
  
  static void
-@@ -458,6 +459,13 @@ meta_compositor_x11_grab_end (MetaCompositor *compositor)
+@@ -458,6 +459,13 @@
    meta_backend_x11_sync_pointer (backend_x11);
  }
  
@@ -2307,90 +1957,21 @@ index 614bec674..e7cb39abe 100644
  Window
  meta_compositor_x11_get_output_xwindow (MetaCompositorX11 *compositor_x11)
  {
-@@ -532,4 +540,5 @@ meta_compositor_x11_class_init (MetaCompositorX11Class *klass)
+@@ -532,4 +540,5 @@
     meta_compositor_x11_monotonic_to_high_res_xserver_time;
    compositor_class->grab_begin = meta_compositor_x11_grab_begin;
    compositor_class->grab_end = meta_compositor_x11_grab_end;
 +  compositor_class->create_view = meta_compositor_x11_create_view;
  }
-diff --git a/src/compositor/meta-surface-actor.c b/src/compositor/meta-surface-actor.c
-index c2bf6696a..d5a32085c 100644
---- a/src/compositor/meta-surface-actor.c
-+++ b/src/compositor/meta-surface-actor.c
-@@ -51,6 +51,7 @@ enum
- {
-   REPAINT_SCHEDULED,
-   SIZE_CHANGED,
-+  FROZEN,
- 
-   LAST_SIGNAL,
- };
-@@ -269,6 +270,13 @@ meta_surface_actor_class_init (MetaSurfaceActorClass *klass)
-                                         0,
-                                         NULL, NULL, NULL,
-                                         G_TYPE_NONE, 0);
-+
-+  signals[FROZEN] = g_signal_new ("frozen",
-+                                  G_TYPE_FROM_CLASS (object_class),
-+                                  G_SIGNAL_RUN_LAST,
-+                                  0,
-+                                  NULL, NULL, NULL,
-+                                  G_TYPE_NONE, 0);
- }
- 
- gboolean
-@@ -513,6 +521,22 @@ meta_surface_actor_is_obscured_on_stage_view (MetaSurfaceActor *self,
-                                                       stage_view);
- }
- 
-+gboolean
-+meta_surface_actor_contains_rect (MetaSurfaceActor *surface_actor,
-+                                  MetaRectangle    *rect)
-+{
-+  ClutterActor *actor = CLUTTER_ACTOR (surface_actor);
-+  graphene_rect_t bounding_rect;
-+  graphene_rect_t bound_rect;
-+
-+  clutter_actor_get_transformed_extents (actor, &bounding_rect);
-+
-+  _clutter_util_rect_from_rectangle (rect, &bound_rect);
-+
-+  return graphene_rect_contains_rect (&bounding_rect,
-+                                      &bound_rect);
-+}
-+
- void
- meta_surface_actor_set_input_region (MetaSurfaceActor *self,
-                                      cairo_region_t   *region)
-@@ -594,6 +618,9 @@ meta_surface_actor_set_frozen (MetaSurfaceActor *self,
- 
-   priv->frozen = frozen;
- 
-+  if (frozen)
-+    g_signal_emit (self, signals[FROZEN], 0);
-+
-   if (!frozen && priv->pending_damage)
-     {
-       int i, n_rects = cairo_region_num_rectangles (priv->pending_damage);
-diff --git a/src/compositor/meta-surface-actor.h b/src/compositor/meta-surface-actor.h
-index f69cb1527..3128f513c 100644
---- a/src/compositor/meta-surface-actor.h
-+++ b/src/compositor/meta-surface-actor.h
-@@ -40,6 +40,9 @@ gboolean meta_surface_actor_is_obscured_on_stage_view (MetaSurfaceActor *self,
-                                                        ClutterStageView *stage_view,
-                                                        float            *unobscurred_fraction);
- 
-+gboolean meta_surface_actor_contains_rect (MetaSurfaceActor *surface_actor,
-+                                           MetaRectangle    *rect);
-+
- void meta_surface_actor_set_input_region (MetaSurfaceActor *self,
-                                           cairo_region_t   *region);
- void meta_surface_actor_set_opaque_region (MetaSurfaceActor *self,
+Index: src/compositor/meta-window-actor.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
 diff --git a/src/compositor/meta-window-actor.c b/src/compositor/meta-window-actor.c
-index ae1fa4d90..9fd9f758c 100644
---- a/src/compositor/meta-window-actor.c
-+++ b/src/compositor/meta-window-actor.c
-@@ -53,6 +53,8 @@ typedef struct _MetaWindowActorPrivate
+--- a/src/compositor/meta-window-actor.c	(revision 8e4e559f58b600fdda8d243705ac0c4851030516)
++++ b/src/compositor/meta-window-actor.c	(revision 2ba361d6dc82a16c8b1c9ae0754bea5e78319982)
+@@ -53,6 +53,8 @@
    MetaWindow *window;
    MetaCompositor *compositor;
  
@@ -2399,7 +1980,7 @@ index ae1fa4d90..9fd9f758c 100644
    MetaSurfaceActor *surface;
  
    int geometry_scale;
-@@ -402,6 +404,15 @@ init_surface_actor (MetaWindowActor *self)
+@@ -402,6 +404,15 @@
      meta_window_actor_assign_surface_actor (self, surface_actor);
  }
  
@@ -2415,7 +1996,7 @@ index ae1fa4d90..9fd9f758c 100644
  static void
  meta_window_actor_constructed (GObject *object)
  {
-@@ -412,6 +423,12 @@ meta_window_actor_constructed (GObject *object)
+@@ -412,6 +423,12 @@
  
    priv->compositor = window->display->compositor;
  
@@ -2428,7 +2009,7 @@ index ae1fa4d90..9fd9f758c 100644
    /* Hang our compositor window state off the MetaWindow for fast retrieval */
    meta_window_set_compositor_private (window, object);
  
-@@ -445,6 +462,8 @@ meta_window_actor_dispose (GObject *object)
+@@ -445,6 +462,8 @@
  
    priv->disposed = TRUE;
  
@@ -2437,11 +2018,15 @@ index ae1fa4d90..9fd9f758c 100644
    meta_compositor_remove_window_actor (compositor, self);
  
    g_clear_object (&priv->window);
+Index: src/core/window-private.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
 diff --git a/src/core/window-private.h b/src/core/window-private.h
-index 4f269ff37..6cddde7d6 100644
---- a/src/core/window-private.h
-+++ b/src/core/window-private.h
-@@ -716,6 +716,9 @@ void        meta_window_get_session_geometry (MetaWindow  *window,
+--- a/src/core/window-private.h	(revision 2ba361d6dc82a16c8b1c9ae0754bea5e78319982)
++++ b/src/core/window-private.h	(revision b1115334f6deee00c68eb340bb14a86ebc18e362)
+@@ -716,6 +716,9 @@
                                                int         *width,
                                                int         *height);
  
@@ -2451,11 +2036,15 @@ index 4f269ff37..6cddde7d6 100644
  void        meta_window_update_unfocused_button_grabs (MetaWindow *window);
  
  void        meta_window_update_appears_focused (MetaWindow *window);
+Index: src/core/window.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
 diff --git a/src/core/window.c b/src/core/window.c
-index e7278e48c..e08b57a91 100644
---- a/src/core/window.c
-+++ b/src/core/window.c
-@@ -4266,6 +4266,14 @@ meta_window_get_session_geometry (MetaWindow  *window,
+--- a/src/core/window.c	(revision 2ba361d6dc82a16c8b1c9ae0754bea5e78319982)
++++ b/src/core/window.c	(revision b1115334f6deee00c68eb340bb14a86ebc18e362)
+@@ -4250,6 +4250,14 @@
      window->size_hints.height_inc;
  }
  
@@ -2470,42 +2059,1277 @@ index e7278e48c..e08b57a91 100644
  /**
   * meta_window_get_buffer_rect:
   * @window: a #MetaWindow
-diff --git a/src/meson.build b/src/meson.build
-index 13a69c1a6..820efa0a5 100644
---- a/src/meson.build
-+++ b/src/meson.build
-@@ -320,6 +320,8 @@ mutter_sources = [
-   'compositor/meta-background-private.h',
-   'compositor/meta-compositor-server.c',
-   'compositor/meta-compositor-server.h',
-+  'compositor/meta-compositor-view.c',
-+  'compositor/meta-compositor-view.h',
-   'compositor/meta-compositor-x11.c',
-   'compositor/meta-compositor-x11.h',
-   'compositor/meta-cullable.c',
-@@ -769,6 +771,8 @@ if have_native_backend
-     'backends/native/meta-renderer-native-private.h',
-     'backends/native/meta-renderer-native.c',
-     'backends/native/meta-renderer-native.h',
-+    'backends/native/meta-renderer-view-native.c',
-+    'backends/native/meta-renderer-view-native.h',
-     'backends/native/meta-seat-impl.c',
-     'backends/native/meta-seat-impl.h',
-     'backends/native/meta-seat-native.c',
-@@ -785,6 +789,8 @@ if have_native_backend
-     'backends/native/meta-xkb-utils.h',
-     'compositor/meta-compositor-native.c',
-     'compositor/meta-compositor-native.h',
-+    'compositor/meta-compositor-view-native.c',
-+    'compositor/meta-compositor-view-native.h',
-   ]
- endif
+Index: src/compositor/meta-surface-actor.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/compositor/meta-surface-actor.h b/src/compositor/meta-surface-actor.h
+--- a/src/compositor/meta-surface-actor.h	(revision b1115334f6deee00c68eb340bb14a86ebc18e362)
++++ b/src/compositor/meta-surface-actor.h	(revision a53f9ddda70ad261d659a124fd9fc1c07c19f9c0)
+@@ -40,6 +40,9 @@
+                                                        ClutterStageView *stage_view,
+                                                        float            *unobscurred_fraction);
  
++gboolean meta_surface_actor_contains_rect (MetaSurfaceActor *surface_actor,
++                                           MetaRectangle    *rect);
++
+ void meta_surface_actor_set_input_region (MetaSurfaceActor *self,
+                                           cairo_region_t   *region);
+ void meta_surface_actor_set_opaque_region (MetaSurfaceActor *self,
+Index: src/compositor/meta-compositor-server.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/compositor/meta-compositor-server.c b/src/compositor/meta-compositor-server.c
+--- a/src/compositor/meta-compositor-server.c	(revision a53f9ddda70ad261d659a124fd9fc1c07c19f9c0)
++++ b/src/compositor/meta-compositor-server.c	(revision 9513e54fd12235ec306dd53fcea9ed28fa7f9f60)
+@@ -22,6 +22,7 @@
+ 
+ #include "backends/meta-dnd-private.h"
+ #include "compositor/meta-compositor-server.h"
++#include "compositor/meta-compositor-view.h"
+ #include "core/display-private.h"
+ 
+ G_DEFINE_TYPE (MetaCompositorServer, meta_compositor_server, META_TYPE_COMPOSITOR)
+@@ -66,6 +67,13 @@
+   meta_display_sync_wayland_input_focus (display);
+ }
+ 
++static MetaCompositorView *
++meta_compositor_server_create_view (MetaCompositor   *compositor,
++                                    ClutterStageView *stage_view)
++{
++  return meta_compositor_view_new (stage_view);
++}
++
+ MetaCompositorServer *
+ meta_compositor_server_new (MetaDisplay *display,
+                             MetaBackend *backend)
+@@ -91,4 +99,5 @@
+    meta_compositor_server_monotonic_to_high_res_xserver_time;
+   compositor_class->grab_begin = meta_compositor_server_grab_begin;
+   compositor_class->grab_end = meta_compositor_server_grab_end;
++  compositor_class->create_view = meta_compositor_server_create_view;
+ }
+Index: src/compositor/meta-compositor-view-native.c
+===================================================================
+diff --git a/src/compositor/meta-compositor-view-native.c b/src/compositor/meta-compositor-view-native.c
+new file mode 100644
+--- /dev/null	(revision 28a51a2b394f0dfd100685c80a4bd585abf3bcd1)
++++ b/src/compositor/meta-compositor-view-native.c	(revision 28a51a2b394f0dfd100685c80a4bd585abf3bcd1)
+@@ -0,0 +1,127 @@
++/* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
++
++/*
++ * Copyright (C) 2022 Dor Askayo
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License as
++ * published by the Free Software Foundation; either version 2 of the
++ * License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
++ * 02111-1307, USA.
++ *
++ * Written by:
++ *     Dor Askayo <dor.askayo@gmail.com>
++ */
++
++#include "compositor/meta-compositor-view-native.h"
++
++#include "backends/native/meta-renderer-view-native.h"
++#include "clutter/clutter.h"
++#include "compositor/compositor-private.h"
++#include "core/window-private.h"
++
++struct _MetaCompositorViewNative
++{
++  MetaCompositorView parent;
++};
++
++G_DEFINE_TYPE (MetaCompositorViewNative, meta_compositor_view_native,
++               META_TYPE_COMPOSITOR_VIEW)
++
++static ClutterActor *
++find_frame_sync_actor (MetaCompositorView *compositor_view,
++                       MetaCompositor     *compositor)
++{
++  MetaWindowActor *window_actor;
++  MetaWindow *window;
++  ClutterStageView *stage_view;
++  MetaRectangle view_layout;
++  MetaSurfaceActor *surface_actor;
++
++  if (meta_compositor_is_unredirect_inhibited (compositor))
++    return NULL;
++
++  window_actor =
++    meta_compositor_view_get_top_window_actor (compositor_view);
++  if (!window_actor)
++    return NULL;
++
++  if (meta_window_actor_is_frozen (window_actor))
++    return NULL;
++
++  if (meta_window_actor_effect_in_progress (window_actor))
++    return NULL;
++
++  if (clutter_actor_has_transitions (CLUTTER_ACTOR (window_actor)))
++    return NULL;
++
++  window = meta_window_actor_get_meta_window (window_actor);
++  if (!window)
++    return NULL;
++
++  stage_view = meta_compositor_view_get_stage_view (compositor_view);
++
++  clutter_stage_view_get_layout (stage_view, &view_layout);
++
++  if (!meta_window_frame_contains_rect (window, &view_layout))
++    return NULL;
++
++  surface_actor = meta_window_actor_get_scanout_candidate (window_actor);
++  if (!surface_actor)
++    return NULL;
++
++  if (!meta_surface_actor_contains_rect (surface_actor,
++                                         &view_layout))
++    return NULL;
++
++  return CLUTTER_ACTOR (surface_actor);
++}
++
++void
++meta_compositor_view_native_maybe_set_frame_sync (MetaCompositorViewNative *view_native,
++                                                  MetaCompositor           *compositor)
++{
++  MetaCompositorView *compositor_view =
++    META_COMPOSITOR_VIEW (view_native);
++  ClutterActor *frame_sync_actor;
++  MetaRendererViewNative *renderer_view_native;
++  ClutterStageView *stage_view;
++
++  frame_sync_actor = find_frame_sync_actor (compositor_view,
++                                            compositor);
++
++  stage_view = meta_compositor_view_get_stage_view (compositor_view);
++  renderer_view_native = META_RENDERER_VIEW_NATIVE (stage_view);
++
++  meta_renderer_view_native_set_frame_sync_actor (renderer_view_native,
++                                                  frame_sync_actor);
++}
++
++MetaCompositorViewNative *
++meta_compositor_view_native_new (ClutterStageView *stage_view)
++{
++  g_assert (stage_view);
++
++  return g_object_new (META_TYPE_COMPOSITOR_VIEW_NATIVE,
++                       "stage-view", stage_view,
++                       NULL);
++}
++
++static void
++meta_compositor_view_native_class_init (MetaCompositorViewNativeClass *klass)
++{
++}
++
++static void
++meta_compositor_view_native_init (MetaCompositorViewNative *view_native)
++{
++}
+Index: src/compositor/meta-compositor-view-native.h
+===================================================================
+diff --git a/src/compositor/meta-compositor-view-native.h b/src/compositor/meta-compositor-view-native.h
+new file mode 100644
+--- /dev/null	(revision 28a51a2b394f0dfd100685c80a4bd585abf3bcd1)
++++ b/src/compositor/meta-compositor-view-native.h	(revision 28a51a2b394f0dfd100685c80a4bd585abf3bcd1)
+@@ -0,0 +1,41 @@
++/* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
++
++/*
++ * Copyright (C) 2022 Dor Askayo
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License as
++ * published by the Free Software Foundation; either version 2 of the
++ * License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
++ * 02111-1307, USA.
++ *
++ * Written by:
++ *     Dor Askayo <dor.askayo@gmail.com>
++ */
++
++#ifndef META_COMPOSITOR_VIEW_NATIVE_H
++#define META_COMPOSITOR_VIEW_NATIVE_H
++
++#include "clutter/clutter-mutter.h"
++#include "compositor/meta-compositor-view.h"
++#include "meta/compositor.h"
++
++#define META_TYPE_COMPOSITOR_VIEW_NATIVE (meta_compositor_view_native_get_type ())
++G_DECLARE_FINAL_TYPE (MetaCompositorViewNative, meta_compositor_view_native,
++                      META, COMPOSITOR_VIEW_NATIVE, MetaCompositorView)
++
++MetaCompositorViewNative *meta_compositor_view_native_new (ClutterStageView *stage_view);
++
++void meta_compositor_view_native_maybe_set_frame_sync (MetaCompositorViewNative *view_native,
++                                                       MetaCompositor           *compositor);
++
++#endif /* META_COMPOSITOR_VIEW_NATIVE_H */
+Index: src/backends/native/meta-kms-connector.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/backends/native/meta-kms-connector.c b/src/backends/native/meta-kms-connector.c
+--- a/src/backends/native/meta-kms-connector.c	(revision 28a51a2b394f0dfd100685c80a4bd585abf3bcd1)
++++ b/src/backends/native/meta-kms-connector.c	(revision 11d821d16f99a4da3445466d265e0ff21c493910)
+@@ -298,6 +298,9 @@
+                 META_KMS_CONNECTOR_PROP_PRIVACY_SCREEN_HW_STATE))
+         set_privacy_screen (state, connector, prop,
+                             drm_connector->prop_values[i]);
++      else if ((prop->flags & DRM_MODE_PROP_RANGE) &&
++               strcmp (prop->name, "vrr_capable") == 0)
++        state->vrr_capable = drm_connector->prop_values[i];
+ 
+       drmModeFreeProperty (prop);
+     }
+@@ -541,6 +544,7 @@
+   state = g_new0 (MetaKmsConnectorState, 1);
+   state->suggested_x = -1;
+   state->suggested_y = -1;
++  state->vrr_capable = FALSE;
+ 
+   return state;
+ }
+@@ -635,6 +639,9 @@
+ 
+   if (!kms_modes_equal (state->modes, new_state->modes))
+     return META_KMS_UPDATE_CHANGE_FULL;
++
++  if (state->vrr_capable != new_state->vrr_capable)
++    return META_KMS_UPDATE_CHANGE_FULL;
+ 
+   if (state->privacy_screen_state != new_state->privacy_screen_state)
+     return META_KMS_UPDATE_CHANGE_PRIVACY_SCREEN;
+Index: src/backends/native/meta-kms-connector.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/backends/native/meta-kms-connector.h b/src/backends/native/meta-kms-connector.h
+--- a/src/backends/native/meta-kms-connector.h	(revision 28a51a2b394f0dfd100685c80a4bd585abf3bcd1)
++++ b/src/backends/native/meta-kms-connector.h	(revision 11d821d16f99a4da3445466d265e0ff21c493910)
+@@ -59,6 +59,8 @@
+   gboolean hotplug_mode_update;
+ 
+   MetaMonitorTransform panel_orientation_transform;
++
++  gboolean vrr_capable;
+ } MetaKmsConnectorState;
+ 
+ META_EXPORT_TEST
+Index: src/backends/native/meta-kms-impl-device-atomic.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/backends/native/meta-kms-impl-device-atomic.c b/src/backends/native/meta-kms-impl-device-atomic.c
+--- a/src/backends/native/meta-kms-impl-device-atomic.c	(revision 11d821d16f99a4da3445466d265e0ff21c493910)
++++ b/src/backends/native/meta-kms-impl-device-atomic.c	(revision a76ef60f0cdc3829469231a41d4684e36b4ab570)
+@@ -261,6 +261,39 @@
+   return TRUE;
+ }
+ 
++static gboolean
++process_crtc_update (MetaKmsImplDevice  *impl_device,
++                     MetaKmsUpdate      *update,
++                     drmModeAtomicReq   *req,
++                     GArray             *blob_ids,
++                     gpointer            update_entry,
++                     gpointer            user_data,
++                     GError            **error)
++{
++  MetaKmsCrtcUpdate *crtc_update = update_entry;
++  MetaKmsCrtc *crtc = crtc_update->crtc;
++
++  if (crtc_update->vrr_mode.has_update)
++    {
++      meta_topic (META_DEBUG_KMS,
++                  "[atomic] Setting VRR mode to %d on CRTC %u (%s)",
++                  crtc_update->vrr_mode.is_enabled ?
++                    META_KMS_CRTC_VRR_MODE_ENABLED :
++                    META_KMS_CRTC_VRR_MODE_DISABLED,
++                  meta_kms_crtc_get_id (crtc),
++                  meta_kms_impl_device_get_path (impl_device));
++
++      if (!add_crtc_property (impl_device,
++                              crtc, req,
++                              META_KMS_CRTC_PROP_VRR_ENABLED,
++                              crtc_update->vrr_mode.is_enabled,
++                              error))
++        return FALSE;
++    }
++
++  return TRUE;
++}
++
+ static gboolean
+ process_mode_set (MetaKmsImplDevice  *impl_device,
+                   MetaKmsUpdate      *update,
+@@ -948,6 +981,16 @@
+                         &error))
+     goto err;
+ 
++  if (!process_entries (impl_device,
++                        update,
++                        req,
++                        blob_ids,
++                        meta_kms_update_get_crtc_updates (update),
++                        NULL,
++                        process_crtc_update,
++                        &error))
++    goto err;
++
+   if (!process_entries (impl_device,
+                         update,
+                         req,
+@@ -978,7 +1021,7 @@
+                         &error))
+     goto err;
+ 
+-  if (meta_kms_update_get_mode_sets (update))
++  if (meta_kms_update_needs_allow_modeset (update))
+     commit_flags |= DRM_MODE_ATOMIC_ALLOW_MODESET;
+   else
+     commit_flags |= DRM_MODE_ATOMIC_NONBLOCK;
+Index: src/backends/native/meta-kms-update-private.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/backends/native/meta-kms-update-private.h b/src/backends/native/meta-kms-update-private.h
+--- a/src/backends/native/meta-kms-update-private.h	(revision 11d821d16f99a4da3445466d265e0ff21c493910)
++++ b/src/backends/native/meta-kms-update-private.h	(revision a76ef60f0cdc3829469231a41d4684e36b4ab570)
+@@ -84,6 +84,16 @@
+   } privacy_screen;
+ } MetaKmsConnectorUpdate;
+ 
++typedef struct _MetaKmsCrtcUpdate
++{
++  MetaKmsCrtc *crtc;
++
++  struct {
++    gboolean has_update;
++    gboolean is_enabled;
++  } vrr_mode;
++} MetaKmsCrtcUpdate;
++
+ typedef struct _MetaKmsPageFlipListener
+ {
+   MetaKmsCrtc *crtc;
+@@ -157,9 +167,15 @@
+ META_EXPORT_TEST
+ GList * meta_kms_update_get_connector_updates (MetaKmsUpdate *update);
+ 
++META_EXPORT_TEST
++GList * meta_kms_update_get_crtc_updates (MetaKmsUpdate *update);
++
+ META_EXPORT_TEST
+ GList * meta_kms_update_get_crtc_gammas (MetaKmsUpdate *update);
+ 
++META_EXPORT_TEST
++gboolean meta_kms_update_needs_allow_modeset (MetaKmsUpdate *update);
++
+ MetaKmsCustomPageFlip * meta_kms_update_take_custom_page_flip_func (MetaKmsUpdate *update);
+ 
+ void meta_kms_update_drop_plane_assignment (MetaKmsUpdate *update,
+Index: src/backends/native/meta-kms-update.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/backends/native/meta-kms-update.c b/src/backends/native/meta-kms-update.c
+--- a/src/backends/native/meta-kms-update.c	(revision 11d821d16f99a4da3445466d265e0ff21c493910)
++++ b/src/backends/native/meta-kms-update.c	(revision a76ef60f0cdc3829469231a41d4684e36b4ab570)
+@@ -38,8 +38,11 @@
+   GList *mode_sets;
+   GList *plane_assignments;
+   GList *connector_updates;
++  GList *crtc_updates;
+   GList *crtc_gammas;
+ 
++  gboolean needs_allow_modeset;
++
+   MetaKmsCustomPageFlip *custom_page_flip;
+ 
+   GList *page_flip_listeners;
+@@ -284,6 +287,8 @@
+   };
+ 
+   update->mode_sets = g_list_prepend (update->mode_sets, mode_set);
++
++  update->needs_allow_modeset = TRUE;
+ }
+ 
+ static MetaKmsConnectorUpdate *
+@@ -404,6 +409,45 @@
+   update->crtc_gammas = g_list_prepend (update->crtc_gammas, gamma);
+ }
+ 
++static MetaKmsCrtcUpdate *
++ensure_crtc_update (MetaKmsUpdate *update,
++                    MetaKmsCrtc   *crtc)
++{
++  GList *l;
++  MetaKmsCrtcUpdate *crtc_update;
++
++  for (l = update->crtc_updates; l; l = l->next)
++    {
++      crtc_update = l->data;
++
++      if (crtc_update->crtc == crtc)
++        return crtc_update;
++    }
++
++  crtc_update = g_new0 (MetaKmsCrtcUpdate, 1);
++  crtc_update->crtc = crtc;
++
++  update->crtc_updates = g_list_prepend (update->crtc_updates,
++                                         crtc_update);
++
++  return crtc_update;
++}
++
++void
++meta_kms_update_set_vrr_mode (MetaKmsUpdate *update,
++                              MetaKmsCrtc   *crtc,
++                              gboolean       enabled)
++{
++  MetaKmsCrtcUpdate *crtc_update;
++
++  g_assert (!meta_kms_update_is_locked (update));
++  g_assert (meta_kms_crtc_get_device (crtc) == update->device);
++
++  crtc_update = ensure_crtc_update (update, crtc);
++  crtc_update->vrr_mode.has_update = TRUE;
++  crtc_update->vrr_mode.is_enabled = enabled;
++}
++
+ void
+ meta_kms_update_add_page_flip_listener (MetaKmsUpdate                       *update,
+                                         MetaKmsCrtc                         *crtc,
+@@ -635,12 +679,24 @@
+   return update->connector_updates;
+ }
+ 
++GList *
++meta_kms_update_get_crtc_updates (MetaKmsUpdate *update)
++{
++  return update->crtc_updates;
++}
++
+ GList *
+ meta_kms_update_get_crtc_gammas (MetaKmsUpdate *update)
+ {
+   return update->crtc_gammas;
+ }
+ 
++gboolean
++meta_kms_update_needs_allow_modeset (MetaKmsUpdate *update)
++{
++  return update->needs_allow_modeset;
++}
++
+ void
+ meta_kms_update_lock (MetaKmsUpdate *update)
+ {
+@@ -692,6 +748,7 @@
+   update = g_new0 (MetaKmsUpdate, 1);
+   update->device = device;
+   update->sequence_number = sequence_number++;
++  update->needs_allow_modeset = FALSE;
+ 
+   return update;
+ }
+@@ -708,6 +765,7 @@
+   g_list_free_full (update->page_flip_listeners,
+                     (GDestroyNotify) meta_kms_page_flip_listener_free);
+   g_list_free_full (update->connector_updates, g_free);
++  g_list_free_full (update->crtc_updates, g_free);
+   g_list_free_full (update->crtc_gammas, (GDestroyNotify) meta_kms_crtc_gamma_free);
+   g_clear_pointer (&update->custom_page_flip, meta_kms_custom_page_flip_free);
+ 
+Index: src/backends/native/meta-kms-crtc-private.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/backends/native/meta-kms-crtc-private.h b/src/backends/native/meta-kms-crtc-private.h
+--- a/src/backends/native/meta-kms-crtc-private.h	(revision ad6ada78a03583921124442cad4ac51fa5d64e02)
++++ b/src/backends/native/meta-kms-crtc-private.h	(revision a76ef60f0cdc3829469231a41d4684e36b4ab570)
+@@ -30,9 +30,17 @@
+   META_KMS_CRTC_PROP_MODE_ID = 0,
+   META_KMS_CRTC_PROP_ACTIVE,
+   META_KMS_CRTC_PROP_GAMMA_LUT,
++  META_KMS_CRTC_PROP_VRR_ENABLED,
+   META_KMS_CRTC_N_PROPS
+ } MetaKmsCrtcProp;
+ 
++typedef enum _MetaKmsCrtcVRRMode
++{
++  META_KMS_CRTC_VRR_MODE_DISABLED = 0,
++  META_KMS_CRTC_VRR_MODE_ENABLED,
++  META_KMS_CRTC_VRR_MODE_N_PROPS,
++} MetaKmsCrtcVRRMode;
++
+ MetaKmsCrtc * meta_kms_crtc_new (MetaKmsImplDevice  *impl_device,
+                                  drmModeCrtc        *drm_crtc,
+                                  int                 idx,
+Index: src/backends/native/meta-kms-crtc.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/backends/native/meta-kms-crtc.c b/src/backends/native/meta-kms-crtc.c
+--- a/src/backends/native/meta-kms-crtc.c	(revision ad6ada78a03583921124442cad4ac51fa5d64e02)
++++ b/src/backends/native/meta-kms-crtc.c	(revision a76ef60f0cdc3829469231a41d4684e36b4ab570)
+@@ -390,6 +390,11 @@
+           .name = "GAMMA_LUT",
+           .type = DRM_MODE_PROP_BLOB,
+         },
++      [META_KMS_CRTC_PROP_VRR_ENABLED] =
++        {
++          .name = "VRR_ENABLED",
++          .type = DRM_MODE_PROP_RANGE,
++        },
+     }
+   };
+ 
+Index: src/backends/native/meta-kms-impl-device-simple.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/backends/native/meta-kms-impl-device-simple.c b/src/backends/native/meta-kms-impl-device-simple.c
+--- a/src/backends/native/meta-kms-impl-device-simple.c	(revision ad6ada78a03583921124442cad4ac51fa5d64e02)
++++ b/src/backends/native/meta-kms-impl-device-simple.c	(revision a76ef60f0cdc3829469231a41d4684e36b4ab570)
+@@ -180,6 +180,47 @@
+   return TRUE;
+ }
+ 
++static gboolean
++set_crtc_property (MetaKmsImplDevice  *impl_device,
++                   MetaKmsCrtc        *crtc,
++                   MetaKmsCrtcProp     prop,
++                   uint64_t            value,
++                   GError            **error)
++{
++  uint32_t prop_id;
++  int fd;
++  int ret;
++
++  prop_id = meta_kms_crtc_get_prop_id (crtc, prop);
++  if (!prop_id)
++    {
++      g_set_error (error, G_IO_ERROR, G_IO_ERROR_NOT_SUPPORTED,
++                   "Property (%s) not found on CRTC %u",
++                   meta_kms_crtc_get_prop_name (crtc, prop),
++                   meta_kms_crtc_get_id (crtc));
++      return FALSE;
++    }
++
++  fd = meta_kms_impl_device_get_fd (impl_device);
++
++  ret = drmModeObjectSetProperty (fd,
++                                  meta_kms_crtc_get_id (crtc),
++                                  DRM_MODE_OBJECT_CRTC,
++                                  prop_id,
++                                  value);
++  if (ret != 0)
++    {
++      g_set_error (error, G_IO_ERROR, g_io_error_from_errno (-ret),
++                   "Failed to set CRTC %u property %u: %s",
++                   meta_kms_crtc_get_id (crtc),
++                   prop_id,
++                   g_strerror (-ret));
++      return FALSE;
++    }
++
++  return TRUE;
++}
++
+ static gboolean
+ process_connector_update (MetaKmsImplDevice  *impl_device,
+                           MetaKmsUpdate      *update,
+@@ -253,6 +294,36 @@
+   return TRUE;
+ }
+ 
++static gboolean
++process_crtc_update (MetaKmsImplDevice  *impl_device,
++                     MetaKmsUpdate      *update,
++                     gpointer            update_entry,
++                     GError            **error)
++{
++  MetaKmsCrtcUpdate *crtc_update = update_entry;
++  MetaKmsCrtc *crtc = crtc_update->crtc;
++
++  if (crtc_update->vrr_mode.has_update)
++    {
++      meta_topic (META_DEBUG_KMS,
++                  "[simple] Setting VRR mode to %d on CRTC %u (%s)",
++                  crtc_update->vrr_mode.is_enabled ?
++                    META_KMS_CRTC_VRR_MODE_ENABLED :
++                    META_KMS_CRTC_VRR_MODE_DISABLED,
++                  meta_kms_crtc_get_id (crtc),
++                  meta_kms_impl_device_get_path (impl_device));
++
++      if (!set_crtc_property (impl_device,
++                              crtc,
++                              META_KMS_CRTC_PROP_VRR_ENABLED,
++                              crtc_update->vrr_mode.is_enabled,
++                              error))
++        return FALSE;
++    }
++
++  return TRUE;
++}
++
+ static CachedModeSet *
+ cached_mode_set_new (GList                 *connectors,
+                      const drmModeModeInfo *drm_mode,
+@@ -1491,6 +1562,13 @@
+                         process_connector_update,
+                         &error))
+     goto err;
++
++  if (!process_entries (impl_device,
++                        update,
++                        meta_kms_update_get_crtc_updates (update),
++                        process_crtc_update,
++                        &error))
++    goto err;
+ 
+   if (!process_entries (impl_device,
+                         update,
+Index: src/backends/native/meta-kms-update.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/backends/native/meta-kms-update.h b/src/backends/native/meta-kms-update.h
+--- a/src/backends/native/meta-kms-update.h	(revision ad6ada78a03583921124442cad4ac51fa5d64e02)
++++ b/src/backends/native/meta-kms-update.h	(revision a76ef60f0cdc3829469231a41d4684e36b4ab570)
+@@ -123,6 +123,10 @@
+                                      const uint16_t *green,
+                                      const uint16_t *blue);
+ 
++void meta_kms_update_set_vrr_mode (MetaKmsUpdate *update,
++                                   MetaKmsCrtc   *crtc,
++                                   gboolean       enabled);
++
+ void meta_kms_plane_assignment_set_fb_damage (MetaKmsPlaneAssignment *plane_assignment,
+                                               const int              *rectangles,
+                                               int                     n_rectangles);
+Index: data/61-mutter.rules
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/data/61-mutter.rules b/data/61-mutter.rules
+--- a/data/61-mutter.rules	(revision a76ef60f0cdc3829469231a41d4684e36b4ab570)
++++ b/data/61-mutter.rules	(revision 424f4d82c39ae7b9dc4470093316011329559d11)
+@@ -1,2 +1,2 @@
+-DRIVERS=="i915", SUBSYSTEM=="drm", TAG+="mutter-device-disable-kms-modifiers"
++DRIVERS=="i915", SUBSYSTEM=="drm", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
+ ENV{ID_PATH}=="platform-vkms", TAG+="mutter-device-ignore"
+Index: src/backends/native/meta-backend-native.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/backends/native/meta-backend-native.c b/src/backends/native/meta-backend-native.c
+--- a/src/backends/native/meta-backend-native.c	(revision a76ef60f0cdc3829469231a41d4684e36b4ab570)
++++ b/src/backends/native/meta-backend-native.c	(revision 424f4d82c39ae7b9dc4470093316011329559d11)
+@@ -448,6 +448,9 @@
+   if (meta_is_udev_device_disable_modifiers (device))
+     flags |= META_KMS_DEVICE_FLAG_DISABLE_MODIFIERS;
+ 
++  if (meta_is_udev_device_disable_vrr (device))
++    flags |= META_KMS_DEVICE_FLAG_DISABLE_VRR;
++
+   if (meta_is_udev_device_preferred_primary (device))
+     flags |= META_KMS_DEVICE_FLAG_PREFERRED_PRIMARY;
+ 
+Index: src/backends/native/meta-gpu-kms.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/backends/native/meta-gpu-kms.c b/src/backends/native/meta-gpu-kms.c
+--- a/src/backends/native/meta-gpu-kms.c	(revision a76ef60f0cdc3829469231a41d4684e36b4ab570)
++++ b/src/backends/native/meta-gpu-kms.c	(revision 424f4d82c39ae7b9dc4470093316011329559d11)
+@@ -143,6 +143,15 @@
+   return !!(flags & META_KMS_DEVICE_FLAG_DISABLE_MODIFIERS);
+ }
+ 
++gboolean
++meta_gpu_kms_disable_vrr (MetaGpuKms *gpu_kms)
++{
++  MetaKmsDeviceFlag flags;
++
++  flags = meta_kms_device_get_flags (gpu_kms->kms_device);
++  return !!(flags & META_KMS_DEVICE_FLAG_DISABLE_VRR);
++}
++
+ static int
+ compare_outputs (gconstpointer one,
+                  gconstpointer two)
+Index: src/backends/native/meta-gpu-kms.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/backends/native/meta-gpu-kms.h b/src/backends/native/meta-gpu-kms.h
+--- a/src/backends/native/meta-gpu-kms.h	(revision a76ef60f0cdc3829469231a41d4684e36b4ab570)
++++ b/src/backends/native/meta-gpu-kms.h	(revision 424f4d82c39ae7b9dc4470093316011329559d11)
+@@ -48,6 +48,7 @@
+ gboolean meta_gpu_kms_is_boot_vga (MetaGpuKms *gpu_kms);
+ gboolean meta_gpu_kms_is_platform_device (MetaGpuKms *gpu_kms);
+ gboolean meta_gpu_kms_disable_modifiers (MetaGpuKms *gpu_kms);
++gboolean meta_gpu_kms_disable_vrr (MetaGpuKms *gpu_kms);
+ 
+ MetaKmsDevice * meta_gpu_kms_get_kms_device (MetaGpuKms *gpu_kms);
+ 
+Index: src/backends/native/meta-kms-types.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/backends/native/meta-kms-types.h b/src/backends/native/meta-kms-types.h
+--- a/src/backends/native/meta-kms-types.h	(revision a76ef60f0cdc3829469231a41d4684e36b4ab570)
++++ b/src/backends/native/meta-kms-types.h	(revision 424f4d82c39ae7b9dc4470093316011329559d11)
+@@ -60,8 +60,9 @@
+   META_KMS_DEVICE_FLAG_BOOT_VGA = 1 << 0,
+   META_KMS_DEVICE_FLAG_PLATFORM_DEVICE = 1 << 1,
+   META_KMS_DEVICE_FLAG_DISABLE_MODIFIERS = 1 << 2,
+-  META_KMS_DEVICE_FLAG_PREFERRED_PRIMARY = 1 << 3,
+-  META_KMS_DEVICE_FLAG_NO_MODE_SETTING = 1 << 4,
++  META_KMS_DEVICE_FLAG_DISABLE_VRR = 1 << 3,
++  META_KMS_DEVICE_FLAG_PREFERRED_PRIMARY = 1 << 4,
++  META_KMS_DEVICE_FLAG_NO_MODE_SETTING = 1 << 5,
+ } MetaKmsDeviceFlag;
+ 
+ typedef enum _MetaKmsUpdateChanges
+Index: src/backends/native/meta-udev.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/backends/native/meta-udev.c b/src/backends/native/meta-udev.c
+--- a/src/backends/native/meta-udev.c	(revision a76ef60f0cdc3829469231a41d4684e36b4ab570)
++++ b/src/backends/native/meta-udev.c	(revision 424f4d82c39ae7b9dc4470093316011329559d11)
+@@ -102,6 +102,13 @@
+                                    "mutter-device-disable-kms-modifiers");
+ }
+ 
++gboolean
++meta_is_udev_device_disable_vrr (GUdevDevice *device)
++{
++  return meta_has_udev_device_tag (device,
++                                   "mutter-device-disable-vrr");
++}
++
+ gboolean
+ meta_is_udev_device_ignore (GUdevDevice *device)
+ {
+Index: src/backends/native/meta-udev.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/backends/native/meta-udev.h b/src/backends/native/meta-udev.h
+--- a/src/backends/native/meta-udev.h	(revision a76ef60f0cdc3829469231a41d4684e36b4ab570)
++++ b/src/backends/native/meta-udev.h	(revision 424f4d82c39ae7b9dc4470093316011329559d11)
+@@ -34,6 +34,8 @@
+ 
+ gboolean meta_is_udev_device_disable_modifiers (GUdevDevice *device);
+ 
++gboolean meta_is_udev_device_disable_vrr (GUdevDevice *device);
++
+ gboolean meta_is_udev_device_ignore (GUdevDevice *device);
+ 
+ gboolean meta_is_udev_test_device (GUdevDevice *device);
+Index: src/backends/meta-monitor-manager-private.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/backends/meta-monitor-manager-private.h b/src/backends/meta-monitor-manager-private.h
+--- a/src/backends/meta-monitor-manager-private.h	(revision 424f4d82c39ae7b9dc4470093316011329559d11)
++++ b/src/backends/meta-monitor-manager-private.h	(revision de8d98ceaf65d5ee57d520f3a45450556de09555)
+@@ -102,6 +102,7 @@
+   gboolean     is_primary;
+   gboolean     is_presentation;
+   gboolean     is_underscanning;
++  gboolean     is_vrr_allowed;
+ };
+ 
+ /*
+Index: src/backends/meta-output.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/backends/meta-output.c b/src/backends/meta-output.c
+--- a/src/backends/meta-output.c	(revision 424f4d82c39ae7b9dc4470093316011329559d11)
++++ b/src/backends/meta-output.c	(revision de8d98ceaf65d5ee57d520f3a45450556de09555)
+@@ -55,6 +55,8 @@
+ 
+   gboolean is_underscanning;
+ 
++  gboolean is_vrr_allowed;
++
+   int backlight;
+ } MetaOutputPrivate;
+ 
+@@ -177,6 +179,22 @@
+   return priv->is_underscanning;
+ }
+ 
++gboolean
++meta_output_is_vrr_capable (MetaOutput *output)
++{
++  const MetaOutputInfo *output_info = meta_output_get_info (output);
++
++  return output_info->vrr_capable;
++}
++
++gboolean
++meta_output_is_vrr_allowed (MetaOutput *output)
++{
++  MetaOutputPrivate *priv = meta_output_get_instance_private (output);
++
++  return priv->is_vrr_allowed;
++}
++
+ void
+ meta_output_set_backlight (MetaOutput *output,
+                            int         backlight)
+@@ -235,6 +253,7 @@
+   priv->is_primary = output_assignment->is_primary;
+   priv->is_presentation = output_assignment->is_presentation;
+   priv->is_underscanning = output_assignment->is_underscanning;
++  priv->is_vrr_allowed = output_assignment->is_vrr_allowed;
+ }
+ 
+ void
+Index: src/backends/meta-output.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/backends/meta-output.h b/src/backends/meta-output.h
+--- a/src/backends/meta-output.h	(revision 424f4d82c39ae7b9dc4470093316011329559d11)
++++ b/src/backends/meta-output.h	(revision de8d98ceaf65d5ee57d520f3a45450556de09555)
+@@ -103,6 +103,8 @@
+   gboolean supports_underscanning;
+   gboolean supports_color_transform;
+ 
++  gboolean vrr_capable;
++
+   /*
+    * Get a new preferred mode on hotplug events, to handle dynamic guest
+    * resizing.
+@@ -178,6 +180,11 @@
+ META_EXPORT_TEST
+ gboolean meta_output_is_underscanning (MetaOutput *output);
+ 
++gboolean meta_output_is_vrr_capable (MetaOutput *output);
++
++META_EXPORT_TEST
++gboolean meta_output_is_vrr_allowed (MetaOutput *output);
++
+ void meta_output_set_backlight (MetaOutput *output,
+                                 int         backlight);
+ 
+Index: src/backends/native/meta-output-kms.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/backends/native/meta-output-kms.c b/src/backends/native/meta-output-kms.c
+--- a/src/backends/native/meta-output-kms.c	(revision 424f4d82c39ae7b9dc4470093316011329559d11)
++++ b/src/backends/native/meta-output-kms.c	(revision de8d98ceaf65d5ee57d520f3a45450556de09555)
+@@ -97,6 +97,32 @@
+     }
+ }
+ 
++void
++meta_output_kms_set_vrr_mode (MetaOutputKms *output_kms,
++                              gboolean       enabled)
++{
++  MetaOutput *output = META_OUTPUT (output_kms);
++  const MetaOutputInfo *output_info = meta_output_get_info (output);
++  MetaCrtc *crtc;
++  MetaKmsCrtc *kms_crtc;
++  MetaKmsDevice *kms_device;
++  MetaKms *kms;
++  MetaKmsUpdate *kms_update;
++
++  g_assert (output_info->vrr_capable);
++
++  crtc = meta_output_get_assigned_crtc (output);
++  kms_crtc = meta_crtc_kms_get_kms_crtc (META_CRTC_KMS (crtc));
++  kms_device = meta_kms_crtc_get_device (kms_crtc);
++  kms = meta_kms_device_get_kms (kms_device);
++
++  kms_update = meta_kms_ensure_pending_update (kms, kms_device);
++
++  meta_kms_update_set_vrr_mode (kms_update,
++                                kms_crtc,
++                                enabled);
++}
++
+ static MetaPrivacyScreenState
+ meta_output_kms_get_privacy_screen_state (MetaOutput *output)
+ {
+@@ -405,6 +431,9 @@
+   output_info->supports_underscanning =
+     meta_kms_connector_is_underscanning_supported (kms_connector);
+ 
++  output_info->vrr_capable = (connector_state->vrr_capable &&
++                              !meta_gpu_kms_disable_vrr (gpu_kms));
++
+   meta_output_info_parse_edid (output_info, connector_state->edid_data);
+ 
+   drm_connector_type = meta_kms_connector_get_connector_type (kms_connector);
+Index: src/backends/native/meta-output-kms.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/backends/native/meta-output-kms.h b/src/backends/native/meta-output-kms.h
+--- a/src/backends/native/meta-output-kms.h	(revision 424f4d82c39ae7b9dc4470093316011329559d11)
++++ b/src/backends/native/meta-output-kms.h	(revision de8d98ceaf65d5ee57d520f3a45450556de09555)
+@@ -40,6 +40,9 @@
+ void meta_output_kms_set_underscan (MetaOutputKms *output_kms,
+                                     MetaKmsUpdate *kms_update);
+ 
++void meta_output_kms_set_vrr_mode (MetaOutputKms *output_kms,
++                                   gboolean       enabled);
++
+ gboolean meta_output_kms_can_clone (MetaOutputKms *output_kms,
+                                     MetaOutputKms *other_output_kms);
+ 
+Index: src/backends/meta-monitor.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/backends/meta-monitor.c b/src/backends/meta-monitor.c
+--- a/src/backends/meta-monitor.c	(revision de8d98ceaf65d5ee57d520f3a45450556de09555)
++++ b/src/backends/meta-monitor.c	(revision 943c4b3bcea212158b770a9968aadf5403b8198e)
+@@ -358,6 +358,25 @@
+   return meta_output_is_underscanning (output);
+ }
+ 
++gboolean
++meta_monitor_is_vrr_capable (MetaMonitor *monitor)
++{
++  const MetaOutputInfo *output_info =
++    meta_monitor_get_main_output_info (monitor);
++
++  return output_info->vrr_capable;
++}
++
++gboolean
++meta_monitor_is_vrr_allowed (MetaMonitor *monitor)
++{
++  MetaOutput *output;
++
++  output = meta_monitor_get_main_output (monitor);
++
++  return meta_output_is_vrr_allowed (output);
++}
++
+ gboolean
+ meta_monitor_is_laptop_panel (MetaMonitor *monitor)
+ {
+Index: src/backends/meta-monitor.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/backends/meta-monitor.h b/src/backends/meta-monitor.h
+--- a/src/backends/meta-monitor.h	(revision de8d98ceaf65d5ee57d520f3a45450556de09555)
++++ b/src/backends/meta-monitor.h	(revision 943c4b3bcea212158b770a9968aadf5403b8198e)
+@@ -118,6 +118,10 @@
+ 
+ gboolean meta_monitor_is_underscanning (MetaMonitor *monitor);
+ 
++gboolean meta_monitor_is_vrr_capable (MetaMonitor *monitor);
++
++gboolean meta_monitor_is_vrr_allowed (MetaMonitor *monitor);
++
+ gboolean meta_monitor_is_laptop_panel (MetaMonitor *monitor);
+ 
+ gboolean meta_monitor_is_same_as (MetaMonitor *monitor,
+Index: data/dbus-interfaces/org.gnome.Mutter.DisplayConfig.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/data/dbus-interfaces/org.gnome.Mutter.DisplayConfig.xml b/data/dbus-interfaces/org.gnome.Mutter.DisplayConfig.xml
+--- a/data/dbus-interfaces/org.gnome.Mutter.DisplayConfig.xml	(revision 943c4b3bcea212158b770a9968aadf5403b8198e)
++++ b/data/dbus-interfaces/org.gnome.Mutter.DisplayConfig.xml	(revision 6c5716561a8d7b5c57cdf18384309e1e285f3665)
+@@ -336,6 +336,10 @@
+ 	    - "is-underscanning" (b): whether underscanning is enabled
+ 				      (absence of this means underscanning
+ 				      not being supported)
++	    - "is-vrr-allowed" (b): whether variable refresh rate is allowed
++	                            (absence of this means variable refresh
++	                            rate not being supported)
++
+ 	    - "max-screen-size" (ii): the maximum size a screen may have
+ 				      (absence of this means unlimited screen
+ 				      size)
+@@ -454,6 +458,9 @@
+ 	        - "enable_underscanning" (b): enable monitor underscanning;
+ 					      may only be set when underscanning
+ 					      is supported (see GetCurrentState).
++	        - "allow_vrr" (b): allow variable refresh rate; may only be set
++	                           when variable refresh rate is supported (see
++	                           GetCurrentState).
+ 
+ 	@properties may effect the global monitor configuration state. Possible
+ 	properties are:
+Index: src/backends/meta-monitor-config-manager.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/backends/meta-monitor-config-manager.c b/src/backends/meta-monitor-config-manager.c
+--- a/src/backends/meta-monitor-config-manager.c	(revision 943c4b3bcea212158b770a9968aadf5403b8198e)
++++ b/src/backends/meta-monitor-config-manager.c	(revision 6c5716561a8d7b5c57cdf18384309e1e285f3665)
+@@ -286,7 +286,8 @@
+     .output = output,
+     .is_primary = assign_output_as_primary,
+     .is_presentation = assign_output_as_presentation,
+-    .is_underscanning = data->monitor_config->enable_underscanning
++    .is_underscanning = data->monitor_config->enable_underscanning,
++    .is_vrr_allowed = data->monitor_config->allow_vrr,
+   };
+ 
+   g_ptr_array_add (data->crtc_assignments, crtc_assignment);
+@@ -691,7 +692,8 @@
+   *monitor_config = (MetaMonitorConfig) {
+     .monitor_spec = meta_monitor_spec_clone (monitor_spec),
+     .mode_spec = g_memdup2 (mode_spec, sizeof (MetaMonitorModeSpec)),
+-    .enable_underscanning = meta_monitor_is_underscanning (monitor)
++    .enable_underscanning = meta_monitor_is_underscanning (monitor),
++    .allow_vrr = meta_monitor_is_vrr_allowed (monitor),
+   };
+ 
+   return monitor_config;
+@@ -953,7 +955,8 @@
+         .monitor_spec = meta_monitor_spec_clone (monitor_config_in->monitor_spec),
+         .mode_spec = g_memdup2 (monitor_config_in->mode_spec,
+                                 sizeof (MetaMonitorModeSpec)),
+-        .enable_underscanning = monitor_config_in->enable_underscanning
++        .enable_underscanning = monitor_config_in->enable_underscanning,
++        .allow_vrr = monitor_config_in->allow_vrr,
+       };
+       monitor_configs_out =
+         g_list_append (monitor_configs_out, monitor_config_out);
+Index: src/backends/meta-monitor-config-manager.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/backends/meta-monitor-config-manager.h b/src/backends/meta-monitor-config-manager.h
+--- a/src/backends/meta-monitor-config-manager.h	(revision 943c4b3bcea212158b770a9968aadf5403b8198e)
++++ b/src/backends/meta-monitor-config-manager.h	(revision 6c5716561a8d7b5c57cdf18384309e1e285f3665)
+@@ -34,6 +34,7 @@
+   MetaMonitorSpec *monitor_spec;
+   MetaMonitorModeSpec *mode_spec;
+   gboolean enable_underscanning;
++  gboolean allow_vrr;
+ } MetaMonitorConfig;
+ 
+ typedef struct _MetaLogicalMonitorConfig
+Index: src/backends/meta-monitor-config-store.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/backends/meta-monitor-config-store.c b/src/backends/meta-monitor-config-store.c
+--- a/src/backends/meta-monitor-config-store.c	(revision 943c4b3bcea212158b770a9968aadf5403b8198e)
++++ b/src/backends/meta-monitor-config-store.c	(revision 6c5716561a8d7b5c57cdf18384309e1e285f3665)
+@@ -167,6 +167,7 @@
+   STATE_MONITOR_MODE_RATE,
+   STATE_MONITOR_MODE_FLAG,
+   STATE_MONITOR_UNDERSCANNING,
++  STATE_MONITOR_VRR_ALLOWED,
+   STATE_DISABLED,
+   STATE_POLICY,
+   STATE_STORES,
+@@ -451,6 +452,10 @@
+           {
+             parser->state = STATE_MONITOR_UNDERSCANNING;
+           }
++        else if (g_str_equal (element_name, "vrr-allowed"))
++          {
++            parser->state = STATE_MONITOR_VRR_ALLOWED;
++          }
+         else
+           {
+             g_set_error (error, G_MARKUP_ERROR, G_MARKUP_ERROR_UNKNOWN_ELEMENT,
+@@ -543,6 +548,13 @@
+                      "Invalid element '%s' under underscanning", element_name);
+         return;
+       }
++
++    case STATE_MONITOR_VRR_ALLOWED:
++      {
++        g_set_error (error, G_MARKUP_ERROR, G_MARKUP_ERROR_UNKNOWN_ELEMENT,
++                     "Invalid element '%s' under vrr-allowed", element_name);
++        return;
++      }
+ 
+     case STATE_DISABLED:
+       {
+@@ -814,6 +826,14 @@
+       {
+         g_assert (g_str_equal (element_name, "underscanning"));
+ 
++        parser->state = STATE_MONITOR;
++        return;
++      }
++
++    case STATE_MONITOR_VRR_ALLOWED:
++      {
++        g_assert (g_str_equal (element_name, "vrr-allowed"));
++
+         parser->state = STATE_MONITOR;
+         return;
+       }
+@@ -1301,6 +1321,14 @@
+         return;
+       }
+ 
++    case STATE_MONITOR_VRR_ALLOWED:
++      {
++        read_bool (text, text_len,
++                   &parser->current_monitor_config->allow_vrr,
++                   error);
++        return;
++      }
++
+     case STATE_STORE:
+       {
+         MetaConfigStore store;
+@@ -1476,6 +1504,8 @@
+       g_string_append (buffer, "        </mode>\n");
+       if (monitor_config->enable_underscanning)
+         g_string_append (buffer, "        <underscanning>yes</underscanning>\n");
++      if (monitor_config->allow_vrr)
++        g_string_append (buffer, "        <vrr-allowed>yes</vrr-allowed>\n");
+       g_string_append (buffer, "      </monitor>\n");
+     }
+ }
+Index: src/backends/meta-monitor-manager.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/backends/meta-monitor-manager.c b/src/backends/meta-monitor-manager.c
+--- a/src/backends/meta-monitor-manager.c	(revision 943c4b3bcea212158b770a9968aadf5403b8198e)
++++ b/src/backends/meta-monitor-manager.c	(revision 6c5716561a8d7b5c57cdf18384309e1e285f3665)
+@@ -1977,6 +1977,15 @@
+                                  g_variant_new_boolean (is_underscanning));
+         }
+ 
++      if (meta_monitor_is_vrr_capable (monitor))
++        {
++          gboolean vrr_allowed = meta_monitor_is_vrr_allowed (monitor);
++
++          g_variant_builder_add (&monitor_properties_builder, "{sv}",
++                                 "is-vrr-allowed",
++                                 g_variant_new_boolean (vrr_allowed));
++        }
++
+       is_builtin = meta_monitor_is_laptop_panel (monitor);
+       g_variant_builder_add (&monitor_properties_builder, "{sv}",
+                              "is-builtin",
+@@ -2296,6 +2305,8 @@
+   g_autoptr (GVariant) properties_variant = NULL;
+   gboolean enable_underscanning = FALSE;
+   gboolean set_underscanning = FALSE;
++  gboolean allow_vrr = FALSE;
++  gboolean set_allow_vrr = FALSE;
+ 
+   g_variant_get (monitor_config_variant, "(ss@a{sv})",
+                  &connector,
+@@ -2331,6 +2342,19 @@
+         }
+     }
+ 
++  set_allow_vrr =
++    g_variant_lookup (properties_variant, "allow_vrr", "b",
++                      &allow_vrr);
++  if (set_allow_vrr)
++    {
++      if (allow_vrr && !meta_monitor_is_vrr_capable (monitor))
++        {
++          g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
++                       "Variable refresh rate requested but unsupported");
++          return NULL;
++        }
++    }
++
+   monitor_spec = meta_monitor_spec_clone (meta_monitor_get_spec (monitor));
+ 
+   monitor_mode_spec = g_new0 (MetaMonitorModeSpec, 1);
+@@ -2340,7 +2364,8 @@
+   *monitor_config = (MetaMonitorConfig) {
+     .monitor_spec = monitor_spec,
+     .mode_spec = monitor_mode_spec,
+-    .enable_underscanning = enable_underscanning
++    .enable_underscanning = enable_underscanning,
++    .allow_vrr = allow_vrr,
+   };
+ 
+   return monitor_config;
+Index: src/tests/meta-monitor-test-utils.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
 diff --git a/src/tests/meta-monitor-test-utils.c b/src/tests/meta-monitor-test-utils.c
-index aab9e1858..e74504750 100644
---- a/src/tests/meta-monitor-test-utils.c
-+++ b/src/tests/meta-monitor-test-utils.c
-@@ -392,6 +392,9 @@ meta_check_monitor_configuration (MetaContext           *context,
+--- a/src/tests/meta-monitor-test-utils.c	(revision 943c4b3bcea212158b770a9968aadf5403b8198e)
++++ b/src/tests/meta-monitor-test-utils.c	(revision 6c5716561a8d7b5c57cdf18384309e1e285f3665)
+@@ -392,6 +392,9 @@
            g_assert_cmpint (expect->monitors[i].is_underscanning,
                             ==,
                             meta_output_is_underscanning (output));
@@ -2515,7 +3339,7 @@ index aab9e1858..e74504750 100644
          }
  
        meta_monitor_get_physical_dimensions (monitor, &width_mm, &height_mm);
-@@ -778,6 +781,7 @@ meta_create_monitor_test_setup (MetaBackend          *backend,
+@@ -778,6 +781,7 @@
  
            output_assignment = (MetaOutputAssignment) {
              .is_underscanning = setup->outputs[i].is_underscanning,
@@ -2523,11 +3347,15 @@ index aab9e1858..e74504750 100644
            };
            meta_output_assign_crtc (output, crtc, &output_assignment);
          }
+Index: src/tests/meta-monitor-test-utils.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
 diff --git a/src/tests/meta-monitor-test-utils.h b/src/tests/meta-monitor-test-utils.h
-index 988a4115e..8d3c6ceda 100644
---- a/src/tests/meta-monitor-test-utils.h
-+++ b/src/tests/meta-monitor-test-utils.h
-@@ -106,6 +106,7 @@ typedef struct _MonitorTestCaseOutput
+--- a/src/tests/meta-monitor-test-utils.h	(revision 943c4b3bcea212158b770a9968aadf5403b8198e)
++++ b/src/tests/meta-monitor-test-utils.h	(revision 6c5716561a8d7b5c57cdf18384309e1e285f3665)
+@@ -106,6 +106,7 @@
    float scale;
    gboolean is_laptop_panel;
    gboolean is_underscanning;
@@ -2535,7 +3363,7 @@ index 988a4115e..8d3c6ceda 100644
    const char *serial;
    MetaMonitorTransform panel_orientation_transform;
    gboolean hotplug_mode;
-@@ -157,6 +158,7 @@ typedef struct _MonitorTestCaseMonitor
+@@ -157,6 +158,7 @@
    int width_mm;
    int height_mm;
    gboolean is_underscanning;
@@ -2543,11 +3371,45 @@ index 988a4115e..8d3c6ceda 100644
  } MonitorTestCaseMonitor;
  
  typedef struct _MonitorTestCaseLogicalMonitor
+Index: src/tests/monitor-configs/vrr-allowed.xml
+===================================================================
+diff --git a/src/tests/monitor-configs/vrr-allowed.xml b/src/tests/monitor-configs/vrr-allowed.xml
+new file mode 100644
+--- /dev/null	(revision 6c5716561a8d7b5c57cdf18384309e1e285f3665)
++++ b/src/tests/monitor-configs/vrr-allowed.xml	(revision 6c5716561a8d7b5c57cdf18384309e1e285f3665)
+@@ -0,0 +1,23 @@
++<monitors version="2">
++  <configuration>
++    <logicalmonitor>
++      <x>0</x>
++      <y>0</y>
++      <primary>yes</primary>
++      <monitor>
++	<monitorspec>
++	  <connector>DP-1</connector>
++	  <vendor>MetaProduct&apos;s Inc.</vendor>
++	  <product>MetaMonitor</product>
++	  <serial>0x123456</serial>
++	</monitorspec>
++	<mode>
++	  <width>1024</width>
++	  <height>768</height>
++	  <rate>60.000495910644531</rate>
++	</mode>
++	<vrr-allowed>yes</vrr-allowed>
++      </monitor>
++    </logicalmonitor>
++  </configuration>
++</monitors>
+Index: src/tests/monitor-store-unit-tests.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
 diff --git a/src/tests/monitor-store-unit-tests.c b/src/tests/monitor-store-unit-tests.c
-index 38f4bc52f..6e85c9a3d 100644
---- a/src/tests/monitor-store-unit-tests.c
-+++ b/src/tests/monitor-store-unit-tests.c
-@@ -48,6 +48,7 @@ typedef struct _MonitorStoreTestCaseMonitor
+--- a/src/tests/monitor-store-unit-tests.c	(revision 943c4b3bcea212158b770a9968aadf5403b8198e)
++++ b/src/tests/monitor-store-unit-tests.c	(revision 6c5716561a8d7b5c57cdf18384309e1e285f3665)
+@@ -48,6 +48,7 @@
    const char *serial;
    MonitorStoreTestCaseMonitorMode mode;
    gboolean is_underscanning;
@@ -2555,7 +3417,7 @@ index 38f4bc52f..6e85c9a3d 100644
  } MonitorStoreTestCaseMonitor;
  
  typedef struct _MonitorStoreTestCaseLogicalMonitor
-@@ -196,6 +197,9 @@ check_monitor_store_configuration (MetaMonitorConfigStore        *config_store,
+@@ -196,6 +197,9 @@
            g_assert_cmpint (monitor_config->enable_underscanning,
                             ==,
                             test_monitor->is_underscanning);
@@ -2565,7 +3427,7 @@ index 38f4bc52f..6e85c9a3d 100644
          }
      }
  }
-@@ -446,6 +450,51 @@ meta_test_monitor_store_underscanning (void)
+@@ -446,6 +450,51 @@
    check_monitor_store_configurations (&expect);
  }
  
@@ -2617,7 +3479,7 @@ index 38f4bc52f..6e85c9a3d 100644
  static void
  meta_test_monitor_store_scale (void)
  {
-@@ -1013,6 +1062,8 @@ init_monitor_store_tests (void)
+@@ -1013,6 +1062,8 @@
                     meta_test_monitor_store_primary);
    g_test_add_func ("/backends/monitor-store/underscanning",
                     meta_test_monitor_store_underscanning);
@@ -2626,11 +3488,15 @@ index 38f4bc52f..6e85c9a3d 100644
    g_test_add_func ("/backends/monitor-store/scale",
                     meta_test_monitor_store_scale);
    g_test_add_func ("/backends/monitor-store/fractional-scale",
+Index: src/tests/monitor-unit-tests.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
 diff --git a/src/tests/monitor-unit-tests.c b/src/tests/monitor-unit-tests.c
-index 6a807c60e..4c4cdefbb 100644
---- a/src/tests/monitor-unit-tests.c
-+++ b/src/tests/monitor-unit-tests.c
-@@ -3276,6 +3276,100 @@ meta_test_monitor_underscanning_config (void)
+--- a/src/tests/monitor-unit-tests.c	(revision 943c4b3bcea212158b770a9968aadf5403b8198e)
++++ b/src/tests/monitor-unit-tests.c	(revision 6c5716561a8d7b5c57cdf18384309e1e285f3665)
+@@ -3276,6 +3276,100 @@
    check_monitor_test_clients_state ();
  }
  
@@ -2731,7 +3597,7 @@ index 6a807c60e..4c4cdefbb 100644
  static void
  meta_test_monitor_preferred_non_first_mode (void)
  {
-@@ -5522,6 +5616,102 @@ meta_test_monitor_custom_underscanning_config (void)
+@@ -5522,6 +5616,102 @@
    check_monitor_test_clients_state ();
  }
  
@@ -2834,7 +3700,7 @@ index 6a807c60e..4c4cdefbb 100644
  static void
  meta_test_monitor_custom_scale_config (void)
  {
-@@ -9118,6 +9308,8 @@ init_monitor_tests (void)
+@@ -9118,6 +9308,8 @@
                      meta_test_monitor_no_outputs);
    add_monitor_test ("/backends/monitor/underscanning-config",
                      meta_test_monitor_underscanning_config);
@@ -2843,7 +3709,7 @@ index 6a807c60e..4c4cdefbb 100644
    add_monitor_test ("/backends/monitor/preferred-non-first-mode",
                      meta_test_monitor_preferred_non_first_mode);
    add_monitor_test ("/backends/monitor/non-upright-panel",
-@@ -9148,6 +9340,8 @@ init_monitor_tests (void)
+@@ -9148,6 +9340,8 @@
                      meta_test_monitor_custom_primary_config);
    add_monitor_test ("/backends/monitor/custom/underscanning-config",
                      meta_test_monitor_custom_underscanning_config);
@@ -2852,109 +3718,19 @@ index 6a807c60e..4c4cdefbb 100644
    add_monitor_test ("/backends/monitor/custom/scale-config",
                      meta_test_monitor_custom_scale_config);
    add_monitor_test ("/backends/monitor/custom/fractional-scale-config",
-diff --git a/src/tests/screen-cast-client.c b/src/tests/screen-cast-client.c
-index afd6f17b0..cdf0d7dcf 100644
---- a/src/tests/screen-cast-client.c
-+++ b/src/tests/screen-cast-client.c
-@@ -83,18 +83,18 @@ typedef struct _ScreenCast
- 
- typedef struct _PipeWireSource
- {
--  GSource source;
-+  GSource base;
- 
-   struct pw_loop *pipewire_loop;
- } PipeWireSource;
- 
--static GSource *_pipewire_source;
-+static PipeWireSource *_pipewire_source;
- static struct pw_context *_pipewire_context;
- static struct pw_core *_pipewire_core;
- static struct spa_hook _pipewire_core_listener;
- 
- static gboolean
--pipewire_loop_source_prepare (GSource *source,
-+pipewire_loop_source_prepare (GSource *base,
-                               int     *timeout)
- {
-   *timeout = -1;
-@@ -133,26 +133,24 @@ static GSourceFuncs pipewire_source_funcs =
-   pipewire_loop_source_finalize
- };
- 
--static GSource *
--create_pipewire_source (struct pw_loop *pipewire_loop)
-+static PipeWireSource *
-+create_pipewire_source (void)
- {
--  GSource *source;
-   PipeWireSource *pipewire_source;
- 
--  source = g_source_new (&pipewire_source_funcs,
--                         sizeof (PipeWireSource));
--
--  pipewire_source = (PipeWireSource *) source;
--  pipewire_source->pipewire_loop = pipewire_loop;
--
--  g_source_add_unix_fd (source,
-+  pipewire_source =
-+    (PipeWireSource *) g_source_new (&pipewire_source_funcs,
-+                                     sizeof (PipeWireSource));
-+  pipewire_source->pipewire_loop = pw_loop_new (NULL);
-+  g_assert_nonnull (pipewire_source->pipewire_loop);
-+  g_source_add_unix_fd (&pipewire_source->base,
-                         pw_loop_get_fd (pipewire_source->pipewire_loop),
-                         G_IO_IN | G_IO_ERR);
- 
-   pw_loop_enter (pipewire_source->pipewire_loop);
--  g_source_attach (source, NULL);
-+  g_source_attach (&pipewire_source->base, NULL);
- 
--  return source;
-+  return pipewire_source;
- }
- 
- static void
-@@ -173,15 +171,9 @@ static const struct pw_core_events core_events = {
- static void
- init_pipewire (void)
- {
--  struct pw_loop *pipewire_loop;
--
-   pw_init (NULL, NULL);
--
--  pipewire_loop = pw_loop_new (NULL);
--  g_assert_nonnull (pipewire_loop);
--
--  _pipewire_source = create_pipewire_source (pipewire_loop);
--  _pipewire_context = pw_context_new (pipewire_loop,
-+  _pipewire_source = create_pipewire_source ();
-+  _pipewire_context = pw_context_new (_pipewire_source->pipewire_loop,
-                                       NULL, 0);
-   g_assert_nonnull (_pipewire_context);
-   _pipewire_core = pw_context_connect (_pipewire_context, NULL, 0);
-@@ -200,8 +192,8 @@ release_pipewire (void)
-   g_clear_pointer (&_pipewire_context, pw_context_destroy);
-   if (_pipewire_source)
-     {
--      g_source_destroy (_pipewire_source);
--      g_source_unref (_pipewire_source);
-+      g_source_destroy ((GSource *) _pipewire_source);
-+      g_source_unref ((GSource *) _pipewire_source);
-       _pipewire_source = NULL;
-     }
- }
-diff --git a/src/wayland/meta-wayland-actor-surface.c b/src/wayland/meta-wayland-actor-surface.c
-index 1230f6cf0..1e987912e 100644
---- a/src/wayland/meta-wayland-actor-surface.c
-+++ b/src/wayland/meta-wayland-actor-surface.c
-@@ -307,7 +307,8 @@ meta_wayland_actor_surface_apply_state (MetaWaylandSurfaceRole  *surface_role,
-       MetaBackend *backend = meta_get_backend ();
-       ClutterActor *stage = meta_backend_get_stage (backend);
- 
--      clutter_stage_schedule_update (CLUTTER_STAGE (stage));
-+      clutter_stage_schedule_actor_update (CLUTTER_STAGE (stage),
-+                                           CLUTTER_ACTOR (priv->actor));
-     }
- 
-   meta_wayland_actor_surface_queue_frame_callbacks (actor_surface, pending);
+Index: src/backends/x11/nested/meta-renderer-x11-nested.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/backends/x11/nested/meta-renderer-x11-nested.c b/src/backends/x11/nested/meta-renderer-x11-nested.c
+--- a/src/backends/x11/nested/meta-renderer-x11-nested.c	(revision 6c5716561a8d7b5c57cdf18384309e1e285f3665)
++++ b/src/backends/x11/nested/meta-renderer-x11-nested.c	(revision 41ce95b3db266019c855eadd5e560c9c6ddeb57d)
+@@ -223,6 +223,7 @@
+                        "stage", meta_backend_get_stage (backend),
+                        "layout", &view_layout,
+                        "crtc", crtc,
++                       "output", output,
+                        "refresh-rate", mode_info->refresh_rate,
+                        "framebuffer", COGL_FRAMEBUFFER (fake_onscreen),
+                        "offscreen", COGL_FRAMEBUFFER (offscreen),
