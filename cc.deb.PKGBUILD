@@ -47,11 +47,11 @@ sha256sums=('40b74f7251672e83f72fa0a3d359a9aae26e65c58fae538e1507bfd415b3970b'
 #updpkgsums deb.PKGBUILD
 
 prepare() {
-for i in ${_pkgarches[@]}; do
-_msg2 "$i"
+for _i in ${_pkgarches[@]}; do
+_msg2 "$_i"
 done
 # https://wiki.archlinux.org/index.php/Go_package_guidelines
-mkdir -p ${srcdir}/go/src/github.com/${_githuborg}/ ${srcdir}/go/bin.${_pkgarches[@]} ${srcdir}/go/apps.${_pkgarches[@]}
+mkdir -p ${srcdir}/go/src/github.com/${_githuborg}/ ${srcdir}/go/bin.${_i} ${srcdir}/go/apps.${_i}
 ln -rTsf ${srcdir}/${pkgname}-${pkgver}${_rc} ${srcdir}/go/src/${_pkggopath}
 cd ${srcdir}/go/src/${_pkggopath}/
 }
@@ -97,7 +97,7 @@ sha256sum $(ls)
 _msg2 'creating the DEBIAN/control files'
 #create control file for the debian package
 echo "Package: skywire" > ${srcdir}/${_pkgarch}.control
-echo "Version: ${_pkgver}-${_pkgrel}" >> ${srcdir}/${_pkgarch}.control
+echo "Version: ${pkgver}-${pkgrel}" >> ${srcdir}/${_pkgarch}.control
 echo "Priority: optional" >> ${srcdir}/${_pkgarch}.control
 echo "Section: web" >> ${srcdir}/${_pkgarch}.control
 echo "Architecture: ${_pkgarch}" >> ${srcdir}/${_pkgarch}.control
@@ -107,7 +107,6 @@ echo "Description: ${pkgdesc}" >> ${srcdir}/${_pkgarch}.control
  done
 }
 
-#had to speed up the build for testing - there's a risk of using old binaries.
 _buildbins() {
 _GOHERE=$2  #target bin dir
 _binpath=$3   #find the binary here- expecting 'apps/' or empty
@@ -125,7 +124,6 @@ local _pkgarch=${i}
 GOPATH=${srcdir}/go
 GOBIN=${GOPATH}/bin.${_pkgarch}
 _GOAPPS=${GOPATH}/apps.${_pkgarch}
-
 _msg2 'creating dirs'
 #set up to create a .deb package
 _debpkgdir="${_pkgname}-${_pkgver}-${_pkgrel}-${_pkgarch}"
