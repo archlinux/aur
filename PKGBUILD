@@ -6,12 +6,12 @@ pkgver=0.3
 pkgrel=1
 pkgdesc='Bidirectional bridge between Git and Mercurial'
 arch=('any')
-url='https://github.com/fingolfin/git-remote-hg'
+url='https://github.com/felipec/git-remote-hg'
 license=('GPL2')
 depends=('git' 'mercurial')
 makedepends=('asciidoc')
-source=("https://github.com/fingolfin/git-remote-hg/archive/v${pkgver}.tar.gz")
-md5sums=('0132373c8ecabdf88054790114cd883e')
+source=("https://github.com/felipec/git-remote-hg/archive/v${pkgver}.tar.gz")
+md5sums=('40346d361c41c2cef02dae2eed7a86d9')
 
 build () {
 	cd "$srcdir/${pkgname}-${pkgver/+/-}"
