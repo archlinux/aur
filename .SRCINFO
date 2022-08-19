@@ -1,7 +1,7 @@
 pkgbase = mutter-vrr
 	pkgdesc = A window manager for GNOME (with VRR)
 	pkgver = 42.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
 	license = GPL
@@ -37,7 +37,7 @@ pkgbase = mutter-vrr
 	source = mutter-vrr::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=9a25838e4e3f705b69b7f2e0bf22e970d8829f1f
 	source = 42.4.patch
 	sha256sums = SKIP
-	sha256sums = cbd033426f28cd485f4414307d881e9eeb86bf180679e0fb14c68ca41dc05ac2
+	sha256sums = bce64d09ee3fc1e09031415735aa7aa59cc81abfb8477c8718ff7b1634362714
 
 pkgname = mutter-vrr
 	groups = gnome

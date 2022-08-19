@@ -1,218 +1,3 @@
-diff --git a/NEWS b/NEWS
-index 218d68a3a..59b0c0ecb 100644
---- a/NEWS
-+++ b/NEWS
-@@ -1,31 +1,3 @@
--42.4
--====
--* screencast: Set correct stride when using dmabufs [Pascal; !2514]
--* Fix glitches in apps using subsurfaces [Robert; !2501, !2530]
--* Reduce client work when entering overview [Robert; !2502]
--* Highlight actors becoming reactive under the pointer [Carlos; !2533]
--* Fall back to ARGB if XRGB is not supported [Daniel; !2519]
--* Support direct scanout on GPUs without modifiers support [Dor; !2510]
--* Fix registering as X11 window manager if GDK_BACKEND is set [Michel; !2496]
--* Fixed crash [Jonas Å.; !2554]
--* Plugged leak [Sebastian; !2497]
--* Misc. bug fixes and cleanups [Jonas D., Dor; !2348, !2406]
--
--Contributors:
--  Dor Askayo, Jonas Dreßler, Michel Dänzer, Carlos Garnacho, Sebastian Keller,
--  Robert Mader, Pascal Nowack, Daniel van Vugt, Jonas Ådahl
--
--42.3
--====
--* wayland: Fix rotation transform [Robert; !1055]
--* Fix dma-buf screencast regression [Jonas; !2462]
--* Fix monitor mirroring in some cases [Jonas; !2492]
--* Fixed crash [Jonas; !2364]
--* Plugged leak [Michel; !2469]
--
--Contributors:
--  Michel Dänzer, Robert Mader, Jonas Ådahl
--
- 42.2
- ====
- * Don't use direct scanout for transparent windows [Sebastian; !2409]
-diff --git a/clutter/clutter/clutter-actor.c b/clutter/clutter/clutter-actor.c
-index 0a08d1863..b31a4d01d 100644
---- a/clutter/clutter/clutter-actor.c
-+++ b/clutter/clutter/clutter-actor.c
-@@ -803,8 +803,6 @@ struct _ClutterActorPrivate
-   GList *stage_views;
-   GList *grabs;
- 
--  unsigned int n_pointers;
--
-   /* bitfields: KEEP AT THE END */
- 
-   /* fixed position and sizes */
-@@ -824,6 +822,7 @@ struct _ClutterActorPrivate
-   guint clip_to_allocation          : 1;
-   guint enable_model_view_transform : 1;
-   guint enable_paint_unmapped       : 1;
-+  guint has_pointer                 : 1;
-   guint has_key_focus               : 1;
-   guint propagated_one_redraw       : 1;
-   guint paint_volume_valid          : 1;
-@@ -1702,7 +1701,7 @@ clutter_actor_real_unmap (ClutterActor *self)
-    */
-   g_object_notify_by_pspec (G_OBJECT (self), obj_props[PROP_MAPPED]);
- 
--  if (priv->n_pointers > 0)
-+  if (priv->has_pointer)
-     {
-       ClutterActor *stage = _clutter_actor_get_stage_internal (self);
- 
-@@ -1771,18 +1770,6 @@ clutter_actor_real_show (ClutterActor *self)
-    * and the branch of the scene graph is in a stable state
-    */
-   clutter_actor_update_map_state (self, MAP_STATE_CHECK);
--
--  if (clutter_actor_has_mapped_clones (self))
--    {
--      ClutterActorPrivate *priv = self->priv;
--
--      /* Avoid the early return in clutter_actor_queue_relayout() */
--      priv->needs_width_request = FALSE;
--      priv->needs_height_request = FALSE;
--      priv->needs_allocation = FALSE;
--
--      clutter_actor_queue_relayout (self);
--    }
- }
- 
- static inline void
-@@ -5416,7 +5403,7 @@ clutter_actor_get_property (GObject    *object,
-       break;
- 
-     case PROP_HAS_POINTER:
--      g_value_set_boolean (value, priv->n_pointers > 0);
-+      g_value_set_boolean (value, priv->has_pointer);
-       break;
- 
-     case PROP_LAYOUT_MANAGER:
-@@ -5766,9 +5753,7 @@ clutter_actor_update_default_paint_volume (ClutterActor       *self,
-            * allocation, because apparently some code above Clutter allows
-            * them.
-            */
--          if ((!CLUTTER_ACTOR_IS_MAPPED (child) &&
--               !clutter_actor_has_mapped_clones (child)) ||
--              !clutter_actor_has_allocation (child))
-+          if (!CLUTTER_ACTOR_IS_MAPPED (child) || !clutter_actor_has_allocation (child))
-             continue;
- 
-           child_volume = clutter_actor_get_transformed_paint_volume (child, self);
-@@ -11566,7 +11551,7 @@ clutter_actor_add_child_internal (ClutterActor              *self,
-   if (self == child)
-     {
-       g_warning ("Cannot add the actor '%s' to itself.",
--                 _clutter_actor_get_debug_name (self));
-+                  _clutter_actor_get_debug_name (self));
-       return;
-     }
- 
-@@ -11719,18 +11704,6 @@ clutter_actor_add_child_internal (ClutterActor              *self,
-   if (CLUTTER_ACTOR_IS_MAPPED (child))
-     clutter_actor_queue_redraw (child);
- 
--  if (clutter_actor_has_mapped_clones (self))
--    {
--      ClutterActorPrivate *priv = self->priv;
--
--      /* Avoid the early return in clutter_actor_queue_relayout() */
--      priv->needs_width_request = FALSE;
--      priv->needs_height_request = FALSE;
--      priv->needs_allocation = FALSE;
--
--      clutter_actor_queue_relayout (self);
--    }
--
-   if (emit_actor_added)
-     _clutter_container_emit_actor_added (CLUTTER_CONTAINER (self), child);
- 
-@@ -12490,36 +12463,12 @@ clutter_actor_set_reactive (ClutterActor *actor,
- 
-   g_object_notify_by_pspec (G_OBJECT (actor), obj_props[PROP_REACTIVE]);
- 
--  if (!CLUTTER_ACTOR_IS_REACTIVE (actor) && priv->n_pointers > 0)
-+  if (!CLUTTER_ACTOR_IS_REACTIVE (actor) && priv->has_pointer)
-     {
-       ClutterActor *stage = _clutter_actor_get_stage_internal (actor);
- 
-       clutter_stage_invalidate_focus (CLUTTER_STAGE (stage), actor);
-     }
--  else if (CLUTTER_ACTOR_IS_REACTIVE (actor))
--    {
--      ClutterActor *parent;
--
--      /* Check whether the closest parent has pointer focus,
--       * and whether it should move to this actor.
--       */
--      parent = priv->parent;
--
--      while (parent)
--        {
--          if (CLUTTER_ACTOR_IS_REACTIVE (parent))
--            break;
--
--          parent = parent->priv->parent;
--        }
--
--      if (parent && parent->priv->n_pointers > 0)
--        {
--          ClutterActor *stage = _clutter_actor_get_stage_internal (actor);
--
--          clutter_stage_maybe_invalidate_focus (CLUTTER_STAGE (stage), parent);
--        }
--    }
- }
- 
- /**
-@@ -14721,21 +14670,12 @@ _clutter_actor_set_has_pointer (ClutterActor *self,
- {
-   ClutterActorPrivate *priv = self->priv;
- 
--  if (has_pointer)
-+  if (priv->has_pointer != has_pointer)
-     {
--      g_assert (CLUTTER_IS_STAGE (self) || CLUTTER_ACTOR_IS_MAPPED (self));
-+      priv->has_pointer = has_pointer;
- 
--      priv->n_pointers++;
-+      g_object_notify_by_pspec (G_OBJECT (self), obj_props[PROP_HAS_POINTER]);
-     }
--  else
--    {
--      g_assert (priv->n_pointers > 0);
--
--      priv->n_pointers--;
--    }
--
--  if (priv->n_pointers == 0 || priv->n_pointers == 1)
--    g_object_notify_by_pspec (G_OBJECT (self), obj_props[PROP_HAS_POINTER]);
- }
- 
- void
-@@ -14806,7 +14746,7 @@ clutter_actor_has_pointer (ClutterActor *self)
- {
-   g_return_val_if_fail (CLUTTER_IS_ACTOR (self), FALSE);
- 
--  return self->priv->n_pointers > 0;
-+  return self->priv->has_pointer;
- }
- 
- /**
-@@ -16070,8 +16010,7 @@ clutter_actor_finish_layout (ClutterActor *self,
-   ClutterActorPrivate *priv = self->priv;
-   ClutterActor *child;
- 
--  if ((!CLUTTER_ACTOR_IS_MAPPED (self) &&
--       !clutter_actor_has_mapped_clones (self)) ||
-+  if (!CLUTTER_ACTOR_IS_MAPPED (self) ||
-       CLUTTER_ACTOR_IN_DESTRUCTION (self))
-     return;
- 
 diff --git a/clutter/clutter/clutter-frame-clock.c b/clutter/clutter/clutter-frame-clock.c
 index 6fa2b2588..a28a09e37 100644
 --- a/clutter/clutter/clutter-frame-clock.c
@@ -525,20 +310,6 @@ index 91e6b3a13..380f56c6b 100644
  CLUTTER_EXPORT
  void clutter_frame_clock_notify_presented (ClutterFrameClock *frame_clock,
                                             ClutterFrameInfo  *frame_info);
-diff --git a/clutter/clutter/clutter-stage-private.h b/clutter/clutter/clutter-stage-private.h
-index 72917853f..b1a8105d2 100644
---- a/clutter/clutter/clutter-stage-private.h
-+++ b/clutter/clutter/clutter-stage-private.h
-@@ -159,9 +159,6 @@ void clutter_stage_unlink_grab (ClutterStage *self,
- void clutter_stage_invalidate_focus (ClutterStage *self,
-                                      ClutterActor *actor);
- 
--void clutter_stage_maybe_invalidate_focus (ClutterStage *self,
--                                           ClutterActor *actor);
--
- G_END_DECLS
- 
- #endif /* __CLUTTER_STAGE_PRIVATE_H__ */
 diff --git a/clutter/clutter/clutter-stage-view-private.h b/clutter/clutter/clutter-stage-view-private.h
 index 39d8601ea..5c1ce9645 100644
 --- a/clutter/clutter/clutter-stage-view-private.h
@@ -605,7 +376,7 @@ index c2cf76abf..0f34cf5b8 100644
  
  CLUTTER_EXPORT
 diff --git a/clutter/clutter/clutter-stage.c b/clutter/clutter/clutter-stage.c
-index 17186c229..f40df1017 100644
+index e97cd54a3..f40df1017 100644
 --- a/clutter/clutter/clutter-stage.c
 +++ b/clutter/clutter/clutter-stage.c
 @@ -127,8 +127,6 @@ struct _ClutterStagePrivate
@@ -687,45 +458,6 @@ index 17186c229..f40df1017 100644
    g_hash_table_iter_init (&iter, priv->pending_queue_redraws);
    while (g_hash_table_iter_next (&iter, &key, &value))
      {
-@@ -3175,8 +3186,8 @@ clutter_stage_set_actor_needs_immediate_relayout (ClutterStage *stage)
- }
- 
- void
--clutter_stage_maybe_invalidate_focus (ClutterStage *self,
--                                      ClutterActor *actor)
-+clutter_stage_invalidate_focus (ClutterStage *self,
-+                                ClutterActor *actor)
- {
-   ClutterStagePrivate *priv = self->priv;
-   GHashTableIter iter;
-@@ -3185,6 +3196,8 @@ clutter_stage_maybe_invalidate_focus (ClutterStage *self,
-   if (CLUTTER_ACTOR_IN_DESTRUCTION (self))
-     return;
- 
-+  g_assert (!clutter_actor_is_mapped (actor) || !clutter_actor_get_reactive (actor));
-+
-   g_hash_table_iter_init (&iter, priv->pointer_devices);
-   while (g_hash_table_iter_next (&iter, NULL, &value))
-     {
-@@ -3218,18 +3231,6 @@ clutter_stage_maybe_invalidate_focus (ClutterStage *self,
-                                             entry->coords,
-                                             CLUTTER_CURRENT_TIME);
-     }
--}
--
--void
--clutter_stage_invalidate_focus (ClutterStage *self,
--                                ClutterActor *actor)
--{
--  if (CLUTTER_ACTOR_IN_DESTRUCTION (self))
--    return;
--
--  g_assert (!clutter_actor_is_mapped (actor) || !clutter_actor_get_reactive (actor));
--
--  clutter_stage_maybe_invalidate_focus (self, actor);
- 
-   if (actor != CLUTTER_ACTOR (self))
-     g_assert (!clutter_actor_has_pointer (actor));
 diff --git a/clutter/clutter/clutter-stage.h b/clutter/clutter/clutter-stage.h
 index 5412c4d72..a579820a4 100644
 --- a/clutter/clutter/clutter-stage.h
@@ -775,16 +507,9 @@ index af7cd6472..2a663b00b 100644
  	@properties may effect the global monitor configuration state. Possible
  	properties are:
 diff --git a/meson.build b/meson.build
-index 05aeb4609..fa0cc23f0 100644
+index 78f94b112..fa0cc23f0 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -1,5 +1,5 @@
- project('mutter', 'c',
--  version: '42.4',
-+  version: '42.2',
-   meson_version: '>= 0.55.0',
-   license: 'GPLv2+'
- )
 @@ -427,6 +427,7 @@ if buildtype != 'plain'
      '-Werror=pointer-to-int-cast',
      '-Werror=empty-body',
@@ -793,18 +518,6 @@ index 05aeb4609..fa0cc23f0 100644
      '-Wno-sign-compare',
      '-Wno-cast-function-type',
      '-Wno-unused-parameter',
-diff --git a/src/backends/meta-crtc-mode.h b/src/backends/meta-crtc-mode.h
-index 6f1648403..2ac90e408 100644
---- a/src/backends/meta-crtc-mode.h
-+++ b/src/backends/meta-crtc-mode.h
-@@ -55,7 +55,6 @@ typedef struct _MetaCrtcModeInfo
-   int height;
-   float refresh_rate;
-   int64_t vblank_duration_us;
--  uint32_t pixel_clock_khz;
-   MetaCrtcModeFlag flags;
- } MetaCrtcModeInfo;
- 
 diff --git a/src/backends/meta-monitor-config-manager.c b/src/backends/meta-monitor-config-manager.c
 index da3f1dd54..95fd3ad6c 100644
 --- a/src/backends/meta-monitor-config-manager.c
@@ -1312,143 +1025,114 @@ index 3f21c7c48..355e75e96 100644
 +MetaOutput *meta_renderer_view_get_output (MetaRendererView *view);
 +
  #endif /* META_RENDERER_VIEW_H */
-diff --git a/src/backends/meta-screen-cast-monitor-stream-src.c b/src/backends/meta-screen-cast-monitor-stream-src.c
-index 3c449e022..f30a52d1d 100644
---- a/src/backends/meta-screen-cast-monitor-stream-src.c
-+++ b/src/backends/meta-screen-cast-monitor-stream-src.c
-@@ -552,13 +552,13 @@ meta_screen_cast_monitor_stream_src_record_to_framebuffer (MetaScreenCastStreamS
- {
-   MetaScreenCastMonitorStreamSrc *monitor_src =
-     META_SCREEN_CAST_MONITOR_STREAM_SRC (src);
--  MetaScreenCastStream *stream = meta_screen_cast_stream_src_get_stream (src);
--  ClutterStage *stage = get_stage (monitor_src);
-+  MetaBackend *backend = get_backend (monitor_src);
-+  MetaRenderer *renderer = meta_backend_get_renderer (backend);
-   MetaMonitor *monitor;
-   MetaLogicalMonitor *logical_monitor;
-   MetaRectangle logical_monitor_layout;
-+  GList *l;
-   float view_scale;
--  ClutterPaintFlag paint_flags = CLUTTER_PAINT_FLAG_CLEAR;
- 
-   monitor = get_monitor (monitor_src);
-   logical_monitor = meta_monitor_get_logical_monitor (monitor);
-@@ -569,22 +569,44 @@ meta_screen_cast_monitor_stream_src_record_to_framebuffer (MetaScreenCastStreamS
-   else
-     view_scale = 1.0;
- 
--  switch (meta_screen_cast_stream_get_cursor_mode (stream))
-+  for (l = meta_renderer_get_views (renderer); l; l = l->next)
-     {
--    case META_SCREEN_CAST_CURSOR_MODE_METADATA:
--    case META_SCREEN_CAST_CURSOR_MODE_HIDDEN:
--      paint_flags |= CLUTTER_PAINT_FLAG_NO_CURSORS;
--      break;
--    case META_SCREEN_CAST_CURSOR_MODE_EMBEDDED:
--      paint_flags |= CLUTTER_PAINT_FLAG_FORCE_CURSORS;
--      break;
--    }
-+      ClutterStageView *view = CLUTTER_STAGE_VIEW (l->data);
-+      CoglFramebuffer *view_framebuffer;
-+      CoglScanout *scanout;
-+      MetaRectangle view_layout;
-+      int x, y;
-+
-+      clutter_stage_view_get_layout (view, &view_layout);
-+
-+      if (!meta_rectangle_overlap (&logical_monitor_layout, &view_layout))
-+        continue;
-+
-+      x = (int) roundf ((view_layout.x - logical_monitor_layout.x) * view_scale);
-+      y = (int) roundf ((view_layout.y - logical_monitor_layout.y) * view_scale);
- 
--  clutter_stage_paint_to_framebuffer (stage,
-+      scanout = clutter_stage_view_peek_scanout (view);
-+      if (scanout)
-+        {
-+          if (!cogl_scanout_blit_to_framebuffer (scanout,
-+                                                 framebuffer,
-+                                                 x, y,
-+                                                 error))
-+            return FALSE;
-+        }
-+      else
-+        {
-+          view_framebuffer = clutter_stage_view_get_framebuffer (view);
-+          if (!cogl_blit_framebuffer (view_framebuffer,
-                                       framebuffer,
--                                      &logical_monitor_layout,
--                                      view_scale,
--                                      paint_flags);
-+                                      0, 0,
-+                                      x, y,
-+                                      cogl_framebuffer_get_width (view_framebuffer),
-+                                      cogl_framebuffer_get_height (view_framebuffer),
-+                                      error))
-+            return FALSE;
-+        }
-+    }
- 
-   cogl_framebuffer_flush (framebuffer);
- 
 diff --git a/src/backends/meta-screen-cast-stream-src.c b/src/backends/meta-screen-cast-stream-src.c
-index 806fa806c..0d8bc1751 100644
+index 1e009070c..0d8bc1751 100644
 --- a/src/backends/meta-screen-cast-stream-src.c
 +++ b/src/backends/meta-screen-cast-stream-src.c
-@@ -569,26 +569,6 @@ maybe_schedule_follow_up_frame (MetaScreenCastStreamSrc *src,
-                                                    src);
+@@ -78,7 +78,7 @@ static guint signals[N_SIGNALS];
+ 
+ typedef struct _MetaPipeWireSource
+ {
+-  GSource base;
++  GSource source;
+ 
+   MetaScreenCastStreamSrc *src;
+   struct pw_loop *pipewire_loop;
+@@ -90,7 +90,7 @@ typedef struct _MetaScreenCastStreamSrcPrivate
+ 
+   struct pw_context *pipewire_context;
+   struct pw_core *pipewire_core;
+-  MetaPipeWireSource *pipewire_source;
++  GSource *pipewire_source;
+   struct spa_hook pipewire_core_listener;
+ 
+   gboolean is_enabled;
+@@ -1145,7 +1145,7 @@ on_core_error (void       *data,
  }
  
--static int32_t
--meta_screen_cast_stream_src_calculate_stride (MetaScreenCastStreamSrc *src,
--                                              struct spa_data         *spa_data)
--{
--  MetaScreenCastStreamSrcPrivate *priv =
--    meta_screen_cast_stream_src_get_instance_private (src);
--  CoglDmaBufHandle *dmabuf_handle = NULL;
--
--  if (spa_data->type == SPA_DATA_DmaBuf)
+ static gboolean
+-pipewire_loop_source_prepare (GSource *base,
++pipewire_loop_source_prepare (GSource *source,
+                               int     *timeout)
+ {
+   *timeout = -1;
+@@ -1190,24 +1190,21 @@ static GSourceFuncs pipewire_source_funcs =
+   pipewire_loop_source_finalize
+ };
+ 
+-static MetaPipeWireSource *
+-create_pipewire_source (MetaScreenCastStreamSrc *src)
++static GSource *
++create_pipewire_source (MetaScreenCastStreamSrc *src,
++                        struct pw_loop          *pipewire_loop)
+ {
+   GSource *source;
+   MetaPipeWireSource *pipewire_source;
+ 
+   source = g_source_new (&pipewire_source_funcs, sizeof (MetaPipeWireSource));
+   g_source_set_name (source, "[mutter] PipeWire");
++
+   pipewire_source = (MetaPipeWireSource *) source;
+   pipewire_source->src = src;
+-  pipewire_source->pipewire_loop = pw_loop_new (NULL);
+-  if (!pipewire_source->pipewire_loop)
 -    {
--      dmabuf_handle = g_hash_table_lookup (priv->dmabuf_handles,
--                                           GINT_TO_POINTER (spa_data->fd));
+-      g_source_unref ((GSource *) pipewire_source);
+-      return NULL;
 -    }
--
--  if (dmabuf_handle)
--    return cogl_dma_buf_handle_get_stride (dmabuf_handle);
--  else
--    return priv->video_stride;
--}
--
- void
- meta_screen_cast_stream_src_maybe_record_frame (MetaScreenCastStreamSrc  *src,
-                                                 MetaScreenCastRecordFlag  flags)
-@@ -651,12 +631,10 @@ meta_screen_cast_stream_src_maybe_record_frame (MetaScreenCastStreamSrc  *src,
-       g_clear_handle_id (&priv->follow_up_frame_source_id, g_source_remove);
-       if (do_record_frame (src, flags, spa_buffer, data, &error))
-         {
--          struct spa_data *spa_data = &spa_buffer->datas[0];
-           struct spa_meta_region *spa_meta_video_crop;
++  pipewire_source->pipewire_loop = pipewire_loop;
  
--          spa_data->chunk->size = spa_data->maxsize;
--          spa_data->chunk->stride =
--            meta_screen_cast_stream_src_calculate_stride (src, spa_data);
-+          spa_buffer->datas[0].chunk->size = spa_buffer->datas[0].maxsize;
-+          spa_buffer->datas[0].chunk->stride = priv->video_stride;
+-  g_source_add_unix_fd (&pipewire_source->base,
++  g_source_add_unix_fd (source,
+                         pw_loop_get_fd (pipewire_source->pipewire_loop),
+                         G_IO_IN | G_IO_ERR);
  
-           /* Update VideoCrop if needed */
-           spa_meta_video_crop =
-diff --git a/src/backends/meta-virtual-monitor.h b/src/backends/meta-virtual-monitor.h
-index 6699c8ece..c127c46ca 100644
---- a/src/backends/meta-virtual-monitor.h
-+++ b/src/backends/meta-virtual-monitor.h
-@@ -70,7 +70,6 @@ void meta_virtual_monitor_info_free (MetaVirtualMonitorInfo *info);
+@@ -1215,7 +1212,7 @@ create_pipewire_source (MetaScreenCastStreamSrc *src)
+   g_source_attach (source, NULL);
+   g_source_unref (source);
  
- MetaCrtc * meta_virtual_monitor_get_crtc (MetaVirtualMonitor *virtual_monitor);
+-  return pipewire_source;
++  return source;
+ }
  
--META_EXPORT_TEST
- MetaCrtcMode * meta_virtual_monitor_get_crtc_mode (MetaVirtualMonitor *virtual_monitor);
+ static const struct pw_core_events core_events = {
+@@ -1231,8 +1228,17 @@ meta_screen_cast_stream_src_initable_init (GInitable     *initable,
+   MetaScreenCastStreamSrc *src = META_SCREEN_CAST_STREAM_SRC (initable);
+   MetaScreenCastStreamSrcPrivate *priv =
+     meta_screen_cast_stream_src_get_instance_private (src);
++  struct pw_loop *pipewire_loop;
++
++  pipewire_loop = pw_loop_new (NULL);
++  if (!pipewire_loop)
++    {
++      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
++                   "Failed to create PipeWire loop");
++      return FALSE;
++    }
  
- META_EXPORT_TEST
+-  priv->pipewire_source = create_pipewire_source (src);
++  priv->pipewire_source = create_pipewire_source (src, pipewire_loop);
+   if (!priv->pipewire_source)
+     {
+       g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+@@ -1240,7 +1246,7 @@ meta_screen_cast_stream_src_initable_init (GInitable     *initable,
+       return FALSE;
+     }
+ 
+-  priv->pipewire_context = pw_context_new (priv->pipewire_source->pipewire_loop,
++  priv->pipewire_context = pw_context_new (pipewire_loop,
+                                            NULL, 0);
+   if (!priv->pipewire_context)
+     {
+@@ -1298,7 +1304,7 @@ meta_screen_cast_stream_src_dispose (GObject *object)
+   g_clear_pointer (&priv->dmabuf_handles, g_hash_table_destroy);
+   g_clear_pointer (&priv->pipewire_core, pw_core_disconnect);
+   g_clear_pointer (&priv->pipewire_context, pw_context_destroy);
+-  g_clear_pointer ((GSource **) &priv->pipewire_source, g_source_destroy);
++  g_clear_pointer (&priv->pipewire_source, g_source_destroy);
+ 
+   G_OBJECT_CLASS (meta_screen_cast_stream_src_parent_class)->dispose (object);
+ }
 diff --git a/src/backends/native/meta-backend-native.c b/src/backends/native/meta-backend-native.c
 index 224538787..cca074504 100644
 --- a/src/backends/native/meta-backend-native.c
@@ -1463,18 +1147,6 @@ index 224538787..cca074504 100644
    if (meta_is_udev_device_preferred_primary (device))
      flags |= META_KMS_DEVICE_FLAG_PREFERRED_PRIMARY;
  
-diff --git a/src/backends/native/meta-crtc-mode-kms.c b/src/backends/native/meta-crtc-mode-kms.c
-index e108349c4..053367cfd 100644
---- a/src/backends/native/meta-crtc-mode-kms.c
-+++ b/src/backends/native/meta-crtc-mode-kms.c
-@@ -57,7 +57,6 @@ meta_crtc_mode_kms_new (MetaKmsMode *kms_mode,
-     meta_calculate_drm_mode_refresh_rate (drm_mode);
-   crtc_mode_info->vblank_duration_us =
-     meta_calculate_drm_mode_vblank_duration_us (drm_mode);
--  crtc_mode_info->pixel_clock_khz = drm_mode->clock;
- 
-   crtc_mode_name = g_strndup (drm_mode->name, DRM_DISPLAY_MODE_LEN);
-   mode_kms = g_object_new (META_TYPE_CRTC_MODE_KMS,
 diff --git a/src/backends/native/meta-gpu-kms.c b/src/backends/native/meta-gpu-kms.c
 index 97b47f9f9..f30363dc9 100644
 --- a/src/backends/native/meta-gpu-kms.c
@@ -1944,7 +1616,7 @@ index f31e36aad..4e963833f 100644
                                                const int              *rectangles,
                                                int                     n_rectangles);
 diff --git a/src/backends/native/meta-output-kms.c b/src/backends/native/meta-output-kms.c
-index f60d5ad0d..a6196f0af 100644
+index fb658f29d..a6196f0af 100644
 --- a/src/backends/native/meta-output-kms.c
 +++ b/src/backends/native/meta-output-kms.c
 @@ -97,6 +97,32 @@ meta_output_kms_set_underscan (MetaOutputKms *output_kms,
@@ -1980,53 +1652,7 @@ index f60d5ad0d..a6196f0af 100644
  static MetaPrivacyScreenState
  meta_output_kms_get_privacy_screen_state (MetaOutput *output)
  {
-@@ -178,7 +204,7 @@ add_common_modes (MetaOutputInfo *output_info,
-   unsigned max_hdisplay = 0;
-   unsigned max_vdisplay = 0;
-   float max_refresh_rate = 0.0;
--  uint32_t max_pixel_clock = 0;
-+  float max_bandwidth = 0.0;
-   MetaKmsDevice *kms_device;
-   MetaKmsModeFlag flag_filter;
-   GList *l;
-@@ -187,11 +213,14 @@ add_common_modes (MetaOutputInfo *output_info,
-     {
-       const MetaCrtcModeInfo *crtc_mode_info =
-         meta_crtc_mode_get_info (output_info->modes[i]);
-+      float bandwidth;
- 
-+      bandwidth = crtc_mode_info->refresh_rate * crtc_mode_info->width *
-+                  crtc_mode_info->height;
-       max_hdisplay = MAX (max_hdisplay, crtc_mode_info->width);
-       max_vdisplay = MAX (max_vdisplay, crtc_mode_info->height);
-       max_refresh_rate = MAX (max_refresh_rate, crtc_mode_info->refresh_rate);
--      max_pixel_clock = MAX (max_pixel_clock, crtc_mode_info->pixel_clock_khz);
-+      max_bandwidth = MAX (max_bandwidth, bandwidth);
-     }
- 
-   max_refresh_rate = MAX (max_refresh_rate, 60.0);
-@@ -210,6 +239,7 @@ add_common_modes (MetaOutputInfo *output_info,
-     {
-       MetaKmsMode *fallback_mode = l->data;
-       const drmModeModeInfo *drm_mode;
-+      float bandwidth;
-       float refresh_rate;
-       gboolean is_duplicate = FALSE;
- 
-@@ -218,10 +248,11 @@ add_common_modes (MetaOutputInfo *output_info,
- 
-       drm_mode = meta_kms_mode_get_drm_mode (fallback_mode);
-       refresh_rate = meta_calculate_drm_mode_refresh_rate (drm_mode);
-+      bandwidth = refresh_rate * drm_mode->hdisplay * drm_mode->vdisplay;
-       if (drm_mode->hdisplay > max_hdisplay ||
-           drm_mode->vdisplay > max_vdisplay ||
-           refresh_rate > max_refresh_rate ||
--          drm_mode->clock > max_pixel_clock)
-+          bandwidth > max_bandwidth)
-         continue;
- 
-       for (i = 0; i < output_info->n_modes; i++)
-@@ -400,6 +431,9 @@ meta_output_kms_new (MetaGpuKms        *gpu_kms,
+@@ -405,6 +431,9 @@ meta_output_kms_new (MetaGpuKms        *gpu_kms,
    output_info->supports_underscanning =
      meta_kms_connector_is_underscanning_supported (kms_connector);
  
@@ -2050,38 +1676,8 @@ index 52acc6032..54b1721a4 100644
  gboolean meta_output_kms_can_clone (MetaOutputKms *output_kms,
                                      MetaOutputKms *other_output_kms);
  
-diff --git a/src/backends/native/meta-pointer-constraint-native.c b/src/backends/native/meta-pointer-constraint-native.c
-index 0e347d945..6a1c066ad 100644
---- a/src/backends/native/meta-pointer-constraint-native.c
-+++ b/src/backends/native/meta-pointer-constraint-native.c
-@@ -469,7 +469,7 @@ meta_pointer_constraint_impl_native_constraint (MetaPointerConstraintImpl *const
-   MetaPointerConstraintImplNative *constraint_impl_native;
-   cairo_region_t *region;
-   float x, y;
--  g_autoptr (GArray) borders = NULL;
-+  GArray *borders;
-   MetaLine2 motion;
-   MetaBorder *closest_border;
-   uint32_t directions;
-@@ -527,6 +527,7 @@ meta_pointer_constraint_impl_native_constraint (MetaPointerConstraintImpl *const
- 
-   *x_inout = motion.b.x;
-   *y_inout = motion.b.y;
-+  g_array_free (borders, FALSE);
- }
- 
- static float
-@@ -615,7 +616,7 @@ meta_pointer_constraint_impl_native_ensure_constrained (MetaPointerConstraintImp
- 
-   if (!cairo_region_contains_point (region, (int) x, (int) y))
-     {
--      g_autoptr (GArray) borders = NULL;
-+      GArray *borders;
-       float closest_distance_2 = FLT_MAX;
-       MetaBorder *closest_border = NULL;
-       ClutterSeat *seat;
 diff --git a/src/backends/native/meta-renderer-native.c b/src/backends/native/meta-renderer-native.c
-index f5f22c7b1..d1b0df07c 100644
+index d538cc25a..d1b0df07c 100644
 --- a/src/backends/native/meta-renderer-native.c
 +++ b/src/backends/native/meta-renderer-native.c
 @@ -62,6 +62,7 @@
@@ -2092,42 +1688,7 @@ index f5f22c7b1..d1b0df07c 100644
  #include "cogl/cogl.h"
  #include "core/boxes-private.h"
  
-@@ -416,28 +417,12 @@ meta_renderer_native_choose_egl_config (CoglDisplay  *cogl_display,
-   switch (renderer_gpu_data->mode)
-     {
-     case META_RENDERER_NATIVE_MODE_GBM:
--      {
--        static const uint32_t formats[] = {
--          GBM_FORMAT_XRGB8888,
--          GBM_FORMAT_ARGB8888,
--        };
--        int i;
--
--        for (i = 0; i < G_N_ELEMENTS (formats); i++)
--          {
--            g_clear_error (error);
--
--            if (choose_egl_config_from_gbm_format (egl,
--                                                   egl_display,
--                                                   attributes,
--                                                   formats[i],
--                                                   out_config,
--                                                   error))
--              return TRUE;
--          }
--
--        return FALSE;
--      }
-+      return choose_egl_config_from_gbm_format (egl,
-+                                                egl_display,
-+                                                attributes,
-+                                                GBM_FORMAT_XRGB8888,
-+                                                out_config,
-+                                                error);
-     case META_RENDERER_NATIVE_MODE_SURFACELESS:
-       *out_config = EGL_NO_CONFIG_KHR;
-       return TRUE;
-@@ -1256,7 +1241,7 @@ meta_renderer_native_create_view (MetaRenderer       *renderer,
+@@ -1240,7 +1241,7 @@ meta_renderer_native_create_view (MetaRenderer       *renderer,
    int onscreen_width;
    int onscreen_height;
    MetaRectangle view_layout;
@@ -2136,7 +1697,7 @@ index f5f22c7b1..d1b0df07c 100644
    EGLSurface egl_surface;
    GError *error = NULL;
  
-@@ -1368,26 +1353,28 @@ meta_renderer_native_create_view (MetaRenderer       *renderer,
+@@ -1352,26 +1353,28 @@ meta_renderer_native_create_view (MetaRenderer       *renderer,
    meta_rectangle_from_graphene_rect (&crtc_config->layout,
                                       META_ROUNDING_STRATEGY_ROUND,
                                       &view_layout);
@@ -2179,7 +1740,7 @@ index f5f22c7b1..d1b0df07c 100644
  
        /* Ensure we don't point to stale surfaces when creating the offscreen */
        cogl_display_egl = cogl_display->winsys;
-@@ -1399,7 +1386,7 @@ meta_renderer_native_create_view (MetaRenderer       *renderer,
+@@ -1383,7 +1386,7 @@ meta_renderer_native_create_view (MetaRenderer       *renderer,
                                       cogl_display_egl->egl_context);
      }
  
@@ -2188,7 +1749,7 @@ index f5f22c7b1..d1b0df07c 100644
  }
  
  static void
-@@ -1467,6 +1454,7 @@ meta_renderer_native_prepare_frame (MetaRendererNative *renderer_native,
+@@ -1451,6 +1454,7 @@ meta_renderer_native_prepare_frame (MetaRendererNative *renderer_native,
    kms_device = meta_kms_crtc_get_device (kms_crtc);
  
    meta_crtc_kms_maybe_set_gamma (crtc_kms, kms_device);
@@ -3535,94 +3096,6 @@ index f69cb1527..3128f513c 100644
  void meta_surface_actor_set_input_region (MetaSurfaceActor *self,
                                            cairo_region_t   *region);
  void meta_surface_actor_set_opaque_region (MetaSurfaceActor *self,
-diff --git a/src/compositor/meta-window-actor-wayland.c b/src/compositor/meta-window-actor-wayland.c
-index f1ac2eab2..e1f341048 100644
---- a/src/compositor/meta-window-actor-wayland.c
-+++ b/src/compositor/meta-window-actor-wayland.c
-@@ -38,43 +38,28 @@ typedef struct _SurfaceTreeTraverseData
-   int index;
- } SurfaceTreeTraverseData;
- 
--static gboolean
--get_surface_actor_list (GNode    *node,
--                        gpointer  data)
--{
--  MetaWaylandSurface *surface = node->data;
--  MetaSurfaceActor *surface_actor = meta_wayland_surface_get_actor (surface);
--  GList **surface_actors = data;
--
--  *surface_actors = g_list_prepend (*surface_actors, surface_actor);
--  return FALSE;
--}
--
- static gboolean
- set_surface_actor_index (GNode    *node,
-                          gpointer  data)
- {
-   MetaWaylandSurface *surface = node->data;
-+  MetaSurfaceActor *surface_actor = meta_wayland_surface_get_actor (surface);
-   SurfaceTreeTraverseData *traverse_data = data;
--  ClutterActor *window_actor = CLUTTER_ACTOR (traverse_data->window_actor);
--  ClutterActor *surface_actor =
--    CLUTTER_ACTOR (meta_wayland_surface_get_actor (surface));
- 
--  if (clutter_actor_contains (window_actor, surface_actor))
-+  if (clutter_actor_contains (CLUTTER_ACTOR (traverse_data->window_actor),
-+                              CLUTTER_ACTOR (surface_actor)))
-     {
--      if (clutter_actor_get_child_at_index (window_actor, traverse_data->index) !=
--          surface_actor)
--        {
--          clutter_actor_set_child_at_index (window_actor,
--                                            surface_actor,
--                                            traverse_data->index);
--        }
-+      clutter_actor_set_child_at_index (
-+        CLUTTER_ACTOR (traverse_data->window_actor),
-+        CLUTTER_ACTOR (surface_actor),
-+        traverse_data->index);
-     }
-   else
-     {
--      clutter_actor_insert_child_at_index (window_actor,
--                                           surface_actor,
--                                           traverse_data->index);
-+      clutter_actor_insert_child_at_index (
-+        CLUTTER_ACTOR (traverse_data->window_actor),
-+        CLUTTER_ACTOR (surface_actor),
-+        traverse_data->index);
-     }
-   traverse_data->index++;
- 
-@@ -89,28 +74,8 @@ meta_window_actor_wayland_rebuild_surface_tree (MetaWindowActor *actor)
-   MetaWaylandSurface *surface = meta_surface_actor_wayland_get_surface (
-     META_SURFACE_ACTOR_WAYLAND (surface_actor));
-   GNode *root_node = surface->subsurface_branch_node;
--  g_autoptr (GList) surface_actors = NULL;
--  g_autoptr (GList) children = NULL;
--  GList *l;
-   SurfaceTreeTraverseData traverse_data;
- 
--  g_node_traverse (root_node,
--                   G_IN_ORDER,
--                   G_TRAVERSE_LEAVES,
--                   -1,
--                   get_surface_actor_list,
--                   &surface_actors);
--
--  children = clutter_actor_get_children (CLUTTER_ACTOR (actor));
--  for (l = children; l; l = l->next)
--    {
--      ClutterActor *child_actor = l->data;
--
--      if (META_IS_SURFACE_ACTOR_WAYLAND (child_actor) &&
--          !g_list_find (surface_actors, child_actor))
--        clutter_actor_remove_child (CLUTTER_ACTOR (actor), child_actor);
--    }
--
-   traverse_data = (SurfaceTreeTraverseData) {
-     .window_actor = actor,
-     .index = 0,
 diff --git a/src/compositor/meta-window-actor.c b/src/compositor/meta-window-actor.c
 index ae1fa4d90..9fd9f758c 100644
 --- a/src/compositor/meta-window-actor.c
@@ -3675,7 +3148,7 @@ index ae1fa4d90..9fd9f758c 100644
  
    g_clear_object (&priv->window);
 diff --git a/src/core/window-private.h b/src/core/window-private.h
-index 4f269ff37..9765aa5c8 100644
+index 8d2d4a020..9765aa5c8 100644
 --- a/src/core/window-private.h
 +++ b/src/core/window-private.h
 @@ -716,6 +716,9 @@ void        meta_window_get_session_geometry (MetaWindow  *window,
@@ -3688,99 +3161,11 @@ index 4f269ff37..9765aa5c8 100644
  void        meta_window_update_unfocused_button_grabs (MetaWindow *window);
  
  void        meta_window_update_appears_focused (MetaWindow *window);
-@@ -849,9 +852,7 @@ void meta_window_activate_full (MetaWindow     *window,
-                                 MetaWorkspace  *workspace);
- 
- META_EXPORT_TEST
--MetaLogicalMonitor * meta_window_find_monitor_from_frame_rect (MetaWindow *window);
--
--MetaLogicalMonitor * meta_window_find_monitor_from_id (MetaWindow *window);
-+MetaLogicalMonitor * meta_window_calculate_main_logical_monitor (MetaWindow *window);
- 
- MetaLogicalMonitor * meta_window_get_main_logical_monitor (MetaWindow *window);
- void meta_window_update_monitor (MetaWindow                   *window,
 diff --git a/src/core/window.c b/src/core/window.c
-index e7278e48c..af68011f1 100644
+index 95a8e33e0..af68011f1 100644
 --- a/src/core/window.c
 +++ b/src/core/window.c
-@@ -934,7 +934,7 @@ meta_window_main_monitor_changed (MetaWindow               *window,
- }
- 
- MetaLogicalMonitor *
--meta_window_find_monitor_from_frame_rect (MetaWindow *window)
-+meta_window_calculate_main_logical_monitor (MetaWindow *window)
- {
-   MetaBackend *backend = meta_get_backend ();
-   MetaMonitorManager *monitor_manager =
-@@ -1160,7 +1160,7 @@ _meta_window_shared_new (MetaDisplay         *display,
-   window->compositor_private = NULL;
- 
-   if (window->rect.width > 0 && window->rect.height > 0)
--    window->monitor = meta_window_find_monitor_from_frame_rect (window);
-+    window->monitor = meta_window_calculate_main_logical_monitor (window);
-   else
-     window->monitor = meta_backend_get_current_logical_monitor (backend);
- 
-@@ -3646,38 +3646,12 @@ find_monitor_by_winsys_id (MetaWindow *window,
-   return NULL;
- }
- 
--MetaLogicalMonitor *
--meta_window_find_monitor_from_id (MetaWindow *window)
--{
--  MetaContext *context = meta_display_get_context (window->display);
--  MetaBackend *backend = meta_context_get_backend (context);
--  MetaMonitorManager *monitor_manager =
--    meta_backend_get_monitor_manager (backend);
--  MetaLogicalMonitor *old_monitor = window->monitor;
--  MetaLogicalMonitor *new_monitor;
--
--  new_monitor = find_monitor_by_winsys_id (window,
--                                           window->preferred_output_winsys_id);
--
--  if (old_monitor && !new_monitor)
--    new_monitor = find_monitor_by_winsys_id (window, old_monitor->winsys_id);
--
--  if (!new_monitor)
--    {
--      new_monitor =
--        meta_monitor_manager_get_primary_logical_monitor (monitor_manager);
--    }
--
--  return new_monitor;
--}
--
- /* This is called when the monitor setup has changed. The window->monitor
-  * reference is still "valid", but refer to the previous monitor setup */
- void
- meta_window_update_for_monitors_changed (MetaWindow *window)
- {
--  MetaContext *context = meta_display_get_context (window->display);
--  MetaBackend *backend = meta_context_get_backend (context);
-+  MetaBackend *backend = meta_get_backend ();
-   MetaMonitorManager *monitor_manager =
-     meta_backend_get_monitor_manager (backend);
-   const MetaLogicalMonitor *old, *new;
-@@ -3693,7 +3667,17 @@ meta_window_update_for_monitors_changed (MetaWindow *window)
-     }
- 
-   old = window->monitor;
--  new = meta_window_find_monitor_from_id (window);
-+
-+  /* Try the preferred output first */
-+  new = find_monitor_by_winsys_id (window, window->preferred_output_winsys_id);
-+
-+  /* Otherwise, try to find the old output on a new monitor */
-+  if (old && !new)
-+    new = find_monitor_by_winsys_id (window, old->winsys_id);
-+
-+  /* Fall back to primary if everything else failed */
-+  if (!new)
-+    new = meta_monitor_manager_get_primary_logical_monitor (monitor_manager);
- 
-   if (window->tile_mode != META_TILE_NONE)
-     {
-@@ -4266,6 +4250,14 @@ meta_window_get_session_geometry (MetaWindow  *window,
+@@ -4250,6 +4250,14 @@ meta_window_get_session_geometry (MetaWindow  *window,
      window->size_hints.height_inc;
  }
  
@@ -3826,18 +3211,6 @@ index 13a69c1a6..820efa0a5 100644
    ]
  endif
  
-diff --git a/src/tests/meson.build b/src/tests/meson.build
-index ae8c0ca60..14d817937 100644
---- a/src/tests/meson.build
-+++ b/src/tests/meson.build
-@@ -354,7 +354,6 @@ stacking_tests = [
-   'modals',
-   'map-fixed-size',
-   'client-resize-respect-constraints',
--  'map-on-hotplug',
- ]
- 
- foreach stacking_test: stacking_tests
 diff --git a/src/tests/meta-monitor-test-utils.c b/src/tests/meta-monitor-test-utils.c
 index aab9e1858..e74504750 100644
 --- a/src/tests/meta-monitor-test-utils.c
@@ -4218,207 +3591,100 @@ index 6a807c60e..4c4cdefbb 100644
    add_monitor_test ("/backends/monitor/custom/scale-config",
                      meta_test_monitor_custom_scale_config);
    add_monitor_test ("/backends/monitor/custom/fractional-scale-config",
-diff --git a/src/tests/stacking/client-resize-respect-constraints.metatest b/src/tests/stacking/client-resize-respect-constraints.metatest
-index fd524784e..021e0ed0e 100644
---- a/src/tests/stacking/client-resize-respect-constraints.metatest
-+++ b/src/tests/stacking/client-resize-respect-constraints.metatest
-@@ -4,8 +4,6 @@
- #  3. Resize such that the following resize will extend beyond the screen
- #  4. Check that the window was moved to the position that would allow it to fit on the screen
+diff --git a/src/tests/screen-cast-client.c b/src/tests/screen-cast-client.c
+index cdf0d7dcf..afd6f17b0 100644
+--- a/src/tests/screen-cast-client.c
++++ b/src/tests/screen-cast-client.c
+@@ -83,18 +83,18 @@ typedef struct _ScreenCast
  
--resize_monitor primary 800 600
--
- new_client w wayland
- create w/1 csd
+ typedef struct _PipeWireSource
+ {
+-  GSource base;
++  GSource source;
  
-diff --git a/src/tests/stacking/map-on-hotplug.metatest b/src/tests/stacking/map-on-hotplug.metatest
-deleted file mode 100644
-index 664ae21f1..000000000
---- a/src/tests/stacking/map-on-hotplug.metatest
-+++ /dev/null
-@@ -1,20 +0,0 @@
--# Test that monitor hotplugs with unmapped windows are handled
--
--new_client w wayland
--
--create w/1 csd
--freeze w/1
--resize w/1 100 200
--show w/1 async
--
--resize_monitor primary 1024 768
--
--wait
--
--thaw w/1
--wait
--sync_shown w/1
--assert_stacking w/1
--assert_size w/1 100 200
--
--destroy w/1
-diff --git a/src/tests/test-runner.c b/src/tests/test-runner.c
-index 9a9fb9631..c691ef6ef 100644
---- a/src/tests/test-runner.c
-+++ b/src/tests/test-runner.c
-@@ -24,7 +24,6 @@
- #include <stdlib.h>
- #include <string.h>
+   struct pw_loop *pipewire_loop;
+ } PipeWireSource;
  
--#include "backends/meta-virtual-monitor.h"
- #include "core/window-private.h"
- #include "meta-test/meta-context-test.h"
- #include "meta/util.h"
-@@ -42,7 +41,6 @@ typedef struct {
-   GString *warning_messages;
-   GMainLoop *loop;
-   gulong x11_display_opened_handler_id;
--  MetaVirtualMonitor *virtual_monitor;
- } TestCase;
+-static PipeWireSource *_pipewire_source;
++static GSource *_pipewire_source;
+ static struct pw_context *_pipewire_context;
+ static struct pw_core *_pipewire_core;
+ static struct spa_hook _pipewire_core_listener;
  
  static gboolean
-@@ -84,22 +82,25 @@ test_case_new (MetaContext *context)
-   TestCase *test = g_new0 (TestCase, 1);
-   MetaDisplay *display = meta_context_get_display (context);
- 
--  if (display->x11_display)
-+  if (!meta_is_wayland_compositor ())
-     {
-+      meta_context_test_wait_for_x11_display (META_CONTEXT_TEST (context));
-       on_x11_display_opened (display, test);
-     }
-   else
-     {
--      test->x11_display_opened_handler_id =
--        g_signal_connect (meta_get_display (), "x11-display-opened",
--                          G_CALLBACK (on_x11_display_opened),
--                          test);
-+      if (display->x11_display)
-+        on_x11_display_opened (display, test);
-+      else
-+        test->x11_display_opened_handler_id =
-+          g_signal_connect (meta_get_display (), "x11-display-opened",
-+                            G_CALLBACK (on_x11_display_opened),
-+                            test);
-     }
- 
-   test->context = context;
-   test->clients = g_hash_table_new (g_str_hash, g_str_equal);
-   test->loop = g_main_loop_new (NULL, FALSE);
--  test->virtual_monitor = meta_create_test_monitor (context, 800, 600, 60.0);
- 
-   return test;
- }
-@@ -118,9 +119,6 @@ static gboolean
- test_case_dispatch (TestCase *test,
-                     GError  **error)
+-pipewire_loop_source_prepare (GSource *base,
++pipewire_loop_source_prepare (GSource *source,
+                               int     *timeout)
  {
--  MetaBackend *backend = meta_context_get_backend (test->context);
--  ClutterActor *stage = meta_backend_get_stage (backend);
--
-   /* Wait until we've done any outstanding queued up work.
-    * Though we add this as BEFORE_REDRAW, the iteration that runs the
-    * BEFORE_REDRAW idles will proceed on and do the redraw, so we're
-@@ -130,8 +128,6 @@ test_case_dispatch (TestCase *test,
-                   test_case_loop_quit,
-                   test,
-                   NULL);
--
--  clutter_stage_schedule_update (CLUTTER_STAGE (stage));
-   g_main_loop_run (test->loop);
+   *timeout = -1;
+@@ -133,24 +133,26 @@ static GSourceFuncs pipewire_source_funcs =
+   pipewire_loop_source_finalize
+ };
  
-   return TRUE;
-@@ -443,7 +439,7 @@ parse_window_size (MetaWindow *window,
-   MetaRectangle logical_monitor_layout;
-   int value;
+-static PipeWireSource *
+-create_pipewire_source (void)
++static GSource *
++create_pipewire_source (struct pw_loop *pipewire_loop)
+ {
++  GSource *source;
+   PipeWireSource *pipewire_source;
  
--  logical_monitor = meta_window_find_monitor_from_frame_rect (window);
-+  logical_monitor = meta_window_calculate_main_logical_monitor (window);
-   g_assert_nonnull (logical_monitor);
+-  pipewire_source =
+-    (PipeWireSource *) g_source_new (&pipewire_source_funcs,
+-                                     sizeof (PipeWireSource));
+-  pipewire_source->pipewire_loop = pw_loop_new (NULL);
+-  g_assert_nonnull (pipewire_source->pipewire_loop);
+-  g_source_add_unix_fd (&pipewire_source->base,
++  source = g_source_new (&pipewire_source_funcs,
++                         sizeof (PipeWireSource));
++
++  pipewire_source = (PipeWireSource *) source;
++  pipewire_source->pipewire_loop = pipewire_loop;
++
++  g_source_add_unix_fd (source,
+                         pw_loop_get_fd (pipewire_source->pipewire_loop),
+                         G_IO_IN | G_IO_ERR);
  
-   logical_monitor_layout = meta_logical_monitor_get_layout (logical_monitor);
-@@ -638,24 +634,6 @@ test_case_do (TestCase *test,
-       if (!show_async)
-         meta_test_client_wait_for_window_shown (client, window);
-     }
--  else if (strcmp (argv[0], "sync_shown") == 0)
--    {
--      MetaWindow *window;
--      MetaTestClient *client;
--      const char *window_id;
--
--      if (argc != 2)
--        BAD_COMMAND("usage: %s <client-id>/<window-id>", argv[0]);
--
--      if (!test_case_parse_window_id (test, argv[1], &client, &window_id, error))
--        return FALSE;
--
--      window = meta_test_client_find_window (client, window_id, error);
--      if (!window)
--        return FALSE;
--
--      meta_test_client_wait_for_window_shown (client, window);
--    }
-   else if (strcmp (argv[0], "resize") == 0)
-     {
-       if (argc != 4)
-@@ -1007,29 +985,6 @@ test_case_do (TestCase *test,
-       if (!meta_test_client_do (client, error, argv[0], argv[2], argv[3], NULL))
-         return FALSE;
-     }
--  else if (strcmp (argv[0], "resize_monitor") == 0)
--    {
--      MetaBackend *backend = meta_context_get_backend (test->context);
--      MetaMonitorManager *monitor_manager =
--        meta_backend_get_monitor_manager (backend);
--      MetaCrtcMode *crtc_mode;
--      const MetaCrtcModeInfo *crtc_mode_info;
--
--      if (argc != 4)
--        BAD_COMMAND ("usage: %s <monitor-id> <width> <height>", argv[0]);
--
--      if (strcmp (argv[1], "0") != 0 &&
--          strcmp (argv[1], "primary") != 0)
--        BAD_COMMAND ("Unknown monitor %s", argv[1]);
--
--      crtc_mode = meta_virtual_monitor_get_crtc_mode (test->virtual_monitor);
--      crtc_mode_info = meta_crtc_mode_get_info (crtc_mode);
--      meta_virtual_monitor_set_mode (test->virtual_monitor,
--                                     atoi (argv[2]),
--                                     atoi (argv[3]),
--                                     crtc_mode_info->refresh_rate);
--      meta_monitor_manager_reload (monitor_manager);
--    }
-   else
-     {
-       BAD_COMMAND("Unknown command %s", argv[0]);
-@@ -1076,7 +1031,6 @@ test_case_destroy (TestCase *test,
-     meta_x11_display_set_alarm_filter (display->x11_display, NULL, NULL);
+   pw_loop_enter (pipewire_source->pipewire_loop);
+-  g_source_attach (&pipewire_source->base, NULL);
++  g_source_attach (source, NULL);
  
-   g_hash_table_destroy (test->clients);
--  g_object_unref (test->virtual_monitor);
-   g_free (test);
- 
-   return TRUE;
-@@ -1211,7 +1165,6 @@ run_tests (MetaContext  *context,
-         success = FALSE;
-     }
- 
--
-   return success ? 0 : 1;
+-  return pipewire_source;
++  return source;
  }
  
-@@ -1290,7 +1243,7 @@ main (int argc, char **argv)
-   GPtrArray *tests;
-   RunTestsInfo info;
- 
--  context = meta_create_test_context (META_CONTEXT_TEST_TYPE_HEADLESS,
-+  context = meta_create_test_context (META_CONTEXT_TEST_TYPE_NESTED,
-                                       META_CONTEXT_TEST_FLAG_TEST_CLIENT);
- 
-   meta_context_add_option_entries (context, options, NULL);
+ static void
+@@ -171,9 +173,15 @@ static const struct pw_core_events core_events = {
+ static void
+ init_pipewire (void)
+ {
++  struct pw_loop *pipewire_loop;
++
+   pw_init (NULL, NULL);
+-  _pipewire_source = create_pipewire_source ();
+-  _pipewire_context = pw_context_new (_pipewire_source->pipewire_loop,
++
++  pipewire_loop = pw_loop_new (NULL);
++  g_assert_nonnull (pipewire_loop);
++
++  _pipewire_source = create_pipewire_source (pipewire_loop);
++  _pipewire_context = pw_context_new (pipewire_loop,
+                                       NULL, 0);
+   g_assert_nonnull (_pipewire_context);
+   _pipewire_core = pw_context_connect (_pipewire_context, NULL, 0);
+@@ -192,8 +200,8 @@ release_pipewire (void)
+   g_clear_pointer (&_pipewire_context, pw_context_destroy);
+   if (_pipewire_source)
+     {
+-      g_source_destroy ((GSource *) _pipewire_source);
+-      g_source_unref ((GSource *) _pipewire_source);
++      g_source_destroy (_pipewire_source);
++      g_source_unref (_pipewire_source);
+       _pipewire_source = NULL;
+     }
+ }
 diff --git a/src/wayland/meta-wayland-actor-surface.c b/src/wayland/meta-wayland-actor-surface.c
-index 1230f6cf0..096b46aa2 100644
+index b6d26fdc1..096b46aa2 100644
 --- a/src/wayland/meta-wayland-actor-surface.c
 +++ b/src/wayland/meta-wayland-actor-surface.c
 @@ -307,7 +307,8 @@ meta_wayland_actor_surface_apply_state (MetaWaylandSurfaceRole  *surface_role,
@@ -4431,191 +3697,3 @@ index 1230f6cf0..096b46aa2 100644
      }
  
    meta_wayland_actor_surface_queue_frame_callbacks (actor_surface, pending);
-@@ -321,29 +322,42 @@ meta_wayland_actor_surface_is_on_logical_monitor (MetaWaylandSurfaceRole *surfac
- {
-   MetaWaylandActorSurfacePrivate *priv =
-     meta_wayland_actor_surface_get_instance_private (META_WAYLAND_ACTOR_SURFACE (surface_role));
--  MetaBackend *backend = meta_get_backend ();
--  MetaRenderer *renderer = meta_backend_get_renderer (backend);
-   ClutterActor *actor = CLUTTER_ACTOR (priv->actor);
-+  float x, y, width, height;
-+  cairo_rectangle_int_t actor_rect;
-+  cairo_region_t *region;
-   MetaRectangle logical_monitor_layout;
--  GList *l;
-+  gboolean is_on_monitor;
- 
--  logical_monitor_layout = meta_logical_monitor_get_layout (logical_monitor);
-+  if (!clutter_actor_is_mapped (actor) &&
-+      !clutter_actor_has_mapped_clones (actor))
-+    return FALSE;
- 
--  for (l = meta_renderer_get_views (renderer); l; l = l->next)
--    {
--      ClutterStageView *stage_view = l->data;
--      MetaRectangle view_layout;
-+  clutter_actor_get_transformed_position (actor, &x, &y);
-+  clutter_actor_get_transformed_size (actor, &width, &height);
- 
--      clutter_stage_view_get_layout (stage_view, &view_layout);
-+  actor_rect.x = (int) roundf (x);
-+  actor_rect.y = (int) roundf (y);
-+  actor_rect.width = (int) roundf (x + width) - actor_rect.x;
-+  actor_rect.height = (int) roundf (y + height) - actor_rect.y;
- 
--      if (meta_rectangle_overlap (&logical_monitor_layout,
--                                  &view_layout) &&
--          clutter_actor_is_effectively_on_stage_view (CLUTTER_ACTOR (actor),
--                                                      stage_view))
--        return TRUE;
--    }
-+  /* Calculate the scaled surface actor region. */
-+  region = cairo_region_create_rectangle (&actor_rect);
-+
-+  logical_monitor_layout = meta_logical_monitor_get_layout (logical_monitor);
-+
-+  cairo_region_intersect_rectangle (region,
-+				    &((cairo_rectangle_int_t) {
-+				      .x = logical_monitor_layout.x,
-+				      .y = logical_monitor_layout.y,
-+				      .width = logical_monitor_layout.width,
-+				      .height = logical_monitor_layout.height,
-+				    }));
-+
-+  is_on_monitor = !cairo_region_is_empty (region);
-+  cairo_region_destroy (region);
- 
--  return FALSE;
-+  return is_on_monitor;
- }
- 
- static void
-diff --git a/src/wayland/meta-wayland-dma-buf.c b/src/wayland/meta-wayland-dma-buf.c
-index 9b708abd3..6af20cd01 100644
---- a/src/wayland/meta-wayland-dma-buf.c
-+++ b/src/wayland/meta-wayland-dma-buf.c
-@@ -1024,7 +1024,7 @@ ensure_scanout_tranche (MetaWaylandDmaBufSurfaceFeedback *surface_feedback,
-           if (format.drm_modifier != DRM_FORMAT_MOD_INVALID)
-             continue;
- 
--          if (!meta_crtc_kms_supports_format (crtc_kms, format.drm_format))
-+          if (!meta_crtc_kms_get_modifiers (crtc_kms, format.drm_format))
-             continue;
- 
-           g_array_append_val (formats, format);
-@@ -1104,8 +1104,6 @@ surface_feedback_surface_destroyed_cb (gpointer user_data)
-                   NULL);
-   g_list_free (surface_feedback->resources);
- 
--  meta_wayland_dma_buf_feedback_free (surface_feedback->feedback);
--
-   g_free (surface_feedback);
- }
- 
-diff --git a/src/wayland/meta-wayland-subsurface.c b/src/wayland/meta-wayland-subsurface.c
-index 92490332f..1e9b65528 100644
---- a/src/wayland/meta-wayland-subsurface.c
-+++ b/src/wayland/meta-wayland-subsurface.c
-@@ -292,16 +292,31 @@ meta_wayland_subsurface_class_init (MetaWaylandSubsurfaceClass *klass)
-     meta_wayland_subsurface_sync_actor_state;
- }
- 
-+static void
-+unparent_actor (MetaWaylandSurface *surface)
-+{
-+  ClutterActor *actor;
-+  ClutterActor *parent_actor;
-+
-+  actor = CLUTTER_ACTOR (meta_wayland_surface_get_actor (surface));
-+  if (!actor)
-+    return;
-+
-+  parent_actor = clutter_actor_get_parent (actor);
-+  if (parent_actor)
-+    clutter_actor_remove_child (parent_actor, actor);
-+}
-+
- static void
- wl_subsurface_destructor (struct wl_resource *resource)
- {
-   MetaWaylandSurface *surface = wl_resource_get_user_data (resource);
- 
-   g_node_unlink (surface->subsurface_branch_node);
-+  unparent_actor (surface);
- 
-   if (surface->sub.parent)
-     {
--      meta_wayland_surface_notify_subsurface_state_changed (surface->sub.parent);
-       wl_list_remove (&surface->sub.parent_destroy_listener.link);
-       surface->sub.parent = NULL;
-     }
-diff --git a/src/wayland/meta-window-wayland.c b/src/wayland/meta-window-wayland.c
-index d8ece0bd7..2b389bfbf 100644
---- a/src/wayland/meta-window-wayland.c
-+++ b/src/wayland/meta-window-wayland.c
-@@ -490,17 +490,14 @@ meta_window_wayland_update_main_monitor (MetaWindow                   *window,
-     }
- 
-   if (window->rect.width == 0 || window->rect.height == 0)
--    {
--      window->monitor = meta_window_find_monitor_from_id (window);
--      return;
--    }
-+    return;
- 
-   /* Require both the current and the new monitor would be the new main monitor,
-    * even given the resulting scale the window would end up having. This is
-    * needed to avoid jumping back and forth between the new and the old, since
-    * changing main monitor may cause the window to be resized so that it no
-    * longer have that same new main monitor. */
--  to = meta_window_find_monitor_from_frame_rect (window);
-+  to = meta_window_calculate_main_logical_monitor (window);
- 
-   if (from == to)
-     return;
-diff --git a/src/x11/meta-x11-display.c b/src/x11/meta-x11-display.c
-index 51a7a3b75..9a2f02e9e 100644
---- a/src/x11/meta-x11-display.c
-+++ b/src/x11/meta-x11-display.c
-@@ -1028,7 +1028,6 @@ meta_x11_init_gdk_display (GError **error)
- {
-   const char *xdisplay_name;
-   GdkDisplay *gdk_display;
--  const char *gdk_backend_env = NULL;
-   const char *gdk_gl_env = NULL;
-   const char *old_no_at_bridge;
-   Display *xdisplay;
-@@ -1043,10 +1042,6 @@ meta_x11_init_gdk_display (GError **error)
- 
-   gdk_set_allowed_backends ("x11");
- 
--  gdk_backend_env = g_getenv ("GDK_BACKEND");
--  /* GDK would fail to initialize with e.g. GDK_BACKEND=wayland */
--  g_unsetenv ("GDK_BACKEND");
--
-   gdk_gl_env = g_getenv ("GDK_GL");
-   g_setenv ("GDK_GL", "disable", TRUE);
- 
-@@ -1077,9 +1072,6 @@ meta_x11_init_gdk_display (GError **error)
-       return FALSE;
-     }
- 
--  if (gdk_backend_env)
--    g_setenv("GDK_BACKEND", gdk_backend_env, TRUE);
--
-   if (gdk_gl_env)
-     g_setenv("GDK_GL", gdk_gl_env, TRUE);
-   else
-diff --git a/src/x11/window-x11.c b/src/x11/window-x11.c
-index 0c528c17a..617a1dfaa 100644
---- a/src/x11/window-x11.c
-+++ b/src/x11/window-x11.c
-@@ -1860,7 +1860,7 @@ static void
- meta_window_x11_update_main_monitor (MetaWindow                   *window,
-                                      MetaWindowUpdateMonitorFlags  flags)
- {
--  window->monitor = meta_window_find_monitor_from_frame_rect (window);
-+  window->monitor = meta_window_calculate_main_logical_monitor (window);
- }
- 
- static void

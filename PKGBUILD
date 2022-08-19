@@ -3,7 +3,7 @@
 pkgbase=mutter-vrr
 pkgname=(mutter-vrr mutter-vrr-docs)
 pkgver=42.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME (with VRR)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -21,7 +21,7 @@ source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit
         '42.4.patch')
 
 sha256sums=('SKIP'
-            'cbd033426f28cd485f4414307d881e9eeb86bf180679e0fb14c68ca41dc05ac2')
+            'bce64d09ee3fc1e09031415735aa7aa59cc81abfb8477c8718ff7b1634362714')
 
 pkgver() {
   cd $pkgname
