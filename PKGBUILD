@@ -25,11 +25,11 @@ pkgver() {
 build() {
   cd kwin-plugins
 
-  cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr .
-  ninja
+  cmake -DCMAKE_INSTALL_PREFIX=/usr .
+  make
 }
 
 package() {
   cd kwin-plugins
-  DESTDIR="$pkgdir" ninja install
+  DESTDIR="$pkgdir" make install
 }
