@@ -4,26 +4,29 @@
 
 pkgname=lirc-git
 _pkgname=lirc
-pkgver=r3261.fc67ec65
-pkgrel=2
+pkgver=r3281.888a28ad
+pkgrel=1
 pkgdesc="Linux Infrared Remote Control utils. Git version."
 arch=('x86_64')
 url="https://www.lirc.org/"
 license=('GPL')
 depends=('alsa-lib' 'libx11' 'libftdi' 'libusb-compat')
-makedepends=('help2man' 'alsa-lib' 'libx11' 'libxslt' 'git' 'python-setuptools'
-             'systemd')
-optdepends=('python: for lirc-setup, irdb-get and pronto2lirc')
+makedepends=('help2man' 'alsa-lib' 'libx11' 'libxslt' 'python' 'python-setuptools'
+             'python-yaml' 'systemd')
+optdepends=('python: for lirc-setup, irdb-get and pronto2lirc'
+            'python-gobject: for lirc-setup and irdb-get'
+            'python-yaml: for lirc-setup and irdb-get')
 provides=('lirc-utils' 'lirc')
-conflicts=('lirc-utils' 'lirc')
+conflicts=('lirc-utils')
 replaces=('lirc-utils')
 backup=('etc/lirc/lirc_options.conf' 'etc/lirc/lircd.conf' 'etc/lirc/lircmd.conf')
 source=("git://lirc.git.sourceforge.net/gitroot/lirc/lirc"
-        unfuck_build.patch
+        lirc-0.10-build-fix.patch
         lirc.logrotate
         lirc.tmpfiles)
 md5sums=('SKIP'
-         'ed4241a5da975834fd08966d693987f7'
+         'd80cd25aa263531f098d0b90bde08056'
+         'c4f22d27402483d888b07b24ca781a9e'
          '3deb02604b37811d41816e9b4385fcc3'
          'febf25c154a7d36f01159e84f26c2d9a')
 
@@ -35,7 +38,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/$_pkgname"
 
-  patch -Np1 -i ../unfuck_build.patch
+  patch -p1 -i ../lirc-0.10-build-fix.patch
 
   autoreconf -fi
   automake -ac
@@ -44,7 +47,14 @@ prepare() {
 build() {
   cd "$srcdir/$_pkgname"
 
-  HAVE_UINPUT=1 ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --localstatedir=/var
+  #HAVE_UINPUT=1 ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --localstatedir=/var
+  ./configure \
+    --prefix=/usr \
+    --sbindir=/usr/bin \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --enable-devinput \
+    --enable-uinput
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
