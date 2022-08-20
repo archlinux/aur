@@ -264,7 +264,7 @@ index 1aff35ff87c..f557a82909a 100644
  #define MAX_OFILE_ALIGNMENT 128
  
 diff --git a/gcc/cp/mapper-client.cc b/gcc/cp/mapper-client.cc
-index 8603a886a09..a32603ba171 100644
+index fe9544b5ba4..4ee44c1a366 100644
 --- a/gcc/cp/mapper-client.cc
 +++ b/gcc/cp/mapper-client.cc
 @@ -19,7 +19,7 @@ along with GCC; see the file COPYING3.  If not see
@@ -458,7 +458,7 @@ index ba7fb924b53..a6c23301fc7 100644
  {
    int filename_len;
 diff --git a/libgcc/libgcov.h b/libgcc/libgcov.h
-index 40e845ce3ea..59ab48ec5e5 100644
+index c77a74a3e53..2c7781d3354 100644
 --- a/libgcc/libgcov.h
 +++ b/libgcc/libgcov.h
 @@ -164,6 +164,11 @@ extern struct gcov_info *gcov_list;
@@ -896,7 +896,7 @@ index 4b25929ddae..eb3d507858e 100644
  
  _GLIBCXX_END_NAMESPACE_VERSION
 diff --git a/libstdc++-v3/include/experimental/bits/fs_path.h b/libstdc++-v3/include/experimental/bits/fs_path.h
-index b0825ba76e8..5f9d721bc6e 100644
+index 19d246100cb..1463a59b45a 100644
 --- a/libstdc++-v3/include/experimental/bits/fs_path.h
 +++ b/libstdc++-v3/include/experimental/bits/fs_path.h
 @@ -53,6 +53,11 @@
