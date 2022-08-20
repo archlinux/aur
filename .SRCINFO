@@ -1,7 +1,7 @@
 pkgbase = r-forcats
 	pkgdesc = Tools for Working with Categorical Variables (Factors)
-	pkgver = 0.5.1
-	pkgrel = 4
+	pkgver = 0.5.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=forcats
 	arch = any
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = r-forcats
 	depends = r-magrittr
 	depends = r-rlang
 	depends = r-tibble
+	depends = r-withr
 	optdepends = r-covr
 	optdepends = r-dplyr
 	optdepends = r-ggplot2
@@ -17,7 +18,7 @@ pkgbase = r-forcats
 	optdepends = r-readr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/forcats_0.5.1.tar.gz
-	sha256sums = c4fb96e874e2bedaa8a1aa32ea22abdee7906d93b5c5c7b42c0894c0c5b6a289
+	source = https://cran.r-project.org/src/contrib/forcats_0.5.2.tar.gz
+	sha256sums = 14a60a43183f82da0fbf42633cee446d21dcbb98a8c37361b5c8061a4da86141
 
 pkgname = r-forcats
