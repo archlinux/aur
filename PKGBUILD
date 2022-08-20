@@ -2,14 +2,14 @@
 # Contributor: steeltitanium <steeltitanium1 at gmail dot com>
 
 pkgname=srb2kart-data
-pkgver=1.4
-pkgrel=3
+pkgver=1.5
+pkgrel=1
 pkgdesc="Data files for Sonic Robo Blast 2 Kart"
 arch=('any')
 license=('custom')
 url='https://mb.srb2.org/showthread.php?t=43708'
-source=("https://github.com/STJr/Kart-Public/releases/download/v$pkgver/srb2kart-v${pkgver//./}-Data.zip")
-sha256sums=('4a5c1b697377ecbf5c2ad6d4e8c02f8513f5c2b75324316ec8f467f5069cd4ae')
+source=("https://github.com/STJr/Kart-Public/releases/download/v$pkgver/AssetsLinuxOnly.zip")
+sha256sums=('0381e4c670c64080ae72c2721d761ce460916cc3f4338363adea218453906ab0')
 
 package() {
 	install -d "$pkgdir"/usr/share/games/SRB2Kart
