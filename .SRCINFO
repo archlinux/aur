@@ -1,22 +1,19 @@
 pkgbase = lirc-user-service
 	pkgdesc = Systemd dropins to run lirc as an unprivileged user for better stability and security
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://www.lirc.org/html/configuration-guide.html
+	install = readme.install
 	arch = any
 	license = MIT
 	depends = lirc
 	depends = systemd
 	backup = etc/systemd/system/lircd.service.d/override.conf
+	source = 60-lirc.rules
 	source = sysusers.conf
 	source = tmpfiles.conf
-	source = 60-lirc.rules
-	source = lircd-override.conf
-	source = irexec-override.conf
+	md5sums = cbed0097426c746550c687ae3d0310ec
 	md5sums = 2a19b64c02e12256624cc15906bcf65a
 	md5sums = 818c7fa6b32ab3edb56ef643450116f2
-	md5sums = cbed0097426c746550c687ae3d0310ec
-	md5sums = a2b4930446ed6b1fe3db43f304fc2653
-	md5sums = a2b4930446ed6b1fe3db43f304fc2653
 
 pkgname = lirc-user-service
