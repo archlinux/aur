@@ -1,0 +1,14 @@
+pkgbase = intel-ivsc-driver-dkms-git
+	pkgdesc = Intel Vision Sensing Controller driver (DKMS)
+	pkgver = r25.b8c22f4
+	pkgrel = 1
+	url = https://github.com/intel/ivsc-driver
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = dkms
+	depends = intel-ivsc-firmware
+	source = git+https://github.com/intel/ivsc-driver.git
+	sha256sums = SKIP
+
+pkgname = intel-ivsc-driver-dkms-git
