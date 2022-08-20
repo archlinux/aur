@@ -2,35 +2,28 @@
 
 _pkgname=inquirer
 pkgname="python-$_pkgname"
-pkgver=2.9.2
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="Collection of common interactive command line user interfaces, based on Inquirer.js"
 arch=('any')
 url="https://pypi.org/project/$_pkgname"
 license=('MIT')
 depends=('python' 'python-blessed' 'python-readchar' 'python-editor')
-makedepends=('python-setuptools' 'python-dephell')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/magmax/python-inquirer/archive/v$pkgver.tar.gz")
-sha256sums=('576bfedeead2e9531136da541109216f1732a405fb1157aeb31056890f3c4f63')
-b2sums=('b8518a1620aa24f58f2ddf7d6ade2aa62d73c8c299a1deec31dc5c2c602815b1254859d398628ddfd8a76ad1d1ba2af12ba97dbf2c6c1a0b05d26f92c48633e5')
-
-prepare() {
-  cd "python-inquirer-$pkgver"
-
-  dephell deps convert --from pyproject.toml --to setup.py
-}
+sha256sums=('d30b09e260640deabb52c0d6a7c14efd9a50494301b30f19d16a706945983edd')
+b2sums=('41e0f39ec420e2bb9d12937973ac647cc192bcd9e1d6888bea5bc05633452417582af11ca76e9e093e2c4ecb17f800b6d223affead6a03be2cc00b369de60740')
 
 build() {
   cd "python-inquirer-$pkgver"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "python-inquirer-$pkgver"
 
-  python setup.py install --root="$pkgdir" --optimize=1
-  rm -rf "$pkgdir/usr/lib"/python*/"site-packages/tests"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

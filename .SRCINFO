@@ -1,18 +1,19 @@
 pkgbase = python-inquirer
 	pkgdesc = Collection of common interactive command line user interfaces, based on Inquirer.js
-	pkgver = 2.9.2
+	pkgver = 2.10.0
 	pkgrel = 1
 	url = https://pypi.org/project/inquirer
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
-	makedepends = python-dephell
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = python-blessed
 	depends = python-readchar
 	depends = python-editor
-	source = python-inquirer-2.9.2.tar.gz::https://github.com/magmax/python-inquirer/archive/v2.9.2.tar.gz
-	sha256sums = 576bfedeead2e9531136da541109216f1732a405fb1157aeb31056890f3c4f63
-	b2sums = b8518a1620aa24f58f2ddf7d6ade2aa62d73c8c299a1deec31dc5c2c602815b1254859d398628ddfd8a76ad1d1ba2af12ba97dbf2c6c1a0b05d26f92c48633e5
+	source = python-inquirer-2.10.0.tar.gz::https://github.com/magmax/python-inquirer/archive/v2.10.0.tar.gz
+	sha256sums = d30b09e260640deabb52c0d6a7c14efd9a50494301b30f19d16a706945983edd
+	b2sums = 41e0f39ec420e2bb9d12937973ac647cc192bcd9e1d6888bea5bc05633452417582af11ca76e9e093e2c4ecb17f800b6d223affead6a03be2cc00b369de60740
 
 pkgname = python-inquirer
