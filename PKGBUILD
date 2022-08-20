@@ -33,9 +33,10 @@ package() {
   install -dm755 "${pkgdir}/var/log/grafana"
   install -Dm755 bin/grafana-server "$pkgdir/usr/bin/grafana-server"
   install -Dm755 bin/grafana-cli "$pkgdir/usr/bin/grafana-cli"
-  sed -i '/^;data = /c\data = /var/lib/grafana' conf/sample.ini
-  sed -i '/^;logs = /c\logs = /var/log/grafana' conf/sample.ini
-  install -Dm644 conf/sample.ini "$pkgdir/etc/${_pkgname}.ini"
-  install -Dm644 conf/defaults.ini "$pkgdir/usr/share/grafana/conf/defaults.ini"
+  sed -ri 's,^(\s*data\s*=).*,\1 /var/lib/grafana,' conf/defaults.ini
+  sed -ri 's,^(\s*plugins\s*=).*,\1 /var/lib/grafana/plugins,' conf/defaults.ini
+  sed -ri 's,^(\s*provisioning\s*=).*,\1 /var/lib/grafana/conf/provisioning,' conf/defaults.ini
+  sed -ri 's,^(\s*logs\s*=).*,\1 /var/log/grafana,' conf/defaults.ini
+  install -Dm644 conf/defaults.ini "$pkgdir/etc/${_pkgname}.ini"
   cp -r public scripts plugins-bundled "$pkgdir/usr/share/grafana/"
 }
