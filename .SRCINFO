@@ -1,9 +1,8 @@
 pkgbase = nerd-fonts-arimo
 	pkgdesc = Patched font Arimo from nerd-fonts library
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ryanoasis/nerd-fonts
-	install = nerd-fonts-arimo.install
 	arch = any
 	license = MIT
 	makedepends = fontconfig
@@ -15,4 +14,3 @@ pkgbase = nerd-fonts-arimo
 	sha256sums = d2a29823384e9194a87936ccad495c764c2ef733b29bfa6f72a1d65803ce02e5
 
 pkgname = nerd-fonts-arimo
-
