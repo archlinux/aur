@@ -1,12 +1,12 @@
 pkgbase = srb2kart
 	pkgdesc = Source code modification of Sonic Robo Blast 2 with kart racing elements
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://mb.srb2.org/showthread.php?t=43708
 	arch = i686
 	arch = x86_64
 	arch = aarch64
-	license = GPL2
+	license = GPL3
 	makedepends = mesa
 	makedepends = glu
 	makedepends = git
@@ -14,11 +14,11 @@ pkgbase = srb2kart
 	depends = sdl2_mixer
 	depends = libpng
 	depends = libgme
-	depends = srb2kart-data>=1.4
+	depends = srb2kart-data>=1.5
 	depends = curl
 	depends = discord-rpc-git
 	options = !buildflags
-	source = git+https://github.com/STJr/Kart-Public.git#tag=v1.4
+	source = git+https://github.com/STJr/Kart-Public.git#tag=v1.5
 	source = srb2kart.desktop
 	source = srb2kart-opengl.desktop
 	sha256sums = SKIP
