@@ -1,0 +1,30 @@
+pkgbase = gradience-git
+	pkgdesc = Change the look of Adwaita, with ease
+	pkgver = r845.17a4e7a
+	pkgrel = 1
+	url = https://github.com/GradienceTeam/Gradience
+	install = xdg-config.install
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	makedepends = blueprint-compiler
+	makedepends = gobject-introspection
+	depends = libadwaita-git>=1.2.alpha
+	depends = python-gobject
+	depends = python-anyascii
+	depends = python-pillow
+	depends = python-svglib
+	depends = python-regex
+	depends = python-material-color-utilities
+	depends = libportal-gtk4
+	optdepends = adw-gtk3: The theme from libadwaita ported to GTK-3
+	optdepends = adw-gtk-theme: LibAdwaita Theme for all GTK3 and GTK4 Apps.
+	provides = gradience
+	conflicts = gradience
+	conflicts = adwcustomizer-git
+	source = git+https://github.com/GradienceTeam/Gradience.git
+	b2sums = SKIP
+
+pkgname = gradience-git
