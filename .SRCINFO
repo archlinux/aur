@@ -1,7 +1,7 @@
 pkgbase = plzip-lzip-link
 	pkgdesc = A symlink from plzip to lzip for those who always want to compress lzip multithreaded.
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL
 	depends = plzip
