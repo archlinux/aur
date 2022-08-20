@@ -3,7 +3,7 @@
 # Original package from: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-covolunablu-gaming
-pkgver=5.18.14.arch1
+pkgver=5.19.2.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -29,7 +29,7 @@ validpgpkeys=(
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
 sha256sums=('SKIP'
-            '382aa201a6a6939210dd8668ab052724547b4bd489b38e97502bbd0848061b35'
+            'f170eda023a56db8cdcad4b83da5911b7b919bbd25084f729d37f1e6142557ca'
             # -- covolunablu-gaming patches --
             'f6701a4b9ed60ad98396606a4c7db26c7197e76d00a28f5299d2567bf6d17d3d')
 
@@ -73,7 +73,7 @@ _package() {
   depends=(coreutils kmod initramfs)
   optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
   replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
   cd $_srcname
