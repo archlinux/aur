@@ -5,6 +5,7 @@ pkgbase = yaknt
 	url = https://github.com/logrusorgru/yaknt
 	arch = any
 	license = Unlicense
+	depends = python3
 	makedepends = coreutils
 	provides = yaknt
 	source = https://github.com/logrusorgru/yaknt/archive/refs/tags/v1.0.tar.gz
