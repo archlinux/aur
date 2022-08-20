@@ -9,7 +9,7 @@ arch=('any')
 url="http://www.personalcopy.com/sfarkfonts1.htm"
 license=("unknown")
 groups=('soundfonts')
-source=("https://michan.noho.st/documents/RealFont_${pkgver/./_}.SF2")
+source=("https://files.michan.es/RealFont_${pkgver/./_}.SF2")
 md5sums=('3e50819cc46497f0b5c9dc249b12294d')
 
 package() {
