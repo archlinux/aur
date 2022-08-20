@@ -1,7 +1,7 @@
 # Maintainer: Kuba Ellwart <kuba@hop.io>
 
 pkgname=hop-cli
-pkgver=0.1.21
+pkgver=0.1.22
 pkgrel=1
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -9,7 +9,7 @@ pkgdesc="Interact with Hop in your terminal"
 url="https://hop.io"
 license=('MPL-2.0')
 source=("hop_cli-$pkgver.tar.gz::https://github.com/hopinc/hop_cli/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("f7ca27093affcfffde84caeecf17e6a2f69395fa9024c060c51d08e41d0f6096")
+sha256sums=("4c5f5bfc7b9ecaef521429c8f43fb21626280bbb40c8ab27ab1ff5329d14795f")
 
 prepare() {
   cd "$srcdir/hop_cli-$pkgver"
@@ -22,14 +22,14 @@ build() {
 
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  cargo build --frozen --release --features vendored
 }
 
 check() {
   cd "$srcdir/hop_cli-$pkgver"
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --release --all-features
+  cargo test --frozen --release --features vendored
 }
 
 package() {
