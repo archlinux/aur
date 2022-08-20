@@ -2,7 +2,7 @@
 
 _target=mips64el-linux-gnu
 pkgname="${_target}-gdb"
-pkgver=11.1
+pkgver=12.1
 pkgrel=1
 pkgdesc='The GNU Debugger for the MIPS64EL target (for the toolchain with GNU C library and multilib ABI)'
 arch=('x86_64')
@@ -10,16 +10,13 @@ url='https://www.gnu.org/software/gdb/'
 license=('GPL3')
 depends=('expat' 'gdb-common' 'guile' 'libelf' 'ncurses' 'mpfr' 'python' 'source-highlight' 'xz')
 options=('!emptydirs')
-source=("https://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz"{,.sig}
-        '010-gdb-fix-build.patch')
-sha256sums=('cccfcc407b20d343fb320d4a9a2110776dd3165118ffd41f4b1b162340333f94'
-            'SKIP'
-            '9d21568bc109a13e37b27274815ba1a3cd4c16b19cc0bd555441bbe5ed1dc6ff')
+source=("https://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz"{,.sig})
+sha256sums=('0e1793bf8f2b54d53f46dea84ccfd446f48f81b297b28c4f7fc017b818d69fed'
+            'SKIP')
 validpgpkeys=('F40ADB902B24264AA42E50BF92EDB04BFF325CF3') # Joel Brobecker
 
 prepare() {
     mkdir -p build
-    patch -d "gdb-${pkgver}" -Np1 -i "${srcdir}/010-gdb-fix-build.patch"
 }
 
 build() {
