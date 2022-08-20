@@ -4,20 +4,21 @@
 pkgname=python-textx
 _srcname=textX
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for building Domain-Specific Languages and parsers"
 arch=('any')
 url="https://textx.github.io/textX/"
 license=('MIT')
 depends=('python' 'python-setuptools' 'python-arpeggio' 'python-future')
 optdepends=('python-click: textX CLI support')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest-runner' 'python-pip' 'python-jinja' 'python-click' 'python-html5lib')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/textX/$_srcname/archive/$pkgver.tar.gz")
 md5sums=('6d868822583d86f66cda71f40b1bebb5')
 
 build() {
   cd $_srcname-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -51,7 +52,7 @@ check() {
 
 package() {
   cd "$srcdir/$_srcname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
