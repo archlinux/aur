@@ -1,6 +1,6 @@
 pkgbase = sby-nightly
 	pkgdesc = Front-end for Yosys-based formal verification flows
-	pkgver = 20220819_9a14f4d
+	pkgver = 20220820_bd88454
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/YosysHQ/sby
@@ -15,7 +15,7 @@ pkgbase = sby-nightly
 	conflicts = symbiyosys-git
 	replaces = symbiyosys-nightly
 	options = !strip
-	source = symbiyosys::git+https://github.com/YosysHQ/sby.git#commit=9a14f4d
+	source = symbiyosys::git+https://github.com/YosysHQ/sby.git#commit=bd88454
 	sha256sums = SKIP
 
 pkgname = sby-nightly
