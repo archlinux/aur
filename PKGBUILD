@@ -2,8 +2,8 @@
 # Helpful url: https://services.lidarr.audio/v1/update/nightly?version=0.0.0.0&os=linux&runtime=netcore&arch=x64
 
 pkgname="lidarr-develop"
-pkgver=1.0.2.2592
-pkgrel=2
+pkgver=1.1.0.2649
+pkgrel=1
 pkgdesc="Music download automation for usenet and torrents."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/lidarr/Lidarr"
@@ -38,9 +38,9 @@ sha512sums=('156c1437b4d71858e01c60b5af65c0a52aab4554e3b26c3b5685291e230d93596a7
             '3800547b7c3d2b6e0a590ebd2db5ed48a6c31249098a4c36876faca36dd81e84ac45f3679d16bfe101be594dc6d5d0cfc91bfc66ed8cba35ec05f22027ab2441'
             'ffd466960527256d8de1d9887d90d4da87486eff062950c46cbc4fd4af1ef89e7d5c070ef1e649b23a95fbab15651e289fd5bdc6d34649e4a6ecdf2f6da06622'
             'c9bd8707cceed880ecebd974f0c5db0801cfafd714bf939e9c688212e4b092cc9e6452c899ae30d8d5c5acc9a4e41c9fa0f1e5c1daef7cdb0bd5d66c6be0eb4a')
-sha512sums_x86_64=('8cc186d7e71d7b4999ff95ccaadb6b909e625787228cc16555c8a3bf7f9f82efda2f7e5c93dd2297f7a4acf030edd7242fcefb5398859ad853207736ce421efb')
-sha512sums_aarch64=('99f008a87840c464dde907cafcc7a3f0336099eb2c46d60fbd94514c945103816f846f8d7ddcdb4018d29f79528e74249aa4b169ed6986b10ff43ac887ee90bf')
-sha512sums_armv7h=('25b7676bcd2e2aee898afb5eb312f1e0b2a3344822b92ed9975102e63da7a5ce6c96e92a4d0faa741c6a4db66eee0fd90ff3d3c248a9e8689f88c4db63e4acfd')
+sha512sums_x86_64=('0bc3c9cb4b4bdefdef338e550120c847dc1dc531e8fe920f571dd03ddd098e06d392ba2a69739f75e5e8a13e35a5bfb2407ba3a1019fdba978003b61ddd05841')
+sha512sums_aarch64=('718331c904edc236527a6d0cf52fa2d0ca2762447c456d1a4d2150c9052e8937757ec1f5a7bbb02b6709c48b761dff940f97e7cf2d173c271ab54dc57745c453')
+sha512sums_armv7h=('7cbe0e9571fd403e969554789130c7b824e6d20df7990ab56ba41c897927321e4022cc4406af48d5af5e42c4e491b165aad0bd1c682d6f0b36c8ddacb6c368a8')
 
 
 
