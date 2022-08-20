@@ -1,6 +1,6 @@
 pkgbase = serialtest-git
 	pkgdesc = A cross-platform serial port test tool.
-	pkgver = 0.1.4.r0.g378f6c1
+	pkgver = 0.1.2.r5.g72df387
 	pkgrel = 1
 	url = https://github.com/wh201906/SerialTest
 	install = serialtest-git.install
@@ -10,6 +10,7 @@ pkgbase = serialtest-git
 	makedepends = git
 	depends = qcustomplot
 	depends = qt5-serialport
+	depends = qt5-connectivity
 	provides = SerialTest
 	conflicts = serialtest
 	options = !strip
