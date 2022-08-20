@@ -2,8 +2,8 @@
 
 pkgname=apmpkg-git-dev
 _pkgname=apmpkg
-pkgver=106.34c9bb6
-pkgrel=5
+pkgver=265.987c5f5
+pkgrel=1
 pkgdesc="Un administrador de paquetes universal para linux como modelo: PKGBUILD de la rama develop"
 arch=('any')
 url="https://github.com/Kedap/apmpkg"
@@ -23,24 +23,15 @@ pkgver() {
 build() {
   cd "$_pkgname"
   git checkout develop
-  cargo build --release --locked
+  make CARGOFLAGS="--release --locked"
 }
 
 check() {
   cd "$_pkgname"
-  cargo test --release --locked
+  make CARGOFLAGS="--release --locked" test
 }
 
 package() {
   cd "$_pkgname"
-  git checkout develop
-  install -Dm 755 "target/release/${_pkgname}" -t "${pkgdir}/usr/bin"
-  mkdir -p ${pkgdir}/etc/apmpkg/iiabc
-  cp -r src/iiabc/ ${pkgdir}/etc/apmpkg/
-  mkdir -p ${pkgdir}/etc/apmpkg/paquetes
-  install -Dm 644 "man/${_pkgname}.1" -t ${pkgdir}/usr/share/man/man1
-  install -Dm 644 "man/${_pkgname}-en.1" -t ${pkgdir}/usr/share/man/man1
-  install -Dm 644 "completions/_${pkgname}" -t ${pkgdir}/usr/share/zsh/site-functions/
-  install -Dm 644 "completions/${pkgname}.bash-completion" -t ${pkgdir}/usr/share/bash-completion/completions/
-  install -Dm 644 "completions/${pkgname}.fish" -t ${pkgdir}/usr/share/fish/vendor_completions.d/
+  make PREFIX_INSTALL=${pkgdir} install
 }
