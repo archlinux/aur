@@ -1,11 +1,12 @@
-# Maintainer: Mariusz Libera <mariusz.libera@gmail.com>
+# Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
+
 pkgname=hd-idle-go
 _pkgname=hd-idle
-pkgver=1.16
+pkgver=1.18
 pkgrel=1
 pkgdesc='Hard Disk Idle Spin-Down Utility - enhanced reimplementation of hd-idle'
 arch=('x86_64')
-url="https://github.com/adelolmo/hd-idle"
+url='https://github.com/adelolmo/hd-idle'
 license=('GPL3')
 install=hd-idle-go.install
 backup=(etc/default/hd-idle etc/logrotate.d/hd-idle)
@@ -13,16 +14,17 @@ provides=('hd-idle')
 conflicts=('hd-idle')
 optdepends=('logrotate')
 makedepends=('go')
-source=("https://github.com/adelolmo/hd-idle/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('9b01ecfcbee56b11b239850fcae666bb')
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
 prepare(){
-  cd "$_pkgname-$pkgver"
+  cd "${_pkgname}-${pkgver}"
+
   mkdir -p build/
 }
 
 build() {
-  cd "$_pkgname-$pkgver"
+  cd "${_pkgname}-${pkgver}"
+
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -32,10 +34,13 @@ build() {
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
-  install -Dm755 build/$_pkgname "$pkgdir"/usr/bin/$_pkgname
-  install -Dm644 debian/hd-idle.8 "$pkgdir"/usr/share/man/man8/hd-idle.8
-  install -Dm644 debian/hd-idle.default "$pkgdir"/etc/default/hd-idle
-  install -Dm644 debian/hd-idle.logrotate "$pkgdir"/etc/logrotate.d/hd-idle
-  install -Dm644 debian/hd-idle.service "$pkgdir"/usr/lib/systemd/system/hd-idle.service
+  cd "${_pkgname}-${pkgver}"
+
+  install -Dm755 "build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 hd-idle.8 "${pkgdir}/usr/share/man/man8/hd-idle.8"
+  install -Dm644 "debian/hd-idle.default" "${pkgdir}/etc/default/hd-idle"
+  install -Dm644 "debian/hd-idle.logrotate" "${pkgdir}/etc/logrotate.d/hd-idle"
+  install -Dm644 "debian/hd-idle.service" "${pkgdir}/usr/lib/systemd/system/hd-idle.service"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
+sha256sums=('c9fb824537f526937c43cda47c5dbf47a952bb6a17e96cdf691d0f36b7c1bdac')
