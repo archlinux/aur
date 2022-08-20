@@ -5,7 +5,7 @@
 pkgname=ume-git
 _pkgname=ume
 pkgver=r67.242a9f5
-pkgrel=2
+pkgrel=3
 pkgdesc="VTE based terminal emulator forked from sakura"
 arch=('i686' 'x86_64')
 url="https://github.com/SgtWiggles/ume"
@@ -16,7 +16,7 @@ source=("${_pkgname}::git+https://github.com/SgtWiggles/ume.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${srcdir}/${_pkgname}
+  cd $startdir/${_pkgname}
 
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
