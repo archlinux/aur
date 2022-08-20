@@ -1,6 +1,6 @@
 pkgbase = eartag-git
 	pkgdesc = Simple music tag editor
-	pkgver = r79.29bda84
+	pkgver = r101.68bbada
 	pkgrel = 1
 	url = https://github.com/knuxify/eartag
 	arch = any
@@ -12,6 +12,8 @@ pkgbase = eartag-git
 	depends = taglib
 	depends = python-gobject
 	depends = python-eyed3
+	depends = python-pillow
+	depends = python-mutagen
 	depends = python-pytaglib
 	depends = python-magic
 	provides = eartag
