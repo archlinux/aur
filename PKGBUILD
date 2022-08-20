@@ -6,23 +6,33 @@ pkgbase=podman-git
 pkgname=(podman-git podman-docker-git)
 _pkgname=podman
 _pkgname_docker=podman-docker
-pkgver=4.2.0_dev.r15273.ga550af260
+pkgver=4.2.0_dev.r16114.g31bb53f5f
 pkgrel=1
 pkgdesc="Tool and library for running OCI-based containers in pods (git)"
 arch=(x86_64 aarch64)
-makedepends=(go go-md2man git gcc btrfs-progs catatonit libapparmor.so libdevmapper.so libgpgme.so libseccomp.so libsystemd)
+makedepends=(go go-md2man git gcc glibc btrfs-progs "catatonit>=0.1.7-2" libapparmor.so libdevmapper.so libgpgme.so libseccomp.so libsystemd.so systemd)
 # https://github.com/containers/podman/issues/13297
 options=(!lto)
 url="https://github.com/containers/$_pkgname.git"
 license=(Apache)
-source=("git+$url")
-sha256sums=('SKIP')
+source=(
+  "git+$url"
+  "$_pkgname-4.2.0-defaultinitpath.patch"
+)
+sha256sums=('SKIP'
+            '0f835642a5299d17be36ade891bb7bbbbb4dceef2a715e99fe0580d3a74fec82')
 
 pkgver() {
   cd "$srcdir/$_pkgname" || exit 1
   commit=$(printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
   ver=$(sed -ne 's/^var\s\+Version\s\+=\s.*("\(.*\)").*/\1/p' <"$srcdir"/"$_pkgname"/version/version.go)
   echo "${ver//-/_}.${commit}"
+}
+
+prepare() {
+  # set default init_path to /usr/lib/podman/catatonit
+  # https://bugs.archlinux.org/task/75493
+  patch -Np1 -d $_pkgname -i ../$_pkgname-4.2.0-defaultinitpath.patch
 }
 
 build() {
@@ -40,7 +50,7 @@ build() {
 }
 
 package_podman-git() {
-  depends+=(catatonit conmon containers-common crun iptables libdevmapper.so libgpgme.so libseccomp.so libsystemd slirp4netns netavark aardvark-dns)
+  depends+=("catatonit>=0.1.7-2" conmon containers-common crun iptables libdevmapper.so libgpgme.so libseccomp.so libsystemd.so systemd slirp4netns netavark aardvark-dns)
   optdepends+=(
     'libapparmor.so: support for apparmor'
     'libselinux: support for selinux'

@@ -1,6 +1,6 @@
 pkgbase = podman-git
 	pkgdesc = Tool and library for running OCI-based containers in pods (git)
-	pkgver = 4.2.0_dev.r15273.ga550af260
+	pkgver = 4.2.0_dev.r16114.g31bb53f5f
 	pkgrel = 1
 	url = https://github.com/containers/podman.git
 	arch = x86_64
@@ -10,19 +10,23 @@ pkgbase = podman-git
 	makedepends = go-md2man
 	makedepends = git
 	makedepends = gcc
+	makedepends = glibc
 	makedepends = btrfs-progs
-	makedepends = catatonit
+	makedepends = catatonit>=0.1.7-2
 	makedepends = libapparmor.so
 	makedepends = libdevmapper.so
 	makedepends = libgpgme.so
 	makedepends = libseccomp.so
-	makedepends = libsystemd
+	makedepends = libsystemd.so
+	makedepends = systemd
 	options = !lto
 	source = git+https://github.com/containers/podman.git
+	source = podman-4.2.0-defaultinitpath.patch
 	sha256sums = SKIP
+	sha256sums = 0f835642a5299d17be36ade891bb7bbbbb4dceef2a715e99fe0580d3a74fec82
 
 pkgname = podman-git
-	depends = catatonit
+	depends = catatonit>=0.1.7-2
 	depends = conmon
 	depends = containers-common
 	depends = crun
@@ -30,7 +34,8 @@ pkgname = podman-git
 	depends = libdevmapper.so
 	depends = libgpgme.so
 	depends = libseccomp.so
-	depends = libsystemd
+	depends = libsystemd.so
+	depends = systemd
 	depends = slirp4netns
 	depends = netavark
 	depends = aardvark-dns

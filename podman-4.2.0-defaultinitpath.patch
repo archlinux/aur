@@ -1,0 +1,13 @@
+diff --git i/vendor/github.com/containers/common/pkg/config/default.go w/vendor/github.com/containers/common/pkg/config/default.go
+index c7ddf90ee..639e8f6f9 100644
+--- i/vendor/github.com/containers/common/pkg/config/default.go
++++ w/vendor/github.com/containers/common/pkg/config/default.go
+@@ -50,7 +50,7 @@ const (
+
+ var (
+ 	// DefaultInitPath is the default path to the container-init binary.
+-	DefaultInitPath = "/usr/libexec/podman/catatonit"
++	DefaultInitPath = "/usr/lib/podman/catatonit"
+ 	// DefaultInfraImage is the default image to run as infrastructure containers in pods.
+ 	DefaultInfraImage = ""
+ 	// DefaultRootlessSHMLockPath is the default path for rootless SHM locks.
