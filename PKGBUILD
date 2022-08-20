@@ -38,5 +38,6 @@ package() {
   sed -ri 's,^(\s*provisioning\s*=).*,\1 /var/lib/grafana/conf/provisioning,' conf/defaults.ini
   sed -ri 's,^(\s*logs\s*=).*,\1 /var/log/grafana,' conf/defaults.ini
   install -Dm644 conf/defaults.ini "$pkgdir/etc/${_pkgname}.ini"
+  install -dm755 "$pkgdir/usr/share/${_pkgname}/"
   cp -r public scripts plugins-bundled "$pkgdir/usr/share/grafana/"
 }
