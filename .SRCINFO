@@ -1,7 +1,7 @@
 pkgbase = ume-git
 	pkgdesc = VTE based terminal emulator forked from sakura
 	pkgver = r65.17e096b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SgtWiggles/ume
 	arch = i686
 	arch = x86_64

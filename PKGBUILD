@@ -5,7 +5,7 @@
 pkgname=ume-git
 _pkgname=ume
 pkgver=r67.242a9f5
-pkgrel=1
+pkgrel=2
 pkgdesc="VTE based terminal emulator forked from sakura"
 arch=('i686' 'x86_64')
 url="https://github.com/SgtWiggles/ume"
