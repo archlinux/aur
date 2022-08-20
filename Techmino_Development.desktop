@@ -3,10 +3,10 @@
 Name=Techmino Development
 Comment=Techmino is fun!
 MimeType=application/x-love-game;
-Exec=love /opt/Techmino/Techmino.love
+Exec=love /opt/Techmino_Development/game.love
 Type=Application
 Categories=Game;
 Terminal=false
-Icon=/opt/Techmino/Techmino.png
-Path=/opt/Techmino/
+Icon=Techmino_Development
+Path=/opt/Techmino_Development/
 NoDisplay=false
