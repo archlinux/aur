@@ -9,7 +9,7 @@ pkgbase = python-mcipc
 	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-setuptools
-	depends = python-rcon
+	depends = python-rcon>=2.3.0
 	source = mcipc::git+https://github.com/coNQP/mcipc.git#tag=2.4.0
 	md5sums = SKIP
 
