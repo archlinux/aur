@@ -22,7 +22,8 @@ source=(
     "mongodb.service"
     "mongodb.sysusers"
     "mongodb.tmpfiles"
-    "LICENSE")
+    "LICENSE"
+)
 source_x86_64=(
     mongodb-org-server_${pkgver}_x86_64.deb::"${_repo_url}/binary-amd64/mongodb-org-server_${pkgver}_amd64.deb"
     mongodb-org-mongos_${pkgver}_x86_64.deb::"${_repo_url}/binary-amd64/mongodb-org-mongos_${pkgver}_amd64.deb"
@@ -44,6 +45,7 @@ sha256sums_x86_64=('8f1d8abd3cacdee1f9cd3ad444cf060a3e804e2354eff7f943bc942089ed
                    '452d7edf18c9fef09da24c9387d8dd0d665dc091bf634ba2d5998be4eecca68b')
 sha256sums_aarch64=('a64a3a4dabf79e696800ab72b4c5c152220330607dd2b24e702c950a46ae4bd6'
                     'c445c3047861e0cd93daebaf8212f8d92930690c74cd33468d61494685c674b2')
+
 prepare() {
   mkdir -p output
   bsdtar -O -xf mongodb-org-server_${pkgver}_${CARCH}.deb data.tar.xz | bsdtar -C output -xJf - #server extracted
