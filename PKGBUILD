@@ -2,7 +2,7 @@
 #Maintainer: Rafael Fontenelle <rafaelff at gnome dot org>
 
 pkgname="mongodb50-bin"
-pkgver="5.0.9"
+pkgver="5.0.11"
 _basever="5.0"
 _basedist="focal"
 pkgrel="1"
@@ -12,7 +12,7 @@ url="https://www.mongodb.com/"
 license=("custom:SSPLv1" "Apache")
 depends=("curl")
 optdepends=("mongodb-tools: The MongoDB tools provide import, export, and diagnostic capabilities."
-	    "mongosh-bin: An interactive shell to connect with MongoDB with syntax highlighting, autocomplete, contextual help and error messages.")
+            "mongosh-bin: An interactive shell to connect with MongoDB with syntax highlighting, autocomplete, contextual help and error messages.")
 provides=("mongodb=$pkgver")
 conflicts=("mongodb" "mongodb-shell-bin")
 backup=("etc/mongodb.conf")
@@ -23,7 +23,8 @@ source=(
     "mongodb.service"
     "mongodb.sysusers"
     "mongodb.tmpfiles"
-    "LICENSE")
+    "LICENSE"
+)
 source_x86_64=(
     mongodb-org-shell_${pkgver}_x86_64.deb::"${_repo_url}/binary-amd64/mongodb-org-shell_${pkgver}_amd64.deb"
     mongodb-org-server_${pkgver}_x86_64.deb::"${_repo_url}/binary-amd64/mongodb-org-server_${pkgver}_amd64.deb"
@@ -44,12 +45,13 @@ sha256sums=('f2a79c7fcd75253ab1cb888541a0c0678bf3bb78700c79996e24a678f1e42850'
             '47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b'
             '51ee1e1f71598aad919db79a195778e6cb6cfce48267565e88a401ebc64497ac'
             '09d99ca61eb07873d5334077acba22c33e7f7d0a9fa08c92734e0ac8430d6e27')
-sha256sums_x86_64=('aa0ccaed9f5a5673630e168de7f2e46aad77d3397b51c8f2877ff92ab56069ab'
-                   '748b3018c14372bd704966692e6fc9e49a13c6a79a454d465a7657478420eef0'
-                   '52884643d44f4ac1164ec1180f1755db5fdb631c2da5e39c480e9b45d92cd425')
-sha256sums_aarch64=('bda3191dcc3dc3fc05796f28ecefa82de84a7e66a84c8f4ade2b09d80c04b63c'
-                    '533c6b363d8300e450a0a8d86162cca6934f9c05fb16f52774e9d6a77e23658d'
-                    'bfbb5453462ea7ffd2d7447f9a8dab613055ae92e1cf5bca0a0ad34b8d368b50')
+sha256sums_x86_64=('b2fbf2681bbb4f0390e61a020f1fb536ba5c57b2333460ea6a6e70aedd366572'
+                   '55cdfdd008257f95d662a2e5d758f36ee26a540315cc4fdb633df070866ae931'
+                   '2293c0c47e51a6e0547fd0122e46964e468120068ed0772f975d8b772ba6f292')
+sha256sums_aarch64=('709546e4ae070ddc3d1ef6412625f00b647c9ca5fc73454323769e2fb9b56113'
+                    '00e277d795b22b1bc4904e926656a13658b106530400585a5b0ef18b79f169ea'
+                    'f7c23fbdc887cbcecfce8633421671dba140b6af2fdd57633eba6a1be76be166')
+
 prepare() {
   mkdir -p output
   bsdtar -O -xf mongodb-org-shell_${pkgver}_${CARCH}.deb data.tar.xz | bsdtar -C output -xJf -  #mongo extracted
