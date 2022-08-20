@@ -2,7 +2,7 @@
 # Contributor: tuxsavvy
 
 pkgname=realrtcw
-pkgver=3.3n
+pkgver=4.0
 pkgrel=1
 pkgdesc="An overhaul mod for critically acclaimed Return To Castle Wolfenstein."
 arch=('i686' 'x86_64')
@@ -11,28 +11,26 @@ license=('GPL')
 depends=('freetype2' 'graphite' 'harfbuzz' 'iortcw-data' 'libjpeg-turbo' 'libogg' 'openal' 'opus' 'opusfile' 'pcre' 'sdl2' 'zlib')
 makedepends=('unzip')
 install='realrtcw.install'
-sha256sums=('d57b15f66f02a72891b235336db7350e48b9b6b75367eab169de20f93258184d'
-            'SKIP'
-            'SKIP'
-            '643bd2a56b06fbdf9790b3bb7557c7f6663cc3e86295431f6470b347e37b4bb2'
-            'e68d6f400342e36d3db94e519978da0afa2d74f3368b1fe88014c4bdb26b193e'
-            '43501d60c80ae4a2837295fb5faf01d42e31f31371fcd6cecc8054eed965b8f6'
-            '6482482e637d38ce6eff6ab740f971f86b7e0d205797b2c5044aecfcf5701364')
-_commit="8b827c4680c5f1e9a1d702a6743ebf3dcb0d4a47"
+sha256sums=('ecadc55bdb4e3d41dcd4e3872b110d7d0e716a45c6393108387dc7b062830a00'
+  '7389f55acdaf553b9f04fb5a70ebfd570163503495df19c232e175a7f8e2ebda'
+  '643bd2a56b06fbdf9790b3bb7557c7f6663cc3e86295431f6470b347e37b4bb2'
+  'e68d6f400342e36d3db94e519978da0afa2d74f3368b1fe88014c4bdb26b193e'
+  '43501d60c80ae4a2837295fb5faf01d42e31f31371fcd6cecc8054eed965b8f6'
+  '6482482e637d38ce6eff6ab740f971f86b7e0d205797b2c5044aecfcf5701364'
+  '927c7812cf5981c9548cebb04670715580869be8c29fd8c85ea8efa5404cff74')
 
-_mainid=201571
-_addonsid=201574
+_mainid=236053
 
 noextract=("${pkgname}-${pkgver}.zip")
 PKGEXT='.pkg.tar'
 DLAGENTS+=("moddb::${BASH_SOURCE[0]%/*}/moddb-downloader.sh %u %o")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wolfetplayer/RealRTCW/archive/${_commit}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wolfetplayer/RealRTCW/archive/refs/tags/${pkgver}.tar.gz"
   "${pkgname}-${pkgver}.zip::moddb://www.moddb.com/downloads/start/${_mainid}/all"
-  "${pkgname}-${pkgver}-addons.zip::moddb://www.moddb.com/downloads/start/${_addonsid}/all"
   "${pkgname}.png"
   "${pkgname}.launcher"
   "${pkgname}.desktop"
   moddb-downloader.sh
+  disable-steam.patch
 )
 
 prepare() {
@@ -43,7 +41,11 @@ prepare() {
 }
 
 package() {
-  cd "${srcdir}/RealRTCW-${_commit}"
+  cd "${srcdir}/RealRTCW-${pkgver}"
+
+  unset CFLAGS
+  # Disable steam build
+  patch -Np1 -i ../disable-steam.patch
 
   USE_INTERNAL_LIBS=0 \
     COPYDIR=${pkgdir}/opt/realrtcw \
@@ -93,14 +95,10 @@ package() {
     "${pkgdir}/opt/realrtcw/openurl.sh"
 
   # Installing RealRTCW pk3
-  for i in "${srcdir}"/paks/*.pk3; do
+  for i in "${srcdir}"/paks/{*.pk3,*.cfg}; do
     install -m 644 "${i}" \
       "${pkgdir}/opt/realrtcw/main"
   done
-
-  # Installing RealRTCW Addons Pack
-  cp -R "${srcdir}/copy this folder content into rtcw root directory/"* \
-    "${pkgdir}/opt/realrtcw"
 
   # Modify Launcher Scripts
   if [ "$CARCH" = "x86_64" ]; then
