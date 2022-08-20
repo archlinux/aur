@@ -1,7 +1,7 @@
 pkgbase = lirc-user-service
-	pkgdesc = Systemd dropins to run lirc as an unprivileged user for better stability and security
+	pkgdesc = Run lirc as an unprivileged user for better stability and security
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.lirc.org/html/configuration-guide.html
 	install = readme.install
 	arch = any
