@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Simon Allen <simon@simonallen.org>
 pkgname=ytmdesktop-git
-pkgver=1.14.2.r0.g2393f31
-pkgrel=1
-_electronversion=17
+pkgver=1.14.2.r3.g255b7fa
+pkgrel=2
+_electronversion=13
 _nodeversion=12
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')

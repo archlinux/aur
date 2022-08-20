@@ -1,3 +1,3 @@
 #!/bin/bash
 
-exec electron17 /usr/lib/ytmdesktop/resources/app.asar "$@"
+exec electron13 /usr/lib/ytmdesktop/resources/app.asar "$@"
