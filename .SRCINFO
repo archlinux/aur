@@ -1,0 +1,20 @@
+pkgbase = python-material-color-utilities-git
+	pkgdesc = Python port of material-color-utilities used for Material You colors
+	pkgver = r39.0dbf88e
+	pkgrel = 1
+	url = https://github.com/avanishsubbiah/material-color-utilities-python
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
+	makedepends = python-wheel
+	depends = python-pillow
+	depends = python-regex
+	provides = python-material-color-utilities
+	conflicts = python-material-color-utilities
+	source = git+https://github.com/avanishsubbiah/material-color-utilities-python.git
+	b2sums = SKIP
+
+pkgname = python-material-color-utilities-git
