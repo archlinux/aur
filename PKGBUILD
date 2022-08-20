@@ -2,14 +2,14 @@
 
 pkgname=ouch
 pkgver=0.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Painless compression and decompression in the terminal"
 arch=('x86_64')
 url="https://github.com/ouch-org/ouch"
 license=('MIT')
 makedepends=('cargo')
 conflicts=(${pkgname}-git ${pkgname}-bin)
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('269abaf5ac2f80da3796dbf5e73419c1b64104d1295f3ff57965141f079e6f6d')
 
 prepare() {

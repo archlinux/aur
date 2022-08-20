@@ -1,14 +1,14 @@
 pkgbase = ouch
 	pkgdesc = Painless compression and decompression in the terminal
 	pkgver = 0.3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ouch-org/ouch
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	conflicts = ouch-git
 	conflicts = ouch-bin
-	source = ouch-0.3.1.tar.gz::https://github.com/ouch-org/ouch/archive/0.3.1.tar.gz
+	source = ouch-0.3.1.tar.gz::https://github.com/ouch-org/ouch/archive/refs/tags/0.3.1.tar.gz
 	sha256sums = 269abaf5ac2f80da3796dbf5e73419c1b64104d1295f3ff57965141f079e6f6d
 
 pkgname = ouch
