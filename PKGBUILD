@@ -30,8 +30,8 @@ depends=('python'
 	'python-websockets'
 	'python-async-timeout'
 	'python-packaging'
+	'python-setuptools'
 	'python-brotli')
-makedepends=('python-setuptools')
 provides=("$pkgname" "spotdl")
 options=(strip emptydirs zipman)
 # install="spotdl.install"
