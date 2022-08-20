@@ -5,8 +5,8 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-plus-git
-pkgver=3.11.36.r0.gcb59480
-pkgrel=2
+pkgver=3.11.39.r0.g9aada10
+pkgrel=1
 pkgdesc="Micro-compositor from Valve with added patches not yet commited upstream"
 arch=(x86_64)
 url="https://github.com/Plagman/gamescope"
@@ -24,7 +24,7 @@ source=("0001-Add-force-orientation-option.patch"
 				"$_pkgname::git+https://github.com/Plagman/gamescope.git"
         "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
         "git+https://github.com/nothings/stb.git")
-sha512sums=('876968d16c4b3d680f89d261d0b7b195406769f612d2b032791819818cfef547e841020c1851f6fdb1eeaa375e36b70d3245fe1a800fcc06fdf700cb1d02025b'
+sha512sums=('7a51acddcf15055811c4ba9340370b1f08ec2fe94521fbc4824e8de689d057b4eeed045ed533d895ac8e1716d47802ccb323fdce36f5f0ac453b9803b686a0b1'
             'SKIP'
             'SKIP'
             'SKIP')

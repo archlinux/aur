@@ -1,4 +1,4 @@
-From 78045815a8bf97376e98c232f00df67e2bfd7147 Mon Sep 17 00:00:00 2001
+From a2308d3c0b04a6421f7166d708147f5f450540e3 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Joaqu=C3=ADn=20Ignacio=20Aramend=C3=ADa?=
  <samsagax@gmail.com>
 Date: Mon, 18 Jul 2022 19:59:41 -0300
@@ -12,7 +12,7 @@ Subject: [PATCH] Add --force-orientation option
  4 files changed, 138 insertions(+), 29 deletions(-)
 
 diff --git a/src/drm.cpp b/src/drm.cpp
-index 93d826e..6d9376d 100644
+index 9c60909..3d87796 100644
 --- a/src/drm.cpp
 +++ b/src/drm.cpp
 @@ -42,6 +42,8 @@ bool g_bDebugLayers = false;
@@ -88,7 +88,7 @@ index 93d826e..6d9376d 100644
  
  			liftoff_layer_set_property( drm->lo_layers[ i ], "CRTC_X", entry.layerState[i].crtcX);
  			liftoff_layer_set_property( drm->lo_layers[ i ], "CRTC_Y", entry.layerState[i].crtcY);
-@@ -1957,7 +1996,7 @@ bool drm_update_color_mtx(struct drm_t *drm)
+@@ -1974,7 +2013,7 @@ bool drm_update_color_mtx(struct drm_t *drm)
  		drm_ctm.matrix[i] = color.s31_32;
  	}
  
@@ -97,7 +97,7 @@ index 93d826e..6d9376d 100644
  	if (drmModeCreatePropertyBlob(drm->fd, &drm_ctm,
  			sizeof(struct drm_color_ctm), &blob_id) != 0) {
  		drm_log.errorf_errno("Unable to create CTM property blob");
-@@ -2032,7 +2071,7 @@ bool drm_update_gamma_lut(struct drm_t *drm)
+@@ -2052,7 +2091,7 @@ bool drm_update_gamma_lut(struct drm_t *drm)
  		gamma_lut[i].blue  = drm_calc_lut_value( b_exp, drm->pending.color_linear_gain[2], drm->pending.color_gain[2], drm->pending.gain_blend );
  	}
  
@@ -106,8 +106,8 @@ index 93d826e..6d9376d 100644
  	if (drmModeCreatePropertyBlob(drm->fd, gamma_lut,
  			lut_entries * sizeof(struct drm_color_lut), &blob_id) != 0) {
  		drm_log.errorf_errno("Unable to create gamma LUT property blob");
-@@ -2080,7 +2119,7 @@ bool drm_update_degamma_lut(struct drm_t *drm)
- 		degamma_lut[i].blue  = drm_quantize_lut_value( safe_pow( input, drm->pending.color_degamma_exponent[2] ) );
+@@ -2103,7 +2142,7 @@ bool drm_update_degamma_lut(struct drm_t *drm)
+ 		degamma_lut[i].blue  = drm_quantize_lut_value( safe_pow( input, drm->pending.color_degamma_exponent[screen_type][2] ) );
  	}
  
 -	uint32_t blob_id = 0;	
@@ -116,10 +116,10 @@ index 93d826e..6d9376d 100644
  			lut_entries * sizeof(struct drm_color_lut), &blob_id) != 0) {
  		drm_log.errorf_errno("Unable to create degamma LUT property blob");
 diff --git a/src/drm.hpp b/src/drm.hpp
-index 84a726b..995856b 100644
+index 7cf2710..8deb8b2 100644
 --- a/src/drm.hpp
 +++ b/src/drm.hpp
-@@ -79,7 +79,7 @@ struct fb {
+@@ -86,7 +86,7 @@ struct fb {
  	uint32_t id;
  	/* Client buffer, if any */
  	struct wlr_buffer *buf;
@@ -128,7 +128,7 @@ index 84a726b..995856b 100644
  	 * doesn't need to be atomic as it's only ever
  	 * modified/read from the steamcompmgr thread */
  	int held_refs;
-@@ -101,19 +101,19 @@ struct drm_t {
+@@ -108,19 +108,19 @@ struct drm_t {
  	std::unordered_map< uint32_t, struct connector > connectors;
  
  	std::map< uint32_t, drmModePropertyRes * > props;
@@ -152,7 +152,7 @@ index 84a726b..995856b 100644
  	struct liftoff_device *lo_device;
  	struct liftoff_output *lo_output;
  	struct liftoff_layer *lo_layers[ k_nMaxLayers ];
-@@ -142,16 +142,16 @@ struct drm_t {
+@@ -158,16 +158,16 @@ struct drm_t {
  	std::vector < uint32_t > fbids_queued;
  	/* FBs currently on screen */
  	std::vector < uint32_t > fbids_on_screen;
@@ -173,8 +173,8 @@ index 84a726b..995856b 100644
  	std::atomic < uint64_t > flipcount;
  
  	std::atomic < bool > paused;
-@@ -183,7 +183,16 @@ enum drm_screen_type {
- 	DRM_SCREEN_TYPE_COUNT
+@@ -192,7 +192,16 @@ enum drm_mode_generation {
+ 	DRM_MODE_GENERATE_FIXED,
  };
  
 +enum g_panel_orientation {
@@ -252,7 +252,7 @@ index a7c6f86..ec94acb 100644
  
  	setenv("DISPLAY", base_server->get_nested_display_name(), 1);
 diff --git a/src/wlserver.cpp b/src/wlserver.cpp
-index 08faeb9..94f0ecf 100644
+index 63e7587..c318a58 100644
 --- a/src/wlserver.cpp
 +++ b/src/wlserver.cpp
 @@ -6,7 +6,7 @@
@@ -272,7 +272,7 @@ index 08faeb9..94f0ecf 100644
  static struct wl_list pending_surfaces = {0};
  
  static void wlserver_surface_set_wlr( struct wlserver_surface *surf, struct wlr_surface *wlr_surf );
-@@ -881,18 +882,38 @@ void wlserver_touchmotion( double x, double y, int touch_id, uint32_t time )
+@@ -888,18 +889,38 @@ void wlserver_touchmotion( double x, double y, int touch_id, uint32_t time )
  {
  	if ( wlserver.mouse_focus_surface != NULL )
  	{
@@ -317,7 +317,7 @@ index 08faeb9..94f0ecf 100644
  		wlserver.mouse_surface_cursorx = tx;
  		wlserver.mouse_surface_cursory = ty;
  
-@@ -920,18 +941,38 @@ void wlserver_touchdown( double x, double y, int touch_id, uint32_t time )
+@@ -927,18 +948,38 @@ void wlserver_touchdown( double x, double y, int touch_id, uint32_t time )
  {
  	if ( wlserver.mouse_focus_surface != NULL )
  	{
