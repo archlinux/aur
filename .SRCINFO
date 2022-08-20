@@ -1,0 +1,13 @@
+pkgbase = intel-ivsc-firmware
+	pkgdesc = Intel Vision Sensing Controller firmware
+	pkgver = r2.764bd6e
+	pkgrel = 1
+	url = https://github.com/intel/ivsc-firmware
+	arch = any
+	license = custom
+	makedepends = git
+	provides = intel-ivsc-firmware
+	source = git+https://github.com/intel/ivsc-firmware.git
+	sha256sums = SKIP
+
+pkgname = intel-ivsc-firmware
