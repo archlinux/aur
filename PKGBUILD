@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tidytext
-_pkgver=0.3.3
+_pkgver=0.3.4
 pkgname=r-${_pkgname,,}
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Text Mining using 'dplyr', 'ggplot2', and Other Tidy Tools"
 arch=('any')
@@ -48,7 +48,7 @@ optdepends=(
   r-xml
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('753b2bcea6e343ac439869b92e7c11b0aaf98ce5c0373965da6c7d087d57924e')
+sha256sums=('a6bc772e0669fdf09884ec6990a642924a45b44d5c4fda83ecb1121f1b2f6756')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
