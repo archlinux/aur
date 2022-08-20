@@ -9,11 +9,11 @@
 
 pkgbase=tensorrt
 pkgname=('tensorrt' 'python-tensorrt' 'tensorrt-doc')
-pkgver=8.4.2.4
-_ossver=22.08
+pkgver=8.4.3.1
+_ossver=8.4.3
 _cudaver=11.6
 _cudnnver=8.4
-_protobuf_ver=3.17.3
+_protobuf_ver=3.20.1
 _pybind11_ver=2.9.2
 _graphsurgeon_ver=0.4.6
 _uffver=0.6.9
@@ -37,7 +37,7 @@ source=("local://TensorRT-${pkgver}.Linux.${CARCH}-gnu.cuda-${_cudaver}.cudnn${_
         '020-tensorrt-fix-python.patch'
         'TensorRT-SLA.txt')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('530d38d631c86a289df465ff0f31b6653b6338aecfa68c2f4c363fac5f81d7b6'
+sha256sums=('8d7c2085c1639dcc73875048c23598a8526ce3089136876e31d90258e49e4f61'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -45,7 +45,7 @@ sha256sums=('530d38d631c86a289df465ff0f31b6653b6338aecfa68c2f4c363fac5f81d7b6'
             'SKIP'
             'SKIP'
             'SKIP'
-            '51cec99f108b83422b7af1170afd7aeb2dd77d2bcbb7b6bad1f92509e9ccf8cb'
+            'dddd73664306d7d895a95e1cf18925b31b52785e468727e4635b45edae5166f9'
             'ea25bb1b188d53cbfbec35d242ab2a2fa8d6009c547c9f5f67bc2f1ad127ceac'
             'ab18bcaebc59620a0b97b67c4bfb7646d9310fffbeb15b8441552c600b0212c9'
             'a3e33bbee568e03e7f32481df930c78edc95b49b6b667b37db57cedb1967faed')
@@ -152,15 +152,14 @@ package_python-tensorrt() {
         python -m installer --destdir="$pkgdir" *.whl
     done
     
-    local _pyver
-    _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
+    local _sitepkgs
+    local _sitepkgs=$(python -c "import site; print(site.getsitepackages()[0])")
     install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
-    ln -s "../../../lib/python${_pyver}/site-packages/tensorrt-${pkgver}.dist-info/LICENSE.txt" \
+    ln -s "../../../${_sitepkgs/\/usr\//}/tensorrt-${pkgver}.dist-info/LICENSE.txt" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-tensorrt"
-    ln -s "../../../lib/python${_pyver}/site-packages/graphsurgeon-${_graphsurgeon_ver}.dist-info/LICENSE.txt" \
+    ln -s "../../../${_sitepkgs/\/usr\//}/graphsurgeon-${_graphsurgeon_ver}.dist-info/LICENSE.txt" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-graphsurgeon"
-    ln -s "../../../lib/python${_pyver}/site-packages/uff-${_uffver}.dist-info/LICENSE.txt" \
-        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-uff"
+    ln -s "../../../${_sitepkgs/\/usr\//}/uff-${_uffver}.dist-info/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-uff"
     install -D -m644 "${srcdir}/TensorRT-SLA.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-NVIDIA-SLA"
     install -D -m644 "${srcdir}/TensorRT-${pkgver}/doc/Acknowledgements.txt" "${pkgdir}/usr/share/licenses/${pkgname}/ACKNOWLEDGEMENTS"
     install -D -m644 "${srcdir}/TensorRT/NOTICE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
