@@ -1,6 +1,6 @@
 pkgbase = python-rasterio
 	pkgdesc = Rasterio reads and writes geospatial raster datasets
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/rasterio/rasterio
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = python-rasterio
 	depends = python-snuggs
 	depends = python-click-plugins
 	depends = python-setuptools
-	source = rasterio-1.3.1.tar.gz::https://github.com/rasterio/rasterio/archive/1.3.1.tar.gz
-	sha512sums = 1941744fdbad6e8c5dc7404906dea7534bd21347693a9a379986546eb41173025cf8d67caa0a98b2fe6ed6dd731a07a9f126114f2e4c6e2b3bb15828ca105c08
+	source = rasterio-1.3.2.tar.gz::https://github.com/rasterio/rasterio/archive/1.3.2.tar.gz
+	sha512sums = 9f1bf17f006ae837b92278eb43a630397b44e669d1fe7e5543de65a6533a7cebf36dda6c3346bdb4b07d85a1891b7904517b91bbc47929c189e355782938afee
 
 pkgname = python-rasterio
