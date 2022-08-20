@@ -13,17 +13,20 @@
 #
 
 pkgname=('dell-drac-mibs')
-pkgver=9.4.0
+pkgver=10.1.0.0
 pkgrel=1
 pkgdesc='SNMP MIBs for Dell iDRAC remote management controllers'
 arch=('any')
-url='https://www.dell.com/support/home/en-au/drivers/driversdetails?driverid=cfpyt'
+url='https://www.dell.com/support/home/en-au/drivers/driversdetails?driverid=96cdj'
 license=('custom:dell')
 depends=('net-snmp')
 makedepends=('unzip')
-source=('https://dl.dell.com/FOLDER06009600M/1/Dell-OM-MIBS-940_A00.zip')
-md5sums=('37457f62bd6e1d66d952d7c7ac788dc6')
-sha256sums=('943dfd24cd64eb5e300d33d115f20dbdfc314590d6747c954e076c22cb974407')
+source=('https://dl.dell.com/FOLDER07456510M/1/Dell-OM-MIBS-10100_A00.zip')
+md5sums=('ef7c4fe0507fa2cd15ce64a3f752cdec')
+sha256sums=('67d6e52172867bffef9f5163d24dd2037a28b025233007b9a77ed4218a95a984')
+
+# Dell blocks the curl default user agent so we need to override it.[6~
+DLAGENTS=('https::/usr/bin/curl -qgb "" -fLC - --retry 3 --user-agent Arch/makepkg --retry-delay 3 -o %o %u')
 
 package() {
 	numfiles=(Dell*.zip)
