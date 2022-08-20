@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=drawer
-_pkgver=0.2.0.0
+_pkgver=0.2.0.1
 pkgname=r-${_pkgname,,}
-pkgver=0.2.0.0
-pkgrel=3
+pkgver=0.2.0.1
+pkgrel=1
 pkgdesc='An Interactive HTML Image Editing Tool'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -23,7 +23,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f3be1ad0164022a67e21bfde58db178854a6127fdeaeb2710ad59d0126965d5a')
+sha256sums=('05c2ea05c7c8780e30fa6f036033894b162b41917ce0e00be210dc692605bc98')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

@@ -1,7 +1,7 @@
 pkgbase = r-drawer
 	pkgdesc = An Interactive HTML Image Editing Tool
-	pkgver = 0.2.0.0
-	pkgrel = 3
+	pkgver = 0.2.0.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=drawer
 	arch = any
 	license = GPL
@@ -14,7 +14,7 @@ pkgbase = r-drawer
 	depends = r-stringr
 	optdepends = r-ggplot2
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/drawer_0.2.0.0.tar.gz
-	sha256sums = f3be1ad0164022a67e21bfde58db178854a6127fdeaeb2710ad59d0126965d5a
+	source = https://cran.r-project.org/src/contrib/drawer_0.2.0.1.tar.gz
+	sha256sums = 05c2ea05c7c8780e30fa6f036033894b162b41917ce0e00be210dc692605bc98
 
 pkgname = r-drawer
