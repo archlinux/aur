@@ -1,0 +1,18 @@
+pkgbase = kicad-allegro-git
+	pkgdesc = Converter from Allegro to KiCad, and Allegro extract viewer
+	pkgver = 4968f13
+	pkgrel = 1
+	url = https://github.com/system76/kicad-allegro
+	arch = any
+	license = unkown
+	makedepends = git
+	makedepends = rust
+	depends = cargo
+	provides = kicad-allegro-git
+	conflicts = kicad-allegro-git
+	conflicts = kicad-allegro
+	options = !strip
+	source = kicad-allegro::git+https://github.com/system76/kicad-allegro.git
+	sha256sums = SKIP
+
+pkgname = kicad-allegro-git
