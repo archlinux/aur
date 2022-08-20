@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _cranname=av
-_cranver=0.7.0
+_cranver=0.8.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -19,7 +19,7 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
         "CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT")
-sha256sums=('b4e773d756b28942160bcf9c551f557793242fe025d74fcc544dc0a773cb8c00'
+sha256sums=('7ba8d81126247f8df6f732ad28a5f588eff6ff2d8a863424004fb0d20cf4421a'
             'e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b')
 
 build() {
