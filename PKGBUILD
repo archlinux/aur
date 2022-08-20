@@ -2,7 +2,7 @@
 
 pkgname=python-configparser
 _pkgname=configparser
-pkgver=5.2.0
+pkgver=5.3.0
 pkgrel=1
 pkgdesc='backport of configparser from Python 3'
 arch=('any')
