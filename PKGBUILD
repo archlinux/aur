@@ -1,7 +1,7 @@
 # Maintainer: David Torralba Goitia <david.torralba.goitia@gmail.com>
 _name=direnv-backup
 pkgname="${_name}-git"
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Tool to backup/restore direnv files with optional encryption."
 arch=("any")
