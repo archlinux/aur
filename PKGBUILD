@@ -1,4 +1,4 @@
-# Maintainer: Cassandra Watergate (saltedcoffii) <cassandrawatergate@outlook.com>
+# Maintainer: Cassandra Watergate (saltedcoffii) <cassandrajwatergate@gmail.com>
 # Contributer: svalo <me@valo.space>
 
 pkgname=plzip
