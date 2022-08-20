@@ -2,19 +2,20 @@
 # Maintainer: Mattia Basaglia <glax@dragon.best>
 _corpname=glaxnimate
 _pkgname='glaxnimate'
-pkgname="$_pkgname-git"
-pkgver=0.4.6
+pkgname="glaxnimate-git"
+_git_branch=master
+pkgver=0.5.0_100_ge6a6a8d4
 pkgrel=1
 pkgdesc="Simple vector animation program."
 url="https://glaxnimate.mattbas.org/"
 license=('GPL3')
 arch=('x86_64' 'i686' 'armv7h' 'aarch64' 'riscv32' 'riscv64')
-makedepends=('git' 'cmake' 'qt5-tools')
-depends=('python' 'zlib' 'hicolor-icon-theme' 'qt5-base' 'potrace' 'ffmpeg' 'qt5-imageformats' 'qt5-svg' 'libarchive')
+makedepends=('git' 'cmake' 'make' 'gcc')
+depends=('python' 'zlib' 'hicolor-icon-theme' 'potrace' 'ffmpeg' 'libarchive' 'qt6-tools' 'qt6-base' 'qt6-imageformats' 'qt6-svg')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
-    "$_pkgname::git+https://gitlab.com/mattbas/$_pkgname/#branch=master"
+    "$_pkgname::git+https://gitlab.com/mattbas/$_pkgname/#branch=$_git_branch"
 )
 sha256sums=('SKIP')
 
@@ -40,10 +41,11 @@ build() {
     # echo 'MAKEFLAGS="-j4"' >>/etc/makepkg.conf
     # (or ~/.makepkg.conf)
     make
-    make translations
+    make translations VERBOSE=1
 }
 
 package() {
     cd "$srcdir/$_pkgname/build"
     make install DESTDIR=$pkgdir >/dev/null
 }
+
