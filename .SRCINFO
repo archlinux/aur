@@ -6,7 +6,6 @@ pkgbase = thonkbar-git
 	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = gcc
 	depends = lemonbar-xft-git
 	provides = thonkbar-git
 	conflicts = thonkbar-git
