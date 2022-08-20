@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Icon=ludusavi
-Name=Ludusavi
-Exec=ludusavi
-Terminal=false
-Hidden=false
-Categories=Game
-Comment=Backup tool for PC game saves
