@@ -1,0 +1,16 @@
+pkgbase = intel-ipu6ep-camera-hal-git
+	pkgdesc = Intel IPU6 camera HAL (Alder Lake)
+	pkgver = r40.5bc81d1
+	pkgrel = 1
+	url = https://github.com/intel/ipu6-camera-hal
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = intel-ipu6-dkms-git
+	depends = intel-ipu6ep-camera-bin
+	provides = ipu6-camera-hal
+	conflicts = intel-ipu6-camera-hal-git
+	source = git+https://github.com/intel/ipu6-camera-hal.git
+	sha256sums = SKIP
+
+pkgname = intel-ipu6ep-camera-hal-git
