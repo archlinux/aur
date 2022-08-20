@@ -1,6 +1,6 @@
 pkgbase = r-scales
 	pkgdesc = Scale Functions for Visualization
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=scales
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-scales
 	optdepends = r-stringi
 	optdepends = r-testthat>=3.0.0
 	optdepends = r-waldo>=0.4.0
-	source = https://cran.r-project.org/src/contrib/scales_1.2.0.tar.gz
-	sha256sums = 185d50240e6b3e84d36ec7fbca6aef7a85db7c8c1b0dde51d4af28d363ce02df
+	source = https://cran.r-project.org/src/contrib/scales_1.2.1.tar.gz
+	sha256sums = 59453e6dbdafee93dfb101e4d86048a62a12898134259d3ef02d65aeec57ed08
 
 pkgname = r-scales
