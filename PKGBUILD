@@ -3,7 +3,7 @@
 
 pkgname=sabaki
 pkgver=0.52.1
-pkgrel=2
+pkgrel=1
 pkgdesc='An elegant SGF editor for the game of Go'
 arch=('any')
 url='http://sabaki.yichuanshen.de/'
