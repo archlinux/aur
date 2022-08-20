@@ -1,13 +1,13 @@
 pkgbase = alephium-wallet-bin
 	pkgdesc = The official Alephium desktop wallet.
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/alephium/alephium-wallet
 	arch = x86_64
 	license = LGPL3
 	provides = alephium-wallet
 	conflicts = alephium-wallet
-	source_x86_64 = https://github.com/alephium/alephium-wallet/releases/download/v1.2.0/alephium-wallet-linux-amd64-1.2.0.deb
-	sha256sums_x86_64 = 361efee09335084dd4fcf8ad2da7dd4bd6ec70d8a9e6abdf153519de36c5da65
+	source_x86_64 = https://github.com/alephium/alephium-wallet/releases/download/v1.3.0/alephium-wallet-linux-amd64-1.3.0.deb
+	sha256sums_x86_64 = a0d77d4846118d9b8a83228b67a8cae1ea46e3293d51b72f0af301b5d240e018
 
 pkgname = alephium-wallet-bin
