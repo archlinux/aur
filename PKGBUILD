@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _cranname=transformr
-_cranver=0.1.3
+_cranver=0.1.4
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -10,16 +10,17 @@ arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(MIT)
 depends=(
-    r-rcpp
     r-tweenr
     r-rlang
     r-sf
     r-lpsolve
+    r-vctrs
 )
-optdepends=(r-magrittr)
+makedepends=(r-cpp11)
+optdepends=(r-covr r-magrittr)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
         "CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT")
-sha256sums=('c9382eca90161fd85287e5389ca54edb2549cef3b22140c8fe22d27d2282c6b6'
+sha256sums=('c193bc8217c2483933df91863892743f8b5fb03d309df7cd2b6c76e9b1661f40'
             'e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b')
 
 build() {
