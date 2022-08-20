@@ -2,6 +2,7 @@ PkgBase       := "ceph"
 ChrootPath    := env_var("HOME") / "chroot"
 ChrootBase    := ChrootPath / "root"
 ChrootActive  := ChrootPath / PkgVer + "_" + PkgRel
+Scripts       := justfile_directory() / "scripts"
 
 Color         := env_var_or_default("USE_COLOR", "1")
 Chroot        := env_var_or_default("USE_CHROOT", "1")
@@ -61,6 +62,9 @@ clean +what="chroot":
     esac
   done
 
+# Upload built artifacts to Github, using the associated release
+upload pkg="ceph,ceph-libs,ceph-mgr": (_upload pkg)
+
 # Initialize the chroot
 @_mkchroot $cbase:
   {{ if path_exists(cbase) == "true" { ":" } else { "$Say Initializing chroot @$cbase" } }}
@@ -113,6 +117,8 @@ _upload $pkgstring:
 
 # ~~~ Global shell variables ~~~
 export Say              := "echo " + C_RED + "==> " + C_RESET + BuildId
+export DryRun           := None
+export Debug            := None
 
 # Nicer name for empty strings
 None := ""
@@ -121,6 +127,7 @@ None := ""
 PkgBuild                := justfile_directory() / "PKGBUILD"
 PkgVer                  := `awk -F= '/pkgver=/ {print $2}' PKGBUILD`
 PkgRel                  := `awk -F= '/pkgrel=/ {print $2}' PKGBUILD`
+PkgArch                 := 'x86_64'
 GitCommitish            := if `git tag --points-at HEAD` != None {
                               `git tag --points-at HEAD`
                            } else if `git branch --show-current` != None {
@@ -131,6 +138,7 @@ GitCommitish            := if `git tag --points-at HEAD` != None {
 BuildId                 := "[" + C_YELLOW + PkgBase + C_RESET + "/" + C_GREEN + PkgVer + ":" + PkgRel + C_RESET + "@" + C_CYAN + GitCommitish + C_RESET + "]"
 BuildTriple             := PkgVer + "-" + PkgRel + "-" + "x86_64"
 LogFileList             := env_var_or_default("TEMP", "/tmp") / PkgBase + ".temp" / "logfiles"
+GithubRepo              := `git remote get-url origin | sed -nE 's|[^:]+://[^/]+/([^/]+)/([^./]+)\.?.*|\1/\2|p'`
 
 # ~~~ Color Codes ~~~
 C_ENABLED   := if Color =~ '(?i)^auto|yes|1$' { "1" } else { None }
