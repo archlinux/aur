@@ -20,17 +20,6 @@
  ## CLIENT/SERVER RULES
  #############################################################################
 
---- a/Makefile	2022-08-20 16:15:42.116251517 +0200
-+++ B/Makefile	2022-08-20 16:17:20.312141241 +0200
-@@ -2608,7 +2608,6 @@
- 
- Q3GOBJ_ = \
--  $(B)/$(BASEGAME)/game/steam.o \
--  $(B)/$(BASEGAME)/game/steamshim_child.o \
-   $(B)/$(BASEGAME)/game/g_main.o \
-   $(B)/$(BASEGAME)/game/ai_cast.o \
-   $(B)/$(BASEGAME)/game/ai_cast_characters.o \
-
 --- a/code/game/g_main.c	2022-08-20 16:13:42.954403041 +0200
 +++ b/code/game/g_main.c	2022-08-20 16:14:06.114371872 +0200
 @@ -30,7 +30,7 @@
@@ -42,3 +31,14 @@
  
  level_locals_t level;
  
+--- a/Makefile	2022-08-20 17:46:37.000317183 +0200
++++ b/Makefile	2022-08-20 17:47:11.021293927 +0200
+@@ -2607,8 +2607,6 @@
+ #############################################################################
+ 
+ Q3GOBJ_ = \
+-  $(B)/$(BASEGAME)/game/steam.o \
+-  $(B)/$(BASEGAME)/game/steamshim_child.o \
+   $(B)/$(BASEGAME)/game/g_main.o \
+   $(B)/$(BASEGAME)/game/ai_cast.o \
+   $(B)/$(BASEGAME)/game/ai_cast_characters.o \
