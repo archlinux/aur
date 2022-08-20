@@ -1,46 +1,36 @@
 # Maintainer: robertfoster
 
 pkgname=xash3d-hlsdk
-pkgver=r535.3503619b
+pkgver=r639.8f5c36dc
 pkgrel=1
 pkgdesc="Half-Life SDK from original Xash3D engine"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://xash.su/"
 license=('GPL3')
-makedepends=('make' 'binutils' 'cmake')
-makedepends_i686=('gcc' 'gcc-libs')
-makedepends_x86_64=('gcc-multilib' 'lib32-gcc-libs')
-source=("$pkgname::git+https://github.com/FWGS/hlsdk-xash3d")
-
-_args="--enable-goldsrc-support \
---build-type=release \
---enable-voicemgr"
-
-if [ $CARCH == "x86_64" ]; then
-  _args+=" --libdir=/usr/lib32"
-else
-  _args+=" --libdir=/usr/lib"
-fi
+makedepends=('cmake' 'git')
+source=("${pkgname}::git+https://github.com/FWGS/hlsdk-portable")
 
 pkgver() {
-  cd $srcdir/$pkgname
+  cd "${srcdir}/${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd $srcdir/$pkgname
-  git submodule init && git submodule update
-  ./waf configure ${_args}
+  cd "${srcdir}/${pkgname}"
+  git submodule update --init --recursive
 }
 
 build() {
-  cd $srcdir/$pkgname
-  ./waf build
+  cmake -B build -S "${srcdir}/${pkgname}" \
+    -DCMAKE_INSTALL_PREFIX=/usr/lib \
+    -D64BIT=1
+
+  cmake --build build
 }
 
 package() {
-  cd $srcdir/$pkgname/
-  ./waf install --destdir="$pkgdir/usr/lib"
+  DESTDIR="${pkgdir}" \
+    cmake --install build
 }
 
-md5sums=('SKIP')
+sha256sums=('SKIP')
