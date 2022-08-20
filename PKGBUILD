@@ -2,7 +2,7 @@
 
 _target=mips64el-linux-gnu
 pkgname="${_target}-glibc"
-pkgver=2.35
+pkgver=2.36
 pkgrel=1
 pkgdesc='GNU C library for the MIPS64EL target with multilib ABI'
 arch=('any')
@@ -14,7 +14,7 @@ options=('!emptydirs' '!strip' 'staticlibs' '!lto')
 source=("https://ftp.gnu.org/gnu/glibc/glibc-${pkgver}.tar.xz"{,.sig}
         'sdt-config.h'
         'sdt.h')
-sha256sums=('5123732f6b67ccd319305efd399971d58592122bcc2a6518a1bd2510dd0cf52e'
+sha256sums=('1c959fea240906226062cb4b1e7ebce71a9f0e3c0836c09e7e3423d434fcfe75'
             'SKIP'
             'cdc234959c6fdb43f000d3bb7d1080b0103f4080f5e67bcfe8ae1aaf477812f0'
             '774061aff612a377714a509918a9e0e0aafce708b87d2d7e06b1bd1f6542fe70')
@@ -65,7 +65,6 @@ build() {
         '--disable-werror')
     
     # remove fortify for building libraries
-    export CPPFLAGS="${CPPFLAGS/-D_FORTIFY_SOURCE=2/}" # still present in devtools
     export CFLAGS="${CFLAGS/-Wp,-D_FORTIFY_SOURCE=2/}"
     export CXXFLAGS="${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=2/}"
     
