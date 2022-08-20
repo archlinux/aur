@@ -1,0 +1,16 @@
+pkgbase = icamerasrc-git
+	pkgdesc = Intel IPU6 camera source for GStreamer
+	pkgver = r42.4d4293d
+	pkgrel = 1
+	url = https://github.com/intel/icamerasrc
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = autoconf
+	makedepends = make
+	makedepends = gcc
+	depends = ipu6-camera-hal
+	source = git+https://github.com/intel/icamerasrc.git#branch=icamerasrc_slim_api
+	sha256sums = SKIP
+
+pkgname = icamerasrc-git
