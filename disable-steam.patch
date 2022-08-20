@@ -25,7 +25,7 @@
 @@ -2608,7 +2608,6 @@
  
  Q3GOBJ_ = \
-   $(B)/$(BASEGAME)/game/steam.o \
+-  $(B)/$(BASEGAME)/game/steam.o \
 -  $(B)/$(BASEGAME)/game/steamshim_child.o \
    $(B)/$(BASEGAME)/game/g_main.o \
    $(B)/$(BASEGAME)/game/ai_cast.o \
