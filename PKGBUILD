@@ -2,8 +2,8 @@
 
 _pkgname=encryptpad
 pkgname=${_pkgname}
-pkgver=0.5.0.1
-pkgrel=9
+pkgver=0.5.0.2
+pkgrel=10
 pkgdesc="Minimalist secure text editor and file encryptor that implements RFC 4880 Open PGP format"
 arch=(i686 x86_64)
 url="https://github.com/evpo/${_pkgname}"
