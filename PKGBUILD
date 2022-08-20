@@ -14,7 +14,7 @@ provides=('grafana')
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('Apache')
 install=${_pkgname}.install
-backup=("etc/${_pkgname}/${_pkgname}.ini")
+backup=("etc/${_pkgname}.ini")
 source=("grafana.service")
 source_x86_64=("https://dl.grafana.com/oss/release/grafana-${pkgver}.linux-amd64.tar.gz")
 source_armv6h=("https://dl.grafana.com/oss/release/grafana-${pkgver}.linux-armv6.tar.gz")
@@ -35,7 +35,7 @@ package() {
   install -Dm755 bin/grafana-cli "$pkgdir/usr/bin/grafana-cli"
   sed -i '/^;data = /c\data = /var/lib/grafana' conf/sample.ini
   sed -i '/^;logs = /c\logs = /var/log/grafana' conf/sample.ini
-  install -Dm644 conf/sample.ini "$pkgdir/etc/${_pkgname}/${_pkgname}.ini"
+  install -Dm644 conf/sample.ini "$pkgdir/etc/${_pkgname}.ini"
   install -Dm644 conf/defaults.ini "$pkgdir/usr/share/grafana/conf/defaults.ini"
   cp -r public scripts plugins-bundled "$pkgdir/usr/share/grafana/"
 }
