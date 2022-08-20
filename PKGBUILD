@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=valr
-_pkgver=0.6.4
+_pkgver=0.6.5
 pkgname=r-${_pkgname,,}
-pkgver=0.6.4
-pkgrel=4
+pkgver=0.6.5
+pkgrel=1
 pkgdesc='Genome Interval Arithmetic'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -43,7 +43,7 @@ optdepends=(
   r-tidyr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('93fce804d76c44d91c5ab3cd70298cfef253c9fb842f5122cf06aeb8730ca435')
+sha256sums=('5cd7c08c3fa4fab1989d5706933c133d06fae9d2525e424a2e94c44719d6e498')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
