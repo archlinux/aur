@@ -1,22 +1,22 @@
 #!/bin/bash
-read -r DOPPLERTEXT <<<"$(doppler --version | sed 's/v//g')"
-read -r GITHUBTEXT <<<"$(wget --quiet https://github.com/DopplerHQ/cli/releases/latest -O /dev/stdout | grep -Eo 'Release [0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,2}' | head -n 1 | sed 's/Release //g')"
+read -r LOCALVER <<<"$(cat PKGBUILD | grep 'pkgver=' | sed 's/pkgver=//g')"
+read -r DOPPLERVER <<<"$(wget --quiet https://github.com/DopplerHQ/cli/releases/latest -O /dev/stdout | grep -Eo 'Release [0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,2}' | head -n 1 | sed 's/Release //g')"
 
-if [ "$DOPPLERTEXT" == "$GITHUBTEXT" ]; then
+if [ "$LOCALVER" == "$DOPPLERVER" ]; then
 	echo "No update available"
 	exit 0
 fi
 
-echo "New version available: $GITHUBTEXT"
+echo "New version available: $DOPPLERVER"
 if [[ $* == *--dry-run* ]]; then
 	exit 0
 fi
 
-sed -i "s/pkgver=.*/pkgver=$GITHUBTEXT/g" PKGBUILD
-echo "Updated version to $GITHUBTEXT"
+sed -i "s/pkgver=.*/pkgver=$DOPPLERVER/g" PKGBUILD
+echo "Updated version to $DOPPLERVER"
 
 updpkgsums
 makepkg --printsrcinfo >.SRCINFO
 git add ./PKGBUILD ./.SRCINFO
-git commit -m "Bump version to $GITHUBTEXT"
+git commit -m "Version $DOPPLERVER"
 git push && git push aur master
