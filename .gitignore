@@ -1,6 +1,9 @@
 # KDE's Dolphin
 .directory
 
+# Flutter source
+flutter/
+
 nyrna*.tar.*
 README
 
