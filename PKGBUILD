@@ -4,7 +4,7 @@
 pkgname=lirc-user-service
 pkgver=1.5
 pkgrel=2
-pkgdesc="Run lirc as an unprivileged user for better stability and security"
+pkgdesc="Run lircd as an unprivileged user for better stability and security"
 arch=(any)
 url="https://www.lirc.org/html/configuration-guide.html"
 license=(MIT)
