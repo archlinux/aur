@@ -11,13 +11,13 @@ pkgver=1.0.1
 pkgrel=3
 epoch=
 pkgdesc="Converts input strings to a standard naming convention."
-arch=('any')
+arch=('x86_64')
 url="https://github.com/Shadetheartist/caser"
 license=('GPL')
 groups=()
 depends=('glibc')
 makedepends=()
-checkdepends=('libcheck.so')
+checkdepends=('check')
 optdepends=()
 provides=()
 conflicts=()
@@ -39,6 +39,7 @@ build() {
 
 check() {
 	cd "caser-$pkgver"
+	./configure --prefix=/usr
 	make check
 }
 
