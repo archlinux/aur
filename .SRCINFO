@@ -1,6 +1,6 @@
 pkgbase = mips64el-linux-gnu-binutils
 	pkgdesc = Tools to assemble and manipulate binary and object files for the MIPS64EL target (for the toolchain with GNU C library and multilib ABI)
-	pkgver = 2.38
+	pkgver = 2.39
 	pkgrel = 1
 	url = https://www.gnu.org/software/binutils/
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = mips64el-linux-gnu-binutils
 	options = staticlibs
 	options = !distcc
 	options = !ccache
-	source = https://ftp.gnu.org/gnu/binutils/binutils-2.38.tar.xz
-	source = https://ftp.gnu.org/gnu/binutils/binutils-2.38.tar.xz.sig
-	source = 010-binutils-mips64-default-to-64-emulation-g3dea562.patch::https://raw.githubusercontent.com/openembedded/openembedded-core/3dea562e9d615384cc5e786eff46ac1f8f41e18e/meta/recipes-devtools/binutils/binutils/0009-Change-default-emulation-for-mips64-linux.patch
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.39.tar.xz
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.39.tar.xz.sig
+	source = 010-binutils-mips64-default-to-64-emulation.patch
 	validpgpkeys = 3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F
-	sha256sums = e316477a914f567eccc34d5d29785b8b0f5a10208d36bbacedcc39048ecfe024
+	sha256sums = 645c25f563b8adc0a81dbd6a41cffbf4d37083a382e02d5d3df4f65c09516d00
 	sha256sums = SKIP
-	sha256sums = 2e0c71612d770d3b9531fa66211ac7ef810ddbe6253efe440ec1a069b08926b9
+	sha256sums = 44e1420a85f0209d72e7e6595006066492dcc0accb0eb3ae416e2659ec3f224b
 
 pkgname = mips64el-linux-gnu-binutils
