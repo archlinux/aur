@@ -1,6 +1,6 @@
 pkgbase = hsa-rocr
 	pkgdesc = ROCm Platform Runtime: ROCr a HPC market enhanced HSA based runtime
-	pkgver = 5.2.1
+	pkgver = 5.2.3
 	pkgrel = 1
 	url = https://rocmdocs.amd.com/en/latest/Installation_Guide/ROCR-Runtime.html
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = hsa-rocr
 	depends = hsakmt-roct
 	depends = rocm-device-libs
 	depends = hsa-amd-aqlprofile
-	provides = rocr-runtime=5.2.1
+	provides = rocr-runtime=5.2.3
 	conflicts = rocr-runtime
 	replaces = rocr-runtime
-	source = hsa-rocr-5.2.1.tar.gz::https://github.com/RadeonOpenCompute/ROCR-Runtime/archive/rocm-5.2.1.tar.gz
-	sha256sums = 448a7409bdc6618332a42b9503122996f26b91768140b710ba99bff8a8c03dd9
+	source = hsa-rocr-5.2.3.tar.gz::https://github.com/RadeonOpenCompute/ROCR-Runtime/archive/rocm-5.2.3.tar.gz
+	sha256sums = 978de85d3455207bb82bef2254a4624e9116b1258a8c164d7a7e21a644eff12f
 
 pkgname = hsa-rocr
