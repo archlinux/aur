@@ -3,7 +3,7 @@
 
 pkgname=lunzip
 pkgver=1.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Lunzip is a decompressor for the lzip format written in C."
 url="https://www.nongnu.org/lzip/lunzip.html"
 arch=('x86_64' 'i686')
