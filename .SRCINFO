@@ -1,7 +1,7 @@
 pkgbase = clzip
 	pkgdesc = A C language version of lzip
 	pkgver = 1.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.nongnu.org/lzip/clzip.html
 	arch = x86_64
 	license = GPL

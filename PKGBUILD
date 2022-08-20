@@ -1,8 +1,8 @@
-# Maintainer: Cassandra Watergate (saltedcoffii) <cassandrawatergate@outlook.com>
+# Maintainer: Cassandra Watergate (saltedcoffii) <cassandrajwatergate@gmail.com>
 
 pkgname=clzip
 pkgver=1.13
-pkgrel=1
+pkgrel=2
 pkgdesc="A C language version of lzip"
 url="https://www.nongnu.org/lzip/clzip.html"
 arch=('x86_64')
@@ -14,7 +14,7 @@ validpgpkeys=('1D41C14B272A2219A739FA4F8FE99503132D7742') # Antonio Diaz Diaz
 
 build() {
   cd "$pkgname-$pkgver"
-	./configure --prefix=/usr CPPFLAGS="$CPPFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS"
+	./configure --prefix=/usr CPPFLAGS="$CPPFLAGS" CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS"
 	make
 }
 
