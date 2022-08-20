@@ -3,7 +3,7 @@
 
 pkgname=easyeda-bin
 _pkgname=${pkgname%-bin}
-pkgver=6.5.13
+pkgver=6.5.14
 pkgrel=1
 pkgdesc="A Simple and Powerful Electronic Circuit Design Tool"
 arch=('x86_64')
@@ -15,13 +15,13 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}-${pkgver}.zip::https://image.easyeda.com/files/${_pkgname}-linux-x64-${pkgver}.zip"
 		"LICENSE")
-sha256sums=('c75f3c527f13bb677c1639e03f9b828fb39e0bf753b59aece828b3f6717d7dba'
+sha256sums=('2e238c8904ded652b3c5adc6d0df3c2371249c03e47bb5f62003a217340e63fc'
 			'c52b78caac78dde0948489d67bfadbb2c1eb21a456846806b1a4a3a1c07f36ec')
 
 package() {
 	install -dm755 ${pkgdir}/opt/${_pkgname}
-	unzip easyeda-linux-x64.zip -d ${pkgdir}/opt/${_pkgname}
-	#mv ${srcdir}/easyeda-linux-x64/* ${pkgdir}/opt/${_pkgname}
+	#unzip easyeda-linux-x64.zip -d ${pkgdir}/opt/${_pkgname}
+	mv ${srcdir}/easyeda-linux-x64/* ${pkgdir}/opt/${_pkgname}
 
 	# icon
 	local _icon
@@ -35,9 +35,9 @@ package() {
 	install -Dm644	${pkgdir}/opt/${_pkgname}/EASYEDA.dkt \
 					${pkgdir}/usr/share/applications/${_pkgname}.desktop
 
-	sed -i 's|/easyeda-linux-x64/icon/128x128/easyeda.png|easyeda|g' \
+	sed -i 's|/opt/easyeda/icon/128x128/easyeda.png|easyeda|g' \
 		${pkgdir}/usr/share/applications/${_pkgname}.desktop
-	sed -i 's|/easyeda-linux-x64/||g' \
+	sed -i 's|/opt/easyeda/||g' \
 		${pkgdir}/usr/share/applications/${_pkgname}.desktop
 	rm -rf ${pkgdir}/opt/${_pkgname}/EASYEDA.dkt
 
