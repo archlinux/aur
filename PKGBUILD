@@ -1,6 +1,6 @@
 # Maintainer: Kuba Ellwart <kuba@hop.io>
 
-pkgname=hop_cli
+pkgname=hop-cli
 pkgver=0.1.21
 pkgrel=1
 makedepends=('rust' 'cargo')
@@ -8,17 +8,17 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Interact with Hop in your terminal"
 url="https://hop.io"
 license=('MPL-2.0')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/hopinc/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+source=("hop_cli-$pkgver.tar.gz::https://github.com/hopinc/hop_cli/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=("f7ca27093affcfffde84caeecf17e6a2f69395fa9024c060c51d08e41d0f6096")
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/hop_cli-$pkgver"
 
   cargo fetch --locked --target "$CARCH-unknown-linux-musl"
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/hop_cli-$pkgver"
 
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
@@ -26,14 +26,14 @@ build() {
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/hop_cli-$pkgver"
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --all-features
+  cargo test --frozen --release --all-features
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/hop_cli-$pkgver"
 
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/hop"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/hop" 

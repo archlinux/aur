@@ -1,4 +1,4 @@
-pkgbase = hop_cli
+pkgbase = hop-cli
 	pkgdesc = Interact with Hop in your terminal
 	pkgver = 0.1.21
 	pkgrel = 1
@@ -13,4 +13,4 @@ pkgbase = hop_cli
 	source = hop_cli-0.1.21.tar.gz::https://github.com/hopinc/hop_cli/archive/refs/tags/v0.1.21.tar.gz
 	sha256sums = f7ca27093affcfffde84caeecf17e6a2f69395fa9024c060c51d08e41d0f6096
 
-pkgname = hop_cli
+pkgname = hop-cli
