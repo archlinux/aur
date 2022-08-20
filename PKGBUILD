@@ -3,7 +3,7 @@
 
 pkgname=zettlr-git
 _pkgname=Zettlr
-pkgver=2.2.6.r0.g7dea2fe
+pkgver=2.3.0.r206.ga1b78bb
 pkgrel=1
 pkgdesc='A Markdown Editor for the 21st century'
 arch=(x86_64)
@@ -62,7 +62,6 @@ pkgver() {
 build() {
 	cd "$pkgname"
 	local NODE_ENV=''
-	yarn $_yarnargs reveal:build
 	yarn $_yarnargs package:linux-x64
 }
 
