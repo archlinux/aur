@@ -1,4 +1,4 @@
-# Maintainer: Cassandra Watergate (saltedcoffii) <cassandrawatergate@outlook.com>
+# Maintainer: Cassandra Watergate (saltedcoffii) <cassandrajwatergate@gmail.com>
 # Contributer: Peter Mayr <petermayr@ymail.com>
 
 pkgname=lunzip
@@ -17,7 +17,7 @@ sha512sums=('67f950883b7062d37601bc16d7d64c07f6c580afbf3c0f61394dd6fb5d41c272144
             'SKIP')
 build() {
 	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr CPPFLAGS="$CPPFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS"
+	./configure --prefix=/usr CPPFLAGS="$CPPFLAGS" CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS"
 	make
 }
 
