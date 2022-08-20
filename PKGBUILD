@@ -1,7 +1,7 @@
 # Maintainer: Francisco Carpio <carpiofj@gmail.com>
 
 pkgname=phosh-antispam
-pkgver=2.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='Phosh Calls Anti-Spam'
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ makedepends=(
 )
 _commit=${pkgver}
 source=("${url}/-/archive/${_commit}/${pkgname}-${_commit}.tar.gz")
-sha256sums=('92ea60d8a6b3579a455853e7bd5246e53ccdd2a9b73f39bea111f31e3009ff86')
+sha256sums=('a7d047289b1cebcdbe6bd945679666f158806d06382864f0d557f41424e281f5')
 
 build() {
   cd "${pkgname}-${_commit}"
@@ -35,5 +35,5 @@ check() {
 
 package() {
   cd "${pkgname}-${_commit}"
-  meson install -C _build
+  meson install -C _build --destdir "${pkgdir}"
 }
