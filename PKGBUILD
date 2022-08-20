@@ -1,7 +1,7 @@
 # Maintainer: Martin Rys <rys.pw/contact>
 
 pkgname=http-server-upload
-pkgver=1.1.0
+pkgver=2.0.1
 pkgrel=1
 epoch=
 pkgdesc="Zero-configuration command-line http server which provides a lightweight interface to upload files."
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('d87ac7f2fd2cb99472e2f080affbc336250d81d81a985390dab8efb6193fc1e3')
+sha256sums=('f3ff6b766299e92084f6a93facbc1581a4dcf4fff884e29f4a49322875522f9f')
 validpgpkeys=()
 
 package() {
