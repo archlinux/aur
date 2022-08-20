@@ -1,7 +1,7 @@
 pkgbase = zutils
 	pkgdesc = Zutils is a collection of utilities able to process any combination of compressed and uncompressed files transparently. Supports bzip2, gzip, lzip, xz, and zstd.
 	pkgver = 1.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.nongnu.org/zutils/zutils.html
 	arch = x86_64
 	license = GPL
