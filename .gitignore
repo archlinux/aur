@@ -6,3 +6,5 @@ pkg
 *.part
 *.pkg.tar.*
 *.log
+*cdf
+*nc
