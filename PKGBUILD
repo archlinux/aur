@@ -9,11 +9,10 @@ pkgdesc="Python library for building Domain-Specific Languages and parsers"
 arch=('any')
 url="https://textx.github.io/textX/"
 license=('MIT')
-depends=('python' 'python-arpeggio' )
+depends=('python' 'python-setuptools' 'python-arpeggio' 'python-future')
 optdepends=('python-click: textX CLI support')
-makedepends=('python-setuptools')
-checkdepends=('python-pytest-runner' 'python-pip' 'python-jinja' 'python-click')
-source=($pkgname-$pkgver.tar.gz::https://github.com/textX/$_srcname/archive/$pkgver.tar.gz)
+checkdepends=('python-pytest-runner' 'python-pip' 'python-jinja' 'python-click' 'python-html5lib')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/textX/$_srcname/archive/$pkgver.tar.gz")
 md5sums=('6d868822583d86f66cda71f40b1bebb5')
 
 build() {
@@ -35,7 +34,13 @@ check() {
         tests/functional/registration/projects/flow_dsl
         tests/functional/registration/projects/flow_codegen)
   for prj in "${prjs[@]}"; do
-    pip install --user --no-index -f ./ -e "$prj" || exit 1
+    pip install \
+      --user \
+      --no-index \
+      --no-build-isolation \
+      --find-links ./ \
+      --editable \
+      "$prj" || exit 1
   done
 
   # Run all tests
