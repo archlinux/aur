@@ -17,9 +17,9 @@ fi
 _buildflags="NOUPX=1 NOOBJDUMP=1 "
 
 pkgname=srb2kart
-pkgver=1.3
-_dataver=1.3
-pkgrel=4
+pkgver=1.4
+_dataver=1.4
+pkgrel=1
 pkgdesc="Source code modification of Sonic Robo Blast 2 with kart racing elements"
 arch=('i686' 'x86_64' 'aarch64')
 license=('GPL3')
@@ -37,8 +37,8 @@ source=("git+https://github.com/STJr/Kart-Public.git#tag=v$pkgver"
   "srb2kart.desktop"
   "srb2kart-opengl.desktop")
 sha256sums=('SKIP'
-  '4ccc9d2d2379722416c351dd8c34105dc8d7ec595ec37d75089c4a990536585b'
-  'dea04abae8639a7bbf081ea40ff0c7c5ffa34c95e8295d37613b632d5452df73')
+            '17f9d878d365c98f1d31bb895426f0b49378c49c87921f5ecfa01bd803a36591'
+            'dea04abae8639a7bbf081ea40ff0c7c5ffa34c95e8295d37613b632d5452df73')
 
 build() {
   cd "$srcdir"/Kart-Public/src
