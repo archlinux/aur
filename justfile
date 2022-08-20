@@ -79,6 +79,37 @@ clean +what="chroot":
     PKGBUILD-namcap.log \
     > {{LogFileList}}
 
+# Script to upload a comma separated list of packages to the active Github release
+_upload $pkgstring:
+  #!/usr/bin/env bash
+  set -euo pipefail
+
+  [[ -n "$GITHUB_TOKEN" ]] || { $Say "Error: GITHUB_TOKEN must be set" && exit 4; }
+
+  IFS=', ' read -r -a PKGS <<<"$pkgstring"
+
+  $Say "uploading package(s): { ${PKGS[@]} } to {{GithubRepo}}/releases/v{{PkgVer}}-{{PkgRel}}"
+
+  declare -A FILES
+  for pkg in "${PKGS[@]}"; do
+    fname="$pkg-{{PkgVer}}-{{PkgRel}}-{{PkgArch}}.pkg.tar.zst"
+    [[ -f "$fname" ]] || { $Say "Error: unable to locate artifact '$fname' for '$pkg' upload" && exit 7; }
+    FILES[$pkg]=$fname
+  done
+
+  for pkg in "${!FILES[@]}"; do
+    src=${FILES[$pkg]}
+    mime="$(file -b --mime-type $src)"
+    dst="${pkg//-/_}_linux_{{PkgArch}}.tar.$(basename $mime)"
+
+    $Say "uploading '$src' as '$dst'"
+
+    {{Scripts}}.gh-upload-artifact.sh \
+      ${DryRun:+--dry-run} \
+      --repo {{GithubRepo}} \
+      --tag v{{PkgVer}}-{{PkgRel}} \
+      --file "$src:$dst"
+  done
 
 # ~~~ Global shell variables ~~~
 export Say              := "echo " + C_RED + "==> " + C_RESET + BuildId
