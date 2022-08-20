@@ -1,6 +1,6 @@
 pkgbase = ymuse-bin
 	pkgdesc = Easy, functional, and snappy client for Music Player Daemon (MPD).
-	pkgver = 0.20
+	pkgver = 0.21
 	pkgrel = 2
 	url = https://yktoo.com/en/software/ymuse/#software-downloads
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = ymuse-bin
 	optdepends = mpd
 	provides = ymuse
 	conflicts = ymuse
-	noextract = ymuse_0.20_linux_amd64.deb
-	source = https://github.com/yktoo/ymuse/releases/download/v0.20/ymuse_0.20_linux_amd64.deb
-	sha256sums = 218adc4fe6829e1ee2b5a7199fe1689a2acbabc3de417364c7b9b3a8ec62fcc0
+	noextract = ymuse_0.21_linux_amd64.deb
+	source = https://github.com/yktoo/ymuse/releases/download/v0.21/ymuse_0.21_linux_amd64.deb
+	sha256sums = 8c9a1903dc33de2ef8daeb37d8854f6d807f0175f01beffa99f8cb76f5118f3c
 
 pkgname = ymuse-bin
