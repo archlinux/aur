@@ -1,6 +1,92 @@
-#!/bin/sh
-DATADIR=$HOME/.local/share/osu
-if [ ! -d $DATADIR ]; then
-    mkdir -p $DATADIR
+#!/usr/bin/env bash
+
+#设定框架
+DISPLAYNAME="mfosu启动脚本"
+LOGNAMES="*"
+
+# osu数据目录
+readonly XDG_OSU=${HOME}/.local/share/osu/
+
+#默认重定向日志到lazer目录的mfosu-apprun.log
+LOGTARGET="${LOGTARGET:-${XDG_OSU}/mfosu-apprun.log}"
+MFOSU_AUTOLOG_WHEN_NOT_TERMINAL="${MFOSU_AUTOLOG_WHEN_NOT_TERMINAL:-true}"
+
+#mfosu目录
+readonly MFOSU="/opt/mfosu/"
+
+#是bash#shellcheck source=/dev/null #todo: 让shellcheck能正确source到common
+source "${MFOSU}/scripts/base/common" || exit 255
+
+#初始化日志文件
+true > "${LOGTARGET}"
+
+#设定LD_LIBRARY_PATH
+export LD_LIBRARY_PATH="${MFOSU}/game":"${LD_LIBRARY_PATH}"
+
+function run_hook()
+{
+    local hookPath="${1}"
+
+    if [ -f "${hookPath}" ];then
+        local hookBaseName="$(basename "${hookPath}")"
+
+        #env文件直接source，允许用户通过此方式更改脚本的环境变量（甚至是部分函数？），其他文件则直接执行
+        if [[ "${hookBaseName}" == *".env" ]];then
+            log "加载env文件：${hookBaseName}"
+            source "${hookPath}";
+        else
+            log "执行钩子：${hookBaseName}"
+            "${hookPath}" >> "${LOGTARGET}" 2>>"${LOGTARGET}"|| log "LWARN" "未能成功执行钩子：$(basename "${hookBaseName}")"
+        fi
+    fi;
+}
+
+function check_hooks()
+{
+    log "正在检查内部钩子..."
+    #先执行一遍AppImage里的hooks
+    for hook in "${MFOSU}/scripts/hooks"/*; do
+        run_hook "${hook}"
+    done
+
+    unset hook
+    unset hookBaseName
+
+    #然后执行用户定义的hooks
+    local storageConfig="${XDG_OSU}/storage.ini"
+
+    if [ -f "${storageConfig}" ];then
+        local userStorage="$(grep "FullPath" "${storageConfig}")"
+        userStorage="${userStorage//FullPath = /}"
+
+        log "正在检查用户钩子..."
+        for uhook in "${userStorage}/hooks"/*; do
+            run_hook "${uhook}"
+        done
+    fi
+
+    unset uhook
+    unset uHookBaseName
+    unset userStorage
+
+    unset check_hooks
+    unset run_hook
+}
+
+#执行钩子
+check_hooks
+
+#启动游戏！
+EXEC=${MFOSU}/game/'osu!'
+log "启动游戏..."
+
+#设定PATH，确保$MFOSU/game永远在最前面
+export PATH="${MFOSU}/game":"${PATH}"
+"${EXEC}" "$@"
+
+retCode="$?"
+log "返回值为${retCode}"
+
+if [ ! ${retCode} -eq 0 ];then
+    log "LWARN" "游戏似乎没有正常退出？"
 fi
-env OSU_EXTERNAL_UPDATE_PROVIDER=1 /opt/mfosu/mfosu.appimage "$@"
