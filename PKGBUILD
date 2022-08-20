@@ -1,9 +1,9 @@
-# Maintainer: Cassandra Watergate (saltedcoffii) <cassandrawatergate@outlook.com>
+# Maintainer: Cassandra Watergate (saltedcoffii) <cassandrajwatergate@gmail.com>
 # Contributer: LSUtigers3131
 
 _pkgname=pamac
 pkgname=$_pkgname-nosnap
-pkgver=10.4.1
+pkgver=10.4.2
 pkgrel=1
 
 pkgdesc="A Gtk3 frontend from Manjaro Linux for libalpm with AUR, flatpak, and appindicator support."
@@ -19,7 +19,7 @@ provides=('pamac')
 options=(!emptydirs)
 install=pamac.install
 source=("$_pkgname-$pkgver.tar.bz2::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.bz2")
-sha512sums=('c19cfa855151cf36e85b65d9cedcc8ea823a4e3097b6c5fc8459358fb7d93b2d682dffeeb21b30950ccd0686c081285b379bfbdd5dd04342594e2351acefcb4f')
+sha512sums=('8b5b2298e16bcfc6fbdfbf2e2cd77cb9cd769d9faa503dd8fec35c18f37b52589ffda670dc9299a8f4962f039ba870007b4601a2610ac0fc298f64a4f8e67eeb')
 
 prepare() {
   # adjust version string
@@ -41,5 +41,4 @@ package() {
   rm "$pkgdir/usr/bin/gnome-software"
   rm "$pkgdir/usr/share/applications/org.gnome.Software.desktop"
   rm "$pkgdir/usr/share/dbus-1/services/org.gnome.Software.service"
-
 }
