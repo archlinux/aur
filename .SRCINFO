@@ -1,6 +1,6 @@
 pkgbase = mapserver-git
 	pkgdesc = Platform for publishing spatial data and interactive mapping applications to the web
-	pkgver = 1
+	pkgver = 20220819_b2f0fd240
 	pkgrel = 1
 	url = http://www.mapserver.org
 	arch = i686
@@ -27,8 +27,9 @@ pkgbase = mapserver-git
 	depends = fribidi
 	depends = pixman
 	depends = exempi
+	provides = mapserver=20220819_b2f0fd240
 	conflicts = mapserver
-	source = mapserver-git::git://github.com/mapserver/mapserver.git
+	source = mapserver::git+https://github.com/mapserver/mapserver.git
 	md5sums = SKIP
 
 pkgname = mapserver-git

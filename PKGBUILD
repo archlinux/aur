@@ -3,7 +3,8 @@
 # Original Maintainer::  Jonathan Hudson <jh+arch@daria.co.uk>
 
 pkgname=mapserver-git
-pkgver=1
+_pkgname=${pkgname%-git}
+pkgver=20220819_b2f0fd240
 pkgrel=1
 pkgdesc="Platform for publishing spatial data and interactive mapping applications to the web"
 arch=(i686 x86_64)
@@ -15,30 +16,31 @@ depends=('libpng' 'freetype2' 'zlib' 'gdal' 'proj' 'libjpeg-turbo' 'libxml2' 'li
 makedepends=('cfitsio')
 conflicts=('mapserver')
 options=()
-source=("$pkgname"::'git://github.com/mapserver/mapserver.git')
+provides=("mapserver=${pkgver}")
+source=("$_pkgname"::'git+https://github.com/mapserver/mapserver.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
   # Use the tag of the last commit
   #git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
   echo "$(git log -1 --format="%cd" --date=short | tr -d '-')_$(git log -1 --format="%h")"
 }
 
 build() {
-	cd "$srcdir/$pkgname"
-  
-  if [ -f CMakeCache.txt ]  
+	cd "$srcdir/$_pkgname"
+
+  if [ -f CMakeCache.txt ]
     then
 	  rm -rf CMakeCache.txt CMakeFiles
-  fi	
+  fi
   rm -rf build && mkdir build
   cd build
 
   ## Compile with python
   ## -DPYTHON_LIBRARIES=/usr/lib/python2.7 \
 	## -DPYTHON_INCLUDE_PATH=/usr/include/python2.7 \
-    
+
   cmake .. \
   -DCMAKE_INSTALL_PREFIX=/usr \
   -DCMAKE_INSTALL_LIBDIR=lib \
@@ -65,12 +67,11 @@ build() {
 	-DWITH_ORACLESPATIAL=OFF \
 	-DWITH_ORACLE_PLUGIN=OFF \
 	-DWITH_PERL=OFF \
-	-DWITH_PHP=OFF \
-	-DWITH_POINT_Z_M=ON \
+	-DWITH_PHPNG=OFF \
 	-DWITH_POSTGIS=ON \
 	-DWITH_GIF=ON \
 	-DWITH_PYTHON=ON \
-	-DPYTHON_EXECUTABLE=/usr/bin/python \
+  -DWITH_PYMAPSCRIPT_ANNOTATIONS=ON \
 	-DWITH_RSVG=OFF \
 	-DWITH_RUBY=OFF \
 	-DWITH_SOS=ON \
@@ -84,19 +85,20 @@ build() {
 	-DWITH_EXEMPI=ON \
 	-DWITH_XMLMAPFILE=OFF \
 	-DFREETYPE_INCLUDE_DIR=/usr/include/freetype2 \
-    
-  make clean	
+
+  make clean
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname/build"
-  
-  make || return 1
+  cd "$srcdir/$_pkgname/build"
+
   make DESTDIR=${pkgdir} install
-  
+
   #Copy the headers a include for ZooWPS project
-  install -d "$pkgdir"/usr/include/mapserver  
-  install -Dm644 $srcdir/$pkgname//build/*.h "$pkgdir"/usr/include/mapserver/
-  install -Dm644 $srcdir/$pkgname/*.h "$pkgdir"/usr/include/mapserver/
+  install -d "$pkgdir"/usr/include/mapserver
+  install -d "$pkgdir"/opt/mapserver
+  install -Dm644 $srcdir/$_pkgname//build/*.h "$pkgdir"/usr/include/mapserver/
+  install -Dm644 $srcdir/$_pkgname/*.h "$pkgdir"/usr/include/mapserver/
+  cp -dpr --no-preserve=ownership $srcdir/$_pkgname/tests "$pkgdir"/opt/mapserver/test
 }
