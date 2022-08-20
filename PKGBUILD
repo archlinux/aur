@@ -2,7 +2,7 @@
 
 pkgname=atoms-git
 _pkgname=Atoms
-pkgver=r117.522ef8f
+pkgver=r198.b77715e
 pkgrel=1
 pkgdesc="Easily manage Linux chroot(s)"
 arch=('any')
@@ -13,8 +13,25 @@ makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=(git+$url.git)
-b2sums=('SKIP')
+source=(
+  "git+$url.git"
+  "git+https://github.com/AtomsDevs/atoms-cli.git"
+  "git+https://github.com/AtomsDevs/atoms-core.git"
+  "git+https://github.com/AtomsDevs/servicectl.git"
+)
+b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP')
+
+prepare() {
+  cd "${_pkgname%-git}"
+  git submodule init
+  git config submodule."atoms-cli".url "${srcdir}"/atoms-cli
+  git config submodule."atoms-core".url "${srcdir}"/atoms-core
+  git config submodule."servicectl".url "${srcdir}"/servicectl
+  git submodule update --init --recursive
+}
 
 pkgver() {
   cd "${_pkgname%-git}"
