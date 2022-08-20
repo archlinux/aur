@@ -22,7 +22,7 @@ _dataver=1.4
 pkgrel=1
 pkgdesc="Source code modification of Sonic Robo Blast 2 with kart racing elements"
 arch=('i686' 'x86_64' 'aarch64')
-license=('GPL3')
+license=('GPL2')
 url='https://mb.srb2.org/showthread.php?t=43708'
 depends=('sdl2' 'sdl2_mixer' 'libpng' 'libgme' "srb2kart-data>=$_dataver" 'curl')
 makedepends=('mesa' 'glu' 'git')
