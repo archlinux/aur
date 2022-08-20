@@ -2,7 +2,7 @@
 
 _name=pyfastani
 pkgname=python-${_name}
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Cython bindings and Python interface to FastANI, a method for fast whole-genome similarity estimation"
 url="https://github.com/althonos/${_name}"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'cython' 'python-build' 'python-installer')
 depends=('python')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=(c1396d0108354c100c2b7a9934f18d7c22dd56b9120dd31fa7ae36a4793f0d61)
+sha256sums=(44d86cbe8581d4891748ebe9851ae0a0c27489bb9f77728131415ed6b90cc35a)
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
