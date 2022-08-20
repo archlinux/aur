@@ -21,7 +21,7 @@ source=('git+https://github.com/ytmdesktop/ytmdesktop.git#branch=development'
         "${pkgname%-git}.sh")
 sha256sums=('SKIP'
             '3ed0c519e62483bb411e258df6d100463b8a417930ea67b34844bde8464e143d'
-            'eedee6478d28d182aff196a66a4a8d4a771f576f924a9a7b0dd836f62e079453')
+            '29f38d7cef381cd7b4ac26721d3d76c61ae6072fcee85a08c169eefbcaffe4df')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
