@@ -1,0 +1,19 @@
+pkgbase = cameractrls
+	pkgdesc = Camera controls for Linux
+	pkgver = 0.4.9
+	pkgrel = 1
+	url = https://github.com/soyersoyer/cameractrls
+	arch = any
+	license = MIT
+	depends = gtk3
+	depends = libjpeg-turbo
+	depends = python
+	depends = python-gobject
+	depends = sdl2
+	depends = systemd
+	source = cameractrls-0.4.9.tar.gz::https://github.com/soyersoyer/cameractrls/archive/refs/tags/v0.4.9.tar.gz
+	source = cameractrls.desktop
+	sha256sums = 6027f8cb750f2ee5feb913f3f4875a4259ddf998bc802a388a5a01657fe86578
+	sha256sums = 2e1f68566af0d9e01db8efeea15f318ab991ac0614aac8b059b227f7d37b35b7
+
+pkgname = cameractrls
