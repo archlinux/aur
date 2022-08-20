@@ -2,15 +2,14 @@
 
 _target=mips64el-linux-gnu
 pkgname="${_target}-gcc"
-pkgver=11.2.0
-_islver=0.24
+pkgver=12.2.0
 _majorver="${pkgver%%.*}"
-pkgrel=4
+pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for the MIPS64EL target (for the toolchain with GNU C library and multilib ABI)'
 arch=('x86_64')
 url='https://gcc.gnu.org/'
 license=('GPL' 'LGPL' 'FDL' 'custom')
-depends=('gmp' 'libmpc' "${_target}-binutils" "${_target}-glibc" 'mpfr' 'sh' 'zlib' 'zstd')
+depends=('gmp' 'libmpc' "${_target}-binutils" "${_target}-glibc" 'libisl' 'mpfr' 'sh' 'zlib' 'zstd')
 makedepends=("${_target}-linux-api-headers")
 provides=('mips64el-linux-gnuabi64-gcc' 'mips64el-linux-gnuabi32-gcc'
           'mips64el-linux-gnuabin32-gcc' "${pkgname}-bootstrap")
@@ -18,30 +17,23 @@ conflicts=('mips64el-linux-gnuabi64-gcc' 'mips64el-linux-gnuabi32-gcc'
            'mips64el-linux-gnuabin32-gcc' "${pkgname}-bootstrap")
 options=('!emptydirs' '!strip' 'staticlibs' '!lto')
 source=("https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz"{,.sig}
-        #"http://isl.gforge.inria.fr/isl-${_islver}.tar.xz"
-        "https://sourceforge.net/projects/libisl/files/isl-${_islver}.tar.xz"
-        '010-gcc11-Wno-format-security.patch'
+        '010-gcc-Wno-format-security.patch'
         '020-gcc-config-mips-multilib.patch'
         '030-gcc-gdc-phobos-path.patch')
-sha256sums=('d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
+sha256sums=('e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff'
             'SKIP'
-            '043105cc544f416b48736fff8caf077fb0663a717d06b1113f16e391ac99ebad'
-            '504e4b5a08eb25b6c35f19fdbe0c743ae4e9015d0af4759e74150006c283585e'
+            '77e3976bb82a2e47e9334b9b865fd9b2f02e0b726f6489ef890a9b26696b1284'
             '1e3184b9ddacf7ba6a1621f7e1f0aace76d76f791fca8fd3bdd855dc7a43356e'
-            'aaee7a90b07184740198a9a6fe16115743c3836a7f54ce7e09fd48ae8e0222ba')
+            'd947bee1fa9325956aac7a0b41f6a6485bc5b6f65b9c2c61b276edfbba5f88f1')
 validpgpkeys=('13975A70E63C361C73AE69EF6EEB81F8981C74C7'  # Richard Guenther <richard.guenther@gmail.com>
-              '33C235A34C46AA3FFB293709A328C3A2C3C45C06') # Jakub Jelinek <jakub@redhat.com>
+              'D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62') # Jakub Jelinek <jakub@redhat.com>
 
 _ABIS=('64' 'n32' '32')
 _DEFAULT_ABI='64' # gcc defaults to 'n32' ABI for MIPS64
 
 prepare() {
     mkdir -p build
-    
-    # link isl for in-tree build
-    ln -s "../isl-${_islver}" "gcc-${pkgver}/isl"
-    
-    patch -d "gcc-${pkgver}" -Np0 -i "${srcdir}/010-gcc11-Wno-format-security.patch"
+    patch -d "gcc-${pkgver}" -Np1 -i "${srcdir}/010-gcc-Wno-format-security.patch"
     patch -d "gcc-${pkgver}" -Np1 -i "${srcdir}/020-gcc-config-mips-multilib.patch"
     patch -d "gcc-${pkgver}" -Np1 -i "${srcdir}/030-gcc-gdc-phobos-path.patch"
 }
@@ -102,7 +94,8 @@ build() {
         --disable-libssp \
         --disable-libstdcxx-pch \
         --disable-libunwind-exceptions \
-        --disable-werror
+        --disable-werror \
+        --disable-libsanitizer
     make
 }
 
@@ -116,8 +109,6 @@ check() {
 }
 
 package() {
-    
-    
     make -C build DESTDIR="$pkgdir" install-gcc install-target-{libgcc,libstdc++-v3,libgomp,libgfortran,libquadmath}
     
     # allow using gnuabi${_abi} executables

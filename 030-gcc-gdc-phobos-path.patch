@@ -1,6 +1,6 @@
 --- a/gcc/d/d-incpath.cc
 +++ b/gcc/d/d-incpath.cc
-@@ -140,7 +140,7 @@
+@@ -139,7 +139,7 @@ add_import_paths (const char *iprefix, c
  	    path = xstrdup (p->fname);
  
  	  /* Add D-specific suffix.  */
