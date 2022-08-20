@@ -1,3 +1,3 @@
-*.ttf.*
+*.ttf*
 pkg/
 src/
