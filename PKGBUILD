@@ -1,13 +1,14 @@
 # Maintainer: Luca Carlon <carlon.luca@gmail.com>
 
 pkgname=cgrc
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Generic log formatter'
 arch=(any)
 url='https://github.com/carlonluca/cgrc'
 license=(GPL)
 depends=(qt6-base)
+makedepends=(git cmake)
 source=(git+https://github.com/carlonluca/cgrc.git#tag=v$pkgver)
 md5sums=('SKIP')
 
