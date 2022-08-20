@@ -1,7 +1,7 @@
 pkgbase = realrtcw
 	pkgdesc = An overhaul mod for critically acclaimed Return To Castle Wolfenstein.
 	pkgver = 4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.moddb.com/mods/realrtcw-realism-mod
 	install = realrtcw.install
 	arch = i686
