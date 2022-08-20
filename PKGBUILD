@@ -12,10 +12,10 @@ conflicts=('mprocs')
 provides=('mprocs')
 
 source_x86_64=("https://github.com/pvolok/mprocs/releases/download/v${pkgver}/mprocs-${pkgver}-linux64.tar.gz")
-sha256sums_x86_64=('d2a3f6847664712bfeddc50f4b7d3c20c62e8ce5760a9541c793e09d62c5fcff')
+sha256sums_x86_64=('72fcc001587b6a6752029bf14f3705c00a1b02e3ac75976fb6b7399f17bef2fa')
 
 source_aarch64=("https://github.com/pvolok/mprocs/releases/download/v${pkgver}/mprocs-${pkgver}-aarch64.tar.gz")
-sha256sums_aarch64=('742795dfd0e945c4df419f9706081395bce1cf55662f71353a5c4de92e754ada')
+sha256sums_aarch64=('78ad64d765a85846febafce1e5c909dc14a71688574851b4b90b176e46020536')
 
 package() {
 	install -D -m755 $srcdir/mprocs $pkgdir/usr/bin/mprocs
