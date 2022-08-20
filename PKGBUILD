@@ -4,7 +4,7 @@
 
 pkgbase=postgresql-lts
 pkgname=('postgresql-lts-libs' 'postgresql-lts-docs' 'postgresql-lts')
-pkgver=11.16
+pkgver=11.17
 _majorver=${pkgver%.*}
 pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS'
@@ -13,7 +13,6 @@ arch=('x86_64')
 license=('custom:PostgreSQL')
 makedepends=('krb5' 'libxml2' 'python' 'perl' 'tcl>=8.6.0' 'openssl>=1.0.0'
              'pam' 'zlib' 'icu' 'systemd' 'libldap' 'llvm' 'clang')
-options=('debug')
 source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2
         postgresql-run-socket.patch
         postgresql-perl-rpath.patch
@@ -23,7 +22,7 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
         postgresql-check-db-dir
         postgresql-lts.sysusers
         postgresql-lts.tmpfiles)
-sha256sums=('2dd9e111f0a5949ee7cacc065cea0fb21092929bae310ce05bf01b4ffc5103a5'
+sha256sums=('6e984963ae0765e61577995103a7e6594db0f0bd01528ac123e0de4a6a4cb4c4'
             '8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9'
             'fa7cc63936bce336fedf8ce8d11c8a0e051d6424a10570b991164386e96058cb'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
