@@ -1,6 +1,6 @@
 # Maintainer: Sravan Balaji <sr98vn@gmail.com>
 pkgname=mangal-bin
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="The most advanced cli manga downloader in the entire universe!"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/metafates/mangal"
 license=('MIT')
 provides=('mangal')
 source=("https://github.com/metafates/mangal/releases/download/v${pkgver}/mangal_${pkgver}_Linux_${arch}.tar.gz")
-sha256sums=('f2355c7052beb4a83777915156a72db105c4c6b8808f187f75822ad42bb8668a')
+sha256sums=('89fc329a885c5443175b9a41bbcd0c87885402f88ed956fad9f3db7d49c6c45d')
 
 package() {
 	install -Dm755 ./mangal "$pkgdir/usr/bin/mangal"
