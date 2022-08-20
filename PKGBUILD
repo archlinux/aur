@@ -2,12 +2,13 @@
 
 pkgname=netrunner-bin
 pkgver=2.0b21
-pkgrel=1
+pkgrel=2
 pkgdesc="NetRunner is a telnet client originally developed in the late 90s in sync with the release of Windows XP."
 arch=("i686" "x86_64")
 url="http://www.mysticbbs.com/"
 license=("unknown")
 depends=("sdl")
+optdepends=("cryptlib: SSH support")
 install="$pkgname.install"
 source_i686=("http://www.mysticbbs.com/downloads/nr21_l32.zip")
 source_x86_64=("http://www.mysticbbs.com/downloads/nr21_l64.zip")

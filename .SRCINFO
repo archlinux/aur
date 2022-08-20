@@ -1,13 +1,14 @@
 pkgbase = netrunner-bin
 	pkgdesc = NetRunner is a telnet client originally developed in the late 90s in sync with the release of Windows XP.
 	pkgver = 2.0b21
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mysticbbs.com/
 	install = netrunner-bin.install
 	arch = i686
 	arch = x86_64
 	license = unknown
 	depends = sdl
+	optdepends = cryptlib: SSH support
 	source = netrunner.sh
 	source = netrunner.desktop
 	sha256sums = 0bb2148b98f647aa7d49ef7ac17cf01817f0c5c322b20c19d736bb4812edc21d
@@ -18,4 +19,3 @@ pkgbase = netrunner-bin
 	sha256sums_x86_64 = 751cfc3de23dca673cb6619525b251cbd463751b6c5e250faf30392986de8c86
 
 pkgname = netrunner-bin
-
