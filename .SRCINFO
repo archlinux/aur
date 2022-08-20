@@ -1,6 +1,6 @@
 pkgbase = evernote-for-linux-bin
 	pkgdesc = Official Evernote client for Windows repackaged for Linux
-	pkgver = 10.34.4
+	pkgver = 10.40.9
 	pkgrel = 1
 	url = https://github.com/search5/Evernote-for-Linux
 	install = evernote-for-linux-bin.install
@@ -15,8 +15,8 @@ pkgbase = evernote-for-linux-bin
 	provides = evernote
 	conflicts = evernote-beta-bin
 	conflicts = evernote-bin
-	noextract = evernote-client_10.34.4-3310_amd64.deb
-	source = https://github.com/search5/Evernote-for-Linux/releases/download/v10.34.4-linux-ddl-ga-3310/evernote-client_10.34.4-3310_amd64.deb
-	sha256sums = 488d2b27007a17f454186ee8b5fa8aad60631bb5ee28afa0cfc1e9b3d61974eb
+	noextract = evernote-client_10.40.9-3494_amd64.deb
+	source = https://github.com/search5/Evernote-for-Linux/releases/download/v10.40.9-linux-ddl-ga-3494/evernote-client_10.40.9-3494_amd64.deb
+	sha256sums = 4260baa60bfa50b614325c658764ab0cedfdc3bc5109c78ffc10a02941de1ac3
 
 pkgname = evernote-for-linux-bin

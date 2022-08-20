@@ -2,8 +2,8 @@
 # Contributor: Konrad Malik (https://konradmalik.github.io/)
 
 pkgname=evernote-for-linux-bin
-pkgver=10.34.4
-buildver=3310
+pkgver=10.40.9
+buildver=3494
 _archivename="evernote-client_${pkgver}-${buildver}_amd64.deb"
 pkgrel=1
 pkgdesc="Official Evernote client for Windows repackaged for Linux"
@@ -22,7 +22,7 @@ source=(
     "https://github.com/search5/Evernote-for-Linux/releases/download/v${pkgver}-linux-ddl-ga-${buildver}/${_archivename}"
     )
 noextract=("${_archivename}")
-sha256sums=('488d2b27007a17f454186ee8b5fa8aad60631bb5ee28afa0cfc1e9b3d61974eb')
+sha256sums=('4260baa60bfa50b614325c658764ab0cedfdc3bc5109c78ffc10a02941de1ac3')
 
 package() {
     # extract only data
