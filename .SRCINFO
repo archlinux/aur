@@ -1,7 +1,7 @@
 pkgbase = r-matrixcalc
 	pkgdesc = Collection of Functions for Matrix Calculations
 	pkgver = 1.0.5
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=matrixcalc
 	arch = any
 	license = GPL

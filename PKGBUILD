@@ -4,7 +4,7 @@ _pkgname=matrixcalc
 _pkgver=1.0-5
 pkgname=r-${_pkgname,,}
 pkgver=1.0.5
-pkgrel=4
+pkgrel=7
 pkgdesc='Collection of Functions for Matrix Calculations'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
