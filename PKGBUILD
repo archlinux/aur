@@ -11,15 +11,14 @@
 
 _target=mips64-linux-gnu
 pkgname="${_target}-gcc-bootstrap"
-pkgver=11.2.0
-_islver=0.24
+pkgver=12.2.0
 _majorver="${pkgver%%.*}"
-pkgrel=3
+pkgrel=1
 pkgdesc='The GNU Compiler Collection - bootstrap/stage1 cross compiler for the MIPS64 target (for the toolchain with GNU C library and multilib ABI)'
 arch=('x86_64')
 url='https://gcc.gnu.org/'
 license=('GPL' 'LGPL' 'FDL' 'custom')
-depends=('gmp' 'libmpc' "${_target}-binutils" 'mpfr' 'sh' 'zlib' 'zstd')
+depends=('gmp' 'libmpc' "${_target}-binutils" 'libisl' 'mpfr' 'sh' 'zlib' 'zstd')
 makedepends=("${_target}-linux-api-headers")
 provides=('mips64-linux-gnuabi64-gcc-bootstrap' 'mips64-linux-gnuabi32-gcc-bootstrap'
           'mips64-linux-gnuabin32-gcc-bootstrap')
@@ -27,26 +26,19 @@ conflicts=('mips64-linux-gnuabi64-gcc-bootstrap' 'mips64-linux-gnuabi32-gcc-boot
            'mips64-linux-gnuabin32-gcc-bootstrap')
 options=('!emptydirs' '!lto')
 source=("https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz"{,.sig}
-        #"http://isl.gforge.inria.fr/isl-${_islver}.tar.xz"
-        "https://sourceforge.net/projects/libisl/files/isl-${_islver}.tar.xz"
-        '010-gcc11-Wno-format-security.patch')
-sha256sums=('d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
+        '010-gcc-Wno-format-security.patch')
+sha256sums=('e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff'
             'SKIP'
-            '043105cc544f416b48736fff8caf077fb0663a717d06b1113f16e391ac99ebad'
-            '504e4b5a08eb25b6c35f19fdbe0c743ae4e9015d0af4759e74150006c283585e')
+            '77e3976bb82a2e47e9334b9b865fd9b2f02e0b726f6489ef890a9b26696b1284')
 validpgpkeys=('13975A70E63C361C73AE69EF6EEB81F8981C74C7'  # Richard Guenther <richard.guenther@gmail.com>
-              '33C235A34C46AA3FFB293709A328C3A2C3C45C06') # Jakub Jelinek <jakub@redhat.com>
+              'D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62') # Jakub Jelinek <jakub@redhat.com>
 
 _ABIS=('64' 'n32' '32')
 _DEFAULT_ABI='64' # gcc defaults to 'n32' ABI for MIPS64
 
 prepare() {
     mkdir -p build
-    
-    # link isl for in-tree build
-    ln -s "../isl-${_islver}" "gcc-${pkgver}/isl"
-    
-    patch -d "gcc-${pkgver}" -Np0 -i "${srcdir}/010-gcc11-Wno-format-security.patch"
+    patch -d "gcc-${pkgver}" -Np1 -i "${srcdir}/010-gcc-Wno-format-security.patch"
 }
 
 build() {
