@@ -1,7 +1,7 @@
 # Maintainer: Steffen Hansen <steffengrundsoe@gmail.com>
 pkgname=quickemu
 pkgver=4.1
-pkgrel=2
+pkgrel=1
 pkgdesc="Quickly create and run optimised Windows, macOS and Linux desktop virtual machines."
 arch=(any)
 url="https://github.com/quickemu-project/quickemu"
