@@ -2,7 +2,7 @@
 pkgname=clash-for-windows-electron-bin
 _pkgname=${pkgname%-bin}
 pkgver=0.19.27
-pkgrel=1
+pkgrel=2
 pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron. Using system clash and electron"
 arch=("x86_64" "aarch64")
 license=('unknown')
@@ -20,7 +20,7 @@ optdepends=(
     'clash-premium-tun: TUN mode required'
 )
 makedepends=('asar' 'npm')
-source_x86_64=("${pkgname}-${pkgver}-x86_64-linux.tar.gz::${url}/releases/download/${pkgver}/Clash.for.Windows-${pkgver}-amd64-linux.tar.gz")
+source_x86_64=("${pkgname}-${pkgver}-x86_64-linux.tar.gz::${url}/releases/download/${pkgver}/Clash.for.Windows-${pkgver}-x64-linux.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64-linux.tar.gz::${url}/releases/download/${pkgver}/Clash.for.Windows-${pkgver}-arm64-linux.tar.gz")
 source=(
     "clash-for-windows.desktop"
