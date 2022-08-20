@@ -1,7 +1,7 @@
 _pkg=mfosu
 pkgname=$_pkg-bin
 pkgver=2022.528.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A fork of osu!lazer."
 arch=(x86_64)
 url="https://github.com/MATRIX-feather/osu"
@@ -30,7 +30,7 @@ sha256sums=(
   'fe8f26b11443a0f0e6dc9e6c10d32d9c3c5cc3f2e825e970f4ebfe4f7994ae37'
   '30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244'
   '97eb363bff09b570ecb9c3ff1fc9a72bcc70b21622b164ef730030f83372ed54'
-  'e76cd67550f59ba90679a23c926875c6d3eb62dcfe886121b879f1eb8fb4412f'
+  '0b3c5c14ed0e22f8e8e7996602fc0120517d551380f4851a075f3c181f89c46c'
 )
 prepare() {
   chmod +x $_pkg.appimage

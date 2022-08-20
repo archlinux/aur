@@ -6,6 +6,7 @@ LOGNAMES="*"
 
 # osu数据目录
 readonly XDG_OSU=${HOME}/.local/share/osu/
+mkdir -p $XDG_OSU
 
 #默认重定向日志到lazer目录的mfosu-apprun.log
 LOGTARGET="${LOGTARGET:-${XDG_OSU}/mfosu-apprun.log}"
