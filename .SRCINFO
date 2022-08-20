@@ -1,7 +1,7 @@
 pkgbase = mhwd-garuda-git
 	pkgdesc = mhwd-garuda(manjaro's mhwd backported to archlinux with additional features and limited to only dkms drivers)
-	pkgver = r11.b17a3eb
-	pkgrel = 1
+	pkgver = r20.dc8eff1
+	pkgrel = 2
 	url = https://gitlab.com/garuda-linux/applications/mhwd-garuda
 	arch = any
 	license = GPL
@@ -30,4 +30,3 @@ pkgname = mhwd-garuda-git
 	conflicts = mhwd
 	conflicts = mhwd-garuda
 	replaces = mhwd-garuda
-

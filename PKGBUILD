@@ -4,8 +4,8 @@
 
 pkgbase=mhwd-garuda-git
 pkgname=('mhwd-garuda-git')
-pkgver=r11.b17a3eb
-pkgrel=1
+pkgver=r20.dc8eff1
+pkgrel=2
 pkgdesc="mhwd-garuda(manjaro's mhwd backported to archlinux with additional features and limited to only dkms drivers)"
 arch=('any')
 _branch='master'
