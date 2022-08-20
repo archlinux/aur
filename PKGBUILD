@@ -3,7 +3,7 @@
 
 _name="sanic-routing"
 pkgname="python-$_name"
-pkgver=22.3.0
+pkgver=22.8.0
 pkgrel=1
 pkgdesc='Internal handler routing for Sanic beginning with v21.3.'
 arch=("any")
@@ -11,7 +11,7 @@ url='https://sanicframework.org/'
 license=("MIT")
 makedepends=("python-setuptools")
 source=("https://github.com/sanic-org/${_name}/archive/v${pkgver}.tar.gz")
-sha256sums=('ccb966439a9814f7528f068bb4061a79dd5547d2ebaec4a5f70628265e036ca4')
+sha256sums=('728cd7009803d81872f5dbf49b4f795d503c6056522f0d0aaf525607b7217849')
 
 build() {
     cd "$_name-$pkgver"

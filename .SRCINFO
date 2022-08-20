@@ -1,12 +1,12 @@
 pkgbase = python-sanic-routing
 	pkgdesc = Internal handler routing for Sanic beginning with v21.3.
-	pkgver = 22.3.0
+	pkgver = 22.8.0
 	pkgrel = 1
 	url = https://sanicframework.org/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	source = https://github.com/sanic-org/sanic-routing/archive/v22.3.0.tar.gz
-	sha256sums = ccb966439a9814f7528f068bb4061a79dd5547d2ebaec4a5f70628265e036ca4
+	source = https://github.com/sanic-org/sanic-routing/archive/v22.8.0.tar.gz
+	sha256sums = 728cd7009803d81872f5dbf49b4f795d503c6056522f0d0aaf525607b7217849
 
 pkgname = python-sanic-routing
