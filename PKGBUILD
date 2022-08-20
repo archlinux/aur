@@ -1,17 +1,24 @@
 # Maintainer: Your Name <youremail@domain.com>
-_pkgbase=material-color-utilities
+
 pkgname=python-material-color-utilities
-pkgver=0.1.0
+_name=material-color-utilities-python
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Python port of material-color-utilities used for Material You colors"
 arch=('any')
 url="https://github.com/avanishsubbiah/material-color-utilities-python"
-license=('unknown')
-depends=('python')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-source=(https://raw.githubusercontent.com/AdwCustomizerTeam/AdwCustomizer/main/monet/material_color_utilities_python-0.1.0-py3-none-any.whl) 
-b2sums=('9a7d32d088e69f461cd2261b9387ed98fcd871da3be8263a271e1b6942b371d3f1f3ad1dbf1515eac305bcb4017a3802cca01fee396b87bcecdaca687dd52807')
+license=('Apache')
+depends=('python-pillow' 'python-regex')
+makedepends=('python-build' 'python-installer' 'python-poetry' 'python-wheel')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+b2sums=('2cd30eb7cc3cc733bf9eac6b8bff75f0976960d38351861a1905d96992113d36a04413df5c16f9167d65966dbbe7bbd9285871dcb36a1765d62ff4cc6a7c9ccc')
+
+build() {
+  cd "$_name-$pkgver"
+  python -m build --wheel --no-isolation
+}
 
 package() {
-    python -m installer --destdir="$pkgdir" *.whl
+  cd "$_name-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
