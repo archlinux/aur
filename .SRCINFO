@@ -1,6 +1,6 @@
 pkgbase = python-pmdarima
 	pkgdesc = ARIMA estimators for Python
-	pkgver = 1.8.5
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://alkaline-ml.com/pmdarima
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = python-pmdarima
 	depends = python-scikit-learn
 	depends = python-statsmodels
 	depends = python-urllib3
-	source = python-pmdarima-1.8.5.tar.gz::https://github.com/alkaline-ml/pmdarima/archive/refs/tags/v1.8.5.tar.gz
-	sha256sums = 6145dca73d5e3388460b0ed09afca9b38be944910099bd526a5e53d8eee4d6b8
+	source = python-pmdarima-2.0.0.tar.gz::https://github.com/alkaline-ml/pmdarima/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = a3db11289e2f94ea047dda974b92ff172901f28cd51423b206dc9e57e9710143
 
 pkgname = python-pmdarima
