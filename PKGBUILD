@@ -8,7 +8,7 @@
 
 pkgname=caser
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Converts input strings to a standard naming convention."
 arch=('any')
@@ -17,7 +17,7 @@ license=('GPL')
 groups=()
 depends=('glibc')
 makedepends=()
-checkdepends=('check')
+checkdepends=('libcheck.so')
 optdepends=()
 provides=()
 conflicts=()
