@@ -1,6 +1,6 @@
 pkgbase = nerd-fonts-git
 	pkgdesc = Iconic font aggregator, collection, and patcher: 34 patched fonts (77k variations). Includes popular glyph collections such as Font Awesome & fonts such as Hack
-	pkgver = r1267.c98cb457d
+	pkgver = 2.2.0.RC.r9.g953ec8791
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/ryanoasis/nerd-fonts
