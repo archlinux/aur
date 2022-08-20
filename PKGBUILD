@@ -4,9 +4,11 @@
 # then please put 'unknown'.
 
 # Maintainer: Derek Hemingson <b.derehemi@gmail.com>
+# Contributor: Derek Hemingson <b.derehemi@gmail.com>
+
 pkgname=caser
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Converts input strings to a standard naming convention."
 arch=('any')
@@ -15,7 +17,7 @@ license=('GPL')
 groups=()
 depends=('glibc')
 makedepends=()
-checkdepends=()
+checkdepends=('check')
 optdepends=()
 provides=()
 conflicts=()
