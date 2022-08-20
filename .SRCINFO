@@ -1,7 +1,7 @@
 pkgbase = lightproxy-bin
 	pkgdesc = Lightweight local proxy, useful for giving your local services memorable local domain names.
-	pkgver = 1.2.2
-	pkgrel = 2
+	pkgver = 1.3.0
+	pkgrel = 1
 	url = https://github.com/octavore/lightproxy
 	arch = x86_64
 	license = MIT License
@@ -9,8 +9,7 @@ pkgbase = lightproxy-bin
 	provides = lightproxy
 	conflicts = lightproxy
 	conflicts = lightproxy-git
-	source = lightproxy-bin-1.2.2.gz::https://github.com/octavore/lightproxy/releases/download/v1.2.2/lightproxy_1.2.2_linux_amd64.tar.gz
-	sha256sums = 00480fcc99f018c0e76fc5021a67144767688267705f0ae5d23fe00828c33191
+	source = lightproxy-bin-1.3.0.gz::https://github.com/octavore/lightproxy/releases/download/v1.3.0/lightproxy_1.3.0_linux_amd64.tar.gz
+	sha256sums = 952219f72af79d0160811b360b653ab2b0e9f0dd41ad4af63153e9acea523bb7
 
 pkgname = lightproxy-bin
-
