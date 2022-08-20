@@ -1,0 +1,16 @@
+pkgbase = directfb2-git
+	pkgdesc = An interface description language used by DirectFB
+	pkgver = r85.c750bb98c
+	pkgrel = 1
+	url = https://github.com/directfb2/DirectFB2
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = flux-git
+	depends = zlib
+	source = directfb2::git+https://github.com/directfb2/DirectFB2
+	md5sums = SKIP
+
+pkgname = directfb2-git
