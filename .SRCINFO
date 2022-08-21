@@ -1,7 +1,7 @@
 pkgbase = nwg-wrapper
 	pkgdesc = Wrapper to display a script output or a text file content on the desktop in sway or other wlroots-based compositors
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nwg-piotr/nwg-wrapper
 	arch = x86_64
 	license = MIT
@@ -13,6 +13,9 @@ pkgbase = nwg-wrapper
 	depends = gtk3
 	depends = gtk-layer-shell
 	optdepends = wlr-randr: for non-sway Wayland WMs support
+	provides = nwg-wrapper
+	conflicts = nwg-wrapper
+	conflicts = nwg-wrapper-git
 	source = nwg-wrapper-0.1.2.tar.gz::https://github.com/nwg-piotr/nwg-wrapper/archive/v0.1.2.tar.gz
 	md5sums = a2211523b90feefaa3fe6599cb495549
 
