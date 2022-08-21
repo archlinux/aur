@@ -3,6 +3,7 @@ pkgbase = openiked
 	pkgver = 7.1
 	pkgrel = 3
 	url = https://www.openiked.org
+	arch = aarch64
 	arch = x86_64
 	license = ISC
 	makedepends = linux-headers
