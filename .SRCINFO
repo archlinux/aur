@@ -8,9 +8,9 @@ pkgbase = bible_gui
 	makedepends = meson
 	makedepends = git
 	makedepends = python3
-	makedepends = espeak
 	depends = python-gobject
 	depends = libblockdev
+	depends = espeak-ng
 	depends = xapp
 	depends = libgexiv2
 	source = bible_gui::git+https://github.com/Lugsole/net.lugsole.bible_gui.git#branch=master
