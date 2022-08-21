@@ -1,5 +1,5 @@
 pkgbase = crankshaft
-	pkgdesc = A manager and framework for Steam client plugins.
+	pkgdesc = A Steam client plugin manager and framework.
 	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://crankshaft.space
