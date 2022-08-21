@@ -1,6 +1,6 @@
 # Maintainer: Jeremiah Ticket <seashellpromises@gmail.com>
 pkgname=('teamtalk-client')
-pkgver=5.9
+pkgver=5.10
 pkgrel=1
         pkgdesc='a software conferencing system client which enables a group of people to collaborate and share information using voice and video'
 arch=('x86_64')
