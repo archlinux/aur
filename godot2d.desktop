@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Godot 2D
+GenericName=Libre game engine (2d edition)
+Comment=Multi-platform 2D game engine with a feature-rich editor
+Exec=godot2d %f
+Icon=godot2d
+Terminal=false
+PrefersNonDefaultGPU=true
+Type=Application
+MimeType=application/x-godot-project;
+Categories=Development;IDE;

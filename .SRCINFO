@@ -15,8 +15,14 @@ pkgbase = godot2d
 	provides = godot2d
 	conflicts = godot-headless-export-templates-bin
 	noextract = godot-2d_v3.5_export_templates.tpz
+	source = LICENSE
+	source = godot2d.desktop
+	source = icon.png
 	source = https://github.com/bend-n/godot-builds/releases/download/3.5/godot-2d_v3.5_export_templates.tpz
 	source = https://github.com/bend-n/godot-builds/releases/download/3.5/godot-2d_v3.5_x11.64
+	sha256sums = 578ba76e15ac2ff313053114aba2466a18efe84fcfa2c3e54b5f464800c351fd
+	sha256sums = 6f5c46428db45000a9eda0444cc8e90065b455f96689a63b218de0d536949d3e
+	sha256sums = 495d4af9191c9d35655770856b603c04f27597d74bcaac6b5bb622d36e8ab566
 	sha256sums = 6c3050a936cac538171961422a8e614c8fe85c2bbbf280ed4059e00453b25c33
 	sha256sums = 7a2ccede0e0e9484923cca22f888177d8fcfa5c287411aa5199dfb2e4d09be00
 
