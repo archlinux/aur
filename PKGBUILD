@@ -5,15 +5,16 @@
 pkgname='python-fusepy'
 _module=${pkgname#python-}
 pkgver=3.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple ctypes bindings for FUSE'
 url='https://github.com/fusepy/fusepy'
 arch=('any')
 license=('custom:ISCL')
 depends=('fuse2>=2.6' 'python')
 makedepends=('python-setuptools')
+conflicts=('python-fuse')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/${_module}/${_module}-${pkgver}.tar.gz")
-sha256sums=('72ff783ec2f43de3ab394e3f7457605bf04c8cf288a2f4068b4cde141d4ee6bd')
+b2sums=('c76319b0d0b64a8dc674b803551f32352fed9a1e6e050110963a159259c3fed8fefbb63cfe6dda689738f07cb796c6b9da14e3070c4a1cf5b70892a6ebe52cc2')
 
 package() {
   cd "${srcdir}/${_module}-${pkgver}"
