@@ -2,12 +2,12 @@
 _pkgname=cc-map-editor
 pkgname="${_pkgname}-bin"
 pkgver=0.13.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Map Editor for the game CrossCode"
 arch=('any')
 url='https://github.com/CCDirectLink/crosscode-map-editor'
 license=('custom:MIT')
-depends=(electron13)
+depends=(electron19)
 makedepends=(asar npm imagemagick)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -15,11 +15,11 @@ options=(!strip)
 _appimage_file="${_pkgname}-${pkgver}-linux.AppImage"
 source=("https://github.com/CCDirectLink/crosscode-map-editor/releases/download/v${pkgver}/${_appimage_file}"
         "${pkgname}-LICENSE::https://github.com/CCDirectLink/crosscode-map-editor/raw/v${pkgver}/LICENSE"
-        "${pkgname}-disable-autoupdates.patch")
+        "${pkgname}.patch")
 noextract=("${_appimage_file}")
 sha256sums=('d8cd9d65ae62b1bc5863a9ecb3ef98ca13957f98e55862072fb4b38de758ace5'
             'a406579cd136771c705c521db86ca7d60a6f3de7c9b5460e6193a2df27861bde'
-            '2491a2a02750773b2bfb09aedc955ccfe48c1a17e09f0e7ea76c6a1ceba56135')
+            '75c95fc6d99a6b6a4ffea39fa1c363c826e2f41f51feaf61e6fc2048daad7c95')
 
 prepare() {
   mkdir -p "${pkgname}-${pkgver}"
@@ -34,7 +34,7 @@ prepare() {
   msg2 "Generating ${_pkgname}.sh..."
   cat > "${_pkgname}.sh" <<EOF
 #!/bin/sh
-exec electron13 /usr/lib/${_pkgname}/app.asar "\$@"
+exec electron19 /usr/lib/${_pkgname}/app.asar "\$@"
 EOF
 
   msg2 "Generating ${_pkgname}.desktop..."
@@ -58,9 +58,11 @@ EOF
   (
     cd "app"
 
-    patch --forward --input="${srcdir}/${pkgname}-disable-autoupdates.patch"
+    patch --forward --strip=2 --input="${srcdir}/${pkgname}.patch"
+    sed -i "4a <script>require('electron').remote = require('@electron/remote');</script>" distAngular/index.html
 
     npm --no-audit --no-fund --no-package-lock uninstall electron-log electron-updater
+    npm --no-audit --no-fund --no-package-lock install --save @electron/remote
   )
 
   msg2 "Converting icons..."
@@ -76,7 +78,7 @@ package() {
 
   cd "${pkgname}-${pkgver}"
 
-  install -Dm644 "squashfs-root/resources/app.asar" "${pkgdir}/usr/lib/${_pkgname}/app.asar"
+  install -Dm644 "app.asar" "${pkgdir}/usr/lib/${_pkgname}/app.asar"
   install -Dm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   local icon_path icon_name icon_size; for icon_path in "icons/"*; do

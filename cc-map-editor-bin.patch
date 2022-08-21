@@ -1,0 +1,40 @@
+diff --git a/webapp/main.js b/webapp/main.js
+index eda43b9..b2bd574 100644
+--- a/webapp/main.js
++++ b/webapp/main.js
+@@ -1,10 +1,10 @@
+ 'use strict';
+ 
++require('@electron/remote/main').initialize();
+ const {app, protocol, BrowserWindow} = require('electron');
+ const windowStateKeeper = require('electron-window-state');
+ const path = require('path');
+ const url = require('url');
+-const {autoUpdater} = require('electron-updater');
+ const contextMenu = require('electron-context-menu');
+ const {IPC} = require('node-ipc');
+ 
+@@ -34,10 +34,10 @@ function openWindow() {
+ 			webPreferences: {
+ 				webSecurity: false,
+ 				nodeIntegration: true,
+-				enableRemoteModule: true,
+ 				contextIsolation: false
+ 			}
+ 		});
++		require('@electron/remote/main').enable(win.webContents);
+ 		
+ 		if (dev) {
+ 			console.log('dev');
+@@ -55,11 +55,6 @@ function openWindow() {
+ 			});
+ 			console.log('path', indexPath);
+ 			win.loadURL(indexPath);
+-			
+-			const log = require('electron-log');
+-			log.transports.file.level = 'debug';
+-			autoUpdater.logger = log;
+-			autoUpdater.checkForUpdatesAndNotify();
+ 			// win.webContents.openDevTools();
+ 			win.setMenu(null);
+ 		}
