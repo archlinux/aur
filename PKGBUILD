@@ -2,7 +2,7 @@
 # In order to use this on the Raspberry PI, you must either use the kms or fkms driver.
 
 pkgname=sdl2-nox
-pkgver=2.0.22
+pkgver=2.24.0
 pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2) without X11 support"
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -16,7 +16,7 @@ conflicts=('sdl2')
 optdepends=('alsa-lib: ALSA audio driver'
             'libpulse: PulseAudio audio driver')
 source=("https://www.libsdl.org/release/SDL2-${pkgver}.tar.gz")
-sha512sums=('ca4b690433cd4d9d73b797da98666317128e7e817ab60e874a49d94791ea41e8a6b4fc43649593120daa0702190c0f8a6ed326c908d87375c8da9f369d994f6a')
+sha512sums=('5735bfc7b22f1780f80cc89f62a14ca809fe1280298d172f92dde74400db1f5378f8d3eae8834e886d3ca4f5ae6f1074d66c5c956613cf9e0cce961738514212')
 
 build() {
   mkdir -p build
