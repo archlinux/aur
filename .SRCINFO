@@ -11,6 +11,7 @@ pkgbase = ksmbd-tools
 	license = GPL2
 	depends = KSMBD-MODULE
 	depends = libnl
+	provides = samba
 	source = ksmbd-tools-3.4.5.tar.gz::https://github.com/cifsd-team/ksmbd-tools/archive/3.4.5.tar.gz
 	sha256sums = e22e5bef29ffa2670fc82c490ad4dc6eb00963b4f963dd1852c811b437c77ee1
 
