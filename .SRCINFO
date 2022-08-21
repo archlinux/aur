@@ -1,0 +1,19 @@
+pkgbase = bible_gui
+	pkgdesc = A GTK bible app for desktop and mobile.
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/Lugsole/net.lugsole.bible_gui
+	arch = any
+	license = MIT
+	makedepends = meson
+	makedepends = git
+	makedepends = python3
+	makedepends = espeak
+	depends = python-gobject
+	depends = libblockdev
+	depends = xapp
+	depends = libgexiv2
+	source = bible_gui::git+https://github.com/Lugsole/net.lugsole.bible_gui.git#branch=master
+	md5sums = SKIP
+
+pkgname = bible_gui
