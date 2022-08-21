@@ -4,7 +4,7 @@
 ## GPG key is available for download from upstream's repo
 
 pkgname=doppler-cli
-pkgver=3.40.1
+pkgver=3.41.0
 pkgrel=1
 pkgdesc="CLI utility for Doppler, environment and secrets manager"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -15,7 +15,7 @@ makedepends=('go')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/doppler_${pkgver}_src.tar.gz"
   "$pkgname-$pkgver.tar.gz.sig::$url/releases/download/$pkgver/doppler_${pkgver}_src.tar.gz.sig")
-sha256sums=('0934a0bd33c43eaa0f74b2adb90108decbe404724364ed734f82b09e81611bb8'
+sha256sums=('9a3a63bcb26fc954bda685b2a5f9225ed6aa5d3e71bffad29cfdf44baf37f429'
             'SKIP')
 validpgpkeys=('B70BD7FCA460C4A3D0EEB965D3D593D50EE79DEC')
 
@@ -33,7 +33,7 @@ build() {
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-	go build -o build -ldflags="-linkmode=external -X github.com/DopplerHQ/cli/pkg/version.ProgramVersion=$pkgver"
+	go build -o build -ldflags="-linkmode=external -X ${url#https://}/pkg/version.ProgramVersion=$pkgver"
 	build/cli completion bash > build/doppler.bash
 	build/cli completion zsh > build/_doppler
 	build/cli completion fish > build/doppler.fish
