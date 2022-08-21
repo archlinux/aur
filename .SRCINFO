@@ -1,0 +1,15 @@
+pkgbase = c11fetch
+	pkgdesc = Very fast tool written in C99/C11 which displays information about currently running operating system
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/zapomnij/cfetch
+	arch = any
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = gcc
+	depends = glibc
+	source = https://github.com/zapomnij/c11fetch/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = 5080eef7019b3facc6737773879fcc30399cdfbf51b74c725d6826b99ab218f1
+
+pkgname = c11fetch
