@@ -2,7 +2,7 @@
 # Contributor: xatier
 _pkgname=fcitx5-mcbopomofo
 pkgname=fcitx5-mcbopomofo-git
-pkgver=241.9706056
+pkgver=243.e611aa7
 pkgrel=1
 pkgdesc="McBopomofo for fcitx5"
 arch=('x86_64')
