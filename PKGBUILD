@@ -1,11 +1,12 @@
 # Maintainer: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
 # Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
+# Contributor: Jackson Abascal <jacksonabascal@gmail.com>
 
 _pkgbase=transmission
 _pkgname=transmission-cli
 pkgname=transmission-cli-git
-pkgver=3.00.r1187.g745adf833
+pkgver=3.00.r1333.g785119f2c
 pkgrel=1
 arch=(x86_64)
 url="http://www.transmissionbt.com/"
@@ -22,7 +23,8 @@ source=(transmission::git+https://github.com/transmission/transmission.git
         "arc4"::"git+https://github.com/transmission/arc4"
         "googletest"::"git+https://github.com/google/googletest.git"
         "utfcpp"::"git+https://github.com/transmission/utfcpp#branch=post-3.2.1-transmission"
-	"libutp"::"git+https://github.com/transmission/libutp#branch=post-3.4-transmission")
+		"libutp"::"git+https://github.com/transmission/libutp#branch=post-3.4-transmission"
+    	"wide-integer"::"git+https://github.com/transmission/wide-integer.git")
 	#"$_pkgbase/third-party/libnatpmp"::"git+https://github.com/transmission/libnatpmp#branch=post-20151025-transmission"
         #"$_pkgbase/third-party/miniupnpc"::"git+https://github.com/transmission/miniupnpc#branch=post-2.0.20170509-transmission"
         #"$_pkgbase/third-party/libdeflate"::"git+https://github.com/transmission/libdeflate#branch=v1.11-plus-cmake"
@@ -38,6 +40,7 @@ sha256sums=('SKIP'
 	    'SKIP'
 	    'SKIP'
 	    'SKIP'
+		'SKIP'
 	    'SKIP')
 
 pkgver() {
@@ -66,6 +69,11 @@ prepare() {
         rm -r libutp
    fi
    ln -s $srcdir/libutp libutp
+
+   if [ -e wide-integer ]; then
+       rm -r wide-integer
+   fi
+   ln -s $srcdir/wide-integer wide-integer
 
 #  git submodule update --init
 }
