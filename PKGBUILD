@@ -1,8 +1,8 @@
 # Maintainer: Nathan Robinson <nrobinson2000 at me dot com>
 
 pkgname=pvr-tex-tool-bin
-pkgver=2021.2
-_versionstr='2021_R2'
+pkgver=2022.1
+_versionstr='2022_R1'
 pkgrel=1
 
 pkgdesc="A comprehensive texture processing and compression tool with support for PVR textures."
@@ -16,7 +16,7 @@ source=("install_${_versionstr}.run::https://cdn.imgtec.com/sdk/OFFLINE/PVRTexTo
 "LICENSE"
 "PVRTexTool.desktop")
 
-sha256sums=('64f321c5e220cef8e4bff2c282c61139031fd9ef3d1d54b1031d056863308216'
+sha256sums=('72aa6560636a4db32d822e0c0614ee29bfe7d7e7395260c30070f1e0412f7d16'
             '837064152c1e86d030f76e9beb8da77869f8d8bc183fd8c8a26be696120b5ff4'
             '2172168dd08d1945ed750bd5ec748731e8b068afe705e956862081ec503ed86f')
 
