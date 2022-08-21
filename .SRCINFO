@@ -1,7 +1,7 @@
 pkgbase = wowup-native
 	pkgdesc = World of Warcraft addon updater (system Electron)
 	pkgver = 2.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WowUp/WowUp
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = wowup-native
 	makedepends = npm
 	makedepends = asar
 	makedepends = imagemagick
-	depends = electron
+	depends = electron18
 	source = WowUp-2.8.3.tar.gz::https://github.com/WowUp/WowUp/archive/v2.8.3.tar.gz
 	source = wago-fix.js
 	source = wowup-native.desktop
