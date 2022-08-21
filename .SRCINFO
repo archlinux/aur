@@ -1,14 +1,13 @@
 pkgbase = taskfile-git
 	pkgdesc = A task runner / simpler Make alternative written in Go
-	pkgver = 2.8.1.r7.g7dcb3af
+	pkgver = 3.14.1.r12.g97d4a94
 	pkgrel = 1
 	url = https://github.com/go-task/task
 	arch = any
 	license = GPL
 	makedepends = go
 	makedepends = git
-	source = task::git://github.com/go-task/task#branch=master
-	md5sums = SKIP
+	source = task::git+https://github.com/go-task/task#branch=master
+	sha256sums = SKIP
 
 pkgname = taskfile-git
-

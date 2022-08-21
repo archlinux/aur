@@ -1,30 +1,18 @@
-# Maintainer: Egor Kovetskiy <e.kovetskiy@gmail.com>
+# Maintainer: Martin Rys <rys.pw/contact>
 pkgname=taskfile-git
 _pkgname=task
-pkgver=2.8.1.r7.g7dcb3af
+pkgver=3.14.1.r12.g97d4a94
 pkgrel=1
 pkgdesc="A task runner / simpler Make alternative written in Go"
 arch=('any')
 license=('GPL')
-depends=(
-)
+depends=()
 url="https://github.com/go-task/task"
-makedepends=(
-    'go'
-    'git'
-)
+makedepends=('go' 'git')
 
 _goname="github.com/go-task/task"
-source=(
-    "$_pkgname::git://github.com/go-task/task#branch=${BRANCH:-master}"
-)
-
-md5sums=(
-    'SKIP'
-)
-
-backup=(
-)
+source=("$_pkgname::git+https://github.com/go-task/task#branch=${BRANCH:-master}")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -33,16 +21,11 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_pkgname"
-
     rm -rf "$srcdir/go/src"
-
     mkdir -p "$srcdir/go/src/$(dirname $_goname)"
-
     export GOPATH="$srcdir/go"
-
     cp -r "$srcdir/$_pkgname" "$srcdir/go/src/$_goname"
     cd "$srcdir/go/src/$_goname/"
-
     echo ":: Building binary"
     go get -v \
         -gcflags "-trimpath $GOPATH/src" ./cmd/...
