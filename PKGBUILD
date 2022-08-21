@@ -19,7 +19,7 @@ sha512sums=("SKIP"
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  _pkgver= "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  _pkgver="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
   if [[ "$pkgver" == *"$_pkgver" ]]; then
     printf "$pkgver.r%s.%s" "$_pkgver" | rev | cut -c 2- | rev
   fi
