@@ -3,13 +3,13 @@
 pkgname=gnome-shell-extension-gnome-volume-mixer
 _pkgname=gnome-volume-mixer
 pkgver=11
-pkgrel=1
+pkgrel=2
 pkgdesc="Gnome extension that adds volume sliders for every application emitting audio in the system menu."
 arch=('any')
 url="https://github.com/mymindstorm/gnome-volume-mixer"
 license=('MIT')
 depends=('gnome-shell')
-makedepends=('git' 'nodejs' 'npm' 'zip' 'glib2' 'jq')
+makedepends=('git' 'nodejs' 'npm' 'zip' 'glib2')
 _commit=1e6c949ef426ca93341f02fab38c5f41c39f81bf
 source=("git+https://github.com/mymindstorm/gnome-volume-mixer.git#commit=$_commit")
 sha256sums=('SKIP')
