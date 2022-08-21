@@ -1,0 +1,15 @@
+pkgbase = xlsw
+	pkgdesc = List the X window tree contents
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/baskerville/xlsw
+	arch = i686
+	arch = x86_64
+	license = Unlicense
+	depends = libxcb
+	provides = xlsw
+	conflicts = xlsw
+	source = xlsw-0.2.3.tar.gz::https://github.com/baskerville/xlsw/archive/refs/tags/0.2.3.tar.gz
+	sha256sums = cafd6c584dafb4d3e4ad1a42b1279b0117f7479f512fc49a7273342518c64530
+
+pkgname = xlsw
