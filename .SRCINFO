@@ -1,6 +1,6 @@
 pkgbase = oreo-cursors-git
 	pkgdesc = Color material cursors with cute animations.
-	pkgver = 20210528.r62.549ce7b1
+	pkgver = 20220821.r64.eb14e237
 	pkgrel = 1
 	url = https://www.pling.com/p/1360254
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = oreo-cursors-git
 	makedepends = ruby
 	makedepends = gtk-engine-murrine
 	makedepends = inkscape
+	makedepends = libcanberra
 	makedepends = xorg-xcursorgen
 	provides = oreo-cursors
 	conflicts = oreo-cursors

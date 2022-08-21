@@ -1,12 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=oreo-cursors-git
-pkgver=20210528.r62.549ce7b1
+pkgver=20220821.r64.eb14e237
 pkgrel=1
 pkgdesc="Color material cursors with cute animations."
 arch=('any')
 url="https://www.pling.com/p/1360254"
 license=('GPL2')
-makedepends=('git' 'ruby' 'gtk-engine-murrine' 'inkscape' 'xorg-xcursorgen')
+makedepends=('git' 'ruby' 'gtk-engine-murrine' 'inkscape' 'libcanberra'
+             'xorg-xcursorgen')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!strip')
@@ -26,6 +27,7 @@ prepare() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
+  export NO_AT_BRIDGE=1
 
   pushd generator
   ruby convert.rb
