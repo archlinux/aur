@@ -2,8 +2,9 @@
 
 pkgname=vmware-unlocker-git
 _pkgver=4.2.2
-pkgver=4.2.2.r185.0af797f
-pkgrel=1
+epoch=1
+pkgver=4.2.2
+pkgrel=15
 pkgdesc="VMware macOS utilities, from the dev branch of the upstream repo"
 arch=("x86_64")
 url="https://github.com/DrDonk/unlocker/"
