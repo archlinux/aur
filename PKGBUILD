@@ -4,7 +4,7 @@
 # Contributor: osiixy <osiixy at gmail dot com>
 
 pkgname=penguins-eggs
-pkgver=9.2.1
+pkgver=9.2.2
 pkgrel=1
 pkgdesc="A terminal utility which allows you to remaster your system and redistribute it as an ISO image, on a USB stick or through the network via PXE remote boot"
 arch=('any')
@@ -20,7 +20,7 @@ depends=('arch-install-scripts' 'dosfstools' 'erofs-utils' 'findutils' 'grub'
 optdepends=('bash-completion: enable eggs commands automatic completion'
             'calamares: system installer GUI')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/pieroproietti/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('264761bf66154e5bf6f96364d64a4d81fce4839f61e80a901160cc46f517cb0c')
+sha256sums=('c25925f594cc0d41386d4bd88befb0cd5e158e92e4619a0bdfcea9da6a6e6722')
 
 build() {
   cd "${pkgname}-${pkgver}"
