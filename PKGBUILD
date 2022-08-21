@@ -2,7 +2,7 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=nuclei
-pkgver=2.7.5
+pkgver=2.7.6
 pkgrel=1
 pkgdesc='Fast tool for configurable targeted scanning based on templates offering massive extensibility and ease of use'
 arch=('x86_64' 'armv6h' 'aarch64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('4031151bee568f3f0db85130620cc1ecc7fc0a8fb43f13f9fd63732bfcbece1b7eaccd0964a89a90d08131391a2cf642a7eac408655c43eee394de67da26a75d')
+b2sums=('2dd130e0729ea87fed906717b876c0c76a43cc0482b7e650cdb9bb794a51a5669f937679b2f2690defb613d9c1961e6ef45bfe9867be8998e6c1dcdb083455ee')
 
 prepare() {
   export GOPATH="${srcdir}/gopath"
