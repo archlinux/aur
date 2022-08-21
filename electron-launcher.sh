@@ -17,4 +17,4 @@ for line in "${MAPFILE[@]}"; do
     fi
 done
 
-exec /usr/lib/${name}/electron "$@" "${flags[@]}"
+exec /usr/lib/${name}/electron "${flags[@]}" "$@"

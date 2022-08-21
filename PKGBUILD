@@ -1,8 +1,8 @@
-# Maintainer: Nicola Squartini <tensor5@gmail.com>
+# Maintainer: Bruno Pagani <archange@archlinux.org>
 
 _use_suffix=1
-pkgver=19.0.10
-_commit=7e1099a8e4b04709e3d5068403c77eb0feb7371f
+pkgver=19.0.13
+_commit=eb824db537346dedd574e8e8566f12de4a099a50
 _chromiumver=102.0.5005.167
 _gcc_patchset=6
 # shellcheck disable=SC2034
@@ -63,7 +63,7 @@ source=('git+https://github.com/electron/electron.git'
 sha256sums=('SKIP'
             'SKIP'
             '23f2a772c4a6e31394d6ee7b8dbb5967d3b92bd859093444913377934bede594'
-            '3953f532a3ea5fce19ee33600c6ead89dcd066df6a01d3c3ab4c24f96e46fca2'
+            '77817939c9833f8dda74a8c75620c15747170551ffa6f14f7c5b4071599e8831'
             '4484200d90b76830b69eea3a471c103999a3ce86bb2c29e6c14c945bf4102bae'
             'dd2d248831dd4944d385ebf008426e66efe61d6fdf66f8932c963a12167947b4'
             '55dbe71dbc1f3ab60bf1fa79f7aea7ef1fe76436b1d7df48728a1f8227d2134e'
