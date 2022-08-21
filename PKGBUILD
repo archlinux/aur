@@ -1,7 +1,7 @@
 # Maintainer: Jesus Alvarez <jeezusjr at gmail dot com>
 
 pkgname=jakt-git
-pkgver=r1645.f8649c0
+pkgver=r1751.69c45772
 pkgrel=1
 pkgdesc="The Jakt Programming Language from SerenityOS"
 arch=("x86_64")
@@ -29,8 +29,7 @@ build() {
     cmake --build build
 
     # test stage1
-    ninja -C jakttest
-    ./jakttest/build/jakttest --assume-updated-selfhost --assume-updated
+    ./build/jakttest
 
     # stage2
     cmake -B build -DFINAL_STAGE=2
@@ -39,8 +38,7 @@ build() {
 
 check() {
     cd "${pkgname}"
-    ninja -C jakttest
-    ./jakttest/build/jakttest --assume-updated-selfhost --assume-updated
+    ./build/jakttest
 }
 
 package() {
