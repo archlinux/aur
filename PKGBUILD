@@ -1,7 +1,7 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 pkgname=picacg-qt
-pkgver=1.3.8
+pkgver=1.3.9
 pkgrel=1
 pkgdesc="PicACG Comic PC Client For Linux"
 arch=('any')
@@ -23,7 +23,7 @@ source=(${pkgname}-${pkgver}.tar.gz::"${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}.desktop"
         "${pkgname}.sh"
 )
-sha256sums=('d41fabf21148e5e07fa18f39afd79ad0dcd789318220dc355f05b61ba6fdc4ff'
+sha256sums=('d87dafb94faa4a7552234d900f4ff47723106abc4395de1d860ed17f335faca1'
             '2da544814d26a95d1b4f88e19b2957059d9bd3c074424cb6553eaf84ed71c765'
             '9c35b0e474517cbbf1b88dde5a5333e273a531e53657a839bd193a2f05842361')
 
