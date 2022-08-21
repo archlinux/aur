@@ -1,5 +1,5 @@
 pkgbase = godot2d
-	pkgdesc = godot builds without all the 3d stuff.
+	pkgdesc = Godot Game Engine: An advanced, feature packed, multi-platform 2D game engine.
 	pkgver = 3.5.stable
 	pkgrel = 1
 	url = https://github.com/bend-n/godot-builds
