@@ -2,7 +2,7 @@
 pkgname=taskfile-git
 _pkgname=task
 pkgver=3.14.1.r12.g97d4a94
-pkgrel=2
+pkgrel=3
 pkgdesc="A task runner / simpler Make alternative written in Go"
 arch=('any')
 license=('MIT')
@@ -34,7 +34,10 @@ package() {
 	find "$srcdir/go/bin/" -type f -executable | while read filename; do
 		install -DT "$filename" "$pkgdir/usr/bin/$(basename $filename)"
 	done
+	# Avoid conflicts with community/task
 	mv "${pkgdir}/usr/bin/task" "${pkgdir}/usr/bin/task-go"
+	install -DT "$srcdir/${_pkgname}/completion/zsh/_task" "${pkgdir}/usr/share/zsh/site-functions/_task-go"
 
-	install -DT "$srcdir/$_pkgname/completion/zsh/_task" "$pkgdir/usr/share/zsh/site-functions/_task"
+	# TODO I suppose fish and ps completion files would also be nice to installa
+	install -DT "$srcdir/${_pkgname}/completion/bash/task.bash" "${pkgdir}/usr/share/bash-completion/completions/go-task"
 }
