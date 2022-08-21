@@ -1,6 +1,6 @@
 pkgbase = python-waifu2x-vulkan
 	pkgdesc = waifu2x-ncnn-vulkan-python, use nihui/waifu2x-ncnn-vulkan
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://github.com/tonquer/waifu2x-vulkan
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = python-waifu2x-vulkan
 	depends = vulkan-driver
 	provides = python-waifu2x-ncnn-vulkan
 	conflicts = python-waifu2x-ncnn-vulkan
-	source = python-waifu2x-vulkan-1.1.3.tar.gz::https://github.com/tonquer/waifu2x-vulkan/releases/download/v1.1.3/waifu2x-vulkan-1.1.3.tar.gz
-	sha256sums = 498fca4916c646279362c032e25bd3a7910eeb892b2dac85cdefce22311e4a26
+	source = python-waifu2x-vulkan-1.1.4.tar.gz::https://github.com/tonquer/waifu2x-vulkan/releases/download/v1.1.4/waifu2x-vulkan-1.1.4.tar.gz
+	sha256sums = 74d9d1f113c347a8ce376d123753b318cfefe772f38204dc49cfa98b9f0ca106
 
 pkgname = python-waifu2x-vulkan
