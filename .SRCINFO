@@ -1,21 +1,16 @@
 pkgbase = tal-chorus-lx
 	pkgdesc = A Simple Algorithmic Chorus By TAL Software
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://tal-software.com/products/tal-chorus-lx
 	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	groups = vst3-plugins
 	license = EULA
 	depends = libcurl-gnutls
 	depends = glibc
 	source = https://tal-software.com/downloads/plugins/Tal-Chorus-LX_64_linux.zip
-	md5sums = df5e26e04676c8b70fdbc4aa61fd6281
+	sha256sums = 0a4abfe2d59b0f9d1932db77f9cc86f5e7281f083042e4a4fd23a0b42cf0fbc1
 
-pkgname = tal-chorus-lx-vst
-	pkgdesc = A Simple Algorithmic Chorus By TAL Software (VST)
-	groups = pro-audio
-	groups = vst-plugins
-
-pkgname = tal-chorus-lx-vst3
-	pkgdesc = A Simple Algorithmic Chorus By TAL Software (VST3)
-	groups = pro-audio
-	groups = vst3-plugins
+pkgname = tal-chorus-lx-bin
