@@ -3,7 +3,6 @@ pkgbase = iortcw-git
 	pkgver = 1.51c.r89.gbbd32eed
 	pkgrel = 1
 	url = https://github.com/iortcw/iortcw
-	install = iortcw-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL3

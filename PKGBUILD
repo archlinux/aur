@@ -13,7 +13,6 @@ depends=('freetype2' 'graphite' 'harfbuzz' 'iortcw-data' 'libjpeg-turbo' 'libogg
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 makedepends=('git')
-install='iortcw-git.install'
 source=("git+${url}"
   'iortcw-ded.launcher'
   'iortcw-sp.launcher'
