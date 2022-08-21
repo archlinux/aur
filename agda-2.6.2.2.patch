@@ -1,0 +1,65 @@
+diff --git a/agda-language-server.cabal b/agda-language-server.cabal
+index c0c682b..7b6cb0d 100644
+--- a/agda-language-server.cabal
++++ b/agda-language-server.cabal
+@@ -63,7 +63,7 @@ library
+       OverloadedStrings
+   ghc-options: -Wincomplete-patterns -Wunused-do-bind -Wunused-foralls -Wwarnings-deprecations -Wwrong-do-bind -Wmissing-fields -Wmissing-methods -Wmissing-pattern-synonym-signatures -Wmissing-signatures -Werror=incomplete-patterns -fno-warn-orphans
+   build-depends:
+-      Agda ==2.6.2.1
++      Agda ==2.6.2.2
+     , aeson
+     , base >=4.7 && <5
+     , bytestring
+@@ -86,7 +86,7 @@ executable als
+       app
+   ghc-options: -Wincomplete-patterns -Wunused-do-bind -Wunused-foralls -Wwarnings-deprecations -Wwrong-do-bind -Wmissing-fields -Wmissing-methods -Wmissing-pattern-synonym-signatures -Wmissing-signatures -threaded -rtsopts -with-rtsopts=-N -Werror=incomplete-patterns -fno-warn-orphans
+   build-depends:
+-      Agda ==2.6.2.1
++      Agda ==2.6.2.2
+     , aeson
+     , agda-language-server
+     , base >=4.7 && <5
+@@ -141,7 +141,7 @@ test-suite als-test
+       OverloadedStrings
+   ghc-options: -Wincomplete-patterns -Wunused-do-bind -Wunused-foralls -Wwarnings-deprecations -Wwrong-do-bind -Wmissing-fields -Wmissing-methods -Wmissing-pattern-synonym-signatures -Wmissing-signatures -threaded -rtsopts -with-rtsopts=-N -Werror=incomplete-patterns -fno-warn-orphans
+   build-depends:
+-      Agda ==2.6.2.1
++      Agda ==2.6.2.2
+     , aeson
+     , base >=4.7 && <5
+     , bytestring
+diff --git a/package.yaml b/package.yaml
+index 6f35310..2a31014 100644
+--- a/package.yaml
++++ b/package.yaml
+@@ -23,7 +23,7 @@ description:         Please see the README on GitHub at <https://github.com/bana
+
+ dependencies:
+   - base >= 4.7 && < 5
+-  - Agda == 2.6.2.1
++  - Agda == 2.6.2.2
+   - aeson
+   - bytestring
+   - containers
+diff --git a/src/Agda/Convert.hs b/src/Agda/Convert.hs
+index 51c0adb..eb552ef 100644
+--- a/src/Agda/Convert.hs
++++ b/src/Agda/Convert.hs
+@@ -21,6 +21,7 @@ import Agda.Syntax.Position (HasRange (getRange), Range, noRange)
+ import Agda.Syntax.Scope.Base
+ import Agda.TypeChecking.Errors (getAllWarningsOfTCErr, prettyError)
+ import Agda.TypeChecking.Monad hiding (Function)
++import Agda.TypeChecking.Monad.MetaVars (withInteractionId)
+ import Agda.TypeChecking.Pretty (prettyTCM)
+ import qualified Agda.TypeChecking.Pretty as TCP
+ import Agda.TypeChecking.Pretty.Warning (filterTCWarnings, prettyTCWarnings, prettyTCWarnings')
+@@ -278,7 +279,7 @@ fromDisplayInfo = \case
+
+ lispifyGoalSpecificDisplayInfo :: InteractionId -> GoalDisplayInfo -> TCM IR.DisplayInfo
+ lispifyGoalSpecificDisplayInfo ii kind = localTCState $
+-  B.withInteractionId ii $
++  withInteractionId ii $
+     case kind of
+       Goal_HelperFunction helperType -> do
+         doc <- inTopContext $ prettyATop helperType
