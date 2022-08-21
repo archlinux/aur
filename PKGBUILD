@@ -25,3 +25,5 @@ package () {
   rm libcurl-impersonate*.tar.gz
   install -Dm755 libcurl-impersonate-* "${pkgdir}/usr/lib/"
 }
+md5sums_x86_64=('17c7d05478adbf4feba474000172face')
+md5sums_aarch64=('e2e0df8341e243e0e704588dea76a016')
