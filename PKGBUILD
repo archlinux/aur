@@ -3,7 +3,7 @@
 pkgname=disk-image-scripts
 pkgver=1.4
 pkgrel=2
-pkgdesc="Scripts for manipulating raw images of disks as files"
+pkgdesc="Generate virtual machine template images for the cloud, and tools for working on .img files locally for upload."
 arch=('any')
 url="https://github.com/GIJack/disk-image-scripts"
 license=('GPLv3')
