@@ -2,19 +2,19 @@
 # Contributor: davedatum <ask at davedatum dot com>
 _name=imagine
 pkgname=${_name}-git
-pkgver=0.6.1.r23.g12d922b
+pkgver=0.7.0.r0.g5c74207
 pkgrel=1
 pkgdesc="PNG/JPEG optimization app"
 arch=(x86_64)
 url="https://github.com/meowtec/${_name}"
 license=(MIT)
 depends=(electron imagemagick)
-makedepends=(nodejs-lts-gallium npm git)
+makedepends=(nodejs npm git)
 provides=("${_name}")
 conflicts=("${_name}")
 install=${_name}.install
 # options=(!strip)
-source=("git+${url}.git#tag=v0.6.1"
+source=("git+${url}.git#tag=v0.7.0"
   "${_name}.sh"
   "${_name}.desktop"
   "${_name}.install")
@@ -24,12 +24,12 @@ sha512sums=('SKIP'
   '815bd0648c4b9403cce83bf6ff4480b1c072afc593cf2ee2eee076b1075bd5703f85308eee55c51a87642bd2a73353d50bbdc20cb13fc4417eade3ff3f380ffb')
 
 pkgver() {
-  cd "${_name}"
+  cd ${_name}
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${_name}"
+  cd ${_name}
   npm install && npm run pack
 }
 
