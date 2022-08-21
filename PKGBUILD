@@ -11,14 +11,14 @@ _music='sc55' # (sc55/opl3) - update checksums if you change
 
 pkgbase=dxx-rebirth-git
 pkgname=('d1x-rebirth-git' 'd2x-rebirth-git')
-pkgver=0.60.0.beta2.r1821.g092daecb6
+pkgver=0.60.0.beta2.r2022.g25688635b
 pkgrel=1
 pkgdesc='A source port of the Descent and Descent 2 engines (git version)'
 arch=('x86_64')
 url='https://www.dxx-rebirth.com/'
 license=('GPL3' 'custom:Parallax')
 depends=('glu' 'libgl' 'libpng' 'sdl2' 'sdl2_image' 'sdl2_mixer' 'physfs')
-makedepends=('git' 'scons' 'clang')
+makedepends=('git' 'scons')
 source=('git+https://github.com/dxx-rebirth/dxx-rebirth.git'
         'https://www.dxx-rebirth.com/download/dxx/res/d1xr-hires.dxa'
         "https://www.dxx-rebirth.com/download/dxx/res/d1xr-${_music}-music.dxa"
@@ -49,7 +49,6 @@ build() {
         'use_tracker=yes'
         'screenshot=png')
     
-    export CXX='clang++'
     scons "${_common_opts[@]}" 'd1x=1' 'd2x=0' 'sharepath=/usr/share/d1x-rebirth'
     scons "${_common_opts[@]}" 'd1x=0' 'd2x=1' 'sharepath=/usr/share/d2x-rebirth'
 }
