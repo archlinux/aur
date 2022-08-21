@@ -1,0 +1,11 @@
+pkgbase = space-age-ttf
+	pkgdesc = Space Age font from MetalAdventure role play game.
+	pkgver = v1.0
+	pkgrel = 1
+	url = https://www.legrog.org/jeux/metal-adventures
+	arch = any
+	license = Unknown
+	source = space-age.ttf
+	sha256sums = 7acf26aa58a33090283d2e4846c43f7d85b9df342ad3df5c09fdd183d6ea6e29
+
+pkgname = space-age-ttf
