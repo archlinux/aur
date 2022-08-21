@@ -2,6 +2,11 @@ setcaps() {
   setcap cap_ipc_lock+ep usr/bin/khefin 2>/dev/null
 }
 
+pre_install() {
+  printf "\nWARNING: development on this package will cease at the end of 2022 and it will be removed from AUR.\n"
+  printf "See https://github.com/mjec/khefin/issues/42 for more information.\n\n"
+}
+
 post_install() {
   setcaps
 }
@@ -11,6 +16,9 @@ pre_upgrade() {
     printf "\nWARNING: behavior of this package reading passphrases non-interactively has changed since version %s.\n" "$2"
     printf "See https://github.com/mjec/khefin/issues/29 for more information.\n\n"
   fi
+
+  printf "\nWARNING: development on this package will cease at the end of 2022 and it will be removed from AUR.\n"
+  printf "See https://github.com/mjec/khefin/issues/42 for more information.\n\n"
 }
 
 post_upgrade() {

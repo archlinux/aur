@@ -1,8 +1,12 @@
 # Maintainer: Michael Cordover <khefin@mjec.net>
 
+# WARNING:
+# This package will be deprecated and removed from the AUR at the end of 2022.
+# See https://github.com/mjec/khefin/issues/42 for more information.
+
 pkgname=khefin
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple way to generate password-proteceted secrets from a FIDO2 authenticator with the hmac-secret extension"
 arch=('x86_64')
 url="https://github.com/mjec/khefin"
