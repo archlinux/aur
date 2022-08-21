@@ -1,7 +1,8 @@
-# Maintainer: Niclas Meyer <niclas at countingsort dot com>
+# Contributor: Niclas Meyer <niclas at countingsort dot com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=literate-git
-pkgver=r322.737567e
+pkgver=r340.6a9a3af
 pkgrel=1
 pkgdesc="A literate programming tool for any language"
 arch=('i686' 'x86_64')
@@ -14,12 +15,12 @@ source=("${pkgname}::git+https://github.com/zyedidia/Literate.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  cd ${pkgname}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd ${pkgname}
   make
 }
 
