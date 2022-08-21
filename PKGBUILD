@@ -1,11 +1,12 @@
-# Maintainer: Bailey Fox <bfox200012@gmail.com>
+# Maintainer: RubenKelevra <cyrond@gmail.com>
+# Contributor: Bailey Fox <bfox200012@gmail.com>
 # Contributor: Dimitrios Vogiatzis <me@dimtree.net>
 # Contributor: Étienne André <eti.andre@gmail.com>
 
 pkgname='python-fusepy'
 _module=${pkgname#python-}
 pkgver=3.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Simple ctypes bindings for FUSE'
 url='https://github.com/fusepy/fusepy'
 arch=('any')
