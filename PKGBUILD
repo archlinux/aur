@@ -2,12 +2,12 @@
 
 pkgname=certbot-dns-dynu
 pkgver=0.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Dynu DNS Authenticator plugin for Certbot"
 arch=('any')
 url="https://github.com/bikram990/${pkgname}"
 license=('Apache')
-depends=('certbot' 'python' 'dns-lexicon' 'python-zope-interface' 'python-dnspython' 'python-requests')
+depends=('certbot' 'python' 'dns-lexicon' 'python-zope-interface' 'python-dnspython' 'python-requests' 'python-mock')
 makedepends=('python-setuptools')
 
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
