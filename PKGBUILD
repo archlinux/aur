@@ -3,7 +3,7 @@
 pkgname=librewolf
 _pkgname=LibreWolf
 pkgver=103.0.2
-pkgrel=1
+pkgrel=1.1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
@@ -23,7 +23,7 @@ backup=('usr/lib/librewolf/librewolf.cfg'
         'usr/lib/librewolf/distribution/policies.json')
 options=(!emptydirs !makeflags !strip !lto !debug)
 _arch_git=https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/firefox/trunk
-_source_tag="${pkgver}-${pkgrel}"
+_source_tag="${pkgver}-${pkgrel%.*}"
 # _source_commit='328f531b1b18ca0ba4f96483db89eeb129c41c4c' # not 'stable', but current source head
 _settings_tag='6.8'
 # _settings_commit='02212c3f44e7aa68b22c8febd9158580d7e4b74f'
@@ -36,6 +36,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         "git+https://gitlab.com/${pkgname}-community/settings.git#tag=${_settings_tag}"
         "default192x192.png"
         "0018-bmo-1516081-Disable-watchdog-during-PGO-builds.patch"
+        "update-packed_simd_2-to-0.3.8-rc37c77a20f96.patch"
         )
 # source_aarch64=()
 sha256sums=('766183e8e39c17a84305a85da3237919ffaeb018c6c9d97a7324aea51bd453aa'
@@ -46,7 +47,8 @@ sha256sums=('766183e8e39c17a84305a85da3237919ffaeb018c6c9d97a7324aea51bd453aa'
             'SKIP'
             'SKIP'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1'
-            '1d713370fe5a8788aa1723ca291ae2f96635b92bc3cb80aea85d21847c59ed6d')
+            '1d713370fe5a8788aa1723ca291ae2f96635b92bc3cb80aea85d21847c59ed6d'
+            '971876ce7ea002caf1bee7bca242e9f780030a28320194c1f91c75b6e154ad75')
 # sha256sums_aarch64=()
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
@@ -166,6 +168,10 @@ fi
 
   # pgo improvements
   patch -Np1 -i ../0018-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
+
+  # rust 1.63 compatibility issue
+  # see: https://hg.mozilla.org/releases/mozilla-beta/rev/c37c77a20f96
+  patch -Np1 -i ../update-packed_simd_2-to-0.3.8-rc37c77a20f96.patch
 
   # pip issues seem to be fixed upstream?
 
