@@ -1,16 +1,16 @@
 # Maintainer: CosmicHorror <LovecraftianHorror@pm.me>
 
 pkgname=inlyne
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
-pkgdesc='A GPU powered yet browsless tool to help you quickly view markdown files in the blink of an eye'
+pkgdesc='A GPU powered yet browserless tool to help you quickly view markdown files in the blink of an eye'
 arch=(x86_64)
 url="https://github.com/trimental/$pkgname"
 license=(MIT)
-depends=(gcc-libs)
-makedepends=(cargo)
+depends=(fontconfig gcc-libs freetype2 libxcursor libxi libxrandr oniguruma openssl)
+makedepends=(cargo libxcb libxkbcommon)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('bd2294516b90fbc32f22e3ce5ea3f617b3b482ca24800c0254e817fb817d6c39f886bc22410af6ace045d2844dd8e53774b3fd4c12263fbd7a4cd3b1af9c6b9c')
+sha512sums=('97a9ebe3d0bb5212715e28eadc00b21645c9812c8a958ea3fe434b005f69f605ddd340c858a7050916b4b5d6f94ef743b4ddab5a9bfcf7e0ed84cbd8f9aaa9da')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
