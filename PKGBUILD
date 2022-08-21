@@ -3,7 +3,7 @@
 pkgname=pvr-tex-tool-bin
 pkgver=2022.1
 _versionstr='2022_R1'
-pkgrel=2
+pkgrel=3
 
 pkgdesc="A comprehensive texture processing and compression tool with support for PVR textures."
 url="https://www.imaginationtech.com/developers/powervr-sdk-tools/pvrtextool/"
@@ -50,6 +50,9 @@ install -D "${srcdir}/${_srcname}/CLI/Linux_x86_64/PVRTexToolCLI" "${pkgdir}/usr
 mkdir -p "${pkgdir}/usr/share/${pkgname}"
 mv ${srcdir}/${_srcname}/GUI/Linux_x86_64/* "${pkgdir}/usr/share/${pkgname}"
 ln -s "/usr/share/${pkgname}/PVRTexToolGUI" "${pkgdir}/usr/bin/pvr-tex-tool-gui"
+
+# Fix permissions
+find "${pkgdir}/usr/share/${pkgname}" -maxdepth 1 -type d | xargs chmod 755
 
 # Delete .run file (only pacman should be allowed to perform updates)
 rm "${pkgdir}/usr/share/${pkgname}/autoupdate-linux-x64.run"

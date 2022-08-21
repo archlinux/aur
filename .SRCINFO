@@ -1,7 +1,7 @@
 pkgbase = pvr-tex-tool-bin
 	pkgdesc = A comprehensive texture processing and compression tool with support for PVR textures.
 	pkgver = 2022.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.imaginationtech.com/developers/powervr-sdk-tools/pvrtextool/
 	arch = x86_64
 	license = custom
