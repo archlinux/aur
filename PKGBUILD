@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _cranname=av
-_cranver=0.8.0
+_cranver=0.8.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -10,7 +10,7 @@ arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(MIT)
 depends=(ffmpeg r)
-checkdepends=(r-ps r-testthat)
+checkdepends=(r-testthat)
 optdepends=(
     r-testthat
     r-ps
@@ -19,7 +19,7 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
         "CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT")
-sha256sums=('7ba8d81126247f8df6f732ad28a5f588eff6ff2d8a863424004fb0d20cf4421a'
+sha256sums=('c622b1295aa3287c23afb15299eff7cd0ec8e6090f94d20738945d9bd5d307c2'
             'e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b')
 
 build() {

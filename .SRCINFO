@@ -1,12 +1,11 @@
 pkgbase = r-av
 	pkgdesc = Working with Audio and Video in R
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=av
 	arch = i686
 	arch = x86_64
 	license = MIT
-	checkdepends = r-ps
 	checkdepends = r-testthat
 	depends = ffmpeg
 	depends = r
@@ -14,9 +13,9 @@ pkgbase = r-av
 	optdepends = r-ps
 	optdepends = r-ggplot2
 	optdepends = r-gapminder
-	source = https://cran.r-project.org/src/contrib/av_0.8.0.tar.gz
+	source = https://cran.r-project.org/src/contrib/av_0.8.1.tar.gz
 	source = CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT
-	sha256sums = 7ba8d81126247f8df6f732ad28a5f588eff6ff2d8a863424004fb0d20cf4421a
+	sha256sums = c622b1295aa3287c23afb15299eff7cd0ec8e6090f94d20738945d9bd5d307c2
 	sha256sums = e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b
 
 pkgname = r-av
