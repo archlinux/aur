@@ -2,18 +2,11 @@
 # Inspired from the PKGBUILD for vscodium-bin and code-stable-git.
 
 pkgname=vscodium-git
-pkgver=1.70.1.r0.gf05272f
+pkgver=1.70.2.22230.r0.gf21c11d
 pkgrel=1
 pkgdesc="Free/Libre Open Source Software Binaries of VSCode (git build from latest commit)."
 arch=('x86_64' 'aarch64' 'armv7h')
-# The vscodium repo that will be checked out.
 url='https://github.com/VSCodium/vscodium.git'
-# The branch of vscodium that will be checked out
-branch="master"
-# The vscode repo that will also be checked out.
-microsofturl='https://github.com/microsoft/vscode.git'
-# The tag of Microsoft that will be checked out, will be determined automatically, just like VSCodium itself does, with the following url
-stableversionurl='https://update.code.visualstudio.com/api/update/darwin/stable/lol'
 license=('MIT')
 
 depends=(
@@ -43,15 +36,12 @@ makedepends=(
     'patch'
     'python'
     'pkg-config'
-    'ripgrep'
 )
 source=(
-    "git+${url}#branch=${branch}"
-    "git+${microsofturl}#tag="$(curl ${stableversionurl} 2>/dev/null | jq -r '.name')
+    "git+${url}#branch=master"
     'vscodium.desktop'
 )
 sha256sums=(
-    'SKIP'
     'SKIP'
     '33ea43092cc895b9e6eea9056d72fbe462a450d41b6a1465da22566912110d69'
 )
@@ -77,50 +67,63 @@ case "$CARCH" in
     ;;
 esac
 
-prepare() {
-    cd 'vscodium'
-    # Normally, we would execute get_repo.sh to clone the Microsoft repo here, but makepkg can't do this.
-    # So we rely on the clone that happened earlier, and move the git directory to the expected place.
-    rm -rf 'vscode'
-    mv '../vscode' 'vscode'
-}
-
-pkgver() {
-    cd "vscodium"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-build() {
-    cd "vscodium"
-
-    # Export some environment variables that would normally be set by Travis CI.
-    export SHOULD_BUILD="yes"
-    export VSCODE_ARCH="${_vscode_arch}"
-    export OS_NAME="linux"
-    export LATEST_MS_COMMIT=$(git rev-list --tags --max-count=1)
-    export LATEST_MS_TAG=$(git describe --tags "${LATEST_MS_COMMIT}")
-
-    # Disable building rpm, deb, and AppImage packages which are not needed in an AUR build
-    export SKIP_LINUX_PACKAGES="True"
-
+install_node() {
     # Deactivate any pre-loaded nvm, and make sure we use our own in the current source directory
-    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+    command -v nvm >/dev/null && nvm deactivate && nvm unload
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-
-	# Install the correct version of NodeJS (read from .nvmrc)
+    
+    # Install the correct version of NodeJS (read from .nvmrc)
 	nvm install $(cat .nvmrc)
     nvm use
-
+    
     # Check if the correct version of node is being used
     if [[ "$(node --version)" != "$(cat .nvmrc)" ]]
     then
     	echo "Using the wrong version of NodeJS! Expected ["$(cat .nvmrc)"] but using ["$(node --version)"]."
     	exit 1
     fi
+}
 
-    # Build!
-    ./build.sh
+version() {
+    echo "$@" | tr 'v' ' ' | awk -F. '{ printf("%03d%03d%03d%03d\n", $1,$2,$3,$4); }'
+}
+
+prepare() {
+    cd "vscodium"
+    
+    install_node
+    
+    git checkout $( echo $pkgver | sed 's/\.r\([0-9]\+\)\./-r\1-/' )
+    
+    current=$( git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' )
+    
+    if [ ! "$pkgver" == $current ]; then
+        echo "current: $current != $pkgver"
+        return 1
+    fi
+}
+
+build() {
+    cd "vscodium"
+
+    # Remove old build
+    if [ -d "vscode" ]; then
+        rm -rf vscode* VSCode*
+    fi
+    
+    # Export necessary environment variables
+    export SHOULD_BUILD=yes
+    export CI_BUILD=no
+    export OS_NAME=linux
+    export VSCODE_ARCH="${_vscode_arch}"
+    export RELEASE_VERSION=$( echo $pkgver | sed 's/\.r.*$//' )
+    
+    # Disable building rpm, deb, and AppImage packages which are not needed in an AUR build
+    export SKIP_LINUX_PACKAGES="True"
+    
+    . get_repo.sh
+    . build.sh
 }
 
 package() {
