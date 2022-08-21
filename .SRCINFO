@@ -13,6 +13,7 @@ pkgbase = godot2d
 	depends = freetype2
 	depends = mesa
 	provides = godot2d
+	provides = godot2d-export-templates
 	conflicts = godot-headless-export-templates-bin
 	source = LICENSE
 	source = godot2d.desktop

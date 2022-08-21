@@ -27,7 +27,7 @@ sha256sums=(
 	6c3050a936cac538171961422a8e614c8fe85c2bbbf280ed4059e00453b25c33
 	7a2ccede0e0e9484923cca22f888177d8fcfa5c287411aa5199dfb2e4d09be00
 )
-provides=(godot2d)
+provides=(godot2d godot2d-export-templates)
 groups=(godot)
 _repo="github.com/bend-n/godot-builds"
 
