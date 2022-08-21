@@ -1,0 +1,23 @@
+pkgbase = iptables-mod-randmap-git
+	pkgdesc = An iptables extensions for stateless address / port randomization
+	pkgver = r5.b186e7c
+	pkgrel = 1
+	url = https://github.com/haruue-net/iptables-mod-randmap
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	depends = iptables
+	source = iptables-mod-randmap::git+https://github.com/haruue-net/iptables-mod-randmap.git
+	sha1sums = SKIP
+
+pkgname = iptables-mod-randmap-git-dkms
+	pkgdesc = An iptables extensions for stateless address / port randomization (dkms)
+	depends = dkms
+
+pkgname = iptables-mod-randmap-git-usrmod
+	pkgdesc = An iptables extensions for stateless address / port randomization (usrmod)
+	depends = iptables
