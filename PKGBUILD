@@ -1,15 +1,15 @@
 # Maintainer: Gimmeapill <gimmeapill at gmail dot com>
 
 pkgname=kapitonov-plugins-pack-lv2-git
-pkgver=v1.0.r24.g345313f
+pkgver=1.2.1.r7.g0dc53a9
 pkgrel=1
 pkgdesc="Kapitonov Plugins Pack (KPP) - Set of plugins for guitar sound processing. "
 arch=('x86_64')
 url="https://github.com/olegkapitonov/Kapitonov-Plugins-Pack"
 license=('GPL3')
 groups=('lv2-plugins')
-depends=('cairo' 'fftw' 'zenity' 'zita-convolver' 'zita-resampler')
-makedepends=('git' 'lv2' 'boost' 'meson' 'faust' 'xcb-util' 'xcb-util-wm')
+depends=('cairo' 'zita-convolver' 'zita-resampler' 'xcb-util' 'xcb-util-wm')
+makedepends=('git' 'lv2' 'boost' 'meson' 'faust' )
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("${pkgname%-*}::git+https://github.com/olegkapitonov/Kapitonov-Plugins-Pack")
