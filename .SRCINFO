@@ -4,7 +4,7 @@ pkgbase = taskfile-git
 	pkgrel = 1
 	url = https://github.com/go-task/task
 	arch = any
-	license = GPL
+	license = MIT
 	makedepends = go
 	makedepends = git
 	source = task::git+https://github.com/go-task/task#branch=master
