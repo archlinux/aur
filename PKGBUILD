@@ -1,9 +1,9 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=m64p
-pkgver=20220816
+pkgver=20220819
 pkgrel=1
-_tag=v2022.08.8
+_tag=v2022.08.9
 pkgdesc='Mupen64Plus with custom plugins and Qt6 GUI'
 arch=('x86_64')
 url='https://m64p.github.io/'
