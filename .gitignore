@@ -1,6 +1,6 @@
 pkg
 src
 
-*.exe
+
 *.tar.zst
 *.tar.gz

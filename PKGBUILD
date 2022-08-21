@@ -4,7 +4,7 @@
 # Contributor: YidaozhanYa <yidaozhan_ya@outlook.com>
 pkgname=bilibili-bin
 _pkgname=bilibili
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Bilibili desktop client'
 license=('custom')
@@ -16,7 +16,7 @@ source=("https://github.com/msojocs/bilibili-linux/releases/download/v${pkgver}-
         "${_pkgname}"
         "${_pkgname}.png"
         "${_pkgname}.desktop")
-sha256sums=('aeb126c8ce0a3141541465bcd871d37eca228ec73f4f5edb136941f06f46ae6d'
+sha256sums=('e9e58b880ab9af78c1ab4e7b6130367db3a7071ce6fcb3b7f124e65e94e08acd'
             'cd7961420bae8fb54b8523bb8b3190ce1cfb584b73f391bad52ca7a354b1b76f'
             '33cba5d0271d5783f353e60dacc01d2edc6629ca760d35427189e316a48f911f'
             'e8b7502721d837ee056eeb47fe38cbe23d6a9d6fff8228b976543e33d74ea2e5')
@@ -33,4 +33,5 @@ package() {
     install -Dm644 "${srcdir}/app/app-update.yml" "${pkgdir}/usr/share/${_pkgname}/app-update.yml"
     install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
     cp -r "${srcdir}/app/extensions" "${pkgdir}/usr/share/${_pkgname}/extensions"
+    #xdg-icon-resource install --noupdate --context apps --size 256 "bilibili.png" "bilibili"
 }
