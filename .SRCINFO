@@ -1,19 +1,16 @@
 pkgbase = tal-noisemaker
+	pkgdesc = A Free Soft Synth By TAL Software
 	pkgver = 5.0.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://tal-software.com/products/tal-noisemaker
 	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	groups = vst3-plugins
 	license = EULA
 	depends = libcurl-gnutls
 	depends = glibc
 	source = https://tal-software.com/downloads/plugins/TAL-NoiseMaker_64_linux.zip
 	md5sums = e2ab5f4553642ceea796ce2895fd3c47
 
-pkgname = tal-noisemaker-vst
-	pkgdesc = A Free Soft Synth By TAL Software (VST)
-	groups = pro-audiovst-plugins
-
-pkgname = tal-noisemaker-vst3
-	pkgdesc = A Free Soft Synth By TAL Software (VST3)
-	groups = pro-audio
-	groups = vst3-plugins
+pkgname = tal-noisemaker-bin
