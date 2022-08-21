@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+
+libdir="/usr/lib/dokka"
+plugins=""
+for file in $(find "$libdir/plugins" -name "*.jar"); do
+	[ x"$plugins" == x ] || plugins="$plugins;"
+	plugins="$plugins$file"
+done
+plugins="$plugins;/usr/share/java/freemarker/freemarker.jar"
+$libdir/bin/cli -pluginsClasspath "$plugins" "${@}"

@@ -1,0 +1,22 @@
+pkgbase = dokka
+	pkgdesc = Documentation Engine for Kotlin
+	pkgver = 1.7.10
+	pkgrel = 1
+	url = https://kotlin.github.io/dokka/1.7.10/
+	arch = any
+	license = Apache
+	makedepends = gradle>=7.3
+	makedepends = gradle<8
+	makedepends = npm
+	depends = freemarker
+	depends = java-environment
+	source = https://github.com/Kotlin/dokka/archive/refs/tags/v1.7.10.tar.gz
+	source = 0001-enable-application-plugin.patch
+	source = 0002-embed-plugin-dependencies.patch
+	source = dokka
+	sha256sums = 873e26b3c046e9217f70a126736308bc0c11e45b8a7a9b0991c15b71b0f1876f
+	sha256sums = 78d2f4fd30508c9b634e22655da275b0db4c5317d71bb3cd746f851702a31d93
+	sha256sums = b5f139af1e11ba823865f01383eb5eae873af86fcd86107e6e179076ce1145f4
+	sha256sums = 9c7aa9721fe0b2c3cf3831a4d0b1720f13b070734d7be2702f820267ca11e277
+
+pkgname = dokka

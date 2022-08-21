@@ -1,0 +1,14 @@
+--- runners/cli/build.gradle.kts	2022-08-21 15:44:14.274863135 +0200
++++ runners/cli/build.gradle.kts	2022-08-21 15:58:28.329169409 +0200
+@@ -10,6 +15,11 @@
+     implementation(project(":core"))
+     implementation(kotlin("stdlib"))
+     testImplementation(kotlin("test-junit"))
++
++    val kotlinx_html_version: String by project
++    implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:$kotlinx_html_version")
++
++    implementation(project(":kotlin-analysis"))
+ }
+ 
+ tasks {

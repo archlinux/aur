@@ -1,0 +1,14 @@
+--- runners/cli/build.gradle.kts	2022-08-21 15:44:14.274863135 +0200
++++ runners/cli/build.gradle.kts	2022-08-21 15:44:53.244731374 +0200
+@@ -3,6 +3,11 @@
+ 
+ plugins {
+     id("com.github.johnrengelman.shadow")
++    id("application")
++}
++
++application {
++    mainClass.set("org.jetbrains.dokka.MainKt")
+ }
+ 
+ dependencies {
