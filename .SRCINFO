@@ -1,6 +1,6 @@
 pkgbase = qmplay2
 	pkgdesc = QMPlay2 is a video and audio player which can play most formats and codecs
-	pkgver = 22.06.16
+	pkgver = 22.08.21
 	pkgrel = 1
 	url = https://github.com/zaps166/QMPlay2
 	arch = i686
@@ -33,9 +33,10 @@ pkgbase = qmplay2
 	depends = libgme
 	depends = libsidplayfp
 	depends = pipewire
+	depends = rubberband
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = game_music_emu-kode54-git: Better chiptune support (less bugs in sound, AUR package)
-	source = https://github.com/zaps166/QMPlay2/releases/download/22.06.16/QMPlay2-src-22.06.16.tar.xz
-	sha1sums = 66ef587c468809361e8ec4d26c1354169850a49f
+	source = https://github.com/zaps166/QMPlay2/releases/download/22.08.21/QMPlay2-src-22.08.21.tar.xz
+	sha1sums = 646756f06da82d7a65e21c337cf7d47254bbfc93
 
 pkgname = qmplay2
