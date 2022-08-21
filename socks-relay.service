@@ -1,7 +1,6 @@
 [Unit] 
 Description=Simple socks5 server and relay
 After=network.target
-StartLimitIntervalSec=1300
 
 [Service] 
 Type=simple
@@ -12,9 +11,6 @@ ExecStart=/usr/bin/socks-relay localhost:8999
 
 Restart=always
 RestartSec=10s
-
-LimitNOFILE=1024
-LimitNPROC=32
 
 ProtectHome=true
 PrivateDevices=true
