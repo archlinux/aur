@@ -1,6 +1,6 @@
 # Maintainer: Calvin Reu <j  dot  calvin  dot  reu at protonmail period com>
 # License: MIT
-# Repository: https://gitlab.com/input-configuration/kbdmod
+# Repository: https://gitlab.com/calvinreu/kbdmod
 
 pkgname=kbdmod
 pkgver=0.1.0
@@ -8,7 +8,7 @@ pkgrel=1
 epoch=
 pkgdesc="modify your keyboard functionality with multi functions per key"
 arch=('any')
-url="https://gitlab.com/input-configuration/$pkgname"
+url="https://gitlab.com/calvinreu/$pkgname"
 license=('MIT')
 groups=()
 depends=(libevdev yaml-cpp interception-tools)
@@ -22,7 +22,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://gitlab.com/input-configuration/$pkgname/-/archive/v$pkgver/kbdmod-v$pkgver.tar.gz")
+source=("https://gitlab.com/calvinreu/$pkgname/-/archive/v$pkgver/kbdmod-v$pkgver.tar.gz")
 noextract=()
 sha256sums=(b5d564eccbc1a63db85fbb98cb4335c5d5c96b81521a1c080d79a3068f397d04)
 validpgpkeys=()
