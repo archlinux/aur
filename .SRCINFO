@@ -1,6 +1,6 @@
 pkgbase = mozjpeg
 	pkgdesc = JPEG image codec with accelerated baseline decoding and superior encoding
-	pkgver = 4.0.3
+	pkgver = 4.1.1
 	pkgrel = 2
 	url = https://github.com/mozilla/mozjpeg
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = mozjpeg
 	conflicts = mozjpeg-git
 	conflicts = turbojpeg
 	conflicts = libjpeg-turbo
-	source = mozjpeg-4.0.3.tar.gz::https://github.com/mozilla/mozjpeg/archive/v4.0.3.tar.gz
-	sha1sums = 8e9272a8ec1429638febd6897664c575bdd50ecb
+	source = mozjpeg-4.1.1.tar.gz::https://github.com/mozilla/mozjpeg/archive/v4.1.1.tar.gz
+	sha1sums = 2e061f93021f290c171816c4decd5a032fdfc2c8
 
 pkgname = mozjpeg
