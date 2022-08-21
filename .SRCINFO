@@ -1,6 +1,6 @@
 pkgbase = rttt-git
 	pkgdesc = Read-the-things-tui (rttt) lets you read RSS/Atom, hackernews and Reddit from the terminal.
-	pkgver = v0.8.8.r37.df62981
+	pkgver = v1.1.0.r0.6d0d40c
 	pkgrel = 1
 	url = https://gitlab.com/BlackEdder/rttt
 	arch = x86_64
