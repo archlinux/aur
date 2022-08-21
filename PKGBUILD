@@ -85,7 +85,7 @@ _kyber_disable=y
 _lru_config='standard'
 
 ## Enable DAMON
-_damon=y
+_damon=
 
 ## Enable Linux Random Number Generator
 _lrng_enable=y
@@ -148,7 +148,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=5.19
-_minor=1
+_minor=3
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -158,7 +158,7 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux BORE scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=2
+pkgrel=1
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -188,7 +188,7 @@ source=(
     "${_patchsource}/all/0001-cachyos-base-all.patch")
 ## ZFS Support
 if [ -n "$_build_zfs" ]; then
-    source+=("git+https://github.com/openzfs/zfs.git#commit=db5fd16f0b7fd5bd5e19350829c46d526fed6d71")
+    source+=("git+https://github.com/openzfs/zfs.git#commit=979fd5a434ebc422c02dec5deddd485ce6127fc5")
 fi
 ## BMQ Scheduler
 if [ "$_cpusched" = "bmq" ]; then
@@ -884,9 +884,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('f4e27b926ea2c66b808db1f5706254cf92a8899e2108eedb0c3a7d12499aea55'
+sha256sums=('513bd672066f5fb22e5739aae3eed60c75c4accc9ba365d1060c4e4225442721'
             '2bfde1aeeaf06076981678678d889375d58ebde90c1852a2a2dff8c3c69d26b3'
             'ce8bf7807b45a27eed05a5e1de5a0bf6293a3bbc2085bacae70cd1368f368d1f'
-            'c04623bfb274c2422f6286c8befd52b835d2da9f953b1c66007bd851d2756365'
-            '0fe7f1698639df033709c6d32e651d378fc6e320dfc6387f8aee83d9ed0231a8'
+            'ca01454736df2503146f29f5d17dce6b6b984bdbb2745af156fa08a7e7096462'
+            '5ff4cf5ee8ec7056f9302751ea2401691a3ffc81e43536e4cea59cfc18f3ef8d'
             '279d9c5a4c790002de58780ad2dc7c4ab4cd049175d36cad8b4e348e32c7912c')
