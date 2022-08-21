@@ -1,5 +1,6 @@
 pkgbase = gotosocial
-	pkgver = 0.3.3
+	pkgdesc = ActivityPub social network server written in Golang
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://github.com/superseriousbusiness/gotosocial
 	arch = x86_64
@@ -8,15 +9,12 @@ pkgbase = gotosocial
 	makedepends = sqlite
 	depends = glibc
 	optdepends = gotosocial-admin
-	provides = gotosocial
-	conflicts = gotosocial-bin
-	conflicts = gotosocial-git
 	backup = etc/gotosocial/config.yaml
-	source = gotosocial-0.3.3.tar.gz::https://github.com/superseriousbusiness/gotosocial/archive/refs/tags/v0.3.3.tar.gz
+	source = gotosocial-0.3.8.tar.gz::https://github.com/superseriousbusiness/gotosocial/archive/refs/tags/v0.3.8.tar.gz
 	source = gotosocial.sysusers
 	source = gotosocial.tmpfiles
-	md5sums = bc8d8f7eff186773032e68524b47669b
-	md5sums = 925c1480260867df815c70d143ec0f61
-	md5sums = 01d73463258c4f85aa50c2ed0577632c
+	sha256sums = c93249215abb0c0fc63deef985f127a659ccbc271be925466628ce21db234fea
+	sha256sums = 645be6b03db100ed03fd2a8951b94ff9808c3e56d6cf5d3fc3b1a47dd7ef1c01
+	sha256sums = 2570408818f9966c3e9a86672c4cb90c0e1e22678a36b2354e66c866a25a4202
 
 pkgname = gotosocial
