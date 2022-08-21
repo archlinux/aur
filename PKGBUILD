@@ -2,7 +2,7 @@
 
 pkgname=xnviewmp-system-libs
 _pkgname=xnviewmp
-pkgver=1.00
+pkgver=1.01
 srcrel=1 # Incremented when there is a new release for the same version number
 pkgrel=1
 pkgdesc="An efficient multimedia viewer, browser and converter (using system libraries)."
@@ -13,8 +13,6 @@ license=('custom')
 depends=(
   # Main Qt dependencies
   'qt5-multimedia' 'qt5-svg' 'qt5-webkit' 'qt5-x11extras'
-  # Needed since 0.91: https://newsgroup.xnview.com/viewtopic.php?f=82&t=37907
-  'qtav'
   # Plugin libs
   'libwebp' 'openjpeg2' 'openexr'
 )
@@ -26,7 +24,7 @@ source=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::https://download.xnview.
         'xnviewmp.desktop'
         'qt5_std_fun_forwarder.S'
         'qt5_std_fun_forwarder.lds')
-sha256sums=('3BC29C4F160D62BD2172C5BC7C6DFD793A2CAC921030BF767069618BB35DE44F'
+sha256sums=('6B02FEEECE34A60C086A6E54F5259F7A0F048B1F9C1E3DEFDE9684B84A246FD3'
             '87ec80c5049745dc3018fcdcf4dddf0e877ae3b20706705f2a80715232ad2141'
             'F6B3A4AAA0A55B5F21D9B91AB6F3DA3D6EE077BA7FDD17E7C4AB1C69AD2A9E3A'
             'C35FE8CD0AD76F77C0117DE1D81A8C3945D6E472D7663D6D5645592C18809423'
@@ -99,6 +97,9 @@ package() {
   # Using the system libraw doesn't seem to work (assertion failure in libc when
   # attempting to view a RAW file), use the one provided.
   install -D -m644 "lib/liblibraw.so.1" -t "${pkg_opt_dir}/lib"
+  # There is no package for libmdk, which is anyway distributed as binary, so
+  # just the one provided.
+  install -D -m644 "lib/libmdk.so.0" -t "${pkg_opt_dir}/lib"
 
   install -m755 "${srcdir}/xnview.sh" "${pkg_opt_dir}"
 
