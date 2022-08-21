@@ -1,0 +1,12 @@
+pkgbase = smarky-git
+	pkgdesc = A command bookmarks tool made with SQLite.
+	pkgver = 0.1.0.r0.g763f93a
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	depends = sqlite
+	provides = smarky
+	source = git+https://github.com/d3adb5/smarky
+	sha256sums = SKIP
+
+pkgname = smarky-git
