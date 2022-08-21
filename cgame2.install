@@ -1,0 +1,14 @@
+post_install() {
+	echo "Create the program data directory"
+	mkdir -p "/etc/cgame2"
+	chmod 0777 "/etc/cgame2"
+}
+
+post_remove() {
+	echo "Delete the program data directory"
+	rm -r "/etc/cgame2/"
+}
+
+post_upgrade() {
+	echo "Program data will not be removed"
+}

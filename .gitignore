@@ -4,4 +4,5 @@ pkg
 *.rpm
 *.AppImage
 *.pkg.tar.xz
-cgame2*
+cgame2
+cgame2-*
