@@ -12,6 +12,7 @@ pkgbase = rttt-git
 	depends = cpr
 	depends = nlohmann-json
 	depends = fmt
+	depends = cppzmq
 	provides = rttt
 	conflicts = rttt
 	source = git+https://gitlab.com/BlackEdder/rttt#branch=master
