@@ -1,6 +1,6 @@
 pkgbase = mercury
 	pkgdesc = The mercury language compiler.
-	pkgver = 22.01
+	pkgver = 22.01.3
 	pkgrel = 1
 	url = http://www.mercurylang.org/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = mercury
 	makedepends = bison
 	depends = gcc
 	depends = make
-	source = http://dl.mercurylang.org/release/mercury-srcdist-22.01.tar.gz
-	sha256sums = 14be3143302cfbb76383dac626e6bf64538c84748289595e6966319479775d47
+	source = http://dl.mercurylang.org/release/mercury-srcdist-22.01.3.tar.xz
+	sha512sums = c16b6bb5da94fe93c4021ccb44d127589ccb70cb8419bb5c6a85780d3e79e557c56b23a89a1addb34920e0fab2c99fd14daf03a4fdde419f3a9e00903b5c4be8
 
 pkgname = mercury

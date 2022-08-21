@@ -1,9 +1,10 @@
-# Maintainer: Frank Seifferth <frankseifferth@posteo.net>
+# Maintainer: Adrian Perez de Castro <aperez@igalia.com>
+# Contributor: Frank Seifferth <frankseifferth@posteo.net>
 # Contributor: Tetsumi <tetsumi@vmail.me>
 # Contributor: Bart Verhoeven <bartverhoeven@live.com>
 
 pkgname=mercury
-pkgver=22.01
+pkgver=22.01.3
 pkgrel=1
 pkgdesc="The mercury language compiler."
 arch=('i686' 'x86_64')
@@ -11,8 +12,8 @@ url="http://www.mercurylang.org/"
 license=('GPL')
 depends=('gcc' 'make')
 makedepends=('flex' 'bison')
-source=(http://dl.mercurylang.org/release/mercury-srcdist-${pkgver}.tar.gz)
-sha256sums=('14be3143302cfbb76383dac626e6bf64538c84748289595e6966319479775d47')
+source=(http://dl.mercurylang.org/release/mercury-srcdist-${pkgver}.tar.xz)
+sha512sums=('c16b6bb5da94fe93c4021ccb44d127589ccb70cb8419bb5c6a85780d3e79e557c56b23a89a1addb34920e0fab2c99fd14daf03a4fdde419f3a9e00903b5c4be8')
 
 build() {
   cd "$srcdir"/mercury-srcdist-$pkgver
