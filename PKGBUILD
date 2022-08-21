@@ -5,8 +5,8 @@
 _pkgbin=ledger-live-desktop
 pkgname=ledger-live-git
 pkgdesc="Ledger Live - Desktop (Git version)"
-pkgver=2.44.0.r0.g2d1fcd3e2c
-pkgrel=2
+pkgver=2.46.0.r0.g7f310a4e89
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
 license=('MIT')
