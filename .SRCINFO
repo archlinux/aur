@@ -1,0 +1,27 @@
+pkgbase = statping-ng-bin
+	pkgdesc = Web and app status monitoring for any type of project (binary release)
+	pkgver = 0.90.80
+	pkgrel = 1
+	url = https://github.com/statping-ng/statping-ng
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = GPL3
+	conflicts = statping-ng
+	conflicts = statping
+	source = LICENSE::https://raw.githubusercontent.com/statping-ng/statping-ng/v0.90.80/LICENSE
+	sha256sums = e99aaa9fd81e548c682d8b39ff84ee349f02b4549ab74e8d8855c31c09b71d5e
+	source_x86_64 = statping-ng-0.90.80-x86_64.tar.gz::https://github.com/statping-ng/statping-ng/releases/download/v0.90.80/statping-linux-amd64.tar.gz
+	sha256sums_x86_64 = c82e1c09775bdf40ee6e742f2b63e9630e70a058bc988423230994ad9bcfc87a
+	source_i686 = statping-ng-0.90.80-i686.tar.gz::https://github.com/statping-ng/statping-ng/releases/download/v0.90.80/statping-linux-386.tar.gz
+	sha256sums_i686 = 1b8b0cac093d1f0d9b646ea1c25483c7494b00ce2868b573d3aa31d806e9d6f3
+	source_aarch64 = statping-ng-0.90.80-aarch64.tar.gz::https://github.com/statping-ng/statping-ng/releases/download/v0.90.80/statping-linux-arm64.tar.gz
+	sha256sums_aarch64 = d4b0141772a632d6db8af4fbe5d43da019fded264405f4e2a03c7aaeabb0fa73
+	source_armv7h = statping-ng-0.90.80-armv7h.tar.gz::https://github.com/statping-ng/statping-ng/releases/download/v0.90.80/statping-linux-arm-7.tar.gz
+	sha256sums_armv7h = 05806be5e5b66751283e39c193335d266a9268821aab8710183eb74b06cc8bb2
+	source_armv6h = statping-ng-0.90.80-armv6h.tar.gz::https://github.com/statping-ng/statping-ng/releases/download/v0.90.80/statping-linux-arm-6.tar.gz
+	sha256sums_armv6h = c1599928ed1ff9cd6ff6bfd695064be7cb2790e1543cb0b59eeca605007cf819
+
+pkgname = statping-ng-bin
