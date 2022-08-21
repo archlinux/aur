@@ -2,13 +2,13 @@
 
 pkgname=vmware-unlocker-git
 pkgver=4.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="VMware macOS utilities, from the dev branch of the upstream repo"
 arch=("x86_64")
 url="https://github.com/DrDonk/unlocker/"
 license=('MIT')
 #depends=("vmware-workstation>=16.0.0")
-makedepends=("git" "go")
+makedepends=("git" "go" "bash")
 provides=("vmware-unlocker")
 conflicts=("vmware-unlocker" "vmware-unlocker-bin")
 source=("$pkgname::git+$url#branch=main" "vmware-unlocker-post.hook" "vmware-unlocker-pre.hook")
@@ -19,7 +19,10 @@ sha512sums=("SKIP"
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  printf "$pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" | rev | cut -c 2- | rev
+  _pkgver = "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" | rev | cut -c 2- | rev
+  if [[ "$pkgver" == *"$_pkgver" ]]; then
+    printf "$pkgver.r%s.%s" "$_pkgver"
+  fi
 }
 
 build() {
@@ -27,7 +30,7 @@ build() {
   sed -e '/winres/ s/^#*/#/' -i build.sh
   sed -e '/exe/ s/^#*/#/' -i build.sh
   sed -e '/syso/ s/^#*/#/' -i build.sh
-  zsh build.sh "$pkgver"
+  bash build.sh "$pkgver"
 }
 
 package() {
