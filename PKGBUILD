@@ -1,6 +1,6 @@
 pkgname=socks-relay
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple socks5 server and relay"
 arch=('any')
 url="https://github.com/guillon/socks-relay"
@@ -11,8 +11,9 @@ source=(
   "socks-relay.service"
   "socks-relay.conf")
 sha256sums=('59e02359aa61caab1ff4504df64da91d1a43eea419479d82ed530fef26ffb58a'
-            'd17dc020dae651ce0e4d79229780ec19f2accf43c383e8a4a7f5b1b58f58d8e9'
-            '225d0a8e2be6f00158be07591373c5da1f486083f1163b8c89613b0f3548e0c0')
+            '472cd01d44a00ce99d05d6585e3778c92f6582c80093545db8c357df597e581c'
+            'e4e835d3542f921c90916f9d2941916ed6328ed8a300586557a37af96d29fbf5')
+backup=('etc/default/socks-relay')
 
 package() {
     mkdir -p "${pkgdir}/usr/bin"

@@ -1,13 +1,13 @@
-[Unit] 
+[Unit]
 Description=Simple socks5 server and relay
 After=network.target
 
-[Service] 
+[Service]
 Type=simple
 DynamicUser=true
 
 EnvironmentFile=/etc/default/socks-relay
-ExecStart=/usr/bin/socks-relay localhost:8999
+ExecStart=/usr/bin/socks-relay $SOCKS_RELAY_HOST:$SOCKS_RELAY_PORT
 
 Restart=always
 RestartSec=10s
@@ -31,5 +31,5 @@ RestrictAddressFamilies=AF_INET AF_INET6
 LockPersonality=true
 RestrictRealtime=true
 
-[Install] 
+[Install]
 WantedBy=multi-user.target
