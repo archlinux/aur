@@ -3,11 +3,11 @@
 
 _pkgname=bottles
 pkgname=${_pkgname}-fixed
-_pkgver_main=2022.7.28
+_pkgver_main=2022.8.14
 _release_name=brescia
-_pkgver_sub=2
+_pkgver_sub=1
 pkgver="$_pkgver_main.$_pkgver_sub"
-pkgrel=2
+pkgrel=1
 pkgdesc='Run Windows software on Linux with Bottles!'
 arch=(any)
 changelog=changelog.md
@@ -31,7 +31,6 @@ depends=(
 	python-orjson
 	python-pillow
 
-
 	# from dependency list
 	gtk4
 	gtksourceview5
@@ -51,6 +50,8 @@ depends=(
 	libblockdev
 	fvs
 	appstream-glib
+	gnome-builder
+	gst-editing-services
 
 	# from dependency list
 	'cabextract>=1.9.0'
@@ -94,7 +95,7 @@ source=("${_pkgname}-${_pkgver_main}-${_release_name}-${_pkgver_sub}.tar.gz::$ur
 #source=("${_pkgname}-${_pkgver_main}-${_release_name}-${_pkgver_sub}.tar.gz::$url/archive/refs/tags/${_pkgver_main}-${_release_name}.tar.gz")
 
 
-b2sums=('4dd8c4c01e0521c9dcc97389010d6a2efeb37d8c5238f277203d0dcf427d56cb08a36ed122261ac53adfba6041a7ac436ef1320222e6e9f17828760366ce5a1a')
+b2sums=('ea8f6c326636c369f8a104b164ac705b78d2b701c9b7cdc860330d6bffb2342d3684ab132dbeff9da196a3363d4d02e76ce71e4d0ae3d85f46337f8290d8591a')
 
 build() {
 	if [[ -d Bottles ]]; then
