@@ -1,0 +1,18 @@
+pkgbase = gnome-shell-extension-gnome-volume-mixer
+	pkgdesc = Gnome extension that adds volume sliders for every application emitting audio in the system menu.
+	pkgver = 11
+	pkgrel = 1
+	url = https://github.com/mymindstorm/gnome-volume-mixer
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = zip
+	makedepends = glib2
+	makedepends = jq
+	depends = gnome-shell
+	source = git+https://github.com/mymindstorm/gnome-volume-mixer.git#commit=1e6c949ef426ca93341f02fab38c5f41c39f81bf
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-gnome-volume-mixer
