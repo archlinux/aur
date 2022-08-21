@@ -1,7 +1,8 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-graphics-compiler-bin
-pkgver=1.0.11222
+pkgver=1.0.11702.1
+_oclcommit=363a5262d8c7cff3fb28f3bdb5d85c8d7e91c1bb
 pkgrel=1
 epoch=1
 pkgdesc='Intel Graphics Compiler for OpenCL (pre-compiled binaries)'
@@ -13,8 +14,7 @@ makedepends=('git')
 provides=('intel-graphics-compiler' 'intel-opencl-clang')
 conflicts=('intel-graphics-compiler' 'intel-opencl-clang')
 options=('!strip' '!emptydirs')
-_oclcommit='bbdd1587f577397a105c900be114b56755d1f7dc'
-source=("https://github.com/intel/intel-graphics-compiler/releases/download/igc-${pkgver}/intel-igc-core_${pkgver}_amd64.deb"
+source=("https://github.com/intel/intel-graphics-compiler/releases/download/igc-${pkgver}/intel-igc-core_${pkgver}_amd64.1.deb"
         "https://github.com/intel/intel-graphics-compiler/releases/download/igc-${pkgver}/intel-igc-media_${pkgver}_amd64.deb"
         "https://github.com/intel/intel-graphics-compiler/releases/download/igc-${pkgver}/intel-igc-opencl-devel_${pkgver}_amd64.deb"
         "https://github.com/intel/intel-graphics-compiler/releases/download/igc-${pkgver}/intel-igc-opencl_${pkgver}_amd64.deb"
@@ -24,16 +24,16 @@ noextract=("intel-igc-core_${pkgver}_amd64.deb"
            "intel-igc-media_${pkgver}_amd64.deb"
            "intel-igc-opencl-devel_${pkgver}_amd64.deb"
            "intel-igc-opencl_${pkgver}_amd64.deb")
-sha256sums=('a7250798bce2fc2941ca7076a94383c776c415ffa00c81f3d2968f1c9f5f327e'
-            '2f36a2077ba3b4b2a3b9505cb18a023c79d886fdb0bc6bf3270cd51ae2afa273'
-            '7de548d965a0af1f0142bbd0c8d436145ff68de44733a97633026f6aa5d4a7b7'
-            'e65a766ae3b8a465aabde4da6b623093f1fe6e4108b5227be5f62a3bb179767b'
+sha256sums=('58ce46eef041a5c4b435bf3d6d9845e464931756fab78c75166167c015b6e51d'
+            '6a733e063bf10c7c607ae42995ff203c36c7b0278e787679b3cf0654e1150787'
+            '1e2aff97bce36ed71b9c3f598a5cdd337c3ba303556d9d16387f171d23e716db'
+            '3692be17a46741ccabb0320989a6e917bd1dbd1599c96c86c391540c0c7f4e70'
             'SKIP'
             '0ddcc820928d5fc03b6c1271de8c0f9e9be74717f872956cc3fc4ae25eca9d90')
 
 prepare() {
     mkdir -p igc-{core,media,opencl-devel,opencl}-"$pkgver"
-    bsdtar -xf "intel-igc-core_${pkgver}_amd64.deb" -C "igc-core-${pkgver}"
+    bsdtar -xf "intel-igc-core_${pkgver}_amd64.1.deb" -C "igc-core-${pkgver}"
     bsdtar -xf "intel-igc-media_${pkgver}_amd64.deb" -C "igc-media-${pkgver}"
     bsdtar -xf "intel-igc-opencl-devel_${pkgver}_amd64.deb" -C "igc-opencl-devel-${pkgver}"
     bsdtar -xf "intel-igc-opencl_${pkgver}_amd64.deb" -C "igc-opencl-${pkgver}"
