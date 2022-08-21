@@ -1,7 +1,7 @@
 pkgbase = infracost
 	pkgdesc = Cloud cost estimates for Terraform
 	pkgver = 0.10.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/infracost/infracost
 	arch = x86_64
 	license = Apache

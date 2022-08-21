@@ -3,7 +3,7 @@
 
 pkgname=infracost
 pkgver=0.10.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Cloud cost estimates for Terraform'
 url='https://github.com/infracost/infracost'
 arch=('x86_64')
@@ -30,7 +30,7 @@ build() {
 	go build \
 		-o build \
 		-ldflags "-linkmode=external -X \
-		'${url#https://}/internal/version.Version=$pkgver'" \
+		'${url#https://}/internal/version.Version=v$pkgver'" \
 		"./cmd/$pkgname"
 }
 
