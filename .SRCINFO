@@ -1,7 +1,7 @@
 pkgbase = semaphore-git
 	pkgdesc = Modern UI for Ansible
 	pkgver = v2.8.65.r14.c2c4344
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ansible-semaphore/semaphore
 	arch = any
 	license = MIT

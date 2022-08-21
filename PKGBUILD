@@ -2,7 +2,7 @@
 
 pkgname=semaphore-git
 pkgver=v2.8.65.r14.c2c4344
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern UI for Ansible'
 arch=('any')
 url='https://github.com/ansible-semaphore/semaphore'
@@ -25,7 +25,7 @@ build() {
 	# AUR/packr is packr2 and this package relies on packr1.
 	# packr2 has backwards compatibility but we have to patch out the binary name to packr2 instead of packr in Taskfile.yml
 	# https://github.com/ansible-semaphore/semaphore/issues/1015
-	sed -i 's/- packr/- packr2/' "${srcdir}/semaphore/Taskfile.yml"
+	sed -i 's/- packr/- packr2 --legacy/' "${srcdir}/semaphore/Taskfile.yml"
 	sed -i 's/- goverage/- go test/' "${srcdir}/semaphore/Taskfile.yml"
 	task-go all
 }
