@@ -1,7 +1,7 @@
-# Ignore everything:
 *
-
-# ...except:
 !.gitignore
-!PKGBUILD
 !.SRCINFO
+!LICENSE
+!PKGBUILD
+!statping-daemon.service
+!statping-ng-bin.install
