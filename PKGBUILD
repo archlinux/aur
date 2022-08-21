@@ -4,12 +4,12 @@ pkgver=0.2.6
 pkgrel=1
 epoch=1
 pkgdesc="a minimalistic todo app for terminal enthusiasts"
-url="https://www.github.com/InvalidName662/tutel"
+url="https://www.github.com/0x5a4/tutel"
 license=("MIT")
 arch=("x86_64" "i686")
 depends=()
 makedepends=('cargo')
-source=("${pkgname}::git+https://github.com/InvalidName662/tutel.git#tag=v${pkgver}")
+source=("${pkgname}::git+https://github.com/0x5a4/tutel.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
 build() {
