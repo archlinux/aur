@@ -2,7 +2,7 @@
 pkgname=rttt-git
 _pkgname='rttt'
 pkgrel=1
-pkgver=v0.8.8.r37.df62981
+pkgver=v1.1.0.r0.6d0d40c
 pkgdesc="Read-the-things-tui (rttt) lets you read RSS/Atom, hackernews and Reddit from the terminal."
 arch=("x86_64")
 url="https://gitlab.com/BlackEdder/rttt"
@@ -41,4 +41,5 @@ package() {
         mkdir -p "$pkgdir"/usr/bin/
 	cd "$srcdir/${_pkgname}"
         cp bin/rttt "$pkgdir"/usr/bin/
+        cp bin/rttt-send "$pkgdir"/usr/bin/
 }
