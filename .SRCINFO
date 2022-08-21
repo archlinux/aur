@@ -14,7 +14,6 @@ pkgbase = godot2d
 	depends = mesa
 	provides = godot2d
 	conflicts = godot-headless-export-templates-bin
-	noextract = godot-2d_v3.5_export_templates.tpz
 	source = LICENSE
 	source = godot2d.desktop
 	source = icon.png

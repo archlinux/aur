@@ -13,7 +13,6 @@ depends=(glu libxcursor libxinerama alsa-lib freetype2 mesa)
 conflicts=('godot-headless-export-templates-bin')
 makedepends=()
 _base_src_link="https://github.com/bend-n/godot-builds/releases/download/${_ver_tag}/godot-2d_v${_ver_tag}_"
-noextract=("godot-2d_v${_ver_tag}_export_templates.tpz")
 source=(
 	LICENSE
 	godot2d.desktop
@@ -42,7 +41,7 @@ package() {
 	install -Dm644 "$srcdir/godot2d.desktop" "$pkgdir/usr/share/applications/godot2d.desktop"
 	install -Dm644 "$srcdir/icon.png" "${pkgdir}/usr/share/pixmaps/godot2d.png"
 	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
+	rm LICENSE icon.png godot2d.desktop ./"godot-2d_v${_ver_tag}_"*
 	mkdir -p "$pkgdir/usr/share/godot/templates/${pkgver}"
-	unzip -jo "godot-2d_v${_ver_tag}_export_templates.tpz" -d "$pkgdir/usr/share/godot/templates/${pkgver}"
+	cp ./* "$pkgdir/usr/share/godot/templates/${pkgver}"
 }
