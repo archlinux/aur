@@ -1,0 +1,9 @@
+pkgbase = wallpaper-cli
+	pkgver = 0.1.2
+	pkgrel = 1
+	arch = x86_64
+	makedepends = cargo
+	source = wallpaper-cli-0.1.2.tar.gz::https://static.crates.io/crates/wallpaper-cli/wallpaper-cli-0.1.2.crate
+	sha256sums = 16271a0675670ac2623deb6d63c8c60d556273bedae6c7034d912c8c72c8cd54
+
+pkgname = wallpaper-cli
