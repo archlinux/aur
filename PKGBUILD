@@ -2,12 +2,12 @@
 
 pkgname=sessiond
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone X session manager for systemd-logind"
 arch=("x86_64")
 url="https://sessiond.org/"
 license=("GPL" 'custom:GPL3 or any later version')
-depends=(dbus-python wireplumber python-pyqt5)
+depends=(python wireplumber dbus-python libxi)
 makedepends=(
   git
   systemd
@@ -15,7 +15,6 @@ makedepends=(
   perl
   glib2
   libx11
-  libxi
   libxext
   python-setuptools
 )
