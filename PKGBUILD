@@ -21,7 +21,7 @@ md5sums_x86_64=('540c6ac7e8cb8bdf0a30d424e599143e')
 md5sums_aarch64=('c67b509e89c715aae8580c1f3125535c')
 
 package () {
-  mkdir -p "${pkgdir}/usr/local/bin/"
-  install -Dm755 curl_* "${pkgdir}/usr/local/bin/"
-  install -Dm755 curl-impersonate-* "${pkgdir}/usr/local/bin/"
+  mkdir -p "${pkgdir}/usr/bin/"
+  install -Dm755 curl_* "${pkgdir}/usr/bin/"
+  install -Dm755 curl-impersonate-* "${pkgdir}/usr/bin/"
 }
