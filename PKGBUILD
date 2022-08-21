@@ -2,14 +2,14 @@
 
 pkgname=simutrans-extended-pak128.cs
 pkgver=2019
-pkgrel=1
+pkgrel=2
 pkgdesc="High resolution graphics set for Simutrans Extended, with a czech theme"
 arch=('any')
 url="https://www.simutrans.com/"
 license=('custom:Artistic')
 depends=('simutrans-extended-git')
-source=(http://list.extended.simutrans.org/pak128.CS-Ex.zip)
-sha256sums=('9aa92704bac599f401a0eb2fb22edccd9d63fb24691573c051959aadc520d52d')
+source=(https://files.michan.es/simutrans/pak128.CS-Ex.zip)
+sha256sums=('e4a34095aaa1c53813baf2b699b872cb6c14a9b8d9f97f5e9c23cf36efdf21fb')
 
 package() {
   #data
