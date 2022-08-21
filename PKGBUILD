@@ -3,7 +3,7 @@
 pkgname=pvr-tex-tool-bin
 pkgver=2022.1
 _versionstr='2022_R1'
-pkgrel=3
+pkgrel=4
 
 pkgdesc="A comprehensive texture processing and compression tool with support for PVR textures."
 url="https://www.imaginationtech.com/developers/powervr-sdk-tools/pvrtextool/"
@@ -41,7 +41,7 @@ mv ${srcdir}/${_srcname}/Documentation/* "${pkgdir}/usr/share/doc/${pkgname}"
 mkdir -p "${pkgdir}/usr/include"
 mkdir -p "${pkgdir}/usr/lib"
 mv ${srcdir}/${_srcname}/Library/Include/* "${pkgdir}/usr/include"
-mv ${srcdir}/${_srcname}/Library/Linux_x86_64/* "${pkgdir}/usr/lib"
+mv ${srcdir}/${_srcname}/Library/Linux_x86_64/libPVRTexLib.so "${pkgdir}/usr/lib"
 
 # Install CLI binaries
 install -D "${srcdir}/${_srcname}/CLI/Linux_x86_64/PVRTexToolCLI" "${pkgdir}/usr/bin/pvr-tex-tool"
