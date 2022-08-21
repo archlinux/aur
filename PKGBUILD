@@ -2,8 +2,8 @@
 # Contributor: Kevin Majewski < kevin.majewski02 AT gmail.com >
 
 pkgname='video-downloader'
-pkgver=0.9.9
-pkgrel=2
+pkgver=0.9.10
+pkgrel=1
 pkgdesc='GTK application to download videos from websites like YouTube and many others (based on yt-dlp)'
 arch=('any')
 url="https://github.com/Unrud/${pkgname}"
@@ -22,7 +22,7 @@ makedepends=(
 )
 _tarname="${pkgname}-${pkgver}"
 source=("${_tarname}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('46eadafe73415bdfbff3a590e0fd969f297d83e538e22dd5d195647b7b24216e69c365d6844e16c1a88ed164526e69edb9b0fd691096ac18c9850ba970d69a0e')
+b2sums=('0af755b0f340b6027ace6dc9ea8b2094c3dec5a249c6850a8d85b0715040ac37ca3c1d5911bcffcbcd36e9f06ed0e9672031181c17ce966f8d56a692d1f410ac')
 
 prepare() {
   arch-meson "${_tarname}" 'build'
