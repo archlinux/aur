@@ -6,7 +6,7 @@
 _gog_id='2048763853'
 
 pkgname=gog-cuphead-the-delicious-last-course
-pkgver=1.3.3.57402
+pkgver=1.3.4.58147
 pkgrel=1
 pkgdesc='Cuphead DLC, with new playable character and levels. GOG version, uses Wine.'
 arch=('x86_64')
@@ -21,8 +21,8 @@ source=(
     "setup_cuphead_-_the_delicious_last_course_${pkgver%.*}_(${pkgver##*.})-1.bin`
       `::gogdownloader://${_gog_id}/en1installer1"
 )
-sha512sums=('5ed6d7859424d3cf1ec68ee64e4dc27820b55bc1685a4fc8f7cd6ea50d903d10fbd68ea26db9fa0ef1dd72bdde8ccb188338d81b3e0dde43526d9561c23067b9'
-            'f73b829c4a77f194ecfbd01a605bdb385e77eecda592a5ecd0cb6cfe075602d70e49931c498eee2bf0a142eecb0f98dd1a8cf56a137f883581b1c910c989d2d7')
+sha512sums=('bab224b8a54b409762094a81237d8be613bb302235c8f0987f69da7e7f31b3e1a3f4d08a3e3d32fd763202e9b5a856c889cfc369455a7d2ff79af7afacd77239'
+            '681f76e09e98ddf44fb732172ad2dfda8c25cbc07ef5dcd7bdae8b9fb1601c9e01b4c3e39403433548665c7703f65f0e852eca2e5d1f1926ea78477073acb216')
 DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
 PKGEXT=.pkg.tar
 
