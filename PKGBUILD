@@ -2,10 +2,10 @@
 
 pkgname=intellij-idea-ue-eap
 _pkgname=idea-IU
-_buildver=222.3739.40
+_buildver=222.3739.54
 _veryear=2022
 _verrelease=2
-_verextra=
+_verextra=1
 pkgver=${_veryear}.${_verrelease}.${_buildver}
 pkgrel=1
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (ultimate version)"
@@ -14,7 +14,7 @@ options=(!strip)
 url="http://www.jetbrains.com/idea/nextversion"
 license=('custom')
 depends=('java-environment' 'giflib' 'libxtst' 'libdbusmenu-glib')
-_archive="ideaIU-${_buildver}.tar.gz"
+_archive="ideaIU-${_veryear}.${_verrelease}.${_verextra}.tar.gz"
 source=("https://download.jetbrains.com/idea/${_archive}"
         "intellij-idea-ue-eap.desktop")
 sha256sums=($(curl -s "https://download.jetbrains.com/idea/${_archive}.sha256" | cut -f1 -d" ")
