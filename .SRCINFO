@@ -1,0 +1,13 @@
+pkgbase = smlpkg
+	pkgdesc = Generic package manager for Standard ML libraries and programs
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/diku-dk/smlpkg
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	makedepends = mlton
+	source = smlpkg-0.1.5.tgz::https://github.com/diku-dk/smlpkg/archive/refs/tags/v0.1.5.tar.gz
+	md5sums = c93d37db6566dd3948a3d59d57792de8
+
+pkgname = smlpkg
