@@ -1,7 +1,7 @@
 # Maintainer: Ren Tatsumoto <tatsu at autistici dot org>
 
 pkgname=impd-git
-pkgver=0.4.r28.g5fe067c
+pkgver=0.5.r1.g8dbe61a
 pkgrel=1
 pkgdesc="Manage passive immersion and create condensed audio."
 arch=(any)
@@ -13,21 +13,17 @@ optdepends=(
 	'mpc: interaction with mpd'
 	'libnotify: desktop notifications'
 	'youtube-dl: adding audio from youtube'
+	'yt-dlp: adding audio from youtube'
 )
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${pkgname}"
+	cd -- "${pkgname}"
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-	cd "${pkgname}"
-	VERSION="$pkgver" make
-}
-
 package() {
-	cd "${pkgname}"
+	cd -- "${pkgname}"
 	make DESTDIR="${pkgdir}" install
 	install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
