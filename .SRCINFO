@@ -1,0 +1,14 @@
+pkgbase = rumsfeld-git
+	pkgdesc = Search file paths recursively. Written in Nim.
+	pkgver = r1.1eafb9e
+	pkgrel = 1
+	url = https://github.com/madprops/rumsfeld
+	arch = x86_64
+	license = GPL3
+	makedepends = nim
+	makedepends = nimble
+	makedepends = git
+	source = rumsfeld-git::git+https://github.com/madprops/rumsfeld.git
+	sha256sums = SKIP
+
+pkgname = rumsfeld-git
