@@ -1,0 +1,6 @@
+zedle-*.deb
+ZEDLE-*.deb
+zedle-*.pkg.*
+Terms*
+pkg/
+src/
