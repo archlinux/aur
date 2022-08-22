@@ -2,18 +2,18 @@
 DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 
 pkgname=pulse-secure
-pkgver=9.1r15.0_b15819
-pkgrel=2
-pkgdesc='Pulse Connect Secure (PCS) Client'
+pkgver=22.2r1.0_b1295
+pkgrel=1
+pkgdesc='Ivanti Secure Access Client'
 arch=(x86_64)
 license=(custom)
 url='https://www.pulsesecure.net/'
 depends=(gcc-libs libgnome-keyring openssl curl dbus libbsd)
 install=${pkgname}.install
 source=(EULA.txt)
-source_x86_64=("https://webdev.web3.technion.ac.il/docs/cis/public/ssl-vpn/v.9.1R15.0/ps-pulse-linux-9.1r15.0-b15819-64bit-installer.rpm")
+source_x86_64=("https://webdev.web3.technion.ac.il/docs/cis/public/ssl-vpn/v.22.2R1.0/ps-pulse-linux-22.2r1.0-b1295-64bit-installer.rpm")
 md5sums=('261848a28201e5386ec4bf587473a48b')
-md5sums_x86_64=('2c6b2dc62d74449692849e819dfcc21e')
+md5sums_x86_64=('2f042fe88a17f8f0956a454d820d81df')
 optdepends=('psmisc: for pulsesvc -K', 'gtkmm3: for pulseUi', 'webkit2gtk: for pulseUi')
 conflicts=(pulse-connect-secure)
 
@@ -38,6 +38,7 @@ package() {
     install -Dm644 lib/systemd/system/pulsesecure.service "$pkgdir"/usr/lib/systemd/system/pulsesecure.service
 
     mkdir -p "$pkgdir"/usr/share/applications/ "$pkgdir"/usr/share/dbus-1/system.d/ "$pkgdir"/opt/pulsesecure/lib/JUNS/interfaces
+    mkdir -p "$pkgdir"/var/lib/pulsesecure/pulse
     ln -s /opt/pulsesecure/resource/pulse.desktop "$pkgdir"/usr/share/applications/pulse.desktop
     ln -s /opt/pulsesecure/lib/JUNS/net.psecure.pulse.conf "$pkgdir"/usr/share/dbus-1/system.d/net.psecure.pulse.conf
     for f in $(find opt/pulsesecure/lib/JUNS/interfaces -type l); do
