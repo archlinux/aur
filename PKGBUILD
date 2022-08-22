@@ -1,7 +1,7 @@
 # Maintainer: Tim Hellhake
 
 pkgname=rider
-pkgver='2022.2.1'
+pkgver='2022.2.2'
 pkgrel=1
 epoch=1
 pkgdesc='A cross-platform .NET IDE by JetBrains.'
@@ -18,7 +18,7 @@ _pkgdir="JetBrains Rider-${pkgver}"
 _srcfile="JetBrains.Rider-${pkgver}.tar.gz"
 source=("https://download-cf.jetbrains.com/rider/${_srcfile}"
         'rider.desktop')
-sha256sums=('3f61c5fbdf46b94a5cb772ad51dda5a9cad8a9c7ad78dbcacf01daa2226a5633'
+sha256sums=('597f89769bdd798644dde338616f6424572e47044014da6b7ac83b95a3d67b3f'
             '6bb04056a20674c95dc5f103671bb8cd14910c6b7a4b80d9aa636e01d31ebdf1')
 
 package() {
