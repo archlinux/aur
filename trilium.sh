@@ -8,6 +8,7 @@ for i in "$@"; do
       ;;
     --safe-mode)
       export TRILIUM_SAFE_MODE=1            # Enables some extra safety measures (i.e. disabling user scripting) to allow Trilium to load
+      _safemodecmdargs="--disable-gpu"
       shift                                 # if something user-defined is causing it to crash
       ;;
     *)
@@ -17,4 +18,4 @@ done
 
 export ELECTRON_IS_DEV=0 # Without this env variable Arch's Electron would open devtools by default
 
-exec electron@electronversion@ /usr/lib/trilium/app.asar $@
+exec electron@electronversion@ /usr/lib/trilium/app.asar $_safemodecmdargs $@
