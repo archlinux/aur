@@ -9,7 +9,7 @@
 pkgname=execline-musl
 _pkgname=${pkgname%-musl}
 pkgver=2.9.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A (non-interactive) scripting language, like sh'
 arch=('i686' 'x86_64')
 url="http://skarnet.org/software/${_pkgname}"
@@ -26,7 +26,7 @@ build() {
 
   export CPPFLAGS='-nostdinc -isystem /usr/lib/musl/include -isystem /usr/include'
   export CC="musl-gcc"
-  ./configure --enable-static-libc --prefix=/usr --libdir=/usr/lib
+  ./configure --enable-static-libc --prefix=/usr --libdir=/usr/lib/execline
   make
 }
 
