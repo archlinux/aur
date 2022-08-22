@@ -1,0 +1,5 @@
+*.pkg.*
+*.log
+pkg/
+src/
+hiccup/
