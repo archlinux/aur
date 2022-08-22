@@ -1,0 +1,6 @@
+post_install() {
+  echo \
+":: The app WILL listen at 0.0.0.0:8080 by default.
+:: You need to enable/start the service in order to run \"statping-ng\", e.g.:
+   systemctl enable --now statping-daemon.service"
+}

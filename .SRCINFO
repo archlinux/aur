@@ -1,0 +1,25 @@
+pkgbase = statping-ng
+	pkgdesc = Web and app status monitoring for any type of project
+	pkgver = 0.90.80
+	pkgrel = 1
+	url = https://github.com/statping-ng/statping-ng
+	install = statping-ng.install
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = GPL3
+	makedepends = go
+	makedepends = go.rice
+	makedepends = yarn
+	depends = glibc
+	optdepends = dart-sass: Support custom styling
+	conflicts = statping-ng-bin
+	conflicts = statping
+	source = statping-ng-0.90.80.tar.gz::https://github.com/statping-ng/statping-ng/archive/v0.90.80.tar.gz
+	source = statping-daemon.service
+	b2sums = 2cde66a0ff95bef33095c32e55e6e485cf582a8382d349a3ead31a833b5acf38deab1310e76bca3bc98cba3f75b9ab5b1aa6681fd32fcecdebe4bddee852a5aa
+	b2sums = 0b9541191599b38bcf8edd4ba54e7a405c32ec335e8c5ce41ac29efe231c8ba3c0d7786e0bc74c98713de0f83ebfe217cd19c92cdb62d9b019852505b1f7c4ba
+
+pkgname = statping-ng

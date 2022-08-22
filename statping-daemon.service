@@ -1,0 +1,14 @@
+[Unit]
+Description=Statping Daemon
+After=network.target
+After=systemd-user-sessions.service
+After=network-online.target
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/bin/statping
+WorkingDirectory=/etc/statping
+
+[Install]
+WantedBy=multi-user.target
