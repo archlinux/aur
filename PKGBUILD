@@ -1,31 +1,31 @@
-# Maintainer: Lukas Braun <koomi+aur at hackerspace-bamberg dot de>
+# Maintainer:  Devin J. Pohly <djpohly+arch@gmail.com>
+# Contributor: Lukas Braun <koomi+aur at hackerspace-bamberg dot de>
 # Contributor: David Arroyo <droyo@aqwari.us>
 pkgname=s6-musl
-pkgver=2.1.0.1
+_pkgname=${pkgname%-musl}
+pkgver=2.11.1.2
 pkgrel=1
 pkgdesc="skarnet's small supervision suite."
 arch=('i686' 'x86_64')
-url="http://www.skarnet.org/software/s6"
+url="http://www.skarnet.org/software/$_pkgname"
 license=('custom:ISC')
-makedepends=('skalibs-musl>=2.2.1.0' 'musl')
-depends=('execline-musl>=2.0.2.0')
-provides=(s6=2.1.0.1)
+makedepends=('execline-musl>=2.9.0.1' 'skalibs-musl>=2.12.0.0' 'musl')
+provides=($_pkgname=$pkgver)
 options=('staticlibs')
-changelog=CHANGELOG
-source=("${url}/s6-$pkgver.tar.gz")
-sha256sums=('cfe8d67ed70d5b44f4c75f14f077a71160139d994ae45c894cbc11374335eca6')
+source=("${url}/$_pkgname-$pkgver.tar.gz")
+sha256sums=('6c1474be3e889dac392cee307abe015cd4be0c85c725c84ea7f184f0e34503a2')
 
 build() {
-  cd "$srcdir/s6-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
 
   export CPPFLAGS='-nostdinc -isystem /usr/lib/musl/include -isystem /usr/include'
   export CC="musl-gcc"
-  ./configure --enable-static-libc --bindir=/usr/bin --sbindir=/usr/bin --libexecdir=/usr/lib/s6
+  ./configure --enable-static-libc --bindir=/usr/bin --sbindir=/usr/bin --libexecdir=/usr/lib/$_pkgname
   make
 }
 
 package() {
-  cd "$srcdir/s6-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
 
   make DESTDIR="$pkgdir/" install
   install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
