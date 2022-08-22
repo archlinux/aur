@@ -7,12 +7,12 @@
 ### Info ###
 pkgname=python-oxasl-ve
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Python interface to the C++ based VEASLC tool for Vessel-encoded ASL designed for use with the OXASL processing pipeline'
 arch=('any')
 url='https://oxasl.readthedocs.io'
-license=('custom:OXASL license')
-depends=('fslpy>=1.13' 'python' 'python-numpy' 'python-oxasl' 'veasl')
+license=('APACHE')
+depends=('fslpy>=1.13' 'python' 'python-numpy' 'python-oxasl')
 makedepends=('git' 'python-setuptools')
 # checkdepends=('python-pytest')
 source=("$pkgname::git+https://github.com/physimals/oxasl_ve.git#tag=v$pkgver")
