@@ -1,6 +1,6 @@
 pkgbase = qinfo-git
 	pkgdesc = A cross platform system info program. Fetches system info and displays it.
-	pkgver = 1
+	pkgver = r70.rb3f292d.
 	pkgrel = 1
 	url = https://github.com/El-Wumbus/qinfo
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = qinfo-git
 	makedepends = gcc
 	makedepends = make
 	depends = coreutils
-	optdepends = snap: List number of snap packages
+	optdepends = snapd: List number of snap packages
 	optdepends = flatpak: List number of flatpak packages
 	provides = qinfo
 	source = qinfo::git+https://github.com/El-Wumbus/qinfo.git

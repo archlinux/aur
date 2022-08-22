@@ -10,7 +10,7 @@ license=("GPL3")
 provides=("qinfo")
 makedepends=("gcc" "make")
 depends=("coreutils")
-optdepends=("snap: List number of snap packages"
+optdepends=("snapd: List number of snap packages"
             "flatpak: List number of flatpak packages")
 source=($_pkgname::"git+https://github.com/El-Wumbus/qinfo.git")
 sha256sums=("SKIP")
