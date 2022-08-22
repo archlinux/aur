@@ -1,0 +1,12 @@
+pkgbase = display_switch
+	pkgdesc = Turn a 0 USB switch into a full-featured multi-monitor KVM switch
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/haimgel/display-switch
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = display-switch-1.2.0.tar.gz::https://codeload.github.com/haimgel/display-switch/tar.gz/refs/tags/1.2.0
+	sha256sums = 28e3d9791d39f655c337de19063ea8b19f5c3a0784fa84a222abdf63a33823af
+
+pkgname = display_switch

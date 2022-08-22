@@ -1,0 +1,26 @@
+[Unit]
+Description=display-switch automatic DDC display switcher
+After=graphical.target
+
+[Service]
+Type=simple
+StandardOutput=journal
+Restart=always
+
+DynamicUser=yes
+SupplementaryGroups=i2c
+
+LogsDirectory=display-switch
+StateDirectory=display-switch
+
+# There's a lot of finagling to get display_switch to put the files in a normal place.
+Environment=HOME=/var/lib/display-switch
+
+ExecStartPre=mkdir -p /var/lib/display-switch/.config/display-switch
+ExecStartPre=ln -sf /etc/display-switch/display-switch.ini /var/lib/display-switch/.config/display-switch
+ExecStartPre=mkdir -p /var/lib/display-switch/.local/share/
+ExecStartPre=ln -sf /var/log/display-switch /var/lib/display-switch/.local/share/display-switch
+ExecStart=/usr/bin/display_switch
+
+[Install]
+WantedBy=multi-user.target
