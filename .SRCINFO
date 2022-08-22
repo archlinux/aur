@@ -1,5 +1,5 @@
 pkgbase = display-switch
-	pkgdesc = Turn a 0 USB switch into a full-featured multi-monitor KVM switch
+	pkgdesc = Turn a $30 USB switch into a full-featured multi-monitor KVM switch
 	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/haimgel/display-switch
