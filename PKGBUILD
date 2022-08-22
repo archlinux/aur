@@ -2,7 +2,7 @@
 
 pkgname=python-material-color-utilities
 _name=material-color-utilities-python
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Python port of material-color-utilities used for Material You colors"
 arch=('any')

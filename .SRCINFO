@@ -1,6 +1,6 @@
 pkgbase = python-material-color-utilities
 	pkgdesc = Python port of material-color-utilities used for Material You colors
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/avanishsubbiah/material-color-utilities-python
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-material-color-utilities
 	makedepends = python-wheel
 	depends = python-pillow
 	depends = python-regex
-	source = https://files.pythonhosted.org/packages/source/m/material-color-utilities-python/material-color-utilities-python-0.1.3.tar.gz
+	source = https://files.pythonhosted.org/packages/source/m/material-color-utilities-python/material-color-utilities-python-0.1.4.tar.gz
 	b2sums = 2cd30eb7cc3cc733bf9eac6b8bff75f0976960d38351861a1905d96992113d36a04413df5c16f9167d65966dbbe7bbd9285871dcb36a1765d62ff4cc6a7c9ccc
 
 pkgname = python-material-color-utilities
