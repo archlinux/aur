@@ -3,7 +3,7 @@
 
 _pkgname=gns3-server
 pkgname=$_pkgname-git
-pkgver=v2.2.22.r0.g10daab21
+pkgver=v2.2.33.1.r4.g3634cc83
 pkgrel=1
 pkgdesc='GNS3 network simulator, Server package'
 arch=('x86_64' 'aarch64')
@@ -38,7 +38,7 @@ optdepends=(
     'ubridge: Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces'
 )
 install="$_pkgname.install"
-source=("$_pkgname::git+git://github.com/GNS3/$_pkgname.git"
+source=("$_pkgname::git+https://github.com/GNS3/$_pkgname.git"
         "$_pkgname@.service")
 sha256sums=('SKIP'
             'b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f')
