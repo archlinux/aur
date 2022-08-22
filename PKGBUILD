@@ -1,15 +1,15 @@
 # Maintainer: João Figueiredo <jf dot mundox at gmail dot com> 
 
 pkgname=python2-fuse
-pkgver=1.0.0
+pkgver=1.0.5
 pkgrel=2
 pkgdesc='This is a Python 2 interface to libfuse (https://github.com/libfuse/libfuse), a simple interface for userspace programs to export a virtual filesystem to the Linux kernel'
 arch=('x86_64')
 url="https://pypi.org/project/fuse_python/$pkgver"
 license=('LGPL')
 depends=('fuse2' 'python2')
-source=("https://files.pythonhosted.org/packages/ab/34/c2d89e97ac8df2b22d453e44700bacb61b3c73a3538a7e5d81a1e6780e4a/fuse-python-$pkgver.tar.gz")
-sha256sums=('cbaa21c8f0a440302d1ba9fd57a80cf9ff227e5a3820708a8ba8450db883cc05')
+source=("https://files.pythonhosted.org/packages/5a/98/fc22a5b7cc748c6bac896aad41e1125c7f9dd5e562c15ced7b5f9576b394/fuse-python-$pkgver.tar.gz")
+sha256sums=('74e5ffb33682bba9a5af2a5a048f47b7e7b464ebf84291bf5a258bfbad03a3aa')
 
 build() {
 	cd "$srcdir/${pkgname#*-}-python-$pkgver"
