@@ -1,16 +1,17 @@
 # Maintainer: Your Name <youremail@domain.com>
 
-pkgname=atoms-git
+pkgname=('atoms-git' 'atoms-cli-git' 'atoms-core-git')
+pkgbase='atoms-git'
 _pkgname=Atoms
-pkgver=r198.b77715e
+pkgver=r214.3edc956
 pkgrel=1
 pkgdesc="Easily manage Linux chroot(s)"
 arch=('any')
-url="https://github.com/mirkobrombin/Atoms"
+url="https://github.com/AtomsDevs/Atoms"
 license=('GPL3')
-depends=('libadwaita-git' 'podman' 'proot' 'python-certifi' 'python-chardet' 'python-idna' 'python-orjson' 'python-requests' 'python-uproot' 'python-urllib3' 'talloc' 'vte4')
-makedepends=('git' 'meson')
-checkdepends=('appstream-glib')
+depends=('libadwaita-git' 'podman' 'proot' 'python-certifi' 'python-chardet' 'python-idna' 'python-orjson' 'python-requests' 'python-tabulate' 'python-uproot' 'python-urllib3' 'talloc' 'vte4' 'servicectl')
+makedepends=('git' 'meson' 'python-setuptools')
+checkdepends=('appstream-glib' 'python-pytest')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(
@@ -50,6 +51,37 @@ check() {
   meson test -C build || :
 }
 
-package() {
+check_atoms-cli-git(){
+  cd "${pkgbase%-git}-cli"
+  python setup.py pytest || :
+}
+
+check_atoms-core-git(){
+  cd "${pkgbase%-git}-core"
+  python setup.py pytest || :
+}
+
+package_atoms-git() {
+  depends=('atoms-cli' 'atoms-core' 'servicectl')
   meson install -C build --destdir "$pkgdir"
+}
+
+package_atoms-cli-git() {
+  pkgdesc='Atoms CLI allows you to create and manage your atoms via the command line.'
+  depends=('python-tabulate' 'atoms-core')
+  provides=("${pkgname%-git}")
+  conflicts=("${pkgname%-git}")
+
+  cd "${pkgbase%-git}-cli"
+  python setup.py install --root="$pkgdir" --optimize=1
+}
+
+package_atoms-core-git() {
+  pkgdesc='Atoms Core allows you to create and manage your own chroots and podman containers.'
+  depends=('python-orjson')
+  provides=("${pkgname%-git}")
+  conflicts=("${pkgname%-git}")
+
+  cd "${pkgbase%-git}-core"
+  python setup.py install --root="$pkgdir" --optimize=1
 }
