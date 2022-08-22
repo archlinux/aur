@@ -1,6 +1,6 @@
 pkgbase = tendermint-bin
 	pkgdesc = ⟁ Tendermint Core (BFT Consensus) in Go
-	pkgver = 0.34.20
+	pkgver = 0.34.21
 	pkgrel = 1
 	url = https://tendermint.com
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = tendermint-bin
 	license = Apache
 	provides = tendermint
 	conflicts = tendermint
-	source_x86_64 = https://github.com/tendermint/tendermint/releases/download/v0.34.20/tendermint_0.34.20_linux_amd64.tar.gz
-	sha256sums_x86_64 = 508d0a81824b61416067229d25bd5e2d2f93bbfd0d01d26e1ebb0a5542d99150
-	source_aarch64 = https://github.com/tendermint/tendermint/releases/download/v0.34.20/tendermint_0.34.20_linux_arm64.tar.gz
-	sha256sums_aarch64 = c576f8c94d5fb62dc4d600e6e1184b5e3e6750872cc1e9329d09838bc5bfc170
-	source_armv6h = https://github.com/tendermint/tendermint/releases/download/v0.34.20/tendermint_0.34.20_linux_armv6.tar.gz
-	sha256sums_armv6h = 294be670ef2549d551ec5451e38f1dc76a49c08d1b31bf641bc4f11895910c4f
+	source_x86_64 = https://github.com/tendermint/tendermint/releases/download/v0.34.21/tendermint_0.34.21_linux_amd64.tar.gz
+	sha256sums_x86_64 = c260c2db3e6faac711b767b095bb7c3c1afe51b624f97bfb675aa8063d1530c7
+	source_aarch64 = https://github.com/tendermint/tendermint/releases/download/v0.34.21/tendermint_0.34.21_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9595eaa7743974bfa64912d0abedcf1fcd459ff16c73b4c2faa52e9f6f426378
+	source_armv6h = https://github.com/tendermint/tendermint/releases/download/v0.34.21/tendermint_0.34.21_linux_armv6.tar.gz
+	sha256sums_armv6h = c6d77a8c5066bf3b337fa956ab038fec358bfb307bd6f5cdc11b7bda9642436e
 
 pkgname = tendermint-bin
