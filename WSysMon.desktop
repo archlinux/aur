@@ -1,0 +1,4 @@
+[Desktop Entry]
+Name=WSysMon
+Exec=/usr/bin/WSysMon
+Type=Application
