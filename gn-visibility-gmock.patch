@@ -1,0 +1,43 @@
+From fc3c737210873e9bee311391e9f6b48130e84983 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tomasz=20=C5=9Aniatowski?= <tsniatowski@vewd.com>
+Date: Sat, 4 Sep 2021 07:13:49 +0000
+Subject: [PATCH] Fix config visibility violation in //testing/gmock
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+//third_party/googletest:gtest_config has restricted visibility, current
+code works by accident because gn only enforces visibility on 'configs'.
+Fix by not referencing the configs at all as it should be unnecessary:
+//testing/gmock gets them via a public dependency chain anyway.
+
+This is one of a few fixes needed to roll gn past the upcoming
+enforcement change, landing in small parts because removing config
+usages feels a bit subtle.
+
+Bug: gn:252
+Change-Id: Ie1438862831ecee49162d9f8f7872a568d69c2fb
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/3139927
+Reviewed-by: Dirk Pranke <dpranke@google.com>
+Commit-Queue: Tomasz Śniatowski <tsniatowski@vewd.com>
+Cr-Commit-Position: refs/heads/main@{#918357}
+---
+ testing/gmock/BUILD.gn | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/testing/gmock/BUILD.gn b/testing/gmock/BUILD.gn
+index 0248d146d7397..e285fb84e471a 100644
+--- a/testing/gmock/BUILD.gn
++++ b/testing/gmock/BUILD.gn
+@@ -14,11 +14,6 @@ source_set("gmock") {
+     "include/gmock/gmock.h",
+   ]
+   public_deps = [ "//third_party/googletest:gmock" ]
+-
+-  public_configs = [
+-    "//third_party/googletest:gmock_config",
+-    "//third_party/googletest:gtest_config",
+-  ]
+ }
+ 
+ # The file/directory layout of Google Test is not yet considered stable. Until
