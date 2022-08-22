@@ -1,34 +1,33 @@
-# Maintainer: Mathieu "MatToufoutu" Deous <mattoufootu+aur@gmail.com>
+# Maintainer: Mathieu Deous <mat.deous+aur[at]gmail.com>
 
 pkgname=kalibrate-hackrf-git
 _pkgname=kalibrate-hackrf
-pkgver=20150303
+pkgver=20220321
 pkgrel=1
-pkgdesc="GSM base stations scanner (for HackRF)"
+pkgdesc='GSM base stations scanner (for HackRF)'
 arch=('i686' 'x86_64')
-url="https://github.com/scateu/kalibrate-hackrf"
+url='https://github.com/scateu/kalibrate-hackrf'
 license=()
-depends=(git)
-makedepends=(gcc make)
-source=(git+https://github.com/scateu/${_pkgname})
+depends=('fftw>=3.0')
+makedepends=(git gcc make hackrf)
+source=("${pkgname}::git+https://github.com/scateu/${_pkgname}")
 md5sums=(SKIP)
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${pkgname}"
   git log -1 --pretty=format:%cd --date=short | sed 's/-//g'
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${pkgname}"
   ./bootstrap
   ./configure --prefix=/usr
-  make
+  make ${MAKEFLAGS}
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  make DESTDIR="$pkgdir/" install
+  cd "${srcdir}/${pkgname}"
+  make DESTDIR="${pkgdir}/" install
 }
 
 # vim:set ts=2 sw=2 et:
-
