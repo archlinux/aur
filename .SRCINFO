@@ -1,0 +1,18 @@
+pkgbase = openmrac-git
+	pkgdesc = OpenMRac, a split-screen racing game
+	pkgver = r14.9676e0a
+	pkgrel = 1
+	url = https://github.com/Franticware/OpenMRac
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	makedepends = git
+	makedepends = sox
+	depends = openmrac-data-git
+	depends = sdl
+	depends = openal
+	conflicts = OpenMRac
+	source = git+https://github.com/Franticware/OpenMRac.git
+	sha256sums = SKIP
+
+pkgname = openmrac-git
