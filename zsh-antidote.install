@@ -1,13 +1,11 @@
 function info() {
-  antidote_dir="/usr/share/antidote"
+  antidote_dir='/usr/share/zsh-antidote'
   echo "--------------------------------------------------"
   echo "antidote has been installed to $antidote_dir"
   echo "put this in your zshrc to use it!"
   echo "
-  source '/usr/share/antidote/antidote.zsh'
-  [[ ! -f \"\$ZDOTDIR/.zsh_plugins.zsh\" ]] && \\
-    antidote bundle < \"\$ZDOTDIR/.zsh_plugins.txt\" > \"\$ZDOTDIR/.zsh_plugins.zsh\"
-  source \"\$ZDOTDIR/.zsh_plugins.zsh\"
+  source '"$antidote_dir"/antidote.zsh'
+  antidote load
   "
   echo "--------------------------------------------------"
 }

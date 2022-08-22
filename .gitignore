@@ -1,4 +1,5 @@
-*.tar*
+*.tar.*
 *.log
 pkg/
 src/
+antidote/
