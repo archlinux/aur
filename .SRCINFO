@@ -1,6 +1,6 @@
 pkgbase = zoom
 	pkgdesc = Video Conferencing and Web Conferencing Service
-	pkgver = 5.11.3
+	pkgver = 5.11.9
 	pkgrel = 1
 	url = https://zoom.us/
 	arch = x86_64
@@ -27,14 +27,14 @@ pkgbase = zoom
 	depends = xcb-util-image
 	depends = xcb-util-keysyms
 	depends = dbus
-	depends = ibus
 	depends = libdrm
 	optdepends = pulseaudio-alsa: audio via PulseAudio
 	optdepends = qt5-webengine: SSO login support
+	optdepends = ibus: remote control
 	optdepends = picom: extra compositor needed by some window managers for screen sharing
 	optdepends = xcompmgr: extra compositor needed by some window managers for screen sharing
 	options = !strip
-	source = zoom-5.11.3.3882_orig_x86_64.pkg.tar.xz::https://cdn.zoom.us/prod/5.11.3.3882/zoom_x86_64.pkg.tar.xz
-	sha512sums = 3968e1484c0db5a34ce273cd3b6b6d63951baec35e49aeb46cfd4f12bdbe82de4d4f1cd1f89e0be55f5078e7994ce4acb135a556a809370b96432717fe04209e
+	source = zoom-5.11.9.4300_orig_x86_64.pkg.tar.xz::https://cdn.zoom.us/prod/5.11.9.4300/zoom_x86_64.pkg.tar.xz
+	sha512sums = ed453d93184d9b91bd52497e3076e48a1f4fcad755f54e751b6fea003b1113b5382f40d19575ece6c7aeeaed77d359b3bb16944d296008456a70884a3f868fae
 
 pkgname = zoom
