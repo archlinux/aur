@@ -32,7 +32,7 @@ source=("git+${url}.git#branch=develop"
 "prerm.sh::https://aur.archlinux.org/cgit/aur.git/plain/prerm.sh?h=skywire-bin"
 )
 sha256sums=('SKIP'
-            '57eeac39adb3d801ca0cac5c069fdc14add4e9c182569b58fcc4d41aac8efec4'
+            '38d3727b36415db682be48025cdc6ea3d3c5cf331893dd59089a562468cab150'
             'f0300bcde06b6818b637ccc23fa8206a40e67f63815781d265bd10d2cda93e65'
             'e6ea2c7471bcf5bc83e8fd831c047ba61b98eab58ca7c055475714dcf6066539'
             'ec24750a99f5cda8d8a8dc94743943218e1b2088c2b2c7dc1644ee78d954fe7e'
