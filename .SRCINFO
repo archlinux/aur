@@ -1,11 +1,11 @@
 pkgbase = libphidget
 	pkgdesc = user-space access library for the Phidget devices
 	pkgver = 1.10.20220530
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://www.phidgets.com
 	arch = x86_64
-	license = GPL
+	license = LGPL3
 	depends = libusb
 	provides = libphidget
 	conflicts = libphidget
