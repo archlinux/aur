@@ -3,7 +3,7 @@
 pkgname=python-pip-audit-git
 _gitpkgname=pip-audit
 pkgver=r280.0ea49c4
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for scanning Python environments for known vulnerabilities'
 arch=('any')
 url='https://github.com/trailofbits/pip-audit'
@@ -43,7 +43,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_gitpkgname}"
-  python -m flit build --format wheel
+  python -m build --wheel --no-isolation
 }
 
 package() {

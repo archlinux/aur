@@ -1,7 +1,7 @@
 pkgbase = python-pip-audit-git
 	pkgdesc = A tool for scanning Python environments for known vulnerabilities
 	pkgver = r280.0ea49c4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trailofbits/pip-audit
 	arch = any
 	license = Apache
