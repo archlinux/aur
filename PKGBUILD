@@ -1,8 +1,8 @@
 # Maintainer : Karl-Felix Glatzer <karl[dot]glatzer[at]gmx[dot]de>
 
 pkgname=mingw-w64-ffmpeg
-pkgver=5.0.1
-pkgrel=2
+pkgver=5.1
+pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
 arch=('any')
@@ -48,15 +48,13 @@ depends=(
 #'mingw-w64-svt-av1' (only 64 bit support)
 options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-amf-headers' 'mingw-w64-avisynthplus' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'git' 'yasm')
-_tag=9687cae2b468e09e35df4cea92cc2e6a0e6c93b3
+_tag=e0723b7e4e22492275d476fcd30d759e1198bc5b
 #source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}"
 source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
-        ffmpeg-vmaf2.x.patch
         add-av_stream_get_first_dts-for-chromium.patch
         configure.patch)
 b2sums=('SKIP'
-        '65039aac811bfd143359e32720cd6ca64124f1789c1b624bd28a5bd75b37362b2a3b6b402203c4e9d137fb1d00895114f3789df40f8381091d38c98e7876cc8a'
-        '3f2ee7606500fa9444380d138959cd2bccfbba7d34629a17f4f6288c6bde29e931bbe922a7c25d861f057ddd4ba0b095bbd675c1930754746d5dd476b3ccbc13'
+        '555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de'
         '600ce3b6c87378f6d0827ba837484c859a84595f63f6ffdc8d6f5d989ebab4b661b3d15810bdd1192b983119e131fec7421f18fb0ed642b965554d2f9e5efc64')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -64,9 +62,9 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 prepare() {
   cd ffmpeg
 
-  patch -Np1 -i "${srcdir}/configure.patch"
+  git cherry-pick -n e0723b7e4e22492275d476fcd30d759e1198bc5b # remove default IPFS gateway
 
-  patch -Np1 -i "${srcdir}"/ffmpeg-vmaf2.x.patch # vmaf 2.x support
+  patch -Np1 -i "${srcdir}/configure.patch"
 
   patch -Np1 -i "${srcdir}"/add-av_stream_get_first_dts-for-chromium.patch # https://crbug.com/1251779
 }
