@@ -7,5 +7,6 @@ pkgbase = pasfetch
 	license = ISC
 	source = pasfetch-1.2.0.tar.gz::https://github.com/FelixEcker/pasfetch/archive/refs/tags/1.2.0.tar.gz
 	sha256sums = 78c0496b9b9bcea6c780797e60b95ab37b7f41aeb221a0fb5812c0e59eeb83bf
+	depends = fpc
 
 pkgname = pasfetch
