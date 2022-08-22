@@ -1,15 +1,15 @@
 pkgbase = urxvt-tabbedex
 	pkgdesc = Tabbed plugin for rxvt-unicode with many enhancements
-	pkgver = 21.47
+	pkgver = 22.32
 	pkgrel = 1
 	url = https://github.com/mina86/urxvt-tabbedex
 	install = urxvt-tabbedex.install
 	arch = any
 	license = GPL
 	depends = rxvt-unicode
-	source = https://github.com/mina86/urxvt-tabbedex/releases/download/v21.47/urxvt-tabbedex-21.47.tar.bz2
+	source = https://github.com/mina86/urxvt-tabbedex/releases/download/v22.32/urxvt-tabbedex-22.32.tar.bz2
 	source = urxvt-tabbedex.install
-	md5sums = 382f03d02801296d4bfe5116d35d1c1e
+	md5sums = 5eb46faeed39fb906b37838b1dc47125
 	md5sums = 6ea57fa7db9cc912b3759f1ef8c064b0
 
 pkgname = urxvt-tabbedex
