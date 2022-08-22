@@ -9,7 +9,7 @@ arch=("x86_64")
 provides=("caretaker")
 options=("strip")
 source=("https://github.com/grego/caretaker/releases/download/v$pkgver/caretaker-$pkgver-x86_64.tar.gz")
-sha256sums=("95a84b77f60c12e89ea95d8e36e90b32313d86e207adfc2de6d92f8ae115bf7a")
+sha256sums=("1e8e9603495903bd9ab69bb553c96535dcb5b4532976cffc55fc89c2611c6378")
 
 package() {
     install -Dm755 caretaker -t "$pkgdir/usr/bin/"
