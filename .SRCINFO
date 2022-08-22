@@ -8,6 +8,7 @@ pkgbase = display-switch
 	makedepends = cargo
 	makedepends = udev
 	depends = libusb
+	backup = etc/display-switch/display-switch.ini
 	source = display-switch-1.2.0.tar.gz::https://codeload.github.com/haimgel/display-switch/tar.gz/refs/tags/1.2.0
 	source = display-switch.sysusers
 	source = 45-display-switch.rules

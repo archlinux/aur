@@ -7,27 +7,15 @@ pkgdesc="Turn a $30 USB switch into a full-featured multi-monitor KVM switch"
 arch=(x86_64)
 url="https://github.com/haimgel/display-switch"
 license=('MIT')
-groups=()
 depends=(libusb)
 # udev for libudev.pc
 makedepends=(cargo udev)
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
+backup=("etc/display-switch/display-switch.ini")
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/haimgel/display-switch/tar.gz/refs/tags/$pkgver"
 	"$pkgname.sysusers"
 	"45-$pkgname.rules"
 	"$pkgname.service"
 	"display-switch.ini")
-
-
-noextract=()
 sha256sums=('28e3d9791d39f655c337de19063ea8b19f5c3a0784fa84a222abdf63a33823af'
 	    'bf5ee4f9876505628c5ce84e84e918c70d66be70b766d62bb138e294608ffbae'
 	    'af9dbdc771023cd04f5b0c638c30356e6a824b32f0c04ea61fe929c71122bccd'
