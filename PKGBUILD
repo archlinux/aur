@@ -58,6 +58,7 @@ package_ceph-mgr-bin() {
               'python-remoto: ssh module')
   provides=("ceph-mgr=${pkgver}-${pkgrel}")
   conflicts=('ceph<14.2.1-1')
+  options=('emptydirs' '!strip')
 
   cd "${srcdir}"
 
