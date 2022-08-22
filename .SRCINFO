@@ -1,0 +1,13 @@
+pkgbase = erg-bin
+	pkgdesc = The Erg programming language
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://erg-lang.github.io/
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	provides = erg
+	conflicts = erg
+	source = https://github.com/erg-lang/erg/releases/download/v0.2.6/erg-0.2.6-x86_64.tar.gz
+	sha256sums = 714fe17d953dbe9cdf24a2569cec648e1a804ff5b1552ad03fb86b04e9ea6ef4
+
+pkgname = erg-bin
