@@ -1,6 +1,6 @@
 # Maintainer: Jérémy Anger <angerj.dev@gmail.com>
 pkgname=vpv
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=0
 epoch=
 pkgdesc="Image viewer (with GDAL and Octave support)"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/kidanger/vpv/archive/v${pkgver}.tar.gz")
 noextract=()
-md5sums=('cf21318fdabb3a806edbd151eda85677')
+md5sums=('a586e3dc930e04ae240fd41858004f50')
 validpgpkeys=()
 
 prepare() {
