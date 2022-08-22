@@ -10,9 +10,10 @@ license=('MIT' 'Apache')
 arch=('x86_64')
 conflicts=('erg-git' 'erg')
 depends=('python')
-makedepends=('rust' 'cargo' 'git')
+makedepends=('cargo' 'git')
+
 source=("$_pkgname::https://yuioto-onedrive.vercel.app/api/raw/?path=/tmp/erg/bin/erg-v$pkgver-$arch")
-sha256sums=("276560e7eda0afed9d838ecd6ab94630741bc923dc5f767fea0bf548260fe8fb")
+sha256sums=('eb23521fe0ed17debf65b7f4660a92cd402a215c0b60c4475812b24602034eaf')
 
 package() {
 	install -Dm755 erg -t "$pkgdir/usr/bin"
