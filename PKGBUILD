@@ -43,5 +43,5 @@ package() {
   cp -r src/firefox "$pkgdir/usr/share/doc/${pkgname%-git}/"
 
   # Fix for Dash to panel
-  cp -r src/gnome-shell/extensions/dash-to-panel "$pkgdir/usr/share/doc/${pkgname%-git}"
+  cp -r src/gnome-shell/extensions/dash-to-panel "$pkgdir/usr/share/doc/${pkgname%-git}/"
 }
