@@ -3,12 +3,13 @@
 pkgname=deskreen-bin
 _pkgname=deskreen
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Turns any device with a web browser to a second screen for your computer (binary release)'
 arch=('x86_64')
 url='https://deskreen.com'
 license=('AGPL3')
 depends=('nss')
+conflicts=("$_pkgname")
 source=("$_pkgname-$pkgver.deb::https://github.com/pavlobu/$_pkgname/releases/download/v$pkgver/${_pkgname}_${pkgver}_amd64.deb"
         "$_pkgname.desktop"
         "LICENSE::https://raw.githubusercontent.com/pavlobu/$_pkgname/v$pkgver/LICENSE")
