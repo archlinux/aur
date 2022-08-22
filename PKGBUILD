@@ -3,14 +3,14 @@
 pkgname=python-pylint-venv
 _internal_pkgname=pylint-venv
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Make pylint respect virtualenvs.'
 arch=('any')
 url="https://github.com/jgosmann/${_internal_pkgname}"
 license=('MIT')
 optdepends=('python-pylint: Kind of useless without it'
             'python-virtualenv: Kind of useless without it')
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-installer python-wheel python-poetry-core)
 
 source=("https://github.com/jgosmann/${_internal_pkgname}/archive/v${pkgver}.tar.gz"
         "https://github.com/jgosmann/${_internal_pkgname}/raw/v${pkgver}/LICENSE.txt")

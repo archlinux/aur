@@ -1,13 +1,14 @@
 pkgbase = python-pylint-venv
 	pkgdesc = Make pylint respect virtualenvs.
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jgosmann/pylint-venv
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-poetry-core
 	optdepends = python-pylint: Kind of useless without it
 	optdepends = python-virtualenv: Kind of useless without it
 	source = https://github.com/jgosmann/pylint-venv/archive/v2.3.0.tar.gz
