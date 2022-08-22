@@ -1,7 +1,7 @@
 # MAINTAINER: haagch <christoph.haag@collabora.com>
 
 pkgname=basalt-monado-git
-pkgver=r430.b379a7c
+pkgver=r439.d2db201
 pkgrel=1
 pkgdesc="Visual-Inertial Mapping with Non-Linear Factor Recovery"
 arch=('i686' 'x86_64')
@@ -52,11 +52,13 @@ build() {
 	cmake \
 		-DCMAKE_INSTALL_PREFIX="/usr" \
 		-DCMAKE_BUILD_TYPE="RelWithDebInfo" \
+		-DBUILD_TESTS=OFF \
+		-DBASALT_INSTANTIATIONS_DOUBLE=OFF \
 		-Bbuild \
 		-GNinja
 
 	msg "Building the project"
-	ninja -C build -j4 # only increase if you have a lot of ram
+	ninja -C build -j8 # only increase if you have a lot of ram
 }
 
 package() {
