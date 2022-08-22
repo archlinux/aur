@@ -1,15 +1,30 @@
 pkgbase = mudita-center-appimage
 	pkgdesc = Mudita Center Electron App. Expand and update the features of Mudita Pure, while using your computer.
-	pkgver = 1.4.2
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/mudita/mudita-center
 	arch = x86_64
 	license = GPL3
 	depends = zlib
 	depends = hicolor-icon-theme
-	noextract = mudita-center-appimage-1.4.2.AppImage
+	noextract = mudita-center-appimage-1.5.0.AppImage
 	options = !strip
-	source_x86_64 = mudita-center-appimage-1.4.2.AppImage::https://github.com/mudita/mudita-center/releases/download/1.4.2/Mudita-Center.AppImage
+	source_x86_64 = mudita-center-appimage-1.5.0.AppImage::https://github.com/mudita/mudita-center/releases/download/1.5.0/Mudita-Center.AppImage
 	sha256sums_x86_64 = af81f5bd6ccbd5b54f3f36bebcde34daa2945438cdf693b084f34a73f22ce686
+
+pkgname = mudita-center-appimage
+pkgbase = mudita-center-appimage
+	pkgdesc = Mudita Center Electron App. Expand and update the features of Mudita Pure, while using your computer.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/mudita/mudita-center
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = hicolor-icon-theme
+	noextract = mudita-center-appimage-1.5.0.AppImage
+	options = !strip
+	source_x86_64 = mudita-center-appimage-1.5.0.AppImage::https://github.com/mudita/mudita-center/releases/download/1.5.0/Mudita-Center.AppImage
+	sha256sums_x86_64 = df829ee028b93b72349d85ab1d5445e397f8991bfc54086c77cffd21c4e9b51a
 
 pkgname = mudita-center-appimage
