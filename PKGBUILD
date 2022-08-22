@@ -5,7 +5,7 @@ pkgname="mongodb44-bin"
 pkgver="4.4.16"
 _basever="4.4"
 _basedist="focal"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64" "aarch64")
 url="https://www.mongodb.com/"
@@ -41,12 +41,12 @@ sha256sums=('16db77050441afb964b1899f82466d53a0677c9c4802cd98b967d3cc2efe094f'
             '47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b'
             '51ee1e1f71598aad919db79a195778e6cb6cfce48267565e88a401ebc64497ac'
             '09d99ca61eb07873d5334077acba22c33e7f7d0a9fa08c92734e0ac8430d6e27')
-sha256sums_x86_64=('0d0c26666cc90d120186386b7985feb8c11654b350afc0e4787f8ea2652edc0f'
-                   'fdc80ece952c3a3eb19ba873b1ef78d9f5533ef83997cc534951dfae413d79f2'
-                   '47d930166ae80033963490fbf42d7a2e5271f5df90d8daa6d3d2950ea5c4b4d6')
-sha256sums_aarch64=('cc4cae8e0e5ec422b1eff883b1eeaa3da9e342cf435a20ae26dad99fef4c2bb3'
-                    '06c3abbdae0d0441013157f2bf722794a534679dc5eb272406c33b631bed959d'
-                    'abb1f57a14d1f569cc5117a465c217e76a0cc568edae39f576d462576bc8c38e')
+sha256sums_x86_64=('d2ef9829ddd6b30ebb344f3ae64b375a0c8aa447b1d2da49f45ad700938c1223'
+                   '2598c6602179229d30aabf864e51f0f63758d19b2cc0f37468b74500ad42df93'
+                   'e528c1d47c244156587b89130c5d48117d65195b268a84293c013a3e98a2d0f6')
+sha256sums_aarch64=('89a621cc223b6f83b0b6a7d606d24426a155a7e697bbb446f7b96a2824d08ed2'
+                    'f0bfb8bb022f86e570f6de0dd42b92b479f021984e759aa206c8dc37e888c812'
+                    '3812a957f583b6320f310f073713afebc80616d4dc97c6060a7669e50764c395')
 
 prepare() {
   mkdir -p output
