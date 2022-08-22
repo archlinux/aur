@@ -68,6 +68,14 @@ prepare() {
     popd > /dev/null;
 }
 
+check() {
+    hello_file="$(realpath ../hello.zig)"
+    cd "${srcdir}/zig-linux-${CARCH}-${pkgver//_/-}";
+    echo "Running Zig Hello World"
+    ./zig run "$hello_file"
+    ./zig test "$hello_file"
+}
+
 package() {
   cd "${srcdir}/zig-linux-${CARCH}-${pkgver//_/-}"
   install -d "${pkgdir}/usr/bin"
