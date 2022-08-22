@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Deskreen
+Comment=Deskreen turns any device into a secondary screen for your computer
+Categories=Development;
+Keywords=Deskreen;screen;display;share;
+Exec=deskreen
+Icon=deskreen
+Terminal=false
+StartupNotify=true
