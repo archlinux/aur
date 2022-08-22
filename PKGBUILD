@@ -7,7 +7,7 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=103.0.2
+pkgver=104.0
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
@@ -16,12 +16,16 @@ url="https://cachyos.org"
 depends=(gtk3 libxt mime-types dbus-glib
     ffmpeg nss ttf-font libpulse
     aom harfbuzz graphite
-libvpx libjpeg zlib icu libevent pipewire dav1d)
-makedepends=(unzip zip diffutils yasm mesa imake inetutils
-    rust xorg-server-xwayland xorg-server-xvfb
-    autoconf2.13 clang llvm jack nodejs cbindgen nasm
-    python-setuptools python-zstandard git binutils lld dump_syms
-wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi mold python-pipenv python-pyqt5 python-cmd2)
+    libvpx libjpeg zlib icu libevent pipewire dav1d)
+#makedepends=(unzip zip diffutils yasm mesa imake inetutils
+#    rust xorg-server-xwayland xorg-server-xvfb
+#    autoconf2.13 clang llvm jack nodejs cbindgen nasm
+#    python-setuptools python-zstandard git binutils lld dump_syms
+#wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi mold python-pipenv python-pyqt5 python-cmd2)
+makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
+             autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
+             python-setuptools python-zstandard git binutils lld dump_syms
+             'wasi-compiler-rt>13' 'wasi-libc>=1:0+258+30094b6' 'wasi-libc++>13' 'wasi-libc++abi>13' pciutils) # pciutils: only to avoid some PGO warning
 optdepends=('networkmanager: Location detection via available WiFi networks'
     'libnotify: Notification integration'
     'pulseaudio: Audio support'
@@ -31,7 +35,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 backup=('usr/lib/cachy-browser/cachy.cfg'
 'usr/lib/cachy-browser/distribution/policies.json')
 groups=('cachyos')
-options=(!emptydirs !makeflags !strip !lto !debug)
+options=(!emptydirs !makeflags !strip !lto !debug ccache)
 _arch_svn=https://git.archlinux.org/svntogit/packages.git/plain/trunk
 # _common_tag="v90.0-1"
 _common_tag="v${pkgver}-${pkgrel}"
@@ -40,8 +44,8 @@ install=cachy-browser.install
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
     $pkgname.desktop
     "git+https://github.com/cachyos/cachyos-browser-settings.git"
-    "git+https://github.com/cachyos/cachyos-browser-common.git")
-sha256sums=('766183e8e39c17a84305a85da3237919ffaeb018c6c9d97a7324aea51bd453aa'
+"git+https://github.com/cachyos/cachyos-browser-common.git")
+sha256sums=('1a294a651dc6260f9a72a3ab9f10e7792a4ab41a9cfa8527ad3dd9979cdc98ce'
             'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
@@ -68,9 +72,6 @@ ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
-#ac_add_options --enable-default-toolkit=cairo-gtk3-x11-wayland
-
-export LDFLAGS+=" -Wl,--no-keep-memory"
 
 export AR=llvm-ar
 export CC='clang'
@@ -117,7 +118,7 @@ ac_add_options --disable-gpsd
 ac_add_options --disable-synth-speechd
 ac_add_options --disable-debug-symbols
 ac_add_options --disable-debug-js-modules
-ac_add_options --disable-trace-logging
+#ac_add_options --disable-trace-logging
 ac_add_options --disable-rust-tests
 ac_add_options --disable-necko-wifi
 ac_add_options --disable-webspeech
@@ -203,8 +204,8 @@ END
     patch -Np1 -i ${_patches_dir}/librewolf-ui/lw-logo-devtools.patch
 
     patch -Np1 -i ${_patches_dir}/librewolf-ui/handlers.patch
-    
-   	msg2 "change bus/dbus/remoting names to org.cachyos"
+
+    msg2 "change bus/dbus/remoting names to org.cachyos"
     patch -Np1 -i ${_patches_dir}/librewolf/dbus_name.patch
 
     msg2 "customized pref panel"
@@ -222,10 +223,10 @@ END
     msg2 "Fix build with zstandard 1.8.0"
     patch -Np1 -i ${_patches_dir}/zstandard-0.18.0.patch
 
-  	msg2  "stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)"
-  	patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch # fails with 100
-  	
-  	msg2 "Debian patch to enable global menubar"
+#   msg2  " some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)"
+#   patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch # fails with 104
+
+    msg2 "Debian patch to enable global menubar"
     patch -Np1 -i ${_patches_dir}/fix-psutil-dev.patch
     msg2 "fix for glibc 2.36"
     patch -Np1 -i ${_patches_dir}/glibc236.patch
@@ -240,16 +241,11 @@ build() {
     export MOZ_NOSPAM=1
     export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
     #export MOZ_ENABLE_FULL_SYMBOLS=1
-    export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
+    export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
     export PIP_NETWORK_INSTALL_RESTRICTED_VIRTUALENVS=mach # let us hope this is a working _new_ workaround for the pip env issues?
 
     # LTO needs more open files
     ulimit -n 4096
-
-    # -fno-plt with cross-LTO causes obscure LLVM errors
-    # LLVM ERROR: Function Import: link error
-    # CFLAGS="${CFLAGS/-fno-plt/}"
-    # CXXFLAGS="${CXXFLAGS/-fno-plt/}"
 
     # Do 3-tier PGO
     echo "Building instrumented browser..."
