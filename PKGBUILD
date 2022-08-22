@@ -1,6 +1,6 @@
 # Maintainer: solopasha <daron439@gmail.com>
 pkgname=mpv_inhibit_gnome
-pkgver=r19.6f192eb
+pkgver=v0.1.0.r0.ga8b4d2c
 pkgrel=1
 pkgdesc="mpv plugin that prevents screen blanking in GNOME"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/Guldoman/mpv_inhibit_gnome"
 license=('MIT')
 depends=(mpv dbus)
 makedepends=(git)
-source=("$pkgname::git+$url.git")
+source=("$pkgname::git+$url.git#commit=a8b4d2c9be24baa7438e65778de512191406bb11")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -25,6 +25,5 @@ build() {
 }
 
 package() {
-  install -Dm644 "$pkgname/bin/mpv_inhibit_gnome.so" -t "$pkgdir/etc/mpv/scripts"
+  install -Dm755 "$pkgname/lib/mpv_inhibit_gnome.so" -t "$pkgdir/etc/mpv/scripts"
 }
-
