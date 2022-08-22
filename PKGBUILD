@@ -1,6 +1,6 @@
 # Maintainer: XiaYeSuiFeng <xiayesuifeng@firerain.me>
 pkgname=gopanel
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='A control panel that is written in Golang and is able to manage Caddy 2'
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=('caddy')
 makedepends=('go' 'npm')
 source=("https://gitlab.com/xiayesuifeng/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "https://gitlab.com/xiayesuifeng/${pkgname}-web/-/archive/${pkgver}/${pkgname}-web-${pkgver}.tar.gz")
-sha256sums=('b34d6e887176d9d2bd2f519ee2e40b12fb96b8ecc65da818f88663e4c3b7a599'
-            '3a70c96c96d8e5e31cc994bf00fd50585934ee2513b930cadcd9f71796a5f118')
+sha256sums=('e92228570e2b4cb17a27c3366580cfdf036f5f7ee08c8e4f96f2f086c6b2b23b'
+            'f926091727f428aaebb8fa0cc6d0c87fab888a65d2c360ddeb541ae793e2df7f')
 
 build() {
   cd ${srcdir}/gopanel-web-${pkgver}
@@ -27,8 +27,8 @@ build() {
 package() {
   cd ${srcdir}/${pkgname}-${pkgver}
 
-  mkdir -p "$pkgdir/etc/gopanel/app.conf.d"
-  mkdir -p "$pkgdir/usr/share/gopanel"
+  install -d "$pkgdir/etc/gopanel/app.conf.d"
+  install -d "$pkgdir/usr/share/gopanel"
   install -D -m 0755 gopanel "$pkgdir/usr/bin/gopanel"
   install -D -m 0644 systemd/gopanel.service "$pkgdir/usr/lib/systemd/system/gopanel.service"
   install -D -m 0644 config.default.json "$pkgdir/etc/gopanel/config.json"
