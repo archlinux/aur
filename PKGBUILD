@@ -21,7 +21,7 @@ install=
 changelog=
 source=("${pkgname%-git}::git+https://github.com/Kingtous/Fclash.git#branch=stable" "https://github.com/Kingtous/Fclash/releases/download/v1.2.5/cn.kingtous.fclash.deb")
 noextract=()
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP' 'd1ccf5db950e5db8423b9d60339bd5d3954e4d24da4b77a2adff1fb3d2b2ad99')
 validpgpkeys=()
 
 
