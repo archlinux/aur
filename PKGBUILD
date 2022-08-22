@@ -2,13 +2,13 @@
 _basename=wsysmon
 pkgname=wsysmon-git
 pkgdesc="A windows task manager clone for Linux."
-pkgver=r5.81e32da
+pkgver=r7.604c8e0
 pkgrel=1
 url='https://github.com/SlyFabi/WSysMon'
-arch=(any)
+arch=(x86_64 aarch64)
 license=(MIT)
 depends=(gtkmm3 procps)
-makedepends=(git)
+makedepends=(git cmake)
 provides=(${pkgname%-*}=$pkgver)
 conflicts=(${pkgname%-*})
 source=($_basename::git+$url
