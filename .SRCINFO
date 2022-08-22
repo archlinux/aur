@@ -1,6 +1,6 @@
 pkgbase = google-voice-nativefier
 	pkgdesc = Google Voice wrapped as a desktop application through Nativefier
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://voice.google.com
 	arch = x86_64
@@ -16,4 +16,3 @@ pkgbase = google-voice-nativefier
 	sha256sums = 8d0d2d0a9b2d59bac46d38ec4262f6b9979aed57d3d4f1d46fe91506d10b753b
 
 pkgname = google-voice-nativefier
-
