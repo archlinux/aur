@@ -9,7 +9,7 @@ pkgname=zig-dev-bin
 # "newer" greater than the new version scheme
 epoch=1
 # NOTE: Hyphen -> underscore
-pkgver=0.10.0_dev.3475+b3d463c9e
+pkgver=0.10.0_dev.3659+e5e6eb983
 pkgrel=1
 pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software"
 arch=('x86_64' 'aarch64')
@@ -75,27 +75,7 @@ package() {
   cp -R lib "${pkgdir}/usr/lib/zig/lib"
   install -D -m755 zig "${pkgdir}/usr/lib/zig/zig"
   ln -s /usr/lib/zig/zig "${pkgdir}/usr/bin/zig"
-  # Old versions had a `docs` dir in the root dir
-  local langref_docs="${pkgdir}/usr/share/doc/zig/langref.html";
-  if [[ -d "docs" ]]; then
-    install -D -m644 docs/zig/langref.html "$langref_docs";
-    cp -R docs/std "${pkgdir}/usr/share/doc/zig/";
-  elif [[ -f "langref.html" ]]; then
-    # New versions have langref in the root dir,
-    # stdlib docs in lib/zig/docs
-    #
-    # The first install command implicitly creates
-    # the doc directory needed by stdlib :(
-    #
-    # NOTE: Currently missing data.js file
-    #
-    # https://ziglang.org/documentation/master/std/data.js
-    # TODO: Maybe just download it seperately from the tarball?
-    install -D -m644 langref.html "$langref_docs";
-    cp -R lib/zig/docs "${pkgdir}/usr/share/doc/zig/std";
-  else
-    echo "Unable to find docs!" >&2;
-    exit 1;
-  fi;
+  install -D -m644 docs/langref.html "${pkgdir}/usr/share/doc/zig/langref.html"
+  cp -R docs/std "${pkgdir}/usr/share/doc/zig/"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/zig/LICENSE"
 }
