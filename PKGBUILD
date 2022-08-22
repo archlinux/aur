@@ -3,7 +3,7 @@
 
 _pkgname=ubridge
 pkgname=${_pkgname}-git
-pkgver=v0.9.18.r7.gb65c542
+pkgver=v0.9.18.r13.g214d372
 pkgrel=1
 pkgdesc='Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces'
 arch=('any')
@@ -14,7 +14,7 @@ depends=('libpcap')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+git://github.com/GNS3/${_pkgname}.git")
+source=("${_pkgname}::git+https://github.com/GNS3/${_pkgname}.git")
 install="${_pkgname}.install"
 sha256sums=('SKIP')
 
