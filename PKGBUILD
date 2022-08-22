@@ -1,11 +1,11 @@
 # Maintainer: Amirul Fitri <tounghacker@gmail.com>
 
 # maintainer's variables
-_commit=6273120f04b5005b9043a7d0e705990e7c75485b
+_commit=94712eea624b609e7b97829262b53a0e589e527a
 
 pkgname=playit
-pkgver=v0.9.3
-pkgrel=1
+pkgver=v0.9.3+1+g94712ee
+pkgrel=2
 pkgdesc="A tunneling tool to host a game server without port forwarding or sharing public IP"
 arch=('x86_64')
 url="https://playit.gg"
@@ -17,6 +17,7 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "${pkgname}"
+  cargo update # FIXME: remove later when upstream update Cargo.lock
   cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
 
@@ -35,8 +36,7 @@ build() {
 check() {
   cd "${pkgname}"
   export RUSTUP_TOOLCHAIN=stable
-  # FIXME: re-enable check
-  #cargo test --frozen --all-features
+  cargo test --frozen --all-features
 }
 
 package() {
