@@ -3,11 +3,11 @@
 _pkgname=scikit-hep-testdata
 pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}")
-pkgver=0.4.16
-pkgrel=3
+pkgver=0.4.19
+pkgrel=1
 pkgdesc='A common package to provide example files (e.g. ROOT) for testing and developing packages against'
 arch=('any')
-makedepends=('git' 'python-setuptools' 'python-setuptools-scm' 'python-toml')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm' 'python-toml')
 checkdepends=('python-pytest')
 depends=('python-pyaml' 'python-requests')
 url="https://github.com/scikit-hep/${_pkgname}"
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 check() {
@@ -29,7 +29,7 @@ check() {
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
 
-    python setup.py install --root="${pkgdir}/" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 
     install -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
