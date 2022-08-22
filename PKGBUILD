@@ -3,7 +3,7 @@
 pkgname=python-pip-audit-git
 _gitpkgname=pip-audit
 pkgver=r280.0ea49c4
-pkgrel=2
+pkgrel=3
 pkgdesc='A tool for scanning Python environments for known vulnerabilities'
 arch=('any')
 url='https://github.com/trailofbits/pip-audit'
@@ -29,7 +29,13 @@ depends=(
   'python-lockfile'
   'python-cyclonedx-lib'
 )
-makedepends=('git' 'python-flit' 'python-installer')
+makedepends=(
+  'git'
+  'python-build'
+  'python-flit'
+  'python-installer'
+  'python-wheel'
+)
 conflicts=('python-pip-audit')
 options=('!strip')
 source=("${_gitpkgname}::git+https://github.com/trailofbits/pip-audit.git")
