@@ -1,5 +1,5 @@
 pkgname=companion
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Control software for the Elgato Streamdeck with a focus on broadcasting."
 arch=('i386' 'x86_64')
@@ -13,7 +13,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bitfocus/companion/arch
 		"50-bitfocus-companion.rules"
 		"bitfocus-companion.desktop")
 
-sha256sums=('a88ae7c376849de25569b531b7aec562324c6fc37a419b642ad7107104c47ad6'
+sha256sums=('d7c85c3cad365167ddef4205ac4049033a45c5e7257d106f542bf1ebe25343af'
             'c0e7cd1f730a7b4381e654b53f6fdd1c06911b2593bdfe07bba5e198fc61d5d9'
             '65289895360dae94dd710e6804709c1e3f95e6bc275b1621cb88eb8a7cbd348f')
 
@@ -40,7 +40,9 @@ prepare() {
 	rm -Rf "${srcdir}/yarn"
 	mkdir "${srcdir}/yarn"
 
-	nvm install 14.19.0
+	cd "${srcdir}/${pkgname}-${pkgver}"
+
+	nvm install
 	npm config set cache "${srcdir}/npm"
 	npm install -g node-gyp
 	npm install -g yarn
