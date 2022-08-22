@@ -2,8 +2,8 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}"
-pkgver="0.10.2beta"
-pkgrel=2
+pkgver="0.10.3beta"
+pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(any)
 url="https://github.com/hyprwm/Hyprland"
@@ -48,7 +48,7 @@ makedepends=(
 	wayland-protocols
 	xorgproto)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hyprwm/Hyprland/releases/download/v${pkgver}/source-v${pkgver}.tar.gz")
-sha256sums=('ec83ba6039695ad580d1e552a79852cc36dfce2742ab224972582c53485e0a8d')
+sha256sums=('f8727d32bd9256e443ffcd5f83a8c33cdc93ec7e43ac43cdbf1158624e301a72')
 conflicts=("${_pkgname}")
 provides=(hyprland)
 options=(!makeflags !buildflags !strip)
