@@ -3,13 +3,13 @@
 pkgbase='ceph-bin'
 pkgname=('ceph-bin' 'ceph-libs-bin' 'ceph-mgr-bin')
 pkgver=15.2.14
-pkgrel=7
+pkgrel=8
 pkgdesc='Distributed, fault-tolerant storage platform delivering object, block, and file system'
 arch=('x86_64')
 url='https://ceph.com/'
 license=('GPL')
 options=('emptydirs')
-_artifact=v${pkgver}-${pkgrel}
+_artifact=v${pkgver}-7
 source=("ceph-bin-${pkgver}.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/${_artifact}/ceph_linux_${arch}.tar.zstd"
         "ceph-libs-bin-${pkgver}.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/${_artifact}/ceph_libs_linux_${arch}.tar.zstd"
         "ceph-mgr-bin-${pkgver}.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/${_artifact}/ceph_mgr_linux_${arch}.tar.zstd")
