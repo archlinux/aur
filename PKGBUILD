@@ -3,7 +3,7 @@
 _pkgname=iminuit
 pkgbase="python-${_pkgname}"
 pkgname=("python-${_pkgname}" "python-${_pkgname}-docs")
-pkgver=2.15.2
+pkgver=2.16.0
 pkgrel=1
 pkgdesc="Python interface for MINUIT, a physics analysis tool for function minimization."
 arch=('x86_64')
@@ -17,8 +17,7 @@ options=(!emptydirs)
 source=(
   "${pkgbase}::git+https://github.com/scikit-hep/iminuit#tag=v${pkgver}"
   "${pkgbase}-pybind11::git+https://github.com/pybind/pybind11.git"
-  # remote refernce is broken, fix it
-  "${pkgbase}-root::git+https://github.com/root-project/root.git#commit=195f87330295e1ecdace9e99fc1b7e9558bf61d4"
+  "${pkgbase}-root::git+https://github.com/root-project/root.git"
 )
 sha256sums=('SKIP'
             'SKIP'
@@ -26,6 +25,10 @@ sha256sums=('SKIP'
 
 get_pyver () {
     python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
+}
+
+get_cpyver () {
+    python -c 'import sys; print(str(sys.version_info[0]) + str(sys.version_info[1]))'
 }
 
 prepare() {
@@ -53,13 +56,13 @@ build() {
   python -m venv --system-site-packages test-env
   test-env/bin/python -m pip install numba-stats resample
   echo 'nbsphinx_allow_errors = True' >> doc/conf.py
-  PYTHONPATH="${PWD}/test-env/lib/python$(get_pyver)/site-packages:${PWD}/build/lib.linux-${CARCH}-$(get_pyver)" make build/html/done
+  PYTHONPATH="${PWD}/test-env/lib/python$(get_pyver)/site-packages:${PWD}/build/lib.linux-${CARCH}-cpython-$(get_cpyver)" make build/html/done
 }
 
 check() {
   cd "${srcdir}/${pkgbase}"
 
-  PYTHONPATH="${PWD}/build/lib.linux-${CARCH}-$(get_pyver)" pytest || warning "Tests failed"
+  PYTHONPATH="${PWD}/build/lib.linux-${CARCH}-cpython-$(get_cpyver)" pytest || warning "Tests failed"
 }
 
 package_python-iminuit() {
