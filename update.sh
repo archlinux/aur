@@ -25,6 +25,16 @@ DOWNLOAD_URL=$(jq -r <<<$RELEASES --arg last $LAST '
     .[$last][] | select(.packagetype == "sdist").url
 ')
 
+if [ -z "$DOWNLOAD_URL" ]; then
+    echo "Could not get a release URL from:
+$(
+    jq -r <<<$RELEASES --arg last $LAST '
+        .[$last][] | {packagetype, url}
+    '
+)" >&2
+    exit 1
+fi
+
 SUM=$(curl -sL $DOWNLOAD_URL | $HASH - | cut -d' ' -f1)
 
 sed -i 's/.*sums=.*$/'$HASH_NAME'=("'$SUM'")/' PKGBUILD
