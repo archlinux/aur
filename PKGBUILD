@@ -121,7 +121,7 @@ build() {
     export SKIP_LINUX_PACKAGES="True"
 
     # Set unsafe-perm to make sure the build also works in an AUR wrapper
-    npm config set unsafe-perm true
+    echo "unsafe-perm=true" >> .npmrc
     
     . get_repo.sh
     . build.sh
