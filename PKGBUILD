@@ -9,7 +9,7 @@ arch=("x86_64")
 provides=("blades")
 options=("strip")
 source=("https://github.com/grego/blades/releases/download/v$pkgver/blades-$pkgver-x86_64.tar.gz")
-sha256sums=("23d88795f44158ab8066baf2eeab628d26d61aa4b54efb8e9de2a25ba86547aa")
+sha256sums=("cf8bacc7059a2d0c0fe054d717b60ba56181329535f947ec84f83706cef0f1dd")
 
 package() {
     install -Dm755 blades -t "$pkgdir/usr/bin/"
