@@ -7,8 +7,8 @@ _githuborg=${_projectname}
 pkgdesc="Skywire Mainnet Node implementation; develop branch - Debian testing package."
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
 pkgver='1.1.0'
-pkgrel=1
-#pkgrel=1
+pkgrel=2
+#pkgrel=2
 _pkgarch=$(dpkg --print-architecture)
 _pkgarches=('armhf' 'arm64' 'amd64' 'armel')
 _pkgver=${pkgver}
@@ -96,28 +96,28 @@ _cmddir=${srcdir}/go/src/${_pkggopath}/cmd
 
 _msg2 "building skychat binary"
 cd ${_cmddir}/apps/skychat
-go build -trimpath --ldflags="" --ldflags "${BUILDINFO} -s -w -linkmode external -extldflags '-static' -buildid=" -o $_GOAPPS .
+go build -trimpath --ldflags="" --ldflags "-s -w -linkmode external -extldflags '-static' -buildid=" -o $_GOAPPS .
 _msg2 "building skysocks binary"
 cd ${_cmddir}/apps/skysocks
-go build -trimpath --ldflags="" --ldflags "${BUILDINFO} -s -w -linkmode external -extldflags '-static' -buildid=" -o $_GOAPPS .
+go build -trimpath --ldflags="" --ldflags "-s -w -linkmode external -extldflags '-static' -buildid=" -o $_GOAPPS .
 _msg2 "building skysocks-client binary"
 cd ${_cmddir}/apps/skysocks-client
-go build -trimpath --ldflags="" --ldflags "${BUILDINFO} -s -w -linkmode external -extldflags '-static' -buildid=" -o $_GOAPPS .
+go build -trimpath --ldflags="" --ldflags " -s -w -linkmode external -extldflags '-static' -buildid=" -o $_GOAPPS .
 _msg2 "building vpn-client binary"
 cd ${_cmddir}/apps/vpn-client
-go build -trimpath --ldflags="" --ldflags "${BUILDINFO} -s -w -linkmode external -extldflags '-static' -buildid=" -o $_GOAPPS .
+go build -trimpath --ldflags="" --ldflags "-s -w -linkmode external -extldflags '-static' -buildid=" -o $_GOAPPS .
 _msg2 "building vpn-server binary"
 cd ${_cmddir}/apps/vpn-server
-go build -trimpath --ldflags="" --ldflags "${BUILDINFO} -s -w -linkmode external -extldflags '-static' -buildid=" -o $_GOAPPS .
+go build -trimpath --ldflags="" --ldflags "-s -w -linkmode external -extldflags '-static' -buildid=" -o $_GOAPPS .
 _msg2 "building skywire-cli binary"
 cd ${_cmddir}/skywire-cli
-go build -trimpath --ldflags="" --ldflags "${BUILDINFO} -s -w -linkmode external -extldflags '-static' -buildid=" -o $GOBIN .
+go build -trimpath --ldflags="" --ldflags "-s -w -linkmode external -extldflags '-static' -buildid=" -o $GOBIN .
 _msg2 "building skywire-visor binary"
 cd ${_cmddir}/skywire-visor
-go build -trimpath --ldflags="" --ldflags "${BUILDINFO} -s -w -linkmode external -extldflags '-static' -buildid=" -o $GOBIN .
+go build -trimpath --ldflags="" --ldflags "-s -w -linkmode external -extldflags '-static' -buildid=" -o $GOBIN .
 _msg2 "building setup-node binary"
 cd ${_cmddir}/setup-node
-go build -trimpath --ldflags="" --ldflags "${BUILDINFO} -s -w -linkmode external -extldflags '-static' -buildid=" -o $GOBIN .
+go build -trimpath --ldflags="" --ldflags " -s -w -linkmode external -extldflags '-static' -buildid=" -o $GOBIN .
 
 #binary transparency
 cd $GOBIN
