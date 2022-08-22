@@ -1,6 +1,6 @@
 pkgbase = pg_qualstats-git
 	pkgdesc = Capture qualifiers the same way as pg_stat_statement does for statements
-	pkgver = 1.0.4.r3.g7b8f418
+	pkgver = 2.0.4.1.r6.g66b3037
 	pkgrel = 1
 	url = https://github.com/powa-team/pg_qualstats
 	install = pg_qualstats-git.install
@@ -17,4 +17,3 @@ pkgbase = pg_qualstats-git
 	md5sums = SKIP
 
 pkgname = pg_qualstats-git
-
