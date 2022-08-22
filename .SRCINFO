@@ -1,7 +1,7 @@
 pkgbase = ceph-bin
 	pkgdesc = Distributed, fault-tolerant storage platform delivering object, block, and file system
 	pkgver = 15.2.14
-	pkgrel = 7
+	pkgrel = 8
 	url = https://ceph.com/
 	arch = x86_64
 	license = GPL
@@ -17,7 +17,7 @@ pkgbase = ceph-bin
 	sha512sums = f07c64fdde6b99ab3849eefcdf1099058874c49d2a5cb530a9857347f4be76f77fff6a0df3bc7c83339b8c643797861548a69b35067d9d9081996fef71dac1b4
 
 pkgname = ceph-bin
-	depends = ceph-libs=15.2.14-7
+	depends = ceph-libs=15.2.14-8
 	depends = boost-libs
 	depends = curl
 	depends = fuse2
@@ -52,7 +52,7 @@ pkgname = ceph-bin
 	depends = xfsprogs
 	depends = python-yaml
 	depends = python-pyaml
-	provides = ceph
+	provides = ceph=15.2.14-8
 
 pkgname = ceph-libs-bin
 	depends = boost-libs
@@ -68,11 +68,11 @@ pkgname = ceph-libs-bin
 	depends = snappy
 	depends = systemd-libs
 	depends = fmt
-	provides = ceph-libs
+	provides = ceph-libs=15.2.14-8
 
 pkgname = ceph-mgr-bin
-	depends = ceph=15.2.14-7
-	depends = ceph-libs=15.2.14-7
+	depends = ceph=15.2.14-8
+	depends = ceph-libs=15.2.14-8
 	depends = bash
 	depends = boost-libs
 	depends = coffeescript
@@ -95,5 +95,7 @@ pkgname = ceph-mgr-bin
 	optdepends = python-kubernetes: rook module
 	optdepends = python-prometheus_client: prometheus module
 	optdepends = python-remoto: ssh module
-	provides = ceph-mgr
+	provides = ceph-mgr=15.2.14-8
 	conflicts = ceph<14.2.1-1
+	options = emptydirs
+	options = !strip
