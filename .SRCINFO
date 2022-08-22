@@ -1,0 +1,23 @@
+pkgbase = conceal-desktop
+	pkgdesc = Conceal GUI (release version)
+	pkgver = 6.6.5
+	pkgrel = 1
+	url = https://github.com/ConcealNetwork/conceal-desktop
+	arch = any
+	license = MIT
+	makedepends = make
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = python
+	makedepends = boost
+	makedepends = boost-libs
+	makedepends = qt5-base
+	depends = boost
+	depends = boost-libs
+	depends = qt5-base
+	source = https://github.com/ConcealNetwork/conceal-desktop/archive/refs/tags/6.6.5.tar.gz
+	source = https://patch-diff.githubusercontent.com/raw/ConcealNetwork/conceal-core/pull/303.diff
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = conceal-desktop
