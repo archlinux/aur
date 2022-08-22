@@ -1,0 +1,8 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!display-switch.sysusers
+!45-display-switch.rules
+!display-switch.service
+!display-switch.ini

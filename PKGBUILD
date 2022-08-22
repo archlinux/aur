@@ -9,7 +9,8 @@ url="https://github.com/haimgel/display-switch"
 license=('MIT')
 groups=()
 depends=(libusb)
-makedepends=(cargo)
+# udev for libudev.pc
+makedepends=(cargo udev)
 checkdepends=()
 optdepends=()
 provides=()
@@ -20,21 +21,21 @@ options=()
 install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/haimgel/display-switch/tar.gz/refs/tags/$pkgver"
-        "$pkgname.sysusers"
-        "45-$pkgname.rules"
-        "$pkgname.service"
-        "display-switch.ini")
+	"$pkgname.sysusers"
+	"45-$pkgname.rules"
+	"$pkgname.service"
+	"display-switch.ini")
 
 
 noextract=()
 sha256sums=('28e3d9791d39f655c337de19063ea8b19f5c3a0784fa84a222abdf63a33823af'
-            'bf5ee4f9876505628c5ce84e84e918c70d66be70b766d62bb138e294608ffbae'
-            'af9dbdc771023cd04f5b0c638c30356e6a824b32f0c04ea61fe929c71122bccd'
-            '9ba8def93e8fff1aff7f463809633bfbac27e351f2768503fcbbb09fdfaa6167'
-            '1ff20643b8b6b1590bcfda26cb2f5323b791040cb164f5b44c944ed9e9b613bc')
+	    'bf5ee4f9876505628c5ce84e84e918c70d66be70b766d62bb138e294608ffbae'
+	    'af9dbdc771023cd04f5b0c638c30356e6a824b32f0c04ea61fe929c71122bccd'
+	    '9ba8def93e8fff1aff7f463809633bfbac27e351f2768503fcbbb09fdfaa6167'
+	    '1ff20643b8b6b1590bcfda26cb2f5323b791040cb164f5b44c944ed9e9b613bc')
 
 prepare() {
-    	cd "$pkgname-$pkgver"
+	cd "$pkgname-$pkgver"
 	# This file sets the expected toolchain. When compiling with
 	# rustup this will download that specific version.  When
 	# building a arch package we really want to use the user
@@ -51,16 +52,18 @@ build() {
 }
 
 check() {
-    	cd "$pkgname-$pkgver"
+	cd "$pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
 	cargo test --frozen --all-features
 }
 
 package() {
-    	cd "$pkgname-$pkgver"
-	install -Dm0755 -t "$pkgdir/usr/bin/"		"target/release/display_switch"
-	install -Dm644 "$srcdir/display-switch.ini"	"$pkgdir/etc/display-switch/display-switch.ini"
-	install -Dm644 "$srcdir/$pkgname.sysusers"	"$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-	install -Dm644 "$srcdir/45-$pkgname.rules"	"$pkgdir/usr/lib/udev/rules.d/45-$pkgname.rules"
-        install -Dm644 "$srcdir/$pkgname.service"       "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+	cd "$pkgname-$pkgver"
+	install -Dm644 "LICENSE"			-t "$pkgdir/usr/share/licenses/${pkgname}"
+	install -Dm644 "README.md"			-t "$pkgdir/usr/share/$pkgname"	    
+	install -Dm0755 "target/release/display_switch" -t "$pkgdir/usr/bin/"
+	install -Dm644 "$srcdir/display-switch.ini"	-t "$pkgdir/etc/display-switch/display-switch.ini"
+	install -Dm644 "$srcdir/$pkgname.sysusers"	   "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+	install -Dm644 "$srcdir/45-$pkgname.rules"	-t "$pkgdir/usr/lib/udev/rules.d/45-$pkgname.rules"
+	install -Dm644 "$srcdir/$pkgname.service"	-t "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 }
