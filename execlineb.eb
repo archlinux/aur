@@ -1,4 +1,0 @@
-#!/usr/lib/execline/execlineb -S0
-/usr/lib/execline/import -D /usr/bin PATH
-/usr/lib/execline/export PATH /usr/lib/execline:${PATH}
-/usr/lib/execline/exec -a $0 /usr/lib/execline/execlineb $@

@@ -1,31 +1,38 @@
-# Maintainer: Lukas Braun <koomi+aur at hackerspace-bamberg dot de>
+# Maintainer:  Devin J. Pohly <djpohly+arch@gmail.com>
+# Contributor: Olivier Brunel <jjk at jjacky.com>
+# Contributor: Lukas Braun <koomi+aur at hackerspace-bamberg dot de>
 # Contributor: David Arroyo <droyo@aqwari.us>
+# Contributor: Andrew O'Neill <andrew at meanjollies dot com>
+# Contributor: Marcin (CTRL) Wieczorek <marcin@marcin.co>
+# Contributor: Josh VanderLinden <arch@cloudlery.com>
+
 pkgname=execline-musl
-pkgver=2.0.2.0
-pkgrel=2
-pkgdesc="A (non-interactive) scripting language, like sh. Statically linked against musl."
+_pkgname=${pkgname%-musl}
+pkgver=2.9.0.1
+pkgrel=1
+pkgdesc='A (non-interactive) scripting language, like sh'
 arch=('i686' 'x86_64')
-url="http://www.skarnet.org/software/execline"
-license=('custom:ISC')
-makedepends=('skalibs-musl>=2.2.1.0' 'musl')
-provides=(execline=2.0.2.0)
+url="http://skarnet.org/software/${_pkgname}"
+license=('ISC')
+makedepends=('skalibs-musl>=2.12.0.0' 'musl')
+provides=('execline')
+conflicts=('execline')
 options=('staticlibs')
-changelog=CHANGELOG
-source=("${url}/execline-$pkgver.tar.gz" 'execlineb.eb')
-sha256sums=('73aa2db6e253f1821361033028d9b77733b799f93e4d7d477e4230534d7fce32'
-            '8fe12757dc79669237d23f2a883ba60215b0cb9dd51c597783d628cadcf1af8e')
+source=("${url}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('01260fcaf80ffbca2a94aa55ea474dfb9e39b3033b55c8af88126791879531f6')
 
 build() {
-  cd "$srcdir/execline-$pkgver"
+  cd "${_pkgname}-${pkgver}"
 
-  CC="musl-gcc" ./configure --enable-static-libc --bindir=/usr/lib/execline --with-include=/usr/include
+  export CPPFLAGS='-nostdinc -isystem /usr/lib/musl/include -isystem /usr/include'
+  export CC="musl-gcc"
+  ./configure --enable-static-libc --prefix=/usr --libdir=/usr/lib
   make
 }
 
 package() {
-  cd "$srcdir/execline-$pkgver"
+  cd "${_pkgname}-${pkgver}"
 
-  make DESTDIR="$pkgdir/" install
-  install -D -m755 "$srcdir/execlineb.eb" "$pkgdir/usr/bin/execlineb"
-  install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
