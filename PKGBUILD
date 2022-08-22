@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.1136
+pkgver=mainline.0.1141
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('x86_64')
@@ -84,7 +84,6 @@ prepare() {
 	patch -Np1 < ../unbundle-httplib.patch
 	patch -Np1 < ../unbundle-inih.patch
 	patch -Np1 < ../unbundle-xbyak.patch
-	rm .gitmodules
 }
 
 build() {
@@ -100,6 +99,7 @@ build() {
 		-DTITLE_BAR_FORMAT_IDLE="yuzu {}" \
 		-DTITLE_BAR_FORMAT_RUNNING="yuzu {} | {}" \
 		-DUSE_DISCORD_PRESENCE=ON \
+		-DYUZU_CHECK_SUBMODULES=OFF \
 		-DYUZU_ENABLE_COMPATIBILITY_REPORTING=ON \
 		-DYUZU_TESTS="$CHECKFUNC" \
 		-DYUZU_USE_BUNDLED_FFMPEG=OFF \
