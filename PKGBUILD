@@ -2,11 +2,11 @@
 pkgname=cmyacc
 _reponame=cmtool
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A parser generator for Standard ML, OCaml, and Haskell"
 url="https://www.cs.cmu.edu/~crary/cmtool/"
 arch=('x86_64')
-license=('CCPL:by')
+license=('MIT')
 depends=('gmp')
 makedepends=('make' 'mlton')
 source=("${_reponame}-$pkgver.tgz::${url}/${_reponame}-${pkgver}.tgz")
