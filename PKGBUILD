@@ -2,7 +2,7 @@
 
 pkgname=python-pip-audit
 pkgver=2.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for scanning Python environments for known vulnerabilities'
 arch=('any')
 url='https://github.com/trailofbits/pip-audit'
@@ -28,7 +28,12 @@ depends=(
   'python-lockfile'
   'python-cyclonedx-lib'
 )
-makedepends=('python-flit' 'python-installer')
+makedepends=(
+  'python-build'
+  'python-flit'
+  'python-installer'
+  'python-wheel'
+)
 conflicts=('python-pip-audit-git')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trailofbits/pip-audit/archive/refs/tags/v${pkgver}.tar.gz")
@@ -36,7 +41,7 @@ sha512sums=('31b8aa10d0ab560bec43d7b77ca04b9262b7e757a01c226cba686a9e6e5bbe397c7
 
 build() {
   cd "${srcdir}/${pkgname#python-}-${pkgver}"
-  python -m flit build --format wheel
+  python -m build --wheel --no-isolation
 }
 
 package() {
