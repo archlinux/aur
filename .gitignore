@@ -1,8 +1,5 @@
-# Ignore everything:
 *
-
-# ...except:
 !.gitignore
-!PKGBUILD
 !.SRCINFO
-!*.desktop
+!deskreen.desktop
+!PKGBUILD
