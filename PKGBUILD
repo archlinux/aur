@@ -1,13 +1,13 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com> 
+# Maintainer: João Figueiredo <islandc0der@chaotic.cx>
 
 pkgname=python2-fuse
 pkgver=1.0.5
-pkgrel=2
+pkgrel=1
 pkgdesc='This is a Python 2 interface to libfuse (https://github.com/libfuse/libfuse), a simple interface for userspace programs to export a virtual filesystem to the Linux kernel'
-arch=('x86_64')
+arch=($CARCH)
 url="https://pypi.org/project/fuse_python/$pkgver"
-license=('LGPL')
-depends=('fuse2' 'python2')
+license=(LGPL)
+depends=(fuse2 python2)
 source=("https://files.pythonhosted.org/packages/5a/98/fc22a5b7cc748c6bac896aad41e1125c7f9dd5e562c15ced7b5f9576b394/fuse-python-$pkgver.tar.gz")
 sha256sums=('74e5ffb33682bba9a5af2a5a048f47b7e7b464ebf84291bf5a258bfbad03a3aa')
 

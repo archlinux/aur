@@ -1,7 +1,7 @@
 pkgbase = python2-fuse
 	pkgdesc = This is a Python 2 interface to libfuse (https://github.com/libfuse/libfuse), a simple interface for userspace programs to export a virtual filesystem to the Linux kernel
 	pkgver = 1.0.5
-	pkgrel = 2
+	pkgrel = 1
 	url = https://pypi.org/project/fuse_python/1.0.5
 	arch = x86_64
 	license = LGPL
