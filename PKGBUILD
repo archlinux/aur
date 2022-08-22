@@ -4,15 +4,15 @@
 # Contributor: rhabbachi
 
 pkgname=displaylink
-pkgver=5.6
-_releasedate=2022-05
-_pkgfullver=5.6.0-59.176
+pkgver=5.6.1
+_releasedate=2022-08
+_pkgfullver=5.6.1-59.184
 pkgrel=1
 pkgdesc="Linux driver for DL-6xxx, DL-5xxx, DL-41xx and DL-3x00"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.synaptics.com/products/displaylink-graphics"
 license=('custom' 'GPL2' 'LGPL2.1')
-depends=('evdi>=1.10.1'
+depends=('evdi>=1.12.0'
          'libusb>=1.0.0')
 makedepends=('grep' 'gawk' 'wget')
 changelog="displaylink-release-notes-${pkgver}.txt"
@@ -23,8 +23,8 @@ source=(displaylink-driver-${pkgver}.zip::https://www.synaptics.com/sites/defaul
         99-displaylink.rules 
 	displaylink.service 
         displaylink-sleep.sh)
-sha256sums=('ca15c82af195f50acc670a6b00b29d6709731e095113619330d45692f5243aed'
-            '529d8344f5cc1117388ddf2215c744baa920c7df4dbf40c3e5ddf2b4e82ba8e3'
+sha256sums=('89279748a9e276073ddfff7e949f2b92e30dc19f29a34c40ffcd3356c6d730c2'
+            '1aae2005e7719e91179ed52ba85b11b35120c05116c94c4aa384394c4f6e8043'
             '2f81fea43332a62b2cf1dd47e56ea01caf1e886bcd16c3f82b18bfe148fb21a9'
             'dc41ae8a2c287fc50fdda65bad8b0ffd76726f7773c25e1b0c5b7de95cecbdb6'
             'c08a4726cf4e2f92c7cab00168ae9cc8d69d36a67c570609396a4a674934245a'
@@ -61,8 +61,10 @@ package() {
       ARCH="x86-ubuntu-1604" ;;
     x86_64)
       ARCH="x64-ubuntu-1604" ;;
-    arm|armv6h|armv7h|aarch64)
+    arm|armv6h|armv7h)
       ARCH="arm-linux-gnueabihf" ;;
+    aarch64)
+      ARCH="aarch64-linux-gnu" ;;
   esac
   
   echo "Installing DisplayLink Manager $ARCH"

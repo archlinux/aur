@@ -3,12 +3,12 @@
 
         DisplayLink Ubuntu Software Release Note
 
-Version: v5.6.0
-Build: posix/59-3268-g950879406d2 (176)
+Version: v5.6.1
+Build: posix/59-3284-g61b5f058530 (185)
 
-Date: 28th April 2022
+Date: 18th July 2022
 
-Extensible Virtual Display Interface version included: v1.11.0-3 (39da217)
+Extensible Virtual Display Interface version included: v1.12.0 (ae5b3d0)
 =============================================================================
 =============================================================================
 
@@ -16,7 +16,7 @@ Extensible Virtual Display Interface version included: v1.11.0-3 (39da217)
 A. Introduction
 ===============
 
-This is DisplayLink Driver Software v5.6.0 for Ubuntu. It provides production quality support for DisplayLink USB 3.0 devices on specific variants of desktop Ubuntu Linux.
+This is DisplayLink Driver Software v5.6.1 for Ubuntu. It provides production quality support for DisplayLink USB 3.0 devices on specific variants of desktop Ubuntu Linux.
 
 The driver enables video support for products using DisplayLink USB 3.0 technology. Standard native Ubuntu drivers provide support for DisplayLink audio and Ethernet interfaces.
 
@@ -44,6 +44,12 @@ I.  Future development
 
 C.  Bugs fixed in this release
 ==============================
+
+C.6  Changes in 5.6.1 release
+-----------------------------
+- Added support for new DisplayLink DL-6350 products
+- DL-6xxx series: fixed LAN sent package status for half-duplex 100M fixed switch config (VIFR-1040)
+- DL-6xxx series: fixed timing issue on some modes with Dell AW2721D monitor (VIFR-1045)
 
 C.5  Changes in 5.6 release
 -----------------------------
