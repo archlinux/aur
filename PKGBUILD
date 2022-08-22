@@ -5,7 +5,7 @@
 pkgname=dingtalk-bin
 _pkgname=dingtalk
 _pkgname2=com.alibabainc.dingtalk
-pkgver=1.4.0.20425
+pkgver=1.4.0.20810
 pkgrel=1
 pkgdesc="钉钉"
 arch=("x86_64")
@@ -30,7 +30,7 @@ source=("${_pkgname}_${pkgver}-${arch}.deb::https://dtapp-pub.dingtalk.com/dingt
 
 # DebSource & pkgver can be get here: https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Update/other/linux_dingtalk_update.json
 
-sha512sums=('d6192012dc0c3a5bbe59fe9d05b230727997eca45186ae7d1cdb4b15c81a260ce1328fc79fb31833434d17998a6301d5381926d43cb8e5b4cf07351518b7df84'
+sha512sums=('ac1166c9f0c130076fc337b4e7d57dabe6643fa45fc63037c4847c93b425bddac0b06aa04a4bc8774240f3143c2a9f69c688c6e63e7628f1ee05b2b9bbde0666'
             'b83d493ed68be0f5a6b851fd93d819bb3a6e62feeb71a5bef10bad24b5ea8f3cf09deea4f31ed727449888a6eae1be99fa9cf263bc921cb8bb2958e2f37a7d64'
             'c8570ec4cd978e26ac622a83db053a0555324752f5000dc5b3cd680d782138e8ef856f09ec9b7850e04e1faa1e39de94dabeb16fbfbe0fd44af43247b30e8b2f'
             'a974db88cf2c0a7cac703dab5b4a84873273cd04a7904124122fde8bab7f9773704d3041816e0096bd3f7e383c012d3ff1e9b0482e241c2dd223ebb759734a88'
@@ -57,15 +57,15 @@ package(){
 
     # desktop enrty
     install -Dm644 ${_pkgname2}.desktop -t ${pkgdir}/usr/share/applications/
-    
+
     install -Dm644 ${srcdir}/${_pkgname2}.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg
 
     # license
     install -Dm644 service-terms-zh ${pkgdir}/usr/share/licenses/${_pkgname}/service-terms-zh.html
-    
+
     # fix chinese input in workbench
     rm -rf ${pkgdir}/opt/${_pkgname}/release/libgtk-x11-2.0.so.*
-    
+
     # fix cairo
     cd $srcdir/usr/lib
     install -Dm755 libcairo.so.2 -t ${pkgdir}/usr/lib/dingtalk
@@ -74,4 +74,7 @@ package(){
     install -Dm755 $srcdir/xdg-open.sh ${pkgdir}/opt/dingtalk/release/xdg-open
 
     rm -rf ${pkgdir}/opt/${_pkgname}/release/{libm.so.6,Resources/{i18n/tool/*.exe,qss/mac},libstdc*}
+
+    # remove unused lib
+    rm -rf ${pkgdir}/opt/${_pkgname}/release/{libcurl.so.4,libz*}
 }
