@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=uwot
-_pkgver=0.1.13
+_pkgver=0.1.14
 pkgname=r-${_pkgname,,}
-pkgver=0.1.13
+pkgver=0.1.14
 pkgrel=1
 pkgdesc='The Uniform Manifold Approximation and Projection (UMAP) Method for Dimensionality Reduction'
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8d9c2cc99df0aa6157237cbcde48d405f050505c36cd66b569d599631e92e9d6')
+sha256sums=('8016e8192b7e72604ca71840cbe43fa1d2caed8a8ad7cbf20e85cd3b384a9fe0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
