@@ -23,7 +23,7 @@ noextract=("${source[@]%%::*}")
 package_ceph-libs-bin() {
   depends=('boost-libs' 'curl' 'glibc' 'keyutils' 'libutil-linux' 'bzip2' 'lz4' 'nss'
            'oath-toolkit' 'python' 'snappy' 'systemd-libs' 'fmt')
-  provides=('ceph-libs')
+  provides=("ceph-libs=${pkgver}-${pkgrel}")
 
   cd "${srcdir}"
 
@@ -39,7 +39,7 @@ package_ceph-bin() {
            'python-prettytable' 'python-cmd2' 'python-dateutil' 'snappy' 'sudo' 'systemd-libs'
            'python-flask' 'python-pecan' 'python-pyopenssl' 'python-requests' 'python-werkzeug' 'xfsprogs'
            'python-yaml' 'python-pyaml')
-  provides=('ceph')
+  provides=("ceph=${pkgver}-${pkgrel}")
 
   cd "${srcdir}"
 
@@ -56,7 +56,7 @@ package_ceph-mgr-bin() {
               'python-kubernetes: rook module'
               'python-prometheus_client: prometheus module'
               'python-remoto: ssh module')
-  provides=('ceph-mgr')
+  provides=("ceph-mgr=${pkgver}-${pkgrel}")
   conflicts=('ceph<14.2.1-1')
 
   cd "${srcdir}"
