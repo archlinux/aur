@@ -1,6 +1,6 @@
 pkgbase = gopanel-bin
 	pkgdesc = A control panel that is written in Golang and is able to manage Caddy 2
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://gitlab.com/xiayesuifeng/gopanel
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gopanel-bin
 	makedepends = unzip
 	depends = caddy
 	backup = etc/gopanel/config.json
-	source = gopanel-0.2.0.zip::https://gitlab.com/xiayesuifeng/gopanel/-/jobs/artifacts/0.2.0/download?job=build-gopanel
-	sha256sums = 5f12eee304854ec8579d0f626abd51a9b89cb5b182e55cb451d4e8c4519b4af2
+	source = gopanel-0.2.1.zip::https://gitlab.com/xiayesuifeng/gopanel/-/jobs/artifacts/0.2.1/download?job=build-gopanel
+	sha256sums = 87d4ebe76f052ab769989f581130521d3a9bd51c9d1d10a1dd9d9a2646292ddb
 
 pkgname = gopanel-bin
