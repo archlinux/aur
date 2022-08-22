@@ -21,20 +21,7 @@ if [ "$pkgver" == "$LAST" ]; then
     exit 0
 fi
 
-DOWNLOAD_URL=$(jq -r <<<$RELEASES --arg last $LAST '
-    .[$last][] | select(.packagetype == "sdist").url
-')
-
-if [ -z "$DOWNLOAD_URL" ]; then
-    echo "Could not get a release URL from:
-$(
-    jq -r <<<$RELEASES --arg last $LAST '
-        .[$last][] | {packagetype, url}
-    '
-)" >&2
-    exit 1
-fi
-
+DOWNLOAD_URL="https://github.com/pola-rs/polars/archive/refs/tags/py-polars-v$LAST.zip"
 SUM=$(curl -sL $DOWNLOAD_URL | $HASH - | cut -d' ' -f1)
 
 sed -i 's/.*sums=.*$/'$HASH_NAME'=("'$SUM'")/' PKGBUILD
