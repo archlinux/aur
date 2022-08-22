@@ -3,7 +3,7 @@
 pkgname=statping-ng-bin
 _pkgname=statping-ng
 pkgver=0.90.80
-pkgrel=2
+pkgrel=3
 pkgdesc='Web and app status monitoring for any type of project (binary release)'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url='https://github.com/statping-ng/statping-ng'
@@ -12,7 +12,7 @@ optdepends=('dart-sass: Support custom styling')
 conflicts=("$_pkgname" 'statping')
 install="$pkgname.install"
 source=("LICENSE::https://raw.githubusercontent.com/$_pkgname/$_pkgname/v$pkgver/LICENSE"
-        "statping-daemon.service")
+        'statping-daemon.service')
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::https://github.com/$_pkgname/$_pkgname/releases/download/v$pkgver/statping-linux-amd64.tar.gz")
 source_i686=("$_pkgname-$pkgver-i686.tar.gz::https://github.com/$_pkgname/$_pkgname/releases/download/v$pkgver/statping-linux-386.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::https://github.com/$_pkgname/$_pkgname/releases/download/v$pkgver/statping-linux-arm64.tar.gz")
@@ -27,9 +27,9 @@ b2sums_armv7h=('e4a393bcb96094abfae06537a207dc483bd828a19a8cbf67f2a51e4177d21c6e
 b2sums_armv6h=('95040412b270f2db7bda42d611fb7e6a7118d0c5d74d53d4d5067cd5021f3c641e4f111b39b22fa2fc5322cb2c14c9dec9304fbc6485618a392d770bb6ad2e37')
 
 package() {
-    install -Dm755 "$srcdir/statping" "$pkgdir/usr/bin/statping"
-    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -d "$pkgdir/etc/statping"
 
-    # Systemd
+    install -Dm755 "$srcdir/statping" "$pkgdir/usr/bin/statping"
     install -Dm644 "$srcdir/statping-daemon.service" "$pkgdir/usr/lib/systemd/system/statping-daemon.service"
+    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

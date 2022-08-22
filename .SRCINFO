@@ -1,7 +1,7 @@
 pkgbase = statping-ng-bin
 	pkgdesc = Web and app status monitoring for any type of project (binary release)
 	pkgver = 0.90.80
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/statping-ng/statping-ng
 	install = statping-ng-bin.install
 	arch = x86_64
