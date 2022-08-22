@@ -4,7 +4,7 @@
 pkgname=vscodium
 # Make sure the pkgver matches the git tags in vscodium and vscode git repo's!
 pkgver='1.70.2.22230'
-pkgrel=2
+pkgrel=3
 pkgdesc="Free/Libre Open Source Software Binaries of VSCode (git build from latest release)."
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/VSCodium/vscodium.git'
@@ -46,7 +46,16 @@ sha256sums=(
     'SKIP'
     '63eccd0977b9dc783a11ff401940f48bbabd0d098b9563b7ef26402495dc9b88'
 )
-provides=('codium')
+provides=(
+    'codium'
+    'vscodium'
+)
+conflicts=(
+    'codium'
+    'vscodium'
+    'vscodium-bin'
+    'vscodium-git'
+)
 
 ###############################################################################
 
@@ -110,9 +119,15 @@ build() {
     
     # Disable building rpm, deb, and AppImage packages which are not needed in an AUR build
     export SKIP_LINUX_PACKAGES="True"
+
+    # Set unsafe-perm to make sure the build also works in an AUR wrapper
+    npm config set unsafe-perm true
     
     . get_repo.sh
     . build.sh
+
+    # Clean up
+    rm -rf "${npmtempdir}"
 }
 
 package() {
