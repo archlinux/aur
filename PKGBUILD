@@ -1,6 +1,6 @@
 # Maintainer: Ramana Kumar <ramana@member.fsf.org>
 pkgname=teku
-pkgver=22.8.0
+pkgver=22.8.1
 pkgrel=1
 pkgdesc="ConsenSys Ethereum Beacon Chain Client"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://docs.teku.consensys.net"
 license=('Apache')
 depends=('java-runtime>=11')
 source=("https://artifacts.consensys.net/public/$pkgname/raw/names/$pkgname.tar.gz/versions/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('a5fe3c575e64c9eb3b15b9dd45043122c2d773176168429e258095d188cf53cd')
+sha256sums=('3582cad5394179ce0304ed8869147f7ec15e5790e422bb0fa9187aa1131efc0a')
 
 check() {
   "$pkgname-$pkgver/bin/$pkgname" --version
