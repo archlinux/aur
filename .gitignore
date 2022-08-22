@@ -1,3 +1,4 @@
 /materia-vlc
 /pkg
 /src
+*.pkg.tar*
