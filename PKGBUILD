@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bury <alexandre.bury@gmail.com>
 
 pkgname=python-polars
-pkgver=0.14.2
+pkgver=0.14.4
 pkgrel=1
 pkgdesc="Blazingly fast DataFrames library using Apache Arrow Columnar Format as memory model"
 arch=("x86_64")
@@ -14,16 +14,16 @@ optdepends=('python-pandas: for interoperability with pandas frames'
             'python-fsspec: to transparently open files locally or remotely')
 makedepends=('maturin' 'rust-nightly' 'cmake' 'python-installer')
 _name=${pkgname#python-}
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=("6e4577980af0c3673c4f30941a671642fdcce34a2e18bcb26d3c1f348e46c1cd54d816f5f86a280383213e83aec14696dc2f7e7ceee858839bcea1cda4de0bbe")
+source=("https://github.com/pola-rs/polars/archive/refs/tags/py-polars-v$pkgver.zip")
+b2sums=("7765e421706d821411a3bb51e44bef0ceb5aabc800b269206e2bf367502973c6e3f3614103f38dfba735001bed1a6d230a0356e27f60e54ab3ec1a94aabfda23")
 
 build() {
-    cd $_name-$pkgver
-    rm ../wheels -rf
-    maturin build -o ../wheels --release
+    rm wheels -rf
+    cd polars-py-polars-v$pkgver/py-polars
+    maturin build -o ../../wheels --release
 }
 
 package() {
     python -m installer -d "$pkgdir" ./wheels/*.whl
-    install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" $_name-$pkgver/LICENSE
+    install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" polars-py-polars-v$pkgver/LICENSE
 }
