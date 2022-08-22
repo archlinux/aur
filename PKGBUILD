@@ -23,6 +23,8 @@ build() {
   cd "${pkgname}-${pkgver}"
 
   cd cmd/rabtap
+
+  # cannot determine specific commit from GitHub tag tarballs
   CGO_ENABLED=0 go build \
     -ldflags "-X main.version=${pkgver} -X main.commit=unknown" \
     -buildmode=pie \
