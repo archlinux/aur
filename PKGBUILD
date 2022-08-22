@@ -41,9 +41,6 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname#python-}-${pkgver}"
-  python -I -X pycache_prefix=pycache -m installer \
-    --destdir="${pkgdir}" dist/*.whl
-  rm -rf pycache
-  install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
-    LICENSE
+  python -I -m installer --destdir="${pkgdir}" dist/*.whl
+  install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
