@@ -1,0 +1,15 @@
+pkgbase = openmrac-data-git
+	pkgdesc = Data for OpenMRac
+	pkgver = r7.103f6d1
+	pkgrel = 1
+	url = https://github.com/Franticware/OpenMRac-data
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = sox
+	conflicts = OpenMRac-data
+	source = git+https://github.com/Franticware/OpenMRac-data.git
+	sha256sums = SKIP
+
+pkgname = openmrac-data-git
