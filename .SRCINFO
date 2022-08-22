@@ -1,0 +1,21 @@
+pkgbase = python-mpp-solar
+	pkgdesc = Python package with reference library to get information from solar inverters
+	pkgver = 0.9.01
+	pkgrel = 1
+	url = https://github.com/jblance/mpp-solar
+	arch = any
+	license = MIT
+	makedepends = python-pyserial
+	makedepends = python-paho-mqtt
+	makedepends = python-pyyaml
+	makedepends = python-pymongo
+	makedepends = python-psycopg2
+	source = https://github.com/jblance/mpp-solar/archive/refs/tags/v0.9.01.tar.gz
+	sha256sums = f4efaf43817d5403f344dca115daf4012ee9018180ba1305cf5f511ff8829dee
+
+pkgname = python-mpp-solar
+	depends = python-lunardate
+	depends = python-pycalverter
+	depends = python-pytz
+	depends = python-dateutil
+	depends = python-pyephem
