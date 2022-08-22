@@ -1,7 +1,7 @@
 # Maintainer: Muflone https://www.muflone.com/contacts/english/
 
 pkgname=bluewho
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Information and notification of new discovered bluetooth devices"
 url="https://www.muflone.com/bluewho"
@@ -14,7 +14,7 @@ optdepends=('libcanberra: to play notification sound using canberra-gtk-play'
             'libpulse: to play notification sound using paplay'
             'mplayer: to play notification sound using mplayer')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/muflone/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('013b4651931aec2c2594badcafbc9f856f6b760bf61f86ef070023f93230d486')
+sha256sums=('46600fd69c47563afcfd8074693e33e7d3a158126718ea480a7908c7ac0bd477')
 
 build() {
   cd "${pkgname}-${pkgver}"
