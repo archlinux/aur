@@ -4,7 +4,7 @@
 
 pkgname='koi-git'
 _pkgname='koi'
-pkgver=0.1.5.r0.g3761d4d
+pkgver=0.2.1.r4.ge1d0979
 pkgrel=1
 pkgdesc="Switch between light and dark themes on KDE Plasma"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ makedepends=('qt5-base' 'git' 'extra-cmake-modules')
 optdepends=('xsettingsd: Apply settings to GTK applications on the fly')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("$pkgname::git://github.com/baduhai/Koi")
+source=("$pkgname::git+https://github.com/baduhai/Koi.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -24,15 +24,20 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/$pkgname"
-    qmake src/Koi.pro
-	make
+	cd "$srcdir/$pkgname/src"
+    mkdir -p build && cd build
+
+    cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    ..
+
+    make
 }
 
 package() {
     cd "$srcdir/$pkgname"
-    install -D "Koi" "$pkgdir/usr/bin/Koi"
-    install -Dm644 "src/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
-    install -Dm644 "src/resources/icons/$_pkgname.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
-    install -Dm644 "src/resources/icons/koi_tray.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/koi_tray.svg"
+    install -D "src/build/bin/Koi" "$pkgdir/usr/bin/Koi"
+    install -Dm644 "src/koi.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+    install -Dm644 "src/resources/icons/koi.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
+    install -Dm644 "src/resources/icons/koi_tray.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/${_pkgname}_tray.svg"
 }
