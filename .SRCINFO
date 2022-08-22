@@ -1,0 +1,18 @@
+pkgbase = googerteller-git
+	pkgdesc = Audible feedback on just how much your browsing feeds into Google
+	pkgver = r11.9cb01ff
+	pkgrel = 1
+	url = https://github.com/berthubert/googerteller
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = pcaudiolib
+	depends = tcpdump
+	conflicts = googerteller
+	source = googerteller::git+https://github.com/berthubert/googerteller.git
+	source = googerteller.sh
+	sha256sums = SKIP
+	sha256sums = ccfb1eaafed1f9d71d29f745d3d82c37348c36eab13c21bb5e494dda51bfd985
+
+pkgname = googerteller-git
