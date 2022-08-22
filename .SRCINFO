@@ -1,10 +1,10 @@
 pkgbase = python-oxasl
 	pkgdesc = OXASL is a package for performing Bayesian analysis of Arterial Spin Labelling MRI data
-	pkgver = 0.1.12
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://oxasl.readthedocs.io
 	arch = any
-	license = custom:OXASL license
+	license = APACHE
 	checkdepends = python-pytest
 	makedepends = git
 	makedepends = python-setuptools
@@ -17,8 +17,7 @@ pkgbase = python-oxasl
 	depends = python-nibabel
 	depends = python-scikit-image
 	depends = python-six
-	source = python-oxasl::git+https://github.com/physimals/oxasl.git#tag=v0.1.12
+	source = python-oxasl::git+https://github.com/physimals/oxasl.git#tag=v0.2.0
 	b2sums = SKIP
 
 pkgname = python-oxasl
-

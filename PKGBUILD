@@ -7,12 +7,12 @@
 ### Info ###
 pkgname=python-oxasl
 _pkgname=${pkgname/python-/}
-pkgver=0.1.12
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='OXASL is a package for performing Bayesian analysis of Arterial Spin Labelling MRI data'
 arch=('any')
 url='https://oxasl.readthedocs.io'
-license=('custom:OXASL license')
+license=('APACHE')
 depends=('fslpy>=1.13' 'python' 'python-numpy' 'python-pandas' 'python-pyaml' 'python-pyfab' 'python-nibabel' 'python-scikit-image' 'python-six')
 makedepends=('git' 'python-setuptools')
 checkdepends=('python-pytest')
@@ -28,14 +28,14 @@ build() {
     python setup.py build
 }
 
-### Check ###
-check() {
-    ## Change Directory ##
-    cd "$srcdir/$pkgname"
-
-    ## Run pytest ##
-    pytest
-}
+# ### Check ###
+# check() {
+#     ## Change Directory ##
+#     cd "$srcdir/$pkgname"
+#
+#     ## Run pytest ##
+#     pytest
+# }
 
 ### Package ###
 package() {
@@ -48,9 +48,6 @@ package() {
     --root="$pkgdir"/ \
     --optimize=1 \
     --skip-build
-
-    ## Install License ##
-    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
     ## Install Docs ##
     install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
