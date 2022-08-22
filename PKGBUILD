@@ -19,7 +19,7 @@ build() {
   npm install
   npm run build
 
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-s -w -mod=readonly -modcacherw"
   cd ${srcdir}/${pkgname}-${pkgver}
   go build -v
 }
