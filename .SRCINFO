@@ -1,0 +1,13 @@
+pkgbase = 7clock
+	pkgdesc = A seven-segment display style clock for your terminal
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/wezm/7clock
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	source = 7clock-0.1.0.tar.gz::https://github.com/wezm/7clock/archive/0.1.0.tar.gz
+	sha256sums = 2df08d71b0c5dfb85e379ff629af6c40719a4cb305ac39068e4bb45109a9c040
+
+pkgname = 7clock
