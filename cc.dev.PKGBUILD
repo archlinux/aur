@@ -150,7 +150,7 @@ GOBIN=${GOPATH}/bin.${_pkgarch}
 _GOAPPS=${GOPATH}/apps.${_pkgarch}
 _msg2 'creating dirs'
 #set up to create a .deb package
-_debpkgdir="${_pkgname}-${pkgver}-${_pkgrel}-${_pkgarch}"
+_debpkgdir="${_pkgname}-bin-${pkgver}-${_pkgrel}-${_pkgarch}"
 _pkgdir="${pkgdir}/${_debpkgdir}"
 _skydir="opt/skywire"
 _skyapps="${_skydir}/apps"
