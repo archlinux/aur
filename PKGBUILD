@@ -1,5 +1,5 @@
-# Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
-# Contributor: Techcable <$USER @ techcable.net>
+# Maintainer: Techcable <$USER @ techcable.net>
+# Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=zig-dev-bin
 # Old versions of zig-dev-bin used date as pkgver (pkgver=20220712)
