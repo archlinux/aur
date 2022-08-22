@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-clipboard-history
 	pkgdesc = Gnome extension that saves what you've copied into an easily accessible, searchable history panel.
-	pkgver = 16
+	pkgver = 17
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/SUPERCILEX/gnome-clipboard-history
@@ -8,7 +8,7 @@ pkgbase = gnome-shell-extension-clipboard-history
 	license = MIT
 	depends = dconf
 	depends = gnome-shell
-	source = gnome-clipboard-history-16.tar.gz::https://github.com/SUPERCILEX/gnome-clipboard-history/archive/refs/tags/1.2.1.tar.gz
-	sha256sums = f504014948e37fe2ea1346046150cd134acf0166064454f2715e347ce01d0643
+	source = gnome-clipboard-history-17.tar.gz::https://github.com/SUPERCILEX/gnome-clipboard-history/archive/refs/tags/1.2.2.tar.gz
+	sha256sums = ca0d49e06116be414de52f1395574429c3606276d10a411965ad3aa280be8757
 
 pkgname = gnome-shell-extension-clipboard-history
