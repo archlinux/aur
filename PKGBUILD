@@ -3,7 +3,7 @@
 # Contributor:	p2k		<uni-ulm.de: Patrick.Schneider>
 
 pkgname=ktlint
-pkgver=0.46.1
+pkgver=0.47.0
 pkgrel=1
 pkgdesc="An anti-bikeshedding Kotlin linter with built-in formatter"
 arch=('any')
@@ -15,7 +15,7 @@ validpgpkeys=(ADBC987D1A7B91DB6B0AAA81995EFBF4A3D20BEB)
 source=(ktlint-${pkgver}::https://github.com/pinterest/ktlint/releases/download/${pkgver}/ktlint
         https://raw.githubusercontent.com/pinterest/ktlint/${pkgver}/LICENSE
         ktlint-${pkgver}.asc::https://github.com/pinterest/ktlint/releases/download/${pkgver}/ktlint.asc)
-sha256sums=('45c5e1104490b2f2a342d3b7ddd94898ea76e267c999100be40791ff724276ad'
+sha256sums=('36e3641018c559492214ab9dd6c30575890edb3d84034dd73daca50b46316384'
             'b45bdb3357e761d4b1300470833cf5e5e9fafc32a5f98efef214ba926b0120d5'
             'SKIP')
 
