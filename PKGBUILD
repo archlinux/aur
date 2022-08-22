@@ -3,7 +3,7 @@
 # Contributor: Liganic <liganic-aur@gmx.net>
 _pkgname='cpplint'
 pkgname="python-${_pkgname}"
-pkgver='1.6.0'
+pkgver='1.6.1'
 pkgrel=1
 pkgdesc="Command-line tool to check C/C++ files for style issues following Google's C++ style guide."
 arch=('any')
@@ -11,13 +11,13 @@ url='https://github.com/cpplint/cpplint'
 license=('custom:BSD3')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-pytest-runner' 'python-pip' 'python-wheel')
-checkdepends=('python-flake8' 'python-pylint' 'python-importlib-metadata' 'python-tox' 'python-testfixtures')
+checkdepends=('python-pytest-flake8' 'python-pylint' 'python-importlib-metadata' 'python-tox' 'python-testfixtures'
+              'python-pytest' 'python-pytest-cov')
 provides=('cpplint' 'cpplint-py3')
 replaces=('cpplint-py3')
 conflicts=('cpplint')
-checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-runner')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('ddc50661b62103376675d6e4bcaa85745fa523343c3d93a1f774685005f9afb3')
+b2sums=('f3afaba6f8389e8d925e20d94cbcf1451d11b85ca7914b53f966c575a5be7a6b4eb7367f53e549644019ccd1f76eca61415f0c5997842cb5640ab5a7ba00c1de')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -28,10 +28,7 @@ build() {
 
 check() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  # bug in pytest prevents testing - https://github.com/pytest-dev/pytest/issues/1888
-  # python -m venv --system-site-packages test-env
-  # test-env/bin/python -m pip install -r test-requirements
-  # test-env/bin/python -m pytest
+  PYTHONPATH=build/lib pytest  
 }
 
 package() {
