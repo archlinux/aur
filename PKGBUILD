@@ -1,11 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=orchis-theme-git
-pkgver=2022.02.18.r8.gf4c6f3b
+pkgver=2022.07.20.r7.g54196b9
 pkgrel=1
 pkgdesc="A Material Design theme for GNOME/GTK based desktop environments."
 arch=('any')
 url="https://www.pling.com/p/1357889"
-license=('GPL2')
+license=('GPL3')
 depends=('gtk3' 'gnome-themes-extra')
 makedepends=('git' 'sassc')
 optdepends=('gtk-engine-murrine: GTK2 theme support'
@@ -26,7 +26,7 @@ pkgver() {
 package() {
   cd "$srcdir/${pkgname%-git}"
   install -d "$pkgdir/usr/share/themes"
-  ./install.sh -t all --shell 42 -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all -l -d "$pkgdir/usr/share/themes"
 
   # Remove unnecessary files:
   rm -rf "$pkgdir"/usr/share/themes/{Orchis,Orchis-*}/gnome-shell/extensions
