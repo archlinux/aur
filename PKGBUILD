@@ -2,12 +2,12 @@
 # Contributor: Steven Seifried <gitlab@canox.net>
 pkgname=tuxedo-keyboard
 pkgver=3.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Keyboard Backlight Driver from TUXEDO Computers"
 url="https://github.com/tuxedocomputers/tuxedo-keyboard"
 license=("GPL3")
 arch=('x86_64') 
-depends=('dkms')
+depends=('dkms' 'tuxedo-keyboard-ite')
 optdepends=('linux-headers: build modules against Arch kernel'
             'linux-lts-headers: build modules against LTS kernel'
             'linux-zen-headers: build modules against ZEN kernel'
