@@ -1,6 +1,6 @@
 pkgbase = mint-themes
 	pkgdesc = A collection of Mint themes. Includes GTK2, GTK3, Cinnamon and Xfce components.
-	pkgver = 2.0.4
+	pkgver = 2.0.5
 	pkgrel = 1
 	url = http://packages.linuxmint.com/pool/main/m/mint-themes
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = mint-themes
 	conflicts = mint-x-theme
 	conflicts = mint-y-theme
 	conflicts = mint-cinnamon-themes
-	source = mint-themes_2.0.4.tar.xz::http://packages.linuxmint.com/pool/main/m/mint-themes/mint-themes_2.0.4.tar.xz
-	sha256sums = be8a8b1d4a3f45173014cd93fb39bef4e795ab083429f6735a7409ef2e4fe441
+	source = mint-themes_2.0.5.tar.xz::http://packages.linuxmint.com/pool/main/m/mint-themes/mint-themes_2.0.5.tar.xz
+	sha256sums = 44e6a18d3aca8af1fa7785c2c311a919e98a35430daa3a5722377f599637dc56
 
 pkgname = mint-themes
