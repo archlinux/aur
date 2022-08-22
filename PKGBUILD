@@ -1,6 +1,6 @@
 # Maintainer: Marco Steiger <marco (at) steiger (dot) online>
 pkgname=thedude
-pkgver=6.49
+pkgver=7.4.1
 pkgrel=1
 pkgdesc="Mikrotik The Dude network monitoring client"
 url="http://www.mikrotik.com"
@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}.exe::http://download.mikrotik.com/routeros/${pkgve
         "${pkgname}.desktop"
         "${pkgname}.png"
         "${pkgname}")
-sha256sums=('8f6b9be020270c4dbd3a6c4f22350df271645a4c629b47d1acc7fa96bb78bd0d'
+sha256sums=('0862053bdf157a57eef01425fa2d91d2bb50c6b0906c5dae0cc7cd646fb66bf3'
             '037f296da60fa1e46f256f0b8314b4de467529dcbfe743b512bb29730ac05a18'
             'b2595e2c2c9980fd5a9b2a6bbd847a8cbb158a4c18e36e9002ccbec109b4eaa1'
             '08a7b0b10a034c6cbfbbd3a5d2b7e12c2ab2d7014563a39de9596f29f5a5961c')
@@ -25,6 +25,7 @@ build() {
   test ! -d ${srcdir}/${pkgname}-src && mkdir ${srcdir}/${pkgname}-src
   7z e -y -o"${srcdir}/${pkgname}-src/" "${srcdir}/${pkgname}-${pkgver}.exe"
 }
+
 package() {
   mkdir -p "${pkgdir}/usr/share/${pkgname}/"
   cp ${srcdir}/${pkgname}-src/* "${pkgdir}/usr/share/${pkgname}/"
