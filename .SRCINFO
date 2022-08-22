@@ -1,10 +1,10 @@
 pkgbase = cmlex
 	pkgdesc = A lexer generator for Standard ML, OCaml, and Haskell
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cs.cmu.edu/~crary/cmtool/
 	arch = x86_64
-	license = CCPL:by
+	license = MIT
 	makedepends = make
 	makedepends = mlton
 	depends = gmp
