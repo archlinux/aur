@@ -4,12 +4,12 @@
 
 pkgname=kde-servicemenus-rootactions
 pkgver=2.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows admin users to perform several root only actions from dolphin via kdesu/kdesudo"
 arch=(any)
 url="https://store.kde.org/p/998469/"
 license=(GPL)
-depends=(dolphin kdialog perl)
+depends=(dolphin kde-cli-tools kdialog perl)
 source=("https://buzo.eu/mirror/kde/rootactions_servicemenu_$pkgver.tar.gz")
 sha256sums=('8c02e552d6d18246235e3141eebd02b125fad15717660dfa231b629a14837f65')
 
