@@ -1,8 +1,11 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: jbpratt <jbpratt78 at gmail dot com>
 
+## GPG key: https://github.com/lawngnome.gpg
+
 pkgname=sourcegraph-cli
-pkgver=3.42.3
+pkgver=3.43.1
+_commit=1011302
 pkgrel=1
 pkgdesc='Command line interface to Sourcegraph'
 url='https://github.com/sourcegraph/src-cli'
@@ -13,8 +16,9 @@ makedepends=('go' 'git')
 provides=('src-cli')
 conflicts=('src-cli')
 changelog=CHANGELOG.md
-source=("$pkgname::git+$url#tag=$pkgver")
+source=("$pkgname::git+$url#commit=$_commit?signed")
 sha256sums=('SKIP')
+validpgpkeys=('4C824CB6E018D60F90418A3CCDDA7B793B3E9A18') # Adam Harvey
 
 prepare() {
 	cd "$pkgname"
@@ -46,5 +50,5 @@ package() {
 	cd "$pkgname"
 	install -D build/src -t "$pkgdir/usr/bin/"
 	ln -s /usr/bin/src "$pkgdir/usr/bin/src-cli"
-	install -Dm644 README.markdown -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm644 README.markdown "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
