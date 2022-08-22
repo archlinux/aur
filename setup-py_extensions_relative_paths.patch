@@ -1,10 +1,10 @@
 diff --git a/setup.py b/setup.py
-index 98b8341..ebd9d09 100755
+index 357073a..f49daa8 100755
 --- a/setup.py
 +++ b/setup.py
-@@ -36,14 +36,14 @@ def get_existing_ccbin(nvcc_args: List[str]) -> Optional[str]:
+@@ -44,14 +44,14 @@ def get_extensions():
+         return []
  
- def get_extensions():
      this_dir = os.path.dirname(os.path.abspath(__file__))
 -    extensions_dir = os.path.join(this_dir, "pytorch3d", "csrc")
 +    extensions_dir = os.path.join("pytorch3d", "csrc")
@@ -18,8 +18,8 @@ index 98b8341..ebd9d09 100755
 +    include_dirs = [os.path.join(this_dir, extensions_dir)]
  
      force_cuda = os.getenv("FORCE_CUDA", "0") == "1"
-     if (torch.cuda.is_available() and CUDA_HOME is not None) or force_cuda:
-@@ -100,8 +100,6 @@ def get_extensions():
+     force_no_cuda = os.getenv("PYTORCH3D_FORCE_NO_CUDA", "0") == "1"
+@@ -111,8 +111,6 @@ def get_extensions():
  
          extra_compile_args["nvcc"] = nvcc_args
  
