@@ -2,7 +2,7 @@
 # Contributor: Alessandro Pezzoni <alessandro_pezzoni@lavabit.com>
 
 pkgname=gextractwinicons
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Extract cursors and icons from MS Windows compatible resource files"
 url="https://www.muflone.com/gextractwinicons"
@@ -11,7 +11,7 @@ license=('GPL3')
 makedepends=('python-setuptools' 'gettext')
 depends=('gtk3' 'gobject-introspection' 'python-xdg' 'python-gobject' 'icoutils')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/muflone/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('402130eebbb7f6eb236a87f90bf9f3ff9ecd10ee8e833780d5510342b7382246')
+sha256sums=('3ba53fe556d179d0d3bd42deb9d345f7d0b53d75cdc6fbb498302f25cd896bc8')
 
 build() {
   cd "${pkgname}-${pkgver}"
