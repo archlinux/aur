@@ -1,7 +1,7 @@
 pkgbase = compiz
 	pkgdesc = Composite manager for Aiglx and Xgl, with plugins and CCSM
-	pkgver = 0.9.14.1
-	pkgrel = 4
+	pkgver = 0.9.14.2
+	pkgrel = 0
 	url = https://launchpad.net/compiz
 	arch = i686
 	arch = x86_64
@@ -23,13 +23,13 @@ pkgbase = compiz
 	depends = metacity
 	depends = glu
 	optdepends = xorg-xprop: grab various window properties for use in window matching rules
-	provides = compiz-core=0.9.14.1
-	provides = compiz-bcop=0.9.14.1
-	provides = ccsm=0.9.14.1
-	provides = compiz-plugins-main=0.9.14.1
-	provides = compiz-plugins-extra=0.9.14.1
-	provides = compizconfig-python=0.9.14.1
-	provides = libcompizconfig=0.9.14.1
+	provides = compiz-core=0.9.14.2
+	provides = compiz-bcop=0.9.14.2
+	provides = ccsm=0.9.14.2
+	provides = compiz-plugins-main=0.9.14.2
+	provides = compiz-plugins-extra=0.9.14.2
+	provides = compizconfig-python=0.9.14.2
+	provides = libcompizconfig=0.9.14.2
 	conflicts = compiz-core
 	conflicts = compiz-gtk
 	conflicts = compiz-bcop
@@ -40,7 +40,7 @@ pkgbase = compiz
 	conflicts = compizconfig-python
 	conflicts = libcompizconfig
 	conflicts = simple-ccsm
-	source = https://launchpad.net/compiz/0.9.14/0.9.14.1/+download/compiz-0.9.14.1.tar.xz
+	source = https://launchpad.net/compiz/0.9.14/0.9.14.2/+download/compiz-0.9.14.2.tar.xz
 	source = focus-prevention-disable.patch
 	source = gtk-extents.patch
 	source = reverse-unity-config.patch
@@ -48,7 +48,7 @@ pkgbase = compiz
 	source = no-compile-gschemas.patch
 	source = gcc10_common_fix.patch
 	source = remove-unused-or-broken-buttons.patch
-	sha256sums = 2505602b6c93d6565e681473df4157634268533c6874c3cdc9493b73b301ac52
+	sha256sums = cfa061e93b032275ff9e7041f582a8f6d5ae271cf8a89e6bc74e3d3635999d3c
 	sha256sums = f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b
 	sha256sums = 16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9
 	sha256sums = 6ec9c04540ca1649c687d9ab2c8311caea7075831e2cffe719ec7958c9ebab7b
@@ -58,4 +58,3 @@ pkgbase = compiz
 	sha256sums = 24e0c35cccd524b9ab40162d929beb85c304fa1c6c334d464e6d7c3de31d20cf
 
 pkgname = compiz
-

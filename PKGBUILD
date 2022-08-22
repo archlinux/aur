@@ -5,8 +5,8 @@
 # Contributor: Nathan Hulse <nat.hulse@gmail.com>
 
 pkgname=compiz
-pkgver=0.9.14.1
-pkgrel=4
+pkgver=0.9.14.2
+pkgrel=0
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/compiz"
@@ -26,7 +26,7 @@ source=("https://launchpad.net/${pkgname}/${pkgver:0:6}/${pkgver}/+download/${pk
         "no-compile-gschemas.patch"
         "gcc10_common_fix.patch"
         "remove-unused-or-broken-buttons.patch")
-sha256sums=('2505602b6c93d6565e681473df4157634268533c6874c3cdc9493b73b301ac52'
+sha256sums=('cfa061e93b032275ff9e7041f582a8f6d5ae271cf8a89e6bc74e3d3635999d3c'
             'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
             '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9'
             '6ec9c04540ca1649c687d9ab2c8311caea7075831e2cffe719ec7958c9ebab7b'
