@@ -10,7 +10,7 @@ license=('MIT' 'Apache')
 arch=('x86_64')
 conflicts=('erg-bin' 'erg')
 depends=('python')
-makedepends=('rust' 'cargo' 'git')
+makedepends=('cargo' 'git')
 source=("$_pkgname::git+https://github.com/erg-lang/erg.git")
 sha256sums=("SKIP")
 

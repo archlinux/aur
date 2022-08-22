@@ -6,7 +6,6 @@ pkgbase = erg-git
 	arch = x86_64
 	license = MIT
 	license = Apache
-	makedepends = rust
 	makedepends = cargo
 	makedepends = git
 	depends = python
