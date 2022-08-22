@@ -9,8 +9,8 @@ pkgbase = nsfminer-git
 	makedepends = git
 	makedepends = perl
 	makedepends = python3
+	makedepends = cuda>=9.0
 	depends = mesa
-	optdepends = cuda: NVIDIA CUDA support
 	provides = nsfminer
 	conflicts = nsfminer
 	source = nsfminer-git::git+https://github.com/Titaniumtown/nsfminer.git
