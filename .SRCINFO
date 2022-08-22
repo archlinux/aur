@@ -2,6 +2,7 @@ pkgbase = wsysmon-git
 	pkgdesc = A windows task manager clone for Linux.
 	pkgver = r5.81e32da
 	pkgrel = 1
+	url = https://github.com/SlyFabi/WSysMon
 	arch = any
 	license = MIT
 	makedepends = git
@@ -9,7 +10,7 @@ pkgbase = wsysmon-git
 	depends = procps
 	provides = wsysmon=r5.81e32da
 	conflicts = wsysmon
-	source = wsysmon-git::git+https://github.com/SlyFabi/WSysMon
+	source = wsysmon::git+https://github.com/SlyFabi/WSysMon
 	source = WSysMon.desktop
 	sha256sums = SKIP
 	sha256sums = 9afa07c20a4d46fdc672130687350af54cdeb051033eef1487382ce1bd04f18e
