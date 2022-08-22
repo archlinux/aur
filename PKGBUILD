@@ -2,13 +2,13 @@
 
 pkgbase=protobuf-git
 pkgname=('protobuf-git' 'python-protobuf-git')
-pkgver=3.12.3.r112.g36d39a026
+pkgver=21.5.r411.gd8421bd49
 pkgrel=1
 pkgdesc="Google's data interchange format"
 arch=('i686' 'x86_64')
 url="https://developers.google.com/protocol-buffers/"
 license=('BSD')
-makedepends=('git' 'python-setuptools' 'unzip')
+makedepends=('git' 'cmake' 'gtest' 'python-setuptools')
 source=("git+https://github.com/protocolbuffers/protobuf.git")
 sha256sums=('SKIP')
 
@@ -22,16 +22,23 @@ prepare() {
 pkgver() {
   cd "protobuf"
 
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  _tag=$(git tag -l --sort -v:refname | sed '/rc[0-9]*/d' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
   cd "protobuf"
 
-  autoreconf -fi
-  ./configure \
-    --prefix="/usr"
-  make
+  cmake \
+    -B "_build" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DBUILD_SHARED_LIBS=ON \
+    -Dprotobuf_USE_EXTERNAL_GTEST=ON \
+    ./
+  make -C "_build"
 
   cd "python"
   python "setup.py" build \
@@ -41,7 +48,7 @@ build() {
 check() {
   cd "protobuf"
 
-  #make check
+  #make -C "_build" check
 
   cd "python"
   #python "setup.py" test
@@ -49,13 +56,12 @@ check() {
 
 package_protobuf-git() {
   depends=('gcc-libs' 'zlib')
-  provides=('protobuf' 'libprotoc.so' 'libprotobuf.so' 'libprotobuf-lite.so')
+  provides=("protobuf=$pkgver" 'libprotoc.so' 'libprotobuf.so' 'libprotobuf-lite.so')
   conflicts=('protobuf')
-  options=('staticlibs')
 
   cd "protobuf"
 
-  make DESTDIR="$pkgdir" install
+  make -C "_build" DESTDIR="$pkgdir" install
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/protobuf"
   install -Dm644 "editors/protobuf-mode.el" -t "$pkgdir/usr/share/emacs/site-lisp"
   install -Dm644 "editors/proto.vim" -t "$pkgdir/usr/share/vim/vimfiles/syntax"
@@ -63,8 +69,8 @@ package_protobuf-git() {
 
 package_python-protobuf-git() {
   pkgdesc="Python 3 bindings for Google Protocol Buffers"
-  depends=('protobuf-git' 'python' 'python-six')
-  provides=('python-protobuf')
+  depends=("protobuf-git=$pkgver" 'python' 'python-six')
+  provides=("python-protobuf=$pkgver")
   conflicts=('python-protobuf')
 
   cd "protobuf"
