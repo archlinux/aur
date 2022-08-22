@@ -8,6 +8,7 @@ pkgbase = python-inquirer
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-poetry-core
 	depends = python
 	depends = python-blessed
 	depends = python-readchar
