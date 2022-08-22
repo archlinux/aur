@@ -2,7 +2,7 @@
 
 pkgname=ksmbd-tools
 pkgver=3.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Userspace tools for the ksmbd kernel SMB server"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url="https://github.com/cifsd-team/ksmbd-tools"
