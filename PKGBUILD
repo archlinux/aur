@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=karlender
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="An apative GTK-4 calendar app."
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('libadwaita' 'libnotify')
 makedepends=('cargo')
 checkdepends=('appstream-glib')
 source=($url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
-b2sums=('5b6ae53d1c40b0b882744b50f68a03355a5ae0541071a82ac126e07fe7cc64e71b6405edc885a7417cc3f4a8b0bd2440668dd7bed9bbd10596054639609544a2')
+b2sums=('90023f9f1fdf54b95892447c9580acdf97e7c5439a3911b5a27cf2e5294264cb2acfa5ed025bcd0c8e722aea19cef9e73d1a26894e2ba729653761cafb4f5f71')
 
 build() {
   cd "$pkgname-v$pkgver"
