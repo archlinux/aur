@@ -14,20 +14,18 @@ source=("${pkgname}::git+https://github.com/scateu/${_pkgname}")
 md5sums=(SKIP)
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
-  git log -1 --pretty=format:%cd --date=short | sed 's/-//g'
+    cd "${srcdir}/${pkgname}"
+    git log -1 --pretty=format:%cd --date=short | sed 's/-//g'
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
-  ./bootstrap
-  ./configure --prefix=/usr
-  make ${MAKEFLAGS}
+    cd "${srcdir}/${pkgname}"
+    ./bootstrap
+    ./configure --prefix=/usr
+    make ${MAKEFLAGS}
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  make DESTDIR="${pkgdir}/" install
+    cd "${srcdir}/${pkgname}"
+    make DESTDIR="${pkgdir}/" install
 }
-
-# vim:set ts=2 sw=2 et:
