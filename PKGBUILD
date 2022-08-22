@@ -1,7 +1,7 @@
 # Maintainer: Kuba Ellwart <kuba@hop.io>
 
 pkgname=hop-cli
-pkgver=0.1.22
+pkgver=0.1.23
 pkgrel=1
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -9,7 +9,7 @@ pkgdesc="Interact with Hop in your terminal"
 url="https://hop.io"
 license=('MPL-2.0')
 source=("hop_cli-$pkgver.tar.gz::https://github.com/hopinc/hop_cli/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("4c5f5bfc7b9ecaef521429c8f43fb21626280bbb40c8ab27ab1ff5329d14795f")
+sha256sums=("808dfdc26ad0decf4fb09d263c0e2da1ff5d4f0582279dbc24be6df52c65ee09")
 
 prepare() {
   cd "$srcdir/hop_cli-$pkgver"
@@ -41,8 +41,13 @@ package() {
   # generate completions
   mkdir -p "$pkgdir/usr/share/bash-completion/completions"
   "$pkgdir"/usr/bin/hop completions bash > "$pkgdir/usr/share/bash-completion/completions/hop"
+  chmod 644 "$pkgdir/usr/share/bash-completion/completions/hop"
+
   mkdir -p "$pkgdir/usr/share/fish/completions"
   "$pkgdir"/usr/bin/hop completions fish > "$pkgdir/usr/share/fish/completions/hop.fish"
+  chmod 644 $pkgdir/usr/share/fish/completions/hop.fish
+
   mkdir -p "$pkgdir/usr/share/zsh/site-functions"
   "$pkgdir"/usr/bin/hop completions zsh > "$pkgdir/usr/share/zsh/site-functions/_hop"
+  chmod 644 $pkgdir/usr/share/zsh/site-functions/_hop
 }
