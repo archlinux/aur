@@ -1,7 +1,7 @@
 pkgbase = compiz
 	pkgdesc = Composite manager for Aiglx and Xgl, with plugins and CCSM
 	pkgver = 0.9.14.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://launchpad.net/compiz
 	arch = i686
 	arch = x86_64
@@ -46,15 +46,11 @@ pkgbase = compiz
 	source = reverse-unity-config.patch
 	source = screenshot-launch-fix.patch
 	source = no-compile-gschemas.patch
-	source = gcc10_common_fix.patch
-	source = remove-unused-or-broken-buttons.patch
 	sha256sums = cfa061e93b032275ff9e7041f582a8f6d5ae271cf8a89e6bc74e3d3635999d3c
 	sha256sums = f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b
 	sha256sums = 16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9
 	sha256sums = 6ec9c04540ca1649c687d9ab2c8311caea7075831e2cffe719ec7958c9ebab7b
 	sha256sums = 89ee91a8ea6b1424ef76661ea9a2db43412366aacddc12d24a7adf5e04bfbc61
 	sha256sums = 4ab3277da201314b3f65e30128bc30704ddee584fdbbfc8d0d83c7e0de91fa9a
-	sha256sums = 6268dfaaf72957388b6324f8cfac1daaa32a453e8f3b377dd522a38e6bf55469
-	sha256sums = 24e0c35cccd524b9ab40162d929beb85c304fa1c6c334d464e6d7c3de31d20cf
 
 pkgname = compiz
