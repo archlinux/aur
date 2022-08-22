@@ -1,18 +1,20 @@
 # Maintainer: yuioto <yuiotochan@outlook.com>
 
-pkgname=erg-bin
-pkgver=0.2.6
+pkgname='erg-bin'
+_pkgname="erg"
+pkgver=0.2.7
 pkgrel=1
-pkgdesc="The Erg programming language"
-url="https://erg-lang.github.io/"
-license=("MIT OR Apache-2.0")
-arch=("x86_64")
-provides=("erg")
-conflicts=("erg")
-source=("https://yuioto-onedrive.vercel.app/api/raw/?path=/tmp/erg/erg-$pkgver-$arch.tar.gz")
-sha256sums=("4e7b7bd7f2663bd0a936132eb26e94c86ccd4a477fe52cbb29720bf61be7fb8d")
+pkgdesc="A statically typed language that can deeply improve the Python ecosystem"
+url="https://github.com/erg-lang/erg"
+license=('MIT' 'Apache')
+arch=('x86_64')
+conflicts=('erg-git' 'erg')
+depends=('python')
+makedepends=('rust' 'cargo' 'git')
+source=("$_pkgname::https://yuioto-onedrive.vercel.app/api/raw/?path=/tmp/erg/bin/erg-v$pkgver-$arch")
+sha256sums=("276560e7eda0afed9d838ecd6ab94630741bc923dc5f767fea0bf548260fe8fb")
 
 package() {
-    install -Dm755 erg -t "$pkgdir/usr/bin"
-    install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
+	install -Dm755 erg -t "$pkgdir/usr/bin"
+	install -Dm644 $startdir/LICENSE-{MIT,APACHE} -t "$pkgdir/usr/share/licenses/$pkgname"
 }
