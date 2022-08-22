@@ -1,6 +1,6 @@
 pkgbase = erg-git
-	pkgdesc = The Erg programming language
-	pkgver = 0.2.6
+	pkgdesc = A statically typed language that can deeply improve the Python ecosystem
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/erg-lang/erg
 	arch = x86_64
