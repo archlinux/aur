@@ -2,7 +2,7 @@
 
 pkgbase=autodiff
 pkgname=('autodiff' 'python-autodiff')
-pkgver=0.6.10
+pkgver=0.6.11
 pkgrel=1
 pkgdesc="Automatic differentiation made easier for C++"
 arch=('any')
@@ -19,7 +19,7 @@ makedepends=(
 	'python-wheel')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d6bc2f44cab5fd132deabdcb2a9e914b4959660c80a40a2c3f20dde79fc113d9')
+sha256sums=('ac7a52387a10ecb8ba77ce5385ffb23893ff9a623467b4392bd204422a3b5c09')
 
 build() {
 	cmake \
