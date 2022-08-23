@@ -2,7 +2,8 @@
 # Contributor: Harley Wiltzer <harleyw@hotmail.com>
 
 pkgname=python-omegaconf
-pkgver=2.2.2
+_pkg="${pkgname#python-}"
+pkgver=2.2.3
 pkgrel=1
 pkgdesc='Flexible Python configuration system'
 arch=('any')
@@ -13,31 +14,28 @@ makedepends=(
 	'java-runtime'
 	'python-build'
 	'python-installer'
-	'python-pytest'
 	'python-setuptools'
 	'python-wheel')
-# checkdepends=('python-pytest-mock')
+# checkdepends=('python-pytest' 'python-pytest-mock')
 changelog=NEWS.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('10a89b5cb81887d68137b69a7c5c046a060e2239af4e37f20c3935ad2e5fd865')
+sha256sums=('9586b6623d4abf514979612f987261971a58da2dc7a9224bebd017848c9ad80a')
 
 build() {
-	cd "omegaconf-$pkgver"
+	cd "$_pkg-$pkgver"
 	python -m build --wheel --no-isolation
 }
 
 # check() {
-# 	cd "omegaconf-$pkgver"
-# 	pytest -x
+# 	cd "$_pkg-$pkgver"
+# 	PYTHONPATH="$PWD" pytest -x
 # }
 
 package() {
-	cd "omegaconf-$pkgver"
+	cd "$_pkg-$pkgver"
 	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 	install -Dm644 DISCLAIMER -t "$pkgdir/usr/share/licenses/$pkgname/"
 	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	ln -s \
-		"$_site/omegaconf-$pkgver.dist-info/LICENSE" \
-		"$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s "$_site/omegaconf-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
