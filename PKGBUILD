@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=UniProt.ws
-_pkgver=2.36.0
+_pkgver=2.36.5
 pkgname=r-${_pkgname,,}
-pkgver=2.36.0
-pkgrel=3
+pkgver=2.36.5
+pkgrel=1
 pkgdesc='R Interface to UniProt Web Services'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -17,6 +17,10 @@ depends=(
   r-rappdirs
   r-rcurl
   r-rsqlite
+  r-httpcache
+  r-cellxgenedp
+  r-progress
+
 )
 optdepends=(
   r-biocstyle
@@ -24,7 +28,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('70e0ae4aa2bda5057364e4f74a988ee973f5a5e56ca1c5d8f428bdcadee5c368')
+sha256sums=('b639268dca44676b57f7275c92e46e8dcfb110e24dec2dbbc7ba5dc2b96bbce0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

@@ -1,7 +1,7 @@
 pkgbase = r-uniprot.ws
 	pkgdesc = R Interface to UniProt Web Services
-	pkgver = 2.36.0
-	pkgrel = 3
+	pkgver = 2.36.5
+	pkgrel = 1
 	url = https://bioconductor.org/packages/UniProt.ws
 	arch = any
 	license = Artistic2.0
@@ -12,10 +12,13 @@ pkgbase = r-uniprot.ws
 	depends = r-rappdirs
 	depends = r-rcurl
 	depends = r-rsqlite
+	depends = r-httpcache
+	depends = r-cellxgenedp
+	depends = r-progress
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/UniProt.ws_2.36.0.tar.gz
-	sha256sums = 70e0ae4aa2bda5057364e4f74a988ee973f5a5e56ca1c5d8f428bdcadee5c368
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/UniProt.ws_2.36.5.tar.gz
+	sha256sums = b639268dca44676b57f7275c92e46e8dcfb110e24dec2dbbc7ba5dc2b96bbce0
 
 pkgname = r-uniprot.ws
