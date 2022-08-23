@@ -1,6 +1,6 @@
 pkgbase = csprite-git
 	pkgdesc = a tiny pixel art editor
-	pkgver = 0.1.0.r148.g57d60d0
+	pkgver = 0.1.0.r148.g57d60d1
 	pkgrel = 1
 	url = https://github.com/pegvin/csprite
 	arch = i686
