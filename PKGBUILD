@@ -1,13 +1,13 @@
 # Maintainer: Maciej Dems <maciej.dems@p.lodz.pl>
 pkgname=plask
-pkgver=2022.08.03
+pkgver=2022.08.11
 pkgrel=1
 pkgdesc="Photonic LAser Simulation Kit: a comprehensive tool for numerical
 analysis of broad range of physical phenomena in photonic devices"
 url="https://plask.app"
 arch=('x86_64')
 license=('custom')
-depends=('boost-libs' 'expat' 'openmp' 'intel-mkl' 'lapack' 'qt5-declarative' 'qt5-tools'
+depends=('boost-libs' 'expat' 'openmp' 'intel-oneapi-mkl' 'lapack' 'qt5-declarative' 'qt5-tools'
          'python-numpy' 'python-matplotlib' 'python-lxml' 'python-yaml' 'pyside2' 'libx11')
 optdepends=('python-h5py: for saving results to files'
             'python-scipy: for scientific tools'
@@ -15,7 +15,7 @@ optdepends=('python-h5py: for saving results to files'
             'python-paramiko: for remote computation launching'
             'ipython: for interactive shell')
 source=("plask-$pkgver.tar.zst::https://get.plask.app/packages/plask-$pkgver-1-x86_64.pkg.tar.zst")
-sha256sums=('378a075b686810d434216576b9addd0003b7bc264d503b093f1ab16df4a42283')
+sha256sums=('b0041e77609fc70a320e5b09c109ee35b5ba2e52d8275b6cb81d1530f207c008')
 noextract=("plask-$pkgver.tar.zst")
 
 package() {
