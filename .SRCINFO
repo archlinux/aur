@@ -1,7 +1,7 @@
 pkgbase = python-lightning-bolts
 	pkgdesc = Toolbox of models, callbacks, and datasets for AI/ML researchers
 	pkgver = 0.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Lightning-AI/lightning-bolts
 	arch = any
 	license = Apache
