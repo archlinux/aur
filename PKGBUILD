@@ -1,7 +1,7 @@
 # Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 
 _pkgname=OpenMRac
-pkgname="${_pkgname,,}-git"
+pkgname="${_pkgname,,}"
 pkgver=1.0
 pkgrel=1
 pkgdesc='OpenMRac, a split-screen racing game'
@@ -25,8 +25,8 @@ build() {
 
 package() {
 	cd "${_pkgname}-${pkgver}/src"
-  install -Dm755 ${_pkgname,,} "${pkgdir}/usr/bin/${_pkgname,,}"
-  install -Dm644 ${_pkgname,,}.ico "${pkgdir}/usr/share/pixmaps/${_pkgname,,}.ico"
-  install -Dm644 ${_pkgname,,}.desktop "${pkgdir}/usr/share/applications/${_pkgname,,}.desktop"
-  install -Dm644 "../LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname,,}/LICENSE"
+  install -Dm755 ${pkgname} "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 ${pkgname}.ico "${pkgdir}/usr/share/pixmaps/${pkgname}.ico"
+  install -Dm644 ${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "../LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
