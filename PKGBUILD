@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GDCRNATools
-_pkgver=1.16.2
+_pkgver=1.16.6
 pkgname=r-${_pkgname,,}
-pkgver=1.16.2
-pkgrel=3
+pkgver=1.16.6
+pkgrel=1
 pkgdesc='GDCRNATools: an R/Bioconductor package for integrative analysis of lncRNA, mRNA, and miRNA data in GDC'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -36,7 +36,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5cfd83bf34be20b80cc02061880290c35c81c72edd03226c25423ad4c56021ff')
+sha256sums=('3bab5c9c64817584a410c1916dae760db5311d1b8ae3726e033cbc10ce037c7e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
