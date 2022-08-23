@@ -105,3 +105,17 @@
 - refactoring
 - Python 3.9 support
 - Github workfows
+
+### 2.2
+
+2022-08-23
+
+### Fix
+
+- Fix empty MemCStruct size
+
+### Improved
+
+- Python 3.10 support
+- pytest
+- black code style

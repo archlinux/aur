@@ -1,18 +1,20 @@
 pkgbase = python-cstruct
 	pkgdesc = C-style structs for Python
-	pkgver = 2.1
-	pkgrel = 2
+	pkgver = 2.2
+	pkgrel = 1
 	url = https://github.com/andreax79/python-cstruct
 	changelog = changelog.txt
 	arch = any
 	license = MIT
-	checkdepends = python-nose
+	checkdepends = python-pytest
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = python-cstruct-2.1.tar.gz::https://github.com/andreax79/python-cstruct/archive/v2.1.tar.gz
-	sha256sums = bbdd3255f6bf3d82c7519b3f5bd48ac96f36ab5471da49bf86d6110b1ee88676
+	source = python-cstruct-2.2.tar.gz::https://github.com/andreax79/python-cstruct/archive/v2.2.tar.gz
+	source = exclude-tests.patch
+	sha256sums = f1b3a97e186a3cc087c0aaa8ca5ca32c11374f29f0a4597a075869ea1c636bda
+	sha256sums = 50c62f343cdb71381bf5f5e9e71fe75bab9f5b1a4d810855265f3a4c35036569
 
 pkgname = python-cstruct
