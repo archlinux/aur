@@ -1,0 +1,85 @@
+2022-08-02: Stable release 18531 (22.07)
+
+    Medium enhancements
+        Vector layers can now be programmatically filtered (no support in UI yet) 
+    Minor enhancements
+        #22188: Add java.compiler module for scripting
+        #22176: Add subdivisions for the Federated States of Micronesia (patch by westnordost, modified)
+        Some performance fixes
+        Dependency updates (see r18514 for what changed)
+        Improve JOSM launchers for Linux platforms (may work on other Unix derivatives) (patch by sebastic) 
+    Add/improve/fix/change Internal Presets, Map Paint Style and Validation rules
+        #22048: building=construction preset missing some values (patch by skyper, modified)
+        #22102: Add a warning if surface does not match tracktype (patch by mkoniecz)
+        #22120: Add school=entrance to deprecation warnings
+        #21235: Stop whitelisting footway=* and add footway=separate to blacklist candidates for sidewalk=* (patch by JeroenHoek)
+        #22166: Ignore more barrier types for psv suspicious tag combination
+        #22225: Don't warn about sport=running on unclosed ways
+        #21630: Drop the "Riverbank" template (patch by zelonewolf) 
+    More minor bug fixes, enhancements, stability improvements, translation updates, code improvements and code documentation, see SVN log messages of milestone 22.07 
+
+2022-07-07: Stable release 18513 (22.06)
+
+    (First version r18511 was released as stable version and due to major bug version r18513 was released as hotfix.)
+
+    Minor enhancements
+        Various reductions to memory allocations
+        #21720: Remove vi localization
+        #22088: Debian start script doesn't ensure that the chosen java path is executable
+        #20823: Reject uploads that do not follow either the comment policy or the source policy
+        #21600: Fire selectionChanged events when setting/updating notes to ensure that notes are properly selected
+        #21794: Allow for cases where tags can be URL or key values in Tag2Link
+        #21813: Improve marker handling in sessions (patch by Bjoeni)
+        #21923: Improve session workflow / Add "save session" (patch by Bjoeni) 
+    Add/improve/fix/change Internal Presets, Map Paint Style and Validation rules
+        #22187: "Empty relation" and "Role of relation member does not match template expression" shared the same error code, but had two different severities
+        #22172: Don't warn about barrier=berm looking like barrier=kerb
+        #22154: Add incline, surface, and fee to the slipway preset
+        #21997: Add general preset for power=generator (patch by skyper) 
+    More minor bug fixes, enhancements, stability improvements, translation updates, code improvements and code documentation, see SVN log messages of milestone 22.06 
+
+2022-05-29: Stable release 18463 (22.05)
+
+(Stable release 22.04 was skipped.)
+
+    Major enhancements
+        #22065: Mac now uses ⌘ instead of ctrl for most `Select` map mode actions (including `Rotate` and `Scale`) 
+    Minor enhancements
+        #17288: Notes progress bar shows no progress (patch by gaben, modified)
+        #21792: Request focus in Split Way window segment list (patch by gaben)
+        #22022: Allow for recursive geojson parsing
+        #17906: When dragging and dropping relation members to the same position, they are removed
+        #21935: Avoid leaking Authorization headers on redirects in HttpClient 
+    Add/improve/fix/change Internal Presets, Map Paint Style and Validation rules
+        #22084: Remove obsolete payment methods payment:ep_monedero and payment:ep_moneo
+        #22073: Optimized regexes (string starts with, ends with, contains) do not work
+        #22072: Add tunnel:name
+        #21973: Add building:levels:underground (patch by skyper)
+        #22033: Don't warn about "alternative name without name" in case of NHD:subbasin_name=Des Moines Headwaters|Upper Des Moines|East Fork Des Moines
+        #22009: Fix incorrect warning message *:lanes without highway (instead of lanes) (patch by skyper)
+        #22039: Remove warning about construction without highway/railway/waterway/building/landuse as it produces too much false positives 
+    More minor bug fixes, enhancements, stability improvements, translation updates, code improvements and code documentation, see SVN log messages of milestone 22.05 
+
+2022-04-05: Stable release 18427 (22.03)
+
+    Minor enhancements
+        #21825: Delete relations by default when all members are deleted
+        #21953: Overpass now correctly remembers custom URLs 
+    Add/improve/fix/change Internal Presets, Map Paint Style and Validation rules
+        #20960: Warn about construction=* without or conflicting primary tag
+        #20963: Update preset for landuse=construction and add building=construction
+        #21954: Change surface=DecoTurf to surface=acrylic 
+    More minor bug fixes, enhancements, stability improvements, translation updates, code improvements and code documentation, see SVN log messages of milestone 22.03 
+
+2022-03-06: Stable release 18387 (22.02)
+
+(Stable release 22.01 was skipped.)
+
+    Minor enhancements
+        #21850: Improve support for {apikey} replacement for WMTS and WMS. 
+    Add/improve/fix/change Internal Presets, Map Paint Style and Validation rules
+        #21859: Move addr:place into optional
+        #21866: Improve railway gauge values and add validator tests for them
+        #21853: Improve interval validator test
+        #21736: Fix a false positive with oneway=yes, lanes:backward or lanes:forward, and oneway:* 
+    More minor bug fixes, enhancements, stability improvements, translation updates, code improvements and code documentation, see SVN log messages of milestone 22.02 

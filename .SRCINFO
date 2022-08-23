@@ -1,0 +1,25 @@
+pkgbase = josm-stable
+	pkgdesc = An editor for OpenStreetMap written in Java. Stable releases
+	pkgver = 22.07
+	pkgrel = 1
+	url = https://josm.openstreetmap.de/
+	changelog = josm-stable.changelog
+	arch = any
+	license = GPL
+	makedepends = subversion
+	depends = hicolor-icon-theme
+	depends = java-runtime>=11
+	depends = ttf-font
+	depends = sh
+	provides = josm
+	conflicts = josm
+	noextract = josm-snapshot-18531.jar
+	backup = etc/conf.d/josm
+	source = https://josm.openstreetmap.de/download/josm-snapshot-18531.jar
+	source = josm.conf.d
+	source = josm::svn+https://josm.openstreetmap.de/svn/trunk#revision=18531
+	b2sums = 29dc3ea0684509abbb9c588f92b2cb8fb613dee2fe44186ad71e5caff03b56427ddd7cdfb82170a2d5c567c91b649add6b13440049eab922f92f9b1005c2c354
+	b2sums = 368a8116c9b2be9906bc76fc5a51c20321137747ddf463ae029a235ec75c1a420f477dc53bce38fd0a68c2f6fdb05dae2f700cf0e65e464f17e28e3439a3d7cf
+	b2sums = SKIP
+
+pkgname = josm-stable
