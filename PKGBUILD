@@ -7,7 +7,7 @@
 # installation.
 
 pkgname=jabref-git
-pkgver=5.3.r6.g2fe7f31af7
+pkgver=5.7.r40.ga255311924
 pkgrel=1
 epoch=2
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
@@ -24,14 +24,21 @@ provides=('jabref')
 conflicts=('jabref')
 source=("git+https://github.com/JabRef/jabref.git"
 	"${pkgname%-git}.desktop"
-	"${pkgname%-git}.sh")
+	"${pkgname%-git}.sh"
+	double_heap_size.diff)
 sha256sums=('SKIP'
             'cb50a38f701374e6922e74e35c4f99f0418441c48b3c4855e64f0995f0be9cb8'
-            'f17e5184be3541c7c6f54516ee71e0935516c3f36f8c4ecf780999834f88fb0d')
+            'f17e5184be3541c7c6f54516ee71e0935516c3f36f8c4ecf780999834f88fb0d'
+            '9bedb1a4d9bb2d185cbd1a49ae83912565d782ed0e873ab23bb2e8618b685257')
 
 pkgver() {
   cd ${pkgname%-git}
   git describe --tags |cut -c2-|sed 's+-+.r+'|tr - .
+}
+
+prepare() {
+  cd ${pkgname%-git}
+  git apply "$srcdir"/double_heap_size.diff
 }
 
 build() {
