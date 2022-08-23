@@ -1,12 +1,13 @@
 pkgbase = caser
 	pkgdesc = Converts input strings to a standard naming convention.
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/Shadetheartist/caser
-	arch = any
+	arch = x86_64
 	license = GPL
+	checkdepends = check
 	depends = glibc
-	source = caser-1.0.1.tar.gz::https://github.com/Shadetheartist/caser/releases/download/1.0.1/caser-1.0.1.tar.gz
-	sha256sums = be2c0425d9a68c5dd7966a89008830b15178b92f147cd7edbebe1060be398e5d
+	source = caser-1.0.2.tar.gz::https://github.com/Shadetheartist/caser/releases/download/1.0.2/caser-1.0.2.tar.gz
+	sha256sums = 69503dfa75423ff96e98efc3ebcaf86bd592b73ec95f3e2e9d46ce23d18a5999
 
 pkgname = caser
