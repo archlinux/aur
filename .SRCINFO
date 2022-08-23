@@ -6,6 +6,7 @@ pkgbase = visidata-git
 	arch = any
 	license = GPLv3
 	makedepends = git
+	makedepends = python-pip
 	makedepends = python-setuptools
 	depends = python
 	optdepends = python-dnslib: pcap support
