@@ -1,19 +1,17 @@
 pkgbase = python-cplot
 	pkgdesc = Plot complex functions
-	pkgver = 0.9.1
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://github.com/nschloe/cplot
 	arch = any
 	license = GPL3
 	checkdepends = python-pytest-codeblocks
 	checkdepends = python-networkx
-	makedepends = python-build
-	makedepends = python-flit-core
-	makedepends = python-install
+	makedepends = python-setuptools
 	depends = python-matplotx
 	depends = python-npx
 	optdepends = python-pyvista: for create an unstructured grid
-	source = https://github.com/nschloe/cplot/archive/v0.9.1.tar.gz
-	sha512sums = 9fb1f69f29bea1064db6b3e661e06b7f0688bc4dde0c707d55e81260f85d09317c48e889f1d0835c0a139e538a83f6a356fc0591561841b9aba4656739609354
+	source = cplot-0.9.3.tar.gz::https://github.com/nschloe/cplot/archive/v0.9.3.tar.gz
+	sha512sums = 4e18458a20701f673fa67ba0d03c07aabdbe2515e80c05fde1127cc82f345ffb78234c09fa3212f29e0f0725b371a7fc5b43ce35983e9738e6cdb143907fea43
 
 pkgname = python-cplot
