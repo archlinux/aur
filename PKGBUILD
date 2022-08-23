@@ -2,7 +2,7 @@
 pkgbase=python-specutils
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Astropy Affiliated package for 1D spectral operations"
 arch=('any')
@@ -15,7 +15,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
         "https://data.sdss.org/sas/dr16/sdss/spectro/redux/26/spectra/1323/spec-1323-52797-0012.fits"
         'use_local_doc_fits_offline.patch')
 #https://dr15.sdss.org/sas/dr15/manga/spectro/redux/v2_4_3/8485/stack/manga-8485-1901-LOGRSS.fits.gz
-md5sums=('63817ee43fa13d5339ef4198d95d54b0'
+md5sums=('39cb753998d5d45bfa937488cb78bc7e'
          '6de4c8ee5659e87a302e3de595074ba5'
          '3586c5d0810108a182ba9146908dc180'
          'b527ca1f834de432631d530c937d6cd1')
