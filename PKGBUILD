@@ -9,7 +9,7 @@ url="https://github.com/jamielinux/bashmount"
 license=("GPL2")
 optdepends=('udisks2: remove media without sudo')
 backup=('etc/bashmount.conf')
-source=("${pkgname}::${url}/archive/refs/tags/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('4fa5be39b10c3ce24f3f21ff6605ce0499ab9b24baf1b5762be36b9003eab169')
 
 package() {
