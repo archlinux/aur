@@ -9,6 +9,8 @@ arch=('x86_64')
 url="https://github.com/hakluke/${_pkgname}"
 license=('GPL3')
 makedepends=('go' 'git')
+provides=('hakrawler')
+conflicts=('hakrawler')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
