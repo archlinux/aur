@@ -2,7 +2,7 @@
 # Contributor: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=bcftools
-pkgver=1.15.1
+pkgver=1.16
 pkgrel=1
 pkgdesc='A program for variant calling and manipulating files in the Variant Call Format (VCF) and its binary counterpart BCF'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://samtools.github.io/bcftools'
 license=('GPL')
 depends=('gsl' 'htslib' 'python-matplotlib' 'python')
 source=("https://github.com/samtools/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('f21f9564873eb27ccf22d13b91a64acb8fbbfe4f9e4c37933a54b9a95857f2d7')
+sha256sums=('90bf647c9ad79e10a243b8058c873de057fd7012e250d5ae6574839787a2ecd6')
 
 build() {
   cd "${pkgname}-${pkgver}"
