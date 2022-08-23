@@ -1,13 +1,14 @@
 pkgbase = crankshaft-bin
-	pkgdesc = Crankshaft lets you install and create plugins to add more functionality to your Steam client.
+	pkgdesc = A Steam client plugin manager and framework.
 	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://crankshaft.space/
-	arch = any
-	license = GPL
+	arch = x86_64
+	license = GPL3
 	depends = libappindicator-gtk3
-	depends = js-beautify
+	depends = python-jsbeautifier
+	depends = steam
 	source = https://github.com/pastaq/crankshaft/releases/download/0.2.4/crankshaft-v0.2.4.tar.gz
-	sha256sums = e53ee5237e2e0f95f6449086a89a9bf9dcc7c866f8f2f647725e903420df6913
+	sha256sums = e8a66d76f5950df54e62da5eb91dfd6854a1c2760a512bee15eb94cd707b5e09
 
 pkgname = crankshaft-bin

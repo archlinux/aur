@@ -1,21 +1,31 @@
 # Maintainer: Derek J. Clark <derekjohn dot clark at gmail dot com>
 pkgname=crankshaft-bin
+_app_id=crankshaft
 pkgver=0.2.4
 pkgrel=1
-pkgdesc="Crankshaft lets you install and create plugins to add more functionality to your Steam client."
-arch=('any')
+pkgdesc="A Steam client plugin manager and framework."
+arch=('x86_64')
 url="https://crankshaft.space/"
-license=('GPL')
+license=('GPL3')
 groups=()
-depends=('libappindicator-gtk3' 'js-beautify')
+depends=('libappindicator-gtk3' 'python-jsbeautifier' 'steam')
 optdepends=()
 makedepends=()
 source=("https://github.com/pastaq/crankshaft/releases/download/0.2.4/crankshaft-v0.2.4.tar.gz")
-sha256sums=('e53ee5237e2e0f95f6449086a89a9bf9dcc7c866f8f2f647725e903420df6913')
+sha256sums=('e8a66d76f5950df54e62da5eb91dfd6854a1c2760a512bee15eb94cd707b5e09')
 package() {
-	cd "$srcdir/"
-	mkdir -p ${pkgdir}/etc/systemd/user
-	mkdir -p ${pkgdir}/usr/local/bin
-	install -m755 crankshaft ${pkgdir}/usr/local/bin/crankshaft
-	install -m644 autostart/crankshaft.service ${pkgdir}/etc/systemd/user/crankshaft.service
+  cd "$srcdir/"
+  install -Dm755 "$_app_id" -t "$pkgdir/usr/bin/"
+  install -Dm644 "autostart/$_app_id.service" -t "$pkgdir/usr/lib/systemd/user/"
+  install -Dm644 "desktop/space.crankshaft.Crankshaft.desktop" "$pkgdir/usr/share/applications/crankshaft.desktop"
+  install -Dm644 "desktop/space.crankshaft.Crankshaft.metainfo.xml" "$pkgdir/usr/share/metainfo/crankshaft.metainfo.xml"
+
+  for icon_size in 32 64 128; do
+    icons_dir=usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
+    install -d "$pkgdir/${icons_dir}"
+    install -m644 desktop/logo.${icon_size}.png \
+      "$pkgdir/${icons_dir}/${_app_id}.png"
+  done
+  install -Dm644 desktop/logo.svg \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/${_app_id}.svg"
 }
