@@ -6,7 +6,7 @@ pkgver=1.5.4
 pkgrel=2
 pkgdesc="Project Cider. An open-source Apple Music client built from the ground up with Vue.js and Electron. Compiled from the GitHub repositories main branch."
 arch=("armv7h" "i686" "x86_64")
-url="https://github.com/CiderApp/${_pkgname}.git"
+url="https://github.com/ciderapp/${_pkgname}.git"
 license=("GPL")
 depends=('gtk3' 'nss')
 makedepends=('git' 'npm' 'yarn')
@@ -22,44 +22,22 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-	STABLE_SHA=$(curl -s https://api.github.com/repos/ciderapp/Cider/branches/stable | grep sha | cut -d '"' -f 4 | sed 's/v//' | xargs | cut -d' ' -f1)
-	STABLE_DATE=$(git show -s --format=%ci $STABLE_SHA)
-    COMMITSINCESTABLE=$(git rev-list $STABLE_SHA..HEAD --count --since="$STABLE_DATE")
-    CURRENT_VERSION=$(node -p -e "require('./package.json').version")
-    if [[ $COMMITSINCESTABLE -gt 0 ]]; then
-        if [[ $CURRENT_VERSION == *"beta"* ]]; then
-            NEW_VERSION="${CURRENT_VERSION%.*}.$COMMITSINCESTABLE"
-        else 
-            NEW_VERSION="${CURRENT_VERSION}-beta.${COMMITSINCESTABLE}"
-        fi
-        echo ${NEW_VERSION//-/.}
-        sed -i "0,/$CURRENT_VERSION/s//$NEW_VERSION/" package.json
-    else
-        echo ${CURRENT_VERSION/0/$COMMITSINCESTABLE}
-    fi
-
+    GITHUB_REF_NAME=main ./resources/version.sh | sed 's/\-/./g' | xargs
 }
 
 build() {
     cd "${srcdir}/${_pkgname}"
-
-    if [ -f cider.lock ]; then
-        mv cider.lock yarn.lock
-    fi
 
     echo "Building ${_pkgname} on v${pkgver} : [Install Build Dependencies] | Build | Done"
     yarn install --non-interactive --pure-lockfile --cache-folder "${srcdir}/yarn-cache"
 
     echo "Building : Install Build Dependencies | [Build] | Done"
     if [[ ${CARCH} == "armv7h" ]]; then
-        yarn build
-        yarn electron-builder build --armv7l --linux dir
+        yarn tsc && yarn compile-less && yarn electron-builder build --armv7l --linux dir
     elif [[ ${CARCH} == "i686" ]]; then
-        yarn build
-        yarn electron-builder build --ia32 --linux dir
+        yarn tsc && yarn compile-less && yarn electron-builder build --ia32 --linux dir
     elif [[ ${CARCH} == "x86_64" ]]; then
-        yarn build
-        yarn electron-builder build --x64 --linux dir
+        yarn tsc && yarn compile-less && yarn electron-builder build --x64 --linux dir
     fi
 
     echo "Building : Install Build Dependencies | Build | [Done]"
