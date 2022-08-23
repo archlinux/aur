@@ -1,0 +1,18 @@
+pkgbase = python-time-machine
+	pkgdesc = Travel through time in your tests.
+	pkgver = 2.8.1
+	pkgrel = 1
+	url = https://github.com/adamchainz/time-machine
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python-coverage
+	depends = python-pytest-randomly
+	depends = python-dateutil
+	source = https://files.pythonhosted.org/packages/source/t/time-machine/time-machine-2.8.1.tar.gz
+	sha256sums = 4779029fa192fc36f782c1032a44be76ce8b75b1f0b7ec746647cb950b620bb7
+
+pkgname = python-time-machine
