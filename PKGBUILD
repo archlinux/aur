@@ -1,39 +1,26 @@
-# Maintainer: Bill Sun <cap.sensitive at gmail dot com>
-# Contributer: Jamie Nguyen <jamie at tomoyolinux dot co dot uk>
+# Maintainer: Santiago Lo Coco <mail at slococo dot com dot ar>
 
-pkgname=bashmount
+pkgname="bashmount"
 pkgver=4.3.2
-pkgrel=1
+pkgrel=2
+pkgdesc="Tool to mount and unmount removable media from the command-line."
+arch=("any")
+url="https://github.com/jamielinux/bashmount"
+license=("GPL2")
+optdepends=('udisks2: remove media without sudo')
+provides=("bashmount")
+conflicts=("bashmount")
+backup=('etc/bashmount.conf')
+source=("${pkgname}::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('4fa5be39b10c3ce24f3f21ff6605ce0499ab9b24baf1b5762be36b9003eab169')
 
-pkgdesc="A menu-driven bash script for the management of removable media with udisks."
-arch=('any')
-url='https://github.com/jamielinux/bashmount'
-license=('GPL2')
-
-optdepends=('udisks2')
-backup=(etc/bashmount.conf)
-source=("https://github.com/jamielinux/${pkgname}/archive/${pkgver}.tar.gz")
-
-package()
-{
+package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-
-    # Install script
-    install -D -m755 bashmount "${pkgdir}/usr/bin/bashmount"
-
-    # Install config file
-    install -D -m644 bashmount.conf "${pkgdir}/etc/bashmount.conf"
-
-    # install man page
+    install -Dm755 bashmount "${pkgdir}/usr/bin/bashmount"
+    install -Dm644 bashmount.conf "${pkgdir}/etc/bashmount.conf"
     gzip -c -9 bashmount.1 > bashmount.1.gz
-    install -D -m644 bashmount.1.gz "${pkgdir}/usr/share/man/man1/bashmount.1.gz"
-
-    # Install documentation
-    install -d -m755 "${pkgdir}/usr/share/doc/bashmount"
-    # Currently the source code doesn't have an 'AUTHORS' file
-    #install -m644 AUTHORS "${pkgdir}/usr/share/doc/bashmount/AUTHORS"
+    install -Dm644 bashmount.1.gz "${pkgdir}/usr/share/man/man1/bashmount.1.gz"
+    install -dm755 "${pkgdir}/usr/share/doc/bashmount"
     install -m644 COPYING "${pkgdir}/usr/share/doc/bashmount/COPYING"
     install -m644 NEWS "${pkgdir}/usr/share/doc/bashmount/NEWS"
 }
-
-sha256sums=('4fa5be39b10c3ce24f3f21ff6605ce0499ab9b24baf1b5762be36b9003eab169')

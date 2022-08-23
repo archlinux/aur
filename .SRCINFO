@@ -1,14 +1,15 @@
 pkgbase = bashmount
-	pkgdesc = A menu-driven bash script for the management of removable media with udisks.
+	pkgdesc = Tool to mount and unmount removable media from the command-line.
 	pkgver = 4.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jamielinux/bashmount
 	arch = any
 	license = GPL2
-	optdepends = udisks2
+	optdepends = udisks2: remove media without sudo
+	provides = bashmount
+	conflicts = bashmount
 	backup = etc/bashmount.conf
-	source = https://github.com/jamielinux/bashmount/archive/4.3.2.tar.gz
+	source = bashmount::https://github.com/jamielinux/bashmount/archive/refs/tags/4.3.2.tar.gz
 	sha256sums = 4fa5be39b10c3ce24f3f21ff6605ce0499ab9b24baf1b5762be36b9003eab169
 
 pkgname = bashmount
-
