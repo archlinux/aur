@@ -1,0 +1,27 @@
+pkgbase = python-cyborgclient
+	pkgdesc = OpenStack Acceleration (Cyborg) Client
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://docs.openstack.org/python-cyborgclient/latest/
+	arch = any
+	license = Apache
+	checkdepends = python-oslotest
+	checkdepends = python-osprofiler
+	checkdepends = python-requests-mock
+	depends = python-pbr
+	depends = python-cliff
+	depends = python-debtcollector
+	depends = python-osc-lib
+	depends = python-oslo-i18n
+	depends = python-oslo-log
+	depends = python-oslo-serialization
+	depends = python-oslo-utils
+	depends = python-os-client-config
+	depends = python-keystoneauth1
+	depends = python-keystoneclient
+	depends = python-requests
+	depends = python-simplejson
+	source = https://github.com/openstack/python-cyborgclient/archive/2.0.0/python-cyborgclient-2.0.0.tar.gz
+	sha512sums = 92d68a91553c481941315ee76fa6cd5e76515ef47181559409cba34f9c49e4aa6ea25851b22772084dcfc8dfd64b5a4a90f8a5f3017955245408954d1cf42267
+
+pkgname = python-cyborgclient
