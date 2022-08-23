@@ -4,7 +4,7 @@ pkgbase=python-asdf-astropy
 _pname=${pkgbase#python-}
 _pyname=${_pname/-/_}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="ASDF serialization support for astropy"
 arch=('any')
@@ -14,14 +14,13 @@ makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
              'python-installer'
-             'python-sphinx-astropy'
-             'python-astropy')
-checkdepends=('python-pytest-astropy-header'
-              'python-asdf'
+             'python-sphinx-asdf')
+checkdepends=('python-pytest-doctestplus'
+              'python-pytest-astropy-header'
               'python-scipy'
-              'python-asdf_coordinates_schemas')
+              'python-asdf_coordinates_schemas')   # 'python-asdf' 'python-astropy' by sphinx-asdf
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('131b0942b9e5b447d72651a1cc1fe0ad')
+md5sums=('89928a5bfbc5f65907ee1cf0f2c5c962')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -41,7 +40,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    PYTHONPATH="build/lib:${PYTHONPATH}" pytest || warning "Tests failed (for astropy>5.0.4)"
+    PYTHONPATH="build/lib:${PYTHONPATH}" pytest || warning "Tests failed"
 }
 
 package_python-asdf-astropy() {
