@@ -1,0 +1,15 @@
+pkgbase = sqlconvert-tools
+	pkgdesc = convert sql server to sqlite
+	pkgver = v0.0.1.r0.ga14f4e7
+	pkgrel = 1
+	url = https://github.com/vcup/MonitorFileSystem
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	source = git+https://github.com/vcup/SqlConvertTools
+	source = https://dotnet.microsoft.com/download/dotnet/scripts/v1/dotnet-install.sh
+	sha256sums = SKIP
+	sha256sums = 18450c72b35727b13b9b8a4191c2c95d7fbd3f4a0091ab71edcfb16eb57e5494
+
+pkgname = sqlconvert-tools
