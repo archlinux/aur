@@ -1,7 +1,7 @@
 pkgbase = certbot-dns-dynu
 	pkgdesc = Dynu DNS Authenticator plugin for Certbot
-	pkgver = 0.0.2
-	pkgrel = 3
+	pkgver = 0.0.3
+	pkgrel = 1
 	url = https://github.com/bikram990/certbot-dns-dynu
 	arch = any
 	license = Apache
@@ -13,7 +13,7 @@ pkgbase = certbot-dns-dynu
 	depends = python-dnspython
 	depends = python-requests
 	depends = python-mock
-	source = https://github.com/bikram990/certbot-dns-dynu/archive/refs/tags/0.0.2.tar.gz
-	sha256sums = d7a175f2f94697593a35d1c28491999d4ed49f0699d7626526837f8725d05803
+	source = https://github.com/bikram990/certbot-dns-dynu/archive/refs/tags/0.0.3.tar.gz
+	sha256sums = 49c9e696ce38aa747e20003c9b56864864b3642cdfabf3ed79374231a05e965e
 
 pkgname = certbot-dns-dynu
