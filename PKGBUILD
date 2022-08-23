@@ -6,9 +6,9 @@ pkgrel=1
 pkgdesc="A system info program. Fetches system info and displays it."
 arch=("x86_64")
 url="https://github.com/El-Wumbus/qinfo"
-license=("GPL3")
+license=("LGPL3")
 provides=("qinfo")
-makedepends=("gcc" "make")
+makedepends=("gcc" "make" "git")
 depends=("coreutils")
 optdepends=("snapd: List number of snap packages"
             "flatpak: List number of flatpak packages")
