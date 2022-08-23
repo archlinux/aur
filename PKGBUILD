@@ -1,6 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=ardupilot-copter-sitl
-pkgver=4.2.1
+pkgver=4.2.2
 pkgdesc="Advanced, Fully-Featured, and Reliable Autopilot Software (Copter,
 SITL)"
 url='https://ardupilot.org'
