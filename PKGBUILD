@@ -45,7 +45,16 @@ sha256sums=(
     'SKIP'
     '33ea43092cc895b9e6eea9056d72fbe462a450d41b6a1465da22566912110d69'
 )
-provides=('codium')
+provides=(
+    'codium'
+    'vscodium'
+)
+conflicts=(
+    'codium'
+    'vscodium'
+    'vscodium-bin'
+    'vscodium-git'
+)
 
 ###############################################################################
 
@@ -67,32 +76,12 @@ case "$CARCH" in
     ;;
 esac
 
-install_node() {
-    # Deactivate any pre-loaded nvm, and make sure we use our own in the current source directory
-    command -v nvm >/dev/null && nvm deactivate && nvm unload
-    export NVM_DIR="${srcdir}/.nvm"
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    
-    # Install the correct version of NodeJS (read from .nvmrc)
-	nvm install $(cat .nvmrc)
-    nvm use
-    
-    # Check if the correct version of node is being used
-    if [[ "$(node --version)" != "$(cat .nvmrc)" ]]
-    then
-    	echo "Using the wrong version of NodeJS! Expected ["$(cat .nvmrc)"] but using ["$(node --version)"]."
-    	exit 1
-    fi
-}
-
 version() {
     echo "$@" | tr 'v' ' ' | awk -F. '{ printf("%03d%03d%03d%03d\n", $1,$2,$3,$4); }'
 }
 
 prepare() {
     cd "vscodium"
-    
-    install_node
     
     git checkout $( echo $pkgver | sed 's/\.r\([0-9]\+\)\./-r\1-/' )
     
@@ -106,6 +95,22 @@ prepare() {
 
 build() {
     cd "vscodium"
+
+    # Deactivate any pre-loaded nvm, and make sure we use our own in the current source directory
+    command -v nvm >/dev/null && nvm deactivate && nvm unload
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+
+    # Install the correct version of NodeJS (read from .nvmrc)
+    nvm install $(cat .nvmrc)
+    nvm use
+
+    # Check if the correct version of node is being used
+    if [[ "$(node --version)" != "$(cat .nvmrc)" ]]
+    then
+        echo "Using the wrong version of NodeJS! Expected ["$(cat .nvmrc)"] but using ["$(node --version)"]."
+        exit 1
+    fi
 
     # Remove old build
     if [ -d "vscode" ]; then
