@@ -1,6 +1,6 @@
 pkgbase = cuda_memtest
 	pkgdesc = A GPU memory test utility for NVIDIA and AMD GPUs.
-	pkgver = r61.edb66a4
+	pkgver = r83.dd723aa
 	pkgrel = 1
 	url = https://github.com/ComputationalRadiationPhysics/cuda_memtest
 	arch = i686
@@ -8,10 +8,9 @@ pkgbase = cuda_memtest
 	license = Illinois Open Source License
 	makedepends = cmake
 	depends = cuda
-	source = cuda_memtest::git://github.com/ComputationalRadiationPhysics/cuda_memtest.git
+	source = cuda_memtest::git+https://github.com/ComputationalRadiationPhysics/cuda_memtest.git
 	source = path.patch
 	sha256sums = SKIP
 	sha256sums = 25b80161f63b61562015e8c89d1f4ff77b2d1d9140f879d7e29cf3ad7447cbca
 
 pkgname = cuda_memtest
-

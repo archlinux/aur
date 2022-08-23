@@ -1,7 +1,7 @@
 # Maintainer: revel <revelΘmuub·net>
 
 pkgname=cuda_memtest
-pkgver=r61.edb66a4
+pkgver=r83.dd723aa
 pkgrel=1
 pkgdesc="A GPU memory test utility for NVIDIA and AMD GPUs."
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ optdepends=(
 makedepends=('cmake'
 #            'opencl-headers'
             )
-source=("$pkgname"::'git://github.com/ComputationalRadiationPhysics/cuda_memtest.git'
+source=("$pkgname"::'git+https://github.com/ComputationalRadiationPhysics/cuda_memtest.git'
         'path.patch')
 sha256sums=('SKIP'
             '25b80161f63b61562015e8c89d1f4ff77b2d1d9140f879d7e29cf3ad7447cbca')
