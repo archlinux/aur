@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=proxyC
-_pkgver=0.3.0
+_pkgver=0.3.1
 pkgname=r-${_pkgname,,}
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Computes Proximity in Large Sparse Matrices'
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cd819a67c72967aefb319c7a9d4d942fbb905f6aff4a2539638b8d450c937958')
+sha256sums=('325ef827c4425c2846a60d43ae4392d1ad2057ffea6378fa5ec7531b5d6bb49f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
