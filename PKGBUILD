@@ -74,7 +74,7 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.15
-_minor=61
+_minor=62
 _srcname=linux-${_major}
 _clr=${_major}.61-4
 pkgbase=linux-clear-lts2021
@@ -354,7 +354,7 @@ done
 
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            'c2ad6439122a90369d27b761d01714423840558df9ec77b640ea272c6ea35d31'
+            '02add19d91fdaabeff8c2ea9079b18a4ff01325f7a2e382c5befe5afab357342'
             'SKIP'
             '5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c')
 
