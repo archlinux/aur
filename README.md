@@ -14,6 +14,10 @@ mv ~/Downloads/pico-8_0.2.4c_amd64.zip .
 makepkg -si
 ```
 
-Only supports amd64.
+Only supports x86_64.
 
-Footnote: there's an existing pkgbuild but also it's on the aur and I don't know how he hell it works, looks complicated. I think it uses humble bundle? See here: <https://gist.github.com/Addisonbean/538b4fa815b3a02dc6653538f026ee78> <https://aur.archlinux.org/packages/pico-8>
+Footnote: there's an existing pkgbuild on the aur but it uses humble bundle.
+
+ See here:
+ - <https://gist.github.com/Addisonbean/538b4fa815b3a02dc6653538f026ee78>
+ - <https://aur.archlinux.org/packages/pico-8>
