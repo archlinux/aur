@@ -7,7 +7,7 @@
 # Contributor: Derek Hemingson <b.derehemi@gmail.com>
 
 pkgname=caser
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 epoch=
 pkgdesc="Converts input strings to a standard naming convention."
@@ -28,7 +28,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Shadetheartist/caser/releases/download/${pkgver}/caser-${pkgver}.tar.gz")
 noextract=()
-sha256sums=('69503dfa75423ff96e98efc3ebcaf86bd592b73ec95f3e2e9d46ce23d18a5999')
+sha256sums=('a839ddd7727bfd1f6c119ace091f31458372d2606a5c5e8590624beb3cc594b3')
 validpgpkeys=()
 
 build() {
