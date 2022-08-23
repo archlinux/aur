@@ -11,7 +11,7 @@
 pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux util-linux-libs-selinux)
 _pkgmajor=2.38
-_realver=${_pkgmajor}
+_realver=${_pkgmajor}.1
 pkgver=${_realver/-/}
 pkgrel=1
 pkgdesc='SELinux aware miscellaneous system utilities for Linux'
@@ -33,7 +33,7 @@ source=("https://www.kernel.org/pub/linux/utils/util-linux/v${_pkgmajor}/${pkgba
         '60-rfkill.rules'
         'rfkill-unblock_.service'
         'rfkill-block_.service')
-sha256sums=('6d111cbe4d55b336db2f1fbeffbc65b89908704c01136371d32aa9bec373eb64'
+sha256sums=('60492a19b44e6cf9a3ddff68325b333b8b52b6c59ce3ebd6a0ecaa4c5117e84f'
             'SKIP'
             '99cd77f21ee44a0c5e57b0f3670f711a00496f198fc5704d7e44f5d817c81a0f'
             '57e057758944f4557762c6def939410c04ca5803cbdd2bfa2153ce47ffe7a4af'
@@ -88,7 +88,7 @@ package_util-linux-selinux() {
 
   cd "${pkgbase/-selinux}-${_realver}"
 
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" usrsbin_execdir=/usr/bin install
 
   # setuid chfn and chsh
   chmod 4755 "${pkgdir}"/usr/bin/{newgrp,ch{sh,fn}}
@@ -104,12 +104,6 @@ package_util-linux-selinux() {
 
   # TODO(dreisner): offer this upstream?
   sed -i '/ListenStream/ aRuntimeDirectory=uuidd' "${pkgdir}/usr/lib/systemd/system/uuidd.socket"
-
-  # adjust for usrmove
-  # TODO(dreisner): fix configure.ac upstream so that this isn't needed
-  cd "${pkgdir}"
-  mv usr/sbin/* usr/bin
-  rmdir usr/sbin
 
   ### runtime libs are shipped as part of util-linux-libs
   rm "${pkgdir}"/usr/lib/lib*.{a,so}*

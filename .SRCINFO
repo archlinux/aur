@@ -1,6 +1,6 @@
 pkgbase = util-linux-selinux
 	pkgdesc = SELinux aware miscellaneous system utilities for Linux
-	pkgver = 2.38
+	pkgver = 2.38.1
 	pkgrel = 1
 	url = https://github.com/karelzak/util-linux
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = util-linux-selinux
 	makedepends = systemd
 	makedepends = libselinux
 	options = strip
-	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.38/util-linux-2.38.tar.xz
-	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.38/util-linux-2.38.tar.sign
+	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.38/util-linux-2.38.1.tar.xz
+	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.38/util-linux-2.38.1.tar.sign
 	source = pam-login
 	source = pam-common
 	source = pam-runuser
@@ -25,7 +25,7 @@ pkgbase = util-linux-selinux
 	source = rfkill-unblock_.service
 	source = rfkill-block_.service
 	validpgpkeys = B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284
-	sha256sums = 6d111cbe4d55b336db2f1fbeffbc65b89908704c01136371d32aa9bec373eb64
+	sha256sums = 60492a19b44e6cf9a3ddff68325b333b8b52b6c59ce3ebd6a0ecaa4c5117e84f
 	sha256sums = SKIP
 	sha256sums = 99cd77f21ee44a0c5e57b0f3670f711a00496f198fc5704d7e44f5d817c81a0f
 	sha256sums = 57e057758944f4557762c6def939410c04ca5803cbdd2bfa2153ce47ffe7a4af
@@ -53,8 +53,8 @@ pkgname = util-linux-selinux
 	optdepends = words: default dictionary for look
 	provides = rfkill
 	provides = hardlink
-	provides = util-linux=2.38-1
-	provides = selinux-util-linux=2.38-1
+	provides = util-linux=2.38.1-1
+	provides = selinux-util-linux=2.38.1-1
 	conflicts = rfkill
 	conflicts = hardlink
 	conflicts = util-linux
@@ -76,7 +76,7 @@ pkgname = util-linux-libs-selinux
 	provides = libmount.so
 	provides = libsmartcols.so
 	provides = libuuid.so
-	provides = util-linux-libs=2.38-1
+	provides = util-linux-libs=2.38.1-1
 	provides = libutil-linux-selinux
 	conflicts = util-linux-libs
 	conflicts = libutil-linux-selinux
