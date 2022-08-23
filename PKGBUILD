@@ -5,7 +5,7 @@
 # https://github.com/sudoforge/pkgbuilds
 
 pkgname=google-cloud-sdk-app-engine-python
-pkgver=398.0.0
+pkgver=399.0.0
 pkgrel=1
 pkgdesc="A google-cloud-sdk component that provides the Python runtime for AppEngine."
 url="https://cloud.google.com/sdk/"
@@ -19,7 +19,7 @@ depends=(
 source=(
   "https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/${pkgname}_${pkgver}.orig.tar.gz"
 )
-sha256sums=('ccd8b15f30c78686ea03d473e20b3eb23f708e064e1fe8d411679492411289f0')
+sha256sums=('4c602e673b4727c347dcb65959c2781e92d6ec6b67bd1979e56b543998db1219')
 
 package() {
   # Install the component manifest file
