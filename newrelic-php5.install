@@ -1,93 +1,38 @@
-# This is a default template for a post-install scriptlet.
-# Uncomment only required functions and remove any functions
-# you don't need (and this header).
-
-## arg 1:  the new package version
-#pre_install() {
-  # do something here
-#}
-
-## arg 1:  the new package version
 post_install() {
+    # Setup "newrelic" user/group
+    useradd --system -M --home / --shell /sbin/nologin newrelic || true
 
-#!/bin/sh
-# Create the newrelic user and group
-useradd --system -M --home / --shell /sbin/nologin newrelic || true
+    # Setup permissions
+    mkdir -p /var/log/newrelic
+    chmod 755 /var/log/newrelic
 
-# Kludge the permissions
-mkdir -p /var/log/newrelic
-chmod 1777 /var/log/newrelic
+    # When first installing the package, the license key will not be set.
+    # Instead of throwing an error, we want to whine to the user and then exit cleanly.
+    if sed -e '/^[        ]*#/d' "${inifile}" 2> /dev/null | grep -q 'REPLACE_WITH_REAL_KEY' 2> /dev/null; then
+        if [ -z "${NR_SILENT}" -a -z "${SILENT}" ]; then
+            echo \
+"
+:: The service cannot be enabled/started until a valid licence is inserted in the following file:
 
-inifile=/etc/php/conf.d/newrelic.ini
+   /etc/php/conf.d/newrelic.ini
 
-#
-# When first installing the package, the license key will not be set.
-# Instead of throwing an error, we want to whine to the user and then exit cleanly.
-#
+:: Edit the above referenced file and in newrelic.license=\"REPLACE_WITH_REAL_KEY\"
+   replace the value with your licence key. More information here:
 
-if sed -e '/^[        ]*#/d' "${inifile}" 2> /dev/null | grep -q 'REPLACE_WITH_REAL_KEY' 2> /dev/null; then
-  if [ -z "${NR_SILENT}" -a -z "${SILENT}" ]; then
-    cat <<EOF
+   https://docs.newrelic.com/docs/apm/agents/php-agent/getting-started/introduction-new-relic-php/#installation
 
-*********************************************************************
-*********************************************************************
-***
-***  Can not start the New Relic PHP Agent until you insert a
-***  valid license key in the following file:
-***
-***     ${inifile}
-***
-***  You can do this by edit file /etc/php/conf.d/newrelic.ini,
-***  fint the line newrelic.license="REPLACE_WITH_REAL_KEY"
-***  and replace with your real key. More information here:
-***
-***  https://docs.newrelic.com/docs/php/new-relic-for-php#installation
-***
-***  No data will be reported until the server monitor can start.
-***  You can get your New Relic key from the 'Configuration' section
-***  of the 'Support' menu of your New Relic account (accessible at
-***  https://rpm.newrelic.com).
-***
-***
-*********************************************************************
-*********************************************************************
+:: No data will be reported until the daemon can be started.
+   Get your license key in \"Settings\" of the \"Support\" menu in your NewRelic account.
+   (accessible at https://rpm.newrelic.com)
 
-Once you set up your LICENSE KEY. Restart your web server, php process
-manager. The agent and daemon will be run automatically.
-
-EOF
+:: Once the license key is configured, enable/start the NewRelic daemon, PHP and the web server.
+"
+        fi
+        return 0
     fi
-    return 0
-fi
-
-
 }
 
-## arg 1:  the new package version
-## arg 2:  the old package version
-pre_upgrade() {
-  # do something here
-  return 0
-}
-
-## arg 1:  the new package version
-## arg 2:  the old package version
-post_upgrade() {
-  # do something here
-  return 0
-}
-
-## arg 1:  the old package version
-pre_remove() {
-  # do something here
-  return 0
-}
-
-## arg 1:  the old package version
 post_remove() {
-  # do something here
-  userdel newrelic || true
-  rm -rf /var/log/newrelic
+    userdel newrelic || true
+    rm -rf /var/log/newrelic
 }
-
-# vim:set ts=2 sw=2 et:

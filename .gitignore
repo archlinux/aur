@@ -1,9 +1,6 @@
-# Ignore everything:
 *
-
-# ...except:
 !.gitignore
-!PKGBUILD
 !.SRCINFO
-!*.service
-!*.install
+!newrelic-daemon.service
+!newrelic-php5.install
+!PKGBUILD
