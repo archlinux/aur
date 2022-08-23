@@ -1,6 +1,6 @@
 pkgbase = wsysmon-git
 	pkgdesc = A windows task manager clone for Linux.
-	pkgver = r7.604c8e0
+	pkgver = r9.c2b3622
 	pkgrel = 1
 	url = https://github.com/SlyFabi/WSysMon
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = wsysmon-git
 	makedepends = git
 	makedepends = cmake
 	depends = gtkmm3
-	depends = procps
-	provides = wsysmon=r7.604c8e0
+	depends = libx11
+	provides = wsysmon=r9.c2b3622
 	conflicts = wsysmon
 	source = wsysmon::git+https://github.com/SlyFabi/WSysMon
 	source = WSysMon.desktop
