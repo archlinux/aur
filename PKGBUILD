@@ -19,7 +19,7 @@ options=('!strip')
 install=${pkgname}.install
 source=("${_pkgname}-${pkgver}.tar.gz::https://ghproxy.com/${url}/archive/refs/tags/V${pkgver}.tar.gz"
         "${pkgname}.install")
-sha256sums=('729e4aa7a6f13890cfa4e10409412c0e7dc45d60b2ea53e09c4a978924209ceb'
+sha256sums=('4300724d5fe8368f50abcb45e24e01dc2fe1499f2a62151b263ea58d961a193b'
             '303f34246c0d341e1093d6e486e2cbfdbbb0d122d751de649f562ebac37777b4')
 
 build() {
