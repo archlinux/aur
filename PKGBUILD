@@ -2,22 +2,24 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Shunsuke Shibayama <sbym1346@gmail.com>
 
-pkgname='erg-git'
-_pkgname="erg"
-pkgver=0.2.7
+pkgname=erg-git
+_pkg="${pkgname%-git}"
+pkgver=0.2.8.r5.g79a1f49
 pkgrel=1
-pkgdesc="A statically typed language that can deeply improve the Python ecosystem"
+pkgdesc='Statically typed language that builds upon the Python ecosystem'
 url="https://github.com/erg-lang/erg"
 license=('MIT' 'Apache')
 arch=('x86_64')
-conflicts=('erg-bin' 'erg')
+provides=("$_pkg")
+conflicts=("$_pkg")
 depends=('python')
 makedepends=('cargo' 'git')
-source=("$_pkgname::git+https://github.com/erg-lang/erg.git")
+
+source=("$_pkg::git+$url")
 sha256sums=("SKIP")
 
 # By enabling the --features flag, you can change the language in which error messages are displayed.
-# 
+#
 # Japanese
 # cargo install erg --features japanese
 #
@@ -27,13 +29,31 @@ sha256sums=("SKIP")
 # Chinese (Traditional)
 # cargo install erg --features traditional_chinese
 
+pkgver() {
+	git -C "$_pkg" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+}
+
+prepare() {
+	cd "$_pkg"
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
-	cd $_pkgname/
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cd "$_pkg"
 	cargo build --release --frozen
 }
 
+check() {
+	export RUSTUP_TOOLCHAIN=stable
+	cd "$_pkg"
+	cargo test --frozen
+}
+
 package() {
-	install -Dm755 $_pkgname/target/release/$_pkgname -t "$pkgdir/usr/bin"
-	install -Dm644 $_pkgname/LICENSE-{MIT,APACHE} -t "$pkgdir/usr/share/licenses/$pkgname"
-	install -Dm644 $_pkgname/README{,_zh-CN,_zh-TW,_JA}.md -t "$pkgdir/usr/share/doc/$pkgname"
+	cd "$_pkg"
+	install -Dm755 "target/release/$_pkg" -t "$pkgdir/usr/bin"
+	install -Dm644 LICENSE-{MIT,APACHE} -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm644 README{,_zh-CN,_zh-TW,_JA}.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
