@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-g-kpe
-pkgver=4.1.3.2
+pkgver=4.1.4
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake' 'inetutils' 'xorg-s
              'nodejs' 'lld' 'bc' 'python-setuptools' 'python-psutil' 'python-zstandard' 'pciutils' 'git')
 replaces=("waterfox-g4-kpe" "waterfox-g3-kpe")
 options=('!emptydirs' '!makeflags' 'zipman')
-_filesrev=b052418a019d49c58c332471581b6747e562ab1a
+_filesrev=254d5654531c0f2b6fe0705ae9632cf1f4e3b7c0
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-g-kpe
 source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G$pkgver"
         "waterfox-g.desktop::$_filesurl/waterfox-g.desktop"
@@ -31,6 +31,12 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G$pkgver"
         "Use-remoting-name-for-GDK-application-names.patch::$_filesurl/patches/Use-remoting-name-for-GDK-application-names.patch"
         "sandbox-fips.patch::$_filesurl/patches/sandbox-fips.patch"
         "fix-langpack-id.patch::$_filesurl/patches/fix-langpack-id.patch"
+        "libevent_p1.patch::$_filesurl/patches/libevent_p1.patch"
+        "libevent_p2.patch::$_filesurl/patches/libevent_p2.patch"
+        "libevent_p3.patch::$_filesurl/patches/libevent_p3.patch"
+        "libevent_p4.patch::$_filesurl/patches/libevent_p4.patch"
+        "rust_p1.patch::$_filesurl/patches/rust_p1.patch"
+        "rust_p2.patch::$_filesurl/patches/rust_p2.patch"
         )
 sha256sums=('SKIP'
             '09b6d083ecfc42d8c355177b56b7073f387c968c162041507f2870c38e4b7259'
@@ -46,7 +52,13 @@ sha256sums=('SKIP'
             '2bb12adfdb1e26e6dbb184cae8aeb85c83c886d9ce1f6a243b613bc192ad248f'
             '138b972a40a74104791783167770c4a01e62cce00bb9cc75119e152f9ea9f14d'
             'c3d0bc01466c4d1164c7bc9e1cdece7e0cfdf6c408c813b766b11730200c43c4'
-            'e293a816a375650f9b121cc28de8091732f177169feb7c045179845558df196c')
+            'e293a816a375650f9b121cc28de8091732f177169feb7c045179845558df196c'
+            '7aec90431a86b617ce89ede1c39d376318de5782d1b2313ba50b151d8c636ffc'
+            '8ee48d000f839467425cf7a74b88d79d982a48e2945db57f3d500ab76da9e787'
+            'e1354926fea2ba6f6719e0faccb82f3feda1e381224cc93dcc4fc222a60c2a28'
+            'efc7297595341c42026f3bea30224d5318b32c9d6878dde9f80e2f4ec13b39b9'
+            'e38e217ccb92b851a5e650e124e5d85c82fc266c3c170621033c6b77975e4493'
+            '0fb7a0f37a4dc73275a9915711d3cdc4f6c41f62a501d9c4696abb35cb40d076')
 
 prepare() {
 
@@ -66,6 +78,12 @@ prepare() {
   patch -Np1 -i ../Use-remoting-name-for-GDK-application-names.patch
   patch -Np1 -i ../sandbox-fips.patch
   patch -Np1 -i ../fix-langpack-id.patch
+  patch -Np1 -i ../rust_p1.patch
+  patch -Np1 -i ../rust_p2.patch
+  patch -Np1 -i ../libevent_p1.patch
+  patch -Np1 -i ../libevent_p2.patch
+  patch -Np1 -i ../libevent_p3.patch
+  patch -Np1 -i ../libevent_p4.patch
 
   cat >../mozconfig <<END
 ac_add_options --enable-alsa
