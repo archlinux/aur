@@ -1,7 +1,7 @@
 # Maintainer: jmcb <joelsgp@protonmail.com>
 pkgname=pico8
 pkgver=0.2.4c
-pkgrel=9
+pkgrel=10
 pkgdesc='A fantasy console for making, sharing and playing tiny games and other computer programs.'
 arch=('x86_64')
 url='https://www.lexaloffle.com/pico-8.php'
@@ -16,6 +16,7 @@ source=("file://pico-8_${pkgver}_amd64.zip"
 sha256sums=('00967d08289d08f0fe275b21f9453734fb6c3d7f674191fa6026a0301e837d43'
             '9b846cd0fce9f3bebb06dfaf3a85f15bad8d95ae632d0271aace5748aa6a9242'
             '4d8aaaeb48541c779e19a5b9d262a3c3fe214b1a5a0946a4d1a64bc2795b5ecd')
+options=('!strip')
 
 package() {
     _dest="${pkgdir}"/opt/${pkgname}
