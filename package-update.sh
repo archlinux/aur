@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Usage:
+# PKGVER=x.x.x ./package-update.sh
+
 arch=( 'x86_64' 'i686' 'arm' 'aarch64' )
 _arch=( 'amd64' '386' 'arm' 'arm64' )
 
