@@ -2,7 +2,7 @@
 # Contributor: davedatum <ask at davedatum dot com>
 _name=imagine
 pkgname=${_name}-git
-pkgver=0.7.0.r0.g5c74207
+pkgver=0.7.1.r0.g278e380
 pkgrel=1
 pkgdesc="PNG/JPEG optimization app"
 arch=(x86_64)
@@ -14,7 +14,7 @@ provides=("${_name}")
 conflicts=("${_name}")
 install=${_name}.install
 # options=(!strip)
-source=("git+${url}.git#tag=v0.7.0"
+source=("git+${url}.git#tag=v0.7.1"
   "${_name}.sh"
   "${_name}.desktop"
   "${_name}.install")

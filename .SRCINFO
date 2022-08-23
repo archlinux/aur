@@ -1,6 +1,6 @@
 pkgbase = imagine-git
 	pkgdesc = PNG/JPEG optimization app
-	pkgver = 0.7.0.r0.g5c74207
+	pkgver = 0.7.1.r0.g278e380
 	pkgrel = 1
 	url = https://github.com/meowtec/imagine
 	install = imagine.install
@@ -13,7 +13,7 @@ pkgbase = imagine-git
 	depends = imagemagick
 	provides = imagine
 	conflicts = imagine
-	source = git+https://github.com/meowtec/imagine.git#tag=v0.7.0
+	source = git+https://github.com/meowtec/imagine.git#tag=v0.7.1
 	source = imagine.sh
 	source = imagine.desktop
 	source = imagine.install
