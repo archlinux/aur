@@ -1,11 +1,13 @@
-# Maintainer:  Rod Kay 
+# Maintainer:  Rod Kay   <rodakay5 at gmail.com>
+
+#RAK lines are commented out by me (Rod Kay)
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->glibc->binutils->gcc
 # NOTE: libtool requires rebuilt with each new gcc version
 
 pkgname=gcc-ada-debug
-pkgver=12.1.1
-_commit=681c73db9bd156f9b65a73ccc6c4a0a697fe70d6
+pkgver=12.2.0
+_commit=2ee5e4300186a92ad73f1a1a64cb918dc76c8d67
 _majorver=${pkgver%%.*}
 pkgrel=1
 provides=(gcc-ada)
@@ -37,7 +39,7 @@ checkdepends=(
 )
 options=(!emptydirs !lto debug)
 _libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
-# _commit=_commit=681c73db9bd156f9b65a73ccc6c4a0a697fe70d6
+# _commit=6beb39ee6c465c21d0cc547fd66b445100cdcc35
 # source=(git://gcc.gnu.org/git/gcc.git#commit=$_commit
 source=(git+https://sourceware.org/git/gcc.git#commit=${_commit}
         c89 c99
@@ -53,8 +55,8 @@ sha256sums=('SKIP'
             'de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931'
             '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a'
             '1773f5137f08ac1f48f0f7297e324d5d868d55201c03068670ee4602babdef2f'
-            '495acb21d908e96f72368d328354c9d0c6d1076ea8bf7320badf481b950e65e6'
-            'd4a42c994e6234b4bdbdea402c141776f6808e8befe3bfb40abd3920f5f85d8a')
+            '259f1d6791597ce1383a93611a6bdb21d896fbf63e1503f2549770a656eda413'
+            '31e8ee1137195cb9e6eb7655832f0435bb2b2d4e95d387e10cd6560217e107be')
 
 prepare() {
   [[ ! -d gcc ]] && ln -s gcc-${pkgver/+/-} gcc

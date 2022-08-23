@@ -9,4 +9,4 @@ usr/bin/gnatmake
 usr/bin/gnatname 
 usr/bin/gnatprep 
 
-usr/lib/gcc/x86_64-pc-linux-gnu/12.1.1/gnat1
+usr/lib/gcc/x86_64-pc-linux-gnu/12.2.0/gnat1
