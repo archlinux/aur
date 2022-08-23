@@ -4,7 +4,7 @@ pkgname=xnviewmp-system-libs
 _pkgname=xnviewmp
 pkgver=1.01
 srcrel=1 # Incremented when there is a new release for the same version number
-pkgrel=1
+pkgrel=2
 pkgdesc="An efficient multimedia viewer, browser and converter (using system libraries)."
 url="https://www.xnview.com/en/xnviewmp/"
 
@@ -13,6 +13,8 @@ license=('custom')
 depends=(
   # Main Qt dependencies
   'qt5-multimedia' 'qt5-svg' 'qt5-webkit' 'qt5-x11extras'
+  # libmdk dependency
+  'libc++'
   # Plugin libs
   'libwebp' 'openjpeg2' 'openexr'
 )
