@@ -1,11 +1,11 @@
 pkgbase = serialtest
-	pkgdesc = A cross-platform serial port test tool.
-	pkgver = 0.2
+	pkgdesc = A cross-platform test tool for serial port, Bluetooth, TCP and UDP.
+	pkgver = 0.2.1
 	pkgrel = 0
 	url = https://github.com/wh201906/SerialTest
 	install = serialtest.install
 	arch = any
-	license = GPL2.1
+	license = LGPL-3.0-only
 	makedepends = qt5-tools
 	depends = qcustomplot
 	depends = qt5-serialport
@@ -13,9 +13,9 @@ pkgbase = serialtest
 	provides = SerialTest
 	conflicts = serialtest-git
 	options = !strip
-	source = SerialTest-0.2.tar.gz::https://ghproxy.com/https://github.com/wh201906/SerialTest/archive/refs/tags/V0.2.tar.gz
+	source = SerialTest-0.2.1.tar.gz::https://ghproxy.com/https://github.com/wh201906/SerialTest/archive/refs/tags/V0.2.tar.gz
 	source = serialtest.install
-	sha256sums = 31ecfbf366ab30fde266021459dbc3315dd17c872aed5d740fe3503d5dd60c7b
+	sha256sums = 729e4aa7a6f13890cfa4e10409412c0e7dc45d60b2ea53e09c4a978924209ceb
 	sha256sums = 303f34246c0d341e1093d6e486e2cbfdbbb0d122d751de649f562ebac37777b4
 
 pkgname = serialtest
