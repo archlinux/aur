@@ -9,7 +9,7 @@ license=(MIT)
 depends=(python python-certifi python-requests python-cryptography python-aiohttp python-aiodns python-yarl)
 makedepends=(python-build python-installer python-wheel python-setuptools)
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha256sums=('a1ab970d5887dd0f47f1efebfeec0e026040ef4aef662e685559d59f1db6d61e')
+sha256sums=('702fb53a7d1ffa38fde65e0208fef853de0b6d0da50d9eb139c52d40e711e205')
 
 prepare() {
   cd "$srcdir"/ccxt-$pkgver
