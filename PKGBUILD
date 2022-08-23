@@ -8,7 +8,7 @@ arch=('any')
 url='http://visidata.org/'
 license=('GPLv3')
 depends=('python')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-pip' 'python-setuptools')
 optdepends=('python-dnslib: pcap support'
             'python-dpkt: pcap support'  # AUR
             'python-fonttools: ttf/otf support'
@@ -42,7 +42,7 @@ pkgver() {
 
 package() {
   cd "$srcdir/$pkgname"
-  python setup.py -q install --root="$pkgdir" --optimize=1
+  pip3 install . --user --root="$pkgdir" --no-warn-script-location
   install -Dm644 LICENSE.gpl3 "$pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE"
   install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/${pkgname%-*}/CHANGELOG.md"
   cp -R docs/* "$pkgdir/usr/share/doc/${pkgname%-*}/"
