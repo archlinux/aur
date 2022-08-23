@@ -1,6 +1,6 @@
 # Maintainer: Rayr https://rayr.ml/LinkInBio/
 pkgname=discord-rpc-cli
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A Discord RPC cli client written purely in Rust"
 arch=('x86_64')
