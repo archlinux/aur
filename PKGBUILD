@@ -5,7 +5,7 @@
 export LG2=en
 
 pkgname=i2p-dev
-pkgver=1.6.1.1
+pkgver=1.9.0.0
 pkgrel=1
 pkgdesc="A distributed anonymous network (daily mtn->git sync)"
 url="https://geti2p.net"
@@ -78,7 +78,7 @@ build() {
         -Dfile.encoding=UTF-8 \
         -Djavac.compilerargs=-Xlint:-options \
         -Dbuild.reproducible=true \
-        -Djavac.version=17 \
+        -Djavac.relase=17 \
         preppkg-linux
 }
 
