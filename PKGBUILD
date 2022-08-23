@@ -1,12 +1,12 @@
 # Maintainer: Popolon <popolon@popolon.org>
 name=directfb2
 pkgname=directfb2-git
-pkgver=r85.c750bb98c
-pkgrel=2
-pkgdesc="An interface description language used by DirectFB"
+pkgver=r88.eb7ab25c1
+pkgrel=1
+pkgdesc="a fork of DirectFB whose purpose is to preserve and maintain the DirectFB graphics backend, particularly for use on embedded systems."
 arch=('x86_64' 'armv7h' 'armv8' 'riscv32' 'riscv64')
 url="https://github.com/directfb2/DirectFB2"
-license=('GPL3')
+license=('LGPL')
 groups=()
 makedepends=('git' 'meson' 'ninja' 'flux-git')
 conflicts=()
