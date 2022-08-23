@@ -11,7 +11,7 @@ url='https://apps.kde.org/gwenview/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
 groups=(kde-applications kde-graphics)
-depends=(kactivities baloo libkdcraw kparts kitemmodels cfitsio phonon-qt5 kiamgeannotator)
+depends=(kactivities baloo libkdcraw kparts kitemmodels cfitsio phonon-qt5 kimageannotator)
 optdepends=('qt5-imageformats: support for tiff, webp, and more image formats'
             'kimageformats: support for dds, xcf, exr, psd, and more image formats'
             'kamera: import pictures from gphoto2 cameras')
