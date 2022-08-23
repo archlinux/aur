@@ -1,19 +1,17 @@
 pkgbase = python-felupe
 	pkgdesc = Finite Element Analysis
-	pkgver = 4.0.0
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/adtzlr/felupe
 	arch = any
 	license = GPL3
-	checkdepends = python-pytest
-	checkdepends = python-sparse
 	makedepends = python-setuptools
 	depends = python-meshio
 	depends = python-scipy
 	optdepends = python-h5py: for XDMF-export
 	optdepends = python-numba: for JIT compiler support
 	optdepends = python-sparse: for sparse arrays support
-	source = felupe-4.0.0.tar.gz::https://github.com/adtzlr/felupe/archive/v4.0.0.tar.gz
-	sha512sums = 29b51b0467454d2dcfd7b1b1a7cd2771c148efca3b262eb5809b1acb5b790a663ca65d6d98201db8f8f881daa3cb6cc3acaf39935535f7d73b1cfff6f0ffcd01
+	source = felupe-5.0.0.tar.gz::https://github.com/adtzlr/felupe/archive/v5.0.0.tar.gz
+	sha512sums = e4defd25b4dc44f58831ddb3224d0f8ac50c591bc348a1bd26cf6bff5399c4ee596905e6e7bc9f79e06d08dde3c30ba4b53fb28a8e982294a3dc588b9d513efc
 
 pkgname = python-felupe
