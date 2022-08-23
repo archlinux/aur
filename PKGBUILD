@@ -1,7 +1,7 @@
 # Maintainer: Zacharias Knudsen <zachasme@gmail.com>
 pkgname=gog-unreal-tournament-goty
 pkgver=469c_rc4
-pkgrel=1
+pkgrel=2
 pkgdesc="Unreal Tournament (99): Game of the Year Edition. GOG Version."
 arch=('x86_64')
 url="https://www.gog.com/game/unreal_tournament_goty"
@@ -50,7 +50,7 @@ package() {
 
   # symlink game binary which is located in /opt
   ln --symbolic \
-    "/opt/gog/${pkgname#gog-}/System/ut-bin" \
+    "/opt/gog/${pkgname#gog-}/System64/ut-bin" \
     "${pkgdir}/usr/bin/${pkgname}"
 
   # install desktop entry and license document
