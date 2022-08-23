@@ -1,0 +1,11 @@
+post_install() {
+  echo "Creating the 'rgoled' group."
+  groupadd rgoled
+  chgrp rgoled "/usr/bin/r-go-led"
+  chmod g+s "/usr/bin/r-go-led"
+}
+
+post_remove() {
+  echo "Removing the 'rgoled' group."
+  groupdel rgoled
+}

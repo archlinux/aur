@@ -1,0 +1,16 @@
+pkgbase = r-go-tools-led-git
+	pkgdesc = Tool to control the special LED on R-Go Tools keyboards
+	pkgver = 22.02.r0.g791a046
+	pkgrel = 1
+	url = https://gitlab.com/labinformatica/guieditor
+	install = r-go-tools-led-git.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = xprintidle
+	source = r-go-tools-led-git::git+https://www.uninformativ.de/git/r-go-tools-led.git
+	source = 90-r-go-led.rules
+	sha256sums = SKIP
+	sha256sums = c76a6582a7e21f6de95cabb5a426fb00cba2519d265c7aa80279218b7a406040
+
+pkgname = r-go-tools-led-git

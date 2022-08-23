@@ -1,0 +1,4 @@
+KERNEL=="hidraw*", \
+    ATTRS{idVendor}=="0911", ATTRS{idProduct}=="2188", \
+    GROUP="rgoled"
+
