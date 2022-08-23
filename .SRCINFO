@@ -1,6 +1,6 @@
 pkgbase = jdk-openj9-bin
 	pkgdesc = Eclipse (former IBM) OpenJ9 with openjdk18
-	pkgver = 18.0.2b9_openj9_0.33.0
+	pkgver = 18.0.2b9_openj9_0.33.1
 	pkgrel = 1
 	url = https://developer.ibm.com/languages/java/semeru-runtimes/downloads
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = jdk-openj9-bin
 	conflicts = jdk18-openj9-bin
 	conflicts = jdk18-openj9
 	options = !strip
-	source = https://github.com/ibmruntimes/semeru18-binaries/releases/download/jdk-18.0.2%2B9_openj9-0.33.0/ibm-semeru-open-jdk_x64_linux_18.0.2_9_openj9-0.33.0.tar.gz
-	sha256sums = 48a7ea9b5043e5476b63d3b77b3bf01d71fd7fb53dd76db13865ce8bf8d4c09f
+	source = https://github.com/ibmruntimes/semeru18-binaries/releases/download/jdk-18.0.2%2B9_openj9-0.33.1/ibm-semeru-open-jdk_x64_linux_18.0.2_9_openj9-0.33.1.tar.gz
+	sha256sums = b694d47666035b1f7870bc3749aa7c1903d50976eab3772fd81c32dab2aa8e64
 
 pkgname = jdk-openj9-bin
