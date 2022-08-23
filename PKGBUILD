@@ -6,7 +6,12 @@ pkgdesc="Free, open source crypto trading bot"
 url="https://github.com/freqtrade/freqtrade"
 arch=('any')
 license=('GPL3')
-testdepends=(python-pytest-random-order python-pytest-cov python-pytest-asyncio python-time-machine)
+testdepends=(
+  python-pytest-random-order 
+  python-pytest-cov 
+  python-pytest-asyncio 
+  python-time-machine
+  python-mock)
 makedepends=(python-build python-installer python-wheel $testdepends)
 depends=(
   python
