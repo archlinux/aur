@@ -1,32 +1,33 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Santiago Lo Coco <mail at slococo dot com dot ar>
 
-_pkgname='bashmount'
+_pkgname="bashmount"
 pkgname="${_pkgname}-git"
-pkgver=4.3.2.r0.g9a15ab7
-pkgrel=1
-pkgdesc='Tool to mount and unmount removable media from the command-line'
+pkgver=r210.9a15ab7
+pkgrel=2
+pkgdesc="Tool to mount and unmount removable media from the command-line."
 arch=('any')
-url='https://github.com/jamielinux/bashmount'
-license=('GPL2')
-depends=('cryptsetup')
+url="https://github.com/jamielinux/bashmount"
+license=("GPL2")
 makedepends=('git')
-optdepends=('udisks2: manage removable media without sudo')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-backup=("etc/${_pkgname}.conf")
+optdepends=('udisks2: remove media without sudo')
+provides=("bashmount")
+conflicts=("bashmount")
+backup=('etc/bashmount.conf')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  git -C "${_pkgname}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${srcdir}/${_pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "${_pkgname}"
-  install -Dm755 -t "${pkgdir}/usr/bin" "${_pkgname}"
-  install -Dm755 -t "${pkgdir}/etc" "${_pkgname}.conf"
-  install -Dm644 -t "${pkgdir}/usr/share/man/man1" "${_pkgname}.1"
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" 'README.md'
+    cd "${srcdir}/${_pkgname}"
+    install -Dm755 bashmount "${pkgdir}/usr/bin/bashmount"
+    install -Dm644 bashmount.conf "${pkgdir}/etc/bashmount.conf"
+    gzip -c -9 bashmount.1 > bashmount.1.gz
+    install -Dm644 bashmount.1.gz "${pkgdir}/usr/share/man/man1/bashmount.1.gz"
+    install -dm755 "${pkgdir}/usr/share/doc/bashmount"
+    install -m644 COPYING "${pkgdir}/usr/share/doc/bashmount/COPYING"
+    install -m644 NEWS "${pkgdir}/usr/share/doc/bashmount/NEWS"
 }
-
-# vim: ts=2 sw=2 et:
