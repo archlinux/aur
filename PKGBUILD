@@ -6,7 +6,7 @@
 
 pkgname=autofs
 pkgver=5.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc='A kernel-based automounter for Linux'
 arch=('x86_64')
 url='https://www.kernel.org/pub/linux/daemons/autofs/'
@@ -30,6 +30,9 @@ prepare() {
 
   sed -i -e 's|/etc/auto.misc|/etc/autofs/auto.misc|' \
          -e 's|/etc/auto.master.d|/etc/autofs/auto.master.d|' samples/auto.master
+
+  sed -i -e "/^#include <linux\/fs.h>$/d" modules/parse_amd.c
+  sed -i -e "/^#include <linux\/fs.h>$/d" modules/parse_sun.c
 }
 
 build() {

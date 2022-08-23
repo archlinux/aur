@@ -1,7 +1,7 @@
 pkgbase = autofs
 	pkgdesc = A kernel-based automounter for Linux
 	pkgver = 5.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/pub/linux/daemons/autofs/
 	arch = x86_64
 	license = GPL2
