@@ -33,6 +33,7 @@ build() {
   cmake -B build -S $_pkgname-$pkgver \
     -DCMAKE_BUILD_TYPE=Release \
     -DKDEExperimentalPurpose_FOUND=OFF \
+    -DFORCE_NOT_REQUIRED_DEPENDENCIES=KF5Purpose \
     -DBUILD_TESTING=OFF
     cmake --build build
 }
