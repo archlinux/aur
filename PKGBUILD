@@ -2,8 +2,8 @@
 # USE_QT6=OFF makepkg -si
 
 pkgname=qbittorrent-enhanced-ua
-pkgver=4.4.3.12
-pkgrel=3
+pkgver=4.4.4.10
+pkgrel=1
 pkgdesc="An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar. (Enhanced Edition with original user-agent)"
 arch=('x86_64')
 _name="qBittorrent-Enhanced-Edition"
@@ -24,8 +24,8 @@ source=(
 )
 
 sha256sums=(
-    '67f741ad176a487ad9e5d910f9782838082eada623ca84c67774bb859f601bf2'
-    '45b197be81dcc4e5f9cc3df6868ed2aba920514af8c47323ed2d67bcbd8c4d6f'
+    '5778bfd2447dd135e7bf92616ea945013155ca2b64604969f601080166bb1733'
+    '25310df75d7b41b55cc15c11a7a845465358a199e3d3147044404d82edeac514'
 )
 
 USE_QT6="${USE_QT6:-ON}"
