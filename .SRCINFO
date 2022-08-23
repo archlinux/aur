@@ -5,6 +5,7 @@ pkgbase = bashmount
 	url = https://github.com/jamielinux/bashmount
 	arch = any
 	license = GPL2
+	makedepends = git
 	optdepends = udisks2: remove media without sudo
 	provides = bashmount
 	conflicts = bashmount
