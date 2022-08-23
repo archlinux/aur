@@ -10,7 +10,7 @@
 
 pkgname=vagrant
 pkgver=2.3.0
-pkgrel=2
+pkgrel=4
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
 url="https://vagrantup.com"
@@ -22,7 +22,7 @@ makedepends=('git' 'go')
 conflicts=('vagrant-substrate')
 replaces=('vagrant-substrate')
 source=($pkgname-$pkgver.tar.gz::https://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz
-        "git+https://github.com/mitchellh/vagrant-installers.git#commit=4629e74")
+        "git+https://github.com/mitchellh/vagrant-installers.git#commit=5aa48dd")
 md5sums=('872b623fd3ba919185b4cc671ea7c20f'
          'SKIP')
 
@@ -54,7 +54,7 @@ package() {
 
   GEM_PATH="$EMBEDDED_DIR"/gems/$pkgver GEM_HOME="$GEM_PATH" \
   GEMRC="$EMBEDDED_DIR"/etc/gemrc \
-    gem install $pkgname-$pkgver.gem --no-document --prerelease
+    gem install $pkgname-$pkgver.gem delegate --no-document
 
   install -Dm755 "$INSTALLERS_DIR"/launcher/vagrant \
     "$pkgdir"/opt/$pkgname/bin/$pkgname
