@@ -7,9 +7,9 @@ url="https://github.com/freqtrade/freqtrade"
 arch=('any')
 license=('GPL3')
 testdepends=(
-  python-pytest-random-order 
-  python-pytest-cov 
-  python-pytest-asyncio 
+  python-pytest-random-order
+  python-pytest-cov
+  python-pytest-asyncio
   python-pytest-mock
   python-time-machine)
 makedepends=(python-build python-installer python-wheel ${testdepends[@]})
@@ -51,15 +51,15 @@ depends=(
   python-schedule
 
   #hyperopt
-  python-scipy 
-  python-scikit-learn 
-  python-scikit-optimize 
-  python-filelock 
-  python-joblib 
-  python-progressbar 
+  python-scipy
+  python-scikit-learn
+  python-scikit-optimize
+  python-filelock
+  python-joblib
+  python-progressbar
 
   #freqai
-  python-catboost 
+  python-catboost
   python-lightgbm
 
   #plot
@@ -81,7 +81,7 @@ build() {
 package() {
   cd ${_pkgname}-${pkgver}
   python -m installer --destdir="$pkgdir" dist/*.whl
-  rm -rf "$pkgdir"/usr/lib/python*/site-packages/tests 
+  rm -rf "$pkgdir"/usr/lib/python*/site-packages/tests
   install -dm755 "${pkgdir}/usr/lib/python3.10/site-packages/freqtrade/rpc/api_server/ui/installed"
 
   cd ${srcdir}
@@ -93,5 +93,5 @@ package() {
 
 check() {
   cd ${_pkgname}-${pkgver}
-  bash tests/pytest.sh "/usr/bin"
+  bash tests/pytest.sh
 }
