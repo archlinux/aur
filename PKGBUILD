@@ -1,6 +1,6 @@
 # Maintainer: Michał Walenciak <kicer86@gmail.com>
 pkgname=photobroom-git
-pkgver=v1.5.2.r517.ga10a2b874
+pkgver=v1.5.2.r748.g014c12417
 pkgrel=1
 pkgdesc="Photos managing tool"
 arch=('i686' 'x86_64')
