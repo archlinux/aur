@@ -1,7 +1,7 @@
 pkgbase = serialtest
 	pkgdesc = A cross-platform test tool for serial port, Bluetooth, TCP and UDP.
 	pkgver = 0.2.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/wh201906/SerialTest
 	install = serialtest.install
 	arch = any
