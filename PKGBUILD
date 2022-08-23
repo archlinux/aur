@@ -10,7 +10,7 @@
 
 pkgname=vagrant
 pkgver=2.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
 url="https://vagrantup.com"
@@ -54,7 +54,7 @@ package() {
 
   GEM_PATH="$EMBEDDED_DIR"/gems/$pkgver GEM_HOME="$GEM_PATH" \
   GEMRC="$EMBEDDED_DIR"/etc/gemrc \
-    gem install $pkgname-$pkgver.gem delegate --no-document
+    gem install $pkgname-$pkgver.gem cgi delegate --no-document
 
   install -Dm755 "$INSTALLERS_DIR"/launcher/vagrant \
     "$pkgdir"/opt/$pkgname/bin/$pkgname
