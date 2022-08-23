@@ -1,9 +1,0 @@
-[Trigger]
-Type = Package
-Operation = Install
-Operation = Upgrade
-Target = nekuvi
-[Action]
-When = PostTransaction
-Description = Adding evdev rules for np_prog...
-Exec = /usr/share/libalpm/scripts/install-nekuvi-layout

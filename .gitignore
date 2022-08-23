@@ -1,0 +1,4 @@
+ardrive-cli-*.tgz
+ardrive-cli-*.pkg.tar.zst
+pkg/
+src/
