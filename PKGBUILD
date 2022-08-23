@@ -12,7 +12,7 @@ depends=('libappindicator-gtk3' 'python-jsbeautifier' 'steam')
 optdepends=()
 makedepends=()
 source=("https://github.com/pastaq/crankshaft/releases/download/0.2.4/crankshaft-v0.2.4.tar.gz")
-sha256sums=('e8a66d76f5950df54e62da5eb91dfd6854a1c2760a512bee15eb94cd707b5e09')
+sha256sums=('2153295cb9850514aedca6100fc51d958cca64fbc39bd3fc2cb651c0f29d2bd7')
 package() {
   cd "$srcdir/"
   install -Dm755 "$_app_id" -t "$pkgdir/usr/bin/"
