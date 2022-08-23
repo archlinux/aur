@@ -1,14 +1,14 @@
 pkgbase = yaknt
 	pkgdesc = New tab for Yakuake console
-	pkgver = v1.0
-	pkgrel = 1
+	pkgver = v1.1
+	pkgrel = 0
 	url = https://github.com/logrusorgru/yaknt
 	arch = any
 	license = Unlicense
 	depends = python3
 	makedepends = coreutils
 	provides = yaknt
-	source = https://github.com/logrusorgru/yaknt/archive/refs/tags/v1.0.tar.gz
-	sha256sums = 88360713daf4e2a36852efd2a5585fac589fd4babe1af11d31b55fc63564d297
+	source = https://github.com/logrusorgru/yaknt/archive/refs/tags/v1.1.tar.gz
+	sha256sums = 05ed06903506ad158f139295d5e327d19e3fa591a342637f3efdbfabffbfa463
 
 pkgname = yaknt
