@@ -1,8 +1,8 @@
 # Maintainer: Andrew Sun <adsun701@gmail.com>
 
 pkgname=mingw-w64-hunspell
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.7.1
+pkgrel=1
 pkgdesc="Spell checker and morphological analyzer library and program (mingw-w64)"
 arch=(any)
 url="https://hunspell.github.io/"
@@ -13,7 +13,7 @@ options=(!strip !buildflags staticlibs !debug !emptydirs)
 source=("hunspell-${pkgver}.tar.gz"::"https://github.com/hunspell/hunspell/archive/v${pkgver}.tar.gz"
         "01-relocate.patch"
         "02-fix-link-with-pdcurses.patch")
-sha256sums=('bb27b86eb910a8285407cf3ca33b62643a02798cf2eef468c0a74f6c3ee6bc8a'
+sha256sums=('6e3557624c608b3e6525b8bd277706db4f5a857c28fdb3cfa8d0d2b67776da8a'
             'b3a978749ef723481286e6237944729b6965bc57eacc5407b5f7fedf7d6aa8a1'
             '260432a8f01525e83124c79e375cc9f0692b1a6c97773add4c69b8efe081cf1d')
 
