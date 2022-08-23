@@ -6,12 +6,12 @@ _base=requests-cache
 pkgname=python-${_base}-git
 _pkgname=${pkgname%-git}
 pkgdesc="Transparent persistent cache for http://python-requests.org library (git version)"
-pkgver=0.9.3.r194.g072ff2d
+pkgver=0.9.3.r202.g8cd28d1
 pkgrel=1
 arch=(any)
 url="https://github.com/reclosedev/${_base}"
 license=('custom:BSD-2-clause')
-depends=(python-requests python-platformdirs python-cattrs python-url-normalize python-exceptiongroup)
+depends=(python-requests python-platformdirs python-cattrs python-url-normalize)
 makedepends=(python-build python-install python-poetry git)
 optdepends=('python-boto3: Cache backend for Amazon DynamoDB database'
   'python-botocore: Interface for Amazon Web Services'
@@ -21,7 +21,7 @@ optdepends=('python-boto3: Cache backend for Amazon DynamoDB database'
   'python-itsdangerous: for pass trusted data to untrusted environments'
   'python-yaml: for bindings yaml support'
   'python-ujson: for JSON serializer for improved performance') # python-sphinx-furo python-linkify-it-py python-myst-parser
-# checkdepends=(python-pytest python-requests-mock python-responses python-itsdangerous python-ujson python-timeout-decorator python-rich)
+checkdepends=(python-pytest python-requests-mock python-responses python-itsdangerous python-ujson python-timeout-decorator python-rich)
 source=("git+${url}")
 sha512sums=('SKIP')
 provides=(${_pkgname})
@@ -37,14 +37,13 @@ build() {
   # Note: set `GIT_CEILING_DIRECTORIES` to prevent poetry
   # from incorrectly using a parent git checkout info.
   # https://github.com/pypa/build/issues/384#issuecomment-947675975
-  export PYTHONHASHSEED=0
   GIT_CEILING_DIRECTORIES="${PWD}/.." python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-# check() {
-#   cd ${_base}
-#   python -m pytest --ignore=tests/integration
-# }
+check() {
+  cd ${_base}
+  python -m pytest --ignore=tests/integration
+}
 
 package() {
   cd ${_base}
