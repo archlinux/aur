@@ -13,8 +13,8 @@ url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
 
 # Apparently there is an alternate URL - https://archive.mozilla.org/pub/
 _base_url="https://ftp.mozilla.org/pub/${_name}/${_channel}"
-_version=$(curl "${CURL_OPTS[@]}" ${_base_url}/latest-mozilla-central-l10n/ | grep "${_lang}.linux-${CARCH}.checksums" | sed "s/^.*>firefox-//; s/\.${_lang}.*//" | sort -n | tail -n 1)
-_build_id_raw="$(curl -s "${_base_url}/latest-mozilla-central-l10n/${_name}-${_version}.${_lang}.linux-${CARCH}.checksums" | grep '.partial.mar' | cut -d' ' -f4 | grep -E -o '[[:digit:]]{14}' | sort | tail -n1)"
+_version=$(curl "${CURL_OPTS[@]}" ${_base_url}/latest-mozilla-central/ | grep "${_lang}.linux-${CARCH}.checksums" | sed "s/^.*>firefox-//; s/\.${_lang}.*//" | sort -n | tail -n 1)
+_build_id_raw="$(curl -s "${_base_url}/latest-mozilla-central/${_name}-${_version}.${_lang}.linux-${CARCH}.checksums" | grep '.partial.mar' | cut -d' ' -f4 | grep -E -o '[[:digit:]]{14}' | sort | tail -n1)"
 declare -A _build_id
 _build_id=(
   [year]="${_build_id_raw:0:4}"
@@ -50,17 +50,17 @@ optdepends=(
   'speech-dispatcher: text-to-speech'
   'startup-notification: support for FreeDesktop Startup Notification'
 )
-_url="${_base_url}/${_build_id[year]}/${_build_id[month]}/${_build_id[year]}-${_build_id[month]}-${_build_id[day]}-${_build_id[hour]}-${_build_id[min]}-${_build_id[sec]}-mozilla-central-l10n"
+_url="${_base_url}/${_build_id[year]}/${_build_id[month]}/${_build_id[year]}-${_build_id[month]}-${_build_id[day]}-${_build_id[hour]}-${_build_id[min]}-${_build_id[sec]}-mozilla-central"
 _src="${_name}-${_version}.${_lang}.linux-${CARCH}"
 _filename="${_build_id[date]}-${_build_id[time]}-${_src}"
 source=('firefox-nightly.desktop'
         'policies.json'
         "${_filename}.tar.bz2::${_url}/${_src}.tar.bz2"
         "${_filename}.tar.bz2.asc::${_url}/${_src}.tar.bz2.asc")
-sha512sums=('b514abafc559ec03a4222442fa4306db257c3de9e18ed91a0b37cc9d7058a8e08a241442e54a67659a3ab4512a5dae6a0b94ea7a33d08ef0b8a76a9eac902095'
-  '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308'
-  'SKIP'
-  'SKIP')
+sha512sums=('87c181628c3be0762000ff3b5cb841ed2c2371937e4aab7f8f441c608dd08d349085036880c8e8aaed40d01fe258ea9be159741e9fad9f493c96fb9be4cc0de3'
+            '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308'
+            '19ac581785638ba3295a5466e491e2a2b73ce863d90a8e6fb00b0897b78b9aec9e10a672b6b99c1ebab863a5076bc477d9780b51e3065ba83ffe5c490708fbc0'
+            'SKIP')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla’s GnuPG release key
 
 package() {
