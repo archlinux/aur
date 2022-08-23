@@ -1,5 +1,5 @@
 pkgname=flatpak-lol
-pkgver=1.12.7
+pkgver=1.14.0
 pkgrel=1
 epoch=1
 pkgdesc="Modified flatpak that removes restriction on modify_ldt syscall, allowing it to run League of Legends with Wine-GE-LoL in Lutris or Bottles"
@@ -12,7 +12,7 @@ makedepends=(intltool gobject-introspection gtk-doc git docbook-xsl xmlto)
 checkdepends=(valgrind socat)
 provides=(libflatpak.so flatpak)
 conflicts=(flatpak)
-_commit=9a6b71b62662f761046b868b798dcef9224739db  # tags/1.12.7^0
+_commit=488038eed44c7edf334d1e28085975d96ce2bdcc  # tags/1.14.0^0
 source=("git+https://github.com/flatpak/flatpak#commit=$_commit"
         git+https://gitlab.gnome.org/GNOME/libglnx.git
         git+https://github.com/projectatomic/bubblewrap
