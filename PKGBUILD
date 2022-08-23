@@ -1,6 +1,6 @@
 # Maintainer: Grant G <grant@fig.io>
 pkgname='fig-beta'
-pkgver='2.3.7'
+pkgver='2.3.10'
 pkgrel=1
 pkgdesc='Fig adds IDE-style autocomplete to your existing terminal.'
 arch=('x86_64')
@@ -23,3 +23,4 @@ package() {
   done
 }
 
+sha256sums=('14fa127634aa24727346ea3791e56692fc526f579c0f74d47aeaa2dddf553984')
