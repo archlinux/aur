@@ -4,14 +4,14 @@
 
 _pkgname=gwenview
 pkgname=gwenview-no-purpose
-pkgver=22.04.3
+pkgver=22.08.0
 pkgrel=1
 pkgdesc='A fast and easy to use image viewer, without the dependency on purpose. This disables the share menu'
 url='https://apps.kde.org/gwenview/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
 groups=(kde-applications kde-graphics)
-depends=(kactivities baloo libkdcraw kparts kitemmodels cfitsio phonon-qt5)
+depends=(kactivities baloo libkdcraw kparts kitemmodels cfitsio phonon-qt5 kiamgeannotator)
 optdepends=('qt5-imageformats: support for tiff, webp, and more image formats'
             'kimageformats: support for dds, xcf, exr, psd, and more image formats'
             'kamera: import pictures from gphoto2 cameras')
@@ -19,7 +19,7 @@ conflicts=('gwenview')
 replaces=('gwenview')
 makedepends=(extra-cmake-modules kdoctools)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('8c793929f2ad3050d906e185b6753acffd9481dc619156844d681ac0ba57bc05'
+sha256sums=('447d1e8a0c19476fc2879a4e406d7d6af79b59f9e2c7aad28f70d484789ff716'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
