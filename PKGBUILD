@@ -1,4 +1,4 @@
-# Maintainer: Santiago Lo Coco <santilococo.01 at gmail dot com>
+# Maintainer: Santiago Lo Coco <mail at slococo dot com dot ar>
 
 _pkgname="onivim2"
 pkgname=onivim2-bin
