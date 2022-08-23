@@ -1,7 +1,7 @@
 # Maintainer: jmcb <joelsgp@protonmail.com>
 pkgname=pico8
 pkgver=0.2.4c
-pkgrel=8
+pkgrel=9
 pkgdesc='A fantasy console for making, sharing and playing tiny games and other computer programs.'
 arch=('x86_64')
 url='https://www.lexaloffle.com/pico-8.php'
@@ -19,7 +19,7 @@ sha256sums=('00967d08289d08f0fe275b21f9453734fb6c3d7f674191fa6026a0301e837d43'
 
 package() {
     _dest="${pkgdir}"/opt/${pkgname}
-    _share="${pkgdir}"/usr/_share
+    _share="${pkgdir}"/usr/share
 
     # desktop entry
     install -Dm644 application-${pkgname}.xml "${_share}"/mime/packages/application-${pkgname}.xml
