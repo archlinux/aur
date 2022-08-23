@@ -5,54 +5,37 @@
 # Contributor: clarence <catchfire at gmail dot com>
 
 pkgname=patchage
-pkgver=1.0.6
-pkgrel=2
+pkgver=1.0.8
+pkgrel=1
 pkgdesc="A modular patch bay for audio and MIDI systems based on Jack and Alsa"
 arch=(x86_64)
 url="https://drobilla.net/software/patchage.html"
 license=(GPL3)
-depends=(atkmm cairo cairomm dbus-glib gcc-libs gdk-pixbuf2 glibc
-libsigc++ pangomm)
-makedepends=(alsa-lib atk boost dbus fontconfig freetype2 ganv
-glib2 gtk2 harfbuzz jack pango waf)
+depends=(atkmm gcc-libs glibc glibmm gtkmm)
+makedepends=(alsa-lib boost dbus-glib ganv glib2 gtk2 jack libsigc++ meson)
 options=(debug)
-source=(https://download.drobilla.net/$pkgname-$pkgver.tar.bz2{,.sig})
-sha512sums=('b7aedcb07da0c81842929833ab93a0b20c08e465bf05ebb4e47670d295c0d4d0d50f0f74001d9264c2c23ef08d3881232e7622ecf101d1d53ffcae2f8c0f31d3'
+source=(https://download.drobilla.net/$pkgname-$pkgver.tar.xz{,.sig})
+sha512sums=('af2e43c53ce80ab59416745e85cd7fc524fd3b21ae259d171f15998566cfa067a84a7406e78f5b50bc3ff339363b3ed9cacc9790f08cc6189e4919fc43d041dc'
             'SKIP')
-b2sums=('72d0de6d12e07ec160f4c59c51f138e1220a1b8994bdab90f56dd715bf16b6f561836d184ec5d5077de3bc7bb5c6778ea2b7bcbf0b33230be662f2b729eac568'
+b2sums=('d6bac04a3a6880c7758a01c60b4f4c907e7ae191ef8956fb6ad6f039d9bf40e973ff6e38fc6a5af5b4b4ce5386496282ab5cb06573b0e091e24b7c80fae73ac3'
         'SKIP')
 validpgpkeys=('907D226E7E13FA337F014A083672782A9BF368F3') # David Robillard <d@drobilla.net>
 
-prepare() {
-  cd $pkgname-$pkgver
-  # copy custom waf scripts in place
-  mkdir -pv tools
-  touch __init__.py
-  cp -av waflib/extras/autowaf.py tools/
-  # remove vendored waflib
-  rm -rf waflib
-  # modify wscript to use current scripts
-  sed -e 's/waflib.extras/tools/' \
-      -e "s/load('autowaf'/load('autowaf', tooldir='tools'/" \
-      -i wscript
+build() {
+  arch-meson $pkgname-$pkgver build
+  meson compile -C build
 }
 
-build() {
-  export LINKFLAGS="$LDFLAGS"
-
-  cd $pkgname-$pkgver
-  waf configure --prefix=/usr
-  waf build -v
+check() {
+  meson test -C build
 }
 
 package() {
-  depends+=(libasound.so libatk-1.0.so libdbus-1.so libfontconfig.so
-  libfreetype.so libganv-1.so libgdk-x11-2.0.so libgio-2.0.so libglib-2.0.so
-  libgobject-2.0.so libgtk-x11-2.0.so libharfbuzz.so libjack.so
-  libpangoft2-1.0.so libpango-1.0.so libpangocairo-1.0.so)
+  depends+=(libasound.so libatkmm-1.6.so libganv-1.so libgdk-x11-2.0.so
+  libglibmm-2.4.so libglib-2.0.so libgobject-2.0.so libgtk-x11-2.0.so
+  libjack.so libsigc-2.0.so)
 
-  cd $pkgname-$pkgver
-  waf install --destdir="$pkgdir"
-  install -vDm 644 {AUTHORS,NEWS,README.md} -t "$pkgdir/usr/share/doc/$pkgname/"
+  meson install -C build --destdir "$pkgdir"
+  install -vDm 644 $pkgname-$pkgver/{AUTHORS,NEWS,README.md} -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 # vim:set ts=2 sw=2 et:
