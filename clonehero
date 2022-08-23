@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Create/locate local user folder for the game.
+xdg_data_home="${XDG_DATA_HOME:-$HOME/.local/share}"
+dir="$xdg_data_home/clonehero"
+
+if ! mkdir -p "$dir"; then
+	echo "Failed to create directory at ´$dir'"
+	exit 1
+fi
+
+if ! cd "$dir"; then
+	echo "Failed to change to directory '$dir'"
+	exit 1
+fi
+
+# Executable *must* be in a writable directory.
+# The game is probably trying to write to files relative to the executable's
+# path rather than the working directory.
+# This way a link does not work, as the game seemingly dereferences it and tries
+# to write inside /opt/clonehero.
+if ! cp /opt/clonehero/clonehero clonehero; then
+	echo "Failed to copy 'clonehero' to '$dir/clonehero'"
+	exit 1
+fi
+
+# And then we link everything else we can avoid copying.
+for f in UnityPlayer.so clonehero_Data; do
+	if ! ln -sfT "/opt/clonehero/$f" "$f"; then
+		echo "Failed to link '$f' to '$dir/$f'"
+		exit 1
+	fi
+done
+
+# We won't touch neither the Custom/ nor Songs/ directories as those are
+# probably best left to the user to populate (or link to another folder).
+
+exec ./clonehero "$@"

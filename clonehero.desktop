@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Clone Hero
+GenericName=Clone Hero
+Comment=A clone of Guitar Hero, Rock Band and other rhythm games.
+Exec=/usr/bin/clonehero
+Icon=/usr/share/pixmaps/clonehero.png
+Type=Application
+Categories=Game
