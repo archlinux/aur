@@ -1,7 +1,7 @@
 # Maintainer: jmcb <joelsgp@protonmail.com>
 pkgname=distro-grub-themes-arch
 pkgver=2.8
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A GRUB2 theme for Arch Linux"
 arch=('any')
@@ -22,11 +22,9 @@ changelog=
 
 _theme_distro="arch"
 
-source=("https://github.com/AdisonCavani/distro-grub-themes/releases/download/v${pkgver}/${_theme_distro}.tar"
-	    "$pkgname-$pkgver.patch")
+source=("https://github.com/AdisonCavani/distro-grub-themes/releases/download/v${pkgver}/${_theme_distro}.tar")
 noextract=("${_theme_distro}.tar")
-sha256sums=('b6fab2d52d263e672d6bdc29635afd0a30889d428e2b5962c2cdb9d400be978a'
-            '6a6e8f171636efd6955beb14503cfbbe22f62f43dc0cc15479045f22e6f1a71d')
+sha256sums=('b6fab2d52d263e672d6bdc29635afd0a30889d428e2b5962c2cdb9d400be978a')
 validpgpkeys=()
 
 
@@ -34,7 +32,6 @@ prepare() {
 	mkdir -p ${_theme_distro}
 	cd ${_theme_distro}
 	bsdtar -xf "$srcdir"/${_theme_distro}.tar
-	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
 }
 
 # example:
