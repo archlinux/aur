@@ -1,0 +1,21 @@
+pkgbase = python-pytest-random-order
+	pkgdesc = Randomise the order in which pytest tests are run with some control over the randomness
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/jbasko/pytest-random-orderl
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python-coverage
+	depends = python-py
+	depends = python-pytest
+	depends = python-pytest-xdist
+	depends = python-sphinx
+	depends = python-tox
+	source = https://files.pythonhosted.org/packages/source/p/pytest-random-order/pytest-random-order-1.0.4.tar.gz
+	sha256sums = 6b2159342a4c8c10855bc4fc6d65ee890fc614cb2b4ff688979b008a82a0ff52
+
+pkgname = python-pytest-random-order
