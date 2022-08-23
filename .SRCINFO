@@ -1,0 +1,50 @@
+pkgbase = reduce
+	pkgver = 6339
+	pkgrel = 1
+	url = https://reduce-algebra.sourceforge.io/
+	arch = x86_64
+	license = BSD
+	depends = ncurses
+	depends = libxrandr
+	depends = libxft
+	depends = freetype2
+	depends = expat
+	depends = libxcursor
+	noextract = reduce-common_6339_all.tgz
+	noextract = reduce-csl_6339_amd64.tgz
+	noextract = reduce-psl_6339_amd64.tgz
+	noextract = reduce-addons_6339_amd64.tgz
+	source = https://master.dl.sourceforge.net/project/reduce-algebra/snapshot_2022-06-17/linux64/reduce-common_6339_all.tgz
+	source = https://master.dl.sourceforge.net/project/reduce-algebra/snapshot_2022-06-17/linux64/reduce-csl_6339_amd64.tgz
+	source = https://master.dl.sourceforge.net/project/reduce-algebra/snapshot_2022-06-17/linux64/reduce-psl_6339_amd64.tgz
+	source = https://master.dl.sourceforge.net/project/reduce-algebra/snapshot_2022-06-17/linux64/reduce-addons_6339_amd64.tgz
+	md5sums = 62a149738bf686fe95dfea01a85db473
+	md5sums = d120ef3439345b81451fac9aaf313914
+	md5sums = 5b91954a19c91c4327c3ceaac1581cba
+	md5sums = e9241bc1c0fd49396e914a637a951b6b
+	sha1sums = 494ab79032558069ad1360ab83d796b95019e9b3
+	sha1sums = 22a0afcc43e5c95f550cbc2da0021214b22ec918
+	sha1sums = d412b38e12984dd9580e4e9183a48f7ec7ed7e29
+	sha1sums = ab4326cca91964d0db6e3e2da928a16907785d38
+
+pkgname = reduce-common
+	pkgdesc = A Portable General-Purpose Computer Algebra System -- common files
+	provides = reduce-common
+	conflicts = reduce-common
+
+pkgname = reduce-csl
+	pkgdesc = A Portable General-Purpose Computer Algebra System -- CSL based
+	depends = reduce-common
+	provides = reduce-csl
+	conflicts = reduce-csl
+
+pkgname = reduce-psl
+	pkgdesc = A Portable General-Purpose Computer Algebra System -- PSL based
+	depends = reduce-common
+	provides = reduce-psl
+	conflicts = reduce-psl
+
+pkgname = reduce-addons
+	pkgdesc = A Portable General-Purpose Computer Algebra System -- addons
+	provides = reduce-addons
+	conflicts = reduce-addons
