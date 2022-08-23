@@ -7,10 +7,11 @@
 pkgname=jdk11-openj9-bin
 _jdkver=11
 _jdkminor=0
-_jdkpatch=13
-_jdkfullver=${_jdkver}.${_jdkminor}.${_jdkpatch}
-_openj9ver=0.29.0
-_buildvershort=8
+_jdkpatch=16
+_jdkpatchminor=1
+_jdkfullver=${_jdkver}.${_jdkminor}.${_jdkpatch}.${_jdkpatchminor}
+_openj9ver=0.33.1
+_buildvershort=1
 _buildver=${_buildvershort}_openj9-${_openj9ver}
 _baseurl=https://github.com/ibmruntimes/semeru${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}%2B${_buildver}
 pkgver=${_jdkfullver}b${_buildver//-/_}
@@ -35,10 +36,10 @@ source_s390x=("${_baseurl}/ibm-semeru-open-jdk_s390x_linux_${_jdkfullver}_${_bui
 source_ppc64le=("${_baseurl}/ibm-semeru-open-jdk_ppc64le_linux_${_jdkfullver}_${_buildver}.tar.gz")
 source_aarch64=("${_baseurl}/ibm-semeru-open-jdk_aarch64_linux_${_jdkfullver}_${_buildver}.tar.gz")
 
-sha256sums_x86_64=('3975e2732cf632ca8f41c237ba7e033fd96bda262b79861f83b4e2ac62c90c3d')
-sha256sums_s390x=('6c3ebb4af0f4066e721e1f0078438458775f4b93bfd2d0be1066c54ccf015654')
-sha256sums_ppc64le=('7b304c52974f51611b45a2ab7949503e33a204b8a4ae705eb3c74789350174d3')
-sha256sums_aarch64=('151dca23e1fdb43eaa60631c96895be9aa7bb751e7fdf88ddffa1c32157fb417')
+sha256sums_x86_64=('4eb9dc86bf92e144d7a2c8d6c2a6beac28c17b7348f2f0524e715548f52fd8f1')
+sha256sums_s390x=('df4b746a0fc51bbab38aa86822a5f8e5587ed2b997cdd764de1c349d8caaa784')
+sha256sums_ppc64le=('d71e5d26b7240d0e8a80499221ab79e5eed30ab1d985a5316bcfd240148435f8')
+sha256sums_aarch64=('fad70f5bd615d08d9b3e6222ce738be713050eedc8dce4b57bdccc85747d9ff6')
 
 _jvmdir=usr/lib/jvm/java-${_jdkver}-j9
 
