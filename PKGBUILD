@@ -21,7 +21,8 @@ pkgver() {
 
 build() {
     cd csprite
-	make generate release
+	make generate
+	make release
 }
 
 package() {
