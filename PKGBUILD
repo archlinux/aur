@@ -1,7 +1,7 @@
 # Maintainer: Paul-Louis Ageneau <paul-louis at ageneau dot org>
 
 pkgname=violet
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Lightweight STUN/TURN server"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
