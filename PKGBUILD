@@ -11,6 +11,7 @@ groups=()
 depends=('libappindicator-gtk3' 'python-jsbeautifier' 'steam')
 optdepends=()
 makedepends=()
+conflicts=('crankshaft')
 source=("https://github.com/pastaq/crankshaft/releases/download/0.2.4/crankshaft-v0.2.4.tar.gz")
 sha256sums=('2153295cb9850514aedca6100fc51d958cca64fbc39bd3fc2cb651c0f29d2bd7')
 package() {
