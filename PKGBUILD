@@ -48,13 +48,11 @@ build() {
 	cd "$srcdir/plasma-bigscreen"
 	cmake -B build \
 	      -DCMAKE_INSTALL_PREFIX="/usr" \
-      	      -DCMAKE_BUILD_TYPE=Release 
+      	  -DCMAKE_BUILD_TYPE=Release 
 
-	cd build
-	make
+    cmake --build build --target all
 }
 
 package() {
-	cd "$srcdir/plasma-bigscreen/build"
-	make DESTDIR="$pkgdir/" install
+	cmake --install "$srcdir/plasma-bigscreen/build" --prefix "$pkgdir/usr"
 }
