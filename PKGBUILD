@@ -1,7 +1,7 @@
 # Maintainer: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=sdl2-nox-git
-pkgver=2.24.0.r12.ga7066c527
+pkgver=2.24.0.r28.g277b033e7
 pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -9,7 +9,7 @@ url="https://www.libsdl.org"
 license=('MIT')
 depends=('libgl' 'libibus' )
 makedepends=('alsa-lib' 'mesa' 'libpulse' 'libxrandr' 'libxinerama' 'wayland' 'libxkbcommon'
-             'wayland-protocols' 'ibus' 'fcitx' 'libxss' 'jack' 'git' )
+             'wayland-protocols' 'ibus' 'fcitx5' 'libxss' 'jack' 'git' )
 optdepends=('alsa-lib: ALSA audio driver'
             'libpulse: PulseAudio audio driver'
             'jack: JACK audio driver')
@@ -23,18 +23,15 @@ pkgver() {
   git describe --long --tags | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-	rm -rf build
-	mkdir build
-}
-
 build() {
-	cd build
-	../SDL/configure --prefix=/usr \
-			--disable-video-rpi \
-			--enable-video-kmsdrm \
-			--without-x
-	make
+  mkdir -p build
+  cd build
+  ../SDL/configure --prefix=/usr \
+    --disable-arts --disable-esd --disable-nas \
+    --enable-pulseaudio-shared  --enable-video-kmsdrm \
+    --without-x --disable-video-wayland --disable-video-rpi
+
+  make
 }
 
 package() {
