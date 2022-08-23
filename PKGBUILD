@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-ray
-pkgver=1.13.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='A fast and simple framework for building and running distributed
 applications.'
@@ -49,21 +49,12 @@ optdepends=(
 makedepends=(python python-build python-installer python-wheel python-setuptools
              python-pip cython bazel)
 _pkgname=ray
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ray-project/ray/archive/${_pkgname}-$pkgver.tar.gz"
-        "init_order.patch"::"https://github.com/ray-project/ray/commit/85fe5346c83233af8e3aa36a3a9e3001a05f972f.patch"
-        "py310.patch"::"https://patch-diff.githubusercontent.com/raw/ray-project/ray/pull/21221.patch")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ray-project/ray/archive/${_pkgname}-$pkgver.tar.gz")
 
-sha256sums=('085937d1873e3108e0f180abaeb4f73bee9450cf8753e683229da69d4ab4f985'
-            '539f9881e686281a71ca72d3a9a62c926960f400e36f3007d2bb8079b59fd07b'
-            'SKIP')
+sha256sums=('333841d6e8ad328e0bcbaa2a1adc4ea1ddb302016debb955acc23eeb121417bf')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}"
-
-  patch --strip=1 < "${srcdir}/init_order.patch"
-
-  #patch --strip=1 < "${srcdir}/py310.patch"
-  sed -i "s/9)]/9), (3, 10)]/" python/setup.py
 
   # https://aur.archlinux.org/packages/py-spy#comment-781521
   sed -i "/py-spy/d" python/setup.py

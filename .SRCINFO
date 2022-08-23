@@ -1,6 +1,6 @@
 pkgbase = python-ray
 	pkgdesc = A fast and simple framework for building and running distributed applications.
-	pkgver = 1.13.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://ray.io
 	arch = x86_64
@@ -58,11 +58,7 @@ pkgbase = python-ray
 	optdepends = python-scikit-image: for ray[rllib]
 	optdepends = python-pyaml: for ray[rllib]
 	optdepends = python-scipy: for ray[rllib]
-	source = python-ray-1.13.1.tar.gz::https://github.com/ray-project/ray/archive/ray-1.13.1.tar.gz
-	source = init_order.patch::https://github.com/ray-project/ray/commit/85fe5346c83233af8e3aa36a3a9e3001a05f972f.patch
-	source = py310.patch::https://patch-diff.githubusercontent.com/raw/ray-project/ray/pull/21221.patch
-	sha256sums = 085937d1873e3108e0f180abaeb4f73bee9450cf8753e683229da69d4ab4f985
-	sha256sums = 539f9881e686281a71ca72d3a9a62c926960f400e36f3007d2bb8079b59fd07b
-	sha256sums = SKIP
+	source = python-ray-2.0.0.tar.gz::https://github.com/ray-project/ray/archive/ray-2.0.0.tar.gz
+	sha256sums = 333841d6e8ad328e0bcbaa2a1adc4ea1ddb302016debb955acc23eeb121417bf
 
 pkgname = python-ray
