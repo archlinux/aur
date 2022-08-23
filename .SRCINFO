@@ -1,0 +1,22 @@
+pkgbase = purc
+	pkgdesc = The prime HVML interpreter for C Language.
+	pkgver = 0.8.1
+	pkgrel = 0
+	url = https://github.com/HVML/PurC
+	arch = any
+	license = LGPL-3.0
+	makedepends = cmake
+	makedepends = ninja
+	depends = cmake
+	depends = gcc
+	depends = glibc
+	depends = python
+	depends = bison
+	depends = flex
+	provides = purc
+	conflicts = purc-git
+	options = !strip
+	source = purc-0.8.1.tar.gz::https://github.com/HVML/PurC/archive/refs/tags/ver-0.8.1.tar.gz
+	sha256sums = 387fc10560eed813cd92b36a224f17a7fa94c2aa20264f7e75c9c471505071d5
+
+pkgname = purc
