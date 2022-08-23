@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-comtool-git
-pkgver=3.0.0.r0.gba215be
+pkgver=3.1.0.r0.gfe37bf8
 pkgrel=1
 epoch=
 pkgdesc="A cross platform serial debug tools written by python"
