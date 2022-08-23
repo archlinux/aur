@@ -1,7 +1,7 @@
 # Maintainer: Mathias Buhr <napcode@aparatus.de>
 
 pkgname=convertwithmoss
-pkgver=4.7.1
+pkgver=5.1
 pkgrel=1
 pkgdesc='Converts multisamples in a specific source format to a different destination format'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=(
 )
 
 source=("http://mossgrabers.de/Software/ConvertWithMoss/convertwithmoss_${pkgver}-1_amd64.deb")
-sha256sums=('7914428705ee5e08f9b60a3f9d120ee20999e65bae9533a4180e758a14f2e019')
+sha256sums=('bc489419c296fbe8d422ec122ddf2809e8337ad10cc5dc5e20156dde40b559d0')
 
 package() {
     tar -x --xz -f data.tar.xz -C "${pkgdir}"
