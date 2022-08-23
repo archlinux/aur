@@ -1,13 +1,13 @@
 pkgbase = r-dixontest
 	pkgdesc = Dixon's Ratio Test for Outlier Detection
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=dixonTest
 	arch = x86_64
 	license = GPL
 	makedepends = gcc-fortran
 	depends = r
-	source = https://cran.r-project.org/src/contrib/dixonTest_1.0.3.tar.gz
-	sha256sums = 9b8711bed5e469ef4987f3ea63a897c4b7104b8e112c51a1046be5f2c0607ea8
+	source = https://cran.r-project.org/src/contrib/dixonTest_1.0.4.tar.gz
+	sha256sums = b8694e4c4123827f954dffd0a30fb8c7f9cf49d0ec66be4d79eba0f4834ee33f
 
 pkgname = r-dixontest

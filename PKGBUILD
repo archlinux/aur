@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=dixonTest
-_pkgver=1.0.3
+_pkgver=1.0.4
 pkgname=r-${_pkgname,,}
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Dixon's Ratio Test for Outlier Detection"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9b8711bed5e469ef4987f3ea63a897c4b7104b8e112c51a1046be5f2c0607ea8')
+sha256sums=('b8694e4c4123827f954dffd0a30fb8c7f9cf49d0ec66be4d79eba0f4834ee33f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
