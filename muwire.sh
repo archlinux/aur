@@ -2,8 +2,8 @@
 
 exec java \
     -Xms512M \
-    -XX:+HeapDumpOnOutOfMemoryError \
-    -XX:+ExitOnOutOfMemoryError \
+    -Xmx4G \
+    -XX:+UseParallelGC \
     -DdisableUpdates='true' \
     --add-opens java.base/java.lang='ALL-UNNAMED' \
     --add-opens java.base/java.nio='ALL-UNNAMED' \

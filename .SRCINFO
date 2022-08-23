@@ -1,6 +1,6 @@
 pkgbase = muwire
 	pkgdesc = An I2P file sharing program
-	pkgver = 0.8.12
+	pkgver = 0.8.13
 	pkgrel = 1
 	url = https://muwire.com/
 	arch = any
@@ -11,12 +11,12 @@ pkgbase = muwire
 	depends = java-runtime>=11
 	depends = hicolor-icon-theme
 	optdepends = i2p-router: for connecting through a local I2P router
-	source = git+https://github.com/zlatinb/muwire.git#tag=muwire-0.8.12?signed
+	source = git+https://github.com/zlatinb/muwire.git#tag=muwire-0.8.13?signed
 	source = muwire.desktop
 	source = muwire.sh
 	validpgpkeys = 471B9FD45517A5ED101FC57DA72832072D525E41
 	sha256sums = SKIP
 	sha256sums = 7d61c69613029bd2b2e82f227a230104b880635fd8d44a649b2192b03c3cc509
-	sha256sums = 390c11231788eb36601d68c74dc08bf94422792c098926444c688f92a143f599
+	sha256sums = 1db323740432a999a925813f8ea1e8fc2899cc5a7c10b5835692bcf1bd0dcd8d
 
 pkgname = muwire
