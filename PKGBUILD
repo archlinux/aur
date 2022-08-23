@@ -4,10 +4,10 @@ _pkgname=SerialTest
 pkgname=serialtest
 pkgver=0.2
 pkgrel=0
-pkgdesc="A cross-platform serial port test tool."
+pkgdesc="A cross-platform test tool for serial port, Bluetooth, TCP and UDP."
 arch=('any')
 url="https://github.com/wh201906/SerialTest"
-license=('GPL2.1')
+license=('LGPL-3.0-only')
 provides=(${_pkgname})
 conflicts=(${pkgname}-git)
 #replaces=(${pkgname})
@@ -24,48 +24,17 @@ sha256sums=('31ecfbf366ab30fde266021459dbc3315dd17c872aed5d740fe3503d5dd60c7b'
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}/src/"
     qmake
-    make
+    make -j4
 }
 
 package() {
     install -Dm0755 "${srcdir}/${_pkgname}-${pkgver}/src/${_pkgname}"  "${pkgdir}/usr/bin/${pkgname}"
 
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/metainfo/io.github.wh201906.serialtest.metainfo.xml" << EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<component type="desktop-application">
-  <id>io.github.wh201906.serialtest</id>
+    install -Dm0644 "$srcdir/${_pkgname}-${pkgver}/pack/aur/io.github.wh201906.serialtest.metainfo.xml" "${pkgdir}/usr/share/metainfo/io.github.wh201906.serialtest.metainfo.xml"
 
-  <name>SerialTest</name>
-  <summary>SerialTest</summary>
-
-  <metadata_license>MIT</metadata_license>
-  <project_license>GPL-2.0-or-later</project_license>
-
-  <description>
-    <p>
-      A cross-platform serial port test tool.
-    </p>
-  </description>
-
-  <launchable type="desktop-id">io.github.wh201906.serialtest.desktop</launchable>
-</component>
-EOF
-
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/io.github.wh201906.serialtest.desktop" << EOF
-[Desktop Entry]
-Version=1.0
-Type=Application
-
-Name=SerialTest
-Comment=SerialTest
-Categories=Development;Electronics;
-
-Icon=serialtest
-Exec=serialtest
-Terminal=false
-EOF
+    install -Dm0644 "$srcdir/${_pkgname}-${pkgver}/pack/aur/io.github.wh201906.serialtest.desktop" "${pkgdir}/usr/share/applications/io.github.wh201906.serialtest.desktop"
 
     install -Dm0644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 "$srcdir/${_pkgname}-${pkgver}/src/icon/icon.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
-#    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/${_pkgname}/pkg/20-usb-serial.rules" "${pkgdir}/etc/udev/rules.d/20-usb-serial.rules"
+    install -Dm0644 "$srcdir/${_pkgname}-${pkgver}/src/icon/icon.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
+#    install -Dm0644 "${srcdir}/${_pkgname}-${pkgver}/${_pkgname}/pkg/20-usb-serial.rules" "${pkgdir}/etc/udev/rules.d/20-usb-serial.rules"
 }
