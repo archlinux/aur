@@ -1,7 +1,7 @@
 pkgbase = lbry-gtk-git
 	pkgdesc = Native desktop LBRY client
 	pkgver = 199.dc7585c
-	pkgrel = 3
+	pkgrel = 4
 	url = https://codeberg.org/MorsMortium/lbry-gtk
 	arch = any
 	license = GPL-3.0
