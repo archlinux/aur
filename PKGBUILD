@@ -10,8 +10,8 @@ testdepends=(
   python-pytest-random-order 
   python-pytest-cov 
   python-pytest-asyncio 
-  python-time-machine
-  python-mock)
+  python-pytest-mock
+  python-time-machine)
 makedepends=(python-build python-installer python-wheel ${testdepends[@]})
 depends=(
   python
@@ -66,8 +66,12 @@ depends=(
   python-plotly
 )
 
-source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('19684c3da6b4edba2e8517d961da1ad551ca6ec37e285d475c4b3c03fed3941d')
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz"
+  "https://github.com/freqtrade/frequi/releases/download/0.4.4/freqUI.zip"
+  "freqtrade@.service")
+sha256sums=('19684c3da6b4edba2e8517d961da1ad551ca6ec37e285d475c4b3c03fed3941d'
+  '1c9a6d78f55fea855a23b4368d391f27dfb9e7f9f9c1d7413809707b005ed270'
+  '4b5501985c8872ec2658d6f7a08009efbbe043c32ea38f2b3722b0bb38c81286')
 
 build() {
   cd ${_pkgname}-${pkgver}
@@ -78,6 +82,13 @@ package() {
   cd ${_pkgname}-${pkgver}
   python -m installer --destdir="$pkgdir" dist/*.whl
   rm -rf "$pkgdir"/usr/lib/python*/site-packages/tests 
+  install -dm755 "${pkgdir}/usr/lib/python3.10/site-packages/freqtrade/rpc/api_server/ui/installed"
+
+  cd ${srcdir}
+  install -Dm644 "freqtrade@.service" "${pkgdir}/usr/lib/systemd/system/freqtrade@.service"
+  rsync -r assets "${pkgdir}/usr/lib/python3.10/site-packages/freqtrade/rpc/api_server/ui/installed/"
+  install -Dm644 index.html "${pkgdir}/usr/lib/python3.10/site-packages/freqtrade/rpc/api_server/ui/installed/"
+  install -Dm644 favicon.ico "${pkgdir}/usr/lib/python3.10/site-packages/freqtrade/rpc/api_server/ui/installed/"
 }
 
 check() {

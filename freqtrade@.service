@@ -1,0 +1,19 @@
+[Unit]
+Description=Freqtrade bot for user %I
+After=network.target
+
+[Service]
+User=%i
+Group=%i
+ExecStart=/usr/bin/freqtrade trade --config /home/%i/.config/freqtrade/config.json --userdir /home/%i/.config/freqtrade --strategy %i_strategy
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=on-failure
+WorkingDirectory=/home/%i/.config/freqtrade
+ReadWritePaths=/home/%i/.config/freqtrade
+
+ProtectSystem=full
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
