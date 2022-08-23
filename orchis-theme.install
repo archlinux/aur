@@ -1,4 +1,8 @@
 post_install() {
+  echo "Link installed Orchis gtk-4.0 theme to config folder (replace Orchis-Dark with chosen theme variant):"
+  echo ""
+  echo "mkdir -p ~/.config/gtk-4.0"
+  echo "ln -sf /usr/share/themes/Orchis-Dark/gtk-4.0/{assets,gtk.css,gtk-dark.css} ~/.config/gtk-4.0/"
   echo ""
   echo "Install Firefox theme - copy or symlink from /usr/share/doc/orchis-theme/firefox/:"
   echo "https://github.com/vinceliuice/Orchis-theme/tree/master/src/firefox#installation"
