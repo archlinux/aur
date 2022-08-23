@@ -1,6 +1,6 @@
 pkgbase = ecodms-client
 	pkgdesc = Document Management Software
-	pkgver = 21.06.1
+	pkgver = 21.12.1
 	pkgrel = 2
 	url = http://www.ecodms.de/index.php/de/
 	install = ecodms-client.install
@@ -17,8 +17,9 @@ pkgbase = ecodms-client
 	depends = libjpeg6-turbo
 	depends = pcre
 	depends = freeimage
+	depends = libayatana-appindicator
 	options = !strip
-	source_x86_64 = ecodmsclient-21.06.1_amd64.deb::https://www.ecodms.de/ecodms_210664/focal/ecodmsclient-21.06-1-1_amd64.deb
-	md5sums_x86_64 = 3c894a7db5d804ae49ed94cd56a5d461
+	source_x86_64 = ecodmsclient-21.12.1_amd64.deb::http://www.ecodms.de/ecodms_211264/focal/./ecodmsclient-21.12-1_amd64.deb
+	md5sums_x86_64 = 129cf00400c05daed173da2622006d96
 
 pkgname = ecodms-client
