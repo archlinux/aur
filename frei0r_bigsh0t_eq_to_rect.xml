@@ -13,10 +13,10 @@
     <parameter type="animated" name="roll" default="0" min="-180" max="180" factor="1" suffix="deg">
 		<name>roll</name>
 	</parameter>
-    <parameter type="animated" name="fov" default="100" min="0" max="180" factor="1" suffix="deg">
+    <parameter type="animated" name="fov" default="100" min="0" max="360" factor="1" suffix="deg">
 		<name>fov</name>
 	</parameter>
-    <parameter type="animated" name="fisheye" default="0" min="0" max="100" factor="1" suffix="%">
+    <parameter type="animated" name="fisheye" default="0" min="0" max="100" decimals="2" suffix="%">
 		<name>fisheye</name>
 	</parameter>
 	<parameter type="list" name="interpolation" default="0" paramlist="0;1">
