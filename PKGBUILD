@@ -5,18 +5,18 @@
 _LANG='en'
 
 pkgname=ecodms-client
-pkgver=21.06.1
+pkgver=21.12.1
 pkgrel=2
 pkgdesc="Document Management Software"
 arch=('x86_64')
 url="http://www.ecodms.de/index.php/de/"
 license=('custom')
-depends=('apr' 'bash' 'libappindicator-gtk2' 'libgcrypt' 'qt5-webengine' 'qt5-svg' 'qt5-x11extras' 'libpng12' 'libjpeg6-turbo' 'pcre' 'freeimage')
+depends=('apr' 'bash' 'libappindicator-gtk2' 'libgcrypt' 'qt5-webengine' 'qt5-svg' 'qt5-x11extras' 'libpng12' 'libjpeg6-turbo' 'pcre' 'freeimage' 'libayatana-appindicator')
 options=('!strip')
 install=${pkgname}.install
 
-source_x86_64=("ecodmsclient-${pkgver}_amd64.deb::https://www.ecodms.de/ecodms_210664/focal/ecodmsclient-21.06-1-1_amd64.deb")
-md5sums_x86_64=('3c894a7db5d804ae49ed94cd56a5d461')
+source_x86_64=("ecodmsclient-${pkgver}_amd64.deb::http://www.ecodms.de/ecodms_211264/focal/./ecodmsclient-21.12-1_amd64.deb")
+md5sums_x86_64=('129cf00400c05daed173da2622006d96')
 
 package() {
   cd "${srcdir}"
