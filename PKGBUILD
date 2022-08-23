@@ -12,7 +12,7 @@ testdepends=(
   python-pytest-asyncio 
   python-time-machine
   python-mock)
-makedepends=(python-build python-installer python-wheel $testdepends)
+makedepends=(python-build python-installer python-wheel ${testdepends[@]})
 depends=(
   python
   python-numpy
