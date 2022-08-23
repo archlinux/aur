@@ -1,7 +1,7 @@
 pkgbase = pico8
 	pkgdesc = A fantasy console for making, sharing and playing tiny games and other computer programs.
 	pkgver = 0.2.4c
-	pkgrel = 8
+	pkgrel = 9
 	url = https://www.lexaloffle.com/pico-8.php
 	arch = x86_64
 	license = custom:pico8
