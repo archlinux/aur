@@ -1,46 +1,67 @@
-# Maintainer: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
+# Maintainer: George Rawlinson <george@rawlinson.net.nz>
+# Contributor: Cyano Hao <c@cyano.cn>
+# Contributor: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
 # Contributor: Cedric MATHIEU <me.xenom @ gmail.com>
 
 _name=firefox
 _channel=nightly
 _lang=en-US
-_pkgname=${_name}-${_channel}
-pkgname=${_name}-${_channel}-bin
+_pkgname="${_name}-${_channel}"
+pkgname="${_pkgname}-bin"
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
-_version=105.0a1
-pkgver=105.0a1.20220727093731+hb2f38ca819ab
-pkgrel=1
-arch=(i686 x86_64)
-license=(MPL GPL LGPL)
-depends=(dbus-glib gtk3 libxt nss mime-types)
-optdepends=('pulseaudio: audio support'
-            'ffmpeg: h.264 video'
-            'hunspell: spell checking'
-            'hyphen: hyphenation'
-            'libnotify: notification integration'
-            'networkmanager: location detection via available WiFi networks'
-            'speech-dispatcher: text-to-speech')
-conflicts=(firefox-nightly)
-_url="https://download-installer.cdn.mozilla.net/pub/${_name}/nightly/latest-mozilla-central"
-_src="${_name}-${_version}.${_lang}.linux"
-_filename="$(date -u +%Y%m%d)-${_src}"
-source=("${_pkgname}.desktop" 'policies.json')
-source_i686=("${_filename}-i686.tar.bz2"::"${_url}/${_src}-i686.tar.bz2"
-             "${_filename}-i686.tar.bz2.asc"::"${_url}/${_src}-i686.tar.bz2.asc"
-             "${_filename}-i686.txt"::"${_url}/${_src}-i686.txt")
-source_x86_64=("${_filename}-x86_64.tar.bz2"::"${_url}/${_src}-x86_64.tar.bz2"
-               "${_filename}-x86_64.tar.bz2.asc"::"${_url}/${_src}-x86_64.tar.bz2.asc"
-               "${_filename}-x86_64.txt"::"${_url}/${_src}-x86_64.txt")
-sha512sums=('87c181628c3be0762000ff3b5cb841ed2c2371937e4aab7f8f441c608dd08d349085036880c8e8aaed40d01fe258ea9be159741e9fad9f493c96fb9be4cc0de3'
-            '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308')
-sha512sums_i686=(SKIP SKIP SKIP)
-sha512sums_x86_64=(SKIP SKIP SKIP)
-validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla’s GnuPG release key
 
-pkgver() {
-  echo "${_version}.$(head -n1 ${_filename}-${CARCH}.txt)+h$(tail -n1 ${_filename}-${CARCH}.txt | cut -c 44-55)"
-}
+# Apparently there is an alternate URL - https://archive.mozilla.org/pub/
+_base_url="https://ftp.mozilla.org/pub/${_name}/${_channel}"
+_version=$(curl "${CURL_OPTS[@]}" ${_base_url}/latest-mozilla-central-l10n/ | grep "${_lang}.linux-${CARCH}.checksums" | sed "s/^.*>firefox-//; s/\.${_lang}.*//" | sort -n | tail -n 1)
+_build_id_raw="$(curl -s "${_base_url}/latest-mozilla-central-l10n/${_name}-${_version}.${_lang}.linux-${CARCH}.checksums" | grep '.partial.mar' | cut -d' ' -f4 | grep -E -o '[[:digit:]]{14}' | sort | tail -n1)"
+declare -A _build_id
+_build_id=(
+  [year]="${_build_id_raw:0:4}"
+  [month]="${_build_id_raw:4:2}"
+  [day]="${_build_id_raw:6:2}"
+  [hour]="${_build_id_raw:8:2}"
+  [min]="${_build_id_raw:10:2}"
+  [sec]="${_build_id_raw:12:2}"
+  [date]="${_build_id_raw:0:8}"
+  [time]="${_build_id_raw:8:6}"
+)
+
+pkgver=${_version}.${_build_id[date]}.${_build_id[time]}
+pkgrel=1
+arch=('x86_64')
+license=('MPL' 'GPL' 'LGPL')
+conflicts=('firefox-nightly')
+depends=(
+  'dbus-glib'
+  'gtk3'
+  'libxt'
+  'nss'
+  'mime-types'
+  'python'
+)
+optdepends=(
+  'pulseaudio: audio support'
+  'ffmpeg: h.264 video'
+  'hunspell: spell checking'
+  'hyphen: hyphenation'
+  'libnotify: notification integration'
+  'networkmanager: location detection via available WiFi networks'
+  'speech-dispatcher: text-to-speech'
+  'startup-notification: support for FreeDesktop Startup Notification'
+)
+_url="${_base_url}/${_build_id[year]}/${_build_id[month]}/${_build_id[year]}-${_build_id[month]}-${_build_id[day]}-${_build_id[hour]}-${_build_id[min]}-${_build_id[sec]}-mozilla-central-l10n"
+_src="${_name}-${_version}.${_lang}.linux-${CARCH}"
+_filename="${_build_id[date]}-${_build_id[time]}-${_src}"
+source=('firefox-nightly.desktop'
+        'policies.json'
+        "${_filename}.tar.bz2::${_url}/${_src}.tar.bz2"
+        "${_filename}.tar.bz2.asc::${_url}/${_src}.tar.bz2.asc")
+sha512sums=('b514abafc559ec03a4222442fa4306db257c3de9e18ed91a0b37cc9d7058a8e08a241442e54a67659a3ab4512a5dae6a0b94ea7a33d08ef0b8a76a9eac902095'
+  '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308'
+  'SKIP'
+  'SKIP')
+validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla’s GnuPG release key
 
 package() {
   OPT_PATH="opt/${_pkgname}"
