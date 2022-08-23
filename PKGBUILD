@@ -9,7 +9,7 @@ license=('Apache')
 depends=('python' 'libtool' 'libxcrypt-compat')
 optdepends=('tk: for GUI')
 install=$pkgname.install
-source=("https://downloads.globus.org/globus-connect-personal/linux/stable/globusconnectpersonal-latest.tgz"
+source=("https://downloads.globus.org/globus-connect-personal/v3/linux/stable/globusconnectpersonal-3.1.6.tgz"
         "$pkgname.install"
         "$pkgname.service"
         "$pkgname@.service"
