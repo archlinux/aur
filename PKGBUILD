@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=lagrange-git
-pkgver=1.11.1.r5.g370e3977
+pkgver=1.13.7.1.r11.ga12f1c02
 pkgrel=1
 pkgdesc="A desktop GUI client for browsing Geminispace"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('glibc' 'fribidi' 'harfbuzz' 'hicolor-icon-theme' 'libunistring' 'libwebp' 'mpg123' 'openssl' 'pcre' 'sdl2' 'zlib')
 makedepends=('git' 'cmake' 'zip')
 optdepends=('mpg123')
-provides=('lagrange')
+provides=("lagrange=$pkgver")
 conflicts=('lagrange')
 source=("git+https://github.com/skyjake/lagrange.git")
 sha256sums=('SKIP')
@@ -28,7 +28,7 @@ pkgver() {
   _tag=$(git tag -l --sort -v:refname | head -n1)
   _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//;s/-/./'
 }
 
 build() {
