@@ -1,10 +1,10 @@
 
 
 pkgname=qtgrace
-pkgver=0.2.6
-_pkgver=026
-_pkgdirname=qtgrace_v026_src
-pkgrel=3
+pkgver=0.2.7
+_pkgver=027
+_pkgdirname=QtGrace_v027_src
+pkgrel=1
 pkgdesc="A program to display or plot data, analyze data and prepare it for printing, Qt version of the Grace"
 arch=('i686' 'x86_64')
 url="http://plasma-gate.weizmann.ac.il/Grace/"
@@ -13,27 +13,17 @@ license=('GPL')
 depends=('qt5-svg')
 optdepends=('fftw: for better fourier-transformation'
             'libharu: for pdf-output')
-source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}_v${_pkgver}_src.zip $pkgname.png $pkgname.desktop $pkgname-mimetypes qtgrace qtgrace_qt58.patch)
-md5sums=('62691b5e135e6d13177ee070bcd33f24'
+source=("${pkgname}-${pkgver}.zip::https://downloads.sourceforge.net/sourceforge/${pkgname}/${_pkgdirname}.zip" "${pkgname}.png" "${pkgname}.desktop" "${pkgname}-mimetypes" "${pkgname}")
+md5sums=('ee2a0c2253d531bffa7675ad10c68474'
          '935df82970eaf9b38b1f5ab26ed45a8d'
          'd1bbdd58b4479f4dc27b0bee3d8d0fca'
          '3beba5237f56a2ff28b6cd878865b25c'
-         '21b708638a6d63224e05582873be0e4f'
-         '8188a1396604dd8d1531a8105e514510')
-sha256sums=('e52fdb04f45c992610be37b1cc4ea1366cce255d9a24f19b9521b8e68808c4b1'
+         '21b708638a6d63224e05582873be0e4f')
+sha256sums=('5d9716935874a5b69c4c4c479d2235c4aeaf78fc1e48582868c577097b4393a2'
             '53285847eb5214a8ef86593bb1f2791d6e01cfed4bb97323ad86d070ed3f6b98'
             'b8351ba9f8a7cd5033eb453ab56e01771aba02b47d3ab4b70f29b4a138a55a36'
             '00c16404b9c9386c32a298a3ec8842d2bef8ad6b278a817157ee4af65fcf1479'
-            '7ee2c36f058bbac902fd52b88b2129e43b39c34828281d45342d1b09ac262d79'
-            'e5de96d5778cb30f4cdf5343d0623cd4d5cdbe17911281b759d047aaae90a55f')
-
-
-prepare()
-{
-  cd "${_pkgdirname}"
-
-  patch -Np0 -i "${srcdir}/qtgrace_qt58.patch"
-}
+            '7ee2c36f058bbac902fd52b88b2129e43b39c34828281d45342d1b09ac262d79')
 
 
 build() {
