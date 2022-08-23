@@ -1,6 +1,6 @@
 # Maintainer: Aditya Mishra <https://github.com/pegvin/csprite/issues>
 pkgname=csprite-git
-pkgver=0.1.0.r148.g57d60d1
+pkgver=0.1.0.r148.g57d60d2
 pkgrel=1 # Update if you changed something but that is so minor change you don't want to change the version
 pkgdesc="a tiny pixel art editor"
 arch=('i686' 'x86_64')
@@ -21,6 +21,7 @@ pkgver() {
 
 build() {
     cd csprite
+    git submodule update --init --recursive
 	make generate
 	make release
 }
