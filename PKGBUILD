@@ -1,7 +1,7 @@
 # Maintainer: Zacharias Knudsen <zachasme@gmail.com>
 pkgname=gog-unreal-tournament-goty
-pkgver=2.0.0.6
-pkgrel=10
+pkgver=469c_rc4
+pkgrel=1
 pkgdesc="Unreal Tournament (99): Game of the Year Edition. GOG Version."
 arch=('x86_64')
 url="https://www.gog.com/game/unreal_tournament_goty"
@@ -11,24 +11,24 @@ depends=('lib32-libgl'
          'lib32-libpulse'
          'lib32-sdl')
 makedepends=('innoextract')
-source=("setup_ut_goty_${pkgver}.exe::gogdownloader://unreal_tournament_goty/en1installer0"
-        "https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v469b/OldUnreal-UTPatch469b-Linux.tar.bz2"
+source=("setup_ut_goty.exe::gogdownloader://unreal_tournament_goty/en1installer0"
+        "OldUnreal-UTPatch-Linux-amd64.tar.bz2::https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v469c-rc4/OldUnreal-UTPatch469c-Linux-amd64.tar.bz2"
         "gog-unreal-tournament-goty.desktop")
-noextract=("OldUnreal-UTPatch469b-Linux.tar.bz2")
+noextract=("OldUnreal-UTPatch469c-Linux-amd64.tar.bz2")
 sha256sums=("4cc257d54d97659c5062f2bf186d0a8c6959561d11e42d8fcf2eac07f1926803"
-            "99b0832dfa5e8122b79c05b0d3cd22a277e36b865a1079941ee62c986cd92c1f"
+            "32929372ec4ca540897553320e6d245a0ec395afc51ecbdff295b5dbb8235dff"
             "60a0211a47a4d1b2c6b31da4ecd4848fcb3338dc06430599969c77dc6a5d87e0")
 
 # If you want to use lgogdownloader add the following to /etc/makepkg.conf
 # DLAGENTS+=('goggogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
-DLAGENTS+=("gogdownloader::/usr/bin/echo Could not find setup_ut_goty_${pkgver}.exe (%u). Manually download it to \"$(pwd)\", or set up a gogdownloader:// DLAGENT in /etc/makepkg.conf.")
+DLAGENTS+=("gogdownloader::/usr/bin/echo Could not find setup_ut_goty.exe (%u). Manually download it to \"$(pwd)\", or set up a gogdownloader:// DLAGENT in /etc/makepkg.conf.")
 
 prepare() {
   # extract gog installer
-  innoextract --extract --exclude-temp "setup_ut_goty_${pkgver}.exe"
+  innoextract --extract --exclude-temp "setup_ut_goty.exe"
 
   # extract linux patches
-  tar --extract --file "OldUnreal-UTPatch469b-Linux.tar.bz2" --directory "app"
+  tar --extract --file "OldUnreal-UTPatch-Linux-amd64.tar.bz2" --directory "app"
 
   # To put extra content (extra levels/mods) into the game
   #   create an "addons/" folder next to the PKGBUILD.
