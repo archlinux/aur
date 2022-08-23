@@ -5,7 +5,7 @@
 
 pkgname=tracktion-waveform
 pkgver=12.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Audio and MIDI Workstation (DAW)"
 arch=('x86_64' 'armv7l' 'aarch64')
 url="https://www.tracktion.com/"
