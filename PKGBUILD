@@ -55,6 +55,12 @@ prepare() {
 
   # Unbreak build with python-zstandard 0.18.0
   patch -Np1 -i ../zstandard-0.18.0.diff
+  
+  # Unbreak build with simd
+  patch -Np1 -i ../update-packed_simd.diff
+
+  # Fix arc4random
+  patch -Np1 -i ../arc4random.diff
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
