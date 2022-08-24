@@ -6,13 +6,13 @@ pkgdesc="Free, open source crypto trading bot"
 url="https://github.com/freqtrade/freqtrade"
 arch=('any')
 license=('GPL3')
-testdepends=(
+checkdepends=(
   python-pytest-random-order
   python-pytest-cov
   python-pytest-asyncio
   python-pytest-mock
   python-time-machine)
-makedepends=(python-build python-installer python-wheel ${testdepends[@]})
+makedepends=(python-build python-installer python-wheel)
 depends=(
   python
   python-numpy
@@ -95,10 +95,10 @@ package() {
 
   echo 'patch and reinstall your ta-lib/PKGBUILD by adding the prepare() function with
 
-  sed -i.bak "s|0.00000001|0.000000000000000001 |g" src/ta_func/ta_utility.h
+sed -i.bak "s|0.00000001|0.000000000000000001 |g" src/ta_func/ta_utility.h
 
-  otherwise some test might fails, see
-  https://github.com/freqtrade/freqtrade/blob/develop/build_helpers/install_ta-lib.sh'
+otherwise some test might fails, see
+https://github.com/freqtrade/freqtrade/blob/develop/build_helpers/install_ta-lib.sh'
 }
 
 check() {
