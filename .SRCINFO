@@ -1,7 +1,7 @@
 pkgbase = surfshark-gui-bin
 	pkgdesc = Surfshark VPN client. Keep your online activity and personal information secure. Put your privacy-conscious mind at rest and enjoy unrestricted internet.
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://surfshark.com
 	install = surfshark-gui-bin.install
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = surfshark-gui-bin
 	depends = libxrandr
 	depends = libxtst
 	depends = mesa
-	depends = networkmanager>=1.20.0
+	depends = networkmanager
 	depends = networkmanager-openvpn
 	depends = nspr
 	depends = nss
@@ -44,7 +44,7 @@ pkgbase = surfshark-gui-bin
 	optdepends = libappindicator-gtk3
 	options = !strip
 	options = !emptydirs
-	source = https://ocean.surfshark.com/debian/pool/main/s/surfshark/surfshark_1.1.0-959_amd64.deb
-	sha512sums = a6bbbbcaeca3ddc5ffe95a4274ad9bfcc98662cc7824f1c5a331de1a64e4284fe1c34997ac66bd00ab56e4cf790c1fa2b392457b1e71077e78cf9fe069a2f7a1
+	source = https://ocean.surfshark.com/debian/pool/main/s/surfshark/surfshark_1.1.1-969_amd64.deb
+	sha512sums = cd195b52c399430a2aafaf4cc8386fcd647d6955a9a4d4178da5d8ea27eff4166f323622c378248d6f247014e24603fd83db520e7b5bf23b570873af201ce519
 
 pkgname = surfshark-gui-bin
