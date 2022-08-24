@@ -7,7 +7,6 @@ pkgdesc="Speed up Firefox using tmpfs."
 arch=('any')
 url='http://wiki.archlinux.org/index.php/Speed-up_Firefox_using_tmpfs'
 license=('GPL')
-depends=('rsync' 'firefox')
 source=("${pkgname}".sh "${pkgname}.service")
 sha256sums=('f7d50c514437c17df99cdfe53c26e939163d9a6cfe055c51f8c2f20f57c46b07'
             'f3ca08a806a8938244a7dbe2f8db690963d6a381643884216b1a960c396ec6b9')
@@ -27,6 +26,7 @@ prepare() {
 }
 
 package() {
+    depends=('rsync' 'firefox')
     install -Dm 755 "${pkgname}".sh "${pkgdir}/usr/bin/${pkgname}"
     install -Dm 644 {"${srcdir}","${pkgdir}"/usr/lib/systemd/user}/"${pkgname}".service
 }
