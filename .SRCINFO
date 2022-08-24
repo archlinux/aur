@@ -1,0 +1,18 @@
+pkgbase = python-ads
+	pkgdesc = A Python Module to Interact with NASA's ADS that Doesn't Suck™
+	pkgver = 0.12.3
+	pkgrel = 1
+	url = https://github.com/andycasey/ads
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	depends = python-six
+	depends = python-requests
+	depends = python-httpretty
+	depends = python-werkzeug
+	depends = python-mock
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/a/ads/ads-0.12.3.tar.gz
+	sha256sums = ce523f266f6b815bf1d6371b6e7791b4d10989ebe743681b27bd54301f7cdcc9
+
+pkgname = python-ads
