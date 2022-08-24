@@ -1,15 +1,15 @@
 pkgbase = android-sources
 	pkgdesc = Android SDK Sources, latest API
-	pkgver = 32_r01
+	pkgver = 33_r01
 	pkgrel = 1
 	url = https://developer.android.com/studio/index.html
 	arch = any
 	license = custom
-	conflicts = android-sources-32
+	conflicts = android-sources-33
 	options = !strip
-	source = https://dl.google.com/android/repository/sources-32_r01.zip
+	source = https://dl.google.com/android/repository/sources-33_r01.zip
 	source = package.xml
-	sha256sums = 7ebf6cb75df1b1838aedaf9eba15663f786611e1bcfbd36db2765ba410c4f345
-	sha256sums = 6b4fccb1627794b40b84331ffe7e7d5ecac6eef901729b34d4ab57778225bcc6
+	sha256sums = fab052e0017084c2d38c28c15ccf8e71b7ff1ac8de8c51f660fc7b4e9ab5998e
+	sha256sums = ba7d835c157e151bd91db4c6b4cb04b36ebe5bfc83633a2997cdafc1d72b2bcb
 
 pkgname = android-sources
