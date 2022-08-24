@@ -10,7 +10,7 @@ arch=("armv7h" "i686" "x86_64")
 url="https://github.com/ciderapp/${_pkgname}.git"
 license=("GPL")
 depends=('gtk3' 'nss')
-makedepends=('git' 'npm' 'yarn')
+makedepends=('git' 'npm' 'pnpm' 'python')
 optdepends=('libnotify: Playback notifications')
 provides=('cider')
 conflicts=('cider')
@@ -31,7 +31,7 @@ build() {
 
     echo "Building ${_pkgname} on v${pkgver} : [Install Build Dependencies] | Build | Done"
     # yarn install --non-interactive --pure-lockfile --cache-folder "${srcdir}/yarn-cache"
-    pnpm install --shamefully-hoist
+    pnpm install
 
     echo "Building : Install Build Dependencies | [Build] | Done"
     if [[ ${CARCH} == "armv7h" ]]; then
