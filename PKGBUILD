@@ -3,8 +3,8 @@
 # Contributor: Funkin-Stoopid <>
 
 pkgname=mkv-extractor-qt
-pkgver=22.08.16a
-_gitcommit=57b67f338091a35a90b2f0dd241e76f53a4cdd6d
+pkgver=22.08.24a
+_gitcommit=9c1823751a768c4833fec11e819ef790c4a4a79d
 pkgrel=1
 pkgdesc="Graphical MKV demultiplexer"
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=('ffmpeg: for DTS conversion'
 conflicts=('mkv-extractor-gui')
 replaces=('mkv-extractor-gui')
 source=("https://github.com/Hizoka76/MKV-Extractor-Qt5/archive/${_gitcommit}.tar.gz")
-sha256sums=('17dabd114ffa0a41119d3cf0eae390f9d153f09047c4351019783d2460a26957')
+sha256sums=('2e8bdfd13d2f8b615bcdd71aa66a74190f71d7d05bfda7a0683f4ef22405dac7')
 
 prepare() {
   cd "MKV-Extractor-Qt5-${_gitcommit}"
@@ -35,6 +35,10 @@ prepare() {
 
   # Use bdsup2subpp instead of java app
   sed 's|BDSup2Sub.jar|bdsup2subpp|g' -i MKVExtractorQt5.py
+
+  # fix version
+  sed -e 's|app.setApplicationVersion("22.08.16a")|app.setApplicationVersion("'"${pkgver}"'")|g' \
+      -i MKVExtractorQt5.py
 
   export IFS=$'\n'
   for i in $(find . -name '*.png' -type f); do
