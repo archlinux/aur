@@ -1,7 +1,7 @@
 # Maintainer: Gökçe Aydos <aur2022@aydos.de>
 _name=xrt
 pkgbase=$_name-git
-pkgver=r6625.da644adf6
+pkgver=r6630.23657d13b
 pkgrel=1
 pkgdesc="Xilinx runtime for Ultrascale, Versal and MPSoC-based FPGAs"
 arch=(x86_64)
@@ -76,7 +76,9 @@ prepare() {
 	git -C $_name config \
 		submodule.src/runtime_src/core/pcie/driver/linux/xocl/lib/libqdma.url \
 		../dma_ip_drivers
-	git -C $_name submodule update
+	git -C $_name submodule update --force
+	# `--force` resets the branch and gets rid of the modifications.
+
 	echo Patch $_name/src/runtime_src/core/pcie/driver/linux/xocl/lib/libqdma
 	git -C $_name/src/runtime_src/core/pcie/driver/linux/xocl/lib/libqdma \
 		apply $srcdir/dma-ip-drivers-fixes-for-current-kernels.patch
@@ -89,7 +91,7 @@ build() {
 	# (`__builtin_memcpy... may overlap up to` error)
 	#TODO remove after resolution
 	CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
-	mkdir clean-build && cd clean-build
+	mkdir -p clean-build && cd clean-build
 	local cmake_flags+=" -DCMAKE_BUILD_TYPE=Release"
 	cmake $make_flags ../src
 	make
