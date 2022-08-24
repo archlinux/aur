@@ -3,8 +3,8 @@
 
 _archive_extension='tar.gz'
 pkgname=system-bridge
-pkgver=3.4.1
-pkgrel=1
+pkgver=3.4.4
+pkgrel=2
 epoch=1
 pkgdesc="Bridges your system to other systems, like Home Assistant"
 arch=('any')
@@ -47,7 +47,7 @@ source=("$pkgname-$pkgver.$_archive_extension::https://github.com/timmo001/$pkgn
         "$pkgname.desktop"
         "$pkgname"
         "$pkgname.service")
-b2sums=('57eec8b81ae10ebde023967fb59a566e92939f96b2db1aebadaa759c218ada162b3a215050cc601008e994a8878ba6016b81066521cafb1b6f8f847656a2ae9c'
+b2sums=('6aea30062b9001845b39f8459a63a2b83c2a15d45ca13ef30cb0293adb41e2693d6760e155ebf30f1b0f0805d06a0eee8036e99990b1b78183d2f29dfdb33c2f'
         'fa5f2b2bb64d44f7791fe8631481cf294f0a3afa88f1ac7fdb55508df9acc4ad26b1723cadebbf1bc09369c2e3732c6628b6b06d44c3bdcebee0d5913d85d097'
         '26634fe43624791f7ae6fe85e70792fcf67fcd5a9997ba40043c49a636d939d610eb5e6ededdf1e6723dd8280e924160e72a8469501a1436ad67f28eab2d4fef'
         '03852934e853a7a5973e4139a9c51a160df81af1fa958ac6550a6525aa97ad3ebc983bf4a662cce345e04cc0451912687d4c199c9152c7160b173abad2b73b37')
