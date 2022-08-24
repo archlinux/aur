@@ -8,7 +8,7 @@ pkgdesc="Detect dead exports or package imports"
 arch=('x86_64')
 url="https://github.com/ocharles/weeder"
 license=('BSD')
-makedepends=('git' 'cabal')
+makedepends=('git' 'cabal-install')
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('4c2adbd741b0193a860defa51492e706e74672cdee62bb5db4663dd5cb634efe')
 
