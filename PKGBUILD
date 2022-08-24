@@ -2,8 +2,8 @@
 #Maintainer: AigioL<https://github.com/AigioL>
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=2.8.4.r1.ge27ae2b2
-pkgrel=2
+pkgver=2.8.4.r4.g8a1bde07
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://steampp.net/
 license=('GPL3')
@@ -22,7 +22,7 @@ source=(
     )
 sha256sums=('SKIP'
             'SKIP'
-            '4147ff176c9fbbc22452244c5f8da66cd8b5028decdeda36c54eae95d49e3b34'
+            '18450c72b35727b13b9b8a4191c2c95d7fbd3f4a0091ab71edcfb16eb57e5494'
             'e8480ba1b19e8375c80e8ae776645ca3bb86e45731c4938e059d37a09227a60e'
             '495418217e895deed32c8166c5d85718b23676e52b91d1bb412d69d5f945b2e9')
 pkgver(){
