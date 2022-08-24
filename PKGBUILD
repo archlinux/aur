@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=workbench
-pkgver=42.2
+pkgver=42.3
 pkgrel=1
 pkgdesc="Learn and prototype with GNOME technologies"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('gtk4-demos: GTK Demo, GTK Widget Factory, GTK Icon Browser'
             'highlight: syntax highlighting'
             'libadwaita-demos: Adwaita Demo')
 install="$pkgname.install"
-_commit=5b57afabb4e1e0f948a22e2be2adb0a1e89d8240
+_commit=80d04ac891561b6e7e2f99fbfe1c3fde84c64c02
 source=("git+https://github.com/sonnyp/Workbench.git#commit=${_commit}"
         'git+https://gitlab.gnome.org/Teams/Design/icon-development-kit-www.git'
         'git+https://github.com/sonnyp/troll.git')
