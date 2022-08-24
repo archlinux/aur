@@ -1,0 +1,15 @@
+pkgbase = vantage-14are05-git
+	pkgdesc = Battery manager to handle system performance modes and charge modes through acpi_calls (for ideapad 14are05 only).
+	pkgver = 26__2022.08.24
+	pkgrel = 1
+	url = https://github.com/ayushjaipuriyar/vantage-14are05
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = acpi_call
+	provides = vantage
+	source = git+https://github.com/ayushjaipuriyar/vantage-14are05
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vantage-14are05-git
