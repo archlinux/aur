@@ -90,8 +90,7 @@ package() {
   cd ${srcdir}
   install -Dm644 "freqtrade@.service" "${pkgdir}/usr/lib/systemd/system/freqtrade@.service"
   rsync -r assets "${frequi_dir}"
-  install -Dm644 index.html "${frequi_dir}"
-  install -Dm644 favicon.ico "${frequi_dir}"
+  install -Dm644 favicon.ico index.html "${frequi_dir}"
 
   echo 'patch and reinstall your ta-lib/PKGBUILD by adding the prepare() function with
 
