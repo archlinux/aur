@@ -1,0 +1,16 @@
+pkgbase = radicle-cli
+	pkgdesc = Radicle command line interface
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://app.radicle.xyz/seeds/seed.alt-clients.radicle.xyz/rad:git:hnrkmg77m8tfzj4gi4pa4mbhgysfgzwntjpao/tree
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	depends = libusb
+	depends = gcc-libs
+	depends = openssl
+	source = radicle-cli-0.6.1::git+https://github.com/radicle-dev/radicle-cli.git#commit=1e6ed9b
+	sha512sums = SKIP
+
+pkgname = radicle-cli
