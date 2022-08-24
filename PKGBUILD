@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=wolfssh-git
-pkgver=1.4.8.r8.gd603418
+pkgver=1.4.11.r0.gd42230d
 pkgrel=1
 pkgdesc="A small, fast, portable SSH implementation, including support for SCP and SFTP"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.wolfssl.com/"
 license=('GPL' 'custom')
 depends=('glibc' 'wolfssl')
 makedepends=('git')
-provides=('wolfssh')
+provides=("wolfssh=$pkgver")
 conflicts=('wolfssh')
 options=('staticlibs')
 source=("git+https://github.com/wolfSSL/wolfssh.git")
