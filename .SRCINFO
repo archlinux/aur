@@ -1,0 +1,15 @@
+pkgbase = pathbins-git
+	pkgdesc = A command-line utility which lists all executables inside directories specified by PATH variable
+	pkgver = v0.1.0.r0.g281a7cf
+	pkgrel = 1
+	url = https://github.com/metent/pathbins
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	provides = pathbins
+	conflicts = pathbins
+	source = git+https://github.com/metent/pathbins
+	sha256sums = SKIP
+
+pkgname = pathbins-git
