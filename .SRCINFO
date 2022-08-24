@@ -6,7 +6,7 @@ pkgbase = haskell-weeder
 	arch = x86_64
 	license = BSD
 	makedepends = git
-	makedepends = cabal
+	makedepends = cabal-install
 	source = https://github.com/ocharles/weeder/archive/refs/tags/2.4.0.tar.gz
 	sha256sums = 4c2adbd741b0193a860defa51492e706e74672cdee62bb5db4663dd5cb634efe
 
