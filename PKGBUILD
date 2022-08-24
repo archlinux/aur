@@ -2,7 +2,7 @@
 pkgbase=python-readthedocs-sphinx-ext
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=2.1.7
+pkgver=2.1.8
 pkgrel=1
 pkgdesc="Sphinx epytext extension"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 #makedepends=('python-wheel' 'python-build' 'python-installer')
 checkdepends=('python-pytest' 'python-sphinx')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('87aef76deedf4f2e4b5e34e4ae1efd32')
+md5sums=('ecaaee440cb231bab66328c09b120567')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -28,7 +28,7 @@ check() {
 }
 
 package() {
-    depends=('python-sphinx' 'python-requests' 'python-jinja>=2.9')
+    depends=('python-sphinx' 'python-requests' 'python-jinja>=2.9' 'python-packaging')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
