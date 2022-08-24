@@ -1,8 +1,8 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 _majorver=17
-_completever=17.0.4
-_updatever=8
+_completever=17.0.4.1
+_updatever=1
 _jdkver="$_completever.u$_updatever"
 
 pkgname=jdk-microsoft-openjdk
@@ -34,7 +34,7 @@ source=("https://aka.ms/download-jdk/microsoft-jdk-$_completever-linux-x64.tar.g
         freedesktop-java.desktop
 				freedesktop-jconsole.desktop
 				freedesktop-jshell.desktop)
-sha256sums=('e77bbbb76e49438f9b4ad5ca89f1184d260108797bd2461a8d98a1dd8ea16956'
+sha256sums=('457774fcca714385f43fe93ad484274ce30643384fdd3232eefa8c3f834bcca9'
             '7ed68488d8178733a23d4f009977ee6d3bebcdca3ed074fb6d0be6039c451d7d'
             '67c0102694dbfdc1141c6cbc2fa1a7153cbfa81f596744860d7c801a6b1df844'
             '424ee7a00116757a819b62bd670d583eea90e0ebee4a679f54b71980dbb28597')
