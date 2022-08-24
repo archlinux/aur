@@ -14,6 +14,7 @@ depends=(
 	xcb-util-renderutil
 	xcb-util-wm
 	gnome-desktop
+	libinput
 )
 makedepends=(
 	ctags
@@ -24,7 +25,7 @@ makedepends=(
 	vulkan-headers
 	wayland-protocols
 )
-provides=(phoc)
+provides=(phoc wlroots)
 conflicts=(phoc wlroots)
 _tag=1a58a2363b686241647138a8822beac4f761f3fb
 source=("git+${url}.git#tag=${_tag}")

@@ -19,7 +19,9 @@ pkgbase = phoc-embedded-wlroots
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
 	depends = gnome-desktop
+	depends = libinput
 	provides = phoc
+	provides = wlroots
 	conflicts = phoc
 	conflicts = wlroots
 	source = git+https://gitlab.gnome.org/World/Phosh/phoc.git#tag=1a58a2363b686241647138a8822beac4f761f3fb
