@@ -1,7 +1,7 @@
 # Maintainer: Gennadiy Mykhailiuta <gmykhailiuta@gmail.com>
 
 pkgname=shellfirm
-pkgver=0.1.3
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Intercept any risky patterns (default or defined by you) and prompt you a small challenge for double verification'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/kaplanelad/shellfirm'
 makedepends=('git' 'rust')
 license=('Apache')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kaplanelad/shellfirm/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d97efc1f1f5bd01c46e9e5005327ca4979ee82855f4295ae5ce425c8bd8c0d62')
+sha256sums=('4ad9768052864d4cb2d88aec73028d44ca82bd661d93cfae02d28188e9d7685e')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
