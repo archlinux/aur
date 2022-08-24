@@ -3,7 +3,7 @@
 # Contributor: Christoph Vigano <mail at cvigano dot de>
 pkgname='molly-guard'
 pkgver=0.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc="protects machines from accidental shutdowns/reboots (via ssh)"
 arch=('any')
 url="http://packages.debian.org/source/sid/molly-guard" # Didn't find anything else
@@ -33,6 +33,14 @@ package() {
 
   libdir="/usr/local/lib"
   make DESTDIR="$pkgdir" bindir="/usr/local/sbin" libdir=$libdir install
+
+  # remove blank lines and leading whitespace
+  # couldnt get this to work
+  # https://github.com/docbook/xslt10-stylesheets/issues/123
+  for filename in $(find "$pkgdir"/usr/share/man -type f -name "*.8"); do
+    sed -i '/^$/d' $filename
+    sed -i -e 's/^[ \t]*//' $filename
+  done
 
   # replace occurences of pkgdir in scripts
   for filename in $(find "$pkgdir"/usr -type f); do
