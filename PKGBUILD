@@ -10,8 +10,8 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'systemd-libs-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
-_tag='069e2b0ddd3a1b5bcff48530be165c56117d7134' # git rev-parse v${_tag_name}
-_tag_name=251.3
+_tag='46cf27a20eb6fb676ac987533415d499b77dd0af' # git rev-parse v${_tag_name}
+_tag_name=251.4
 pkgver="${_tag_name/-/}"
 pkgrel=1
 arch=('x86_64' 'aarch64')
@@ -97,6 +97,11 @@ prepare() {
 
   # Replace cdrom/dialout/tape groups with optical/uucp/storage
   patch -Np1 -i ../0001-Use-Arch-Linux-device-access-groups.patch
+
+  # Dirty fix for https://github.com/systemd/systemd/issues/24323
+  # while waiting for meson to fix the underlying issue introduced in
+  # https://github.com/mesonbuild/meson/pull/10593
+  sed -i -e "s/^if get_option('optimization') != '0'/if get_option('optimization') != '0' and get_option('optimization') != 'plain'/" src/boot/efi/meson.build
 }
 
 build() {
