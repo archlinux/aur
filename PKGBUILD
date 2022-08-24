@@ -2,10 +2,10 @@
 pkgbase=xcursor-simp1e
 pkgname=(xcursor-simp1e{,-breeze{,-snow},-dark,-catpuccin,-{solarized,gruvbox,nord}-{dark,light},-tokyo-night})
 pkgdesc='An aesthetic cursor theme'
-pkgver=5.0
+pkgver=6.0
 pkgrel=1
 url=https://gitlab.com/zoli111/simp1e/
-_commit=599160278e64b8cddf0a6ca4fdc946e8c8b81b94
+_commit=607b83e3b77a18e5c0dcbceee6c1417b89bfd94f
 arch=(any)
 makedepends=(git librsvg python-pillow xorg-xcursorgen)
 depends=()
@@ -23,8 +23,7 @@ prepare () {
 
 build () {
 	cd "${pkgname}"
-	./generate_svgs.sh
-	./build_cursors.sh
+	./build.sh
 }
 
 _package () {
@@ -67,5 +66,5 @@ package_xcursor-simp1e-tokyo-night () {
 	_package Simp1e-Tokyo-Night
 }
 package_xcursor-simp1e-catpuccin () {
-	_package Simp1e-Catpuccin
+	_package Simp1e-Catppuccin-Frappe
 }
