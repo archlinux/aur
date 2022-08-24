@@ -115,8 +115,8 @@ pkgbase = proton-ge-custom
 	makedepends = lib32-sdl2>=2.0.16
 	makedepends = libsoup3
 	makedepends = lib32-libsoup3
-	makedepends = libglvnd
-	makedepends = lib32-libglvnd
+	makedepends = libgudev
+	makedepends = lib32-libgudev
 	makedepends = desktop-file-utils
 	makedepends = python
 	makedepends = steam-native-runtime
@@ -159,8 +159,8 @@ pkgbase = proton-ge-custom
 	depends = lib32-sdl2>=2.0.16
 	depends = libsoup3
 	depends = lib32-libsoup3
-	depends = libglvnd
-	depends = lib32-libglvnd
+	depends = libgudev
+	depends = lib32-libgudev
 	depends = desktop-file-utils
 	depends = python
 	depends = steam-native-runtime
