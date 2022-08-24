@@ -1,7 +1,7 @@
 # Maintainer: Ulrich Schreiner <ulrich.schreiner@gmail.com>
 
 pkgname=steampipe-bin
-pkgver=0.15.4
+pkgver=0.16.0
 pkgrel=1
 pkgdesc='Steampipe CLI'
 url='https://github.com/turbot/steampipe'
@@ -9,7 +9,7 @@ license=('AGPL-3.0')
 arch=('x86_64')
 provides=('steampipe')
 source=("steampipe-$pkgver-$pkgrel.tgz::https://github.com/turbot/steampipe/releases/download/v$pkgver/steampipe_linux_amd64.tar.gz")
-sha256sums=('062b9e39edffc8c5c4cde462027f9fcfb563bffa709ad39a8bb8fab5e716345c')
+sha256sums=('5a1bb73eaabe807eefb711f59cd1add84378495e5b9f2160269a954b6c509bc4')
 
 package() {
     tar xzf $srcdir/steampipe-$pkgver-$pkgrel.tgz
