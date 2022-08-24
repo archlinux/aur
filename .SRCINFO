@@ -1,0 +1,22 @@
+pkgbase = domruler-git
+	pkgdesc = DOM Ruler is a library to maintain a DOM tree, lay out and stylize the DOM elements by using CSS.
+	pkgver = b5144f7
+	pkgrel = 1
+	url = https://github.com/HVML/DOM-Ruler
+	arch = any
+	license = LGPL-3.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = cmake
+	depends = gcc
+	depends = glib2
+	depends = purc
+	provides = domruler
+	provides = DOM-Ruler
+	conflicts = domruler
+	options = !strip
+	source = domruler::git+https://github.com/HVML/DOM-Ruler.git
+	sha256sums = SKIP
+
+pkgname = domruler-git
