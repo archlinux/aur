@@ -1,7 +1,7 @@
 # Maintainer: Andrew Gregory Neumann <agneum14@gmail.com>
 pkgname=4bulk-git
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="download all media from 4chan thread"
 arch=('any')
 url="https://github.com/agneum14/4bulk"
@@ -14,12 +14,12 @@ md5sums=('SKIP')
 build() {
 	cd "$pkgname"
 	echo '#!/bin/sh' > 4bulk
-	echo python /usr/share/$pkgname/4bulk.py >> 4bulk
+	echo python /usr/share/$pkgname/4bulk.py \$@ >> 4bulk
 	chmod +x 4bulk
 }
 
 package() {
-	cd "$pkgname"
+	cd $pkgname
 	mkdir -p $pkgdir/usr/share/$pkgname
 	mkdir -p $pkgdir/usr/bin/
 	cp 4bulk.py $pkgdir/usr/share/$pkgname

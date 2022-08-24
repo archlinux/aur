@@ -1,7 +1,7 @@
 pkgbase = 4bulk-git
 	pkgdesc = download all media from 4chan thread
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/agneum14/4bulk
 	arch = any
 	license = MIT
