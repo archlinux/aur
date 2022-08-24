@@ -1,0 +1,19 @@
+pkgbase = wmdots
+	pkgdesc = Window Maker dockapp which displays multi shape 3D rotating dots
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.dockapps.net/wmdots
+	arch = x86_64
+	license = GPL
+	depends = libdockapp
+	depends = libxpm
+	depends = libx11
+	depends = glibc
+	depends = libxcb
+	depends = libxau
+	depends = libxdmcp
+	optdepends = windowmaker
+	source = wmdots.tar.gz::https://repo.or.cz/dockapps.git/snapshot/6b1c8231816e24d160299183556fe65856a866eb.tar.gz
+	md5sums = SKIP
+
+pkgname = wmdots
