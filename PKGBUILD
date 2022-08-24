@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=protonup-qt
-pkgver=2.7.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="Install and manage Proton-GE and Luxtorpeda for Steam and Wine-GE for Lutris"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('pyside6' 'python-inputs' 'python-psutil' 'python-requests' 'python-set
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DavidoTek/ProtonUp-Qt/archive/refs/tags/v$pkgver.tar.gz"
         'net.davidotek.pupgui2.sh')
-sha256sums=('3460e11818c69394571bcf1adf02a21b53060b2cf351ed8bfd6754838f78a4a2'
+sha256sums=('910316403482a255ac4233863e2b46ee03b82093029f37fcb89aa7087c33d06e'
             '732fd88026a801d64ffb85c98c1bc53536100524cced87ab86a112d83de07c1f')
 
 build() {
