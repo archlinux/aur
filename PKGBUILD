@@ -2,7 +2,7 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phosh
-pkgver=v0.20.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc='A pure Wayland shell prototype for GNOME on mobile devices'
 arch=(x86_64 aarch64 armv7h)
@@ -28,7 +28,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd phosh
-  git describe --tags
+  git describe --tags | sed 's/^v//'
 }
 
 prepare() {
