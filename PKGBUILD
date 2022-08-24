@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A simulation toolkit for particle physics interactions."
 depends=('cmake>=3.16'
          'xerces-c>=3'
-         'qt5-base'
+         'qt6-base'
          'glu'
          'openmotif'
          'soqt'
@@ -51,7 +51,7 @@ build() {
   cd ${srcdir}/build
 
   env -i \
-      QT_SELECT=5 \
+      QT_SELECT=6 \
       PATH=/usr/bin \
       cmake \
       -DCMAKE_INSTALL_PREFIX=/usr \
