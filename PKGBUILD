@@ -3,7 +3,7 @@
 pkgname=fenics-basix-git
 _base=basix
 pkgdesc="C++ interface of FEniCS for ordinary and partial differential equations."
-pkgver=0.1.0.26.gca5876e
+pkgver=0.1.0.258.g888e38ce
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/FEniCS/basix"
@@ -11,17 +11,14 @@ license=('GPL3')
 groups=('fenics-git')
 depends=('xtensor' 'xtensor-blas' 'pybind11' 'petsc')
 makedepends=('git' 'boost')
-optdepends=('python-numba')
 options=(!emptydirs)
 source=("git+${url}")
-md5sums=('SKIP')
+sha256sums=('SKIP')
+
 _mainver=$(printf ${pkgver} | cut -d'.' -f1,2,3)
-provides=("${_base}=$_mainver" "python-${_base}=$_mainver"
-          "python-${_base}-git=$_mainver")
-replaces=("${_base}" "python-${_base}"
-"python-${_base}-git")
-conflicts=("${_base}" "python-${_base}"
-"python-${_base}-git")
+provides=("${_base}=$_mainver" )
+replaces=("${_base}")
+conflicts=("${_base}")
 
 #  From UPC: Building And Using Static And Shared "C"
 #  Libraries.html
@@ -113,17 +110,13 @@ build() {
         -B "${srcdir}"/build \
         -S . \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DXTENSOR_OPTIMIZE=TRUE
-  cmake --build "${srcdir}"/build
+        -DBUILD_SHARED_LIBS=TRUE \
+        -DCMAKE_CXX_STANDARD=20
+  cmake --build "${srcdir}"/build --target all
 }
 
 package() {
   cd "${srcdir}"/"${_base}"/cpp
   cmake --install "${srcdir}"/build --prefix="${pkgdir}"/usr
-  # make -C "${srcdir}"/build DESTDIR="${pkgdir}" install
-
-  cd "${srcdir}"/"${_base}"/python
-  python setup.py build
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
-  # pip install . --no-deps --prefix=/usr --root="${pkgdir}" --compile
+  install -Dm 644 ../LICENSE -t "${pkgdir}/usr/share/licenses/${_base}"
 }
