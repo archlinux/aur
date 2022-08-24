@@ -1,9 +1,5 @@
-*
-!.gitignore
-!PKGBUILD
-!*.patch
-!*.install
-!*.sysusers
-!.SRCINFO
+zig-cache
 
-!check.sh
+/src
+/pkg
+*.pkg.tar*
