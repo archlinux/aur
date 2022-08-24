@@ -1,38 +1,50 @@
-# Maintainer: jerry73204 <jerry73204 at gmail dot com>
+# Maintainer: RubenKelevra <cyrond@gmail.com>
+# Contributor: jerry73204 <jerry73204 at gmail dot com>
+
 pkgname=ogr2osm-git
-pkgver=r152.183e226
+pkgver=r173.a20f331
 pkgrel=1
+epoch=1
 pkgdesc='A tool for converting ogr-readable files like shapefiles into .osm data'
 arch=('any')
-url='https://github.com/pnorman/ogr2osm'
+url='https://github.com/roelderickx/ogr2osm'
 license=('MIT')
-depends=('python' 'python-gdal')
-makedepends=('git' 'python-setuptools')
+depends=(
+	'python>=3.7'
+	gdal
+	'python-gdal>=3.0.0'
+	'python-lxml>=4.3.0'
+	python-protobuf
+	protobuf
+)
+makedepends=(
+	git
+	python-build
+	python-installer
+	python-wheel
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(
-  'ogr2osm::git+https://github.com/pnorman/ogr2osm.git'
-  'setup.py'
+	'ogr2osm::git+https://github.com/pnorman/ogr2osm.git'
+	'https://raw.githubusercontent.com/roelderickx/ogr2osm/main/LICENSE'
 )
-sha256sums=('SKIP'
-            '18049525bdc1d0c99d2863ac1d88b149e7dc9d4f2c521ff2e523c04bdc5f3961')
+b2sums=('SKIP'
+        '5003f6697eb36d2709c69ad8d1c81ae258a94e6fa5319075198caf3b7fe84a0671b9c12f0848c6dd03a520371d43f444232696feb28379465dabf12463cd09b2')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir/${pkgname%-git}"
-  cp ${srcdir}/setup.py setup.py
+	cd "$srcdir/${pkgname%-git}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
-  python3 setup.py build
+	cd "$srcdir/${pkgname%-git}"
+	python -m build --wheel --no-isolation
+	#python3 setup.py build
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
-  python3 setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+	cd "$srcdir/${pkgname%-git}"
+	python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE" LICENSE
 }
