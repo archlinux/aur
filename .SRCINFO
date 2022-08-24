@@ -1,7 +1,7 @@
 pkgbase = uefitool-git
 	pkgdesc = UEFI firmware image viewer and editor and utilities
 	pkgver = r228.44cafeb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LongSoft/UEFITool
 	arch = any
 	license = BSD
@@ -9,7 +9,7 @@ pkgbase = uefitool-git
 	depends = qt5-base
 	provides = uefitool
 	conflicts = uefitool
-	source = uefitool::git+https://github.com/LongSoft/UEFITool.git
+	source = uefitool::git+https://github.com/LongSoft/UEFITool.git#branch=old_engine
 	md5sums = SKIP
 
 pkgname = uefitool-git

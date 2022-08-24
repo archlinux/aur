@@ -4,7 +4,7 @@ pkgname=uefitool-git
 _pkgname=uefitool
 _tools=(UEFIPatch UEFIReplace)
 pkgver=r228.44cafeb
-pkgrel=1
+pkgrel=2
 pkgdesc='UEFI firmware image viewer and editor and utilities'
 arch=(any)
 url=https://github.com/LongSoft/UEFITool
@@ -13,7 +13,7 @@ depends=(qt5-base)
 makedepends=(git)
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("${_pkgname}::git+${url}.git")
+source=("${_pkgname}::git+${url}.git#branch=old_engine")
 md5sums=('SKIP')
 
 pkgver() {
