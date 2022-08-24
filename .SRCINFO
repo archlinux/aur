@@ -1,7 +1,7 @@
 pkgbase = radicle-cli
 	pkgdesc = Radicle command line interface
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://app.radicle.xyz/seeds/seed.alt-clients.radicle.xyz/rad:git:hnrkmg77m8tfzj4gi4pa4mbhgysfgzwntjpao/tree
 	arch = x86_64
 	license = GPL3
@@ -14,3 +14,7 @@ pkgbase = radicle-cli
 	sha512sums = SKIP
 
 pkgname = radicle-cli
+	depends = libusb
+	depends = gcc-libs
+	depends = openssl
+	depends = ssh-agent
