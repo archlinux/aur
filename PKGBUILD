@@ -1,7 +1,7 @@
 # Maintainer: Michael Bauer <michael@m-bauer.org>
 pkgname=radicle-cli
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Radicle command line interface"
 arch=('x86_64')
 url="https://app.radicle.xyz/seeds/seed.alt-clients.radicle.xyz/rad:git:hnrkmg77m8tfzj4gi4pa4mbhgysfgzwntjpao/tree"
@@ -19,7 +19,7 @@ source=("$pkgname-$pkgver::git+https://github.com/radicle-dev/radicle-cli.git#co
 sha512sums=('SKIP')
 
 package() {
-	depends+=('ssh-agent')
+	depends+=('openssh')
 	cd "$pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
 	cargo install $pkgname --no-track --locked --root "$pkgdir/usr/" --path .
