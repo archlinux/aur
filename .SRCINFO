@@ -1,7 +1,7 @@
 pkgbase = r-htscluster
 	pkgdesc = Clustering High-Throughput Transcriptome Sequencing (HTS) Data
-	pkgver = 2.0.8
-	pkgrel = 4
+	pkgver = 2.0.10
+	pkgrel = 1
 	url = https://cran.r-project.org/package=HTSCluster
 	arch = any
 	license = GPL
@@ -11,7 +11,7 @@ pkgbase = r-htscluster
 	depends = r-plotrix
 	optdepends = r-biobase
 	optdepends = r-htsfilter
-	source = https://cran.r-project.org/src/contrib/HTSCluster_2.0.8.tar.gz
-	sha256sums = 6f82fa50bd95620fe5dea7c66a1876a6fea0bd46bb3e1aa54806f5060d74cb72
+	source = https://cran.r-project.org/src/contrib/HTSCluster_2.0.10.tar.gz
+	sha256sums = 36bdeea9074efa962622f6495f35442c51266a9e066ae856ec7fd2eab4239669
 
 pkgname = r-htscluster
