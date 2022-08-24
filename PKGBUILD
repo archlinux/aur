@@ -1,16 +1,16 @@
 # Contributor: David Vachulka <arch_dvx@users.userforge.net>
 
 pkgname=dxirc
-pkgver=1.40.0
+pkgver=1.40.1
 pkgrel=1
 pkgdesc="A simple IRC client"
 arch=('i686' 'x86_64')
-url="http://dxirc.org"
+url="https://dxirc.org"
 license=("GPL")
 depends=('fox' 'lua' 'qt5-base' 'qt5-multimedia' 'openssl')
 makedepends=('cmake')
 source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('e127ee21ab0af2453a0be4de04d83018')
+md5sums=('e5b46ffcc913de2cfa63721768c5a102')
 
 build() {
   cd $srcdir/$pkgname-$pkgver

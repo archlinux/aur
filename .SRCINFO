@@ -1,8 +1,8 @@
 pkgbase = dxirc
 	pkgdesc = A simple IRC client
-	pkgver = 1.40.0
+	pkgver = 1.40.1
 	pkgrel = 1
-	url = http://dxirc.org
+	url = https://dxirc.org
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = dxirc
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = openssl
-	source = http://downloads.sourceforge.net/sourceforge/dxirc/dxirc-1.40.0.tar.gz
-	md5sums = e127ee21ab0af2453a0be4de04d83018
+	source = http://downloads.sourceforge.net/sourceforge/dxirc/dxirc-1.40.1.tar.gz
+	md5sums = e5b46ffcc913de2cfa63721768c5a102
 
 pkgname = dxirc
