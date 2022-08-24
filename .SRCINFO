@@ -1,7 +1,7 @@
 pkgbase = linux-pf-git
 	pkgdesc = Linux pf-kernel (git version)
-	pkgver = 5.19rc6.r35.g51adf8a3d449
-	pkgrel = 2
+	pkgver = 6.0rc1.r34.gc5658a9932d4
+	pkgrel = 1
 	url = https://codeberg.org/pf-kernel/linux/wiki/README
 	arch = x86_64
 	license = GPL2
@@ -20,10 +20,10 @@ pkgbase = linux-pf-git
 	makedepends = texlive-latexextra
 	makedepends = git
 	options = !strip
-	source = linux-pf-git::git+https://codeberg.org/pf-kernel/linux.git#branch=pf-5.19
+	source = linux-pf-git::git+https://codeberg.org/pf-kernel/linux.git#branch=pf-6.0
 	source = config
 	sha256sums = SKIP
-	sha256sums = ee329485fef89bd85d885fdc5a9bb0f7b72d8fe2381d7cfe7c1484b137711c36
+	sha256sums = f6cbbfcd9681abd205ac235e3025feffbd2e569d6fef9177c40361e52b75fd25
 
 pkgname = linux-pf-git
 	pkgdesc = The Linux pf-kernel (git version) kernel and modules
@@ -31,6 +31,7 @@ pkgname = linux-pf-git
 	depends = kmod
 	depends = initramfs
 	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
 	optdepends = ksmbd-tools: userspace tools for the ksmbd kernel SMB server
 	optdepends = linux-firmware: firmware images needed for some devices
 	optdepends = uksmd: userspace KSM helper daemon

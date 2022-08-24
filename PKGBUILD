@@ -2,10 +2,10 @@
 # based on testing/linux: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-pf-git
-pkgver=5.19rc6.r35.g51adf8a3d449
-pkgrel=2
+pkgver=6.0rc1.r34.gc5658a9932d4
+pkgrel=1
 pkgdesc='Linux pf-kernel (git version)'
-_kernel_rel=5.19
+_kernel_rel=6.0
 _branch=pf-${_kernel_rel}
 _product="${pkgbase%-git}"
 url=https://codeberg.org/pf-kernel/linux/wiki/README
@@ -23,7 +23,7 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            'ee329485fef89bd85d885fdc5a9bb0f7b72d8fe2381d7cfe7c1484b137711c36')
+            'f6cbbfcd9681abd205ac235e3025feffbd2e569d6fef9177c40361e52b75fd25')
 
 pkgver() {
   cd $_srcname
@@ -69,6 +69,7 @@ _package() {
   pkgdesc="The $pkgdesc kernel and modules"
   depends=(coreutils kmod initramfs)
   optdepends=('wireless-regdb: to set the correct wireless channels of your country'
+              'linux-firmware: firmware images needed for some devices'
               'ksmbd-tools: userspace tools for the ksmbd kernel SMB server'
               'linux-firmware: firmware images needed for some devices'
               'uksmd: userspace KSM helper daemon'
@@ -89,7 +90,8 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
