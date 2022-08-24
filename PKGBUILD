@@ -13,7 +13,7 @@ noextract=("$pkgname-$pkgver.AppImage")
 options=('!strip')
 
 source=("$pkgname-$pkgver.AppImage::https://download.beeper.com/linux/appImage/x64")
-sha256sums=('46548c771ec87fa4433af0e92a4a755e2aa0d4718cf067147cfee261eb365fc4')
+sha256sums=('0a09b4dfbd12f584edf2cc5989d6f022a57fa74a978981cf24c1afd613e1467b')
 
 prepare() {
     cd "${srcdir}"
