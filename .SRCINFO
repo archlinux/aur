@@ -1,0 +1,15 @@
+pkgbase = mcrevproxy
+	pkgdesc = A small and simple reverse proxy for minecraft written using the mcproto library
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/themayankjha/JAKYM
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = -0.3.4.tgz
+	backup = etc/mcrevproxy.conf
+	source = https://registry.npmjs.org/mcrevproxy/-/mcrevproxy-0.3.4.tgz
+	sha256sums = e4176d913b937029cbe1ac299813de2c48bebd07e5c4b70520387e57dbf99f0f
+
+pkgname = mcrevproxy
