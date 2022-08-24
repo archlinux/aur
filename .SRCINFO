@@ -1,12 +1,15 @@
 pkgbase = swagger-dsl
 	pkgdesc = CoffeeScript-based domain-specific language for generating JSON documents for Swagger
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/intellinote/swagger-dsl
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
+	depends = coffeescript
+	noextract = swagger-dsl-0.2.2.tgz
+	source = https://registry.npmjs.org/swagger-dsl/-/swagger-dsl-0.2.2.tgz
+	sha512sums = cdd342a9a055bed795691f9ce5190538cb57f1b5d0edfd7ed4556d776e86e905848a4939ff84afdb4e88ad04dc2abf3264e393f95a4eeffffb68ee048543e554
 
 pkgname = swagger-dsl
-
