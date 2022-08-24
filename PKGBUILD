@@ -1,11 +1,11 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=GE-Proton7-29
+_srctag=GE-Proton7-30
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
-_monover=7.3.0
+_monover=7.3.1
 pkgrel=1
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
@@ -123,6 +123,7 @@ source=(
     dav1d::git+https://code.videolan.org/videolan/dav1d.git
     gst-plugins-rs::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git
     dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
+    graphene::git+https://github.com/ebassi/graphene.git
     wine-staging::git+https://github.com/wine-staging/wine-staging.git
     protonfixes-gloriouseggroll::git+https://github.com/gloriouseggroll/protonfixes.git
     gst-plugins-bad::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git
@@ -202,6 +203,7 @@ prepare() {
         ffmpeg::FFmpeg
         dav1d
         gst-plugins-rs
+        graphene
         wine-staging
         protonfixes-gloriouseggroll::protonfixes
         gst-plugins-bad
@@ -210,29 +212,34 @@ prepare() {
 
     for submodule in "${_submodules[@]}"; do
         git submodule init "${submodule#*::}"
-        git config submodule."${submodule#*::}".url "$srcdir"/"${submodule%::*}"
+        git submodule set-url "${submodule#*::}" "$srcdir"/"${submodule%::*}"
         git submodule update "${submodule#*::}"
     done
+
+    pushd dxvk
+        git submodule init include/{vulkan,spirv}
+        git submodule set-url include/vulkan "$srcdir/Vulkan-Headers"
+        git submodule set-url include/spirv "$srcdir/SPIRV-Headers"
+        git submodule update include/{vulkan,spirv}
+    popd
 
     pushd vkd3d-proton
         for submodule in subprojects/{dxil-spirv,Vulkan-Headers,SPIRV-Headers}; do
             git submodule init "${submodule}"
-            git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
+            git submodule set-url "${submodule}" "$srcdir"/"${submodule#*/}"
             git submodule update "${submodule}"
         done
         pushd subprojects/dxil-spirv
             git submodule init third_party/spirv-headers
-            git config submodule.third_party/spirv-headers.url "$srcdir"/SPIRV-Headers
+            git submodule set-url third_party/spirv-headers "$srcdir"/SPIRV-Headers
             git submodule update third_party/spirv-headers
         popd
     popd
 
     pushd dxvk-nvapi
         git submodule init external/Vulkan-Headers
-        git config submodule.external/Vulkan-Headers.url "$srcdir"/Vulkan-Headers
+        git submodule set-url external/Vulkan-Headers "$srcdir"/Vulkan-Headers
         git submodule update external/Vulkan-Headers
-        # GCC 12 build failure
-        git cherry-pick -n 33bf3c7a6a3dc9e330cd338bf1877b5481c655e3
     popd
 
     for submodule in gst-plugins-rs media-converter; do
@@ -368,7 +375,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
             '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
             '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
-            '60314f255031b2f4dc49f22eacfcd2b3b8b2b491120d703b4b62cc1fef0f9bdd'
-            '78030aad04ff9965676849ca97dd952bee1352e16748b8a73507b3f0948258e6')
+            '55ca808868599b1d8ad53b222b8cb26fd96fa818c511163e361238025c76e9fe'
+            '8dd1b96a1cf6ac7f1435f0ece88aaaa9875b97e289557ae94ea3ce1c4e2f9879')
