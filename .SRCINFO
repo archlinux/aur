@@ -1,7 +1,7 @@
 pkgbase = python-ngmix
 	pkgdesc = Gaussian mixtures and image processing
-	pkgver = 2.1.0
-	pkgrel = 2
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://github.com/esheldon/ngmix
 	changelog = CHANGES.md
 	arch = any
@@ -15,9 +15,9 @@ pkgbase = python-ngmix
 	optdepends = python-galsim: for metacalibration operations
 	optdepends = python-scikit-learn: for sampling multivariate PDFs
 	optdepends = python-scipy: for image fitting using Levenberg-Marquardt fitter
-	source = python-ngmix-2.1.0.tar.gz::https://github.com/esheldon/ngmix/archive/v2.1.0.tar.gz
+	source = python-ngmix-2.2.0.tar.gz::https://github.com/esheldon/ngmix/archive/v2.2.0.tar.gz
 	source = setup.py.patch
-	sha256sums = 5bda6377f6ecf41b9301cde0e62e55e990292c7825ffba6d5b2a0d3adcbbd50e
+	sha256sums = a499f5b0ae5888f50fb97e8b59107d529f296b7a0047129f629aa4e99ef7df06
 	sha256sums = 85057d5ec4f082a3599084dbe0e874be2af2a0f91786a10933b3368e6e025898
 
 pkgname = python-ngmix

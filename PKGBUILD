@@ -4,8 +4,8 @@
 
 pkgname=python-ngmix
 _pkg="${pkgname#python-}"
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc='Gaussian mixtures and image processing'
 arch=('any')
 url="https://github.com/esheldon/ngmix"
@@ -16,11 +16,11 @@ optdepends=(
 	'python-scikit-learn: for sampling multivariate PDFs'
 	'python-scipy: for image fitting using Levenberg-Marquardt fitter')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-# checkdepends=('python-pytest')
+# checkdepends=('python-pytest' 'python-galsim' 'python-scikit-learn' 'python-scipy')
 changelog=CHANGES.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'setup.py.patch')
-sha256sums=('5bda6377f6ecf41b9301cde0e62e55e990292c7825ffba6d5b2a0d3adcbbd50e'
+sha256sums=('a499f5b0ae5888f50fb97e8b59107d529f296b7a0047129f629aa4e99ef7df06'
             '85057d5ec4f082a3599084dbe0e874be2af2a0f91786a10933b3368e6e025898')
 
 prepare() {
@@ -33,7 +33,6 @@ build() {
 	python -m build --wheel --no-isolation
 }
 
-## FIXME: optdepends required
 # check() {
 # 	cd "$_pkg-$pkgver"
 # 	pytest -x
