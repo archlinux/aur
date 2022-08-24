@@ -21,6 +21,10 @@ pkgver() {
 
 package() {
     cd "$srcdir/$_pkgname"
-    install -dm755 "$pkgdir/usr/lib"
-    cp -rT "firmware" "$pkgdir/usr/lib/firmware"
+    _prefix="$pkgdir/usr/lib/firmware/vsc/soc_a1_prod"
+    cd firmware
+    for file in *
+    do
+        install -Dm755 "$file"   "$_prefix/${file%.*}_a1_prod.bin"
+    done
 }
