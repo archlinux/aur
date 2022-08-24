@@ -4,7 +4,7 @@
 
 pkgname=dolt
 pkgver=0.40.28
-pkgrel=1
+pkgrel=2
 pkgdesc='Git for data! A version controlled relational database'
 arch=(x86_64)
 url=https://www.dolthub.com
