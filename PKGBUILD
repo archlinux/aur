@@ -34,6 +34,7 @@ depends=(
   libvpx           lib32-libvpx
   'sdl2>=2.0.16'   'lib32-sdl2>=2.0.16'
   libsoup3         lib32-libsoup3
+  libglvnd         lib32-libglvnd
   desktop-file-utils
   python
   steam-native-runtime

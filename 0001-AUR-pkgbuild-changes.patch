@@ -1,4 +1,4 @@
-From 9c6d5fcab83cce10297a750b378641d2c7260997 Mon Sep 17 00:00:00 2001
+From cac18e3d1ace16e77abe1fb988492eea2f2dfbce Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Mon, 27 Jun 2022 01:26:56 +0300
 Subject: [PATCH] AUR pkgbuild changes
@@ -17,7 +17,7 @@ Subject: [PATCH] AUR pkgbuild changes
  10 files changed, 90 insertions(+), 31 deletions(-)
 
 diff --git a/Makefile.in b/Makefile.in
-index f1f3d27d..c7eddc5c 100644
+index f1f3d27d..4d683061 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -63,7 +63,6 @@ ifeq ($(ENABLE_CCACHE),1)
@@ -106,7 +106,7 @@ index f1f3d27d..c7eddc5c 100644
  ## graphene
  ##
  
-+GRAPHENE_MESON_ARGS :=\
++GRAPHENE_MESON_ARGS := \
 +	-Dtests=false \
 +	-Dintrospection=disabled \
 +	-Dinstalled_tests=false
