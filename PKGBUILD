@@ -1,13 +1,14 @@
 # Maintainer: Bhanupong Petchlert <bpetlert@gmail.com>
 pkgname=pacman-mirrorup
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A service to retrieve the best and latest Pacman mirror list based on user's geography"
 arch=('x86_64')
 url="https://github.com/bpetlert/pacman-mirrorup"
 license=('MIT')
 depends=('systemd')
 makedepends=(cargo)
+options=(!lto)
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 
