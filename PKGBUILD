@@ -7,7 +7,7 @@ _pkgname=regina
 _pkgsuffix=rexx
 
 pkgname=regina-rexx-das
-pkgver=3.9.4
+pkgver=3.9.5
 pkgrel=1
 pkgdesc="An implementation of a Rexx interpreter, compliant with the ANSI Standard for Rexx (1996)"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ depends=('bash')
 provides=('rexx')
 options=('!makeflags')
 source=(http://downloads.sourceforge.net/regina-rexx/$_pkgname-$_pkgsuffix-$pkgver.tar.gz)
-sha256sums=('a4002237d0c625ded6a270c407643f49738de4eb755b68abdbf69c3f306d18be')
+sha256sums=('08e9a9061bee0038cfb45446de20766ffdae50eea37f6642446ec4e73a2abc51')
 
 build() {
   cd "$srcdir/$_pkgname-$_pkgsuffix-$pkgver"
