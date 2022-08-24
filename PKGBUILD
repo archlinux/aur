@@ -6,7 +6,7 @@
 _pkgname="lightning"
 
 pkgname="core-lightning"
-pkgver="0.11.2"
+pkgver="0.12.0"
 pkgrel="1"
 pkgdesc="A specification compliant Lightning Network implementation in C."
 arch=("any")
@@ -15,11 +15,11 @@ license=("custom:BSD-MIT")
 depends=("bitcoin-cli")
 makedepends=("git" "gmp" "libsodium" "mrkd" "net-tools" "python" "python-mako" "sqlite" "zlib")
 optdepends=("cppcheck: Static C/C++ code analysis"
-"jq: Command-line JSON processor"
-"libsecp256k1: Optimised C library for EC operations on curve secp256k1"
-"postgresql-libs: Libraries for use with PostgreSQL"
-"shellcheck: Shell script analysis"
-"valgrind: Tool for memory management")
+    "jq: Command-line JSON processor"
+    "libsecp256k1: Optimised C library for EC operations on curve secp256k1"
+    "postgresql-libs: Libraries for use with PostgreSQL"
+    "shellcheck: Shell script analysis"
+    "valgrind: Tool for memory management")
 conflicts=("core-lightning-git")
 source=("git+${url}.git")
 sha512sums=("SKIP")

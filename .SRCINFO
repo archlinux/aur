@@ -1,6 +1,6 @@
 pkgbase = core-lightning
 	pkgdesc = A specification compliant Lightning Network implementation in C.
-	pkgver = 0.11.2
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/ElementsProject/lightning
 	arch = any
