@@ -1,13 +1,13 @@
 # Maintainer: robertfoster
 pkgname=abyss-engine-git
-pkgver=r221.79be7ba
+pkgver=r248.7f266ae
 pkgrel=1
 pkgdesc="A game engine designed to run games similar to 2000's style ARPGs such as Diablo II"
 arch=('i686' 'x86_64')
 url="https://github.com/AbyssEngine/AbyssEngine"
 license=('GPL3')
-depends=('cppzmq' 'ffmpeg' 'lua' 'sdl2_ttf' 'spdlog' 'sol2')
-makedepends=('cmake' 'git')
+depends=('argh' 'cppzmq' 'ffmpeg' 'lua' 'lua-lpeg' 'sdl2_ttf' 'spdlog' 'sol2')
+makedepends=('cmake' 'git' "gtest")
 provides=("${pkgname%-git}" "opendiablo2-git")
 conflicts=("${pkgname%-git}" "opendiablo2-git")
 source=("${pkgname%-git}::git+${url}"
@@ -17,8 +17,8 @@ source=("${pkgname%-git}::git+${url}"
 install="${pkgname%-git}.install"
 
 sha256sums=('SKIP'
-            'SKIP'
-            '45666f5f052518b30217aef2a310b80eefff6e3a3822e3fec9aa3666dc8989e9')
+  'SKIP'
+  '45666f5f052518b30217aef2a310b80eefff6e3a3822e3fec9aa3666dc8989e9')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
@@ -28,28 +28,33 @@ pkgver() {
 }
 
 prepare() {
-  cd "${srcdir}/${pkgname%-git}"
   if [ ! -d build ]; then
     mkdir build
   fi
+
+  # temporary workaround to disable tests
+  rm -rf "${pkgname%-git}"/tests/*
+  touch "${pkgname%-git}"/tests/CMakeLists.txt
 }
 
 build() {
-  cd "${srcdir}/${pkgname%-git}"
   cd build
-  cmake .. \
-    -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  cmake ../"${pkgname%-git}" \
+    -DBUILD_TESTING=off \
+    -DCMAKE_INSTALL_PREFIX="/usr"
+
+  cmake --build .
 }
 
 package() {
-  cd "${srcdir}/${pkgname%-git}"
   cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="${pkgdir}" \
+    cmake --install .
+
   mkdir -p "${pkgdir}/usr/share"
   cp -r "${srcdir}/opendiablo2" \
     "${pkgdir}/usr/share/opendiablo2"
 
   install -Dm755 "${srcdir}/opendiablo2.sh" \
-        "${pkgdir}/usr/bin/opendiablo2"
+    "${pkgdir}/usr/bin/opendiablo2"
 }
