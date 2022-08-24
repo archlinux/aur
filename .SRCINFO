@@ -1,0 +1,12 @@
+pkgbase = sysls
+	pkgdesc = Tool that provides an alternative to ls when browsing a Linux sysfs
+	pkgver = 1
+	pkgrel = 1
+	url = https://git.sr.ht/~martijnbraam/sysls
+	arch = any
+	license = GPL3
+	depends = python-setuptools
+	source = sysls-1.tar.gz::https://git.sr.ht/~martijnbraam/sysls/archive/1.tar.gz
+	b2sums = 13380201a8527037d6b2779e1fdd594fd0fe84cb1bfbd66e40b452e0ee01537af0d5634c1033b37450d2d4427ed06a306751ce41dc3d0120a94ef87b44936e04
+
+pkgname = sysls
