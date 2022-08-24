@@ -2,7 +2,7 @@
 
 pkgname=firefox-sync
 pkgver=20220824
-pkgrel=2
+pkgrel=3
 pkgdesc="Speed up Firefox using tmpfs."
 arch=('any')
 url='http://wiki.archlinux.org/index.php/Speed-up_Firefox_using_tmpfs'
@@ -14,14 +14,14 @@ sha256sums=('f7d50c514437c17df99cdfe53c26e939163d9a6cfe055c51f8c2f20f57c46b07'
 prepare() {
     _linkname="$(grep "LINK=" "/usr/bin/${pkgname}" 2> /dev/null | head -n1 | cut -d= -f2)"
     if [[ -f "/usr/bin/${pkgname}" && "$_linkname" != "" ]]; then
-        sed -i "s|LINK=.*|LINK=$_linkname|" "${pkgname}".sh
+        sed -i "s|^LINK=.*|LINK=$_linkname|" "${pkgname}".sh
     else
         if [[ ! -d "$HOME/.mozilla/firefox" ]]; then
             echo "Firefox profile not found, you need to add your profile to the LINK variable in /usr/bin/firefox-sync" 1>&2 
             return
         fi
         _linkname="$(find -H "$HOME/.mozilla/firefox" -maxdepth 1 -mindepth 1 -type d -name \*.default -printf "%f\n")"
-        sed -i "s|LINK=.*|LINK=$_linkname|" "${pkgname}".sh
+        sed -i "s|^LINK=.*|LINK=$_linkname|" "${pkgname}".sh
     fi
 }
 
