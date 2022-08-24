@@ -6,8 +6,8 @@
 
 _pkgname=gamescope
 pkgname=gamescope-plus
-pkgver=3.11.36
-pkgrel=4
+pkgver=3.11.42
+pkgrel=1
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
 url=https://github.com/Plagman/gamescope
@@ -47,11 +47,11 @@ makedepends=(
   ninja
   vulkan-headers
 )
-_tag=cb59480be00a28bbd7462df6abd17d4c752121f0
+_tag=6da2f90e51c5fc525795792b673582b95127c2a2
 source=("git+https://github.com/Plagman/gamescope.git#tag=${_tag}"
     "0001-Add-force-orientation-option.patch")
 b2sums=('SKIP'
-        '430d0ce727e2c61ea7dbc8f242f6a995e73c398416e72a81f76beb2bc3afb632ff5d92e33b10c4881b9e8d0b1e7bcce3b966d4d3102eeb6ff0054e6c1264d6b5')
+        'fccaadc42d8ea34cb0319da3d57049a7ad7d516071006700360aa3a155d91dfb28aced3b02a9e2919dc9030c789b3bb17211b574fa248cfe785e4979aa86fdfb')
 
 prepare() {
   cd "$srcdir/$_pkgname"
