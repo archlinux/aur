@@ -1,7 +1,7 @@
 pkgbase = mpdscribble
 	pkgdesc = MPD client which submits track info to {Libre,Last}.fm
 	pkgver = 0.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.musicpd.org/clients/mpdscribble/
 	install = mpdscribble.install
 	arch = i686
