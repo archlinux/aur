@@ -1,30 +1,32 @@
-# Maintainer: Rodrigo Gryzinski <rogryza@gmail.com>
+# Maintainer: Mateusz Galazyn <carbolymer@gmail.com>
 
-pkgname=haskell-weeder
-pkgver=1.0.8
+_hackage_name=weeder
+pkgname="haskell-${_hackage_name}"
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Detect dead exports or package imports"
 arch=('x86_64')
-url="https://github.com/ndmitchell/weeder"
+url="https://github.com/ocharles/weeder"
 license=('BSD')
-makedepends=('git' 'stack')
-source=("${pkgname}-${pkgver}::git://github.com/ndmitchell/weeder.git#tag=v${pkgver}")
-md5sums=('SKIP')
+makedepends=('git')
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('4c2adbd741b0193a860defa51492e706e74672cdee62bb5db4663dd5cb634efe')
 
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${_hackage_name}-${pkgver}"
 }
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    echo "trying to use $(ghc --version)"
+    cd "${srcdir}/${_hackage_name}-${pkgver}"
 
-    stack init --ignore-subdirs
-    stack build
+    cabal build -O2 -j
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${_hackage_name}-${pkgver}"
     install -D -m 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    stack --local-bin-path "${pkgdir}/usr/bin/" install
+    cabal install exe:weeder --install-method=copy --installdir="${pkgdir}/usr/bin"
+    # stack --local-bin-path "${pkgdir}/usr/bin/" install
 }

@@ -1,4 +1,5 @@
-*.tar.xz
-haskell-weeder-*
-pkg/
 src/
+pkg/
+*.gz
+*.xz
+*.zst
