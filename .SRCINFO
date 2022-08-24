@@ -1,6 +1,6 @@
 pkgbase = fiv-git
 	pkgdesc = Image browser and viewer
-	pkgver = r423.fa034a1
+	pkgver = r463.9c2d659
 	pkgrel = 1
 	url = https://git.janouch.name/p/fiv
 	install = fiv.install
@@ -10,6 +10,7 @@ pkgbase = fiv-git
 	makedepends = meson
 	makedepends = pkg-config
 	makedepends = git
+	makedepends = asciidoctor
 	depends = gtk3
 	depends = pixman
 	depends = libjpeg-turbo
