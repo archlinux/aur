@@ -79,16 +79,19 @@ build() {
 }
 
 package() {
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  local frequi_dir="${pkgdir}/${site_packages}/freqtrade/rpc/api_server/ui/installed"
+
   cd ${_pkgname}-${pkgver}
   python -m installer --destdir="$pkgdir" dist/*.whl
-  rm -rf "$pkgdir"/usr/lib/python*/site-packages/tests
-  install -dm755 "${pkgdir}/usr/lib/python3.10/site-packages/freqtrade/rpc/api_server/ui/installed"
+  rm -rf "${pkgdir}/${site_packages}/tests"
+  install -dm755 "${frequi_dir}"
 
   cd ${srcdir}
   install -Dm644 "freqtrade@.service" "${pkgdir}/usr/lib/systemd/system/freqtrade@.service"
-  rsync -r assets "${pkgdir}/usr/lib/python3.10/site-packages/freqtrade/rpc/api_server/ui/installed/"
-  install -Dm644 index.html "${pkgdir}/usr/lib/python3.10/site-packages/freqtrade/rpc/api_server/ui/installed/"
-  install -Dm644 favicon.ico "${pkgdir}/usr/lib/python3.10/site-packages/freqtrade/rpc/api_server/ui/installed/"
+  rsync -r assets "${frequi_dir}"
+  install -Dm644 index.html "${frequi_dir}"
+  install -Dm644 favicon.ico "${frequi_dir}"
 
   echo 'patch and reinstall your ta-lib/PKGBUILD by adding the prepare() function with
 
