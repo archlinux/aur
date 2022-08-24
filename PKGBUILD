@@ -2,17 +2,18 @@
 
 pkgname=cider
 _pkgname=Cider
-pkgver=1.5.3
-pkgrel=2
+_pkgbranch=stable
+pkgver=1.5.6
+pkgrel=3
 pkgdesc="Project Cider. An open-source Apple Music client built from the ground up with Vue.js and Electron. Compiled from the GitHub repositories stable branch."
 arch=("armv7h" "i686" "x86_64")
-url="https://github.com/CiderApp/${_pkgname}.git"
+url="https://github.com/ciderapp/${_pkgname}.git"
 license=("GPL")
 depends=('gtk3' 'nss')
-makedepends=('git' 'npm' 'yarn')
+makedepends=('git' 'npm' 'pnpm' 'python')
 optdepends=('libnotify: Playback notifications')
 source=(
-    "git+https://github.com/CiderApp/${_pkgname}.git#branch=stable"
+    "git+https://github.com/ciderapp/${_pkgname}.git#branch=${_pkgbranch}"
     "cider.desktop"
 )
 sha256sums=('SKIP'
@@ -26,23 +27,17 @@ pkgver() {
 build() {
     cd "${srcdir}/${_pkgname}"
 
-    if [ -f cider.lock ]; then
-        mv cider.lock yarn.lock
-    fi
-
     echo "Building ${_pkgname} on v${pkgver} : [Install Build Dependencies] | Build | Done"
-    yarn install --non-interactive --pure-lockfile --cache-folder "${srcdir}/yarn-cache"
+    # yarn install --non-interactive --pure-lockfile --cache-folder "${srcdir}/yarn-cache"
+    pnpm install
 
     echo "Building : Install Build Dependencies | [Build] | Done"
     if [[ ${CARCH} == "armv7h" ]]; then
-        yarn build
-        yarn electron-builder build --armv7l --linux dir
+        pnpm tsc && pnpm compile-less && pnpm electron-builder build --armv7l --linux dir
     elif [[ ${CARCH} == "i686" ]]; then
-        yarn build
-        yarn electron-builder build --ia32 --linux dir
+        pnpm tsc && pnpm compile-less && pnpm electron-builder build --ia32 --linux dir
     elif [[ ${CARCH} == "x86_64" ]]; then
-        yarn build
-        yarn electron-builder build --x64 --linux dir
+        pnpm tsc && pnpm compile-less && pnpm electron-builder build --x64 --linux dir
     fi
 
     echo "Building : Install Build Dependencies | Build | [Done]"
