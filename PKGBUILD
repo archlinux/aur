@@ -1,12 +1,13 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Maintainer: Thomas Booker <tw.booker@outlook.com>
+# Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phosh-git
-pkgver=0.16.0.r3.gfe11f9ba
+pkgver=0.20.0.r22.g1c471472
 pkgrel=1
 pkgdesc='A pure Wayland shell prototype for GNOME on mobile devices'
 arch=(x86_64 aarch64 armv7h)
 url='https://gitlab.gnome.org/World/Phosh/phosh'
-license=('GPL3')
+license=(GPL3)
 depends=(
 	callaudiod
 	feedbackd
@@ -23,11 +24,8 @@ makedepends=(
 )
 provides=(phosh)
 conflicts=(phosh)
-source=(
-	"git+${url}.git"
-	"git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
-)
-sha256sums=('SKIP' 'SKIP')
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd phosh
@@ -38,15 +36,15 @@ prepare() {
 	cd phosh
 
 	git submodule init
-	git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
 	git submodule update
 }
 
 build() {
-	arch-meson phosh build # -D gtk_doc=true
-	meson compile -C build
+	# If we don't set `libexecdir` then meson will try and place the phosh bin in /lib/phosh and collide with the dir so we put it in /lib/phosh/phosh
+	arch-meson --libexecdir="/usr/lib/phosh" -D tests=false -D systemd=true phosh _build 
+	meson compile -C _build
 }
 
 package() {
-	DESTDIR="${pkgdir}" meson install -C build
+	DESTDIR="${pkgdir}" meson install -C _build
 }
