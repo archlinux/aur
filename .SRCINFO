@@ -1,7 +1,7 @@
 pkgbase = code-features
 	pkgdesc = Unblock some features in Code OSS
 	pkgver = 1.70.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/vscode
 	install = code-features.install
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = code-features
 	depends = code
 	depends = sed
 	depends = org.freedesktop.secrets
+	optdepends = icu69: for MS-vsliveshare.vsliveshare extension to work
 	provides = code-features
 	conflicts = code-features
 	source = code-features.hook

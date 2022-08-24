@@ -1,12 +1,13 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=code-features
 pkgver=1.70.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Unblock some features in Code OSS'
 arch=('any')
 url='https://github.com/microsoft/vscode'
 license=('unknown')
 depends=('code' 'sed' 'org.freedesktop.secrets')
+optdepends=('icu69: for MS-vsliveshare.vsliveshare extension to work')
 provides=('code-features')
 conflicts=('code-features')
 install="${pkgname}.install"
