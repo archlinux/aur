@@ -75,8 +75,6 @@ prepare() {
 
 	# Submodule integration based on
 	# https://wiki.archlinux.org/title/VCS_package_guidelines#Git_submodules
-
-	# Patch dma_ip_drivers for current kernels
 	git -C $_name config \
 		submodule.src/runtime_src/core/pcie/driver/linux/xocl/lib/libqdma.url \
 		../dma_ip_drivers
