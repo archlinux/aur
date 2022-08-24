@@ -7,7 +7,7 @@ pkgdesc="A free VoIP and video softphone based on the SIP protocol (Installed in
 arch=('x86_64')
 url="https://linphone.org"
 license=('GPL3')
-depends=('glew' 'gsm' 'hicolor-icon-theme' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-speech')
+depends=('glew' 'gsm' 'hicolor-icon-theme' 'qt5-graphicaleffects' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-speech')
 makedepends=('cmake' 'doxygen' 'git' 'glew' 'gcc11' 'make' 'nasm' 'pandoc' 'patch' 'python-pystache' 'python-six' 'qt5-graphicaleffects' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-speech' 'qt5-tools' 'qt5-wayland' 'qt5-webview' 'qt5-xcb-private-headers' 'yasm')
 install=${pkgname}.install
 # A 'release' is usually selected by adding the tag
