@@ -1,0 +1,22 @@
+pkgbase = sndpeek
+	pkgdesc = a real-time audio visualization tool (animated, 3D)
+	pkgver = 1.41
+	pkgrel = 1
+	url = https://www.gewang.com/software/sndpeek
+	arch = i686
+	arch = x86_64
+	groups = multimedia
+	license = GPL
+	depends = libsndfile
+	depends = alsa-lib
+	depends = glu
+	depends = freeglut
+	depends = libxmu
+	provides = sndpeek-alsa
+	provides = sndpeek-jack
+	conflicts = sndpeek-alsa
+	conflicts = sndpeek-jack
+	source = https://www.gewang.com/software/sndpeek/files/sndpeek-1.41.tgz
+	sha256sums = 65530b6510d07c2088e5ffa2e4b11bdf8b872aa893913da96b6b018e74b24e4d
+
+pkgname = sndpeek
