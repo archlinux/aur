@@ -1,8 +1,8 @@
 # Maintainer: Gökçe Aydos <aur2022@aydos.de>
 _name=xrt
 pkgbase=$_name-git
-pkgver=r6630.23657d13b
-pkgrel=2
+pkgver=r6636.c0e57b76f
+pkgrel=1
 pkgdesc="Xilinx runtime for Ultrascale, Versal and MPSoC-based FPGAs"
 arch=(x86_64)
 url='https://xilinx.github.io/XRT/master/html/'
@@ -67,7 +67,11 @@ pkgver() {
 }
 prepare() {
 	echo Patch $_name
-	git -C $_name apply $srcdir/xrt-fixes-for-current-kernels-and-gcc.patch
+	git -C $_name am $srcdir/xrt-fixes-for-current-kernels-and-gcc.patch
+
+	echo Patch $_name/src/runtime_src/core/pcie/driver/linux/xocl/lib/libqdma
+	git -C dma_ip_drivers \
+		am $srcdir/dma-ip-drivers-fixes-for-current-kernels.patch
 
 	# Submodule integration based on
 	# https://wiki.archlinux.org/title/VCS_package_guidelines#Git_submodules
@@ -76,12 +80,7 @@ prepare() {
 	git -C $_name config \
 		submodule.src/runtime_src/core/pcie/driver/linux/xocl/lib/libqdma.url \
 		../dma_ip_drivers
-	git -C $_name submodule update --force
-	# `--force` resets the branch and gets rid of the modifications.
-
-	echo Patch $_name/src/runtime_src/core/pcie/driver/linux/xocl/lib/libqdma
-	git -C $_name/src/runtime_src/core/pcie/driver/linux/xocl/lib/libqdma \
-		apply $srcdir/dma-ip-drivers-fixes-for-current-kernels.patch
+	git -C $_name submodule update
 }
 build() {
 	cd $_name
@@ -125,13 +124,13 @@ package_xrt-git() {
 }
 package_xrt-xocl-dkms-git() {
 	pkgdesc="Drivers for Xilinx runtime (XRT)"
+
 	# Collect drivers
 	local dest=$pkgdir/usr
 	mkdir $dest
 	cp -r $pkgdir/../src $dest
 
 	cd $pkgdir
-
 	# AWS drivers not required
 	rm -r usr/src/xrt-aws*
 

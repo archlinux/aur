@@ -1,7 +1,7 @@
 pkgbase = xrt-git
 	pkgdesc = Xilinx runtime for Ultrascale, Versal and MPSoC-based FPGAs
-	pkgver = r6630.23657d13b
-	pkgrel = 2
+	pkgver = r6636.c0e57b76f
+	pkgrel = 1
 	url = https://xilinx.github.io/XRT/master/html/
 	arch = x86_64
 	license = Apache
