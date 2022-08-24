@@ -1,8 +1,8 @@
-pkgbase = zfs-utils-git
+pkgbase = zfs-utils-raidz-expansion-git
 	pkgdesc = Userspace utilities for the Zettabyte File System.
-	pkgver = 2.1.99.r1271.g1c0c729ab4
+	pkgver = 2.1.99
 	pkgrel = 1
-	epoch = 2
+	epoch = 1
 	url = https://zfsonlinux.org/
 	arch = x86_64
 	groups = zfs-git
@@ -13,9 +13,12 @@ pkgbase = zfs-utils-git
 	makedepends = git
 	optdepends = python: pyzfs and extra utilities,
 	optdepends = python-cffi: pyzfs
-	provides = zfs-utils=2.1.99.r1271.g1c0c729ab4
+	provides = zfs-utils-raidz-expansion=2.1.99
+	provides = zfs-utils=2.1.99
+	conflicts = zfs-utils-raidz-expansion
 	conflicts = zfs-utils
-	source = git+https://github.com/zfsonlinux/zfs.git
+	conflicts = zfs-utils-git
+	source = git+https://github.com/nicman23/zfs.git#branch=ahrens-raidz-expand
 	source = zfs.initcpio.install
 	source = zfs.initcpio.hook
 	source = zfs.initcpio.zfsencryptssh.install
@@ -28,4 +31,4 @@ pkgbase = zfs-utils-git
 	b2sums = 32352e2e188073da4f61278899b6d343313ee3494d69dd10a38ab87bce2f2003767f0f49bc1c3c4d785dd1fc67eab4a27a6fdd5ffc5e63cf94d25f3dbffae4c1
 	b2sums = 04e2af875e194df393d6cff983efc3fdf02a03a745d1b0b1e4a745f873d910b4dd0a45db956c1b5b2d97e9d5bf724ef12e23f7a2be3d5c12be027eaccf42349a
 
-pkgname = zfs-utils-git
+pkgname = zfs-utils-raidz-expansion-git

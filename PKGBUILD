@@ -4,10 +4,11 @@
 
 # PRs are welcome: https://github.com/yurikoles-aur/zfs-utils-git
 
-pkgname=zfs-utils-git
-pkgver=2.1.99.r1271.g1c0c729ab4
+pkgname=zfs-utils-raidz-expansion-git
+_pkgbase=zfs-utils-git
+pkgver=2.1.99
 pkgrel=1
-epoch=2
+epoch=1
 pkgdesc="Userspace utilities for the Zettabyte File System."
 arch=('x86_64')
 url='https://zfsonlinux.org/'
@@ -15,9 +16,9 @@ license=('CDDL')
 groups=('zfs-git')
 makedepends=('python' 'python-setuptools' 'python-cffi' 'git')
 optdepends=('python: pyzfs and extra utilities', 'python-cffi: pyzfs')
-provides=("${pkgname%-git}=${pkgver}")
-conflicts=("${pkgname%-git}")
-source=('git+https://github.com/zfsonlinux/zfs.git'
+provides=("${pkgname%-git}=${pkgver}"  "${_pkgbase%-git}=${pkgver}"  "${_pkgbase}=${pkgver}")
+conflicts=("${pkgname%-git}" "${_pkgbase%-git}" "${_pkgbase}")
+source=('git+https://github.com/nicman23/zfs.git#branch=ahrens-raidz-expand'
         'zfs.initcpio.install'
         'zfs.initcpio.hook'
         'zfs.initcpio.zfsencryptssh.install')
@@ -30,11 +31,6 @@ b2sums=('SKIP'
         '32352e2e188073da4f61278899b6d343313ee3494d69dd10a38ab87bce2f2003767f0f49bc1c3c4d785dd1fc67eab4a27a6fdd5ffc5e63cf94d25f3dbffae4c1'
         '04e2af875e194df393d6cff983efc3fdf02a03a745d1b0b1e4a745f873d910b4dd0a45db956c1b5b2d97e9d5bf724ef12e23f7a2be3d5c12be027eaccf42349a')
 
-pkgver() {
-    cd zfs
-
-    git describe --long | sed 's/^zfs-//;s/-rc/rc/;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 prepare() {
     cd zfs
