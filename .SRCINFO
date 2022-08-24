@@ -1,7 +1,7 @@
 pkgbase = openucx
 	pkgdesc = Unified Communication X (http://www.openucx.org)
 	pkgver = 1.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openucx.org
 	arch = any
 	license = BSD

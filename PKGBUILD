@@ -2,7 +2,7 @@
 
 pkgname=openucx
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Unified Communication X (http://www.openucx.org)"
 arch=('any')
 url="http://www.openucx.org"
@@ -15,6 +15,7 @@ md5sums=('SKIP')
 
 build() {
     cd $srcdir/ucx
+    patch -p1 < ../../8450.patch
     ./autogen.sh
     ./contrib/configure-release --prefix=/usr CFLAGS="-Wno-address-of-packed-member -O2"
     make
