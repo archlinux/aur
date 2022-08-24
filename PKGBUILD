@@ -3,7 +3,7 @@
 
 pkgname=psst-git
 pkgver=r417.f1300bf
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast and multi-platform Spotify client with native GUI"
 arch=("x86_64")
 options=(!lto)
@@ -35,13 +35,13 @@ build() {
   cd "$srcdir/${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  cargo build --frozen --release
 }
 
 check() {
   cd "$srcdir/${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --all-features
+  cargo test --frozen
 }
 
 package() {
