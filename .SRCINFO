@@ -1,11 +1,12 @@
 pkgbase = xborder-git
 	pkgdesc = Active window border replacement for window managers.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/deter0/xborder
 	arch = any
 	license = The Unlicense
 	makedepends = git
+	makedepends = python-pip
 	depends = libwnck3
 	depends = gtk3
 	depends = python

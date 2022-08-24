@@ -2,14 +2,14 @@
 pkgname=xborder-git
 pkgbase=xborder-git
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Active window border replacement for window managers."
 arch=('any')
 url="https://github.com/deter0/xborder"
 license=('The Unlicense')
 depends=('libwnck3' 'gtk3' 'python')
-makedepends=('git')
-provides=(xborders)
+makedepends=('git' 'python-pip')
+provides=('xborders')
 source=('git+https://github.com/deter0/xborder')
 md5sums=('SKIP')
 
