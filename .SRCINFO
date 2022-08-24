@@ -1,14 +1,14 @@
 pkgbase = dnscontrol
 	pkgdesc = Synchronize your DNS to multiple providers from a simple DSL
-	pkgver = 3.18.0
+	pkgver = 3.18.1
 	pkgrel = 1
 	url = https://stackexchange.github.io/dnscontrol/
 	arch = x86_64
 	license = MIT
 	makedepends = go-pie
 	depends = glibc
-	provides = dnscontrol=3.18.0
-	source = dnscontrol-3.18.0.tar.gz::https://github.com/StackExchange/dnscontrol/archive/v3.18.0.tar.gz
-	sha512sums = 4dfe71cd7d868592e740e7bf82bb7e67f130a1b00bbe1aafbfcff1e46ef55c5cc51fb593ef17d03a37abbebc92ec51aeb24adf6f7e336fdf5e1cd2c1d97e63eb
+	provides = dnscontrol=3.18.1
+	source = dnscontrol-3.18.1.tar.gz::https://github.com/StackExchange/dnscontrol/archive/v3.18.1.tar.gz
+	sha512sums = ad05e9101e9ebad41a217b106b6a0b553273ed945db2d10bdc234c569c8155bcb8ab22e44dbbadf80a0ea894000d98f7c40728cb5df1018b3d0971337c94b07b
 
 pkgname = dnscontrol
