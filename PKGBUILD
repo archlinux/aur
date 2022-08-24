@@ -27,7 +27,7 @@ source=("git+${url}.git#tag=${_tag}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
+  cd phosh
   git describe --tags
 }
 
@@ -40,7 +40,7 @@ prepare() {
 
 build() {
 	# If we don't set `libexecdir` then meson will try and place the phosh bin in /lib/phosh and collide with the dir so we put it in /lib/phosh/phosh
-	arch-meson --libexecdir="/usr/lib/${pkgname}" -D tests=false -D systemd=true phosh _build 
+	arch-meson --libexecdir="/usr/lib/phosh" -D tests=false -D systemd=true phosh _build 
 	meson compile -C _build
 }
 
