@@ -1,18 +1,19 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Maintainer: Thomas Booker <tw.booker@outlook.com>
+# Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phoc-embedded-wlroots
-pkgver=0.21.beta1
+pkgver=0.21.0
 pkgrel=1
-pkgdesc='Wlroots based Phone compositor (matching wlroots embedded)'
-arch=(x86_64 aarch64)
+pkgdesc='A pure Wayland shell prototype for GNOME on mobile devices (wlroots embedded)'
+arch=(x86_64 aarch64 armv7h)
 url='https://gitlab.gnome.org/World/Phosh/phoc'
 license=(GPL3)
 depends=(
-	mutter
 	seatd
 	xcb-util-errors
 	xcb-util-renderutil
 	xcb-util-wm
+	gnome-desktop
 )
 makedepends=(
 	ctags
@@ -25,26 +26,27 @@ makedepends=(
 )
 provides=(phoc)
 conflicts=(phoc wlroots)
-_commit=0.21.0_beta1
-source=(
-	"git+${url}.git#tag=v${_commit}"
-	"git+https://source.puri.sm/Librem5/wlroots.git"
-)
-b2sums=('SKIP' 'SKIP')
+_tag=1a58a2363b686241647138a8822beac4f761f3fb
+source=("git+${url}.git#tag=${_tag}")
+sha256sums=('SKIP')
+
+pkgver() {
+	cd phoc
+	git describe --tags | sed 's/^v//'
+}
 
 prepare() {
 	cd phoc
 
 	git submodule init
-	git submodule set-url subprojects/wlroots "${srcdir}/wlroots"
 	git submodule update
 }
 
 build() {
-	arch-meson phoc build -Dembed-wlroots=enabled
-	meson compile -C build
+	arch-meson phoc _build -Dembed-wlroots=enabled -Dtests=false
+	meson compile -C _build
 }
 
 package() {
-	DESTDIR="${pkgdir}" meson install -C build
+	DESTDIR="${pkgdir}" meson install -C _build
 }

@@ -1,10 +1,11 @@
 pkgbase = phoc-embedded-wlroots
-	pkgdesc = Wlroots based Phone compositor (matching wlroots embedded)
-	pkgver = 0.21.beta1
+	pkgdesc = A pure Wayland shell prototype for GNOME on mobile devices (wlroots embedded)
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/Phosh/phoc
 	arch = x86_64
 	arch = aarch64
+	arch = armv7h
 	license = GPL3
 	makedepends = ctags
 	makedepends = git
@@ -13,17 +14,15 @@ pkgbase = phoc-embedded-wlroots
 	makedepends = vala
 	makedepends = vulkan-headers
 	makedepends = wayland-protocols
-	depends = mutter
 	depends = seatd
 	depends = xcb-util-errors
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
+	depends = gnome-desktop
 	provides = phoc
 	conflicts = phoc
 	conflicts = wlroots
-	source = git+https://gitlab.gnome.org/World/Phosh/phoc.git#tag=v0.21.0_beta1
-	source = git+https://source.puri.sm/Librem5/wlroots.git
-	b2sums = SKIP
-	b2sums = SKIP
+	source = git+https://gitlab.gnome.org/World/Phosh/phoc.git#tag=1a58a2363b686241647138a8822beac4f761f3fb
+	sha256sums = SKIP
 
 pkgname = phoc-embedded-wlroots
