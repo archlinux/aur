@@ -1,4 +1,4 @@
-pkgbase = xborder
+pkgbase = xborder-git
 	pkgdesc = Active window border replacement for window managers.
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -13,4 +13,4 @@ pkgbase = xborder
 	source = git+https://github.com/deter0/xborder
 	md5sums = SKIP
 
-pkgname = xborder
+pkgname = xborder-git
