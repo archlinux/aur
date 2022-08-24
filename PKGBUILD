@@ -2,7 +2,7 @@
 _name=xrt
 pkgbase=$_name-git
 pkgver=r6630.23657d13b
-pkgrel=1
+pkgrel=2
 pkgdesc="Xilinx runtime for Ultrascale, Versal and MPSoC-based FPGAs"
 arch=(x86_64)
 url='https://xilinx.github.io/XRT/master/html/'
