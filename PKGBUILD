@@ -89,6 +89,13 @@ package() {
   rsync -r assets "${pkgdir}/usr/lib/python3.10/site-packages/freqtrade/rpc/api_server/ui/installed/"
   install -Dm644 index.html "${pkgdir}/usr/lib/python3.10/site-packages/freqtrade/rpc/api_server/ui/installed/"
   install -Dm644 favicon.ico "${pkgdir}/usr/lib/python3.10/site-packages/freqtrade/rpc/api_server/ui/installed/"
+
+  echo 'patch and reinstall your ta-lib/PKGBUILD by adding the prepare() function with
+
+  sed -i.bak "s|0.00000001|0.000000000000000001 |g" src/ta_func/ta_utility.h
+
+  otherwise some test might fails, see
+  https://github.com/freqtrade/freqtrade/blob/develop/build_helpers/install_ta-lib.sh'
 }
 
 check() {
