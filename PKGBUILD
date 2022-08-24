@@ -2,7 +2,7 @@
 
 pkgname=firefox-sync
 pkgver=20220824
-pkgrel=1
+pkgrel=2
 pkgdesc="Speed up Firefox using tmpfs."
 arch=('any')
 url='http://wiki.archlinux.org/index.php/Speed-up_Firefox_using_tmpfs'
