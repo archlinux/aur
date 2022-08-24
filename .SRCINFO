@@ -1,6 +1,6 @@
 pkgbase = sing-box-git
 	pkgdesc = The universal proxy platform.
-	pkgver = 20220824.83de044
+	pkgver = 20220824.71dac85
 	pkgrel = 1
 	url = https://sing-box.sagernet.org/
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = sing-box-git
 	source = sing-box.service
 	source = sing-box@.service
 	sha1sums = SKIP
-	sha1sums = fe7c573632f4be36736ffc44515cfd5c05c6d58f
-	sha1sums = 281243584d0ddf80da8d598308bb499a3f53f874
+	sha1sums = 5900521478dfa3ebe97248ef84af3882af8e020b
+	sha1sums = 5900521478dfa3ebe97248ef84af3882af8e020b
 	sha256sums = SKIP
-	sha256sums = e7c955916eef738e08fab5610ebcfb4a0db822ff56dfcc426ded6600b03727de
-	sha256sums = 6ba1c281e10bf14beb54a181572114caa0623350bf2928fd2dcd668535b778aa
+	sha256sums = 872bcc90ff9c683831ca2033aee721e8af91d64e244cc650f1929a15f517fc09
+	sha256sums = 872bcc90ff9c683831ca2033aee721e8af91d64e244cc650f1929a15f517fc09
 
 pkgname = sing-box-git
