@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('libusb' 'gcc-libs' 'openssl')
 makedepends=('git' 'cargo')
 
-_commit=1e6ed9b # tags/v0.6.1 - not available via github repo, missing on radicly.xyz :-(
+_commit=1e6ed9b # tags/v0.6.1 - only available via github repo, missing on radicly.xyz :-(
 # _commit=4ae4174 # tags/0.6.0
 
 source=("$pkgname-$pkgver::git+https://github.com/radicle-dev/radicle-cli.git#commit=${_commit}")
