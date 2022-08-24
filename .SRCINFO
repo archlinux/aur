@@ -1,6 +1,6 @@
 pkgbase = phosh
 	pkgdesc = A pure Wayland shell prototype for GNOME on mobile devices
-	pkgver = 0.20.beta2
+	pkgver = v0.20.0
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/Phosh/phosh
 	arch = x86_64
@@ -17,9 +17,7 @@ pkgbase = phosh
 	depends = libhandy
 	depends = phoc
 	depends = polkit
-	source = git+https://gitlab.gnome.org/World/Phosh/phosh.git#tag=v0.20.0_beta2
-	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
-	b2sums = SKIP
-	b2sums = SKIP
+	source = git+https://gitlab.gnome.org/World/Phosh/phosh.git#tag=412c1a2255d31c8f7a648375f727da43c650ec28
+	sha256sums = SKIP
 
 pkgname = phosh
