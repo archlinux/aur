@@ -240,6 +240,8 @@ prepare() {
         git submodule init external/Vulkan-Headers
         git submodule set-url external/Vulkan-Headers "$srcdir"/Vulkan-Headers
         git submodule update external/Vulkan-Headers
+        # GCC 12 build failure
+        git cherry-pick -n 33bf3c7a6a3dc9e330cd338bf1877b5481c655e3
     popd
 
     for submodule in gst-plugins-rs media-converter; do
