@@ -1,7 +1,7 @@
 # Maintainer: David Torralba Goitia <david.torralba.goitia@gmail.com>
 _name=direnv-backup
 pkgname="${_name}-git"
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Tool to backup/restore direnv files with optional encryption."
 arch=("any")
@@ -23,7 +23,7 @@ build () {
 
 package() {
     wheel_file="$(find . -type f -name '*.whl')"
-    
+
     if [[ ! -f "${wheel_file}" ]]; then
         echo "Could not find the wheel package" 1>&2
         exit 1
