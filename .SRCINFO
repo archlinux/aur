@@ -1,7 +1,7 @@
 pkgbase = twitch-dl
 	pkgdesc = Twitch video downloader that use multiple concurrent connections
-	pkgver = 1.22.0
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/ihabunek/twitch-dl
 	arch = any
 	license = GPL3
@@ -16,7 +16,7 @@ pkgbase = twitch-dl
 	optdepends = twine: Collection of utilities for interacting with PyPI
 	provides = twitch-dl-bin
 	conflicts = twitch-dl-bin
-	source = https://github.com/ihabunek/twitch-dl/archive/1.22.0.tar.gz
-	b2sums = 5b5163541b37aa2ef0c786cb8522a396b9ec5e7ccda7ae5388034d136d6e51676cf843f768c14ea27724be5c3f523de119aca5f53dbebb2365c27e547c1639bb
+	source = https://github.com/ihabunek/twitch-dl/archive/2.0.0.tar.gz
+	b2sums = b629889778e3ebc1edc9214b494592457c47036228b9c00611aa8634b00f50a49aced9aaee72e7a0475c53bfe1bacfb0599c5825ffdfdd188efc012e39f13a4b
 
 pkgname = twitch-dl
