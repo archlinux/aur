@@ -1,14 +1,14 @@
 pkgbase = blush
-	pkgdesc = Grep with colours
-	pkgver = 0.5.3
+	pkgdesc = Grep with colours in go
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/arsham/blush
 	arch = x86_64
+	arch = aarch64
 	license = MIT
+	makedepends = go
 	provides = blush
-	conflicts = blush
-	source = https://github.com/arsham/blush/releases/download/v0.5.3/blush_linux_v0.5.3.tar.gz
-	sha256sums = 48a6af626b94e98a3de13b28cf1b0210b9f78b913a79df6e3013bc59019447d5
+	source = blush-0.6.0::https://github.com/arsham/blush/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 6db6b033bb5d4c4ac350b36b82d79447d5b91509db3a5eceb72ecb9484495e54
 
 pkgname = blush
-
