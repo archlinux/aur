@@ -1,0 +1,15 @@
+pkgbase = blush-bin
+	pkgdesc = Grep with colours
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/arsham/blush
+	arch = x86_64
+	license = MIT
+	provides = blush
+	conflicts = blush
+	source = blush-bin-0.6.0::https://github.com/arsham/blush/releases/download/v0.6.0/blush_linux_v0.6.0.tar.gz
+	source = https://raw.githubusercontent.com/arsham/blush/master/LICENSE
+	sha256sums = 47dab7a863a4eff082761e3aaf8a7bef301a3d48a981d41000eda4c98ea55090
+	sha256sums = e454176c1eee8447eafe4042cdea5359eec6e5c80a4d2b8e0c5f1c3ec86189e6
+
+pkgname = blush-bin
