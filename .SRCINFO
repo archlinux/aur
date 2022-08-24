@@ -1,6 +1,6 @@
 pkgbase = chia-bin
 	pkgdesc = A new blockchain and smart transaction platform that is easier to use, more efficient, and secure. - Binary Release, Provides GUI
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://www.chia.net/
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = chia-bin
 	conflicts = chia
 	conflicts = chia-gui
 	options = !strip
-	source_x86_64 = https://github.com/Chia-Network/chia-blockchain/releases/download/1.5.0/chia-blockchain_1.5.0_amd64.deb
-	sha256sums_x86_64 = 9e77104306619f0e9265ae5eecbeac3db5de130268430bbc0f9ac7387333394b
-	source_aarch64 = https://github.com/Chia-Network/chia-blockchain/releases/download/1.5.0/chia-blockchain_1.5.0_arm64.deb
-	sha256sums_aarch64 = 2839fae70664b5e35db62449785a8e482bf8e85cfc56bb4fa3da127524987ab3
+	source_x86_64 = https://github.com/Chia-Network/chia-blockchain/releases/download/1.5.1/chia-blockchain_1.5.1_amd64.deb
+	sha256sums_x86_64 = dd3a7ef4828eb764893f51f83c9979e85fceaf9f6138b677d579e20433b4dd99
+	source_aarch64 = https://github.com/Chia-Network/chia-blockchain/releases/download/1.5.1/chia-blockchain_1.5.1_arm64.deb
+	sha256sums_aarch64 = e4d7e20084ea6756e4feadf0fa52b743954d90b0ba4363c4f99eb4b1c8e7041e
 
 pkgname = chia-bin
