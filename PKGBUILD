@@ -5,7 +5,7 @@
 # PRs are welcome: https://github.com/yurikoles-aur/zfs-dkms-git
 
 pkgname=zfs-dkms-raidz-expansion-git
-pkgbase=zfs-dkms-git
+_pkgbase=zfs-dkms-git
 pkgver=2.1.99
 pkgrel=1
 epoch=1
@@ -16,8 +16,8 @@ license=('CDDL')
 groups=('zfs-git')
 depends=(zfs-utils-git 'dkms')
 makedepends=('git')
-provides=("ZFS-MODULE=${pkgver}" "SPL-MODULE=${pkgver}" "${pkgname%-git}=${pkgver}" "${pkgbase%-git}=${pkgver}" 'spl-dkms')
-conflicts=("${pkgname%-git}" "${pkgbase%-git}" 'spl-dkms')
+provides=("ZFS-MODULE=${pkgver}" "SPL-MODULE=${pkgver}" "${pkgname%-git}=${pkgver}" "${_pkgbase%-git}=${pkgver}" 'spl-dkms')
+conflicts=("${pkgname%-git}" "${_pkgbase%-git}" 'spl-dkms')
 replaces=('spl-dkms-git')
 source=('git+https://github.com/nicman23/zfs.git#branch=ahrens-raidz-expand'
         "0001-only-build-the-module-in-dkms.conf.patch")

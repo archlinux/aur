@@ -1,4 +1,4 @@
-pkgbase = zfs-dkms-git
+pkgbase = zfs-dkms-raidz-expansion-git
 	pkgdesc = Kernel modules for the Zettabyte File System.
 	pkgver = 2.1.99
 	pkgrel = 1
