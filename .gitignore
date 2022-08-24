@@ -1,0 +1,6 @@
+prune-juice/
+src/
+pkg/
+*.gz
+*.xz
+*.zst

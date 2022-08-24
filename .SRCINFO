@@ -1,0 +1,16 @@
+pkgbase = haskell-prune-juice-git
+	pkgdesc = Prune unused Haskell dependencies from a Haskell project.
+	pkgver = 0.7.2.r100.639d4d5
+	pkgrel = 1
+	url = https://github.com/dfithian/prune-juice
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = patch
+	makedepends = cabal-install
+	source = git+https://github.com/dfithian/prune-juice.git
+	source = version-bounds.patch
+	sha256sums = SKIP
+	sha256sums = 15efda6e02f8a5206bff427b7bc188878033139cd9962aa3794a39c86260c160
+
+pkgname = haskell-prune-juice-git
