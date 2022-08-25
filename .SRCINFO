@@ -1,6 +1,6 @@
 pkgbase = maltego
 	pkgdesc = Information gathering software by Paterva
-	pkgver = 4.3.0
+	pkgver = 4.3.1
 	pkgrel = 1
 	url = https://www.maltego.com
 	install = maltego.install
@@ -9,9 +9,9 @@ pkgbase = maltego
 	depends = java-runtime<=15
 	depends = sh
 	options = !emptydirs
-	source = https://maltego-downloads.s3.us-east-2.amazonaws.com/linux/Maltego.v4.3.0.deb
+	source = https://maltego-downloads.s3.us-east-2.amazonaws.com/linux/Maltego.v4.3.1.deb
 	source = LICENSE.pdf::https://www.maltego.com/pdf/legal/Maltego%20Technologies_TermsandConditions_2020-11.pdf
-	sha256sums = 069d336ac9e686cb16254a4d0f4e5bfe299afcc92ddce22aa51af0929c0049af
+	sha256sums = 9f7493a557522b72e12fd6390001be6f882a0be1f25872eef2bcdf082bbef5c6
 	sha256sums = 5295b55e0da0a7aaa733032bf6d508dd149d66b379f71c4b15271729c3aa5500
 
 pkgname = maltego
