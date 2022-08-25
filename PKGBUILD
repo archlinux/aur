@@ -8,12 +8,15 @@ arch=(x86_64 aarch64 armv7h)
 url='https://gitlab.gnome.org/guidog/phosh-mobile-settings'
 license=(GPL3)
 depends=(
+	feedbackd
 	libadwaita
-	phosh
+	lm_sensors
+	phoc
 )
 makedepends=(
 	git
 	meson
+	wayland-protocols
 )
 _tag=8ed7889c05f45970b5f228d93386007027c69a3b
 source=("git+${url}.git#tag=${_tag}")
