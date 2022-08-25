@@ -11,7 +11,7 @@ license=('custom')
 depends=()
 makedepends=('tar')
 source=(
-  "https://download.screamingfrog.co.uk/products/seo-spider/screamingfrogseospider_${pkgver}_all.deb"
+  "screamingfrogseospider_${pkgver}_all.deb::https://download.screamingfrog.co.uk/products/seo-spider/screamingfrogseospider_${pkgver}_all.deb?noredirect"
   "LICENSE"
 )
 sha256sums=('84300f47c747bb2da1e8cf2aa18e77c531912344f7a118a9a5734b7008e6cbf2'
