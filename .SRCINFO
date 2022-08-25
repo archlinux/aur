@@ -7,10 +7,10 @@ pkgbase = inf-bin
 	conflicts = inf
 	provides = inf
 	arch = aarch64
-	source_aarch64 = https://github.com/infinimesh/inf/releases/download/v3.0.0-r12/inf_3.0.0-r12_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 86d712cb21b53ecf26ae0ddfe77ac02c46781e3b0d16592c8fe11bdbd70c2085
+	source_aarch64 = https://github.com/infinimesh/inf/releases/download/v3.0.0/inf_3.0.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 0f7ac84c1bbf08552e1a01696562f6a07e1e7ea38b05497f398c3758d77cc307
 	arch = x86_64
-	source_x86_64 = https://github.com/infinimesh/inf/releases/download/v3.0.0-r12/inf_3.0.0-r12_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = af7c2cbe1a0e8ea422c0e21da19092b2becee8f7fce01b7e4d3600b30909c220
+	source_x86_64 = https://github.com/infinimesh/inf/releases/download/v3.0.0/inf_3.0.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = fa2c6c8c482cca5c3a0936882e9a2845cba12d53643a04708699cceff0bbc059
 	
 pkgname = inf-bin
