@@ -1,22 +1,22 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgbase=gtksourceview-pkgbuild
-pkgname=('mime-pkgbuild' 'gtksourceview3-pkgbuild' 'gtksourceview4-pkgbuild' 'gtksourceview5-pkgbuild')
-pkgver=4
-pkgrel=3
+pkgname=(mime-pkgbuild gtksourceview3-pkgbuild gtksourceview4-pkgbuild gtksourceview5-pkgbuild)
+pkgver=5
+pkgrel=1
 pkgdesc="PKGBUILD syntax highlight support in GtkSourceView"
 arch=(any)
 url="https://gitlab.com/rafaelff/$pkgbase"
-license=('LGPL2.1')
+license=(LGPL2.1)
 source=("$url/-/archive/v$pkgver/$pkgbase-v$pkgver.tar.bz2")
-sha256sums=('70b1df7edaddaa98d84182536ae2575a643eafe38b54c72204b62b5e0064554f')
+sha256sums=('75320b33a21baf929a785690d1570e1b853383c31b6473df572ddb4b921c9f73')
 
 package_mime-pkgbuild() {
   pkgdesc="MIME types for PKGBUILD files"
   depends=(shared-mime-info)
 
   cd $pkgbase-v$pkgver
-  install -Dm644 pkgbuild.xml "$pkgdir"/usr/share/mime/packages/pkgbuild.xml
+  install -Dm644 pkgbuild.xml -t "$pkgdir"/usr/share/mime/packages
 }
 
 package_gtksourceview3-pkgbuild() {
@@ -24,7 +24,7 @@ package_gtksourceview3-pkgbuild() {
   depends=(gtksourceview3 mime-pkgbuild)
 
   cd $pkgbase-v$pkgver
-  install -Dm644 pkgbuild.lang "$pkgdir"/usr/share/gtksourceview-3.0/language-specs/pkgbuild.lang
+  install -Dm644 pkgbuild.lang -t "$pkgdir"/usr/share/gtksourceview-3.0/language-specs
 }
 
 package_gtksourceview4-pkgbuild() {
@@ -32,7 +32,7 @@ package_gtksourceview4-pkgbuild() {
   depends=(gtksourceview4 mime-pkgbuild)
 
   cd $pkgbase-v$pkgver
-  install -Dm644 pkgbuild.lang "$pkgdir"/usr/share/gtksourceview-4/language-specs/pkgbuild.lang
+  install -Dm644 pkgbuild.lang -t "$pkgdir"/usr/share/gtksourceview-4/language-specs
 }
 
 package_gtksourceview5-pkgbuild() {
@@ -40,5 +40,5 @@ package_gtksourceview5-pkgbuild() {
   depends=(gtksourceview5 mime-pkgbuild)
 
   cd $pkgbase-v$pkgver
-  install -Dm644 pkgbuild.lang "$pkgdir"/usr/share/gtksourceview-5/language-specs/pkgbuild.lang
+  install -Dm644 pkgbuild.lang -t "$pkgdir"/usr/share/gtksourceview-5/language-specs
 }

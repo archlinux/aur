@@ -1,12 +1,12 @@
 pkgbase = gtksourceview-pkgbuild
 	pkgdesc = PKGBUILD syntax highlight support in GtkSourceView
-	pkgver = 4
-	pkgrel = 3
+	pkgver = 5
+	pkgrel = 1
 	url = https://gitlab.com/rafaelff/gtksourceview-pkgbuild
 	arch = any
 	license = LGPL2.1
-	source = https://gitlab.com/rafaelff/gtksourceview-pkgbuild/-/archive/v4/gtksourceview-pkgbuild-v4.tar.bz2
-	sha256sums = 70b1df7edaddaa98d84182536ae2575a643eafe38b54c72204b62b5e0064554f
+	source = https://gitlab.com/rafaelff/gtksourceview-pkgbuild/-/archive/v5/gtksourceview-pkgbuild-v5.tar.bz2
+	sha256sums = 75320b33a21baf929a785690d1570e1b853383c31b6473df572ddb4b921c9f73
 
 pkgname = mime-pkgbuild
 	pkgdesc = MIME types for PKGBUILD files
