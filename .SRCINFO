@@ -1,0 +1,25 @@
+pkgbase = xsnow-svn
+	pkgdesc = Let it snow on your desktop
+	pkgver = r434
+	pkgrel = 1
+	url = https://sourceforge.net/projects/xsnow/
+	arch = x86_64
+	arch = i386
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = subversion
+	depends = atk
+	depends = cairo
+	depends = gtk3
+	depends = libx11
+	depends = libxpm
+	depends = libxml2
+	conflicts = xsnow
+	conflicts = xsnow-bin
+	conflicts = xsnow-legacy
+	conflicts = xsnow-comp-patch-git
+	source = svn+https://svn.code.sf.net/p/xsnow/code/trunk
+	sha256sums = SKIP
+
+pkgname = xsnow-svn
