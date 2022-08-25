@@ -1,0 +1,5 @@
+src/*
+pkg/*
+grub2-themes/*
+
+*.pkg.*

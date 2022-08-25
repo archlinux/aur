@@ -1,4 +1,5 @@
-# Maintainer: Dct Mei <dctxmei@yandex.com>
+# Maintainer: snogard <snogardb at gmail dot com>
+# Contributor: Dct Mei <dctxmei@yandex.com>
 
 pkgbase=grub-themes-git
 _pkgbase=grub2-themes
@@ -47,15 +48,6 @@ pkgname=('grub-theme-tela-color-1080p-git'
          'grub-theme-stylish-whitesur-4k-git'
          'grub-theme-stylish-whitesur-ultrawide-git'
          'grub-theme-stylish-whitesur-ultrawide2k-git'
-         'grub-theme-slaze-color-1080p-git'
-         'grub-theme-slaze-color-2k-git'
-         'grub-theme-slaze-color-4k-git'
-         'grub-theme-slaze-white-1080p-git'
-         'grub-theme-slaze-white-2k-git'
-         'grub-theme-slaze-white-4k-git'
-         'grub-theme-slaze-whitesur-1080p-git'
-         'grub-theme-slaze-whitesur-2k-git'
-         'grub-theme-slaze-whitesur-4k-git'
          'grub-theme-whitesur-color-1080p-git'
          'grub-theme-whitesur-color-2k-git'
          'grub-theme-whitesur-color-4k-git'
@@ -65,7 +57,7 @@ pkgname=('grub-theme-tela-color-1080p-git'
          'grub-theme-whitesur-whitesur-1080p-git'
          'grub-theme-whitesur-whitesur-2k-git'
          'grub-theme-whitesur-whitesur-4k-git')
-pkgver=2021.09.19.r0.g2b42974
+pkgver=2021.12.05.r21.gfa74d1b
 pkgrel=1
 pkgdesc="Flat Design themes for Grub"
 arch=('any')

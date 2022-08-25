@@ -1,6 +1,6 @@
 pkgbase = grub-themes-git
 	pkgdesc = Flat Design themes for Grub
-	pkgver = 2021.09.19.r0.g2b42974
+	pkgver = 2021.12.05.r21.gfa74d1b
 	pkgrel = 1
 	url = https://github.com/vinceliuice/grub2-themes
 	arch = any
@@ -189,42 +189,6 @@ pkgname = grub-theme-stylish-whitesur-ultrawide-git
 pkgname = grub-theme-stylish-whitesur-ultrawide2k-git
 	provides = grub-theme-stylish-whitesur-ultrawide2k
 	conflicts = grub-theme-stylish-whitesur-ultrawide2k
-
-pkgname = grub-theme-slaze-color-1080p-git
-	provides = grub-theme-slaze-color-1080p
-	conflicts = grub-theme-slaze-color-1080p
-
-pkgname = grub-theme-slaze-color-2k-git
-	provides = grub-theme-slaze-color-2k
-	conflicts = grub-theme-slaze-color-2k
-
-pkgname = grub-theme-slaze-color-4k-git
-	provides = grub-theme-slaze-color-4k
-	conflicts = grub-theme-slaze-color-4k
-
-pkgname = grub-theme-slaze-white-1080p-git
-	provides = grub-theme-slaze-white-1080p
-	conflicts = grub-theme-slaze-white-1080p
-
-pkgname = grub-theme-slaze-white-2k-git
-	provides = grub-theme-slaze-white-2k
-	conflicts = grub-theme-slaze-white-2k
-
-pkgname = grub-theme-slaze-white-4k-git
-	provides = grub-theme-slaze-white-4k
-	conflicts = grub-theme-slaze-white-4k
-
-pkgname = grub-theme-slaze-whitesur-1080p-git
-	provides = grub-theme-slaze-whitesur-1080p
-	conflicts = grub-theme-slaze-whitesur-1080p
-
-pkgname = grub-theme-slaze-whitesur-2k-git
-	provides = grub-theme-slaze-whitesur-2k
-	conflicts = grub-theme-slaze-whitesur-2k
-
-pkgname = grub-theme-slaze-whitesur-4k-git
-	provides = grub-theme-slaze-whitesur-4k
-	conflicts = grub-theme-slaze-whitesur-4k
 
 pkgname = grub-theme-whitesur-color-1080p-git
 	provides = grub-theme-whitesur-color-1080p
