@@ -1,10 +1,11 @@
 pkgbase = sharry
 	pkgdesc = A self-hosted file sharing web application
 	pkgver = 1.11.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://eikek.github.io/sharry
 	arch = any
 	license = GPL3
+	depends = bash
 	depends = java-runtime-headless
 	optdepends = postgresql: to use Postgres as the database backend
 	optdepends = mariadb: to use MariaDB as the database backend

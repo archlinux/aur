@@ -4,7 +4,7 @@
 
 pkgname=sharry
 pkgver=1.11.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A self-hosted file sharing web application'
 url="https://eikek.github.io/sharry"
 arch=('any')
@@ -15,7 +15,7 @@ provides=(sharry)
 replaces=()
 conflicts=()
 backup=("etc/${pkgname}/${pkgname}.conf")
-depends=('java-runtime-headless')
+depends=('bash' 'java-runtime-headless')
 optdepends=('postgresql: to use Postgres as the database backend'
             'mariadb: to use MariaDB as the database backend')
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/eikek/sharry/releases/download/v${pkgver}/${_server_name}-${pkgver}.zip"
