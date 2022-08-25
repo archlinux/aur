@@ -1,6 +1,6 @@
 pkgbase = so
 	pkgdesc = A terminal interface for StackOverflow
-	pkgver = 0.4.8
+	pkgver = 0.4.9
 	pkgrel = 1
 	url = https://github.com/samtay/so
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = so
 	provides = so
 	conflicts = so-git
 	conflicts = so-bin
-	source = 0.4.8.tar.gz::https://github.com/samtay/so/archive/v0.4.8.tar.gz
-	sha256sums = 11e37927b248824d8f2475b695168889afe0c14f9183cf2f31a9c0395d00dd98
+	source = 0.4.9.tar.gz::https://github.com/samtay/so/archive/v0.4.9.tar.gz
+	sha256sums = b6327268acf3e9652acebea49c1dfa5d855cf25db6c7b380f1a0a85737464a4a
 
 pkgname = so
