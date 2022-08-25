@@ -1,8 +1,8 @@
 pkgbase = python-etuples
 	pkgdesc = Python S-expression emulation using tuple-like objects.
 	pkgver = 0.3.5
-	pkgrel = 1
-	url = https://github.com/pythological/python-etuples/
+	pkgrel = 2
+	url = https://github.com/pythological/etuples/
 	arch = any
 	license = APACHE
 	makedepends = python-setuptools

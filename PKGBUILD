@@ -3,10 +3,10 @@
 pkgname=python-etuples
 _pkgname=etuples
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Python S-expression emulation using tuple-like objects."
 arch=('any')
-url="https://github.com/pythological/python-etuples/"
+url="https://github.com/pythological/etuples/"
 license=('APACHE')
 depends=(
     'python-cons'
