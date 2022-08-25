@@ -2,7 +2,7 @@
 _base=ffcx
 pkgname=python-fenics-${_base}
 pkgdesc="The FEniCSx Form Compiler"
-pkgver=0.5.0
+pkgver=0.5.0.post0
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/FEniCS/${_base}"
@@ -11,7 +11,7 @@ depends=(python-setuptools python-fenics-ufl python-fenics-basix python-cffi)
 makedepends=(python-wheel)
 optdepends=('python-pygraphviz: utility to draw graph')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('6c87c64a16880bd7b327bfae147ce46a5bc22c2c9fed055b8ac240becd7a34c4037557c4f6142a8edbb4c49738a4b6ea497d4324c8d4f1bd7c1d342363f06579')
+sha512sums=('816da71315a7494ee97782d8c7d8df93d646a2f7b3e213d532b4dcdea179dc49248ac71d1ad7e6cf5d5d1010dc399c37c2eb22a773a86b6434a964b192d65072')
 
 build() {
   cd ${_base}-${pkgver}
