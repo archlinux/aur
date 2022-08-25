@@ -1,6 +1,6 @@
 pkgbase = sing-box-git
 	pkgdesc = The universal proxy platform.
-	pkgver = 20220824.71dac85
+	pkgver = 1661420319.f8f1e51
 	pkgrel = 1
 	url = https://sing-box.sagernet.org/
 	arch = x86_64

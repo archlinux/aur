@@ -2,7 +2,7 @@
 
 pkgname=sing-box-git
 _pkgname=sing-box
-pkgver=20220824.71dac85
+pkgver=1661420319.f8f1e51
 pkgrel=1
 pkgdesc='The universal proxy platform.'
 url='https://sing-box.sagernet.org/'
@@ -25,7 +25,7 @@ backup=('etc/sing-box/config.json')
 
 pkgver() {
     cd "${srcdir}/sing-box"
-    git log -1 --format='%cd.%h' --date=short | tr -d -
+    git log -1 --date=unix --format="%cd.%h"
 }
 
 build() {
