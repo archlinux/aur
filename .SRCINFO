@@ -1,7 +1,7 @@
 pkgbase = tahoma2d-git
 	pkgdesc = Software for producing a 2D animation
-	pkgver = r3143.7f444c8c
-	pkgrel = 1
+	pkgver = r3782.58aa2069
+	pkgrel = 2
 	url = https://tahoma2d.org/
 	arch = x86_64
 	license = BSD
