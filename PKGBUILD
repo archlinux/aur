@@ -4,7 +4,7 @@
 # Contributor: hagabaka
 
 pkgname='peazip-qt5'
-pkgver=8.7.0
+pkgver=8.8.0
 pkgrel=1
 pkgdesc='Free file archiver utility, open, extract RAR TAR ZIP archives'
 license=('GPL3')
@@ -19,24 +19,27 @@ options=('!strip')
 source=("git+https://github.com/peazip/PeaZip.git#tag=$pkgver"
 "help-$pkgver.pdf::https://github.com/peazip/PeaZip/releases/download/$pkgver/peazip_help.pdf")
 sha512sums=('SKIP'
-            'c83d794e3fa988a0a1d85d90214328facb811716ecbd251952fdd4be7b4fccb55067783c13a86d0e194e5d85d6c306792d493ceec10b23a12d3e58f7046aad2e')
+            '8ee742c3602f572122187e1b64b0150c61c6bbf9e46898662d10f6efd17e997c544a28d05833bea4e4f759375a1e68549a13f075f7ab8a5363382841c995c110')
 
 build() {
-  cd "$srcdir/PeaZip/peazip-sources"
+  cd "$srcdir/PeaZip/peazip-sources/dev"
   lazbuild --lazarusdir=/usr/lib/lazarus --widgetset=qt5 --build-all project_pea.lpi && [ -f pea ]
   lazbuild --lazarusdir=/usr/lib/lazarus --widgetset=qt5 --build-all project_peach.lpi && [ -f peazip ]
 }
 
 package() {
   # binary
-  install -Dm755 "$srcdir/PeaZip/peazip-sources/peazip" "$pkgdir/usr/lib/peazip/peazip"
-  install -Dm755 "$srcdir/PeaZip/peazip-sources/pea" "$pkgdir/usr/lib/peazip/pea"
+  install -Dm755 "$srcdir/PeaZip/peazip-sources/dev/peazip" "$pkgdir/usr/lib/peazip/peazip"
+  install -Dm755 "$srcdir/PeaZip/peazip-sources/dev/pea" "$pkgdir/usr/lib/peazip/pea"
   
-  # desktop & icon
-  cd "$srcdir/PeaZip/peazip-sources/res/share/batch/freedesktop_integration"
-  install -Dm644 peazip{,_alt}.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
+  # icon
+  cd "$srcdir/PeaZip/peazip-sources/res/share/icons"
+  install -Dm644 peazip{,_app}.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
   install -Dm644 peazip_{7z,rar,zip}.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/mimetypes"
-  install -Dm644 peazip_{add,extract}.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/actions"
+  install -Dm644 peazip_{add,extract,browse,convert}.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/actions"
+
+  # desktop
+  cd "$srcdir/PeaZip/peazip-sources/res/share/batch/freedesktop_integration"
   install -Dm644 peazip.desktop -t "$pkgdir/usr/share/applications"
 
   # help & res
