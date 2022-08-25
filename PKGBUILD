@@ -11,7 +11,6 @@ pkgdesc="Mobile robot simulation software."
 arch=('x86_64')
 url="https://cyberbotics.com/"
 license=('Apache')
-groups=('')
 depends=("make" "gcc" "atk>=1.9.0" "ffmpeg" "dbus" "freeimage>=3.15.4" "glib2>2.10.0" "glu"
          "gtk3" "nss" "gcc-libs" "libxaw" "libxrandr" "libxrender"
          "zziplib>=0.13.62" "libssh" "libzip" "libx11" "xorg-server" "libxslt" "gd"
