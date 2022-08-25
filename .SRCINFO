@@ -1,15 +1,15 @@
 pkgbase = tencent-docs-bin
 	pkgdesc = 腾讯文档 Tencent Docs - 让协作更高效，创作更轻松
-	pkgver = 2.3.16
+	pkgver = 2.3.17
 	pkgrel = 1
 	url = https://docs.qq.com/home/
 	arch = x86_64
 	arch = aarch64
 	source = tencent-docs.desktop
 	sha256sums = 7dd7432ece74ddd5d5fd6de07e6b521a4b84206a8fa099b754f2a994641404d7
-	source_x86_64 = tencent-docs-bin-2.3.16-1-x86_64.deb::https://github.com/V0IDPlusPlus/Tencent-Docs-Debian-Package-Archive/releases/download/v2.3.16-1/LinuxTencentDocsAmd64.deb
-	sha256sums_x86_64 = 3f0fcc00630fdf6f93dc6743515afcb055e8127a630372a12a828ee01aa46915
-	source_aarch64 = tencent-docs-bin-2.3.16-1-aarch64.deb::https://github.com/V0IDPlusPlus/Tencent-Docs-Debian-Package-Archive/releases/download/v2.3.16-1/LinuxTencentDocsArm64.deb
-	sha256sums_aarch64 = cd8d4943250e473f9382df26d5654684b00bfdce43846974b54bf1e392ce8f29
+	source_x86_64 = tencent-docs-bin-2.3.17-1-x86_64.deb::https://github.com/V0IDPlusPlus/Tencent-Docs-Debian-Package-Archive/releases/download/v2.3.17-1/LinuxTencentDocsAmd64.deb
+	sha256sums_x86_64 = 70beecee7c1f30a2a5a1de663857b741093312835148fac8398fb844e51389b1
+	source_aarch64 = tencent-docs-bin-2.3.17-1-aarch64.deb::https://github.com/V0IDPlusPlus/Tencent-Docs-Debian-Package-Archive/releases/download/v2.3.17-1/LinuxTencentDocsArm64.deb
+	sha256sums_aarch64 = c0647d0213d2998b06a051c2847574b0a8bde38d5069669da80af2f2373c8a56
 
 pkgname = tencent-docs-bin
