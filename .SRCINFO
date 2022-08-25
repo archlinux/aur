@@ -1,0 +1,26 @@
+pkgbase = ocaml-core_unix
+	pkgdesc = Unix-specific extensions to some of the modules defined in core and core_kernel.
+	pkgver = 0.15.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/janestreet/core_unix
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = dune>=2.0.0
+	depends = ocaml>=4.08.0
+	depends = ocaml-core>=0.15
+	depends = ocaml-core_kernel>=0.15
+	depends = ocaml-expect_test_helpers_core>=0.15
+	depends = ocaml-jane-street-headers>=0.15
+	depends = ocaml-jst-config>=0.15
+	depends = ocaml-intrinsics>=0.15
+	depends = ocaml-ppx_jane>=0.15
+	depends = ocaml-sexplib>=0.15
+	depends = ocaml-timezone>=0.15
+	depends = ocaml-spawn>=0.15
+	options = !strip
+	source = ocaml-core_unix-1:0.15.0-1.tar.gz::https://github.com/janestreet/core_unix/archive/v0.15.0.tar.gz
+	sha512sums = eeb53bd0c06a7d1facfb133f0a45a232d57941eff644d4ed6c2d5002acd4e6b323376ec9c05838f760ebd9da3fbc39332989ed50b3921191c175811c947fcbfe
+
+pkgname = ocaml-core_unix
