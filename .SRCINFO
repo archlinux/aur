@@ -1,6 +1,6 @@
 pkgbase = calcardbackup
 	pkgdesc = Bash script to backup calendars and addressbooks from a local Nextcloud installation
-	pkgver = 3.5.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://codeberg.org/BernieO/calcardbackup
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = calcardbackup
 	depends = nextcloud
 	optdepends = zip: for zip compression instead of tar.gz
 	backup = etc/calcardbackup/calcardbackup.conf
-	source = https://codeberg.org/BernieO/calcardbackup/archive/v3.5.0.tar.gz
+	source = https://codeberg.org/BernieO/calcardbackup/archive/v4.0.0.tar.gz
 	source = calcardbackup.service
 	source = calcardbackup.timer
-	sha256sums = fd67eb24fc331021508009000832938589c1504a053d45bb5338b5735c071b92
+	sha256sums = fd27df33dfd5c4795e3f71b1a1501c43889ec0a97cd0a6a8463a9750a4b2b2d2
 	sha256sums = 2288a3c62b736c322e23c36ca3d7c07dd849e716a372e80662b86b6c4c1e5a4b
 	sha256sums = f7769992870000fe550da0c95d918fa6c30f852b7c95064ec0851a7f941eb2a9
 
