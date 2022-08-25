@@ -1,7 +1,7 @@
 pkgbase = python-scholarly
 	pkgdesc = Retrieve author and publication information from Google Scholar in a friendly, Pythonic way
-	pkgver = 1.5.1
-	pkgrel = 3
+	pkgver = 1.7.2
+	pkgrel = 1
 	url = https://github.com/OrganicIrradiation/scholarly
 	arch = any
 	license = Unlicense
@@ -17,7 +17,7 @@ pkgbase = python-scholarly
 	depends = python-selenium
 	depends = python-stem
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/s/scholarly/scholarly-1.5.1.tar.gz
-	sha256sums = c322e23321fcc0491da62b9ccbfccc2b76780b94487fc8e61a1a429a058e2cde
+	source = https://files.pythonhosted.org/packages/source/s/scholarly/scholarly-1.7.2.tar.gz
+	sha256sums = 558ed93cc64d0e87585e4a23046ee071297e60b2a57da4f06cddb5129493d49a
 
 pkgname = python-scholarly
