@@ -4,7 +4,7 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=103.0.2
+pkgver=104.0
 pkgrel=1
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3 aarch64)
@@ -39,7 +39,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
         "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
         "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git")
 # source_aarch64=()
-sha256sums=('766183e8e39c17a84305a85da3237919ffaeb018c6c9d97a7324aea51bd453aa'
+sha256sums=('1a294a651dc6260f9a72a3ab9f10e7792a4ab41a9cfa8527ad3dd9979cdc98ce'
             'SKIP'
             '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
             'SKIP'
@@ -202,7 +202,7 @@ fi
   cp "${srcdir}/librewolf-source/assets/search-config.json" services/settings/dumps/main/search-config.json
 
   # Stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)
-  patch -Np1 -i "${_librewolf_patches_dir}"/sed-patches/stop-undesired-requests.patch
+  # patch -Np1 -i "${_librewolf_patches_dir}"/sed-patches/stop-undesired-requests.patch
 
   # Assorted patches
   patch -Np1 -i "${_librewolf_patches_dir}"/urlbarprovider-interventions.patch
@@ -275,7 +275,6 @@ fi
   # Needed build fix
   patch -Np1 -i "${_cachyos_patches_dir}"/zstandard-0.18.0.patch
   patch -Np1 -i "${_patches_dir}"/custom/glibc236.patch
-  patch -Np1 -i "${_patches_dir}"/custom/rust163.patch
 
   rm -f "${srcdir}"/common/source_files/mozconfig
   cp -r "${srcdir}"/common/source_files/* ./
