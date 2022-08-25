@@ -2,7 +2,7 @@
 
 pkgname=netbird
 pkgver=0.8.10
-pkgrel=1
+pkgrel=2
 pkgdesc='A WireGuard-based mesh network that connects your devices into a single private network'
 url='https://netbird.io'
 arch=(x86_64 aarch64 armv7h armv7l armv6h)
@@ -52,7 +52,7 @@ build() {
     -o build/"$pkgname" \
     client/main.go
 
-  for shell in bash fish; do
+  for shell in bash fish zsh; do
     ./build/"$pkgname" completion $shell >build/completion.$shell
   done
 }
@@ -90,6 +90,12 @@ package() {
   install -Dm644 "$_source/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # shell completions
-  install -Dm644 "$_source/build/completion.bash" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-  install -Dm644 "$_source/build/completion.fish" "$pkgdir/usr/share/fish/completions/$pkgname.fish"
+  install -Dm644 "$_source/build/completion.bash" \
+    "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+
+  install -Dm644 "$_source/build/completion.fish" \
+    "$pkgdir/usr/share/fish/completions/$pkgname.fish"
+
+  install -Dm644 "$_source/build/completion.zsh" \
+    "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
