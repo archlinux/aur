@@ -463,3 +463,11 @@ Fixes:
 - we fixed a problem sometimes causing a cryptic error message Missing iCalUID when importing events from a .ics file.
 - we fixed the due date on tasks coming from the Microsoft To Do integrations, which was sometimes off by one day
 
+=== Morgen 2.5.13
+New Features:
+- Webex links can now be added to any event in Morgen in a single click. This new integration is in Beta and is available as part of Morgen Pro. Go to the Integrations tab in the Morgen settings to connect your Webex account.
+
+Improvements:
+- Norwegian local date and time formatting is now supported.
+ 
+
