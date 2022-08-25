@@ -1,6 +1,6 @@
 pkgbase = balena-deploy-request
 	pkgdesc = A simple script for generating deploy requests along with release notes
-	pkgver = 0.8.0
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://balena.io/
 	arch = any
@@ -8,10 +8,9 @@ pkgbase = balena-deploy-request
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	noextract = v0.8.0.tar.gz
+	noextract = v0.8.2.tar.gz
 	options = !strip
-	source = https://github.com/balena-io-modules/balena-deploy-request/archive/v0.8.0.tar.gz
-	sha256sums = d56a053111c7d79928c3817f1913410f2bd4e83c9874642dab6a66d2b06dc168
+	source = https://github.com/balena-io-modules/balena-deploy-request/archive/v0.8.2.tar.gz
+	sha256sums = f8ea34e482934a1ad1cc6cb33af7468d490dc182ac4bf8983d7b8a8bbdc3822b
 
 pkgname = balena-deploy-request
-
