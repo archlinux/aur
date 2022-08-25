@@ -14,23 +14,25 @@ source=("${pkgname}_${pkgver}::git+https://bitbucket.org/agriggio/art.git#tag=${
 sha256sums=('SKIP' '7381c57e48b1437bec6b775029370f99f6fc14eced53678972e9f0b7e02a4346')
 
 build() {
-  cp "$srcdir/blackfoxx-GTK3-20_.css" "$srcdir/${pkgname}_${pkgver}/rtdata/themes"
+	cp "$srcdir/blackfoxx-GTK3-20_.css" "$srcdir/${pkgname}_${pkgver}/rtdata/themes"
 
-  mkdir -p "$srcdir/${pkgname}_${pkgver}_build"
-  cd "$srcdir/${pkgname}_${pkgver}_build"
+	mkdir -p "$srcdir/${pkgname}_${pkgver}_build"
+	cd "$srcdir/${pkgname}_${pkgver}_build"
 
-  cmake "../${pkgname}_${pkgver}" \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DPROC_TARGET_NUMBER="2" \
-    -DWITH_LTO="ON" \
+	cmake "../${pkgname}_${pkgver}" \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DPROC_TARGET_NUMBER="2" \
+	-DWITH_LTO="ON" \
 	-DENABLE_LIBRAW="ON" \
-	-DENABLE_MIMALLOC="ON"
+	-DENABLE_MIMALLOC="ON" \
+	-DENABLE_OCIO="ON" \
+ 	-DBUILD_SHARED="ON"
 
-  make
+	make
 }
 
 package() {
-  cd "$srcdir/${pkgname}_${pkgver}_build"
-  make DESTDIR="$pkgdir/" install
+	cd "$srcdir/${pkgname}_${pkgver}_build"
+	make DESTDIR="$pkgdir/" install
 }
