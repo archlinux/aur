@@ -26,5 +26,5 @@ prepare() {
 
 package() {
 	install -D -t $pkgdir/usr/bin/ $srcdir/dolt-linux/bin/dolt
-	install -D -t $pkgdir/usr/share/licenses/dolt/ $srcdir/LICENSE
+	install -Dm644 -t $pkgdir/usr/share/licenses/dolt/ $srcdir/LICENSE
 }
