@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CytoML
-_pkgver=2.8.0
+_pkgver=2.8.1
 pkgname=r-${_pkgname,,}
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc='A GatingML Interface for Cross Platform Cytometry Data Sharing'
 arch=('x86_64')
@@ -50,7 +50,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('399f4daacc8b69adc47f9a804041af443d28b5f2ea5f094d2aa805e87653e76e')
+sha256sums=('1c167d2a9a60addaf76456e2c5bf1102a4e092d0b82c14c65e22617f256ddf07')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
