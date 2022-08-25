@@ -11,7 +11,7 @@ pkgbase = usql
 	license = MIT
 	makedepends = go
 	depends = icu
-	source = usql-0.12.4.tar.gz::https:https://github.com/xo/usql/archive/v0.12.4.tar.gz
+	source = usql-0.12.4.tar.gz::https://github.com/xo/usql/archive/v0.12.4.tar.gz
 	sha256sums = efb8ffc7121db6a99596394385b1973c487c7b99c3e4d26f0da05bcb1102c540
 
 pkgname = usql
