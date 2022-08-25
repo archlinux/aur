@@ -1,7 +1,7 @@
 # Maintainer: selva.g@subcom.tech
 # Maintainer: Selvaganapathy
 # Contributor: Felix crueger
-pkgname=trim_galore-git
+pkgname=trim_galore
 pkgver=0.6.6
 pkgrel=1
 pkgdesc="Trim Galore is a wrapper around Cutadapt and FastQC to consistently apply adapter and quality trimming to FastQ files, with extra functionality for RRBS data"
