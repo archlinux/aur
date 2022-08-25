@@ -1,12 +1,12 @@
-pkgbase = calc
+pkgbase = coriolinus-calc
 	pkgdesc = Rust command line calculator
 	pkgver = 0.4.0
 	pkgrel = 1
-	url = https://github.com/coriolinus/calc
+	url = https://github.com/coriolinus/
 	arch = x86_64
 	license = GPL3
 	makedepends = rust
-	source = https://github.com/coriolinus/calc/archive/v0.4.0.tar.gz
+	source = https://github.com/coriolinus//archive/v0.4.0.tar.gz
 	sha256sums = 1162441f3e9bd5fc86aa6c61f64ad8f7b5b679ab89275afce6fd7b0e99c7f3f7
 
 pkgname = coriolinus-calc
