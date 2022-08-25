@@ -2,7 +2,7 @@
 
 pkgname=hop-cli
 pkgver=0.1.27
-pkgrel=1
+pkgrel=2
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Interact with Hop in your terminal"
@@ -22,14 +22,14 @@ build() {
 
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --features vendored
+  cargo build --frozen --release
 }
 
 check() {
   cd "$srcdir/hop_cli-$pkgver"
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --release --features vendored
+  cargo test --frozen --release
 }
 
 package() {

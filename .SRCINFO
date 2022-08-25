@@ -1,7 +1,7 @@
 pkgbase = hop-cli
 	pkgdesc = Interact with Hop in your terminal
 	pkgver = 0.1.27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hop.io
 	arch = i686
 	arch = x86_64
