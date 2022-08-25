@@ -13,7 +13,7 @@ pkgdesc='A free client/server multiplayer engine for the classic FPS Doom.'
 arch=('i686' 'x86_64' 'aarch64')
 url='http://odamex.net/'
 license=('GPL')
-depends=('sdl2_mixer' 'portmidi' 'wxgtk2' 'miniupnpc')
+depends=('sdl2_mixer' 'sdl2' 'portmidi' 'wxgtk2' 'miniupnpc')
 makedepends=('git' 'cmake' 'deutex' 'ninja')
 optdepends=('timidity++: Required for music')
 source=(
@@ -57,6 +57,7 @@ prepare() {
 _configure() {
 	cd "odamex-git"
 
+	CXXFLAGS="-DSDL20 $CXXFLAGS" \
 	cmake -DCMAKE_BUILD_TYPE=Release  \
 		-DCMAKE_INSTALL_PREFIX=/usr  \
 		-GNinja  \
