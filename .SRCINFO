@@ -1,20 +1,20 @@
 pkgbase = apache-karaf
 	pkgdesc = JVM application and OSGi container
-	pkgver = 4.4.0
+	pkgver = 4.4.1
 	pkgrel = 1
 	url = http://karaf.apache.org/
 	arch = any
 	license = Apache
 	depends = bash
-	depends = java-environment>=11
+	depends = java-runtime-headless>=11
 	options = !strip
 	backup = opt/apache-karaf/etc/all.policy
 	backup = opt/apache-karaf/etc/custom.properties
 	backup = opt/apache-karaf/etc/keys.properties
 	backup = opt/apache-karaf/bin/setenv
-	source = https://dist.apache.org/repos/dist/release/karaf/4.4.0/apache-karaf-4.4.0.tar.gz
+	source = https://dist.apache.org/repos/dist/release/karaf/4.4.1/apache-karaf-4.4.1.tar.gz
 	source = apache-karaf.service
-	sha512sums = a5ee78cb95eb0c6944dd2fbbe234ec308d84a9ce37cb3395ceb2e36096fc4d4df642413f8c653fd4e61c03e7a998804d9fc1a1eefa14c816640c7363c35699dc
+	sha512sums = fcc439af6f0ddb709cf303a74594e0ab600521e7e8f11ad0e36d95bb81bc5a6652058ef499980e272a7686e4b029a95405b8893268fdbb4c3f25391e4310137e
 	sha512sums = bb9b46c01282baf22fd0d37f47023a833c98dac74c42cf54117476af491ec7bf02856c6b74e10776d692053aa2fe0867da1b6da4bc273680666b126995ec3076
 
 pkgname = apache-karaf
