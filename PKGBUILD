@@ -2,7 +2,7 @@
 
 pkgname=purc
 pkgver=0.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc="The prime HVML interpreter for C Language."
 arch=('any')
 url="https://github.com/HVML/PurC"
@@ -12,6 +12,7 @@ conflicts=(${pkgname}-git)
 #replaces=(${pkgname})
 depends=('glib2' 'bison' 'flex')
 makedepends=('cmake' 'ninja' 'ccache' 'gcc' 'python' 'libxml2' 'ruby' 'curl' 'openssl' 'sqlite' 'pkgconf' 'zlib' 'icu')
+optdepends=('domruler' 'purc-fetcher' 'xguipro')
 backup=()
 options=('!strip')
 #install=${pkgname}.install
@@ -32,8 +33,9 @@ build() {
 #     cmake --build build
 
 # Ninja build
-    cmake -DCMAKE_BUILD_TYPE=Debug \
+    cmake -DCMAKE_BUILD_TYPE=Release \
         -DPORT=Linux \
+        -DENABLE_API_TESTS=OFF \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_LIBEXECDIR=lib \
