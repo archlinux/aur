@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ontologyIndex
-_pkgver=2.9
+_pkgver=2.10
 pkgname=r-${_pkgname,,}
-pkgver=2.9
+pkgver=2.10
 pkgrel=1
 pkgdesc='Functions for Reading Ontologies into R'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ba1d22ecc206364b92e8ec21d0621f0253c5cebd03f8407abfd9577abe6a490f')
+sha256sums=('c995d6d9df5ff9cfb81fb80f553fc0f392d2237ffa6dd8619fd8fbce745a3a42')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
