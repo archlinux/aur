@@ -1,6 +1,6 @@
 # Maintainer: Justin Ethier <justin.ethier@gmail.com>
 pkgname=cyclone-scheme
-pkgver=0.34.0
+pkgver=0.35.0
 pkgrel=1
 pkgdesc="A brand-new compiler that allows practical application development using R7RS Scheme"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ changelog=
 source=($url/archive/v$pkgver.tar.gz)
 noextract=()
 #autofill using updpkgsums
-md5sums=('3342a819952401032bf421c653fb1bcf')
+md5sums=('98c1c2bccaf70dbf353ba494de4d8f53')
 
 build() {
   cd "cyclone-bootstrap-$pkgver"
