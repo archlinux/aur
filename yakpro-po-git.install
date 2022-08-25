@@ -1,0 +1,11 @@
+post_install() {
+	post_upgrade
+}
+
+post_upgrade() {
+	echo ""
+	echo "   NOTICE: the configuration file resides in /opt/yakpro-po-git."
+	echo "           Unfortunately yakpro-po doesn't look in /etc."
+	echo ""
+}
+

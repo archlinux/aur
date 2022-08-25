@@ -1,0 +1,13 @@
+pkgbase = yakpro-po-git
+	pkgdesc = It simply aims to be the best obfuscation tool for php.
+	pkgver = r206.b6e2f98
+	pkgrel = 1
+	url = https://www.php-obfuscator.com/
+	install = yakpro-po-git.install
+	arch = any
+	license = MIT
+	depends = php7
+	source = source::git+https://github.com/pk-fr/yakpro-po.git
+	sha256sums = SKIP
+
+pkgname = yakpro-po-git
