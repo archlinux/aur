@@ -72,6 +72,8 @@ package() {
   sed -e 's/home\/mastodon\/live/var\/lib\/mastodon/g' \
     -e 's/home\/mastodon\/.rbenv\/shims/usr\/bin/' \
     -i mastodon-*.service
+  sed -e 's/home\/mastodon\/live/var\/lib\/mastodon/g' \
+    -i dist/nginx.conf
 
   install -Dm 644 mastodon-*.service -t "$pkgdir"/usr/lib/systemd/system
 }
