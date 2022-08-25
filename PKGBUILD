@@ -1,10 +1,10 @@
 #Maintainer: Dylan Delgado <dylan1496@live.com>
 
 pkgname=mtsieve
-_pkgrev=167
+_pkgrev=201
 _srcrev=r${_pkgrev}-trunk
-pkgver=2.2.3r${_pkgrev}
-_pkgver=2.2.3
+pkgver=2.3.3r${_pkgrev}
+_pkgver=2.3.3
 pkgrel=1
 pkgdesc='Library for sieving various types of numbers'
 url='https://sourceforge.net/projects/mtsieve/'
@@ -14,7 +14,7 @@ depends=('gmp' 'ocl-icd' 'opencl-driver')
 
 # Static copy of the snapshot file since sourceforge regenerates it on demand.
 source=("https://github.com/Dylan1496/mtsieve-source/raw/main/mtsieve-${_pkgver}-${_srcrev}.zip")
-sha256sums=('7908ffcfce8c6aa280b0fbe0f7eb27182f13983950200846a6d1fd0adadfefc9')
+sha256sums=('6fb6a797d61f9f49f5d64b365d745b22f7b3ba9a98ea31317f17962481ef135a')
 
 prepare() {  
 	cd "${srcdir}/${pkgname}-svn"
@@ -22,6 +22,8 @@ prepare() {
 		-e 's/^CPPFLAGS =/CPPFLAGS +=/' \
 		-e "/^SVN_VERSION :=/s/=.*/= r${_pkgrev}/" \
 		-i makefile
+	cd core
+	sed '11 c\#include <cstddef>' -i MpArithVector.h
 }
 
 build() {
