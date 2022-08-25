@@ -1,0 +1,18 @@
+pkgbase = dungeoneer
+	pkgdesc = A tool for the lazy DM
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://www.ogreforge.me/Dungeoneer/
+	arch = any
+	license = AGPL3
+	makedepends = yarn
+	makedepends = nodejs
+	makedepends = npm
+	provides = dungeoneer
+	conflicts = dungeoneer
+	source = https://github.com/Durtur/Dungeoneer/archive/refs/tags/v1.2.1.tar.gz
+	source = wrapper.sh
+	sha512sums = 65693f4918b42ed665beba2c02927b28bf5316bf532004419992aaf670d26dc781f283a8774dad8620fb324f7cad52bfd867560e3778e0298090ca8547b8aa8a
+	sha512sums = SKIP
+
+pkgname = dungeoneer
