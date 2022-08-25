@@ -29,9 +29,6 @@ pkgver() {
 
 prepare() {
 	cd phosh-mobile-settings
-
-	git submodule init
-	git submodule update
 }
 
 build() {
