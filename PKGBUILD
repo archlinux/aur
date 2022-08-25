@@ -1,25 +1,24 @@
 # Maintainer: Adrian Perez <aperez@igalia.com>
-pkgname='dq'
-pkgver='20181021'
-pkgrel='2'
+pkgname=dq
+pkgver=20220822
+pkgrel=1
 pkgdesc='Small recursive DNS server and tools with DNSCurve support'
-url='https://mojzis.com/software/dq/'
-arch=('x86_64' 'i686')
+url=https://mojzis.com/software/dq/
+arch=(x86_64 i686)
 license=('custom:Public Domain')
-depends=('bash')
-makedepends=('gcc' 'make')
-install='dq.install'
-validpgpkeys=('AADF2EDF5529F1702772C8A2DEC4D246931EF49B')
+depends=(bash)
+install=dq.install
+validpgpkeys=(AADF2EDF5529F1702772C8A2DEC4D246931EF49B)
 source=("https://github.com/janmojzis/dq/archive/${pkgver}.tar.gz"
 		"https://github.com/janmojzis/dq/releases/download/${pkgver}/${pkgver}.tar.gz.asc"
         root-servers dqcache@.service default.conf dqcache-sysusers.conf dqcache.sh)
-sha512sums=('2f59b96e08dc452ee0db2b5e6f9546a6c279d125cbc85052ed2ae3b7fabb43067d41610d27dcb226dac1229c957e71678ee10c733498e680fabb1a47f89d0363'
+sha512sums=('a743fc87b1db741b6348e1ebc30728963b239afe2629127d342608e0b80c96b8c8a70bb45edb29ad54297c5064ce821ebea697e2a13a5a581e8797f7b7dd01e3'
             'SKIP'
             '1444d75a559769044cabca730a11846f14c8db0096a33464fbd90b8c1f363525088b55801ea29554b46906792097ce8a84f1f5e763f018270600408cc9404614'
-            '0c19ce8d81bf2bed090e232c338dce466e7ff172f8698f7ecbff59a999a534bc37d2a194d3749a3fea5d3b0c26ff283526861beefd4bef810caa022beff58c5d'
-            'ab2e577ca9c18afee40704593119f3b10d21eb5c4cb5c77d7d7e8652687213f2bf67491aed4c0b4c194251f17909502b965e566dfbde64b052dde9dc0b8343f6'
+            '26793bbf5d0f2e7e153da763f36ec5962fded33e486b0aeaa0594c6570e79aaba36262f6c7cc7b3ab5ba5e3dda4be7fc54f957b9255161f6021b3797a6227d5f'
+            '8b9b8510d77e831a0faca238b9fafbf9f5856dd38eff061cdc1b9194ee94f0ec366650f4f1b20884ac09f710379079a090adcb26baeb7e164266beb0e4436fa4'
             'ab7fcf301cfcbc1fa70ec6ff914c8b33b8c868e305990351d0dac5d28832a60368af3a79bbd635742583801eb8bf4226aac0c9e478d40c3b180f1d68e946bf0a'
-            'f63008d6e50011a76ef5b7372ae01ef33eac598adc310d2d09980089510720d23767534694179014fc9e9e3a5f9473cb60dd4af3e3fa92616912003b1bd7cbb5')
+            '53cac0d8962d1462092841d7f015b596cc6c56632095b3f129476e41f7244082ee852ea80fd8e1a0710ebd0d2fb6139676e1ad4d9c8a376f5387e6dd8fd4c9a1')
 
 build () {
 	cd "${pkgname}-${pkgver}"
@@ -33,12 +32,13 @@ package () {
 	make install DESTDIR="${pkgdir}"
 
 	install -m 755 -d "${pkgdir}/usr/lib/dq"
-	mv "${pkgdir}/usr/bin/dqcache" "${pkgdir}/usr/lib/dq/"
+	mv "${pkgdir}/usr/sbin/dqcache" "${pkgdir}/usr/lib/dq/"
+	mv "${pkgdir}/usr/sbin"/* "${pkgdir}/usr/bin"
+	rmdir "${pkgdir}/usr/sbin"
 
 	# Do not ship dqcache-start; the supplied systemd unit has its own
 	# wrapper program.
-	rm "${pkgdir}/usr/bin/dqcache-start" \
-	   "${pkgdir}/usr/share/man/man1/dqcache-start.1"
+	rm "${pkgdir}/usr/bin/dqcache-start"
 
 	install -m 644 -D LICENCE.md \
 		"${pkgdir}/usr/share/licenses/${pkgname}/LICENCE.md"
