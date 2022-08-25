@@ -1,7 +1,7 @@
 pkgbase = hadoop
 	pkgdesc = An open-source software for reliable, scalable, distributed computing
 	pkgver = 3.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hadoop.apache.org/
 	install = hadoop.install
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = hadoop
 	depends = java-runtime-headless-openjdk=11
 	depends = openssh
 	depends = protobuf
+	conflicts = yarn
 	source = https://github.com/apache/hadoop/archive/refs/tags/rel/release-3.3.4.tar.gz
 	source = hadoop
 	source = hadoop.sh

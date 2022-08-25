@@ -4,11 +4,12 @@
 
 pkgname=hadoop
 pkgver=3.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='An open-source software for reliable, scalable, distributed computing'
 arch=('x86_64')
 url='https://hadoop.apache.org/'
 license=('apache')
+conflicts=('yarn')
 makedepends=('cmake' 'gcc' 'java-environment<=11' 'make' 'maven')
 depends=('inetutils' 'java-runtime-headless-openjdk=11' 'openssh' 'protobuf')
 
@@ -27,6 +28,7 @@ sha256sums=('a10fb474084c5d38b93ae901b453794d668ca98aa419a0546807b10cdae17827'
 install=$pkgname.install
 
 build() {
+    export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
     cd hadoop-rel-release-${pkgver}
     mvn package -Pdist,native \
         -Drequire.openssl -Drequire.zstd \
