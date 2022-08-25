@@ -4,7 +4,7 @@
 
 _pkgname=my_basic
 pkgname=$_pkgname-git
-pkgver=r1057.g789019f
+pkgver=r1079.gc760bef
 pkgrel=1
 pkgdesc="BASIC interpreter"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('MIT')
 source=("$pkgname::git+https://github.com/paladin-t/$_pkgname"
         "$_pkgname-makefile.patch")
 sha256sums=('SKIP'
-            '3ef06138e5403c16260897dcb7522cb3caea4ca182d65e0a1acf50693a6a8cf5')
+            'd181f05c86488bb6a77e82b7c18768b9215c3e022d735283a90c85d43438c916')
 
 pkgver() {
   cd "${pkgname}"
@@ -37,11 +37,11 @@ build() {
 package() {
   cd "${pkgname}"
 
-  install -Dm755 output/my_basic_bin "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 output/my_basic "${pkgdir}/usr/bin/${_pkgname}"
 
   install -dm755 "${pkgdir}/usr/share/doc/${_pkgname}/sample/yard"
 
-  install -m644 HISTORY *.{pdf,html} \
+  install -m644 README.md HISTORY *.{pdf,html} \
     "${pkgdir}/usr/share/doc/${_pkgname}"
   install -m644 sample/{README*,*.bas} \
     "${pkgdir}/usr/share/doc/${_pkgname}/sample"

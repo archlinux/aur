@@ -1,6 +1,6 @@
 pkgbase = my_basic-git
 	pkgdesc = BASIC interpreter
-	pkgver = r1057.g789019f
+	pkgver = r1079.gc760bef
 	pkgrel = 1
 	url = https://paladin-t.github.io/my_basic
 	arch = i686
@@ -9,6 +9,6 @@ pkgbase = my_basic-git
 	source = my_basic-git::git+https://github.com/paladin-t/my_basic
 	source = my_basic-makefile.patch
 	sha256sums = SKIP
-	sha256sums = 3ef06138e5403c16260897dcb7522cb3caea4ca182d65e0a1acf50693a6a8cf5
+	sha256sums = d181f05c86488bb6a77e82b7c18768b9215c3e022d735283a90c85d43438c916
 
 pkgname = my_basic-git
