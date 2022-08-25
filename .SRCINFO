@@ -1,0 +1,20 @@
+pkgbase = ocaml-intrinsics
+	pkgdesc = Provides functions to invoke amd64 instructions (such as clz,popcnt,rdtsc,rdpmc) when available, or compatible software implementation on other targets.
+	pkgver = 0.15.2
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/janestreet/ocaml_intrinsics
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = dune>=2.0.0
+	depends = ocaml>=4.08.0
+	options = !strip
+	source = ocaml-intrinsics-1:0.15.2-1.tar.gz::https://github.com/janestreet/ocaml_intrinsics/archive/v0.15.2.tar.gz
+	sha512sums = 21539fecd8b40420bdb45a3fe79f65cf4ff0deb103c3cb2b28bad24fddce159bdfab3f7aa6ade0028bebef1602f860b1f6cdf2cc06db1a89e232b221d8ff592b
+
+pkgname = ocaml-intrinsics
