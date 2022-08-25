@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=umap
-_pkgver=0.2.8.0
+_pkgver=0.2.9.0
 pkgname=r-${_pkgname,,}
-pkgver=0.2.8.0
-pkgrel=3
+pkgver=0.2.9.0
+pkgrel=1
 pkgdesc='Uniform Manifold Approximation and Projection'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -22,7 +22,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('57718187922a4e5746a0e014b913e451419d934bad3b149f18893ec4becd2a2a')
+sha256sums=('551bc189e1e6856bf306e316c461095102a2d034e0cf93691d48b73b13d80289')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
