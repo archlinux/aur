@@ -22,7 +22,7 @@ changelog=
 source=("craftos2-${pkgver}.tar.gz::https://github.com/MCJack123/craftos2/archive/v${pkgver}.tar.gz"
         "craftos2-lua-${pkgver}.tar.gz::https://github.com/MCJack123/craftos2-lua/archive/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('e354529e5500741580edfed0a53f04a31994545dca47c0fd964f9c45e5dacfdc' 'd5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
+sha256sums=('fe7d94969d70611b7d5183d7eafcabfec3b288d9f4d6ee5a523588cdd06f56a6' 'd5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
 validpgpkeys=()
 
 prepare() {
