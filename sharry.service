@@ -1,0 +1,37 @@
+[Unit]
+Description=Sharry
+After=remote-fs.target network.target
+AssertPathExists=/usr/share/java/sharry
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/sharry-restserver -v -- /etc/sharry/sharry.conf
+User=sharry
+Group=sharry
+
+# See https://www.freedesktop.org/software/systemd/man/systemd.exec.html
+# for details
+DevicePolicy=closed
+DeviceAllow=char-alsa rw
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateUsers=yes
+ProtectControlGroups=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectSystem=full
+ProtectHome=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=yes
+RestrictRealtime=yes
+PrivateDevices=yes
+ReadWritePaths=/media/db/sharry
+
+# You can uncomment the following line if you're not using the OpenJDK.
+# This will prevent processes from having a memory zone that is both writeable
+# and executeable, making hacker's lifes a bit harder.
+#MemoryDenyWriteExecute=yes
+
+[Install]
+WantedBy=multi-user.target
+

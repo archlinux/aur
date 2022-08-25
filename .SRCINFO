@@ -1,0 +1,20 @@
+pkgbase = sharry
+	pkgdesc = A self-hosted file sharing web application
+	pkgver = 1.11.0
+	pkgrel = 3
+	url = https://eikek.github.io/sharry
+	arch = any
+	license = GPL3
+	depends = java-runtime-headless
+	optdepends = postgresql: to use Postgres as the database backend
+	optdepends = mariadb: to use MariaDB as the database backend
+	provides = sharry
+	backup = etc/sharry/sharry.conf
+	source = sharry-1.11.0.tar.gz::https://github.com/eikek/sharry/releases/download/v1.11.0/sharry-restserver-1.11.0.zip
+	source = sharry.service
+	source = sharry.sysusers
+	sha256sums = 9d7dea1c6a170ae14da93d5e80fdce9485f308d4599ee2752f9f278272fce128
+	sha256sums = 93f3f13ee65c6dfcbee8075fc6079735bddb46d647a217f7a96b030a4a45a026
+	sha256sums = 3d84fe25c85a95f7dc9100038beeb0a3d6742e29eec516eed1f266bc9d2d7cce
+
+pkgname = sharry
