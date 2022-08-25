@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-shell-configurator
 _pkgname=shell-configurator
-pkgver=4
+pkgver=5
 pkgrel=1
 pkgdesc="Configure and customize GNOME Shell with advanced settings."
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gnome-shell-extensions')
 makedepends=('zip')
 source=($url/-/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz)
-b2sums=('7fef1a7e626b2a95c1bcdce1ee541e96df041a0b91b35af396934b024b3a21aafba3a121f1790a7dac16f66eccd94796cde3afe32bdc2e239101d2f1686b3003')
+b2sums=('e2cb2df1fee6765aca82e1bd07d4d359b76fb76f36c2a48b559686038d566b961bebad1bdc01311ab116300e1b9c5f733d6799aa7d92b8e5329bed106196ca0e')
 
 build() {
   cd "$_pkgname-v$pkgver"
