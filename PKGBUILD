@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=v1.7.0.dev.r4097.g0a2013bdf
+pkgver=v1.7.0.dev.r4138.g8b2966e29
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -124,7 +124,7 @@ build()
 package()
 {
     DESTDIR="${pkgdir}" cmake --install build
-    sed -i 's/Exec=env GDK_BACKEND=x11 MESA_NO_ERROR=1 pcsx2/Exec=env QT_QPA_PLATFORM=xcb MESA_NO_ERROR=1 pcsx2-qt/g' "${pkgdir}"/usr/share/applications/PCSX2.desktop
+    sed -i 's/Exec=env GDK_BACKEND=x11 pcsx2/Exec=env QT_QPA_PLATFORM=xcb MESA_NO_ERROR=1 pcsx2-qt/g' "${pkgdir}"/usr/share/applications/PCSX2.desktop
 }
 
 # vim: ts=2 sw=2 et:
