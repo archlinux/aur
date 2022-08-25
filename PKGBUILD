@@ -1,44 +1,35 @@
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Maintainer: Matej Grabovsky <matej.grabovsky at gmail>
-# Contributor: Daniel Peukert <dan.peukert@gmail.com>
-pkgname=ocaml-sedlex
-pkgver=2.5
-pkgrel=1
+_projectname='sedlex'
+pkgname="ocaml-$_projectname"
+pkgver='3.0'
+pkgrel='1'
 pkgdesc='Unicode-friendly OCaml lexer generator'
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/ocaml-community/$_projectname"
 license=('MIT')
-arch=('i686' 'x86_64')
-url='https://github.com/ocaml-community/sedlex'
-depends=('ocaml>=4.04'
-         'ocaml-gen'
-         'ocaml-ppxlib>=0.18.0'
-         'ocaml-uchar')
-makedepends=('dune>=1.8.0')
-source=("https://github.com/alainfrisch/sedlex/archive/v${pkgver}.tar.gz")
-options=(!strip !makeflags)
-sha256sums=('5b98dcf6db145c7749709858443f3d997fe4670c14be05831577cc0b0da038a5')
+depends=('ocaml>=4.08.0' 'ocaml-gen' 'ocaml-ppxlib>=0.26.0' 'ocaml-uchar')
+makedepends=('dune>=2.8.0')
+options=('!strip')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha512sums=('564780b7af8b3ddd32c9164caa42fd24b2ff59e0bf9977bcee4c3ddea2be3f0c870bd95949b639c5f1942e0fa2604902f5cd3eb9041d59b6ee2367895df556df')
+
+_sourcedirectory="$_projectname-$pkgver"
 
 build() {
-    cd "$srcdir/${pkgname/ocaml-/}-$pkgver"
-
-    make build
+	cd "$srcdir/$_sourcedirectory/"
+	dune build --release --verbose
 }
 
 check() {
-    cd "$srcdir/${pkgname/ocaml-/}-$pkgver"
-
-    make test
+	cd "$srcdir/$_sourcedirectory/"
+	dune runtest --release --verbose
 }
 
 package() {
-    cd "$srcdir/${pkgname/ocaml-/}-$pkgver"
+	cd "$srcdir/$_sourcedirectory/"
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc' --mandir '/usr/share/man' --release --verbose
 
-    DESTDIR="$pkgdir" dune install --prefix /usr --libdir lib/ocaml --release
-
-    install -dm755 "$pkgdir/usr/share/doc/$pkgname"
-    mv "$pkgdir/usr/doc/sedlex/"* "$pkgdir/usr/share/doc/$pkgname/"
-    rm -r "$pkgdir/usr/doc/"
-
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    ln -sf "$pkgdir/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim:set et sw=4 sts=4 et:
