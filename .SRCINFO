@@ -1,6 +1,6 @@
 pkgbase = gnuplot-headless
 	pkgdesc = Plotting package which outputs to PostScript, PNG, GIF, and others, without any X or latex depencies.
-	pkgver = 5.4.3
+	pkgver = 5.4.4
 	pkgrel = 1
 	url = http://www.gnuplot.info
 	arch = i686
@@ -14,9 +14,9 @@ pkgbase = gnuplot-headless
 	provides = gnuplot
 	conflicts = gnuplot
 	options = !makeflags
-	source = http://downloads.sourceforge.net/sourceforge/gnuplot/gnuplot-5.4.3.tar.gz
+	source = http://downloads.sourceforge.net/sourceforge/gnuplot/gnuplot-5.4.4.tar.gz
 	source = lua53_compat.patch
-	sha256sums = 51f89bbab90f96d3543f95235368d188eb1e26eda296912256abcd3535bd4d84
+	sha256sums = 372300b7867f5b3538b25fc5d0ac7734af6e3fe0d202b6db926e4369913f0902
 	sha256sums = bfd8a61abbf4491c74225cb9fd252619d4fc29751838bcb4c0639ffe05a00695
 
 pkgname = gnuplot-headless
