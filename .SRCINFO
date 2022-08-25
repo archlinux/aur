@@ -1,6 +1,6 @@
 pkgbase = rdkit
 	pkgdesc = RDKit - A collection of cheminformatics and machine-learning software written in C++ and Python.
-	pkgver = 2021_09_5
+	pkgver = 2022_03_5
 	pkgrel = 2
 	url = http://rdkit.org/
 	arch = i686
@@ -20,9 +20,7 @@ pkgbase = rdkit
 	provides = rdkit
 	conflicts = rdkit-python2
 	conflicts = rdkit-git
-	source = https://github.com/rdkit/rdkit/archive/Release_2021_09_5.tar.gz
-	source = patch-catch2.diff
-	sha256sums = f720b3f6292c4cd0a412a073d848ffac01a43960082e33ee54b68798de0cbfa1
-	sha256sums = a06c6cf2fd30546ae8fa5896fdb846207c3a712a81163de8c7be75a105ccab0e
+	source = https://github.com/rdkit/rdkit/archive/Release_2022_03_5.tar.gz
+	sha256sums = 38e6fb9f063b6132310f17e654f2c4350876f9164b0a17b49fe3df7d0555a744
 
 pkgname = rdkit
