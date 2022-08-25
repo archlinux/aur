@@ -1,18 +1,18 @@
 # Maintainer: Yuandi <realyuandi42@gmail.com>
 
 pkgname=ttf-maple
-pkgver=5.0
+pkgver=5.5
 pkgrel=1
 pkgdesc="Open source monospace font with round corner for IDE and command line"
 arch=("any")
-url="https://github.com/subframe7536/Maple-font"
+url="https://gitee.com/subframe7536/Maple/"
 license=("OFL")
 # depends=("")
 # makedepends=("")
 provides=("ttf-maple")
 # conflicts=("")
-source=("https://github.com/subframe7536/Maple-font/releases/download/v$pkgver/Maple.Mono.ttf.zip"
-       "LICENSE::https://raw.githubusercontent.com/subframe7536/Maple-font/v5/OFL.txt")
+source=("https://gitee.com/subframe7536/Maple/releases/download/v$pkgver/MapleMono.zip"
+       "LICENSE::https://gitee.com/subframe7536/Maple/raw/v5/OFL.txt")
 md5sums=("SKIP"
         "SKIP")
 
