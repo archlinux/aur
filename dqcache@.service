@@ -6,12 +6,21 @@ After=network.target
 [Service]
 Type=simple
 Restart=always
-PrivateTmp=true
+StandardError=journal
+StandardOutput=journal
 PrivateDevices=true
-ProtectSystem=true
+PrivateTmp=true
+ProtectClock=true
+ProtectHome=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectSystem=strict
+ReadWritePaths=/etc/dqcache/%i/dump
 WorkingDirectory=/etc/dqcache/%i
-EnvironmentFile=-/etc/dqcache/%i.conf
-EnvironmentFile=/etc/dqcache/%i/config
+EnvironmentFile=/etc/dqcache/%i.conf
+EnvironmentFile=-/etc/dqcache/%i/config
+ExecStartPre=/usr/bin/mkdir -p /etc/dqcache/%i/dump
 ExecStart=/usr/bin/dqcache-start /etc/dqcache/%i dqcache /usr/bin/dqcache
 
 [Install]

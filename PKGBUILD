@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez <aperez@igalia.com>
 pkgname=dq
 pkgver=20220822
-pkgrel=4
+pkgrel=6
 pkgdesc='Small recursive DNS server and tools with DNSCurve support'
 url=https://mojzis.com/software/dq/
 arch=(x86_64 i686)
@@ -34,6 +34,8 @@ package () {
 
 	install -m 644 -D LICENCE.md \
 		"${pkgdir}/usr/share/licenses/${pkgname}/LICENCE.md"
+
+	install -m 755 -d "${srcdir}/etc/dqcache/default/dump"
 
 	install -m 644 -D "${srcdir}/default.conf" \
 		"${pkgdir}/etc/dqcache/default.conf"
