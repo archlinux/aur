@@ -1,6 +1,6 @@
 pkgbase = lagrange-nosse41
 	pkgdesc = Beautiful Gemini Client (compiled without SSE)
-	pkgver = 1.13.6
+	pkgver = 1.13.7
 	pkgrel = 1
 	url = https://git.skyjake.fi/skyjake/lagrange
 	install = lagrange.install
@@ -22,7 +22,7 @@ pkgbase = lagrange-nosse41
 	depends = mpg123
 	provides = lagrange
 	conflicts = lagrange
-	source = https://git.skyjake.fi/gemini/lagrange/releases/download/v1.13.6/lagrange-1.13.6.tar.gz
-	sha256sums = 7a89e4e950d14cfebd2806de07c49eeeb79368091a68ca439795d0aba9e1aaa7
+	source = https://git.skyjake.fi/skyjake/lagrange/releases/download/v1.13.7/lagrange-1.13.7.tar.gz
+	sha256sums = 7fe70d06cfa80fcf7122f1a537a2205d844dd6e9efcc4d6dd712861faa3f2e14
 
 pkgname = lagrange-nosse41
