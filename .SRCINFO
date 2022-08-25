@@ -5,7 +5,6 @@ pkgbase = webots-bin
 	url = https://cyberbotics.com/
 	install = webots.install
 	arch = x86_64
-	groups = 
 	license = Apache
 	depends = make
 	depends = gcc
