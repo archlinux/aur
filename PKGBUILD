@@ -34,12 +34,12 @@ package() {
   
   # icon
   cd "$srcdir/PeaZip/peazip-sources/res/share/icons"
-  install -Dm644 peazip{,_app}.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
   install -Dm644 peazip_{7z,rar,zip}.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/mimetypes"
   install -Dm644 peazip_{add,extract,browse,convert}.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/actions"
 
   # desktop
   cd "$srcdir/PeaZip/peazip-sources/res/share/batch/freedesktop_integration"
+  install -Dm644 peazip.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
   install -Dm644 peazip.desktop -t "$pkgdir/usr/share/applications"
 
   # help & res
