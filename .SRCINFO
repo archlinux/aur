@@ -1,7 +1,7 @@
 pkgbase = batch-rename
 	pkgdesc = Command line tool to bulk-rename files interactively
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/claui/batch_rename
 	arch = any
 	license = ISC

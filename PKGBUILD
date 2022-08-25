@@ -1,11 +1,9 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
-# To enable linting in VS Code, run: tar -xf .vscode.untar-me.tar.xz
-
 _gemname=batch_rename
 pkgname=batch-rename
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Command line tool to bulk-rename files interactively'
 arch=('any')
 url='https://github.com/claui/batch_rename'
