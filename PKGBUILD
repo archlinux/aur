@@ -3,7 +3,7 @@
 pkgname=fenics-basix-git
 _base=basix
 pkgdesc="C++ interface of FEniCS for ordinary and partial differential equations."
-pkgver=0.1.0.258.g888e38ce
+pkgver=0.5.1.dev0.0.1.0.258.g888e38ce
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/FEniCS/basix"
@@ -11,15 +11,20 @@ license=('GPL3')
 groups=('fenics-git')
 depends=('xtensor' 'xtensor-blas' 'pybind11' 'petsc')
 makedepends=('git' 'boost')
+optdepends=('python-numba')
+checkdepends=("python-sympy")
 options=(!emptydirs)
 source=("git+${url}")
 sha256sums=('SKIP')
-
-_mainver=$(printf ${pkgver} | cut -d'.' -f1,2,3)
-provides=("${_base}=$_mainver" )
-replaces=("${_base}")
-conflicts=("${_base}")
-
+provides=("${_base}=${pkgver}"
+          "python-${_base}=${pkgver}"
+          "python-${_base}-git=${pkgver}"
+          "python-fenics-${_base}=${pkgver}")
+replaces=("${provides//$_mainver/}")
+conflicts=("${_base}"
+          "python-${_base}"
+          "python-${_base}-git"
+          "python-fenics-${_base}")
 #  From UPC: Building And Using Static And Shared "C"
 #  Libraries.html
 # #+begin_QUOTE
@@ -96,7 +101,13 @@ export LC_ALL=en_IE.UTF-8
 
 pkgver() {
   cd "${srcdir}/${_base}"
-  git describe --tags --match '*.*' | tr '-' '.'
+  _gitver=$(git describe --tags --match '*.*' | tr '-' '.')
+  # Gets the version from setup.py
+  # (prototype: version='0.5.1.dev0')
+  _pyver=$(grep 'version=' \
+                 "${srcdir}"/"${_base}"/python/setup.py |
+             tr -d ",'" | cut -d"=" -f2)
+  printf "%s.%s" "$_pyver" "$_gitver"
 }
 
 build() {
@@ -110,13 +121,32 @@ build() {
         -B "${srcdir}"/build \
         -S . \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DBUILD_SHARED_LIBS=TRUE \
-        -DCMAKE_CXX_STANDARD=20
-  cmake --build "${srcdir}"/build --target all
+        -DXTENSOR_OPTIMIZE=TRUE
+  cmake --build "${srcdir}"/build
+
+  _pydir="${srcdir}"/"${_base}"/python
+  cd "${_pydir}"
+  python setup.py build
+}
+
+check() {
+  cd "${srcdir}"/"${_base}"
+  # Temporary hack. Already reported on forum
+  mv test/test_version.py{,.disabled}
+  pytest test
 }
 
 package() {
   cd "${srcdir}"/"${_base}"/cpp
   cmake --install "${srcdir}"/build --prefix="${pkgdir}"/usr
-  install -Dm 644 ../LICENSE -t "${pkgdir}/usr/share/licenses/${_base}"
+  # make -C "${srcdir}"/build DESTDIR="${pkgdir}" install
+
+  _pydir="${srcdir}"/"${_base}"/python
+  cd "${srcdir}"/"${_base}"/python
+  python setup.py build
+  PYTHONPYCACHEPREFIX="${_pydir}/.cache/cpython/" \
+                     python setup.py install \
+                     --prefix=/usr --root="${pkgdir}"\
+                     --optimize=1
+  # pip install . --no-deps --prefix=/usr --root="${pkgdir}" --compile
 }
