@@ -1,0 +1,15 @@
+post_upgrade() {
+    if [[ $1 = 1.6.0-1 ]] || [[ $1 = 1.6.1-1 ]]; then
+	echo ""
+	echo "Notes for update 1.6.0:"
+	echo "A new TOFU trust store will be created. The old one is kept around but ignored."
+	echo "App state serialization format has been updated. Downgrading to a previous release will cause app state to be reset (e.g., tabs closed, navigation history cleared)."
+	echo ""
+    elif [[ $1 = 1.7.0-3 ]]; then
+	echo ""
+	echo "Notes for update 1.7.0:"
+	echo "Bookmarks file format has changed. Your existing bookmarks will be imported to the new format. The old bookmarks.txt file can be found in the config directory and is writable only by v1.6 and earlier versions."
+	echo "Saved UI state format has changed. Downgrading will reset window state, close all tabs, and clear the navigation cache."
+	echo ""
+    fi
+}
