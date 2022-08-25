@@ -71,7 +71,7 @@ package() {
   cd "${srcdir}/${pkgname}"
 
   mkdir -p "${pkgdir}/usr/share/lunarvim"{,/ftplugin}
-  cp -r {colors,ftdetect,lua,init.lua} "${pkgdir}/usr/share/lunarvim"
+  cp -r {ftdetect,lua,init.lua} "${pkgdir}/usr/share/lunarvim"
 
   mkdir -p "${pkgdir}/usr/share/lunarvim/prebuild/nvim-treesitter/parser"{,-info}
 
