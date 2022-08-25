@@ -13,7 +13,7 @@ pkgbase = cura-5-bin
 	source = cura5.sh
 	source = cura.desktop.patch
 	sha256sums = eab92e31c12c1b101fbaf2664df00bed182528e282874e4f379c87b29692ac76
-	sha256sums = b54488562c7305072f00fa5e2125458403ec0609fe849a195c977b70a37108a8
+	sha256sums = 55cf596db74ab369e33f860d581e9e27b72a1d4688de37868c038ad5328fb09a
 	sha256sums = 4db683cf5424c97553ba3b6ab834b838ffec731441b240e6451e4ffc12a66976
 
 pkgname = cura-5-bin
