@@ -22,7 +22,7 @@ changelog=
 source=("craftos2-${pkgver}.tar.gz::https://github.com/MCJack123/craftos2/archive/v${pkgver}-luajit.tar.gz"
         "craftos2-luajit-v2.5.4.tar.gz::https://github.com/MCJack123/craftos2-luajit/archive/v2.5.4.tar.gz")
 noextract=()
-sha256sums=('2303b56e187d662a7083a31a5be49b9b57d8cac0923b5a5c01b138cdcc99ce10' 'd65736d71a54bdf393f657ae0ecd7d333a07143b9842f759f09749ca5b7b6003')
+sha256sums=('9a8f4ecb0903ed94bf321c271190c01936ca9a6bc1bc4247dfafdeb489a20295' 'd65736d71a54bdf393f657ae0ecd7d333a07143b9842f759f09749ca5b7b6003')
             'd65736d71a54bdf393f657ae0ecd7d333a07143b9842f759f09749ca5b7b6003')
 validpgpkeys=()
 
