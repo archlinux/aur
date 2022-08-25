@@ -1,7 +1,7 @@
 pkgbase = dq
 	pkgdesc = Small recursive DNS server and tools with DNSCurve support
 	pkgver = 20220822
-	pkgrel = 3
+	pkgrel = 4
 	url = https://mojzis.com/software/dq/
 	install = dq.install
 	arch = x86_64

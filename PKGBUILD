@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez <aperez@igalia.com>
 pkgname=dq
 pkgver=20220822
-pkgrel=3
+pkgrel=4
 pkgdesc='Small recursive DNS server and tools with DNSCurve support'
 url=https://mojzis.com/software/dq/
 arch=(x86_64 i686)
@@ -28,6 +28,9 @@ package () {
 	for num in 1 8 ; do
 		install -m 644 -D -t "${pkgdir}/usr/share/man/man${num}" man/*.${num}
 	done
+
+	mv "${pkgdir}/usr/sbin"/* "${pkgdir}/usr/bin"
+	rmdir "${pkgdir}/usr/sbin"
 
 	install -m 644 -D LICENCE.md \
 		"${pkgdir}/usr/share/licenses/${pkgname}/LICENCE.md"
