@@ -1,28 +1,65 @@
-# Maintainer: Anty0 <anty150 at gmail dot com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Anty0 <anty150 at gmail dot com>
 
-
-# Helper variables for updaurpkg (https://aur.archlinux.org/packages/updaurpkg-git)
-_nextcloud_appname='integration_gitlab'
-_upstreamver='v1.0.3'
-_upstreamver_regex='^v[0-9]+\.[0-9]+\.[0-9]+$'
-_source_type='github-releases'
-_repo='nextcloud/integration_gitlab'
-
-
-pkgdesc='GitLab integration into Nextcloud'
-pkgname=('nextcloud-app-integration-gitlab')
-pkgver="${_upstreamver:1}"
+_appname=integration_gitlab
+pkgname=nextcloud-app-${_appname/_/-}
+pkgver=1.0.4
 pkgrel=1
-arch=('any')
-license=('AGPL3')
-url="https://github.com/${_repo}"
-makedepends=()
-depends=('nextcloud')
-options=('!strip')
-source=("${_nextcloud_appname}-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_nextcloud_appname}-${pkgver}.tar.gz")
-sha512sums=('1d47aa63b69908f099406fa92063422074e36d062484bbbedbf1d587de8e55d9a7f5943c0461e09b6f9b8d924c33f969d8417420bae48f44cfe63ce4d0c62d96')
+pkgdesc='GitLab integration into Nextcloud'
+arch=(any)
+url="https://github.com/nextcloud/$_appname"
+license=(AGPL3)
+makedepends=(nextcloud
+             rsync
+             yq)
+_archive="$_appname-$pkgver"
+source=("$url/releases/download/v$pkgver/$_archive.tar.gz")
+sha256sums=('8e8da65cc5b772117e95e78306a60c5bb7bda8844bf719df6b6c92b16e4dffe3')
+
+# BEGIN boilerplate nextcloud app version clamping, see also other packages in group
+# 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
+# 2. Add makedepends+=(nextcloud yq)
+_phps=(php7 php)
+_get_supported_ranges() {
+	_app_min_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@min-version"] | values')"
+	_app_max_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@max-version"] | values | tonumber | .+1')"
+	_app_min_php="$(< appinfo/info.xml xq -r '.info.dependencies.php["@min-version"] | values')"
+	_app_max_php="$(< appinfo/info.xml xq -r '.info.dependencies.php["@max-version"] | values | tonumber | .+0.1')"
+}
+_unsupported_range() {
+	printf "%s requires %s %s, but %s %s is provided.\n" "$pkgname" "$1" "$2" "$1" "$3"
+	exit 1
+}
+_nextcloud_app_check() {
+	_get_supported_ranges
+	for _php in "${_phps[@]}"; do command -v "$_php" > /dev/null && break; done
+	local _nextcloud_ver="$("$_php" <(cat /usr/share/webapps/nextcloud/version.php; echo 'print($OC_VersionString);'))"
+	local _php_ver="$("$_php" -r 'print(phpversion());')"
+	[[ "$(vercmp "${_app_min_nextcloud:-0}" "$_nextcloud_ver")" -le 0 ]] || \
+		_unsupported_range nextcloud "=> $_app_min_nextcloud" "$_nextcloud_ver"
+	[[ "$(vercmp "${_app_max_nextcloud:-999}" "$_nextcloud_ver")" -gt 0 ]] || \
+		_unsupported_range nextcloud "< $_app_max_nextcloud" "$_nextcloud_ver"
+	[[ "$(vercmp "${_app_min_php:-0}" "$_php_ver")" -le 0 ]] || \
+		_unsupported_range php ">= $_app_min_php" "$_php_ver"
+	[[ "$(vercmp "${_app_max_php:-999}" "$_php_ver")" -gt 0 ]] || \
+		_unsupported_range php "< $_app_max_php" "$_php_ver"
+}
+_nextcloud_app_package() {
+	_get_supported_ranges
+	depends+=("nextcloud>=${_app_min_nextcloud:-0}" "nextcloud<${_app_max_nextcloud:-999}")
+	depends+=("php-interpreter${_app_min_php:+>=$_app_min_php}" ${_app_max_php:+"php-interpreter<$_app_max_php"})
+}
+# END boilerplate nextcloud app version clamping
+
+check() {
+	cd "$_appname"
+	_nextcloud_app_check
+}
 
 package() {
-	install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
-	cp -a "${srcdir}/${_nextcloud_appname}" "${pkgdir}/usr/share/webapps/nextcloud/apps/${_nextcloud_appname}"
+	cd "$_appname"
+	_nextcloud_app_package
+	_appdir="$pkgdir/usr/share/webapps/nextcloud/apps/$_appname"
+	rsync -a --mkpath \
+		./ $_appdir/
 }
