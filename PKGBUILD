@@ -1,30 +1,40 @@
 # Maintainer: Ivan  <vantu5z@mail.ru>
 
 pkgname=wireproxy
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.0.4
+pkgrel=1
 arch=(x86_64)
 license=(ISC)
 url="https://github.com/octeep/wireproxy"
 pkgdesc="Wireguard client that exposes itself as a socks5 proxy"
 depends=()
-makedepends=('go')
+makedepends=('go>=2:1.18' 'go<2:1.19')
 source=("https://github.com/octeep/wireproxy/archive/refs/tags/v${pkgver}.tar.gz"
         "wireproxy.service"
-        "wireproxy-user.service")
-sha256sums=('108175bff7e5158236acdd2a0b1fc129a799a52772885b8e835c5e84d24a7358'
-            '0391264097b317d72e6286c700f9616bf094c8ad937ad4ba5988aa4713404ca0'
-            '8c40908924c46be21c9a0b462a632ac1aa4a51aa0b9b028d9bb015091a98e77e')
+        "wireproxy@.service"
+        "wireproxy-user.service"
+        "wireproxy-user@.service")
+sha256sums=('c600a8cd3d45e006afd0bdc5052730731f50997c85c1fa75112ce7ac6e9e1465'
+            '2ad52b7d158fef9c5bd468042e6c7cdc1130a3bde65015bee8107c0a6a422c0d'
+            'e3f169d0f814c5c8d0e1a9d4af9ff7f86566f4239d00fffedb804c862202b264'
+            'f3510b14b2993d53c3fda4e19bfb13f7f17ebc85d81a2144e0e9a1e47241e041'
+            '8a8d6e8fd35e4d0798b0c701a54238d8fb6cdcbbf2ae6efccb827e455d7b658f')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  go build ./cmd/wireproxy
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external"
+  go build -o wireproxy ./cmd/wireproxy
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   install -Dm0755 "wireproxy" "${pkgdir}/usr/bin/wireproxy"
   install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm0755 "../wireproxy.service" "${pkgdir}/usr/lib/systemd/system/wireproxy.service"
-  install -Dm0755 "../wireproxy-user.service" "${pkgdir}/usr/lib/systemd/user/wireproxy.service"
+  install -Dm0644 "${srcdir}/wireproxy.service" "${srcdir}/wireproxy@.service" -t "${pkgdir}/usr/lib/systemd/system/"
+  install -Dm0644 "${srcdir}/wireproxy-user.service" "${pkgdir}/usr/lib/systemd/user/wireproxy.service"
+  install -Dm0644 "${srcdir}/wireproxy-user@.service" "${pkgdir}/usr/lib/systemd/user/wireproxy@.service"
 }
