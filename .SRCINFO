@@ -1,0 +1,15 @@
+pkgbase = pokesprite-git
+	pkgdesc = Show a random Pokémon in your terminal
+	pkgver = r3.f7cc1d6
+	pkgrel = 1
+	url = https://github.com/tomKPZ/pokesprite
+	arch = x86_64
+	makedepends = git
+	makedepends = python-beautifulsoup4
+	makedepends = python-requests
+	makedepends = python-matplotlib
+	depends = glibc
+	source = git+https://github.com/tomKPZ/pokesprite.git
+	md5sums = SKIP
+
+pkgname = pokesprite-git
