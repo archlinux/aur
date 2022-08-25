@@ -11,6 +11,7 @@ arch=('x86_64')
 url="https://www.chiark.greenend.org.uk/~sgtatham/${pkgname}"
 license=('MIT')
 depends=('ncurses' 'perl')
+makedepends=('cmake')
 source=("${url}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.patch")
 sha256sums=('8c7f325166b86055232cca9d745c6a18dcdcb6d30a0685e07ac0eab677912b05'

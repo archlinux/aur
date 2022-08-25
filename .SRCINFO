@@ -5,6 +5,7 @@ pkgbase = ipbt
 	url = https://www.chiark.greenend.org.uk/~sgtatham/ipbt
 	arch = x86_64
 	license = MIT
+	makedepends = cmake
 	depends = ncurses
 	depends = perl
 	source = https://www.chiark.greenend.org.uk/~sgtatham/ipbt/ipbt-20220403.d4e7fcd.tar.gz
