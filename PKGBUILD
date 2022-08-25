@@ -3,7 +3,7 @@
 DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=obs-studio-rc
-_pkgver=28.0.0-rc1
+_pkgver=28.0.0-rc2
 pkgver=${_pkgver//-/_}
 pkgrel=1
 epoch=2
@@ -119,7 +119,7 @@ fi
 if [[ $CARCH == 'x86_64' ]]; then
   _cefbranch=5060
   source+=("https://cdn-fastly.obsproject.com/downloads/cef_binary_${_cefbranch}_linux64.tar.bz2")
-  sha256sums+=("1fe9c09bb43e8d2be2c07b792e69fb51250782e68f2c8d1d30da2559cfb9ae0e")
+  sha256sums+=("ac4e2a8ebf20700e4e36353e314f876623633dd5b474778a2548bb66bdbea11d")
   provides+=("obs-browser")
   conflicts+=("obs-linuxbrowser" "obs-browser")
   _browser=ON
