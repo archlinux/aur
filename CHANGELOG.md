@@ -8,6 +8,10 @@ Versions since `1.7.0` only track ABI breaks and not API breaks.
 
 ## [Unreleased]
 
+## [1.22.1] - 2022-08-24
+### Fixed
+- Fix regression in TCODList when items are removed during iteration.
+
 ## [1.22.0] - 2022-08-24
 ### Added
 - Libtcod can now be built without zlib by passing the `-DLIBTCOD_ZLIB=disable` flag to CMake or by setting `CMAKE_DISABLE_FIND_PACKAGE_ZLIB=1`.

@@ -7,7 +7,7 @@
 ## GPG key: https://github.com/hexdecimal.gpg
 
 pkgname=libtcod
-pkgver=1.22.0
+pkgver=1.22.1
 pkgrel=1
 pkgdesc="Roguelike graphics/utility library"
 arch=('x86_64')
