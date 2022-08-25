@@ -2,7 +2,7 @@
 
 pkgname=wireproxy
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 license=(ISC)
 url="https://github.com/octeep/wireproxy"
