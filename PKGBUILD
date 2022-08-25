@@ -4,7 +4,7 @@
 
 _pkgname=fcp
 pkgname=fcp-git
-pkgver=v0.1.0.r2.g24dc2cb
+pkgver=v0.2.1.r9.g6d57487
 pkgrel=1
 pkgdesc="A faster rust cp command"
 arch=('i686' 'x86_64')
