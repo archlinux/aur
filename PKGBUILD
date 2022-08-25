@@ -2,7 +2,7 @@
 
 pkgname=python-pytest-check
 _pkgname="${pkgname#python-}"
-pkgver=1.0.7
+pkgver=1.0.9
 pkgrel=1
 pkgdesc='Pytest plugin that allows multiple failures per test'
 arch=('any')
@@ -18,8 +18,8 @@ makedepends=(
   'python-flit-core'
 )
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('5cf5b25bc264475d475433f1418376c933335dbc7c765419cb00e6143a18d0ef560f027d472c21e2a339cee5111c487d7edd5b5cd149315e9d7cca956b928959')
-b2sums=('ebcd8aed8ca20c67c9683a763da181981e0814bb10aaacd803f827610a3f33730655dfa684fc273b347a2542bc6c3f20e8253cc17d8a4bbe05c9938076784e4a')
+sha512sums=('058bb17255f08b83e0fc9f6c91be99b2a17676eae903f70999598c1ee69cf0b89cbe3767bbc3fabbacb2a5db35d26ed825599f401f693f4dc6195c02fac5c923')
+b2sums=('8bbf0299e76a0e5acbb6ab4e8ce2bcb386ad2e1e91e1596e317bed9800b03c0fcadf76abe76a0ab9d2d8d190dbd839e042579abb08ea898b8325c27898670088')
 
 prepare() {
   cd "$_pkgname-$pkgver"
