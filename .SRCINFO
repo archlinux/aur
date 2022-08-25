@@ -1,12 +1,12 @@
 pkgbase = r-bas
 	pkgdesc = Bayesian Variable Selection and Model Averaging using Bayesian Adaptive Sampling
-	pkgver = 1.5.5
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=BAS
 	arch = x86_64
+	license = GPL3
 	depends = r
-	source = https://cran.r-project.org/src/contrib/BAS_1.5.5.tar.gz
-	b2sums = SKIP
+	source = https://cran.r-project.org/src/contrib/BAS_1.6.2.tar.gz
+	sha256sums = ecfc7f93d4d92d2c7c4dd72cee9b4843999e3b83ed64d46b207eca57d1931a35
 
 pkgname = r-bas
-
