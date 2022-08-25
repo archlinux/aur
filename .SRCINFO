@@ -1,6 +1,6 @@
 pkgbase = ocaml-dolog
 	pkgdesc = A dumb OCaml logger
-	pkgver = 4.0.0
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://github.com/UnixJunkie/dolog
 	arch = i686
@@ -11,8 +11,7 @@ pkgbase = ocaml-dolog
 	makedepends = dune
 	depends = ocaml
 	options = staticlibs
-	source = https://github.com/UnixJunkie/dolog/archive/v4.0.0.tar.gz
-	sha256sums = bd5b57e9954cc0b6750016e820b0ca8293207e2f337d465937a0f1d91430b503
+	source = https://github.com/UnixJunkie/dolog/archive/v6.0.0.tar.gz
+	sha256sums = 2ad2aa639a21140e196491b9be3ebc03b5e5651c6b66db374c04ea6b69d0bd45
 
 pkgname = ocaml-dolog
-
