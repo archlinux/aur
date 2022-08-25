@@ -1,38 +1,37 @@
 # Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 
 pkgname=canokey-usbip-git
-pkgver=r1066.a88eaa87
+_pkgname=${pkgname%-git}
+pkgver=r2.e9db44f
 pkgrel=1
 pkgdesc="A virtual canokey based on USB/IP"
 arch=('x86_64')
 url="https://www.canokeys.org"
 license=('Apache')
-depends=('gcc-libs')
+depends=('usbip')
 makedepends=('cmake' 'git')
-optdepends=('usbip: usbip support')
-source=('git+https://github.com/canokeys/canokey-core.git')
+source=('git+https://github.com/canokeys/canokey-usbip.git')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/canokey-core"
+	cd "${srcdir}/${_pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$srcdir/canokey-core"
+	cd "${srcdir}/${_pkgname}"
 	git submodule update --init --recursive
 }
 
 build() {
-	cmake -B build -S "canokey-core" \
+	cmake -B build -S ${_pkgname} \
 		-DCMAKE_BUILD_TYPE='None' \
 		-DCMAKE_INSTALL_PREFIX='/usr' \
-		-DUSBIP=ON \
 		-Wno-dev
 	cmake --build build
 }
 
 package() {
-	# DESTDIR="${pkgdir}" cmake --install build
-	install -Dm755 "$srcdir/canokey-core/build/canokey-usbip" -t "$pkgdir/usr/bin/"
+	DESTDIR="${pkgdir}" cmake --install build
+	install -Dm755 "${srcdir}/build/${_pkgname}" -t "$pkgdir/usr/bin/"
 }
