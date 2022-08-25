@@ -10,8 +10,9 @@ license=('LGPL-3.0')
 provides=(${pkgname%-git}  'DOM-Ruler')
 conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
-depends=('cmake' 'gcc' 'glib2' 'purc' )
-makedepends=('git' 'cmake' 'ninja')
+depends=('glib2' 'purc')
+makedepends=('git' 'cmake' 'ninja' 'ccache' 'gcc' 'python' 'libxml2' 'ruby' 'curl' 'openssl' 'sqlite' 'pkgconf' 'zlib' 'icu')
+optdepends=('purc-fetcher' 'xguipro')
 backup=()
 options=('!strip')
 #install=${pkgname}.install
@@ -26,12 +27,26 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname%-git}"
+
 # CMake build
-#     cmake -B build
+#     cmake -DCMAKE_BUILD_TYPE=Debug \
+#         -DPORT=Linux \
+#         -DCMAKE_INSTALL_PREFIX=/usr \
+#         -DCMAKE_INSTALL_LIBDIR=lib \
+#         -DCMAKE_INSTALL_LIBEXECDIR=lib \
+#         -B build
+
 #     cmake --build build
 
 # Ninja build
-    cmake -B build -G Ninja
+    cmake -DCMAKE_BUILD_TYPE=Debug \
+        -DPORT=Linux \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DCMAKE_INSTALL_LIBEXECDIR=lib \
+        -B build \
+        -G Ninja
+
     ninja -C build
 }
 
