@@ -10,13 +10,14 @@ license=('LGPL-3.0')
 provides=(${pkgname%-git}  'xGUI-Pro')
 conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
-depends=('cmake' 'gcc' 'perl' 'python' 'glib2' 'gtk' 'purc' 'domruler')
+depends=('glib2')
 makedepends=('git' 'cmake' 'ninja')
-optdepends=('ccache')
+makedepends=('git' 'cmake' 'ninja' 'ccache' 'gcc' 'python' 'libxml2' 'ruby' 'curl' 'openssl' 'sqlite' 'pkgconf' 'zlib' 'icu' 'webkit2gtk-hvml')
+optdepends=('domruler' 'purc-fetcher' 'purc')
 backup=()
 options=('!strip')
 #install=${pkgname}.install
-source=("${pkgname%-git}::git+${url}.git")
+source=("${pkgname%-git}::git+${url}.git"        )
 sha256sums=('SKIP')
 
 pkgver() {
@@ -27,12 +28,26 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname%-git}"
+
 # CMake build
-#     cmake -DCMAKE_BUILD_TYPE=Debug -DPORT=GTK -B build
+#     cmake -DCMAKE_BUILD_TYPE=Debug \
+#         -DPORT=GTK \
+#         -DCMAKE_INSTALL_PREFIX=/usr \
+#         -DCMAKE_INSTALL_LIBDIR=lib \
+#         -DCMAKE_INSTALL_LIBEXECDIR=lib \
+#         -B build
+
 #     cmake --build build
 
 # Ninja build
-    cmake -DCMAKE_BUILD_TYPE=Debug -DPORT=GTK -B build -G Ninja
+    cmake -DCMAKE_BUILD_TYPE=Debug \
+        -DPORT=GTK \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DCMAKE_INSTALL_LIBEXECDIR=lib \
+        -B build \
+        -G Ninja
+
     ninja -C build
 }
 
