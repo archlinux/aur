@@ -1,12 +1,12 @@
 pkgbase = python-class
 	pkgdesc = CLASS: Cosmic Linear Anisotropy Solving System
-	pkgver = 3.1.1
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/lesgourg/class_public
 	arch = any
 	depends = cython
 	options = !emptydirs
-	source = https://github.com/lesgourg/class_public/archive/v3.1.1.tar.gz
-	sha256sums = e60709302cd5ac3d4e810ac787403105d4134a995050ba017058d95cdf278045
+	source = https://github.com/lesgourg/class_public/archive/v3.2.0.tar.gz
+	sha256sums = 16c65189995c0569bc3053ff8bdb69fe4901abaaaba6dd88c030c17e26f1e9ba
 
 pkgname = python-class
