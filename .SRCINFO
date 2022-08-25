@@ -1,7 +1,7 @@
 pkgbase = r-scuttle
 	pkgdesc = Single-Cell RNA-Seq Analysis Utilities
-	pkgver = 1.6.2
-	pkgrel = 3
+	pkgver = 1.6.3
+	pkgrel = 1
 	url = https://bioconductor.org/packages/scuttle
 	arch = x86_64
 	license = GPL
@@ -22,7 +22,7 @@ pkgbase = r-scuttle
 	optdepends = r-scran
 	optdepends = r-scrnaseq
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scuttle_1.6.2.tar.gz
-	sha256sums = f64fe1c7478b45d062656cfd2ecad3341abb1b1d9eb0ac0857dd0ce2f8c0d55a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scuttle_1.6.3.tar.gz
+	sha256sums = e118c2db8d35ccd212691e3f0e1ebb805a3db54ba41174e9004ddc895df132f0
 
 pkgname = r-scuttle
