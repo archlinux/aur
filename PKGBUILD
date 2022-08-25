@@ -3,7 +3,7 @@
 # Adapted by dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 
 pkgname=('librewolf-extension-dark-reader')
-pkgver=4.9.56
+pkgver=4.9.57
 pkgrel=1
 pkgdesc='Inverts brightness of web pages and aims to reduce eyestrain while browsing the web'
 url=https://darkreader.org/
@@ -11,7 +11,7 @@ arch=('any')
 license=('MIT')
 makedepends=('npm' 'strip-nondeterminism')
 source=("https://github.com/darkreader/darkreader/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('c57c016e5ed89af3dd53303228c77a7dbf4b5bcbf4beaa51123a85b36cba34a22399fed78d1c38208d2a86fa27e7fa994c2207f1428601b526c74c6c4af13cdc')
+b2sums=('1bf8c82daa3716da99e8150d4c96a638c67bb58c9c7cf1dff9c914c52f17ccd7df924cc79704c547b8a151c2c3daea93a76844ccb6a70070e735f002d648d198')
 
 prepare() {
   cd darkreader-$pkgver
