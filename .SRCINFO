@@ -1,6 +1,6 @@
 pkgbase = matomo
 	pkgdesc = A real-time web analytics platform
-	pkgver = 4.10.1
+	pkgver = 4.11.0
 	pkgrel = 1
 	url = https://matomo.org/
 	install = matomo.install
@@ -14,10 +14,10 @@ pkgbase = matomo
 	replaces = piwik
 	backup = usr/share/webapps/matomo/piwik.js
 	backup = usr/share/webapps/matomo/matomo.js
-	source = https://builds.matomo.org/matomo-4.10.1.tar.gz
-	source = https://builds.matomo.org/matomo-4.10.1.tar.gz.asc
+	source = https://builds.matomo.org/matomo-4.11.0.tar.gz
+	source = https://builds.matomo.org/matomo-4.11.0.tar.gz.asc
 	validpgpkeys = F529A27008477483777FC23D63BB30D0E5D2C749
-	sha256sums = 4cddb1cb760786db9ec268bb87dbed30a125448f2e58ebe76331b54652064f75
-	sha256sums = f04d8e942c93578ac9a95a7cb0fe103b241f80327f83fcac556fa81cd3e01ce3
+	sha256sums = aa3a52cc5fe27128b4df30a3587014ebd08d2b988d54c6df1715fd7e5a81fb76
+	sha256sums = 290d1b270c0e4f50e8004d5eaa3c47dbca27196d8906d2fa2a93644f5663edd3
 
 pkgname = matomo
