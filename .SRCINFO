@@ -1,6 +1,6 @@
 pkgbase = sidequestlite-bin
 	pkgdesc = Installs Sidequest directly onto your Meta Quest or Go to easily sideload apps.
-	pkgver = 0.0.5
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://github.com/SideQuestVR/EasyInstallerReleases
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = sidequestlite-bin
 	depends = android-udev
 	provides = sidequestlite
 	conflicts = sidequestlite
-	source = https://github.com/SideQuestVR/EasyInstallerReleases/releases/download/v0.0.5/sidequestlite-0.0.5.tar.xz
+	source = https://github.com/SideQuestVR/EasyInstallerReleases/releases/download/v0.0.8/sidequestlite-0.0.8.tar.xz
 	source = SideQuestLite.desktop
-	sha256sums = 39f2d33a6d2af45f22295b47c26d7a5e30a0a0325e94435b96e0386dcae857ef
+	sha256sums = 920ed189671d4621aec0658e6e642d2c6e3b9a177f1d99c6cee9eb75d3a29b7f
 	sha256sums = 9fb4cc1d09f61dcf4e7e12b29d0cc7ffe972c2fe7a0f4648a227529f222dd647
 
 pkgname = sidequestlite-bin
