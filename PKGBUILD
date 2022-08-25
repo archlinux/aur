@@ -1,8 +1,8 @@
-# Maintainer: workonfire <kolucki62@gmail.com>
+# Maintainer: Letu Ren <fantasquex at gmail dot com>
+# Contributor: workonfire <kolucki62@gmail.com>
 
-_pkgname=onigurumacffi
-pkgname=python-$_pkgname
-pkgver=1.1.0
+pkgname=python-onigurumacffi
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Python cffi bindings for the oniguruma regex engine"
 arch=('x86_64')
@@ -10,8 +10,9 @@ url="https://github.com/asottile/onigurumacffi"
 license=('MIT')
 depends=('oniguruma' 'python-cffi')
 makedepends=('python-setuptools')
+_pkgname=${pkgname#python-}
 source=("$url/archive/v$pkgver.tar.gz")
-md5sums=('191a556c60f4d93a42127292b16e2f98')
+sha256sums=('296fd0acd19bdb6af979ee02ed6795d9728f9a0845da91dc6cce7b9f2cf7ea8c')
 
 build() {
 	cd "$srcdir/$_pkgname-$pkgver"
