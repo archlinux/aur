@@ -9,7 +9,7 @@
 _pkgbase=scons
 pkgname=scons2
 pkgver=3.1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Extensible Python-based build utility (Python2 version)"
 arch=('any')
 url="https://scons.org"
@@ -19,7 +19,7 @@ provides=('python2-scons')
 depends=('python2' 'perl' 'ruby')
 makedepends+=('python2-setuptools' 'java-runtime>=9')
 source=("$_pkgbase-$pkgver.tar.gz::https://github.com/${_pkgbase}/${_pkgbase}/archive/${pkgver}.tar.gz")
-sha512sums=('7d597e681d00918342c64afc61410d961f0516f2e054669d3ef76fcddcbf13b4e24990bdd7c46f3f4369ad2f45ba3fe0173e33edc15e846096bbea10b23fb7c1')
+sha512sums=('b096501ea37e62f596f16b46b4022ad7979f359b10849d4c5fa17731a6c3ec34e0890374de175a8aa7539ae677777142ccf5dfae39a74696efcdbcc00e89bccf')
 
 prepare() {
    cd "${_pkgbase}-${pkgver}"
