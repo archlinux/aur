@@ -2,7 +2,7 @@
 
 pkgname=balena-deploy-request
 pkgdesc='A simple script for generating deploy requests along with release notes'
-pkgver=0.8.0
+pkgver=0.8.2
 pkgrel=1
 arch=('any')
 url='https://balena.io/'
@@ -13,7 +13,7 @@ makedepends=('npm' 'jq')
 source=("https://github.com/balena-io-modules/${pkgname}/archive/v${pkgver}.tar.gz")
 noextract=("v${pkgver}.tar.gz")
 options=(!strip)
-sha256sums=('d56a053111c7d79928c3817f1913410f2bd4e83c9874642dab6a66d2b06dc168')
+sha256sums=('f8ea34e482934a1ad1cc6cb33af7468d490dc182ac4bf8983d7b8a8bbdc3822b')
 
 package() {
   npm install --global --production --user root --prefix "${pkgdir}/usr" "${srcdir}/v${pkgver}.tar.gz"
