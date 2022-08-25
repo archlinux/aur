@@ -12,13 +12,13 @@ _pkgmajorver=2019
 _pkgminorver=6
 pkgname=tbb2019
 pkgver=${_pkgmajorver}.${_pkgminorver}
-pkgrel=2
+pkgrel=3
 pkgdesc='High level abstract threading library'
 arch=('x86_64')
 url='https://www.threadingbuildingblocks.org/'
 license=('Apache')
 depends=('gcc-libs')
-makedepends=('cmake' 'inetutils')
+makedepends=('cmake' 'git' 'inetutils')
 provides=("intel-tbb=$pkgver")
 conflicts=('tbb' 'intel-oneapi-tbb')
 source=(https://github.com/oneapi-src/oneTBB/archive/refs/tags/${_pkgmajorver}_U${_pkgminorver}.tar.gz
@@ -35,6 +35,11 @@ build() {
   cd oneTBB-${_pkgmajorver}_U${_pkgminorver}
   make
 }
+
+# check() {
+#   cd oneTBB-${_pkgmajorver}_U${_pkgminorver}
+#   make test
+# }
 
 package() {
   cd oneTBB-${_pkgmajorver}_U${_pkgminorver}
