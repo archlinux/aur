@@ -1,15 +1,13 @@
 pkgbase = combblas
 	pkgdesc = A library offering a set of linear algebra primitives for graph analytics
-	pkgver = 1.6.2+r4666
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/PASSIONLab/CombBLAS
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
-	makedepends = git
 	depends = openmpi
-	source = git+https://github.com/PASSIONLab/CombBLAS.git
-	sha256sums = SKIP
+	source = https://github.com/PASSIONLab/CombBLAS/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 632a94201a042a2a9aa86803f50ee38b7bf0aa1cfef6ba0eb34ea4007f79a679
 
 pkgname = combblas
-
