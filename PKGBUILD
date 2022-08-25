@@ -7,6 +7,7 @@ url="https://github.com/tomKPZ/pokesprite"
 arch=("x86_64")
 depends=("glibc")
 makedepends=("git" "python-beautifulsoup4" "python-requests" "python-matplotlib")
+license=('GPL3')
 
 source=("git+https://github.com/tomKPZ/pokesprite.git")
 md5sums=("SKIP")
