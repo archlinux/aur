@@ -12,8 +12,7 @@ ProtectSystem=true
 WorkingDirectory=/etc/dqcache/%i
 EnvironmentFile=-/etc/dqcache/%i.conf
 EnvironmentFile=/etc/dqcache/%i/config
-Environment=ROOT=/etc/dqcache/%i
-ExecStart=/usr/bin/dqcache
+ExecStart=/usr/bin/dqcache-start /etc/dqcache/%i dqcache /usr/bin/dqcache
 
 [Install]
 WantedBy=multi-user.target
