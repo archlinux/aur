@@ -1,6 +1,6 @@
 pkgbase = spark2014-git
 	pkgdesc = Formally defined programming language based on Ada (GNAT FSF version)
-	pkgver = 0.3.draft.r22234.g1895e0e8d1
+	pkgver = 0.3.draft.r22640.gef5fb19e20
 	pkgrel = 1
 	url = https://www.spark-2014.org
 	arch = x86_64
@@ -18,6 +18,7 @@ pkgbase = spark2014-git
 	makedepends = ocaml-ocplib-simplex
 	makedepends = ocaml-yojson
 	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
 	depends = python2
 	optdepends = alt-ergo: alternative prover
 	optdepends = z3: alternative prover
@@ -32,6 +33,6 @@ pkgbase = spark2014-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = beccfa221c9c2675b62d61f669a2792e91e37614bccd7e23d190c80b60be8e0d
+	sha256sums = 9985b6864849fb0210cdf40d64b7747cac2c8371385f9790b142d402b5b7d22a
 
 pkgname = spark2014-git

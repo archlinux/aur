@@ -22,17 +22,3 @@ diff --color --unified --recursive --text src.orig/spark2014/Makefile src.new/sp
  
  install:
  	mkdir -p $(INSTALLDIR)/bin $(CONFIGDIR) $(THEORIESDIR) \
-diff --color --unified --recursive --text src.orig/spark2014/why3/Makefile.in src.new/spark2014/why3/Makefile.in
---- src.orig/spark2014/why3/Makefile.in	2022-05-12 14:41:38.180638636 -0600
-+++ src.new/spark2014/why3/Makefile.in	2022-05-12 14:44:58.682320067 -0600
-@@ -152,8 +152,8 @@
- 
- # external libraries common to all binaries
- 
--EXTOBJS = menhirLib
--EXTLIBS = @SEQLIB@ @RELIB@ unix nums dynlink result easy_format biniou yojson @ZIPLIB@ @MLMPFR@ @WHY3LIB@ @INFERLIB@
-+EXTOBJS =
-+EXTLIBS = menhirLib @SEQLIB@ @RELIB@ unix nums dynlink result easy_format biniou yojson @ZIPLIB@ @MLMPFR@ @WHY3LIB@ @INFERLIB@
- EXTPKGS = menhirLib @SEQLIB@ @RELIB@ unix num dynlink yojson @ZIPLIB@ @WHY3LIB@ @INFERPKG@ @SEXPLIB@ @SEXPLIBPPX@
- 
- EXTCMA	= $(addsuffix .cmo,$(EXTOBJS)) $(addsuffix .cma,$(EXTLIBS))
