@@ -2,7 +2,7 @@
 
 _plugin=focalboard
 pkgname=mattermost-plugin-$_plugin
-pkgver=7.2.0
+pkgver=7.2.1
 pkgrel=1
 pkgdesc='an open source, self-hosted alternative to Trello, Notion, and Asana'
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=('mattermost>=7')
 options=(!strip)
 _archive="$pkgname-$pkgver"
 source=("$_archive.tgz::$_url/releases/download/v$pkgver/$pkgname.tar.gz")
-sha256sums=('aea6167d6c9545a3d0dbe1dba7440251a82abf400fde4160bc70129aea35bd12')
+sha256sums=('2d60c7777fae3cea431bfd44ef9b183bee4608122de042b0ccad73d6bfff250f')
 
 # Note the intention of this package is to bulid from source, but I haven't
 # gotten it to work yet. Contributions welcome! Temporarily it is installing
