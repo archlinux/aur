@@ -1,11 +1,10 @@
 # Maintainer: Łukasz Mariański <lmarianski at protonmail dot com>
 
 _pkgname=vscodium
-_electron=electron17
-_nodejs='16.14.2'
+_electron=electron19
 
 pkgname=${_pkgname}-electron
-pkgver=1.69.2
+pkgver=1.70.2.22230
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -16,7 +15,7 @@ optdepends=('x11-ssh-askpass: SSH authentication')
 makedepends=('git' 'gulp' 'python' 'yarn' 'nvm' 'imagemagick' 'ripgrep')
 conflicts=('vscodium')
 source=("git+https://github.com/VSCodium/vscodium.git#tag=${pkgver}"
-    	"git+https://github.com/microsoft/vscode.git#tag=${pkgver}"
+        "git+https://github.com/microsoft/vscode.git#tag=${pkgver%.*}"
 		"${_pkgname}.sh"
 		"${_pkgname}.js"
 		"${_pkgname}.desktop"
@@ -72,7 +71,7 @@ prepare() {
 	sed -i "s/@ELECTRON@/${_electron}/" "$srcdir/$_pkgname.js"
 
 	_ensure_local_nvm
-	nvm install "$_nodejs"
+	nvm install
 
 	# Build native modules for system electron
 	local _target=$(</usr/lib/$_electron/version)
@@ -89,10 +88,8 @@ build() {
 
 	HOME="$srcdir" ./prepare_vscode.sh
 
-	echo ABC
-
 	cd "$srcdir/vscode"
-	HOME="$srcdir" CHILD_CONCURRENCY=1 yarn install --cache-folder "$srcdir/yarn-cache" --arch=$_vscode_arch
+	HOME="$srcdir" CHILD_CONCURRENCY=1 yarn install --cache-folder "$srcdir/yarn-cache" --arch="$_vscode_arch"
 
 	gulp compile-build compile-extension-media compile-extensions-build "vscode-linux-$_vscode_arch-min"
 }
@@ -103,7 +100,7 @@ package() {
 	install -Dm644 resources/app/LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 resources/app/ThirdPartyNotices.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 
-	install -Dm755 "$srcdir/${_pkgname}.sh" "$pkgdir/usr/bin/${_pkgname}" 
+	install -Dm755 "$srcdir/${_pkgname}.sh" "$pkgdir/usr/bin/${_pkgname}"
   	ln -s "/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/codium"
 
 	install -Dm 755 "$srcdir/${_pkgname}.js" -t "$pkgdir/usr/lib/${_pkgname}/"

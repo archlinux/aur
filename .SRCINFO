@@ -1,6 +1,6 @@
 pkgbase = vscodium-electron
 	pkgdesc = VS Code without MS branding/telemetry/licensing. - System-wide Electron edition
-	pkgver = 1.69.2
+	pkgver = 1.70.2.22230
 	pkgrel = 1
 	url = https://github.com/VSCodium/vscodium
 	arch = x86_64
@@ -14,15 +14,15 @@ pkgbase = vscodium-electron
 	makedepends = nvm
 	makedepends = imagemagick
 	makedepends = ripgrep
-	depends = electron17
+	depends = electron19
 	depends = libsecret
 	depends = libx11
 	depends = libxkbfile
 	depends = ripgrep
 	optdepends = x11-ssh-askpass: SSH authentication
 	conflicts = vscodium
-	source = git+https://github.com/VSCodium/vscodium.git#tag=1.69.2
-	source = git+https://github.com/microsoft/vscode.git#tag=1.69.2
+	source = git+https://github.com/VSCodium/vscodium.git#tag=1.70.2.22230
+	source = git+https://github.com/microsoft/vscode.git#tag=1.70.2
 	source = vscodium.sh
 	source = vscodium.js
 	source = vscodium.desktop
