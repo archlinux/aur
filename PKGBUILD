@@ -1,16 +1,16 @@
 # Maintainer: Reik Keutterling <spielkind@gmail.com>
 pkgname=notary-git
-pkgver=0.5.0.r295.ga41821fe
+pkgver=0.7.0.r55.g40969cc3
 pkgrel=1
 pkgdesc="Notary is a project that allows anyone to have trust over arbitrary collections of data."
 arch=('x86_64')
 url="https://github.com/theupdateframework/notary"
 license=('APACHE')
-makedepends=('git' 'go' 'godep')
+makedepends=('git' 'go')
 provides=(${pkgname%-*}=$pkgver)
 conflicts=(${pkgname%-*}-bin)
 options=('!strip' '!emptydirs')
-source=($pkgname::git://github.com/theupdateframework/${pkgname%-*}.git)
+source=($pkgname::git+https://github.com/theupdateframework/${pkgname%-*}.git)
 sha256sums=('SKIP')
 
 _gourl=github.com/theupdateframework/notary
