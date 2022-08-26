@@ -1,0 +1,15 @@
+pkgbase = crtsh-git
+	pkgdesc = This tool shows the result of crt.sh
+	pkgver = df40d0a
+	pkgrel = 1
+	url = https://github.com/famasoon/crtsh.git
+	arch = any
+	license = none
+	makedepends = git
+	makedepends = go
+	provides = crtsh=df40d0a
+	conflicts = crtsh
+	source = git+https://github.com/famasoon/crtsh.git
+	sha256sums = SKIP
+
+pkgname = crtsh-git
