@@ -9,7 +9,7 @@
 _target=m68k-elf
 _target_cpu=m68000
 pkgname=${_target}-gcc
-pkgver=11.2.0
+pkgver=12.2.0
 _mpfrver=4.1.0
 _mpcver=1.2.1
 _gmpver=6.2.1
@@ -25,14 +25,14 @@ options=('!emptydirs' '!distcc' '!strip')
 conflicts=("${_target}-gcc-bootstrap")
 replaces=("${_target}-gcc-bootstrap")
 PKGEXT="pkg.tar.zst"
-source=("http://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
-        "http://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz.sig"
-        "http://ftp.gnu.org/gnu/mpfr/mpfr-${_mpfrver}.tar.xz"
-        "http://ftp.gnu.org/gnu/mpfr/mpfr-${_mpfrver}.tar.xz.sig"
-        "http://ftp.gnu.org/gnu/mpc/mpc-${_mpcver}.tar.gz"
-        "http://ftp.gnu.org/gnu/mpc/mpc-${_mpcver}.tar.gz.sig"
-        "http://ftp.gnu.org/gnu/gmp/gmp-${_gmpver}.tar.xz"
-        "http://ftp.gnu.org/gnu/gmp/gmp-${_gmpver}.tar.xz.sig")
+source=("https://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
+        "https://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz.sig"
+        "https://ftp.gnu.org/gnu/mpfr/mpfr-${_mpfrver}.tar.xz"
+        "https://ftp.gnu.org/gnu/mpfr/mpfr-${_mpfrver}.tar.xz.sig"
+        "https://ftp.gnu.org/gnu/mpc/mpc-${_mpcver}.tar.gz"
+        "https://ftp.gnu.org/gnu/mpc/mpc-${_mpcver}.tar.gz.sig"
+        "https://ftp.gnu.org/gnu/gmp/gmp-${_gmpver}.tar.xz"
+        "https://ftp.gnu.org/gnu/gmp/gmp-${_gmpver}.tar.xz.sig")
 
 sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
 validpgpkeys=(13975A70E63C361C73AE69EF6EEB81F8981C74C7
