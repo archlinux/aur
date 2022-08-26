@@ -1,14 +1,13 @@
 pkgbase = wyrd
 	pkgdesc = A text-based front-end to Remind.
 	pkgver = 1.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/wyrd-calendar/wyrd
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
 	makedepends = ocaml
-	makedepends = camlp5
 	makedepends = make
 	makedepends = ocaml-findlib
 	depends = remind

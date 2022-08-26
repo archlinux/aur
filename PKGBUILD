@@ -4,7 +4,7 @@
 
 pkgname="wyrd"
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A text-based front-end to Remind."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://gitlab.com/wyrd-calendar/wyrd"
@@ -12,8 +12,8 @@ license=('GPL2')
 provides=('wyrd')
 conflicts=('wyrd')
 depends=('remind' 'ocaml-curses' 'ocaml-yojson')
-makedepends=('ocaml' 'camlp5' 'make' 'ocaml-findlib')
-# doc: 'hevea' 'texlive-core' 'texlive-latexextra'
+makedepends=('ocaml' 'make' 'ocaml-findlib')
+# doc: 'ocaml-odoc' 'texlive-core' 'texlive-latexextra'
 replaces=('wyrd-git')
 source=("${url}/-/jobs/artifacts/${pkgver}/raw/wyrd-${pkgver}.tar.xz?job=release")
 sha256sums=('9ff3df41ea18d59f070aa656874bf7a98e875f1db47d375de13a482429bd4f1a')
