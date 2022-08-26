@@ -1,6 +1,6 @@
 diff -ruN old/src/mgui/ffviewer.cpp new/src/mgui/ffviewer.cpp
---- old/src/mgui/ffviewer.cpp	2022-08-26 11:00:17.936924594 +0430
-+++ new/src/mgui/ffviewer.cpp	2022-08-26 14:41:31.887225381 +0430
+--- old/src/mgui/ffviewer.cpp	2022-08-26 15:51:35.995797128 +0430
++++ new/src/mgui/ffviewer.cpp	2022-08-26 15:56:06.538840475 +0430
 @@ -37,6 +37,7 @@
  #endif
  
@@ -126,8 +126,16 @@ diff -ruN old/src/mgui/ffviewer.cpp new/src/mgui/ffviewer.cpp
      {
 diff -ruN old/src/mgui/ffviewer.h new/src/mgui/ffviewer.h
 --- old/src/mgui/ffviewer.h	2016-04-10 15:15:39.000000000 +0430
-+++ new/src/mgui/ffviewer.h	2022-08-26 11:25:10.616129717 +0430
-@@ -70,6 +70,7 @@
++++ new/src/mgui/ffviewer.h	2022-08-26 16:00:47.375606645 +0430
+@@ -53,6 +53,7 @@
+ //
+ typedef FFViewer VideoViewer;
+ 
++struct AVCodecContext;
+ struct FFData;
+ double FrameFPS(FFData& ffv);
+ double Duration(FFData& ffv);
+@@ -70,6 +71,7 @@
  struct FFData: public boost::noncopyable
  {
      AVFormatContext* iCtx;
@@ -137,7 +145,7 @@ diff -ruN old/src/mgui/ffviewer.h new/src/mgui/ffviewer.h
  
 diff -ruN old/src/mgui/project/media-browser.cpp new/src/mgui/project/media-browser.cpp
 --- old/src/mgui/project/media-browser.cpp	2016-04-10 15:15:39.000000000 +0430
-+++ new/src/mgui/project/media-browser.cpp	2022-08-26 14:08:22.610955145 +0430
++++ new/src/mgui/project/media-browser.cpp	2022-08-26 15:56:06.538840475 +0430
 @@ -240,8 +240,8 @@
          a_cnt = 0;
          for( int i=0; i < (int)ic->nb_streams; i++ )
