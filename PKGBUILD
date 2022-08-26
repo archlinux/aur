@@ -4,7 +4,7 @@ _electron_version=16
 _nodejs_lts_version=-lts-gallium
 
 pkgname=('trilium' 'trilium-server' 'trilium-dumpdb')
-pkgver=0.54.2
+pkgver=0.54.3
 pkgrel=1
 pkgdesc="A hierarchical note taking application with focus on building large personal knowledge bases."
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('npm' "nodejs$_nodejs_lts_version")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zadam/trilium/archive/refs/tags/v$pkgver.tar.gz"
 	"copy-trilium.sh.patch"
 	"config-sample.ini.patch"
-        "trilium.sh"
+	"trilium.sh"
 	"trilium-server.sh"
 	"trilium-dumpdb.sh"
 	"trilium.desktop"
@@ -23,10 +23,10 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/zadam/trilium/archive/refs/
 	"trilium-server.sysusers"
 	"trilium-server.tmpfiles")
 
-sha512sums=('3920745dba023d71708bad1c6ac9dd5893ac4b172730be0d57dfe3ea7b7ee8df5e8b50578778d0c84bf0639b1ae41a5d54e9cd875e71ff52dbe4d33b26476b3a'
+sha512sums=('ceff45b3eaaff0e7b1fcb7f73be4d555f5ddcf2016ef3f9383a5ff1bb136231e6b55f9c16887b28b24dfeb9d8a87d7da43a0bb6d6ea45d1502859bc12ca76e7f'
 	    '3df6e4255824547aded7395c528a3f677eb6c94426afb6fe34e7710762d41fb6b73d6f81ee4eb6704ba51a10b440afd487d9c030d3d9723f3850cb0188232cce'
 	    'b073a15731cced053d34534a7c34ce39b6b54bc9c818e1792d6d5fe0ef86ba83f255b75fd7a630dedad2ec0f51403dc68969d1fa3dab7472a2fc628d83c16bdd'
-	    '1357b45f2e9ed95d7b26a7ae69c94c42bbe46c25f4aa12e39b2712cd6db8990d26eecc1f26f8341f4accb62e88b9a535eb743b3ac3d30f280699ae946e697cd9'
+	    '6b03a7cce3836966d00e282d012cce944b8b56e29200fa06e64563a95e4edde591c0018715639a5e2acdbfd11a73ccb8283fbad19efc7dff218e8398c7e12d30'
 	    '14a97f1fab392dd9a55440712bf3f2976de20e9c09789392984313455af77d9900445bd06cf2c3a3879a94cab893e83bd4093060f9214b2c201af89d7f62f663'
 	    'e1fa62cdc2ecde41f5c5336bca3dd2d2b9e65de1a3162ef4ed336aaa7660c2b1c23793df7cdbd09e8b020890de0ba2d58c8704d2d1f0916da1212167c4820c0f'
 	    'b0e42a91b5990e5d919277eb3039df52f8177f199946eeb631464b6c2a0941000df8d698907482992a11a890a495b8e0447180ab653445f4130e945f562d1054'
