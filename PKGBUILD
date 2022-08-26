@@ -4,7 +4,7 @@
 
 pkgname=kbdmod
 pkgver=0.2.1
-pkgrel=6
+pkgrel=7
 epoch=
 pkgdesc="modify your keyboard functionality with multi functions per key"
 arch=('any')
