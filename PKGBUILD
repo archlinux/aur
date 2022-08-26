@@ -4,7 +4,7 @@
 pkgname=wonderpen-bin
 pkgver=2.1.11
 _pkgver=6563
-pkgrel=2
+pkgrel=3
 pkgdesc='A professional writing app with a focused mode and markdown support'
 arch=('x86_64')
 url='https://www.tominlab.com/en/wonderpen'
