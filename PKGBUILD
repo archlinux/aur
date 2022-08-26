@@ -3,7 +3,7 @@ pkgbase=python-drizzlepac
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=3.4.2
+pkgver=3.4.3
 pkgrel=1
 pkgdesc="AstroDrizzle for HST images"
 arch=('i686' 'x86_64')
@@ -53,8 +53,8 @@ checkdepends=('python-pytest-remotedata'
               'python-crds')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
        "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/tests/hap/ACSWFC3ListDefault50.csv")
-md5sums=('098760793a4ef1588543296d3f0e5530'
-        'acaf7d8bcf0f6244042bba0df3d03679')
+md5sums=('a2fde20790ae44b68940d9055af88b82'
+         'acaf7d8bcf0f6244042bba0df3d03679')
 
 get_pyver() {
     python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
@@ -77,19 +77,20 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    ln -rs ${srcdir}/ACSWFC3ListDefault50.csv "build/lib.linux-${CARCH}-$(get_pyver)/tests/hap"
+    _pybuild=$(ls -d build/lib.linux*)
+    ln -rs ${srcdir}/ACSWFC3ListDefault50.csv "${_pybuild}/tests/hap"
     # skip some tests that need lots of online data or cost lots of time; some files are missing in pypi package
-    pytest "build/lib.linux-${CARCH}-$(get_pyver)" \
-        --ignore=build/lib.linux-${CARCH}-$(get_pyver)/tests/hap/test_run_svmpoller.py \
-        --ignore=build/lib.linux-${CARCH}-$(get_pyver)/tests/hap/test_svm_canary.py \
-        --ignore=build/lib.linux-${CARCH}-$(get_pyver)/tests/hap/test_svm_hrcsbc.py \
-        --ignore=build/lib.linux-${CARCH}-$(get_pyver)/tests/hap/test_svm_ibqk07.py \
-        --ignore=build/lib.linux-${CARCH}-$(get_pyver)/tests/hap/test_svm_ibyt50.py \
-        --ignore=build/lib.linux-${CARCH}-$(get_pyver)/tests/hap/test_svm_j97e06.py \
-        --ignore=build/lib.linux-${CARCH}-$(get_pyver)/tests/hap/test_svm_je281u.py \
-        --ignore=build/lib.linux-${CARCH}-$(get_pyver)/tests/hap/test_svm_wfc3ir.py \
-        --deselect=build/lib.linux-${CARCH}-$(get_pyver)/tests/hap/test_pipeline.py::TestSingleton::test_astrometric_singleton[iaaua1n4q] \
-        --deselect=build/lib.linux-${CARCH}-$(get_pyver)/tests/hap/test_pipeline.py::TestSingleton::test_astrometric_singleton[iacs01t4q] || warning "Tests failed"
+    pytest "${_pybuild}" \
+        --ignore=${_pybuild}/tests/hap/test_run_svmpoller.py \
+        --ignore=${_pybuild}/tests/hap/test_svm_canary.py \
+        --ignore=${_pybuild}/tests/hap/test_svm_hrcsbc.py \
+        --ignore=${_pybuild}/tests/hap/test_svm_ibqk07.py \
+        --ignore=${_pybuild}/tests/hap/test_svm_ibyt50.py \
+        --ignore=${_pybuild}/tests/hap/test_svm_j97e06.py \
+        --ignore=${_pybuild}/tests/hap/test_svm_je281u.py \
+        --ignore=${_pybuild}/tests/hap/test_svm_wfc3ir.py \
+        --deselect=${_pybuild}/tests/hap/test_pipeline.py::TestSingleton::test_astrometric_singleton[iaaua1n4q] \
+        --deselect=${_pybuild}/tests/hap/test_pipeline.py::TestSingleton::test_astrometric_singleton[iacs01t4q] || warning "Tests failed"
 }
 
 package_python-drizzlepac() {
@@ -110,7 +111,7 @@ package_python-drizzlepac() {
 #            'python-acstools'
 #            'python-nictools')
     optdepends=('python-astroquery>=0.4: HAP-pipeline specific'
-                'python-photutils<1.4.0: HAP-pipeline specific'
+                'python-photutils>1.2.0: HAP-pipeline specific'
                 'python-bokeh: HAP-pipeline specific'
                 'python-pandas: HAP-pipeline specific'
                 'python-spherical_geometry>=1.2.22: HAP-pipeline specific'

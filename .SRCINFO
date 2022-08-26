@@ -1,6 +1,6 @@
 pkgbase = python-drizzlepac
 	pkgdesc = AstroDrizzle for HST images
-	pkgver = 3.4.2
+	pkgver = 3.4.3
 	pkgrel = 1
 	url = http://www.stsci.edu/scientific-community/software/drizzlepac.html
 	arch = i686
@@ -31,9 +31,9 @@ pkgbase = python-drizzlepac
 	makedepends = python-numpy
 	makedepends = python-astropy>=5.0.4
 	makedepends = python-markupsafe
-	source = https://files.pythonhosted.org/packages/source/d/drizzlepac/drizzlepac-3.4.2.tar.gz
+	source = https://files.pythonhosted.org/packages/source/d/drizzlepac/drizzlepac-3.4.3.tar.gz
 	source = https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/tests/hap/ACSWFC3ListDefault50.csv
-	md5sums = 098760793a4ef1588543296d3f0e5530
+	md5sums = a2fde20790ae44b68940d9055af88b82
 	md5sums = acaf7d8bcf0f6244042bba0df3d03679
 
 pkgname = python-drizzlepac
@@ -52,7 +52,7 @@ pkgname = python-drizzlepac
 	depends = python-stregion
 	depends = python-fitsblender>=0.4.2
 	optdepends = python-astroquery>=0.4: HAP-pipeline specific
-	optdepends = python-photutils<1.4.0: HAP-pipeline specific
+	optdepends = python-photutils>1.2.0: HAP-pipeline specific
 	optdepends = python-bokeh: HAP-pipeline specific
 	optdepends = python-pandas: HAP-pipeline specific
 	optdepends = python-spherical_geometry>=1.2.22: HAP-pipeline specific
