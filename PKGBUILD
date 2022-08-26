@@ -1,6 +1,6 @@
 pkgname=classic-series-bin
 pkgver=20220629
-pkgrel=1
+pkgrel=2
 pkgdesc="Audio Assault 3 Original Classic Metal High-Gain Amp Designs"
 arch=('x86_64')
 url="https://audioassault.mx/products/classicseries"
