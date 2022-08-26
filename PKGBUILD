@@ -1,7 +1,7 @@
 # Maintainer: Leo <i@setuid0.dev>
 
 pkgname=qbittorrent-enhanced-nox
-pkgver=4.4.3.12
+pkgver=4.4.4.10
 pkgrel=1
 epoch=
 pkgdesc="A bittorrent client powered by C++, Qt and the good libtorrent library (Enhanced Edition)"
@@ -29,7 +29,14 @@ source=(
 	"qbittorrent-nox.tmpfiles"
 )
 noextract=()
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=(
+	'5778bfd2447dd135e7bf92616ea945013155ca2b64604969f601080166bb1733'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+)
 
 build() {
 	cd qBittorrent*$pkgver
