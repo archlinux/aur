@@ -1,11 +1,11 @@
 pkgname=air-impulse-loader-bin
 pkgver=20220826
-pkgrel=1
+pkgrel=2
 pkgdesc="Audio Assault AIR Impulse Response Loader Rack"
 arch=('x86_64')
 url="https://audio-assault.com/air.php"
 license=('EULA')
-groups=('pro-audio' 'vst-plugins')
+groups=('pro-audio' 'vst-plugins' 'vst3-plugins')
 depends=('libcurl-gnutls' 'glibc')
 makedepends=('xdg-user-dirs' 'unzip')
 source=("aIR Impulse Rack.desktop")

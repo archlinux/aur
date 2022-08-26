@@ -1,11 +1,12 @@
 pkgbase = air-impulse-loader-bin
 	pkgdesc = Audio Assault AIR Impulse Response Loader Rack
 	pkgver = 20220826
-	pkgrel = 1
+	pkgrel = 2
 	url = https://audio-assault.com/air.php
 	arch = x86_64
 	groups = pro-audio
 	groups = vst-plugins
+	groups = vst3-plugins
 	license = EULA
 	makedepends = xdg-user-dirs
 	makedepends = unzip
