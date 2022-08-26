@@ -9,20 +9,21 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
          python-buildbot-console-view python-buildbot-grid-view
          python-buildbot-wsgi-dashboards python-buildbot-badges)
 # https://github.com/buildbot/buildbot/releases
-pkgver=3.5.0
+pkgver=3.6.0
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
-pkgrel=3
+pkgrel=1
 arch=(any)
 url='https://buildbot.net'
 license=(GPL2)
 checkdepends=(python-boto3 python-ldap3 python-lz4 python-treq python-txrequests
               python-moto python-docker python-parameterized python-mock python-subunit
-              python-unidiff python-psutil
+              python-unidiff python-psutil python-ruamel-yaml
               openssh chromium)
 makedepends=(python-twisted python-jinja python-msgpack python-zope-interface python-sqlalchemy
              python-alembic python-dateutil python-txaio
              python-autobahn python-pyjwt python-yaml
              python-graphql-core python-hvac
+             python-influxdb libvirt-python python-novaclient python-pypugjs python-aiohttp
              python-setuptools python-future
              python-sphinx-jinja
              python-sphinx_rtd_theme
@@ -30,18 +31,14 @@ makedepends=(python-twisted python-jinja python-msgpack python-zope-interface py
 source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.asc}
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
         "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch"
-        "buildbot-autobahn-22.4.patch::https://github.com/buildbot/buildbot/commit/7d0cd447cd302d8f97e7ee13aa15721b7a3b6d8c.patch"
-        "buildbot-python-sphinx-jinja-2.0.patch::https://github.com/buildbot/buildbot/commit/58dad89ad5dfaabcb0d60cedc245d47f42641b1b.patch"
         "python310.diff"
-        "graphql-core.diff")
-sha256sums=('53b58e056d7da5c83b669ce1bf213147beedba6fa6a60dadba3e80d385239ced'
+        "influxdb.diff")
+sha256sums=('d63c8a9c810f628ddc4b5bc18671b4df9b02beb58710b82d55a6cf749b1cbb3f'
             'SKIP'
             'SKIP'
             '896eede4c33a8574d7c29ac4a28cebbe3d7e850931a86e945328f8ea358195a9'
-            'e4902bca5d0098ed048d5a46edcc496c6260c5bd02394961bd6f8c47fbedda21'
-            '05664cf8edd2a1787e833d94209cdf2bb1833d0c2e5d24ccd02d67910413c82b'
             '79bff19ba26d9ae97a9fffbbd8b83b21dcfba0a933c908176562906cf7432813'
-            '9ed4f9f18f71558afc876c92206e4de213fa6a94305ad9d4d9115a041dd41b22')
+            '2cbddb485730ab243967166970a22b61e76d5eda5a8ba3783e0ebf4342be44ee')
 validpgpkeys=(
   '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com> (@tardyp on GitHub)
   'FD0004A26EADFE43A4C3F249C6F7AE200374452D'  # Povilas Kanapickas <povilas@radix.lt> (@p12tic on GitHub)
@@ -73,16 +70,9 @@ prepare() {
   # https://github.com/python/cpython/pull/20236
   patch -Np1 -i ../python310.diff
 
-  # Fix test failures with newer python-graphql-core
-  patch -Np1 -i ../graphql-core.diff
-
-  # Backported from master branch "wamp: Remove unused config attribute to fix compat with new autobahn"
-  # https://github.com/buildbot/buildbot/pull/6509
-  patch -Np1 -i ../buildbot-autobahn-22.4.patch
-
-  # Backported from master branch "Fix error in documentation build"
-  # https://github.com/buildbot/buildbot/pull/6505
-  patch -Np1 -i ../buildbot-python-sphinx-jinja-2.0.patch
+  # Fixes tests when python-influxdb is installed. The latter requires ports to be integers since
+  # https://github.com/influxdata/influxdb-python/commit/4428208be690ab5399c4e1150c8f2b4d11d65f7d
+  patch -Np1 -i ../influxdb.diff
 
   cd "$srcdir"/buildbot-contrib
   patch -Np1 -i ../buildbot-contrib-systemd-common.patch
@@ -185,6 +175,7 @@ package_buildbot() {
 
     # misc
     'python-lz4: to compress logs using lz4'
+    'python-aiohttp: for dev-proxy'
   )
 
   cd buildbot-$pkgver/master
