@@ -1,22 +1,31 @@
-# Maintainer: Ramle <ramle@ramle.be>
+# Maintainer: Elmar <aur@ramle.be>
 _pkgname=passmenu-otp
-pkgname=passmenu-otp-git
-pkgver="1.o"
+pkgname=$_pkgname-git
+pkgver=2623a08
 pkgrel=1
 pkgdesc="A simple extension of passmenu friendly to one-time passwords (OTP), often used in two-factor authentication (2FA)."
 arch=('any')
 url="https://github.com/petrmanek/$_pkgname"
 license=('MIT')
-depends=(
-         'git'
-         'pass-otp'
-         'bash'
-         'dmenu'
-	 'xdotool'
-        )
+conflicts=('passmenu-otp')
+provides=("passmenu-otp=${pkgver}")
 
-source=("git+https://github.com/petrmanek/$_pkgname.git")
+depends=(
+  'git'
+  'pass-otp'
+  'bash'
+  'dmenu'
+	'xdotool'
+)
+
+source=("git+${url}")
 sha256sums=('SKIP')
+
+
+pkgver() {
+  cd "$_pkgname"
+  git describe --always
+}
 
 package() {
 	install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
