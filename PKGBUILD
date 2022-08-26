@@ -2,7 +2,7 @@
 
 pkgname=cemu-wine
 pkgver=1.26.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Wii U emulator. This is the stable Windows version via wine. Includes the Cemuhook plugin"
 arch=(x86_64)
 url="https://cemu.info/"
@@ -25,7 +25,7 @@ optdepends=('wine-ge-custom: Vulkan support')
 # Sometimes, they update the zip file without changing its name, which causes the md5sum to fail.
 # If you notice this, please mark this package as out-of-date in the aur website and I'll fix it.
 
-md5sums=('73b3dbc254f3f96964de1cc41fbc8969'
+md5sums=('8358141856072866ed8ea3a684aef964'
          '54d70005a8975812ab54fcfef53f7bde'
          'f1649814d35413763169cf750062d763'
          '6a3f7091f4040f00d6891173a0351e81'
@@ -45,7 +45,7 @@ package() {
   install -d -m755 $pkgdir/usr/share/
   install -d -m755 $pkgdir/usr/share/$pkgname
   install -d -m755 $pkgdir/usr/bin
-  install -m755 cemu.sh $pkgdir/usr/bin/$pkgname
+  install -m755 cemu.sh $pkgdir/usr/bin/cemu
   install -d -m755 $pkgdir/usr/share/applications
   install -d -m755 $pkgdir/usr/share/pixmaps
   install -m644 cemu.desktop $pkgdir/usr/share/applications
