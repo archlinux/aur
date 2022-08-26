@@ -1,15 +1,19 @@
 pkgbase = lumi
 	pkgdesc = A Desktop App that offers a collection of tools to create, edit and share digital content with your class.
-	pkgver = 0.9.1
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = https://lumi.education
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	depends = gtk3
 	depends = nss
 	depends = nodejs
+	depends = alsa-lib
 	options = !emptydirs
-	source = lumi-0.9.1.pacman::https://github.com/Lumieducation/Lumi/releases/download/v0.9.1/lumi-0.9.1.pacman
-	sha256sums = cc259090478ae638089bf5d145783c92f8a3c0af55e05c8195bec10a6fbf4929
+	source_x86_64 = lumi-x86_64-0.9.4.pacman::https://github.com/Lumieducation/Lumi/releases/download/v0.9.4/lumi-0.9.4.pacman
+	sha256sums_x86_64 = f0c1123ba6628e9c05ad3278e2eade31e262d05319fb523ce72a73b1d4d82e04
+	source_aarch64 = lumi-aarch64-0.9.4.pacman::https://github.com/Lumieducation/Lumi/releases/download/v0.9.4/lumi-0.9.4-aarch64.pacman
+	sha256sums_aarch64 = a9294445b817d1fd2102959c48e500022079d8e56d599668871a82bfe6ce2ecd
 
 pkgname = lumi
