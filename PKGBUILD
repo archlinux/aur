@@ -2,7 +2,7 @@
 # Contributor: Pedro Montes Alcalde <pedro.montes.alcalde@gmail.com>
 _pkgname="vita3k"
 pkgname="${_pkgname}-bin"
-pkgver=r2731.d1fc0db
+pkgver=r2802.814bdfcd
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -12,6 +12,9 @@ depends=(
 	'gtk3'
 	'sdl2'
 	'unzip'
+)
+optdepends=(
+	'vulkan-validation-layers: Descriptive vulkan errors'
 )
 provides=('vita3k')
 conflicts=('vita3k')
@@ -40,4 +43,6 @@ package() {
 	# Provided blob doesn't have README.md
 	install -Dm644 "data/image/icon.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
 	install -Dm644 "${srcdir}/vita3k.desktop" "${pkgdir}/usr/share/applications/vita3k.desktop"
+
+	rm vita3k.zip
 }

@@ -1,6 +1,6 @@
 pkgbase = vita3k-bin
 	pkgdesc = Experimental PlayStation Vita emulator
-	pkgver = r2731.d1fc0db
+	pkgver = r2802.814bdfcd
 	pkgrel = 1
 	url = https://vita3k.org/
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = vita3k-bin
 	depends = gtk3
 	depends = sdl2
 	depends = unzip
+	optdepends = vulkan-validation-layers: Descriptive vulkan errors
 	provides = vita3k
 	conflicts = vita3k
 	source = vita3k.zip::https://github.com/Vita3K/Vita3K/releases/download/continuous/ubuntu-latest.zip
