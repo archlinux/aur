@@ -9,7 +9,7 @@ _sysroot=/usr/lib/${_target}
 _pkgname=binutils
 
 pkgname=$_target-${_pkgname}
-pkgver=2.38
+pkgver=2.39
 pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the x86_64-elf target'
 arch=(x86_64)
@@ -20,14 +20,12 @@ options=(!emptydirs !docs)
 source=("https://mirrors.kernel.org/gnu/binutils/binutils-$pkgver.tar.xz"
         "https://mirrors.kernel.org/gnu/binutils/binutils-$pkgver.tar.xz.sig")
 
-sha256sums=('e316477a914f567eccc34d5d29785b8b0f5a10208d36bbacedcc39048ecfe024'
+sha256sums=('645c25f563b8adc0a81dbd6a41cffbf4d37083a382e02d5d3df4f65c09516d00'
             'SKIP')
 _basedir=binutils-$pkgver
 validpgpkeys=("3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F")
 prepare() {
     cd ${srcdir}/${_pkgname}-${pkgver}
-
-    sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
 
     mkdir $srcdir/binutils-build
 }
