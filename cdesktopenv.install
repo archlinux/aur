@@ -2,10 +2,9 @@ post_install() {
 	echo "This package is probably insecure."
 	echo "CDE requires rpcbind.service to be running."
 	echo "To start dtlogin, first use systemctl to start rpcbind.service, and then start dtlogin.service"
+	echo "The start script is now called startcdesession.sh, to be more precise and having scripts for other desktop environments as well."
 }
 
 post_upgrade() {
 	post_install
 }
-
-# vim:set ts=2 sw=2 et:
