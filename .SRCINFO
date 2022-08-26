@@ -1,0 +1,18 @@
+pkgbase = crown-amp-bin
+	pkgdesc = Audio Assault Modern High Gain Amp Simulator Next Generation
+	pkgver = 20220527
+	pkgrel = 1
+	url = https://audioassault.mx/products/sigma
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	groups = vst3-plugins
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = libcurl-gnutls
+	depends = glibc
+	source = Crown EX Amp.desktop
+	sha256sums = 9ee179709bce7be2eab743547c78a8c3312a6fe5b72fa2beef498283fad05b2a
+
+pkgname = crown-amp-bin
