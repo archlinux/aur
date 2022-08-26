@@ -3,7 +3,7 @@
 _pkgbase=nginx
 pkgname=nginx-mainline-pushstream
 pkgver=1.23.1
-pushstreamver=master
+pushstreamver=0.5.5
 pkgrel=1
 pkgdesc='NGINX mainline with Push Stream module'
 arch=(x86_64 arm armv6h armv7h aarch64)
@@ -20,13 +20,15 @@ backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/win-utf'
         'etc/logrotate.d/nginx')
 source=($url/download/nginx-$pkgver.tar.gz
+        pushstream.patch
         service
         logrotate
         https://github.com/wandenberg/nginx-push-stream-module/archive/$pushstreamver.tar.gz)
 sha512sums=('62d6b3d5282f4e4cc23adf23b3dc26e06fc4574cae3c18381c406d0cf0f8c68e7dfa86af0c3c1c1485214c548f3b45015eb219e62bfe04e0aaa5edaad82e6706'
+            '30fd68894b4359f58a8a224280a962fa5b4c7f97aefdcf4d0d012aa566d97e4b6b0c95d4ec6dba18b07b1cbdbd280badc7cb8f14269d6aa0f62e90b8974f71e0'
             'be2858613d9cca85d80e7b894e9d5fa7892cbddd7a677d2d2f68f419d75fdc1f6802de8014f43ce063b116afd4ff17369873a6adea2dd58ac6f94e617de66fec'
             '9232342c0914575ce438c5a8ee7e1c25b0befb457a2934e9cb77d1fe9a103634ea403b57bc0ef0cd6cf72248aee5e5584282cea611bc79198aeac9a65d8df5d7'
-            'fc3e4038e04bc3505aa6da2c957e4030e668ba6ba6f251d50bbdf6b84a12d6747af0d5d37cb4c8b2fb4c3d74076f3b57a2a29a0eda583951558fabf8710c340c')
+            '012223e41188ab129391360175314b598ef37cb39cac2c4a9c840a499f269630a4c888ce87e7880a5a1700347d800481fe93c2adc56646839ab417162a644334')
 _common_flags=(
   --with-compat
   --with-debug
@@ -64,6 +66,7 @@ _mainline_flags=(
 
 prepare() {
   cp -r $_pkgbase-$pkgver{,-src}
+  patch --forward --strip=1 --input="${srcdir}/pushstream.patch"
 }
 
 build() {
