@@ -1,11 +1,10 @@
 pkgbase = python-d2l
 	pkgdesc = Dive into Deep Learning Book Utilities
 	pkgver = 0.17.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://d2l.ai/
 	arch = any
 	license = Apache
-	makedepends = python
 	depends = ipython
 	depends = python-pandas
 	depends = python-matplotlib

@@ -1,8 +1,9 @@
-# Maintainer: Tommy Li <ttoo74@gmail.com>
+# Maintainer: Lu Xu <oliver_lew at outlook dot com>
+# Contributor: Tommy Li <ttoo74@gmail.com>
 pkgname=python-d2l
 _name=d2l
 pkgver=0.17.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Dive into Deep Learning Book Utilities"
 arch=(any)
 url="http://d2l.ai/"
@@ -13,7 +14,6 @@ depends=(
     "python-matplotlib"
     "python-requests"
 )
-makedepends=("python")
 optdepends=(
     "python-pytorch: PyTorch"
     "python-torchvision: PyTorch"
