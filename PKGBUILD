@@ -9,6 +9,7 @@
 pkgname=wine-lol
 pkgver=7.0_5
 pkgrel=1
+epoch=1
 
 # Be sure to use commits from a "ge-lol-XXX" branch here
 _gitver=6703dc23fbb57a32261864bf547d16ba508351fb
