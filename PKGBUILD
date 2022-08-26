@@ -45,3 +45,4 @@ package() {
 	cp kbdmod.bin "$pkgdir/kbdmod"
 }
 sha256sums=('75d8a378b9cbb57080a296cf9098dd7c428c19722bc21d5f0f387f1b54fdeb4e')
+sha256sums=('75d8a378b9cbb57080a296cf9098dd7c428c19722bc21d5f0f387f1b54fdeb4e')

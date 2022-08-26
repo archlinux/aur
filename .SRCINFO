@@ -1,7 +1,7 @@
 pkgbase = kbdmod
 	pkgdesc = modify your keyboard functionality with multi functions per key
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/calvinreu/kbdmod
 	arch = any
 	license = MIT
@@ -11,6 +11,6 @@ pkgbase = kbdmod
 	depends = yaml-cpp
 	depends = interception-tools
 	source = https://gitlab.com/calvinreu/kbdmod/-/archive/v0.2.0/kbdmod-v0.2.0.tar.gz
-	sha256sums = b5d564eccbc1a63db85fbb98cb4335c5d5c96b81521a1c080d79a3068f397d04
+	sha256sums = 75d8a378b9cbb57080a296cf9098dd7c428c19722bc21d5f0f387f1b54fdeb4e
 
 pkgname = kbdmod
