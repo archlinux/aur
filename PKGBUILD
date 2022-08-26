@@ -10,6 +10,7 @@ url="https://github.com/vinecopulib/vinecopulib"
 depends=('gcc-libs')
 makedepends=('cmake' 'eigen' 'boost' 'libwdm')
 provides=('libvinecopulib.so')
+changelog=NEWS.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('d19e659c2645761348ce650c58b015017e8626fe3ff57cd819d726f4bc91acd2')
 
