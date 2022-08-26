@@ -2,7 +2,7 @@
 
 pkgname=supabase-bin
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI for Supabase, an open source Firebase alternative"
 url="https://github.com/supabase/cli"
 license=("MIT")
@@ -17,9 +17,9 @@ optdepends=(
 )
 
 build() {
-    supabase completion bash > bash.completions
-    supabase completion zsh > zsh.completions
-    supabase completion fish > fish.completions
+    ./supabase completion bash > bash.completions
+    ./supabase completion zsh > zsh.completions
+    ./supabase completion fish > fish.completions
 }
 
 package() {
