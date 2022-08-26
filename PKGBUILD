@@ -4,7 +4,7 @@
 _pkgname="vita3k"
 _remoteurl="https://github.com/Vita3K/Vita3K"
 pkgname="${_pkgname}-git"
-pkgver=r2780.53d40544
+pkgver=2801.d07f6d51
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -18,11 +18,15 @@ makedepends=(
 	'clang'
 	'ninja'
 	'python'
+	'lld'
 )
 depends=(
 	'gtk3'
 	'sdl2'
 	'unzip'
+)
+optdepends=(
+	'vulkan-validation-layers: Descriptive vulkan errors'
 )
 provides=('vita3k')
 conflicts=('vita3k')
@@ -56,7 +60,7 @@ build() {
 	git remote set-url origin ${_remoteurl}
 
 	# Configure
-	cmake --preset ${BUILDPRESET} -DCI=ON -DUSE_VULKAN=ON -DUSE_DISCORD_RICH_PRESENCE=OFF -DUSE_VITA3K_UPDATE=OFF
+	cmake --preset ${BUILDPRESET} -DCI=ON -DUSE_DISCORD_RICH_PRESENCE=OFF -DUSE_VITA3K_UPDATE=OFF
 	# Build
 	cmake --build build/${BUILDPRESET} --config Release
 }
