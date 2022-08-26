@@ -1,7 +1,7 @@
 # Maintainer: Holger Brandl https://github.com/holgerbrandl/kscript/
 
 pkgname=kscript
-pkgver=4.0.3
+pkgver=4.1.0
 pkgrel=1
 pkgdesc='Enhanced scripting support for Kotlin on *nix-based systems'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/holgerbrandl/kscript'
 license=('MIT')
 depends=('kotlin')
 source=("${pkgname}-${pkgver}-bin.zip::https://github.com/holgerbrandl/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-bin.zip")
-sha256sums=('e92b000ea13dd48c49329269b025d59c3e0ff507fe3a357fb5af401773b1cdbb')
+sha256sums=('02c3a1c414d9fab6fd05cb41e3f5d50e0e590226edf6b44d80f779e71d8e5942')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}/bin"
