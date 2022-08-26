@@ -1,6 +1,6 @@
 pkgbase = vita3k-git
 	pkgdesc = Experimental PlayStation Vita emulator
-	pkgver = 2801.d07f6d51
+	pkgver = r2802.814bdfcd
 	pkgrel = 1
 	url = https://vita3k.org/
 	arch = x86_64
