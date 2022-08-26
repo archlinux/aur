@@ -1,7 +1,7 @@
 pkgbase = pacdef
 	pkgdesc = declarative package manager for Arch Linux
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/steven-omaha/pacdef
 	arch = any
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = pacdef
 	makedepends = python-pip
 	depends = python
 	depends = pyalpm
-	source = pacdef-0.8.0.tar.gz::https://github.com/steven-omaha/pacdef/archive/refs/tags/v0.8.0.tar.gz
-	sha256sums = ddd013d083bd62f0611ff1cfb396b029866f21183f9ada3c5d0fd9e01f264766
+	source = https://github.com/steven-omaha/pacdef/releases/download/v0.8.0/pacdef-v0.8.0.tar.xz
+	sha256sums = 339f306c26a0805669295118a5256335c4b471ccd2b4b60e80639d27fc5623b9
 
 pkgname = pacdef
