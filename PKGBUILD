@@ -2,7 +2,7 @@
 
 pkgname=sing-box-git
 _pkgname=sing-box
-pkgver=1661420319.f8f1e51
+pkgver=1661522026.3ea59d9
 pkgrel=1
 pkgdesc='The universal proxy platform.'
 url='https://sing-box.sagernet.org/'
@@ -14,10 +14,10 @@ source=('git+https://github.com/SagerNet/sing-box.git'
         'sing-box@.service')
 sha1sums=('SKIP'
           '5900521478dfa3ebe97248ef84af3882af8e020b'
-          '5900521478dfa3ebe97248ef84af3882af8e020b')
+          '573c078483a3ddbb5a8491a0e03054192b0bab7f')
 sha256sums=('SKIP'
             '872bcc90ff9c683831ca2033aee721e8af91d64e244cc650f1929a15f517fc09'
-            '872bcc90ff9c683831ca2033aee721e8af91d64e244cc650f1929a15f517fc09')
+            'e1ae86ceb758c5967745737f1bbb61201061e2bf1ac4d47a42fe9d7ac4d7ffde')
 
 provides=("${_pkgname}")
 

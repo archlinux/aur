@@ -4,7 +4,7 @@ Documentation=https://sing-box.sagernet.org
 After=network.target nss-lookup.target
 
 [Service]
-ExecStart=/usr/bin/sing-box run -c /etc/sing-box/config.json
+ExecStart=/usr/bin/sing-box run -c /etc/sing-box/%i.json
 Restart=on-failure
 RestartSec=10s
 TimeoutStopSec=10s
