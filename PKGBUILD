@@ -1,7 +1,7 @@
 # Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
 
 pkgname=zulu-embedded-jdk11
-pkgver=11.0.15
+pkgver=11.0.16.1
 pkgrel=1
 pkgdesc='Zulu Embedded is a certified build of OpenJDK for Armv8/v7/v6 devices.'
 arch=('armv6h' 'armv7h' 'armv8h' 'aarch64' 'i686' 'x86_64')
@@ -14,19 +14,22 @@ depends=('java-runtime-common>=3' 'java-environment-common=3'
          'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'lcms2' 'libnet'
          'freetype2' 'giflib' 'libelf')
 
-_build=11.56.19
+_build=11.58.25
 source_armv6h=("https://cdn.azul.com/zulu-embedded/bin/zulu${_build}-ca-jdk${pkgver}-linux_aarch32hf.tar.gz")
-sha256sums_armv6h=('1c637012c5fce079a820ab3cc8b74695722c10e07342336055042aebb8bd8420')
+sha256sums_armv6h=('6f7a4721303710384e7c9aeaf5a47954dbf992e2d92a27bc83c2170229c3a826')
 source_armv7h=("https://cdn.azul.com/zulu-embedded/bin/zulu${_build}-ca-jdk${pkgver}-linux_aarch32hf.tar.gz")
-sha256sums_armv7h=('1c637012c5fce079a820ab3cc8b74695722c10e07342336055042aebb8bd8420')
+sha256sums_armv7h=('6f7a4721303710384e7c9aeaf5a47954dbf992e2d92a27bc83c2170229c3a826')
 source_armv8h=("https://cdn.azul.com/zulu-embedded/bin/zulu${_build}-ca-jdk${pkgver}-linux_aarch32hf.tar.gz")
-sha256sums_armv8h=('1c637012c5fce079a820ab3cc8b74695722c10e07342336055042aebb8bd8420')
+sha256sums_armv8h=('6f7a4721303710384e7c9aeaf5a47954dbf992e2d92a27bc83c2170229c3a826')
+_build=11.58.23
 source_aarch64=("https://cdn.azul.com/zulu-embedded/bin/zulu${_build}-ca-jdk${pkgver}-linux_aarch64.tar.gz")
-sha256sums_aarch64=('fc7c41a0005180d4ca471c90d01e049469e0614cf774566d4cf383caa29d1a97')
+sha256sums_aarch64=('f0f3b2ef8affd321ce9c76680da2ffc2f7266b7f3e57a521e95d2167b3d83fdf')
+_build=11.58.25
 source_i686=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_i686.tar.gz")
-sha256sums_i686=('1ee1654aa592f48ce2920092638d70bee4b6997dc42cf629a9717fb11e468d58')
+sha256sums_i686=('c75d2bd5f53d92ca3aed24ffdef6690824af5a7e04f8809dcc509b0a666c3083')
+_build=11.58.23
 source_x86_64=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_x64.tar.gz")
-sha256sums_x86_64=('e064b61d93304012351242bf0823c6a2e41d9e28add7ea7f05378b7243d34247')
+sha256sums_x86_64=('b8b3e7c2eec6d62b6f4de3e4b4b1c6035d42bd4d6d4f31e9aa804dc311d4a4b3')
 
 _jvmdir="usr/lib/jvm/zulu-embedded-11"
 package() {
