@@ -13,7 +13,7 @@ provides=('gosimac')
 
 source=("https://github.com/1995parham/gosimac/releases/download/v${pkgver}/gosimac_${pkgver}_linux_amd64.tar.gz")
 
-sha256sums=('5bfe149daf8c5084abbd7bb864dae06e4770d114dc959cc393ee46611113c4a7')
+sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
 
 package() {
 	# package
