@@ -5,7 +5,7 @@ pkgbase = notary-bin
 	url = https://github.com/theupdateframework/notary
 	arch = x86_64
 	license = APACHE
-	source = git+https://github.com/theupdateframework/notary/releases/download/v0.6.1/notary-Linux-amd64
+	source = https://github.com/theupdateframework/notary/releases/download/v0.6.1/notary-Linux-amd64
 	sha256sums = SKIP
 
 pkgname = notary-bin
