@@ -29,7 +29,7 @@ pkgver() {
         printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
+package() {
         cd 8814au
         sudo ./install-driver.sh
 		install -Dm755 remove-driver.sh "$pkgdir/usr/bin/remove-8814au-driver.sh"
