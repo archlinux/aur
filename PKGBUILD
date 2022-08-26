@@ -1,5 +1,5 @@
 pkgname=classic-series-bin
-pkgver=22.06.29
+pkgver=20220629
 pkgrel=1
 pkgdesc="Audio Assault 3 Original Classic Metal High-Gain Amp Designs"
 arch=('x86_64')
@@ -28,8 +28,7 @@ package() {
     install -Dm755 "$srcdir/Classic Series EX Linux/Classic Series EX vst2.so" "$pkgdir/usr/lib/vst/Classic Series EX.so"
 
     ## Install VST3 Plugin
-    mkdir -p "$pkgdir/usr/lib/vst3"
-    cp -r "$srcdir/Classic Series EX Linux/Classic Series EX.vst3" "$pkgdir/usr/lib/vst3/Classic Series EX.vst3"
+    install -Dm755 "$srcdir/Classic Series EX Linux/Classic Series EX.vst3/Contents/x86_64-linux/Classic Series EX.so" "$pkgdir/usr/lib/vst3/Classic Series EX.vst3/Contents/x86_64-linux/Classic Series EX.so"
 
     ## Install Standalone Binary
     cp "$srcdir/Classic Series EX Linux/Classic Series EX Standalone" "$pkgdir/usr/bin/Classic Series EX Standalone"
