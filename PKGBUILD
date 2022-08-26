@@ -2,7 +2,7 @@
 
 _target="msp430-elf"
 pkgname=${_target}-gcc-stage1
-pkgver=12.1.0
+pkgver=12.2.0
 _islver=0.25
 pkgrel=1
 pkgdesc="The GNU Compiler Collection bootstrap for the ${_target} target."
@@ -14,7 +14,7 @@ options=('staticlibs' '!buildflags' '!libtool' '!emptydirs' 'zipman' 'docs' '!st
 source=(https://libisl.sourceforge.io/isl-${_islver}.tar.xz
         ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz)
 sha256sums=('be7b210647ccadf90a2f0b000fca11a4d40546374a850db67adb32fad4b230d9'
-            '62fd634889f31c02b64af2c468f064b47ad1ca78411c45abe6ac4b5f8dd19c7b')
+            'e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff')
 
 prepare() {
   # add isl into tree
