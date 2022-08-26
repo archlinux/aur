@@ -12,14 +12,14 @@ depends=('alsa-lib' 'dbus' 'expat' 'gcc-libs' 'glibc' 'libpulse'
          'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxrender' 'libxtst'
          'nspr' 'nss' 'zlib')
 install="${pkgname}.install"
-source=('https://dl.google.com/android/repository/emulator-linux_x64-8420304.zip'
+source=('https://dl.google.com/android/repository/emulator-linux_x64-8807927.zip'
         "${pkgname}.sh"
         "${pkgname}.csh"
         'package.xml')
-sha1sums=('1f2c3ddeb2c9ac4feef5946098a0a710d08e9c6d'
+sha1sums=('43df6ed553b89e1553d588251526aae8f79da214'
           '80c9b3ffc8865b5f8e55b1ffed36c08ee7a9d8ad'
           'e1485ef14463f275005cae43a0a1e43ce52354ca'
-          'dd79532c27c0f556ce734bdd9b76bd43f2e20709')
+          '5687f9d36e83646f93ec3743200886831c8cf2e6')
 
 package() {
   install -Dm755 "${pkgname}.sh" "${pkgdir}/etc/profile.d/${pkgname}.sh"
