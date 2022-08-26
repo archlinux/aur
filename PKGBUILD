@@ -1,7 +1,7 @@
 # Maintainer:  Edgar Vincent <e-v@posteo.net>
 _pkgname=messenger-notify
 pkgname=${_pkgname}-git
-pkgrel=2
+pkgrel=3
 pkgver=r23.85cf890
 pkgdesc="A background service that can be connected to messengers (such as Signal) and will show a desktop notification on message receive."
 arch=('x86_64' 'aarch64')
