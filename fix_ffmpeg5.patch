@@ -1,0 +1,151 @@
+diff -ruN old/src/mgui/ffviewer.cpp new/src/mgui/ffviewer.cpp
+--- old/src/mgui/ffviewer.cpp	2022-08-26 11:00:17.936924594 +0430
++++ new/src/mgui/ffviewer.cpp	2022-08-26 14:41:31.887225381 +0430
+@@ -37,6 +37,7 @@
+ #endif
+ 
+ C_LINKAGE_BEGIN
++#include <libavcodec/avcodec.h>
+ #include <libavutil/imgutils.h>
+ C_LINKAGE_END
+ 
+@@ -111,7 +112,7 @@
+ 
+ AVCodecContext* GetVideoCtx(FFData& ffv)
+ {
+-    return VideoStream(ffv)->codec;
++    return ffv.videoCtx;
+ }
+ 
+ static bool IsValidRational(const AVRational& r)
+@@ -294,6 +295,7 @@
+ #else
+         av_close_input_file(ffi.iCtx);
+ #endif
++        avcodec_free_context(&ffi.videoCtx);
+         ffi.iCtx = 0;
+     }
+ }
+@@ -437,8 +439,6 @@
+ {
+     std::string& err_str = diag.errStr;
+ 
+-    av_register_all();
+-
+     ASSERT( !ffi.IsOpened() );
+     bool res = false;
+ 
+@@ -508,14 +508,14 @@
+         for( int i=0; i < (int)ic->nb_streams; i++ )
+         {
+             AVStream* strm = ic->streams[i];
+-            AVCodecContext* avctx = strm->codec;
+-            if( SetIndex(video_idx, i, avctx->codec_type == AVMEDIA_TYPE_VIDEO) )
++            AVCodecParameters* avcp = strm->codecpar;
++            if( SetIndex(video_idx, i, avcp->codec_type == AVMEDIA_TYPE_VIDEO) )
+                 ;
+             else
+                 // для демиксера имеет значение только NONE и ALL
+                 strm->discard = AVDISCARD_ALL;
+ 
+-            SetIndex(audio_idx, i, avctx->codec_type == AVMEDIA_TYPE_AUDIO);
++            SetIndex(audio_idx, i, avcp->codec_type == AVMEDIA_TYPE_AUDIO);
+         }
+ 
+         if( video_idx == -1 )
+@@ -562,23 +562,29 @@
+         }
+     
+         // открытие кодека
+-        AVCodecContext* dec = ic->streams[video_idx]->codec;
+-        // для H.264 и плохих TS
+-        dec->strict_std_compliance = FF_COMPLIANCE_STRICT;
++        AVCodecParameters* decp = ic->streams[video_idx]->codecpar;
+     
+         // Chromium зачем-то выставляет явно, но такие значения уже по умолчанию
+         //dec->error_concealment = FF_EC_GUESS_MVS | FF_EC_DEBLOCK;
+         //dec->error_recognition = FF_ER_CAREFUL;
+     
+-        std::string tag_str = CodecID2Str(dec->codec_id);
++        std::string tag_str = CodecID2Str(decp->codec_id);
+         // AVCodec - это одиночка, а AVCodecContext - состояние для него
+         // в соответ. потоке контейнера 
+-        AVCodec* codec = avcodec_find_decoder(dec->codec_id);
++        const AVCodec* codec = avcodec_find_decoder(decp->codec_id);
+         if( !codec )
+         {
+             err_str = BF_("No decoder found for the stream: %1%") % tag_str % bf::stop;
+             return false;
+         }
++        AVCodecContext *dec;
++        ffi.videoCtx = dec = avcodec_alloc_context3(codec);
++        if( avcodec_parameters_to_context(dec, decp) < 0 )
++        {
++            err_str = _("Can't copy codec parameters");
++            return false;
++        }
++        dec->strict_std_compliance = FF_COMPLIANCE_STRICT;
+ 
+         // :TRICKY: вся полезна инфо о дорожке, включая размеры видео, реально парсится 
+         // в av_find_stream_info(), а в avcodec_open() - кодек только привязывается к
+@@ -824,7 +830,15 @@
+         pkt->data = 0;
+         pkt->size = 0;
+     }
+-    int av_res = avcodec_decode_video2(GetVideoCtx(ffv), &picture, &got_picture, pkt);
++    int av_res = avcodec_send_packet(GetVideoCtx(ffv), pkt);
++    if( av_res >= 0 )
++    {
++      av_res = avcodec_receive_frame(GetVideoCtx(ffv), &picture);
++      if( av_res >= 0 )
++      {
++        got_picture = 1;
++      }
++    }
+ #else
+     const uint8_t* buf = 0;
+     int buf_sz = 0;
+@@ -870,7 +884,8 @@
+         // в идеале длительность уже была рассчитана в предыдущем pkt->duration;
+         // пока же сделаем копипаст как в ffmpeg.c - см. особенности ffmpeg (compute_pkt_fields()) 
+         AVStream* st = VideoStream(ffv);
+-        int ticks    = st->parser ? st->parser->repeat_pict + 1 : dec->ticks_per_frame ;
++        AVCodecParserContext *pctx = av_stream_get_parser(st);
++        int ticks    = pctx ? pctx->repeat_pict + 1 : dec->ticks_per_frame;
+         next_pts    += VideoFrameLength(dec, ticks);
+     }
+ 
+@@ -1082,7 +1097,7 @@
+     // переход по позиции не работает для avi, mkv - см. особенности ffmpeg
+     // однако для без-заголовочных демиксеров (MPEG-PS, MPEG-TS) требуется
+ 
+-    typedef std::map<std::string, AVInputFormat*> Map;
++    typedef std::map<std::string, const AVInputFormat*> Map;
+     static Map map;
+     if( map.empty() )
+     {
+diff -ruN old/src/mgui/ffviewer.h new/src/mgui/ffviewer.h
+--- old/src/mgui/ffviewer.h	2016-04-10 15:15:39.000000000 +0430
++++ new/src/mgui/ffviewer.h	2022-08-26 11:25:10.616129717 +0430
+@@ -70,6 +70,7 @@
+ struct FFData: public boost::noncopyable
+ {
+     AVFormatContext* iCtx;
++     AVCodecContext* videoCtx;
+                 int  videoIdx;
+               Point  vidSz; // первоначальный размер
+ 
+diff -ruN old/src/mgui/project/media-browser.cpp new/src/mgui/project/media-browser.cpp
+--- old/src/mgui/project/media-browser.cpp	2016-04-10 15:15:39.000000000 +0430
++++ new/src/mgui/project/media-browser.cpp	2022-08-26 14:08:22.610955145 +0430
+@@ -240,8 +240,8 @@
+         a_cnt = 0;
+         for( int i=0; i < (int)ic->nb_streams; i++ )
+         {
+-            AVCodecContext* avctx = ic->streams[i]->codec;
+-            if( avctx->codec_type == AVMEDIA_TYPE_AUDIO )
++            AVCodecParameters* avp = ic->streams[i]->codecpar;
++            if( avp->codec_type == AVMEDIA_TYPE_AUDIO )
+                 a_cnt++;
+         }
+ 

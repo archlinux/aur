@@ -3,7 +3,7 @@
 
 pkgname=bombono-dvd
 pkgver=1.2.4
-pkgrel=6
+pkgrel=7
 pkgdesc="DVD authoring program with nice and clean GUI"
 arch=('i686' 'x86_64')
 url="http://www.bombono.org"
@@ -22,7 +22,8 @@ source=("https://github.com/muravjov/${pkgname}/archive/${pkgver}.tar.gz"
         "fix_deprecated_boost_api.patch"
         "fix_throw_specifications.patch"
         "fix_operator_ambiguity.patch"
-        "fix_ffmpeg30.patch")
+        "fix_ffmpeg30.patch"
+        "fix_ffmpeg5.patch")
 install=bombono-dvd.install
 sha256sums=('4f8c882a0c359ca8c182a627885c64aa271820eead2f9a64b34f1625c3b0a9d7'
             '63e47ffb812acb33a4d1f5d7f421eb2ccdf3ee1ce1b7f75267c32079dbc9dea1'
@@ -33,7 +34,8 @@ sha256sums=('4f8c882a0c359ca8c182a627885c64aa271820eead2f9a64b34f1625c3b0a9d7'
             'a69f51f9d5bd6ebe26c13abeece9de012d110dcec944c76efbab59b6bc0ef915'
             '72b3d6c76cbf98fb9287f7ee5b7a57b6febe2a635d50758c2451e376e3e6ca02'
             '9d56f7d16c55a506b092dbec00789e4767963d6202d3d92b79ad389393d43c69'
-            'f6fd3a309987ac08b6f70132686c5a06bc7496fb6e1097539d6348f558d09502')
+            'f6fd3a309987ac08b6f70132686c5a06bc7496fb6e1097539d6348f558d09502'
+            '45432a2c089f975f5ee04270c878ef61b98a6b114f2618cc47e61221b3a808ee')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -46,6 +48,7 @@ prepare() {
   patch -Np1 -i "${srcdir}/fix_throw_specifications.patch"
   patch -Np1 -i "${srcdir}/fix_operator_ambiguity.patch"
   patch -Np1 -i "${srcdir}/inc_boost_header.patch"
+  patch -Np1 -i "${srcdir}/fix_ffmpeg5.patch"
   # python2 fix
   for file in $(find . -name '*.py' -print); do
      sed -i 's_#!.*/usr/bin/python_#!/usr/bin/python2_' $file
