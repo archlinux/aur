@@ -1,0 +1,15 @@
+pkgbase = wmarchup-git
+	pkgdesc = Window Maker dockapp which monitors for package updates
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/agneum14/wmArchUp
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = libdockapp
+	depends = libx11
+	optdepends = windowmaker
+	source = wmarchup-git::git+https://github.com/agneum14/wmArchUp
+	md5sums = SKIP
+
+pkgname = wmarchup-git
