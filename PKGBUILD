@@ -3,14 +3,14 @@
 # Maintainer: dmrz < user on aur.archlinux.org >
 
 pkgname=kubecfg-bin
-pkgver=0.26.0
+pkgver=0.27.0
 pkgrel=1
 pkgdesc="A tool for managing complex enterprise Kubernetes environments as code"
 url="https://github.com/kubecfg/kubecfg"
 license=('Apache')
 arch=('x86_64')
 makedepends=('git' 'go')
-source=("${pkgname}-${pkgver}::https://github.com/kubecfg/kubecfg/releases/download/v0.26.0/kubecfg_Linux_X64")
+source=("${pkgname}-${pkgver}::https://github.com/kubecfg/kubecfg/releases/download/v${pkgver}/kubecfg_Linux_X64")
 md5sums=('SKIP')
 
 package() {
