@@ -1,6 +1,6 @@
 pkgbase = mop-git
 	pkgdesc = Stock market tracker for hackers
-	pkgver = 195.570a5d6
+	pkgver = 280.94ff210
 	pkgrel = 1
 	url = https://github.com/mop-tracker/mop
 	arch = i686
@@ -11,11 +11,11 @@ pkgbase = mop-git
 	license = MIT
 	makedepends = git
 	makedepends = go
+	depends = glibc
 	conflicts = mop
-	options = !strip
 	options = !emptydirs
+	options = !lto
 	source = mop::git+https://github.com/mop-tracker/mop.git
-	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = mop-git
-

@@ -2,27 +2,22 @@
 
 _pkgname=mop
 pkgname=${_pkgname}-git
-pkgver=195.570a5d6
+pkgver=280.94ff210
 pkgrel=1
 pkgdesc='Stock market tracker for hackers'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/mop-tracker/mop'
 license=('MIT')
+depends=('glibc')
 makedepends=('git' 'go')
 conflicts=('mop')
-options=('!strip' '!emptydirs')
+options=('!emptydirs' '!lto')
 source=("${_pkgname}"::"git+https://github.com/mop-tracker/${_pkgname}.git")
-sha256sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
   printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "${_pkgname}"
-  go mod init github.com/mop-tracker/${_pkgname}
-  go mod tidy
 }
 
 build() {
@@ -31,7 +26,7 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  _LDFLAGS="-X main.version=$(git rev-list --count HEAD) -X main.branch=master -X main.commit=$(git rev-parse HEAD) -extldflags ${LDFLAGS}"
+  _LDFLAGS="-X main.version=$(git rev-list --count HEAD) -X main.branch=master -X main.commit=$(git rev-parse HEAD) -linkmode=external -extldflags ${LDFLAGS}"
   go build -o mop -ldflags="${_LDFLAGS}" "./cmd/..."
 }
 
@@ -42,4 +37,8 @@ package() {
   # docs
   install -D -m644 "${srcdir}/${_pkgname}/README.md" \
     "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+  # license
+  install -D -m644 "${srcdir}/${_pkgname}/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
