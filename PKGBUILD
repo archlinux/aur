@@ -32,5 +32,6 @@ pkgver() {
 package() {
         cd 8814au
         sudo ./install-driver.sh
-        install -Dm644 README.md "$pkgdir/usr/share/licenses/$pkgname/README.md"
+		install -Dm755 remove-driver.sh "/usr/bin/remove-8814au-driver.sh"
+        install -Dm644 README.md "/usr/share/licenses/$pkgname/README.md"
 }
