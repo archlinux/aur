@@ -3,7 +3,7 @@
 
 pkgname=lceda-pro-bin
 _pkgname=${pkgname%-bin}
-pkgver=1.8.21
+pkgver=1.8.22
 pkgrel=1
 pkgdesc="免费、专业、强大的国产PCB设计工具"
 arch=('x86_64')
@@ -20,7 +20,7 @@ install=${pkgname}.install
 source=("${_pkgname}-${pkgver}.zip::https://image.lceda.cn/files/lceda-pro-linux-x64-${pkgver}.zip"
         "LICENSE"
         "${pkgname}.install")
-sha256sums=('420afd8db69a222324867ca275e68e64cf06d6bad4dfbe252be783522cd4ef6e'
+sha256sums=('a936a968802619d39b1d8c1a053a4f348aaeaf53bcf711d58c84c98b0f4cf6c6'
             '9b53bc19a98498c86019cc32a3ade6ad0ee4b12ba30686feb93132a5f0da52f5'
             'f8c3c7f65443801b8a70e40de7cdceade5dcd75974945695dd5a1bfb1f862e1a')
 # noextract=(${_pkgname}-${pkgver}.zip)
