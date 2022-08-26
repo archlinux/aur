@@ -23,7 +23,7 @@ sha512sums=('8ffa445333f6e677f9df78c93fa05a3634c30f11071f5367f5c36cf143410410a0d
             '02c650aa559a33b7f2bc35deb2946b28473428e1c166895f0e60d3ab766475db172f974e24860850d1575a843056b673fb1dfe1390204d528b1323cc65d0efce')
 
 pkgdesc="A compatibility layer for running Windows programs - GloriousEggroll custom wine build for running League of Legends"
-url="https://github.com/GloriousEggroll/wine"
+url="https://github.com/GloriousEggroll/wine-ge-custom"
 arch=(x86_64)
 options=(staticlibs !lto)
 license=(LGPL)
