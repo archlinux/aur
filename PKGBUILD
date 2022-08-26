@@ -17,7 +17,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=("git://github.com/bji/${_gitname}.git#commit=287e4bee6fd430ffb52604049de80a27a77ff6b4"
+source=("git+https://github.com/bji/${_gitname}.git#commit=287e4bee6fd430ffb52604049de80a27a77ff6b4"
         'added_s3_versioning_support.patch')
 noextract=()
 sha256sums=('SKIP'
