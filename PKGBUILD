@@ -1,6 +1,6 @@
 _pkgname=snapper-snapshot-notification
 pkgname="${_pkgname}-git"
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="The Desktop notification will appear when booting into Btrfs snapshot using Overlayfs."
 arch=("any")
@@ -11,8 +11,11 @@ provides=("snapper-snapshot-notification")
 source=(git+${url})
 sha256sums=("SKIP")
 
+
 package() {
+  install -dv "${pkgdir}/usr/bin"
+  install -dv "${pkgdir}/etc/xdg/autostart"
   cd "$srcdir/$_pkgname"
-  sudo cp ./snapper-detects-snapshot /usr/bin/
-  sudo cp ./snapper-detects-snapshot.desktop /etc/xdg/autostart/
+  cp usr/bin/snapper-detects-snapshot $pkgdir/usr/bin/
+  cp etc/xdg/autostart/snapper-detects-snapshot.desktop $pkgdir/etc/xdg/autostart/
 }
