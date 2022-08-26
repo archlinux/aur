@@ -2,8 +2,8 @@
 
 pkgname=python-material-color-utilities
 _name=material-color-utilities-python
-pkgver=0.1.4
-pkgrel=2
+pkgver=0.1.5
+pkgrel=1
 pkgdesc="Python port of material-color-utilities used for Material You colors"
 arch=('any')
 url="https://github.com/avanishsubbiah/material-color-utilities-python"
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('python-pillow' 'python-regex')
 makedepends=('python-build' 'python-installer' 'python-poetry' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('c7d06e83986fc6af771d11acc047333ba1a6ce94d295d9776740ebbc54d8dabbcad30cb2c0ed1e28b30cc6be7aa9aa2ee838a9c450c0a47fbb577a2c934dd144')
+b2sums=('cf444831fec962caae3a1871b8331dcdd055f186754631185140842e49e1dc5526c5aedc021d28cd5e192e6f593774abce34e4a2853049e9ded2cf3ca9b79e3f')
 
 build() {
   cd "$_name-$pkgver"
