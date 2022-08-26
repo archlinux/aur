@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-libatomic_ops
-pkgver=7.6.12
+pkgver=7.6.14
 pkgrel=1
 pkgdesc="Provides semi-portable access to hardware provided atomic memory operations (mingw-w64)"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('mingw-w64-configure')
 options=('!strip' '!buildflags' 'staticlibs')
 license=('GPL2' 'MIT')
 source=("https://github.com/ivmai/libatomic_ops/releases/download/v${pkgver}/libatomic_ops-${pkgver}.tar.gz")
-sha1sums=('8d4c69e8b2ed098ce4e056170fd96fc590c2b885')
+sha256sums=('390f244d424714735b7050d056567615b3b8f29008a663c262fb548f1802d292')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
