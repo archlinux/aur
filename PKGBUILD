@@ -17,7 +17,7 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install=
+install=.INSTALL
 changelog=
 source=("git+$url")
 noextract=()
@@ -29,15 +29,8 @@ pkgver() {
         printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-        cd 8814au
-		make clean
-		make
-
-}
-
 package() {
         cd 8814au
-        sudo make install
+        sudo ./install-driver.sh
         install -Dm644 README.md "$pkgdir/usr/share/licenses/$pkgname/README.md"
 }

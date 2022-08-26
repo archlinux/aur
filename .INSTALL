@@ -1,0 +1,9 @@
+pre_upgrade() {
+	cd 8814au
+	sudo ./remove-driver.sh
+}
+
+pre_remove() {
+	cd 8814au
+	sudo ./remove-driver.sh
+}

@@ -3,6 +3,7 @@ pkgbase = rtl8814au-morrownr-git
 	pkgver = 1.0.r.
 	pkgrel = 1
 	url = https://github.com/morrownr/8814au.git
+	install = .INSTALL
 	arch = x86_64
 	license = GPL
 	makedepends = linux-headers
