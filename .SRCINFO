@@ -1,6 +1,6 @@
 pkgbase = waterfox-g4-bin
 	pkgdesc = Fourth generation of customizable privacy-conscious web browser.
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 0
 	url = https://www.waterfox.net
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = waterfox-g4-bin
 	optdepends = alsa-lib: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = waterfox-g4=1.4
+	provides = waterfox-g4=1.5
 	conflicts = waterfox-g4
 	source = waterfox-g4.desktop
-	source = https://github.com/WaterfoxCo/Waterfox/releases/download/G4.1.4/waterfox-G4.1.4.en-US.linux-x86_64.tar.bz2
+	source = https://github.com/WaterfoxCo/Waterfox/releases/download/G4.1.5/waterfox-G4.1.5.en-US.linux-x86_64.tar.bz2
 	sha256sums = 76fde87eda671338d58a29d78ab081ca47aac2cde8faccafa646b0546b22bcfb
-	sha256sums = 1748266754bb35bbaa47042a6ee208f345d3b5da4b65adf7675f85980fe97de4
+	sha256sums = 13f3c584a90c50ad0fe9006d1fe0906edfdaa02ced99f0f027090d226ed0f942
 
 pkgname = waterfox-g4-bin
