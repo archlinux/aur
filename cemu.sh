@@ -4,6 +4,7 @@ export WINEDLLOVERRIDES="mscoree=;mshtml=;cemuhook.dll=n,b"
 
 # Allows to play BotW with Polaris video cards
 export R600_DEBUG="nohyperz"
+export AMD_DEBUG="nohyperz"
 
 if [ ! -d "$HOME"/.cemu ] ; then
   mkdir -p "$HOME"/.cemu/wine || exit 1

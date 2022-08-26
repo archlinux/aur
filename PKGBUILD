@@ -25,7 +25,7 @@ optdepends=('wine-ge-custom: Vulkan support')
 # Sometimes, they update the zip file without changing its name, which causes the md5sum to fail.
 # If you notice this, please mark this package as out-of-date in the aur website and I'll fix it.
 
-md5sums=('b992b4c672a1df44f4719b2a43c91910'
+md5sums=('73b3dbc254f3f96964de1cc41fbc8969'
          '54d70005a8975812ab54fcfef53f7bde'
          'f1649814d35413763169cf750062d763'
          '6a3f7091f4040f00d6891173a0351e81'
