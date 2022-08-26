@@ -1,7 +1,7 @@
 # Maintainer: xuhcc <xuhcc at cryptolab dot net>
 
 pkgname=mermaid-cli
-pkgver=9.1.5
+pkgver=9.1.6
 pkgrel=1
 pkgdesc='Generation of diagram and flowchart from text in a similar manner as markdown (CLI)'
 arch=('any')
@@ -13,12 +13,12 @@ _npmscope=@mermaid-js
 _npmname=mermaid-cli
 _npmver=$pkgver
 source=("http://registry.npmjs.org/${_npmscope}/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-sha256sums=('2478fbc6d7d930e5ace7c05eaaffd5f18f1d4887d15a13557a01573d0f16e710')
+sha256sums=('fd1cbd649dbe70f4eb48a6508df953987238090a7c87ba8309c01ca90f8e554d')
 noextract=("${_npmname}-${_npmver}.tgz")
 
 package() {
     PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true npm install --global --production --prefix "${pkgdir}/usr" "${_npmname}-${_npmver}.tgz"
-    sed -i "s#let puppeteerConfig = {}#let puppeteerConfig = { executablePath: '$(which chromium)' }#g" "${pkgdir}/usr/lib/node_modules/@mermaid-js/mermaid-cli/index.bundle.js"
+    sed -i "s#let puppeteerConfig = {}#let puppeteerConfig = { executablePath: '$(which chromium)' }#g" "${pkgdir}/usr/lib/node_modules/@mermaid-js/mermaid-cli/src/index.js"
 
     # -> https://wiki.archlinux.org/index.php/Node.js_package_guidelines
     # Non-deterministic race in npm gives 777 permissions to random directories.
