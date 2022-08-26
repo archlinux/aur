@@ -10,6 +10,7 @@ replaces=('vkteams-bin')
 source=("https://dl.vk.halva.com/downloads/linux/x64/latest/vkteams.tar.xz"
 	"vkteams.desktop"
 	"256x256.png")
+
 package() {
 	install -dm755 "${pkgdir}/opt/"
 	cp -dpr --no-preserve=ownership "." "${pkgdir}/opt/vkteams"
@@ -27,5 +28,5 @@ package() {
 }
 
 sha256sums=('3ad6c0569b193c37439a393900448bba5882589ac2f6be383a6482671682c8fa'
-            'a842b186d436438325443b7daa65da9b11500888debb7794acf3a3de04820885'
+            'd3ef10089177c8bab4e8d8ee36b2c0cf6bde125bfacaf710361280e9c3c2110f'
             '4f3092d5a6b1787dd30fe844404572df2ec75e6a4278ad534bf67281f66c3240')

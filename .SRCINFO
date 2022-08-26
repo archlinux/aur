@@ -7,6 +7,10 @@ pkgbase = vkteams-scb-bin
 	license = unknown
 	replaces = vkteams-bin
 	source = https://dl.vk.halva.com/downloads/linux/x64/latest/vkteams.tar.xz
+	source = vkteams.desktop
+	source = 256x256.png
 	sha256sums = 3ad6c0569b193c37439a393900448bba5882589ac2f6be383a6482671682c8fa
+	sha256sums = d3ef10089177c8bab4e8d8ee36b2c0cf6bde125bfacaf710361280e9c3c2110f
+	sha256sums = 4f3092d5a6b1787dd30fe844404572df2ec75e6a4278ad534bf67281f66c3240
 
 pkgname = vkteams-scb-bin
