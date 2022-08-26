@@ -10,7 +10,7 @@
 
 pkgname=vagrant
 pkgver=2.3.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
 url="https://vagrantup.com"
@@ -48,13 +48,12 @@ package() {
   EMBEDDED_DIR="$pkgdir"/opt/vagrant/embedded
 
   install -d "$pkgdir"/usr/{bin,share/bash-completion/completions,share/zsh/site-functions}
-  install -Dm644 "$INSTALLERS_DIR"/common/gemrc "$EMBEDDED_DIR"/etc/gemrc
+  install -d "$EMBEDDED_DIR"/gems
 
   echo "{ \"vagrant_version\": \"$pkgver\" }" > "$EMBEDDED_DIR"/manifest.json
 
-  GEM_PATH="$EMBEDDED_DIR"/gems/$pkgver GEM_HOME="$GEM_PATH" \
-  GEMRC="$EMBEDDED_DIR"/etc/gemrc \
-    gem install $pkgname-$pkgver.gem cgi delegate --no-document
+  gem install $pkgname-$pkgver.gem cgi delegate ipaddr io-wait \
+    --no-document --no-user-install --install-dir "$EMBEDDED_DIR"/gems/$pkgver
 
   install -Dm755 "$INSTALLERS_DIR"/launcher/vagrant \
     "$pkgdir"/opt/$pkgname/bin/$pkgname
