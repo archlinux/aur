@@ -1,19 +1,19 @@
 pkgname=air-impulse-loader-bin
-pkgver=1.0.2
-pkgrel=2
-pkgdesc="Audio Assault AIR Impulse Response Loader"
+pkgver=20220826
+pkgrel=1
+pkgdesc="Audio Assault AIR Impulse Response Loader Rack"
 arch=('x86_64')
 url="https://audio-assault.com/air.php"
 license=('EULA')
 groups=('pro-audio' 'vst-plugins')
 depends=('libcurl-gnutls' 'glibc')
 makedepends=('xdg-user-dirs' 'unzip')
-source=("aIR Impulse Loader.desktop")
-sha256sums=('c8a64689f395a5a1736ae26af81cca5d6d1400c6291e3417d635a2fd916ef589')
+source=("aIR Impulse Rack.desktop")
+sha256sums=('fdb5066a6cf4d394a278d46d0c693db48c79d0e6a3427eb2b8af43a2d326bebb')
 
 prepare () {
 	## Extract AIR Impulse Response
-	_archive="`xdg-user-dir DOWNLOAD`/aIR Impulse Loader 1.0.3a.zip"
+	_archive="`xdg-user-dir DOWNLOAD`/aIRImpulseLinux.zip"
 	ln -srf "${_archive}" "$srcdir/`basename "${_archive}"`"
 	unzip "$srcdir/`basename "${_archive}"`"
 	find $srcdir -name ".DS_Store" -delete
@@ -22,13 +22,16 @@ prepare () {
 package() {
     ## Install Preset and Default Libraries
     mkdir -p "$pkgdir/opt/Audio Assault/aIR" "$pkgdir/usr/bin" "$pkgdir/usr/share/applications"
-    cp -rf "$srcdir/Linux $pkgver/aIR"/{"Default IRs",IRlinks,Presets,aIR.settings} "$pkgdir/opt/Audio Assault/aIR"
+    cp -rf "$srcdir/aIR"/{"Default IRs",IRlinks,Presets} "$pkgdir/opt/Audio Assault/aIR"
 
     ## Install VST Plugin
-    install -Dm755 "$srcdir/Linux $pkgver/aIR Impulse Loader.so" "$pkgdir/usr/lib/vst/aIR Impulse Loader.so"
+    install -Dm755 "$srcdir/aIR Impulse Rack VST2.so" "$pkgdir/usr/lib/vst/aIR Impulse Rack.so"
+
+    ## Install VST3 Plugin
+    install -Dm755 "$srcdir/aIR Impulse Rack.vst3/Contents/x86_64-linux/aIR Impulse Rack.so" "$pkgdir/usr/lib/vst3/aIR Impulse Rack.vst3/Contents/x86_64-linux/aIR Impulse Rack.so"
 
     ## Install Standalone Binary
-    cp "$srcdir/Linux $pkgver/aIR Impulse Loader Standalone" "$pkgdir/usr/bin/aIR Impulse Loader Standalone"
-    chmod +x "$pkgdir/usr/bin/aIR Impulse Loader Standalone"
-    install -Dm644 "$srcdir/aIR Impulse Loader.desktop" "$pkgdir/usr/share/applications/aIR Impulse Loader.desktop"
+    cp "$srcdir/aIR Impulse Rack Standalone" "$pkgdir/usr/bin/aIR Impulse Rack Standalone"
+    chmod +x "$pkgdir/usr/bin/aIR Impulse Rack Standalone"
+    install -Dm644 "$srcdir/aIR Impulse Rack.desktop" "$pkgdir/usr/share/applications/aIR Impulse Rack.desktop"
 }

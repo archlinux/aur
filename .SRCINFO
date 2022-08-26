@@ -1,7 +1,7 @@
 pkgbase = air-impulse-loader-bin
-	pkgdesc = Audio Assault AIR Impulse Response Loader
-	pkgver = 1.0.2
-	pkgrel = 2
+	pkgdesc = Audio Assault AIR Impulse Response Loader Rack
+	pkgver = 20220826
+	pkgrel = 1
 	url = https://audio-assault.com/air.php
 	arch = x86_64
 	groups = pro-audio
@@ -11,7 +11,7 @@ pkgbase = air-impulse-loader-bin
 	makedepends = unzip
 	depends = libcurl-gnutls
 	depends = glibc
-	source = aIR Impulse Loader.desktop
-	sha256sums = c8a64689f395a5a1736ae26af81cca5d6d1400c6291e3417d635a2fd916ef589
+	source = aIR Impulse Rack.desktop
+	sha256sums = fdb5066a6cf4d394a278d46d0c693db48c79d0e6a3427eb2b8af43a2d326bebb
 
 pkgname = air-impulse-loader-bin
