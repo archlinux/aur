@@ -1,0 +1,26 @@
+pkgbase = cemu-experimental-wine
+	pkgdesc = Wii U emulator. This is the experimental Windows version via wine.
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://cemu.info/
+	install = cemu-experimental-wine.install
+	arch = x86_64
+	license = custom
+	depends = wine
+	depends = winetricks
+	optdepends = wine-ge-custom: Vulkan support
+	provides = cemu-wine
+	conflicts = cemu-wine
+	options = !strip
+	source = cemu.sh
+	source = cemu.xpm
+	source = cemu.desktop
+	source = cemu_2.0-1.zip::https://cemu.info/releases/cemu_2.0.zip
+	source = https://web.archive.org/web/20180907210517if_/https://files.sshnuke.net/sharedFonts.7z
+	md5sums = 9eb51ec8364251dcf6482d81a927dceb
+	md5sums = 54d70005a8975812ab54fcfef53f7bde
+	md5sums = f1649814d35413763169cf750062d763
+	md5sums = 617d551e4c215ee8380b7fd01648c834
+	md5sums = 336a0bc0e44eede4ddf613a0eebf3bb9
+
+pkgname = cemu-experimental-wine
