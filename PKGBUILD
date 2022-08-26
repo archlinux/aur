@@ -13,7 +13,7 @@ source=("https://cran.r-project.org/src/contrib/${_cranname}_${pkgver}.tar.gz")
 sha256sums=('ecfc7f93d4d92d2c7c4dd72cee9b4843999e3b83ed64d46b207eca57d1931a35')
 
 build() {
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
+  R CMD INSTALL ${_cranname}_${pkgver}.tar.gz -l "${srcdir}"
 }
 
 package() {
