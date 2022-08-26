@@ -30,6 +30,7 @@ build() {
     cd "${srcdir}/${_pkgname}"
 
     echo "Building ${_pkgname} on v${pkgver} : [Install Build Dependencies] | Build | Done"
+    pnpm config set store-dir ${srcdir}/.pnpm-store
     pnpm install --frozen-lockfile
 
     echo "Building : Install Build Dependencies | [Build] | Done"
