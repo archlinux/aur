@@ -1,6 +1,6 @@
 # Maintainer: Ivan Marquesi Lerner <ivanmlerner@protonmail.com>
 pkgname=solana  
-pkgver=1.10.35
+pkgver=1.10.37
 _splver=0.1.8
 _rustver=1.59.0
 pkgrel=1
@@ -14,7 +14,7 @@ conflicts=("solana-bin")
 provides=("solana")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/solana-labs/$pkgname/archive/v$pkgver.tar.gz"
         "spl-token-$_splver.tar.gz::https://github.com/solana-labs/solana-program-library/archive/refs/tags/@solana/spl-token@v$_splver.tar.gz")
-sha256sums=('416e81d24491ea89b25590f1c2dbd735110dc28872c3330f0bd04a2e40fd64c0'
+sha256sums=('b6a5bb4d5ed09775c098e9d7b911c71f487bf20e82b0248fcff585b495cd20e8'
             '09d57f880688e3dfafae22801500b3de09f7da8fc43281c11fed8cf0b0c31e7e')
 
 prepare() {
