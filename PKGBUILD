@@ -4,6 +4,7 @@
 pkgname=wine-lol-bin
 pkgver=7.0_5
 pkgrel=1
+epoch=1
 
 _ver=${pkgver%_*}
 _rev=${pkgver#*_}
