@@ -1,7 +1,7 @@
 pkgbase = system76-oled
 	pkgdesc = Control brightness on System76 OLED displays
-	pkgver = 0.1.4
-	pkgrel = 2
+	pkgver = 0.1.5
+	pkgrel = 1
 	url = https://github.com/pop-os/system76-oled
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = system76-oled
 	depends = dbus
 	depends = libx11
 	depends = libxrandr
-	source = system76-oled-0.1.4.tar.gz::https://github.com/pop-os/system76-oled/archive/0.1.4.tar.gz
-	sha256sums = 14bd774108a91780af1cb85bc15089d28d8bd8c3dbe5c6d2eba1b41791ce1f16
+	source = system76-oled-0.1.5.tar.gz::https://github.com/pop-os/system76-oled/archive/0.1.5.tar.gz
+	sha256sums = 2607cfc25b41446a16f01dc8c2eb49d6922ee8991b5fb655b571c2d4e79f9da6
 
 pkgname = system76-oled
