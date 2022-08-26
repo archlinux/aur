@@ -2,13 +2,13 @@
 
 pkgname=gradience-git
 _pkgname=Gradience
-pkgver=r845.17a4e7a
+pkgver=r1043.78bda9d
 pkgrel=1
 pkgdesc="Change the look of Adwaita, with ease"
 arch=('x86_64')
 url="https://github.com/GradienceTeam/Gradience"
 license=('GPL3')
-depends=('libadwaita-git>=1.2.alpha' 'python-gobject' 'python-anyascii' 'python-pillow' 'python-svglib' 'python-regex' 'python-material-color-utilities' 'libportal-gtk4')
+depends=('libadwaita-git>=1.2.alpha' 'python-gobject' 'python-anyascii' 'python-pillow' 'python-svglib' 'python-urllib3' 'python-regex' 'python-material-color-utilities' 'libportal-gtk4')
 makedepends=('git' 'meson' 'blueprint-compiler' 'gobject-introspection')
 checkdepends=('appstream-glib')
 optdepends=('adw-gtk3: The theme from libadwaita ported to GTK-3'
