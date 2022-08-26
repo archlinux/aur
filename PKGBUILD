@@ -17,6 +17,6 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  sudo cp ./snapper-detects-snapshot /usr/bin/
-  sudo cp ./snapper-detects-snapshot.desktop /etc/xdg/autostart/
+  cp ./snapper-detects-snapshot /usr/bin/
+  cp ./snapper-detects-snapshot.desktop /etc/xdg/autostart/
 }
