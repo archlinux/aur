@@ -2,13 +2,13 @@
 
 pkgname="xsnow"
 pkgver=3.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Let it snow on your desktop"
 url="https://sourceforge.net/projects/xsnow/"
 license=("GPL3")
 arch=("x86_64" "i386" "armv7h" "aarch64")
 conflicts=("xsnow-bin" "xsnow-legacy" "xsnow-comp-patch-git")
-depends=("atk" "cairo" "gtk3" "libx11" "libxpm" "libxml2")
+depends=("atk" "cairo" "gtk3" "gsl" "libx11" "libxpm" "libxml2")
 source=("https://nav.dl.sourceforge.net/project/xsnow/xsnow-$pkgver.tar.gz")
 sha256sums=('9bde92d8d023ff6c2a26beb91905ad6f65aacf4de67296743fc710388a23ef7d')
 
