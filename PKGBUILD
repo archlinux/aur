@@ -2,7 +2,7 @@
 # Contributor: nirnakinho <aur at dominikbodi dot de>
 
 pkgname=dnscontrol
-pkgver=3.19.0
+pkgver=3.20.0
 pkgrel=1
 pkgdesc="Synchronize your DNS to multiple providers from a simple DSL"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('go-pie')
 provides=("${pkgname}=${pkgver}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/StackExchange/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('029a2f04aa2e468646bf55f1a203bb868d04097be65fd8d2a5541af565c88167d9e21fc60a59cf1a558268b7ed9d8baa829286a589deaf466f12d12e65546163')
+sha512sums=('cd94ceda4267bcad0e6fec6e8fec35785bc8a655c15c936970d23bc0b3f682126e4ccc03f3e0d99542555ea9b3f538a5456c7d086f6dc8e9b9e770389bfcc612')
 
 prepare(){
   mkdir -p gopath/src/github.com/StackExchange
