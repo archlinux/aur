@@ -9,7 +9,7 @@
 _target=m68k-elf
 _target_cpu=m68000
 pkgname=${_target}-gdb
-pkgver=11.1
+pkgver=12.1
 pkgrel=1
 pkgdesc="The GNU Project Debugger (${_target})"
 arch=('i686' 'x86_64')
@@ -17,8 +17,8 @@ license=('GPL')
 url="https://www.gnu.org/software/gdb/"
 depends=("${_target}-binutils" "${_target}-gcc" 'zlib' 'guile')
 PKGEXT="pkg.tar.zst"
-source=("http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz"
-        "http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz.sig")
+source=("https://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz"
+        "https://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz.sig")
         
 sha256sums=(SKIP SKIP)
 validpgpkeys=(F40ADB902B24264AA42E50BF92EDB04BFF325CF3)
