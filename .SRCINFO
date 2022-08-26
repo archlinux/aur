@@ -1,0 +1,16 @@
+pkgbase = gnome-extension-shell-nauta-connect-git
+	pkgdesc = Utility to authenticate in ETECSA network
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/jorgeajimenezl/nauta-connect-gnome-extension
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = jq
+	depends = gnome-shell
+	depends = gxml
+	provides = gnome-extension-shell-nauta-connect-git
+	source = gnome-extension-shell-nauta-connect-git::git+https://github.com/jorgeajimenezl/nauta-connect-gnome-extension.git
+	sha256sums = SKIP
+
+pkgname = gnome-extension-shell-nauta-connect-git
