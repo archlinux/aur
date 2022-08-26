@@ -1,6 +1,6 @@
 pkgbase = python-dbx
 	pkgdesc = DataBricks CLI eXtensions - aka dbx is a CLI tool for advanced Databricks jobs management.
-	pkgver = 0.6.12
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://docs.databricks.com/dev-tools/dbx.html
 	arch = any
@@ -9,23 +9,25 @@ pkgbase = python-dbx
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.8
-	depends = python-databricks-cli>=0.16.4
-	depends = python-click>=7.1.2
+	depends = python-databricks-cli>=0.17
+	depends = python-databricks-cli<0.18
+	depends = python-click>=8.1.0
+	depends = python-click<9.0.0
+	depends = python-rich=12.5.1
+	depends = python-typer=0.6.1
 	depends = python-retry>=0.9.2
 	depends = python-requests>=2.24.0
-	depends = python-mlflow>=1.23.0
-	depends = python-scipy>=1.8.0
-	depends = python-tqdm>=4.50.0
-	depends = python-azure-identity>=1.7.1
-	depends = python-azure-mgmt-datafactory>=2.2.0
-	depends = python-azure-mgmt-subscription>=3.0.0
-	depends = python-ruamel-yaml>=0.17.10
+	depends = python-mlflow>=1.26.0
+	depends = python-yaml>=6.0
+	depends = python-pydantic>=1.9.1
 	depends = python-cryptography>=3.3.1
 	depends = python-cryptography<38.0.0
-	depends = python-emoji>=1.6.1
 	depends = python-cookiecutter>=1.7.2
 	depends = python-jinja>=2.11.2
-	source = python-dbx-0.6.12.tar.gz::https://github.com/databrickslabs/dbx/archive/refs/tags/v0.6.12.tar.gz
-	sha512sums = 9564daab271409f5734d06595b9dafdb8f83dd12c5b647d31a59707011805fed2e2f4665b4c9a57c51d002974e8ae135e88d48c0dfbf77ec1aaaff98536c2556
+	depends = python-aiohttp>=3.8.1
+	depends = python-pathspec>=0.9.0
+	depends = python-watchdog-git>=2.1.0
+	source = python-dbx-0.7.0.tar.gz::https://github.com/databrickslabs/dbx/archive/refs/tags/v0.7.0.tar.gz
+	sha512sums = ffc610dbf30d159c75a15e7dd6d847d266b20178b5a5ab7ef99c034a698b4725d76fca744e854e5e402235d3866179adf628c96c21b750a919921dd9d36ac4a2
 
 pkgname = python-dbx
