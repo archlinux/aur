@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=VK Teams
+Comment=Бизнес мессенджер
+Path=/opt/vkteams/vkteams
+Exec=vkteams %U
+Icon=vkteams
+Type=Application
+StartupNotify=true
+Categories=Office;Chat;
+StartupWMClass=vkteams
+MimeType=x-scheme-handler/vkteams

@@ -1,0 +1,12 @@
+pkgbase = vkteams-scb-bin
+	pkgdesc = VK Teams (Sovcombank PJSC)
+	pkgver = 2.9.2
+	pkgrel = 1
+	url = https://dl.vk.halva.com/
+	arch = x86_64
+	license = unknown
+	replaces = vkteams-bin
+	source = https://dl.vk.halva.com/downloads/linux/x64/latest/vkteams.tar.xz
+	sha256sums = 3ad6c0569b193c37439a393900448bba5882589ac2f6be383a6482671682c8fa
+
+pkgname = vkteams-scb-bin
