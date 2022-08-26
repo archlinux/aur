@@ -9,7 +9,7 @@ pkgdesc="Utility to authenticate in ETECSA network"
 arch=('any')
 url='https://github.com/jorgeajimenezl/nauta-connect-gnome-extension'
 license=('GPL2')
-depends=('gnome-shell' 'gxml' 'libsoup3' 'ibsecret')
+depends=('gnome-shell' 'gxml' 'libsoup3' 'libsecret')
 makedepends=('git' 'jq')
 provides=("$pkgname")
 
