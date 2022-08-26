@@ -1,6 +1,6 @@
 _pkgname=snapper-snapshot-notification
 pkgname="${_pkgname}-git"
-pkgver=1.0.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="The Desktop notification will appear when booting into Btrfs snapshot using Overlayfs."
 arch=("any")
