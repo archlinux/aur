@@ -2,7 +2,7 @@
 # Contributor: Parham Alvani <parham.alvani@gmail.com>
 
 pkgname=gosimac
-pkgver=5.5.1
+pkgver=5.5.2
 pkgrel=1
 pkgdesc="Fetch the wallpaper from Bings, Unsplash..."
 arch=('any')
