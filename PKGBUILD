@@ -2,27 +2,36 @@
 
 pkgname=crowbook
 pkgver=0.15.2e
-pkgrel=2
+pkgrel=3
 pkgdesc="Converts books written in Markdown to HTML, LaTeX/PDF and EPUB"
 arch=('x86_64')
 url="https://github.com/lise-henry/crowbook"
 license=('LGPL')
-makedepends=('rust')
+makedepends=('rust' 'cargo')
 optdepends=('texlive-latexextra: create PDF')
 source=("git+https://github.com/lise-henry/crowbook.git#tag=v$pkgver")
 md5sums=('SKIP')
 
+prepare() {
+	cd "$srcdir/$pkgname"
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
 	cd "$srcdir/$pkgname"
-        cargo build --release --locked --target-dir=target
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --release --frozen
 }
 
 check() {
 	cd "$srcdir/$pkgname"
-        cargo test --release --locked --target-dir=target
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target-test
+	cargo test --release --frozen
 }
 
 package() {
 	cd "$srcdir/$pkgname"
-	install -Dm 755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
+	install -Dm0755 -t "${pkgdir}/usr/bin" target/release/${pkgname}
 }
