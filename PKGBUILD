@@ -1,7 +1,7 @@
 # Maintainer: Parham Alvani <parham.alvani@gmail.com>
 
 pkgname=gosimac-bin
-pkgver=5.5.1
+pkgver=5.5.2
 pkgrel=1
 pkgdesc="Fetch the wallpaper from Bings, Unsplash..."
 arch=(x86_64)
