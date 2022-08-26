@@ -1,7 +1,7 @@
 pkgbase = r-r.matlab
 	pkgdesc = Read and Write MAT Files and Call MATLAB from Within R
-	pkgver = 3.6.2
-	pkgrel = 5
+	pkgver = 3.7.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=R.matlab
 	arch = any
 	license = LGPL
@@ -11,7 +11,7 @@ pkgbase = r-r.matlab
 	depends = r-r.utils
 	optdepends = r-matrix
 	optdepends = r-sparsem
-	source = https://cran.r-project.org/src/contrib/R.matlab_3.6.2.tar.gz
-	sha256sums = 1ba338f470a24b7f6ef68cadbd04eb468ead4a689f263d2642408ad591b786bb
+	source = https://cran.r-project.org/src/contrib/R.matlab_3.7.0.tar.gz
+	sha256sums = d713522268a1206555610938350137ea022e07e27fa9cdd73c02fae8d1a43dda
 
 pkgname = r-r.matlab
