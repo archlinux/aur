@@ -1,6 +1,6 @@
 pkgbase = python-eko
 	pkgdesc = Python module to solve the DGLAP equations in N-space in terms of Evolution Kernel Operators in x-space.
-	pkgver = 0.9.1
+	pkgver = 0.10.2
 	pkgrel = 1
 	url = https://eko.readthedocs.io/
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-eko
 	optdepends = lhapdf: provides PDF files in the LHAPDF format
 	optdepends = pineappl: grid generation for HEP
 	provides = python-eko
-	source = https://pypi.io/packages/source/e/eko/eko-0.9.1.tar.gz
-	md5sums = 1d73b2bfe84bbb4507d680ff9b0051d2
+	source = https://pypi.io/packages/source/e/eko/eko-0.10.2.tar.gz
+	md5sums = d263f7928c77d730bcafbfbf9444e8da
 
 pkgname = python-eko
