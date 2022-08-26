@@ -3,7 +3,7 @@
 _pkgname=gnome-extension-shell-nauta-connect
 pkgname=$_pkgname-git
 _uuid=nauta-connect@jorgeajimenezl.com
-pkgver=0.0.1
+pkgver=1
 pkgrel=1
 pkgdesc="Utility to authenticate in ETECSA network"
 arch=('any')
@@ -17,7 +17,7 @@ source=("$pkgname::git+https://github.com/jorgeajimenezl/nauta-connect-gnome-ext
 sha256sums=('SKIP')
 
 pkgver() {
-    cd src
+    cd $pkgname/src
     cat metadata.json | jq .version 
 }
 
