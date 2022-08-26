@@ -2,27 +2,27 @@
 # Contributor: M.Reynolds <blackboxnetworkproject@gmail.com>
 
 pkgname=thonny
-pkgver=3.3.14
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Python IDE for beginners"
 arch=('any')
 url="https://thonny.org"
 license=('MIT')
-depends=('hicolor-icon-theme' 'mypy' 'python-astroid' 'python-asttokens' 'python-docutils' 'python-jedi' \
-         'python-pip' 'python-pylint' 'python-pyserial' 'python-send2trash' 'python-setuptools' 'tk')
+depends=('hicolor-icon-theme' 'mypy' 'python-asttokens' 'python-docutils' 'python-jedi' 'python-pip' \
+         'python-pylint' 'python-pyserial' 'python-send2trash' 'python-setuptools' 'python-wheel' 'tk')
 optdepends=('python-birdseye: Debug support with Birdseye'
             'python-pgzero: Run programs made with Pygame Zero')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('93898bd36276184ad736b73c58e78ffb69e2a9eca1cc4e915dd50c171c1f42df00182d8bb1315d2218705bc9a3b37e4256521469402bdafc599b86656e0d9121')
+sha512sums=('81a9c11108e9bd03940244ffc4e9f60990eccb8440838a01fff0b38bc37f1e15b63e1275aaefbcdcc2c0d817f74c0e72dfe79ad6a7c5da9ffc0deee8f5e69af0')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   _xdg_desktop_name=org.${pkgname}.${pkgname^}
 
