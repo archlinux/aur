@@ -11,7 +11,7 @@ license=('GPL2')
 conflicts=("${pkgname}-bin" "${pkgname}-git")
 makedepends=("go")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8637de7e549b3a74a0d74181701fe9d46c83a7a626e3336ee2eb8b16b837f15e')
+sha256sums=('08b20c84982f2e3803312dc395fb4069745bea64cc2f7e102316a35965630795')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}" || return 1

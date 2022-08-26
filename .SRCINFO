@@ -9,6 +9,6 @@ pkgbase = gosimac
 	conflicts = gosimac-bin
 	conflicts = gosimac-git
 	source = gosimac-5.5.1.tar.gz::https://github.com/1995parham/gosimac/archive/refs/tags/v5.5.1.tar.gz
-	sha256sums = 8637de7e549b3a74a0d74181701fe9d46c83a7a626e3336ee2eb8b16b837f15e
+	sha256sums = 08b20c84982f2e3803312dc395fb4069745bea64cc2f7e102316a35965630795
 
 pkgname = gosimac
