@@ -1,7 +1,7 @@
 pkgbase = vkteams-scb-bin
 	pkgdesc = VK Teams (Sovcombank PJSC)
 	pkgver = 2.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dl.vk.halva.com/
 	arch = x86_64
 	license = unknown

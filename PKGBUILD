@@ -1,7 +1,7 @@
 # Maintainer: Savely Krasovsky <savely@krasovs.ky>
 pkgname=vkteams-scb-bin
 pkgver=2.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="VK Teams (Sovcombank PJSC)"
 arch=("x86_64")
 url="https://dl.vk.halva.com/"
