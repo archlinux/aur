@@ -2,7 +2,7 @@
 _pkgbase="rv8"
 pkgname="rv8-git"
 pkgver=2279.8342590
-pkgrel=1
+pkgrel=2
 pkgdesc="RISC-V simulator for x86-64"
 arch=('x86_64')
 url="https://rv8.io/"
@@ -26,6 +26,9 @@ prepare() {
 
 build() {
 	cd "$_pkgbase"
+	# https://stackoverflow.com/a/68149587/2475176
+	GCC_VER=$(g++ -dumpversion)
+	sed -i 's|\(CXXFLAGS =.*\)|\1\nCXXFLAGS += -include /usr/include/c++/'$GCC_VER'/limits|' Makefile
 	export RISCV="/usr"
 	make DEST_DIR="/usr" enable_harden=1
 }
