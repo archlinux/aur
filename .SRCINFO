@@ -8,7 +8,6 @@ pkgbase = vita3k-git
 	makedepends = boost
 	makedepends = cmake
 	makedepends = git
-	makedepends = vulkan-headers
 	makedepends = clang
 	makedepends = ninja
 	makedepends = python

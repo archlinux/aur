@@ -14,7 +14,6 @@ makedepends=(
 	'boost'
 	'cmake'
 	'git'
-	'vulkan-headers'
 	'clang'
 	'ninja'
 	'python'
