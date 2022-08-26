@@ -1,6 +1,6 @@
 pkgbase = leagueoflegends-git
 	pkgdesc = League of Legends helper script
-	pkgver = 12.14.r0.g37e8a6e
+	pkgver = 12.16.r0.g8db757e
 	pkgrel = 1
 	url = https://github.com/kyechou/leagueoflegends
 	arch = any
@@ -28,7 +28,6 @@ pkgbase = leagueoflegends-git
 	optdepends = lib32-nvidia-utils: NVIDIA Vulkan driver
 	optdepends = lib32-vulkan-intel: Intel's Vulkan mesa driver
 	optdepends = lib32-vulkan-radeon: Radeon's Vulkan mesa driver
-	optdepends = zenity: Loading screen indication
 	provides = leagueoflegends
 	conflicts = leagueoflegends
 	source = leagueoflegends::git+https://github.com/kyechou/leagueoflegends

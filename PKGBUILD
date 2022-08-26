@@ -3,7 +3,7 @@
 
 pkgname=(leagueoflegends-git)
 _srcname=${pkgname%-git}
-pkgver=12.14.r0.g37e8a6e
+pkgver=12.16.r0.g8db757e
 pkgrel=1
 pkgdesc="League of Legends helper script"
 arch=('any')
@@ -18,8 +18,7 @@ makedepends=()
 optdepends=("lib32-amdvlk: AMD Vulkan driver"
             "lib32-nvidia-utils: NVIDIA Vulkan driver"
             "lib32-vulkan-intel: Intel's Vulkan mesa driver"
-            "lib32-vulkan-radeon: Radeon's Vulkan mesa driver"
-            "zenity: Loading screen indication")
+            "lib32-vulkan-radeon: Radeon's Vulkan mesa driver")
 provides=('leagueoflegends')
 conflicts=('leagueoflegends')
 source=("$_srcname"::'git+https://github.com/kyechou/leagueoflegends')
