@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=VK Teams
 Comment=Бизнес мессенджер
-Path=/opt/vkteams/vkteams
+Path=/opt/vkteams
 Exec=vkteams %U
 Icon=vkteams
 Type=Application
