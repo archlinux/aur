@@ -9,8 +9,9 @@
 _target=m68k-elf
 _target_cpu=m68000
 pkgname=${_target}-newlib
-pkgver=4.1.0
-pkgrel=2
+pkgver=4.2.0
+_suffix=.20211231
+pkgrel=1
 pkgdesc="C library for bare metal systems (${_target})."
 arch=(any)
 url="https://sourceware.org/newlib/"
@@ -20,8 +21,8 @@ depends=("${_target}-binutils")
 makedepends=("${_target}-gcc-bootstrap")
 options=('!makeflags' '!strip' 'staticlibs' '!libtool')
 PKGEXT="pkg.tar.zst"
-source=("ftp://sourceware.org/pub/newlib/newlib-${pkgver}.tar.gz")
-sha512sums=('6a24b64bb8136e4cd9d21b8720a36f87a34397fd952520af66903e183455c5cf19bb0ee4607c12a05d139c6c59382263383cb62c461a839f969d23d3bc4b1d34')
+source=("ftp://sourceware.org/pub/newlib/newlib-${pkgver}${_suffix}.tar.gz")
+sha512sums=('0c3efd7b74a6b8457a717cbb6aa6c5ff268eeaba375535465c6bd6502c3d32b54a9bc3ba7f2c6990f78e29152eee2f62acb39b674d24f9ddf440374a1ec9d2e8')
 
 prepare() {
   mkdir ${srcdir}/newlib-build
@@ -31,7 +32,7 @@ build() {
   cd ${srcdir}/newlib-build
 
   export CFLAGS_FOR_TARGET="-Os -g -ffunction-sections -fdata-sections -fomit-frame-pointer -ffast-math"
-  ../newlib-${pkgver}/configure \
+  ../newlib-${pkgver}${_suffix}/configure \
     --target=${_target} \
     --prefix=/usr \
     --disable-newlib-supplied-syscalls \
