@@ -22,7 +22,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 noextract=()
-sha512sums=("75f05c5b6c356032458e28180ff509f0f879fc98231b7bc3edad0dd759d50cb332cb1fdc27e97b624754a94083a4167c8d205becaa3efbab22ceab7a99105663")
+sha256sums=("59b09512dc26349a1f91b3de5c4d3fd9868c8ef2299714fb5a618ed581c74392")
 validpgpkeys=()
 
 build() {
