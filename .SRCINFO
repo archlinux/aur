@@ -1,6 +1,6 @@
 pkgbase = msp430-elf-gcc
 	pkgdesc = The GNU Compiler Collection for the msp430-elf target.
-	pkgver = 12.1.0
+	pkgver = 12.2.0
 	pkgrel = 1
 	url = http://gcc.gnu.org
 	arch = i686
@@ -24,8 +24,8 @@ pkgbase = msp430-elf-gcc
 	options = docs
 	options = !strip
 	source = https://libisl.sourceforge.io/isl-0.25.tar.xz
-	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-12.1.0/gcc-12.1.0.tar.xz
+	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-12.2.0/gcc-12.2.0.tar.xz
 	sha256sums = be7b210647ccadf90a2f0b000fca11a4d40546374a850db67adb32fad4b230d9
-	sha256sums = 62fd634889f31c02b64af2c468f064b47ad1ca78411c45abe6ac4b5f8dd19c7b
+	sha256sums = e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff
 
 pkgname = msp430-elf-gcc
