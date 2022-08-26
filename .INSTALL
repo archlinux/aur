@@ -3,5 +3,15 @@ pre_upgrade() {
 }
 
 pre_remove() {
-	sudo /usr/bin/remove-8814au-driver.sh
+	pre_upgrade
+}
+
+post_install() {
+	git clone https://github.com/morrownr/8814au.git /tmp/8814au
+	cd /tmp/8814au
+    sudo ./install-driver.sh
+}
+
+post_upgrade() {
+	post_install
 }
