@@ -1,5 +1,5 @@
 diff --git i/python/libxml.c w/python/libxml.c
-index ef630254..65a51af0 100644
+index e071e824..9d476f4f 100644
 --- i/python/libxml.c
 +++ w/python/libxml.c
 @@ -1621,28 +1621,37 @@ libxml_xmlErrorFuncHandler(ATTRIBUTE_UNUSED void *ctx, const char *msg,
