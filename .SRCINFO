@@ -1,7 +1,7 @@
 pkgbase = nordvpn-configs
 	pkgdesc = openvpn config files for NordVPN
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://nordvpn.com/
 	arch = any
 	optdepends = openvpn: Run the client configs with systemd and openvpn
@@ -10,4 +10,3 @@ pkgbase = nordvpn-configs
 	sha256sums = SKIP
 
 pkgname = nordvpn-configs
-
