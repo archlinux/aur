@@ -1,25 +1,18 @@
-# Maintainer: pryme-svg <edoc.www@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: pryme-svg <edoc.www@gmail.com>
 
 pkgname=nerd-fonts-tinos
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Patched font Tinos from Nerd Fonts Library"
 arch=("any")
 url="https://github.com/ryanoasis/nerd-fonts"
-license=('MIT')
-depends=('fontconfig')
-provides=("${pkgname}")
+license=('Apache')
+provides=('ttf-nerd-fonts-tinos')
 conflicts=('nerd-fonts-git' 'nerd-fonts-complete')
-groups=("nerd-fonts")
-source=("https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/Tinos.zip"
-        "https://github.com/ryanoasis/nerd-fonts/raw/v$pkgver/LICENSE")
-sha1sums=(SKIP
-          SKIP)
+source=("$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/Tinos.zip")
+sha256sums=('97410f217c10788c9cf0e6348cd0282d86c38632061df9821880663db238313d')
 
 package() {
-  find . -iname "*.otf" -not -iname "*Windows Compatible.otf" -execdir install -Dm644 {} "$pkgdir/usr/share/fonts/OTF/{}" \;
-  find . -iname "*.ttf" -not -iname "*Windows Compatible.ttf" -execdir install -Dm644 {} "$pkgdir/usr/share/fonts/TTF/{}" \;
-
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	find . -iname "*.ttf" -not -iname "*Windows Compatible.ttf" -execdir install -Dm644 {} "$pkgdir/usr/share/fonts/TTF/{}" \;
 }
-
