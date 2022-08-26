@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=nerd-fonts-jetbrains-mono
 _name=JetBrainsMono
-pkgver=2.1.0
-pkgrel=4
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="A Nerd Font patched version of JetBrains Mono"
 arch=('any')
 url="https://www.nerdfonts.com"
@@ -11,9 +11,9 @@ provides=('nerd-fonts' 'ttf-font-nerd')
 conflicts=('nerd-fonts' 'nerd-fonts-complete')
 install="$pkgname.install"
 source=("$_name-$pkgver.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/$_name.zip"
-        "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/$pkgver/LICENSE")
-sha256sums=('842013fa44b6896d4eb91635a81ef75244d78d7f61ff866c9dfd3315a67788cd'
-            'd2a29823384e9194a87936ccad495c764c2ef733b29bfa6f72a1d65803ce02e5')
+        "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v$pkgver/LICENSE")
+sha256sums=('ffc237603f2059f36cc08b3adf0b0e3815f9e7b493501bab7efd92354218bfaa'
+            '245b522abb5aba0d8e84898bf6d5e95102620637626106bfd0061189a2370360')
 
 package() {
   install -dm755 "$pkgdir/usr/share/fonts/TTF"

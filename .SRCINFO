@@ -1,7 +1,7 @@
 pkgbase = nerd-fonts-jetbrains-mono
 	pkgdesc = A Nerd Font patched version of JetBrains Mono
-	pkgver = 2.1.0
-	pkgrel = 4
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://www.nerdfonts.com
 	install = nerd-fonts-jetbrains-mono.install
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = nerd-fonts-jetbrains-mono
 	provides = ttf-font-nerd
 	conflicts = nerd-fonts
 	conflicts = nerd-fonts-complete
-	source = JetBrainsMono-2.1.0.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip
-	source = https://raw.githubusercontent.com/ryanoasis/nerd-fonts/2.1.0/LICENSE
-	sha256sums = 842013fa44b6896d4eb91635a81ef75244d78d7f61ff866c9dfd3315a67788cd
-	sha256sums = d2a29823384e9194a87936ccad495c764c2ef733b29bfa6f72a1d65803ce02e5
+	source = JetBrainsMono-2.2.0.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.0/JetBrainsMono.zip
+	source = https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v2.2.0/LICENSE
+	sha256sums = ffc237603f2059f36cc08b3adf0b0e3815f9e7b493501bab7efd92354218bfaa
+	sha256sums = 245b522abb5aba0d8e84898bf6d5e95102620637626106bfd0061189a2370360
 
 pkgname = nerd-fonts-jetbrains-mono
