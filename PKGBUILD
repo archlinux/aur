@@ -31,11 +31,12 @@ build() {
   cargo build --frozen --release --all-features
 }
 
-check() {
-    cd "$srcdir/$_pkgname"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
-}
+# FIXME reenable if/when tests are available
+# check() {
+#     cd "$srcdir/$_pkgname"
+#     export RUSTUP_TOOLCHAIN=stable
+#     cargo test --frozen --all-features
+# }
 
 package() {
   install -Dm0755 -t "$pkgdir/usr/bin/" "$srcdir/$_pkgname/target/release/$_pkgname"
