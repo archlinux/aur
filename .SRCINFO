@@ -2,14 +2,14 @@ pkgbase = rv8-git
 	pkgdesc = RISC-V simulator for x86-64
 	pkgver = 2279.8342590
 	pkgrel = 2
-	url = https://rv8.io/
+	url = https://github.com/michaeljclark/rv8
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	depends = riscv64-linux-gnu-gcc
 	provides = rv8
 	conflicts = rv8
-	source = rv8::git+https://github.com/rv8-io/rv8.git
+	source = rv8::git+https://github.com/michaeljclark/rv8.git
 	md5sums = SKIP
 
 pkgname = rv8-git

@@ -5,13 +5,13 @@ pkgver=2279.8342590
 pkgrel=2
 pkgdesc="RISC-V simulator for x86-64"
 arch=('x86_64')
-url="https://rv8.io/"
+url="https://github.com/michaeljclark/rv8"
 license=('MIT')
 depends=('riscv64-linux-gnu-gcc')
 makedepends=('git')
 provides=("rv8")
 conflicts=("rv8")
-source=("rv8::git+https://github.com/rv8-io/rv8.git")
+source=("rv8::git+https://github.com/michaeljclark/rv8.git")
 md5sums=("SKIP")
 
 pkgver() {
