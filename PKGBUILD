@@ -44,3 +44,4 @@ package() {
 	cd "$pkgname-v$pkgver/build"
 	cp kbdmod.bin "$pkgdir/kbdmod"
 }
+sha256sums=('844d9997431d89d63cc1306d9183ab591ec4eda4b9104466e313f133ea4638db')
