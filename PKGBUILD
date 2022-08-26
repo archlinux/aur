@@ -1,27 +1,24 @@
-# Maintainer: Finlay Maroney <finman292004@protonmail.com>
+# Maintainer: randomnobody <nobody "at" 420blaze "dot" it>
+# Contributor: Finlay Maroney <finman292004@protonmail.com>
 
 _target=i686-elf
 pkgname=$_target-binutils
-pkgver=2.36.1
-pkgrel=2
+pkgver=2.39
+pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the i686-elf target'
 arch=(i686 x86_64)
 url='http://www.gnu.org/software/binutils/'
 license=(GPL)
 depends=(zlib libelf)
 options=(!emptydirs !docs)
-source=("http://mirrors.kernel.org/gnu/binutils/binutils-$pkgver.tar.xz"
-        "https://mirrors.kernel.org/gnu/binutils/binutils-$pkgver.tar.xz.sig"
-        "libiberty-ignore-cflags.patch")
+source=("https://mirrors.kernel.org/gnu/binutils/binutils-$pkgver.tar.xz"
+        "https://mirrors.kernel.org/gnu/binutils/binutils-$pkgver.tar.xz.sig")
 _basedir=binutils-$pkgver
-sha256sums=('e81d9edf373f193af428a0f256674aea62a9d74dfe93f65192d4eae030b0f3b0'
-            'SKIP'
-            '8b2aea00e98f7c311b1d0fb14e4b435a03c65fde32bc992c924edb6fa7b83c9c')
+sha256sums=('645c25f563b8adc0a81dbd6a41cffbf4d37083a382e02d5d3df4f65c09516d00'
+            'SKIP')
 validpgpkeys=("3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F")
 prepare() {
   cd $_basedir
-
-  patch -p1 -i $srcdir/libiberty-ignore-cflags.patch
 
   mkdir $srcdir/binutils-build
 }
@@ -34,7 +31,7 @@ build() {
     --with-sysroot \
     --prefix=/usr \
     --bindir=/usr/bin \
-	--libdir=/usr/lib/i686-elf/ \
+    --libdir=/usr/lib/i686-elf/ \
     --disable-nls \
     --disable-werror
 
@@ -43,7 +40,7 @@ build() {
 
 check() {
   cd binutils-build
-  
+
   # do not abort on errors - manually check log files
   make -k check
 }
@@ -55,4 +52,3 @@ package() {
 
   rm -r ${pkgdir}/usr/share/{info,man}
 }
-
