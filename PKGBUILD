@@ -1,6 +1,6 @@
 pkgname=tribler
 _pkgname=tribler
-pkgver=7.11.0
+pkgver=7.12.0
 pkgrel=1
 pkgdesc="P2P/Bittorrent/YouTube client"
 arch=("x86_64")
@@ -11,9 +11,8 @@ conflicts=("tribler")
 depends=(libtorrent-rasterbar
 python-aiohttp
 python-aiohttp-apispec
-python-bitcoinlib
+python-anyio
 python-chardet
-python-cherrypy
 python-configobj
 python-cryptography
 python-decorator
@@ -23,43 +22,28 @@ python-lz4
 python-marshmallow
 python-netifaces
 python-networkx
-python-pillow
 python-pony
 python-psutil
 python-pyasn1
+python-pydantic
 python-pyopenssl
-python-pyqt5
-python-pyqtgraph
-python-service-identity
-python-twisted
 python-yaml
 python-sentry_sdk
 python-yappi
-python-pydantic
-python-anyio)
-source=(
-https://github.com/Tribler/tribler/releases/download/v$pkgver/Tribler-v$pkgver.tar.xz
-https://github.com/G-P-L/AUR/raw/master/Tribler/Tribler.desktop
-https://github.com/G-P-L/AUR/raw/master/Tribler/tribler.sh)
+python-yarl
+python-bitarray
+libtorrent
+python-pillow
+python-pyqt5
+python-pyqt5-sip
+python-pyqtgraph
+python-pyqt5-webengine
+)
+source=(https://github.com/Tribler/tribler/releases/download/v$pkgver/tribler_$pkgver\_all.deb)
 
-sha256sums=('7d66df1bced7dad9758fd60478bbffd211541f55fb898350562a1eb22043d039'
-            '6b7ae61a0679a468860e5cc735f30185883088b1668c4193fcc05382cdd5173f'
-            'b357229d5decc3ff3d0e5ec25907258b2372a5ee93462950e4283c664cdcc776')
+sha256sums=('c5675ecc453da4e50e065604b28b5fead108ad3eb91418910c2b2c0f8c18df76')
 
 package() {
-    install -d "$pkgdir/opt/Tribler/"
-    install -d "$pkgdir/usr/bin"
-    install -d "$pkgdir/usr/share/applications"
-
-    # Copy files from the source tarball to /opt/Tribler/.
-    cp -r "$srcdir/tribler/src/"{pyipv8,tribler-common,tribler-core,tribler-gui,requirements.txt,run_tribler.py} "$pkgdir/opt/Tribler/"
-    cp -r "$srcdir/tribler/build/debian/tribler/usr/share/pixmaps/tribler_big.xpm" "$pkgdir/opt/Tribler/"
-    install -Dm644 tribler.sh "$pkgdir/opt/Tribler/tribler.sh"
-    chmod +x "$pkgdir/opt/Tribler/tribler.sh"
-        
-    # Copy desktop launcher to /usr/share/applications/.
-    install -Dm644 Tribler.desktop "$pkgdir/usr/share/applications/Tribler.desktop"
-
-    # Create binary symlink to /usr/bin/.
-    ln -s /opt/Tribler/tribler.sh $pkgdir/usr/bin/tribler
+    cd "${pkgdir}"
+    tar -xf "${srcdir}/data.tar.xz"
 }
