@@ -1,0 +1,15 @@
+pkgbase = python-geoipsets
+	pkgdesc = Tool to generate country-specific IP ranges for iptables/ipset and nftables
+	pkgver = 2.3.4
+	pkgrel = 1
+	url = https://github.com/chr0mag/geoipsets/tree/main/python
+	arch = any
+	license = GPL3
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-requests
+	depends = python-beautifulsoup4
+	source = python-geoipsets-2.3.4.tar.gz::https://github.com/chr0mag/geoipsets/archive/refs/tags/v2.3.4.tar.gz
+	sha512sums = b92d45cc3db3aaf465c64b126774df9656836513d9d3ad03fb979ab15b62b6f8b7270a665f39fafb129f42f2a1c95a77b85e0689b7a62e32b31a9a48082adfb2
+
+pkgname = python-geoipsets
