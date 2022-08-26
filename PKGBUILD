@@ -30,8 +30,7 @@ build() {
     cd "${srcdir}/${_pkgname}"
 
     echo "Building ${_pkgname} on v${pkgver} : [Install Build Dependencies] | Build | Done"
-    # yarn install --non-interactive --pure-lockfile --cache-folder "${srcdir}/yarn-cache"
-    pnpm install
+    pnpm install --frozen-lockfile
 
     echo "Building : Install Build Dependencies | [Build] | Done"
     if [[ ${CARCH} == "armv7h" ]]; then
