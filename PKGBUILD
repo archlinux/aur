@@ -7,7 +7,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-lol
-pkgver=7.0.5
+pkgver=7.0_5
 pkgrel=1
 
 # Be sure to use commits from a "ge-lol-XXX" branch here

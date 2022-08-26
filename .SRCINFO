@@ -1,6 +1,6 @@
 pkgbase = wine-lol
 	pkgdesc = A compatibility layer for running Windows programs - GloriousEggroll custom wine build for running League of Legends
-	pkgver = 7.0.5
+	pkgver = 7.0_5
 	pkgrel = 1
 	url = https://github.com/GloriousEggroll/wine
 	install = wine.install
@@ -150,7 +150,7 @@ pkgbase = wine-lol
 	optdepends = dosbox
 	options = staticlibs
 	options = !lto
-	source = wine-lol-7.0.5.tar.gz::https://github.com/GloriousEggroll/wine/archive/6703dc23fbb57a32261864bf547d16ba508351fb.tar.gz
+	source = wine-lol-7.0_5.tar.gz::https://github.com/GloriousEggroll/wine/archive/6703dc23fbb57a32261864bf547d16ba508351fb.tar.gz
 	source = 30-win32-aliases.conf
 	source = futex.patch
 	sha512sums = 8ffa445333f6e677f9df78c93fa05a3634c30f11071f5367f5c36cf143410410a0d3570eb8e4fe50959293c5b9c695498d3db1ca5c27b7d91665697eb1365d23
