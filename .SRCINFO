@@ -8,6 +8,8 @@ pkgbase = qbittorrent-vuetorrent-bin
 	license = GPL3
 	optdepends = qbittorrent: for use with qbittorrent
 	optdepends = qbittorrent-nox: for use with qbittorrent-nox
+	provides = qbittorrent-vuetorrent
+	conflicts = qbittorrent-vuetorrent
 	source = vuetorrent-0.18.1.zip::https://github.com/WDaan/VueTorrent/releases/download/v0.18.1/vuetorrent.zip
 	sha512sums = bf857bd15ad850888adb952e44bf9d7f395767d326aef71e4f04042088cd8c902510594e7ef89b1dd905d729c0911e62fe94171219993989119c4dec2af5db29
 

@@ -1,4 +1,3 @@
-# TODO
 # Maintainer: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
 # Contributor: Falk Höppner <falk hoppner se>
 
@@ -10,6 +9,8 @@ pkgdesc='The sleekest looking WebUI for qBittorrent made with Vue.js!'
 arch=('any')
 url='https://github.com/WDaan/VueTorrent'
 license=('GPL3')
+provides=("qbittorrent-${_pkgname}")
+conflicts=("qbittorrent-${_pkgname}")
 optdepends=(
     'qbittorrent: for use with qbittorrent'
     'qbittorrent-nox: for use with qbittorrent-nox'
