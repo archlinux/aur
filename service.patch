@@ -1,0 +1,12 @@
+6,7c6,7
+< EnvironmentFile=-/etc/sysconfig/coolwsd
+< ExecStart=/usr/bin/coolwsd --version --o:sys_template_path=/opt/cool/systemplate --o:child_root_path=/opt/cool/child-roots --o:file_server_root_path=/usr/share/coolwsd
+---
+> User=cool
+> ExecStart=/usr/bin/coolwsd --config-file=/etc/coolwsd/coolwsd.xml
+10d9
+< User=cool
+16c15
+< ReadWritePaths=/opt/cool /var/log
+---
+> ReadWritePaths=/var/log /var/lib/coolwsd /usr/share/coolwsd
