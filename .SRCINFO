@@ -1,6 +1,6 @@
 pkgbase = rgb2cmyk
 	pkgdesc = GUI to facilitate conversion of an image from RGB to CMYK colorspace
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/jgmdev/rgb2cmyk
 	arch = i686
@@ -12,8 +12,7 @@ pkgbase = rgb2cmyk
 	depends = wxgtk3
 	depends = colord
 	depends = imagemagick
-	source = https://github.com/jgmdev/rgb2cmyk/archive/refs/tags/v1.0.tar.gz
+	source = https://github.com/jgmdev/rgb2cmyk/archive/refs/tags/v1.1.tar.gz
 	md5sums = SKIP
 
 pkgname = rgb2cmyk
-

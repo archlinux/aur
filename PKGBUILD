@@ -1,7 +1,7 @@
 # Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
 
 pkgname=rgb2cmyk
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="GUI to facilitate conversion of an image from RGB to CMYK colorspace"
 arch=('i686' 'x86_64' 'aarch64')
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
-  meson setup build --native-file nativefile.ini --prefix /usr
+  meson setup build --prefix /usr
   ninja -j$(nproc) -C build
 }
 
