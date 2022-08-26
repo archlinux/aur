@@ -1,8 +1,8 @@
 # Maintainer: gbr <gbr@protonmail.com>
 # Contributor: Karmenzind
 pkgname=otf-nerd-fonts-monacob-mono
-pkgver=2.1.0
-pkgrel=4
+pkgver=2.2.1
+pkgrel=1
 pkgdesc='MonacoB fonts patched with nerd-fonts'
 arch=('any')
 url='https://github.com/vjpr/monaco-bold'
@@ -11,7 +11,7 @@ depends=()
 makedepends=('fontforge' 'subversion')
 source=('COPYRIGHT'
         'fix_font_name.py'
-        'monaco-bold::git+https://github.com/vjpr/monaco-bold.git'
+        'monaco-bold::git+https://github.com/vjpr/monaco-bold.git#commit=b77db4b6fc2e9df074f8db59cead862d7068e3d7'
         "nerd-fonts-glyphs::svn+https://github.com/ryanoasis/nerd-fonts/tags/v$pkgver/src/glyphs"
         "https://github.com/ryanoasis/nerd-fonts/raw/v$pkgver/font-patcher")
 sha256sums=('SKIP'
