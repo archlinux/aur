@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=immudb
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='Immutable database built on a zero-trust model'
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=('glibc')
 makedepends=('git' 'go')
 backup=('etc/immudb/immudb.toml')
 options=('!lto')
-_commit='7a95e32e58c3f183919079b786f89b11d289f0c3'
-_wcver=1.0.15 # extracted from Makefile variable: DEFAULT_WEBCONSOLE_VERSION
+_commit='80fa08f4ddcd92467fa7a53d17e2b83d458f49e2'
+_wcver=1.0.17 # extracted from Makefile variable: DEFAULT_WEBCONSOLE_VERSION
 source=(
   "$pkgname::git+https://github.com/codenotary/immudb.git#commit=$_commit"
   "$pkgname-webconsole-$_wcver.tar.gz::https://github.com/codenotary/immudb-webconsole/releases/download/v${_wcver}/immudb-webconsole.tar.gz"
@@ -23,13 +23,13 @@ source=(
 )
 noextract=("$pkgname-webconsole-$_wcver.tar.gz")
 sha512sums=('SKIP'
-            'eef04de58d027f223434d79e73ce2af4d40b23704da5cb7d7eafd88f92c54f3bdeb376a558e246161561e23a44ca0b6c5624750f716b05996c5bd8c1b2800b64'
+            'db31e9028fa0c3a4ca951ff8a6f2fe6b1a4601f343bcb0c44cbb81857c7ea0bd30005a4dd46c9874ddc5ac1d6e4b0592b5847451606589c8a450dc178bfec9eb'
             '2766eed7fd427df628c76b7c57d4b846ba962a750e0b15b4b53166f5b1cb5babc28c30cad288ac589d1294eb0c85972dba9af4dbc2eb4b0579c99bd3644edbe3'
             '6368c07fbf02025c207ab7909e4483d274d369e48b69a8062e86b9db9758f21da74131e1dd74a44bf6c778e0a2880ed25039c5c01b1cc52bbe6a6065edca245a'
             '54b4f53c902f4c77000973879881092e62e673bac7149cd77e33172eae1a46b3cf69c07001cc41858d962929213fe48f3185009f664a155e72a830591de3d69f'
             '5a8156ca7a5fa84975acf23fa222715b9c61d17325c56b00983b79922d1a63124a36e41880797bfb774903b0b3c8877e087b3231564f9bd79ad43ab5fd26187d')
 b2sums=('SKIP'
-        '6e2fa6295357315e96937d0aa9d4f9ea2faef2ebeb056c5ad8305fcfef33376683a82b92455f1471d50d9ee0c2c9d9c16cf9adf186ed59d2897fac3ce03c24d0'
+        'd16ec141b3aa99c66b1e7e6976da9cde9b8a5183c9c35817edae3ad5e26d6b0d4767c724febd870ba9efe1c76fac8babc9a5e625db4db4a0568af9d676142a4e'
         'c9c052cb69973aed2e2801f333f09049cff296a9dfa46eff576ba987e7132aaca1b7f5690f82752cf17a079b1b3f5611ba5683590b474ad6d400a24e042dd506'
         '01777a70ae86d89eafbadae4487bcac03357d1ea9bc76d8de0b5560d43c82d351fe22bdf34a74b7d014abc94057ed38f3dd9e21961645562172e225705ed90f9'
         '29b41df6c374dc6beebd9622760b94b0ce95c1261f0121ce13eee614aa0a53eaa8c8029a087d339f2bdf6a4a6d955a0df9c50bdc0900bca29256e5f0b2bb71e5'
