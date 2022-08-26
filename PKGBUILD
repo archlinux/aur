@@ -1,9 +1,9 @@
 # Contributor: chrisl echo archlinux@c2h0r1i2s4t5o6p7h8e9r-l3u4n1a.com|sed 's/[0-9]//g'
 
-pkgname=cemu
+pkgname=cemu-wine
 pkgver=1.26.2
 pkgrel=6
-pkgdesc="Wii U emulator (via wine). Includes the Cemuhook plugin"
+pkgdesc="Wii U emulator. This is the stable Windows version via wine. Includes the Cemuhook plugin"
 arch=(x86_64)
 url="https://cemu.info/"
 license=('custom')

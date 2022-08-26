@@ -1,9 +1,9 @@
-pkgbase = cemu
-	pkgdesc = Wii U emulator (via wine). Includes the Cemuhook plugin
+pkgbase = cemu-wine
+	pkgdesc = Wii U emulator. This is the stable Windows version via wine. Includes the Cemuhook plugin
 	pkgver = 1.26.2
 	pkgrel = 6
 	url = https://cemu.info/
-	install = cemu.install
+	install = cemu-wine.install
 	arch = x86_64
 	license = custom
 	depends = wine
@@ -24,4 +24,4 @@ pkgbase = cemu
 	md5sums = 266d9f45c6c75a1a7d5d80da0e97857e
 	md5sums = 336a0bc0e44eede4ddf613a0eebf3bb9
 
-pkgname = cemu
+pkgname = cemu-wine
