@@ -1,0 +1,14 @@
+pkgbase = rshell-micropython-git
+	pkgdesc = A remote shell for working with MicroPython boards.
+	pkgver = r134.b87878c
+	pkgrel = 1
+	url = https://github.com/dhylands/rshell
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-pyudev
+	depends = python-pyserial
+	source = rshell-micropython::git+https://github.com/dhylands/rshell.git
+	sha256sums = SKIP
+
+pkgname = rshell-micropython-git
