@@ -1,7 +1,7 @@
 pkgbase = crowbook
 	pkgdesc = Converts books written in Markdown to HTML, LaTeX/PDF and EPUB
 	pkgver = 0.15.2e
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/lise-henry/crowbook
 	arch = x86_64
 	license = LGPL
