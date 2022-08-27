@@ -5,11 +5,11 @@
 
 ### Appmenu patching ###
 # PKGBUILD: Nikita Tarasov <nikatar@disroot.org>
-# Building: Arne Fahrenwalde <macgeneral@macgeneral.de>
+# Building: Nikita Tarasov <nikatar@disroot.org>
 
 pkgname=firefox-appmenu-bin
 _pkgname=firefox
-pkgver=98.0.2
+pkgver=104.0
 _pkgrel=1
 pkgrel=${_pkgrel}
 pkgdesc="Firefox-appmenu, binary version"
@@ -26,14 +26,14 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 provides=("firefox=$pkgver")
 conflicts=("firefox")
 options=(!emptydirs !makeflags !strip)
-source=(https://github.com/nikatar/AUR/raw/master/firefox-appmenu-bin/firefox-appmenu-${pkgver}-${_pkgrel}-x86_64.pkg.tar.xz{,.sig})
-noextract=(firefox-appmenu-${pkgver}-${_pkgrel}-x86_64.pkg.tar.xz)
+source=(https://github.com/nikatar/AUR/raw/master/firefox-appmenu-bin/firefox-appmenu-${pkgver}-${_pkgrel}-x86_64.pkg.tar.zst{,.sig})
+noextract=(firefox-appmenu-${pkgver}-${_pkgrel}-x86_64.pkg.tar.zst)
 validpgpkeys=(85F86E317555BECC1C2184BF2C45BA09ABC5D7DA)
 sha256sums=(
-	'e870b28540f760ea246a0f1f302b3ee66340b37ab19510cfee2aed85a55c6d40'
+	'244d1f9431c15d5992bfd5cac185f961c7a174f6ffc37f4d179bb30e5deee7f6'
 	'SKIP'
 )
 
 package() {
-	tar -xf $srcdir/firefox-appmenu-${pkgver}-${_pkgrel}-x86_64.pkg.tar.xz -C $pkgdir --exclude=".*"
+	tar -xf $srcdir/firefox-appmenu-${pkgver}-${_pkgrel}-x86_64.pkg.tar.zst -C $pkgdir --exclude=".*"
 }
