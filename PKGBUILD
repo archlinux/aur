@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-bnx2x-2.5g
-pkgver=5.19.3.arch1
+pkgver=5.19.4.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -27,7 +27,7 @@ validpgpkeys=(
 )
 sha256sums=('SKIP'
             'd655669179109ae8e801a259c35dbe442ca67a49b9ceb6ca3ef0e56f48149a7d'
-            'f170eda023a56db8cdcad4b83da5911b7b919bbd25084f729d37f1e6142557ca')
+            '5dc7562e35f2655bdb75a9807997799605c3e165180ba5f43b668a9089042d55')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
