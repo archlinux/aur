@@ -1,6 +1,6 @@
 pkgbase = purc-fetcher-git
 	pkgdesc = The remote data fetcher for PurC.
-	pkgver = 92b2052
+	pkgver = 950dfd4
 	pkgrel = 1
 	url = https://github.com/HVML/PurC-Fetcher
 	arch = any
