@@ -1,7 +1,7 @@
 # Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
 
 pkgname=python-onnxoptimizer
-pkgver=0.3.0
+pkgver=0.3.1
 pkgdesc='ONNX model optimizer'
 pkgrel=1
 arch=(x86_64)
@@ -33,8 +33,8 @@ build() {
 
 check() {
   cd onnx-optimizer
-  pyver=$(python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))')
-  PYTHONPATH="$PWD/build/lib.linux-$CARCH-$pyver" pytest
+  pyver=$(python -c 'import sys; print(str(sys.version_info[0]) + str(sys.version_info[1]))')
+  PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-$pyver" pytest
 }
 
 package() {
