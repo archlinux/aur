@@ -1,5 +1,5 @@
+# Maintainer: Vincevrp
 # Maintainer: T.J. Townsend <tj@mrsk.me>
-# Contributor: Vincevrp
 
 pkgname=nerd-fonts-arimo
 pkgver=2.1.0
