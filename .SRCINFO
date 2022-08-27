@@ -1,0 +1,16 @@
+pkgbase = sxcs
+	pkgdesc = minimal X11 color picker and magnifier
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://codeberg.org/NRK/sxcs
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = libx11
+	depends = libxcursor
+	provides = sxcs
+	conflicts = sxcs-git
+	source = sxcs-0.6.tar.gz::https://codeberg.org/NRK/sxcs/archive/v0.6.tar.gz
+	sha256sums = 9334f47eed4907fa3ab98901ddf74980926501793816f2e8bd738d6c0978cad9
+
+pkgname = sxcs
