@@ -1,0 +1,26 @@
+From baa2df853f9fb770eedcf3d94c7f5becebc90bb9 Mon Sep 17 00:00:00 2001
+From: Nils Steinger <git@n-st.de>
+Date: Thu, 7 Nov 2019 15:12:18 +0100
+Subject: [PATCH] Fix endless loop on filenames with invalid encoding
+
+See also:
+ - https://bugzilla.redhat.com/show_bug.cgi?id=1778767
+ - https://gitlab.gnome.org/GNOME/dia/-/issues/428
+---
+ app/app_procs.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/app/app_procs.c b/app/app_procs.c
+index 434a092f6..53f8b8c38 100644
+--- a/app/app_procs.c
++++ b/app/app_procs.c
+@@ -675,6 +675,7 @@ app_init (int argc, char **argv)
+ 
+ 	if (!filename) {
+ 	  g_print (_("Filename conversion failed: %s\n"), filenames[i]);
++	  ++i;
+ 	  continue;
+ 	}
+ 
+-- 
+GitLab

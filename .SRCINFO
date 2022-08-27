@@ -1,0 +1,20 @@
+pkgbase = dia
+	pkgdesc = A GTK+ based diagram creation program
+	pkgver = 0.97.3
+	pkgrel = 9
+	url = http://live.gnome.org/Dia
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = python2
+	makedepends = docbook-xsl
+	depends = libxslt
+	depends = gtk2
+	options = docs
+	options = !emptydirs
+	source = https://ftp.gnome.org/pub/gnome/sources/dia/0.97/dia-0.97.3.tar.xz
+	source = dia-0.9.3-cve-2019-19451.patch
+	sha256sums = 22914e48ef48f894bb5143c5efc3d01ab96e0a0cde80de11058d3b4301377d34
+	sha256sums = 32cecad212fbd0f87f304d9eaf48f8b3d6555b10733ead5a3943bac778bf8586
+
+pkgname = dia
