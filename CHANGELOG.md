@@ -8,6 +8,10 @@ Versions since `1.7.0` only track ABI breaks and not API breaks.
 
 ## [Unreleased]
 
+## [1.22.2] - 2022-08-26
+### Fixed
+- Libtcod was not linking `utf8proc` correctly in projects statically built with CMake.
+
 ## [1.22.1] - 2022-08-24
 ### Fixed
 - Fix regression in TCODList when items are removed during iteration.

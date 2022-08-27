@@ -1,6 +1,6 @@
 pkgbase = libtcod
 	pkgdesc = Roguelike graphics/utility library
-	pkgver = 1.22.1
+	pkgver = 1.22.2
 	pkgrel = 1
 	url = https://github.com/libtcod/libtcod
 	changelog = CHANGELOG.md
@@ -10,7 +10,7 @@ pkgbase = libtcod
 	makedepends = python
 	depends = sdl2
 	provides = libtcod.so
-	source = libtcod::git+https://github.com/libtcod/libtcod#tag=1.22.1?signed
+	source = libtcod::git+https://github.com/libtcod/libtcod#tag=1.22.2?signed
 	validpgpkeys = 9EF1E80F3817BC043097A7C15814977902B194CC
 	sha256sums = SKIP
 
