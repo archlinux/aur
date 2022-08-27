@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=clair
-pkgver=4.4.1
+pkgver=4.4.4
 pkgrel=1
 pkgdesc="Vulnerability Static Analysis for Containers"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('go')
 optdepends=('postgresql: local database')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/quay/clair/archive/v${pkgver}.tar.gz")
-sha256sums=('64ffb0b33d19ff525535fa64cb507f78573d8df8e58e390b6ac2f3c8aa75bb31')
+sha256sums=('7895442b6c5fb016513b859c4372826008d908ef85d2f506eaf1da301f9f13bc')
 install='clair.install'
 
 prepare() {
