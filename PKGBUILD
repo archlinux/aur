@@ -22,7 +22,12 @@ makedepends=(cmake ninja gtk-doc python ruby gobject-introspection
 optdepends=('geoclue: Geolocation support'
             'gst-plugins-good: media decoding'
             'gst-plugins-bad: media decoding'
-            'gst-libav: nonfree media decoding')
+            'gst-libav: nonfree media decoding'
+            'domruler: DOM Ruler is a library to maintain a DOM tree, lay out and stylize the DOM elements by using CSS.'
+            'purc: The prime HVML interpreter for C Language.'
+            'purc-fetcher: The remote data fetcher for PurC.'
+            'purc-midnight-commander: A generic HVML renderer in text mode for development and debugging.'
+            'xguipro: xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit.')
 # options=(debug)
 options=()
 source=("https://files.fmsoft.cn/hvml/webkitgtk-2.34.1-hvml-220804.tar.bz2")
