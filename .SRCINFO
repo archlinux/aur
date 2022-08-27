@@ -1,6 +1,6 @@
 pkgbase = headset
 	pkgdesc = Discover and collect music on YouTube
-	pkgver = 4.1.2
+	pkgver = 4.2.1
 	pkgrel = 1
 	url = https://headsetapp.co
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = headset
 	depends = libnotify
 	depends = nss
 	depends = libxss
-	source = headset-4.1.2.tar.gz::https://github.com/headsetapp/headset-electron/archive/v4.1.2.tar.gz
+	source = headset-4.2.1.tar.gz::https://github.com/headsetapp/headset-electron/archive/v4.2.1.tar.gz
 	source = headset.desktop
-	sha256sums = f72161ba92623d49277c339971464d4927e0fed1479a85d06d2c8c1bf6e095ae
+	sha256sums = b7fc18d608c8eb50bfecd349b95ceaa151bb3c5c944628d623cea575e6a0b337
 	sha256sums = 3bc18b531f1e914e317267a570241855dbf11b27347435fe4770d75b74958123
 
 pkgname = headset
