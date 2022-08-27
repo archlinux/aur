@@ -1,12 +1,6 @@
-expected-lite/
 faustpp/
 faustpp-git-*.pkg.tar.xz
 faustpp-git-*.pkg.tar.zst
-fmt/
-jinja2cpp/
-optional-lite/
+faustpp-git-*.src.tar.gz
 pkg/
-rapidjson/
 src/
-string-view-lite/
-variant-lite/
