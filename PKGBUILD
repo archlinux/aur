@@ -5,7 +5,7 @@
 pkgname=shadowsocks-rust-bin
 _pkgname=shadowsocks-rust
 pkgver=1.14.3
-pkgrel=5
+pkgrel=6
 pkgdesc='A Rust port of shadowsocks https://shadowsocks.org/ (binary version)'
 arch=('x86_64' 'arm' 'aarch64')
 url='https://github.com/shadowsocks/shadowsocks-rust'
@@ -15,8 +15,10 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 source=(
     "${url}/raw/v${pkgver}/LICENSE"
-    'shadowsocks-rust@.service'
-    'shadowsocks-rust-server@.service'
+    'shadowsocks-rust-local@.service.system'
+    'shadowsocks-rust-server@.service.system'
+    'shadowsocks-rust-local@.service.user'
+    'shadowsocks-rust-server@.service.user'
     "${url}/raw/v${pkgver}/examples/config.json"
     "${url}/raw/v${pkgver}/examples/config_ext.json"
 )
@@ -26,8 +28,10 @@ source_aarch64=("${url}/releases/download/v${pkgver}/shadowsocks-v${pkgver}.aarc
 
 sha512sums=(
     '6d7014061bf4014faec823aa1da91f990d034c21005cbee30de7ee62744201fba7d09d58a9e536d8e63bfa6fe951107ee68482b583d887b6e358f3c3eec89b85'
-    '061e0dc9af84242aeec75df5c290d3c6f16950a2e664898eb7ad50daec94f04ef84b634d4e4f46a58b6512801c4e134f97c6616c538cabc5d008d1fd629c3571'
-    '4d45ff086b8aa75343518141c02aeb6b4dbdb9f2e0f835ab5f11bbe2dc60e35802704f488db88d79c4412712e9b7a8957df605b0cb961c764eb66fc734655fe3'
+    '87e637edaa601da208366806fb8e16f6783b2b2f066b17c453274153b91ead66eea6caae9f82c3e2118bce3230d0812a47e540670c219bcc49d2296a102cf1dd'
+    'fcc40b1c864179916c1691b57e98fd8e1519047b87ea5b37dba52fd340869208f493f0c83e941dcfd5de22851db1302d97765e9ddcd5174fd8b1fabece5e1963'
+    '6301ac089707d6c253bec5ca3a9b554e5965acd7cb04ba52abcd44367dde4f59fba1343ca45b8294960c39a6c56afccdf9d6e6e3411dde8c5d78be05bfeeb107'
+    '5dee5fc5f0542a38fef7146100bf05f28ae074d8a2ed411b46a2d99396668fd8880ea83fb759d91cf17669eef997af6ccbc3b34a4d4c528808b1fe9f7947a969'
     '9a0b81d82bf897c5461d75d941cd604cbd7f32d00c2bf775f17b37b77fcf5734903d2ec666ba9a6a340e77f31018b5dbbb8ea597797c6a00c6b1f3e2f47127e6'
     '4ac52e6fe04e02543f54d57fccfd863f18b157fd28fb61c9a56ba46269b9dff410a80960943d911afa55b45c3fc42e98d91f8bb75e9103abf3f3dbfffb73a6e0'
 )
@@ -39,8 +43,15 @@ package() {
     cd "${srcdir}"
     install -Dm755 -t "${pkgdir}/usr/bin" sslocal ssserver ssurl ssmanager ssservice
 
+    install -Dm755 -t "${pkgdir}/usr/bin" sslocal ssserver ssurl ssmanager ssservice
+
     install -Dm644 -t "${pkgdir}/usr/share/licenses/$pkgname" LICENSE
-    install -Dm644 -t "${pkgdir}/usr/lib/systemd/system" shadowsocks-rust@.service shadowsocks-rust-server@.service
+
+    install -Dm644 shadowsocks-rust-local@.service.system "${pkgdir}/usr/lib/systemd/system/shadowsocks-rust-local@.service"
+    install -Dm644 shadowsocks-rust-server@.service.system "${pkgdir}/usr/lib/systemd/system/shadowsocks-rust-server@.service"
+    install -Dm644 shadowsocks-rust-local@.service.user "${pkgdir}/usr/lib/systemd/user/shadowsocks-rust-local@.service"
+    install -Dm644 shadowsocks-rust-server@.service.user "${pkgdir}/usr/lib/systemd/user/shadowsocks-rust-server@.service"
+
     install -Dm644 config.json "${pkgdir}/etc/shadowsocks/config_rust.json.example"
     install -Dm644 config_ext.json "${pkgdir}/etc/shadowsocks/config_ext_rust.json.example"
 }
