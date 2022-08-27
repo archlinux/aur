@@ -2,7 +2,7 @@
 _pkgname=cemu
 pkgname=$_pkgname-git
 pkgver=2.0.r40.g01c5855
-pkgrel=1
+pkgrel=2
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
 url="https://cemu.info/"
@@ -44,7 +44,7 @@ b2sums=(
 	'SKIP'
 	'SKIP'
 	'da4c607462ac0c97ad33fc3588b5eb0b7ede039964365830807ad003604df7f24d8fd65374596dceb9449ef49ff9c78ec5bb3d8fda50061c79cf397e149debc2'
-	'99d7bf7cfa7f809a1bfa32f1ddb78a66078f84bad792149195531ba38d2b816ce3dcc536e3aeb9ceff8a3566851528da322c0942dac5484ab8d97af1b749bdf3'
+	'fb63e1929a826ae3681c8211ebf8bee5887385c8aafb307452c6a694ce668ce0d42489b97a931cdda92e21ec68fb9175a735c84ce867e6b338100aa5573ff576'
 )
 
 pkgver() {

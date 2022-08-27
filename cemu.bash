@@ -10,6 +10,6 @@ readonly cemu=$mountpoint/Cemu
 mkdir -p "$datadir" "$statedir" "$mountpoint"
 
 exec unshare -rm bash <<- BASH
-    mount -t overlay -o lowerdir="$rootdir" -o upperdir="$datadir" -o workdir="$statedir" overlay "$mountpoint"
+    mount -t overlay -o lowerdir="$rootdir" -o upperdir="$datadir" -o workdir="$statedir" -o userxattr overlay "$mountpoint"
     exec unshare --map-user=$UID --map-group="$GID" "$cemu" "$@"
 BASH
