@@ -22,7 +22,7 @@ makedepends=(
 	'python-setuptools-scm'
 	'python-setuptools-scm-git-archive'
 	'python-wheel')
-checkdepends=('python-pytest' 'jupyter-nbformat' 'jupyter-nbconvert')
+# checkdepends=('python-pytest' 'jupyter-nbformat' 'jupyter-nbconvert')
 optdepends=()
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz"
