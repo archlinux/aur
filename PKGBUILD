@@ -2,17 +2,17 @@
 # Maintainer: T.J. Townsend <tj@mrsk.me>
 
 pkgname=nerd-fonts-arimo
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.1
+pkgrel=1
 pkgdesc="Patched font Arimo from nerd-fonts library"
 arch=("any")
 url="https://github.com/ryanoasis/nerd-fonts"
 license=("MIT")
 makedepends=("fontconfig" "xorg-mkfontscale" "xorg-mkfontdir")
-source=("https://github.com/ryanoasis/nerd-fonts/releases/download/v${pkgver}/Arimo.zip"
-        "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/$pkgver/LICENSE")
-sha256sums=("683a1b4f33dcf20d6ceee89161786b1684a22bc7296efd5fd4c9d766ba6bf4cc"
-            "d2a29823384e9194a87936ccad495c764c2ef733b29bfa6f72a1d65803ce02e5")
+source=("arimo-${pkgver}.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v${pkgver}/Arimo.zip"
+        "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v${pkgver}/LICENSE")
+sha256sums=('5260211447ff71778c2f38f17bbdec2c480bf75c4f2a95e391f124edfc94f105'
+            '245b522abb5aba0d8e84898bf6d5e95102620637626106bfd0061189a2370360')
 
 package() {
     rm "${srcdir}/"*"Windows Compatible.ttf"
