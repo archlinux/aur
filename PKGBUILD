@@ -1,6 +1,6 @@
 # Maintainer: Norman Dubert <sfiveo13 at gmail dot com>
 pkgname=tachidesk-qtui
-pkgver=2022.6.18
+pkgver=2022.6.25
 pkgrel=1
 pkgdesc="A free and open source manga read that runs extensions built for Tachiyomi"
 arch=(any)
