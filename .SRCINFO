@@ -1,6 +1,6 @@
 pkgbase = packwiz-bin-git
 	pkgdesc = A CLI tool for creating Minecraft modpacks (pulls latest build artifact from GitHub)
-	pkgver = r226.3f0ebeb
+	pkgver = r232.c7c2ca7
 	pkgrel = 1
 	url = https://packwiz.infra.link/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = packwiz-bin-git
 	makedepends = htmlq
 	provides = packwiz
 	conflicts = packwiz
-	source_x86_64 = packwiz-x86_64-r226.3f0ebeb.zip::https://nightly.link/packwiz/packwiz/workflows/go/master/Linux%2064-bit%20x86.zip
+	source_x86_64 = packwiz-x86_64-r232.c7c2ca7.zip::https://nightly.link/packwiz/packwiz/workflows/go/main/Linux%2064-bit%20x86.zip
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = packwiz-aarch64-r226.3f0ebeb.zip::https://nightly.link/packwiz/packwiz/workflows/go/master/Linux%2064-bit%20ARM.zip
+	source_aarch64 = packwiz-aarch64-r232.c7c2ca7.zip::https://nightly.link/packwiz/packwiz/workflows/go/main/Linux%2064-bit%20ARM.zip
 	sha256sums_aarch64 = SKIP
 
 pkgname = packwiz-bin-git
