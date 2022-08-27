@@ -1,0 +1,16 @@
+pkgbase = mutagen-compose-git
+	pkgdesc = mutagen-compose from mutagen.io - Docker Compose with Mutagen integration
+	pkgver = r101.71fa8f3
+	pkgrel = 1
+	url = https://github.com/mutagen-io/mutagen-compose
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = go>=1.11
+	depends = git
+	depends = docker-compose
+	depends = mutagen.io-bin
+	source = git+https://github.com/mutagen-io/mutagen-compose
+	sha256sums = SKIP
+
+pkgname = mutagen-compose-git

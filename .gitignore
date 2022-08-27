@@ -1,0 +1,6 @@
+*.tar.*
+src/
+pkg/
+
+# Git checkout:
+mutagen-compose
