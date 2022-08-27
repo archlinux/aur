@@ -20,7 +20,7 @@ install=tomate-statusnotifieritem-plugin.install
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
-  install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
