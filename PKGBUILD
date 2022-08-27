@@ -1,6 +1,6 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=gnome-obfuscate-git
-pkgver=0.0.3.r3.g6024987
+pkgver=0.0.7.r18.gf0203dc
 pkgrel=1
 pkgdesc="Censor private information"
 arch=('x86_64')
@@ -29,5 +29,5 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir="$pkgdir"
 }

@@ -1,6 +1,6 @@
 pkgbase = gnome-obfuscate-git
 	pkgdesc = Censor private information
-	pkgver = 0.0.3.r3.g6024987
+	pkgver = 0.0.7.r18.gf0203dc
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/obfuscate
 	arch = x86_64
