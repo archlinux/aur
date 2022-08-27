@@ -1,0 +1,7 @@
+HoustonPatchbay/
+patchance/
+patchance-git-*.pkg.tar.xz
+patchance-git-*.pkg.tar.zst
+patchance-git-*.src.tar.gz
+pkg/
+src/
