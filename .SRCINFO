@@ -1,11 +1,11 @@
 pkgbase = foundryvtt
 	pkgdesc = A self-hosted, modern, and developer-friendly roleplaying platform
-	pkgver = 9.269
+	pkgver = 9.280
 	pkgrel = 1
 	url = https://foundryvtt.com/
 	arch = x86_64
 	license = custom
-	source = FoundryVTT-9.269.zip::local://FoundryVTT-9.269.zip
-	sha256sums = 7bc19741e0d7cf6978f12ef9e21c44c8e5d2de0a1e6ac5ea52b390e0cdd00f9b
+	source = FoundryVTT-9.280.zip::local://FoundryVTT-9.280.zip
+	sha256sums = f9c60ceeaa907c7e757c84b23658332f5579fc5e2d79d8a8f66453bb7562fd32
 
 pkgname = foundryvtt

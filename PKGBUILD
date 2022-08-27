@@ -2,7 +2,7 @@
 # Co-Maintainer: Tomas S. <me+aur at wereii.cz>
 
 pkgname=foundryvtt
-pkgver=9.269
+pkgver=9.280
 pkgrel=1
 pkgdesc="A self-hosted, modern, and developer-friendly roleplaying platform"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://foundryvtt.com/"
 license=('custom')
 # FoundryVTT archive must be downloaded from https://foundryvtt.com/community/<usename>/licenses
 source=("FoundryVTT-$pkgver.zip::local://FoundryVTT-$pkgver.zip")
-sha256sums=('7bc19741e0d7cf6978f12ef9e21c44c8e5d2de0a1e6ac5ea52b390e0cdd00f9b')
+sha256sums=('f9c60ceeaa907c7e757c84b23658332f5579fc5e2d79d8a8f66453bb7562fd32')
 
 package() {
 	install -m755 -d "$pkgdir/opt/$pkgname"
