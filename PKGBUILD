@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=covr
-_pkgver=3.6.0
+_pkgver=3.6.1
 pkgname=r-${_pkgname,,}
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 pkgdesc='Test Coverage for Packages'
 arch=('x86_64')
@@ -35,7 +35,7 @@ optdepends=(
   r-xml2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c04b151630d24491e286c2a25c54fd1970db41a5bf3bea08f0a06d602fa369f2')
+sha256sums=('ffbe15438c1a4f274c14cacfb944480e284f1ab60808d5e840c015cc57c51157')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
