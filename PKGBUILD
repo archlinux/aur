@@ -1,8 +1,9 @@
-# Maintainer: Lucas Puntillo <laniku@envs.net>
+# Maintainer: laniku <laniku@envs.net>
+# Maintainer: segfaultdev <segfaultdev@proton.me> 
 
 pkgname=tree-game
 pkgver=0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Powder toy like sandbox game focused on nature"
 url="https://github.com/segfaultdev/tree"
 arch=('x86_64')
