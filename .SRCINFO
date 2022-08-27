@@ -1,9 +1,8 @@
 pkgbase = nerd-fonts-ibm-plex-mono
 	pkgdesc = A Nerd Font patched version of IBM Plex™ Mono
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.nerdfonts.com
-	install = nerd-fonts-ibm-plex-mono.install
 	arch = any
 	license = MIT
 	provides = nerd-fonts
