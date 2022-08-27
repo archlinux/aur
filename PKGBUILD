@@ -2,7 +2,7 @@
 pkgname=gomatrix-git
 _pkgname=gomatrix
 pkgver=101.0.0.r2.gb3aff13
-pkgrel=1
+pkgrel=2
 pkgdesc='gomatrix connects to the The Matrix and displays its data streams in your terminal'
 arch=('x86_64')
 url='https://github.com/GeertJohan/gomatrix'
@@ -30,6 +30,7 @@ pkgver() {
 }
 
 prepare() {
+  export GOPATH="${srcdir}/gopath"
   cd "$_pkgname"
   mkdir -p build/
 }
