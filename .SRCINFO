@@ -1,10 +1,11 @@
 pkgbase = yuzu-mainline-bin
 	pkgdesc = Nintendo Switch emulator - mainline branch
 	pkgver = 0.1147
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yuzu-emu/yuzu-mainline
 	arch = x86_64
 	license = GPL2
+	depends = fuse2
 	depends = libva
 	depends = qt5-multimedia
 	depends = hicolor-icon-theme
