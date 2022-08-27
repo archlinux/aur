@@ -1,7 +1,7 @@
 # Maintainer: The-EDev <farook@the-e-dev.com>
 pkgname=crow
 pkgver=1.0+5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Fast and Easy to use C++ microframework for the web."
 arch=(any)
 url="https://crowcpp.org"
@@ -11,8 +11,8 @@ optdepends=('openssl: HTTPS support' 'zlib: HTTP compression support' 'cmake: Ch
 conflicts=("$pkgname-git")
 changelog='changelog.md'
 source=("https://github.com/CrowCpp/$pkgname/releases/download/v$pkgver/crow-v$pkgver.tar.gz")
-md5sums=('7e0664041a426a878f017c299975f7ef')
-sha256sums=('0b996395a3411d970746eb953fa81e3dee3638bd587472ba28a9dbe8776c84c1')
+md5sums=('9cc31cefd97e2ddbb8df77a2fe84d29a')
+sha256sums=('c299e8ac6c4286139ba14dc9555db9f15902182a2ddcb1e25ca0984f67152877')
 
 package() {
   echo "installing to \"$pkgdir/usr/local/\""
