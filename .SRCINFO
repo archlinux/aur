@@ -1,0 +1,17 @@
+pkgbase = xwinmosaic
+	pkgdesc = X11 window switcher with fancy look
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = http://github.com/soulthreads/xwinmosaic
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = libx11
+	depends = gtk2
+	source = xwinmosaic-0.4.2.tar.gz::https://github.com/soulthreads/xwinmosaic/archive/v0.4.2.tar.gz
+	source = https://github.com/soulthreads/xwinmosaic/pull/33.patch
+	sha256sums = 985b8b2f8bfc76173e94186c9d1f8fc746c24e3ed589d0e2fce9ff091c2a5afe
+	sha256sums = 35406f071c65cce79b5370ea98f00713def1b5fe896d5756d886371b7ba440df
+
+pkgname = xwinmosaic
