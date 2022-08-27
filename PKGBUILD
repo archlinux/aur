@@ -17,7 +17,7 @@ sha256sums=('SKIP'
             'SKIP')
 
 prepare() {
-  cd $srcdir/$pkgname
+  cd $srcdir/Tachidesk-QtUI
   git submodule init
   git config libs.SortFilterProxyModel.url "$srcdir/SortFilterProxyModel"
   git config libs.QmlBridgeForMaterialDesignIcons.url "$srcdir/QmlBridgeForMaterialDesignIcons"
