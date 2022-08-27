@@ -27,13 +27,13 @@ sha256sums=('b601f85475f065ef5a434d2d8ca0f8a09b80246b999741e9c4c730a9a885c056'
             'SKIP')
 
 build() {
-    cd "$srcdir"/"${pkgname}"-"${pkgver}"
+    cd "$srcdir"/AltLinux-"${pkgver}"-"${pkgrel}"
     
     pyinstaller altlinux.spec --clean
 }
 
 package() {
-    cd "$srcdir"/"${pkgname}"-"${pkgver}"
+    cd "$srcdir"/AltLinux-"${pkgver}"-"${pkgrel}"
 
     # Install desktop file
     install -Dm 644 -o root "${srcdir}"/"${pkgname}".desktop -t "${pkgdir}/usr/share/applications"
