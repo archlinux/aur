@@ -2,7 +2,7 @@
 # Contributor: pryme-svg <edoc.www@gmail.com>
 
 pkgname=nerd-fonts-tinos
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Patched font Tinos from Nerd Fonts Library"
 arch=("any")
@@ -11,7 +11,7 @@ license=('Apache')
 provides=('ttf-nerd-fonts-tinos')
 conflicts=('nerd-fonts-git' 'nerd-fonts-complete')
 source=("$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/Tinos.zip")
-sha256sums=('97410f217c10788c9cf0e6348cd0282d86c38632061df9821880663db238313d')
+sha256sums=('35b0c771731d03c405ab2a7d2fe52f4f091d30af6752e20d3c749e9048475d4f')
 
 package() {
 	find . -iname "*.ttf" -not -iname "*Windows Compatible.ttf" -execdir install -Dm644 {} "$pkgdir/usr/share/fonts/TTF/{}" \;
