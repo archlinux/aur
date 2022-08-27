@@ -7,13 +7,18 @@ pkgdesc="xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, a
 arch=('any')
 url="https://github.com/HVML/xGUI-Pro"
 license=('LGPL-3.0')
+groups=('hvml-git')
 provides=(${pkgname%-git}  'xGUI-Pro')
 conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
 depends=('glib2')
 makedepends=('git' 'cmake' 'ninja')
 makedepends=('git' 'cmake' 'ninja' 'ccache' 'gcc' 'python' 'libxml2' 'ruby' 'curl' 'openssl' 'sqlite' 'pkgconf' 'zlib' 'icu' 'webkit2gtk-hvml')
-optdepends=('domruler' 'purc-fetcher' 'purc')
+optdepends=('domruler: DOM Ruler is a library to maintain a DOM tree, lay out and stylize the DOM elements by using CSS.'
+            'purc: The prime HVML interpreter for C Language.'
+            'purc-fetcher: The remote data fetcher for PurC.'
+            'purc-midnight-commander: A generic HVML renderer in text mode for development and debugging.'
+            'webkit2gtk-hvml: Web content engine for GTK (HVML)')
 backup=()
 options=('!strip')
 #install=${pkgname}.install
