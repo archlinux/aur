@@ -9,13 +9,12 @@ perl -pi -e "s/pkgver=\\d+\\.\\d+\\.\\d+/pkgver=$v/" PKGBUILD
 updpkgsums
 makepkg --printsrcinfo > .SRCINFO
 
-# Build for me
-makepkg -si --noconfirm &
-
 # Push
 git add PKGBUILD .SRCINFO
 git commit -m "Update to $v"
-git push &
+git push
+makepkg -si
+#yay -S discord-development --noconfirm
 
 # Clean up
-rm -r pkg src "discord-development-$v*"
+#rm -r pkg src "discord-development-$v*"
