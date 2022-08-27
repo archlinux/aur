@@ -1,7 +1,7 @@
 pkgbase = python-zigpy
 	pkgdesc = Library implementation of the Zigbee Home Automation standard
 	pkgver = 0.50.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/zigpy/zigpy
 	arch = any
 	license = GPL3

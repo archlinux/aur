@@ -3,7 +3,7 @@
 _pkgname=zigpy
 pkgname=python-$_pkgname
 pkgver=0.50.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Library implementation of the Zigbee Home Automation standard'
 url='https://github.com/zigpy/zigpy'
 arch=('any')
