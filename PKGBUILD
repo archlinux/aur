@@ -1,17 +1,17 @@
 # Maintainer: Sameer Puri <aur@purisa.me>
 pkgname=python-or-tools
-pkgver=9.3
+pkgver=9.4
 pkgrel=1
 pkgdesc="Google's Operations Research tools"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/google/or-tools"
 license=('Apache2')
-depends=('python>=3.6' 'swig' 'python-protobuf>=3.19.1' 'absl-py>=0.13' 'python-numpy>=1.13.3')
+depends=('python>=3.6' 'swig' 'python-protobuf>=3.19.4' 'absl-py' 'python-numpy>=1.13.3')
 makedepends=('cmake' 'wget' 'lsb-release' 'automake' 'python-wheel' 'python-pip' 'git' 'python-mypy-protobuf')
 optdepends=('cplex: CPLEX solver support' 'python-pandas: used by some examples' 'python-matplotlib: used by some examples')
 options=(!emptydirs)
 source=("https://github.com/google/or-tools/archive/v${pkgver}.tar.gz")
-b2sums=('3d2ca42788909801621efdb134e31d5638d9cbd50c4b879aa291a7ff7a0e8765b6bcb9d1a8cc37c17fbd7f77315587a9bccf143c765f2746778019f4a972405e')
+b2sums=('9fe09798071f8ed2aa9634ad566ef00a68fd64892cf7169762108c2dc86a4fd144cfa70d78b69d73f645802318b1a20f2f8fc0ded32638260a122cdc857e6a7f')
 
 build() {
     cd "${srcdir}/or-tools-${pkgver}"
