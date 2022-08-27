@@ -2,8 +2,8 @@
 # Contributor: Muhkoenig
 
 pkgname=nerd-fonts-bitstream-vera-mono
-pkgver=2.2.0
-pkgrel=2
+pkgver=2.2.1
+pkgrel=1
 pkgdesc="Patched font Bitstream Vera Mono from nerd-fonts library"
 arch=('any')
 url='https://github.com/ryanoasis/nerd-fonts'
@@ -13,7 +13,7 @@ source=(
     "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v${pkgver}/LICENSE"
 )
 sha256sums=(
-    '4d92ff3e8feaad304896fe8c68ae372e32daf689d477fa280ed9da02343d8864'
+    '908e663d280122f4839539c3acf444d0a29609e61a8f4fa8a75f61af9fc601cc'
     '245b522abb5aba0d8e84898bf6d5e95102620637626106bfd0061189a2370360'
 )
 

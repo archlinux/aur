@@ -1,13 +1,13 @@
 pkgbase = nerd-fonts-bitstream-vera-mono
 	pkgdesc = Patched font Bitstream Vera Mono from nerd-fonts library
-	pkgver = 2.2.0
-	pkgrel = 2
+	pkgver = 2.2.1
+	pkgrel = 1
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
 	license = OFL
-	source = BitstreamVeraSansMono-v2.2.0.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.0/BitstreamVeraSansMono.zip
-	source = https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v2.2.0/LICENSE
-	sha256sums = 4d92ff3e8feaad304896fe8c68ae372e32daf689d477fa280ed9da02343d8864
+	source = BitstreamVeraSansMono-v2.2.1.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.1/BitstreamVeraSansMono.zip
+	source = https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v2.2.1/LICENSE
+	sha256sums = 908e663d280122f4839539c3acf444d0a29609e61a8f4fa8a75f61af9fc601cc
 	sha256sums = 245b522abb5aba0d8e84898bf6d5e95102620637626106bfd0061189a2370360
 
 pkgname = nerd-fonts-bitstream-vera-mono
