@@ -1,8 +1,8 @@
 # Maintainer: Plague-doctor <plague at privacyrequired dot com >
 
 pkgname=nerd-fonts-fantasque-sans-mono
-pkgver=2.1.0
-pkgrel=3
+pkgver=2.2.1
+pkgrel=1
 pkgdesc="Patched font FantasqueSansMono from the nerd-fonts library"
 arch=("any")
 url="https://github.com/ryanoasis/nerd-fonts"
@@ -13,7 +13,7 @@ conflicts=('nerd-fonts-git' 'nerd-fonts-complete')
 groups=("nerd-fonts")
 source=("${url}/releases/download/v$pkgver/FantasqueSansMono.zip"
         "${url}/raw/v$pkgver/LICENSE")
-sha1sums=('f2808204e67eb80e1907e1416ed8a189aa93b06a'
+sha1sums=('f8caba82fcd35d872a257d6877c06d2247d83b60'
           '92fdad3c8babc0473da5f03e41fb1151417ab386')
 
 package() {
