@@ -7,7 +7,7 @@
 # installation.
 
 pkgname=jabref-git
-pkgver=5.7.r40.ga255311924
+pkgver=20220824
 pkgrel=1
 epoch=2
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
@@ -16,7 +16,7 @@ url="https://www.jabref.org"
 license=('MIT')
 depends=('freetype2' 'libnet' 'libxrender' 'libxtst' 'alsa-lib'
 	'libjpeg-turbo' 'lcms2' 'giflib')
-makedepends=('git' 'java-environment>=16') # tested with the Arch Linux repo openjdk
+makedepends=('git' 'java-environment>=18') # tested with the Arch Linux repo openjdk
                                            # openjfx must not be installed
                                            # Arch Linux repo openjdk work
 optdepends=('gsettings-desktop-schemas: For web search support')
@@ -24,28 +24,21 @@ provides=('jabref')
 conflicts=('jabref')
 source=("git+https://github.com/JabRef/jabref.git"
 	"${pkgname%-git}.desktop"
-	"${pkgname%-git}.sh"
-	double_heap_size.diff)
+	"${pkgname%-git}.sh")
 sha256sums=('SKIP'
             'cb50a38f701374e6922e74e35c4f99f0418441c48b3c4855e64f0995f0be9cb8'
-            'f17e5184be3541c7c6f54516ee71e0935516c3f36f8c4ecf780999834f88fb0d'
-            '9bedb1a4d9bb2d185cbd1a49ae83912565d782ed0e873ab23bb2e8618b685257')
+            'f17e5184be3541c7c6f54516ee71e0935516c3f36f8c4ecf780999834f88fb0d')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --tags |cut -c2-|sed 's+-+.r+'|tr - .
-}
-
-prepare() {
-  cd ${pkgname%-git}
-  git apply "$srcdir"/double_heap_size.diff
+  printf %s $(git log -1 --format="%cd" --date=short | tr -d '-') 
 }
 
 build() {
   cd ${pkgname%-git}
   [[ -d "$srcdir"/gradle ]] && install -d "$srcdir"/gradle
   export GRADLE_USER_HOME="$srcdir"/gradle
-  
+  export DEFAULT_JVM_OPTS='"-Xmx128m" "-Xms64m"'
   ./gradlew --no-daemon -PprojVersion="${pkgver}" \
 	    -PprojVersionInfo="${pkgver}--ArchLinux--${pkgrel}" assemble
   ./gradlew --no-daemon --no-parallel -PprojVersion="${pkgver}" \
