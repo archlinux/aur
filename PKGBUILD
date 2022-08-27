@@ -35,6 +35,6 @@ build() {
 }
 
 package() {
-	cd $srcdir/$pkgname/build
+	cd $srcdir/Tachidesk-QtUI/build
 	make DESTDIR="$pkgdir" install
 }
