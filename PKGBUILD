@@ -6,7 +6,7 @@ pkgrel=1.0
 pkgdesc="A symlink for using vidoas as a drop-in replacement to visudo"
 arch=('any')
 url="https://github.com/solisinvictum/vidoas-visudo"
-depends=('opendoas' 'vidoas')
+depends=('opendoas' 'vidoas' 'opendoas-sudo')
 
 package() {
   install -d "$pkgdir"/usr/bin

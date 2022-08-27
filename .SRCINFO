@@ -6,5 +6,6 @@ pkgbase = vidoas-visudo
 	arch = any
 	depends = opendoas
 	depends = vidoas
+	depends = opendoas-sudo
 
 pkgname = vidoas-visudo
