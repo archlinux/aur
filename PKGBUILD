@@ -1,8 +1,8 @@
-# Maintainer: Radeox <dawid.weglarz95@gmail.com>
+# Maintainer: Dawid Weglarz <dawid.weglarz95@gmail.com>
 
 pkgname=geforcenow-electron
 _newpkgname=gfn-electron
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Linux desktop client for GeForce NOW, using Electron"
 arch=("armv7l" "i686" "x86_64")
@@ -11,7 +11,7 @@ license=('GPLv3')
 depends=('libva')
 source=("https://github.com/hmlendea/${pkgname}/releases/download/v${pkgver}/geforcenow-electron_${pkgver}_linux.zip"
         "https://raw.githubusercontent.com/hmlendea/geforcenow-electron/master/icon.png")
-sha256sums=("7eb58df48d1d8ba1c6cbf4cd853c0329bc9913d724b891c46c79fe7422cff59c"
+sha256sums=("8c97a92f9363b6465cf0a92f15d5e396d2691d86ae72df90b009c64712dbe320"
             "582ad4bb073926e51d8acaa0ab81aa70a1dbe4736eda0cf130b6ae689982b7a0")
 
 package() {
