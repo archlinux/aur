@@ -1,6 +1,6 @@
 pkgbase = imagemagick6
 	pkgdesc = An image viewing/manipulation program (legacy 6.9.12-* series)
-	pkgver = 6.9.12.61
+	pkgver = 6.9.12.62
 	pkgrel = 1
 	url = https://legacy.imagemagick.org/
 	arch = x86_64
@@ -39,11 +39,11 @@ pkgbase = imagemagick6
 	depends = libraqm
 	depends = libpng
 	depends = libxml2
-	source = https://legacy.imagemagick.org/archive/ImageMagick-6.9.12-61.tar.gz
-	source = https://legacy.imagemagick.org/archive/ImageMagick-6.9.12-61.tar.gz.asc
+	source = https://legacy.imagemagick.org/archive/ImageMagick-6.9.12-62.tar.gz
+	source = https://legacy.imagemagick.org/archive/ImageMagick-6.9.12-62.tar.gz.asc
 	source = arch-fonts.diff
 	validpgpkeys = D8272EF51DA223E4D05B466989AB63D48277377A
-	sha256sums = f865ee20f0ee1da6f55b98ab4f87fa70c0f6db30f371553af876c2bcd0bfbfd9
+	sha256sums = a72007824fcbb3b4bbc8d98c0e05b6cf49c6df0610cf5709a2c63a7ec42b914c
 	sha256sums = SKIP
 	sha256sums = a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73
 
