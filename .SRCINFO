@@ -1,0 +1,13 @@
+pkgbase = plainmail2html-git
+	pkgdesc = Mutt utility to send HTML formatted Emails
+	pkgver = r28.3da0335
+	pkgrel = 1
+	url = https://github.com/amitramon/plainMail2HTML
+	arch = any
+	license = GPL
+	depends = python-docutils
+	provides = plainmail2html
+	source = git+https://github.com/amitramon/plainmail2html.git
+	sha256sums = SKIP
+
+pkgname = plainmail2html-git
