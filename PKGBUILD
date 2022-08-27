@@ -75,7 +75,7 @@ build() {
 package() {
 	cd "odamex-git"
 
-	ninja DESTDIR="$pkgdir/" install
+	DESTDIR="$pkgdir/" ninja install
 }
 
 # vim:set ts=2 sw=2 et:
