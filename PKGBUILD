@@ -3,15 +3,15 @@
 pkgbase=python-sphinx_mdinclude
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Markdown extension for Sphinx"
 arch=('any')
 url="https://sphinx-mdinclude.readthedocs.io"
 license=('BSD')
 makedepends=('python-flit-core'
+             'python-docutils>=0.15'
              'python-mistune>=2.0'
-             'python-docutils<1:0.19'
              'python-build'
              'python-installer'
              'python-sphinx')
@@ -19,8 +19,8 @@ checkdepends=('python-pytest' 'python-sphinx')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'fix-changlog-highlight.patch'
         'Makefile')
-md5sums=('a5cf846a79a59bfbeab8883cbd55054d'
-         'fe16888437e0deb8a30c523df82b501f'
+md5sums=('6468d8b5f3020387b3358f0393d930a4'
+         'b5bd8e2ac097462791d8f04a480f46e5'
          'a6aa4bc42b138d75f938065a0994c3e1')
 
 prepare() {
@@ -48,7 +48,7 @@ check() {
 }
 
 package_python-sphinx_mdinclude() {
-    depends=('python>=3.6' 'python-mistune>=2.0' 'python-docutils<1:0.19')
+    depends=('python>=3.6' 'python-docutils>=0.15' 'python-mistune>=2.0')
     optdepends=('python-sphinx_mdinclude-doc: Documentation for ndcube')
     cd ${srcdir}/${_pyname}-${pkgver}
 

@@ -1,6 +1,15 @@
---- a/CHANGELOG.md	2022-03-07 14:38:01.454265800 +0800
-+++ b/CHANGELOG.md	2022-07-08 15:59:24.825791043 +0800
-@@ -8,7 +8,7 @@
+--- a/CHANGELOG.md	2022-08-27 15:00:39.030456500 +0800
++++ b/CHANGELOG.md	2022-08-27 16:49:50.531127089 +0800
+@@ -9,7 +9,7 @@
+ - Add support for docutils `0.19` (#8)
+ - Enable building docs without installing package (#6)
+ 
+-```
++```sh
+ $ git shortlog -s v0.5.1...v0.5.2
+      6	Amethyst Reese
+ ```
+@@ -22,7 +22,7 @@
  
  - Fix autolinks (#3, #2)
  
@@ -9,7 +18,7 @@
  $ git shortlog -s v0.5.0...v0.5.1
       3	John Reese
       2	Tim Hatch
-@@ -23,7 +23,7 @@
+@@ -37,7 +37,7 @@
  - Support for mistune 2.0 with major refactoring of codebase
  - Removal of sphinx configuration options with better defaults
  
@@ -18,7 +27,7 @@
  $ git shortlog -s v0.5.0b1...v0.5.0
       3	John Reese
  ```
-@@ -37,7 +37,7 @@
+@@ -51,7 +51,7 @@
  - Support for mistune 2.0 with major refactoring of codebase
  - Removal of sphinx configuration options with better defaults
  
@@ -27,7 +36,7 @@
  $ git shortlog -s v0.4.0...v0.5.0b1
       7	John Reese
  ```
-@@ -58,7 +58,7 @@
+@@ -72,7 +72,7 @@
  - Build using flit instead of setuptools
  - Formatted with latest black and µsort
  
@@ -36,7 +45,7 @@
  $ git shortlog -s v0.4.0b1...v0.4.0
       4	John Reese
       1	dependabot[bot]
-@@ -79,7 +79,7 @@
+@@ -93,7 +93,7 @@
  * Build using flit instead of setuptools
  * Formatted with latest black and µsort
  
@@ -45,7 +54,7 @@
  $ git shortlog -s v0.2.7...v0.4.0b1
      10	CrossNox
       1	Ezequiel Rosas
-@@ -94,7 +94,7 @@
+@@ -108,7 +108,7 @@
  
  * Fix argparse for python3.10
  
@@ -54,7 +63,7 @@
  $ git shortlog -s v0.3.0...v0.3.1
       1	Bas Nijholt
      13	CrossNox
-@@ -110,7 +110,7 @@
+@@ -124,7 +124,7 @@
  * Add support for mermaid code
  * Change bump for bump2version
  
@@ -63,7 +72,7 @@
  $ git shortlog -s v0.2.8...v0.3.0
       1	CrossNox
  ```
-@@ -121,7 +121,7 @@
+@@ -135,7 +135,7 @@
  
  * Fix bug that made multiple inline mathematical expressions fail to render
  
@@ -72,7 +81,7 @@
  $ git shortlog -s v0.2.5...v0.2.8
       1	CrossNox
  ```
-@@ -133,7 +133,7 @@
+@@ -147,7 +147,7 @@
  * Add official python3.9 support
  * Fix classifiers
  
@@ -81,7 +90,7 @@
  $ git shortlog -s v0.2.6...v0.2.7
       2	CrossNox
  ```
-@@ -144,7 +144,7 @@
+@@ -158,7 +158,7 @@
  
  * Fix error for Sphinx3.3.0
  
@@ -90,7 +99,7 @@
  $ git shortlog -s v0.2.5...v0.2.6
       1	Bas Nijholt
       1	CrossNox
-@@ -157,7 +157,7 @@
+@@ -171,7 +171,7 @@
  
  * Update repo name in every reference
  
@@ -99,7 +108,7 @@
  $ git shortlog -s v0.2.4...v0.2.5
       1	CrossNox
  ```
-@@ -169,7 +169,7 @@
+@@ -183,7 +183,7 @@
  * Central versioning
  * Add bump
  
@@ -108,7 +117,7 @@
  $ git shortlog -s v0.2.3...v0.2.4
       4	CrossNox
  ```
-@@ -182,7 +182,7 @@
+@@ -196,7 +196,7 @@
  * Change `tox` for `nox`
  * Add `pre-commit` hooks and fix styling
  
@@ -117,7 +126,7 @@
  $ git shortlog -s v0.2.1...v0.2.3
       9	CrossNox
  ```
-@@ -193,7 +193,7 @@
+@@ -207,7 +207,7 @@
  
  * Add `--disable-inline-math` and `m2r_disable_inline_math` sphinx option
  
@@ -126,7 +135,7 @@
  $ git shortlog -s v0.2.0...v0.2.1
       3	Morgan Willcock
       1	kyluca
-@@ -207,7 +207,7 @@
+@@ -221,7 +221,7 @@
  * Add `start-line` and `end-line` option to `mdinclude` directive
  * Add `anonymous_references` option ([#26](https://github.com/miyakogi/m2r/pull/26))
  
@@ -135,7 +144,7 @@
  $ git shortlog -s v0.1.15...v0.2.0
       3	Jake VanderPlas
      11	miyakogi
-@@ -219,7 +219,7 @@
+@@ -233,7 +233,7 @@
  
  * Support Sphinx's doc/ref directives for relative links ([#16](https://github.com/miyakogi/m2r/pull/16))
  
@@ -144,7 +153,7 @@
  $ git shortlog -s v0.1.14...v0.1.15
       9	Ryan Lane
       7	miyakogi
-@@ -231,7 +231,7 @@
+@@ -245,7 +245,7 @@
  
  * Implement markdown link with title
  
@@ -153,7 +162,7 @@
  $ git shortlog -s v0.1.13...v0.1.14
      11	miyakogi
  ```
-@@ -242,7 +242,7 @@
+@@ -256,7 +256,7 @@
  
  * Catch up sphinx updates
  
@@ -162,7 +171,7 @@
  $ git shortlog -s v0.1.12...v0.1.13
       8	miyakogi
  ```
-@@ -253,7 +253,7 @@
+@@ -267,7 +267,7 @@
  
  * Support multi byte characters for heading
  
@@ -171,7 +180,7 @@
  $ git shortlog -s v0.1.11...v0.1.12
       6	miyakogi
  ```
-@@ -265,7 +265,7 @@
+@@ -279,7 +279,7 @@
  * Add metadata for sphinx
  * Add `convert(src)` function, which is shortcut of `m2r.M2R()(src)`
  
@@ -180,7 +189,7 @@
  $ git shortlog -s v0.1.10...v0.1.11
      13	miyakogi
  ```
-@@ -276,7 +276,7 @@
+@@ -290,7 +290,7 @@
  
  * Include CHANGES and test files in source distribution
  
@@ -189,7 +198,7 @@
  $ git shortlog -s v0.1.9...v0.1.10
       4	miyakogi
  ```
-@@ -287,7 +287,7 @@
+@@ -301,7 +301,7 @@
  
  * Print help when input_file is not specified on command-line
  
@@ -198,7 +207,7 @@
  $ git shortlog -s v0.1.8...v0.1.9
       5	miyakogi
  ```
-@@ -298,7 +298,7 @@
+@@ -312,7 +312,7 @@
  
  * Update metadata on setup.py
  
@@ -207,7 +216,7 @@
  $ git shortlog -s v0.1.7...v0.1.8
       6	miyakogi
  ```
-@@ -309,7 +309,7 @@
+@@ -323,7 +323,7 @@
  
  * Fix undefined name error (PR #5).
  
@@ -216,7 +225,7 @@
  $ git shortlog -s v0.1.6...v0.1.7
       1	Kai Fricke
       1	cclauss
-@@ -323,7 +323,7 @@
+@@ -337,7 +337,7 @@
  * Drop python 3.3 support
  * Improve image_link regex (PR #3)
  
@@ -225,7 +234,7 @@
  $ git shortlog -s v0.1.5...v0.1.6
       1	John W. O'Brien
       1	Nikola Forró
-@@ -336,7 +336,7 @@
+@@ -350,7 +350,7 @@
  
  * Support multiple backticks in inline code, like: ```backticks (``) in code```
  
@@ -234,7 +243,7 @@
  $ git shortlog -s v0.1.4...v0.1.5
       6	miyakogi
  ```
-@@ -348,7 +348,7 @@
+@@ -362,7 +362,7 @@
  * Support indented directives/reST-comments
  * Support role-name after backticks (`` `text`:role: style``)
  
@@ -243,7 +252,7 @@
  $ git shortlog -s v0.1.3...v0.1.4
       6	miyakogi
  ```
-@@ -362,7 +362,7 @@
+@@ -376,7 +376,7 @@
      * at the beginning of lines
      * before dots
  
@@ -252,7 +261,7 @@
  $ git shortlog -s v0.1.2...v0.1.3
       4	miyakogi
  ```
-@@ -374,7 +374,7 @@
+@@ -388,7 +388,7 @@
  * Add reST's `::` marker support
  * Add options to disable emphasis by underscore (`_` or `__`)
  
@@ -261,7 +270,7 @@
  $ git shortlog -s v0.1.1...v0.1.2
       9	miyakogi
  ```
-@@ -385,7 +385,7 @@
+@@ -399,7 +399,7 @@
  
  * Fix Bug: when code or link is placed at the end of line, spaces to the next word is disappeared
  
@@ -270,7 +279,7 @@
  $ git shortlog -s v0.1...v0.1.1
       6	miyakogi
  ```
-@@ -396,7 +396,7 @@
+@@ -410,7 +410,7 @@
  
  First public release.
  
