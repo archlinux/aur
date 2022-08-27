@@ -1,0 +1,15 @@
+pkgbase = ghidra-extension-emotionengine-git
+	pkgdesc = Ghidra processor for the Sony Playstation 2's Emotion Engine MIPS-based CPU
+	pkgver = 1.6.0.r21.gc996291
+	pkgrel = 1
+	url = https://github.com/beardypig/ghidra-emotionengine
+	arch = any
+	license = Apache 2.0
+	makedepends = git
+	makedepends = unzip
+	makedepends = gradle
+	depends = ghidra
+	source = ghidra-emotionengine::git+https://github.com/beardypig/ghidra-emotionengine#branch=master
+	sha256sums = SKIP
+
+pkgname = ghidra-extension-emotionengine-git
