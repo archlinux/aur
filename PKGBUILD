@@ -3,7 +3,7 @@
 pkgname=nodejs-surge
 _pkgname=${pkgname#nodejs-}
 _gh_user=sintaxi
-pkgver=0.20.1
+pkgver=0.23.1
 pkgrel=1
 pkgdesc='CLI for the surge.sh CDN'
 arch=('any')
