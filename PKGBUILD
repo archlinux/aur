@@ -43,8 +43,6 @@ package() {
     cd "${srcdir}"
     install -Dm755 -t "${pkgdir}/usr/bin" sslocal ssserver ssurl ssmanager ssservice
 
-    install -Dm755 -t "${pkgdir}/usr/bin" sslocal ssserver ssurl ssmanager ssservice
-
     install -Dm644 -t "${pkgdir}/usr/share/licenses/$pkgname" LICENSE
 
     install -Dm644 shadowsocks-rust-local@.service.system "${pkgdir}/usr/lib/systemd/system/shadowsocks-rust-local@.service"
