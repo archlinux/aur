@@ -8,8 +8,8 @@ url='https://github.com/ryanoasis/nerd-fonts'
 license=('MIT')
 source=("https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/ProFont.zip"
         "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v$pkgver/LICENSE")
-sha256sums=('27ff63d48396611c3051133ca5e6a8e6e0c6ccfbc1928ac7be497020f3cd6432'
-            'd2a29823384e9194a87936ccad495c764c2ef733b29bfa6f72a1d65803ce02e5')
+sha256sums=('60df130d56589a0d8816b060c49b774b43171bd6fbbe3c226c3aeba1f1fc703a'
+            '245b522abb5aba0d8e84898bf6d5e95102620637626106bfd0061189a2370360')
 
 package() {
     install -d "${pkgdir}/usr/share/fonts/TTF"
