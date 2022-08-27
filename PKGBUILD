@@ -13,7 +13,7 @@
 _name="opencv"
 pkgbase="$_name"-git
 pkgname=("$pkgbase" "$_name-samples-git" "python-$_name-git")
-pkgver=4.5.5.r310.g9aa647068b
+pkgver=4.6.0.r213.gbb64db98d8
 pkgrel=1
 pkgdesc="Open Source Computer Vision Library"
 url="https://opencv.org/"
@@ -88,6 +88,7 @@ build() {
           -DOPENCV_ENABLE_NOFREE=ON \
           -DOPENCV_JNI_INSTALL_PATH=lib \
           -DOPENCV_GENERATE_SETUPVARS=OFF \
+          -DEIGEN_INCLUDE_PATH=/usr/include/eigen3
 
     cmake --build build
 }

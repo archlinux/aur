@@ -1,6 +1,6 @@
 pkgbase = opencv-git
 	pkgdesc = Open Source Computer Vision Library
-	pkgver = 4.5.5.r310.g9aa647068b
+	pkgver = 4.6.0.r213.gbb64db98d8
 	pkgrel = 1
 	url = https://opencv.org/
 	arch = i686
