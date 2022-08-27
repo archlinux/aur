@@ -3,7 +3,7 @@
 
 pkgname=python-pinyin
 _pkg=pypinyin
-pkgver=0.47.0
+pkgver=0.47.1
 pkgrel=1
 pkgdesc="Chinese to Pinyin library"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 changelog=CHANGELOG.rst
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('021d50bad961bf6807881b156c38a17fe4e83bedf9c506e97c1dc1be58678ee0')
+sha256sums=('4244eec898294fd099c02d59faf8e89106d83d74e1c04a7af59094664d89636b')
 
 build() {
 	cd "$_pkg-$pkgver"
