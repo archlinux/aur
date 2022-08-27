@@ -1,0 +1,150 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9666005..2571928 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -58,16 +58,16 @@ option(ENABLE_CUBEB "Enabled cubeb backend" ON)
+ 
+ option(ENABLE_WXWIDGETS "Build with wxWidgets UI (Currently required)" ON)
+ 
+-find_package(SDL2 CONFIG REQUIRED)
+-find_package(CURL CONFIG REQUIRED)
+-find_package(pugixml CONFIG REQUIRED)
+-find_package(imgui CONFIG REQUIRED)
+-find_package(RapidJSON CONFIG REQUIRED)
++find_package(SDL2 REQUIRED)
++find_package(CURL REQUIRED)
++find_package(pugixml REQUIRED)
++find_package(imgui REQUIRED)
++find_package(RapidJSON REQUIRED)
+ find_package(Boost COMPONENTS program_options filesystem nowide REQUIRED)
+ find_package(libzip REQUIRED)
+ find_package(glslang REQUIRED)
+ find_package(ZLIB REQUIRED)
+-find_package(zstd CONFIG REQUIRED)
++find_package(zstd REQUIRED)
+ 
+ if (ENABLE_VULKAN)
+   include_directories("dependencies/Vulkan-Headers/include")
+@@ -79,8 +79,6 @@ endif()
+ 
+ if (ENABLE_DISCORD_RPC)
+   add_definitions(-DENABLE_DISCORD_RPC)
+-  add_subdirectory(dependencies/discord-rpc EXCLUDE_FROM_ALL)
+-  target_include_directories(discord-rpc INTERFACE ./dependencies/discord-rpc/include)
+ endif()
+ 
+ if (ENABLE_WXWIDGETS)
+@@ -93,19 +91,14 @@ find_package(X11)
+ # find a better way to handle this
+ link_libraries(${Boost_LIBRARIES})
+ link_libraries(${X11_LIBRARIES})
+-link_libraries(SDL2::SDL2 SDL2::SDL2main SDL2::SDL2-static)
++link_libraries(SDL2::SDL2 SDL2::SDL2main)
+ if (ENABLE_WXWIDGETS)
+   link_libraries(wx::core wx::base)
+ endif()
+ 
+ if (ENABLE_CUBEB)
+-  option(BUILD_TESTS "" OFF)
+-  option(BUILD_TOOLS "" OFF)
+-  option(BUNDLE_SPEEX "" OFF)
+-  set(USE_WINMM OFF CACHE BOOL "")
+-  add_subdirectory(dependencies/cubeb)
+-  set_property(TARGET cubeb PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+-  link_libraries(cubeb)
++  find_package(cubeb REQUIRED)
++  link_libraries(cubeb::cubeb)
+   add_compile_definitions(HAS_CUBEB=1)
+ endif()
+ 
+Submodule dependencies/ZArchive contains modified content
+diff --git a/dependencies/ZArchive/CMakeLists.txt b/dependencies/ZArchive/CMakeLists.txt
+index f91023a..9746c05 100644
+--- a/dependencies/ZArchive/CMakeLists.txt
++++ b/dependencies/ZArchive/CMakeLists.txt
+@@ -30,7 +30,7 @@ ${CMAKE_CURRENT_SOURCE_DIR}/include
+ )
+ 
+ find_package(zstd REQUIRED)
+-target_link_libraries(zarchive PRIVATE zstd::libzstd_static)
++target_link_libraries(zarchive PRIVATE zstd::libzstd_shared)
+ 
+ # standalone executable
+ add_executable (zarchiveTool src/main.cpp)
+diff --git a/dependencies/discord-rpc/CMakeLists.txt b/dependencies/discord-rpc/CMakeLists.txt
+index 4aa1108..a6d7568 100644
+--- a/dependencies/discord-rpc/CMakeLists.txt
++++ b/dependencies/discord-rpc/CMakeLists.txt
+@@ -30,9 +30,9 @@ execute_process(
+ #    file(REMOVE ${RJ_TAR_FILE})
+ #endif(NOT RAPIDJSONTEST)
+ 
+-#find_file(RAPIDJSON NAMES rapidjson rapidjson-1.1.0 PATHS ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty CMAKE_FIND_ROOT_PATH_BOTH)
++find_file(RAPIDJSON NAMES rapidjson rapidjson-1.1.0 PATHS ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty CMAKE_FIND_ROOT_PATH_BOTH)
+ 
+-#add_library(rapidjson STATIC IMPORTED ${RAPIDJSON})
++add_library(rapidjson STATIC IMPORTED ${RAPIDJSON})
+ 
+ # add subdirs
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index adebc32..0c52d95 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -83,7 +83,7 @@ target_link_libraries(CemuBin PRIVATE ZLIB::ZLIB)
+ target_link_libraries(CemuBin PRIVATE ${wxWidgets_LIBRARIES})
+ target_link_libraries(CemuBin PRIVATE CURL::libcurl)
+ target_link_libraries(CemuBin PRIVATE imgui::imgui)
+-target_link_libraries(CemuBin PRIVATE pugixml pugixml::static pugixml::pugixml)
++target_link_libraries(CemuBin PRIVATE pugixml pugixml::shared pugixml::pugixml)
+ 
+ target_link_libraries(CemuBin PUBLIC
+ CemuCommon CemuAudio CemuInput CemuComponents CemuCafe CemuConfig CemuGui imguiImpl)
+diff --git a/src/Cafe/HW/Latte/Renderer/Vulkan/RendererShaderVk.cpp b/src/Cafe/HW/Latte/Renderer/Vulkan/RendererShaderVk.cpp
+index b107e56..c9b7c75 100644
+--- a/src/Cafe/HW/Latte/Renderer/Vulkan/RendererShaderVk.cpp
++++ b/src/Cafe/HW/Latte/Renderer/Vulkan/RendererShaderVk.cpp
+@@ -7,7 +7,7 @@
+ #endif
+ 
+ #include <glslang/Public/ShaderLang.h>
+-#if GLSLANG_VERSION_LESS_OR_EQUAL_TO(11, 0, 0)
++#if GLSLANG_VERSION_LESS_OR_EQUAL_TO(12, 0, 0)
+ #include <glslang/SPIRV/GlslangToSpv.h>
+ #else
+ #include <SPIRV/Logger.h>
+@@ -127,7 +127,7 @@ const TBuiltInResource DefaultTBuiltInResource = {
+ 	/* .maxTaskWorkGroupSizeZ_NV = */ 1,
+ 	/* .maxMeshViewCountNV = */ 4,
+ 
+-#if GLSLANG_VERSION_LESS_OR_EQUAL_TO(11, 0, 0)
++#if GLSLANG_VERSION_LESS_OR_EQUAL_TO(12, 0, 0)
+ 	/* .maxDualSourceDrawBuffersEXT = */ 1,
+ #endif
+ 
+diff --git a/src/Cemu/CMakeLists.txt b/src/Cemu/CMakeLists.txt
+index 8c9136f..7c88c3b 100644
+--- a/src/Cemu/CMakeLists.txt
++++ b/src/Cemu/CMakeLists.txt
+@@ -13,3 +13,4 @@ target_include_directories(CemuComponents PRIVATE ../)
+ if(ENABLE_DISCORD_RPC)
+ target_link_libraries(CemuComponents PRIVATE discord-rpc)
+ endif()
++target_link_libraries(CemuComponents PRIVATE CemuUtil)
+diff --git a/src/Cemu/Logging/CemuLogging.h b/src/Cemu/Logging/CemuLogging.h
+index 021055d..0463502 100644
+--- a/src/Cemu/Logging/CemuLogging.h
++++ b/src/Cemu/Logging/CemuLogging.h
+@@ -58,9 +58,9 @@ bool cemuLog_log(LogType type, TFmt format, TArgs&&... args)
+ 	if (!cemuLog_isLoggingEnabled(type))
+ 		return false;
+ 
+-	const auto format_view = fmt::to_string_view(format);
+-	const auto text = fmt::vformat(format_view, fmt::make_args_checked<TArgs...>(format_view, args...));
+-	cemuLog_log(type, std::basic_string_view(text.data(), text.size()));
++	// const auto format_view = fmt::to_string_view(format);
++	// const auto text = fmt::vformat(format_view, fmt::make_args_checked<TArgs...>(format_view, args...));
++	// cemuLog_log(type, std::basic_string_view(text.data(), text.size()));
+ 	return true;
+ }
+ 
