@@ -1,7 +1,7 @@
 # Maintainer: Adrià Cabello <adriacabellocrespo at gmail dot com>
 pkgname=gaffer-bin
-pkgver=1.0.2.1
-pkgrel=2
+pkgver=1.0.3.0
+pkgrel=1
 pkgdesc="Gaffer is a VFX application that enables look developers, lighters, and compositors to easily build, tweak, iterate, and render scenes."
 arch=('any')
 url="https://www.gafferhq.org/"
