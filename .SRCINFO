@@ -1,7 +1,7 @@
 pkgbase = alock
 	pkgdesc = simple screen lock application for X server
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Arkq/alock
 	arch = i686
 	arch = x86_64
@@ -21,6 +21,10 @@ pkgbase = alock
 	conflicts = alock-svn
 	conflicts = alock-git
 	source = alock-2.5.0.tar.gz::https://github.com/Arkq/alock/archive/refs/tags/v2.5.0.tar.gz
+	source = https://github.com/Arkq/alock/pull/14.patch
+	source = https://github.com/Arkq/alock/pull/21.patch
 	sha256sums = c763107ec8716787b97b0e7a6aaa24320b6c1a495bf2c60949d3a2ce228096ac
+	sha256sums = f9a7750108c7038cb7e715a102ffb46920d4a49185e87db8a72ad285b596f85d
+	sha256sums = 719acbea3bd9d3abb5b6e4122ff5519668edf8036a6f931e3c2279ae16f36aea
 
 pkgname = alock
