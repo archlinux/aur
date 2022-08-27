@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=AltLinux
+Path=/usr/lib/altlinux
+Exec=/usr/lib/altlinux/altlinux
+Icon=/usr/share/icons/AltLinux.png
+Terminal=false
+Type=Application
+Categories=Application
+Name[en_US]=AltLinux
