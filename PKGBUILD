@@ -1,7 +1,7 @@
 # Maintainer: seth <getchoo at tuta dot io>
 
 pkgname=hiccup-git
-pkgver=r13.3b376cd
+pkgver=r18.22378ab
 pkgrel=1
 pkgdesc="a python script to help keep you up to date"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/getchoo/hiccup"
 license=('MIT')
 depends=('python' 'xdg-user-dirs')
 makedepends=('git' 'python-build' 'python-installer'
-             'python-wheel' 'python-setuptools')
+             'python-wheel' 'python-flit-core')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+$url.git#branch=main")

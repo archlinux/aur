@@ -1,6 +1,6 @@
 pkgbase = hiccup-git
 	pkgdesc = a python script to help keep you up to date
-	pkgver = r13.3b376cd
+	pkgver = r18.22378ab
 	pkgrel = 1
 	url = https://github.com/getchoo/hiccup
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = hiccup-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = python-setuptools
+	makedepends = python-flit-core
 	depends = python
 	depends = xdg-user-dirs
 	provides = hiccup
