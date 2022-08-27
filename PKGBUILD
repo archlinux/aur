@@ -26,7 +26,7 @@ prepare() {
 }
 
 build() {
-	cd $srcdir/$pkgname/build
+	cd $srcdir/Tachidesk-QtUI/build
   cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
