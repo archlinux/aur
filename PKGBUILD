@@ -57,6 +57,7 @@ prepare() {
 _configure() {
 	cd "odamex-git"
 
+	CFLAGS="-DSDL20 $CFLAGS" \
 	CXXFLAGS="-DSDL20 $CXXFLAGS" \
 	cmake -DCMAKE_BUILD_TYPE=Release  \
 		-DCMAKE_INSTALL_PREFIX=/usr  \
