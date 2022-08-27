@@ -2,7 +2,7 @@
 
 pkgname='warspear'
 pkgver=10.4.3
-pkgrel=0
+pkgrel=1
 pkgdesc='Warspear Online is a cross-platform massively multiplayer online roleplaying game (MMORPG) for smart phones.'
 arch=('i686' 'x86_64')
 url='http://warspear-online.com/'
