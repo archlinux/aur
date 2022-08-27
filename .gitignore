@@ -1,5 +1,5 @@
 src
 pkg
-*.pkg.tar.xz
-*.tar.gz
+python-transforms3d-*.pkg.tar*
+transforms3d-*.tar.gz
 *.log
