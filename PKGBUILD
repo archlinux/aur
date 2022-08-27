@@ -1,10 +1,11 @@
+# Maintainer:  ramen <hendrikschick@hndrkk.sh>
 pkgname=gomatrix-git
 _pkgname=gomatrix
 pkgver=101.0.0.r2.gb3aff13
 pkgrel=1
 pkgdesc='gomatrix connects to the The Matrix and displays its data streams in your terminal'
 arch=('x86_64')
-url='git+https://github.com/GeertJohan/gomatrix'
+url='https://github.com/GeertJohan/gomatrix'
 license=('BSD-2')
 makedepends=('go' 'git')
 source=('https://github.com/GeertJohan/gomtrix/releases/tag/v$pkgver')
@@ -19,12 +20,6 @@ md5sums=(
   'SKIP'
 )
 
-prepare(){
-  cd "$_pkgname"
-  mkdir -p build/
-  chmod u+w -R "$GOPATH"
-}
-
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   ( set -o pipefail
@@ -34,62 +29,28 @@ pkgver() {
   )
 }
 
-
-check() {
+prepare() {
   cd "$_pkgname"
-  go test ./...
+  mkdir -p build/
 }
 
 build() {
+  cd "${srcdir}/${_pkgname}"
+
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-
-  cd "${srcdir}/${_pkgname}"
-
-  if [ -L "${srcdir}/${_pkgname}" ]; then
-    rm "${srcdir}/${_pkgname}" -rf
-    mv "${srcdir}/go/src/${_pkgname}/" "${srcdir}/${_pkgname}"
-  fi
-
-  rm -rf "${srcdir}/go/src"
-
-  mkdir -p "${srcdir}/go/src"
-
-  export GOPATH="${srcdir}/go"
-
-  mv "${srcdir}/${_pkgname}" "${srcdir}/go/src/"
-
-  cd "${srcdir}/go/src/${_pkgname}/"
-  ln -sf "${srcdir}/go/src/${_pkgname}/" "${srcdir}/${_pkgname}"
-
-  echo ":: Updating git submodules"
-  git submodule update --init
-
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   echo ":: Building binary"
-  go get -v \
-    -gcflags "-trimpath $GOPATH/src"
+  go build -o build ./...
 }
 
 
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
-  mkdir -p ${pkgdir}/etc
-
-  find "${srcdir}/go/bin/" -type f -executable | while read filename; do
-    install -Dm 755 "${filename}" "${pkgdir}/usr/bin/$(basename ${filename})"
-  done
-
-  find "${srcdir}/go/src/${_pkgname}" -name "LICENSE" -type f | while read filename; do
-    if [ "$(basename ${filename})" == "LICENSE" ]; then
-        install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/BSD-2"
-    fi
-  done
-
-  chmod u+w -R "$GOPATH"
+  install -Dm755 -v build/$_pkgname "$pkgdir"/usr/bin/$_pkgname 
+  install -Dm644 -v LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/BSD-2"
 }
 
