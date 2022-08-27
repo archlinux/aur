@@ -1,5 +1,5 @@
 pkgbase = renderdoc-minimal
-	pkgdesc = OpenGL and Vulkan debugging tool
+	pkgdesc = OpenGL and Vulkan debugging tool (minimal, capture + replay server only)
 	pkgver = 1.21
 	pkgrel = 1
 	url = https://github.com/baldurk/renderdoc
