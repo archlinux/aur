@@ -4,7 +4,7 @@ pkgname=cider
 _pkgname=Cider
 _pkgbranch=stable
 pkgver=1.5.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Project Cider. An open-source Apple Music client built from the ground up with Vue.js and Electron. Compiled from the GitHub repositories ${_pkgbranch} branch."
 arch=("armv7h" "i686" "x86_64")
 url="https://github.com/ciderapp/${_pkgname}.git"
@@ -13,32 +13,25 @@ depends=('gtk3' 'nss')
 makedepends=('git' 'npm' 'pnpm' 'python')
 optdepends=('libnotify: Playback notifications')
 source=(
-    "git+https://github.com/ciderapp/${_pkgname}.git#branch=${_pkgbranch}"
+    "git+https://github.com/CiderApp/${_pkgname}.git#branch=${_pkgbranch}"
     "cider.desktop"
 )
 sha256sums=('SKIP'
-            'c41e9b1019411019fce8509e32f770edf33c9e864bf707c30ffe2e3f2dcf1571')
+    'c41e9b1019411019fce8509e32f770edf33c9e864bf707c30ffe2e3f2dcf1571')
 
 pkgver() {
-	cd "${srcdir}/${_pkgname}"
-	node -p -e "require('./package.json').version"
+    cd "${srcdir}/${_pkgname}"
+    GITHUB_REF_NAME=${_pkgbranch} ./resources/version.sh | sed 's/\-/./g'
 }
 
 build() {
     cd "${srcdir}/${_pkgname}"
 
     echo "Building ${_pkgname} on v${pkgver} : [Install Build Dependencies] | Build | Done"
-    pnpm config set store-dir ${srcdir}/.pnpm-store
     pnpm install --frozen-lockfile
 
     echo "Building : Install Build Dependencies | [Build] | Done"
-    if [[ ${CARCH} == "armv7h" ]]; then
-        pnpm tsc && pnpm compile-less && pnpm electron-builder build --armv7l --linux dir
-    elif [[ ${CARCH} == "i686" ]]; then
-        pnpm tsc && pnpm compile-less && pnpm electron-builder build --ia32 --linux dir
-    elif [[ ${CARCH} == "x86_64" ]]; then
-        pnpm tsc && pnpm compile-less && pnpm electron-builder build --x64 --linux dir
-    fi
+    pnpm dist --linux dir
 
     echo "Building : Install Build Dependencies | Build | [Done]"
 }
