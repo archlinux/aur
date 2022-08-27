@@ -7,12 +7,18 @@ pkgdesc="DOM Ruler is a library to maintain a DOM tree, lay out and stylize the 
 arch=('any')
 url="https://github.com/HVML/DOM-Ruler"
 license=('LGPL-3.0')
+groups=('hvml-git')
 provides=(${pkgname%-git}  'DOM-Ruler')
 conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
 depends=('glib2' 'purc')
 makedepends=('git' 'cmake' 'ninja' 'ccache' 'gcc' 'python' 'libxml2' 'ruby' 'curl' 'openssl' 'sqlite' 'pkgconf' 'zlib' 'icu')
 optdepends=('purc-fetcher' 'xguipro')
+optdepends=('purc: The prime HVML interpreter for C Language.'
+            'purc-fetcher: The remote data fetcher for PurC.'
+            'purc-midnight-commander: A generic HVML renderer in text mode for development and debugging.'
+            'webkit2gtk-hvml: Web content engine for GTK (HVML)'
+            'xguipro: xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit.')
 backup=()
 options=('!strip')
 #install=${pkgname}.install
