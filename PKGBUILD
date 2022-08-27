@@ -1,7 +1,7 @@
 # Maintainer: cyqsimon <28627918+cyqsimon@users.noreply.github.com>
 
 pkgname=cargo-whatfeatures
-pkgver=0.9.7
+pkgver=0.9.9
 pkgrel=1
 pkgdesc="A cargo plugin to display features, versions and dependencies of crates."
 arch=("x86_64" "i686" "armv6h" "armv7h" "aarch64")
@@ -10,7 +10,7 @@ license=("Apache" "MIT")
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 depends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate")
-sha512sums=('e70aec7589f4aab79933dd9c34786c54cb6d38300314cd2ebea33121a6e0d1f779b3baa7661e7d62eb6bdf1d43d53e200047a23b5757f7614462dd850df410cc')
+sha512sums=('353e1f98caa84df2e1ff22f1e469c925fca9e4eb06b44034a9ea187ddebe7f5daf06ae018a68d09fc22252d88ccc46ac68496044ff79349dbea87754e5c19fe3')
 
 prepare() {
   cd ${pkgname}-${pkgver}
