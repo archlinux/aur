@@ -1,6 +1,6 @@
 pkgbase = rtl8852be-dkms-git
 	pkgdesc = Realtek Linux WLAN Driver for RTL8852BE
-	pkgver = r23.6ae975a
+	pkgver = r28.28daf8c
 	pkgrel = 1
 	url = https://github.com/HRex39/rtl8852be/tree/dev
 	arch = i686

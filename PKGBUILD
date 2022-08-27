@@ -2,7 +2,7 @@
 
 pkgname=rtl8852be-dkms-git
 _pkgbase=rtl8852be
-pkgver=r23.6ae975a
+pkgver=r28.28daf8c
 pkgrel=1
 pkgdesc="Realtek Linux WLAN Driver for RTL8852BE"
 arch=('i686' 'x86_64')
