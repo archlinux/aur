@@ -13,8 +13,10 @@ makedepends=('git' 'meson' 'spice-protocol-git' 'python-six' 'python-pyparsing' 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://gitlab.freedesktop.org/spice/$_pkgname.git"
+        "git+https://gitlab.freedesktop.org/spice/spice-common.git"
         'spice-common_detect-pyparsing.patch')
 sha256sums=('SKIP'
+            'SKIP'
             'ae77744c7df2805b0c9fd248be4c03b1a685165c08da112a5a41eaab8454f962')
 
 pkgver() {
@@ -25,7 +27,7 @@ pkgver() {
 prepare() {
     cd $_pkgname
     # referring git submodules by relative paths doesn't seem to work in clean chroots
-    sed -i 's|url =.*$|url = https://gitlab.freedesktop.org/spice/spice-common.git|' .gitmodules
+    sed -i "s|url = ..|url = ${srcdir}|;s|.git$||" .gitmodules
     git submodule update --init
     # spice-common#5: a failure to detect recent versions of pyparsing was fixed, but git submodules uses a commit lacking the fix
     cd subprojects/spice-common

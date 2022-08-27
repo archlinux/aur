@@ -20,7 +20,9 @@ pkgbase = spice-git
 	provides = spice
 	conflicts = spice
 	source = git+https://gitlab.freedesktop.org/spice/spice.git
+	source = git+https://gitlab.freedesktop.org/spice/spice-common.git
 	source = spice-common_detect-pyparsing.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = ae77744c7df2805b0c9fd248be4c03b1a685165c08da112a5a41eaab8454f962
 
