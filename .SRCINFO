@@ -1,10 +1,11 @@
 pkgbase = todesk-bin
 	pkgdesc = Remote control and team work
-	pkgver = 4.3.0.0
+	pkgver = 4.3.1.0
 	pkgrel = 1
 	url = https://www.todesk.com/
 	install = todesk.install
 	arch = x86_64
+	arch = aarch64
 	license = custom
 	makedepends = tar
 	depends = gtk3
@@ -15,7 +16,9 @@ pkgbase = todesk-bin
 	options = emptydirs
 	source = license.html
 	sha256sums = 402b2db2586c723af990beb0f96249b9680880f4f30e58a7cbe7cbd20b979a0b
-	source_x86_64 = https://dl.todesk.com/linux/todesk-v4.3.0.0-amd64.deb
-	sha256sums_x86_64 = 9da71f8790aa75b796c00d9b75ff42313f4c384c4e09115f88ab901b65629940
+	source_x86_64 = https://dl.todesk.com/linux/todesk-v4.3.1.0-amd64.deb
+	sha256sums_x86_64 = 4bfaa6a5b4e8f5fe369a38658aace233b98e3214f3b6f39d482ccd73d9e847ea
+	source_aarch64 = https://dl.todesk.com/linux/todesk-v4.3.1.0-arm64.deb
+	sha256sums_aarch64 = 173f864f7eea3647803141f9950261b8747f6267a16bad91281471af050a4551
 
 pkgname = todesk-bin
