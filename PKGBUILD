@@ -18,11 +18,11 @@ optdepends=('pidgin: For GUI usage of oicq'
             'purple-oicq: libpurple protocol support for oicq'
             'purple-oicq-git: libpurple protocol support for oicq, git version'
             'systemd: systemd daemon service support')
-source=("http://ci.hackflow.org/job/oicq-axon/16/artifact/dist/oicq-axon-linux-x64.gz"
+source=("oicq-axon-linux-x64.gz::https://codeberg.org/attachments/08fc278d-816f-476f-94d1-a46706fd48bc"
         "libaxon.install"
         "libaxon@.service"
         "libaxon_user.service")
-sha256sums=("5b434fec1f9793631914b47681c48063ae3089eae3209accf2a048b9069f84b0"
+sha256sums=("2cc0833f8a9fb2a226df35260346265d489886a22e00f8b240188dedf06f98e5"
 	    "6251c002f240591219638b1ef487f532a2874cef836f0ec91c62643416de7bca"
 	    "060ad920889af99dcbece1351a4373215780c5457df7da8637d4f84594db5a02"
 	    "42f97054314ceb0356d007217d5c3781afbd8dc4d1aceaa1877aeb2764ee88fe")
