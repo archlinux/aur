@@ -1,6 +1,6 @@
 pkgbase = stacktile-git
 	pkgdesc = Layout generator for the river Wayland compositor
-	pkgver = r41.8584474
+	pkgver = r52.8f06de2
 	pkgrel = 1
 	url = https://sr.ht/~leon_plickat/stacktile/
 	arch = x86_64
@@ -11,6 +11,8 @@ pkgbase = stacktile-git
 	conflicts = stacktile
 	options = !buildflags
 	source = git+https://git.sr.ht/~leon_plickat/stacktile
+	source = git+https://github.com/ifreund/zig-wayland.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = stacktile-git

@@ -1,7 +1,7 @@
 # Maintainer: Peter Kaplan <peter@pkap.de>
 pkgname=stacktile-git
 _pkgname=stacktile
-pkgver=r42.0e5baf1
+pkgver=r52.8f06de2
 pkgrel=1
 pkgdesc="Layout generator for the river Wayland compositor"
 arch=('x86_64')
@@ -11,21 +11,30 @@ makedepends=('git' 'wayland')
 conflicts=('stacktile')
 provides=('stacktile')
 options=('!buildflags')
-source=("git+https://git.sr.ht/~leon_plickat/stacktile")
-sha256sums=('SKIP')
+source=(
+    "git+https://git.sr.ht/~leon_plickat/stacktile"
+    "git+https://github.com/ifreund/zig-wayland.git"
+)
+sha256sums=(
+    'SKIP'
+    'SKIP'
+)
 
 pkgver() {
-  cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$_pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
+prepare() {
     cd "$_pkgname"
-    make
+    git submodule init
+    git config "submodule.deps/zig-wayland.url" "$srcdir/zig-wayland"
+    git submodule update
 }
 
 package() {
     cd "$_pkgname"
-    make DESTDIR="$pkgdir" PREFIX="/usr" install 
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+    DESTDIR="$pkgdir" zig build -Drelease-safe --prefix "/usr" install
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
+    install -Dm644 README -t "$pkgdir/usr/share/doc/$_pkgname"
 }
