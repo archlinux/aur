@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=detectseparation
-_pkgver=0.2
+_pkgver=0.3
 pkgname=r-${_pkgname,,}
-pkgver=0.2
-pkgrel=4
+pkgver=0.3
+pkgrel=1
 pkgdesc='Detect and Check for Separation and Infinite Maximum Likelihood Estimates'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('09184f7b56de8c9dde61cc6da07ea725f5f8cb8e400d7490b62b07abddd5d79d')
+sha256sums=('e8d7b7d7e58ea5b2d3d917213ad9876f71671c5ae1dbd97091adc25a7eb8e317')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
