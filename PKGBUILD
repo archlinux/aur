@@ -20,8 +20,8 @@ depends=('binutils'
          'unzip')
 makedepends=('pyinstaller')
 source=("${pkgname}_${pkgver}.tar.gz"::"https://github.com/maxasix/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
-        "local://${pkgname}.desktop"
-        "local://${pkgname}.png")
+        "file://${pkgname}.desktop"
+        "file://${pkgname}.png")
 sha256sums=('e1f5afad2993a4d6fbd639dcd944210d24bf1aa10a2beeb163212bcae9613557'
             'SKIP'
             'SKIP')
