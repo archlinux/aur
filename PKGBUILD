@@ -1,8 +1,8 @@
 # Maintainer: Łukasz Mariański <lmarianski at protonmail dot com>
 pkgname=replugged-electron-git
 _pkgname="${pkgname%-electron-*}"
-pkgver=r1591.237fe5c9
-pkgrel=2
+pkgver=r1655.b9e33912
+pkgrel=1
 pkgdesc="A fork of Powercord, the lightweight discord client mod focused on simplicity and performance."
 arch=('any')
 url="https://github.com/${_pkgname}-org/${_pkgname}"
@@ -23,7 +23,7 @@ md5sums=('SKIP'
          'fa10b7595d4a5cb4a7735a6e36fc9e61'
          '9698a7fbd4af735bee89e74fa0b03dfe'
          '4ddcb11a1ec0a8a9585a6f0b685286b4'
-         '6870d274b2b0a3c385684859b7d2b149'
+         '785fa284e46b3b8ea15de3fd4093eb3e'
          '410cd8ba30fb07064295c898c2e99be0')
 
 pkgver() {
