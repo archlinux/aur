@@ -17,14 +17,14 @@ package() {
 	bsdtar -xvf data.tar.xz -C "${pkgdir}/"
 	chmod -R 755 "${pkgdir}/"
 
-  echo "  -> Installing..."
+	echo "  -> Installing..."
 	# Launcher
 	mkdir -p "${pkgdir}/usr/bin/"
 	ln -s "/opt/apps/com.mastergo/files/master-desktop" "${pkgdir}/usr/bin/${pkgname}"
 	# Desktop Entry
 	install -Dm644 "${pkgdir}/opt/apps/com.mastergo/entries/applications/com.mastergo.desktop" -t "${pkgdir}/usr/share/applications/"
-  # Icon
-  install -Dm644 "${pkgdir}/opt/apps/com.mastergo/entries/icons/hicolor/scalable/apps/com.mastergo.svg" -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
+	# Icon
+	install -Dm644 "${pkgdir}/opt/apps/com.mastergo/entries/icons/hicolor/scalable/apps/com.mastergo.svg" -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
 	# License
 	install -Dm644 "${pkgdir}/opt/apps/com.mastergo/files/LICENSE.electron.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 	install -Dm644 "${pkgdir}/opt/apps/com.mastergo/files/LICENSES.chromium.html" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
