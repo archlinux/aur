@@ -13,11 +13,10 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_ver="1.19.2_0.4.3_0.17.1-1" # <mcver_installerver_loaderver-pkgrelease>
+_ver="1.19.2_0.4.4_0.17.1-1" # <mcver_installerver_loaderver-pkgrelease>
 # installer ver can be gotten at https://meta.quiltmc.org/v3/versions/installer
 # loader ver can be gotten at https://meta.quiltmc.org/v3/versions/loader
-# stay on stable loader releases for the time being.
-# bump installer ver only on loader ver bump, no need to bump purely for installer 
+# stay on stable loader+installer releases for the time being.
 # unless things break.
 
 IFS="-" read -ra _ver_temp <<< "$_ver"
@@ -53,7 +52,7 @@ source=("minecraft-server-${_mng_ver}.tar.gz"::"https://github.com/Edenhofer/min
 		"quilt-installer-${_quilt_ver}.jar"::"https://maven.quiltmc.org/repository/release/org/quiltmc/quilt-installer/${_quilt_ver}/quilt-installer-${_quilt_ver}.jar")
 noextract=("quilt-${_pkgver}.jar")
 sha256sums=('739d526568d440f5bca0706d6d03d64e44e4e942766d27a4f273a812341978df'
-            '045668265303d41dae13abc5eb000e988ad409b792431663e06b46ad0811f80a')
+            'd6f3b23b869dc6d3fa0f9e06895d87add890493f2a58ed4bae54279895ed0948')
 
 prepare() {
 	java -Duser.home="${srcdir}" -jar "quilt-installer-${_quilt_ver}.jar" install server ${_minecraft_ver} ${_quilt_loader_ver} --download-server
