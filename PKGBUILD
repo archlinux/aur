@@ -5,7 +5,7 @@ _pkgname=Cider
 _pkgbranch=stable
 pkgver=1.5.6
 pkgrel=3
-pkgdesc="Project Cider. An open-source Apple Music client built from the ground up with Vue.js and Electron. Compiled from the GitHub repositories stable branch."
+pkgdesc="Project Cider. An open-source Apple Music client built from the ground up with Vue.js and Electron. Compiled from the GitHub repositories ${_pkgbranch} branch."
 arch=("armv7h" "i686" "x86_64")
 url="https://github.com/ciderapp/${_pkgname}.git"
 license=("GPL")
@@ -28,8 +28,8 @@ build() {
     cd "${srcdir}/${_pkgname}"
 
     echo "Building ${_pkgname} on v${pkgver} : [Install Build Dependencies] | Build | Done"
-    # yarn install --non-interactive --pure-lockfile --cache-folder "${srcdir}/yarn-cache"
-    pnpm install
+    pnpm config set store-dir ${srcdir}/.pnpm-store
+    pnpm install --frozen-lockfile
 
     echo "Building : Install Build Dependencies | [Build] | Done"
     if [[ ${CARCH} == "armv7h" ]]; then
