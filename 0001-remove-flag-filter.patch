@@ -1,0 +1,56 @@
+From ae1ed1b0779f93b13f4b4af54c93c69470be656e Mon Sep 17 00:00:00 2001
+From: jopejoe1 <johannes@joens.email>
+Date: Sat, 27 Aug 2022 22:49:19 +0200
+Subject: [PATCH] remove flag filter
+
+---
+ Makefile                 | 2 +-
+ emoji_aliases.txt        | 8 --------
+ unknown_flag_aliases.txt | 5 -----
+ 3 files changed, 1 insertion(+), 14 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index da1c656e..140d451b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -100,7 +100,7 @@ endif
+ 
+ ALL_FLAGS = $(basename $(notdir $(wildcard $(FLAGS_SRC_DIR)/*.png)))
+ 
+-FLAGS = $(SELECTED_FLAGS)
++FLAGS = $(ALL_FLAGS)
+ 
+ FLAG_NAMES = $(FLAGS:%=%.png)
+ FLAG_FILES = $(addprefix $(FLAGS_DIR)/, $(FLAG_NAMES))
+diff --git a/emoji_aliases.txt b/emoji_aliases.txt
+index b217c108..e5873391 100644
+--- a/emoji_aliases.txt
++++ b/emoji_aliases.txt
+@@ -5,11 +5,3 @@
+ fe82b;unknown_flag # no name -> no name
+ 
+ # flag aliases
+-1f1e7_1f1fb;1f1f3_1f1f4 # BV -> NO
+-1f1e8_1f1f5;1f1eb_1f1f7 # CP -> FR
+-1f1e9_1f1ec;1f1ee_1f1f4 # DG -> IO
+-1f1ea_1f1e6;1f1ea_1f1f8 # EA -> ES
+-1f1ed_1f1f2;1f1e6_1f1fa # HM -> AU
+-1f1f2_1f1eb;1f1eb_1f1f7 # MF -> FR
+-1f1f8_1f1ef;1f1f3_1f1f4 # SJ -> NO
+-1f1fa_1f1f2;1f1fa_1f1f8 # UM -> US
+diff --git a/unknown_flag_aliases.txt b/unknown_flag_aliases.txt
+index 4f742427..13224ac1 100644
+--- a/unknown_flag_aliases.txt
++++ b/unknown_flag_aliases.txt
+@@ -4,8 +4,3 @@
+ # these are flags we explicitly omit
+ 
+ # flag aliases
+-1f1e7_1f1f1;fe82b # BL
+-1f1e7_1f1f6;fe82b # BQ
+-1f1f2_1f1f6;fe82b # MQ
+-1f1f7_1f1ea;fe82b # RE
+-1f1f9_1f1eb;fe82b # TF
+-- 
+2.37.2
+
