@@ -10,7 +10,7 @@ _pkgbase=${_basename}-${_pkgname}-nightly
 _debname=${_basename}-${_pkgname}-web
 pkgname=${_pkgbase}-bin
 pkgver=${_version}
-pkgrel=1
+pkgrel=2
 pkgdesc="Jitsi Meet Web nightly binary"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -20,7 +20,6 @@ optdepends=("nginx")
 makedepends=('tar')
 options=('!strip')
 backup=(
-  "etc/webapps/${_pkgbase}/logging_config.js"
   "etc/webapps/${_pkgbase}/config.js"
   "etc/webapps/${_pkgbase}/interface_config.js"
 )
@@ -56,7 +55,7 @@ package() {
         cp usr/share/jitsi-meet-web-config/config.js "${DESTDIR}"
         cp -R usr/share/jitsi-meet-web-config/* "${DOCDIR}"
 
-        for i in interface_config.js logging_config.js config.js
+        for i in interface_config.js config.js
         do
                 install -Dm644 "$DESTDIR/${i}" "$CONFDIR/${i}"
                 ln -sf "/etc/webapps/${_pkgbase}/${i}" "$DESTDIR/${i}"

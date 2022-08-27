@@ -1,7 +1,7 @@
 pkgbase = jitsi-meet-nightly-bin
 	pkgdesc = Jitsi Meet Web nightly binary
 	pkgver = 1.0.6504
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jitsi.org/jitsi-meet/
 	arch = any
 	license = Apache
@@ -11,7 +11,6 @@ pkgbase = jitsi-meet-nightly-bin
 	conflicts = jitsi-meet-nightly
 	noextract = config_1.0.6504.deb
 	options = !strip
-	backup = etc/webapps/jitsi-meet-nightly/logging_config.js
 	backup = etc/webapps/jitsi-meet-nightly/config.js
 	backup = etc/webapps/jitsi-meet-nightly/interface_config.js
 	source = https://download.jitsi.org/unstable/jitsi-meet-web_1.0.6504-1_all.deb
