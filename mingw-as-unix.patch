@@ -1,9 +1,0 @@
-diff -Naur libssh-0.6.4-orig/cmake/Modules/DefineInstallationPaths.cmake libssh-0.6.4/cmake/Modules/DefineInstallationPaths.cmake
---- libssh-0.6.4-orig/cmake/Modules/DefineInstallationPaths.cmake	2014-09-15 22:54:34.000000000 +0400
-+++ libssh-0.6.4/cmake/Modules/DefineInstallationPaths.cmake	2014-12-25 12:45:52.735000000 +0300
-@@ -1,4 +1,4 @@
--if (UNIX OR OS2)
-+if (UNIX OR OS2 OR MINGW)
-   IF (NOT APPLICATION_NAME)
-     MESSAGE(STATUS "${PROJECT_NAME} is used as APPLICATION_NAME")
-     SET(APPLICATION_NAME ${PROJECT_NAME})

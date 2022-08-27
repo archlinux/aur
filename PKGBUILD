@@ -7,7 +7,7 @@
 # Contributor: Alexey Pavlov <alexpux@gmail.com>
 
 pkgname=mingw-w64-libssh
-pkgver=0.9.6
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Library for accessing ssh client services through C libraries (mingw-w64)"
 url="https://www.libssh.org/"
@@ -18,11 +18,9 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-pkg-config' 'mingw-w64
 options=(!strip !buildflags staticlibs)
 #cmocka
 source=(https://www.libssh.org/files/${pkgver%.*}/libssh-$pkgver.tar.xz{,.asc}
-        mingw-pkgconfig.patch
         staticlibfix.patch)
-sha256sums=('86bcf885bd9b80466fe0e05453c58b877df61afa8ba947a58c356d7f0fab829b'
+sha256sums=('0dc158c534cd838ad0b785a82dec586de40da7e096523ae6c08c9b7bd2af0b57'
             'SKIP'
-            '10e57a3c226374b42656a11411fb8803a6afc9f76a3b71ca72649a1c9c1b10d1'
             'befd0650f7f6fd1d92872b8e2676a201b1449b009706de7fdbdd400b716fddf8')
 validpgpkeys=('8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D') # Andreas Schneider <asn@cryptomilk.org>
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -37,8 +35,6 @@ prepare() {
   sed 's/find_package(OpenSSL)/#find_package(OpenSSL)/' -i libssh-${pkgver}/CMakeLists.txt
 
   cd "${srcdir}/libssh-${pkgver}"
-
-  patch -p1 -i ${srcdir}/mingw-pkgconfig.patch
 
   # Should be included in next release:
   # https://bugs.libssh.org/T198
