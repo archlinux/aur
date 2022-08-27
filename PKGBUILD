@@ -3,7 +3,7 @@
 pkgname=speedify
 _pkgver=12.4.1-10609
 pkgver=${_pkgver/-/.}
-pkgrel=0
+pkgrel=1
 pkgdesc="Use multiple internet connections in parallel"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://speedify.com/"
@@ -12,7 +12,6 @@ groups=()
 depends=( lsof net-tools )
 makedepends=()
 provides=(speedify)
-conflicts=(speedify)
 replaces=(speedify)
 backup=()
 options=()
@@ -22,7 +21,7 @@ source_x86_64=(http://apt.connectify.me/pool/main/${pkgname:0:1}/${pkgname}/${pk
 source_aarch64=(http://apt.connectify.me/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${_pkgver}_arm64.deb)
 source_armv7h=(http://apt.connectify.me/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${_pkgver}_armhf.deb)
 # TODO: i386 is also supported
-md5sums_x86_64=('SKIP')
+md5sums_x86_64=('1fc9d6b9c64824ab5bce12aac64e8ee1')
 md5sums_aarch64=('SKIP')
 md5sums_armv7h=('SKIP')
 
