@@ -57,9 +57,11 @@ prepare() {
 _configure() {
 	cd "odamex-git"
 
-	CFLAGS="-DSDL20 $CFLAGS" \
-	CXXFLAGS="-DSDL20 $CXXFLAGS" \
+	export CFLAGS="-DSDL20 $CFLAGS"
+	export CXXFLAGS="-DSDL20 $CXXFLAGS"
+
 	cmake -DCMAKE_BUILD_TYPE=Release  \
+		-D BUILD_LAUNCHER=FALSE  \
 		-DCMAKE_INSTALL_PREFIX=/usr  \
 		-GNinja  \
 		.
