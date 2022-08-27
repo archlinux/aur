@@ -10,7 +10,7 @@
 
 pkgname=vagrant
 pkgver=2.3.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
 url="https://vagrantup.com"
@@ -25,6 +25,14 @@ source=($pkgname-$pkgver.tar.gz::https://github.com/mitchellh/$pkgname/archive/v
         "git+https://github.com/mitchellh/vagrant-installers.git#commit=5aa48dd")
 md5sums=('872b623fd3ba919185b4cc671ea7c20f'
          'SKIP')
+
+prepare() {
+  cd vagrant-installers
+  local _gemdir="$(gem env gemdir)"
+
+  # Allow Vagrant to see the system gems as these have been de-vendored from the ruby package
+  sed -i "s_\"gems\", vagrantVersion)_\"gems\", vagrantVersion, \":$_gemdir\")_g" substrate/launcher/main.go
+}
 
 build() {
   cd $pkgname-$pkgver
@@ -48,11 +56,11 @@ package() {
   EMBEDDED_DIR="$pkgdir"/opt/vagrant/embedded
 
   install -d "$pkgdir"/usr/{bin,share/bash-completion/completions,share/zsh/site-functions}
-  install -d "$EMBEDDED_DIR"/gems
+  install -Dm644 "$INSTALLERS_DIR"/common/gemrc "$EMBEDDED_DIR"/etc/gemrc
 
   echo "{ \"vagrant_version\": \"$pkgver\" }" > "$EMBEDDED_DIR"/manifest.json
 
-  gem install $pkgname-$pkgver.gem cgi delegate ipaddr io-wait \
+  gem install $pkgname-$pkgver.gem \
     --no-document --no-user-install --install-dir "$EMBEDDED_DIR"/gems/$pkgver
 
   install -Dm755 "$INSTALLERS_DIR"/launcher/vagrant \
