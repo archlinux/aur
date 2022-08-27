@@ -1,14 +1,14 @@
 pkgbase = xqp
 	pkgdesc = X Query pointer
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/baskerville/xqp
 	arch = i686
 	arch = x86_64
 	license = Unlicense
 	depends = libxcb
 	provides = xqp
-	conflicts = xqp
+	conflicts = xqp-git
 	source = xqp-0.1.tar.gz::https://github.com/baskerville/xqp/archive/refs/tags/0.1.tar.gz
 	sha256sums = 39d74c31e4525094fde006972c2011e9c0f353cb2591d0f64771ec6e10f0be23
 
