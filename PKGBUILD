@@ -10,6 +10,7 @@ license=('ISC')
 source=('git+https://github.com/gissf1/arch-emerge')
 makedepends=('git')
 sha256sums=('SKIP')
+backup=('etc/emerge/emerge.conf')
 
 pkgver() {
   cd "$srcdir"/arch-emerge
