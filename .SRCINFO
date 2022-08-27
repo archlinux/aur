@@ -1,7 +1,7 @@
 pkgbase = icalingua++-git
 	pkgdesc = A Linux client for QQ and more(fork to upgrading)
 	pkgver = 2.7.0.r1.g65077ea
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Icalingua-plus-plus/Icalingua-plus-plus
 	arch = aarch64
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = icalingua++-git
 	conflicts = electron-qq
 	conflicts = icalingua
 	replaces = electron-qq
-	source = Icalingua::git+https://github.com/Icalingua-plus-plus/Icalingua-plus-plus
+	source = Icalingua::git+https://github.com/Icalingua-plus-plus/Icalingua-plus-plus#branch=development
 	sha256sums = SKIP
 
 pkgname = icalingua++-git
