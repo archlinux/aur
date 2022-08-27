@@ -1,7 +1,7 @@
 # Maintainer: Alberto Redondo <albertomost at gmail dot com>
 
 pkgname=lyrics-in-terminal
-pkgver=1.4.4
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Shows lyrics of songs from your favourite music player in terminal'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python>=3.6' 'dbus-python' 'ncurses')
 makedepends=('python-setuptools')
 source=(${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-md5sums=('59969e2e25804449c39b75ce448dc660')
+md5sums=('a31b914f90a14e7c458e0b87265416ad')
 
 build() {
 
