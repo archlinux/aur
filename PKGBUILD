@@ -1,7 +1,7 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=checkmake
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental linter/analyzer for makefiles"
 arch=('any')
 url="https://github.com/mrtazz/checkmake"
@@ -19,6 +19,7 @@ build(){
     export CGO_CPPFLAGS="$CPPFLAGS"
     export BUILDER_NAME="${BUILDER_NAME:-$(git config user.name || echo makepkg)}"
     export BUILDER_EMAIL="${BUILDER_EMAIL:-$(git config user.email || echo makepkg)}"
+    make clean
     make EXT_LDFLAGS="-linkmode external" GOFLAGS="-buildmode=pie -trimpath"
 }
 
@@ -26,4 +27,5 @@ package() {
     cd "${srcdir}/${pkgname}"
     install -Dm755 checkmake "${pkgdir}/usr/bin/checkmake"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 checkmake.1 "${pkgdir}/usr/share/man/man1/checkmake.1"
 }
