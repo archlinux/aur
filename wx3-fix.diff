@@ -357,7 +357,7 @@ index f3e9c48..d30074e 100644
                                                          <option>0</option>
                                                          <object class="wxButton" name="RewindButton" base="EditButton">
 diff --git a/dialogs/videocontrols.wxg b/dialogs/videocontrols.wxg
-index 4b9a57a..31650cd 100644
+index 4b9a57a..01b998b 100644
 --- a/dialogs/videocontrols.wxg
 +++ b/dialogs/videocontrols.wxg
 @@ -20,7 +20,7 @@
@@ -369,24 +369,16 @@ index 4b9a57a..31650cd 100644
                                  <border>0</border>
                                  <option>0</option>
                                  <object class="wxBoxSizer" name="sizer_18" base="EditBoxSizer">
-@@ -41,7 +41,6 @@
-                                                 </object>
-                                             </object>
-                                             <object class="sizeritem">
--                                                <flag>wxALIGN_CENTER_VERTICAL</flag>
-                                                 <border>0</border>
-                                                 <option>0</option>
-                                                 <object class="wxComboBox" name="RendererSelector" base="EditComboBox">
-@@ -71,7 +70,7 @@
+@@ -71,7 +71,7 @@
                                                  </object>
                                              </object>
                                              <object class="sizeritem">
 -                                                <flag>wxTOP|wxBOTTOM|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
-+                                                <flag>wxTOP|wxBOTTOM</flag>
++                                                <flag>wxTOP|wxBOTTOM|wxALIGN_CENTER_VERTICAL</flag>
                                                  <border>5</border>
                                                  <option>0</option>
                                                  <object class="wxToggleButton" name="DeInterlaceButton" base="EditToggleButton">
-@@ -84,7 +83,7 @@
+@@ -84,7 +84,7 @@
                                  </object>
                              </object>
                              <object class="sizeritem">
@@ -395,7 +387,7 @@ index 4b9a57a..31650cd 100644
                                  <border>0</border>
                                  <option>0</option>
                                  <object class="wxBoxSizer" name="sizer_22" base="EditBoxSizer">
-@@ -105,13 +104,13 @@
+@@ -105,13 +105,13 @@
                                                  </object>
                                              </object>
                                              <object class="sizeritem">
@@ -411,7 +403,7 @@ index 4b9a57a..31650cd 100644
                                                          <border>0</border>
                                                          <option>1</option>
                                                          <object class="wxBoxSizer" name="sizer_8" base="EditBoxSizer">
-@@ -173,7 +172,7 @@
+@@ -173,7 +173,7 @@
                                                  </object>
                                              </object>
                                              <object class="sizeritem">
@@ -420,7 +412,7 @@ index 4b9a57a..31650cd 100644
                                                  <border>5</border>
                                                  <option>0</option>
                                                  <object class="wxToggleButton" name="LimitSpriteButton" base="EditToggleButton">
-@@ -186,7 +185,7 @@
+@@ -186,7 +186,7 @@
                                  </object>
                              </object>
                              <object class="sizeritem">
@@ -429,7 +421,7 @@ index 4b9a57a..31650cd 100644
                                  <border>0</border>
                                  <option>0</option>
                                  <object class="wxBoxSizer" name="sizer_27" base="EditBoxSizer">
-@@ -233,7 +232,7 @@
+@@ -233,7 +233,7 @@
                                                  </object>
                                              </object>
                                              <object class="sizeritem">
@@ -438,7 +430,7 @@ index 4b9a57a..31650cd 100644
                                                  <border>5</border>
                                                  <option>0</option>
                                                  <object class="wxToggleButton" name="FullScreenButton" base="EditToggleButton">
-@@ -246,19 +245,18 @@
+@@ -246,19 +246,18 @@
                                  </object>
                              </object>
                              <object class="sizeritem">
@@ -460,7 +452,7 @@ index 4b9a57a..31650cd 100644
                                                  <border>5</border>
                                                  <option>0</option>
                                                  <object class="wxStaticText" name="VideoSourceLabel" base="EditStaticText">
-@@ -297,7 +295,7 @@
+@@ -297,7 +296,7 @@
                                                  </object>
                                              </object>
                                              <object class="sizeritem">
@@ -469,5 +461,4 @@ index 4b9a57a..31650cd 100644
                                                  <border>5</border>
                                                  <option>0</option>
                                                  <object class="wxToggleButton" name="DisableSpritesButton" base="EditToggleButton">
-
 
