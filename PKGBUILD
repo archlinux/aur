@@ -2,14 +2,14 @@
 
 pkgname=xlsw
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="List the X window tree contents"
 arch=('i686' 'x86_64')
 url="https://github.com/baskerville/xlsw"
 license=('Unlicense')
 depends=('libxcb')
 provides=("${pkgname}")
-conflicts=("${pkgname}")
+conflicts=("${pkgname}-git")
 
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz)
 sha256sums=('cafd6c584dafb4d3e4ad1a42b1279b0117f7479f512fc49a7273342518c64530')
