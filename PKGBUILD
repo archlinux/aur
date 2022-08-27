@@ -18,6 +18,5 @@ sha1sums=('f8caba82fcd35d872a257d6877c06d2247d83b60')
 package() {
   find . -iname "*.ttf" -not -iname "*Windows Compatible.ttf" \
         -execdir install -Dm644 {} "$pkgdir/usr/share/fonts/TTF/{}" \;
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
