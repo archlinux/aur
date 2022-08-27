@@ -4,7 +4,7 @@
 pkgbase=wxwidgets
 pkgname=(wxwidgets-gtk3 wxwidgets-qt5 wxwidgets-common)
 pkgver=3.2.0
-pkgrel=4
+pkgrel=5
 arch=(x86_64)
 url='https://wxwidgets.org'
 license=(custom:wxWindows)
@@ -33,7 +33,8 @@ build() {
     -DwxUSE_LIBTIFF=sys \
     -DwxUSE_LIBLZMA=sys \
     -DwxUSE_LIBMSPACK=ON \
-    -DwxUSE_PRIVATE_FONTS=ON
+    -DwxUSE_PRIVATE_FONTS=ON \
+    -DwxUSE_GTKPRINT=ON -DCMAKE_CXX_FLAGS="$CXXFLAGS -I/usr/include/gtk-3.0/unix-print/"
   cmake --build build-gtk3
 
   cmake -B build-qt5 -S wxWidgets-$pkgver \
