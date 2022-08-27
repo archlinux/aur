@@ -26,6 +26,7 @@ package() {
     'install -m 755 -D "$0" '"$pkgdir"'/usr/share/'"${_pkgname}"'${0:1}' {} \;
 
   mkdir "$pkgdir/usr/bin"
-  find "$pkgdir/usr/share/${_pkgname}/bin/" -type f -exec sh -c \
+  cd "$pkgdir"
+  find "/usr/share/${_pkgname}/bin/" -type f -exec sh -c \
     'ln -s "${0}" '"$pkgdir"'/usr/bin/$(basename ${0})' {} \;
 }
