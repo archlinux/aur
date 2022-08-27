@@ -3,7 +3,7 @@
 # Contributor: Dustin Blackman
 
 pkgname='languagetool-code-comments-bin'
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Integrates the LanguageTool API to parse, spell check, and correct the grammar of your code comments!'
 url='https://github.com/dustinblackman/languagetool-code-comments'
@@ -12,12 +12,24 @@ license=('MIT')
 provides=('languagetool-code-comments')
 conflicts=('languagetool-code-comments')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/dustinblackman/languagetool-code-comments/releases/download/v0.1.3/languagetool-code-comments_0.1.3_linux_arm64.tar.gz")
-sha256sums_aarch64=('39361199f285fa4dc21623ec8b6e1bf3fed8ccaa5d322b17a04f86bf66a79f80')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/dustinblackman/languagetool-code-comments/releases/download/v0.2.0/languagetool-code-comments_0.2.0_linux_arm64.tar.gz")
+sha256sums_aarch64=('963c39d6240757eecbcc5f23e1446148de91d0109132ab1f5b32cb9aabd6672c')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/dustinblackman/languagetool-code-comments/releases/download/v0.1.3/languagetool-code-comments_0.1.3_linux_amd64.tar.gz")
-sha256sums_x86_64=('f1a4627f0dc4ce737743207c137a43ad888c92706d03160c162a15ca93021548')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/dustinblackman/languagetool-code-comments/releases/download/v0.2.0/languagetool-code-comments_0.2.0_linux_amd64.tar.gz")
+sha256sums_x86_64=('88d94411112fecedef2a84f3be0ffc37f73641cdc49e1f0718271c698cb27560')
 
 package() {
+  # bin
   install -Dm755 "./languagetool-code-comments" "${pkgdir}/usr/bin/languagetool-code-comments"
+
+  # license
+  install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/languagetool-code-comments/LICENSE"
+
+  # completions
+  mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
+  mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
+  mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
+  install -Dm644 "./completions/languagetool-code-comments.bash" "${pkgdir}/usr/share/bash-completion/completions/languagetool-code-comments"
+  install -Dm644 "./completions/languagetool-code-comments.zsh" "${pkgdir}/usr/share/zsh/site-functions/_languagetool-code-comments"
+  install -Dm644 "./completions/languagetool-code-comments.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/languagetool-code-comments.fish"
 }
