@@ -1,7 +1,7 @@
 pkgbase = fig
 	pkgdesc = Adds IDE-style autocomplete to your existing terminal.
 	pkgver = 2.3.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fig.io
 	arch = x86_64
 	license = custom
@@ -11,6 +11,6 @@ pkgbase = fig
 	depends = ibus
 	depends = xdg-utils
 	source = fig-2.3.14.tgz::https://pkg.fig.io/download?kind=archlinux&platform=archlinux&version=2.3.14&arch=x86_64
-	sha256sums = 8bca3b447af10f653095cc20bff97256ca365136074271f3edc55b9264999bed
+	sha256sums = 0314df59524e24f45e66e9b0aa2fe55e3e7fbf480cd0ac27cb3be29f8d1c2c85
 
 pkgname = fig
