@@ -1,7 +1,7 @@
 pkgbase = checkmake-git
 	pkgdesc = Experimental linter/analyzer for makefiles
-	pkgver = 0.1.0.r47.g575315c
-	pkgrel = 2
+	pkgver = 0.2.1.r0.g7c87b7f
+	pkgrel = 1
 	url = https://github.com/mrtazz/checkmake
 	arch = any
 	license = MIT
@@ -13,4 +13,3 @@ pkgbase = checkmake-git
 	sha256sums = SKIP
 
 pkgname = checkmake-git
-
