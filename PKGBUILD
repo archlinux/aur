@@ -4,7 +4,7 @@
 _gitname=firefox-socket-control
 _version=1.5
 pkgname=${_gitname}-git
-pkgver=${_version}.c286c13
+pkgver=${_version}.328de11
 pkgrel=1
 pkgdesc="Control Firefox from a UNIX socket."
 arch=('any')
