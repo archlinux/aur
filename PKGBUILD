@@ -16,13 +16,14 @@ pkgdesc="Firefox-appmenu, binary version"
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://aur.archlinux.org/packages/firefox-appmenu/"
-depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
-         ffmpeg nss ttf-font libpulse libdbusmenu-gtk3)
+depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse libdbusmenu-gtk3)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech'
-            'hunspell-en_US: Spell checking, American English')
+            'hunspell-en_US: Spell checking, American English'
+            'xdg-desktop-portal: Screensharing with Wayland')
+
 provides=("firefox=$pkgver")
 conflicts=("firefox")
 options=(!emptydirs !makeflags !strip)
