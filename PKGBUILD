@@ -3,7 +3,7 @@
 # Co-Maintainer: Lorenzo Gaifas <brisvag at gmail dot com>
 # Co-Maintainer: Bitals <me at bitals dot xyz>
 pkgname=snapgene
-pkgver=6.1.0
+pkgver=6.1.1
 _pkgver_major=$(cut -d '.' -f 1 <<<"$pkgver")
 _pkgver_major_middle=$(cut -d '.' -f 1-2 <<<"$pkgver")
 pkgrel=2
@@ -13,7 +13,7 @@ url='http://www.snapgene.com/products/snapgene/'
 license=('custom')
 # A valid licence is required to use the full version of snapgene
 source=("https://cdn.snapgene.com/downloads/SnapGene/"$_pkgver_major".x/"$_pkgver_major_middle"/"$pkgver"/snapgene_"$pkgver"_linux.rpm")
-sha512sums=('7163910825bc701b4c4a5671bf2279b860531f2560a39b7f4d19a83b176790d533c599b8770d886800944d510cafa73896a0ed1d6691559421e9ab0a61595f3c')
+sha512sums=('90406508ae636826b690bbecdbd8fd62f34bc95417dbd0db0349b5092f6dffe475e6e3eff8a96f1dd5e39195a5d77e8c67cf1df719dc3a4d317a27eedfcae3cc')
 
 package() {
     cd "$pkgdir"
