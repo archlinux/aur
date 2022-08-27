@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=janeaustenr
-_pkgver=0.1.5
+_pkgver=1.0.0
 pkgname=r-${_pkgname,,}
-pkgver=0.1.5
-pkgrel=4
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Jane Austen's Complete Novels"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('992f6673653daf7010fe176993a01cd4127d9a88be428da8da7a28241826d6f3')
+sha256sums=('b4c32ee1395ee4a8efe714c535c0fe578b0dbf5f3bb85b41fa5cc87569b8e8aa')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
