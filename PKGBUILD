@@ -1,15 +1,15 @@
 # Maintainer: cha.pa
 
 pkgname=nerd-fonts-hack
-pkgver=2.2.0
-pkgrel=2
+pkgver=2.2.1
+pkgrel=1
 pkgdesc="Patched font Hack from nerd-fonts library"
 arch=("any")
 url="https://github.com/ryanoasis/nerd-fonts"
 license=("MIT")
-provides=("ttf-font-nerd=2.2.0")
+provides=("ttf-font-nerd=$pkgver")
 source=("Hack-$pkgver.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/Hack.zip")
-sha256sums=("09f9b0ad4ceec25f7bb81bed0ae10b4e3ceae08301a973104e07add17bc9df98")
+sha256sums=("742f33105dc6eff192ad9e8b3b4406580ad418910c806c51551d9bb050f25d66")
 
 package() {
     install -d "${pkgdir}/usr/share/fonts/TTF"
