@@ -1,7 +1,7 @@
 # Maintainer: Direct-A <songyicheng0@gmail.com>
 
 pkgname="rime-pure-git-direct"
-pkgver="1.1.8"
+pkgver="1.1.9"
 pkgrel=1
 pkgdesc="一站式配置【四叶草拼音\小鹤双拼】，更新搜狗词库"
 arch=("x86_64")
