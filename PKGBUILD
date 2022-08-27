@@ -19,7 +19,7 @@ source=(
     "cider.desktop"
 )
 sha256sums=('SKIP'
-            'c41e9b1019411019fce8509e32f770edf33c9e864bf707c30ffe2e3f2dcf1571')
+    'c41e9b1019411019fce8509e32f770edf33c9e864bf707c30ffe2e3f2dcf1571')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -33,7 +33,7 @@ build() {
     pnpm install --frozen-lockfile
 
     echo "Building : Install Build Dependencies | [Build] | Done"
-	pnpm dist --linux dir
+    pnpm dist --linux dir
 
     echo "Building : Install Build Dependencies | Build | [Done]"
 }
