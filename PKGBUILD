@@ -1,32 +1,32 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=kicad-pcb-diff
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 epoch=
-pkgdesc="This program generates a PDF file showing the changes between two KiCad PCB files."
+pkgdesc="Tool to generate a PDF file showing the changes between two KiCad PCB/SCH files. Also a git plug-in."
 arch=('any')
-url="https://github.com/INTI-CMNB/kicad_pcb-diff"
+url="https://github.com/INTI-CMNB/KiDiff"
 license=('GPL-2.0')
 groups=()
-depends=('python' 'kicad' 'python-wxpython' 'imagemagick' 'poppler' 'xdg-utils')
+depends=('python' 'kicad' 'python-wxpython' 'imagemagick' 'librsvg' 'poppler' 'xdg-utils')
 makedepends=("python-setuptools")
 checkdepends=()
-optdepends=()
-provides=()
+optdepends=("kiauto-git: KiCad automation scripts.")
+provides=('kidiff' 'kicad-diff')
 conflicts=()
 replaces=()
 backup=()
 options=('!strip')
 install=
 changelog=
-source=("${pkgname}-${pkgver}.tar.gz::https://ghproxy.com/${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("KiDiff-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('6904b04b913b4e22c0b9aca244456264b4cb0538f2dc80227fae6ce125246daf')
+sha256sums=('6b3be717f40ce8cbc501db15b5ec475f7c9e6adaccc1e6a4cf56e59e6fc53512')
 #validpgpkeys=()
 
 package() {
-    cd "${srcdir}/kicad_pcb-diff-${pkgver}"
+    cd "${srcdir}/KiDiff-${pkgver}"
 #     python setup.py install --no-compile --root="$pkgdir"
 #     install -dm0755 "${pkgdir}/usr/bin"
     make prefix="${pkgdir}"/usr install
