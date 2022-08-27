@@ -1,0 +1,17 @@
+pkgbase = plymouth-theme-dracula-git
+	pkgdesc = Plymouth theme with Dracula colours and logo.
+	pkgver = r4.f315ed5
+	pkgrel = 1
+	url = https://github.com/nanophilip/plymouth-theme-dracula-git/
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = git
+	depends = plymouth
+	source = git+https://github.com/nanophilip/plymouth-theme-dracula-git.git
+	sha256sums = SKIP
+
+pkgname = plymouth-theme-dracula-git
