@@ -1,0 +1,15 @@
+pkgbase = mastergo-uos
+	pkgdesc = A professional UI/UX design software for teamwork.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://mastergo.com/
+	arch = x86_64
+	license = custom
+	depends = nss
+	depends = gtk3
+	depends = python
+	depends = alsa-lib
+	source = https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.mastergo/com.mastergo_1.2.1_amd64.deb
+	sha512sums = 06fafdeb12b5196d7029a3a8179ab4697eb20fd1a81b790ff9e5db84d4c5479887d595f3dcf16a20b7bb7bd1fa6ef9ab3fdd9820eef7548f8b6ed8a88e060537
+
+pkgname = mastergo-uos
