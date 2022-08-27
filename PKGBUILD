@@ -19,10 +19,10 @@ depends=('binutils'
          'zlib'
          'unzip')
 makedepends=('pyinstaller')
-source=("${pkgname}_${pkgver}.tar.gz"::"https://github.com/maxasix/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
+source=("${pkgname}_${pkgver}-${pkgrel}.tar.gz"::"https://github.com/maxasix/${pkgname}/archive/refs/tags/v${pkgver}-${pkgrel}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.png")
-sha256sums=('e1f5afad2993a4d6fbd639dcd944210d24bf1aa10a2beeb163212bcae9613557'
+sha256sums=('b601f85475f065ef5a434d2d8ca0f8a09b80246b999741e9c4c730a9a885c056'
             'SKIP'
             'SKIP')
 
