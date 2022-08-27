@@ -2,7 +2,7 @@
 pkgname=gomatrix-git
 _pkgname=gomatrix
 pkgver=101.0.0.r2.gb3aff13
-pkgrel=2
+pkgrel=3
 pkgdesc='gomatrix connects to the The Matrix and displays its data streams in your terminal'
 arch=('x86_64')
 url='https://github.com/GeertJohan/gomatrix'
@@ -51,7 +51,7 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  install -Dm755 -v build/$_pkgname "$pkgdir"/usr/bin/$_pkgname 
-  install -Dm644 -v LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/BSD-2"
+  install -Dm755 build/$_pkgname "$pkgdir"/usr/bin/$_pkgname 
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/BSD-2"
 }
 

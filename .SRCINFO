@@ -1,7 +1,7 @@
 pkgbase = gomatrix-git
 	pkgdesc = gomatrix connects to the The Matrix and displays its data streams in your terminal
 	pkgver = 101.0.0.r2.gb3aff13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/GeertJohan/gomatrix
 	arch = x86_64
 	license = BSD-2
