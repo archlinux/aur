@@ -1,7 +1,7 @@
 # Maintainer: Christian Schendel (doppelhelix@gmail.com)
 
 pkgname=gnome-shell-extension-pano-git
-pkgver=3.r0.gb93936f
+pkgver=3.r2.g871fb08
 pkgrel=1
 pkgdesc="Next-gen Clipboard Manager"
 arch=('any')
@@ -9,7 +9,8 @@ url="https://github.com/oae/gnome-shell-pano"
 install=${pkgname%-git}.install
 license=('GPL')
 groups=('gnome-shell-extensions')
-depends=('gnome-shell>=42')
+depends=('gnome-shell>=42'
+         'libgda')
 makedepends=('git'
              'glib2'
              'yarn'
