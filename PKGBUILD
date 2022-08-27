@@ -2,13 +2,13 @@
 # Co-Maintainer: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
 
 pkgname=openmw-git
-pkgver=0.47.0.r2801.gcee6988093
+pkgver=0.47.0.r3589.gbedfbfd594
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64')
 url="http://www.openmw.org"
 license=('GPL3' 'MIT' 'custom')
-depends=('openal' 'openscenegraph' 'mygui' 'bullet-multithreaded' 'qt5-base' 'ffmpeg' 'sdl2' 'unshield' 'libxt' 'boost-libs' 'luajit' 'recastnavigation-openmw' 'yaml-cpp')
+depends=('openal' 'openscenegraph' 'mygui' 'bullet-dp' 'qt5-base' 'ffmpeg' 'sdl2' 'unshield' 'libxt' 'boost-libs' 'luajit' 'recastnavigation-openmw' 'yaml-cpp')
 optdepends=('openscenegraph-openmw-git: experimental performance enhancements for OpenMW that are too controversial to be included in the general purpose OSG project')
 makedepends=('git' 'cmake' 'boost' 'ninja')
 conflicts=("${pkgname%-git}")
