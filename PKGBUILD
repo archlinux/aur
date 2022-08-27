@@ -10,15 +10,15 @@ pkgname='cnrdrvcups-lb'
 _pkgver='5.50';  _dl='8/0100007658/27';_suffix='00'
 
 pkgver="${_pkgver}"
-pkgrel='1'
+pkgrel='2'
 pkgdesc='CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers'
 arch=('x86_64')
 # Direct links to the download reference go bad on the next version. We want something that will persist for a while.
 url='https://www.canon-europe.com/support/products/imagerunner/imagerunner-1730i.aspx'
 license=('GPL2' 'MIT' 'custom')
 # parts of the code are GPL or MIT licensed, some parts have a custom license
-makedepends=('jbigkit' 'gzip' 'gtk2')
-depends=('gcc-libs' 'libxml2' 'libglade')
+makedepends=('jbigkit' 'gzip' 'gtk3')
+depends=('gcc-libs' 'libxml2')
 optdepends=('libjpeg6-turbo: solves cpu hang on some color imageRUNNER/i-SENSYS LBP devices'
                        'libjbig-shared: port of debian/fedora specific jbigkit funtionality that can prevent cpu hangs on some models'
                         'gtk3: for cnsetuputil2')
@@ -58,8 +58,10 @@ prepare() {
     # cngplp/autogen.sh fails to find several libraries.
     # adding these in the right place of the soon to be generated make script is hard,
     # so we patch it directly into that autogen.sh
-    sed -e '2a export LIBS="-lgtk-x11-2.0 -lgobject-2.0 -lglib-2.0 -lgmodule-2.0"' -i "cnrdrvcups-common-${_pkgver}/cngplp/autogen.sh"
+    #    sed -e '2a export LIBS="-lgtk-x11-2.0 -lgobject-2.0 -lglib-2.0 -lgmodule-2.0"' -i "cnrdrvcups-common-${_pkgver}/cngplp/autogen.sh"
+    # the switch to gtk3 appears to have solved this
 
+    
     # the autogen.sh files from canon target an old automake/autoconf version
     # autoreconf converts them to a form compatible with archlinux autoconf/automake
     
