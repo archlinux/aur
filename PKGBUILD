@@ -11,10 +11,9 @@ depends=('fontconfig')
 provides=('nerd-fonts-fantasque-sans-mono' 'ttf-font-nerd')
 conflicts=('nerd-fonts-git' 'nerd-fonts-complete')
 groups=("nerd-fonts")
-source=("${url}/releases/download/v$pkgver/FantasqueSansMono.zip"
-        "${url}/raw/v$pkgver/LICENSE")
-sha1sums=('f8caba82fcd35d872a257d6877c06d2247d83b60'
-          '92fdad3c8babc0473da5f03e41fb1151417ab386')
+source=("${url}/releases/download/v$pkgver/FantasqueSansMono.zip")
+
+sha1sums=('f8caba82fcd35d872a257d6877c06d2247d83b60')
 
 package() {
   find . -iname "*.ttf" -not -iname "*Windows Compatible.ttf" \
