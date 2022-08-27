@@ -3,7 +3,7 @@
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
 pkgver=4.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/cheat/cheat"
@@ -14,7 +14,7 @@ optdepends=('bash-completion: for bash completions'
 conflicts=("python-$pkgname")
 replaces=("python-$pkgname")
 backup=("etc/$pkgname/conf.yml")
-_commit=9571457c230c360090ad73c1ae18af8b0b913fad
+_commit=9773fefb80bec00c76e4af2f2152254f6a5abed3
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         'chris.pgp' # Christopher Allen Lane <chris@chris-allen-lane.com>
         'conf.yml'
