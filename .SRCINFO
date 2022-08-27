@@ -1,6 +1,6 @@
 pkgbase = python-svgelements
 	pkgdesc = Svg Elements Parsing
-	pkgver = 1.7.2
+	pkgver = 1.7.4
 	pkgrel = 1
 	url = https://github.com/meerk40t/svgelements
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-svgelements
 	optdepends = python-numpy: enable npoint() to do lightning fast linearization for Shapes
 	optdepends = python-pillow: load images with PIL/Pillow
 	optdepends = python-scipy: quickly provide the exact correct answer for the arc length
-	source = https://files.pythonhosted.org/packages/source/s/svgelements/svgelements-1.7.2.tar.gz
-	sha256sums = adda0e96442a0f636fddb112fc9309f5c5e43a9a2730d5cac00c38b23979fa08
+	source = https://files.pythonhosted.org/packages/source/s/svgelements/svgelements-1.7.4.tar.gz
+	sha256sums = 36f9d36d01eb755bc4f4ceea951e5deb65abb33f6f57c9788cb77789029ef337
 
 pkgname = python-svgelements
