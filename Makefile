@@ -35,6 +35,7 @@ clean:
 dist-clean: clean
 	{ pacman -Qi boost >/dev/null 2>&1 && sudo pacman -Rnsu boost; } || true
 	{ pacman -Qi cmake >/dev/null 2>&1 && sudo pacman -Rnsu cmake; } || true
+	{ pacman -Qi gcc11 >/dev/null 2>&1 && sudo pacman -Rnsu gcc11; } || true
 
 #-------------------------------------------------------------------------------
 # FILES
