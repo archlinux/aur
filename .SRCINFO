@@ -1,7 +1,7 @@
 pkgbase = jitsi-meet-nightly
 	pkgdesc = Jitsi Meet Web nightly build
 	pkgver = 1.0.6504
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jitsi.org/jitsi-meet/
 	arch = any
 	license = Apache
@@ -12,7 +12,6 @@ pkgbase = jitsi-meet-nightly
 	makedepends = npm
 	optdepends = nginx
 	options = !strip
-	backup = etc/webapps/jitsi-meet-nightly/logging_config.js
 	backup = etc/webapps/jitsi-meet-nightly/config.js
 	backup = etc/webapps/jitsi-meet-nightly/interface_config.js
 	source = jitsi-meet-nightly::git+https://github.com/jitsi/jitsi-meet#tag=6504

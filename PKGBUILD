@@ -7,7 +7,7 @@ _version=1.0.6504
 
 pkgname=${_basename}-${_pkgname}-nightly
 pkgver=${_version}
-pkgrel=1
+pkgrel=2
 pkgdesc="Jitsi Meet Web nightly build"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -21,7 +21,6 @@ makedepends=(
 )
 options=('!strip')
 backup=(
-  "etc/webapps/${pkgname}/logging_config.js"
   "etc/webapps/${pkgname}/config.js"
   "etc/webapps/${pkgname}/interface_config.js"
 )
@@ -60,7 +59,7 @@ package() {
         find "$DESTDIR" -type f -execdir sed -i "s#${srcdir}##g" "{}" \;
         find "$DESTDIR" -type d -exec chmod 755 {} \;
 
-        for i in interface_config.js logging_config.js config.js
+        for i in interface_config.js config.js
         do
                 install -Dm644 "$DESTDIR/${i}" "$CONFDIR/${i}"
                 ln -sf "/etc/webapps/${pkgname}/${i}" "$DESTDIR/${i}"
