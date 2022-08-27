@@ -1,6 +1,6 @@
 pkgbase = spice-git
 	pkgdesc = SPICE server
-	pkgver = 0.15.0.78.gb24e2ea6
+	pkgver = 0.15.0.93.ga225ebe9
 	pkgrel = 1
 	url = https://www.spice-space.org
 	arch = x86_64
@@ -21,9 +21,7 @@ pkgbase = spice-git
 	conflicts = spice
 	source = git+https://gitlab.freedesktop.org/spice/spice.git
 	source = git+https://gitlab.freedesktop.org/spice/spice-common.git
-	source = spice-common_detect-pyparsing.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = ae77744c7df2805b0c9fd248be4c03b1a685165c08da112a5a41eaab8454f962
 
 pkgname = spice-git
