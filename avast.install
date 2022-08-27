@@ -1,0 +1,44 @@
+#pre_install(){
+#    #echo $FUNCNAME
+#
+#    # exec the debian package postinst
+#}
+
+post_install(){
+    #echo $FUNCNAME
+
+    # exec the debian package postinst
+    /bin/bash /usr/share/avast/pkgscripts/preinst install
+    echo "errors regarding update-rc.d can be safely ignored ;)"
+    /bin/bash /usr/share/avast/pkgscripts/postinst configure
+}
+
+pre_upgrade(){
+    #echo $FUNCNAME
+
+    # exec the debian package preinst
+    /bin/bash /usr/share/avast/pkgscripts/preinst upgrade
+    echo "errors regarding update-rc.d can be safely ignored ;)"
+}
+
+post_upgrade(){
+    #echo $FUNCNAME
+
+    # exec the debian package postinst
+    /bin/bash /usr/share/avast/pkgscripts/postinst configure
+    systemctl daemon-reload
+}
+
+pre_remove(){
+    #echo $FUNCNAME
+
+    # exec the debian package rm scripts (post_remove is too late)
+    /bin/bash /usr/share/avast/pkgscripts/prerm remove
+    /bin/bash /usr/share/avast/pkgscripts/postrm remove
+}
+
+#post_remove(){
+#    #echo $FUNCNAME
+#
+#    # exec the debian package postinst
+#}
