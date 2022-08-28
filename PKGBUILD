@@ -1,7 +1,7 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=far2l-git
-pkgver=r2750.fb7dbafa
+pkgver=r2796.e4088e64
 pkgrel=1
 pkgdesc='Linux port of FAR v2'
 url='https://github.com/elfmz/far2l'
@@ -36,7 +36,7 @@ prepare() {
 package() {
   cd "$srcdir"/far2l
 
-  cmake . -DCMAKE_INSTALL_PREFIX="$pkgdir"/usr -DCMAKE_BUILD_TYPE=Release -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 -DCMAKE_CXX_FLAGS=-w
+  cmake . -DCMAKE_INSTALL_PREFIX="$pkgdir"/usr -DCMAKE_BUILD_TYPE=Release -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config -DCMAKE_CXX_FLAGS=-w
   cmake --build . --target install
 
   ln -sf ../../bin/far2l "$pkgdir"/usr/lib/far2l/far2l_askpass
