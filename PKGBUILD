@@ -1,8 +1,9 @@
-# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Contributor: acxz <akashpatel2008 at yahoo dot com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=scotch-git
 pkgver=r733.1093134
-pkgrel=1
+pkgrel=2
 pkgdesc="Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering. This is the all-inclusive version (MPI/serial/esmumps)."
 url="https://gitlab.inria.fr/scotch/scotch"
 license=("custom:CeCILL-C")
