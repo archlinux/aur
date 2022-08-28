@@ -1,20 +1,18 @@
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
 
 pkgname='perl-dbix-simple'
-pkgver='1.35'
+pkgver='1.37'
 pkgrel='1'
 pkgdesc="Very complete easy-to-use OO interface to DBI"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-dbi>=1.21')
+depends=('perl-dbi')
 makedepends=()
 url='http://search.mcpan.org/dist/DBIx-Simple'
-source=('http://search.mcpan.org/CPAN/authors/id/J/JU/JUERD/DBIx-Simple-1.35.tar.gz')
-md5sums=('157173cc510f92315806a33abc118504')
-sha512sums=('5b7e9c2f489ac32ac5833ff220dbcb7223ebfc02e3d715477c8b243c92b3563a6f2e661247793fd25764c9dd41914426b7d705bb2bcb09656d3cad552d05d301')
-_distdir="DBIx-Simple-1.35"
+source=('http://search.mcpan.org/CPAN/authors/id/J/JU/JUERD/DBIx-Simple-1.37.tar.gz')
+md5sums=('eb53ef4a93be7ebf043cd49075e81913')
+_distdir="DBIx-Simple-1.37"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -42,9 +40,3 @@ package() {
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
