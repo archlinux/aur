@@ -57,41 +57,11 @@ index 9666005..2571928 100644
    add_compile_definitions(HAS_CUBEB=1)
  endif()
  
-Submodule dependencies/ZArchive contains modified content
-diff --git a/dependencies/ZArchive/CMakeLists.txt b/dependencies/ZArchive/CMakeLists.txt
-index f91023a..9746c05 100644
---- a/dependencies/ZArchive/CMakeLists.txt
-+++ b/dependencies/ZArchive/CMakeLists.txt
-@@ -30,7 +30,7 @@ ${CMAKE_CURRENT_SOURCE_DIR}/include
- )
- 
- find_package(zstd REQUIRED)
--target_link_libraries(zarchive PRIVATE zstd::libzstd_static)
-+target_link_libraries(zarchive PRIVATE zstd::libzstd_shared)
- 
- # standalone executable
- add_executable (zarchiveTool src/main.cpp)
-diff --git a/dependencies/discord-rpc/CMakeLists.txt b/dependencies/discord-rpc/CMakeLists.txt
-index 4aa1108..a6d7568 100644
---- a/dependencies/discord-rpc/CMakeLists.txt
-+++ b/dependencies/discord-rpc/CMakeLists.txt
-@@ -30,9 +30,9 @@ execute_process(
- #    file(REMOVE ${RJ_TAR_FILE})
- #endif(NOT RAPIDJSONTEST)
- 
--#find_file(RAPIDJSON NAMES rapidjson rapidjson-1.1.0 PATHS ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty CMAKE_FIND_ROOT_PATH_BOTH)
-+find_file(RAPIDJSON NAMES rapidjson rapidjson-1.1.0 PATHS ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty CMAKE_FIND_ROOT_PATH_BOTH)
- 
--#add_library(rapidjson STATIC IMPORTED ${RAPIDJSON})
-+add_library(rapidjson STATIC IMPORTED ${RAPIDJSON})
- 
- # add subdirs
- 
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index adebc32..0c52d95 100644
+index fd2c4ad..020adcc 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -83,7 +83,7 @@ target_link_libraries(CemuBin PRIVATE ZLIB::ZLIB)
+@@ -86,7 +86,7 @@ target_link_libraries(CemuBin PRIVATE ZLIB::ZLIB)
  target_link_libraries(CemuBin PRIVATE ${wxWidgets_LIBRARIES})
  target_link_libraries(CemuBin PRIVATE CURL::libcurl)
  target_link_libraries(CemuBin PRIVATE imgui::imgui)
@@ -101,7 +71,7 @@ index adebc32..0c52d95 100644
  target_link_libraries(CemuBin PUBLIC
  CemuCommon CemuAudio CemuInput CemuComponents CemuCafe CemuConfig CemuGui imguiImpl)
 diff --git a/src/Cafe/HW/Latte/Renderer/Vulkan/RendererShaderVk.cpp b/src/Cafe/HW/Latte/Renderer/Vulkan/RendererShaderVk.cpp
-index b107e56..c9b7c75 100644
+index 0d41156..a7bcee8 100644
 --- a/src/Cafe/HW/Latte/Renderer/Vulkan/RendererShaderVk.cpp
 +++ b/src/Cafe/HW/Latte/Renderer/Vulkan/RendererShaderVk.cpp
 @@ -7,7 +7,7 @@
@@ -109,7 +79,7 @@ index b107e56..c9b7c75 100644
  
  #include <glslang/Public/ShaderLang.h>
 -#if GLSLANG_VERSION_LESS_OR_EQUAL_TO(11, 0, 0)
-+#if GLSLANG_VERSION_LESS_OR_EQUAL_TO(12, 0, 0)
++#if GLSLANG_VERSION_GREATER_OR_EQUAL_TO(11, 0, 0)
  #include <glslang/SPIRV/GlslangToSpv.h>
  #else
  #include <SPIRV/Logger.h>
@@ -118,33 +88,7 @@ index b107e56..c9b7c75 100644
  	/* .maxMeshViewCountNV = */ 4,
  
 -#if GLSLANG_VERSION_LESS_OR_EQUAL_TO(11, 0, 0)
-+#if GLSLANG_VERSION_LESS_OR_EQUAL_TO(12, 0, 0)
++#if GLSLANG_VERSION_GREATER_OR_EQUAL_TO(11, 0, 0)
  	/* .maxDualSourceDrawBuffersEXT = */ 1,
  #endif
- 
-diff --git a/src/Cemu/CMakeLists.txt b/src/Cemu/CMakeLists.txt
-index 8c9136f..7c88c3b 100644
---- a/src/Cemu/CMakeLists.txt
-+++ b/src/Cemu/CMakeLists.txt
-@@ -13,3 +13,4 @@ target_include_directories(CemuComponents PRIVATE ../)
- if(ENABLE_DISCORD_RPC)
- target_link_libraries(CemuComponents PRIVATE discord-rpc)
- endif()
-+target_link_libraries(CemuComponents PRIVATE CemuUtil)
-diff --git a/src/Cemu/Logging/CemuLogging.h b/src/Cemu/Logging/CemuLogging.h
-index 021055d..0463502 100644
---- a/src/Cemu/Logging/CemuLogging.h
-+++ b/src/Cemu/Logging/CemuLogging.h
-@@ -58,9 +58,9 @@ bool cemuLog_log(LogType type, TFmt format, TArgs&&... args)
- 	if (!cemuLog_isLoggingEnabled(type))
- 		return false;
- 
--	const auto format_view = fmt::to_string_view(format);
--	const auto text = fmt::vformat(format_view, fmt::make_args_checked<TArgs...>(format_view, args...));
--	cemuLog_log(type, std::basic_string_view(text.data(), text.size()));
-+	// const auto format_view = fmt::to_string_view(format);
-+	// const auto text = fmt::vformat(format_view, fmt::make_args_checked<TArgs...>(format_view, args...));
-+	// cemuLog_log(type, std::basic_string_view(text.data(), text.size()));
- 	return true;
- }
  

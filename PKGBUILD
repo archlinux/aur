@@ -1,8 +1,8 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cemu
 pkgname=$_pkgname-git
-pkgver=2.0.r40.g01c5855
-pkgrel=2
+pkgver=2.0.r44.g454b587
+pkgrel=1
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
 url="https://cemu.info/"
@@ -16,7 +16,6 @@ depends=(
 )
 makedepends=(
 	'boost'
-	'clang'
 	'cmake'
 	'cubeb'
 	'curl'
@@ -43,8 +42,8 @@ source=(
 b2sums=(
 	'SKIP'
 	'SKIP'
-	'da4c607462ac0c97ad33fc3588b5eb0b7ede039964365830807ad003604df7f24d8fd65374596dceb9449ef49ff9c78ec5bb3d8fda50061c79cf397e149debc2'
-	'fb63e1929a826ae3681c8211ebf8bee5887385c8aafb307452c6a694ce668ce0d42489b97a931cdda92e21ec68fb9175a735c84ce867e6b338100aa5573ff576'
+	'739dfcb54d4f818c2f638c63e6471747470ff32327c37e7e13c11a93885728933b3314bda29699a3ec704081b78c3697261e8437c1d6e732a1e470e3f82720a5'
+	'c5deb443e09fa4d10f29a1a8865f11d660c97a2dd2da361673b02b90f60abd3d67c73fde0fe6760fcb7c2ab424d5d7d91f26245c8b63af05c736662e8cc2f3ef'
 )
 
 pkgver() {
@@ -63,8 +62,6 @@ prepare() {
 build() {
 	cmake -S Cemu -B build \
 		-DCMAKE_BUILD_TYPE=None \
-		-DCMAKE_C_COMPILER=clang \
-		-DCMAKE_CXX_COMPILER=clang++ \
 		-DCMAKE_CXX_FLAGS_INIT="-I/opt/fmt7/include" \
 		-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=bin \
 		-DCMAKE_TOOLCHAIN_FILE= \
@@ -82,10 +79,10 @@ package() {
 		'libzip.so'
 		'libzstd.so'
 	)
-	# shellcheck disable=SC2154
-	install -D $_pkgname.bash "$pkgdir"/usr/bin/$_pkgname
-	install -D -t "$pkgdir"/usr/lib/$_pkgname build/src/bin/Cemu
 	cd Cemu
+	# shellcheck disable=SC2154
+	install -D ../$_pkgname.bash "$pkgdir"/usr/bin/$_pkgname
+	install -D -t "$pkgdir"/usr/lib/$_pkgname ../build/src/bin/Cemu
 	cp -dr --no-preserve=ownership -t "$pkgdir"/usr/lib/$_pkgname bin/*
 	install -Dm644 -t "$pkgdir"/usr/share/applications dist/linux/info.cemu.Cemu.desktop
 	install -Dm644 -t "$pkgdir"/usr/share/metainfo dist/linux/info.cemu.Cemu.metainfo.xml
