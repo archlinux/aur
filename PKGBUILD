@@ -15,7 +15,7 @@ url='http://odamex.net/'
 license=('GPL')
 depends=('sdl2_mixer' 'sdl2' 'portmidi' 'miniupnpc')
 makedepends=('git' 'cmake' 'deutex' 'ninja')
-optdepends=('timidity++: Required for music')
+optdepends=('timidity++: Required for the SDL2 MIDI music backend')
 source=(
 	"odamex-git::git+https://github.com/odamex/odamex.git#branch=stable"
 	"git+https://github.com/curl/curl.git"
