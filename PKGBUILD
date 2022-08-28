@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=nanopolish-git
-pkgver=0.13.2.r6.g05b1bf4
+pkgver=0.14.0.r6.g07cb03d
 pkgrel=1
 pkgdesc="Provide signal-level analysis of Oxford Nanopore sequencing data"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/jts/nanopolish"
 license=('MIT')
 depends=('glibc' 'hdf5' 'htslib' 'zlib')
 makedepends=('git' 'eigen' 'wget')
-provides=('nanopolish')
+provides=("nanopolish=$pkgver")
 conflicts=('nanopolish')
 source=("git+https://github.com/jts/nanopolish.git")
 sha256sums=('SKIP')
