@@ -1,8 +1,8 @@
 # Maintainer: Elias Werberich <elias@werberich.de>
 
 pkgname=changie
-pkgver=1.8.0
-pkgrel=2
+pkgver=1.9.0
+pkgrel=1
 epoch=0
 pkgdesc="Automated changelog tool for preparing releases with lots of customization options."
 arch=('x86_64')
