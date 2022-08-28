@@ -4,7 +4,7 @@
 
 pkgname=trakt-scrobbler-git
 pkgver=1.5.0.r1.gb2b4d44
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
 arch=(any)
@@ -33,8 +33,10 @@ depends=(
 )
 makedepends=(
     git
-    python-setuptools
-    python-dephell
+    python-poetry-core
+    python-build
+    python-installer
+    python-wheel
     go-md2man
     gzip
 )
@@ -58,21 +60,21 @@ pkgver() {
     )
 }
 
-prepare() {
-    cd "${pkgname%*-git}"
-    dephell deps convert --from pyproject.toml --to setup.py
-}
-
 build() {
     cd "$srcdir/${pkgname%*-git}"
-    python setup.py build
+    python -m build --no-isolation --wheel
     go-md2man -in "$srcdir/trakts-man.md" 2>/dev/null|gzip -n > trakts.1.gz
 }
 
 package()
 {
+    _pkgname=${pkgname%*-git}
+    _py=$(python --version)
+    _py=${_py%%.*}
+
     cd "$srcdir/${pkgname%*-git}"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" \
+        "dist/${_pkgname//-/_}-${pkgver%.r*}-py${_py##* }-none-any.whl"
 
 	# Completions
     install -Dm755 "$srcdir/${pkgname%*-git}/completions/trakts.zsh" "$pkgdir/usr/share/zsh/site-functions/_trakts"
