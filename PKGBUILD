@@ -2,9 +2,9 @@
 
 pkgname='erg-bin'
 _pkgname="erg"
-pkgver=0.2.8
+pkgver=0.3.1
 pkgrel=1
-pkgdesc="A statically typed language that can deeply improve the Python ecosystem"
+pkgdesc="Statically typed language that can deeply improve the Python ecosystem"
 url="https://github.com/erg-lang/erg"
 license=('MIT' 'Apache')
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("$_pkgname::https://yuioto-onedrive.vercel.app/api/raw/?path=/tmp/erg/bi
 	"https://raw.githubusercontent.com/erg-lang/erg/main/README_JA.md"
 	"https://raw.githubusercontent.com/erg-lang/erg/main/README_zh-CN.md"
 	"https://raw.githubusercontent.com/erg-lang/erg/main/README_zh-TW.md")
-sha256sums=('41db92b7bc350018ca7c6d49c9d18bd29de1ace5b98733a6a27b119aa6e9c526'
+sha256sums=('2599ee25f8543bf7d15c3e0797eb93d664a6526e45dcf245bde1c2ebd2372066'
             'f39baf693a13f41a9613d58fcd6c9c727363dc4c795ca7ec67d7e53e452457dd'
             'e9d7e9ef00763199a72ab55c6eb57a61d328c79324ba645bc577288599b0f9cf'
             '1acf7ea94ae9228781d0159660208b6740e113951e75a220b954d306cec7a579'
