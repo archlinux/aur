@@ -1,0 +1,18 @@
+pkgbase = modeltest-gui
+	pkgdesc = A New and Scalable Tool for the Selection of DNA and Protein Evolutionary Models. https://doi.org/10.1093/molbev/msz189
+	pkgver = 0.1.7
+	pkgrel = 8
+	url = https://github.com/ddarriba/modeltest
+	arch = x86_64
+	license = GPL3
+	makedepends = qconf
+	makedepends = bison
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = flex
+	depends = qt5-base
+	source = git+https://github.com/ddarriba/modeltest.git#tag=v0.1.7
+	sha256sums = SKIP
+
+pkgname = modeltest-gui
