@@ -1,7 +1,7 @@
 pkgbase = perl-catalyst-runtime
 	pkgdesc = The Catalyst Framework Runtime
-	pkgver = 5.90128
-	pkgrel = 3
+	pkgver = 5.90129
+	pkgrel = 1
 	url = https://metacpan.org/release/Catalyst-Runtime
 	arch = any
 	license = GPL
@@ -56,7 +56,7 @@ pkgbase = perl-catalyst-runtime
 	depends = perl-namespace-clean
 	options = !emptydirs
 	options = purge
-	source = https://cpan.metacpan.org/authors/id/H/HA/HAARG/Catalyst-Runtime-5.90128.tar.gz
-	sha512sums = 73f1c16a5531e9d366bd27c10fa4be02303e516cde11117bc2e63a57f33048916b4f1cea272cee26fd97e83fdbbdc836337c02bfb4c0551e7e6b106c6d8717ee
+	source = https://cpan.metacpan.org/authors/id/H/HA/HAARG/Catalyst-Runtime-5.90129.tar.gz
+	sha512sums = 679799763e343cca5ee0ceef207cc4508c35bfe15a44e10d54b660413d0e4dc882680fe0dc1a1a512ed0c1503bbdf9a853b7245671537d650447d70190083efa
 
 pkgname = perl-catalyst-runtime
