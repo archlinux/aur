@@ -10,21 +10,21 @@
 
 pkgbase=networkmanager-iwd
 pkgname=(networkmanager-iwd libnm-iwd nm-iwd-cloud-setup)
-pkgver=1.38.4
+pkgver=1.40.0
 pkgrel=1
 pkgdesc="Network connection manager and user applications; using iwd backend instead of wpa_supplicant"
 url="https://networkmanager.dev/"
 arch=(x86_64)
 license=(GPL)
 _pppver=2.4.9
-makedepends=(intltool dhclient gobject-introspection gtk-doc
+makedepends=(dhclient gobject-introspection gtk-doc
              "ppp=$_pppver" modemmanager iproute2 nss polkit wpa_supplicant curl
              systemd libmm-glib libnewt libndp libteam nftables vala perl-yaml
              python-gobject git vala jansson bluez-libs glib2-docs iwd dnsmasq
              openresolv libpsl audit meson)
 checkdepends=(libx11 python-dbus)
 options=(debug)
-_commit=89f351d4534fd9d88dc07c7d23bb254145a93178  # tags/1.38.4^0
+_commit=5d4802f7d869e2a91192dc75bf33cff892a3facf  # tags/1.40.0^0
 source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=$_commit"
         "$pkgbase.install")
 sha256sums=('SKIP' '6f77a626ec3fd7583beb45ffcac236cdc1fe2b5e5b8ccc5d90983312a265e818')
@@ -56,6 +56,8 @@ build() {
 
     # configuration plugins
     -D config_plugins_default=keyfile
+    -D ifcfg_rh=false
+    -D ifupdown=false
 
     # handlers for resolv.conf
     -D netconfig=no

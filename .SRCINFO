@@ -1,13 +1,12 @@
 pkgbase = networkmanager-iwd
 	pkgdesc = Network connection manager and user applications; using iwd backend instead of wpa_supplicant
-	pkgver = 1.38.4
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://networkmanager.dev/
 	arch = x86_64
 	license = GPL
 	checkdepends = libx11
 	checkdepends = python-dbus
-	makedepends = intltool
 	makedepends = dhclient
 	makedepends = gobject-introspection
 	makedepends = gtk-doc
@@ -39,7 +38,7 @@ pkgbase = networkmanager-iwd
 	makedepends = audit
 	makedepends = meson
 	options = debug
-	source = git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=89f351d4534fd9d88dc07c7d23bb254145a93178
+	source = git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=5d4802f7d869e2a91192dc75bf33cff892a3facf
 	source = networkmanager-iwd.install
 	sha256sums = SKIP
 	sha256sums = 6f77a626ec3fd7583beb45ffcac236cdc1fe2b5e5b8ccc5d90983312a265e818
