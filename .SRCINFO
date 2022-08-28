@@ -1,0 +1,18 @@
+pkgbase = mrdoc-desktop-bin
+	pkgdesc = MrDoc觅思文档Linux客户端。
+	pkgver = 0.2.2
+	pkgrel = 2
+	url = https://mrdoc.pro/
+	arch = x86_64
+	license = custom:"Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>"
+	makedepends = dpkg
+	depends = libva
+	optdepends = libva-intel-driver: VA-API implementation for Intel G45 and HD Graphics family
+	optdepends = libva-vdpau-driver: VDPAU backend for VA API
+	optdepends = libva-utils: Intel VA-API Media Applications and Scripts for libva
+	provides = mrdoc-desktop
+	conflicts = mrdoc-desktop
+	source = https://repo.linuxacme.cn/mrdoc-desktop_0.2.2_amd64.deb
+	sha512sums = 08baec8292c83fe513770fb12c71d6caec0dd583bea422597238f94e249cd22232c68c8bfb9c89a4d8fb08930b0015792dbb2490e05c3e75580a855a78e870fa
+
+pkgname = mrdoc-desktop-bin
