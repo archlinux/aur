@@ -2,7 +2,7 @@
 
 pkgname=plymouth-theme-dracula-git
 pkgver=r4.f315ed5
-pkgrel=1
+pkgrel=2
 pkgdesc='Plymouth theme with Dracula colours and logo.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/nanophilip/${pkgname}/"
@@ -20,7 +20,7 @@ pkgver() {
 package() {
   cd "${pkgname}"
 
-  for f in bg.png dracula.grub dracula.plymouth dracula.script logo.png pb.png static.png; do
+  for f in bg.png dracula.grub dracula.plymouth dracula.script logo.png pb.png; do
     install -Dm644 "dracula/${f}" "${pkgdir}/usr/share/plymouth/themes/dracula/${f}"
   done
 
