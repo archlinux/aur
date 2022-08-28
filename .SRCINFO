@@ -8,6 +8,8 @@ pkgbase = onnxruntime-lib-git
 	provides = onnxruntime
 	conflicts = onnxruntime
 	source = https://github.com/microsoft/onnxruntime/releases/download/v1.12.1/onnxruntime-linux-x64-1.12.1.tgz
+	source = onnxruntime-lib-git.zip::https://github.com/microsoft/onnxruntime/archive/refs/heads/main.zip
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = onnxruntime-lib-git
