@@ -1,7 +1,7 @@
 pkgbase = onnxruntime-lib-git
 	pkgdesc = ONNX Runtime: cross-platform, high performance ML inferencing and training accelerator
 	pkgver = 1.12.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.onnxruntime.ai/
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = onnxruntime-lib-git
 	conflicts = onnxruntime
 	source = https://github.com/microsoft/onnxruntime/releases/download/v1.12.1/onnxruntime-linux-x64-1.12.1.tgz
 	source = onnxruntime-lib-git.zip::https://github.com/microsoft/onnxruntime/archive/refs/heads/main.zip
-	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = 31f1cc5d934682459aaa2abb2b7ebc0f
+	md5sums = 8722efaefed3071ad4a7124f6fdf404a
 
 pkgname = onnxruntime-lib-git
