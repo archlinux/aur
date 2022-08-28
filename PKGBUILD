@@ -1,7 +1,7 @@
 # Maintainer: Aleksandr Beliaev <trap000d at gmail dot com>
 
 pkgname=quarto-cli
-pkgver=1.0.38
+pkgver=1.1.149
 pkgrel=1
 _denodomver=0.1.17-alpha
 pkgdesc="Quarto is an open-source scientific and technical publishing system built on [Pandoc](https://pandoc.org)."
@@ -18,14 +18,19 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/quarto-dev/quarto-cli/a
         "https://github.com/b-fuze/deno-dom/archive/refs/tags/v${_denodomver}.tar.gz"
        )
 
-sha256sums=('b787bf0ad877da797a4589f10bea69cd09bda1f914b60498e1a3fb45ece5d92e'
+sha256sums=('23082da893072c6cb6357d14302a69bea625ddf7b6fddfc8286a46e39d548907'
             '5d5f7f6f87966e8adc4106fb2e37d189b70a5f0935abfd3e8f48fce4131d3632')
 
 build() {
 
   cd "${srcdir}/${pkgname}-${pkgver}"
   source configuration
+  source "${srcdir}/${pkgname}-${pkgver}/package/src/set_package_paths.sh"
   export QUARTO_VERSION=${pkgver}
+  #export QUARTO_ROOT="${srcdir}/${pkgname}-${pkgver}"
+  if [ -z "$QUARTO_DENO" ]; then
+    export QUARTO_DENO=$SCRIPT_PATH/../dist/bin/tools/deno
+  fi
   mkdir -p package/dist/bin/tools/{deno_dom,dart-sass}
   cp /usr/bin/deno package/dist/bin/tools
  
