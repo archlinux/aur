@@ -4,18 +4,18 @@
 
 pkgname=erg-git
 _pkg="${pkgname%-git}"
-pkgver=0.2.8.r5.g79a1f49
+pkgver=0.3.1.r7.g356906a
 pkgrel=1
 pkgdesc='Statically typed language that builds upon the Python ecosystem'
 url="https://github.com/erg-lang/erg"
 license=('MIT' 'Apache')
 arch=('x86_64')
 provides=("$_pkg")
-conflicts=("$_pkg")
+conflicts=("$_pkg" "$_pkg-bin")
 depends=('python')
 makedepends=('cargo' 'git')
 
-source=("$_pkg::git+$url")
+source=("$_pkg::git+$url.git")
 sha256sums=("SKIP")
 
 # By enabling the --features flag, you can change the language in which error messages are displayed.
@@ -28,6 +28,9 @@ sha256sums=("SKIP")
 #
 # Chinese (Traditional)
 # cargo install erg --features traditional_chinese
+#
+# Debugging mode (for contributors)
+# cargo install erg --features debug
 
 pkgver() {
 	git -C "$_pkg" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
