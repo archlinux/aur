@@ -5,6 +5,7 @@ all: help
 .PHONY: help build update install publish
 
 REPODIR := $(shell egrep -m1 '^source=' PKGBUILD | cut -d= -f2 | sed -r "s/^\('(.*)'\)\$$/\1/ ; s~^git\+https?://github.com/.*/([^/]+)/?\$$~\1~")
+REPO_BRANCH = $(shell git --bare --git-dir=$(REPODIR) branch --show-current | tr -d "\r\n")
 PKGNAME = $(shell egrep -m1 '^pkgname=' PKGBUILD | cut -d= -f2)
 PKGVER = $(file < current_version)
 PKGVER = $(shell egrep -m1 '^pkgver=' PKGBUILD | cut -d= -f2)
@@ -30,7 +31,7 @@ install: build
 update: build
 
 build: current-version .SRCINFO
-	git --bare --git-dir=$(REPODIR) fetch origin master
+	git --bare --git-dir=$(REPODIR) fetch origin "$(REPO_BRANCH)"
 
 .SRCINFO: $(TARGET_ARCHIVE)
 	makepkg --printsrcinfo > .SRCINFO
