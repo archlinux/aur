@@ -1,0 +1,15 @@
+pkgbase = ruby-version_gem
+	pkgdesc = Versions are good. Versions are cool. Versions will win.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/pboling/version_gem
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby
+	noextract = version_gem-1.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/version_gem-1.1.0.gem
+	sha256sums = 6b009518020db57f51ec7b410213fae2bf692baea9f1b51770db97fbc93d9a80
+
+pkgname = ruby-version_gem
