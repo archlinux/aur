@@ -3,7 +3,7 @@
 
 _pkgname=bottles
 pkgname=${_pkgname}-fixed
-_pkgver_main=2022.8.14
+_pkgver_main=2022.8.28
 _release_name=brescia
 _pkgver_sub=1
 pkgver="$_pkgver_main.$_pkgver_sub"
@@ -34,7 +34,7 @@ depends=(
 	# from dependency list
 	gtk4
 	gtksourceview5
-	libadwaita-git
+	libadwaita-testing
 
 	# additional not listed dependencies
 	libportal-gtk4
@@ -95,7 +95,7 @@ source=("${_pkgname}-${_pkgver_main}-${_release_name}-${_pkgver_sub}.tar.gz::$ur
 #source=("${_pkgname}-${_pkgver_main}-${_release_name}-${_pkgver_sub}.tar.gz::$url/archive/refs/tags/${_pkgver_main}-${_release_name}.tar.gz")
 
 
-b2sums=('ea8f6c326636c369f8a104b164ac705b78d2b701c9b7cdc860330d6bffb2342d3684ab132dbeff9da196a3363d4d02e76ce71e4d0ae3d85f46337f8290d8591a')
+b2sums=('07649eb450d31b706d483d8c4f919f16fc7e5c365fa5107b2c49fcc33dee1790902cd7d502737b89c77f68c510f4a41ffbace74a1aa92a06258088f7a2b40b0c')
 
 build() {
 	if [[ -d Bottles ]]; then
