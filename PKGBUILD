@@ -1,34 +1,34 @@
-# Maintainer: glatavento <glatavento at outlook dot com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: glatavento <glatavento at outlook dot com>
 
 pkgname=libjaylink-git
-pkgver=0.1.0.r20.gc2c4bb0
+_pkg="${pkgname%-git}"
+pkgver=0.3.1.r0.g0d23921
 pkgrel=1
-pkgdesc='Libjaylink is a shared library written in C to access SEGGER J-Link and compatible devices.'
-arch=(x86_64)
-url='https://github.com/syntacore/libjaylink'
-license=('GPL2')
+pkgdesc='Library for accessing SEGGER J-Link and compatible devices'
+arch=('x86_64')
+url='https://gitlab.zapb.de/libjaylink/libjaylink'
+license=('GPL')
+depends=('glibc')
 makedepends=('git')
-optdepends=(
-  'libusb'
-  'doxygen: Required for API documentation'
-) 
-source=("$pkgname::git+$url")
+optdepends=('libusb' 'doxygen: Required for API documentation')
+provides=("$_pkg.so")
+conflicts=("$_pkg")
+source=("$_pkg::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git -C "$_pkg" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$srcdir/$pkgname"
-    ./autogen.sh
-    ./configure --prefix=/usr
-    make
+	cd "$_pkg"
+	./autogen.sh
+	./configure --prefix=/usr
+	make
 }
 
 package() {
-    cd "$srcdir/$pkgname"
-    make DESTDIR="$pkgdir/" install
+	cd "$_pkg"
+	make DESTDIR="$pkgdir/" install
 }
-
