@@ -59,7 +59,7 @@ source=('firefox-nightly.desktop'
         "${_filename}.tar.bz2.asc::${_url}/${_src}.tar.bz2.asc")
 sha512sums=('87c181628c3be0762000ff3b5cb841ed2c2371937e4aab7f8f441c608dd08d349085036880c8e8aaed40d01fe258ea9be159741e9fad9f493c96fb9be4cc0de3'
             '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308'
-            '19ac581785638ba3295a5466e491e2a2b73ce863d90a8e6fb00b0897b78b9aec9e10a672b6b99c1ebab863a5076bc477d9780b51e3065ba83ffe5c490708fbc0'
+            'SKIP'
             'SKIP')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla’s GnuPG release key
 
