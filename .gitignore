@@ -1,0 +1,6 @@
+# Only PKGBUILD, .SRCINFO, .gitignore.
+
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
