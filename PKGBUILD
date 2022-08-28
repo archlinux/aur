@@ -1,21 +1,24 @@
-_pkgname=snapper-snapshot-notification
-pkgname="${_pkgname}-git"
-pkgver=1.0.0
+# Maintainer: Zesko
+pkgname=snapper-snapshot-notification-git
+pkgver=r4.94a129c
 pkgrel=1
 pkgdesc="The Desktop notification will appear when booting into Btrfs snapshot using Overlayfs."
 arch=("any")
-url="https://gitlab.com/Zesko/${_pkgname}.git"
+url="https://gitlab.com/Zesko/snapper-snapshot-notification.git"
 license=("GPL3")
-makedepends=('git' 'libnotify')
-provides=("snapper-snapshot-notification")
+depends=('bash' 'libnotify')
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=(git+${url})
-sha256sums=("SKIP")
+sha1sums=("SKIP")
 
+pkgver() {
+  cd "$srcdir/${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
-  install -dv "${pkgdir}/usr/bin"
-  install -dv "${pkgdir}/etc/xdg/autostart"
-  cd "$srcdir/$_pkgname"
-  cp usr/bin/snapper-detects-snapshot $pkgdir/usr/bin/
-  cp etc/xdg/autostart/snapper-detects-snapshot.desktop $pkgdir/etc/xdg/autostart/
+  cd "$srcdir/${pkgname%-git}"
+  cp -vr usr etc "$pkgdir"
 }

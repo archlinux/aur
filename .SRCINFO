@@ -1,14 +1,16 @@
 pkgbase = snapper-snapshot-notification-git
 	pkgdesc = The Desktop notification will appear when booting into Btrfs snapshot using Overlayfs.
-	pkgver = 1.0.0
+	pkgver = r4.94a129c
 	pkgrel = 1
 	url = https://gitlab.com/Zesko/snapper-snapshot-notification.git
 	arch = any
-	license = MIT
+	license = GPL3
 	makedepends = git
-	makedepends = libnotify
+	depends = bash
+	depends = libnotify
 	provides = snapper-snapshot-notification
+	conflicts = snapper-snapshot-notification
 	source = git+https://gitlab.com/Zesko/snapper-snapshot-notification.git
-	sha256sums = SKIP
+	sha1sums = SKIP
 
 pkgname = snapper-snapshot-notification-git
