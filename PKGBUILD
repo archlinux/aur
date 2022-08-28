@@ -10,7 +10,7 @@ license=('Custom')
 depends=('qt5-base' 'openssl-1.0' 'ccid')
 source=("${url}/datastore/filestore/10/${pkgname}_v${pkgver}_amd64.deb")
 options=('!strip' 'staticlibs')
-sha512sums=('40f5b6197990326de19857d9927c99ed41e6542cf38859c362ce9c1495030dbb9619ca43027b5497ffbf49a45c03fa2b08849107dc269cd0cfeaa5902e7ce531')
+sha512sums=('8080b7c4416565b2e0510c77777687d993c4f139fc7034f0a90307b8b636570850387c1752572953a66af59cc9cbd02443db5e8a103ea96848dafbc828aa26dc')
 
 package() {
 
