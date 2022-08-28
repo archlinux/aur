@@ -11,11 +11,11 @@ license=('GPL' 'LGPL')
 depends=('gtk3' 'lcms2' 'libwmf' 'icu' 'enchant' 'libgexiv2' 'librsvg' 'desktop-file-utils'
          'libexif' 'libgudev' 'openjpeg2' 'poppler-glib' 'poppler-data' 'openexr' 'mypaint-brushes1'
          'babl>=0.1.78' 'gegl>=0.4.38' 'cairo' 'python-gobject' 'appstream-glib' 'libxmu' 'graphviz')
-makedepends=('appstream' 'intltool' 'libxslt' 'glib-networking'
+makedepends=('intltool' 'libxslt' 'glib-networking'
              'alsa-lib' 'curl' 'ghostscript' 'libxpm'
              'libheif' 'libwebp' 'libmng' 'iso-codes' 'aalib' 'zlib' 'libjxl'
              'gjs'  'luajit' 'meson' 'gobject-introspection'
-             'gi-docgen' 'xorg-server-xvfb' 'vala' 'highway' 'meson') #'yelp-tools')
+             'gi-docgen' 'xorg-server-xvfb' 'vala' 'highway') #'yelp-tools')
 checkdepends=('xorg-server-xvfb')
 optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cups print support'
             'alsa-lib: for MIDI event controller module'
@@ -34,19 +34,26 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
             'lua51-lgi: LUA scripting support')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver}")
-source=(https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz linux.gpl)
-sha256sums=('7ba1b032ea520d540e4acad3da16d8637fe693743fdb36e0121775eea569f6a3'
+source=(https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}-autotools.tar.bz2 linux.gpl)
+sha256sums=('028bb8f825c492037d09720694c3a3096f1af5d6347eaa84970b43c476713ee7'
             '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3')
 build() {
-  local meson_options=(
-  )
-
-  arch-meson "${_pkgname}-${pkgver}" build "${meson_options[@]}"
-  meson compile -C build
+  cd "${_pkgname}-${pkgver}"
+    ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --libdir=/usr/lib \
+    --libexecdir=/usr/lib/gimp \
+    --datarootdir=/usr/share \
+    --enable-mp \
+    --enable-gimp-console \
+    --enable-gi-docgen
+#   --enable-g-ir-doc
+  make
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
-
+  cd "${_pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
   install -Dm 644 "${srcdir}/linux.gpl" "${pkgdir}/usr/share/gimp/2.99/palettes/Linux.gpl"
 }
