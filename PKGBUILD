@@ -1,7 +1,7 @@
 # Maintainer: Anders Blenstrup-Pedersen <silwerspawn+aur.archlinux.org at gmail dot com>
 
 pkgname=nordvpn-cli-bin
-pkgver=3.14.1
+pkgver=3.14.2
 pkgrel=1
 pkgdesc="NordVPN CLI tool for Linux"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
