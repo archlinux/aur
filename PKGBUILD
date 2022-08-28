@@ -4,7 +4,7 @@
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=subsurface
-pkgver=5.0.8
+pkgver=5.0.9
 pkgrel=1
 pkgdesc='Divelog program'
 url='https://github.com/subsurface/subsurface'
@@ -31,7 +31,7 @@ makedepends=(
 	'libusb'
 	'qt5-tools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d2d2e219a4d23115a5694cd721a5379b32f8375e42381c90c811db62dbafec12')
+sha256sums=('6db31f281c7c0884089e199a360e9492202e4a7aaacf6330ed9e9eeb63e1851b')
 
 PURGE_TARGETS=(*.debug)
 
