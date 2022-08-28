@@ -1,7 +1,7 @@
 # Maintainer: Patrik Sundberg <patrik.sundberg@gmail.com>
 
 pkgname=beeper
-pkgver=3.22.25
+pkgver=3.23.11
 pkgrel=1
 pkgdesc="all your chats in one app"
 arch=('x86_64')
