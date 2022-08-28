@@ -7,9 +7,10 @@ pkgdesc="A simple bash script to set wallpapers according to current time, using
 arch=('i686' 'x86_64')
 url="https://github.com/adi1090x/dynamic-wallpaper"
 license=('GPL3')
-depends=('feh' 'cronie')
+depends=('feh')
 makedepends=('git' 'sed')
-optdepends=('xorg-xrandr: XFCE support'
+optdepends=('cronie'
+    'xorg-xrandr: XFCE support'
     'pywal-git: pywal support'
 )
 provides=("${_pkgname}")
