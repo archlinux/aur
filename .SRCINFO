@@ -10,6 +10,7 @@ pkgbase = gimp-devel-noconflict
 	license = GPL
 	license = LGPL
 	checkdepends = xorg-server-xvfb
+	makedepends = appstream
 	makedepends = intltool
 	makedepends = libxslt
 	makedepends = glib-networking
