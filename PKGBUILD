@@ -2,7 +2,7 @@
 
 _pkgname=context
 pkgname=${_pkgname}
-pkgver=2022.07.06_21.42
+pkgver=2022.08.25_19.21
 pkgrel=1
 pkgdesc='ConTeXt LMTX, the Lean and Mean TeX eXperience with Lua, MetaPost, TeX, and XML'
 arch=('x86_64')
