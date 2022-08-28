@@ -1,10 +1,10 @@
 pkgname=bucky
 pkgver=1.4.4
-pkgrel=1
+pkgrel=4
 pkgdesc="Bayesian Untangling of Concordance Knots https://doi.org/10.1093/bioinformatics/btq539"
 arch=('x86_64')
 conflicts=('mpi-bucky')
-url="https://github.com/tkchafin/mpi-bucky"
+url="https://pages.stat.wisc.edu/~ane/bucky/"
 license=('GPL')
 depends=('gcc-libs' 'boost-libs')
 makedepends=('clang' 'boost')
