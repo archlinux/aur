@@ -2,7 +2,7 @@
 
 pkgname=maui-shell-git
 _pkgname=${pkgname%-git}
-pkgver=v0.5.0.r72.ge969251
+pkgver=v0.5.5.r6.g6a67519
 pkgrel=1
 pkgdesc='Maui Shell is a convergent shell for desktops, tablets, and phones.'
 url='https://github.com/Nitrux/maui-shell'
@@ -39,8 +39,8 @@ depends=(bluedevil
          kunitconversion
          kwallet
          kwayland
-         libcanberra
          maui-calendar-git
+         maui-core-git
          maui-manager-git
          mauikit-git
          mauikit-filebrowsing
@@ -54,8 +54,7 @@ depends=(bluedevil
          qt5-quickcontrols2
          qt5-svg
          qt5-wayland
-         solid
-         sound-theme-freedesktop)
+         solid)
 makedepends=(git extra-cmake-modules)
 optdepends=('maui-settings-git: Settings Manager Apps for the Maui DE')
 groups=(maui)
