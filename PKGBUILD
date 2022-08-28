@@ -1,67 +1,67 @@
-# Maintainer: Thiago L. A. Miller <thiago_leisrael@hotmail.com>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: Thiago L. A. Miller <thiago_leisrael@hotmail.com>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 _distname=Dist-Zilla
 pkgname=perl-dist-zilla
-pkgver=6.014
+pkgver=6.025
 pkgrel=1
 pkgdesc="distribution builder; installer not included!"
 arch=('any')
 url="https://metacpan.org/release/$_distname"
 license=('PerlArtistic' 'GPL')
-depends=('perl>=5.14.0'
-         'perl-app-cmd>=0'
-         'perl-cpan-meta-check>=0.011'
-         'perl-cpan-uploader>=0.103004'
-         'perl-class-load>=0.17'
-         'perl-config-ini>=0'
-         'perl-config-mvp>=2.200011'
-         'perl-config-mvp-reader-ini>=2.101461'
-         'perl-data-section>=0.200002'
-         'perl-datetime>=0.44'
-         'perl-file-copy-recursive>=0.41'
-         'perl-file-find-rule>=0'
-         'perl-file-sharedir>=0'
-         'perl-file-sharedir-install>=0.03'
-         'perl-file-pushd>=0'
-         'perl-json-maybexs>=0'
-         'perl-log-dispatchouli>=1.102220'
-         'perl-mixin-linewise>=0'
-         'perl-module-runtime>=0'
-         'perl-moose>=0.92'
-         'perl-moosex-lazyrequire>=0'
-         'perl-moosex-role-parameterized>=1.01'
-         'perl-moosex-setonce>=0'
-         'perl-moosex-types>=0'
-         'perl-moosex-types-perl>=0'
-         'perl-ppi>=0'
-         'perl-params-util>=0'
-         'perl-path-tiny>=0.052'
-         'perl-perl-prereqscanner>=1.016'
-         'perl-software-license>=0.103014'
-         'perl-string-formatter>=0.100680'
-         'perl-string-rewriteprefix>=0.006'
-         'perl-sub-exporter>=0'
-         'perl-sub-exporter-formethods>=0'
-         'perl-term-encoding>=0'
-         'perl-term-ui>=0'
-         'perl-term-readkey>=0'
-         'perl-text-glob>=0.08'
-         'perl-text-template>=0'
-         'perl-try-tiny>=0'
-         'perl-yaml-tiny>=0'
-         'perl-namespace-autoclean>=0')
-makedepends=()
-checkdepends=('perl-test-deep>=0'
-              'perl-test-failwarnings>=0'
-              'perl-test-fatal>=0'
-              'perl-test-file-sharedir>=0')
-optdepends=('perl-archive-tar-wrapper>=0.15: API wrapper around the tar utility'
-            'perl-data-optlist>=0.110: Parse and validate simple name/value option pairs'
-            'perl-ppi-xs>=0: Minor XS acceleration for PPI'
-            'perl-term-readline-gnu>=0: GNU Readline XS library wrapper')
+depends=('perl'
+         'perl-app-cmd'
+         'perl-cpan-meta-check'
+         'perl-cpan-uploader'
+         'perl-class-load'
+         'perl-config-ini'
+         'perl-config-mvp'
+         'perl-config-mvp-reader-ini'
+         'perl-data-section'
+         'perl-datetime'
+         'perl-file-copy-recursive'
+         'perl-file-find-rule'
+         'perl-file-sharedir'
+         'perl-file-sharedir-install'
+         'perl-file-pushd'
+         'perl-json-maybexs'
+         'perl-log-dispatchouli'
+         'perl-mixin-linewise'
+         'perl-module-runtime'
+         'perl-moose'
+         'perl-moosex-lazyrequire'
+         'perl-moosex-role-parameterized'
+         'perl-moosex-setonce'
+         'perl-moosex-types'
+         'perl-moosex-types-perl'
+         'perl-ppi'
+         'perl-params-util'
+         'perl-path-tiny'
+         'perl-perl-prereqscanner'
+         'perl-software-license'
+         'perl-string-formatter'
+         'perl-string-rewriteprefix'
+         'perl-sub-exporter'
+         'perl-sub-exporter-formethods'
+         'perl-term-encoding'
+         'perl-term-ui'
+         'perl-term-readkey'
+         'perl-text-glob'
+         'perl-text-template'
+         'perl-try-tiny'
+         'perl-yaml-tiny'
+         'perl-namespace-autoclean')
+checkdepends=('perl-test-deep'
+              'perl-test-failwarnings'
+              'perl-test-fatal'
+              'perl-test-file-sharedir')
+optdepends=('perl-archive-tar-wrapper: API wrapper around the tar utility'
+            'perl-data-optlist: Parse and validate simple name/value option pairs'
+            'perl-ppi-xs: Minor XS acceleration for PPI'
+            'perl-term-readline-gnu: GNU Readline XS library wrapper')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/$_distname-$pkgver.tar.gz")
-md5sums=('1125080dd71eb2f9d07a873e958235a8')
+md5sums=('d5b6de3d60103d904670abf381b41089')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -88,9 +88,3 @@ package() {
   make install
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:

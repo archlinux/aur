@@ -1,64 +1,63 @@
 pkgbase = perl-dist-zilla
 	pkgdesc = distribution builder; installer not included!
-	pkgver = 6.014
+	pkgver = 6.025
 	pkgrel = 1
 	url = https://metacpan.org/release/Dist-Zilla
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	checkdepends = perl-test-deep>=0
-	checkdepends = perl-test-failwarnings>=0
-	checkdepends = perl-test-fatal>=0
-	checkdepends = perl-test-file-sharedir>=0
-	depends = perl>=5.14.0
-	depends = perl-app-cmd>=0
-	depends = perl-cpan-meta-check>=0.011
-	depends = perl-cpan-uploader>=0.103004
-	depends = perl-class-load>=0.17
-	depends = perl-config-ini>=0
-	depends = perl-config-mvp>=2.200011
-	depends = perl-config-mvp-reader-ini>=2.101461
-	depends = perl-data-section>=0.200002
-	depends = perl-datetime>=0.44
-	depends = perl-file-copy-recursive>=0.41
-	depends = perl-file-find-rule>=0
-	depends = perl-file-sharedir>=0
-	depends = perl-file-sharedir-install>=0.03
-	depends = perl-file-pushd>=0
-	depends = perl-json-maybexs>=0
-	depends = perl-log-dispatchouli>=1.102220
-	depends = perl-mixin-linewise>=0
-	depends = perl-module-runtime>=0
-	depends = perl-moose>=0.92
-	depends = perl-moosex-lazyrequire>=0
-	depends = perl-moosex-role-parameterized>=1.01
-	depends = perl-moosex-setonce>=0
-	depends = perl-moosex-types>=0
-	depends = perl-moosex-types-perl>=0
-	depends = perl-ppi>=0
-	depends = perl-params-util>=0
-	depends = perl-path-tiny>=0.052
-	depends = perl-perl-prereqscanner>=1.016
-	depends = perl-software-license>=0.103014
-	depends = perl-string-formatter>=0.100680
-	depends = perl-string-rewriteprefix>=0.006
-	depends = perl-sub-exporter>=0
-	depends = perl-sub-exporter-formethods>=0
-	depends = perl-term-encoding>=0
-	depends = perl-term-ui>=0
-	depends = perl-term-readkey>=0
-	depends = perl-text-glob>=0.08
-	depends = perl-text-template>=0
-	depends = perl-try-tiny>=0
-	depends = perl-yaml-tiny>=0
-	depends = perl-namespace-autoclean>=0
-	optdepends = perl-archive-tar-wrapper>=0.15: API wrapper around the tar utility
-	optdepends = perl-data-optlist>=0.110: Parse and validate simple name/value option pairs
-	optdepends = perl-ppi-xs>=0: Minor XS acceleration for PPI
-	optdepends = perl-term-readline-gnu>=0: GNU Readline XS library wrapper
+	checkdepends = perl-test-deep
+	checkdepends = perl-test-failwarnings
+	checkdepends = perl-test-fatal
+	checkdepends = perl-test-file-sharedir
+	depends = perl
+	depends = perl-app-cmd
+	depends = perl-cpan-meta-check
+	depends = perl-cpan-uploader
+	depends = perl-class-load
+	depends = perl-config-ini
+	depends = perl-config-mvp
+	depends = perl-config-mvp-reader-ini
+	depends = perl-data-section
+	depends = perl-datetime
+	depends = perl-file-copy-recursive
+	depends = perl-file-find-rule
+	depends = perl-file-sharedir
+	depends = perl-file-sharedir-install
+	depends = perl-file-pushd
+	depends = perl-json-maybexs
+	depends = perl-log-dispatchouli
+	depends = perl-mixin-linewise
+	depends = perl-module-runtime
+	depends = perl-moose
+	depends = perl-moosex-lazyrequire
+	depends = perl-moosex-role-parameterized
+	depends = perl-moosex-setonce
+	depends = perl-moosex-types
+	depends = perl-moosex-types-perl
+	depends = perl-ppi
+	depends = perl-params-util
+	depends = perl-path-tiny
+	depends = perl-perl-prereqscanner
+	depends = perl-software-license
+	depends = perl-string-formatter
+	depends = perl-string-rewriteprefix
+	depends = perl-sub-exporter
+	depends = perl-sub-exporter-formethods
+	depends = perl-term-encoding
+	depends = perl-term-ui
+	depends = perl-term-readkey
+	depends = perl-text-glob
+	depends = perl-text-template
+	depends = perl-try-tiny
+	depends = perl-yaml-tiny
+	depends = perl-namespace-autoclean
+	optdepends = perl-archive-tar-wrapper: API wrapper around the tar utility
+	optdepends = perl-data-optlist: Parse and validate simple name/value option pairs
+	optdepends = perl-ppi-xs: Minor XS acceleration for PPI
+	optdepends = perl-term-readline-gnu: GNU Readline XS library wrapper
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Dist-Zilla-6.014.tar.gz
-	md5sums = 1125080dd71eb2f9d07a873e958235a8
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Dist-Zilla-6.025.tar.gz
+	md5sums = d5b6de3d60103d904670abf381b41089
 
 pkgname = perl-dist-zilla
-
