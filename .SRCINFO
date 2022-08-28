@@ -1,14 +1,14 @@
 pkgbase = amule-daemon
 	pkgdesc = An eMule-like client for the eD2k and Kademlia p2p networks. (Only Daemon, CLI tools and Webserver)
 	pkgver = r11121
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.amule.org
 	install = amule-daemon.install
 	arch = x86_64
 	arch = armv7h
 	license = GPL
 	makedepends = boost
-	depends = wxbase
+	depends = wxwidgets-common
 	depends = crypto++
 	depends = libupnp
 	depends = libpng

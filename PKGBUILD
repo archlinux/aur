@@ -3,12 +3,12 @@
 pkgname=amule-daemon
 pkgver=r11121
 _pkgcomm=d6693fb
-pkgrel=1
+pkgrel=2
 pkgdesc='An eMule-like client for the eD2k and Kademlia p2p networks. (Only Daemon, CLI tools and Webserver)'
 url='http://www.amule.org'
 arch=('x86_64' 'armv7h')
 license=('GPL')
-depends=('wxbase'
+depends=('wxwidgets-common'
          'crypto++'
          'libupnp'
          'libpng'
@@ -47,6 +47,7 @@ prepare() {
 
 build() {
   cd build
+  CPPFLAGS+=" -DwxHAS_LARGE_FILES=1" \
   ../"amule-${_pkgcomm}/configure" \
     --prefix=/usr \
     --disable-monolithic \
