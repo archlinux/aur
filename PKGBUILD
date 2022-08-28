@@ -1,7 +1,8 @@
-# Maintainer: Chris Salzberg <chris@dejimata.com>
+# Contributor: Chris Salzberg <chris@dejimata.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=wat-git
-pkgver=r2.76a920c
+pkgver=r29.0861966
 pkgrel=1
 pkgdesc="Show upgrades since recent -Syu"
 arch=('i686' 'x86_64')
@@ -9,9 +10,7 @@ url="https://github.com/pbrisbin/wat"
 license=('MIT')
 depends=('pacman')
 makedepends=('git')
-source=("$pkgname"::'git://github.com/pbrisbin/wat.git')
-#source=('git+https://github.com/orschiro/aclidswitch.git'
-#source=('git+https://github.com/orschiro/aclidswitch.git#branch=master'
+source=("$pkgname::git+https://github.com/pbrisbin/wat.git")
 md5sums=('SKIP')
 
 pkgver() {

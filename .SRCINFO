@@ -1,6 +1,6 @@
 pkgbase = wat-git
 	pkgdesc = Show upgrades since recent -Syu
-	pkgver = r2.76a920c
+	pkgver = r29.0861966
 	pkgrel = 1
 	url = https://github.com/pbrisbin/wat
 	arch = i686
@@ -8,8 +8,7 @@ pkgbase = wat-git
 	license = MIT
 	makedepends = git
 	depends = pacman
-	source = wat-git::git://github.com/pbrisbin/wat.git
+	source = wat-git::git+https://github.com/pbrisbin/wat.git
 	md5sums = SKIP
 
 pkgname = wat-git
-
