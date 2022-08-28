@@ -12,13 +12,12 @@ license=('GPL2')
 depends=('dkms' 'bc' 'linux-headers')
 makedepends=('git')
 conflicts=("${_pkgbase}" 'rtl8812au-dkms-git' 'rtl8821au-dkms-git' 'rtl88xxau-aircrack-dkms-git')
-source=("git+https://github.com/gnab/rtl8812au"
-        'dkms.conf')
+source=("git+https://github.com/gnab/rtl8812au" 'dkms.conf')
 sha256sums=('SKIP'
             'e0645e88941cf78a02ae5b8f257e24f95bc8001f52e9653cf2c88e6941920aef')
 
 pkgver() {
-    cd ${srcdir}/rtl8812au
+    cd ${srcdir}/${_pkgbase}
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
