@@ -9,7 +9,8 @@ REPO_BRANCH = $(shell git --bare --git-dir=$(REPODIR) branch --show-current | tr
 PKGNAME = $(shell egrep -m1 '^pkgname=' PKGBUILD | cut -d= -f2)
 PKGVER = $(file < current_version)
 PKGVER = $(shell egrep -m1 '^pkgver=' PKGBUILD | cut -d= -f2)
-TARGET_ARCHIVE = $(PKGNAME)-$(PKGVER)-1-any.pkg.tar.zst
+PKGREL = $(shell egrep -m1 '^pkgrel=' PKGBUILD | cut -d= -f2)
+TARGET_ARCHIVE = $(PKGNAME)-$(PKGVER)-$(PKGREL)-any.pkg.tar.zst
 AUR_GIT_REMOTE = $(shell git remote show -n | head -n1)
 AUR_GIT_BRANCH = $(shell git branch --show-current)
 
