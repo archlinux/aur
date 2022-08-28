@@ -1,12 +1,12 @@
 pkgbase = emocli
 	pkgdesc = command-line interface for searching emoji characters
-	pkgver = 0.8.1
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/duhdugg/emocli
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = emocli-0.8.1.tar.gz::https://static.crates.io/crates/emocli/emocli-0.8.1.crate
-	sha256sums = 9478ca2e5bf15af35d4cba855be819e183e6cb744abda734c01d4232adb2150b
+	source = emocli-0.8.3.tar.gz::https://static.crates.io/crates/emocli/emocli-0.8.3.crate
+	sha256sums = 0dc6cb02bfca11311e923a5578e3af3bb23207a062178525c1c88330bd3056e1
 
 pkgname = emocli
