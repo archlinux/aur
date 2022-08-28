@@ -12,16 +12,16 @@ provides=('imds-mock')
 conflicts=('imds-mock')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/purpleclay/imds-mock/releases/download/v0.3.0/imds-mock_0.3.0_linux-arm64.tar.gz")
-sha256sums_aarch64=('e3da839bf5a43eb9789d6927af902d104cc4efc16e2c4be761382151d9d818c8')
+sha256sums_aarch64=('13aaec775ee002f5531ea901e94cccbef119e16db0c8fc7c36db033a47aceda9')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/purpleclay/imds-mock/releases/download/v0.3.0/imds-mock_0.3.0_linux-arm.tar.gz")
-sha256sums_armv7h=('0286b33df7971c5a3704f9eb7b6b5bbcd541621bf230e5161a4ef926e6f6b3ce')
+sha256sums_armv7h=('97163e603437243c18d10462c78db24aea14484484fcb6d034cba3dcedbd236e')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/purpleclay/imds-mock/releases/download/v0.3.0/imds-mock_0.3.0_linux-i386.tar.gz")
-sha256sums_i686=('1686d497c4bf52ad773c427e732539745a3237b725a74eb48d80014c246358f7')
+sha256sums_i686=('91ae9a9dc675b7db14002e2ecbc7de96e6ba781652b6a4492a567fc8f23c5e65')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/purpleclay/imds-mock/releases/download/v0.3.0/imds-mock_0.3.0_linux-x86_64.tar.gz")
-sha256sums_x86_64=('c77d7e4a68b1144913e038bd4946f5266faf5182a1f15f045893bfd84829dbe9')
+sha256sums_x86_64=('daeda6a580ef39001697bdc0970f1f979c3ebbcde6cce7260024057fa3a7d6e8')
 
 package() {
   # bin
