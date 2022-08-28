@@ -6,7 +6,7 @@ pkgname=('wxwidgets-common-light'
          'wxwidgets-qt5-light'
          )
 pkgver=3.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="wxWidgets suite for Base, Qt5 and GTK3 toolkits (GNOME/GStreamer free!)"
 arch=('x86_64')
 url='http://wxwidgets.org'
@@ -56,6 +56,8 @@ build() {
     -DwxUSE_LIBTIFF=sys \
     -DwxUSE_LIBLZMA=sys \
     -DwxUSE_LIBMSPACK=ON \
+    -DwxUSE_STL=ON \
+    -DwxUSE_PRIVATE_FONTS=ON \
     -DwxUSE_GUI=OFF
 
   cmake --build build-base
@@ -74,7 +76,10 @@ build() {
     -DwxUSE_LIBTIFF=sys \
     -DwxUSE_LIBLZMA=sys \
     -DwxUSE_LIBMSPACK=ON \
-    -DwxUSE_MEDIACTRL=OFF
+    -DwxUSE_STL=ON \
+    -DwxUSE_MEDIACTRL=OFF \
+    -DwxUSE_PRIVATE_FONTS=ON \
+    -DwxUSE_GTKPRINT=ON -DCMAKE_CXX_FLAGS="$CXXFLAGS -I/usr/include/gtk-3.0/unix-print/"
 
   cmake --build build-gtk3
 
@@ -92,9 +97,15 @@ build() {
     -DwxUSE_LIBTIFF=sys \
     -DwxUSE_LIBLZMA=sys \
     -DwxUSE_LIBMSPACK=ON \
-    -DwxUSE_MEDIACTRL=OFF
+    -DwxUSE_STL=ON \
+    -DwxUSE_MEDIACTRL=OFF \
+    -DwxUSE_PRIVATE_FONTS=ON
 
   cmake --build build-qt5
+
+  # Run configure to generate the Makefile, cmake doesn't install translations
+  cd wxwidgets
+  ./configure --prefix=/usr --disable-tests
 }
 
 package_wxwidgets-qt5-light() {
@@ -186,9 +197,12 @@ package_wxwidgets-common-light() {
   mv "${pkgdir}/usr/bin/wx-config" "${pkgdir}/usr/bin/wx-config-base"
   rm -fr "${pkgdir}/usr/lib/"*qt*.so*
   rm -fr "${pkgdir}/usr/lib/"*gtk*.so*
-  rm -fr "${pkgdir}/usr/bin/wxrc"
   rm -fr "${pkgdir}/usr/lib/wx/"{config,include}/{gtk,qt}*
   rm -fr "${pkgdir}/usr/lib/wx/"3*
+
+  install -Dm644 wxwidgets/wxwin.m4 -t "${pkgdir}/usr/share/aclocal"
+  # Install translations
+  make DESTDIR="${pkgdir}" -C wxwidgets locale_install
 
   install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/wxcommon-light/LICENSE"
 }
