@@ -5,16 +5,16 @@
 pkgname=mipsel-elf-binutils
 _pkgname=binutils
 _target="mipsel-elf"
-pkgver=2.38
+pkgver=2.39
 pkgrel=1
 pkgdesc="A collection of binary tools for baremetal MIPS."
 url="http://www.gnu.org/software/binutils/"
 arch=('x86_64')
 license=('GPL')
-checkdepends=(dejagnu debuginfod bc)
+#checkdepends=(debuginfod bc)
 depends=()
 source=("https://ftp.gnu.org/gnu/binutils/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('e316477a914f567eccc34d5d29785b8b0f5a10208d36bbacedcc39048ecfe024')
+sha256sums=('645c25f563b8adc0a81dbd6a41cffbf4d37083a382e02d5d3df4f65c09516d00')
 _sysroot="/usr/lib/${_target}"
 
 prepare() {
@@ -42,15 +42,15 @@ build() {
 	make all
 }
 
-check() {
-	cd ""$srcdir""/${_pkgname}-${pkgver}
-    cd binutils-build
-    
-    # From riscv32-elf-binutils
-    # unset LDFLAGS as testsuite makes assumptions about which ones are active
-    # do not abort on errors - manually check log files
-    make LDFLAGS="" -k check || true
-}
+# check() {
+# 	cd ""$srcdir""/${_pkgname}-${pkgver}
+#     cd binutils-build
+#     
+#     # From riscv32-elf-binutils
+#     # unset LDFLAGS as testsuite makes assumptions about which ones are active
+#     # do not abort on errors - manually check log files
+#     make LDFLAGS="" -k check || true
+# }
 
 package() {
 	cd ""$srcdir""/${_pkgname}-${pkgver}
