@@ -1,0 +1,17 @@
+pkgbase = eyedropper
+	pkgdesc = A simple to use color picker and editor
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/FineFindus/eyedropper
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = rust
+	makedepends = git
+	makedepends = meson
+	depends = libadwaita
+	depends = gtk4
+	source = git+https://github.com/FineFindus/eyedropper#commit=654f120c103292c4df31912b4c8b315a07c8071f
+	md5sums = SKIP
+
+pkgname = eyedropper
