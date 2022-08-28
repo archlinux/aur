@@ -3,7 +3,7 @@
 
 pkgname=wapm
 _pkgrepo=${pkgname}-cli
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc='WebAssembly Package Manager'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("${_pkgrepo}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('ea38d918aaae91d3776b29203d83a24b0408c8d6d711c6f738273fb1fda850a962bdc97e61a8f7f14b7ac122f13c6cf2954d11f5f51453c51d74f11769aef741')
+sha512sums=('1565be6b505889e1618852cf45752d639638341b1374070fcc3484dd4c4bfb8107332de5eb328f59543abc98c87f024ea0d45ad293fe8e5b73d0b14acc753924')
 
 prepare() {
   cd ${_pkgrepo}-${pkgver}
