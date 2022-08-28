@@ -875,7 +875,8 @@ pkgname='canon-cque'
 #_cnver='4.0-5'; _dl64r='45517'; _dl32r='45511'; _dl64d='45505'; _dl32d='45482'
 #_cnver='4.0-7'; _dl64r='45517'; _dl32r='45511'; _dl64d='45505'; _dl32d='45482'
 #_cnver='4.0-8'; _dl64r='45517'; _dl32r='45511'; _dl64d='45505'; _dl32d='45482'
-_cnver='4.0-9'; _dl64r='45517'; _dl32r='45511'; _dl64d='45505'; _dl32d='45482'; _dl64t='48570'; _dl32t='48569'
+#_cnver='4.0-9'; _dl64r='45517'; _dl32r='45511'; _dl64d='45505'; _dl32d='45482'; _dl64t='48570'; _dl32t='48569'
+_cnver='4.0-10'; _dl64r='45517'; _dl32r='45511'; _dl64d='45505'; _dl32d='45482'; _dl64t='48570'; _dl32t='48569'
 pkgver="${_cnver//-/.}"
 pkgrel='1'
 pkgdesc='CUPS printer driver for Canon imagePRESS imageRUNNER ADVANCE PRO C iR i-SENSYS FAX LBP MF Laser Shot PC-D copier printers, may require PCL/PXL or PS dealer LMS license'
@@ -886,25 +887,26 @@ depends=('cups' 'cups-filters')
 options=('!strip')
 source=('LICENSE')
 _srcdir="cque-en-${_cnver}"
-_flt="Cque_Linux_${_cnver//-/}_64_EN"
-_flr="Cque_Linux_Driver_${_cnver//-/}_64_EN"
-_fld="Cque_${_cnver//-/.}_Linux_64_EN"
+_flt="CQue_Linux_${_cnver//-/.}_64_EN"
+_flr="cque-en-${_cnver}.x86_64"
+_fld="cque-en-${_cnver}.x86_64"
 #source_x86_64=("https://files.canon-europe.com/files/soft01-${_dl64t}/Driver/${_flt}.tar.gz")
 source_x86_64=("https://files.canon-europe.com/files/soft${_dl64r}/Software/${_flr}.rpm")
 #source_x86_64=("https://files.canon-europe.com/files/soft${_dl64d}/Driver/${_fld}.deb")
 _flt="${_flt//64/32}"
-_flr="${_flr//64/32}"
-_fld="${_fld//64/32}"
+_flt="CQue_v${_cnver//-/.}_Linux_32_EN"
+_flr="${_flr//x86_64/i386}"
+_fld="${_fld//x86_64/i386}"
 #source_i686=("https://files.canon-europe.com/files/soft01-${_dl32t}/Driver/${_flt}.tar.gz")
 source_i686=("https://files.canon-europe.com/files/soft${_dl32r}/Software/${_flr}.rpm")
 #source_i686=("https://files.canon-europe.com/files/soft${_dl32d}/Software/${_fld}.deb")
 unset _fl
 md5sums=('4df9593c184cd39bb9d9df6195c4d390')
-md5sums_i686=('2d2b5ba29164edc083c0c86219cc0d05')
-md5sums_x86_64=('90123477f13bc1ea02380ccd140ea276')
+md5sums_i686=('84cf3ffd36a1ee155f88e471c581a132')
+md5sums_x86_64=('bf9ef148f334e1714820c8bcf663912c')
 sha256sums=('343a624f559718d085b01605572fdf1cf33201931f06ef37567bbd497a29d333')
-sha256sums_i686=('02af46b896c7d004ddebbad99c30e1959afb3050aa307a75ce8692f5b428624e')
-sha256sums_x86_64=('193eaf175a94ffa36493bbbf7e0a3e69ccfc2b4d052fa841577e65dc09efb66f')
+sha256sums_i686=('c58a4e9048c24e51ac15d1a829d562c755479e3c63f8ab3f4020cd348d344205')
+sha256sums_x86_64=('8790d6cd3d7ac2a261fb72270f9652cc55bb250ac84397cf8986335f2c8fd368')
 
 prepare() {
   set -u
