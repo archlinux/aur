@@ -1,13 +1,22 @@
-post_install() {
-	getent group grafana >/dev/null || groupadd -r grafana
-	getent passwd grafana >/dev/null || useradd -d /var/lib/grafana -g grafana -r -M -s /bin/false grafana
-	chown grafana:grafana /var/{lib,log}/grafana
-}
+#/bin/sh
 
+# arg 1:  the new package version
+# arg 2:  the old package version
 post_upgrade() {
-	post_install
+  if (( "$(vercmp $2 2.6.0-3)" < 0 )); then
+    echo '==> Configuration moved to /etc/grafana.ini'
+  fi
+  if (( "$(vercmp $2 4.4.3-1)" < 0 )); then
+    echo '==> Grafana now uses static UID/GID 207'
+    echo '==> Trying to update your previous UID/GID'
+    if ! { usermod -u 207 grafana && groupmod -g 207 grafana &&
+      chown -R 207:207 /var/{lib,log}/grafana; }; then
+      echo '==> Automatic GID/UID change failed. Do it manually!'
+      echo '==> usermod -g 207 grafana && groupmod -u 207 grafana && chown -R 207:207 /var/l{ib,og}/grafana'
+    fi
+    echo '==> Check the ownership of your files!'
+  fi
+  return 0
 }
 
-post_remove() {
-	userdel grafana
-}
+# vim:set ts=2 sw=2 et:

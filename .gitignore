@@ -1,0 +1,4 @@
+pkg/
+src/
+grafana-*.tar.gz
+grafana-*.tar
