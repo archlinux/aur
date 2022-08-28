@@ -1,26 +1,27 @@
 # Maintainer: Artem Vorotnikov <artem@vorotnikov.me>
 
 pkgname=erigon
-pkgver=2022.08.02
+pkgver=2022.08.03
 pkgrel=1
 pkgdesc='Ethereum implementation on the efficiency frontier.'
 arch=('x86_64')
 url='https://github.com/ledgerwatch/erigon'
 license=('GPL3')
 depends=('glibc')
-makedepends=('git' 'go')
-source=("git+https://github.com/ledgerwatch/erigon.git#tag=v${pkgver}")
+makedepends=('go')
+source=("https://github.com/ledgerwatch/erigon/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-    cd ${pkgname}
+    cd ${pkgname}-${pkgver}
 
     export CGO_LDFLAGS="${LDFLAGS}"
+    export GIT_TAG="v${pkgver}"
     make all
 }
 
 package() {
-    cd ${pkgname}
+    cd ${pkgname}-${pkgver}
 
     install -Dm755 build/bin/erigon "${pkgdir}"/usr/bin/erigon
     install -Dm755 build/bin/rpcdaemon "${pkgdir}"/usr/bin/erigon-rpcdaemon
