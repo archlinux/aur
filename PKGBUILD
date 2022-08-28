@@ -3,7 +3,7 @@
 
 _pkgname=gimp
 pkgname=${_pkgname}-devel-noconflict
-pkgver=2.99.10
+pkgver=2.99.12
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program (Development version, doesn't conflict with gimp 2.0)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -16,7 +16,7 @@ makedepends=('intltool' 'libxslt' 'glib-networking'
              'alsa-lib' 'curl' 'ghostscript' 'libxpm'
              'libheif' 'libwebp' 'libmng' 'iso-codes' 'aalib' 'zlib' 'libjxl'
              'gjs'  'luajit' 'meson' 'gobject-introspection'
-             'gi-docgen' 'xorg-server-xvfb' 'vala' 'highway') #'yelp-tools')
+             'gi-docgen' 'xorg-server-xvfb' 'vala' 'highway' 'yelp-tools')
 checkdepends=('xorg-server-xvfb')
 optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cups print support'
             'alsa-lib: for MIDI event controller module'
@@ -34,27 +34,23 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
             'luajit: LUA scripting support'
             'lua51-lgi: LUA scripting support')
 provides=("${_pkgname}=${pkgver}")
-source=(https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2 linux.gpl)
-sha256sums=('9e08f1c4a455e8dd4dd0579fe289419e38c835db38e3c0d40cd1137fb0112f29'
+source=(https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz
+        linux.gpl)
+sha256sums=('7ba1b032ea520d540e4acad3da16d8637fe693743fdb36e0121775eea569f6a3'
             '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3')
 build() {
-  cd "${_pkgname}-${pkgver}"
-    ./configure \
+  meson setup build "${_pkgname}-${pkgver}" \
     --prefix=/usr \
-    --sysconfdir=/etc \
-    --libdir=/usr/lib \
-    --libexecdir=/usr/lib/gimp \
-    --datarootdir=/usr/share \
-    --enable-mp \
-    --enable-gimp-console \
-    --enable-gi-docgen
-#   --enable-g-ir-doc
-  make
+    --libexecdir=lib/gimp \
+    --buildtype=release \
+    -Dgi-docgen=enabled \
+    -Dg-ir-doc=true
+  ninja -C build
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
+  cd "$srcdir/build"
+  DESTDIR="${pkgdir}" ninja install
   install -Dm 644 "${srcdir}/linux.gpl" "${pkgdir}/usr/share/gimp/2.99/palettes/Linux.gpl"
   mv "${pkgdir}/usr/share/icons/hicolor/16x16/apps/gimp.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/gimp-2.99.png"
   mv "${pkgdir}/usr/share/icons/hicolor/22x22/apps/gimp.png" "${pkgdir}/usr/share/icons/hicolor/22x22/apps/gimp-2.99.png"
@@ -64,13 +60,14 @@ package() {
   mv "${pkgdir}/usr/share/icons/hicolor/64x64/apps/gimp.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/gimp-2.99.png"
   mv "${pkgdir}/usr/share/icons/hicolor/256x256/apps/gimp.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/gimp-2.99.png"
   mv "${pkgdir}/usr/share/icons/hicolor/scalable/apps/gimp.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/gimp-2.99.svg"
-  mv "${pkgdir}/usr/share/metainfo/gimp-data-extras.metainfo.xml" "${pkgdir}/usr/share/metainfo/gimp-data-extras-2.99.metainfo.xml"
-  sed -i 's/gimp-data-extras/gimp-data-extras-2.99/g' "${pkgdir}/usr/share/metainfo/gimp-data-extras-2.99.metainfo.xml"
-  sed -i 's/org.gimp.GIMP/org.gimp.GIMP-2.99/g' "${pkgdir}/usr/share/metainfo/gimp-data-extras-2.99.metainfo.xml"
   mv "${pkgdir}/usr/share/metainfo/org.gimp.GIMP.appdata.xml" "${pkgdir}/usr/share/metainfo/org.gimp.GIMP-2.99.appdata.xml"
   sed -i 's/org.gimp.GIMP/org.gimp.GIMP-2.99/g' "${pkgdir}/usr/share/metainfo/org.gimp.GIMP-2.99.appdata.xml"
   sed -i 's/gimp.desktop/gimp-2.99.desktop/g' "${pkgdir}/usr/share/metainfo/org.gimp.GIMP-2.99.appdata.xml"
   mv "${pkgdir}/usr/share/applications/gimp.desktop" "${pkgdir}/usr/share/applications/gimp-2.99.desktop"
   sed -i 's/^\(Name.*\)/\1 (devel)/g' "${pkgdir}/usr/share/applications/gimp-2.99.desktop"
   sed -i 's/Icon=gimp/Icon=gimp-2.99/g' "${pkgdir}/usr/share/applications/gimp-2.99.desktop"
+  rm "${pkgdir}/usr/share/man/man1/gimp-console.1"
+  rm "${pkgdir}/usr/share/man/man1/gimp.1"
+  rm "${pkgdir}/usr/share/man/man1/gimptool.1"
+  rm "${pkgdir}/usr/share/man/man5/gimprc.5"
 }
