@@ -1,20 +1,18 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-role-identifiable'
-pkgver='0.007'
+pkgver='0.008'
 pkgrel='1'
 pkgdesc=""
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-moose')
-makedepends=()
 url='https://metacpan.org/release/Role-Identifiable'
-source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Role-Identifiable-0.007.tar.gz')
-md5sums=('46bbc6db5fdcf301aadb377bab8c1d07')
-sha512sums=('811c81e3fbf8499269c4db3a45d60b35ae6ff8a8d5a93308607f37c97c2f52ad4ee6db28d15497d4d1f8cb59c67f03f479632d1a2d440034e8cd711b2a5349df')
-_distdir="Role-Identifiable-0.007"
+source=(https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Role-Identifiable-$pkgver.tar.gz)
+md5sums=('7ef3a4ab369b4fd55ab3ed183d4b2934')
+_distdir="Role-Identifiable-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -42,9 +40,3 @@ package() {
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
