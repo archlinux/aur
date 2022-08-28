@@ -1,14 +1,15 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=nephrite-gtk-theme-git
 pkgver=r1.c277536
-pkgrel=1
+pkgrel=2
 pkgdesc="Nephrite gtk theme for linux"
 arch=('any')
 url="https://www.pling.com/p/1891521"
 license=('GPL3')
 depends=('gnome-themes-extra' 'gtk3')
 makedepends=('git' 'sassc')
-optdepends=('gtk-engine-murrine: GTK2 theme support')
+optdepends=('gtk-engine-murrine: GTK2 theme support'
+            'colloid-icon-theme: Recommended icon theme')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!strip')
