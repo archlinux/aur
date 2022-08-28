@@ -1,0 +1,13 @@
+pkgbase = jml
+	pkgdesc = Testing hybridization using species trees https://doi.org/10.1111/j.1755-0998.2011.03065.x
+	pkgver = 1.3.1
+	pkgrel = 2
+	url = https://github.com/simjoly/jml
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	makedepends = gcc
+	source = jml-1.3.1::https://github.com/simjoly/jml/archive/v1.3.1.tar.gz
+	md5sums = 39d2beae56982e75e68cc06ce5c571f7
+
+pkgname = jml
