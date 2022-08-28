@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=groupdata2
-_pkgver=2.0.0
+_pkgver=2.0.1
 pkgname=r-${_pkgname,,}
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='Creating Groups from Data'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-xpectr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a314616e31eaf21039525c9077a8171efc1743199e38de0aa726f30fa413c4e8')
+sha256sums=('30f1c8cb3881ea2a499bb1db7587e01cd1b965d4ba7f6131ab9099425ab0f7be')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

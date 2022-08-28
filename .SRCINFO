@@ -1,6 +1,6 @@
 pkgbase = r-groupdata2
 	pkgdesc = Creating Groups from Data
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=groupdata2
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-groupdata2
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-xpectr
-	source = https://cran.r-project.org/src/contrib/groupdata2_2.0.0.tar.gz
-	sha256sums = a314616e31eaf21039525c9077a8171efc1743199e38de0aa726f30fa413c4e8
+	source = https://cran.r-project.org/src/contrib/groupdata2_2.0.1.tar.gz
+	sha256sums = 30f1c8cb3881ea2a499bb1db7587e01cd1b965d4ba7f6131ab9099425ab0f7be
 
 pkgname = r-groupdata2
