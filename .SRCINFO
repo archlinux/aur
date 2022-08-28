@@ -1,0 +1,20 @@
+pkgbase = nephrite-gtk-theme-git
+	pkgdesc = Nephrite gtk theme for linux
+	pkgver = r1.c277536
+	pkgrel = 1
+	url = https://www.pling.com/p/1891521
+	install = nephrite-theme.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = sassc
+	depends = gnome-themes-extra
+	depends = gtk3
+	optdepends = gtk-engine-murrine: GTK2 theme support
+	provides = nephrite-gtk-theme
+	conflicts = nephrite-gtk-theme
+	options = !strip
+	source = git+https://github.com/vinceliuice/Nephrite-gtk-theme.git
+	sha256sums = SKIP
+
+pkgname = nephrite-gtk-theme-git
