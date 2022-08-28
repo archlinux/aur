@@ -4,8 +4,7 @@
 pkgname='python-shlib'
 _pkgname=${pkgname#python-}
 pkgver=1.4
-pkgrel=3
-epoch=1
+pkgrel=4
 pkgdesc="light-weight library to do shell-script like things relatively easily with Python"
 arch=('any')
 depends=(
@@ -14,7 +13,6 @@ depends=(
 )
 makedepends=(
 	'python-setuptools'
-	'python-wheel'
 	'python-pip'
 )
 url="https://github.com/KenKundert/$_pkgname"

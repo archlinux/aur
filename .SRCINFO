@@ -1,13 +1,11 @@
 pkgbase = python-shlib
 	pkgdesc = light-weight library to do shell-script like things relatively easily with Python
 	pkgver = 1.4
-	pkgrel = 3
-	epoch = 1
+	pkgrel = 4
 	url = https://github.com/KenKundert/shlib
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
-	makedepends = python-wheel
 	makedepends = python-pip
 	depends = python-braceexpand
 	depends = python-inform
