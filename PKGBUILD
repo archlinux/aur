@@ -1,7 +1,7 @@
 # Maintainer: Bojan Momcilov <bojan.momcilov@yandex.com>
 
 pkgname=eidmiddleware
-pkgver=3.4.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="AKD eID Middleware basic user package"
 arch=('x86_64')
