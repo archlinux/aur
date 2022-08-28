@@ -1,7 +1,7 @@
 # Maintainer: Dhruva Sambrani <dhruvasambrani19@gmail.com>
 pkgname=sioyek-appimage
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="A PDF viewer designed for reading research papers and technical books"
 arch=('x86_64')
 url="https://github.com/ahrm/sioyek"
@@ -23,7 +23,7 @@ source=(
 _filename='Sioyek-x86_64.AppImage'
 _install_path='/opt/appimages/Sioyek.AppImage'
 md5sums=(
-  c0e3d0d18cd36ebf6cb065c5fd1189cf
+  60c2fafa91e6ccd86876277f190f5278
 ) #autofill using updpkgsums
 
 package() {
