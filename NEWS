@@ -1,0 +1,42 @@
+News
+====
+
+0.3.1 (2022-08-24)
+------------------
+
+ * Fix building with Autoconf < 2.7
+
+0.3.0 (2022-08-15)
+------------------
+
+ * New package version scheme
+ * New supported target interfaces:
+   - Silicon Labs 2-wire interface (C2)
+   - Serial peripheral interface (SPI)
+   - Compact JTAG (cJTAG)
+ * Add support for querying USB voltage
+ * jtag: Add functions to set/clear the TCK and TMS signals
+ * New string utility functions:
+   - jaylink_target_interface_string()
+   - jaylink_hardware_type_string()
+ * transport/tcp: Implement connection timeout
+
+0.2.0 (2020-07-11)
+------------------
+
+ * Initial support for TCP/IP devices
+ * libusb is now optional
+ * configure: Add switch to build without libusb
+ * configure: Show enabled transports
+ * Support for various new USB product IDs
+ * Fix build issue with MSYS2
+ * Fix socket timeouts on Windows
+ * Make library C++ compatible
+ * New log level for I/O debug messages
+ * Add function to get USB bus and port numbers of a device
+ * Add function to retrieve counter values
+
+0.1.0 (2016-12-28)
+------------------
+
+ * Initial release.
