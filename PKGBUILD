@@ -6,7 +6,7 @@ _pkgbase=rtl8812au
 pkgver=r176.4fa0ce3
 pkgrel=1
 pkgdesc="Realtek 802.11ac (rtl8812au) v4.2.2 (7502.20130507) driver altered to build on Linux kernel version >= 3.10."
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/gnab/rtl8812au/tree/master"
 license=('GPL2')
 depends=('dkms' 'bc' 'linux-headers')
