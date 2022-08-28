@@ -2,7 +2,7 @@ all: help
 
 .SILENT: help current-version
 .PRECIOUS: .SRCINFO PKGBUILD
-.PHONY: help build update install publish update-baresrc
+.PHONY: help build update install publish
 
 REPODIR := $(shell egrep -m1 '^source=' PKGBUILD | cut -d= -f2 | sed -r "s/^\('(.*)'\)\$$/\1/ ; s~^git\+https?://github.com/.*/([^/]+)/?\$$~\1~")
 PKGNAME = $(shell egrep -m1 '^pkgname=' PKGBUILD | cut -d= -f2)
@@ -27,11 +27,9 @@ publish: update
 install: build
 	makepkg --noextract --install --needed
 
-update: update-baresrc build
+update: build
 
 build: current-version .SRCINFO
-
-# update-baresrc: $(REPODIR)
 	git --bare --git-dir=$(REPODIR) fetch origin master
 
 .SRCINFO: $(TARGET_ARCHIVE)
@@ -40,7 +38,7 @@ build: current-version .SRCINFO
 %.pkg.tar.zst: current-version PKGBUILD
 	makepkg
 
-current-version: update-baresrc
+current-version: $(REPODIR)/
 	cd $(REPODIR) && printf "r%s.%s" "$$(git rev-list --count HEAD)" "$$(git rev-parse --short HEAD)" > ../current-version.tmp
 	if [ ! -e 'current-version' ]; then \
 		mv current-version.tmp current-version ; \
@@ -49,8 +47,9 @@ current-version: update-baresrc
 	else \
 		rm current-version.tmp ; \
 	fi
-
-# PKGBUILD: $(REPODIR) $(REPODIR)/HEAD $(REPODIR)/refs/heads/*
-
-# $(REPODIR):
+# download sources
 	makepkg -o
+
+$(REPODIR)/:
+	makepkg -o
+	[ -e $(REPODIR)/config -a -e $(REPODIR)/HEAD ]
