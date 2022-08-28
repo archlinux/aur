@@ -1,6 +1,6 @@
 pkgbase = rtl8812au422-dkms-git
-	pkgdesc = rtl8821AU/rtl8812AU/rtl8811AU driver with firmware version 4.2.2 (7502.20130507) (Tested and working as of Linux kernel 5.3.8-arch1-1)
-	pkgver = 4.2.2.r7502.gc20130507aur2
+	pkgdesc = Realtek 802.11ac (rtl8812au) v4.2.2 (7502.20130507) driver altered to build on Linux kernel version >= 3.10.
+	pkgver = r176.4fa0ce3
 	pkgrel = 1
 	url = https://github.com/gnab/rtl8812au/tree/master
 	arch = i686
@@ -8,6 +8,8 @@ pkgbase = rtl8812au422-dkms-git
 	license = GPL2
 	makedepends = git
 	depends = dkms
+	depends = bc
+	depends = linux-headers
 	conflicts = rtl8812au
 	conflicts = rtl8812au-dkms-git
 	conflicts = rtl8821au-dkms-git
@@ -15,7 +17,6 @@ pkgbase = rtl8812au422-dkms-git
 	source = git+https://github.com/gnab/rtl8812au
 	source = dkms.conf
 	sha256sums = SKIP
-	sha256sums = 63d3e54d2aa63bfec9b6f3ddbd615a1534a16e554a8aeb3d3c8cc137f63d9e4c
+	sha256sums = e0645e88941cf78a02ae5b8f257e24f95bc8001f52e9653cf2c88e6941920aef
 
 pkgname = rtl8812au422-dkms-git
-
