@@ -1,7 +1,7 @@
 pkgbase = nerd-fonts-go-mono
 	pkgdesc = Patched font Go Mono from the nerd-fonts library
-	pkgver = 2.1.0
-	pkgrel = 2
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
 	groups = nerd-fonts
@@ -10,10 +10,9 @@ pkgbase = nerd-fonts-go-mono
 	provides = nerd-fonts-go-mono
 	conflicts = nerd-fonts-git
 	conflicts = nerd-fonts-complet
-	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Go-Mono.zip
-	source = https://github.com/ryanoasis/nerd-fonts/raw/v2.1.0/LICENSE
-	sha1sums = 6cfd7cd5be33b9f39afa2bd14987ff72ca3a664c
-	sha1sums = 92fdad3c8babc0473da5f03e41fb1151417ab386
+	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.0/Go-Mono.zip
+	source = https://github.com/ryanoasis/nerd-fonts/raw/v2.2.0/LICENSE
+	b2sums = 2a735d400c37d0b07610e077f9a1cb7c15616bec5df8d3e26993c796007227b4fec672e7075769d9c0e3a669cfe0c47b3f7f49b664250da2f6dba47f44daa4df
+	b2sums = 386dfcb5ead367bfc44fc55f7e94548c03bdb24ca088ab56f9609e7cdaa3eab9c56b548966feaf7312da606b645e9af35556fc212132733efcdbcc17397c808a
 
 pkgname = nerd-fonts-go-mono
-
