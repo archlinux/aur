@@ -6,8 +6,8 @@
 _name="Surge XT"
 _repo_name=surge
 pkgname=surge-xt
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="An Open Source Digital Synthesizer"
 arch=(x86_64 aarch64)
 url="https://surge-synthesizer.github.io/"
@@ -22,10 +22,8 @@ optdepends=(
   'jack: backend for standalone'
   'vst3-host: for VST3 plugins'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/surge-synthesizer/releases-xt/releases/download/$pkgver/surge-src-$pkgver.tar.gz"
-        'install-clap.patch::https://patch-diff.githubusercontent.com/raw/surge-synthesizer/surge/pull/6471.patch')
-sha256sums=('82b662b6b3b37a9007a750ce60a8498c96eb906bc1b718ae3cf66ee820f0d179'
-            '54e76ccd2878493ac95bae50ad1f9cac47094b00408f600ac6ac4b1108694874')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/surge-synthesizer/releases-xt/releases/download/$pkgver/surge-src-$pkgver.tar.gz")
+sha256sums=('546181606fbedad2280a5d14d82355312e6bfd3b14285ed099335e5bb2c13485')
 
 prepare() {
   mv -v "$_repo_name" "$pkgname-$pkgver"
@@ -39,8 +37,6 @@ prepare() {
       -e "s/@SURGE_BUILD_ARCH@/${CARCH}/g" \
       -e "s/@SURGE_FULL_VERSION@/${pkgver}/g" \
       -i src/common/version.cpp.in
-  # https://github.com/surge-synthesizer/surge/pull/6471
-  patch -p1 -i ../install-clap.patch
 }
 
 build() {

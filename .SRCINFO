@@ -1,7 +1,7 @@
 pkgbase = surge-xt
 	pkgdesc = An Open Source Digital Synthesizer
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://surge-synthesizer.github.io/
 	arch = x86_64
 	arch = aarch64
@@ -34,10 +34,8 @@ pkgbase = surge-xt
 	optdepends = clap-host: for CLAP plugins
 	optdepends = jack: backend for standalone
 	optdepends = vst3-host: for VST3 plugins
-	source = surge-xt-1.1.0.tar.gz::https://github.com/surge-synthesizer/releases-xt/releases/download/1.1.0/surge-src-1.1.0.tar.gz
-	source = install-clap.patch::https://patch-diff.githubusercontent.com/raw/surge-synthesizer/surge/pull/6471.patch
-	sha256sums = 82b662b6b3b37a9007a750ce60a8498c96eb906bc1b718ae3cf66ee820f0d179
-	sha256sums = 54e76ccd2878493ac95bae50ad1f9cac47094b00408f600ac6ac4b1108694874
+	source = surge-xt-1.1.1.tar.gz::https://github.com/surge-synthesizer/releases-xt/releases/download/1.1.1/surge-src-1.1.1.tar.gz
+	sha256sums = 546181606fbedad2280a5d14d82355312e6bfd3b14285ed099335e5bb2c13485
 
 pkgname = surge-xt
 	depends = cairo

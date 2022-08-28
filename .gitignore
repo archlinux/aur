@@ -1,4 +1,3 @@
-/install-clap.patch
 pkg/
 src/
 *.tar.*
