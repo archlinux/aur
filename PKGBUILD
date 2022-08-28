@@ -1,7 +1,7 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=yt-dlp-git
-pkgver=2022.04.08.r20.gcda1bc519
+pkgver=2022.08.19.r10.g07275b708
 pkgrel=1
 pkgdesc='A youtube-dl fork with additional features and fixes (git)'
 arch=(any)
@@ -34,7 +34,8 @@ build() {
 
 check() {
     cd "${pkgname%-git}"
-    pytest -v -m "not download"
+    # Skip test_escaping as it breaks with ffmpeg 5.1, see https://github.com/yt-dlp/yt-dlp/issues/4604
+    pytest -v -m "not download" -k "not test_escaping"
 }
 
 package() {
