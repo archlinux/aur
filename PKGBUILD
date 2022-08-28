@@ -1,20 +1,17 @@
 # Contributor: Christos Nouskas <nous@archlinux.us>
-# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-types-path-tiny'
-pkgver='0.005'
+pkgver='0.006'
 pkgrel='1'
 pkgdesc="Path::Tiny types and coercions for Moose and Moo"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-file-pushd>=0' 'perl-path-tiny>=0' 'perl-type-tiny>=0')
-makedepends=()
+depends=('perl-file-pushd' 'perl-path-tiny' 'perl-type-tiny')
 url='https://metacpan.org/release/Types-Path-Tiny'
-source=('http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/Types-Path-Tiny-0.005.tar.gz')
-md5sums=('94945f7f1a3be576c78bce82bfc89fa0')
-sha512sums=('2e9f4694950bc9426d7b72e33234e594f4c2d4cc434526e3096b7a193cebdb2b4c4890b01637a1684e1d3ca67e355879bce5b79dcc69d14ff23f591ff193623e')
-_distdir="Types-Path-Tiny-0.005"
+source=('http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/Types-Path-Tiny-0.006.tar.gz')
+md5sums=('071c6b98edebfc2fac8603e7cd13650a')
+_distdir="Types-Path-Tiny-0.006"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -42,9 +39,3 @@ package() {
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
