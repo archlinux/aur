@@ -1,11 +1,11 @@
 pkgbase = keepass-plugin-hibpofflinecheck
 	pkgdesc = Keepass plugin that performs offline checks against the haveibeenpwned passwords file
-	pkgver = 1.7.7
+	pkgver = 1.7.8
 	pkgrel = 1
 	url = https://github.com/mihaifm/HIBPOfflineCheck
 	arch = any
 	depends = keepass
-	source = HIBPOfflineCheck-1.7.7.tar.gz::https://github.com/mihaifm/HIBPOfflineCheck/archive/1.7.7.tar.gz
-	sha256sums = a6e6c2f47b8a3351f3f9081feca3e71ae4276494c76766e3c884248c2a3d9960
+	source = HIBPOfflineCheck-1.7.8.tar.gz::https://github.com/mihaifm/HIBPOfflineCheck/archive/1.7.8.tar.gz
+	sha256sums = 50e8c8c2e0d56281c10e6e1f09e0852a38c9cd821e7bc08b279e03fb38529411
 
 pkgname = keepass-plugin-hibpofflinecheck
