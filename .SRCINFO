@@ -1,6 +1,6 @@
 pkgbase = scotch-git
 	pkgdesc = Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering. This is the all-inclusive version (MPI/serial/esmumps).
-	pkgver = r542.2148346
+	pkgver = r733.1093134
 	pkgrel = 1
 	url = https://gitlab.inria.fr/scotch/scotch
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = scotch-git
 	conflicts = ptscotch-openmpi
 	conflicts = scotch_esmumps
 	conflicts = scotch_esmumps5
-	source = git+https://gitlab.inria.fr/scotch/scotch
+	source = git+https://gitlab.inria.fr/scotch/scotch.git
 	sha256sums = SKIP
 
 pkgname = scotch-git

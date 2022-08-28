@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=scotch-git
-pkgver=r542.2148346
+pkgver=r733.1093134
 pkgrel=1
 pkgdesc="Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering. This is the all-inclusive version (MPI/serial/esmumps)."
 url="https://gitlab.inria.fr/scotch/scotch"
@@ -10,7 +10,7 @@ depends=('zlib' 'openmpi' 'bzip2')
 provides=('scotch' 'ptscotch' 'ptscotch-openmpi' 'scotch_esmumps' 'scotch_ptesmumps')
 conflicts=('scotch' 'ptscotch-openmpi' 'scotch_esmumps' 'scotch_esmumps5')
 arch=('i686' 'x86_64')
-source=("git+https://gitlab.inria.fr/scotch/scotch")
+source=("git+$url.git")
 sha256sums=('SKIP')
 _pkgname=scotch
 
