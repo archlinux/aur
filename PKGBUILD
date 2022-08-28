@@ -1,7 +1,7 @@
 # Maintainer: Kirisame Marisa <jackeyz2022@mail.ru>
 pkgname='hmcl-clean-bin'
 pkgver=3.5.3.222
-pkgrel=1
+pkgrel=2
 pkgdesc="Clean Version of HMCL, remove dev/nightly warnings, multiplayer(not FOSS), sponsor messages and so on. "
 arch=('x86_64')
 url="https://github.com/weiliang1503/HMCL-Clean"

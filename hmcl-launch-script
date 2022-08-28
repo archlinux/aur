@@ -6,4 +6,4 @@ if [[ "$1" != "-p" ]]; then
     cd $WORKDIR
 fi
 
-exec /usr/lib/jvm/zulu-jre-fx/bin/java -jar "/usr/share/java/hmcl-bin/hmcl-bin.jar" "$@"
+exec `command -v java` -jar "/usr/share/java/hmcl-bin/hmcl-clean-bin.jar" "$@"
