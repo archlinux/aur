@@ -1,6 +1,6 @@
 pkgbase = nwg-shell
 	pkgdesc = nwg-shell meta-package, installer and updater
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-shell
 	arch = x86_64
@@ -42,7 +42,6 @@ pkgbase = nwg-shell
 	depends = nwg-panel
 	depends = nwg-shell-config
 	depends = nwg-shell-wallpapers
-	depends = nwg-wrapper
 	depends = nwg-displays
 	depends = python-dasbus
 	depends = swaync
@@ -51,7 +50,7 @@ pkgbase = nwg-shell
 	optdepends = thunar: suggested file manager
 	optdepends = nano: in case you hate vi
 	optdepends = gtklock: gtk-based alternative to swaylock
-	source = nwg-shell-0.2.3.tar.gz::https://github.com/nwg-piotr/nwg-shell/archive/v0.2.3.tar.gz
-	md5sums = 8cf30ecb7f48817d5f810480322a4188
+	source = nwg-shell-0.2.4.tar.gz::https://github.com/nwg-piotr/nwg-shell/archive/v0.2.4.tar.gz
+	md5sums = 6bffc4075d16dcba078ba2bf7dcf3e35
 
 pkgname = nwg-shell
