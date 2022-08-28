@@ -1,15 +1,15 @@
 # Maintainer: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname='artemis'
-pkgver=18.1.0
-pkgrel=1
+pkgver=18.2.0
+pkgrel=5
 pkgdesc='A genome viewer and annotation tool that visualizes biological sequence features'
 arch=('x86_64')
 url=https://www.sanger.ac.uk/science/tools/"${pkgname}"
 license=('GPL2')
 depends=('java-runtime>=1.6')
 source=("${pkgname}"-"${pkgver}".tar.gz::https://github.com/sanger-pathogens/Artemis/releases/download/v${pkgver}/artemis-unix-release-${pkgver}.tar.gz)
-sha256sums=('c1a159f80ac5548227a7ef2ec02f72fbc90b1ccd3f8a27fb26d8c220b283a034')
+sha256sums=('06441e1abab139cb0a09d5844cb1b84ae727ace53a6c0efdd1eea8d8cfab8382')
 
 package() {
   cd "${srcdir}"/"${pkgname}"
