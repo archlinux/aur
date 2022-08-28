@@ -1,19 +1,18 @@
-# Maintainer: Kars Wang <jaklsy AT gmail.com>
+# Contributor: Kars Wang <jaklsy AT gmail.com>
 
 pkgname='perl-pod-elemental-perlmunger'
-pkgver=0.200002
+pkgver=0.200006
 pkgrel=1
 pkgdesc='a thing that takes a string of Perl and rewrites its documentation'
 _dist='Pod-Elemental-PerlMunger'
 arch=('any')
 url="https://metacpan.org/release/$_dist"
 license=('PerlArtistic')
-depends=('perl' 'perl-encode>=0' 'perl-pod-elemental>=0.103000' 'perl-moose>=0' 'perl-ppi>=0' 'perl-params-util>=0' 'perl-list-allutils>=0' 'perl-namespace-autoclean>=0')
-checkdepends=('perl-test-simple>=0.96' 'perl-pod-elemental>=0.103000' 'perl-version>=0' 'perl-moose>=0' 'perl-pathtools>=0' 'perl-extutils-makemaker>=0' 'perl-scalar-list-utils>=0')
-provides=()
+depends=('perl' 'perl-encode' 'perl-pod-elemental' 'perl-moose' 'perl-ppi' 'perl-params-util' 'perl-list-allutils' 'perl-namespace-autoclean')
+checkdepends=('perl-test-simple' 'perl-pod-elemental' 'perl-version' 'perl-moose' 'perl-pathtools' 'perl-extutils-makemaker' 'perl-scalar-list-utils')
 options=('!emptydirs' 'purge')
 source=("http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/$_dist-$pkgver.tar.gz")
-sha256sums=('10d4adaaf293574907f1317e4b6cf992a520dee0bdcbd4d25137f96cbc80d3d4')
+sha256sums=('09fd3b5d53119437a01dced66b42eafdcd53895b3c32a2b0f781f36fda0f665b')
 
 build() (
   cd "$srcdir/$_dist-$pkgver"
