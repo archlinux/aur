@@ -1,7 +1,7 @@
 # Packager: Joseph R. Quinn <quinn.josephr@protonmail.com>
 # Maintainer: Joseph R. Quinn <quinn.josephr@protonmail.com>
 pkgname=nerd-fonts-go-mono
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Patched font Go Mono from the nerd-fonts library"
 arch=("any")
