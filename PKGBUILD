@@ -1,20 +1,19 @@
-# Maintainer: Kars Wang <jaklsy AT gmail.com>
+# Contributor: Kars Wang <jaklsy AT gmail.com>
 
 pkgname='perl-type-tiny-xs'
-pkgver=0.012
+pkgver=0.022
 pkgrel=1
 pkgdesc="provides an XS boost for some of Type::Tiny's built-in type constraints"
 _dist='Type-Tiny-XS'
 arch=('i686' 'x86_64')
 url="https://metacpan.org/release/$_dist"
 license=('PerlArtistic')
-depends=('perl>=5.10.1')
-checkdepends=('perl-test-simple>=0.92')
-makedepends=()
+depends=('perl')
+checkdepends=('perl-type-tiny')
 provides=("perl-type-tiny-xs-util=$pkgver")
 options=('!emptydirs' 'purge')
 source=("http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/$_dist-$pkgver.tar.gz")
-sha256sums=('a93ed33fd21646548ab5cdb0de647cc574ad3e41b414af7980526e8612cacb16')
+sha256sums=('bcc34a31f7dc1d30cc803889b5c8f90e4773b73b5becbdb3860f5abe7e22ff00')
 
 build() (
   cd "$srcdir/$_dist-$pkgver"
