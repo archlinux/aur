@@ -1,13 +1,13 @@
 pkgbase = subsurface-libdc
 	pkgdesc = Library for communication with dive computers
-	pkgver = 5.0.8
+	pkgver = 5.0.9
 	pkgrel = 1
 	url = https://github.com/Subsurface-divelog/libdc
 	arch = x86_64
 	license = LGPL
 	depends = glibc
 	conflicts = libdivecomputer.so
-	source = subsurface-libdc-5.0.8.tar.gz::https://subsurface-divelog.org/downloads/libdivecomputer-subsurface-branch-5.0.8.tgz
-	sha256sums = f6953421148d36dc7e1ca95981bc9873894e0ab51f87ac332fd62322e77c76f2
+	source = subsurface-libdc-5.0.9.tar.gz::https://subsurface-divelog.org/downloads/libdivecomputer-subsurface-branch-5.0.9.tgz
+	sha256sums = dc64d235cced88d8db44fd9b9debd735caf7cbd199b79fabe61fecb8f64c7905
 
 pkgname = subsurface-libdc
