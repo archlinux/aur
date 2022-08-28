@@ -3,7 +3,7 @@
 # Contributor: Sebastian Wieland <wieland.s[at]online[dot]de>
 _pkgname=nextcloud
 pkgname=${_pkgname}-client-appimage-daily
-pkgver=3.5.82.20220824
+pkgver=3.5.82.20220828
 pkgrel=1
 epoch=1
 pkgdesc="Nextcloud desktop client (official daily AppImage build)"
@@ -18,7 +18,7 @@ makedepends=('p7zip' 'curl')
 noextract=("$_pkgname.AppImage")
 options=('!strip')
 source=(${_pkgname}-${pkgver}.AppImage::${url}/Nextcloud-${pkgver}-daily-x86_64.AppImage)
-sha256sums=('9b32a5749431632d83217c6b003341b70a9d92402f2f1eaa4fa9d7fe59abd669')
+sha256sums=('3a39609f63a533e5a2e2e39a0db0810ab1c34613519f89b9f96b0ccde352db4f')
 
 prepare() {
     cd "${srcdir}"
