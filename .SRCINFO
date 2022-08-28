@@ -1,6 +1,6 @@
 pkgbase = mpz-qt6
 	pkgdesc = Music player for the large local collections
-	pkgver = 1.0.20
+	pkgver = 1.0.21
 	pkgrel = 0
 	url = https://github.com/olegantonyan/mpz
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = mpz-qt6
   depends = taglib
   provides = mpz
   conflicts = mpz
-	source = mpz-qt6-1.0.20-0.zip::https://github.com/olegantonyan/mpz/archive/bdda0545e6e41d5a8f404e29a4da492ae447cdac.zip
-	sha256sums = bd477f84d9b0e8e2494b904d5e6ae40a34a9896ea6b29fbbef21a6ff9f207d49
+	source = mpz-qt6-1.0.21-0.zip::https://github.com/olegantonyan/mpz/archive/80b7e5c96de47d1b1838eb2178d1847bf936a2de.zip
+	sha256sums = ac9c1c11b44d6bde4090a57af221c5c30829f6c565edd691b00ab7af371a5f4a
 
 pkgname = mpz-qt6
