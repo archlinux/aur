@@ -1,12 +1,13 @@
 pkgbase = context-modules
 	pkgdesc = ConTeXt LMTX with all ConTeXt Garden modules
 	pkgver = 2022.08.25_19.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.contextgarden.net/Installation
 	arch = x86_64
 	license = GPL
 	provides = context
 	provides = context-lmtx
+	conflicts = context
 	source = http://lmtx.pragma-ade.nl/install-lmtx/context-linux-64.zip
 	sha256sums = SKIP
 
