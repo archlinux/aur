@@ -1,20 +1,18 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.28
 
 pkgname='perl-email-valid'
-pkgver='1.194'
+pkgver='1.203'
 pkgrel='1'
 pkgdesc="Check validity of Internet email addresses"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-mailtools' 'perl-net-dns' 'perl>=5.006')
-makedepends=()
+depends=('perl-io-captureoutput' 'perl-mailtools' 'perl-net-dns' 'perl-net-domain-tld')
 url='http://search.mcpan.org/dist/Email-Valid'
-source=('http://search.mcpan.org/CPAN/authors/id/R/RJ/RJBS/Email-Valid-1.194.tar.gz')
-md5sums=('65633b4a64139aa326321e5b3f1151ce')
-sha512sums=('55f907b2091adb1d2a205af220529b773e73377043da588edd5c032e5c148a5c6a36eafcb7ac71c2ec73ee74bb04ccb844f3977bbe6dcf23ce13bce6a6976e6b')
-_distdir="Email-Valid-1.194"
+source=(http://search.mcpan.org/CPAN/authors/id/R/RJ/RJBS/Email-Valid-$pkgver.tar.gz)
+md5sums=('a5955912c064187cccc387a43fe64708')
+_distdir="Email-Valid-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -42,9 +40,3 @@ package() {
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
