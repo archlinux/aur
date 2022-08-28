@@ -3,7 +3,7 @@
 pkgname='python-eth-abi'
 _pkgname=${pkgname#python-}
 _fname=${pkgname/-/_}
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Python utilities for working with Ethereum ABI definitions, especially encoding and decoding."
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 url="https://github.com/ethereum/$_pkgname"
 license=('GPL3')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/${_pkgname/-/_}-$pkgver.tar.gz")
-sha256sums=('31578b179cf9430c21ac32a4e5f401c14b6e2cc1fd64ca3587cd354068217804')
+sha256sums=('c3872e3ac1e9ef3f8c6599aaca4ee536d536eefca63a6892ab937f0560edb656')
 
 build() {
   cd ${_pkgname/-/_}-$pkgver
