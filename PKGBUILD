@@ -6,7 +6,7 @@
 # Directly based off of the official package
 
 pkgname=vim-clipboard
-pkgver=9.0.0135
+pkgver=9.0.0246
 pkgrel=1
 pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor'
 url='https://www.vim.org'
@@ -14,7 +14,7 @@ arch=('x86_64')
 license=('custom:vim')
 depends=('vim-runtime' 'gpm' 'acl' 'glibc' 'libxt' 'libgcrypt' 'zlib')
 makedepends=('glibc' 'libgcrypt' 'gpm' 'python' 'ruby' 'libxt' 'lua'
-             'gawk' 'tcl' 'pcre' 'zlib')
+             'gawk' 'tcl' 'zlib')
 optdepends=('python: Python language support'
             'ruby: Ruby language support'
             'lua: Lua language support'
@@ -24,7 +24,7 @@ conflicts=('vim' 'gvim' 'vim-minimal')
 provides=('xxd' 'vim' 'vim-minimal' 'vim-plugin-runtime')
 replaces=('vim' 'vim-minimal' 'gvim')
 source=(https://github.com/vim/vim/archive/v${pkgver}/vim-${pkgver}.tar.gz)
-sha512sums=('8fc9fe6e09604461f079622b5441336d7f5d73b95bf8b508f9aa36d80e284e036265b6359b1402c9a70fa6ffd88f9ffa26afd2afb8134b801d2ca32d4e9bd512')
+sha512sums=('69d67557d69469261f6ec5e9ed8a3c3a6341d6ad0400933ab8f630cdd8c15c6865e0209316bce278096f18105f923235db57184e1aae977d75878d9e0f4b731c')
 
 prepare() {
   cd vim-${pkgver}/src
