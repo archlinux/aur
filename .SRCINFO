@@ -1,0 +1,19 @@
+pkgbase = adocsnip-bin
+	pkgdesc = manage vscode-style snippets in asciidoc
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/greatliontech/adocsnip
+	license = MIT
+	conflicts = adocsnip
+	provides = adocsnip
+	arch = aarch64
+	source_aarch64 = https://github.com/greatliontech/adocsnip/releases/download/0.0.1/adocsnip_0.0.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 20057eea1043e41c445067c620a39440cb553bf3db6ba73a4aae9bf88a666290
+	arch = i686
+	source_i686 = https://github.com/greatliontech/adocsnip/releases/download/0.0.1/adocsnip_0.0.1_Linux_i386.tar.gz
+	sha256sums_i686 = 1d3070a3f6b4901496ffdce37d33ee1816de790bbd7d963664b2b374be0fcc7f
+	arch = x86_64
+	source_x86_64 = https://github.com/greatliontech/adocsnip/releases/download/0.0.1/adocsnip_0.0.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 0f839a855b86f060c95a6d55a8dcd7025aa3d8fcea97f40c9bf522cc542961b8
+	
+pkgname = adocsnip-bin
