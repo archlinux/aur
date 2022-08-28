@@ -1,6 +1,6 @@
 pkgbase = kicad-git
 	pkgdesc = Electronic schematic and printed circuit board (PCB) design tools
-	pkgver = 5.99.0.r6895.gbd63c018c9
+	pkgver = 6.99.0.r3101.g667a54ad86
 	pkgrel = 1
 	url = https://kicad.org/
 	install = kicad.install
@@ -13,7 +13,7 @@ pkgbase = kicad-git
 	makedepends = mesa
 	makedepends = boost
 	depends = glew
-	depends = wxgtk3
+	depends = wxwidgets-gtk3
 	depends = desktop-file-utils
 	depends = boost-libs
 	depends = python
