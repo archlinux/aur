@@ -12,6 +12,8 @@ pkgbase = rtl8188gu-dkms-git
 	provides = rtl8188gu-dkms
 	conflicts = rtl8188gu-dkms
 	source = git+https://github.com/KierPrev/rtl8188gu.git
+	source = dkms.conf
 	sha256sums = SKIP
+	sha256sums = 4769ad251ff8bd70d7aedb460d5d9642597f93511f1a8c2578188ad810204b2c
 
 pkgname = rtl8188gu-dkms-git

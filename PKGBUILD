@@ -12,12 +12,13 @@ depends=('dkms' 'bc' 'linux-headers')
 makedepends=('git')
 provides=("rtl8188gu-dkms")
 conflicts=("rtl8188gu-dkms")
-source=("git+https://github.com/KierPrev/rtl8188gu.git")
+source=("git+https://github.com/KierPrev/rtl8188gu.git" "dkms.conf")
+sha256sums=('SKIP'
+            '4769ad251ff8bd70d7aedb460d5d9642597f93511f1a8c2578188ad810204b2c')
 
 prepare() {
-	cd rtl8188gu
-	sed -e "s/@PKGVER@/${pkgver}/" -i dkms.conf
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd ${srcdir}/${_pkgbase}
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
@@ -29,7 +30,4 @@ package() {
     sed -e "s/@_PKGBASE@/${_pkgbase}-dkms/" \
         -e "s/@PKGVER@/${pkgver}/" \
         -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
-	
-	eject /dev/cdrom0
 }
-sha256sums=('SKIP')
