@@ -1,0 +1,20 @@
+pkgbase = mdp-pass
+	pkgdesc = simplified password manager
+	pkgver = 0.7.5
+	pkgrel = 1
+	url = https://tamentis.com/projects/mdp/
+	arch = i686
+	arch = x86_64
+	license = ISC
+	depends = gnupg
+	depends = ncurses
+	provides = mdp-pass
+	conflicts = mdp-pass-git
+	source = https://tamentis.com/projects/mdp//files/mdp-0.7.5.tar.gz
+	source = https://tamentis.com/projects/mdp//files/mdp-0.7.5.tar.gz.asc
+	source = mdp-name.patch
+	sha256sums = e6fa117a95ca1c6939766d66ac9c9a1840bf4de1b7180080fc073b04617ed5de
+	sha256sums = SKIP
+	sha256sums = 667f27023790cdd1faab30779eedf5ce81d0b8e6201c21e70ea993ac2f7074b9
+
+pkgname = mdp-pass

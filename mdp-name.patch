@@ -1,0 +1,336 @@
+--- src/cmd.c.orig	2022-05-14 08:54:26.000000000 -0700
++++ src/cmd.c	2022-08-28 16:10:00.165490597 -0700
+@@ -69,7 +69,7 @@
+ void
+ cmd_usage_core(void)
+ {
+-	printf("usage: mdp [-Vh] [-c config] command [command args ...]\n");
++	printf("usage: mdp-pass [-Vh] [-c config] command [command args ...]\n");
+ }
+ 
+ 
+@@ -78,14 +78,14 @@
+ {
+ 	cmd_usage_core();
+ 	printf("\n");
+-	printf("The mdp commands are:\n");
++	printf("The mdp-pass commands are:\n");
+ 	printf("   add        Add new random passwords at the end of your file.\n");
+ 	printf("   edit       Edit your passwords.\n");
+ 	printf("   generate   Generate random passwords.\n");
+ 	printf("   get        Get passwords by keywords or regexes.\n");
+ 	printf("   prompt     Interactive prompt session.\n");
+ 	printf("\n");
+-	printf("'mdp <command> -h' returns this command's usage.\n");
++	printf("'mdp-pass <command> -h' returns this command's usage.\n");
+ }
+ 
+ 
+@@ -107,7 +107,7 @@
+ 			exit(EXIT_FAILURE);
+ 			break;
+ 		case 'V':
+-			printf("mdp-%s\n", MDP_VERSION);
++			printf("mdp-pass %s\n", MDP_VERSION);
+ 			exit(EXIT_SUCCESS);
+ 			break;
+ 		case 'd':
+@@ -118,19 +118,19 @@
+ 			break;
+ 		case 'e':
+ 			errx(EXIT_FAILURE, "this flag is deprecated, use "
+-					"'mdp edit' instead");
++					"'mdp-pass edit' instead");
+ 			break;
+ 		case 'g':
+ 			errx(EXIT_FAILURE, "this flag is deprecated, use "
+-					"'mdp gen' instead");
++					"'mdp-pass gen' instead");
+ 			break;
+ 		case 'r':
+ 			errx(EXIT_FAILURE, "this flag is deprecated, use "
+-					"'mdp get -r' instead");
++					"'mdp-pass get -r' instead");
+ 			break;
+ 		case 'q':
+ 			errx(EXIT_FAILURE, "this flag is deprecated, use "
+-					"'mdp prompt' instead");
++					"'mdp-pass prompt' instead");
+ 			break;
+ 		default:
+ 			exit(EXIT_FAILURE);
+@@ -152,14 +152,14 @@
+ 
+ 
+ /*
+- * 'mdp add' - usage and parse
++ * 'mdp-pass add' - usage and parse
+  */
+ 
+ static void
+ cmd_usage_add(void)
+ {
+-	printf("usage: mdp a[dd] [-h] [-p profile] [-n count] [-l length]\n");
+-	printf("                 [-k key_id] [keywords ...]\n");
++	printf("usage: mdp-pass a[dd] [-h] [-p profile] [-n count] [-l length]\n");
++	printf("                      [-k key_id] [keywords ...]\n");
+ }
+ 
+ void
+@@ -206,13 +206,13 @@
+ 
+ 
+ /*
+- * mdp edit usage and parse
++ * mdp-pass edit usage and parse
+  */
+ 
+ static void
+ cmd_usage_edit(void)
+ {
+-	printf("usage: mdp edit [-h] [-k key_id]\n");
++	printf("usage: mdp-pass edit [-h] [-k key_id]\n");
+ }
+ 
+ 
+@@ -246,14 +246,14 @@
+ 
+ 
+ /*
+- * mdp generate usage and parse
++ * mdp-pass generate usage and parse
+  */
+ 
+ static void
+ cmd_usage_generate(void)
+ {
+-	printf("usage: mdp gen[erate] [-h] [-p profile] [-n count] "
+-			"[-l length]\n");
++	printf("usage: mdp-pass gen[erate] [-h] [-p profile] [-n count] "
++			     "[-l length]\n");
+ }
+ 
+ void
+@@ -292,13 +292,13 @@
+ 
+ 
+ /*
+- * mdp get usage and parse
++ * mdp-pass get usage and parse
+  */
+ 
+ static void
+ cmd_usage_get(void)
+ {
+-	printf("usage: mdp get [-hrE] keyword ...\n");
++	printf("usage: mdp-pass get [-hrE] keyword ...\n");
+ }
+ 
+ void
+@@ -336,13 +336,13 @@
+ 
+ 
+ /*
+- * mdp prompt usage and parse
++ * mdp-pass prompt usage and parse
+  */
+ 
+ static void
+ cmd_usage_prompt(void)
+ {
+-	printf("usage: mdp prompt [-hE]\n");
++	printf("usage: mdp-pass prompt [-hE]\n");
+ }
+ 
+ void
+--- src/main.c.orig	2022-05-14 08:54:26.000000000 -0700
++++ src/main.c	2022-08-28 16:07:28.186086141 -0700
+@@ -222,7 +222,7 @@
+ 		cmd_parse_prompt(argc, argv);
+ 		mdp_prompt();
+ 	} else {
+-		errx(EXIT_FAILURE, "unknown command '%s' (try mdp -h)", argv[0]);
++		errx(EXIT_FAILURE, "unknown command '%s' (try mdp-pass -h)", argv[0]);
+ 	}
+ 
+ 	debug("normal shutdown");
+--- mdp.1.orig	2022-05-14 08:54:26.000000000 -0700
++++ mdp.1	2022-08-28 16:18:50.730988668 -0700
+@@ -14,14 +14,14 @@
+ .\" OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ .\"
+ .Dd $Mdocdate: January 24 2014 $
+-.Dt MDP 1
++.Dt MDP-PASS 1
+ .Os
+ .Sh NAME
+-.Nm mdp
++.Nm mdp-pass
+ .Nd password safe
+ .\" SYNOPSIS
+ .Sh SYNOPSIS
+-.Nm mdp
++.Nm mdp-pass
+ .Bk -words
+ .Op Fl Vh
+ .Op Fl c Ar config
+@@ -43,12 +43,12 @@
+ Print version.
+ .It Fl h
+ Print general usage. For command-specific usage, this flag should
+-be placed after the command name, for example 'mdp edit -h'.
++be placed after the command name, for example 'mdp-pass edit -h'.
+ .El
+ .\" COMMANDS
+ .Sh COMMANDS
+-.\" mdp add
+-.Nm mdp
++.\" mdp-pass add
++.Nm mdp-pass
+ .Bk -words
+ .Ar add
+ .Op Fl h
+@@ -67,9 +67,9 @@
+ The options for the 'add' command are the same as the 'edit' and the 'generate'
+ command.
+ .Ed
+-.\" mdp edit
++.\" mdp-pass edit
+ .Pp
+-.Nm mdp
++.Nm mdp-pass
+ .Bk -words
+ .Ar edit
+ .Op Fl h
+@@ -88,9 +88,9 @@
+ to specify a key id in case it wasn't defined in the configuration file.
+ .El
+ .Ed
+-.\" mdp generate
++.\" mdp-pass generate
+ .Pp
+-.Nm mdp
++.Nm mdp-pass
+ .Bk -words
+ .Ar generate
+ .Op Fl h
+@@ -100,7 +100,7 @@
+ .Ek
+ .Bd -ragged -offset indent
+ Generate password(s) according to the configuration or command-line
+-arguments.  Without profile specified, mdp uses the top-level
++arguments.  Without profile specified, mdp-pass uses the top-level
+ definitions for the character set, password length and count (see
+ CONFIGURATION below). All the flags specified on the command-line
+ will override the ones specified in the profile or top-level
+@@ -120,9 +120,9 @@
+ and profile).
+ .El
+ .Ed
+-.\" mdp get
++.\" mdp-pass get
+ .Pp
+-.Nm mdp
++.Nm mdp-pass
+ .Bk -words
+ .Ar get
+ .Op Fl hEr
+@@ -145,9 +145,9 @@
+ on screen and in terminal history/buffer.
+ .El
+ .Ed
+-.\" mdp prompt
++.\" mdp-pass prompt
+ .Pp
+-.Nm mdp
++.Nm mdp-pass
+ .Bk -words
+ .Ar prompt
+ .Op Fl hE
+@@ -159,7 +159,7 @@
+ requested). Since it uses the default pager, multiple searches can
+ be conducted using the '/' key. Any other key will exit the pager,
+ it will also exit after a configurable timer. The search keywords
+-will be interpreted as regexes if the -E option is used (see mdp
++will be interpreted as regexes if the -E option is used (see mdp-pass
+ get).
+ .Ed
+ .\" QUICK WALKTHROUGH
+@@ -170,15 +170,15 @@
+ .It 3. Either define EDITOR env variable or add editor to the config file.
+ .It 4. Pick a password from randomly generated ones, for example:
+ .Bd -literal -offset indent
+-mdp gen
++mdp-pass gen
+ .Ed
+-.It 5. Run "mdp edit" and add a line such as:
++.It 5. Run "mdp-pass edit" and add a line such as:
+ .Bd -literal -offset indent
+ twitter sponge@bob.com yHVHPnqXyx6qUuki
+ .Ed
+ .It 6. This is how the Twitter password is requested:
+ .Bd -literal -offset indent
+-mdp get twitter
++mdp-pass get twitter
+ .Ed
+ .El
+ .\" CONFIGURATION
+@@ -227,11 +227,11 @@
+ prompt or if it cannot communicate with the parent process.
+ .Pp
+ .It Ic set password_count Ar count
+-Define how many password to show with using 'mdp gen'. Default: 4 or as defined
++Define how many password to show with using 'mdp-pass gen'. Default: 4 or as defined
+ in the profile.
+ .Pp
+ .It Ic set password_file Ar filepath
+-Sets the location of the password file. mdp will refuse to use a password file
++Sets the location of the password file. mdp-pass will refuse to use a password file
+ with permissions other than 0600 or in a folder with permissions other than
+ 0700.  The default value for password_file is ~/.mdp/passwords.
+ .Pp
+@@ -247,7 +247,7 @@
+ .El
+ .\" PASSWORD FILE
+ .Sh PASSWORD FILE
+-The password file should be structured to allow mdp to query it,
++The password file should be structured to allow mdp-pass to query it,
+ since it works similarly to grep, one line per password is ideal.
+ For example:
+ .Bd -literal -offset indent
+@@ -259,7 +259,7 @@
+ with anything except for new-line (\\n), allowing services to be
+ found by names:
+ .Bd -literal -offset indent
+-mdp serviceA
++mdp-pass serviceA
+ .Ed
+ .Pp
+ Any convenient number of namespacing hints can be used to add
+@@ -271,7 +271,7 @@
+ irc       serviceC       password3
+ .Ed
+ .Pp
+-Using '#' in the beginning of a line will avoid mdp from displaying
++Using '#' in the beginning of a line will avoid mdp-pass from displaying
+ this line during searches.  This is particularly useful to add meta
+ data to the password file or keep track of previous password without
+ adding noise to the output. For example:
+@@ -318,7 +318,7 @@
+ disables the creation of the backup file.
+ .It Pa $HOME/.mdp/lock
+ This file is created while the password file is loaded in the editor.
+-It avoids two copies of mdp to run at the same time for the same user.
++It avoids two copies of mdp-pass to run at the same time for the same user.
+ .El
+ .\" SEE ALSO
+ .Sh SEE ALSO
+@@ -331,7 +331,7 @@
+ .El
+ .\" AUTHORS
+ .Sh AUTHORS
+-mdp was written by Bertrand Janin <b@janin.com> and is distributed under an ISC
++mdp-pass was written by Bertrand Janin <b@janin.com> and is distributed under an ISC
+ license (BSD, MIT and OSI compatible).
+ .Pp
+ A bunch of utility functions are borrowed from OpenBSD and OpenSSH, both
