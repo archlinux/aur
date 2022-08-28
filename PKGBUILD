@@ -2,7 +2,7 @@
 # Maintainer: Nikolas Sepos <nikolas@greatlion.tech>
 
 pkgname='adocsnip-bin'
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='manage vscode-style snippets in asciidoc'
 url='https://github.com/greatliontech/adocsnip'
@@ -11,14 +11,14 @@ license=('MIT')
 provides=('adocsnip')
 conflicts=('adocsnip')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/greatliontech/adocsnip/releases/download/0.0.1/adocsnip_0.0.1_Linux_arm64.tar.gz")
-sha256sums_aarch64=('20057eea1043e41c445067c620a39440cb553bf3db6ba73a4aae9bf88a666290')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/greatliontech/adocsnip/releases/download/0.0.2/adocsnip_0.0.2_Linux_arm64.tar.gz")
+sha256sums_aarch64=('33a5c8bccfea850eb8073a5bfc8e993eadb3af9dbc6449e7cda1bc9f77a295f5')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/greatliontech/adocsnip/releases/download/0.0.1/adocsnip_0.0.1_Linux_i386.tar.gz")
-sha256sums_i686=('1d3070a3f6b4901496ffdce37d33ee1816de790bbd7d963664b2b374be0fcc7f')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/greatliontech/adocsnip/releases/download/0.0.2/adocsnip_0.0.2_Linux_i386.tar.gz")
+sha256sums_i686=('57791967327f84539e3c004af91ceccc08d987190f68878b197ae1042e5285ae')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/greatliontech/adocsnip/releases/download/0.0.1/adocsnip_0.0.1_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('0f839a855b86f060c95a6d55a8dcd7025aa3d8fcea97f40c9bf522cc542961b8')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/greatliontech/adocsnip/releases/download/0.0.2/adocsnip_0.0.2_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('bf1f97d1edc99d6d28acaad9dbc2f8585b6e32e1f090d0f61fe08e308b1af4e9')
 
 package() {
   # bin
