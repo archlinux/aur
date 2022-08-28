@@ -1,8 +1,8 @@
-# Maintainer: Thiago L. A. Miller <thiago_leisrael@hotmail.com>
+# Contributor: Thiago L. A. Miller <thiago_leisrael@hotmail.com>
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 _distname=Dist-Zilla-Plugin-InstallGuide
 pkgname=perl-dist-zilla-plugin-installguide
-pkgver=1.200013
+pkgver=1.200014
 pkgrel=1
 pkgdesc="Build an INSTALL file"
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=()
 checkdepends=('perl-test-fatal>=0')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/$_distname-$pkgver.tar.gz")
-md5sums=('d598e5462b808459e75455a466481dae')
+md5sums=('b78f2a146da6fbed5699b8763f2f7565')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
