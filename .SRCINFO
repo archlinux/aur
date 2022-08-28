@@ -1,10 +1,12 @@
 pkgbase = thonny
 	pkgdesc = Python IDE for beginners
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://thonny.org
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	depends = hicolor-icon-theme
 	depends = mypy
 	depends = python-asttokens

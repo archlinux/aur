@@ -3,13 +3,14 @@
 
 pkgname=thonny
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python IDE for beginners"
 arch=('any')
 url="https://thonny.org"
 license=('MIT')
 depends=('hicolor-icon-theme' 'mypy' 'python-asttokens' 'python-docutils' 'python-jedi' 'python-pip' \
          'python-pylint' 'python-pyserial' 'python-send2trash' 'python-setuptools' 'python-wheel' 'tk')
+makedepends=('python-build' 'python-installer')
 optdepends=('python-birdseye: Debug support with Birdseye'
             'python-pgzero: Run programs made with Pygame Zero')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
