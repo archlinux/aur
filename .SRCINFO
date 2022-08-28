@@ -1,12 +1,12 @@
 pkgbase = gtk-theme-mist-redmond-green
 	pkgdesc = Simple, no-frills theme with warm gray tones for GTK 2/3.
-	pkgver = 1.0.15
+	pkgver = 1.0.16
 	pkgrel = 1
 	url = https://github.com/dmuellner/mist-redmond-green/
 	arch = any
 	license = GPL3
 	depends = gtk-engines
-	source = gtk-theme-mist-redmond-green-1.0.15.zip::https://github.com/dmuellner/mist-redmond-green/archive/v1.0.15.zip
-	sha256sums = f44eb7732855095489ad2ebd4eb3e664d48dd39378a08120d820df7c50511035
+	source = gtk-theme-mist-redmond-green-1.0.16.zip::https://github.com/dmuellner/mist-redmond-green/archive/v1.0.16.zip
+	sha256sums = d0fff9ea324365052329f21845a3266be15a7b2773a47ef2587c1307999ad281
 
 pkgname = gtk-theme-mist-redmond-green
