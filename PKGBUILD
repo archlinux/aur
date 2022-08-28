@@ -1,37 +1,35 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Sascha Shaw <sascha.shaw@t-online.de>
-_base=odfpy
-pkgname=(python-${_base}-git ${_base}-git)
-pkgbase=python-${_base}-git
-pkgver=1.4.2
+
+pkgname=python-odfpy-git
+_pkg=odfpy
+pkgver=1.4.2.r1.g574f0fa
 pkgrel=1
-arch=(any)
-url="https://github.com/eea/${_base}.git"
-license=(GPL)
-makedepends=(git python-setuptools)
-source=("git+${url}")
+pkgdesc='Python API and tools to manipulate OpenDocument files'
+arch=('any')
+url='https://github.com/eea/odfpy/'
+license=('GPL' 'Apache')
+depends=('python-defusedxml')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+checkdepends=('python-pytest')
+source=("$_pkg::git+$url")
 sha256sums=('SKIP')
 
+pkgver() {
+	git -C "$_pkg" describe --long --tags | sed 's/^release-//;s/-/.r/;s/-/./'
+}
+
 build() {
-  cd ${_base}
-  python setup.py build
+	cd "$_pkg"
+	python -m build --wheel --no-isolation
 }
 
-package_python-odfpy-git() {
-  pkgdesc='A python library for manipulating OpenDocument 1.2 files'
-  depends=(python)
-  conflicts=(python-${_base} python2-${_base})
-
-  cd ${_base}
-  python setup.py install --root="${pkgdir}/" --skip-build
-  rm -rf ../tools-{bin,share}
-  mv "${pkgdir}"/usr/bin ../tools-bin
-  mv "${pkgdir}"/usr/share ../tools-share
+check() {
+	cd "$_pkg"
+	PYTHONPATH="$PWD" pytest -x
 }
 
-package_odfpy-git() {
-  pkgdesc='Tools for manipulating OpenDocument 1.2 files'
-  depends=(python-${_base}-git)
-
-  install -Dt "${pkgdir}"/usr/bin/ "${srcdir}"/tools-bin/*
-  install -Dt "${pkgdir}"/usr/share/man/man1/ "${srcdir}"/tools-share/man/man1/*
+package() {
+	cd "$_pkg"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
 }
