@@ -1,13 +1,13 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=kicad-git
-pkgver=5.99.0.r12888.gc5e5d8e0d4
+pkgver=6.99.0.r3101.g667a54ad86
 pkgrel=1
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=('i686' 'x86_64')
 url="https://kicad.org/"
 license=('GPL')
-depends=('glew' 'wxgtk3' 'desktop-file-utils' 'boost-libs' 'python'
+depends=('glew' 'wxwidgets-gtk3' 'desktop-file-utils' 'boost-libs' 'python'
          'glm' 'curl' 'swig' 'python-wxpython' 'opencascade' 'ngspice>=27')
 makedepends=('cmake' 'git' 'zlib' 'mesa' 'boost')
 optdepends=('kicad-library: for footprints')
@@ -31,13 +31,13 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DKICAD_USE_OCE=OFF \
     -DKICAD_USE_OCC=ON \
+    -DKICAD_USE_EGL=ON \
     -DBUILD_GITHUB_PLUGIN=ON \
     -DKICAD_SCRIPTING=ON \
     -DKICAD_SCRIPTING_MODULES=ON \
     -DKICAD_SCRIPTING_ACTION_MENU=ON \
     -DKICAD_SCRIPTING_PYTHON3=ON \
     -DKICAD_SCRIPTING_WXPYTHON=ON \
-    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
     -DCMAKE_EXE_LINKER_FLAGS=-fuse-ld=gold \
     -DKICAD_SCRIPTING_WXPYTHON_PHOENIX=ON
 
