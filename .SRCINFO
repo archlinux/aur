@@ -23,6 +23,7 @@ pkgbase = kicad-git
 	depends = python-wxpython
 	depends = opencascade
 	depends = ngspice>=27
+	depends = unixodbc
 	optdepends = kicad-library: for footprints
 	provides = kicad
 	conflicts = kicad
