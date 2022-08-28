@@ -2,7 +2,7 @@
 # Maintainer: Joseph R. Quinn <quinn.josephr@protonmail.com>
 pkgname=nerd-fonts-terminus
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Patched font Terminus (Terminess) from the nerd-fonts library"
 arch=("any")
 url="https://github.com/ryanoasis/nerd-fonts"
