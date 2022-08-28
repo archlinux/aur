@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=nanopolish
-pkgver=0.13.3
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Provide signal-level analysis of Oxford Nanopore sequencing data"
 arch=('i686' 'x86_64')
