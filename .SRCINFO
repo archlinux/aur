@@ -1,0 +1,18 @@
+pkgbase = systemd-timer-notify-git
+	pkgdesc = The notification displays on Desktop when systemd-service is started and processed, the notification will be closed automatically when systemd-service's process is done.
+	pkgver = r5.fed1ef7
+	pkgrel = 1
+	url = https://gitlab.com/Zesko/systemd-timer-notify.git
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = dunst
+	depends = systemd
+	provides = systemd-timer-notify
+	conflicts = systemd-timer-notify
+	backup = etc/systemd-timer-notify.conf
+	source = git+https://gitlab.com/Zesko/systemd-timer-notify.git
+	sha256sums = SKIP
+
+pkgname = systemd-timer-notify-git
