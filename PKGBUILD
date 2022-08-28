@@ -9,7 +9,6 @@ filename="${_pkgname}_${pkgver}_amd64.deb"
 license=('custom:"Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>"')
 url="https://mrdoc.pro/"
 depends=('libva')
-makedepends=('dpkg')
 optdepends=(
 	'libva-intel-driver: VA-API implementation for Intel G45 and HD Graphics family'
 	'libva-vdpau-driver: VDPAU backend for VA API'
