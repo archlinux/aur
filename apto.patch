@@ -1,0 +1,19 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 949804e..02b3fa4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3,12 +3,14 @@ PROJECT(APTO CXX)
+ CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
+
+ # Default location for installed software/configs/ docs is the build directory.
++IF(NOT CMAKE_INSTALL_PREFIX)
+ SET(CMAKE_INSTALL_PREFIX
+   "${PROJECT_BINARY_DIR}"
+   CACHE PATH
+   "Install path prefix, prepended onto install directories."
+   FORCE
+ )
++ENDIF(NOT CMAKE_INSTALL_PREFIX)
+
+ # Final software is built directly into the work subdirectory.
+ SET(EXECUTABLE_OUTPUT_PATH
