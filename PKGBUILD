@@ -1,7 +1,7 @@
 # Maintainer: Tobias Borgert <tobias (dot) borgert (at) gmail (dot) com>
 
 pkgname=ecal
-pkgver=5.10.1
+pkgver=5.10.2
 pkgrel=1
 pkgdesc="enhanced Communication Abstraction Layer"
 arch=('x86_64' 'armv7h')
@@ -11,19 +11,13 @@ depends=('curl' 'protobuf' 'qt5-base' 'qwt' 'hdf5')
 makedepends=('cmake' 'doxygen' 'git' 'graphviz')
 optdepends=()
 source=("https://github.com/eclipse-ecal/ecal/releases/download/v${pkgver}/ecal-fat-source.tar.gz"
-        "ecal_utils.filesystem.cpp.patch"
-        "fineftp-server.filesystem.cpp.patch"
-        "samples.proto_dyn.cpp.patch")
-sha256sums=('023b8022cf3913118fe0bfff0d96aa48e2210067287ed20a957d6e67c26e31ca'
-            '7f95ec10aba6695a2d2f2bf6a1bb8bd949c83217fdd077446763e8059d759791'
-            'ebbc58b792f402c43d83f05e4dec59b714ae455077a5e93aff5a040fffd3bb72'
-            'ee8cd9e12873961c56f4b8f032ce31a7aec8c058b8ba236e8081ea2b9d40975e')
+        "fineftp-server.filesystem.cpp.patch")
+sha256sums=('6be9b6318896bc91e86fb288f40811d377633dc1d485c3cecaa34900a3657abd'
+            'ebbc58b792f402c43d83f05e4dec59b714ae455077a5e93aff5a040fffd3bb72')
 backup=('etc/ecal/ecal.ini' 'etc/ecal/ecaltime.ini')
 
 prepare() {
-    patch --forward --strip=1 --input="../ecal_utils.filesystem.cpp.patch" "$pkgname/lib/ecal_utils/src/filesystem.cpp"
     patch --forward --strip=1 --input="../fineftp-server.filesystem.cpp.patch" "$pkgname/thirdparty/fineftp-server/fineftp-server/src/filesystem.cpp"
-    patch --forward --strip=1 --input="../samples.proto_dyn.cpp.patch" "$pkgname/samples/cpp/misc/proto_dyn/src/proto_dyn.cpp"
 }
 
 build() {

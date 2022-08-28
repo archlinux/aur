@@ -1,6 +1,6 @@
 pkgbase = ecal
 	pkgdesc = enhanced Communication Abstraction Layer
-	pkgver = 5.10.1
+	pkgver = 5.10.2
 	pkgrel = 1
 	url = https://github.com/eclipse-ecal/ecal
 	arch = x86_64
@@ -17,13 +17,9 @@ pkgbase = ecal
 	depends = hdf5
 	backup = etc/ecal/ecal.ini
 	backup = etc/ecal/ecaltime.ini
-	source = https://github.com/eclipse-ecal/ecal/releases/download/v5.10.1/ecal-fat-source.tar.gz
-	source = ecal_utils.filesystem.cpp.patch
+	source = https://github.com/eclipse-ecal/ecal/releases/download/v5.10.2/ecal-fat-source.tar.gz
 	source = fineftp-server.filesystem.cpp.patch
-	source = samples.proto_dyn.cpp.patch
-	sha256sums = 023b8022cf3913118fe0bfff0d96aa48e2210067287ed20a957d6e67c26e31ca
-	sha256sums = 7f95ec10aba6695a2d2f2bf6a1bb8bd949c83217fdd077446763e8059d759791
+	sha256sums = 6be9b6318896bc91e86fb288f40811d377633dc1d485c3cecaa34900a3657abd
 	sha256sums = ebbc58b792f402c43d83f05e4dec59b714ae455077a5e93aff5a040fffd3bb72
-	sha256sums = ee8cd9e12873961c56f4b8f032ce31a7aec8c058b8ba236e8081ea2b9d40975e
 
 pkgname = ecal
