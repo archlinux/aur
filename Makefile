@@ -1,13 +1,12 @@
 all: help
 
-.SILENT: help current-version
+.SILENT: help
 .PRECIOUS: .SRCINFO PKGBUILD
 .PHONY: help build update install publish
 
 REPODIR := $(shell egrep -m1 '^source=' PKGBUILD | cut -d= -f2 | sed -r "s/^\('(.*)'\)\$$/\1/ ; s~^git\+https?://github.com/.*/([^/]+)/?\$$~\1~")
 REPO_BRANCH = $(shell git --bare --git-dir=$(REPODIR) branch --show-current | tr -d "\r\n")
 PKGNAME = $(shell egrep -m1 '^pkgname=' PKGBUILD | cut -d= -f2)
-PKGVER = $(file < current_version)
 PKGVER = $(shell egrep -m1 '^pkgver=' PKGBUILD | cut -d= -f2)
 PKGREL = $(shell egrep -m1 '^pkgrel=' PKGBUILD | cut -d= -f2)
 TARGET_ARCHIVE = $(PKGNAME)-$(PKGVER)-$(PKGREL)-any.pkg.tar.zst
@@ -31,26 +30,14 @@ install: build
 
 update: build
 
-build: current-version .SRCINFO
+build: .SRCINFO
 	git --bare --git-dir=$(REPODIR) fetch origin "$(REPO_BRANCH)"
 
 .SRCINFO: $(TARGET_ARCHIVE)
 	makepkg --printsrcinfo > .SRCINFO
 
-%.pkg.tar.zst: current-version PKGBUILD
+%.pkg.tar.zst: PKGBUILD $(REPODIR)/
 	makepkg
-
-current-version: $(REPODIR)/
-	cd $(REPODIR) && printf "r%s.%s" "$$(git rev-list --count HEAD)" "$$(git rev-parse --short HEAD)" > ../current-version.tmp
-	if [ ! -e 'current-version' ]; then \
-		mv current-version.tmp current-version ; \
-	elif [ "$$( cat 'current-version' )" != "$$( cat 'current-version.tmp' )" ]; then \
-		mv current-version.tmp current-version ; \
-	else \
-		rm current-version.tmp ; \
-	fi
-# download sources
-	makepkg -o
 
 $(REPODIR)/:
 	makepkg -o
