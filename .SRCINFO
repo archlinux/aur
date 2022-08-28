@@ -1,7 +1,7 @@
 pkgbase = weatherhs
 	pkgdesc = Weather and related data info command-line tool
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/NH000/weatherhs
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = weatherhs
 	depends = gettext
 	depends = gpgme
 	depends = pcre
-	source = git+https://gitlab.com/NH000/weatherhs#tag=1af7eb6d88c445e378e08200cc704586f78f473d
+	source = git+https://gitlab.com/NH000/weatherhs#tag=28662dc6c9d5450408c4c634f667636263e80ecc
 	sha256sums = SKIP
 
 pkgname = weatherhs
