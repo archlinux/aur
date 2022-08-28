@@ -1,7 +1,7 @@
 pkgbase = hmcl-clean-bin
 	pkgdesc = Clean Version of HMCL, remove dev/nightly warnings, multiplayer(not FOSS), sponsor messages and so on.
 	pkgver = 3.5.3.222
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/weiliang1503/HMCL-Clean
 	arch = x86_64
 	license = GNU General Public License v3.0
