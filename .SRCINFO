@@ -1,0 +1,15 @@
+pkgbase = eww
+	pkgdesc = A standalone widget system made in Rust.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/elkowar/eww
+	arch = x86_64
+	license = MIT
+	makedepends = rustup
+	makedepends = git
+	depends = gtk3
+	conflicts = eww-git
+	source = git+https://github.com/elkowar/eww#tag=v0.3.0
+	md5sums = SKIP
+
+pkgname = eww
