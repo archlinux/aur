@@ -12,7 +12,7 @@ pkgbase = nerd-fonts-terminus
 	conflicts = nerd-fonts-complete
 	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.1/Terminus.zip
 	source = https://github.com/ryanoasis/nerd-fonts/raw/v2.2.1/LICENSE
-	b2sums = 1147dab1c27ab578b3aa286069949cc478ebbcc3e7c7d475b3a852eda7c269a0cbf54004f90e88e18d3494c5c4bbb8800374a06e68f9f98699826cb14e60fe18
+	b2sums = e14e29e8046d2addc0c39a7131c190b6d4077014f9cb0d26173eb91de49938c91410dbec8d8705fb604798f6de9bcb76e7e202e8c10107b0c23b739d3dd9ea85
 	b2sums = 386dfcb5ead367bfc44fc55f7e94548c03bdb24ca088ab56f9609e7cdaa3eab9c56b548966feaf7312da606b645e9af35556fc212132733efcdbcc17397c808a
 
 pkgname = nerd-fonts-terminus
