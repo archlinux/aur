@@ -2,12 +2,12 @@
 
 pkgname=rime-flypy
 pkgver=10.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="小鹤音形 rime 挂接文件"
 arch=('x86_64')
 url="http://flypy.com/"
 license=('unknown')
-makedepends=('librime')
+makedepends=('librime' 'rime-prelude')
 optdepends=('ibus-rime: input support'
             'fcitx-rime: input support'
             'fcitx5-rime: input support')

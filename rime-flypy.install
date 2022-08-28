@@ -1,10 +1,36 @@
 post_install() {
-    echo -e "Please enable this input scheme through the 'default.custom.yaml' file in the user configuration directory and redeploy rime to take effect. For example:\n"
-    echo -e "\tpatch:"
-    echo -e "\t  schema_list:"
-    echo -e "\t    - schema: flypy"
+cat <<'EOF'
+* Please enable this input scheme through the `default.custom.yaml` file
+  in the user configuration directory or `rime_deployer` command
+  and re-deploy rime to take effect.
+
+  Example `default.custom.yaml`:
+    
+    patch:
+      schema_list:
+        - schema: flypy
+  
+  Or use the following commands for fcitx5:
+
+    rime_deployer --add-schema flypy
+    rime_deployer --build ~/.local/share/fcitx5 /usr/share/rime-data
+
+* If you want to use "flypy_full" which equivalent to `oqm` on windows,
+  please symlink `flypy_full.txt` to your user configuration directory.
+
+  For example (fcitx5-rime):
+
+    ln -s /usr/share/rime-data/flypy_full/flypy_full.txt ~/.local/share/fcitx5/rime/
+
+EOF
 }
 
 post_upgrade() {
-    echo -e "Please redeploy rime to take effect."
+cat <<'EOF'
+* Please re-deploy rime to take effect.
+  For example (fcitx5-rime):
+
+    rime_deployer --build ~/.local/share/fcitx5 /usr/share/rime-data
+
+EOF
 }

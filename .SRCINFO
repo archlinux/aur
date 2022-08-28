@@ -1,12 +1,13 @@
 pkgbase = rime-flypy
 	pkgdesc = 小鹤音形 rime 挂接文件
 	pkgver = 10.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://flypy.com/
 	install = rime-flypy.install
 	arch = x86_64
 	license = unknown
 	makedepends = librime
+	makedepends = rime-prelude
 	optdepends = ibus-rime: input support
 	optdepends = fcitx-rime: input support
 	optdepends = fcitx5-rime: input support
