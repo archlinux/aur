@@ -12,7 +12,7 @@ provides=('kdenlive')
 conflicts=('kdenlive')
 depends=('breeze' 'breeze-icons')
 _filename="${_pkgname}-${pkgver}-${arch}.AppImage"
-source=("${_filename}::https://download.kde.org/stable/kdenlive/22.08/linux/${_pkgname}-${pkgver}-x86_x64.AppImage")liqui moly
+source=("${_filename}::https://download.kde.org/stable/kdenlive/22.08/linux/${_pkgname}-${pkgver}-x86_x64.AppImage")
 md5sums=('6d3e2cbefbd7a8e4d535fe0eb92c1afa')
 options=(!strip)
 prepare() 
