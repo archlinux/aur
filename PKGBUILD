@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=cork-rs
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Command-line calculator for hex-lovers"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7df921b00165e9f3164b321ce9928b9a65cce50686e624263777f879a7df3d72')
+sha256sums=('1a0777fd4898f219d76ddff05eb0994cf3794be6766d09255c71f717272390e1')
 
 prepare() {
 	cd "cork-$pkgver"
@@ -20,14 +20,12 @@ prepare() {
 build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-
 	cd "cork-$pkgver"
 	cargo build --release --frozen --all-features
 }
 
 check() {
 	export RUSTUP_TOOLCHAIN=stable
-
 	cd "cork-$pkgver"
 	cargo test --frozen --all-features
 }

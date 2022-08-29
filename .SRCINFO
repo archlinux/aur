@@ -1,13 +1,13 @@
 pkgbase = cork-rs
 	pkgdesc = Command-line calculator for hex-lovers
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/reddocmd/cork
 	arch = x86_64
 	license = GPL
 	makedepends = cargo
 	depends = gcc-libs
-	source = cork-rs-0.2.3.tar.gz::https://github.com/reddocmd/cork/archive/v0.2.3.tar.gz
-	sha256sums = 7df921b00165e9f3164b321ce9928b9a65cce50686e624263777f879a7df3d72
+	source = cork-rs-0.2.4.tar.gz::https://github.com/reddocmd/cork/archive/v0.2.4.tar.gz
+	sha256sums = 1a0777fd4898f219d76ddff05eb0994cf3794be6766d09255c71f717272390e1
 
 pkgname = cork-rs
