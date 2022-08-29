@@ -1,66 +1,67 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-truculenta
 pkgver=1.002
-pkgrel=1
+pkgrel=2
 pkgdesc='Irregular sans serif typeface from Omnibus-Type.'
 arch=('any')
 url='https://github.com/Omnibus-Type/Truculenta'
 license=('OFL')
-source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/OFL.txt"
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/Truculenta/fonts/otf/Truculenta12pt-Black.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/Truculenta/fonts/otf/Truculenta12pt-Bold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/Truculenta/fonts/otf/Truculenta12pt-ExtraBold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/Truculenta/fonts/otf/Truculenta12pt-ExtraLight.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/Truculenta/fonts/otf/Truculenta12pt-Light.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/Truculenta/fonts/otf/Truculenta12pt-Medium.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/Truculenta/fonts/otf/Truculenta12pt-Regular.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/Truculenta/fonts/otf/Truculenta12pt-SemiBold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/Truculenta/fonts/otf/Truculenta12pt-Thin.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/Truculenta/fonts/otf/Truculenta72pt-Black.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/Truculenta/fonts/otf/Truculenta72pt-Bold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/Truculenta/fonts/otf/Truculenta72pt-ExtraBold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/Truculenta/fonts/otf/Truculenta72pt-ExtraLight.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/Truculenta/fonts/otf/Truculenta72pt-Light.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/Truculenta/fonts/otf/Truculenta72pt-Medium.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/Truculenta/fonts/otf/Truculenta72pt-Regular.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/Truculenta/fonts/otf/Truculenta72pt-SemiBold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/Truculenta/fonts/otf/Truculenta72pt-Thin.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaCondensed/fonts/otf/Truculenta12ptCondensed-Black.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaCondensed/fonts/otf/Truculenta12ptCondensed-Bold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaCondensed/fonts/otf/Truculenta12ptCondensed-ExtraBold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaCondensed/fonts/otf/Truculenta12ptCondensed-ExtraLight.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaCondensed/fonts/otf/Truculenta12ptCondensed-Light.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaCondensed/fonts/otf/Truculenta12ptCondensed-Medium.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaCondensed/fonts/otf/Truculenta12ptCondensed-Regular.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaCondensed/fonts/otf/Truculenta12ptCondensed-SemiBold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaCondensed/fonts/otf/Truculenta12ptCondensed-Thin.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaCondensed/fonts/otf/Truculenta72ptCondensed-Black.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaCondensed/fonts/otf/Truculenta72ptCondensed-Bold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaCondensed/fonts/otf/Truculenta72ptCondensed-ExtraBold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaCondensed/fonts/otf/Truculenta72ptCondensed-ExtraLight.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaCondensed/fonts/otf/Truculenta72ptCondensed-Light.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaCondensed/fonts/otf/Truculenta72ptCondensed-Medium.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaCondensed/fonts/otf/Truculenta72ptCondensed-Regular.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaCondensed/fonts/otf/Truculenta72ptCondensed-SemiBold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaCondensed/fonts/otf/Truculenta72ptCondensed-Thin.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaExpanded/fonts/otf/Truculenta12ptExpanded-Black.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaExpanded/fonts/otf/Truculenta12ptExpanded-Bold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaExpanded/fonts/otf/Truculenta12ptExpanded-ExtraBold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaExpanded/fonts/otf/Truculenta12ptExpanded-ExtraLight.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaExpanded/fonts/otf/Truculenta12ptExpanded-Light.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaExpanded/fonts/otf/Truculenta12ptExpanded-Medium.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaExpanded/fonts/otf/Truculenta12ptExpanded-Regular.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaExpanded/fonts/otf/Truculenta12ptExpanded-SemiBold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaExpanded/fonts/otf/Truculenta12ptExpanded-Thin.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaExpanded/fonts/otf/Truculenta72ptExpanded-Black.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaExpanded/fonts/otf/Truculenta72ptExpanded-Bold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaExpanded/fonts/otf/Truculenta72ptExpanded-ExtraBold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaExpanded/fonts/otf/Truculenta72ptExpanded-ExtraLight.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaExpanded/fonts/otf/Truculenta72ptExpanded-Light.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaExpanded/fonts/otf/Truculenta72ptExpanded-Medium.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaExpanded/fonts/otf/Truculenta72ptExpanded-Regular.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaExpanded/fonts/otf/Truculenta72ptExpanded-SemiBold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Truculenta/master/fonts/TruculentaExpanded/fonts/otf/Truculenta72ptExpanded-Thin.otf')
+_commit='7ce6b921fc5418882e99f7e1f32688c49cb5acd5'
+source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/OFL.txt"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/Truculenta/fonts/otf/Truculenta12pt-Black.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/Truculenta/fonts/otf/Truculenta12pt-Bold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/Truculenta/fonts/otf/Truculenta12pt-ExtraBold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/Truculenta/fonts/otf/Truculenta12pt-ExtraLight.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/Truculenta/fonts/otf/Truculenta12pt-Light.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/Truculenta/fonts/otf/Truculenta12pt-Medium.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/Truculenta/fonts/otf/Truculenta12pt-Regular.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/Truculenta/fonts/otf/Truculenta12pt-SemiBold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/Truculenta/fonts/otf/Truculenta12pt-Thin.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/Truculenta/fonts/otf/Truculenta72pt-Black.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/Truculenta/fonts/otf/Truculenta72pt-Bold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/Truculenta/fonts/otf/Truculenta72pt-ExtraBold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/Truculenta/fonts/otf/Truculenta72pt-ExtraLight.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/Truculenta/fonts/otf/Truculenta72pt-Light.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/Truculenta/fonts/otf/Truculenta72pt-Medium.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/Truculenta/fonts/otf/Truculenta72pt-Regular.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/Truculenta/fonts/otf/Truculenta72pt-SemiBold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/Truculenta/fonts/otf/Truculenta72pt-Thin.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaCondensed/fonts/otf/Truculenta12ptCondensed-Black.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaCondensed/fonts/otf/Truculenta12ptCondensed-Bold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaCondensed/fonts/otf/Truculenta12ptCondensed-ExtraBold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaCondensed/fonts/otf/Truculenta12ptCondensed-ExtraLight.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaCondensed/fonts/otf/Truculenta12ptCondensed-Light.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaCondensed/fonts/otf/Truculenta12ptCondensed-Medium.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaCondensed/fonts/otf/Truculenta12ptCondensed-Regular.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaCondensed/fonts/otf/Truculenta12ptCondensed-SemiBold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaCondensed/fonts/otf/Truculenta12ptCondensed-Thin.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaCondensed/fonts/otf/Truculenta72ptCondensed-Black.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaCondensed/fonts/otf/Truculenta72ptCondensed-Bold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaCondensed/fonts/otf/Truculenta72ptCondensed-ExtraBold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaCondensed/fonts/otf/Truculenta72ptCondensed-ExtraLight.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaCondensed/fonts/otf/Truculenta72ptCondensed-Light.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaCondensed/fonts/otf/Truculenta72ptCondensed-Medium.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaCondensed/fonts/otf/Truculenta72ptCondensed-Regular.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaCondensed/fonts/otf/Truculenta72ptCondensed-SemiBold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaCondensed/fonts/otf/Truculenta72ptCondensed-Thin.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaExpanded/fonts/otf/Truculenta12ptExpanded-Black.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaExpanded/fonts/otf/Truculenta12ptExpanded-Bold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaExpanded/fonts/otf/Truculenta12ptExpanded-ExtraBold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaExpanded/fonts/otf/Truculenta12ptExpanded-ExtraLight.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaExpanded/fonts/otf/Truculenta12ptExpanded-Light.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaExpanded/fonts/otf/Truculenta12ptExpanded-Medium.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaExpanded/fonts/otf/Truculenta12ptExpanded-Regular.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaExpanded/fonts/otf/Truculenta12ptExpanded-SemiBold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaExpanded/fonts/otf/Truculenta12ptExpanded-Thin.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaExpanded/fonts/otf/Truculenta72ptExpanded-Black.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaExpanded/fonts/otf/Truculenta72ptExpanded-Bold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaExpanded/fonts/otf/Truculenta72ptExpanded-ExtraBold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaExpanded/fonts/otf/Truculenta72ptExpanded-ExtraLight.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaExpanded/fonts/otf/Truculenta72ptExpanded-Light.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaExpanded/fonts/otf/Truculenta72ptExpanded-Medium.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaExpanded/fonts/otf/Truculenta72ptExpanded-Regular.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaExpanded/fonts/otf/Truculenta72ptExpanded-SemiBold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Truculenta/${_commit}/fonts/TruculentaExpanded/fonts/otf/Truculenta72ptExpanded-Thin.otf")
 sha256sums=('d4c3f10bf7997331b75c76d40535898729361c589b7301507120fa5582c827f3'
             '735ba361d2bb5213910f0c0e55472502e9137343b3ac02768e2e9044eb0c1858'
             'fd81737841c112307d097a720f987fa10d7839a16e2775e84d34aec2dd6d5d65'
