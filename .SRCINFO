@@ -1,12 +1,12 @@
 pkgbase = ttf-grenze-gotisch-variable
 	pkgdesc = Peculiar version of Grenze from Omnibus-Type.
 	pkgver = 1.002
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.omnibus-type.com/fonts/grenze-gotisch/
 	arch = any
 	license = OFL
-	source = ttf-grenze-gotisch-variable-1.002-1-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/master/OFL.txt
-	source = https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/master/fonts/variable/GrenzeGotisch[wght].ttf
+	source = ttf-grenze-gotisch-variable-1.002-2-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/7b5eac166bc3b2a519f98b5c124cb7a11670cc7b/OFL.txt
+	source = https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/7b5eac166bc3b2a519f98b5c124cb7a11670cc7b/fonts/variable/GrenzeGotisch[wght].ttf
 	sha256sums = bca29af2c3c9e142d11f523f414902ab8fb9ab8ffa3c34c63b6b72aa4e7d6acc
 	sha256sums = 701b299d8dc002a2b4bea2ff0f1272c0e4081a2835914354804565c410d0c637
 
