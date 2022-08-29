@@ -1,0 +1,18 @@
+pkgbase = quakeinjector-bin
+	pkgdesc = Download, install and play quake singleplayer maps from the quaddicted.com archive, binary distribution
+	pkgver = alpha05
+	pkgrel = 1
+	url = https://github.com/hrehfeld/QuakeInjector
+	arch = any
+	license = GPL
+	depends = java-environment
+	depends = hicolor-icon-theme
+	provides = quakeinjector
+	conflicts = quakeinjector-git
+	replaces = quakeinjector
+	source = https://github.com/hrehfeld/QuakeInjector/releases/download/alpha05/QuakeInjector-alpha05.zip
+	source = quakeinjector.desktop
+	sha256sums = 9cbc1ed86aab077c91eff024d81cf0341abee6e0f40ea4a9eb7ff7c6f79711ee
+	sha256sums = 24dccb15d1fe176009f1f637172e434553fdef8726e7f42c66307725bccf94bc
+
+pkgname = quakeinjector-bin
