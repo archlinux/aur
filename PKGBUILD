@@ -1,20 +1,21 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-archivo-narrow
 pkgver=3.100
-pkgrel=1
+pkgrel=2
 pkgdesc='Grotesque sans-serif typeface family from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/archivo-narrow/'
 license=('OFL')
-source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/ArchivoNarrow/master/OFL.txt"
-        'https://raw.githubusercontent.com/Omnibus-Type/ArchivoNarrow/master/fonts/otf/ArchivoNarrow-Bold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/ArchivoNarrow/master/fonts/otf/ArchivoNarrow-BoldItalic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/ArchivoNarrow/master/fonts/otf/ArchivoNarrow-Italic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/ArchivoNarrow/master/fonts/otf/ArchivoNarrow-Medium.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/ArchivoNarrow/master/fonts/otf/ArchivoNarrow-MediumItalic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/ArchivoNarrow/master/fonts/otf/ArchivoNarrow-Regular.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/ArchivoNarrow/master/fonts/otf/ArchivoNarrow-SemiBold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/ArchivoNarrow/master/fonts/otf/ArchivoNarrow-SemiBoldItalic.otf')
+_commit='b426cd5284c8171d4396f297c0c51ebf51095a7a'
+source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/ArchivoNarrow/${_commit}/OFL.txt"
+        "https://raw.githubusercontent.com/Omnibus-Type/ArchivoNarrow/${_commit}/fonts/otf/ArchivoNarrow-Bold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/ArchivoNarrow/${_commit}/fonts/otf/ArchivoNarrow-BoldItalic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/ArchivoNarrow/${_commit}/fonts/otf/ArchivoNarrow-Italic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/ArchivoNarrow/${_commit}/fonts/otf/ArchivoNarrow-Medium.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/ArchivoNarrow/${_commit}/fonts/otf/ArchivoNarrow-MediumItalic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/ArchivoNarrow/${_commit}/fonts/otf/ArchivoNarrow-Regular.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/ArchivoNarrow/${_commit}/fonts/otf/ArchivoNarrow-SemiBold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/ArchivoNarrow/${_commit}/fonts/otf/ArchivoNarrow-SemiBoldItalic.otf")
 sha256sums=('a4087edf95fb2a6bd38073ad005ced611695dc9d7d8fd5d04a888ef4f9c748ea'
             '4be36985bdbfcf70970ae1a48200063ef3a46228d32231ff01b9289af57bdcfc'
             'b9c5b17d1ccec6f624c9bf3f314f8807c8f1672a1a4c538ecbd61a58427097f2'
