@@ -1,6 +1,6 @@
 pkgbase = waypipe-git
 	pkgdesc = A proxy for Wayland protocol applications; like ssh -X
-	pkgver = 0.8.0.r0.g1b33ad6
+	pkgver = 0.8.3.r0.gf37c6658
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/mstoeckl/waypipe
 	arch = i686
@@ -17,6 +17,8 @@ pkgbase = waypipe-git
 	makedepends = ninja
 	makedepends = scdoc
 	makedepends = libdrm
+	makedepends = pkgconf
+	makedepends = cmake
 	depends = lz4
 	depends = zstd
 	depends = mesa
@@ -32,4 +34,3 @@ pkgbase = waypipe-git
 	sha512sums = SKIP
 
 pkgname = waypipe-git
-
