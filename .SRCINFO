@@ -1,7 +1,7 @@
 pkgbase = ros2-humble
 	pkgdesc = A set of software libraries and tools for building robot applications
 	pkgver = 2022.05.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.ros.org/en/humble/
 	install = ros2-humble.install
 	arch = any
