@@ -1,12 +1,12 @@
 _pkgname=yapsit
 pkgname=${_pkgname}-git
 pkgver=r8.edae67a
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet Another Pokémon Sprite In your Terminal"
 url="https://github.com/tomKPZ/yapsit"
 arch=("x86_64")
 depends=("glibc")
-makedepends=("git" "python-matplotlib")
+makedepends=("git" "python-pillow")
 license=('GPL3')
 
 source=("git+https://github.com/tomKPZ/yapsit.git")
