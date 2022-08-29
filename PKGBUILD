@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname=btrfs-desktop-notification-git
-pkgver=1.0.0
+pkgver=r3.94a6674
 pkgrel=1
 pkgdesc="Btrfs notification appears when booting into snapshot on Overlayfs or BTRFS error appears from journalctl log"
 arch=('any')
