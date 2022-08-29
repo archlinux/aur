@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.1141
+pkgver=mainline.0.1149
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('x86_64')
@@ -74,7 +74,8 @@ prepare() {
 	git config submodule.mbedtls.url ../yuzu-mbedtls
 	git config submodule.sirit.url ../sirit
 	git submodule update
-	install -Dt ../build/dist/compatibility_list ../compatibility_list.json
+	cp ../compatibility_list.json dist/compatibility_list
+	mkdir ../build
 	ln -sr .git ../build
 	patch -Np1 < ../unbundle-cpp-jwt.patch
 	patch -Np1 < ../unbundle-cubeb.patch
