@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 pkgname=git-gone
 pkgver=0.3.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Prune stale local Git branches'
 arch=('i686' 'x86_64')
 url="https://codeberg.org/flausch/git-gone"
