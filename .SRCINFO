@@ -1,0 +1,20 @@
+pkgbase = edxdlr-git
+	pkgdesc = edx Downloader course video tool (This is working!)
+	pkgver = r43.f8b336a
+	pkgrel = 1
+	url = https://github.com/neuronalism/edxdlr
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python-beautifulsoup4
+	depends = python-html5lib
+	depends = python-six
+	depends = python-requests
+	depends = python-tqdm
+	provides = edxdlr
+	conflicts = edxdlr
+	replaces = edx-dl
+	source = edxdlr::git+https://github.com/neuronalism/edxdlr.git
+	sha256sums = SKIP
+
+pkgname = edxdlr-git
