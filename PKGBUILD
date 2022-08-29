@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=quanteda
-_pkgver=3.2.2
+_pkgver=3.2.3
 pkgname=r-${_pkgname,,}
-pkgver=3.2.2
+pkgver=3.2.3
 pkgrel=1
 pkgdesc='Quantitative Analysis of Textual Data'
 arch=('x86_64')
@@ -52,7 +52,7 @@ optdepends=(
   r-xtable
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6128a74ae8ef36ca5934c0f50a49b7dd25ef20da386e693bc1d5c0be04f56561')
+sha256sums=('f34b0e89ad7795eed0d624fb57a9fb924175a03df0c23fc1f71eefe6a14d93ae')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
