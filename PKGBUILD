@@ -1,7 +1,8 @@
-# Maintainer :  Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
+# Maintainer : Sandro CAZZANIGA <cazzaniga.sandro@gmail.com>
+# Contributor :  Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
 
 pkgname=getmail
-pkgver=5.15
+pkgver=5.16
 pkgrel=1
 pkgdesc='POP3 mail retriever with reliable Maildir and command delivery'
 arch=('any')
@@ -13,7 +14,7 @@ optdepends=('python2-gnomekeyring: for storing passwords in gnome-keyring')
 
 changelog=CHANGELOG
 source=("$url/old-versions/$pkgname-$pkgver.tar.gz")
-sha256sums=('d453805ffc3f8fe2586ee705733bd666777e53693125fdb149494d22bd14162a')
+sha256sums=('6ae8f8eaef9abc465050c3b64e55a31afbdcd4c6edf3197b5b59bbd56ca667fa')
 
 
 build() {
