@@ -1,0 +1,17 @@
+pkgbase = thinlinc
+	pkgdesc = The Linux remote desktop server built on open source technology.
+	pkgver = 4.14.0_2324
+	pkgrel = 1
+	url = https://www.cendio.com/thinlinc
+	install = fix.install
+	arch = x86_64
+	license = custom
+	depends = libx11
+	depends = alsa-lib
+	depends = libpulse
+	depends = pulseaudio
+	depends = hicolor-icon-theme
+	source = thinlinc-4.14.0_2324.rpm::https://www.cendio.com/downloads/clients/thinlinc-client-4.14.0-2324.x86_64.rpm
+	sha256sums = SKIP
+
+pkgname = thinlinc
