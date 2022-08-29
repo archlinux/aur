@@ -1,7 +1,7 @@
 # Maintainer: Dmytro Meleshko <qzlgeb.zryrfuxb@tznvy.pbz(rot13)>
 _pkgname=mindustry
 pkgname="${_pkgname}-bin"
-_build=137
+_build=138
 pkgver="7.0_${_build}"
 pkgrel=1
 epoch=1
