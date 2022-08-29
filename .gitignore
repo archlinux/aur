@@ -1,0 +1,8 @@
+# ignore everything
+*
+
+# except these files
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!app-update.yml
