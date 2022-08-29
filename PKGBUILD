@@ -2,14 +2,14 @@
 
 _pkgname=minitimer
 pkgname="${_pkgname}-git"
-pkgver=r186.40efe61
+pkgver=r195.8143449
 pkgrel=1
 pkgdesc='A timer in your terminal'
 arch=('x86_64' 'aarch64')
-url="https://sr.ht/~arivigo/${_pkgname}"
+url="https://github.com/ariadnavigo/${_pkgname}.git"
 license=('MIT')
 makedepends=('git')
-source=("git+https://git.sr.ht/~arivigo/${_pkgname}")
+source=("git+${url}")
 sha256sums=('SKIP')
 conflicts=(${_pkgname})
 
