@@ -2,7 +2,7 @@
 # Contributor: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname=dprint
-pkgver=0.30.3
+pkgver=0.31.0
 pkgrel=1
 pkgdesc='Pluggable and configurable code formatting platform'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('bzip2')
 makedepends=('cargo')
 options=('!lto') ## interferes with compiling
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('f90e0f2d87f0d72d943653f02182c2bebcf29ce97d3ebb1755ae7188dec4da85')
+sha256sums=('cb977a4769d0083d06357d6d9773d1d37f4c279a785b4bab20bdfc25152cc884')
 
 prepare() {
 	cd "$pkgname-$pkgver"
