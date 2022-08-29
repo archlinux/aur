@@ -24,12 +24,6 @@ noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
-pkgver() {
-    cd wolff-lang
-    git describe --tags | sed 's/^v//;s/[^-]*-g/r&/;s/-/+/g'
-}
-
-
 prepare() {
     cd wolff-lang
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
