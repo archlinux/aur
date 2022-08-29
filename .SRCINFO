@@ -13,7 +13,7 @@ pkgbase = vesta-rpm
 	depends = java-environment-common
 	conflicts = vesta
 	conflicts = vesta-bin
-	source = http://jp-minerals.org/vesta/archives/3.5.8/vesta-3.5.8-2.x86_64.rpm
+	source = http://jp-minerals.org/vesta/archives/3.5.8/vesta-3.5.8-1.x86_64.rpm
 	sha256sums = c2a552d8bcd68cf5b25d698f2330d6b345469286c8f18990bd4a1c93c587bf84
 
 pkgname = vesta-rpm
