@@ -1,7 +1,7 @@
 pkgbase = tronclock
 	pkgdesc = An ncurses based clock resembling the screensaver shown in TRON: Legacy
-	pkgver = 1.0
-	pkgrel = 3
+	pkgver = 2.0
+	pkgrel = 4
 	url = https://github.com/papuSpartan/tronclock
 	arch = any
 	license = GPL3

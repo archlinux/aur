@@ -3,7 +3,7 @@
 #https://wiki.archlinux.org/title/Rust_package_guidelines
 pkgname="tronclock"
 pkgdesc="An ncurses based clock resembling the screensaver shown in TRON: Legacy"
-pkgver=1.0
+pkgver=2.0
 pkgrel=4
 arch=('any')
 url="https://github.com/papuSpartan/tronclock"
