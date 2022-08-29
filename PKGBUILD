@@ -1,22 +1,23 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-roboto-slab
 pkgver=2.001
-pkgrel=1
+pkgrel=2
 epoch=3
 pkgdesc='Roboto Slab is a slab serif addition to the Roboto type family.'
 arch=('any')
 url='https://www.google.com/fonts/specimen/Roboto+Slab'
 license=('Apache')
-source=("${pkgname}-${epoch}:${pkgver}-${pkgrel}-LICENSE.txt::https://raw.github.com/googlefonts/robotoslab/master/LICENSE.txt"
-        'https://raw.github.com/googlefonts/robotoslab/master/fonts/ttf/RobotoSlab-Black.ttf'
-        'https://raw.github.com/googlefonts/robotoslab/master/fonts/ttf/RobotoSlab-Bold.ttf'
-        'https://raw.github.com/googlefonts/robotoslab/master/fonts/ttf/RobotoSlab-ExtraBold.ttf'
-        'https://raw.github.com/googlefonts/robotoslab/master/fonts/ttf/RobotoSlab-ExtraLight.ttf'
-        'https://raw.github.com/googlefonts/robotoslab/master/fonts/ttf/RobotoSlab-Light.ttf'
-        'https://raw.github.com/googlefonts/robotoslab/master/fonts/ttf/RobotoSlab-Medium.ttf'
-        'https://raw.github.com/googlefonts/robotoslab/master/fonts/ttf/RobotoSlab-Regular.ttf'
-        'https://raw.github.com/googlefonts/robotoslab/master/fonts/ttf/RobotoSlab-SemiBold.ttf'
-        'https://raw.github.com/googlefonts/robotoslab/master/fonts/ttf/RobotoSlab-Thin.ttf')
+_commit='56bcfeddeae694babdb34c19ebe3956b17829699'
+source=("${pkgname}-${epoch}:${pkgver}-${pkgrel}-LICENSE.txt::https://raw.github.com/googlefonts/robotoslab/${_commit}/LICENSE.txt"
+        "https://raw.github.com/googlefonts/robotoslab/${_commit}/fonts/ttf/RobotoSlab-Black.ttf"
+        "https://raw.github.com/googlefonts/robotoslab/${_commit}/fonts/ttf/RobotoSlab-Bold.ttf"
+        "https://raw.github.com/googlefonts/robotoslab/${_commit}/fonts/ttf/RobotoSlab-ExtraBold.ttf"
+        "https://raw.github.com/googlefonts/robotoslab/${_commit}/fonts/ttf/RobotoSlab-ExtraLight.ttf"
+        "https://raw.github.com/googlefonts/robotoslab/${_commit}/fonts/ttf/RobotoSlab-Light.ttf"
+        "https://raw.github.com/googlefonts/robotoslab/${_commit}/fonts/ttf/RobotoSlab-Medium.ttf"
+        "https://raw.github.com/googlefonts/robotoslab/${_commit}/fonts/ttf/RobotoSlab-Regular.ttf"
+        "https://raw.github.com/googlefonts/robotoslab/${_commit}/fonts/ttf/RobotoSlab-SemiBold.ttf"
+        "https://raw.github.com/googlefonts/robotoslab/${_commit}/fonts/ttf/RobotoSlab-Thin.ttf")
 sha256sums=('cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30'
             '2f28ff96dbee95f6efdfa9b0c28b0bfa49a5afac07f6b11b0560dff4be3a0b78'
             'e27595c62f218e8c75e9f53ae50c5cfe259d95ba35dd84cc9a4843feb9d1ed80'
