@@ -17,7 +17,7 @@ makedepends=(
 source=(
 	"http://jp-minerals.org/vesta/archives/${pkgver}/vesta-${pkgver}-${pkgrel}.x86_64.rpm"
 )
-sha256sums=('6fba78640d449a4c0afd9143658106ee3668be235a9bb4109fdc5ff4828487d8')
+sha256sums=('c2a552d8bcd68cf5b25d698f2330d6b345469286c8f18990bd4a1c93c587bf84')
 
 package() {
             cp -a "${srcdir}/usr" "${pkgdir}"
