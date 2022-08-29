@@ -100,7 +100,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/VSCode-linux-$_vscode_arch"
+	cd "$srcdir/$_pkgname/VSCode-linux-$_vscode_arch"
 
 	install -Dm644 resources/app/LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 resources/app/ThirdPartyNotices.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
