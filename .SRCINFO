@@ -1,6 +1,6 @@
 pkgbase = android-sdk-platform-tools
 	pkgdesc = Platform-Tools for Google Android SDK (adb and fastboot)
-	pkgver = 33.0.2
+	pkgver = 33.0.3
 	pkgrel = 1
 	url = http://developer.android.com/sdk/index.html
 	install = android-sdk-platform-tools.install
@@ -11,10 +11,10 @@ pkgbase = android-sdk-platform-tools
 	provides = adb
 	provides = android-tools
 	conflicts = adb
-	source = https://dl.google.com/android/repository/platform-tools_r33.0.2-linux.zip
+	source = https://dl.google.com/android/repository/platform-tools_r33.0.3-linux.zip
 	source = adb.service
 	source = license.html
-	sha1sums = 6bf4f747ad929b02378b44ce083b4502d26109c7
+	sha1sums = deb43a0f9eaccd16a47937367ef3b53db3db8d10
 	sha1sums = 49a40c129199844603afe71fce69c0908e062393
 	sha1sums = bfb91be7e0b602d765b7a1fcaf0ce1b7e1a93faa
 
