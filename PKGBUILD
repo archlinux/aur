@@ -3,7 +3,7 @@
 
 pkgname=tinywm-git
 pkgver=1.1.33.g9d05612
-pkgrel=2
+pkgrel=3
 pkgdesc="A tiny window manager written in only ~50 lines of code"
 arch=('i686' 'x86_64')
 url="http://incise.org/tinywm.html"
@@ -12,7 +12,7 @@ makedepends=('git')
 provides=('tinywm')
 conflicts=('tinywm')
 depends=('libx11')
-source=('git://github.com/mackstann/tinywm.git')
+source=('git+https://github.com/mackstann/tinywm.git')
 md5sums=('SKIP')
 _gitname="tinywm"
 
