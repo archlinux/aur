@@ -1,7 +1,7 @@
 # Maintainer:       zzjzxq33 <wojiushixxx at 126 dot com>
 # Co-Maintainer:    Misaka13514 <Misaka13514 at gmail dot com>
 pkgname=bbg
-pkgver=20220817
+pkgver=20220829
 pkgrel=1
 pkgdesc="A static blog generator built with electron"
 arch=('any')
@@ -19,7 +19,7 @@ sha256sums=(
 	'd42008985970863855628fe7e65b43ad3c07bf18e51b4f770a95d6aef1bb3e56'
 	'd5f8f191d914a140ab11999a176b226523dd78e6865a75b483013846503a5228'
 	'f503d93639c1f4d4e050eceb11adf64d369908e5941cfdbda3af30b2f3c73d96'
-	'a9b7322c710c4f5a4bb7901b3aa4239dfde444564766e4d996d48c44d50295dd'
+	'adb3b66730c687d14198cd6f3a93dc78e51198e74eff764eca5a44719da2cb0b'
 )
 
 package() {
