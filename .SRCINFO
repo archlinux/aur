@@ -1,12 +1,13 @@
 pkgbase = parsimonator
 	pkgdesc = A fast open-source parsimony program
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stamatak/Parsimonator-1.0.2
 	arch = x86_64
 	license = unknow
 	makedepends = make
 	makedepends = gcc
+	makedepends = git
 	depends = gcc-libs
 	source = git+https://github.com/stamatak/Parsimonator-1.0.2.git
 	md5sums = SKIP
