@@ -1,7 +1,7 @@
 pkgbase = ocaml-biniou
 	pkgdesc = An optimized parsing and printing library for JSON
 	pkgver = 1.2.2
-	pkgrel = 4
+	pkgrel = 6
 	url = https://github.com/ocaml-community/biniou
 	arch = x86_64
 	license = BSD
@@ -9,6 +9,7 @@ pkgbase = ocaml-biniou
 	depends = ocaml
 	depends = ocaml-easy-format
 	depends = ocaml-findlib
+	depends = camlp-streams
 	provides = ocaml-biniou
 	options = !strip
 	options = staticlibs

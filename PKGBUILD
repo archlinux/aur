@@ -4,21 +4,20 @@
 _pkgname=biniou
 pkgname=ocaml-${_pkgname}
 pkgver=1.2.2
-pkgrel=5
+pkgrel=6
 pkgdesc="An optimized parsing and printing library for JSON"
 arch=('x86_64')
 url="https://github.com/ocaml-community/${_pkgname}"
 license=('BSD')
 options=('!strip' 'staticlibs')
 provides=('ocaml-biniou')
-depends=('ocaml' 'ocaml-easy-format' 'ocaml-findlib')
+depends=('ocaml' 'ocaml-easy-format' 'ocaml-findlib' 'camlp-streams')
 makedepends=('dune')
 source=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tbz")
 sha256sums=('8bf3ff17cd0ecb2d6b6d1d94cb08ef089d44caef96e9bae6be6839d428fa318f')
 
 build() {
     cd ${_pkgname}-${pkgver}
-    sed -i 's/camlp-streams//g' src/dune
     make all
 }
 
