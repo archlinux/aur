@@ -1,13 +1,13 @@
 pkgbase = ttf-manuale-variable
 	pkgdesc = Serif typeface for editorial typography in print and online by Omnibus-Type.
 	pkgver = 1.002
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.omnibus-type.com/fonts/manuale/
 	arch = any
 	license = OFL
-	source = ttf-manuale-variable-1.002-1-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/OFL.txt
-	source = https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/fonts/variable/Manuale-Italic[wght].ttf
-	source = https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/fonts/variable/Manuale[wght].ttf
+	source = ttf-manuale-variable-1.002-2-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Manuale/20a5ab6a0da1c8cb56916d843e50db0ad6b6dfd3/OFL.txt
+	source = https://raw.githubusercontent.com/Omnibus-Type/Manuale/20a5ab6a0da1c8cb56916d843e50db0ad6b6dfd3/fonts/variable/Manuale-Italic[wght].ttf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Manuale/20a5ab6a0da1c8cb56916d843e50db0ad6b6dfd3/fonts/variable/Manuale[wght].ttf
 	sha256sums = 6f5869d0892d8c06cabcccce3726cacc849bd0a96b83bef5850402ab2b9fce71
 	sha256sums = 13eb20f22e8b6a28eba93670219cb472980e8fd006319a917316434e2ed1961a
 	sha256sums = 19ea09ad2fbf321cf8f94ac3f66547bc9b2bdf3723a2f073615eaa02fe17ded6

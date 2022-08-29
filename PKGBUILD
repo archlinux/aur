@@ -1,14 +1,15 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-manuale-variable
 pkgver=1.002
-pkgrel=1
+pkgrel=2
 pkgdesc='Serif typeface for editorial typography in print and online by Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/manuale/'
 license=('OFL')
-source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/OFL.txt"
-        'https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/fonts/variable/Manuale-Italic[wght].ttf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/fonts/variable/Manuale[wght].ttf')
+_commit='20a5ab6a0da1c8cb56916d843e50db0ad6b6dfd3'
+source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Manuale/${_commit}/OFL.txt"
+        "https://raw.githubusercontent.com/Omnibus-Type/Manuale/${_commit}/fonts/variable/Manuale-Italic[wght].ttf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Manuale/${_commit}/fonts/variable/Manuale[wght].ttf")
 
 sha256sums=('6f5869d0892d8c06cabcccce3726cacc849bd0a96b83bef5850402ab2b9fce71'
             '13eb20f22e8b6a28eba93670219cb472980e8fd006319a917316434e2ed1961a'
