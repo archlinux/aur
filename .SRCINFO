@@ -1,0 +1,15 @@
+pkgbase = wolff-lang-git
+	pkgdesc = This is the official bleeding-edge package for the Wolff language interpreter
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Flu/wolff-lang.git
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = cargo
+	provides = wolff
+	conflicts = wolff
+	source = git+https://github.com/Flu/wolff-lang.git
+	md5sums = SKIP
+
+pkgname = wolff-lang-git
