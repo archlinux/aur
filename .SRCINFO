@@ -1,7 +1,7 @@
 pkgbase = conky-cli
 	pkgdesc = Lightweight system monitor for X, without X11 dependencies
 	pkgver = 1.12.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/brndnmtthws/conky
 	arch = x86_64
 	license = BSD
@@ -11,6 +11,7 @@ pkgbase = conky-cli
 	makedepends = docbook-xsl
 	makedepends = man-db
 	makedepends = git
+	makedepends = catch2
 	depends = curl
 	depends = lua
 	depends = wireless_tools
@@ -23,4 +24,3 @@ pkgbase = conky-cli
 	sha256sums = a7eb112fe7a6bcd6c44706a53cbf6222e640cd1e585492fc654aa9e05a7bbc94
 
 pkgname = conky-cli
-

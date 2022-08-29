@@ -1,21 +1,22 @@
-# Maintainer: peace885 <reyadmin@gmail.com>
+# Maintainer: Luca Canavese <l.canavese@protonmail.com>
+# Contributor: peace885 <reyadmin@gmail.com>
 # Contributor: Thibault Boyeux <thibault.boyeux@gmail.com>
 # Contributor: Army
-# Contributor : Archer777
+# Contributor: Archer777
 # Contributor: Dave Reisner <d@falconindy.com>
 # Contributor: Karol Cichy <slothck@gmail.com>
 
 _pkgname=conky
 pkgname=conky-cli
 pkgver=1.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight system monitor for X, without X11 dependencies"
 url='https://github.com/brndnmtthws/conky'
 license=('BSD' 'GPL')
 arch=('x86_64')
 provides=('conky')
 conflicts=('conky')
-makedepends=('cmake' 'docbook2x' 'docbook-xsl' 'man-db' 'git')
+makedepends=('cmake' 'docbook2x' 'docbook-xsl' 'man-db' 'git' 'catch2')
 depends=('curl' 'lua' 'wireless_tools' 'libxml2')
 source=("https://github.com/brndnmtthws/${_pkgname}/archive/v${pkgver}.tar.gz")
 source=("https://github.com/brndnmtthws/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
@@ -26,7 +27,9 @@ options=('!strip' 'debug')
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
-	# patch -p1 -i ../lua53.patch # lua_gettable returns an int in lua-5.3
+	# Unbundle catch2 to fix build with glibc 2.35
+	rm -r tests/catch2
+	ln -s /usr/include/catch2 tests
 }
 
 build() {
@@ -35,13 +38,13 @@ build() {
 	cmake \
 		-D CMAKE_BUILD_TYPE=Release \
 		-D MAINTAINER_MODE=ON \
-        -D BUILD_HDDTEMP=OFF \
-        -D BUILD_PORT_MONITORS=OFF \
+		-D BUILD_HDDTEMP=OFF \
+		-D BUILD_PORT_MONITORS=OFF \
 		-D BUILD_WEATHER_METAR=ON \
 		-D BUILD_WEATHER_XOAP=ON \
-        -D BUILD_X11=OFF \
-        -D BUILD_XDAMAGE=OFF \
-        -D BUILD_XFT=OFF \
+		-D BUILD_X11=OFF \
+		-D BUILD_XDAMAGE=OFF \
+		-D BUILD_XFT=OFF \
 		-D BUILD_WLAN=ON \
 		-D CMAKE_INSTALL_PREFIX=/usr \
 		.
