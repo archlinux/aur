@@ -13,7 +13,7 @@ url="https://github.com/VSCodium/vscodium"
 license=('MIT')
 depends=("$_electron" 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
 optdepends=('x11-ssh-askpass: SSH authentication')
-makedepends=('git' 'gulp' 'python' 'yarn' 'nvm' 'imagemagick' 'ripgrep')
+makedepends=('git' 'gulp' 'python' 'yarn' 'nvm' 'imagemagick')
 conflicts=('vscodium')
 source=("git+https://github.com/VSCodium/vscodium.git#tag=${pkgver}"
         "git+https://github.com/microsoft/vscode.git#tag=${pkgver%.*}"
