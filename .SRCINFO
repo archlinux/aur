@@ -1,0 +1,12 @@
+pkgbase = roundcubemail-skin-larry
+	pkgdesc = Larry skin for Roundcube Webmail
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/roundcube/larry
+	arch = any
+	license = CCPL
+	depends = roundcubemail
+	source = https://github.com/roundcube/larry/archive/refs/tags/1.6.0.tar.gz
+	sha256sums = 7494d9130286669fc486903b7068152fdfdbe8e0ccdb324fba85299f58f9fb4e
+
+pkgname = roundcubemail-skin-larry
