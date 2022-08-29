@@ -1,0 +1,17 @@
+pkgbase = ev-view
+	pkgdesc = A tool for visualization of evs results.
+	pkgver = 20160216.161212
+	pkgrel = 1
+	url = https://github.com/js-arias/ev-view
+	arch = x86_64
+	license = BSD
+	makedepends = make
+	makedepends = gcc
+	depends = gcc-libs
+	depends = gtk2
+	source = git+https://github.com/js-arias/ev-view.git
+	source = Makefile
+	md5sums = SKIP
+	md5sums = 618c34f7fe24aaf28c5904772668c29d
+
+pkgname = ev-view
