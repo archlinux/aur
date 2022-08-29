@@ -1,12 +1,12 @@
 pkgbase = scalc
 	pkgdesc = A very simple stack-based calculator that aims to be small, flexible, and extensible.
 	pkgver = 2.0.0
-	pkgrel = 1
-	url = https://sr.ht/~arivigo/scalc/
+	pkgrel = 2
+	url = https://github.com/ariadnavigo/scalc/
 	arch = x86_64
 	license = MIT
 	depends = sline
-	source = scalc-2.0.0.tar.gz::https://git.sr.ht/~arivigo/scalc/archive/2.0.0.tar.gz
+	source = scalc-2.0.0.tar.gz::https://github.com/ariadnavigo/scalc/archive/refs/tags/2.0.0.tar.gz
 	sha512sums = 1e744dec07775bf5802df18f8080fa707b8eb2ade8cda0a36957a71850996287169b96c102347bd00363484b20afcf18b5337470e8f3f936d346def2d0bb88c1
 
 pkgname = scalc
