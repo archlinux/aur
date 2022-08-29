@@ -3,13 +3,13 @@
 _pkgname=scalc
 pkgname="${_pkgname}-git"
 pkgver=r274.b65d54d
-pkgrel=1
+pkgrel=2
 pkgdesc='A very simple stack-based calculator that aims to be small, flexible, and extensible.'
 arch=('x86_64' 'aarch64')
-url="https://sr.ht/~arivigo/${_pkgname}"
+url="https://github.com/ariadnavigo/${_pkgname}"
 license=('MIT')
 makedepends=('sline' 'git')
-source=("git+https://github.com/ariadnavigo/${_pkgname}.git")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 conflicts=(${_pkgname})
 
