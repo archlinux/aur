@@ -1,26 +1,27 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-chivo
 pkgver=1.007
-pkgrel=3
+pkgrel=4
 pkgdesc='Neo-grotesque sans-serif typeface family from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/chivo/'
 license=('OFL')
-source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Chivo/master/OFL.txt"
-        'https://raw.githubusercontent.com/Omnibus-Type/Chivo/master/fonts/otf/Chivo-Black.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Chivo/master/fonts/otf/Chivo-BlackItalic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Chivo/master/fonts/otf/Chivo-Bold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Chivo/master/fonts/otf/Chivo-BoldItalic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Chivo/master/fonts/otf/Chivo-ExtraBold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Chivo/master/fonts/otf/Chivo-ExtraBoldItalic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Chivo/master/fonts/otf/Chivo-Italic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Chivo/master/fonts/otf/Chivo-Light.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Chivo/master/fonts/otf/Chivo-LightItalic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Chivo/master/fonts/otf/Chivo-Medium.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Chivo/master/fonts/otf/Chivo-MediumItalic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Chivo/master/fonts/otf/Chivo-Regular.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Chivo/master/fonts/otf/Chivo-Thin.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Chivo/master/fonts/otf/Chivo-ThinItalic.otf')
+_commit='dc4c121859ac06c32b03b9630f50a22b5b562cb9'
+source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Chivo/${_commit}/OFL.txt"
+        "https://raw.githubusercontent.com/Omnibus-Type/Chivo/${_commit}/fonts/otf/Chivo-Black.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Chivo/${_commit}/fonts/otf/Chivo-BlackItalic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Chivo/${_commit}/fonts/otf/Chivo-Bold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Chivo/${_commit}/fonts/otf/Chivo-BoldItalic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Chivo/${_commit}/fonts/otf/Chivo-ExtraBold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Chivo/${_commit}/fonts/otf/Chivo-ExtraBoldItalic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Chivo/${_commit}/fonts/otf/Chivo-Italic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Chivo/${_commit}/fonts/otf/Chivo-Light.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Chivo/${_commit}/fonts/otf/Chivo-LightItalic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Chivo/${_commit}/fonts/otf/Chivo-Medium.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Chivo/${_commit}/fonts/otf/Chivo-MediumItalic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Chivo/${_commit}/fonts/otf/Chivo-Regular.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Chivo/${_commit}/fonts/otf/Chivo-Thin.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Chivo/${_commit}/fonts/otf/Chivo-ThinItalic.otf")
 sha256sums=('5e4ab199aee98d04ca9bed9088b793291dd03e4d775876012ab4f14de77af3fa'
             '7422b4fc763fcf3b39def541a68d125ebd4cf67291591c4ea996bdce29719f02'
             '08fa6e4e7a319fdb5c162c117689001789aa9d59cbb68bbdaf2ee41f91b3dcda'
