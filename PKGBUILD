@@ -3,8 +3,8 @@
 # Source: https://github.com/zancarius/archlinux-pkgbuilds
 
 pkgname=python-billiard
-pkgver=3.6.4.0
-pkgrel=3
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="Python multiprocessing fork with improvements and bugfixes."
 arch=('x86_64')
 url="https://pypi.org/project/billiard/"
@@ -13,7 +13,7 @@ depends=('python')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest-runner' 'python-case' 'python-psutil')
 source=("https://pypi.io/packages/source/b/billiard/billiard-$pkgver.tar.gz")
-sha512sums=('9f2a44024e45c4e7667472a0a3ade7caae755ec7c163929433f818e4b87165218b9cc9545bdee2254e7159c206e525306e383d38906b00fd5428bd1616c39b8f')
+sha512sums=('af208a9bb38b35ecc5f36cf284da85fcab6954bbd213635cc7b82d699ac35bc5343f33b93e603ec358b70f138b432bf7e9f940c1290570ebf02b2227bc46739a')
 
 prepare() {
   cd billiard-$pkgver
