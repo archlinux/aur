@@ -5,17 +5,12 @@ pkgbase = zfec
 	url = https://pypi.python.org/pypi/zfec
 	arch = any
 	license = GPL
-	makedepends = python2-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
+	depends = python
 	source = https://files.pythonhosted.org/packages/source/z/zfec/zfec-1.5.5.tar.gz
 	sha256sums = 6033b2f3cc3edacf3f7eeed5f258c1ebf8a1d7e5e35b623db352512ce564e5ca
 
-pkgname = python2-zfec
-	depends = python2-pyutil
-	conflicts = python-zfec
-	replaces = zfec
-
 pkgname = python-zfec
-	depends = python-pyutil
-	conflicts = python2-zfec
-
