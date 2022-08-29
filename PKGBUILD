@@ -29,20 +29,17 @@ prepare() {
 }
 
 build() {
-    cd wolff-lang
     export RUSTUP_TOOLCHAIN=nightly
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
 }
 
 check() {
-    cd wolff-lang
     export RUSTUP_TOOLCHAIN=nightly
     cargo test --frozen --all-features
 }
 
 package() {
-    cd wolff-lang
     install -Dm0755 -t "$pkgdir/usr/bin/wolff" "target/release/wolff-lang"
     install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
