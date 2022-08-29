@@ -8,7 +8,7 @@ pkgdesc='An eMule-like client for the eD2k and Kademlia p2p networks. (Only Daem
 url='http://www.amule.org'
 arch=('x86_64' 'armv7h')
 license=('GPL')
-depends=('wxwidgets-common'
+depends=('wxwidgets-common-light'
          'crypto++'
          'libupnp'
          'libpng'
