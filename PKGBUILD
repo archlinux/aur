@@ -1,62 +1,8 @@
 # Maintainer: Ronald Record <github@ronrecord.com>
-# Contributor: Karl Stavestrand <karl@stavestrand.no>
-# Contributor: Adrian Kowalski <adpkow@gmail.com>
-# Contributor: Alexander Lopatin <sbar.geek@gmail.com>
-# Contributor: Alexey Semenko <igogo.dev@gmail.com>
-# Contributor: Andreas Rammhold <andreas@rammhold.de>
-# Contributor: Andrzej Rybczak <andrzej@rybczak.net>
-# Contributor: Anton Simakov <ttohin@gmail.com>
-# Contributor: Arnaud Guignard <aguignard@gmail.com>
-# Contributor: Asa Sourdiffe <asourdiffe@gmail.com>
-# Contributor: Benoît Dardenne <benoit.dardenne@gmail.com>
-# Contributor: Benoit Pierre <benoit.pierre@gmail.com>
-# Contributor: brezerk <brezerk@gmail.com>
-# Contributor: Chris Gregory <czipperz@gmail.com>
-# Contributor: Czipperz <czipperz@gmail.com>
-# Contributor: Damien Leone <damien.leone@fensalir.fr>
-# Contributor: Daniel <quite@hack.org>
-# Contributor: Darby Payne <darby.payne@gmail.com>
-# Contributor: David Coppa <dcoppa@gmail.com>
-# Contributor: Dmitriy Kusterskiy <dimykus@gmail.com>
-# Contributor: Eric Izoita <ericizoita@gmail.com>
-# Contributor: Frank Blendinger <fb@intoxicatedmind.net>
-# Contributor: greenbagels <greenbagels@teknik.io>
-# Contributor: Hamuko <hamuko@burakku.com>
-# Contributor: Hugh Wang <hghwng@gmail.com>
-# Contributor: Jacek Sowiński <mruwek.fs@vcf.pl>
-# Contributor: James Pike <jpike@chilon.net>
-# Contributor: Jan Palus <jan.palus@gmail.com>
-# Contributor: Jesse Kleve <jesse.kleve@gmail.com>
-# Contributor: jgr <jgr006@gmail.com>
-# Contributor: John Fresco <john.fresco@utah.edu>
-# Contributor: Larson Carter <larsoncarter@blazermail.net>
-# Contributor: Lennart Braun <lenerd@posteo.de>
-# Contributor: Maarten de Vries <maarten@de-vri.es>
-# Contributor: Marc Jessome <marc.jessome@gmail.com>
-# Contributor: Matthew Hague <matthewhague@zoho.com>
-# Contributor: Max Kellermann <max@duempel.org>
-# Contributor: Michaël Cadilhac <michael@cadilhac.name>
-# Contributor: Moritz Lipp <mlq@pwmt.org>
-# Contributor: Needs <needs@mailoo.org>
-# Contributor: Pawel Tomak <pawel.tomak@gmail.com>
-# Contributor: Qball Cow <qball@QDesk.site>
-# Contributor: Raghavendra D Prabhu <rprabhu@wnohang.net>
-# Contributor: Sam Simmons <sam@samiconductor.com>
-# Contributor: Sebastian Peters <koelnconcert@googlemail.com>
-# Contributor: sphaugh <sean.haugh@emerson.com>
-# Contributor: Trygve Aaberge <trygveaa@gmail.com>
-# Contributor: Wieland Hoffmann <themineo@gmail.com>
-# Contributor: Wojciech Siewierski <wojciech.siewierski@onet.pl>
-# Contributor: Yannick LM <yannicklm1337@gmail.com>
-# Contributor: V <v@anomalous.eu>
-# Contributor: Nicolas Wack <wackou@gmail.com>
-# Contributor: Dmitry Bogdanov <dmitry.bogdanov@upf.edu>
-# Contributor: Oscar Mayor <oscar.mayor@upf.edu>
-# Contributor: Sankalp Gulati <sankalp.gulati@upf.edu>
 
 pkgname=musicplayerplus
-pkgver=2.0.1
-pkgrel=2
+pkgver=v2.0.1r2
+pkgrel=1
 pkgdesc="Character based MPD client, spectrum visualizer, Beets library management, Mopidy and Navidrome servers, plus more"
 arch=('x86_64' 'armv7h')
 url="https://github.com/doctorfree/MusicPlayerPlus"
@@ -65,9 +11,8 @@ depends=(util-linux boost-libs libcurl-compat libmpdclient ncurses readline tagl
 makedepends=(boost cargo git pandoc qt5-tools zip)
 optdepends=('cool-retro-term: cool retro terminal emulator')
 install=musicplayerplus.install
-source=("${pkgname}::git+https://github.com/doctorfree/MusicPlayerPlus.git#tag=v${pkgver}r${pkgrel}")
+source=("${pkgname}::git+https://github.com/doctorfree/MusicPlayerPlus.git#tag=${pkgver}")
 sha256sums=('SKIP')
-options=(strip docs !libtool !staticlibs emptydirs zipman purge !debug !lto)
 
 export RUSTUP_TOOLCHAIN=stable
 export CARGO_TARGET_DIR=target

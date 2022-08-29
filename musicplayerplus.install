@@ -5,21 +5,11 @@ post_install() {
 read -d '' mppin <<'EOF'
 Perform the following post-installation initialization:
   - Run the 'mppinit' command as your normal user (REQUIRED)
+  - If the music library is not located at '$HOME/Music'
+    - Configure the 'music_directory' setting by editing '~/.config/mpd/mpd.conf'
+    - Run the 'mppinit sync' command as your normal user
 
-If the music library is not located at `$HOME/Music`:
-  - Configure the 'music_directory' setting by editing '~/.config/mpd/mpd.conf'
-  - Run the command 'mppinit sync'
-
-Optionally:
-  - Download albums in your Bandcamp collections with 'mppinit bandcamp'
-  - Download favorites in your Soundcloud account with 'mppinit soundcloud'
-  - Convert WAV/M4A format files to MP3 format with 'mpplus -F' and `mpplus -G`
-  - Import your music library into Beets with 'mpplus -I'
-  - Remove duplicate tracks and analyze audio with 'mppinit metadata'
-  - Install and activate Mopidy music server with 'mppinit mopidy'
-  - Install and activate Navidrome music server with 'mppinit navidrome'
-  - Activate the YAMS scrobbler for Last.fm with 'mpplus -Y'
-  - Download additional lyrics with 'mpplus -L'
-
-View details at https://github.com/doctorfree/MusicPlayerPlus#readme
+View additional post-installation configuration details at:
+  - https://github.com/doctorfree/MusicPlayerPlus#readme
+  - https://github.com/doctorfree/MusicPlayerPlus/wiki
 EOF
