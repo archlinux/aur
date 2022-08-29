@@ -1,7 +1,7 @@
 pkgbase = nerd-fonts-complete
 	pkgdesc = Iconic font aggregator, collection, & patcher. 3,600+ icons, 50+ patched fonts.
-	pkgver = 2.1.0
-	pkgrel = 8
+	pkgver = 2.2.1
+	pkgrel = 1
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
 	license = MIT
@@ -29,8 +29,8 @@ pkgbase = nerd-fonts-complete
 	conflicts = nerd-fonts-git
 	conflicts = nerd-fonts-complete-mono-glyphs
 	source = fix-installer-font-dir.patch
-	source = nerd-fonts-2.1.0.tar.gz::https://github.com/ryanoasis/nerd-fonts/archive/v2.1.0.tar.gz
+	source = nerd-fonts-2.2.1.tar.gz::https://github.com/ryanoasis/nerd-fonts/archive/v2.2.1.tar.gz
 	sha256sums = ccf93b108044a87bfb29c3f836d2ce4d5bdb1829702e532a69ccb4ab4aecaceb
-	sha256sums = a084ca91a174b547bab4523507824c76aa91ebcf38f9256a4ffd181813f87bd8
+	sha256sums = 05e733b4ac0a6fed997ca3a697c6881d4327991fa57f4376ae17d725413b89f7
 
 pkgname = nerd-fonts-complete
