@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=system76-driver-git
-pkgver=20.04.60.r0.g9ef923b
+pkgver=20.04.62.r0.g0337294
 pkgrel=1
 pkgdesc="System76 Driver for System76 computers"
 arch=('any')
