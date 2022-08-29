@@ -13,7 +13,7 @@ url="https://github.com/VSCodium/vscodium"
 license=('MIT')
 depends=("$_electron" 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
 optdepends=('x11-ssh-askpass: SSH authentication')
-makedepends=('git' 'gulp' 'python' 'yarn' 'nvm' 'imagemagick')
+makedepends=('git' 'gulp' 'python' 'yarn' 'nvm' 'imagemagick' 'ripgrep')
 conflicts=('vscodium')
 source=("git+https://github.com/VSCodium/vscodium.git#tag=${pkgver}"
         "git+https://github.com/microsoft/vscode.git#tag=${pkgver%.*}"
@@ -62,9 +62,10 @@ _ensure_local_nvm() {
 
 prepare() {
 	cd "$srcdir/$_pkgname"
-	git submodule add -f "$srcdir/vscode"
+	ln -sf ../vscode vscode
 
-	sed -i 's:\grep -rl --exclude-dir=\.git -E "${TELEMETRY_URLS}" \.:rg --no-ignore --iglob "!*.map" -l "${TELEMETRY_URLS}" .:' "undo_telemetry.sh"
+	sed -i "s:\.\./:../vscodium/:" "prepare_vscode.sh" "update_settings.sh"
+	sed -i -e "s:\.\./:../vscodium/:" -e 's:\grep -rl --exclude-dir=\.git -E "${TELEMETRY_URLS}" \.:rg --no-ignore --iglob "!*.map" -l "${TELEMETRY_URLS}" .:' "undo_telemetry.sh"
 
 	sed -i "s/@ELECTRON@/${_electron}/" "$srcdir/$_pkgname.sh" "$srcdir/$_pkgname.js"
 
@@ -89,7 +90,7 @@ build() {
 	export RELEASE_VERSION="${pkgver}"
 	HOME="$srcdir" ./prepare_vscode.sh
 
-	cd vscode
+	cd "$srcdir/vscode"
 	HOME="$srcdir" CHILD_CONCURRENCY=1 yarn install --cache-folder "$srcdir/yarn-cache" --arch="$_vscode_arch"
 
 	gulp compile-build
