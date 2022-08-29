@@ -1,18 +1,19 @@
 pkgbase = iqtree
 	pkgdesc = Efficient phylogenomic software by maximum likelihood; multicore version (OMP). https://doi.org/10.1093/molbev/msaa015
 	pkgver = 2.1.2
-	pkgrel = 1
-	url = http://www.iqtree.org/
+	pkgrel = 4
+	url = https://github.com/iqtree/iqtree2
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
 	makedepends = make
 	makedepends = gcc
+	makedepends = git
 	depends = boost
 	depends = eigen
-	depends = glibc
+	depends = gcc-libs
 	depends = zlib
-	source = iqtree2-2.1.2::https://github.com/iqtree/iqtree2/archive/v2.1.2.tar.gz
-	md5sums = 83e85d78b096b48607b7dbf91f8211a9
+	source = git+https://github.com/iqtree/iqtree2.git#tag=v2.1.2
+	md5sums = SKIP
 
 pkgname = iqtree
