@@ -1,6 +1,6 @@
 pkgbase = bottles-fixed
 	pkgdesc = Run Windows software on Linux with Bottles!
-	pkgver = 2022.8.28.1
+	pkgver = 2022.8.28.2
 	pkgrel = 1
 	url = https://github.com/bottlesdevs/bottles
 	changelog = changelog.md
@@ -63,7 +63,7 @@ pkgbase = bottles-fixed
 	provides = bottles
 	conflicts = bottles
 	conflicts = bottles-git
-	source = bottles-2022.8.28-brescia-1.tar.gz::https://github.com/bottlesdevs/bottles/archive/refs/tags/2022.8.28-brescia-1.tar.gz
-	b2sums = 07649eb450d31b706d483d8c4f919f16fc7e5c365fa5107b2c49fcc33dee1790902cd7d502737b89c77f68c510f4a41ffbace74a1aa92a06258088f7a2b40b0c
+	source = bottles-2022.8.28-brescia-2.tar.gz::https://github.com/bottlesdevs/bottles/archive/refs/tags/2022.8.28-brescia-2.tar.gz
+	b2sums = 3e907a28b680fe87d5e318e5a441c9db86cc188be90a13fc6e9f53fb13f7fcdeead943e00454570592d4c31e34a19e0a5726ef1765d19591e2f0d13bdcf5f9b3
 
 pkgname = bottles-fixed
