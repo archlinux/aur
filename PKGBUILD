@@ -3,7 +3,7 @@
 
 pkgbase=zfec
 pkgname=python-zfec
-pkgver=1.5.5
+pkgver=1.5.7.2
 pkgrel=1
 pkgdesc="A fast erasure codec which can be used with the command-line, C, Python, or Haskell"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/z/zfec/zfec-${pkgver}.tar.gz")
-sha256sums=('6033b2f3cc3edacf3f7eeed5f258c1ebf8a1d7e5e35b623db352512ce564e5ca')
+sha256sums=('4ee519be0dcc7da2e88482bcfc0bf977a425e1d7e8278cf5bbbb8d00f8a2afb6')
 
 build() {
     cd "zfec-$pkgver"
