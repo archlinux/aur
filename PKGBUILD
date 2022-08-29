@@ -3,7 +3,7 @@
 
 pkgname=fluffychat-localflutter
 _pkgname=fluffychat
-pkgver=1.6.0
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="Chat with your friends, be careful about your flutter environment"
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ optdepends=('libolm: E2E Encryption support')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("fluffychat-v${pkgver}.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v${pkgver}/fluffychat-v${pkgver}.tar.gz")
-sha256sums=('fc6a60cb7a86711a450584e3fe693a9c89fd0617a2410c5b2ef8ff594940d5d0')
+sha256sums=('7c35e63e2b9431090486e3080a19da3156625507fa7e8cb48858759d52f9dc3b')
 
 # Check the fluffer environment yourself
 
