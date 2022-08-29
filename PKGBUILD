@@ -26,6 +26,8 @@ package() {
   cd "$srcdir/${pkgname%-git}"
   install -Dm644 README.md "$pkgdir"/usr/share/doc/edxdlr/README.md
   find . -name '*.py' -exec install -Dvm 755 -t "$pkgdir"/opt/edxdlr {} +
-  mkdir -p "$pkgdir"/usr/bin/edxdlr
-  ln -s /opt/edxdlr/edxdlr.py "$pkgdir"/usr/bin/edxdlr
+  mkdir -p "$pkgdir"/usr/bin
+  echo '#!/bin/sh' > "$pkgdir"/usr/bin/edxdlr
+  echo 'exec python /opt/edxdlr/edxdlr.py "$@"' >> "$pkgdir"/usr/bin/edxdlr
+  chmod 755 "$pkgdir"/usr/bin/edxdlr
 }
