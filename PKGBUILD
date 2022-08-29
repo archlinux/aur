@@ -2,7 +2,7 @@
 
 _pkgname=hakrawler
 pkgname="${_pkgname}-git"
-pkgver=r216.6190559
+pkgver=r220.c9aa334
 pkgrel=1
 pkgdesc='Simple, fast web crawler designed for easy, quick discovery of endpoints and assets within a web application.'
 arch=('x86_64')

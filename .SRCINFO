@@ -1,6 +1,6 @@
 pkgbase = hakrawler-git
 	pkgdesc = Simple, fast web crawler designed for easy, quick discovery of endpoints and assets within a web application.
-	pkgver = r216.6190559
+	pkgver = r220.c9aa334
 	pkgrel = 1
 	url = https://github.com/hakluke/hakrawler
 	arch = x86_64
