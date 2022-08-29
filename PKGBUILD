@@ -1,7 +1,7 @@
 # Maintainer: Gerard Ribugent <ribugent <at> gmail <dot> com>
 pkgname=python-dbx
 _name=dbx
-pkgver=0.7.0
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="DataBricks CLI eXtensions - aka dbx is a CLI tool for advanced Databricks jobs management."
 arch=(any)
@@ -13,13 +13,13 @@ depends=(
 	"python-click>=8.1.0" "python-click<9.0.0"
 	"python-rich=12.5.1"
 	"python-typer=0.6.1"
-	"python-retry>=0.9.2"
-	"python-requests>=2.24.0"
-	"python-mlflow>=1.26.0"
+	"python-retry>=0.9.2" "python-retry<1.0.0"
+	"python-requests>=2.24.0" "python-requests<3.0.0"
+	"python-mlflow-skinny==1.28.0"
 	"python-yaml>=6.0"
 	"python-pydantic>=1.9.1"
 	"python-cryptography>=3.3.1" "python-cryptography<38.0.0"
-	"python-cookiecutter>=1.7.2"
+	"python-cookiecutter>=1.7.2" "python-cookiecutter<3.0.0"
 	"python-jinja>=2.11.2"
 	"python-aiohttp>=3.8.1"
 	"python-pathspec>=0.9.0"
@@ -28,7 +28,7 @@ depends=(
 )
 makedepends=(python-build python-installer python-wheel)
 source=($pkgname-$pkgver.tar.gz::https://github.com/databrickslabs/dbx/archive/refs/tags/v$pkgver.tar.gz)
-sha512sums=('ffc610dbf30d159c75a15e7dd6d847d266b20178b5a5ab7ef99c034a698b4725d76fca744e854e5e402235d3866179adf628c96c21b750a919921dd9d36ac4a2')
+sha512sums=('339923dfd004c6900a3b2cbcba980ecfa172ff0bec37cfe6773af908d56373928a6cb9c8d18f2811ea02389b4b8133ee701f66e4a0c7a535341f16923488955a')
 
 build() {
 	cd "$_name-$pkgver"
