@@ -1,6 +1,6 @@
 pkgbase = cork-rs-git
-	pkgdesc = A command-line calculator for hex-lovers
-	pkgver = r37.49f9200
+	pkgdesc = Command-line calculator for hex-lovers
+	pkgver = 0.2.4.r0.gb739e78
 	pkgrel = 1
 	url = https://github.com/reddocmd/cork
 	arch = x86_64
