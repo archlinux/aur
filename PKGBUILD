@@ -1,30 +1,31 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-grenze
 pkgver=1.002
-pkgrel=1
+pkgrel=2
 pkgdesc='Hybrid typeface family between Roman and Blackletter styles from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/grenze/'
 license=('OFL')
-source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/OFL.txt"
-        'https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts-/otf/Grenze-Black.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts-/otf/Grenze-BlackItalic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts-/otf/Grenze-Bold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts-/otf/Grenze-BoldItalic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts-/otf/Grenze-ExtraBold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts-/otf/Grenze-ExtraBoldItalic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts-/otf/Grenze-ExtraLight.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts-/otf/Grenze-ExtraLightItalic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts-/otf/Grenze-Italic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts-/otf/Grenze-Light.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts-/otf/Grenze-LightItalic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts-/otf/Grenze-Medium.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts-/otf/Grenze-MediumItalic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts-/otf/Grenze-Regular.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts-/otf/Grenze-SemiBold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts-/otf/Grenze-SemiBoldItalic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts-/otf/Grenze-Thin.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts-/otf/Grenze-ThinItalic.otf')
+_commit='a2a182c7b828c3d6a1784ef08b22be8521b2b9a7'
+source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Grenze/${_commit}/OFL.txt"
+        "https://raw.githubusercontent.com/Omnibus-Type/Grenze/${_commit}/fonts-/otf/Grenze-Black.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Grenze/${_commit}/fonts-/otf/Grenze-BlackItalic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Grenze/${_commit}/fonts-/otf/Grenze-Bold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Grenze/${_commit}/fonts-/otf/Grenze-BoldItalic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Grenze/${_commit}/fonts-/otf/Grenze-ExtraBold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Grenze/${_commit}/fonts-/otf/Grenze-ExtraBoldItalic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Grenze/${_commit}/fonts-/otf/Grenze-ExtraLight.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Grenze/${_commit}/fonts-/otf/Grenze-ExtraLightItalic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Grenze/${_commit}/fonts-/otf/Grenze-Italic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Grenze/${_commit}/fonts-/otf/Grenze-Light.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Grenze/${_commit}/fonts-/otf/Grenze-LightItalic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Grenze/${_commit}/fonts-/otf/Grenze-Medium.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Grenze/${_commit}/fonts-/otf/Grenze-MediumItalic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Grenze/${_commit}/fonts-/otf/Grenze-Regular.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Grenze/${_commit}/fonts-/otf/Grenze-SemiBold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Grenze/${_commit}/fonts-/otf/Grenze-SemiBoldItalic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Grenze/${_commit}/fonts-/otf/Grenze-Thin.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Grenze/${_commit}/fonts-/otf/Grenze-ThinItalic.otf")
 sha256sums=('3b84fe60cf47615bda9710f47d81f8935544b021f0a4846b2518489b2d2ea1a4'
             'e9718d947c2e45e5cdc924a6ebff7daabd0451308878e94c608373da20d85338'
             'ed452866c5a800d78bb7b3242b4bd277cc8300ecddb73effcec36ce0952a7e16'
