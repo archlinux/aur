@@ -1,19 +1,20 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-sansita-swashed
 pkgver=1.003
-pkgrel=2
+pkgrel=3
 pkgdesc='Ornate version of Sansita from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/sansita-swashed/'
 license=('OFL')
-source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/master/OFL.txt"
-        'https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/master/fonts/otf/SansitaSwashed-Black.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/master/fonts/otf/SansitaSwashed-Bold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/master/fonts/otf/SansitaSwashed-ExtraBold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/master/fonts/otf/SansitaSwashed-Light.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/master/fonts/otf/SansitaSwashed-Medium.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/master/fonts/otf/SansitaSwashed-Regular.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/master/fonts/otf/SansitaSwashed-SemiBold.otf')
+_commit='4b18bac65511ce185c1dc687472a8c77bdc6cc4d'
+source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/${_commit}/OFL.txt"
+        "https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/${_commit}/fonts/otf/SansitaSwashed-Black.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/${_commit}/fonts/otf/SansitaSwashed-Bold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/${_commit}/fonts/otf/SansitaSwashed-ExtraBold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/${_commit}/fonts/otf/SansitaSwashed-Light.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/${_commit}/fonts/otf/SansitaSwashed-Medium.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/${_commit}/fonts/otf/SansitaSwashed-Regular.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/${_commit}/fonts/otf/SansitaSwashed-SemiBold.otf")
 sha256sums=('e0513f56a7710b94b459ccb7ef77bb7a464e24c777fb2f7023b78af8915dbb86'
             'eed1232ae70fe117059c56a14162869c85b1ebc277c2ff30221016a591bc9496'
             'c1e8dd713e922a7d3be833a7b2a1783ca314811abd838d3fed924abca2ad889f'
