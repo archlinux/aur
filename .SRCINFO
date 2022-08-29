@@ -1,13 +1,13 @@
 pkgbase = ttf-asap-variable
 	pkgdesc = Contemporary sans-serif typeface family from Omnibus-Type.
 	pkgver = 3.001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.omnibus-type.com/fonts/asap/
 	arch = any
 	license = OFL
-	source = ttf-asap-variable-3.001-1-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Asap/master/OFL.txt
-	source = https://raw.githubusercontent.com/Omnibus-Type/Asap/master/fonts/variable/Asap-Italic[wdth,wght].ttf
-	source = https://raw.githubusercontent.com/Omnibus-Type/Asap/master/fonts/variable/Asap[wdth,wght].ttf
+	source = ttf-asap-variable-3.001-2-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Asap/a7ae77c9d7dc2020feaa6d4a8606e2235450b8b9/OFL.txt
+	source = https://raw.githubusercontent.com/Omnibus-Type/Asap/a7ae77c9d7dc2020feaa6d4a8606e2235450b8b9/fonts/variable/Asap-Italic[wdth,wght].ttf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Asap/a7ae77c9d7dc2020feaa6d4a8606e2235450b8b9/fonts/variable/Asap[wdth,wght].ttf
 	sha256sums = a6f4d778db0d2a87c2c6e560f71eb018b4253505b2f23c108724dea5d4d74ed0
 	sha256sums = 2ee61562da32e80c98f92513bdcf02f50e464b3f4212766827d7cedb674f1175
 	sha256sums = 9a12babd2ef8bca21cda4467aedc49897a04a213af6423cf6d3c4cc1b85225d1
