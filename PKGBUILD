@@ -3,13 +3,13 @@
 _pkgname="xsnow"
 pkgname=${_pkgname}-svn
 pkgver=r434
-pkgrel=1
+pkgrel=2
 pkgdesc="Let it snow on your desktop"
 url="https://sourceforge.net/projects/xsnow/"
 license=("GPL3")
 arch=("x86_64" "i386" "armv7h" "aarch64")
 conflicts=("xsnow" "xsnow-bin" "xsnow-legacy" "xsnow-comp-patch-git")
-depends=("atk" "cairo" "gtk3" "libx11" "libxpm" "libxml2")
+depends=("atk" "cairo" "gtk3" "gsl" "libx11" "libxpm" "libxml2")
 makedepends=("subversion")
 source=("svn+https://svn.code.sf.net/p/${_pkgname}/code/trunk")
 sha256sums=('SKIP')

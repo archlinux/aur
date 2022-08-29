@@ -1,7 +1,7 @@
 pkgbase = xsnow-svn
 	pkgdesc = Let it snow on your desktop
 	pkgver = r434
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/xsnow/
 	arch = x86_64
 	arch = i386
@@ -12,6 +12,7 @@ pkgbase = xsnow-svn
 	depends = atk
 	depends = cairo
 	depends = gtk3
+	depends = gsl
 	depends = libx11
 	depends = libxpm
 	depends = libxml2
