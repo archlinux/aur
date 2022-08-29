@@ -10,7 +10,7 @@ arch=('x86_64')
 url='https://github.com/svt/vivictpp'
 license=('GPL2')
 depends=('ffmpeg'
-         'sdl_image'
+         'sdl2_ttf'
          'freetype2')
 makedepends=('meson')
 provides=("${pkgname}")
