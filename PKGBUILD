@@ -4,11 +4,13 @@ pkgname=altlinux-git
 _spkgname=AltLinux
 _lpkgname=altlinux
 pkgver=v0.4.2.1.r5.g1508e66
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for AltServer-Linux"
 arch=('x86_64')
 url="https://github.com/maxasix/AltLinux"
 license=('GPL')
+provides=("altlinux")
+conflicts=("altlinux")
 depends=('binutils'
          'wget'
          'curl'
@@ -54,7 +56,4 @@ package() {
     cp -R resources dist/altlinux
     cp -R dist/altlinux "${pkgdir}"/usr/lib/
     chmod -R 0775 "${pkgdir}"/usr/lib/altlinux
-
-    mkdir -p "${pkgdir}"/usr/bin
-    ln -s "${pkgdir}"/usr/lib/altlinux/altlinux "${pkgdir}"/usr/bin/altlinux
 }
