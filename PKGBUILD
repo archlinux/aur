@@ -8,13 +8,13 @@ pkgver=1
 pkgrel=1
 pkgdesc="C-evo: Extended Horizon, Empire Building Game"
 arch=('x86_64')
-url="http://www.c-evo.org"
+url="https://sourceforge.net/projects/c-evo-eh/"
 license=('GPL2' 'CCPL')
 makedepends=('fpc' 'lazarus-gtk2')
 depends=('gtk2')
 optdepends=('ffmpeg: Needed for sounds')
 conflicts=('c-evo' 'c-evo-bin')
-source=("$pkgname-$pkgver.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/${pkgname}_${pkgver}.orig.tar.xz")
+source=("https://sourceforge.net/projects/c-evo-eh/files/Download/$pkgname-$pkgver.tar.xz")
 sha256sums=('fb1bed1f33399d6c4cef81ffd931c8ff11c8e2b0682708c7be241da01964d8ea')
 #options=(debug !strip)
 
