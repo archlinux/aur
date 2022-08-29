@@ -1,7 +1,7 @@
 pkgbase = vscodium-electron
 	pkgdesc = VS Code without MS branding/telemetry/licensing. - System-wide Electron edition
 	pkgver = 1.70.2.22230
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/VSCodium/vscodium
 	arch = x86_64
 	arch = aarch64

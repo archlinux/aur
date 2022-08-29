@@ -2,10 +2,11 @@
 
 _pkgname=vscodium
 _electron=electron19
+# _nodejs="16.14"
 
 pkgname=${_pkgname}-electron
 pkgver=1.70.2.22230
-pkgrel=1
+pkgrel=2
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/VSCodium/vscodium"
@@ -63,19 +64,17 @@ prepare() {
 	cd "$srcdir/$_pkgname"
 	ln -sf ../vscode vscode
 
-	sed -i "s:\.\./:../vscodium/:" "prepare_vscode.sh"
-	sed -i "s:\.\./:../vscodium/:" "update_settings.sh"
+	sed -i "s:\.\./:../vscodium/:" "prepare_vscode.sh" "update_settings.sh"
 	sed -i -e "s:\.\./:../vscodium/:" -e 's:\grep -rl --exclude-dir=\.git -E "${TELEMETRY_URLS}" \.:rg --no-ignore --iglob "!*.map" -l "${TELEMETRY_URLS}" .:' "undo_telemetry.sh"
 
-	sed -i "s/@ELECTRON@/${_electron}/" "$srcdir/$_pkgname.sh"
-	sed -i "s/@ELECTRON@/${_electron}/" "$srcdir/$_pkgname.js"
+	sed -i "s/@ELECTRON@/${_electron}/" "$srcdir/$_pkgname.sh" "$srcdir/$_pkgname.js"
 
 	_ensure_local_nvm
-	nvm install
+	nvm install "${_nodejs}"
 
 	# Build native modules for system electron
 	local _target=$(</usr/lib/$_electron/version)
-	sed -i "s/^target .*/target \"${_target//v/}\"/" vscode/.yarnrc
+	sed -i "s/^target .*/target \"${_target//v/}\"/" "$srcdir/vscode/.yarnrc"
 }
 
 build() {
@@ -85,13 +84,20 @@ build() {
 	export NODE_OPTIONS=--max-old-space-size=8192
 
 	_ensure_local_nvm
+	nvm use "${_nodejs}"
 
+	export OS_NAME=linux
+	export RELEASE_VERSION="${pkgver}"
 	HOME="$srcdir" ./prepare_vscode.sh
 
 	cd "$srcdir/vscode"
 	HOME="$srcdir" CHILD_CONCURRENCY=1 yarn install --cache-folder "$srcdir/yarn-cache" --arch="$_vscode_arch"
 
-	gulp compile-build compile-extension-media compile-extensions-build "vscode-linux-$_vscode_arch-min"
+	gulp compile-build
+	gulp compile-extension-media
+	gulp compile-extensions-build
+	gulp minify-vscode
+	gulp "vscode-linux-$_vscode_arch-min"
 }
 
 package() {
@@ -106,7 +112,7 @@ package() {
 	install -Dm 755 "$srcdir/${_pkgname}.js" -t "$pkgdir/usr/lib/${_pkgname}/"
 
 	install -dm755 "$pkgdir/usr/lib/${_pkgname}"
-	cp -r resources/app/!(LICENSE.txt|ThirdPartyNotices.txt) "$pkgdir/usr/lib/${_pkgname}/"
+	cp -r --no-preserve=ownership --preserve=mode resources/app/!(LICENSE.txt|ThirdPartyNotices.txt) "$pkgdir/usr/lib/${_pkgname}/"
 	ln -sf /usr/bin/rg "$pkgdir/usr/lib/$_pkgname/node_modules.asar.unpacked/@vscode/ripgrep/bin/rg"
 
   	install -Dm644 "$srcdir/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
