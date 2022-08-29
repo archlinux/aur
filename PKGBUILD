@@ -5,8 +5,8 @@
 
 _gitname='nerd-fonts'
 pkgname='nerd-fonts-complete'
-pkgver=2.1.0
-pkgrel=8
+pkgver=2.2.1
+pkgrel=1
 pkgdesc='Iconic font aggregator, collection, & patcher. 3,600+ icons, 50+ patched fonts.'
 arch=('any')
 url='https://github.com/ryanoasis/nerd-fonts'
@@ -41,7 +41,7 @@ source=(
   "${_gitname}-${pkgver}.tar.gz::https://github.com/ryanoasis/nerd-fonts/archive/v${pkgver}.tar.gz"
 )
 sha256sums=('ccf93b108044a87bfb29c3f836d2ce4d5bdb1829702e532a69ccb4ab4aecaceb'
-            'a084ca91a174b547bab4523507824c76aa91ebcf38f9256a4ffd181813f87bd8')
+            '05e733b4ac0a6fed997ca3a697c6881d4327991fa57f4376ae17d725413b89f7')
 
 prepare () {
   cd "$srcdir/$_gitname-$pkgver"
