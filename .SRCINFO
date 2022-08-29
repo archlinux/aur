@@ -1,14 +1,16 @@
 pkgbase = komanda-cli-git
 	pkgdesc = The Komanda Command-line IRC Client
-	pkgver = v0.9.4.r24.g391040d
+	pkgver = 0.9.4.r32.g8596023
 	pkgrel = 1
 	url = https://github.com/mephux/komanda-cli
 	arch = x86_64
 	license = BSD
 	makedepends = go
+	makedepends = git
 	makedepends = dep
 	source = komanda-cli-git::git+https://github.com/mephux/komanda-cli.git
+	source = runtime-fix.patch
 	sha256sums = SKIP
+	sha256sums = 1ff96e713c35aed197ba11d4681836b53016b1a83ea950c20cbaaaf2c122a560
 
 pkgname = komanda-cli-git
-

@@ -1,0 +1,12 @@
+diff --git a/komanda.go b/komanda.go
+index 7bd5ad6..7ce2f7a 100644
+--- a/komanda.go
++++ b/komanda.go
+@@ -6,7 +6,6 @@ import (
+ 	"log"
+ 	"os"
+ 	"path"
+-	"runtime"
+ 
+ 	"github.com/mephux/common"
+ 	"github.com/mephux/komanda-cli/komanda"
