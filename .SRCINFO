@@ -1,7 +1,7 @@
 pkgbase = vscodium-bin
 	pkgdesc = Binary releases of VS Code without MS branding/telemetry/licensing.
 	pkgver = 1.70.2.22230
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/VSCodium/vscodium
 	arch = x86_64
 	arch = aarch64
@@ -23,7 +23,6 @@ pkgbase = vscodium-bin
 	provides = codium
 	provides = vscodium
 	conflicts = vscodium
-	conflicts = vscodium-git
 	source = vscodium-bin.desktop
 	source = vscodium-bin-uri-handler.desktop
 	sha256sums = a665ef6e2a1711df2552d7ae49fd7f30f7a2d7e0dea71c7c5f4c90764d8c37ce
