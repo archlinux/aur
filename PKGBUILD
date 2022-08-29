@@ -6,8 +6,8 @@ pkgrel=1
 pkgdesc="Distributed SQLite"
 arch=('x86_64')
 url="https://github.com/canonical/dqlite"
-license=('Apache')
-depends=('libuv>=1.8.0' 'sqlite-replication>=3.22.0' 'raft' 'libco')
+license=('LGPL3')
+depends=('libuv>=1.8.0' 'sqlite' 'raft')
 makedepends=('git')
 source=("git+https://github.com/canonical/dqlite.git")
 sha256sums=('SKIP')
