@@ -5,7 +5,7 @@
 # Maintainer: Uffe Jakobsen <uffe@uffe.org>
 #
 pkgname=dxa65
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 epoch=
 pkgdesc="Disassembler for MOS 6502 and compatible CPUs"
@@ -27,7 +27,7 @@ install=
 changelog=
 source=(http://www.floodgap.com/retrotech/xa/dists/${_pkgname}-${pkgver}.tar.gz)
 noextract=()
-md5sums=('3a7993751bcb94e5f9081cc2f27eee1d')
+sha256sums=('8e40ed77816581f9ad95acac2ed69a2fb2ac7850e433d19cd684193a45826799')
 
 
 prepare()
@@ -44,7 +44,7 @@ build()
 check()
 {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  #make -k check
+  make test
 }
 
 package()
