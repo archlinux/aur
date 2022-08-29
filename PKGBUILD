@@ -31,6 +31,7 @@ pkgver() {
 
 
 prepare() {
+    cd wolff-lang
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
