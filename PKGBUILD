@@ -1,20 +1,21 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-unna
 pkgver=2.008
-pkgrel=3
+pkgrel=4
 pkgdesc='Transitional typeface family from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/unna/'
 license=('OFL')
-source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Unna/master/OFL.txt"
-        'https://raw.githubusercontent.com/Omnibus-Type/Unna/master/fonts/otf/Unna-Bold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Unna/master/fonts/otf/Unna-BoldItalic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Unna/master/fonts/otf/Unna-Italic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Unna/master/fonts/otf/Unna-Light.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Unna/master/fonts/otf/Unna-LightItalic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Unna/master/fonts/otf/Unna-Medium.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Unna/master/fonts/otf/Unna-MediumItalic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Unna/master/fonts/otf/Unna-Regular.otf')
+_commit='826be2abebda53d63bcd99b7ca30a7061b89bcfd'
+source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Unna/${_commit}/OFL.txt"
+        "https://raw.githubusercontent.com/Omnibus-Type/Unna/${_commit}/fonts/otf/Unna-Bold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Unna/${_commit}/fonts/otf/Unna-BoldItalic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Unna/${_commit}/fonts/otf/Unna-Italic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Unna/${_commit}/fonts/otf/Unna-Light.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Unna/${_commit}/fonts/otf/Unna-LightItalic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Unna/${_commit}/fonts/otf/Unna-Medium.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Unna/${_commit}/fonts/otf/Unna-MediumItalic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Unna/${_commit}/fonts/otf/Unna-Regular.otf")
 sha256sums=('e542171ed5902b35c863bd1b90cff2c80f97ecfe2c7b31aeb16e951f958f5220'
             '472ab91ebdbe7ca9df7e077ba23a631b0ccc52d0fc82af5d5e712f929c0983d0'
             'f1e33ca0f6d9fd895bd85613c9c0e8d643c1abca34f0cc6f7186fb0ba222f6bc'

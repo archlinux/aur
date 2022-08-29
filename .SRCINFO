@@ -1,19 +1,19 @@
 pkgbase = otf-unna
 	pkgdesc = Transitional typeface family from Omnibus-Type.
 	pkgver = 2.008
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.omnibus-type.com/fonts/unna/
 	arch = any
 	license = OFL
-	source = otf-unna-2.008-3-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Unna/master/OFL.txt
-	source = https://raw.githubusercontent.com/Omnibus-Type/Unna/master/fonts/otf/Unna-Bold.otf
-	source = https://raw.githubusercontent.com/Omnibus-Type/Unna/master/fonts/otf/Unna-BoldItalic.otf
-	source = https://raw.githubusercontent.com/Omnibus-Type/Unna/master/fonts/otf/Unna-Italic.otf
-	source = https://raw.githubusercontent.com/Omnibus-Type/Unna/master/fonts/otf/Unna-Light.otf
-	source = https://raw.githubusercontent.com/Omnibus-Type/Unna/master/fonts/otf/Unna-LightItalic.otf
-	source = https://raw.githubusercontent.com/Omnibus-Type/Unna/master/fonts/otf/Unna-Medium.otf
-	source = https://raw.githubusercontent.com/Omnibus-Type/Unna/master/fonts/otf/Unna-MediumItalic.otf
-	source = https://raw.githubusercontent.com/Omnibus-Type/Unna/master/fonts/otf/Unna-Regular.otf
+	source = otf-unna-2.008-4-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Unna/826be2abebda53d63bcd99b7ca30a7061b89bcfd/OFL.txt
+	source = https://raw.githubusercontent.com/Omnibus-Type/Unna/826be2abebda53d63bcd99b7ca30a7061b89bcfd/fonts/otf/Unna-Bold.otf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Unna/826be2abebda53d63bcd99b7ca30a7061b89bcfd/fonts/otf/Unna-BoldItalic.otf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Unna/826be2abebda53d63bcd99b7ca30a7061b89bcfd/fonts/otf/Unna-Italic.otf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Unna/826be2abebda53d63bcd99b7ca30a7061b89bcfd/fonts/otf/Unna-Light.otf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Unna/826be2abebda53d63bcd99b7ca30a7061b89bcfd/fonts/otf/Unna-LightItalic.otf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Unna/826be2abebda53d63bcd99b7ca30a7061b89bcfd/fonts/otf/Unna-Medium.otf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Unna/826be2abebda53d63bcd99b7ca30a7061b89bcfd/fonts/otf/Unna-MediumItalic.otf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Unna/826be2abebda53d63bcd99b7ca30a7061b89bcfd/fonts/otf/Unna-Regular.otf
 	sha256sums = e542171ed5902b35c863bd1b90cff2c80f97ecfe2c7b31aeb16e951f958f5220
 	sha256sums = 472ab91ebdbe7ca9df7e077ba23a631b0ccc52d0fc82af5d5e712f929c0983d0
 	sha256sums = f1e33ca0f6d9fd895bd85613c9c0e8d643c1abca34f0cc6f7186fb0ba222f6bc
@@ -25,4 +25,3 @@ pkgbase = otf-unna
 	sha256sums = e296d35402d65379f99eb7bb296ace53c27e9f51a09d4231653843c9e3c5db0a
 
 pkgname = otf-unna
-
