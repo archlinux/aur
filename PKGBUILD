@@ -2,12 +2,12 @@
 
 pkgname=zspotify
 pkgver=0.5.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A Spotify downloader needing only a python interpreter and ffmpeg."
 arch=("x86_64")
 url="https://github.com/afkcodes/zspotify"
 license=("GPL3")
-depends=(python python-librespot python-music-tag python-pillow python-protobuf python-tabulate python-tqdm)
+depends=(python python-librespot python-music-tag python-pillow python-protobuf python-tabulate python-tqdm python-ffmpy python-mutagen)
 makedepends=(python-setuptools)
 source=(
   "https://github.com/afkcodes/zspotify/archive/c11cfed6bc811adb2edb9709c16b6a344c000682.tar.gz"

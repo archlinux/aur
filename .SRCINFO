@@ -1,7 +1,7 @@
 pkgbase = zspotify
 	pkgdesc = A Spotify downloader needing only a python interpreter and ffmpeg.
 	pkgver = 0.5.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/afkcodes/zspotify
 	arch = x86_64
 	license = GPL3
@@ -13,6 +13,8 @@ pkgbase = zspotify
 	depends = python-protobuf
 	depends = python-tabulate
 	depends = python-tqdm
+	depends = python-ffmpy
+	depends = python-mutagen
 	source = https://github.com/afkcodes/zspotify/archive/c11cfed6bc811adb2edb9709c16b6a344c000682.tar.gz
 	source = zspotify-module-imports.patch
 	source = zspotify-paths.patch
