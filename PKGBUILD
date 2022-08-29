@@ -2,7 +2,7 @@
 
 _pkgname=stretchly
 pkgname=${_pkgname}-xeruf-git
-pkgver=1125.a3264ed
+pkgver=1161.cf29eb0
 pkgrel=1
 pkgdesc="The break reminder app with more restrictive menus"
 arch=('any')
@@ -12,6 +12,7 @@ depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-atk' '
 makedepends=('git' 'nvm' 'jq' 'python')
 provides=("$_pkgname")
 source=("git+${url}.git")
+conflicts=("$_pkgname" "${_pkgname}-bin")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -20,8 +21,7 @@ pkgver() {
 }
 
 _ensure_local_nvm() {
-    if type nvm >/dev/null 2>&1
-    then
+    if type nvm &>/dev/null; then
         nvm deactivate
         nvm unload
     fi
@@ -59,8 +59,8 @@ build() {
     ./node_modules/.bin/electron-builder build \
         --linux pacman \
         --"${!CARCH}" \
-        -c.electronDist=/usr/lib/electron \
-        -c.electronVersion="$(</usr/lib/electron/version)"
+        -c.electronDist=/usr/lib/electron17 \
+        -c.electronVersion="$(</usr/lib/electron17/version)"
     tar -C "${_unpackdir}" -Jxf "${_outfile}"
 
     echo "Deleting Electron ($(du -h "$_electron" | awk '{print $1}'))..." >&2
@@ -74,7 +74,7 @@ build() {
     install -D -m 0755 /dev/null "${_unpackdir}/usr/bin/stretchly"
     cat >"${_unpackdir}/usr/bin/stretchly" <<EOF
 #!/bin/sh
-exec electron '/opt/$(sed -E "s/'/'\\\\''/g" <<<"${_appname}")/resources/app.asar' "\$@"
+exec electron17 '/opt/$(sed -E "s/'/'\\\\''/g" <<<"${_appname}")/resources/app.asar' "\$@"
 EOF
 }
 
