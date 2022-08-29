@@ -6,7 +6,7 @@
 -Exec=prusa-slicer %F
 -Icon=PrusaSlicer
 +Name=Prusa GCode Viewer
-+Exec=env DESKTOPINTEGRATION=false /usr/bin/prusa-slicer --gcodeviewer %F
++Exec=/usr/bin/prusa-slicer --gcodeviewer %F
 +Icon=PrusaSlicer-gcodeviewer
  Terminal=false
  Type=Application

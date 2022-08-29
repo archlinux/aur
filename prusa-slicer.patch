@@ -4,7 +4,7 @@
  [Desktop Entry]
  Name=PrusaSlicer
 -Exec=prusa-slicer %F
-+Exec=env DESKTOPINTEGRATION=false /usr/bin/prusa-slicer %F
++Exec=/usr/bin/prusa-slicer %F
  Icon=PrusaSlicer
  Terminal=false
  Type=Application
