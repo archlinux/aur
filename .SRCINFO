@@ -1,7 +1,7 @@
 pkgbase = webcamoid
 	pkgdesc = Webcamoid is a full featured webcam capture application.
 	pkgver = 9.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://webcamoid.github.io/
 	install = webcamoid.install
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = webcamoid
 	license = GPL
 	makedepends = alsa-lib
 	makedepends = cmake
-	makedepends = ffmpeg
+	makedepends = ffmpeg4.4
 	makedepends = git
 	makedepends = gst-plugins-base-libs
 	makedepends = jack
