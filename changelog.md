@@ -1,3 +1,77 @@
+## GE-Proton-7-31 Released
+- FXIV Launcher fixed (thanks Valve)
+- GTA V fixes added (thanks Valve)
+- NOSTEAM=1 envvar option available for Guild Wars 2. Use it the same way you do for ffxiv non-steam accounts:
+- NOSTEAM=1 %command%
+- dxvk updated to git
+- vkd3d-proton updated to git
+- wine updated to latest bleeding edge
+- patches added for Visual Novel Doukyuusei
+
+## GE-Proton-7-30 Released
+
+- protonfix for Flatout Ultimate Carnage (single player only) added -- thanks Ranplayer
+- amazon games patch added (this is mainly for possible future compatibility, please use wine-ge for non-steam games)
+- wine-staging ddraw-Device_Caps and ddraw-version-check patchsets disabled in favor of new proton ddraw changes.
+- dxvk updated to latest git
+- vkd3d-proton updated to latest git
+- wine updated to latest bleeding-edge
+- upstream openxr patches applied
+
+## GE-Proton-7-29 Released
+- Halo Infinite patches pulled in from Proton experimental. Game should be playable now with videos. Mouse pointer issue is also fixed.
+- Upside down videos fixed in Endless Space 2 and some players in VRChat:
+
+## GE-Proton-7-28 Released
+- Halo infinite wine video playback patches disabled -- they break too many games. You can still play it without videos like before. This should fix most issues with various games crashing in 7-27. Currently pending an update from Valve to fix the issue.
+- dxvk updated to latest git
+- vkd3d-proton updated to latest git
+- protonfix added for Super naughty maid 2 (thanks Marc-Pierre-Barbier!)
+
+## GE-Proton-7-27 Released
+- DXVK:
+
+- dxvk updated to latest git (fixes some issues that were in 1.10* branch)
+- halo infinite required dxvk patches merged (for dxgi which is used by vkd3d) -- thanks Guy1524! (Derek Lesho)
+- dxvk-async patch updated for latest git -- thanks Sporif!
+
+- VKD3D:
+
+- vkd3d-proton updated to latest git
+- halo infinite required vkd3d patches merged -- thanks Guy1524! (Derek Lesho)
+
+- WINE:
+
+- wine updated to latest bleeding edge
+- halo infinite patches required for wine merged (campaign now playable, videos work) -- thanks Guy1524! (Derek Lesho)
+
+- PROTONFIXES:
+
+- protonfix added for Halo CE mod tools (confirmed working) -- thanks Oro!
+- protonfix added for Halo 2 mod tools (still has issues) -- thanks Oro!
+- protonfix added for Halo 3 mod tools (confirmed working) -- thanks Oro!
+- protonfix added for Halo 3: ODST mod tools (confirmed working) -- thanks Oro!
+- Fall Guys protonfix updated to fix hang after EOS install on clean prefix setup.
+- Witcher 2 protonfix added to fix failure to launch on systems with large core counts
+- Farcry 3 protonfix added to fix failure to launch on systems with large core counts
+- Battlefield Bad Company 2 protonfix removed, no longer needed and was causing DXVK not to load for the game
+- Endless Space 2 protonfix removed, was causing game to crash. Game now works but videos are upside down (known proton issue)
+- Gwent: Rogue Mage protonfix added
+- SQUAD protonfix EAC blob updated to last-known working version
+
+## GE-Proton-7-26 Released
+- Fix WINE_FULLSCREEN_FSR_MODE= not working after previous aspect ratio update.
+
+## GE-Proton-7-25 Released
+- FFXIV hydaelyn intro video after datacenter select fixed (again). May also fix WMV playback in some other games.
+- Trion/Glyph launcher and its games are now fixed (Trove, Rift)
+- revert proton commit 96b8220 to re-enable gallium nine patching compatibility
+- wine updated to bleeding edge, brings in numerous fixes
+- dxvk updated to 1.10.2 (git currently has conflicts with dxvk-async)
+- vkd3d-proton updated to git
+- MODS=1 option added for allowing choosing between launching skyrim with SKSE or the normal launcher
+- FSR will now auto-calculate resolutions based on screen aspect ratio rather than adding pre-defined entries based on width.
+
 ## GE-Proton-7-24 Released
 - Hotfix: Death Stranding crash fixed
 - FSR Updates
