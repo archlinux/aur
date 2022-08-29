@@ -1,12 +1,12 @@
 pkgbase = ttf-sansita-swashed-variable
 	pkgdesc = Ornate version of Sansita from Omnibus-Type.
 	pkgver = 1.003
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.omnibus-type.com/fonts/sansita-swashed/
 	arch = any
 	license = OFL
-	source = ttf-sansita-swashed-variable-1.003-1-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/master/OFL.txt
-	source = https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/master/fonts/vf/SansitaSwashed[wght].ttf
+	source = ttf-sansita-swashed-variable-1.003-2-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/4b18bac65511ce185c1dc687472a8c77bdc6cc4d/OFL.txt
+	source = https://raw.githubusercontent.com/Omnibus-Type/Sansita-Swashed/4b18bac65511ce185c1dc687472a8c77bdc6cc4d/fonts/vf/SansitaSwashed[wght].ttf
 	sha256sums = e0513f56a7710b94b459ccb7ef77bb7a464e24c777fb2f7023b78af8915dbb86
 	sha256sums = a6ff6619f22d01eb9582fb00a38052d7afba404ff5868be9bddf37e2888a1c6a
 
