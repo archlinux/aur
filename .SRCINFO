@@ -13,7 +13,6 @@ pkgbase = vscodium-electron
 	makedepends = yarn
 	makedepends = nvm
 	makedepends = imagemagick
-	makedepends = ripgrep
 	depends = electron19
 	depends = libsecret
 	depends = libx11
