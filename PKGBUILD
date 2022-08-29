@@ -4,7 +4,7 @@
 pkgname=ergo-git
 _pkg="${pkgname%-git}"
 pkgver=0.7.1.r1.gcab9782
-pkgrel=1
+pkgrel=2
 pkgdesc="List of utilities for the daily developer workflow"
 arch=('x86_64' 'i686' 'aarch64')
 url='https://github.com/beatlabs/ergo'
@@ -29,13 +29,23 @@ prepare() {
 }
 
 build() {
-	cd "$_pkg"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+	cd "$_pkg"
 	go build -o build/ergo -ldflags "-linkmode=external -X main.version=$pkgver" ./cmd/cli
+}
+
+check() {
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	cd "$_pkg"
+	go test ./...
 }
 
 package() {

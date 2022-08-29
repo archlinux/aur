@@ -1,7 +1,7 @@
 pkgbase = ergo-git
 	pkgdesc = List of utilities for the daily developer workflow
 	pkgver = 0.7.1.r1.gcab9782
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/beatlabs/ergo
 	install = ergo.install
 	arch = x86_64
