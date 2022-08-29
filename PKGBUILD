@@ -2,7 +2,7 @@
 
 
 pkgname=gnome-voice
-pkgver=0.0.9
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Voice is Public Voice Communication Software for GNOME 43 more information on on https://wiki.gnome.org/Apps/Voice and http://www.gnomevoice.org/"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=('libchamplain' 'geoclue' 'gst-plugins-base' 'gst-plugins-bad')
 makedepends=('intltool' 'itstool' 'python')
 source=(https://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('fe4a4006a1e0040a6a7d795bb1953b7e1079113f3d72e7756a1b21f977f8cd8d')
+sha256sums=('ce57680c9f5accff8b6d761bca6b8e90c0d4bb91de3415e312d1ff9feec73306')
 
 build() {
   cd $pkgname-$pkgver
