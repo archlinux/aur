@@ -8,7 +8,7 @@ pkgdesc='Fast BAM/CRAM depth calculation for WGS, exome, or targeted sequencing'
 arch=('x86_64')
 url="https://github.com/brentp/${pkgname}"
 license=('MIT')
-makedepends=('nim' 'nimble' 'htslib')
+makedepends=('git' 'nim' 'nimble' 'htslib')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('71edbefef8e3a43ddf41f79e24f4a11eb208e6fc0957e4431294a5e9517a3c14')
 
