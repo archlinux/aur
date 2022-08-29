@@ -2,7 +2,7 @@
 
 pkgrealname=webcamoid
 pkgname=webcamoid-git
-pkgver=9.0.0.r32.g0c1dffeb
+pkgver=9.0.0.r96.g3a6426a0
 pkgrel=1
 pkgdesc="Webcamoid is a full featured webcam capture application."
 url='https://webcamoid.github.io/'
@@ -27,7 +27,7 @@ optdepends=('v4l-utils: Extra formats support for webcams'
             'polkit: Root privileges for virtual camera module (Recommended)')
 makedepends=('alsa-lib'
              'cmake'
-             'ffmpeg'
+             'ffmpeg4.4'
              'git'
              'gst-plugins-base-libs'
              'jack'
@@ -54,6 +54,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/${pkgrealname}"
+    export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
     cmake \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
