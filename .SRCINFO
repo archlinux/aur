@@ -1,6 +1,6 @@
 pkgbase = deepin-grand-search-git
 	pkgdesc = System-wide desktop search for DDE
-	pkgver = r242.e1921c2
+	pkgver = r293.0a2fd7a
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-grand-search
 	arch = x86_64

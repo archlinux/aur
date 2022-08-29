@@ -2,7 +2,7 @@
 
 _pkgname=dde-grand-search
 pkgname=deepin-grand-search-git
-pkgver=r242.e1921c2
+pkgver=r293.0a2fd7a
 pkgrel=1
 pkgdesc='System-wide desktop search for DDE'
 arch=('x86_64')
@@ -35,4 +35,5 @@ build() {
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
+    mv $pkgdir/usr/etc $pkgdir
 }
