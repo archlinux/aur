@@ -1,6 +1,6 @@
 pkgbase = petalinux
 	pkgdesc = Toolchain and SDK for Xilinx embedded Linux
-	pkgver = 2021.2
+	pkgver = 2022.1
 	pkgrel = 1
 	url = https://www.xilinx.com/products/design-tools/embedded-software/petalinux-sdk.html
 	install = petalinux.install
@@ -35,7 +35,7 @@ pkgbase = petalinux
 	depends = xterm
 	depends = zlib
 	options = !strip
-	source = local://petalinux-v2021.2-final-installer.run
-	sha256sums = 03be0351728ea7a5c3077ba86f30e4b4d47e717134fbd72cf2ec97cc6d766fe6
+	source = local://petalinux-v2022.1-04191534-installer.run
+	sha256sums = 8a61188caa4ed035db70b3233decd761baf25b5773dd1a56a8c6ad2ded96ceec
 
 pkgname = petalinux
