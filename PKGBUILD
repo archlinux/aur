@@ -6,7 +6,7 @@
 ## GPG key: https://github.com/jsirois.gpg
 
 pkgname=python-pex
-pkgver=2.1.103
+pkgver=2.1.104
 pkgrel=1
 arch=('any')
 pkgdesc='Generates executable Python environments'
@@ -14,7 +14,7 @@ url='https://github.com/pantsbuild/pex'
 license=('Apache')
 depends=('python')
 makedepends=('git' 'python-build' 'python-installer' 'python-flit-core' 'python-sphinx')
-# checkdepends=('python-pytest-runner' 'python-pkginfo')
+# checkdepends=('python-pytest' 'python-pkginfo')
 changelog=CHANGES.rst
 provides=('pex')
 replaces=('pex')
@@ -29,11 +29,10 @@ build() {
 	make -C docs man
 }
 
-## 25 minutes to run a test suite lol no thanks
 # check() {
 # 	cd "$pkgname"
 # 	echo ':: Warning: This test will last at least five minutes. You have been warned.'
-# 	python setup.py pytest
+# 	PYTHONPATH="$PWD" pytest --ignore=tests/integration
 # }
 
 package() {
