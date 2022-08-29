@@ -11,5 +11,6 @@
 *.log.*
 *.sig
 *.part
+tempscript.sh
 
 */
