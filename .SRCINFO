@@ -1,7 +1,7 @@
 pkgbase = ostinato
 	pkgdesc = Cross-platform network packet/traffic generator and analyzer
-	pkgver = 1.1
-	pkgrel = 3
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = http://ostinato.org/
 	arch = i686
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = ostinato
 	optdepends = gzip
 	optdepends = diffutils
 	optdepends = awk
-	source = https://github.com/pstavirs/ostinato/archive/v1.1.tar.gz
+	source = https://github.com/pstavirs/ostinato/archive/v1.2.0.tar.gz
 	source = ostinato.desktop
 	source = ostinato.png
-	md5sums = 3cd0cce3e368c64eb531a6eba2cdee1f
+	md5sums = 2114f928546f700060707705eba51c02
 	md5sums = 87e4dbdde1a16e6db537b2d01ed0a798
 	md5sums = 5ddf0b07a4a088630ed6655869f8d2aa
 
