@@ -1,7 +1,7 @@
 pkgbase = bfgminer-git
 	pkgdesc = Bitcoin miner featuring overclocking, monitoring, fan speed control and remote management. For FPGA/GPU/CPU Bitcoin mining.
 	pkgver = 5.5.0.r34.g866fd36f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bitcointalk.org/?topic=877081
 	arch = x86_64
 	arch = aarch64
@@ -15,6 +15,7 @@ pkgbase = bfgminer-git
 	depends = libmicrohttpd
 	depends = libusb
 	depends = lm_sensors
+	depends = libxcrypt
 	optdepends = opencl-nvidia: OpenCL implementation for NVIDIA
 	optdepends = screen: for running in background
 	provides = bfgminer

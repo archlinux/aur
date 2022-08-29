@@ -4,12 +4,13 @@
 
 pkgname=bfgminer-git
 pkgver=5.5.0.r34.g866fd36f
-pkgrel=2
+pkgrel=3
 pkgdesc="Bitcoin miner featuring overclocking, monitoring, fan speed control and remote management. For FPGA/GPU/CPU Bitcoin mining."
 arch=('x86_64' 'aarch64')
-depends=('curl' 'jansson' 'libevent' 'libmicrohttpd' 'libusb' 'lm_sensors')
+depends=('curl' 'jansson' 'libevent' 'libmicrohttpd' 'libusb' 'lm_sensors' 'libxcrypt')
 makedepends=('uthash' 'yasm' 'git')
 optdepends=('opencl-nvidia: OpenCL implementation for NVIDIA' 'screen: for running in background')
+conflicts=('libbase58' 'libblkchecker')
 url='https://bitcointalk.org/?topic=877081'
 license=('GPL3')
 provides=('bfgminer')
@@ -45,12 +46,14 @@ build() {
 
   ./configure --prefix=/usr \
     --sbindir=/usr/bin \
+    --sysconfdir=/etc \
     --enable-cpumining \
     --enable-bfsb \
     --enable-metabank \
     --enable-scrypt \
     --enable-opencl \
-    --with-udevrulesdir=/usr/lib/udev/rules.d
+    --with-udevrulesdir=/usr/lib/udev/rules.d \
+    --without-system-libbase58
   # --enable-knc (FS#33640)
   make
 }
