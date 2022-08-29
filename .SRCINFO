@@ -1,13 +1,13 @@
 pkgbase = ttf-faustina-variable
 	pkgdesc = Serif typeface for editorial typography in print and online by Omnibus-Type.
 	pkgver = 1.200
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.omnibus-type.com/fonts/faustina/
 	arch = any
 	license = OFL
-	source = ttf-faustina-variable-1.200-1-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Faustina/master/OFL.txt
-	source = https://raw.githubusercontent.com/Omnibus-Type/Faustina/master/fonts/variable/Faustina-Italic[wght].ttf
-	source = https://raw.githubusercontent.com/Omnibus-Type/Faustina/master/fonts/variable/Faustina[wght].ttf
+	source = ttf-faustina-variable-1.200-2-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Faustina/eaed5823e55b6256571a2bb379b5203083cab452/OFL.txt
+	source = https://raw.githubusercontent.com/Omnibus-Type/Faustina/eaed5823e55b6256571a2bb379b5203083cab452/fonts/variable/Faustina-Italic[wght].ttf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Faustina/eaed5823e55b6256571a2bb379b5203083cab452/fonts/variable/Faustina[wght].ttf
 	sha256sums = 73f1067ce6357d5da461e7973e7fc1092fbf44212730b77759b1b9a4f39466ec
 	sha256sums = 215b9bf63da0c9584b5a0aa8e2270da6a2b62c1281f5c39089613c3aaeffa2be
 	sha256sums = 2ce2606f0ee1d493873c24818a391e02606ee76ac924b3d985cbb820c0a53ea5
