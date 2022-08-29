@@ -4,13 +4,14 @@ java_=11
 pkgname_=truffleruby
 pkgname="${pkgname_}-jdk${java_}-bin"
 pkgver=22.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GraalVM-based, high-performance implementation of the Ruby language (Java ${java_} version)"
 arch=('x86_64'
       'aarch64')
 url='https://github.com/oracle/truffleruby'
 license=('EPL' 'GPL2' 'LGPL2.1')
-depends=("jdk${java_}-graalvm-bin")
+depends=("jdk${java_}-graalvm-bin"
+         "graal-llvm-jdk${java_}-bin")
 source_x86_64=("https://github.com/oracle/$pkgname_/releases/download/vm-${pkgver}/ruby-installable-svm-java${java_}-linux-amd64-${pkgver}.jar")
 source_aarch64=("https://github.com/oracle/$pkgname_/releases/download/vm-${pkgver}/ruby-installable-svm-java${java_}-linux-aarch64-${pkgver}.jar")
 sha256sums_x86_64=('7f8b6a76a92ae01c5a6e3e08a95872aaba4ecdae3ea15768fe40e27e81335457')
