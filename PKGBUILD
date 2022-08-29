@@ -1,14 +1,15 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-saira-variable
 pkgver=1.101
-pkgrel=1
+pkgrel=2
 pkgdesc='Contemporary sans-serif typeface system from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/saira/'
 license=('OFL')
-source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Saira/master/OFL.txt"
-        'https://raw.githubusercontent.com/Omnibus-Type/Saira/master/Saira/fonts/variable/Saira-Italic[wdth,wght].ttf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Saira/master/Saira/fonts/variable/Saira[wdth,wght].ttf')
+_commit='1916f2a575479b626238d9842126e63aa208eebf'
+source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Saira/${_commit}/OFL.txt"
+        "https://raw.githubusercontent.com/Omnibus-Type/Saira/${_commit}/Saira/fonts/variable/Saira-Italic[wdth,wght].ttf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Saira/${_commit}/Saira/fonts/variable/Saira[wdth,wght].ttf")
 
 sha256sums=('f2665d4718b452b3818a877191355ac884a6b9b419d35408fe7ee487e9e8f30f'
             '965972c2543b72948aedb55fae36e23175661d0f9d2d8d7f14a1009e466912f8'

@@ -1,13 +1,13 @@
 pkgbase = ttf-saira-variable
 	pkgdesc = Contemporary sans-serif typeface system from Omnibus-Type.
 	pkgver = 1.101
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.omnibus-type.com/fonts/saira/
 	arch = any
 	license = OFL
-	source = ttf-saira-variable-1.101-1-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Saira/master/OFL.txt
-	source = https://raw.githubusercontent.com/Omnibus-Type/Saira/master/Saira/fonts/variable/Saira-Italic[wdth,wght].ttf
-	source = https://raw.githubusercontent.com/Omnibus-Type/Saira/master/Saira/fonts/variable/Saira[wdth,wght].ttf
+	source = ttf-saira-variable-1.101-2-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Saira/1916f2a575479b626238d9842126e63aa208eebf/OFL.txt
+	source = https://raw.githubusercontent.com/Omnibus-Type/Saira/1916f2a575479b626238d9842126e63aa208eebf/Saira/fonts/variable/Saira-Italic[wdth,wght].ttf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Saira/1916f2a575479b626238d9842126e63aa208eebf/Saira/fonts/variable/Saira[wdth,wght].ttf
 	sha256sums = f2665d4718b452b3818a877191355ac884a6b9b419d35408fe7ee487e9e8f30f
 	sha256sums = 965972c2543b72948aedb55fae36e23175661d0f9d2d8d7f14a1009e466912f8
 	sha256sums = 9d050fc5a01c85f74c4257c207d50b55d1e40c37308c642f974a2c5003231dde
