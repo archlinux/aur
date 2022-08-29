@@ -1,7 +1,7 @@
 # Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
 pkgname=terramate
-pkgver=0.1.20
+pkgver=0.1.25
 pkgrel=1
 pkgdesc="Terramate is a tool for managing multiple Terraform stacks that comes with support for change detection and code generation."
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('terramate')
 license=('Apache-2')
 makedepends=('go>=1.18' 'git' 'gzip' 'tar' 'gcc')
 source=("https://github.com/mineiros-io/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('1b9a57af1f717be1bf6b93a7a6415eb3477614c219689e13ee87b38f85563353')
+sha256sums=('89f59e39db26ff3651b0a6b299d7f918b62db8892dcb25012f1e4f9f76127e14')
 
 build() {
 	cd "${pkgname}-${pkgver}"
