@@ -8,8 +8,8 @@ arch=(x86_64 i686)
 url="https://github.com/Flu/wolff-lang.git"
 license=('MIT')
 groups=()
-depends=()
-makedepends=(cargo)
+depends=(gcc-libs)
+makedepends=(cargo git)
 checkdepends=()
 optdepends=()
 provides=(wolff)
@@ -24,23 +24,31 @@ noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
+pkgver() {
+    cd wolff-lang
+    git describe --tags | sed 's/^v//;s/[^-]*-g/r&/;s/-/+/g'
+}
+
+
 prepare() {
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
+    cd wolff-lang
     export RUSTUP_TOOLCHAIN=nightly
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
 }
 
 check() {
+    cd wolff-lang
     export RUSTUP_TOOLCHAIN=nightly
     cargo test --frozen --all-features
 }
 
 package() {
-    install -Dm0755 -t "$pkgdir/usr/bin/wolff" "target/release/wolff-lang"
-    install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    cd wolff-lang
+    install -Dt "$pkgdir/usr/bin" target/release/wolff-lang
+    install -Dt "$pkgdir/usr/share/doc/$pkgname" -m644 README.md
 }
