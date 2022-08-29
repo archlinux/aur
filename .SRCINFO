@@ -1,7 +1,7 @@
 pkgbase = xnviewmp-system-libs
 	pkgdesc = An efficient multimedia viewer, browser and converter (using system libraries).
 	pkgver = 1.02
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xnview.com/en/xnviewmp/
 	arch = x86_64
 	license = custom
@@ -23,7 +23,7 @@ pkgbase = xnviewmp-system-libs
 	sha256sums = 4DE4F212B28D273C438CD41901C597F4F8F52DC24DD00C6F410A7AF2A8A4346C
 	sha256sums = 87ec80c5049745dc3018fcdcf4dddf0e877ae3b20706705f2a80715232ad2141
 	sha256sums = F6B3A4AAA0A55B5F21D9B91AB6F3DA3D6EE077BA7FDD17E7C4AB1C69AD2A9E3A
-	sha256sums = C35FE8CD0AD76F77C0117DE1D81A8C3945D6E472D7663D6D5645592C18809423
+	sha256sums = 7B5EF056AD43F090FF074AE749AC84CD090511E5C2B6A8386AA1882BD8D32F38
 	sha256sums = 3D6DA484CD55EAC8910D5CF87F9057E6EADEAC842A249DCBDA35E1C6F3FCDC0D
 
 pkgname = xnviewmp-system-libs
