@@ -2,11 +2,12 @@
 # Contributor: Eric Belanger <eric@archlinux.org>
 # Contributor: John Proctor <jproctor@prium.net>
 
-pkgname=lib32-libxslt
-pkgver=1.1.36
+pkgbase=lib32-libxslt
+pkgname=(lib32-libxslt)
+pkgver=1.1.37
 pkgrel=1
 pkgdesc="XML stylesheet transformation library (32-bit)"
-url="https://gitlab.gnome.org/GNOME/libxslt/-/wikis"
+url="https://gitlab.gnome.org/GNOME/libxslt/-/wikis/home"
 arch=(x86_64)
 license=(custom:MIT)
 depends=(
@@ -22,14 +23,12 @@ checkdepends=(
   docbook-xml
   python
 )
-optdepends=()
-provides=(lib{,e}xslt.so)
 options=(debug)
-_commit=bcd17763a9f371ec5c9bdce0ffa2f2eb3ef74c43  # tags/v1.1.36^0
+_commit=5eca7fb65b7337409a02f9f94fde608edf7d1b0a  # tags/v1.1.37^0
 source=("git+https://gitlab.gnome.org/GNOME/libxslt.git#commit=$_commit"
         0001-Make-generate-id-deterministic.patch)
 sha256sums=('SKIP'
-            'e83c20f9a4f0c95716410c127ad10d6cde814c25d183de0d319f5dda529b7a6e')
+            '605e0a0b2ca385a90226bc5b141d3f6bfeade13e43ab39f8dea863505d7cbf18')
 
 pkgver() {
   cd libxslt
@@ -51,11 +50,13 @@ build() {
   export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
 
   cd libxslt
-  ./configure --prefix=/usr \
+
+  ./configure \
+    --prefix=/usr \
     --libdir=/usr/lib32 \
     --without-python \
     --disable-static
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' libtool
   make
 }
 
@@ -64,11 +65,16 @@ check() {
   make check
 }
 
-package() {
+package_lib32-libxslt() {
+  provides=(lib{,e}xslt.so)
+
   cd libxslt
+
   make DESTDIR="$pkgdir" install
+
   rm -r "$pkgdir"/usr/{include,share,bin}
-  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 Copyright
+
+  install -Dm644 Copyright -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim:set sw=2 sts=-1 et:
