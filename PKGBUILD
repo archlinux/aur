@@ -1,7 +1,7 @@
 # Maintainer: Thomas Hipp <thomashipp at gmail dot com>
 pkgname=dqlite-git
 _pkgname=dqlite
-pkgver=r604.faf62f4
+pkgver=1.11.1.r17.gda62ece
 pkgrel=1
 pkgdesc="Distributed SQLite"
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=('dqlite')
 
 pkgver() {
   cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
