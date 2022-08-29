@@ -21,7 +21,7 @@ optdepends=('libolm: E2E Encryption support')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("fluffychat-v${pkgver}.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v${pkgver}/fluffychat-v${pkgver}.tar.gz")
-sha256sums=('7c35e63e2b9431090486e3080a19da3156625507fa7e8cb48858759d52f9dc3b')
+sha256sums=('5d0b3b28bd3b05d62c9a1d8198778e6115d163c989ddc3500e713ac89a9655fa')
 
 # Check the fluffer environment yourself
 
