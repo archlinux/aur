@@ -1,7 +1,7 @@
 pkgbase = ros2-git
 	pkgdesc = A set of software libraries and tools for building robot applications (Rolling Distro)
 	pkgver = r230.4a36f31
-	pkgrel = 5
+	pkgrel = 6
 	url = https://docs.ros.org/en/rolling/
 	install = ros2-git.install
 	arch = any

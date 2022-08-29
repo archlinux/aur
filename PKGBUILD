@@ -10,7 +10,7 @@
 
 pkgname=ros2-git
 pkgver=r230.4a36f31
-pkgrel=5
+pkgrel=6
 pkgdesc="A set of software libraries and tools for building robot applications (Rolling Distro)"
 url="https://docs.ros.org/en/rolling/"
 arch=('any')
