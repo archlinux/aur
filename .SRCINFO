@@ -12,8 +12,6 @@ pkgbase = c-evo
 	optdepends = ffmpeg: Needed for sounds
 	conflicts = c-evo
 	conflicts = c-evo-bin
-	conflicts = c-evo-nh-bin
-	conflicts = c-evo-nh
 	source = c-evo-eh-1.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo-eh_1.orig.tar.xz
 	sha256sums = fb1bed1f33399d6c4cef81ffd931c8ff11c8e2b0682708c7be241da01964d8ea
 
