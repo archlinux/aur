@@ -1,0 +1,13 @@
+pkgbase = oblong
+	pkgdesc = A program to analyse phylogenomic data sets with millions of characters, requiring negligible amounts of RAM. https://doi.org/10.1111/cla.12056
+	pkgver = 2014.03.10
+	pkgrel = 1
+	url = http://www.lillo.org.ar/phylogeny/oblong/
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc
+	depends = gcc-libs
+	source = http://www.lillo.org.ar/phylogeny/oblong/oblong.zip
+	md5sums = 858960b23c1fdfe81834957ef47c4670
+
+pkgname = oblong
