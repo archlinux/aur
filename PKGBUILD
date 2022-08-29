@@ -2,11 +2,11 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=jumpy-git
-pkgver=0.4.2.r23.g970bdd6
+pkgver=0.4.2.r24.gad9e787
 pkgrel=1
 pkgdesc="Tactical 2D shooter in fishy pixels style"
 arch=('x86_64')
-url="https://github.com/fishfight/jumpy"
+url="https://github.com/fishfolks/jumpy"
 license=('MIT' 'Apache')
 depends=('pkg-config' 'libx11' 'libxi' 'mesa-libgl' 'alsa-lib' 'systemd-libs' 'libudev.so')
 makedepends=('cargo' 'git' 'systemd')
