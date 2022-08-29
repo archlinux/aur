@@ -1,10 +1,11 @@
 pkgbase = exam-terminal
 	pkgdesc = Terminal/console based exam, test, or quiz tool for educators and learners
 	pkgver = 0.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ismet55555/exam-terminal
-	arch = x86_64
+	arch = any
 	license = Apache
+	makedepends = python-setuptools
 	makedepends = python-pip
 	depends = python-fpdf2
 	depends = python-requests
