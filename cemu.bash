@@ -7,7 +7,7 @@ readonly statedir=${XDG_STATE_HOME:-$HOME/.local/state}/cemu
 readonly mountpoint=${XDG_RUNTIME_DIR:-/tmp}/cemu
 readonly cemu=$mountpoint/Cemu
 
-mkdir -p "$datadir" "$statedir" "$mountpoint"
+mkdir -p "$datadir"/{gameProfiles/default,resources/sharedFonts,shaderCache} "$statedir" "$mountpoint"
 
 # https://mostlyuseful.tech/posts/overlay-mounting/
 exec unshare -rm bash -s -- "$@" <<- BASH
