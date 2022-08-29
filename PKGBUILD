@@ -10,7 +10,7 @@ optdepends=(
 	'openssh: recommended transport'
 	'systemtap: a makedepend, for tracing hooks'
 )
-makedepends=('git' 'meson' 'ninja' 'scdoc' 'libdrm')
+makedepends=('git' 'meson' 'ninja' 'scdoc' 'libdrm' 'pkgconf' 'cmake')
 checkdepends=('weston' 'python-psutil')
 url='https://gitlab.freedesktop.org/mstoeckl/waypipe'
 source=("https://gitlab.freedesktop.org/mstoeckl/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
