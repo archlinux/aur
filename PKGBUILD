@@ -7,6 +7,7 @@ arch=('x86_64')
 url='https://github.com/mimizohar/ima-evm-utils'
 license=('GPL')
 depends=('docbook-xml' 'ibm-tpm2-tss' 'openssl' 'tpm2-tss')
+makedepends=('asciidoc')
 source=("git+https://github.com/mimizohar/ima-evm-utils.git#tag=v$pkgver")
 sha256sums=('SKIP')
 

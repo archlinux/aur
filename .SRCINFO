@@ -5,6 +5,7 @@ pkgbase = ima-evm-utils
 	url = https://github.com/mimizohar/ima-evm-utils
 	arch = x86_64
 	license = GPL
+	makedepends = asciidoc
 	depends = docbook-xml
 	depends = ibm-tpm2-tss
 	depends = openssl
