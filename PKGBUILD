@@ -1,21 +1,22 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-grenze-gotisch
 pkgver=1.002
-pkgrel=1
+pkgrel=2
 pkgdesc='Peculiar version of Grenze from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/grenze-gotisch/'
 license=('OFL')
-source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/master/OFL.txt"
-        'https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/master/fonts/otf/GrenzeGotisch-Black.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/master/fonts/otf/GrenzeGotisch-Bold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/master/fonts/otf/GrenzeGotisch-ExtraBold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/master/fonts/otf/GrenzeGotisch-ExtraLight.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/master/fonts/otf/GrenzeGotisch-Light.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/master/fonts/otf/GrenzeGotisch-Medium.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/master/fonts/otf/GrenzeGotisch-Regular.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/master/fonts/otf/GrenzeGotisch-SemiBold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/master/fonts/otf/GrenzeGotisch-Thin.otf')
+_commit='7b5eac166bc3b2a519f98b5c124cb7a11670cc7b'
+source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/${_commit}/OFL.txt"
+        "https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/${_commit}/fonts/otf/GrenzeGotisch-Black.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/${_commit}/fonts/otf/GrenzeGotisch-Bold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/${_commit}/fonts/otf/GrenzeGotisch-ExtraBold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/${_commit}/fonts/otf/GrenzeGotisch-ExtraLight.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/${_commit}/fonts/otf/GrenzeGotisch-Light.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/${_commit}/fonts/otf/GrenzeGotisch-Medium.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/${_commit}/fonts/otf/GrenzeGotisch-Regular.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/${_commit}/fonts/otf/GrenzeGotisch-SemiBold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Grenze-Gotisch/${_commit}/fonts/otf/GrenzeGotisch-Thin.otf")
 sha256sums=('bca29af2c3c9e142d11f523f414902ab8fb9ab8ffa3c34c63b6b72aa4e7d6acc'
             '11e25db75a19ad845c2841d6149ee01728789714248bfc7fb67ea7a2281642bc'
             'fb217962804b351c69670a8983849deb9bc518998e065b448414c647dff451a2'
