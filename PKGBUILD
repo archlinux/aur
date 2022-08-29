@@ -2,13 +2,13 @@
 
 pkgname=ev-view
 pkgver=20160216.161212
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for visualization of evs results."
 arch=(x86_64)
 url="https://github.com/js-arias/ev-view"
 license=('BSD')
 depends=('gcc-libs' 'gtk2')
-makedepends=('make' 'gcc')
+makedepends=('make' 'gcc' 'git')
 source=("git+$url.git"
 		"Makefile")
 md5sums=('SKIP'
