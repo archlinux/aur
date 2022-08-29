@@ -13,6 +13,7 @@ depends=(
 	'python-joblib>=0.11'
 	'python-scikit-learn>=0.20'
 	'python-matplotlib>=2.0.0'
+	'python-pyaml>=16.9'
 )
 makedepends=('python-setuptools')
 source=("https://github.com/scikit-optimize/scikit-optimize/archive/v${pkgver}.tar.gz")
