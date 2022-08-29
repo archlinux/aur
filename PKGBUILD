@@ -2,7 +2,7 @@
 
 pkgname=libmatio-cpp
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ wrapper of the matio library, with memory ownership handling."
 arch=('x86_64')
 url="https://github.com/ami-iit/matio-cpp"
@@ -48,8 +48,6 @@ build() {
     cmake --build build -j
     cmake --build build -t install 
     
-	_enable_check
-
     cd "$srcdir/$pkgname-$pkgver"
 
     cmake -B build -S . -DCMAKE_BUILD_TYPE=None \
