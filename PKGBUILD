@@ -2,8 +2,8 @@
 
 pkgname=python-autopwn-suite
 _pyname=autopwn-suite
-pkgver=2.1.2
-pkgrel=2
+pkgver=2.1.3
+pkgrel=1
 pkgdesc="AutoPWN Suite is a project for scanning vulnerabilities and exploiting systems automatically."
 url="https://auto.pwnspot.com"
 arch=("any")
