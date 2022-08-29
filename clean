@@ -1,0 +1,4 @@
+rm penguins-eggs -rf
+rm pkg -rf
+rm src -rf
+rm penguins-eggs-9.*
