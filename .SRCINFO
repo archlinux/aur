@@ -1,6 +1,6 @@
 pkgbase = kripton-theme-git
 	pkgdesc = A dark theme with flat style for GNOME
-	pkgver = r95.0ab33ef
+	pkgver = r97.86e81fb
 	pkgrel = 1
 	url = https://github.com/EliverLara/Kripton
 	arch = any

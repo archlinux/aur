@@ -2,7 +2,7 @@
 
 pkgname=kripton-theme-git
 _pkgname=Kripton
-pkgver=r95.0ab33ef
+pkgver=r97.86e81fb
 pkgrel=1
 pkgdesc="A dark theme with flat style for GNOME"
 arch=("any")
