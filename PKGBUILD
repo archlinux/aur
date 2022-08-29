@@ -3,7 +3,7 @@
 
 pkgname=easyeda-bin
 _pkgname=${pkgname%-bin}
-pkgver=6.5.14
+pkgver=6.5.15
 pkgrel=1
 pkgdesc="A Simple and Powerful Electronic Circuit Design Tool"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}-${pkgver}.zip::https://image.easyeda.com/files/${_pkgname}-linux-x64-${pkgver}.zip"
 		"LICENSE")
-sha256sums=('2e238c8904ded652b3c5adc6d0df3c2371249c03e47bb5f62003a217340e63fc'
+sha256sums=('9f452ab92bef5f4443a655c310be50501e76659ce5361699749c82277dc9ce3b'
 			'c52b78caac78dde0948489d67bfadbb2c1eb21a456846806b1a4a3a1c07f36ec')
 
 package() {
