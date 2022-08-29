@@ -1,0 +1,8 @@
+post_install() {
+	echo ':: Your configuration file must be in $HOME/.ergo.yml for the binary to function.'
+	echo ':: You can find a template under /usr/share/ergo-git/config-template.yml.'
+}
+
+post_upgrade() {
+	post_install
+}

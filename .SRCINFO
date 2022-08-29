@@ -1,16 +1,19 @@
 pkgbase = ergo-git
 	pkgdesc = List of utilities for the daily developer workflow
-	pkgver = 0.4.0.r6.ga9d20c6
+	pkgver = 0.7.1.r1.gcab9782
 	pkgrel = 1
 	url = https://github.com/beatlabs/ergo
+	install = ergo.install
 	arch = x86_64
+	arch = i686
+	arch = aarch64
 	license = BSD
 	makedepends = go
 	makedepends = git
 	depends = glibc
 	provides = ergo
+	conflicts = ergo
 	source = ergo::git+https://github.com/beatlabs/ergo
 	sha256sums = SKIP
 
 pkgname = ergo-git
-

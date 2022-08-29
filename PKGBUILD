@@ -1,40 +1,46 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=ergo-git
-pkgver=0.4.0.r6.ga9d20c6
+_pkg="${pkgname%-git}"
+pkgver=0.7.1.r1.gcab9782
 pkgrel=1
 pkgdesc="List of utilities for the daily developer workflow"
-arch=('x86_64')
+arch=('x86_64' 'i686' 'aarch64')
 url='https://github.com/beatlabs/ergo'
 license=('BSD')
-provides=('ergo')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("ergo::git+${url}")
+provides=("$_pkg")
+conflicts=("$_pkg")
+install=ergo.install
+source=("$_pkg::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/ergo"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git -C "$_pkg" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "${srcdir}/ergo"
-  mkdir -p build/
+	cd "$_pkg"
+	mkdir -p build/
+	go mod tidy
+	go generate ./...
 }
 
 build() {
-  cd "${srcdir}/ergo"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  go build -o build ./cmd/...
+	cd "$_pkg"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+	go build -o build/ergo -ldflags "-linkmode=external -X main.version=$pkgver" ./cmd/cli
 }
 
 package() {
-  cd "${srcdir}/ergo"
-  install -Dm755 build/cli "${pkgdir}/usr/bin/ergo"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd "$_pkg"
+	install -D "build/$_pkg" -t "$pkgdir/usr/bin/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 .ergo.yml.dist "$pkgdir/usr/share/$pkgname/config-template.yml"
 }
