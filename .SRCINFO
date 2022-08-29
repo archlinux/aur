@@ -6,6 +6,7 @@ pkgbase = chigo-git
 	arch = x86_64
 	arch = i686
 	license = MIT
+	makedepends = git
 	makedepends = go
 	source = chigo-git::git+https://github.com/UltiRequiem/chigo
 	sha256sums = SKIP

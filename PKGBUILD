@@ -2,12 +2,12 @@
 
 pkgname=chigo-git
 pkgver=1.4.0.r2.gb3cb538
-pkgrel=1
+pkgrel=2
 pkgdesc='Lolcat port for Golang'
 url="https://github.com/UltiRequiem/chigo"
 arch=('x86_64' 'i686')
 license=('MIT')
-makedepends=('go')
+makedepends=('git' 'go')
 source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 
