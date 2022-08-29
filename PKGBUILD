@@ -6,7 +6,7 @@
 
 pkgbase=libxml2
 pkgname=(libxml2 libxml2-docs)
-pkgver=2.10.1
+pkgver=2.10.2
 pkgrel=1
 pkgdesc="XML C parser and toolkit (32-bit)"
 url="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home"
@@ -15,14 +15,14 @@ license=(custom:MIT)
 depends=(zlib xz icu readline ncurses)
 makedepends=(python git)
 options=(debug)
-_commit=d85c4a01407b75eb4005256df106d121e766a1d8  # tags/v2.10.1^0
+_commit=21b24b51608d471bb9f7c4225e23d0db2acecc52  # tags/v2.10.2^0
 source=("git+https://gitlab.gnome.org/GNOME/libxml2.git#commit=$_commit"
         libxml2-2.9.8-python3-unicode-errors.patch
         no-fuzz.diff
         https://www.w3.org/XML/Test/xmlts20130923.tar.gz)
 sha256sums=('SKIP'
             '3d07a50fc0963bda05fc5269dedc51f108260699e25e455bb31f6d80c2a9cada'
-            'b1e52aa01f0c2ef2804ba43ec63e6abec3e81e30d248a8abc5dd8a1534de1075'
+            '3908e7a53b20109bdfde143238f36e22a154dbb7d363b634e54c0a18328f4656'
             '9b61db9f5dbffa545f4b8d78422167083a8568c59bd1129f94138f936cf6fc1f')
 
 pkgver() {
