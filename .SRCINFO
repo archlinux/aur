@@ -1,6 +1,6 @@
 pkgbase = snow-theme-git
 	pkgdesc = Light Gtk theme with some gradients
-	pkgver = r74.0c3244a
+	pkgver = r75.aabca5c
 	pkgrel = 1
 	url = https://github.com/EliverLara/snow
 	arch = any
