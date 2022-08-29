@@ -1,14 +1,14 @@
 pkgbase = revanced-patches
 	pkgdesc = Official patches maintained by ReVanced
-	pkgver = 2.45.2
+	pkgver = 2.45.3
 	pkgrel = 1
 	url = https://github.com/revanced/revanced-patches
 	arch = any
 	license = GPL3
 	depends = java-environment>=17
-	source = https://github.com/revanced/revanced-patches/releases/download/v2.45.2/revanced-patches-2.45.2.jar
-	source = https://github.com/revanced/revanced-patches/raw/v2.45.2/LICENSE
-	sha256sums = 3f41b42c84b09fc96d95d86148f6b347fd82e187327800bd2e4144d435f7b2e2
+	source = https://github.com/revanced/revanced-patches/releases/download/v2.45.3/revanced-patches-2.45.3.jar
+	source = https://github.com/revanced/revanced-patches/raw/v2.45.3/LICENSE
+	sha256sums = 51f4526b25d27c5134ac0640656630c076e95f43510b9fd543ee66da81d3f264
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
 pkgname = revanced-patches
