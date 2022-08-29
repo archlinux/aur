@@ -1,8 +1,8 @@
 diff --git a/Makefile b/Makefile
-index d66bd80e..0952b41e 100644
+index 565befcc..199b4d9c 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -708,22 +708,6 @@ uninstall:	uninstall-i18n
+@@ -750,22 +750,6 @@ uninstall:	uninstall-i18n
  	-if [ "x$(BUNDLE)" != "x" ]; then \
  	  rm -rf $(BUNDLE); \
  	fi
@@ -25,15 +25,11 @@ index d66bd80e..0952b41e 100644
  
  # Install default config file:
  .PHONY: install-default-config
-diff --git a/Makefile b/Makefile
-index d66bd80e..3e45e063 100644
---- a/Makefile
-+++ b/Makefile
-@@ -906,24 +906,14 @@ install-nokia770:
- install-xdg:
+@@ -946,24 +930,14 @@ install-nokia770:
+ install-xdg: src/tuxpaint.desktop src/org.tuxpaint.Tuxpaint.appdata.xml
  	@echo
  	@echo "...Installing launcher icon into desktop environment..."
--	@if [ "x$(shell which xdg-icon-resource install)" != "x" ]; then \
+-	@if [ "x$(shell which xdg-icon-resource)" != "x" ]; then \
 -	  xdg-icon-resource install --size 192 data/images/icon192x192.png tux4kids-tuxpaint ; \
 -	  xdg-icon-resource install --size 128 data/images/icon128x128.png tux4kids-tuxpaint ; \
 -	  xdg-icon-resource install --size 96 data/images/icon96x96.png tux4kids-tuxpaint ; \
@@ -59,6 +55,6 @@ index d66bd80e..3e45e063 100644
 +	install data/images/icon32x32.png $(DESTDIR)$(PREFIX)/share/icons/hicolor/ ; \
 +	install data/images/icon22x22.png $(DESTDIR)$(PREFIX)/share/icons/hicolor/ ; \
 +	install data/images/icon16x16.png $(DESTDIR)$(PREFIX)/share/icons/hicolor/ ; \
+ 	install --mode=0644 -Dt $(METAINFO_PREFIX) src/org.tuxpaint.Tuxpaint.appdata.xml
  
  # Install the PNG icon (for KDE desktop, etc.)
- # and the 24-color 32x32 XPM (for other Window managers):
