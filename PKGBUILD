@@ -1,24 +1,25 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-manuale
 pkgver=1.002
-pkgrel=1
+pkgrel=2
 pkgdesc='Serif typeface for editorial typography in print and online by Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/manuale/'
 license=('OFL')
-source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/OFL.txt"
-        'https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/fonts/otf/Manuale-Bold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/fonts/otf/Manuale-BoldItalic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/fonts/otf/Manuale-ExtraBold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/fonts/otf/Manuale-ExtraBoldItalic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/fonts/otf/Manuale-Italic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/fonts/otf/Manuale-Light.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/fonts/otf/Manuale-LightItalic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/fonts/otf/Manuale-Medium.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/fonts/otf/Manuale-MediumItalic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/fonts/otf/Manuale-Regular.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/fonts/otf/Manuale-Semibold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/fonts/otf/Manuale-SemiboldItalic.otf')
+_commit='20a5ab6a0da1c8cb56916d843e50db0ad6b6dfd3'
+source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Manuale/${_commit}/OFL.txt"
+        "https://raw.githubusercontent.com/Omnibus-Type/Manuale/${_commit}/fonts/otf/Manuale-Bold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Manuale/${_commit}/fonts/otf/Manuale-BoldItalic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Manuale/${_commit}/fonts/otf/Manuale-ExtraBold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Manuale/${_commit}/fonts/otf/Manuale-ExtraBoldItalic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Manuale/${_commit}/fonts/otf/Manuale-Italic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Manuale/${_commit}/fonts/otf/Manuale-Light.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Manuale/${_commit}/fonts/otf/Manuale-LightItalic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Manuale/${_commit}/fonts/otf/Manuale-Medium.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Manuale/${_commit}/fonts/otf/Manuale-MediumItalic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Manuale/${_commit}/fonts/otf/Manuale-Regular.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Manuale/${_commit}/fonts/otf/Manuale-Semibold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Manuale/${_commit}/fonts/otf/Manuale-SemiboldItalic.otf")
 sha256sums=('6f5869d0892d8c06cabcccce3726cacc849bd0a96b83bef5850402ab2b9fce71'
             '984bcc3eccac32713e49ff33bc4ac59c64c59aef5da9f6ac8dbbaf9219efee42'
             'ee9df0e749f1421ffe1f5e9655784625ecd01c44545df45ae77278ef501ce0d6'
