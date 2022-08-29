@@ -1,20 +1,21 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-rosario
 pkgver=1.201
-pkgrel=1
+pkgrel=2
 pkgdesc='Sans-serif typeface family from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/rosario/'
 license=('OFL')
-source=("${pkgname}-${pkgver}-${pkgrel}-LICENSE.md::https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/LICENSE.md"
-        'https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/fonts/otf/Rosario-Bold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/fonts/otf/Rosario-BoldItalic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/fonts/otf/Rosario-Italic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/fonts/otf/Rosario-Medium.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/fonts/otf/Rosario-MediumItalic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/fonts/otf/Rosario-Regular.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/fonts/otf/Rosario-SemiBold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/fonts/otf/Rosario-SemiBoldItalic.otf')
+_commit='d8bf83600979c82357d8023243d3d01a386fc7fe'
+source=("${pkgname}-${pkgver}-${pkgrel}-LICENSE.md::https://raw.githubusercontent.com/Omnibus-Type/Rosario/${_commit}/LICENSE.md"
+        "https://raw.githubusercontent.com/Omnibus-Type/Rosario/${_commit}/fonts/otf/Rosario-Bold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Rosario/${_commit}/fonts/otf/Rosario-BoldItalic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Rosario/${_commit}/fonts/otf/Rosario-Italic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Rosario/${_commit}/fonts/otf/Rosario-Medium.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Rosario/${_commit}/fonts/otf/Rosario-MediumItalic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Rosario/${_commit}/fonts/otf/Rosario-Regular.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Rosario/${_commit}/fonts/otf/Rosario-SemiBold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Rosario/${_commit}/fonts/otf/Rosario-SemiBoldItalic.otf")
 sha256sums=('03a0ecffec02fa4ee8286b929df620c7a8803a8bea8021c9edb5bcdedd043549'
             '3c1e1b98e6c86ffbb03f292d8a011767a11db2ae2f710d8e22780ed3ba822dd7'
             'd371600ff34bbf44acf33b89341bf9b2d35ce174c3b18c9881337bb25a7d5bf2'
