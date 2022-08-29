@@ -3,9 +3,9 @@
 
 pkgname=ergo
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="List of utilities for the daily developer workflow"
-arch=('x86_64')
+arch=('x86_64' 'i686' 'aarch64')
 url='https://github.com/beatlabs/ergo'
 license=('BSD')
 depends=('glibc')
