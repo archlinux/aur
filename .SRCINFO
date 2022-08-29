@@ -1,6 +1,6 @@
 pkgbase = scalc-git
 	pkgdesc = A very simple stack-based calculator that aims to be small, flexible, and extensible.
-	pkgver = r259.be593eb
+	pkgver = r274.b65d54d
 	pkgrel = 1
 	url = https://sr.ht/~arivigo/scalc
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = scalc-git
 	makedepends = sline
 	makedepends = git
 	conflicts = scalc
-	source = git+https://git.sr.ht/~arivigo/scalc
+	source = git+https://github.com/ariadnavigo/scalc.git
 	sha256sums = SKIP
 
 pkgname = scalc-git
