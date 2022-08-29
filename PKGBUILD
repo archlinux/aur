@@ -28,8 +28,7 @@ build() {
 #  rm -rf html/.{doctrees,buildinfo}
 }
 
-
-# Tests fail, requires newer version of flake8
+# Tests fail: AttributeError: module 'flake8.options.config' has no attribute 'ConfigFileFinder'
 
 #check() {
 #  cd "$_name-$pkgver"
