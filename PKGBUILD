@@ -3,7 +3,7 @@
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-server
-pkgver=2.2.33.1
+pkgver=2.2.34
 pkgrel=1
 pkgdesc='GNS3 network simulator, Server package'
 arch=('x86_64' 'aarch64')
@@ -38,7 +38,7 @@ optdepends=(
 install="$pkgname".install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname@.service")
-sha256sums=('f28ca99f8970757bf036801a93ffdb174ea00da02e8d60e87d44cf43e1e72aca'
+sha256sums=('8bd61a0777df7cf195b2670ab81139f3029d9b33cf329cfa612d2b2ea3def947'
             'b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f')
 
 prepare() {
@@ -48,7 +48,7 @@ prepare() {
         -e 's|^aiohttp==3\.8\.1|aiohttp>=3.8.1|' \
         -e 's|^aiofiles==0\.8\.0$|aiofiles>=0.8.0|' \
         -e 's|^Jinja2==3\.0\.3$|Jinja2>=3.0.3|' \
-        -e 's|^sentry-sdk==1\.5\.12$|sentry-sdk>=1.5.12|' \
+        -e 's|^sentry-sdk==1\.9\.5$|sentry-sdk>=1.9.5|' \
         -e 's|^psutil==5\.9\.1$|psutil>=5.9.1|' \
         -e 's|^async-timeout==4\.0\.2$|async-timeout>=4.0.2|' \
         -e 's|^distro==1\.7\.0$|distro>=1.7.0|' \
