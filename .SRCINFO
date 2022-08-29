@@ -1,12 +1,12 @@
 pkgbase = lucene-grep-bin
 	pkgdesc = Grep-like utility based on Lucene Monitor compiled with GraalVM native-image
-	pkgver = 2022.05.25
+	pkgver = 2022.07.27
 	pkgrel = 1
 	url = https://github.com/dainiusjocas/lucene-grep
 	arch = x86_64
 	license = APACHE
 	provides = lucene-grep
-	source = https://github.com/dainiusjocas/lucene-grep/releases/download/v2022.05.25/lmgrep-v2022.05.25-linux-amd64-static.zip
-	sha256sums = d2dd4352f8c52e91bef000fa9e7e8839a2d9eaf3f3385e743cdd00d101af33c7
+	source = https://github.com/dainiusjocas/lucene-grep/releases/download/v2022.07.27/lmgrep-v2022.07.27-linux-amd64-static.zip
+	sha256sums = d87afba6448e85552828379c3858f06afb8469f2ed7a39560b15e7944663e3f8
 
 pkgname = lucene-grep-bin
