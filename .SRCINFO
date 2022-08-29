@@ -1,0 +1,21 @@
+pkgbase = generax
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://github.com/BenoitMorel/GeneRax
+	arch = x86_64
+	license = AGPL
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	makedepends = openmpi
+	makedepends = bison
+	makedepends = flex
+	makedepends = git
+	depends = gcc-libs
+	depends = gmp
+	source = git+https://github.com/BenoitMorel/GeneRax.git#tag=2.0.4
+	source = generax.patch
+	md5sums = SKIP
+	md5sums = e11bd9f6fbedfb6e47b5b4a29dde98a0
+
+pkgname = generax
