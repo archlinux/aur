@@ -12,19 +12,19 @@ _raw_font_url="${_raw_base_url}/patched-fonts/DejaVuSansMono"
 license=(MIT)
 provides=(ttf-font)
 source=(
-	"DejaVu-Sans-Mono-Bold-Nerd-Font-Complete.ttf::${_raw_font_url}/Bold/complete/DejaVu%20Sans%20Mono%20Bold%20Nerd%20Font%20Complete.ttf"
-	"DejaVu-Sans-Mono-Bold-Nerd-Font-Complete-Mono.ttf::${_raw_font_url}/Bold/complete/DejaVu%20Sans%20Mono%20Bold%20Nerd%20Font%20Complete%20Mono.ttf"
-	\
-	"DejaVu-Sans-Mono-Bold-Oblique-Nerd-Font-Complete-Mono.ttf::${_raw_font_url}/Bold-Italic/complete/DejaVu%20Sans%20Mono%20Bold%20Oblique%20Nerd%20Font%20Complete%20Mono.ttf"
-	"DejaVu-Sans-Mono-Bold-Oblique-Nerd-Font-Complete.ttf::${_raw_font_url}/Bold-Italic/complete/DejaVu%20Sans%20Mono%20Bold%20Oblique%20Nerd%20Font%20Complete.ttf"
-	\
-	"DejaVu-Sans-Mono-Oblique-Nerd-Font-Complete.ttf::${_raw_font_url}/Italic/complete/DejaVu%20Sans%20Mono%20Oblique%20Nerd%20Font%20Complete.ttf"
-	"DejaVu-Sans-Mono-Oblique-Nerd-Font-Complete-Mono.ttf::${_raw_font_url}/Italic/complete/DejaVu%20Sans%20Mono%20Oblique%20Nerd%20Font%20Complete%20Mono.ttf"
-	\
-	"DejaVu-Sans-Mono-Nerd-Font-Complete.ttf::${_raw_font_url}/Regular/complete/DejaVu%20Sans%20Mono%20Nerd%20Font%20Complete.ttf"
-	"DejaVu-Sans-Mono-Nerd-Font-Complete-Mono.ttf::${_raw_font_url}/Regular/complete/DejaVu%20Sans%20Mono%20Nerd%20Font%20Complete%20Mono.ttf"
-	\
-	"LICENSE::${_raw_base_url}/LICENSE"
+  "${pkgname}-${pkgver}_DejaVu-Sans-Mono-Bold-Nerd-Font-Complete.ttf::${_raw_font_url}/Bold/complete/DejaVu%20Sans%20Mono%20Bold%20Nerd%20Font%20Complete.ttf"
+  "${pkgname}-${pkgver}_DejaVu-Sans-Mono-Bold-Nerd-Font-Complete-Mono.ttf::${_raw_font_url}/Bold/complete/DejaVu%20Sans%20Mono%20Bold%20Nerd%20Font%20Complete%20Mono.ttf"
+
+  "${pkgname}-${pkgver}_DejaVu-Sans-Mono-Bold-Oblique-Nerd-Font-Complete-Mono.ttf::${_raw_font_url}/Bold-Italic/complete/DejaVu%20Sans%20Mono%20Bold%20Oblique%20Nerd%20Font%20Complete%20Mono.ttf"
+  "${pkgname}-${pkgver}_DejaVu-Sans-Mono-Bold-Oblique-Nerd-Font-Complete.ttf::${_raw_font_url}/Bold-Italic/complete/DejaVu%20Sans%20Mono%20Bold%20Oblique%20Nerd%20Font%20Complete.ttf"
+
+  "${pkgname}-${pkgver}_DejaVu-Sans-Mono-Oblique-Nerd-Font-Complete.ttf::${_raw_font_url}/Italic/complete/DejaVu%20Sans%20Mono%20Oblique%20Nerd%20Font%20Complete.ttf"
+  "${pkgname}-${pkgver}_DejaVu-Sans-Mono-Oblique-Nerd-Font-Complete-Mono.ttf::${_raw_font_url}/Italic/complete/DejaVu%20Sans%20Mono%20Oblique%20Nerd%20Font%20Complete%20Mono.ttf"
+
+  "${pkgname}-${pkgver}_DejaVu-Sans-Mono-Nerd-Font-Complete.ttf::${_raw_font_url}/Regular/complete/DejaVu%20Sans%20Mono%20Nerd%20Font%20Complete.ttf"
+  "${pkgname}-${pkgver}_DejaVu-Sans-Mono-Nerd-Font-Complete-Mono.ttf::${_raw_font_url}/Regular/complete/DejaVu%20Sans%20Mono%20Nerd%20Font%20Complete%20Mono.ttf"
+
+  "${pkgname}-${pkgver}_LICENSE::${_raw_base_url}/LICENSE"
 )
 sha512sums=('2d03d7a8692d5826e9103b04e8bcf6ae0943fbc5a893ceee43e31ec72168c94dcd0bf2592264332e7d229383ac464b2922e14b53dc761574a407f5e095292f1f'
             'fd137e1be01519ceb91cdcd38aad4a3453d6bd390c2ec71a1900acf5d4763b636fa3934524f49e87989548451cce090be8c1b29c7fa73fca0f86714d1827a1a2'
@@ -36,8 +36,15 @@ sha512sums=('2d03d7a8692d5826e9103b04e8bcf6ae0943fbc5a893ceee43e31ec72168c94dcd0
             'bd4922c080690d852b9408aab18f66d78fe785fb6df470ccb9c044b6ea2ebc043996de16ddd80421394a49b6c8ee7e4ca45e1658860abc43f9564e09202359d3'
             '941169ae9f04d4d706fead04cc2391c57b681c934f5d646a1444d9a1240ba42500a5ea79ae5d1bb172666f6d48d44d95fa757a5785593088d887736d58f4cc82')
 
+prepare() {
+  mkdir "${srcdir}/${pkgname}-${pkgver}"
+  for srcfile in "${srcdir}/${pkgname}-${pkgver}_"*; do
+    ln "${srcfile}" "${srcdir}/${pkgname}-${pkgver}/${srcfile#${srcdir}/${pkgname}-${pkgver}_}"
+  done
+}
+
 package() {
-	install -dm0755 "${pkgdir}/usr/share/fonts/TTF"
-	install -Dm0644 -t "${pkgdir}/usr/share/fonts/TTF" ${srcdir}/*.ttf
-	install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ${srcdir}/LICENSE
+  install -dm0755 "${pkgdir}/usr/share/fonts/TTF"
+  install -Dm0644 -t "${pkgdir}/usr/share/fonts/TTF" ${srcdir}/${pkgname}-${pkgver}/*.ttf
+  install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ${srcdir}/${pkgname}-${pkgver}/LICENSE
 }

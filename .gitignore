@@ -17,5 +17,6 @@ src/
 *.sig
 
 LICENSE
+*LICENSE
 
 .AURINFO
