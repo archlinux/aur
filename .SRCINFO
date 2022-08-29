@@ -1,11 +1,12 @@
 pkgbase = examl
 	pkgver = 3.0.22
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/stamatak/ExaML
 	arch = x86_64
 	license = GPL
 	makedepends = make
 	makedepends = gcc
+	makedepends = openmpi
 	source = https://github.com/stamatak/ExaML/archive/refs/tags/v3.0.22.tar.gz
 	md5sums = ad62d8c333cee316732c10f719c1e87c
 
