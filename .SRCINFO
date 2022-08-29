@@ -1,0 +1,14 @@
+pkgbase = raxml-light
+	pkgdesc = A tool for computing terabyte phylogenies https://doi.org/10.1093/bioinformatics/bts309
+	pkgver = 1.0.9
+	pkgrel = 1
+	url = https://cme.h-its.org/exelixis/web/software/raxml-light/index.html
+	arch = x86_64
+	license = unknow
+	makedepends = make
+	makedepends = gcc
+	depends = gcc-libs
+	source = https://cme.h-its.org/exelixis/php/countRAxMLLight109.php
+	md5sums = a2740440b2d498a03bab88fbd6b7432a
+
+pkgname = raxml-light
