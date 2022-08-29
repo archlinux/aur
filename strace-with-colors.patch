@@ -318,7 +318,7 @@ index 8e16930ac..0332302a2 100644
  			printxval(personality_types, pers & PER_MASK, "PER_???");
  			pers &= ~PER_MASK;
 diff --git a/src/print_fields.h b/src/print_fields.h
-index 3ceb0b6d7..6ee6b7f59 100644
+index 8a01d053d..bd71cb4b4 100644
 --- a/src/print_fields.h
 +++ b/src/print_fields.h
 @@ -10,6 +10,7 @@
@@ -329,39 +329,23 @@ index 3ceb0b6d7..6ee6b7f59 100644
  
  # ifdef IN_STRACE
  
-@@ -94,13 +95,13 @@ tprint_bitset_end(void)
+@@ -135,13 +136,13 @@ tprint_bitset_end(void)
  static inline void
  tprint_comment_begin(void)
  {
--	tprints(" /* ");
-+	tprints(C_MAGENTA " /* ");
+-	STRACE_PRINTS(" /* ");
++	STRACE_PRINTS(C_MAGENTA " /* ");
  }
  
  static inline void
  tprint_comment_end(void)
  {
--	tprints(" */");
-+	tprints(" */" C_RESET);
+-	STRACE_PRINTS(" */");
++	STRACE_PRINTS(" */" C_RESET);
  }
  
  static inline void
-@@ -230,13 +231,13 @@ tprint_bitset_end(void)
- static inline void
- tprint_comment_begin(void)
- {
--	fputs(" /* ", stdout);
-+	fputs(C_MAGENTA " /* ", stdout);
- }
- 
- static inline void
- tprint_comment_end(void)
- {
--	fputs(" */", stdout);
-+	fputs(" */" C_RESET, stdout);
- }
- 
- static inline void
-@@ -286,35 +287,35 @@ tprint_unavailable(void)
+@@ -195,35 +196,35 @@ tprint_or(void)
  static inline void
  tprints_field_name(const char *name)
  {
@@ -651,7 +635,7 @@ index fc13a6613..2f5a6e125 100644
  	return RVAL_DECODED;
  }
 diff --git a/src/sockaddr.c b/src/sockaddr.c
-index a6e698d4b..910b887f1 100644
+index 9139da1cd..5bf7a53fd 100644
 --- a/src/sockaddr.c
 +++ b/src/sockaddr.c
 @@ -39,6 +39,7 @@
@@ -662,7 +646,7 @@ index a6e698d4b..910b887f1 100644
  
  #include "xlat/rxrpc_services.h"
  
-@@ -178,7 +179,7 @@ print_inet_addr(const int af,
+@@ -181,7 +182,7 @@ print_inet_addr(const int af,
  			if (var_name &&
  			    (xlat_verbose(xlat_verbosity) == XLAT_STYLE_ABBREV)) {
  				tprint_arg_next();
@@ -671,7 +655,7 @@ index a6e698d4b..910b887f1 100644
  			}
  			tprint_arg_end();
  
-@@ -571,7 +572,7 @@ print_sockaddr_data_ll(struct tcb *tcp, const void *const buf,
+@@ -574,7 +575,7 @@ print_sockaddr_data_ll(struct tcb *tcp, const void *const buf,
  				tprint_more_data_follows();
  				break;
  			}
@@ -680,7 +664,7 @@ index a6e698d4b..910b887f1 100644
  		}
  		tprint_array_end();
  	}
-@@ -625,7 +626,7 @@ print_bluetooth_l2_psm(uint16_t psm)
+@@ -628,7 +629,7 @@ print_bluetooth_l2_psm(uint16_t psm)
  		tprints(" + ");
  		PRINT_VAL_U(psm_he - L2CAP_PSM_DYN_START);
  	} else {
@@ -689,7 +673,7 @@ index a6e698d4b..910b887f1 100644
  	}
  
  	if (xlat_verbose(xlat_verbosity) == XLAT_STYLE_VERBOSE || !psm_str)
-@@ -660,7 +661,7 @@ print_bluetooth_l2_cid(uint16_t cid)
+@@ -663,7 +664,7 @@ print_bluetooth_l2_cid(uint16_t cid)
  		tprints(" + ");
  		PRINT_VAL_U(cid_he - L2CAP_CID_DYN_START);
  	} else {
@@ -699,7 +683,7 @@ index a6e698d4b..910b887f1 100644
  
  	if (xlat_verbose(xlat_verbosity) == XLAT_STYLE_VERBOSE || !cid_str)
 diff --git a/src/strace.c b/src/strace.c
-index ec338fe97..1d73419eb 100644
+index 3f5a00a0a..499e143a9 100644
 --- a/src/strace.c
 +++ b/src/strace.c
 @@ -43,6 +43,8 @@
@@ -812,7 +796,7 @@ index ec338fe97..1d73419eb 100644
  				rflag_width, (long) dts.tv_nsec / rflag_scale);
  		}
  		tprints(tflag_format ? ") " : " ");
-@@ -2222,6 +2263,7 @@ init(int argc, char *argv[])
+@@ -2238,6 +2279,7 @@ init(int argc, char *argv[])
  
  	enum {
  		GETOPT_SECCOMP = 0x100,
@@ -820,7 +804,7 @@ index ec338fe97..1d73419eb 100644
  		GETOPT_DAEMONIZE,
  		GETOPT_HEX_STR,
  		GETOPT_FOLLOWFORKS,
-@@ -2247,6 +2289,7 @@ init(int argc, char *argv[])
+@@ -2263,6 +2305,7 @@ init(int argc, char *argv[])
  		GETOPT_QUAL_SECONTEXT,
  	};
  	static const struct option longopts[] = {
@@ -828,7 +812,7 @@ index ec338fe97..1d73419eb 100644
  		{ "columns",		required_argument, 0, 'a' },
  		{ "output-append-mode",	no_argument,	   0, 'A' },
  		{ "detach-on",		required_argument, 0, 'b' },
-@@ -2354,6 +2397,23 @@ init(int argc, char *argv[])
+@@ -2370,6 +2413,23 @@ init(int argc, char *argv[])
  		case 'D':
  			daemonized_tracer++;
  			break;
@@ -852,7 +836,7 @@ index ec338fe97..1d73419eb 100644
  		case GETOPT_DAEMONIZE:
  			daemonized_tracer_long =
  				find_arg_val(optarg, daemonize_str,
-@@ -2875,6 +2935,14 @@ init(int argc, char *argv[])
+@@ -2886,6 +2946,14 @@ init(int argc, char *argv[])
  			      qflag_short == 2 ? qqflag_qual : qqqflag_qual);
  	}
  
@@ -1137,7 +1121,7 @@ index 73cc7d63c..0a07010d1 100644
  
  	/* ioctls with an indirect parameter displayed as modem flags */
 diff --git a/src/util.c b/src/util.c
-index 5f87acb91..a93a857ed 100644
+index c4c4bc0ef..e49bcd1d6 100644
 --- a/src/util.c
 +++ b/src/util.c
 @@ -32,6 +32,7 @@
@@ -1147,8 +1131,8 @@ index 5f87acb91..a93a857ed 100644
 +#include "color.h"
  
  const struct xlat_data *
- find_xlat_val_ex(const struct xlat_data *items, const char *s, size_t num_items,
-@@ -394,7 +395,7 @@ void
+ find_xlat_val_ex(const struct xlat_data * const items, const char * const s,
+@@ -402,7 +403,7 @@ void
  printaddr64(const uint64_t addr)
  {
  	if (!addr)
@@ -1157,7 +1141,7 @@ index 5f87acb91..a93a857ed 100644
  	else
  		PRINT_VAL_X(addr);
  }
-@@ -659,7 +660,7 @@ printdev(struct tcb *tcp, int fd, const char *path)
+@@ -667,7 +668,7 @@ printdev(struct tcb *tcp, int fd, const char *path)
  		print_quoted_string_ex(path, strlen(path),
  				       QUOTE_OMIT_LEADING_TRAILING_QUOTES,
  				       "<>");
@@ -1166,7 +1150,7 @@ index 5f87acb91..a93a857ed 100644
  			S_ISBLK(st.st_mode)? "block" : "char",
  			major(st.st_rdev), minor(st.st_rdev));
  		return true;
-@@ -1049,7 +1050,8 @@ print_quoted_string_ex(const char *str, unsigned int size,
+@@ -1061,7 +1062,8 @@ print_quoted_string_ex(const char *str, unsigned int size,
  	}
  
  	rc = string_quote(str, outstr, size, style, escape_chars);
@@ -1176,7 +1160,7 @@ index 5f87acb91..a93a857ed 100644
  
  	if (((style & (QUOTE_0_TERMINATED | QUOTE_EXPECT_TRAILING_0))
  	     == (QUOTE_0_TERMINATED | QUOTE_EXPECT_TRAILING_0)) && rc) {
-@@ -1098,7 +1100,7 @@ printpathn(struct tcb *const tcp, const kernel_ulong_t addr, unsigned int n)
+@@ -1110,7 +1112,7 @@ printpathn(struct tcb *const tcp, const kernel_ulong_t addr, unsigned int n)
  	int nul_seen;
  
  	if (!addr) {
@@ -1185,7 +1169,7 @@ index 5f87acb91..a93a857ed 100644
  		return -1;
  	}
  
-@@ -1152,7 +1154,7 @@ printstr_ex(struct tcb *const tcp, const kernel_ulong_t addr,
+@@ -1164,7 +1166,7 @@ printstr_ex(struct tcb *const tcp, const kernel_ulong_t addr,
  	int ellipsis;
  
  	if (!addr) {
@@ -1194,7 +1178,7 @@ index 5f87acb91..a93a857ed 100644
  		return -1;
  	}
  	/* Allocate static buffers if they are not allocated yet. */
-@@ -1202,7 +1204,7 @@ printstr_ex(struct tcb *const tcp, const kernel_ulong_t addr,
+@@ -1214,7 +1216,7 @@ printstr_ex(struct tcb *const tcp, const kernel_ulong_t addr,
  		   && ((style & (QUOTE_0_TERMINATED | QUOTE_EXPECT_TRAILING_0))
  		       || len > max_strlen);
  
@@ -1203,7 +1187,7 @@ index 5f87acb91..a93a857ed 100644
  	if (ellipsis)
  		tprint_more_data_follows();
  
-@@ -1243,7 +1245,7 @@ print_nonzero_bytes(struct tcb *const tcp,
+@@ -1255,7 +1257,7 @@ print_nonzero_bytes(struct tcb *const tcp,
  		ret = false;
  	} else {
  		prefix_fun();
@@ -1212,7 +1196,7 @@ index 5f87acb91..a93a857ed 100644
  
  		print_quoted_string(str, size, style);
  
-@@ -1301,7 +1303,7 @@ dumpiov_upto(struct tcb *const tcp, const int len, const kernel_ulong_t addr,
+@@ -1313,7 +1315,7 @@ dumpiov_upto(struct tcb *const tcp, const int len, const kernel_ulong_t addr,
  			data_size -= iov_len;
  			/* include the buffer number to make it easy to
  			 * match up the trace with the source */
@@ -1221,7 +1205,7 @@ index 5f87acb91..a93a857ed 100644
  			dumpstr(tcp, iov_iov_base(i), iov_len);
  		}
  	}
-@@ -1441,7 +1443,7 @@ dumpstr(struct tcb *const tcp, const kernel_ulong_t addr,
+@@ -1453,7 +1455,7 @@ dumpstr(struct tcb *const tcp, const kernel_ulong_t addr,
  			src++;
  		} while (++i & DUMPSTR_BYTES_MASK);
  
@@ -1230,7 +1214,7 @@ index 5f87acb91..a93a857ed 100644
  			offs_chars, i - DUMPSTR_WIDTH_BYTES, outbuf);
  	}
  }
-@@ -1608,7 +1610,7 @@ print_array_ex(struct tcb *const tcp,
+@@ -1620,7 +1622,7 @@ print_array_ex(struct tcb *const tcp,
  	       const char *index_dflt)
  {
  	if (!start_addr) {
@@ -1239,7 +1223,7 @@ index 5f87acb91..a93a857ed 100644
  		return false;
  	}
  
-@@ -1744,7 +1746,7 @@ print_abnormal_hi(const kernel_ulong_t val)
+@@ -1756,7 +1758,7 @@ print_abnormal_hi(const kernel_ulong_t val)
  	if (current_klongsize > 4) {
  		const unsigned int hi = (unsigned int) ((uint64_t) val >> 32);
  		if (hi)
@@ -1288,7 +1272,7 @@ index 9880831c3..7bc4985e9 100644
  		}
  		if (status) {
 diff --git a/src/xlat.c b/src/xlat.c
-index b240fdd34..55be995e2 100644
+index fed9586b5..a9e37665b 100644
 --- a/src/xlat.c
 +++ b/src/xlat.c
 @@ -12,6 +12,7 @@
@@ -1308,7 +1292,7 @@ index b240fdd34..55be995e2 100644
  }
  
  static int
-@@ -235,7 +236,7 @@ printxvals_ex(const uint64_t val, const char *dflt, enum xlat_style style,
+@@ -231,7 +232,7 @@ printxvals_ex(const uint64_t val, const char *dflt, enum xlat_style style,
  				print_xlat_val(val, style);
  				tprints_comment(str);
  			} else {
@@ -1317,7 +1301,7 @@ index b240fdd34..55be995e2 100644
  			}
  
  			goto printxvals_ex_end;
-@@ -445,7 +446,7 @@ printflags_ex(uint64_t flags, const char *dflt, enum xlat_style style,
+@@ -441,7 +442,7 @@ printflags_ex(uint64_t flags, const char *dflt, enum xlat_style style,
  					tprints("|");
  				else if (need_comment)
  					tprint_comment_begin();
@@ -1326,7 +1310,7 @@ index b240fdd34..55be995e2 100644
  				flags &= ~v;
  			}
  			if (!flags)
-@@ -490,7 +491,7 @@ print_xlat_ex(const uint64_t val, const char *str, uint32_t style)
+@@ -486,7 +487,7 @@ print_xlat_ex(const uint64_t val, const char *str, uint32_t style)
  				print_xlat_val(val, style);
  				tprints_comment(str);
  			} else {
