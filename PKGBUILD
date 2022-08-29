@@ -1,8 +1,8 @@
-# Maintainer:  Angelo ELias Dalzotto <angelodalzotto97@gmail.com>
+# Maintainer:  Angelo Elias Dal Zotto <angelodalzotto97@gmail.com>
 
 _target=mips-elf
 pkgname=$_target-gcc
-pkgver=11.2.0
+pkgver=12.2.0
 pkgrel=1
 #_snapshot=8-20180427
 pkgdesc='The GNU Compiler Collection - cross compiler for MIPS ELF (bare-metal) target'
@@ -14,8 +14,8 @@ replaces=('cross-mips-elf-gcc')
 conflicts=('cross-mips-elf-gcc')
 options=('!ccache' '!distcc' '!emptydirs' '!libtool' '!strip')
 source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig})
-sha256sums=('d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
-			'6bb782c64994e655abd5cf596ed7879cc52e5bcb0352be636ea9eec7caa98837')
+sha512sums=('e9e857bd81bf7a370307d6848c81b2f5403db8c7b5207f54bce3f3faac3bde63445684092c2bc1a2427cddb6f7746496d9fbbef05fbbd77f2810b2998f1f9173'
+            'SKIP')
 validpgpkeys=('13975A70E63C361C73AE69EF6EEB81F8981C74C7')	# Richard Guenther <richard.guenther@gmail.com>
 
 prepare() {

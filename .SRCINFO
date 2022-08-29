@@ -1,6 +1,6 @@
 pkgbase = mips-elf-gcc
 	pkgdesc = The GNU Compiler Collection - cross compiler for MIPS ELF (bare-metal) target
-	pkgver = 11.2.0
+	pkgver = 12.2.0
 	pkgrel = 1
 	url = https://gcc.gnu.org/
 	arch = i686
@@ -15,10 +15,10 @@ pkgbase = mips-elf-gcc
 	options = !emptydirs
 	options = !libtool
 	options = !strip
-	source = https://ftp.gnu.org/gnu/gcc/gcc-11.2.0/gcc-11.2.0.tar.xz
-	source = https://ftp.gnu.org/gnu/gcc/gcc-11.2.0/gcc-11.2.0.tar.xz.sig
+	source = https://ftp.gnu.org/gnu/gcc/gcc-12.2.0/gcc-12.2.0.tar.xz
+	source = https://ftp.gnu.org/gnu/gcc/gcc-12.2.0/gcc-12.2.0.tar.xz.sig
 	validpgpkeys = 13975A70E63C361C73AE69EF6EEB81F8981C74C7
-	sha256sums = d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b
-	sha256sums = 6bb782c64994e655abd5cf596ed7879cc52e5bcb0352be636ea9eec7caa98837
+	sha512sums = e9e857bd81bf7a370307d6848c81b2f5403db8c7b5207f54bce3f3faac3bde63445684092c2bc1a2427cddb6f7746496d9fbbef05fbbd77f2810b2998f1f9173
+	sha512sums = SKIP
 
 pkgname = mips-elf-gcc
