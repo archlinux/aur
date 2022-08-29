@@ -1,13 +1,13 @@
 pkgbase = ttf-archivo-variable
 	pkgdesc = Grotesque sans-serif typeface family from Omnibus-Type.
 	pkgver = 2.001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.omnibus-type.com/fonts/archivo/
 	arch = any
 	license = OFL
-	source = ttf-archivo-variable-2.001-1-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Archivo/master/OFL.txt
-	source = https://raw.githubusercontent.com/Omnibus-Type/Archivo/master/fonts/variable/Archivo-Italic[wdth,wght].ttf
-	source = https://raw.githubusercontent.com/Omnibus-Type/Archivo/master/fonts/variable/Archivo[wdth,wght].ttf
+	source = ttf-archivo-variable-2.001-2-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Archivo/b5d63988ce19d044d3e10362de730af00526b672/OFL.txt
+	source = https://raw.githubusercontent.com/Omnibus-Type/Archivo/b5d63988ce19d044d3e10362de730af00526b672/fonts/variable/Archivo-Italic[wdth,wght].ttf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Archivo/b5d63988ce19d044d3e10362de730af00526b672/fonts/variable/Archivo[wdth,wght].ttf
 	sha256sums = 108b4e57c9c796d3d38d0428ca7ee39de47ad93187302718d9b2d8864b9b716b
 	sha256sums = 99e6e9a40bc1af881cfce9229e3285e6b35fbeabb7bfb3b42f8899f8d9aba12b
 	sha256sums = 664bbeb10522dac35c174a3860aaecad7b1ad3a0fc8b0d26888e26c824ec556d
