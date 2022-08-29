@@ -5,19 +5,12 @@ pkgbase = pyutil
 	url = https://pypi.python.org/pypi/pyutil
 	arch = any
 	license = GPL2
-	makedepends = python2-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
+	depends = python
 	source = https://files.pythonhosted.org/packages/source/p/pyutil/pyutil-3.3.0.tar.gz
 	sha256sums = 8c4d4bf668c559186389bb9bce99e4b1b871c09ba252a756ccaacd2b8f401848
 
-pkgname = python2-pyutil
-	depends = python2-simplejson
-	depends = python2-zbase32
-	conflicts = python-pyutil
-	replaces = pyutil
-
 pkgname = python-pyutil
-	depends = python-simplejson
-	depends = python-zbase32
-	conflicts = python2-pyutil
-
