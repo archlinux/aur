@@ -1,6 +1,6 @@
 pkgbase = r-gage
 	pkgdesc = Generally Applicable Gene-set Enrichment for Pathway Analysis
-	pkgver = 2.46.0
+	pkgver = 2.46.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/gage
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-gage
 	optdepends = r-pathview
 	optdepends = r-rsamtools
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/gage_2.46.0.tar.gz
-	sha256sums = ebc09e31e6d0bc1b428e2830727322db79bcc5d3692347e55d19a304110a1d0e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/gage_2.46.1.tar.gz
+	sha256sums = f411ae1be8ebc64d1d3d216c4c1cbe79da18ec19d80209bd9e2ea9e39924c007
 
 pkgname = r-gage
