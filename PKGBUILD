@@ -9,7 +9,7 @@ url='https://github.com/trailofbits/pip-audit'
 license=('Apache')
 depends=(
   # Upstream requires pip-api >= 0.0.28 but Arch’s Community
-  # repository is on 0.0.18, which causes an error message that
+  # repository is on 0.0.21, which causes an error message that
   # says “failed to list installed distributions.”
   # Once community/python-pip-api catches up to version 0.0.28,
   # remove the `>=0.0.28` part from the following line.
