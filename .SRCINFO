@@ -1,7 +1,7 @@
 pkgbase = veyon
 	pkgdesc = Open Source computer monitoring and classroom management
-	pkgver = 4.7.3
-	pkgrel = 2
+	pkgver = 4.7.4
+	pkgrel = 1
 	url = https://github.com/veyon
 	arch = i686
 	arch = x86_64
