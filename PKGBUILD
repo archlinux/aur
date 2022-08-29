@@ -2,8 +2,8 @@
 
 pkgname=fenics-basix-git
 _base=basix
-pkgdesc="C++ interface of FEniCS for ordinary and partial differential equations."
-pkgver=0.5.1.dev0.0.1.0.258.g888e38ce
+pkgdesc="Interface of FEniCS for ordinary and partial differential equations (C++ and Python from git release)."
+pkgver=0.5.0.post0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/FEniCS/basix"
@@ -11,7 +11,6 @@ license=('GPL3')
 groups=('fenics-git')
 depends=('xtensor' 'xtensor-blas' 'pybind11' 'petsc')
 makedepends=('git' 'boost')
-optdepends=('python-numba')
 checkdepends=("python-sympy")
 options=(!emptydirs)
 source=("git+${url}")
@@ -99,21 +98,29 @@ export F90=mpif90
 export LANG=en_IE.UTF-8
 export LC_ALL=en_IE.UTF-8
 
+_base_dir="${startdir}"/src/"${_base}"
+
+prepare() {
+  cd "${_base_dir}"
+  git checkout origin/release
+}
+
 pkgver() {
-  cd "${srcdir}/${_base}"
+  cd "${_base_dir}"
   _gitver=$(git describe --tags --match '*.*' | tr '-' '.')
-  # Gets the version from setup.py
-  # (prototype: version='0.5.1.dev0')
-  _pyver=$(grep 'version=' \
-                 "${srcdir}"/"${_base}"/python/setup.py |
-             tr -d ",'" | cut -d"=" -f2)
-  printf "%s.%s" "$_pyver" "$_gitver"
+  # # Gets the version from setup.py
+  # # (prototype: version='0.5.1.dev0')
+  # _pyver=$(grep 'version=' \
+  #                "${srcdir}"/"${_base}"/python/setup.py |
+  #            tr -d ",'" | cut -d"=" -f2)
+  # printf "%s.%s" "$_pyver" "$_gitver"
+  printf "%s" "${_gitver##v}"
 }
 
 build() {
   [ -n "$PETSC_DIR" ] && source /etc/profile.d/petsc.sh
 
-  cd "${srcdir}"/"${_base}"/cpp
+  cd "${_base_dir}"/cpp
   # Add CBLAS to linking libraries
   # (https://github.com/davisking/dlib/issues/154#issuecomment-240651490)
   sed -i 's%\(target_link_libraries(basix PRIVATE ${BLAS_LIBRARIES})\)%\nset(BLAS_LIBRARIES "-lcblas;-lblas")\n\1%' "${srcdir}"/"${_base}"/cpp/CMakeLists.txt
@@ -124,15 +131,13 @@ build() {
         -DXTENSOR_OPTIMIZE=TRUE
   cmake --build "${srcdir}"/build
 
-  _pydir="${srcdir}"/"${_base}"/python
+  _pydir="${_base_dir}"/python
   cd "${_pydir}"
   python setup.py build
 }
 
 check() {
-  cd "${srcdir}"/"${_base}"
-  # Temporary hack. Already reported on forum
-  mv test/test_version.py{,.disabled}
+  cd "${_base_dir}"
   pytest test
 }
 
