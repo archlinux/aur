@@ -1,0 +1,13 @@
+post_install() {
+    echo ""
+    echo "==> You must install phyml or phyml-mpi"
+    echo ""
+    echo "==> Default setting is phyml"
+    echo ""
+    echo "==> To use phyml-mpi"
+    echo ""
+    echo "==> cp /usr/share/jmodeltest/conf/jmodeltest.conf /usr/share/jmodeltest/conf/jmodeltest.conf.bak"
+    echo ""
+    echo "==> cp /usr/share/jmodeltest/conf/jmodeltest.conf.mpi cp /usr/share/jmodeltest/conf/jmodeltest.conf"
+    echo ""
+}

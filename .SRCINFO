@@ -1,15 +1,19 @@
 pkgbase = jmodeltest
-	pkgdesc = Phylogenetic Model Averaging, more models, new heuristics and high-performance computing
-	pkgver = 2.1.10
-	pkgrel = 1
+	pkgdesc = Phylogenetic Model Averaging, more models, new heuristics and high-performance computing. https://doi.org/10.1093/molbev/msn083
+	pkgver = 2.1.10r20160303
+	pkgrel = 7
 	url = https://github.com/ddarriba/jmodeltest2
+	install = jmodeltest.install
 	arch = x86_64
-	license = GPL-3.0 License
-	depends = java-runtime
+	license = GPL3
+	makedepends = ant
+	depends = java-runtime=11
+	optdepends = phyml
+	optdepends = phyml-mpi
 	provides = jmodeltest
-	source = https://github.com/ddarriba/jmodeltest2/files/157117/jmodeltest-2.1.10.tar.gz
+	source = https://github.com/ddarriba/jmodeltest2/archive/refs/tags/v2.1.10r20160303.zip
 	source = jmodeltest.desktop
-	sha256sums = 9039f1a00e730b38e607126703606f8c2ff8309dd82955ce52ccc1ae2889d06d
+	sha256sums = 62415b31f218c2f194d6a4a3ba4cccbfd0fc6073e5f11bc74680e1d9b2af86c5
 	sha256sums = b35c9b5041ca7b9e0e96f29a958da356b9e5149d8ee581ff7c5c83adbcd6706f
 
 pkgname = jmodeltest
