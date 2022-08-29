@@ -1,6 +1,6 @@
 pkgbase = szs
 	pkgdesc = A set of command line tools to manipulate SZS, U8, BRRES, BREFF, BREFT, BMG, KMP, TEX, TPL, and StaticR.rel files of Mario Kart Wii
-	pkgver = 2.27b
+	pkgver = 2.28a
 	pkgrel = 1
 	url = http://szs.wiimm.de/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = szs
 	provides = wctct
 	provides = wbmgt
 	conflicts = szstools
-	source_x86_64 = http://szs.wiimm.de/download/szs-v2.27b-r8534-x86_64.tar.gz
-	sha512sums_x86_64 = 01d1f957a8dda24855e71cbd1554d1accbd08d8482d83fb8571768d17f0aed6a30ccbd08f672be0ca7cff40c49cda0811d96d55545211bdacec241f25d76348d
+	source = http://szs.wiimm.de/download/szs-v2.28a-r8636-x86_64.tar.gz
+	sha512sums = e5d29dc353607369b0abe6649c2dc98713f47a2d47c9e2f15f79e5026027438b6ee833374dc74e19e8dd0cac56d32be63040c67f39f8941050a401024eb49b0c
 
 pkgname = szs
