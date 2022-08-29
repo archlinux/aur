@@ -1,0 +1,12 @@
+pkgbase = roundcubemail-skin-classic
+	pkgdesc = Classic skin for Roundcube Webmail
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/roundcube/classic
+	arch = any
+	license = CCPL
+	depends = roundcubemail
+	source = https://github.com/roundcube/classic/archive/refs/tags/1.6.0.tar.gz
+	sha256sums = 8b9d27b4b6ca469c7246985f9bca9e9711a57c825f9c25c6b082273a3920e4c3
+
+pkgname = roundcubemail-skin-classic
