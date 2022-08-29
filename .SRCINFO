@@ -1,6 +1,6 @@
 pkgbase = vesta-rpm
 	pkgdesc = A 3D visualization program for structural models, volumetric data such as electron/nuclear densities, and crystal morphologies.
-	pkgver = 3.5.7
+	pkgver = 3.5.8
 	pkgrel = 1
 	url = http://www.jp-minerals.org/vesta/en/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = vesta-rpm
 	depends = java-environment-common
 	conflicts = vesta
 	conflicts = vesta-bin
-	source = http://jp-minerals.org/vesta/archives/3.5.7/vesta-3.5.7-1.x86_64.rpm
+	source = http://jp-minerals.org/vesta/archives/3.5.8/vesta-3.5.8-1.x86_64.rpm
 	sha256sums = 6fba78640d449a4c0afd9143658106ee3668be235a9bb4109fdc5ff4828487d8
 
 pkgname = vesta-rpm

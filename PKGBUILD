@@ -1,7 +1,7 @@
 # Maintainer: wszqkzqk <wszqkzqk@qq.com>
 
 pkgname=vesta-rpm
-pkgver=3.5.7
+pkgver=3.5.8
 pkgrel=1
 pkgdesc="A 3D visualization program for structural models, volumetric data such as electron/nuclear densities, and crystal morphologies. "
 arch=('x86_64')
