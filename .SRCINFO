@@ -1,6 +1,6 @@
 pkgbase = rocm-clang-ocl
 	pkgdesc = OpenCL compilation with clang compiler.
-	pkgver = 5.2.1
+	pkgver = 5.2.3
 	pkgrel = 1
 	url = https://github.com/RadeonOpenCompute/clang-ocl
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = rocm-clang-ocl
 	makedepends = rocm-cmake
 	depends = rocm-llvm
 	depends = rocm-opencl-runtime
-	source = rocm-clang-ocl-5.2.1.tar.gz::https://github.com/RadeonOpenCompute/clang-ocl/archive/rocm-5.2.1.tar.gz
-	sha256sums = 693a9a360cb2f7e6910a6714df236df6a9d984f94b01712103a520d8e506c03f
+	source = rocm-clang-ocl-5.2.3.tar.gz::https://github.com/RadeonOpenCompute/clang-ocl/archive/rocm-5.2.3.tar.gz
+	sha256sums = 9cdb387168975207314c08ba63ae7cd11f70542117a5390eddbec77ebb84bed0
 
 pkgname = rocm-clang-ocl
