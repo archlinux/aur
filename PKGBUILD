@@ -2,12 +2,12 @@
 
 pkgname=evs
 pkgver=20161229.215801
-pkgrel=1
+pkgrel=3
 pkgdesc="A tool for phylogenetic biogeography"
 arch=(x86_64)
 url="https://github.com/js-arias/evs"
 license=('BSD')
-makedepends=('go')
+makedepends=('go' 'git')
 source=("git+$url.git")
 md5sums=('SKIP')
 
