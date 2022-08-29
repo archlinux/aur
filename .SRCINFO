@@ -1,13 +1,14 @@
 pkgbase = mpi-bucky
 	pkgdesc = Bayesian Untangling of Concordance Knots https://doi.org/10.1093/bioinformatics/btq539
 	pkgver = 1.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tkchafin/mpi-bucky
 	arch = x86_64
 	license = GPL
 	makedepends = clang
 	makedepends = boost
 	makedepends = openmpi
+	makedepends = git
 	depends = gcc-libs
 	depends = boost-libs
 	depends = openmpi
