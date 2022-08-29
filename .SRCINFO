@@ -1,6 +1,6 @@
 pkgbase = lite-xl-git
-	pkgdesc = A lightweight text editor written in Lua
-	pkgver = 2.0.4.r512.g16fcb2e7
+	pkgdesc = A lightweight text editor written in Lua (master branch)
+	pkgver = v2.1.0.r1967.c25f83da
 	pkgrel = 1
 	url = https://lite-xl.github.io/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = lite-xl-git
 	depends = hicolor-icon-theme
 	provides = lite-xl
 	conflicts = lite-xl
-	source = git+https://github.com/lite-xl/lite-xl
+	source = lite-xl::git+https://github.com/lite-xl/lite-xl
 	sha256sums = SKIP
 
 pkgname = lite-xl-git
