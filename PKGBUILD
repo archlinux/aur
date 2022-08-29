@@ -1,6 +1,6 @@
 # Maintainer: ookami <mail@ookami.one>
 pkgname=proxy-ns
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Run programs in a network namespace where all traffic go through proxy"
 arch=('x86_64')
