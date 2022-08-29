@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
 # Maintainer: Shi Liang <shiliang2008@msn.com>
 pkgname=caddy-naiveproxy
-pkgver=2.4.6
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="Caddy web server"
 arch=('any')
