@@ -1,24 +1,25 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-faustina
 pkgver=1.200
-pkgrel=1
+pkgrel=2
 pkgdesc='Serif typeface for editorial typography in print and online by Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/faustina/'
 license=('OFL')
-source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Faustina/master/OFL.txt"
-        'https://raw.githubusercontent.com/Omnibus-Type/Faustina/master/fonts/otf/Faustina-Bold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Faustina/master/fonts/otf/Faustina-BoldItalic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Faustina/master/fonts/otf/Faustina-ExtraBold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Faustina/master/fonts/otf/Faustina-ExtraBoldItalic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Faustina/master/fonts/otf/Faustina-Italic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Faustina/master/fonts/otf/Faustina-Light.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Faustina/master/fonts/otf/Faustina-LightItalic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Faustina/master/fonts/otf/Faustina-Medium.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Faustina/master/fonts/otf/Faustina-MediumItalic.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Faustina/master/fonts/otf/Faustina-Regular.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Faustina/master/fonts/otf/Faustina-SemiBold.otf'
-        'https://raw.githubusercontent.com/Omnibus-Type/Faustina/master/fonts/otf/Faustina-SemiBoldItalic.otf')
+_commit='eaed5823e55b6256571a2bb379b5203083cab452'
+source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Faustina/${_commit}/OFL.txt"
+        "https://raw.githubusercontent.com/Omnibus-Type/Faustina/${_commit}/fonts/otf/Faustina-Bold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Faustina/${_commit}/fonts/otf/Faustina-BoldItalic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Faustina/${_commit}/fonts/otf/Faustina-ExtraBold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Faustina/${_commit}/fonts/otf/Faustina-ExtraBoldItalic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Faustina/${_commit}/fonts/otf/Faustina-Italic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Faustina/${_commit}/fonts/otf/Faustina-Light.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Faustina/${_commit}/fonts/otf/Faustina-LightItalic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Faustina/${_commit}/fonts/otf/Faustina-Medium.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Faustina/${_commit}/fonts/otf/Faustina-MediumItalic.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Faustina/${_commit}/fonts/otf/Faustina-Regular.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Faustina/${_commit}/fonts/otf/Faustina-SemiBold.otf"
+        "https://raw.githubusercontent.com/Omnibus-Type/Faustina/${_commit}/fonts/otf/Faustina-SemiBoldItalic.otf")
 sha256sums=('73f1067ce6357d5da461e7973e7fc1092fbf44212730b77759b1b9a4f39466ec'
             'e19491c8c35a2c88f8697bb8421f8292a3ca9fcf0c493988ff5eda01831ae240'
             '35b66ca6ca922d4ac2bfcec9f7da9ae9bafa5d5c75c54a9d781b723424ff0bc0'
