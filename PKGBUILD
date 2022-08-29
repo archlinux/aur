@@ -1,8 +1,9 @@
-# Maintainer: Nick Black <dankamongmen@gmail.com>
+# Maintainer: Dz99 <shining.sun0526@gmail.com>
+# Contributor: Nick Black <dankamongmen@gmail.com>
 
 pkgname="savvycan"
 pkgproper="SavvyCAN"
-pkgver="1.0.40"
+pkgver="1.0.245"
 pkgrel=1
 epoch=1
 pkgdesc="QT-based CAN bus analysis tool"
@@ -33,4 +34,4 @@ package() {
 	make INSTALL_ROOT="$pkgdir" install
 }
 
-sha256sums=('43da3925c83014200f2b64318f585b256aecfb446b776646adcebff89cd24022')
+sha256sums=('347c6bf143ba09e6002068f7484d13179f54bef4a077980eafd4a3c06f0e18bf')
