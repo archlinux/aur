@@ -1,7 +1,7 @@
 pkgbase = cemu-git
 	pkgdesc = Nintendo Wii U emulator
 	pkgver = 2.0.r47.gd94ecfe
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cemu.info/
 	arch = x86_64
 	license = MPL2
@@ -13,6 +13,7 @@ pkgbase = cemu-git
 	makedepends = glm
 	makedepends = glslang
 	makedepends = glu
+	makedepends = libgl
 	makedepends = libpng
 	makedepends = libzip
 	makedepends = nasm
@@ -33,7 +34,7 @@ pkgbase = cemu-git
 	source = cemu.bash
 	source = fmt-7.1.3.tar.gz::https://github.com/fmtlib/fmt/archive/refs/tags/7.1.3.tar.gz
 	b2sums = SKIP
-	b2sums = 311709dac55b6864d0db343b59fe82d99ee810896e1dcdb39bdfb76ce7d995fa4d710c0d479e0ce0129c3556482ae17d85664ef4ea875e1de86bc65e92e70a16
+	b2sums = 36819eb14786e26f7555da95312f7edf0de868844d0b00f17e291684e5268c410371a1a6e979c40980a222356b4655242f1bc1ef6d9387843c82efd12c26850c
 	b2sums = 745440a6f5876d47d4651d007d5968f77d8f5ac01ab5ec17ec5851130a5581e2aa7d359ae297ce7318023b0bf386f9c027e3e38c65f297ae874e607253a3493a
 
 pkgname = cemu-git
