@@ -1,7 +1,7 @@
 pkgbase = dolt
 	pkgdesc = Git for data! A version controlled relational database
 	pkgver = 0.40.31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dolthub.com
 	arch = x86_64
 	license = Apache

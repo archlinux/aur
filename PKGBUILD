@@ -4,7 +4,7 @@
 
 pkgname=dolt
 pkgver=0.40.31
-pkgrel=1
+pkgrel=2
 pkgdesc='Git for data! A version controlled relational database'
 arch=(x86_64)
 url=https://www.dolthub.com
@@ -31,7 +31,7 @@ build() {
 		-buildmode=pie \
 		-mod=readonly \
 		-modcacherw \
-		-ldflags "-extldflags=\"$LDFLAGS\"" \
+		-ldflags "-extldflags \"$LDFLAGS\"" \
 		-o build \
 		./cmd/...
 }
