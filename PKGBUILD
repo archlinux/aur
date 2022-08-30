@@ -19,12 +19,17 @@ pkgver() {
 }
 
 build() {
+    # change into source
     cd "$srcdir/${pkgname%-git}/src"
+    # compile program
     make
 }
 
 package() {
+    # create our target filestructure
     mkdir -p "$pkgdir/usr/bin"
+    # change into source
     cd "$srcdir/${pkgname%-git}/src"
+    # install program
     make PREFIX="$pkgdir/usr/bin" install
 }
