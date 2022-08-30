@@ -1,8 +1,8 @@
 # Maintainer: Joe Maples <joe@maples.dev>
 # Contributor: Nico <d3sox at protonmail dot com>
 pkgname=nerd-fonts-cozette-ttf
-_cozettever=1.13.0
-_nfver=2.1.0
+_cozettever=1.16.0
+_nfver=2.2.1
 pkgver="${_interver}_${_nfver}"
 pkgrel=1
 pkgdesc="Cozette Font, patched with the Nerd Fonts Patcher"
