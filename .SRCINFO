@@ -1,0 +1,14 @@
+pkgbase = ports-sniffer
+	pkgdesc = A simple port sniffer(scanner) implementation with 🦀
+	pkgver = 0.0.3
+	pkgrel = 0
+	url = https://github.com/anas-elgarhy/ports-sniffer
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	provides = ports-sniffer
+	replaces = ports-sniffer
+	source = ports-sniffer-0.0.3.tar.gz::https://static.crates.io/crates/ports-sniffer/ports-sniffer-0.0.3.crate
+	sha256sums = d1949836bc156ebf1e5d0bc5c272663b38608399472f5a88212b37f9af66ec4f
+
+pkgname = ports-sniffer
