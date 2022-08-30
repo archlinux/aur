@@ -1,0 +1,31 @@
+** pstack 1.3.1 **
+
+Thomas Preud'homme (6):
+      Fix incorrect ptrace failure tests in crawl()
+      Add -Wextra flags to CFLAGS and fix warnings
+      Remove distribution specific variables in Makefile
+      Respect CFLAGS from the environment
+      Support DESTDIR and PREFIX variables in Makefile
+      Rewrite archive and cvstag make rules for git
+      Don't include .*ignore files in archives
+      Compile with -g -O2 by default
+      Make struct used by PTRACE_GETREGS arch-dependant
+      Error out if no object file header
+
+** pstack 1.3 **
+
+Baruch Even (1):
+      Improve error handling
+
+Thomas Preud'homme (12):
+      Remove pstack unconditionally in clean target.
+      Don't fail with shared object without name
+      Fix incorrect error checking
+      Don't segfault if no _DYNAMIC symbol is found
+      Use strerror on syscall failure
+      Port pstack to amd64 architecture
+      Fix compilation on i386 arch.
+      Separate arch dependant and arch independant code
+      Add support for armel architecture
+      Include <endian.h> as fallback for endianness
+      Do not call perror in crawl() if no ptrace error
