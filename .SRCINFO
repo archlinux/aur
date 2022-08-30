@@ -1,0 +1,15 @@
+pkgbase = ivy-rs-git
+	pkgdesc = Image viewer, yep it's written in Rust.
+	pkgver = r27.cb79bcc
+	pkgrel = 1
+	url = https://codeberg.org/herman_rimm/ivy
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	provides = ivy-rs
+	conflicts = ivy-rs
+	source = git+https://codeberg.org/herman_rimm/ivy.git
+	md5sums = SKIP
+
+pkgname = ivy-rs-git
