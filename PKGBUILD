@@ -7,13 +7,22 @@
 pkgbase=libxml2
 pkgname=(libxml2 libxml2-docs)
 pkgver=2.10.2
-pkgrel=1
-pkgdesc="XML C parser and toolkit (32-bit)"
+pkgrel=2
+pkgdesc="XML C parser and toolkit"
 url="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home"
 arch=(x86_64)
 license=(custom:MIT)
-depends=(zlib xz icu readline ncurses)
-makedepends=(python git)
+depends=(
+  icu
+  ncurses
+  readline
+  xz
+  zlib
+)
+makedepends=(
+  git
+  python
+)
 options=(debug)
 _commit=21b24b51608d471bb9f7c4225e23d0db2acecc52  # tags/v2.10.2^0
 source=("git+https://gitlab.gnome.org/GNOME/libxml2.git#commit=$_commit"
@@ -27,7 +36,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd libxml2
-  git describe --tags | sed 's/-rc/rc/;s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags | sed 's/-rc/rc/;s/^v//;s/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
@@ -50,14 +59,15 @@ build() {
 
   ./configure \
     --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
     --with-threads \
     --with-history \
     --with-python=/usr/bin/python \
-    --with-icu
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' libtool
+    --with-icu \
+    --disable-static
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
-
-  find doc -type f -exec chmod -c 0644 {} +
 }
 
 check() {
@@ -76,9 +86,6 @@ package_libxml2() {
   mkdir -p ../doc/usr/share
   mv "$pkgdir"/usr/share/{doc,gtk-doc} -t ../doc/usr/share
 
-  python -m compileall -d /usr/lib "$pkgdir/usr/lib"
-  python -O -m compileall -d /usr/lib "$pkgdir/usr/lib"
-
   install -Dm644 Copyright -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
@@ -87,6 +94,8 @@ package_libxml2-docs() {
   depends=()
 
   mv doc/* "$pkgdir"
+
+  install -Dm644 libxml2/Copyright -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim:set sw=2 sts=-1 et:
