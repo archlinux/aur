@@ -1,14 +1,16 @@
 pkgbase = solana
 	pkgdesc = A fast, secure, and censorship resistant blockchain.
 	pkgver = 1.10.38
-	pkgrel = 2
+	pkgrel = 1
 	url = https://www.solana.com
 	arch = x86_64
 	license = Apache
 	makedepends = rustup
 	makedepends = clang
 	provides = solana
+	provides = spl-token
 	conflicts = solana-bin
+	conflicts = spl-token-cli
 	source = solana-1.10.38.tar.gz::https://github.com/solana-labs/solana/archive/v1.10.38.tar.gz
 	source = spl-token-cli-2.0.17.tar.gz::https://github.com/solana-labs/solana-program-library/archive/refs/tags/token-cli-v2.0.17.tar.gz
 	sha256sums = 276a5a7e12208770954e9bfa86339f49943767e9ad869fe6dd20bd7a4dfc4ea4
