@@ -44,6 +44,6 @@ check() {
 
 package() {
     cd wolff-lang
-    install -Dt "$pkgdir/usr/bin/" target/release/wolff-lang
+    install -Dt "$pkgdir/usr/bin/" target/release/wolff
     install -Dt "$pkgdir/usr/share/doc/$pkgname" -m644 README.md
 }
