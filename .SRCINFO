@@ -1,5 +1,5 @@
 pkgbase = bilibili-bin
-	pkgdesc = Bilibili desktop client
+	pkgdesc = 哔哩哔哩官方客户端linux移植版。Bilibili official desktop client
 	pkgver = 1.5.0
 	pkgrel = 2
 	url = https://github.com/msojocs/bilibili-linux
