@@ -1,14 +1,13 @@
 pkgbase = python-xerox
 	pkgdesc = Simple copy+paste module for Python
 	pkgver = 0.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kennethreitz/xerox
 	arch = any
 	license = custom:MIT
 	depends = xclip
-	depends = python3
-	source = https://github.com/kennethreitz/xerox/archive/v0.4.1.tar.gz
+	depends = python-setuptools
+	source = python-xerox-0.4.1.tar.gz::https://github.com/kennethreitz/xerox/archive/v0.4.1.tar.gz
 	sha512sums = 39724b619d12af4447d88ba48e188b329a6cee8c82617a78b6074be40bb87775213e5c822f33d540c83cf104eb84a881d85eabec1b1233c7738f5c7f708a5791
 
 pkgname = python-xerox
-
