@@ -1,6 +1,6 @@
 # Maintainer: jabra11 <jabra11.gpg@gmail.com>
 pkgname=seer-gdb-git
-pkgver=1.4.r39.g1a89d48
+pkgver=1.8.r18.g045f907
 pkgrel=1
 pkgdesc="Seer - a gui frontend to gdb"
 arch=('x86_64')
@@ -22,10 +22,10 @@ build() {
         [ ! -d "build" ] && mkdir build
         cmake -S ${pkgname%-gdb-git}/src -B build -DCMAKE_BUILD_TYPE=Release
         cd build
-        cmake --build . --target seer --parallel
+        cmake --build . --target seer
 }
 
 package() {
 	cd "$srcdir/build"
-        cmake --install . --strip --prefix "$pkgdir/usr/"
+        cmake --install . --prefix "$pkgdir/usr/"
 }
