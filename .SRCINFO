@@ -1,4 +1,4 @@
-pkgbase = nvidia-utils
+pkgbase = nvidia-dkms-6
 	pkgver = 515.65.01
 	pkgrel = 2
 	url = http://www.nvidia.com/
