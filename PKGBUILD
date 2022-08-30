@@ -3,8 +3,8 @@
 # Contributor: Funkin-Stoopid <>
 
 pkgname=mkv-extractor-qt
-pkgver=22.08.27a
-_gitcommit=01f1f2e42cadb5cab9763b1eb6da4bedddc02369
+pkgver=22.08.30a
+_gitcommit=bad90bb124852a31419615c1a8ce3719073e5c1b
 pkgrel=1
 pkgdesc="Graphical MKV demultiplexer"
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=('ffmpeg: for DTS conversion'
 conflicts=('mkv-extractor-gui')
 replaces=('mkv-extractor-gui')
 source=("https://github.com/Hizoka76/MKV-Extractor-Qt5/archive/${_gitcommit}.tar.gz")
-sha256sums=('7a01f86c5ace1ed4786112d832786d582a752aa12ff39b520178e3b690a461d3')
+sha256sums=('a2ec9fa7a2b2a33470df4f2777e6e7660147111bbe56b3828ee195a19908dc23')
 
 prepare() {
   cd "MKV-Extractor-Qt5-${_gitcommit}"
