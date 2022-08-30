@@ -1,7 +1,7 @@
 # Maintainer:
 
 pkgname=heroic-games-launcher
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Native GOG and Epic Games launcher for Linux"
 arch=(x86_64)
