@@ -2,8 +2,8 @@
 
 _pkgname=litescope
 pkgname=python-$_pkgname
-pkgver=2020.12
-pkgrel=3
+pkgver=2021.04
+pkgrel=1
 pkgdesc='Small footprint and configurable embedded FPGA logic analyzer core'
 arch=('any')
 url="https://github.com/enjoy-digital/$_pkgname"
@@ -12,7 +12,7 @@ depends=('python-migen' 'python-litex')
 makedepends=('python-setuptools')
 #checkdepends=('python-pytest-runner') # broken env
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('f10259b488f36ee8c7f4131efc8d0b8f742519ef63c83e07ee2cc8d92770de3e00e639ef4595174aa988c04ab714ca7a2b0535f0f3e57eed3cef0feffa8a6a3e')
+sha512sums=('53247936a88a85999e78a2d2f3792b9cd3697ce7337ee9abf2f3642bf96551d1e7fe511f65e2d00a13207afbec1ce42b3a7e1886644448ca46926b8e9fb9a069')
 
 build() {
   cd $_pkgname-$pkgver
