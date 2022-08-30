@@ -1,11 +1,11 @@
-# Maintainer: Marcus Behrendt <marcus dot behrendt dot 86 et bigbrothergoogle>
+# Maintainer: Maksim Terpilowski <maximtrp at google mail com>
 
 pkgname=pupil-eye-tracking-bin
 
-_major=2
-_minor=3
-_patch=0
-_commit=f7353e6
+_major=3
+_minor=5
+_patch=8
+_commit=0c019f6
 
 pkgver="${_major}.${_minor}.${_patch}"
 pkgrel=1
@@ -19,7 +19,7 @@ _version="${_major_minor}-${_patch}-g${_commit}"
 _source="pupil_${_version}_linux_x64"
 
 source=("https://github.com/pupil-labs/pupil/releases/download/${_major_minor}/${_source}.zip")
-sha256sums=('27f98ded92b7425ce65489b420802d8081dc9ec47a4e82fc7408f34ed171b8b9')
+sha256sums=('786feb5e937a68a21821ab6b6d86be915bcbb7c5e24c11664dbf8a95e5fcb8cc')
 options=('!strip')
 
 package() {
