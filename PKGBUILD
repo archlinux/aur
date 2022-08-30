@@ -5,12 +5,12 @@ _extname='vietnamese-spellchecker'
 provides=('libreoffice-extension-vietnamese-spellchecker')
 conflicts=('libreoffice-extension-vietnamese-spellchecker')
 pkgver=2.2.0.r35.g507d07e
-pkgrel=1
+pkgrel=2
 pkgdesc="Vietnamese spellchecker extension for LibreOffice"
 arch=('x86_64')
 url="https://github.com/1ec5/hunspell-vi.git"
 license=('GPL3')
-depends=('libreoffice' 'hunspell-vi-git')
+depends=('libreoffice')
 source=("git+${url}")
 sha256sums=('SKIP')
 
@@ -38,13 +38,10 @@ package() {
     install -D -m644 "openoffice/3.x/LICENSES-en.txt" \
         "${pkgdir}/usr/lib/libreoffice/share/extensions/${_extname}/LICENSES-en.txt"
 
-    # Link dictionaries from hunspell-vi
-    install -d -m755 "${pkgdir}/usr/lib/libreoffice/share/extensions/${_extname}/dictionaries"
-
-    ln -s "/usr/share/hunspell/vi_VN.dic" \
+    install -D -m644 "dictionaries/vi-DauMoi.dic" \
         "${pkgdir}/usr/lib/libreoffice/share/extensions/${_extname}/dictionaries/vi_VN.dic"
 
-    ln -s "/usr/share/hunspell/vi_VN.aff" \
+    install -D -m644 "dictionaries/vi-DauMoi.aff" \
         "${pkgdir}/usr/lib/libreoffice/share/extensions/${_extname}/dictionaries/vi_VN.aff"
 
     # Apply version number to files
