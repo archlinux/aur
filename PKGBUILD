@@ -1,6 +1,6 @@
 # Maintainer: Carson Mullins <SeptemAUR@pm.me>
 pkgname=nordpass-bin
-pkgver=4.28.7
+pkgver=4.29.7
 pkgrel=1
 pkgdesc="Secure and intuitive password manager (snap release)"
 arch=('x86_64')
@@ -11,11 +11,11 @@ makedepends=('squashfs-tools')
 options=('!strip')
 provides=('nordpass')
 _snapid="00CQ2MvSr0Ex7zwdGhCYTa0ZLMw3H6hf"
-_snaprev=140
+_snaprev=142
 source=('LICENSE'
         "https://api.snapcraft.io/api/v1/snaps/download/${_snapid}_${_snaprev}.snap")
 sha256sums=('5df1f0e6fceda22263443143e96311f626e6edff1b2db346b843dfc523ec2ef9'
-            'bf1b1120bb75a38108ffb680ccd6f351a139e0bd9b739ba4f888d7e939933cbf')
+            'b32c216a8c7d527c722dd967b30b6eaf640614e512fcc36e9730c33a73b9d985')
 
 prepare() {
   echo "Extracting snap file..."
