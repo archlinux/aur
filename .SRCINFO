@@ -1,15 +1,15 @@
 pkgbase = sline-git
 	pkgdesc = Simple line-editing and command history library.
-	pkgver = r93.312912b
+	pkgver = r111.b636ac0
 	pkgrel = 1
-	url = https://sr.ht/~arivigo/sline
+	url = https://github.com/ariadnavigo/sline.git
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = git
 	depends = glibc
 	conflicts = sline
-	source = git+https://git.sr.ht/~arivigo/sline
+	source = git+https://github.com/ariadnavigo/sline.git
 	sha256sums = SKIP
 
 pkgname = sline-git

@@ -2,26 +2,26 @@
 
 _pkgname=sline
 pkgname="${_pkgname}-git"
-pkgver=r93.312912b
+pkgver=r111.b636ac0
 pkgrel=1
 pkgdesc='Simple line-editing and command history library.'
 arch=('x86_64' 'aarch64')
-url="https://sr.ht/~arivigo/${_pkgname}"
+url="https://github.com/ariadnavigo/${_pkgname}.git"
 license=('MIT')
 depends=('glibc')
 makedepends=('git')
-source=("git+https://git.sr.ht/~arivigo/${_pkgname}")
+source=("git+${url}")
 sha256sums=('SKIP')
 conflicts=(${_pkgname})
 
 pkgver() {
 	cd "${_pkgname}"
- 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
 	cd "${_pkgname}"
-  sed -i "s/LDFLAGS.*$/&,-z,now/" config.mk
+	sed -i "s/LDFLAGS.*$/&,-z,now/" config.mk
 }
 
 build() {
@@ -32,5 +32,5 @@ build() {
 package() {
 	cd "${_pkgname}"
 	make DESTDIR="${pkgdir}" PREFIX='/usr' MANPREFIX=/usr/share/man install
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
