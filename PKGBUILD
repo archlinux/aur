@@ -1,18 +1,16 @@
-# Maintainer: zh99998 <zh99998@gmail.com>
-
+#Contributor: zh99998 <zh99998@gmail.com>
+#Contributor: bilibili_xiaok <the_xiaok@qq.com>
+#Maintainer: bilibili_xiaok <the_xiaok@qq.com>
 pkgname=tcpping
-pkgver=1.7
-pkgrel=2
+pkgver=2.4
+pkgrel=1
 pkgdesc='test response times using TCP SYN packets'
 arch=('any')
-url='http://www.vdberg.org/~richard/tcpping.html'
-depends=('bc' 'tcptraceroute')
-source=('http://www.vdberg.org/~richard/tcpping')
+url='https://github.com/deajan/tcpping'
+depends=('traceroute')
+source=('https://raw.githubusercontent.com/deajan/tcpping/master/tcpping')
 noextract=('tcpping')
-
-sha256sums=(
-'SKIP'
-)
+sha256sums=('SKIP')
 
 package() {
 	install -Dm755 "$srcdir/tcpping" "$pkgdir/usr/bin/tcpping"
