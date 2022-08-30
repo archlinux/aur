@@ -1,0 +1,14 @@
+diff --git a/internal/settings/user_settings.go b/internal/settings/user_settings.go
+index 62d7e31..c1ce033 100644
+--- a/internal/settings/user_settings.go
++++ b/internal/settings/user_settings.go
+@@ -84,8 +84,7 @@ func GetSettingsDirectory() (string, error) {
+ 	case "darwin":
+ 		prefDir = filepath.Join(homeDir, "/Library/Application Support/RiftShare")
+ 	case "linux":
+-		// prefDir = filepath.Join(homeDir, "/.config/RiftShare")
+-		prefDir = filepath.Join(homeDir, "/.var/app/app.riftshare.RiftShare/data")
++		prefDir = filepath.Join(homeDir, "/.config/RiftShare")
+ 	default:
+ 		err = errors.New("unsupported platform")
+ 	}

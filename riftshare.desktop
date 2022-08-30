@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=RiftShare
+Comment=Easy, Secure, and Free file sharing for everyone
+Exec=riftshare
+Icon=riftshare
+Terminal=false
+StartupNotify=false
+Categories=Network;FileTransfer;
