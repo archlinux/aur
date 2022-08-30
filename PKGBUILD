@@ -6,7 +6,7 @@
 
 pkgname=solarus-git
 pkgver=1.5.3.r1446.g2593c31de
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source adventure 2D game engine (git version)"
 arch=('i686' 'x86_64')
 url="http://www.solarus-games.org/"
@@ -30,7 +30,7 @@ source=('git+https://gitlab.com/solarus-games/solarus.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "${pkgname%-git}"
   git describe --long --tag | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 

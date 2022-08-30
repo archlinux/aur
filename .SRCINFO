@@ -1,7 +1,7 @@
 pkgbase = solarus-git
 	pkgdesc = An open-source adventure 2D game engine (git version)
 	pkgver = 1.5.3.r1446.g2593c31de
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.solarus-games.org/
 	arch = i686
 	arch = x86_64
