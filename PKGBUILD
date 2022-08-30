@@ -2,7 +2,7 @@
 pkgname='extrae'
 pkgdesc='Instrumentation framework to generate execution traces of the most used parallel runtimes (from BSC).'
 pkgver='4.0.1.20220513'
-pkgrel='3'
+pkgrel='4'
 arch=('i686' 'x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPL2.1')
@@ -16,6 +16,9 @@ sha512sums=(58cbe06b1eb738dba3c9d38a96ca8a9bf442c492214e086876af25b8d7e01c379b46
 
 prepare() {
 	cd "$srcdir/$pkgname-${pkgver%.*}"
+
+	# Replace PTR type (from ansidecl.h) which was recently removed from binutils
+	sed -i 's|PTR|void *|g' src/merger/common/bfd_manager.c
 
 	# Upstream issue: https://github.com/bsc-performance-tools/extrae/issues/27
 	patch -Np1 -i "$srcdir/extrae-issue-27-fix-pie-address-translation.patch"
