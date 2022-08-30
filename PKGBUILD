@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net
 
 pkgname=double-conversion-git
-pkgver=3.2.0.r6.ga109d7d
-pkgrel=2
+pkgver=3.2.1.r0.gaf09fd6
+pkgrel=1
 pkgdesc='Efficient binary-decimal and decimal-binary conversion routines for IEEE doubles.'
 arch=(i686 x86_64)
 url='https://github.com/google/double-conversion'
