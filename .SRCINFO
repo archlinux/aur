@@ -17,6 +17,7 @@ pkgbase = rubick-bin
 	depends = libxtst
 	depends = util-linux-libs
 	depends = xdg-utils
+	depends = npm
 	optdepends = libappindicator-gtk3
 	options = !strip
 	options = !emptydirs
