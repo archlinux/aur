@@ -20,12 +20,15 @@ depends=(
 optdepends=(
   'sabnzbd: usenet downloader'
   'nzbget: usenet downloader'
+  'qbittorrent: torrent downloader'
+  'deluge: torrent downloader'
+  'rtorrent: torrent downloader'
   'transmission-cli: torrent downloader (CLI and daemon)'
   'transmission-gtk: torrent downloader (GTK+)'
   'transmission-qt: torrent downloader (Qt)'
-  'deluge: torrent downloader'
-  'rtorrent: torrent downloader'
   'jackett: torrent indexer proxy'
+  'nzbhydra2: torznab and usenet indexer proxy'
+  'prowlarr: torrent and usenet indexer proxy'
 )
 
 source=(
