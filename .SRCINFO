@@ -14,9 +14,9 @@ pkgbase = odamex-git
 	depends = sdl2_mixer
 	depends = sdl2
 	depends = portmidi
-	depends = wxgtk2
 	depends = miniupnpc
-	optdepends = timidity++: Required for music
+	optdepends = timidity++: Required for the SDL2 MIDI music backend
+	optdepends = doomseeker: Online Doom multiplayer server launcher
 	provides = odamex
 	conflicts = odamex
 	source = odamex-git::git+https://github.com/odamex/odamex.git#branch=stable
