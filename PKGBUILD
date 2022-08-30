@@ -3,7 +3,7 @@
 # Contributor: Jonas Jelten <jonas.jelten@gmail.com>
 
 pkgname=mtview-git
-pkgver=20141027
+pkgver=20160918
 pkgrel=1
 pkgdesc="Multitouch event viewer."
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ makedepends=('git')
 provides=('mtview')
 conflicts=('mtview')
 options=('!libtool')
-source=("$pkgname"::git://github.com/whot/mtview.git#branch=master)
+source=("$pkgname"::git+https://github.com/whot/mtview.git#branch=master)
 md5sums=('SKIP')
 
 pkgver() {
