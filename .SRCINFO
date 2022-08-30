@@ -1,17 +1,20 @@
 pkgbase = python-mmclassification
 	pkgdesc = OpenMMLab Image Classification Toolbox and Benchmark
-	pkgver = 0.1.0
+	pkgver = 0.23.2
 	pkgrel = 1
 	url = https://github.com/open-mmlab/mmclassification
 	arch = any
 	license = Apache
-	makedepends = git
 	makedepends = python-setuptools
+	depends = python-matplotlib
 	depends = python-mmcv
 	depends = python-numpy
 	depends = python-pytorch
-	source = python-mmclassification::git+https://github.com/open-mmlab/mmclassification.git
-	sha512sums = SKIP
+	optdepends = python-albumentations
+	optdepends = python-colorama
+	optdepends = python-requests
+	optdepends = python-rich
+	source = mmclassification-0.23.2.tar.gz::https://github.com/open-mmlab/mmclassification/archive/refs/tags/v0.23.2.tar.gz
+	sha512sums = 8d23329ba20e8c0a7e4be6e5318a968d6304ce820a1b890522b31a3c5f2d9f1dd441045d0e86c713d812344cd0f92f47a4f49746cbc1a3762ac7a78b3e4be1a8
 
 pkgname = python-mmclassification
-
