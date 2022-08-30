@@ -1,0 +1,379 @@
+#!/bin/sh
+#
+# tcpping: test response times using TCP SYN packets
+#          URL: https://github.com/deajan/tcpping
+#          Former URL: http://www.vdberg.org/~richard/tcpping.html
+#
+# uses recent versions of traceroute supporting TCP sessions
+#
+# (c) 2002-2020 Richard van den Berg <richard@vdberg.org> under the GPL
+#               http://www.gnu.org/copyleft/gpl.html
+#               Orsiris de Jong <ozy@netpower.fr>
+#
+# 2002/12/20 v1.0 initial version
+# 2003/01/25 v1.1 added -c and -r options
+#                 now accepting all other tcptraceroute options
+# 2003/01/30 v1.2 removed double quotes around backquotes
+# 2003/03/25 v1.3 added -x option, courtesy of Alvin Austin <alvin@crlogic.com>
+# 2005/03/31 v1.4 added -C option, courtesy of Norman Rasmussen <norman@rasmussen.org>
+# 2007/01/11 v1.5 catch bad destination addresses
+# 2007/01/19 v1.6 catch non-root tcptraceroute
+# 2008/02/10 v1.7 make -C work when reverse lookup fails, courtesy of Fabrice Le Dorze <Fabrice.LeDorze@apx.fr>
+# 2010/06/04 v1.8 make -C work when ipaddress doesn't reply, courtesy of Yann Beulque
+# From v2.0 upwards, maintainer is Orsiris de Jong <ozy@netpower.fr>
+# 2018/04/25 v2.0 make tcpping work with recent traceroute binary (tested with version 2.0.22)
+#                 added language agonstic traceroute support
+#                 added FreeBSD 11 traceroute and csh support
+#                 added support for other ttl than 255
+#                 added -z debug parameter which shows what is actually sent to traceroute
+#                 drop tcptraceroute prerequisite
+#                 removed elder options (-l, -p which is defined as ending optional argument)
+#                 multiple small improvements (local variables, better readability)
+# 2018/07/11 v2.1 added preflight checks for traceroute and bc binaries
+#                 comparaisons are now strict postix, thanks to https://github.com/agail
+# 2018/11/26 v2.2 added checks for root privileges, courtesy of Jim Conner <jimconn91343@gmail.com>
+#                 added -Z parameter for sudo
+#                 added -M parameter for protocol
+#                 removed bc dependancy
+#                 fixed bogus -w parameter
+# 2019/09/25 v2.3 allow -w parameter to take floats under linux
+#                 meantime between checks is now lowered if -w parameter is less than 1 second on linux
+#                 added -o parameter, which outputs statistics similar to ping
+#                 Simpify main loop
+#                 fix ambiguous output redirect in csh for preflight check
+# 2020/04/19 v2.4 fixed -r parameter, which also accepts floats now, and added -r auto option, which calculates
+#                 a wait interval based on timeToWait (-w) parameter
+#                 Do not wait additional interval time when ping fails before running next try
+#                 Remove _checkSite function (merged into _testSite) to avoid code duplicartion, and lower execution time
+#                 Set default wait interval (-r) parameter to auto
+#                 Set default timeToWait parameter to 1 second
+# v2.5-dev        Fixed set -o pipefail only exists on bash
+
+ver="v2.5dev"
+format="%Y%m%d%H%M%S"
+d="no"
+c="no"
+C="no"
+f_ttl=255
+m_ttl=255
+seq=0
+numberOfQueries=1
+interval=auto
+timeToWait=1
+topts=""
+SUDO_COMMAND=""
+_DEBUG=false
+LOCAL_OS=
+METHOD=tcp
+summary="no"
+x=0
+
+# Make sure traceroute output is language agnostic
+export LANG=C
+
+# Make sure we get exit codes from piped commands
+[ -n "$BASH_VERSION" ] && set -o pipefail
+
+usage () {
+	name=`basename $0`
+	echo "tcpping $ver Richard van den Berg <richard@vdberg.org>, Orsiris de Jong <ozy@netpower.fr>"
+	echo
+	echo "Usage: $name [-d] [-c] [-C] [-w sec] [-q num] [-x count] ipaddress [port]"
+	echo
+	echo "        -d            print timestamp before every result"
+	echo "        -c            print a columned result line"
+	echo "        -C            print in the same format as fping's -C option"
+	echo "        -w            wait time in seconds (defaults to 3). Linux supports float values, ie '.2'"
+	echo "        -r            repeat every n seconds (defaults to 1). Linux supports float values, ie '.2'"
+	echo "                      also accepts 'auto' value which works with -x in order to make total execution time lower than interval * repeats"
+	echo "        -x            repeat n times (defaults to unlimited)"
+	echo "        -f            first ttl (defaults to 255), see traceroute man"
+	echo "        -m            max ttl (defaults to 255), see traceroute man"
+	echo "        -nNFASEisfm   see traceroute man"
+	echo "        -M            method (tcp, udp, icmp...), see traceroute man"
+	echo "        --sport       define source port, see traceroute man"
+	echo "        -z            show what command is actually sent to traceroute (debug)"
+	echo "        -Z            run traceroute with sudo"
+	echo "        -o            Output ping like statistics"
+	echo
+	echo "Default port is 80"
+	echo "See also: man traceroute"
+	echo
+}
+
+getLocalOS() {
+	local localOsVar
+	local localOsName
+	local localOsVer
+
+	# There is no good way to tell if currently running in BusyBox shell. Using sluggish way.
+	if ls --help 2>&1 | grep -i "BusyBox" > /dev/null; then
+		localOsVar="BusyBox"
+	else
+		# Detecting the special ubuntu userland in Windows 10 bash
+		if grep -i Microsoft /proc/sys/kernel/osrelease > /dev/null 2>&1; then
+			localOsVar="Microsoft"
+		else
+			localOsVar="`uname -spior 2>&1`"
+			if [ $? != 0 ]; then
+				localOsVar="`uname -v 2>&1`"
+				if [ $? != 0 ]; then
+					localOsVar="`uname`"
+				fi
+			fi
+		fi
+	fi
+
+	case $localOsVar in
+		# Android uname contains both linux and android, keep it before linux entry
+		*"Android"*)
+		LOCAL_OS="Android"
+		;;
+		*"Linux"*)
+		LOCAL_OS="Linux"
+		;;
+		*"BSD"*)
+		LOCAL_OS="BSD"
+		;;
+		*"MINGW32"*|*"MINGW64"*|*"MSYS"*)
+		LOCAL_OS="msys"
+		;;
+		*"CYGWIN"*)
+		LOCAL_OS="Cygwin"
+		;;
+		*"Microsoft"*)
+		LOCAL_OS="WinNT10"
+		;;
+		*"Darwin"*)
+		LOCAL_OS="MacOSX"
+		;;
+		*"BusyBox"*)
+		LOCAL_OS="BusyBox"
+		;;
+		*)
+		echo >&2 "Running on unknown local OS [$localOsVar]."
+		;;
+	esac
+}
+
+checkEnvironment() {
+	if ! type traceroute > /dev/null; then
+		echo >&2 "traceroute binary not found. Please install it first"
+		exit 1
+	fi
+
+	if ! type awk > /dev/null; then
+		echo >&2 "awk binary not found. Please install it first"
+		exit 2
+	fi
+}
+
+# Check if site can be reached via TCP SYN
+
+# Measure latency via TCP SYN
+_testSite() {
+	local host="${1}"
+	local port="${2:-80}"
+	local myseq="${3}"
+
+	local args=
+	local i=1
+	for givenArgs in "${@}"; do
+		if [ $i -gt 3 ]; then
+			args="$args $givenArgs"
+		fi
+		i=`expr $i + 1`
+	done
+
+	local traceRoute=
+	local traceRouteCommand=
+	local foundHost=
+	local rtt=
+
+	shift
+	[ "${c}" = "yes" ] && nows=`date +${format}`
+	[ "${d}" = "yes" ] && nowd=`date`
+
+	# Remove first line from result
+	traceRouteCommand="$SUDO_COMMAND traceroute ${METHOD_PARAMETER} ${METHOD} -f ${f_ttl} -m ${m_ttl} -q ${numberOfQueries} -w ${timeToWait} ${args} -p ${port} ${host}"
+	if [ $_DEBUG = true ]; then
+		echo "$traceRouteCommand"
+	fi
+
+	# BSD traceroute outputs header line to stderr while outputting results to stdout, whereas linux versions output everything to stdout
+	if [ "$LOCAL_OS" = "BSD" ] || [ "$LOCAL_OS" = "MacOSX" ]; then
+		traceRoute=`$traceRouteCommand 2>/dev/null`
+	else
+		traceRoute=`$traceRouteCommand 2>/dev/null | awk 'NR>1'`
+	fi
+	result=$?
+
+	if [ $myseq -eq 0 ]; then
+		if [ $result -ne 0 ]; then
+			if [ "`id -u`" -ne 0 ]; then
+				echo >&2 "Unable to run '$traceRouteCommand' command. Please try run $0 with -Z parameter or 'sudo $0'"
+				exit 20
+			else
+				echo >&2 "Unable to run '$traceRouteCommand' command. Please submit an issue in 'https://github.com/deajan/tcpping/issues' with the output of the command."
+				exit 21
+			fi
+		fi
+
+		if echo "${traceRoute}" | egrep -i "(bad destination|got roo|not known|cannot handle)" >/dev/null 2>&1; then
+			echo >&2 "${traceRoute}"
+			exit 22
+		fi
+	fi
+
+	rtt=`echo "${traceRoute}" | awk '{print $4}'`
+	not=`echo "${rtt}" | tr -d ".0123456789"`
+
+	[ "${d}" = "yes" ] && echo "$nowd"
+	if [ "${c}" = "yes" ]; then
+		if [ "x${rtt}" != "x" -a "x${not}" = "x" ]; then
+			echo "$myseq $nows $rtt $host"
+		else
+			echo "$myseq $nows $maxRtt $host"
+		fi
+	elif [ "${C}" = "yes" ]; then
+		if [ "$myseq" = "0" ]; then
+			echo -n "$host :"
+		fi
+		if [ "x${rtt}" != "x" -a "x${not}" = "x" ]; then
+			if [ $rtt != "255" ]; then
+				echo -n " $rtt"
+			else
+				echo -n " -"
+			fi
+		else
+			echo -n " -"
+		fi
+		if [ "$x" = "1" ]; then
+			echo
+		fi
+	else
+		echo "${traceRoute}" | sed -e "s/^.*\*.*$/seq $myseq: no response (timeout)/" -e "s/^$ttl /seq $myseq: tcp response from/"
+	fi
+
+	echo "${traceRoute}" | awk '($1 == "*" || $2 == "*"){ exit 1 }'
+	return $?
+}
+
+_quit() {
+        echo ""
+        echo "${pingCount} packets transmitted, `expr ${pingCount} - ${pingFailCount}` received."
+        exit
+}
+
+checkEnvironment
+
+while getopts Zdhzq:w:cr:nNFSAEi:f:l:m:p:s:x:CM:o opt ; do
+	case "$opt" in
+		d|c|C) eval $opt="yes" ;;
+		q|x) eval $opt="$OPTARG" ;;
+		r) interval="$OPTARG" ;;
+		n|N|F|S|A|E) topt="$topt -$opt" ;;
+		i|s) topt="$topt -$opt $OPTARG" ;;
+		w) timeToWait="$OPTARG" ;;
+		f) f_ttl="$OPTARG" ;;
+		m) m_ttl="$OPTARG" ;;
+		M) METHOD="$OPTARG" ;;
+		Z) SUDO_COMMAND=sudo ;;
+		z) _DEBUG=true ;;
+		o) summary="yes" ;;
+		?) usage; exit ;;
+	esac
+done
+
+
+shift `expr $OPTIND - 1`
+
+if [ "x$1" = "x" ]; then
+	usage
+	exit
+fi
+
+if [ "${summary}" = "yes" ]; then
+	trap _quit QUIT INT
+fi
+
+# Use awk to multiply possible float in timeToWait
+maxRtt=`awk 'BEGIN{printf "%.2f\n", ('${timeToWait}'*1000)}'`
+
+if [ `date +%s` != "%s" ]; then
+	format="%s"
+fi
+
+getLocalOS
+
+if [ "$LOCAL_OS" = "BSD" ] || [ "$LOCAL_OS" = "MacOSX" ]; then
+	METHOD_PARAMETER="-P"
+else
+	METHOD_PARAMETER="-M"
+fi
+
+i=1
+for args in "${@}"; do
+	if [ $i -eq $# ]; then
+		lastArg=$args
+	elif [ $i -eq `expr $# - 1` ]; then
+		beforeLastArg=$args
+	fi
+	i=`expr $i + 1`
+done
+
+case $lastArg in
+	''|*[!0-9]*)
+	# Last argument is not numeric, assuming it's an FQDN or IP
+	host=$lastArg
+	;;
+	*)
+	# Last argument is numeric, assuming it's a port number
+	host=$beforeLastArg
+	port=$lastArg
+	;;
+esac
+
+# Try to compute interval value so whole execution takes less time than (repeats * interval)
+# Remove an arbitrary second for pre execution script work
+# Use an arbitrary factor of 0.7 to cope with shell execution time
+
+if [ "$interval" = "auto" ]; then
+	interval=`awk 'BEGIN { print ('$timeToWait'*.7)}'`
+fi
+
+pingCount=0
+pingFailCount=0
+
+while [ $pingCount -lt $x ] || [ $x -eq 0 ]; do
+	result=""
+	_testSite "${host}" "${port}" ${seq} ${topt} &
+	pid=$!
+
+	if [ "${C}" = "yes" ]; then
+		wait $pid
+		result=$?
+	fi
+	seq=`expr $seq + 1`
+	if [ $seq -gt 0 ]; then
+		_DEBUG=false
+	fi
+	if [ "$result" = "" ]; then
+		wait $pid > /dev/null 2>&1
+		result=$?
+	fi
+
+	pingCount=`expr $pingCount + 1`
+	if [ $result -ne 0 ]; then
+		pingFailCount=`expr $pingFailCount + 1`
+		if [ $result -eq 20 ] || [ $result -eq 21 ] || [ $result -eq 22 ]; then
+			exit $result
+		fi
+	elif [ $pingCount -lt $x ] || [ $x -eq 0 ]; then
+		sleep ${interval}
+	fi
+done
+if [ "$summary" = "yes" ]; then
+	_quit
+fi
+exit

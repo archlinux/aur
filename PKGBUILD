@@ -10,7 +10,7 @@ url='https://github.com/deajan/tcpping'
 depends=('traceroute')
 source=('https://raw.githubusercontent.com/deajan/tcpping/master/tcpping')
 noextract=('tcpping')
-sha256sums=('SKIP')
+sha256sums=('cf4a9c9360fe5a7174600dcb877ccbb1d3858bfbd48cee055b57caebbc3fed79')
 
 package() {
 	install -Dm755 "$srcdir/tcpping" "$pkgdir/usr/bin/tcpping"

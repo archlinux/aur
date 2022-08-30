@@ -7,6 +7,6 @@ pkgbase = tcpping
 	depends = traceroute
 	noextract = tcpping
 	source = https://raw.githubusercontent.com/deajan/tcpping/master/tcpping
-	sha256sums = SKIP
+	sha256sums = cf4a9c9360fe5a7174600dcb877ccbb1d3858bfbd48cee055b57caebbc3fed79
 
 pkgname = tcpping
