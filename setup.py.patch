@@ -1,0 +1,42 @@
+diff --git a/setup.py b/setup.py
+index 3941549..fbf66b9 100644
+--- a/setup.py
++++ b/setup.py
+@@ -6,7 +6,7 @@
+ #
+ # This file is part of pyutil; see README.rst for licensing terms.
+ 
+-import os, io, re, sys
++import os
+ 
+ import versioneer
+ 
+@@ -35,18 +35,12 @@ trove_classifiers=[
+ 
+ PKG=u'pyutil'
+ 
+-doc_fnames=[ u'COPYING.SPL.txt', u'COPYING.GPL', u'COPYING.TGPPL.rst', u'README.rst', u'CREDITS' ]
+-
+-# In case we are building for a .deb with stdeb's sdist_dsc command, we put the
+-# docs in "share/doc/python-$PKG".
+-doc_loc = u"share/doc/" + PKG
+-
+ data_files = [
+-    (doc_loc, doc_fnames),
+-    (os.path.join(u'pyutil', u'data'), [os.path.join(u'pyutil', u'data', u'wordlist.txt')])
++    (os.path.join(u'share', u'pyutil', u'data'), [os.path.join(u'pyutil', u'data', u'wordlist.txt')])
+     ]
+ 
+-readmetext = io.open(u'README.rst', encoding='utf-8').read()
++with open('README.rst') as f:
++    readmetext = f.read()
+ 
+ setup(name=PKG,
+       version=versioneer.get_version(),
+@@ -81,6 +75,5 @@ setup(name=PKG,
+               u'try_decoding = pyutil.scripts.try_decoding:main',
+               u'passphrase = pyutil.scripts.passphrase:main',
+               ] },
+-      test_suite=PKG+u".test",
+       zip_safe=False, # I prefer unzipped for easier access.
+       )
