@@ -2,17 +2,17 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='lwt_log'
 pkgname="ocaml-$_projectname"
-pkgver='1.1.1'
-pkgrel='8'
+pkgver='1.1.2'
+pkgrel='1'
 pkgdesc='Lwt-friendly logger'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocsigen/$_projectname"
 license=('custom:LGPL2.1 with linking exception')
-depends=('ocaml' 'ocaml-lwt>=4.0.0')
-makedepends=('dune')
+depends=('ocaml>=4.03.0' 'ocaml-lwt>=4.0.0')
+makedepends=('dune>=1.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('df3d171a7c72f37e96b756d252ab586767df9c13e01500faf13d4b2cee936b0602fd7c725c03db488d3737d8d92300af103d395a926dc654a2c44a5d6068f24a')
+sha512sums=('fb976d89c0f868b57434a9e0907ffae0842fe48fc747ddb860954d20f36722faea315ebb0b4dac202f9bf7203b0a09681614e9619f3bbd0dd59f8dd7bbd50575')
 
 _sourcedirectory="$_projectname-$pkgver"
 
