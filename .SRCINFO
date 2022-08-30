@@ -1,15 +1,23 @@
 pkgbase = acarsdec
-	pkgdesc = Multi-channel ACARS decoder for rtl_sdr
-	pkgver = 3.4
+	pkgver = 3.7
 	pkgrel = 1
 	url = https://github.com/TLeconte/acarsdec
 	arch = x86_64
 	license = GPL
-	depends = alsa-lib
-	depends = libsndfile
+	makedepends = airspy
+	makedepends = libusb
+	makedepends = rtl-sdr
+	optdepends = acarsserv: Store messages in sqlite database
+	provides = acarsdec
+	conflicts = acarsdec
+	source = https://github.com/TLeconte/acarsdec/archive/acarsdec-3.7.tar.gz
+	sha256sums = 1cb8cab03642bfdfcefb7b003f292cfac0f11051ff07666e714bbb4905717005
+
+pkgname = acarsdec-airspy
+	pkgdesc = Multi-channel ACARS decoder with airspy backend
+	depends = airspy
+	depends = libusb
+
+pkgname = acarsdec-rtl-sdr
+	pkgdesc = Multi-channel ACARS decoder with rtl_sdr backend
 	depends = rtl-sdr
-	source = https://github.com/TLeconte/acarsdec/archive/acarsdec-3.4.tar.gz
-	sha256sums = 1db09410ea58f1a8f65f4310f94c2fef419c38f4d05c723de9b2e77a6f936e1f
-
-pkgname = acarsdec
-

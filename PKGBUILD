@@ -1,25 +1,48 @@
 # Maintainer: Sven Karsten Greiner <sven@sammyshp.de>
 # Contributor: Michal Krenek (Mikos) <m.krenek@gmail.com>
 
-pkgname=acarsdec
-pkgver=3.4
+pkgbase=acarsdec
+pkgname=("$pkgbase-airspy" "$pkgbase-rtl-sdr")
+pkgver=3.7
 pkgrel=1
-pkgdesc="Multi-channel ACARS decoder for rtl_sdr"
 arch=('x86_64')
 url="https://github.com/TLeconte/acarsdec"
 license=('GPL')
-depends=('alsa-lib' 'libsndfile' 'rtl-sdr')
-source=("https://github.com/TLeconte/acarsdec/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('1db09410ea58f1a8f65f4310f94c2fef419c38f4d05c723de9b2e77a6f936e1f')
+makedepends=('airspy' 'libusb' 'rtl-sdr')
+optdepends=('acarsserv: Store messages in sqlite database')
+provides=("$pkgbase")
+conflicts=("$pkgbase")
+source=("https://github.com/TLeconte/acarsdec/archive/$pkgbase-$pkgver.tar.gz")
+sha256sums=('1cb8cab03642bfdfcefb7b003f292cfac0f11051ff07666e714bbb4905717005')
 
 build() {
-  cd "$pkgname-$pkgname-$pkgver"
+  cd "$pkgbase-$pkgbase-$pkgver"
+
+  mkdir -p build-airspy
+  cd build-airspy
+  cmake .. -Dairspy=ON
   make
-  make acarsserv
+  cd ..
+
+  mkdir -p build-rtl
+  cd build-rtl
+  cmake .. -Drtl=ON
+  make
+  cd ..
 }
 
-package() {
-  cd "$pkgname-$pkgname-$pkgver"
-  install -Dm755 acarsdec "$pkgdir/usr/bin/acarsdec"
-  install -Dm755 acarsserv "$pkgdir/usr/bin/acarsserv"
+package_acarsdec-airspy() {
+  pkgdesc="Multi-channel ACARS decoder with airspy backend"
+  depends=('airspy' 'libusb')
+
+  cd "$pkgbase-$pkgbase-$pkgver"
+  install -Dm755 build-airspy/acarsdec "$pkgdir/usr/bin/acarsdec"
+}
+
+package_acarsdec-rtl-sdr() {
+  pkgdesc="Multi-channel ACARS decoder with rtl_sdr backend"
+  depends=('rtl-sdr')
+
+  cd "$pkgbase-$pkgbase-$pkgver"
+  install -Dm755 build-rtl/acarsdec "$pkgdir/usr/bin/acarsdec"
 }
