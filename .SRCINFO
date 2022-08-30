@@ -1,6 +1,6 @@
 pkgbase = mtview-git
 	pkgdesc = Multitouch event viewer.
-	pkgver = 20141027
+	pkgver = 20160918
 	pkgrel = 1
 	url = https://github.com/whot/mtview
 	arch = i686
@@ -16,8 +16,7 @@ pkgbase = mtview-git
 	provides = mtview
 	conflicts = mtview
 	options = !libtool
-	source = mtview-git::git://github.com/whot/mtview.git#branch=master
+	source = mtview-git::git+https://github.com/whot/mtview.git#branch=master
 	md5sums = SKIP
 
 pkgname = mtview-git
-
