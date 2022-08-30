@@ -1,13 +1,12 @@
 pkgbase = libcvtapi-git
 	pkgdesc = Official implementation of the VirusTotal API in C programming language
-	pkgver = r135.dae474e
+	pkgver = r136.b30f7ad
 	pkgrel = 1
 	url = https://github.com/VirusTotal/c-vtapi
-	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = git
-	depends = curl
+	depends = libcurl.so
 	depends = jansson
 	provides = libcvtapi.so
 	conflicts = libcvtapi
@@ -15,4 +14,3 @@ pkgbase = libcvtapi-git
 	sha512sums = SKIP
 
 pkgname = libcvtapi-git
-

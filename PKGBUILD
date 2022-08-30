@@ -1,16 +1,17 @@
-# Maintainer: Matthias Lisin <ml@visu.li>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Matthias Lisin <ml@visu.li>
+
 pkgname=libcvtapi-git
-pkgver=r135.dae474e
+pkgver=r136.b30f7ad
 pkgrel=1
 pkgdesc='Official implementation of the VirusTotal API in C programming language'
-arch=(i686 x86_64)
-url=https://github.com/VirusTotal/c-vtapi
-license=(Apache)
-groups=()
-depends=(curl jansson)
-makedepends=(git) # 'bzr', 'git', 'mercurial' or 'subversion'
-provides=(libcvtapi.so)
-conflicts=(libcvtapi)
+arch=('x86_64')
+url='https://github.com/VirusTotal/c-vtapi'
+license=('Apache')
+depends=('libcurl.so' 'jansson')
+makedepends=('git')
+provides=('libcvtapi.so')
+conflicts=('libcvtapi')
 source=("$pkgname::git+$url")
 sha512sums=('SKIP')
 
