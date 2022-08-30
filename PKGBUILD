@@ -2,7 +2,7 @@
 
 pkgname=wireproxy
 pkgver=1.0.4
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 license=(ISC)
 url="https://github.com/octeep/wireproxy"
@@ -17,8 +17,8 @@ source=("https://github.com/octeep/wireproxy/archive/refs/tags/v${pkgver}.tar.gz
 sha256sums=('c600a8cd3d45e006afd0bdc5052730731f50997c85c1fa75112ce7ac6e9e1465'
             '2ad52b7d158fef9c5bd468042e6c7cdc1130a3bde65015bee8107c0a6a422c0d'
             'e3f169d0f814c5c8d0e1a9d4af9ff7f86566f4239d00fffedb804c862202b264'
-            'f3510b14b2993d53c3fda4e19bfb13f7f17ebc85d81a2144e0e9a1e47241e041'
-            '8a8d6e8fd35e4d0798b0c701a54238d8fb6cdcbbf2ae6efccb827e455d7b658f')
+            '4e431b19a0e610e9d12c0ecc0ac9b0171659aaa74a696e93f2a5d4a7546ce85c'
+            'a0b845b1e8bf6c6e931a5f574fb852997f58e32af6d30c766572357cab60624d')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

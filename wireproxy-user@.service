@@ -4,8 +4,6 @@ Documentation=https://github.com/octeep/wireproxy
 After=network.target nss-lookup.target
 
 [Service]
-AmbientCapabilities=CAP_NET_BIND_SERVICE
-CapabilityBoundingSet=CAP_NET_BIND_SERVICE
 ExecStart=/usr/bin/wireproxy --config %h/.config/wireproxy/%i.conf
 Restart=on-failure
 
