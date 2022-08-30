@@ -1,0 +1,26 @@
+pkgbase = rubick-bin
+	pkgdesc = Electron based open source toolbox, free integration of rich plug-ins. 基于 electron 的开源工具箱，自由集成丰富插件。
+	pkgver = 2.0.4beta.3
+	pkgrel = 1
+	url = https://github.com/rubickCenter/rubick
+	install = rubick-bin.install
+	arch = x86_64
+	license = MIT
+	depends = at-spi2-core
+	depends = clion
+	depends = desktop-file-utils
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libnotify
+	depends = libsecret
+	depends = libxss
+	depends = libxtst
+	depends = util-linux-libs
+	depends = xdg-utilsnpm
+	optdepends = libappindicator-gtk3
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/rubickCenter/rubick/releases/download/v2.0.4-beta.3/rubick_2.0.4-beta.3_amd64.deb
+	sha512sums_x86_64 = 465b0a2fe68a9e546b8a190ce3eedcf70351b8036c7fb1c157d11958cb5dcef209e2f45c173e1343deea0a851161aedd6eb8f724164376ea327bc79a0e19b9a8
+
+pkgname = rubick-bin
