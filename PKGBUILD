@@ -2,7 +2,7 @@
 
 pkgname=chatty-git
 _pkgname=${pkgname%-git}
-pkgver=0.20.b2.r0.gc4f5fd87
+pkgver=0.21.b1.r0.g4189a3d0
 pkgrel=1
 pkgdesc='Twitch Chat Client for Desktop'
 arch=('any')
