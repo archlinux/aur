@@ -1,14 +1,15 @@
 # Maintainer: Kevin MacMartin <prurigro@gmail.com>
+# Contributor: vivaeltopo
 
 _pkgname=upscayl
 pkgname=$_pkgname-bin
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Free and Open Source AI Image Upscaler'
 url='https://github.com/upscayl/upscayl'
 license=('AGPL3')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-depends=('zlib')
+depends=('fuse2' 'zlib')
 provides=($_pkgname)
 conflicts=($_pkgname)
 options=('!strip')

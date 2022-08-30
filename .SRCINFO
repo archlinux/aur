@@ -1,7 +1,7 @@
 pkgbase = upscayl-bin
 	pkgdesc = Free and Open Source AI Image Upscaler
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/upscayl/upscayl
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = upscayl-bin
 	arch = armv7h
 	arch = aarch64
 	license = AGPL3
+	depends = fuse2
 	depends = zlib
 	provides = upscayl
 	conflicts = upscayl
