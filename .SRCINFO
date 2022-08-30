@@ -1,8 +1,8 @@
 pkgbase = exabayes
 	pkgdesc = software package for Bayesian tree inference https://doi.org/10.1093/molbev/msu236
 	pkgver = 1.5.1
-	pkgrel = 1
-	url = https://github.com/aberer/exabayes
+	pkgrel = 2
+	url = https://cme.h-its.org/exelixis/web/software/exabayes/
 	arch = x86_64
 	license = GPL
 	makedepends = make
