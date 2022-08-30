@@ -10,15 +10,20 @@ url="https://github.com/Radarr/Radarr"
 license=('GPL3')
 options=('!strip' 'staticlibs')
 depends=('sqlite')
-optdepends=('sabnzbd: usenet downloader'
-            'nzbget: usenet downloader'
-            'transmission-cli: torrent downloader (CLI and daemon)'
-            'transmission-gtk: torrent downloader (GTK+)'
-            'transmission-qt: torrent downloader (Qt)'
-            'deluge: torrent downloader'
-            'rtorrent: torrent downloader'
-            'jackett: torrent indexer proxy'
-            'libgdiplus: provides a gdi+ compatible api')
+optdepends=(
+  'sabnzbd: usenet downloader'
+  'nzbget: usenet downloader'
+  'qbittorrent: torrent downloader'
+  'deluge: torrent downloader'
+  'rtorrent: torrent downloader'
+  'transmission-cli: torrent downloader (CLI and daemon)'
+  'transmission-gtk: torrent downloader (GTK+)'
+  'transmission-qt: torrent downloader (Qt)'
+  'jackett: torrent indexer proxy'
+  'nzbhydra2: torznab and usenet indexer proxy'
+  'prowlarr: torrent and usenet indexer proxy'
+  'libgdiplus: provides a gdi+ compatible api'
+)
 
 source_x86_64=("https://github.com/Radarr/Radarr/releases/download/v${pkgver}/Radarr.master.${pkgver}.linux-core-x64.tar.gz")
 source_aarch64=("https://github.com/Radarr/Radarr/releases/download/v${pkgver}/Radarr.master.${pkgver}.linux-core-arm64.tar.gz")
