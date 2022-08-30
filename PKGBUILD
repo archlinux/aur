@@ -3,13 +3,13 @@
 pkgname=python-xsge
 _pkgname=xsge
 pkgver=2021.10.11
-pkgrel=1
+pkgrel=2
 pkgdesc="xSGE is a collection of higher-level extensions for the SGE which
 enhance the core functionality in an implementation-independent way."
 arch=('x86_64')
 url="https://python-sge.github.io/"
 license=('LGPL')
-depends=('python' 'python-pygame' 'python-sge')
+depends=('python' 'python-pygame-git' 'python-sge')
 makedepends=('python-setuptools')
 provides=('python-xsge')
 conflicts=('python-xsge')
