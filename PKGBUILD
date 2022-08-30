@@ -1,19 +1,20 @@
-# Maintainer: Daniele Paolella <danpaolella@gmail.com>
+# Previous maintainer: Daniele Paolella <danpaolella@gmail.com>
+# Maintainer: fenuks
 pkgname=hg-fast-export
 _pkgname=fast-export
-pkgver=190913
+pkgver=210917
 pkgrel=1
 pkgdesc="Mercurial to git converter using git-fast-import"
 arch=('any')
 url="https://repo.or.cz/fast-export.git"
 license=('MIT' 'GPL2')
-depends=('python2')
+depends=('python')
 changelog=$pkgname.changelog
 source=("https://github.com/frej/fast-export/archive/v$pkgver.tar.gz")
-md5sums=('17d558219b8e3db19a821bca19f7a4d7')
+md5sums=('d4cb1bfc5c43ee61b0350adaae848845')
 
 prepare() {
-	sed -i '1s/python$/python2/' "$srcdir/$_pkgname-$pkgver/hg-reset.py"
+       sed -i '1s/python2$/python/' "$srcdir/$_pkgname-$pkgver/"{hg-fast-export.py,hg2git.py}
 }
 
 package() {
