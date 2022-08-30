@@ -2,3 +2,4 @@ godot-2d_v*
 src/
 *.tar.zst
 pkg/
+.vscode/
