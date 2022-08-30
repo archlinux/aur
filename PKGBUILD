@@ -1,13 +1,13 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname=em-keyboard
 pkgdesc='Command-line utility for referencing emoji characters by name'
-pkgver=3.1.0
+pkgver=3.6.0
 pkgrel=1
 url=https://github.com/hugovk/em-keyboard
 license=(custom:MIT)
 arch=(any)
 depends=(python-docopt python-xerox python-wheel)
-makedepends=(python-pip)
+makedepends=(git python-setuptools-scm)
 source=("${pkgname}::git+${url}#tag=v${pkgver}")
 b2sums=(SKIP)
 
