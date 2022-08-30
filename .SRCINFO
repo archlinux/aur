@@ -1,12 +1,13 @@
 pkgbase = kubecolor
 	pkgdesc = Colorize your kubectl output
 	pkgver = 0.0.20
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/hidetatz/kubecolor
 	arch = x86_64
 	license = MIT
+	makedepends = go
 	depends = kubectl
-	source = https://github.com/hidetatz/kubecolor/releases/download/v0.0.20/kubecolor_0.0.20_Linux_x86_64.tar.gz
-	md5sums = 93b056079ea07ca6bdae9267f628a6e7
+	source = https://github.com/hidetatz/kubecolor/archive/refs/tags/v0.0.20.tar.gz
+	sha256sums = c8a22cb9aeb2c9a564523752694a687a448da0b4c79dcc9e05bf084431f0dc5b
 
 pkgname = kubecolor
