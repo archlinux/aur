@@ -1,6 +1,6 @@
 pkgbase = geopard
 	pkgdesc = Colorful, adaptive gemini browser
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://ranfdev.com/projects/Geopard
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = geopard
 	makedepends = gobject-introspection
 	makedepends = meson
 	depends = libadwaita
-	source = geopard-1.2.0.tar.gz::https://github.com/ranfdev/Geopard/archive/refs/tags/v1.2.0.tar.gz
-	sha256sums = ddfaf917bb38418e60e3f70600b2396642bd586fe0fa78af3489e9203e9e820e
+	source = geopard-1.3.0.tar.gz::https://github.com/ranfdev/Geopard/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = e23c77767d2579b72b2ce2f74c1782a0f0a0b9564f7d9b4aad15dd9190734cc2
 
 pkgname = geopard
