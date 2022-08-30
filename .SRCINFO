@@ -1,7 +1,7 @@
 pkgbase = fastfetch-git
 	pkgdesc = Like neofetch, but much faster because written in c
-	pkgver = 1.6.0.r0.g159a114
-	pkgrel = 2
+	pkgver = 1.6.5.r15.g8f23a52
+	pkgrel = 1
 	url = https://github.com/LinusDierheimer/fastfetch
 	arch = x86_64
 	arch = i686
@@ -47,6 +47,7 @@ pkgbase = fastfetch-git
 	optdepends = nix: self contained nix package count
 	provides = fastfetch
 	conflicts = fastfetch
+	backup = etc/fastfetch/config.conf
 	source = fastfetch-git::git+https://github.com/LinusDierheimer/fastfetch.git
 	sha256sums = SKIP
 

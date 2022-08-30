@@ -1,8 +1,8 @@
 # Maintainer: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=1.6.0.r0.g159a114
-pkgrel=2
+pkgver=1.6.5.r15.g8f23a52
+pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c"
 arch=("x86_64" "i686" "pentium4" "armv5" "armv6h" "armv7h" "aarch64")
 url="https://github.com/LinusDierheimer/fastfetch"
@@ -64,6 +64,8 @@ conflicts=("${_provides_and_conflicts[@]}")
 _src_dir="${pkgname}"
 source=("${_src_dir}::git+https://github.com/LinusDierheimer/fastfetch.git")
 sha256sums=("SKIP")
+
+backup=("etc/fastfetch/config.conf")
 
 _build_dir="build"
 
