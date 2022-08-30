@@ -18,18 +18,6 @@ sha256sums_aarch64=('9702483abea091d46c61fb094bccec61c81b1464824dff18980950fe0bf
 source_aarch64=("https://github.com/liquidata-inc/dolt/releases/download/v$pkgver/dolt-linux-arm64.tar.gz"
 		"LICENSE")
 
-#prepare() {
-#	mkdir -p $srcdir/dolt-linux
-#	if [ "$CARCH" = 'x86_64' ]
-#	then
-#		_arch='amd64'
-#	elif [ "$CARCH" = 'aarch64' ]
-#	then
-#		_arch='arm64'
-#	fi
-#	bsdtar -xvf "$srcdir/dolt-linux-$_arch.tar.gz" --directory="$srcdir/dolt-linux" --strip-components=1
-#}
-
 package() {
 	if [ "$CARCH" = 'x86_64' ]
 	then
