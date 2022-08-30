@@ -2,8 +2,8 @@
 
 _pkgname=litesdcard
 pkgname=python-$_pkgname
-pkgver=2020.12
-pkgrel=3
+pkgver=2021.04
+pkgrel=1
 pkgdesc='Small footprint and configurable SD Card core'
 arch=('any')
 url="https://github.com/enjoy-digital/$_pkgname"
@@ -12,7 +12,7 @@ depends=('python-migen' 'python-litex')
 makedepends=('python-setuptools')
 #checkdepends=('python-pytest-runner') # broken env
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('c65a2a531d4f2fbccd2314cc43c8dc40fa1c979c281996244916326e1d108708cdee9612b588237e38557264753cd5f8df004ecd2f377c72d04dd0fa0a68ce83')
+sha512sums=('ef239d0e7d0b0f86db42c61307d4c611afe1bb3593453101adc367e8a64bbe233b966cb6b865c116036005c54bb81e8890e2a412a4930abe96dd878240755457')
 
 build() {
   cd $_pkgname-$pkgver
