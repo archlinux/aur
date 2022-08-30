@@ -1,7 +1,7 @@
 # Maintainer: Alex Wilson <alex at cooperi dot net>
 pkgname=pivy
-pkgver=0.9.0
-pkgrel=3
+pkgver=0.10.0
+pkgrel=1
 pkgdesc="Tools for using PIV smartcards/Yubikeys with ssh-agent and disk encryption"
 url="https://github.com/arekinath/pivy"
 license=('MPL2')
@@ -18,7 +18,7 @@ optdepends=('cryptsetup: LUKS encrypted disk support (pivy-luks)'
 makedepends=(pkgconf cryptsetup zfs-utils json-c pam)
 sha256sums=('7925467b71227ae835cc5bf5ebf0b74ea6d740738af5d13be05e0416a78f8acc'
             '8da0bc793ba9b7fb1cb784af1ed066aea478b93715f484e7fb7921184d675b84'
-            'a2e4574142e7112cf2434566a51697ebabe28916d42ab0729c54dfea6f7c420e'
+            '215012c0b4b51061b174e27888d765259bbe6bf11f636749b2a71554154681f3'
             'a2c23b7b9e3dc976b54627a08da68b76fd6194ba45d211959dedf4700879379e')
 
 # Don't use --as-needed when linking, will break pam_pivy
@@ -26,14 +26,14 @@ LDFLAGS+=" -Wl,--no-as-needed"
 
 build() {
 	cd "$pkgname-$pkgver"
-	make prefix=/usr USE_ZFS=yes USE_LUKS=yes USE_PAM=yes
+	make prefix=/usr USE_ZFS=yes USE_LUKS=yes USE_PAM=yes USE_JSONC=yes
 	cd "../mini-pcsc-0.2.0"
 	make
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-	make prefix=/usr DESTDIR="$pkgdir/" USE_ZFS=yes USE_LUKS=yes USE_PAM=yes install
+	make prefix=/usr DESTDIR="$pkgdir/" USE_ZFS=yes USE_LUKS=yes USE_PAM=yes USE_JSONC=yes install
 
 	cd "../mini-pcsc-0.2.0"
 	install -o root -g root -m 0755 -d "${pkgdir}/usr/lib"
