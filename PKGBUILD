@@ -1,4 +1,4 @@
-# Maintainer: herman_rimm <herman_rimm@pm.me>
+# Maintainer: Herman Rimm <herman_rimm at pm dot me>
 pkgname=rpi-fbcp-git
 pkgver=r14.af8d322
 pkgrel=1
