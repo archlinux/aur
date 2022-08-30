@@ -5,7 +5,7 @@
 pkgbase=lib32-libxslt
 pkgname=(lib32-libxslt)
 pkgver=1.1.37
-pkgrel=1
+pkgrel=2
 pkgdesc="XML stylesheet transformation library (32-bit)"
 url="https://gitlab.gnome.org/GNOME/libxslt/-/wikis/home"
 arch=(x86_64)
@@ -54,9 +54,11 @@ build() {
   ./configure \
     --prefix=/usr \
     --libdir=/usr/lib32 \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
     --without-python \
     --disable-static
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' libtool
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
