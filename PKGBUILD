@@ -4,10 +4,11 @@
 pkgbase=garlic
 pkgname=('garlic' 'garlic-doc')
 pkgver=1.6
-pkgrel=6
+pkgrel=12
 arch=('i686' 'x86_64')
 url="http://www.zucic.org/garlic/"
 license=('GPL2')
+makedepends=('libx11')
 source=(http://www.zucic.org/sources/$pkgbase-$pkgver/$pkgbase.1.gz
         http://www.zucic.org/sources/$pkgbase-$pkgver/$pkgbase-$pkgver.tar.gz
         http://www.zucic.org/sources/$pkgbase-$pkgver/$pkgbase-$pkgver-doc.tar.gz
