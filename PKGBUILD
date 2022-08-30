@@ -14,5 +14,6 @@ sha256sums=('SKIP')
 
 package() {
 	install -Dm755 "$srcdir/tcpping" "$pkgdir/usr/bin/tcpping"
+	setcap cap_net_raw+ep /usr/bin/tcpping
 }
 
