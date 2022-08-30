@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=ports-sniffer
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=0
 epoch=
 pkgdesc="A simple port sniffer(scanner) implementation with 🦀"
@@ -40,4 +40,4 @@ check() {
 package() {
   sudo install -Dm0755 -t "/usr/bin/" "target/release/$pkgname"
 }
-sha256sums=('d1949836bc156ebf1e5d0bc5c272663b38608399472f5a88212b37f9af66ec4f')
+sha256sums=('b56267a3b3755d25873d13f74ae40346002de6d079a609078b4f8f436b31a09d')
