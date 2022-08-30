@@ -1,5 +1,5 @@
 pkgname=webcord-bin
-pkgver=3.8.0
+pkgver=3.8.1
 pkgrel=1
 pkgdesc="A Discord and Fosscord client made with the Electron."
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!emptydirs')
 _archive="webcord-${pkgver}-1.x86_64.rpm"
 
 source=("${_archive}::${url}/releases/download/v${pkgver}/${_archive}")
-sha256sums=('1105d96063b9209e7873f065fe5f0db223b224096bc15c37c7388fd4775c52b9')
+sha256sums=('0adfa4a162233ca3f3a5c393f1e34427f06a2ab6e087e42092990a32a59ffcce')
 noextract=("${_archive}")
 
 package() {
