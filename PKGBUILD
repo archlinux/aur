@@ -2,7 +2,7 @@
 
 pkgname=musicplayerplus
 pkgver=v2.0.1r2
-pkgrel=1
+pkgrel=2
 pkgdesc="Character based MPD client, spectrum visualizer, Beets library management, Mopidy and Navidrome servers, plus more"
 arch=('x86_64' 'armv7h')
 url="https://github.com/doctorfree/MusicPlayerPlus"
@@ -37,9 +37,8 @@ prepare() {
     cd ${PROJ}
     git switch qt5
 
-    # Prior to configure, determine architecture and set CXXFLAGS
-    arch=`uname -m`
-    [ "${arch}" == "armv7l" ] && {
+    # Prior to configure, determine SSE2 support and set CXXFLAGS
+    grep sse2 /proc/cpuinfo > /dev/null || {
       # Remove -msse2 from CXXFLAGS
       cat wscript | sed -e "s/'-O2', '-msse2'/'-O2'/" > /tmp/wsc$$
       cp /tmp/wsc$$ wscript
@@ -95,21 +94,14 @@ build() {
     PROJ=bliss-analyze
     [ -d ${PROJ} ] || git clone https://github.com/doctorfree/bliss-analyze
     [ -x ${PROJ}/target/release/bliss-analyze ] || {
-      have_cargo=`type -p cargo`
-      if [ "${have_cargo}" ]
-      then
-        cd ${PROJ}
-        PKGPATH=`pkg-config --variable pc_path pkg-config`
-        [ -d /usr/lib/ffmpeg4.4/pkgconfig ] && {
-          PKGPATH="/usr/lib/ffmpeg4.4/pkgconfig:${PKGPATH}"
-        }
-        export PKG_CONFIG_PATH="${PKGPATH}:/usr/lib/pkgconfig"
-        cargo build --frozen --release --all-features
-        cd ..
-      else
-        echo "The cargo tool cannot be located."
-        echo "Cargo is required to build bliss-analyze."
-      fi
+      cd ${PROJ}
+      PKGPATH=`pkg-config --variable pc_path pkg-config`
+      [ -d /usr/lib/ffmpeg4.4/pkgconfig ] && {
+        PKGPATH="/usr/lib/ffmpeg4.4/pkgconfig:${PKGPATH}"
+      }
+      export PKG_CONFIG_PATH="${PKGPATH}:/usr/lib/pkgconfig"
+      cargo build --frozen --release --all-features
+      cd ..
     }
   fi
 
@@ -121,21 +113,14 @@ build() {
     PROJ=blissify
     [ -d ${PROJ} ] || git clone https://github.com/doctorfree/blissify
     [ -x ${PROJ}/target/release/blissify ] || {
-      have_cargo=`type -p cargo`
-      if [ "${have_cargo}" ]
-      then
-        cd ${PROJ}
-        PKGPATH=`pkg-config --variable pc_path pkg-config`
-        [ -d /usr/lib/ffmpeg4.4/pkgconfig ] && {
-          PKGPATH="/usr/lib/ffmpeg4.4/pkgconfig:${PKGPATH}"
-        }
-        export PKG_CONFIG_PATH="${PKGPATH}:/usr/lib/pkgconfig"
-        cargo build --frozen --release --all-features
-        cd ..
-      else
-        echo "The cargo tool cannot be located."
-        echo "Cargo is required to build blissify."
-      fi
+      cd ${PROJ}
+      PKGPATH=`pkg-config --variable pc_path pkg-config`
+      [ -d /usr/lib/ffmpeg4.4/pkgconfig ] && {
+        PKGPATH="/usr/lib/ffmpeg4.4/pkgconfig:${PKGPATH}"
+      }
+      export PKG_CONFIG_PATH="${PKGPATH}:/usr/lib/pkgconfig"
+      cargo build --frozen --release --all-features
+      cd ..
     }
   fi
 
