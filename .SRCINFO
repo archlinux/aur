@@ -1,13 +1,13 @@
 pkgbase = mmark
 	pkgdesc = A powerful markdown processor in Go geared towards the IETF
-	pkgver = 2.2.27
+	pkgver = 2.2.28
 	pkgrel = 1
 	url = https://github.com/mmarkdown/mmark
 	arch = x86_64
 	license = BSD
 	makedepends = go
 	makedepends = git
-	source = https://github.com/mmarkdown/mmark/archive/v2.2.27.tar.gz
-	sha256sums = df7ff4d14c9540f55926527352db0db83585fd2f4a7489003e534121f68d14b6
+	source = https://github.com/mmarkdown/mmark/archive/v2.2.28.tar.gz
+	sha256sums = 1797322e144bd914473bbe915c5b10a5d4eecf12792a4692471178687fe64a1f
 
 pkgname = mmark

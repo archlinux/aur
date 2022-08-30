@@ -1,7 +1,7 @@
 # Maintainer: Luis Pérez <luis.perez@protonmail.com>
 
 pkgname=mmark
-pkgver=2.2.27
+pkgver=2.2.28
 pkgrel=1
 pkgdesc='A powerful markdown processor in Go geared towards the IETF'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=(
              'git'
 )
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('df7ff4d14c9540f55926527352db0db83585fd2f4a7489003e534121f68d14b6')
+sha256sums=('1797322e144bd914473bbe915c5b10a5d4eecf12792a4692471178687fe64a1f')
 
 prepare(){
   cd "$pkgname-$pkgver"
