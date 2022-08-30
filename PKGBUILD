@@ -2,8 +2,8 @@
 
 _pkgname=litejesd204b
 pkgname=python-$_pkgname
-pkgver=2020.12
-pkgrel=3
+pkgver=2021.04
+pkgrel=1
 pkgdesc='Small footprint and configurable JESD204B core'
 arch=('any')
 url="https://github.com/enjoy-digital/$_pkgname"
@@ -12,7 +12,7 @@ depends=('python-migen' 'python-litex')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest-runner')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('cd71ea9eddb55949b10412604983b2f2f093f29e81ca536d1e3a522c8e6b0e3af4ac20ee07b4a351241a3059d79d56837772d02abb1b0887612f27b8838582a6')
+sha512sums=('c3c7ae42d17633da9433836ac4f1e3203265eda3a53a3449ecfaa927b6d18fd0e1acd24b8eb3d6991cd56691c20ef38be9454f230e90a0cd27484f4939309126')
 
 build() {
   cd $_pkgname-$pkgver
