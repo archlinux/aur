@@ -1,35 +1,24 @@
-# Maintainer: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
-
 pkgname=exabayes
-pkgver=1.4.1
-pkgrel=2
-pkgdesc="bayesian tree inference"
-arch=(i686 x86_64)
-url="http://sco.h-its.org/exelixis/web/software/exabayes/"
-license=(GPL3)
-depends=(gcc-libs)
-#checkdepends=(gtest)
-conflicts=(exabayes-mpi)
-source=("http://sco.h-its.org/exelixis/material/exabayes/$pkgver/$pkgname-$pkgver-src.tar.gz")
-md5sums=('1d49d78705b6dab3b4fa4c602edae21f')
+pkgver=1.5.1
+pkgrel=1
+pkgdesc="software package for Bayesian tree inference https://doi.org/10.1093/molbev/msu236"
+arch=('x86_64')
+url="https://github.com/aberer/exabayes"
+depends=('gcc-libs')
+makedepends=('make' 'gcc' 'autoconf' 'autoconf-archive')
+license=('GPL')
+source=("https://cme.h-its.org/exelixis/resource/download/software/exabayes-${pkgver}.tar.gz")
+md5sums=('d7382116cd38cd094a8484f05f7fdcf6')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
-
+  cd "${pkgname}-$pkgver"
+  autoreconf -vfi
   ./configure --prefix=/usr
-
   make
 }
 
-check() {
-  cd $srcdir/$pkgname-$pkgver
-
-  # buggy as of 1.4.1
-  #make test
-}
-
 package() {
-  cd $srcdir/$pkgname-$pkgver
-
-  make DESTDIR="$pkgdir" install
+  cd "${pkgname}-$pkgver"
+  make DESTDIR=$pkgdir install
 }
+
