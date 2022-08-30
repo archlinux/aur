@@ -2,7 +2,7 @@
 #Contributor: Mike Swanson
 
 pkgname=woof-git
-pkgver=10.1.0.r22.23f93db
+pkgver=10.2.0.r16.d51fdc9
 pkgrel=1
 pkgdesc="Doom port remaining faithful to Lee Killough’s MBF on DOS"
 arch=("x86_64")
