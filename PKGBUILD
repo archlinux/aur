@@ -1,17 +1,17 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-chameleon
-pkgver=3.9.1
-pkgrel=2
+pkgver=3.10.0
+pkgrel=1
 pkgdesc="Fast HTML/XML Template Compiler"
 arch=('any')
 license=('BSD' 'ZPL')
-url="http://www.pagetemplates.org/"
+url="https://chameleon.readthedocs.io/"
 depends=('python')
 makedepends=('python-setuptools')
 checkdepends=('python-zope-testrunner')
 source=("https://github.com/malthe/chameleon/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('53b0aeeef89df7cacc299dad20e05023c638e708604876ce5269f22bab00e5001b640123920aef0ef9a0f554bbd37d151bedfdfe55ec161defe6b6f3781d841e')
+sha512sums=('de59a4f1d0243beae91008f93741e9565831ea3b07c3f39e20e15ecc7220711a78bf475844fcaa9dc25f2376b0e937779ca28bd58f7c9b95fa2cf35cc7212117')
 
 build() {
   cd chameleon-$pkgver
