@@ -7,7 +7,7 @@
 # Contributor: Alexey Pavlov <alexpux@gmail.com>
 
 pkgname=mingw-w64-libssh
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Library for accessing ssh client services through C libraries (mingw-w64)"
 url="https://www.libssh.org/"
@@ -19,17 +19,13 @@ options=(!strip !buildflags staticlibs)
 #cmocka
 source=(https://www.libssh.org/files/${pkgver%.*}/libssh-$pkgver.tar.xz{,.asc}
         staticlibfix.patch)
-sha256sums=('0dc158c534cd838ad0b785a82dec586de40da7e096523ae6c08c9b7bd2af0b57'
+sha256sums=('da2b3337a0dd1d1e3788376ee471548520cad91a4f3f23ea3f50c5a73a7e69a5'
             'SKIP'
             'befd0650f7f6fd1d92872b8e2676a201b1449b009706de7fdbdd400b716fddf8')
 validpgpkeys=('8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D') # Andreas Schneider <asn@cryptomilk.org>
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-  # disable the test. It is confused by our clean container setup.
-  # 'extra-x86-build' uses user 'nobody' that has a record in /etc/passwd file
-  # but $HOME envvar is set to '/build'. The test expects that $HOME corresponds to passwd file.
-  sed 's/cmocka_unit_test(torture_path_expand_tilde_unix),//' -i libssh-${pkgver}/tests/unittests/torture_misc.c
   sed 's/\${TARGET_SYSTEM_EMULATOR}/\${CMAKE_CROSSCOMPILING_EMULATOR}/' -i libssh-${pkgver}/cmake/Modules/AddCMockaTest.cmake
   # Disable automatic detection of openssl since it picks up openssl-1.0
   sed 's/find_package(OpenSSL)/#find_package(OpenSSL)/' -i libssh-${pkgver}/CMakeLists.txt
@@ -45,13 +41,12 @@ prepare() {
 build() {
   #static build
   for _arch in ${_architectures}; do
-    mkdir -p "${srcdir}"/build-${_arch}-static && cd "${srcdir}"/build-${_arch}-static
-
     version=$(cat /usr/${_arch}/include/openssl/opensslv.h | grep "OPENSSL_VERSION_TEXT" | sed 's/^[^\"]*"OpenSSL //' | sed 's/ .*$//')
     libssl=$(ls /usr/${_arch}/bin/libssl-*.dll)
     libcrypto=$(ls /usr/${_arch}/bin/libcrypto-*.dll)
 
-    ${_arch}-cmake ../libssh-${pkgver} \
+    ${_arch}-cmake -B "${srcdir}"/build-${_arch}-static \
+      -S libssh-${pkgver} \
       -DCMAKE_INSTALL_PREFIX=/usr/${_arch} \
       -DCMAKE_BUILD_TYPE=Release \
       -DWITH_GSSAPI=OFF \
@@ -65,17 +60,17 @@ build() {
       -DUNIT_TESTING=OFF \
       -DWITH_EXAMPLES=OFF
 
-    make
+    #${_arch}-cmake --build "${srcdir}"/build-${_arch}-static
+    make -C "${srcdir}"/build-${_arch}-static
   done
 
   for _arch in ${_architectures}; do
-    mkdir -p "${srcdir}"/build-${_arch} && cd "${srcdir}"/build-${_arch}
-
     version=$(cat /usr/${_arch}/include/openssl/opensslv.h | grep "OPENSSL_VERSION_TEXT" | sed 's/^[^\"]*"OpenSSL //' | sed 's/ .*$//')
     libssl=$(ls /usr/${_arch}/bin/libssl-*.dll)
     libcrypto=$(ls /usr/${_arch}/bin/libcrypto-*.dll)
 
-    ${_arch}-cmake ../libssh-${pkgver} \
+    ${_arch}-cmake -B "${srcdir}"/build-${_arch} \
+      -S libssh-${pkgver} \
       -DCMAKE_INSTALL_PREFIX=/usr/${_arch} \
       -DCMAKE_BUILD_TYPE=Release \
       -DWITH_GSSAPI=OFF \
@@ -87,29 +82,28 @@ build() {
       -DOPENSSL_VERSION:STRING="$version" \
       -DUNIT_TESTING=ON
 
-    make
+    #${_arch}-cmake --build "${srcdir}"/build-${_arch}
+    make -C "${srcdir}"/build-${_arch}
   done
 }
 
 check() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}"/build-${_arch}
-    WINEDEBUG=-all make test
+    #WINEDEBUG=-all ${_arch}-cmake --build "${srcdir}"/build-${_arch} --target test
+    WINEDEBUG=-all make -C "${srcdir}"/build-${_arch} test
   done
 }
 
 package(){
   # install static library
   for _arch in ${_architectures}; do
-    cd "${srcdir}"/build-${_arch}-static
-
-    make DESTDIR="${pkgdir}" install
+    #DESTDIR="${pkgdir}" ${_arch}-cmake --install "${srcdir}"/build-${_arch}-static
+    make DESTDIR="${pkgdir}" -C "${srcdir}"/build-${_arch}-static install
   done
 
   for _arch in ${_architectures}; do
-    cd "${srcdir}"/build-${_arch}
-
-    make DESTDIR="${pkgdir}" install
+    #DESTDIR="${pkgdir}" ${_arch}-cmake --install "${srcdir}"/build-${_arch}
+    make DESTDIR="${pkgdir}" -C "${srcdir}"/build-${_arch} install
 
     ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
