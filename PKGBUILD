@@ -3,7 +3,7 @@
 # Contributor: James Rayner <iphitus@gmail.com>
 
 pkgbase=nvidia-dkms-6
-pkgname=('nvidia-utils' 'opencl-nvidia' 'nvidia-dkms-6')
+pkgname=('nvidia-utils-6' 'opencl-nvidia-6' 'nvidia-dkms-6')
 pkgver=515.65.01
 pkgrel=2
 arch=('x86_64')
@@ -59,7 +59,7 @@ DEST_MODULE_LOCATION[4]="/kernel/drivers/video"' dkms.conf
     sed -i 's/NV_EXCLUDE_BUILD_MODULES/IGNORE_PREEMPT_RT_PRESENCE=1 NV_EXCLUDE_BUILD_MODULES/' dkms.conf
 }
 
-package_opencl-nvidia() {
+package_opencl-nvidia-6() {
     pkgdesc="OpenCL implemention for NVIDIA"
     depends=('zlib')
     optdepends=('opencl-headers: headers necessary for OpenCL development')
@@ -91,7 +91,7 @@ package_nvidia-dkms-6() {
     install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 "${srcdir}/${_pkg}/LICENSE"
 }
 
-package_nvidia-utils() {
+package_nvidia-utils-6() {
     pkgdesc="NVIDIA drivers utilities"
     depends=('xorg-server' 'libglvnd' 'egl-wayland')
     optdepends=('nvidia-settings: configuration tool'

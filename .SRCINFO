@@ -16,9 +16,9 @@ pkgbase = nvidia-dkms-6
 	sha512sums = 5221a4ac071eb39a37a841f19cfe4983286dc35e918956b40604404ef36c122612475df7b9a391a9a70bd60f44e598c8a0e5ec54ccc3e90d51f01e1b2fbe5e33
 	sha512sums = 65130033206a741059e63107cffd5282b255bab78ded99d11826ba21ffd3fefabc66a20edf80bd4b4bad3cc05e8ad890d179dcb6e24a6bf384cde329a8fdf870
 
-pkgname = nvidia-utils
+pkgname = nvidia-utils-6
 	pkgdesc = NVIDIA drivers utilities
-	install = nvidia-utils.install
+	install = nvidia-utils-6.install
 	depends = xorg-server
 	depends = libglvnd
 	depends = egl-wayland
@@ -31,7 +31,7 @@ pkgname = nvidia-utils
 	conflicts = nvidia-libgl
 	replaces = nvidia-libgl
 
-pkgname = opencl-nvidia
+pkgname = opencl-nvidia-6
 	pkgdesc = OpenCL implemention for NVIDIA
 	depends = zlib
 	optdepends = opencl-headers: headers necessary for OpenCL development
