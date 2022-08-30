@@ -9,14 +9,14 @@ pkgbase = mongodb-compass-readonly-beta
 	arch = aarch64
 	license = custom:SSPL
 	makedepends = git
-	makedepends = python
-	makedepends = unzip
 	makedepends = nodejs>=16.0.0
 	makedepends = npm>=8.0.0
+	makedepends = python
+	makedepends = unzip
+	depends = electron15
 	depends = krb5
 	depends = libsecret
 	depends = lsb-release
-	depends = electron15
 	optdepends = org.freedesktop.secrets
 	source = mongodb-compass-readonly-beta-1.33.0.beta.5-1.tar.gz::https://github.com/mongodb-js/compass/archive/v1.33.0-beta.5.tar.gz
 	source = mongodb-compass-readonly-beta-1.33.0.beta.5-1-browserslist.diff::https://github.com/browserslist/browserslist/pull/378.diff
