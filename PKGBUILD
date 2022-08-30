@@ -2,7 +2,7 @@
 
 pkgname=naikari
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A 2-D space trading and mercenary game forked from the Naev project."
 arch=('x86_64')
 url="https://naikari.github.io/"
@@ -15,10 +15,9 @@ source=("https://github.com/naikari/naikari/releases/download/v${pkgver}/${pkgna
 md5sums=('208f7750038107debe5604acf1dd7a0d')
 
 prepare() {
-	# tar -xf ${srcdir}/${pkgname}-${pkgver}-source.tar.xz
 	mv ${srcdir}/${pkgname}-${pkgver} ${srcdir}/${pkgname}
 	cd ${srcdir}/${pkgname}
-	meson build --prefix=/usr
+	meson build --buildtype=release --prefix=/usr
 	meson compile -C build
 }
 
