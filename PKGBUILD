@@ -1,8 +1,8 @@
 # Maintainer: Marius Iacob <themariusus at gmail dot com>
 
 pkgname=reader-bin
-pkgver=0.2.1
-pkgrel=1
+pkgver=0.3.0
+pkgrel=0
 pkgdesc="A minimal command line reader offering better readability of web pages on the CLI."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/mrusme/reader"
@@ -18,11 +18,11 @@ source_armv7h=("reader_armv7h.tar.gz::https://github.com/mrusme/reader/releases/
 source_aarch64=("reader_aarch64.tar.gz::https://github.com/mrusme/reader/releases/download/v$pkgver/reader_${pkgver}_linux_arm64.tar.gz")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             'd03fd78f8efbc4587ffd5c8b6bd3dd7e88e8526737b25c47e29238d0c8009344')
-sha256sums_i686=('49a9cba1e478a173353c2d5574be13e900eb93abebb7178edaf08006b603771a')
-sha256sums_x86_64=('6958db6801c8fc462d52f9d971ce446a1fa7b363d62389d6e1779baad5ea311a')
-sha256sums_armv6h=('26ab417e94c00a4fb9a9082c7e082729f1fa7269ac33b49c89beecb69daace80')
-sha256sums_armv7h=('ee1778a991a87c75ec8ab5255059b350fa778229f800b69caa181e5f33ceb955')
-sha256sums_aarch64=('3c2302d99e595349b6f29378659b3ece937fb8d6ecab34c817d6e5a4cc720f9a')
+sha256sums_i686=('976a54165d7e52cb1fd59b00f91d0b4d92eb713aa5bfc9b0becbb9cd0c98848e')
+sha256sums_x86_64=('261ede87fd0ff7a94a447d4f4c0d88dfa8a9eb17b4abcfe45969fddb03fc112a')
+sha256sums_armv6h=('386cd104265647ba7f90845c2e2a0c65b9f940827556021332672bef1247ae05')
+sha256sums_armv7h=('3633587a0b8d4d3fe3576b73a9d1d5c5d9f1441e1e566762fc3a0f99713a18a4')
+sha256sums_aarch64=('5d222ad846940c7e9af251157188f915e4869d8f5a78a43a7b5d97cd54a3d501')
 
 package() {
   install -D -m755 reader "$pkgdir/usr/bin/reader"
