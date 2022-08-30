@@ -2,7 +2,7 @@
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 # Contributor: James Rayner <iphitus@gmail.com>
 
-pkgbase=nvidia-utils
+pkgbase=nvidia-dkms-6
 pkgname=('nvidia-utils' 'opencl-nvidia' 'nvidia-dkms')
 pkgver=515.65.01
 pkgrel=2
