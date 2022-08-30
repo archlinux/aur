@@ -1,14 +1,14 @@
 pkgbase = crc-bin
 	pkgdesc = Red Hat CodeReady Containers is a tool that manages a local OpenShift 4.x cluster optimized for testing and development purposes
-	pkgver = 2.0.1
-	pkgrel = 2
+	pkgver = 2.7.1
+	pkgrel = 1
 	url = https://github.com/code-ready/crc
 	arch = x86_64
 	license = APACHE
 	depends = libvirt
 	depends = networkmanager
 	provides = crc
-	source_x86_64 = https://developers.redhat.com/content-gateway/file/pub/openshift-v4/clients/crc/2.0.1/crc-linux-amd64.tar.xz
-	sha256sums_x86_64 = 26f2df1f867b85ab3e5886b924153265b7e433a6d42f90e3aeb88dbd124dadfe
+	source_x86_64 = https://developers.redhat.com/content-gateway/file/pub/openshift-v4/clients/crc/2.7.1/crc-linux-amd64.tar.xz
+	sha256sums_x86_64 = 0cad8fba8c93055e8dc47c9da4b160fc0ae4f66fbd0da18c940ff7232c3fef2d
 
 pkgname = crc-bin
