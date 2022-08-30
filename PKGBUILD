@@ -2,7 +2,7 @@
 # Maintainer: pzl <alsoelp at gmail dot com>
 
 pkgname=jlink-software-and-documentation
-pkgver=7.70b
+pkgver=7.70d
 pkgrel=0
 epoch=48
 pkgdesc="Segger JLink software & documentation pack for Linux"
@@ -37,10 +37,10 @@ desktops=(
         "JFlashSPIExe.desktop"
 )
 source+=(${desktops[@]})
-md5sums_x86_64=('5bb5e87b4ee1ac224e31a83d3537d657')
-md5sums_i686=('8b5001f8332413562ccc87ef32c0f570')
-md5sums_aarch64=('d68a6df45911d6e2d67e8038b1ccd8ad')
-md5sums_armv7h=('b1fe7e4e6f0bfde6db4c561d28058188')
+md5sums_x86_64=('34ff6ba9a2f3d98dbb19118eb014ca9c')
+md5sums_i686=('1c751799aa2915ecaef0eb3f7686c3db')
+md5sums_aarch64=('262160f6515ddca9f37c27f39d8dc2f4')
+md5sums_armv7h=('186c3ea71f43752946a9d6fe5e6f6a10')
 
 
 md5sums=("a57d93b791581c1f36e4c672303bb85d"
@@ -113,8 +113,8 @@ package(){
 
     # Bulk copy everything
     if [ ${CARCH} = "armv7h" ]; then
-        cp --preserve=mode -r J* Devices README.txt GDBServer Firmwares lib* "${pkgdir}/opt/SEGGER/JLink"
-    else cp --preserve=mode -r J* Doc Samples ETC Devices README.txt Firmwares GDBServer lib* "${pkgdir}/opt/SEGGER/JLink"
+        cp --preserve=mode -r J* README.txt GDBServer Firmwares lib* "${pkgdir}/opt/SEGGER/JLink"
+    else cp --preserve=mode -r J* Doc Samples ETC README.txt Firmwares GDBServer lib* "${pkgdir}/opt/SEGGER/JLink"
     fi
     if [ ${CARCH} = "x86_64" ]; then
         cp --preserve=mode -r x86 "${pkgdir}/opt/SEGGER/JLink"
@@ -135,7 +135,6 @@ package(){
     for f in J*; do
         ln -s /opt/SEGGER/JLink/"$f" "${pkgdir}/usr/bin"
     done
-    rm "${pkgdir}/usr/bin/JLinkDevices.xml"
 
     for f in Doc/*; do
         ln -s /opt/SEGGER/JLink/"$f" "${pkgdir}/usr/share/doc/${pkgname}"
