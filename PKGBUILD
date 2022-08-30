@@ -1,8 +1,8 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=xvolkolak
 pkgver=0.22
-pkgrel=1
+pkgrel=2
 pkgdesc="Xvolkolak is an unpacker emulator"
 arch=(x86_64)
 url="http://n10info.blogspot.com/"
@@ -19,9 +19,7 @@ package() {
 	mkdir -p "$pkgdir/usr/share/xvolkolak" "$pkgdir/usr/bin"
 
 	cp -a "${srcdir}/xvlk_lin64_public/base" "$pkgdir/usr/share/xvolkolak/"
-
 	cp -a "${srcdir}/xvlk_lin64_public/xvlkc.sh" \
 		"${srcdir}/xvlk_lin64_public/xvlk.sh" "$pkgdir/usr/bin/"
-
 	sed -i -re 's|./base|/usr/share/xvolkolak/base|g' "${pkgdir}"/usr/bin/*.sh
 }
