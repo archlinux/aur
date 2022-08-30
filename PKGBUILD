@@ -3,7 +3,7 @@
 # Contributor: James Rayner <iphitus@gmail.com>
 
 pkgbase=nvidia-dkms-6
-pkgname=('nvidia-utils' 'opencl-nvidia' 'nvidia-dkms')
+pkgname=('nvidia-utils' 'opencl-nvidia' 'nvidia-dkms-6')
 pkgver=515.65.01
 pkgrel=2
 arch=('x86_64')
@@ -77,7 +77,7 @@ package_opencl-nvidia() {
     ln -s nvidia-utils "${pkgdir}/usr/share/licenses/opencl-nvidia"
 }
 
-package_nvidia-dkms() {
+package_nvidia-dkms-6() {
     pkgdesc="NVIDIA drivers - module sources"
     depends=('dkms' "nvidia-utils=$pkgver" 'libglvnd')
     provides=('NVIDIA-MODULE' 'nvidia')

@@ -37,7 +37,7 @@ pkgname = opencl-nvidia
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	provides = opencl-driver
 
-pkgname = nvidia-dkms
+pkgname = nvidia-dkms-6
 	pkgdesc = NVIDIA drivers - module sources
 	depends = dkms
 	depends = nvidia-utils=515.65.01
