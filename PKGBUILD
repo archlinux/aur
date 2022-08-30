@@ -2,7 +2,7 @@
 
 _pkgname=xisxwayland
 pkgname=$_pkgname-git
-pkgver=1+3.g7e175ea9cc
+pkgver=2
 pkgrel=1
 pkgdesc="Tool to determine whether the X server in use is Xwayland"
 url="https://gitlab.freedesktop.org/xorg/app/xisxwayland"
