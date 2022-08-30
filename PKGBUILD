@@ -1,8 +1,8 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 # Project: nwg-shell for sway, https://github.com/nwg-piotr/nwg-shell
 pkgname=('gopsuinfo')
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="A gopsutil-based command to display customizable system info, intended for nwg-panel or Tint2"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/gopsuinfo"
@@ -12,7 +12,7 @@ conflicts=('gopsuinfo' 'gopsuinfo-git' 'gopsuinfo-bin')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/gopsuinfo/archive/v"$pkgver".tar.gz")
 
-md5sums=('aac58ce8d5294b1970643f9d2e2924d6')
+md5sums=('76a02404b2f64e2a2e14e1be4d9e27c3')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
