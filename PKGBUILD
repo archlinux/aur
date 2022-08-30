@@ -3,8 +3,8 @@
 pkgname=hunspell-vi-git
 provides=('hunspell-vi')
 conflicts=('hunspell-vi')
-pkgver=v2.2.0.r35.g507d07e
-pkgrel=1
+pkgver=2.2.0.r35.g507d07e
+pkgrel=2
 pkgdesc="Vietnamese dictionaries for Hunspell"
 arch=('x86_64')
 url="https://github.com/1ec5/hunspell-vi.git"
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/hunspell-vi"
-    git describe --long --tags | sed 's/-/.r/;s/-/./'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
