@@ -1,16 +1,19 @@
 pkgbase = python-stagger-git
 	pkgdesc = ID3v1/ID3v2 tag manipulation package in pure Python 3
-	pkgver = 1.0.0
+	pkgver = 1.0.0.r8.g6530db1
 	pkgrel = 1
-	url = https://github.com/lorentey/stagger
+	url = https://github.com/staggerpkg/stagger
 	arch = any
 	license = BSD
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
-	provides = python-stagger-git
+	provides = python-stagger
 	conflicts = python3-stagger-svn
-	source = git://github.com/lorentey/stagger.git
+	source = stagger::git+https://github.com/staggerpkg/stagger
 	md5sums = SKIP
 
 pkgname = python-stagger-git
-

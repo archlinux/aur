@@ -1,29 +1,32 @@
-# Maintainer: Manolo Martínez <manolo@austrohungaro.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Manolo Martínez <manolo@austrohungaro.com>
 
-_pkgname=stagger
 pkgname=python-stagger-git
-pkgver=1.0.0
+_pkg=stagger
+pkgver=1.0.0.r8.g6530db1
 pkgrel=1
 pkgdesc="ID3v1/ID3v2 tag manipulation package in pure Python 3"
-arch=(any)
-url="https://github.com/lorentey/stagger"
+arch=('any')
+url="https://github.com/staggerpkg/stagger"
 license=('BSD')
 depends=('python')
-makedepends=('git')
-provides=('python-stagger-git')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+provides=('python-stagger')
 conflicts=('python3-stagger-svn')
-source=('git://github.com/lorentey/stagger.git')
+source=("$_pkg::git+$url")
 md5sums=('SKIP')
 
-
 pkgver() {
-  cd $_pkgname
-  git describe --tags --always | sed -e 's|-|.|g'
+	git -C "$_pkg" describe --long --tags | sed 's/^release-//;s/-/.r/;s/-/./'
+}
+
+build() {
+	cd "$_pkg"
+	python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-
-  msg "Running setup.py..."
-  python setup.py install --root="${pkgdir}" --optimize=1
-} 
+	cd "$_pkg"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
