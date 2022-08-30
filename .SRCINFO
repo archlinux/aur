@@ -1,13 +1,13 @@
 pkgbase = python-sge
 	pkgdesc = The Seclusion Game Engine, or SGE, is a general-purpose 2-D game engine.
 	pkgver = 2.0.post0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://python-sge.github.io/
 	arch = x86_64
 	license = LGPL
 	makedepends = python-setuptools
 	depends = python
-	depends = python-pygame
+	depends = python-pygame-git
 	depends = python-uniseg
 	provides = python-sge
 	conflicts = python-sge
