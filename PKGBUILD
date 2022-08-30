@@ -1,7 +1,7 @@
 # Maintainer: Charles Vejnar <first name [dot] last name [at] gmail [dot] com>
 
 pkgname=readknead
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Knead your sequencing reads before baking: clips, demultiplexes, filters and trims reads"
 arch=("x86_64")
@@ -9,7 +9,7 @@ url="https://sr.ht/~vejnar/ReadKnead"
 license=("MPLv2")
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~vejnar/ReadKnead/archive/v${pkgver}.tar.gz")
-sha1sums=('7b2a708e33f61ec85169d3452331cb147e1826ed')
+sha1sums=('083a61e65be93aa989072ee8ca72c31453ad0588')
 
 build() {
     cd "$srcdir/ReadKnead-v${pkgver}"
