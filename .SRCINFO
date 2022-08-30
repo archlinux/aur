@@ -1,0 +1,24 @@
+pkgbase = naikari-git
+	pkgdesc = A 2-D space trading and mercenary game. Development branch.
+	pkgver = v0.4.0.r45.ge4b8443ec
+	pkgrel = 1
+	url = https://naikari.github.io/
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	depends = sdl2_image
+	depends = libxml2
+	depends = freetype2
+	depends = libpng
+	depends = openal
+	depends = libvorbis
+	depends = libgl
+	depends = luajit
+	depends = suitesparse
+	provides = naikari
+	conflicts = naikari
+	source = git+https://github.com/naikari/naikari.git
+	md5sums = SKIP
+
+pkgname = naikari-git
