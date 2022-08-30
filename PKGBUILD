@@ -2,11 +2,11 @@
 
 pkgname=riftshare
 pkgver=0.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Easy, Secure, and Free file sharing for everyone'
 url='https://riftshare.app'
 license=('GPL3')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+arch=('i686' 'x86_64' 'aarch64')
 depends=('webkit2gtk')
 makedepends=('go')
 
@@ -27,7 +27,15 @@ sha512sums=(
 prepare() {
   rm -rf pkg
   cd $pkgname-$pkgver
+
+  # Use the non-flatpak settings location
   patch -p1 < ../settings-config.patch
+
+  # Predownload dependencies and patch out forcing the GDK_BACKEND to be x11 so wayland will work
+  export GOPATH="$srcdir"
+  go mod vendor -modcacherw
+  sed -i '/GDK_BACKEND/d' ../pkg/mod/github.com/wailsapp/wails/v2@v2.0.0-beta.37/internal/frontend/desktop/linux/frontend.go
+  sed -i '/^\s*"os"$/d' ../pkg/mod/github.com/wailsapp/wails/v2@v2.0.0-beta.37/internal/frontend/desktop/linux/frontend.go
 }
 
 build() {

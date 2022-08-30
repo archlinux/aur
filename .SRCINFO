@@ -1,12 +1,10 @@
 pkgbase = riftshare
 	pkgdesc = Easy, Secure, and Free file sharing for everyone
 	pkgver = 0.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://riftshare.app
 	arch = i686
 	arch = x86_64
-	arch = armv6h
-	arch = armv7h
 	arch = aarch64
 	license = GPL3
 	makedepends = go
