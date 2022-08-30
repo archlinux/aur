@@ -1,19 +1,18 @@
 pkgbase = zbase32
-	pkgdesc = An alternate base32 encoder (not RFC 3548 compliant)
+	pkgdesc = Alternate base32 encoder (not RFC 3548 compliant)
 	pkgver = 1.1.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pypi.python.org/pypi/zbase32
 	arch = any
 	license = BSD
-	makedepends = python2-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/z/zbase32/zbase32-1.1.5.tar.gz
+	makedepends = python-wheel
+	depends = python-pyutil
+	source = python-zbase32-1.1.5.tar.gz::https://files.pythonhosted.org/packages/source/z/zbase32/zbase32-1.1.5.tar.gz
 	source = LICENSE
 	sha256sums = 9b25c34ba586cbbad4517af516e723599a6f38fc560f4797855a5f3051e6422f
 	sha256sums = c341afeb154cdcf20c247c8289fadd82245c89d0ea40b630c98885481c29845f
 
-pkgname = python2-zbase32
-	replaces = zbase32
-
 pkgname = python-zbase32
-

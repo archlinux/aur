@@ -1,43 +1,37 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Peter Simons <simons@cryp.to>
 # Contributor: Nicolas Pouillard <nicolas.pouillard@gmail.com>
 
 pkgbase=zbase32
-pkgname=('python2-zbase32' 'python-zbase32')
+pkgname=('python-zbase32')
 pkgver=1.1.5
-pkgrel=3
-pkgdesc="An alternate base32 encoder (not RFC 3548 compliant)"
+pkgrel=4
+pkgdesc="Alternate base32 encoder (not RFC 3548 compliant)"
 arch=('any')
 url='https://pypi.python.org/pypi/zbase32'
 license=('BSD')
-makedepends=('python2-setuptools' 'python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/z/zbase32/zbase32-${pkgver}.tar.gz"
+depends=('python-pyutil')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/z/$pkgbase/$pkgbase-$pkgver.tar.gz"
         'LICENSE')
 sha256sums=('9b25c34ba586cbbad4517af516e723599a6f38fc560f4797855a5f3051e6422f'
             'c341afeb154cdcf20c247c8289fadd82245c89d0ea40b630c98885481c29845f')
 
 prepare() {
-    cp -a "zbase32-$pkgver"{,-py2}
+	cd "$pkgbase-$pkgver"
+	sed -i '/packages=/s/find_packages()/["zbase32"]/' setup.py
+	rm -rf "$pkgbase.egg-info"
 }
 
 build() {
-    cd "$srcdir/zbase32-$pkgver-py2"
-    python2 setup.py build
+	cd "$pkgbase-$pkgver"
+	2to3 -wn -j 4 .
+	python -m build --wheel --no-isolation
 
-    cd "$srcdir/zbase32-$pkgver"
-    2to3 -wn -j 4 .
-    python setup.py build
-
-}
-
-package_python2-zbase32() {
-    cd "$srcdir/zbase32-$pkgver-py2"
-    replaces=('zbase32')
-    python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
-    install -Dm 644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_python-zbase32() {
-    cd "$srcdir/zbase32-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-    install -Dm 644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd "$pkgbase-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm644 ../LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
