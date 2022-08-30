@@ -2,7 +2,7 @@
 
 _pkgname=webargs
 pkgname=python-$_pkgname
-pkgver=8.1.0
+pkgver=8.2.0
 pkgrel=1
 pkgdesc='A friendly library for parsing HTTP request arguments, with built-in support for popular web frameworks'
 arch=('any')
@@ -11,9 +11,9 @@ license=('MIT')
 depends=('python-marshmallow')
 makedepends=('python-setuptools' 'python-sphinx' 'python-sphinx-issues' 'python-sphinx-typlog-theme' 'python-sphinx-furo')
 checkdepends=('python-pytest-runner' 'python-mock' 'python-webtest' 'python-pytest-aiohttp' 'python-webtest-aiohttp'
-              'python-bottle' 'python-werkzeug' 'python-django' 'python-flask' 'python-tornado')
+              'python-bottle' 'python-werkzeug' 'python-django' 'python-flask' 'python-tornado' 'python-pytest-asyncio')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('0a74fe2b1d1bc69fa973749d6cb779f243eff14a5a32259b597e0dd12df29f242940e0be0c9e155b49c1a8f01a1ea2607050e7261f2ea9ae3f42f474ca4de853')
+sha512sums=('9fc223b70333afe0985ff90648d6f59c94c97b87386df156038e3a6f7c0ac59526181d0a20107df6e060fe0fc9750de9144cbf2c07011cd54840000758eeedd5')
 
 prepare() {
   cd $_pkgname-$pkgver
