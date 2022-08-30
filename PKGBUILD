@@ -1,13 +1,15 @@
-# Maintainer: Sebastian Reuße <seb@wirrsal.net>
+# Contributor: Lucki <https://aur.archlinux.org/account/Lucki>
+# Contributor: Sebastian Reuße <seb@wirrsal.net>
+
 pkgname=rewritefs-git
 _gitname=rewritefs
-pkgver=r26.33fb844
+pkgver=r40.3a56de8
 pkgrel=1
 pkgdesc="A FUSE filesystem intended to be used like Apache mod_rewrite"
 arch=(i686 x86_64)
 url=https://github.com/sloonz/rewritefs
 license=(GPL)
-depends=(fuse pcre)
+depends=(fuse3 pcre)
 makedepends=(git)
 source=(git+https://github.com/sloonz/rewritefs.git)
 md5sums=(SKIP)
