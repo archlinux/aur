@@ -1,0 +1,11 @@
+--- rocksdb-7.5.3/db/blob/blob_file_reader.cc.dist	2022-08-29 21:37:39.668550755 -0400
++++ rocksdb-7.5.3/db/blob/blob_file_reader.cc	2022-08-29 21:37:48.761742372 -0400
+@@ -414,7 +414,7 @@
+     assert(blob_reqs[i]->offset >= adjustment);
+     adjustments.push_back(adjustment);
+ 
+-    FSReadRequest read_req;
++    FSReadRequest read_req = {};
+     read_req.offset = blob_reqs[i]->offset - adjustment;
+     read_req.len = blob_reqs[i]->len + adjustment;
+     read_reqs.emplace_back(read_req);
