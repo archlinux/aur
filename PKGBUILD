@@ -3,7 +3,7 @@
 
 pkgname=dolt-bin
 pkgver=0.40.30
-pkgrel=1
+pkgrel=2
 pkgdesc='Git for data!'
 arch=('x86_64' 'aarch64')
 url='https://www.dolthub.com/'
