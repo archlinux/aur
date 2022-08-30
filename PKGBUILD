@@ -4,8 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Code Liger <codeliger@protonmail.com>
-pkgname=video-compare-git
-_gitname=video-compare
+pkgname=video-compare
 pkgver=20220816
 pkgrel=1
 epoch=
@@ -31,12 +30,12 @@ md5sums=("SKIP")
 validpgpkeys=()
 
 build() {
-	cd "$srcdir/$_gitname"
+	cd "$srcdir/$pkgname"
 	make
 }
 
 package() {
-	cd "$srcdir/$_gitname"
+	cd "$srcdir/$pkgname"
 
-	install -Dm755 "$srcdir/$_gitname/video-compare" $pkgdir
+	install -Dm755 "$srcdir/$pkgname/$pkgname" $pkgdir
 }
