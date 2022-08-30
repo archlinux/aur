@@ -10,7 +10,7 @@
 
 pkgname=p7zip-gui
 pkgver=16.02
-pkgrel=6
+pkgrel=7
 pkgdesc='Graphic user interface (alpha quality) for the 7zip file archiver'
 url='http://p7zip.sourceforge.net'
 license=('custom:unRAR' 'LGPL')
@@ -37,7 +37,7 @@ sha256sums=('5eb20ac0e2944f6cb9c2d51dd6c4518941c185347d4089ea89087ffdd6e2341f'
             '9c92b9060fb0ecc3e754e6440d7773d04bc324d0f998ebcebc263264e5a520df'
             'c397eb6ad60bfab8d388ea9b39c0c13ae818f86746210c6435e35b35c786607f'
             'f90013d66d3c9865cb56fed2fb0432057a07283d5361e2ae9e98c3d3657f42a1'
-            '8cb662ccbacd1badc2c41ff00618c53d1c7fb8bca5472cca4ac7bd7f619acb27')
+            'ae1f3c95ec40e82f7b74bd039bd9cbfa69136682e161b91a4534b7d9cdedcbd4')
 
 prepare() {
 	cd ${srcdir}/p7zip_${pkgver}
