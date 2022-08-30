@@ -2,8 +2,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-iedit
-pkgver=0.9.9.9
-pkgrel=2
+pkgver=0.9.9.9.9
+pkgrel=1
 pkgdesc="Edit multiple regions with the same content simultaneously"
 arch=('any')
 url="https://github.com/victorhge/iedit"

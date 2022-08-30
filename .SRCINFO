@@ -1,13 +1,12 @@
 pkgbase = emacs-iedit
 	pkgdesc = Edit multiple regions with the same content simultaneously
-	pkgver = 0.9.9.9
-	pkgrel = 2
+	pkgver = 0.9.9.9.9
+	pkgrel = 1
 	url = https://github.com/victorhge/iedit
 	arch = any
 	license = GPL3
 	depends = emacs
-	source = emacs-iedit-0.9.9.9.tar.gz::https://github.com/victorhge/iedit/archive/v0.9.9.9.tar.gz
+	source = emacs-iedit-0.9.9.9.9.tar.gz::https://github.com/victorhge/iedit/archive/v0.9.9.9.9.tar.gz
 	sha256sums = SKIP
 
 pkgname = emacs-iedit
-
