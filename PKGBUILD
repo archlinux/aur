@@ -1,7 +1,7 @@
-# Maintainer: Uxio Fuentefria <uxio@gnosis.io>
+# Maintainer: Uxio Fuentefria <uxio@safe.global>
 
 pkgname=gnosis-safe-multisig-bin
-pkgver=3.17.2
+pkgver=3.22.1
 pkgrel=1
 pkgdesc="Gnosis Safe Multisig Desktop (Beta) for Linux, a Ethereum Multisig Wallet"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/gnosis/safe-react/releases"
 license=('MIT')
 depends=('gtk3' 'nss' 'libxss')
 source=("https://github.com/gnosis/safe-react/releases/download/v${pkgver}-desktop/safe-react_${pkgver}_amd64.deb")
-sha256sums=('65d7bb1fe2e0ce9b09ded2a7bfb67f16e4b780b99f8f9a337440639cd8069d5a')
+sha256sums=('b79d36b55d6fa31ce356b91aa065014d4375541b35a2773496b9d864229fdcc7')
 
 prepare() {
     cd "${srcdir}"
