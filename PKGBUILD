@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=libdill-git
-pkgver=2.14.r17.gfa01648
-pkgrel=2
+pkgver=2.14.r19.g32d0e8b
+pkgrel=1
 pkgdesc='Structured concurrency in C'
 arch=('i686' 'x86_64')
 url='http://libdill.org/'
