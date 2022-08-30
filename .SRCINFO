@@ -7,7 +7,6 @@ pkgbase = rubick-bin
 	arch = x86_64
 	license = MIT
 	depends = at-spi2-core
-	depends = clion
 	depends = desktop-file-utils
 	depends = gtk3
 	depends = hicolor-icon-theme
