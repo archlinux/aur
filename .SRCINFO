@@ -1,13 +1,13 @@
 pkgbase = curseforge
 	pkgdesc = CurseForge desktop client for Linux
-	pkgver = 0.205.1_5800
+	pkgver = 0.206.2_6009
 	pkgrel = 1
 	url = https://download.curseforge.com/
 	arch = x86_64
 	options = !strip
 	source = https://curseforge.overwolf.com/downloads/curseforge-latest-linux.zip
 	source = curseforge
-	sha512sums = 84e61868ff0ad438b70ef2bbe3f1c32c50ea7281ee16f8f3352d6189ea15e249b254230e040250365dcdefe22b80895658f3cd8980b9fca166bf9c58ef14ab63
+	sha512sums = dc361d21ae2490e1eb1256593f7aa4bbd0f51a41c09c3d54c2bce4a1cde0e7af6187c1ee66a3e66e92fa4480438bf9b5eaeec45947aba2607d02f8f42013590c
 	sha512sums = ef669b9423f685dc50f7d4db487fde5c4708ee3991517c3f6a28c0417368ffd9f0ba982e183471cef27e376bbb4f7c18c80eeb76dd189dc591e994049c421ddb
 
 pkgname = curseforge
