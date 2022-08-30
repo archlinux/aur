@@ -2,7 +2,7 @@
 
 _pkgname=godot4
 pkgname=${_pkgname}-bin
-pkgver=alpha14
+pkgver=alpha15
 pkgrel=1
 pkgdesc="Godot Game Engine: An advanced, feature packed, multi-platform 2D and 3D game engine."
 url="http://www.godotengine.org"
@@ -18,14 +18,14 @@ source=(
 	icon.png
 	LICENSE
 )
-source_i686=($_pkgname-$pkgver-32bit.zip::https://downloads.tuxfamily.org/godotengine/4.0/$pkgver/Godot_v4.0-${pkgver}_linux.32.zip)
-source_x86_64=($_pkgname-$pkgver-64bit.zip::https://downloads.tuxfamily.org/godotengine/4.0/$pkgver/Godot_v4.0-${pkgver}_linux.64.zip)
+source_i686=($_pkgname-$pkgver-32bit.zip::https://downloads.tuxfamily.org/godotengine/4.0/$pkgver/Godot_v4.0-${pkgver}_linux.x86_32.zip)
+source_x86_64=($_pkgname-$pkgver-64bit.zip::https://downloads.tuxfamily.org/godotengine/4.0/$pkgver/Godot_v4.0-${pkgver}_linux.x86_64.zip)
 
 sha512sums=('a32864067fcd034cc95b0a39ba575dafe62ca8f67b93f1cc0ede5a471d12d73ba525032e1ba1b411f1ca550a106498b5e71a9d491663a39c67175740f07cad87'
             '3598100251a74a6595ffc002df0adac18c37c9367a4ef148ef7f057d547ed15aaaa07140705d4185394b888c0f5fd8446de35f97625a80d1c3a2132a0418b71e'
             'd38569e26e77b238cd9bf60d0ba7dc76367b5f25f68e5d45185d10fdf4de20c696431ab4eed815b7ad611e997d5ddadd96d70f1f6d4388c18b1553b81d4b6738')
-sha512sums_i686=('7e08771f7ebf181b5b36aa7a1ba1265b0a649de1e03700d7f816d986183de15e14745f5e5b3734955c980e91d1301c9f847d2472dd151481cb8e55e64be35bd9')
-sha512sums_x86_64=('c120ef59533c172ef71de2965de1e30d28955c07eb9e3debf2d413640072a86896a4bf7b73f841a0fa9ae2dd3674609089111e35dcf9b8b6690d82d8c6d7d2e4')
+sha512sums_i686=('a23295ae16a4eac8f4ec81573747f807999a429971c403e3c4ec796b75ff3b0e0fba6a97571d6bd75d5236f7020496883152213f5615f5269bad04182faf54ec')
+sha512sums_x86_64=('d67cce8a6240f2b24fce090a69f4f47cb71b8de9a64a2ff4ea128bf319624b52dbf69a5955bfb7a00b05856b74108012770bb451a6d214449e44e99d01e215f0')
 
 
 package() {
@@ -36,10 +36,10 @@ package() {
 
   case $CARCH in
     "i686")
-      install -Dm755 "$srcdir/Godot_v4.0-${pkgver}_linux.32" "$pkgdir/usr/bin/godot4"
+      install -Dm755 "$srcdir/Godot_v4.0-${pkgver}_linux.x86_32" "$pkgdir/usr/bin/godot4"
     ;;
     "x86_64")
-      install -Dm755 "$srcdir/Godot_v4.0-${pkgver}_linux.64" "$pkgdir/usr/bin/godot4"
+      install -Dm755 "$srcdir/Godot_v4.0-${pkgver}_linux.x86_64" "$pkgdir/usr/bin/godot4"
     ;;
   esac
   
