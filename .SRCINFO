@@ -1,0 +1,14 @@
+pkgbase = srilm
+	pkgdesc = The SRI Language Modelling Toolkit
+	pkgver = 1.7.3
+	pkgrel = 1
+	url = https://www.speech.sri.com/projects/srilm/
+	arch = any
+	license = custom
+	makedepends = make
+	makedepends = git
+	conflicts = kaldi-srilm
+	source = git+https://github.com/dignissimus/SRILM#commit=d571a4424fb0cf08b29fbfccfddd092ea969eae3
+	sha256sums = SKIP
+
+pkgname = srilm
