@@ -1,6 +1,6 @@
 pkgbase = bitwave-git
 	pkgdesc = A simple media player based on Qt and MPV.
-	pkgver = v0.2.3dev.r1.ge05a423
+	pkgver = v0.2.3dev.r2.g72c5978
 	pkgrel = 1
 	url = https://github.com/Reverier-Xu/BitWave
 	arch = x86_64
