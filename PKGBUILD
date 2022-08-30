@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=9.7.beta6.r0.g7f7149489cd
+pkgver=9.7.beta8.r0.g12be2d94c86
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -58,14 +58,18 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         test-optional.patch
         sagemath-linbox-1.7.patch
         sagemath-bliss-0.77.patch
-        sagemath-tachyon-0.99.patch)
+        sagemath-tachyon-0.99.patch
+        sagemath-gap-4.12.patch
+        sagemath-ipywidgets-8.patch)
 sha256sums=('SKIP'
             'eee5fa15d8c7be7e009166dbde3ea24bb10d7793dc12880516f278f86b1a6694'
             'bd188af45ce31579b82407adee8e9bf6033a996f7ea6e328fabca526f31c08ba'
             '9d042070df3dfd53a1248659677798da888f733548eda91a6d5169c7aa1907e1'
             'eacea27b214d32cb886a75695153dfc36b5bad2fd2517e8e4eee18e74220e9e3'
             '3e1f866944235b999d2d727ed1ced431bd67405b053701c21068607ec76f23c3'
-            '9760db6c6ec40cc16ab8a0cbf3d019df7f6a69ff292e35622f282b7c888aac77')
+            '9760db6c6ec40cc16ab8a0cbf3d019df7f6a69ff292e35622f282b7c888aac77'
+            '84c1700e285ab1d94d16d0a602417a414447d8a23ac2e55a093285cc4bd2916d'
+            'bdf56f85b608da12074780271ae134b02a03278f7b53a183f6dd97d8d72073e0')
 
 pkgver() {
   cd sage
@@ -82,7 +86,11 @@ prepare(){
   patch -p1 -i ../sagemath-bliss-0.77.patch
 # Fix tests with tachyon 0.99 https://trac.sagemath.org/ticket/23712
   patch -p1 -i ../sagemath-tachyon-0.99.patch
- 
+# Port to GAP 4.12 https://trac.sagemath.org/ticket/34391
+  patch -p1 -i ../sagemath-gap-4.12.patch
+# Fixes for ipywidgets 8 https://trac.sagemath.org/ticket/34460
+  patch -p1 -i ../sagemath-ipywidgets-8.patch
+
 # Arch-specific patches
 # assume all optional packages are installed
   patch -p1 -i ../sagemath-optional-packages.patch
@@ -100,6 +108,7 @@ build() {
 
   export SAGE_NUM_THREADS=10
   export PYTHONPATH="$PWD"/../sage-setup
+  export CPPFLAGS+=" -DUSE_GASMAN=1"
   python setup.py build
 }
 
