@@ -1,6 +1,6 @@
 # Maintainer: Adrian Fluturel <adrian.fluturel@protonmail.com>
 pkgname=wolff-lang-git
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 epoch=
 pkgdesc="This is the official bleeding-edge package for the Wolff language interpreter"
