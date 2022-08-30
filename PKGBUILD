@@ -2,8 +2,8 @@
 
 _pkgname=litex
 pkgname=python-$_pkgname
-pkgver=2020.12
-pkgrel=3
+pkgver=2021.04
+pkgrel=1
 pkgdesc='Migen/MiSoC based Core/SoC builder that provides the infrastructure to easily create Cores/SoCs'
 arch=('any')
 url='https://github.com/enjoy-digital/litex'
@@ -14,7 +14,7 @@ checkdepends=('python-pytest' 'python-litedram' 'python-liteeth' 'python-liteicl
               'python-pythondata-cpu-vexriscv' 'python-pythondata-cpu-picorv32' 'python-pythondata-cpu-lm32' 'python-pythondata-cpu-mor1kx'
               'python-litex-boards' 'python-litepcie')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('144a1ef81afcb0e762853a48d1b8d248ad414d159ae6ea659f7b6a6538c75d3cfb38238aea40572ce2a787fb183af10fe63ca4842e7e5b4761817916b8404344')
+sha512sums=('12015000dd51cf0032fac1ee138bf42ec7eb37db3f91e6fbc6d9bdba66791735e2eb8f0e38bfc004493bbd5d8156827623476169c57b86d0f75ac9fb5a4ced78')
 
 prepare() {
   # seems like running the tests breaks setup.py install
@@ -30,7 +30,7 @@ build() {
 check() {
   cd $_pkgname-$pkgver-tests
 
-  pytest -k-test_variants_minerva
+  pytest
 }
 
 package() {
