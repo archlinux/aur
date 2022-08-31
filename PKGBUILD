@@ -2,7 +2,7 @@
 pkgname=famistudio-bin
 _pkgname=FamiStudio
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A very simple music editor for the Nintendo Entertainment System or Famicom"
 arch=(x86_64)
@@ -39,7 +39,7 @@ package() {
     cp famistudio.desktop $pkgdir/usr/share/applications/
     cp -Lr "Demo Songs" FamiStudio.exe FamiStudio.exe.config libNesSndEmu.so \
         libNotSoFatso.so libopenal32.so librtmidi.so libShineMp3.so libVorbis.so \
-        libglfw.so libGifDec.so LinuxReadme.txt OpenTK.dll Resources FamiStudio.svg \
+        libglfw.so libGifDec.so LinuxReadme.txt FamiStudio.svg \
         "$pkgdir/usr/share/famistudio"
     mkdir -p $pkgdir/usr/share/licenses/${pkgname}/
     cp LICENSE $pkgdir/usr/share/licenses/${pkgname}/
