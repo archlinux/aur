@@ -1,25 +1,20 @@
 # Maintainer: Zhuoyun Wei <wzyboy@wzyboy.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=gsasl-ntlm
 _pkgname=gsasl
-pkgver=1.8.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Simple Authentication and Security Layer framework and a few common SASL mechanisms - NTLM support"
-arch=('i686' 'x86_64')
-url="http://josefsson.org/gsasl/"
+arch=('x86_64')
+url="https://josefsson.org/gsasl/"
 license=('GPL')
 depends=('gnutls' 'libidn' 'krb5' 'libgcrypt' 'libntlm')
 provides=('gsasl')
 conflicts=('gsasl')
-install=gsasl.install
 source=(ftp://ftp.gnu.org/gnu/gsasl/${_pkgname}-${pkgver}.tar.gz)
-sha1sums=('343fd97ae924dc406986c02fb9b889f4114239ae')
-
-prepare() {
-  cd ${_pkgname}-${pkgver}
-  sed -i 's|error too old libgcrypt|/*error too old libgcrypt*/|' lib/configure
-}
+sha512sums=('b7c4e3dfdaa50eaba38f3c0914dedb4bc689d1226fcf162e5bfb3942fa6ce1e96405715a747adca78150709f34830f699e9f995f04ce586cd3d0c14b275910e6')
 
 build() {
   cd ${_pkgname}-${pkgver}
