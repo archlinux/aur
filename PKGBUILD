@@ -2,7 +2,7 @@
 # Maintainer: Denys Zariaiev <denys.zariaiev@gmail.com>
 
 pkgname=chitubox-free-bin
-pkgver=1.9.3
+pkgver=1.9.4
 
 pkgrel=1
 pkgdesc="All-in-one SLA/DLP/LCD Slicer"
@@ -37,7 +37,7 @@ source=(
 )
 
 sha256sums=(
-    "f0355bb4151f1711d40b8a30c6300cadc9f01c1113a20c5b3162acc260a3df86"
+    "65dc2513064bb0bf5c849001eb5e110262479878bc70022eae3bd780e4828dbf"
     "fdd0c1595cfa7ef97ae850b83de328db55150d76f42e6c472167bcc80f87ea47"
     "02fb0cfac1a04d8cc71345a6cf4921c92abcbfdd09e010604a1bc891657a2894"
 )
