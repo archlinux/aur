@@ -4,14 +4,14 @@ _edition=' Beta'
 pkgname="mongodb-$_target"
 _pkgver='1.33.0-beta.5'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='2'
+pkgrel='3'
 pkgdesc='The official GUI for MongoDB - beta version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
 _electronpkg='electron15'
 depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release')
-makedepends=('git' 'nodejs>=16.0.0' 'npm>=8.0.0' 'python' 'unzip')
+makedepends=('git' 'nodejs>=16.0.0' 'npm>=8.0.0' 'python' 'unzip' 'patchutils')
 optdepends=('org.freedesktop.secrets')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
@@ -40,9 +40,11 @@ prepare() {
 	npm install
 
 	# Apply browserslist fixes
+	filterdiff --exclude='*/test/*' "$srcdir/$pkgname-$pkgver-$pkgrel-browserslist.diff" > "$srcdir/$pkgname-$pkgver-$pkgrel-browserslist-filtered.diff"
+
 	for _folder in 'node_modules/@mongodb-js/'*'/node_modules/browserslist'; do
 		if grep -q '"version": "2' "$_folder/package.json"; then
-			patch -d "$_folder/" --forward -p1 "$_folder/index.js" < "$srcdir/$pkgname-$pkgver-$pkgrel-browserslist.diff"
+			patch -d "$_folder/" --forward -p1 < "$srcdir/$pkgname-$pkgver-$pkgrel-browserslist-filtered.diff"
 		fi
 	done
 
