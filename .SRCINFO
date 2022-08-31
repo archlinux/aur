@@ -1,0 +1,14 @@
+pkgbase = maxautoclicker-bin
+	pkgdesc = Emulate and automate your mouse clicks
+	pkgver = 1.5.8
+	pkgrel = 1
+	url = https://maxautoclicker.blogspot.com/
+	arch = x86_64
+	license = custom
+	depends = gtk2
+	depends = libxtst
+	provides = maxautoclicker
+	source = https://github.com/mautosoft/maxautoclicker/releases/download/v1.5.8/maxautoclicker-1.5.8_amd64.deb
+	sha256sums = 527781eb24d112aea271876f2005e2108f638fb753e7467f13c7fea172c48116
+
+pkgname = maxautoclicker-bin
