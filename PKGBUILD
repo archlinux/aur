@@ -60,7 +60,7 @@ build() {
 	git remote set-url origin ${_remoteurl}
 
 	# Configure
-	cmake --preset ${BUILDPRESET} -DCI=ON -DUSE_DISCORD_RICH_PRESENCE=OFF -DUSE_VITA3K_UPDATE=OFF
+	cmake --preset ${BUILDPRESET} -DUSE_VITA3K_UPDATE=OFF
 	# Build
 	cmake --build build/${BUILDPRESET} --config Release
 }
