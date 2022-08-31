@@ -6,7 +6,7 @@ gitver=v5.19.5
 patchver=20220315
 patchname=more-uarches-for-kernel-5.17+.patch
 pkgver=5.19.v.5
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -85,7 +85,7 @@ build() {
 
 _package() {
   pkgdesc="Linux kernel aimed at the znver2 AMD Ryzen CPU based hardware"
-  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7' 'lzop')
+  depends=('coreutils' 'linux-firmware' 'kmod' 'lzop')
   optdepends=('crda: to set the correct wireless channels of your country')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install

@@ -1,6 +1,6 @@
 pkgbase = linux-amd-znver2
 	pkgver = 5.19.v.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -31,7 +31,6 @@ pkgname = linux-amd-znver2
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
-	depends = mkinitcpio>=0.7
 	depends = lzop
 	optdepends = crda: to set the correct wireless channels of your country
 	backup = etc/mkinitcpio.d/linux-amd-znver2.preset
