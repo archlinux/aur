@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname='python-jax'
-pkgver=0.3.16
+pkgver=0.3.17
 pkgrel=1
 pkgdesc='Differentiate, compile, and transform Numpy code.'
 arch=('x86_64')
@@ -34,4 +34,3 @@ package() {
         --ignore-requires-python \
         .
 }
-md5sums=('SKIP')
