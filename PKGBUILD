@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-renamer
-pkgver=5.0.0
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="VSCode-like renaming for Neovim"
 arch=('any')
@@ -10,8 +10,14 @@ license=('Apache')
 groups=('neovim-plugins')
 depends=('neovim' 'neovim-plenary')
 install=renamer.install
+changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f73f476742dd4494b6df5f8d2769325272db95ccf4acf00e497b73fcec746a77')
+sha256sums=('5d6a5988faa4898ee96056a0b00ff1799fbfb446c3f00c2202eb304a260b5aae')
+
+check() {
+	cd "renamer.nvim-$pkgver"
+	make test
+}
 
 package() {
 	cd "renamer.nvim-$pkgver"

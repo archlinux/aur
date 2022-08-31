@@ -1,15 +1,16 @@
 pkgbase = neovim-renamer
 	pkgdesc = VSCode-like renaming for Neovim
-	pkgver = 5.0.0
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://github.com/filipdutescu/renamer.nvim
 	install = renamer.install
+	changelog = CHANGELOG.md
 	arch = any
 	groups = neovim-plugins
 	license = Apache
 	depends = neovim
 	depends = neovim-plenary
-	source = neovim-renamer-5.0.0.tar.gz::https://github.com/filipdutescu/renamer.nvim/archive/v5.0.0.tar.gz
-	sha256sums = f73f476742dd4494b6df5f8d2769325272db95ccf4acf00e497b73fcec746a77
+	source = neovim-renamer-5.1.0.tar.gz::https://github.com/filipdutescu/renamer.nvim/archive/v5.1.0.tar.gz
+	sha256sums = 5d6a5988faa4898ee96056a0b00ff1799fbfb446c3f00c2202eb304a260b5aae
 
 pkgname = neovim-renamer
