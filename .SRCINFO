@@ -1,17 +1,17 @@
 pkgbase = nxdt_host-git
 	pkgdesc = nxdumptool host script
-	pkgver = 0.3.r25.4a512db
-	pkgrel = 2
+	pkgver = 0.3.r26.942a407
+	pkgrel = 1
 	url = https://github.com/DarkMatterCore/nxdumptool
 	arch = any
 	license = GPL3
 	makedepends = git
-	source = git+https://github.com/DarkMatterCore/nxdumptool.git#branch=rewrite
+	source = nxdumptool::git+https://github.com/DarkMatterCore/nxdumptool.git#branch=rewrite
 	source = 10-nxdumptool.rules
 	source = nxdt_host.desktop
-	sha1sums = SKIP
-	sha1sums = 74c53f0a112c8c61f913de673fa652e87d76d1a5
-	sha1sums = 2c78c08f8c47cc6f10abb579ea537c31088f6bcb
+	b2sums = SKIP
+	b2sums = 00b6f07e14028600980075d1bef5c288dd354ef58050b70d6ef950ff90643aaa01e0b2da7962a0244e583102e50f4a96e9975cb52b794f08f37a695eb8f2afa0
+	b2sums = f43eb0a343f80daa753b80e66ddaa4c15bfac461629f193e7840e39dd0b82b39e6a3354e1c07525c1bf3e94fafc232dc40207734bd2c193698ebfa3963a29664
 
 pkgname = nxdt_host-git
 	depends = python
