@@ -1,0 +1,21 @@
+pkgbase = python-pdfjinjax
+	pkgdesc = Use jinja templates to fill and sign PDF forms, based on rammie/pdfjinja with a few enhancements.
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = http://github.com/edgaraafelix/pdfjinjax/
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-pip
+	depends = python
+	depends = python-fdfgen
+	depends = python-jinja
+	depends = python-pdfminer
+	depends = python-pillow
+	depends = python-pypdf2
+	depends = python-reportlab
+	depends = pdftk
+	source = https://files.pythonhosted.org/packages/d5/77/fef6087e6d833c287d7f207096c6faf80c97358ada19ef4dc98f00ec0efb/pdfjinjax-1.2.2.tar.gz
+	md5sums = a53535a251b2e0aa88c908923ce55441
+
+pkgname = python-pdfjinjax
