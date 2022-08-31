@@ -1,0 +1,21 @@
+pkgbase = python-linear-operator
+	pkgdesc = A LinearOperator implementation to wrap the numerical nuts and bolts of GPyTorch
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/cornellius-gp/linear_operator/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = python-pytorch
+	depends = python-scipy
+	source = python-linear-operator-0.1.1::git+https://github.com/cornellius-gp/linear_operator.git#tag=v0.1.1
+	sha256sums = SKIP
+
+pkgname = python-linear-operator
