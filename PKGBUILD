@@ -105,9 +105,9 @@ prepare() {
   then
     #git clone --depth=1 --branch=ue5-main git@github.com:EpicGames/UnrealEngine {$pkgname}
     git clone --depth=1 --branch=${pkgver}-release git@github.com:EpicGames/UnrealEngine ${pkgname}
-    cd ${pkgname}
+    cd ${pkgname} || return
   else
-    cd ${pkgname}
+    cd ${pkgname} || return
     rm -f .git/index.lock
     git fetch --depth=1 origin tag @{upstream}
     git reset --hard @{upstream}
@@ -172,7 +172,7 @@ fi
   ## Install a pacman hook to keep old builds from compounding cache by tens of GBs - 2 builds alone can reach at least 30 GBs in pacman's cache; having one only takes up about 15 GBs
   install -Dm775 unreal-engine-pacman-cache.hook "${pkgdir}/etc/pacman.d/hooks/unreal-engine-pacman-cache.hook"
   
-  cd ${pkgname}
+  cd ${pkgname} || return
   
   # Icon for Desktop entry
   install -Dm770 Engine/Source/Programs/UnrealVS/UnrealVS.2022/Resources/Preview.png "${pkgdir}/usr/share/pixmaps/ue5editor.png"
