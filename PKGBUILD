@@ -6,7 +6,7 @@ pkgname=unreal-engine-4
 pkgver=4.27.2
 pkgrel=0
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
-arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4')
+arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
 makedepends=('git' 'openssh')
 depends=('icu63' 'sdl2' 'python' 'lld' 'clang' 'xdg-user-dirs' 'dos2unix')
@@ -56,26 +56,31 @@ arch_auto=true
 if [[ ${arch_auto} == true ]]
 then
   ## Architecture checks and compile flag adjustments - shellcheck throws a fit about the build function but it looks fine to me; checks for the highest available x64 support level and falls back to "native" if either not available
-  if test "$(/lib/ld-linux-x86-64.so.2 --help | grep -w '^  x86-64-v4' | cut -d ',' -f 1)" == '  x86-64-v4 (supported'; then
-    export CFLAGS="${CFLAGS} -march=x86-64-v4 -mtune=x86-64-v4 -O3 -pipe"
-    export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
-    export LDFLAGS="-Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
-  elif test "$(/lib/ld-linux-x86-64.so.2 --help | grep -w '^  x86-64-v3' | cut -d ',' -f 1)" == '  x86-64-v3 (supported'; then
-    export CFLAGS="${CFLAGS} -march=x86-64-v3 -mtune=x86-64-v3 -O3 -pipe"
-    export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
-    export LDFLAGS="-Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
-  elif test "$(/lib/ld-linux-x86-64.so.2 --help | grep -w '^  x86-64-v2' | cut -d ',' -f 1)" == '  x86-64-v2 (supported'; then
-    export CFLAGS="${CFLAGS} -march=x86-64-v2 -mtune=x86-64-v2 -O3 -pipe"
-    export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
-    export LDFLAGS="-Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
-  elif test "$(/lib/ld-linux-x86-64.so.2 --help | grep -w '^  x86_64 (AT_PLATFORM; supported' | cut -d ',' -f 1)" == '  x86_64 (AT_PLATFORM; supported'; then
-    export CFLAGS="${CFLAGS} -march=x86-64 -mtune=x86-64 -O3 -pipe"
+  if [ "$(uname -m)" == "x86_64" ]; then
+    if [ "$(/lib/ld-linux-x86-64.so.2 --help | grep -w 'x86-64-v4' | cut -d ',' -f 1 | sed 's/^  //' | sed 's/ (/ - /')" == '  x86-64-v4 - supported' ]; then
+      export CFLAGS="${CFLAGS} -march=x86-64-v4 -mtune=x86-64-v4 -O3 -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection"
+      export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
+      export LDFLAGS="-Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
+    elif [ "$(/lib/ld-linux-x86-64.so.2 --help | grep -w 'x86-64-v3' | cut -d ',' -f 1 | sed 's/^  //' | sed 's/ (/ - /')" == 'x86-64-v3 - supported' ]; then
+      export CFLAGS="${CFLAGS} -march=x86-64-v3 -mtune=x86-64-v3 -O3 -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection"
+      export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
+      export LDFLAGS="-Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
+    elif [ "$(/lib/ld-linux-x86-64.so.2 --help | grep -w 'x86-64-v2' | cut -d ',' -f 1 | sed 's/^  //' | sed 's/ (/ - /')" == 'x86-64-v2 - supported' ]; then
+      export CFLAGS="${CFLAGS} -march=x86-64-v2 -mtune=x86-64-v2 -O3 -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection"
+      export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
+      export LDFLAGS="-Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
+    elif [ "$(/lib/ld-linux-x86-64.so.2 --help | grep 'x86_64' | grep 'supported' | cut -d ',' -f 1 | sed 's/^  //' | sed 's/ (/ - /' | grep -w '^x86_64 - supported')" == 'x86_64 - supported' ]; then
+      export CFLAGS="${CFLAGS} -march=x86-64 -mtune=x86-64 -O3 -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection"
+      export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
+      export LDFLAGS="-Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
+    fi
+  elif [ "$(uname -m)" == "aarch64" ]
+    export CFLAGS="${CFLAGS} -march=native -mtune=native -O3 -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection"
     export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
     export LDFLAGS="-Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
   else
-    export CFLAGS="${CFLAGS} -march=native -mtune=native -O3 -pipe"
-    export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
-    export LDFLAGS="-Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
+    echo "Architecture '$(uname -m)' is not supported! Exiting."
+    return
   fi
 fi
 
@@ -124,11 +129,12 @@ prepare() {
 }
 
 build() {
-  cd ${pkgname}
+  cd ${pkgname} || return
+  ## See "https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/DeployingTheEngine/UsinganInstalledBuild/#installedbuildscriptoptions" for reference
   if [[ ${_WithDDC} == true ]]; then
-    Engine/Build/BatchFiles/RunUAT.sh BuildGraph -target="Make Installed Build Linux" -script=Engine/Build/InstalledEngineBuild.xml -set:WithDDC=true -set:HostPlatformOnly=false -set:WithLinux=true -set:WithWin64=true -set:WithWin32=false -set:WithMac=false -set:WithAndroid=false -set:WithIOS=false -set:WithTVOS=false -set:WithLumin=false -set:WithHTML5=false
+    Engine/Build/BatchFiles/RunUAT.sh BuildGraph -target="Make Installed Build Linux" -script=Engine/Build/InstalledEngineBuild.xml -set:WithDDC=true -set:HostPlatformOnly=false -set:WithLinux=true -set:WithWin64=true -set:WithWin32=false -set:WithMac=false -set:WithAndroid=false -set:WithIOS=false -set:WithTVOS=false -set:WithLumin=false
   else
-    Engine/Build/BatchFiles/RunUAT.sh BuildGraph -target="Make Installed Build Linux" -script=Engine/Build/InstalledEngineBuild.xml -set:WithDDC=false -set:HostPlatformOnly=false -set:WithLinux=true -set:WithWin64=true -set:WithWin32=false -set:WithMac=false -set:WithAndroid=false -set:WithIOS=false -set:WithTVOS=false -set:WithLumin=false -set:WithHTML5=false
+    Engine/Build/BatchFiles/RunUAT.sh BuildGraph -target="Make Installed Build Linux" -script=Engine/Build/InstalledEngineBuild.xml -set:WithDDC=false -set:HostPlatformOnly=false -set:WithLinux=true -set:WithWin64=true -set:WithWin32=false -set:WithMac=false -set:WithAndroid=false -set:WithIOS=false -set:WithTVOS=false -set:WithLumin=false
   fi
 }
 
@@ -144,7 +150,7 @@ package() {
   ## Install a pacman hook to keep old builds from compounding cache by tens of GBs - 2 builds alone can reach at least 30 GBs in pacman's cache; having one only takes up about 15 GBs
   install -Dm775 unreal-engine-4-pacman-cache.hook "${pkgdir}/etc/pacman.d/hooks/unreal-engine-4-pacman-cache.hook"
   
-  cd ${pkgname}
+  cd ${pkgname} || return
   
   # Icon for Desktop entry
   install -Dm770 Engine/Source/Programs/UnrealVS/Resources/Preview.png "${pkgdir}/usr/share/pixmaps/ue4editor.png"

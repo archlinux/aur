@@ -7,6 +7,7 @@ pkgbase = unreal-engine-4
 	arch = x86_64_v2
 	arch = x86_64_v3
 	arch = x86_64_v4
+	arch = aarch64
 	license = custom:UnrealEngine
 	makedepends = git
 	makedepends = openssh
