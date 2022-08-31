@@ -34,8 +34,7 @@ pkgver() {
 }
 
 package() {
-  install -dm 755 \
-      "$pkgdir/usr/share/grub/themes/grub-theme-vimix-very-dark-blue"
+  install -dm 755 "$pkgdir/usr/share/grub/themes/$pkgname"
   cp -r --no-preserve=ownership grub2-theme-vimix-very-dark-blue/src/. \
-      "$pkgdir/usr/share/grub/themes/grub-theme-vimix-very-dark-blue"
+      "$pkgdir/usr/share/grub/themes/$pkgname"
 }
