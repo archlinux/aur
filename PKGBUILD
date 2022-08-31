@@ -3,7 +3,7 @@ _target='compass-readonly'
 _edition=' Readonly'
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
-pkgver='r14824.gd08bbc6b9'
+pkgver='r14887.g536e2d248'
 pkgrel='1'
 epoch='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - git version'
@@ -46,7 +46,7 @@ prepare() {
 	# Apply browserslist fixes
 	for _folder in 'node_modules/@mongodb-js/'*'/node_modules/browserslist'; do
 		if grep -q '"version": "2' "$_folder/package.json"; then
-			patch -d "$_folder/" --forward -p1 < "$srcdir/$pkgname-browserslist.diff"
+			patch -d "$_folder/" --forward -p1 "$_folder/index.js" < "$srcdir/$pkgname-browserslist.diff"
 		fi
 	done
 
