@@ -1,6 +1,6 @@
 pkgbase = lceda-pro-bin
 	pkgdesc = 免费、专业、强大的国产PCB设计工具
-	pkgver = 1.8.22
+	pkgver = 1.8.24
 	pkgrel = 1
 	url = https://pro.lceda.cn/
 	install = lceda-pro-bin.install
@@ -13,10 +13,10 @@ pkgbase = lceda-pro-bin
 	provides = lceda-pro-bin
 	conflicts = lceda-pro
 	conflicts = lceda-pro-git
-	source = lceda-pro-1.8.22.zip::https://image.lceda.cn/files/lceda-pro-linux-x64-1.8.22.zip
+	source = lceda-pro-1.8.24.zip::https://image.lceda.cn/files/lceda-pro-linux-x64-1.8.24.zip
 	source = LICENSE
 	source = lceda-pro-bin.install
-	sha256sums = a936a968802619d39b1d8c1a053a4f348aaeaf53bcf711d58c84c98b0f4cf6c6
+	sha256sums = 8cbf6a0a726ee22a361606a5085eba1047f334f30d196e1db1579ea85ee2ce11
 	sha256sums = 9b53bc19a98498c86019cc32a3ade6ad0ee4b12ba30686feb93132a5f0da52f5
 	sha256sums = f8c3c7f65443801b8a70e40de7cdceade5dcd75974945695dd5a1bfb1f862e1a
 
