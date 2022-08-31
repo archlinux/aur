@@ -2,7 +2,7 @@
 
 pkgname=cuda_memtest
 pkgver=r83.dd723aa
-pkgrel=1
+pkgrel=2
 pkgdesc="A GPU memory test utility for NVIDIA and AMD GPUs."
 arch=('i686' 'x86_64')
 url="https://github.com/ComputationalRadiationPhysics/cuda_memtest"
@@ -17,6 +17,7 @@ optdepends=(
 #        'opencl-mesa: OpenCL support for AMD/ATI Radeon mesa drivers'
         )
 makedepends=('cmake'
+             'git'
 #            'opencl-headers'
             )
 source=("$pkgname"::'git+https://github.com/ComputationalRadiationPhysics/cuda_memtest.git'
