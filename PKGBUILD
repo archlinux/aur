@@ -74,7 +74,7 @@ then
       export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
       export LDFLAGS="-Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
     fi
-  elif [ "$(uname -m)" == "aarch64" ]
+  elif [ "$(uname -m)" == "aarch64" ]; then
     export CFLAGS="${CFLAGS} -march=native -mtune=native -O3 -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection"
     export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
     export LDFLAGS="-Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
