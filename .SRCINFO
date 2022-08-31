@@ -1,6 +1,6 @@
 pkgbase = llhttp
 	pkgdesc = Port of http_parser to llparse
-	pkgver = 6.0.7
+	pkgver = 6.0.9
 	pkgrel = 1
 	url = https://llhttp.org
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = llhttp
 	makedepends = ts-node
 	makedepends = npm
 	depends = glibc
-	source = llhttp-6.0.7.tar.gz::https://github.com/nodejs/llhttp/archive/v6.0.7.tar.gz
-	sha512sums = ac6f3f0f68d61f3513bd3bc960c13641f02cc28f5a35fce5db4040a63a07835bcc82fb705680dc94e516662ff68699dd7aac6be4ed9bf321d91ba8b8cf720d5b
-	b2sums = c69298d955c5d47009a5174aaab7ce91f0d474877e32f8b1299c9580fda7d61c08107de681021bea284012a5bcf3464bc08a361c64294e1e729f0a325d97518e
+	source = llhttp-6.0.9.tar.gz::https://github.com/nodejs/llhttp/archive/v6.0.9.tar.gz
+	sha512sums = e3c090d6479a76d05698954bb7dee5f20139d67d52a355bd1948219b7646937c5c05d4739c5001803647523a56e4a4fbe4b15498b159a7b15a21a8edbd76916a
+	b2sums = 88cec750445f01ae72d34361ac0b4a98aacd3e5fdc9b7109b2ee51dbb599c55926d9145f46e128cae6fb582777b9fd13963af010ab409c202447720c6be7040d
 
 pkgname = llhttp
