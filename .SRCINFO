@@ -1,0 +1,14 @@
+pkgbase = doq-git
+	pkgdesc = Small tool for creating single-file html documents.
+	pkgver = r2.dd4a155
+	pkgrel = 1
+	url = https://github.com/rxi/doq
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	provides = doq
+	conflicts = doq
+	source = doq-r2.dd4a155::git+https://github.com/rxi/doq
+	sha256sums = SKIP
+
+pkgname = doq-git
