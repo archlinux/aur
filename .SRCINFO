@@ -1,18 +1,19 @@
 pkgbase = python-pymarc-git
-	pkgdesc = A Python 3 library for working with bibliographic data encoded in MARC21
-	pkgver = 3.0.3.r283.9e77090
-	pkgrel = 2
-	url = https://github.com/edsu/pymarc
+	pkgdesc = Python library for working with bibliographic data encoded in MARC21
+	pkgver = 4.1.3.r2.g953c5c3
+	pkgrel = 1
+	url = https://gitlab.com/pymarc/pymarc
 	arch = any
 	license = BSD
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
-	depends = python-six
 	provides = python-pymarc
 	conflicts = python-pymarc
-	source = git+https://github.com/edsu/pymarc.git
+	source = pymarc::git+https://gitlab.com/pymarc/pymarc
 	sha256sums = SKIP
 
 pkgname = python-pymarc-git
-
