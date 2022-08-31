@@ -2,7 +2,7 @@
 # Maintainer: Abhinav Gupta <mail@abhinavg.net>
 
 pkgname='restack-bin'
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc='Makes interactive Git rebase nicer.'
 url='https://github.com/abhinav/restack'
@@ -11,20 +11,20 @@ license=('MIT')
 provides=('restack')
 conflicts=('restack')
 
-source_aarch64=('https://github.com/abhinav/restack/releases/download/v0.5.3/restack_0.5.3_Linux_arm64.tar.gz')
-sha256sums_aarch64=('8db639b51e0f064b9f7c89b935f95da3895d9ad248313ce9ba6de43a9ff2e6f6')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/abhinav/restack/releases/download/v0.5.4/restack_0.5.4_Linux_arm64.tar.gz")
+sha256sums_aarch64=('bfdf772813a70c4079d8d16fabc301d0649f1f906468e72f44f5ad27fe394d57')
 
-source_armv6h=('https://github.com/abhinav/restack/releases/download/v0.5.3/restack_0.5.3_Linux_armv6.tar.gz')
-sha256sums_armv6h=('60f3b59d4b22a4e745c033aff9ce188c5ab92070705866d567e75ee1aae388c1')
+source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/abhinav/restack/releases/download/v0.5.4/restack_0.5.4_Linux_armv6.tar.gz")
+sha256sums_armv6h=('90448eaadfe643b46c7197c6d2bd08e77d29f365d69da6211d675b3aa552b603')
 
-source_armv7h=('https://github.com/abhinav/restack/releases/download/v0.5.3/restack_0.5.3_Linux_armv7.tar.gz')
-sha256sums_armv7h=('30295adedb0b2df48eaa3a2c3f9032d87c4e2945e90a2b30dc14bd8f1dba772c')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/abhinav/restack/releases/download/v0.5.4/restack_0.5.4_Linux_armv7.tar.gz")
+sha256sums_armv7h=('d78dea55a15b786c9eca984723c69bead2154c3f428fa360ac2daa3520f32d6a')
 
-source_i686=('https://github.com/abhinav/restack/releases/download/v0.5.3/restack_0.5.3_Linux_i386.tar.gz')
-sha256sums_i686=('87f6cd0323e16c4be0e9656f7102b652f8c0530ae1f85e3848fc8b499881cf37')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/abhinav/restack/releases/download/v0.5.4/restack_0.5.4_Linux_i386.tar.gz")
+sha256sums_i686=('5ba6c96fd666ab093aaa4f1d786b458565f726ab3f3505c66c598c1e83c67538')
 
-source_x86_64=('https://github.com/abhinav/restack/releases/download/v0.5.3/restack_0.5.3_Linux_x86_64.tar.gz')
-sha256sums_x86_64=('6eaa536690174241e70db25985c5792e5764ffb9a3a0f406ac13990674d95fda')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/abhinav/restack/releases/download/v0.5.4/restack_0.5.4_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('e96b8e3a735f0771485fe501b2cf14ea2c6639d8fac8372deeedd4c4af093a05')
 
 package() {
   install -Dm755 "./restack" "${pkgdir}/usr/bin/restack"
