@@ -5,14 +5,14 @@
 
 pkgname=swift-bin-development
 pkgver=5.7.DEVELOPMENT
-vendorver=5.7-DEVELOPMENT-SNAPSHOT-2022-08-02-a
-pkgrel=6
+vendorver=5.7-DEVELOPMENT-SNAPSHOT-2022-08-27-a
+pkgrel=7
 epoch=4
 pkgdesc="Binary builds of the Swift programming language (dev snapshot)"
 arch=('x86_64')
 url="https://swift.org"
 license=('apache')
-depends=('libutil-linux' 'libxml2')
+depends=('libutil-linux' 'libxml2' 'ncurses5-compat-libs')
 optdepends=('python36: required for REPL')
 makedepends=('patchelf')
 options=('!strip')
@@ -53,6 +53,14 @@ package() {
   LIBNCURSES6=/usr/lib/libncursesw.so
   [ ! -h "$LIBTINFO5" ] && [ -h "$LIBTINFO6" ] && ln -s "$LIBTINFO6" "${pkgdir}/$LIBTINFO5"
   [ ! -h "$LIBNCURSES5" ] && [ -h "$LIBNCURSES6" ] && ln -s "$LIBNCURSES6" "${pkgdir}/$LIBNCURSES5"
+
+  # Patch same error as above, for a different, untested Manjaro version
+  LIBFORM=/usr/lib/libformw.so
+  LIBFORM5=/usr/lib/libform.so.5
+  LIBPANEL=/usr/lib/libpanelw.so
+  LIBPANEL5=/usr/lib/libpanel.so.5
+  [ ! -h "$LIBFORM5" ] && [ -h "$LIBFORM" ] && ln -s "$LIBFORM" "${pkdir}/$LIBFORM5"
+  [ ! -h "$LIBPANEL5" ] && [ -h "$LIBPANEL" ] && ln -s "$LIBPANEL" "${pkdir}/$LIBPANEL5"
 
   install -dm755 "${pkgdir}/etc/ld.so.conf.d"
   echo '/usr/lib/swift/lib/swift/linux' >> "${pkgdir}/etc/ld.so.conf.d/swift.conf"
