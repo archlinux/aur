@@ -1,7 +1,7 @@
 # Maintainer: Daniel Menelkir <dmenelkir at gmail dot com>
 
 pkgname=raplcap
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="RAPL power capping C interface with multiple implementations"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/powercap/raplcap"
 license=('BSD-3')
 depends=('powercap' 'cmake')
 source=(https://github.com/powercap/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz)
-sha512sums=('5f049e6dfa97491f2bab732e2592c4cf8902ec200c9b3a5752b60b30364c74dadb4aff2312ea40037c214ca2e2ec795e6a16e37b653f2bfa0baa144c771c2455')
+sha512sums=('3ea2cc32142f4aafb499943ca75909e72d6ab06a29c80c3f46b8c0175f44ae6be061f634f0ec0fc62a26f461ede237de690eb5afb3a7967e4b638e9756dae566')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
