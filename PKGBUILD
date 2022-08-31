@@ -2,8 +2,8 @@
 
 _name=pycapnp
 pkgname=python-pycapnp
-pkgver=1.1.1
-pkgrel=4
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="A cython wrapping of the C++ Cap'n Proto library"
 url="https://github.com/capnproto/pycapnp"
 license=(BSD)
@@ -12,7 +12,7 @@ depends=(capnproto python)
 makedepends=(cython python-build python-installer python-pkgconfig python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(https://github.com/capnproto/$_name/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha512sums=('649271e5fa64fe4b3c23897f96896b2790b13bca634b07f4d5e155e263ef919615d39daceb8b167918b7e4375b2b2d89df95fb9e78166768591e053b93e54940')
+sha512sums=('2221daa602b222563a483d73a4c0cb616d7b07aeae48d9a9b50a26cec002c80a00b5080bbe32c7094fa76d05aacc3d1d84322fdb40cbf301a208744ab246c06f')
 
 build() {
   cd $_name-$pkgver
@@ -20,12 +20,8 @@ build() {
 }
 
 check() {
-  local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-
-  cd $_name-$pkgver
-  python -m installer --destdir=test_dir dist/*.whl
-  export PYTHONPATH="test_dir/$_site_packages:$PYTHONPATH"
-  pytest -vv
+  cd pycapnp-$pkgver
+  PYTHONPATH="build/lib.linux-$CARCH-cpython-310" pytest
 }
 
 package() {
