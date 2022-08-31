@@ -1,0 +1,62 @@
+pkgbase = bitcoin-bin
+	pkgdesc = Bitcoin is a peer-to-peer network based digital currency (official binary)
+	pkgver = 23.0
+	pkgrel = 1
+	url = https://bitcoincore.org/
+	arch = x86_64
+	license = MIT
+	noextract = bitcoin-bin-23.0-bin.tar.gz
+	noextract = bitcoin-bin-23.0.tar.gz
+	source = bitcoin-bin-23.0-bin.tar.gz::https://bitcoincore.org/bin/bitcoin-core-23.0/bitcoin-23.0-x86_64-linux-gnu.tar.gz
+	source = bitcoin-bin-23.0.tar.gz::https://bitcoincore.org/bin/bitcoin-core-23.0/bitcoin-23.0.tar.gz
+	source = bitcoin.sysusers
+	source = bitcoin.tmpfiles
+	source = bitcoin-qt.desktop
+	source = bitcoin-qt.appdata.xml
+	sha256sums = 2cca490c1f2842884a3c5b0606f179f9f937177da4eadd628e3f7fd7e25d26d0
+	sha256sums = 26748bf49d6d6b4014d0fedccac46bf2bcca42e9d34b3acfd9e3467c415acc05
+	sha256sums = 7a77112fb094b9b2e6dd873e24c9a6bacb1f1c453d811a024f271f4b78f2a704
+	sha256sums = ba83570b4671b18c230f23d8d93cd8faa73179a546655448c14d1644d9b49f35
+	sha256sums = a020897651c03690eae3411fe401100fd1a2ffaa799247165eb71124609b7959
+	sha256sums = 71b125555451e9bc60b54a6658d886bad63bd18c58b5d6e3bd8977b82a70da7a
+
+pkgname = bitcoin-daemon-bin
+	pkgdesc = Bitcoin is a peer-to-peer network based digital currency - daemon
+	depends = gcc-libs
+	provides = bitcoin-daemon
+	conflicts = bitcoin-daemon
+	backup = etc/bitcoin/bitcoin.conf
+
+pkgname = bitcoin-cli-bin
+	pkgdesc = Bitcoin is a peer-to-peer network based digital currency - RPC client
+	depends = gcc-libs
+	provides = bitcoin-cli
+	conflicts = bitcoin-cli
+
+pkgname = bitcoin-qt-bin
+	pkgdesc = Bitcoin is a peer-to-peer network based digital currency - Qt
+	depends = fontconfig
+	depends = freetype2
+	depends = hicolor-icon-theme
+	depends = libxcb
+	depends = libxkbcommon
+	provides = bitcoin-qt
+	conflicts = bitcoin-qt
+
+pkgname = bitcoin-tx-bin
+	pkgdesc = Bitcoin is a peer-to-peer network based digital currency - Transaction tool
+	depends = gcc-libs
+	provides = bitcoin-tx
+	conflicts = bitcoin-tx
+
+pkgname = bitcoin-util-bin
+	pkgdesc = Bitcoin is a peer-to-peer network based digital currency - Utility
+	depends = gcc-libs
+	provides = bitcoin-util
+	conflicts = bitcoin-util
+
+pkgname = bitcoin-wallet-bin
+	pkgdesc = Bitcoin is a peer-to-peer network based digital currency - Wallet
+	depends = gcc-libs
+	provides = bitcoin-wallet
+	conflicts = bitcoin-wallet
