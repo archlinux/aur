@@ -1,14 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=('firmware-manager-git' 'libfirmware-manager-git')
 pkgbase=firmware-manager-git
-pkgver=0.1.2.r46.g19d0bf1
-pkgrel=1
+pkgver=0.1.2.r49.g0b24411
+pkgrel=2
 pkgdesc="Generic framework and GTK UI for firmware updates from system76-firmware and fwupd"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/firmware-manager"
 license=('GPL3')
-depends=('dbus' 'gtk3' 'libgudev' 'openssl')
-makedepends=('cargo' 'git')
+depends=('dbus' 'libgudev' 'openssl')
+makedepends=('cargo' 'git' 'gtk3' 'setconf')
 options=('!lto')
 source=('git+https://github.com/pop-os/firmware-manager.git'
         'com.system76.FirmwareManager.policy'
@@ -36,26 +36,29 @@ build() {
 
 package_firmware-manager-git() {
   pkgdesc="GTK application for managing system and device firmware."
-  depends+=('libfirmware-manager-git' 'polkit')
+  depends=('gtk3' 'libfirmware-manager-git' 'polkit')
   provides=("${pkgname%-git}" "${pkgname%-git}-virtual")
   conflicts=("${pkgname%-git}")
   install="${pkgname%-git}.install"
 
   cd "$srcdir/${pkgbase%-git}"
-  make DESTDIR="$pkgdir/" install-{bin,notify,icons} prefix=/usr
+  make prefix=/usr DESTDIR="$pkgdir/" install-{bin,notify,icons}
 
   install -Dm644 "$srcdir/com.system76.FirmwareManager.policy" -t \
     "$pkgdir/usr/share/polkit-1/actions"
 
   install -Dm755 "$srcdir/${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
+
+  setconf "$pkgdir/usr/share/applications/com.system76.FirmwareManager.desktop" Exec "${pkgname%-git}"
 }
 
 package_libfirmware-manager-git() {
   pkgdesc="Shared library for C which provides the firmware manager as a GTK widget."
-  optdepends=('fwupd' 'system76-firmware-daemon')
+  depends+=('fwupd')
+  optdepends=('system76-firmware-daemon: For System76 firmware updates')
   provides=("${pkgname%-git}" 'libfirmware_manager.so')
   conflicts=("${pkgname%-git}")
 
   cd "$srcdir/${pkgbase%-git}"
-  make DESTDIR="$pkgdir/" install-ffi prefix=/usr
+  make prefix=/usr DESTDIR="$pkgdir/" install-ffi
 }
