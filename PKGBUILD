@@ -1,6 +1,6 @@
 # Maintainer: Dominik Schwaiger <mail@dominik-schwaiger.ch>
 pkgname=punchy
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 epoch=
 pkgdesc="A 2.5D side-scroller beatemup, made in Bevy"
@@ -8,7 +8,7 @@ arch=("x86_64")
 url="https://github.com/fishfolks/punchy"
 license=('Apache')
 groups=()
-depends=("alsa-lib" "systemd-libs" "libx11" "pkgconf" "pipewire-alsa" "pulseaudio-alsa")
+depends=("alsa-lib" "systemd-libs" "pipewire-alsa" "pulseaudio-alsa")
 makedepends=("rust")
 checkdepends=()
 optdepends=()
@@ -19,9 +19,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/fishfolks/$pkgname/archive/refs/tags/v$pkgver.zip")
+source=("https://github.com/fishfolks/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-sha256sums=("9ddd417d9600b5ecd1975297d523e81b26f6982c618cc6faf69b3865291ba0af")
+sha256sums=("a2b956c6dd632a8cdc9a3b626598aa3b99e656070cfb9c8c4dc1b9e18e50add4")
 validpgpkeys=()
 
 build() {
