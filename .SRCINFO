@@ -1,16 +1,16 @@
 pkgbase = zfec
-	pkgdesc = A fast erasure codec which can be used with the command-line, C, Python, or Haskell
+	pkgdesc = Fast erasure coding tool
 	pkgver = 1.5.7.2
-	pkgrel = 1
-	url = https://pypi.python.org/pypi/zfec
-	arch = any
+	pkgrel = 2
+	url = https://github.com/tahoe-lafs/zfec
+	arch = x86_64
 	license = GPL
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/z/zfec/zfec-1.5.7.2.tar.gz
+	source = python-zfec-1.5.7.2.tar.gz::https://files.pythonhosted.org/packages/source/z/zfec/zfec-1.5.7.2.tar.gz
 	sha256sums = 4ee519be0dcc7da2e88482bcfc0bf977a425e1d7e8278cf5bbbb8d00f8a2afb6
 
 pkgname = python-zfec
