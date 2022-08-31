@@ -26,6 +26,8 @@ conflicts=(${_pkgname}-git)
 provides=(${_pkgname})
 checkdepends=(
 	python-pytest
+	python-click
+	python-dateutil
 )
 makedepends=(
 	python-build python-installer python-wheel
