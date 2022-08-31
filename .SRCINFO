@@ -1,6 +1,6 @@
 pkgbase = grub-theme-vimix-very-dark-blue
 	pkgdesc = Simple very dark blue GRUB theme
-	pkgver = r43.ca95c76
+	pkgver = r48.1d30572
 	pkgrel = 1
 	url = https://github.com/trueNAHO/grub2-theme-vimix-very-dark-blue
 	arch = any
