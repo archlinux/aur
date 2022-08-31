@@ -1,19 +1,19 @@
 pkgbase = python-chess-git
-	pkgdesc = A pure Python 3 chess library with move generation and validation and handling of common formats
-	pkgver = 0.8.1.r967.0570f91
-	pkgrel = 2
+	pkgdesc = Chess library with move generation/validation and common format support
+	pkgver = 1.9.2.r17.g9d68cef4
+	pkgrel = 1
 	url = https://github.com/niklasf/python-chess
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
-	optdepends = python-gmpy: Slight speed boost on basic operations
-	provides = python-python-chess
-	conflicts = python-python-chess
-	conflicts = python2-python-chess
-	source = git+https://github.com/niklasf/python-chess.git
+	provides = python-chess
+	conflicts = python-chess
+	source = python-chess::git+https://github.com/niklasf/python-chess
 	sha256sums = SKIP
 
 pkgname = python-chess-git
-

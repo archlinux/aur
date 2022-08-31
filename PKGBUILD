@@ -1,72 +1,37 @@
-# Maintainer:  jyantis <yantis@yantis.net>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: acxz <akashpatel2008 at yahoo dot com>
+# Contributor: jyantis <yantis@yantis.net>
 
 pkgname=python-chess-git
-pkgver=0.8.1.r967.0570f91
-pkgrel=2
-pkgdesc='A pure Python 3 chess library with move generation and validation and handling of common formats'
+_pkg="${pkgname%-git}"
+pkgver=1.9.2.r17.g9d68cef4
+pkgrel=1
+pkgdesc="Chess library with move generation/validation and common format support"
 arch=('any')
-url='https://github.com/niklasf/python-chess'
+url=https://github.com/niklasf/python-chess
 license=('GPL3')
 depends=('python')
-source=('git+https://github.com/niklasf/python-chess.git')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+provides=("$_pkg")
+conflicts=("$_pkg")
+source=("$_pkg::git+$url")
 sha256sums=('SKIP')
-makedepends=('git' 'python-setuptools')
-provides=('python-python-chess')
-conflicts=('python-python-chess' 'python2-python-chess')
-optdepends=('python-gmpy: Slight speed boost on basic operations')
 
 pkgver() {
-  cd python-chess
-  set -o pipefail
-  _gitversion=$( git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" )
-
-  if [ -f "chess/__init__.py" ]; then
-    if grep --quiet "__version__" chess/__init__.py; then
-      printf "%s.%s" "$(grep -R "__version__" chess/__init__.py | awk -F\' '{print $2}')" $_gitversion | sed 's/-/./g'
-    fi
-  else
-    printf "%s" $_gitversion
-  fi
+	git -C "$_pkg" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
-
-pkgver() {
-  cd python-chess
-  set -o pipefail
-  _gitversion=$( git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" )
-
-  if [ -f "chess/__init__.py" ]; then
-      printf "%s.%s" "$(grep -R "__version__ = " chess/__init__.py | awk -F\" '{print $2}')" $_gitversion | sed 's/-/./g'
-  else
-    printf "%s" $_gitversion
-  fi
-}
-
 
 build() {
-  cd python-chess
-  python setup.py build
+	cd "$_pkg"
+	python -m build --wheel --no-isolation
 }
 
 check() {
-  cd python-chess
-  python setup.py test --verbose
+	cd "$_pkg"
+	python test.py
 }
 
 package() {
-  cd python-chess
-
-  # We don't need anything related to git in the package
-  rm -rf .git*
-
-  python setup.py install --root="${pkgdir}" --optimize=1
-
-  # Install License
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  # Install Documentation
-  install -D -m644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
+	cd "$_pkg"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
 }
-
-# vim:set ts=2 sw=2 et:
