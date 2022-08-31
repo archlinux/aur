@@ -1,7 +1,7 @@
 pkgbase = python-horovod
 	pkgdesc = Distributed training framework for TensorFlow, Keras, PyTorch, and Apache MXNet
 	pkgver = 0.25.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/horovod/horovod
 	arch = x86_64
 	license = Apache

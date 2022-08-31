@@ -3,7 +3,7 @@
 _pkgname=horovod
 pkgname=python-horovod
 pkgver=0.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Distributed training framework for TensorFlow, Keras, PyTorch, and Apache MXNet'
 arch=('x86_64')
 url='https://github.com/horovod/horovod'
@@ -38,10 +38,6 @@ optdepends=(
 )
 source=("${_pkgname}-${pkgver}::git+https://github.com/horovod/horovod.git#tag=v${pkgver}")
 sha512sums=('SKIP')
-
-get_pyver() {
-  python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
-}
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
