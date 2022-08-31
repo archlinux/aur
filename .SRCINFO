@@ -1,0 +1,18 @@
+pkgbase = python-alpaca-py
+	pkgdesc = The Official Python SDK for Alpaca APIs
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = https://github.com/alpacahq/alpaca-py
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = cython
+	depends = python-msgpack
+	depends = python-pandas
+	depends = python-pydantic
+	depends = python-requests
+	depends = python-websockets
+	source = https://files.pythonhosted.org/packages/bd/d1/8af3117a78258ce661924d2bbaae313d343716c67e15c421022f5465d2c3/alpaca-py-0.5.4.tar.gz
+	sha256sums = 53c16c61512bbafe68585dcede3ad357dfcef68ae8b98ccda415d0fd00be9d65
+
+pkgname = python-alpaca-py
