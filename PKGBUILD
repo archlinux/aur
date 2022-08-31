@@ -1,8 +1,9 @@
-# Maintainer: Nicola Squartini <tensor5@gmail.com>
+# Maintainer: Luke Arms <luke@arms.to>
+# Contributor: Nicola Squartini <tensor5@gmail.com>
 
 _use_suffix=1
-pkgver=15.5.4
-_commit=ec7baba40166e9f11046cff31de180e4f652ec23
+pkgver=15.5.7
+_commit=0b804177fae2655884018187f226154c7566512b
 _chromiumver=94.0.4606.81
 _gcc_patchset=3
 # shellcheck disable=SC2034
