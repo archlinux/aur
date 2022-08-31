@@ -1,8 +1,8 @@
 # Maintainer: oscareczek <at gmail dot com>
 pkgname=86box-roms-git
-pkgver=v3.7.r0.g43fa4f3
+pkgver=v3.7.r3.g4e8fe7c
 pkgrel=1
-pkgdesc='ROMs for the 86Box emulator.'
+pkgdesc='ROMs for the 86Box emulator'
 arch=('any')
 url='https://github.com/86Box/roms'
 license=('custom')
