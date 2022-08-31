@@ -1,0 +1,12 @@
+pkgbase = unfurl
+	pkgdesc = Pull out bits of URLs provided on stdin
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/tomnomnom/unfurl
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = unfurl-0.4.3.tar.gz::https://github.com/tomnomnom/unfurl/archive/v0.4.3.tar.gz
+	b2sums = SKIP
+
+pkgname = unfurl
