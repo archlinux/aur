@@ -2,7 +2,7 @@
 
 pkgname=deezer-enhanced-git
 _pkgname=deezer-enhanced
-pkgver=v0.3.0.r0.ge6d4e6f
+pkgver=v0.3.1.r0.g3f1d283
 pkgrel=1
 pkgdesc='An unofficial application for Deezer with enhanced features, that is not just an electron wrapper.'
 arch=('x86_64' 'armv7h' 'aarch64')
