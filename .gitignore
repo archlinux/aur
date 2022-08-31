@@ -1,5 +1,5 @@
 src/
 pkg/
 SSVOpenHexagon
-open-hexagon-git-assets.zip
+*.zip
 *.pkg.tar.*
