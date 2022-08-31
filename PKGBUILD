@@ -13,7 +13,7 @@ depends=('qt6-base' 'qt6-tools' 'qt6-svg' 'qt6-declarative' 'qt6-5compat' 'zlib'
 #optdepends=('otf-ipafont: font for displaying japanese')
 install=$pkgname.install
 source=('https://github.com/sithlord48/ff7tk/archive/refs/tags/v0.83.0.tar.gz')
-sha256sums=('2b8c798ad037972b975d4a379238dd1b252f7e52914ac8b01d0fcdfe170ae624')
+sha256sums=('0f7db68ec949f1515171dc889e8e70a61f8ccbe2d0931fc3ad851b6b9acb080b')
 options+=(!strip)
 
 build() {
