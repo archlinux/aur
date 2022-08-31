@@ -148,7 +148,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=5.19
-_minor=4
+_minor=6
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -164,7 +164,11 @@ arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
 license=('GPL2')
 options=('!strip')
-makedepends=('bc' 'libelf' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'zstd' 'gcc' 'gcc-libs' 'glibc' 'binutils' 'make' 'patch')
+makedepends=(
+  bc libelf pahole cpio perl tar xz
+  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
+  git
+)
 # LLVM makedepends
 if [ -n "$_use_llvm_lto" ]; then
     makedepends+=(clang llvm lld python)
@@ -884,9 +888,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('a9214b97085af98dfcaaa8c2e8eff4858c1d53dccd6c58931cf7b0455ff9bf87'
-            '2bfde1aeeaf06076981678678d889375d58ebde90c1852a2a2dff8c3c69d26b3'
+sha256sums=('41a4f824af614460c429a7c723e8dcbb0e042f0047d328c18b4ed6f2b4efa63a'
+            '995024ada0ef0434ddd1c610fc0310674c9dfda1b655876ceccc775b8cf300a3'
             'ce8bf7807b45a27eed05a5e1de5a0bf6293a3bbc2085bacae70cd1368f368d1f'
-            'fec6d3be8e63590beb6b09b2952eb9f6bf856b17d7e7bf74fac7424b03aa9690'
+            '3db32f6db8794defc4133870f97c9ece36bf4b148a363d6335d7dd8d519e3df6'
             '9659b83b734788c7cecb39d15f3a273d007bfa95fc3ed1951dd92796533fdcb2'
-            '279d9c5a4c790002de58780ad2dc7c4ab4cd049175d36cad8b4e348e32c7912c')
+            '52a058cd83dad07a7ac8f8d2f75c24700c4f1fc7fd59743a47ef54e833e935a8')
