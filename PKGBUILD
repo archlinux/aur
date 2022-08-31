@@ -4,20 +4,20 @@
 # Contributor: Oscar Pereira <oscar a erroneousthoughts org>
 
 pkgname=kpcli
-pkgver=3.7
-pkgrel=2
+pkgver=3.8.1
+pkgrel=1
 pkgdesc="Command line browser of KeePassX database files (*.kdb)"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 depends=('perl' 'perl-file-keepass' 'perl-term-shellui' 'perl-term-readkey' 'perl-term-readline-gnu' 'perl-sort-naturally' 'perl-clone' 'perl-xml-parser')
-optdepends=('perl-crypt-pwsafe3: import Password Safe v3 files'
+optdepends=('perl-expect: import Keepass KDBX4 files'
             'perl-capture-tiny'
             'perl-clipboard')
 url='http://sourceforge.net/projects/kpcli/'
 source=("$pkgname-$pkgver.pl::https://sourceforge.net/projects/kpcli/files/kpcli-$pkgver.pl/download"
         "$pkgname-$pkgver-README::https://sourceforge.net/projects/kpcli/files/README.txt/download")
-sha256sums=('8c12566c292650451590ba42aba48f117eb60d786aed4309cca19febd4d2d673'
-            '92a0b6508e5e6ec66f0890dfd9ef925917e108388e50a2aba0ba542ed6fad0f1')
+sha256sums=('6c84f8639245799bf9b2d5ce297c41b5d4ec0789f7f5fa9e8767556816ea472c'
+            '9e0d52c5e212c069d23c537b35fda6f37e0d6f6011519e6ae12042196d5ebe66')
 
 package() {
   install -Dm755 "$pkgname-$pkgver.pl" "${pkgdir}/usr/bin/kpcli"
