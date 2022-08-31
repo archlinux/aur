@@ -2,7 +2,7 @@
 # Contributor: Pedro Montes Alcalde <pedro.montes.alcalde@gmail.com>
 _pkgname="vita3k"
 pkgname="${_pkgname}-bin"
-pkgver=r2802.814bdfcd
+pkgver=r2807.3b74ceb5
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -12,6 +12,7 @@ depends=(
 	'gtk3'
 	'sdl2'
 	'unzip'
+	'xdg-desktop-portal'
 )
 optdepends=(
 	'vulkan-validation-layers: Descriptive vulkan errors'
