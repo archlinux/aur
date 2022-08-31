@@ -7,7 +7,7 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=104.0
+pkgver=104.0.1
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
@@ -44,8 +44,8 @@ install=cachy-browser.install
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
     $pkgname.desktop
     "git+https://github.com/cachyos/cachyos-browser-settings.git"
-"git+https://github.com/cachyos/cachyos-browser-common.git")
-sha256sums=('1a294a651dc6260f9a72a3ab9f10e7792a4ab41a9cfa8527ad3dd9979cdc98ce'
+    "git+https://github.com/cachyos/cachyos-browser-common.git")
+sha256sums=('f23f4198bd9ba1bbb7420a622080301adb924fafbd6d83b00b1e6cc687e75f4e'
             'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
@@ -223,8 +223,8 @@ END
     msg2 "Fix build with zstandard 1.8.0"
     patch -Np1 -i ${_patches_dir}/zstandard-0.18.0.patch
 
-#   msg2  " some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)"
-#   patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch # fails with 104
+    msg2  " some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)"
+    patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
 
     msg2 "Debian patch to enable global menubar"
     patch -Np1 -i ${_patches_dir}/fix-psutil-dev.patch
