@@ -1,6 +1,6 @@
 pkgbase = rocm-gdb
 	pkgdesc = ROCm source-level debugger for Linux, based on GDB
-	pkgver = 5.2.1
+	pkgver = 5.2.3
 	pkgrel = 1
 	url = https://github.com/ROCm-Developer-Tools/ROCgdb
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = rocm-gdb
 	depends = mpfr
 	depends = source-highlight
 	depends = babeltrace
-	source = rocm-gdb-5.2.1.tar.gz::https://github.com/ROCm-Developer-Tools/ROCgdb/archive/rocm-5.2.1.tar.gz
-	sha256sums = 77169d88f24e6ccb6aef3945448b179edffe806a51a3e996236b08fb510f3979
+	source = rocm-gdb-5.2.3.tar.gz::https://github.com/ROCm-Developer-Tools/ROCgdb/archive/rocm-5.2.3.tar.gz
+	sha256sums = c2df5cccd8bb07ea331b45091fb3141999a37a67696d273f3888b48f6d4281aa
 
 pkgname = rocm-gdb
