@@ -1,0 +1,11 @@
+pkgbase = libdx
+	pkgdesc = Small C functions library.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://git.sr.ht/~kikoodx/libdx
+	arch = x86_64
+	license = custom:0BSD
+	source = libdx-v0.1.0.tar.gz::https://git.sr.ht/~kikoodx/libdx/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = libdx
