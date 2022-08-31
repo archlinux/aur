@@ -1,0 +1,13 @@
+pkgbase = com.xylink.linuxclient
+	pkgdesc = Xylink Video Conferencing linux client.
+	pkgver = 3.3.0.7571
+	pkgrel = 1
+	url = https://www.xylink.com
+	arch = x86_64
+	license = custom:xylink
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = file://com.xylink.linuxclient_3.3.0.7571-20220823_amd64.deb
+	sha256sums_x86_64 = d29b55bd876e48309266ed6b1938e9f0f7b3bcddc919ef63703e266c9147ebf5
+
+pkgname = com.xylink.linuxclient
