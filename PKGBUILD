@@ -50,8 +50,8 @@ package() {
 	install -Dm644 "LICENSE"			-t "$pkgdir/usr/share/licenses/${pkgname}"
 	install -Dm644 "README.md"			-t "$pkgdir/usr/share/$pkgname"	    
 	install -Dm0755 "target/release/display_switch" -t "$pkgdir/usr/bin/"
-	install -Dm644 "$srcdir/display-switch.ini"	-t "$pkgdir/etc/display-switch/display-switch.ini"
+	install -Dm644 "$srcdir/display-switch.ini"	-t "$pkgdir/etc/display-switch/"
 	install -Dm644 "$srcdir/$pkgname.sysusers"	   "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-	install -Dm644 "$srcdir/45-$pkgname.rules"	-t "$pkgdir/usr/lib/udev/rules.d/45-$pkgname.rules"
-	install -Dm644 "$srcdir/$pkgname.service"	-t "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+	install -Dm644 "$srcdir/45-$pkgname.rules"	-t "$pkgdir/usr/lib/udev/rules.d/"
+	install -Dm644 "$srcdir/$pkgname.service"	-t "$pkgdir/usr/lib/systemd/system/"
 }
