@@ -27,11 +27,11 @@ source=("${pkgname}-${pkgver//_/-}-amd64.deb::${url}/releases/download/nightly_2
 sha512sums=('4c949652a888970de8ab0f3c22e302ab81fd62ac9e29196665ce4f0ac2252948b7f685def15f74fad51d06fb15fa401c7bbfb4cb0b8b024c5bdd77ed29bcc2bb')
 
 package(){
-	# Extract package data
-	tar xzf data.tar.gz -C "${pkgdir}"
-	# Fix directory structure differences
-	cd "${pkgdir}"
-	mkdir usr/bin
+    # Extract package data
+    tar xzf data.tar.gz -C "${pkgdir}"
+    # Fix directory structure differences
+    cd "${pkgdir}"
+    mkdir usr/bin
     mv usr/local/bin/* usr/bin
     rm -rf usr/local/bin
 }
