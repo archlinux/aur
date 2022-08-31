@@ -9,7 +9,7 @@ license=('GPL')
 provides=("minfetch")
 conflicts=("minfetch")
 source=("https://raw.githubusercontent.com/xXTacticalWaffleXx/minfetch/main/minfetch")
-md5sums=('73f6f5e9aae9f847c94b678482be8b77')
+md5sums=('260e0aaed29bdeb378cc1a6261f822f1')
 
 package() {
   install -Dm755 "minfetch" -t "${pkgdir}/usr/bin"
