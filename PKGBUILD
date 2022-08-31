@@ -13,7 +13,7 @@ license=('GPL')
 depends=('gnutls' 'libidn' 'krb5' 'libgcrypt' 'libntlm')
 provides=('gsasl')
 conflicts=('gsasl')
-source=(ftp://ftp.gnu.org/gnu/gsasl/${_pkgname}-${pkgver}.tar.gz)
+source=(https://ftp.gnu.org/gnu/gsasl/${_pkgname}-${pkgver}.tar.gz)
 sha512sums=('b7c4e3dfdaa50eaba38f3c0914dedb4bc689d1226fcf162e5bfb3942fa6ce1e96405715a747adca78150709f34830f699e9f995f04ce586cd3d0c14b275910e6')
 
 build() {
