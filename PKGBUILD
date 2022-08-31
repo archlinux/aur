@@ -1,7 +1,7 @@
 # Maintainer: Alexander Fasching <fasching.a91@gmail.com>
 pkgname=nerd-fonts-roboto-mono
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.1
+pkgrel=1
 pkgdesc="Patched font Roboto Mono from the nerd-fonts library"
 arch=("any")
 url="https://github.com/ryanoasis/nerd-fonts"
@@ -11,8 +11,8 @@ conflicts=('nerd-fonts-git' 'nerd-fonts-complete')
 groups=("nerd-fonts")
 source=("https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/RobotoMono.zip"
         "https://github.com/ryanoasis/nerd-fonts/raw/v$pkgver/LICENSE")
-sha1sums=('1522629acdc2eb7c70d1579bd9c3d03ce5e6309f'
-          '92fdad3c8babc0473da5f03e41fb1151417ab386')
+sha1sums=('b2c3f5298a7c3be2a4dc6566064d3a3d03ab364d'
+          '3175046f10fc45ffaaf96f5e4023d12316db0688')
 
 package() {
   find . -iname "*.ttf" -not -iname "*Windows Compatible.ttf" -execdir install -Dm644 {} "$pkgdir/usr/share/fonts/TTF/{}" \;

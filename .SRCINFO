@@ -1,7 +1,7 @@
 pkgbase = nerd-fonts-roboto-mono
 	pkgdesc = Patched font Roboto Mono from the nerd-fonts library
-	pkgver = 2.1.0
-	pkgrel = 2
+	pkgver = 2.2.1
+	pkgrel = 1
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
 	groups = nerd-fonts
@@ -9,9 +9,9 @@ pkgbase = nerd-fonts-roboto-mono
 	provides = nerd-fonts-roboto-mono
 	conflicts = nerd-fonts-git
 	conflicts = nerd-fonts-complete
-	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/RobotoMono.zip
-	source = https://github.com/ryanoasis/nerd-fonts/raw/v2.1.0/LICENSE
-	sha1sums = 1522629acdc2eb7c70d1579bd9c3d03ce5e6309f
-	sha1sums = 92fdad3c8babc0473da5f03e41fb1151417ab386
+	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.1/RobotoMono.zip
+	source = https://github.com/ryanoasis/nerd-fonts/raw/v2.2.1/LICENSE
+	sha1sums = b2c3f5298a7c3be2a4dc6566064d3a3d03ab364d
+	sha1sums = 3175046f10fc45ffaaf96f5e4023d12316db0688
 
 pkgname = nerd-fonts-roboto-mono
