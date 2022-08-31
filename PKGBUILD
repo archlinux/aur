@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/zevenet/nftlb"
 license=('AGPL3')
 depends=('nftables' 'libev')
-makedepends=('git' 'make' 'autoconf' 'binutils' 'automake' 'patch')
+makedepends=('git' 'make' 'autoconf' 'binutils' 'automake' 'patch' 'gcc' 'pkgconf')
 source=("git+https://github.com/zevenet/nftlb"
         "nftlb.service"
         "nftlb.conf"
