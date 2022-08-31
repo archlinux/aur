@@ -41,24 +41,19 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}"
 
-    echo "Packaging : [Desktop Shortcut] | Icon | Build Files | Other Files | Done"
+	# Desktop File
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
-
-    echo "Packaging : Desktop Shortcut | [Icon] | Build Files | Other Files | Done"
+	# Install the icon
     install -Dm644 "${srcdir}/${_pkgname}/resources/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-git}.png"
-
-    echo "Packaging : Desktop Shortcut | Icon | [Build Files] | Other Files | Done"
+	# Install the build files
     install -d "$pkgdir/opt/"
     install -d "$pkgdir/usr/bin/"
     cd ${srcdir}/${_pkgname}/dist/linux-unpacked
     mkdir "${pkgdir}/opt/${pkgname%-git}"
     cp -r --preserve=mode * "${pkgdir}/opt/${pkgname%-git}"
     ln -sf "/opt/${pkgname%-git}/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
-
-    echo "Packaging : Desktop Shortcut | Icon | Build Files | [Other Files] | Done"
+	# License and Readme
     install -d "$pkgdir/usr/share/licenses" "$pkgdir/usr/share/doc"
     install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/${_pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-
-    echo "Packaging : Desktop Shortcut | Icon | Build Files | Other Files | [Done]"
 }
