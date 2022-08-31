@@ -4,8 +4,8 @@
 # PRs welcome at: https://github.com/ActivityWatch/aur-activitywatch-bin
 
 pkgname=activitywatch-bin
-pkgver='0.11.0'
-pkgrel=3
+pkgver='0.12.0'
+pkgrel=1
 epoch=
 pkgdesc="Log what you do on your computer. Simple, extensible, no third parties."
 arch=('x86_64')
@@ -44,7 +44,9 @@ package() {
     cp activitywatch/aw-qt.desktop $pkgdir/etc/xdg/autostart
 
     # See: https://aur.archlinux.org/packages/activitywatch-bin/#comment-834170
-    rm $pkgdir/opt/activitywatch/libharfbuzz.so*
+    #rm $pkgdir/opt/activitywatch/libharfbuzz.so*
+    #rm $pkgdir/opt/activitywatch/libfreetype.so*
+    #rm $pkgdir/opt/activitywatch/libfontconfig.so*
 
     # These takes a lot of space, getting rid of them would be nice
     #rm $pkgdir/opt/activitywatch/libicu*.so*
@@ -57,7 +59,6 @@ package() {
     #rm $pkgdir/opt/activitywatch/libstdc++.so*
     #rm $pkgdir/opt/activitywatch/libgpg-error.so*
     #rm $pkgdir/opt/activitywatch/libz.so*
-    #rm $pkgdir/opt/activitywatch/libfreetype.so*
     #rm $pkgdir/opt/activitywatch/libX*.so*
     #rm $pkgdir/opt/activitywatch/libxcb*.so*
     #rm $pkgdir/opt/activitywatch/libwayland*.so*
@@ -65,5 +66,4 @@ package() {
     #rm $pkgdir/opt/activitywatch/libgtk*.so*
     #rm $pkgdir/opt/activitywatch/libgnutls*.so*
     #rm $pkgdir/opt/activitywatch/libcairo*.so*
-    #rm $pkgdir/opt/activitywatch/libfontconfig.so*
 }

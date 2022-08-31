@@ -1,5 +1,8 @@
-package:
-	makepkg
+package: .SRCINFO
+	makepkg -f
+
+install:
+	makepkg -i
 
 srcinfo: .SRCINFO
 
@@ -13,4 +16,4 @@ update: .SRCINFO
 	git push aur
 
 clean:
-	rm -rf pkg src *.pkg.tar.xz
+	rm -rf pkg src *.pkg.tar.*
