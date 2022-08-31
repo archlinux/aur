@@ -1,0 +1,16 @@
+pkgbase = satysfi-language-server-git
+	pkgdesc = SATySFi Language Server
+	pkgver = 0.0.1.56.gc48b59c
+	pkgrel = 1
+	url = https://github.com/monaqa/satysfi-language-server
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	provides = satysfi-language-server
+	conflicts = satysfi-language-server
+	source = satysfi-language-server::git+https://github.com/monaqa/satysfi-language-server.git
+	sha512sums = SKIP
+
+pkgname = satysfi-language-server-git
