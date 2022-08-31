@@ -2,22 +2,22 @@
 # Contributor: Morten Linderud <morten@linderud.pw>
 
 pkgname=python-vagrant
-pkgver=0.5.15
-pkgrel=7
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Python bindings for interacting with Vagrant virtual machines."
 url="https://github.com/todddeluca/python-vagrant"
 license=('MIT')
 arch=('any')
 depends=('python')
-makedepends=('python' 'python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools-scm-git-archive' 'python-wheel')
 #checkdepends=('vagrant')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/todddeluca/python-vagrant/archive/${pkgver}.tar.gz")
-sha512sums=('3763b479fc0c540aec841f38d513d1f836eb17236703ee3490199cd22dde06585b362570ffb823ec63ef0dbdf94f1b38f68928b4be95557fad7137edc7410dd1')
+source=("${pkgname}-${pkgver}.tar.gz::https://pypi.io/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz")
+sha512sums=('a90e8c10122f0119088f96b75dfc353b067273cf1dc05a2eb5dc60f8154656d6b2e0f91c941936dd482faf82ea3e00ea8492b76ff7ffab78d3a20e534a019fe9')
 
 
 build() {
-  cd "${srcdir}/${pkgbase}-${pkgver}"
-  python setup.py build
+  cd ${pkgbase}-${pkgver}
+  python -m build --wheel --no-isolation
 }
 
 # Disabled, because they need Vagrant. Systemd-nspawn doesn't support this.
@@ -27,6 +27,6 @@ build() {
 #}
 
 package() {
-  cd "${srcdir}/${pkgbase}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  cd ${pkgbase}-${pkgver}
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 }
