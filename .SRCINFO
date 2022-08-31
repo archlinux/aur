@@ -1,0 +1,15 @@
+pkgbase = hg-signoff
+	pkgdesc = Flexible evolution of Mercurial history
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://www.mercurial-scm.org/doc/evolution/
+	arch = any
+	license = GPL2
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = mercurial
+	source = https://hg.sr.ht/~ragreener1/hg-signoff/archive/v1.1.1.tar.gz
+	sha256sums = a79adaa95d6c3f0a058876548b8a17e01b75082a7e063df8daba8908aae06cd9
+
+pkgname = hg-signoff
