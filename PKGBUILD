@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=frog-ocr
-pkgver=1.1.3
-pkgrel=3
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Intuitive text extraction tool (OCR) for GNOME."
 arch=('any')
 url="https://tenderowl.com/work/frog"
@@ -12,7 +12,7 @@ makedepends=('meson')
 checkdepends=('appstream-glib')
 install="$pkgname.install"
 source=("Frog-$pkgver.tar.gz::https://github.com/TenderOwl/Frog/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('8d9a2cb7e24961790b7e3e5e54b62f9598de4c01aa97d668911b03fb7029ebe4')
+sha256sums=('b2445c54f7d2b064f7ccf20be4ffcf34b689ec85e64284ac9dee91ad9f128b44')
 
 prepare() {
   cd "Frog-$pkgver"
