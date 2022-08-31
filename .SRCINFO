@@ -1,6 +1,6 @@
 pkgbase = erg-bin
 	pkgdesc = Statically typed language that can deeply improve the Python ecosystem
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/erg-lang/erg
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = erg-bin
 	depends = python
 	conflicts = erg-git
 	conflicts = erg
-	source = erg::https://yuioto-onedrive.vercel.app/api/raw/?path=/tmp/erg/bin/erg-v0.3.1-x86_64
+	source = erg::https://yuioto-onedrive.vercel.app/api/raw/?path=/tmp/erg/bin/erg-v0.3.2-x86_64
 	source = https://raw.githubusercontent.com/erg-lang/erg/main/README.md
 	source = https://raw.githubusercontent.com/erg-lang/erg/main/README_JA.md
 	source = https://raw.githubusercontent.com/erg-lang/erg/main/README_zh-CN.md
 	source = https://raw.githubusercontent.com/erg-lang/erg/main/README_zh-TW.md
-	sha256sums = 2599ee25f8543bf7d15c3e0797eb93d664a6526e45dcf245bde1c2ebd2372066
+	sha256sums = 0e9cff375b221877ede48a591e3c9b7d6f6ff0de23cfd4907bf60fde47fa3de6
 	sha256sums = f39baf693a13f41a9613d58fcd6c9c727363dc4c795ca7ec67d7e53e452457dd
 	sha256sums = e9d7e9ef00763199a72ab55c6eb57a61d328c79324ba645bc577288599b0f9cf
 	sha256sums = 1acf7ea94ae9228781d0159660208b6740e113951e75a220b954d306cec7a579
