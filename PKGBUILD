@@ -1,7 +1,7 @@
 # Maintainer: Abhinav Gupta <mail@abhinavg.net>
 pkgname=gitprompt
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.8.2
+pkgrel=1
 pkgdesc='Informative git prompt for zsh and bash'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/abhinav/gitprompt"
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('go')
 provides=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e76708f070c790a2157594ab73730b5d973357313e32f77225be023c2f0fbf5c')
+sha256sums=('cca7b6ff53ae11cda4a5465bdda01fb72add7c170c4a4b419a43a8731b5126e0')
 
 _gopackagepath=github.com/abhinav/gitprompt/cmd/gitprompt
 
