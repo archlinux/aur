@@ -12,5 +12,5 @@ source=("https://raw.githubusercontent.com/xXTacticalWaffleXx/minfetch/main/minf
 md5sums=('73f6f5e9aae9f847c94b678482be8b77')
 
 package() {
-  install -Dm755 "fetch.sh" -t "${pkgdir}/usr/bin"
+  install -Dm755 "minfetch" -t "${pkgdir}/usr/bin"
 }
