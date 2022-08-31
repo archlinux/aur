@@ -1,6 +1,6 @@
 pkgname="techmino-git"
-pkgver=0.17.6.8203f88
-pkgrel=2
+pkgver=0.17.6.1cedf70
+pkgrel=1
 pkgdesc="A collection of various modern block game rules, more ways to play, and awesome features added for a new experience."
 arch=('x86_64')
 url="https://github.com/26F-Studio/Techmino"
