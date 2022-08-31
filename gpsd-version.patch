@@ -1,0 +1,13 @@
+diff --git a/src/dwgpsd.c b/src/dwgpsd.c
+index cc2f801..f5a8e6c 100644
+--- a/src/dwgpsd.c
++++ b/src/dwgpsd.c
+@@ -64,7 +64,7 @@
+ // 3.22               28              11      bullseye
+ // 3.23               29              12
+
+-#if GPSD_API_MAJOR_VERSION < 5 || GPSD_API_MAJOR_VERSION > 12
++#if GPSD_API_MAJOR_VERSION < 5 || GPSD_API_MAJOR_VERSION > 15
+ #error libgps API version might be incompatible.
+ #endif
+
