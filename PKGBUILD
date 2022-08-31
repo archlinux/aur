@@ -1,10 +1,9 @@
 # Maintainer: Grigory Kirillov <txgk@bk.ru>
 pkgname=newsraft
-pkgver=0.8
+pkgver=0.9
 pkgrel=0
 pkgdesc='Feed reader with ncurses user interface'
 url='https://codeberg.org/grisha/newsraft'
-#arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 arch=('any')
 license=('MIT')
 depends=(
@@ -17,15 +16,15 @@ depends=(
 	)
 makedepends=('scdoc')
 source=("https://codeberg.org/grisha/newsraft/archive/newsraft-$pkgver.tar.gz")
-sha256sums=('c0e6506257c877a80fc3e1f0d0cc1b04a5b439879232355bf50231850b5ebd42')
+sha256sums=('aaeb2b540b93f81fe9ac7375744f02d6ebca8059cf27b73d7c45543752a7e041')
 
 build() {
 	cd "$srcdir"/newsraft
-	make all
+	make
 }
 
 package() {
 	cd "$srcdir"/newsraft
 	make DESTDIR="$pkgdir" PREFIX=/usr install
-	install -Dm644 doc/license.txt -t "$pkgdir"/usr/share/licenses/"$pkgname"
+	install -Dm644 doc/license.txt "$pkgdir"/usr/share/licenses/"$pkgname"/license.txt
 }
