@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd /usr/share/fern-wifi-cracker
+exec python execute.py "$@"

@@ -1,44 +1,30 @@
-# Maintainer Paul Sajna <sajattack@gmail.com>
+# Contributor: Paul Sajna <sajattack@gmail.com>
 
 pkgname='fern-wifi-cracker-git'
-pkgver=2.6.r14.gd25e58e
+pkgver=3.4.r0.g76c64b3
 pkgrel=1
 groups=('blackarch' 'blackarch-cracker' 'blackarch-wireless')
 pkgdesc='WEP, WPA wifi cracker for wireless penetration testing'
 arch=('any')
 url='https://github.com/savio-code/fern-wifi-cracker'
 license=('GPL2')
-depends=('python2' 'python2-pyqt4' 'aircrack-ng' 'scapy'
-         'macchanger' 'gksu')
-makedepends=('git' 'sed')
-replaces=('fern-wifi-cracker')
+depends=('python-pyqt5' 'aircrack-ng' 'scapy'
+         'macchanger')
+makedepends=('git')
 conflicts=('fern-wifi-cracker')
 provides=('fern-wifi-cracker')
-source=("git+https://github.com/savio-code/fern-wifi-cracker.git")
-sha1sums=('SKIP')
+source=("git+https://github.com/savio-code/fern-wifi-cracker.git" "fern")
+sha1sums=('SKIP' 'bac416f19d84d8604c9890fedc30aefcf4f18b95')
 
 pkgver() {
-  cd "$srcdir/fern-wifi-cracker"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$srcdir/fern-wifi-cracker/Fern-Wifi-Cracker"
+	cd "$srcdir/fern-wifi-cracker"
+	git describe --long  --tags| sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "$srcdir/fern-wifi-cracker/Fern-Wifi-Cracker"
-
-  mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/share/fern-wifi-cracker/Settings"
-
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/fern-wifi-cracker"
-
-  cat > "$pkgdir/usr/bin/fern" << EOF
-#!/bin/sh
-cd /usr/share/fern-wifi-cracker
-exec python2 ./execute.py "\$@"
-EOF
-
-  chmod +x "$pkgdir/usr/bin/fern"
+	install -D fern -t "$pkgdir/usr/bin/"
+	cd fern-wifi-cracker/Fern-Wifi-Cracker
+	install -d "$pkgdir/usr/share/fern-wifi-cracker/"
+	cp -a --no-preserve=ownership * "$pkgdir/usr/share/fern-wifi-cracker/"
+	python -O -m compileall "$pkgdir/"
 }
