@@ -1,7 +1,7 @@
 pkgbase = r-rversions
 	pkgdesc = Query 'R' Versions, Including 'r-release' and 'r-oldrel'
-	pkgver = 2.1.1
-	pkgrel = 4
+	pkgver = 2.1.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=rversions
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = r-rversions
 	depends = r-xml2
 	optdepends = r-mockery
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/rversions_2.1.1.tar.gz
-	sha256sums = 79aaacf5a1258d91ac0ddedf3c8c16a2d10d39010993dcc7b0a2638afee27cb1
+	source = https://cran.r-project.org/src/contrib/rversions_2.1.2.tar.gz
+	sha256sums = de5818233e8271132fe8ea70145618950b35786e0d2f270e39bf3338f3b8b160
 
 pkgname = r-rversions
