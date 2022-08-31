@@ -1,7 +1,7 @@
 # Maintainer: Ysblokje <ysblokje at gmail dot com>
 pkgname=('gamemode-git' 'lib32-gamemode-git')
 pkgbase='gamemode-git'
-pkgver=r612.55b799e
+pkgver=r613.4934191
 pkgrel=2
 pkgdesc="A daemon/lib combo for Linux that allows games to request a set of optimisations be temporarily applied to the host OS."
 arch=('x86_64')
@@ -11,12 +11,8 @@ depends=('libinih')
 optdepends=('systemd')
 makedepends=('meson' 'ninja' 'pkg-config' 'git')
 conflicts=('gamemode')
-source=("git+https://github.com/FeralInteractive/gamemode.git"
-    "fix_compilation.patch"
-)
-sha256sums=('SKIP'
- '02a83151ac893d85c558319d6d9ae185c4711affffa20abbdac2dc4d47f550b0'
-)
+source=("git+https://github.com/FeralInteractive/gamemode.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd gamemode
@@ -24,9 +20,6 @@ pkgver() {
 }
 
 build() {
-  pushd gamemode
-  patch -p1 < ${startdir}/fix_compilation.patch
-  popd
   meson gamemode build --prefix /usr -Dwith-systemd-user-unit-dir=/usr/lib/systemd/user -Dwith-privileged-group=gamemode
   ninja -C build
 
