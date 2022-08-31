@@ -4,7 +4,7 @@ _edition=' Isolated Edition Beta'
 pkgname="mongodb-$_target"
 _pkgver='1.33.0-beta.5'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='1'
+pkgrel='2'
 pkgdesc='The official GUI for MongoDB - Isolated Edition - beta version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
@@ -42,7 +42,7 @@ prepare() {
 	# Apply browserslist fixes
 	for _folder in 'node_modules/@mongodb-js/'*'/node_modules/browserslist'; do
 		if grep -q '"version": "2' "$_folder/package.json"; then
-			patch -d "$_folder/" --forward -p1 < "$srcdir/$pkgname-$pkgver-$pkgrel-browserslist.diff"
+			patch -d "$_folder/" --forward -p1 "$_folder/index.js" < "$srcdir/$pkgname-$pkgver-$pkgrel-browserslist.diff"
 		fi
 	done
 
