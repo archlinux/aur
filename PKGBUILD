@@ -3,7 +3,7 @@
 
 pkgname=fluffychat-bin
 _pkgname=fluffychat
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('x86_64' 'aarch64' )
@@ -16,8 +16,8 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source_x86_64=("fluffychat-v${pkgver}_x86_64.tar.gz::https://gitlab.com/api/v4/projects/16112282/packages/generic/fluffychat/${pkgver}/fluffychat-linux-x86.tar.gz")
 source_aarch64=("fluffychat-v${pkgver}_aarch64.tar.gz::https://gitlab.com/api/v4/projects/16112282/packages/generic/fluffychat/${pkgver}/fluffychat-linux-arm64.tar.gz")
-sha256sums_x86_64=('1d36edb9b753b48118124604820c3568ae21c933685f58c2df9a2ad5f66a5afc')
-sha256sums_aarch64=('eaef38046d675a2586747c13d450565845831db0c055c8cd07c22d6e4cecba52')
+sha256sums_x86_64=('357dd9d245fac55dd30b338a3bc7b844dfd4841a6ec0fb0cc52725368d83d6bc')
+sha256sums_aarch64=('bcb053326e3582269205b5a4941a0637ef65e65298691c2a2aac495cca6c1686')
 
 
 package() {  
@@ -44,7 +44,7 @@ package() {
 Type=Application
 Version=${pkgver}
 Name=FluffyChat
-Comment=Matrix Client. Chat with your friends
+Comment=Open. Nonprofit. Cute. Easy to use (matrix) messenger. Secure and decentralized.
 Exec=/opt/${_pkgname}/${_pkgname}
 Icon=${_pkgname}
 Terminal=false
