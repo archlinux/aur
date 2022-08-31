@@ -1,6 +1,6 @@
 pkgbase = cinny-desktop
 	pkgdesc = Matrix client focusing primarily on a simple, elegant and secure interface.
-	pkgver = 2.1.2
+	pkgver = 2.1.3
 	pkgrel = 1
 	url = https://cinny.in/
 	install = cinny-desktop.install
@@ -18,7 +18,7 @@ pkgbase = cinny-desktop
 	depends = libvips
 	depends = sqlite
 	depends = gst-plugins-good
-	source = cinny-desktop-2.1.2.zip::https://github.com/cinnyapp/cinny-desktop/releases/download/v2.1.2/cinny-desktop-v2.1.2.zip
-	sha256sums = 58637b5b116144b7e4efad99279b6c487e44f40f533002d40871e655e5a02dc2
+	source = cinny-desktop-2.1.3.zip::https://github.com/cinnyapp/cinny-desktop/releases/download/v2.1.3/cinny-desktop-v2.1.3.zip
+	sha256sums = 57f0612a2133e782ff07308b1b27f14f412ee75c5695e4028aa78d647b635cd2
 
 pkgname = cinny-desktop
