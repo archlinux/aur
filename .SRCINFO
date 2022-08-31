@@ -1,0 +1,16 @@
+pkgbase = ueforth-git
+	pkgdesc = An EForth inspired version of Forth bootstrapped from a minimalist C kernel
+	pkgver = r598.75d14d6
+	pkgrel = 1
+	url = https://eforth.appspot.com/linux.html
+	arch = x86_64
+	license = Apache
+	makedepends = nodejs
+	depends = gcc-libs
+	depends = glibc
+	provides = ueforth
+	conflicts = ueforth-bin
+	source = git+https://github.com/flagxor/ueforth.git
+	sha256sums = SKIP
+
+pkgname = ueforth-git
