@@ -2,15 +2,15 @@
 
 pkgbase=czkawka
 pkgname=('czkawka-cli' 'czkawka-gui')
-pkgver=5.0.1
+pkgver=5.0.2
 pkgrel=1
 pkgdesc='Multi functional app to find duplicates, empty folders, similar images etc.'
 url='https://github.com/qarmin/czkawka'
 arch=('x86_64')
 license=('MIT')
-makedepends=('cargo' 'rust' 'git' 'gtk4')
+makedepends=('cargo' 'rust' 'git' 'gtk4' 'libheif')
 checkdepends=(xorg-server-xvfb)
-_commit=ae87489f3b52a4d1f9681f5ba71010a37550b9ef # tags/5.0.1^0
+_commit=f16818dc8eb544a68e2f73f87d01ecb3d0192257 # tags/5.0.2^0
 source=("git+https://github.com/qarmin/czkawka.git#commit=${_commit}")
 sha512sums=('SKIP')
 
@@ -21,8 +21,8 @@ pkgver() {
 
 build() {
   cd ${pkgbase}
-  cargo build --bin czkawka_cli --release
-  cargo build --bin czkawka_gui --release
+  cargo build --bin czkawka_cli --release --features heif
+  cargo build --bin czkawka_gui --release --features heif
 }
 
 check() {
@@ -33,7 +33,7 @@ check() {
 }
 
 package_czkawka-cli() {
-  depends=('bzip2')
+  depends=('bzip2' 'libheif')
   pkgdesc+=" (CLI)"
 
   install -Dm644 "${srcdir}/czkawka/LICENSE" \
@@ -43,7 +43,7 @@ package_czkawka-cli() {
 }
 
 package_czkawka-gui() {
-  depends=('gtk4')
+  depends=('gtk4' 'libheif')
   pkgdesc+=" (Desktop App)"
 
   install -Dm644 "${srcdir}/czkawka/LICENSE" \
