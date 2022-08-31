@@ -17,8 +17,8 @@ b2sums=(SKIP
 pkgver() {
 	# The script was moved several times, breaking git-log continuity
 	# even when using --follow
-	_names=(host/nxdt_host.py nxdt_host.pyw nxdt_host.py host.py)
 	cd nxdumptool
+	_names=(host/nxdt_host.py nxdt_host.pyw nxdt_host.py host.py)
 	_version=$(sed -n "s/APP_VERSION = '\(.*\)'/\1/p" "${_names[0]}")
 	readarray -t _commits < <(git log --pretty=format:%h -- "${_names[@]}")
 	printf "%s.r%s.%s" "$_version" "${#_commits[*]}" "${_commits[0]}"
