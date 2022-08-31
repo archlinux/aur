@@ -1,0 +1,12 @@
+pkgbase = python2-six
+	pkgdesc = Python 2 and 3 compatibility utilities
+	pkgver = 1.16.0
+	pkgrel = 6
+	url = https://pypi.python.org/pypi/six/
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/s/six/six-1.16.0.tar.gz
+	sha512sums = 076fe31c8f03b0b52ff44346759c7dc8317da0972403b84dfe5898179f55acdba6c78827e0f8a53ff20afe8b76432c6fe0d655a75c24259d9acbaa4d9e8015c0
+
+pkgname = python2-six
