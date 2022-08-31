@@ -2,7 +2,7 @@
 pkgname=python-scipy-mkl-bin
 _pkgname=scipy
 _pkgver=1.7.3
-_build=py310hfa59a62_0
+_build=py310h1794996_2
 _libgfortran=libgfortran4-7.5.0-ha8ba4b0_17
 pkgver="${_pkgver}.anaconda${_build##*_}"
 pkgrel=2
@@ -29,7 +29,7 @@ source=("https://repo.anaconda.com/pkgs/main/linux-64/${_pkgname}-${_pkgver}-${_
         "https://repo.anaconda.com/pkgs/main/linux-64/${_libgfortran}.tar.bz2"
         )
 noextract=("${_libgfortran}.tar.bz2")
-sha256sums=('042987dbc0b345629bfb28a9236df9ff8de6ff2503705421ca3df4e924b57edf'
+sha256sums=('da4da92ccb70f7a259771d419ec4dfd440b22033e965ba84cb03ab3398572e2b'
             'e9b16e87276a8e1707c1d858ef0318eef0ce2222b1fc16529bf8a1d40de06aeb')
 
 prepare() {
