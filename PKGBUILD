@@ -4,7 +4,7 @@ _edition=' Isolated Edition'
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
 pkgver='r14887.g536e2d248'
-pkgrel='1'
+pkgrel='2'
 epoch='1'
 pkgdesc='The official GUI for MongoDB - Isolated Edition - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
 _electronpkg='electron15'
 depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release')
-makedepends=('git' 'nodejs>=16.0.0' 'npm>=8.0.0' 'python' 'unzip')
+makedepends=('git' 'nodejs>=16.0.0' 'npm>=8.0.0' 'python' 'unzip' 'patchutils')
 optdepends=('org.freedesktop.secrets')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -44,9 +44,11 @@ prepare() {
 	npm install
 
 	# Apply browserslist fixes
+	filterdiff --exclude='*/test/*' "$srcdir/$pkgname-browserslist.diff" > "$srcdir/$pkgname-browserslist-filtered.diff"
+
 	for _folder in 'node_modules/@mongodb-js/'*'/node_modules/browserslist'; do
 		if grep -q '"version": "2' "$_folder/package.json"; then
-			patch -d "$_folder/" --forward -p1 "$_folder/index.js" < "$srcdir/$pkgname-browserslist.diff"
+			patch -d "$_folder/" --forward -p1 < "$srcdir/$pkgname-browserslist-filtered.diff"
 		fi
 	done
 
