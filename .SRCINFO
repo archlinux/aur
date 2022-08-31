@@ -23,6 +23,7 @@ pkgbase = clifm-git
 	optdepends = udevil: (un)mount storage devices
 	optdepends = udisks2: (un)mount storage devices
 	provides = clifm
+	conflicts = clifm
 	source = git+https://github.com/leo-arch/clifm.git
 	sha256sums = SKIP
 

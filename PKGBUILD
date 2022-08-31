@@ -9,6 +9,7 @@ arch=('i686' 'pentium4' 'x86_64' 'arm' 'aarch64' 'armv7h')
 url="https://github.com/leo-arch/clifm"
 license=(GPL2)
 provides=('clifm')
+conflicts=('clifm')
 depends=('libcap' 'readline' 'acl' 'file')
 makedepends=('git')
 optdepends=(
