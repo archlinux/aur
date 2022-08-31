@@ -3,7 +3,7 @@
 
 pkgname=python-versioneer
 _name=${pkgname#python-}
-pkgver=0.23
+pkgver=0.24
 pkgrel=1
 pkgdesc='Easy VCS-based management of project version strings'
 url="https://github.com/$pkgname/$pkgname"
@@ -12,7 +12,7 @@ optdepends=('python-cx-freeze: Executable generation support')
 license=('custom:CC0')
 arch=(any)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('d6b6d68c299653736a29f199309ee4306e97a0f0d0a78ecb71e21c90ce1322bb')
+sha256sums=('1b8dba9e51e2f0e04c7e8545216eecdea2d63e1bd5569448ee66c549f7e7782f')
 
 build() {
     cd "${_name}-${pkgver}"
