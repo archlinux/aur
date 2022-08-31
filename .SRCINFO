@@ -1,6 +1,6 @@
 pkgbase = seer-gdb-git
 	pkgdesc = Seer - a gui frontend to gdb
-	pkgver = 1.8.r18.g045f907
+	pkgver = 1.9.r0.ge9a916b
 	pkgrel = 1
 	url = https://github.com/epasveer/seer.git
 	arch = x86_64
