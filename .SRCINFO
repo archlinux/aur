@@ -1,7 +1,7 @@
 pkgbase = riftshare
 	pkgdesc = Easy, Secure, and Free file sharing for everyone
 	pkgver = 0.1.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://riftshare.app
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = riftshare
 	source = riftshare.png
 	sha512sums = a391b25dabf166bf44a58415c37be4f7aa4ef10ff2e38caafc185af4b1af9e31d208152dd3fa84369c2aaaf108123a9d20f7a84eb6a882e78a7f9c34065ee5a7
 	sha512sums = 5ce8dfc4adbfcb548e43778449b3ca2c2b6b70a23981f3bd55ed47a4b7ce79e2f42041cccfa3f2a36cb2664f0952598ee49ee003741883bf1be6b2fce467ca4d
-	sha512sums = 82cfbcb2c0b09d3fb1a30cd95676039963ece3b730ef31fe1e7729f7e1f5c30eba9fa2faf434ffa2ee67a2c041d72b7a159a62647c86d92dc37094b639f95314
+	sha512sums = 2da1dd841dc8989954f490f98b9d1da71dce5ac2d1f74ad389a55b4dba727e79873dd9c9f8633735b37c20fc0f8f7e08b446847a5b238ab14e4d7848fb1984f7
 	sha512sums = 714e50355d19ee7d46c3f5d0db2d128e6c8df14465d8fc614d687ab02c01d534f92c406fb8bd520bfb45bab7f73179d222d526bb13b1b04ac37900f894db195c
 	sha512sums = 18b748db7b08bfeb301fc973119deb67aa118fd632f5c0297c0daff0c678700cc935801af9ca71e178b65d45c531e2b41891119502290e849d9e9ace8b9fd3c7
 
