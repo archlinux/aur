@@ -1,0 +1,14 @@
+pkgbase = paperless-cli
+	pkgdesc = A golang command line binary to interact with a Paperless instance
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/stgarf/paperless-cli
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	depends = glibc
+	options = !lto
+	source = paperless-cli-0.7.1.tar.gz::https://github.com/stgarf/paperless-cli/archive/v0.7.1.tar.gz
+	sha256sums = 2dfa01695c97c8cfc3db862565fe90c56d81e317e885e45a7da38dfd6bf723ea
+
+pkgname = paperless-cli
