@@ -1,7 +1,7 @@
 pkgbase = citra-bin
 	pkgdesc = An experimental open-source Nintendo 3DS emulator/debugger
 	pkgver = 1781
-	pkgrel = 1
+	pkgrel = 2
 	url = https://citra-emu.org
 	arch = x86_64
 	license = GPL2
@@ -19,6 +19,7 @@ pkgbase = citra-bin
 	sha256sums = b4c9433fbcbb1b9ddf19f009252e89d8d653ebac7f67d5d0beb49259f583ab69
 
 pkgname = citra-bin
+	pkgdesc = An experimental open-source Nintendo 3DS emulator/debugger, CLI version, already compiled
 	depends = ffmpeg
 	depends = sdl2
 	depends = sndio
@@ -31,6 +32,7 @@ pkgname = citra-bin
 	replaces = citra-nightly-bin
 
 pkgname = citra-qt-bin
+	pkgdesc = An experimental open-source Nintendo 3DS emulator/debugger, GUI version, already compiled
 	depends = ffmpeg
 	depends = sdl2
 	depends = desktop-file-utils

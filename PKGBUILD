@@ -5,13 +5,10 @@
 
 pkgbase="citra-bin"
 pkgname=("citra-bin" "citra-qt-bin")
-#_pkgver="1781"
-#_date="20220823"
-#_commit="141471e"
-#pkgver=${_pkgver}_${_date}_${_commit}
+# to update: reset $pkgrel to 1, go to https://github.com/citra-emu/citra-nightly/releases and copy $pkgver (release) and $_ref (date-commit)
 _ref=20220823-141471e
 pkgver=1781
-pkgrel=1
+pkgrel=2
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 url="https://citra-emu.org"
 license=("GPL2")
@@ -29,7 +26,8 @@ source=("https://github.com/citra-emu/citra-nightly/releases/download/nightly-$p
 sha256sums=('016bbfd743262110d45cfe6a3eb17fa5fb6d2a30f22984ad3bea0acab9c4fc2b'
             'b4c9433fbcbb1b9ddf19f009252e89d8d653ebac7f67d5d0beb49259f583ab69')
 
-package_citra-bin() {
+package_citra-bin(){
+ pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger, CLI version, already compiled"
  depends+=("sndio")
  replaces=("citra-nightly-bin")
  conflicts+=("citra-qt-bin")
@@ -38,7 +36,8 @@ package_citra-bin() {
  install -D -m 755 "citra-room" "$pkgdir/usr/bin/citra-room"
 }
 
-package_citra-qt-bin() {
+package_citra-qt-bin(){
+ pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger, GUI version, already compiled"
  depends+=("desktop-file-utils"
            "qt5-multimedia")
  optdepends=("libxkbcommon-x11: x11 support"
