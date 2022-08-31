@@ -1,7 +1,7 @@
 pkgbase = edex-ui-appimage
 	pkgdesc = A cross-platform, customizable science fiction terminal emulator with advanced monitoring & touchscreen support.
 	pkgver = 2.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GitSquared/edex-ui
 	arch = x86_64
 	arch = aarch64
@@ -10,9 +10,11 @@ pkgbase = edex-ui-appimage
 	depends = zlib
 	provides = edex-ui
 	options = !strip
-	source = https://github.com/GitSquared/edex-ui/releases/download/v2.2.8/eDEX-UI-Linux-x86_64.AppImage
-	source = https://github.com/GitSquared/edex-ui/releases/download/v2.2.8/eDEX-UI-Linux-arm64.AppImage
-	sha256sums = c8f28cd721ca032ca0c1960b756ca3e64dc441a643c32eafbb79c673b402d681
-	sha256sums = 1afe0146c312dc9fde1c569ed370cbcdc82ba4282ae372a7921cd6dfc9462236
+	source = LICENSE::https://raw.githubusercontent.com/GitSquared/edex-ui/v2.2.8/LICENSE
+	sha256sums = c61f12da7cdad526bdcbed47a4c0a603e60dbbfdaf8b66933cd088e9132c303f
+	source_x86_64 = https://github.com/GitSquared/edex-ui/releases/download/v2.2.8/eDEX-UI-Linux-x86_64.AppImage
+	sha256sums_x86_64 = c8f28cd721ca032ca0c1960b756ca3e64dc441a643c32eafbb79c673b402d681
+	source_aarch64 = https://github.com/GitSquared/edex-ui/releases/download/v2.2.8/eDEX-UI-Linux-arm64.AppImage
+	sha256sums_aarch64 = 1afe0146c312dc9fde1c569ed370cbcdc82ba4282ae372a7921cd6dfc9462236
 
 pkgname = edex-ui-appimage
