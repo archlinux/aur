@@ -1,15 +1,16 @@
 pkgbase = python-outdated
 	pkgdesc = Check if a version of a PyPI package is outdated
 	pkgver = 0.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/alexmojaki/outdated
 	arch = any
 	license = MIT
-	makedepends = python-pip
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
 	makedepends = git
 	depends = python-requests
 	depends = python-littleutils
-	source = outdated::git+https://github.com/alexmojaki/outdated.git?#tag=v0.2.1
+	source = outdated-0.2.1::git+https://github.com/alexmojaki/outdated.git?#tag=v0.2.1
 	sha512sums = SKIP
 
 pkgname = python-outdated
