@@ -2,7 +2,7 @@
 
 _npmname=clinic
 pkgname=nodejs-$_npmname
-pkgver=11.1.2
+pkgver=12.0.0
 pkgrel=1
 
 pkgdesc="diagnoses your Node.js performance issues"
@@ -20,7 +20,7 @@ options=(!strip emptydirs zipman)
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
 	"https://raw.githubusercontent.com/clinicjs/node-clinic/main/LICENSE")
 noextract=("${_npmname}-${pkgver}.tgz")
-b2sums=('3f650c42d290c53fcd29381b2fc042a132ac5580e679b1f5cf7d84c5b3522339b22cde0cd3524abd95776f04d3165746fb04f5200d532111a2c96e0b5af020b7'
+b2sums=('db41c4e2da5977a7335cba5e08dcf559b6c33c497268a66502883eaa6fc0fbbcf82e9f7001ae97f9f4638a14c43f010d0568e5368660c3ab6de8d58cbfc3fdd9'
 	'1f41dbdf32988d8c90a6762c97ff7292bdad10bbd7e900817d50862bf43e4c0c750189da6a4a990beea158b499526d54f208272e41fd18fd39a7d428231dfbb5')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
