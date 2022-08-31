@@ -1,7 +1,7 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=fsleyes-props
-pkgver=1.7.3
-pkgrel=2
+pkgver=1.8.2
+pkgrel=1
 pkgdesc="The fsleyes-props project is an event programming framework, which includes the ability for automatic CLI generation and, optionally, automatic GUI generation (if wxPython is present). It is used by FSLeyes."
 arch=('any')
 url="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes"
@@ -14,7 +14,7 @@ provides=()
 conflicts=()
 replaces=()
 source=("https://git.fmrib.ox.ac.uk/fsl/fsleyes/${pkgname#fsleyes-}/-/archive/${pkgver}/${pkgname#fsleyes-}-${pkgver}.tar.gz")
-sha256sums=('b798deda298a47d32d3585c1743001c36df3ea18a491b2f7c6de257e8dc4774d')
+sha256sums=('735d2af90d25aa1e7147e1d79efa9a9596ab2bfc48283509aef9e7b2c29f252b')
 
 package() {
   cd "$srcdir/${pkgname#fsleyes-}-$pkgver"
