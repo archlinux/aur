@@ -9,7 +9,7 @@ url='https://github.com/Moosync/Moosync'
 license=('GPL3')
 provides=("${pkgname}")
 depends=('electron' 'libvips')
-makedepends=('nodejs-lts-gallium' 'yarn' 'node-gyp')
+makedepends=('nodejs' 'yarn' 'node-gyp')
 source=("${pkgname}-${pkgver}-prebuilt.tar::https://github.com/Moosync/Moosync/releases/download/v${pkgver}/Moosync-${pkgver}-linux-x64.pacman" "${pkgname}-${pkgver}.tar::https://github.com/Moosync/Moosync/archive/v${pkgver}.tar.gz" moosync moosync.desktop)
 sha256sums=('050fff53533d69d9a3acfa352f8ea13d5e4cd234bf5d5ccd3f772ba369b792f7'
             '05159a47bc86d7f4957302ef64a3050613067e039ffa722ba4abb08eff936178'
