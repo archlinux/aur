@@ -6,7 +6,7 @@ _pkgsrcname=find-file-in-project
 _pkgmaintainer=technomancy
 _pkgdestdirname=find-file-in-project
 _versionprefix=
-pkgver=6.1.2
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="Quick access to project files in Emacs"
 pkgname=emacs-${_pkgdestdirname}
@@ -15,7 +15,7 @@ url="https://github.com/${_pkgmaintainer}/${_pkgsrcname}"
 license=('GPL3')
 depends=('emacs' 'emacs-swiper')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/${_versionprefix}${pkgver}.tar.gz")
-sha256sums=('c5d4d607d75b13b112dcb2d657221b3d1783d202ff4105b4c8dcf4f24a4a646a')
+sha256sums=('e86adb3b3813ac3a11bf915a6e8d4cd28cd48c859c31050d58ed9b7d4940dc2e')
 install=${pkgname}.install
 
 build() {
