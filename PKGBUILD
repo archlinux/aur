@@ -2,13 +2,13 @@
 
 pkgname=xrdesktop
 pkgver=0.15.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for XR interaction with classical desktop compositors"
 arch=('i686' 'x86_64')
 url="https://gitlab.freedesktop.org/xrdesktop/xrdesktop"
 license=('MIT')
 depends=('glibc' 'glib2' 'gulkan' 'gxr')
-makedepends=('meson' 'glslang' 'gtk-doc' 'vulkan-headers')
+makedepends=('meson' 'glslang' 'gtk-doc' 'python-gobject' 'vulkan-headers')
 optdepends=('python')
 source=("https://gitlab.freedesktop.org/xrdesktop/xrdesktop/-/archive/$pkgver/xrdesktop-$pkgver.tar.bz2")
 sha256sums=('4745f55298188a16e6411394bb55a691a251915c2857a6f594f9336721cc9e67')
