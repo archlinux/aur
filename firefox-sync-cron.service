@@ -1,0 +1,9 @@
+[Unit]
+Description=Synchronize tmpfs and on-disk Firefox profiles (oneshot service)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/firefox-sync
+
+[Install]
+WantedBy=default.target

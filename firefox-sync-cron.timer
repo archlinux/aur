@@ -1,0 +1,9 @@
+[Unit]
+Description=Synchronize tmpfs and on-disk Firefox profiles every hour
+
+[Timer]
+OnBootSec=1h
+OnUnitActiveSec=1h
+
+[Install]
+WantedBy=timers.target
