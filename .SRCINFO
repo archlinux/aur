@@ -12,8 +12,6 @@ pkgbase = nftlb-git
         makedepends = binutils
         makedepends = automake
         makedepends = patch
-        makedepends = pkgconf
-        makedepends = gcc
         depends = nftables
         depends = libev
         source = git+https://github.com/zevenet/nftlb
@@ -24,5 +22,6 @@ pkgbase = nftlb-git
         md5sums = 6505beb5a8692489b7d73eee57719497
         md5sums = 5b1f2457ee4393f252798e346320f5e8
         md5sums = 610634775cd2d22c1c8db5266d980cb3
+        validpgpkeys = 770E94A7B764C0D31AE2D33C34BCE0BCD665C5E9
 
 pkgname = nftlb-git
