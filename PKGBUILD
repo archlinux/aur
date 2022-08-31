@@ -2,7 +2,7 @@
 # Maintainer: Ismael Padilla <padillaismael92@gmail.com>
 
 pkgname='gotorrent-bin'
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='TUI for searching torrents'
 url='https://github.com/ismaelpadilla/gotorrent'
@@ -11,14 +11,14 @@ license=('AGPL-3.0')
 provides=('gotorrent')
 conflicts=('gotorrent')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ismaelpadilla/gotorrent/releases/download/v0.1.1/gotorrent_0.1.1_Linux_arm64.tar.gz")
-sha256sums_aarch64=('2a8f914fb2df00b68100f827f63ea5f407e2bc3d3587c20055fe558e53400733')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ismaelpadilla/gotorrent/releases/download/v0.1.2/gotorrent_0.1.2_Linux_arm64.tar.gz")
+sha256sums_aarch64=('aae6f7d508f0caab6fa1fb245bdeee46d09c8ed90b4b9a23b137e157c834f7b5')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/ismaelpadilla/gotorrent/releases/download/v0.1.1/gotorrent_0.1.1_Linux_i386.tar.gz")
-sha256sums_i686=('3aac2719aed6e267cb536f6e64298fa60ae47a381d08ba404ef3fba629bbec48')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/ismaelpadilla/gotorrent/releases/download/v0.1.2/gotorrent_0.1.2_Linux_i386.tar.gz")
+sha256sums_i686=('4ba93077ece677113fe4db72edfaabcbf169f5f7335867820a62e789032df3dc')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ismaelpadilla/gotorrent/releases/download/v0.1.1/gotorrent_0.1.1_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('1fccf1aa505811792e547a7b099d98b4d3188617167711e5333e5716ac8ac754')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ismaelpadilla/gotorrent/releases/download/v0.1.2/gotorrent_0.1.2_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('dbf8f5b19b0d44d37221dab0f402af0d55c2a3257ea86c3500080f1a946f69e9')
 
 package() {
   # bin
