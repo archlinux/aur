@@ -1,0 +1,16 @@
+pkgbase = minfetch-git
+	pkgdesc = Simple and customisable fetch script
+	pkgver = r77.05c20ab
+	pkgrel = 1
+	url = https://github.com/xXTacticalWaffleXx/minfetch
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	provides = minfetch
+	conflicts = minfetch
+	source = minfetch::git+https://github.com/xXTacticalWaffleXx/minfetch
+	validpgpkeys = A09118B2E92DE87846FD9F8D0298164A5CE73DA4
+	sha256sums = SKIP
+
+pkgname = minfetch-git
