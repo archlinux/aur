@@ -1,6 +1,6 @@
 pkgbase = jinx
 	pkgdesc = A meta-build-system for building OS distributions
-	pkgver = 0.0.16
+	pkgver = 0.0.17
 	pkgrel = 1
 	url = https://github.com/mintsuki/jinx
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = jinx
 	depends = git
 	depends = mercurial
 	depends = curl
-	source = jinx-0.0.16.tar.gz::https://github.com/mintsuki/jinx/archive/refs/tags/v0.0.16.tar.gz
-	sha256sums = afdaa6db8c56739e5af0a5748ef60c4850284603434a3dcae80ae19ef2c59676
+	source = jinx-0.0.17.tar.gz::https://github.com/mintsuki/jinx/archive/refs/tags/v0.0.17.tar.gz
+	sha256sums = 320a3161e307303583b1961a805bd6f164e4600af50afe299768dfc07b3f8d12
 
 pkgname = jinx
