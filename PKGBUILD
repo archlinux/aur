@@ -1,16 +1,16 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=ergo-bin
-pkgver=0.6.1
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='List of utilities for the daily developer workflow'
 arch=('x86_64')
 url="https://github.com/beatlabs/ergo"
 license=('BSD')
 provides=('ergo')
-source=("${pkgname}-${pkgver}::${url}/releases/download/${pkgver}/ergo-${pkgver}-linux-amd64"
+source=("${pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/ergo-${pkgver}-linux-amd64"
     'LICENSE::https://raw.githubusercontent.com/beatlabs/ergo/master/LICENSE')
-sha256sums=('8107e3f08bd7f93f97ad4b6058ae4bc05af41b2f846ea77844d1346e34845710'
+sha256sums=('f585abc304683269c1650fdd86c934e062d25674c83264c78deee26229ab77f9'
             '39ce0a4556170ecaa5aca48fd0327bbfc022bc6b5e2f4074ca26b24009f6fd1c')
 
 package() {
