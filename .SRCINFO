@@ -1,7 +1,7 @@
 pkgbase = nerd-fonts-anonymous-pro
 	pkgdesc = Patched font Anonymous Pro (Anonymice) Code from the nerd-fonts library
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
 	groups = nerd-fonts
@@ -10,9 +10,7 @@ pkgbase = nerd-fonts-anonymous-pro
 	provides = nerd-fonts-anonymous-pro
 	conflicts = nerd-fonts-git
 	conflicts = nerd-fonts-complete
-	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.1/AnonymousPro.zip
-	source = https://github.com/ryanoasis/nerd-fonts/raw/v2.2.1/LICENSE
-	b2sums = 6eb1058574d4793082210a9fd478e398e4bc83e01150b5c63c9053fe15b6e129f6112aef9a7025a5363c615a77db8705be6a3f08efe1b0407a1d5280eb6fffa5
-	b2sums = 386dfcb5ead367bfc44fc55f7e94548c03bdb24ca088ab56f9609e7cdaa3eab9c56b548966feaf7312da606b645e9af35556fc212132733efcdbcc17397c808a
+	source = 2.2.1.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.1/AnonymousPro.zip
+	b2sums = 421c43b026599b17d9b095d3cced49521c924ce63a5178f31af270859a3779bd4052c834120791e5b91d378f6e49d9c9a563822b4613d5f412b5e0cd075d3a59
 
 pkgname = nerd-fonts-anonymous-pro
