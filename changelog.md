@@ -1,22 +1,24 @@
-# Name: 1.3.0
-### URL: https://github.com/mymonero/mymonero-app-js/releases/tag/v1.3.0
-### published at '2022-08-11T09:00:35Z' by devinpearson
+# Name: 1.3.2
+### URL: https://github.com/mymonero/mymonero-app-js/releases/tag/v1.3.2
+### published at '2022-08-25T10:24:42Z' by devinpearson
 ---
 ## What's Changed
-* Update to support the Hardfork. Adds support for bulletproofs+
+* Update to support the hard fork. Adds support for bulletproofs+
+* This fixes the error with sending, users have experienced since the hard fork.
+* This release supports Linux and Mac, and Windows.
  
 ## Download Hashes
 If you would like to verify that you have downloaded the correct file, please use the following SHA256 hashes:
 ```
-34b94cc35b58bf7c3fcff60f6fb8d419afb2b6dea2372fa06d4c2580b768a66c  MyMonero Setup 1.3.0.exe
-ee3a5e06336a0c967ddcb1f0db5c461e553bdf3967720efed98dca5323dab90b  MyMonero Setup 1.3.0.exe.blockmap
-9112a948f0b235224ccd776bb1fef880fd3c13f3e8194bbf6b54efbe61239d6a  MyMonero-1.3.0-ia32-win.zip
-37919101b7c6ea125bf9340fa395096a8d46452c9055b4951025dd7dff7e1b8a  MyMonero-1.3.0-mac.zip
-5b5ab9c0c59eb25245c0420b3c787cb58001bd31cdeaf0eaff539bbb6093216a  MyMonero-1.3.0-mac.zip.blockmap
-f59b23ebc3c046f511ca0e0b1cc5965c06c30e23f54c4f882a411959537374b4  MyMonero-1.3.0-win.zip
-20f1e5760b2fe773247a19dafc142129eb9755f9a3e756ea522ca3df9e7af2fd  MyMonero-1.3.0.AppImage
-a3213956a46ec49daf9e982ea297b346a552429fb94d2e53cb43aa6acceaa6ca  MyMonero-1.3.0.dmg
-42da9810b6caf12c701fbe3b31f11c22f3257db9ca31a30b2cda86e5e092515f  MyMonero-1.3.0.dmg.blockmap
-38fd40ddf7a5360acd7c0973b6fab979d58fd625d8511dd86e8affdceccb458b  latest-linux.yml
-f2077a2278171a803f63dd393ace2c8252939cf31e3f1ddb900f295e827c0233  latest-mac.yml
-fb3da1b18c54f731907a02aad7cb7ddf5a2d558a1006a8376d30cfcdab295443  latest.yml
+a35ddd03fc56b6d9c5abb782db2293d311ab199dfe23e8514e542f11b33c1525  MyMonero-1.3.2-ia32-win.zip
+11e1642f8018771c45f9f7809c7b2aaf6d2df06bcfc9e97bec046b077d53c658  MyMonero-1.3.2-mac.zip
+089bb90f4674e98fb6f6404f417c7d106e9d1469cd153c8bf7a7704fe9ac38ad  MyMonero-1.3.2-mac.zip.blockmap
+d48b82900de073b907fbf95827d672aba4430c1a01043ba3f314cd01a7220eed  MyMonero-1.3.2-win.zip
+16cef602a0145b38f9750a3e89290a8901791b9389a4f9c612b3ab49fed65815  MyMonero-1.3.2.AppImage
+77719a53fe8b5ab19d632ce512836a4caad0e01f9f08ca56fed03ae094264755  MyMonero-1.3.2.dmg
+24e76d17630cd56b020c947f776843e440eb11f670e8a2f6356af22971df09c0  MyMonero-1.3.2.dmg.blockmap
+d0a6e25f6d49824149bb4d90f25c4f04c7d092d3d5343eec3b8f732349ba4f88  MyMonero-Setup-1.3.2.exe
+376b2aa99a30dfcbdfbe91e2a559203544d5b01680f08f66f174fdd3d8582e87  MyMonero-Setup-1.3.2.exe.blockmap
+9bae1583dad122f048a8e397cd58edaff501658ed1de6d429651530f6c2d33db  latest-linux.yml
+fdc6f9f45b57eec172c639c578d93631fe7ffe48ace9eb98869980de320e1f19  latest-mac.yml
+29308a83a0e1ac4163cadae096537fba9e1a46550e195f338010179a800b9369  latest.yml
