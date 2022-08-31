@@ -1,7 +1,8 @@
-# Maintainer: Orestis Floros <orestisflo@gmail.com>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Orestis Floros <orestisflo@gmail.com>
 
 pkgname=csmith-git
-pkgver=csmith.2.3.0.r66.gfa77c29
+pkgver=r845.deddca6
 pkgrel=1
 pkgdesc='A random generator of C programs'
 arch=('i686' 'x86_64')
@@ -9,14 +10,13 @@ url='https://github.com/csmith-project/csmith'
 license=('BSD')
 optdepends=('perl')
 makedepends=('git' 'cmake')
-provides=('csmith')
 conflicts=('csmith')
-source=('git+git://github.com/csmith-project/csmith')
+source=("git+${url}")
 sha1sums=('SKIP')
 
 pkgver() {
-    cd csmith
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd csmith
+ 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
