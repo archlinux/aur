@@ -1,0 +1,13 @@
+[Unit]
+Description=nftlb daemon
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/nftlb.conf
+ExecStart=/usr/sbin/nftlb --port ${NFTLB_PORT} -6
+Restart=on-failure
+ProtectSystem=full
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

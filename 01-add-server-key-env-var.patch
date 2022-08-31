@@ -1,0 +1,27 @@
+--- src/main.c	2022-08-31 16:31:05.744759244 +0000
++++ src/main.c	2022-08-31 16:37:22.431408031 +0000
+@@ -40,6 +40,7 @@
+ #define NFTLB_BG_MODE			1
+ #define NFTLB_EXIT_MODE			1
+ #define NFTLB_NFT_SERIALIZE		0
++#define NFTLB_MAX_KEYLENGTH		36
+ 
+ unsigned int serialize = NFTLB_NFT_SERIALIZE;
+ int masquerade_mark = NFTLB_MASQUERADE_MARK_DEFAULT;
+@@ -153,7 +154,15 @@
+ 	int		loglevel = NFTLB_LOG_LEVEL_DEFAULT;
+ 	int		logoutput = NFTLB_LOG_OUTPUT_DEFAULT;
+ 	const char	*config = NULL;
+-	pid_t	pid;
++	pid_t		pid;
++	char		server_key[NFTLB_MAX_KEYLENGTH];
++	char		*t_server_key;
++	const char	*server_key_vn = "NFTLB_SERVER_KEY";
++
++	if (( t_server_key =getenv(server_key_vn)) != NULL && strlen(t_server_key) > 0 ) {
++		strncpy( server_key, t_server_key, NFTLB_MAX_KEYLENGTH - 1 );
++		server_set_key(server_key);
++	}
+ 
+ 	while ((c = getopt_long(argc, argv, "hl:L:c:k:ed6H:P:Sm:", options, NULL)) != -1) {
+ 		switch (c) {

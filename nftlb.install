@@ -1,0 +1,9 @@
+post_install() {
+    if [ ! -f "/etc/nftlb.conf" ]; then
+        echo "Generating configuration file..."
+        mv /etc/nftlb.conf-paknew /etc/nftlb.conf
+    else
+        echo "New config file /etc/nftlb.conf-pacnew has been unpacked onto your system."
+        echo "Please evaluate any changes and update."
+    fi
+}
