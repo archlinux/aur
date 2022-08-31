@@ -1,7 +1,7 @@
 # Maintainer: NAHO <90870942+trueNAHO@users.noreply.github.com>
 
 pkgname=grub-theme-vimix-very-dark-blue
-pkgver=r54.b15d61c
+pkgver=1.0.0.r59.5822185
 pkgrel=1
 epoch=
 pkgdesc="Simple very dark blue GRUB theme"
@@ -27,7 +27,7 @@ validpgpkeys=()
 
 pkgver() {
   cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
