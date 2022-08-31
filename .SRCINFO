@@ -1,6 +1,6 @@
 pkgbase = nerd-fonts-liberation-mono
 	pkgdesc = Patched font Liberation Mono from the nerd-fonts library
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = nerd-fonts-liberation-mono
 	provides = nerd-fonts-liberation-mono
 	conflicts = nerd-fonts-git
 	conflicts = nerd-fonts-complete
-	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.1/LiberationMono.zip
-	source = https://github.com/ryanoasis/nerd-fonts/raw/v2.2.1/LICENSE
-	b2sums = 9c20019db3f39ebf0923458a2ab07f4febb1c87fd3efee336cf2c989f65e3b84497da2eb0e8575c47aa3cea8572fe6d601309ea7908fbb4f6f8e4ce447701b81
+	source = 2.2.2.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/LiberationMono.zip
+	source = https://github.com/ryanoasis/nerd-fonts/raw/v2.2.2/LICENSE
+	b2sums = 0c499816e866cd94dec3b8bdf1c1c83c5bedcf38677597d05980a17d1690acf834532980b17fdfb3e5b3a2a9167815cd638d3cf1be0d09a23db8f8a7430042c6
 	b2sums = 386dfcb5ead367bfc44fc55f7e94548c03bdb24ca088ab56f9609e7cdaa3eab9c56b548966feaf7312da606b645e9af35556fc212132733efcdbcc17397c808a
 
 pkgname = nerd-fonts-liberation-mono
