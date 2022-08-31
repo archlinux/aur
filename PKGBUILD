@@ -2,7 +2,7 @@
 
 pkgname=riftshare
 pkgver=0.1.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Easy, Secure, and Free file sharing for everyone'
 url='https://riftshare.app'
 license=('GPL3')
@@ -13,6 +13,7 @@ makedepends=('go')
 source=(
   "https://github.com/achhabra2/$pkgname/archive/refs/tags/v${pkgver}.tar.gz"
   'settings-config.patch'
+  'gdk-backend.patch'
   "$pkgname.desktop"
   "$pkgname.png"
 )
@@ -20,22 +21,28 @@ source=(
 sha512sums=(
   'a391b25dabf166bf44a58415c37be4f7aa4ef10ff2e38caafc185af4b1af9e31d208152dd3fa84369c2aaaf108123a9d20f7a84eb6a882e78a7f9c34065ee5a7'
   '5ce8dfc4adbfcb548e43778449b3ca2c2b6b70a23981f3bd55ed47a4b7ce79e2f42041cccfa3f2a36cb2664f0952598ee49ee003741883bf1be6b2fce467ca4d'
+  '82cfbcb2c0b09d3fb1a30cd95676039963ece3b730ef31fe1e7729f7e1f5c30eba9fa2faf434ffa2ee67a2c041d72b7a159a62647c86d92dc37094b639f95314'
   '714e50355d19ee7d46c3f5d0db2d128e6c8df14465d8fc614d687ab02c01d534f92c406fb8bd520bfb45bab7f73179d222d526bb13b1b04ac37900f894db195c'
   '18b748db7b08bfeb301fc973119deb67aa118fd632f5c0297c0daff0c678700cc935801af9ca71e178b65d45c531e2b41891119502290e849d9e9ace8b9fd3c7'
 )
 
 prepare() {
+  # Clear previously downloaded dependencies
   rm -rf pkg
-  cd $pkgname-$pkgver
 
   # Use the non-flatpak settings location
+  cd $pkgname-$pkgver
   patch -p1 < ../settings-config.patch
 
-  # Predownload dependencies and patch out forcing the GDK_BACKEND to be x11 so wayland will work
+  # Pre-download dependencies and allow reading and writing
   export GOPATH="$srcdir"
   go mod vendor -modcacherw
-  sed -i '/GDK_BACKEND/d' ../pkg/mod/github.com/wailsapp/wails/v2@v2.0.0-beta.37/internal/frontend/desktop/linux/frontend.go
-  sed -i '/^\s*"os"$/d' ../pkg/mod/github.com/wailsapp/wails/v2@v2.0.0-beta.37/internal/frontend/desktop/linux/frontend.go
+  cd ..
+  chmod -R a+rw pkg
+
+  # Only set GDK_BACKEND to x11 if unset or XDG_SESSION_TYPE isn't wayland
+  chmod 644 pkg/mod/github.com/wailsapp/wails/v2@v2.0.0-beta.37/internal/frontend/desktop/linux/frontend.go
+  patch -p1 < gdk-backend.patch
 }
 
 build() {
