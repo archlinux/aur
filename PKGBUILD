@@ -19,6 +19,7 @@ md5sums=('SKIP'
          '6505beb5a8692489b7d73eee57719497'
          '5b1f2457ee4393f252798e346320f5e8'
          '610634775cd2d22c1c8db5266d980cb3')
+validpgpkeys=('770E94A7B764C0D31AE2D33C34BCE0BCD665C5E9') # Zarren Spry <zarrenspry@gmail.com>
 install="${_pkgname}.install"
 
 pkgver() {
