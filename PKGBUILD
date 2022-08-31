@@ -3,12 +3,14 @@
 _pkgname=mmsegmentation
 pkgname=python-mmsegmentation
 pkgver=0.27.0
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenMMLab Semantic Segmentation Toolbox and Benchmark'
 arch=('any')
 url='https://github.com/open-mmlab/mmsegmentation'
 license=('Apache')
 depends=(
+  python-matplotlib
+  python-mmclassification
   python-mmcv
   python-numpy
   python-prettytable

@@ -1,11 +1,13 @@
 pkgbase = python-mmsegmentation
 	pkgdesc = OpenMMLab Semantic Segmentation Toolbox and Benchmark
 	pkgver = 0.27.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/open-mmlab/mmsegmentation
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
+	depends = python-matplotlib
+	depends = python-mmclassification
 	depends = python-mmcv
 	depends = python-numpy
 	depends = python-prettytable
