@@ -1,4 +1,5 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
+# Maintainer: Adrian Insaurralde <adrianinsaval at gmail dot com>
 
 pkgname=freecad-git
 pkgver=0.20.0.28901.ga5ff515804
@@ -51,11 +52,13 @@ pugixml
 optdepends=(
 'povray: ray tracing support'
 'luxcorerender: ray tracing support'
-'libspnav: 3d mouse support'
+'libspnav: 3D mouse support'
 'openscad: OpenSCAD support'
 'graphviz: dependency graph support'
 'python-markdown: markdown support in addon manager'
 'python-gitpython: support downloading addons with git'
+'python-pip: support installing python dependencies for addons'
+'calculix-ccx: FEM solver backend'
 )
 provides=('freecad')
 conflicts=('freecad' 'freecad-appimage' 'freecad-appimage-git')
