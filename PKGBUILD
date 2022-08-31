@@ -10,11 +10,6 @@ makedepends=("go")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 b2sums=('SKIP')
 
-prepare(){
-  cd "$pkgname-$pkgver"
-  mkdir -p build/
-}
-
 build() {
   cd "$pkgname-$pkgver"
   export CGO_CPPFLAGS="${CPPFLAGS}"
