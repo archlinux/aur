@@ -2,7 +2,7 @@
 # thanks to celogeek, sseneca, dr460nf1r3, dr460nf1r3 and AverytheFurry for pointing out multiple things
 
 pkgname=fluffychat
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ optdepends=('libolm: E2E Encryption support')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("fluffychat-v${pkgver}.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v${pkgver}/fluffychat-v${pkgver}.tar.gz")
-sha256sums=('5d0b3b28bd3b05d62c9a1d8198778e6115d163c989ddc3500e713ac89a9655fa')
+sha256sums=('f6344e8a7127616419ac144d4852d988a600b1bafdcba115ca1f939fc4ccc1c1')
 
 prepare() {
   flutter --no-version-check --suppress-analytics config --enable-linux-desktop
@@ -59,7 +59,7 @@ package() {
 Type=Application
 Version=${pkgver}
 Name=FluffyChat
-Comment=Matrix Client. Chat with your friends
+Comment=Open. Nonprofit. Cute. Easy to use (matrix) messenger. Secure and decentralized.
 Exec=${pkgname}
 Icon=${pkgname}
 Terminal=false
