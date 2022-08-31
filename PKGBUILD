@@ -1,7 +1,7 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=blackchocobo-git
 conflicts=('blackchocobo')
-pkgver=1.12.1.2
+pkgver=1.13.0.0
 pkgrel=1
 pkgdesc="Final Fantasy 7 Save Editor"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -16,7 +16,7 @@ md5sums=(SKIP)
 
 pkgver() {
   cd "blackchocobo"
-  git describe | cut -c2-9 | sed 's/-/./g'
+  git describe --long | cut -c2-9 | sed 's/-/./g'
 }
 
 build() {
