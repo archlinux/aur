@@ -1,6 +1,6 @@
 pkgbase = python-sentry_sdk
 	pkgdesc = The new Python SDK for Sentry.io
-	pkgver = 1.9.5
+	pkgver = 1.9.6
 	pkgrel = 1
 	url = https://sentry.io/for/python
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = python-sentry_sdk
 	optdepends = python-trytond: adds support for the Tryton Framework Server
 	optdepends = python-pure_eval: for richer stacktraces & additional variables
 	optdepends = python-executing: for richer stacktraces & better function names
-	source = https://files.pythonhosted.org/packages/source/s/sentry-sdk/sentry-sdk-1.9.5.tar.gz
-	sha256sums = 2d7ec7bc88ebbdf2c4b6b2650b3257893d386325a96c9b723adcd31033469b63
+	source = https://files.pythonhosted.org/packages/source/s/sentry-sdk/sentry-sdk-1.9.6.tar.gz
+	sha256sums = f713f33ff7f82658c30e7e8cdec72c432218e6dd41b0f004905733793bd9719b
 
 pkgname = python-sentry_sdk
