@@ -1,14 +1,14 @@
 pkgbase = ninja-bin
 	pkgdesc = Small build system with a focus on speed
-	pkgver = 1.11.0
+	pkgver = 1.11.1
 	pkgrel = 1
 	url = https://ninja-build.org/
 	arch = x86_64
 	license = apache
 	depends = gcc-libs
-	provides = ninja=1.11.0
+	provides = ninja=1.11.1
 	conflicts = ninja
-	source_x86_64 = https://github.com/ninja-build/ninja/releases/download/v1.11.0/ninja-linux.zip
-	sha256sums_x86_64 = 9726e730d5b8599f82654dc80265e64a10a8a817552c34153361ed0c017f9f02
+	source_x86_64 = https://github.com/ninja-build/ninja/releases/download/v1.11.1/ninja-linux.zip
+	sha256sums_x86_64 = b901ba96e486dce377f9a070ed4ef3f79deb45f4ffe2938f8e7ddc69cfb3df77
 
 pkgname = ninja-bin
