@@ -16,19 +16,19 @@ sha256sums=('SKIP'
             '537d4520bca0ed131de627a5e5acb9f5f2aa275cce3917e84759c2fb224cf2bd')
 
 pkgver() {
-  cd "$srcdir/$_pkgbase"
+  cd "$srcdir/${_pkgbase}"
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/$_pkgbase"
+  cd "$srcdir/${_pkgbase}"
 }
 
 package() {
-  cd "$srcdir/$_pkgbase"
+  cd "$srcdir/${_pkgbase}"
 
   install -d "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
-  cp -r ${srcdir}/${_pkgbase}-dkms/* "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
+  cp -r ${srcdir}/${_pkgbase}/* "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
 
   install -Dm644 ${srcdir}/dkms.conf "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
 
