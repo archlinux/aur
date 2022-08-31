@@ -1,0 +1,17 @@
+pkgbase = pypy3-samson-crypto-git
+	pkgdesc = a cryptanalysis and attack library
+	pkgver = r259.fffbb7c
+	pkgrel = 1
+	url = https://github.com/wildcardcorp/samson
+	arch = any
+	license = custom
+	makedepends = python-sphinx
+	makedepends = git
+	makedepends = pypy3-setuptools
+	depends = pypy3
+	provides = pypy3-samson-crypto
+	replaces = python-samson-crypto-git
+	source = git+https://github.com/wildcardcorp/samson.git
+	md5sums = SKIP
+
+pkgname = pypy3-samson-crypto-git
