@@ -1,7 +1,7 @@
 pkgbase = csgo-checker-electron
 	pkgdesc = Check CS:GO accounts for bans/cooldowns/wins/ranks (system electron)
 	pkgver = 1.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dumbasPL/csgo-checker
 	arch = x86_64
 	license = GPL3
