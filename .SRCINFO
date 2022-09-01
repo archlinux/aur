@@ -1,7 +1,7 @@
 pkgbase = watsup-panel
-	pkgdesc = Showing some system status informations
+	pkgdesc = Monitor key Linux system resources using a small report within the top panel.
 	pkgver = 6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kornelix.net/watsup/watsup.html
 	arch = i686
 	arch = x86_64
