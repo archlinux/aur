@@ -1,17 +1,17 @@
 pkgbase = obs-text-pthread
 	pkgdesc = This plugin aims to show beautiful texts on OBS Studio
-	pkgver = 1.0.3
-	pkgrel = 3
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://obsproject.com/forum/resources/obs-pthread-text.1287/
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
 	makedepends = cmake
-	depends = obs-studio
+	depends = obs-studio>=28
 	depends = pango
 	options = debug
-	source = obs-text-pthread-1.0.3.tar.gz::https://github.com/norihiro/obs-text-pthread/archive/1.0.3.tar.gz
-	sha256sums = 03381a84c1e176d738f7a38bbf0fbb0486af1eb6e4bc81e4e82dc05423fd7ba6
+	source = obs-text-pthread-2.0.0.tar.gz::https://github.com/norihiro/obs-text-pthread/archive/2.0.0.tar.gz
+	sha256sums = 6b5e6687fb0313daa45cf7829d8d9553bc63b448dd1cd5e316d5d8eb1e93dd53
 
 pkgname = obs-text-pthread
