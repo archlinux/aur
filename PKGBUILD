@@ -55,6 +55,7 @@ prepare() {
 
   cd libplacebo
   git config submodule.demos/3rdparty/nuklear.url "${srcdir}/Nuklear"
+  git config submodule.3rdparty/glad.url "${srcdir}/glad"
   git submodule update --init \
     3rdparty/glad \
     demos/3rdparty/nuklear
@@ -71,7 +72,7 @@ build() {
     -D tests=true \
     -D demos=false
 
-   LC_ALL=C ninja
+   PYTHONPATH="${srcdir}/libplacebo/3rdparty/glad" LC_ALL=C ninja
 
 }
 
