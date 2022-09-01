@@ -1,0 +1,69 @@
+From 42bcabbd99087e20d75316503c24d5ae614be797 Mon Sep 17 00:00:00 2001
+From: Carl Dong <accounts@carldong.me>
+Date: Thu, 1 Sep 2022 13:39:47 -0400
+Subject: [PATCH] contrib/init: Better systemd integration
+
+1. Make logs available to journalctl (systemd's logging system) by not
+   specifying -daemonwait, which rightfully has its own set of stdout
+   and stderr descriptors (a user invoking with -daemonwait on the
+   command line should not see any logs). It makes more sense not to
+   daemonize in the systemd context anyway.
+
+2. Make systemd aware of when bitcoind is started and in steady state by
+   specifying -startupnotify='systemd-notify --ready' and Type=notify.
+   NotifyAccess=all is necessary so that the spawned thread for
+   startupnotify is allowed to inform systemd of bitcoind's readiness.
+
+   Note that NotifyAccess=exec won't work because it only allows
+   sd_notify readiness signalling from Exec*= declarations in the
+   .service file.
+
+Note that we currently don't allow multiple startupnotify commands, but
+users can override it in systemd via:
+
+  # systemctl edit bitcoind
+
+By specifying something like:
+
+  [Service]
+  ExecStart=/usr/bin/bitcoind -pid=/run/bitcoind/bitcoind.pid \
+                              -conf=/etc/bitcoin/bitcoin.conf \
+                              -datadir=/var/lib/bitcoind \
+                              -startupnotify='systemd-notify --ready; mycommandhere'
+---
+ contrib/init/bitcoind.service | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/contrib/init/bitcoind.service b/contrib/init/bitcoind.service
+index 93de353bb..270734aff 100644
+--- a/contrib/init/bitcoind.service
++++ b/contrib/init/bitcoind.service
+@@ -18,10 +18,10 @@ After=network-online.target
+ Wants=network-online.target
+ 
+ [Service]
+-ExecStart=/usr/bin/bitcoind -daemonwait \
+-                            -pid=/run/bitcoind/bitcoind.pid \
++ExecStart=/usr/bin/bitcoind -pid=/run/bitcoind/bitcoind.pid \
+                             -conf=/etc/bitcoin/bitcoin.conf \
+-                            -datadir=/var/lib/bitcoind
++                            -datadir=/var/lib/bitcoind \
++                            -startupnotify='systemd-notify --ready'
+ 
+ # Make sure the config directory is readable by the service user
+ PermissionsStartOnly=true
+@@ -30,8 +30,10 @@ ExecStartPre=/bin/chgrp bitcoin /etc/bitcoin
+ # Process management
+ ####################
+ 
+-Type=forking
++Type=notify
++NotifyAccess=all
+ PIDFile=/run/bitcoind/bitcoind.pid
++
+ Restart=on-failure
+ TimeoutStartSec=infinity
+ TimeoutStopSec=600
+-- 
+2.37.3
+

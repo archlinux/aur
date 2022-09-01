@@ -5,22 +5,26 @@ _util_suffixes=('cli' 'qt' 'tx' 'util' 'wallet')
 _pkgname=('bitcoin-daemon' "${_util_suffixes[@]/#/bitcoin-}")
 pkgname=("${_pkgname[@]/%/-bin}")
 pkgver=23.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin is a peer-to-peer network based digital currency (official binary)"
 arch=('x86_64')
 url="https://bitcoincore.org/"
 license=('MIT')
-source=("$pkgbase-$pkgver-bin.tar.gz::https://bitcoincore.org/bin/bitcoin-core-${pkgver}/bitcoin-${pkgver}-x86_64-linux-gnu.tar.gz"
-        "$pkgbase-$pkgver.tar.gz::https://bitcoincore.org/bin/bitcoin-core-${pkgver}/bitcoin-${pkgver}.tar.gz"
+_bindirbase="${pkgbase}-${pkgver}-bin"
+_srcdirbase="${pkgbase}-${pkgver}-src"
+source=("${_bindirbase}.tar.gz::https://bitcoincore.org/bin/bitcoin-core-${pkgver}/bitcoin-${pkgver}-x86_64-linux-gnu.tar.gz"
+        "${_srcdirbase}.tar.gz::https://bitcoincore.org/bin/bitcoin-core-${pkgver}/bitcoin-${pkgver}.tar.gz"
+        "bitcoind.service.patch"
         "bitcoin.sysusers"
         "bitcoin.tmpfiles"
         "bitcoin-qt.desktop"
         "bitcoin-qt.appdata.xml")
 # We manually extract in prepare()
-noextract=("$pkgbase-$pkgver-bin.tar.gz"
-           "$pkgbase-$pkgver.tar.gz")
+noextract=("${_bindirbase}.tar.gz"
+           "${_srcdirbase}.tar.gz")
 sha256sums=('2cca490c1f2842884a3c5b0606f179f9f937177da4eadd628e3f7fd7e25d26d0'
             '26748bf49d6d6b4014d0fedccac46bf2bcca42e9d34b3acfd9e3467c415acc05'
+            'ad527b35dcfecf4f6db6823b6a09b4fd2823a9db4cb6d528795f7cefe43d5a55'
             '7a77112fb094b9b2e6dd873e24c9a6bacb1f1c453d811a024f271f4b78f2a704'
             'ba83570b4671b18c230f23d8d93cd8faa73179a546655448c14d1644d9b49f35'
             'a020897651c03690eae3411fe401100fd1a2ffaa799247165eb71124609b7959'
@@ -34,8 +38,12 @@ _extract() {
 }
 
 prepare() {
-  _extract "${pkgbase}-${pkgver}-bin"
-  _extract "${pkgbase}-${pkgver}"
+  _extract "$_bindirbase"
+  _extract "$_srcdirbase"
+
+  # Drop this and entries in source= and sha256sums= after
+  # https://github.com/bitcoin/bitcoin/pull/25975 is in a release
+  patch --directory="$_srcdirbase" --forward --strip=1 --input="${srcdir}/bitcoind.service.patch"
 }
 
 # Usage: _package BINNAME
@@ -74,12 +82,12 @@ package_bitcoin-daemon-bin() {
     "$pkgdir/usr/lib/tmpfiles.d/bitcoin.conf"
 
   (
-    cd "${pkgbase}-${pkgver}-bin"
+    cd "$_bindirbase"
     _package "$binname"
   )
 
   (
-    cd "${pkgbase}-${pkgver}"
+    cd "$_srcdirbase"
 
     _maybe_install_completion "$binname"
     install -Dm644 contrib/init/"$binname".service \
@@ -100,12 +108,12 @@ package_bitcoin-cli-bin() {
   conflicts=('bitcoin-cli')
 
   (
-    cd "${pkgbase}-${pkgver}-bin"
+    cd "$_bindirbase"
     _package "$binname"
   )
 
   (
-    cd "${pkgbase}-${pkgver}"
+    cd "$_srcdirbase"
 
     _maybe_install_completion "$binname"
 
@@ -117,7 +125,7 @@ package_bitcoin-qt-bin() {
   local binname=bitcoin-qt
 
   pkgdesc="Bitcoin is a peer-to-peer network based digital currency - Qt"
-  depends=(fontconfig freetype2 hicolor-icon-theme libxcb libxkbcommon)
+  depends=(gcc-libs fontconfig freetype2 hicolor-icon-theme libxcb libxkbcommon)
   provides=('bitcoin-qt')
   conflicts=('bitcoin-qt')
 
@@ -127,12 +135,12 @@ package_bitcoin-qt-bin() {
     "$pkgdir"/usr/share/metainfo/bitcoin-qt.appdata.xml
 
   (
-    cd "${pkgbase}-${pkgver}-bin"
+    cd "$_bindirbase"
     _package "$binname"
   )
 
   (
-    cd "${pkgbase}-${pkgver}"
+    cd "$_srcdirbase"
 
     _maybe_install_completion "$binname"
     install -Dm644 src/qt/res/src/bitcoin.svg \
@@ -155,12 +163,12 @@ package_bitcoin-tx-bin() {
   conflicts=('bitcoin-tx')
 
   (
-    cd "${pkgbase}-${pkgver}-bin"
+    cd "$_bindirbase"
     _package "$binname"
   )
 
   (
-    cd "${pkgbase}-${pkgver}"
+    cd "$_srcdirbase"
     _maybe_install_completion "$binname"
     install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
   )
@@ -175,12 +183,12 @@ package_bitcoin-util-bin() {
   conflicts=('bitcoin-util')
 
   (
-    cd "${pkgbase}-${pkgver}-bin"
+    cd "$_bindirbase"
     _package "$binname"
   )
 
   (
-    cd "${pkgbase}-${pkgver}"
+    cd "$_srcdirbase"
     _maybe_install_completion "$binname"
     install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
   )
@@ -195,12 +203,12 @@ package_bitcoin-wallet-bin() {
   conflicts=('bitcoin-wallet')
 
   (
-    cd "${pkgbase}-${pkgver}-bin"
+    cd "$_bindirbase"
     _package "$binname"
   )
 
   (
-    cd "${pkgbase}-${pkgver}"
+    cd "$_srcdirbase"
     _maybe_install_completion "$binname"
     install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
   )
