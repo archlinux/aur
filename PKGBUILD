@@ -10,7 +10,7 @@
 # https://docs.nvidia.com/video-technologies/video-codec-sdk/ffmpeg-with-nvidia-gpu/
 
 pkgname=ffmpeg-cuda
-pkgver=5.1
+pkgver=5.1.1
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video. Includes cuda support.'
@@ -100,7 +100,7 @@ provides=(
   ffmpeg
 )
 conflicts=('ffmpeg')
-_tag=e0723b7e4e22492275d476fcd30d759e1198bc5b
+_tag=1bad30dbe34f2d100b43e8f773d3fe0b5eb23523
 source=(
   "git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}"
   'add-av_stream_get_first_dts-for-chromium.patch'
@@ -110,13 +110,12 @@ b2sums=('SKIP'
 
 pkgver() {
   cd ffmpeg
-
   git describe --tags | sed 's/^n//'
 }
 
 prepare() {
   cd ffmpeg
-  git cherry-pick -n e0723b7e4e22492275d476fcd30d759e1198bc5b # remove default IPFS gateway
+  git cherry-pick -n 412922cc6fa790897ef6bb2be5d6f9a5f030754d # remove default IPFS gateway
   patch -Np1 -i ../add-av_stream_get_first_dts-for-chromium.patch # https://crbug.com/1251779
 }
 
