@@ -26,19 +26,19 @@ sha256sums=('7a71b8daa1d389ec2bdccf833418e55c18ed5d061c482be1a3f7e59109da6229'
 options=(!strip)
 
 prepare() {
-    sed -i "s/{pkgversion}/${pkgver}/" r2modman.desktop
+    sed -i "s/{pkgversion}/${pkgver}/" ${srcdir}/r2modman.desktop
 
-    chmod +x r2modman-${pkgver}.AppImage
-    ./r2modman-${pkgver}.AppImage --appimage-extract
+    chmod +x ${srcdir}/r2modman-${pkgver}.AppImage
+    ${srcdir}/r2modman-${pkgver}.AppImage --appimage-extract
 }
 
 package() {
-    install -Dm755 r2modman-${pkgver}.AppImage ${pkgdir}/opt/r2modman/r2modman.AppImage
+    install -Dm755 ${srcdir}/r2modman-${pkgver}.AppImage ${pkgdir}/opt/r2modman/r2modman.AppImage
 
     install -dm755 ${pkgdir}/usr/bin
     ln -s /opt/r2modman/r2modman.AppImage ${pkgdir}/usr/bin/r2modman
 
     install -dm755 ${pkgdir}/usr/share/applications/
     cp -r --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
-    cp --no-preserve=mode,ownership "./r2modman.desktop" "${pkgdir}/usr/share/applications/"
+    cp --no-preserve=mode,ownership "${srcdir}/r2modman.desktop" "${pkgdir}/usr/share/applications/"
 }
