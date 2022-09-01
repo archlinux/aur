@@ -2,7 +2,7 @@
 
 pkgname=obs-command-source
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="This plugin provides a dummy source to execute arbitrary command when scene is switched"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/dummy-source-to-execute-command.952/"
