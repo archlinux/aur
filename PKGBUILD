@@ -1,7 +1,7 @@
 # Maintainer: networkException <git@nwex.de>
 
 pkgname=ungoogled-chromium-bin
-pkgver=104.0.5112.101
+pkgver=105.0.5195.52
 pkgrel=1
 pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=('x86_64')
@@ -16,8 +16,8 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kwallet: support for storing passwords in KWallet on Plasma')
 provides=('chromium')
 conflicts=('chromium')
-source=(https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/$pkgver-$pkgrel/aur.tar.zst)
-sha256sums=('9c3743786c043f4798535ff2adb8863cae1e8381e751c1816196d94e4ccaa892')
+source=(https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/$pkgver-$pkgrel/ungoogled-chromium-$pkgver-$pkgrel-x86_64.pkg.tar.zst)
+sha256sums=('82c44dddfc446eb8bed86d5631838ff13f125b3416a9f22abb4ef7f38a2e181b')
 
 package() {
     cp -R "${srcdir}/usr/" "${pkgdir}/usr"
