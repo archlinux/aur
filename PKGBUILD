@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname=systemd-timer-notify-git
-pkgver=r6.bd09967
+pkgver=r7.b9b1cb2
 pkgrel=1
 pkgdesc="The notification displays on Desktop when systemd-service is started and processed, the notification will be closed automatically when systemd-service's process is done."
 arch=('any')
