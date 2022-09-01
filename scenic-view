@@ -1,2 +1,3 @@
 #!/bin/sh
+cd "${XDG_STATE_HOME:-$HOME/.local/state}" 2>/dev/null
 exec /usr/lib/jvm/java-11-openjdk/bin/java --module-path /usr/lib/jvm/java-11-openjfx/lib --add-modules javafx.web,javafx.fxml,javafx.swing -jar '/usr/share/java/scenic-view/scenicview.jar'  "$@"
