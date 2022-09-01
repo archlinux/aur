@@ -1,7 +1,7 @@
 pkgbase = visual-studio-code-bin
 	pkgdesc = Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications (official binary version)
 	pkgver = 1.71.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.visualstudio.com/
 	install = visual-studio-code-bin.install
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = visual-studio-code-bin
 	sha256sums = dc7dedfb031863f2bdb8d3a12df6bf58b5627b767a56a82cc5d85421e04e94b8
 	sha256sums = 2264dd138b77358709aa49fb3a7fe7d1b05b7ab0715760d66958000107bdd3dc
 	sha256sums = 24ba09a6398c9781ed7cb6f1a9f6f38ec204899ba1f33db92638bf6d3cb0aed6
-	sha256sums = d0df59f13bd721a5c896eeaa0ca407bd304f6bd6ec41f54c19221ccc31eeb06b
+	sha256sums = 8257a5ad82fa1f7dec11dfa064217b80df4cfec24f50cec7ca0ad62cf8295bfe
 	source_x86_64 = code_x64_1.71.0.tar.gz::https://update.code.visualstudio.com/1.71.0/linux-x64/stable
 	sha256sums_x86_64 = dfc8ba0631188974d2497236d85a450177eb2ca3801e99e4f2674fcbb05cd932
 	source_i686 = code_ia32_1.71.0.tar.gz::https://update.code.visualstudio.com/latest/linux-ia32/stable
