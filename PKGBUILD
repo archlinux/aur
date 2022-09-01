@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=105.0a1+20220811.1+hd9acc6dde178
+pkgver=106.0a1+20220901.1+haf1fc1e6eb24
 pkgrel=1
 pkgdesc="Development version of the popular Firefox web browser"
 arch=(x86_64)
@@ -11,9 +11,8 @@ license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/channel/#nightly"
 depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
-             autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
-             python-setuptools python-zstandard lld dump_syms
-             wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi
+             autoconf2.13 rust clang llvm jack nodejs cbindgen nasm python
+             lld dump_syms wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi
              mercurial)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
@@ -25,11 +24,9 @@ options=(!emptydirs !makeflags !strip !lto !debug)
 _repo=https://hg.mozilla.org/mozilla-central
 source=("hg+$_repo"
         firefox-install-dir.patch
-        zstandard-0.18.0.diff
         $pkgname.desktop identity-icons-brand.svg)
 sha256sums=('SKIP'
             'c80937969086550237b0e89a02330d438ce17c3764e43cc5d030cb21c2abce5f'
-            'a6857ad2f2e2091c6c4fdcde21a59fbeb0138914c0e126df64b50a5af5ff63be'
             '7d90a9abacb5cc9870a31323ef31e361f620538c56609001d6d9e789b99b5e97'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
@@ -71,9 +68,6 @@ prepare() {
   mkdir mozbuild
   cd mozilla-central
   patch -Np1 -i ../firefox-install-dir.patch
-
-  # Unbreak build with python-zstandard 0.18.0
-  patch -Np1 -i ../zstandard-0.18.0.diff
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
@@ -122,7 +116,7 @@ build() {
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZ_ENABLE_FULL_SYMBOLS=1
-  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
+  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
 
   # LTO needs more open files
   ulimit -n 4096
