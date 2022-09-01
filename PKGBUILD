@@ -3,7 +3,7 @@
 
 pkgname=peruse
 pkgver=1.80
-pkgrel=3
+pkgrel=4
 pkgdesc='Comic book viewer and creator based on KDE Frameworks 5'
 arch=('x86_64')
 url='https://peruse.kde.org/'
@@ -21,7 +21,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../peruse \
+  cmake ../$pkgname-$pkgver \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \

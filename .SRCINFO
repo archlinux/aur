@@ -1,7 +1,7 @@
 pkgbase = peruse
 	pkgdesc = Comic book viewer and creator based on KDE Frameworks 5
 	pkgver = 1.80
-	pkgrel = 3
+	pkgrel = 4
 	url = https://peruse.kde.org/
 	arch = x86_64
 	license = LGPL2.1
