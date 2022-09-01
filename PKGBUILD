@@ -2,12 +2,12 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=python-databricks-cli
 _pkgname=databricks-cli
-pkgver=0.17.2
+pkgver=0.17.3
 pkgrel=1
 pkgdesc='Command Line Interface for Databricks'
 arch=('any')
 url='https://github.com/databricks/databricks-cli'
-license=('Apache-2.0')
+license=('Apache')
 depends=(
   'python'
   'python-click>=7.0'
@@ -19,7 +19,7 @@ depends=(
 )
 makedepends=(python-build python-installer python-wheel)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/databricks/databricks-cli/archive/$pkgver.tar.gz")
-sha256sums=('9ac3eaebaf5bc174c8ad3aa0254602ed7067fc5b3d2c1f3cb14af2f277ae57b8')
+sha512sums=('549b51b5f3f9088415eaea4d53e2afed4f0726f3e74996133cc557aba5435eec40d2cdd4f92735e60cb142bd0217a9c02dab91e7e6c331eca55ade7dcc3beca9')
 
 
 build() {

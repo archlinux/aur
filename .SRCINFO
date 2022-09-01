@@ -1,6 +1,6 @@
 pkgbase = python-databricks-cli
 	pkgdesc = Command Line Interface for Databricks
-	pkgver = 0.17.2
+	pkgver = 0.17.3
 	pkgrel = 1
 	url = https://github.com/databricks/databricks-cli
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-databricks-cli
 	depends = python-requests>=2.17.3
 	depends = python-tabulate>=0.7.7
 	depends = python-six>=1.10.0
-	source = python-databricks-cli-0.17.2.tar.gz::https://github.com/databricks/databricks-cli/archive/0.17.2.tar.gz
-	sha256sums = 9ac3eaebaf5bc174c8ad3aa0254602ed7067fc5b3d2c1f3cb14af2f277ae57b8
+	source = python-databricks-cli-0.17.3.tar.gz::https://github.com/databricks/databricks-cli/archive/0.17.3.tar.gz
+	sha512sums = 549b51b5f3f9088415eaea4d53e2afed4f0726f3e74996133cc557aba5435eec40d2cdd4f92735e60cb142bd0217a9c02dab91e7e6c331eca55ade7dcc3beca9
 
 pkgname = python-databricks-cli
