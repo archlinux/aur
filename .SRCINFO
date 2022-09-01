@@ -18,7 +18,7 @@ pkgbase = fwup
 	depends = xdelta3
 	provides = fwup
 	conflicts = fwup
-	source = git+https://github.com/fhunleth/fwup#tag=v1.9.1
+	source = git+https://github.com/fwup-home/fwup#tag=v1.9.1
 	md5sums = SKIP
 
 pkgname = fwup

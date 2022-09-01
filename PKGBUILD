@@ -15,7 +15,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('git+https://github.com/fhunleth/fwup#tag=v1.9.1')
+source=('git+https://github.com/fwup-home/fwup#tag=v1.9.1')
 noextract=()
 md5sums=('SKIP')
 
