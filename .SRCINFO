@@ -3,7 +3,6 @@ pkgbase = obs-text-pthread
 	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://obsproject.com/forum/resources/obs-pthread-text.1287/
-	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
