@@ -23,19 +23,19 @@ if [[ -z "$OBS_FT_USE_AS_BLAS" ]]; then
 fi
 
 pkgname=obs-face-tracker
-pkgver=0.5.4
-pkgrel=4
+pkgver=0.6.4
+pkgrel=1
 pkgdesc="This plugin provide video filters for face detection and face tracking for mainly a speaking person"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/face-tracker.1294/"
 license=("GPL2")
-depends=("obs-studio<28")
+depends=("obs-studio>=28")
 makedepends=("cmake")
 options=('debug')
 source=(
   "$pkgname::git+https://github.com/norihiro/obs-face-tracker.git#tag=$pkgver"
   "libvisca-ip::git+https://github.com/norihiro/libvisca-ip.git"
-  "dlib::git+https://github.com/davisking/dlib.git#tag=v19.23"
+  "dlib::git+https://github.com/norihiro/dlib.git"
 )
 sha256sums=(
   "SKIP"
@@ -57,12 +57,9 @@ fi
 
 prepare() {
   cd "$pkgname"
+  git config submodule.dlib.url $srcdir/dlib
   git config submodule.libvisca.url $srcdir/libvisca-ip
   git submodule update
-
-  cp -r $srcdir/dlib .
-  cd dlib
-  patch -Np1 < $srcdir/$pkgname/ci/common/dlib-cmake-no-openblasp.patch
 }
 
 build() {
@@ -70,7 +67,11 @@ build() {
   cmake -B build \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
   -DCMAKE_INSTALL_PREFIX='/usr' \
+  -DCMAKE_INSTALL_LIBDIR=lib \
+  -DLINUX_PORTABLE=OFF \
+  -DQT_VERSION=6 \
   -DDLIB_USE_CUDA=$OBS_FT_ENABLE_CUDA
+
   make -C build
 }
 
