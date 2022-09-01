@@ -1,38 +1,46 @@
-# Maintainer: Grey Christoforo <first name [at] last name [dot] net>
+# Maintainer: Jelle van der Waa <jelle@vdwaa.nl>
+# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=uranium
-pkgver=2.4.0
-pkgrel=1
-pkgdesc="A Python framework for building Desktop applications."
+pkgver=5.0.0
+pkgrel=2
+pkgdesc="Python framework for building 3D printing related applications"
 url="https://github.com/Ultimaker/Uranium"
 arch=('any')
-license=('GPLv3')
-depends=('python' 'qt5-quickcontrols' 'pyqt5-common' 'python-pyqt5' 'python-numpy' 'arcus')
-makedepends=('cmake')
-source=("https://github.com/Ultimaker/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('90b8aeb612a4639277b453fa416ff890')
+license=('LGPL')
+depends=('python' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'python-pyqt5' 'python-numpy'
+         'arcus' 'python-shapely' 'python-scipy' 'python-cryptography' 'python-certifi')
+makedepends=('cmake' 'ninja')
+checkdepends=('mypy' 'python-pytest' 'python-twisted')
+options=('debug')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Ultimaker/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('3a6482c0698320ecb87f41f725565fdee1e99cb4258043130816d5181ead8603')
 
 prepare() {
   cd Uranium-${pkgver}
-  sed -i 's,DESTINATION lib/python${PYTHON_VERSION_MAJOR}/dist-packages,DESTINATION lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages,g' CMakeLists.txt
-  sed -i 's,DESTINATION lib/python${PYTHON_VERSION_MAJOR}/dist-packages/cura),DESTINATION lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages/cura),g' CMakeLists.txt
+  sed -i 's,/dist-packages,.${PYTHON_VERSION_MINOR}/site-packages,g' CMakeLists.txt
 }
 
 build() {
-  cd Uranium-${pkgver}
-  mkdir -p build
+  cmake -S Uranium-${pkgver} -B build -G Ninja \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr
+
+  cmake --build build
+}
+
+check() {
   cd build
-  cmake .. \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release
-  make
+  # all tests fail atm
+  # ctest
 }
 
 package() {
-  cd Uranium-${pkgver}/build
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
 
-  #install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+# Move cmake module to right dir
+  mv "$pkgdir"/usr/share/cmake{-*,}
 }
 
 # vim:set ts=2 sw=2 et:
