@@ -3,7 +3,7 @@
 
 _name=EasyOCR
 pkgname=python-easyocr
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=4
 pkgdesc="End-to-End Multi-Lingual Optical Character Recognition (OCR) Solution"
 arch=("any")
@@ -30,7 +30,7 @@ provides=('python-easyocr')
 conflicts=('python-easyocr-git')
 replaces=('python-easyocr-git')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('da3434d5dad8b273c008d52893bb129293b7eafd5ae9ef8d514e583f87409dae')
+sha256sums=('8f7259c64bc7317de3ea88e999d0eeff4c03795c215bf9aa789f403e3649ae04')
 
 build() {
     cd "$_name-$pkgver"
