@@ -25,17 +25,20 @@ build() {
 
   sed -i 's@-Werror@@g' configure
 
+  PKG_CONFIG_PATH="/usr/local/lib/pkgconfig" \
   ./configure \
-    --prefix=/usr \
-    --libdir=/usr/lib \
-    --incdir=/usr/include \
-    --shlibdir=/usr/lib \
+    --prefix=/var/local \
+    --libdir=/var/local/lib \
+    --incdir=/var/local/include \
+    --shlibdir=/var/local/lib \
     --enable-gpl \
     --enable-static \
     --enable-shared \
     --disable-yasm \
     --disable-doc \
-    --enable-libx264
+    --enable-libx264 \
+    --extra-ldflags=-L/usr/local/lib \
+    --extra-cflags=-I/usr/local/include
     
     make clean
     make "-j$(nproc)" || return 1
@@ -45,8 +48,8 @@ package() {
   cd ffmpeg-${pkgver}
 
   make DESTDIR="$pkgdir" install
-  rm -rf "$pkgdir"/usr/bin/ffprobe
-  rm -rf "$pkgdir"/usr/share
+  rm -rf "$pkgdir"/var/local/bin/ffprobe
+  rm -rf "$pkgdir"/var/local/share
 
-  find "${pkgdir}"/usr/bin -type f -exec mv {} {}21 \;
+  find "${pkgdir}"/var/local/bin -type f -exec mv {} {}21 \;
 }
