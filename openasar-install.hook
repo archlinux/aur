@@ -1,0 +1,13 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = discord
+Target = discord-canary
+Target = discord-development
+Target = openasar-bin
+
+[Action]
+Depends = openasar-bin
+When = PostTransaction
+Exec = /usr/share/openasar/openasar-install.sh

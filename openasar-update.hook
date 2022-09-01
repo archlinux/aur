@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = discord
+Target = discord-canary
+Target = discord-development
+Target = openasar-bin
+
+[Action]
+Depends = openasar-bin
+When = PreTransaction
+Exec = /usr/share/openasar/openasar-remove.sh

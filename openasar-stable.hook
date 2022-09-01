@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Remove
+Type = Package
+Target = discord
+
+[Action]
+Depends = openasar-bin
+When = PreTransaction
+Exec = /usr/share/openasar/openasar-delete.sh "/opt/discord/resources/app.asar.old"

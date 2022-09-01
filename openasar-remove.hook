@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Remove
+Type = Package
+Target = openasar-bin
+
+[Action]
+Depends = openasar-bin
+When = PreTransaction
+Exec = /usr/share/openasar/openasar-remove.sh
