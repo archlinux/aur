@@ -1,10 +1,11 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
+# Contributor: Nicola Squartini <tensor5@gmail.com> (electron-launcher.sh script)
 # Contributor: Matthew McGinn <mamcgi@gmail.com>
 _projectname='electron'
 _pkgname="${_projectname}5"
 pkgname="$_pkgname-bin"
 pkgver='5.0.13'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Build cross platform desktop apps with web technologies - version 5 - binary version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://${_projectname}js.org"
@@ -34,14 +35,20 @@ source_aarch64=(
 	"$pkgname-chromedriver-$pkgver-$pkgrel-aarch64.zip::$_releaseurl/chromedriver-v$pkgver-linux-arm64.zip"
 	"$pkgname-$pkgver-$pkgrel-aarch64.zip::$_releaseurl/$_projectname-v$pkgver-linux-arm64.zip"
 )
-sha256sums_x86_64=('4af6c27b38a2afce2cec6195e1a2541f963d4c6536fd8ca38c634381117d7fd5'
-                   '8ded43241c4b7a6f04f2ff21c75ae10e4e6db1794e8b1b4f7656c0ed21667f8f')
-sha256sums_i686=('7c55fc6eafc0ff7368f5afc55af06d94589cfa93bf9273c3f629b688f097c2b4'
-                 'ccf4a5ed226928a30bd3ea830913d99853abb089bd4a6299ffa9fa0daa8d026a')
-sha256sums_armv7h=('de67346716501f66c6ba880adda58b338cd14397d82d59f99d9a19206d1d06fc'
-                   '96ad83802bc61d87bb952027d49e5dd297f58e4493e66e393b26e51e09065add')
-sha256sums_aarch64=('153332ccd57678913eb602ec0f44cf3c5be57578c13b92672827b24784cfda76'
-                    '01f0fd313b060fb28a1022d68fb224d415fa22986e2a8f4aded6424b65e35add')
+source=('electron-launcher.sh')
+sha512sums=('65ff3a52eb619ebf8d2fee285c86a6c0524a6cb0d521c8c882887f94ef2c701ba8d53b4b96dc3d3571bfe1466c2de766a78749b3320701b4cc67a974c06f382b')
+sha512sums_x86_64=('70e0da5268ca86e3ecca3c94e3a815160b24c9861f4a7dc1d1eef743450bc8ba5681a755697d828c5555b8f36ee7ab645f2e6c51fa569e78067879957becb65d'
+                   '03df450fca8951eb90d634a06c01f21f6c223f1e0de2573d0c1482cdc92ff950bc4a82342fd3f7d9d6962df1e6392cbfd01e9cc64319c75ee5b62ea1eb999e5b')
+sha512sums_i686=('38675ffa869a09ce4c7b04e2af4a60caf8fdf0cd33ef5dfe9a259b3d936193b872bbc8e62b8529d3b170e16ad80d2d8cc0118708791a6241ccf82d990c416e84'
+                 '03262eda03636bf551a322b40b351ff308ac897258d73c1cf0d524096309343077b38984865ba4235b81b3c9e308ced25d54cf2b3a1068457eb58df1a4e8772a')
+sha512sums_armv7h=('eee2bbdf97587f905f7bb704bff16fac213499551597ff61f52ae0d64da02e21705507682e64d920450d6f2112673e74a3935342012ac889cde01a26eb522b00'
+                   '041f73ec9683c92f632d6fb21373c406d318a53f6a59461cf8b2df17f77e40e624e824e9282e447ad92f0ffdd5fa5f6454f29d7625b31450cecd453a7c73b65d')
+sha512sums_aarch64=('7bb99121b743a44e1040eb1d4b2a277825e7edbb7de02f83f9e34460b0bf24c83886048c2b95c03d1c29316017693c5bcef6639527e36dc0175c6272862350bb'
+                    '2157af54e9058af24b8ac2ba953aa8f9c8e54141b4da71d00893ad071854446b9a354ac5a005bda353d200c39b74457941a6adf54ce76f4e318125757e65e6dd')
+
+prepare() {
+	sed -i -e "s/%%PKGNAME%%/$_pkgname/g" -e "s/%%PROJECTNAME%%/$_projectname/g" "$srcdir/electron-launcher.sh"
+}
 
 package() {
 	cd "$srcdir/"
@@ -54,8 +61,7 @@ package() {
 
 	chmod u+s "$pkgdir/usr/lib/$_pkgname/chrome-sandbox"
 
-	install -dm755 "$pkgdir/usr/bin"
-	ln -nfs "/usr/lib/$_pkgname/$_projectname" "$pkgdir/usr/bin/$_pkgname"
+	install -Dm755 'electron-launcher.sh' "$pkgdir/usr/bin/$_pkgname"
 
 	for _license in 'LICENSE' 'LICENSES.chromium.html'; do
 		install -Dm644 "$_license" "$pkgdir/usr/share/licenses/$pkgname/$_license"
