@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DescTools
-_pkgver=0.99.45
+_pkgver=0.99.46
 pkgname=r-${_pkgname,,}
-pkgver=0.99.45
+pkgver=0.99.46
 pkgrel=1
 pkgdesc='Tools for Descriptive Statistics'
 arch=('x86_64')
@@ -33,7 +33,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8dfe7057fdcec475bc444761b00db59f6fb7313fd39c7bd6aebeca7f67aceb05')
+sha256sums=('5806d0982342ed31ed7b01afd0cda03fe77a1782d81e5f77e115edfff886d2b8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
