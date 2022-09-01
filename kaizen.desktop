@@ -1,7 +1,6 @@
 [Desktop Entry]
 Name=Kaizen
 Comment=Kaizen ElasticSearch GUI
-Path=~/.config/kaizen
 Exec=/opt/kaizen/kaizen.sh
 Icon=kaizen
 Terminal=false
