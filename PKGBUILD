@@ -1,5 +1,4 @@
 # Maintainer: Moses Narrow <moe_narrow@use.startmail.com>
-# Maintainer: Rudi [KittyCash] <rudi@skycoinmail.com>
 pkgname=skywire-bin
 _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
