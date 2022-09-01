@@ -23,11 +23,11 @@ sha512sums=('549b51b5f3f9088415eaea4d53e2afed4f0726f3e74996133cc557aba5435eec40d
 
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${_pkgname}-${pkgver}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${_pkgname}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
