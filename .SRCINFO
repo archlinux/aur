@@ -1,0 +1,16 @@
+pkgbase = bitrix24
+	pkgdesc = Official Bitrix24 client for Linux.
+	pkgver = 14.0.26
+	pkgrel = 1
+	url = https://www.bitrix24.com/applications.php
+	arch = x86_64
+	license = GPL3
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = alsa-lib
+	source = https://dl.bitrix24.com/b24/bitrix24_desktop.rpm
+	md5sums = e7d5749cb418e197658d845087a2f285
+
+pkgname = bitrix24
