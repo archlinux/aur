@@ -7,7 +7,7 @@ pkgbase = com.xylink.linuxclient
 	license = custom:xylink
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = file://com.xylink.linuxclient_3.3.0.7571-20220823_amd64.deb
-	sha256sums_x86_64 = d29b55bd876e48309266ed6b1938e9f0f7b3bcddc919ef63703e266c9147ebf5
+	source_x86_64 = https://devcdn.ainemo.com/private_cloud/xinchuangclient/xinchuang3.3/signed_com.xylink.linuxclient_3.3.0.7571-20220823_amd64.deb
+	sha256sums_x86_64 = 01952278f2910101ee00d745dc8964de691698a497e66c861cfaf5bbb596f2df
 
 pkgname = com.xylink.linuxclient

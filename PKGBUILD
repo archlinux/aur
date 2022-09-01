@@ -2,14 +2,14 @@
 
 pkgname=com.xylink.linuxclient
 pkgver=3.3.0.7571
-pkgrel=1
+pkgrel=2
 pkgdesc="Xylink Video Conferencing linux client."
 arch=('x86_64')
 url="https://www.xylink.com"
 license=('custom:xylink')
 options=('!strip' '!emptydirs')
-source_x86_64=(file://com.xylink.linuxclient_${pkgver}-20220823_amd64.deb)
-sha256sums_x86_64=('d29b55bd876e48309266ed6b1938e9f0f7b3bcddc919ef63703e266c9147ebf5')
+source_x86_64=(https://devcdn.ainemo.com/private_cloud/xinchuangclient/xinchuang3.3/signed_com.xylink.linuxclient_"$pkgver"-20220823_amd64.deb)
+sha256sums_x86_64=('01952278f2910101ee00d745dc8964de691698a497e66c861cfaf5bbb596f2df')
 
 package(){
 	echo "-> Extracting the data.tar.xz..."
