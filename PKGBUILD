@@ -1,66 +1,30 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
-_pluginname=downstream-keyer
-pkgname=obs-$_pluginname
-pkgver=0.2.3
-_obsver=27.2.0
+pkgname=obs-downstream-keyer
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Add a Downstream Keyer dock to OBS studio"
-arch=("i686" "x86_64" "aarch64")
+arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/downstream-keyer.1254/"
 license=("GPL2")
-depends=("obs-studio>=$_obsver" "obs-studio<28")
-makedepends=("cmake" "git" "libxcomposite" "ffmpeg" "pciutils")
-source=(
-  "$pkgname::git+https://github.com/exeldro/$pkgname#commit=c3efe4df33ba6dc6f1726dbfd64a2658a9fb1936"
-  "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
-)
-sha256sums=(
-  "SKIP"
-  "c52d99cba6c536cb805e3e0f54663c33cfc43a1b7521bec97d241019499f9789"
-)
+depends=("obs-studio>=28")
+makedepends=("cmake")
+source=("$pkgname::git+https://github.com/exeldro/$pkgname#tag=$pkgver")
+sha256sums=("SKIP")
 
-prepare() {
-  rm -rf fakeroot
-
-  cd "obs-studio-$_obsver"/UI/frontend-plugins
-  cp -r "$srcdir/$pkgname" .
-  echo "add_subdirectory($pkgname)" | tee -a CMakeLists.txt >/dev/null
-}
-
-# Need to compile plugin in OBS compilation process
 build() {
-  cd "obs-studio-$_obsver"
+  cd "$pkgname"
   cmake -B build \
-  -DCMAKE_INSTALL_PREFIX=/usr \
+  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+  -DCMAKE_INSTALL_PREFIX='/usr' \
   -DCMAKE_INSTALL_LIBDIR=lib \
-  -DENABLE_UI=ON \
-  -DENABLE_WAYLAND=OFF \
-  -DENABLE_PIPEWIRE=OFF \
-  -DENABLE_SCRIPTING=OFF \
-  -DDISABLE_DECKLINK=ON \
-  -DDISABLE_ALSA=ON \
-  -DDISABLE_JACK=ON \
-  -DDISABLE_PULSEAUDIO=ON \
-  -DDISABLE_V4L2=ON \
-  -DDISABLE_SPEEXDSP=ON \
-  -DDISABLE_LIBFDK=ON \
-  -DDISABLE_SNDIO=ON \
-  -DDISABLE_FREETYPE=ON \
-  -DDISABLE_VLC=ON \
-  -DBUILD_BROWSER=OFF \
-  -DBUILD_VST=OFF \
-  -DWITH_RTMPS=OFF
+  -DLINUX_PORTABLE=OFF \
+  -DQT_VERSION=6
 
   make -C build
 }
 
 package() {
-  mkdir -p "$pkgdir"/usr/lib/obs-plugins
-  mkdir -p "$pkgdir"/usr/share/obs/obs-plugins
-
-  cd "obs-studio-$_obsver"
-  make -C build DESTDIR="$srcdir/fakeroot/" install
-  cp -a "$srcdir"/fakeroot/usr/lib/obs-plugins/$_pluginname.so "$pkgdir"/usr/lib/obs-plugins/
-  cp -a "$srcdir"/fakeroot/usr/share/obs/obs-plugins/$_pluginname "$pkgdir"/usr/share/obs/obs-plugins/
+  cd "$pkgname"
+  make -C build DESTDIR="$pkgdir/" install
 }
