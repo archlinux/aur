@@ -3,24 +3,33 @@
 
 pkgname=peruse
 pkgver=1.80
-pkgrel=2
+pkgrel=3
 pkgdesc='Comic book viewer and creator based on KDE Frameworks 5'
 arch=('x86_64')
 url='https://peruse.kde.org/'
-license=('GPL')
-depends=('kconfig' 'kdeclarative' 'kfilemetadata' 'ki18n' 'kiconthemes' 'kio' 'kirigami2'
-         'knewstuff')
-makedepends=('cmake' 'extra-cmake-modules' 'ninja')
-optdepends=('baloo: find books on the system'
-            'okular: support for various document formats')
+license=('LGPL2.1')
+depends=('baloo' 'kconfig' 'kiconthemes' 'kio-extras' 'knewstuff'
+         'kirigami2' 'plasma-framework' 'qt5-graphicaleffects')
+makedepends=('extra-cmake-modules' 'git' 'kdoctools')
+optdepends=('okular: for cbr, cb*, pdf, deja-vu, epub file support')
 source=("https://download.kde.org/stable/$pkgname/$pkgname-$pkgver.tar.xz")
 sha256sums=('c674959ca176d236f1568156e35036d8d65655952bcbf17b1be4ece4d2ba3351')
 
+prepare() {
+  mkdir -p build
+}
+
 build() {
-  cmake -S $pkgname-$pkgver -B build -G Ninja -DCMAKE_INSTALL_PREFIX='/usr'
-  cmake --build build
+  cd build
+  cmake ../peruse \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DKDE_INSTALL_LIBDIR=lib \
+    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+  make
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+  make -C build DESTDIR=$pkgdir install
 }
+
