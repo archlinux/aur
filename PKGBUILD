@@ -1,6 +1,6 @@
 # Maintainer: Ayush Jha <ayushjha@pm.me>
 pkgname=nekuvi
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 epoch=
 pkgdesc="नेपाली कुन्जीपेटि विन्यास A better layout for Nepali Keyboards based for xkb system"
