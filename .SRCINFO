@@ -1,0 +1,11 @@
+pkgbase = openscad-bosl2-git
+	pkgdesc = BOSL2 library for OpenSCAD
+	pkgver = r3176.b4872e2
+	pkgrel = 1
+	url = github.com/revarbat/BOSL2
+	arch = any
+	license = BSD 2-Clause
+	source = git+https://github.com/revarbat/BOSL2.git
+	md5sums = SKIP
+
+pkgname = openscad-bosl2-git
