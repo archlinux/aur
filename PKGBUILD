@@ -1,7 +1,7 @@
 # Maintainer: Kirisame Marisa <jackeyz2022@mail.ru>
 pkgname='hmcl-clean-bin'
 pkgver=3.5.3.222
-pkgrel=2
+pkgrel=3
 pkgdesc="Clean Version of HMCL, remove dev/nightly warnings, multiplayer(not FOSS), sponsor messages and so on. "
 arch=('x86_64')
 url="https://github.com/weiliang1503/HMCL-Clean"
@@ -12,8 +12,8 @@ source=("https://github.com/weiliang1503/HMCL-Clean/releases/download/Release/hm
         "hmcl-launch-script"
         "craft_table.png")
 sha256sums=('c9e05e3c4cd90b5b37eb85abddca92d82aa1a863b0d3ad59c04e541c7d010093'
-            '9a561081f8f3ece3da114afd4f6d90565ca0e04716eef4ea88c6b4306566ae9b'
-            '9100404ad7405e9ce38a1d566a6039c9ee6bcec87eff1825adb9f7c32ca13a6a'
+            '762ff9773f3a7752b738de54e3fd6da1425a6eac733495556074e95e10263eb6'
+            'b645a2dd2d3839d046d21d42e96c114c7b489dca6ef945bd369f2a5fbf782ccc'
             '2989a1b5301b8c7b9afdae5696c6a4e5246afa2d4f1f3d3dad5c192f036a9b4c')
 
 package() {
