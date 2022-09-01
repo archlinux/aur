@@ -1,7 +1,7 @@
 pkgbase = git-cola
 	pkgdesc = The highly caffeinated Git GUI
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git-cola.github.io
 	arch = any
 	license = GPL2
