@@ -1,13 +1,14 @@
 pkgbase = bashhub-client
 	pkgdesc = saves every terminal command entered across all sessions and systemto the cloud
 	pkgver = 2.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/rcaloras/bashhub-client
 	arch = x86_64
 	license = Apache
 	checkdepends = python-pytest
 	checkdepends = python-click
 	checkdepends = python-dateutil
+	checkdepends = python-requests
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel

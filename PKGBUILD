@@ -2,7 +2,7 @@
 _pkgname=bashhub-client
 pkgname=${_pkgname}
 pkgver=2.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc='saves every terminal command entered across all sessions and systemto the cloud'
 arch=('x86_64')
 _repo_prefix='github.com/rcaloras'
@@ -28,6 +28,7 @@ checkdepends=(
 	python-pytest
 	python-click
 	python-dateutil
+	python-requests
 )
 makedepends=(
 	python-build python-installer python-wheel python-setuptools
