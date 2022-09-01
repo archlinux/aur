@@ -15,9 +15,8 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/VTK-${pkgver}"
-  # We have a patched libhariu
-  sed -i "s|2.4.0|2.3.0|g" ThirdParty/libharu/CMakeLists.txt
-  sed -i "s|set(HPDF_DLL 1)|set(HPDF_DLL 0)|g" ThirdParty/libharu/CMakeLists.txt
+  # libharu 2.4.0
+  curl -L https://gitlab.kitware.com/vtk/vtk/-/commit/c8b27677ee410233.patch | patch -p1 -d VTK
 }
 
 
