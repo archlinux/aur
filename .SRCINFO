@@ -16,6 +16,7 @@ pkgbase = fwup
 	depends = help2man
 	depends = autoconf
 	depends = xdelta3
+	depends = dosfstools
 	provides = fwup
 	conflicts = fwup
 	source = git+https://github.com/fwup-home/fwup#tag=v1.9.1
