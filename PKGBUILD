@@ -1,7 +1,7 @@
 # Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
 
 pkgname=mailnagtray
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="A tray icon applet for mail monitoring using Mailnag"
 arch=('i686' 'x86_64' 'aarch64')
