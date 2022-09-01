@@ -1,5 +1,5 @@
 pkgname=mingw-w64-rapidyaml
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='A library to parse and emit YAML, and do it fast (mingw-w64)'
 depends=('mingw-w64-crt')
@@ -16,7 +16,6 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 prepare () {
   cd "$srcdir"/rapidyaml
   git submodule update --force --init --recursive
-  sed -i "s|Windows.h|windows.h|g" ext/c4core/src/c4/windows.hpp
 }
 
 build() {
