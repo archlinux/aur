@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-openimageio
 	pkgdesc = A library for reading and writing images, including classes, utilities, and applications (mingw-w64)
-	pkgver = 2.3.18.0
-	pkgrel = 2
+	pkgver = 2.3.19.0
+	pkgrel = 1
 	url = http://www.openimageio.org/
 	arch = any
 	license = BSD-3-Clause
@@ -30,9 +30,7 @@ pkgbase = mingw-w64-openimageio
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = openimageio-2.3.18.0.tar.gz::https://github.com/OpenImageIO/oiio/archive/v2.3.18.0.tar.gz
-	source = fix-ffmpeg-5.1.patch::https://github.com/OpenImageIO/oiio/commit/01cf730d2fcf05085b6368e3b96ee5fb60ffbaac.patch
-	sha256sums = 09c7fa0685fdb34f696f2e5d44c2ba2336b5ca6ad8851cb516575508fe06397a
-	sha256sums = 44278408fa7585e753c172abfe39feeeffcb29e488ca9881d6d3c169aa5feef6
+	source = openimageio-2.3.19.0.tar.gz::https://github.com/OpenImageIO/oiio/archive/v2.3.19.0.tar.gz
+	sha256sums = 602c146aebee775f123459a6c6be753054144b8d82777de26965f2cc3e88113a
 
 pkgname = mingw-w64-openimageio

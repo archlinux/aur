@@ -2,8 +2,8 @@
 
 _pkgname=openimageio
 pkgname=mingw-w64-${_pkgname}
-pkgver=2.3.18.0
-pkgrel=2
+pkgver=2.3.19.0
+pkgrel=1
 pkgdesc='A library for reading and writing images, including classes, utilities, and applications (mingw-w64)'
 url='http://www.openimageio.org/'
 license=('BSD-3-Clause')
@@ -32,11 +32,8 @@ makedepends=('mingw-w64-cmake' 'mingw-w64-robin-map' 'mingw-w64-wine' 'mingw-w64
 arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
-source=(
-	"$_pkgname-$pkgver.tar.gz::https://github.com/OpenImageIO/oiio/archive/v${pkgver}.tar.gz"
-	'fix-ffmpeg-5.1.patch::https://github.com/OpenImageIO/oiio/commit/01cf730d2fcf05085b6368e3b96ee5fb60ffbaac.patch')
-sha256sums=('09c7fa0685fdb34f696f2e5d44c2ba2336b5ca6ad8851cb516575508fe06397a'
-            '44278408fa7585e753c172abfe39feeeffcb29e488ca9881d6d3c169aa5feef6')
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/OpenImageIO/oiio/archive/v${pkgver}.tar.gz")
+sha256sums=('602c146aebee775f123459a6c6be753054144b8d82777de26965f2cc3e88113a')
 
 _srcdir="oiio-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
@@ -48,10 +45,10 @@ _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DND
 	-DUSE_EMBEDDED_LIBSQUISH=OFF
 	-DREQUIRED_DEPS='JPEGTurbo;PNG;TBB;GIF;Webp;Libsquish;Freetype;OpenColorIO;OpenCV;FFmpeg;HDF5;LibRaw;Libheif;Ptex' )
 
-prepare() {
-	cd "${_srcdir}"
-	patch -p1 -i "${srcdir}/fix-ffmpeg-5.1.patch"
-}
+#prepare() {
+#	cd "${_srcdir}"
+#	patch -p1 -i "${srcdir}/fix-ffmpeg-5.1.patch"
+#}
 
 build() {
 	for _arch in ${_architectures}; do
