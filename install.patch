@@ -1,0 +1,62 @@
+--- mil-std-1553-linux-bsp-13.4.0.orig/install.sh	2020-04-24 09:30:16.583318820 +0200
++++ mil-std-1553-linux-bsp-13.4.0/install.sh	2020-04-24 10:04:58.328634346 +0200
+@@ -2,7 +2,9 @@
+ 
+ BSP_DIR=`pwd`
+ BSP_SRC_DIR=${BSP_DIR}/src
+-PREFIX=/usr/local
++if [ -z $PREFIX ]; then
++	PREFIX=/usr
++fi
+ COMMAND="install"
+ VERBOSE="no"
+ BUILDLOG=${BSP_DIR}/build.log
+@@ -129,17 +131,11 @@
+ build_bsp() {
+ 
+     echo "Building PCI tsw module for kernel `uname -r`"
+-    make -C ${BSP_SRC_DIR}/tsw CONFIG_AIM_PCI=y install >> ${BUILDLOG} 2>&1 || failure "Failed to build PCI tsw module"
++    make -C ${BSP_SRC_DIR}/tsw CONFIG_AIM_PCI=y KBUILD_MODPOST_WARN=y install >> ${BUILDLOG} 2>&1 || failure "Failed to build PCI tsw module"
+ 
+     echo "Building AIM PCI module for kernel `uname -r`"
+     make -C ${BSP_SRC_DIR}/drivers/pci CONFIG_AIM_MIL=y >> ${BUILDLOG} 2>&1 || failure "Failed to build PCI driver module"
+ 
+-    echo "Building USB tsw module for kernel `uname -r`"
+-    make -C ${BSP_SRC_DIR}/tsw CONFIG_AIM_USB=y install >> ${BUILDLOG} 2>&1 || failure "Failed to build USB tsw module"
+-
+-    echo "Building AIM USB module for kernel `uname -r`"
+-    make -C ${BSP_SRC_DIR}/drivers/usb CONFIG_AIM_MIL=y >> ${BUILDLOG} 2>&1 || failure "Failed to build USB driver module"
+-
+     echo "Building library and samples"
+     make -C ${BSP_SRC_DIR}/ANS-Common >> ${BUILDLOG} 2>&1 || failure "Failed to build ANS-Common library"
+     make -C ${BSP_SRC_DIR}/library >> ${BUILDLOG} 2>&1 || failure "Failed to build library"
+@@ -151,29 +147,6 @@
+ 
+ # Installs all of the BSP components. They must have been build before
+ install_bsp() {
+-    # Install PCI driver
+-    echo "Installing AIM PCI module to /lib/modules/`uname -r`/extra"
+-    make -C ${BSP_SRC_DIR}/drivers/pci CONFIG_AIM_MIL=y install >> ${BUILDLOG} 2>&1 || failure "Failed to install MIL PCI driver module"
+-
+-    # Install USB driver
+-    echo "Installing AIM USB module to /lib/modules/`uname -r`/extra"
+-    make -C ${BSP_SRC_DIR}/drivers/usb CONFIG_AIM_MIL=y install >> ${BUILDLOG} 2>&1 || failure "Failed to install MIL USB driver module"
+-
+-    # Now load PCI driver module
+-    depmod || failure "Building of module dependencies failed"
+-    cat /proc/modules | grep aim_mil > /dev/null
+-    if [ $? -eq 0 ]; then
+-        rmmod aim_mil || failure "Removal of aim_mil module failed"
+-    fi
+-    modprobe aim_mil || failure "Loading of aim_mil driver module failed"
+-
+-    # Now load USB driver module
+-    cat /proc/modules | grep aim1553usb > /dev/null
+-    if [ $? -eq 0 ]; then
+-        rmmod aim1553usb || failure "Removal of aim1553usb module failed"
+-    fi
+-    modprobe aim1553usb || failure "Loading of aim1553usb driver module failed"
+-
+     echo "Installing library to ${PREFIX}/lib and header files to ${PREFIX}/include/aim_mil"
+     make -C ${BSP_SRC_DIR}/library install >> ${BUILDLOG} 2>&1 || failure "Failed to install library"
+ 

@@ -1,0 +1,18 @@
+pkgbase = ape1553-bsp
+	pkgdesc = Drivers and board support package for AIM 1553 PCI devices
+	pkgver = 14.1.2
+	pkgrel = 1
+	url = www.aim-online.com
+	install = ape1553-bsp.install
+	arch = x86_64
+	license = custom
+	makedepends = linux-headers
+	makedepends = fakeroot
+	source = file://mil-std-1553-linux-bsp-14.1.2.tar.gz
+	source = install.patch
+	source = dma_set_mask.patch
+	md5sums = 7ea33b93764f89a2377bdaa2991e876e
+	md5sums = 41879fc0c30125300f89a75ba52592a2
+	md5sums = 62e01a4ef2ffab3e0feecc533b8a0198
+
+pkgname = ape1553-bsp

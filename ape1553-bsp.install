@@ -1,0 +1,20 @@
+post_install () {
+	echo ">>> Updating module dependencies. Please wait ..."
+	depmod
+
+	echo ">>> Updating library run time bindings. Please wait ..."
+	sbin/ldconfig -r .
+
+	echo ">>> Please load/unload aim_mod kernel module manually"
+}
+
+post_upgrade() {
+	echo ">>> Updating module dependencies. Please wait ..."
+	depmod
+
+	echo ">>> Updating library run time bindings. Please wait ..."
+	sbin/ldconfig -r .
+
+	echo ">>> Please load/unload aim_mod kernel module manually"
+}
+
