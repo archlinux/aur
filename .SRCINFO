@@ -4,6 +4,7 @@ pkgbase = libshumate-git
 	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/libshumate
 	arch = x86_64
+	arch = aarch64
 	license = LGPL
 	checkdepends = xorg-server-xvfb
 	makedepends = git
