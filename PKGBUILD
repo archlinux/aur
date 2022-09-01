@@ -1,14 +1,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=latex2e-help-texinfo-fr  
-pkgver=2020_12_30
+pkgver=2022_08_29
 pkgrel=1
 pkgdesc="Inofficial LaTeX2e Reference Manual in info format - french"
 url="https://ctan.org/pkg/latex2e-help-texinfo-fr"
 arch=('any')
 license=('custom')
 source=("$pkgname-$pkgver.zip::http://mirrors.ctan.org/info/$pkgname.zip")
-sha256sums=('6929582a0fe0e0529e09b7790caf1935d4343cb49c951b53c92134dd57069447')
+sha256sums=('a354c72b62a849077ab184591aa89cb844821aeeeeb5bf2eb99986712a55f87a')
 
 package() {
   cd "$srcdir/$pkgname"
