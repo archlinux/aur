@@ -2,7 +2,7 @@
 
 pkgname=meld-git
 pkgver=3.21.3.6.g8112b4e8
-pkgrel=1
+pkgrel=2
 pkgdesc='Visual diff and merge tool'
 url='http://meldmerge.org/'
 license=(GPL)
