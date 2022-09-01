@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-dfttest2-git
 	pkgdesc = Plugin for Vapoursynth: dfttest2 (GIT Version)
 	pkgver = v4.0.gbb5bad6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AmusementClub/vs-dfttest2
 	arch = x86_64
 	license = GPL2
@@ -9,6 +9,7 @@ pkgbase = vapoursynth-plugin-dfttest2-git
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = gcc11
+	makedepends = unzip
 	depends = vapoursynth
 	depends = cuda
 	provides = vapoursynth-plugin-dfttest2
