@@ -1,6 +1,6 @@
 pkgbase = r-bioccheck
 	pkgdesc = Bioconductor-specific package checks
-	pkgver = 1.32.0
+	pkgver = 1.32.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BiocCheck
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-bioccheck
 	optdepends = r-rmarkdown
 	optdepends = r-runit
 	optdepends = r-usethis
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocCheck_1.32.0.tar.gz
-	sha256sums = 6ccdef1c86dfe76d8d6e031c34e7f39e4bb2eb48fba9d71bafd088deebef2fcc
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocCheck_1.32.1.tar.gz
+	sha256sums = 9c8a527bec66295182ad057ded5bf16b00ee0d9fcd77c6565de05e1d7eee042f
 
 pkgname = r-bioccheck
