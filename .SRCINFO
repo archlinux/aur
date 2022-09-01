@@ -1,0 +1,21 @@
+pkgbase = pcre2-static
+	pkgdesc = A library that implements Perl 5-style regular expressions. 2nd version
+	pkgver = 10.40
+	pkgrel = 1
+	url = http://www.pcre.org/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = BSD
+	depends = gcc-libs
+	options = staticlibs
+	options = !libtool
+	source = https://github.com/PhilipHazel/pcre2/releases/download/pcre2-10.40/pcre2-10.40.tar.bz2
+	source = https://github.com/PhilipHazel/pcre2/releases/download/pcre2-10.40/pcre2-10.40.tar.bz2.sig
+	validpgpkeys = 45F68D54BBE23FB3039B46E59766E084FB0F43D8
+	sha256sums = 14e4b83c4783933dc17e964318e6324f7cae1bc75d8f3c79bc6969f00c159d68
+	sha256sums = SKIP
+
+pkgname = pcre2-static
