@@ -6,7 +6,7 @@
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-harfbuzz-static
-pkgver=4.3.0
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="OpenType text shaping engine (mingw-w64)"
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=('mingw-w64-meson'
              'ragel')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("https://github.com/harfbuzz/harfbuzz/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('32184860ddc0b264ff95010e1c64e596bd746fe4c2e34014a1185340cdddeba6')
+sha256sums=('5352ff2eec538ea9a63a485cf01ad8332a3f63aa79921c5a2e301cef185caea1')
 
 prepare() {
   cd "$srcdir/harfbuzz-$pkgver"
