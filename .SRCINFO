@@ -1,7 +1,7 @@
 pkgbase = obs-studio-browser
 	pkgdesc = Free and open source software for video recording and live streaming. With everything except service integration
-	pkgver = 27.2.4
-	pkgrel = 2
+	pkgver = 28.0.0
+	pkgrel = 1
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
 	license = GPL3
@@ -12,15 +12,18 @@ pkgbase = obs-studio-browser
 	makedepends = luajit
 	makedepends = sndio
 	makedepends = lsb-release
+	makedepends = asio
+	makedepends = nlohmann-json
+	makedepends = websocketpp
 	makedepends = libajantv2
-	makedepends = cef-minimal-obs=95.0.0_MediaHandler.2462+g95e19b8+chromium_95.0.4638.69_3
 	makedepends = python
 	depends = jack
 	depends = gtk-update-icon-cache
 	depends = x264
 	depends = rnnoise
 	depends = pciutils
-	depends = qt5-wayland
+	depends = qt6-svg
+	depends = qt6-wayland
 	depends = libxcomposite
 	depends = pipewire
 	depends = xdg-desktop-portal
@@ -43,19 +46,25 @@ pkgbase = obs-studio-browser
 	optdepends = libajantv2: AJA NTV 2 support
 	optdepends = decklink: Blackmagic Design DeckLink support
 	optdepends = python: Python scripting
-	provides = obs-studio=27.2.4
+	provides = obs-studio=28.0.0
 	provides = obs-vst
+	provides = obs-websocket
 	provides = obs-browser
 	conflicts = obs-studio
 	conflicts = obs-vst
+	conflicts = obs-websocket
 	conflicts = obs-browser
 	conflicts = obs-linuxbrowser
 	options = debug
-	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=27.2.4
-	source = git+https://github.com/obsproject/obs-browser.git
-	source = git+https://github.com/obsproject/obs-vst.git
+	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=28.0.0
+	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
+	source = obs-websocket::git+https://github.com/obsproject/obs-websocket.git
+	source = qr::git+https://github.com/nayuki/QR-Code-generator.git
+	source = https://cdn-fastly.obsproject.com/downloads/cef_binary_5060_linux64.tar.bz2
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = ac4e2a8ebf20700e4e36353e314f876623633dd5b474778a2548bb66bdbea11d
 
 pkgname = obs-studio-browser
