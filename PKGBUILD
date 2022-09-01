@@ -4,7 +4,7 @@ pkgname=obs-main-view-source
 pkgver=0.2.3
 pkgrel=1
 pkgdesc="This is a simple plugin for OBS Studio that provides a source to duplicate the main view"
-arch=("i686" "x86_64" "aarch64")
+arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/main-view-source.1501/"
 license=("GPL2")
 depends=("obs-studio>=28")

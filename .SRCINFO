@@ -3,7 +3,6 @@ pkgbase = obs-main-view-source
 	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://obsproject.com/forum/resources/main-view-source.1501/
-	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
