@@ -1,6 +1,6 @@
 [Desktop Entry]
 Categories=P2P;VPN;WWW;Network;Internet
-Exec=skywire-cli visor vpn ui
+Exec=skywire-cli vpn ui
 GenericName=Skywire VPN Interface
 Comment=Skywire VPN Interface.
 Icon=skywirevpn

@@ -197,16 +197,18 @@ _msg2 "Visor Public Key:
 ${_green}${_pubkey}${_nc}"
 if [[ $_is_hypervisor == "-i" ]]; then
 	if [[ $(ps -o comm= -p $PPID) != "sshd" ]]; then
-		_msg2 "Starting now on:
-${_red}http://127.0.0.1:8000${_nc}"
+		_msg2 "Starting now on:\n${_red}http://127.0.0.1:8000${_nc}"
 		_vpnurl=$(skywire-cli vpn url -p)
-		_msg2 "Use the vpn:
-${_red}${_vpnurl}${_nc}"
-#			${_red}http://127.0.0.1:8000/#/vpn/${_pubkey}/${_nc}"
+		_msg2 "Use the vpn:\n${_red}${_vpnurl}${_nc}"
 	fi
-	_lanip="$(ip addr show | grep -w inet | grep -v 127.0.0.1 | awk '{ print $2}' | cut -d "/" -f 1)"
-	_msg2 "Access hypervisor UI from local network here:
-${_yellow}http://${_lanip}:8000${_nc}"
+	_hpvurl="Access hypervisor UI from local network here:"
+	_lanips="$(ip addr show | grep -w inet | grep -v 127.0.0.1 | awk '{ print $2}' | cut -d "/" -f 1)"
+	for _lanip in $_lanips
+	do
+		_hpvurl+="\n${_yellow}http://${_lanip}:8000${_nc}"
+	done
+
+	_msg2 "$_hpvurl"
 	_welcome
 	_msg2 "run the following command on OTHER NODES to set this one as the hypervisor:"
     echo -e "${_cyan}skywire-autoconfig ${_yellow}${_pubkey}${_nc}"
