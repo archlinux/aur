@@ -1,0 +1,14 @@
+pkgbase = cbp2make
+	pkgdesc = Makefile generation tool for Code::Blocks IDE
+	pkgver = 147
+	pkgrel = 1
+	url = https://sourceforge.net/projects/cbp2make/
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	source = cbp2make-147.tar.gz::https://master.dl.sourceforge.net/project/cbp2make/cbp2make-stl-rev147.tar.gz
+	source = cbp2make.1
+	sha256sums = 002708b94556cf0b2b8c18e485148d01720e36c42229a40641f15f0c3f21c1e9
+	sha256sums = 79c64b285a8f5c138f51d3b63c25debe7d53f5ff98724e0ebf04e7e152c936df
+
+pkgname = cbp2make

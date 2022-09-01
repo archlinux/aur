@@ -1,0 +1,202 @@
+.TH CBP2MAKE "1" "February 2014" "cbp2make" "User Commands"
+.SH NAME
+cbp2make \- code::blocks Makefile generation tool
+.SH SYNOPSIS
+\fBcbp2make\fR \-in <project_file> [\-cfg <configuration>] [\-out <makefile>] [\-unix] [\-windows] [\-mac] [\-\-all\-os] [\-targets "<target1>[,<target2>[, ...]]"] [\-\-flat\-objects] [\-\-flat\-objpath] [\-\-wrap\-objects] [\-\-wrap\-options] [\-\-with\-deps] [\-\-keep\-objdir] [\-\-keep\-outdir] [\-\-target\-case keep|lower|upper] [\-\-macros\-case keep|lower|upper] [\-\-quote\-path auto|never|always]
+
+\fBcbp2make\fR \-list \-in <project_file_list> [\-cfg <configuration>]
+[\-unix] [\-windows] [\-mac] [\-\-all\-os] [\-targets "<target1>[,<target2>[, ...]]"]
+[\-\-flat\-objects] [\-\-flat\-objpath] [\-\-wrap\-objects] [\-\-wrap\-options]
+[\-\-with\-deps] [\-\-keep\-objdir] [\-\-keep\-outdir] [\-\-target\-case keep|lower|upper]
+[\-\-macros\-case keep|lower|upper] [\-\-quote\-path auto|never|always]
+.SH DESCRIPTION
+cbp2make is a stand-alone build tool that allows you to generate makefile(s)
+for GNU Make out of Code::Blocks IDE project or workspace file.
+.SH OPTIONS
+.TP
+\fB\-in <project_file>\fR
+specifies an input file or a list of files;
+.TP
+\fB\-cfg <configuration>\fR
+specifies a configuration file, see also \fB\-\-local\fR and \fB\-\-global\fR options;
+.TP
+\fB\-out <makefile>\fR
+specifies the name of a makefile or a list of makefiles;
+.TP
+\fB\-unix\fR
+enables Unix / Linux compatible makefile generation;
+.TP
+\fB\-windows\fR
+enables Windows compatible makefile generation;
+.TP
+\fB\-mac\fR
+enables Macintosh compatible makefile generation;
+.TP
+\fB\-\-all\-os\fR
+enables all target platforms at once;
+.TP
+\fB\-targets "<target1>[,<target2>[, ...]]"\fR
+specifies the only build targets that a makefile will be made for;
+.TP
+\fB\-\-flat\-objects\fR
+forces "flat" names for object files with limited character set;
+.TP
+\fB\-\-flat\-objpath\fR
+forces "flat" paths for object files with no subdirectories;
+.TP
+\fB\-\-wrap\-objects\fR
+allows to use multiline lists of objects which makes a makefile easier to read;
+.TP
+\fB\-\-wrap\-options\fR
+allows to use multiline macros;
+.TP
+\fB\-\-with\-deps\fR
+allows a built\-in dependency scanner for C/C++ projects;
+.TP
+\fB\-\-keep\-objdir\fR
+disables command that erase directories for object files in 'clean' target;
+.TP
+\fB\-\-keep\-outdir\fR
+disables command that erase directory for an output binary file in 'clean' target;
+.TP
+\fB\-\-target\-case [keep|lower|upper]\fR
+specifies style for makefile targets;
+.SS
+Common options:
+.TP
+\fB\-\-local\fR
+use configuration from current directory
+.TP
+\fB\-\-global\fR
+use configuration from home directory
+.TP
+\fB\-\-verbose\fR
+show project information
+.TP
+\fB\-\-quiet\fR
+hide all messages
+.TP
+\fB\-\-help\fR
+display this message
+.TP
+\fB\-\-version\fR
+display version information
+.SH CONFIGURATION
+Some installation- or project-specific options, primarily toolchain settings,
+can be saved to a configuration file. By default (since rev.110), cbp2make
+does not save any settings to a configuration file unless the user explicitly
+specifies the \fB\-\-config\fR option. A configuration file can be either
+global (stored in user profile / home directory) or local (stored in current
+directory).
+
+Please, keep in mind that since cbp2make is in early stage of development, an
+old configuration file may become incompatible with new tool version and it
+may be necessary to update it manually or initialize a new one.
+
+When cbp2make is invoked, first it tries to load a local configuration
+file. If a local configuration is missing, next attempt will be to load a
+global one. If this attempt is not successful either, the default built-in
+configuration is used. Configuration lookup order can be overridden with
+\fB\-\-local\fR or \fB\-\-global\fR command line options. If one of options is
+supplied to cbp2make, non-specified configuration is not picked up even if the
+specified one is missing and non-specified do exists.
+.SS
+Manage toolchains
+\fBcbp2make\fR \-\-config toolchain \-\-add [\-unix|\-windows|\-mac] \-chain <toolchain>
+
+\fBcbp2make\fR \-\-config toolchain \-\-remove [\-unix|\-windows|\-mac] \-chain <toolchain>
+.SS
+Manage build tools
+\fBcbp2make\fR \-\-config tool \-\-add [\-unix|\-windows|\-mac] \-chain <toolchain>
+\fB\-tool <tool> \-type <type> <tool options>
+
+\fBcbp2make\fR \-\-config tool \-\-remove [\-unix|\-windows|\-mac] \-chain <toolchain>
+\fB\-tool <tool>
+.SS
+Manage platforms
+\fBcbp2make\fR \-\-config platform [\-unix|\-windows|\-mac] [\-pwd <print_dir_command>]
+[\-cd <change_dir_command>] [\-rm <remove_file_command>]
+[\-rmf <remove_file_forced>] [\-rmd <remove_dir_command>]
+[\-cp <copy_file_command>] [\-mv <move_file_command>]
+[\-md <make_dir_command>] [\-mdf <make_dir_forced>]
+[\-make <default_make_tool>]
+.SS
+Manage global compiler variables
+\fBcbp2make\fR \-\-config variable \-\-add [\-set <set_name>] \-name <var_name> [\-desc <description>] [\-field <field_name>] \-value <var_value>
+
+\fBcbp2make\fR \-\-config variable \-\-remove [\-set <set_name>] [\-name <var_name>] [\-field <field_name>]
+.SS
+Manage options
+\fBcbp2make\fR \-\-config options \-\-default\-options "<options>"
+
+\fBcbp2make\fR \-\-config show
+.SS
+Tool types:
+.TP
+pp
+preprocessor
+.TP
+as
+assembler
+.TP
+cc
+compiler
+.TP
+rc
+resource compiler
+.TP
+sl
+static linker
+.TP
+dl
+dynamic linker
+.TP
+el
+executable linker
+.TP
+nl
+native linker
+.SS
+Tool options (common):
+.TP
+\fB\-desc\fR <description>
+.TP
+\fB\-program\fR <executable>
+.TP
+\fB\-command\fR <command_template>
+.TP
+\fB\-mkv\fR <make_variable>
+.TP
+\fB\-srcext\fR <source_extensions>
+.TP
+\fB\-outext\fR <output_extension>
+.TP
+\fB\-quotepath\fR <yes|no>
+.TP
+\fB\-fullpath\fR <yes|no>
+.TP
+\fB\-unixpath\fR <yes|no>
+.SS
+Tool options (compiler):
+.TP
+\fB\-incsw\fR <include_switch>
+.TP
+\fB\-defsw\fR <define_switch>
+.TP
+\fB\-deps\fR <yes|no>
+.SS
+Tool options (linker):
+.TP
+\fB\-ldsw\fR <library_dir_switch>
+.TP
+\fB\-llsw\fR <link_library_switch>
+.TP
+\fB\-lpfx\fR <library_prefix>
+.TP
+\fB\-lext\fR <library_extension>
+.TP
+\fB\-objext\fR <object_extension>
+.TP
+\fB\-lflat\fR <yes|no>
+.SH SEE ALSO
+codeblocks (1)
