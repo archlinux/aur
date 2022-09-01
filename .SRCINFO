@@ -1,0 +1,18 @@
+pkgbase = python-pynest2d
+	pkgdesc = Python bindings for libnest2d
+	pkgver = 4.12.0
+	pkgrel = 1
+	url = https://github.com/Ultimaker/pynest2d
+	arch = x86_64
+	license = LGPL
+	makedepends = sip4
+	makedepends = cmake
+	makedepends = boost
+	makedepends = libnest2d
+	depends = python
+	depends = polyclipping
+	depends = nlopt
+	source = python-pynest2d-4.12.0.tar.gz::https://github.com/Ultimaker/pynest2d/archive/4.12.0.tar.gz
+	sha512sums = 67451e3817aa308827683153c9f1fae670d95d393fad3b9b10831f7e255469df3be73fa2f90101c6dbf4034c06b51c4b3d9a4aa242f36325bb943003b0ce1842
+
+pkgname = python-pynest2d
