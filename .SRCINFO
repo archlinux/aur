@@ -1,6 +1,6 @@
 pkgbase = frozendepths
 	pkgdesc = A roguelike game with a cold theme.
-	pkgver = 1.06
+	pkgver = 1.06b
 	pkgrel = 1
 	url = https://frozendepths.net/
 	arch = x86_64

@@ -3,7 +3,7 @@
 # Contributor: KillaB <xGenoBlast@gmail.com>
 
 pkgname=frozendepths
-pkgver=1.06
+pkgver=1.06b
 pkgrel=1
 pkgdesc="A roguelike game with a cold theme."
 arch=("x86_64")
