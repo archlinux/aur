@@ -1,8 +1,9 @@
+# Maintainer: Daniel Menelkir <dmenelkir at gmail dot com>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=peruse
 pkgver=1.80
-pkgrel=1
+pkgrel=2
 pkgdesc='Comic book viewer and creator based on KDE Frameworks 5'
 arch=('x86_64')
 url='https://peruse.kde.org/'
