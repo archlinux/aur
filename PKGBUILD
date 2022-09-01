@@ -13,16 +13,16 @@ conflicts=('itd' 'itctl')
 depends=('dbus' 'bluez' 'libpulse')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://gitea.arsenm.dev/Arsen6331/itd/releases/download/v0.0.7/itd_0.0.7_linux_aarch64.tar.gz")
-sha256sums_aarch64=('519c3cae277d1b152c88fabf22ed8632bcd73492befac450bc94b1f6e23fb097')
+sha256sums_aarch64=('a10aaa7d72129b0767c9881158c73d41a3e547344ae0cf5c44d8d51570847af5')
 
 source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://gitea.arsenm.dev/Arsen6331/itd/releases/download/v0.0.7/itd_0.0.7_linux_armv6.tar.gz")
-sha256sums_armv6h=('be83861cbb5f168a479b54db4721b7e39a6d022f8123023a15cba75e5c293c36')
+sha256sums_armv6h=('2c3d5642ad1ecf7ce717442a3529f00651e6d5bbec1cef15d2f13dd201233d22')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://gitea.arsenm.dev/Arsen6331/itd/releases/download/v0.0.7/itd_0.0.7_linux_i386.tar.gz")
-sha256sums_i686=('b8e22d21a8bed9ac815a99aedb5d05d2d93bacac72f07c17129496d8e6a161ca')
+sha256sums_i686=('858b14a51bb24e7ad41958cccfe8a9aa66b167a6aaee86d5f34bee8f79d8feb2')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://gitea.arsenm.dev/Arsen6331/itd/releases/download/v0.0.7/itd_0.0.7_linux_x86_64.tar.gz")
-sha256sums_x86_64=('b4a41ed3a713d7334476357c7013e9d78c5bd8812d8e8eb70facabba24d514a9')
+sha256sums_x86_64=('f09c928fa3b4c810da016d984fde4f9ea2504faed17c7e1633d21d65a07d5f22')
 
 package() {
   # binaries
