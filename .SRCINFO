@@ -1,7 +1,7 @@
 pkgbase = csgo-checker-git
-	pkgdesc = Check CS:GO accounts for bans/cooldowns/wins/ranks (bin)
+	pkgdesc = Check CS:GO accounts for bans/cooldowns/wins/ranks (git)
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dumbasPL/csgo-checker
 	arch = x86_64
 	license = GPL3
