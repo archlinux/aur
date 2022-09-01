@@ -1,7 +1,7 @@
 # Maintainer: Jason Gerecke <killertofu@gmail.com>
 
 pkgname=hid-replay-git
-pkgver=0.7.1.r0.g241710c
+pkgver=0.7.1.r44.g6d83e48
 pkgrel=1
 pkgdesc="HID event recorder and utilities."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ makedepends=('git')
 provides=('hid-replay')
 conflicts=('hid-replay')
 options=('!libtool')
-source=("$pkgname"::git://github.com/bentiss/hid-replay.git#branch=master)
+source=("$pkgname"::git+https://github.com/bentiss/hid-replay.git#branch=master)
 md5sums=('SKIP')
 
 pkgver() {
