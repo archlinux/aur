@@ -1,0 +1,136 @@
+Description: Fix a number of error handling issues
+Author: Stephen Kitt <skitt@debian.org>
+
+* Avoid crashing when handling animation load errors.
+* Correctly free current_filename in explorer-animation.
+* Clarify if statements which were confusing the compiler's
+  diagnostics in histogram-imager.
+
+--- a/src/animation.c
++++ b/src/animation.c
+@@ -376,19 +376,24 @@
+     }
+ }
+ 
+-void animation_load_file(Animation *self, const gchar *filename) {
++gboolean animation_load_file(Animation *self, const gchar *filename) {
+     FILE *f;
+     AnimChunkState state;
+ 
+-    g_return_if_fail((f = fopen(filename, "rb")));
+-    g_return_if_fail(chunked_file_read_signature(f, FILE_SIGNATURE) ||
+-		     chunked_file_read_signature(f, OLD_FILE_SIGNATURE));
++    if (!(f = fopen(filename, "rb"))) {
++	return FALSE;
++    }
++    if (!(chunked_file_read_signature(f, FILE_SIGNATURE) ||
++	  chunked_file_read_signature(f, OLD_FILE_SIGNATURE))) {
++	return FALSE;
++    }
+ 
+     animation_clear(self);
+     state.self = self;
+     chunked_file_read_all(f, CHUNK_CALLBACK(animation_store_chunk), &state);
+ 
+     fclose(f);
++    return TRUE;
+ }
+ 
+ void animation_save_file(Animation *self, const gchar *filename) {
+--- a/src/main.c
++++ b/src/main.c
+@@ -134,10 +134,14 @@
+ 	{
+ 	    GtkTreeIter iter;
+ 
+-	    animation_load_file(animation, optarg);
+-	    animate = TRUE;
+-	    gtk_tree_model_get_iter_first(GTK_TREE_MODEL(animation->model), &iter);
+-	    animation_keyframe_load(animation, &iter, PARAMETER_HOLDER(map));
++	    if (animation_load_file(animation, optarg)) {
++		animate = TRUE;
++		gtk_tree_model_get_iter_first(GTK_TREE_MODEL(animation->model), &iter);
++		animation_keyframe_load(animation, &iter, PARAMETER_HOLDER(map));
++	    } else {
++		fprintf(stderr, "Unable to load animation from %s\n", optarg);
++		return 1;
++	    }
+ 	    break;
+ 	}
+ 
+@@ -210,7 +214,10 @@
+ 	    break;
+ 
+ 	case 1002: /* --chdir */
+-	    chdir(optarg);
++	    if (!chdir(optarg)) {
++		perror("Error changing directory");
++		return 1;
++	    }
+ 	    break;
+ 
+ 	case 1003: /* --pidfile */
+@@ -241,10 +248,14 @@
+ 	    } else if (g_strcasecmp(ext, ".fa") == 0) {
+ 	        GtkTreeIter iter;
+ 
+-		animation_load_file(animation, argv[optind]);
+-		animate = TRUE;
+-	        gtk_tree_model_get_iter_first(GTK_TREE_MODEL(animation->model), &iter);
+-	        animation_keyframe_load(animation, &iter, PARAMETER_HOLDER(map));
++		if (animation_load_file(animation, argv[optind])) {
++		    animate = TRUE;
++		    gtk_tree_model_get_iter_first(GTK_TREE_MODEL(animation->model), &iter);
++		    animation_keyframe_load(animation, &iter, PARAMETER_HOLDER(map));
++		} else {
++		    fprintf(stderr, "Unable to load animation from %s\n", argv[optind]);
++		    return 1;
++		}
+ 	    } else {
+ 	        usage(argv);
+ 	        return 1;
+--- a/src/animation.h
++++ b/src/animation.h
+@@ -82,7 +82,7 @@
+ void         animation_clear                 (Animation           *self);
+ 
+ /* Persistence */
+-void         animation_load_file             (Animation           *self,
++gboolean     animation_load_file             (Animation           *self,
+ 					      const gchar         *filename);
+ void         animation_save_file             (Animation           *self,
+ 					      const gchar         *filename);
+--- a/src/explorer-animation.c
++++ b/src/explorer-animation.c
+@@ -551,8 +551,9 @@
+ 	filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (dialog));
+ 	animation_load_file (self->animation, filename);
+ 	explorer_update_animation_length (self);
+-	if (current_filename);
++	if (current_filename) {
+ 	    g_free (current_filename);
++	}
+ 	current_filename = filename;
+     }
+ #else
+--- a/src/histogram-imager.c
++++ b/src/histogram-imager.c
+@@ -888,10 +888,14 @@
+ 	current.a = ((int)(self->bgalpha       * (1-luma) + self->fgalpha       * luma)) >> 8;
+ 
+ 	/* Always clamp color components */
+-	if (current.r<0) current.r = 0;  if (current.r>255) current.r = 255;
+-	if (current.g<0) current.g = 0;  if (current.g>255) current.g = 255;
+-	if (current.b<0) current.b = 0;  if (current.b>255) current.b = 255;
+-	if (current.a<0) current.a = 0;  if (current.a>255) current.a = 255;
++	if (current.r<0) current.r = 0;
++	if (current.r>255) current.r = 255;
++	if (current.g<0) current.g = 0;
++	if (current.g>255) current.g = 255;
++	if (current.b<0) current.b = 0;
++	if (current.b>255) current.b = 255;
++	if (current.a<0) current.a = 0;
++	if (current.a>255) current.a = 255;
+ 
+ 	/* Colors are always ARGB order in little endian */
+ 	self->color_table.table[count] = IMAGEFU_COLOR(current.a, current.r, current.g, current.b);

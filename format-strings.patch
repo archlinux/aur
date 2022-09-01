@@ -1,0 +1,14 @@
+Description: Ensure format strings are constants
+Author: Stephen Kitt <skitt@debian.org>
+
+--- a/src/exr.cpp
++++ b/src/exr.cpp
+@@ -42,7 +42,7 @@
+     try {
+ 	exr_save_real (hi, filename);
+     } catch (const std::exception &exc) {
+-	GError *nerror = g_error_new (fyre_exr_error_quark(), FYRE_EXR_SAVE_FAILURE, exc.what());
++	GError *nerror = g_error_new (fyre_exr_error_quark(), FYRE_EXR_SAVE_FAILURE, "%s", exc.what());
+ 	*error = nerror;
+     }
+ }

@@ -1,18 +1,20 @@
 pkgbase = fyre
 	pkgdesc = Rendering of the Peter de Jong map
 	pkgver = 1.0.1
-	pkgrel = 13
-	url = http://fyre.navi.cx/
+	pkgrel = 14
+	url = https://github.com/davidt/Fyre
 	arch = x86_64
 	license = GPL
-	depends = openexr
 	depends = libglade
 	depends = gnet
 	depends = shared-mime-info
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
-	source = http://releases.navi.cx/fyre/fyre-1.0.1.tar.bz2
+	source = https://src.fedoraproject.org/repo/pkgs/fyre/fyre-1.0.1.tar.bz2/3058bb171f76ced74f79d876f296ac6f/fyre-1.0.1.tar.bz2
+	source = error-handling.patch
+	source = format-strings.patch
 	sha512sums = 8e65e6ef05c2919659e173b04815579cd550a5d98539860d600d2dd68561493badb98b3eff2cf131335aee9b8b848ceb30956c194a7a69b855e9397679c1c675
+	sha512sums = 8736f05cf152bc10e1d4f5cdb0df2047d6d4cc2e6176c70e21504bb41b5bfe2ac5531ecf2197f02aecaea685de6bab94be400e8423efcae52472a5750bf09ab1
+	sha512sums = 96e3736e32a8381d753a71a5869f6a2cea91bc73ec38859d24fcfc3dcfc55356cc5cee5a687e7085917a7793de2bf4cb483b6955921e4c7e4da52282df53270c
 
 pkgname = fyre
-
