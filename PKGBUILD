@@ -9,7 +9,7 @@ arch=(any)
 url="https://github.com/titibandit/node-imapnotify"
 license=(MIT)
 depends=('nodejs')
-source=($pkgname::git://github.com/titibandit/node-imapnotify
+source=($pkgname::git+https://github.com/titibandit/node-imapnotify
         imapnotify@.service)
 optdepends=()
 makedepends=('npm')

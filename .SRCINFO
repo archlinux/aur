@@ -8,10 +8,9 @@ pkgbase = nodejs-imapnotify
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	source = nodejs-imapnotify::git://github.com/titibandit/node-imapnotify
+	source = nodejs-imapnotify::git+https://github.com/titibandit/node-imapnotify
 	source = imapnotify@.service
 	sha1sums = SKIP
 	sha1sums = 1e82f19dffcfc2db30047f6788a91a1f9a138a65
 
 pkgname = nodejs-imapnotify
-
