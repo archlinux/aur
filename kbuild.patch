@@ -1,0 +1,51 @@
+*** driver_src/pci_driver/Kbuild.orig	2017-09-15 14:47:02.112410492 +0200
+--- driver_src/pci_driver/Kbuild	2017-09-15 14:47:14.345743857 +0200
+***************
+*** 24,33 ****
+  
+  default:
+  	$(MAKE) -C $(KDIR) M=$(PWD) modules
+! 	if [ ! -d "$(INSTALLDIR)" ]; \
+! 	then mkdir -v -p "$(INSTALLDIR)"; \
+! 	fi
+! 	cp star_spw_pci.ko "$(INSTALLDIR)"
+  
+  clean:
+  	/bin/rm -f *.o *.ko "$(INSTALLDIR)"\star_spw_pci.ko
+--- 24,33 ----
+  
+  default:
+  	$(MAKE) -C $(KDIR) M=$(PWD) modules
+! 	#if [ ! -d "$(INSTALLDIR)" ]; \
+! 	#then mkdir -v -p "$(INSTALLDIR)"; \
+! 	#fi
+! 	#cp star_spw_pci.ko "$(INSTALLDIR)"
+  
+  clean:
+  	/bin/rm -f *.o *.ko "$(INSTALLDIR)"\star_spw_pci.ko
+
+*** driver_src/usb_driver/Kbuild.orig	2017-09-15 14:47:02.112410492 +0200
+--- driver_src/usb_driver/Kbuild	2017-09-15 14:47:14.345743857 +0200
+***************
+*** 24,33 ****
+  
+  default:
+  	$(MAKE) -C $(KDIR) M=$(PWD) modules
+! 	if [ ! -d "$(INSTALLDIR)" ]; \
+! 	then mkdir -v -p "$(INSTALLDIR)"; \
+! 	fi
+! 	cp star_spw_usb.ko "$(INSTALLDIR)"
+  
+  clean:
+  	/bin/rm -f *.o *.ko "$(INSTALLDIR)"\star_spw_usb.ko
+--- 24,33 ----
+  
+  default:
+  	$(MAKE) -C $(KDIR) M=$(PWD) modules
+! 	#if [ ! -d "$(INSTALLDIR)" ]; \
+! 	#then mkdir -v -p "$(INSTALLDIR)"; \
+! 	#fi
+! 	#cp star_spw_usb.ko "$(INSTALLDIR)"
+  
+  clean:
+  	/bin/rm -f *.o *.ko "$(INSTALLDIR)"\star_spw_usb.ko

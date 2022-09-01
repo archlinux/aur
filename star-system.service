@@ -1,0 +1,34 @@
+
+[Unit]
+Description=Star Systems Device Config Daemon
+After=systemd-user-sessions.service
+
+[Service]
+Type=simple
+#PIDFile=/var/lock/subsys/star_conf_service
+RemainAfterExit=no
+Restart=no
+
+ExecStartPre=/usr/bin/sleep 30
+ExecStartPost=-/usr/bin/bash -c "rm /dev/shm/star-*"
+ExecStartPre=/usr/bin/bash -c "modprobe star_spw_pci"
+
+# star_conf_service apparently provides confusing exit codes, cannot
+# ignore by prefixing cmd with '-', as star_conf_service sometimes won't load
+# start via bash instead
+ExecStart=/usr/bin/bash -c "/usr/sbin/star_conf_service systemd"
+
+# wait for star_conf_service files to settle
+ExecStartPost=/usr/bin/sleep 2
+
+# ugly, but we need fix permissions at some point, might as well do it here
+# use bash for wildcard expansion
+ExecStartPost=-/usr/bin/bash -c "/usr/bin/chgrp uucp /dev/shm/star-*"
+ExecStartPost=-/usr/bin/bash -c "/usr/bin/chmod g+rw /dev/shm/star-*"
+
+ExecStop=-/usr/bin/killall star_conf_service
+ExecStopPost=-/usr/bin/bash -c "rm /dev/shm/star-*"
+
+[Install]
+WantedBy=multi-user.target
+

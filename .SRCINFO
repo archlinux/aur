@@ -1,0 +1,23 @@
+pkgbase = star-system
+	pkgdesc = STAR-System is the new driver and API system provided with all new and future STAR-Dundee interface and router devices.
+	pkgver = 5.00
+	pkgrel = 2
+	url = http://www.star-dundee.com
+	install = star-system.install
+	arch = x86_64
+	license = custom
+	makedepends = linux-headers
+	makedepends = fakeroot
+	optdepends = qt5-multimedia
+	source = file://star-system_linux_x86-64_v5.00.tgz
+	source = star-system.service
+	source = kbuild.patch
+	source = 99-star_spw_usb.rules
+	source = 99-star_spw_pci.rules
+	md5sums = 32b5de55c435cadf9596cfc9d7a145fd
+	md5sums = 80c6e7bbf350f503d4fd08680b5f9de8
+	md5sums = 77aaf8c6229fd44ef61996abd3ee819a
+	md5sums = bf755f1b4bf51a6f21084627ce0160ee
+	md5sums = 93aade04088f34ae486ff6dc131b4e43
+
+pkgname = star-system

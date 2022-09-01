@@ -1,0 +1,30 @@
+post_install () {
+	echo ">>> Updating udev rules. Please wait ..." 
+	udevadm control --reload-rules
+	udevadm trigger --action=change --subsystem-match=star_spw_pci
+	udevadm trigger --action=change --subsystem-match=star_spw_usb 
+
+	echo ">>> Updating module dependencies. Please wait ..."
+	depmod
+
+	echo ">>> Updating library run time bindings. Please wait ..."
+	sbin/ldconfig -r .
+
+	echo ">>> Please load/unload the SpaceWire kernel modules manually"
+}
+
+post_upgrade() {
+	echo ">>> Updating udev rules..." 
+	udevadm control --reload-rules
+	udevadm trigger --action=change --subsystem-match=star_spw_pci
+	udevadm trigger --action=change --subsystem-match=star_spw_usb 
+	
+	echo ">>> Updating module dependencies. Please wait ..."
+	depmod
+
+	echo ">>> Updating library run time bindings. Please wait ..."
+	sbin/ldconfig -r .
+
+	echo ">>> Please load/unload the SpaceWire kernel modules manually"
+}
+

@@ -1,0 +1,3 @@
+DRIVERS=="star_spw_usb" MODE="0666"
+DRIVER=="star_spw_usb" MODE="0666"
+KERNEL=="star_spw_usb*" MODE="0666"
