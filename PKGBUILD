@@ -5,7 +5,7 @@
 # Contributor: xyproto
 
 pkgname=ags
-pkgver=3.5.1.20
+pkgver=3.5.1.21
 pkgrel=1
 pkgdesc='Engine to run adventure/quest games'
 arch=('x86_64')
@@ -18,9 +18,9 @@ license=('Artistic2.0')
 depends=('dumb-a4' 'libtheora' 'freetype2' 'sdl2' 'alsa-lib' 'jack' 'libx11' 'libxext' 'libxcursor' 'libxpm' 'libxxf86vm')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adventuregamestudio/ags/archive/v.$pkgver.tar.gz")
-sha256sums=('e009c8c4d757f00d3e11a876403659293db518e323a8ae36eeb3fca0537ebeb5')
+sha256sums=('3b6f11b96e9957434c0be757debc11ec0cd9eb29b6f803b805851ca0acf375ae')
 
-_srcdir="ags-v.$pkgver"
+_srcdir="$pkgname-v.$pkgver"
 
 build() {
 	cmake -S "$_srcdir" -B 'build' \
@@ -28,6 +28,8 @@ build() {
 		-DCMAKE_BUILD_TYPE='Release' \
 		-DCMAKE_C_FLAGS_RELEASE='-DNDEBUG -w' \
 		-DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG -w'
+		#-DAGS_USE_LOCAL_ALL_LIBRARIES=ON \
+		#-DAGS_BUILD_TOOLS=ON
 	cmake --build 'build'
 }
 
