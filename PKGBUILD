@@ -54,7 +54,7 @@ fi
 DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=ffmpeg-obs
-pkgver=5.1
+pkgver=5.1.1
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('i686' 'x86_64' 'aarch64')
@@ -163,7 +163,7 @@ provides=(
 )
 conflicts=(ffmpeg)
 options=('debug')
-_tag=e0723b7e4e22492275d476fcd30d759e1198bc5b
+_tag=1bad30dbe34f2d100b43e8f773d3fe0b5eb23523
 _deps_tag=2022-08-02
 source=(
   "ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}"
@@ -425,11 +425,6 @@ prepare() {
   git cherry-pick -n 30aa0c3f4873a92c5e3da8ba8cf030de56bf4cf7
 
   ### Arch Linux changes
-
-  ## Remove default IPFS gateway
-  # ipfsgateway: Remove default gateway
-  # https://github.com/FFmpeg/FFmpeg/commit/412922cc6fa790897ef6bb2be5d6f9a5f030754d
-  git cherry-pick -n 412922cc6fa790897ef6bb2be5d6f9a5f030754d
 
   ## https://crbug.com/1251779
   patch -Np1 -i "${srcdir}"/add-av_stream_get_first_dts-for-chromium.patch
