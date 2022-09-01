@@ -21,7 +21,7 @@ md5sums=('f9f46277153cf49f6947973778516adb')
 build() {
   cd ffDiaporama
   sed -i 's@GTK;GNOME;Qt;KDE;AudioVideo;@AudioVideo;Player;X-Red-Hat-Base;@g' ffDiaporama.desktop
-  qmake-qt5 'QMAKE_CFLAGS_ISYSTEM=-I' ffDiaporama.pro /PREFIX=/usr
+  qmake-qt5 'QMAKE_CFLAGS_ISYSTEM=-I' 'INCLUDEPATH += /var/local/include' ffDiaporama.pro /PREFIX=/usr
   
   make "-j$(nproc)" || return 1
 }
