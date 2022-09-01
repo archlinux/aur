@@ -1,13 +1,12 @@
 pkgbase = casile-git
 	pkgdesc = Caleb’s SILE publishing toolkit
-	pkgver = 0.8.0.r18.g0ee2dcd
+	pkgver = 0.10.4.r0.g9b56c88
 	pkgrel = 1
 	url = https://github.com/sile-typesetter/casile
 	arch = x86_64
 	license = AGPL3
 	makedepends = autoconf-archive
 	makedepends = cargo
-	makedepends = luarocks
 	makedepends = node-prune
 	makedepends = yarn
 	depends = bc
@@ -28,6 +27,7 @@ pkgbase = casile-git
 	depends = libertinus-font
 	depends = libgit2
 	depends = lua
+	depends = luarocks
 	depends = m4
 	depends = make
 	depends = mdbook
@@ -64,7 +64,7 @@ pkgbase = casile-git
 	depends = python-ruamel-yaml
 	depends = python-usfm2osis-cw-git
 	depends = libgit2.so
-	provides = casile=0.8.0.r18.g0ee2dcd
+	provides = casile=0.10.4.r0.g9b56c88
 	conflicts = casile
 	source = casile-git::git+https://github.com/sile-typesetter/casile.git
 	sha256sums = SKIP

@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.8.0.r18.g0ee2dcd
+pkgver=0.10.4.r0.g9b56c88
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
@@ -25,6 +25,7 @@ depends=(bc
          libertinus-font
          libgit2
          lua
+         luarocks
          m4
          make
          mdbook
@@ -66,7 +67,6 @@ depends+=("${_lua_deps[@]/#/lua-}"
 depends+=(libgit2.so)
 makedepends=(autoconf-archive
              cargo
-             luarocks
              node-prune
              yarn)
 provides=("${pkgname%-git}=$pkgver")
