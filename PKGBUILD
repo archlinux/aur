@@ -11,13 +11,13 @@ fi
 
 _pluginname=tuna
 pkgname=obs-$_pluginname
-pkgver=1.7.1
+pkgver=1.8.1
 pkgrel=1
 arch=("i686" "x86_64" "aarch64")
 pkgdesc="Get song info from right within obs"
 url="https://obsproject.com/forum/resources/tuna.843/"
 license=('GPL2')
-depends=("obs-studio<28" "libmpdclient" "taglib")
+depends=("obs-studio>=28" "libmpdclient" "taglib")
 makedepends=("cmake" "vlc" "git")
 conflicts=("obs-plugin-tuna-bin" "obs-plugin-tuna-git")
 options=('debug')
@@ -40,18 +40,20 @@ prepare() {
   cp $srcdir/FindTaglib.cmake cmake/external/.
   cp $srcdir/deps_CMakeLists.txt deps/CMakeLists.txt
 
-  sed -i '29 a find_package(LibMPDClient REQUIRED)\nfind_package(Taglib REQUIRED)\nfind_package(LibVLC REQUIRED)' CMakeLists.txt
-  sed -i '40 a include_directories(${LIBVLC_INCLUDE_DIRS})' CMakeLists.txt
+  sed -i '13 a find_package(LibMPDClient REQUIRED)\nfind_package(Taglib REQUIRED)' CMakeLists.txt
 }
 
 build() {
   cd $_pluginname
-  cmake -B build\
+  cmake -B build \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
   -DCMAKE_INSTALL_PREFIX='/usr' \
-  -DGLOBAL_INSTALLATION=ON \
+  -DCMAKE_INSTALL_LIBDIR=lib \
+  -DLINUX_PORTABLE=OFF \
+  -DQT_VERSION=6 \
   -DCREDS="$SPOTIFY_TOKEN" \
   -DLASTFM_CREDS="$LASTFM_KEY"
+
   make -C build
 }
 
