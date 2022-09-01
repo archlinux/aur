@@ -1,0 +1,16 @@
+pkgbase = ueforth-bin
+	pkgdesc = An EForth inspired version of Forth bootstrapped from a minimalist C kernel
+	pkgver = 7.0.6.19
+	pkgrel = 1
+	url = https://eforth.appspot.com/linux.html
+	arch = x86_64
+	license = Apache
+	depends = gcc-libs
+	depends = glibc
+	provides = ueforth
+	conflicts = ueforth-git
+	noextract = $pkgname-$pkgver.linux
+	source = https://eforth.storage.googleapis.com/releases/ueforth-7.0.6.19.linux
+	sha256sums = 67ff0591d1bc6086ddb07411e1b9a6f65f67a0c0b42ff77efed27e0eef4a03e4
+
+pkgname = ueforth-bin
