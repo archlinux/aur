@@ -4,7 +4,7 @@ pkgname=obs-multisource-effect
 pkgver=0.2.1
 pkgrel=1
 pkgdesc="This is a simple source providing custom effect to render multiple sources"
-arch=("i686" "x86_64" "aarch64")
+arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/multi-source-effect.1412/"
 license=("GPL2")
 depends=("obs-studio>=28")
