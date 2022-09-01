@@ -1,17 +1,3 @@
-diff --git a/src/Powercord/apis/commands.js b/src/Powercord/apis/commands.js
-index 5a8dc903..f0ee6ee9 100644
---- a/src/Powercord/apis/commands.js
-+++ b/src/Powercord/apis/commands.js
-@@ -53,9 +53,6 @@ class CommandsAPI extends API {
-    * @param {PowercordChatCommand} command Command to register
-    */
-   registerCommand (command) {
--    // @todo: remove this once there's a proper implemention (if any) for fetching the command origin.
--    const stackTrace = (new Error()).stack;
--    const [ , origin ] = stackTrace.match(new RegExp(`${global._.escapeRegExp(powercord.pluginManager.pluginDir)}.([-\\w]+)`)) || stackTrace.match(new RegExp(`${global._.escapeRegExp(join(__dirname, '../coremods'))}.([-\\w]+)`));
- 
-     if (typeof command === 'string') {
-       console.error('no');
 diff --git a/src/Powercord/coremods/moduleManager/components/manage/Base.jsx b/src/Powercord/coremods/moduleManager/components/manage/Base.jsx
 index 0b8a45d9..3e69cf77 100644
 --- a/src/Powercord/coremods/moduleManager/components/manage/Base.jsx
