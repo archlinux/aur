@@ -1,7 +1,7 @@
 pkgbase = lemons
 	pkgdesc = Output script for lemonbar
-	pkgver = 0.6.0
-	pkgrel = 4
+	pkgver = 0.6.1
+	pkgrel = 1
 	url = https://git.sr.ht/~rycwo/lemons
 	arch = any
 	license = custom:WTFPL
@@ -9,13 +9,12 @@ pkgbase = lemons
 	depends = lemonbar-xft-git
 	depends = ttf-font-awesome-4
 	depends = acpi
-	depends = alsa-utils
-	depends = pulseaudio
-	depends = pulseaudio-alsa
 	depends = bspwm
 	depends = iw
+	optdepends = pipewire-pulse: for volume display (either pipewire or pulseaudio must be installed)
+	optdepends = pulseaudio: for volume display
 	optdepends = otf-san-francisco-mono: for a nice default font
-	source = https://git.sr.ht/~rycwo/lemons/archive/0.6.0.tar.gz
-	sha256sums = bdbc5478ad44acc5d4d301152b5a427876cecafb57dd3de82ed13cd54059f82d
+	source = https://git.sr.ht/~rycwo/lemons/archive/0.6.1.tar.gz
+	sha256sums = 60ac0215e46e4825410b45fa0b9ebe20d5dc56b412d49c613f1d825ef58f5caf
 
 pkgname = lemons
