@@ -1,0 +1,13 @@
+pkgbase = shuttle
+	pkgdesc = My Work In progress antivirus
+	pkgver = 1.0.r.
+	pkgrel = 1
+	url = https://github.com/kavulox/shuttle.git
+	arch = x86_64
+	arch = i686
+	license = AGPL3
+	makedepends = git
+	source = git+https://github.com/kavulox/shuttle.git
+	md5sums = SKIP
+
+pkgname = shuttle
