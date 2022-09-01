@@ -1,22 +1,15 @@
 pkgbase = obs-source-copy
 	pkgdesc = Copy and paste scenes, sources and filters on clipboard
-	pkgver = 0.1.4
-	pkgrel = 2
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://obsproject.com/forum/resources/source-copy.1261/
-	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
 	makedepends = cmake
 	makedepends = git
-	makedepends = libxcomposite
-	makedepends = ffmpeg
-	makedepends = pciutils
-	depends = obs-studio>=27.2.0
-	depends = obs-studio<28
-	source = obs-source-copy::git+https://github.com/exeldro/obs-source-copy#commit=822650ce6b471b37d9b9169ea212b0bab245316c
-	source = obs-studio-27.2.0.tar.gz::https://github.com/obsproject/obs-studio/archive/27.2.0.tar.gz
+	depends = obs-studio>=28
+	source = obs-source-copy::git+https://github.com/exeldro/obs-source-copy#commit=c88b3c997439247749a5bffc70a69eee8929742a
 	sha256sums = SKIP
-	sha256sums = c52d99cba6c536cb805e3e0f54663c33cfc43a1b7521bec97d241019499f9789
 
 pkgname = obs-source-copy
