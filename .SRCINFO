@@ -17,6 +17,8 @@ pkgbase = peruse
 	depends = plasma-framework
 	depends = qt5-graphicaleffects
 	optdepends = okular: for cbr, cb*, pdf, deja-vu, epub file support
+	provides = peruse
+	conflicts = peruse-git
 	source = https://download.kde.org/stable/peruse/peruse-1.80.tar.xz
 	sha256sums = c674959ca176d236f1568156e35036d8d65655952bcbf17b1be4ece4d2ba3351
 

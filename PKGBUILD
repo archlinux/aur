@@ -12,6 +12,8 @@ depends=('baloo' 'kconfig' 'kiconthemes' 'kio-extras' 'knewstuff'
          'kirigami2' 'plasma-framework' 'qt5-graphicaleffects')
 makedepends=('extra-cmake-modules' 'git' 'kdoctools')
 optdepends=('okular: for cbr, cb*, pdf, deja-vu, epub file support')
+provides=('peruse')
+conflicts=('peruse-git')
 source=("https://download.kde.org/stable/$pkgname/$pkgname-$pkgver.tar.xz")
 sha256sums=('c674959ca176d236f1568156e35036d8d65655952bcbf17b1be4ece4d2ba3351')
 
