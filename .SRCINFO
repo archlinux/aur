@@ -11,6 +11,6 @@ pkgbase = liblc3-git
 	sha256sums = SKIP
 
 pkgname = liblc3-git
-	depends = 
+	depends = glibc
 	provides = liblc3.so
 	conflicts = liblc3

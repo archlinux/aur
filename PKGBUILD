@@ -35,7 +35,7 @@ check() {
 }
 
 package_liblc3-git() {
-  depends=()
+  depends=(glibc)
   provides=(liblc3.so)
   conflicts=(liblc3)
 
