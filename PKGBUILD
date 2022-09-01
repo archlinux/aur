@@ -3,13 +3,13 @@ options=(!buildflags)
 pkgname=trunk-recorder
 pkgver=4.4.0
 _dlpkgver=${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Records calls from a Trunked Radio System (P25 & SmartNet)"
 arch=(x86_64 i686 armv5 armv6h armv7h aarch64)
 url="https://github.com/robotastic/trunk-recorder"
 license=("GPL3")
 depends=("gnuradio" "gnuradio-osmosdr" "libuhd" "boost" "boost-libs" "sox" "fdkaac")
-makedepends=("cmake" "cppunit")
+makedepends=("cmake" "cppunit" "git")
 optdepends=()
 source=("https://github.com/robotastic/trunk-recorder/archive/v${_dlpkgver}.tar.gz"
   'trunk-recorder.service'
