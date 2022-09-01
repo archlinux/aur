@@ -2,7 +2,7 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phosh
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc='A pure Wayland shell prototype for GNOME on mobile devices'
 arch=(x86_64 aarch64 armv7h)
@@ -14,6 +14,9 @@ depends=(
 	libhandy
 	phoc
 	polkit
+	evolution-data-server
+	upower
+	libnm
 )
 makedepends=(
 	ctags
@@ -22,13 +25,13 @@ makedepends=(
 	vala
 	wayland-protocols
 )
-_tag=412c1a2255d31c8f7a648375f727da43c650ec28 # git rev-parse v${pkgver}
+_tag=4122630266abfd6623e169330da6e7d6bc01be7f # git rev-parse v${pkgver}
 source=("git+${url}.git#tag=${_tag}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd phosh
-  git describe --tags | sed 's/^v//'
+	cd phosh
+	git describe --tags | sed 's/^v//'
 }
 
 prepare() {
