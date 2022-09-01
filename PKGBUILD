@@ -1,15 +1,14 @@
 # Maintainer: Nick Levesque <nick.levesque@gmail.com>
 # Contributor: Kevin Hanselman <kevin-hanselman@gmail.com>
 pkgname=fwup-git
-pkgver=v1.5.0.r1.gaee4cda
+pkgver=e8b8629
 pkgrel=1
 pkgdesc="Configurable embedded Linux firmware update creator and runner (latest from git master)"
 arch=('any')
 url="https://github.com/fhunleth/fwup"
 license=('Apache v2.0')
 groups=()
-#depends=('libsodium' 'libarchive' 'confuse')
-depends=('libsodium' 'libarchive' 'confuse' 'mtools' 'unzip' 'libtool' 'zip' 'help2man' 'autoconf')
+depends=('libsodium' 'libarchive' 'confuse' 'mtools' 'unzip' 'libtool' 'zip' 'help2man' 'autoconf' 'xdelta3' 'dosfstools')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -17,13 +16,13 @@ replaces=()
 backup=()
 options=()
 install=
-source=('git+https://github.com/fhunleth/fwup')
+source=('git+https://github.com/fwup-home/fwup' )
 noextract=()
 md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    printf "%s" "$(git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
+    printf "%s" "$(git rev-parse --short HEAD)"
 }
 
 build() {
