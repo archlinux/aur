@@ -8,7 +8,7 @@
 # Contributor: Ali Akbar
 
 pkgname=bin32-firefox
-pkgver=97.0.1
+pkgver=104.0.1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - 32bit version for 64bit systems"
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=('bin32-firefox-i18n: i18n support'
             'lib32-ffmpeg: extra codec support (x264)')
 source=(https://download-installer.cdn.mozilla.net/pub/firefox/releases/$pkgver/linux-$_arch/en-US/firefox-$pkgver.tar.bz2
         'firefox32.desktop')
-sha256sums=('c736080050a9715077a004add55dcb3dcb3be891d5870939709096bc81195eed'
+sha256sums=('4245963fa4a308e39e33adf561a2dbba544ee4ccb664166a1a0bd3d4866c80e7'
             '8477bb0a22be7fc39fcad1daad444862fac359b74662b447954811fdae1a5bf2')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
