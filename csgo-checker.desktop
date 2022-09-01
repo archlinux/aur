@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=CSGO account checker
+Exec=csgo-checker %U
+Type=Application
+Icon=csgo-checker
+Comment=Check CS:GO accounts for bans/cooldowns/wins/ranks
+Categories=Utility;
+Terminal=false
