@@ -1,22 +1,15 @@
 pkgbase = obs-scrab
 	pkgdesc = Adds a configurable hotkey to quickly select a screen region and add it as an image source to the current scene
-	pkgver = 1.1
-	pkgrel = 5
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://obsproject.com/forum/resources/scrab.845/
-	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
 	makedepends = cmake
 	makedepends = git
-	makedepends = libxcomposite
-	makedepends = ffmpeg
-	makedepends = pciutils
-	depends = obs-studio>=27.2.0
-	depends = obs-studio<28
-	source = obs-scrab-1.1.tar.gz::https://github.com/univrsal/scrab/archive/v1.1.tar.gz
-	source = obs-studio-27.2.0.tar.gz::https://github.com/obsproject/obs-studio/archive/27.2.0.tar.gz
-	sha256sums = d0e14a0fc62591820b2188eecb472afa7e89e9419461b29e605ebf25dce6204e
-	sha256sums = c52d99cba6c536cb805e3e0f54663c33cfc43a1b7521bec97d241019499f9789
+	depends = obs-studio>=28
+	source = obs-scrab-1.2.0.tar.gz::https://github.com/univrsal/scrab/archive/v1.2.0.tar.gz
+	sha256sums = 4395c2020b4adbeeb5357827a3fdf9437df1ae8f6957ef78fa15afbb07b409c3
 
 pkgname = obs-scrab
