@@ -1,0 +1,21 @@
+pkgbase = csgo-checker-git
+	pkgdesc = Check CS:GO accounts for bans/cooldowns/wins/ranks (bin)
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/dumbasPL/csgo-checker
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = npm
+	makedepends = python2
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	provides = csgo-checker
+	conflicts = csgo-checker
+	source = git+https://github.com/dumbasPL/csgo-checker
+	source = csgo-checker.desktop
+	sha256sums = SKIP
+	sha256sums = ca864ac4e882e43e5c6314029d2e40f1f2520e9418819483e6a47b684e7ce011
+
+pkgname = csgo-checker-git
