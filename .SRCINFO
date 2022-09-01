@@ -1,7 +1,7 @@
 pkgbase = bitcoin-bin
-	pkgdesc = Bitcoin is a peer-to-peer network based digital currency (official binary)
+	pkgdesc = A peer-to-peer network based digital currency (official binaries)
 	pkgver = 23.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bitcoincore.org/
 	arch = x86_64
 	license = MIT
@@ -23,20 +23,20 @@ pkgbase = bitcoin-bin
 	sha256sums = 71b125555451e9bc60b54a6658d886bad63bd18c58b5d6e3bd8977b82a70da7a
 
 pkgname = bitcoin-daemon-bin
-	pkgdesc = Bitcoin is a peer-to-peer network based digital currency - daemon
+	pkgdesc = A peer-to-peer network based digital currency - Daemon
 	depends = gcc-libs
 	provides = bitcoin-daemon
 	conflicts = bitcoin-daemon
 	backup = etc/bitcoin/bitcoin.conf
 
 pkgname = bitcoin-cli-bin
-	pkgdesc = Bitcoin is a peer-to-peer network based digital currency - RPC client
+	pkgdesc = A peer-to-peer network based digital currency - RPC client
 	depends = gcc-libs
 	provides = bitcoin-cli
 	conflicts = bitcoin-cli
 
 pkgname = bitcoin-qt-bin
-	pkgdesc = Bitcoin is a peer-to-peer network based digital currency - Qt
+	pkgdesc = A peer-to-peer network based digital currency - Qt
 	depends = gcc-libs
 	depends = fontconfig
 	depends = freetype2
@@ -47,19 +47,19 @@ pkgname = bitcoin-qt-bin
 	conflicts = bitcoin-qt
 
 pkgname = bitcoin-tx-bin
-	pkgdesc = Bitcoin is a peer-to-peer network based digital currency - Transaction tool
+	pkgdesc = A peer-to-peer network based digital currency - Transaction tool
 	depends = gcc-libs
 	provides = bitcoin-tx
 	conflicts = bitcoin-tx
 
 pkgname = bitcoin-util-bin
-	pkgdesc = Bitcoin is a peer-to-peer network based digital currency - Utility
+	pkgdesc = A peer-to-peer network based digital currency - Utility
 	depends = gcc-libs
 	provides = bitcoin-util
 	conflicts = bitcoin-util
 
 pkgname = bitcoin-wallet-bin
-	pkgdesc = Bitcoin is a peer-to-peer network based digital currency - Wallet
+	pkgdesc = A peer-to-peer network based digital currency - Wallet
 	depends = gcc-libs
 	provides = bitcoin-wallet
 	conflicts = bitcoin-wallet

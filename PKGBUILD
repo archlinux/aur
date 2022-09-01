@@ -5,8 +5,8 @@ _util_suffixes=('cli' 'qt' 'tx' 'util' 'wallet')
 _pkgname=('bitcoin-daemon' "${_util_suffixes[@]/#/bitcoin-}")
 pkgname=("${_pkgname[@]/%/-bin}")
 pkgver=23.0
-pkgrel=2
-pkgdesc="Bitcoin is a peer-to-peer network based digital currency (official binary)"
+pkgrel=3
+pkgdesc="A peer-to-peer network based digital currency (official binaries)"
 arch=('x86_64')
 url="https://bitcoincore.org/"
 license=('MIT')
@@ -70,7 +70,7 @@ _maybe_install_completion() {
 package_bitcoin-daemon-bin() {
   local binname=bitcoind
 
-  pkgdesc="Bitcoin is a peer-to-peer network based digital currency - daemon"
+  pkgdesc="A peer-to-peer network based digital currency - Daemon"
   depends=(gcc-libs)
   backup=('etc/bitcoin/bitcoin.conf')
   provides=('bitcoin-daemon')
@@ -102,7 +102,7 @@ package_bitcoin-daemon-bin() {
 package_bitcoin-cli-bin() {
   local binname=bitcoin-cli
 
-  pkgdesc="Bitcoin is a peer-to-peer network based digital currency - RPC client"
+  pkgdesc="A peer-to-peer network based digital currency - RPC client"
   depends=(gcc-libs)
   provides=('bitcoin-cli')
   conflicts=('bitcoin-cli')
@@ -124,7 +124,7 @@ package_bitcoin-cli-bin() {
 package_bitcoin-qt-bin() {
   local binname=bitcoin-qt
 
-  pkgdesc="Bitcoin is a peer-to-peer network based digital currency - Qt"
+  pkgdesc="A peer-to-peer network based digital currency - Qt"
   depends=(gcc-libs fontconfig freetype2 hicolor-icon-theme libxcb libxkbcommon)
   provides=('bitcoin-qt')
   conflicts=('bitcoin-qt')
@@ -157,7 +157,7 @@ package_bitcoin-qt-bin() {
 package_bitcoin-tx-bin() {
   local binname=bitcoin-tx
 
-  pkgdesc="Bitcoin is a peer-to-peer network based digital currency - Transaction tool"
+  pkgdesc="A peer-to-peer network based digital currency - Transaction tool"
   depends=(gcc-libs)
   provides=('bitcoin-tx')
   conflicts=('bitcoin-tx')
@@ -177,7 +177,7 @@ package_bitcoin-tx-bin() {
 package_bitcoin-util-bin() {
   local binname=bitcoin-util
 
-  pkgdesc="Bitcoin is a peer-to-peer network based digital currency - Utility"
+  pkgdesc="A peer-to-peer network based digital currency - Utility"
   depends=(gcc-libs)
   provides=('bitcoin-util')
   conflicts=('bitcoin-util')
@@ -197,7 +197,7 @@ package_bitcoin-util-bin() {
 package_bitcoin-wallet-bin() {
   local binname=bitcoin-wallet
 
-  pkgdesc="Bitcoin is a peer-to-peer network based digital currency - Wallet"
+  pkgdesc="A peer-to-peer network based digital currency - Wallet"
   depends=(gcc-libs)
   provides=('bitcoin-wallet')
   conflicts=('bitcoin-wallet')
