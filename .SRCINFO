@@ -15,11 +15,12 @@ pkgbase = skywire
 	arch = armhf
 	arch = armel
 	arch = arm
+	license = license-free
 	makedepends = git
 	makedepends = go
 	makedepends = musl
 	makedepends = kernel-headers-musl
-	source = https://github.com/skycoin/skywire/archive/refs/tags/v1.1.0-pr1.tar.gz
+	source = https://github.com/skycoin/skywire/archive/refs/tags/v1.1.0.tar.gz
 	source = skywire-autoconfig::https://aur.archlinux.org/cgit/aur.git/plain/skywire-autoconfig?h=skywire-bin
 	source = com.skywire.Skywire.desktop::https://aur.archlinux.org/cgit/aur.git/plain/com.skywire.Skywire.desktop?h=skywire-bin
 	source = com.skywirevpn.SkywireVPN.desktop::https://aur.archlinux.org/cgit/aur.git/plain/com.skywirevpn.SkywireVPN.desktop?h=skywire-bin
@@ -27,10 +28,10 @@ pkgbase = skywire
 	source = skywire.png::https://aur.archlinux.org/cgit/aur.git/plain/skywire.png?h=skywire-bin
 	source = skywire.service::https://aur.archlinux.org/cgit/aur.git/plain/skywire.service?h=skywire-bin
 	source = skywire-autoconfig.service::https://aur.archlinux.org/cgit/aur.git/plain/skywire-autoconfig.service?h=skywire-bin
-	sha256sums = 40b74f7251672e83f72fa0a3d359a9aae26e65c58fae538e1507bfd415b3970b
-	sha256sums = 38d3727b36415db682be48025cdc6ea3d3c5cf331893dd59089a562468cab150
+	sha256sums = 2f50904749231ffddf8ca348214491289d1ca099192caf0c9d0a9a7409f9a7ff
+	sha256sums = 08f0c625a3ae8810f0468a45aa2e463425ec307441f71f6ba48114bda2055316
 	sha256sums = f0300bcde06b6818b637ccc23fa8206a40e67f63815781d265bd10d2cda93e65
-	sha256sums = e6ea2c7471bcf5bc83e8fd831c047ba61b98eab58ca7c055475714dcf6066539
+	sha256sums = 0c20dd44eca0266a3a10fab24c657295a833eba9f78c6b1cf06132b093ac3ba8
 	sha256sums = ec24750a99f5cda8d8a8dc94743943218e1b2088c2b2c7dc1644ee78d954fe7e
 	sha256sums = a6941680b5858ca3e0c85d9bf5824455a0c95524b61e42352462f2abbb750495
 	sha256sums = 19b74f7a9b245a96617f31d1fef7ce1e0231b2359d6525dd3f35d2b2a9d10d18

@@ -1,5 +1,4 @@
- # Maintainer: Moses Narrow <moe_narrow@use.startmail.com>
-# Maintainer: Rudi [KittyCash] <rudi@skycoinmail.com>
+# Maintainer: Moses Narrow <moe_narrow@use.startmail.com>
 _projectname=skycoin
 pkgname=skywire
 _pkgname=${pkgname}
@@ -19,7 +18,7 @@ makedepends=('dpkg' 'git' 'go' 'musl' 'kernel-headers-musl')
 depends=()
 _debdeps=""
 install=skywire.install
-_scripts="skywire-scripts"
+license=('license-free')
 source=("git+${url}.git#branch=develop"
 "skywire-autoconfig::https://aur.archlinux.org/cgit/aur.git/plain/skywire-autoconfig?h=skywire-bin"
 "com.skywire.Skywire.desktop::https://aur.archlinux.org/cgit/aur.git/plain/com.skywire.Skywire.desktop?h=skywire-bin"
@@ -32,9 +31,9 @@ source=("git+${url}.git#branch=develop"
 "prerm.sh::https://aur.archlinux.org/cgit/aur.git/plain/prerm.sh?h=skywire-bin"
 )
 sha256sums=('SKIP'
-            '38d3727b36415db682be48025cdc6ea3d3c5cf331893dd59089a562468cab150'
+            '08f0c625a3ae8810f0468a45aa2e463425ec307441f71f6ba48114bda2055316'
             'f0300bcde06b6818b637ccc23fa8206a40e67f63815781d265bd10d2cda93e65'
-            'e6ea2c7471bcf5bc83e8fd831c047ba61b98eab58ca7c055475714dcf6066539'
+            '0c20dd44eca0266a3a10fab24c657295a833eba9f78c6b1cf06132b093ac3ba8'
             'ec24750a99f5cda8d8a8dc94743943218e1b2088c2b2c7dc1644ee78d954fe7e'
             'a6941680b5858ca3e0c85d9bf5824455a0c95524b61e42352462f2abbb750495'
             '19b74f7a9b245a96617f31d1fef7ce1e0231b2359d6525dd3f35d2b2a9d10d18'
