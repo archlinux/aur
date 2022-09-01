@@ -15,8 +15,8 @@ _architectures="x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/ParaView-v${pkgver}"
-  # We have a patched libharu
-  sed -i "s|2.4.0|2.3.0|" VTK/ThirdParty/libharu/CMakeLists.txt
+  # libharu 2.4.0
+  curl -L https://gitlab.kitware.com/vtk/vtk/-/commit/c8b27677ee410233.patch | patch -p1 -d VTK
   # _isatty
   curl -L https://github.com/gsjaardema/seacas/commit/175e2ecf.patch | patch -p6 -d VTK/ThirdParty/ioss/vtkioss
   # disable pluginxs xml
