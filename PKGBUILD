@@ -5,22 +5,22 @@
 
 _base=SU2
 pkgname=${_base,,}
-pkgver=7.3.1
+pkgver=7.4.0
 pkgrel=1
 pkgdesc="An Open-Source Suite for Multiphysics Simulation and Design"
 url="https://${pkgname}code.github.io"
 license=(LGPL2.1)
-depends=(python-numpy python-mpi4py intel-mkl)
+depends=(python-numpy python-mpi4py intel-oneapi-mkl)
 makedepends=(swig git)
 arch=(x86_64)
-source=("${_base}-${pkgver}::git+https://github.com/${pkgname}code/${_base}.git#tag=v${pkgver}" "${pkgname}.sh")
-sha512sums=('SKIP' '1c753dc503cc56f86f784071a18ae71dd6fbf64a6d7948275f65cfb1187a68dbff9c01729ffdde86147fb2b8ff25cb5aaa934ffda7d3aa1563313a033d650993')
+source=("${_base}-${pkgver}::git+https://github.com/${pkgname}code/${_base}.git#tag=v${pkgver}"
+  "${pkgname}.sh")
+sha512sums=('SKIP'
+  '1c753dc503cc56f86f784071a18ae71dd6fbf64a6d7948275f65cfb1187a68dbff9c01729ffdde86147fb2b8ff25cb5aaa934ffda7d3aa1563313a033d650993')
 
 prepare() {
   cd ${_base}-${pkgver}
   git submodule init && git submodule update
-  # https://github.com/su2code/SU2/issues/1568
-  sed -i 's/static: true/static: false/' ${srcdir}/${_base}-${pkgver}/externals/cgns/hdf5/meson.build
 }
 
 build() {

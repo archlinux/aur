@@ -1,6 +1,6 @@
 pkgbase = su2
 	pkgdesc = An Open-Source Suite for Multiphysics Simulation and Design
-	pkgver = 7.3.1
+	pkgver = 7.4.0
 	pkgrel = 1
 	url = https://su2code.github.io
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = su2
 	makedepends = git
 	depends = python-numpy
 	depends = python-mpi4py
-	depends = intel-mkl
-	source = SU2-7.3.1::git+https://github.com/su2code/SU2.git#tag=v7.3.1
+	depends = intel-oneapi-mkl
+	source = SU2-7.4.0::git+https://github.com/su2code/SU2.git#tag=v7.4.0
 	source = su2.sh
 	sha512sums = SKIP
 	sha512sums = 1c753dc503cc56f86f784071a18ae71dd6fbf64a6d7948275f65cfb1187a68dbff9c01729ffdde86147fb2b8ff25cb5aaa934ffda7d3aa1563313a033d650993
