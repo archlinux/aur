@@ -5,7 +5,7 @@
 # Contributor: Lin Further 
 pkgname=cvmfs
 pkgver=2.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A client-server file system implemented in FUSE and developed to deliver software distributions onto virtual machines in a fast, scalable, and reliable way."
 arch=('x86_64')
 url="http://cernvm.cern.ch/portal/filesystem"
@@ -17,11 +17,13 @@ install=cvmfs.install
 options=('!emptydirs')
 source=("https://ecsft.cern.ch/dist/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz"
         'settings.cmake'
-	    'externals.patch'
+	'externals.patch'
+        'ctime.patch'
         )
 md5sums=('14ad4f039fcb780fb46d582e7d0ec8f8'
          '20dc60c61077f4a3711463e8686d260d'
-         '9c0825047053ac8b6a06228fc06f873f')
+         '9c0825047053ac8b6a06228fc06f873f'
+         'b93f5abe62e1cb8aecc84910b9458ba6')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -30,6 +32,7 @@ prepare() {
     # We remove all those that are provided by Arch/AUR and leave only
     # the ones not currently available
     patch -Np1 -i "$srcdir/externals.patch"
+    patch -Np1 -i "$srcdir/ctime.patch"
 }
 
 build() {
