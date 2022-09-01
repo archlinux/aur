@@ -47,9 +47,6 @@ prepare() {
     rmdir external/$f
     ln -s "$srcdir/$f" external/$f
   done
-
-  # Allow building the project on a newer system than the upstream devs use
-  sed /FatalWarnings/d -i premake5.lua
 }
 
 build() {
