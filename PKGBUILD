@@ -2,7 +2,7 @@
 
 _pkgname=libshumate
 pkgname=${_pkgname}-git
-pkgver=1.0.0.alpha.1.r1.g4804d64
+pkgver=1.0.0.beta.r1.g32f8d1a
 pkgrel=1
 pkgdesc="GTK4 widget to display maps (git version)"
 arch=(x86_64)
@@ -22,12 +22,10 @@ pkgver() {
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-
 build() {
   arch-meson ${_pkgname} build -D gtk_doc=true
   ninja -C build
 }
-
 
 check() {
     # Run tests with headless x11 server.
