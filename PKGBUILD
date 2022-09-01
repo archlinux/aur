@@ -3,7 +3,7 @@
 
 _pkgname=supermodel
 pkgname=$_pkgname-git
-pkgver=r918.a60f998
+pkgver=r921.0eef09b
 pkgrel=1
 pkgdesc='A Sega Model 3 Arcade Emulator'
 arch=('i686' 'x86_64')
@@ -23,12 +23,12 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
   make -f 'Makefiles/Makefile.UNIX'
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
 
   install -Dm755 "$srcdir/supermodel.sh" "$pkgdir/usr/bin/supermodel"
 
