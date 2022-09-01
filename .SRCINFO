@@ -1,0 +1,20 @@
+pkgbase = sip4
+	pkgver = 4.19.25
+	pkgrel = 3
+	url = https://www.riverbankcomputing.com/software/sip/intro
+	arch = x86_64
+	license = custom:"sip"
+	makedepends = python
+	source = https://www.riverbankcomputing.com/static/Downloads/sip/4.19.25/sip-4.19.25.tar.gz
+	sha256sums = b39d93e937647807bac23579edbff25fe46d16213f708370072574ab1f1b4211
+
+pkgname = sip4
+	pkgdesc = A tool that makes it easy to create Python bindings for C and C++ libraries
+	depends = glibc
+	replaces = sip<5
+
+pkgname = python-sip4
+	pkgdesc = Python SIP4 bindings for C and C++ libraries
+	depends = python
+	provides = python-sip
+	replaces = python-sip
