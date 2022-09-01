@@ -28,7 +28,7 @@ options=(!strip)
 
 prepare() {
     chmod +x eDEX-UI-Linux-${CARCH}.AppImage
-    ./eDEX-UI-Linux-${CARCH}.AppImage --appimage-extract
+    ${srcdir}/eDEX-UI-Linux-${CARCH}.AppImage --appimage-extract
 
     sed -i "s/AppRun/env DESKTOPINTEGRATION=false \/usr\/bin\/edex-ui/" "${srcdir}/squashfs-root/edex-ui.desktop"
 }
@@ -43,5 +43,5 @@ package() {
     cp -r --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
     cp --no-preserve=mode,ownership "${srcdir}/squashfs-root/edex-ui.desktop" "${pkgdir}/usr/share/applications/"
 
-    install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-bin}/LICENSE"
+    install -Dm0644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-bin}/LICENSE"
 }
