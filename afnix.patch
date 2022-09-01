@@ -1,0 +1,200 @@
+diff -rupN afnix-src-3.7.0/cnf/bin/afnix-vcomp afnix-src-3.7.0b/cnf/bin/afnix-vcomp
+--- afnix-src-3.7.0/cnf/bin/afnix-vcomp	2022-04-17 17:12:48.000000000 -0400
++++ afnix-src-3.7.0b/cnf/bin/afnix-vcomp	2022-08-31 22:47:01.159807010 -0400
+@@ -117,6 +117,7 @@ getccm () {
+ 	9*) ccvers=09 ;;
+        10*) ccvers=10 ;;
+        11*) ccvers=11 ;;
++       12*) ccvers=12 ;;
+ 	esac
+     fi
+     # check for g++ version
+@@ -130,6 +131,7 @@ getccm () {
+ 	9*) ccvers=09 ;;
+        10*) ccvers=10 ;;
+        11*) ccvers=11 ;;
++       12*) ccvers=12 ;;
+ 	esac
+     fi
+     # check for clang version
+diff -rupN afnix-src-3.7.0/cnf/mak/afnix-gc12.mak afnix-src-3.7.0b/cnf/mak/afnix-gc12.mak
+--- afnix-src-3.7.0/cnf/mak/afnix-gc12.mak	1969-12-31 19:00:00.000000000 -0500
++++ afnix-src-3.7.0b/cnf/mak/afnix-gc12.mak	2022-08-31 22:48:47.925551140 -0400
+@@ -0,0 +1,177 @@
++# ----------------------------------------------------------------------------
++# - afnix-gcc12                                                              -
++# - afnix compiler configuration - gcc configuration                         -
++# ----------------------------------------------------------------------------
++# - This program is  free software;  you can  redistribute it and/or  modify -
++# - it provided that this copyright notice is kept intact.                   -
++# -                                                                          -
++# - This  program  is  distributed in the hope  that it  will be useful, but -
++# - without  any   warranty;  without  even   the   implied    warranty   of -
++# - merchantability  or fitness for a particular purpose. In not event shall -
++# - the copyright holder be  liable for  any direct, indirect, incidental or -
++# - special damages arising in any way out of the use of this software.      -
++# ----------------------------------------------------------------------------
++# - author (c) 1999-2022 amaury   darsch                                     -
++# - author (c) 2011-2013 pino     toscano                      hurd platform -
++# - author (c) 2016-2016 martin   michlmayr                           GCC 05 -
++# - author (c) 2016-2017 amaury   darsch                              GCC 06 -
++# - author (c) 2017-2017 nobuhiro iwamatsu                            GCC 07 -
++# - author (c) 2018-2018 nobuhiro iwamatsu                            GCC 08 -
++# - author (c) 2019-2022 amaury   darsch                        GCC 09/10/11 -
++# - author (c) 2019-2022 amaury   darsch                        GCC 09/10/11 -
++# ----------------------------------------------------------------------------
++
++# ----------------------------------------------------------------------------
++# - compiler and linker section                                              -
++# ----------------------------------------------------------------------------
++
++C		= gcc
++CN		= g++
++CC              = g++
++LD              = g++
++LK		= g++
++AR              = ar
++RANLIB		= ranlib
++STDEVFLAGS      =
++STDCCFLAGS      = -Wall -Werror -fno-builtin -Wno-error=mismatched-new-delete -Wno-error=maybe-uninitialized
++STACCFLAGS	=
++DYNCCFLAGS	= -fPIC
++PLTCCFLAGS      = 
++DEBUGFLAGS      = -g
++OPTCCFLAGS      = -O2
++PFLCCFLAGS      = -g -pg
++COVCCFLAGS      = -g -fprofile-arcs -ftest-coverage
++CPPCCFLAGS      = -nostdinc -nostdinc++
++CXXCCFLAGS      = 
++STDDEFINES      =
++DBGDEFINES      = -DAFNIX_DEBUG
++OPTDEFINES      =
++PFLDEFINES	= -DAFNIX_DEBUG -DAFNIX_PROFILED
++STDINCLUDE      =
++AFXCPPTYPE	= GNU
++AFXCPPVERS	= 12
++
++# ----------------------------------------------------------------------------
++# - compiler dependant libraries                                             -
++# ----------------------------------------------------------------------------
++
++# adjust for linux platform
++ifeq ($(PLATNAME),linux)
++PLTCCFLAGS      = -MMD -pthread
++ifeq ($(OPENMP),yes)
++PLTCCFLAGS     += -fopenmp
++endif
++endif
++
++# adjust for freebsd platform
++ifeq ($(PLATNAME),freebsd)
++PLTDEFINES	= -MMD -D_REENTRANT
++endif
++
++# adjust for gnu/freebsd platform
++ifeq ($(PLATNAME),gnukbsd)
++PLTDEFINES	= -MMD -D_REENTRANT
++ifeq ($(OPENMP),yes)
++PLTCCFLAGS     += -fopenmp
++endif
++endif
++
++# adjust for gnu platform
++ifeq ($(PLATNAME),gnu)
++PLTDEFINES	= -MMD -D_REENTRANT
++ifeq ($(OPENMP),yes)
++PLTCCFLAGS     += -fopenmp
++endif
++endif
++
++# ----------------------------------------------------------------------------
++# - platform dependant linking flags                                         -
++# ----------------------------------------------------------------------------
++
++# adjust for linux platform
++ifeq ($(PLATNAME),linux)
++ARFLAGS		= rc
++LDFLAGS		= -shared -pthread
++ifeq ($(LKMODE),soname)
++LDFLAGS	       += -Wl,-soname,$(SOMAJ)
++endif
++ifeq ($(OPENMP),yes)
++LDFLAGS        += -fopenmp
++endif
++AFXCPPLIBS	=
++endif
++
++# adjust for freebsd platform
++ifeq ($(PLATNAME),freebsd)
++ARFLAGS		= rc
++LDFLAGS		= -shared
++ifeq ($(LKMODE),soname)
++LDFLAGS	       += -Wl,-soname,$(SOMAJ)
++endif
++AFXCPPLIBS	=
++endif
++
++# adjust for gnu/freebsd platform
++ifeq ($(PLATNAME),gnukbsd)
++ARFLAGS		= rc
++LDFLAGS		= -shared
++ifeq ($(LKMODE),soname)
++LDFLAGS	       += -Wl,-soname,$(SOMAJ)
++endif
++AFXCPPLIBS	=
++endif
++
++# adjust for gnu platform
++ifeq ($(PLATNAME),gnu)
++ARFLAGS		= rc
++LDFLAGS		= -shared
++ifeq ($(LKMODE),soname)
++LDFLAGS	       += -Wl,-soname,$(SOMAJ)
++endif
++AFXCPPLIBS	=
++endif
++
++# ----------------------------------------------------------------------------
++# - platform dependant final executable flags                                -
++# ----------------------------------------------------------------------------
++
++LKFLAGS		=
++
++# adjust linker flags for linux
++ifeq ($(PLATNAME),linux)
++LKFLAGS      	= -pthread
++endif
++
++# adjust linker flags for freebsd
++ifeq ($(PLATNAME),freebsd)
++LKFLAGS      	= -pthread
++endif
++
++# ----------------------------------------------------------------------------
++# - target dependant final executable flags                                  -
++# ----------------------------------------------------------------------------
++
++# adjust extra flag for profiled code
++ifeq ($(CCMODE),profiled)
++LKFLAGS	       += -pg
++endif
++
++# adjust platform flag for static or dynamic
++ifeq ($(LKTYPE),dynamic)
++PLTCCFLAGS     += $(DYNCCFLAGS)
++endif
++ifeq ($(LKTYPE),static)
++PLTCCFLAGS     += $(STACCFLAGS)
++endif
++
++# ----------------------------------------------------------------------------
++# - package dependant flags                                                  -
++# ----------------------------------------------------------------------------
++
++ifeq ($(PKGNAM),deb)
++OPTCCFLAGS     += -g
++endif
++
++ifeq ($(PKGNAM),rpm)
++OPTCCFLAGS     += -g
++endif
