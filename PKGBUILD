@@ -1,16 +1,19 @@
-# Maintainer: Grey Christoforo <first name [at] last name [dot] net>
+# Maintainer: Jelle van der Waa <jelle@archlinux.org>
+# Contributor: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=curaengine
-pkgver=2.4.0
-pkgrel=1
-pkgdesc="CuraEngine is a powerful, fast and robust engine for processing 3D models into 3D printing instruction for Ultimaker and other GCode based 3D printers. It is part of the larger open source project called Cura."
+pkgver=4.13.1
+pkgrel=3
+pkgdesc="Engine for processing 3D models into 3D printing instruction for Ultimaker and other GCode based 3D printers."
 url="https://github.com/Ultimaker/CuraEngine"
-arch=('any')
-license=('GPLv3')
-depends=('arcus')
-makedepends=('cmake')
-source=("https://github.com/Ultimaker/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('b2acaf1cd000da903beba985f45e745a')
+arch=('x86_64')
+license=('AGPL')
+depends=('arcus' 'polyclipping')
+checkdepends=('cppunit')
+makedepends=('cmake' 'git' 'gtest' 'rapidjson')
+options=('debug')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Ultimaker/${pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('224379a40e26ae0026a3849d582353e49edf99520401e1fef56c9504638c68c62cfe394dab0eb40e4a447bfe0bfa506a880512e84fd6057a839b6384087c46d0')
 
 
 build() {
@@ -20,15 +23,23 @@ build() {
     
    cmake .. \
      -DCMAKE_INSTALL_PREFIX=/usr \
-     -DCMAKE_BUILD_TYPE=Release
+     -DBUILD_TESTS=ON \
+     -DUSE_SYSTEM_LIBS=ON \
+     -DCMAKE_BUILD_TYPE='None'
 
   make
+}
+
+check() {
+  cd CuraEngine-${pkgver}/build
+  # This test fails in when instance->readMeshGroupMessage(mesh_message) is
+  # called in the buildchroot but not outside
+  ARGS="-E ArcusCommunicationPrivateTest" make test
 }
 
 package() {
   cd CuraEngine-${pkgver}/build
   make DESTDIR="${pkgdir}" install
-  #install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
 # vim:set ts=2 sw=2 et:
