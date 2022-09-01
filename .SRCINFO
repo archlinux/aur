@@ -1,0 +1,27 @@
+pkgbase = itd-bin
+	pkgdesc = Companion daemon for the InfiniTime firmware on the PineTime smartwatch
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://gitea.arsenm.dev/Arsen6331/itd
+	license = GPLv3
+	depends = dbus
+	depends = bluez
+	depends = libpulse
+	conflicts = itd
+	conflicts = itctl
+	provides = itd
+	provides = itctl
+	arch = aarch64
+	source_aarch64 = https://gitea.arsenm.dev/Arsen6331/itd/releases/download/v0.0.7/itd_0.0.7_linux_aarch64.tar.gz
+	sha256sums_aarch64 = 519c3cae277d1b152c88fabf22ed8632bcd73492befac450bc94b1f6e23fb097
+	arch = armv6h
+	source_armv6h = https://gitea.arsenm.dev/Arsen6331/itd/releases/download/v0.0.7/itd_0.0.7_linux_armv6.tar.gz
+	sha256sums_armv6h = be83861cbb5f168a479b54db4721b7e39a6d022f8123023a15cba75e5c293c36
+	arch = i686
+	source_i686 = https://gitea.arsenm.dev/Arsen6331/itd/releases/download/v0.0.7/itd_0.0.7_linux_i386.tar.gz
+	sha256sums_i686 = b8e22d21a8bed9ac815a99aedb5d05d2d93bacac72f07c17129496d8e6a161ca
+	arch = x86_64
+	source_x86_64 = https://gitea.arsenm.dev/Arsen6331/itd/releases/download/v0.0.7/itd_0.0.7_linux_x86_64.tar.gz
+	sha256sums_x86_64 = b4a41ed3a713d7334476357c7013e9d78c5bd8812d8e8eb70facabba24d514a9
+	
+pkgname = itd-bin
