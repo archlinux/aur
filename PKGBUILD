@@ -1,7 +1,7 @@
 # Maintainer: Steffen Hansen <steffengrundsoe@gmail.com>
 pkgname=quickemu
 pkgver=4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Quickly create and run optimised Windows, macOS and Linux desktop virtual machines."
 arch=(any)
 url="https://github.com/quickemu-project/quickemu"
@@ -20,4 +20,8 @@ package() {
   install -Dm755 quickemu "$pkgdir/usr/bin/quickemu"
   install -Dm755 macrecovery "$pkgdir/usr/bin/macrecovery"
   install -Dm755 quickget "$pkgdir/usr/bin/quickget"
+
+  install -Dm644 docs/quickget.1 $pkgdir/usr/share/man/man1/quickget.1
+  install -Dm644 docs/quickemu.1 $pkgdir/usr/share/man/man1/quickemu.1
+  install -Dm644 docs/quickemu_conf.1 $pkgdir/usr/share/man/man1/quickemu_conf.1
 }
