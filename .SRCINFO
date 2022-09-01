@@ -1,10 +1,11 @@
 pkgbase = python-eventlib
 	pkgdesc = Networking library for SIP SIMPLE Client SDK
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AGProjects/python3-eventlib
 	arch = aarch64
 	arch = x86_64
+	makedepends = python-setuptools
 	depends = python-greenlet
 	depends = python-twisted
 	provides = python3-eventlib
