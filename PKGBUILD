@@ -1,5 +1,5 @@
-# Maintainer: acxz <akashpatel2008 at yahoo dot com>
-
+# Maintainer: Gerard Ribugent <ribugent at gmail dot com>
+# Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=python-databricks-cli
 pkgver=0.17.2
 pkgrel=1
