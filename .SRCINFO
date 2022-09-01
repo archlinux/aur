@@ -1,6 +1,6 @@
 pkgbase = python-microstructpy
 	pkgdesc = Microstructure modeling, mesh generation, analysis, and visualization
-	pkgver = 1.5.4
+	pkgver = 1.5.5
 	pkgrel = 1
 	url = https://github.com/kip-hart/MicroStructPy
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = python-microstructpy
 	depends = python-pyvoro-mmalahe
 	depends = python-scipy
 	depends = python-xmltodict
-	source = https://github.com/kip-hart/MicroStructPy/archive/v1.5.4.tar.gz
-	sha512sums = 53f991b55024acc42bf84e584660acf0b73e1c528c9bd2d7a0883be921b26ee4a7433a70d2b27d747989bb2d3b45a3dbff5d602753ae8621922b86c52ebb2731
+	source = https://github.com/kip-hart/MicroStructPy/archive/v1.5.5.tar.gz
+	sha512sums = 
 
 pkgname = python-microstructpy
