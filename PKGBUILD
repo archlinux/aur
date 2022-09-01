@@ -7,7 +7,7 @@ pkgdesc="This plugin provides a dummy source to execute arbitrary command when s
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/dummy-source-to-execute-command.952/"
 license=("GPL2")
-depends=("obs-studio<28")
+depends=("obs-studio>=28")
 makedepends=("cmake")
 options=('debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/norihiro/$pkgname/archive/$pkgver.tar.gz")
