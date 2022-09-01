@@ -18,7 +18,9 @@ depends=('vapoursynth'
   'vapoursynth-plugin-nnedi3_resample-git'
   'vapoursynth-plugin-znedi3-git'
 )
-optdepends=('vapoursynth-plugin-bm3dcuda-git: Fast BM3D cuda/cuda_rtc/cpu support')
+optdepends=('vapoursynth-plugin-bm3dcuda-git: BM3D cuda/cuda_rtc + fast cpu support'
+  'vapoursynth-plugin-bm3dcuda-cpu-git: BM3D fast cpu support, without cuda'
+)
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
