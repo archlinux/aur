@@ -3,7 +3,6 @@ pkgbase = obs-tuna
 	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://obsproject.com/forum/resources/tuna.843/
-	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
