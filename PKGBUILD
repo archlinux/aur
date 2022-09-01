@@ -20,6 +20,7 @@ prepare() {
     cd "$_archive"
     # pycache slipped into release tarballs
     find . -name \*.pyc -delete
+    printf "21a22,24\n> [project]\n> name = 'dephell_setuptools'\n> version = '0.2.5'\n" | patch pyproject.toml
 }
 
 build(){
