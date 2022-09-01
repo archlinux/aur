@@ -1,16 +1,16 @@
 pkgbase = obs-audio-pan-filter
 	pkgdesc = This is a simple plugin to control stereo pan of audio source in OBS Studio
-	pkgver = 0.1.2
-	pkgrel = 4
+	pkgver = 0.2.2
+	pkgrel = 1
 	url = https://obsproject.com/forum/resources/audio-pan-filter.1042/
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
 	makedepends = cmake
-	depends = obs-studio<28
+	depends = obs-studio>=28
 	options = debug
-	source = obs-audio-pan-filter-0.1.2.tar.gz::https://github.com/norihiro/obs-audio-pan-filter/archive/0.1.2.tar.gz
-	sha256sums = f4a93cf85ea98f13861181e93b4c4f60dffef8a8a1206b214bd3d6f3fdcade79
+	source = obs-audio-pan-filter-0.2.2.tar.gz::https://github.com/norihiro/obs-audio-pan-filter/archive/0.2.2.tar.gz
+	sha256sums = b06ffd8c715bbf9884aea260699c7cb85468200a2413351cc2b52dc38c9d8440
 
 pkgname = obs-audio-pan-filter
