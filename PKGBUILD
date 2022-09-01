@@ -2,11 +2,11 @@
 pkgname=csgo-checker-electron
 _pkgname=csgo-checker
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Check CS:GO accounts for bans/cooldowns/wins/ranks (system electron)"
 arch=('x86_64')
 url="https://github.com/dumbasPL/csgo-checker"
-license=('MIT')
+license=('GPL3')
 _electronversion=16
 depends=("electron$_electronversion")
 makedepends=('nodejs>=12.10.0' 'npm')
@@ -32,6 +32,7 @@ package() {
 	cd "$_pkgname-$pkgver"
 	sed "s/@@VERSION@@/$_electronversion/" "$srcdir/$_pkgname.sh.in" > "$_pkgname.sh"
 	install -Dm644 dist/linux-unpacked/resources/app.asar -t "$pkgdir/usr/lib/$_pkgname/resources/"
+	install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$_pkgname
   install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 "$srcdir/$_pkgname.desktop" -t "$pkgdir/usr/share/applications/"
 	install -Dm644 build/icons/256x256.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
