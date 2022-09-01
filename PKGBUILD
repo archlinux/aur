@@ -19,7 +19,8 @@ build() {
 package() {
     cd $srcdir
     sed -i "s/Exec=.*/Exec=\/opt\/$pkgname\/$name/g" ./opt/apps/$appid/entries/applications/$appid.desktop
-
+    sed -i "s/Icon=.*/Icon=\/opt\/$pkgname\/icon.png/g" ./opt/apps/$appid/entries/applications/$appid.desktop
+    
     install -D ./opt/apps/$appid/files/bin/$name $pkgdir/opt/$pkgname/$name
     install -D ./opt/apps/$appid/files/bin/scripts/* -t $pkgdir/opt/$pkgname/scripts
     install -D ./opt/apps/$appid/files/bin/template/* -t $pkgdir/opt/$pkgname/template
