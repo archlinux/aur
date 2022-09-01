@@ -4,8 +4,7 @@
 
 pkgname="odoo"
 pkgver=15.0
-_pkgsubver=20220512
-pkgrel=2
+pkgrel=3
 pkgdesc="Web-based Open Source Business Apps"
 url="https://www.odoo.com/"
 arch=("any")
@@ -62,13 +61,13 @@ depends=("postgresql"
         "python-xlrd"
         "python-zeep"
         )
-source=("https://nightly.odoo.com/$pkgver/nightly/src/${pkgname}_$pkgver.$_pkgsubver.tar.gz"
+source=("https://nightly.odoo.com/$pkgver/nightly/src/${pkgname}_$pkgver.latest.tar.gz"
         "odoo.conf"
         "odoo.logrotate"
         "odoo.service"
         "odoo.sysusers"
         "odoo.tmpfiles")
-sha256sums=('9e4f5aaa19bf751fdf84c2deacd58c591313962984a43d95dc1adef8eab08060'
+sha256sums=('SKIP'
             '33d3331e47ab31705e2122ee9cebf791bf2a23169767960fd949ff26e3fb420e'
             '0cfb2d663be2c23491be71ded73284a6a81460e44e5e1f3c37cfcdd73ee51c01'
             '949cfeb604af5425860cffa197b7464b9d87ab3999424d890b2210511823264f'
@@ -78,29 +77,32 @@ backup=("etc/odoo/odoo.conf")
 install="odoo.install"
 options=("!strip")
 
-prepare(){
- # posixemulation has been removed in werkzeug 2.0
- sed -i "$pkgname-$pkgver.post$_pkgsubver/$pkgname/tools/_vendor/sessions.py" \
-     -e "s/from werkzeug.posixemulation import rename/#from werkzeug.posixemulation import rename/" \
-     -e "s/rename(tmp, fn)/os.rename(tmp, fn)/"
-}
+# not needed anymore
+#prepare(){
+# # posixemulation has been removed in werkzeug 2.0
+# sed -i "$pkgname-$pkgver.post"*/"$pkgname/tools/_vendor/sessions.py" \
+#     -e "s/from werkzeug.posixemulation import rename/#from werkzeug.posixemulation import rename/" \
+#     -e "s/rename(tmp, fn)/os.rename(tmp, fn)/"
+#}
 
 build(){
- cd "$pkgname-$pkgver.post$_pkgsubver"
+ cd "$pkgname-$pkgver.post"*
  python setup.py build >/dev/null
 }
 
 package(){
- cd "$pkgname-$pkgver.post$_pkgsubver"
+ cd "$pkgname-$pkgver.post"*
  python setup.py install --root="$pkgdir" --optimize=1 --skip-build >/dev/null
-
+ # required directories
  install -d -m 750 "$pkgdir/etc/odoo"
  install -d -m 700 "$pkgdir/var/lib/odoo"
  install -d "$pkgdir/etc/logrotate.d"
  install -d "$pkgdir/usr/lib/systemd/system"
-
+ # configuration file
  install -D -m 640 "$srcdir/odoo.conf" "$pkgdir/etc/odoo/odoo.conf"
+ # logrotate file
  install -D -m 644 "$srcdir/odoo.logrotate" "$pkgdir/etc/logrotate.d/odoo"
+ # systemd files
  install -D -m 644 "$srcdir/odoo.service" "$pkgdir/usr/lib/systemd/system/odoo.service"
  install -D -m 644 "$srcdir/odoo.sysusers" "$pkgdir/usr/lib/sysusers.d/odoo.conf"
  install -D -m 644 "$srcdir/odoo.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/odoo.conf"
