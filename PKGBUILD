@@ -22,9 +22,6 @@ pkgver () {
 
 prepare() {
   cd "${srcdir}/vtk"
-  # We have a patched libharu
-  sed -i "s|2.4.0|2.3.0|" ThirdParty/libharu/CMakeLists.txt
-  sed -i "s|set(HPDF_DLL 1)|set(HPDF_DLL 0)|g" ThirdParty/libharu/CMakeLists.txt
   sed -i "27i#undef STRICT" ThirdParty/libproj/vtk_libproj.h.in
 }
 
