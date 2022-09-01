@@ -30,6 +30,7 @@ _pydeps=(aiohttp
          "${_dhdeps[@]/#/dephell-}"
          html5lib
          jinja
+         m2r
          packaging
          pip
          pygments
@@ -38,7 +39,7 @@ _pydeps=(aiohttp
          tabulate
          tomlkit
          yaspin)
-depends=("${_pydeps[@]/#/python-}" m2r)
+depends=("${_pydeps[@]/#/python-}")
 checkdepends=(git python-pytest python-aioresponses python-requests-mock
               python-moreorless)
 optdepends=('python-aiofiles: speed up file writes for files downloaded from warehouse'
