@@ -2,13 +2,13 @@
 
 pkgname=obs-downstream-keyer
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Add a Downstream Keyer dock to OBS studio"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/downstream-keyer.1254/"
 license=("GPL2")
 depends=("obs-studio>=28")
-makedepends=("cmake")
+makedepends=("cmake" "git")
 source=("$pkgname::git+https://github.com/exeldro/$pkgname#tag=$pkgver")
 sha256sums=("SKIP")
 
