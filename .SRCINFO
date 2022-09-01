@@ -3,20 +3,18 @@ pkgbase = python-databricks-cli
 	pkgver = 0.17.2
 	pkgrel = 1
 	url = https://github.com/databricks/databricks-cli
-	arch = x86_64
+	arch = any
 	license = Apache-2.0
-	makedepends = python
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = python-setuptools
 	depends = python
-	depends = python-click
-	depends = python-pyjwt
-	depends = python-oauthlib
-	depends = python-requests
-	depends = python-tabulate
-	depends = python-six
+	depends = python-click>=7.0
+	depends = python-pyjwt>=1.7.0
+	depends = python-oauthlib>=3.1.0
+	depends = python-requests>=2.17.3
+	depends = python-tabulate>=0.7.7
+	depends = python-six>=1.10.0
 	source = python-databricks-cli-0.17.2.tar.gz::https://github.com/databricks/databricks-cli/archive/0.17.2.tar.gz
 	sha256sums = 9ac3eaebaf5bc174c8ad3aa0254602ed7067fc5b3d2c1f3cb14af2f277ae57b8
 
