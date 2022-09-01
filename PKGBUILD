@@ -6,7 +6,7 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-headless
-pkgver=5.1
+pkgver=5.1.1
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
@@ -87,7 +87,7 @@ provides=(
     "${pkgname%-headless}"
 )
 conflicts=("${pkgname%-headless}")
-source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=e0723b7e4e22492275d476fcd30d759e1198bc5b)
+source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=1bad30dbe34f2d100b43e8f773d3fe0b5eb23523)
 b2sums=('SKIP')
 
 pkgver() {
@@ -96,7 +96,7 @@ pkgver() {
 
 prepare() {
     cd ${pkgname%-headless}
-    git cherry-pick -n 988f2e9eb063db7c1a678729f58aab6eba59a55b     # fix nvenc on older gpus
+    git cherry-pick -n 412922cc6fa790897ef6bb2be5d6f9a5f030754d # remove default IPFS gateway
 }
 
 build() {
