@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.34.0.360.g8da6b355f8
+pkgver=v0.34.0.440.g04062b6f89
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -19,7 +19,6 @@ depends=(
          'libdvdnav'
          'libgme'
          'libmysofa'
-         'libplacebo.so'
          'libpulse.so'
          'libshaderc_shared.so'
          'libsixel'
@@ -60,6 +59,9 @@ makedepends=(
              'wayland-protocols'
              'ffnvcodec-headers'
              'clang'
+             'python-mako'
+             'python-jinja'
+             'python-markupsafe'
              )
 optdepends=(
             'nvidia-utils: for hardware accelerated video decoding with CUDA'
@@ -78,8 +80,14 @@ source=('git+https://github.com/mpv-player/mpv-build.git'
         'git+https://github.com/mpv-player/mpv.git'
         'git+https://github.com/ffmpeg/ffmpeg.git'
         'git+https://github.com/libass/libass.git'
+        'git+https://github.com/haasn/libplacebo.git'
+        'git+https://github.com/Immediate-Mode-UI/Nuklear.git'
+        'git+https://github.com/Dav1dde/glad.git'
         )
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -103,6 +111,16 @@ prepare() {
   git clone "${srcdir}/mpv"
   git clone "${srcdir}/ffmpeg"
   git clone "${srcdir}/libass"
+  git clone "${srcdir}/libplacebo"
+
+  pushd "${srcdir}/libplacebo"
+    git config submodule.demos/3rdparty/nuklear.url "${srcdir}/Nuklear"
+    git config submodule.3rdparty/glad.url "${srcdir}/glad"
+    git submodule update --init \
+      demos/3rdparty/nuklear \
+      3rdparty/glad
+
+  popd
 
   # Set ffmpeg/libass/mpv flags
   _ffmpeg_options=(
@@ -162,9 +180,11 @@ fi
     '--enable-cuda-interop'
     '--color=yes'
     )
+  _libplacebo_options=('')
 
   (IFS=$'\n'; echo "${_ffmpeg_options[*]}" > ffmpeg_options )
   (IFS=$'\n'; echo "${_mpv_options[*]}" > mpv_options )
+  (IFS=$'\n'; echo "${_libplacebo_options[*]}" > libplacebo_options )
 
   cd mpv
 
@@ -173,7 +193,7 @@ fi
 
 build() {
   cd mpv-build
-  ./build
+  PYTHONPATH="${srcdir}/libplacebo/3rdparty/glad" ./build
 }
 
 package() {
