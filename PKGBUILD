@@ -1,7 +1,7 @@
 # Maintainer: Luna Aphelion <luna-aphelion@proton.me>
 pkgname=minfetch
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="a simple customisable fetch script"
 arch=('any')
 url="https://github.com/xXTacticalWaffleXx/minfetch"
