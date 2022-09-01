@@ -1,7 +1,7 @@
 pkgbase = trashy
 	pkgdesc = a cli system trash manager, alternative to rm and trash-cli
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oberblastmeister/trashy
 	arch = x86_64
 	arch = aarch64
