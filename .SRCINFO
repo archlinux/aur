@@ -22,11 +22,11 @@ pkgbase = shadow-tech
 	optdepends = nouveau-fw: driver for old Nvidia GPU
 	optdepends = org.freedesktop.secrets: to remember login credentials
 	provides = shadow-tech
-	source = shadow-tech-meta.yml::https://storage.googleapis.com/shadow-update/launcher/prod/linux/ubuntu_18.04/latest-linux.yml
-	source = shadow-tech.AppImage::https://storage.googleapis.com/shadow-update/launcher/prod/linux/ubuntu_18.04/Shadow.AppImage
+	source = shadow-tech-meta.yml::https://update.shadow.tech/launcher/prod/linux/ubuntu_18.04/latest-linux.yml
+	source = shadow-tech.AppImage::https://update.shadow.tech/launcher/prod/linux/ubuntu_18.04/Shadow.AppImage
 	source = shadow.sh
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 33c571d0b05ada4448375e9aa604772ae6dfa0e38ef3f179476245108c9027d1
+	sha256sums = 23b65b55a5c09526eeff3ac5b3aca097d3bfb9f7d44e9fc32102f309111199a7
 
 pkgname = shadow-tech
