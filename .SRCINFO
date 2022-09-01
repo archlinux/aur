@@ -1,11 +1,12 @@
 pkgbase = python-gnutls
 	pkgdesc = GnuTLS bindings for Python
 	pkgver = 3.1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AGProjects/python3-gnutls
 	arch = aarch64
 	arch = x86_64
 	license = LGPL-2.1+
+	makedepends = python-setuptools
 	depends = python
 	depends = python-twisted
 	depends = gnutls
