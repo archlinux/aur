@@ -1,6 +1,6 @@
 # Maintainer: Steve Engledow <steve@engledow.me>
 pkgname=aws-cli-v2-bin
-pkgver=2.7.27
+pkgver=2.7.28
 pkgrel=1
 pkgdesc='Universal Command Line Interface for Amazon Web Services version 2'
 arch=('aarch64' 'x86_64')
@@ -12,8 +12,8 @@ makedepends=('unzip')
 depends=('less')
 source_aarch64=("https://awscli.amazonaws.com/awscli-exe-linux-aarch64-$pkgver.zip")
 source_x86_64=("https://awscli.amazonaws.com/awscli-exe-linux-x86_64-$pkgver.zip")
-sha256sums_aarch64=('845376a618fd77a3e7c2b723dacf49baea1bac435e12ddb6e355d2c94b844f6c')
-sha256sums_x86_64=('6a0ea8a4df5b2da48beb02dc8f2eb152f613738d24888382f1a0726f544c587a')
+sha256sums_aarch64=('298648ef80d4f8bab0521d34cfb4e2050fae5eea2c29fa6f370e5a9c3d7f1e35')
+sha256sums_x86_64=('5022196bdef08431404dcff4d5ba8acb5a239962943f8c69e2403f9611067045')
 
 package() {
   $srcdir/aws/install -i "$pkgdir/usr/share/aws-cli" -b "$pkgdir/usr/bin" >/dev/null
