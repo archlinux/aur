@@ -20,7 +20,7 @@ prepare() {
 }
 
 build() {
-	mkdir $appname/build
+	mkdir -p $appname/build
 	cd $appname/build
 	qmake ../qFlipper.pro -spec linux-g++ CONFIG+=qtquickcompiler PREFIX=/usr
 	make qmake_all
