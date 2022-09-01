@@ -1,7 +1,7 @@
 # Maintainer : Karl-Felix Glatzer <karl[dot]glatzer[at]gmx[dot]de>
 
 pkgname=mingw-w64-ffmpeg
-pkgver=5.1
+pkgver=5.1.1
 pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
@@ -48,7 +48,7 @@ depends=(
 #'mingw-w64-svt-av1' (only 64 bit support)
 options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-amf-headers' 'mingw-w64-avisynthplus' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'git' 'yasm')
-_tag=e0723b7e4e22492275d476fcd30d759e1198bc5b
+_tag=1bad30dbe34f2d100b43e8f773d3fe0b5eb23523
 #source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}"
 source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
         add-av_stream_get_first_dts-for-chromium.patch
@@ -62,7 +62,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 prepare() {
   cd ffmpeg
 
-  git cherry-pick -n e0723b7e4e22492275d476fcd30d759e1198bc5b # remove default IPFS gateway
+  git cherry-pick -n 412922cc6fa790897ef6bb2be5d6f9a5f030754d # remove default IPFS gateway
 
   patch -Np1 -i "${srcdir}/configure.patch"
 

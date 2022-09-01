@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-ffmpeg
 	pkgdesc = Complete solution to record, convert and stream audio and video (mingw-w64)
-	pkgver = 5.1
+	pkgver = 5.1.1
 	pkgrel = 1
 	epoch = 1
 	url = https://ffmpeg.org/
@@ -49,7 +49,7 @@ pkgbase = mingw-w64-ffmpeg
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=e0723b7e4e22492275d476fcd30d759e1198bc5b
+	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=1bad30dbe34f2d100b43e8f773d3fe0b5eb23523
 	source = add-av_stream_get_first_dts-for-chromium.patch
 	source = configure.patch
 	b2sums = SKIP
