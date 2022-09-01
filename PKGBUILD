@@ -25,7 +25,6 @@ build() {
 
   sed -i 's@-Werror@@g' configure
 
-  PKG_CONFIG_PATH="/usr/local/lib/pkgconfig" \
   ./configure \
     --prefix=/var/local \
     --libdir=/var/local/lib \
@@ -36,6 +35,7 @@ build() {
     --enable-shared \
     --disable-yasm \
     --disable-doc \
+    --disable-postproc \
     --enable-libx264 \
     --extra-ldflags=-L/usr/local/lib \
     --extra-cflags=-I/usr/local/include
