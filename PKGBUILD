@@ -12,7 +12,7 @@ depends=('vulkan-icd-loader' 'qt5-wayland')
 provides=("${pkgname%-*-*}")
 conflicts=("${pkgname%-*-*}")
 source=("https://vulkan.gpuinfo.org/downloads/vulkancapsviewer_${pkgver}_linux64_wayland.AppImage")
-sha256sums=('eac7789c2c0af2b20b33d718a82143fb8ddc37faacbb415beae4021bbc75c834')
+sha256sums=('21f5a9022684dd4699fce8fb5249cb8dcf769c090e07334d10ffcf28d5ef6750')
 
 prepare() {
   chmod +x *.AppImage
