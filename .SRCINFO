@@ -3,7 +3,6 @@ pkgbase = obs-command-source
 	pkgver = 0.3.0
 	pkgrel = 2
 	url = https://obsproject.com/forum/resources/dummy-source-to-execute-command.952/
-	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
