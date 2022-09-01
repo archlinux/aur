@@ -1,13 +1,13 @@
 pkgbase = ckb-cli
 	pkgdesc = Nervos CKB (Common Knowledge Base) command line tool
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/nervosnetwork/ckb-cli
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = rust
-	source = ckb-cli-1.0.0.tar.gz::https://github.com/nervosnetwork/ckb-cli/archive/v1.0.0.tar.gz
-	b2sums = 5cc29cfc6aab8222fda368b8b921e5f57299c26d678c0b5014372ecc7d93a4e09b3ee4412bd78591a177bab47c2e2c15714abc0316c2b8098fa76afb80f7aca2
+	source = ckb-cli-1.1.0.tar.gz::https://github.com/nervosnetwork/ckb-cli/archive/v1.1.0.tar.gz
+	b2sums = afbc60cdbb874b3e3a3c04fd644776a7ad50bc370f0b30d26f7f249b1e68fe21fe84bc81dc3dd7c93731ad3da15247b969ffddcc199d0f0e3dcffd9fc7bb27e2
 
 pkgname = ckb-cli
