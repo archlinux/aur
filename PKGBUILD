@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 pkgname=vulkan-caps-viewer-wayland-bin
-pkgver=3.24
+pkgver=3.25
 pkgrel=1
 epoch=1
 pkgdesc="Vulkan Hardware Capability Viewer"
