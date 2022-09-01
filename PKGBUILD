@@ -3,7 +3,7 @@
 
 _npmname=markdownlint-cli
 pkgname=nodejs-$_npmname
-pkgver=0.32.1
+pkgver=0.32.2
 pkgrel=1
 pkgdesc="MarkdownLint Command Line Interface"
 arch=('any')
@@ -36,4 +36,4 @@ package() {
   # Install license
   install -Dm644 "${srcdir}"/package/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-sha512sums=('8552d0fbbd9be5eb1077b23e22acc1101e31ff80bec096b14b633a9ea686a03c2bb4d63a8327467f9088509b50717b6ab0ceb5e7ef9af1364fb2f12d1fa1f883')
+sha512sums=('c66253d6b1ae794813e3218dc24e83d28a90afdd1427b9ccc9a917b6a8e0b30024121618aa31dec3d458f300db3a6876476ef42168ee292799cc70c418f01491')
