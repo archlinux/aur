@@ -5,7 +5,7 @@
 _pkgname=xkbset
 pkgname="${_pkgname}-git"
 pkgver=0.8.r12.20220626.774fcef
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to help manage many of XKB features of X window."
 arch=(
   'i686'
@@ -16,6 +16,9 @@ license=('custom:BSD')
 groups=()
 depends=(
   'libx11'
+)
+makedepends=(
+  'git'
 )
 optdepends=(
   "perl-tk: For graphical tool 'xkbset-gui'."
