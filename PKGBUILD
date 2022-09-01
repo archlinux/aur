@@ -4,7 +4,7 @@
 _pkgname=sile
 pkgname=$_pkgname-luajit-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.13.2.r25.g760d979
+pkgver=0.14.3.r0.g1e84ea3
 pkgrel=1
 arch=(x86_64)
 url=https://www.sile-typesetter.org
@@ -47,9 +47,10 @@ depends+=(libfreetype.so
           libicui18n.so
           libicuio.so
           libicuuc.so)
-optdepends=('libertinus-font: math package default font'
+optdepends=('libertinus-font: default math font'
             'luarocks: manage addon packages'
-            'noto-fonts-cjk: tate enabled classes default font')
+            'noto-fonts-cjk: default font for tate enabled classes'
+            'ttf-hack: defaualt mono font')
 checkdepends=(poppler)
 provides=(libtexpdf.so
           "$_pkgname=$pkgver")
