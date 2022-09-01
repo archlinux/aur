@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggformula
-_pkgver=0.10.1
+_pkgver=0.10.2
 pkgname=r-${_pkgname,,}
-pkgver=0.10.1
-pkgrel=3
+pkgver=0.10.2
+pkgrel=1
 pkgdesc='Formula Interface to the Grammar of Graphics'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -47,7 +47,7 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5743eb25fac8343569ab6f584f5c6d8fff816fad9b2414a1ae10cdad519305de')
+sha256sums=('948b1c34a5c089cf86275d2b3e020e1a099278136e43175a50fb6063e54b6375')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
