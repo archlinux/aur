@@ -3,12 +3,12 @@
 DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=obs-studio-rc
-_pkgver=28.0.0-rc2
+_pkgver=28.0.0
 pkgver=${_pkgver//-/_}
 pkgrel=1
-epoch=2
+epoch=3
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
-arch=("i686" "x86_64" "aarch64")
+arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
 license=("GPL3")
 _mbedtlsver=2.28
@@ -112,7 +112,7 @@ sha256sums+=(
 )
 fi
 
-if [[ $CARCH == 'x86_64' ]] || [[ $CARCH == 'i686' ]]; then
+if [[ $CARCH == 'x86_64' ]]; then
   optdepends+=("decklink: Blackmagic Design DeckLink support")
 fi
 
@@ -146,14 +146,16 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir"/cef_binary_${_cefbranch}_linux${_arch}
+  if [[ $CARCH == 'x86_64' ]]; then
+    cd "$srcdir"/cef_binary_${_cefbranch}_linux${_arch}
 
-  #The arm64 CEF set the wrong arch for the project
-  cmake \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DPROJECT_ARCH=$_parch .
+    #The arm64 CEF set the wrong arch for the project
+    cmake \
+      -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+      -DPROJECT_ARCH=$_parch .
 
-  make libcef_dll_wrapper
+    make libcef_dll_wrapper
+  fi
 
   cd "$srcdir"/obs-studio
   mkdir -p build; cd build
@@ -169,7 +171,7 @@ build() {
     -DENABLE_SNDIO=ON \
     -DENABLE_BROWSER=$_browser \
     -DCEF_ROOT_DIR="$srcdir/cef_binary_${_cefbranch}_linux${_arch}" \
-    -DRELEASE_CANDIDATE="$_pkgver" ..
+    -DOBS_VERSION_OVERRIDE="$_pkgver" ..
 
   sed -i "s|#define OBS_VERSION |#define OBS_VERSION \"$_pkgver-$pkgrel\" //|" config/obsconfig.h
 
