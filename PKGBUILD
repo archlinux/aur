@@ -20,7 +20,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/VulkanCapsViewer"
-  git describe --tags | sed 's/-/+/g'
+  git describe --tags | sed 's/_fixed//;s/-/+/g'
 }
 
 prepare() {
