@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 pkgname=vulkan-caps-viewer-wayland
-pkgver=3.24
+pkgver=3.25
 pkgrel=1
 epoch=1
 pkgdesc="Vulkan Hardware Capability Viewer"
@@ -12,7 +12,7 @@ depends=('vulkan-icd-loader' 'qt5-wayland')
 makedepends=('git')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-_commit=5e63a77208aaf9162f583e426edd3edc3eaed370 # tags/3.24^
+_commit=8e9fe8b3422d57a9943a9f043953e197737e3e87 # tags/3.25^
 source=("git+https://github.com/SaschaWillems/VulkanCapsViewer.git#commit=$_commit"
         'git+https://github.com/KhronosGroup/Vulkan-Headers.git')
 sha256sums=('SKIP'
