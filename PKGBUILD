@@ -6,7 +6,6 @@ pkgrel=1
 pkgdesc="Official Bitrix24 client for Linux."
 arch=("x86_64")
 url="https://www.bitrix24.com/applications.php"
-license=("GPL3")
 source=("https://dl.bitrix24.com/b24/bitrix24_desktop.rpm")
 md5sums=('e7d5749cb418e197658d845087a2f285')
 depends=(
