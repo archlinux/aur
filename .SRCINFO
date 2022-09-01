@@ -1,6 +1,6 @@
 pkgbase = c-evo
-	pkgdesc = C-evo: Extended Horizon, Empire Building Game
-	pkgver = 1
+	pkgdesc = C-evo: Distant Horizon, Empire Building Game
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://sourceforge.net/projects/c-evo-eh/
 	arch = x86_64
@@ -12,7 +12,8 @@ pkgbase = c-evo
 	optdepends = ffmpeg: Needed for sounds
 	conflicts = c-evo
 	conflicts = c-evo-bin
-	source = https://sourceforge.net/projects/c-evo-eh/files/Download/c-evo-eh-1.tar.xz
-	sha256sums = fb1bed1f33399d6c4cef81ffd931c8ff11c8e2b0682708c7be241da01964d8ea
+	conflicts = c-evo-eh
+	source = https://sourceforge.net/projects/c-evo-eh/files/Source/c-evo-dh-1.1.tar.xz
+	sha256sums = 0d210f67f1f60a43c7aedb310c415dfc26ab13dbf9a592f50c84bd07b5a15b03
 
-pkgname = c-evo-eh
+pkgname = c-evo-dh

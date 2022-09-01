@@ -1,21 +1,21 @@
 # Maintainer: Peter Blackman <peter at pblackman dot plus dot com>
-# 29-Aug-2022
+# 31-Aug-2022
 #
 
-pkgname=c-evo-eh
+pkgname=c-evo-dh
 pkgbase=c-evo
-pkgver=1
+pkgver=1.1
 pkgrel=1
-pkgdesc="C-evo: Extended Horizon, Empire Building Game"
+pkgdesc="C-evo: Distant Horizon, Empire Building Game"
 arch=('x86_64')
 url="https://sourceforge.net/projects/c-evo-eh/"
 license=('GPL2' 'CCPL')
 makedepends=('fpc' 'lazarus-gtk2')
 depends=('gtk2')
 optdepends=('ffmpeg: Needed for sounds')
-conflicts=('c-evo' 'c-evo-bin')
-source=("https://sourceforge.net/projects/c-evo-eh/files/Download/$pkgname-$pkgver.tar.xz")
-sha256sums=('fb1bed1f33399d6c4cef81ffd931c8ff11c8e2b0682708c7be241da01964d8ea')
+conflicts=('c-evo' 'c-evo-bin' 'c-evo-eh')
+source=("https://sourceforge.net/projects/c-evo-eh/files/Source/$pkgname-$pkgver.tar.xz")
+sha256sums=('0d210f67f1f60a43c7aedb310c415dfc26ab13dbf9a592f50c84bd07b5a15b03')
 #options=(debug !strip)
 
 
@@ -105,8 +105,10 @@ package() {
   install -Dm 644 Language2.txt                     -t "$pkgdir/usr/share/$pkgbase"
   install -Dm 644 Fonts.txt                         -t "$pkgdir/usr/share/$pkgbase"
 
-  install -Dm 644 Graphics/*                        -t "$pkgdir/usr/share/$pkgbase/Graphics"
-  install -Dm 644 Qt5/*                             -t "$pkgdir/usr/share/$pkgbase/Graphics"
+  install -Dm 644 Graphics/*.png                    -t "$pkgdir/usr/share/$pkgbase/Graphics"
+  install -Dm 644 Graphics/*.jpg                    -t "$pkgdir/usr/share/$pkgbase/Graphics"
+  install -Dm 644 Graphics/*.grs                    -t "$pkgdir/usr/share/$pkgbase/Graphics"
+# install -Dm 644 Qt5/*                             -t "$pkgdir/usr/share/$pkgbase/Graphics"
   install -Dm 644 Help/*                            -t "$pkgdir/usr/share/$pkgbase/Help"
   install -Dm 644 Maps/*                            -t "$pkgdir/usr/share/$pkgbase/Maps"
   install -Dm 644 Sounds/*                          -t "$pkgdir/usr/share/$pkgbase/Sounds"
