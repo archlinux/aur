@@ -11,12 +11,13 @@ _electronversion=16
 depends=("electron$_electronversion")
 makedepends=('nodejs>=12.10.0' 'npm')
 provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dumbasPL/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
 		"$_pkgname.sh.in"
 		"$_pkgname.desktop")
 sha256sums=('b5d338535dac12ad0e14b289e583c5d640621389d270758af1dc3fdfd52c7afd'
-						'f5ee45943cd57290c6ef4578a56183b0910aacefb71f4459691cc44f4df891fd'
-						'ca864ac4e882e43e5c6314029d2e40f1f2520e9418819483e6a47b684e7ce011')
+		'f5ee45943cd57290c6ef4578a56183b0910aacefb71f4459691cc44f4df891fd'
+		'ca864ac4e882e43e5c6314029d2e40f1f2520e9418819483e6a47b684e7ce011')
 
 build() {
 	cd "$_pkgname-$pkgver"

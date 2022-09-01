@@ -9,6 +9,7 @@ pkgbase = csgo-checker-electron
 	makedepends = npm
 	depends = electron16
 	provides = csgo-checker
+	conflicts = csgo-checker
 	source = csgo-checker-electron-1.4.0.tar.gz::https://github.com/dumbasPL/csgo-checker/archive/refs/tags/v1.4.0.tar.gz
 	source = csgo-checker.sh.in
 	source = csgo-checker.desktop
