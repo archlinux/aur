@@ -4,7 +4,7 @@ pkgname=obs-color-monitor
 pkgver=0.4.3
 pkgrel=1
 pkgdesc="This plugin provides three sources to monitor color balances"
-arch=("i686" "x86_64" "aarch64")
+arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/obs-color-monitor.1277/"
 license=("GPL2")
 depends=("obs-studio>=28")

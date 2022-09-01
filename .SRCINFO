@@ -3,7 +3,6 @@ pkgbase = obs-color-monitor
 	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://obsproject.com/forum/resources/obs-color-monitor.1277/
-	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
