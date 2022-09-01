@@ -1,4 +1,4 @@
-pkgbase = watsup_panel
+pkgbase = watsup-panel
 	pkgdesc = Showing some system status informations
 	pkgver = 6.0
 	pkgrel = 1
@@ -9,7 +9,7 @@ pkgbase = watsup_panel
 	depends = libappindicator-gtk3
 	depends = clutter-gtk
 	options = !emptydirs
-	source = http://www.kornelix.net/downloads/downloads/watsup_panel-6.0.tar.gz
-	sha256sums = 53e909041061fc097441c846f48e9175871e74a9e7e72cc94594d48ce88c818b
+	source = http://www.kornelix.net/downloads/downloads/watsup-panel-6.0.tar.gz
+	sha256sums = be2463308bdac145d805522b2ddeb6b7d6c285a8734ace5b45aa2fd0cd11b1ea
 
-pkgname = watsup_panel
+pkgname = watsup-panel

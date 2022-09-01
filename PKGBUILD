@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgname=watsup_panel
+pkgname=watsup-panel
 pkgver=6.0
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 pkgdesc="Showing some system status informations"
 url="http://www.kornelix.net/watsup/watsup.html"
 source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('53e909041061fc097441c846f48e9175871e74a9e7e72cc94594d48ce88c818b')
+sha256sums=('be2463308bdac145d805522b2ddeb6b7d6c285a8734ace5b45aa2fd0cd11b1ea')
 options=('!emptydirs')
 
 build() {
