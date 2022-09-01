@@ -1,5 +1,5 @@
 pkgbase = python-databricks-cli
-	pkgdesc = open source tool which provides an easy to use interface to the Databricks platform
+	pkgdesc = Command Line Interface for Databricks
 	pkgver = 0.17.2
 	pkgrel = 1
 	url = https://github.com/databricks/databricks-cli

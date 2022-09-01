@@ -3,8 +3,8 @@
 pkgname=python-databricks-cli
 pkgver=0.17.2
 pkgrel=1
-pkgdesc='open source tool which provides an easy to use interface to the
 Databricks platform'
+pkgdesc='Command Line Interface for Databricks'
 arch=('x86_64')
 url='https://github.com/databricks/databricks-cli'
 license=('Apache-2.0')
