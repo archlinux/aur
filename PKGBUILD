@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile
-pkgver=0.10.2
-pkgrel=2
+pkgver=0.10.3
+pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
 url="https://github.com/sile-typesetter/$pkgname"
@@ -25,6 +25,7 @@ depends=(bc
          libertinus-font
          libgit2
          lua
+         luarocks
          m4
          make
          mdbook
@@ -66,12 +67,11 @@ depends+=("${_lua_deps[@]/#/lua-}"
 depends+=(libgit2.so)
 makedepends=(autoconf-archive
              cargo
-             luarocks
              node-prune
              yarn)
 _archive="$pkgname-$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.xz")
-sha256sums=('e17e9d32d6c14638c1e1cc254d417040e5d86fbdf67c4ba6cff3c6d6a377b5c1')
+sha256sums=('cd972a5fd55a08706aca214be65e764120afa557041d181064f76d5970f41751')
 
 prepare() {
 	cd "$_archive"
