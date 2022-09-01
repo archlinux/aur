@@ -3,7 +3,6 @@ pkgbase = obs-face-tracker
 	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://obsproject.com/forum/resources/face-tracker.1294/
-	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
