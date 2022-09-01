@@ -34,7 +34,7 @@ index 0b8a45d9..3e69cf77 100644
            {
              type: 'button',
 diff --git a/src/Powercord/coremods/moduleManager/index.js b/src/Powercord/coremods/moduleManager/index.js
-index 269c2716..f6e02e8c 100644
+index d823628d..9b7823fe 100644
 --- a/src/Powercord/coremods/moduleManager/index.js
 +++ b/src/Powercord/coremods/moduleManager/index.js
 @@ -6,7 +6,7 @@ const { React, getModule, i18n: { Messages } } = require('powercord/webpack');
@@ -56,12 +56,12 @@ index 269c2716..f6e02e8c 100644
  
  async function _installerInjectCtxMenu () {
 diff --git a/src/Powercord/coremods/moduleManager/util/cloneRepo.js b/src/Powercord/coremods/moduleManager/util/cloneRepo.js
-index 649be4fb..25feea0b 100644
+index f015ea76..eb058858 100644
 --- a/src/Powercord/coremods/moduleManager/util/cloneRepo.js
 +++ b/src/Powercord/coremods/moduleManager/util/cloneRepo.js
-@@ -3,16 +3,18 @@ const { spawn } = require('child_process');
- const fs = require('fs');
+@@ -4,16 +4,18 @@ const fs = require('fs');
  const { REPO_URL_REGEX } = require('./misc');
+ const { i18n: { Messages } } = require('powercord/webpack');
  
 +const XDG_DATA_HOME = process.env.XDG_DATA_HOME || join(process.env.HOME, '.local', 'share');
 +
@@ -81,7 +81,7 @@ index 649be4fb..25feea0b 100644
      }
  
 diff --git a/src/Powercord/coremods/updater/components/Settings.jsx b/src/Powercord/coremods/updater/components/Settings.jsx
-index 8cb91a67..e8e28be2 100644
+index b915af1c..fbe64da4 100644
 --- a/src/Powercord/coremods/updater/components/Settings.jsx
 +++ b/src/Powercord/coremods/updater/components/Settings.jsx
 @@ -82,7 +82,7 @@ module.exports = class UpdaterSettings extends React.PureComponent {
@@ -106,27 +106,20 @@ index 7d8fbcaa..ab5be0e9 100644
            <a href={`https://github.com/${repo}/commit/${commit.id}`} target='_blank'>
              <code>{commit.id.substring(0, 7)}</code>
 diff --git a/src/Powercord/coremods/updater/index.js b/src/Powercord/coremods/updater/index.js
-index eba900d0..2322c15a 100644
+index 770e195a..e542774c 100644
 --- a/src/Powercord/coremods/updater/index.js
 +++ b/src/Powercord/coremods/updater/index.js
-@@ -127,14 +127,14 @@ class Updater {
-     const updates = settings.get('updates', []);
-     const failed = [];
-     for (const update of [ ...updates ]) {
--      let entity = powercord;
-+      let entity;
-       if (update.id.startsWith('plugin')) {
-         entity = powercord.pluginManager.get(update.id.replace('plugins_', ''));
-       } else if (update.id.startsWith('theme')) {
-         entity = powercord.styleManager.get(update.id.replace('themes_', ''));
-       }
+@@ -44,9 +44,6 @@ class Updater {
+     const themes = [ ...powercord.styleManager.themes.values() ];
  
--      const success = await entity._update(force);
-+      const success = entity ? await entity._update(force) : false;
-       updates.shift();
-       settings.get('updates', updates);
-       if (!success) {
-@@ -223,28 +223,11 @@ class Updater {
+     const entities = plugins.concat(themes).filter(e => !disabled.includes(e.updateIdentifier) && e.isUpdatable());
+-    if (!disabled.includes(powercord.updateIdentifier)) {
+-      entities.push(powercord);
+-    }
+ 
+     let done = 0;
+     const updates = [];
+@@ -232,33 +229,10 @@ class Updater {
    }
  
    async getGitInfos () {
@@ -143,23 +136,26 @@ index eba900d0..2322c15a 100644
 -    const revision = await PowercordNative.exec(`git rev-parse ${branch}`, this.cwd)
 -      .then(r => r.stdout.toString().trim());
 -
--    const upstream = await PowercordNative.exec('git remote get-url origin', this.cwd)
--      .then(r => r.stdout.toString().match(/github\.com[:/]([\w-_]+\/[\w-_]+)/)?.[1] ||
--          r.stdout.toString().trim().match(/(.*):(.*\/.*)/)[2]);
+-    let upstream = '???';
 -
--    return {
+-    const remoteBranch = await powercord.getUpstreamBranch();
+-    if (remoteBranch) {
+-      const remote = remoteBranch.split('/')[0];
+-      upstream = await PowercordNative.exec(`git remote get-url ${remote}`, this.cwd)
+-        .then(r => r.stdout.toString().match(/github\.com[:/]([\w-_]+\/[\w-_]+)/)?.[1] ||
+-          r.stdout.toString().trim().match(/(.*):(.*\/.*)/)[2]);
+-    }
+-
+     return {
 -      upstream,
 -      branch,
 -      revision
--    };
-+     return {
 +      upstream: "@PKG_UPSTREAM@",
 +      branch: "@PKG_BRANCH@",
 +      revision: "@PKG_REVISION@"
-+     };
+     };
    }
  
-   async changeBranch (branch) {
 diff --git a/src/Powercord/index.js b/src/Powercord/index.js
 index 1ff93b59..2a0d9529 100644
 --- a/src/Powercord/index.js
