@@ -1,0 +1,4 @@
+LICENSE
+*.tar.*
+src/
+pkg/
