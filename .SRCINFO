@@ -1,0 +1,11 @@
+pkgbase = battalion
+	pkgdesc = Battalion is a game where 'A monster blows up, destroys' repeats.
+	pkgver = 1.4b
+	pkgrel = 1
+	url = https://www.evl.uic.edu/aej/AndyBattalion.html
+	arch = x86_64
+	provides = battalion
+	source = https://www.evl.uic.edu/aej/BATTALION/battalion1.4b.tar.bz2
+	sha256sums = f9506f8fbb544a77373e01f8bda93ac339433b0ea84296fe0c287f2bf37bf8b3
+
+pkgname = battalion
