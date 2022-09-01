@@ -13,7 +13,6 @@ pkgbase = meshcentral
 	optdepends = nodejs-passport-saml: SAML authentication support
 	noextract = meshcentral-1.0.77.tgz
 	backup = etc/meshcentral/config.json
-	backup = var/lib/meshcentral
 	source = https://registry.npmjs.org/meshcentral/-/meshcentral-1.0.77.tgz
 	source = meshcentral.service
 	source = meshcentral.sysusers

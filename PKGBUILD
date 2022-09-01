@@ -17,7 +17,7 @@ optdepends=('nodejs-acme-client: Auto trusted TLS certificate support'
             'nodejs-modern-syslog: syslog support'
             'nodejs-nodemailer: SMTP support'
             'nodejs-passport-saml: SAML authentication support')
-backup=('etc/meshcentral/config.json' 'var/lib/meshcentral')
+backup=('etc/meshcentral/config.json')
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz"
         "$_npmname.service"
         "$_npmname.sysusers"
