@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-sentry_sdk
 _name=sentry-sdk
-pkgver=1.9.6
+pkgver=1.9.7
 pkgrel=1
 pkgdesc="The new Python SDK for Sentry.io"
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=('python-aiohttp: adds support for the AIOHTTP-Server Web Framework'
             'python-pure_eval: for richer stacktraces & additional variables'
             'python-executing: for richer stacktraces & better function names')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('f713f33ff7f82658c30e7e8cdec72c432218e6dd41b0f004905733793bd9719b')
+sha256sums=('af0987fc074ada4a166bdc7e9d99d1da7811c6107e4b3416c7052ea1adb77dfc')
 
 build() {
   cd "$_name-$pkgver"
