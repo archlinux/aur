@@ -3,18 +3,16 @@
 
 pkgname=qemu-user-static
 pkgdesc="Statically linked binaries of Qemu with user emulation. Useful for containers/chroot environment with binfmt."
-pkgver=7.0.0
-pkgrel=2
+pkgver=7.1.0
+pkgrel=1
 arch=(x86_64 aarch64)
 license=(GPL2 LGPL2.1)
 url="http://wiki.qemu.org/"
 depends=()
-makedepends=(python meson glib2-static pcre-static)
-source=(https://download.qemu.org/qemu-$pkgver.tar.xz{,.sig}
-        qemu-7.0.0-glibc-2.36.patch)
-sha512sums=('44ecd10c018a3763e1bc87d1d35b98890d0d5636acd69fe9b5cadf5024d5af6a31684d60cbe1c3370e02986434c1fb0ad99224e0e6f6fe7eda169992508157b1'
-            'SKIP'
-            'aa976c84d8524bb40ada506f80c01384c49f2e48fba889b0e535285aee700937886e935d18ad83b38093ba07f38be50b0fae76a0b29fd487daeac31e3221381e')
+makedepends=(python meson glib2-static pcre2-static)
+source=(https://download.qemu.org/qemu-$pkgver.tar.xz{,.sig})
+sha512sums=('c60c5ff8ec99b7552e485768908920658fdd8035ff7a6fa370fb6881957dc8b7e5f18ff1a8f49bd6aa22909ede2a7c084986d8244f12074ccd33ebe40a0c411f'
+            'SKIP')
 validpgpkeys=('CEACC9E15534EBABB82D3FA03353C9CEF108B584')
 
 case $CARCH in
@@ -30,8 +28,6 @@ prepare() {
 
   cd qemu-${pkgver}
   #sed -i 's/vte-2\.90/vte-2.91/g' configure
-
-  patch -Np1 -d . -i ../qemu-7.0.0-glibc-2.36.patch
 }
 
 _configure() {
@@ -65,8 +61,7 @@ _configure() {
             --disable-vhost-net \
             --disable-vhost-crypto \
             --disable-vhost-user \
-            --disable-vhost-vsock \
-            --disable-vhost-scsi \
+            --disable-vhost-kernel \
             --disable-tpm \
             --disable-qom-cast-debug \
             --disable-capstone \
