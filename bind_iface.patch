@@ -1,7 +1,7 @@
-From 8f8670c02e1df91343985b4ed59bb55135fae966 Mon Sep 17 00:00:00 2001
+From 187466a01a80cc0d4af9fe13888d0232b39ca999 Mon Sep 17 00:00:00 2001
 From: tytan652 <tytan652@tytanium.xyz>
 Date: Thu, 11 Feb 2021 14:29:08 +0100
-Subject: [PATCH 1/5] librtmp: Add interface binding for Linux
+Subject: [PATCH 1/3] librtmp: Add interface binding for Linux
 
 librtmp: Make log message more accurate
 ---
@@ -10,10 +10,10 @@ librtmp: Make log message more accurate
  2 files changed, 19 insertions(+), 1 deletion(-)
 
 diff --git a/plugins/obs-outputs/librtmp/rtmp.c b/plugins/obs-outputs/librtmp/rtmp.c
-index 70e42f7ee636..7c5346c07a42 100644
+index 88c7cff7cfb18..d063d268820f8 100644
 --- a/plugins/obs-outputs/librtmp/rtmp.c
 +++ b/plugins/obs-outputs/librtmp/rtmp.c
-@@ -874,13 +874,30 @@ RTMP_Connect0(RTMP *r, struct sockaddr * service, socklen_t addrlen)
+@@ -877,13 +877,30 @@ RTMP_Connect0(RTMP *r, struct sockaddr * service, socklen_t addrlen)
  #ifdef SO_NOSIGPIPE
          setsockopt(r->m_sb.sb_socket, SOL_SOCKET, SO_NOSIGPIPE, &(int){ 1 }, sizeof(int));
  #endif
@@ -46,10 +46,10 @@ index 70e42f7ee636..7c5346c07a42 100644
                  r->last_error_code = err;
                  RTMP_Close(r);
 diff --git a/plugins/obs-outputs/librtmp/rtmp.h b/plugins/obs-outputs/librtmp/rtmp.h
-index 5020120ee3ee..8a6f64375ffb 100644
+index b1c48e2f3a9f6..a900efbe17a0d 100644
 --- a/plugins/obs-outputs/librtmp/rtmp.h
 +++ b/plugins/obs-outputs/librtmp/rtmp.h
-@@ -423,6 +423,7 @@ extern "C"
+@@ -420,6 +420,7 @@ extern "C"
          void*   m_customSendParam;
          CUSTOMSEND m_customSendFunc;
  
@@ -58,23 +58,23 @@ index 5020120ee3ee..8a6f64375ffb 100644
  
          uint8_t m_bSendChunkSizeInfo;
 
-From 6326cc5bb4256556e545c1f7c6679a422883d364 Mon Sep 17 00:00:00 2001
+From 5da8a83216852445be763a2f06432b2cd07bdfbf Mon Sep 17 00:00:00 2001
 From: tytan652 <tytan652@tytanium.xyz>
 Date: Thu, 11 Feb 2021 14:47:45 +0100
-Subject: [PATCH 2/5] obs-outputs: Add RTMP iface binding for Linux
+Subject: [PATCH 2/3] obs-outputs: Add RTMP iface binding for Linux
 
 ---
- plugins/obs-outputs/net-if.c      | 32 +++++++++++++++++++++++++++
- plugins/obs-outputs/net-if.h      | 15 +++++++++++++
- plugins/obs-outputs/rtmp-stream.c | 36 +++++++++++++++++++++++++++++++
+ plugins/obs-outputs/net-if.c      | 32 +++++++++++++++++++++++++++++
+ plugins/obs-outputs/net-if.h      | 15 ++++++++++++++
+ plugins/obs-outputs/rtmp-stream.c | 34 +++++++++++++++++++++++++++++++
  plugins/obs-outputs/rtmp-stream.h |  2 ++
- 4 files changed, 85 insertions(+)
+ 4 files changed, 83 insertions(+)
 
 diff --git a/plugins/obs-outputs/net-if.c b/plugins/obs-outputs/net-if.c
-index 40891ef3d233..206394ff175c 100644
+index 29bb57d6a42bc..1587be47887b8 100644
 --- a/plugins/obs-outputs/net-if.c
 +++ b/plugins/obs-outputs/net-if.c
-@@ -134,6 +134,38 @@ static inline bool is_loopback(struct ifaddrs *ifa)
+@@ -139,6 +139,38 @@ static inline bool is_loopback(struct ifaddrs *ifa)
  	return n && (strcmp(n, "lo") == 0 || strcmp(n, "lo0") == 0);
  }
  
@@ -114,7 +114,7 @@ index 40891ef3d233..206394ff175c 100644
  {
  	struct ifaddrs *ifaddr, *ifa;
 diff --git a/plugins/obs-outputs/net-if.h b/plugins/obs-outputs/net-if.h
-index 757ee00e8278..6b045666cfba 100644
+index 757ee00e82781..6b045666cfba6 100644
 --- a/plugins/obs-outputs/net-if.h
 +++ b/plugins/obs-outputs/net-if.h
 @@ -53,6 +53,21 @@
@@ -140,10 +140,10 @@ index 757ee00e8278..6b045666cfba 100644
  	char *name;
  	char *addr;
 diff --git a/plugins/obs-outputs/rtmp-stream.c b/plugins/obs-outputs/rtmp-stream.c
-index e2223a8690fb..5e5235afe67d 100644
+index 5a3773974112c..7e6cc577d52d5 100644
 --- a/plugins/obs-outputs/rtmp-stream.c
 +++ b/plugins/obs-outputs/rtmp-stream.c
-@@ -122,6 +122,7 @@ static void rtmp_stream_destroy(void *data)
+@@ -125,6 +125,7 @@ static void rtmp_stream_destroy(void *data)
  	dstr_free(&stream->username);
  	dstr_free(&stream->password);
  	dstr_free(&stream->encoder_name);
@@ -151,7 +151,7 @@ index e2223a8690fb..5e5235afe67d 100644
  	dstr_free(&stream->bind_ip);
  	os_event_destroy(stream->stop_event);
  	os_sem_destroy(stream->send_sem);
-@@ -1039,6 +1040,17 @@ static int try_connect(struct rtmp_stream *stream)
+@@ -1067,6 +1068,17 @@ static int try_connect(struct rtmp_stream *stream)
  	stream->rtmp.Link.swfUrl = stream->rtmp.Link.tcUrl;
  	stream->rtmp.Link.customConnectEncode = add_connect_data;
  
@@ -169,7 +169,7 @@ index e2223a8690fb..5e5235afe67d 100644
  	if (dstr_is_empty(&stream->bind_ip) ||
  	    dstr_cmp(&stream->bind_ip, "default") == 0) {
  		memset(&stream->rtmp.m_bindIP, 0,
-@@ -1081,6 +1093,7 @@ static bool init_connect(struct rtmp_stream *stream)
+@@ -1109,6 +1121,7 @@ static bool init_connect(struct rtmp_stream *stream)
  {
  	obs_service_t *service;
  	obs_data_t *settings;
@@ -177,7 +177,7 @@ index e2223a8690fb..5e5235afe67d 100644
  	const char *bind_ip;
  	int64_t drop_p;
  	int64_t drop_b;
-@@ -1152,6 +1165,9 @@ static bool init_connect(struct rtmp_stream *stream)
+@@ -1180,6 +1193,9 @@ static bool init_connect(struct rtmp_stream *stream)
  	stream->drop_threshold_usec = 1000 * drop_b;
  	stream->pframe_drop_threshold_usec = 1000 * drop_p;
  
@@ -187,33 +187,32 @@ index e2223a8690fb..5e5235afe67d 100644
  	bind_ip = obs_data_get_string(settings, OPT_BIND_IP);
  	dstr_copy(&stream->bind_ip, bind_ip);
  
-@@ -1540,12 +1556,32 @@ static obs_properties_t *rtmp_stream_properties(void *unused)
+@@ -1568,6 +1584,9 @@ static obs_properties_t *rtmp_stream_properties(void *unused)
  	UNUSED_PARAMETER(unused);
  
  	obs_properties_t *props = obs_properties_create();
 +#ifdef __linux__
 +	struct netif_siface_data ifaces = {0};
-+	obs_property_t *p_iface;
 +#endif
  	struct netif_saddr_data addrs = {0};
  	obs_property_t *p;
  
- 	obs_properties_add_int(props, OPT_DROP_THRESHOLD,
- 			       obs_module_text("RTMPStream.DropThreshold"), 200,
- 			       10000, 100);
+@@ -1575,6 +1594,21 @@ static obs_properties_t *rtmp_stream_properties(void *unused)
+ 				   obs_module_text("RTMPStream.DropThreshold"),
+ 				   200, 10000, 100);
+ 	obs_property_int_set_suffix(p, " ms");
 +#ifdef __linux__
-+	p_iface = obs_properties_add_list(
-+		props, OPT_BIND_INTERFACE,
-+		obs_module_text("RTMPStream.BindInterface"),
-+		OBS_COMBO_TYPE_LIST, OBS_COMBO_FORMAT_STRING);
++	p = obs_properties_add_list(props, OPT_BIND_INTERFACE,
++				    obs_module_text("RTMPStream.BindInterface"),
++				    OBS_COMBO_TYPE_LIST,
++				    OBS_COMBO_FORMAT_STRING);
 +
-+	obs_property_list_add_string(p_iface, obs_module_text("Default"),
-+				     "default");
++	obs_property_list_add_string(p, obs_module_text("Default"), "default");
 +
 +	netif_get_ifaces(&ifaces);
 +	for (size_t i = 0; i < ifaces.ifaces.num; i++) {
 +		char *item = ifaces.ifaces.array[i];
-+		obs_property_list_add_string(p_iface, item, item);
++		obs_property_list_add_string(p, item, item);
 +	}
 +	netif_siface_data_free(&ifaces);
 +#endif
@@ -221,7 +220,7 @@ index e2223a8690fb..5e5235afe67d 100644
  	p = obs_properties_add_list(props, OPT_BIND_IP,
  				    obs_module_text("RTMPStream.BindIP"),
 diff --git a/plugins/obs-outputs/rtmp-stream.h b/plugins/obs-outputs/rtmp-stream.h
-index bca991909d42..474faab3ee7a 100644
+index bca991909d42a..474faab3ee7a0 100644
 --- a/plugins/obs-outputs/rtmp-stream.h
 +++ b/plugins/obs-outputs/rtmp-stream.h
 @@ -28,6 +28,7 @@
@@ -241,40 +240,41 @@ index bca991909d42..474faab3ee7a 100644
  
  	/* frame drop variables */
 
-From a6631eaf77dfa5be1bbab8dee0005504f81f53d4 Mon Sep 17 00:00:00 2001
+From 7b0cf93f6b518701daac9484cbd24be0cbf7e76e Mon Sep 17 00:00:00 2001
 From: tytan652 <tytan652@tytanium.xyz>
 Date: Thu, 11 Feb 2021 14:51:42 +0100
-Subject: [PATCH 3/5] UI: Add interface binding property for Linux
+Subject: [PATCH 3/3] UI: Add interface binding property for Linux
 
 ---
  UI/data/locale/en-US.ini             |  1 +
- UI/forms/OBSBasicSettings.ui         | 24 ++++++++++++----
- UI/window-basic-auto-config-test.cpp |  3 ++
- UI/window-basic-main-outputs.cpp     |  6 ++++
- UI/window-basic-main.cpp             |  2 ++
- UI/window-basic-settings.cpp         | 42 ++++++++++++++++++++++++++++
- 6 files changed, 73 insertions(+), 5 deletions(-)
+ UI/forms/OBSBasicSettings.ui         | 16 ++++-
+ UI/window-basic-auto-config-test.cpp |  3 +
+ UI/window-basic-main-outputs.cpp     |  6 ++
+ UI/window-basic-main.cpp             |  2 +
+ UI/window-basic-settings.cpp         | 91 +++++++++++++++++++++++++++-
+ UI/window-basic-settings.hpp         |  3 +
+ 7 files changed, 119 insertions(+), 3 deletions(-)
 
 diff --git a/UI/data/locale/en-US.ini b/UI/data/locale/en-US.ini
-index 8a2413c65c99..3cba5cbfcb27 100644
+index 06361584c96cb..8104e3bf47548 100644
 --- a/UI/data/locale/en-US.ini
 +++ b/UI/data/locale/en-US.ini
-@@ -1039,6 +1039,7 @@ Basic.Settings.Advanced.StreamDelay.Duration="Duration"
- Basic.Settings.Advanced.StreamDelay.Preserve="Preserve cutoff point (increase delay) when reconnecting"
+@@ -1154,6 +1154,7 @@ Basic.Settings.Advanced.StreamDelay.Preserve="Preserve cutoff point (increase de
  Basic.Settings.Advanced.StreamDelay.MemoryUsage="Estimated Memory Usage: %1 MB"
  Basic.Settings.Advanced.Network="Network"
+ Basic.Settings.Advanced.Network.Disabled="The currently selected streaming protocol does not support changing network settings."
 +Basic.Settings.Advanced.Network.BindToInterface="Bind to interface"
  Basic.Settings.Advanced.Network.BindToIP="Bind to IP"
  Basic.Settings.Advanced.Network.EnableNewSocketLoop="Enable network optimizations"
  Basic.Settings.Advanced.Network.EnableLowLatencyMode="Enable TCP pacing"
 diff --git a/UI/forms/OBSBasicSettings.ui b/UI/forms/OBSBasicSettings.ui
-index 87da1c95bb01..cad29dc04283 100644
+index 4552856e7a88c..e998830deddc4 100644
 --- a/UI/forms/OBSBasicSettings.ui
 +++ b/UI/forms/OBSBasicSettings.ui
-@@ -5443,6 +5443,19 @@
-                     <number>2</number>
-                    </property>
-                    <item row="0" column="0">
+@@ -7267,6 +7267,19 @@
+                     </widget>
+                    </item>
+                    <item row="1" column="0">
 +                    <widget class="QLabel" name="bindToIfaceLabel">
 +                     <property name="text">
 +                      <string>Basic.Settings.Advanced.Network.BindToInterface</string>
@@ -284,53 +284,23 @@ index 87da1c95bb01..cad29dc04283 100644
 +                     </property>
 +                    </widget>
 +                   </item>
-+                   <item row="0" column="1">
++                   <item row="1" column="1">
 +                    <widget class="QComboBox" name="bindToInterface"/>
 +                   </item>
-+                   <item row="1" column="0">
-                     <widget class="QLabel" name="label_27">
++                   <item row="2" column="0">
+                     <widget class="QLabel" name="bindToIPLabel">
                       <property name="text">
                        <string>Basic.Settings.Advanced.Network.BindToIP</string>
-@@ -5452,17 +5465,17 @@
+@@ -7276,7 +7289,7 @@
                       </property>
                      </widget>
-                    </item>
--                   <item row="0" column="1">
-+                   <item row="1" column="1">
-                     <widget class="QComboBox" name="bindToIP"/>
-                    </item>
--                   <item row="2" column="1">
-+                   <item row="3" column="1">
-                     <widget class="QCheckBox" name="enableNewSocketLoop">
-                      <property name="text">
-                       <string>Basic.Settings.Advanced.Network.EnableNewSocketLoop</string>
-                      </property>
-                     </widget>
-                    </item>
--                   <item row="3" column="1">
-+                   <item row="4" column="1">
-                     <widget class="QCheckBox" name="enableLowLatencyMode">
-                      <property name="enabled">
-                       <bool>false</bool>
-@@ -5472,7 +5485,7 @@
-                      </property>
-                     </widget>
-                    </item>
--                   <item row="2" column="0">
-+                   <item row="3" column="0">
-                     <spacer name="horizontalSpacer_7">
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-@@ -5485,7 +5498,7 @@
-                      </property>
-                     </spacer>
                     </item>
 -                   <item row="1" column="1">
 +                   <item row="2" column="1">
-                     <widget class="QCheckBox" name="dynBitrate">
-                      <property name="toolTip">
-                       <string>Basic.Settings.Output.DynamicBitrate.TT</string>
-@@ -5827,6 +5840,7 @@
+                     <widget class="QComboBox" name="bindToIP"/>
+                    </item>
+                    <item row="3" column="1">
+@@ -7620,6 +7633,7 @@
    <tabstop>reconnectRetryDelay</tabstop>
    <tabstop>reconnectMaxRetries</tabstop>
    <tabstop>bindToIP</tabstop>
@@ -339,7 +309,7 @@ index 87da1c95bb01..cad29dc04283 100644
    <tabstop>enableNewSocketLoop</tabstop>
    <tabstop>enableLowLatencyMode</tabstop>
 diff --git a/UI/window-basic-auto-config-test.cpp b/UI/window-basic-auto-config-test.cpp
-index 4208efe67940..1ac13e60209e 100644
+index 17b15e33b6f7a..8757a11fff40e 100644
 --- a/UI/window-basic-auto-config-test.cpp
 +++ b/UI/window-basic-auto-config-test.cpp
 @@ -228,6 +228,9 @@ void AutoConfigTestPage::TestBandwidthThread()
@@ -353,10 +323,10 @@ index 4208efe67940..1ac13e60209e 100644
  		config_get_string(main->Config(), "Output", "BindIP");
  	obs_data_set_string(output_settings, "bind_ip", bind_ip);
 diff --git a/UI/window-basic-main-outputs.cpp b/UI/window-basic-main-outputs.cpp
-index d4351f7f6e55..9ad3a294aa63 100644
+index 39e2ff84f0765..60b66818222bd 100644
 --- a/UI/window-basic-main-outputs.cpp
 +++ b/UI/window-basic-main-outputs.cpp
-@@ -882,6 +882,8 @@ bool SimpleOutput::StartStreaming(obs_service_t *service)
+@@ -928,6 +928,8 @@ bool SimpleOutput::StartStreaming(obs_service_t *service)
  	int delaySec = config_get_int(main->Config(), "Output", "DelaySec");
  	bool preserveDelay =
  		config_get_bool(main->Config(), "Output", "DelayPreserve");
@@ -365,7 +335,7 @@ index d4351f7f6e55..9ad3a294aa63 100644
  	const char *bindIP =
  		config_get_string(main->Config(), "Output", "BindIP");
  	bool enableNewSocketLoop = config_get_bool(main->Config(), "Output",
-@@ -892,6 +894,7 @@ bool SimpleOutput::StartStreaming(obs_service_t *service)
+@@ -938,6 +940,7 @@ bool SimpleOutput::StartStreaming(obs_service_t *service)
  		config_get_bool(main->Config(), "Output", "DynamicBitrate");
  
  	OBSDataAutoRelease settings = obs_data_create();
@@ -373,7 +343,7 @@ index d4351f7f6e55..9ad3a294aa63 100644
  	obs_data_set_string(settings, "bind_ip", bindIP);
  	obs_data_set_bool(settings, "new_socket_loop_enabled",
  			  enableNewSocketLoop);
-@@ -1771,6 +1774,8 @@ bool AdvancedOutput::StartStreaming(obs_service_t *service)
+@@ -1827,6 +1830,8 @@ bool AdvancedOutput::StartStreaming(obs_service_t *service)
  	int delaySec = config_get_int(main->Config(), "Output", "DelaySec");
  	bool preserveDelay =
  		config_get_bool(main->Config(), "Output", "DelayPreserve");
@@ -382,7 +352,7 @@ index d4351f7f6e55..9ad3a294aa63 100644
  	const char *bindIP =
  		config_get_string(main->Config(), "Output", "BindIP");
  	bool enableNewSocketLoop = config_get_bool(main->Config(), "Output",
-@@ -1781,6 +1786,7 @@ bool AdvancedOutput::StartStreaming(obs_service_t *service)
+@@ -1837,6 +1842,7 @@ bool AdvancedOutput::StartStreaming(obs_service_t *service)
  		config_get_bool(main->Config(), "Output", "DynamicBitrate");
  
  	OBSDataAutoRelease settings = obs_data_create();
@@ -391,12 +361,12 @@ index d4351f7f6e55..9ad3a294aa63 100644
  	obs_data_set_bool(settings, "new_socket_loop_enabled",
  			  enableNewSocketLoop);
 diff --git a/UI/window-basic-main.cpp b/UI/window-basic-main.cpp
-index fa172ce5ef41..ed8fead412c6 100644
+index a726316957259..3354feda8bd01 100644
 --- a/UI/window-basic-main.cpp
 +++ b/UI/window-basic-main.cpp
-@@ -1436,6 +1436,8 @@ bool OBSBasic::InitBasicConfigDefaults()
- 	config_set_default_uint(basicConfig, "Output", "RetryDelay", 10);
- 	config_set_default_uint(basicConfig, "Output", "MaxRetries", 20);
+@@ -1464,6 +1464,8 @@ bool OBSBasic::InitBasicConfigDefaults()
+ 	config_set_default_uint(basicConfig, "Output", "RetryDelay", 2);
+ 	config_set_default_uint(basicConfig, "Output", "MaxRetries", 25);
  
 +	config_set_default_string(basicConfig, "Output", "BindInterface",
 +				  "default");
@@ -404,10 +374,10 @@ index fa172ce5ef41..ed8fead412c6 100644
  	config_set_default_bool(basicConfig, "Output", "NewSocketLoopEnable",
  				false);
 diff --git a/UI/window-basic-settings.cpp b/UI/window-basic-settings.cpp
-index 02eb3ca071b6..c01497a1f8c6 100644
+index 2c4c8a8592191..145f64cbfb0dc 100644
 --- a/UI/window-basic-settings.cpp
 +++ b/UI/window-basic-settings.cpp
-@@ -552,6 +552,9 @@ OBSBasicSettings::OBSBasicSettings(QWidget *parent)
+@@ -560,6 +560,9 @@ OBSBasicSettings::OBSBasicSettings(QWidget *parent)
  	HookWidget(ui->reconnectMaxRetries,  SCROLL_CHANGED, ADV_CHANGED);
  	HookWidget(ui->processPriority,      COMBO_CHANGED,  ADV_CHANGED);
  	HookWidget(ui->confirmOnExit,        CHECK_CHANGED,  ADV_CHANGED);
@@ -417,7 +387,7 @@ index 02eb3ca071b6..c01497a1f8c6 100644
  	HookWidget(ui->bindToIP,             COMBO_CHANGED,  ADV_CHANGED);
  	HookWidget(ui->enableNewSocketLoop,  CHECK_CHANGED,  ADV_CHANGED);
  	HookWidget(ui->enableLowLatencyMode, CHECK_CHANGED,  ADV_CHANGED);
-@@ -667,6 +670,13 @@ OBSBasicSettings::OBSBasicSettings(QWidget *parent)
+@@ -674,6 +677,13 @@ OBSBasicSettings::OBSBasicSettings(QWidget *parent)
  	ui->resetOSXVSync = nullptr;
  #endif
  
@@ -431,20 +401,27 @@ index 02eb3ca071b6..c01497a1f8c6 100644
  	connect(ui->streamDelaySec, SIGNAL(valueChanged(int)), this,
  		SLOT(UpdateStreamDelayEstimate()));
  	connect(ui->outputMode, SIGNAL(currentIndexChanged(int)), this,
-@@ -813,10 +823,29 @@ OBSBasicSettings::OBSBasicSettings(QWidget *parent)
+@@ -825,9 +835,37 @@ OBSBasicSettings::OBSBasicSettings(QWidget *parent)
+ 		SLOT(AdvReplayBufferChanged()));
  	connect(ui->listWidget, SIGNAL(currentRowChanged(int)), this,
  		SLOT(SimpleRecordingEncoderChanged()));
++#ifdef __linux__
++	connect(ui->bindToInterface, SIGNAL(currentIndexChanged(int)), this,
++		SLOT(UpdateAddrList()));
  
+-	// Get Bind to IP Addresses
++	ui->bindToIP->setEnabled(false);
++#endif
++
 +	// Get Bind to interfaces Interfaces (Linux only)
- 	// Get Bind to IP Addresses
++	// Get Bind to IP Addresses (Others)
  	obs_properties_t *ppts = obs_get_output_properties("rtmp_output");
 +#ifdef __linux__
 +	obs_property_t *p_iface = obs_properties_get(ppts, "bind_interface");
 +	QStringList dedup_iface = {};
-+#endif
- 	obs_property_t *p = obs_properties_get(ppts, "bind_ip");
- 
-+#ifdef __linux__
++
++	ui->bindToInterface->blockSignals(true);
++
 +	size_t count_iface = obs_property_list_item_count(p_iface);
 +	for (size_t i = 0; i < count_iface; i++) {
 +		const char *name = obs_property_list_item_name(p_iface, i);
@@ -456,12 +433,23 @@ index 02eb3ca071b6..c01497a1f8c6 100644
 +			ui->bindToInterface->addItem(QT_UTF8(name), val);
 +		}
 +	}
-+#endif
 +
++	UpdateAddrList();
++	ui->bindToInterface->blockSignals(false);
++#else
+ 	obs_property_t *p = obs_properties_get(ppts, "bind_ip");
+ 
  	size_t count = obs_property_list_item_count(p);
- 	for (size_t i = 0; i < count; i++) {
- 		const char *name = obs_property_list_item_name(p, i);
-@@ -2517,6 +2546,10 @@ void OBSBasicSettings::LoadAdvancedSettings()
+@@ -837,7 +875,7 @@ OBSBasicSettings::OBSBasicSettings(QWidget *parent)
+ 
+ 		ui->bindToIP->addItem(QT_UTF8(name), val);
+ 	}
+-
++#endif
+ 	obs_properties_destroy(ppts);
+ 
+ 	InitStreamPage();
+@@ -2609,6 +2647,10 @@ void OBSBasicSettings::LoadAdvancedSettings()
  						 "FilenameFormatting");
  	bool overwriteIfExists =
  		config_get_bool(main->Config(), "Output", "OverwriteIfExists");
@@ -472,9 +460,9 @@ index 02eb3ca071b6..c01497a1f8c6 100644
  	const char *bindIP =
  		config_get_string(main->Config(), "Output", "BindIP");
  	const char *rbPrefix = config_get_string(main->Config(), "SimpleOutput",
-@@ -2568,6 +2601,12 @@ void OBSBasicSettings::LoadAdvancedSettings()
- 	SetComboByName(ui->colorSpace, videoColorSpace);
- 	SetComboByValue(ui->colorRange, videoColorRange);
+@@ -2662,6 +2704,12 @@ void OBSBasicSettings::LoadAdvancedSettings()
+ 	ui->sdrWhiteLevel->setValue(sdrWhiteLevel);
+ 	ui->hdrNominalPeakLevel->setValue(hdrNominalPeakLevel);
  
 +#ifdef __linux__
 +	if (!SetComboByValue(ui->bindToInterface, bindInterface))
@@ -485,7 +473,7 @@ index 02eb3ca071b6..c01497a1f8c6 100644
  	if (!SetComboByValue(ui->bindToIP, bindIP))
  		SetInvalidValue(ui->bindToIP, bindIP, bindIP);
  
-@@ -3299,6 +3338,9 @@ void OBSBasicSettings::SaveAdvancedSettings()
+@@ -3383,6 +3431,9 @@ void OBSBasicSettings::SaveAdvancedSettings()
  	SaveCheckBox(ui->reconnectEnable, "Output", "Reconnect");
  	SaveSpinBox(ui->reconnectRetryDelay, "Output", "RetryDelay");
  	SaveSpinBox(ui->reconnectMaxRetries, "Output", "MaxRetries");
@@ -495,150 +483,14 @@ index 02eb3ca071b6..c01497a1f8c6 100644
  	SaveComboData(ui->bindToIP, "Output", "BindIP");
  	SaveCheckBox(ui->autoRemux, "Video", "AutoRemux");
  	SaveCheckBox(ui->dynBitrate, "Output", "DynamicBitrate");
-
-From 8dae0ab3bedcd9ac5f843ff2ef8c9a0a37f1e20b Mon Sep 17 00:00:00 2001
-From: tytan652 <tytan652@tytanium.xyz>
-Date: Thu, 11 Feb 2021 14:53:55 +0100
-Subject: [PATCH 4/5] UI,obs-outputs: Rename bind IP property variables
-
----
- UI/window-basic-settings.cpp      | 10 +++++-----
- plugins/obs-outputs/rtmp-stream.c | 15 ++++++++-------
- 2 files changed, 13 insertions(+), 12 deletions(-)
-
-diff --git a/UI/window-basic-settings.cpp b/UI/window-basic-settings.cpp
-index c01497a1f8c6..c8712e6cb627 100644
---- a/UI/window-basic-settings.cpp
-+++ b/UI/window-basic-settings.cpp
-@@ -830,7 +830,7 @@ OBSBasicSettings::OBSBasicSettings(QWidget *parent)
- 	obs_property_t *p_iface = obs_properties_get(ppts, "bind_interface");
- 	QStringList dedup_iface = {};
+@@ -5429,5 +5480,41 @@ void OBSBasicSettings::UpdateAdvNetworkGroup()
+ #ifdef _WIN32
+ 	ui->enableNewSocketLoop->setVisible(enabled);
+ 	ui->enableLowLatencyMode->setVisible(enabled);
++#elif defined(__linux__)
++	ui->bindToIfaceLabel->setVisible(enabled);
++	ui->bindToInterface->setVisible(enabled);
  #endif
--	obs_property_t *p = obs_properties_get(ppts, "bind_ip");
-+	obs_property_t *p_addr = obs_properties_get(ppts, "bind_ip");
- 
- #ifdef __linux__
- 	size_t count_iface = obs_property_list_item_count(p_iface);
-@@ -846,10 +846,10 @@ OBSBasicSettings::OBSBasicSettings(QWidget *parent)
- 	}
- #endif
- 
--	size_t count = obs_property_list_item_count(p);
--	for (size_t i = 0; i < count; i++) {
--		const char *name = obs_property_list_item_name(p, i);
--		const char *val = obs_property_list_item_string(p, i);
-+	size_t count_addr = obs_property_list_item_count(p_addr);
-+	for (size_t i = 0; i < count_addr; i++) {
-+		const char *name = obs_property_list_item_name(p_addr, i);
-+		const char *val = obs_property_list_item_string(p_addr, i);
- 
- 		ui->bindToIP->addItem(QT_UTF8(name), val);
- 	}
-diff --git a/plugins/obs-outputs/rtmp-stream.c b/plugins/obs-outputs/rtmp-stream.c
-index 5e5235afe67d..834af5e0c02c 100644
---- a/plugins/obs-outputs/rtmp-stream.c
-+++ b/plugins/obs-outputs/rtmp-stream.c
-@@ -1561,7 +1561,7 @@ static obs_properties_t *rtmp_stream_properties(void *unused)
- 	obs_property_t *p_iface;
- #endif
- 	struct netif_saddr_data addrs = {0};
--	obs_property_t *p;
-+	obs_property_t *p_addr;
- 
- 	obs_properties_add_int(props, OPT_DROP_THRESHOLD,
- 			       obs_module_text("RTMPStream.DropThreshold"), 200,
-@@ -1583,17 +1583,18 @@ static obs_properties_t *rtmp_stream_properties(void *unused)
- 	netif_siface_data_free(&ifaces);
- #endif
- 
--	p = obs_properties_add_list(props, OPT_BIND_IP,
--				    obs_module_text("RTMPStream.BindIP"),
--				    OBS_COMBO_TYPE_LIST,
--				    OBS_COMBO_FORMAT_STRING);
-+	p_addr = obs_properties_add_list(props, OPT_BIND_IP,
-+					 obs_module_text("RTMPStream.BindIP"),
-+					 OBS_COMBO_TYPE_LIST,
-+					 OBS_COMBO_FORMAT_STRING);
- 
--	obs_property_list_add_string(p, obs_module_text("Default"), "default");
-+	obs_property_list_add_string(p_addr, obs_module_text("Default"),
-+				     "default");
- 
- 	netif_get_addrs(&addrs);
- 	for (size_t i = 0; i < addrs.addrs.num; i++) {
- 		struct netif_saddr_item item = addrs.addrs.array[i];
--		obs_property_list_add_string(p, item.name, item.addr);
-+		obs_property_list_add_string(p_addr, item.name, item.addr);
- 	}
- 	netif_saddr_data_free(&addrs);
- 
-
-From bbbafbe6ccc0b0add51dceeb7afceca6447b653a Mon Sep 17 00:00:00 2001
-From: tytan652 <tytan652@tytanium.xyz>
-Date: Mon, 15 Feb 2021 11:37:56 +0100
-Subject: [PATCH 5/5] UI: Disable bind IP if no iface selected on Linux
-
----
- UI/window-basic-settings.cpp | 54 ++++++++++++++++++++++++++++++++----
- UI/window-basic-settings.hpp |  3 ++
- 2 files changed, 51 insertions(+), 6 deletions(-)
-
-diff --git a/UI/window-basic-settings.cpp b/UI/window-basic-settings.cpp
-index c8712e6cb627..0509f1af00d9 100644
---- a/UI/window-basic-settings.cpp
-+++ b/UI/window-basic-settings.cpp
-@@ -822,17 +822,22 @@ OBSBasicSettings::OBSBasicSettings(QWidget *parent)
- 		SLOT(AdvReplayBufferChanged()));
- 	connect(ui->listWidget, SIGNAL(currentRowChanged(int)), this,
- 		SLOT(SimpleRecordingEncoderChanged()));
-+#ifdef __linux__
-+	connect(ui->bindToInterface, SIGNAL(currentIndexChanged(int)), this,
-+		SLOT(UpdateAddrList()));
-+
-+	ui->bindToIP->setEnabled(false);
-+#endif
- 
- 	// Get Bind to interfaces Interfaces (Linux only)
--	// Get Bind to IP Addresses
-+	// Get Bind to IP Addresses (Others)
- 	obs_properties_t *ppts = obs_get_output_properties("rtmp_output");
- #ifdef __linux__
- 	obs_property_t *p_iface = obs_properties_get(ppts, "bind_interface");
- 	QStringList dedup_iface = {};
--#endif
--	obs_property_t *p_addr = obs_properties_get(ppts, "bind_ip");
- 
--#ifdef __linux__
-+	ui->bindToInterface->blockSignals(true);
-+
- 	size_t count_iface = obs_property_list_item_count(p_iface);
- 	for (size_t i = 0; i < count_iface; i++) {
- 		const char *name = obs_property_list_item_name(p_iface, i);
-@@ -844,7 +849,11 @@ OBSBasicSettings::OBSBasicSettings(QWidget *parent)
- 			ui->bindToInterface->addItem(QT_UTF8(name), val);
- 		}
- 	}
--#endif
-+
-+	UpdateAddrList();
-+	ui->bindToInterface->blockSignals(false);
-+#else
-+	obs_property_t *p_addr = obs_properties_get(ppts, "bind_ip");
- 
- 	size_t count_addr = obs_property_list_item_count(p_addr);
- 	for (size_t i = 0; i < count_addr; i++) {
-@@ -853,7 +862,7 @@ OBSBasicSettings::OBSBasicSettings(QWidget *parent)
- 
- 		ui->bindToIP->addItem(QT_UTF8(name), val);
- 	}
--
-+#endif
- 	obs_properties_destroy(ppts);
- 
- 	InitStreamPage();
-@@ -5217,3 +5226,36 @@ void OBSBasicSettings::RecreateOutputResolutionWidget()
- 	ui->outputResolution->lineEdit()->setValidator(
- 		ui->baseResolution->lineEdit()->validator());
  }
 +
 +#ifdef __linux__
@@ -648,12 +500,12 @@ index c8712e6cb627..0509f1af00d9 100644
 +
 +	// Get Bind to IP Addresses (Linux only)
 +	obs_properties_t *ppts = obs_get_output_properties("rtmp_output");
-+	obs_property_t *p_addr = obs_properties_get(ppts, "bind_ip");
++	obs_property_t *p = obs_properties_get(ppts, "bind_ip");
 +
-+	size_t count_addr = obs_property_list_item_count(p_addr);
++	size_t count_addr = obs_property_list_item_count(p);
 +	for (size_t i = 0; i < count_addr; i++) {
-+		const char *name = obs_property_list_item_name(p_addr, i);
-+		const char *val = obs_property_list_item_string(p_addr, i);
++		const char *name = obs_property_list_item_name(p, i);
++		const char *val = obs_property_list_item_string(p, i);
 +
 +		//Put only the addresses from the selected interface
 +		if (QT_UTF8(name).contains(
@@ -674,12 +526,12 @@ index c8712e6cb627..0509f1af00d9 100644
 +}
 +#endif
 diff --git a/UI/window-basic-settings.hpp b/UI/window-basic-settings.hpp
-index 4c66bc210d8c..6bc445d9306e 100644
+index 2431cb056241f..da6ed56ac369d 100644
 --- a/UI/window-basic-settings.hpp
 +++ b/UI/window-basic-settings.hpp
-@@ -409,6 +409,9 @@ private slots:
- 	void SetVideoIcon(const QIcon &icon);
+@@ -464,6 +464,9 @@ private slots:
  	void SetHotkeysIcon(const QIcon &icon);
+ 	void SetAccessibilityIcon(const QIcon &icon);
  	void SetAdvancedIcon(const QIcon &icon);
 +#ifdef __linux__
 +	void UpdateAddrList();
@@ -687,4 +539,3 @@ index 4c66bc210d8c..6bc445d9306e 100644
  
  	void UseStreamKeyAdvClicked();
  
-

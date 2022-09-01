@@ -3,23 +3,23 @@
 DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=obs-studio-tytan652
-pkgver=27.2.4
-pkgrel=6
+pkgver=28.0.0
+pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus V4L2 devices by paths, my bind interface PR, and sometimes backported fixes"
-arch=("i686" "x86_64" "aarch64")
+arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
 license=("GPL3")
 _mbedtlsver=2.28
 _pythonver=3.10
 depends=(
-  "jack" "gtk-update-icon-cache" "x264" "rnnoise" "pciutils"
+  "jack" "gtk-update-icon-cache" "x264" "rnnoise" "pciutils" "qt6-svg"
 
   # "libxinerama" "qt5-svg" provided by "vlc-luajit"
   # "libxkbcommon-x11" provided by "qt5-base"
   # "jansson" "curl" provided by "ftl-sdk"
 
   # Needed to use Qt on Wayland platform
-  "qt5-wayland"
+  "qt6-wayland"
 
   # Both needed to load linux-capture, so those two are no longer optional
   "libxcomposite" "pipewire"
@@ -52,6 +52,9 @@ fi
 makedepends=(
   "cmake" "git" "libfdk-aac" "swig" "luajit" "sndio" "lsb-release"
 
+  # Needed by obs-websocket
+  'asio' 'nlohmann-json' 'websocketpp'
+
   # AUR Packages
   "libajantv2"
 )
@@ -80,13 +83,14 @@ if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
 else
   optdepends+=("python>=$_pythonver: Python scripting")
 fi
-provides=("obs-studio=$pkgver" "obs-vst")
-conflicts=("obs-studio" "obs-vst")
+provides=("obs-studio=$pkgver" "obs-vst" "obs-websocket")
+conflicts=("obs-studio" "obs-vst" "obs-websocket")
 options=('debug')
 source=(
   "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
-  "obs-vst::git+https://github.com/obsproject/obs-vst.git"
+  "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
+  "qr::git+https://github.com/nayuki/QR-Code-generator.git"
   "bind_iface.patch" # Based on https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4219.patch
   "v4l2_by-path.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3437.patch
 )
@@ -94,8 +98,9 @@ sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
-  "4dc22cc6a71f879486946032debef5789b144d1d108a678379910480601937ca"
-  "e0cfe383286ae1b7e9a4f88ea0e8f05e79470bf677b16ac18bd2a64826c2ae28"
+  "SKIP"
+  "a244f5b594ed7f0b215a0c0fb0bee445cbb5726b12fdfe539e70f0d9d991dab9"
+  "ee54b9c6f7e17fcc62c6afc094e65f18b2e97963c2fe92289b2b91972ac206e5"
 )
 
 if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
@@ -109,81 +114,72 @@ sha256sums+=(
 )
 fi
 
-if [[ $CARCH == 'x86_64' ]] || [[ $CARCH == 'i686' ]]; then
+if [[ $CARCH == 'x86_64' ]]; then
   optdepends+=("decklink: Blackmagic Design DeckLink support")
 fi
 
 if [[ $CARCH == 'x86_64' ]]; then
-  makedepends+=("cef-minimal-obs=95.0.0_MediaHandler.2462+g95e19b8+chromium_95.0.4638.69_3")
+  _cefbranch=5060
+  source+=("https://cdn-fastly.obsproject.com/downloads/cef_binary_${_cefbranch}_linux64.tar.bz2")
+  sha256sums+=("ac4e2a8ebf20700e4e36353e314f876623633dd5b474778a2548bb66bdbea11d")
   provides+=("obs-browser")
   conflicts+=("obs-linuxbrowser" "obs-browser")
   _browser=ON
+  _arch=64
+  _parch=x86_64
 else
   _browser=OFF
 fi
 
 prepare() {
   cd "$srcdir/obs-studio"
-  git config submodule.plugins/obs-vst.url $srcdir/obs-vst
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
+  git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
   git submodule update
 
-  ## UI: Fix display affinity logic when re-applying (https://github.com/obsproject/obs-studio/commit/a8ecf3c8f2c2c28624a01249d3ec8b6435198009)
-  git cherry-pick -n a8ecf3c8f2c2c28624a01249d3ec8b6435198009
+  cd plugins/obs-websocket
+  sed -i 's|EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/deps/json/CMakeLists.txt||' CMakeLists.txt
+  sed -i 's|AND EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/deps/websocketpp/CMakeLists.txt||' CMakeLists.txt
+  sed -i 's|AND EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/deps/asio/asio/include/asio.hpp||' CMakeLists.txt
+  sed -i "s|AND EXISTS|EXISTS|" CMakeLists.txt
+  sed -i "s|add_subdirectory(deps/json)|find_package(nlohmann_json 3.10.0 REQUIRED)|" CMakeLists.txt
+  git config submodule.deps/qr.url $srcdir/qr
+  git submodule update deps/qr
 
-  ## UI: Truncate displayed file paths in the middle in Remux window (https://github.com/obsproject/obs-studio/commit/2d75167e4c82207d0380512de4757521eeade0ba)
-  git cherry-pick -n 2d75167e4c82207d0380512de4757521eeade0ba
-
-  ## libobs: Fix image source not loading upper case file extensions (https://github.com/obsproject/obs-studio/commit/9903d73f36809c20795d5a918f2898fa6b8b88f8)
-  git cherry-pick -n 9903d73f36809c20795d5a918f2898fa6b8b88f8
-
-  ## linux-capture: Don't initialize format info if init_obs_pipewire fails (https://github.com/obsproject/obs-studio/commit/9903d73f36809c20795d5a918f2898fa6b8b88f8)
-  sed -i '1438 a return NULL; }' plugins/linux-capture/pipewire.c
-  sed -i '1437 a {' plugins/linux-capture/pipewire.c
-
-  ## linux-pipewire: Version check call to pw_deinit (https://github.com/obsproject/obs-studio/commit/bf660b1d8dc1905527bb5919b1034c7b43c55dac)
-  sed -i '74,77d' plugins/linux-capture/linux-capture.c
-
-  ## libobs, UI: Fix --verbose logging for stdout (https://github.com/obsproject/obs-studio/commit/af67ef8e57fbf05e772f4cd6fcd3649e15689304)
-  git cherry-pick -n af67ef8e57fbf05e772f4cd6fcd3649e15689304
-
-  ## vlc-source: Fix surround sound not properly downmixed (https://github.com/obsproject/obs-studio/commit/5e4081e5637c7b6761ce54d5aef344fa85414e29)
-  git cherry-pick -n 5e4081e5637c7b6761ce54d5aef344fa85414e29
-
-  ## vlc-video: Fix video rotation and aspect ratio (https://github.com/obsproject/obs-studio/commit/59bdac1569304cd2112154b51fa5d25df61569cf)
-  git cherry-pick -n 59bdac1569304cd2112154b51fa5d25df61569cf
-
-  ## libobs-opengl: Use gl helpers in create_dmabuf_image (https://github.com/obsproject/obs-studio/commit/f695b14edc59e7c778566820988f9998df5190ba)
-  git cherry-pick -n f695b14edc59e7c778566820988f9998df5190ba
-
-  ## libobs,obs-outputs: Fix librtmp1 dependency interference on some linuxes (https://github.com/obsproject/obs-studio/pull/6377)
-  sed -i 's/#define EXPORT/#define EXPORT __attribute__((visibility("default")))/g' libobs/util/c99defs.h
-
-  ## obs-ffmpeg: Several fixes allowing support of FFmpeg 5 (https://github.com/obsproject/obs-studio/pull/6423)
-  git cherry-pick -n e66542075d5d2cb51a14a0bdf3458ac10757de64
-  git cherry-pick -n 5b6cc73c2475abe6a85647604b9ce937dec09000
-  git cherry-pick -n 12d1f1c3358f7231244db0b971a333445e346f80
-
-  ## obs-ffmpeg: Change types to avoid unnecessary casts (https://github.com/obsproject/obs-studio/commit/8bd4ef61a02f6f574d4788f2bc25bb9fe2568c5c)
-  git cherry-pick -n 8bd4ef61a02f6f574d4788f2bc25bb9fe2568c5c
-
+  cd "$srcdir/obs-studio"
   ## Add network interface binding for RTMP on Linux (https://github.com/obsproject/obs-studio/pull/4219)
   patch -Np1 < "$srcdir/bind_iface.patch"
 
-  ## linux-v4l2: Save device by path (https://github.com/obsproject/obs-studio/pull/3437)
+  ## linux-v4l2: Save device by id or path (https://github.com/obsproject/obs-studio/pull/6493)
   patch -Np1 < "$srcdir/v4l2_by-path.patch"
 }
 
 build() {
-  cd obs-studio
+  if [[ $CARCH == 'x86_64' ]]; then
+    cd "$srcdir"/cef_binary_${_cefbranch}_linux${_arch}
+
+    #The arm64 CEF set the wrong arch for the project
+    cmake \
+      -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+      -DPROJECT_ARCH=$_parch .
+
+    make libcef_dll_wrapper
+  fi
+
+  cd "$srcdir"/obs-studio
   mkdir -p build; cd build
 
   cmake \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DBUILD_BROWSER=$_browser \
-    -DCEF_ROOT_DIR=/opt/cef-obs \
+    -DENABLE_RTMPS=ON \
+    -DQT_VERSION=6 \
+    -DENABLE_LIBFDK=ON \
+    -DENABLE_JACK=ON \
+    -DENABLE_SNDIO=ON \
+    -DENABLE_BROWSER=$_browser \
+    -DCEF_ROOT_DIR="$srcdir/cef_binary_${_cefbranch}_linux${_arch}" \
     -DOBS_VERSION_OVERRIDE="$pkgver-tytan652-$pkgrel" ..
 
   make

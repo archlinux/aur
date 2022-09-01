@@ -1,9 +1,8 @@
 pkgbase = obs-studio-tytan652
 	pkgdesc = Free and open source software for video recording and live streaming. With everything except service integrations. Plus V4L2 devices by paths, my bind interface PR, and sometimes backported fixes
-	pkgver = 27.2.4
-	pkgrel = 6
+	pkgver = 28.0.0
+	pkgrel = 1
 	url = https://github.com/obsproject/obs-studio
-	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
@@ -14,15 +13,18 @@ pkgbase = obs-studio-tytan652
 	makedepends = luajit
 	makedepends = sndio
 	makedepends = lsb-release
+	makedepends = asio
+	makedepends = nlohmann-json
+	makedepends = websocketpp
 	makedepends = libajantv2
-	makedepends = python
-	makedepends = cef-minimal-obs=95.0.0_MediaHandler.2462+g95e19b8+chromium_95.0.4638.69_3
+	makedepends = python>=3.10
 	depends = jack
 	depends = gtk-update-icon-cache
 	depends = x264
 	depends = rnnoise
 	depends = pciutils
-	depends = qt5-wayland
+	depends = qt6-svg
+	depends = qt6-wayland
 	depends = libxcomposite
 	depends = pipewire
 	depends = xdg-desktop-portal
@@ -45,23 +47,29 @@ pkgbase = obs-studio-tytan652
 	optdepends = libajantv2: AJA NTV 2 support
 	optdepends = python: Python scripting
 	optdepends = decklink: Blackmagic Design DeckLink support
-	provides = obs-studio=27.2.4
+	provides = obs-studio=28.0.0
 	provides = obs-vst
+	provides = obs-websocket
 	provides = obs-browser
 	conflicts = obs-studio
 	conflicts = obs-vst
+	conflicts = obs-websocket
 	conflicts = obs-linuxbrowser
 	conflicts = obs-browser
 	options = debug
-	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=27.2.4
+	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=28.0.0
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
-	source = obs-vst::git+https://github.com/obsproject/obs-vst.git
+	source = obs-websocket::git+https://github.com/obsproject/obs-websocket.git
+	source = qr::git+https://github.com/nayuki/QR-Code-generator.git
 	source = bind_iface.patch
 	source = v4l2_by-path.patch
+	source = https://cdn-fastly.obsproject.com/downloads/cef_binary_5060_linux64.tar.bz2
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 4dc22cc6a71f879486946032debef5789b144d1d108a678379910480601937ca
-	sha256sums = e0cfe383286ae1b7e9a4f88ea0e8f05e79470bf677b16ac18bd2a64826c2ae28
+	sha256sums = SKIP
+	sha256sums = a244f5b594ed7f0b215a0c0fb0bee445cbb5726b12fdfe539e70f0d9d991dab9
+	sha256sums = ee54b9c6f7e17fcc62c6afc094e65f18b2e97963c2fe92289b2b91972ac206e5
+	sha256sums = ac4e2a8ebf20700e4e36353e314f876623633dd5b474778a2548bb66bdbea11d
 
 pkgname = obs-studio-tytan652
