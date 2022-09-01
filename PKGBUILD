@@ -1,9 +1,9 @@
 # Maintainer: spookyintheam <spookyintheam@protonmail.com>
 
-pkgname=catppuccin-gtk-theme-macchiato
+pkgname=catppuccin-gtk-theme-mocha
 pkgver=0.2.7
 pkgrel=1
-pkgdesc='Soothing pastel theme for GTK3 - Macchiato'
+pkgdesc='Soothing pastel theme for GTK3 - Mocha'
 arch=('any')
 license=('GPL3')
 depends=('gtk-engine-murrine' 'gnome-themes-extra')
