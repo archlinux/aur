@@ -1,6 +1,6 @@
 pkgname=yaknt
 pkgver=1.1
-pkgrel=0
+pkgrel=1
 pkgdesc='New tab for Yakuake console'
 arch=(any)
 url='https://github.com/logrusorgru/yaknt'
