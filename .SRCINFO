@@ -1,0 +1,19 @@
+pkgbase = obs-websocket-compat
+	pkgdesc = Remote-control of OBS Studio through WebSocket (4.9.1 backwards-compatible)
+	pkgver = 4.9.1
+	pkgrel = 1
+	url = https://github.com/obsproject/obs-websocket/tree/4.x-compat-new-cmake
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	makedepends = asio
+	makedepends = nlohmann-json
+	makedepends = websocketpp
+	depends = obs-studio>=28
+	options = debug
+	source = obs-websocket-compat::git+https://github.com/obsproject/obs-websocket.git#commit=f7451d82a6b8c82dcf4a94d9b2d80d79ac85542e
+	sha256sums = SKIP
+
+pkgname = obs-websocket-compat
