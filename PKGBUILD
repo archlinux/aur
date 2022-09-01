@@ -2,7 +2,7 @@
 
 pkgname=casile
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
 url="https://github.com/sile-typesetter/$pkgname"
