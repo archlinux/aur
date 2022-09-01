@@ -3,7 +3,6 @@ pkgbase = obs-audio-pan-filter
 	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://obsproject.com/forum/resources/audio-pan-filter.1042/
-	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
