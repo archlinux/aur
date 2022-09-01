@@ -2,7 +2,7 @@
 
 pkgname=moosync
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple music player'
 arch=('any')
 url='https://github.com/Moosync/Moosync'
@@ -23,7 +23,7 @@ build() {
     # Remove electron from package.json
     sed -E -i 's|("electron": ").*"|\1'"$(cat "/usr/lib/electron/version")"'"|' 'package.json'
 
-    yarn install
+    YARN_CHECKSUM_BEHAVIOR=update yarn install
 }
 
 package() {

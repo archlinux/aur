@@ -1,7 +1,7 @@
 pkgbase = moosync
 	pkgdesc = A simple music player
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Moosync/Moosync
 	arch = any
 	license = GPL3
