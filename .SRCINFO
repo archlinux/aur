@@ -1,7 +1,7 @@
 pkgbase = csgo-checker-bin
 	pkgdesc = Check CS:GO accounts for bans/cooldowns/wins/ranks (bin)
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dumbasPL/csgo-checker
 	arch = x86_64
 	license = GPL3
@@ -9,6 +9,7 @@ pkgbase = csgo-checker-bin
 	depends = libxss
 	depends = nss
 	provides = csgo-checker
+	conflicts = csgo-checker
 	noextract = csgo-checker-bin-1.4.0.tar.gz
 	source = csgo-checker-bin-1.4.0.tar.gz::https://github.com/dumbasPL/csgo-checker/releases/download/v1.4.0/csgo-checker_x64-1.4.0.tar.gz
 	source = https://raw.githubusercontent.com/dumbasPL/csgo-checker/v1.4.0/LICENSE
