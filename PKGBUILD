@@ -4,16 +4,17 @@
 _pkgname=python3-otr
 pkgname=python-otr
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Off-The-Record Messaging protocol implementation for Python"
 license=('LGPL-2.1+')
 arch=('aarch64' 'x86_64')
 url="https://github.com/AGProjects/python3-otr"
+makedepends=('python-setuptools')
 depends=(
+  'python-application'
+  'python-cryptography'
   'python-gmpy2'
   'python-zope-interface'
-  'python-cryptography'
-  'python-application'
   )
 conflicts=('python3-otr')
 provides=('python3-otr')
