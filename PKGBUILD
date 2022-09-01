@@ -1,23 +1,20 @@
-# Maintainer: Grey Christoforo <my first name [at] my last name [dot] net>
+# Maintainer: Jelle  van der Waa <jelle@archlinux.org>
+# Contributor: Grey Christoforo <my first name [at] my last name [dot] net>
 
 pkgname=cura-binary-data
-pkgver=2.4.0
-pkgrel=2
+pkgver=4.13.1
+pkgrel=1
 pkgdesc="Binary data (firmwares and such) for cura"
-depends=()
 url="https://github.com/Ultimaker/${pkgname}"
-license=('AGPLv3')
+license=('AGPL')
 arch=('any')
-#options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
-source=(https://github.com/Ultimaker/${pkgname}/archive/${pkgver}.tar.gz)
-sha1sums=('cbe03b3f0a3353d011dbfa09680dd12f677823b7')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/Ultimaker/${pkgname}/archive/${pkgver}.tar.gz)
+sha1sums=('c15da3704d8e732c723e20462cf46a00785de9fa')
 
 package(){
-  mkdir -p "${pkgdir}/usr/share"
-  cp -r "${srcdir}/${pkgname}-${pkgver}/cura/" "${pkgdir}/usr/share/."
+  install -d "${pkgdir}/usr/share/"
+  cp -r "${srcdir}/${pkgname}-${pkgver}/cura/" "${pkgdir}/usr/share/cura"
   
   # see https://github.com/Ultimaker/cura-binary-data/issues/6
   rm -rf "${pkgdir}/usr/share/cura/resources/i18n" 
 }
-
-
