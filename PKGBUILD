@@ -2,7 +2,7 @@
 # Contributor: Nover <novares.x@gmail.com>
 # Contributor: agentcobra <agentcobra@free.fr>
 pkgname=shadow-tech
-pkgver=5.0.1092
+pkgver=5.0.1161
 pkgrel=1
 pkgdesc="Desktop client for Shadow Tech cloud gaming service."
 arch=('x86_64')
@@ -30,7 +30,7 @@ optdepends=(
     'org.freedesktop.secrets: to remember login credentials'
 )
 provides=(shadow-tech)
-_urlbase='https://storage.googleapis.com/shadow-update/launcher/prod/linux/ubuntu_18.04'
+_urlbase='https://update.shadow.tech/launcher/prod/linux/ubuntu_18.04'
 source=(
     "${pkgname}-meta.yml::${_urlbase}/latest-linux.yml"
     "${pkgname}.AppImage::${_urlbase}/Shadow.AppImage"
@@ -76,9 +76,9 @@ package() {
     cd "${pkgdir}/opt/${pkgname}"
 
     # move icons
-    mkdir -p "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps"
-    cp "usr/share/icons/hicolor/0x0/apps/shadow.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps"
-    cp "usr/share/icons/hicolor/0x0/apps/shadow.png" "${pkgdir}/usr/share/icons"
+    #mkdir -p "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps"
+    #cp "usr/share/icons/hicolor/0x0/apps/shadow.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps"
+    #cp "usr/share/icons/hicolor/0x0/apps/shadow.png" "${pkgdir}/usr/share/icons"
 
     # modify and install desktop file
     mv "shadow.desktop" "${pkgname}.desktop"
