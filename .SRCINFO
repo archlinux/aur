@@ -1,6 +1,6 @@
 pkgbase = electron20-bin
 	pkgdesc = Build cross platform desktop apps with web technologies - binary version 20
-	pkgver = 20.1.0
+	pkgver = 20.1.1
 	pkgrel = 1
 	url = https://electronjs.org/
 	arch = x86_64
@@ -20,16 +20,16 @@ pkgbase = electron20-bin
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron20=20.1.0
-	provides = electron=20.1.0
+	provides = electron20=20.1.1
+	provides = electron=20.1.1
 	conflicts = electron20
-	source_x86_64 = electron20-bin-chromedriver-20.1.0-1-x86_64.zip::https://github.com/electron/electron/releases/download/v20.1.0/chromedriver-v20.1.0-linux-x64.zip
-	source_x86_64 = electron20-bin-20.1.0-1-x86_64.zip::https://github.com/electron/electron/releases/download/v20.1.0/electron-v20.1.0-linux-x64.zip
-	sha256sums_x86_64 = 2c2bf06edfbe09c7583dc04293e40a69825830ecdbe9b48975e4f2650d947ddf
-	sha256sums_x86_64 = 46e334eeb03ad12b987b4d6d1ba176d4389fe54f6435e7dd3d7ebc840259847e
-	source_aarch64 = electron20-bin-chromedriver-20.1.0-1-aarch64.zip::https://github.com/electron/electron/releases/download/v20.1.0/chromedriver-v20.1.0-linux-arm64.zip
-	source_aarch64 = electron20-bin-20.1.0-1-aarch64.zip::https://github.com/electron/electron/releases/download/v20.1.0/electron-v20.1.0-linux-arm64.zip
-	sha256sums_aarch64 = 4e475ac35a43e3448aeabc3841fa43ca13a3ae2c531b984c67effb3217c8b604
-	sha256sums_aarch64 = b5ae63ee40b486058e234392e8ed959ca0b51de570cb6454cd787a41258385a9
+	source_x86_64 = electron20-bin-chromedriver-20.1.1-1-x86_64.zip::https://github.com/electron/electron/releases/download/v20.1.1/chromedriver-v20.1.1-linux-x64.zip
+	source_x86_64 = electron20-bin-20.1.1-1-x86_64.zip::https://github.com/electron/electron/releases/download/v20.1.1/electron-v20.1.1-linux-x64.zip
+	sha256sums_x86_64 = 6b25320a54a3efc5d02f1b06a864668c9728d93c38761eff42ac564bb69b129a
+	sha256sums_x86_64 = 740dc9ae0bc9bd940b99f90a2c1a9c716e9b35e12befad9ad272ccef8ed38699
+	source_aarch64 = electron20-bin-chromedriver-20.1.1-1-aarch64.zip::https://github.com/electron/electron/releases/download/v20.1.1/chromedriver-v20.1.1-linux-arm64.zip
+	source_aarch64 = electron20-bin-20.1.1-1-aarch64.zip::https://github.com/electron/electron/releases/download/v20.1.1/electron-v20.1.1-linux-arm64.zip
+	sha256sums_aarch64 = 05126581e144f48329d1b31511e95fbc9d0f230db58bceb4283636a715fe48a2
+	sha256sums_aarch64 = d8420cc5af9b8dd3555977053c693daac8ebd9d1c1937c69639837f7b3292a6e
 
 pkgname = electron20-bin
