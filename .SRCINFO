@@ -1,6 +1,6 @@
 pkgbase = firefox-appmenu
 	pkgdesc = Firefox from extra with appmenu patch
-	pkgver = 104.0
+	pkgver = 104.0.1
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
@@ -46,15 +46,15 @@ pkgbase = firefox-appmenu
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	provides = firefox=104.0
+	provides = firefox=104.0.1
 	conflicts = firefox
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
 	options = !lto
 	options = !debug
-	source = https://archive.mozilla.org/pub/firefox/releases/104.0/source/firefox-104.0.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/104.0/source/firefox-104.0.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/104.0.1/source/firefox-104.0.1.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/104.0.1/source/firefox-104.0.1.source.tar.xz.asc
 	source = zstandard-0.18.0.diff
 	source = arc4random.diff
 	source = firefox.desktop
@@ -63,7 +63,7 @@ pkgbase = firefox-appmenu
 	source = unity-menubar.patch
 	source = fix_csd_window_buttons.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = 1a294a651dc6260f9a72a3ab9f10e7792a4ab41a9cfa8527ad3dd9979cdc98ce
+	sha256sums = f23f4198bd9ba1bbb7420a622080301adb924fafbd6d83b00b1e6cc687e75f4e
 	sha256sums = SKIP
 	sha256sums = a6857ad2f2e2091c6c4fdcde21a59fbeb0138914c0e126df64b50a5af5ff63be
 	sha256sums = 714ca50b2ce0cac470dbd5a60e9a0101b28072f08a5e7a9bba94fef2058321c4
