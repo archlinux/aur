@@ -8,16 +8,16 @@ arch=('any')
 license=('GPL3')
 depends=('gtk-engine-murrine' 'gnome-themes-extra')
 url='https://github.com/catppuccin/gtk'
-source=("${url}/releases/download/v-0.2.7/Catppuccin-Mocha-Green.zip"
-        "${url}/releases/download/v-0.2.7/Catppuccin-Mocha-Grey.zip"
-        "${url}/releases/download/v-0.2.7/Catppuccin-Mocha-Lavender.zip"
-        "${url}/releases/download/v-0.2.7/Catppuccin-Mocha-Mauve.zip"
-        "${url}/releases/download/v-0.2.7/Catppuccin-Mocha-Peach.zip"
-        "${url}/releases/download/v-0.2.7/Catppuccin-Mocha-Pink.zip"
-        "${url}/releases/download/v-0.2.7/Catppuccin-Mocha-Red.zip"
-        "${url}/releases/download/v-0.2.7/Catppuccin-Mocha-Teal.zip"
-        "${url}/releases/download/v-0.2.7/Catppuccin-Mocha-Yellow.zip"
-        "${url}/releases/download/v-0.2.7/Catppuccin-Mocha.zip")
+source=("${url}/releases/latest/download/Catppuccin-Mocha-Green.zip"
+        "${url}/releases/latest/download/Catppuccin-Mocha-Grey.zip"
+        "${url}/releases/latest/download/Catppuccin-Mocha-Lavender.zip"
+        "${url}/releases/latest/download/Catppuccin-Mocha-Mauve.zip"
+        "${url}/releases/latest/download/Catppuccin-Mocha-Peach.zip"
+        "${url}/releases/latest/download/Catppuccin-Mocha-Pink.zip"
+        "${url}/releases/latest/download/Catppuccin-Mocha-Red.zip"
+        "${url}/releases/latest/download/Catppuccin-Mocha-Teal.zip"
+        "${url}/releases/latest/download/Catppuccin-Mocha-Yellow.zip"
+        "${url}/releases/latest/download/Catppuccin-Mocha.zip")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
