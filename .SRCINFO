@@ -1,7 +1,7 @@
 pkgbase = mcreator-bin
-	pkgdesc = Make Minecraft Java Edition mods, Bedrock Edition Add-Ons, and data packs using visual graphical programming or integrated IDE. (binary release)
+	pkgdesc = Make Minecraft Java Edition mods, Bedrock Edition Add-Ons, and data packs using visual graphical programming or integrated IDE (binary release)
 	pkgver = 2022.2.34517
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mcreator.net
 	arch = x86_64
 	license = GPL3
@@ -11,6 +11,6 @@ pkgbase = mcreator-bin
 	source = mcreator-2022.2.34517.tar.gz::https://github.com/mcreator/mcreator/releases/download/2022.2.34517/MCreator.2022.2.Linux.64bit.tar.gz
 	source = mcreator.desktop
 	b2sums = 95a9b1572bf70687bbe354acc76513ffb79339500d9a48f675dd3a1c23b5d6a2ba69746215fad15056ec56700d469287b6f6a2b4b2c83a0f360dceac1de1c3c9
-	b2sums = 0b3874460f649f8c133c9bf61c70889f96af26213356f3c2e5631e00a7f8afdbd2949a90b98c4da58c84cbe621c1e3860b00ac751f9229e48e822663d58c2416
+	b2sums = 87a8ceed3182adbdad76f6e8fad91ed524dc90dc06b1ca7122fe615b04b2a04e50c9dc1ba7d3fed19110a4fa63b245607007c0e1824ae6c89c34111b8cf76bb9
 
 pkgname = mcreator-bin
