@@ -1,7 +1,7 @@
 # Maintainer: lanthora <lanthora at outlook dot com>
 
 pkgname=tellus-git
-pkgver=r21.3096f96
+pkgver=r22.3494048
 pkgrel=1
 pkgdesc="Host Intrusion Detection and Prevention System Based on Kernel Module"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -25,10 +25,10 @@ prepare() {
 
 build() {
   cd "$pkgname"
-  make build
+  make arch-build
 }
 
 package() {
   cd "$pkgname"
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir/" arch-install
 }
