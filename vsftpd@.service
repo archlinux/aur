@@ -1,0 +1,8 @@
+[Unit]
+Description=vsftpd per-connection server
+
+[Service]
+ExecStart=-/usr/bin/vsftpd
+ExecReload=/bin/kill -HUP $MAINPID
+StandardInput=socket
+StandardError=syslog

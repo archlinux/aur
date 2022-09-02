@@ -1,0 +1,11 @@
+[Unit]
+Description=vsftpd daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/vsftpd
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

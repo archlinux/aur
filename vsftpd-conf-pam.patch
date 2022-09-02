@@ -1,0 +1,12 @@
+diff --git a/vsftpd.conf b/vsftpd.conf
+index 5868675..9543536 100644
+--- a/vsftpd.conf
++++ b/vsftpd.conf
+@@ -127,3 +127,7 @@ listen=NO
+ # sockets, you must run two copies of vsftpd with two configuration files.
+ # Make sure, that one of the listen options is commented !!
+ #listen_ipv6=YES
++
++# Set own PAM service name to detect authentication settings specified
++# for vsftpd by the system package.
++pam_service_name=vsftpd
