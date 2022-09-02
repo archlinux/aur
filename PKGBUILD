@@ -7,7 +7,7 @@ pkgdesc='GUI editor for GNU Octave'
 arch=(i686 x86_64)
 url='https://gitlab.com/labinformatica/guieditor'
 license=(GPL3)
-depends=(qt5-base qt5-serialport)
+depends=(qt5-base qt5-tools qt5-serialport)
 source=(git+https://gitlab.com/labinformatica/guieditor.git 
         guiEditor.desktop)
 sha1sums=('SKIP'

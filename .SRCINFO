@@ -7,6 +7,7 @@ pkgbase = guieditor-git
 	arch = x86_64
 	license = GPL3
 	depends = qt5-base
+	depends = qt5-tools
 	depends = qt5-serialport
 	source = git+https://gitlab.com/labinformatica/guieditor.git
 	source = guiEditor.desktop
