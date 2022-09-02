@@ -9,7 +9,9 @@ pkgbase = grub-theme-vimix-very-dark-blue
 	makedepends = git
 	depends = bash
 	depends = grub
+	optdepends = efibootmgr: Linux user-space application to modify the EFI Boot Manager
 	optdepends = grub-customizer: GUI tool to configure GRUB
+	optdepends = os-prober: Utility to detect other OSes on a set of drives
 	source = grub-theme-vimix-very-dark-blue::git+https://github.com/trueNAHO/grub2-theme-vimix-very-dark-blue
 	md5sums = SKIP
 

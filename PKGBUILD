@@ -9,7 +9,11 @@ url="https://github.com/trueNAHO/grub2-theme-vimix-very-dark-blue"
 license=(GPL3)
 depends=(bash grub)
 makedepends=(git)
-optdepends=('grub-customizer: GUI tool to configure GRUB')
+optdepends=(
+    'efibootmgr: Linux user-space application to modify the EFI Boot Manager' \
+    'grub-customizer: GUI tool to configure GRUB' \
+    'os-prober: Utility to detect other OSes on a set of drives'
+)
 install="$pkgname.install"
 source=("$pkgname::git+$url")
 md5sums=(SKIP)
