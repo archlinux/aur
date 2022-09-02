@@ -8,19 +8,17 @@ arch=('any')
 license=('GPL3')
 depends=('gtk-engine-murrine' 'gnome-themes-extra')
 url='https://github.com/catppuccin/gtk'
-source=("${url}/releases/download/v-0.2.7/Catppuccin-Latte-Green.zip"
-         "${url}/releases/download/v-0.2.7/Catppuccin-Latte-Green.zip"
-         "${url}/releases/download/v-0.2.7/Catppuccin-Latte-Grey.zip"
-         "${url}/releases/download/v-0.2.7/Catppuccin-Latte-Lavender.zip"
-         "${url}/releases/download/v-0.2.7/Catppuccin-Latte-Mauve.zip"
-         "${url}/releases/download/v-0.2.7/Catppuccin-Latte-Peach.zip"
-         "${url}/releases/download/v-0.2.7/Catppuccin-Latte-Pink.zip"
-         "${url}/releases/download/v-0.2.7/Catppuccin-Latte-Red.zip"
-         "${url}/releases/download/v-0.2.7/Catppuccin-Latte-Teal.zip"
-         "${url}/releases/download/v-0.2.7/Catppuccin-Latte-Yellow.zip"
-         "${url}/releases/download/v-0.2.7/Catppuccin-Latte.zip")
+source=("${url}/releases/latest/download/Catppuccin-Latte-Green.zip"
+         "${url}/releases/latest/download/Catppuccin-Latte-Grey.zip"
+         "${url}/releases/latest/download/Catppuccin-Latte-Lavender.zip"
+         "${url}/releases/latest/download/Catppuccin-Latte-Mauve.zip"
+         "${url}/releases/latest/download/Catppuccin-Latte-Peach.zip"
+         "${url}/releases/latest/download/Catppuccin-Latte-Pink.zip"
+         "${url}/releases/latest/download//Catppuccin-Latte-Red.zip"
+         "${url}/releases/latest/download/Catppuccin-Latte-Teal.zip"
+         "${url}/releases/latest/download/Catppuccin-Latte-Yellow.zip"
+         "${url}/releases/latest/download/Catppuccin-Latte.zip")
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
