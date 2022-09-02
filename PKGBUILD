@@ -1,30 +1,32 @@
-# Maintainer : Ben Ellis benx45h@gmail.com
+# Maintainer : Phillip K. Samuel <pintert3 at protonmail dot com>
+# Contributor : Ben Ellis benx45h@gmail.com
 
 pkgname=renode-bin
-pkgver=1.12.0
+pkgver=1.13.1
 pkgrel=1
-pkgdesc="The Renode Framework"
+pkgdesc="A virtual development framework for multinode embedded networks"
 url="https://www.renode.io"
 arch=('x86_64')
 license=('MIT')
-provides=('renode')
+provides=('renode'
+          'libllvm-disas.so')
 depends=('mono'
          'gtk-sharp-2'
          'screen'
          'polkit'
          'gcc'
-         'python3'
+         'python'
          'python-pip'
          'zeromq')
 
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/renode/renode/releases/download/v${pkgver}/renode-${pkgver}-${pkgrel}-${arch}.pkg.tar.xz")
 
 # checksum from package at time of pkgbuild
-md5sums=('5f6c4da245dbe49a2e692b389a0906ab')
+sha256sums=('6b7996d680ccf2f3c1320e95f478706f73d3a7a2fb127b7e6d0257b6109d78c3')
 
 package() {
-    cp -r opt $pkgdir
-    cp -r usr $pkgdir
+    cp -a opt $pkgdir
+    cp -a usr $pkgdir
 }
 
 
