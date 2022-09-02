@@ -1,6 +1,6 @@
 pkgname=kwin-bismuth
-pkgver=3.1.2
-pkgrel=2
+pkgver=3.1.3
+pkgrel=1
 pkgdesc="Addon for KDE Plasma to arrange your windows automatically and switch between them using keyboard shortcuts, like tiling window managers."
 arch=('x86_64')
 _name="${pkgname#kwin-}"
@@ -11,8 +11,8 @@ makedepends=('cmake' 'ninja' 'esbuild' 'extra-cmake-modules' 'kcoreaddons' 'kcon
 options=('!emptydirs')
 
 _snapshot="${_name}-${pkgver}"
-source=("${_snapshot}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c9eacd2e17dae37ac6df30e774406d6fc44081f1ba6e49e7805265a07b7f7556')
+source=("${_snapshot}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('f748d4685a35401146fc887c9ab24e69056fb96261d17679184568e8a331b50b')
 
 build() {
     cd "${srcdir}"
@@ -31,5 +31,7 @@ package() {
     DESTDIR="${pkgdir}" ninja -C "build" install
 
     cd "${_snapshot}/LICENSES"
-    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}" && cp -rt "$_" *
+    local licenses="${pkgdir}/usr/share/licenses/${pkgname}"
+    install -dm755 "${licenses}"
+    cp -rt "${licenses}" ./*
 }
