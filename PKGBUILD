@@ -18,7 +18,7 @@ source=("https://archive.trisquel.info/trisquel/pool/main/f/firefox/${s_pkgname}
 sha256sums=('a7f7c0d5650c2598e93f29cee6d49462d9407bb9e3ec3e57025506354f259240')
 
 package() {
-  tar xaf ${srcdir}/data.tar.xz -C ${pkgdir}/
+  tar xaf ${srcdir}/data.tar.* -C ${pkgdir}/
   printf '%b' "  \e[1;36m->\e[0m\033[1m Cleaning up unwanted files...\n\e[0m"
   rm -rv "${pkgdir}"/{etc/apport,etc/apparmor.d,usr/share/apport,usr/share/lintian}
 }
