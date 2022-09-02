@@ -1,17 +1,17 @@
 # Maintainer:  <reg-archlinux AT klein DOT tuxli DOT ch> 
 pkgname=mabel-git
 _pkgname=mabel
-pkgver=r232.93a0f10
+pkgver=r265.4b594b8
 pkgrel=1
 pkgdesc="A fancy BitTorrent client for the terminal"
 arch=('any')
-url="https://github.com/mr-karan/mabel"
+url="https://github.com/smmr-software/mabel.git"
 license=('GPL3')
 makedepends=('git' 'go')
 provides=('mabel')
 conflicts=('mabel')
 options=()
-source=(git+https://github.com/smmr-software/mabel.git)
+source=(git+${url})
 sha256sums=('SKIP')
 build() {
 	cd "${srcdir}"/"${_pkgname}"
