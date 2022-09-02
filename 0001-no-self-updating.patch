@@ -1,26 +1,18 @@
-From 5604ce3291b09b9777d1ccd0f7b1d06fe413bedd Mon Sep 17 00:00:00 2001
-From: seth <getchoo@tuta.io>
-Date: Mon, 15 Aug 2022 21:31:40 -0400
-Subject: [PATCH] no self-updating
-
----
- functions/antidote-update | 3 ---
- 1 file changed, 3 deletions(-)
-
 diff --git a/functions/antidote-update b/functions/antidote-update
-index 7c03e92..6b6d776 100644
+index aa8b5a1..200133a 100644
 --- a/functions/antidote-update
 +++ b/functions/antidote-update
-@@ -30,9 +30,6 @@ function __antidote_update {
-   fi
- }
-
--# update antidote
--antidote selfupdate
--
- echo "Updating bundles..."
- local ANTIDOTE_HOME=$(antidote-home)
- local d
---
-2.37.2
-
+@@ -38,11 +38,8 @@ if (( $#o_bundles )) || ! (( $#o_self )); then
+ fi
+ 
+ # update antidote
+-if (( $#o_self )) || ! (( $#o_bundles )); then
+-  echo "Updating antidote..."
+-  git -C "${0:A:h:h}" pull --quiet --ff --rebase --autostash
+-  source "${0:A:h:h}"/antidote.zsh
+-  antidote -v
++if (( $#o_self )); then
++  echo "Self updating is disabled in this build."
+ fi
+ 
+ # vim: ft=zsh
