@@ -11,8 +11,16 @@ arch=('x86_64' 'armv7l' 'arm64')
 url="https://$_pkgname.org"
 license=('Apache')
 depends=('nss' 'atk' 'at-spi2-atk' 'libcups' 'libdrm' 'gdk-pixbuf2' 'gtk3' 'alsa-lib' 'c-ares' 'ffmpeg' 'libevent' 'libxkbfile' 'libxslt' 'minizip' 're2' 'snappy')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=(
+    'ferdium'
+)
+conflicts=(
+    'ferdium'
+    'ferdium-bin'
+    'ferdium-nightly-bin'
+    'ferdium-nightly'
+    'ferdium-git'
+)
 _releaseurl="https://github.com/$_pkgname/$_pkgname-app/releases/download/v$pkgverorg"
 source_x86_64=("$pkgname-$pkgverorg-$pkgrel-amd64.zip::${_releaseurl}/Ferdium-linux-${pkgverorg}-amd64.deb")
 source_armv7l=("$pkgname-$pkgverorg-$pkgrel-armv7l.zip::${_releaseurl}/Ferdium-linux-${pkgverorg}-armv7l.deb")
