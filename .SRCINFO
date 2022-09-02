@@ -29,6 +29,10 @@ pkgbase = ferdium
 	depends = snappy
 	provides = ferdium
 	conflicts = ferdium
+	conflicts = ferdium-bin
+	conflicts = ferdium-nightly-bin
+	conflicts = ferdium-nightly
+	conflicts = ferdium-git
 	source = ferdium::git+https://github.com/ferdium/ferdium-app#tag=v6.1.0
 	sha512sums = SKIP
 
