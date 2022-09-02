@@ -3,7 +3,7 @@ pkgbase = circle
 	pkgver = 1.0.0_170
 	pkgrel = 1
 	url = https://circle-lang.org
-	arch = any
+	arch = x86_64
 	license = custom
 	depends = gcc>=10.2
 	source = https://www.circle-lang.org/linux/build_170.tgz
