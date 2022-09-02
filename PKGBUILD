@@ -2,7 +2,7 @@
 
 pkgname=cherrytree-git
 _pkgname="${pkgname%%-git}"
-pkgver=0.99.37.r13.g1f55d501
+pkgver=0.99.48.r25.g8ac825c2
 pkgrel=1
 pkgdesc="Hierarchical note-taking application, git version"
 arch=('x86_64')
