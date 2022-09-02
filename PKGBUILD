@@ -2,7 +2,7 @@
 pkgname=('avast' 'avast-fss' 'avast-rest')
 pkgver=4.1.0
 _pkgverbuild='1~debian11'
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 pkgdesc='Avast Antivirus for Linux'
 url='https://www.avast.com/business/products/linux-antivirus'
@@ -22,18 +22,10 @@ install=${pkgname}.install
 source=("https://repo.avcdn.net/linux-av/deb/pool/debian-bullseye/avast_${pkgver}-${_pkgverbuild}_amd64.deb"
         "https://repo.avcdn.net/linux-av/deb/pool/debian-bullseye/avast-fss_${pkgver}-${_pkgverbuild}_amd64.deb"
         "https://repo.avcdn.net/linux-av/deb/pool/debian-bullseye/avast-rest_${pkgver}-${_pkgverbuild}_amd64.deb"
-        "https://static3.avast.com/10002535/web/i/v2/components/logos/avast-logos/avast-logo-inverse.svg"
-        "https://static3.avast.com/10002535/web/i/v2/components/logos/avast-logos/avast-logo-business.svg"
-        "avast-logo-transp.png::https://img.informer.com/icons_mac/png/128/580/580294.png"
-        "git+https://github.com/secure-diversITy/arch_avast-gui.git"
          "${pkgname}.install")
 sha256sums=('2e41c9b929c872308731f75e1a2ed268750898b7a589a1c3a73e0ab92e7dbce7'
             'fe5bc08a3e015368c61c0db2b5dc3fd0d0a926f3a11aa9976b4d9f191aedb3fe'
             'ed4d2138f8d85105ff562f7060d08c02b06b8ce1a59fad37027c1c6f8ea1d0c3'
-            '63b2334f1a7b6023acc55f36fc44424d050c65bf421ca871ebcf967e1dea7ff6'
-            '7404130ed0154296a67713b1a7421336482ee8bdc1c4e90327c4ae666e7b31f5'
-            '808451b4f82dec1e463428f0fdc0ea783955d36df96ad6e50d6fae877c39f7b7'
-            'SKIP'
             '9d8567e1ecf3b0f1020b277ed533da070e902f95313048bce126abaf71825d48')
 validpgpkeys=('6AFE173577C4CBD621DF217FD093435AA3ED2C4A')
 
