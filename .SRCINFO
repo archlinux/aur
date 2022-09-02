@@ -1,0 +1,16 @@
+pkgbase = ubuntu-mate-themes-classic
+	pkgdesc = GTK2, GTK3, Unity and Metacity themes from Ubuntu MATE - Non-Yaru
+	pkgver = 20.04.2
+	pkgrel = 1
+	url = https://launchpad.net/ubuntu-mate/
+	arch = any
+	groups = mate-extra
+	license = GPL3
+	depends = gtk-engine-murrine
+	depends = ubuntu-mate-icon-themes
+	conflicts = ubuntu-mate-themes
+	replaces = ubuntu-mate-themes
+	source = ubuntu-mate-themes-20.04.2.tar.gz::http://mirrors.kernel.org/ubuntu/pool/universe/u/ubuntu-mate-artwork/ubuntu-mate-themes_20.04.2_all.deb
+	sha256sums = 449cd6819855efc3a9c38ac48d03db39643b2a90163852d3ef1935e664a5407b
+
+pkgname = ubuntu-mate-themes-classic
