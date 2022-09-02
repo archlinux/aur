@@ -1,11 +1,12 @@
 pkgbase = xdg-sanity
 	pkgdesc = A tool to sanely open http/s links.
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.tebibyte.media/emma/xdg-sanity
 	arch = any
 	license = AGPL3
 	makedepends = git
+	makedepends = gendesk
 	depends = handlr
 	provides = xdg-sanity
 	source = git+https://git.tebibyte.media/emma/xdg-sanity.git
