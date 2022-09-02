@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://jihulab.com/ambition-echo/earth_wallpaper"
 license=('GPL3')
 
-depends=('qt5-base')
+depends=('qt5-base' 'python' 'python-pillow' 'python-requests')
 makedepends=('cmake' 'git' 'ninja')
 
 source=("git+$url.git")
@@ -19,7 +19,7 @@ sha256sums=("SKIP")
 
 prepare() {
     cd $srcdir/$resname/src
-    sed -i "s/#define VERSION .*/#define VERSION \"nightly\"/g" about.h
+    sed -i "s/#define VERSION .*/#define VERSION nightly/g" about.h
 }
 
 build() {

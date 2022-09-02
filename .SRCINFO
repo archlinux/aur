@@ -9,6 +9,9 @@ pkgbase = earth-wallpaper-nightly
 	makedepends = git
 	makedepends = ninja
 	depends = qt5-base
+	depends = python
+	depends = python-pillow
+	depends = python-requests
 	source = git+https://jihulab.com/ambition-echo/earth_wallpaper.git
 	sha256sums = SKIP
 
