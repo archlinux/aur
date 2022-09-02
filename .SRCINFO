@@ -1,6 +1,6 @@
 pkgbase = nodejs-leapp-cli
 	pkgdesc = Leapp's Command Line Interface.
-	pkgver = 0.1.19
+	pkgver = 0.1.20
 	pkgrel = 1
 	url = https://www.npmjs.com/package/@noovolari/leapp-cli
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = nodejs-leapp-cli
 	makedepends = npm
 	depends = leapp
 	depends = nodejs
-	source = https://registry.npmjs.org/@noovolari/leapp-cli/-/leapp-cli-0.1.19.tgz
-	sha256sums = 4ab762206ee9c473ce89bbca181e1c35a13c987916f38b5a59d5ff8976b36d85
+	source = https://registry.npmjs.org/@noovolari/leapp-cli/-/leapp-cli-0.1.20.tgz
+	sha256sums = 902e29c77e7d8a837b6704489be5c157ebfd494b7ec80968447951cb87579c3b
 
 pkgname = nodejs-leapp-cli
