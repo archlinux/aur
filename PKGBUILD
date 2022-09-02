@@ -7,15 +7,15 @@ arch=('any')
 license=('GPL3')
 depends=('gtk-engine-murrine' 'gnome-themes-extra')
 url='https://github.com/catppuccin/gtk'
-source=("${url}/releases/download/v-0.2.7/Catppuccin-Macchiato-Green.zip"
-         "${url}/releases/download/v-0.2.7/Catppuccin-Macchiato-Grey.zip"
-         "${url}/releases/download/v-0.2.7/Catppuccin-Macchiato-Mauve.zip"
-         "${url}/releases/download/v-0.2.7/Catppuccin-Macchiato-Orange.zip"
-         "${url}/releases/download/v-0.2.7/Catppuccin-Macchiato-Pink.zip"
-         "${url}/releases/download/v-0.2.7/Catppuccin-Macchiato-Red.zip"
-         "${url}/releases/download/v-0.2.7/Catppuccin-Macchiato-Teal.zip"
-         "${url}/releases/download/v-0.2.7/Catppuccin-Macchiato-Yellow.zip"
-         "${url}/releases/download/v-0.2.7/Catppuccin-Macchiato.zip")
+source=("${url}/releases/latest/download/Catppuccin-Macchiato-Green.zip"
+         "${url}/releases/latest/download/Catppuccin-Macchiato-Grey.zip"
+         "${url}/releases/latest/download/Catppuccin-Macchiato-Mauve.zip"
+         "${url}/releases/latest/download/Catppuccin-Macchiato-Orange.zip"
+         "${url}/releases/latest/download/Catppuccin-Macchiato-Pink.zip"
+         "${url}/releases/latest/download/Catppuccin-Macchiato-Red.zip"
+         "${url}/releases/latest/download/Catppuccin-Macchiato-Teal.zip"
+         "${url}/releases/latest/download/Catppuccin-Macchiato-Yellow.zip"
+         "${url}/releases/latest/download/Catppuccin-Macchiato.zip")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
