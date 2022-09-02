@@ -1,31 +1,25 @@
 # Maintainer: Leonidas Spyropoulos <artafinde at gmail dot com>
 
 pkgname=python-prometheus-fastapi-instrumentator
-pkgver=5.8.2
+pkgver=5.9.1
 pkgrel=1
 pkgdesc="A configurable and modular Prometheus Instrumentator for your FastAPI."
 arch=('any')
 url="https://github.com/trallnag/prometheus-fastapi-instrumentator"
 license=('Apache2')
-depends=('python-fastapi' 'python-prometheus_client')
-makedepends=('python-setuptools' 'python-dephell')
-checkdepends=('python-pytest' 'python-devtools' 'python-pydantic' 'python-dataclasses' 'python-starlette')
+depends=('python' 'python-fastapi' 'python-prometheus_client')
+makedepends=(python-build python-installer python-wheel  python-poetry-core)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('7f78181d8994c982ec5028839e470b570c9c3bd84a1067b6e085aef61d42a5e6')
-
-prepare() {
-  cd "prometheus-fastapi-instrumentator-${pkgver}"
-  dephell deps convert --from pyproject.toml --to setup.py
-}
+sha256sums=('16fe7771ac5cf8486ce205430d2860f055428ebf907c63fc48ff337bd104d82f')
 
 build() {
   cd "prometheus-fastapi-instrumentator-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "prometheus-fastapi-instrumentator-${pkgver}"
-  python setup.py install --optimize=1 --skip-build --root="${pkgdir}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 "LICENSE" "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 
