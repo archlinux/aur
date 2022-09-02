@@ -1,32 +1,40 @@
 pkgbase = python-ginga
 	pkgdesc = A viewer for astronomical data FITS (Flexible Image Transport System) files.
-	pkgver = 3.3.0
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://ejeschke.github.io/ginga
 	arch = any
 	license = BSD
 	checkdepends = python-pytest-astropy-header
-	checkdepends = python-astropy
+	checkdepends = python-photutils
+	checkdepends = python-pillow
+	checkdepends = python-scipy
+	checkdepends = python-astlib
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/g/ginga/ginga-3.3.0.tar.gz
-	md5sums = 29c9a317e59a72ab1a4141fa385d31c0
+	source = https://files.pythonhosted.org/packages/source/g/ginga/ginga-3.4.0.tar.gz
+	md5sums = a81f1923b14d482689ca2e4b86e04427
 
 pkgname = python-ginga
 	depends = python-astropy>=3.2
-	depends = python-qtpy>=1.1
-	optdepends = python-scipy>=0.18.1
-	optdepends = python-pillow>=3.2.0
-	optdepends = python-matplotlib>=2.1
-	optdepends = python-opencv>=4.5.4.58
-	optdepends = python-piexif>=1.0.13
+	depends = python-qtpy>=2.0.1
+	depends = python-pillow>=3.2.0
+	depends = python-importlib-metadata
+	optdepends = python-scipy>=0.18.1: required by Pick, some built-in auto cuts algorithms used when you load an image
+	optdepends = python-matplotlib>=2.1: required by Pick, Cuts, Histogram, LineProfile
+	optdepends = python-opencv>=4.5.4.58: recommended
+	optdepends = python-exifread>=2.3.2: recommended
 	optdepends = python-beautifulsoup4>=4.3.2
-	optdepends = python-astroquery>=0.3.5
+	optdepends = python-astroquery>=0.3.5: required by Catalogs
 	optdepends = python-docutils: to display help for plugins
 	optdepends = python-photutils
 	optdepends = python-fitsio: for opening FITS files
 	optdepends = python-astlib: for WCS resolution
+	optdepends = python-cairo: for gtk3 backend
+	optdepends = python-gobject: for gtk3 backend
+	optdepends = python-pyqt5: for qt5 backend
+	optdepends = python-aggdraw: for tk backend
+	optdepends = python-tornado: for web backend
 	optdepends = python-ginga-doc: Documentation for Python-ASDF
-	optdepends = python-pytest-astropy: For testing
