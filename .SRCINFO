@@ -1,7 +1,7 @@
 pkgbase = lapce-nightly-bin
 	pkgdesc = Lightning-fast and powerful code editor
 	pkgver = 20220902
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lapce.dev
 	arch = x86_64
 	license = Apache
