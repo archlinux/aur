@@ -3,7 +3,7 @@
 _pkgname=ITK
 pkgname=(itk python-itk)
 pkgver=5.2.1
-pkgrel=7
+pkgrel=8
 pkgdesc='An open-source, cross-platform library that provides developers with an extensive suite of software tools for image analysis'
 arch=('x86_64')
 url='https://www.itk.org'
@@ -21,7 +21,6 @@ depends=(
   libpng
   libtiff
   ocl-icd
-  tbb
   vxl
 )
 makedepends=(
@@ -68,7 +67,6 @@ build() {
     -DITK_USE_SYSTEM_MINC=OFF
     -DITK_USE_SYSTEM_PNG=ON
     -DITK_USE_SYSTEM_SWIG=ON
-    -DITK_USE_SYSTEM_TBB=ON
     -DITK_USE_SYSTEM_TIFF=ON
     -DITK_USE_SYSTEM_VXL=ON
     -DITK_USE_SYSTEM_ZLIB=ON
