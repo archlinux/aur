@@ -9,7 +9,7 @@ SRCDIR = $(PREFIX)/src
 STDLIB = $(SRCDIR)/hare/stdlib
 
 # Default HAREPATH
-LOCALSRCDIR = /usr/local/src/hare
+LOCALSRCDIR = /usr/src/hare
 HAREPATH = $(LOCALSRCDIR)/stdlib:$(LOCALSRCDIR)/third-party:$(SRCDIR)/hare/stdlib:$(SRCDIR)/hare/third-party
 
 ## Build configuration
