@@ -1,57 +1,44 @@
-pkgname="mcreator"
-_pkgname="MCreator"
-pkgver="2020.5"
-_pkgver="20205"
-pkgrel=1
-arch=('x86_64')
-pkgdesc="MCreator is a software used to make Minecraft mods and data packs using intuitive easy-to-learn interface or with an integrated code editor. It is used worldwide by Minecraft players, aspiring mod developers, for education and by STEM workshops."
-url="https://mcreator.net"
-license=('ARR')
-makedepends=('gendesk')
-depends=('jdk8-openjdk')
-source_x86_64=(
-	"MCreator-${_pkgver}.tar.gz::https://mcreator.net/repository/2020-5/MCreator%202020.5%20Linux%2064bit.tar.gz"
-	"mcreatorlaunch.sh"
-)
+# Maintainer: Iván Gabaldón <contact|@|inetol.net>
 
-md5sums_x86_64=('SKIP' 'SKIP')
+pkgname=mcreator
+pkgver=2022.2.34517
+pkgrel=1
+pkgdesc='Make Minecraft Java Edition mods, Bedrock Edition Add-Ons, and data packs using visual graphical programming or integrated IDE'
+arch=('x86_64')
+url='https://mcreator.net'
+license=('GPL3')
+depends=('jdk17-openjdk')
+conflicts=("$pkgname-bin")
+noextract=("$pkgname-source.tar.gz")
+source=("$pkgname-source.tar.gz::https://github.com/$pkgname/$pkgname/archive/refs/tags/$pkgver.tar.gz"
+        "$pkgname.desktop")
+b2sums=('a14c4f584d115c63349f7820565f1bcfb1aff4db883e104a06479aa81830a6129d670c6954e2d6768cdf20ce4d1f8ccbfdfe3e9f3aa2b8e0cf28ec2a818c6a46'
+        '4078f75e36918bd2759d2194a9c376eacbe3549137474991548ccfd7afe02f0c122ba8ac3959b9455dfdc2d1d73f0eb7650f18522e21e502f50b86b85164faaf')
 
 prepare() {
-    # Make Desktop File
-    gendesk --pkgname "${_pkgname}" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n -f
+    mkdir -p "$pkgname-$pkgver" "$pkgname-source"
+    bsdtar -xpf "$pkgname-source.tar.gz" --strip-components=1 -C "$pkgname-source"
+}
+
+build() {
+    cd "$pkgname-source"
+
+    ./gradlew exportLinux
+    bsdtar -xpf "build/export/MCreator 2022.2 Linux 64bit.tar.gz" --strip-components=1 -C "../$pkgname-$pkgver"
 }
 
 package() {
-    # Remove Bundled Java
-    cd "${srcdir}/${_pkgname}${_pkgver}/jdk"
+    rm -r "$srcdir/$pkgname-$pkgver/jdk/"
+    cat >"$srcdir/$pkgname-$pkgver/mcreator.sh"<<EOF
+#!/usr/bin/env bash
 
-    # Install The Main Files.
-    cd ${srcdir}/${_pkgname}${_pkgver}
-    install -d -m755 "${pkgdir}/opt/${pkgname}"
-    cp -Rr "${srcdir}/${_pkgname}${_pkgver}/"* "${pkgdir}/opt/${pkgname}"
+export CLASSPATH='./lib/mcreator.jar:./lib/*'
+/usr/lib/jvm/java-17-openjdk/bin/java --add-opens=java.base/java.lang=ALL-UNNAMED net.mcreator.Launcher "\$1"
+EOF
 
-    # Install Launcher
-    cp "${srcdir}/${pkgname}launch.sh" "${pkgdir}/opt/${pkgname}/${pkgname}launch.sh"
+    install -d "$pkgdir/opt/$pkgname"
+    cp -r "$srcdir/$pkgname-$pkgver/"* "$pkgdir/opt/$pkgname"
 
-    # Desktop Entry
-    install -D -m644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-
-    # Install The Icon
-    install -d -m755 "${pkgdir}/usr/share/icons/hicolor"
-    cd ${srcdir}/${_pkgname}${_pkgver}
-    mv "icon.png" "${pkgname}.png"
-    cp -Rr "${srcdir}/${_pkgname}${_pkgver}/${pkgname}.png" "${pkgdir}/usr/share/icons"
-
-    # File Perms
-    find "${pkgdir}/"{opt,usr} -type d -exec chmod 755 {} \;
-    find "${pkgdir}/"{opt,usr} -type f -exec chmod 644 {} \;
-
-    # Make Sure The Main Binary Has The Right Permissions
-    chmod +x "${pkgdir}/opt/${pkgname}/${pkgname}launch.sh"
-    cd "${pkgdir}/opt/${pkgname}/jdk/bin"
-    chmod +x java
-
-    # Link The Binary
-    install -d -m755 "${pkgdir}/usr/bin"
-    ln -sr "${pkgdir}/opt/${pkgname}/${pkgname}launch.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+    install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

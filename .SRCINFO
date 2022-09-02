@@ -1,16 +1,16 @@
 pkgbase = mcreator
-	pkgdesc = MCreator is a software used to make Minecraft mods and data packs using intuitive easy-to-learn interface or with an integrated code editor. It is used worldwide by Minecraft players, aspiring mod developers, for education and by STEM workshops.
-	pkgver = 2020.5
+	pkgdesc = Make Minecraft Java Edition mods, Bedrock Edition Add-Ons, and data packs using visual graphical programming or integrated IDE
+	pkgver = 2022.2.34517
 	pkgrel = 1
 	url = https://mcreator.net
 	arch = x86_64
-	license = ARR
-	makedepends = gendesk
-	depends = jdk8-openjdk
-	source_x86_64 = MCreator-20205.tar.gz::https://mcreator.net/repository/2020-5/MCreator%202020.5%20Linux%2064bit.tar.gz
-	source_x86_64 = mcreatorlaunch.sh
-	md5sums_x86_64 = SKIP
-	md5sums_x86_64 = SKIP
+	license = GPL3
+	depends = jdk17-openjdk
+	conflicts = mcreator-bin
+	noextract = mcreator-source.tar.gz
+	source = mcreator-source.tar.gz::https://github.com/mcreator/mcreator/archive/refs/tags/2022.2.34517.tar.gz
+	source = mcreator.desktop
+	b2sums = a14c4f584d115c63349f7820565f1bcfb1aff4db883e104a06479aa81830a6129d670c6954e2d6768cdf20ce4d1f8ccbfdfe3e9f3aa2b8e0cf28ec2a818c6a46
+	b2sums = 4078f75e36918bd2759d2194a9c376eacbe3549137474991548ccfd7afe02f0c122ba8ac3959b9455dfdc2d1d73f0eb7650f18522e21e502f50b86b85164faaf
 
 pkgname = mcreator
-
