@@ -8,15 +8,15 @@ arch=('any')
 license=('GPL3')
 depends=('gtk-engine-murrine' 'gnome-themes-extra')
 url='https://github.com/catppuccin/gtk'
-source=("${url}/releases/download/v-0.2.7/Catppuccin-Frappe-Green.zip"
-         "${url}/releases/download/v-0.2.7/Catppuccin-Frappe-Grey.zip"
-         "${url}/releases/download/v-0.2.7/Catppuccin-Frappe-Peach.zip"
-         "${url}/releases/download/v-0.2.7/Catppuccin-Frappe-Pink.zip"
-         "${url}/releases/download/v-0.2.7/Catppuccin-Frappe-Purple.zip"
-         "${url}/releases/download/v-0.2.7/Catppuccin-Frappe-Red.zip"
-         "${url}/releases/download/v-0.2.7/Catppuccin-Frappe-Teal.zip"
-         "${url}/releases/download/v-0.2.7/Catppuccin-Frappe-Yellow.zip"
-         "${url}/releases/download/v-0.2.7/Catppuccin-Frappe.zip")
+source=("${url}/releases/latest/download/Catppuccin-Frappe-Green.zip"
+         "${url}/releases/latest/download/Catppuccin-Frappe-Grey.zip"
+         "${url}/releases/latest/download/Catppuccin-Frappe-Peach.zip"
+         "${url}/releases/latest/download/Catppuccin-Frappe-Pink.zip"
+         "${url}/releases/latest/download/Catppuccin-Frappe-Purple.zip"
+         "${url}/releases/latest/download/Catppuccin-Frappe-Red.zip"
+         "${url}/releases/latest/download/Catppuccin-Frappe-Teal.zip"
+         "${url}/releases/latest/download/Catppuccin-Frappe-Yellow.zip"
+         "${url}/releases/latest/download/Catppuccin-Frappe.zip")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
