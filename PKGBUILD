@@ -2,7 +2,7 @@
 pkgname=('avast' 'avast-fss')
 pkgver=4.1.0
 _pkgverbuild='1~debian11'
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 pkgdesc='Avast Antivirus for Linux'
 url='https://www.avast.com/business/products/linux-antivirus'

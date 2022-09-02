@@ -20,11 +20,10 @@ All details can be found here:
 
 ### Community features
 
-- Graphical User Interface (in a very early state though): [avast-gui](https://github.com/secure-diversITy/arch_avast-gui)
+- Graphical User Interface (in a very early state though): [avast-gui](https://github.com/secure-diversITy/avast-gui)
 
 ## Packages
 
-* [package base](https://aur.archlinux.org/pkgbase/avast/) - The AUR package base for all Avast packages
   * [avast](https://aur.archlinux.org/packages/avast/): Main package - provides the core scanner service (avast) and a command line scan utility (scan)
   * [avast-fss](https://aur.archlinux.org/packages/avast-fss/): Avast File Server Shield is a service which provides Realtime On-Write scanning
   * [avast-rest](https://aur.archlinux.org/packages/avast-rest/): Optional - contains an HTTP server which provides REST API for avast scanner service
