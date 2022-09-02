@@ -3,7 +3,7 @@
 pkgname=inform7-git
 _pkgname=inform7
 _gitpkg=inform
-pkgver=10.2.0.beta+6V49
+pkgver=10.2.0_beta+6V50
 pkgrel=1
 pkgdesc="A design system for interactive fiction based on natural language (git version)"
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -29,7 +29,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "$_gitpkg"
-  head -n 3 < README.md | tail -n 1 | cut -d ' ' -f 2 | sed 's/-/./g'
+  head -n 3 < README.md | tail -n 1 | cut -d ' ' -f 2 | sed 's/-/_/g'
 }
 
 build() {
