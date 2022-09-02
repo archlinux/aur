@@ -1,7 +1,7 @@
 pkgbase = bashhub-client
 	pkgdesc = saves every terminal command entered across all sessions and systemto the cloud
 	pkgver = 2.3.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/rcaloras/bashhub-client
 	arch = x86_64
 	license = Apache
@@ -20,7 +20,6 @@ pkgbase = bashhub-client
 	depends = python-jsonpickle
 	depends = python-inflection
 	depends = python-humanize
-	depends = python-pymongo
 	depends = python-npyscreen
 	provides = bashhub-client
 	conflicts = bashhub-client-git

@@ -2,7 +2,7 @@
 _pkgname=bashhub-client
 pkgname=${_pkgname}
 pkgver=2.3.0
-pkgrel=5
+pkgrel=6
 pkgdesc='saves every terminal command entered across all sessions and systemto the cloud'
 arch=('x86_64')
 _repo_prefix='github.com/rcaloras'
@@ -21,7 +21,6 @@ depends=(
 	python-jsonpickle
 	python-inflection
 	python-humanize
-	python-pymongo
 	python-npyscreen
 )
 conflicts=(${_pkgname}-git)
