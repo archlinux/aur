@@ -2,7 +2,7 @@
 
 _plug=vsakarin
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=0.92.8.gde866cb
+pkgver=0.94.0.g35b7fb6
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('vapoursynth'
          )
 makedepends=('git'
              'meson'
-             'llvm'
+             'llvm13'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -27,12 +27,19 @@ pkgver() {
 
 prepare(){
   mkdir -p build
+
+  cat > build/native_config <<EOF
+[binaries]
+llvm-config = '/usr/lib/llvm13/bin/llvm-config'
+EOF
 }
 
 build() {
   cd build
+
   arch-meson "../${_plug}" \
-    --buildtype=release
+    --buildtype=release \
+    --native-file="$(pwd)/native_config"
 
   ninja
 }
