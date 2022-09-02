@@ -1,8 +1,8 @@
 # Maintainer: TF <mail | at | sedi [DOT] one>
-pkgname=('avast' 'avast-fss' 'avast-rest' 'avast-gui')
+pkgname=('avast' 'avast-fss' 'avast-rest')
 pkgver=4.1.0
 _pkgverbuild='1~debian11'
-pkgrel=1
+pkgrel=3
 arch=('x86_64')
 pkgdesc='Avast Antivirus for Linux'
 url='https://www.avast.com/business/products/linux-antivirus'
@@ -96,33 +96,4 @@ package_avast-rest() {
     # install lic
     mkdir -p $pkgdir/usr/share/licenses/$pkgname/
     install -Dm644 $pkgdir/usr/share/doc/$pkgname/LICENSE $pkgdir/usr/share/licenses/$pkgname/
-}
-
-package_avast-gui() {
-    pkgdesc='Avast Antivirus GUI (unofficial)'
-    depends=("avast=${pkgver}" "avast-fss=${pkgver}")
-    _pkgver="0.1.0-ALPHA"
-    #install=${pkgname}.install
-
-    # prep
-    mkdir -p $pkgdir/usr/share/$pkgname/ $pkgdir/usr/share/applications/ $pkgdir/usr/share/$pkgname/desktopfiles/
-
-    # install the Avast icons
-    cp $srcdir/avast-logo-inverse.svg $pkgdir/usr/share/$pkgname/icon.svg
-    cp $srcdir/avast-logo-business.svg $pkgdir/usr/share/$pkgname/icon-biz.svg
-    cp $srcdir/avast-logo-transp.png $pkgdir/usr/share/$pkgname/icon-transp.png
-
-    # install the yad wrapper
-    install -Dm755 arch_avast-gui/$pkgname.in $pkgdir/usr/bin/$pkgname
-    sed -i "s/%VER%/$_pkgver/g" $pkgdir/usr/bin/$pkgname
-
-    # install application shortcut
-    install -Dm755 arch_avast-gui/$pkgname.desktop $pkgdir/usr/share/applications/
-
-    # install menu items for the main window
-    install -Dm755 arch_avast-gui/desktopfiles/* $pkgdir/usr/share/$pkgname/desktopfiles/
-
-    # install lic
-    mkdir -p $pkgdir/usr/share/licenses/$pkgname/
-    install -Dm644 arch_avast-gui/LICENSE $pkgdir/usr/share/licenses/$pkgname/
 }

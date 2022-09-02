@@ -1,7 +1,7 @@
 pkgbase = avast
 	pkgdesc = Avast Antivirus for Linux
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://www.avast.com/business/products/linux-antivirus
 	install = avast.install
 	arch = x86_64
@@ -59,8 +59,3 @@ pkgname = avast-rest
 	install = avast-rest.install
 	depends = avast=4.1.0
 	backup = etc/avast/rest.conf
-
-pkgname = avast-gui
-	pkgdesc = Avast Antivirus GUI (unofficial)
-	depends = avast=4.1.0
-	depends = avast-fss=4.1.0
