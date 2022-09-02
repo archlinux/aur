@@ -1,22 +1,23 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-advanced-scene-switcher
-pkgver=1.17.7
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="An automated scene switcher for OBS Studio"
-arch=("i686" "x86_64" "aarch64")
+arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/advanced-scene-switcher.395/"
 license=("GPL2")
-depends=("obs-studio<28" "libxss" "libxtst" "opencv" "procps")
-makedepends=("cmake" "git")
+depends=(
+  "obs-studio>=28" "libxss" "libxtst" "opencv" "openvr"
+  "procps"
+)
+makedepends=("cmake" "git" "asio" "websocketpp")
 options=('debug')
 source=(
   "$pkgname::git+https://github.com/WarmUpTill/SceneSwitcher.git#tag=$pkgver"
-  "asio::git+https://github.com/chriskohlhoff/asio.git"
-  "websocketpp::git+https://github.com/zaphoyd/websocketpp.git"
+  "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
 )
 sha256sums=(
-  "SKIP"
   "SKIP"
   "SKIP"
 )
@@ -24,8 +25,7 @@ sha256sums=(
 prepare() {
   cd $pkgname
 
-  git config submodule.deps/asio.url $srcdir/asio
-  git config submodule.deps/websocketpp.url $srcdir/websocketpp
+  git config submodule.deps/obs-websocket.url $srcdir/obs-websocket
   git submodule update
 }
 
@@ -35,15 +35,14 @@ build() {
   cmake -B build \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
   -DCMAKE_INSTALL_PREFIX='/usr' \
-  -DBUILD_OUT_OF_TREE=ON \
-  -DLIBOBS_FRONTEND_INCLUDE_DIR='/usr/include/obs/' \
-  -DLIBOBS_FRONTEND_API_LIB='/usr/lib/libobs-frontend-api.so'
+  -DCMAKE_INSTALL_LIBDIR=lib \
+  -DLINUX_PORTABLE=OFF \
+  -DQT_VERSION=6
 
   make -C build
 }
 
 package() {
   cd $pkgname
-
   make -C build DESTDIR="$pkgdir/" install
 }
