@@ -1,6 +1,6 @@
 pkgbase = patchance-git
 	pkgdesc = A modern graphical patchbay for JACK (git version)
-	pkgver = r51.14719a7
+	pkgver = 0.1.0.r2.ge9f4c66
 	pkgrel = 1
 	url = https://github.com/Houston4444/Patchance
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = patchance-git
 	license = GPL2
 	makedepends = git
 	makedepends = qt5-tools
+	depends = hicolor-icon-theme
 	depends = python-pyqt5
 	provides = patchance
 	conflicts = patchance

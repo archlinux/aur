@@ -2,13 +2,13 @@
 
 _pkgname=patchance
 pkgname="$_pkgname-git"
-pkgver=r51.14719a7
+pkgver=0.1.0.r2.ge9f4c66
 pkgrel=1
 pkgdesc='A modern graphical patchbay for JACK (git version)'
 arch=(any)
 url='https://github.com/Houston4444/Patchance'
 license=(GPL2)
-depends=(python-pyqt5)
+depends=(hicolor-icon-theme python-pyqt5)
 makedepends=(git qt5-tools)
 groups=(pro-audio)
 provides=($_pkgname)
@@ -42,8 +42,4 @@ build() {
 package() {
   cd $_pkgname
   make PREFIX=/usr DESTDIR="$pkgdir" install
-  # remove unneeded files from installation
-  rm -rf "$pkgdir"/usr/share/patchance/HoustonPatchbay/patchbay
-  rm -f "$pkgdir"/usr/share/patchance/HoustonPatchbay/{.git,.gitignore,Makefile,readme.md}
-  rm -rf "$pkgdir"/usr/share/patchance/HoustonPatchbay/manual
 }
