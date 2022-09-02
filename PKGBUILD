@@ -39,7 +39,7 @@ build() {
 }
 
 check() {
-	return
+	return 0
 }
 
 package() {
