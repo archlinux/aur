@@ -15,7 +15,7 @@ license=('GPL2')
 groups=('pro-audio')
 depends=('alsa-lib' 'libasound.so' 'gcc-libs' 'glibc' 'libgig' 'libgig.so'
 'jack' 'libjack.so' 'libsndfile' 'libsndfile.so' 'sqlite')
-makedepends=('clang' 'dssi' 'ladspa' 'lv2' 'steinberg-vst36')
+makedepends=('clang' 'dssi' 'ladspa' 'lv2' 'vst2sdk')
 optdepends=('dssi-host: for DSSI plugin'
             'lv2-host: for LV2 plugin')
 provides=("${_pkgname}" 'liblinuxsampler.so')
