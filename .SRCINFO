@@ -1,18 +1,17 @@
 pkgbase = wireproxy
 	pkgdesc = Wireguard client that exposes itself as a socks5 proxy
-	pkgver = 1.0.4
-	pkgrel = 3
+	pkgver = 1.0.5
+	pkgrel = 1
 	url = https://github.com/octeep/wireproxy
 	arch = x86_64
 	license = ISC
-	makedepends = go>=2:1.18
-	makedepends = go<2:1.19
-	source = https://github.com/octeep/wireproxy/archive/refs/tags/v1.0.4.tar.gz
+	makedepends = go
+	source = https://github.com/octeep/wireproxy/archive/refs/tags/v1.0.5.tar.gz
 	source = wireproxy.service
 	source = wireproxy@.service
 	source = wireproxy-user.service
 	source = wireproxy-user@.service
-	sha256sums = c600a8cd3d45e006afd0bdc5052730731f50997c85c1fa75112ce7ac6e9e1465
+	sha256sums = 3779a157713b462a7b5322f1437f768ab69ae446df0ceca76c6dff7c4030e425
 	sha256sums = 2ad52b7d158fef9c5bd468042e6c7cdc1130a3bde65015bee8107c0a6a422c0d
 	sha256sums = e3f169d0f814c5c8d0e1a9d4af9ff7f86566f4239d00fffedb804c862202b264
 	sha256sums = 4e431b19a0e610e9d12c0ecc0ac9b0171659aaa74a696e93f2a5d4a7546ce85c
