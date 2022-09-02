@@ -1,9 +1,9 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
-_electron=electron
+_electron=electron17
 pkgname=revolt-desktop
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='User-first chat platform built with modern web technologies'
 arch=(any)
 url=https://revolt.chat
@@ -13,7 +13,7 @@ makedepends=(yarn)
 source=("https://github.com/revoltchat/desktop/archive/v$pkgver.tar.gz"
 				"https://raw.githubusercontent.com/revoltchat/desktop/master/LICENSE"
         "$pkgname.js")
-sha256sums=('4130d8acc7d8a7d10a5041aa5bfcba54233861beefb8181c4e5dbb1357090a89'
+sha256sums=('84c06e3924e53d3272f7c2be9832a259f710c75a7a36d2732c3cb7a0e119e366'
             '147078bfdb948f3ac5ff0e4bb97bd040b61fef4dd5fb8ff851ef333ff048caf9'
             '3a9ae188a92ca0620a0838b32e0ab4a38b1fcca4c313d9a1c933c469f8d60df0')
 

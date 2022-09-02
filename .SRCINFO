@@ -1,16 +1,16 @@
 pkgbase = revolt-desktop
 	pkgdesc = User-first chat platform built with modern web technologies
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://revolt.chat
 	arch = any
 	license = AGPL3
 	makedepends = yarn
-	depends = electron
+	depends = electron17
 	source = https://github.com/revoltchat/desktop/archive/v1.0.6.tar.gz
 	source = https://raw.githubusercontent.com/revoltchat/desktop/master/LICENSE
 	source = revolt-desktop.js
-	sha256sums = 4130d8acc7d8a7d10a5041aa5bfcba54233861beefb8181c4e5dbb1357090a89
+	sha256sums = 84c06e3924e53d3272f7c2be9832a259f710c75a7a36d2732c3cb7a0e119e366
 	sha256sums = 147078bfdb948f3ac5ff0e4bb97bd040b61fef4dd5fb8ff851ef333ff048caf9
 	sha256sums = 3a9ae188a92ca0620a0838b32e0ab4a38b1fcca4c313d9a1c933c469f8d60df0
 
