@@ -4,6 +4,6 @@
 src/*
 pkg/*
 *.sig
-arch_avast-gui
+avast-gui
 *.png
 *.svg

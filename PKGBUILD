@@ -1,7 +1,7 @@
 # Maintainer: TF <mail | at | sedi [DOT] one>
 pkgname=avast-gui
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='Avast Antivirus GUI (unofficial)'
 depends=("avast>=4.1.0" "avast-fss>=4.1.0")
@@ -14,7 +14,7 @@ source=(
         "https://static3.avast.com/10002535/web/i/v2/components/logos/avast-logos/avast-logo-inverse.svg"
         "https://static3.avast.com/10002535/web/i/v2/components/logos/avast-logos/avast-logo-business.svg"
         "avast-logo-transp.png::https://img.informer.com/icons_mac/png/128/580/580294.png"
-        "git+https://github.com/secure-diversITy/arch_avast-gui.git"
+        "git+https://github.com/secure-diversITy/avast-gui.git"
         )
 #         "${pkgname}.install")
 sha256sums=('63b2334f1a7b6023acc55f36fc44424d050c65bf421ca871ebcf967e1dea7ff6'
@@ -33,17 +33,17 @@ package() {
     cp $srcdir/avast-logo-transp.png $pkgdir/usr/share/$pkgname//icons/icon-transp.png
 
     # install the yad wrapper
-    install -Dm755 arch_avast-gui/$pkgname.in $pkgdir/usr/bin/$pkgname
+    install -Dm755 avast-gui/$pkgname.in $pkgdir/usr/bin/$pkgname
     sed -i "s/%VER%/${pkgver}-${_vertype}/g" $pkgdir/usr/bin/$pkgname
 
     # install application shortcut
-    install -Dm755 arch_avast-gui/$pkgname.desktop $pkgdir/usr/share/applications/
+    install -Dm755 avast-gui/$pkgname.desktop $pkgdir/usr/share/applications/
 
     # install menu items for the main window
-    install -Dm755 arch_avast-gui/desktopfiles/* $pkgdir/usr/share/$pkgname/desktopfiles/
-    install -Dm644 arch_avast-gui/icons/* $pkgdir/usr/share/$pkgname/icons/
+    install -Dm755 avast-gui/desktopfiles/* $pkgdir/usr/share/$pkgname/desktopfiles/
+    install -Dm644 avast-gui/icons/* $pkgdir/usr/share/$pkgname/icons/
 
     # install lic
     mkdir -p $pkgdir/usr/share/licenses/$pkgname/
-    install -Dm644 arch_avast-gui/LICENSE $pkgdir/usr/share/licenses/$pkgname/
+    install -Dm644 avast-gui/LICENSE $pkgdir/usr/share/licenses/$pkgname/
 }

@@ -1,7 +1,7 @@
 pkgbase = avast-gui
 	pkgdesc = Avast Antivirus GUI (unofficial)
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.avast.com/business/products/linux-antivirus
 	arch = x86_64
 	license = GPL2
@@ -11,7 +11,7 @@ pkgbase = avast-gui
 	source = https://static3.avast.com/10002535/web/i/v2/components/logos/avast-logos/avast-logo-inverse.svg
 	source = https://static3.avast.com/10002535/web/i/v2/components/logos/avast-logos/avast-logo-business.svg
 	source = avast-logo-transp.png::https://img.informer.com/icons_mac/png/128/580/580294.png
-	source = git+https://github.com/secure-diversITy/arch_avast-gui.git
+	source = git+https://github.com/secure-diversITy/avast-gui.git
 	validpgpkeys = 6AFE173577C4CBD621DF217FD093435AA3ED2C4A
 	sha256sums = 63b2334f1a7b6023acc55f36fc44424d050c65bf421ca871ebcf967e1dea7ff6
 	sha256sums = 7404130ed0154296a67713b1a7421336482ee8bdc1c4e90327c4ae666e7b31f5
