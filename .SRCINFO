@@ -1,0 +1,16 @@
+pkgbase = barracudavpn-bin
+	pkgdesc = Barracuda VPN Client for Linux - needs original download from Barracuda
+	pkgver = 5.2.2
+	pkgrel = 1
+	url = https://campus.barracuda.com/product/networkaccessclient
+	arch = i386
+	arch = x86_64
+	license = custom:FortiClientSSLVPN
+	provides = barracudavpn
+	conflicts = barracudavpn
+	options = debug
+	options = !strip
+	source = VPNClient_5.2.2_Linux.tar.gz::local://VPNClient_5.2.2_Linux.tar.gz
+	sha256sums = 91459886ec634eca30321dc975de3208591084b2103801365442ef9c4e38e4ae
+
+pkgname = barracudavpn-bin
