@@ -1,6 +1,6 @@
 pkgbase = imagemagick-fftw
 	pkgdesc = An image viewing/manipulation program
-	pkgver = 7.1.0.45
+	pkgver = 7.1.0.47
 	pkgrel = 1
 	url = https://www.imagemagick.org/
 	arch = x86_64
@@ -31,10 +31,10 @@ pkgbase = imagemagick-fftw
 	makedepends = libpng
 	makedepends = djvulibre
 	makedepends = fftw
-	source = https://github.com/ImageMagick/ImageMagick/archive/refs/tags/7.1.0-45.tar.gz
+	source = https://github.com/ImageMagick/ImageMagick/archive/refs/tags/7.1.0-47.tar.gz
 	source = arch-fonts.diff
 	validpgpkeys = D8272EF51DA223E4D05B466989AB63D48277377A
-	sha256sums = 3df6ca6dff15a4e8a20b4593c60285a59e38890440494d91a344e5c0e2bb3eec
+	sha256sums = ad489af583bdfc0b5edd6c2106c955bf3af68fe838f6bd32c0ee8505ec6891ff
 	sha256sums = a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73
 
 pkgname = imagemagick-fftw
