@@ -1,14 +1,18 @@
 pkgbase = ttf-maple
-	pkgdesc = Open source monospace font with round corner for IDE and command line
+	pkgdesc = Open source monospace/Nerd Font font with round corner for IDE and command line
 	pkgver = 5.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitee.com/subframe7536/Maple/
 	arch = any
 	license = OFL
 	provides = ttf-maple
 	source = https://gitee.com/subframe7536/Maple/releases/download/v5.5/MapleMono.zip
+	source = https://gitee.com/subframe7536/Maple/releases/download/v5.5/MapleMono-NF.zip
+	source = https://gitee.com/subframe7536/Maple/releases/download/v5.5/MapleMono-SC-NF.zip
 	source = LICENSE::https://gitee.com/subframe7536/Maple/raw/v5/OFL.txt
 	sha1sums = 2450A6EA9CA75F9F92EB5696216A24563796D3FF
+	sha1sums = FF5A2353F3454EF7855F270968086222A0C19D13
+	sha1sums = 513170F994A94D5B10E96CCE7A0B7B6D63AB943D
 	sha1sums = SKIP
 
 pkgname = ttf-maple
