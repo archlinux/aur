@@ -1,36 +1,32 @@
-pkgbase=cura-bin
-pkgname=cura-bin
-pkgver=3.2
-pkgrel=5	
-pkgdesc="A full software solution for 3D printing aimed at RepRaps and the Ultimaker. This package contains both the binary Cura engine and the python front-end."
-depends=('cura-binary-data' 'cura-resources-materials' 'curaengine' 'python-numpy' 'python-pyqt5' 'python-pyserial' 'python-scipy' 'qt5-svg' 'uranium' 'python-zeroconf' 'cmake' 'qt5-tools')
+# Maintainer: Kevin MacMartin <prurigro@gmail.com>
 
-replaces=('cura')
-conflicts=('libarcus' 'cura', 'cura-git')
-url="https://github.com/Ultimaker/Cura"
-license=('AGPLv3')
+_pkgname=cura
+pkgname=$_pkgname-bin
+pkgver=5.1.0
+pkgrel=1
+pkgdesc='State-of-the-art slicer app to prepare your 3D models for your 3D printer'
+url='https://ultimaker.com/software/ultimaker-cura'
+license=('LGPL3')
 arch=('x86_64')
-debver=3.2.0~201802101704~rev2728~pkg200~ubuntu18.04.1
-source+=(https://launchpad.net/~thopiekar/+archive/ubuntu/cura/+build/14333835/+files/cura_${debver}_all.deb)
-sha256sums+=('44949e64355f526ccde6f111c2bc339c041a52c218e153f3fead85e50d420998')
+depends=('fuse2' 'xdg-desktop-portal' 'zlib')
+provides=($_pkgname)
+conflicts=($_pkgname)
+options=('!strip')
 
-install=.install
+source=(
+  "https://github.com/Ultimaker/Cura/releases/download/${pkgver}/Ultimaker-Cura-${pkgver}-linux-modern.AppImage"
+  "$_pkgname.desktop"
+  "$_pkgname.png"
+)
 
-build()
-{
-	cd "${srcdir}"
-	
-	# unpack
-	if [ -f data.tar.xz ]; then
-		tar --xz -xf data.tar.xz
-	elif [ -f data.tar.gz ]; then
-		tar -xzf data.tar.gz
-	fi
+sha512sums=(
+  'aa4590c30ffd76fc51ab7343a461db4290f4c1481bda46a27780a86988214d1366bf32049fa838b72c838b6e5915838938163e481d7f21fa0d790daf86acc49b'
+  '444c1ea35647f0e2ef89c8ef95a60097b2bb2c16c1f498859c258b06abf3a6990b855df3108ba32268cfca8b87818e933c641de5f1cab03534053a8d4129e192'
+  '37ecd96cd13ec262ba618d14af83d7a10769e9db736ebf1536c2570d5c2dbd7e4f4d6db4e0de13894f23255dd68f15fd7e5ba388798659c9745933c8d1c5ed99'
+)
+
+package() {
+  install -Dm644 $_pkgname.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  install -Dm644 $_pkgname.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+  install -Dm755 Ultimaker-Cura-${pkgver}-linux-modern.AppImage "$pkgdir/usr/bin/$_pkgname"
 }
-
-package()
-{	
-	cp -r "${srcdir}"/usr "${pkgdir}"/usr
-}
-
-
