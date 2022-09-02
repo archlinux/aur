@@ -2,7 +2,7 @@
 
 _electron=electron
 pkgname=revolt-desktop
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc='User-first chat platform built with modern web technologies'
 arch=(any)
