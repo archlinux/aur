@@ -1,6 +1,6 @@
 pkgbase = opensta-git
 	pkgdesc = A gate level static timing verifier.
-	pkgver = r156.73fef11
+	pkgver = r926.bb50746
 	pkgrel = 1
 	url = https://github.com/The-OpenROAD-Project/OpenSTA
 	arch = x86_64
@@ -14,8 +14,7 @@ pkgbase = opensta-git
 	optdepends = libzip: read Verilog, SDF, SPF, and SPEF files compressed with gzip
 	optdepends = cudd: a binary decision diageram package for improving conditional timing arc handling
 	provides = opensta
-	source = git://github.com/The-OpenROAD-Project/OpenSTA.git
+	source = git+https://github.com/The-OpenROAD-Project/OpenSTA.git
 	md5sums = SKIP
 
 pkgname = opensta-git
-
