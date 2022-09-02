@@ -12,5 +12,6 @@ pkgbase = liblc3-git
 
 pkgname = liblc3-git
 	depends = glibc
+	provides = liblc3
 	provides = liblc3.so
 	conflicts = liblc3
