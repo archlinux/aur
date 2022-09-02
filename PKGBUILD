@@ -1,9 +1,9 @@
 # Maintainer: Florian Maunier <fmauneko@dissidence.ovh>
 pkgname=msquic
-pkgver=2.0.3
-_clog_commit=9cbba2eea80d11faba83266c7f0f5e3b72a1f266
-_googletest_commit=ae1b7ad4308249bfa928e65d1a33be117fc0992c
-_openssl_commit=c3d4eb57dc74ba18ce70acee68b9a086ccc806aa
+pkgver=2.1.0
+_clog_commit=a4f472c5fe2c8298c0ada2e24717458c45a17eb1
+_googletest_commit=dd7a9d29a33de34836c345c3b753d4eba15c5f44
+_openssl_commit=f105ac0bfdae1ce009b8fd86bc6d9f65e5576352
 pkgrel=1
 epoch=1
 pkgdesc="Microsoft implementation of the IETF QUIC protocol (release)"
@@ -18,10 +18,10 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/microsoft/$pkgname/archive/
         "clog-$_clog_commit.tar.gz::https://github.com/microsoft/CLOG/archive/$_clog_commit.tar.gz"
         "googletest-$_googletest_commit.tar.gz::https://github.com/google/googletest/archive/$_googletest_commit.tar.gz"
         "openssl-$_openssl_commit.tar.gz::https://github.com/quictls/openssl/archive/$_openssl_commit.tar.gz")
-sha512sums=('c434111cb01eeae5e58901d15bfec3a544a07f38507f6676908c7804ec419ab6edc99ce33ea05c4565e6c2482acda73a5b95a51d3c9819a426f22f868dbe061b'
-            'b4f69af2e3676570179590cd752ccb5b9d771b6221369214c16ab6d03763c498350474722fdfdc0b3937f689c4c8dd057ae46c58787a6277bf06f9dca592f270'
-            '4a921ee7fdcb508ea1b59fad2bf20405a6f1dbd754ffd1dea4d1845805a14e8c67614dd3082f97a0da9c138751ca082fe55812f6f38b480b074bfe4c76d074bd'
-            '69ddbe18961b563f2b6d045d8046ec875080e526d5615cda2c3b374b50ba72e0b7b36132bcd5cdda8bbcb7f8ee5ac43160cd2988740f8df4492435e5879d3266')
+sha512sums=('ff663e505189026f9b3a0317134850a02af5e205b96452f9d9ec6a6740d4e5d4238a265984900601266dcf75a110061c7ecc3308bb85f8e9d14a6ed9e949f388'
+            '593ebae4f2dd0f76c56b21b849cceaa9847bd2fc5eea511b3c6236c577e869134381e3d20a1511e7c649b4e305501f6689004880d8155fb0e3ce8cbe18e4f2c2'
+            'ad897fa82f7b17c8ad59376e039b026b092973495a41b30527afd656714302bb05dd8564c77f18cf13a8e6f952df2e6483d79a25ee30cdfd9211078ecd1ee5cb'
+            '97224db510d8e3a92f591484847a8e66280dcaa5305c9646715608c385dd7fea74e9cbd6e8f9663aa7f5b7e8d593e14cfcdbf3ea3f85f04030b9a62a2880a0c1')
 noextract=("clog-$_clog_commit.tar.gz"
            "googletest-$_googletest_commit.tar.gz"
            "openssl-$_openssl_commit.tar.gz")
