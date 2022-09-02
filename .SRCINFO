@@ -1,20 +1,21 @@
 pkgbase = idasen
 	pkgdesc = Python API and CLI for the ikea IDÅSEN standing desk.
-	pkgver = 0.9.0
-	pkgrel = 1
+	pkgver = 0.9.1
+	pkgrel = 2
 	url = https://github.com/newAM/idasen
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-pytest-asyncio
 	checkdepends = python-pytest-cov
-	makedepends = python-setuptools
-	makedepends = python-dephell
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
 	depends = python
 	depends = python-pyaml
 	depends = python-bleak
 	depends = python-voluptuous
-	source = idasen-0.9.0.tar.gz::https://github.com/newAM/idasen/archive/v0.9.0.tar.gz
-	sha512sums = 9a8ccf2a6e0d026b741f38710b0713765d18aaec869d4637d74c9eaf1c71b4b8cdf06f3dcca12490ebad2a8ff4f5e8e635aea2110e93a7d5c834efbba9d6ea5b
+	source = idasen-0.9.1.tar.gz::https://github.com/newAM/idasen/archive/v0.9.1.tar.gz
+	sha512sums = 635a095ce8017c75891ffe6aa70824bec7771aec311a81e0020e579f1ff24c50c0845f2480b566670db5c78d55cd7fbcd70a6ac1b4329ed40e029f7af577bdb6
 
 pkgname = idasen

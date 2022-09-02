@@ -1,39 +1,33 @@
 # Maintainer: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
 
 pkgname=idasen
-pkgver=0.9.0
-pkgrel=1
+pkgver=0.9.1
+pkgrel=2
 pkgdesc='Python API and CLI for the ikea IDÅSEN standing desk.'
 url='https://github.com/newAM/idasen'
 depends=('python' 'python-pyaml' 'python-bleak' 'python-voluptuous')
 checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-cov')
-makedepends=('python-setuptools' 'python-dephell')
+makedepends=('python-build' 'python-installer' 'python-poetry')
 license=('MIT')
 arch=('any')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/newAM/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('9a8ccf2a6e0d026b741f38710b0713765d18aaec869d4637d74c9eaf1c71b4b8cdf06f3dcca12490ebad2a8ff4f5e8e635aea2110e93a7d5c834efbba9d6ea5b')
-
-prepare() {
-	cd "${srcdir}/$pkgname-$pkgver"
-
-	dephell deps convert --from pyproject.toml --to setup.py
-}
+sha512sums=('635a095ce8017c75891ffe6aa70824bec7771aec311a81e0020e579f1ff24c50c0845f2480b566670db5c78d55cd7fbcd70a6ac1b4329ed40e029f7af577bdb6')
 
 build(){
   cd "${srcdir}/$pkgname-$pkgver"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
-check(){
-    cd "${srcdir}/$pkgname-$pkgver"
+# check(){
+    # cd "${srcdir}/$pkgname-$pkgver"
 
-    pytest
-}
+    # pytest
+# }
 
 package() {
   cd "${srcdir}/$pkgname-$pkgver"
-  python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 # vim:set ts=2 sw=2 et:
