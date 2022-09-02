@@ -1,0 +1,12 @@
+## arg 1:  the new package version
+post_install() {
+    groupadd -r sol
+    chown root:sol /usr/lib/solana/sdk/bpf/dependencies
+    echo "Add yourself to the sol group to be able to install dependencies"
+    echo "when using cargo-build-bpf"
+}
+
+## arg 1:  the old package version
+post_remove() {
+    groupdel sol
+}
