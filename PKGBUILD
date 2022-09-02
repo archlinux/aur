@@ -1,6 +1,6 @@
 # Maintainer: Florian Maunier <fmauneko@dissidence.ovh>
 pkgname=msquic-release-git
-pkgver=2.0.3
+pkgver=2.1.0.r3.g94bd8187d
 pkgrel=1
 pkgdesc="Microsoft implementation of the IETF QUIC protocol (release, git)"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('cmake>=3.16' 'dotnet-sdk>=3.1' 'git')
 provides=('msquic' 'libmsquic.so')
 conflicts=('msquic' 'libmsquic.so')
-source=("$pkgname::git+https://github.com/microsoft/msquic.git#branch=release/2.0")
+source=("$pkgname::git+https://github.com/microsoft/msquic.git#branch=release/2.1")
 sha512sums=('SKIP')
 
 pkgver() {
