@@ -2,9 +2,9 @@
 # Contributor: eagleeyetom <eagleeyetom@gmail.com>
 # Original Maintainer: raininja <dandenkijin@gmail.com>
 pkgname=slimjet
-pkgver=36.0.2.0
+pkgver=35.0.3.0
 pkgrel=2
-pkgver_libffmpeg=0.67.1
+pkgver_libffmpeg=0.67.2
 pkgdesc="Fast, smart and powerful browser based on Blink"
 arch=('i686' 'x86_64')
 url="http://www.slimjet.com"
@@ -14,11 +14,11 @@ optdepends=('kdialog: needed for file dialogs in KDE' 'ttf-liberation: fix fonts
 options=('!emptydirs' '!strip')
 _channel=release
 source_i686=("${pkgname}-30.0.0.5_i386.deb::http://www.slimjet.com/${_channel}/${pkgname}_i386.deb")
-source_x86_64=("${pkgname}-${pkgver}_amd64.deb::https://www.slimjetbrowser.com/${_channel}/${pkgname}_amd64.deb")
-source=('LICENSE' "libffmpeg.zip::https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/${pkgver_libffmpeg}/${pkgver_libffmpeg}-linux-x64.zip")
-md5sums=('e2f3d75bbf4ea8cef106adb30c6b4c83' '7a88814ccd43497867443d3e24f4ba89')
+source_x86_64=("${pkgname}-${pkgver}_amd64.deb::http://www.slimjetbrowser.com/release/archive/35.0.3.0/slimjet_amd64.deb")
+source=('LICENSE' "libffmpeg.zip::https://github.com/ahmedmoselhi/nwjs-ffmpeg-prebuilt/releases/download/${pkgver_libffmpeg}/${pkgver_libffmpeg}-linux-x64.zip")
+md5sums=('e2f3d75bbf4ea8cef106adb30c6b4c83' 'e4b3eaf7d9ae1473e748d0f37ad00e6b')
 md5sums_i686=('dc3b1d6b986c23dcd8e3aac6a598d6f2')
-md5sums_x86_64=('B3CB573518BB24314C4FC8149CE4D0AD')
+md5sums_x86_64=('43c3b5bf9bc57f8346d6e56374ee0e77')
 
 prepare() {
     bsdtar -xf data.tar.xz
