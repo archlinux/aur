@@ -1,7 +1,7 @@
 pkgbase = xkbset-git
 	pkgdesc = Tool to help manage many of XKB features of X window.
 	pkgver = 0.8.r12.20220626.774fcef
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/stephenmontgomerysmith/xkbset
 	arch = i686
 	arch = x86_64

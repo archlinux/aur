@@ -1,3 +1,4 @@
+# Maintainer: ramen
 # Maintainer: dreieck
 # Contributor: ramen <hendrikschick (at) hndrkk (dot) sh>
 # Contributor: sputnick <gilles *dot* quenot *at* gmail *dot* com>
@@ -6,7 +7,7 @@
 _pkgname=xkbset
 pkgname="${_pkgname}-git"
 pkgver=0.8.r12.20220626.774fcef
-pkgrel=3
+pkgrel=4
 pkgdesc="Tool to help manage many of XKB features of X window."
 arch=(
   'i686'
