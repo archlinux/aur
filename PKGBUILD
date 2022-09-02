@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=ruff
-pkgver=0.0.23
+pkgver=0.0.24
 pkgrel=1
 pkgdesc='Experimental Python linter written in Rust'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python>=3.7')
 makedepends=('maturin' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/r/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('a93c9e1a969e01905154562412d2eeb9f5d473693054a7471b988a54c2b34e65')
+sha256sums=('db2e628ef5c7e712ce8c4d1783e6a8b606db2372e64a0c10b47bb2ac6bcc997c')
 
 prepare() {
 	cd "$pkgname-$pkgver"
