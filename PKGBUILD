@@ -2,7 +2,7 @@
 
 pkgname=nanoemoji
 pkgver=0.14.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A wee tool to build color fonts'
 arch=(any)
 url="https://github.com/googlefonts/$_pkgname"
@@ -30,6 +30,11 @@ checkdepends=(python-pytest
 _archive="$pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
 sha256sums=('1b793aa626ee10c7699f6679ca8199691d6a6007ee07af5e92956c3e65dd1547')
+
+prepare() {
+	cd "$_archive"
+	sed -i -e 's/^from ninja //' src/nanoemoji/ninja.py
+}
 
 build() {
 	cd "$_archive"
