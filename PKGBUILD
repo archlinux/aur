@@ -11,14 +11,14 @@ shopt -s extglob
 
 pkgbase=python-git
 pkgname=(python-git)
-pkgver=3.11.0a0.r112016.b04dfbbe4bd
+pkgver=3.12.0a0.r114486.91f40f3f78d
 pkgrel=1
-_pybasever=3.11
+_pybasever=3.12
 pkgdesc="Next generation of the python high-level scripting language"
 arch=('x86_64')
 license=('custom')
 url="https://www.python.org/"
-depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib' 'libnsl')
+depends=('bzip2' 'expat' 'gdbm' 'libffi' 'libnsl' 'libxcrypt' 'openssl' 'zlib')
 makedepends=('tk' 'sqlite' 'valgrind' 'bluez-libs' 'mpdecimal' 'xz' 'git' 'llvm' 'gdb' 'xorg-server-xvfb')
 checkdepends=('ttf-font')
 source=("git+https://github.com/python/cpython#branch=main")
@@ -37,26 +37,15 @@ prepare() {
 
   # FS#23997
   sed -i -e "s|^#.* /usr/local/bin/python|#!/usr/bin/python|" Lib/cgi.py
-
-  # Speed up LTO
-  sed -i -e "s|-flto |-flto=4 |g" configure configure.ac
-
-  # Ensure that we are using the system copy of various libraries (expat, libffi, and libmpdec),
-  # rather than copies shipped in the tarball
-  rm -r Modules/expat
-  rm -r Modules/_ctypes/{darwin,libffi}*
-  rm -r Modules/_decimal/libmpdec
 }
 
 build() {
   cd cpython
 
   # PGO should be done with -O3
-  # Also included the -fno-semantic-interposition optimization:
-  # https://fedoraproject.org/wiki/Changes/PythonNoSemanticInterpositionSpeedup
-  CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
-  LDFLAGS="$LDFLAGS -fno-semantic-interposition"
+  CFLAGS="${CFLAGS/-O2/-O3} -ffat-lto-objects"
 
+  # Disable bundled pip & setuptools
   ./configure --prefix=/usr \
               --enable-shared \
               --with-computed-gotos \
@@ -67,29 +56,15 @@ build() {
               --with-dbmliborder=gdbm:ndbm \
               --with-system-ffi \
               --with-system-libmpdec \
-              --enable-loadable-sqlite-extensions
+              --enable-loadable-sqlite-extensions \
+              --without-ensurepip \
+              --with-tzpath=/usr/share/zoneinfo
 
   # Obtain next free server number for xvfb-run; this even works in a chroot environment.
   export servernum=99
   while ! xvfb-run -a -n "$servernum" /bin/true 2>/dev/null; do servernum=$((servernum+1)); done
 
-  LC_CTYPE=en_US.UTF-8 xvfb-run -s "-screen 0 1280x720x24 -ac +extension GLX" -a -n "$servernum" make EXTRA_CFLAGS="$CFLAGS"
-}
-
-check() {
-  # test_ttk_guionly hangs under certain circumstances
-  # test_tk failed since tcl-& tk 8.6.10
-
-  cd cpython
-
-  # Obtain next free server number for xvfb-run; this even works in a chroot environment.
-  export servernum=99
-  while ! xvfb-run -a -n "$servernum" /bin/true 2>/dev/null; do servernum=$((servernum+1)); done
-
-  # test_socket hangs from time to time
-  LD_LIBRARY_PATH="${srcdir}/cpython":${LD_LIBRARY_PATH} \
-  LC_CTYPE=en_US.UTF-8 xvfb-run -s "-screen 0 1280x720x24 -ac +extension GLX" -a -n "$servernum" \
-    "${srcdir}/cpython/python" -m test.regrtest -w -uall -x test_ttk_guionly -x test_tk -x test_socket -j -1 || echo "Tests failed!"
+  LC_CTYPE=en_US.UTF-8 xvfb-run -s "-screen 0 1920x1080x16 -ac +extension GLX" -a -n "$servernum" make EXTRA_CFLAGS="$CFLAGS"
 }
 
 package_python-git() {
@@ -108,9 +83,6 @@ package_python-git() {
 
   make DESTDIR="${pkgdir}" EXTRA_CFLAGS="$CFLAGS" ENSUREPIP=install altinstall maninstall
 
-  # Split tests
-  rm -r "$pkgdir"/usr/lib/python*/{test,ctypes/test,distutils/tests,idlelib/idle_test,lib2to3/tests,sqlite3/test,tkinter/test,unittest/test}
-
   # Work around a conflict with the 'python' package.
   rm "${pkgdir}/usr/lib/libpython3.so"
   rm "${pkgdir}/usr/share/man/man1/python3.1"
@@ -122,29 +94,4 @@ package_python-git() {
 
   # License
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_python-tests-git() {
-  pkgdesc="Regression tests packages for Python"
-  depends=('python-git')
-
-  cd cpython
-
-  make DESTDIR="${pkgdir}" EXTRA_CFLAGS="$CFLAGS" libinstall
-  cd "$pkgdir"/usr/lib/python*/
-  rm -r !(test|ctypes|distutils|idlelib|lib2to3|sqlite3|tkinter|unittest)
-  cd "$pkgdir"/usr/lib/python*/ctypes
-  rm -r !(test)
-  cd "$pkgdir"/usr/lib/python*/distutils
-  rm -r !(tests)
-  cd "$pkgdir"/usr/lib/python*/idlelib
-  rm -r !(idle_test)
-  cd "$pkgdir"/usr/lib/python*/lib2to3
-  rm -r !(tests)
-  cd "$pkgdir"/usr/lib/python*/sqlite3
-  rm -r !(test)
-  cd "$pkgdir"/usr/lib/python*/tkinter
-  rm -r !(test)
-  cd "$pkgdir"/usr/lib/python*/unittest
-  rm -r !(test)
 }

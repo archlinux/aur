@@ -1,6 +1,6 @@
 pkgbase = python-git
 	pkgdesc = Next generation of the python high-level scripting language
-	pkgver = 3.11.0a0.r112016.b04dfbbe4bd
+	pkgver = 3.12.0a0.r114486.91f40f3f78d
 	pkgrel = 1
 	url = https://www.python.org/
 	arch = x86_64
@@ -16,13 +16,14 @@ pkgbase = python-git
 	makedepends = llvm
 	makedepends = gdb
 	makedepends = xorg-server-xvfb
-	depends = expat
 	depends = bzip2
+	depends = expat
 	depends = gdbm
-	depends = openssl
 	depends = libffi
-	depends = zlib
 	depends = libnsl
+	depends = libxcrypt
+	depends = openssl
+	depends = zlib
 	source = git+https://github.com/python/cpython#branch=main
 	sha512sums = SKIP
 
