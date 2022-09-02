@@ -1,6 +1,6 @@
 pkgbase = whatpulse
 	pkgdesc = Measures your keyboard, mouse and application usage, network traffic and uptime.
-	pkgver = 4.0
+	pkgver = 4.2
 	pkgrel = 1
 	url = http://www.whatpulse.org
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = whatpulse
 	source = LICENSE
 	sha256sums = 5a4a6676a6b513824eeac8a2accd6de9e8bd2bc11b3e2967fa2b2a18d29fa35d
 	sha256sums = cfea47f15bb3ba2494a7b1d50367139dc12709fc1e8ba0b25d86ee5f09748619
-	source_x86_64 = whatpulse-4.0.sfs::https://api.snapcraft.io/api/v1/snaps/download/iHVATX2faqAJciG5YGNM241W8fE8UvsF_13.snap
-	sha256sums_x86_64 = c62927cfd6d10b663e8fae94ff2aba06a24e66b8aa51df79b51d2709abe2b4e3
+	source_x86_64 = whatpulse-4.2.sfs::https://api.snapcraft.io/api/v1/snaps/download/iHVATX2faqAJciG5YGNM241W8fE8UvsF_14.snap
+	sha256sums_x86_64 = 1cc5335a406f75456e9f70c58e95a194ab4753ac922c3ca985f310084c6d5e7f
 
 pkgname = whatpulse
