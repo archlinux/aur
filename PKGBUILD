@@ -6,7 +6,7 @@
 # Contributor: Tucos <baspape@gmail.com>
 
 pkgname=panda3d
-pkgver=1.10.11
+pkgver=1.10.12
 pkgrel=1
 pkgdesc="A 3D game engine with Python bindings. SDK package. Optional dependencies you want to support need to be installed before panda3d."
 url="https://www.panda3d.org"
@@ -55,21 +55,13 @@ optdepends=(# Recommended
 
 install='panda3d.install'
 source=("${pkgname}-${pkgver}.tar.gz::https://www.panda3d.org/download/panda3d-$pkgver/panda3d-$pkgver.tar.gz"
-        'panda3d.install'
-        'libdir_fix.patch')
-md5sums=('9aeb39d97c7afe87cd211fdda70eea4d'
-         '057269173f3c1987953302519bc744fa'
-         '44d5cd0d121ec966f52d6ca00fdf81eb')
-sha256sums=('192b95135f91a1db493a839f9438207c8b51d2209d3a1d3b5f050c39931c4cd8'
-            'e67aaaf6e2e9b0ac56444e5a3c8140a5d1e311d356d937fa161ca9b863a3bb0f'
-            '0ae2d418ac574cdf0c164df9b86836c7f1e0893d53721647c9353bae3d0204da')
+        'panda3d.install')
+md5sums=('777f9c0f8ccf7cf4008fe79917cebde6'
+         '057269173f3c1987953302519bc744fa')
+sha256sums=('023046fb5bde770a6b41500fee5bf9aa5d99166bf5c95f454cfd46cd2edc9254'
+            'e67aaaf6e2e9b0ac56444e5a3c8140a5d1e311d356d937fa161ca9b863a3bb0f')
 
 JOBS=$(nproc)
-
-prepare() {
-  cd "$srcdir/${pkgname}-$pkgver/makepanda"
-  patch -p0 -i "$srcdir/libdir_fix.patch"
-}
 
 build() {
   cd "$srcdir/${pkgname}-$pkgver"
