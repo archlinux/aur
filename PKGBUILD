@@ -28,16 +28,15 @@ build() {
   sed -i 's@-Werror@@g' configure
 
   ./configure \
-    --prefix=/var/local \
-    --libdir=/var/local/lib \
-    --incdir=/var/local/include \
-    --shlibdir=/var/local/lib \
+    --prefix=/opt \
+    --libdir=/opt/lib \
+    --incdir=/opt/include \
+    --shlibdir=/opt/lib \
     --enable-gpl \
     --enable-static \
     --enable-shared \
     --disable-yasm \
     --disable-doc \
-    --disable-postproc \
     --enable-libx264 \
     --extra-ldflags=-L/usr/local/lib \
     --extra-cflags=-I/usr/local/include
@@ -50,8 +49,8 @@ package() {
   cd ffmpeg-${pkgver}
 
   make DESTDIR="$pkgdir" install
-  rm -rf "$pkgdir"/var/local/bin/ffprobe
-  rm -rf "$pkgdir"/var/local/share
+  rm -rf "$pkgdir"/opt/bin/ffprobe
+  rm -rf "$pkgdir"/opt/share
 
-  find "${pkgdir}"/var/local/bin -type f -exec mv {} {}21 \;
+  find "${pkgdir}"/opt/bin -type f -exec mv {} {}21 \;
 }
