@@ -3,7 +3,7 @@
 
 pkgname=rtl8821au-dkms-git
 _pkgbase=8821au
-pkgver=5.12.5.2.r95.ge4ad4ba
+pkgver=5.12.5.2.r148.g0bfe654
 pkgrel=1
 pkgdesc="rtl8821AU and rtl8811AU chipset driver with firmware v5.12.5.2"
 arch=('i686' 'x86_64')
