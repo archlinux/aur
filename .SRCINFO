@@ -1,10 +1,12 @@
 pkgbase = avast-gui
 	pkgdesc = Avast Antivirus GUI (unofficial)
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.avast.com/business/products/linux-antivirus
 	arch = x86_64
 	license = GPL2
+	depends = yad
+	depends = curl
 	depends = avast>=4.1.0
 	depends = avast-fss>=4.1.0
 	optdepends = avast-rest>=4.1.0

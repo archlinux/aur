@@ -1,10 +1,10 @@
 # Maintainer: TF <mail | at | sedi [DOT] one>
 pkgname=avast-gui
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 pkgdesc='Avast Antivirus GUI (unofficial)'
-depends=("avast>=4.1.0" "avast-fss>=4.1.0")
+depends=("yad" "curl" "avast>=4.1.0" "avast-fss>=4.1.0")
 optdepends=("avast-rest>=4.1.0")
 _vertype="ALPHA"
 url='https://www.avast.com/business/products/linux-antivirus'
