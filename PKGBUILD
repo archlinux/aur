@@ -16,8 +16,10 @@ depends=(
     libxkbcommon
 )
 options=('!lto')
-source=(https://github.com/lapce/lapce/releases/download/nightly/Lapce-linux.tar.gz
-        https://raw.githubusercontent.com/lapce/lapce/master/extra/{images/logo.png,linux/dev.lapce.lapce.{desktop,metainfo.xml}})
+source=(
+    https://github.com/lapce/lapce/releases/download/nightly/Lapce-linux.tar.gz
+    https://raw.githubusercontent.com/lapce/lapce/master/extra/{images/logo.png,linux/dev.lapce.lapce.{desktop,metainfo.xml}}
+)
 sha256sums=(
     'f84cdf5fd9ea91e7b6d8ec593f99331cd0f7b52dfa499af3098727f357bcd669'
     'b715c6d069e7cb9fd76ebe398c0251de9f218a44876c75015b9e969c9e70ba23'
