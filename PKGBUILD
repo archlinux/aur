@@ -29,7 +29,7 @@ sha256sums=(
 )
 
 prepare() {
-    sed -i -e "s/Exec=lapce/Exec=lapce-nightly/" -e "s/Name=Lapce/Name=Lapce nightly/" "$srcdir/dev.lapce.lapce.desktop"
+    sed -i -e "s/Exec=lapce/Exec=lapce-nightly/" -e "s/Name=Lapce/Name=Lapce nightly/" dev.lapce.lapce.desktop
 }
 
 pkgver() {
@@ -38,7 +38,6 @@ pkgver() {
 }
 
 package() {
-    cd "$srcdir"
     install -D Lapce/lapce "$pkgdir/usr/bin/lapce-nightly"
     install -Dm 644 dev.lapce.lapce.desktop "$pkgdir/usr/share/applications/dev.lapce.lapce-nightly.desktop"
     install -Dm 644 dev.lapce.lapce.metainfo.xml "$pkgdir/usr/share/metainfo/dev.lapce.lapce-nightly.metainfo.xml"
