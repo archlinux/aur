@@ -1,7 +1,7 @@
 # Maintainer: <me at auoeke dot net>
 pkgname=lapce-nightly-bin
 pkgver=20220902
-pkgrel=3
+pkgrel=4
 pkgdesc='Lightning-fast and powerful code editor'
 arch=(x86_64)
 url=https://lapce.dev
@@ -15,6 +15,7 @@ depends=(
     libxcb
     libxkbcommon
 )
+makedepends=(jq)
 options=('!lto')
 source=(
     https://github.com/lapce/lapce/releases/download/nightly/Lapce-linux.tar.gz
