@@ -20,17 +20,15 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd "${srcdir}/OpenSTA"
-  cmake . -DCUDD=/usr -DCMAKE_BUILD_TYPE=RELEASE
-}
-
 build() {
-  cd "${srcdir}/OpenSTA"
-  make
+  cmake -B build -S "${srcdir}/OpenSTA" \
+	-DCUDD=/usr \
+	-DCMAKE_BUILD_TYPE=None \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_CXX_FLAGS="$CXXFLAGS"
+  cmake --build build
 }
 
 package() {
-  cd "${srcdir}/OpenSTA"
-  make DESTDIR=${pkgdir} install
+  DESTDIR=${pkgdir} cmake --install build
 }
