@@ -1,6 +1,6 @@
 pkgbase = sku-git
 	pkgdesc = Simple TUI sudoku written in go
-	pkgver = r5.a81afe3
+	pkgver = r6.971f844
 	pkgrel = 1
 	url = https://github.com/fedeztk/sku
 	arch = any
