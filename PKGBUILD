@@ -1,7 +1,8 @@
 # Maintainer: Vincent Post <cent@spline.de>
 pkgname=xivlauncher-git
-pkgver=6.2.44.r5.g6246fde
-pkgrel=7
+pkgver=1.0.1.0.r0.g6246fde6
+pkgrel=1
+epoch=1
 pkgdesc="Custom Launcher for Final Fantasy XIV Online (Crossplatform rewrite)"
 arch=('x86_64')
 url='https://github.com/goatcorp/FFXIVQuickLauncher/'
@@ -27,25 +28,27 @@ depends=(
     'faudio'                'lib32-faudio'
     'desktop-file-utils'    'jxrlib'
 )
-makedepends=('dotnet-sdk>=6')
+makedepends=('dotnet-sdk>=6' 'python-yaml' 'git')
 optdepends=('steam')
 options=('!strip')
 provides=("xivlauncher=${pkgver}")
 conflicts=("xivlauncher")
 source=(
     "FFXIVQuickLauncher::git+https://github.com/goatcorp/FFXIVQuickLauncher.git"
-    "https://raw.githubusercontent.com/goatcorp/FFXIVQuickLauncher/master/src/XIVLauncher.Core/Resources/logo.png"
+    "pkgver.py"
     "XIVLauncher.desktop"
 )
 sha512sums=(
     'SKIP'
-    '4f16ba269ecd60c16a125db5e986d0bdabd69ac51d03ccb01a7203ddd04dea9d40147ee412bbfc37921ca83ff70a966258ae729bcada95ce1582b43160686694'
+    'ee292d539505151e4d17aa51e3af1981e69621245b419b0726d3cd5bbb35a7bb578bafd3ca779e59f65a8b1fec405c9d19711e91be92d447cc345a1a5a5cd8a2'
     '5ac774f858d4015c59e6758e2a706b93e822bca9c046ed87210deabc141ac101020d2654fbcf8314f9409a4cfcf921d1e26ec0a3b0beab02d1bcd045fb6e6f14'
 )
 
 pkgver() {
     cd "${srcdir}/FFXIVQuickLauncher"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git config --local user.name "Allagan Software Deployment Node"
+    git config --local user.email "asdn@example.com"
+    python3 ../pkgver.py
 }
 
 build() {
@@ -58,7 +61,7 @@ package() {
     install -d "${pkgdir}/usr/bin/"
     install -d "${pkgdir}/opt/XIVLauncher/"
     install -D -m644 "${srcdir}/XIVLauncher.desktop" "${pkgdir}/usr/share/applications/XIVLauncher.desktop"
-    install -D -m644 "${srcdir}/logo.png" "${pkgdir}/usr/share/pixmaps/xivlauncher.png"
+    install -D -m644 "${srcdir}/FFXIVQuickLauncher/src/XIVLauncher.Core/Resources/logo.png" "${pkgdir}/usr/share/pixmaps/xivlauncher.png"
     cp -r "${srcdir}/build/." "${pkgdir}/opt/XIVLauncher/"
     ln -s ../../opt/XIVLauncher/XIVLauncher.Core "${pkgdir}/usr/bin/XIVLauncher.Core"
 }
