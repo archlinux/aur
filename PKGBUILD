@@ -2,7 +2,7 @@
 
 pkgname=intellij-idea-ce-eap
 _pkgname=idea-IC
-_buildver=222.3739.54
+_buildver=222.4167.9
 _veryear=2022
 _verrelease=2
 _verextra=1
@@ -14,7 +14,7 @@ options=(!strip)
 url="http://www.jetbrains.com/idea/nextversion"
 license=('Apache2')
 depends=('java-environment' 'giflib' 'libxtst' 'libdbusmenu-glib')
-_archive="ideaIC-${_veryear}.${_verrelease}.${_verextra}.tar.gz"
+_archive="ideaIC-${_buildver}.tar.gz"
 source=("https://download.jetbrains.com/idea/${_archive}"
         "intellij-idea-ce-eap.desktop")
 sha256sums=($(curl -s "https://download.jetbrains.com/idea/${_archive}.sha256" | cut -f1 -d" ")
