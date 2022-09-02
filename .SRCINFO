@@ -1,0 +1,19 @@
+pkgbase = avast-rest
+	pkgdesc = Avast Antivirus REST API. Provides a REST API for the avast scanner.
+	pkgver = 4.1.0
+	pkgrel = 5
+	url = https://www.avast.com/business/products/linux-antivirus
+	install = avast-rest.install
+	arch = x86_64
+	license = custom
+	depends = avast=4.1.0
+	noextract = avast-rest_4.1.0-1~debian11_amd64.deb
+	options = !strip
+	backup = etc/avast/rest.conf
+	source = https://repo.avcdn.net/linux-av/deb/pool/debian-bullseye/avast-rest_4.1.0-1~debian11_amd64.deb
+	source = avast-rest.install
+	validpgpkeys = 6AFE173577C4CBD621DF217FD093435AA3ED2C4A
+	sha256sums = ed4d2138f8d85105ff562f7060d08c02b06b8ce1a59fad37027c1c6f8ea1d0c3
+	sha256sums = d8b5d7a89e84332cd0f0344ce71e34f2460a1d3b5312f9f36ce35a8e6940c249
+
+pkgname = avast-rest
