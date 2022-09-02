@@ -1,7 +1,7 @@
 pkgbase = pathplanner-bin
 	pkgdesc = A simple yet powerful motion profile generator for FRC robots
 	pkgver = v2022.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mjansen4857/pathplanner
 	arch = x86_64
 	license = MIT
