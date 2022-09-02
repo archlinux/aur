@@ -1,7 +1,7 @@
 # Maintainer: <me at auoeke dot net>
 pkgname=lapce-nightly-bin
 pkgver=20220902
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightning-fast and powerful code editor'
 arch=(x86_64)
 url=https://lapce.dev
@@ -28,8 +28,7 @@ sha256sums=(
 )
 
 prepare() {
-    sed -i "s/Exec=lapce/Exec=lapce-nightly/" "$srcdir/dev.lapce.lapce.desktop"
-    sed -i "s/Name=Lapce/Name=Lapce nightly/" "$srcdir/dev.lapce.lapce.desktop"
+    sed -i -e "s/Exec=lapce/Exec=lapce-nightly/" -e "s/Name=Lapce/Name=Lapce nightly/" "$srcdir/dev.lapce.lapce.desktop"
 }
 
 pkgver() {
