@@ -1,7 +1,7 @@
 # Maintainer: Wojciech Kepka <wojciech@wkepka.dev>
 pkgname=pkger-rs
 _pkgname=pkger
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 epoch=
 pkgdesc='Build rpm, deb, pkg and other packages using Docker'
@@ -12,7 +12,7 @@ depends=()
 makedepends=('cargo')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-sha256sums=('efdbb62daedc7931dfaba74b1cb8a44f79e43af35d7cd4e668c5ac1f548d496a')
+sha256sums=('f532b2a1e8e0895feb147a4c85204f6d5650f99304e6eadce65de2f5183bb734')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 
 prepare() {
