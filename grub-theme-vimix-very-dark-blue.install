@@ -17,7 +17,7 @@ _grep_theme_in_grub_cfg() {
 
 # Use the `grub-mkconfig` tool to generate `$_grub_cfg`.
 _grub_mkconfig() {
-  grub-mkconfig -o "$_grub_cfg"
+  sudo grub-mkconfig -o "$_grub_cfg"
 }
 
 # Use the `grub-mkconfig` tool to generate `$_grub_cfg` only if this theme is
