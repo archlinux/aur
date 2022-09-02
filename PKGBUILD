@@ -2,7 +2,7 @@
 
 pkgname=wireproxy
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 license=(ISC)
 url="https://github.com/octeep/wireproxy"
@@ -26,8 +26,15 @@ build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external"
-  go build -o wireproxy ./cmd/wireproxy
+  go build -v \
+    -buildmode=pie \
+    -trimpath \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode=external \
+      -X main.version=${pkgver}" \
+    -o wireproxy \
+    ./cmd/wireproxy
 }
 
 package() {
