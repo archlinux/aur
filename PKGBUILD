@@ -19,18 +19,17 @@ b2sums=('95a9b1572bf70687bbe354acc76513ffb79339500d9a48f675dd3a1c23b5d6a2ba69746
 prepare() {
     mkdir -p "$_pkgname-$pkgver"
     bsdtar -xpf "$_pkgname-$pkgver.tar.gz" --strip-components=1 -C "$_pkgname-$pkgver"
+}
 
-    sudo rm -R "$_pkgname-$pkgver/jdk/"
-
+package() {
+    rm -r "$_pkgname-$pkgver/jdk/"
     cat >"$_pkgname-$pkgver/mcreator.sh"<<EOF
 #!/usr/bin/env bash
 
 export CLASSPATH='./lib/mcreator.jar:./lib/*'
 /usr/lib/jvm/java-17-openjdk/bin/java --add-opens=java.base/java.lang=ALL-UNNAMED net.mcreator.Launcher "\$1"
 EOF
-}
 
-package() {
     install -d "$pkgdir/opt/$_pkgname"
     cp -r "$srcdir/$_pkgname-$pkgver/"* "$pkgdir/opt/$_pkgname"
 
