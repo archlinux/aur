@@ -1,6 +1,6 @@
-pkgbase = jdk8-dragonwell-bin
-	pkgdesc = Alibaba Dragonwell, as a downstream version of OpenJDK, is the OpenJDK implementation at Alibaba optimized for online e-commerce, financial, logistics applications running on 100,000+ servers.
-	pkgver = 8.11.12
+pkgbase = jdk8-dragonwell-standard-bin
+	pkgdesc = an in-house OpenJDK implementation at Alibaba (Standard Edition)
+	pkgver = 8.12.13
 	pkgrel = 1
 	url = https://dragonwell-jdk.io/
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = jdk8-dragonwell-bin
 	provides = java-runtime-openjdk=8
 	provides = java-runtime-headless=8
 	provides = java-runtime-headless-openjdk=8
-	source_x86_64 = jdk8-dragonwell-bin-8.11.12-x86_64.tar.gz::https://github.com/alibaba/dragonwell8/releases/download/dragonwell-8.11.12_jdk8u332-ga/Alibaba_Dragonwell_8.11.12_x64_linux.tar.gz
-	sha256sums_x86_64 = 03923f200dffddf9eee2aadc0c495674fe0b87cc2eece94a9a8dec84812d12bd
-	source_aarch64 = jdk8-dragonwell-bin-8.11.12-aarch64.tar.gz::https://github.com/alibaba/dragonwell8/releases/download/dragonwell-8.11.12_jdk8u332-ga/Alibaba_Dragonwell_8.11.12_aarch64_linux.tar.gz
-	sha256sums_aarch64 = 544a2b75c1b5963664395fba4b58bc6012cd1db36b68c0f1886d81d657a0b24b
+	source_x86_64 = jdk8-dragonwell-standard-bin-8.12.13-x86_64.tar.gz::https://github.com/alibaba/dragonwell8/releases/download/dragonwell-standard-8.12.13_jdk8u345-ga/Alibaba_Dragonwell_Standard_8.12.13_x64_linux.tar.gz
+	sha256sums_x86_64 = 64c00ba16e2eb4bf5f867f6a0604d8f82e0627c61d45d7edddc87cec641d9dd7
+	source_aarch64 = jdk8-dragonwell-standard-bin-8.12.13-aarch64.tar.gz::https://github.com/alibaba/dragonwell8/releases/download/dragonwell-standard-8.12.13_jdk8u345-ga/Alibaba_Dragonwell_Standard_8.12.13_aarch64_linux.tar.gz
+	sha256sums_aarch64 = b368b47f771be507b96e435b1a5fc41cb133762cdc86a7801150f25bf1e58421
 
-pkgname = jdk8-dragonwell-bin
+pkgname = jdk8-dragonwell-standard-bin
