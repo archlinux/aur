@@ -1,18 +1,18 @@
-# maintainer: libele <libele@disroot.org>
+# Maintainer: libele <libele@disroot.org>
 
 pkgname=inform7-git
+_pkgname=inform7
 _gitpkg=inform
-pkgver=r1507.e3bcfd85a
+pkgver=10.2.0.beta+6V49
 pkgrel=1
 pkgdesc="A design system for interactive fiction based on natural language (git version)"
-arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'pentium4' 'x86_64')
+arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://ganelson.github.io/inform"
 license=('Artistic2.0')
-makedepends=('rsync')
+makedepends=('git' 'rsync')
 provides=('inform' 'inform7')
 conflicts=('inform7')
 groups=(inform)
-install=inform7.install
 options=(!buildflags !makeflags)
 
 source=('git+https://github.com/ganelson/inform'
@@ -24,38 +24,54 @@ source=('git+https://github.com/ganelson/inform'
 md5sums=('SKIP'
 	 'SKIP'
 	 'SKIP'
-	 'e068ffd6869177fae89a34dbe96bdf5d'
-	 '88a7cefc597fdc719866b72c256166c6')
+	 '085007a124028daedf369c0fa0549b2a'
+	 '07fb211a928d44d3cf221f3760911957')
 
 pkgver() {
-  cd "${_gitpkg}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_gitpkg"
+  head -n 3 < README.md | tail -n 1 | cut -d ' ' -f 2 | sed 's/-/./g'
 }
 
 build() {
-  cd "${srcdir}"
+  cd "$srcdir"
 
   bash inweb/scripts/first.sh linux
   bash intest/scripts/first.sh
 
-  cd "${_gitpkg}"
+  cd "$_gitpkg"
   bash scripts/first.sh
   ../intest/Tangled/intest inform7 -show Acidity
-  make check
+  make
 
-  # make -C .. -f inweb/inweb.mk
-  # make -C .. -f intest/intest.mk
-  # make
+  make retrospective
+}
+
+check() {
+  cd "$_gitpkg"
+  make check
 }
 
 package() {
-  cd "${_gitpkg}"
+  cd "$_gitpkg"
   make forceintegration
-  # make retrospective
-  # cp -a retrospective DEST
 
-  cd "${srcdir}"
-  cp -a dist/* "${pkgdir}"
+  cd "$srcdir"
+  cp -a dist/* "$pkgdir"
 
-  install -Dm755 wrapper.sh "${pkgdir}/usr/bin/inform7"
+  install -Dm755 wrapper.sh "$pkgdir/usr/bin/inform7"
+
+  cd "$srcdir/inform/retrospective/6L02"
+  install -Dm755 cBlorb "$pkgdir/usr/lib/$_pkgname/retrospective/6L02/cBlorb"
+  install -Dm755 ni "$pkgdir/usr/lib/$_pkgname/retrospective/6L02/ni"
+  cp -ar Extensions "$pkgdir/usr/lib/$_pkgname/retrospective/6L02/Extensions"
+
+  cd ../6L38
+  install -Dm755 cBlorb "$pkgdir/usr/lib/$_pkgname/retrospective/6L38/cBlorb"
+  install -Dm755 ni "$pkgdir/usr/lib/$_pkgname/retrospective/6L38/ni"
+  cp -ar Internal "$pkgdir/usr/lib/$_pkgname/retrospective/6L38/Internal"
+
+  cd ../6M62
+  install -Dm755 cBlorb "$pkgdir/usr/lib/$_pkgname/retrospective/6M62/cBlorb"
+  install -Dm755 ni "$pkgdir/usr/lib/$_pkgname/retrospective/6M62/ni"
+  cp -ar Internal "$pkgdir/usr/lib/$_pkgname/retrospective/6M62/Internal"
 }

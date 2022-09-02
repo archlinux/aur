@@ -1,7 +1,7 @@
 #!/bin/sh
 
-LIBPATH=/usr/share/inform7
-INFORM7=/usr/bin/i7
+LIBPATH=/usr/lib/inform7
+INFORM7=/usr/bin/ni
 
 if [ -z "$1" ] || [ "$1" = "-help" ] || [ "$1" = "--help" ];
     then $INFORM7 -help;

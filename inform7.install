@@ -1,5 +1,4 @@
 post_install() {
-	echo -e "->  The inform compiler binaries have been installed as i6 and i7."
-	echo -e "->  Documentation and libraries can be found under /usr/share/inform7."
+	echo -e "->  The inform compiler binaries have been installed as i6 and ni."
 	echo -e "->  For convenience, a wrapper is provided to set the inform7 library path."
 }
