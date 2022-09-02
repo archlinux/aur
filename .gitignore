@@ -1,0 +1,6 @@
+master_me-*.tar.xz
+master_me-*.pkg.tar.xz
+master_me-*.pkg.tar.zst
+master_me-*.src.tar.gz
+pkg/
+src/
