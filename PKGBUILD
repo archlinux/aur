@@ -3,7 +3,7 @@
 
 pkgname=python-nspektr
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A distribution package dependency inspector"
 arch=('any')
 url="https://github.com/jaraco/nspektr"
@@ -11,9 +11,7 @@ license=('MIT')
 depends=('python-jaraco.context' 'python-jaraco.functools' 'python-more-itertools'
          'python-packaging')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm')
-checkdepends=('python-pytest-black' 'python-pytest-checkdocs' 'python-pytest-cov'
-              'python-pytest-enabler' 'python-pytest-flake8' 'python-pytest-mypy'
-              'python-pip')
+checkdepends=('python-pytest-enabler' 'python-pytest-mypy')
 source=("https://github.com/jaraco/nspektr/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('b29969de2a4975d154c43fd09ae7aa439b7b64732d1ab1964658d8ce9f8359ee')
 
