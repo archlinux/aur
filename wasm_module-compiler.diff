@@ -1,0 +1,12 @@
+diff --git a/src/wasm/module-compiler.cc b/src/wasm/module-compiler.cc
+index 6d6d611115..7ab372fb32 100644
+--- a/src/wasm/module-compiler.cc
++++ b/src/wasm/module-compiler.cc
+@@ -5,6 +5,7 @@
+ #include "src/wasm/module-compiler.h"
+ 
+ #include <algorithm>
++#include <mutex>
+ #include <queue>
+ #include <shared_mutex>
+ 
