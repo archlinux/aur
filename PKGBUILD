@@ -4,7 +4,7 @@ _pkgname=vulkan-icd-loader
 pkgname=mingw-w64-${_pkgname}
 _dirname=Vulkan-Loader
 pkgver=1.3.225
-pkgrel=1
+pkgrel=2
 pkgdesc='Vulkan Installable Client Driver (ICD) Loader (mingw-w64)'
 arch=(any)
 url='https://www.khronos.org/vulkan/'
@@ -22,8 +22,12 @@ sha256sums=('f20a5dcd016971b497659732ba3410aca7663f45554d24094509e4ffd0cc3239'
 _srcdir="${_dirname}-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 _flags=(
-  -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DNDEBUG'
-  -DUSE_MASM=OFF -DJWASM_FOUND=0 -DENABLE_WERROR=OFF )
+  -Wno-dev
+  -DCMAKE_BUILD_TYPE=Release
+  -DCMAKE_C_FLAGS_RELEASE='-DNDEBUG'
+  -DUSE_MASM=OFF
+  -DJWASM_FOUND=0
+  -DENABLE_WERROR=OFF )
 
 prepare() {
   cd "${_srcdir}"
