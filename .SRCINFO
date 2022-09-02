@@ -3,12 +3,14 @@ pkgbase = grub-theme-vimix-very-dark-blue
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/trueNAHO/grub2-theme-vimix-very-dark-blue
+	install = grub-theme-vimix-very-dark-blue.install
 	arch = any
 	license = GPL3
 	makedepends = git
+	depends = bash
 	depends = grub
 	optdepends = grub-customizer: GUI tool to configure GRUB
-	source = git+https://github.com/trueNAHO/grub2-theme-vimix-very-dark-blue
+	source = grub-theme-vimix-very-dark-blue::git+https://github.com/trueNAHO/grub2-theme-vimix-very-dark-blue
 	md5sums = SKIP
 
 pkgname = grub-theme-vimix-very-dark-blue

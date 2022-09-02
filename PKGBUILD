@@ -3,35 +3,26 @@
 pkgname=grub-theme-vimix-very-dark-blue
 pkgver=1.0.0
 pkgrel=1
-epoch=
 pkgdesc="Simple very dark blue GRUB theme"
 arch=(any)
 url="https://github.com/trueNAHO/grub2-theme-vimix-very-dark-blue"
 license=(GPL3)
-groups=()
-depends=(grub)
+depends=(bash grub)
 makedepends=(git)
-checkdepends=()
 optdepends=('grub-customizer: GUI tool to configure GRUB')
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("git+$url")
-noextract=()
-md5sums=('SKIP')
-validpgpkeys=()
+install="$pkgname.install"
+source=("$pkgname::git+$url")
+md5sums=(SKIP)
 
 pkgver() {
-  cd "$_pkgname"
-  printf "1.0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$pkgname" || return
+  printf "1.0.0.r%s.%s" "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  install -dm 755 "$pkgdir/usr/share/grub/themes/$pkgname"
-  cp -r --no-preserve=ownership grub2-theme-vimix-very-dark-blue/src/. \
-      "$pkgdir/usr/share/grub/themes/$pkgname"
+  declare -r _pkgdir="$pkgdir/usr/share/grub/themes/$pkgname"
+
+  install -dm 755 "$_pkgdir"
+  cp -r --no-preserve=ownership "$srcdir/$pkgname/src/." "$_pkgdir"
 }

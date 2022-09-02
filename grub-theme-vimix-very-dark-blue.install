@@ -1,0 +1,91 @@
+#!/usr/bin/env bash
+
+declare -r _default_grub="/etc/default/grub"
+declare -r _grub_cfg="/boot/grub/grub.cfg"
+
+# Print lines from `$_default_grub` that match this theme.
+_grep_theme_in_default_grub() {
+  declare -r _pattern='^GRUB_THEME="/usr/share/grub/themes/grub-theme-vimix-very-dark-blue/theme.txt"'
+  grep -P -n "$_pattern" "$_default_grub"
+}
+
+# Print lines from `$_grub_cfg` that match this theme.
+_grep_theme_in_grub_cfg() {
+  declare -r _pattern="/usr/share/grub/themes/grub-theme-vimix-very-dark-blue"
+  grep -F -n "$_pattern" "$_grub_cfg"
+}
+
+# Use the `grub-mkconfig` tool to generate `$_grub_cfg`.
+_grub_mkconfig() {
+  grub-mkconfig -o "$_grub_cfg"
+}
+
+# Use the `grub-mkconfig` tool to generate `$_grub_cfg` only if this theme is
+# used.
+_grub_mkconfig_smart() {
+  if _is_use_theme; then
+    _status "Use the 'grub-mkconfig' tool to generate '/boot/grub/grub.cfg'"
+    _grub_mkconfig
+  fi
+}
+
+# Return true if `$_default_grub` uses this theme. Otherwise return false.
+_is_default_grub_use_theme() {
+  _grep_theme_in_default_grub 1>/dev/null
+  return $?
+}
+
+# Return true if `$_grub_cfg` uses this theme. Otherwise return false.
+_is_grub_cfg_use_theme() {
+  _grep_theme_in_grub_cfg 1>/dev/null
+  return $?
+}
+
+# Return true if `$_grub_cfg` and `$_default_grub` use this theme. Otherwise
+# return false.
+_is_use_theme() {
+  _is_default_grub_use_theme && _is_grub_cfg_use_theme
+  return $?
+}
+
+# Print status messages. All arguments form one status message.
+_status() {
+  printf 'grub-theme-vimix-very-dark-blue: %s\n' "$*"
+}
+
+# Print status messages to stdout. All arguments form one status message.
+_status_error() {
+  _status "$*" >&2
+}
+
+# Generate `$_grub_cfg` if both `$_grub_cfg` and `$_default_grub` use this
+# theme. This covers the case when uninstalling and reinstalling the package
+# instead of upgrading it.
+post_install() {
+  _grub_mkconfig_smart
+}
+
+# Generate `$_grub_cfg` if both `$_grub_cfg` and `$_default_grub` use this
+# theme.
+post_upgrade() {
+  _grub_mkconfig_smart
+}
+
+# Warn user in case GRUB still uses this theme after uninstalling it.
+post_remove() {
+  # Check if `$_grub_cfg` uses this theme.
+  if _is_grub_cfg_use_theme; then
+    _status_error "$_grub_cfg still mentions this theme."
+    _grep_theme_in_grub_cfg
+    _status_error "Make sure to fix this ASAP! Best BEFORE rebooting!"
+  fi
+
+  # Check if `$_default_grub` uses this theme.
+  if _is_default_grub_use_theme; then
+    _status_error "$_default_grub still mentions this theme."
+    _grep_theme_in_default_grub
+    _status_error "Make sure to either replace this theme or to disable GRUB" \
+        "themes by commenting the line containing 'GRUB_THEME=' in" \
+        "$_default_grub"
+  fi
+}
