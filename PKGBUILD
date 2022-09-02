@@ -1,6 +1,7 @@
-# Maintainer: Nick Cao <nickcao@nichi.co>
+# Maintainer: Yufan You <ouuansteve at gmail>
+# Contributor: Nick Cao <nickcao@nichi.co>
 pkgname=auth-thu
-pkgver=2.0.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="A commandline Tunet (auth4/6.tsinghua.edu.cn, Tsinghua-IPv4) authentication tool"
 arch=('x86_64')
@@ -10,7 +11,7 @@ makedepends=('go')
 source=("auth-thu-$pkgver.tar.gz::https://github.com/z4yx/GoAuthing/archive/v$pkgver.tar.gz"
         "auth-thu.service"
         "auth-thu.timer")
-sha256sums=('16cf93a2695c516e3491ae593c2f5599a0112b2c20473c851c4e2aaca0b79dcd'
+sha256sums=('77ee5083610f418cd9cd4768cbf81011f000f69ab25e442fe7fd39248c9900e3'
             'd177a5a97e9e9c40a0aa4430024a68a5a08b3ac9ab5a11ce7e2e36185d04341c'
             'a780ea89449aa17d9fafa969dcfaf2e1deaa5098c39dcf38701415ef0dee5f78')
 
