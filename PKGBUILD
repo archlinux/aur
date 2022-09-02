@@ -49,6 +49,10 @@ build() {
 	msg "Starting CMake"
 	cd "$_pkgname"
 
+# workaround for Sophos issue with fmt 9.0+ https://github.com/strasdat/Sophus/issues/366#issuecomment-1229178088
+CFLAGS="-DFMT_DEPRECATED_OSTREAM=1"
+CXXFLAGS="$CFLAGS"
+
 	cmake \
 		-DCMAKE_INSTALL_PREFIX="/usr" \
 		-DCMAKE_BUILD_TYPE="RelWithDebInfo" \
