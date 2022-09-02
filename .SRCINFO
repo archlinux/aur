@@ -1,5 +1,5 @@
 pkgbase = jdk8-dragonwell-extended-bin
-	pkgdesc = Alibaba Dragonwell, as a downstream version of OpenJDK, is the OpenJDK implementation at Alibaba optimized for online e-commerce, financial, logistics applications running on 100,000+ servers.
+	pkgdesc = an in-house OpenJDK implementation at Alibaba (Extended Edition)
 	pkgver = 8.12.13
 	pkgrel = 1
 	url = https://dragonwell-jdk.io/
