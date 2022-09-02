@@ -1,14 +1,14 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=everforest-gtk-theme-git
-pkgver=r13.78f48292
+pkgver=r17.aba45df6
 pkgrel=1
 pkgdesc='Everforest colour palette for GTK'
 arch=('any')
 url="https://github.com/Fausto-Korpsvart/Everforest-GTK-Theme"
 license=('GPL3')
 depends=()
-makedepends=()
+makedepends=('git')
 source=("$pkgname"::'git+https://github.com/Fausto-Korpsvart/Everforest-GTK-Theme')
 sha256sums=('SKIP')
 
