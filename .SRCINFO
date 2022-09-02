@@ -1,7 +1,7 @@
 pkgbase = via-bin
-	pkgdesc = Native electron build of https://usevia.app/
+	pkgdesc = binary distribution of electron builds for https://usevia.app/
 	pkgver = 2.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://caniusevia.com/
 	arch = any
 	depends = gtk3

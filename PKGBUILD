@@ -1,10 +1,10 @@
-# Maintainer: timescam <rex.ky.ng at gmail dot com>
+# Maintainer: timescam <timescam at duck dot com>
 
 _pkgname=via
 pkgname=$_pkgname-bin
 pkgver=2.0.5
-pkgrel=1
-pkgdesc="Native electron build of https://usevia.app/"
+pkgrel=2
+pkgdesc="binary distribution of electron builds for https://usevia.app/"
 arch=(any)
 url="https://caniuse$_pkgname.com/"
 provides=("${_pkgname}=${pkgver}")
@@ -31,5 +31,5 @@ build() {
 package() {
   cp -r "${srcdir}/output/"* "${pkgdir}"
   install -d "${pkgdir}"/usr/bin
-  ln -s /opt/VIA/via "${pkgdir}"/usr/bin/via
+  ln -s /opt/VIA/via-nativia "${pkgdir}"/usr/bin/via
 }
