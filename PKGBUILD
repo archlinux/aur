@@ -36,10 +36,10 @@ check() {
 
 package_liblc3-git() {
   depends=(glibc)
-  provides=(liblc3.so)
+  provides=(liblc3 liblc3.so)
   conflicts=(liblc3)
 
-  install -Dt "$pkgdir/usr/bin" -m755 builddir/tools/dlc3 builddir/tools/elc3
+  install -Dt "$pkgdir/usr/bin" -m755 builddir/tools/{dlc3,elc3}
 
   meson install -C builddir --destdir "$pkgdir"
 }
