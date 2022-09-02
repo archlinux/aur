@@ -1,0 +1,1 @@
+# aur_avast-gui

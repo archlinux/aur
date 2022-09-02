@@ -1,0 +1,9 @@
+/dl.url
+*.deb
+*.zst
+src/*
+pkg/*
+*.sig
+arch_avast-gui
+*.png
+*.svg
