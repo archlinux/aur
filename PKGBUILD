@@ -5,8 +5,8 @@
 
 pkgname=rtl8814au-dkms-git
 _pkgbase=rtl8814au
-pkgver=5.8.5.1.r98.gc5fd13c
-pkgrel=2
+pkgver=5.8.5.1.r149.g752d8ea
+pkgrel=1
 pkgdesc="RTL8814AU and RTL8813AU chipset driver with firmware v5.8.5.1"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/morrownr/8814au"
@@ -18,7 +18,7 @@ source=("git+https://github.com/morrownr/8814au.git"
         'dkms.conf'
         'arm.patch')
 sha256sums=('SKIP'
-	    '36203d04d3ff9e4f117389a24257f608570c418bf4b93fba1b4efd41eb36229a'
+	    'f01d80e7925aac5b5282cf7a89683967d44d19f11c50de9c745316326e5c6adb'
 	    '2911f6c1285277d0507b2ad7a09c20edd682476be67502db63f63663cac97efb')
 
 pkgver() {
