@@ -1,16 +1,16 @@
 pkgbase = kavita-bin
 	pkgdesc = Self hosted ebook and comic reader
-	pkgver = 0.5.5
+	pkgver = 0.5.6
 	pkgrel = 1
 	url = https://www.kavitareader.com/
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	backup = etc/Kavita/appsettings.json
-	source_x86_64 = https://github.com/Kareadita/Kavita/releases/download/v0.5.5/kavita-linux-x64.tar.gz
-	md5sums_x86_64 = 7c0a22eb55f736ed266f196a1c79c076
-	source_aarch64 = https://github.com/Kareadita/Kavita/releases/download/v0.5.5/kavita-linux-arm64.tar.gz
-	md5sums_aarch64 = bf9460def792760e289830648500fdff
+	source_x86_64 = https://github.com/Kareadita/Kavita/releases/download/v0.5.6/kavita-linux-x64.tar.gz
+	md5sums_x86_64 = 754b51073cfbe9f6a5f40bc181bed46d
+	source_aarch64 = https://github.com/Kareadita/Kavita/releases/download/v0.5.6/kavita-linux-arm64.tar.gz
+	md5sums_aarch64 = eaa5c6512b54a2b6e01ef3a00c8262dd
 
 pkgname = kavita-bin
 	install = kavita.install
