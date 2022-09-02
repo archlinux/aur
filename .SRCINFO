@@ -1,6 +1,6 @@
 pkgbase = limine
 	pkgdesc = An advanced x86/x86_64 BIOS/UEFI bootloader
-	pkgver = 3.19
+	pkgver = 3.20
 	pkgrel = 1
 	url = https://limine-bootloader.org/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = limine
 	makedepends = lld
 	makedepends = clang
 	depends = glibc
-	source = https://github.com/limine-bootloader/limine/releases/download/v3.19/limine-3.19.tar.xz
-	sha256sums = e2e92bd8ad43ec2c05f354520dc76ad7162569462d26a9d5fa3b364340fc36d5
+	source = https://github.com/limine-bootloader/limine/releases/download/v3.20/limine-3.20.tar.xz
+	sha256sums = d888a8ad3f5e55e9bfbe417618626a3831f7d1d6cf5d54e408402540bc2cf75a
 
 pkgname = limine
