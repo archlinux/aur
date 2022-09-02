@@ -12,8 +12,16 @@ license=('Apache')
 depends=('nss' 'atk' 'at-spi2-atk' 'libcups' 'libdrm' 'gdk-pixbuf2' 'gtk3' 'alsa-lib' 'c-ares' 'ffmpeg' 'libevent' 'libxkbfile' 'libxslt' 'minizip' 're2' 'snappy')
 appbranch="develop"
 makedepends=('nvm' 'git' 'python')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=(
+    'ferdium'
+)
+conflicts=(
+    'ferdium'
+    'ferdium-bin'
+    'ferdium-nightly-bin'
+    'ferdium-nightly'
+    'ferdium-git'
+)
 source=(
 	"$pkgname::git+https://github.com/ferdium/ferdium-app#branch=${appbranch}"
 )
