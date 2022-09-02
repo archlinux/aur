@@ -1,0 +1,24 @@
+pkgbase = avast-fss
+	pkgdesc = Avast File Server Shield. Provides the On-Write scanning service.
+	pkgver = 4.1.0
+	pkgrel = 6
+	url = https://www.avast.com/business/products/linux-antivirus
+	install = avast-fss.install
+	arch = x86_64
+	license = custom
+	depends = avast=4.1.0
+	conflicts = avast-proxy
+	conflicts = eea
+	conflicts = esets
+	conflicts = eea-dkms
+	conflicts = eea7-dkms
+	noextract = avast-fss_4.1.0-1~debian11_amd64.deb
+	options = !strip
+	backup = etc/avast/fss.conf
+	source = https://repo.avcdn.net/linux-av/deb/pool/debian-bullseye/avast-fss_4.1.0-1~debian11_amd64.deb
+	source = avast-fss.install
+	validpgpkeys = 6AFE173577C4CBD621DF217FD093435AA3ED2C4A
+	sha256sums = fe5bc08a3e015368c61c0db2b5dc3fd0d0a926f3a11aa9976b4d9f191aedb3fe
+	sha256sums = 97974db01b47671bd8705eac7c106d6b27ca4d033dd07f03774838d2abe4bc77
+
+pkgname = avast-fss
