@@ -1,6 +1,6 @@
 pkgbase = xivlauncher
 	pkgdesc = Custom Launcher for Final Fantasy XIV Online (Crossplatform rewrite)
-	pkgver = 6.2.40
+	pkgver = 6.2.44
 	pkgrel = 1
 	url = https://github.com/goatcorp/FFXIVQuickLauncher/
 	arch = x86_64
@@ -44,10 +44,10 @@ pkgbase = xivlauncher
 	depends = jxrlib
 	optdepends = steam
 	options = !strip
-	source = https://github.com/goatcorp/FFXIVQuickLauncher/archive/refs/tags/6.2.40.tar.gz
+	source = https://github.com/goatcorp/FFXIVQuickLauncher/archive/refs/tags/6.2.44.tar.gz
 	source = https://raw.githubusercontent.com/goatcorp/FFXIVQuickLauncher/master/src/XIVLauncher.Core/Resources/logo.png
 	source = XIVLauncher.desktop
-	sha512sums = dd8a52aac93aef1264a0dfd5ad0b8029c02dd48bfcb9839b1caa00530b27a0bfdfe1058b465427784a8ed9bff06e22b175fb4e8dcecae919ca65ca5d826c4c9d
+	sha512sums = 9c5283ee98812f1d7f83ff8b854b9a03a4044957115fd85e346778e12c2420f87c5e0411b305c30af08fa8b0beeae3b7e53a18e81c892ad0ca63636395f0d94e
 	sha512sums = 4f16ba269ecd60c16a125db5e986d0bdabd69ac51d03ccb01a7203ddd04dea9d40147ee412bbfc37921ca83ff70a966258ae729bcada95ce1582b43160686694
 	sha512sums = 5ac774f858d4015c59e6758e2a706b93e822bca9c046ed87210deabc141ac101020d2654fbcf8314f9409a4cfcf921d1e26ec0a3b0beab02d1bcd045fb6e6f14
 
