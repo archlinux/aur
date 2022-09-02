@@ -7,7 +7,7 @@
 # Contributor: Alexey Pavlov <alexpux@gmail.com>
 
 pkgname=mingw-w64-libssh
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="Library for accessing ssh client services through C libraries (mingw-w64)"
 url="https://www.libssh.org/"
@@ -17,11 +17,9 @@ depends=('mingw-w64-zlib' 'mingw-w64-openssl')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-pkg-config' 'mingw-w64-wine' 'mingw-w64-cmocka' 'doxygen' 'python')
 options=(!strip !buildflags staticlibs)
 #cmocka
-source=(https://www.libssh.org/files/${pkgver%.*}/libssh-$pkgver.tar.xz{,.asc}
-        staticlibfix.patch)
-sha256sums=('da2b3337a0dd1d1e3788376ee471548520cad91a4f3f23ea3f50c5a73a7e69a5'
-            'SKIP'
-            'befd0650f7f6fd1d92872b8e2676a201b1449b009706de7fdbdd400b716fddf8')
+source=(https://www.libssh.org/files/${pkgver%.*}/libssh-$pkgver.tar.xz{,.asc})
+sha256sums=('15b83d7b74c8c67f758fb32faf1d9a35d5f8f50db523276a419e9876530f098a'
+            'SKIP')
 validpgpkeys=('8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D') # Andreas Schneider <asn@cryptomilk.org>
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -29,13 +27,6 @@ prepare() {
   sed 's/\${TARGET_SYSTEM_EMULATOR}/\${CMAKE_CROSSCOMPILING_EMULATOR}/' -i libssh-${pkgver}/cmake/Modules/AddCMockaTest.cmake
   # Disable automatic detection of openssl since it picks up openssl-1.0
   sed 's/find_package(OpenSSL)/#find_package(OpenSSL)/' -i libssh-${pkgver}/CMakeLists.txt
-
-  cd "${srcdir}/libssh-${pkgver}"
-
-  # Should be included in next release:
-  # https://bugs.libssh.org/T198
-  # https://gitlab.com/libssh/libssh-mirror/merge_requests/73/diffs
-  patch -p1 -i ${srcdir}/staticlibfix.patch
 }
 
 build() {
