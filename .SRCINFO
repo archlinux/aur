@@ -1,7 +1,7 @@
 pkgbase = avast
 	pkgdesc = Avast Antivirus for Linux
 	pkgver = 4.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.avast.com/business/products/linux-antivirus
 	install = avast.install
 	arch = x86_64
@@ -13,16 +13,13 @@ pkgbase = avast
 	conflicts = eea7-dkms
 	noextract = avast_4.1.0-1~debian11_amd64.deb
 	noextract = avast-fss_4.1.0-1~debian11_amd64.deb
-	noextract = avast-rest_4.1.0-1~debian11_amd64.deb
 	options = !strip
 	source = https://repo.avcdn.net/linux-av/deb/pool/debian-bullseye/avast_4.1.0-1~debian11_amd64.deb
 	source = https://repo.avcdn.net/linux-av/deb/pool/debian-bullseye/avast-fss_4.1.0-1~debian11_amd64.deb
-	source = https://repo.avcdn.net/linux-av/deb/pool/debian-bullseye/avast-rest_4.1.0-1~debian11_amd64.deb
 	source = avast.install
 	validpgpkeys = 6AFE173577C4CBD621DF217FD093435AA3ED2C4A
 	sha256sums = 2e41c9b929c872308731f75e1a2ed268750898b7a589a1c3a73e0ab92e7dbce7
 	sha256sums = fe5bc08a3e015368c61c0db2b5dc3fd0d0a926f3a11aa9976b4d9f191aedb3fe
-	sha256sums = ed4d2138f8d85105ff562f7060d08c02b06b8ce1a59fad37027c1c6f8ea1d0c3
 	sha256sums = 9d8567e1ecf3b0f1020b277ed533da070e902f95313048bce126abaf71825d48
 
 pkgname = avast
@@ -45,9 +42,3 @@ pkgname = avast-fss
 	install = avast-fss.install
 	depends = avast=4.1.0
 	backup = etc/avast/fss.conf
-
-pkgname = avast-rest
-	pkgdesc = Avast Antivirus REST API. avast-rest is an HTTP server which provides a REST API for avast scanner.
-	install = avast-rest.install
-	depends = avast=4.1.0
-	backup = etc/avast/rest.conf
