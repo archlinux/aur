@@ -2,12 +2,12 @@
 
 pkgname=xplayer-plparser-git
 _pkgbasename=xplayer-plparser
-pkgver=1.0.2.r4.g58682a7
+pkgver=1.0.3.r0.g088731a
 pkgrel=1
 pkgdesc="Playlist parser for xplayer. X-Apps Project (git version)."
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
-depends=('gmime' 'libsoup' 'libarchive' 'libquvi')
+depends=('gmime3' 'libsoup' 'libarchive' 'libquvi')
 makedepends=('git' 'meson' 'gtk-doc' 'gobject-introspection')
 provides=($pkgname $_pkgbasename)
 conflicts=("${_pkgbasename}")
