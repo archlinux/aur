@@ -1,6 +1,6 @@
 pkgbase = lnd-bin
 	pkgdesc = Lightning Network Daemon ⚡
-	pkgver = 0.15.0_beta
+	pkgver = 0.15.1_beta
 	pkgrel = 1
 	url = https://github.com/lightningnetwork/lnd
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = lnd-bin
 	provides = lncli
 	conflicts = lnd
 	conflicts = lnd-git
-	source = https://github.com/lightningnetwork/lnd/releases/download/v0.15.0-beta/lnd-linux-amd64-v0.15.0-beta.tar.gz
-	source = lnd-LICENSE-v0.15.0-beta::https://raw.githubusercontent.com/lightningnetwork/lnd/v0.15.0-beta/LICENSE
+	source = https://github.com/lightningnetwork/lnd/releases/download/v0.15.1-beta/lnd-linux-amd64-v0.15.1-beta.tar.gz
+	source = lnd-LICENSE-v0.15.1-beta::https://raw.githubusercontent.com/lightningnetwork/lnd/v0.15.1-beta/LICENSE
 	validpgpkeys = E97A1AB6C77A1D2B72F50A6F90E00CCB1C74C611
 	validpgpkeys = 9FC6B0BFD597A94DBF09708280E5375C094198D8
 	validpgpkeys = 15E7ECF257098A4EF91655EB4CA7FE54A6213C91
@@ -20,7 +20,7 @@ pkgbase = lnd-bin
 	validpgpkeys = EB13A98091E8D67CDD7FC5A7E9FE7FE00AD163A4
 	validpgpkeys = E4D85299674B2D31FAA1892E372CBD7633C61696
 	validpgpkeys = 729E9D9D92C75A5FBFEEE057B5DD717BEF7CA5B1
-	sha512sums = 93a24ec7fba01c0ec8889b94277f55cef89e41ae5009b3db005c5625ed7cbeb2e7462229c5ff60ba1f133fe99938807885559bdfb63a26e9a65f5348a3984c58
+	sha512sums = ca9298a5bef69b0a66ccc9ec9981eab908a320cdbd8e7f82dafb42d7e6ac0502c2740b07ff0075057e14c4872167c2f0289117bc73e5e6ba70d4a554800ca89e
 	sha512sums = 49de7041d5c7448a8f5cc387e4e820eca2a87c02b70d5a38aa3823354d960843e93ca12bd8b66a13708937539da85b90328bd4c32575792f0aa6755a011ba4bb
 
 pkgname = lnd-bin
