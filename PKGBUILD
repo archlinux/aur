@@ -14,7 +14,7 @@ source=("${url}/releases/latest/download/Catppuccin-Latte-Green.zip"
          "${url}/releases/latest/download/Catppuccin-Latte-Mauve.zip"
          "${url}/releases/latest/download/Catppuccin-Latte-Peach.zip"
          "${url}/releases/latest/download/Catppuccin-Latte-Pink.zip"
-         "${url}/releases/latest/download//Catppuccin-Latte-Red.zip"
+         "${url}/releases/latest/download/Catppuccin-Latte-Red.zip"
          "${url}/releases/latest/download/Catppuccin-Latte-Teal.zip"
          "${url}/releases/latest/download/Catppuccin-Latte-Yellow.zip"
          "${url}/releases/latest/download/Catppuccin-Latte.zip")
