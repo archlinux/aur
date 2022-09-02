@@ -5,7 +5,7 @@
 # Thanks Nicholas Guriev <guriev-ns@ya.ru> for the initial patches!
 # https://github.com/mymedia2/tdesktop
 pkgname=telegram-desktop-dev
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -34,7 +34,6 @@ _commit="tag=v$pkgver"
 source=(
     "tdesktop::git+https://github.com/telegramdesktop/tdesktop#$_commit"
     "tgcalls_type_fix.diff"
-    "use_qt6_only.diff"
     # Here are all the repos. See the commands above for populating them
     "cmake::git+https://github.com/desktop-app/cmake_helpers.git"
     "codegen::git+https://github.com/desktop-app/codegen.git"
@@ -71,7 +70,6 @@ source=(
 )
 sha512sums=('SKIP'
             'e1328de1bf2dfc26a834aae855c9ee4734ff00e92f8c31fcfe633b0b5365456daa5ae1736a590a57889597f8703214829e0809d7e6d13e8fb02165c731b1ea88'
-            'd6569a4b9d77647f268ee09cfcbc78102165098cda3732938c8e89a37d3d92a65ecaac0af1ade6494d00b106a604bcd0de6722de162abf394912018cd3c06e13'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -156,9 +154,6 @@ prepare() {
     # patch -Np1 -i "$srcdir/my_beautiful.patch"
     cd "$srcdir/tdesktop/Telegram/ThirdParty/tgcalls"
     patch -Np1 -i "$srcdir/tgcalls_type_fix.diff"
-
-    cd "$srcdir/tdesktop/cmake"
-    patch -Np1 -i "$srcdir/use_qt6_only.diff"
     # Official package patches
 }
 
