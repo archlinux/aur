@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=cloudflared
-pkgver=2022.8.2
+pkgver=2022.8.4
 pkgrel=1
 pkgdesc='Command-line client for Cloudflare Tunnel'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -9,10 +9,9 @@ url='https://github.com/cloudflare/cloudflared'
 license=('Apache')
 depends=('glibc')
 makedepends=('git' 'go')
-conflicts=('cloudflared-bin')
 backup=("etc/$pkgname/config.yml")
 options=('!lto')
-_commit='e123bbe1c5fa2377c7e838cc9787449da317687d'
+_commit='075ac1acf1b79c3dd5281d94188fa131b167483b'
 source=(
   "$pkgname::git+$url.git#commit=$_commit"
   'config.yml'
