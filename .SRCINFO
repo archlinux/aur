@@ -1,0 +1,22 @@
+pkgbase = guglielmo
+	pkgdesc = Qt based FM / Dab tuner
+	pkgver = v0.3
+	pkgrel = 1
+	url = https://github.com/marcogrecopriolo/guglielmo
+	arch = any
+	license = GPL2
+	makedepends = make
+	makedepends = cmake
+	makedepends = git
+	depends = qwt
+	depends = fftw
+	depends = libsndfile
+	depends = libsamplerate
+	depends = faad2
+	depends = portaudio
+	depends = qt5-multimedia
+	optdepends = rtl-sdr: Receive radio via RTL-SDR
+	source = guglielmo::git+https://github.com/marcogrecopriolo/guglielmo.git#tag=v0.3
+	md5sums = SKIP
+
+pkgname = guglielmo
