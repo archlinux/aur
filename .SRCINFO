@@ -1,6 +1,6 @@
 pkgbase = fastfetch-git
 	pkgdesc = Like neofetch, but much faster because written in c
-	pkgver = 1.6.5.r15.g8f23a52
+	pkgver = 1.6.5.r18.g99f42d0
 	pkgrel = 1
 	url = https://github.com/LinusDierheimer/fastfetch
 	arch = x86_64
@@ -30,6 +30,7 @@ pkgbase = fastfetch-git
 	makedepends = ocl-icd
 	depends = glibc
 	optdepends = pciutils: GPU output
+	optdepends = libdrm: Improved AMD GPU output
 	optdepends = vulkan-icd-loader: GPU fallback
 	optdepends = wayland: Improved Wayland support (resolution + multi monitor)
 	optdepends = libxcb: Improved X11 support (resolution + multi monitor)

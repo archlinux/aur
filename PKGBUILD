@@ -1,7 +1,7 @@
 # Maintainer: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=1.6.5.r15.g8f23a52
+pkgver=1.6.5.r18.g99f42d0
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c"
 arch=("x86_64" "i686" "pentium4" "armv5" "armv6h" "armv7h" "aarch64")
@@ -35,6 +35,7 @@ makedepends=(
 )
 optdepends=(
   "pciutils: GPU output"
+  "libdrm: Improved AMD GPU output"
   "vulkan-icd-loader: GPU fallback"
   "wayland: Improved Wayland support (resolution + multi monitor)"
   "libxcb: Improved X11 support (resolution + multi monitor)" 
