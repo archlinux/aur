@@ -61,20 +61,20 @@ build() {
 package() {
   cd ${_pkgname}-${pkgver}
 
-  install -Dm 755 ${pkgname} -t "${pkgdir}/usr/bin"
+  install -Dm 755 ${_pkgname} -t "${pkgdir}/usr/bin"
   install -dm 755 "${pkgdir}/var/empty"
   install -Dm 644 "${srcdir}"/{*.service,*.socket} -t "${pkgdir}/usr/lib/systemd/system"
 
-  install -Dm 644 ${pkgname}.conf -t "${pkgdir}/etc"
-  install -Dm 644 EXAMPLE/INTERNET_SITE/${pkgname}.xinetd "${pkgdir}/etc/xinetd.d/${pkgname}"
-  install -Dm 644 RedHat/vsftpd.log "${pkgdir}/etc/logrotate.d/${pkgname}"
-  install -Dm 644 RedHat/vsftpd.pam "${pkgdir}/etc/pam.d/${pkgname}"
+  install -Dm 644 ${_pkgname}.conf -t "${pkgdir}/etc"
+  install -Dm 644 EXAMPLE/INTERNET_SITE/${_pkgname}.xinetd "${pkgdir}/etc/xinetd.d/${_pkgname}"
+  install -Dm 644 RedHat/vsftpd.log "${pkgdir}/etc/logrotate.d/${_pkgname}"
+  install -Dm 644 RedHat/vsftpd.pam "${pkgdir}/etc/pam.d/${_pkgname}"
   # TODO: check pam /etc/ftpusers files from debian and redhat, its linked
 
-  install -Dm 644 ${pkgname}.8 -t "${pkgdir}/usr/share/man/man8"
-  install -Dm 644 ${pkgname}.conf.5 -t "${pkgdir}/usr/share/man/man5"
+  install -Dm 644 ${_pkgname}.8 -t "${pkgdir}/usr/share/man/man8"
+  install -Dm 644 ${_pkgname}.conf.5 -t "${pkgdir}/usr/share/man/man5"
   install -Dm 644 BENCHMARKS BUGS Changelog FAQ INSTALL README README.ssl REFS \
-    REWARD SPEED TODO TUNING -t "${pkgdir}/usr/share/doc/${pkgname}"
+    REWARD SPEED TODO TUNING -t "${pkgdir}/usr/share/doc/${_pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
