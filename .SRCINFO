@@ -12,8 +12,10 @@ pkgbase = python-imexam
 	makedepends = python-setuptools-scm
 	makedepends = xpa
 	makedepends = python-sphinx-astropy
+	makedepends = python-matplotlib
 	makedepends = python-ginga
 	makedepends = python-photutils
+	makedepends = python-scipy
 	source = https://files.pythonhosted.org/packages/source/i/imexam/imexam-0.9.1.tar.gz
 	source = use_system_xpa.patch
 	source = add-tests-subdir-to-copy.patch
@@ -25,6 +27,7 @@ pkgname = python-imexam
 	depends = python>=3.6
 	depends = python-astropy>=3.0
 	depends = python-matplotlib
+	depends = python-scipy>=0.18
 	depends = xpa
 	optdepends = python-ginga: For Ginga viewer support
 	optdepends = ds9: For DS9 viewer support
@@ -33,3 +36,4 @@ pkgname = python-imexam
 
 pkgname = python-imexam-doc
 	pkgdesc = Documentation for Python imexam module
+	arch = any
