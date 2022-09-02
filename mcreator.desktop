@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=MCreator
+Comment=Make Minecraft Java Edition mods, Bedrock Edition Add-Ons, and data packs using visual graphical programming or integrated IDE
+Categories=Development;
+Keywords=MCreator;screen;display;share;
+Exec=/bin/bash -c "cd /opt/mcreator/ && ./mcreator.sh"
+Icon=/opt/mcreator/logo.png
+Terminal=false
+StartupNotify=true

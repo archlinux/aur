@@ -1,0 +1,5 @@
+*
+!.gitignore
+!.SRCINFO
+!mcreator.desktop
+!PKGBUILD
