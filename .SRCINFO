@@ -1,9 +1,9 @@
 pkgbase = asciidoc-static-pages
 	pkgdesc = asciidoc document builder
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/d7z-team/asciidoc-static-pages
-	install = asciidoc-static-pages.install.sh
+	install = install.sh
 	arch = x86_64
 	arch = i686
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = asciidoc-static-pages
 	makedepends = musl
 	makedepends = binutils
 	depends = asciidoctor
-	provides = asciidoc-static-pages=2.0.0
+	provides = asciidoc-static-pages=2.0.1
 	conflicts = asciidoc-static-pages
 	source = asciidoc-static-pages::git+https://github.com/d7z-team/asciidoc-static-pages.git
 	sha256sums = SKIP
