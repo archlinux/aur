@@ -1,7 +1,7 @@
 pkgbase = master_me
-	pkgdesc = A modern graphical patchbay for JACK
+	pkgdesc = Automatic audio mastering plugin for live-streaming, podcasting and internet radio stations.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trummerschlunk/master_me
 	arch = x86_64
 	groups = lv2-plugins
@@ -11,15 +11,11 @@ pkgbase = master_me
 	license = GPL3
 	makedepends = faustpp
 	makedepends = libglvnd
-	makedepends = libpulse
-	makedepends = sdl2
 	depends = gcc-libs
 	depends = glibc
 	depends = libxcursor
 	depends = libxrandr
 	optdepends = jack: stand-alone JACK application
-	optdepends = libpulse: stand-alone JACK application
-	optdepends = sdl2: stand-alone JACK application
 	source = https://github.com/trummerschlunk/master_me/releases/download/1.0.0/master_me-1.0.0.tar.xz
 	sha256sums = 97f3d640eadcdfee7946a40276f64620b1622235e8dc5f704617ccb599459bc6
 
