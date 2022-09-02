@@ -55,7 +55,7 @@ _status() {
 
 # Print status messages to stdout. All arguments form one status message.
 _status_error() {
-  _status "$*" >&2
+  _status "$@" >&2
 }
 
 # Generate `$_grub_cfg` if both `$_grub_cfg` and `$_default_grub` use this
