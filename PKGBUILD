@@ -1,8 +1,8 @@
 # Maintainer: DeedleFake <deedlefake@users.noreply.github.com>
 
 pkgname=trayscale
-pkgver=0.3.3
-pkgrel=3
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="An unofficial GUI wrapper for the Tailscale CLI client."
 arch=(i686 x86_64)
 url="https://github.com/DeedleFake/trayscale"
@@ -12,7 +12,7 @@ makedepends=('go>=1.18' 'gobject-introspection')
 optdepends=('tailscale: provides daemon that manages connection')
 provides=(trayscale)
 source=("https://github.com/DeedleFake/trayscale/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c71cb03dc324486985add40258c781dddbfa354fa58419349c045feb58939075')
+sha256sums=('308787279da93b4cab1b0b46ad9517f99351ecb5f749116855db29f25e5d1178')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -24,5 +24,4 @@ package() {
 	install -D trayscale "$pkgdir/usr/bin/trayscale"
 	install -Dm644 com.tailscale-tailscale.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.tailscale-tailscale.png"
 	install -Dm644 dev.deedles-trayscale.desktop "$pkgdir/usr/share/applications/dev.deedles-trayscale.desktop"
-	install -Dm644 dev.deedles.trayscale.policy "$pkgdir/usr/share/polkit-1/actions/dev.deedles.trayscale.policy"
 }
