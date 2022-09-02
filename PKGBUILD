@@ -18,15 +18,15 @@ pkgname=(pipewire-full-git
          pipewire-full-ffmpeg-git
          pipewire-full-roc-git
          )
-pkgver=0.3.56.r23.g38b3d027
+pkgver=0.3.57.r4.gf9574355
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 license=(MIT)
 arch=(x86_64)
 makedepends=(git meson doxygen python-docutils graphviz ncurses
-             readline libsndfile alsa-lib dbus rtkit libpulse
-             webrtc-audio-processing libusb bluez-libs
+             readline systemd libsndfile alsa-lib dbus rtkit libpulse
+             glib2 webrtc-audio-processing libusb bluez-libs
              sbc libldac libfreeaptx libfdk-aac opus
              lilv libx11 libxfixes libcanberra
              avahi openssl
@@ -199,7 +199,7 @@ package_pipewire-full-jack-git() {
 package_pipewire-full-pulse-git() {
   pkgdesc+=" - PulseAudio replacement"
   depends=(pipewire-session-manager pipewire-full-git
-           libpipewire-$_ver.so libpulse.so
+           libpipewire-$_ver.so libpulse.so libglib-2.0.so
            libavahi-{client,common}.so
            )
   provides=(pipewire-pulse pulseaudio pulseaudio-bluetooth)
