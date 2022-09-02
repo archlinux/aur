@@ -1,7 +1,7 @@
 pkgbase = obs-nvfbc
 	pkgdesc = OBS Studio source plugin for NVIDIA FBC API
-	pkgver = 0.0.6
-	pkgrel = 2
+	pkgver = 0.0.7
+	pkgrel = 1
 	url = https://obsproject.com/forum/resources/obs-nvfbc.796/
 	arch = x86_64
 	license = GPL2
@@ -10,7 +10,7 @@ pkgbase = obs-nvfbc
 	depends = obs-studio<28
 	optdepends = nvidia-utils-nvlax: enable NvFBC on GeForce cards
 	options = debug
-	source = git+https://gitlab.com/fzwoch/obs-nvfbc.git#tag=v0.0.6
+	source = git+https://gitlab.com/fzwoch/obs-nvfbc.git#tag=v0.0.7
 	sha256sums = SKIP
 
 pkgname = obs-nvfbc
