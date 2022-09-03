@@ -1,6 +1,6 @@
 pkgbase = python-pysimplegui
 	pkgdesc = Super-simple to create custom GUI
-	pkgver = 4.57.0
+	pkgver = 4.60.3
 	pkgrel = 1
 	url = https://github.com/MikeTheWatchGuy/PySimpleGUI
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-pysimplegui
 	makedepends = python-setuptools
 	depends = python
 	depends = tk
-	source = python-pysimplegui-4.57.0.tar.gz::https://pypi.python.org/packages/source/P/PySimpleGUI/PySimpleGUI-4.57.0.tar.gz
-	sha256sums = f8372bbfe7ac9ed848ef80052cae3bb12daa238b0fbe286e4252f9e19a37d913
+	source = python-pysimplegui-4.60.3.tar.gz::https://pypi.python.org/packages/source/P/PySimpleGUI/PySimpleGUI-4.60.3.tar.gz
+	sha256sums = 75ec46694dc975c0e46be8c57a774e038433b53095821d67be3b221aca3fd68d
 
 pkgname = python-pysimplegui
