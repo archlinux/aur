@@ -1,5 +1,5 @@
-# Maintainer: TommyTran732
-# https://gitlab.manjaro.org/packages/extra/pamac
+# Maintainer: TommyTran732 <contact@tommytran.io>
+# Contributor: Frederic Bezies <fredbezies@gmail.com>, Cassandra Watergate (saltedcoffii) <cassandrajwatergate@gmail.com>, LSUtigers3131
 
 pkgname=pamac-flatpak
 pkgver=10.4.2
