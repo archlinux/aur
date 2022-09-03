@@ -1,7 +1,11 @@
 # Maintainer: <me at auoeke dot net>
+_get() {
+    curl https://api.github.com/repos/lapce/lapce/releases/tags/nightly -s | awk -F '"' '/"'"$1"'":/{print $4}'
+}
+
 pkgname=lapce-nightly-bin
 pkgver=20220903
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightning-fast and powerful code editor'
 arch=(x86_64)
 url=https://lapce.dev
@@ -15,26 +19,29 @@ depends=(
     libxcb
     libxkbcommon
 )
-makedepends=(jq)
 options=('!lto')
 source=(
     lapce-$pkgver.tar.gz::https://github.com/lapce/lapce/releases/download/nightly/Lapce-linux.tar.gz
-    https://raw.githubusercontent.com/lapce/lapce/master/extra/{images/logo.png,linux/dev.lapce.lapce.{desktop,metainfo.xml}}
+    https://raw.githubusercontent.com/lapce/lapce/$(_get target_commitish)/extra/{images/logo.png,linux/dev.lapce.lapce.{desktop,metainfo.xml}}
 )
 sha256sums=(
     'SKIP'
-    'b715c6d069e7cb9fd76ebe398c0251de9f218a44876c75015b9e969c9e70ba23'
-    '07e6b1b685c88b8f23919f58f9e2210a0357836b12026b5a04b0c18b4acfd34a'
-    'ea9a83d6612ac4a3a315577b3e55ec761420ea62af1ed35936a5421891fba0ff'
+    'SKIP'
+    'SKIP'
+    'SKIP'
 )
 
 pkgver() {
-    date -d $(curl https://api.github.com/repos/lapce/lapce/releases/tags/nightly | jq -r .published_at) +%Y%m%d
+    date -d $(_get published_at) +%Y%m%d
     #"Lapce/lapce" -V | cut -d - -f 2
 }
 
 prepare() {
     sed -i -e "s/Exec=lapce/Exec=lapce-nightly/" -e "s/Name=Lapce/Name=Lapce nightly/" dev.lapce.lapce.desktop
+}
+
+check() {
+    Lapce/lapce -V
 }
 
 package() {
