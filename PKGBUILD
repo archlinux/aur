@@ -1,5 +1,5 @@
-# Maintainer: TommyTran732
-# Contributor: Frederic Bezies <fredbezies@gmail.com> 
+# Maintainer: TommyTran732 <contact@tommytran.io>
+# Contributor: Frederic Bezies <fredbezies@gmail.com>, Cassandra Watergate (saltedcoffii) <cassandrajwatergate@gmail.com>, LSUtigers3131
 
 pkgname=libpamac-flatpak
 _pkgname=libpamac
