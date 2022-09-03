@@ -24,7 +24,7 @@ md5sums=('a81f1923b14d482689ca2e4b86e04427')
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    sed -i "/ignore:distutils/a \   ignore:the imp module is deprecated:DeprecationWarning" setup.cfg
+    sed -i "/ignore:distutils/a \	ignore:the imp module is deprecated:DeprecationWarning" setup.cfg
     sed -i "/Exec/a Icon=ginga" ginga.desktop
 }
 
