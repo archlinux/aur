@@ -2,10 +2,10 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-mainline-um5302ta
-pkgver=6.0rc2
+pkgver=6.0rc3
 pkgrel=1
 pkgdesc='Linux'
-_srctag=v6.0-rc2
+_srctag=v6.0-rc3
 url="https://git.kernel.org/torvalds/h/$_srctag"
 arch=(x86_64)
 license=(GPL2)
