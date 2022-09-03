@@ -1,0 +1,14 @@
+pkgbase = queercat-git
+	pkgver = r20.c626e13
+	pkgrel = 1
+	url = https://github.com/Elsa002/queercat
+	arch = any
+	license = unknown
+	makedepends = gcc
+	makedepends = git
+	provides = queercat
+	conflicts = queercat
+	source = queercat-git::git+https://github.com/Elsa002/queercat
+	sha512sums = SKIP
+
+pkgname = queercat-git
