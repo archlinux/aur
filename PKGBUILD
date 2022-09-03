@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=amberol
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Plays music, and nothing else"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('libadwaita' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gst-plug
 makedepends=('meson' 'cargo')
 checkdepends=('appstream-glib' 'reuse')
 source=($url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('76cd279f807b014e9811504c56b0c59d7b2ec4da85682e7935dc3884f09346fefd619b0b6f1f34e581b6ff2fd601cd366303a73f9188fd778d5cb7a0b19b4cb1')
+b2sums=('5373b207e3c69e3e9f231ec1fef296046f158e49a202277e5f4188de7d5daaa75cd465e9f48e5c004a3a478ce9dee9b8e4ee09578f90f3b29018ea92126b385c')
 
 build() {
   arch-meson --buildtype release "$pkgname-$pkgver" build
