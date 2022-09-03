@@ -1,14 +1,14 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-compute-runtime-git
-pkgver=22.20.23198.r107.gb3d9893df
+pkgver=22.35.24055.r102.gc8975e14f
 pkgrel=1
 pkgdesc='Intel(R) Graphics Compute Runtime for oneAPI Level Zero and OpenCL(TM) Driver (git version)'
 arch=('x86_64')
 url='https://01.org/compute-runtime/'
 license=('MIT')
-depends=('intel-gmmlib' 'intel-graphics-compiler')
-makedepends=('git' 'cmake' 'igsc' 'libva' 'level-zero-headers')
+depends=('intel-gmmlib' 'intel-graphics-compiler-git')
+makedepends=('git' 'cmake' 'igsc' 'libva' 'level-zero-headers-git' 'python')
 optdepends=('libva: for cl_intel_va_api_media_sharing'
             'libdrm: for cl_intel_va_api_media_sharing')
 provides=('intel-compute-runtime' 'opencl-driver' 'level-zero-driver')
@@ -30,13 +30,13 @@ build() {
         -DNEO_OCL_VERSION_MINOR="$(echo "$pkgver" | cut -d '.' -f2)" \
         -DNEO_VERSION_BUILD="$(echo "$pkgver" | cut -d '.' -f3)" \
         -DSUPPORT_DG1='ON' \
-        -DSKIP_UNIT_TESTS='1' \
         -Wno-dev
     make -C build
 }
 
 package() {
     make -C build DESTDIR="$pkgdir" install
+    install -D -m755 build/bin/libocloc.so -t "${pkgdir}"/usr/lib/intel-opencl
     install -D -m644 compute-runtime/LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
     ln -s "$(find "${pkgdir}/usr/lib" -regex '.*libze_intel_gpu.so.[0-9]*' -exec basename {} +)" "${pkgdir}/usr/lib/libze_intel_gpu.so"
 }
