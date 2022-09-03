@@ -1,39 +1,63 @@
 #!/usr/bin/env sh
+# vim: syntax=sh
 
-app_name='notepadpp'
-exe_name='notepad++.exe'
+if [ -n "${SH_TRACE}" ]; then
+    # shellcheck disable=2016
+    PS4="$(printf '%b%s%b:\n' '\033[31m' 'L${LINENO}' '\033[0m')"
+    export PS4
+    set -x
+fi
 
-pkgdir="/usr/share/${app_name}"
-localdir="${HOME}/.local/share/${app_name}"
-configdir="${HOME}/.config/${app_name}"
-cachedir="${HOME}/.cache/${app_name}"
+readonly appName='notepadpp'
+readonly exeName='notepad++.exe'
 
-for folder in "${localdir}" "${cachedir}" "${configdir}"; do
-    if [ ! -d "${folder}" ]; then
-        mkdir -p "${folder}"
-    fi
-done
+readonly pkgDir="/usr/share/${appName}"
+readonly localDir="${HOME}/.local/share/${appName}"
+readonly configDir="${HOME}/.config/${appName}"
+readonly cacheDir="${HOME}/.cache/${appName}"
+
+# shellcheck disable=2155
+readonly uid="$(id -u)"
+# shellcheck disable=2155
+readonly gid="$(id -g)"
 
 cleanup() {
-    until umount "${localdir}"; do
-            sleep 5
+    while umount "${localDir}" 2>&1 | grep -q 'busy\.$' ; do
+        sleep 2
     done
 }
 
-if mount | grep -q "${localdir}"; then
+# Create necessary directories
+for appDir in "${localDir}" "${cacheDir}" "${configDir}"; do
+    if [ ! -d "${appDir}" ]; then
+        mkdir -p "${appDir}"
+    fi
+done
+
+# Unmount fuse-overlayfs just in case
+if mount | grep -q "${localDir}"; then
     cleanup
 fi
 
-if ! fuse-overlayfs -o lowerdir="${pkgdir}" -o upperdir="${configdir}" -o workdir="${cachedir}" "${localdir}"; then
-    echo "ERROR: cannot mount fuse-overlayfs for ${app_name}"
+# Mount the necessary directories with id mapping
+if ! fuse-overlayfs -o squash_to_uid="${uid}" -o squash_to_gid="${gid}" \
+        -o lowerdir="${pkgDir}" -o upperdir="${configDir}" -o workdir="${cacheDir}" \
+        "${localDir}"; then
+    print 'Mount failed: cannot mount fuse-overlayfs\n' >&2
     exit 1
 fi
 
 trap 'cleanup' INT TERM EXIT
 
-if [ -n "${1}" ]; then
-    argpath="Z:\\$(readlink -f "${1}" | sed 's|/|\\\\|g')"
+# Use default WINEPREFIX - usually ~/.wine
+unset WINEPREFIX
+# Don't prompt to wine-mono and wine-gecko install - neither is needed
+WINEDLLOVERRIDES="${WINEDLLOVERRIDES};mscoree=d;mshtml=d"
+# If WINEDEBUG is explicitly set as env var use it
+if [ -z "${WINEDEBUG}" ]; then
+    WINEDEBUG=-all
 fi
 
-unset WINEPREFIX
-WINEDLLOVERRIDES="${WINEDLLOVERRIDES};mscoree=d;mshtml=d" WINEDEBUG=-all wine "${localdir}/${exe_name}" "${argpath}"
+export WINEPREFIX WINEDLLOVERRIDES WINEDEBUG
+
+wine "${localDir}/${exeName}" "${@}"
