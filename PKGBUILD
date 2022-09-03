@@ -20,5 +20,5 @@ sha256sums_i686=('a07ff0b7d12f1183b974ede47d0a1cf46255dc58646f8465ccf6370f3a0e41
 package() {
     cd "${pkgdir}"
     # this extracts all into the pkgdir
-    tar xf "${srcdir}/data.tar.xz"
+    tar xf "${srcdir}/data.tar.zst"
 }
