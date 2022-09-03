@@ -1,13 +1,13 @@
 pkgbase = m3dviewer
 	pkgdesc = Viewer for mozaik3D animations
-	pkgver = 2.0.326
+	pkgver = 2.0.365
 	pkgrel = 1
 	url = https://www.mozaweb.com/mozaik3D
 	arch = x86_64
 	license = unknown
 	depends = glu
 	depends = gtk2
-	source = https://download.mozaweb.com/m3dviewer/m3dViewer_2.0.326_x64.tar.gz
-	sha256sums = 8df91112fc0cad3fdf66dee5f4d787eab10d9fa0f60981c8b224f5623a058e30
+	source = https://download.mozaweb.com/m3dviewer/m3dViewer_2.0.365_x64.tar.gz
+	sha256sums = 049bd8e2360dc2085d329c7ab37a8136075cf38d0e943b859186bc46ac20719c
 
 pkgname = m3dviewer
