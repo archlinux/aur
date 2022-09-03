@@ -16,8 +16,8 @@ depends=(
 )
 
 ## BEGIN generated variables
-pkgver=2022.08.20.edge.r19.gf4be03d39a
-sha1sums=('01395902823396cdfb29ef64d4afb08ab53d522e')
+pkgver=2022.08.20.edge.r20.gf11dc9ab5c
+sha1sums=('5b55141b15c819ca8cee08e6aacfdcf37c473983')
 
 ## END generated variables
 
