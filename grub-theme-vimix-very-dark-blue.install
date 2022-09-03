@@ -60,9 +60,22 @@ _status_error() {
 
 # Generate `$_grub_cfg` if both `$_grub_cfg` and `$_default_grub` use this
 # theme. This covers the case when uninstalling and reinstalling the package
-# instead of upgrading it.
+# instead of upgrading it. Also greet the user with setup instructions if this
+# theme is not already in use. This mostly applies to first-time users of this
+# theme.
 post_install() {
   _grub_mkconfig_smart
+
+  # Greet the user with setup instructions if this theme is not already in use.
+  # This mostly applies to first-time users of this theme.
+  if ! _is_use_theme; then
+    _status "The following instructions setup GRUB to use this theme."
+    _status "Edit the following line in /etc/default/grub:"
+    _status 'GRUB_THEME="'`
+        `'/usr/share/grub/themes/grub-theme-vimix-very-dark-blue/theme.txt"'
+    _status "Update GRUB by running the following command:"
+    _status "grub-mkconfig -o /boot/grub/grub.cfg"
+  fi
 }
 
 # Generate `$_grub_cfg` if both `$_grub_cfg` and `$_default_grub` use this
