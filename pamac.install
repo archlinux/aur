@@ -17,6 +17,6 @@ post_install() {
 
 post_remove() {
   # disable systemd timers
-  rm -f /etc/systemd/system/multi-user.target.wants/pamac-cleancache.timer
-  #rm -f /etc/systemd/system/multi-user.target.wants/pamac-mirrorlist.timer
+  systemctl disable --now pamac-cleancache.timer
+  #systemctl disable --now pamac-mirrorlist.timer
 }

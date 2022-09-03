@@ -5,7 +5,7 @@
 ENABLE_APPINDICATOR=1
 
 pkgname=pamac-flatpak
-pkgver=10.2.0
+pkgver=10.4.2
 pkgrel=1
 _pkgfixver=$pkgver
 
@@ -14,18 +14,13 @@ arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/pamac"
 license=('GPL3')
 depends=('libnotify' 'libpamac-flatpak' 'libhandy' 'git' 'fakeroot' 'pkgconf')
-makedepends=('gettext' 'itstool' 'vala>=0.45' 'meson' 'ninja' 'gobject-introspection' 'xorgproto' 'asciidoc')
-conflicts=('pamac' 'pamac-cli' 'pamac-gtk' 'pamac-qt' 'pamac-classic' 'pamac-aur' 'pamac-aur-git' 'pamac-all' 'pamac-all-git' 'pamac-flatpak-gnome')
+makedepends=('gettext' 'itstool' 'vala>=0.45' 'meson' 'gobject-introspection' 'xorgproto' 'asciidoc')
+conflicts=('pamac' 'pamac-cli' 'pamac-gtk' 'pamac-qt' 'pamac-classic' 'pamac-aur' 'pamac-aur-git' 'pamac-all' 'pamac-all-git' 'pamac-flatpak-gnome' 'pacmac-nosnap')
 provides=('pamac')
 options=(!emptydirs)
 install=pamac.install
 source=("pamac-$pkgver.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.gz") 
-sha256sums=('d553ead69b27b94f039816e7faca462b01883778db39a55cc6cd579bd22a7b4b')
-
-if [ "${ENABLE_APPINDICATOR}" = 1 ]; then
-  depends+=('libappindicator-gtk3')
-  define_meson+=' -Denable-appindicator=true'
-fi
+sha256sums=('8b5b2298e16bcfc6fbdfbf2e2cd77cb9cd769d9faa503dd8fec35c18f37b52589ffda670dc9299a8f4962f039ba870007b4601a2610ac0fc298f64a4f8e67eeb')
 
 prepare() {
   cd "$srcdir/pamac-v$pkgver"
@@ -37,11 +32,19 @@ build() {
   cd "$srcdir/pamac-v$pkgver"
   mkdir -p builddir
   cd builddir
-  meson --prefix=/usr --sysconfdir=/etc -Denable-flatpak=true $define_meson --buildtype=release
+  meson --prefix=/usr --sysconfdir=/etc --buildtype=release -Denable-fake-gnome-software=true
+  # build
   ninja
 }
 
 package() {
   cd "$srcdir/pamac-v$pkgver/builddir"
+
   DESTDIR="$pkgdir" ninja install
+  # remove pamac-gnome-integration
+  rm "$pkgdir/usr/bin/gnome-software"
+  rm "$pkgdir/usr/share/applications/org.gnome.Software.desktop"
+  rm "$pkgdir/usr/share/dbus-1/services/org.gnome.Software.service"
+
 }
+# vim:set ts=2 sw=2 et:
