@@ -2,7 +2,7 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.11.36.r0.gcb59480
+pkgver=3.11.43.r2.gc40c8aa
 pkgrel=1
 pkgdesc="Micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
@@ -10,7 +10,7 @@ url="https://github.com/Plagman/gamescope"
 license=("custom:BSD-2-Clause")
 depends=(
     # gamescope
-    "libxcomposite" "libxtst" "libxres" "sdl2" "pipewire" "libliftoff"
+    "libxcomposite" "libxtst" "libxres" "sdl2" "pipewire"
     # wlroots
     "libdrm" "libxkbcommon" "libinput" "pixman" "xorg-xwayland" "xcb-util-renderutil" "xcb-util-wm" "xcb-util-errors" "seatd"
 )
@@ -19,8 +19,10 @@ provides=($_pkgname "steamcompmgr")
 conflicts=($_pkgname "steamcompmgr")
 source=("$_pkgname::git+https://github.com/Plagman/gamescope.git"
         "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
+        "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
         "git+https://github.com/nothings/stb.git")
 sha512sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP')
 
@@ -44,7 +46,7 @@ prepare() {
 
     git submodule init
     git config submodule.subprojects/wlroots.url "$srcdir/wlroots"
-    git config submodule.subprojects/libliftoff.active "false"
+    git config submodule.subprojects/libliftoff.url "$srcdir/libliftoff"
     git submodule update
 
     # make stb.wrap use our local clone
@@ -55,7 +57,7 @@ prepare() {
 build() {
 
     arch-meson "$srcdir/$_pkgname" build \
-        --force-fallback-for=wlroots,stb \
+        --force-fallback-for=wlroots,libliftoff,stb \
         -Dpipewire=enabled
     ninja -C build
 }
@@ -67,13 +69,7 @@ check() {
 
 package() {
 
-    DESTDIR="$pkgdir" ninja -C build install
-
-    # Delete library files that were linked statically
-    rm -rfv "$pkgdir/usr/include/wlr" "$pkgdir/usr/lib/libwlroots.a" "$pkgdir/usr/lib/libwlroots*" "$pkgdir/usr/lib/pkgconfig/wlroots.pc"
-
-    # Delete empty directories
-    find "$pkgdir" -type d -empty -print -delete
+    meson install -C build --skip-subprojects --destdir "$pkgdir"
 
     cd "$srcdir/$_pkgname"
 
