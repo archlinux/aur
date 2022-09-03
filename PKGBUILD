@@ -19,7 +19,10 @@ source=('http://download.tuxfamily.org/ffdiaporama/Packages/Stable/ffdiaporama_b
 md5sums=('f9f46277153cf49f6947973778516adb')
 
 prepare() {
-    patch ${srcdir}/ffDiaporama/src/ffDiaporama/wgt_QMultimediaBrowser/QCustomFolderTable.cpp ${startdir}/patchfile.patch
+    #cd "$pkgname-pkgver"
+    cd ffDiaporama
+    patch --forward --strip=1 --input="${startdir}/patchfile.patch"
+    #patch ${srcdir}/ffDiaporama/src/ffDiaporama/wgt_QMultimediaBrowser/QCustomFolderTable.cpp ${startdir}/patchfile.patch
 }
 
 build() {
