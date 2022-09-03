@@ -1,3 +1,11 @@
+2022-09-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.3.0.3-1:
+    ASF's internal HTML parsing module was rebased on top of new major version. This is pretty big update, and while we thoroughly tested this against regressions, please let us know if you find anything unusual not working as expected (@JustArchi).
+    Added workaround against apparently-not-so-rare Steam issue which caused ASF to cache invalid packages data. ASF will now cache Steam packages data for no longer than a week, so removing ASF.db manually should no longer be required in any circumstance (@JustArchi).
+    Enhanced addlicense command to recognize Fail/AlreadyPurchased and Fail/RateLimited (subIDs only for the second). ASF will now skip requests to Steam if it determines that it already owns given apps/packages, which makes it possible to supply a huge "activation list", and activate only what's needed from it, without tripping rate limits on Steam side (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2022-08-06 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.2.8.4-1:
     Fixed regression introduced in previous release that rarely could affect HTML parsing on a few pages (@JustArchi).
