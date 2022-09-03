@@ -1,0 +1,21 @@
+pkgbase = anarchlinux-baseline
+	pkgdesc = Binary package for 'Anarch Linux' (Anarch Linux's not Arch Linux) baseline image.
+	pkgver = 2022.09.03
+	pkgrel = 1
+	url = https://gitlab.archlinux.org/tallero/archiso/-/issues/3
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	license = AGPL3
+	checkdepends = shellcheck
+	makedepends = anarchiso
+	makedepends = git
+	makedepends = gnupg
+	makedepends = systemd
+	optdepends = archiso-profiles
+	provides = archlinux-baseline
+	conflicts = archlinux-baseline
+	source = run_mkarchiso.sh
+	sha256sums = SKIP
+
+pkgname = anarchlinux-baseline
