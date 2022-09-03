@@ -1,0 +1,15 @@
+pkgbase = python-bottombar
+	pkgdesc = Context manager that prints a status line at the bottom of a terminal window
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/evalf/bottombar
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-flit-core
+	makedepends = python-install
+	depends = python
+	source = https://pypi.org/packages/source/b/bottombar/bottombar-1.0.tar.gz
+	sha512sums = 7984bfff6d93e298c1320f76fe6a04243a4e5fcf5425932d5a8f67eeed1b1ad7300da7d43cc09db6b0b79dfeb726508f59283613baac71d3cbf4c3530451de31
+
+pkgname = python-bottombar
