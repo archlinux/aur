@@ -1,6 +1,6 @@
 # Maintainer: Manel Castillo Giménez
 pkgname="clavis"
-pkgver="1.0.3"
+pkgver="1.1.0"
 pkgrel="1"
 pkgdesc="An easy to use Password Manager."
 arch=("x86_64")
@@ -28,7 +28,7 @@ package(){
   fi
 
   cd ${srcdir}/${_gitname}
-  git checkout main
+  git checkout v1.1.0
 
   echo "Git checkout done"
 
