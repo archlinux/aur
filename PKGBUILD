@@ -2,7 +2,7 @@
 
 pkgname=python-adafruit-circuitpython-st7735
 _pypi_pkgname=adafruit-circuitpython-st7735
-pkgver=1.2.4
+pkgver=1.2.7
 pkgrel=0
 pkgdesc="CircuitPython library for SSD1306 OLED displays"
 arch=('armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python-pip')
 depends=('python' 'python-adafruit-blinka-displayio')
 optdepends=()
 source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('f3ffde2c62cd55b93f02c59de393e3af81c8500a9c5b7fe093d75c3d2dc4a0bf')
+sha256sums=('0b5ec99a56dc626d4491a32d03d832890d66bb46453eb84e5b4a273d4f357075')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
