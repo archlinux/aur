@@ -1,0 +1,13 @@
+pkgbase = python-py-eddy-tracker-sample
+	pkgdesc = Py-Eddy-Tracker samples
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/AntSimi/py-eddy-tracker-sample
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	source = py-eddy-tracker-sample-0.1.0.tar.gz::https://github.com/AntSimi/py-eddy-tracker-sample/archive/v0.1.0.tar.gz
+	sha512sums = f48f80f869705ec426c033738b5b41c1e88a39c037159c62a9952d320a658acbeb6d5ae208f17e63ab5835636dcb8655511aa99e3bf1b3d0afddbf2228034440
+
+pkgname = python-py-eddy-tracker-sample
