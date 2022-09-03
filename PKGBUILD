@@ -1,6 +1,6 @@
 # Maintainer: René Wagner <rwagner at rw-net dot de>
 pkgname=art-rawconverter-git
-pkgver=r10139_9415f259d
+pkgver=r10143_9b182e156
 pkgrel=1
 pkgdesc="Rawconverter ART including blackfoxx-Theme built from latest sources"
 arch=('i686' 'x86_64' 'aarch64')
@@ -24,14 +24,17 @@ build() {
 	mkdir -p "$srcdir/${pkgname}_build"
 	cd "$srcdir/${pkgname}_build"
 
- 	cmake "../${pkgname}_src" \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCACHE_NAME_SUFFIX="-git" \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DPROC_TARGET_NUMBER=2 \
-    -DWITH_LTO="ON" \
-	-DENABLE_LIBRAW="ON" \
-	-DENABLE_MIMALLOC="ON"
+	cmake "../${pkgname}_src" \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCACHE_NAME_SUFFIX="-git" \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DPROC_TARGET_NUMBER=2 \
+		-DWITH_LTO="ON" \
+		-DENABLE_LIBRAW="ON" \
+		-DENABLE_MIMALLOC="ON" \
+		-DENABLE_OCIO="ON" \
+		-DBUILD_SHARED="ON"
+
  	make
 }
 
