@@ -1,12 +1,12 @@
 # Maintainer: Mckol <mckol363@gmail.com>
 
 pkgname=queercat-git
-pkgver=r20.c626e13
+pkgver=r24.551c199
 pkgrel=1
 pkgdesc="A version of lolcat with options for some lgbtq+ flags."
 arch=('any')
 url="https://github.com/Elsa002/queercat"
-license=('unknown')
+license=('Unlicense')
 depends=()
 makedepends=('gcc' 'git')
 provides=("${pkgname%-git}")
