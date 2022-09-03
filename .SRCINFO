@@ -1,7 +1,7 @@
 pkgbase = scrutiny-bin
 	pkgdesc = Hard Drive S.M.A.R.T Monitoring, Historical Trends & Real World Failure Thresholds
 	pkgver = 0.5.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/AnalogJ/scrutiny
 	install = scrutiny.install
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = scrutiny-bin
 	sha256sums = 9bbe705b34bef7f3c51ad9d0795e8b61ad95b3b38b0fc6c7af64f0cda96d5a9d
 	sha256sums = d5a9f3ab0246bf14dff3c4becd2532c82a406ef1fb71da3d6e30b6eb0df7cac7
 	sha256sums = 4e6b3abd6555423c124436279d37407e5f5cd077e587bd8c4f84d00085827fd4
-	sha256sums = 1092990c80080ddf56587310d8993f82db49ddcbd0e2948f2ab3fea694fc7887
+	sha256sums = 5ea2fa402bbb7b7349d24de615b14d1c2a2adfaa2faee40d851166737d82ad91
 	sha256sums = e487c741ee1c3798507af7fc0c5d5ea3c5f673464169eb6192579dba097fc6e6
 	sha256sums = bb30677b6ed77590124d92eb133d3a9ab73b7f812b8c91b6bb49786cee20ddde
 	source_x86_64 = https://github.com/AnalogJ/scrutiny/releases/download/v0.5.0/scrutiny-web-linux-amd64
