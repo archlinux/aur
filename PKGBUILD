@@ -1,31 +1,35 @@
 # Maintainer: Dmitry Valter <`echo ZHZhbHRlciA8YXQ+IHByb3Rvbm1haWwgPGRvdD4gY29tCg== | base64 -d`>
 
 pkgname=drawio-desktop
-pkgver=20.2.3
+pkgver=20.2.8
 pkgrel=1
 pkgdesc='Diagram drawing application built on web technology'
 arch=('any')
 url='https://github.com/jgraph/drawio-desktop'
 license=('Apache')
-depends=(electron18 libnotify shared-mime-info)
+depends=(electron19 libnotify shared-mime-info)
 makedepends=(yarn ant 'nodejs>=12')
 options=('!strip')
 source=("drawio-$pkgver.tar.gz::https://github.com/jgraph/drawio/archive/v$pkgver.tar.gz"
         "drawio-desktop-$pkgver.tar.gz::https://github.com/jgraph/drawio-desktop/archive/v$pkgver.tar.gz"
         "drawio.xml")
-sha512sums=('2c257934b232e75a0ebd811d57768766cdbfba9f83ec79fdd090bcf2cd91417cee14984b75c4ef3105764a5ff9b6ef3138e6795a0ed782739280e013c22adf09'
-            '4dcd5ac69398e06d78d4db31e119fa3c0f74e2b3c3734762e5484a93bd92cd093284cebb8990f8032e7e1bc05d05450d9ca4c3818494b5fc8a824c670f1ac65b'
+sha512sums=('877081969cc739d51409aa72352bbbe79f64b387ef9657a34e9660d143cf695061e77bc1770a8b38144422082b4f42b9f679149ee96356feb9fd62a7d38b7e2c'
+            '8b2c2d90631725495d0be94182a9e83063fa6a4aba5233ee89937107dd12e97c17780c938de248321b8fa879c722e0349fb006a1e54507b8c6ddcd6938587bd3'
             '8899108b4112f065173a077ca68d4d915780bcc993c69924098e134fa05338a20cb0391720b7b45c27071f789fbe5a6a02228dd633570e91fb4482082c480539')
 
 build() {
   cd "$srcdir/drawio-$pkgver"/etc/build
   ant app
   cd "$srcdir/drawio-$pkgver"/src/main/webapp
+  cp "$srcdir/drawio-desktop-$pkgver"/package.json "$srcdir/drawio-$pkgver"/src/main/webapp/package.json
 
   rm -rf "META-INF" "WEB-INF"
 
   # disable updater
   sed -e '/electron-updater/d' -i 'package.json'
+  sed -e '/"electron":/d' -i 'package.json'
+  sed -e '/"electron-builder":/d' -i 'package.json'
+  sed -e '/"electron-notarize":/d' -i 'package.json'
   local updater='const autoUpdater = { on: () => {}, setFeedURL: () => {}, checkForUpdates: () => {} }'
   sed -e 's/.*require("electron-updater").*/'"$updater"'/' -e '/checkForUpdates,/d' -i 'electron.js'
 
@@ -70,7 +74,7 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   printf '%s\n' \
   '#!/bin/sh' \
-  'exec electron18 /usr/lib/draw.io "$@"' \
+  'exec electron19 /usr/lib/draw.io "$@"' \
   > "$pkgdir/usr/bin/draw.io"
   chmod a+x "$pkgdir/usr/bin/draw.io"
 
