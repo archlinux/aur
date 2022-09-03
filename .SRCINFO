@@ -1,0 +1,11 @@
+pkgbase = ua608d
+	pkgdesc = Mini vMac extra for unarchiving disk images
+	pkgver = 1.00
+	pkgrel = 1
+	url = https://www.gryphel.com/c/minivmac/extras/ua608d/index.html
+	arch = any
+	license = LGPL
+	source = https://www.gryphel.com/d/minivmac/extras/ua608d/ua608d-1.00.src.tgz
+	md5sums = 797d9152bb9ff2a4d1bdc902dc47a0c8
+
+pkgname = ua608d
