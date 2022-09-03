@@ -5,7 +5,7 @@
 pkgname=chitubox-pro-bin
 pkgver=1.2.0
 
-pkgrel=1
+pkgrel=2
 pkgdesc="All-in-one SLA/DLP/LCD Slicer - Pro version"
 
 makedepends=('xdg-user-dirs')
@@ -15,7 +15,7 @@ arch=("x86_64")
 license=("Commercial")
 
 DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
-ARCHIVE_NAME="CHITUBOX_Pro_LINUX_Installer_V1.2.0${pkgver}.tar.gz"
+ARCHIVE_NAME="CHITUBOX_Pro_LINUX_Installer_V${pkgver}.tar.gz"
 DIR_NAME="CHITUBOX Pro V${pkgver}"
 
 if [ ! -f ${PWD}/$ARCHIVE_NAME ]; then
