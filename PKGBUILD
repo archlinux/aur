@@ -3,7 +3,7 @@
 DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=obs-studio-rc
-_pkgver=28.0.0
+_pkgver=28.0.1
 pkgver=${_pkgver//-/_}
 pkgrel=1
 epoch=3
