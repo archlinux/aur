@@ -1,11 +1,12 @@
-# Maintainer: Brian Li <brian14708@gmail.com>
-# Maintainer: Denys Zariaiev <denys.zariaiev@gmail.com>
+# Maintainer: Davide Polonio <davide+chituboxpro@poldebra.me>
+# Contributor: Brian Li <brian14708@gmail.com>
+# Contributor: Denys Zariaiev <denys.zariaiev@gmail.com>
 
-pkgname=chitubox-free-bin
-pkgver=1.9.4
+pkgname=chitubox-pro-bin
+pkgver=1.2.0
 
 pkgrel=1
-pkgdesc="All-in-one SLA/DLP/LCD Slicer"
+pkgdesc="All-in-one SLA/DLP/LCD Slicer - Pro version"
 
 makedepends=('xdg-user-dirs')
 
@@ -14,15 +15,15 @@ arch=("x86_64")
 license=("Commercial")
 
 DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
-ARCHIVE_NAME="CHITUBOX_V${pkgver}.tar.gz"
-DIR_NAME="CHITUBOX V${pkgver}"
+ARCHIVE_NAME="CHITUBOX_Pro_LINUX_Installer_V1.2.0${pkgver}.tar.gz"
+DIR_NAME="CHITUBOX Pro V${pkgver}"
 
 if [ ! -f ${PWD}/$ARCHIVE_NAME ]; then
 	if [ -f $DOWNLOADS_DIR/$ARCHIVE_NAME ]; then
 		ln -sfn $DOWNLOADS_DIR/$ARCHIVE_NAME ${PWD}
 	else
 		msg2 ""
-		msg2 "Please download the archive with ChiTuBox binaries v${pkgver} from https://www.chitubox.com/download.html"
+		msg2 "Please download the archive with ChiTuBox Pro binaries v${pkgver} from https://www.chitubox.com/download.html"
 		msg2 "You can either place it at '${PWD}/$ARCHIVE_NAME' or '$DOWNLOADS_DIR/$ARCHIVE_NAME'"
 		msg2 ""
 	fi
@@ -32,14 +33,14 @@ options=(!strip)
 
 source=(
     "local://$ARCHIVE_NAME"
-    "local://chitubox-free.desktop"
+    "local://chitubox-pro.desktop"
     "local://launcher"
 )
 
 sha256sums=(
-    "65dc2513064bb0bf5c849001eb5e110262479878bc70022eae3bd780e4828dbf"
-    "fdd0c1595cfa7ef97ae850b83de328db55150d76f42e6c472167bcc80f87ea47"
-    "02fb0cfac1a04d8cc71345a6cf4921c92abcbfdd09e010604a1bc891657a2894"
+    "64371ec873552a0c4e24d3cbc23b04de3bde24672996db0a41e8658e0df9e7d4"
+    "1d1e4f69189696bf761cbb946055e66ece35c6c6e30949f85496755fe1680e01"
+    "6af2f1c38490a2645f1c87c5aa84d098accd873014abd9437d6878e82a92fa8b"
 )
 
 noextract=("$ARCHIVE_NAME")
@@ -53,12 +54,12 @@ package()
 {
     # binary data
     install -d "$pkgdir"/opt
-    mv "${srcdir}/$DIR_NAME" "${pkgdir}/opt/chitubox-free"
+    mv "${srcdir}/$DIR_NAME" "${pkgdir}/opt/chitubox-pro"
 
     # launcher
     install -d "$pkgdir"/usr/bin
-    install -Dm755 launcher "$pkgdir"/usr/bin/chitubox-free
+    install -Dm755 launcher "$pkgdir"/usr/bin/chitubox-pro
 
     # desktop file
-    install -Dm644 chitubox-free.desktop "$pkgdir"/usr/share/applications/chitubox-free.desktop
+    install -Dm644 chitubox-pro.desktop "$pkgdir"/usr/share/applications/chitubox-pro.desktop
 }
