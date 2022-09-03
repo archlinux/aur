@@ -3,7 +3,7 @@
 # Contributor: Johannes Wienke <languitar@semipol.de>
 # Contributor: Benjamin Chrétien <chretien dot b plus aur at gmail dot com>
 pkgname=ignition-transport
-pkgver=11.1.0
+pkgver=11.2.0
 pkgrel=1
 pkgdesc="The transport library combines ZeroMQ with Protobufs to create a fast and efficient message passing system. Asynchronous message publication and subscription is provided along with service calls and discovery."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ makedepends=('ignition-cmake>=2' 'util-linux')
 optdepends=()
 conflicts=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gazebosim/gz-transport/archive/${pkgname}11_${pkgver}.tar.gz")
-sha256sums=('7fe0398e49aa984501be15cb5b2853b9a4c3627f24ae079e049c93cc9cb609d9')
+sha256sums=('fc1ff0fa168d2effb7b5d7d9e5e1975794f37fb7b28387b004a64e5e80b24651')
 
 _dir="gz-transport-${pkgname}11_${pkgver}"
 
