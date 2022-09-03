@@ -1,6 +1,6 @@
 pkgbase = r-cleaver
 	pkgdesc = Cleavage of Polypeptide Sequences
-	pkgver = 1.34.0
+	pkgver = 1.34.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cleaver
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-cleaver
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-uniprot.ws
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cleaver_1.34.0.tar.gz
-	sha256sums = e03edb27b4eb86c8ad0fd831b057427ab94e021488aabd1b64df11ae313bef2a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cleaver_1.34.1.tar.gz
+	sha256sums = aebd2997223e71066c1f4f235694a9e087ad4dc544c783d6abd0be282ce899f9
 
 pkgname = r-cleaver
