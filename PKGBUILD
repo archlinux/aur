@@ -8,7 +8,7 @@ _pkgbase=archiso
 _variant="encryption"
 _pkgname="${_pkgbase}-${_variant}"
 pkgname="${_pkgname}-git"
-pkgver=v67.r108.gbe3b23c
+pkgver=v68.r9.ga8eab2e
 pkgrel=1
 pkgdesc='Tools for creating Arch Linux live and install ISO images (LUKS image type support).'
 arch=('any')
@@ -22,15 +22,17 @@ checkdepends=('shellcheck')
 provides=("${_pkgbase}")
 provides+=("${_pkgbase}-${_variant}")
 provides+=("${_pkgbase}-persistent-git")
+provides+=("an${_pkgbase}")
 conflicts=("${_pkgbase}")
 conflicts+=("${_pkgbase}-persistent-git")
+conflicts=("an${_pkgbase}")
 optdepends=(
   'archiso-profiles: extra profiles for archiso'
   'edk2-ovmf: for emulating UEFI with run_archiso'
   'openssl: for codesigning support when building netboot artifacts'
   'qemu: for run_archiso'
 )
-source=("${_pkgbase}::git+${_url}#branch=crypto-safeboot")
+source=("${_pkgbase}::git+${_url}")
 sha256sums=('SKIP')
 
 pkgver() {
