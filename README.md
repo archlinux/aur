@@ -1,8 +1,10 @@
-# pamac-flatpak
-A Gtk3 frontend for libalpm (with AUR, Flatpak and AppIndicator support)
+# pamac-flatpak-gnome
+A Gtk3 frontend for libalpm (with AUR, Flatpak, AppIndicator support, and GNOME integration)
 
 # Attribution
-This package is a modified version of [pamac-all](https://aur.archlinux.org/packages/pamac-all) with Snapd removed and added GNOME integration. <br >
+This package is a modified version of [pamac-nosnap](https://aur.archlinux.org/packages/pamac-nosnap) with a slightly different install and GNOME integration. <br >
+
+It was originally based on [pamac-all](https://aur.archlinux.org/packages/pamac-all) with snapd removed.
 
 # Notes
 The Flathub Beta repository is enable by default. <br >
