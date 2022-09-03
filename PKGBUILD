@@ -1,8 +1,8 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cemu
 pkgname=$_pkgname-git
-pkgver=2.0.r47.gd94ecfe
-pkgrel=2
+pkgver=2.0.r73.g8c617a3
+pkgrel=1
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
 url="https://cemu.info/"
@@ -22,7 +22,7 @@ makedepends=(
 	'glm'
 	'glslang'
 	'glu'
-	'libgl'
+	'libglvnd'
 	'libpng'
 	'libzip'
 	'nasm'
@@ -60,8 +60,6 @@ prepare() {
 	sed -i '/discord-rpc/d' CMakeLists.txt
 	sed -i 's/glm::glm/glm/' src/{Common,input}/CMakeLists.txt
 	sed -i 's/GLSLANG_VERSION_LESS_OR_EQUAL_TO/GLSLANG_VERSION_GREATER_OR_EQUAL_TO/' src/Cafe/HW/Latte/Renderer/Vulkan/RendererShaderVk.cpp
-	sed -i '/target_link_libraries/s/PRIVATE/& fmt::fmt/' src/audio/CMakeLists.txt
-	sed -i 's/RUNTIME_OUTPUT_DIRECTORY_RELEASE/RUNTIME_OUTPUT_DIRECTORY/' src/CMakeLists.txt
 }
 
 build() {
@@ -89,5 +87,6 @@ package() {
 	cp -dr --no-preserve=ownership -t "$pkgdir"/usr/lib/$_pkgname bin/*
 	install -Dm644 -t "$pkgdir"/usr/share/applications dist/linux/info.cemu.Cemu.desktop
 	install -Dm644 -t "$pkgdir"/usr/share/metainfo dist/linux/info.cemu.Cemu.metainfo.xml
+	install -Dm644 src/resource/logo_icon.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/info.cemu.Cemu.png
 	install -D ../$_pkgname.bash "$pkgdir"/usr/bin/$_pkgname
 }
