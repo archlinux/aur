@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=xbyak
 pkgname=$_pkgname-git
-pkgver=6.61.r0.g88f2f77
+pkgver=6.61.2.r1.gb652430
 pkgrel=1
 pkgdesc="C++ header-only JIT assembler library for x86/x86-64"
 arch=('any')
@@ -25,6 +25,7 @@ prepare() {
 
 build() {
 	cmake -S $_pkgname -B build \
+		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-Wno-dev
 	cmake --build build
