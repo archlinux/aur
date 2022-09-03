@@ -25,7 +25,7 @@ provides+=("${_pkgbase}-persistent-git")
 provides+=("an${_pkgbase}")
 conflicts=("${_pkgbase}")
 conflicts+=("${_pkgbase}-persistent-git")
-conflicts=("an${_pkgbase}")
+conflicts+=("an${_pkgbase}")
 optdepends=(
   'archiso-profiles: extra profiles for archiso'
   'edk2-ovmf: for emulating UEFI with run_archiso'
