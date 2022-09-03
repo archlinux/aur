@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=zycore-c
 pkgname=$_pkgname-git
-pkgver=1.1.0.r3.g8983325
+pkgver=1.1.0.r16.g60b6ef1
 pkgrel=1
 pkgdesc="Zyan core library for C"
 arch=('x86_64')
@@ -22,6 +22,8 @@ pkgver() {
 
 build() {
 	cmake -S $_pkgname -B build \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DZYCORE_BUILD_SHARED_LIB=ON \
 		-DZYCORE_BUILD_TESTS="$CHECKFUNC" \
