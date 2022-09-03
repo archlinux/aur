@@ -2,7 +2,7 @@
 
 _modname=nchan
 pkgname=nginx-mod-$_modname
-pkgver=1.3.0
+pkgver=1.3.4
 pkgrel=1
 
 pkgdesc='nchan nginx module'
@@ -39,4 +39,4 @@ package() {
 	done
 }
 
-sha256sums=('70ffed635d24aab0ff1ebb595d8b41fde105127dfd50cecac6df86b558778537')
+sha256sums=('ea18db8679e6d35c10c48d03c2b65376957a7761167c8e0edffc4689f599054e')
