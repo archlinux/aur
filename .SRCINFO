@@ -1,7 +1,7 @@
 pkgbase = pamac-flatpak
 	pkgdesc = A Gtk3 frontend for libalpm (with AUR, Flatpak and AppIndicator support)
 	pkgver = 10.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.manjaro.org/applications/pamac
 	install = pamac.install
 	arch = i686
@@ -24,6 +24,7 @@ pkgbase = pamac-flatpak
 	depends = git
 	depends = fakeroot
 	depends = pkgconf
+	optdepends = polkit-gnome: needed for authentification in Cinnamon, Gnome
 	optdepends = fwupd: support firmware updates
 	provides = pamac
 	conflicts = pamac
