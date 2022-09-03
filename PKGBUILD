@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=normcap
-pkgver=0.3.10
+pkgver=0.3.11
 pkgrel=1
 pkgdesc="OCR powered screen-capture tool to capture information instead of images"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-pip' 'python-poetry')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dynobo/normcap/archive/refs/tags/v$pkgver.tar.gz"
 #        "https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('8e0b4e33a9768a92c84af181f676b09ae1bb4904b7aca271e87549677b8109d8'
+sha256sums=('4f51dd5e277021262b6a9a8fe4bca9a6d7351a092022782c62e6d06cd8871b83'
             '29992fdb19773faa7582e44fe4394d4772984d5b7b9b7b347617c387f0a260f9')
 
 build() {
