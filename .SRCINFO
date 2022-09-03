@@ -1,15 +1,15 @@
 pkgbase = anaconda
 	pkgdesc = Completely free enterprise-ready Python distribution for large-scale data processing, predictive analytics, and scientific computing.
-	pkgver = 2021.11
+	pkgver = 2022.05
 	pkgrel = 1
-	url = https://www.anaconda.com/
+	url = https://www.anaconda.com
 	install = anaconda.install
 	arch = x86_64
-	license = BSD
+	license = custom
 	options = !strip
 	options = libtool
 	options = staticlibs
-	source = https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-x86_64.sh
-	sha256sums = fedf9e340039557f7b5e8a8a86affa9d299f5e9820144bd7b92ae9f7ee08ac60
+	source = https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh
+	sha512sums = 45b7fd085cb4edabb388ab64cd1d5e1bb62aeb4c906d371552fa71b6fae341b10d30c4acb54af43d63f027180d6a16095443668f36954cbc2f362e295c8e2c47
 
 pkgname = anaconda
