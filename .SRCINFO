@@ -15,17 +15,16 @@ pkgbase = pamac-flatpak
 	makedepends = itstool
 	makedepends = vala>=0.45
 	makedepends = meson
-	makedepends = ninja
 	makedepends = gobject-introspection
 	makedepends = xorgproto
 	makedepends = asciidoc
 	depends = libnotify
-	depends = libpamac-flatpak
+	depends = libpamac-flatpak>=10.3.0
 	depends = libhandy
-	depends = libappindicator-gtk3
 	depends = git
 	depends = fakeroot
 	depends = pkgconf
+	optdepends = fwupd: support firmware updates
 	provides = pamac
 	conflicts = pamac
 	conflicts = pamac-cli
