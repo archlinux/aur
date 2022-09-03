@@ -1,0 +1,16 @@
+pkgbase = ghupload-bin
+	pkgdesc = ghupload - smee.io forwarder in go
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/chmouel/ghupload
+	license = Apache 2.0
+	conflicts = ghupload
+	provides = ghupload
+	arch = aarch64
+	source_aarch64 = https://github.com/chmouel/ghupload/releases/download/v0.1.1/ghupload_0.1.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 5e83a2333ba596fded92082c129863187562616dee7f1bd08bbff63df038168e
+	arch = x86_64
+	source_x86_64 = https://github.com/chmouel/ghupload/releases/download/v0.1.1/ghupload_0.1.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = d8f9af213016edb0b87d0ccba4a163b8e86db3b98543e6980eadaafe258541a0
+	
+pkgname = ghupload-bin
