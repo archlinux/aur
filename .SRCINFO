@@ -1,0 +1,25 @@
+pkgbase = riscv-none-elf-gcc-bin
+	pkgdesc = Cross compiler for 32-bit and 64-bit RISC-V (The xPack GNU RISC-V Embedded GCC)
+	pkgver = 12.2.0_1
+	pkgrel = 1
+	url = https://github.com/xpack-dev-tools/riscv-none-elf-gcc-xpack
+	arch = arm
+	arch = aarch64
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	depends = libmpc
+	provides = xpack-riscv-none-elf-gcc
+	provides = riscv-none-elf-gdb
+	provides = riscv-none-elf-binutils
+	provides = riscv-none-elf-newlib
+	options = !emptydirs
+	options = !strip
+	source_arm = https://github.com/xpack-dev-tools/riscv-none-elf-gcc-xpack/releases/download/v12.2.0-1/xpack-riscv-none-elf-gcc-12.2.0-1-linux-arm.tar.gz
+	sha256sums_arm = 3c26069513d0d583beb7cdba945c1e8f72e331f96087b8fd4b9dcd2a8ae6869f
+	source_aarch64 = https://github.com/xpack-dev-tools/riscv-none-elf-gcc-xpack/releases/download/v12.2.0-1/xpack-riscv-none-elf-gcc-12.2.0-1-linux-arm64.tar.gz
+	sha256sums_aarch64 = 68ff464c907c8160308a32babba49ccb0493e480520d5c8513373301e65e7ee2
+	source_x86_64 = https://github.com/xpack-dev-tools/riscv-none-elf-gcc-xpack/releases/download/v12.2.0-1/xpack-riscv-none-elf-gcc-12.2.0-1-linux-x64.tar.gz
+	sha256sums_x86_64 = 04b5f45d609b221505e9232b1b63ae6cdb17d0a23f13ce9c231fc4008753a58a
+
+pkgname = riscv-none-elf-gcc-bin
