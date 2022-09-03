@@ -1,6 +1,6 @@
 # Maintainer:
 pkgname=pdfium-binaries
-pkgver=5131
+pkgver=5268
 pkgrel=1
 pkgdesc='PDFium binaries built with scripts from pdfium-binaries'
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
 )
 
 sha512sums=(
-	"439ec711598bf29027481d2acafd170a4f9b187643c7a683dfc4b25e4cf49a0282f58857cf2532b4b061cdf0b52e16dda38895b778e5f4f980b541d1b73125b9"
+	"e219dde268b2f91aaae45377452c16dd395c2a71b3a8ec889e5b330a5f9673a6ebcd4070e22c344570df164c0b3d3d0dfded13751e32d78cd1a3fa8f97e27b30"
 )
 
 build() {
