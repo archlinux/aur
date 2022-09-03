@@ -2,7 +2,7 @@
 # Contributor: katt <magunasu.b97@gmail.com>
 _pkgname=librw
 pkgname=$_pkgname-git
-pkgver=r535.5501c4f
+pkgver=r551.d2f54a2
 pkgrel=1
 pkgdesc="A re-implementation of the RenderWare Graphics engine"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -23,7 +23,9 @@ pkgver() {
 build() {
 	cmake -S $_pkgname -B build \
 		-DBUILD_SHARED_LIBS=ON \
-		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
+		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DLIBRW_GL3_GFXLIB=GLFW \
 		-DLIBRW_PLATFORM=GL3 \
