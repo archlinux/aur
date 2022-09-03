@@ -1,6 +1,6 @@
 pkgbase = android-emulator
 	pkgdesc = Google Android Emulator
-	pkgver = 31.2.10
+	pkgver = 31.3.10
 	pkgrel = 1
 	url = https://developer.android.com/studio/releases/emulator.html
 	install = android-emulator.install

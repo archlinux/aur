@@ -1,7 +1,7 @@
 # Maintainer: Hai Zhang <dreaming.in.code.zh@gmail.com>
 
 pkgname=android-emulator
-pkgver=31.2.10
+pkgver=31.3.10
 pkgrel=1
 pkgdesc='Google Android Emulator'
 arch=('x86_64')
