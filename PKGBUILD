@@ -18,6 +18,10 @@ makedepends=(
 source=('http://download.tuxfamily.org/ffdiaporama/Packages/Stable/ffdiaporama_bin_2.1.2014.0209.tar.gz')
 md5sums=('f9f46277153cf49f6947973778516adb')
 
+prepare() {
+    patch ${srcdir}/ffDiaporama/src/ffDiaporama/wgt_QMultimediaBrowser/QCustomFolderTable.cpp ${startdir}/patchfile.patch
+}
+
 build() {
   LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib
   export LD_LIBRARY_PATH
