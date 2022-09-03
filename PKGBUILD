@@ -1,4 +1,5 @@
-# Maintainer: Pi-Yueh chuang <pychuang@pm.me>
+# Maintainer: tionis <aur@tionis.dev>
+# Contributor: Pi-Yueh chuang <pychuang@pm.me>
 # Contributor: Nover <novares.x@gmail.com>
 # Contributor: agentcobra <agentcobra@free.fr>
 pkgname=shadow-tech
