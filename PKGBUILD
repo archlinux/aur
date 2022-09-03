@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.1149
+pkgver=mainline.0.1155
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('x86_64')
@@ -20,7 +20,7 @@ makedepends=(
 	'cubeb>=r1486'
 	'dynarmic>=6.2.3'
 	'ffmpeg>=4.3.1'
-	'fmt>=8.0.1'
+	'fmt>=9'
 	'git'
 	'glslang'
 	'libinih>=52'
@@ -37,7 +37,7 @@ makedepends=(
 	'zstd>=1.5'
 )
 checkdepends=(
-	'catch2>=2.13.7'
+	'catch2>=2.13.9'
 	'catch2<3'
 )
 source=(
@@ -91,7 +91,9 @@ build() {
 	cmake -S yuzu-mainline -B build \
 		-DBUILD_REPOSITORY=yuzu-emu/yuzu-mainline \
 		-DBUILD_TAG=${pkgver/.0./-} \
-		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
+		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DDISPLAY_VERSION=${pkgver##*.} \
 		-DENABLE_COMPATIBILITY_LIST_DOWNLOAD=OFF \
