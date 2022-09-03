@@ -29,7 +29,7 @@ build() {
 package() {
   cd $_pkgname-$pkgver
 
-  python -m installer -d "$destdir" dist/*.whl
+  python -m installer -d "$pkgdir" dist/*.whl
 
   install -Dm 644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
