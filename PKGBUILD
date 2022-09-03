@@ -3,7 +3,7 @@
 # Contributor: Evgeny Cherkashin <eugeneai@irnok.net>
 
 pkgname='frr'
-pkgver='8.3'
+pkgver='8.3.1'
 pkgrel='1'
 pkgdesc='FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, BFD, VRRP, NHRP and EIGRP.'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -24,7 +24,7 @@ source=("https://github.com/FRRouting/${pkgname}/archive/${pkgname}-${pkgver}.ta
         "${pkgname}.tmpfiles"
         "${pkgname}_8.0_Archlinux.patch"
 	"frr-init-functions")
-sha256sums=('bfc625936c72e64397acfa9182b1977a86b41ff4b3be96b41a59a6cb1621f4a6'
+sha256sums=('9b0430d01f8da2d780ac5e41de2cf4e53abff0ed06a0cc75d745f4b1f29e5b9e'
             '9371cc0522d13621c623b5da77719052bdebdceb7ffdbdc06fc32a2f07118e7e'
             '6f8dd86ef9c600763faead3052908531e8dc8ef67058e6f7f8da01bf0fe4eb89'
             'dd02d7b6df161cf8e6f58384e40227b2bffcf626707a44e2a7fd5fe4dcb10159'
