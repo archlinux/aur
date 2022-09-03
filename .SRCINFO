@@ -1,7 +1,7 @@
 pkgbase = asmjit-git
 	pkgdesc = Machine code generation for C++
-	pkgver = r398.21a31b8
-	pkgrel = 2
+	pkgver = r417.5c469e3
+	pkgrel = 1
 	url = https://asmjit.com/
 	arch = aarch64
 	arch = armv7h
@@ -13,7 +13,7 @@ pkgbase = asmjit-git
 	makedepends = cmake
 	makedepends = git
 	depends = gcc-libs
-	provides = asmjit=r398.21a31b8
+	provides = asmjit=r417.5c469e3
 	provides = libasmjit.so
 	conflicts = asmjit
 	source = asmjit::git+https://github.com/asmjit/asmjit.git

@@ -4,8 +4,8 @@
 # Contributor: xantares <xantares09@hotmail.com>
 _pkgname=asmjit
 pkgname=$_pkgname-git
-pkgver=r398.21a31b8
-pkgrel=2
+pkgver=r417.5c469e3
+pkgrel=1
 pkgdesc="Machine code generation for C++"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://asmjit.com/"
@@ -30,7 +30,7 @@ build() {
 	cmake -S $_pkgname -B build \
 		-DASMJIT_TEST="$CHECKFUNC" \
 		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_CXX_FLAGS_RELEASE=-DASMJIT_BUILD_RELEASE \
+		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-Wno-dev
 	cmake --build build
