@@ -6,7 +6,7 @@ pkgdesc='Networking with RF24 radio modules'
 arch=(any)
 url='http://tmrh20.github.io/RF24Network/'
 license=('GPL2')
-depends=('rf24')
+depends=('rf24' 'pigpio')
 source=("https://github.com/nRF24/RF24Network/archive/v${pkgver}.tar.gz")
 sha256sums=('48e2f0402ccbc21c14c9a39255de19ddfbc974ef37fe6a567d572ed92dee0eb0')
 
