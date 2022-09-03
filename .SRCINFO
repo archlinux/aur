@@ -1,0 +1,13 @@
+pkgbase = powerctl-git
+	pkgdesc = A simple command line utility to control power states on Linux, i.e. to suspend or hibernate the system.
+	pkgver = r27.d3ae1ca
+	pkgrel = 1
+	url = https://sr.ht/~sircmpwn/powerctl
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = hare-git
+	provides = powerctl
+	source = git+https://git.sr.ht/~sircmpwn/powerctl
+	sha256sums = SKIP
+
+pkgname = powerctl-git
