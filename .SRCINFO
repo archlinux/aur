@@ -1,7 +1,7 @@
 pkgbase = chitubox-pro-bin
 	pkgdesc = All-in-one SLA/DLP/LCD Slicer - Pro version
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.chitubox.com/download.html
 	arch = x86_64
 	license = Commercial
