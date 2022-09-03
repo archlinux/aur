@@ -2,7 +2,7 @@
 # Contributor: Songtronix <contact@songtronix.com>
 pkgname=airshipper
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The official launcher for Veloren - an open-world, open-source multiplayer voxel RPG"
 arch=('x86_64' 'i686')
 url='https://gitlab.com/veloren/airshipper'
@@ -13,7 +13,7 @@ optdepends=('vulkan-icd-loader: GUI support'
 provides=()
 conflicts=()
 source=(
-    "$pkgname"::"https://gitlab.com/veloren/airshipper/-/jobs/artifacts/v$pkgver/download?job=linux"
+    "$pkgname-$pkgver.zip"::"https://gitlab.com/veloren/airshipper/-/jobs/artifacts/v$pkgver/download?job=linux"
     'airshipper.desktop'
     'veloren.png'
 )
