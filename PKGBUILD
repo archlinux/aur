@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=crul
-_pkgver=1.2.0
+_pkgver=1.3
 pkgname=r-${_pkgname,,}
-pkgver=1.2.0
-pkgrel=4
+pkgver=1.3
+pkgrel=1
 pkgdesc='HTTP Client'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -27,7 +27,7 @@ optdepends=(
   r-webmockr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('be1a149b21cf219ef55adfb56a6a5eb9892a9acf0d5f5421a22e52f2a7066f8c')
+sha256sums=('8058617d8b3724acb5b89d0e6e63f381df5c56565128b250a65eceb2b8081e2d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
