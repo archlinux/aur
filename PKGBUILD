@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-cucumber-tag-expressions
-pkgver=4.0.2
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Provides tag-expression parser for cucumber/behave"
 url="https://github.com/cucumber/tag-expressions"
@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-html')
 source=("https://github.com/cucumber/tag-expressions/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('41b03c83cec20caebb78c63e6a05b23bbaaa77ae98c34da7a80a0f59bfa2229eaeebe10212f44821cc9463bfd399ddcf637ec9b21e5cee8f01e604e16e532fd5')
+sha512sums=('b4790d8057d486b3d222ceea0e1e40c2e7a59f7d64e52f29f5e72ac4d91bdce8ac1c5b1aeced685e2d03046bc5c94e2fcb84a6c15f0f21560e85522c9dbae489')
 
 build() {
   cd tag-expressions-$pkgver/python
