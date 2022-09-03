@@ -1,6 +1,6 @@
 # Maintainer: DigitOtter <digitotter@protonmail.com>
 pkgname=obs-scene-tree-view-git
-pkgver=v0.1.3.r0.ge2f0f6d
+pkgver=v0.1.4.r0.gf9aab94
 pkgrel=1
 pkgdesc="Scene Tree Folder plugin for OBS Studio"
 arch=( 'any' )
@@ -8,7 +8,7 @@ url='https://github.com/DigitOtter/obs_scene_tree_view.git'
 license=( 'GPL' )
 groups=()
 depends=( 'obs-studio' )
-makedepends=( 'qt5-base' 'git' 'cmake' 'gcc' )
+makedepends=( 'qt6-base' 'git' 'cmake' 'gcc' )
 provides=( 'obs-scene-tree-view' )
 conflicts=(  'obs-scene-tree-view' )
 source=( "${pkgname}::git+https://github.com/DigitOtter/obs_scene_tree_view.git#branch=master" )
