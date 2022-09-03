@@ -4,13 +4,13 @@
 
 pkgname=gnome-calculator-git
 _pkgname=gnome-calculator
-pkgver=42.0+r38+gba8e98d6
+pkgver=43.rc
 pkgrel=1
 pkgdesc="GNOME Scientific calculator - git"
 url="https://wiki.gnome.org/Apps/Calculator"
 arch=(x86_64 i686 aarch64 armv7h)
 license=(GPL)
-depends=(libadwaita dconf gtksourceview5 mpfr libsoup libmpc libgee libhandy)
+depends=(libadwaita-git dconf gtksourceview5 mpfr libsoup libmpc libgee)
 makedepends=(yelp-tools vala git meson gobject-introspection)
 groups=(gnome)
 provides=(gnome-calculator)
