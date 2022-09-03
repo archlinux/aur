@@ -1,7 +1,7 @@
 # Maintainer: NAHO <90870942+trueNAHO@users.noreply.github.com>
 
 pkgname=grub-theme-vimix-very-dark-blue
-pkgver=1.0.0
+pkgver=1.0.0.r
 pkgrel=1
 pkgdesc="Simple very dark blue GRUB theme"
 arch=(any)
