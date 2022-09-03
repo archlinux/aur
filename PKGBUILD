@@ -1,16 +1,17 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=dynarmic
 pkgname=$_pkgname-git
-pkgver=6.2.3.r2.gf33c6f06
+pkgver=6.2.3.r15.gaf51845a
 pkgrel=1
 pkgdesc="An ARM dynamic recompiler"
 arch=('aarch64' 'x86_64')
 url="https://github.com/merryhime/dynarmic"
 license=('BSD')
+depends=('gcc-libs')
 makedepends=(
 	'boost>=1.57'
 	'cmake>=3.12'
-	'fmt>=8.1.1'
+	'fmt>=9'
 	'git'
 	'robin-map>=0.6.2'
 	'xbyak>=6.61'
@@ -31,7 +32,8 @@ pkgver() {
 build() {
 	cmake -S $_pkgname -B build \
 		-DBUILD_SHARED_LIBS=ON \
-		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DDYNARMIC_IGNORE_ASSERTS=ON \
 		-DDYNARMIC_NO_BUNDLED_CATCH=ON \
