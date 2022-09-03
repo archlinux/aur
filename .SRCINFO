@@ -1,0 +1,20 @@
+pkgbase = httpdirfs-git
+	pkgdesc = A filesystem which allows you to mount HTTP directory listings
+	pkgver = r501.61d3ae4
+	pkgrel = 1
+	url = https://github.com/fangfufu/httpdirfs
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = help2man
+	makedepends = doxygen
+	depends = gumbo-parser
+	depends = fuse2
+	depends = curl
+	depends = expat
+	provides = httpdirfs
+	conflicts = httpdirfs
+	source = httpdirfs-git::git+https://github.com/fangfufu/httpdirfs.git
+	md5sums = SKIP
+
+pkgname = httpdirfs-git
