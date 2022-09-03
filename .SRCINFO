@@ -15,6 +15,7 @@ pkgbase = gradience-git
 	depends = python-gobject
 	depends = python-anyascii
 	depends = python-pillow
+	depends = python-pluggy
 	depends = python-svglib
 	depends = python-urllib3
 	depends = python-regex
