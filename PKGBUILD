@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 # Contributor: Tim Rakowski <tim.rakowski@gmail.com>
 pkgname=ignition-common
-pkgver=4.5.1
+pkgver=4.5.2
 pkgrel=1
 pkgdesc="A collection of useful classes and functions for handling many command tasks. This includes parsing 3D mesh files, managing console output, and using PID controllers."
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('ignition-cmake>=2' 'util-linux')
 optdepends=()
 conflicts=()
 source=("https://github.com/ignitionrobotics/ign-common/archive/${pkgname}4_${pkgver}.tar.gz")
-sha256sums=('3c56894f01fdd4ab7d550d1cc815265bb87050549646d4a036b59380cb833075')
+sha256sums=('b681f0efa9eb577e6c6edd307c54aa128c297606a61e9de1093ef990502569c4')
 
 _dir="gz-common-${pkgname}4_${pkgver}"
 
