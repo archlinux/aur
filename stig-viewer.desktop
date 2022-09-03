@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=STIG Viewer
+Exec=/opt/stig-viewer/STIGViewer
+Icon=/usr/share/icons/hicolor/scalable/apps/stig-viewer.svg
+Categories=Development
