@@ -1,6 +1,6 @@
 pkgbase = pamac-flatpak-gnome
-	pkgdesc = A Gtk3 frontend for libalpm (with AUR, Flatpak, AppIndicator support, and GNOME integration)
-	pkgver = 10.2.0
+	pkgdesc = A Gtk3 frontend for libalpm (with AUR, Flatpak,AppIndicator support, and GNOME integration)
+	pkgver = 10.4.2
 	pkgrel = 1
 	url = https://gitlab.manjaro.org/applications/pamac
 	install = pamac.install
@@ -15,19 +15,18 @@ pkgbase = pamac-flatpak-gnome
 	makedepends = itstool
 	makedepends = vala>=0.45
 	makedepends = meson
-	makedepends = ninja
 	makedepends = gobject-introspection
 	makedepends = xorgproto
 	makedepends = asciidoc
 	depends = libnotify
-	depends = libpamac-flatpak
+	depends = libpamac-flatpak>=10.3.0
 	depends = libhandy
-	depends = libappindicator-gtk3
 	depends = git
 	depends = fakeroot
 	depends = pkgconf
+	depends = polkit-gnome
+	optdepends = fwupd: support firmware updates
 	provides = pamac
-	provides = gnome-software
 	conflicts = pamac
 	conflicts = pamac-cli
 	conflicts = pamac-gtk
@@ -37,11 +36,10 @@ pkgbase = pamac-flatpak-gnome
 	conflicts = pamac-aur-git
 	conflicts = pamac-all
 	conflicts = pamac-all-git
-	conflicts = pamac-flatpak
-	conflicts = gnome-software
-	conflicts = pamac-tray-appindicator
+	conflicts = pamac-flatpak-gnome
+	conflicts = pamac-nosnap
 	options = !emptydirs
-	source = pamac-10.2.0.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/v10.2.0/pamac-v10.2.0.tar.gz
-	sha256sums = d553ead69b27b94f039816e7faca462b01883778db39a55cc6cd579bd22a7b4b
+	source = pamac-10.4.2.tar.bz2::https://gitlab.manjaro.org/applications/pamac/-/archive/v10.4.2/pamac-v10.4.2.tar.bz2
+	sha512sums = 8b5b2298e16bcfc6fbdfbf2e2cd77cb9cd769d9faa503dd8fec35c18f37b52589ffda670dc9299a8f4962f039ba870007b4601a2610ac0fc298f64a4f8e67eeb
 
 pkgname = pamac-flatpak-gnome
