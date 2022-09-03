@@ -2,23 +2,30 @@
 # Contributor: FabioLolix
 
 pkgname=cie-middleware-git
-pkgver=1.4.3.2.r0.c4583a8
+pkgver=1.4.3.1.r0.f1f0be8
 pkgrel=1
 pkgdesc="Middleware della CIE (Carta di Identità Elettronica) per Linux (mio fork)"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
 url="https://developers.italia.it/it/cie"
 license=('BSD')
-depends=('crypto++' 'openssl' 'pcsclite' 'podofo' 'java-runtime')
+depends=('crypto++' 'openssl' 'pcsclite' 'java-runtime')
+noextract=('libpodofo.tar.gz')
 makedepends=('git' 'gradle' 'meson')
 install="${pkgname%-git}.install"
 
 source=(
-  "${pkgname%-git}::git+https://github.com/M0Rf30/${pkgname%-git}-linux#branch=podofo-vanilla"
+  "${pkgname%-git}::git+https://github.com/M0Rf30/${pkgname%-git}-linux#branch=main"
+  "libpodofo.tar.gz::https://github.com/M0Rf30/cie-middleware-linux/releases/download/podofo-1.4.2/libpodofo-1.4.2.tar.gz"
 )
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
   printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g' | sed 's/podofo.//')" 
+}
+
+prepare() {
+  tar xf libpodofo.tar.gz \
+    --directory="$srcdir/${pkgname%-git}/libs/lib"
 }
 
 build() {
@@ -48,4 +55,5 @@ package() {
   DESTDIR="${pkgdir}" meson install -C builddir
 }
 
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'ef81e439b12aa2ff309b353399c033bd62b027e7bd4cbf649c025226f1de5287')

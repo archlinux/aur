@@ -1,6 +1,6 @@
 pkgbase = cie-middleware-git
 	pkgdesc = Middleware della CIE (Carta di Identità Elettronica) per Linux (mio fork)
-	pkgver = 1.4.3.2.r0.c4583a8
+	pkgver = 1.4.3.1.r0.f1f0be8
 	pkgrel = 1
 	url = https://developers.italia.it/it/cie
 	install = cie-middleware.install
@@ -18,9 +18,11 @@ pkgbase = cie-middleware-git
 	depends = crypto++
 	depends = openssl
 	depends = pcsclite
-	depends = podofo
 	depends = java-runtime
-	source = cie-middleware::git+https://github.com/M0Rf30/cie-middleware-linux#branch=podofo-vanilla
+	noextract = libpodofo.tar.gz
+	source = cie-middleware::git+https://github.com/M0Rf30/cie-middleware-linux#branch=main
+	source = libpodofo.tar.gz::https://github.com/M0Rf30/cie-middleware-linux/releases/download/podofo-1.4.2/libpodofo-1.4.2.tar.gz
 	sha256sums = SKIP
+	sha256sums = ef81e439b12aa2ff309b353399c033bd62b027e7bd4cbf649c025226f1de5287
 
 pkgname = cie-middleware-git
