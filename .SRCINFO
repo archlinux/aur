@@ -13,6 +13,6 @@ pkgbase = chitubox-pro-bin
 	source = local://launcher
 	sha256sums = 64371ec873552a0c4e24d3cbc23b04de3bde24672996db0a41e8658e0df9e7d4
 	sha256sums = 1d1e4f69189696bf761cbb946055e66ece35c6c6e30949f85496755fe1680e01
-	sha256sums = 6af2f1c38490a2645f1c87c5aa84d098accd873014abd9437d6878e82a92fa8b
+	sha256sums = b18e139e6e1ece19b38909baa6e4af70a83bd642dd13e7267a22fc197080294a
 
 pkgname = chitubox-pro-bin
