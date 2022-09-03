@@ -4,19 +4,25 @@
 pkgbase=wxwidgets
 pkgname=(wxwidgets-gtk3 wxwidgets-qt5 wxwidgets-common)
 pkgver=3.2.0
-pkgrel=5
+pkgrel=6
 arch=(x86_64)
 url='https://wxwidgets.org'
 license=(custom:wxWindows)
 makedepends=(cmake gst-plugins-base glu webkit2gtk libnotify qt5-base sdl2 libmspack)
 source=(https://github.com/wxWidgets/wxWidgets/releases/download/v$pkgver/wxWidgets-$pkgver.tar.bz2
-        destdir.patch)
+        https://github.com/wxWidgets/wxWidgets/commit/e4f230a3.patch
+        https://github.com/wxWidgets/wxWidgets/commit/d9a78be1.patch
+        https://github.com/wxWidgets/wxWidgets/commit/600bf54a.patch)
 sha256sums=('356e9b55f1ae3d58ae1fed61478e9b754d46b820913e3bfbc971c50377c1903a'
-            'cb4a7ca0d40b090d5d40d77790828a26766c6b496b3a5f5351fa30b3a6b42bd9')
+            '00f58f7248ce513e50acfdf6fca536a2e557d9d07891168ba9f9789322bbac03'
+            'efc502a5c72b257d38bf9957bd29eb684fd24b816d689a860bc1d511ff56458f'
+            '6c764e0907fe9e0f881f6bff924429bf42f33ce5865dc2f3fe918ba3c492c011')
 options=(debug)
 
 prepare() {
-  patch -d wxWidgets-$pkgver -p1 < destdir.patch # Honor DESTDIR
+  patch -d wxWidgets-$pkgver -p1 < d9a78be1.patch # Support GTKprint with cmake
+  patch -d wxWidgets-$pkgver -p1 < e4f230a3.patch # Pre next commit
+  patch -d wxWidgets-$pkgver -p1 < 600bf54a.patch # Honor DESTDIR
 }
 
 build() {
@@ -34,7 +40,7 @@ build() {
     -DwxUSE_LIBLZMA=sys \
     -DwxUSE_LIBMSPACK=ON \
     -DwxUSE_PRIVATE_FONTS=ON \
-    -DwxUSE_GTKPRINT=ON -DCMAKE_CXX_FLAGS="$CXXFLAGS -I/usr/include/gtk-3.0/unix-print/"
+    -DwxUSE_GTKPRINT=ON
   cmake --build build-gtk3
 
   cmake -B build-qt5 -S wxWidgets-$pkgver \
@@ -65,7 +71,7 @@ package_wxwidgets-common() {
   replaces=(wxgtk-common)
 
   DESTDIR="$pkgdir" cmake --install build-gtk3
-  rm -r "$pkgdir"/usr/{bin/wx-config,lib/{wx,libwx_gtk*}}
+  rm -r "$pkgdir"/usr/{bin/wx-config,lib/{cmake,wx,libwx_gtk*}}
   install -Dm644 wxWidgets-$pkgver/wxwin.m4 -t "$pkgdir"/usr/share/aclocal
 # Install translations
   make DESTDIR="$pkgdir" -C wxWidgets-$pkgver locale_install  
@@ -82,7 +88,7 @@ package_wxwidgets-gtk3() {
   replaces=(wxgtk3)
 
   DESTDIR="$pkgdir" cmake --install build-gtk3
-  rm -r "$pkgdir"/usr/{include,lib/cmake,lib/libwx_base*,bin/wxrc*}
+  rm -r "$pkgdir"/usr/{include,lib/libwx_base*,bin/wxrc*}
   
   install -Dm644 wxWidgets-$pkgver/docs/licence.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
@@ -93,8 +99,13 @@ package_wxwidgets-qt5() {
   provides=(wxwidgets)
 
   DESTDIR="$pkgdir" cmake --install build-qt5
-  rm -r "$pkgdir"/usr/{include,lib/cmake,lib/libwx_base*,bin/wxrc*}
+  rm -r "$pkgdir"/usr/{include,lib/libwx_base*,bin/wxrc*}
   mv "$pkgdir"/usr/bin/wx-config{,-qt} # Conflicts with wx-gtk3
+# Rename cmake files for coinstallability
+  mv "$pkgdir"/usr/lib/cmake/wxWidgets{,Qt}
+  for _f in "$pkgdir"/usr/lib/cmake/wxWidgetsQt/*; do
+    mv $_f $(dirname $_f)/$(basename $_f | sed -e 's/wxWidgets/wxWidgetsQt/')
+  done
 
   install -Dm644 wxWidgets-$pkgver/docs/licence.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
