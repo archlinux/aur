@@ -31,4 +31,3 @@ pkgbase = cherrymusic-devel-git
 	sha512sums = 9d336a06492df0bb5718848f161895922d08171ab637b54fffad42fc5c12cd22d00f2408dabffc3617f0a59512276e38553f1c63a0ea68028982076b7f115165
 
 pkgname = cherrymusic-devel-git
-

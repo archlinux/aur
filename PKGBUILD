@@ -1,4 +1,4 @@
-# Maintainer: 6arms1leg <m.brnsfld {at} googlemail {d0t} com>
+# Maintainer: 6arms1leg <6arms1leg {at} pm {d0t} me>
 # Contributor: Tom Wallroth <tomwallroth {at} gmail {d0t} com>
 pkgname=cherrymusic-devel-git
 pkgver=20160210
