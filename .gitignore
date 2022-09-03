@@ -1,0 +1,8 @@
+/**
+!/**/
+
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
+
+!/fix_cmake_module_path.patch

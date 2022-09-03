@@ -1,45 +1,53 @@
-# Maintainer: farenjihn <valentin@finini.ch>
+# Maintainer: tocic <tocic at protonmail dot ch>
 
 pkgname=thor-git
-pkgver=v2.0.r14.g3aee360
+pkgver=2.0.r24.g3e320cb
 pkgrel=1
-pkgdesc="Thor, SFML based library"
-arch=('i686' 'x86_64')
-url="http://www.bromeon.ch/libraries/thor/index.html"
-license=('zlib')
-depends=('sfml-git')
-makedepends=('cmake' 'git')
-provides=('thor-sfml')
-options=('debug')
-
-source=("git+https://github.com/Bromeon/Thor.git"
-"0001-cmake_install_module.patch")
-
-sha256sums=('SKIP'
-'ef23db1723fbcf1cc9eb5e0180e86826a79cc1fbac93a5790149de1aab27fbba')
+pkgdesc="SFML Extension with various game programming features,
+         like particles, animations, vector operations"
+arch=("x86_64")
+url="https://bromeon.ch/libraries/thor"
+license=("ZLIB")
+depends=("sfml")
+makedepends=("cmake" "git")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname}-${pkgver}::git+https://github.com/Bromeon/Thor.git#branch=master"
+        "fix_cmake_module_path.patch")
+b2sums=("SKIP"
+        "b1f082ce989d78abb14ad4615b1babce229f3e245409cbb820bdfd7693e9870ec86a5a586908a5b0d50576d67dd49c585928cf3f4bc94510d9615af7b64c9009")
 
 pkgver() {
-    cd "${srcdir}/Thor"
-    git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  printf "%s" \
+    $(git -C "${pkgname}-${pkgver}" describe --long --tags \
+      | sed "s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g")
 }
 
 prepare() {
-    cd "${srcdir}/Thor"
-    patch -p0 -i "${srcdir}/0001-cmake_install_module.patch"
+  patch --forward --strip=1 \
+    --directory="${pkgname}-${pkgver}" \
+    --input="${srcdir}/fix_cmake_module_path.patch"
 }
 
 build() {
-    cd "$srcdir/Thor"
+  cmake -B "build/" -S "${pkgname}-${pkgver}" \
+    -D THOR_BUILD_DOC:BOOL="OFF" \
+    -D THOR_BUILD_EXAMPLES:BOOL="OFF" \
+    -D THOR_SHARED_LIBS:BOOL="ON" \
+    -D CMAKE_BUILD_TYPE:STRING="Release" \
+    -D CMAKE_C_FLAGS_RELEASE:STRING="-O2 -DNDEBUG" \
+    -D CMAKE_CXX_FLAGS_RELEASE:STRING="-O2 -DNDEBUG" \
+    -D CMAKE_INSTALL_PREFIX:PATH="/usr/" \
+    -Wno-dev
 
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebugInfo .
-    make
+  cmake --build "build/"
 }
 
 package() {
-    cd "$srcdir/Thor"
+  DESTDIR="${pkgdir}" cmake --install "build/"
 
-    make DESTDIR="$pkgdir/" install
-
-    install -Dm644 ./License.txt ${pkgdir}/usr/share/licenses/${pkgname}/License.txt
-
+  mkdir --parents "${pkgdir}/usr/share/licenses/${pkgname}/"
+  cp --target-directory "${pkgdir}/usr/share/licenses/${pkgname}/" \
+    "${pkgdir}/usr/share/doc/Thor/LicenseAurora.txt" \
+    "${pkgdir}/usr/share/doc/Thor/LicenseThor.txt"
 }

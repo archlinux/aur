@@ -1,0 +1,12 @@
+diff '--color=auto' --unified --recursive --text thor-git.orig/CMakeLists.txt thor-git.new/CMakeLists.txt
+--- thor-git.orig/CMakeLists.txt	2022-09-03 10:55:51.164332584 +0300
++++ thor-git.new/CMakeLists.txt	2022-09-03 11:02:53.710206314 +0300
+@@ -156,7 +156,7 @@
+ 		DESTINATION .)
+ 
+ install(FILES cmake/Modules/FindThor.cmake
+-		DESTINATION ./cmake/Modules/)
++		DESTINATION ./lib/cmake/Thor/)
+ 
+ install(FILES License.txt
+ 		RENAME LicenseThor.txt
