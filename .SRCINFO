@@ -1,12 +1,12 @@
 pkgbase = discord-development-electron-bin
 	pkgdesc = Discord Development (popular voice + video app) using the system provided electron for increased security and performance
 	pkgver = 0.0.203
-	pkgrel = 2
+	pkgrel = 1
 	url = https://discordapp.com
 	arch = x86_64
 	license = custom
 	makedepends = asar
-	depends = electron19
+	depends = electron
 	depends = gtk3
 	depends = libnotify
 	depends = libxss

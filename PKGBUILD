@@ -1,3 +1,22 @@
+# Maintainer: Johannes Jöns <johannes@joens.email>
+# Contributor: fisch02 <kevin.majewski02 at gmail.com>
+# Contributor: Nairaner <krzysztofmachura1 at gmail.com
+
+# Original discord-canary-electron-bin PKGBUILD:
+# Maintained by Kodehawa <david.alejandro.rubio at gmail.com>
+
+# Original discord_arch_electron PKGBUILD:
+# Maintained by johnnyapol (arch@johnnyapol.me)
+
+# Original mantainers below:
+# Based off the discord community repo PKGBUILD by Filipe Laíns (FFY00) <lains@archlinux.org>
+# Maintainer: Anna <morganamilo@gmail.com>
+# Maintainer: E5ten <e5ten.arch@gmail.com>
+# Maintainer: Parker Reed <parker.l.reed@gmail.com>
+# Maintainer: Stephanie Wilde-Hobbs <steph@rx14.co.uk>
+# Contributor: Cayde Dixon <me@cazzar.net>
+# Contributor: Anthony Anderson <aantony4122@gmail.com>
+
 _pkgname=discord-development
 pkgname=${_pkgname}-electron-bin
 pkgver=0.0.203
@@ -8,7 +27,7 @@ provides=(${_pkgname})
 conflicts=(${_pkgname})
 url='https://discordapp.com'
 license=('custom')
-depends=('electron19' 'gtk3' 'libnotify' 'libxss' 'glibc' 'alsa-lib' 'nspr' 'nss' 'xdg-utils' 'libcups')
+depends=('electron' 'gtk3' 'libnotify' 'libxss' 'glibc' 'alsa-lib' 'nspr' 'nss' 'xdg-utils' 'libcups')
 makedepends=('asar')
 optdepends=('libpulse: Pulseaudio support'
             'xdg-utils: Open files'
@@ -42,6 +61,8 @@ package() {
   # HACKS FOR SYSTEM ELECTRON
   # Thanks to the discord_arch_electron guy for this ;)
   # Thanks to https://aur.archlinux.org/packages/discord_arch_electron/#comment-776307 for the less-hacky fix.
+  # Thanks to https://aur.archlinux.org/packages/discord_arch_electron#comment-872073 for the electron fix.
+
   asar e $_tarname/resources/app.asar $_tarname/resources/app
   sed -i "s|process.resourcesPath|'/usr/lib/$_pkgname'|" $_tarname/resources/app/app_bootstrap/buildInfo.js
   sed -i "s|exeDir,|'/usr/share/pixmaps',|" $_tarname/resources/app/app_bootstrap/autoStart/linux.js
@@ -54,7 +75,7 @@ package() {
 
   # Create starter script for discord
   echo "#!/bin/sh" >> "$srcdir"/$_pkgname
-  echo "exec electron19 /usr/lib/$_pkgname/app.asar \$@" >> "$srcdir"/$_pkgname
+  echo "exec electron /usr/lib/$_pkgname/app.asar \$@" >> "$srcdir"/$_pkgname
 
   install -d "$pkgdir"/usr/{bin,share/{pixmaps,applications}}
   install -Dm 755 $_pkgname "$pkgdir"/usr/bin/$_pkgname
