@@ -1,7 +1,7 @@
 pkgbase = gps-share
-	pkgdesc = Utility to share your GPS device on local network.
+	pkgdesc = Utility to share your GPS device on local network
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zeenix/gps-share
 	arch = i686
 	arch = x86_64
