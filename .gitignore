@@ -1,5 +1,4 @@
-*
-!.gitignore
-!PKGBUILD
-!.SRCINFO
-!*.patch
+*.tar.gz
+*.pkg.tar*
+pkg
+src
