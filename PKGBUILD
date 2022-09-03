@@ -1,14 +1,15 @@
-# Maintainer: linxlan
+# Maintainer: kerriganx
 
 # Based on extra/chromium, but with a patch to set custom framerate
 
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
+# Contributor: Daniel Playfair Cal <daniel.playfair.cal at gmail dot com>
+# Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-framerate-fix
-pkgver=103.0.5060.53
+pkgver=105.0.5195.102
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=4
@@ -31,29 +32,34 @@ conflicts=('chromium')
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
+        fix-TFLite-build-on-linux-with-system-zlib.patch
         enable-GlobalMediaControlsCastStartStop.patch
         roll-src-third_party-ffmpeg.patch
-        sql-make-VirtualCursor-standard-layout-type.patch
-        remove-no-opaque-pointers-flag.patch
+        angle-wayland-include-protocol.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('0ecbae14670506da90c8bf744f83f52a64a5fff0765c2e2e066b0e68b805b101'
+sha256sums=('1cba0527c951e3c506ade96cf6ec2507ee9d43661764731ed896348182369262'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            'fed11a8987d9f9baa04457fb114f8f7fdb800300a3780927020865bcc43e4f52'
+            'f0c437c02cab7a6efc958f82fbb4ea35d5440f73d65731bad7c0dcaecb932121'
+            '5db1fae8a452774b5b177e493a2d1a435b980137b16ed74616d1fb86fe342ec7'
             '779fb13f2494209d3a7f1f23a823e59b9dded601866d3ab095937a1a04e19ac6'
             '30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44'
-            'b94b2e88f63cfb7087486508b8139599c89f96d7a4181c61fec4b4e250ca327a'
-            '00c16ce83ea4ca924a50fa0cfc2b2a4d744c722f363b065323e6ba0fcbac45a5'
+            'cd0d9d2a1d6a522d47c3c0891dabe4ad72eabbebc0fe5642b9e22efa3d5ee572'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
+  [brotli]=brotli
+  [dav1d]=dav1d
   [ffmpeg]=ffmpeg
   [flac]=flac
   [fontconfig]=fontconfig
   [freetype]=freetype2
   [harfbuzz-ng]=harfbuzz
   [icu]=icu
+  [jsoncpp]=jsoncpp
+  [libaom]=aom
+  [libavif]=libavif
   [libdrm]=
   [libjpeg]=libjpeg
   [libpng]=libpng
@@ -64,6 +70,7 @@ declare -gA _system_libs=(
   [opus]=opus
   [re2]=re2
   [snappy]=snappy
+  [woff2]=woff2
   [zlib]=minizip
 )
 _unwanted_bundled_libs=(
@@ -80,7 +87,7 @@ depends+=(${_system_libs[@]})
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 
 prepare() {
-  cd "$srcdir/chromium-$pkgver"
+  cd chromium-$pkgver
 
   #75 Hz
   #sed -i 's/1\.\ \/\ 60/1\.\ \/\ 75/' ui/base/x/x11_display_util.cc
@@ -101,10 +108,10 @@ prepare() {
   #sed -i 's/last_good_interval_\ =\ new_interval/last_good_interval_\ =\ base::Seconds(1)\ \/\ 144/' ui/gl/sync_control_vsync_provider.cc
   
   #165 Hz
-  sed -i 's/1\.\ \/\ 60/1\.\ \/\ 164.85/' ui/base/x/x11_display_util.cc
-  sed -i 's/1\.\ \/\ refresh_rate/1\.\ \/\ 164.85/' ui/base/x/x11_display_util.cc
-  sed -i 's/base::Seconds(1)\ \/\ 60/base::Seconds(1)\ \/\ 164.85/' ui/gl/sync_control_vsync_provider.cc
-  sed -i 's/last_good_interval_\ =\ new_interval/last_good_interval_\ =\ base::Seconds(1)\ \/\ 164.85/' ui/gl/sync_control_vsync_provider.cc
+  sed -i 's/1\.\ \/\ 60/1\.\ \/\ 165/' ui/base/x/x11_display_util.cc
+  sed -i 's/1\.\ \/\ refresh_rate/1\.\ \/\ 165/' ui/base/x/x11_display_util.cc
+  sed -i 's/base::Seconds(1)\ \/\ 60/base::Seconds(1)\ \/\ 165/' ui/gl/sync_control_vsync_provider.cc
+  sed -i 's/last_good_interval_\ =\ new_interval/last_good_interval_\ =\ base::Seconds(1)\ \/\ 165/' ui/gl/sync_control_vsync_provider.cc
   
   # Allow building against system libraries in official builds
   sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
@@ -122,8 +129,8 @@ prepare() {
   # runtime -- this allows signing into Chromium without baked-in values
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
-  # Remove '-Xclang -no-opaque-pointers' flag not supported by our clang
-  patch -Np1 -i ../remove-no-opaque-pointers-flag.patch
+  # Upstream fixes
+  patch -Np1 -i ../fix-TFLite-build-on-linux-with-system-zlib.patch
 
   # Revert kGlobalMediaControlsCastStartStop enabled by default
   # https://crbug.com/1314342
@@ -133,11 +140,14 @@ prepare() {
   # https://crbug.com/1325301
   patch -Rp1 -i ../roll-src-third_party-ffmpeg.patch
 
-  # https://chromium-review.googlesource.com/c/chromium/src/+/2862724
-  patch -Np1 -i ../sql-make-VirtualCursor-standard-layout-type.patch
+  # https://crbug.com/angleproject/7582
+  patch -Np0 -i ../angle-wayland-include-protocol.patch
 
   # Fixes for building with libstdc++ instead of libc++
-  #patch -Np1 -i ../patches/
+  patch -Np1 -i ../patches/chromium-103-VirtualCursor-std-layout.patch
+  patch -Np1 -i ../patches/chromium-105-Bitmap-include.patch
+  patch -Np1 -i ../patches/chromium-105-browser_finder-include.patch
+  patch -Np1 -i ../patches/chromium-105-AdjustMaskLayerGeometry-ceilf.patch
 
   # Link to system tools required by the build
   mkdir -p third_party/node/linux/node-linux-x64/bin
@@ -164,7 +174,7 @@ prepare() {
 build() {
   make -C chromium-launcher-$_launcher_ver
 
-  cd "$srcdir/chromium-$pkgver"
+  cd chromium-$pkgver
 
   export CC=clang
   export CXX=clang++
@@ -235,7 +245,7 @@ package() {
   install -Dm644 LICENSE \
     "$pkgdir/usr/share/licenses/chromium/LICENSE.launcher"
 
-  cd "$srcdir/chromium-$pkgver"
+  cd ../chromium-$pkgver
 
   install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
   install -D out/Release/chromedriver.unstripped "$pkgdir/usr/bin/chromedriver"
