@@ -42,5 +42,3 @@ package() {
     {CHANGELOG,CONTRIBUTING,README}.md
   install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE.md
 }
-
-# vim:set ts=2 sw=2 et:
