@@ -25,6 +25,7 @@ pkgbase = archiso-encryption-git
 	provides = archiso-encryption
 	provides = archiso-persistent-git
 	provides = anarchiso
+	provides = archiso-encryption
 	conflicts = archiso
 	conflicts = archiso-persistent-git
 	conflicts = anarchiso
