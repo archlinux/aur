@@ -1,6 +1,6 @@
 pkgbase = xtensa-esp32-elf-newlib
 	pkgdesc = A C standard library implementation intended for use on embedded systems (xtensa esp32 bare metal)
-	pkgver = 3.3.0.2021r2
+	pkgver = 4.1.0.2022r1
 	pkgrel = 1
 	url = https://github.com/espressif/newlib-esp32
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = xtensa-esp32-elf-newlib
 	makedepends = xtensa-esp32-elf-gcc
 	options = !emptydirs
 	options = !strip
-	source = newlib-esp32-esp-2021r2.tar.gz::https://codeload.github.com/espressif/newlib-esp32/tar.gz/esp-2021r2
-	sha256sums = dae87a0dd10cd4f107980a93cd458940ae02d3e03efdb4d3489b9fbaca9f478e
+	source = newlib-esp32-esp-2022r1.tar.gz::https://codeload.github.com/espressif/newlib-esp32/tar.gz/esp-2022r1
+	sha256sums = da09053863149b8fef727add21b39c11fba94b40687936677c1f58e5f9d524c4
 
 pkgname = xtensa-esp32-elf-newlib

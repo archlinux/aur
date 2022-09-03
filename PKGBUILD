@@ -1,10 +1,10 @@
 # Maintainer: Baltazár Radics <baltazar.radics@gmail.com>
 
 _target=xtensa-esp32-elf
-_upstream_ver=esp-2021r2
+_upstream_ver=esp-2022r1
 _upstream_name=newlib-esp32
 pkgname=$_target-newlib
-pkgver=3.3.0.${_upstream_ver#esp-}
+pkgver=4.1.0.${_upstream_ver#esp-}
 pkgrel=1
 pkgdesc='A C standard library implementation intended for use on embedded systems (xtensa esp32 bare metal)'
 arch=(x86_64)
@@ -13,7 +13,7 @@ license=(GPL)
 makedepends=($_target-gcc)
 options=(!emptydirs !strip)
 source=("$_upstream_name-$_upstream_ver.tar.gz::https://codeload.github.com/espressif/$_upstream_name/tar.gz/$_upstream_ver")
-sha256sums=('dae87a0dd10cd4f107980a93cd458940ae02d3e03efdb4d3489b9fbaca9f478e')
+sha256sums=('da09053863149b8fef727add21b39c11fba94b40687936677c1f58e5f9d524c4')
 
 build() {
 	rm -rf build-{newlib,nano}
