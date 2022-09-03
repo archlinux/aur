@@ -1,0 +1,23 @@
+--- a/build.sh
++++ b/build.sh
+@@ -144,8 +144,6 @@ else
+   else
+     my_os=linux64
+   fi
+-  cp $base_dir/simple64-gui/discord/libdiscord_game_sdk.so $install_dir
+-  cp $base_dir/simple64-input-qt/vosk/libvosk.so $install_dir
+ fi
+ 
+ if [[ "$1" != "nozip" ]]; then
+--- a/simple64-gui/simple64-gui.pro
++++ b/simple64-gui/simple64-gui.pro
+@@ -90,8 +90,7 @@ HEADERS  += mainwindow.h \
+     netplay/createroom.h \
+     netplay/joinroom.h \
+     netplay/waitroom.h \
+-    version.h \
+-    discord/discord_game_sdk.h
++    version.h
+ 
+ FORMS    += mainwindow.ui
+ 

@@ -1,0 +1,108 @@
+--- a/simple64-gui/mainwindow.cpp
++++ b/simple64-gui/mainwindow.cpp
+@@ -3,6 +3,7 @@
+ #include <QCloseEvent>
+ #include <QActionGroup>
+ #include <QDesktopServices>
++#include <QStandardPaths>
+ #include "settingsdialog.h"
+ #include "plugindialog.h"
+ #include "mainwindow.h"
+@@ -45,7 +46,7 @@ void MainWindow::updatePlugins()
+ #ifdef PLUGIN_DIR_PATH
+     QString pluginPath = PLUGIN_DIR_PATH;
+ #else
+-    QString pluginPath = QCoreApplication::applicationDirPath();
++    QString pluginPath = QStringLiteral(u"/usr/lib/mupen64plus");
+ #endif
+     QDir PluginDir(pluginPath);
+     PluginDir.setFilter(QDir::Files);
+@@ -371,7 +372,7 @@ MainWindow::MainWindow(QWidget *parent) :
+     updatePIF(ui);
+ 
+     if (!settings->contains("configDirPath"))
+-        settings->setValue("configDirPath", "$CONFIG_PATH$");
++        settings->setValue("configDirPath", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + QStringLiteral(u"/mupen64plus"));
+ 
+ #ifdef CONFIG_DIR_PATH
+     settings->setValue("configDirPath", CONFIG_DIR_PATH);
+@@ -433,7 +434,7 @@ void MainWindow::updateApp()
+ 
+ void MainWindow::setupDiscord()
+ {
+-    QLibrary *discordLib = new QLibrary((QDir(QCoreApplication::applicationDirPath()).filePath("discord_game_sdk")), this);
++    QLibrary *discordLib = new QLibrary(QStringLiteral(u"discord_game_sdk"), this);
+ 
+     memset(&discord_app, 0, sizeof(discord_app));
+ 
+@@ -960,7 +961,7 @@ void MainWindow::loadCoreLib()
+ #ifdef CORE_LIBRARY_PATH
+     QString corePath = CORE_LIBRARY_PATH;
+ #else
+-    QString corePath = QCoreApplication::applicationDirPath();
++    QString corePath = QStringLiteral(u"/usr/lib");
+ #endif
+     m64p_error res = osal_dynlib_open(&coreLib, QDir(corePath).filePath(OSAL_DEFAULT_DYNLIB_FILENAME).toUtf8().constData());
+ 
+@@ -1053,7 +1054,7 @@ void MainWindow::loadPlugins()
+ #ifdef PLUGIN_DIR_PATH
+     QString pluginPath = PLUGIN_DIR_PATH;
+ #else
+-    QString pluginPath = QCoreApplication::applicationDirPath();
++    QString pluginPath = QStringLiteral(u"/usr/lib/mupen64plus");
+ #endif
+     QString file_path;
+     QString plugin_path;
+--- a/simple64-gui/mainwindow.h
++++ b/simple64-gui/mainwindow.h
+@@ -1,7 +1,7 @@
+ #ifndef MAINWINDOW_H
+ #define MAINWINDOW_H
+ 
+-#include "discord/discord_game_sdk.h"
++#include <discord_game_sdk.h>
+ #include "vkwindow.h"
+ #include "workerthread.h"
+ #include "logviewer.h"
+--- a/simple64-gui/settingsdialog.cpp
++++ b/simple64-gui/settingsdialog.cpp
+@@ -58,7 +58,7 @@ void SettingsDialog::initStuff()
+ #ifdef PLUGIN_DIR_PATH
+     QString pluginPath = PLUGIN_DIR_PATH;
+ #else
+-    QString pluginPath = QCoreApplication::applicationDirPath();
++    QString pluginPath = QStringLiteral(u"/usr/lib/mupen64plus");
+ #endif
+     QDir PluginDir(pluginPath);
+     QStringList Filter;
+--- a/simple64-gui/workerthread.h
++++ b/simple64-gui/workerthread.h
+@@ -6,7 +6,7 @@
+ #include <QString>
+ #include <QVulkanInstance>
+ #include "common.h"
+-#include "discord/discord_game_sdk.h"
++#include <discord_game_sdk.h>
+ 
+ class WorkerThread
+  : public QThread
+--- a/simple64-input-qt/main.cpp
++++ b/simple64-input-qt/main.cpp
+@@ -27,7 +27,7 @@
+ #include "m64p_plugin.h"
+ #include "main.h"
+ #include "configdialog.h"
+-#include "vosk/vosk_api.h"
++#include <vosk_api.h>
+ #include "osal/osal_dynamiclib.h"
+ #include "vruwords.h"
+ #include "funcs.h"
+@@ -726,7 +726,7 @@ static int setupVosk()
+ {
+     if (voskLib)
+         return 0;
+-    voskLib = new QLibrary((QDir(QCoreApplication::applicationDirPath()).filePath("vosk")));
++    voskLib = new QLibrary(QStringLiteral(u"vosk"));
+     VoskAcceptWaveform = (ptr_vosk_recognizer_accept_waveform) voskLib->resolve("vosk_recognizer_accept_waveform");
+     VoskFinalResult = (ptr_vosk_recognizer_final_result) voskLib->resolve("vosk_recognizer_final_result");
+     VoskNewModel = (ptr_vosk_model_new) voskLib->resolve("vosk_model_new");

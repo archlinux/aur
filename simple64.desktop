@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=simple64
+Comment=Nintendo64 emulator based on Mupen64Plus
+Path=/usr/bin
+Exec=simple64-gui
+Icon=simple64
+Terminal=false
+StartupNotify=false
+Categories=Game;
