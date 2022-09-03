@@ -1,7 +1,7 @@
 pkgbase = air-impulse-loader-bin
 	pkgdesc = Audio Assault AIR Impulse Response Loader Rack
-	pkgver = 20220826
-	pkgrel = 2
+	pkgver = 20220828
+	pkgrel = 1
 	url = https://audioassault.mx/collections/plugins/products/air-impulse-rackhttps://audioassault.mx/collections/plugins/products/air-impulse-rack
 	arch = x86_64
 	groups = pro-audio
