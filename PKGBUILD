@@ -3,7 +3,7 @@
 pkgname=queercat-git
 pkgver=r20.c626e13
 pkgrel=1
-pkgdesc=""
+pkgdesc="A version of lolcat with options for some lgbtq+ flags."
 arch=('any')
 url="https://github.com/Elsa002/queercat"
 license=('unknown')
