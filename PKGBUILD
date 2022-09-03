@@ -7,7 +7,7 @@ pkgdesc="Simple very dark blue GRUB theme"
 arch=(any)
 url="https://github.com/trueNAHO/grub2-theme-vimix-very-dark-blue"
 license=(GPL3)
-depends=(bash grub sudo)
+depends=(bash grep grub sudo)
 makedepends=(git)
 optdepends=(
     'efibootmgr: Linux user-space application to modify the EFI Boot Manager' \

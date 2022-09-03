@@ -8,6 +8,7 @@ pkgbase = grub-theme-vimix-very-dark-blue
 	license = GPL3
 	makedepends = git
 	depends = bash
+	depends = grep
 	depends = grub
 	depends = sudo
 	optdepends = efibootmgr: Linux user-space application to modify the EFI Boot Manager
