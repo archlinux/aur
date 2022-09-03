@@ -2,8 +2,8 @@
 # Contributor: Wyatt J. Brown <sushidudeteam at gmail dot com>
 # shellcheck disable=SC2034,SC2148,SC2154
 pkgname=all-repository-fonts
-pkgver=20220419
-pkgrel=2
+pkgver=20220903
+pkgrel=1
 pkgdesc='Meta package for all fonts in the official repositories.'
 arch=('any')
 url='https://aur.archlinux.org/packages/all-repository-fonts/'
@@ -107,7 +107,6 @@ depends=(
 	'ttf-lato'
 	'ttf-liberation'
 	'ttf-monofur'
-	'ttf-nerd-fonts-symbols'
 	'ttf-opensans'
 	'ttf-proggy-clean'
 	'ttf-roboto'

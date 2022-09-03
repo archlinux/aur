@@ -1,7 +1,7 @@
 pkgbase = all-repository-fonts
 	pkgdesc = Meta package for all fonts in the official repositories.
-	pkgver = 20220419
-	pkgrel = 2
+	pkgver = 20220903
+	pkgrel = 1
 	url = https://aur.archlinux.org/packages/all-repository-fonts/
 	arch = any
 	depends = adobe-source-code-pro-fonts
@@ -103,7 +103,6 @@ pkgbase = all-repository-fonts
 	depends = ttf-lato
 	depends = ttf-liberation
 	depends = ttf-monofur
-	depends = ttf-nerd-fonts-symbols
 	depends = ttf-opensans
 	depends = ttf-proggy-clean
 	depends = ttf-roboto
