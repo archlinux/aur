@@ -1,8 +1,8 @@
-# Maintainer: 6arms1leg <m.brnsfld {at} googlemail {d0t} com>
+# Maintainer: 6arms1leg <6arms1leg {at} pm {d0t} me>
 # Contributor: Tom Wallroth <tomwallroth {at} gmail {d0t} com>
 pkgname=cherrymusic
 pkgver=0.41.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A standalone HTML5 (with Flash fallback) music streaming server based on CherryPy and jPlayer."
 arch=('any')
 url="http://fomori.org/cherrymusic"
