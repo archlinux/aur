@@ -1,7 +1,7 @@
 # Maintainer: <me at auoeke dot net>
 pkgname=lapce-nightly-bin
-pkgver=20220902
-pkgrel=4
+pkgver=20220903
+pkgrel=1
 pkgdesc='Lightning-fast and powerful code editor'
 arch=(x86_64)
 url=https://lapce.dev
@@ -22,7 +22,7 @@ source=(
     https://raw.githubusercontent.com/lapce/lapce/master/extra/{images/logo.png,linux/dev.lapce.lapce.{desktop,metainfo.xml}}
 )
 sha256sums=(
-    'f84cdf5fd9ea91e7b6d8ec593f99331cd0f7b52dfa499af3098727f357bcd669'
+    'SKIP'
     'b715c6d069e7cb9fd76ebe398c0251de9f218a44876c75015b9e969c9e70ba23'
     '07e6b1b685c88b8f23919f58f9e2210a0357836b12026b5a04b0c18b4acfd34a'
     'ea9a83d6612ac4a3a315577b3e55ec761420ea62af1ed35936a5421891fba0ff'
