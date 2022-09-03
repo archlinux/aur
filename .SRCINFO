@@ -1,7 +1,7 @@
 pkgbase = lapce-nightly-bin
 	pkgdesc = Lightning-fast and powerful code editor
 	pkgver = 20220903
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lapce.dev
 	arch = x86_64
 	license = Apache
@@ -14,7 +14,7 @@ pkgbase = lapce-nightly-bin
 	depends = libxcb
 	depends = libxkbcommon
 	options = !lto
-	source = https://github.com/lapce/lapce/releases/download/nightly/Lapce-linux.tar.gz
+	source = lapce-20220903.tar.gz::https://github.com/lapce/lapce/releases/download/nightly/Lapce-linux.tar.gz
 	source = https://raw.githubusercontent.com/lapce/lapce/master/extra/images/logo.png
 	source = https://raw.githubusercontent.com/lapce/lapce/master/extra/linux/dev.lapce.lapce.desktop
 	source = https://raw.githubusercontent.com/lapce/lapce/master/extra/linux/dev.lapce.lapce.metainfo.xml
