@@ -5,8 +5,8 @@ post_install() {
     flatpak remote-add --if-not-exists flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
   fi   
   # enable systemd timers
-  ln -sf /usr/lib/systemd/system/pamac-cleancache.timer /etc/systemd/system/multi-user.target.wants
-  #ln -sf /usr/lib/systemd/system/pamac-mirrorlist.timer /etc/systemd/system/multi-user.target.wants
+  systemctl enable --now pamac-cleancache.timer
+  #systemctl enable --now pamac-mirrorlist.timer
   # polkit agent
   printf '==> An authentication agent is required\n'
   printf '    Cinnamon, Deepin, GNOME, GNOME Flashback, KDE, LXDE, LXQt, MATE and Xfce\n'
