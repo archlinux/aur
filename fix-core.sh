@@ -1,5 +1,21 @@
 #!/bin/bash
 root_dir=$(cd `dirname $0`/.. && pwd -P)
+set -e
+trap 'catchError $LINENO "$BASH_COMMAND"' ERR # 捕获错误情况
+catchError() {
+    exit_code=$?
+    if [ $exit_code -ne 0 ]; then
+        fail "\033[31mcommand: $2\n  at $0:$1\n  at $STEP\033[0m"
+    fi
+    exit $exit_code
+}
+
+notice() {
+    echo -e "\033[36m $1 \033[0m "
+}
+fail() {
+    echo -e "\033[41;37m 失败 \033[0m $1"
+}
 
 package_dir="$root_dir/package.nw"
 tmp_dir="$root_dir/tmp/core"
@@ -35,6 +51,7 @@ if [[ ! -z $token_find_result ]];then
 fi
 
 # open -a Terminal "`pwd`" --> gnome-terminal
+notice "fix terminal"
 find_result=$( grep -lr 'open -a Terminal "`pwd`"' "$tmp_dir/core.wxvpkg" )
 echo "Terminal启动位置: $find_result"
 if [[ ! -z $find_result ]];then
@@ -45,23 +62,24 @@ fi
 # wcc、wcsc处理，设置WINE=fasle环境变量生效
 if [[ "$WINE" != 'true' ]];then
   # "wcc.exe":!0,"wcsc.exe":!0
-  find_result=$( grep -lr '{wcc:!0,wcsc:!0}' "$tmp_dir/core.wxvpkg" )
+  find_result=$( grep -lr 'wcc-exec' "$tmp_dir/core.wxvpkg" )
   echo "wcc: $find_result"
   if [[ ! -z $find_result ]];then
-    new_str='{"wcc.bin":!0,"wcsc.bin":!0,wcc:!0,wcsc:!0}'
-    sed -i "s#{wcc:!0,wcsc:!0}#$new_str#g" "$find_result"
-    new_str='"linux"===process.platform'
-    sed -i "s#\"darwin\"===process.platform#$new_str#g" "$find_result"
+    # new_str='{"wcc.bin":!0,"wcsc.bin":!0,wcc:!0,wcsc:!0}'
+    # sed -i "s#{wcc:!0,wcsc:!0}#$new_str#g" "$find_result"
+    # new_str='"linux"===process.platform'
+    # sed -i "s#\"darwin\"===process.platform#$new_str#g" "$find_result"
     
-    return_exp_wcc=$(cat $find_result | grep -P 'return [a-z]+\("wcc"\)' -o)  # return ?("wcc")
-    return_exp_wcc_replace="${return_exp_wcc//wcc/wcc.bin}" # return ?("wcc.bin")
-    return_exp_wcc_replace="${return_exp_wcc//return /${return_exp_wcc_replace},}" # return ?("wcc.bin")
+    # return_exp_wcc=$(cat $find_result | grep -P 'return [a-z]+\("wcc"\)' -o)  # return ?("wcc")
+    # return_exp_wcc_replace="${return_exp_wcc//wcc/wcc.bin}" # return ?("wcc.bin")
+    # return_exp_wcc_replace="${return_exp_wcc//return /${return_exp_wcc_replace},}" # return ?("wcc.bin")
 
-    return_exp_wcsc=$(cat $find_result | grep -P 'return [a-z]+\("wcsc"\)' -o)  # return ?("wcsc")
-    return_exp_wcsc_replace="${return_exp_wcc_replace//wcc/wcsc}"
+    # return_exp_wcsc=$(cat $find_result | grep -P 'return [a-z]+\("wcsc"\)' -o)  # return ?("wcsc")
+    # return_exp_wcsc_replace="${return_exp_wcc_replace//wcc/wcsc}"
 
-    sed -i "s#$return_exp_wcc#$return_exp_wcc_replace#g" "$find_result"
-    sed -i "s#$return_exp_wcsc#$return_exp_wcsc_replace#g" "$find_result"
+    sed -i "s#wcc\\.exe#wcc#g" "$find_result"
+    sed -i "s#wcsc\\.exe#wcsc#g" "$find_result"
+    sed -i "s#code/package.nw#package.nw#g" "$find_result"
   fi
   # 处理报错时控制台显示的环境
   find_result=$( grep -lr '(env:' "$tmp_dir/core.wxvpkg" )
@@ -78,6 +96,7 @@ if [[ "$WINE" != 'true' ]];then
 fi
 
 # fix theme
+notice "fix theme"
 find_result=$( grep -lr "OSThemeController=" "$tmp_dir/core.wxvpkg" )
 echo "theme: $find_result"
 if [[ -n $find_result ]];then
@@ -92,8 +111,11 @@ if [[ -n $find_result ]];then
 fi
 
 # fix update check
+notice "fix update check"
+sed -i 's#</body><script src=../js/core#</body><script src="../js/unpack/hackrequire/index.js"></script><script src=../js/core#' "$package_dir/html/whatsnew.html"
 find_result=$( grep -lr "whatsnew.html" "$tmp_dir/core.wxvpkg" )
-sed -i 's#t=>{W("new_version_hint#t=>{t.window.global.shareData=global.shareData;t.window.global.windowMap=global.windowMap;W("new_version_hint#' $find_result
+grep -lr "t=>{R(\"new_version_hint" "$find_result"
+sed -i 's#t=>{R("new_version_hint#t=>{const keys = ["shareData", "windowMap", "isSimple","masterProxyPort", "proxyPort", "masterH2ProxyPort", "h2ProxyPort"];for(let k of keys)t.window.global[k] = global[k];R("new_version_hint#' $find_result
 
 # pack 路径 到 文件
 echo "pack"

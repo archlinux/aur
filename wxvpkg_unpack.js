@@ -1,5 +1,12 @@
 #!/usr/bin/env node
 // Extract core.wxvpkg of current folder to dest folder
+/**
+ * 使用：
+ * 两个参数
+ * uppack.js from to
+ * from: pkg文件
+ * to: 目标文件夹
+ */
 const path = require('path')
 const fs = require('fs')
 
@@ -20,6 +27,7 @@ function readSync(start, length) {
 }
 
 const totalCount = readSync(14, 4).readInt32BE(0)
+console.log('totalCount', totalCount)
 const map = {};
 let n = 18;
 for (let i = 0; i < totalCount; i++) {

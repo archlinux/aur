@@ -7,7 +7,7 @@
 # https://github.com/dragonation/wechat-devtools
 # https://github.com/cytle/wechat_web_devtools
 
-_wechat_devtools_ver="1.06.2206090"
+_wechat_devtools_ver="1.06.2207210"
 # https://servicewechat.com/wxa-dev-logic/download_redirect?type=x64&from=mpwiki&download_version=1052203030&version_type=1
 _wechat_devtools_url="https://servicewechat.com/wxa-dev-logic/download_redirect?type=x64&from=mpwiki&download_version=${_wechat_devtools_ver//\./}&version_type=1"
 # _wechat_devtools_url="https://dldir1.qq.com/WechatWebDev/release/p-ae42ee2cde4d42ee80ac60b35f183a99/wechat_devtools_1.05.2201240_x64.exe"
@@ -46,21 +46,21 @@ source=("nwjs-v${_nwjs_ver}.tar.gz::https://npm.taobao.org/mirrors/nwjs/v${_nwjs
         "wxvpkg_unpack.js"
         "fix-other.sh")
 md5sums=('ac7680788544c457daee11aaf69798fe'
-         'a2e0e0826571daeab239755d5b3347e5'
+         '7599cfeeebb57bda7ae5594daf2e0659'
          '4d14589085ebbf79ce504dc27330d33b'
-         '2b90ce6acba9778b94c4e085e1c5ca12'
+         '807f1ebc16e344386c723a25fdb2276e'
          '4d3f5273be80a74741c841fcfa4185d3'
          '0f4353664123320280ea4d6bb295dce2'
          'ae685283b21becd9c097aca4571f7556'
          '912b5948dc8a968e1b53390173c9d363'
          '951538b31000bf541446502069dcd92f'
          '468facecd8c3a4fbf4da03b5ceae1320'
-         '1c33cf717c99e4c8625e238ad31a7d95'
-         '03cdaa275789ea5143574f52a7be01c6'
+         'e7735636b20240bcb1d61c1ac0085643'
+         '8adadb9176aed175d85f271929e0055c'
          'd43f68ce696b5dad3ea4e7ff89b9d4ad'
          '38f8ed65b632c50ee5cef1231984f224'
-         '66b98acbdfcaa249082d526ccac8e7d8'
-         '122556d1d021adb3094d38ff1d999b0a')
+         '005ce9329dfbd97106daab0f2ca4a90e'
+         '5b24e5f379987f008bacda92d77fb2c8')
 options=('!strip')
 
 prepare() {
@@ -120,7 +120,7 @@ package() {
     find ./package.nw -type d | xargs -I {} chmod -R a+rx {}
 
     cp ${srcdir}/node.${_node_version} nwjs/node
-    cd nwjs && ln -s node node.exe
+    cd nwjs && ln -s node node.exe && ln -s ../package.nw package.nw
 
     install -Dm755 "${srcdir}/wechat-devtools" "${pkgdir}${_install_dir}/bin/wechat-devtools"
     install -Dm755 "${srcdir}/wechat-devtools-cli" "${pkgdir}${_install_dir}/bin/wechat-devtools-cli"
