@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('boost-libs' 'python' 'rf24')
 makedepends=('boost' 'python-setuptools')
 source=("https://github.com/nRF24/RF24/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6ec7a1be85fadb92ebfb9fe27989c8054314a640afde69430c209fd94c97b0c9')
+sha256sums=('b96823b1ca9ecc7d6b5045b6e5b82374e48761a6c79acd092d1ae0efec7b209d')
 
 build() {
   cd "$srcdir/RF24-$pkgver"
