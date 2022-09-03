@@ -1,14 +1,14 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=raider-file-shredder-git
-pkgver=r368.56b8628
+pkgver=r463.289ecd3
 pkgrel=1
 pkgdesc="Securely delete your files"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ADBeveridge/raider"
 license=('GPL3')
 depends=('libadwaita')
-makedepends=('git' 'meson' 'blueprint-compiler')
+makedepends=('git' 'meson' 'itstool' 'blueprint-compiler' 'gobject-introspection')
 optdepends=('libnautilus-extension')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
