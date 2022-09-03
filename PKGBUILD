@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tictoc
-_pkgver=1.0.1
+_pkgver=1.1
 pkgname=r-${_pkgname,,}
-pkgver=1.0.1
-pkgrel=4
+pkgver=1.1
+pkgrel=1
 pkgdesc='Functions for Timing R Scripts, as Well as Implementations of Stack and List Structures'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a09a1535c417ddf6637bbbda5fca6edab6c7f7b252a64e57e99d4d0748712705')
+sha256sums=('120f868ba276bda70c8edef5d6c092586cf73db0fa02eb5459d8f55350fb474d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
