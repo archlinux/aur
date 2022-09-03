@@ -1,6 +1,6 @@
 pkgbase = r-rols
 	pkgdesc = An R interface to the Ontology Lookup Service
-	pkgver = 2.24.3
+	pkgver = 2.24.4
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rols
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-rols
 	optdepends = r-lubridate
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rols_2.24.3.tar.gz
-	sha256sums = 844d5c5af86185016eec6caf017135d3182df56ea85768e4824d196736a3db76
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rols_2.24.4.tar.gz
+	sha256sums = c9b69b5f850837fa71b3e9b859674b765fac71eb1e7bc464a1bd8f8ce827edc1
 
 pkgname = r-rols
