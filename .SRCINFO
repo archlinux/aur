@@ -1,6 +1,6 @@
 pkgbase = deemix-gui-appimage
 	pkgdesc = A gui electron app for the deemix lib.
-	pkgver = 20220717
+	pkgver = 20220819
 	pkgrel = 1
 	url = https://deemix.app/gui
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = deemix-gui-appimage
 	depends = libdbusmenu-gtk2
 	depends = libindicator-gtk2
 	depends = nss
-	source = https://download.deemix.app/gui/linux-x86_64-latest.AppImage
-	sha256sums = ad13a7b66e5d8f578a418ac78f58aae4c3896d9b4e2ea0cbd2e0a4b8474a69d7
+	source = https://download.deemix.app/gui/linux-x64-latest.AppImage
+	sha256sums = a6812f10861de455d1c1e00620ae40ccf8c1598de9f1eaed8813db115d2cbfe7
 
 pkgname = deemix-gui-appimage

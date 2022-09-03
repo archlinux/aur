@@ -1,22 +1,23 @@
 # Maintainer: Klaus Ferreira <klauseverwalkingdev at yandex dot com>
 
 _pkgname="deemix-gui"
-_carch="x86_64"
-_originalappimagefilename="linux-${_carch}-latest.AppImage"
+_carchbase="x86"
+_carchbit="64"
+_originalappimagefilename="linux-x${_carchbit}-latest.AppImage"
 _appimage="${_pkgname}.AppImage"
 
 pkgname="${_pkgname}-appimage"
-pkgver=20220717
+pkgver=20220819
 pkgrel=1
 pkgdesc="A gui electron app for the deemix lib."
-arch=("${_carch}")
+arch=("${_carchbase}_${_carchbit}")
 url="https://deemix.app/gui"
 license=("GPL3")
 depends=("alsa-lib" "dbus-glib" "gtk3" "libdbusmenu-gtk2" "libindicator-gtk2" "nss")
 source=(
     "https://download.deemix.app/gui/${_originalappimagefilename}"
 )
-sha256sums=('ad13a7b66e5d8f578a418ac78f58aae4c3896d9b4e2ea0cbd2e0a4b8474a69d7')
+sha256sums=('a6812f10861de455d1c1e00620ae40ccf8c1598de9f1eaed8813db115d2cbfe7')
 
 prepare() {
     mv ./${_originalappimagefilename} ./${_appimage}
