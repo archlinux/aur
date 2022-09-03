@@ -5,7 +5,6 @@ pkgbase = tigercapture
 	url = https://github.com/tigermouthbear/tigercapture
 	arch = x86_64
 	license = GPLv3
-	depends = libcurl-compat
 	depends = qt5-base
 	makedepends = make
 	makedepends = cmake
