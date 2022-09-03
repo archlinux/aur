@@ -1,7 +1,7 @@
 pkgbase = zarchive-git
 	pkgdesc = Library for creating and reading zstd-compressed file archives
 	pkgver = 0.1.1.r12.g48914a0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Exzap/ZArchive
 	arch = aarch64
 	arch = armv7h

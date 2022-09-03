@@ -2,7 +2,7 @@
 _pkgname=zarchive
 pkgname=$_pkgname-git
 pkgver=0.1.1.r12.g48914a0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for creating and reading zstd-compressed file archives"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/Exzap/ZArchive"
@@ -21,7 +21,9 @@ pkgver() {
 build() {
 	cmake -S $_pkgname -B shared \
 		-DBUILD_SHARED_LIBS=ON \
-		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
+		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-Wno-dev
 	cmake --build shared
