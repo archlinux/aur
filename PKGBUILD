@@ -5,7 +5,7 @@
 pkgname=chitubox-pro-bin
 pkgver=1.2.0
 
-pkgrel=3
+pkgrel=4
 pkgdesc="All-in-one SLA/DLP/LCD Slicer - Pro version"
 
 makedepends=('xdg-user-dirs')
