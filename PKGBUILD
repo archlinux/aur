@@ -5,7 +5,7 @@
 
 pkgname=debops
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Your Debian-based data center in a box"
 arch=('any')
 url="https://debops.org/"
