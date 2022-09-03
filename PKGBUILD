@@ -2,7 +2,7 @@
 
 pkgname=sdl12-compat-git
 _pkgbase=sdl12-compat
-pkgver=1.2.52.r33.g9403529
+pkgver=1.2.54.r6.g4d814ba
 pkgrel=1
 pkgdesc="An SDL-1.2 compatibility layer that uses SDL 2.0 behind the scenes."
 arch=("x86_64")
@@ -12,14 +12,13 @@ depends=('sdl2' 'glibc' 'glu')
 makedepends=('cmake' 'git')
 conflicts=('sdl' 'sdl12-compat')
 provides=('sdl=1:1.2.15+r406+gf1caf909-1' 'sdl12-compat')
-replaces=('sdl<1:1.2.15+r406+gf1caf909')
 source=("git+https://github.com/libsdl-org/sdl12-compat.git")
 sha256sums=('SKIP')
 
 
 pkgver() {
   cd "$_pkgbase"
-  git describe --long --tags | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^prerelease.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare(){
