@@ -1,5 +1,5 @@
 pkgbase = java-openj9
-	pkgver = 17.0.1.u12_openj9_0.29.1
+	pkgver = 18.0.2.u9_openj9_0.33.1
 	pkgrel = 1
 	url = http://www.eclipse.org/openj9/
 	arch = x86_64
@@ -31,25 +31,26 @@ pkgbase = java-openj9
 	makedepends = numactl
 	makedepends = nasm
 	makedepends = cmake
-	source = openj9-openjdk-jdk17-fc67fbe.tar.gz::https://github.com/ibmruntimes/openj9-openjdk-jdk17/archive/fc67fbe50a0de9172d1aaac6e42464c8dc8e16ab.tar.gz
-	source = openj9-7d055df.tar.gz::https://github.com/eclipse/openj9/archive/7d055dfcb71452077db01fddfc3ccd845cd461d0.tar.gz
-	source = openj9-omr-e30892e.tar.gz::https://github.com/eclipse/openj9-omr/archive/e30892e2b525e89712747040b4186b9a055a93ce.tar.gz
+	options = !lto
+	source = openj9-openjdk-jdk18-8406c39.tar.gz::https://github.com/ibmruntimes/openj9-openjdk-jdk18/archive/8406c39ea29b99058d740398c9c07dccba04bc12.tar.gz
+	source = openj9-1d9d168.tar.gz::https://github.com/eclipse/openj9/archive/1d9d16830f713e97410e8eeed1c350e58f34fadb.tar.gz
+	source = openj9-omr-b58aa27.tar.gz::https://github.com/eclipse/openj9-omr/archive/b58aa2708c095efadf522f67aaef9f7de2a7cbc7.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
 	source = omr-omrstr-iconv-failure-overflow.patch
-	source = omr-fam.patch
-	sha256sums = bbcf5b61c4707abf52cd56d24501f99cfbc9cfd55f8193426682983c2125fb47
-	sha256sums = 17ffc04db676c0e17affad822b07e5d0e9243273761de8ce340a0220a2b4ff9a
-	sha256sums = 4662774fbe49421a6643759bc4565abdb3ae4bddb604618b805f1888623c94c9
+	source = openj9-openjdk-override-version.patch
+	sha256sums = 8d3fce68bfed0b75c83e668227a87e7bf91d494c8e30819b4d20ac6334f98d7e
+	sha256sums = fa32d99c786b3901ad01f1aa2cfc4b995820c1574c80f74f87b51d86314389d5
+	sha256sums = a8b5eba25141d50b6f57c1b92ef7340718e2052d5e1192b3f9d4260e4b53d023
 	sha256sums = 7cb89746dbbcf498dd43b53fee59b124f42e3ea0d8b7134ab803cc2bd6b50230
 	sha256sums = bf76024528d050fd912f72d73e18a814a930df3478b132a99a887fbbdc0c9dfd
 	sha256sums = bd2d4da78a65eec20dc32e21fd4fe134a2483b0bbe2dfb940d66755acc237975
 	sha256sums = f37290530dcb8eb5acb4f70609c55b7e2be134f1052ebf20f117c2996a749858
-	sha256sums = c288b0a1a2424967d9c00e4d07d16f5d703f6b9b1195839753480fcd9810faf5
+	sha256sums = 2a97f38ee08ed6a80be38879b47b78fc710adb9dfb69c44d2a33bee45bd06263
 
 pkgname = jre-openj9-headless
-	pkgdesc = OpenJDK Java 17 headless runtime environment
+	pkgdesc = OpenJDK Java 18 headless runtime environment
 	install = install_jre-openj9-headless.sh
 	depends = java-runtime-common>=3
 	depends = ca-certificates-utils
@@ -66,9 +67,9 @@ pkgname = jre-openj9-headless
 	depends = glibc
 	depends = gcc-libs
 	optdepends = java-rhino: for some JavaScript support
-	provides = java-runtime-headless=17
-	provides = java-runtime-headless-openj9=17
-	provides = jre17-openj9-headless=17.0.1.u12_openj9_0.29.1-1
+	provides = java-runtime-headless=18
+	provides = java-runtime-headless-openj9=18
+	provides = jre18-openj9-headless=18.0.2.u9_openj9_0.33.1-1
 	backup = etc/java-openj9/logging.properties
 	backup = etc/java-openj9/management/jmxremote.access
 	backup = etc/java-openj9/management/jmxremote.password.template
@@ -85,36 +86,40 @@ pkgname = jre-openj9-headless
 	backup = etc/java-openj9/sound.properties
 
 pkgname = jre-openj9
-	pkgdesc = OpenJDK Java 17 full runtime environment
+	pkgdesc = OpenJDK Java 18 full runtime environment
 	install = install_jre-openj9.sh
-	depends = jre17-openj9-headless=17.0.1.u12_openj9_0.29.1-1
+	depends = jre18-openj9-headless=18.0.2.u9_openj9_0.33.1-1
 	depends = giflib
+	depends = libgif.so
+	depends = glibc
+	depends = gcc-libs
+	depends = libpng
 	optdepends = alsa-lib: for basic sound support
 	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
-	provides = java-runtime=17
-	provides = java-runtime-openj9=17
-	provides = jre17-openj9=17.0.1.u12_openj9_0.29.1-1
+	provides = java-runtime=18
+	provides = java-runtime-openj9=18
+	provides = jre18-openj9=18.0.2.u9_openj9_0.33.1-1
 
 pkgname = jdk-openj9
-	pkgdesc = OpenJDK Java 17 development kit
+	pkgdesc = OpenJDK Java 18 development kit
 	install = install_jdk-openj9.sh
-	depends = jre17-openj9=17.0.1.u12_openj9_0.29.1-1
+	depends = jre18-openj9=18.0.2.u9_openj9_0.33.1-1
 	depends = java-environment-common=3
 	depends = hicolor-icon-theme
 	depends = libelf
 	depends = glibc
 	depends = gcc-libs
-	provides = java-environment=17
-	provides = java-environment-openj9=17
-	provides = jdk17-openj9=17.0.1.u12_openj9_0.29.1-1
+	provides = java-environment=18
+	provides = java-environment-openj9=18
+	provides = jdk18-openj9=18.0.2.u9_openj9_0.33.1-1
 
 pkgname = openj9-src
-	pkgdesc = OpenJDK Java 17 sources
-	depends = jdk17-openj9=17.0.1.u12_openj9_0.29.1-1
-	provides = openj917-src=17.0.1.u12_openj9_0.29.1-1
+	pkgdesc = OpenJDK Java 18 sources
+	depends = jdk18-openj9=18.0.2.u9_openj9_0.33.1-1
+	provides = openj918-src=18.0.2.u9_openj9_0.33.1-1
 
 pkgname = openj9-doc
-	pkgdesc = OpenJDK Java 17 documentation
-	depends = jdk17-openj9=17.0.1.u12_openj9_0.29.1-1
-	provides = openj917-doc=17.0.1.u12_openj9_0.29.1-1
+	pkgdesc = OpenJDK Java 18 documentation
+	depends = jdk18-openj9=18.0.2.u9_openj9_0.33.1-1
+	provides = openj918-doc=18.0.2.u9_openj9_0.33.1-1

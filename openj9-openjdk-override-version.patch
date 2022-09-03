@@ -1,0 +1,11 @@
+--- a/closed/OpenJ9.gmk
++++ b/closed/OpenJ9.gmk
+@@ -44,7 +44,7 @@
+ # $4 - 'required' for a required repository, anything else for an optional one
+ GetVersion = $(eval $(call GetVersionHelper,$(strip $1),$(strip $2),$(strip $3),$(strip $4)))
+ define GetVersionHelper
+-  $2 := $$(if $(wildcard $3),$$(shell $(GIT) -C $3 rev-parse --short HEAD))
++  $2 := $$(if $$($2),$$($2),$$(if $(wildcard $3),$$(shell $(GIT) -C $3 rev-parse --short HEAD)))
+   ifneq (,$$($2))
+     VersionLabelWidth := $(shell $(ECHO) "$1" | $(AWK) "{ width = length; print (width > $(VersionLabelWidth) ? width : $(VersionLabelWidth)) }")
+     VersionPairs += "$1" "$$($2)"

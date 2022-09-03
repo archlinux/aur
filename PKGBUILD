@@ -6,11 +6,11 @@
 
 pkgbase=java-openj9
 pkgname=('jre-openj9-headless' 'jre-openj9' 'jdk-openj9' 'openj9-src' 'openj9-doc')
-_majorver=17
+_majorver=18
 _minorver=0
-_securityver=1
-_updatever=12
-_openj9ver=0.29.1
+_securityver=2
+_updatever=9
+_openj9ver=0.33.1
 pkgrel=1
 pkgver=${_majorver}${_minorver:+.${_minorver}}${_securityver:+.${_securityver}}.u${_updatever}_openj9_${_openj9ver}
 arch=('x86_64')
@@ -20,9 +20,10 @@ makedepends=('java-environment>=11' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'lib
              'libxrender' 'libxtst' 'libxt' 'libxext' 'libxrandr' 'alsa-lib'
              'graphviz' 'freetype2' 'libjpeg-turbo' 'giflib' 'libpng' 'lcms2'
              'libnet' 'bash' 'harfbuzz' 'gcc-libs' 'glibc' 'numactl' 'nasm' 'cmake')
-_openjdk_sha=fc67fbe50a0de9172d1aaac6e42464c8dc8e16ab
-_openj9_sha=7d055dfcb71452077db01fddfc3ccd845cd461d0
-_openj9omr_sha=e30892e2b525e89712747040b4186b9a055a93ce
+_openjdk_sha=8406c39ea29b99058d740398c9c07dccba04bc12
+_openj9_sha=1d9d16830f713e97410e8eeed1c350e58f34fadb
+_openj9omr_sha=b58aa2708c095efadf522f67aaef9f7de2a7cbc7
+options=(!lto)
 source=(openj9-openjdk-jdk${_majorver}-${_openjdk_sha:0:7}.tar.gz::https://github.com/ibmruntimes/openj9-openjdk-jdk${_majorver}/archive/${_openjdk_sha}.tar.gz
         openj9-${_openj9_sha:0:7}.tar.gz::https://github.com/eclipse/openj9/archive/${_openj9_sha}.tar.gz
         openj9-omr-${_openj9omr_sha:0:7}.tar.gz::https://github.com/eclipse/openj9-omr/archive/${_openj9omr_sha}.tar.gz
@@ -30,15 +31,15 @@ source=(openj9-openjdk-jdk${_majorver}-${_openjdk_sha:0:7}.tar.gz::https://githu
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop
         omr-omrstr-iconv-failure-overflow.patch
-        omr-fam.patch)
-sha256sums=('bbcf5b61c4707abf52cd56d24501f99cfbc9cfd55f8193426682983c2125fb47'
-            '17ffc04db676c0e17affad822b07e5d0e9243273761de8ce340a0220a2b4ff9a'
-            '4662774fbe49421a6643759bc4565abdb3ae4bddb604618b805f1888623c94c9'
+        openj9-openjdk-override-version.patch)
+sha256sums=('8d3fce68bfed0b75c83e668227a87e7bf91d494c8e30819b4d20ac6334f98d7e'
+            'fa32d99c786b3901ad01f1aa2cfc4b995820c1574c80f74f87b51d86314389d5'
+            'a8b5eba25141d50b6f57c1b92ef7340718e2052d5e1192b3f9d4260e4b53d023'
             '7cb89746dbbcf498dd43b53fee59b124f42e3ea0d8b7134ab803cc2bd6b50230'
             'bf76024528d050fd912f72d73e18a814a930df3478b132a99a887fbbdc0c9dfd'
             'bd2d4da78a65eec20dc32e21fd4fe134a2483b0bbe2dfb940d66755acc237975'
             'f37290530dcb8eb5acb4f70609c55b7e2be134f1052ebf20f117c2996a749858'
-            'c288b0a1a2424967d9c00e4d07d16f5d703f6b9b1195839753480fcd9810faf5')
+            '2a97f38ee08ed6a80be38879b47b78fc710adb9dfb69c44d2a33bee45bd06263')
 
 case "${CARCH}" in
   x86_64) _JARCH='x86_64';;
@@ -46,7 +47,7 @@ case "${CARCH}" in
 esac
 
 _jvmdir=/usr/lib/jvm/java-${_majorver}-openj9
-_jdkdir=openj9-openjdk-jdk${_majorver}-${_openj9ver}-release
+_jdkdir=openj9-openjdk-jdk${_majorver}-${_openjdk_sha}
 _imgdir=${_jdkdir}/build/linux-${_JARCH}-server-release/images
 
 _nonheadless=(lib/libawt_xawt.{so,debuginfo}
@@ -57,17 +58,11 @@ _nonheadless=(lib/libawt_xawt.{so,debuginfo}
 prepare() {
   cd ${_jdkdir}
 
-  ln -s ../openj9-openj9-${_openj9ver} openj9
-  ln -s ../openj9-omr-openj9-${_openj9ver} omr
+  ln -s ../openj9-${_openj9_sha} openj9
+  ln -s ../openj9-omr-${_openj9omr_sha} omr
 
   patch -d omr -p1 -i $srcdir/omr-omrstr-iconv-failure-overflow.patch
-  patch -d omr -p1 -i $srcdir/omr-fam.patch
-
-  sed -i -e '/^OPENJDK_SHA :=/s/:=.*/:= '$_openjdk_sha/ \
-         -e '/^OPENJ9_SHA :=/s/:=.*/:= '$_openj9_sha/ \
-         -e '/^OPENJ9_TAG :=/s/:=.*/:= openj9-'$_openj9ver/ \
-         -e '/^OPENJ9OMR_SHA :=/s/:=.*/:= '$_openj9omr_sha/ \
-         closed/OpenJ9.gmk
+  patch -p1 -i $srcdir/openj9-openjdk-override-version.patch
 
   find openj9/ omr/ -name CMakeLists.txt -exec sed -i -e '/set(OMR_WARNINGS_AS_ERRORS ON/s/ON/OFF/' {} + || die
 }
@@ -93,6 +88,14 @@ build() {
     _CFLAGS=${CFLAGS/-fno-plt/}
     _CXXFLAGS=${CXXFLAGS/-fno-plt/}
   fi
+
+  # TODO: Should be rechecked for the next releases
+  # compiling with -fexceptions leads to:
+  # /usr/bin/ld: /build/java-openjdk/src/jdk17u-jdk-17.0.3-2/build/linux-x86_64-server-release/hotspot/variant-server/libjvm/objs/zPhysicalMemory.o: in function `ZList<ZMemory>::~ZList()':
+  # /build/java-openjdk/src/jdk17u-jdk-17.0.3-2/src/hotspot/share/gc/z/zList.hpp:54: undefined reference to `ZListNode<ZMemory>::~ZListNode()'
+  # collect2: error: ld returned 1 exit status
+  _CFLAGS=${CFLAGS/-fexceptions/}
+  _CXXFLAGS=${CXXFLAGS/-fexceptions/}
 
   # CFLAGS, CXXFLAGS and LDFLAGS are ignored as shown by a warning
   # in the output of ./configure unless used like such:
@@ -126,8 +129,22 @@ build() {
     ${NUM_PROC_OPT}
     #--disable-javac-server
 
-
-  make EXTRA_CMAKE_ARGS="-DCMAKE_C_FLAGS='${CFLAGS}' -DJ9JIT_EXTRA_CFLAGS='${CFLAGS}' -DCMAKE_CXX_FLAGS='${CXXFLAGS}' -DJ9JIT_EXTRA_CXXFLAGS='${CXXFLAGS}' -DCMAKE_EXE_LINKER_FLAGS='${LDFLAGS}'" images legacy-jre-image docs
+  local mycmakeargsx=(
+    "-DCMAKE_C_FLAGS='${CFLAGS}'"
+    "-DJ9JIT_EXTRA_CFLAGS='${CFLAGS}'"
+    "-DCMAKE_CXX_FLAGS='${CXXFLAGS}'"
+    "-DJ9JIT_EXTRA_CXXFLAGS='${CXXFLAGS}'"
+    "-DCMAKE_EXE_LINKER_FLAGS='${LDFLAGS}'"
+    -DOMR_WARNINGS_AS_ERRORS=OFF
+    -DOMR_PORT_NUMA_SUPPORT=$(usex numa)
+  )
+  make \
+    EXTRA_CMAKE_ARGS="${mycmakeargsx[*]}" \
+    OPENJDK_SHA=${_openjdk_sha} \
+    OPENJ9_SHA=${_openj9_sha} \
+    OPENJ9_TAG=${_openj9ver} \
+    OPENJ9OMR_SHA=${_openj9omr_sha} \
+    images legacy-jre-image docs
 
   # https://bugs.openjdk.java.net/browse/JDK-8173610
   find "../${_imgdir}" -iname '*.so' -exec chmod +x {} \;
@@ -202,7 +219,8 @@ package_jre-openj9-headless() {
 
 package_jre-openj9() {
   pkgdesc="OpenJDK Java ${_majorver} full runtime environment"
-  depends=("jre${_majorver}-openj9-headless=${pkgver}-${pkgrel}" 'giflib')
+  depends=("jre${_majorver}-openj9-headless=${pkgver}-${pkgrel}" 'giflib' 'libgif.so'
+           'glibc' 'gcc-libs' 'libpng')
   optdepends=('alsa-lib: for basic sound support'
               'gtk2: for the Gtk+ 2 look and feel - desktop usage'
               'gtk3: for the Gtk+ 3 look and feel - desktop usage')
