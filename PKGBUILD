@@ -15,18 +15,18 @@ source=("$pkgname::git+https://github.com/fangfufu/httpdirfs.git")
 md5sums=("SKIP")
 
 pkgver() {
-	cd "$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$pkgname"
-	make man
-    make doc
-    make
+  cd "$pkgname"
+  make man
+  make doc
+  make
 }
 
 package() {
-	cd "$pkgname"
-	make prefix=/usr DESTDIR="$pkgdir" install
+  cd "$pkgname"
+  make prefix=/usr DESTDIR="$pkgdir" install
 }
