@@ -9,7 +9,7 @@ arch=('any')
 url='https://github.com/tk0miya/docutils-stubs'
 license=('custom:Unlicense')
 depends=('python' 'python-docutils')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
         'https://raw.githubusercontent.com/tk0miya/docutils-stubs/1f13dcdbebb06bc742b797bc5765a70d734a7fbc/LICENSE')
 sha512sums=('30aeac0f15c215abdb6eb42e0bf46e50f08f20befc7bebd7fa376e7f85813189ab71df583231c461539530b1d7da6fc263d75b24ff251c46d2dcb3163bd0116b'
@@ -18,16 +18,13 @@ sha512sums=('30aeac0f15c215abdb6eb42e0bf46e50f08f20befc7bebd7fa376e7f85813189ab7
 build() {
   cd $_pkgname-$pkgver
 
-  python setup.py build
+  python -m build -nw
 }
 
 package() {
   cd $_pkgname-$pkgver
 
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-
-  # remove docutils dependency pin
-  sed -i '/docutils/d' "$pkgdir"/usr/lib/python*/site-packages/docutils_stubs-*.egg-info/requires.txt
+  python -m installer -d "$pkgdir" dist/*.whl
 
   install -Dm 644 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
