@@ -9,7 +9,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium
-pkgver=105.0.5195.52
+pkgver=105.0.5195.102
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=1
@@ -35,7 +35,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         roll-src-third_party-ffmpeg.patch
         angle-wayland-include-protocol.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('dc71b2be9c30c2a7a250b3dbfb26f9b0d1aa2df7335b53ed44a203ff69947c42'
+sha256sums=('1cba0527c951e3c506ade96cf6ec2507ee9d43661764731ed896348182369262'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'f0c437c02cab7a6efc958f82fbb4ea35d5440f73d65731bad7c0dcaecb932121'
             '5db1fae8a452774b5b177e493a2d1a435b980137b16ed74616d1fb86fe342ec7'
@@ -52,7 +52,7 @@ source=(${source[@]}
         ozone-add-va-api-support-to-wayland.patch
         chromium-drirc-disable-10bpc-color-configs.conf)
 sha256sums=(${sha256sums[@]}
-            '9840ecc01cbc92205707161003702bfce8809c7ef41775e01de64fbe3f5d61b8'
+            '7f6b3397aee0b659c5964a6419f2cdf28e2b19e16700da4613f3aa9c7dde876d'
             'e08a2c4c1e1059c767343ea7fbf3c77e18c8daebbb31f8019a18221d5da05293'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb')
  
@@ -89,7 +89,7 @@ _unwanted_bundled_libs=(
 depends+=(${_system_libs[@]})
 
 prepare() {
-  cd "$srcdir/chromium-$pkgver"
+  cd chromium-$pkgver
 
   # Allow building against system libraries in official builds
   sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
@@ -163,7 +163,7 @@ prepare() {
 build() {
   make -C chromium-launcher-$_launcher_ver
 
-  cd "$srcdir/chromium-$pkgver"
+  cd chromium-$pkgver
 
   export CC=clang
   export CXX=clang++
@@ -233,7 +233,7 @@ package() {
   install -Dm644 LICENSE \
     "$pkgdir/usr/share/licenses/chromium/LICENSE.launcher"
 
-  cd "$srcdir/chromium-$pkgver"
+  cd ../chromium-$pkgver
 
   install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
   install -D out/Release/chromedriver "$pkgdir/usr/bin/chromedriver"
