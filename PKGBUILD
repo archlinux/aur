@@ -2,29 +2,27 @@
 
 _pkgname=ipyxact
 pkgname=python-$_pkgname
-pkgver=0.2.4
-pkgrel=5
+pkgver=0.3.2
+pkgrel=1
 pkgdesc='Python-based IP-XACT parser'
 arch=('any')
 url='https://github.com/olofk/ipyxact'
 license=('MIT')
 depends=('python' 'python-yaml')
-makedepends=('python-setuptools-scm')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('6a3cc94477dee65d91eeaac908a7ed3cc52686d85f448e0e1f85c25aaf79ea15edf87135539e7a2319e6b54a62cd32ab2cdb1771e14a223cafb4d529dbf035d5')
-
-export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
+sha512sums=('7048b914616135d5a7319d4bf93208da2fe02f8ea76a95a7000b64e40866b6e4064e0bf43705ad0a026e383f6c78a803768499a29c838f2fc6359bafeafb6a32')
 
 build() {
   cd $_pkgname-$pkgver
 
-  python setup.py build
+  python -m build -nw
 }
 
 package() {
   cd $_pkgname-$pkgver
 
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer -d "$pkgdir" dist/*.whl
 
   install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
