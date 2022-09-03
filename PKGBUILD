@@ -3,30 +3,29 @@
 
 pkgname=libpamac-flatpak
 _pkgname=libpamac
-pkgver=11.1.0
+pkgver=11.3.1
 pkgrel=1
 pkgdesc="Library for Pamac package manager based on libalpm - flatpak and support enabled"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/libpamac"
 license=('GPL3')
 depends=('pacman>=6.0' 'pacman<6.1' 'flatpak' 'archlinux-appstream-data-pamac')
-makedepends=('gettext' 'itstool' 'vala' 'meson' 'ninja' 'gobject-introspection' 'xorgproto' 'asciidoc')
+makedepends=('gettext' 'itstool' 'vala' 'meson' 'gobject-introspection' 'xorgproto' 'asciidoc')
 options=(!emptydirs)
-conflicts=('libpamac' 'libpamac-aur' 'libpamac-full' 'libpamac-full-dev')
+conflicts=('libpamac' 'libpamac-aur' 'libpamac-full' 'libpamac-full-dev' 'libpamac-nosnap')
 source=(https://gitlab.manjaro.org/applications/libpamac/-/archive/$pkgver/libpamac-$pkgver.tar.bz2)
-sha256sums=('545818a2935efcdbccc1545551918eb847219efc6388d2eff03dac8d5489f2e1')
+sha512sums=('2270cacb9d8effca68bf985da96b7160f635f2c8d7d1c584d5d1059a966134fd8499c90e21ac01f07e9f7152bf8c090841545a3b693068a2b84bd53f348ab4ef')
 
 build() {
-  cd $_pkgname-$pkgver
-  mkdir -p builddir
-  cd builddir
-  meson setup --prefix=/usr --sysconfdir=/etc -Denable-flatpak=true --buildtype=release
-  ninja
+  arch-meson -Denable-flatpak=true -Denable-snap=false --buildtype=release $_pkgname-$pkgver build
+  meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
   backup=('etc/pamac.conf')
-  cd $_pkgname-$pkgver
-  cd builddir
-  DESTDIR="$pkgdir" ninja install
+  meson install -C build --destdir "$pkgdir"
 }

@@ -1,6 +1,6 @@
 pkgbase = libpamac-flatpak
 	pkgdesc = Library for Pamac package manager based on libalpm - flatpak support enabled
-	pkgver = 11.1.0
+	pkgver = 11.3.1
 	pkgrel = 1
 	url = https://gitlab.manjaro.org/applications/libpamac
 	arch = i686
@@ -15,7 +15,6 @@ pkgbase = libpamac-flatpak
 	makedepends = itstool
 	makedepends = vala
 	makedepends = meson
-	makedepends = ninja
 	makedepends = gobject-introspection
 	makedepends = xorgproto
 	makedepends = asciidoc
@@ -27,9 +26,10 @@ pkgbase = libpamac-flatpak
 	conflicts = libpamac-aur
 	conflicts = libpamac-full
 	conflicts = libpamac-full-dev
+	conflicts = libpamac-nosnap
 	options = !emptydirs
 	source = https://gitlab.manjaro.org/applications/libpamac/-/archive/11.1.0/libpamac-11.1.0.tar.bz2
-	sha256sums = 545818a2935efcdbccc1545551918eb847219efc6388d2eff03dac8d5489f2e1
+	sha512sums = 2270cacb9d8effca68bf985da96b7160f635f2c8d7d1c584d5d1059a966134fd8499c90e21ac01f07e9f7152bf8c090841545a3b693068a2b84bd53f348ab4ef
 
 pkgname = libpamac-flatpak
 	backup = etc/pamac.conf
