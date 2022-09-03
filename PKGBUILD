@@ -1,21 +1,23 @@
 # Maintainer kyle[at]kylemanna[d0t]com
-_pkgbin=akashlytics-deploy
+_pkgbin=cloudmos-deploy
+_pkgbin2=akashlytics-deploy
 pkgname=${_pkgbin}-bin
 pkgdesc='Desktop app to easily deploy on the Akash Network'
 license=('GPL')
-url='https://github.com/Akashlytics/akashlytics-deploy'
-pkgver=0.14.3
+url='https://github.com/maxmaxlabs/cloudmos-deploy'
+pkgver=0.15.0
 pkgrel=1
 arch=('x86_64')
 depends=('libusb')
+conflicts=('akashlytics-deploy-bin')
 
-_pkgsrc="Akashlytics-Deploy-${pkgver}.AppImage"
+_pkgsrc="CloudMos-Deploy-${pkgver}.AppImage"
 
 source=(
   "${_pkgsrc}::${url}/releases/download/v${pkgver}/${_pkgsrc}"
-  "LICENSE::https://raw.githubusercontent.com/Akashlytics/akashlytics-deploy/v${pkgver}/LICENSE"
+  "LICENSE::https://raw.githubusercontent.com/maxmaxlabs/cloudmos-deploy/v${pkgver}/LICENSE"
 )
-sha512sums=('bce890ddd82dc9466ad203de876a887a32f370611a888fe047b8d99e661c309a872beaf51c00bb8d65ef398be9631a1e02d24ffe1fdfce793146c688c3cef948'
+sha512sums=('5d4bc259992264aca7678688c3799bba42c79b5d86ac3dba292ddd203203dba2b63c636269dc05fd1ae8e70a68e9a778ea144e0a372da7c3f9b409d19b15dac8'
             'adfa9547f59d194835eb7cfa4014fd3f972470f92802e1f9c39e636225f285331956620accc7d431e5c0ff4171a462ef184c334e2bd639a92d383e22501ae60c')
 
 build() {
@@ -29,21 +31,21 @@ package() {
   cd $srcdir/squashfs-root
 
   # Correct .desktop
-  sed -e "s/AppRun/${_pkgbin}/g" -i "${_pkgbin}.desktop"
+  sed -e "s/AppRun/${_pkgbin}/g" -i "${_pkgbin2}.desktop"
 
-  install -d "$pkgdir/opt/$_pkgbin"
-  cp -a . "$pkgdir/opt/$_pkgbin/"
-  chmod -R +rx "$pkgdir/opt/$_pkgbin"
+  install -d "${pkgdir}/opt/${_pkgbin}"
+  cp -a . "${pkgdir}/opt/${_pkgbin}/"
+  chmod -R +rx "${pkgdir}/opt/${_pkgbin}"
 
-  install -d "$pkgdir/usr/bin"
-  ln -s "/opt/$_pkgbin/$_pkgbin" "$pkgdir/usr/bin/$_pkgbin"
+  install -d "${pkgdir}/usr/bin"
+  ln -sr "${pkgdir}/opt/${_pkgbin}/${_pkgbin2}" "${pkgdir}/usr/bin/${_pkgbin}"
 
-  install -d "$pkgdir/usr/share"
+  install -d "${pkgdir}/usr/share"
   cp -r "usr/share/." "${pkgdir}/usr/share/"
 
-  find "$pkgdir" -type d -exec chmod 755 {} +
+  find "${pkgdir}" -type d -exec chmod 755 {} +
 
-  install -Dm644 "$_pkgbin.desktop" "$pkgdir/usr/share/applications/$_pkgbin.desktop"
+  install -Dm644 "${_pkgbin2}.desktop" "${pkgdir}/usr/share/applications/${_pkgbin2}.desktop"
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
