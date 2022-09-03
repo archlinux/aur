@@ -1,7 +1,7 @@
 # Maintainer: Deming Li <me@yuuza.net>
 # Hooks: https://www.reddit.com/r/archlinux/comments/4zrsc3/keep_your_system_fully_functional_after_a_kernel/d6yin0r/
 pkgname=kernel-modules-hook-reflink
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="Keeps your system fully functional after a kernel upgrade (forked version using \`cp --reflink\`, maybe better for btrfs)"
 arch=('any')
