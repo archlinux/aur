@@ -2,7 +2,7 @@
 
 _target=xtensa-esp32-elf
 pkgname=$_target-binutils
-pkgver=2.37
+pkgver=2.39
 _overlay_commit=a5ab689
 pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the xtensa esp32 (bare-metal) target'
@@ -12,7 +12,7 @@ license=(GPL)
 depends=(libelf)
 source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.bz2{,.sig}
         xtensa-overlays-$_overlay_commit.tar.gz::https://codeload.github.com/espressif/xtensa-overlays/tar.gz/$_overlay_commit)
-sha256sums=('67fc1a4030d08ee877a4867d3dcab35828148f87e1fd05da6db585ed5a166bd4'
+sha256sums=('da24a84fef220102dd24042df06fdea851c2614a5377f86effa28f33b7b16148'
             'SKIP'
             '0087aac5e7015d43ff904ef984278df1f99c6757709088c52632b27dc482268f')
 validpgpkeys=('EAF1C276A747E9ED86210CBAC3126D3B4AE55E93'  # Tristan Gingold <gingold@adacore.com>
