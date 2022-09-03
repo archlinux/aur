@@ -1,0 +1,17 @@
+pkgbase = distroeraser-git
+	pkgdesc = A simple disk eraser for Linux
+	pkgver = r40.79a4f7c
+	pkgrel = 1
+	url = https://github.com/sheeepdev/distroeraser
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = gum
+	depends = coreutils
+	provides = distroeraser
+	conflicts = distroeraser
+	source = git+https://github.com/sheeepdev/distroeraser.git
+	md5sums = SKIP
+
+pkgname = distroeraser-git
