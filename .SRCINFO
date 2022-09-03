@@ -1,6 +1,6 @@
 pkgbase = xfce-theme-greybird
 	pkgdesc = Desktop Suite for Xfce
-	pkgver = 3.23.1
+	pkgver = 3.23.2
 	pkgrel = 1
 	url = https://shimmerproject.org
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = xfce-theme-greybird
 	optdepends = shimmer-wallpapers: contains the Greybird wallpaper, among others
 	optdepends = gtk-engine-murrine: GTK2 theme support
 	optdepends = lib32-gtk-engine-murrine: required for multilib
-	source = xfce-theme-greybird-3.23.1.tar.gz::https://github.com/shimmerproject/Greybird/archive/v3.23.1.tar.gz
-	sha256sums = d7e6b94f956874b819e2e17c2368ffd6babf02e5df7f08f508cee4380c3e4e8a
+	source = xfce-theme-greybird-3.23.2.tar.gz::https://github.com/shimmerproject/Greybird/archive/v3.23.2.tar.gz
+	sha256sums = ca522e6bc2a3e601ac0c864605af8f41699ce81485a2c2ce7651880ef92d11d6
 
 pkgname = xfce-theme-greybird
