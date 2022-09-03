@@ -1,6 +1,5 @@
 [Unit]
 Description=display-switch automatic DDC display switcher
-After=graphical.target
 
 [Service]
 Type=simple

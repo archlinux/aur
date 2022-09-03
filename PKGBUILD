@@ -2,7 +2,7 @@
 pkgname=display-switch
 _cratename=${pkgname/_/-}
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Turn a $30 USB switch into a full-featured multi-monitor KVM switch'
 arch=(x86_64)
 url="https://github.com/haimgel/display-switch"
@@ -17,10 +17,10 @@ source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/haimgel/display-sw
 	"$pkgname.service"
 	"display-switch.ini")
 sha256sums=('28e3d9791d39f655c337de19063ea8b19f5c3a0784fa84a222abdf63a33823af'
-	    'bf5ee4f9876505628c5ce84e84e918c70d66be70b766d62bb138e294608ffbae'
-	    'af9dbdc771023cd04f5b0c638c30356e6a824b32f0c04ea61fe929c71122bccd'
-	    '9ba8def93e8fff1aff7f463809633bfbac27e351f2768503fcbbb09fdfaa6167'
-	    '1ff20643b8b6b1590bcfda26cb2f5323b791040cb164f5b44c944ed9e9b613bc')
+            'bf5ee4f9876505628c5ce84e84e918c70d66be70b766d62bb138e294608ffbae'
+            'af9dbdc771023cd04f5b0c638c30356e6a824b32f0c04ea61fe929c71122bccd'
+            '82adef58098d6cb21f9e38459f14844afc43c73df7f2f27eb7bda0107145984c'
+            '1ff20643b8b6b1590bcfda26cb2f5323b791040cb164f5b44c944ed9e9b613bc')
 
 prepare() {
 	cd "$pkgname-$pkgver"
