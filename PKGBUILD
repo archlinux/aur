@@ -2,8 +2,8 @@
 
 _target=xtensa-esp32-elf
 pkgname=$_target-gcc-bootstrap
-pkgver=11.2.0
-_islver=0.24
+pkgver=12.2.0
+_islver=0.25
 _overlay_commit=a5ab689
 pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler bootstrap package for xtensa esp32 (bare-metal) target'
@@ -18,9 +18,9 @@ options=(!emptydirs !strip)
 source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
         https://libisl.sourceforge.io/isl-$_islver.tar.bz2
         xtensa-overlays-$_overlay_commit.tar.gz::https://codeload.github.com/espressif/xtensa-overlays/tar.gz/$_overlay_commit)
-sha256sums=('d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
+sha256sums=('e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff'
             'SKIP'
-            'fcf78dd9656c10eb8cf9fbd5f59a0b6b01386205fe1934b3b287a0a1898145c0'
+            '4305c54d4eebc4bf3ce365af85f04984ef5aa97a52e01128445e26da5b1f467a'
             '0087aac5e7015d43ff904ef984278df1f99c6757709088c52632b27dc482268f')
 validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06  # Jakub Jelinek <jakub@redhat.com>
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
