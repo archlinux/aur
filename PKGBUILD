@@ -10,8 +10,8 @@ license=(GPL3)
 depends=(bash grep grub sudo)
 makedepends=(git)
 optdepends=(
-    'efibootmgr: Linux user-space application to modify the EFI Boot Manager' \
-    'grub-customizer: GUI tool to configure GRUB' \
+    'efibootmgr: Linux user-space application to modify the EFI Boot Manager'
+    'grub-customizer: GUI tool to configure GRUB'
     'os-prober: Utility to detect other OSes on a set of drives'
 )
 install="$pkgname.install"
