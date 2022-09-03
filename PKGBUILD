@@ -4,12 +4,12 @@
 
 pkgname=obs-studio-amf
 pkgver=28.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open source software for live streaming and recording. Includes new AMF encoding patch & browser plugin"
 arch=('x86_64')
 url="https://obsproject.com"
 license=('GPL2')
-depends=('ffmpeg' 'jansson' 'libxinerama' 'libxkbcommon-x11' 'mbedtls' 'rnnoise' 'pciutils'
+depends=('ffmpeg' 'jansson' 'libxinerama' 'libxkbcommon-x11' 'mbedtls' 'rnnoise' 'pciutils' 'nss'
 		'qt6-svg' 'qt6-wayland' 'xdg-desktop-portal' 'curl' 'jack' 'gtk-update-icon-cache' 'pipewire' 'libxcomposite' 'amf-amdgpu-pro')
 makedepends=('cmake' 'libfdk-aac' 'x264' 'swig' 'python' 'luajit' 'sndio' 'git')
 provides=("obs-studio=$pkgver")
