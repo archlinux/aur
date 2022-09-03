@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cemu
 pkgname=$_pkgname-git
-pkgver=2.0.r73.g8c617a3
+pkgver=2.0.r81.gf8297ee
 pkgrel=1
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
@@ -11,11 +11,11 @@ depends=(
 	'discord-rpc'
 	'imgui'
 	'pugixml'
-	'wxgtk3'
+	'wxwidgets-gtk3>=3.2'
 )
 makedepends=(
 	'boost'
-	'cmake'
+	'cmake>=3.21.1'
 	'cubeb'
 	'curl'
 	'git'
@@ -64,7 +64,9 @@ prepare() {
 
 build() {
 	cmake -S $_pkgname -B build \
-		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
+		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
 		-DENABLE_VCPKG=OFF \
 		-DPUBLIC_RELEASE=ON \
 		-Wno-dev

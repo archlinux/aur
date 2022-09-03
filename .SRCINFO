@@ -1,12 +1,12 @@
 pkgbase = cemu-git
 	pkgdesc = Nintendo Wii U emulator
-	pkgver = 2.0.r73.g8c617a3
+	pkgver = 2.0.r81.gf8297ee
 	pkgrel = 1
 	url = https://cemu.info/
 	arch = x86_64
 	license = MPL2
 	makedepends = boost
-	makedepends = cmake
+	makedepends = cmake>=3.21.1
 	makedepends = cubeb
 	makedepends = curl
 	makedepends = git
@@ -27,7 +27,7 @@ pkgbase = cemu-git
 	depends = discord-rpc
 	depends = imgui
 	depends = pugixml
-	depends = wxgtk3
+	depends = wxwidgets-gtk3>=3.2
 	provides = cemu
 	conflicts = cemu
 	source = cemu::git+https://github.com/cemu-project/Cemu.git
@@ -41,7 +41,7 @@ pkgname = cemu-git
 	depends = discord-rpc
 	depends = imgui
 	depends = pugixml
-	depends = wxgtk3
+	depends = wxwidgets-gtk3>=3.2
 	depends = libboost_filesystem.so
 	depends = libboost_program_options.so
 	depends = libcubeb.so
