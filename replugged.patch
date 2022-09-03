@@ -20,7 +20,7 @@ index 0b8a45d9..3e69cf77 100644
            {
              type: 'button',
 diff --git a/src/Powercord/coremods/moduleManager/index.js b/src/Powercord/coremods/moduleManager/index.js
-index d823628d..9b7823fe 100644
+index 2c3a2a9d..14b0f77a 100644
 --- a/src/Powercord/coremods/moduleManager/index.js
 +++ b/src/Powercord/coremods/moduleManager/index.js
 @@ -6,7 +6,7 @@ const { React, getModule, i18n: { Messages } } = require('powercord/webpack');
@@ -36,8 +36,8 @@ index d823628d..9b7823fe 100644
  const Menu = getModule([ 'MenuItem' ], false);
  
  let _quickCSS = '';
--const _quickCSSFile = join(__dirname, 'quickcss.css');
-+const _quickCSSFile = join(SETTINGS_FOLDER, 'quickcss.css');
+-const _quickCSSFile = join(__dirname, '..', '..', '..', '..', 'settings', 'quickcss', 'main.css');
++const _quickCSSFile = join(SETTINGS_FOLDER, 'quickcss', 'main.css');
  let _quickCSSElement;
  
  async function _installerInjectCtxMenu () {
