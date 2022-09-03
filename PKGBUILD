@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=zydis
 pkgname=$_pkgname-git
-pkgver=3.2.0.r44.gdb2c163
+pkgver=3.2.0.r140.gf6dfdbd
 pkgrel=1
 pkgdesc="Fast and lightweight x86/x86-64 disassembler library"
 arch=('x86_64')
@@ -21,12 +21,13 @@ pkgver() {
 
 build() {
 	cmake -S $_pkgname -B build \
-		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DZYAN_SYSTEM_ZYCORE=ON \
 		-DZYDIS_BUILD_EXAMPLES=OFF \
 		-DZYDIS_BUILD_MAN=ON \
 		-DZYDIS_BUILD_SHARED_LIB=ON \
-		-DZYDIS_SYSTEM_ZYCORE=ON \
 		-Wno-dev
 	cmake --build build
 }
