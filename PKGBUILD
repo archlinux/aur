@@ -2,7 +2,7 @@
 # Contributor: marlock
 
 pkgname=android-udev-git
-pkgver=20220611.r0.g4cf2025
+pkgver=20220903.r0.ga565217
 pkgrel=1
 pkgdesc='Udev rules to connect Android devices to your linux box'
 arch=('any')
