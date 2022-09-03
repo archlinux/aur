@@ -1,0 +1,9 @@
+post_install() {
+    printf "\n"
+    printf "To activate smart-notifier:\n\n"
+    printf "    - Set it up in /etc/smartd.conf, for example \n"
+    printf "    DEVICESCAN -m user -M exec /usr/lib/smart-notifier/scripts/60smart-notifier"
+    printf "    - Make sure smartd is enabled\n"
+    printf "    $ sudo systemctl enable --now smartd\n"
+    printf "    - If you use a DE that doesn't respect XDG Autostart, make sure it launches /usr/bin/smart-notifier on startup\n"
+}
