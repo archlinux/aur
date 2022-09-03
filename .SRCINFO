@@ -1,6 +1,6 @@
 pkgbase = whatsie-git
 	pkgdesc = Fast Light weight WhatsApp Client based on Qt's WebEngine, With lots of settings and packed goodies
-	pkgver = v4.8.2.r262.9472e9e
+	pkgver = v4.9.0.r272.5cdba51
 	pkgrel = 1
 	url = https://github.com/keshavbhatt/whatsie
 	arch = armv6h
