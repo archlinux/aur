@@ -1,13 +1,13 @@
 pkgbase = obs-plugin-waveform-git
 	pkgdesc = Waveform is an audio spectral analysis plugin for OBS Studio. It is based on FFTW and optimized for AVX2/FMA3
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/phandasm/waveform/
 	arch = x86_64
 	groups = obs-plugins
 	license = GPL3
 	makedepends = cmake
-	depends = obs-studio
+	depends = obs-studio<28.0.0
 	depends = fftw
 	source = waveform-1.4.1::git+https://github.com/phandasm/waveform.git
 	source = git+https://github.com/google/cpu_features.git
