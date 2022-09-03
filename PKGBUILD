@@ -32,5 +32,3 @@ package() {
   install -Dm644 -t "$pkgdir"/etc razer.conf
   install -Dm644 tmpfile.conf "$pkgdir"/usr/lib/tmpfiles.d/razerd.conf
 }
-
-# vim:set ts=2 sw=2 et:
