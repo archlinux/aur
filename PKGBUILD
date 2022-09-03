@@ -1,6 +1,6 @@
 # Maintainer: Menci <huanghaorui301@gmail.com>
 pkgname=curl-http3-msquic
-pkgver=7.83.1
+pkgver=7.85.0
 pkgrel=1
 pkgdesc="An URL retrieval utility and library - compiled with HTTP/3 support (with msquic) - binary is called curl3"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ source=(
 	02-curl-msquic-static.patch
 )
 sha512sums=(
-	'0b909b7ed55f9a9789584fd9d2033d5838dcf29e33adf6657258e97ebe7c91b26282007687a729c8385594fd8220bd718fd008154926b87b8da254d586fab3c7'
+	'204ce7ac32be94e4262ebda3cde46ae4e1e58b4f2bc4867ca6cce88a5906e0dd633200ccb9928b2a90e5ae4c43715747034a09cb2b810a8638388f2dc40a7941'
 	'SKIP'
 	'849bfeee56ba53ffa3e8ee73df858688848fe350f91a3e8fca2726e5d0b4050def8b64668d8dbb12052cf81a70542f4a6f5faa89b1b91ea24eb64f88383724f0'
 	'7a7f31b53fe1b4e7fd0c905e8078b7859ab0b408e08ea0efdead2cedcf0b64e2e49e82c9723b5cd128f0e564a8e9723bd51154c6489609c63a93a023d6f131c8'
