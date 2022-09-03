@@ -3,7 +3,7 @@
 DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=obs-studio-tytan652
-pkgver=28.0.0
+pkgver=28.0.1
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus V4L2 devices by paths, my bind interface PR, and sometimes backported fixes"
 arch=("x86_64" "aarch64")
