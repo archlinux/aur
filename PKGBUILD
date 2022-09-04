@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=hunspell
-_pkgver=3.0.1
+_pkgver=3.0.2
 pkgname=r-${_pkgname,,}
-pkgver=3.0.1
-pkgrel=4
+pkgver=3.0.2
+pkgrel=1
 pkgdesc='High-Performance Stemmer, Tokenizer, and Spell Checker'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -25,7 +25,7 @@ optdepends=(
   r-wordcloud2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1fedbb913bc13c790d2fabfe4edda0a987db3a078bea8c0ca9b777d20af08662')
+sha256sums=('5ea25955f76cc275e56424c8ac0700d1cb1f5c21c7f8d61c25fa740d731a324e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
