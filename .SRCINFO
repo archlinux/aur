@@ -1,6 +1,6 @@
 pkgbase = bch-firmware-tool
 	pkgdesc = HARDWARIO Firmware Tool
-	pkgver = 1.8.1
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = https://github.com/hardwario/bch-firmware-tool
 	arch = any
@@ -8,14 +8,14 @@ pkgbase = bch-firmware-tool
 	makedepends = python-setuptools
 	depends = python-appdirs>=1.4
 	depends = python-pyserial>=3.5
-	depends = python-colorama>=0.3
-	depends = python-pyaml>=5.1
-	depends = python-schema>=0.6.8
-	depends = python-requests>=2.21
-	depends = python-click>=7.0
+	depends = python-colorama>=0.4
+	depends = python-pyaml>=6.0
+	depends = python-schema>=0.7
+	depends = python-requests>=2.27
+	depends = python-click>=8.0
 	depends = python-intelhex>=2.2.1
-	depends = libftdi
-	source = https://github.com/hardwario/bch-firmware-tool/archive/refs/tags/v1.8.1.tar.gz
-	sha256sums = 611a08251e1c5b329c870ce20fbd106df0104c4f1c294bde67d4e9d3012249b8
+	depends = python-pyftdi
+	source = https://github.com/hardwario/bch-firmware-tool/archive/refs/tags/v1.8.3.tar.gz
+	sha256sums = 14466add3be06f620ab9c54d52a314d65da9ea6ad019cb1b9b2dce8a12b637f5
 
 pkgname = bch-firmware-tool

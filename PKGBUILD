@@ -1,16 +1,16 @@
 # Maintainer: nixi <nixi at cock dot li>
 
 pkgname=bch-firmware-tool
-pkgver=1.8.1
+pkgver=1.8.3
 pkgrel=1
 pkgdesc='HARDWARIO Firmware Tool'
 arch=('any')
 url='https://github.com/hardwario/bch-firmware-tool'
 license=('MIT')
-depends=('python-appdirs>=1.4' 'python-pyserial>=3.5' 'python-colorama>=0.3' 'python-pyaml>=5.1' 'python-schema>=0.6.8' 'python-requests>=2.21' 'python-click>=7.0' 'python-intelhex>=2.2.1' 'libftdi')
+depends=('python-appdirs>=1.4' 'python-pyserial>=3.5' 'python-colorama>=0.4' 'python-pyaml>=6.0' 'python-schema>=0.7' 'python-requests>=2.27' 'python-click>=8.0' 'python-intelhex>=2.2.1' 'python-pyftdi')
 makedepends=('python-setuptools')
 source=("https://github.com/hardwario/bch-firmware-tool/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('611a08251e1c5b329c870ce20fbd106df0104c4f1c294bde67d4e9d3012249b8')
+sha256sums=('14466add3be06f620ab9c54d52a314d65da9ea6ad019cb1b9b2dce8a12b637f5')
 
 package() {
 	cd "$srcdir/bch-firmware-tool-$pkgver"
