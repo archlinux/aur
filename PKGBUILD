@@ -1,8 +1,8 @@
 # Maintainer: Joey Dumont <joey.dumont@gmail.com>
 _target=mips64-ultra-elf
 pkgname=${_target}-gdb
-_gdbver=11.2
-pkgver=11.2_r170.c2bd862
+_gdbver=12.1
+pkgver=12.1_r170.c2bd862
 pkgrel=1
 pkgdesc="The GNU Debugger (${_target})"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=(!emptydirs)
 depends=(zstd gdb-common mpfr guile libelf)
 source=("https://ftp.gnu.org/gnu/gdb/gdb-${_gdbver}.tar.xz"
         "git+https://github.com/glankk/n64.git#branch=n64-ultra")
-sha256sums=('1497c36a71881b8671a9a84a0ee40faab788ca30d7ba19d8463c3cc787152e32'
+sha256sums=('0e1793bf8f2b54d53f46dea84ccfd446f48f81b297b28c4f7fc017b818d69fed'
             'SKIP')
 
 pkgver() {
