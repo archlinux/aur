@@ -1,7 +1,7 @@
 pkgbase = ride-the-lightning
 	pkgdesc = RTL is a full function, device agnostic, web user interface to help manage lightning node operations.
 	pkgver = 0.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ridethelightning.info
 	install = ride-the-lightning.install
 	arch = any

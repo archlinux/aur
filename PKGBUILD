@@ -2,7 +2,7 @@
 
 pkgname=ride-the-lightning
 pkgver=0.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="RTL is a full function, device agnostic, web user interface to help manage lightning node operations."
 arch=(any)
 url="https://www.ridethelightning.info"
@@ -67,6 +67,6 @@ package() {
   # install systemd file
   install -Dm644 "$srcdir/RTL.service" "$pkgdir/usr/lib/systemd/system/RTL.service"
   install -Dm644 "$srcdir/RTL.sysusers" "$pkgdir/usr/lib/sysusers.d/RTL.conf"
-  install -Dm644 "$srcdir/RTL.tmpfiles" "$pkgdir/usr/lib/tempfiles.d/RTL.conf"
+  install -Dm644 "$srcdir/RTL.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/RTL.conf"
   install -Dm644 "$pkgdir/usr/lib/node_modules/rtl/Sample-RTL-Config.json" "$pkgdir/etc/RTL/Sample-RTL-Config.json"
 }
