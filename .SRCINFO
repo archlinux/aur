@@ -1,0 +1,14 @@
+pkgbase = blender-plugin-apply-modifier-for-object-with-shape-keys-git
+	pkgdesc = Blender addon for reshaping UV selection into grid.
+	pkgver = r36.e377fd9
+	pkgrel = 1
+	url = https://github.com/przemir/ApplyModifierForObjectWithShapeKeys
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = blender
+	conflicts = blender-plugin-apply-modifier-for-object-with-shape-keys
+	source = apply-modifier-for-object-with-shape-keys::git+https://github.com/przemir/ApplyModifierForObjectWithShapeKeys.git
+	md5sums = SKIP
+
+pkgname = blender-plugin-apply-modifier-for-object-with-shape-keys-git
