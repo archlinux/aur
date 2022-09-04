@@ -1,7 +1,7 @@
 pkgbase = python-m3u8
 	pkgdesc = Python m3u8 parser
-	pkgver = 3.2.0
-	pkgrel = 2
+	pkgver = 3.3.0
+	pkgrel = 1
 	url = https://github.com/globocom/m3u8
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = python-m3u8
 	checkdepends = python-bottle
 	makedepends = python-setuptools
 	depends = python-iso8601
-	source = m3u8-3.2.0.tar.gz::https://github.com/globocom/m3u8/archive/3.2.0.tar.gz
-	sha512sums = d46935bb1a050512c7a127825e8006f34f3aabad3ec96e8ebe4ce0d6ad71931e5d9b26c920fc6e08d6c9d2c7802f70970e96c977fdb2dadca79a396e76823fb2
+	source = m3u8-3.3.0.tar.gz::https://github.com/globocom/m3u8/archive/3.3.0.tar.gz
+	sha512sums = b0e3580b6cba2bbd3b0dcbdfefd69f807c947f1f27f8005d256be079e299281df74c2a216cdc2ea1eb72539cfd8bf05ea0806bec6538ccc3b2f1b7f4017d0b3a
 
 pkgname = python-m3u8
