@@ -5,7 +5,7 @@
 # Contributor: NeoTheFox <soniczerops@gmail.com>
 
 pkgname=python-telegram-bot
-pkgver=13.13
+pkgver=13.14
 pkgrel=1
 pkgdesc="A pure Python interface for the Telegram Bot API"
 url="https://github.com/${pkgname}/${pkgname}"
@@ -18,7 +18,7 @@ optdepends=('python-cryptography: for support cryptography library'
   'python-httpx: for support SOCKS server')
 source=(${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz{,.asc})
 validpgpkeys=('655BB4F56CDB0E0E4500CF572E9E0E127EF3F283') # Hinrich Mahler <hinrich.mahler@freenet.de>
-sha512sums=('e6b32ee4a4b8f63ea0d4f0e5916345626581651b365b213c528403fdb1bf6e4e29b7ff02e4fae78deaec06cc78f5b2065b7c7a9956c622ae63ae2f5546619d84' 'SKIP')
+sha512sums=('4e069493e409036517986686563bc9f3f8e987f7aa9b531ae46e2dbf505e97b6d0f6c529cdc701f3144151cb4daadc35c52767471bcfc7087073a573e250301d' 'SKIP')
 
 prepare() {
   cd ${pkgname}-${pkgver}
