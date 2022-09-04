@@ -1,3 +1,22 @@
+# 10.0.16-1 / 2022-08-18 (2022-09-04)
+
+* bump to new library version
+	* ETF 60% faster
+	* experimental coroutines feature not packaged atm
+		* has issues to build
+		* it could be patched, but the feature itself has issues
+	* see library changelog for full list
+* resolved build warning about link to $srcdir
+	* vendored nlohmann/json now gets removed before the build
+	* this somehow removes a "link" to it in the .so
+	* patched out the pchs while at it
+		* the package wasn't using these anyway
+* originally packaged two weeks back but just releasing now
+	* was trying to fix reprobuilds, we'll get there eventually
+	* wrote the package and changelog at the first date
+	* keeping it for reflection of things
+	* actually releasing at the second date along with future versions
+
 # 10.0.15-1 / 2022-08-02
 
 * bump to new library version

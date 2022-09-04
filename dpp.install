@@ -6,7 +6,13 @@ post_install() {
 	echo -e "\e[1;33mAlso be aware one of the time conversion tests fail on devices not set to UTC.\e[0m"
 	echo -e "\e[1;33mThis shouldn't affect your server deploys but may play role on your dev machine.\e[0m"
 	echo ""
-	echo -e "\e[32mTo keep things lean and clean, embedded fmt and nlohmann/json\e[0m"
-	echo -e "\e[32mhave been replaced by packaged versions.\e[0m"
+	echo -e "\e[32mTo keep things lean and clean, embedded nlohmann/jsonhave been replaced by\e[0m"
+	echo -e "\e[32mpackaged version.\e[0m"
 	echo -e "\e[32mMind that when looking up online tutorials.\e[0m"
+}
+
+post_upgrade() {
+	echo -e "\e[1;33mEmbedded fmt have been completely dropped off the package.\e[0m"
+	echo -e "\e[1;33mWe already replaced that by systemwide version.\e[0m"
+	echo -e "\e[1;33mJust mind that it's not longer a dependency.\e[0m"
 }
