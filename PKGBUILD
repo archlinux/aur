@@ -2,14 +2,14 @@
 
 pkgname=spedread-git
 _pkgname=Spedread
-pkgver=r83.d46a0da
+pkgver=r105.fa641a7
 pkgrel=1
 pkgdesc="GTK speed reading software: Read like a speedrunner!"
 arch=('x86_64')
 url="https://github.com/Darazaki/Spedread"
 license=('GPL3')
-depends=('gtk4' 'glib2')
-makedepends=('meson' 'vala')
+depends=('libadwaita')
+makedepends=('git' 'meson' 'vala')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -29,9 +29,9 @@ build() {
   meson compile -C build
 }
 
-#check() {
-#  meson test -C build
-#}
+check() {
+  meson test -C build || :
+}
 
 package() {
   meson install -C build --destdir "$pkgdir"
