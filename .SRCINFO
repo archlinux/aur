@@ -1,7 +1,7 @@
 pkgbase = ddgr
 	pkgdesc = DuckDuckGo from the terminal
 	pkgver = 2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jarun/ddgr
 	arch = any
 	license = GPL3
