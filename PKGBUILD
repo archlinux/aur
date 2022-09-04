@@ -2,14 +2,14 @@
 
 _pkgname=cntb
 pkgname=${_pkgname}-bin
-pkgver=1.1.0
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Command-line interface (CLI) for managing products from Contabo like VPS and VDS"
 arch=('x86_64')
 url="https://github.com/contabo/${_pkgname}"
 license=('GPL3')
 source=("https://github.com/contabo/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_Linux_x86_64.tar.gz")
-sha256sums=('ca8661f2ba73c95f31bb2d21b9fcbd98168332667616dda4d7fac8ac5c1eccbe')
+sha256sums=('28f6e6aa64081fafd97b5de0ee49743a251ef899983adec84dc440b239d8e6fc')
 
 package() {
     install -Dm755 "$srcdir/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
