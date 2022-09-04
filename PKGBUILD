@@ -9,6 +9,7 @@ arch=('x86_64')
 url='https://github.com/akarinVS/vapoursynth-plugin.git'
 license=('GPL')
 depends=('vapoursynth'
+         'llvm13-libs'
          )
 makedepends=('git'
              'meson'
@@ -39,6 +40,7 @@ build() {
 
   arch-meson "../${_plug}" \
     --buildtype=release \
+    -Dstatic-llvm=false \
     --native-file="$(pwd)/native_config"
 
   ninja

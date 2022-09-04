@@ -9,6 +9,7 @@ pkgbase = vapoursynth-plugin-vsakarin-git
 	makedepends = meson
 	makedepends = llvm13
 	depends = vapoursynth
+	depends = llvm13-libs
 	provides = vapoursynth-plugin-vsakarin
 	conflicts = vapoursynth-plugin-vsakarin
 	options = debug
