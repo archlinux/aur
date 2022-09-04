@@ -9,6 +9,8 @@ pkgbase = kms-jsonrpc
 	depends = boost
 	depends = kms-jsoncpp
 	source = git+https://github.com/Kurento/kms-jsonrpc.git#tag=6.17.0
+	source = cmake-jsoncpp.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = kms-jsonrpc

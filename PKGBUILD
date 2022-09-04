@@ -7,15 +7,20 @@ url="https://github.com/Kurento/kms-jsonrpc"
 license=(apache)
 depends=(boost kms-jsoncpp)
 makedepends=(kms-cmake-utils)
-source=("git+https://github.com/Kurento/$pkgname.git#tag=$pkgver")
-sha256sums=(SKIP)
+source=("git+https://github.com/Kurento/$pkgname.git#tag=$pkgver" 'cmake-jsoncpp.patch')
+sha256sums=(SKIP SKIP)
 
 build() {
-    local builddir=$srcdir/$pkgname/build
+    cd "$srcdir/$pkgname"
+
+    # Sadly can't use regular jsoncpp because kms-core depends on some differences
+    #patch -p0 <"../cmake-jsoncpp.patch"
+
+    local builddir="build"
     rm -rf "$builddir"
     mkdir -p "$builddir"
     cd "$builddir"
-    cmake -DCMAKE_MODULE_PATH=/usr/share/cmake/Modules -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
+    cmake -DCMAKE_MODULES_INSTALL_DIR=/usr/share/cmake/Modules -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
     make
 }
 
