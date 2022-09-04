@@ -1,0 +1,17 @@
+pkgbase = neovim-matchparen-git
+	pkgdesc = Alternative neovim matchparen plugin
+	pkgver = r137.6860f53
+	pkgrel = 1
+	url = https://github.com/monkoose/matchparen.nvim
+	install = matchparen.install
+	arch = any
+	groups = neovim-plugins
+	license = MIT
+	makedepends = git
+	depends = neovim
+	provides = neovim-matchparen
+	conflicts = neovim-matchparen
+	source = neovim-matchparen::git+https://github.com/monkoose/matchparen.nvim
+	sha256sums = SKIP
+
+pkgname = neovim-matchparen-git
