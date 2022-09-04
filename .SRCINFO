@@ -1,0 +1,18 @@
+pkgbase = leveldb-git
+	pkgdesc = Fast key-value storage library
+	pkgver = 1.20.r288.gaa5479b
+	pkgrel = 1
+	url = https://github.com/google/leveldb
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = glibc
+	depends = snappy
+	provides = leveldb=1.20.r288.gaa5479b
+	conflicts = leveldb
+	options = staticlibs
+	source = git+https://github.com/google/leveldb.git
+	sha256sums = SKIP
+
+pkgname = leveldb-git
