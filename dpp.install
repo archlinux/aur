@@ -6,15 +6,13 @@ post_install() {
 	echo -e "\e[1;33mAlso be aware one of the time conversion tests fail on devices not set to UTC.\e[0m"
 	echo -e "\e[1;33mThis shouldn't affect your server deploys but may play role on your dev machine.\e[0m"
 	echo ""
-	echo -e "\e[32mTo keep things lean and clean, embedded nlohmann/jsonhave been replaced by\e[0m"
+	echo -e "\e[32mTo keep things lean and clean, embedded nlohmann/json have been replaced by\e[0m"
 	echo -e "\e[32mpackaged version.\e[0m"
 	echo -e "\e[32mMind that when looking up online tutorials.\e[0m"
 	echo ""
 	echo -e "\e[32mPackage now includes experimental coroutine support.\e[0m"
 	echo -e "\e[32mIt's not considered production ready, but it's available for your experiments.\e[0m"
 	echo -e "\e[32mFeedback is welcome on any of the official channels.\e[0m"
-	echo ""
-	echo -e "\e[31mThis version has a known issue on reconnecting. You should be using 10.0.18 instead.\e[0m"
 }
 
 post_upgrade() {
@@ -25,6 +23,4 @@ post_upgrade() {
 	echo -e "\e[32mPackage now includes experimental coroutine support.\e[0m"
 	echo -e "\e[32mIt's not considered production ready, but it's available for your experiments.\e[0m"
 	echo -e "\e[32mFeedback is welcome on any of the official channels.\e[0m"
-	echo ""
-	echo -e "\e[31mThis version has a known issue on reconnecting. You should be using 10.0.18 instead.\e[0m"
 }
