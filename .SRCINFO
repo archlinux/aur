@@ -1,7 +1,7 @@
 pkgbase = avmf-bin
 	pkgdesc = QEMU ARM Virtual Machine UEFI Firmware
 	pkgver = 2022.05
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.tianocore.org/edk2/
 	arch = any
 	license = BSD
