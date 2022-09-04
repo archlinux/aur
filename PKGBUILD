@@ -2,35 +2,33 @@
 # Contributor: Mike Swanson <mikeonthecomputer@gmail.com>
 _pkgname=dhewm3
 pkgname=$_pkgname-git
-pkgver=1.5.1.r156.gadad73c
+pkgver=1.5.2.r1.gcc0f49f
 pkgrel=1
 epoch=1
 pkgdesc="Doom 3 source port"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://dhewm3.org/"
 license=('GPL3')
-depends=('sdl2')
+depends=('hicolor-icon-theme' 'sdl2')
 makedepends=('cmake' 'curl' 'git' 'libbacktrace' 'openal')
-optdepends=('doom3-data: for game data and icon')
+optdepends=('doom3-data: for game data')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=(
-	"$_pkgname::git+https://github.com/dhewm/dhewm3.git"
-	"$_pkgname.desktop"
-)
-b2sums=(
-	'SKIP'
-	'92b58520e236a61611aea15dfe2106c8375387a6d22139442bfae1fd55c3e5ccf1c12717ec01edc92c331a15fb39b9cf50bed9d893eff4df8b6d418556b13ce6'
-)
+source=("$_pkgname::git+https://github.com/dhewm/dhewm3.git")
+b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+	sed -i '/FLAGS_RELEASE/s/-O2//' $_pkgname/neo/CMakeLists.txt
+}
+
 build() {
 	cmake -S $_pkgname/neo -B build \
-		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_CXX_FLAGS_INIT=-DLINUX_DEFAULT_PATH='\"/usr/share/games/doom3\"' \
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DCMAKE_INSTALL_PREFIX=/usr \
@@ -44,5 +42,5 @@ package() {
 	depends+=('libbacktrace.so' 'libcurl.so' 'libopenal.so')
 	# shellcheck disable=SC2154
 	DESTDIR="$pkgdir" cmake --install build
-	install -Dm644 -t "$pkgdir"/usr/share/applications $_pkgname.desktop
+	cp -dr --no-preserve=ownership -t "$pkgdir"/usr $_pkgname/dist/linux/share
 }
