@@ -6,7 +6,7 @@
 
 pkgname=plymouth
 pkgver=22.02.122
-pkgrel=2
+pkgrel=3
 pkgdesc="A graphical boot splash screen with kernel mode-setting support"
 url="https://www.freedesktop.org/wiki/Software/Plymouth/"
 arch=('i686' 'x86_64')
@@ -33,6 +33,7 @@ source=("https://gitlab.freedesktop.org/${pkgname}/${pkgname}/-/archive/${pkgver
        'plymouth-update-initrd.patch'
        'plymouthd.conf.patch'
        'ply-utils.c.patch'
+       'runstatedir.patch'
 )
 
 sha256sums=('8921cd61a9f32f5f8903ceffb9ab0defaef8326253e1549ef85587c19b7f2ab6'
@@ -49,15 +50,17 @@ sha256sums=('8921cd61a9f32f5f8903ceffb9ab0defaef8326253e1549ef85587c19b7f2ab6'
             'dec28b86ddea93704f8479d33e08f81cd7ff4ccaad57e9053c23bd046db2278a'
             '74908ba59cea53c6a9ab67bb6dec1de1616f3851a0fd89bb3c157a1c54e6633a'
             '71d34351b4313da01e1ceeb082d9776599974ce143c87e93f0a465f342a74fd2'
-            '1bd7693d1e135fe9e22a03f7635309e2ae616e952665d9774eb5ca4d82718e1b')
+            '1bd7693d1e135fe9e22a03f7635309e2ae616e952665d9774eb5ca4d82718e1b'
+            '7c0224737119f949b8d5ca24c438f253b5734e3391a47e8f5f1dda28b8c4ab92')
 
 prepare() {
 	cd "$srcdir"/${pkgname}-${pkgver}
 	patch -p1 -i $srcdir/plymouth-update-initrd.patch
 	patch -p1 -i $srcdir/plymouth-quit.service.in.patch
 	patch -p1 -i $srcdir/plymouthd.conf.patch
-	# apply upstream patch
+	# apply upstream patches
 	patch -p1 -i $srcdir/ply-utils.c.patch
+	patch -p1 -i $srcdir/runstatedir.patch
 }
 
 build() {
@@ -83,7 +86,7 @@ build() {
 		--with-background-end-color-stop=0x4D4D4D \
 		--without-rhgb-compat-link \
 		--without-system-root-install \
-		--with-runtimedir=/run
+		--runstatedir=/run
 
 	make
 }

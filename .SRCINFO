@@ -1,7 +1,7 @@
 pkgbase = plymouth
 	pkgdesc = A graphical boot splash screen with kernel mode-setting support
 	pkgver = 22.02.122
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.freedesktop.org/wiki/Software/Plymouth/
 	arch = i686
 	arch = x86_64
@@ -28,6 +28,7 @@ pkgbase = plymouth
 	source = plymouth-update-initrd.patch
 	source = plymouthd.conf.patch
 	source = ply-utils.c.patch
+	source = runstatedir.patch
 	sha256sums = 8921cd61a9f32f5f8903ceffb9ab0defaef8326253e1549ef85587c19b7f2ab6
 	sha256sums = de4369ad5a5511b684305e3a882c2c56204696514ea8ccdb556dd656eca062e7
 	sha256sums = 748e0cfa0e10ab781bc202fceeed46e765ed788784f1b85945187b0f29eafad7
@@ -43,5 +44,6 @@ pkgbase = plymouth
 	sha256sums = 74908ba59cea53c6a9ab67bb6dec1de1616f3851a0fd89bb3c157a1c54e6633a
 	sha256sums = 71d34351b4313da01e1ceeb082d9776599974ce143c87e93f0a465f342a74fd2
 	sha256sums = 1bd7693d1e135fe9e22a03f7635309e2ae616e952665d9774eb5ca4d82718e1b
+	sha256sums = 7c0224737119f949b8d5ca24c438f253b5734e3391a47e8f5f1dda28b8c4ab92
 
 pkgname = plymouth
