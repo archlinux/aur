@@ -1,6 +1,6 @@
 pkgbase = stagit-gopher
 	pkgdesc = Static gopher site generator for git version control
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://codemadness.org/stagit-gopher.html
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = stagit-gopher
 	depends = libgit2
 	optdepends = geomyidae: small c-based gopherd
 	optdepends = git: scripting functionality
-	source = https://codemadness.org/releases/stagit-gopher/stagit-gopher-1.1.tar.gz
-	sha512sums = 37703a22e07bbda33a7d8684f08200cb8f69609d38966f5983d30564a0bd2478d441eb8398a1c8568cc823f1e15067624094c88ecc5271cbe51fe2e67293c224
+	source = https://codemadness.org/releases/stagit-gopher/stagit-gopher-1.2.tar.gz
+	sha512sums = 07a21862471134c1cc02350627e336fc30f2a6dce97758fc5bb3a04ac8aafe1c3227003f8dd83e330bc257a3b05374b603cd700e0244c6eb45e2dec3676621ac
 
 pkgname = stagit-gopher
