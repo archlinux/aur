@@ -1,18 +1,14 @@
-pkgbase = pug-hook-git
+pkgbase = pug-hook-noupgrade-git
 	pkgdesc = Automatically saves and synchronizes Pacman and AUR installed package lists into Gists.
-	pkgver = 20200107.e4bb973
+	pkgver = r60.e4bb973
 	pkgrel = 1
 	url = https://github.com/Ventto/pug
-	arch = x86_64
-	arch = i686
+	arch = any
 	license = GPL
-	makedepends = make
 	makedepends = git
-	depends = pacman
-	depends = gist>=4.5.0
+	depends = gist
 	conflicts = pug
-	source = git+https://github.com/Ventto/pug
+	source = git+https://github.com/Ventto/pug.git
 	sha256sums = SKIP
 
-pkgname = pug-hook-git
-
+pkgname = pug-hook-noupgrade-git

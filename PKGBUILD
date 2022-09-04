@@ -1,23 +1,24 @@
-pkgname=pug-hook-git
-_pkgname=pug
-pkgver=20200107.e4bb973
+pkgname=pug-hook-noupgrade-git
+pkgver=r60.e4bb973
 pkgrel=1
 pkgdesc='Automatically saves and synchronizes Pacman and AUR installed package lists into Gists.'
-arch=('x86_64' 'i686')
+arch=('any')
 license=('GPL')
-depends=('pacman' 'gist>=4.5.0')
-makedepends=('make' 'git')
+depends=('gist')
+makedepends=('git')
 conflicts=('pug')
 url="https://github.com/Ventto/pug"
-source=("git+https://github.com/Ventto/pug")
+source=("git+https://github.com/Ventto/pug.git")
 sha256sums=('SKIP')
 
+_srcname=pug
+
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
-    git log -1 --format='%cd.%h' --date=short | tr -d -
+    cd "${srcdir}/${_srcname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_srcname}"
   make DESTDIR="${pkgdir}" install
 }
