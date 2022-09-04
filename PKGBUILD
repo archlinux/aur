@@ -1,8 +1,8 @@
 # Maintainer: Joey Dumont <joey.dumont@gmail.com>
 _target=mips64-ultra-elf
 pkgname=${_target}-newlib
-_newlibver=4.1.0
-pkgver=4.1.0_r170.c2bd862
+_newlibver=4.2.0.20211231
+pkgver=4.2.0.20211231_r170.c2bd862
 pkgrel=1
 pkgdesc="A C library intended for use on embedded systems (${_target})"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=("${_target}-gcc-stage1" "git")
 options=('!strip' '!emptydirs')
 source=("ftp://sourceware.org/pub/newlib/newlib-${_newlibver}.tar.gz"
         "git+https://github.com/glankk/n64.git#branch=n64-ultra")
-sha256sums=('f296e372f51324224d387cc116dc37a6bd397198756746f93a2b02e9a5d40154'
+sha256sums=('c3a0e8b63bc3bef1aeee4ca3906b53b3b86c8d139867607369cb2915ffc54435'
             'SKIP')
 
 pkgver() {
