@@ -1,13 +1,13 @@
 # Maintainer: <reg-archlinux AT klein DOT tuxli DOT ch> 
 pkgname=mabel
 pkgver=0.1.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A fancy BitTorrent client for the terminal"
 arch=('any')
 url="https://github.com/smmr-software/${pkgname}"
 license=('GPL3')
 makedepends=('go')
-depends=('ttf-nerd-fonts-symbols')
+depends=('ttf-nerd-fonts-symbols-2048-em')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")

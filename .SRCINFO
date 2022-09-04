@@ -1,12 +1,12 @@
 pkgbase = mabel
 	pkgdesc = A fancy BitTorrent client for the terminal
 	pkgver = 0.1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/smmr-software/mabel
 	arch = any
 	license = GPL3
 	makedepends = go
-	depends = ttf-nerd-fonts-symbols
+	depends = ttf-nerd-fonts-symbols-2048-em
 	provides = mabel
 	conflicts = mabel-git
 	source = mabel-0.1.6.tar.gz::https://github.com/smmr-software/mabel/archive/refs/tags/v0.1.6.tar.gz
