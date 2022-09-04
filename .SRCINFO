@@ -1,0 +1,22 @@
+pkgbase = python-sacrebleu
+	pkgdesc = Reference BLEU implementation that auto-downloads test sets
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/mjpost/sacrebleu
+	changelog = CHANGELOG.md
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-colorama
+	depends = python-lxml
+	depends = python-numpy
+	depends = python-portalocker
+	depends = python-regex
+	depends = python-tabulate
+	source = python-sacrebleu-2.2.0.tar.gz::https://github.com/mjpost/sacrebleu/archive/v2.2.0.tar.gz
+	sha256sums = bba309a6c4e9b480c13c15523a775df0237a644cdde3e14aac8e6b7414780d61
+
+pkgname = python-sacrebleu
