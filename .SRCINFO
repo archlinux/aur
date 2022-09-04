@@ -1,13 +1,13 @@
 pkgbase = python-weblate-language-data
 	pkgdesc = Language definitions used by Weblate
-	pkgver = 2022.3
+	pkgver = 2022.7
 	pkgrel = 1
 	url = https://github.com/WeblateOrg/language-data
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/WeblateOrg/language-data/archive/2022.3.tar.gz
-	sha256sums = 5f29061eaa69f043b211cdf551d5c7d03a514178d80aee8a5beaf92a0d75beaa
+	source = https://github.com/WeblateOrg/language-data/archive/2022.7.tar.gz
+	sha256sums = 95241271ad22ad834d3f5dd3b2d33a31a828517b4b344d687321073401fe1ebf
 
 pkgname = python-weblate-language-data
