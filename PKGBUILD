@@ -1,7 +1,7 @@
 # Maintainer: Marcus Hoffmann <bubu@bubu1.eu>
 _pkgname=Weblate
 pkgname=weblate
-pkgver=4.13.1
+pkgver=4.14
 pkgrel=1
 
 pkgdesc="Web based localization tool with tight version control integration"
@@ -26,7 +26,6 @@ depends=('python-bleach'
          'python-gitpython'
          'python-hiredis'
          'python-html2text'
-         'python-jellyfish'
          'python-jsonschema'
          'python-lxml'
          'python-misaka'
@@ -54,6 +53,7 @@ depends=('python-bleach'
          'python-cssselect'
          'python-ahocorasick'
          'python-charset-normalizer'
+	 'python-rapidfuzz'
          'systemd')
 optdepends=('python-psycopg2: postgres support'
             'python-mysqlclient: MySQL support'
@@ -76,7 +76,7 @@ source=("https://github.com/WeblateOrg/weblate/releases/download/weblate-${pkgve
         'celery-weblate.service'
         'logrotate-celery')
 
-sha256sums=('208b31ac41390b09b11dd458bf37e6ffd79410955e8dae02692e94b87bcc4321'
+sha256sums=('2d701bae1369405cb3c64868103287c5b40b8ca751187c8c74da302e63376ede'
             '115c69062ac231d71596ce6b7d4afd0c6ea9b934f50de062c58315b2ef007137'
             '094525f9bf6e40f96c58e089fc596319f557a4a20bd1b23f426352f94fa43dad'
             '065247e8a96f6db16c0d08b919e53cd5e04d71a2be94f2ff949dd726dee06394'
