@@ -1,23 +1,24 @@
-# Maintainer: Alexander Agura <agura@tfwno.gf>
+# Maintainer: Paul Kasemir <paul.kasemir@gmail.com>
 pkgname=find-the-command
-pkgver=1.4.2
+pkgver=2.0.1
 pkgrel=1
-pkgdesc="Advanced command-not-found hook for bash and zsh using the power of pacman"
+pkgdesc="Advanced command-not-found hook for bash, fish and zsh using the power of pacman"
 arch=('any')
-url="https://github.com/agura-lex/find-the-command"
+url="https://github.com/pkasemir/find-the-command"
 license=('custom:WTFPL')
 depends=('pacman>=5.0')
-optdepends=('sudo: for root access (needed for packages installation)')
+optdepends=('fzf: highly recommended for package selection and previews'
+            'pacman-contrib: for weekly pacman-filesdb-refresh.timer'
+            'pkgfile: provides faster searches than pacman'
+            'sudo: helpful for privilege elevation')
 install=find-the-command.install
 options=('docs')
-source=("https://github.com/agura-lex/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('3219bc4b574b2db1266154c75373670d')
+source=("https://github.com/pkasemir/$pkgname/archive/$pkgver.tar.gz")
+sha256sums=('aa312358f419a41ce48bc3c51f336892321fe3d8819b0e1a419c9eb2c8ba7593')
 
 package() {
-	cd "$pkgname-$pkgver"
-	rm .gitignore
-	mkdir -p usr/share/licenses/$pkgname
-	mv LICENSE usr/share/licenses/$pkgname/
-	mv README.md usr/share/doc/$pkgname/
-	cp -a * $pkgdir/
+  cd "$pkgname-$pkgver"
+  install -Dm644 README.md usr/share/doc/"${pkgname}"/ftc.* -t \
+    "$pkgdir/usr/share/doc/${pkgname}"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname}"
 }
