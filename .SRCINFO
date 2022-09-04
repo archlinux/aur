@@ -1,6 +1,6 @@
 pkgbase = kimageformats-git
 	pkgdesc = Image format plugins for Qt5
-	pkgver = r273.51d0b2a
+	pkgver = r424.43543f9
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = i686
@@ -19,4 +19,3 @@ pkgbase = kimageformats-git
 	sha256sums = SKIP
 
 pkgname = kimageformats-git
-
