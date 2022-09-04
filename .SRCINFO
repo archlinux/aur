@@ -7,6 +7,7 @@ pkgbase = hello-world
 	license = custom
 	makedepends = gcc
 	makedepends = git
+	makedepends = cmatrix
 	depends = cowsay
 	conflicts = helloworld
 	source = git+https://github.com/justanoobcoder/helloworld
