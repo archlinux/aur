@@ -1,0 +1,18 @@
+pkgbase = timew-sync-server
+	pkgdesc = Timewarrior Sync Server
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/timewarrior-synchronize/timew-sync-server
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	source = timew-sync-server-1.1.0.tar.gz::https://github.com/timewarrior-synchronize/timew-sync-server/archive/v1.1.0.tar.gz
+	sha512sums = 939e81a1f2cc26fad89c92ee4f8b50da98647b84d8dc5e135536968bcd8f4a9c3b14ad1b7e151b9ffbc01360324d3cd615fb5ec6e91b7b643908395dd6e428f1
+
+pkgname = timew-sync-server
