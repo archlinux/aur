@@ -1,7 +1,7 @@
 .SHELL = /usr/bin/env bash
 
-NAME = "$(shell grep -m 1 pkgname .SRCINFO | cut -d '=' -f 2 | xargs)"
-URL = "$(shell grep url .SRCINFO | cut -d '=' -f 2 | xargs)"
+NAME    = "$(shell grep -m 1 pkgname .SRCINFO | cut -d '=' -f 2 | xargs)"
+URL     = "$(shell grep url .SRCINFO | cut -d '=' -f 2 | xargs)"
 VERSION = "$(shell grep pkgver .SRCINFO | cut -d '=' -f 2 | xargs)"
 
 .PHONY: all
