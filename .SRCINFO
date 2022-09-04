@@ -1,6 +1,6 @@
 pkgbase = python-arviz
 	pkgdesc = Exploratory analysis of Bayesian models with Python
-	pkgver = 0.11.4
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://arviz-devs.github.io/arviz/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-arviz
 	depends = python-xarray
 	depends = python-matplotlib
 	depends = python-netcdf4
-	source = python-arviz-0.11.4.tar.gz::https://github.com/arviz-devs/arviz/archive/v0.11.4.tar.gz
-	sha256sums = 51e743c47ee2190402670cc064078a2ad36bcb977b28d933187b8d7b7eb38c68
+	source = python-arviz-0.12.1.tar.gz::https://github.com/arviz-devs/arviz/archive/v0.12.1.tar.gz
+	sha256sums = 4135b21ebc26a2632ba39fefc6cb987bffbe01f53d7c75ca58b2640576c9113b
 
 pkgname = python-arviz
