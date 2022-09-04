@@ -1,6 +1,6 @@
 pkgname=mingw-w64-glew
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The OpenGL Extension Wrangler Library (mingw-w64)"
 arch=('any')
 url="http://glew.sourceforge.net/"
@@ -27,6 +27,7 @@ package() {
   for _arch in ${_architectures}; do
     cd "$srcdir/glew-${pkgver}/build-${_arch}"
     make install DESTDIR="$pkgdir"
+    install -m 644 lib/libglew32.a "$pkgdir"/usr/${_arch}/lib/
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
