@@ -1,7 +1,7 @@
 # Maintainer: Victor A. Santos  <victoraur.santos@gmail.com>
 pkgname=waf-git
-pkgver=r2840.57377901
-pkgrel=1
+pkgver=r3170.177bd3b0
+pkgrel=2
 pkgdesc="General-purpose build system modelled after Scons"
 arch=('any')
 url="http://waf.io"
@@ -24,7 +24,7 @@ build() {
 
     python3 ./waf-light \
         configure --prefix=/usr \
-        build --make-waf --tools='compat,compat15,ocaml,go,cython,scala,erlang,cuda,gcj,boost,pep8,eclipse'
+        build --make-waf --tools='compat,compat15,ocaml,go,cython,scala,erlang,cuda,gcj,boost,pep8,eclipse,xcode6'
 }
 
 package() {
