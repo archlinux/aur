@@ -6,24 +6,29 @@
 # Maintainer: Nguyen Hong Hiep <ahifdifo@domain.com>
 pkgname=hello-world
 _pkgname=helloworld
-pkgver=1.0
+pkgver=.r1.c68245d
 pkgrel=1
 pkgdesc="Just a test package, will be removed soon"
 arch=('x86_64')
 url="https://github.com/justanoobcoder/helloworld"
 license=('custom')
 depends=('cowsay')
-makedepends=('gcc')
+makedepends=('gcc' 'git')
 conflicts=('helloworld')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('ecf892d8840e3d62ed21670ce9e2ba7e')
+source=("git+$url")
+md5sums=('SKIP')
+
+pkgver() {
+    cd "${_dir}"
+    printf "%s.r%s.%s" "$(awk '/^Version/ {print $2}' NEWS | head -1)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-	cd "$_pkgname-$pkgver"
+	cd "$_pkgname"
 	make
 }
 
 package() {
-	cd "$_pkgname-$pkgver"
+	cd "$_pkgname"
 	make DESTDIR="$pkgdir/" install
 }
