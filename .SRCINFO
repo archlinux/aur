@@ -1,10 +1,10 @@
 pkgbase = python-py4j
 	pkgdesc = Enables Python programs to dynamically access arbitrary Java objects
 	pkgver = 0.10.9.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.py4j.org
 	arch = any
-	license = GPL2
+	license = BSD
 	makedepends = python-setuptools
 	depends = java-runtime
 	depends = python
