@@ -2,7 +2,7 @@
 
 pkgname=eartag
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple music tag editor"
 arch=('any')
 url="https://github.com/knuxify/eartag"
@@ -12,6 +12,10 @@ makedepends=('meson')
 checkdepends=('appstream-glib')
 source=($url/archive/$pkgver.tar.gz)
 b2sums=('43a1ea5ff999faf879a08a41da6031757c486bb46142def60adbe868adec14144d2ce9732a368c97d9dc7dc15098ce2ea7b0b246543d2be38ea46efd1c25dd39')
+
+prepare() {
+  sed -i 's|;;|;|g' "$pkgname-$pkgver"/data/app.drey.EarTag.desktop.in
+}
 
 build() {
   arch-meson "$pkgname-$pkgver" build
