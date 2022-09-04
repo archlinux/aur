@@ -3,14 +3,14 @@
 
 _plug=dfttest2
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v4.0.gbb5bad6
-pkgrel=2
+pkgver=v4.0.g584f937
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT Version)"
 arch=('x86_64')
 url='https://github.com/AmusementClub/vs-dfttest2'
 license=('GPL2')
 depends=('vapoursynth' 'cuda')
-makedepends=('git' 'cmake' 'ninja' 'gcc11' 'unzip')
+makedepends=('git' 'cmake' 'ninja' 'gcc11')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/AmusementClub/vs-dfttest2")
@@ -25,11 +25,8 @@ pkgver() {
 }
 
 prepare() {
-  # Download vector class library
-  rm -rf vectorclass version2*
-  wget -q -O vcl.zip https://github.com/vectorclass/version2/archive/refs/tags/v2.01.04.zip
-  unzip -q vcl.zip
-  mv version2*/ vectorclass
+  cd "${_plug}"
+  git submodule update --init --recursive
 }
 
 build() {
@@ -48,7 +45,7 @@ build() {
     -D ENABLE_CUDA=1 \
     -D USE_NVRTC_STATIC=ON \
     -D ENABLE_CPU=1 \
-    -D VCL_HOME="$(pwd)/vectorclass" \
+    -D VCL_HOME="$(pwd)/${_plug}/cpu_source/vectorclass" \
     -W no-dev
   cmake --build "build" --config Release
 }
