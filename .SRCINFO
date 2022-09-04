@@ -1,6 +1,6 @@
 pkgbase = emacs-mozc
 	pkgdesc = Mozc module for Emacs
-	pkgver = 2.28.4800.102
+	pkgver = 2.28.4830.102
 	pkgrel = 1
 	url = https://github.com/google/mozc
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = emacs-mozc
 	makedepends = python
 	makedepends = qt5-base
 	depends = emacs
-	depends = mozc>=2.28.4800.102
+	depends = mozc>=2.28.4830.102
 	options = !distcc
 	options = !ccache
-	source = emacs-mozc-git::git+https://github.com/google/mozc.git#commit=9dc923ab84f4f0369ba507848430c0bd42dbd01d
+	source = emacs-mozc-git::git+https://github.com/google/mozc.git#commit=bf5e3ce232f3afd6c807d9c3d75d41fea08befc5
 	sha256sums = SKIP
 
 pkgname = emacs-mozc

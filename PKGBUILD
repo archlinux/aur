@@ -4,16 +4,16 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname='emacs-mozc'
-pkgver=2.28.4800.102
+pkgver=2.28.4830.102
 pkgrel=1
 pkgdesc='Mozc module for Emacs'
 arch=('x86_64')
 url='https://github.com/google/mozc'
 license=('Apache' 'BSD' 'LGPL' 'custom')
-depends=('emacs' 'mozc>=2.28.4800.102')
+depends=('emacs' 'mozc>=2.28.4830.102')
 makedepends=('bazel' 'git' 'python' 'qt5-base')
 options=(!distcc !ccache)
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=9dc923ab84f4f0369ba507848430c0bd42dbd01d")
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=bf5e3ce232f3afd6c807d9c3d75d41fea08befc5")
 sha256sums=('SKIP')
 
 prepare() {
@@ -25,6 +25,7 @@ prepare() {
 build() {
     cd ${pkgname}-git/src
 
+    unset ANDROID_NDK_HOME
     export JAVA_HOME='/usr/lib/jvm/java-11-openjdk/'
     bazel build unix/emacs:mozc_emacs_helper --config oss_linux --compilation_mode opt
 }
