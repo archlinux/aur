@@ -4,7 +4,7 @@
 
 pkgbase=unicorn-git
 pkgname=('unicorn-git' 'python-unicorn-git' 'ruby-unicorn-git')
-pkgver=2.0.0.rc7.r1.g659a62a0
+pkgver=2.0.0.r0.g6c1cbef6
 pkgrel=1
 pkgdesc='Lightweight, multi-platform, multi-architecture CPU emulator framework based on QEMU'
 url='http://www.unicorn-engine.org'
