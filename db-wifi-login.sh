@@ -3,7 +3,10 @@
 set -e
 
 ### Programme's version:
-_VERSION=0.1_2022-07-08.03b
+_VERSION=0.1_2022-09-04.1
+
+### Timeouts in seconds for network operations
+_CONNECT_TIMEOUT=15
 
 ### License: GNU General Public License version 3 (GPL3).
 #   Copyright 2022, the author.
@@ -18,8 +21,8 @@ _VERSION=0.1_2022-07-08.03b
 # 2.: Do a POST request where the CSRF cookie is passed, and the request data contains 'login=true' and also 'CSRFToken' properly set.
 
 ## Which can be achieved by the following calls:
-# _csrftoken="$(curl -s -o '/dev/null' --dump-header - "${_request_url}" | grep -E "^Set-Cookie:[[:space:]]+csrf=" | tail -n1 | awk '{print $2}' | awk -F= '{print $2}' | sed -E 's|;$||')"
-# curl -s -o '/dev/null' -b "csrf=${_csrftoken}" -d "login=true&CSRFToken=${_csrftoken}" "${_request_url}"
+# _csrftoken="$(curl --connect-timeout "${_CONNECT_TIMEOUT}" -s -o '/dev/null' --dump-header - "${_request_url}" | grep -E "^Set-Cookie:[[:space:]]+csrf=" | tail -n1 | awk '{print $2}' | awk -F= '{print $2}' | sed -E 's|;$||')"
+# curl --connect-timeout "${_CONNECT_TIMEOUT}" -s -o '/dev/null' -b "csrf=${_csrftoken}" -d "login=true&CSRFToken=${_csrftoken}" "${_request_url}"
 
 ## This script essentially does the same, only more complex and with more abstractions.
 
@@ -57,7 +60,7 @@ _USAGEINFO="Usage:
 ### Worker functions:
 _get_csrftoken() {
   # Does a request to $_request_url and returns the CSRF token to stdout.
-  curl -L -s -S -o '/dev/null' -A "${_user_agent}" -j --dump-header - "${_request_url}" | grep -E "^Set-Cookie:[[:space:]]+${_CSRF_cookiename}=" | tail -n1 | awk '{print $2}' | awk -F= '{print $2}' | sed -E 's|;$||'
+  curl --connect-timeout "${_CONNECT_TIMEOUT}" -L -s -S -o '/dev/null' -A "${_user_agent}" -j --dump-header - "${_request_url}" | grep -E "^Set-Cookie:[[:space:]]+${_CSRF_cookiename}=" | tail -n1 | awk '{print $2}' | awk -F= '{print $2}' | sed -E 's|;$||'
   # Note: CSRF token also present in the submit button.
 }
 
@@ -76,10 +79,10 @@ _perform_action() {
   local _csrftoken="$2"
   case "${_what}" in
     login)
-      curl -L -s -S -o '/dev/null' --referer "${_referer}" -b "${_CSRF_cookiename}=${_csrftoken}" -d "${_login_request}&${_CSRFToken_requestname}=${_csrftoken}" "${_request_url}"
+      curl --connect-timeout "${_CONNECT_TIMEOUT}" -L -s -S -o '/dev/null' --referer "${_referer}" -b "${_CSRF_cookiename}=${_csrftoken}" -d "${_login_request}&${_CSRFToken_requestname}=${_csrftoken}" "${_request_url}"
     ;;
     logout)
-      curl -L -s -S -o '/dev/null' --referer "${_referer}" -b "${_CSRF_cookiename}=${_csrftoken}" -d "${_logout_request}&${_CSRFToken_requestname}=${_csrftoken}" "${_request_url}"
+      curl --connect-timeout "${_CONNECT_TIMEOUT}" -L -s -S -o '/dev/null' --referer "${_referer}" -b "${_CSRF_cookiename}=${_csrftoken}" -d "${_logout_request}&${_CSRFToken_requestname}=${_csrftoken}" "${_request_url}"
     ;;
     *)
       errmsg "$0: Error in function '${FUNCNAME[0]}': An unsupported first argument was specified. Allowed are only: 'login', 'logout'."
@@ -118,7 +121,7 @@ _do_toggle() {
 
 _get_status() {
   # Prints the login/logout state.
-  local _buttontype="$(curl -L -s -S -o - "${_request_url}" | sed -nE 's/^.*<input[[:space:]].*name="(logout|login)".*$/\1/p')"
+  local _buttontype="$(curl --connect-timeout "${_CONNECT_TIMEOUT}" -L -s -S -o - "${_request_url}" | sed -nE 's/^.*<input[[:space:]].*name="(logout|login)".*$/\1/p')"
   case "${_buttontype}" in
     'login')
       msg 'down'
@@ -134,7 +137,7 @@ _get_status() {
 
 _get_datausage() {
   # Prints the used data volume.
-  msg "$(curl -L -s -S -o - --referer "${_referer}" "${_datausage_info_url}")"
+  msg "$(curl --connect-timeout "${_CONNECT_TIMEOUT}" -L -s -S -o - --referer "${_referer}" "${_datausage_info_url}")"
 }
 
 
