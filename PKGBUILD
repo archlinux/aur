@@ -1,7 +1,7 @@
 # Maintainer: graysky <therealgraysky AT protonmail DOT com>
 # Contributor: Kevin Schmidt <kevin.patrick.schmidt@googlemail.com>
 pkgname=openwrt-devel
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc='Metapackage to pull all dependencies required to build OpenWrt'
 arch=('x86_64')
@@ -13,4 +13,4 @@ depends=(
   openssl patch pkgconf python rsync sed texinfo time unzip
   util-linux wget which zlib
 )
-optdepends=(asciidoc help2man intltool perl-extutils-makemaker)
+optdepends=(asciidoc help2man intltool perl-extutils-makemaker swig)
