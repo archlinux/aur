@@ -3,22 +3,24 @@
 _name=qmsolve
 pkgname=python-$_name
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A module for solving and visualizing the Schrödinger equation"
 arch=("any")
 url="https://github.com/quantum-visualizations/qmsolve"
-license=("BSD-3")
+license=("BSD")
 depends=(
-    'mayavi'
     'python-h5py'
     'python-matplotlib'
     'python-numpy'
     'python-progressbar'
-    'python-pyqt5'
     'python-scipy'
-    'vtk'
 )
 makedepends=('python-setuptools')
+optdepends=(
+    'mayavi: for 3D graphics'
+    'python-pyqt5: for 3D graphics'
+    'vtk: for 3D graphics'
+)
 source=(
     "https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
     "https://github.com/quantum-visualizations/qmsolve/blob/main/LICENSE"
