@@ -1,7 +1,7 @@
 pkgbase = freetuxtv-git
 	pkgdesc = Internet television and radio player
 	pkgver = 0.6.8.r45.gc5781e5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/freetuxtv/freetuxtv
 	arch = aarch64
 	arch = armv7h

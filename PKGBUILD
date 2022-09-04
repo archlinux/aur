@@ -3,7 +3,7 @@
 _pkgname=freetuxtv
 pkgname=$_pkgname-git
 pkgver=0.6.8.r45.gc5781e5
-pkgrel=2
+pkgrel=3
 pkgdesc="Internet television and radio player"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/freetuxtv/freetuxtv"
@@ -34,7 +34,8 @@ pkgver() {
 
 build() {
 	cmake -S $_pkgname -B build \
-		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-Wno-dev
 	cmake --build build
