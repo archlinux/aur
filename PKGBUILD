@@ -1,8 +1,8 @@
 # Maintainer: Garlicbreadwolfs <garlicbreadwolfs AT riseup DOT net>
 
 pkgname=mullvad-vpn-dinit
-pkgver=1
-pkgrel=3
+pkgver=4
+pkgrel=1
 pkgdesc="Dinit service scripts for Mullvad"
 arch=('any')
 license=('Unlicense')

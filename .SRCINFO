@@ -1,7 +1,7 @@
 pkgbase = mullvad-vpn-dinit
 	pkgdesc = Dinit service scripts for Mullvad
-	pkgver = 1
-	pkgrel = 3
+	pkgver = 4
+	pkgrel = 1
 	arch = any
 	license = Unlicense
 	depends = mullvad-vpn
