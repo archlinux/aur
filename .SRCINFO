@@ -1,7 +1,7 @@
 pkgbase = libretro-ppsspp-git
 	pkgdesc = Sony PlayStation Portable core
-	pkgver = 1.12.3.r980.g3bfab6326
-	pkgrel = 2
+	pkgver = 1.13.1.r720.gb73958296
+	pkgrel = 1
 	url = https://www.ppsspp.org/
 	arch = aarch64
 	arch = armv7h

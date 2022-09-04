@@ -2,8 +2,8 @@
 _reponame=ppsspp
 _pkgname=libretro-$_reponame
 pkgname=$_pkgname-git
-pkgver=1.12.3.r980.g3bfab6326
-pkgrel=2
+pkgver=1.13.1.r720.gb73958296
+pkgrel=1
 pkgdesc="Sony PlayStation Portable core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://www.ppsspp.org/"
@@ -46,6 +46,7 @@ prepare() {
 	cd $_reponame
 	git config submodule.ext/armips.url ../armips
 	git submodule update
+	sed -i '/COMPILE_FLAGS/s/-O2//;/FLAGS_RELEASE/s/-O2//' CMakeLists.txt
 	# unbundle glslang
 	rmdir ext/glslang
 	ln -s /usr/include/glslang ext/glslang
@@ -60,7 +61,9 @@ prepare() {
 build() {
 	export PKG_CONFIG_PATH=/usr/lib/ffmpeg4.4/pkgconfig
 	cmake -S $_reponame -B build \
-		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
+		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_SKIP_RPATH=ON \
 		-DLIBRETRO=ON \
 		-DUSE_SYSTEM_FFMPEG=ON \
