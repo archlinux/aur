@@ -2,38 +2,19 @@
 pkgname=parallels-client
 pkgver=19.0.23304
 pkgrel=1
-pkgdesc="A remote work tool (RASClient)"
+pkgdesc="A remote work tool (rasclient, 2x RDP client, Parallels RAS)"
 arch=('x86_64')
 url="https://www.parallels.com/products/ras/capabilities/parallels-client/"
 license=("custom:${pkgname}")
 # from .deb control file
-depends=('libxcursor'
-         'zlib'
-         'fontconfig'
-         'libxrender'
-         'glibc'
-         'libxrandr'
-         'libsm'
-         'libxtst'
-         'libice'
-         'libxext'
-         'libxi'
-         'gcc'
-         'alsa-lib'
-         'alsa-plugins'
-         'libxinerama'
-         'libxft'
-         'libx11'
-         'pcsclite'
-         'libcups'
-         'libxpm'
-         'libxml2'
-         'libmtp'
-         'libusb'
+depends=('libxcursor' 'zlib' 'fontconfig' 'libxrender'
+         'glibc' 'libxrandr' 'libsm' 'libxtst' 'libice'
+         'libxext' 'libxi' 'gcc' 'alsa-lib' 'alsa-plugins'
+         'libxinerama' 'libxft' 'libx11' 'pcsclite'
+         'libcups' 'libxpm' 'libxml2' 'libmtp' 'libusb'
          'nas'
          'udisks2'
-         'qt5-base'
-         'qt5-x11extras')
+         'qt5-base' 'qt5-x11extras')
 makedepends=()
 optdepends=()
 provides=()
