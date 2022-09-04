@@ -2,7 +2,7 @@
 
 _pkgname=grub2-theme-vimix-very-dark-blue
 pkgname=grub-theme-vimix-very-dark-blue
-pkgver=1.0.0.r84.f755ba9
+pkgver=1.0.0.r85.496352e
 pkgrel=1
 pkgdesc="Simple very dark blue GRUB theme"
 arch=(any)
