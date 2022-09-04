@@ -1,6 +1,6 @@
 pkgbase = raysession-git
 	pkgdesc = Session manager for audio programs using the Non Session Manager (NSM) API
-	pkgver = r893.4c2fb38
+	pkgver = r1762.b4fd778
 	pkgrel = 1
 	url = https://github.com/Houston4444/RaySession
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Milk Brewster <milk on freenode>
 _pkgname=raysession
 pkgname=${_pkgname}-git
-pkgver=r893.4c2fb38
+pkgver=r1762.b4fd778
 pkgrel=1
 pkgdesc="Session manager for audio programs using the Non Session Manager (NSM) API"
 arch=(x86_64)
@@ -26,6 +26,8 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/RaySession"
+  git submodule init
+  git submodule update
 }
 
 build() {
