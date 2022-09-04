@@ -1,12 +1,13 @@
 pkgbase = python-py4j
 	pkgdesc = Enables Python programs to dynamically access arbitrary Java objects
 	pkgver = 0.10.9.7
-	pkgrel = 1
-	url = https://pypi.org/project/pysparkpy4j
+	pkgrel = 2
+	url = https://www.py4j.org
 	arch = any
 	license = GPL2
 	makedepends = python-setuptools
-	depends = python-future
+	depends = java-runtime
+	depends = python
 	source = https://pypi.org/packages/source/p/py4j/py4j-0.10.9.7.tar.gz
 	sha256sums = 0b6e5315bb3ada5cf62ac651d107bb2ebc02def3dee9d9548e3baac644ea8dbb
 
