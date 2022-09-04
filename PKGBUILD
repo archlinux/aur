@@ -4,22 +4,22 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname='fcitx5-mozc-ut'
-pkgver=2.28.4800.102
+pkgver=2.28.4830.102
 pkgrel=1
 pkgdesc='Mozc module for Fcitx5'
 arch=('x86_64')
 url='https://github.com/fcitx/mozc'
 license=('Apache' 'BSD' 'LGPL' 'custom')
-depends=('fcitx5' 'mozc>=2.28.4800.102')
+depends=('fcitx5' 'mozc>=2.28.4830.102')
 makedepends=('bazel' 'git' 'python' 'qt5-base')
 optdepends=('fcitx5-configtool')
-provides=('fcitx5-mozc=2.28.4800.102')
+provides=('fcitx5-mozc=2.28.4830.102')
 conflicts=('fcitx5-mozc')
 options=(!distcc !ccache)
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=9dc923ab84f4f0369ba507848430c0bd42dbd01d"
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=bf5e3ce232f3afd6c807d9c3d75d41fea08befc5"
         "fcitx5.patch")
 sha256sums=('SKIP'
-            '96786605039c9b7d0505f7453c01d8090ae59c2ee25252c22244d2f9534bac47')
+            '0dbea440c47ec8650e4233b6c6678d3c4c49d1523c67f0ea8295962a2768dd7b')
 
 prepare() {
     cd ${pkgname}-git/src
@@ -38,6 +38,7 @@ prepare() {
 build() {
     cd ${pkgname}-git/src
 
+    unset ANDROID_NDK_HOME
     export JAVA_HOME='/usr/lib/jvm/java-11-openjdk/'
     bazel build unix/fcitx5:fcitx5-mozc.so unix/icons --config oss_linux --compilation_mode opt
 }
