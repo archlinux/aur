@@ -1,6 +1,6 @@
 pkgbase = grub-theme-vimix-very-dark-blue
 	pkgdesc = Simple very dark blue GRUB theme
-	pkgver = 1.0.0.r80.b94adf7
+	pkgver = 1.0.0.r84.f755ba9
 	pkgrel = 1
 	url = https://github.com/trueNAHO/grub2-theme-vimix-very-dark-blue
 	install = grub-theme-vimix-very-dark-blue.install
@@ -14,7 +14,7 @@ pkgbase = grub-theme-vimix-very-dark-blue
 	optdepends = efibootmgr: Linux user-space application to modify the EFI Boot Manager
 	optdepends = grub-customizer: GUI tool to configure GRUB
 	optdepends = os-prober: Utility to detect other OSes on a set of drives
-	source = grub-theme-vimix-very-dark-blue::git+https://github.com/trueNAHO/grub2-theme-vimix-very-dark-blue
+	source = git+https://github.com/trueNAHO/grub2-theme-vimix-very-dark-blue
 	md5sums = SKIP
 
 pkgname = grub-theme-vimix-very-dark-blue
