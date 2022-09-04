@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=lfp
-pkgver=2.6.1
+pkgver=2.6
 pkgrel=1
 pkgdesc='LF-Preview, a wrapper for the lf file manager with image previews, fuzzy-finding and more'
 license=('MIT')
@@ -14,16 +14,16 @@ optdepends=(
   'git: cloning repos from within lfp'
   )
 source=(
-  "https://concise.cc/downloads/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst"
-  "https://concise.cc/downloads/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
+  "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst"
+  "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
   )
 sha512sums=(
-  '294119b8988009c1b25a0cf6e2637ce9084c74fdbe1ea82a7bb3066f716fd4320977ba209edcf7208ade8ba408d22c8b5e7c5590b307c28ef029967d26911771'
-  '84be1adb7c3750c971d8ee55fb72b5479049bae7d52f32b7a40429112bae0a24dd422d732a511fec4f40a697587799b81fffd572450ccc389cfd5d5064e1d9cb'
+  'afc4cfc10e17630d8b8dab06bd961e74370a8311c1f1c8b456b75f681cd51c3b76afe5f09591698f3ea8bcb24ca80b9c2a3b5dd80a8d46c0ddc10f8de3a00527'
+  '9c969bc76168bca08570cb0d20985ff6fbc91b0800a6920153ce0fc1e6e24bbd72ba6199c8d9087c3fbfa2cee021733c8283650bf0ef69b4c783cc8703c9c6d6'
   )
 md5sums=(
-  '1c4bbcec2f7cea2e6d7313e8645edc6a'
-  'f1847977800c39efdcd8637400322602'
+  '488ae806737007010db777cfdc6ee20a'
+  '816d5130464eae9b374b0f3d16c773aa'
   )
 validpgpkeys=('81BACEEBC3EA26E127166E4A819BB92A9A48160E')
 
