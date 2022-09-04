@@ -1,0 +1,18 @@
+pkgbase = libaio-git
+	pkgdesc = The Linux-native asynchronous I/O facility (aio) library
+	pkgver = 0.3.113.r0.g1b18bfa
+	pkgrel = 1
+	url = https://pagure.io/libaio
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = glibc
+	provides = libaio=0.3.113.r0.g1b18bfa
+	provides = libaio.so
+	conflicts = libaio
+	options = staticlibs
+	source = git+https://pagure.io/libaio.git
+	sha256sums = SKIP
+
+pkgname = libaio-git
