@@ -2,7 +2,7 @@
 # Contributor: Cody <aur AT codyps.com>
 
 pkgname=ignition-plugin
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Library for registering plugin libraries and dynamically loading them at runtime."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 depends=()
 makedepends=('cmake' 'ignition-cmake')
 source=("https://github.com/gazebosim/gz-plugin/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('2a01fe89bfca332e4a4cac1457080660d4d36c71fc38f7be79868e528d32acb4')
+sha256sums=('504c6ef66d48342d92ec7b227a134485ae79946df16094843f33d80f9af34e08')
 
 _dir="gz-plugin-${pkgname}_${pkgver}"
 
@@ -23,7 +23,7 @@ build() {
 
     cmake .. -Wno-dev \
              -DCMAKE_BUILD_TYPE="Release" \
-             -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
+             -DCMAKE_INSTALL_PREFIX="/usr" \
              -DCMAKE_INSTALL_LIBDIR="lib" \
              -DBUILD_TESTING=OFF
 
@@ -32,6 +32,5 @@ build() {
 
 package() {
     cd "$srcdir/$_dir/build"
-    #make DESTDIR="$pkgdir/" install
-    make install
+    make DESTDIR="$pkgdir/" install
 }
