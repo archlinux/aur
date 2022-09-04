@@ -1,7 +1,7 @@
 pkgbase = nerd-fonts-profont
 	pkgdesc = Patched font ProFont from nerd-fonts library
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
 	license = MIT
