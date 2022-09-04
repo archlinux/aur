@@ -19,6 +19,6 @@ pkgver() {
 }
 
 package() {
-  cd "${srcdir}/${_srcname}"
-  make DESTDIR="${pkgdir}" install
+    cd "${srcdir}/${_srcname}"
+    make DESTDIR="${pkgdir}" install
 }
