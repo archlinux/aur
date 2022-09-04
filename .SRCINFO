@@ -1,0 +1,15 @@
+pkgbase = templater-git
+	pkgdesc = Fill values into a template automatically
+	pkgver = 1.r33.7d813a9
+	pkgrel = 1
+	url = https://github.com/TheTerrior/templater
+	arch = x86_64
+	license = GPL
+	depends = git
+	depends = most
+	depends = python
+	provides = templater
+	source = git+https://github.com/TheTerrior/templater.git
+	md5sums = SKIP
+
+pkgname = templater-git
