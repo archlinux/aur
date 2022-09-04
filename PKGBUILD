@@ -1,4 +1,4 @@
-# Maintainer: Core_UK <mail.coreuk@gmail.com>
+# Maintainer: Core_UK <dev@coredev.uk>
 
 pkgname=cider
 _pkgname=Cider
