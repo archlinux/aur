@@ -1,6 +1,6 @@
 pkgbase = python-colcon-common-extensions
 	pkgdesc = A meta package aggregating colcon-core as well as a set of common extensions.
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://pypi.org/project/colcon-common-extensions
 	arch = any
@@ -24,8 +24,7 @@ pkgbase = python-colcon-common-extensions
 	depends = python-colcon-package-selection
 	depends = python-colcon-output
 	depends = python-colcon-zsh
-	source = https://files.pythonhosted.org/packages/source/c/colcon-common-extensions/colcon-common-extensions-0.2.1.tar.gz
-	sha256sums = 73af96598efc24748234d68c0f3a7419cb1e47a4c3c90f6b0d70bcffef034826
+	source = https://files.pythonhosted.org/packages/source/c/colcon-common-extensions/colcon-common-extensions-0.3.0.tar.gz
+	sha256sums = 84408d13f8a46044851a7a4e686749940539d2b3d02e6752746cbbc9a89049ff
 
 pkgname = python-colcon-common-extensions
-
