@@ -2,12 +2,12 @@
 _pkgname=tg
 pkgname=telegram-$_pkgname
 pkgver=0.19.0
-pkgrel=2
+pkgrel=3
 pkgdesc="terminal telegram client that really works"
 arch=('any')
 url="https://github.com/paul-nameless/tg"
 license=('Unlicense')
-depends=('python-telegram=0.15.0' 'python3' 'python-setuptools')
+depends=('python-telegram>=0.15.0' 'python3' 'python-setuptools')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry')
 optdepends=(
 	'libnotify: for notifications, you could also use other programs: see config'
@@ -18,8 +18,16 @@ optdepends=(
 	'fzf: to create groups and secret chats, used for single and multiple user selection'
 )
 conflicts=('telegram-tg-git')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=('8ce8894aa02552526f912954e33c2174')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+	"0001-Allow-newer-python-telegram.patch")
+md5sums=('8ce8894aa02552526f912954e33c2174'
+         'd036364babd1f2cb63693c7df6b4946e')
+
+prepare() {
+	cd "$srcdir/$_pkgname-$pkgver"
+
+	patch -p1 -i $srcdir/0001-Allow-newer-python-telegram.patch
+}
 
 build() {
 	cd "$srcdir/$_pkgname-$pkgver"

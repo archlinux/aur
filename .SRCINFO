@@ -1,7 +1,7 @@
 pkgbase = telegram-tg
 	pkgdesc = terminal telegram client that really works
 	pkgver = 0.19.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/paul-nameless/tg
 	arch = any
 	license = Unlicense
@@ -9,7 +9,7 @@ pkgbase = telegram-tg
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-poetry
-	depends = python-telegram=0.15.0
+	depends = python-telegram>=0.15.0
 	depends = python3
 	depends = python-setuptools
 	optdepends = libnotify: for notifications, you could also use other programs: see config
@@ -20,6 +20,8 @@ pkgbase = telegram-tg
 	optdepends = fzf: to create groups and secret chats, used for single and multiple user selection
 	conflicts = telegram-tg-git
 	source = telegram-tg-0.19.0.tar.gz::https://github.com/paul-nameless/tg/archive/v0.19.0.tar.gz
+	source = 0001-Allow-newer-python-telegram.patch
 	md5sums = 8ce8894aa02552526f912954e33c2174
+	md5sums = d036364babd1f2cb63693c7df6b4946e
 
 pkgname = telegram-tg
