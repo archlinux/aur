@@ -6,7 +6,7 @@
 pkgname=ddgr-git
 _pkgname="${pkgname%-git}"
 pkgver=2.0.r291.1301ec7
-pkgrel=2
+pkgrel=3
 pkgdesc="DuckDuckGo from the terminal (git version)"
 arch=('any')
 url="https://github.com/jarun/ddgr"
@@ -15,7 +15,7 @@ depends=('python>=3.7')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git+${url}")
+source=("git+${url}.git")
 sha256sums=("SKIP")
 
 pkgver() {
@@ -24,7 +24,6 @@ pkgver() {
 }
 
 package() {
-	
 	cd "${srcdir}/${_pkgname}"
 	
 	make PREFIX=/usr DESTDIR="${pkgdir}" install
