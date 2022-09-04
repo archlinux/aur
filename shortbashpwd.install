@@ -1,0 +1,7 @@
+post_install() {
+	echo
+	echo "Please run this command to setup shortbashpwd on startup:"
+	echo
+	echo "    cat /usr/share/shortbashpwd/bashrc.bash >> ~/.bashrc"
+	echo
+}

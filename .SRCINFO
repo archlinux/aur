@@ -1,0 +1,15 @@
+pkgbase = shortbashpwd-git
+	pkgdesc = Shorter working directory in prompt like in fish shell
+	pkgver = r3.7571394
+	pkgrel = 1
+	url = https://github.com/NikitaIvanovV/shortbashpwd
+	install = shortbashpwd.install
+	arch = any
+	license = MIT
+	depends = bash
+	depends = coreutils
+	provides = shortbashpwd
+	source = git+https://github.com/NikitaIvanovV/shortbashpwd
+	sha512sums = SKIP
+
+pkgname = shortbashpwd-git
