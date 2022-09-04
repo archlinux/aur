@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=jitterentropy-rngd
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1
 pkgdesc="Jitter RNG daemon"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.chronox.de/jent.html"
 license=('BSD' 'GPL')
 depends=('glibc')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/smuellerDD/jitterentropy-rngd/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4657c19ba7e5458a7b56d6565e72df79426b70f9c5ff170ad016b7cbef784559')
+sha256sums=('444a3bd70fef165b6cc56bdd977a0774749431331545ba169a7f242d96d52a79')
 
 
 prepare() {
