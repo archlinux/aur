@@ -1,13 +1,13 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 _pkgname=telegram-tg
 pkgname=$_pkgname-git
-pkgver=0.19.0.r2.49981d1
+pkgver=0.19.0.r3.2b0c0cf
 pkgrel=1
 pkgdesc="terminal telegram client that really works"
 arch=(any)
 url="https://github.com/paul-nameless/tg"
 license=('Unlicense')
-depends=('python-telegram=0.15.0' 'python3' 'python-setuptools')
+depends=('python-telegram>=0.15.0' 'python3' 'python-setuptools')
 makedepends=('git')
 optdepends=(
 	'libnotify: for notifications, you could also use other programs: see config'
@@ -19,13 +19,21 @@ optdepends=(
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+https://github.com/paul-nameless/tg.git")
-md5sums=('SKIP')
+source=("$_pkgname::git+https://github.com/paul-nameless/tg.git"
+	"0001-Allow-newer-python-telegram.patch")
+md5sums=('SKIP'
+         'd036364babd1f2cb63693c7df6b4946e')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
 
 	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/\(v\)\(.*\)/\2/')"
+}
+
+prepare() {
+	cd "$srcdir/$_pkgname"
+
+	patch -p1 -i "${srcdir}/0001-Allow-newer-python-telegram.patch"
 }
 
 build() {
