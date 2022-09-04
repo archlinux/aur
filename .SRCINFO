@@ -1,11 +1,12 @@
 pkgbase = realvnc-vnc-viewer
 	pkgdesc = VNC remote desktop client software by RealVNC
 	pkgver = 6.22.515
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.realvnc.com/
 	arch = x86_64
 	arch = i686
 	arch = armv7h
+	arch = aarch64
 	license = custom
 	depends = libsm
 	depends = libxext
@@ -18,5 +19,7 @@ pkgbase = realvnc-vnc-viewer
 	sha1sums_i686 = c2a8107c52d6f67f09e1f64ea227d7c471a8c7ca
 	source_armv7h = https://www.realvnc.com/download/file/viewer.files/VNC-Viewer-6.22.515-Linux-ARM.deb
 	sha1sums_armv7h = 218fa1696ef5a9d2a9914577d10881345d610b0d
+	source_aarch64 = https://www.realvnc.com/download/file/viewer.files/VNC-Viewer-6.22.515-Linux-ARM64.deb
+	sha1sums_aarch64 = 9f4d0e626f35b69d5636fef45b97f663d6780bff
 
 pkgname = realvnc-vnc-viewer
