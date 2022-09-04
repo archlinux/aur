@@ -1,5 +1,5 @@
 pkgname=kurento-module-creator
-pkgver=6.13.0
+pkgver=6.17.0
 pkgrel=1
 pkgdesc="Helper for build of Kurento media server"
 arch=(any)
@@ -7,7 +7,7 @@ url="https://github.com/Kurento/kurento-module-creator"
 license=(apache)
 depends=("java-runtime")
 makedepends=("java-environment" "maven")
-source=("git://github.com/Kurento/$pkgname.git#tag=$pkgver")
+source=("git+https://github.com/Kurento/$pkgname.git#tag=$pkgver")
 sha256sums=(SKIP)
 
 build() {
