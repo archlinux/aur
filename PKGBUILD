@@ -7,7 +7,7 @@
 pkgname=digikam
 _pkgver=7.8.0
 pkgver=${_pkgver//-/_} # for beta versions
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced digital photo management application'
 arch=(x86_64)
 license=(GPL)
@@ -19,15 +19,18 @@ optdepends=('hugin: panorama tool' 'qt5-imageformats: support for additional ima
             'rawtherapee: RAW import' 'darktable: RAW import'
             'perl: for digitaglinktree')
 source=(https://download.kde.org/stable/$pkgname/$pkgver/digiKam-$_pkgver.tar.xz{,.sig}
+        https://invent.kde.org/graphics/digikam/-/commit/082c4c54.patch
         ffmpeg5.patch)
 sha256sums=('b08577b0b15ef99843695708aa2c0e98d547303d85be2a3b39905484f2cab6ce'
             'SKIP'
+            '0f8ecee6736259db1a4986f5a27a882a7fda06c45099d24f38a70d06141efa0c'
             'ef2601f9b2e668116a3643b4bd7ddcfc233ccfc747d813955423ca17b6a23dee')
 validpgpkeys=(D1CF2444A7858C5F2FB095B74A77747BC2386E50) # digiKam.org (digiKam project) <digikamdeveloper@gmail.com>
 options=(debug)
 
 prepare() {
   patch -d $pkgname-$_pkgver -p1 < ffmpeg5.patch # Fix build with FFmpeg 5
+  patch -d $pkgname-$_pkgver -p1 < 082c4c54.patch # Fix libheif crash
 }
 
 build() {
