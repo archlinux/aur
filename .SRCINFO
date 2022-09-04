@@ -1,0 +1,13 @@
+pkgbase = tailwindcss-bin
+	pkgdesc = Standalone Tailwind CLI without dependency on Node.js
+	pkgver = 3.1.8
+	pkgrel = 1
+	url = https://tailwindcss.com
+	arch = x86_64
+	license = MIT
+	provides = tailwindcss
+	conflicts = tailwindcss
+	source = tailwindcss-linux-x64::https://github.com/tailwindlabs/tailwindcss/releases/download/v3.1.8/tailwindcss-linux-x64
+	sha256sums = fb77a0ac5736a5559cf63dfbc094d6ad7857318815ae52d9a6e8e8602a4df337
+
+pkgname = tailwindcss-bin
