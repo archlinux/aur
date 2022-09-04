@@ -1,8 +1,8 @@
 # Maintainer: Lucas Melo <luluco250 at gmail dot com>
 
 pkgname=clonehero-ptb
-pkgver=v1.0.0.3747
-pkgrel=2
+pkgver=v1.0.0.3805
+pkgrel=1
 pkgdesc=\
 'Public test build for Clone Hero. Clone Hero is a free rhythm game, which '\
 'can be played with any 5 or 6 button guitar controller, game controllers, '\
@@ -10,7 +10,7 @@ pkgdesc=\
 arch=('x86_64')
 url='https://clonehero.net/'
 license=('freeware-proprietary')
-depends=('gtk2' 'opengl-driver' 'sdl2')
+depends=('gtk2' 'opengl-driver' 'sdl2' 'rsync')
 optdepends=('discord: Discord rich presence support')
 conflicts=('clonehero')
 source=(
@@ -20,10 +20,10 @@ source=(
 	'clonehero'
 )
 sha256sums=(
-	'05f501d0caa03d26fb6397b6afa5f52fd10575fb714e33f1e854dc2d17472eff'
+	'2f93e014817284ee0456eda49fa73579ef848c8bdfb8e069f335e022aa1e13d9'
 	'6d6d3e8e08ba65fedcc07a2d4ef8d5f6eabd4aec20dbc7e0febc6d58faff72bf'
 	'a2a4829d71d91d106a9c756d6323bfbf505e2757c83abba199a661728dccde9a'
-	'8f2c08c9789dd36dc54b3df88959a742aee1a0c926569d892ed6d254ceb17c1c'
+	'45abc81013147343274849188acf88d75f73e1ae99c885713440997ff985fa2e'
 )
 install=clonehero.install
 

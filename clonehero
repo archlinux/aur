@@ -17,12 +17,9 @@ fi
 # We have to copy the required files to get the game to run in a local user
 # directory. Symbolic linking leads to runtime errors, running with a different
 # working directory than the binary doesn't work either.
-for f in clonehero_Data clonehero UnityPlayer.so; do
-	if ! cp -rf "/opt/clonehero/$f" "$dir/$f"; then
-		echo "Failed to copy '$f' to '$dir/$f'"
-		exit 1
-	fi
-done
+cp -f '/opt/clonehero/clonehero' "$dir/clonehero"
+cp -f '/opt/clonehero/UnityPlayer.so' "$dir/UnityPlayer.so"
+rsync -a --delete '/opt/clonehero/clonehero_Data' "$dir/clonehero_Data"
 
 # We won't touch neither the Custom/ nor Songs/ directories as those are
 # probably best left to the user to populate (or link to another folder).
