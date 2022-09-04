@@ -1,6 +1,6 @@
 pkgbase = kurento-media-server
 	pkgdesc = Kurento WebRTC media server
-	pkgver = 6.13.0
+	pkgver = 6.17.0
 	pkgrel = 3
 	url = https://github.com/Kurento/kurento-media-server
 	arch = x86_64
@@ -14,10 +14,11 @@ pkgbase = kurento-media-server
 	optdepends = kms-filters
 	backup = etc/kurento/kurento.conf.json
 	backup = etc/kurento/sdp_pattern.txt
-	source = git://github.com/Kurento/kurento-media-server.git#tag=6.13.0
-	source = cmake-boost.patch
+	source = git+https://github.com/Kurento/kurento-media-server.git#tag=6.17.0
+	source = https://raw.githubusercontent.com/vmarkovtsev/DeathHandler/911e4df429a89309b10111d76d232d4a7c2b5485/death_handler.cc
+	source = https://raw.githubusercontent.com/vmarkovtsev/DeathHandler/911e4df429a89309b10111d76d232d4a7c2b5485/death_handler.h
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = kurento-media-server
-
