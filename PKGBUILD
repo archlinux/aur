@@ -8,12 +8,13 @@ pkgrel=1
 pkgdesc="takes compile jobs from your build and distributes it to remote machines allowing a parallel build on several machines."
 url="http://en.opensuse.org/Icecream"
 license=('GPL2')
-makedepends=('docbook2x')
+makedepends=('docbook2x' 'clang')
 depends=('bash' 'libcap-ng' 'libarchive' 'lzo' 'zstd')
 provides=('icecream')
 optdepends=('icecream-sundae: A commandline monitor for Icecream'
             'icemon: Icecream GUI monitor'
-            'ccache: ccache enabled remote builds.')
+            'ccache: ccache enabled remote builds.'
+            'clang: clang enabled remote builds.')
 conflicts=('icecream-git')
 backup=('etc/icecream.conf')
 arch=('x86_64')
