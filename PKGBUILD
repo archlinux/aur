@@ -6,12 +6,38 @@ pkgdesc="A remote work tool (RASClient)"
 arch=('x86_64')
 url="https://www.parallels.com/products/ras/capabilities/parallels-client/"
 license=("custom:${pkgname}")
-depends=('pcsclite')
+# from .deb control file
+depends=('libxcursor'
+         'zlib'
+         'fontconfig'
+         'libxrender'
+         'glibc'
+         'libxrandr'
+         'libsm'
+         'libxtst'
+         'libice'
+         'libxext'
+         'libxi'
+         'gcc'
+         'alsa-lib'
+         'alsa-plugins'
+         'libxinerama'
+         'libxft'
+         'libx11'
+         'pcsclite'
+         'libcups'
+         'libxpm'
+         'libxml2'
+         'libmtp'
+         'libusb'
+         'nas'
+         'udisks2'
+         'qt5-base'
+         'qt5-x11extras')
 makedepends=()
 optdepends=()
 provides=()
 conflicts=()
-replaces=()
 source=("https://download.parallels.com/ras/v19/19.0.0.23304/RASClient-${pkgver}_x86_64.deb")
 noextract=()
 sha256sums=('908a8b78d20691dd349b767082e5c4bf9e9086db92f24a6e27cac53c08aad947')
