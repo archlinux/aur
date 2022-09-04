@@ -10,7 +10,7 @@
 # mips64 arm64 available
 
 _opt_RPM=1
-_opt_ppdlevel=2 # no extra ppd, 1 extra ppd from source, 2 extra ppd from RPM/Debian
+_opt_ppdlevel=1 # no extra ppd, 1 extra ppd from source, 2 extra ppd from RPM/Debian
 
 set -u
 pkgbase='cnrdrvcups-lb'
@@ -20,8 +20,8 @@ pkgname="${pkgbase}"
 #_pkgver='5.10';  _dl='8/0100007658/13'
 #_pkgver='5.20';  _dl='8/0100007658/18';_suffix='05'
 #_pkgver='5.30';  _dl='8/0100007658/20';_suffix='12'
-_pkgver='5.40';  _dl='8/0100007658/25';_suffix='08'
-#https://gdlp01.c-wss.com/gds/8/0100007658/20/linux-UFRII-drv-v530-uken-12.tar.gz
+#_pkgver='5.40';  _dl='8/0100007658/25';_suffix='08'
+_pkgver='5.50';  _dl='8/0100007658/29';_suffix1='m17n';_suffix2='07'
 pkgver="${_pkgver}"
 pkgrel='1'
 pkgdesc='CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers'
@@ -30,25 +30,23 @@ arch=('x86_64')
 url='https://www.canon-europe.com/support/products/imagerunner/imagerunner-1730i.aspx'
 license=('GPL2' 'MIT' 'custom')
 # parts of the code are GPL or MIT licensed, some parts have a custom license
-depends=('gcc-libs' 'libxml2' 'libglade')
+depends=('gcc-libs' 'libxml2')
 optdepends=(
   'libjpeg6-turbo: improves printing results for color imageRUNNER/i-SENSYS LBP devices'
   'libjbig-shared: port of debian/fedora specific jbigkit funtionality that can prevent cpu hangs on some models'
-  'gtk2: for cnsetuputil2'
+  'gtk3: for cnsetuputil2'
 )
-makedepends=('jbigkit' 'gzip' 'gtk2')
+makedepends=('jbigkit' 'gzip' 'gtk3')
 provides=("cnrdrvcups-lb=${pkgver}")
 conflicts=('cndrvcups-lb' 'cndrvcups-common-lb')
 conflicts+=('cndrvcups-lb-bin' 'cnrdrvcups-lb')
 options=('!emptydirs' '!strip' '!libtool')
 source=(
-  "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-uken-${_suffix}.tar.gz"
+  "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-${_suffix1}-${_suffix2}.tar.gz"
 )
-md5sums=('79d4f933795528dc217c344d5aff079d')
-sha256sums=('51cab752fad9bcd5379320c7d0d092b90e67c30b336c1776bfe4ea74b03c2634')
-sha512sums=('c488fbaee081b3cd601282e737af0ce1d141a9ae940daa2335ef4da833cdb9fbdda3cc378f4e49b26700b36911dc7b142ef0665e1cacef505f91a666736e62dc')
-
-#PKGEXT='.pkg.tar.gz'
+md5sums=('00f8ca9765e9385a0ba7b79b5bf9b73f')
+sha256sums=('3dfe6667e86809da6fd5a9775f7097c3e3e124934759090bd945b03fa6a13c28')
+sha512sums=('507b73ce809535319138ec0ec61a8467d536a255ea120d0b0c1ff8e406e39b00fa7541523ac1e1af3ca1fc378f7675d505b2f66e5d65f996fd7a9a4ddf2c316a')
 
 build() {
   set -u
@@ -69,12 +67,13 @@ build() {
     local _archrpme='deb'
     local _archrpmf='Debian'
   fi
+  local _pv='1.07'
 
   mkdir 'dta'
   cd 'dta'
   local _dta="${PWD}"
-  cd "../linux-UFRII-drv-v${_pkgver//./}-uken"
-  bsdtar -C "${_dta}" -xf "${_archd[${CARCH}]}/${_archrpmf}/cnrdrvcups-ufr2-uk${_p1}${_pkgver}-1${_p2}${_archf[${CARCH}]}.${_archrpme}"
+  cd "../linux-UFRII-drv-v${_pkgver//./}-${_suffix1}"
+  bsdtar -C "${_dta}" -xf "${_archd[${CARCH}]}/${_archrpmf}/cnrdrvcups-ufr2-uk${_p1}${_pkgver}-${_pv}${_p2}${_archf[${CARCH}]}.${_archrpme}"
   if [ "${_opt_RPM}" -eq 0 ]; then
     pushd "${_dta}" > /dev/null
     bsdtar -xf data.tar.?z
@@ -86,7 +85,7 @@ build() {
   if [ "${_opt_ppdlevel}" -ge 1 ]; then
     # Get extra .ppd and .res from source
     mkdir "${_dta}/z"
-    bsdtar -C "${_dta}/z" -xf "Sources/cnrdrvcups-lb-${pkgver}-1.tar.gz"
+    bsdtar -C "${_dta}/z" -xf "Sources/cnrdrvcups-lb-${pkgver}-${_pv}.tar.xz"
     mv "${_dta}/z/"cnrdrvcups-*/ppd/*.ppd "${_dta}/usr/share/cups/model/"
     mv "${_dta}/z/"cnrdrvcups-*/cngplp/files/*.res "${_dta}/usr/share/cngplp2/"
     rm -r "${_dta}/z"
@@ -116,19 +115,21 @@ build() {
 
   # Cleanup
   if [ "${_opt_RPM}" -ne 0 ]; then
-    mv "${_dta}/usr/"{lib64,lib}
+    mv "${_dta}/usr/lib64"/* "${_dta}/usr/lib/"
+    rmdir "${_dta}/usr/lib64"
   else
     rm "${_dta}/debian-binary"
 
     # Do we want this setup tool?
     rm -r "${_dta}/usr/share/applications" "${_dta}/usr/share/cnsetuputil2"
+    chmod 755 "${_dta}/usr/lib"/*.so.*.*
   fi
 
   # License info
   install -d "${_dta}/usr/share/doc/${pkgbase}/"
-  mv Documents/*.html "${_dta}/usr/share/doc/${pkgbase}/"
+  mv Documents/*/*.html "${_dta}/usr/share/doc/${pkgbase}/"
   install -d "${_dta}/usr/share/licenses/${pkgbase}/"
-  mv Documents/*.txt "${_dta}/usr/share/licenses/${pkgbase}/"
+  mv Documents/*/*.txt "${_dta}/usr/share/licenses/${pkgbase}/"
 
   shopt -u nullglob
   set +u
