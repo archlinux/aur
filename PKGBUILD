@@ -6,7 +6,7 @@
 #NOTE: The UT dictionary's project page: http://linuxplayers.g1.xrea.com/mozc-ut.html
 
 pkgname='mozc-ut'
-pkgver=2.28.4800.102.20220723
+pkgver=2.28.4830.102.20220904
 pkgrel=1
 pkgdesc='The Open Source edition of Google Japanese Input bundled with the UT dictionary'
 arch=('x86_64')
@@ -18,13 +18,13 @@ optdepends=('fcitx5-mozc-ut: Fcitx5 integration'
             'fcitx-mozc-ut: Fcitx integration'
             'ibus-mozc: IBus integration'
             'emacs-mozc: Emacs integration')
-provides=('mozc=2.28.4800.102')
+provides=('mozc=2.28.4830.102')
 conflicts=('mozc')
 options=(!distcc !ccache)
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=9dc923ab84f4f0369ba507848430c0bd42dbd01d"
-        'https://osdn.net/downloads/users/38/38803/mozcdic-ut-20220723.tar.bz2')
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=bf5e3ce232f3afd6c807d9c3d75d41fea08befc5"
+        'https://osdn.net/downloads/users/39/39056/mozcdic-ut-20220904.tar.bz2')
 sha256sums=('SKIP'
-            '31f19dc60bd8889eb9d4c8354a76c53733887737fa1ea36109d7cad170b87ad8')
+            'a662c109cc3666c8abce5d4f8d892f891219a327d4cf9ae9112780043c6e86d5')
 
 prepare() {
     cd ${pkgname}-git/src
@@ -32,18 +32,19 @@ prepare() {
     git submodule update --init --recursive
 
     # Append the UT dictionary
-    cat ${srcdir}/mozcdic-ut-20220723/mozcdic-ut-20220723.txt >> data/dictionary_oss/dictionary00.txt
+    cat ${srcdir}/mozcdic-ut-20220904/mozcdic-ut-20220904.txt >> data/dictionary_oss/dictionary00.txt
 }
 
 build() {
     cd ${pkgname}-git/src
 
+    unset ANDROID_NDK_HOME
     export JAVA_HOME='/usr/lib/jvm/java-11-openjdk/'
     bazel build server:mozc_server gui/tool:mozc_tool --config oss_linux --compilation_mode opt
 }
 
 package() {
-    install -Dm644 mozcdic-ut-20220723/LICENSE                  ${pkgdir}/usr/share/licenses/mozc/LICENSE_UT_DICTIONARY
+    install -Dm644 mozcdic-ut-20220904/LICENSE                  ${pkgdir}/usr/share/licenses/mozc/LICENSE_UT_DICTIONARY
 
     cd ${pkgname}-git/src
 
