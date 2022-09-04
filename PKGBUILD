@@ -2,11 +2,11 @@
 # Maintainer: monosans
 # Based on wlroots-git PKGBUILD
 pkgname=wlroots-eglstreams-git
-pkgver=0.16.0.r5388.0558b203
+pkgver=0.16.0.r5636.6ea54173
 pkgrel=1
 license=(MIT)
 pkgdesc='Modular Wayland compositor library with EGLStreams support (git version)'
-url=https://github.com/git-bruh/wlroots-eglstreams
+url=https://github.com/danvd/wlroots-eglstreams
 arch=(x86_64)
 provides=("libwlroots.so" "wlroots=${pkgver%%.r*}" wlroots-git)
 conflicts=(wlroots wlroots-git)
@@ -37,7 +37,7 @@ md5sums=('SKIP')
 _builddir="build"
 _builddir_pkgver="build-pkgver"
 
-_meson_setup () {
+_meson_setup() {
 	arch-meson \
 		--buildtype=release \
 		-Dwerror=false \
@@ -45,26 +45,26 @@ _meson_setup () {
 		"${pkgname}" "$1"
 }
 
-prepare () {
+prepare() {
 	_meson_setup "${_builddir_pkgver}"
 }
 
-pkgver () {
+pkgver() {
 	(
 		set -o pipefail
-		meson introspect --projectinfo "${_builddir_pkgver}" \
-		  | awk 'match($0, /"version":\s*"([[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+)"/, ret) {printf "%s",ret[1]}'
+		meson introspect --projectinfo "${_builddir_pkgver}" |
+			awk 'match($0, /"version":\s*"([[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+)-dev"/, ret) {printf "%s",ret[1]}'
 	)
 	cd "${pkgname}"
 	printf ".r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build () {
+build() {
 	_meson_setup "${_builddir}"
 	meson compile -C "${_builddir}"
 }
 
-package () {
+package() {
 	DESTDIR="${pkgdir}" meson install -C build
 	install -Dm644 "${pkgname}/"LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
