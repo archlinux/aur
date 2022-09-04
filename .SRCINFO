@@ -7,8 +7,11 @@ pkgbase = pug-hook-noupgrade-git
 	license = GPL
 	makedepends = git
 	depends = gist
+	provides = pug
 	conflicts = pug
 	source = git+https://github.com/Ventto/pug.git
+	source = noupgrade.patch
 	sha256sums = SKIP
+	sha256sums = 10154cda5875476d49433f7b74b7e71cb63bd16c6aa1a42560efcd548fc98172
 
 pkgname = pug-hook-noupgrade-git

@@ -1,0 +1,10 @@
+diff --unified --recursive --text pug/src/pug.hook pug.new/src/pug.hook
+--- pug/src/pug.hook	2022-09-04 15:52:47.818509744 +0100
++++ pug.new/src/pug.hook	2022-09-04 16:04:42.573354791 +0100
+@@ -1,6 +1,5 @@
+ [Trigger]
+ Operation = Install
+-Operation = Upgrade
+ Operation = Remove
+ Type = Package
+ Target = *
