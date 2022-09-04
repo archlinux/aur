@@ -3,10 +3,10 @@
 _pkgname=weblate_schemas
 pkgname=python-weblate_schemas
 pkgver=2022.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Schemas used in Weblate"
 url="https://github.com/WeblateOrg/weblate_schemas"
-depends=('python' 'python-jsonschema')
+depends=('python' 'python-jsonschema' 'python-strict-rfc3339' 'python-rfc3987' 'python-fqdn')
 checkdepends=('python-pytest')
 makedepends=('python-setuptools')
 license=('MIT')
