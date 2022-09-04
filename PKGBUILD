@@ -1,32 +1,34 @@
-_pkgname=video-downloader
-pkgname=${_pkgname}-git
-pkgver=0.9.4+4+g4ebde00
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+pkgname=video-downloader-git
+pkgver=0.10.2.r10.g6976439
 pkgrel=1
-pkgdesc="GTK application to download videos from websites like YouTube and many others (based on yt-dlp)"
-arch=(any)
-url="https://github.com/Unrud/${_pkgname}"
+pkgdesc="Download videos from websites like YouTube and many others (based on yt-dlp)"
+arch=('any')
+url="https://github.com/Unrud/video-downloader"
 license=('GPL3')
-depends=('ffmpeg' 'gtk3' 'libhandy' 'python-gobject' 'python-mutagen' 'python-pycryptodomex' 'python-pyxattr' 'python-websockets' 'yt-dlp')
+depends=('ffmpeg' 'libadwaita' 'python-brotli' 'python-gobject' 'python-mutagen'
+         'python-pycryptodomex' 'python-pyxattr' 'python-websockets' 'yt-dlp')
 makedepends=('git' 'meson')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=("git+https://github.com/Unrud/${_pkgname}.git")
-b2sums=('SKIP')
+checkdepends=('appstream-glib')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("git+https://github.com/Unrud/video-downloader.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  git describe --tags | sed 's/-/+/g'
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  arch-meson $_pkgname build
+  arch-meson "${pkgname%-git}" build
   meson compile -C build
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build --print-errorlogs || :
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
