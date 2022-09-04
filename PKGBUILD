@@ -3,7 +3,7 @@
 
 pkgname=darkplaces-git
 _gitname=darkplaces
-pkgver=r10317.0207a10e
+pkgver=r10323.6bb6d96e
 pkgrel=1
 pkgdesc="An advanced Quake 1 game engine (git-latest)"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ url="https://github.com/xonotic/darkplaces.git"
 license=('GPL2')
 depends=( 'hicolor-icon-theme' 'libjpeg-turbo' 'sdl2')
 makedepends=('xorgproto')
-Conflicts=('darkplaces')
-Provides=('darkplaces')
+conflicts=('darkplaces')
+provides=('darkplaces')
 install=$pkgname.install
 source=('git+https://github.com/xonotic/darkplaces.git'
         'darkplaces.desktop')

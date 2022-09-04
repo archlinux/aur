@@ -1,6 +1,6 @@
 pkgbase = darkplaces-git
 	pkgdesc = An advanced Quake 1 game engine (git-latest)
-	pkgver = r10317.0207a10e
+	pkgver = r10323.6bb6d96e
 	pkgrel = 1
 	url = https://github.com/xonotic/darkplaces.git
 	install = darkplaces-git.install
@@ -11,6 +11,8 @@ pkgbase = darkplaces-git
 	depends = hicolor-icon-theme
 	depends = libjpeg-turbo
 	depends = sdl2
+	provides = darkplaces
+	conflicts = darkplaces
 	source = git+https://github.com/xonotic/darkplaces.git
 	source = darkplaces.desktop
 	sha256sums = SKIP
