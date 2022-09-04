@@ -21,15 +21,17 @@ md5sums=('f9f46277153cf49f6947973778516adb')
 
 prepare() {
   #cd "$pkgname-pkgver"
-  cd "_pkgname"
-  patch --forward --strip=1 --input="${srcdir}/patchfile.patch"
+  #cd "_pkgname"
+  cd ffDiaporama
+  patch --forward --strip=1 --input="${startdir}/patchfile.patch"
   #patch ${srcdir}/ffDiaporama/src/ffDiaporama/wgt_QMultimediaBrowser/QCustomFolderTable.cpp ${startdir}/patchfile.patch
 }
 
 build() {
   LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib
   export LD_LIBRARY_PATH
-  cd "_pkgname"
+  #cd "_pkgname"
+  cd ffDiaporama
   sed -i 's@GTK;GNOME;Qt;KDE;AudioVideo;@AudioVideo;Player;X-Red-Hat-Base;@g' ffDiaporama.desktop
   qmake-qt5 'QMAKE_CFLAGS_ISYSTEM=-I' 'INCLUDEPATH += /opt/include' 'LIBPATH += /opt/lib' ffDiaporama.pro /PREFIX=/usr
   
@@ -37,6 +39,7 @@ build() {
 }
 
 package() {
-  cd "_pkgname"
+  #cd "_pkgname"
+  cd ffDiaporama
   make INSTALL_ROOT="$pkgdir" install
 }
