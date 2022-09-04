@@ -17,8 +17,8 @@
 
 pkgname=popcorntime-bin
 _pkgname=popcorntime
-pkgver=0.4.8
-pkgrel=3
+pkgver=0.4.9
+pkgrel=1
 pkgdesc="Stream free movies and TV shows from torrents"
 arch=('x86_64')
 url="https://github.com/popcorn-official/popcorn-desktop"
@@ -57,3 +57,5 @@ package() {
   find "${pkgdir}/usr/share/${_pkgname}/" -perm 600 -exec chmod 644 '{}' \;
   find "${pkgdir}/usr/share/${_pkgname}/" -perm 700 -exec chmod 755 '{}' \;
 }
+sha256sums=('71b28be5b8307990ffc9f8bff0a4b42fb45a85af0f4c7a889b8a923c589d8d47'
+            '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334')
