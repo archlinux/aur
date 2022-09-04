@@ -7,10 +7,10 @@ pkgdesc="A fancy BitTorrent client for the terminal"
 arch=('any')
 url="https://github.com/smmr-software/mabel.git"
 license=('GPL3')
+depends=('ttf-nerd-fonts-symbols-2048-em')
 makedepends=('git' 'go')
 provides=('mabel')
 conflicts=('mabel')
-options=()
 source=(git+${url})
 sha256sums=('SKIP')
 build() {
