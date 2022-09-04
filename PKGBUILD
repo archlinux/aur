@@ -3,7 +3,7 @@
 pkgname=harmonoid-bin
 pkgver=0.3.0
 pkgrel=1
-pkgdesc="Elegant music app to play & manage music library. Lyrics & playlists. YouTube Music support."
+pkgdesc="Plays & manages your music library. Looks beautiful & juicy. Playlists, visuals, synced lyrics, pitch shift, volume boost & more."
 arch=("x86_64")
 url="https://github.com/harmonoid/harmonoid"
 license=("custom")
