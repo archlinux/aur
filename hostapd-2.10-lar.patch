@@ -1,0 +1,139 @@
+diff -ru a/hostapd/config_file.c b/hostapd/config_file.c
+--- a/hostapd/config_file.c	2022-01-16 15:51:29.000000000 -0500
++++ b/hostapd/config_file.c	2022-07-06 15:58:31.206322430 -0500
+@@ -2906,6 +2906,8 @@
+ 				   line, bss->wpa_deny_ptk0_rekey);
+ 			return 1;
+ 		}
++    } else if (os_strcmp(buf, "noscan") == 0) {
++        conf->noscan = atoi(pos);
+ 	} else if (os_strcmp(buf, "wpa_group_update_count") == 0) {
+ 		char *endp;
+ 		unsigned long val = strtoul(pos, &endp, 0);
+@@ -3474,6 +3476,8 @@
+ 		if (bss->ocv && !bss->ieee80211w)
+ 			bss->ieee80211w = 1;
+ #endif /* CONFIG_OCV */
++    } else if (os_strcmp(buf, "noscan") == 0) {
++        conf->noscan = atoi(pos);
+ 	} else if (os_strcmp(buf, "ieee80211n") == 0) {
+ 		conf->ieee80211n = atoi(pos);
+ 	} else if (os_strcmp(buf, "ht_capab") == 0) {
+diff -ru a/src/ap/ap_config.h b/src/ap/ap_config.h
+--- a/src/ap/ap_config.h	2022-01-16 15:51:29.000000000 -0500
++++ b/src/ap/ap_config.h	2022-07-06 15:58:31.206322430 -0500
+@@ -1014,6 +1014,7 @@
+ 
+ 	int ht_op_mode_fixed;
+ 	u16 ht_capab;
++    int noscan;
+ 	int ieee80211n;
+ 	int secondary_channel;
+ 	int no_pri_sec_switch;
+diff -ru a/src/ap/hw_features.c b/src/ap/hw_features.c
+--- a/src/ap/hw_features.c	2022-01-16 15:51:29.000000000 -0500
++++ b/src/ap/hw_features.c	2022-07-06 22:57:53.007315518 -0500
+@@ -24,6 +24,17 @@
+ #include "beacon.h"
+ #include "hw_features.h"
+ 
++static void ieee80211n_do_nothing(struct hostapd_iface *iface)
++{
++			wpa_printf(MSG_DEBUG,
++				   "Scan finished!");
++}
++
++static void ieee80211n_scan_channels_2g4(struct hostapd_iface *iface,
++					 struct wpa_driver_scan_params *params);
++static void ieee80211n_scan_channels_5g(struct hostapd_iface *iface,
++					struct wpa_driver_scan_params *params);
++
+ 
+ void hostapd_free_hw_features(struct hostapd_hw_modes *hw_features,
+ 			      size_t num_hw_features)
+@@ -82,6 +93,33 @@
+ 
+ 	if (hostapd_drv_none(hapd))
+ 		return -1;
++
++
++
++        // scan
++	struct wpa_driver_scan_params params;
++	int ret1;
++
++	os_memset(&params, 0, sizeof(params));
++	ieee80211n_scan_channels_5g(iface, &params);
++
++	ret1 = hostapd_driver_scan(iface->bss[0], &params);
++
++        if (ret1 == -EBUSY) {
++                wpa_printf(MSG_ERROR,
++                           "Failed to request a scan of neighboring BSSes ret=%d (%s)!",
++                           ret1, strerror(-ret1));
++        }
++
++        if (ret1 == 0) {
++                iface->scan_cb = ieee80211n_do_nothing;
++                wpa_printf(MSG_DEBUG,
++                           "Sleeping...");
++                for (int i=0; i<110; i++) {
++                  usleep(100000);
++                }
++        }
++
+ 	modes = hostapd_get_hw_feature_data(hapd, &num_modes, &flags,
+ 					    &dfs_domain);
+ 	if (modes == NULL) {
+@@ -308,7 +346,6 @@
+ 			       sec_chan);
+ }
+ 
+-
+ static void ieee80211n_check_scan(struct hostapd_iface *iface)
+ {
+ 	struct wpa_scan_results *scan_res;
+@@ -517,8 +554,10 @@
+ 	int ret;
+ 
+ 	/* Check that HT40 is used and PRI / SEC switch is allowed */
+-	if (!iface->conf->secondary_channel || iface->conf->no_pri_sec_switch)
++	if (!iface->conf->secondary_channel || iface->conf->no_pri_sec_switch || iface->conf->noscan) {
++                wpa_printf(MSG_DEBUG, "Not scanning due to noscan?");
+ 		return 0;
++        }
+ 
+ 	hostapd_set_state(iface, HAPD_IFACE_HT_SCAN);
+ 	wpa_printf(MSG_DEBUG, "Scan for neighboring BSSes prior to enabling "
+@@ -915,7 +954,7 @@
+ 	if (!hostapd_is_usable_edmg(iface))
+ 		return 0;
+ 
+-	if (!iface->conf->secondary_channel)
++	if (!iface->conf->secondary_channel || iface->conf->noscan)
+ 		return 1;
+ 
+ 	if (hostapd_is_usable_chan(iface, iface->freq +
+diff -ru a/src/ap/ieee802_11_ht.c b/src/ap/ieee802_11_ht.c
+--- a/src/ap/ieee802_11_ht.c	2022-01-16 15:51:29.000000000 -0500
++++ b/src/ap/ieee802_11_ht.c	2022-07-06 15:58:31.206322430 -0500
+@@ -230,6 +230,9 @@
+ 		return;
+ 	}
+ 
++    if (iface->conf->noscan)
++        return;
++
+ 	if (len < IEEE80211_HDRLEN + 2 + sizeof(*bc_ie)) {
+ 		wpa_printf(MSG_DEBUG,
+ 			   "Ignore too short 20/40 BSS Coexistence Management frame");
+@@ -390,6 +393,9 @@
+ 	if (iface->current_mode->mode != HOSTAPD_MODE_IEEE80211G)
+ 		return;
+ 
++    if (iface->conf->noscan)
++        return;
++
+ 	wpa_printf(MSG_INFO, "HT: Forty MHz Intolerant is set by STA " MACSTR
+ 		   " in Association Request", MAC2STR(sta->addr));
+ 

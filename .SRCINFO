@@ -1,0 +1,24 @@
+pkgbase = hostapd-git-intel-lar
+	pkgdesc = hostapd with prescan LAR workaround for Intel NICs
+	pkgver = 20220902.6f8af5974
+	pkgrel = 1
+	url = http://w1.fi/hostapd/
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = libnl
+	depends = openssl
+	depends = sqlite
+	provides = hostapd
+	conflicts = hostapd
+	options = emptydirs
+	source = git://w1.fi/hostap.git
+	source = config
+	source = hostapd.service
+	source = https://tildearrow.org/storage/hostapd-2.10-lar.patch
+	sha256sums = SKIP
+	sha256sums = 7b2bb1628c44ea41445fcde0e6e45484ab94280bef57cf36f7ea022186cf3a73
+	sha256sums = 989bc6855f44c0b360e3d4cd4a146c35b7c12f8a0ced627b4b033f58edcade8e
+	sha256sums = 561d03e730af458017e68d59a4caa834fcf310f9b16ac543e92063290f586b8d
+
+pkgname = hostapd-git-intel-lar
