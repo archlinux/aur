@@ -1,6 +1,6 @@
 # Maintainer: steffeno <steffeno dash etc at protonmail dot com>
 pkgname=ly-git
-pkgver=0.5.3.r5.g609b3f9
+pkgver=0.5.3.r82.g5db09ce
 pkgrel=1
 pkgdesc="TUI display manager"
 arch=('i686' 'x86_64' 'aarch64')
@@ -30,6 +30,6 @@ build() {
 
 package() {
 	cd ly
-	make DESTDIR="$pkgdir" install
+	make DESTDIR="$pkgdir" install installsystemd
 	install -D -m644 license.md "${pkgdir}/usr/share/licenses/${pkgname}/WTFPL"
 }
