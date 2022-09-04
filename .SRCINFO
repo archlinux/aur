@@ -1,0 +1,17 @@
+pkgbase = xilinx_xdma-git
+	pkgdesc = Xilinx XDMA IP driver version 2020.2.0, modified in kernel 5.19
+	pkgver = r129.55cf498
+	pkgrel = 1
+	url = https://github.com/KafCoppelia/xdma_ip_driver
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = dkms
+	depends = bc
+	depends = linux-headers
+	conflicts = xdma
+	source = git+https://github.com/KafCoppelia/xdma_ip_driver
+	sha256sums = SKIP
+
+pkgname = xilinx_xdma-git
