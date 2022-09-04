@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Pygubu Designer
+GenericName=GUI Designer (TkInter)
+Comment=Create or open user interface designs for Python TkInter applications.
+Exec=pygubu-designer %F
+Terminal=false
+StartupNotify=false
+Type=Application
+Icon=pygubu.svg
+Categories=Development;GUIDesigner;
