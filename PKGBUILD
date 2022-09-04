@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Denhartog <ben@sudoforge.com>
 
 pkgname=bazelisk-bin
-pkgver=1.12.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc='A user-friendly launcher for Bazel'
 url='https://github.com/bazelbuild/bazelisk'
@@ -14,7 +14,7 @@ source=(
   "bazelisk-linux-amd64-${pkgver}::https://github.com/bazelbuild/bazelisk/releases/download/v${pkgver}/bazelisk-linux-amd64"
 )
 sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4'
-            '6b0bcb2ea15bca16fffabe6fda75803440375354c085480fe361d2cbf32501db')
+            'f99b1b16046e5ca12aaa872b33abcb63f0545051fb09d5aaddc96667f5d2d12d')
 
 package() {
   install -D -m 644 \
