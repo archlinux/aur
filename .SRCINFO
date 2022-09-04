@@ -1,13 +1,14 @@
 pkgbase = gc-git
 	pkgdesc = A garbage collector for C and C++
-	pkgver = 8.1.99
+	pkgver = 8.2.0.r513.g515d30eb
 	pkgrel = 1
 	url = https://www.hboehm.info/gc/
 	arch = x86_64
 	license = GPL
 	depends = gcc-libs
-	source = git+https://github.com/ivmai/bdwgc.git
-	sha512sums = skip
+	provides = gc
+	conflicts = gc
+	source = gc-git::git+https://github.com/ivmai/bdwgc.git
+	sha512sums = SKIP
 
 pkgname = gc-git
-
