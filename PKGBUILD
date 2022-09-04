@@ -3,10 +3,10 @@
 pkgname=tauon-music-box
 _pkgname=tauonmb
 _gitname=TauonMusicBox
-pkgver=7.3.2
+pkgver=7.4.0
 pkgrel=1
 _kissfftver=131.1.0
-_miniaudiocommit=4d813cfe23c28db165cce6785419fee9d2399766
+_miniaudiocommit=ddbc5768a6c51082e0928fa5c472e47dc6c24845
 pkgdesc="A modern streamlined music player"
 arch=('any')
 url="https://tauonmusicbox.rocks"
@@ -56,7 +56,7 @@ optdepends=('noto-fonts-cjk: Matching font for CJK characters'
             
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Taiko2k/TauonMusicBox/archive/v$pkgver.tar.gz"
 	"kissfft.tar.gz::https://github.com/mborgerding/kissfft/archive/refs/tags/$_kissfftver.tar.gz"
-	"miniaudio.tar.gz::https://github.com/mackron/miniaudio/archive/4d813cf.tar.gz"
+	"miniaudio.tar.gz::https://github.com/mackron/miniaudio/archive/$_miniaudiocommit.tar.gz"
 	)
 
 
@@ -86,6 +86,6 @@ package() {
     install -Dm755 "extra/tauonmb.sh" "$pkgdir/usr/bin/tauon"
 }
 
-md5sums=('a40904aedbce703508cdd71316d40c28'
+md5sums=('b3ca5dba8ff3e84c0c3073c49219fbcd'
          '981ad3e496fbd8edb99704fc0e2aa939'
-         '709b15aed941a14d6e921bd87caff9d3')
+         '356d101a9cd37795dff104644b9c9482')
