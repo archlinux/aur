@@ -1,9 +1,12 @@
 pkgbase = nordselect
 	pkgdesc = Select the ideal NordVPN server
 	pkgver = 1.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/editicalu/nordselect
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = MIT
 	makedepends = rustup
 	depends = curl
