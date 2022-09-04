@@ -3,7 +3,7 @@
 _pkgname=libretro-tic-80
 pkgname=$_pkgname-git
 pkgver=1.0.2164.r13.gbd6ce86
-pkgrel=1
+pkgrel=2
 pkgdesc="TIC-80 core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://tic80.com/"
@@ -88,7 +88,9 @@ build() {
 		-DBUILD_SDL=OFF \
 		-DBUILD_SOKOL=OFF \
 		-DBUILD_WITH_MRUBY=OFF \
-		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
+		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
 		-Wno-dev
 	cmake --build build
 }

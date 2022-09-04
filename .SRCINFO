@@ -1,7 +1,7 @@
 pkgbase = libretro-tic-80-git
 	pkgdesc = TIC-80 core
 	pkgver = 1.0.2164.r13.gbd6ce86
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tic80.com/
 	arch = aarch64
 	arch = armv7h
