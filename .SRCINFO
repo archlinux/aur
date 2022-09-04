@@ -1,0 +1,16 @@
+pkgbase = slimbooksensortouchpad
+	pkgdesc = Set your touchpad. On/Off in your touchpad!
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://slimbook.es
+	install = slimbooksensortouchpad.install
+	arch = any
+	license = GPL v3
+	depends = xbindkeys
+	options = !strip
+	options = !emptydirs
+	backup = etc/sudoers.d/slimbooksensortouchpad-sudo
+	source = https://launchpadlibrarian.net/618501097/slimbooksensortouchpad_0.3_all.deb
+	sha512sums = 198bb80afb84df4fca2a88a7dd3625e13d0a798b2417be0b4fbf5ae511c05fa77a7a83e4e1a6b1ca6f58a248c10c1f6088c21e69d2a52983528f0853dcb4c5d1
+
+pkgname = slimbooksensortouchpad

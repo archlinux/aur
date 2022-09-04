@@ -1,0 +1,47 @@
+post_install() {
+
+
+	# Por cada usuario en /home/ ...
+	for HOME_U in /home/*?; do
+	    USER=$( basename ${HOME_U} )
+	    # en caso de que el usuario este activo (exists in /etc/shadow) ...
+	    if [ $( grep -c "${USER}:.*:.*:.*:.*:.*:::" /etc/shadow ) == 1 ] && [ $( grep -c "${USER}:.*:.*:.*:.*:.*:/bin/.*sh" /etc/passwd ) == 1 ] && [ -d ${HOME_U}/.config ] && [ -d ${HOME_U} ]
+	    then
+	        fichero=${HOME_U}/.xbindkeysrc
+	        echo ${fichero}
+	        var_fi=$(grep "slimbook-sensor-touchpad" $fichero | head -1 )
+	        var_fi2=$(grep "touchpadonoff" $fichero | head -1 )
+	        if [ -f $fichero ]
+	        then
+	            if [ "echo $var_fi || grep 'slimbook-sensor-touchpad'" ] || [ "echo $var_fi2 || grep 'touchpadonoff'" ]
+	            then
+	                echo "Ya existe el lanzador. Todo OK"
+	            else
+	                echo "añade el siguiente texto al final del archivo .xbindkeysrc"
+	                sed -i '$a "/usr/bin/slimbook-sensor-touchpad xinput"' $fichero
+	                sed -i '$a m:0x54 + c:37' $fichero
+	                sed -i '$a Control+Mod2+Mod4 + Control_L' $fichero
+	                #Añade salto de linea.
+	                sed -i '/Control+Mod2+Mod4 + Control_L/G' $fichero
+	                sed -i '$a "/usr/bin/slimbook-sensor-touchpad xinput"' $fichero
+	                sed -i '$a m:0x54 + c:93' $fichero
+	                sed -i '$a Control+Mod2+Mod4 + NoSymbol' $fichero
+	                #Añade salto de linea
+	                sed -i '/Control+Mod2+Mod4 + NoSymbol/G' $fichero
+	                sed -i '$a #' $fichero
+	                sed -i '$a # End of xbindkeys configuration' $fichero
+	            fi
+	        else
+	            echo "copia .xbindkeysrc"
+	            cp -a /usr/share/slimbooksensortouchpad/.xbindkeysrc ${HOME_U}
+	            cp -a /usr/share/slimbooksensortouchpad/.xbindkeysrc /etc/skel/
+
+	            chown ${USER}.${USER} ${HOME_U}/.xbindkeysrc
+	        fi
+	    fi
+	done
+}
+
+post_upgrade() {
+	post_install
+}
