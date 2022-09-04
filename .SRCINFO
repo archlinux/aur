@@ -1,0 +1,19 @@
+pkgbase = rtl8723du-dkms-git
+	pkgdesc = RTL8723DU wireless + bluetooth modules (DKMS)
+	pkgver = r202.e0129ae
+	pkgrel = 1
+	url = https://github.com/lwfinger/rtl8723du
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	conflicts = rtl8723du
+	source = git+https://github.com/lwfinger/rtl8723du
+	source = dkms.conf
+	md5sums = SKIP
+	md5sums = 23f628baafb38cdb24354ef1ff408827
+
+pkgname = rtl8723du-dkms-git
