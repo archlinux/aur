@@ -1,12 +1,13 @@
 pkgbase = alice-bin
 	pkgdesc = An educational software that teaches students computer programming in a 3D environment
 	pkgver = 3.6.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.alice.org
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = java-runtime>=8
+	depends = java-runtime<=17
 	depends = xdg-utils
 	depends = lib32-glu
 	depends = lib32-libxrandr

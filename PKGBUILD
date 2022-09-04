@@ -7,12 +7,13 @@
 pkgname=alice-bin
 pkgver=3.6.0.2
 _build=662
-pkgrel=1
+pkgrel=2
 pkgdesc="An educational software that teaches students computer programming in a 3D environment"
 arch=('i686' 'x86_64')
 url="https://www.alice.org"
 license=('custom')
 depends=('java-runtime>=8'
+         'java-runtime<=17'
          'xdg-utils'
          'lib32-glu'
          'lib32-libxrandr'
