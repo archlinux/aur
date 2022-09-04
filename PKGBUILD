@@ -12,7 +12,7 @@ pkgname=aseprite
 pkgver=1.2.39
 _skiaver=m102
 _skiahash=861e4743af
-pkgrel=3
+pkgrel=4
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
@@ -82,21 +82,42 @@ prepare() {
 build() {
 	echo Building Skia...
 	local _skiadir="$PWD/skia/obj"
-	# Flags can typically be found in `src/skia/gn/skia.gni`... but you're kind of on your own
-	env -C skia gn gen "$_skiadir" --args="`printf '%s ' \
-is_debug=false is_official_build=true skia_build_fuzzers=false \
-skia_enable_{pdf,skottie,skrive,sksl}=false \
+	# Flags can be found by running `gn args --list "$_skiadir"` from skia's directory.
+	# (Pipe the output somewhere, there's a LOT of args.)
+	#
+	# The flags are chosen to provide the API required by Aseprite and nothing else (if possible),
+	# so as to reduce the compilation time and final binary size.
+	#
+	# Individual rationales:
+	#   is_official_build: Suggested by the build instructions.
+	#   skia_build_fuzzers: We don't care about them.
+	#   skia_enable_pdf: Not used by Aseprite.
+	#   skia_enable_skottie: Not used by Aseprite.
+	#   skia_enable_sksl: laf seems to want to use it... but no references are made anywhere.
+	#   skia_enable_svg: Not used by Aseprite. It seems it has its own SVG exporter.
+	#   skia_use_lib*_{encode,decode}: Aseprite only loads PNG assets, so only libpng is required.
+	#   skia_use_expat: Only required for the Android font manager and SVGCanvas/SVGDevice.
+	#   skia_use_piex: Not used by Aseprite. Only used for reading RAW files.
+	#   skia_use_xps: Not used outside of Windows.
+	#   skia_use_zlib: Only used for PDF and RAW files.
+	#   skia_use_libgifcodec: Only used for GIFs, which Aseprite doesn't use.
+	#   skia_enable_{particles,skparagraph,sktext}: Aseprite does not link against this library.
+	env -C skia gn gen "$_skiadir" --args="$(printf '%s ' \
+is_official_build=true skia_build_fuzzers=false \
+skia_enable_{pdf,skottie,sksl,svg}=false \
 skia_use_{libjpeg_turbo,libwebp}_{encode,decode}=false \
-skia_use_{expat,xps,zlib,libgifcodec,sfntly}=false`"
+skia_use_{expat,piex,xps,zlib,libgifcodec}=false \
+skia_enable_{particles,skparagraph,sktext}=false)"
 	ninja -C "$_skiadir" skia modules
 
 	echo Building Aseprite...
 	# Suppress install messages since we install to a temporary area; `install -v` will do the job
 	cmake -S aseprite -B build -G Ninja -Wno-dev -DCMAKE_INSTALL_MESSAGE=NEVER -DCMAKE_BUILD_TYPE=None \
--DENABLE_{UPDATER,WEBSOCKET}=OFF -DENABLE_SCRIPTING=ON -DLAF_WITH_EXAMPLES=OFF -DLAF_WITH_TESTS=OFF -DLAF_BACKEND=skia \
--DSKIA_DIR="$PWD/skia" -DSKIA_LIBRARY_DIR="$_skiadir" -DSKIA_LIBRARY="$_skiadir/libskia.a" \
+-DENABLE_{UPDATER,WEBSOCKET}=OFF -DENABLE_SCRIPTING=ON \
+-DLAF_WITH_{EXAMPLES,TESTS}=OFF -DLAF_BACKEND=skia \
+-DSKIA_DIR="$PWD/skia" -DSKIA_LIBRARY_DIR="$_skiadir" \
 -DUSE_SHARED_{CMARK,CURL,FMT,GIFLIB,JPEGLIB,ZLIB,LIBPNG,TINYXML,PIXMAN,FREETYPE,HARFBUZZ,LIBARCHIVE,WEBP}=YES
-	ninja -C build
+	cmake --build build
 }
 
 check() {
@@ -114,7 +135,7 @@ package() {
 	# Install the binary and its `.desktop` file
 	install -vDm 755 staging/bin/aseprite "$pkgdir/usr/bin/aseprite"
 	install -vDm 644 aseprite/src/desktop/linux/aseprite.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
-	install -vDm 644 aseprite/src/desktop/linux/mime/aseprite.xml "${pkgdir}/usr/share/mime/packages/${_pkgname}.xml"
+	install -vDm 644 aseprite/src/desktop/linux/mime/aseprite.xml "$pkgdir/usr/share/mime/packages/$pkgname.xml"
 	# Install the icons in the correct directory (which is not the default)
 	local _size
 	for _size in 16 32 48 64 128 256; do
