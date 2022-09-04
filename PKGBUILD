@@ -14,7 +14,7 @@ license=('MIT')
 depends=('libgit2')
 optdepends=('git: scripting functionality')
 source=("${_url_source}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('f9d9f157145b47a14b5ff098e3db261b4739145e5e7cf2a273e188fc8617681dc9b7b9737de2182334bb9a50bef061ebee452ccbc1e013e14f2ef8c4a4c32d0b')
+b2sums=('610a1313f2b5e09c75bb43dfabda35164c43277b0b74e3b63c0f345b55035df8b4590494a4f36bc6e1ac8fe387942d2e12941cdd6116f82d3c929ebd5dd44fc7')
 
 build() {
   make -C "${pkgname}-${pkgver}"
