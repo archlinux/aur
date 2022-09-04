@@ -3,16 +3,19 @@
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgbase=unicorn-git
-pkgname=('unicorn-git' 'python-unicorn-git' 'ruby-unicorn-git')
-pkgver=2.0.0.r0.g6c1cbef6
+pkgname=('unicorn-git' 'python-unicorn-git' 'ruby-unicorn-engine-git')
+pkgver=2.0.0.r34.ga0e119c6
 pkgrel=1
 pkgdesc='Lightweight, multi-platform, multi-architecture CPU emulator framework based on QEMU'
 url='http://www.unicorn-engine.org'
 arch=('i686' 'x86_64')
 license=('GPL2')
 makedepends=('git' 'cmake' 'python' 'python-setuptools' 'ruby')
-options=('staticlibs' '!emptydirs')
-source=(${pkgbase}::git+https://github.com/unicorn-engine/unicorn)
+checkdepends=('cmocka')
+provides=(${pkgname%-*}=$pkgver)
+conflicts=(${pkgname%-*})
+options=('!emptydirs' 'debug')
+source=(${pkgbase}::git+https://github.com/unicorn-engine/unicorn#branch=dev)
 sha512sums=('SKIP')
 
 pkgver() {
@@ -22,11 +25,15 @@ pkgver() {
 
 build() {
   cd ${pkgbase}
-  (mkdir -p build
-    cd build
-    cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-    make
-  )
+  export UNICORN_CFLAGS="${CFLAGS} -ffat-lto-objects"
+  export UNICORN_QEMU_FLAGS="--extra-ldflags=\"$LDFLAGS\""
+  export QEMU_CXXFLAGS="${CXXFLAGS}"
+  export QEMU_LDFLAGS="${LDFLAGS}"
+  cmake -B build \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -Wno-dev
+  cmake --build build
   (cd bindings
     python const_generator.py python
     python const_generator.py ruby
@@ -41,40 +48,43 @@ build() {
 
 check() {
   cd ${pkgbase}
-  # Tests are not supported right now, hope they get some love soon
-  # checkdepends=('cmocka')
-  # make test
+  ctest --test-dir build --output-on-failure
 }
 
 package_unicorn-git() {
   depends=('glibc')
-  provides=('unicorn')
-  conflicts=('unicorn')
+  provides=('libunicorn.so')
   cd ${pkgbase}
-  (mkdir -p build
-    cd build
-    make DESTDIR="${pkgdir}" install
-  )
+  DESTDIR="${pkgdir}" cmake --install build
   install -Dm 644 samples/*.c -t "${pkgdir}/usr/share/doc/${pkgname}/samples"
 }
 
 package_python-unicorn-git() {
   depends=('python' 'unicorn' 'python-setuptools')
-  provides=('python-unicorn')
-  conflicts=('python-unicorn')
+  provides=(python-unicorn=$pkgver)
+  conflicts=(python-unicorn)
   cd ${pkgbase}/bindings/python
   python setup.py install --root="${pkgdir}" -O1 --skip-build
   install -Dm 644 sample* shellcode.py -t "${pkgdir}/usr/share/doc/${pkgname}/samples"
 }
 
-package_ruby-unicorn-git() {
+package_ruby-unicorn-engine-git() {
   depends=('ruby' 'unicorn')
-  provides=('ruby-unicorn')
-  conflicts=('ruby-unicorn')
+  replaces=('ruby-unicorn' 'ruby-unicorn-git')
+  provides=(ruby-unicorn-engine=$pkgver)
+  conflicts=(ruby-unicorn-engine)
   cd ${pkgbase}/bindings/ruby/unicorn_gem
   local _gemdir="$(ruby -e 'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "${pkgdir}${_gemdir}" \
-    -n "${pkgdir}/usr/bin" unicorn-*.gem -- --with-opt-include="${srcdir}/${pkgbase}/include"
+  gem install \
+    --verbose \
+    --ignore-dependencies \
+    --no-user-install \
+    -i "${pkgdir}${_gemdir}" \
+    -n "${pkgdir}/usr/bin" \
+    unicorn-*.gem -- \
+    --with-opt-include="${srcdir}/${pkgbase}/include" \
+    --with-opt-lib="${srcdir}/${pkgbase}-${pkgver}/build"
+
   rm -r "${pkgdir}/${_gemdir}"/{cache/unicorn-*.gem,build_info}
   find "${pkgdir}/${_gemdir}" \( -name 'mkmf.log' -or -name 'gem_make.out' \) -delete
   install -Dm 644 ../sample* -t "${pkgdir}/usr/share/doc/${pkgname}/samples"
