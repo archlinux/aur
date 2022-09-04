@@ -3,7 +3,7 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-libsoup3
-pkgver=3.0.7
+pkgver=3.0.8
 pkgrel=1
 pkgdesc='HTTP client/server library for GNOME'
 url=https://wiki.gnome.org/Projects/libsoup
@@ -22,16 +22,16 @@ depends=(
 makedepends=(
   git
   meson
+  python-quart
   samba
 )
 checkdepends=(
   apache
   php-apache
-  python-quart
 )
 optdepends=('samba: Windows Domain SSO')
 options=(debug)
-_commit=40cabaef1bd71475fcf34a618ad5937cefb76513  # tags/3.0.7^0
+_commit=66b1deac20ce3857d0c6cf225d4517027e532c0b  # tags/3.0.8^0
 source=(git+https://gitlab.gnome.org/GNOME/libsoup.git#tag=${_commit})
 sha256sums=('SKIP')
 
@@ -56,7 +56,9 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  # Python's output buffering messes with the tests reading stdout lines from
+  # http2-server.py through a pipe
+  PYTHONUNBUFFERED=1 meson test -C build --print-errorlogs
 }
 
 package() {
@@ -72,4 +74,4 @@ package() {
   rm -rf "${pkgdir}"/usr/{include,share}
 }
 
-# vim:set sw=2 et:
+# vim:set sw=2 sts=-1 et:
