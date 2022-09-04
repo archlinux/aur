@@ -1,0 +1,18 @@
+# /etc/systemd/system/RTL.service
+
+[Unit]
+Description=RTL daemon
+Wants=lnd.service
+After=lnd.service
+
+[Service]
+Environment="RTL_CONFIG_PATH=/etc/RTL"
+ConfigurationDirectory=RTL
+ExecStart=/usr/bin/node /usr/lib/node_modules/rtl/rtl.js
+User=RTL
+Restart=always
+TimeoutSec=120
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target

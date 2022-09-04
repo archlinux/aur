@@ -1,0 +1,13 @@
+ 
+post_install() {
+
+  echo "$(tput setaf 1)To get this running at a minimum you'll need to copy /etc/RTL/Sample-RTL-Config.json to RTL-Config.json$(tput sgr0)"
+  echo "$(tput setaf 1)and edit appropriately for your node or nodes.  You'll want to make sure that RTL-Config.json and$(tput sgr0)"
+  echo "$(tput setaf 1)admin.macaroon are readable by the RTL user.  I recommend running this command:$(tput sgr0)"
+  echo "$(tput setaf 4)sudo chown -R RTL:RTL /etc/RTL$(tput sgr0)"
+  echo "$(tput setaf 1)Finally, you may need to edit /usr/lib/systemd/system/RTL.service$(tput sgr0)"
+  echo "$(tput setaf 1)$(tput sgr0)"
+  echo "$(tput setaf 1)You can then start RTL.service with systemctl.$(tput sgr0)"
+  echo "$(tput setaf 1) $(tput sgr0)"
+  
+  }
