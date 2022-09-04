@@ -4,7 +4,7 @@
 
 pkgname=icecream
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="takes compile jobs from your build and distributes it to remote machines allowing a parallel build on several machines."
 url="http://en.opensuse.org/Icecream"
 license=('GPL2')
