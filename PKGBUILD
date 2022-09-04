@@ -6,6 +6,7 @@ arch=('any')
 license=('GPL')
 depends=('gist')
 makedepends=('git')
+provides=('pug')
 conflicts=('pug')
 url="https://github.com/Ventto/pug"
 source=("git+https://github.com/Ventto/pug.git")
