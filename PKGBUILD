@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BoolNet
-_pkgver=2.1.5
+_pkgver=2.1.7
 pkgname=r-${_pkgname,,}
-pkgver=2.1.5
-pkgrel=4
+pkgver=2.1.7
+pkgrel=1
 pkgdesc='Construction, Simulation and Analysis of Boolean Networks'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -15,7 +15,7 @@ depends=(
   r-xml
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('13579536a816cf0fa424916dfa1f868309421f8a3ed389d3fa63ba9d06d3de85')
+sha256sums=('bb5a1146a1e53be10761363ce30be8869d883be4d2632446f552aff039b307ad')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
