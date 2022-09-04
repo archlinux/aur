@@ -3,7 +3,7 @@
 # Based on: Dave Kleinschmidt <dave.f.kleinschmidt at gmail dot com>
 pkgname=spaceship-prompt
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Zsh prompt for Astronauts"
 arch=('any')
 url="https://spaceship-prompt.sh/"
@@ -28,6 +28,7 @@ package() {
   find scripts -type f -exec install -D -m644 {} "${pkgdir}/usr/lib/${pkgname}/{}" \;
   find sections -type f -exec install -D -m644 {} "${pkgdir}/usr/lib/${pkgname}/{}" \;
   install -D -m644 spaceship.zsh "${pkgdir}/usr/lib/${pkgname}/spaceship.zsh"
+  install -D -m644 async.zsh "${pkgdir}/usr/lib/${pkgname}/async.zsh"
   ln -s spaceship.zsh "${pkgdir}/usr/lib/${pkgname}/spaceship.zsh-theme"
 
   install -d "${pkgdir}/usr/local/share/zsh/site-functions/"

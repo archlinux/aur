@@ -1,7 +1,7 @@
 pkgbase = spaceship-prompt
 	pkgdesc = A Zsh prompt for Astronauts
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://spaceship-prompt.sh/
 	install = spaceship-prompt.install
 	arch = any
