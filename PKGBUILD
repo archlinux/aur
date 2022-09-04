@@ -1,8 +1,8 @@
 # Maintainer: noobping <hello@noobping.dev>
 
 pkgname=wofi-pass
-pkgver=0.0.1
-pkgrel=2
+pkgver=r23.15269b6
+pkgrel=3
 pkgdesc="A Wayland-native interface for conveniently using pass"
 arch=('any')
 url='https://github.com/TinfoilSubmarine/wofi-pass'
@@ -11,8 +11,8 @@ depends=('coreutils' 'findutils' 'grep' 'man-pages' 'pass' 'tcl' 'util-linux' 'w
 optdepends=(
     'wtype: type support'
     'pass-otp: OTP support')
-source=(https://raw.githubusercontent.com/purplg/wofi-pass/master/wofi-pass)
-sha512sums=('c47d7067dedc0038d75625ecd10a5b37560862cb4f6209b140951fb27dc2979245906dbbcd03e0fe9b35b1aafb3faf15d95b22a528df3a4143563aa302c3cc46')
+source=(https://raw.githubusercontent.com/TinfoilSubmarine/wofi-pass/master/wofi-pass)
+sha512sums=('455df69845808226628eb2664f551d3dbdd2315ea16913d390cf815f656f56c7c0a9ae5870d032348d868d27c99f1cba081d2b6a13bad1af02e52be49918015c')
 
 package() {
     mkdir -p "$pkgdir"/usr/bin
