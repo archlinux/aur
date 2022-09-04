@@ -1,12 +1,14 @@
 # Maintainer: Spacingbat3 <git@spacingbat3.anonaddy.com> (https://github.com/spacingbat3)
 
+### SCRIPT METADATA ###
+
 # shellcheck shell=bash disable=SC2164,SC2034
 
 ### PKGBUILD METADATA ###
 
 pkgname=webcord-git
-pkgver=3.7.0.r617.4039fda
-pkgrel=3
+pkgver=3.8.1.r675.a906b04
+pkgrel=2
 pkgdesc="A Discord and Fosscord client made with the Electron."
 arch=("any")
 
@@ -15,7 +17,7 @@ _author="SpacingBat3"
 
 url="https://github.com/${_author}/${_repo}"
 license=('MIT')
-makedepends=('npm' 'git' 'imagemagick' 'typescript' 'jq' 'asar')
+makedepends=('npm' 'git' 'imagemagick' 'typescript' 'asar')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/${_author}/${_repo}.git"
@@ -32,8 +34,8 @@ _UPDATE_NOTIFICATIONS=true
 _RELEASE_TYPE=devel
 
 _LOCAL_PACKAGES=(
-  # Comment to use NPM-provided packages instead of AUR/pacman-provided ones.
-  marked semver
+  # Uncomment to use system-provided packages instead of bundled NPM ones.
+  #marked semver
 )
 
 ### "STATIC" VARIABLES (DO NOT CHANGE) ###
@@ -63,7 +65,7 @@ fi
 
 pkgver() {
   cd "${srcdir:?}/${pkgname%-git}"
-  printf "%s.r%s.%s" "$(jq -r .version "${srcdir:?}/${pkgname%-git}/package.json" | tr '-' '_')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" "$(npm pkg get version | sed 's~-~_~g;s~"\([^"]*\)"~\1~g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -76,14 +78,14 @@ build() {
 
   _remove_deps+=(
     typescript eslint eslint-import-resolver-typescript eslint-plugin-import
-    @typescript-eslint/parser @typescript-eslint/experimental-utils
-    @typescript-eslint/eslint-plugin
+    @typescript-eslint/parser @typescript-eslint/eslint-plugin
+    eslint-plugin-json-schema-validator husky
   )
 
   _echo_times "Installing dependencies..."
-  [[ -f package-lock.json ]] && _npm update
-  [[ -n "${_LOCAL_PACKAGES[*]}" ]] && _npm i "${_LOCAL_PACKAGES[@]/#/"${_NODE_MODULES}"}" 
-  _npm --save r "${_remove_deps[@]}"
+  [[ -n "${_LOCAL_PACKAGES[*]}" ]] && _npm i "${_LOCAL_PACKAGES[@]/#/"${_NODE_MODULES}"}"
+  [[ "$(npm pkg get devDependencies.husky "${srcdir:?}/${pkgname%-git}/package.json")" == "{}" ]] || npm pkg delete "${_remove_deps[@]/#/devDependencies.}"
+  _npm update
   _cleanup && _compile && _genico && _gen_buildinfo
 }
 
@@ -143,7 +145,12 @@ _echo_times() {
 
 # NPM alias with useful flags/modifications.
 _npm() {
-  ELECTRON_SKIP_BINARY_DOWNLOAD=1 npm --cache="${srcdir:-.}/npm-cache" "$@"
+  ELECTRON_SKIP_BINARY_DOWNLOAD=1 npm \
+    --cache="${srcdir:-.}/npm-cache"  \
+    --no-audit \
+    --no-fund \
+    --ignore-scripts \
+    "$@"
 }
 
 # Cleanup script to remove useless files before packaging the application.
@@ -182,7 +189,10 @@ _compile() {
 
 # A function that returns the currently supported Electron major release.
 _getelectron(){
-  jq -r .devDependencies.electron "${srcdir:-src}/${pkgname%-git}/package.json" | sed 's~\^\([0-9]*\)\.[0-9a-z.]*~\1~'
+  local OLDPWD=$PWD;
+  cd "${srcdir:?}/${pkgname%-git}";
+  echo $(($(npm pkg get devDependencies.electron | sed 's~"\([^"]*\)"~\1~g;s~.* <\([0-9]*\).*~\1~')-1));
+  cd "$OLDPWD";
 }
 
 # A function to convert the base icon into another sizes.
