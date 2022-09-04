@@ -1,6 +1,6 @@
 pkgbase = idjc
 	pkgdesc = Powerful client for individuals interested in streaming live radio shows
-	pkgver = 0.9.3
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = http://idjc.sourceforge.net/
 	arch = i686
@@ -26,7 +26,7 @@ pkgbase = idjc
 	optdepends = mysql-python: Ampache and Prokyon 3 support
 	optdepends = python-irc: IRC notification support
 	conflicts = idjc-git
-	source = http://downloads.sourceforge.net/idjc/idjc-0.9.3.tar.gz
-	sha256sums = 25ba3133f038c89db3bed83bdb3aff77961846edd72ced94e5333f52e9e21183
+	source = http://downloads.sourceforge.net/idjc/idjc-0.9.4.tar.gz
+	sha256sums = 0ac9a27f911f348851d6cbd207d8415ed7c2eee9d50675c51ee7c83b49cdee6f
 
 pkgname = idjc
