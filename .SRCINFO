@@ -1,12 +1,13 @@
 pkgbase = python-regex-git
 	pkgdesc = Alternative regular expression module, to replace re.
-	pkgver = 353.fe9fb05
+	pkgver = 387.bf5e239
 	pkgrel = 1
 	url = https://bitbucket.org/mrabarnett/mrab-regex
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	provides = python-regex
 	conflicts = python-regex
@@ -14,4 +15,3 @@ pkgbase = python-regex-git
 	md5sums = SKIP
 
 pkgname = python-regex-git
-
