@@ -1,7 +1,7 @@
 pkgbase = hello-world
 	pkgdesc = Just a test package, will be removed soon
 	pkgver = .r1.c68245d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/justanoobcoder/helloworld
 	arch = x86_64
 	license = custom
