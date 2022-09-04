@@ -1,6 +1,6 @@
 pkgbase = anarchlinux-baseline
 	pkgdesc = Binary package for 'Anarch Linux' (Anarch Linux's not Arch Linux) baseline image.
-	pkgver = 2022.09.03
+	pkgver = 2022.09.04
 	pkgrel = 1
 	url = https://gitlab.archlinux.org/tallero/archiso/-/issues/3
 	arch = x86_64
