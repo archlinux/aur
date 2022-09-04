@@ -1,13 +1,15 @@
 pkgbase = python-pytaglib
 	pkgdesc = Python audio tagging library
 	pkgver = 1.5.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/supermihi/pytaglib
 	arch = x86_64
 	license = GPL3
 	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-install
 	makedepends = python-setuptools
-	makedepends = cython
+	makedepends = python-wheel
 	depends = python
 	depends = taglib
 	source = https://github.com/supermihi/pytaglib/archive/v1.5.0.tar.gz
