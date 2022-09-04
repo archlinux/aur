@@ -1,5 +1,5 @@
 pkgname=kms-filters
-pkgver=6.13.0
+pkgver=6.17.0
 pkgrel=2
 pkgdesc="Kurento server AV filters"
 arch=(any)
@@ -8,7 +8,7 @@ license=(apache)
 depends=(kms-core kms-elements opencv3-opt)
 makedepends=(kms-cmake-utils kurento-module-creator)
 source=(
-    "git://github.com/Kurento/$pkgname.git#tag=$pkgver"
+    "git+https://github.com/Kurento/$pkgname.git#tag=$pkgver"
     cmake-opencv.patch
     facedetector.c.patch
     faceoverlay.c.patch
@@ -34,7 +34,7 @@ build() {
     rm -rf "$builddir"
     mkdir "$builddir"
     cd "$builddir"
-    cmake -DCMAKE_MODULE_PATH=/usr/share/cmake/Modules -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_SYSCONFDIR=/etc -DCMAKE_BUILD_TYPE=Release ..
+    cmake -DCMAKE_MODULES_INSTALL_DIR=/usr/share/cmake/Modules -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_SYSCONFDIR=/etc -DCMAKE_BUILD_TYPE=Release ..
     make
 }
 
@@ -42,6 +42,4 @@ package() {
     local builddir=$srcdir/$pkgname/build
     cd "$builddir"
     make install DESTDIR="$pkgdir"
-    # no idea why this is copied there and how to get rid of it
-    rm "$pkgdir"/etc/kurento/modules/kurento/*.cmake
 }

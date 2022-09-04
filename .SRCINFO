@@ -1,6 +1,6 @@
 pkgbase = kms-filters
 	pkgdesc = Kurento server AV filters
-	pkgver = 6.13.0
+	pkgver = 6.17.0
 	pkgrel = 2
 	url = https://github.com/Kurento/kms-filters
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = kms-filters
 	depends = kms-core
 	depends = kms-elements
 	depends = opencv3-opt
-	source = git://github.com/Kurento/kms-filters.git#tag=6.13.0
+	source = git+https://github.com/Kurento/kms-filters.git#tag=6.17.0
 	source = cmake-opencv.patch
 	source = facedetector.c.patch
 	source = faceoverlay.c.patch
@@ -28,4 +28,3 @@ pkgbase = kms-filters
 	sha256sums = SKIP
 
 pkgname = kms-filters
-
