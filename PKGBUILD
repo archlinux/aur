@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cpp-jwt
 pkgname=$_pkgname-git
-pkgver=1.4.r14.ge12ef06
+pkgver=1.4.r16.g4b66cf7
 pkgrel=1
 pkgdesc="JSON Web Token library for C++"
 arch=('any')
@@ -22,6 +22,7 @@ pkgver() {
 
 build() {
 	cmake -S $_pkgname -B build \
+		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCPP_JWT_BUILD_EXAMPLES=OFF \
 		-DCPP_JWT_BUILD_TESTS="$CHECKFUNC" \
