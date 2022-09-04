@@ -1,0 +1,14 @@
+pkgbase = hello-world
+	pkgdesc = Just a test package, will be removed soon
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/justanoobcoder/helloworld
+	arch = x86_64
+	license = custom
+	makedepends = gcc
+	depends = cowsay
+	conflicts = helloworld
+	source = hello-world-1.0.tar.gz::https://github.com/justanoobcoder/helloworld/archive/refs/tags/v1.0.tar.gz
+	md5sums = ecf892d8840e3d62ed21670ce9e2ba7e
+
+pkgname = hello-world
