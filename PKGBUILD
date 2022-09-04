@@ -102,4 +102,5 @@ package() {
                          "${_profile}/work" \
                          "${_profile}"
   mv "${_dest}/${_iso}" "${_dest}/${_pkgname}-x86_64.iso"
+  mv "${_dest}/${_dongle_iso}" "${_private_dest}/${_pkgname}-dongle-x86_64.iso"
 }
