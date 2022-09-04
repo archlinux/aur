@@ -5,7 +5,7 @@
 pkgbase=unicorn-git
 pkgname=('unicorn-git' 'python-unicorn-git' 'ruby-unicorn-engine-git')
 pkgver=2.0.0.r34.ga0e119c6
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight, multi-platform, multi-architecture CPU emulator framework based on QEMU'
 url='http://www.unicorn-engine.org'
 arch=('i686' 'x86_64')
@@ -53,7 +53,7 @@ check() {
 
 package_unicorn-git() {
   depends=('glibc')
-  provides=('libunicorn.so')
+  provides=('unicorn' 'libunicorn.so')
   cd ${pkgbase}
   DESTDIR="${pkgdir}" cmake --install build
   install -Dm 644 samples/*.c -t "${pkgdir}/usr/share/doc/${pkgname}/samples"
