@@ -24,7 +24,7 @@ _grub_mkconfig() {
 # used.
 _grub_mkconfig_smart() {
   if _is_use_theme; then
-    _status "Use the 'grub-mkconfig' tool to generate '/boot/grub/grub.cfg'"
+    _status "Use the 'grub-mkconfig' tool to generate '$_grub_cfg'"
     _grub_mkconfig
   fi
 }
@@ -70,11 +70,11 @@ post_install() {
   # This mostly applies to first-time users of this theme.
   if ! _is_use_theme; then
     _status "The following instructions setup GRUB to use this theme."
-    _status "Edit the following line in /etc/default/grub:"
+    _status "Edit the following line in $_default_grub:"
     _status 'GRUB_THEME="'`
         `'/usr/share/grub/themes/grub-theme-vimix-very-dark-blue/theme.txt"'
     _status "Update GRUB by running the following command:"
-    _status "grub-mkconfig -o /boot/grub/grub.cfg"
+    _status "grub-mkconfig -o $_grub_cfg"
   fi
 }
 
