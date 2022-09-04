@@ -15,7 +15,7 @@ optdepends=(
   'git: scripting functionality'
 )
 source=("${_url_source}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('07a21862471134c1cc02350627e336fc30f2a6dce97758fc5bb3a04ac8aafe1c3227003f8dd83e330bc257a3b05374b603cd700e0244c6eb45e2dec3676621ac')
+b2sums=('d8a845af69ba2fb99f065cfa3633f9800de743b13baf731fd2a23453c94ced5655c35cae9003a62ff7e9cdcb1351a6d129ab87c2ea3c549b94fb31f50be72087')
 
 build() {
   make -C "${pkgname}-${pkgver}"
