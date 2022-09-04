@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# Test 
 
 declare -r _default_grub="/etc/default/grub"
 declare -r _grub_cfg="/boot/grub/grub.cfg"
