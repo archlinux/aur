@@ -1,8 +1,8 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 # Contributor: Tim Rakowski <tim.rakowski@gmail.com>
 pkgname=ignition-fuel_tools
-pkgver=7.0.0
-pkgrel=2
+pkgver=7.1.0
+pkgrel=1
 pkgdesc="A C++ client library and command line tools for interacting with Ignition Fuel servers"
 arch=('i686' 'x86_64')
 url="https://gazebosim.org/libs/fuel_tools"
@@ -14,7 +14,7 @@ makedepends=('ignition-cmake')
 optdepends=('ruby')
 conflicts=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-fuel-tools/archive/${pkgname//_/-}7_${pkgver}.tar.gz")
-sha256sums=('8a4e8a155d3780c8d3543f27c3b15d715918f338e5e1e8a5ed2b364366ba216b')
+sha256sums=('45bc8a6fa61da8ec8e75f488a91c433ec3db0276815bdbfc7db47ee659bd59e9')
 
 _dir="gz-fuel-tools-${pkgname//_/-}7_${pkgver}"
 
@@ -24,12 +24,10 @@ build() {
   mkdir -p build
   cd build
 
-  # Configure build
   cmake .. -DCMAKE_INSTALL_PREFIX="/usr" \
            -DCMAKE_INSTALL_LIBDIR="lib" \
            -DBUILD_TESTING:BOOL=False
 
-  # Compile
   make
 }
 

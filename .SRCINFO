@@ -1,7 +1,7 @@
 pkgbase = ignition-fuel_tools
 	pkgdesc = A C++ client library and command line tools for interacting with Ignition Fuel servers
-	pkgver = 7.0.0
-	pkgrel = 2
+	pkgver = 7.1.0
+	pkgrel = 1
 	url = https://gazebosim.org/libs/fuel_tools
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = ignition-fuel_tools
 	depends = ignition-msgs
 	depends = ignition-tools
 	optdepends = ruby
-	source = ignition-fuel_tools-7.0.0.tar.gz::https://github.com/gazebosim/gz-fuel-tools/archive/ignition-fuel-tools7_7.0.0.tar.gz
-	sha256sums = 8a4e8a155d3780c8d3543f27c3b15d715918f338e5e1e8a5ed2b364366ba216b
+	source = ignition-fuel_tools-7.1.0.tar.gz::https://github.com/gazebosim/gz-fuel-tools/archive/ignition-fuel-tools7_7.1.0.tar.gz
+	sha256sums = 45bc8a6fa61da8ec8e75f488a91c433ec3db0276815bdbfc7db47ee659bd59e9
 
 pkgname = ignition-fuel_tools
