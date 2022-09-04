@@ -44,6 +44,11 @@ _color="\e[33m"
 _bold='\e[1m'
 _prefix=" ${_bold}${_color}==>${_stop} "
 
+pkgver() {
+  cd "$_srcname" || return
+  printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
 prepare() {
     cd "$srcdir/$_srcname"
     git submodule update --init --recursive
