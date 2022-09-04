@@ -9,11 +9,11 @@ pkgver=1.0.1
 pkgrel=1
 pkgdesc="A tiny script to use if you want to route all of your packets through WireGuard without wg-quick"
 arch=('any')
-url="https://github.com/RONTheCookie/wgroute"
+url="https://github.com/ckiee/wgroute"
 license=('MIT')
 depends=('iproute2' 'wireguard-tools')
 makedepends=('make')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/RONTheCookie/wgroute/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ckiee/wgroute/archive/$pkgver.tar.gz")
 sha256sums=('e9d65aaa36560dd21f552b9755552a079e8e7c6118a75629dd7f430b53a387eb')
 
 package() {
