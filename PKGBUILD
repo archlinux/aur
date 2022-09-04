@@ -1,12 +1,12 @@
 _pkgname=yapsit
 pkgname=${_pkgname}-git
-pkgver=r8.edae67a
-pkgrel=2
+pkgver=r32.58c50c9
+pkgrel=1
 pkgdesc="Yet Another Pokémon Sprite In your Terminal"
 url="https://github.com/tomKPZ/yapsit"
 arch=("x86_64")
 depends=("glibc")
-makedepends=("git" "python-pillow")
+makedepends=("cmake" "git" "python-pillow")
 license=('GPL3')
 
 source=("git+https://github.com/tomKPZ/yapsit.git")
@@ -23,13 +23,12 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/${_pkgname}"
-    make
-    strip yapsit
+  cd "$srcdir/${_pkgname}"
+  cmake . -DCMAKE_INSTALL_PREFIX=/usr
+  make
 }
 
 package() {
-    cd "$srcdir/${_pkgname}"
-    mkdir -p "$pkgdir/usr/bin"
-    cp yapsit "$pkgdir/usr/bin"
+  cd "$srcdir/${_pkgname}"
+  make DESTDIR="$pkgdir" install
 }

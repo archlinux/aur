@@ -1,10 +1,11 @@
 pkgbase = yapsit-git
 	pkgdesc = Yet Another Pokémon Sprite In your Terminal
-	pkgver = r8.edae67a
-	pkgrel = 2
+	pkgver = r32.58c50c9
+	pkgrel = 1
 	url = https://github.com/tomKPZ/yapsit
 	arch = x86_64
 	license = GPL3
+	makedepends = cmake
 	makedepends = git
 	makedepends = python-pillow
 	depends = glibc
