@@ -2,7 +2,7 @@
 # See also https://github.com/eremiell-aur/dpp
 pkgname=dpp
 _pkgname=DPP
-pkgver=10.0.16
+pkgver=10.0.17
 pkgrel=1
 pkgdesc="Lightweight and Scalable C++ Discord API Bot Library"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('cmake')
 install="${pkgname}.install"
 changelog="${pkgname}.changelog"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/brainboxdotcc/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dc99af06d9c2fdeefde534d99c00cbda4c96bac7d02ee68bcbbc2b47848bb28e')
+sha256sums=('7596dcc5602f756709f57d38c7f5b4c743cedb3d808416011ef0ab279cd5391e')
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -30,7 +30,7 @@ build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	mkdir -p build
 	cd build
-	cmake -DDPP_BUILD_TEST=OFF -DRUN_LDCONFIG=OFF -DDPP_NO_VCPKG=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_MESSAGE=NEVER -Wno-dev ..
+	cmake -DDPP_BUILD_TEST=OFF -DRUN_LDCONFIG=OFF -DDPP_NO_VCPKG=ON -DDPP_CORO=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_MESSAGE=NEVER -Wno-dev ..
 	make
 }
 
