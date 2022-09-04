@@ -1,6 +1,6 @@
 pkgbase = python-crossbar
 	pkgdesc = Crossbar.io - WAMP application router http://crossbar.io/
-	pkgver = 21.3.1
+	pkgver = 22.6.1
 	pkgrel = 1
 	url = https://github.com/crossbario/crossbar
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-crossbar
 	depends = python-watchdog
 	depends = python-u-msgpack
 	depends = python-sdnotify
-	depends = urllib3<1.25,>=1.21.1
+	depends = python-urllib3
 	depends = python-treq
 	depends = python-setproctitle
 	depends = python-pyqrcode
@@ -29,7 +29,7 @@ pkgbase = python-crossbar
 	depends = python-mistune
 	depends = python-jinja
 	depends = python-importlib_resources
-	depends = python-idna<2.6,>=2.5
+	depends = python-idna
 	depends = python-h2
 	depends = python-cbor
 	depends = python-bcrypt
@@ -37,8 +37,13 @@ pkgbase = python-crossbar
 	depends = python-ujson
 	depends = python-argon2_cffi
 	depends = python-snappy
+	depends = python-pynacl
+	depends = python-colorama
+	depends = python-numpy
+	depends = python-flatbuffers
+	depends = python-msgpack
 	depends = python-zlmdb
-	source = python-crossbar-21.3.1.tar.gz::https://github.com/crossbario/crossbar/archive/v21.3.1.tar.gz
-	sha1sums = ee79e94a50b194ba6288fb5f853c1183b92d5343
+	source = python-crossbar-22.6.1.tar.gz::https://codeload.github.com/crossbario/crossbar/tar.gz/refs/tags/v22.6.1
+	sha1sums = e66337fce96ed3d0b98b75f2efc18f8e80ecca0a
 
 pkgname = python-crossbar

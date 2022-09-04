@@ -1,8 +1,9 @@
 # Maintainer: Florijan Hamzic <fh@infinicode.de>
+# Maintainer: kwrazi <gmail.com>
 
 _pkgname=crossbar
 pkgname=python-crossbar
-pkgver=21.3.1
+pkgver=22.6.1
 pkgrel=1
 pkgdesc="Crossbar.io - WAMP application router http://crossbar.io/"
 arch=('any')
@@ -46,10 +47,12 @@ depends=('python>=3.7'
          'python-flatbuffers'
          'python-msgpack'
          'python-zlmdb')
-source=($pkgname-$pkgver.tar.gz::https://github.com/crossbario/crossbar/archive/v${pkgver}.tar.gz)
-sha1sums=('ee79e94a50b194ba6288fb5f853c1183b92d5343')
+# source=($pkgname-$pkgver.tar.gz::https://github.com/crossbario/crossbar/archive/v${pkgver}.tar.gz)
+source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/crossbario/crossbar/tar.gz/refs/tags/v${pkgver})
+sha1sums=('e66337fce96ed3d0b98b75f2efc18f8e80ecca0a')
 
 package(){
+    local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
     cd "${srcdir}/${_pkgname}-${pkgver}"
     sed -ie 's/<[0-9.]*,//' requirements-min.txt
     sed -ie 's/<[0-9.]*,//' requirements-latest.txt
