@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=9.7.beta8.r0.g12be2d94c86
+pkgver=9.7.rc0.r0.gcae9ee5177a
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -48,7 +48,8 @@ optdepends=('cython: to compile cython code'
   'sage-notebook-exporter: convert flask notebooks to Jupyter'
   'python-database-knotinfo: interface to the KnotInfo and LinkInfo databases'
   'python-phitigra: graph editor'
-  'topcom: to compute triangulations of point configurations')
+  'topcom: to compute triangulations of point configurations'
+  'python-database-cubic-hecke: cubic Hecke algebras')
 makedepends=(cython boost python-jinja sirocco mcqd coxeter bliss tdlib python-pkgconfig shared_meataxe git)
 conflicts=(sagemath)
 provides=(sagemath)
@@ -60,7 +61,8 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-bliss-0.77.patch
         sagemath-tachyon-0.99.patch
         sagemath-gap-4.12.patch
-        sagemath-ipywidgets-8.patch)
+        sagemath-ipywidgets-8.patch
+        sagemath-tdlib-0.9.patch)
 sha256sums=('SKIP'
             'eee5fa15d8c7be7e009166dbde3ea24bb10d7793dc12880516f278f86b1a6694'
             'bd188af45ce31579b82407adee8e9bf6033a996f7ea6e328fabca526f31c08ba'
@@ -69,7 +71,8 @@ sha256sums=('SKIP'
             '3e1f866944235b999d2d727ed1ced431bd67405b053701c21068607ec76f23c3'
             '9760db6c6ec40cc16ab8a0cbf3d019df7f6a69ff292e35622f282b7c888aac77'
             '84c1700e285ab1d94d16d0a602417a414447d8a23ac2e55a093285cc4bd2916d'
-            'bdf56f85b608da12074780271ae134b02a03278f7b53a183f6dd97d8d72073e0')
+            'bdf56f85b608da12074780271ae134b02a03278f7b53a183f6dd97d8d72073e0'
+            '56a83abecf2ff5a500442adc7a50abbb70006037dd39c39dcdb04b3ca9fb51e2')
 
 pkgver() {
   cd sage
@@ -98,6 +101,8 @@ prepare(){
   patch -p1 -i ../test-optional.patch
 # use correct latte-count binary name
   patch -p1 -i ../latte-count.patch
+# update to tdlib 0.9 (Fedora)
+  patch -p1 -i ../sagemath-tdlib-0.9.patch
 
   cd build/pkgs/sagelib
   ./bootstrap

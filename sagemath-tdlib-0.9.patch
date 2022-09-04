@@ -1,0 +1,28 @@
+diff -up src/sage/graphs/graph_decompositions/sage_tdlib.cpp.orig src/sage/graphs/graph_decompositions/sage_tdlib.cpp
+--- a/src/sage/graphs/graph_decompositions/sage_tdlib.cpp	2021-05-09 16:00:11.000000000 -0600
++++ b/src/sage/graphs/graph_decompositions/sage_tdlib.cpp	2021-06-16 08:33:47.325415307 -0600
+@@ -2,8 +2,8 @@
+ #include <map>
+ 
+ #include <boost/graph/adjacency_list.hpp>
+-#include "tdlib/TD_combinations.hpp"
+-#include "tdlib/TD_misc.hpp"
++#include <treedec/combinations.hpp>
++#include <treedec/misc.hpp>
+ 
+ #ifndef TD_STRUCT_VERTEX
+ #define TD_STRUCT_VERTEX
+@@ -16,13 +16,6 @@ struct Vertex{
+ 
+ typedef boost::adjacency_list<boost::setS, boost::vecS, boost::undirectedS, Vertex> TD_graph_t;
+ 
+-struct bag{
+-    std::set<unsigned int> bag;
+-};
+-
+-typedef boost::adjacency_list<boost::vecS, boost::vecS, boost::undirectedS, bag> TD_tree_dec_t;
+-
+-
+ void make_tdlib_graph(TD_graph_t &G, std::vector<unsigned int> &V, std::vector<unsigned int> &E){
+     unsigned int max = 0;
+     for(unsigned int i = 0; i < V.size(); i++)
