@@ -1,0 +1,16 @@
+pkgbase = zaura-git
+	pkgdesc = A bash library for utilizing the AUR inside bash scripts.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://gitea.com/ffqq/zaura
+	arch = any
+	license = GPL3
+	depends = pacman
+	depends = git
+	depends = jq
+	optdepends = sudo
+	provides = zaura
+	source = zaura-git::git+https://gitea.com/ffqq/zaura.git
+	md5sums = SKIP
+
+pkgname = zaura-git
