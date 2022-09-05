@@ -1,7 +1,7 @@
 # Maintainer: Rod Kay <charlie5 on #ada at irc.libera.chat>
 
 pkgname=inotify-ada
-pkgver=20220727
+pkgver=20220905
 pkgrel=1
 
 pkgdesc='An Ada 2012 library to monitor filesystem events using the Linux inotify API.'
@@ -12,23 +12,25 @@ license=('Apache License 2.0')
 depends=('gcc-ada' 'alire')
 makedepends=('gprbuild')
 
-source=("https://github.com/onox/inotify-ada/archive/refs/heads/master.zip")
-sha256sums=("42c1b785c148ca7c68dd8eb14b990b7b22d1812df2047e7064303496c3f42ac7")
+source=("https://github.com/onox/inotify-ada/archive/refs/tags/v2.0.1.tar.gz")
+sha256sums=("49362b9ea81718a3c5385d0b6eccdd55fcce26f897a0eb887fd657c84ad3bf79")
 
 
 build()
 {
-    cd $srcdir/$pkgname-master
-    make build
+    cd $srcdir/$pkgname-2.0.1
+
+    alr build --validation
+
+    gprbuild inotify.gpr
+    gprbuild monitor.gpr
 }
 
 
 package()
 {
-    cd $srcdir/$pkgname-master
- 
-    mkdir -p    $pkgdir/usr/bin
-    make PREFIX=$pkgdir/usr install
-    
+    cd $srcdir/$pkgname-2.0.1
+
     gprinstall -P inotify.gpr -p --prefix=$pkgdir/usr
+    gprinstall -P monitor.gpr -p --prefix=$pkgdir/usr
 }
