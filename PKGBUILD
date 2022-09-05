@@ -2,7 +2,7 @@
 
 pkgname=honkers-launcher-bin
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An Launcher for HI3 that installs and updates the game for you"
 url="https://github.com/an-anime-team/honkers-launcher"
 conflicts=("honkers-launcher")
@@ -21,6 +21,12 @@ depends=(
     "curl"
     "iputils"
     "webkit2gtk"
+    "python"
+    "gstreamer"
+    "gst-plugins-good"
+    "gst-plugins-ugly"
+    "gst-plugins-bad"
+    "gst-plugins-base"
 )
 
 optdepends=(
