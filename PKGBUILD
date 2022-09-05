@@ -5,7 +5,7 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-plus-git
-pkgver=3.11.39.r0.g9aada10
+pkgver=3.11.43.r2.gc40c8aa
 pkgrel=1
 pkgdesc="Micro-compositor from Valve with added patches not yet commited upstream"
 arch=(x86_64)
@@ -21,14 +21,15 @@ makedepends=("git" "meson" "ninja" "patch" "vulkan-headers" "glslang" "wayland-p
 provides=($_pkgname "steamcompmgr")
 conflicts=($_pkgname "steamcompmgr")
 source=("0001-Add-force-orientation-option.patch"
+				"0002-Force-orientation-only-to-internal-display.patch"
 				"$_pkgname::git+https://github.com/Plagman/gamescope.git"
         "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
         "git+https://github.com/nothings/stb.git")
-sha512sums=('7a51acddcf15055811c4ba9340370b1f08ec2fe94521fbc4824e8de689d057b4eeed045ed533d895ac8e1716d47802ccb323fdce36f5f0ac453b9803b686a0b1'
+sha512sums=('6f7b56a3ff495401c6fc86a54cb14306aaaeb87c1746a4024b7a31af933933a0b1704be7daa7c3477bbd311ca266c9a3bf4d2118dfa14755a781aa455c530fd3'
+            '6a804987c2845e7ef0cbbfc0a9f8c66b96b489d3929d3cc9bdaa3edbeef5876c91fca16074ac1821ab785a23bcd2b12b9bb908d462e11750e87e4db0e33da3cd'
             'SKIP'
             'SKIP'
             'SKIP')
-
 
 pkgver() {
     cd "$srcdir/$_pkgname"
