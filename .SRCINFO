@@ -1,15 +1,15 @@
 pkgbase = pokeshell
-	pkgdesc = Displays pokemons in your shell
+	pkgdesc = A shell program to show pokemon sprites in the terminal.
 	pkgver = 1.0.0
-	pkgrel = 7
-	url = https://pokeapi.co/
-	install = pokeshell.install
+	pkgrel = 8
+	url = https://github.com/acxz/pokeshell
 	arch = any
-	license = MIT
-	makedepends = curl
-	makedepends = imagemagick
-	makedepends = img2xterm
-	options = !emptydirs
+	license = GPLv3
+	depends = curl
+	depends = jq
+	depends = imagemagick
+	depends = chafa
+	source = pokeshell-1.0.0.tar.gz::https://github.com/acxz/pokeshell/archive/v1.0.0.tar.gz
+	sha256sums = d968781b1ede645c6528eefaf49dcf945eff0e19b8b02686414e3ec2b169e129
 
 pkgname = pokeshell
-

@@ -1,43 +1,29 @@
 # Maintainer: Ricardo (XenGi) Band <email@ricardo.band>
 
-_maxwidth=80
-_maxheight=22
-_firstpokemon=1
-_lastpokemon=151
-
 pkgname=pokeshell
 pkgver=1.0.0
-pkgrel=7
-pkgdesc="Displays pokemons in your shell"
-url="https://pokeapi.co/"
-arch=(any)
-license=('MIT')
-makedepends=('curl' 'imagemagick' 'img2xterm')
-options=(!emptydirs)
-install='pokeshell.install'
+pkgrel=8
+pkgdesc="A shell program to show pokemon sprites in the terminal."
+arch=('any')
+url='https://github.com/acxz/pokeshell'
+license=('GPLv3')
+depends=('curl' 'jq' 'imagemagick' 'chafa')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/acxz/pokeshell/archive/v${pkgver}.tar.gz")
+sha256sums=('d968781b1ede645c6528eefaf49dcf945eff0e19b8b02686414e3ec2b169e129')
 
 build() {
-    cd "$srcdir/"
-    for _i in `seq $_firstpokemon 1 $_lastpokemon` ; do
-        printf "Generating Pokemon #$_i"
-        # download pokemon image
-        curl -sL https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$_i.png -o $_i.png
-        printf "."
-        # trim image
-        convert $_i.png -trim -resize ${_maxwidth}x$(($_maxheight * 2))\>  $_i.png
-        printf "."
-        # convert to escape sequences
-        img2xterm $_i.png > $_i.pokemon
-        printf ". done\n"
-        # cleanup
-        rm -f $_i.png
-    done
+    msg "Nothing to build"
 }
 
 package() {
-    cd "$srcdir/"
-    for _i in `seq $_firstpokemon 1 $_lastpokemon` ; do
-        install -D -m644 $_i.pokemon "${pkgdir}/usr/share/${pkgname}/$_i.pokemon"
-    done
-}
+    cd "${srcdir}/${pkgname}-${pkgver}"
 
+    mkdir -p ${pkgdir}/usr/bin
+    cp -v bin/pokeshell ${pkgdir}/usr/bin
+
+    mkdir -p ${pkgdir}/usr/share/bash-completion/completions
+    cp -v share/bash-completion/completions/pokeshell ${pkgdir}/usr/share/bash-completion/completions/pokeshell
+
+    # mkdir -p ${pkgdir}/usr/share/zsh/site-functions
+    # cp -v share/zsh/site-functions/_pokeshell ${pkgdir}/usr/share/zsh/site-functions/_pokeshell
+}
