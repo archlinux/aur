@@ -1,0 +1,13 @@
+pkgbase = python-engineering-notation
+	pkgdesc = Human-readable engineering notation
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://pypi.org/project/engineering-notation
+	arch = any
+	license = MIT
+	makedepends = python-installer
+	noextract = engineering_notation-0.6.0-py3-none-any.whl
+	source = engineering_notation-0.6.0-py3-none-any.whl::https://files.pythonhosted.org/packages/py3/e/engineering-notation/engineering_notation-0.6.0-py3-none-any.whl
+	sha256sums = 1ea1e450d575b4804723d0711b0609d2711dffac2f4b5548ee632c16a636d9f6
+
+pkgname = python-engineering-notation
