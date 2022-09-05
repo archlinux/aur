@@ -119,3 +119,11 @@
 - Python 3.10 support
 - pytest
 - black code style
+
+### 2.3
+
+2022-09-01
+
+### Fix
+
+- Fix compare with None

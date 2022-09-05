@@ -2,7 +2,7 @@
 # Contributor: Andrew Chen <xor.tux@gmail.com>
 
 pkgname=python-cstruct
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="C-style structs for Python"
 url="https://github.com/andreax79/python-cstruct"
@@ -14,7 +14,7 @@ checkdepends=('python-pytest')
 changelog=changelog.txt
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'exclude-tests.patch')
-sha256sums=('f1b3a97e186a3cc087c0aaa8ca5ca32c11374f29f0a4597a075869ea1c636bda'
+sha256sums=('d5a5bbafd3e9b77a8f9e30b9c05c1f9b206719fcaa3d1c6821fab997d2034fb4'
             '50c62f343cdb71381bf5f5e9e71fe75bab9f5b1a4d810855265f3a4c35036569')
 
 prepare() {
