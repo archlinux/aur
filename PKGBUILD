@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Add systemd support for timeshift"
 arch=("any")
 license=("GPL3")
-depends=('systemd' 'grep' 'bash' 'btrfs-progs')
+depends=('systemd' 'timeshift')
 source=(
     local://timeshift-boot.service
     local://timeshift-boot.timer
