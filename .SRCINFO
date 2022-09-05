@@ -1,0 +1,16 @@
+pkgbase = chim
+	pkgdesc = Cross-platform binary shims with optional remote fetching
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://chim.sh
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = chim
+	conflicts = chim
+	source = git+https://github.com/jdxcode/chim.git
+	md5sums = SKIP
+
+pkgname = chim
