@@ -7,3 +7,5 @@ pkg/
 ZeroNet/
 
 *.tar.xz
+*.tar.zst
+
