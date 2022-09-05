@@ -1,6 +1,6 @@
 pkgbase = contour-git
 	pkgdesc = Modern C++ Terminal Emulator
-	pkgver = 0.3.4.r3011.9036c439
+	pkgver = 0.3.4.r3025.85d632ed
 	pkgrel = 1
 	url = https://github.com/contour-terminal/contour
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = contour-git
 	makedepends = extra-cmake-modules
 	makedepends = git
 	makedepends = ninja
+	makedepends = libxml2
 	makedepends = catch2
 	makedepends = range-v3
 	makedepends = fmt

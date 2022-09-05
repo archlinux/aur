@@ -1,14 +1,14 @@
 # Maintainer: Vladislav Nepogodin <nepogodin.vlad@gmail.com>
 
 pkgname=contour-git
-pkgver=0.3.4.r3011.9036c439
+pkgver=0.3.4.r3025.85d632ed
 pkgrel=1
 pkgdesc="Modern C++ Terminal Emulator"
 arch=(x86_64 aarch64)
 url="https://github.com/contour-terminal/contour"
 license=('Apache-2.0')
 depends=('harfbuzz' 'fontconfig' 'yaml-cpp' 'qt5-base' 'qt5-multimedia' 'qt5-x11extras')
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja'
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja' 'libxml2'
              'catch2' 'range-v3' 'fmt' 'microsoft-gsl')
 source=("${pkgname}::git+https://github.com/contour-terminal/contour.git")
 sha512sums=('SKIP')
@@ -18,7 +18,7 @@ options=(!strip)
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  _pkgver="$(cat Changelog.md | grep '^###' | sed 's/### //g' | sed 's/ (.*//g' | head -1)"
+  _pkgver="$(xmllint --xpath 'string(/component/releases/release[1]/@version)' metainfo.xml)"
 
   printf "${_pkgver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
@@ -29,7 +29,7 @@ build() {
   CFLAGS=${CFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
   CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
 
-  PREPARE_ONLY_EMBEDS=ON ${pkgname}/scripts/install-deps.sh
+  PREPARE_ONLY_EMBEDS=ON OS_OVERRIDE=arch ${pkgname}/scripts/install-deps.sh
 
   cmake -S"${pkgname}" -Bbuild \
         -GNinja \
