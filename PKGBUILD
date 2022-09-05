@@ -1,9 +1,9 @@
 # Maintainer: Lorenzo Cappelletti <lorenzo.cappelletti gmail.com>
 
 pkgname=python-mbed-tools
-pkgver=7.53.0
+pkgver=7.57.0
 pkgrel=1
-pkgdesc='Future command line tool for Mbed OS'
+pkgdesc='Command line interface for Mbed OS'
 arch=('any')
 url="https://os.mbed.com"
 license=('Apache')
@@ -13,9 +13,7 @@ depends=(
   'ninja'
   'python'
   'python-dotenv'
-  'python-click'
-  'python-pdoc'
-  'python-gitpython'
+  'python-click>=7.1', 'python-click<9',
   'python-tqdm'
   'python-tabulate'
   'python-requests'
@@ -27,7 +25,7 @@ depends=(
 )
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ARMmbed/mbed-tools/archive/${pkgver}.tar.gz")
-sha256sums=('0c0d2f3c89a3b90638a3a8d5f8d94112e305ce00639053dba37ac2efc18ae64b')
+sha256sums=('7b8a5003f55932f5233d830de87156a2c285faa18fa9412e86ee42ea48885898')
 provides=('python-mbed-tools')
 
 _remove_windows() {
