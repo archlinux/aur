@@ -1,4 +1,4 @@
-# Maintainer: Anthony Wang <ta180m at proton dot me>
+# Maintainer: Anthony Wang <a at exozy dot me>
 
 _pkgbase=zenmonitor
 pkgname=zenmonitor3-git
@@ -6,7 +6,7 @@ pkgver=89.2e68a31
 pkgrel=1
 pkgdesc="Zenmonitor3 is monitoring software for AMD Zen-based CPUs, now with Zen 3 support! "
 arch=('x86_64' 'i686')
-url="https://git.exozy.me/Ta180m/zenmonitor3"
+url="https://git.exozy.me/a/zenmonitor3"
 license=('GPL')
 depends=('zenpower3' 'gtk3')
 optdepends=('polkit: support application shortcut to launch Zen monitor as root')
