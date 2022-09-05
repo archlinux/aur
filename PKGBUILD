@@ -28,7 +28,7 @@ source=(
 )
 sha256sums=(
     "3b8121fdf7d91d19680b6ff91f6f10ba79193379e1fdad5227d805b4ea65312a"
-    "f75d75270fe366e4268458588a9acf4085891cb995a8a2a205f2f1df0af260cf"
+    "627320378bcc4867280bbb5fd2b2a2f9eeba24ad7bd3c5ecd81e4b4703d2775e"
 )
 options=(!strip)
 install=".install"
