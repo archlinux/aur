@@ -1,7 +1,7 @@
 pkgbase = evolvotron
 	pkgdesc = An interactive generative art application
-	pkgver = 0.7.1.5
-	pkgrel = 3
+	pkgver = 0.7.1
+	pkgrel = 5
 	url = http://www.bottlenose.demon.co.uk/share/evolvotron/
 	arch = i686
 	arch = x86_64

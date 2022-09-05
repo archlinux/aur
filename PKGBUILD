@@ -4,8 +4,8 @@
 # Contributor: Bram Schoenmakers <me@bramschoenmakers.nl>
 
 pkgname=evolvotron
-pkgver=0.7.1.5
-pkgrel=3
+pkgver=0.7.1
+pkgrel=5
 pkgdesc="An interactive generative art application"
 arch=('i686' 'x86_64')
 url="http://www.bottlenose.demon.co.uk/share/evolvotron/"
