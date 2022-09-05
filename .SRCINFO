@@ -1,0 +1,12 @@
+pkgbase = stratovirt
+	pkgdesc = A light hypervisor
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://openeuler-mirrors/stratovirt.git
+	arch = x86_64
+	license = Mulan PSL v2
+	makedepends = cargo
+	source = stratovirt-2.1.0.tar.xz::https://github.com/openeuler-mirror/stratovirt/archive/refs/tags/v2.1.0.tar.gz
+	sha256sums = b644e58316c81cc0195c7f74dea03430ae95b1ad9cdf11041ad495761e5bf821
+
+pkgname = stratovirt
