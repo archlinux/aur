@@ -1,30 +1,33 @@
-# Maintainer: redfish <redfish at galactica dot pw>
+# Maintainer: caryoscelus <caryoscelus at gmx dot com>
+# Contributor: redfish <redfish at galactica dot pw>
 # Contributor: Lothar_m <lothar_m at riseup dot net>
 
-pkgname='zeronet-git'
-_gitname='ZeroNet'
-_gitroot='https://github.com/HelloZeroNet/ZeroNet.git'
-pkgver=0.7.2
+pkgname='zeronet-conservancy-git'
+_gitname='zeronet-conservancy'
+_gitroot='https://github.com/zeronet-conservancy/zeronet-conservancy.git'
+pkgver=0.7.7+.r5035.g3c93ca6a
 pkgrel=1
 arch=('any')
-url="https://zeronet.io/"
+url='https://github.com/zeronet-conservancy/zeronet-conservancy/'
 depends=('python' 'python-gevent>=1.1.0' 'python-gevent-websocket'
 	'python-msgpack>=0.4.4' 'python-websocket-client' 'python-rsa'
 	'python-pysocks' 'python-pyasn1' 'python-pyasn1-modules'
+	'python-bitcoinlib'
+	'python-pyaes'
+	'geoip2-database'
+	'python-defusedxml'
+	'python-rich'
 	'python-base58' 'python-merkletools'
-	'python-pyelliptic>=2.0.1'
-	'python-bencode.py' 'python-coincurve'
-	'python-bitcoinlib' 'python-maxminddb'
-	'geoip2-database')
+)
 optdepends=('tor: anonymity'
 	    'namecoin-core: local name resolution')
 makedepends=('git')
 checkdepends=('python-pytest' 'python-mock')
 license=('GPL2')
-pkgdesc="Decentralized websites using Bitcoin crypto and the BitTorrent network."
+pkgdesc="modern client for decentralized p2p web platform 0net"
 provides=(zeronet)
 conflicts=(zeronet)
-source=("git+https://github.com/HelloZeroNet/ZeroNet.git#branch=py3"
+source=("git+https://github.com/zeronet-conservancy/zeronet-conservancy.git#branch=master"
         "zeronet.conf"
         "zeronet.service")
 install="zeronet.install"

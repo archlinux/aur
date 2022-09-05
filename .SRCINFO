@@ -1,8 +1,8 @@
-pkgbase = zeronet-git
-	pkgdesc = Decentralized websites using Bitcoin crypto and the BitTorrent network.
-	pkgver = 0.7.2
+pkgbase = zeronet-conservancy-git
+	pkgdesc = modern client for decentralized p2p web platform 0net
+	pkgver = 0.7.7+.r5035.g3c93ca6a
 	pkgrel = 1
-	url = https://zeronet.io/
+	url = https://github.com/zeronet-conservancy/zeronet-conservancy/
 	install = zeronet.install
 	arch = any
 	license = GPL2
@@ -18,26 +18,24 @@ pkgbase = zeronet-git
 	depends = python-pysocks
 	depends = python-pyasn1
 	depends = python-pyasn1-modules
+	depends = python-bitcoinlib
+	depends = python-pyaes
+	depends = geoip2-database
+	depends = python-defusedxml
+	depends = python-rich
 	depends = python-base58
 	depends = python-merkletools
-	depends = python-pyelliptic>=2.0.1
-	depends = python-bencode.py
-	depends = python-coincurve
-	depends = python-bitcoinlib
-	depends = python-maxminddb
-	depends = geoip2-database
 	optdepends = tor: anonymity
 	optdepends = namecoin-core: local name resolution
 	provides = zeronet
 	conflicts = zeronet
 	options = !strip
 	backup = etc/zeronet.conf
-	source = git+https://github.com/HelloZeroNet/ZeroNet.git#branch=py3
+	source = git+https://github.com/zeronet-conservancy/zeronet-conservancy.git#branch=master
 	source = zeronet.conf
 	source = zeronet.service
 	sha256sums = SKIP
 	sha256sums = ea735e82dbb10a2c1fda7abfeb2f38c2429044d8254f9e2396c50cecb6f778f8
 	sha256sums = 2ee64a1b671a49a1626901a11d4d7fa338c77cb9b7c9facd2f56b087a4a0bb83
 
-pkgname = zeronet-git
-
+pkgname = zeronet-conservancy-git
