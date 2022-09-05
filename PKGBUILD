@@ -9,8 +9,8 @@ pkgname=zig-dev-bin
 # "newer" greater than the new version scheme
 epoch=1
 # NOTE: Hyphen -> underscore
-pkgver=0.10.0_dev.3659+e5e6eb983
-pkgrel=2
+pkgver=0.10.0_dev.3880+e2bb92b2e
+pkgrel=1
 pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software"
 arch=('x86_64' 'aarch64')
 url="https://ziglang.org/"
@@ -26,6 +26,12 @@ source=()
 #
 # Zig Issue for signed binaries: https://github.com/ziglang/zig/issues/4945
 sha256sums=()
+
+# Prints a warning message to stderr
+warning() {
+    echo -en "\e[33;1mWARNING\e[0m: ";
+    echo "$@";
+}
 
 pkgver() {
     local index_file="${srcdir}/zig-version-index.json";
@@ -55,7 +61,7 @@ prepare() {
         curl -Ss "$newurl" -o "$newfile";
     fi;
     echo "" >&2
-    echo "WARNING: No way to GPG/SHA verify the version ahead of time" >&2
+    warning "No way to GPG/SHA verify the version ahead of time";
     echo "See Zig issue https://github.com/ziglang/zig/issues/4945 for signed binaries" >&2;
     echo "" >&2;
     local actual_hash="$(sha256sum "$newfile" | grep -oE '^\w+')"
@@ -68,12 +74,40 @@ prepare() {
     popd > /dev/null;
 }
 
+RELATIVE_LANGREF_FILE="docs/langref.html";
+# All of these must be present for 
+RELATIVE_STDLIB_DOC_FILES=("docs/std/index.html" "docs/std/main.js" "docs/std/data.js");
 check() {
     hello_file="$(realpath ../hello.zig)"
     cd "${srcdir}/zig-linux-${CARCH}-${pkgver//_/-}";
     echo "Running Zig Hello World"
     ./zig run "$hello_file"
     ./zig test "$hello_file"
+    echo "Checking for docs...."
+    local missing_docs=();
+    # Zig has had long-running issues with the location
+    # of the docs directory.
+    # See issue https://github.com/ziglang/zig/issues/9158
+    #
+    # We check that it's present, and warn otherwise
+    # Alternative is failing the whole build just over docs
+    if [[ ! -f "$RELATIVE_LANGREF_FILE" ]]; then
+        missing_docs+=("langref.html");
+    fi
+    for stdlib_file in "${RELATIVE_STDLIB_DOC_FILES[@]}"; do
+        if [[ ! -f "$stdlib_file" ]]; then
+            missing_docs+=("stdlib["$(basename $stdlib_file)"]");
+            break;
+        fi
+    done;
+    if [[ "${#missing_docs[@]}" -ne 0 ]]; then
+        warning "Missing documentation:" "${missing_docs[@]}";
+        echo "This is likely related to Zig issue #9158: https://github.com/ziglang/zig/issues/9158" >&2;
+        echo "Essentially, the docs locations are inconsistent across platofrms and builds." >&2;
+        echo "This is especially true on non-linux platforms (and non x86_64)" >&2;
+        echo "" >&2;
+        echo "This will not impact execution, and you can always use the website docs: https://ziglang.org/documentation/master/" >&2;
+    fi
 }
 
 package() {
@@ -83,7 +117,12 @@ package() {
   cp -R lib "${pkgdir}/usr/lib/zig/lib"
   install -D -m755 zig "${pkgdir}/usr/lib/zig/zig"
   ln -s /usr/lib/zig/zig "${pkgdir}/usr/bin/zig"
-  install -D -m644 docs/langref.html "${pkgdir}/usr/share/doc/zig/langref.html"
-  cp -R docs/std "${pkgdir}/usr/share/doc/zig/"
+  # Already gave warnings above, just silently ignore here
+  if [[ -f "docs/langref.html" ]]; then
+    install -D -m644 docs/langref.html "${pkgdir}/usr/share/doc/zig/langref.html"
+  fi;
+  if [[ -d "docs/std" ]]; then
+    cp -R docs/std "${pkgdir}/usr/share/doc/zig/";
+  fi
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/zig/LICENSE"
 }
