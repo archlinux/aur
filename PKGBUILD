@@ -1,90 +1,122 @@
+# Maintainer: Martin Morlot <martinmorlot at gmail dot com>
 # Maintainer: Jaroslav Lichtblau <svetlemodry@archlinux.org>
+# Maintainer: Bruno Pagani <archange@archlinux.org>
+# Contributor: # Contributor: Luigi Ranghetti <ggranga@gmail.com>
 # Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
 # Contributor: William Rea <sillywilly@gmail.com>
 
-# Contributor: Luigi Ranghetti <ggranga@gmail.com>
 
 pkgbase=gdal-hdf4
 _pkgbase=gdal
 provides=('gdal')
 conflicts=('gdal')
-pkgname=('gdal-hdf4' 'python-gdal-hdf4')
-pkgver=3.4.0
-pkgrel=2.0
-pkgdesc="A translator library for raster geospatial data formats, with support to HDF4 format (required to use MODIStsp tool). Based on gdal ArchLinux package version."
-arch=('x86_64')
+pkgname=(gdal-hdf4 python-gdal-hdf4)
+pkgver=3.5.1
+pkgrel=2
+pkgdesc="A translator library for raster and vector geospatial data formats"
+arch=(x86_64)
 url="https://gdal.org/"
-license=('custom')
-depends=('curl' 'geos' 'giflib' 'hdf5' 'libgeotiff' 'libjpeg-turbo' 'libpng' 'libspatialite' 'libtiff' 'netcdf' 'hdf4'
-         'openjpeg2' 'poppler' 'cfitsio' 'sqlite' 'mariadb-libs' 'postgresql-libs' 'xerces-c' 'json-c')
-makedepends=('perl' 'swig' 'chrpath' 'doxygen' 'python-breathe' 'python-numpy' 'python-sphinx' 'boost')
-optdepends=('postgresql: postgresql database support'
-            'mariadb: mariadb database support'
-            'perl: perl binding support')
-options=('!emptydirs')
+license=(custom)
+makedepends=(cmake opencl-headers python-setuptools python-numpy
+             proj arrow blosc cfitsio curl crypto++ libdeflate expat libfreexl
+             libgeotiff geos giflib libheif hdf5 libjpeg-turbo json-c xz
+             libxml2 lz4 mariadb-libs netcdf unixodbc ocl-icd openexr openjpeg2
+             openssl pcre2 libpng podofo poppler postgresql-libs qhull
+             libspatialite sqlite swig libtiff libwebp xerces-c zlib zstd hdf4)
+# armadillo brunsli lerc libkml rasterlite2 sfcgal tiledb
+# ogdi
 changelog=$pkgbase.changelog
-source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
-        gdal-perl-vendor.patch::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/gdal/trunk/gdal-perl-vendor.patch)
-sha256sums=('ac7bd2bb9436f3fc38bc7309704672980f82d64b4d57627d27849259b8f71d5c'
-            '2103b98f2f15954f042d5620658b30d703125927bde2e5eb671c5facb6c2f5ed')
-
-prepare() {
-  cd "${srcdir}"/$_pkgbase-$pkgver
-
-# Fix mandir
-  sed -i "s|^mandir=.*|mandir='\${prefix}/share/man'|" configure
-
-# Fix Perl bindings installation path
-  patch -Np0 -i "${srcdir}"/gdal-perl-vendor.patch
-}
+source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz)
+sha256sums=('d12c30a9eacdeaab493c0d1c9f88eb337c9cbb5bb40744c751bdd5a5af166ab6')
 
 build() {
-  cd "${srcdir}"/$_pkgbase-$pkgver
-
-  ./configure --prefix=/usr --with-netcdf --with-libtiff --with-sqlite3 --with-geotiff \
-              --with-mysql --with-curl --with-hdf5 --with-hdf4=/opt/hdf4 --with-perl --with-geos \
-              --with-png --with-poppler --with-spatialite --with-openjpeg
-
-# workaround for bug #13646
-#   sed -i 's/PY_HAVE_SETUPTOOLS=1/PY_HAVE_SETUPTOOLS=/g' ./GDALmake.opt
-#   sed -i 's/EXE_DEP_LIBS/KILL_EXE_DEP_LIBS/' apps/GNUmakefile
-
-  make
-  make man
-
-  cd "${srcdir}"/$_pkgbase-$pkgver/swig/python
-  python setup.py build
+  cmake -B build -S $_pkgbase-$pkgver \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DENABLE_IPO=ON \
+    -DBUILD_PYTHON_BINDINGS=ON \
+    -DGDAL_ENABLE_PLUGINS=ON \
+    -DGDAL_USE_ARROW=ON \
+    -DGDAL_USE_BLOSC=ON \
+    -DGDAL_USE_CFITSIO=ON \
+    -DGDAL_USE_CURL=ON \
+    -DGDAL_USE_CRYPTOPP=ON \
+    -DGDAL_USE_DEFLATE=ON \
+    -DGDAL_USE_EXPAT=ON \
+    -DGDAL_USE_FREEXL=ON \
+    -DGDAL_USE_GEOTIFF=ON \
+    -DGDAL_USE_GEOS=ON \
+    -DGDAL_USE_GIF=ON \
+    -DGDAL_USE_HEIF=ON \
+    -DGDAL_USE_HDF5=ON \
+    -DGDAL_USE_HDF4=ON \
+    -DHDF4_INCLUDE_DIR=/opt/hdf4/include \
+    -DHDF4_df_LIBRARY_RELEASE=/opt/hdf4/lib/libdf.so \
+    -DHDF4_mfhdf_LIBRARY_RELEASE=/opt/hdf4/lib/libmfhdf.so \
+    -DGDAL_USE_ICONV=ON \
+    -DGDAL_USE_JPEG=ON \
+    -DGDAL_USE_JSONC=ON \
+    -DGDAL_USE_LIBLZMA=ON \
+    -DGDAL_USE_LIBXML2=ON \
+    -DGDAL_USE_LZ4=ON \
+    -DGDAL_USE_MYSQL=ON \
+    -DGDAL_USE_NETCDF=ON \
+    -DGDAL_USE_ODBC=ON \
+    -DGDAL_USE_OPENCL=ON \
+    -DGDAL_USE_OPENEXR=ON \
+    -DGDAL_USE_OPENJPEG=ON \
+    -DGDAL_USE_OPENSSL=ON \
+    -DGDAL_USE_PARQUET=ON \
+    -DGDAL_USE_PCRE2=ON \
+    -DGDAL_USE_PNG=ON \
+    -DGDAL_USE_POPPLER=ON \
+    -DGDAL_USE_POSTGRESQL=ON \
+    -DGDAL_USE_QHULL=ON \
+    -DGDAL_USE_SPATIALITE=ON \
+    -DGDAL_USE_SQLITE3=ON \
+    -DGDAL_USE_TIFF=ON \
+    -DGDAL_USE_WEBP=ON \
+    -DGDAL_USE_XERCESC=ON \
+    -DGDAL_USE_ZLIB=ON \
+    -DGDAL_USE_ZSTD=ON
+  make -C build
 }
 
 package_gdal-hdf4 () {
-  cd "${srcdir}"/$_pkgbase-$pkgver
+  depends=(proj blosc crypto++ curl libdeflate expat libfreexl geos libgeotiff
+           giflib libjpeg-turbo json-c xz libxml2 lz4 unixodbc ocl-icd openssl
+           pcre2 libpng qhull libspatialite sqlite libtiff xerces-c zlib zstd
+           hdf4)
+  optdepends=('arrow: Arrow/Parquet support'
+              'cfitsio: FITS support'
+              'hdf5: HDF5 support'
+              'libheif: HEIF support'
+              'mariadb-libs: MySQL support'
+              'netcdf: netCDF support'
+              'openexr: EXR support'
+              'openjpeg2: JP2 support'
+              'podofo: PDF support'
+              'poppler: PDF support'
+              'postgresql-libs: PostgreSQL support'
+              'libwebp: WebP support')
 
-  make DESTDIR="${pkgdir}" install
-  make DESTDIR="${pkgdir}" install-man
-
-# install license
-  install -Dm644 LICENSE.TXT "${pkgdir}"/usr/share/licenses/$_pkgbase/LICENSE
-
-# Remove RPATH
-  eval local $(perl -V:vendorarch)
-  chrpath --delete "${pkgdir}"${vendorarch}/auto/Geo/OSR/OSR.so
-  chrpath --delete "${pkgdir}"${vendorarch}/auto/Geo/OGR/OGR.so
-  chrpath --delete "${pkgdir}"${vendorarch}/auto/Geo/GDAL/GDAL.so
-  chrpath --delete "${pkgdir}"${vendorarch}/auto/Geo/GDAL/Const/Const.so
-  chrpath --delete "${pkgdir}"${vendorarch}/auto/Geo/GNM/GNM.so
+  make -C build DESTDIR="${pkgdir}" install
+  install -Dm644 ${_pkgbase}-${pkgver}/LICENSE.TXT -t "${pkgdir}"/usr/share/licenses/$_pkgbase/
+  # Move python stuff
+  mkdir {bin,lib}
+  mv "${pkgdir}"/usr/bin/*py bin
+  mv "${pkgdir}"/usr/lib/python* lib
 }
 
 package_python-gdal-hdf4 () {
-  pkgdesc="Python bindings for GDAL, with support to HDF4 format"
-  provides=("python-gdal")
-  conflicts=("python-gdal")
-  depends=("gdal-hdf4=$pkgver" 'python-numpy')
-  optdepends=()
+  pkgdesc="Python bindings for GDAL"
+  depends=("gdal=$pkgver" 'python-numpy')
 
-  cd "${srcdir}"/$_pkgbase-$pkgver/swig/python
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-#   install -Dm755 -t "${pkgdir}"/usr/bin scripts/*.py
-
+  install -d "${pkgdir}"/usr/{bin,lib}
+  mv bin/* "${pkgdir}"/usr/bin
+  mv lib/* "${pkgdir}"/usr/lib
   install -dm755 "${pkgdir}"/usr/share/licenses
-  ln -s $_pkgbase "${pkgdir}"/usr/share/licenses/$pkgname
+  ln -s $pkgbase "${pkgdir}"/usr/share/licenses/$pkgname
+  # byte-compile python modules since the CMake build does not do it.
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  python -m compileall -o 0 -o 1 -o 2 --hardlink-dupes -s "${pkgdir}" "${pkgdir}"${site_packages}
 }
