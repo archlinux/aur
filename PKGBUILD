@@ -1,7 +1,7 @@
 # Maintainer: groestlcoin <groestlcoin@gmail.com>
 
 pkgname=electrum-grs
-pkgver=4.2.0
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="Lightweight Groestlcoin wallet"
 arch=('any')
@@ -50,8 +50,8 @@ optdepends=('desktop-file-utils: update desktop icon'
             'zbar: QR code reading support')
 source=("https://github.com/Groestlcoin/electrum-grs/releases/download/v${pkgver}/Electrum-grs-${pkgver}.tar.gz"
         "Electrum-grs-${pkgver}.tar.gz.asc::https://github.com/Groestlcoin/electrum-grs/releases/download/v${pkgver}/Electrum-grs-${pkgver}.tar.gz.asc")
-sha256sums=('196de3e79e785a32acf54ebfe38f9ba74e615248d0b68a1a26533526ff8e48db'
-            'c4fbe827e40d4fb25483dde89a9a18943fa0e54341a7608ef3583fed61ddda04')
+sha256sums=('6a11b2121fe72c63625a1f36ea78eea495f386453b2449d55b1982793ad61c36'
+            '4e4d4c8376f009da9adc747ae3616bca1f154e98af7a5fcae27b7dbec52f0254')
 validpgpkeys=('287AE4CA1187C68C08B49CB2D11BD4F33F1DB499')
 install=electrum-grs.install
 
