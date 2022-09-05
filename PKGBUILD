@@ -1,6 +1,6 @@
 # Maintainer: Christoph Hartmann <mail_to_chriss@gmx.net>
 pkgname=hdx-realtime-media-engine
-pkgver=2.9.400
+pkgver=2.9.500
 _short_pkgver=29500
 _long_pkgver=2.9.500
 _deb_rebuild=2802
