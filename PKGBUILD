@@ -305,7 +305,7 @@ package_ceph() {
   find "${pkgdir}/usr/lib" -maxdepth 1 -type l -delete
   find "${pkgdir}/usr/lib/ceph" -maxdepth 1 -type f -delete
   find "${pkgdir}/usr/lib/ceph" -maxdepth 1 -type l -delete
-  rm -rf "${pkgdir}"/usr/lib/{ceph/{compressor,crypto,erasure-code},rados-classes}
+  rm -rf "${pkgdir}"/usr/lib/{ceph/{compressor,crypto,erasure-code,librbd},rados-classes}
   rm -rf "${pkgdir}"/usr/lib/python*
   rm -rf "${pkgdir}/usr/include"
 
