@@ -1,8 +1,8 @@
-From a2308d3c0b04a6421f7166d708147f5f450540e3 Mon Sep 17 00:00:00 2001
+From 62ff738299f4ec6331f9ebae569b4e295c15b204 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Joaqu=C3=ADn=20Ignacio=20Aramend=C3=ADa?=
  <samsagax@gmail.com>
 Date: Mon, 18 Jul 2022 19:59:41 -0300
-Subject: [PATCH] Add --force-orientation option
+Subject: [PATCH 1/2] Add --force-orientation option
 
 ---
  src/drm.cpp      | 51 +++++++++++++++++++++++++++++++-----
@@ -12,7 +12,7 @@ Subject: [PATCH] Add --force-orientation option
  4 files changed, 138 insertions(+), 29 deletions(-)
 
 diff --git a/src/drm.cpp b/src/drm.cpp
-index 9c60909..3d87796 100644
+index fce6052..af80966 100644
 --- a/src/drm.cpp
 +++ b/src/drm.cpp
 @@ -42,6 +42,8 @@ bool g_bDebugLayers = false;
@@ -24,7 +24,7 @@ index 9c60909..3d87796 100644
  
  static LogScope drm_log("drm");
  static LogScope drm_verbose_log("drm", LOG_SILENT);
-@@ -1206,7 +1208,7 @@ void drm_lock_fbid( struct drm_t *drm, uint32_t fbid )
+@@ -1189,7 +1191,7 @@ void drm_lock_fbid( struct drm_t *drm, uint32_t fbid )
  void drm_unlock_fbid( struct drm_t *drm, uint32_t fbid )
  {
  	struct fb &fb = get_fb( *drm, fbid );
@@ -33,7 +33,7 @@ index 9c60909..3d87796 100644
  	assert( fb.held_refs > 0 );
  	if ( --fb.held_refs != 0 )
  		return;
-@@ -1247,7 +1249,26 @@ drm_prepare_basic( struct drm_t *drm, const struct FrameInfo_t *frameInfo )
+@@ -1230,7 +1232,26 @@ drm_prepare_basic( struct drm_t *drm, const struct FrameInfo_t *frameInfo )
  
  	drm->fbids_in_req.push_back( fb_id );
  
@@ -61,7 +61,7 @@ index 9c60909..3d87796 100644
  
  	add_plane_property(req, drm->primary, "FB_ID", fb_id);
  	add_plane_property(req, drm->primary, "CRTC_ID", drm->crtc->id);
-@@ -1497,7 +1518,25 @@ drm_prepare_liftoff( struct drm_t *drm, const struct FrameInfo_t *frameInfo, boo
+@@ -1480,7 +1501,25 @@ drm_prepare_liftoff( struct drm_t *drm, const struct FrameInfo_t *frameInfo, boo
  			liftoff_layer_set_property( drm->lo_layers[ i ], "SRC_W", entry.layerState[i].srcW );
  			liftoff_layer_set_property( drm->lo_layers[ i ], "SRC_H", entry.layerState[i].srcH );
  
@@ -88,7 +88,7 @@ index 9c60909..3d87796 100644
  
  			liftoff_layer_set_property( drm->lo_layers[ i ], "CRTC_X", entry.layerState[i].crtcX);
  			liftoff_layer_set_property( drm->lo_layers[ i ], "CRTC_Y", entry.layerState[i].crtcY);
-@@ -1974,7 +2013,7 @@ bool drm_update_color_mtx(struct drm_t *drm)
+@@ -1957,7 +1996,7 @@ bool drm_update_color_mtx(struct drm_t *drm)
  		drm_ctm.matrix[i] = color.s31_32;
  	}
  
@@ -97,7 +97,7 @@ index 9c60909..3d87796 100644
  	if (drmModeCreatePropertyBlob(drm->fd, &drm_ctm,
  			sizeof(struct drm_color_ctm), &blob_id) != 0) {
  		drm_log.errorf_errno("Unable to create CTM property blob");
-@@ -2052,7 +2091,7 @@ bool drm_update_gamma_lut(struct drm_t *drm)
+@@ -2035,7 +2074,7 @@ bool drm_update_gamma_lut(struct drm_t *drm)
  		gamma_lut[i].blue  = drm_calc_lut_value( b_exp, drm->pending.color_linear_gain[2], drm->pending.color_gain[2], drm->pending.gain_blend );
  	}
  
@@ -106,7 +106,7 @@ index 9c60909..3d87796 100644
  	if (drmModeCreatePropertyBlob(drm->fd, gamma_lut,
  			lut_entries * sizeof(struct drm_color_lut), &blob_id) != 0) {
  		drm_log.errorf_errno("Unable to create gamma LUT property blob");
-@@ -2103,7 +2142,7 @@ bool drm_update_degamma_lut(struct drm_t *drm)
+@@ -2086,7 +2125,7 @@ bool drm_update_degamma_lut(struct drm_t *drm)
  		degamma_lut[i].blue  = drm_quantize_lut_value( safe_pow( input, drm->pending.color_degamma_exponent[screen_type][2] ) );
  	}
  
@@ -252,7 +252,7 @@ index a7c6f86..ec94acb 100644
  
  	setenv("DISPLAY", base_server->get_nested_display_name(), 1);
 diff --git a/src/wlserver.cpp b/src/wlserver.cpp
-index 63e7587..c318a58 100644
+index 117373e..4edd457 100644
 --- a/src/wlserver.cpp
 +++ b/src/wlserver.cpp
 @@ -6,7 +6,7 @@
@@ -272,7 +272,7 @@ index 63e7587..c318a58 100644
  static struct wl_list pending_surfaces = {0};
  
  static void wlserver_surface_set_wlr( struct wlserver_surface *surf, struct wlr_surface *wlr_surf );
-@@ -888,18 +889,38 @@ void wlserver_touchmotion( double x, double y, int touch_id, uint32_t time )
+@@ -861,18 +862,38 @@ void wlserver_touchmotion( double x, double y, int touch_id, uint32_t time )
  {
  	if ( wlserver.mouse_focus_surface != NULL )
  	{
@@ -317,7 +317,7 @@ index 63e7587..c318a58 100644
  		wlserver.mouse_surface_cursorx = tx;
  		wlserver.mouse_surface_cursory = ty;
  
-@@ -927,18 +948,38 @@ void wlserver_touchdown( double x, double y, int touch_id, uint32_t time )
+@@ -900,18 +921,38 @@ void wlserver_touchdown( double x, double y, int touch_id, uint32_t time )
  {
  	if ( wlserver.mouse_focus_surface != NULL )
  	{
@@ -363,5 +363,5 @@ index 63e7587..c318a58 100644
  		wlserver.mouse_surface_cursory = ty;
  
 -- 
-2.37.2
+2.37.3
 
