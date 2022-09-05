@@ -1,7 +1,7 @@
 pkgbase = cemu
-	pkgdesc = Software to emulate Wii U games and applications on PC
+	pkgdesc = Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)
 	pkgver = 2.0.97
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/cemu-project/Cemu
 	arch = x86_64
 	license = MPL2
@@ -32,6 +32,7 @@ pkgbase = cemu
 	source = git+https://github.com/arsenm/sanitizers-cmake#commit=aab6948fa863bc1cbe5d0850bc46b9ef02ed4c1a
 	source = git+https://github.com/google/googletest#commit=800f5422ac9d9e0ad59cd860a2ef3a679588acb4
 	source = xdg.diff
+	source = overlay.diff
 	sha256sums = SKIP
 	sha256sums = 9f14c788aee15b777051e48f868c5d4d959bd679fc5050e3d2a29de80d8fd32e
 	sha256sums = 262faed507149c89aab7572fd2c2a968f843ca2900043e30a9c339735ed08a8f
@@ -41,5 +42,6 @@ pkgbase = cemu
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 78aa9187fa6a1819da039c10f1d2681b962329c9fc6d4724eeff5936b3ec02ee
+	sha256sums = f3135a57544455ba7aa9175717a34bbb0a1313a835b8a76525bce3360f366929
 
 pkgname = cemu

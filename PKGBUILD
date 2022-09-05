@@ -1,7 +1,7 @@
 # Maintainer: Anuskuss <anuskuss@googlemail.com>
 pkgname=cemu
 pkgver=2.0.97
-pkgrel=2
+pkgrel=3
 pkgdesc='Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)'
 arch=(x86_64)
 url=https://github.com/cemu-project/Cemu
@@ -108,8 +108,8 @@ prepare() {
 build() {
 	cd Cemu
 	cmake -B build \
-	      $(which clang   &> /dev/null && [[ -z $CC  ]] && echo -DCMAKE_C_COMPILER=$(which clang)) \
-	      $(which clang++ &> /dev/null && [[ -z $CXX ]] && echo -DCMAKE_CXX_COMPILER=$(which clang++)) \
+	      $(C=$(which clang   2> /dev/null) && [[ -z $CC  ]] && echo -DCMAKE_C_COMPILER=$C) \
+	      $(C=$(which clang++ 2> /dev/null) && [[ -z $CXX ]] && echo -DCMAKE_CXX_COMPILER=$C) \
 	      -DCMAKE_CXX_FLAGS="$CXXFLAGS -w" -Wno-dev \
 	      -DSYSTEM_DATA_PATH=/opt/cemu \
 	      -DENABLE_VCPKG=OFF \
