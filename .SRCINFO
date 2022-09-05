@@ -1,0 +1,14 @@
+pkgbase = traefik-warden-git
+	pkgdesc = Warden is a Just Another project that helps to manage services through Traefik.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Just-Another-Organization/traefik-warden
+	arch = any
+	license = GNU AFFERO GENERAL PUBLIC LICENSE
+	makedepends = git
+	makedepends = python-pip
+	provides = warden
+	source = git+https://github.com/Just-Another-Organization/traefik-warden
+	md5sums = SKIP
+
+pkgname = traefik-warden-git
