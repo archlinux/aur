@@ -1,6 +1,6 @@
 pkgbase = master-key
 	pkgdesc = A password manager application
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://gitlab.com/guillermop/master-key
 	arch = any
@@ -9,13 +9,12 @@ pkgbase = master-key
 	checkdepends = desktop-file-utils
 	makedepends = meson
 	makedepends = gobject-introspection
-	depends = glib2
 	depends = libadwaita
 	depends = python-gobject
 	depends = libpwquality
 	depends = sqlcipher
 	depends = tcl
-	source = https://gitlab.com/guillermop/master-key/-/archive/v1.3.0/master-key-v1.3.0.tar
-	b2sums = 7d23bde80c617f7cb47746a0a740a9419ea385a702a0dfb2e4b66c1cf439fb7130793e880e14dc27dc8b0978a46be600b9fbd6dd34abd09a54a37b84a2d87ffb
+	source = https://gitlab.com/guillermop/master-key/-/archive/v1.3.1/master-key-v1.3.1.tar
+	b2sums = 34b07bcfbb5c152f7e328a4c8184711e1461b60ac7a162761e6dec18a6767ab3f227bfd2e5325fc41ecec8ed16c54f3dd67b2dc176e2af2e035f28eeb7c030ad
 
 pkgname = master-key
