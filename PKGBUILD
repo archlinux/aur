@@ -1,13 +1,13 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=master-key-git
-pkgver=1.3.0.r2.g4d6c44e
+pkgver=1.3.1.r8.g8ca3517
 pkgrel=1
 pkgdesc="A password manager application"
 arch=('any')
 url="https://gitlab.com/guillermop/master-key"
 license=('GPL3')
-depends=('glib2' 'libadwaita' 'python-gobject' 'libpwquality' 'sqlcipher' 'tcl')
+depends=('libadwaita' 'python-gobject' 'libpwquality' 'sqlcipher' 'tcl')
 makedepends=('git' 'meson' 'gobject-introspection')
 checkdepends=('appstream-glib' 'desktop-file-utils')
 provides=("${pkgname%-git}")
@@ -28,9 +28,9 @@ build() {
   meson compile -C build
 }
 
-#check() {
-#  meson test -C build
-#}
+check() {
+  meson test -C build || :
+}
 
 package() {
   meson install -C build --destdir "$pkgdir"
