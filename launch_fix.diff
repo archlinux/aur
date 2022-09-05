@@ -1,13 +1,14 @@
-diff --git a/src/widgets/Terminal.vala b/src/widgets/Terminal.vala
-index 65b0042..6b52854 100644
---- a/src/widgets/Terminal.vala
-+++ b/src/widgets/Terminal.vala
-@@ -72,7 +72,7 @@ public class Terminal.Terminal : Vte.Terminal {
-     this.connect_accels ();
-     this.on_theme_changed ();
-     this.on_font_changed ();
--    this.on_padding_changed ();
-+    this.settings.terminal_padding = this.settings.schema.get_value ("terminal-padding");
- 
-     this.spawn (command, cwd);
+diff --git a/src/services/Settings.vala b/src/services/Settings.vala
+index 530416a..45830ef 100644
+--- a/src/services/Settings.vala
++++ b/src/services/Settings.vala
+@@ -67,7 +67,8 @@ public class Terminal.Settings : Marble.Settings {
    }
+ 
+   public Padding get_padding () {
+-    return Padding.from_variant (this.terminal_padding);
++    var variant = this.schema.get_value ("terminal-padding");
++    return Padding.from_variant (variant);
+   }
+ 
+   public void set_padding (Padding padding) {

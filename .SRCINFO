@@ -1,6 +1,6 @@
 pkgbase = blackbox-terminal-git
 	pkgdesc = A beautiful GTK 4 terminal.
-	pkgver = 0.11.2.r10.ge1b6e63
+	pkgver = 0.12.0.r0.gc9ed9fd
 	pkgrel = 1
 	url = https://gitlab.gnome.org/raggesilver/blackbox
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = blackbox-terminal-git
 	source = launch_fix.diff
 	source = rename_icons.diff
 	b2sums = SKIP
-	b2sums = dcb2b68305fef327a5d718840f9b934cddb45ef2f2967f845734253eaca11d47c0b1016d2b8332fc05f162392f6021b4f5937758e9343bf81569de15d14b8315
+	b2sums = 1417439dde6b35fa189604d6fe6083e55ac7ea0aa2b0f3373e99c2a864e6cd25be99e1fbe78d4dd633e47d0270585778ccf5817154c2b9a0fdd32827af5478ee
 	b2sums = 22e4a1f53a1a9411104bcea87dd51c86479351d0ee98b4dc4a0b4a92276a4f3f2945c12e3e7aa6a5137ebcb7a67c959eca11f4a3babb3cbed0c0231e11afaecc
 
 pkgname = blackbox-terminal-git
