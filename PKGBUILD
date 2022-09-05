@@ -2,8 +2,8 @@
 # Maintainer: Oliver Weissbarth <mail@oweissbarth.de>
 
 pkgname=dart-sass-embedded
-pkgver=1.0.0_beta.14
-pkgrel=2
+pkgver=1.54.8
+pkgrel=1
 pkgdesc="Wrapper for Dart Sass that implements the compiler side of the Embedded Sass protocol"
 arch=("x86_64")
 url="https://github.com/sass/dart-sass-embedded"
@@ -16,22 +16,22 @@ backup=()
 options=('!strip')
 source=("${pkgname}-${pkgver}.tgz::https://github.com/sass/${pkgname^^}/archive/${pkgver//_/-}.tar.gz")
 noextract=()
-sha256sums=('f391ea6cd284ffbebf5c15cd8d9e48e657df03fe60cd3a355dfbe87438791761')
+sha256sums=('ff3127947fb6f389a4ef4e3f6f7c0ca2b09c1fc65b87f6f23fb819fe3ae8d4c5')
 
 
 prepare() {
 	dart --disable-analytics
 	cd ${pkgname}-${pkgver//_/-}
 	dart pub get
-	dart pub run grinder protobuf
+	dart run grinder protobuf
 }
 build() {
 	cd ${pkgname}-${pkgver//_/-}
 	mkdir -p ${srcdir}/build
-	dart compile exe -o ${srcdir}/build/${pkgname} bin/dart_sass_embedded.dart
+	dart run grinder pkg-compile-native
 }
 
 package() {
-	install -Dm755 ${srcdir}/build/${pkgname} -t ${pkgdir}/usr/bin/
+	install -Dm755 ${pkgname}-${pkgver//_/-}/build/${pkgname}.native -T ${pkgdir}/usr/bin/${pkgname}
 	install -Dm644 ${pkgname}-${pkgver//_/-}/LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}
 }
