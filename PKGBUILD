@@ -1,6 +1,6 @@
 pkgname=nncp
-pkgver=8.7.2
-pkgrel=4
+pkgver=8.8.0
+pkgrel=1
 pkgdesc="Node-to-Node Copy Protocol utilities for secure store-and-forward"
 url="http://www.nncpgo.org/"
 arch=(x86_64)
@@ -11,7 +11,7 @@ source=("http://www.nncpgo.org/download/nncp-$pkgver.tar.xz"
         "http://www.nncpgo.org/download/nncp-$pkgver.tar.xz.sig"
         nncp.sysusers
         nncp.tmpfiles)
-sha256sums=('a0eec9b0f33059de33f13084599805d0f4a1c8c379e925bacfe8dc94d1ddc23d'
+sha256sums=('829e2fb2f1eed8af7ace4554405e56f0341be2a01c234a34d01122382aa0794c'
             'SKIP'
             '81d3d892da555eb1e5fc764788e18e21ab9293ca1d4bd8febc27fed1ea403fb6'
             'd2ebd1bafc630b013041c62035fac454cf151049712f87b2876fe63282851c71')
