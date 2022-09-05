@@ -1,6 +1,7 @@
 # Maintainer: Edvin Alvarado <ealvarado301 g-mail>
+# Contributor: Edvin Alvarado <ealvarado301 g-mail>
 pkgname=nanominer
-pkgver=3.6.2
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="nanopool mining software"
 arch=('any')
@@ -8,12 +9,10 @@ depends=('pciutils' 'bash')
 license=('custom:nanopool')
 install=$pkgname.install
 url='https://github.com/nanopool/nanominer/releases'
-sha256sums=("fb3551179b788aba5aff8fde52addffd83a220bbb0b6bb47abb426310b4b8e54"
+sha256sums=("4eff4cfc5bccbe2eaa9b5a85716031b4b9aa22b4aeabdab5e245821c290a6be2"
 			"SKIP")
 
 prepare() {
-	cd $pkgname-linux-$pkgver
-	
 	# copies config files in config_examples
 	mkdir -p config_examples
 	for FILE in config*.ini
@@ -49,6 +48,6 @@ package() {
 
 	# Install
 	mkdir -p $pkgdir/opt/"$pkgname" 
-	cp -R "$pkgname-linux-$pkgver"/* $pkgdir/opt/"$pkgname" 
+	cp -R * $pkgdir/opt/"$pkgname" 
 }
 
