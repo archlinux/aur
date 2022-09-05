@@ -1,7 +1,7 @@
 pkgbase = lirc-git
 	pkgdesc = Linux Infrared Remote Control utils. Git version.
 	pkgver = r3281.888a28ad
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.lirc.org/
 	arch = x86_64
 	license = GPL
@@ -13,6 +13,7 @@ pkgbase = lirc-git
 	makedepends = python-setuptools
 	makedepends = python-yaml
 	makedepends = systemd
+	makedepends = git
 	depends = alsa-lib
 	depends = libx11
 	depends = libftdi
@@ -33,7 +34,6 @@ pkgbase = lirc-git
 	source = lirc.tmpfiles
 	md5sums = SKIP
 	md5sums = d80cd25aa263531f098d0b90bde08056
-	md5sums = c4f22d27402483d888b07b24ca781a9e
 	md5sums = 3deb02604b37811d41816e9b4385fcc3
 	md5sums = febf25c154a7d36f01159e84f26c2d9a
 

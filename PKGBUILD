@@ -5,14 +5,14 @@
 pkgname=lirc-git
 _pkgname=lirc
 pkgver=r3281.888a28ad
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux Infrared Remote Control utils. Git version."
 arch=('x86_64')
 url="https://www.lirc.org/"
 license=('GPL')
 depends=('alsa-lib' 'libx11' 'libftdi' 'libusb-compat')
 makedepends=('help2man' 'alsa-lib' 'libx11' 'libxslt' 'python' 'python-setuptools'
-             'python-yaml' 'systemd')
+             'python-yaml' 'systemd' 'git')
 optdepends=('python: for lirc-setup, irdb-get and pronto2lirc'
             'python-gobject: for lirc-setup and irdb-get'
             'python-yaml: for lirc-setup and irdb-get')
@@ -26,7 +26,6 @@ source=("git://lirc.git.sourceforge.net/gitroot/lirc/lirc"
         lirc.tmpfiles)
 md5sums=('SKIP'
          'd80cd25aa263531f098d0b90bde08056'
-         'c4f22d27402483d888b07b24ca781a9e'
          '3deb02604b37811d41816e9b4385fcc3'
          'febf25c154a7d36f01159e84f26c2d9a')
 
