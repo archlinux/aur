@@ -1,7 +1,7 @@
 pkgbase = ldr-translate-qt
 	pkgdesc = 一个翻译软件，更适合kde桌面，专注文献翻译，可以截图翻译、复制翻译
-	pkgver = 1.5.1
-	pkgrel = 2
+	pkgver = 1.5.3
+	pkgrel = 1
 	url = https://github.com/yuhldr/ldr-translate
 	arch = x86_64
 	groups = ldr
@@ -10,7 +10,7 @@ pkgbase = ldr-translate-qt
 	depends = python-requests
 	depends = python-pyqt5
 	conflicts = ldr-translate-gtk
-	source = https://github.com/yuhldr/ldr-translate/archive/refs/tags/v1.5.1.tar.gz
-	md5sums = 0f5eb3876a7e4ef940c97de2951c0b5c
+	source = https://github.com/yuhldr/ldr-translate/archive/refs/tags/v1.5.3.tar.gz
+	md5sums = f4368aeff2225f43b49d86a050899821
 
 pkgname = ldr-translate-qt

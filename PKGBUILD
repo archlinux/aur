@@ -2,8 +2,8 @@
 
 pkgdata=ldr-translate
 pkgname=$pkgdata-qt
-pkgver=1.5.1
-pkgrel=2
+pkgver=1.5.3
+pkgrel=1
 epoch=
 pkgdesc="一个翻译软件，更适合kde桌面，专注文献翻译，可以截图翻译、复制翻译"
 arch=('x86_64')
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://github.com/yuhldr/$pkgdata/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-md5sums=(0f5eb3876a7e4ef940c97de2951c0b5c)
+md5sums=(f4368aeff2225f43b49d86a050899821)
 validpgpkeys=()
 
 prepare() {
@@ -43,6 +43,6 @@ package() {
 	cp data/icon/icon.png "$pkgdir"/usr/share/icons/ldr-translate.png
 	cp data/ldr-translate.desktop "$pkgdir"/usr/share/applications/
 
-	cp -r api data/icon data/config.json data/config_locale.json "$pkgdir"/opt/ldr-translate/
+	cp -r utils api data/icon data/config.json data/version.json data/locales "$pkgdir"/opt/ldr-translate/
 	cp gui/qt/* "$pkgdir"/opt/ldr-translate/
 }
