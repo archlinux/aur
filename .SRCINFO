@@ -1,6 +1,6 @@
 pkgbase = gamescope-plus
 	pkgdesc = SteamOS session compositing window manager with added patches
-	pkgver = 3.11.42
+	pkgver = 3.11.43
 	pkgrel = 1
 	url = https://github.com/Plagman/gamescope
 	arch = x86_64
@@ -36,7 +36,7 @@ pkgbase = gamescope-plus
 	depends = xorg-server-xwayland
 	provides = gamescope
 	conflicts = gamescope
-	source = git+https://github.com/Plagman/gamescope.git#tag=6da2f90e51c5fc525795792b673582b95127c2a2
+	source = git+https://github.com/Plagman/gamescope.git#tag=c5269642a293ce5e91d3d644ee15a3f3bcc3c5f3
 	source = 0001-Add-force-orientation-option.patch
 	b2sums = SKIP
 	b2sums = fccaadc42d8ea34cb0319da3d57049a7ad7d516071006700360aa3a155d91dfb28aced3b02a9e2919dc9030c789b3bb17211b574fa248cfe785e4979aa86fdfb
