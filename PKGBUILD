@@ -1,6 +1,6 @@
 # Maintainer: Juanjo Gutierrez <juanjo at gutierrezdequevedo dot com>
 pkgname=lunasvg
-pkgver=2.3.0
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="standalone SVG rendering library in C++ "
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://github.com/sammycage/lunasvg"
 license=('MIT')
 makedepends=('cmake')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c1a4faef9bc2f65f8c64a2770c7e10753178e7318b8f6e09b1a4f1a495524e7c')
+sha256sums=('12abe6865dd030adfac70c30592eaa25c4e34fa81379e5149b0186282721f40c')
 
 build() {
     cd "$pkgname-$pkgver"
