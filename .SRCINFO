@@ -1,0 +1,17 @@
+pkgbase = znp-git
+	pkgdesc = Wrap shell command in ZFS pre/post snapshots
+	pkgver = 0.1.r0.g12a63d3
+	pkgrel = 1
+	url = https://github.com/simonsd/znp
+	arch = any
+	license = AGPLv3
+	makedepends = git
+	depends = zfs-utils
+	provides = znp
+	provides = znpc
+	conflicts = znp
+	backup = etc/znp/znp.conf
+	source = git+https://github.com/simonsd/znp.git
+	md5sums = SKIP
+
+pkgname = znp-git
