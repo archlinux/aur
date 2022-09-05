@@ -1,0 +1,11 @@
+pkgbase = stylish-icon-theme
+	pkgdesc = Modern icon theme for Linux Desktops
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/kuroehanako/Stylish-icon-theme
+	arch = any
+	license = GPLv3
+	source = stylish-icon-theme-1.1.0.tar.gz::https://github.com/kuroehanako/Stylish-icon-theme/archive/1.1.0.tar.gz
+	sha256sums = 72c4d92116a64965873e6544de978493c22b278200733d181a46c13da69b13c8
+
+pkgname = stylish-icon-theme
