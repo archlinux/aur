@@ -1,14 +1,13 @@
 pkgbase = digital
 	pkgdesc = A digital logic designer and circuit simulator.
 	pkgver = 0.29
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/hneemann/Digital
 	arch = x86_64
 	license = GPL
 	makedepends = imagemagick
 	makedepends = librsvg
 	depends = java-runtime
-	depends = imagemagick
 	source = digital-0.29.zip::https://github.com/hneemann/Digital/releases/download/v0.29/Digital.zip
 	source = digital.desktop
 	sha256sums = 4d61e2776100ddfe3f8638886e5b33e3b99165eefefaf9ba5c9b9fad1f47f3a7
