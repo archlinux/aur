@@ -2,7 +2,7 @@
 
 pkgname="xdg-sanity"
 pkgver=0.1
-pkgrel=6
+pkgrel=7
 pkgdesc="A tool to sanely open http/s links."
 arch=("any")
 url="https://git.tebibyte.media/emma/xdg-sanity"
@@ -17,7 +17,7 @@ sha256sums=("SKIP")
 
 pkgver() {
   cd $srcdir/$pkgname
-  git tag -l
+  git describe --tags
 }
 
 prepare() {
