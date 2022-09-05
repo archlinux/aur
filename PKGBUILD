@@ -2,7 +2,7 @@
 # Contributor: gardar <aur@gardar.net>
 pkgname=zfsbootmenu
 pkgver=2.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="ZFS bootloader for root-on-ZFS systems"
 license=('MIT')
 url="https://github.com/zbm-dev/$pkgname"
@@ -11,6 +11,7 @@ depends=('zfs' 'kexec-tools' 'fzf' 'bash' 'mbuffer' 'ncurses' 'perl-sort-version
 optdepends=('dracut' 'mkinitcpio' 'efibootmgr' 'refind' 'syslinux' 'grub')
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/v$pkgver.tar.gz")
 sha256sums=('466496e896a992fea9d46c55e48c6fcec1ab62b7022476571f0c41c015e31b13')
+backup=("etc/${pkgname}/config.yaml" "etc/${pkgname}/mkinitcpio.conf" "etc/${pkgname}/dracut.conf.d/omit-drivers.conf" "etc/${pkgname}/dracut.conf.d/${pkgname}.conf")
 
 package() {
         cd "$pkgname-$pkgver"
