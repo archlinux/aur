@@ -1,7 +1,7 @@
 pkgbase = dotdrop
 	pkgdesc = Save your dotfiles once, deploy them everywhere
-	pkgver = 1.10.3
-	pkgrel = 2
+	pkgver = 1.11.0
+	pkgrel = 1
 	url = https://github.com/deadc0de6/dotdrop
 	arch = any
 	license = GPL
@@ -15,7 +15,8 @@ pkgbase = dotdrop
 	depends = python-requests
 	depends = python-packaging
 	depends = python-toml
-	source = git+https://github.com/deadc0de6/dotdrop.git#tag=v1.10.3
+	depends = python-distro
+	source = git+https://github.com/deadc0de6/dotdrop.git#tag=v1.11.0
 	md5sums = SKIP
 
 pkgname = dotdrop
