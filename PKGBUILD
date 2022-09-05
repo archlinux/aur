@@ -1,8 +1,8 @@
 # Maintainer: Malte Jürgens <maltejur@dismail.de>
 
 pkgname=revanced-builder
-pkgver=3.4.2
-pkgrel=5
+pkgver=3.4.3
+pkgrel=1
 pkgdesc="A NodeJS ReVanced builder"
 arch=("x86_64")
 url="https://github.com/reisxd/revanced-builder"
@@ -14,13 +14,13 @@ optdepends=(
   "electron: for opening revanced-builder in a seperate window"
 )
 source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/reisxd/revanced-builder/archive/refs/tags/v3.4.2.tar.gz"
+  "$pkgname-$pkgver.tar.gz::https://github.com/reisxd/revanced-builder/archive/refs/tags/v3.4.3.tar.gz"
   "revanced-builder.sh"
   "revanced-builder.desktop"
   "revanced.png::https://user-images.githubusercontent.com/13122796/178031589-aa43db16-46b0-4b75-bff9-cc889fbfbb40.png"
 )
 sha256sums=(
-  "d7b9b251bddf0df755d89873e0949af5cae04c76e8dc40e0ab9086790d0800e6"
+  "30d595a527c3770c8d0389e330ca6dc58b5f2f0def7a60914396f00fe8b46257"
   "SKIP"
   "SKIP"
   "a619654e2e2d0c017c8a270d0463edf66c1e9d73ab105e52d89434b1356b1f7a"
