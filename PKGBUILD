@@ -1,20 +1,20 @@
 # Maintainer: candroid_man <candroid_man@protonmail.com>
 # Contributer: Ada <adadonderr@gmail.com>
 # Contributor: Christian Finnberg <christian@finnberg.net>
-pkgname='notesnook'
-pkgver=1.7.5
-pkgrel=5
+pkgname=notesnook
+pkgver=2.1.6
+pkgrel=1
 pkgdesc="Take private notes, capture ideas, make lists & sync them anywhere"
 arch=('x86_64')
 url="https://notesnook.com/"
-license=('Unknown')
+license=('GPLv3')
 depends=('gtk3' 'nss')
 source=("notesnook_${pkgver}_amd64.deb"::"https://github.com/streetwriters/notesnook/releases/download/v$pkgver/notesnook_amd64.deb")
-sha256sums=('8cc4c05748bd9a59d7fdf88ad102486e5b5f08bfa63aa25b0c75d13a8f890d96')
+sha256sums=('87a2a96d8f086415ea569b2900abd42f0eafeb054c5888bfa9eb90b3432835dd')
 
 package() {
 	bsdtar -xf data.tar.xz -C "$pkgdir"
-	
+
 	# Link to the binary
 	mkdir -p "${pkgdir}/usr/bin"
 	ln -s '/opt/Notesnook/Notesnook' "${pkgdir}/usr/bin/Notesnook"
