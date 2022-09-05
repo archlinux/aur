@@ -3,15 +3,15 @@
 # Maintainer: Y Paritcher <y.archlinux@paritcher.com>
 
 pkgname=xxdiff
-pkgver=5.0
-pkgrel=3
+pkgver=5.1
+pkgrel=1
 pkgdesc="A graphical browser for file and directory differences."
 url="https://github.com/blais/xxdiff"
 license=('GPL2')
-depends=('qt5-base')
+depends=('qt6-base')
 makedepends=('flex>=2.5.31' 'bison' 'git' 'python-docutils')
 arch=('x86_64' 'i686')
-_commit=30b44034e5cc2665f7fc44ce45da7252d46cbe17
+_commit=090aa680265e77812ed8faa75482ec8efdb44913
 source=("git+https://github.com/blais/xxdiff.git#commit=$_commit")
 md5sums=('SKIP')
 
