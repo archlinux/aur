@@ -1,5 +1,18 @@
 # Changelog
 
+## [v3.3.0](https://github.com/fastly/cli/releases/tag/v3.3.0) (2022-09-05)
+
+[Full Changelog](https://github.com/fastly/cli/releases/tag/v3.2.5...v3.3.0)
+
+**Enhancements:**
+
+* TLS Support [#630](https://github.com/fastly/cli/pull/630)
+* CI to use community TinyGo action [#624](https://github.com/fastly/cli/pull/624)
+* Improve compute init remediation [#627](https://github.com/fastly/cli/pull/627)
+* Change default Makefile target [#629](https://github.com/fastly/cli/pull/629)
+* Refactor after remote config removal [#626](https://github.com/fastly/cli/pull/626)
+* Refactor for revive linter [#632](https://github.com/fastly/cli/pull/632)
+
 ## [v3.2.5](https://github.com/fastly/cli/releases/tag/v3.2.5) (2022-08-10)
 
 [Full Changelog](https://github.com/fastly/cli/releases/tag/v3.2.4...v3.2.5)

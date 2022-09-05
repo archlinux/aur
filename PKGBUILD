@@ -4,8 +4,8 @@
 ## GPG key: https://github.com/web-flow.gpg
 
 pkgname=fastly
-pkgver=3.2.5
-_commit=88df3e5
+pkgver=3.3.0
+_commit=96b3aa7
 pkgrel=1
 pkgdesc='CLI for the Fastly platform'
 url='https://github.com/fastly/cli'
@@ -31,7 +31,6 @@ build() {
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-
 	cd "$pkgname"
 	make build \
 		VERSION="$pkgver" \
@@ -40,6 +39,11 @@ build() {
 }
 
 check() {
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 	cd "$pkgname"
 	go test ./...
 }
