@@ -2,7 +2,7 @@
 # Contributor: Bart Ribbers <bribbers@disroot.org>
 
 pkgname=waydroid
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A container-based approach to boot a full Android system on a regular Linux system"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('lxc' 'python' 'python-gbinder' 'python-gobject' 'nftables' 'dnsmasq')
 makedepends=('git')
 optdepends=('waydroid-image: Android image for use with waydroid'
             'python-pyclip: share clipboard with container')
-_commit="1eba5463d904e3e87cc237627d96727a90960624" # tags/1.3.0
+_commit="70cfd0ab2b36a3de4773f36c3cc3d0b4dc0705ad" # tags/1.3.1
 source=("waydroid::git+https://github.com/waydroid/waydroid.git#commit=$_commit"
         gbinder.conf)
 
@@ -21,22 +21,8 @@ pkgver() {
   git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
-prepare() {
-  cd waydroid
-}
-
 package() {
-  cd waydroid
-  install -dm755 "$pkgdir/usr/lib/waydroid"
-  install -dm755 "$pkgdir/usr/share/applications"
-  install -dm755 "$pkgdir/usr/bin"
-  cp -r tools data "$pkgdir/usr/lib/waydroid/"
-  mv "$pkgdir/usr/lib/waydroid/data/Waydroid.desktop" "$pkgdir/usr/share/applications"
-  cp waydroid.py "$pkgdir/usr/lib/waydroid/"
-  ln -s /usr/lib/waydroid/waydroid.py "$pkgdir/usr/bin/waydroid"
-
-  install -Dm644 -t "$pkgdir/etc" "$srcdir/gbinder.conf"
-  install -Dm644 -t "$pkgdir/usr/lib/systemd/system" systemd/waydroid-container.service
+  make -C waydroid install DESTDIR="$pkgdir" USE_NFTABLES=1
 }
 
 sha256sums=('SKIP'
