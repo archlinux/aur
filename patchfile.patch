@@ -1,27 +1,14 @@
 diff -upr ffDiaporama.r0/src/ffDiaporama/wgt_QMultimediaBrowser/QCustomFolderTable.cpp ffDiaporama.r1/src/ffDiaporama/wgt_QMultimediaBrowser/QCustomFolderTable.cpp
 --- ffDiaporama.r0/src/ffDiaporama/wgt_QMultimediaBrowser/QCustomFolderTable.cpp	2014-02-09 09:47:04.000000000 +0000
-+++ ffDiaporama.r1/src/ffDiaporama/wgt_QMultimediaBrowser/QCustomFolderTable.cpp	2022-09-03 09:49:31.314912000 +0000
-@@ -1123,11 +1123,11 @@ void QCustomFolderTable::DoScanMediaList
++++ ffDiaporama.r1/src/ffDiaporama/wgt_QMultimediaBrowser/QCustomFolderTable.cpp	2022-09-05 13:54:35.610782343 +0000
+@@ -925,8 +925,8 @@ void QCustomFolderTable::FillListFolder(
+     setUpdatesEnabled(true);
  
-     for (int ItemIndex=0;(ItemIndex<MediaList.count())&&(!StopScanMediaList)&&(!StopAllEvent);ItemIndex++) {
-         if (!MediaList[ItemIndex].IsInformationValide) {
--            cBaseMediaFile *MediaObject=MediaList[ItemIndex].CreateBaseMediaFile();
--            MediaObject->GetFullInformationFromFile(); // Get full information
-+            //cBaseMediaFile *MediaObject=MediaList[ItemIndex].CreateBaseMediaFile();	//ooo
-+            //MediaObject->GetFullInformationFromFile(); // Get full information	//ooo
- 
-             // Update display
--            while (!MediaList[ItemIndex].TextToDisplay.isEmpty()) MediaList[ItemIndex].TextToDisplay.removeLast();
-+            /*while (!MediaList[ItemIndex].TextToDisplay.isEmpty()) MediaList[ItemIndex].TextToDisplay.removeLast();
-             if (CurrentMode==DISPLAY_DATA) {
-                 QStringList ExtendedProperties;
-                 ApplicationConfig->FilesTable->GetExtendedProperties(MediaObject->FileKey,&ExtendedProperties);
-@@ -1139,7 +1139,7 @@ void QCustomFolderTable::DoScanMediaList
-                 int Col=ItemIndex-Row*columnCount();
-                 update(model()->index(Row,Col));
-             }
--            delete MediaObject;
-+            delete MediaObject;*/	//ooo
-         }
-         if ((MediaList[ItemIndex].ObjectType==OBJECTTYPE_MUSICFILE)||(MediaList[ItemIndex].ObjectType==OBJECTTYPE_VIDEOFILE)||(MediaList[ItemIndex].ObjectType==OBJECTTYPE_FFDFILE))
-                 CurrentShowDuration=CurrentShowDuration+QTime(0,0,0,0).msecsTo(MediaList[ItemIndex].Duration);
+     // Start thread to scan files
+-    ScanMediaList.setFuture(QtConcurrent::run(this,&QCustomFolderTable::DoScanMediaList));
+-
++    //ScanMediaList.setFuture(QtConcurrent::run(this,&QCustomFolderTable::DoScanMediaList));	//ooo
++    QCustomFolderTable::DoScanMediaList();	//xxx
+     QApplication::restoreOverrideCursor();
+     SaveSettings();
+ }
