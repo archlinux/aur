@@ -8,7 +8,7 @@
 # Contributor: Ricardo Band <me [at] xengi [dot] de>
 
 pkgname=popcorntime
-pkgver=0.4.8
+pkgver=0.4.9
 pkgrel=1
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=(i686 x86_64)
@@ -21,7 +21,7 @@ options=('!strip')
 #install="popcorntime.install"
 # Needed variables for sources downloads
 # Commit ref updated on date: 2021-10-19
-# Plain v0.4.6
+# Plain version tag (e.g. v0.4.9)
 _commit_hash="tag=v${pkgver}"
 _pkgname="popcorn-desktop"
 
