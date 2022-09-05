@@ -1,6 +1,8 @@
-# Maintainer: candroid_man <candroid_man@protonmail.com>
+# Maintainer: Dawid Weglarz <dawid.weglarz95@gmail.com>
+# Contributer: candroid_man <candroid_man@protonmail.com>
 # Contributer: Ada <adadonderr@gmail.com>
 # Contributor: Christian Finnberg <christian@finnberg.net>
+
 pkgname=notesnook
 pkgver=2.1.6
 pkgrel=1
