@@ -1,6 +1,8 @@
 # Maintainer: Security XIII <securityxiii at gmail dot com>
+# Maintainer: Edvin Alvarado <ealvarado301 g-mail>
+# Contributor: Security XIII <securityxiii at gmail dot com>
 pkgname=nanominer-cuda
-pkgver=3.4.2
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="nanopool mining software"
 arch=('any')
@@ -9,13 +11,10 @@ license=('custom:nanopool')
 conflicts=('nanominer')
 install=$pkgname.install
 url='https://github.com/nanopool/nanominer/releases'
-sha256sums=("a59dde2bf83bc61fc51dfb174ff94dd0db64b42bd16eb22ac032342da490b6ec"
+sha256sums=("71aa76fb2ecacc52e1e60681618f997a73d1cd40d5f078c422a3ceee5a4f414a"
 			"SKIP")
 
 prepare() {
-        mv nanominer-linux-$pkgver-cuda11 nanominer-cuda-linux-3.4.2
-	cd $pkgname-linux-$pkgver
-	
 	# copies config files in config_examples
 	mkdir -p config_examples
 	for FILE in config*.ini
@@ -51,5 +50,5 @@ package() {
 
 	# Install
 	mkdir -p $pkgdir/opt/"$pkgname" 
-	cp -R "$pkgname-linux-$pkgver"/* $pkgdir/opt/"$pkgname" 
+	cp -R * $pkgdir/opt/"$pkgname" 
 }
