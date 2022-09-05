@@ -1,8 +1,8 @@
 # Maintainer: ffqq <shuttara@gmail.com>
 
 pkgname=zaura
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.1.4
+pkgrel=1
 pkgdesc="A bash library for utilizing the AUR inside bash scripts."
 arch=('any')
 url="https://gitea.com/ffqq/zaura"
@@ -11,7 +11,7 @@ provides=("$pkgname")
 conflicts=("zaura-git")
 depends=('git' 'jq' 'pacman')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('dc40df87cc0ead7c7247d01c634b2e1d818a8e0419f06b7b3209b11905255410')
+sha256sums=('1a990c6f22c4ab806afc4546dcf3055b4c81431dc015076879d222ae81449b18')
 
 package() {
 	cd "$srcdir/$pkgname"
