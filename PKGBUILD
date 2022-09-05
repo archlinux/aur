@@ -25,6 +25,7 @@ prepare() {
 
 build() {
     cmake -S "$pkgname" \
+        -G Ninja \
         -B build \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release
