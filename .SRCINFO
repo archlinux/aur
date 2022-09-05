@@ -1,0 +1,13 @@
+pkgbase = breeze-extended
+	pkgdesc = Breeze by the KDE VDG with many Desktop support
+	pkgver = 1.13
+	pkgrel = 1
+	url = https://github.com/kuroehanako/breeze-extended
+	arch = any
+	license = GPLv3
+	conflicts = breeze-extended-all
+	conflicts = breeze-extended-classic
+	source = breeze-extended-1.13.tar.gz::https://github.com/kuroehanako/breeze-extended/archive/1.13.tar.gz
+	sha256sums = a80eae962203b77b34a644fbcab933035ae610a119708b3f72898bcdb6b45e2c
+
+pkgname = breeze-extended
