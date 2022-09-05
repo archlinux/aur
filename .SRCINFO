@@ -1,14 +1,14 @@
 pkgbase = cc-map-editor-bin
 	pkgdesc = Map Editor for the game CrossCode
 	pkgver = 0.13.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/CCDirectLink/crosscode-map-editor
 	arch = any
 	license = custom:MIT
 	makedepends = asar
 	makedepends = npm
 	makedepends = imagemagick
-	depends = electron19
+	depends = electron
 	provides = cc-map-editor
 	conflicts = cc-map-editor
 	noextract = cc-map-editor-0.13.0-linux.AppImage
