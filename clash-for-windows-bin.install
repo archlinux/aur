@@ -1,11 +1,20 @@
 post_install() {
     echo 'Clash for Windows has it own built-in autostart since 0.18.1.'
     echo 'Enable it will create .desktop file under $HOME/.config/autostart/'
+
+    _parch=$(uname -m | sed "s/x86_64/x64/;s/aarch64/arm64/")
+    echo -e "\033[32m If you want to use clash-meta, install it and run  \033[0m"
+    echo -e "\033[32m sudo ln -sf /usr/bin/clash-meta /opt/clash-for-windows/static/files/linux/${_parch}/clash-linux \033[0m\n"
     echo -e "\033[32m To use the TUN mode, you need to run \033[0m"
     echo -e "\033[32m sudo systemctl start clash-core-service@\$USER \033[0m"
     echo -e "\033[32m sudo systemctl enable clash-core-service@\$USER \033[0m"
 
-    setcap cap_net_admin,cap_net_bind_service=ep /usr/bin/clash
+    for clsh in {clash,clash-meta};
+    do
+        if [ -z /usr/bin/$clsh ]; then
+            setcap cap_net_admin,cap_net_bind_service=ep /usr/bin/$clsh
+        fi
+    done
 }
 post_upgrade(){
     post_install

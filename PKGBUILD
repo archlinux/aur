@@ -2,7 +2,7 @@
 pkgname=clash-for-windows-electron-bin
 _pkgname=${pkgname%-bin}
 pkgver=0.19.29
-pkgrel=2
+pkgrel=3
 pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron. Using system clash and electron"
 arch=("x86_64" "aarch64")
 license=('unknown')
@@ -11,13 +11,13 @@ install=clash-for-windows-bin.install
 provides=('clash-for-windows' ${_pkgname})
 conflicts=('clash-for-windows' 'clash-for-windows-bin')
 depends=('electron'
-'clash'
 'clash-geoip'
 )
 optdepends=(
     'nftables: TUN mode required.'
     'iproute2: TUN mode required.'
-    'clash-premium-bin: TUN mode required'
+    'clash-premium-bin: clash core'
+    'clash-meta: clash core'
 )
 makedepends=('asar' 'npm')
 source_x86_64=("${pkgname}-${pkgver}-x86_64-linux.tar.gz::${url}/releases/download/${pkgver}/Clash.for.Windows-${pkgver}-x64-linux.tar.gz")
@@ -29,7 +29,7 @@ source=(
     "clash-core-service@.service")
 sha256sums=('9a84b05b718913d3d1fbe462a2da671abff2cb94bb2ded75a3af12204cebe32f'
             'db2e160e5d5cf82ed69d0926ac51c0eccb9efc541f89be3bb467d85be509f735'
-            '823a44d0440750411a3f33dd052d11571cbe9afb4067e985839637e92f8af6a4'
+            '2d1cb05f33eef51d01bca397ac52796a557b812b243f0d5e5377f7640e4d4433'
             'd55c2f4088505116a5bad6d09f5ebe232e7c6a269ea6bf46daada02bc3a9f961')
 sha256sums_x86_64=('202c3d6411b38c5fe53cea9361f4dac1c4dc88d1826cd9d647ed637a3651e9b4')
 sha256sums_aarch64=('747e07d30a2794319f7a8528c97608e7d8e69566aacc4a5f343c3222ec130c8d')
