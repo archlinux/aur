@@ -470,6 +470,15 @@ New Features:
 Improvements:
 - Norwegian local date and time formatting is now supported.
  
-=== Morgen 2.5.15
+=== Morgen 2.5.14, 2.5.15
 No info provided.
+
+=== Morgen 2.5.16
+Improvements:
+- Morgen has a new date & time picker to change the start and end times of an event. We also fixed an issue with the date selection.
+- The Timezone Helper is now easier to read thanks to a clearer indication of what time is highlighted.
+
+Fixes:
+- We fixed two small issues with the event notes: empty lines are no longer added to the notes and formatting tags are not added on Google Calendar events if not needed.
+- We fixed the Contact Us button in the app settings - it was not behaving as expected on some platforms.
 
