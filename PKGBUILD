@@ -16,7 +16,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 prepare() {
   cd "${srcdir}/VTK-${pkgver}"
   # libharu 2.4.0
-  curl -L https://gitlab.kitware.com/vtk/vtk/-/commit/c8b27677ee410233.patch | patch -p1 -d VTK
+  curl -L https://gitlab.kitware.com/vtk/vtk/-/commit/c8b27677ee410233.patch | patch -p1
 }
 
 
