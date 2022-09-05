@@ -23,21 +23,21 @@ _bldtype=Release
 # https://osdn.net/users/utuhiro/pf/utuhiro/files/
 #*************************************************************
 
-_mozcver=2.28.4800.102
-_utdicdate=20220723
+_mozcver=2.28.4830.102
+_utdicdate=20220904
 _utdicver=1
 
 pkgbase=mozc-ut-united
 pkgname=mozc-ut-united
 true && pkgname=('mozc-ut-united')
-pkgver=2.28.4800.102_20220723_2.26.4660.102.r220.g9dc923ab
+pkgver=2.28.4830.102_20220904_2.26.4660.102.r277.gbf5e3ce2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/mozc/"
 url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
 license=('BSD' 'GPL' 'custom')
 makedepends=('ruby' 'git' 'ninja' 'clang' 'zinnia' 'bazel' 'python-six')
-source=("mozc::git+https://github.com/google/mozc.git" "https://osdn.net/downloads/users/38/38801/mozcdic-ut-${_utdicdate}.tar.bz2" "git+https://chromium.googlesource.com/breakpad/breakpad" "git+https://github.com/google/googletest.git" "git+https://chromium.googlesource.com/external/gyp" "git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git" "git+https://github.com/open-source-parsers/jsoncpp.git" "git+https://github.com/protocolbuffers/protobuf" "git+https://github.com/abseil/abseil-cpp.git")
+source=("mozc::git+https://github.com/google/mozc.git" "https://osdn.net/downloads/users/39/39054/mozcdic-ut-${_utdicdate}.tar.bz2" "git+https://chromium.googlesource.com/breakpad/breakpad" "git+https://github.com/google/googletest.git" "git+https://chromium.googlesource.com/external/gyp" "git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git" "git+https://github.com/open-source-parsers/jsoncpp.git" "git+https://github.com/protocolbuffers/protobuf" "git+https://github.com/abseil/abseil-cpp.git")
 sha1sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 
