@@ -1,0 +1,14 @@
+pkgbase = roffit-git
+	pkgdesc = Converts nroff man pages to HTML
+	pkgver = r3.7571394
+	pkgrel = 1
+	url = https://daniel.haxx.se/projects/roffit
+	arch = any
+	license = custom
+	depends = perl
+	provides = roffit
+	conflicts = roffit
+	source = git+https://github.com/bagder/roffit
+	sha512sums = SKIP
+
+pkgname = roffit-git
