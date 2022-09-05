@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cemu
 pkgname=$_pkgname-git
-pkgver=2.0.r81.gf8297ee
+pkgver=2.0.r88.g917b809
 pkgrel=1
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
@@ -18,6 +18,7 @@ makedepends=(
 	'cmake>=3.21.1'
 	'cubeb'
 	'curl'
+	'fmt>=9.1'
 	'git'
 	'glm'
 	'glslang'
@@ -39,12 +40,10 @@ conflicts=("$_pkgname")
 source=(
 	"$_pkgname::git+https://github.com/cemu-project/Cemu.git"
 	"$_pkgname.bash"
-	'fmt-7.1.3.tar.gz::https://github.com/fmtlib/fmt/archive/refs/tags/7.1.3.tar.gz'
 )
 b2sums=(
 	'SKIP'
 	'36819eb14786e26f7555da95312f7edf0de868844d0b00f17e291684e5268c410371a1a6e979c40980a222356b4655242f1bc1ef6d9387843c82efd12c26850c'
-	'745440a6f5876d47d4651d007d5968f77d8f5ac01ab5ec17ec5851130a5581e2aa7d359ae297ce7318023b0bf386f9c027e3e38c65f297ae874e607253a3493a'
 )
 
 pkgver() {
@@ -54,10 +53,9 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
-	ln -sr ../fmt-7.1.3 dependencies/fmt
-	sed -i '/fmt/c add_subdirectory(dependencies/fmt)' CMakeLists.txt
 	sed -i '/CMAKE_INTERPROCEDURAL_OPTIMIZATION/d' CMakeLists.txt
 	sed -i '/discord-rpc/d' CMakeLists.txt
+	sed -i '/FMT_HEADER_ONLY/d' src/Common/precompiled.h
 	sed -i 's/glm::glm/glm/' src/{Common,input}/CMakeLists.txt
 	sed -i 's/GLSLANG_VERSION_LESS_OR_EQUAL_TO/GLSLANG_VERSION_GREATER_OR_EQUAL_TO/' src/Cafe/HW/Latte/Renderer/Vulkan/RendererShaderVk.cpp
 }
@@ -79,11 +77,13 @@ package() {
 		'libboost_program_options.so'
 		'libcubeb.so'
 		'libcurl.so'
+		'libfmt.so'
 		'libzarchive.so'
 		'libzip.so'
 		'libzstd.so'
 	)
 	cd $_pkgname
+	mv bin/Cemu{_release,}
 	# shellcheck disable=SC2154
 	install -d "$pkgdir"/usr/lib/$_pkgname
 	cp -dr --no-preserve=ownership -t "$pkgdir"/usr/lib/$_pkgname bin/*

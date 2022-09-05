@@ -1,6 +1,6 @@
 pkgbase = cemu-git
 	pkgdesc = Nintendo Wii U emulator
-	pkgver = 2.0.r81.gf8297ee
+	pkgver = 2.0.r88.g917b809
 	pkgrel = 1
 	url = https://cemu.info/
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = cemu-git
 	makedepends = cmake>=3.21.1
 	makedepends = cubeb
 	makedepends = curl
+	makedepends = fmt>=9.1
 	makedepends = git
 	makedepends = glm
 	makedepends = glslang
@@ -32,10 +33,8 @@ pkgbase = cemu-git
 	conflicts = cemu
 	source = cemu::git+https://github.com/cemu-project/Cemu.git
 	source = cemu.bash
-	source = fmt-7.1.3.tar.gz::https://github.com/fmtlib/fmt/archive/refs/tags/7.1.3.tar.gz
 	b2sums = SKIP
 	b2sums = 36819eb14786e26f7555da95312f7edf0de868844d0b00f17e291684e5268c410371a1a6e979c40980a222356b4655242f1bc1ef6d9387843c82efd12c26850c
-	b2sums = 745440a6f5876d47d4651d007d5968f77d8f5ac01ab5ec17ec5851130a5581e2aa7d359ae297ce7318023b0bf386f9c027e3e38c65f297ae874e607253a3493a
 
 pkgname = cemu-git
 	depends = discord-rpc
@@ -46,6 +45,7 @@ pkgname = cemu-git
 	depends = libboost_program_options.so
 	depends = libcubeb.so
 	depends = libcurl.so
+	depends = libfmt.so
 	depends = libzarchive.so
 	depends = libzip.so
 	depends = libzstd.so
