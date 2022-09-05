@@ -1,14 +1,14 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=dippi-git
-pkgver=3.1.1.r0.g34bffad
+pkgver=4.0.0.r1.g8fc23f4
 pkgrel=1
 pkgdesc='Calculate display info like DPI and aspect ratio'
 arch=('x86_64')
 url='https://github.com/cassidyjames/dippi'
 license=('GPL3')
-depends=('granite' 'libhandy')
+depends=('gtk4' 'libadwaita')
 makedepends=('git' 'meson' 'vala')
 provides=('dippi')
 conflicts=('dippi')
