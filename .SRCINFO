@@ -9,7 +9,6 @@ pkgbase = grimshot
 	depends = grim
 	depends = slurp
 	depends = jq
-	depends = xdg-user-dirs
 	optdepends = libnotify: Notify users when a screenshot is taken
 	optdepends = wl-clipboard: Copy screenshots
 	replaces = swaygrab

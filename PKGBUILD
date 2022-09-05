@@ -8,7 +8,7 @@ arch=("any")
 url="https://github.com/swaywm/sway"
 license=('MIT')
 replaces=('swaygrab')
-depends=("grim" "slurp" "jq" "xdg-user-dirs")
+depends=("grim" "slurp" "jq")
 optdepends=('libnotify: Notify users when a screenshot is taken'
             'wl-clipboard: Copy screenshots')
 makedepends=("scdoc")
