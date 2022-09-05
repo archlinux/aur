@@ -1,12 +1,12 @@
 # Maintainer: Ben Mitchell <bjosephmitchell@gmail.com>
 pkgname=sway-nvidia
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Helper files to make sway a better experience for us poor NVIDIA users."
 arch=('any')
 url="https://github.com/crispyricepc/sway-nvidia"
 license=('MIT')
-depends=('sway')
+depends=('sway vulkan-validation-layers')
 source=("$pkgname-$pkgver::git+$url.git#tag=$pkgver")
 md5sums=('SKIP')
 
