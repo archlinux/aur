@@ -3,8 +3,8 @@
 
 _pkgname=kyverno
 pkgname=$_pkgname-git
-pkgver=1.7.dev.r3.g5c91bb821
-pkgrel=1
+pkgver=r4554.fffd6aa9a
+pkgrel=0
 pkgdesc="Kubernetes Native Policy Management - CLI"
 arch=('any')
 url="https://github.com/kyverno/$_pkgname"
@@ -15,15 +15,15 @@ makedepends=('make' 'go')
 
 pkgver() {
   cd $srcdir/$_pkgname
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
   cd $srcdir/$_pkgname
-  make cli
+  make build-cli
 }
 
 package() {
   cd $srcdir/$_pkgname
-  install -Dm755 "$srcdir/$_pkgname/cmd/cli/kubectl-kyverno/kyverno" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm755 "$srcdir/$_pkgname/cmd/cli/kubectl-kyverno/kubectl-kyverno" "$pkgdir/usr/bin/$_pkgname"
 }

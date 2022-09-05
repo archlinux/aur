@@ -1,7 +1,7 @@
 pkgbase = kyverno-git
 	pkgdesc = Kubernetes Native Policy Management - CLI
-	pkgver = 1.7.dev.r3.g5c91bb821
-	pkgrel = 1
+	pkgver = r4554.fffd6aa9a
+	pkgrel = 0
 	url = https://github.com/kyverno/kyverno
 	arch = any
 	license = Apache
