@@ -2,6 +2,20 @@
 
 // scriv-insert-here
 
+== 3.8.0 (2022-08-31)
+
+## Enhancements
+
+* The globus CLI is now faster to start in many cases. Tab completions are most
+  significantly improved, but other commands may demonstrate an improvement as
+  well
+
+* Add the `globus api timer` command for direct interactions with the Globus
+  Timer service
+
+* Order `globus task list` by descending request time to prioritise
+  newer tasks in default output
+
 == 3.7.0 (2022-08-05)
 
 ## Bugfixes
