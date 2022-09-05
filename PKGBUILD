@@ -2,8 +2,8 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=shared-mime-info
-_commit=13695c7225c2f525a435e72739c33ac32bbfbbb9 # 2.2.0 = master 2022-03-27
-pkgver=2.0+144+g13695c7
+_commit=f4e7cbc86e67e7bc39cf8167823fcf0d8ace9ce1 # = master 2022-05-23
+pkgver=2.0+155+gf4e7cbc
 pkgrel=1
 pkgdesc="Freedesktop.org Shared MIME Info"
 arch=('x86_64')
