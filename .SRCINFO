@@ -1,6 +1,6 @@
 pkgbase = cemu
 	pkgdesc = Software to emulate Wii U games and applications on PC
-	pkgver = 2.0.96
+	pkgver = 2.0.97
 	pkgrel = 1
 	url = https://github.com/cemu-project/Cemu
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = cemu
 	depends = wxwidgets-gtk3>=3.2
 	optdepends = vulkan-driver: Vulkan graphics
 	provides = cemu
-	source = git+https://github.com/cemu-project/Cemu#commit=0030fa44a5bea51d422bd7d5f413bf0bdc8c7b64
+	source = git+https://github.com/cemu-project/Cemu#commit=e5d7d5d1736019d08e1ff8d9bd2e385330c5b7de
 	source = imgui-1.88.tar.gz::https://github.com/ocornut/imgui/archive/refs/tags/v1.88.tar.gz
 	source = imgui.cmake::https://raw.githubusercontent.com/microsoft/vcpkg/master/ports/imgui/CMakeLists.txt
 	source = imgui.conf::https://raw.githubusercontent.com/microsoft/vcpkg/master/ports/imgui/imgui-config.cmake.in

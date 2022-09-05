@@ -1,6 +1,6 @@
 # Maintainer: Anuskuss <anuskuss@googlemail.com>
 pkgname=cemu
-pkgver=2.0.96
+pkgver=2.0.97
 pkgrel=1
 pkgdesc='Software to emulate Wii U games and applications on PC'
 arch=(x86_64)
@@ -25,7 +25,7 @@ optdepends=(
 )
 provides=(cemu)
 source=(
-	git+https://github.com/cemu-project/Cemu#commit=0030fa44a5bea51d422bd7d5f413bf0bdc8c7b64
+	git+https://github.com/cemu-project/Cemu#commit=e5d7d5d1736019d08e1ff8d9bd2e385330c5b7de
 	# dependencies
 	imgui-1.88.tar.gz::https://github.com/ocornut/imgui/archive/refs/tags/v1.88.tar.gz
 	imgui.cmake::https://raw.githubusercontent.com/microsoft/vcpkg/master/ports/imgui/CMakeLists.txt
@@ -114,12 +114,15 @@ package() {
 	cd Cemu
 	install -D bin/Cemu_release "$pkgdir/usr/bin/cemu"
 
-	mv bin/gameProfiles/default/000500001011000.ini bin/gameProfiles/default/0005000010111000.ini
-	for ini in bin/gameProfiles/default/*[A-Z]*; do
-		mv $ini bin/gameProfiles/default/$(basename ${ini,,});
+	pushd bin/gameProfiles
+	mv default/000500001011000.ini default/0005000010111000.ini
+	for ini in default/*[A-Z]*; do
+		mv $ini ${ini,,}
 	done
-	# install -Dm644 bin/gameProfiles/example.ini "$pkgdir/opt/cemu/gameProfiles/example.ini"
-	install -Dm644 bin/gameProfiles/default/* -t "$pkgdir/opt/cemu/gameProfiles"
+	# install -Dm644 example.ini "$pkgdir/opt/cemu/gameProfiles/example.ini"
+	install -Dm644 default/* -t "$pkgdir/opt/cemu/gameProfiles"
+	popd
+
 	install -Dm644 bin/resources/sharedFonts/* -t "$pkgdir/opt/cemu/resources/sharedFonts"
 	for lang in {ca,de,es,fr,hu,it,ja,ko,nb,nl,pl,pt,ru,sv,tr,zh}; do
 		install -Dm644 bin/resources/$lang/cemu.mo "$pkgdir/opt/cemu/resources/$lang/cemu.mo"
