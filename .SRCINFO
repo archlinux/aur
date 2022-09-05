@@ -1,0 +1,17 @@
+pkgbase = cpuminer-git
+	pkgdesc = CPU miner for Litecoin and Bitcoin
+	pkgver = 2.5.1.r13.g5f02105
+	pkgrel = 1
+	url = https://bitcointalk.org/index.php?topic=55038.0
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	depends = curl
+	depends = jansson
+	provides = cpuminer
+	conflicts = cpuminer
+	source = git+https://github.com/pooler/cpuminer
+	sha256sums = SKIP
+
+pkgname = cpuminer-git
