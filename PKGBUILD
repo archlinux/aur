@@ -2,7 +2,7 @@
 _pkgname=lightning-terminal
 __pkgname=lit
 pkgname=${_pkgname}-bin
-pkgver=0.7.0_alpha
+pkgver=0.7.1_alpha
 _pkgver="${pkgver//_/-}"
 pkgrel=1
 pkgdesc="Lightning Terminal (LiT) is a browser-based interface for managing channel liquidity."
@@ -25,19 +25,21 @@ manifest-v${_pkgver}.txt::"${url}/releases/download/v${_pkgver}/manifest-v${_pkg
 )
 
 
-sha256sums=('e0e3398e61311b72342e97e8e0bb750b475815a42e6d076e932bea74556f133f'
+sha256sums=('bb81b506e96c45af36a90066976056dfe35a71242ee5e473032ca963a51a1b84'
             'SKIP'
-            '7bc81e5c7ab34e63e028e0e7a25309daebcf8020196a94062ab963eb6dcc8fb5')
+            'ac174659900ce392b8214f49affebc569e67a4c1b84d7f70b7c75aadfd51242c')
 
 # LND provides manifest signatures from several developers
 # To wit; guggero and roasbeef
 # To import their keys run
 curl https://keybase.io/guggero/pgp_keys.asc | gpg --import
 curl https://keybase.io/roasbeef/pgp_keys.asc | gpg --import
+curl https://keybase.io/ellemo/pgp_keys.asc | gpg --import
 # But of course don't trust this rando AUR comment - verify yourself that the keybase accounts really belong to the developers.
 validpgpkeys=(
     'F4FC70F07310028424EFC20A8E4256593F177720'
     'E4D85299674B2D31FAA1892E372CBD7633C61696'
+    '26984CB69EB8C4A26196F7A4D7D916376026F177'
 )
 
 prepare() {
