@@ -1,14 +1,14 @@
 pkgbase = cras
 	pkgdesc = The Anti-Procrastination Tool
-	pkgver = 2.1.6
-	pkgrel = 2
-	url = https://github.com/ariadnavigo/cras/cras
+	pkgver = 2.1.7
+	pkgrel = 1
+	url = https://github.com/ariadnavigo/cras
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = sline
 	conflicts = cras-git
-	source = cras-2.1.6.tar.gz::https://github.com/ariadnavigo/cras/archive/refs/tags/2.1.6.tar.gz
-	sha256sums = c9bff1b9058abc1226546840dddcacfa46056ac06776ca62d5e26ee4557e62a5
+	source = cras-2.1.7.tar.gz::https://github.com/ariadnavigo/cras/archive/refs/tags/2.1.7.tar.gz
+	sha256sums = dd25f6bc1649b0bec82ef1d604a1004ba3521f2fbe90ef1d29112965164c3a64
 
 pkgname = cras
