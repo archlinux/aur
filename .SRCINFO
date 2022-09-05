@@ -1,6 +1,6 @@
 pkgbase = neovim-gitsigns
 	pkgdesc = Git signs written in pure Lua
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/lewis6991/gitsigns.nvim
 	install = gitsigns.install
@@ -10,7 +10,7 @@ pkgbase = neovim-gitsigns
 	depends = git
 	depends = neovim
 	depends = neovim-plenary
-	source = neovim-gitsigns-0.4.tar.gz::https://github.com/lewis6991/gitsigns.nvim/archive/v0.4.tar.gz
-	sha256sums = 36ce1d62f5e33200fefab9950a921e6d24fb2614d2c8cd7da1f8b2527735da25
+	source = neovim-gitsigns-0.5.tar.gz::https://github.com/lewis6991/gitsigns.nvim/archive/v0.5.tar.gz
+	sha256sums = 781b48328d3659d521afae728eac7c389d809037ac1a2784d60fb3599158f09e
 
 pkgname = neovim-gitsigns
