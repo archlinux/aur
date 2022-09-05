@@ -11,6 +11,7 @@ pkgbase = libcommunist
 	makedepends = libtorrent-rasterbar
 	makedepends = libgcrypt
 	makedepends = libzip
+	makedepends = boost
 	depends = libtorrent-rasterbar
 	depends = libgcrypt
 	depends = libzip
