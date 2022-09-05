@@ -1,6 +1,6 @@
 pkgbase = r-lpsolve
 	pkgdesc = Interface to 'Lp_solve' v. 5.5 to Solve Linear/Integer Programs
-	pkgver = 5.6.15
+	pkgver = 5.6.16
 	pkgrel = 1
 	url = https://cran.r-project.org/package=lpSolve
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = r-lpsolve
 	license = LGPL2.1
 	depends = lpsolve
 	depends = r
-	source = https://cran.r-project.org/src/contrib/lpSolve_5.6.15.tar.gz
-	sha256sums = 4627be4178abad34fc85a7d264c2eb5e27506f007e46687b0b8a4f8fbdf4f3ba
+	source = https://cran.r-project.org/src/contrib/lpSolve_5.6.16.tar.gz
+	sha256sums = 18a11e5184914e02b056d3d8f54ad92e4bbce651d930d61430570b4ae2ecbb2a
 
 pkgname = r-lpsolve
