@@ -1,8 +1,8 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=preseq
-pkgver=3.1.2
-pkgrel=2
+pkgver=3.2.0
+pkgrel=1
 pkgdesc="A tool for predicting and estimating the complexity of a genomic sequencing library, equivalent to predicting and estimating the number of redundant reads from a given sequencing depth."
 arch=('x86_64')
 url="http://smithlabresearch.org/software/preseq/"
@@ -10,7 +10,7 @@ depends=('gsl' 'htslib')
 makedepends=('make')
 license=('GPL3')
 source=("https://github.com/smithlabcode/preseq/releases/download/v${pkgver}/preseq-${pkgver}.tar.gz")
-md5sums=('fca0d3e94ce2b557d3b2d6f374498bcc')
+md5sums=('293486920e3f6fcdab2418b8413f9cbd')
 
 prepare() {
   cd "${pkgname}-${pkgver}"

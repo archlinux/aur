@@ -1,14 +1,14 @@
 pkgbase = preseq
 	pkgdesc = A tool for predicting and estimating the complexity of a genomic sequencing library, equivalent to predicting and estimating the number of redundant reads from a given sequencing depth.
-	pkgver = 3.1.2
-	pkgrel = 2
+	pkgver = 3.2.0
+	pkgrel = 1
 	url = http://smithlabresearch.org/software/preseq/
 	arch = x86_64
 	license = GPL3
 	makedepends = make
 	depends = gsl
 	depends = htslib
-	source = https://github.com/smithlabcode/preseq/releases/download/v3.1.2/preseq-3.1.2.tar.gz
-	md5sums = fca0d3e94ce2b557d3b2d6f374498bcc
+	source = https://github.com/smithlabcode/preseq/releases/download/v3.2.0/preseq-3.2.0.tar.gz
+	md5sums = 293486920e3f6fcdab2418b8413f9cbd
 
 pkgname = preseq
