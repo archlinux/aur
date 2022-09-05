@@ -1,8 +1,8 @@
 # Maintainer: Anuskuss <anuskuss@googlemail.com>
 pkgname=cemu
 pkgver=2.0.97
-pkgrel=1
-pkgdesc='Software to emulate Wii U games and applications on PC'
+pkgrel=2
+pkgdesc='Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)'
 arch=(x86_64)
 url=https://github.com/cemu-project/Cemu
 license=(MPL2)
@@ -39,7 +39,9 @@ source=(
 	git+https://github.com/arsenm/sanitizers-cmake#commit=aab6948fa863bc1cbe5d0850bc46b9ef02ed4c1a
 	git+https://github.com/google/googletest#commit=800f5422ac9d9e0ad59cd860a2ef3a679588acb4
 	# patches
-	xdg.diff # https://github.com/cemu-project/Cemu/commit/963f9b38349c5d03b26ab2a50ead2ee4e743ca41.patch
+	xdg.diff # 963f9b38349c5d03b26ab2a50ead2ee4e743ca41
+	overlay.diff # edeb14d4c68ee8bf500b990b13079177e01c25f1
+
 )
 sha256sums=(
 	SKIP
@@ -51,6 +53,7 @@ sha256sums=(
 	SKIP
 	SKIP
 	78aa9187fa6a1819da039c10f1d2681b962329c9fc6d4724eeff5936b3ec02ee
+	f3135a57544455ba7aa9175717a34bbb0a1313a835b8a76525bce3360f366929
 )
 
 pkgver() {
@@ -83,26 +86,31 @@ prepare() {
 	ln -srf "$srcdir/imgui.cmake" dependencies/imgui/CMakeLists.txt
 	ln -srf "$srcdir/imgui.conf" dependencies/imgui/imgui-config.cmake.in
 
+	# cubeb fix
+	sed -i '/find_package(cubeb)/d' CMakeLists.txt
+
 	# glm fix
 	sed -i 's/glm::glm/glm/' src/Common/CMakeLists.txt src/input/CMakeLists.txt
 
 	# glslang fix
 	sed -i 's/GLSLANG_VERSION_LESS/GLSLANG_VERSION_GREATER/' src/Cafe/HW/Latte/Renderer/Vulkan/RendererShaderVk.cpp
 
-	# xdg base dir support (https://github.com/cemu-project/Cemu/pull/130)
+	# experimental: xdg base dir (https://github.com/cemu-project/Cemu/pull/130)
 	git apply "$srcdir/xdg.diff"
+
+	# experimental: linux overlay (https://github.com/cemu-project/Cemu/pull/142)
+	git apply "$srcdir/overlay.diff"
 
 	# gameProfiles improvement
 	sed -i 's|gameProfiles/default|gameProfiles|' src/Cafe/GameProfile/GameProfile.cpp
-
-	# prefer clang (faster)
-	which clang   &> /dev/null && [[ -z $CC  ]] && export CC=$(which clang)
-	which clang++ &> /dev/null && [[ -z $CXX ]] && export CXX=$(which clang++)
 }
 
 build() {
 	cd Cemu
 	cmake -B build \
+	      $(which clang   &> /dev/null && [[ -z $CC  ]] && echo -DCMAKE_C_COMPILER=$(which clang)) \
+	      $(which clang++ &> /dev/null && [[ -z $CXX ]] && echo -DCMAKE_CXX_COMPILER=$(which clang++)) \
+	      -DCMAKE_CXX_FLAGS="$CXXFLAGS -w" -Wno-dev \
 	      -DSYSTEM_DATA_PATH=/opt/cemu \
 	      -DENABLE_VCPKG=OFF \
 	      -DCMAKE_BUILD_TYPE=Release \
