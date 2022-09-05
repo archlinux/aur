@@ -8,7 +8,7 @@ arch=('any')
 url='https://github.com/mathandy/svgpathtools'
 license=('MIT')
 depends=('python' 'python-numpy' 'python-svgwrite' 'python-scipy')
-makedepends=('python-setuptools' 'python-wheel')
+makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('d6d65159051b1471de6645606b59e1be0373750192665185ae976425c41b7fb0')
 
