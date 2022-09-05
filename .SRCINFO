@@ -1,14 +1,14 @@
 pkgbase = lxrad
 	pkgdesc = linux x11 rad tools
 	pkgver = 0.8.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lcgamboa/lxrad
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
 	makedepends = doxygen
 	makedepends = openal
-	makedepends = wxgtk2
+	makedepends = wxwidgets-gtk3
 	depends = lunasvg
 	source = https://github.com/lcgamboa/lxrad/archive/refs/tags/v0.8.9.tar.gz
 	source = 0001-use-systems-lunasvg.patch

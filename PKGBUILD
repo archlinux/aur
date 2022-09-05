@@ -2,14 +2,14 @@
 
 pkgname=lxrad
 pkgver=0.8.9
-pkgrel=1
+pkgrel=2
 pkgdesc="linux x11 rad tools"
 arch=('x86_64' 'aarch64')
 url='https://github.com/lcgamboa/lxrad'
 license=('GPL2')
 makedepends=('doxygen'
              'openal'
-             'wxgtk2')
+             'wxwidgets-gtk3')
 depends=('lunasvg')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz"
     "0001-use-systems-lunasvg.patch")
