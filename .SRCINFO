@@ -1,7 +1,7 @@
 pkgbase = python-anndata
 	pkgdesc = A data structure for rectangular numeric data and sample/variable annotations.
-	pkgver = 0.7.8
-	pkgrel = 3
+	pkgver = 0.8.0
+	pkgrel = 1
 	url = https://github.com/theislab/anndata
 	arch = any
 	license = BSD
@@ -14,8 +14,7 @@ pkgbase = python-anndata
 	depends = python-h5py
 	depends = python-natsort
 	depends = python-packaging
-	depends = python-xlrd
-	source = https://files.pythonhosted.org/packages/source/a/anndata/anndata-0.7.8.tar.gz
-	sha256sums = 1efd7eb40839e0325bb066238280228a980d7dde6410793dbff2835f44a2d3ef
+	source = https://files.pythonhosted.org/packages/source/a/anndata/anndata-0.8.0.tar.gz
+	sha256sums = 94d2cc6f76c0317c0ac28564e3092b313b7ad19c737d66701961f3e620b9066e
 
 pkgname = python-anndata
