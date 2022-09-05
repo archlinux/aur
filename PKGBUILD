@@ -258,6 +258,8 @@ check() {
 package_ceph-libs() {
   depends=('boost-libs' 'curl' 'glibc' 'keyutils' 'libutil-linux' 'bzip2' 'lz4' 'nss'
            'oath-toolkit' 'python' 'snappy' 'systemd-libs' 'fmt')
+  provides=("ceph-libs=${pkgver}-${pkgrel}")
+  conflicts=('ceph-libs-bin')
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
 
@@ -282,6 +284,8 @@ package_ceph() {
            'python-prettytable' 'python-cmd2' 'python-dateutil' 'snappy' 'sudo' 'systemd-libs'
            'python-flask' 'python-pecan' 'python-pyopenssl' 'python-requests' 'python-werkzeug' 'xfsprogs'
            'python-yaml' 'python-pyaml')
+  provides=("ceph=${pkgver}-${pkgrel}")
+  conflicts=('ceph-bin')
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
 
@@ -349,7 +353,8 @@ package_ceph-mgr() {
               'python-kubernetes: rook module'
               'python-prometheus_client: prometheus module'
               'python-remoto: ssh module')
-  conflicts=('ceph<15.2.1-1')
+  provides=("ceph-mgr=${pkgver}-${pkgrel}")
+  conflicts=('ceph<15.2.1-1' 'ceph-mgr-bin')
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
 
