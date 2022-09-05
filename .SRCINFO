@@ -31,6 +31,8 @@ pkgbase = cemu
 	source = git+https://github.com/Exzap/ZArchive#commit=48914a07df3c213333c580bb5e5bb3393442ca5b
 	source = git+https://github.com/arsenm/sanitizers-cmake#commit=aab6948fa863bc1cbe5d0850bc46b9ef02ed4c1a
 	source = git+https://github.com/google/googletest#commit=800f5422ac9d9e0ad59cd860a2ef3a679588acb4
+	source = clang.patch
+	source = xdg.patch
 	sha256sums = SKIP
 	sha256sums = 5cae7072042b3043e12d53d50ef404bbb76949dad1de368d7f993a15c8c05ecc
 	sha256sums = 9f14c788aee15b777051e48f868c5d4d959bd679fc5050e3d2a29de80d8fd32e
@@ -40,5 +42,7 @@ pkgbase = cemu
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 893832f2e7dd7784e9df423020ff2acc63ffe8d9b75b7d92f371f7dd57313131
+	sha256sums = c8b6cefa33256c84435313c02f03dfe55b651db573642c12b3db01e1a51a64da
 
 pkgname = cemu

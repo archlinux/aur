@@ -1,0 +1,14 @@
+diff --git a/src/Cemu/Logging/CemuLogging.h b/src/Cemu/Logging/CemuLogging.h
+index 4238b63..a9b1daa 100644
+--- a/src/Cemu/Logging/CemuLogging.h
++++ b/src/Cemu/Logging/CemuLogging.h
+@@ -58,9 +58,6 @@ bool cemuLog_log(LogType type, TFmt format, TArgs&&... args)
+ 	if (!cemuLog_isLoggingEnabled(type))
+ 		return false;
+ 
+-	const auto format_view = fmt::to_string_view(format);
+-	const auto text = fmt::vformat(format_view, fmt::make_args_checked<TArgs...>(format_view, args...));
+-	cemuLog_log(type, std::basic_string_view(text.data(), text.size()));
+ 	return true;
+ }
+ 
