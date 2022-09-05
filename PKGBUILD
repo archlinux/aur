@@ -1,10 +1,10 @@
 # Maintainer: Jeff Dickey <releases at chim dot sh>
 
 pkgname=chim
-pkgver=1.0.2
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='Cross-platform binary shims with optional remote fetching'
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url='https://chim.sh'
 license=('MIT')
 makedepends=('cargo' 'jq')
