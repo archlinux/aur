@@ -1,7 +1,7 @@
 pkgbase = glib2-patched-thumbnailer
 	pkgdesc = GLib2 patched with ahodesuka's thumbnailer patch.
 	pkgver = 2.72.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5
 	arch = x86_64
 	license = LGPL
@@ -34,6 +34,7 @@ pkgbase = glib2-patched-thumbnailer
 	provides = libgthread-2.0.so
 	conflicts = glib2
 	options = !docs
+	options = staticlibs
 	source = git+https://gitlab.gnome.org/GNOME/glib.git#commit=dce30492f6087a8e1e288f1706d41142b74ca1ff
 	source = 0001-glib-compile-schemas-Remove-noisy-deprecation-warnin.patch
 	source = glib-thumbnailer.patch

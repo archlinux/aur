@@ -5,7 +5,7 @@
 
 pkgname=glib2-patched-thumbnailer
 pkgver=2.72.3
-pkgrel=1
+pkgrel=3
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
 arch=(x86_64)
@@ -19,7 +19,7 @@ checkdepends=(desktop-file-utils)
 optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report'
             'libelf: gresource inspection tool'
             'gvfs: most gio functionality')
-options=('!docs')
+options=(!docs staticlibs)
 license=(LGPL)
 _commit=dce30492f6087a8e1e288f1706d41142b74ca1ff  # tags/2.72.3^0
 source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
@@ -51,8 +51,13 @@ prepare() {
 }
 
 build() {
+  # use fat LTO objects for static libraries
+  CFLAGS+=' -ffat-lto-objects -g3'
+  CXXFLAGS+=' -ffat-lto-objects -g3'
+
   CFLAGS+=" -DG_DISABLE_CAST_CHECKS"
   arch-meson glib build \
+    --default-library both \
     -D glib_debug=disabled \
     -D selinux=disabled \
     -D man=true \
