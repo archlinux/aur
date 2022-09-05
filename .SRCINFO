@@ -1,12 +1,12 @@
 pkgbase = gtklock-example-module
 	pkgdesc = Example module for gtklock
 	pkgver = 1.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jovanlanik/gtklock-example-module
 	arch = x86_64
 	license = MIT
 	depends = gtk3
-	depends = gtklock=1.3.5
+	depends = gtklock>=1.3.5
 	source = https://github.com/jovanlanik/gtklock-example-module/archive/refs/tags/v1.3.5.tar.gz
 	sha256sums = 4b3f2615270f03fb14ed2ea2151cf7c731ee6e13bad3a57746b3d6a3504444ea
 
