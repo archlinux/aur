@@ -1,17 +1,17 @@
 # Maintainer: Juanjo Gutierrez <juanjo at gutierrezdequevedo dot com>
 pkgname=simavr-picsimlab
 _pkgbasename=simavr
-pkgver=1.6a
-pkgrel=3
+pkgver=1.7
+pkgrel=1
 pkgdesc="a lean, mean and hackable AVR simulator for linux & OSX - picsimlab fork"
 arch=('x86_64' 'aarch64')
 url="https://github.com/lcgamboa/simavr"
-depends=('glu' 'freeglut')
+depends=('glu' 'freeglut' 'avr-gcc')
 provides=('simavr')
 conflicts=('simavr')
 license=('GPL3')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('430d561ea0be5d316a56181ff7843208dd4aa9aba54e05216c24e08c20b89ea7')
+sha256sums=('ec9668aab8c07b784e3d7e1fb235b88787cae72e29dc7ecb284dd6d2f5b4db8c')
 
 build() {
     cd "${_pkgbasename}-$pkgver"

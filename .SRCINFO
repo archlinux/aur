@@ -1,16 +1,17 @@
 pkgbase = simavr-picsimlab
 	pkgdesc = a lean, mean and hackable AVR simulator for linux & OSX - picsimlab fork
-	pkgver = 1.6a
-	pkgrel = 3
+	pkgver = 1.7
+	pkgrel = 1
 	url = https://github.com/lcgamboa/simavr
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	depends = glu
 	depends = freeglut
+	depends = avr-gcc
 	provides = simavr
 	conflicts = simavr
-	source = https://github.com/lcgamboa/simavr/archive/refs/tags/v1.6a.tar.gz
-	sha256sums = 430d561ea0be5d316a56181ff7843208dd4aa9aba54e05216c24e08c20b89ea7
+	source = https://github.com/lcgamboa/simavr/archive/refs/tags/v1.7.tar.gz
+	sha256sums = ec9668aab8c07b784e3d7e1fb235b88787cae72e29dc7ecb284dd6d2f5b4db8c
 
 pkgname = simavr-picsimlab
