@@ -6,7 +6,7 @@ pkgdesc="Helper files to make sway a better experience for us poor NVIDIA users.
 arch=('any')
 url="https://github.com/crispyricepc/sway-nvidia"
 license=('MIT')
-depends=('sway vulkan-validation-layers')
+depends=('sway' 'vulkan-validation-layers')
 source=("$pkgname-$pkgver::git+$url.git#tag=$pkgver")
 md5sums=('SKIP')
 
