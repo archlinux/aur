@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index b001421..4868374 100644
+index e9f7458..9135c62 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -58,6 +58,13 @@ option(ENABLE_OPENGL "Enables the OpenGL backend" ON)
@@ -21,7 +21,7 @@ index b001421..4868374 100644
  endif()
  
 +if (ENABLE_XDG_DIRS)
-+	add_compile_definitions(XDG)
++  add_compile_definitions(XDG)
 +endif()
 +
  add_subdirectory("dependencies/ih264d" EXCLUDE_FROM_ALL)
@@ -135,7 +135,7 @@ index 41e33a1..38e52bb 100644
  	{
  		if (!it->is_directory(ec))
 diff --git a/src/Cafe/HW/Latte/Core/LatteShaderCache.cpp b/src/Cafe/HW/Latte/Core/LatteShaderCache.cpp
-index bcdaffa..aa8c296 100644
+index ebf425b..7ad99e4 100644
 --- a/src/Cafe/HW/Latte/Core/LatteShaderCache.cpp
 +++ b/src/Cafe/HW/Latte/Core/LatteShaderCache.cpp
 @@ -197,17 +197,17 @@ void LatteShaderCache_load()
@@ -336,20 +336,33 @@ index f58e798..6d403de 100644
  	LogContext.file_stream.open(path, std::ios::out);
  	if (LogContext.file_stream.fail())
  	{
-diff --git a/src/Cemu/Logging/CemuLogging.h b/src/Cemu/Logging/CemuLogging.h
-index 4238b63..a9b1daa 100644
---- a/src/Cemu/Logging/CemuLogging.h
-+++ b/src/Cemu/Logging/CemuLogging.h
-@@ -58,9 +58,6 @@ bool cemuLog_log(LogType type, TFmt format, TArgs&&... args)
- 	if (!cemuLog_isLoggingEnabled(type))
- 		return false;
+diff --git a/src/Common/ExceptionHandler/ExceptionHandler_win32.cpp b/src/Common/ExceptionHandler/ExceptionHandler_win32.cpp
+index 25dca26..9f38cdd 100644
+--- a/src/Common/ExceptionHandler/ExceptionHandler_win32.cpp
++++ b/src/Common/ExceptionHandler/ExceptionHandler_win32.cpp
+@@ -61,7 +61,7 @@ bool CreateMiniDump(CrashDump dump, EXCEPTION_POINTERS* pep)
+ 	if (dump == CrashDump::Disabled)
+ 		return true;
  
--	const auto format_view = fmt::to_string_view(format);
--	const auto text = fmt::vformat(format_view, fmt::make_args_checked<TArgs...>(format_view, args...));
--	cemuLog_log(type, std::basic_string_view(text.data(), text.size()));
- 	return true;
- }
+-	fs::path p = ActiveSettings::GetPath("crashdump");
++	fs::path p = ActiveSettings::GetDataPath("crashdump");
  
+ 	std::error_code ec;
+ 	fs::create_directories(p, ec);
+@@ -356,11 +356,11 @@ void createCrashlog(EXCEPTION_POINTERS* e, PCONTEXT context)
+ 		const auto temp_time = std::chrono::system_clock::to_time_t(now);
+ 		const auto& time = *std::gmtime(&temp_time);
+ 
+-		fs::path p = ActiveSettings::GetPath("crashdump");
++		fs::path p = ActiveSettings::GetDataPath("crashdump");
+ 		p /= fmt::format("log_{:04d}{:02d}{:02d}_{:02d}{:02d}{:02d}.txt", 1900 + time.tm_year, time.tm_mon + 1, time.tm_mday, time.tm_year, time.tm_hour, time.tm_min, time.tm_sec);
+ 
+ 		std::error_code ec;
+-		fs::copy_file(ActiveSettings::GetPath("log.txt"), p, ec);
++		fs::copy_file(ActiveSettings::GetDataPath("log.txt"), p, ec);
+ 	}
+ 
+ 	exit(0);
 diff --git a/src/config/ActiveSettings.cpp b/src/config/ActiveSettings.cpp
 index c7ff4fe..23bc364 100644
 --- a/src/config/ActiveSettings.cpp
@@ -426,7 +439,7 @@ index c7ff4fe..23bc364 100644
 +	return GetDataPath("mlc01");
 +}
 diff --git a/src/config/ActiveSettings.h b/src/config/ActiveSettings.h
-index 44b5f50..e5a35d4 100644
+index 95ceae1..c47ebeb 100644
 --- a/src/config/ActiveSettings.h
 +++ b/src/config/ActiveSettings.h
 @@ -13,6 +13,11 @@ public:
@@ -442,63 +455,63 @@ index 44b5f50..e5a35d4 100644
  	[[nodiscard]] static fs::path GetPath(std::string_view p) 
  	{
 @@ -57,6 +62,62 @@ public:
- 		return GetMlcPath() / fmt::format(format, std::forward<TArgs>(args)...);
+ 		return GetMlcPath() / fmt::format(fmt::runtime(format), std::forward<TArgs>(args)...);
  	}
  	
 +	template <typename ...TArgs>
 +	[[nodiscard]] static fs::path GetCachePath(std::string_view format, TArgs&&... args)
 +	{
 +		cemu_assert_debug(format.empty() || (format[0] != L'/' && format[0] != L'\\'));
-+		return GetCachePath() / fmt::format(format, std::forward<TArgs>(args)...);
++		return GetCachePath() / fmt::format(fmt::runtime(format), std::forward<TArgs>(args)...);
 +	}
 +
 +	template <typename ...TArgs>
 +	[[nodiscard]] static fs::path GetCachePath(std::wstring_view format, TArgs&&... args)
 +	{
 +		cemu_assert_debug(format.empty() || (format[0] != L'/' && format[0] != L'\\'));
-+		return GetCachePath() / fmt::format(format, std::forward<TArgs>(args)...);
++		return GetCachePath() / fmt::format(fmt::runtime(format), std::forward<TArgs>(args)...);
 +	}
 +
 +	template <typename ...TArgs>
 +	[[nodiscard]] static fs::path GetConfigPath(std::string_view format, TArgs&&... args)
 +	{
 +		cemu_assert_debug(format.empty() || (format[0] != L'/' && format[0] != L'\\'));
-+		return GetConfigPath() / fmt::format(format, std::forward<TArgs>(args)...);
++		return GetConfigPath() / fmt::format(fmt::runtime(format), std::forward<TArgs>(args)...);
 +	}
 +
 +	template <typename ...TArgs>
 +	[[nodiscard]] static fs::path GetConfigPath(std::wstring_view format, TArgs&&... args)
 +	{
 +		cemu_assert_debug(format.empty() || (format[0] != L'/' && format[0] != L'\\'));
-+		return GetConfigPath() / fmt::format(format, std::forward<TArgs>(args)...);
++		return GetConfigPath() / fmt::format(fmt::runtime(format), std::forward<TArgs>(args)...);
 +	}
 +
 +	template <typename ...TArgs>
 +	[[nodiscard]] static fs::path GetDataPath(std::string_view format, TArgs&&... args)
 +	{
 +		cemu_assert_debug(format.empty() || (format[0] != L'/' && format[0] != L'\\'));
-+		return GetDataPath() / fmt::format(format, std::forward<TArgs>(args)...);
++		return GetDataPath() / fmt::format(fmt::runtime(format), std::forward<TArgs>(args)...);
 +	}
 +
 +	template <typename ...TArgs>
 +	[[nodiscard]] static fs::path GetDataPath(std::wstring_view format, TArgs&&... args)
 +	{
 +		cemu_assert_debug(format.empty() || (format[0] != L'/' && format[0] != L'\\'));
-+		return GetDataPath() / fmt::format(format, std::forward<TArgs>(args)...);
++		return GetDataPath() / fmt::format(fmt::runtime(format), std::forward<TArgs>(args)...);
 +	}
 +
 +	template<typename ...TArgs>
 +	[[nodiscard]] static fs::path GetSystemDataPath(std::string_view format, TArgs&&... args)
 +	{
 +		cemu_assert_debug(format.empty() || (format[0] != L'/' && format[0] != L'\\'));
-+		return GetSystemDataPath() / fmt::format(format, std::forward<TArgs>(args)...);
++		return GetSystemDataPath() / fmt::format(fmt::runtime(format), std::forward<TArgs>(args)...);
 +	}
 +
 +	template<typename ...TArgs>
 +	[[nodiscard]] static fs::path GetSystemDataPath(std::wstring_view format, TArgs&&... args)
 +	{
 +		cemu_assert_debug(format.empty() || (format[0] != L'/' && format[0] != L'\\'));
-+		return GetSystemDataPath() / fmt::format(format, std::forward<TArgs>(args)...);
++		return GetSystemDataPath() / fmt::format(fmt::runtime(format), std::forward<TArgs>(args)...);
 +	}
 +
  	// get mlc path to default cemu root dir/mlc01
@@ -510,7 +523,7 @@ index 44b5f50..e5a35d4 100644
  };
 -
 diff --git a/src/gui/CemuApp.cpp b/src/gui/CemuApp.cpp
-index 17e31f7..1d145d3 100644
+index e78b30b..b1a72b0 100644
 --- a/src/gui/CemuApp.cpp
 +++ b/src/gui/CemuApp.cpp
 @@ -115,7 +115,7 @@ bool CemuApp::OnInit()
@@ -549,11 +562,10 @@ index 17e31f7..1d145d3 100644
  		if (!fs::exists(memorySearcherFolder))
  			fs::create_directories(memorySearcherFolder);
  	}
-@@ -398,5 +402,3 @@ void CemuApp::ActivateApp(wxActivateEvent& event)
- 	g_window_info.app_active = event.GetActive();
+@@ -399,4 +403,3 @@ void CemuApp::ActivateApp(wxActivateEvent& event)
  	event.Skip();
  }
--
+ 
 -
 diff --git a/src/gui/ChecksumTool.cpp b/src/gui/ChecksumTool.cpp
 index 74422c9..9787ffd 100644
@@ -636,7 +648,7 @@ index 28e5bf6..6811b99 100644
  		size_t sbNameLen = strlen(sb.name);
  		if(sbNameLen == 0)
 diff --git a/src/gui/MainWindow.cpp b/src/gui/MainWindow.cpp
-index b23a5ca..032d0af 100644
+index 8f26f81..2fb052e 100644
 --- a/src/gui/MainWindow.cpp
 +++ b/src/gui/MainWindow.cpp
 @@ -997,7 +997,7 @@ void MainWindow::OnDebugSetting(wxCommandEvent& event)

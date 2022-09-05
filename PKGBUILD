@@ -1,6 +1,6 @@
 # Maintainer: Anuskuss <anuskuss@googlemail.com>
 pkgname=cemu
-pkgver=2.0.89
+pkgver=2.0.96
 pkgrel=1
 pkgdesc='Software to emulate Wii U games and applications on PC'
 arch=(x86_64)
@@ -14,7 +14,7 @@ makedepends=(
 	# pkgbuild
 	git 'cmake>=3.21.1' make
 	# unbundled vcpkg
-	rapidjson boost glslang glm
+	rapidjson boost glslang glm 'fmt>=9.1'
 	# cemu
 	nasm vulkan-headers
 	# wxwidgets
@@ -25,9 +25,8 @@ optdepends=(
 )
 provides=(cemu)
 source=(
-	git+https://github.com/cemu-project/Cemu#commit=a54a3ec74ea95326096feb46317fb9c6cd277742
+	git+https://github.com/cemu-project/Cemu#commit=0030fa44a5bea51d422bd7d5f413bf0bdc8c7b64
 	# dependencies
-	fmt-7.1.3.tar.gz::https://github.com/fmtlib/fmt/archive/refs/tags/7.1.3.tar.gz
 	imgui-1.88.tar.gz::https://github.com/ocornut/imgui/archive/refs/tags/v1.88.tar.gz
 	imgui.cmake::https://raw.githubusercontent.com/microsoft/vcpkg/master/ports/imgui/CMakeLists.txt
 	imgui.conf::https://raw.githubusercontent.com/microsoft/vcpkg/master/ports/imgui/imgui-config.cmake.in
@@ -40,12 +39,10 @@ source=(
 	git+https://github.com/arsenm/sanitizers-cmake#commit=aab6948fa863bc1cbe5d0850bc46b9ef02ed4c1a
 	git+https://github.com/google/googletest#commit=800f5422ac9d9e0ad59cd860a2ef3a679588acb4
 	# patches
-	clang.patch
-	xdg.patch
+	xdg.diff # https://github.com/cemu-project/Cemu/commit/963f9b38349c5d03b26ab2a50ead2ee4e743ca41.patch
 )
 sha256sums=(
 	SKIP
-	5cae7072042b3043e12d53d50ef404bbb76949dad1de368d7f993a15c8c05ecc
 	9f14c788aee15b777051e48f868c5d4d959bd679fc5050e3d2a29de80d8fd32e
 	262faed507149c89aab7572fd2c2a968f843ca2900043e30a9c339735ed08a8f
 	91528f60cca93d3bce042d2ac16a63169025ec25a34453b49803126ed19153ae
@@ -53,8 +50,7 @@ sha256sums=(
 	SKIP
 	SKIP
 	SKIP
-	893832f2e7dd7784e9df423020ff2acc63ffe8d9b75b7d92f371f7dd57313131
-	c8b6cefa33256c84435313c02f03dfe55b651db573642c12b3db01e1a51a64da
+	78aa9187fa6a1819da039c10f1d2681b962329c9fc6d4724eeff5936b3ec02ee
 )
 
 pkgver() {
@@ -81,22 +77,11 @@ prepare() {
 	done
 	popd
 
-	# unbundled fmt
-	sed -i '/fmt/c\add_subdirectory(dependencies/fmt)' CMakeLists.txt
-	ln -srf "$srcdir/fmt-7.1.3" dependencies/fmt
-
 	# unbundled imgui
 	sed -i '/imgui/c\add_subdirectory(dependencies/imgui)' CMakeLists.txt
 	ln -srf "$srcdir/imgui-1.88" dependencies/imgui
 	ln -srf "$srcdir/imgui.cmake" dependencies/imgui/CMakeLists.txt
 	ln -srf "$srcdir/imgui.conf" dependencies/imgui/imgui-config.cmake.in
-
-	# prefer clang (faster)
-	which clang   &> /dev/null && [[ -z $CC  ]] && export CC=$(which clang)
-	which clang++ &> /dev/null && [[ -z $CXX ]] && export CXX=$(which clang++)
-
-	# clang workaround
-	[[ $CXX == *clang* ]] && git apply "$srcdir/clang.patch"
 
 	# glm fix
 	sed -i 's/glm::glm/glm/' src/Common/CMakeLists.txt src/input/CMakeLists.txt
@@ -105,10 +90,14 @@ prepare() {
 	sed -i 's/GLSLANG_VERSION_LESS/GLSLANG_VERSION_GREATER/' src/Cafe/HW/Latte/Renderer/Vulkan/RendererShaderVk.cpp
 
 	# xdg base dir support (https://github.com/cemu-project/Cemu/pull/130)
-	git apply "$srcdir/xdg.patch"
+	git apply "$srcdir/xdg.diff"
 
 	# gameProfiles improvement
 	sed -i 's|gameProfiles/default|gameProfiles|' src/Cafe/GameProfile/GameProfile.cpp
+
+	# prefer clang (faster)
+	which clang   &> /dev/null && [[ -z $CC  ]] && export CC=$(which clang)
+	which clang++ &> /dev/null && [[ -z $CXX ]] && export CXX=$(which clang++)
 }
 
 build() {

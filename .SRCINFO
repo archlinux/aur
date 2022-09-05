@@ -1,6 +1,6 @@
 pkgbase = cemu
 	pkgdesc = Software to emulate Wii U games and applications on PC
-	pkgver = 2.0.89
+	pkgver = 2.0.96
 	pkgrel = 1
 	url = https://github.com/cemu-project/Cemu
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = cemu
 	makedepends = boost
 	makedepends = glslang
 	makedepends = glm
+	makedepends = fmt>=9.1
 	makedepends = nasm
 	makedepends = vulkan-headers
 	makedepends = glu
@@ -22,8 +23,7 @@ pkgbase = cemu
 	depends = wxwidgets-gtk3>=3.2
 	optdepends = vulkan-driver: Vulkan graphics
 	provides = cemu
-	source = git+https://github.com/cemu-project/Cemu#commit=a54a3ec74ea95326096feb46317fb9c6cd277742
-	source = fmt-7.1.3.tar.gz::https://github.com/fmtlib/fmt/archive/refs/tags/7.1.3.tar.gz
+	source = git+https://github.com/cemu-project/Cemu#commit=0030fa44a5bea51d422bd7d5f413bf0bdc8c7b64
 	source = imgui-1.88.tar.gz::https://github.com/ocornut/imgui/archive/refs/tags/v1.88.tar.gz
 	source = imgui.cmake::https://raw.githubusercontent.com/microsoft/vcpkg/master/ports/imgui/CMakeLists.txt
 	source = imgui.conf::https://raw.githubusercontent.com/microsoft/vcpkg/master/ports/imgui/imgui-config.cmake.in
@@ -31,10 +31,8 @@ pkgbase = cemu
 	source = git+https://github.com/Exzap/ZArchive#commit=48914a07df3c213333c580bb5e5bb3393442ca5b
 	source = git+https://github.com/arsenm/sanitizers-cmake#commit=aab6948fa863bc1cbe5d0850bc46b9ef02ed4c1a
 	source = git+https://github.com/google/googletest#commit=800f5422ac9d9e0ad59cd860a2ef3a679588acb4
-	source = clang.patch
-	source = xdg.patch
+	source = xdg.diff
 	sha256sums = SKIP
-	sha256sums = 5cae7072042b3043e12d53d50ef404bbb76949dad1de368d7f993a15c8c05ecc
 	sha256sums = 9f14c788aee15b777051e48f868c5d4d959bd679fc5050e3d2a29de80d8fd32e
 	sha256sums = 262faed507149c89aab7572fd2c2a968f843ca2900043e30a9c339735ed08a8f
 	sha256sums = 91528f60cca93d3bce042d2ac16a63169025ec25a34453b49803126ed19153ae
@@ -42,7 +40,6 @@ pkgbase = cemu
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 893832f2e7dd7784e9df423020ff2acc63ffe8d9b75b7d92f371f7dd57313131
-	sha256sums = c8b6cefa33256c84435313c02f03dfe55b651db573642c12b3db01e1a51a64da
+	sha256sums = 78aa9187fa6a1819da039c10f1d2681b962329c9fc6d4724eeff5936b3ec02ee
 
 pkgname = cemu
