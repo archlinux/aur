@@ -2,7 +2,7 @@
 
 pkgname=notepadnext-appimage
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform reimplementation of Notepad++ (binary AppImage)"
 arch=('x86_64')
 url="https://github.com/dail8859/NotepadNext"
@@ -23,6 +23,9 @@ prepare() {
     chmod +x ${srcdir}/${_appimage}
     ${srcdir}/${_appimage} --appimage-extract ${_desktoppath}/NotepadNext.desktop
     ${srcdir}/${_appimage} --appimage-extract ${_svgpath}/NotepadNext.svg
+    # Fix desktop Exec name
+    sed -i 's/Exec=NotepadNext/Exec=notepadnext/g' \
+        ${srcdir}/squashfs-root/${_desktoppath}/NotepadNext.desktop
 }
 
 package() {
