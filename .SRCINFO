@@ -1,7 +1,7 @@
 pkgbase = scala-cli
 	pkgdesc = Scala CLI is a command-line tool to interact with the Scala language.
 	pkgver = 0.1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://scala-cli.virtuslab.org
 	arch = x86_64
 	license = Apache
