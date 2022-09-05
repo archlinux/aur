@@ -1,14 +1,13 @@
 pkgbase = adbcontrol
 	pkgdesc = Remote control your Android phone through adb
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://marian.schedenig.name/2014/07/03/remote-control-your-android-phone-through-adb/
 	arch = i686
 	arch = x86_64
 	license = Eclipse Public Licence
-	depends = jre7-openjdk
+	depends = jre8-openjdk
 	source = http://marian.schedenig.name/wp-content/uploads/adbcontrol.zip
 	md5sums = a6fafab5525a8e02450b4456ea3ec141
 
 pkgname = adbcontrol
-

@@ -2,12 +2,12 @@
 
 pkgname=adbcontrol
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Remote control your Android phone through adb"
 arch=(i686 x86_64)
 url="http://marian.schedenig.name/2014/07/03/remote-control-your-android-phone-through-adb/"
 license=('Eclipse Public Licence')
-depends=(jre7-openjdk)
+depends=(jre8-openjdk)
 source=(http://marian.schedenig.name/wp-content/uploads/adbcontrol.zip)
 md5sums=(a6fafab5525a8e02450b4456ea3ec141)
 
@@ -17,7 +17,7 @@ build()
 	echo "No build requied, precompiled jar is avaliable,"
 	echo "standard values has been placed in config file."
 	echo "###############################################"
-	}	
+	}
 
 package()
 	{
