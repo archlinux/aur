@@ -6,7 +6,7 @@ _use_poppler=OFF  # ON or OFF
 _qt_version_major=6  # 5 or 6
 
 pkgname=beamerpresenter-git
-pkgver=0.2.2_706.4d6e7ce
+pkgver=0.2.3_776.b315bed
 pkgrel=1
 pkgdesc="Modular multi-screen pdf presenter (git)"
 arch=('x86_64')
@@ -36,7 +36,7 @@ fi
 
 
 pkgver() {
-    printf "0.2.2_%s.%s" \
+    printf "0.2.3_%s.%s" \
         "$(git -C "${srcdir}/BeamerPresenter" rev-list --count HEAD)" \
         "$(git -C "${srcdir}/BeamerPresenter" rev-parse --short HEAD)"
 }
