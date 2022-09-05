@@ -1,6 +1,6 @@
 pkgbase = kubectl-bin
 	pkgdesc = Kubernetes.io client binary
-	pkgver = 1.24.3
+	pkgver = 1.25.0
 	pkgrel = 1
 	url = https://kubernetes.io
 	arch = i686
@@ -12,15 +12,15 @@ pkgbase = kubectl-bin
 	provides = kubectl=$pkgver
 	conflicts = kubectl
 	conflicts = kubernetes>=1.4.6
-	source_i686 = kubectl-1.24.3::https://storage.googleapis.com/kubernetes-release/release/v1.24.3/bin/linux/386/kubectl
-	sha256sums_i686 = c5f51ac5a5712c69595ef4d2c897abeae85afdf1b43a7f50167ce799fc517ee1
-	source_x86_64 = kubectl-1.24.3::https://storage.googleapis.com/kubernetes-release/release/v1.24.3/bin/linux/amd64/kubectl
-	sha256sums_x86_64 = 8a45348bdaf81d46caf1706c8bf95b3f431150554f47d444ffde89e8cdd712c1
-	source_aarch64 = kubectl-1.24.3::https://storage.googleapis.com/kubernetes-release/release/v1.24.3/bin/linux/arm64/kubectl
-	sha256sums_aarch64 = bdad4d3063ddb7bfa5ecf17fb8b029d5d81d7d4ea1650e4369aafa13ed97149a
-	source_armv7h = kubectl-1.24.3::https://storage.googleapis.com/kubernetes-release/release/v1.24.3/bin/linux/arm/kubectl
-	sha256sums_armv7h = 4ae94095580973931da53fd3b823909d85ca05055d6300f392d9dc9e5748d612
-	source_armv7l = kubectl-1.24.3::https://storage.googleapis.com/kubernetes-release/release/v1.24.3/bin/linux/arm/kubectl
-	sha256sums_armv7l = 4ae94095580973931da53fd3b823909d85ca05055d6300f392d9dc9e5748d612
+	source_i686 = kubectl-1.25.0::https://storage.googleapis.com/kubernetes-release/release/v1.25.0/bin/linux/386/kubectl
+	sha256sums_i686 = ce5a7a18752af79b79f670ab4bde48ddb040c6cbd353f1d04a4be833fd4adb49
+	source_x86_64 = kubectl-1.25.0::https://storage.googleapis.com/kubernetes-release/release/v1.25.0/bin/linux/amd64/kubectl
+	sha256sums_x86_64 = e23cc7092218c95c22d8ee36fb9499194a36ac5b5349ca476886b7edc0203885
+	source_aarch64 = kubectl-1.25.0::https://storage.googleapis.com/kubernetes-release/release/v1.25.0/bin/linux/arm64/kubectl
+	sha256sums_aarch64 = 24db547bbae294c5c44f2b4a777e45f0e2f3d6295eace0d0c4be2b2dfa45330d
+	source_armv7h = kubectl-1.25.0::https://storage.googleapis.com/kubernetes-release/release/v1.25.0/bin/linux/arm/kubectl
+	sha256sums_armv7h = 0b907cfdcabafae7d2d4ac7de55e3ef814df999acdf6b1bd0ecf6abbef7c7131
+	source_armv7l = kubectl-1.25.0::https://storage.googleapis.com/kubernetes-release/release/v1.25.0/bin/linux/arm/kubectl
+	sha256sums_armv7l = 0b907cfdcabafae7d2d4ac7de55e3ef814df999acdf6b1bd0ecf6abbef7c7131
 
 pkgname = kubectl-bin
