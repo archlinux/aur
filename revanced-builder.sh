@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 set -e
+cd ~/.local/share
 
 start="node /opt/revanced-builder/index.js"
 
