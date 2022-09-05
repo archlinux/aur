@@ -3,7 +3,7 @@
 
 pkgname=scala-cli
 pkgver=0.1.12
-pkgrel=2
+pkgrel=3
 pkgdesc='Scala CLI is a command-line tool to interact with the Scala language.'
 arch=('x86_64')
 url='https://scala-cli.virtuslab.org'
@@ -16,5 +16,10 @@ package() {
   SCALA_CLI="$pkgdir/usr/bin/scala-cli"
 
   install -Dm755 "$srcdir/scala-cli-$CARCH-pc-linux" "$SCALA_CLI"
+
   install -Dm644 <("$SCALA_CLI" install completions --format bash --env) "$pkgdir/usr/share/bash-completion/completions/scala-cli"
+
+  "$SCALA_CLI" install completions --format zsh --env --output "$srcdir" > /dev/null
+  echo "_scala-cli" >> "$srcdir/zsh/_scala-cli"
+  install -Dm644 "$srcdir/zsh/_scala-cli" "$pkgdir/usr/share/zsh/site-functions/_scala-cli"
 }
