@@ -4,8 +4,8 @@
 # Contributor: Bram Schoenmakers <me@bramschoenmakers.nl>
 
 pkgname=evolvotron
-pkgver=0.7.1.3
-pkgrel=1
+pkgver=0.7.1.5
+pkgrel=3
 pkgdesc="An interactive generative art application"
 arch=('i686' 'x86_64')
 url="http://www.bottlenose.demon.co.uk/share/evolvotron/"
@@ -41,5 +41,5 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
 }
 # vim:syntax=sh
-md5sums=('ed6d8e880b7358634a4e6bd5d102592d'
+md5sums=('73d9188d01ec3b69010ff2ec2d74ccea'
 '6a940f8edfff06aad4d8049be8cda8bf')
