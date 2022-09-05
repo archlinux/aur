@@ -2,10 +2,10 @@
 # Maintainer: Roland Suchan <snrd at arcor dot de>
 
 pkgname=ffdiaporama
-_pkgname="ffDiaporama"
+_pkgdir="ffDiaporama"
 pkgver=2.1
 pkgrel=1
-pkgdesc='ffDiaporama'
+pkgdesc='ffDiaporama is an application for creating video sequences'
 arch=(x86_64)
 url=http://ffdiaporama.tuxfamily.org
 license=(GPL2)
@@ -21,7 +21,7 @@ md5sums=('f9f46277153cf49f6947973778516adb')
 
 prepare() {
   #cd "$pkgname-pkgver"
-  cd "$_pkgname"
+  cd "$_pkgdir"
   patch --forward --strip=1 --input="${startdir}/patchfile.patch"
   #patch ${srcdir}/ffDiaporama/src/ffDiaporama/wgt_QMultimediaBrowser/QCustomFolderTable.cpp ${startdir}/patchfile.patch
 }
@@ -29,7 +29,7 @@ prepare() {
 build() {
   LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib
   export LD_LIBRARY_PATH
-  cd "$_pkgname"
+  cd "$_pkgdir"
   sed -i 's@GTK;GNOME;Qt;KDE;AudioVideo;@AudioVideo;Player;X-Red-Hat-Base;@g' ffDiaporama.desktop
   qmake-qt5 'QMAKE_CFLAGS_ISYSTEM=-I' 'INCLUDEPATH += /opt/include' 'LIBPATH += /opt/lib' ffDiaporama.pro /PREFIX=/usr
   
@@ -37,6 +37,6 @@ build() {
 }
 
 package() {
-  cd "$_pkgname"
+  cd "$_pkgdir"
   make INSTALL_ROOT="$pkgdir" install
 }
