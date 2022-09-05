@@ -1,24 +1,26 @@
 # Maintainer:  Joshua Holmer <jholmer.in@gmail.com>
 
 pkgname=libjxl-metrics-git
-pkgver=v0.7.base.0.g980c90f6
+pkgver=v0.7.base.29.g1c19bb48
 pkgrel=1
-pkgdesc="JPEG XL image format reference implementation with butteraugli and ssimulacra (git version)"
+pkgdesc="JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 (git version)"
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
 license=('BSD')
-depends=('brotli' 'highway' 'gtest' 'libpng' 'lcms2')
+depends=('brotli' 'highway-git' 'gtest' 'libpng' 'lcms2')
 makedepends=(
     'git' 'cmake' 'clang' 'lld' 'giflib' 'gperftools' 'openexr' 'libjpeg-turbo'
     'python' 'asciidoc' 'graphviz' 'xdg-utils' 'gflags' 'zlib' 'doxygen'
 )
 provides=(
     'libjxl' 'libjxl-git' 'libjxl.so' 'libjxl_threads.so' 'libjxl-doc'
-    'libjxl-doc-git' 'butteraugli-git' 'ssimulacra'
+    'libjxl-doc-git' 'butteraugli' 'butteraugli-git' 'ssimulacra'
+    'ssimulacra-git' 'ssimulacra2' 'ssimulacra2-git'
 )
 conflicts=(
-    'libjxl' 'libjxl-git' 'libjxl-doc' 'libjxl-doc-git' 'butteraugli-git'
-    'ssimulacra'
+    'libjxl' 'libjxl-git' 'libjxl-doc' 'libjxl-doc-git' 'butteraugli'
+    'butteraugli-git' 'ssimulacra' 'ssimulacra-git' 'ssimulacra2'
+    'ssimulacra2-git'
 )
 optdepends=(
     'gdk-pixbuf2: for gdk-pixbuf loader'
@@ -27,18 +29,17 @@ optdepends=(
     'libwebp: for webp benchmarking'
     'libavif: for avif benchmarking'
 )
-options=('!lto')
 source=(
-    'git+https://github.com/libjxl/libjxl.git#commit=980c90f65f41066cc4959b4eb80eba906867103b'
-    'git+https://github.com/google/brotli.git'
-    'git+https://github.com/mm2/Little-CMS.git'
-    'git+https://github.com/google/googletest.git'
-    'git+https://github.com/webmproject/sjpeg.git'
-    'git+https://skia.googlesource.com/skcms.git'
-    'git+https://github.com/google/highway.git'
-    'git+https://github.com/glennrp/libpng.git'
-    'git+https://github.com/madler/zlib.git'
-    'git+https://github.com/gflags/gflags.git'
+    'libjxl::git+https://github.com/libjxl/libjxl.git'
+    'brotli::git+https://github.com/google/brotli.git'
+    'Little-CMS::git+https://github.com/mm2/Little-CMS.git'
+    'googletest::git+https://github.com/google/googletest.git'
+    'sjpeg::git+https://github.com/webmproject/sjpeg.git'
+    'skcms::git+https://skia.googlesource.com/skcms.git'
+    'highway::git+https://github.com/google/highway.git'
+    'libpng::git+https://github.com/glennrp/libpng.git'
+    'zlib::git+https://github.com/madler/zlib.git'
+    'gflags::git+https://github.com/gflags/gflags.git'
 )
 sha256sums=(
     'SKIP'
@@ -52,6 +53,7 @@ sha256sums=(
     'SKIP'
     'SKIP'
 )
+options=('!lto')
 
 prepare() {
     git -C libjxl submodule init
@@ -73,6 +75,7 @@ pkgver() {
 }
 
 build() {
+    # We force clang and lld as suggested by the repo
     export LDFLAGS="-fuse-ld=lld -Wl,--thinlto-jobs=all"
     COMMON_FLAGS="-O3 -march=native -flto=thin -pipe"
     export CC=clang CXX=clang++
@@ -114,4 +117,13 @@ package() {
     # Metrics
     ln -s "/usr/bin/butteraugli_main" "$pkgdir/usr/bin/butteraugli"
     ln -s "/usr/bin/ssimulacra_main" "$pkgdir/usr/bin/ssimulacra"
+
+    # Work around for outdated tools
+    # This will break in the future and needs to be kept track of
+    ln -s "/usr/lib/libjxl.so.0.8.0" "$pkgdir/usr/lib/libjxl.so.0.7"
+    ln -s "/usr/lib/libjxl.so.0.8.0" "$pkgdir/usr/lib/libjxl.so.0.7.0"
+    ln -s "/usr/lib/libjxl_threads.so.0.8.0" "$pkgdir/usr/lib/libjxl_threads.so.0.7"
+    ln -s "/usr/lib/libjxl_threads.so.0.8.0" "$pkgdir/usr/lib/libjxl_threads.so.0.7.0"
+
+
 }
