@@ -4,17 +4,16 @@
 
 pkgname=bfgminer-git
 pkgver=5.5.0.r34.g866fd36f
-pkgrel=3
+pkgrel=4
 pkgdesc="Bitcoin miner featuring overclocking, monitoring, fan speed control and remote management. For FPGA/GPU/CPU Bitcoin mining."
 arch=('x86_64' 'aarch64')
 depends=('curl' 'jansson' 'libevent' 'libmicrohttpd' 'libusb' 'lm_sensors' 'libxcrypt')
 makedepends=('uthash' 'yasm' 'git')
 optdepends=('opencl-nvidia: OpenCL implementation for NVIDIA' 'screen: for running in background')
-conflicts=('libbase58' 'libblkchecker')
 url='https://bitcointalk.org/?topic=877081'
 license=('GPL3')
 provides=('bfgminer')
-conflicts=('bfgminer')
+conflicts=('bfgminer' 'libbase58' 'libblkchecker')
 source=("git+https://github.com/luke-jr/bfgminer"
         'remove-dangerous-rpath.patch')
 sha512sums=('SKIP'
