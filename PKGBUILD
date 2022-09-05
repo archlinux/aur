@@ -2,8 +2,8 @@
 
 pkgname=restic-rest-server
 _reponame=rest-server
-pkgver=0.10.0
-pkgrel=2
+pkgver=0.11.0
+pkgrel=1
 pkgdesc="High-performance HTTP server that implements restic's REST backend API"
 url='https://github.com/restic/rest-server'
 license=(BSD)
@@ -11,9 +11,9 @@ arch=(x86_64)
 makedepends=(go)
 optdepends=('apache: htpasswd manipulation')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d109cf9e9c3f36c9c8eb6d4a2bd530c5dfcd62b11687d93034e2edc0fdecf479')
-sha512sums=('b209edf2cb6e8ae11ff4800ffd84195c6052180ee81e5b79cb71895b9b559e0c6455835255f0b34d5d70482c4917f8491747bf0487ec3766432ae57e07d93884')
-b2sums=('48a07f7fbd05de39246813772905ba21487ee77640b70d4e086c29cc0b3b4885d38158be487f846bbada725444fdbccd3d0a3bc2ce24f25d81c069f734d36854')
+sha256sums=('cd9b35ad2224244207a967ebbc78d84f4298d725e95c1fa9341ed95a350ea68f')
+sha512sums=('2c26dee8d6fdc5d6c79c1565a29dbecbf90b7fecd969542d1596631623fff83e4fd42e73bd70fb9f8404acbb32e48cc14224681c7c2d5895c4b643974630af92')
+b2sums=('a936d06830302a935d86e34751cf328319e441e2696ffc72f90a577bd9d6d3ee32994081a0e5d0820c82fe0a281ce6c5b376d750c62d4f3d8f940282f051f23b')
 
 build() {
     cd ${_reponame}-$pkgver
@@ -21,11 +21,10 @@ build() {
     go build -buildmode=pie -trimpath -ldflags="-linkmode=external -extldflags \"${LDFLAGS}\"" -mod=readonly -modcacherw -o restic-rest-server ./cmd/rest-server
 }
 
-# Tests were broken and got fixed two commits after the last release
-# check() {
-#     cd ${_reponame}-$pkgver
-#     go test ./...
-# }
+check() {
+    cd ${_reponame}-$pkgver
+    go test ./...
+}
 
 package() {
     cd ${_reponame}-$pkgver
