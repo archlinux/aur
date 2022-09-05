@@ -1,27 +1,44 @@
 pkgbase = cemu
-	pkgdesc = Wii U emulator (via wine). Includes the Cemuhook plugin
-	pkgver = 1.26.2
-	pkgrel = 6
-	url = https://cemu.info/
-	install = cemu.install
+	pkgdesc = Software to emulate Wii U games and applications on PC
+	pkgver = 2.0.89
+	pkgrel = 1
+	url = https://github.com/cemu-project/Cemu
 	arch = x86_64
-	license = custom
-	depends = wine
-	depends = winetricks
-	optdepends = wine-ge-custom: Vulkan support
-	noextract = cemuhook_1251c_0575.zip
-	options = !strip
-	source = cemu.sh
-	source = cemu.xpm
-	source = cemu.desktop
-	source = cemu_1.26.2-6.zip::https://cemu.info/releases/cemu_1.26.2.zip
-	source = https://files.sshnuke.net/cemuhook_1251c_0575.zip
-	source = https://web.archive.org/web/20180907210517if_/https://files.sshnuke.net/sharedFonts.7z
-	md5sums = b992b4c672a1df44f4719b2a43c91910
-	md5sums = 54d70005a8975812ab54fcfef53f7bde
-	md5sums = f1649814d35413763169cf750062d763
-	md5sums = 6a3f7091f4040f00d6891173a0351e81
-	md5sums = 266d9f45c6c75a1a7d5d80da0e97857e
-	md5sums = 336a0bc0e44eede4ddf613a0eebf3bb9
+	license = MPL2
+	makedepends = git
+	makedepends = cmake>=3.21.1
+	makedepends = make
+	makedepends = rapidjson
+	makedepends = boost
+	makedepends = glslang
+	makedepends = glm
+	makedepends = nasm
+	makedepends = vulkan-headers
+	makedepends = glu
+	depends = sdl2
+	depends = pugixml
+	depends = libzip
+	depends = libpng
+	depends = wxwidgets-gtk3>=3.2
+	optdepends = vulkan-driver: Vulkan graphics
+	provides = cemu
+	source = git+https://github.com/cemu-project/Cemu#commit=a54a3ec74ea95326096feb46317fb9c6cd277742
+	source = fmt-7.1.3.tar.gz::https://github.com/fmtlib/fmt/archive/refs/tags/7.1.3.tar.gz
+	source = imgui-1.88.tar.gz::https://github.com/ocornut/imgui/archive/refs/tags/v1.88.tar.gz
+	source = imgui.cmake::https://raw.githubusercontent.com/microsoft/vcpkg/master/ports/imgui/CMakeLists.txt
+	source = imgui.conf::https://raw.githubusercontent.com/microsoft/vcpkg/master/ports/imgui/imgui-config.cmake.in
+	source = git+https://github.com/mozilla/cubeb#commit=dc511c6b3597b6384d28949285b9289e009830ea
+	source = git+https://github.com/Exzap/ZArchive#commit=48914a07df3c213333c580bb5e5bb3393442ca5b
+	source = git+https://github.com/arsenm/sanitizers-cmake#commit=aab6948fa863bc1cbe5d0850bc46b9ef02ed4c1a
+	source = git+https://github.com/google/googletest#commit=800f5422ac9d9e0ad59cd860a2ef3a679588acb4
+	sha256sums = SKIP
+	sha256sums = 5cae7072042b3043e12d53d50ef404bbb76949dad1de368d7f993a15c8c05ecc
+	sha256sums = 9f14c788aee15b777051e48f868c5d4d959bd679fc5050e3d2a29de80d8fd32e
+	sha256sums = 262faed507149c89aab7572fd2c2a968f843ca2900043e30a9c339735ed08a8f
+	sha256sums = 91528f60cca93d3bce042d2ac16a63169025ec25a34453b49803126ed19153ae
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = cemu
