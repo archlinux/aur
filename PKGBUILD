@@ -3,7 +3,7 @@
 
 _plug=dfttest2
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v4.0.g584f937
+pkgver=v4.3.g6dd4908
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT Version)"
 arch=('x86_64')
@@ -45,7 +45,6 @@ build() {
     -D ENABLE_CUDA=1 \
     -D USE_NVRTC_STATIC=ON \
     -D ENABLE_CPU=1 \
-    -D VCL_HOME="$(pwd)/${_plug}/cpu_source/vectorclass" \
     -W no-dev
   cmake --build "build" --config Release
 }
