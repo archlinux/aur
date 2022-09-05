@@ -1,0 +1,16 @@
+pkgbase = python-mynux
+	pkgdesc = Just a dotfile manager with some extras.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://pypi.org/project/mynux/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	conflicts = python-mynux-git
+	source = https://files.pythonhosted.org/packages/source/m/mynux/mynux-0.1.0.tar.gz
+	sha256sums = b06a5b6d4b89c91f66fc6a04d3682bad76d2e0f90796cf60afb44ff00cf2b62b
+
+pkgname = python-mynux
