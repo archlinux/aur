@@ -1,6 +1,6 @@
 pkgbase = liteaur
 	pkgdesc = Shell-based AUR helper
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://gitea.com/ffqq/liteaur
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = liteaur
 	depends = git
 	depends = jq
 	depends = pacman
-	source = liteaur-1.7.1.tar.gz::https://gitea.com/ffqq/liteaur/archive/v1.7.1.tar.gz
-	sha256sums = 771e9e77c5ecb55b4d1c20a2be7b597bd116969caa6acf7d282da6739fd663da
+	source = liteaur-1.7.2.tar.gz::https://gitea.com/ffqq/liteaur/archive/v1.7.2.tar.gz
+	sha256sums = d0e7656420414490db3c80511dbec56af92d87b09c3caae42a40a286f98c0501
 
 pkgname = liteaur

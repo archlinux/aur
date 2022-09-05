@@ -2,7 +2,7 @@
 # Maintainer: ffqq <shuttara@gmail.com>
 
 pkgname=liteaur
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="Shell-based AUR helper"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://gitea.com/ffqq/liteaur"
 license=('GPL3')
 depends=('git' 'jq' 'pacman')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('771e9e77c5ecb55b4d1c20a2be7b597bd116969caa6acf7d282da6739fd663da')
+sha256sums=('d0e7656420414490db3c80511dbec56af92d87b09c3caae42a40a286f98c0501')
 
 package() {
 	cd "$pkgname"
