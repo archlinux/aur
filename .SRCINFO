@@ -1,7 +1,7 @@
 pkgbase = notesnook-bin
 	pkgdesc = Open source zero knowledge private note taking
-	pkgver = 2.1.5
-	pkgrel = 1
+	pkgver = 2.1.6
+	pkgrel = 2
 	url = https://notesnook.com
 	arch = x86_64
 	license = GPL
@@ -9,7 +9,7 @@ pkgbase = notesnook-bin
 	conflicts = notesnook
 	noextract = notesnook_x86_64.AppImage
 	options = !strip
-	source = notesnook_x86_64.AppImage::https://github.com/streetwriters/notesnook/releases/download/v2.1.5/notesnook_x86_64.AppImage
-	sha512sums = 86defe8a017d2f8263516ad736c6dee33b5c17e293e11fda1eaad211230dbc17bfd3a0354ab7a54d8fad42970972ab55334128fcf2ff4dec3bb81e7f9e581039
+	source = notesnook_x86_64.AppImage::https://github.com/streetwriters/notesnook/releases/download/v2.1.6/notesnook_x86_64.AppImage
+	sha512sums = a6773468a134425c1ff3096b3b86df26b1bcd96b8dc6657c75bed5e0697954e5d857e67a3f4bd4b94c034bb485c2edcbadd6604ce1dc0697065ecf8e0939f3e3
 
 pkgname = notesnook-bin
