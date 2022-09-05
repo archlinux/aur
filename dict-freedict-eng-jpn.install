@@ -1,0 +1,50 @@
+basename=eng-jpn
+pkgname=dict-freedict-$basename
+dictd_conf=/etc/dict/dictd.conf
+datadir=/usr/share/dictd
+conf="database $basename {
+	data $datadir/$basename.dict.dz
+	index $datadir/$basename.index
+}"
+
+post_install() {
+	if pacman -Qq dictd > /dev/null 2>&1
+	then
+		if grep -q "^database *$basename" "$dictd_conf"
+		then
+			echo "$pkgname already configured in $dictd_conf"
+		else
+			echo "Adding configuration for $pkgname to $dictd_conf"
+			echo "$conf" >> "$dictd_conf"
+		fi
+
+	else
+		echo "dictd does not appear to be installed."
+		echo "In order to use this database you should either" \
+		     "install dictd or alternatively" \
+		     "another dict server and configure it on your own."
+	fi
+}
+
+post_upgrade() {
+	echo "Please restart dictd."
+}
+
+post_remove() {
+	if pacman -Qq dictd > /dev/null 2>&1
+	then
+		current_conf="$(grep -A 3 "^database *$basename" "$dictd_conf")"
+		if test -n "$current_conf"
+		then
+			echo
+			if test "$current_conf" = "$conf"
+			then
+				echo "Removing configuration for $pkgname from $dictd_conf"
+				sed -i "/database $basename {/,/}/d" "$dictd_conf"
+			else
+				echo "User created / modified configuration" \
+					 "for $pkgname in $dictd_conf is left untouched."
+			fi
+		fi
+	fi
+}

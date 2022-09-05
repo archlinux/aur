@@ -3,6 +3,7 @@ pkgbase = dict-freedict-eng-jpn
 	pkgver = 0.06
 	pkgrel = 2022.04
 	url = https://freedict.org
+	install = dict-freedict-eng-jpn.install
 	arch = any
 	license = CCPL
 	makedepends = dictd
