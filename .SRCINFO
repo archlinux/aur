@@ -1,6 +1,6 @@
 pkgbase = xz-static
 	pkgdesc = Statically linked library and command line tools for XZ and LZMA compressed files
-	pkgver = 5.2.5
+	pkgver = 5.2.6
 	pkgrel = 1
 	url = https://tukaani.org/xz/
 	arch = x86_64
@@ -9,11 +9,10 @@ pkgbase = xz-static
 	license = custom
 	depends = sh
 	options = staticlibs
-	source = https://tukaani.org/xz/xz-5.2.5.tar.gz
-	source = https://tukaani.org/xz/xz-5.2.5.tar.gz.sig
+	source = https://tukaani.org/xz/xz-5.2.6.tar.gz
+	source = https://tukaani.org/xz/xz-5.2.6.tar.gz.sig
 	validpgpkeys = 3690C240CE51B4670D30AD1C38EE757D69184620
-	md5sums = 0d270c997aff29708c74d53f599ef717
-	md5sums = SKIP
+	sha256sums = a2105abee17bcd2ebd15ced31b4f5eda6e17efd6b10f921a01cda4a44c91b3a0
+	sha256sums = SKIP
 
 pkgname = xz-static
-
