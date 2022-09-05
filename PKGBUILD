@@ -7,7 +7,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/riscygeek/billig-sweeper"
 license=('GPL3')
 depends=('sdl2' 'sdl2_image')
-makedepends=('meson' 'ninja')
+makedepends=('git' 'meson' 'ninja')
 source=("https://github.com/riscygeek/billig-sweeper/archive/refs/tags/v${pkgver}.tar.gz" "git+https://github.com/cktan/tomlc99")
 sha256sums=(a9d4d06396026caa192ee5cdd505ca3771e4b0c0ff1c5b5d68e18fca1cee1ea0 SKIP)
 

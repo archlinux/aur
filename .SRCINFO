@@ -6,6 +6,7 @@ pkgbase = billig-sweeper
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
+	makedepends = git
 	makedepends = meson
 	makedepends = ninja
 	depends = sdl2
