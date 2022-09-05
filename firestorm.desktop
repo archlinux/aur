@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Firestorm
+Comment=A third-party viewer for Second Life (TM) and OpenSim grids
+Exec=/opt/firestorm/firestorm
+Icon=/opt/firestorm/firestorm_icon.png
+Terminal=false
+Type=Application
+Categories=Application;Internet;Network;Game

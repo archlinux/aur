@@ -1,0 +1,8 @@
+post_install() {
+  cat <<EOF
+You must register an account on the official Second Life website in
+order to use Second Life: https://secondlife.com/
+
+Remember to log out and back in for the change to take effect.
+EOF
+}

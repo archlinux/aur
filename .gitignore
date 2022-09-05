@@ -1,0 +1,7 @@
+*.pkg.tar*
+*.src.tar*
+*.xz
+firestorm-git
+fs-build-variables
+pkg
+src
