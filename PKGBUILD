@@ -20,7 +20,7 @@ source=("https://files.pythonhosted.org/packages/source/h/healpy/healpy-${pkgver
 md5sums=('e5993b888192847eee9b622bb3b06f51')
 
 get_pyver() {
-    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
+    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
 
 prepare() {
@@ -39,8 +39,8 @@ check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     # skip tests that cost lots of time
-    pytest "build/lib.linux-${CARCH}-$(get_pyver)" \
-        --deselect=build/lib.linux-x86_64-3.10/healpy/test/test_pixelweights.py::test_pixelweights_local_datapath || warning "Tests failed"
+    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" \
+        --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyver)/healpy/test/test_pixelweights.py::test_pixelweights_local_datapath || warning "Tests failed"
 }
 
 package() {
