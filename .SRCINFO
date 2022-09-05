@@ -1,25 +1,25 @@
 pkgbase = groff-git
 	pkgdesc = GNU Troff. Official git trunk.
-	pkgver = 1.23.0.rc1.199.g79a168ad
+	pkgver = 1.23.0.rc1.2913.g27568d6e3
 	pkgrel = 1
 	url = http://www.gnu.org/software/groff/
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = netpbm
 	depends = psutils
+	depends = uchardet
 	depends = ghostscript
 	depends = perl
 	depends = libxaw
+	depends = perl-file-homedir
 	provides = groff
 	conflicts = groff
 	source = groff-git::git://git.savannah.gnu.org/groff.git
 	source = gnulib-git::git://git.sv.gnu.org/gnulib.git
 	source = site.tmac
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = af59ecde597ce9f8189368a7739279a5f8a391139fe048ef6b4e493ed46e5f5f
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = c2906f83259261ba3927ca4870ce1035f04a66e9e2331a30961373d0b5dc2f62955b2cdf2ed8cebf927912a9b689fc9a3a25891dee0bdb301a41acea9dac56c3
 
 pkgname = groff-git
-

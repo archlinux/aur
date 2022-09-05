@@ -1,24 +1,43 @@
-# Maintainer: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
+# Maintainer: Pedro A. López-Valencia <https://aur.archlinux.org/users/toropisco>
+
+CLANG=0
 
 pkgname=groff-git
-pkgver=1.23.0.rc1.199.g79a168ad
+pkgver=1.23.0.rc1.2913.g27568d6e3
 pkgrel=1
 pkgdesc="GNU Troff. Official git trunk."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.gnu.org/software/groff/"
 license=('GPL')
-depends=('netpbm' 'psutils' 'ghostscript' 'perl' 'libxaw')
+depends=(
+  'netpbm'
+  'psutils'
+  'uchardet'
+  'ghostscript'
+  'perl'
+  'libxaw'
+  'perl-file-homedir'
+)
 makedepends=('git')
 conflicts=('groff')
 provides=('groff')
 source=(
-	"$pkgname::git://git.savannah.gnu.org/groff.git" 
-        "gnulib-git::git://git.sv.gnu.org/gnulib.git"
-	'site.tmac'
+  "$pkgname::git://git.savannah.gnu.org/groff.git" 
+  "gnulib-git::git://git.sv.gnu.org/gnulib.git"
+  'site.tmac'
 )
-sha256sums=('SKIP'
-            'SKIP'
-            'af59ecde597ce9f8189368a7739279a5f8a391139fe048ef6b4e493ed46e5f5f')
+
+if [[ CLANG == 1 ]]; then
+  makedepends+=(
+  'clang'
+  'llvm'
+  'lld'
+ ) 
+fi
+
+b2sums=('SKIP'
+        'SKIP'
+        'c2906f83259261ba3927ca4870ce1035f04a66e9e2331a30961373d0b5dc2f62955b2cdf2ed8cebf927912a9b689fc9a3a25891dee0bdb301a41acea9dac56c3')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -28,22 +47,33 @@ pkgver() {
 prepare() {
   cd "$srcdir/$pkgname"
   sed -i.bak -e "s/\[2\.62\]/\[2\.69\]/" configure.ac
-  ./bootstrap --gnulib-srcdir="$srcdir"/gnulib-git --bootstrap-sync --no-git
+  ./bootstrap \
+    --gnulib-srcdir="$srcdir"/gnulib-git \
+    --force
 }
 
 build() {
+  if [[ $CLANG == 1 ]]; then 
+    export CC="clang"
+    export CXX="clang++"
+    export LD="ldd"
+    export AR="llvm-ar"
+    export AS="llvm-as"
+    export NM="llvm-nm"
+    export STRIP="llvm-stipr"
+  fi
+
   mkdir -p "$srcdir/$pkgname"/build
+
   cd "$srcdir/$pkgname"/build
 
-  export CC="clang"
-  export CXX="clang++"
   local _configopts=(
     --prefix=/usr
     --disable-rpath
     --with-x
     --with-appresdir=/usr/share/X11/app-defaults
     --with-doc=yes
-    --with-uchardet=no
+    --with-uchardet=yes
   )
 
   ../configure "${_configopts[@]}"
