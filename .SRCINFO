@@ -7,10 +7,10 @@ pkgbase = chim
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
-	makedepends = git
+	makedepends = jq
 	provides = chim
 	conflicts = chim
-	source = git+https://github.com/jdxcode/chim.git
-	md5sums = SKIP
+	source = chim-1.0.2.tar.gz::https://github.com/jdxcode/chim/archive/v1.0.2.tar.gz
+	sha512sums = 725ed27c09be809a592a3eccef7de3f161db2393a4b67b60538d8d2cd4f39221e91dd3465636343ed4b5d2f5dc422eff52380ea852024cfce4b38c6797acd095
 
 pkgname = chim
