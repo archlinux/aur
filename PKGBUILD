@@ -2,7 +2,7 @@
 
 pkgname=revanced-builder
 pkgver=3.4.2
-pkgrel=1
+pkgrel=5
 pkgdesc="A NodeJS ReVanced builder"
 arch=("x86_64")
 url="https://github.com/reisxd/revanced-builder"
