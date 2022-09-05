@@ -1,7 +1,7 @@
 pkgbase = wonderpen-bin
 	pkgdesc = A professional writing app with a focused mode and markdown support
-	pkgver = 2.1.11
-	pkgrel = 7
+	pkgver = 2.1.12
+	pkgrel = 1
 	url = https://www.tominlab.com/en/wonderpen
 	arch = x86_64
 	license = custom
@@ -11,8 +11,8 @@ pkgbase = wonderpen-bin
 	depends = nss
 	depends = xdg-utils
 	provides = wonderpen
-	source = https://file.tominlab.com/WonderPen/2.1/WonderPen_linux_amd64_2.1.11(6563).deb
-	sha256sums = eadc5ddc41c532321ced7cc79426c034e0bbe2f626c90bd1bd6bde23be95d71d 
+	source = https://file.tominlab.com/WonderPen/2.1/WonderPen_linux_amd64_2.1.12(6594).deb 
+	sha256sums = 28fca46d5f4aa91610419430ac9349949d21084bf19e9803552544ec718709d5
 
 pkgname = wonderpen-bin
 
