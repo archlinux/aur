@@ -1,7 +1,7 @@
 pkgbase = evolvotron
 	pkgdesc = An interactive generative art application
-	pkgver = 0.7.1.3
-	pkgrel = 1
+	pkgver = 0.7.1.5
+	pkgrel = 3
 	url = http://www.bottlenose.demon.co.uk/share/evolvotron/
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,7 @@ pkgbase = evolvotron
 	depends = boost-libs
 	source = https://gitlab.com/saveriobran/evolvotron_fixed/raw/master/evolvotron.tar.gz
 	source = https://gitlab.com/saveriobran/evolvotron_fixed/raw/master/evolvotron.png
-	md5sums = ed6d8e880b7358634a4e6bd5d102592d
+	md5sums = 73d9188d01ec3b69010ff2ec2d74ccea
 	md5sums = 6a940f8edfff06aad4d8049be8cda8bf
 
 pkgname = evolvotron
-
