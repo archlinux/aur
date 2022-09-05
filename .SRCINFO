@@ -1,6 +1,6 @@
 pkgbase = photoqt
 	pkgdesc = Fast and highly configurable image viewer with a simple and nice interface.
-	pkgver = 2.9
+	pkgver = 2.9.1
 	pkgrel = 1
 	url = http://photoqt.org/
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = photoqt
 	depends = python-pychromecast
 	optdepends = libqpsd-git: PSB/PSD support
 	optdepends = xcftools: XCF support
-	source = https://photoqt.org/downloads/source/photoqt-2.9.tar.gz
-	sha256sums = 6c894a66b3596fb1b8f3a19800598c05f69c6fa200ecb061cfce017c30c87870
+	source = https://photoqt.org/downloads/source/photoqt-2.9.1.tar.gz
+	sha256sums = 18fb9245ba2c6c3c1ced724e551bd0e9644c818cdc97d4bc763f8a01f61e2399
 
 pkgname = photoqt
