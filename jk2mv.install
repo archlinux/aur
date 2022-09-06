@@ -1,15 +1,7 @@
 post_install() {
-  update-desktop-database -q
-  xdg-icon-resource forceupdate --theme hicolor
+    echo ""
+    echo "Before you can use JK2MV, you have to:"
+    echo "   1. Buy JK2 via Steam or use the CD version"
+    echo "   2. Copy assets 0,1,2,5 to either /usr/share/jk2mv/base or /home/YourUserName/.jk2mv/base"
+    echo ""
 }
-
-post_upgrade() {
-  post_install $1
-}
-
-post_remove() {
-  update-desktop-database -q
-  xdg-icon-resource forceupdate --theme hicolor
-}
-
-
