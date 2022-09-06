@@ -1,0 +1,14 @@
+pkgbase = python-adafruit-board-toolkit
+	pkgdesc = CircuitPython board identification and information
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/adafruit/Adafruit_Board_Toolkit
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyserial
+	source = https://files.pythonhosted.org/packages/source/a/adafruit-board-toolkit/adafruit-board-toolkit-1.1.0.tar.gz
+	sha256sums = 61e19c30854764230138f4c1d65bf3b5d6ef22866396b231df7123a5a2507f27
+
+pkgname = python-adafruit-board-toolkit
