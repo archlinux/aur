@@ -1,12 +1,12 @@
 pkgbase = pe-bear
 	pkgdesc = Freeware reversing tool for PE files
-	pkgver = 0.5.5.3
+	pkgver = 0.5.5.7
 	pkgrel = 1
 	url = https://hshrzd.wordpress.com/pe-bear/
 	arch = x86_64
 	license = custom
 	depends = qt5-base
-	source = https://github.com/hasherezade/pe-bear-releases/releases/download/0.5.5.3/PE-bear_0.5.5.3_qt5.15_x64_linux.tar.xz
-	sha256sums = 0db431858928afc372b3bcab77a61d89ad52c570bed11462e9b2a97389d649e5
+	source = https://github.com/hasherezade/pe-bear-releases/releases/download/0.5.5.7/PE-bear_0.5.5.7_qt5.15_x64_linux.tar.xz
+	sha256sums = 651116169ed4d7bca06d401efbc03529ebd3acd19d4283cd7c9d2d63b8775afc
 
 pkgname = pe-bear
