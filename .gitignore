@@ -1,0 +1,6 @@
+/*.zst
+/*.zip
+/*.patch
+/src/
+/pkg/
+/*.gz
