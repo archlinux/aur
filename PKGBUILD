@@ -2,7 +2,7 @@
 
 pkgname=stable-diffusion-intel
 pkgver=20220906
-pkgrel=2
+pkgrel=3
 pkgdesc='Image generator that uses stable diffusion, vino (Intel CPU) and includes "txt2img"'
 arch=(x86_64)
 url='https://github.com/bes-dev/stable_diffusion.openvino'
@@ -23,4 +23,5 @@ package() {
   mv "$pkgdir/opt/$pkgname/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm755 txt2img.sh "$pkgdir/usr/bin/txt2img"
+  rm -r "$pkgdir/opt/$pkgname/.git" "$pkgdir/opt/$pkgname/.gitignore"
 }
