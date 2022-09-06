@@ -12,6 +12,7 @@ depends=('gcc-libs'
 optdepends=('waked: for scheduled wake-ups'
            'feedbackd: for vibrating notifications')
 makedepends=('cargo')
+conflicts=("${_pkgname}-bin")
 provides=('messenger-notify')
 source=('git+https://gitlab.com/Schmiddiii/messenger-notify')
 sha256sums=('SKIP')

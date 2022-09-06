@@ -12,6 +12,7 @@ pkgbase = messenger-notify-git
 	optdepends = waked: for scheduled wake-ups
 	optdepends = feedbackd: for vibrating notifications
 	provides = messenger-notify
+	conflicts = messenger-notify-bin
 	source = git+https://gitlab.com/Schmiddiii/messenger-notify
 	sha256sums = SKIP
 
