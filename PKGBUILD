@@ -2,12 +2,12 @@
 # (This email address can only receive emails, not reply to them)
 pkgname=commando-bin
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast, locate-like utility to search for commands in Arch Linux repos"
 arch=('x86_64')
 url="https://github.com/DumbMahreeo/commando"
 license=('MIT')
-depends=('libarchive' 'cargo')
+depends=('libarchive')
 provides=('commando')
 conflicts=('commando')
 source=("https://github.com/DumbMahreeo/commando/releases/download/v${pkgver}/commando-bin.gz")
