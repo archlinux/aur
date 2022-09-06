@@ -1,7 +1,7 @@
 # Maintainer: Andrej Radović <r.andrej@gmail.com>
 pkgname=python-digikey-api
 _name=${pkgname#python-}
-pkgver=0.4.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Python client for Digikey API"
 url="https://github.com/peeter123/digikey-api"
@@ -19,7 +19,7 @@ makedepends=('python-setuptools')
 license=('GPL3')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('b21c75f26cd34e6da99191b643edebb2a188bd9f91654065d42a5f70901d19de')
+sha256sums=('18bf4b7f5c69f83d1f717d3b70df68579353c40225c99ed5b9554af6f148e41b')
 
 build() {
 	cd "$srcdir/$_name-$pkgver"
