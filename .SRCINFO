@@ -1,6 +1,6 @@
 pkgbase = klog
 	pkgdesc = A multiplatform free hamradio logger
-	pkgver = 2.2
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://www.klog.xyz
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = klog
 	depends = qt5-location
 	depends = qt5-serialport
 	depends = hamlib
-	source = klog-2.2.tar.gz::https://github.com/ea4k/klog/archive/refs/tags/2.2.tar.gz
-	sha256sums = c0105d35157eb5bb6b94ddab55c2adda339dbf6c5906023efc962f154b20ec70
+	source = klog-2.2.1.tar.gz::https://github.com/ea4k/klog/archive/refs/tags/2.2.1.tar.gz
+	sha256sums = dcea304f51e35d7c5cf7a84690e235405dab3a039b8796a3241292819fff8f35
 
 pkgname = klog
