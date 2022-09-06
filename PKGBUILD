@@ -20,6 +20,6 @@ pkgver() {
 
 package() {
 	cd "$srcdir/$pkgname"
-	mkdir -p /usr/share/${_pkgname}
+	mkdir -p ${pkgdir}/usr/share/${_pkgname}
 	install -D -m755 "${_pkgname}" "${pkgdir}/usr/share/${_pkgname}/${_pkgname}"
 }
