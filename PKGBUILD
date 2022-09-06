@@ -2,7 +2,7 @@
 
 # Common metadata
 pkgname='pico-8'
-pkgver='0.2.4c'
+pkgver='0.2.5c'
 pkgrel=1
 pkgdesc="A fantasy console for making, sharing and playing tiny games and other computer programs."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -16,19 +16,12 @@ _arch_i686="i386"
 _arch_x86_64="amd64"
 _arch_arm="raspi"
 
-# Source filenames and hashes (SHA-512)
+# Source filenames
 _file_desktop="pico-8.desktop"
 _file_mime="pico-8.xml"
 _file_zip_i686="pico-8_${pkgver}_${_arch_i686}.zip"
 _file_zip_x86_64="pico-8_${pkgver}_${_arch_x86_64}.zip"
 _file_zip_arm="pico-8_${pkgver}_${_arch_arm}.zip"
-
-# Source files hashes (SHA-512)
-_file_desktop_hash="67a4b92bfa6f074c6413e6cc2b2ee7a5e9d3b901ab29d858e8360a422ad8659515ef5bb8097e353ce75633aab63215668d701209475b38dbd43a4372071b5d8e"
-_file_mime_hash="0497c602acbffdbec285ffcdb43ebe55adc793c051ce792933ba2d8d431229f2a938434cd760fbf92133ad6b9604c996b563276166fa883a619cd7313acd4f92"
-_file_zip_i686_hash="2d96494054e786ab2638e06da5e861ab8a4bfae6608811da481aa05d720807e620cb2059633f4c4194e3c2cd6a5a22c4ba2b9257e4d1712c1842e0dff5b1c203"
-_file_zip_x86_64_hash="451d72988c4c0af01ad6298ee02e0f18584076e2df2b00b72de63ea517129cf4bc613b1be67c533fb328bf9d3aa66f3c4ca86d03c5561438d3555688a05ef508"
-_file_zip_arm_hash="f7c3185dd58ea00a761ddf632ade3fc8c19bc6251bd1c4ba02e6e07cb02fc0fa22e394a398377fde01d77a655350f8cdcdac3390218a9e0e9d78baf4fb2fa313"
 
 # Source declaration
 source=("${_file_desktop}" "${_file_mime}")
@@ -38,11 +31,12 @@ source_armv6h=("hib://${_file_zip_arm}")
 source_armv7h=("hib://${_file_zip_arm}")
 
 # Source files hash declaration (SHA-512)
-sha512sums=("${_file_desktop_hash}" "${_file_mime_hash}")
-sha512sums_i686=("${_file_zip_i686_hash}")
-sha512sums_x86_64=("${_file_zip_x86_64_hash}")
-sha512sums_armv6h=("${_file_zip_arm_hash}")
-sha512sums_armv7h=("${_file_zip_arm_hash}")
+sha256sums=('6e9f6e6bee12e18c254e9e4a5843aed6a6181862bb629fb2d2f7a965ade5d523'
+            '1d5a1a2af803f16f0ed809ae55ad406447453a2ecb0cc11a62d5928d42349c08')
+sha256sums_i686=('3ddc7ae2fc67352cabda1935114403cc70f408f73d25faee5385d85faa071f2f')
+sha256sums_x86_64=('a433059942d5a4275d879c718a7d7d1611068d65f9cf57782ffefb11d7e2c8db')
+sha256sums_armv6h=('56a1239373f1681104a76ca24a1b3534079707ed787cde5d948ed71c651ba59e')
+sha256sums_armv7h=('56a1239373f1681104a76ca24a1b3534079707ed787cde5d948ed71c651ba59e')
 
 # Gets the current zip used
 [ "${CARCH}" = "i686" ] && _platform="${_arch_i686}"
