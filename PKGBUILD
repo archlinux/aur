@@ -1,12 +1,12 @@
-# Maintainer: dkasak <dkasak AT termina DOT org DOT uk>
-# Comaintainer: tux268 <tux268 AT tux268 DOT xyz>
+# Maintainer: tux268 <tux268 AT tux268 DOT xyz>
+# Comaintainer: dkasak <dkasak AT termina DOT org DOT uk>
 # Contributor: nblock <nblock [/at\] archlinux DOT us>
 # Contributor: DigitalPathogen <aur@digitalpathogen.co.uk>
 # Contributor: daronin
 # Contributor: kageurufu
 
 pkgname=burpsuite
-pkgver=2022.8.3
+pkgver=2022.9
 pkgrel=1
 pkgdesc="An integrated platform for performing security testing of web applications (free edition)"
 url="https://portswigger.net/burp/"
@@ -19,7 +19,7 @@ source=("${pkgname}-${pkgver}.jar::https://portswigger.net/burp/releases/downloa
         burpsuite.desktop
         icon64.png)
 install=burpsuite.install
-sha256sums=('a8abf6cbc93cb3af5f4cbb82dfd31d0816a4ceb4daa394ed1fcf5de2db0e37ed'
+sha256sums=('74f5d61ef0ee0d95724a6851017b7b26951d4ba80868b586faba3403acff2deb'
             'a1146672de7084a1cddc5b7dab4d18b3530c194bd6e45a2b0ac04b579751ca30'
             '950c61d7ce1257c21a4152abebb8da320d0206ceb59247d6c912903d1ed39fc8'
             'd31232a7dbdab9d5723f12aa25c52d13fd46ef2e8837a85fb9a08c3a7f151541')
