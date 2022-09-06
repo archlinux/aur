@@ -2,13 +2,13 @@
 
 pkgname=flutter-beta
 pkgver=3.3.0_0.5.pre
-pkgrel=1
+pkgrel=2
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64")
 url="https://${pkgname%-beta}.io"
 license=("custom" "BSD" "CCPL")
 depends=("git" "glu" "java-environment" "libglvnd" "unzip")
-optdepends=("android-sdk" "android-studio" "dart" "intellij-idea-community-edition" "intellij-idea-ultimate-edition" "perl" "python" "android-sdk-cmdline-tools-latest: for android checks" "cmake: for linux desktop build")
+optdepends=("android-sdk" "android-studio" "dart" "intellij-idea-community-edition" "intellij-idea-ultimate-edition" "perl" "python" "android-sdk-cmdline-tools-latest: for android checks" "cmake: for linux desktop build" "ninja: for linux desktop build")
 makedepends=("python")
 provides=("${pkgname%-beta}=${pkgver}")
 conflicts=("${pkgname%-beta}")
