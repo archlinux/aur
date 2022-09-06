@@ -6,16 +6,18 @@ pkgdesc="A Python library for network analysis"
 url="http://udst.github.io/pandana/"
 
 pkgver=0.6.1
-pkgrel=4
+pkgrel=5
 
 arch=("any")
 license=("AGPL")
 
 makedepends=(
-    "python-setuptools"
+    "cython"
+    "python-build"
+    "python-installer"
+    "python-wheel"
 )
 depends=(
-    "cython"
     "python"
     "python-numpy"
     "python-pandas"
@@ -27,24 +29,15 @@ optdepends=(
     "python-osmnet"
 )
 
-source=(
-    "https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
-    "${pkgname}-${pkgver}_LICENSE::https://raw.githubusercontent.com/UDST/pandana/v${pkgver}/LICENSE.txt"
-)
-sha256sums=(
-    "7bcaf6e7bb3faccaf306846bf30838d8e94b3ebd58e971da8c3fe426f1f9288c"
-    "cb1cbc85fa3c01c538774e9f2c877c365ad8d1a9264d332f93ef39b5ca8b95cb"
-)
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+b2sums=("707512889661289e470ad1a9ec815258cc055d9ac5f4247e0d44a3f33e2b2995df8c69c45ec4a92e276339b8e6f0ce3615f1da2592ae81943857bc15f1420757")
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${srcdir}/${_name}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1
-
-    cd "${srcdir}"
-    install -Dm644 "${pkgname}-${pkgver}_LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
