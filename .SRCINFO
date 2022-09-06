@@ -1,0 +1,12 @@
+pkgbase = anew
+	pkgdesc = A tool for adding new lines to files, skipping duplicates
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/tomnomnom/anew
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = anew-0.1.1.tar.gz::https://github.com/tomnomnom/anew/archive/v0.1.1.tar.gz
+	b2sums = SKIP
+
+pkgname = anew
