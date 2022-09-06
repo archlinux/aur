@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=cavif-git
-pkgver=1.3.1.win.r13.gb0a2d76
-pkgrel=2
+pkgver=1.3.5.r0.gff0e85b
+pkgrel=1
 pkgdesc="AVIF image creator in pure Rust"
 arch=('i686' 'x86_64')
 url="https://lib.rs/crates/cavif"
 license=('BSD')
 depends=('gcc-libs')
 makedepends=('git' 'nasm' 'rust')
-provides=('cavif')
+provides=("cavif=$pkgver")
 conflicts=('cavif')
 source=("git+https://github.com/kornelski/cavif-rs.git")
 sha256sums=('SKIP')
