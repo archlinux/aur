@@ -100,5 +100,7 @@ pkgname = gdal-hdf4
 
 pkgname = python-gdal-hdf4
 	pkgdesc = Python bindings for GDAL
-	depends = gdal=3.5.1
+	depends = gdal-hdf4=3.5.1
 	depends = python-numpy
+	provides = python-gdal
+	conflicts = python-gdal

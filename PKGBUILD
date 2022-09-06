@@ -109,8 +109,10 @@ package_gdal-hdf4 () {
 
 package_python-gdal-hdf4 () {
   pkgdesc="Python bindings for GDAL"
-  depends=("gdal=$pkgver" 'python-numpy')
-
+  depends=("gdal-hdf4=$pkgver" 'python-numpy')
+  provides=("python-gdal")
+  conflicts=("python-gdal")
+  
   install -d "${pkgdir}"/usr/{bin,lib}
   mv bin/* "${pkgdir}"/usr/bin
   mv lib/* "${pkgdir}"/usr/lib
