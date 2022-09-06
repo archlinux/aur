@@ -1,8 +1,8 @@
 # Maintainer: Emma Tebibyte <emma@tebibyte.media>
 
 pkgname="xdg-sanity"
-pkgver=0.2
-pkgrel=3
+pkgver=0.3
+pkgrel=1
 pkgdesc="A tool to sanely open http/s links."
 arch=("any")
 url="https://git.tebibyte.media/emma/xdg-sanity"
