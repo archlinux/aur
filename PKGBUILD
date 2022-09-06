@@ -1,7 +1,8 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Andrej Radović <r.andrej@gmail.com>
 
 pkgname=python-copier
-pkgver=5.1.0
+_name=${pkgname#python-}
+pkgver=6.1.0
 pkgrel=1
 pkgdesc='Library and command-line utility for rendering projects templates'
 arch=('any')
@@ -18,22 +19,22 @@ depends=('python-yaml'
          'python-pytest-xdist'
          'python-pyyaml-include')
 makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/67/95/911bb7c4e30333312cd372c09423acabe76986968aaa77482b2c479bad1e/copier-5.1.0.tar.gz")
-sha256sums=('4afec02c6fa3efcac73e89307a1fddce1b71bf43f2df2adc338b97b89949a59b')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('d3b399285763e97a1c3c49cbc7e0d3b3cea2f05b680f652ff58d59a5b59f3a3c')
 
 prepare() {
-  cd "copier-${pkgver}"
+	cd "$srcdir/$_name-$pkgver"
   # Bypass stupid dependency check
-  sed -i "14s|0.8.0|0.9.0|" setup.py	
+  sed -i "14s|0.8.0|0.9.0|" setup.py
 }
 
 build() {
-  cd "copier-${pkgver}"
+	cd "$srcdir/$_name-$pkgver"
   python setup.py build
 }
 
 package() {
-  cd "copier-${pkgver}"
+	cd "$srcdir/$_name-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}"
