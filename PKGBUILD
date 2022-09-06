@@ -9,20 +9,19 @@ _gitroot="https://git.kernel.org/pub/scm/linux/kernel/git/stable/${_srcname}"
 _gitbranch="linux-rolling-stable"
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for BPIR64"
-pkgver=5.18.14.bpi.r64.1
+pkgver=5.19.7.bpi.r64.1
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
-makedepends=('kmod' 'inetutils' 'bc' 'git' 'dtc')
+makedepends=('kmod' 'inetutils' 'bc' 'git')
 options=('!strip')
 source=('defconfig'
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook'
-        '95-linux.hook'
-        'bpir64-writefip')
-md5sums=(SKIP SKIP SKIP SKIP SKIP SKIP)
+)
+md5sums=(SKIP SKIP SKIP SKIP)
 
 export LOCALVERSION="-${pkgrel}"
 
@@ -68,7 +67,7 @@ build() {
 
 _package() {
   pkgdesc="The Linux Kernel and modules - ${_desc}"
-  depends=('coreutils' 'linux-firmware' 'kmod' 'bpir64-atf-git')
+  depends=('coreutils' 'linux-firmware' 'kmod')
   optdepends=('mkinitcpio>=0.7')
   provides=("linux=${pkgver}" "WIREGUARD-MODULE")
   replaces=('linux-armv8')
@@ -85,11 +84,10 @@ _package() {
   _basekernel=${_kernver%%-*}
   _basekernel=${_basekernel%.*}
 
-  mkdir -p "${pkgdir}"/{boot,boot/dtss,boot/dtbs,usr/lib/modules}
+  mkdir -p "${pkgdir}"/{boot,boot/dtbs,usr/lib/modules}
   make INSTALL_MOD_PATH="${pkgdir}/usr" DEPMOD=/doesnt/exist modules_install
-  make dtbs
   cp arch/$KARCH/boot/Image{,.gz} "${pkgdir}/boot"
-  cp arch/$KARCH/boot/dts/mediatek/.*.dtb.dts.tmp "${pkgdir}/boot/dtss"
+  cp arch/$KARCH/boot/dts/mediatek/*.dtb "${pkgdir}/boot/dtbs"
 
   # make room for external modules
   local _extramodules="extramodules-${_basekernel}${_kernelname}"
@@ -124,11 +122,6 @@ _package() {
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
   sed "${_subst}" ../90-linux.hook |
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
-  sed "${_subst}" ../95-linux.hook |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/95-${pkgbase}.hook"
-
-  cd "${startdir}"
-  install -m755 -vDt $pkgdir/usr/bin bpir64-writefip
 }
 
 _package-headers() {

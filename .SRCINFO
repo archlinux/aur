@@ -1,5 +1,5 @@
 pkgbase = linux-bpir64-git
-	pkgver = 5.18.14.bpi.r64.1
+	pkgver = 5.19.7.bpi.r64.1
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = aarch64
@@ -8,16 +8,11 @@ pkgbase = linux-bpir64-git
 	makedepends = inetutils
 	makedepends = bc
 	makedepends = git
-	makedepends = dtc
 	options = !strip
 	source = defconfig
 	source = linux.preset
 	source = 60-linux.hook
 	source = 90-linux.hook
-	source = 95-linux.hook
-	source = bpir64-writefip
-	md5sums = SKIP
-	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
@@ -29,9 +24,8 @@ pkgname = linux-bpir64-git
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
-	depends = bpir64-atf-git
 	optdepends = mkinitcpio>=0.7
-	provides = linux=5.18.14.bpi.r64.1
+	provides = linux=5.19.7.bpi.r64.1
 	provides = WIREGUARD-MODULE
 	conflicts = linux
 	replaces = linux-armv8
@@ -39,5 +33,5 @@ pkgname = linux-bpir64-git
 
 pkgname = linux-bpir64-git-headers
 	pkgdesc = Header files and scripts for building modules for linux kernel - AArch64 kernel for BPIR64
-	provides = linux-headers=5.18.14.bpi.r64.1
+	provides = linux-headers=5.19.7.bpi.r64.1
 	conflicts = linux-headers
