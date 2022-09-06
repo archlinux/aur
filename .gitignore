@@ -7,3 +7,4 @@ src/
 cp2k
 download
 *ssmp
+*.part
