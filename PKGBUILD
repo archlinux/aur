@@ -1,7 +1,7 @@
 # Maintainer: Trizen <echo dHJpemVuQHByb3Rvbm1haWwuY29tCg== | base64 -d>
 
 pkgname=fbmenugen
-pkgver=0.86
+pkgver=0.87
 pkgrel=1
 pkgdesc="A simple menu generator for the Fluxbox Window Manager (with support for icons)."
 url="https://github.com/trizen/$pkgname"
@@ -16,7 +16,7 @@ optdepends=(
 )
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('0161cb078b93044a5baa9c4ad299cf09618a453dff12f044fef5a781aa07d0ad82ee25b806663950c5247f8ace25df26ad6101fc87530bc8947e64b5fe9c74d7')
+b2sums=('af085e99ebb2d8b579901f8c490874842d0d9299665e160e4aaf0c61d116af9af74c227c148ed64ddb2833d8d52d4b479e75d94392bad717f3e87091610ded00')
 install='readme.install'
 
 package() {
