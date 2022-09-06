@@ -4,9 +4,9 @@
 
 _pkgname=browser-stable
 pkgname=yandex-browser
-pkgver=22.7.3.811_1
-_pkgver=22.7.3.811-1
-pkgrel=2
+pkgver=22.7.5.933_1
+_pkgver=22.7.5.933-1
+pkgrel=1
 #epoch=1
 
 pkgdesc="The web browser from Yandex.
@@ -30,7 +30,7 @@ optdepends=(
 )
 
 source=("${pkgname}-${pkgver}.deb::https://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-${_pkgname}/yandex-${_pkgname}_${_pkgver}_amd64.deb")
-sha256sums=("8c24f2ad31720b8d977c4964102fb61980bc73972e1cd7b994cbcaca3e7d5e71")
+sha256sums=("5251672f0a624ba2aa9027638369f712820963bff861b436f5bd3cbc78e83d20")
 install=yandex-browser.install
 
 prepare() {
