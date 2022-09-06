@@ -4,4 +4,4 @@ JV="/usr/lib/jvm/default"
 
 export PATH="${JV}/bin/:$PATH"
 
-java --module-path ${JV}/lib/javafx.base.jar:${JV}/lib/javafx.controls.jar:${JV}/lib/javafx.graphics.jar:${JV}/lib/javafx.swing.jar --add-modules javafx.base,javafx.controls,javafx.graphics,javafx.swing -jar /usr/share/java/mcaselector.jar "$@"
+exec java --module-path ${JV}/lib/javafx.base.jar:${JV}/lib/javafx.controls.jar:${JV}/lib/javafx.graphics.jar:${JV}/lib/javafx.swing.jar --add-modules javafx.base,javafx.controls,javafx.graphics,javafx.swing -jar /usr/share/java/mcaselector.jar "$@"
