@@ -1,66 +1,67 @@
-# Original Maintainer: Eugen Zagorodniy <https://github.com/ezag>
-# Maintainer: Henry de Valence <hdevalence@hdevalence.ca>
-# This package was adapted from the libkml package with minimal changes.
+# Contributor: Jan de Groot <jgc@archlinux.org>
+# Contributor: Giovanni Scafora <giovanni@archlinux.org>
+# Contributor: Maël Lavault <moimael@neuf.fr>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Samuel Mesa <samuelmesa@linuxmail.org>
+# Maintainer: Alireza S.N. <alireza6677@gmail.com> 
 
 pkgname=libkml-git
-pkgver=r742.9b50572
-pkgrel=3
+_pkgname=libkml
+pkgver=1062.878abd1
+pkgrel=1
 pkgdesc="A KML library written in C++ with bindings to other languages"
-arch=(i686 x86_64)
-url="https://github.com/google/libkml"
+arch=('i686' 'x86_64')
+url="https://github.com/libkml/libkml"
 license=('BSD')
 depends=('expat' 'uriparser')
-makedepends=('git')
 optdepends=('swig: bindings for additional languages'
-            'python2: python bindings'
-            'jdk: java bindings')
-# TODO: Use existing minizip package instead of conflicting with it.
-conflicts=('minizip' 'libkml')
-provides=('minizip' 'libkml')
-source=('libkml'::'git://github.com/google/libkml.git')
-md5sums=('SKIP')
+            'python2: python bindings')
+makedepends=('cmake' 'swig' 'boost')
+provides=('libkml')
+conflicts=('libkml-dev' 'libkml-git')
+source=("libkml::git+https://github.com/libkml/libkml.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/libkml
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${_pkgname}
+  printf "%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd ${_pkgname}
+  git checkout synced_upstream
 }
 
 build() {
-  cd $srcdir/libkml
-  
-  ./autogen.sh
+  cd ${_pkgname}
 
-  # '--Wno-long-long' works around warning (with -Wall treated as error)
-  # in 'third_party/boost_1_34_1/boost/config/suffix.hpp', lines 435-436.
-  #
-  # '--no-as-needed' works around 'undefined reference' errors in
-  # 'examples/helloworld'.
-  #
+  if [ -f CMakeCache.txt ]  
+    then
+    rm -rf CMakeCache.txt CMakeFiles
+  fi  
+
+  rm -rf build && mkdir build
+  cd build
+
+   cmake .. \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DWITH_SWIG=OFF \
+    -DWITH_PYTHON=OFF \
+    -DBUILD_EXAMPLES=OFF
+
   # Add --disable-python or --disable-java to configure flags if your
   # system doesn't have corresponding language.
 
-  CXXFLAGS+=' -Wno-long-long -O2 ' LDFLAGS+=-Wl,--no-as-needed PYTHON=python2 \
-  ./configure --prefix=/usr --enable-systempython \
-              --with-python-include-dir=/usr/include/python2.7 \
-              --with-python-lib-dir=/usr/lib/python2.7
-
-  # See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=667247
-  sed -i '34i #include <unistd.h>' src/kml/base/file_posix.cc
-
+  make clean
   make 
-
-  # TODO: Use installed packages instead of contents of third_party
-  # directory if possible.
-
-  # TODO: Either fix 'WARNING: Package contains reference to $srcdir' or
-  # ensure that it is harmless.
 }
 
 package() {
-  cd libkml
-  make DESTDIR="$pkgdir/" install
-  # TODO: Remove uriparser sources before building and use existing package.
-  rm "$pkgdir/usr/lib/liburiparser."{{,l}a,so{,.1{,.0.5}}}
-  mkdir -p "$pkgdir/share/licenses/$pkgname"
-  cp COPYING "$pkgdir/share/licenses/$pkgname/"
+  cd ${_pkgname}
+  cd build
+
+  make || return 1
+  make DESTDIR=${pkgdir} install
+  patchelf --add-needed liburiparser.so.1 $pkgdir/usr/lib/libkmlbase.so
 }
