@@ -2,7 +2,7 @@
 
 pkgname="xdg-sanity"
 pkgver=0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to sanely open http/s links."
 arch=("any")
 url="https://git.tebibyte.media/emma/xdg-sanity"
@@ -23,7 +23,7 @@ prepare() {
 
 package() {
   cd $srcdir
-  install -D ${pkgname}/xdg-sanity.sh ${pkgdir}/usr/local/bin/xdg-sanity
+  install -D ${pkgname}/xdg-sanity.sh ${pkgdir}/usr/bin/xdg-sanity
   install -D ${pkgname}/xdg-sanity/xdg-sanity.conf ${pkgdir}/etc/xdg-sanity/xdg-sanity.conf
   install -D ${pkgname}/xdg-sanity/extensions/teddit-mime.sample ${pkgdir}/etc/xdg-sanity/extensions/teddit-mime.sample
   install -D ${pkgname}/xdg-sanity/extensions/youtube-replace.sample ${pkgdir}/etc/xdg-sanity/extensions/youtube-replace.sample
