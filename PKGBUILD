@@ -29,7 +29,7 @@ pkgver() {
 build() {
     cd "${pkgname%-git}"
     gradle build -Prelease
-    mv "launcher/build/libs/Inceptum-$(git describe --tags --abbrev=0)-custom.jar" "../${pkgname%-git}.jar"
+    mv "launcher-dist/build/libs/Inceptum-$(git describe --tags --abbrev=0)-custom.jar" "../${pkgname%-git}.jar"
 }
 
 package() {
