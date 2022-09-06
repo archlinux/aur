@@ -83,12 +83,13 @@ check() {
     # For these hello world examples (in a frequently updated package), this is very wasteful.
     #
     # Right now there is no way to disable the cache (see Zig issue #12317)
-    # Instead we shove everything in a local directory
+    # Instead we shove everything in a local directory and delete it
     cache_dir="${srcdir}/zig-cache"
     cd "${srcdir}/zig-linux-${CARCH}-${pkgver//_/-}";
     echo "Running Zig Hello World"
     ./zig run --cache-dir "$cache_dir" --global-cache-dir "$cache_dir" "$hello_file"
     ./zig test --cache-dir "$cache_dir" --global-cache-dir "$cache_dir" "$hello_file"
+    rm -rf "$cache_dir"
     rm -rf "$cache_dir";
     local missing_docs=();
     # Zig has had long-running issues with the location
