@@ -1,15 +1,17 @@
 pkgbase = python-segno
 	pkgdesc = Python QR Code and Micro QR Code encoder
 	pkgver = 1.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://segno.readthedocs.io/
 	arch = any
 	license = BSD
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = python-pypng
 	depends = pyzbar
 	source = https://files.pythonhosted.org/packages/source/s/segno/segno-1.5.2.tar.gz
-	sha256sums = 983424b296e62189d70fc73460cd946cf56dcbe82b9bda18c066fc1b24371cdc
+	b2sums = 29236cfb11028c6b43f5b3cb336dd4f6ee7bdfb527bda549c32a739b4353a81d3cff185859693d90c5c70ef7703f4d2cf591829bba83b605f51eabf97f1e4e71
 
 pkgname = python-segno

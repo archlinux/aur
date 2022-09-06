@@ -6,13 +6,15 @@ pkgdesc="Python QR Code and Micro QR Code encoder"
 url="https://segno.readthedocs.io/"
 
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 
 arch=("any")
 license=("BSD")
 
 makedepends=(
-    "python-setuptools"
+    "python-build"
+    "python-installer"
+    "python-wheel"
 )
 depends=(
     "python"
@@ -21,16 +23,14 @@ depends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('983424b296e62189d70fc73460cd946cf56dcbe82b9bda18c066fc1b24371cdc')
+b2sums=("29236cfb11028c6b43f5b3cb336dd4f6ee7bdfb527bda549c32a739b4353a81d3cff185859693d90c5c70ef7703f4d2cf591829bba83b605f51eabf97f1e4e71")
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${srcdir}/${_name}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1
-
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
