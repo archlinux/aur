@@ -1,7 +1,7 @@
 pkgbase = altirra
 	pkgdesc = An 8-bit Atari computer emulator, on Wine
 	pkgver = 4.01
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.virtualdub.org/altirra.html
 	arch = any
 	license = GPL2

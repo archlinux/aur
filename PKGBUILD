@@ -1,7 +1,7 @@
 # Maintainer: jmcb <joelsgp@protonmail.com>
 pkgname=altirra
 pkgver=4.01
-pkgrel=4
+pkgrel=5
 pkgdesc="An 8-bit Atari computer emulator, on Wine"
 arch=('any')
 url="https://www.virtualdub.org/altirra.html"
@@ -46,7 +46,7 @@ package() {
     # desktop entry
     share="${pkgdir}"/usr/share
     install -Dm644 ${pkgname}.desktop "${share}"/applications/${pkgname}.desktop
-    install -Dm644 ${pkgname}.png "${share}"/icons/${pkgname}.png
+    install -Dm644 ${pkgname}.png "${share}"/pixmaps/${pkgname}.png
     install -Dm644 application-${pkgname}.xml "${share}"/mime/packages/application-${pkgname}.xml
     # PATH symlink
     install -dm755 "${pkgdir}"/usr/bin/
