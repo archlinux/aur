@@ -1,6 +1,6 @@
 pkgbase = coolvlviewer-bin
-	pkgdesc = A third-party viewer for Second Life (C) (secondlife) and OpenSim (opensimulator) grids. ('VL' stands for virtual life, formerly known as 'Cool SL Viewer', binary)
-	pkgver = 1.30.0.9
+	pkgdesc = A third-party viewer for Second Life (TM) and OpenSim grids.
+	pkgver = 1.30.0.15
 	pkgrel = 1
 	url = http://sldev.free.fr
 	install = coolvlviewer.install
@@ -41,11 +41,11 @@ pkgbase = coolvlviewer-bin
 	conflicts = coolvlviewer
 	conflicts = coolvlviewer-experimental
 	conflicts = coolvlviewer-experimental-bin
-	source = http://sldev.free.fr/binaries/CoolVLViewer-1.30.0.9-Linux-x86_64-Setup
+	source = http://sldev.free.fr/binaries/CoolVLViewer-1.30.0.15-Linux-x86_64-Setup
 	source = coolvlviewer.desktop
 	source = coolvlviewer.launcher
-	sha1sums = 5cbd5af28b9dfd4dc28b30d2009ec72e7e7222bd
-	sha1sums = 76de75412aad003b680bcb58ae54e51096642b0e
+	sha1sums = c47bb62ea5e2bbf5c65d721324864c2b27d8739e
+	sha1sums = e08076db600f7dcee78c0f7b861e8e78f16a069d
 	sha1sums = 3ef1284a00a4437e4c34f809311ee0672604ef04
 
 pkgname = coolvlviewer-bin
