@@ -1,0 +1,11 @@
+pkgbase = python-diffusers
+	pkgdesc = Pretrained diffusion models
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://pypi.org/project/diffusers
+	arch = x86_64
+	license = Apache License 2.0
+	source = python-diffusers-0.2.4::https://github.com/huggingface/diffusers/archive/refs/tags/v0.2.4.tar.gz
+	b2sums = 348a75f20ef36c44784d2235bc70ce35033d331dd384c382a3edbfadeac9ac3a6a24fc383421be32834eb81dc00feb035d2998dc511c4591580d10752c956261
+
+pkgname = python-diffusers
