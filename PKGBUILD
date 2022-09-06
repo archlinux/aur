@@ -8,8 +8,8 @@ pkgbase=java-openjdk-xdg
 pkgname=('jre-openjdk-headless-xdg' 'jre-openjdk-xdg' 'jdk-openjdk-xdg' 'openjdk-src-xdg' 'openjdk-doc-xdg')
 _majorver=18
 _minorver=0
-_securityver=1.1
-_updatever=2
+_securityver=2.1
+_updatever=0
 pkgrel=1
 pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 #pkgver=${_majorver}.u${_updatever}
@@ -29,7 +29,7 @@ source=(https://github.com/openjdk/jdk${_majorver}u/archive/${_git_tag}.tar.gz
         freedesktop-jshell.desktop
         xdg-basedir-compliant-fontconfig.patch
         xdg-basedir-compliant-userPrefs.patch)
-sha256sums=('57ed6b990b24b1e8b50099a265841add596d2c82e73c7c82bb530a8f53a47732'
+sha256sums=('d3955839c1f566f949fbdf5d4f32a6fac2e57598fba2a1cbc8557c96df6ac8c4'
             '58bf779332d21151ba47719926ddcc8811ac7bbf414222141dcf40ac54cfaa2d'
             '3a50ded3918024de4e441a46744c8e342faf46441b53c8bac7d589055a28a13c'
             '2cace78ec911f73578991370914753c5b6abe9f7304bcbcb7a3077b8dbc7c867'
