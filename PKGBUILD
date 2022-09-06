@@ -34,10 +34,11 @@ build() {
   sed -i 's@-Werror@@g' configure
 
   ./configure \
-    --prefix=/opt/local \
-    --libdir=/opt/local/lib \
-    --incdir=/opt/local/include \
-    --shlibdir=/opt/local/lib \
+    --prefix=/opt/ffmpeg063 \
+    --libdir=/opt/ffmpeg063/lib \
+    --incdir=/opt/ffmpeg063/include \
+    --shlibdir=/opt/ffmpeg063/lib \
+    --bindir=/opt/bin \
     --enable-gpl \
     --enable-static \
     --enable-shared \
@@ -50,9 +51,9 @@ package() {
   cd ffmpeg-${pkgver}
 
   make DESTDIR="$pkgdir" install
-  rm -rf "$pkgdir"/opt/local/bin/ffprobe
-  rm -rf "$pkgdir"/opt/local/share
+  rm -rf "$pkgdir"/opt/bin/ffprobe
+  rm -rf "$pkgdir"/opt/ffmpeg063/share
 
-  find "${pkgdir}"/opt/local/bin -type f -exec mv {} {}063 \;
+  find "${pkgdir}"/opt/bin -type f -exec mv {} {}063 \;
 }
 
