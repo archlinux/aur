@@ -1,17 +1,23 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 _name=better_exchook
 pkgname=python-$_name
-pkgver=1.20210525.222418
+pkgver=1.20220510.124015
 pkgrel=1
 pkgdesc='A nicer drop-in-replacement for Python sys.excepthook'
 arch=(any)
 url='https://github.com/albertz/py_better_exchook'
 license=(BSD)
 depends=(python)
+makedepends=(python-setuptools python-installer python-build)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('ffc59f7b18a55883680962dd4d56b7042c59d9e8daccd68a146b25def2583c0e')
+sha256sums=('237f2be7f6a8add7666e0207c5643af3d279400a7dc8ff788ecf9d2d5851d0a1')
+
+build() {
+	cd "$_name-$pkgver"
+	python -m build --wheel --no-isolation
+}
 
 package() {
-	cd "$srcdir/$_name-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1 || return 1
+	cd "$_name-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
