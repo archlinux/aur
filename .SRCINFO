@@ -1,19 +1,15 @@
 pkgbase = icmptunnel
 	pkgdesc = Transparently tunnel your IP traffic through ICMP echo and reply packets.
-	pkgver = 1.0.0alpha
-	pkgrel = 2
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/DhavalKapil/icmptunnel
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = git
-	depends = net-tools
-	provides = icmptunnel
-	conflicts = icmptunnel
-	source = https://github.com/DhavalKapil/icmptunnel/archive/1.0.0-alpha.tar.gz
+	depends = bash
+	source = https://github.com/DhavalKapil/icmptunnel/archive/v1.0.0/icmptunnel-1.0.0.tar.gz
 	source = http://dhaval.mit-license.org/license.txt
-	sha256sums = 8479ee13f8c0c7af07ecd30d7af15cddf228ae126c1403b16283333c506dccd8
-	sha256sums = 3585554f45a91e63966157bd5179399caa0ad1a857047926184135d24cd81ccf
+	sha256sums = 8f743f18856c43295678c57cb435f44c16e2bdeb3a4b8b59be05c372fb725877
+	sha256sums = 48c6c6c6d385682c5ad938d7db7f52b895cdef3b0fe3394f8a332433e653c7f1
 
 pkgname = icmptunnel
-
