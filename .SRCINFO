@@ -1,0 +1,15 @@
+pkgbase = cysinfo-git
+	pkgdesc = A super simple and minimal fetch tool.
+	pkgver = r5.278d10a
+	pkgrel = 1
+	url = https://gitlab.com/charged1/cysinfo.git
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	depends = gawk
+	provides = cysinfo
+	source = git+https://gitlab.com/charged1/cysinfo.git
+	md5sums = SKIP
+
+pkgname = cysinfo-git
