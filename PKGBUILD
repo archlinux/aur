@@ -2,7 +2,7 @@
 # Maintainer: skrewball <aur at joickle dot com>
 
 pkgname=gnome-shell-extension-vitals
-pkgver=55.0.1
+pkgver=57.0.0
 pkgrel=1
 pkgdesc="Displays system vitals in a GNOME Shell top bar pop-down."
 arch=('any')
