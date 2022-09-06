@@ -2,7 +2,7 @@
 
 pkgname=ldtk
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern and efficient 2D level editor with a strong focus on user-friendliness"
 arch=('x86_64')
 url="https://github.com/deepnight/ldtk"
@@ -23,7 +23,7 @@ build() {
   haxelib install uuid --always
   haxelib install format --always
   haxelib git castle https://github.com/deepnight/castle 6f10ab76e8439b29849bd5174f56ff8f9365b435 --always
-  haxelib git heaps https://github.com/deepnight/heaps.git 7437586da49e7648333b4e8cc3852ddc01e65532 --always
+  haxelib git heaps https://github.com/deepnight/heaps.git dd0f74e7c00997c70c2a234285027c55b04c75a7 --always
   haxelib git hxnodejs https://github.com/HaxeFoundation/hxnodejs.git e37e79fce8a2a2177a0a73ce9d8eff2acdbcfa8b --always
   haxelib git electron https://github.com/tong/hxelectron.git 3074aa35e698016239e17923b3952decea4593cf --always
   haxelib git heaps-aseprite https://github.com/AustinEast/heaps-aseprite.git 81aee42a6c1548433003e3c589d58e9fdf01415e --always
