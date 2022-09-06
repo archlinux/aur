@@ -1,7 +1,7 @@
 pkgbase = ffdiaporama
 	pkgdesc = Movie creator from photos and video clips
 	pkgver = 2.1
-	pkgrel = 2
+	pkgrel = 1
 	url = http://ffdiaporama.tuxfamily.org
 	arch = i686
 	arch = x86_64

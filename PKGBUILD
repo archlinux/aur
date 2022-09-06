@@ -4,7 +4,7 @@
 pkgname=ffdiaporama
 _pkgdir="ffDiaporama"
 pkgver=2.1
-pkgrel=2
+pkgrel=1
 pkgdesc='application for creating video sequences consisting of photos, movies, music'
 arch=(x86_64)
 url=http://ffdiaporama.tuxfamily.org
