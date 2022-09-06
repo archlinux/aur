@@ -1,17 +1,16 @@
 pkgbase = mimi-git
 	pkgdesc = best alternative to xdg-open (git version)
-	pkgver = 60.2758674
+	pkgver = 66.c9ce958
 	pkgrel = 1
 	url = http://github.com/taylorchu/mimi
 	arch = any
-	license = GPL2
+	license = MIT
 	makedepends = git
 	depends = bash
 	depends = dmenu
 	provides = xdg-utils
 	conflicts = xdg-utils
-	source = git://github.com/taylorchu/mimi.git
+	source = git+https://github.com/taylorchu/mimi.git
 	md5sums = SKIP
 
 pkgname = mimi-git
-
