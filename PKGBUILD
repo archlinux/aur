@@ -1,21 +1,25 @@
-# Maintainer: Benoît Zugmeyer <bzugmeyer@gmail.com>
+# Contributor: Benoît Zugmeyer <bzugmeyer@gmail.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 pkgname=deno-git
-pkgver=1.9.2.r89.ga051a7f7b
+pkgver=1.25.1.r7830.g2929ddabaab0
 pkgrel=1
 pkgdesc="A secure runtime for JavaScript and TypeScript"
 arch=('x86_64')
 url="https://deno.land"
 provides=('deno')
+conflicts=('deno')
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'python' 'cargo' 'nodejs')
 source=("deno-git::git+https://github.com/denoland/deno")
-md5sums=(SKIP)
+md5sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags --match 'v*.*.*' 2>/dev/null | sed 's/[^[:digit:]]*\(.\+\)-\([[:digit:]]\+\)-g\([[:xdigit:]]\{7\}\)/\1.r\2.g\3/;t;q1'
-}
+  printf %s.r%s.g%s  $(git tag | cut -c2- |sort -n|tail -1) $(git rev-list --count HEAD) \
+	 $(git log|head -1| cut -d" " -f2|cut -c1-12)
+ }
 
 prepare() {
   cd "$pkgname"
@@ -25,13 +29,6 @@ prepare() {
 build() {
   cd "$pkgname"
   RUSTUP_TOOLCHAIN=stable cargo build --release --locked --target-dir=target
-}
-
-check() {
-  cd "$pkgname"
-  # Tests are not passing sometimes
-  # RUSTUP_TOOLCHAIN=stable cargo test --release --locked --target-dir=target
-  ./target/release/deno run ./cli/tests/002_hello.ts
 }
 
 package() {

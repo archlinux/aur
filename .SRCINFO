@@ -1,6 +1,6 @@
 pkgbase = deno-git
 	pkgdesc = A secure runtime for JavaScript and TypeScript
-	pkgver = 1.9.2.r89.ga051a7f7b
+	pkgver = 1.25.1.r7830.g2929ddabaab0
 	pkgrel = 1
 	url = https://deno.land
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = deno-git
 	makedepends = nodejs
 	depends = gcc-libs
 	provides = deno
+	conflicts = deno
 	source = deno-git::git+https://github.com/denoland/deno
 	md5sums = SKIP
 
 pkgname = deno-git
-
