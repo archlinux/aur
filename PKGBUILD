@@ -68,7 +68,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=5.18.18
+pkgver=5.19.7
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -81,8 +81,8 @@ options=('!strip')
 
 # https://ck-hack.blogspot.com/2021/08/514-and-future-of-muqss-and-ck-once.html
 # acknowledgment to xanmod for initially keeping the hrtimer patches up to date
-_ckhrtimer=linux-5.17.y
-_commit=5d3a0424bdbfdf2fc4cca389bf0f1ee4876e782d
+_ckhrtimer=linux-5.19.y
+_commit=9b792e6dc19ee6bd70e7c71f579f4d87ff929c60
 
 _gcc_more_v=20220315
 source=(
@@ -91,25 +91,25 @@ source=(
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   "ck-hrtimer-$_commit.tar.gz::https://github.com/graysky2/linux-patches/archive/$_commit.tar.gz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-HID-apple-Properly-handle-function-keys-on-Keychron-.patch
-  0003-soundwire-Raise-DEFAULT_PROBE_TIMEOUT-to-10000-ms.patch
-  0004-drm-i915-psr-Use-full-update-In-case-of-area-calcula.patch
-  0005-drm-i915-Ensure-damage-clip-area-is-within-pipe-area.patch
+  0002-drm-i915-psr-Use-full-update-In-case-of-area-calcula.patch
+  0003-drm-i915-Ensure-damage-clip-area-is-within-pipe-area.patch
+  0004-mm-vmscan-fix-extreme-overreclaim-and-swap-floods.patch
+  0005-soundwire-intel-use-pm_runtime_resume-on-component-p.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('c1c376c8dcc5c226c5f190f6eaf687495d3cf87b927d5e1a8fed9bcfa966402b'
+sha256sums=('b8bb6019d4255f39196726f9d0f82f76179d1c3d7c6b603431ef04b38201199f'
             'SKIP'
-            '03843566d43e1335cc950038537f6b4e594018f34a9510ca52dc37af6e6ac411'
+            'ec58b63109b23d318af62b48a4f43e3042ddb45e71060c885d5d03f2cb3760b0'
             '5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c'
-            '0506bdad4255ccc8165e39b2567450a3b12de2759ed7b42c0c90de1c57b1a283'
-            '2d3fd3973c12b8ce3259d57329c6a97b83b605280248394029e8fe40b1df2eed'
-            'd66cdd20e73baa8a0e7c11a0a0d723f688b7ba14c5929626d9fcdc3342b11398'
-            '43ef109032171e22604d582935c2988b5ed0b00390c7c45979ae58d281782396'
-            'dfc273d5a01e1c1f6fef7956a163e029f1c5e24ad1403864fe92af0924c5a184'
-            '93714abb269f35a44acea045b1866f55dff2c6a13c2c926d0202868d58e756f9')
+            '7037fa27b33666a3bd20c888c667efb218e95e45af8debe591896cc79fe69c76'
+            'a5c5a7522b27a36328f0e2a4b8d06b3f57f0de94a08cdcc8b0a036ca1e09ccf5'
+            '919251a32b739a0bce98b8d9afcd7bfcdd107d185036eaa760a975f04fe0d293'
+            'bcf75d242132e0c4ed7e11040aced748d41e2a91cc4a7f74d4612fd8f6ff535b'
+            '105a3a2abdf6e6883eed1eb7a5645fca558354e77c1baa542cb2f737faa9a8d0'
+            '9ff6f6e54eceed31f85687e4a788db0993650c69d5c3e3540ca2f7c2ccc00d92')
 
 prepare() {
   cd linux-${pkgver}
@@ -221,7 +221,7 @@ _package() {
   depends=(coreutils kmod initramfs)
   optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
   replaces=(virtualbox-guest-modules-arch wireguard-arch)
   #groups=('ck-generic')
 
