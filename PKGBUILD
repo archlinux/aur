@@ -1,22 +1,23 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 _name=pyahocorasick
 pkgname=python-ahocorasick
-pkgver=1.4.2
+pkgver=1.4.4
 pkgrel=1
 pkgdesc='Fast and memory efficient exact or approximate multi-pattern string search'
 arch=(any)
-url="http://pypi.python.org/pypi/$_name"
+url="https://github.com/WojciechMula/$_name"
 license=(BSD)
 depends=(python)
+makedepends=(python-setuptools python-installer python-build)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('88f79307c74ae6a84f8d88c2522a082f1d21c425762aba7f7e4d14dd431d2fb7')
+sha256sums=('32545cad135660ceef556f1d987aee3206e00096735405d7a8de84eb0a15bb27')
 
 build() {
-	cd "$srcdir/$_name-$pkgver"
-	python setup.py build
+	cd "$_name-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "$srcdir/$_name-$pkgver"
-	python setup.py install --skip-build --root="$pkgdir" --optimize=1 || return 1
+	cd "$_name-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
