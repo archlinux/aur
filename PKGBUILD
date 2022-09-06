@@ -3,16 +3,16 @@
 
 _name=jsdoc
 pkgname=nodejs-$_name
-pkgver=3.6.7
+pkgver=3.6.11
 pkgrel=1
 pkgdesc='An API documentation generator for JavaScript'
-url='https://github.com/jsdoc3/$_name'
+url="https://github.com/jsdoc3/$_name"
 arch=(any)
 license=(APACHE)
 depends=(nodejs)
 makedepends=(npm)
 source=("https://registry.npmjs.org/$_name/-/$_name-$pkgver.tgz")
-sha256sums=('c081fb764e73565c2fbc5cfb559c3d0a6a3d82d337dcf146ece76a2ea17b99b8')
+sha256sums=('0edcddc7ad9b76d4728ad91b4464362e7fe46d0f11a05e2aab9b1a44686a7664')
 
 build() {
 	cd "$srcdir/package"
