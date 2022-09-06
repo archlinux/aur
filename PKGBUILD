@@ -1,14 +1,14 @@
 # Maintainer: Łukasz Mariański <lmarianski dot protonmail dot com>
 pkgname=alvr-nightly
 _pkgname=${pkgname%-nightly}
-pkgver=19.0.0_dev00+nightly.2022.07.12
+pkgver=19.0.0_dev00+nightly.2022.09.02
 pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
 license=('MIT')
 groups=()
-depends=('vulkan-driver' 'ffmpeg-vulkan' 'gtk3' 'libunwind')
+depends=('vulkan-driver' 'ffmpeg' 'gtk3' 'libunwind')
 makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'jack')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -17,7 +17,7 @@ _RES=$(curl -Ls https://github.com/alvr-org/ALVR-nightly/releases/latest)
 _COMMIT=$(echo "$_RES" | grep 'Generated from commit:' | head -n1 | awk '{print $4}' | awk -F '@' '{print $2}')
 _COMMIT=${_COMMIT::-1}
 
-source=("${_pkgname}"::'git+https://github.com/alvr-org/ALVR.git#commit='$_COMMIT)
+source=("${_pkgname}"::"git+https://github.com/alvr-org/ALVR.git#commit=${_COMMIT}")
 md5sums=('SKIP')
 
 _VER=$(echo "$_RES" | grep '<a aria-current="page"' | awk '{print $8}')
