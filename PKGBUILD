@@ -45,7 +45,7 @@ if [[ -z "$FFMPEG_OBS_SVT" ]]; then
   FFMPEG_OBS_SVT=OFF
 fi
 
-## Add changes from ffmpeg-vulkan
+## Add changes from ffmpeg-vulkan (now only enables libglslang since vulkan is enabled upstream)
 if [[ -z "$FFMPEG_OBS_VULKAN" ]]; then
   FFMPEG_OBS_VULKAN=OFF
 fi
@@ -55,7 +55,7 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=ffmpeg-obs
 pkgver=5.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('i686' 'x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -82,8 +82,10 @@ depends=(
   'libass'
   libavc1394
   'libbluray'
+  'libbs2b'
   libdrm
   'freetype2'
+  libgl
   libiec61883
   libmodplug
   libpulse
@@ -97,6 +99,7 @@ depends=(
   libvdpau
   'vid.stab'
   'libvorbis'
+  'vulkan-icd-loader'
   libwebp
   libx11
   libxcb
@@ -105,6 +108,7 @@ depends=(
   libxv
   'xvidcore'
   'zimg'
+  ocl-icd
   opencore-amr
   openjpeg2
   opus
@@ -142,7 +146,10 @@ makedepends=(
   clang
   ffnvcodec-headers
   ladspa
+  mesa
   nasm
+  opencl-headers
+  vulkan-headers
   'lsb-release'
 )
 optdepends=(
@@ -211,6 +218,7 @@ _args=(
   --enable-libaom
   --enable-libass
   --enable-libbluray
+  --enable-libbs2b
   --enable-libdav1d
   --enable-libdrm
   --enable-libfreetype
@@ -245,8 +253,11 @@ _args=(
   --enable-libzimg
   --enable-nvdec
   --enable-nvenc
+  --enable-opencl
+  --enable-opengl
   --enable-shared
   --enable-version3
+  --enable-vulkan
 )
 
 ## Force enable autodetect feature built with upstream
@@ -360,9 +371,8 @@ if [[ $FFMPEG_OBS_SVT == 'ON' ]]; then
 fi
 
 if [[ $FFMPEG_OBS_VULKAN == 'ON' ]]; then
-  depends+=(vulkan-icd-loader glslang spirv-tools)
-  makedepends+=(vulkan-headers)
-  _args+=(--enable-vulkan --enable-libglslang)
+  depends+=(glslang spirv-tools)
+  _args+=(--enable-libglslang)
   provides+=(ffmpeg-vulkan)
 fi
 
@@ -373,24 +383,23 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
   # libjxl >= 0.7.0 is required by ffmpeg so switch to libjxl-git
   depends+=(
     sndio 'chromaprint-fftw' frei0r-plugins libgcrypt
-    aribb24 libbs2b libcaca 'celt' libcdio-paranoia codec2
+    aribb24 libcaca 'celt' libcdio-paranoia codec2
     'davs2' libdc1394 flite1 libgme libilbc 'libklvanc-git'
     kvazaar 'lensfun-git' 'openh264' libopenmpt librabbitmq-c rubberband
     rtmpdump 'shine' smbclient snappy tesseract
     twolame 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2' zeromq
-    zvbi lv2 lilv libmysofa openal ocl-icd libgl
+    zvbi lv2 lilv libmysofa openal
     'pocketsphinx' vapoursynth libomxil-bellagio 'rockchip-mpp' libplacebo
     lcms2 'libjxl-git'
   )
-  makedepends+=(opencl-headers)
   _args+=(
     --enable-sndio --disable-rpath --enable-gray --enable-chromaprint --enable-frei0r --enable-gcrypt
-    --enable-libaribb24 --enable-libbs2b --enable-libcaca --enable-libcelt --enable-libcdio --enable-libcodec2
+    --enable-libaribb24 --enable-libcaca --enable-libcelt --enable-libcdio --enable-libcodec2
     --enable-libdavs2 --enable-libdc1394 --enable-libflite --enable-libgme --enable-libilbc --enable-libklvanc
     --enable-libkvazaar --enable-liblensfun --enable-libopenh264 --enable-libopenmpt --enable-librabbitmq --enable-librubberband
     --enable-librtmp --enable-libshine --enable-libsmbclient --enable-libsnappy --enable-libtesseract
     --enable-libtwolame --enable-libuavs3d --enable-libvo-amrwbenc --enable-libxavs --enable-libxavs2 --enable-libzmq
-    --enable-libzvbi --enable-lv2 --enable-libmysofa --enable-openal --enable-opencl --enable-opengl
+    --enable-libzvbi --enable-lv2 --enable-libmysofa --enable-openal
     --enable-pocketsphinx --enable-vapoursynth --enable-omx --enable-rkmpp --enable-libplacebo
     --enable-lcms2 --enable-libjxl
   )
