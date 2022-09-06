@@ -1,7 +1,7 @@
 # Maintainer: jmcb <joelsgp@protonmail.com>
 pkgname=idle
 pkgver=3.10.5
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Python Integrated Development and Learning Environment (desktop entry)"
 arch=('any')
@@ -28,6 +28,7 @@ validpgpkeys=()
 
 package() {
     install -Dm755 idle.desktop "${pkgdir}/usr/share/applications/idle.desktop"
-    install -dm755 "${pkgdir}/usr/share/icons/"
-    ln -s /usr/lib/python3.10/idlelib/Icons/idle_256.png "${pkgdir}/usr/share/icons/idle.png"
+    _icons_dir="${pkgdir}/usr/share/pixmaps"
+    install -dm755 "${_icons_dir}"
+    ln -s /usr/lib/python3.10/idlelib/Icons/idle_256.png "${_icons_dir}/idle.png"
 }
