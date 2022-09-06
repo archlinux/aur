@@ -2,8 +2,8 @@
 
 pkgname=stable-diffusion-intel
 pkgver=20220906
-pkgrel=1
-pkgdesc='Stable diffusion using an Intel CPU (includes a txt2img command that takes a prompt)'
+pkgrel=2
+pkgdesc='Image generator that uses stable diffusion, vino (Intel CPU) and includes "txt2img"'
 arch=(x86_64)
 url='https://github.com/bes-dev/stable_diffusion.openvino'
 license=(Apache2)
