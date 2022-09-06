@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lgr
-_pkgver=0.4.3
+_pkgver=0.4.4
 pkgname=r-${_pkgname,,}
-pkgver=0.4.3
-pkgrel=4
+pkgver=0.4.4
+pkgrel=1
 pkgdesc='A Fully Featured Logging Framework'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -35,7 +35,7 @@ optdepends=(
   r-yaml
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8c55b2d81cfe8b80f0c42f28f31d77d9f1eb9b3fe78839cd1877c3a93c1649a3')
+sha256sums=('8c4011e34fa1ca42df88f64028e90c4ef9ce76c0e133eac1052c30cb0cdfa127')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
