@@ -1,6 +1,6 @@
-*.tar.*z
+pkg
+src
+*.tar.*
 *.pbmm
 *.tflite
 *.scorer
-pkg/
-src/
