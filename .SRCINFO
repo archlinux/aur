@@ -1,7 +1,7 @@
 pkgbase = obs-studio-rc
 	pkgdesc = Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration
 	pkgver = 28.0.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 3
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
@@ -57,7 +57,7 @@ pkgbase = obs-studio-rc
 	conflicts = obs-websocket
 	conflicts = obs-linuxbrowser
 	conflicts = obs-browser
-	options = debug
+	options = !strip
 	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=28.0.1
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-websocket::git+https://github.com/obsproject/obs-websocket.git
