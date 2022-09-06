@@ -6,15 +6,16 @@ pkgdesc="Produce dynamic, standards-compliant version strings"
 url="https://github.com/mtkennerly/dunamai"
 
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 
 arch=("any")
 license=("MIT")
 
 makedepends=(
-    "python-importlib-metadata"
-    "python-setuptools"
-    "python-packaging"
+    poetry
+    python-build
+    python-installer
+    python-wheel
 )
 depends=(
     "python"
@@ -25,12 +26,10 @@ b2sums=("5ed6a29256c48360411f613b862a3810f477212e019e79c0deae7d6e52a0e3727419c13
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
-    python setup.py build
+    python -m build --wheel --no-isolation    
 }
 
 package() {
     cd "${srcdir}/${_name}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1
-
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
