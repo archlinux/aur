@@ -79,11 +79,17 @@ RELATIVE_LANGREF_FILE="docs/langref.html";
 RELATIVE_STDLIB_DOC_FILES=("docs/std/index.html" "docs/std/main.js" "docs/std/data.js");
 check() {
     hello_file="$(realpath ../hello.zig)"
+    # Zig caches (both local and global) can use up a lot of space.
+    # For these hello world examples (in a frequently updated package), this is very wasteful.
+    #
+    # Right now there is no way to disable the cache (see Zig issue #12317)
+    # Instead we shove everything in a local directory
+    cache_dir="${srcdir}/zig-cache"
     cd "${srcdir}/zig-linux-${CARCH}-${pkgver//_/-}";
     echo "Running Zig Hello World"
-    ./zig run "$hello_file"
-    ./zig test "$hello_file"
-    echo "Checking for docs...."
+    ./zig run --cache-dir "$cache_dir" --global-cache-dir "$cache_dir" "$hello_file"
+    ./zig test --cache-dir "$cache_dir" --global-cache-dir "$cache_dir" "$hello_file"
+    rm -rf "$cache_dir";
     local missing_docs=();
     # Zig has had long-running issues with the location
     # of the docs directory.
