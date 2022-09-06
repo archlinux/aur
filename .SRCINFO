@@ -1,7 +1,7 @@
 pkgbase = messenger-notify-git
 	pkgdesc = A background service that can be connected to messengers (such as Signal) and will show a desktop notification on message receive.
 	pkgver = r30.3d0ef74
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/Schmiddiii/messenger-notify
 	arch = x86_64
 	arch = aarch64
