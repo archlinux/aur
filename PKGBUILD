@@ -2,11 +2,13 @@
 _pkgname=messenger-notify
 pkgname=${_pkgname}-git
 pkgrel=3
-pkgver=r23.85cf890
+pkgver=r30.3d0ef74
 pkgdesc="A background service that can be connected to messengers (such as Signal) and will show a desktop notification on message receive."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/Schmiddiii/messenger-notify"
 license=('AGPL3')
+depends=('gcc-libs'
+         'openssl')
 optdepends=('waked: for scheduled wake-ups'
            'feedbackd: for vibrating notifications')
 makedepends=('cargo')
