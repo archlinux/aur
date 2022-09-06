@@ -19,11 +19,13 @@ prepare() {
 }
 
 build() {
-    cmake . -DCMAKE_INSTALL_PREFIX=/usr
+    cd "$pkgname-$pkgver"
+    cmake -DCMAKE_INSTALL_PREFIX=/usr .
     make
 }
 
 package() {
+    cd "$pkgname-$pkgver"
     install -Dm755 -d etc "$pkgdir/etc/$pkgname"
     make DESTDIR=$pkgdir install
     chmod +x "$pkgdir/etc/$pkgname/dock.hook"
