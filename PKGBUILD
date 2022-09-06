@@ -1,7 +1,7 @@
 # Maintainer: Alex Tharp <alex at toastercup dot io>
 pkgname=firestorm-git
 pkgver=6.6.4.67818
-pkgrel=1
+pkgrel=2
 pkgdesc="A third-party viewer for Second Life (TM) and OpenSim grids (git version)"
 arch=('x86_64')
 url=https://www.firestormviewer.org
@@ -80,7 +80,7 @@ prepare() {
   export CFLAGS="$CFLAGS -Wno-error"
   # We need to specifically ask for OpenAL, otherwise we get nothing.
   # No automated downloading of FMOD without a license!
-  autobuild configure -A 64 -c ReleaseFS_open -- -DLL_TESTS:BOOL=FALSE -DOPENAL=on
+  autobuild configure -A 64 -c ReleaseFS_open -- -DLL_TESTS:BOOL=FALSE -DOPENAL=on --chan="AUR-git"
 }
 
 build() {
