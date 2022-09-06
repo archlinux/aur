@@ -1,13 +1,18 @@
 pkgbase = entropy-assessment
 	pkgdesc = C++ implementation of the NIST Special Publication 800-90B
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 2
 	url = https://github.com/usnistgov/SP800-90B_EntropyAssessment
 	arch = x86_64
 	license = custom:public-domain
-	makedepends = jsoncpp
-	makedepends = libdivsufsort
-	source = https://github.com/usnistgov/SP800-90B_EntropyAssessment/archive/refs/tags/v1.1.3.tar.gz
-	b2sums = 68c141aaef6e03ed448b654e2f0cf93cb4ed113ed41f718f34653922c70f4a0929a60fceedd05de4d4b264a8b3812ba585bd78388857e3dd0719224c94665c15
+	depends = bzip2
+	depends = jsoncpp
+	depends = libdivsufsort
+	depends = mpfr
+	depends = openssl
+	source = entropy-assessment-1.1.4.tar.gz::https://github.com/usnistgov/SP800-90B_EntropyAssessment/archive/refs/tags/v1.1.4.tar.gz
+	source = LICENSE
+	b2sums = 2d4e58f10356d085e3b2bcc485c5bb155d4ab389d79ec2cfc9df6d29e02c5a38ecab847947e6757ecb707ccab7475f54052fdcf4311731c7c9c8cccd951813e4
+	b2sums = eb7559b09ecf5c19cea59d1c4deb5df4b4f6648291ed8e6c4a5eb57c0ee901c309b4d501f1b41ae088f4785c8b73e75ca92df62bd963e2ebc6a1b2f6e46e2054
 
 pkgname = entropy-assessment
