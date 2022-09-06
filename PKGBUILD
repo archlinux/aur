@@ -3,7 +3,7 @@ _pkgname=gdm-settings
 pkgname=gdm-settings-beta
 pkgdesc="A settings app for Gnome's Login Manager (GDM)"
 url="https://github.com/realmazharhussain/gdm-settings"
-pkgver=1.0+beta.2
+pkgver=1.0+beta.3
 _pkgver=${pkgver/+/-}
 pkgrel=1
 arch=(any)
@@ -14,7 +14,7 @@ checkdepends=('appstream')
 provides=('gdm-settings')
 conflicts=('gdm-settings')
 source=("${_pkgname}-${_pkgver}.tar.gz"::"$url/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('de7cdefe9624a1f2d3e00c2badccf1fb5031219f2849ab0a39637c157e451772')
+sha256sums=('02641efdf80f02c6b05cc3ec8f7723ae72ff021b1917c91457b310ad7e0230a4')
 
 prepare() {
   cd "$srcdir/${_pkgname}-${_pkgver}"
