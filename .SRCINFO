@@ -1,0 +1,14 @@
+pkgbase = otf-monocraft-git
+	pkgdesc = Minecraft-based monospace font
+	pkgver = r22.a4b13ab
+	pkgrel = 1
+	url = https://github.com/IdreesInc/Monocraft
+	arch = any
+	license = unknown
+	makedepends = git
+	provides = otf-monocraft
+	conflicts = otf-monocraft
+	source = otf-monocraft-git::git+https://github.com/IdreesInc/Monocraft.git
+	md5sums = SKIP
+
+pkgname = otf-monocraft-git
