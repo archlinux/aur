@@ -4,8 +4,8 @@
 _project=ots-python
 _pyname=opentype-sanitizer
 pkgname=python-$_pyname
-pkgver=8.1.4.post3
-pkgrel=2
+pkgver=8.2.1
+pkgrel=1
 pkgdesc='Python wheels for the OpenType Sanitizer'
 arch=(any)
 url="https://github.com/googlefonts/$_project"
@@ -18,7 +18,7 @@ makedepends=(python-setuptools-scm)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz"
         system-ots-sanitize.patch)
-sha256sums=('112efdd99915781e4fb79e165832dacf61c0335db4738fd9043b960a8c9f8d91'
+sha256sums=('b3d0dc6c03061ff9c05246e31719cadfc962e9d586aa2e7d613149bb20335ef2'
             '6388d57e44f3dc7d6ee91422b30ca9eca3e3c590bacaa7bc4664b6183ed4d065')
 
 prepare () {
