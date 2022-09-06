@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Delaporte
-_pkgver=8.0.2
+_pkgver=8.0.3
 pkgname=r-${_pkgname,,}
-pkgver=8.0.2
-pkgrel=4
+pkgver=8.0.3
+pkgrel=1
 pkgdesc='Statistical Functions for the Delaporte Distribution'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,7 +18,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e50df1be800e9b370b2aa64557bfbc5f114b762ba3dd5721e9873b2974adba83')
+sha256sums=('7c9c55714560d1e041108bd696b7fcb85a71edc9f3ca7913b41f5b4efb9a32b4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
