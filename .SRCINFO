@@ -1,7 +1,7 @@
 pkgbase = python-hyperspy
 	pkgdesc = Hyperspectral data analysis
 	pkgver = 1.7.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://hyperspy.org
 	arch = any
 	license = GPL3
@@ -20,7 +20,7 @@ pkgbase = python-hyperspy
 	depends = python-requests
 	depends = python-tqdm>=4.9.0
 	depends = python-sympy
-	depends = python-h5py>=2.3
+	depends = python-h5py
 	depends = python-jinja
 	depends = python-packaging
 	depends = python-dateutil>=2.5.0

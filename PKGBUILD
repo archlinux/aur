@@ -4,7 +4,7 @@
 pkgname=python-hyperspy
 pkgshort=hyperspy
 pkgver=1.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Hyperspectral data analysis"
 arch=('any')
 url="http://hyperspy.org"
@@ -19,7 +19,7 @@ depends=('python'
          'python-requests'
          'python-tqdm>=4.9.0'
          'python-sympy'
-         'python-h5py>=2.3'
+         'python-h5py'
          'python-jinja'
  	 'python-packaging'
          'python-dateutil>=2.5.0'
