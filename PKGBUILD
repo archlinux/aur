@@ -4,13 +4,13 @@
 _pkgname='wxtoimg'
 pkgname="$_pkgname-beta"
 pkgver='2.11.2'
-pkgrel='9'
+pkgrel='10'
 pkgdesc='Software to decode APT and WEFAX signals from weather satellites'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 url="https://${_pkgname}restored.xyz/beta"
 license=('custom')
-depends=('alsa-lib' 'fontconfig' 'libx11' 'libxft' 'tcl85')
-makedepends=('imagemagick' 'xxd')
+depends=('alsa-lib' 'fontconfig' 'libx11' 'libxft')
+makedepends=('imagemagick' 'perl' 'xxd')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source_x86_64=("$pkgname-$pkgver-$pkgrel-x86_64.tar.gz::$url/$_pkgname-linux-amd64-$pkgver-beta.tar.gz")
@@ -39,13 +39,19 @@ _replace() {
 	_strings="$(strings "$1" | grep "$2" | awk '{ print length, $0 }' | sort -n -r | cut -d" " -f2-)"
 
 	if [ -n "$_strings" ] ; then
-        echo "Replacing '$2' with '$3' in $1"
+		echo "Replacing '$2' with '$3' in $1"
 		_replace_counter=0
 
 		# Convert the file to hex
 		hexdump --no-squeezing --format '1/1 "%.2x "' "$1" | sed 's/[[:space:]]*$//' > "$1.tmp.hex"
 
 		while IFS= read -r _old; do
+			# wxtoimg throws a segfault if the tcl path is changed, no matter if it exists or not, make sure we don't change it'
+			# TODO: figure out how to make tcl work so that this is not needed
+			if [[ "$_old" =~ '/usr/local/lib/tcl8.5' ]]; then
+				continue
+			fi
+
 			# Prepare the new string
 			_new="${_old//$2/$3}"
 			echo "Found '$_old', replacing with '$_new'"
@@ -58,8 +64,8 @@ _replace() {
 			_length_diff="$((${#_old_hex}-${#_new_hex}))"
 
 			if [ "$_length_diff" -gt 0 ]; then
-				_padding_length="$((($_length_diff+1)/3))"
-				_padding="$(printf '%.s 00' $(seq 1 "$_padding_length"))"
+				_padding_count="$((($_length_diff+1)/3))"
+				_padding="$(printf '%.s 00' $(seq 1 "$_padding_count"))"
 			else
 				_padding=''
 			fi
@@ -68,10 +74,10 @@ _replace() {
 			if grep -q "${_old_hex} 00" "$1.tmp.hex"; then
 				# We found a null terminated variant of this string, just replace it with the new string, padded
 				sed -i "s/${_old_hex} 00/${_new_hex}${_padding} 00/g" "$1.tmp.hex"
-			# else
+			else
 				# The string we're replacing is a partial one, replace the string itself and prepend the padding to the first NUL after the string
-				# TODO: this breaks binaries
-				# sed -E -i "s/${_old_hex}(.*) 00/${_new_hex}\1${_padding} 00/g" "$1.tmp.hex"
+				# We can't use sed for this, as it doesn't support lazy (non-greedy) quantifiers
+				perl -i -pe "s/${_old_hex}(.*?) 00/${_new_hex}\1${_padding} 00/g" "$1.tmp.hex"
 			fi
 
 			# Increase replace counter
@@ -104,20 +110,14 @@ prepare() {
 			_replace "$srcdir/usr/local/bin/$_binary" '/usr/local/bin' '/usr/bin'
 			_replace "$srcdir/usr/local/bin/$_binary" '/usr/local/man' '/usr/share/man'
 			_replace "$srcdir/usr/local/bin/$_binary" '/usr/local/include' '/usr/include'
-
-			# TODO: this causes a segfault, disable for now
-			# _replace "$srcdir/usr/local/bin/$_binary" '/usr/local/lib/tcl8.5' '/usr/lib/tcl8.5'
-
-			# TODO: Haven't figured out what files wxtoimg is trying to reach with this, just remove the local part for now
-			_replace "$srcdir/usr/local/bin/$_binary" '/usr/local/lib/proj.4' '/usr/lib/proj.4'
-
-			# Replace /usr/local/lib last so that we don't mess up the rest of the path replacements
-			# TODO: this can't be enabled until the tcl replacement is fixed
-			# _replace "$srcdir/usr/local/bin/$_binary" '/usr/local/lib' '/usr/lib'
+			_replace "$srcdir/usr/local/bin/$_binary" '/usr/local/lib' '/usr/lib'
 
 			# On 2022/07/04 celestrak.com (provider of Keplers) moved to celestrak.org
-			# TODO: wxtoimg still sends requests to celestrak.com after this replacement, so there's something else going on
 			_replace "$srcdir/usr/local/bin/$_binary" 'www.celestrak.com' 'www.celestrak.org'
+
+			# TODO: figure out which file from the proj package wxtoimg needs and replace the path accordingly
+			# TODO: wxtoimg still sends requests to celestrak.com after the replacement we do, fix
+			# TODO: wxtoimg still writes the original /usr/local/lib/wx to ~/.wxtoimgrc, fix
 		fi
 
 		# Replace paths in man pages
