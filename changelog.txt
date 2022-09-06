@@ -127,3 +127,11 @@
 ### Fix
 
 - Fix compare with None
+
+### 3.0
+
+2022-09-05
+
+### Added
+
+- Flexible array support
