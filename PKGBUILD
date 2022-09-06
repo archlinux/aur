@@ -14,7 +14,7 @@ source=("${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('cacfac45090b43587ea3cd7969e637a025be5e0aad0b06464fd5cd19302b12e1')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}/imgurs-cli"
   cargo build --release --locked
 }
 
