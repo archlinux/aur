@@ -1,0 +1,14 @@
+pkgbase = fdformat
+	pkgdesc = fdformat from util-linux
+	pkgver = 2.38.1
+	pkgrel = 1
+	url = https://github.com/karelzak/util-linux
+	arch = x86_64
+	license = GPL2
+	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.38/util-linux-2.38.1.tar.xz
+	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.38/util-linux-2.38.1.tar.sign
+	validpgpkeys = B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284
+	sha256sums = 60492a19b44e6cf9a3ddff68325b333b8b52b6c59ce3ebd6a0ecaa4c5117e84f
+	sha256sums = SKIP
+
+pkgname = fdformat
