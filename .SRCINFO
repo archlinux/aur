@@ -1,6 +1,6 @@
 pkgbase = r-raggedexperiment
 	pkgdesc = Representation of Sparse Experiments and Assays Across Samples
-	pkgver = 1.20.0
+	pkgver = 1.20.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RaggedExperiment
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-raggedexperiment
 	optdepends = r-multiassayexperiment
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RaggedExperiment_1.20.0.tar.gz
-	sha256sums = 4e1468d8ec064ba23f455784a1f812846b3168153be9c7dc6d25c8c3ce4b7813
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RaggedExperiment_1.20.1.tar.gz
+	sha256sums = 5b28982f62afcbf3904c0f5b385bd874f4d3d8d9eed5cfbffbf9f8d9a325e848
 
 pkgname = r-raggedexperiment
