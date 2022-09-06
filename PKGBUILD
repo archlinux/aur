@@ -1,7 +1,7 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Morten Linderud <morten@linderud.pw> 
 pkgname=nerd-fonts-git
-pkgver=2.2.0.RC.r9.g953ec8791
+pkgver=2.2.1.r9.g30605d4d4
 pkgrel=1
 epoch=1
 pkgdesc="Iconic font aggregator, collection, and patcher: 34 patched fonts (77k variations). Includes popular glyph collections such as Font Awesome & fonts such as Hack"
@@ -55,7 +55,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$_gitname"
   #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-47
 }
 
 package() {
