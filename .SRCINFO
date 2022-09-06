@@ -15,7 +15,7 @@ pkgbase = reflective-rapidjson
 	makedepends = ninja
 	makedepends = clang-tools-extra
 	makedepends = llvm
-	depends = c++utilities
+	depends = libc++utilities.so
 	depends = rapidjson
 	depends = llvm-libs>=14.0.0
 	depends = llvm-libs<15.0.0
