@@ -8,9 +8,9 @@ pkgbase = cp2k-bin
 	license = GPL2
 	provides = cp2k
 	conflicts = cp2k
-	source_x86_64 = cp2k-2022.1::https://github.com/cp2k/cp2k/releases/download/v2022.1/cp2k-2022.1-Linux-gnu-x86_64.ssmp
+	source_x86_64 = https://github.com/cp2k/cp2k/releases/download/v2022.1/cp2k-2022.1-Linux-gnu-x86_64.ssmp
 	md5sums_x86_64 = ebae1b3d14f933009a3bcb8d71f4c385
-	source_aarch64 = cp2k-2022.1::https://github.com/cp2k/cp2k/releases/download/v2022.1/cp2k-2022.1-Linux-gnu-aarch64.ssmp
-	md5sums_aarch64 = ebae1b3d14f933009a3bcb8d71f4c385
+	source_aarch64 = https://github.com/cp2k/cp2k/releases/download/v2022.1/cp2k-2022.1-Linux-gnu-aarch64.ssmp
+	md5sums_aarch64 = 118f02981454a64da4731344989e5718
 
 pkgname = cp2k-bin
