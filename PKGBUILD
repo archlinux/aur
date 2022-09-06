@@ -4,7 +4,7 @@
 pkgbase=manimce
 pkgname=manim
 pkgver=0.16.0.post0
-pkgrel=1
+pkgrel=2
 pkgdesc="Animation engine for explanatory math videos (community edition)."
 
 arch=('any')
@@ -63,7 +63,7 @@ optdepends=(
 prepare ()
 {
 	cd "$srcdir/$pkgname-$pkgver"
-	sed -i 's/cloup>=0.7.0,<0.8.0/cloup/g' setup.py
+	sed -i 's/cloup>=0.13.0,<0.14.0/cloup/g' setup.py
 	sed -i 's/mapbox-earcut>=0.12.10,<0.13.0/mapbox-earcut/g' setup.py
 	sed -i 's/screeninfo>=0.6.7,<0.7.0/screeninfo/g' setup.py
 	sed -i 's/srt>=3.5.0,<4.0.0/srt/g' setup.py
