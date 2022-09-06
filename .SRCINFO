@@ -18,7 +18,9 @@ pkgbase = libshumate-git
 	depends = sqlite
 	depends = protobuf-c
 	provides = libshumate
+	provides = libshumate-1.0.so=1-64
 	conflicts = libshumate
+	conflicts = libshumate-1.0.so=1-64
 	source = git+https://gitlab.gnome.org/GNOME/libshumate.git
 	sha256sums = SKIP
 
