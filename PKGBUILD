@@ -14,6 +14,7 @@ url="http://www.deepin.org"
 license=('Proprietary')
 depends=()
 makedepends=('tar')
+optdepends=('python2: some script dependencies')
 source=("https://community-store-packages.deepin.com/appstore/pool/appstore/d/${pkgname}/${pkgname}_${_pkgver}_i386.deb")
 sha256sums=('c55cfa78e42afc1bb0b4d9bdf3234dd97cb9edff326895b59a146ed9af82b22d')
 
