@@ -34,10 +34,10 @@ build() {
   sed -i 's@-Werror@@g' configure
 
   ./configure \
-    --prefix=/usr \
-    --libdir=/usr/local/lib \
-    --incdir=/usr/local/include \
-    --shlibdir=/usr/local/lib \
+    --prefix=/opt/local \
+    --libdir=/opt/local/lib \
+    --incdir=/opt/local/include \
+    --shlibdir=/opt/local/lib \
     --enable-gpl \
     --enable-static \
     --enable-shared \
@@ -50,9 +50,9 @@ package() {
   cd ffmpeg-${pkgver}
 
   make DESTDIR="$pkgdir" install
-  rm -rf "$pkgdir"/usr/bin/ffprobe
-  rm -rf "$pkgdir"/usr/share
+  rm -rf "$pkgdir"/opt/local/bin/ffprobe
+  rm -rf "$pkgdir"/opt/local/share
 
-  find "${pkgdir}"/usr/bin -type f -exec mv {} {}063 \;
+  find "${pkgdir}"/opt/local/bin -type f -exec mv {} {}063 \;
 }
 
