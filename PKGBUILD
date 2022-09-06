@@ -16,8 +16,10 @@ provides=(
 makedepends=(
   gcc
 )
-source=('http://download.tuxfamily.org/ffdiaporama/Packages/Stable/ffdiaporama_bin_2.1.2014.0209.tar.gz')
-md5sums=('f9f46277153cf49f6947973778516adb')
+source=('http://download.tuxfamily.org/ffdiaporama/Packages/Stable/ffdiaporama_bin_2.1.2014.0209.tar.gz'
+        'patchfile.patch')
+md5sums=('f9f46277153cf49f6947973778516adb'
+         '6269400e6c9805f57ddb0202035cc7c7')
 
 prepare() {
   #cd "$pkgname-pkgver"
