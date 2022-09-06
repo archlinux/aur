@@ -7,21 +7,16 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=104.0.1
+pkgver=104.0.2
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
 license=(MPL GPL LGPL)
 url="https://cachyos.org"
 depends=(gtk3 libxt mime-types dbus-glib
-    ffmpeg nss ttf-font libpulse
-    aom harfbuzz graphite
-    libvpx libjpeg zlib icu libevent pipewire dav1d)
-#makedepends=(unzip zip diffutils yasm mesa imake inetutils
-#    rust xorg-server-xwayland xorg-server-xvfb
-#    autoconf2.13 clang llvm jack nodejs cbindgen nasm
-#    python-setuptools python-zstandard git binutils lld dump_syms
-#wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi mold python-pipenv python-pyqt5 python-cmd2)
+         ffmpeg nss ttf-font libpulse
+         aom harfbuzz graphite
+         libvpx libjpeg zlib icu libevent pipewire dav1d)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
              autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
              python-setuptools python-zstandard git binutils lld dump_syms
@@ -31,9 +26,9 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
     'pulseaudio: Audio support'
     'speech-dispatcher: Text-to-Speech'
     'hunspell-en_US: Spell checking, American English'
-'xdg-desktop-portal: Screensharing with Wayland')
+    'xdg-desktop-portal: Screensharing with Wayland')
 backup=('usr/lib/cachy-browser/cachy.cfg'
-'usr/lib/cachy-browser/distribution/policies.json')
+        'usr/lib/cachy-browser/distribution/policies.json')
 groups=('cachyos')
 options=(!emptydirs !makeflags !strip !lto !debug ccache)
 _arch_svn=https://git.archlinux.org/svntogit/packages.git/plain/trunk
@@ -45,7 +40,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
     $pkgname.desktop
     "git+https://github.com/cachyos/cachyos-browser-settings.git"
     "git+https://github.com/cachyos/cachyos-browser-common.git")
-sha256sums=('f23f4198bd9ba1bbb7420a622080301adb924fafbd6d83b00b1e6cc687e75f4e'
+sha256sums=('72bba06f04e7745f6b02951906413eb1c15a7e253e06e373302162c6219f286a'
             'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
