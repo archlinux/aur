@@ -6,7 +6,7 @@ pkgdesc="Python QR Code and Micro QR Code encoder"
 url="https://segno.readthedocs.io/"
 
 pkgver=1.5.2
-pkgrel=2
+pkgrel=3
 
 arch=("any")
 license=("BSD")
@@ -14,6 +14,7 @@ license=("BSD")
 makedepends=(
     "python-build"
     "python-installer"
+    "python-setuptools"
     "python-wheel"
 )
 depends=(
