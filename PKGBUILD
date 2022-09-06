@@ -9,7 +9,7 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=obs-studio-browser
 pkgver=28.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64")
 url="https://github.com/obsproject/obs-studio"
@@ -91,7 +91,7 @@ else
 fi
 provides=("obs-studio=$pkgver" "obs-vst" "obs-websocket" "obs-browser")
 conflicts=("obs-studio" "obs-vst" "obs-websocket" "obs-browser" "obs-linuxbrowser")
-options=('debug')
+options=('!strip')
 _cefbranch=5060
 source=(
   "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
