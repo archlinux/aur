@@ -1,6 +1,6 @@
 pkgbase = r-gert
 	pkgdesc = Simple Git Client for R
-	pkgver = 1.7.1
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=gert
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = r-gert
 	optdepends = r-rmarkdown
 	optdepends = r-spelling
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/gert_1.7.1.tar.gz
-	sha256sums = bd83f007edbe748fb4bd227f1dda5a282de72914c3015749bf583a70a317ade2
+	source = https://cran.r-project.org/src/contrib/gert_1.8.0.tar.gz
+	sha256sums = efb5bc82b21013873e3c5ebaec8fa4bfd3d8baf05c52705df6fb89cd6b6c251d
 
 pkgname = r-gert
