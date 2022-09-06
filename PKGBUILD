@@ -1,7 +1,7 @@
 # Maintainer: Anuskuss <anuskuss@googlemail.com>
 pkgname=cemu
 pkgver=2.0.97
-pkgrel=3
+pkgrel=4
 pkgdesc='Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)'
 arch=(x86_64)
 url=https://github.com/cemu-project/Cemu
@@ -23,7 +23,6 @@ makedepends=(
 optdepends=(
 	'vulkan-driver: Vulkan graphics'
 )
-provides=(cemu)
 source=(
 	git+https://github.com/cemu-project/Cemu#commit=e5d7d5d1736019d08e1ff8d9bd2e385330c5b7de
 	# dependencies
@@ -60,9 +59,8 @@ pkgver() {
 	cd Cemu
 	MAJ=$(awk -F '\t' '/LEAD/ {print $NF;exit}' src/Common/version.h)
 	MIN=$(awk -F '\t' '/MAJOR/ {print $NF;exit}' src/Common/version.h)
-	CNT=$(git rev-list --count HEAD)
-	# HASH=$(git rev-parse --short HEAD)
-	echo "$MAJ.$MIN.$CNT"
+	PAT=$(git rev-list --count HEAD)
+	echo "$MAJ.$MIN.$PAT"
 }
 
 prepare() {
@@ -81,7 +79,7 @@ prepare() {
 	popd
 
 	# unbundled imgui
-	sed -i '/imgui/c\add_subdirectory(dependencies/imgui)' CMakeLists.txt
+	sed -i '/imgui/cadd_subdirectory(dependencies/imgui)' CMakeLists.txt
 	ln -srf "$srcdir/imgui-1.88" dependencies/imgui
 	ln -srf "$srcdir/imgui.cmake" dependencies/imgui/CMakeLists.txt
 	ln -srf "$srcdir/imgui.conf" dependencies/imgui/imgui-config.cmake.in
@@ -99,6 +97,7 @@ prepare() {
 	git apply "$srcdir/xdg.diff"
 
 	# experimental: linux overlay (https://github.com/cemu-project/Cemu/pull/142)
+	rm -rf src/util/SystemInfo
 	git apply "$srcdir/overlay.diff"
 
 	# gameProfiles improvement
@@ -106,10 +105,15 @@ prepare() {
 }
 
 build() {
+	# prefer clang (faster)
+	if [[ $(clang --version 2> /dev/null | sed -E '1!d;s/^clang version ([0-9]+)\.[0-9]+\.[0-9]+$/\1/') -ge 12 ]] &&
+	   [[ $(llvm-config --version 2> /dev/null | sed -E 's/^([0-9]+)\.[0-9]+\.[0-9]+$/\1/') -ge 12 ]]; then
+		export CC=$(which clang)
+		export CXX=$(which clang++ 2> /dev/null || which clang)
+	fi
+
 	cd Cemu
 	cmake -B build \
-	      $(C=$(which clang   2> /dev/null) && [[ -z $CC  ]] && echo -DCMAKE_C_COMPILER=$C) \
-	      $(C=$(which clang++ 2> /dev/null) && [[ -z $CXX ]] && echo -DCMAKE_CXX_COMPILER=$C) \
 	      -DCMAKE_CXX_FLAGS="$CXXFLAGS -w" -Wno-dev \
 	      -DSYSTEM_DATA_PATH=/opt/cemu \
 	      -DENABLE_VCPKG=OFF \
