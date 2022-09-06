@@ -1,0 +1,37 @@
+From 4b25bdb54578f3b96ff055e5d27bc1cb82950e51 Mon Sep 17 00:00:00 2001
+From: Zhen Ni <nizhen@uniontech.com>
+Date: Wed, 3 Aug 2022 17:19:58 +0800
+Subject: [PATCH 45/73] drm/amd/pm: Fix a potential gpu_metrics_table memory
+ leak
+
+[ Upstream commit 5afb76522a0af0513b6dc01f84128a73206b051b ]
+
+Memory is allocated for gpu_metrics_table in
+smu_v13_0_4_init_smc_tables(), but not freed in
+smu_v13_0_4_fini_smc_tables(). This may cause memory leaks, fix it.
+
+Reviewed-by: Evan Quan <evan.quan@amd.com>
+Signed-off-by: Zhen Ni <nizhen@uniontech.com>
+Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/gpu/drm/amd/pm/swsmu/smu13/smu_v13_0_4_ppt.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/drivers/gpu/drm/amd/pm/swsmu/smu13/smu_v13_0_4_ppt.c b/drivers/gpu/drm/amd/pm/swsmu/smu13/smu_v13_0_4_ppt.c
+index 5a17b51aa0f9..7df360c25d51 100644
+--- a/drivers/gpu/drm/amd/pm/swsmu/smu13/smu_v13_0_4_ppt.c
++++ b/drivers/gpu/drm/amd/pm/swsmu/smu13/smu_v13_0_4_ppt.c
+@@ -190,6 +190,9 @@ static int smu_v13_0_4_fini_smc_tables(struct smu_context *smu)
+ 	kfree(smu_table->watermarks_table);
+ 	smu_table->watermarks_table = NULL;
+ 
++	kfree(smu_table->gpu_metrics_table);
++	smu_table->gpu_metrics_table = NULL;
++
+ 	return 0;
+ }
+ 
+-- 
+2.37.3
+

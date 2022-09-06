@@ -1,0 +1,53 @@
+From dc441eda061720bab0117c45e30a2eb065b858ec Mon Sep 17 00:00:00 2001
+From: Namjae Jeon <linkinjeon@kernel.org>
+Date: Sun, 14 Aug 2022 22:40:25 +0900
+Subject: [PATCH 51/73] ksmbd: don't remove dos attribute xattr on O_TRUNC open
+
+[ Upstream commit 17661ecf6a64eb11ae7f1108fe88686388b2acd5 ]
+
+When smb client open file in ksmbd share with O_TRUNC, dos attribute
+xattr is removed as well as data in file. This cause the FSCTL_SET_SPARSE
+request from the client fails because ksmbd can't update the dos attribute
+after setting ATTR_SPARSE_FILE. And this patch fix xfstests generic/469
+test also.
+
+Signed-off-by: Namjae Jeon <linkinjeon@kernel.org>
+Reviewed-by: Hyunchul Lee <hyc.lee@gmail.com>
+Signed-off-by: Steve French <stfrench@microsoft.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ fs/ksmbd/smb2pdu.c | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/fs/ksmbd/smb2pdu.c b/fs/ksmbd/smb2pdu.c
+index bbb3958b6469..35f5ea1c9dfc 100644
+--- a/fs/ksmbd/smb2pdu.c
++++ b/fs/ksmbd/smb2pdu.c
+@@ -2315,15 +2315,15 @@ static int smb2_remove_smb_xattrs(struct path *path)
+ 			name += strlen(name) + 1) {
+ 		ksmbd_debug(SMB, "%s, len %zd\n", name, strlen(name));
+ 
+-		if (strncmp(name, XATTR_USER_PREFIX, XATTR_USER_PREFIX_LEN) &&
+-		    strncmp(&name[XATTR_USER_PREFIX_LEN], DOS_ATTRIBUTE_PREFIX,
+-			    DOS_ATTRIBUTE_PREFIX_LEN) &&
+-		    strncmp(&name[XATTR_USER_PREFIX_LEN], STREAM_PREFIX, STREAM_PREFIX_LEN))
+-			continue;
+-
+-		err = ksmbd_vfs_remove_xattr(user_ns, path->dentry, name);
+-		if (err)
+-			ksmbd_debug(SMB, "remove xattr failed : %s\n", name);
++		if (!strncmp(name, XATTR_USER_PREFIX, XATTR_USER_PREFIX_LEN) &&
++		    !strncmp(&name[XATTR_USER_PREFIX_LEN], STREAM_PREFIX,
++			     STREAM_PREFIX_LEN)) {
++			err = ksmbd_vfs_remove_xattr(user_ns, path->dentry,
++						     name);
++			if (err)
++				ksmbd_debug(SMB, "remove xattr failed : %s\n",
++					    name);
++		}
+ 	}
+ out:
+ 	kvfree(xattr_list);
+-- 
+2.37.3
+

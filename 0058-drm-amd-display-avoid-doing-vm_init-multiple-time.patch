@@ -1,0 +1,45 @@
+From 4eb2be1d0827627b5878b26dfa21d68ffe677fd0 Mon Sep 17 00:00:00 2001
+From: Charlene Liu <Charlene.Liu@amd.com>
+Date: Fri, 5 Aug 2022 12:59:47 -0400
+Subject: [PATCH 58/73] drm/amd/display: avoid doing vm_init multiple time
+
+[ Upstream commit 5544a7b5a07480192eb5fd3536462faed2c21528 ]
+
+[why]
+this is to ensure that driver will not reprogram hvm_prefetch_req again if
+it is done.
+
+Reviewed-by: Martin Leung <Martin.Leung@amd.com>
+Acked-by: Brian Chang <Brian.Chang@amd.com>
+Signed-off-by: Charlene Liu <Charlene.Liu@amd.com>
+Tested-by: Daniel Wheeler <daniel.wheeler@amd.com>
+Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/gpu/drm/amd/display/dc/dcn21/dcn21_hubbub.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/amd/display/dc/dcn21/dcn21_hubbub.c b/drivers/gpu/drm/amd/display/dc/dcn21/dcn21_hubbub.c
+index c5e200d09038..5752271f22df 100644
+--- a/drivers/gpu/drm/amd/display/dc/dcn21/dcn21_hubbub.c
++++ b/drivers/gpu/drm/amd/display/dc/dcn21/dcn21_hubbub.c
+@@ -67,9 +67,15 @@ static uint32_t convert_and_clamp(
+ void dcn21_dchvm_init(struct hubbub *hubbub)
+ {
+ 	struct dcn20_hubbub *hubbub1 = TO_DCN20_HUBBUB(hubbub);
+-	uint32_t riommu_active;
++	uint32_t riommu_active, prefetch_done;
+ 	int i;
+ 
++	REG_GET(DCHVM_RIOMMU_STAT0, HOSTVM_PREFETCH_DONE, &prefetch_done);
++
++	if (prefetch_done) {
++		hubbub->riommu_active = true;
++		return;
++	}
+ 	//Init DCHVM block
+ 	REG_UPDATE(DCHVM_CTRL0, HOSTVM_INIT_REQ, 1);
+ 
+-- 
+2.37.3
+

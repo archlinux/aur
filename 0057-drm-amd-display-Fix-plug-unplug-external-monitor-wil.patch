@@ -1,0 +1,54 @@
+From bd71ef2c30244c25243d84b593ea0ba88164ebb6 Mon Sep 17 00:00:00 2001
+From: Tom Chung <chiahsuan.chung@amd.com>
+Date: Wed, 3 Aug 2022 15:15:17 +0800
+Subject: [PATCH 57/73] drm/amd/display: Fix plug/unplug external monitor will
+ hang while playback MPO video
+
+[ Upstream commit e98459c06e3d45c2229b097f7b8cdd412357fa2f ]
+
+[Why]
+Pipes for MPO primary and overlay will be power down and power up during
+plug/unplug external monitor while MPO video playback.
+But the pipes were the same after plug/unplug and should not need to be
+power down and power up or it will make page flip interrupt disabled and
+cause hang issue.
+
+[How]
+Add pipe split change condition that not only check the top pipe pointer
+but also check the index of top pipe if both top pipes are available.
+
+Reviewed-by: Sun peng Li <Sunpeng.Li@amd.com>
+Acked-by: Brian Chang <Brian.Chang@amd.com>
+Signed-off-by: Tom Chung <chiahsuan.chung@amd.com>
+Tested-by: Daniel Wheeler <daniel.wheeler@amd.com>
+Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/gpu/drm/amd/display/dc/core/dc.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/amd/display/dc/core/dc.c b/drivers/gpu/drm/amd/display/dc/core/dc.c
+index 7d69341acca0..9dbd965d8afb 100644
+--- a/drivers/gpu/drm/amd/display/dc/core/dc.c
++++ b/drivers/gpu/drm/amd/display/dc/core/dc.c
+@@ -1067,8 +1067,15 @@ static void disable_dangling_plane(struct dc *dc, struct dc_state *context)
+ 		struct dc_stream_state *old_stream =
+ 				dc->current_state->res_ctx.pipe_ctx[i].stream;
+ 		bool should_disable = true;
+-		bool pipe_split_change =
+-			context->res_ctx.pipe_ctx[i].top_pipe != dc->current_state->res_ctx.pipe_ctx[i].top_pipe;
++		bool pipe_split_change = false;
++
++		if ((context->res_ctx.pipe_ctx[i].top_pipe) &&
++			(dc->current_state->res_ctx.pipe_ctx[i].top_pipe))
++			pipe_split_change = context->res_ctx.pipe_ctx[i].top_pipe->pipe_idx !=
++				dc->current_state->res_ctx.pipe_ctx[i].top_pipe->pipe_idx;
++		else
++			pipe_split_change = context->res_ctx.pipe_ctx[i].top_pipe !=
++				dc->current_state->res_ctx.pipe_ctx[i].top_pipe;
+ 
+ 		for (j = 0; j < context->stream_count; j++) {
+ 			if (old_stream == context->streams[j]) {
+-- 
+2.37.3
+

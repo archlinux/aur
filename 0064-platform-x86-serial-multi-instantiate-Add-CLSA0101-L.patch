@@ -1,0 +1,35 @@
+From 0f31a350fd9a7c750bcde02f92eec3293b6bb667 Mon Sep 17 00:00:00 2001
+From: Lucas Tanure <tanureal@opensource.cirrus.com>
+Date: Wed, 27 Jul 2022 10:59:24 +0100
+Subject: [PATCH 64/73] platform/x86: serial-multi-instantiate: Add CLSA0101
+ Laptop
+
+[ Upstream commit 88392a0dd0ab263edb4ca416ebdecabd8289158a ]
+
+The device CLSA0101 has two instances of CS35L41
+connected by I2C.
+
+Signed-off-by: Lucas Tanure <tanureal@opensource.cirrus.com>
+Link: https://lore.kernel.org/r/20220727095924.80884-5-tanureal@opensource.cirrus.com
+Link: https://lore.kernel.org/r/20220816194639.13870-1-cam@neo-zeon.de
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/platform/x86/serial-multi-instantiate.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/platform/x86/serial-multi-instantiate.c b/drivers/platform/x86/serial-multi-instantiate.c
+index 1e8063b7c169..e98007197cf5 100644
+--- a/drivers/platform/x86/serial-multi-instantiate.c
++++ b/drivers/platform/x86/serial-multi-instantiate.c
+@@ -329,6 +329,7 @@ static const struct acpi_device_id smi_acpi_ids[] = {
+ 	{ "CSC3551", (unsigned long)&cs35l41_hda },
+ 	/* Non-conforming _HID for Cirrus Logic already released */
+ 	{ "CLSA0100", (unsigned long)&cs35l41_hda },
++	{ "CLSA0101", (unsigned long)&cs35l41_hda },
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(acpi, smi_acpi_ids);
+-- 
+2.37.3
+

@@ -1,0 +1,58 @@
+From 895096784ab9eb17126e3099a6ef2649e96f8d84 Mon Sep 17 00:00:00 2001
+From: Juergen Gross <jgross@suse.com>
+Date: Mon, 20 Jun 2022 11:45:34 +0200
+Subject: [PATCH 50/73] s390/hypfs: avoid error message under KVM
+
+[ Upstream commit 7b6670b03641ac308aaa6fa2e6f964ac993b5ea3 ]
+
+When booting under KVM the following error messages are issued:
+
+hypfs.7f5705: The hardware system does not support hypfs
+hypfs.7a79f0: Initialization of hypfs failed with rc=-61
+
+Demote the severity of first message from "error" to "info" and issue
+the second message only in other error cases.
+
+Signed-off-by: Juergen Gross <jgross@suse.com>
+Acked-by: Heiko Carstens <hca@linux.ibm.com>
+Acked-by: Christian Borntraeger <borntraeger@linux.ibm.com>
+Link: https://lore.kernel.org/r/20220620094534.18967-1-jgross@suse.com
+[arch/s390/hypfs/hypfs_diag.c changed description]
+Signed-off-by: Alexander Gordeev <agordeev@linux.ibm.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ arch/s390/hypfs/hypfs_diag.c | 2 +-
+ arch/s390/hypfs/inode.c      | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/s390/hypfs/hypfs_diag.c b/arch/s390/hypfs/hypfs_diag.c
+index f0bc4dc3e9bf..6511d15ace45 100644
+--- a/arch/s390/hypfs/hypfs_diag.c
++++ b/arch/s390/hypfs/hypfs_diag.c
+@@ -437,7 +437,7 @@ __init int hypfs_diag_init(void)
+ 	int rc;
+ 
+ 	if (diag204_probe()) {
+-		pr_err("The hardware system does not support hypfs\n");
++		pr_info("The hardware system does not support hypfs\n");
+ 		return -ENODATA;
+ 	}
+ 
+diff --git a/arch/s390/hypfs/inode.c b/arch/s390/hypfs/inode.c
+index 5c97f48cea91..ee919bfc8186 100644
+--- a/arch/s390/hypfs/inode.c
++++ b/arch/s390/hypfs/inode.c
+@@ -496,9 +496,9 @@ static int __init hypfs_init(void)
+ 	hypfs_vm_exit();
+ fail_hypfs_diag_exit:
+ 	hypfs_diag_exit();
++	pr_err("Initialization of hypfs failed with rc=%i\n", rc);
+ fail_dbfs_exit:
+ 	hypfs_dbfs_exit();
+-	pr_err("Initialization of hypfs failed with rc=%i\n", rc);
+ 	return rc;
+ }
+ device_initcall(hypfs_init)
+-- 
+2.37.3
+

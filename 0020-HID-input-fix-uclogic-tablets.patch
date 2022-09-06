@@ -1,0 +1,46 @@
+From b61400c4e784065c9783442e8ef096fefa811901 Mon Sep 17 00:00:00 2001
+From: Benjamin Tissoires <benjamin.tissoires@redhat.com>
+Date: Mon, 22 Aug 2022 08:22:47 +0200
+Subject: [PATCH 20/73] HID: input: fix uclogic tablets
+
+commit 8db8be9cfc89935c97d791c7e6264e710a7e8a56 upstream.
+
+commit 87562fcd1342 ("HID: input: remove the need for HID_QUIRK_INVERT")
+made the assumption that it was the only one handling tablets and thus
+kept an internal state regarding the tool.
+
+Turns out that the uclogic driver has a timer to release the in range
+bit, effectively making hid-input ignoring all in range information
+after the very first one.
+
+Fix that by having a more rationale approach which consists in forwarding
+every event and let the input stack filter out the duplicates.
+
+Reported-by: Stefan Hansson <newbie13xd@gmail.com>
+Fixes: 87562fcd1342 ("HID: input: remove the need for HID_QUIRK_INVERT")
+Signed-off-by: Benjamin Tissoires <benjamin.tissoires@redhat.com>
+Signed-off-by: Jiri Kosina <jkosina@suse.cz>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/hid/hid-input.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/hid/hid-input.c b/drivers/hid/hid-input.c
+index 48c1c02c69f4..871a185a0f1f 100644
+--- a/drivers/hid/hid-input.c
++++ b/drivers/hid/hid-input.c
+@@ -1532,7 +1532,10 @@ void hidinput_hid_event(struct hid_device *hid, struct hid_field *field, struct
+ 			 * assume ours
+ 			 */
+ 			if (!report->tool)
+-				hid_report_set_tool(report, input, usage->code);
++				report->tool = usage->code;
++
++			/* drivers may have changed the value behind our back, resend it */
++			hid_report_set_tool(report, input, report->tool);
+ 		} else {
+ 			hid_report_release_tool(report, input, usage->code);
+ 		}
+-- 
+2.37.3
+

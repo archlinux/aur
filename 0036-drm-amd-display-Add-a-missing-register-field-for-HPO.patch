@@ -1,0 +1,37 @@
+From ae29c0c466812726347813ab44bc144f0b4644b6 Mon Sep 17 00:00:00 2001
+From: Aurabindo Pillai <aurabindo.pillai@amd.com>
+Date: Fri, 29 Jul 2022 13:36:31 -0400
+Subject: [PATCH 36/73] drm/amd/display: Add a missing register field for HPO
+ DP stream encoder
+
+[ Upstream commit 37bc31f0e7da4fbad4664e64d906ae7b9009e550 ]
+
+[Why&How]
+Add the missing definition to set the register field
+HBLANK_MINIMUM_SYMBOL_WIDTH
+
+Signed-off-by: Aurabindo Pillai <aurabindo.pillai@amd.com>
+Acked-by: Alex Deucher <alexander.deucher@amd.com>
+Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ .../gpu/drm/amd/display/dc/dcn31/dcn31_hpo_dp_stream_encoder.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/amd/display/dc/dcn31/dcn31_hpo_dp_stream_encoder.h b/drivers/gpu/drm/amd/display/dc/dcn31/dcn31_hpo_dp_stream_encoder.h
+index 7c77c71591a0..82c3b3ac1f0d 100644
+--- a/drivers/gpu/drm/amd/display/dc/dcn31/dcn31_hpo_dp_stream_encoder.h
++++ b/drivers/gpu/drm/amd/display/dc/dcn31/dcn31_hpo_dp_stream_encoder.h
+@@ -162,7 +162,8 @@
+ 	SE_SF(DP_SYM32_ENC0_DP_SYM32_ENC_SDP_AUDIO_CONTROL0, AIP_ENABLE, mask_sh),\
+ 	SE_SF(DP_SYM32_ENC0_DP_SYM32_ENC_SDP_AUDIO_CONTROL0, ACM_ENABLE, mask_sh),\
+ 	SE_SF(DP_SYM32_ENC0_DP_SYM32_ENC_VID_CRC_CONTROL, CRC_ENABLE, mask_sh),\
+-	SE_SF(DP_SYM32_ENC0_DP_SYM32_ENC_VID_CRC_CONTROL, CRC_CONT_MODE_ENABLE, mask_sh)
++	SE_SF(DP_SYM32_ENC0_DP_SYM32_ENC_VID_CRC_CONTROL, CRC_CONT_MODE_ENABLE, mask_sh),\
++	SE_SF(DP_SYM32_ENC0_DP_SYM32_ENC_HBLANK_CONTROL, HBLANK_MINIMUM_SYMBOL_WIDTH, mask_sh)
+ 
+ 
+ #define DCN3_1_HPO_DP_STREAM_ENC_REG_FIELD_LIST(type) \
+-- 
+2.37.3
+

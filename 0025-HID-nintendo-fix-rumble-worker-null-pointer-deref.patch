@@ -1,0 +1,54 @@
+From 7c6e6c334154be16740b44dcd7638fb510b9bd91 Mon Sep 17 00:00:00 2001
+From: "Daniel J. Ogorchock" <djogorchock@gmail.com>
+Date: Wed, 13 Jul 2022 16:20:59 -0400
+Subject: [PATCH 25/73] HID: nintendo: fix rumble worker null pointer deref
+
+commit 1ff89e06c2e5fab30274e4b02360d4241d6e605e upstream.
+
+We can dereference a null pointer trying to queue work to a destroyed
+workqueue.
+
+If the device is disconnected, nintendo_hid_remove is called, in which
+the rumble_queue is destroyed. Avoid using that queue to defer rumble
+work once the controller state is set to JOYCON_CTLR_STATE_REMOVED.
+
+This eliminates the null pointer dereference.
+
+Signed-off-by: Daniel J. Ogorchock <djogorchock@gmail.com>
+Signed-off-by: Jiri Kosina <jkosina@suse.cz>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/hid/hid-nintendo.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/hid/hid-nintendo.c b/drivers/hid/hid-nintendo.c
+index 4b1173957c17..f33a03c96ba6 100644
+--- a/drivers/hid/hid-nintendo.c
++++ b/drivers/hid/hid-nintendo.c
+@@ -1222,6 +1222,7 @@ static void joycon_parse_report(struct joycon_ctlr *ctlr,
+ 
+ 	spin_lock_irqsave(&ctlr->lock, flags);
+ 	if (IS_ENABLED(CONFIG_NINTENDO_FF) && rep->vibrator_report &&
++	    ctlr->ctlr_state != JOYCON_CTLR_STATE_REMOVED &&
+ 	    (msecs - ctlr->rumble_msecs) >= JC_RUMBLE_PERIOD_MS &&
+ 	    (ctlr->rumble_queue_head != ctlr->rumble_queue_tail ||
+ 	     ctlr->rumble_zero_countdown > 0)) {
+@@ -1546,12 +1547,13 @@ static int joycon_set_rumble(struct joycon_ctlr *ctlr, u16 amp_r, u16 amp_l,
+ 		ctlr->rumble_queue_head = 0;
+ 	memcpy(ctlr->rumble_data[ctlr->rumble_queue_head], data,
+ 	       JC_RUMBLE_DATA_SIZE);
+-	spin_unlock_irqrestore(&ctlr->lock, flags);
+ 
+ 	/* don't wait for the periodic send (reduces latency) */
+-	if (schedule_now)
++	if (schedule_now && ctlr->ctlr_state != JOYCON_CTLR_STATE_REMOVED)
+ 		queue_work(ctlr->rumble_queue, &ctlr->rumble_worker);
+ 
++	spin_unlock_irqrestore(&ctlr->lock, flags);
++
+ 	return 0;
+ }
+ 
+-- 
+2.37.3
+

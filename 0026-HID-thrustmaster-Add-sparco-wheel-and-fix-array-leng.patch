@@ -1,0 +1,44 @@
+From a32046896fe1ad944fd61aec3127485066c4eff4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michael=20H=C3=BCbner?= <michaelh.95@t-online.de>
+Date: Fri, 5 Aug 2022 10:05:23 +0200
+Subject: [PATCH 26/73] HID: thrustmaster: Add sparco wheel and fix array
+ length
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+commit d9a17651f3749e69890db57ca66e677dfee70829 upstream.
+
+Add device id for the Sparco R383 Mod wheel.
+
+Fix wheel info array length to match actual wheel count present in the array.
+
+Signed-off-by: Michael Hübner <michaelh.95@t-online.de>
+Signed-off-by: Jiri Kosina <jkosina@suse.cz>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/hid/hid-thrustmaster.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/hid/hid-thrustmaster.c b/drivers/hid/hid-thrustmaster.c
+index c3e6d69fdfbd..cf1679b0d4fb 100644
+--- a/drivers/hid/hid-thrustmaster.c
++++ b/drivers/hid/hid-thrustmaster.c
+@@ -67,12 +67,13 @@ static const struct tm_wheel_info tm_wheels_infos[] = {
+ 	{0x0200, 0x0005, "Thrustmaster T300RS (Missing Attachment)"},
+ 	{0x0206, 0x0005, "Thrustmaster T300RS"},
+ 	{0x0209, 0x0005, "Thrustmaster T300RS (Open Wheel Attachment)"},
++	{0x020a, 0x0005, "Thrustmaster T300RS (Sparco R383 Mod)"},
+ 	{0x0204, 0x0005, "Thrustmaster T300 Ferrari Alcantara Edition"},
+ 	{0x0002, 0x0002, "Thrustmaster T500RS"}
+ 	//{0x0407, 0x0001, "Thrustmaster TMX"}
+ };
+ 
+-static const uint8_t tm_wheels_infos_length = 4;
++static const uint8_t tm_wheels_infos_length = 7;
+ 
+ /*
+  * This structs contains (in little endian) the response data
+-- 
+2.37.3
+

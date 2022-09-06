@@ -1,0 +1,96 @@
+From d3916da4bc6c022c9c41c576f6538fa78e5ce746 Mon Sep 17 00:00:00 2001
+From: James Morse <james.morse@arm.com>
+Date: Mon, 4 Jul 2022 16:57:32 +0100
+Subject: [PATCH 06/73] arm64: errata: Add Cortex-A510 to the repeat tlbi list
+
+commit 39fdb65f52e9a53d32a6ba719f96669fd300ae78 upstream.
+
+Cortex-A510 is affected by an erratum where in rare circumstances the
+CPUs may not handle a race between a break-before-make sequence on one
+CPU, and another CPU accessing the same page. This could allow a store
+to a page that has been unmapped.
+
+Work around this by adding the affected CPUs to the list that needs
+TLB sequences to be done twice.
+
+Signed-off-by: James Morse <james.morse@arm.com>
+Link: https://lore.kernel.org/r/20220704155732.21216-1-james.morse@arm.com
+Signed-off-by: Will Deacon <will@kernel.org>
+Cc: Lucas Wei <lucaswei@google.com>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ Documentation/arm64/silicon-errata.rst |  2 ++
+ arch/arm64/Kconfig                     | 17 +++++++++++++++++
+ arch/arm64/kernel/cpu_errata.c         |  8 +++++++-
+ 3 files changed, 26 insertions(+), 1 deletion(-)
+
+diff --git a/Documentation/arm64/silicon-errata.rst b/Documentation/arm64/silicon-errata.rst
+index 0b4235b1f8c4..33b04db8408f 100644
+--- a/Documentation/arm64/silicon-errata.rst
++++ b/Documentation/arm64/silicon-errata.rst
+@@ -106,6 +106,8 @@ stable kernels.
+ +----------------+-----------------+-----------------+-----------------------------+
+ | ARM            | Cortex-A510     | #2077057        | ARM64_ERRATUM_2077057       |
+ +----------------+-----------------+-----------------+-----------------------------+
++| ARM            | Cortex-A510     | #2441009        | ARM64_ERRATUM_2441009       |
+++----------------+-----------------+-----------------+-----------------------------+
+ | ARM            | Cortex-A710     | #2119858        | ARM64_ERRATUM_2119858       |
+ +----------------+-----------------+-----------------+-----------------------------+
+ | ARM            | Cortex-A710     | #2054223        | ARM64_ERRATUM_2054223       |
+diff --git a/arch/arm64/Kconfig b/arch/arm64/Kconfig
+index a5d1b561ed53..001eaba5a6b4 100644
+--- a/arch/arm64/Kconfig
++++ b/arch/arm64/Kconfig
+@@ -838,6 +838,23 @@ config ARM64_ERRATUM_2224489
+ 
+ 	  If unsure, say Y.
+ 
++config ARM64_ERRATUM_2441009
++	bool "Cortex-A510: Completion of affected memory accesses might not be guaranteed by completion of a TLBI"
++	default y
++	select ARM64_WORKAROUND_REPEAT_TLBI
++	help
++	  This option adds a workaround for ARM Cortex-A510 erratum #2441009.
++
++	  Under very rare circumstances, affected Cortex-A510 CPUs
++	  may not handle a race between a break-before-make sequence on one
++	  CPU, and another CPU accessing the same page. This could allow a
++	  store to a page that has been unmapped.
++
++	  Work around this by adding the affected CPUs to the list that needs
++	  TLB sequences to be done twice.
++
++	  If unsure, say Y.
++
+ config ARM64_ERRATUM_2064142
+ 	bool "Cortex-A510: 2064142: workaround TRBE register writes while disabled"
+ 	depends on CORESIGHT_TRBE
+diff --git a/arch/arm64/kernel/cpu_errata.c b/arch/arm64/kernel/cpu_errata.c
+index b374e258f705..5f4117dae888 100644
+--- a/arch/arm64/kernel/cpu_errata.c
++++ b/arch/arm64/kernel/cpu_errata.c
+@@ -213,6 +213,12 @@ static const struct arm64_cpu_capabilities arm64_repeat_tlbi_list[] = {
+ 		/* Kryo4xx Gold (rcpe to rfpe) => (r0p0 to r3p0) */
+ 		ERRATA_MIDR_RANGE(MIDR_QCOM_KRYO_4XX_GOLD, 0xc, 0xe, 0xf, 0xe),
+ 	},
++#endif
++#ifdef CONFIG_ARM64_ERRATUM_2441009
++	{
++		/* Cortex-A510 r0p0 -> r1p1. Fixed in r1p2 */
++		ERRATA_MIDR_RANGE(MIDR_CORTEX_A510, 0, 0, 1, 1),
++	},
+ #endif
+ 	{},
+ };
+@@ -490,7 +496,7 @@ const struct arm64_cpu_capabilities arm64_errata[] = {
+ #endif
+ #ifdef CONFIG_ARM64_WORKAROUND_REPEAT_TLBI
+ 	{
+-		.desc = "Qualcomm erratum 1009, or ARM erratum 1286807",
++		.desc = "Qualcomm erratum 1009, or ARM erratum 1286807, 2441009",
+ 		.capability = ARM64_WORKAROUND_REPEAT_TLBI,
+ 		.type = ARM64_CPUCAP_LOCAL_CPU_ERRATUM,
+ 		.matches = cpucap_multi_entry_cap_matches,
+-- 
+2.37.3
+

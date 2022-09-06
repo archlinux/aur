@@ -1,0 +1,44 @@
+From d875be57a21586f2ebdacb04afa134932b4d4d91 Mon Sep 17 00:00:00 2001
+From: Konstantin Komarov <almaz.alexandrovich@paragon-software.com>
+Date: Fri, 13 May 2022 19:54:23 +0300
+Subject: [PATCH 32/73] fs/ntfs3: Fix work with fragmented xattr
+
+[ Upstream commit 42f86b1226a42bfc79a7125af435432ad4680a32 ]
+
+In some cases xattr is too fragmented,
+so we need to load it before writing.
+
+Signed-off-by: Konstantin Komarov <almaz.alexandrovich@paragon-software.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ fs/ntfs3/xattr.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/fs/ntfs3/xattr.c b/fs/ntfs3/xattr.c
+index 3629049decac..e3d443ccb9be 100644
+--- a/fs/ntfs3/xattr.c
++++ b/fs/ntfs3/xattr.c
+@@ -118,7 +118,7 @@ static int ntfs_read_ea(struct ntfs_inode *ni, struct EA_FULL **ea,
+ 
+ 		run_init(&run);
+ 
+-		err = attr_load_runs(attr_ea, ni, &run, NULL);
++		err = attr_load_runs_range(ni, ATTR_EA, NULL, 0, &run, 0, size);
+ 		if (!err)
+ 			err = ntfs_read_run_nb(sbi, &run, 0, ea_p, size, NULL);
+ 		run_close(&run);
+@@ -444,6 +444,11 @@ static noinline int ntfs_set_ea(struct inode *inode, const char *name,
+ 		/* Delete xattr, ATTR_EA */
+ 		ni_remove_attr_le(ni, attr, mi, le);
+ 	} else if (attr->non_res) {
++		err = attr_load_runs_range(ni, ATTR_EA, NULL, 0, &ea_run, 0,
++					   size);
++		if (err)
++			goto out;
++
+ 		err = ntfs_sb_write_run(sbi, &ea_run, 0, ea_all, size, 0);
+ 		if (err)
+ 			goto out;
+-- 
+2.37.3
+

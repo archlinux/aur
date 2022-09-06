@@ -1,0 +1,39 @@
+From ec274d8f1e649b12530bbba3f01478e20bf8bc23 Mon Sep 17 00:00:00 2001
+From: Zhengchao Shao <shaozhengchao@huawei.com>
+Date: Wed, 27 Jul 2022 17:33:12 +0800
+Subject: [PATCH 70/73] net/af_packet: check len when min_header_len equals to
+ 0
+
+commit dc633700f00f726e027846a318c5ffeb8deaaeda upstream.
+
+User can use AF_PACKET socket to send packets with the length of 0.
+When min_header_len equals to 0, packet_snd will call __dev_queue_xmit
+to send packets, and sock->type can be any type.
+
+Reported-by: syzbot+5ea725c25d06fb9114c4@syzkaller.appspotmail.com
+Fixes: fd1894224407 ("bpf: Don't redirect packets with invalid pkt_len")
+Signed-off-by: Zhengchao Shao <shaozhengchao@huawei.com>
+Signed-off-by: David S. Miller <davem@davemloft.net>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ net/packet/af_packet.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/net/packet/af_packet.c b/net/packet/af_packet.c
+index ca6e92a22923..492bd35cccc0 100644
+--- a/net/packet/af_packet.c
++++ b/net/packet/af_packet.c
+@@ -3037,8 +3037,8 @@ static int packet_snd(struct socket *sock, struct msghdr *msg, size_t len)
+ 	if (err)
+ 		goto out_free;
+ 
+-	if (sock->type == SOCK_RAW &&
+-	    !dev_validate_header(dev, skb->data, len)) {
++	if ((sock->type == SOCK_RAW &&
++	     !dev_validate_header(dev, skb->data, len)) || !skb->len) {
+ 		err = -EINVAL;
+ 		goto out_free;
+ 	}
+-- 
+2.37.3
+

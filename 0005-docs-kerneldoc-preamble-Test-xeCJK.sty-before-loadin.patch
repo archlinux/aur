@@ -1,0 +1,88 @@
+From a8ba16e9f171e9638401ff39daebdd2b84553e2d Mon Sep 17 00:00:00 2001
+From: Akira Yokosawa <akiyks@gmail.com>
+Date: Mon, 8 Aug 2022 17:53:57 +0900
+Subject: [PATCH 05/73] docs: kerneldoc-preamble: Test xeCJK.sty before loading
+
+commit cee7db1b0239468b22c295cf04a8c40c34ecd35a upstream.
+
+On distros whose texlive packaging is fine-grained, texlive-xecjk
+can be installed/removed independently of other texlive packages.
+Conditionally loading xeCJK depending only on the existence of the
+"Noto Sans CJK SC" font might end up in xelatex error of
+"xeCJK.sty not found!".
+
+Improve the situation by testing existence of xeCJK.sty before
+loading it.
+
+This is useful on RHEL 9 and its clone distros where texlive-xecjk
+doesn't work at the moment due to a missing dependency [1].
+"make pdfdocs" for non-CJK contents should work after removing
+texlive-xecjk.
+
+Link: [1] https://bugzilla.redhat.com/show_bug.cgi?id=2086254
+Fixes: 398f7abdcb7e ("docs: pdfdocs: Pull LaTeX preamble part out of conf.py")
+Cc: stable@vger.kernel.org # v5.18+
+Signed-off-by: Akira Yokosawa <akiyks@gmail.com>
+Acked-by: Mauro Carvalho Chehab <mchehab@kernel.org>
+Link: https://lore.kernel.org/r/c24c2a87-70b2-5342-bcc9-de467940466e@gmail.com
+Signed-off-by: Jonathan Corbet <corbet@lwn.net>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ Documentation/sphinx/kerneldoc-preamble.sty | 22 +++++++++++++++------
+ 1 file changed, 16 insertions(+), 6 deletions(-)
+
+diff --git a/Documentation/sphinx/kerneldoc-preamble.sty b/Documentation/sphinx/kerneldoc-preamble.sty
+index 2a29cbe51396..9707e033c8c4 100644
+--- a/Documentation/sphinx/kerneldoc-preamble.sty
++++ b/Documentation/sphinx/kerneldoc-preamble.sty
+@@ -70,8 +70,16 @@
+ 
+ % Translations have Asian (CJK) characters which are only displayed if
+ % xeCJK is used
++\usepackage{ifthen}
++\newboolean{enablecjk}
++\setboolean{enablecjk}{false}
+ \IfFontExistsTF{Noto Sans CJK SC}{
+-    % Load xeCJK when CJK font is available
++    \IfFileExists{xeCJK.sty}{
++	\setboolean{enablecjk}{true}
++    }{}
++}{}
++\ifthenelse{\boolean{enablecjk}}{
++    % Load xeCJK when both the Noto Sans CJK font and xeCJK.sty are available.
+     \usepackage{xeCJK}
+     % Noto CJK fonts don't provide slant shape. [AutoFakeSlant] permits
+     % its emulation.
+@@ -196,7 +204,7 @@
+     % Inactivate CJK after tableofcontents
+     \apptocmd{\sphinxtableofcontents}{\kerneldocCJKoff}{}{}
+     \xeCJKsetup{CJKspace = true}% For inter-phrase space of Korean TOC
+-}{ % No CJK font found
++}{ % Don't enable CJK
+     % Custom macros to on/off CJK and switch CJK fonts (Dummy)
+     \newcommand{\kerneldocCJKon}{}
+     \newcommand{\kerneldocCJKoff}{}
+@@ -204,14 +212,16 @@
+     %% and ignore the argument (#1) in their definitions, whole contents of
+     %% CJK chapters can be ignored.
+     \newcommand{\kerneldocBeginSC}[1]{%
+-	%% Put a note on missing CJK fonts in place of zh_CN translation.
+-	\begin{sphinxadmonition}{note}{Note on missing fonts:}
++	%% Put a note on missing CJK fonts or the xecjk package in place of
++	%% zh_CN translation.
++	\begin{sphinxadmonition}{note}{Note on missing fonts and a package:}
+ 	    Translations of Simplified Chinese (zh\_CN), Traditional Chinese
+ 	    (zh\_TW), Korean (ko\_KR), and Japanese (ja\_JP) were skipped
+-	    due to the lack of suitable font families.
++	    due to the lack of suitable font families and/or the texlive-xecjk
++	    package.
+ 
+ 	    If you want them, please install ``Noto Sans CJK'' font families
+-	    by following instructions from
++	    along with the texlive-xecjk package by following instructions from
+ 	    \sphinxcode{./scripts/sphinx-pre-install}.
+ 	    Having optional ``Noto Serif CJK'' font families will improve
+ 	    the looks of those translations.
+-- 
+2.37.3
+

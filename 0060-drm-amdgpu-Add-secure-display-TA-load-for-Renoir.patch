@@ -1,0 +1,41 @@
+From 09186eeffd3949a7e6ed39085bc151c1396a99a8 Mon Sep 17 00:00:00 2001
+From: Shane Xiao <shane.xiao@amd.com>
+Date: Mon, 15 Aug 2022 16:32:15 +0800
+Subject: [PATCH 60/73] drm/amdgpu: Add secure display TA load for Renoir
+
+[ Upstream commit e42dfa66d59240afbdd8d4b47b87486db39504aa ]
+
+Add secure display TA load for Renoir
+
+Signed-off-by: Shane Xiao <shane.xiao@amd.com>
+Reviewed-by: Aaron Liu <aaron.liu@amd.com>
+Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/gpu/drm/amd/amdgpu/psp_v12_0.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/drivers/gpu/drm/amd/amdgpu/psp_v12_0.c b/drivers/gpu/drm/amd/amdgpu/psp_v12_0.c
+index a2588200ea58..0b2ac418e4ac 100644
+--- a/drivers/gpu/drm/amd/amdgpu/psp_v12_0.c
++++ b/drivers/gpu/drm/amd/amdgpu/psp_v12_0.c
+@@ -101,6 +101,16 @@ static int psp_v12_0_init_microcode(struct psp_context *psp)
+ 		adev->psp.dtm_context.context.bin_desc.start_addr =
+ 			(uint8_t *)adev->psp.hdcp_context.context.bin_desc.start_addr +
+ 			le32_to_cpu(ta_hdr->dtm.offset_bytes);
++
++		if (adev->apu_flags & AMD_APU_IS_RENOIR) {
++			adev->psp.securedisplay_context.context.bin_desc.fw_version =
++				le32_to_cpu(ta_hdr->securedisplay.fw_version);
++			adev->psp.securedisplay_context.context.bin_desc.size_bytes =
++				le32_to_cpu(ta_hdr->securedisplay.size_bytes);
++			adev->psp.securedisplay_context.context.bin_desc.start_addr =
++				(uint8_t *)adev->psp.hdcp_context.context.bin_desc.start_addr +
++				le32_to_cpu(ta_hdr->securedisplay.offset_bytes);
++		}
+ 	}
+ 
+ 	return 0;
+-- 
+2.37.3
+

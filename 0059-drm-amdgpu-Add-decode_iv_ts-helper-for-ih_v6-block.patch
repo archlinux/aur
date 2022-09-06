@@ -1,0 +1,32 @@
+From d278f332d105d3340179965dc14d6f7157fb9450 Mon Sep 17 00:00:00 2001
+From: Harish Kasiviswanathan <Harish.Kasiviswanathan@amd.com>
+Date: Fri, 5 Aug 2022 18:04:08 -0400
+Subject: [PATCH 59/73] drm/amdgpu: Add decode_iv_ts helper for ih_v6 block
+
+[ Upstream commit 1af9add1f1512b10d9ce44ec7137612bc81ff069 ]
+
+Was missing.  Add it.
+
+Signed-off-by: Harish Kasiviswanathan <Harish.Kasiviswanathan@amd.com>
+Reviewed-by: Hawking Zhang <Hawking.Zhang@amd.com>
+Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/gpu/drm/amd/amdgpu/ih_v6_0.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/gpu/drm/amd/amdgpu/ih_v6_0.c b/drivers/gpu/drm/amd/amdgpu/ih_v6_0.c
+index 92dc60a9d209..085e613f3646 100644
+--- a/drivers/gpu/drm/amd/amdgpu/ih_v6_0.c
++++ b/drivers/gpu/drm/amd/amdgpu/ih_v6_0.c
+@@ -727,6 +727,7 @@ static const struct amd_ip_funcs ih_v6_0_ip_funcs = {
+ static const struct amdgpu_ih_funcs ih_v6_0_funcs = {
+ 	.get_wptr = ih_v6_0_get_wptr,
+ 	.decode_iv = amdgpu_ih_decode_iv_helper,
++	.decode_iv_ts = amdgpu_ih_decode_iv_ts_helper,
+ 	.set_rptr = ih_v6_0_set_rptr
+ };
+ 
+-- 
+2.37.3
+

@@ -1,0 +1,110 @@
+From 933020e6d0572f9997e8faaed8c082fda0825718 Mon Sep 17 00:00:00 2001
+From: Mukul Joshi <mukul.joshi@amd.com>
+Date: Fri, 12 Aug 2022 15:23:51 -0400
+Subject: [PATCH 61/73] drm/amdgpu: Fix interrupt handling on ih_soft ring
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+[ Upstream commit de8341ee3ce7316883e836a2c4e9bf01ab651e0f ]
+
+There are no backing hardware registers for ih_soft ring.
+As a result, don't try to access hardware registers for read
+and write pointers when processing interrupts on the IH soft
+ring.
+
+Signed-off-by: Mukul Joshi <mukul.joshi@amd.com>
+Acked-by: Christian König <christian.koenig@amd.com>
+Reviewed-by: Felix Kuehling <Felix.Kuehling@amd.com>
+Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/gpu/drm/amd/amdgpu/navi10_ih.c | 7 ++++++-
+ drivers/gpu/drm/amd/amdgpu/vega10_ih.c | 7 ++++++-
+ drivers/gpu/drm/amd/amdgpu/vega20_ih.c | 7 ++++++-
+ 3 files changed, 18 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/gpu/drm/amd/amdgpu/navi10_ih.c b/drivers/gpu/drm/amd/amdgpu/navi10_ih.c
+index 4b5396d3e60f..eec13cb5bf75 100644
+--- a/drivers/gpu/drm/amd/amdgpu/navi10_ih.c
++++ b/drivers/gpu/drm/amd/amdgpu/navi10_ih.c
+@@ -409,9 +409,11 @@ static u32 navi10_ih_get_wptr(struct amdgpu_device *adev,
+ 	u32 wptr, tmp;
+ 	struct amdgpu_ih_regs *ih_regs;
+ 
+-	if (ih == &adev->irq.ih) {
++	if (ih == &adev->irq.ih || ih == &adev->irq.ih_soft) {
+ 		/* Only ring0 supports writeback. On other rings fall back
+ 		 * to register-based code with overflow checking below.
++		 * ih_soft ring doesn't have any backing hardware registers,
++		 * update wptr and return.
+ 		 */
+ 		wptr = le32_to_cpu(*ih->wptr_cpu);
+ 
+@@ -483,6 +485,9 @@ static void navi10_ih_set_rptr(struct amdgpu_device *adev,
+ {
+ 	struct amdgpu_ih_regs *ih_regs;
+ 
++	if (ih == &adev->irq.ih_soft)
++		return;
++
+ 	if (ih->use_doorbell) {
+ 		/* XXX check if swapping is necessary on BE */
+ 		*ih->rptr_cpu = ih->rptr;
+diff --git a/drivers/gpu/drm/amd/amdgpu/vega10_ih.c b/drivers/gpu/drm/amd/amdgpu/vega10_ih.c
+index cdd599a08125..03b7066471f9 100644
+--- a/drivers/gpu/drm/amd/amdgpu/vega10_ih.c
++++ b/drivers/gpu/drm/amd/amdgpu/vega10_ih.c
+@@ -334,9 +334,11 @@ static u32 vega10_ih_get_wptr(struct amdgpu_device *adev,
+ 	u32 wptr, tmp;
+ 	struct amdgpu_ih_regs *ih_regs;
+ 
+-	if (ih == &adev->irq.ih) {
++	if (ih == &adev->irq.ih || ih == &adev->irq.ih_soft) {
+ 		/* Only ring0 supports writeback. On other rings fall back
+ 		 * to register-based code with overflow checking below.
++		 * ih_soft ring doesn't have any backing hardware registers,
++		 * update wptr and return.
+ 		 */
+ 		wptr = le32_to_cpu(*ih->wptr_cpu);
+ 
+@@ -409,6 +411,9 @@ static void vega10_ih_set_rptr(struct amdgpu_device *adev,
+ {
+ 	struct amdgpu_ih_regs *ih_regs;
+ 
++	if (ih == &adev->irq.ih_soft)
++		return;
++
+ 	if (ih->use_doorbell) {
+ 		/* XXX check if swapping is necessary on BE */
+ 		*ih->rptr_cpu = ih->rptr;
+diff --git a/drivers/gpu/drm/amd/amdgpu/vega20_ih.c b/drivers/gpu/drm/amd/amdgpu/vega20_ih.c
+index 3b4eb8285943..2022ffbb8dba 100644
+--- a/drivers/gpu/drm/amd/amdgpu/vega20_ih.c
++++ b/drivers/gpu/drm/amd/amdgpu/vega20_ih.c
+@@ -385,9 +385,11 @@ static u32 vega20_ih_get_wptr(struct amdgpu_device *adev,
+ 	u32 wptr, tmp;
+ 	struct amdgpu_ih_regs *ih_regs;
+ 
+-	if (ih == &adev->irq.ih) {
++	if (ih == &adev->irq.ih || ih == &adev->irq.ih_soft) {
+ 		/* Only ring0 supports writeback. On other rings fall back
+ 		 * to register-based code with overflow checking below.
++		 * ih_soft ring doesn't have any backing hardware registers,
++		 * update wptr and return.
+ 		 */
+ 		wptr = le32_to_cpu(*ih->wptr_cpu);
+ 
+@@ -461,6 +463,9 @@ static void vega20_ih_set_rptr(struct amdgpu_device *adev,
+ {
+ 	struct amdgpu_ih_regs *ih_regs;
+ 
++	if (ih == &adev->irq.ih_soft)
++		return;
++
+ 	if (ih->use_doorbell) {
+ 		/* XXX check if swapping is necessary on BE */
+ 		*ih->rptr_cpu = ih->rptr;
+-- 
+2.37.3
+

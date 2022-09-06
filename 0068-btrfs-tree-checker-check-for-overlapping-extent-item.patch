@@ -1,0 +1,75 @@
+From 8a239dd886e25d03bb2581c8ab30e8a1a12446b1 Mon Sep 17 00:00:00 2001
+From: Josef Bacik <josef@toxicpanda.com>
+Date: Wed, 3 Aug 2022 14:28:47 -0400
+Subject: [PATCH 68/73] btrfs: tree-checker: check for overlapping extent items
+
+[ Upstream commit 899b7f69f244e539ea5df1b4d756046337de44a5 ]
+
+We're seeing a weird problem in production where we have overlapping
+extent items in the extent tree.  It's unclear where these are coming
+from, and in debugging we realized there's no check in the tree checker
+for this sort of problem.  Add a check to the tree-checker to make sure
+that the extents do not overlap each other.
+
+Reviewed-by: Qu Wenruo <wqu@suse.com>
+Signed-off-by: Josef Bacik <josef@toxicpanda.com>
+Reviewed-by: David Sterba <dsterba@suse.com>
+Signed-off-by: David Sterba <dsterba@suse.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ fs/btrfs/tree-checker.c | 25 +++++++++++++++++++++++--
+ 1 file changed, 23 insertions(+), 2 deletions(-)
+
+diff --git a/fs/btrfs/tree-checker.c b/fs/btrfs/tree-checker.c
+index 9e0e0ae2288c..43f905ab0a18 100644
+--- a/fs/btrfs/tree-checker.c
++++ b/fs/btrfs/tree-checker.c
+@@ -1233,7 +1233,8 @@ static void extent_err(const struct extent_buffer *eb, int slot,
+ }
+ 
+ static int check_extent_item(struct extent_buffer *leaf,
+-			     struct btrfs_key *key, int slot)
++			     struct btrfs_key *key, int slot,
++			     struct btrfs_key *prev_key)
+ {
+ 	struct btrfs_fs_info *fs_info = leaf->fs_info;
+ 	struct btrfs_extent_item *ei;
+@@ -1453,6 +1454,26 @@ static int check_extent_item(struct extent_buffer *leaf,
+ 			   total_refs, inline_refs);
+ 		return -EUCLEAN;
+ 	}
++
++	if ((prev_key->type == BTRFS_EXTENT_ITEM_KEY) ||
++	    (prev_key->type == BTRFS_METADATA_ITEM_KEY)) {
++		u64 prev_end = prev_key->objectid;
++
++		if (prev_key->type == BTRFS_METADATA_ITEM_KEY)
++			prev_end += fs_info->nodesize;
++		else
++			prev_end += prev_key->offset;
++
++		if (unlikely(prev_end > key->objectid)) {
++			extent_err(leaf, slot,
++	"previous extent [%llu %u %llu] overlaps current extent [%llu %u %llu]",
++				   prev_key->objectid, prev_key->type,
++				   prev_key->offset, key->objectid, key->type,
++				   key->offset);
++			return -EUCLEAN;
++		}
++	}
++
+ 	return 0;
+ }
+ 
+@@ -1621,7 +1642,7 @@ static int check_leaf_item(struct extent_buffer *leaf,
+ 		break;
+ 	case BTRFS_EXTENT_ITEM_KEY:
+ 	case BTRFS_METADATA_ITEM_KEY:
+-		ret = check_extent_item(leaf, key, slot);
++		ret = check_extent_item(leaf, key, slot, prev_key);
+ 		break;
+ 	case BTRFS_TREE_BLOCK_REF_KEY:
+ 	case BTRFS_SHARED_DATA_REF_KEY:
+-- 
+2.37.3
+

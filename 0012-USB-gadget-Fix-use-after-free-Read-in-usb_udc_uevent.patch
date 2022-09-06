@@ -1,0 +1,76 @@
+From f44b0b95d50fffeca036e1ba36770390e0b519dd Mon Sep 17 00:00:00 2001
+From: Alan Stern <stern@rowland.harvard.edu>
+Date: Thu, 21 Jul 2022 11:07:10 -0400
+Subject: [PATCH 12/73] USB: gadget: Fix use-after-free Read in
+ usb_udc_uevent()
+
+commit 2191c00855b03aa59c20e698be713d952d51fc18 upstream.
+
+The syzbot fuzzer found a race between uevent callbacks and gadget
+driver unregistration that can cause a use-after-free bug:
+
+---------------------------------------------------------------
+BUG: KASAN: use-after-free in usb_udc_uevent+0x11f/0x130
+drivers/usb/gadget/udc/core.c:1732
+Read of size 8 at addr ffff888078ce2050 by task udevd/2968
+
+CPU: 1 PID: 2968 Comm: udevd Not tainted 5.19.0-rc4-next-20220628-syzkaller #0
+Hardware name: Google Google Compute Engine/Google Compute Engine, BIOS Google
+06/29/2022
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:88 [inline]
+ dump_stack_lvl+0xcd/0x134 lib/dump_stack.c:106
+ print_address_description mm/kasan/report.c:317 [inline]
+ print_report.cold+0x2ba/0x719 mm/kasan/report.c:433
+ kasan_report+0xbe/0x1f0 mm/kasan/report.c:495
+ usb_udc_uevent+0x11f/0x130 drivers/usb/gadget/udc/core.c:1732
+ dev_uevent+0x290/0x770 drivers/base/core.c:2424
+---------------------------------------------------------------
+
+The bug occurs because usb_udc_uevent() dereferences udc->driver but
+does so without acquiring the udc_lock mutex, which protects this
+field.  If the gadget driver is unbound from the udc concurrently with
+uevent processing, the driver structure may be accessed after it has
+been deallocated.
+
+To prevent the race, we make sure that the routine holds the mutex
+around the racing accesses.
+
+Link: <https://lore.kernel.org/all/0000000000004de90405a719c951@google.com>
+CC: stable@vger.kernel.org # fc274c1e9973
+Reported-and-tested-by: syzbot+b0de012ceb1e2a97891b@syzkaller.appspotmail.com
+Signed-off-by: Alan Stern <stern@rowland.harvard.edu>
+Link: https://lore.kernel.org/r/YtlrnhHyrHsSky9m@rowland.harvard.edu
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/usb/gadget/udc/core.c | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/usb/gadget/udc/core.c b/drivers/usb/gadget/udc/core.c
+index 7886497253cc..cafcf260394c 100644
+--- a/drivers/usb/gadget/udc/core.c
++++ b/drivers/usb/gadget/udc/core.c
+@@ -1728,13 +1728,14 @@ static int usb_udc_uevent(struct device *dev, struct kobj_uevent_env *env)
+ 		return ret;
+ 	}
+ 
+-	if (udc->driver) {
++	mutex_lock(&udc_lock);
++	if (udc->driver)
+ 		ret = add_uevent_var(env, "USB_UDC_DRIVER=%s",
+ 				udc->driver->function);
+-		if (ret) {
+-			dev_err(dev, "failed to add uevent USB_UDC_DRIVER\n");
+-			return ret;
+-		}
++	mutex_unlock(&udc_lock);
++	if (ret) {
++		dev_err(dev, "failed to add uevent USB_UDC_DRIVER\n");
++		return ret;
+ 	}
+ 
+ 	return 0;
+-- 
+2.37.3
+

@@ -1,0 +1,39 @@
+From ec45c77833192fa8da4681b1a4c6847fe7e4bf4c Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Sun, 28 Aug 2022 09:41:43 +0200
+Subject: [PATCH 19/73] ALSA: usb-audio: Add quirk for LH Labs Geek Out HD
+ Audio 1V5
+
+commit 5f3d9e8161bb8cb23ab3b4678cd13f6e90a06186 upstream.
+
+The USB DAC from LH Labs (2522:0007) seems requiring the same quirk as
+Sony Walkman to set up the interface like UAC1; otherwise it gets the
+constant errors "usb_set_interface failed (-71)".  This patch adds a
+quirk entry for addressing the buggy behavior.
+
+Reported-by: Lennert Van Alboom <lennert@vanalboom.org>
+Cc: <stable@vger.kernel.org>
+Link: https://lore.kernel.org/r/T3VPXtCc4uFws9Gfh2RjX6OdwM1RqfC6VqQr--_LMDyB2x5N3p9_q6AtPna17IXhHwBtcJVdXuS80ZZSCMjh_BafIbnzJPhbrkmhmWS6DlI=@vanalboom.org
+Link: https://lore.kernel.org/r/20220828074143.14736-1-tiwai@suse.de
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ sound/usb/quirks.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/sound/usb/quirks.c b/sound/usb/quirks.c
+index 168fd802d70b..9bfead5efc4c 100644
+--- a/sound/usb/quirks.c
++++ b/sound/usb/quirks.c
+@@ -1903,6 +1903,8 @@ static const struct usb_audio_quirk_flags_table quirk_flags_table[] = {
+ 		   QUIRK_FLAG_SHARE_MEDIA_DEVICE | QUIRK_FLAG_ALIGN_TRANSFER),
+ 	DEVICE_FLG(0x21b4, 0x0081, /* AudioQuest DragonFly */
+ 		   QUIRK_FLAG_GET_SAMPLE_RATE),
++	DEVICE_FLG(0x2522, 0x0007, /* LH Labs Geek Out HD Audio 1V5 */
++		   QUIRK_FLAG_SET_IFACE_FIRST),
+ 	DEVICE_FLG(0x2708, 0x0002, /* Audient iD14 */
+ 		   QUIRK_FLAG_IGNORE_CTL_ERROR),
+ 	DEVICE_FLG(0x2912, 0x30c8, /* Audioengine D1 */
+-- 
+2.37.3
+

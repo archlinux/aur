@@ -1,0 +1,48 @@
+From 952d4c72d9032eec5c38249ca353d31c43be06e0 Mon Sep 17 00:00:00 2001
+From: Kenneth Feng <kenneth.feng@amd.com>
+Date: Tue, 9 Aug 2022 10:13:54 +0800
+Subject: [PATCH 43/73] drm/amd/pm: skip pptable override for smu_v13_0_7
+
+[ Upstream commit 4e64b529c5b04e7944b41de554ee686ecab00744 ]
+
+skip pptable override for smu_v13_0_7 secure boards only.
+
+Signed-off-by: Kenneth Feng <kenneth.feng@amd.com>
+Reviewed-by: Feifei Xu <Feifei.Xu@amd.com>
+Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/gpu/drm/amd/pm/swsmu/smu13/smu_v13_0.c | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/gpu/drm/amd/pm/swsmu/smu13/smu_v13_0.c b/drivers/gpu/drm/amd/pm/swsmu/smu13/smu_v13_0.c
+index 5aa08c031f72..1d8a9e5b3cc0 100644
+--- a/drivers/gpu/drm/amd/pm/swsmu/smu13/smu_v13_0.c
++++ b/drivers/gpu/drm/amd/pm/swsmu/smu13/smu_v13_0.c
+@@ -203,6 +203,9 @@ int smu_v13_0_init_pptable_microcode(struct smu_context *smu)
+ 	if (!adev->scpm_enabled)
+ 		return 0;
+ 
++	if (adev->ip_versions[MP1_HWIP][0] == IP_VERSION(13, 0, 7))
++		return 0;
++
+ 	/* override pptable_id from driver parameter */
+ 	if (amdgpu_smu_pptable_id >= 0) {
+ 		pptable_id = amdgpu_smu_pptable_id;
+@@ -210,13 +213,6 @@ int smu_v13_0_init_pptable_microcode(struct smu_context *smu)
+ 	} else {
+ 		pptable_id = smu->smu_table.boot_values.pp_table_id;
+ 
+-		if (adev->ip_versions[MP1_HWIP][0] == IP_VERSION(13, 0, 7) &&
+-			pptable_id == 3667)
+-			pptable_id = 36671;
+-
+-		if (adev->ip_versions[MP1_HWIP][0] == IP_VERSION(13, 0, 7) &&
+-			pptable_id == 3688)
+-			pptable_id = 36881;
+ 		/*
+ 		 * Temporary solution for SMU V13.0.0 with SCPM enabled:
+ 		 *   - use 36831 signed pptable when pp_table_id is 3683
+-- 
+2.37.3
+

@@ -1,0 +1,34 @@
+From 7d4bfe34b9cbb0395cb9508fa64324d4a1379e00 Mon Sep 17 00:00:00 2001
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Mon, 15 Aug 2022 12:39:20 +0200
+Subject: [PATCH 62/73] netfilter: conntrack: NF_CONNTRACK_PROCFS should no
+ longer default to y
+
+[ Upstream commit aa5762c34213aba7a72dc58e70601370805fa794 ]
+
+NF_CONNTRACK_PROCFS was marked obsolete in commit 54b07dca68557b09
+("netfilter: provide config option to disable ancient procfs parts") in
+v3.3.
+
+Signed-off-by: Geert Uytterhoeven <geert@linux-m68k.org>
+Signed-off-by: Florian Westphal <fw@strlen.de>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ net/netfilter/Kconfig | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/net/netfilter/Kconfig b/net/netfilter/Kconfig
+index ddc54b6d18ee..8c0fea1bdc8d 100644
+--- a/net/netfilter/Kconfig
++++ b/net/netfilter/Kconfig
+@@ -144,7 +144,6 @@ config NF_CONNTRACK_ZONES
+ 
+ config NF_CONNTRACK_PROCFS
+ 	bool "Supply CT list in procfs (OBSOLETE)"
+-	default y
+ 	depends on PROC_FS
+ 	help
+ 	This option enables for the list of known conntrack entries
+-- 
+2.37.3
+

@@ -1,0 +1,78 @@
+From 1a289a16857062e704da52683a49aaf16e826cbf Mon Sep 17 00:00:00 2001
+From: Maxime Ripard <maxime@cerno.tech>
+Date: Wed, 29 Jun 2022 14:34:37 +0200
+Subject: [PATCH 01/73] drm/vc4: hdmi: Rework power up
+
+commit 258e483a4d5e97a6a8caa74381ddc1f395ac1c71 upstream.
+
+The current code tries to handle the case where CONFIG_PM isn't selected
+by first calling our runtime_resume implementation and then properly
+report the power state to the runtime_pm core.
+
+This allows to have a functionning device even if pm_runtime_get_*
+functions are nops.
+
+However, the device power state if CONFIG_PM is enabled is
+RPM_SUSPENDED, and thus our vc4_hdmi_write() and vc4_hdmi_read() calls
+in the runtime_pm hooks will now report a warning since the device might
+not be properly powered.
+
+Even more so, we need CONFIG_PM enabled since the previous RaspberryPi
+have a power domain that needs to be powered up for the HDMI controller
+to be usable.
+
+The previous patch has created a dependency on CONFIG_PM, now we can
+just assume it's there and only call pm_runtime_resume_and_get() to make
+sure our device is powered in bind.
+
+Link: https://lore.kernel.org/r/20220629123510.1915022-39-maxime@cerno.tech
+Acked-by: Thomas Zimmermann <tzimmermann@suse.de>
+Tested-by: Stefan Wahren <stefan.wahren@i2se.com>
+Signed-off-by: Maxime Ripard <maxime@cerno.tech>
+(cherry picked from commit 53565c28e6af2cef6bbf438c34250135e3564459)
+Signed-off-by: Maxime Ripard <maxime@cerno.tech>
+Cc: "Sudip Mukherjee (Codethink)" <sudipm.mukherjee@gmail.com>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/gpu/drm/vc4/vc4_hdmi.c | 15 +++++++--------
+ 1 file changed, 7 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/gpu/drm/vc4/vc4_hdmi.c b/drivers/gpu/drm/vc4/vc4_hdmi.c
+index 23ff6aa5e8f6..844a031a3663 100644
+--- a/drivers/gpu/drm/vc4/vc4_hdmi.c
++++ b/drivers/gpu/drm/vc4/vc4_hdmi.c
+@@ -2992,17 +2992,15 @@ static int vc4_hdmi_bind(struct device *dev, struct device *master, void *data)
+ 			vc4_hdmi->disable_4kp60 = true;
+ 	}
+ 
++	pm_runtime_enable(dev);
++
+ 	/*
+-	 * We need to have the device powered up at this point to call
+-	 * our reset hook and for the CEC init.
++	 *  We need to have the device powered up at this point to call
++	 *  our reset hook and for the CEC init.
+ 	 */
+-	ret = vc4_hdmi_runtime_resume(dev);
++	ret = pm_runtime_resume_and_get(dev);
+ 	if (ret)
+-		goto err_put_ddc;
+-
+-	pm_runtime_get_noresume(dev);
+-	pm_runtime_set_active(dev);
+-	pm_runtime_enable(dev);
++		goto err_disable_runtime_pm;
+ 
+ 	if ((of_device_is_compatible(dev->of_node, "brcm,bcm2711-hdmi0") ||
+ 	     of_device_is_compatible(dev->of_node, "brcm,bcm2711-hdmi1")) &&
+@@ -3048,6 +3046,7 @@ static int vc4_hdmi_bind(struct device *dev, struct device *master, void *data)
+ err_destroy_encoder:
+ 	drm_encoder_cleanup(encoder);
+ 	pm_runtime_put_sync(dev);
++err_disable_runtime_pm:
+ 	pm_runtime_disable(dev);
+ err_put_ddc:
+ 	put_device(&vc4_hdmi->ddc->dev);
+-- 
+2.37.3
+

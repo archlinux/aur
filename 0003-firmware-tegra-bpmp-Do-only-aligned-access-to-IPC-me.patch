@@ -1,0 +1,57 @@
+From 515af71adf3d5e05587c7bb27c1725c20cd259a0 Mon Sep 17 00:00:00 2001
+From: Timo Alho <talho@nvidia.com>
+Date: Wed, 22 Jun 2022 16:22:59 +0300
+Subject: [PATCH 03/73] firmware: tegra: bpmp: Do only aligned access to IPC
+ memory area
+
+commit a4740b148a04dc60e14fe6a1dfe216d3bae214fd upstream.
+
+Use memcpy_toio and memcpy_fromio variants of memcpy to guarantee no
+unaligned access to IPC memory area. This is to allow the IPC memory to
+be mapped as Device memory to further suppress speculative reads from
+happening within the 64 kB memory area above the IPC memory when 64 kB
+memory pages are used.
+
+Signed-off-by: Timo Alho <talho@nvidia.com>
+Signed-off-by: Mikko Perttunen <mperttunen@nvidia.com>
+Signed-off-by: Thierry Reding <treding@nvidia.com>
+Cc: Jon Hunter <jonathanh@nvidia.com>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/firmware/tegra/bpmp.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/firmware/tegra/bpmp.c b/drivers/firmware/tegra/bpmp.c
+index 5654c5e9862b..037db21de510 100644
+--- a/drivers/firmware/tegra/bpmp.c
++++ b/drivers/firmware/tegra/bpmp.c
+@@ -201,7 +201,7 @@ static ssize_t __tegra_bpmp_channel_read(struct tegra_bpmp_channel *channel,
+ 	int err;
+ 
+ 	if (data && size > 0)
+-		memcpy(data, channel->ib->data, size);
++		memcpy_fromio(data, channel->ib->data, size);
+ 
+ 	err = tegra_bpmp_ack_response(channel);
+ 	if (err < 0)
+@@ -245,7 +245,7 @@ static ssize_t __tegra_bpmp_channel_write(struct tegra_bpmp_channel *channel,
+ 	channel->ob->flags = flags;
+ 
+ 	if (data && size > 0)
+-		memcpy(channel->ob->data, data, size);
++		memcpy_toio(channel->ob->data, data, size);
+ 
+ 	return tegra_bpmp_post_request(channel);
+ }
+@@ -420,7 +420,7 @@ void tegra_bpmp_mrq_return(struct tegra_bpmp_channel *channel, int code,
+ 	channel->ob->code = code;
+ 
+ 	if (data && size > 0)
+-		memcpy(channel->ob->data, data, size);
++		memcpy_toio(channel->ob->data, data, size);
+ 
+ 	err = tegra_bpmp_post_response(channel);
+ 	if (WARN_ON(err < 0))
+-- 
+2.37.3
+

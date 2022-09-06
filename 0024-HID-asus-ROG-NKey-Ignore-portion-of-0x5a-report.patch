@@ -1,0 +1,43 @@
+From 2b32e820ccf5a0385e46d1c038b321aba9a5ec2d Mon Sep 17 00:00:00 2001
+From: Josh Kilmer <srjek2@gmail.com>
+Date: Thu, 28 Jul 2022 12:51:11 -0500
+Subject: [PATCH 24/73] HID: asus: ROG NKey: Ignore portion of 0x5a report
+
+commit 1c0cc9d11c665020cbeb80e660fb8929164407f4 upstream.
+
+On an Asus G513QY, of the 5 bytes in a 0x5a report, only the first byte
+is a meaningful keycode. The other bytes are zeroed out or hold garbage
+from the last packet sent to the keyboard.
+
+This patch fixes up the report descriptor for this event so that the
+general hid code will only process 1 byte for keycodes, avoiding
+spurious key events and unmapped Asus vendor usagepage code warnings.
+
+Signed-off-by: Josh Kilmer <srjek2@gmail.com>
+Signed-off-by: Jiri Kosina <jkosina@suse.cz>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/hid/hid-asus.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/drivers/hid/hid-asus.c b/drivers/hid/hid-asus.c
+index 08c9a9a60ae4..b59c3dafa6a4 100644
+--- a/drivers/hid/hid-asus.c
++++ b/drivers/hid/hid-asus.c
+@@ -1212,6 +1212,13 @@ static __u8 *asus_report_fixup(struct hid_device *hdev, __u8 *rdesc,
+ 		rdesc = new_rdesc;
+ 	}
+ 
++	if (drvdata->quirks & QUIRK_ROG_NKEY_KEYBOARD &&
++			*rsize == 331 && rdesc[190] == 0x85 && rdesc[191] == 0x5a &&
++			rdesc[204] == 0x95 && rdesc[205] == 0x05) {
++		hid_info(hdev, "Fixing up Asus N-KEY keyb report descriptor\n");
++		rdesc[205] = 0x01;
++	}
++
+ 	return rdesc;
+ }
+ 
+-- 
+2.37.3
+

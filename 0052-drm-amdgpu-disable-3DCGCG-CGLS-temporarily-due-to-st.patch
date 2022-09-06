@@ -1,0 +1,36 @@
+From d9d70547cba1d88fe52bfb37655d09a12926a0f3 Mon Sep 17 00:00:00 2001
+From: Evan Quan <evan.quan@amd.com>
+Date: Wed, 3 Aug 2022 16:13:56 +0800
+Subject: [PATCH 52/73] drm/amdgpu: disable 3DCGCG/CGLS temporarily due to
+ stability issue
+
+[ Upstream commit 1b586595df6d04c27088ef348b8202204ce26d45 ]
+
+Some stability issues were reported with these features.
+
+Signed-off-by: Evan Quan <evan.quan@amd.com>
+Reviewed-by: Alex Deucher <alexander.deucher@amd.com>
+Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/gpu/drm/amd/amdgpu/soc21.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/gpu/drm/amd/amdgpu/soc21.c b/drivers/gpu/drm/amd/amdgpu/soc21.c
+index 9e18a2b22607..8d5c452a9100 100644
+--- a/drivers/gpu/drm/amd/amdgpu/soc21.c
++++ b/drivers/gpu/drm/amd/amdgpu/soc21.c
+@@ -530,8 +530,10 @@ static int soc21_common_early_init(void *handle)
+ 	case IP_VERSION(11, 0, 0):
+ 		adev->cg_flags = AMD_CG_SUPPORT_GFX_CGCG |
+ 			AMD_CG_SUPPORT_GFX_CGLS |
++#if 0
+ 			AMD_CG_SUPPORT_GFX_3D_CGCG |
+ 			AMD_CG_SUPPORT_GFX_3D_CGLS |
++#endif
+ 			AMD_CG_SUPPORT_GFX_MGCG |
+ 			AMD_CG_SUPPORT_REPEATER_FGCG |
+ 			AMD_CG_SUPPORT_GFX_FGCG |
+-- 
+2.37.3
+

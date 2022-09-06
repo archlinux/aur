@@ -1,0 +1,51 @@
+From 40f424dc1ee328832ec86df29b8939e2e1618153 Mon Sep 17 00:00:00 2001
+From: Namjae Jeon <linkinjeon@kernel.org>
+Date: Mon, 8 Aug 2022 21:56:48 +0900
+Subject: [PATCH 46/73] ksmbd: return STATUS_BAD_NETWORK_NAME error status if
+ share is not configured
+
+[ Upstream commit fe54833dc8d97ef387e86f7c80537d51c503ca75 ]
+
+If share is not configured in smb.conf, smb2 tree connect should return
+STATUS_BAD_NETWORK_NAME instead of STATUS_BAD_NETWORK_PATH.
+
+Signed-off-by: Namjae Jeon <linkinjeon@kernel.org>
+Reviewed-by: Hyunchul Lee <hyc.lee@gmail.com>
+Signed-off-by: Steve French <stfrench@microsoft.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ fs/ksmbd/mgmt/tree_connect.c | 2 +-
+ fs/ksmbd/smb2pdu.c           | 3 ++-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/fs/ksmbd/mgmt/tree_connect.c b/fs/ksmbd/mgmt/tree_connect.c
+index 0d28e723a28c..940385c6a913 100644
+--- a/fs/ksmbd/mgmt/tree_connect.c
++++ b/fs/ksmbd/mgmt/tree_connect.c
+@@ -18,7 +18,7 @@
+ struct ksmbd_tree_conn_status
+ ksmbd_tree_conn_connect(struct ksmbd_session *sess, char *share_name)
+ {
+-	struct ksmbd_tree_conn_status status = {-EINVAL, NULL};
++	struct ksmbd_tree_conn_status status = {-ENOENT, NULL};
+ 	struct ksmbd_tree_connect_response *resp = NULL;
+ 	struct ksmbd_share_config *sc;
+ 	struct ksmbd_tree_connect *tree_conn = NULL;
+diff --git a/fs/ksmbd/smb2pdu.c b/fs/ksmbd/smb2pdu.c
+index a9c33d15ca1f..bbb3958b6469 100644
+--- a/fs/ksmbd/smb2pdu.c
++++ b/fs/ksmbd/smb2pdu.c
+@@ -1930,8 +1930,9 @@ int smb2_tree_connect(struct ksmbd_work *work)
+ 		rsp->hdr.Status = STATUS_SUCCESS;
+ 		rc = 0;
+ 		break;
++	case -ENOENT:
+ 	case KSMBD_TREE_CONN_STATUS_NO_SHARE:
+-		rsp->hdr.Status = STATUS_BAD_NETWORK_PATH;
++		rsp->hdr.Status = STATUS_BAD_NETWORK_NAME;
+ 		break;
+ 	case -ENOMEM:
+ 	case KSMBD_TREE_CONN_STATUS_NOMEM:
+-- 
+2.37.3
+

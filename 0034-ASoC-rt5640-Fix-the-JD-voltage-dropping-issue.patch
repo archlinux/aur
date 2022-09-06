@@ -1,0 +1,44 @@
+From 33f15a70fe9d26554d6b8f306f088a5e3ae31e49 Mon Sep 17 00:00:00 2001
+From: Oder Chiou <oder_chiou@realtek.com>
+Date: Mon, 8 Aug 2022 13:28:36 +0800
+Subject: [PATCH 34/73] ASoC: rt5640: Fix the JD voltage dropping issue
+
+[ Upstream commit afb176d45870048eea540991b082208270824037 ]
+
+The patch fixes the JD voltage dropping issue in the HDA JD using.
+
+Signed-off-by: Oder Chiou <oder_chiou@realtek.com>
+Reported-by: Mohan Kumar D <mkumard@nvidia.com>
+Link: https://lore.kernel.org/r/20220808052836.25791-1-oder_chiou@realtek.com
+Signed-off-by: Mark Brown <broonie@kernel.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ sound/soc/codecs/rt5640.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/sound/soc/codecs/rt5640.c b/sound/soc/codecs/rt5640.c
+index 18b3da9211e3..5ada0d318d0f 100644
+--- a/sound/soc/codecs/rt5640.c
++++ b/sound/soc/codecs/rt5640.c
+@@ -1986,7 +1986,7 @@ static int rt5640_set_bias_level(struct snd_soc_component *component,
+ 		snd_soc_component_write(component, RT5640_PWR_MIXER, 0x0000);
+ 		if (rt5640->jd_src == RT5640_JD_SRC_HDA_HEADER)
+ 			snd_soc_component_write(component, RT5640_PWR_ANLG1,
+-				0x0018);
++				0x2818);
+ 		else
+ 			snd_soc_component_write(component, RT5640_PWR_ANLG1,
+ 				0x0000);
+@@ -2592,7 +2592,8 @@ static void rt5640_enable_hda_jack_detect(
+ 	snd_soc_component_update_bits(component, RT5640_DUMMY1, 0x400, 0x0);
+ 
+ 	snd_soc_component_update_bits(component, RT5640_PWR_ANLG1,
+-		RT5640_PWR_VREF2, RT5640_PWR_VREF2);
++		RT5640_PWR_VREF2 | RT5640_PWR_MB | RT5640_PWR_BG,
++		RT5640_PWR_VREF2 | RT5640_PWR_MB | RT5640_PWR_BG);
+ 	usleep_range(10000, 15000);
+ 	snd_soc_component_update_bits(component, RT5640_PWR_ANLG1,
+ 		RT5640_PWR_FV2, RT5640_PWR_FV2);
+-- 
+2.37.3
+

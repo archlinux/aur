@@ -1,0 +1,58 @@
+From 909dae582c8f3a9a231c7bc41594787b1620a5f1 Mon Sep 17 00:00:00 2001
+From: Meenakshikumar Somasundaram <meenakshikumar.somasundaram@amd.com>
+Date: Mon, 11 Jul 2022 18:37:41 -0400
+Subject: [PATCH 42/73] drm/amd/display: Fix TDR eDP and USB4 display light up
+ issue
+
+[ Upstream commit 30456ffa65469d1d2e5e1da05017e6728d24c11c ]
+
+[Why]
+After TDR recovery, eDP and USB4 display does not light up. Because
+dmub outbox notifications are not enabled after dmub reload and link
+encoder assignments for the streams are not cleared before dc state
+reset.
+
+[How]
+- Dmub outbox notification is enabled after tdr recovery by issuing
+  inbox command to dmub.
+- Link encoders for the streams are unassigned before dc state reset.
+
+Reviewed-by: Jimmy Kizito <Jimmy.Kizito@amd.com>
+Reviewed-by: Jun Lei <Jun.Lei@amd.com>
+Acked-by: Tom Chung <chiahsuan.chung@amd.com>
+Signed-off-by: Meenakshikumar Somasundaram <meenakshikumar.somasundaram@amd.com>
+Tested-by: Daniel Wheeler <daniel.wheeler@amd.com>
+Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/gpu/drm/amd/display/dc/core/dc.c | 1 +
+ drivers/gpu/drm/amd/display/dc/dc_link.h | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/drivers/gpu/drm/amd/display/dc/core/dc.c b/drivers/gpu/drm/amd/display/dc/core/dc.c
+index f14449401188..7d69341acca0 100644
+--- a/drivers/gpu/drm/amd/display/dc/core/dc.c
++++ b/drivers/gpu/drm/amd/display/dc/core/dc.c
+@@ -3783,6 +3783,7 @@ void dc_enable_dmub_outbox(struct dc *dc)
+ 	struct dc_context *dc_ctx = dc->ctx;
+ 
+ 	dmub_enable_outbox_notification(dc_ctx->dmub_srv);
++	DC_LOG_DC("%s: dmub outbox notifications enabled\n", __func__);
+ }
+ 
+ /**
+diff --git a/drivers/gpu/drm/amd/display/dc/dc_link.h b/drivers/gpu/drm/amd/display/dc/dc_link.h
+index a3c37ee3f849..f96f53c1bc25 100644
+--- a/drivers/gpu/drm/amd/display/dc/dc_link.h
++++ b/drivers/gpu/drm/amd/display/dc/dc_link.h
+@@ -337,6 +337,7 @@ enum dc_detect_reason {
+ 	DETECT_REASON_HPDRX,
+ 	DETECT_REASON_FALLBACK,
+ 	DETECT_REASON_RETRAIN,
++	DETECT_REASON_TDR,
+ };
+ 
+ bool dc_link_detect(struct dc_link *dc_link, enum dc_detect_reason reason);
+-- 
+2.37.3
+

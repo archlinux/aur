@@ -1,0 +1,63 @@
+From d25d6744c46b8289d61180bafb30f3140fef24a4 Mon Sep 17 00:00:00 2001
+From: Liam Howlett <liam.howlett@oracle.com>
+Date: Mon, 27 Jun 2022 15:18:59 +0000
+Subject: [PATCH 69/73] android: binder: fix lockdep check on clearing vma
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+commit b0cab80ecd54ae3b2356bb081af0bffd538c8265 upstream.
+
+When munmapping a vma, the mmap_lock can be degraded to a write before
+calling close() on the file handle.  The binder close() function calls
+binder_alloc_set_vma() to clear the vma address, which now has a lock dep
+check for writing on the mmap_lock.  Change the lockdep check to ensure
+the reading lock is held while clearing and keep the write check while
+writing.
+
+Link: https://lkml.kernel.org/r/20220627151857.2316964-1-Liam.Howlett@oracle.com
+Fixes: 472a68df605b ("android: binder: stop saving a pointer to the VMA")
+Signed-off-by: Liam R. Howlett <Liam.Howlett@oracle.com>
+Reported-by: syzbot+da54fa8d793ca89c741f@syzkaller.appspotmail.com
+Acked-by: Todd Kjos <tkjos@google.com>
+Cc: "Arve Hjønnevåg" <arve@android.com>
+Cc: Christian Brauner (Microsoft) <brauner@kernel.org>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Hridya Valsaraju <hridya@google.com>
+Cc: Joel Fernandes <joel@joelfernandes.org>
+Cc: Martijn Coenen <maco@android.com>
+Cc: Suren Baghdasaryan <surenb@google.com>
+Signed-off-by: Andrew Morton <akpm@linux-foundation.org>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/android/binder_alloc.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/android/binder_alloc.c b/drivers/android/binder_alloc.c
+index 7981a2598376..5d437c0c842c 100644
+--- a/drivers/android/binder_alloc.c
++++ b/drivers/android/binder_alloc.c
+@@ -315,12 +315,19 @@ static inline void binder_alloc_set_vma(struct binder_alloc *alloc,
+ {
+ 	unsigned long vm_start = 0;
+ 
++	/*
++	 * Allow clearing the vma with holding just the read lock to allow
++	 * munmapping downgrade of the write lock before freeing and closing the
++	 * file using binder_alloc_vma_close().
++	 */
+ 	if (vma) {
+ 		vm_start = vma->vm_start;
+ 		alloc->vma_vm_mm = vma->vm_mm;
++		mmap_assert_write_locked(alloc->vma_vm_mm);
++	} else {
++		mmap_assert_locked(alloc->vma_vm_mm);
+ 	}
+ 
+-	mmap_assert_write_locked(alloc->vma_vm_mm);
+ 	alloc->vma_addr = vm_start;
+ }
+ 
+-- 
+2.37.3
+

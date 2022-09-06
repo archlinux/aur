@@ -1,0 +1,62 @@
+From de3f7eb0b8642ded71fae5bbf4db584933da6c7d Mon Sep 17 00:00:00 2001
+From: Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+Date: Mon, 8 Aug 2022 20:03:43 +0200
+Subject: [PATCH 35/73] rtla: Fix tracer name
+
+[ Upstream commit f1432cd24c240cedf78c0d026631e3b10052c8e1 ]
+
+The correct tracer name is timerlat and not timelat.
+
+Link: https://lore.kernel.org/linux-trace-devel/20220808180343.22262-1-alexandre.vicenzi@suse.com
+
+Signed-off-by: Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+Signed-off-by: Steven Rostedt (Google) <rostedt@goodmis.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ Documentation/tools/rtla/rtla-timerlat-hist.rst | 2 +-
+ tools/tracing/rtla/src/timerlat_hist.c          | 2 +-
+ tools/tracing/rtla/src/timerlat_top.c           | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Documentation/tools/rtla/rtla-timerlat-hist.rst b/Documentation/tools/rtla/rtla-timerlat-hist.rst
+index e12eae1f3301..6bf7f0ca4556 100644
+--- a/Documentation/tools/rtla/rtla-timerlat-hist.rst
++++ b/Documentation/tools/rtla/rtla-timerlat-hist.rst
+@@ -33,7 +33,7 @@ EXAMPLE
+ =======
+ In the example below, **rtla timerlat hist** is set to run for *10* minutes,
+ in the cpus *0-4*, *skipping zero* only lines. Moreover, **rtla timerlat
+-hist** will change the priority of the *timelat* threads to run under
++hist** will change the priority of the *timerlat* threads to run under
+ *SCHED_DEADLINE* priority, with a *10us* runtime every *1ms* period. The
+ *1ms* period is also passed to the *timerlat* tracer::
+ 
+diff --git a/tools/tracing/rtla/src/timerlat_hist.c b/tools/tracing/rtla/src/timerlat_hist.c
+index f3ec628f5e51..4b48af8a8309 100644
+--- a/tools/tracing/rtla/src/timerlat_hist.c
++++ b/tools/tracing/rtla/src/timerlat_hist.c
+@@ -892,7 +892,7 @@ int timerlat_hist_main(int argc, char *argv[])
+ 	return_value = 0;
+ 
+ 	if (trace_is_off(&tool->trace, &record->trace)) {
+-		printf("rtla timelat hit stop tracing\n");
++		printf("rtla timerlat hit stop tracing\n");
+ 		if (params->trace_output) {
+ 			printf("  Saving trace to %s\n", params->trace_output);
+ 			save_trace_to_file(record->trace.inst, params->trace_output);
+diff --git a/tools/tracing/rtla/src/timerlat_top.c b/tools/tracing/rtla/src/timerlat_top.c
+index 35452a1d45e9..334271935222 100644
+--- a/tools/tracing/rtla/src/timerlat_top.c
++++ b/tools/tracing/rtla/src/timerlat_top.c
+@@ -687,7 +687,7 @@ int timerlat_top_main(int argc, char *argv[])
+ 	return_value = 0;
+ 
+ 	if (trace_is_off(&top->trace, &record->trace)) {
+-		printf("rtla timelat hit stop tracing\n");
++		printf("rtla timerlat hit stop tracing\n");
+ 		if (params->trace_output) {
+ 			printf("  Saving trace to %s\n", params->trace_output);
+ 			save_trace_to_file(record->trace.inst, params->trace_output);
+-- 
+2.37.3
+

@@ -1,0 +1,40 @@
+From ab01ac7fa985755e29663283ec13179e99bf8fcf Mon Sep 17 00:00:00 2001
+From: Chiawen Huang <chiawen.huang@amd.com>
+Date: Thu, 21 Jul 2022 21:57:05 +0800
+Subject: [PATCH 37/73] drm/amd/display: Device flash garbage before get in OS
+
+[ Upstream commit 9c580e8f6cd6524d4e2c3490c440110526f7ddd6 ]
+
+[Why]
+Enabling stream with tg lock makes config settings
+pending causing the garbage until tg unlock.
+
+[How]
+Keep the original lock mechanism
+The driver doesn't lock tg if plane_state is null.
+
+Reviewed-by: Anthony Koo <Anthony.Koo@amd.com>
+Acked-by: Tom Chung <chiahsuan.chung@amd.com>
+Signed-off-by: Chiawen Huang <chiawen.huang@amd.com>
+Tested-by: Daniel Wheeler <daniel.wheeler@amd.com>
+Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/gpu/drm/amd/display/dc/dcn10/dcn10_hw_sequencer.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/gpu/drm/amd/display/dc/dcn10/dcn10_hw_sequencer.c b/drivers/gpu/drm/amd/display/dc/dcn10/dcn10_hw_sequencer.c
+index e3a62873c0e7..d9ab27991535 100644
+--- a/drivers/gpu/drm/amd/display/dc/dcn10/dcn10_hw_sequencer.c
++++ b/drivers/gpu/drm/amd/display/dc/dcn10/dcn10_hw_sequencer.c
+@@ -108,6 +108,7 @@ void dcn10_lock_all_pipes(struct dc *dc,
+ 		 */
+ 		if (pipe_ctx->top_pipe ||
+ 		    !pipe_ctx->stream ||
++		    !pipe_ctx->plane_state ||
+ 		    !tg->funcs->is_tg_enabled(tg))
+ 			continue;
+ 
+-- 
+2.37.3
+

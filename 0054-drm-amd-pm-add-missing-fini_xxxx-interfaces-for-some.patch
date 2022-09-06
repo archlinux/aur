@@ -1,0 +1,50 @@
+From 22a75c616f1971c23838506b14971a4ef4a66bd7 Mon Sep 17 00:00:00 2001
+From: Evan Quan <evan.quan@amd.com>
+Date: Wed, 10 Aug 2022 11:11:16 +0800
+Subject: [PATCH 54/73] drm/amd/pm: add missing ->fini_xxxx interfaces for some
+ SMU13 asics
+
+[ Upstream commit 4bac1c846eff8042dd59ddecd0a43f3b9de5fd23 ]
+
+Without these, potential memory leak may be induced.
+
+Signed-off-by: Evan Quan <evan.quan@amd.com>
+Reviewed-by: Alex Deucher <alexander.deucher@amd.com>
+Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/gpu/drm/amd/pm/swsmu/smu13/smu_v13_0_0_ppt.c | 2 ++
+ drivers/gpu/drm/amd/pm/swsmu/smu13/smu_v13_0_7_ppt.c | 2 ++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/drivers/gpu/drm/amd/pm/swsmu/smu13/smu_v13_0_0_ppt.c b/drivers/gpu/drm/amd/pm/swsmu/smu13/smu_v13_0_0_ppt.c
+index 7432b3e76d3d..201546c36994 100644
+--- a/drivers/gpu/drm/amd/pm/swsmu/smu13/smu_v13_0_0_ppt.c
++++ b/drivers/gpu/drm/amd/pm/swsmu/smu13/smu_v13_0_0_ppt.c
+@@ -1583,7 +1583,9 @@ static const struct pptable_funcs smu_v13_0_0_ppt_funcs = {
+ 	.dump_pptable = smu_v13_0_0_dump_pptable,
+ 	.init_microcode = smu_v13_0_init_microcode,
+ 	.load_microcode = smu_v13_0_load_microcode,
++	.fini_microcode = smu_v13_0_fini_microcode,
+ 	.init_smc_tables = smu_v13_0_0_init_smc_tables,
++	.fini_smc_tables = smu_v13_0_fini_smc_tables,
+ 	.init_power = smu_v13_0_init_power,
+ 	.fini_power = smu_v13_0_fini_power,
+ 	.check_fw_status = smu_v13_0_check_fw_status,
+diff --git a/drivers/gpu/drm/amd/pm/swsmu/smu13/smu_v13_0_7_ppt.c b/drivers/gpu/drm/amd/pm/swsmu/smu13/smu_v13_0_7_ppt.c
+index 4e1861fb2c6a..9cde13b07dd2 100644
+--- a/drivers/gpu/drm/amd/pm/swsmu/smu13/smu_v13_0_7_ppt.c
++++ b/drivers/gpu/drm/amd/pm/swsmu/smu13/smu_v13_0_7_ppt.c
+@@ -1539,7 +1539,9 @@ static const struct pptable_funcs smu_v13_0_7_ppt_funcs = {
+ 	.dump_pptable = smu_v13_0_7_dump_pptable,
+ 	.init_microcode = smu_v13_0_init_microcode,
+ 	.load_microcode = smu_v13_0_load_microcode,
++	.fini_microcode = smu_v13_0_fini_microcode,
+ 	.init_smc_tables = smu_v13_0_7_init_smc_tables,
++	.fini_smc_tables = smu_v13_0_fini_smc_tables,
+ 	.init_power = smu_v13_0_init_power,
+ 	.check_fw_status = smu_v13_0_7_check_fw_status,
+ 	.setup_pptable = smu_v13_0_7_setup_pptable,
+-- 
+2.37.3
+

@@ -1,0 +1,52 @@
+From 1cf82931822dbf3b24945147b5330d8fdd86cdff Mon Sep 17 00:00:00 2001
+From: Maxime Ripard <maxime@cerno.tech>
+Date: Wed, 29 Jun 2022 14:34:36 +0200
+Subject: [PATCH 02/73] drm/vc4: hdmi: Depends on CONFIG_PM
+
+commit 72e2329e7c9bbe15e7a813670497ec9c6f919af3 upstream.
+
+We already depend on runtime PM to get the power domains and clocks for
+most of the devices supported by the vc4 driver, so let's just select it
+to make sure it's there.
+
+Link: https://lore.kernel.org/r/20220629123510.1915022-38-maxime@cerno.tech
+Acked-by: Thomas Zimmermann <tzimmermann@suse.de>
+Tested-by: Stefan Wahren <stefan.wahren@i2se.com>
+Signed-off-by: Maxime Ripard <maxime@cerno.tech>
+(cherry picked from commit f1bc386b319e93e56453ae27e9e83817bb1f6f95)
+Signed-off-by: Maxime Ripard <maxime@cerno.tech>
+Cc: "Sudip Mukherjee (Codethink)" <sudipm.mukherjee@gmail.com>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/gpu/drm/vc4/Kconfig    | 1 +
+ drivers/gpu/drm/vc4/vc4_hdmi.c | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/vc4/Kconfig b/drivers/gpu/drm/vc4/Kconfig
+index 061be9a6619d..b0f3117102ca 100644
+--- a/drivers/gpu/drm/vc4/Kconfig
++++ b/drivers/gpu/drm/vc4/Kconfig
+@@ -8,6 +8,7 @@ config DRM_VC4
+ 	depends on DRM
+ 	depends on SND && SND_SOC
+ 	depends on COMMON_CLK
++	depends on PM
+ 	select DRM_DISPLAY_HDMI_HELPER
+ 	select DRM_DISPLAY_HELPER
+ 	select DRM_KMS_HELPER
+diff --git a/drivers/gpu/drm/vc4/vc4_hdmi.c b/drivers/gpu/drm/vc4/vc4_hdmi.c
+index 844a031a3663..199bc398817f 100644
+--- a/drivers/gpu/drm/vc4/vc4_hdmi.c
++++ b/drivers/gpu/drm/vc4/vc4_hdmi.c
+@@ -2875,7 +2875,7 @@ static int vc5_hdmi_init_resources(struct vc4_hdmi *vc4_hdmi)
+ 	return 0;
+ }
+ 
+-static int __maybe_unused vc4_hdmi_runtime_suspend(struct device *dev)
++static int vc4_hdmi_runtime_suspend(struct device *dev)
+ {
+ 	struct vc4_hdmi *vc4_hdmi = dev_get_drvdata(dev);
+ 
+-- 
+2.37.3
+
