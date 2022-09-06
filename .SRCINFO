@@ -6,6 +6,7 @@ pkgbase = cysinfo-git
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = make
 	depends = bash
 	depends = gawk
 	provides = cysinfo
