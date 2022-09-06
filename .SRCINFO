@@ -1,7 +1,7 @@
 pkgbase = mugshot
 	pkgdesc = Program to update personal user details
 	pkgver = 0.4.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bluesabre/mugshot
 	arch = any
 	license = GPLv3
@@ -15,6 +15,7 @@ pkgbase = mugshot
 	optdepends = cheese: webcam support
 	optdepends = pidgin: update buddy icon
 	optdepends = libreoffice: update user details
+	optdepends = gnome-control-center: collection of stock face icons
 	options = !emptydirs
 	source = mugshot-0.4.3.tar.gz::https://github.com/bluesabre/mugshot/archive/mugshot-0.4.3.tar.gz
 	sha256sums = afab48b119091b70d66689931fe1bec95c761a9da16d3ad070f37c6fb54286f8
