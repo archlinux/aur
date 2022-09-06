@@ -1,7 +1,7 @@
 # Maintainer: Arnoud Willemsen <mail at lynthium dot com>
 
 pkgname=firejail-git
-pkgver=r7648.7c6584fe0
+pkgver=0.9.70.r8682.160ccd3d9
 pkgrel=1
 pkgdesc="Linux namespaces sandbox program (GIT version)"
 arch=(i686 x86_64)
@@ -17,11 +17,12 @@ optdepends=('xdg-dbus-proxy')
 makedepends=('git')
 backup=('etc/firejail/login.users'
         'etc/apparmor.d/local/firejail-default'
-        'etc/firejail/firejail.config')
+        'etc/firejail/firejail.config'
+        'etc/firejail/firecfg.config')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" | sed 's/^v//;s/-/./g'
+  printf "%s.r%s.%s" "$(git describe --tags --abbrev=0)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" | sed 's/^v//;s/-/./g'
 }
 
 build() {
