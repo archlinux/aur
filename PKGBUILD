@@ -1,7 +1,7 @@
 # Maintainer: Drommer <drommer@github.com>
 
 pkgbase=ttf-pt-public-pack
-pkgname=('ttf-pt-astra-sans' 'ttf-pt-astra-serif' 'ttf-pt-sans' 'ttf-pt-serif' 'ttf-pt-mono' 'ttf-pt-root-ui')
+pkgname=('ttf-pt-astra-sans' 'ttf-pt-astra-serif' 'ttf-pt-sans' 'ttf-pt-serif' 'ttf-pt-mono' 'ttf-pt-root_ui')
 pkgver=22.09
 pkgrel=1
 pkgdesc='ParaType font family with extended cyrillic and latin character sets'
@@ -56,7 +56,7 @@ package_ttf-pt-mono() {
   install -Dm644 $srcdir/OFL.txt -t $pkgdir/usr/share/licenses/${pkgname}
 }
 
-package_ttf-pt-root-ui() {
+package_ttf-pt-root_ui() {
   pkgdesc='PT Root UI is a modern uniwidth sans serif whose individual character widths are constant across all weights (ParaType family)'
   provides=('ttf-font' 'ttf-pt-root-ui')
   conflicts=('ttf-pt-root-ui')

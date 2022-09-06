@@ -43,7 +43,7 @@ pkgname = ttf-pt-mono
 	conflicts = ttf-pt-mono
 	conflicts = ttf-paratype
 
-pkgname = ttf-pt-root-ui
+pkgname = ttf-pt-root_ui
 	pkgdesc = PT Root UI is a modern uniwidth sans serif whose individual character widths are constant across all weights (ParaType family)
 	provides = ttf-font
 	provides = ttf-pt-root-ui
