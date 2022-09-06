@@ -4,15 +4,14 @@
 
 pkgname=rlottie
 pkgver=0.2
-pkgrel=3
+pkgrel=4
 pkgdesc='A platform independent standalone library that plays Lottie Animation'
 arch=('x86_64')
 url='https://github.com/Samsung/rlottie'
 license=('Custom')
-makedepends=('cmake' 'git' 'ninja' 'patchelf')
+makedepends=('cmake' 'git' 'ninja')
 depends=('gcc-libs')
-optdepends=('lottie2gif: A command-line utility to convert lottie to gif animations'
-		    'lottie2webp: A command-line utility to convert lottie to webp animations')
+optdepends=('lottieconv: Command-line utilities to convert lottie to webp and gif animations')
 source=("https://github.com/Samsung/rlottie/archive/refs/tags/v$pkgver.tar.gz"
         '0001-add-missing-include.patch')
 sha256sums=('030ccbc270f144b4f3519fb3b86e20dd79fb48d5d55e57f950f12bab9b65216a'
@@ -21,9 +20,7 @@ sha256sums=('030ccbc270f144b4f3519fb3b86e20dd79fb48d5d55e57f950f12bab9b65216a'
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
 
-	ls -l src/lottie/lottieparser.cpp
-	patch --forward --strip=0 --input="$srcdir/0001-add-missing-include.patch"
-	ls -l src/lottie/lottieparser.cpp
+	patch -N -p0 -i "$srcdir/0001-add-missing-include.patch"
 	mkdir -p build
 }
 
@@ -35,7 +32,6 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release
 	ninja
-	patchelf --remove-rpath example/lottie2gif
 }
 
 package() {
