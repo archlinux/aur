@@ -1,0 +1,15 @@
+pkgbase = ttf-pt-astra-fact
+	pkgdesc = ParaType font based on Fact family, metric-compatible with Verdana
+	pkgver = 1.001
+	pkgrel = 1
+	url = https://www.paratype.ru
+	arch = any
+	license = custom:OFL
+	provides = ttf-font
+	provides = ttf-pt-astra-fact
+	source = http://dl.astralinux.ru/astra/stable/orel/repository/pool/main/f/fonts-pt/fonts-pt-astra-fact_1.001_all.deb
+	source = OFL.txt::https://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=OFL_plaintext&filename=OFL.txt
+	sha256sums = 04e0fcb85e1728b968291d482371b6fc98167643dc525e2f4b990318c43886e3
+	sha256sums = ca122f3bda0154f692817450168cb650a7fc59ef96c93582acd2e7a744d464d3
+
+pkgname = ttf-pt-astra-fact
