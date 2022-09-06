@@ -1,6 +1,6 @@
 _name=mizani
 pkgname=python-$_name
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc='Scales for python'
 arch=(any)
@@ -13,14 +13,17 @@ depends=(
 	python-matplotlib
 	python-palettable
 )
-_pyarch=py3
-_wheel="${_name/-/_}-$pkgver-$_pyarch-none-any.whl"
-source=("https://files.pythonhosted.org/packages/$_pyarch/${_name::1}/$_name/$_wheel")
-sha256sums=('7f95d713e2bd28d51919e065d3453d470a654a0a219a7f777f8e9b6ed6e6ed35')
-noextract=("$_wheel")
+makedepends=(python-setuptools python-installer python-build)
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('b84b923cd3b8b4c0421a750672e5a85ed2aa05e632bd37af8419d5bbf65c397c')
+
+build() {
+	cd "$_name-$pkgver"
+	python -m build --wheel --no-isolation
+}
 
 package() {
-	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
-	mkdir -p "$site"
-	unzip "$_wheel" -d "$site"
+	cd "$_name-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
+
