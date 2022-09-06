@@ -1,0 +1,50 @@
+pkgbase = ttf-pt-public-pack
+	pkgdesc = ParaType font family with extended cyrillic and latin character sets
+	pkgver = 22.09
+	pkgrel = 1
+	url = https://www.paratype.ru
+	arch = any
+	license = custom:OFL
+	source = PT-Public-Pack.ottt.zip::https://api.paratype.ru/api/editions/ofl/download/59384
+	sha256sums = SKIP
+
+pkgname = ttf-pt-astra-sans
+	pkgdesc = ParaType font based on PT Sans family, metric-compatible with Times New Roman
+	provides = ttf-font
+	provides = ttf-pt-astra-sans
+	conflicts = ttf-pt-astra-sans
+	conflicts = ttf-astra-sans
+
+pkgname = ttf-pt-astra-serif
+	pkgdesc = ParaType font based on PT Serif family, metric-compatible with Times New Roman
+	provides = ttf-font
+	provides = ttf-pt-astra-serif
+	conflicts = ttf-pt-astra-serif
+	conflicts = ttf-astra-serif
+
+pkgname = ttf-pt-sans
+	pkgdesc = PT Sans is a ParaType family font for universal use
+	provides = ttf-font
+	provides = ttf-pt-sans
+	conflicts = ttf-pt-sans
+	conflicts = ttf-paratype
+
+pkgname = ttf-pt-serif
+	pkgdesc = PT Serif is a ParaType family font designed for universal use together with PT Sans
+	provides = ttf-font
+	provides = ttf-pt-serif
+	conflicts = ttf-pt-serif
+	conflicts = ttf-paratype
+
+pkgname = ttf-pt-mono
+	pkgdesc = PT Mono is a monospaced font of the ParaType PT Project series
+	provides = ttf-font
+	provides = ttf-pt-mono
+	conflicts = ttf-pt-mono
+	conflicts = ttf-paratype
+
+pkgname = ttf-pt-root-ui
+	pkgdesc = PT Root UI is a modern uniwidth sans serif whose individual character widths are constant across all weights (ParaType family)
+	provides = ttf-font
+	provides = ttf-pt-root-ui
+	conflicts = ttf-pt-root-ui
