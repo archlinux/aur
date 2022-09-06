@@ -1,11 +1,10 @@
 pkgbase = ttf-pt-public-pack
-	pkgdesc = ParaType font family with extended cyrillic and latin character sets
 	pkgver = 22.09
 	pkgrel = 1
 	url = https://www.paratype.ru
 	arch = any
 	license = custom:OFL
-	source = PT-Public-Pack.ottt.zip::https://api.paratype.ru/api/editions/ofl/download/59384
+	source = PT-Public-Pack.ottt.zip::https://api.paratype.com/api/editions/ofl/download/59384
 	sha256sums = SKIP
 
 pkgname = ttf-pt-astra-sans

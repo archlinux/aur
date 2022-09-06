@@ -4,11 +4,10 @@ pkgbase=ttf-pt-public-pack
 pkgname=('ttf-pt-astra-sans' 'ttf-pt-astra-serif' 'ttf-pt-sans' 'ttf-pt-serif' 'ttf-pt-mono' 'ttf-pt-root_ui')
 pkgver=22.09
 pkgrel=1
-pkgdesc='ParaType font family with extended cyrillic and latin character sets'
 arch=('any')
 url='https://www.paratype.ru'
 license=('custom:OFL')
-source=("PT-Public-Pack.ottt.zip"::"https://api.paratype.ru/api/editions/ofl/download/59384")
+source=("PT-Public-Pack.ottt.zip"::"https://api.paratype.com/api/editions/ofl/download/59384")
 DLAGENTS=('https::/usr/bin/curl -gqb "" -fLC - --retry 3 --retry-delay 3 -o %o %u --referer https://www.paratype.com/ --user-agent Mozilla')
 sha256sums=('SKIP')
 
