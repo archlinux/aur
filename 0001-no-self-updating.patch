@@ -1,18 +1,17 @@
 diff --git a/functions/antidote-update b/functions/antidote-update
-index aa8b5a1..200133a 100644
+index 0618841..c126295 100644
 --- a/functions/antidote-update
 +++ b/functions/antidote-update
-@@ -38,11 +38,8 @@ if (( $#o_bundles )) || ! (( $#o_self )); then
- fi
+@@ -40,11 +40,7 @@ fi
  
  # update antidote
--if (( $#o_self )) || ! (( $#o_bundles )); then
+ if (( $#o_self )) || ! (( $#o_bundles )); then
 -  echo "Updating antidote..."
 -  git -C "${0:A:h:h}" pull --quiet --ff --rebase --autostash
+-  echo "Antidote self-update complete.\n"
 -  source "${0:A:h:h}"/antidote.zsh
 -  antidote -v
-+if (( $#o_self )); then
-+  echo "Self updating is disabled in this build."
++  echo "Self updating is disabled in this build"
  fi
  
  # vim: ft=zsh
