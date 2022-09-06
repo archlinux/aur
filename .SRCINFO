@@ -1,7 +1,7 @@
 pkgbase = unfurl
 	pkgdesc = Pull out bits of URLs provided on stdin
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tomnomnom/unfurl
 	arch = x86_64
 	license = MIT
