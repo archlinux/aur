@@ -2,7 +2,7 @@
 # Contributor:  Joakim Hernberg <jbh@alchemy.lu>
 
 pkgbase=linux-rt-lts
-pkgver=5.15.55.48.realtime1
+pkgver=5.15.65.49.realtime1
 pkgrel=1
 pkgdesc='Linux RT LTS'
 arch=(x86_64)
@@ -16,9 +16,9 @@ source=(
   config
 )
 sha512sums=('SKIP'
-            'd8e8a9df3ce628c4aad3a388693175896581b59c4af16d885ef11f2e556b49fde3d40ebc7502793226e40af31cd5fb788d11b2521014a052671c3304d3ad83c7')
+            '0a1f653efd3307ed9989f21913f403c98308e7b4bb59ac27ff555f50163cd73829ba3b4cf9121f88a914636a65780903ea482516c2f34eccdda09897edca3a8b')
 b2sums=('SKIP'
-        '1048525ac8a9ba90cf31b46309c131b1c18ddac852b6b0150e4d1e497bb2ebe85625019de4fda02d403e6ccfdf541829b11cb54148305eddc8f9097ca0082dd8')
+        '55a368265cfa28c5df3b8e4e2f1ccf9e489cca57d55dda80d885fc64f45e368f53cc3bdd62e305866ea275883cd94d2f60ebc82f525d95a780d70bb6ec555fa6')
 validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@linuxfoundation.org>
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt (Der Hacker) <rostedt@goodmis.org>
@@ -60,8 +60,7 @@ prepare() {
 
 build() {
   cd $pkgbase
-  make all
-  make htmldocs
+  make htmldocs all
 }
 
 _package() {
@@ -69,7 +68,7 @@ _package() {
   depends=(coreutils initramfs kmod)
   optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
 
   cd $pkgbase
   local kernver="$(<version)"
@@ -105,11 +104,11 @@ _package-headers() {
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
 
-  # add objtool for external module building and enabled VALIDATION_STACK option
+  # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  # add xfs and shmem for aufs building
-  mkdir -p "$builddir"/{fs/xfs,mm}
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include

@@ -1,8 +1,8 @@
 pkgbase = linux-rt-lts
 	pkgdesc = Linux RT LTS
-	pkgver = 5.15.55.48.realtime1
+	pkgver = 5.15.65.49.realtime1
 	pkgrel = 1
-	url = https://gitlab.archlinux.org/dvzrv/linux-rt-lts/-/commits/v5.15.55.48.realtime1
+	url = https://gitlab.archlinux.org/dvzrv/linux-rt-lts/-/commits/v5.15.65.49.realtime1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -17,16 +17,16 @@ pkgbase = linux-rt-lts
 	makedepends = texlive-latexextra
 	makedepends = xmlto
 	options = !strip
-	source = git+https://gitlab.archlinux.org/dvzrv/linux-rt-lts.git/#tag=v5.15.55.48.realtime1?signed
+	source = git+https://gitlab.archlinux.org/dvzrv/linux-rt-lts.git/#tag=v5.15.65.49.realtime1?signed
 	source = config
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	validpgpkeys = 991F6E3F0765CF6295888586139B09DA5BF0D338
 	sha512sums = SKIP
-	sha512sums = d8e8a9df3ce628c4aad3a388693175896581b59c4af16d885ef11f2e556b49fde3d40ebc7502793226e40af31cd5fb788d11b2521014a052671c3304d3ad83c7
+	sha512sums = 0a1f653efd3307ed9989f21913f403c98308e7b4bb59ac27ff555f50163cd73829ba3b4cf9121f88a914636a65780903ea482516c2f34eccdda09897edca3a8b
 	b2sums = SKIP
-	b2sums = 1048525ac8a9ba90cf31b46309c131b1c18ddac852b6b0150e4d1e497bb2ebe85625019de4fda02d403e6ccfdf541829b11cb54148305eddc8f9097ca0082dd8
+	b2sums = 55a368265cfa28c5df3b8e4e2f1ccf9e489cca57d55dda80d885fc64f45e368f53cc3bdd62e305866ea275883cd94d2f60ebc82f525d95a780d70bb6ec555fa6
 
 pkgname = linux-rt-lts
 	pkgdesc = The Linux RT LTS kernel and modules
@@ -37,6 +37,7 @@ pkgname = linux-rt-lts
 	optdepends = linux-firmware: firmware images needed for some devices
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
+	provides = KSMBD-MODULE
 
 pkgname = linux-rt-lts-headers
 	pkgdesc = Headers and scripts for building modules for the Linux RT LTS kernel
