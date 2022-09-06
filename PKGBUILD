@@ -1,7 +1,7 @@
 # Maintainer: Santiago Lo Coco <mail at slococo dot com dot ar>
 
 pkgname=libxft-bgra
-pkgver=2.3.4
+pkgver=2.3.5
 pkgrel=1
 pkgdesc="X FreeType library with support for BGRA glyphs and scaling."
 arch=('x86_64')
@@ -11,14 +11,11 @@ depends=('fontconfig' 'libxrender')
 makedepends=('pkgconf')
 provides=('libxft')
 conflicts=('libxft')
-source=("${url}/releases/individual/lib/libXft-${pkgver}.tar.bz2" 
-        "bgra_patch::https://gitlab.freedesktop.org/xorg/lib/libxft/merge_requests/1.patch")
-sha256sums=('57dedaab20914002146bdae0cb0c769ba3f75214c4c91bd2613d6ef79fc9abdd' 
-            '0e313ab2eccd7d2f68fc2d409493dd972de9cbe70510c4eb707ad16f8ed6f03e')
+source=("${url}/releases/individual/lib/libXft-${pkgver}.tar.gz")
+sha256sums=('f7324aa0664115223672bae55086f3a9ae8f6ad4cdca87a8dd620295ee459e1a')
 
 build() {
     cd "${srcdir}/libXft-${pkgver}"
-    patch -p1 < "${srcdir}/bgra_patch"
     sh configure --prefix=/usr --sysconfdir=/etc --disable-static
     make
 }
