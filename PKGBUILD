@@ -26,5 +26,6 @@ build() {
 package() {
     depends=('bind')
 
-    install -Dm644 "$_srcname/accelerated-domains.china.bind.conf" -t "$pkgdir/etc/named.conf.d"
+    cd "$_srcname"
+    install -Dt "$pkgdir/etc/named.conf.d" -m644 accelerated-domains.china.bind.conf google.china.bind.conf apple.china.bind.conf
 }
