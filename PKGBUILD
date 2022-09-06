@@ -1,39 +1,31 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Melanie Scheirer <mel@nie.rs>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=purpose-git
+_name=${pkgname/-git}
 pkgver=r206.afd8519
 pkgrel=1
 pkgdesc="Framework for providing abstractions to get the developer's purposes fulfilled"
-arch=(i686 x86_64)
+arch=(x86_64)
 url='https://projects.kde.org/projects/playground/libs/purpose'
 license=(LGPL)
 depends=(kio-git kdeclarative-git kaccounts-integration-git)
 makedepends=(extra-cmake-modules-git git python intltool)
 provides=(purpose)
 conflicts=(purpose)
-source=("git://anongit.kde.org/purpose.git")
+source=("git+https://github.com/KDE/$_name.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd purpose
+  cd $_name
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  mkdir -p build
-}
-
-build() { 
-  cd build
-  cmake ../purpose \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+build() {
+  cmake -B build -S $_name
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
