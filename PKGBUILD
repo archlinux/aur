@@ -2,7 +2,7 @@
 pkgbase=ensenso-sdk
 pkgname=(ensenso-sdk ensenso-sdk-doc)
 pkgdesc="Ensenso SDK and tools"
-pkgver=3.2.489
+pkgver=3.3.1417
 pkgrel=1
 arch=(x86_64)
 license=(custom)
@@ -21,19 +21,17 @@ source=(
 	nxView
 )
 
-sha512sums=(
-	'63dfb7a5c882bbeddc31b926f05aa25c99a152ffac1f6080be3d5884369263cef8074908afb97e875e3f2e942662e9a5671652926907a4ffd5e6526a22eb14da'
-	'811e6727de246ddf791e5f67136d81a28b667285574612d37df09f228441c3b59829f2376abe3d5fb17bfc20dee03a65acaf3bbb7be22493fddef08d12a811c6'
-	'646f56e962e0150cc40a54c6cee546992af79e4e1fff290fadb97d12453bf8778706d690e3650418636d73215d4dce825b6d7ae84ecff3840d53764ec5427d19'
-	'4c3e8a8f3a2953cfed52c355d6847dc075aad52f80bb04fd898008c57e629e8a25c497396beef120f948faa7ea0a92125b3dde5c7390db7ad3137deeffeb3c79'
-	'421a4e0c742bf60ddee785021e9e81bab14f36e5fde22a6db5dee8fdf8d0b7e303394cfbef855d775cdf8e701ed3fa416d50ec1145a8cb2c875cc2553b5e2c06'
-)
+sha512sums=('59ee0a94ea13a8b6dbaf2d0924bae391c78ee515bf3ea2b7fcc3c820785d0d05711335cd182e1b52d379a2618a9d4147a90fe32f55f29be5ecc7048c57059dd1'
+            '811e6727de246ddf791e5f67136d81a28b667285574612d37df09f228441c3b59829f2376abe3d5fb17bfc20dee03a65acaf3bbb7be22493fddef08d12a811c6'
+            '646f56e962e0150cc40a54c6cee546992af79e4e1fff290fadb97d12453bf8778706d690e3650418636d73215d4dce825b6d7ae84ecff3840d53764ec5427d19'
+            '4c3e8a8f3a2953cfed52c355d6847dc075aad52f80bb04fd898008c57e629e8a25c497396beef120f948faa7ea0a92125b3dde5c7390db7ad3137deeffeb3c79'
+            '421a4e0c742bf60ddee785021e9e81bab14f36e5fde22a6db5dee8fdf8d0b7e303394cfbef855d775cdf8e701ed3fa416d50ec1145a8cb2c875cc2553b5e2c06')
 
 # Stripping results in a segfaulting NxView somehow.
 options=(!strip)
 
 package_ensenso-sdk() {
-	local dir="$srcdir/ensenso-sdk-$pkgver-x64-cd3b931/"
+	local dir="$srcdir/ensenso-sdk-$pkgver-x64-3aabd2a/"
 
 	install -Dd "$pkgdir/usr"
 	install -Dd "$pkgdir/usr/bin"
@@ -62,10 +60,10 @@ package_ensenso-sdk() {
 }
 
 package_ensenso-sdk-doc() {
-	local dir="$srcdir/ensenso-sdk-$pkgver-x64-cd3b931"
+	local dir="$srcdir/ensenso-sdk-$pkgver-x64-3aabd2a"
 	install -Dd "$pkgdir/usr/share/doc"
 	install -Dd "$pkgdir/opt/ensenso"
 
 	cp -a "$dir/opt/ensenso/manual" "$pkgdir/opt/ensenso/manual"
-	ln -s "/opt/ensenso/manual/html" "$pkgdir/usr/share/doc/$pkgname"
+	ln -s "/opt/ensenso/manual" "$pkgdir/usr/share/doc/$pkgname"
 }
