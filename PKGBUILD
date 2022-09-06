@@ -2,19 +2,23 @@
 
 _name=goatools
 pkgname=python-$_name
-pkgver=1.1.6
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='Python scripts to find enrichment of GO terms'
 arch=(any)
 url="https://github.com/tanghaibao/$_name"
 license=(BSD)
-# it doesn’t actually use a python module called wget
 depends=(python python-pandas python-numpy python-scipy python-xlsxwriter python-statsmodels python-xlrd python-docopt python-pydot python-requests)
-makedepends=(python-setuptools)
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('b631a6a803818673ac815ed5f1e7158d1bd98a3ce5c93b64961dc73bdea56bca')
+makedepends=(python-setuptools python-installer python-build)
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('1b5635481221e42bf2d8efc4ebdca42cd7696b52f52ce5d32fe3eb29d447cdb2')
+
+build() {
+	cd "$_name-$pkgver"
+	python -m build --wheel --no-isolation
+}
 
 package() {
-	cd "$srcdir/${_name//-/_}-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1
+	cd "$_name-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
