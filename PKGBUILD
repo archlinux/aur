@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=capistrano
-pkgver=3.16.0
+pkgver=3.17.1
 pkgrel=1
 pkgdesc="A remote server automation and deployment tool written in Ruby"
 arch=(any)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(ruby ruby-rake ruby-sshkit ruby-i18n ruby-airbrussh)
 makedepends=(git ruby-rdoc rubygems)
 options=(!emptydirs)
-source=(git+https://github.com/capistrano/capistrano.git?tag=v${pkgver})
+source=(git+https://github.com/capistrano/capistrano.git#tag=v${pkgver})
 sha256sums=('SKIP')
 
 prepare() {
