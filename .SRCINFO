@@ -1,6 +1,6 @@
 pkgbase = r-microbiomeexplorer
 	pkgdesc = Microbiome Exploration App
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/microbiomeExplorer
 	arch = any
@@ -39,7 +39,7 @@ pkgbase = r-microbiomeexplorer
 	depends = r-vegan
 	optdepends = r-testthat
 	optdepends = r-v8
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/microbiomeExplorer_1.6.0.tar.gz
-	sha256sums = e8ee39d0bbf6d9ae652d49849c812db8ffccbeeccd5795e38ecb147b40a58e40
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/microbiomeExplorer_1.6.1.tar.gz
+	sha256sums = 8742e3da821fd89703307067b3b961f8843d18ce51e311df78cf40e08a8c8c69
 
 pkgname = r-microbiomeexplorer
