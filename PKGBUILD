@@ -11,19 +11,19 @@ url="https://gitlab.com/a4to/lfp"
 depends=(lf zsh ffmpeg ueberzug graphicsmagick ghostscript bat fzf dunst dialog xsel lolcat)
 conflicts=(lfp-git)
 optdepends=(
-  'git: cloning repos from within lfp'
+  'nodejs: to make use of lfps built in node actions manager'
   )
 source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst"
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
   )
 sha512sums=(
-  '9204bec6a6eb205bb3a0a4ff7037b900ae54d7b0c2e996d1bfce15bd56d79e9d56b43d2cad358e8856addf557252261d5f18306ea2f8bce9a09f5772cc86c996'
-  '7b620cb2afbee1def89f13d983b75aba7f9549aaeeb5de07f8d4859b2277e589ad3909a2839cc6ca9862f95cfb0830cb65c2302167272568fa5f9e48ac76794a'
+  '7859dff9fa159c75dd790318b5ad42d7a7bf7eed9bc699d754ac1bbd07ffc2d6bc7f47ac9a13cbc3c137978cff6ce9c062bfe671c7dfb5d4bd54937e7291b011'
+  '0a1cc78c133a7a8f33e84d4541a062f7e38b55941cf319853073bce80b5f767e6446158a10aa573c9a06259de1f247c3b8534ae883110b8569100ab1c593aa98'
   )
 md5sums=(
-  'a1307a4cc017a4d24f535928028f5e40'
-  'e8508ab3a06cb2e5a2a42fdb23f317a9'
+  'c4e50f774acb1746cee3010f7062985e'
+  '47b2fe2a3710218d04fcb2627e6cc78c'
   )
 validpgpkeys=('81BACEEBC3EA26E127166E4A819BB92A9A48160E')
 
