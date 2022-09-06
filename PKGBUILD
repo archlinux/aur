@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=aplot
-_pkgver=0.1.6
+_pkgver=0.1.7
 pkgname=r-${_pkgname,,}
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Decorate a 'ggplot' with Associated Information"
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-ggtree
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7d69d1968bc613d8ceccc05c53362b0f62b632e1c6ef5100c91b65b15afa200c')
+sha256sums=('f6250f5f6d1addc8d5717be80a92c569bfd83d35bce2e3dbeb251c9ae1be8616')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
