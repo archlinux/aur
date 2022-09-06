@@ -10,7 +10,7 @@ pkgname=zig-dev-bin
 epoch=1
 # NOTE: Hyphen -> underscore
 pkgver=0.10.0_dev.3880+e2bb92b2e
-pkgrel=1
+pkgrel=2
 pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software"
 arch=('x86_64' 'aarch64')
 url="https://ziglang.org/"
