@@ -65,7 +65,7 @@ build() {
   cd x264-snapshot-20180305-2245-stable
 
   ./configure \
-    --prefix=/usr/local \
+    --prefix=/opt \
     --enable-shared 
     #--libdir="${_libdir}" \
     #--includedir="${_includedir}"
