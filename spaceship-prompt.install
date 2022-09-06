@@ -1,5 +1,4 @@
 post_install() {
-    echo "Add these lines to your .zshrc to enable spaceship:
-  autoload -U promptinit; promptinit
-  prompt spaceship"
+    echo "Add this line to your .zshrc to enable spaceship:
+  source /usr/lib/spaceship-prompt/spaceship.zsh"
 }
