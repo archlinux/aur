@@ -1,13 +1,13 @@
 pkgbase = sway-nvidia
 	pkgdesc = Helper files to make sway a better experience for us poor NVIDIA users.
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/crispyricepc/sway-nvidia
 	arch = any
 	license = MIT
 	depends = sway
 	depends = vulkan-validation-layers
-	source = sway-nvidia-1.0.6::git+https://github.com/crispyricepc/sway-nvidia.git#tag=1.0.6
+	source = sway-nvidia-1.0.7::git+https://github.com/crispyricepc/sway-nvidia.git#tag=1.0.7
 	md5sums = SKIP
 
 pkgname = sway-nvidia
