@@ -1,30 +1,6 @@
-diff -aur src/pdf2djvu-0.9.18.2/tests.orig/test-fg-colors-gm.py src/pdf2djvu-0.9.18.2/tests/test-fg-colors-gm.py
---- src/pdf2djvu-0.9.18.2/tests.orig/test-fg-colors-gm.py	2022-05-02 19:33:28.196701841 +0200
-+++ src/pdf2djvu-0.9.18.2/tests/test-fg-colors-gm.py	2022-05-02 19:33:44.393368987 +0200
-@@ -37,7 +37,7 @@
-             r.assert_(stdout=None)
-             r = self.decode(mode='foreground')
-             r.assert_(stdout=None)
--            colors = count_ppm_colors(r.stdout)
-+            colors = count_ppm_colors(r.stdout.encode('utf-8', 'surrogateescape'))
-             if isinstance(n, tuple):
-                 assert_in(len(colors), n)
-             else:
-diff -aur src/pdf2djvu-0.9.18.2/tests.orig/test-fg-colors.py src/pdf2djvu-0.9.18.2/tests/test-fg-colors.py
---- src/pdf2djvu-0.9.18.2/tests.orig/test-fg-colors.py	2022-05-02 19:33:28.196701841 +0200
-+++ src/pdf2djvu-0.9.18.2/tests/test-fg-colors.py	2022-05-02 19:33:44.386702321 +0200
-@@ -37,7 +37,7 @@
-         r.assert_(stdout=None)
-         r = self.decode(mode='foreground')
-         r.assert_(stdout=None)
--        colors = count_ppm_colors(r.stdout)
-+        colors = count_ppm_colors(r.stdout.encode('utf-8','surrogateescape'))
-         assert_equal(len(colors), n)
- 
- # vim:ts=4 sts=4 sw=4 et
-diff -aur src/pdf2djvu-0.9.18.2/tests.orig/test-labels-null.py src/pdf2djvu-0.9.18.2/tests/test-labels-null.py
---- src/pdf2djvu-0.9.18.2/tests.orig/test-labels-null.py	2022-05-02 19:33:28.200035175 +0200
-+++ src/pdf2djvu-0.9.18.2/tests/test-labels-null.py	2022-05-02 19:33:44.393368987 +0200
+diff -aur src/pdf2djvu-0.9.19/tests.orig/test-labels-null.py src/pdf2djvu-0.9.19/tests/test-labels-null.py
+--- src/pdf2djvu-0.9.19/tests.orig/test-labels-null.py	2022-09-06 19:33:28.200035175 +0200
++++ src/pdf2djvu-0.9.19/tests/test-labels-null.py	2022-09-06 19:33:44.393368987 +0200
 @@ -25,9 +25,9 @@
          self.pdf2djvu().assert_()
          r = self.ls()
@@ -38,9 +14,9 @@ diff -aur src/pdf2djvu-0.9.18.2/tests.orig/test-labels-null.py src/pdf2djvu-0.9.
          ))
  
  # vim:ts=4 sts=4 sw=4 et
-diff -aur src/pdf2djvu-0.9.18.2/tests.orig/test-nfkc-apf.py src/pdf2djvu-0.9.18.2/tests/test-nfkc-apf.py
---- src/pdf2djvu-0.9.18.2/tests.orig/test-nfkc-apf.py	2022-05-02 19:33:28.200035175 +0200
-+++ src/pdf2djvu-0.9.18.2/tests/test-nfkc-apf.py	2022-05-02 19:33:44.390035653 +0200
+diff -aur src/pdf2djvu-0.9.19/tests.orig/test-nfkc-apf.py src/pdf2djvu-0.9.19/tests/test-nfkc-apf.py
+--- src/pdf2djvu-0.9.19/tests.orig/test-nfkc-apf.py	2022-09-06 19:33:28.200035175 +0200
++++ src/pdf2djvu-0.9.19/tests/test-nfkc-apf.py	2022-09-06 19:33:44.390035653 +0200
 @@ -25,8 +25,10 @@
      # + fixed in 0.8
  
@@ -54,9 +30,9 @@ diff -aur src/pdf2djvu-0.9.18.2/tests.orig/test-nfkc-apf.py src/pdf2djvu-0.9.18.
  
      def test_nfkc(self):
          self.pdf2djvu().assert_()
-diff -aur src/pdf2djvu-0.9.18.2/tests.orig/test-nfkc.py src/pdf2djvu-0.9.18.2/tests/test-nfkc.py
---- src/pdf2djvu-0.9.18.2/tests.orig/test-nfkc.py	2022-05-02 19:33:28.200035175 +0200
-+++ src/pdf2djvu-0.9.18.2/tests/test-nfkc.py	2022-05-02 19:33:44.386702321 +0200
+diff -aur src/pdf2djvu-0.9.19/tests.orig/test-nfkc.py src/pdf2djvu-0.9.19/tests/test-nfkc.py
+--- src/pdf2djvu-0.9.19/tests.orig/test-nfkc.py	2022-09-06 19:33:28.200035175 +0200
++++ src/pdf2djvu-0.9.19/tests/test-nfkc.py	2022-09-06 19:33:44.386702321 +0200
 @@ -25,7 +25,7 @@
  
      text = u'¾'
@@ -66,9 +42,9 @@ diff -aur src/pdf2djvu-0.9.18.2/tests.orig/test-nfkc.py src/pdf2djvu-0.9.18.2/te
  
      def test_nfkc(self):
          self.pdf2djvu().assert_()
-diff -aur src/pdf2djvu-0.9.18.2/tests.orig/test-nonascii.py src/pdf2djvu-0.9.18.2/tests/test-nonascii.py
---- src/pdf2djvu-0.9.18.2/tests.orig/test-nonascii.py	2022-05-02 19:33:28.200035175 +0200
-+++ src/pdf2djvu-0.9.18.2/tests/test-nonascii.py	2022-05-02 19:33:44.380035654 +0200
+diff -aur src/pdf2djvu-0.9.19/tests.orig/test-nonascii.py src/pdf2djvu-0.9.19/tests/test-nonascii.py
+--- src/pdf2djvu-0.9.19/tests.orig/test-nonascii.py	2022-09-06 19:33:28.200035175 +0200
++++ src/pdf2djvu-0.9.19/tests/test-nonascii.py	2022-09-06 19:33:44.380035654 +0200
 @@ -29,7 +29,7 @@
      def test_nonascii(self):
          locale_encoding = locale.getpreferredencoding()
@@ -78,9 +54,9 @@ diff -aur src/pdf2djvu-0.9.18.2/tests.orig/test-nonascii.py src/pdf2djvu-0.9.18.
          except UnicodeError:
              raise SkipTest('locale that can encode U+00A4 CURRENCY SIGN is required')
          tmpdir = tempfile.mkdtemp(prefix='pdf2djvu.test.')
-diff -aur src/pdf2djvu-0.9.18.2/tests.orig/test-title.py src/pdf2djvu-0.9.18.2/tests/test-title.py
---- src/pdf2djvu-0.9.18.2/tests.orig/test-title.py	2022-05-02 19:33:28.200035175 +0200
-+++ src/pdf2djvu-0.9.18.2/tests/test-title.py	2022-05-02 19:33:44.393368987 +0200
+diff -aur src/pdf2djvu-0.9.19/tests.orig/test-title.py src/pdf2djvu-0.9.19/tests/test-title.py
+--- src/pdf2djvu-0.9.19/tests.orig/test-title.py	2022-09-06 19:33:28.200035175 +0200
++++ src/pdf2djvu-0.9.19/tests/test-title.py	2022-09-06 19:33:44.393368987 +0200
 @@ -56,7 +56,7 @@
  
      def test_bad_encoding(self):
@@ -90,23 +66,33 @@ diff -aur src/pdf2djvu-0.9.18.2/tests.orig/test-title.py src/pdf2djvu-0.9.18.2/t
          r = self.pdf2djvu('--page-title-template', template, encoding='UTF-8')
          r.assert_(stderr=re.compile('^Unable to convert page title to UTF-8:'), rc=1)
  
-diff -aur src/pdf2djvu-0.9.18.2/tests.orig/test-vector-fg.py src/pdf2djvu-0.9.18.2/tests/test-vector-fg.py
---- src/pdf2djvu-0.9.18.2/tests.orig/test-vector-fg.py	2022-05-02 19:33:28.200035175 +0200
-+++ src/pdf2djvu-0.9.18.2/tests/test-vector-fg.py	2022-05-02 19:33:44.393368987 +0200
-@@ -31,7 +31,7 @@
-         r.assert_(stdout=None)
-         r = self.decode(mode='foreground')
-         r.assert_(stdout=None)
--        colors = count_ppm_colors(r.stdout)
+diff -aur src/pdf2djvu-0.9.19/tests.orig/test-symbol.py src/pdf2djvu-0.9.19/tests/test-symbol.py
+--- src/pdf2djvu-0.9.19/tests.orig/test-symbol.py	2022-09-06 19:33:28.200035175 +0200
++++ src/pdf2djvu-0.9.19/tests/test-symbol.py	2022-09-06 19:33:44.393368987 +0200
+@@ -45,7 +45,7 @@
+         image = self.decode(fmt='pgm')
+         print_pgm(image)
+         for line in image:
+-            sig = str.join('', (pixel for (pixel, _) in itertools.groupby(line)))
++            sig = str.join('', (chr(pixel) for (pixel, _) in itertools.groupby(line)))
+             if sig not in {'\xff', '\xff\x00\xff', '\xff\x00\xff\x00\xff'}:
+                 assert_fail('image does not look like uppercase delta')
+ 
+diff -aur src/pdf2djvu-0.9.19/tests.orig/test-vector-fg.py src/pdf2djvu-0.9.19/tests/test-vector-fg.py
+--- src/pdf2djvu-0.9.19/tests.orig/test-vector-fg.py	2022-09-06 19:33:28.200035175 +0200
++++ src/pdf2djvu-0.9.19/tests/test-vector-fg.py	2022-09-06 19:33:44.393368987 +0200
+@@ -30,6 +30,6 @@
+         image = self.decode()
+         image = self.decode(mode='foreground')
+         colors = count_colors(image)
 -        assert_greater(colors.get('\xFF\0\0', 0), 5000)
-+        colors = count_ppm_colors(r.stdout.encode('utf-8', 'surrogateescape'))
-+        assert_greater(colors.get('(255, 0, 0)', 0), 5000)
++        assert_greater(colors.get(b'\xFF\0\0', 0), 5000)
  
  # vim:ts=4 sts=4 sw=4 et
-diff -aur src/pdf2djvu-0.9.18.2/tests.orig/tools.py src/pdf2djvu-0.9.18.2/tests/tools.py
---- src/pdf2djvu-0.9.18.2/tests.orig/tools.py	2022-05-02 19:33:28.200035175 +0200
-+++ src/pdf2djvu-0.9.18.2/tests/tools.py	2022-05-02 19:33:44.393368987 +0200
-@@ -14,12 +14,12 @@
+diff -aur src/pdf2djvu-0.9.19/tests.orig/tools.py src/pdf2djvu-0.9.19/tests/tools.py
+--- src/pdf2djvu-0.9.19/tests.orig/tools.py	2022-09-06 19:33:28.200035175 +0200
++++ src/pdf2djvu-0.9.19/tests/tools.py	2022-09-06 19:33:44.393368987 +0200
+@@ -14,6 +14,7 @@
  # General Public License for more details.
  
  from __future__ import print_function
@@ -114,13 +100,7 @@ diff -aur src/pdf2djvu-0.9.18.2/tests.orig/tools.py src/pdf2djvu-0.9.18.2/tests/
  
  import ast
  import codecs
- import collections
- import inspect
--import itertools
- import locale
- import os
- import pipes
-@@ -43,9 +43,6 @@
+@@ -42,9 +42,6 @@
      assert_true,
  )
  
@@ -130,7 +110,7 @@ diff -aur src/pdf2djvu-0.9.18.2/tests.orig/tools.py src/pdf2djvu-0.9.18.2/tests/
  re_type = type(re.compile(''))
  
  def assert_fail(msg):
-@@ -70,7 +67,7 @@
+@@ -69,7 +69,7 @@
              del data['SIGCLD']
      except KeyError:
          pass
@@ -139,17 +119,17 @@ diff -aur src/pdf2djvu-0.9.18.2/tests.orig/tools.py src/pdf2djvu-0.9.18.2/tests/
  
  class _ipc_rc(int):
  
-@@ -165,7 +162,8 @@
+@@ -164,7 +163,8 @@
                  continue
              raise TypeError('{key!r} is an invalid keyword argument for this function'.format(key=key))
          env['LANGUAGE'] = 'en'
--        print('$', ' '.join(map(pipes.quote, commandline)))
+-        print('$', str.join(' ', map(pipes.quote, commandline)))
 +        cmd_arr = [ele if isinstance(ele, str) else ele.decode('utf-8','surrogateescape') for ele in commandline]
-+        print('$', ' '.join(map(pipes.quote, cmd_arr)))
++        print('$', str.join(' ', map(pipes.quote, cmd_arr)))
          try:
              child = ipc.Popen(list(commandline),
                  stdout=ipc.PIPE,
-@@ -176,7 +174,7 @@
+@@ -175,7 +174,7 @@
              exc.filename = commandline[0]
              raise
          stdout, stderr = child.communicate()
@@ -158,26 +138,21 @@ diff -aur src/pdf2djvu-0.9.18.2/tests.orig/tools.py src/pdf2djvu-0.9.18.2/tests/
  
      def _pdf2djvu(self, *args, **kwargs):
          quiet = ('-q',) if kwargs.pop('quiet', True) else ()
-@@ -296,18 +294,18 @@
-             pixels[x, y] = color
-     return image
- 
--_ppm_re = re.compile(r'P6\s+\d+\s+\d+\s+255\s(.*)\Z', re.DOTALL)
-+_ppm_re = re.compile(br'P6\s+\d+\s+\d+\s+255\s(.*)\Z', re.DOTALL)
- def count_ppm_colors(b):
-     match = _ppm_re.match(b)
-     assert_is_not_none(match)
-     pixels = match.group(1)
-     ipixels = iter(pixels)
-     result = collections.defaultdict(int)
--    for pixel in itertools.izip(ipixels, ipixels, ipixels):
-+    for pixel in zip(ipixels, ipixels, ipixels):
-         result[pixel] += 1
-     return dict(
--        (''.join(key), value)
--        for key, value in result.iteritems()
-+        (''.join(str(key)), value)
-+        for key, value in result.items()
-     )
- 
- xml_ns = dict(
+@@ -304,7 +304,7 @@
+     (width, height, pixels) = match.groups()
+     width = int(width)
+     height = int(height)
+-    pixels = memoryview(pixels)
++    pixels = memoryview(pixels.encode('utf8','surrogateescape'))
+     pixels = [
+         [
+             pixels[(i + j):(i + j + 3)].tobytes()
+@@ -331,7 +331,7 @@
+     (width, height, pixels) = match.groups()
+     width = int(width)
+     height = int(height)
+-    pixels = memoryview(pixels)
++    pixels = memoryview(pixels.encode('utf8','surrogateescape'))
+     pixels = [
+         pixels[i:(i + width)]
+         for i in range(0, len(pixels), width)
