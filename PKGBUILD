@@ -28,10 +28,11 @@ build() {
   sed -i 's@-Werror@@g' configure
 
   ./configure \
-    --prefix=/opt \
-    --libdir=/opt/lib \
-    --incdir=/opt/include \
-    --shlibdir=/opt/lib \
+    --prefix=/opt/ffmpeg21 \
+    --libdir=/opt/ffmpeg21/lib \
+    --incdir=/opt/ffmpeg21/include \
+    --shlibdir=/opt/ffmpeg21/lib \
+    --bindir=/opt/bin \
     --enable-gpl \
     --enable-static \
     --enable-shared \
@@ -50,7 +51,7 @@ package() {
 
   make DESTDIR="$pkgdir" install
   rm -rf "$pkgdir"/opt/bin/ffprobe
-  rm -rf "$pkgdir"/opt/share
+  rm -rf "$pkgdir"/opt/ffmpeg21/share
 
   find "${pkgdir}"/opt/bin -type f -exec mv {} {}21 \;
 }
