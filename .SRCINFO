@@ -1,13 +1,12 @@
 pkgbase = libminuit2
 	pkgdesc = Stand-alone Minuit2 produced from the ROOT 6 sources with no changes.
-	pkgver = 6.23.01
+	pkgver = 6.24.00
 	pkgrel = 1
 	url = https://github.com/GooFit/Minuit2
 	arch = x86_64
 	license = LGPL
 	makedepends = cmake
-	source = libminuit2-6.23.01.tar.gz::https://github.com/GooFit/Minuit2/archive/v6-23-01.tar.gz
-	sha256sums = aa357f6237dd66364372b89b0c6c061661390435652262dc5457730dd88b4524
+	source = libminuit2-6.24.00.tar.gz::https://github.com/GooFit/Minuit2/archive/v6-24-00.tar.gz
+	sha256sums = a0459d682dbe06e5af2b41827c698d1b79212ae123cc96b424e4b98e4613bad3
 
 pkgname = libminuit2
-

@@ -1,7 +1,7 @@
 # Maintainer: <max at swk-web.com>
 
 pkgname=libminuit2
-pkgver=6.23.01
+pkgver=6.24.00
 pkgrel=1
 pkgdesc="Stand-alone Minuit2 produced from the ROOT 6 sources with no changes."
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=()
 checkdepends=()
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GooFit/Minuit2/archive/v${pkgver//./-}.tar.gz")
-sha256sums=('aa357f6237dd66364372b89b0c6c061661390435652262dc5457730dd88b4524')
+sha256sums=('a0459d682dbe06e5af2b41827c698d1b79212ae123cc96b424e4b98e4613bad3')
 validpgpkeys=()
 
 prepare() {
