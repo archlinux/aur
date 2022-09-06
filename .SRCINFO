@@ -1,13 +1,13 @@
 pkgbase = python-srtools
 	pkgdesc = Commandline utility and Python package for Cyrillic ↔ Latin transliteration of Serbian Language
-	pkgver = 0.1.10
+	pkgver = 0.1.13
 	pkgrel = 1
 	url = https://gitlab.com/andrejr/srtools
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/s/srtools/srtools-0.1.10.tar.gz
-	sha256sums = 953812a8ecd0d2b0d358877508a9c972cbc0d7a57a647aa1d3f0f486c26a455b
+	source = https://files.pythonhosted.org/packages/source/s/srtools/srtools-0.1.13.tar.gz
+	sha256sums = 6f9b51ab64e1d8a5609b12a1bdea7d6b1908f2269210ed85f0097b0200aa4a69
 
 pkgname = python-srtools
