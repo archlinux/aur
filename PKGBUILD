@@ -2,7 +2,7 @@
 # Co-Maintainer: Slimbook <dev at slimbook dot es>
 # Contributor: tioguda <guda.flavio@gmail.com>
 pkgname=slimbookbattery
-pkgver=4.0.7beta
+pkgver=4.0.8beta
 pkgrel=1
 pkgdesc="Battery optimization application for portable devices."
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('nvidia-prime: for hybrid graphics switching'
             'slimbookintelcontroller: Synchronize battery mode with CPU TDP mode')
 install="$pkgname.install"
 source=("https://launchpad.net/~slimbook/+archive/ubuntu/slimbook/+files/${pkgname}_${pkgver}_all.deb")
-sha256sums=('a598a0db4357fad5985b1ba1d92dbe4e636b27a2d2d103458abf2a2deab3d7ef')
+sha256sums=('ace329a4afa05998f143e7f31f5f94aaa0437177d001379e37a5482192ad668a')
 
 package() {
   bsdtar xf data.tar.xz -C "$pkgdir"
