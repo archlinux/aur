@@ -4,31 +4,25 @@
 
 pkgname=xfce4-windowck-plugin
 epoch=1
-pkgver=0.4.5+38+g16d4a27
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Xfce panel plugin for displaying window title and buttons"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://gitlab.xfce.org/panel-plugins/xfce4-windowck-plugin/"
 license=('GPL3')
-depends=('xfce4-panel>=4.14.0' 'libwnck3')
-makedepends=('intltool' 'xfce4-dev-tools' 'python' 'imagemagick' 'git')
+depends=('xfce4-panel' 'libwnck3')
+makedepends=('intltool' 'xfce4-dev-tools' 'python')
 options=('!libtool')
-_commit='16d4a27a9e740058ddd6e7dc72e49b1e81504aa4'
-source=("${pkgname}::git+${url}#commit=${_commit}")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "${srcdir}/${pkgname}"
-  git describe --long --tags | sed -r "s:^${_pkgname}-::;s:^v::;s/-/+/g"
-}
+source=("${pkgname}-${pkgver}.tar.bz2::${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
+sha256sums=('0dfae15505d66a4cbafe4acdbc0896f082adadbda7cb5b03966fefc6ad0d8050')
 
 build() {
-  cd "$srcdir/${pkgname}"
+  cd "${pkgname}-v${pkgver}"
   ./autogen.sh --prefix=/usr 
   make
 }
 
 package() {
-  cd "$srcdir/${pkgname}"
+  cd "${pkgname}-v${pkgver}"
   make DESTDIR="$pkgdir" install
 }
