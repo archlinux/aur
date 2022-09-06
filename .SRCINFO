@@ -1,18 +1,20 @@
 pkgbase = python-loompy
 	pkgdesc = Python implementation of the Loom file format for single-cell RNA-seq data
-	pkgver = 3.0.6
+	pkgver = 3.0.7
 	pkgrel = 1
 	url = http://loompy.org/
 	arch = any
 	license = BSD
+	makedepends = python-setuptools
+	makedepends = python-installer
+	makedepends = python-build
 	depends = python-h5py
 	depends = python-scipy
 	depends = python-numpy
 	depends = python-numba
 	depends = python-click
 	depends = python-numpy-groupies
-	source = https://files.pythonhosted.org/packages/source/l/loompy/loompy-3.0.6.tar.gz
-	sha256sums = 58e9763b8ab1af2a4a0e3805d120458b5184fd2b0f3031657ecce33c63ca4c46
+	source = https://files.pythonhosted.org/packages/source/l/loompy/loompy-3.0.7.tar.gz
+	sha256sums = b5cdf7b54734c6bed3a181d11947af70af2c6e0dcadc02fd0e871df232faa8f4
 
 pkgname = python-loompy
-
