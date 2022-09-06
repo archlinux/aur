@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/xXTacticalWaffleXx/minfetch"
 license=('GPL')
 source=("https://raw.githubusercontent.com/xXTacticalWaffleXx/minfetch/main/minfetch")
-md5sums=('168455703ba7e5f9f856ff387b10c4a6')
+md5sums=('d25d336f34b71b79b0e05d1966de39d3')
 
 package() {
   install -Dm755 "minfetch" -t "${pkgdir}/usr/bin"
