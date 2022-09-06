@@ -1,5 +1,4 @@
+pkg
+src
+*.tar.*
 deepspeech.h
-deepspeech-*.tar.*z
-native_client.*.tar.*z
-pkg/
-src/
