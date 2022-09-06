@@ -1,8 +1,8 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 
 pkgname=scanpy-scripts
-pkgver=1.1.3
-pkgrel=2
+pkgver=1.1.6
+pkgrel=1
 pkgdesc='Scripts for using scanpy from the command line'
 arch=(any)
 url='https://github.com/ebi-gene-expression-group/scanpy-scripts'
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(scanpy python-click)
 makedepends=(python-build python-installer)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('96eb39bedb5cd075509247d770cfd951e57f2834248bf1e6896c55e7fe2c524f')
+sha256sums=('1701e35f93f5370ab451760b3892caf01b46d2898c3dd149e1dcba602e45eea1')
 
 build() {
 	cd "$pkgname-$pkgver"
