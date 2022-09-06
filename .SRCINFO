@@ -16,7 +16,7 @@ pkgbase = reflective-rapidjson-git
 	makedepends = llvm
 	makedepends = git
 	makedepends = ninja
-	depends = c++utilities-git
+	depends = libc++utilities-git.so
 	depends = rapidjson
 	depends = llvm-libs>=14.0.0
 	depends = llvm-libs<15.0.0
