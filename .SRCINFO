@@ -1,0 +1,13 @@
+pkgbase = bind-china-list-git
+	pkgdesc = Configuration for hot China domains to accelerate via BIND
+	pkgver = 0.145235.fc5efcff0c
+	pkgrel = 1
+	url = https://github.com/felixonmars/dnsmasq-china-list
+	arch = any
+	license = WTFPL
+	makedepends = git
+	source = git+https://github.com/felixonmars/dnsmasq-china-list.git
+	sha256sums = SKIP
+
+pkgname = bind-china-list-git
+	depends = bind
