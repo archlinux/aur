@@ -2,8 +2,8 @@
 
 _pkgname=libshumate
 pkgname=${_pkgname}-git
-pkgver=1.0.0.beta.r1.g32f8d1a
-pkgrel=2
+pkgver=1.0.0.beta.r6.g125757b
+pkgrel=1
 pkgdesc="GTK4 widget to display maps (git version)"
 arch=(x86_64 aarch64)
 url="https://wiki.gnome.org/Projects/libshumate"
@@ -12,7 +12,7 @@ depends=(gtk4 libsoup sqlite protobuf-c)
 makedepends=(git gobject-introspection gtk-doc gi-docgen meson vala)
 checkdepends=(xorg-server-xvfb)
 provides=(libshumate)
-
+conflicts=(libshumate)
 source=("git+https://gitlab.gnome.org/GNOME/${_pkgname}.git")
 sha256sums=('SKIP')
 
@@ -31,7 +31,7 @@ check() {
   # Make a Empty $XDG_CONFIG_DIR to prevent issues to user
   # customization breaking tests
   mkdir -p $srcdir/test_config_dir
-  
+
   # Run tests with headless x11 server.
   env \
     XDG_CONFIG_DIR=$srcdir/test_config_dir \
