@@ -1,10 +1,10 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=multitasking
 pkgname=python-multitasking
-pkgver=0.0.10
-pkgrel=2
+pkgver=0.0.11
+pkgrel=1
 pkgdesc="Non-blocking Python methods using decorators"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/ranaroussi/multitasking"
 license=('Apache')
 makedepends=(
@@ -14,7 +14,7 @@ makedepends=(
     'python-wheel'
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-b2sums=('405b60b914b7b95319c85d519be4124b589689c8bf95c37b9f03430540f309be351086abd5f2c302fc3d6f5171543fc49c1f9009cb2d37e3c5d7e250fba47e88')
+b2sums=('eab1376111fb5b4d9b77079842a02aeee6804ab75bbbdd2bebe7ad3bd2a9eb8e12d59701be37d26195bd61dbc6c9928599693e735c32168d95486d8ffcdc889b')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
