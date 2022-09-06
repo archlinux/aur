@@ -2,7 +2,7 @@
 
 pkgname=stable-diffusion-intel
 pkgver=20220906
-pkgrel=3
+pkgrel=4
 pkgdesc='Image generator that uses stable diffusion, vino (Intel CPU) and includes "txt2img"'
 arch=(x86_64)
 url='https://github.com/bes-dev/stable_diffusion.openvino'
@@ -12,7 +12,7 @@ source=("git+$url#commit=294dd34234f0629f69d5af5b1190841560242969")
 b2sums=(SKIP)
 
 prepare() {
-  echo -e '#!/bin/sh\nexport PYTHONPATH+=/opt/intel/openvino/python/python3.10\ntime /usr/bin/python3 /opt/stable-diffusion-intel/txt2img --prompt "$@"' > txt2img.sh
+  echo -e '#!/bin/sh\nexport PYTHONPATH+=/opt/intel/openvino/python/python3.10\ntime /usr/bin/python3 /opt/stable-diffusion-intel/txt2img "$@"' > txt2img.sh
 }
 
 package() {
