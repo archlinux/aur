@@ -1,4 +1,4 @@
-# Maintainer: (Joe084) <develon69 at gmail dot com>
+# Maintainer: (jmcb) <joelsgp@protonmail.com>
 
 # Common metadata
 pkgname='pico-8'
