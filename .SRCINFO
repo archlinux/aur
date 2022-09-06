@@ -1,14 +1,16 @@
 pkgbase = cp2k-bin
 	pkgdesc = A quantum chemistry and solid state physics software package for atomistic simulations of solid state, liquid, molecular, periodic, material, crystal, and biological systems. (precompiled, OpenMP)
-	pkgver = 7.1
+	pkgver = 2022.1
 	pkgrel = 1
 	url = https://www.cp2k.org
 	arch = x86_64
+	arch = aarch64
 	license = GPL2
 	provides = cp2k
 	conflicts = cp2k
-	source = cp2k-7.1::https://github.com/cp2k/cp2k/releases/download/v7.1.0/cp2k-7.1-Linux-x86_64.ssmp
-	md5sums = 65b00e23498d64fd040926339e318100
+	source_x86_64 = cp2k-2022.1::https://github.com/cp2k/cp2k/releases/download/v2022.1/cp2k-2022.1-Linux-gnu-x86_64.ssmp
+	md5sums_x86_64 = ebae1b3d14f933009a3bcb8d71f4c385
+	source_aarch64 = cp2k-2022.1::https://github.com/cp2k/cp2k/releases/download/v2022.1/cp2k-2022.1-Linux-gnu-aarch64.ssmp
+	md5sums_aarch64 = ebae1b3d14f933009a3bcb8d71f4c385
 
 pkgname = cp2k-bin
-
