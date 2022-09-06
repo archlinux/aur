@@ -26,7 +26,7 @@ b2sums=("5ed6a29256c48360411f613b862a3810f477212e019e79c0deae7d6e52a0e3727419c13
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
-    python -m build --wheel --no-isolation    
+    python -m build --wheel --no-isolation
 }
 
 package() {
