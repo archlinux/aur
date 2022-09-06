@@ -3,7 +3,7 @@
 
 pkgname=ib-tws
 pkgver=10.18.1b
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers'
 arch=('any')
@@ -46,7 +46,7 @@ build() {
     echo "java.home JRE location could not be found in the log"
     exit 1
   fi
-  BUNDLED_JRE_LOCATION=$(echo ${BUNDLED_JRE_LOCATION}*)
+  BUNDLED_JRE_LOCATION=$(echo ${BUNDLED_JRE_LOCATION}*/*)
   echo "java.home JRE location expanded to ${BUNDLED_JRE_LOCATION}"
 
   if [ ! -f "${BUNDLED_JRE_LOCATION}/bin/java" ]; then
