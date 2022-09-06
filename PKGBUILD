@@ -1,6 +1,6 @@
 # Maintainer: Ben Mitchell <bjosephmitchell@gmail.com>
 pkgname=sway-nvidia
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Helper files to make sway a better experience for us poor NVIDIA users."
 arch=('any')
