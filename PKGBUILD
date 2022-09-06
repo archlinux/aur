@@ -1,14 +1,14 @@
 # Maintainer: Nikola Hadžić <nikola.hadzic.000@protonmail.com>
 pkgname="airpad"
-pkgver="1.0"
-pkgrel=2
+pkgver="1.1"
+pkgrel=1
 pkgdesc="Basic GUI text editor"
 arch=("x86_64")
 url="https://gitlab.com/NH000/airpad"
 license=("GPL3")
 depends=("gtk3" "gettext")
 makedepends=("git" "coreutils")
-source=("git+$url#tag=7602564b3f944fc331e4785c4fb45ca21a90c3f0")
+source=("git+$url#tag=6c748dca1da52296b4d866bee6bfe71910384ec4")
 sha256sums=("SKIP")
 
 build() {
