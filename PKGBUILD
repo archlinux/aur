@@ -24,7 +24,7 @@ md5sums=('f9f46277153cf49f6947973778516adb'
 prepare() {
   #cd "$pkgname-pkgver"
   cd "$_pkgdir"
-  patch --forward --strip=1 --input="${startdir}/patchfile.patch"
+  patch --forward --strip=1 --input="${srcdir}/patchfile.patch"
   #patch ${srcdir}/ffDiaporama/src/ffDiaporama/wgt_QMultimediaBrowser/QCustomFolderTable.cpp ${startdir}/patchfile.patch
 }
 
