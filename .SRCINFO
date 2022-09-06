@@ -12,8 +12,8 @@ pkgbase = direwolf-git
 	makedepends = git
 	makedepends = cmake
 	depends = alsa-lib
-	depends = gpsd
-	depends = hamlib
+	optdepends = gpsd
+	optdepends = hamlib
 	provides = direwolf
 	conflicts = direwolf
 	source = git+https://github.com/wb2osz/direwolf.git#branch=dev
