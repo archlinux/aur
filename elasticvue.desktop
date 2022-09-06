@@ -1,0 +1,25 @@
+[Desktop Entry]
+
+# The type as listed above
+Type=Application
+
+# The version of the desktop entry specification to which this file complies
+Version=0.42.1
+
+# The name of the application
+Name=elasticvue
+
+# A comment which can/will be used as a tooltip
+Comment=Elasticsearch gui for your browser https://elasticvue.com
+
+# The executable of the application, possibly with arguments.
+Exec=elasticvue
+
+# The name of the icon that will be used to display this entry
+Icon=elasticvue
+
+# Describes whether this application needs to be run in a terminal or not
+Terminal=false
+
+# Describes the categories in which this entry should be shown
+Categories=Utility;Development

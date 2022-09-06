@@ -1,0 +1,14 @@
+pkgbase = elasticvue-bin
+	pkgver = 0.42.1
+	pkgrel = 1
+	url = https://github.com/cars10/elasticvue
+	arch = x86_64
+	license = MIT
+	source = https://github.com/cars10/elasticvue/releases/download/v0.42.1/elasticvue_0.42.1_linux_amd64
+	source = https://github.com/cars10/elasticvue/raw/master/public/images/logo/white_96.png
+	source = local://elasticvue.desktop
+	sha256sums = 6b5081d4b0c95f6749f9805f16d105d2e2cf6b91c0d7d7bc517682e4d6068f70
+	sha256sums = 900aacd175476c1047ccb41c461a189dfee21a6b419485de959c75fb557ff1a4
+	sha256sums = eb925873677e844dc5cb45c7a69e08f11d9bd877539435ac258703a976903f0c
+
+pkgname = elasticvue-bin
