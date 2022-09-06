@@ -1,0 +1,18 @@
+pkgbase = ucsim-picsimlab
+	pkgdesc = uCsim version with minor modifications and some extra code to function as a PICSimLab simulation backend
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/lcgamboa/uCsim_picsimlab
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = flex
+	makedepends = bison
+	makedepends = gcc
+	makedepends = make
+	provides = ucsim
+	conflicts = ucsim
+	source = https://github.com/lcgamboa/uCsim_picsimlab/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 6fe05d6c4906440bbf6b326de78db00a2fb48956e7418de64df6a17eb5bf3324
+
+pkgname = ucsim-picsimlab
