@@ -11,7 +11,7 @@
 
 pkgname=ffmpeg-cuda
 pkgver=5.1.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video. Includes cuda support.'
 arch=(x86_64)
@@ -32,9 +32,11 @@ depends=(
   libass.so
   libavc1394
   libbluray.so
+  libbs2b.so
   libdav1d.so
   libdrm
   libfreetype.so
+  libgl
   libiec61883
   libmfx
   libmodplug
@@ -53,6 +55,7 @@ depends=(
   libvorbisenc.so
   libvorbis.so
   libvpx.so
+  libvulkan.so
   libwebp
   libx11
   libx264.so
@@ -63,6 +66,7 @@ depends=(
   libxv
   libxvidcore.so
   libzimg.so
+  ocl-icd
   opencore-amr
   openjpeg2
   opus
@@ -82,11 +86,16 @@ makedepends=(
   ffnvcodec-headers
   git
   ladspa
+  mesa
   nasm
+  opencl-headers
+  vulkan-headers
 )
 optdepends=(
   'avisynthplus: AviSynthPlus support'
+  'intel-media-sdk: Intel QuickSync support'
   'ladspa: LADSPA filters'
+  'nvidia-utils: Nvidia NVDEC/NVENC support'
 )
 provides=(
   libavcodec.so
@@ -100,13 +109,14 @@ provides=(
   ffmpeg
 )
 conflicts=('ffmpeg')
-_tag=1bad30dbe34f2d100b43e8f773d3fe0b5eb23523
+_tag=8536e629f0c35c0e8a2b67e65d3bc60a088fe413
 source=(
-  "git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}"
+  "git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}"
   'add-av_stream_get_first_dts-for-chromium.patch'
 )
 b2sums=('SKIP'
         '555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de')
+validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
 
 pkgver() {
   cd ffmpeg
@@ -115,7 +125,6 @@ pkgver() {
 
 prepare() {
   cd ffmpeg
-  git cherry-pick -n 412922cc6fa790897ef6bb2be5d6f9a5f030754d # remove default IPFS gateway
   patch -Np1 -i ../add-av_stream_get_first_dts-for-chromium.patch # https://crbug.com/1251779
 }
 
@@ -148,6 +157,7 @@ build() {
     --enable-libaom \
     --enable-libass \
     --enable-libbluray \
+    --enable-libbs2b \
     --enable-libdav1d \
     --enable-libdrm \
     --enable-libfreetype \
@@ -185,9 +195,11 @@ build() {
     --enable-libzimg \
     --enable-nvdec \
     --enable-nvenc \
+    --enable-opencl \
+    --enable-opengl \
     --enable-shared \
-    --enable-version3
-
+    --enable-version3 \
+    --enable-vulkan
   make
   make tools/qt-faststart
   make doc/ff{mpeg,play}.1
