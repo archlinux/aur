@@ -1,0 +1,14 @@
+pkgbase = python-bottle-beaker
+	pkgdesc = Bottle plugin beaker, WSGI middleware for sessions and caching
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://bottlepy.org
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-bottle
+	depends = python-beaker
+	source = https://pypi.org/packages/source/b/bottle-beaker/bottle-beaker-0.1.3.tar.gz
+	sha256sums = 36aec120bab18ff902b23ae34fc593a125cb56b4182e5f1205f1ff628d2694aa
+
+pkgname = python-bottle-beaker
