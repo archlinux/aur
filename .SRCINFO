@@ -1,0 +1,22 @@
+pkgbase = stable-diffusion-intel
+	pkgdesc = Stable diffusion using an Intel CPU (includes a txt2img command that takes a prompt)
+	pkgver = 20220906
+	pkgrel = 1
+	url = https://github.com/bes-dev/stable_diffusion.openvino
+	arch = x86_64
+	license = Apache2
+	depends = openvino
+	depends = python-diffusers
+	depends = python-ftfy
+	depends = python-huggingface-hub
+	depends = python-numpy
+	depends = python-opencv
+	depends = python-scipy
+	depends = python-streamlit
+	depends = python-tqdm
+	depends = python-transformers
+	depends = python-watchdog
+	source = git+https://github.com/bes-dev/stable_diffusion.openvino#commit=294dd34234f0629f69d5af5b1190841560242969
+	b2sums = SKIP
+
+pkgname = stable-diffusion-intel
