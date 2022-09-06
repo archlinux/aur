@@ -1,7 +1,7 @@
 pkgbase = lxrad
 	pkgdesc = linux x11 rad tools
 	pkgver = 0.8.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lcgamboa/lxrad
 	arch = x86_64
 	arch = aarch64
