@@ -7,7 +7,7 @@
 
 pkgname=lib32-fluidsynth
 _name=fluidsynth
-pkgver=2.2.8
+pkgver=2.2.9
 pkgrel=1
 pkgdesc='A real-time software synthesizer based on the SoundFont 2 specifications'
 arch=(x86_64)
@@ -31,11 +31,10 @@ makedepends=(
   lib32-libsndfile
   lib32-portaudio
 )
-optdepends=('pulseaudio: PulseAudio sound support')
 options=(debug)
 source=($pkgname-$pkgver.tar.gz::https://github.com/$_name/$_name/archive/v$pkgver.tar.gz)
-sha512sums=('8173f2d368a214cf1eb7faae2f6326db43fb094ec9c83e652f953290c3f29c34ebd0b92cbb439bea8d814d3a7e4f9dc0c18c648df1d414989d5d8b4700c79535')
-b2sums=('7eaee4cc1c2f49e464cda2852890ec8e96bd86c258a39246ec5c84ea3e57c9869d1e88963daecc3fa8957df1d55ff6c6633a4900de3d6fc0a1adf830865adda0')
+sha512sums=('90f44f6d7a4ed504eea5e2d39d8da2e0072bef746f3d969e367f0bab36a4cff479a98e795dc8b6b58b565fb266c44a137a14e98c7e4c77d1be3b300b8c066600')
+b2sums=('a6b4a19737d01e86a80084cdf88897da9af7d2c50be80fb0227a1d70effb8551667ae27f43ce63591830acfdef31ff0d99d51e3160b9b09c274637b259a82833')
 
 build() {
   export CC='gcc -m32'
