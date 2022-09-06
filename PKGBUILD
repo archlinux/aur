@@ -1,6 +1,6 @@
 pkgname=yue-lua51-bin
-pkgver=0.10.3
-pkgrel=2
+pkgver=0.11.0
+pkgrel=1
 provides=(yue-lua51)
 pkgdesc='Lua 5.1 bindings for Yue UI library'
 arch=(x86_64 i686 armv7h aarch64)
@@ -29,10 +29,10 @@ source_i686=("https://github.com/yue/yue/releases/download/v${pkgver}/lua_yue_lu
 source_armv7h=("https://github.com/yue/yue/releases/download/v${pkgver}/lua_yue_lua_5.1_v${pkgver}_linux_arm.zip")
 source_aarch64=("https://github.com/yue/yue/releases/download/v${pkgver}/lua_yue_lua_5.1_v${pkgver}_linux_arm64.zip")
 
-sha256sums_x86_64=('72101e4435e83e7289da609fbbc156ed222afa702334a8475ba7a5bfeb134975')
-sha256sums_i686=('155bb215d8fe2d98a8828214d1f849a9d0514985e17bc832f502f47ac290882e')
-sha256sums_armv7h=('05bfaaca9cb0cb2361b149b9a93a8621d3573541dca868d1ae04970166676bfb')
-sha256sums_aarch64=('9473bd75531e7d9208b4172592f7a16f9547ff90d23c578ec14ac164693ab520')
+sha256sums_x86_64=('21473dd5f61604139b8ab749830dc6a8f87ffbab4d396018b6910cd4c144834d')
+sha256sums_i686=('3eaab09295e40e1bc38e8888e47349bb8789bdd472a521e772f99737e298a634')
+sha256sums_armv7h=('c08a5443675a8033498ecb3422734572d1ead3356deef13abcf3561afd4e10a1')
+sha256sums_aarch64=('75e541890d8d7cdc2258f2dd7f35f8f52415541099fc813fab8025b323f923ff')
 
 prepare() {
     echo 'Patching yue.so to make it possible to use it with newer libwebkit2gtk'
