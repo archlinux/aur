@@ -6,7 +6,7 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=openssh-dotconfig
-pkgver=8.9p1
+pkgver=9.0p1
 pkgrel=1
 pkgdesc='Premier connectivity tool for remote login with the SSH protocol - but moved $HOME/.ssh to $HOME/.config/ssh'
 url='https://www.openssh.com/portable.html'
@@ -24,17 +24,17 @@ source=("https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${pkgname%-*}-${pk
         'sshd.service'
         'sshd.conf'
         'sshd.pam')
-sha1sums=('205cdf0040a238047e2c49f43460e03d76e5d650'
+sha1sums=('06dd658874dcd22d66311cf5999bd56c614de509'
           'caaa801da59a5d14c0c29c43e9de5fef281ea03e'
           '8640ac6593602e74a863263223e92ab5c4711588'
           'c9b2e4ce259cd62ddb00364d3ee6f00a8bf2d05f'
           'd93dca5ebda4610ff7647187f8928a3de28703f3')
-sha256sums=('fd497654b7ab1686dac672fb83dfb4ba4096e8b5ffcdaccd262380ae58bec5e7'
+sha256sums=('03974302161e9ecce32153cfa10012f1e65c8f3750f573a73ab1befd5972a28a'
             '4031577db6416fcbaacf8a26a024ecd3939e5c10fe6a86ee3f0eea5093d533b7'
             'e40f8b7c8e5e2ecf3084b3511a6c36d5b5c9f9e61f2bb13e3726c71dc7d4fbc7'
             '4effac1186cc62617f44385415103021f72f674f8b8e26447fc1139c670090f6'
             '64576021515c0a98b0aaf0a0ae02e0f5ebe8ee525b1e647ab68f369f81ecd846')
-b2sums=('02934da7f7a2954141888e63e81e38fad4fb8558ddd1032de44f69684802c62771fdd7e9e470e0715059635999c8f9d2ab95f6351217e236573ead83a867f59b'
+b2sums=('49724a400951964d659d136908657940f79e150056728cc4dadf8ff8652a832f7fd46eebb47b15085e57fca4b00c77d1ec4dd1b056ea2bbcee89f54a121ed5e2'
         '62f89107d3648a359b0307497a9f105d7ff1dddddb38a64afe3261000b5db494a5530e4b60a9aa1d7be4413599e54b72e2f53f0de8c1ff263a46a70bc5695c29'
         '07ad5c7fb557411a6646ff6830bc9d564c07cbddc4ce819641d31c05dbdf677bfd8a99907cf529a7ee383b8c250936a6423f4b4b97ba0f1c14f627bbd629bd4e'
         '27571f728c3c10834a81652f3917188436474b588f8b047462e44b6c7a424f60d06ce8cb74839b691870177d7261592207d7f35d4ae6c79af87d6a7ea156d395'
