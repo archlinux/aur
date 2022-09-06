@@ -3,22 +3,22 @@
 _name=anndata2ri
 pkgname=python-$_name
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Converter between Python’s AnnData and R’s SingleCellExperiment.'
 arch=(any)
 url="https://github.com/theislab/$_name"
 license=(GPL3)
 depends=(python-anndata python-rpy2 python-tzlocal)
-_wheel="${_name/-/_}-$pkgver-py3-none-any.whl"
-source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/$_wheel")
-sha256sums=('e18e2b969dfb2749e39660e833dcf82acb378858d4432db28c595e6fd8595bfe')
-noextract=("$_wheel")
+makedepends=(python-hatchling python-hatch-vcs python-installer python-build)
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('bf5e5d5184efe49eb00f7d524225a9867e3dd77c6ed291eb251168fe4dc429e7')
+
+build() {
+	cd "$_name-$pkgver"
+	python -m build --wheel --no-isolation
+}
 
 package() {
-	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
-	install -d "$site"
-	unzip "$_wheel" -d "$site"
-
-	#fix permissions, fixed in flit 3.0: https://github.com/takluyver/flit/pull/256
-	find "$site" -type f -exec chmod 644 {} \;
+	cd "$_name-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
