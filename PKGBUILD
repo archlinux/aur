@@ -22,7 +22,7 @@ prepare() {
     
 build() {
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+    cmake -DCMAKE_INSTALL_PREFIX=/opt \
           -DCMAKE_BUILD_TYPE=Release ../$pkgname-$pkgver
     make
     }
