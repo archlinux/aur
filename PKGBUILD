@@ -12,7 +12,7 @@ DLAGENTS=('https::/usr/bin/curl -gqb "" -fLC - --retry 3 --retry-delay 3 -o %o %
 sha256sums=('SKIP')
 
 pkgver() {
-  date +%Y.%m.%d
+  date +%y.%m
 }
 
 package_ttf-pt-astra-sans() {
