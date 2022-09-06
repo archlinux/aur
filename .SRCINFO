@@ -1,0 +1,16 @@
+pkgbase = ucsim
+	pkgdesc = Software simulator for microcontrollers
+	pkgver = 0.7.4
+	pkgrel = 1
+	url = http://mazsola.iit.uni-miskolc.hu/~drdani/embedded/ucsim/
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = flex
+	makedepends = bison
+	makedepends = gcc
+	makedepends = make
+	source = http://mazsola.iit.uni-miskolc.hu/ucsim/download/v0.7.x/ucsim_0.7.4_orig.tar.gz
+	sha256sums = bbf5152149ad1ecf8d9024791357e40f5a3585366b0d99c701078a676ca1f974
+
+pkgname = ucsim
