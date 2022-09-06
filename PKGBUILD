@@ -3,8 +3,8 @@
 # Contributor: Juergen Hoetzel <juergen@hoetzel.info>
 
 pkgname=xf86-video-openchrome
-_commit=15c868a # 7 digits # = 0.6.0 RC1
-pkgver=0.6.0.r754.g15c868a
+_commit=dc661c59257e855cd9b29c14b91a8ee2d9b86ccb # master 2022-07-09 // v0.6.501
+pkgver=0.6.0.r763.gdc661c5
 #pkgver=0.6.0
 pkgrel=1
 pkgdesc="X.Org Openchrome drivers"
