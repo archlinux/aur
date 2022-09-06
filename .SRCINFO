@@ -1,0 +1,15 @@
+pkgbase = govulncheck-git
+	pkgdesc = Database client and tools for the Go vulnerability database
+	pkgver = 0.0.0.r390.g27dd78d2
+	pkgrel = 1
+	url = https://go.googlesource.com/vuln/
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = go
+	makedepends = git
+	provides = govulncheck
+	conflicts = govulncheck
+	source = git+http://go.googlesource.com/vuln/
+	b2sums = SKIP
+
+pkgname = govulncheck-git
