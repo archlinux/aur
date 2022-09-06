@@ -3,37 +3,36 @@
 
 pkgname=amulegui-upnp
 pkgver=11106
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote GUI for the aMule Daemon, an eMule-like client for the ed2k p2p network"
 arch=('i686' 'x86_64')
 url="http://www.amule.org/"
 license=('GPL')
-depends=('wxgtk3' 'gd>=2.0.34' 'binutils>=2.17.50.0.18' 'geoip>=1.4.4' 'libupnp>=1.6.6')
-makedepends=('crypto++')
+depends=(wxwidgets-gtk3 gd geoip libupnp)
+makedepends=(crypto++)
 conflicts=('amule' 'amule-svn' 'amule-noupnp-svn' 'amule-noupnp')
 provides=("amulegui=${pkgver}")
 source=(http://amule.sourceforge.net/tarballs/aMule-SVN-r${pkgver}.tar.bz2)
 md5sums=('1f9308e2354c684e7ec38abb819f9a1a')
 
 build() {
-  cd ${srcdir}/aMule-SVN-r${pkgver}
-  ./configure --prefix=/usr \
-              --mandir=/usr/share/man \
-              --with-wx-config=/usr/bin/wx-config-gtk3 \
-              --enable-optimize \
-              --enable-amule-gui \
-              --disable-cas \
-              --disable-alcc \
-              --enable-upnp \
-	      --enable-geoip \
-	      --disable-monolithic \
-              --disable-wxcas \
-              --disable-alc \
-              --disable-debug
-  make || return 1
+  cmake -B build -S aMule-SVN-r${pkgver} \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_ALC=OFF \
+    -DBUILD_ALCC=OFF \
+    -DBUILD_AMULECMD=OFF \
+    -DBUILD_CAS=OFF \
+    -DBUILD_DAEMON=OFF \
+    -DBUILD_REMOTEGUI=ON \
+    -DBUILD_WEBSERVER=OFF \
+    -DBUILD_WXCAS=OFF \
+    -DBUILD_FILEVIEW=OFF \
+    -DBUILD_MONOLITHIC=OFF \
+    -DBUILD_ED2K=OFF \
+    -DENABLE_NLS=ON
+  cmake --build build
 }
 
 package() {
-  cd ${srcdir}/aMule-SVN-r${pkgver}
-  make DESTDIR=${pkgdir}/ install || return 1
+  DESTDIR="$pkgdir" cmake --install build
 }
