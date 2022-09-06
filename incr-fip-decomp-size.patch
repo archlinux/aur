@@ -1,0 +1,11 @@
+--- ./plat/mediatek/mt7622/include/platform_def.h	2022-09-04 20:28:39.561486535 +0200
++++ ./plat/mediatek/mt7622/include/platform_def.h	2022-08-26 21:06:11.192153274 +0200
+@@ -104,7 +104,7 @@
+  * FIP decompression specific defines.
+  ******************************************************************************/
+ #define FIP_DECOMP_TEMP_BASE	(0x42000000)
+-#define FIP_DECOMP_TEMP_SIZE	(0x400000)
++#define FIP_DECOMP_TEMP_SIZE	(0x4000000)
+
+ /*******************************************************************************
+  * Platform specific page table and MMU setup constants

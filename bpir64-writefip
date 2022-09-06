@@ -1,0 +1,42 @@
+#!/bin/bash
+
+[ ! -d "/boot/bootcfg/" ] && exit
+[ ! -d "/boot/dtbos/" ] && exit
+fipdev=$(cat    /boot/bootcfg/device)
+linux=$(cat    /boot/bootcfg/linux)
+cmdline=$(cat  /boot/bootcfg/cmdline)
+initrd=$(cat   /boot/bootcfg/initrd)
+dtb=$(cat      /boot/bootcfg/dtb)
+tmp="/tmp/bpir64-atf-git"
+mkdir -p $tmp
+origargs=$(fdtget -ts "/boot/dtbs/${dtb}.dtb" "/chosen" "bootargs")
+bootargs="root=PARTLABEL=bpir64-${fipdev}-root $origargs $cmdline"
+echo BOOTARGS = "$bootargs"
+for bp in /boot/dtbos/*.dts; do
+  dtc -q -I dts -O dtb -o ${bp/".dts"/".dtbo"} $bp
+done
+fdtoverlay -vi "/boot/dtbs/${dtb}.dtb" -o "/boot/atf-direct.dtb" /boot/dtbos/*.dtbo
+fdtput -ts "/boot/atf-direct.dtb" "/chosen" "bootargs" "$bootargs"
+fdtput -ts "/boot/atf-direct.dtb" "/memory" "device_type" "memory"
+if [ -f "$initrd" ];then
+  ins="0x48000000"
+  ine="0x$(printf '%x\n' $(( 0x48000000 + $(du -b $initrd | cut -f1) )))"
+  fdtput -tx "/boot/atf-direct.dtb" "/chosen" "linux,initrd-end" "$ine"
+  fdtput -tx "/boot/atf-direct.dtb" "/chosen" "linux,initrd-start" "$ins"
+  initrdfile="$initrd"
+else
+  echo -n "" > "$tmp/initrd"
+  initrdfile="$tmp/initrd"
+fi
+fiptool --verbose create $tmp/fip.bin \
+      --tos-fw-extra2 $initrdfile \
+             --nt-fw $linux \
+       --nt-fw-config "/boot/atf-direct.dtb"
+fiptool info $tmp/fip.bin
+fipdev="/dev/disk/by-partlabel/bpir64-${fipdev}-fip"
+[ ! -L $fipdev ] && exit 0
+echo Writing FIP to: $fipdev
+dd of=$fipdev if=/dev/zero 2>/dev/null
+dd of=$fipdev if=$tmp/fip.bin
+
+exit 0
