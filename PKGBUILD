@@ -3,7 +3,7 @@
 
 pkgname=lingot-git
 pkgver=20201229.a7d2b6c
-pkgrel=1
+pkgrel=2
 pkgdesc='musical instrument tuner (git)'
 arch=(i686 x86_64)
 url='http://nongnu.org/lingot/'
@@ -23,7 +23,7 @@ pkgver() {
 build() {
     cd lingot
     ./bootstrap
-    ./configure --prefix=/usr
+    ./configure --prefix=/usr --localedir=/usr/share/locale
     make
 }
 
