@@ -2,21 +2,23 @@
 
 _name=wheel-filename
 pkgname=python-$_name
-pkgver=1.3.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Parse wheel filenames'
 arch=(any)
 url="https://github.com/jwodder/$_name"
 license=(MIT)
 depends=(python)
-_pyarch=py3
-_wheel="${_name/-/_}-$pkgver-$_pyarch-none-any.whl"
-source=("https://files.pythonhosted.org/packages/$_pyarch/${_name::1}/$_name/$_wheel")
-sha256sums=('a7aabf29e4ed4b798690fcf87f04754fb340aacb52798c6147949f0b81e55761')
-noextract=("$_wheel")
+makedepends=(python-setuptools python-installer python-build)
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('e2e1eb0780910a0148358252aad6394cc674250686c56c39aa379493438370b3')
+
+build() {
+	cd "$_name-$pkgver"
+	python -m build --wheel --no-isolation
+}
 
 package() {
-	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
-	mkdir -p "$site"
-	unzip "$_wheel" -d "$site"
+	cd "$_name-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
