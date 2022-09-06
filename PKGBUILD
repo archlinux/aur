@@ -1,4 +1,5 @@
-# Maintainer: Jacek Szafarkiewicz <szafar at linux dot pl>
+# Maintainer: jmcb <joelsgp@protonmail.com>
+# Contributor: Jacek Szafarkiewicz <szafar at linux dot pl>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
