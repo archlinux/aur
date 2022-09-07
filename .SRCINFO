@@ -1,6 +1,6 @@
 pkgbase = python-nocasedict
 	pkgdesc = A case-insensitive ordered dictionary for Python
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/pywbem/nocasedict
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-nocasedict
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-six
-	source = https://github.com/pywbem/nocasedict/archive/refs/tags/1.0.3.tar.gz
-	sha256sums = f3314c02f4b9a0c194991c585d7e793e367e041a78efe0cbfc1a3d4362a91d5b
+	source = https://github.com/pywbem/nocasedict/archive/refs/tags/1.0.4.tar.gz
+	sha256sums = f86fa6978ec715c9bdb832feb8d613443125fe06c27ec87a932c1758efaa7325
 
 pkgname = python-nocasedict
