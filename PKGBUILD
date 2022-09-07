@@ -1,33 +1,33 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=blink-bin
-pkgver=1.5.1
+pkgver=1.7.4
 pkgrel=1
-pkgdesc="Instant code search, source files locator. Index management for multiple projects"
+pkgdesc='Instant code search tool'
 arch=('x86_64')
 url='https://github.com/ychclone/blink'
 license=('GPL3')
-provides=("${pkgname%-bin}")
+provides=('blink-code-search')
+conflicts=('blink')
 options=('!strip')
-makedepends=('gendesk')
-source=("${pkgname%-bin}-${pkgver}.AppImage::https://github.com/ychclone/blink/releases/download/${pkgver}/Blink-x86_64.AppImage")
-sha256sums=('49754b3f940d6e1439a02357fcf2813aae4603dced9bfadb1ce993c5cc4e8355')
+source_x86_64=("$pkgname-$pkgver.AppImage::$url/releases/download/$pkgver/Blink-$CARCH.AppImage")
+sha256sums_x86_64=('cd8d5a5a4e732dd1b79e0c4f74ff72297d68386b122d2c267aa7caabba84c53e')
+
+prepare() {
+	chmod +x "$pkgname-$pkgver.AppImage"
+	./"$pkgname-$pkgver.AppImage" --appimage-extract &>/dev/null
+}
 
 package() {
-  chmod 755 ./${pkgname%-bin}-${pkgver}.AppImage
-  ./${pkgname%-bin}-${pkgver}.AppImage --appimage-extract
-  install -Dm644 squashfs-root/usr/share/icons/hicolor/128x128/${pkgname%-bin}.png "${pkgdir}/usr/share/pixmaps/blink.png"
-  gendesk -f -n --pkgname "${pkgname%-bin}" \
-          --pkgdesc "$pkgdesc" \
-          --name "Blink" \
-          --comment "$pkgdesc" \
-          --exec "${pkgname%-bin}" \
-          --categories 'Utility;Development;Application' \
-          --icon "${pkgname%-bin}"
-  install -Dm644 "${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-  install -d "${pkgdir}/usr/bin"
-  install -d "${pkgdir}/opt"
-  cp -avR squashfs-root/ "${pkgdir}/opt/${pkgname%-bin}"
-  ln -s /opt/${pkgname%-bin}/AppRun "${pkgdir}/usr/bin/${pkgname%-bin}"
-  find "${pkgdir}/opt/${pkgname%-bin}" -type d -exec chmod 755 {} +
+	install -d \
+		"$pkgdir/usr/bin" \
+		"$pkgdir/usr/share/icons/hicolor/128x128/" \
+		"$pkgdir/opt/$pkgname"
+	cp -a --no-preserve=ownership squashfs-root/usr "$pkgdir/opt/$pkgname/"
+	install -Dm644 squashfs-root/blink.desktop -t "$pkgdir/usr/share/applications/"
+	ln -s "/opt/$pkgname/usr/bin/blink" "$pkgdir/usr/bin/"
+	ln -s \
+		"/opt/$pkgname/usr/share/icons/hicolor/128x128/blink.png" \
+		"$pkgdir/usr/share/icons/hicolor/128x128/"
 }
