@@ -1,0 +1,14 @@
+diff '--color=auto' -U3 -r nupack-4.0.0.28/source/CMakeLists.txt nu-edit/source/CMakeLists.txt
+--- nupack-4.0.0.28/source/CMakeLists.txt	2022-06-09 16:19:40.000000000 +0100
++++ nu-edit/source/CMakeLists.txt	2022-09-07 17:05:31.926023038 +0100
+@@ -22,8 +22,8 @@
+ 
+ ################################################################################
+ 
+-set(CMAKE_TOOLCHAIN_FILE ${CMAKE_CURRENT_SOURCE_DIR}/external/vcpkg/scripts/buildsystems/vcpkg.cmake
+-  CACHE STRING "Vcpkg toolchain file")
++#set(CMAKE_TOOLCHAIN_FILE ${CMAKE_CURRENT_SOURCE_DIR}/external/vcpkg/scripts/buildsystems/vcpkg.cmake
++#  CACHE STRING "Vcpkg toolchain file")
+ 
+ ################################################################################
+ 

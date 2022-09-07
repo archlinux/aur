@@ -1,0 +1,27 @@
+pkgbase = nupack4
+	pkgdesc = Software suite for the analysis and design of nucleic acid structures, devices, and systems.
+	pkgver = 4.0.0.28
+	pkgrel = 1
+	url = https://nupack.org
+	arch = x86_64
+	license = Custom
+	depends = armadillo
+	depends = tbb2019
+	depends = gecode
+	depends = nlohmann-json
+	depends = jsoncpp
+	depends = tclap
+	depends = spdlog
+	depends = boost
+	depends = boost-libs
+	depends = python
+	depends = python-scipy
+	depends = python-pandas
+	source = nupack-4.0.0.28.zip::file://nupack-4.0.0.28.zip
+	source = disable-vcpkg.patch
+	source = disable-broken-logger.patch
+	sha256sums = 4b15e4773cbe9dd5bee6afaa1085170fc8e2cee9de711f8603d66575be83cbe1
+	sha256sums = f9dac1f4a8cb26f3c11fa5cbf39de4feee34f5914023cc8c93950c88dca5f12b
+	sha256sums = 9dd038b73b9d34050b208a93b4521ee661e7f4d7ccd49ba4ae40ff85b8d441d2
+
+pkgname = nupack4

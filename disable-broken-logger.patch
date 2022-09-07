@@ -1,0 +1,14 @@
+diff '--color=auto' -U3 -r nupack-4.0.0.28/source/include/nupack/concentration/Solve.h nu-edit/source/include/nupack/concentration/Solve.h
+--- nupack-4.0.0.28/source/include/nupack/concentration/Solve.h	2022-06-09 16:19:40.000000000 +0100
++++ nu-edit/source/include/nupack/concentration/Solve.h	2022-09-07 17:51:54.179141241 +0100
+@@ -360,8 +360,8 @@
+     // Run trust region with initial radius 1000
+     auto ret = trust_region(std::move(sys), gradient, hessian, direction, condition, adjust_delta, ops.delta_max);
+ 
+-    if (!good && logger)
+-        logger->error("A:\n{}\northo A:\n{}\nx0:\n{}\ng:\n{}\nx:\n{}\n", orig_A, A, x0, q, ret.primal);
++    //if (!good && logger)
++    //    logger->error("A:\n{}\northo A:\n{}\nx0:\n{}\ng:\n{}\nx:\n{}\n", orig_A, A, x0, q, ret.primal);
+ 
+     if (logger) logger->info("equilibrate finished. Number of iterations: {}", n - 1);
+ 
