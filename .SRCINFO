@@ -6,6 +6,7 @@ pkgbase = gopoggers
 	arch = any
 	license = MIT
 	makedepends = go
+	makedepends = git
 	source = git+https://github.com/poggeroni/gopoggers#tag=v1.0.0
 	sha256sums = SKIP
 
