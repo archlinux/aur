@@ -9,7 +9,7 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=obs-studio-browser
 pkgver=28.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64")
 url="https://github.com/obsproject/obs-studio"
@@ -37,6 +37,8 @@ depends=(
          
   # AUR Packages
   "ffmpeg-obs>=5" "vlc-luajit" "ftl-sdk"
+
+  "cef-minimal-obs=103.0.0_5060_shared_textures_143.2591+g4204d54+chromium_103.0.5060.134_1"
 )
 # To manage mbedtls rebuild easily, this will prevent you to rebuild OBS on non-updated system
 # For Manjaro user this feature is disabled
@@ -91,21 +93,19 @@ else
 fi
 provides=("obs-studio=$pkgver" "obs-vst" "obs-websocket" "obs-browser")
 conflicts=("obs-studio" "obs-vst" "obs-websocket" "obs-browser" "obs-linuxbrowser")
-options=('!strip')
+options=('debug')
 _cefbranch=5060
 source=(
   "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
   "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
   "qr::git+https://github.com/nayuki/QR-Code-generator.git"
-  "https://cdn-fastly.obsproject.com/downloads/cef_binary_${_cefbranch}_linux64.tar.bz2"
 )
 sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
   "SKIP"
-  "ac4e2a8ebf20700e4e36353e314f876623633dd5b474778a2548bb66bdbea11d"
 )
 
 if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
@@ -136,14 +136,6 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir"/cef_binary_${_cefbranch}_linux64
-
-  #The arm64 CEF set the wrong arch for the project
-  cmake \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo .
-
-  make libcef_dll_wrapper
-
   cd "$srcdir"/obs-studio
   mkdir -p build; cd build
 
@@ -156,7 +148,7 @@ build() {
     -DENABLE_LIBFDK=ON \
     -DENABLE_JACK=ON \
     -DENABLE_SNDIO=ON \
-    -DCEF_ROOT_DIR="$srcdir/cef_binary_${_cefbranch}_linux64" \
+    -DCEF_ROOT_DIR=/opt/cef-obs \
     -DOBS_VERSION_OVERRIDE="$pkgver-browser-$pkgrel" ..
 
   make

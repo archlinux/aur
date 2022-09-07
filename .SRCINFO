@@ -1,7 +1,7 @@
 pkgbase = obs-studio-browser
 	pkgdesc = Free and open source software for video recording and live streaming. With everything except service integration
 	pkgver = 28.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
 	license = GPL3
@@ -34,6 +34,7 @@ pkgbase = obs-studio-browser
 	depends = ffmpeg-obs>=5
 	depends = vlc-luajit
 	depends = ftl-sdk
+	depends = cef-minimal-obs=103.0.0_5060_shared_textures_143.2591+g4204d54+chromium_103.0.5060.134_1
 	depends = mbedtls
 	optdepends = libfdk-aac: FDK AAC codec support
 	optdepends = intel-media-driver: Hardware encoding (>= Broadwell)
@@ -55,16 +56,14 @@ pkgbase = obs-studio-browser
 	conflicts = obs-websocket
 	conflicts = obs-browser
 	conflicts = obs-linuxbrowser
-	options = !strip
+	options = debug
 	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=28.0.1
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-websocket::git+https://github.com/obsproject/obs-websocket.git
 	source = qr::git+https://github.com/nayuki/QR-Code-generator.git
-	source = https://cdn-fastly.obsproject.com/downloads/cef_binary_5060_linux64.tar.bz2
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = ac4e2a8ebf20700e4e36353e314f876623633dd5b474778a2548bb66bdbea11d
 
 pkgname = obs-studio-browser
