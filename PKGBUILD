@@ -29,11 +29,11 @@ prepare() {
 }
 
 build() {
-  LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib
+  LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/ffmpeg21/lib:/opt/lib
   export LD_LIBRARY_PATH
   cd "$_pkgdir"
   sed -i 's@GTK;GNOME;Qt;KDE;AudioVideo;@AudioVideo;Player;X-Red-Hat-Base;@g' ffDiaporama.desktop
-  qmake-qt5 'QMAKE_CFLAGS_ISYSTEM=-I' 'INCLUDEPATH += /opt/include' 'LIBPATH += /opt/lib' ffDiaporama.pro /PREFIX=/usr
+  qmake-qt5 'QMAKE_CFLAGS_ISYSTEM=-I' 'INCLUDEPATH += /opt/ffmpeg21/include' 'LIBPATH += /opt/ffmpeg21/lib' ffDiaporama.pro PREFIX=/usr
   
   make "-j$(nproc)" || return 1
 }
