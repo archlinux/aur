@@ -1,6 +1,6 @@
 pkgbase = firefox-stylus
 	pkgdesc = Easily install themes and skins for many popular sites
-	pkgver = 1.5.25
+	pkgver = 1.5.27
 	pkgrel = 1
 	url = https://add0n.com/stylus.html
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = firefox-stylus
 	makedepends = git
 	makedepends = npm
 	makedepends = strip-nondeterminism
-	source = https://github.com/openstyles/stylus/archive/v1.5.25/stylus-1.5.25.tar.gz
-	md5sums = 5363c736c5f9e84598a7ef32dd387f6f
+	source = https://github.com/openstyles/stylus/archive/v1.5.27/stylus-1.5.27.tar.gz
+	md5sums = a02fb680713218618db8114dba16630a
 
 pkgname = firefox-stylus
