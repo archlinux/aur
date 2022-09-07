@@ -8,6 +8,6 @@ pkgbase = ambiant
 	depends = gtk-engine-murrine
 	depends = humanity-icon-theme
 	source = ambiant-22.9.7.tar.gz::https://github.com/tari01/ambiant/archive/22.9.7.tar.gz
-	md5sums = a3458497b6c640414b52c8f1cbcbb9809827f63ffe07930e4c840f95f4c254d8
+	md5sums = 368b50ee3884a0270962c5b6bf1c7545
 
 pkgname = ambiant
