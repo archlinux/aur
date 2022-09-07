@@ -93,15 +93,18 @@ index dc532eb55..ee3d25449 100644
  }
  }} // namespace caspar::ffmpeg
 diff --git a/src/modules/ffmpeg/producer/av_input.cpp b/src/modules/ffmpeg/producer/av_input.cpp
-index 775491e20..bc3946aa8 100644
+index 775491e20..4b77f2320 100644
 --- a/src/modules/ffmpeg/producer/av_input.cpp
 +++ b/src/modules/ffmpeg/producer/av_input.cpp
-@@ -124,7 +124,7 @@ void Input::internal_reset()
+@@ -124,7 +124,11 @@ void Input::internal_reset()
  
      static const std::set<std::wstring> PROTOCOLS_TREATED_AS_FORMATS = {L"dshow", L"v4l2", L"iec61883"};
  
--    AVInputFormat* input_format = nullptr;
++#if LIBAVFORMAT_VERSION_MAJOR >= 59
 +    const AVInputFormat* input_format = nullptr;
++#else
+     AVInputFormat* input_format = nullptr;
++#endif
      auto           url_parts    = caspar::protocol_split(u16(filename_));
      if (url_parts.first == L"http" || url_parts.first == L"https") {
          FF(av_dict_set(&options, "multiple_requests", "1", 0)); // NOTE https://trac.ffmpeg.org/ticket/7034#comment:3
@@ -127,7 +130,7 @@ index 6b31f8f81..e20eb6703 100644
          if (codec->capabilities & AV_CODEC_CAP_AUTO_THREADS) {
              numThreads = 0;
 diff --git a/src/modules/ffmpeg/util/av_util.cpp b/src/modules/ffmpeg/util/av_util.cpp
-index 96d535446..9e61ab42a 100644
+index 96d535446..82bba93da 100644
 --- a/src/modules/ffmpeg/util/av_util.cpp
 +++ b/src/modules/ffmpeg/util/av_util.cpp
 @@ -9,7 +9,9 @@
@@ -140,7 +143,7 @@ index 96d535446..9e61ab42a 100644
  #include <libavutil/pixfmt.h>
  }
  #if defined(_MSC_VER)
-@@ -119,47 +121,51 @@ core::pixel_format get_pixel_format(AVPixelFormat pix_fmt)
+@@ -119,47 +121,60 @@ core::pixel_format get_pixel_format(AVPixelFormat pix_fmt)
  core::pixel_format_desc pixel_format_desc(AVPixelFormat pix_fmt, int width, int height, std::vector<int>& data_map)
  {
      // Get linesizes
@@ -177,11 +180,20 @@ index 96d535446..9e61ab42a 100644
              // Find chroma height
 -            auto size2 = static_cast<int>(dummy_pict.data[2] - dummy_pict.data[1]);
 -            auto h2    = size2 / dummy_pict.linesize[1];
++            // av_image_fill_plane_sizes is not available until ffmpeg 4.4, but we still need to support ffmpeg 4.2, so
++            // we fall back to calling av_image_fill_pointers with a NULL image buffer. We can't unconditionally use
++            // av_image_fill_pointers because it will not accept a NULL buffer on ffmpeg >= 5.0.
++#if LIBAVUTIL_VERSION_INT >= AV_VERSION_INT(56, 56, 100)
 +            size_t sizes[4];
 +            ptrdiff_t linesizes1[4];
 +            for (int i = 0; i < 4; i++) linesizes1[i] = linesizes[i];
 +            av_image_fill_plane_sizes(sizes, pix_fmt, height, linesizes1);
 +            auto size2 = static_cast<int>(sizes[1]);
++#else
++            uint8_t dummy_pict_data[4];
++            av_image_fill_pointers(&dummy_pict_data, pix_fmt, height, NULL, linesizes);
++            auto size2 = static_cast<int>(dummy_pict_data[2] - dummy_pict_data[1]);
++#endif
 +            auto h2    = size2 / linesizes[1];
  
 -            desc.planes.push_back(core::pixel_format_desc::plane(dummy_pict.linesize[0], height, 1));

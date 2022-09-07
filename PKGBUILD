@@ -3,7 +3,7 @@ pkgname=casparcg-server
 pkgver=2.3.3
 _pkgver=$pkgver-lts-stable
 _cef_version=3.3578.1870.gc974488
-pkgrel=6
+pkgrel=7
 pkgdesc="Software used to play out professional graphics, audio and video to multiple outputs"
 arch=('x86_64')
 url="https://github.com/CasparCG/server"
@@ -15,12 +15,13 @@ source=("https://github.com/CasparCG/server/archive/refs/tags/v$_pkgver.tar.gz"
         "https://github.com/CasparCG/server/commit/9cafa27838039aa65af3c97fe7d0c4531a952cdc.patch"
         "https://github.com/CasparCG/server/commit/9b0990bee89b7a9fa195db75c976c2b20e33ebb5.patch"
         "https://github.com/CasparCG/server/commit/e0bbb969b171c85332e77ee8b50f29b4634b7ad7.patch"
-        "https://patch-diff.githubusercontent.com/raw/CasparCG/server/pull/1394.patch"
-        "https://patch-diff.githubusercontent.com/raw/CasparCG/server/pull/1397.patch"
+        "https://github.com/CasparCG/server/commit/8fce42fabb67b469fe2b6fc0b22af69773b21779.patch"
+        "https://github.com/CasparCG/server/commit/a1933f38a7b14fa27d8a4a496ffe84782a840830.patch"
+        "https://github.com/CasparCG/server/commit/09c655313cac5951db23a90f8d8ea54c044def8e.patch"
         "https://patch-diff.githubusercontent.com/raw/CasparCG/server/pull/1308.patch"
-        "https://patch-diff.githubusercontent.com/raw/CasparCG/server/pull/1418.patch"
-        "https://patch-diff.githubusercontent.com/raw/CasparCG/server/pull/1420.patch"
+        "https://patch-diff.githubusercontent.com/raw/CasparCG/server/pull/1438.patch"
         "ffmpeg-5.0.patch"
+        "ffmpeg-cmake.patch"
         "https://cef-builds.spotifycdn.com/cef_binary_${_cef_version}_linux64_minimal.tar.bz2"
         casparcg)
 sha256sums=('6d8e973949009e95bb5a6496e26cbe680efd77666936e131df0da569f8f7c7e1'
@@ -28,12 +29,13 @@ sha256sums=('6d8e973949009e95bb5a6496e26cbe680efd77666936e131df0da569f8f7c7e1'
             'b67cd51d6b01fef1080b49cbb146e94981b1681b90aa3e5a4c28309ce1d5db1b'
             '3e9d6c96f3b196eb3104a59f99dab86a823c887a71ea09883f094003a184ad65'
             'c698a177a13a32ad2eb5e1a4ba304526cebc4b63c459893288f14147c4d83ae6'
-            'ab663b18f7221d4bcb0835ec7290910341c94a6f3b03cb6defb3eabeaf0f3396'
-            '153aea3dc15646db29c01ae4ee82517bbb024bf1d177ed1ea55bd080b525d06e'
+            'd5bee5099e44de2ba0a86a6d099794a8e4be1811439c0ad0b0fb06700be47f7b'
+            '30484f8a455ca5e55d758820499b9f8e275762c8004762dfd9d502a662d2e701'
+            '0a811ad09fe9c7591a8cf3a158d9f10d2a951bd2fcba98cb3b87a6bacf8dfe48'
             '5c6f2a3007e3a8739bc1f3eaec3c694af9836aed1943217843a92acff80950c1'
-            '322158baef39dff7bfcf899a2ffea0fbe148443664beac380b9be6858a2b71d1'
-            'a87a88f65e9cf192f4ae93afb20ecc4527b2357ebe1e26e23425d1e8f5e888ed'
-            'd82dd031ca0d3d46b0c18c018b59a5426e0cba0627ac434b61d683b69b347f86'
+            '170cf317a92e4b94233f65ba5cbf984b94d648080a517852353579e5801482cc'
+            '74258b79273b852209f03c826cd64879514929cd222fa03c924b71444c9110a1'
+            'e7f0e0dd123b1cccac21611f4e32ba7d27ce24a9a0587ef6f2180fb3c63894c0'
             'b7c5401f342917ece7be583566bfc48b5cc1a8ff9f6470d396130b4aca7dfb22'
             'ce9dd83ae2ef9289e551f0a3ecbe246537195049c15f69bbfdc6c3ddd23291c2')
 
