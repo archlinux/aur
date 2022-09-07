@@ -10,9 +10,9 @@ pkgbase = nav
 	source = https://concise.cc/pkg/nav-1.1-1-any.pkg.tar.zst
 	source = https://concise.cc/pkg/nav-1.1-1-any.pkg.tar.zst.sig
 	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
-	md5sums = 60eec0c3f91a6fce5faac5eb5fbcb51f
-	md5sums = 7389cc8345891bb7829baaa4f7279f2f
-	sha512sums = 26de48aac9bfa5f6181864cfbb79656c0a35e0765fd4ed0aa4027b3a41fb28df5c32a7380ea55907985e4c3c4e7549dcbf95bcccad9f0376b062ec62dcb9f139
-	sha512sums = 242f9bd28d72db32518c68878732651f07d37c7cbd7341390bddba66cacea0228334d651d470c2a3908df918216409f2df4b0ce65e6af510203e504a67cfe1dc
+	md5sums = aab2d8599331f18c8fb64ea998ddafd0
+	md5sums = cc0f31598b98ee2da7415bdcaf9a8a1d
+	sha512sums = eb2b7c91d7e131b99d8226e30d203be27c953fa7280f11a3a9cd8d2ee1297756df024b42a3cbd5f2503f044c4197093b86a49d73546f5e7b245bcdfe4fd8f968
+	sha512sums = 4f8807aa59f71a0d3d632e10db9e8e7bdb463f9a085bb59e91243003692c3e09b46d460137b691ceb0494ea43cdfb238d3a35ace113460fd22e8a5dad318b534
 
 pkgname = nav
