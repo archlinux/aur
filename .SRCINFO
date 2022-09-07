@@ -1,6 +1,6 @@
 pkgbase = cargo-doc2readme-git
 	pkgdesc = cargo subcommand to create a readme file containing the rustdoc comments from your code
-	pkgver = 0.0.8.r32.gac3529c
+	pkgver = 0.1.6.r3.g32f28f8
 	pkgrel = 1
 	url = https://github.com/msrd0/cargo-doc2readme
 	arch = aarch64
@@ -8,10 +8,7 @@ pkgbase = cargo-doc2readme-git
 	arch = x86_64
 	license = Apache
 	makedepends = cargo
-	makedepends = libgit2
 	depends = gcc-libs
-	depends = curl
-	depends = libgit2.so=1.4
 	provides = cargo-doc2readme
 	conflicts = cargo-doc2readme
 	source = cargo-doc2readme-git::git+https://github.com/msrd0/cargo-doc2readme
