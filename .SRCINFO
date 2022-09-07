@@ -1,6 +1,6 @@
 pkgbase = use-system-electron19
 	pkgdesc = Symlinks the system's electron to all existing versions.
-	pkgver = 20
+	pkgver = 19
 	pkgrel = 1
 	arch = any
 	license = Unlicense

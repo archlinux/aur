@@ -1,7 +1,7 @@
 # Maintainer: QiE2035 <qie2035@qq.com>
 
 pkgname="use-system-electron19"
-pkgver=20
+pkgver=19
 pkgrel=1
 pkgdesc="Symlinks the system's electron to all existing versions."
 arch=("any")
