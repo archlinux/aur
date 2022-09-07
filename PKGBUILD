@@ -6,7 +6,7 @@
 
 pkgname=gnome-shell-extension-coverflow-alt-tab-git
 pkgver=1.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Replacement of Alt-Tab, iterates through windows in a cover-flow manner"
 arch=('any')
 url="https://github.com/dmo60/CoverflowAltTab"
@@ -80,7 +80,8 @@ package_20_version() {
   local min="${compatibles[0]}"
   depends+=("gnome-shell>=$(prefix "${min%%.*}")3.$min")
   if [ "${compatibles[-1]}" != $(
-    gnome-shell --version | grep -Po '(?<=GNOME Shell 3\.)[[:digit:]]+'
+    LD_PRELOAD= gnome-shell --version | \
+      grep -Po '(?<=GNOME Shell 3\.)[[:digit:]]+'
   ) ]; then
     let max=${compatibles[-1]%%.*}+1
     depends+=("gnome-shell<$(prefix "$max")3.$max")
