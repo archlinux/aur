@@ -1,13 +1,12 @@
 pkgbase = binfmt-qemu-static
-	pkgdesc = Register qemu-static interpreters for various binary formats
-	pkgver = 20210119
-	pkgrel = 1
-	url = http://www.freedesktop.org/software/systemd/man/binfmt.d.html
-	arch = any
-	license = GPL
-	optdepends = qemu-user-static
-	source = qemu-static.conf
-	md5sums = 4ce74ae99d838f46898ff3222a998d8b
+pkgdesc = Register qemu-static interpreters for various binary formats
+pkgver = 20220907
+pkgrel = 1
+url = http://www.freedesktop.org/software/systemd/man/binfmt.d.html
+arch = x86_64
+license = GPL
+optdepends = qemu-user-static
+source = qemu-static.conf
+sha256sums = 4a9a23a02e20651791a5e5feca5872b8f0c85537cba21fc0b58af6d325dca46b
 
 pkgname = binfmt-qemu-static
-
