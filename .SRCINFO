@@ -1,7 +1,7 @@
 pkgbase = obs-studio-tytan652
 	pkgdesc = Free and open source software for video recording and live streaming. With everything except service integrations. Plus V4L2 devices by paths, my bind interface PR, and sometimes backported fixes
 	pkgver = 28.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
 	arch = aarch64
@@ -18,6 +18,7 @@ pkgbase = obs-studio-tytan652
 	makedepends = websocketpp
 	makedepends = libajantv2
 	makedepends = python>=3.10
+	makedepends = cef-minimal-obs=103.0.0_5060_shared_textures_143.2591+g4204d54+chromium_103.0.5060.134_1
 	depends = jack
 	depends = gtk-update-icon-cache
 	depends = x264
@@ -56,20 +57,18 @@ pkgbase = obs-studio-tytan652
 	conflicts = obs-websocket
 	conflicts = obs-linuxbrowser
 	conflicts = obs-browser
-	options = !strip
+	options = debug
 	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=28.0.1
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-websocket::git+https://github.com/obsproject/obs-websocket.git
 	source = qr::git+https://github.com/nayuki/QR-Code-generator.git
 	source = bind_iface.patch
 	source = v4l2_by-path.patch
-	source = https://cdn-fastly.obsproject.com/downloads/cef_binary_5060_linux64.tar.bz2
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = a244f5b594ed7f0b215a0c0fb0bee445cbb5726b12fdfe539e70f0d9d991dab9
 	sha256sums = ee54b9c6f7e17fcc62c6afc094e65f18b2e97963c2fe92289b2b91972ac206e5
-	sha256sums = ac4e2a8ebf20700e4e36353e314f876623633dd5b474778a2548bb66bdbea11d
 
 pkgname = obs-studio-tytan652
