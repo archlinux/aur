@@ -1,0 +1,19 @@
+[Unit]
+Description=Remote tcp connection service %i
+Requires=network.target
+After=network.target remoteit-refresh.service
+
+[Service]
+Type=forking
+PIDFile=/var/run/remoteit-%i.pid
+RemainAfterExit=no
+ExecStart=/usr/share/remoteit/remoteit.sh %i
+ExecReload=/bin/kill -HUP $MAINPID -f /usr/share/remoteit/remoteit.sh %i
+Restart=always
+RestartSec=10s
+TimeoutStartSec=0
+StartLimitInterval=60
+StartLimitBurst=86400
+
+[Install]
+WantedBy=multi-user.target

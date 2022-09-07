@@ -1,0 +1,11 @@
+[Unit]
+Description=Remoteit configuration refresh service
+Requires=network.target
+After=network.target
+
+[Service]
+RemainAfterExit=no
+ExecStart=/usr/share/remoteit/refresh.sh
+
+[Install]
+WantedBy=multi-user.target

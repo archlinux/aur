@@ -5,31 +5,22 @@
 ## arg 1:  the new package version
 pre_install() {
 
-  bkFolder=/usr/share/remoteit/backup
-
-  # migrate old backup directory
-
-  if [ -d /usr/share/remoteit/old ] && [ ! -d $bkFolder ]; then
-    mv /usr/share/remoteit/old $bkFolder
+  if [ -d /opt/remoteit-headless ]; then
+    remoteit agent uninstall -y 2>/dev/null || true
+    systemctl disable --now avahi-alias@remoteit.local 2>/dev/null || true
+    systemctl disable --now remoteit-headless 2>/dev/null || true
+    systemctl disable --now connectd 2>/dev/null || true
+    systemctl disable --now connectd_schannel 2>/dev/null || true
+    rm -f /usr/lib/systemd/system/avahi-alias@remoteit.local.service
+    rm -rf /opt/remoteit-headless
+    rm -f /usr/bin/remoteit
+    rm -f /usr/bin/connectd
+    rm -f /usr/bin/muxer
+    rm -f /usr/bin/demuxer
+    rm -f /usr/bin/connectd_task_notify
+    mkdir -p /etc/remoteit
+    rm -f /etc/remoteit/config.json-*
   fi
-
-  # migrate symlinks and archive files before installation
-
-  mkdir -p $bkFolder
-
-  for name in connectd muxer demuxer remoteit; do
-    file=/usr/bin/$name
-    if [ -e $file ]; then
-      cp -Lf $file $bkFolder # archive file
-    fi
-    if [ -L $file ]; then
-      source=$(readlink -f $file)
-      if [ -e "$source" ]; then
-        rm -f $file
-        cp "$source" $file
-      fi
-    fi
-  done
 
   exit 0
 
@@ -38,149 +29,11 @@ pre_install() {
 ## arg 1:  the new package version
 post_install() {
 
-  pkgFolder=/usr/share/remoteit
-  bkFolder=$pkgFolder/backup
-  installApi=https://install.remote.it/v1
+  . /usr/share/remoteit/functions.sh
 
-  newVersion=$($pkgFolder/connectd -v)
-  if [ -x /usr/bin/connectd ]; then
-    oldVersion=$(/usr/bin/connectd -h | awk '$1~/Version/ {print $2}')
-    compVer=$(vercmp $newVersion $oldVersion)
-    if [ $compVer == 1 ]; then
-      echo "upgrading connectd to $newVersion"
-      mv -f $pkgFolder/connectd /usr/bin # live update
-    else
-      echo "you already have the latest connectd version"
-    fi
-  else
-    echo "installing connectd version $newVersion"
-    mv -f $pkgFolder/connectd /usr/bin
-  fi
+  r3_install_agent
 
-  newVersion=$($pkgFolder/muxer -h | awk '$1~/Version/ {print $2}')
-  if [ -x /usr/bin/muxer ]; then
-    oldVersion=$(/usr/bin/muxer -h | awk '$1~/Version/ {print $2}')
-    compVer=$(vercmp $newVersion $oldVersion)
-    if [ $compVer == 1 ]; then
-      echo "upgrading muxer to $newVersion"
-      mv -f $pkgFolder/muxer $pkgFolder/demuxer /usr/bin # live update
-    else
-      echo "you already have the latest muxer version"
-    fi
-  else
-    echo "installing muxer version $newVersion"
-    mv -f $pkgFolder/muxer $pkgFolder/demuxer /usr/bin
-  fi
-
-  newVersion=$($pkgFolder/remoteit version)
-  if [ -x /usr/bin/remoteit ]; then
-    oldVersion=$(/usr/bin/remoteit version)
-    compVer=$(vercmp $newVersion $oldVersion)
-    if [ $compVer == 1 ]; then
-      echo "upgrading remoteit to $newVersion"
-      cp -f /etc/remoteit/config.json $bkFolder # archive config.json
-      remoteit agent uninstall                 # uninstall CLI service
-      mv -f $pkgFolder/remoteit /usr/bin        # update
-      remoteit agent install                   # install CLI service
-    else
-      echo "you already have the latest remoteit version"
-    fi
-  else
-    echo "installing remoteit version $newVersion"
-    mv -f $pkgFolder/remoteit /usr/bin
-
-    # archive files shared with connectd
-
-    for file in /usr/bin/connectd_options /usr/bin/connectd_task_notify /etc/connectd/oem_settings; do
-      if [ -e $file ]; then
-        cp -f $file $bkFolder
-      fi
-    done
-
-    mkdir -p /etc/remoteit
-
-    machineID=$(remoteit --json info | jq -r .machineID)
-    uid=$([ -e /etc/remoteit/config.json ] && jq -r .device.uid /etc/remoteit/config.json) && true
-    if [ -z "$uid" ] && [ -d /etc/connectd/services ]; then
-      for file in /etc/connectd/services/*.conf; do
-        [ -e "$file" ] && echo -F "file=@$file"
-      done | xargs -r curl -so /etc/remoteit/config.json $installApi/convert -F "machineID=$machineID"
-      if [ -e /etc/connectd/services/Connectdrmt365535.conf ]; then
-        mv -f /etc/connectd/services/*.conf $bkFolder # archive conf files
-        if [ -L /etc/systemd/system/multi-user.target.wants/connectd.service ]; then
-          systemctl disable --now connectd # live disable
-        fi
-        if [ -L /etc/systemd/system/multi-user.target.wants/connectd_schannel.service ]; then
-          systemctl disable --now connectd_schannel # live disable
-        fi
-      fi
-    fi
-    remoteit agent install # install CLI service
-  fi
-
-  tar -xzf $pkgFolder/remoteit-headless.tgz -C $pkgFolder
-  newVersion=$(jq -r .version $pkgFolder/package/package.json)
-  if [ -e /opt/remoteit-headless/package.json ]; then
-    oldVersion=$(jq -r .version /opt/remoteit-headless/package.json)
-    compVer=$(vercmp $newVersion $oldVersion)
-    if [ $compVer == 1 ]; then
-      echo "upgrading desktop to $newVersion"
-      rm -rf $bkFolder/remoteit-headless
-      mv -f /opt/remoteit-headless $bkFolder # live move
-      mv $pkgFolder/package /opt/remoteit-headless
-      systemctl restart remoteit-headless # restart desktop
-    else
-      rm -rf $pkgFolder/package # cleanup
-      echo "you already have the latest desktop version"
-    fi
-  else
-    echo "installing desktop version $newVersion"
-    mv $pkgFolder/package /opt/remoteit-headless
-    sed -e 's/rc-local.service//g' /opt/remoteit-headless/scripts/remoteit-headless.service | sed '/Requires/d' > /usr/lib/systemd/system/remoteit-headless.service
-    systemctl enable --now remoteit-headless.service
-  fi
-
-  newVersion=$(jq -r '.product["version"]' $pkgFolder/manufacturer.json)
-  newID=$(jq -r '.product["id"]' $pkgFolder/manufacturer.json)
-  newPlatform=$(jq -r '.product["platform"]' $pkgFolder/manufacturer.json)
-  if [ -e /etc/remoteit/manufacturer.json ]; then
-    oldVersion=$(jq -r '.product["version"]' /etc/remoteit/manufacturer.json)
-    compVer=$(vercmp $newVersion $oldVersion)
-    if [ $compVer == 1 ]; then
-      oldID=$(jq -r '.product["id"]' /etc/remoteit/manufacturer.json)
-      oldPlatform=$(jq -r '.product["platform"]' /etc/remoteit/manufacturer.json)
-      if [ $oldID = $newID ] && [ $oldPlatform = $newPlatform ]; then
-        echo "updating manufacturer.json"
-        jq '.product.version|="'$newVersion'"' /etc/remoteit/manufacturer.json > /etc/remoteit/manufacturer.json.tmp && mv /etc/remoteit/manufacturer.json.tmp /etc/remoteit/manufacturer.json
-      fi
-    fi
-  else
-    echo "installing manufacturer.json"
-    mv -f $pkgFolder/manufacturer.json /etc/remoteit
-  fi
-
-  rm -f $pkgFolder/remoteit-headless.tgz # cleanup
-
-  mv -f $pkgFolder/avahi-alias@remoteit.local.service /usr/lib/systemd/system
-  systemctl enable --now avahi-alias@remoteit.local.service
-
-  if [ -e /etc/remoteit/config.json ]; then
-    message="Continue your device configuration"
-  else
-    message="Continue your device registration"
-  fi
-
-  ip=$(ip addr show |grep 'inet\s' |grep -v '127.0.0.1' |awk '{print $2}' |awk -F "/" '{print $1}')
-
-  padding=$(printf "%-*s" ${#message} "")
-
-  echo "================================================================================"
-  echo
-  echo "$message at http://find.remote.it"
-  echo "$padding or http://$(hostnamectl |grep hostname |awk '{print $3}').local:29999"
-  echo "$padding or http://$ip:29999"
-  echo
-  echo "================================================================================"
+  exit 0
 
 }
 
@@ -188,31 +41,22 @@ post_install() {
 ## arg 2:  the old package version
 pre_upgrade() {
 
-  bkFolder=/usr/share/remoteit/backup
-
-  # migrate old backup directory
-
-  if [ -d /usr/share/remoteit/old ] && [ ! -d $bkFolder ]; then
-    mv /usr/share/remoteit/old $bkFolder
+  if [ -d /opt/remoteit-headless ]; then
+    remoteit agent uninstall -y 2>/dev/null || true
+    systemctl disable --now avahi-alias@remoteit.local 2>/dev/null || true
+    systemctl disable --now remoteit-headless 2>/dev/null || true
+    systemctl disable --now connectd 2>/dev/null || true
+    systemctl disable --now connectd_schannel 2>/dev/null || true
+    rm -f /usr/lib/systemd/system/avahi-alias@remoteit.local.service
+    rm -rf /opt/remoteit-headless
+    rm -f /usr/bin/remoteit
+    rm -f /usr/bin/connectd
+    rm -f /usr/bin/muxer
+    rm -f /usr/bin/demuxer
+    rm -f /usr/bin/connectd_task_notify
+    mkdir -p /etc/remoteit
+    rm -f /etc/remoteit/config.json-*
   fi
-
-  # migrate symlinks and archive files before installation
-
-  mkdir -p $bkFolder
-
-  for name in connectd muxer demuxer remoteit; do
-    file=/usr/bin/$name
-    if [ -e $file ]; then
-      cp -Lf $file $bkFolder # archive file
-    fi
-    if [ -L $file ]; then
-      source=$(readlink -f $file)
-      if [ -e "$source" ]; then
-        rm -f $file
-        cp "$source" $file
-      fi
-    fi
-  done
 
   exit 0
 
@@ -222,160 +66,21 @@ pre_upgrade() {
 ## arg 2:  the old package version
 post_upgrade() {
 
-  pkgFolder=/usr/share/remoteit
-  bkFolder=$pkgFolder/backup
-  installApi=https://install.remote.it/v1
+  . /usr/share/remoteit/functions.sh
 
-  newVersion=$($pkgFolder/connectd -v)
-  if [ -x /usr/bin/connectd ]; then
-    oldVersion=$(/usr/bin/connectd -h | awk '$1~/Version/ {print $2}')
-    compVer=$(vercmp $newVersion $oldVersion)
-    if [ $compVer == 1 ]; then
-      echo "upgrading connectd to $newVersion"
-      mv -f $pkgFolder/connectd /usr/bin # live update
-    else
-      echo "you already have the latest connectd version"
-    fi
-  else
-    echo "installing connectd version $newVersion"
-    mv -f $pkgFolder/connectd /usr/bin
-  fi
+  r3_install_agent
 
-  newVersion=$($pkgFolder/muxer -h | awk '$1~/Version/ {print $2}')
-  if [ -x /usr/bin/muxer ]; then
-    oldVersion=$(/usr/bin/muxer -h | awk '$1~/Version/ {print $2}')
-    compVer=$(vercmp $newVersion $oldVersion)
-    if [ $compVer == 1 ]; then
-      echo "upgrading muxer to $newVersion"
-      mv -f $pkgFolder/muxer $pkgFolder/demuxer /usr/bin # live update
-    else
-      echo "you already have the latest muxer version"
-    fi
-  else
-    echo "installing muxer version $newVersion"
-    mv -f $pkgFolder/muxer $pkgFolder/demuxer /usr/bin
-  fi
-
-  newVersion=$($pkgFolder/remoteit version)
-  if [ -x /usr/bin/remoteit ]; then
-    oldVersion=$(/usr/bin/remoteit version)
-    compVer=$(vercmp $newVersion $oldVersion)
-    if [ $compVer == 1 ]; then
-      echo "upgrading remoteit to $newVersion"
-      cp -f /etc/remoteit/config.json $bkFolder # archive config.json
-      remoteit agent uninstall                 # uninstall CLI service
-      mv -f $pkgFolder/remoteit /usr/bin        # update
-      remoteit agent install                   # install CLI service
-    else
-      echo "you already have the latest remoteit version"
-    fi
-  else
-    echo "installing remoteit version $newVersion"
-    mv -f $pkgFolder/remoteit /usr/bin
-
-    # archive files shared with connectd
-
-    for file in /usr/bin/connectd_options /usr/bin/connectd_task_notify /etc/connectd/oem_settings; do
-      if [ -e $file ]; then
-        cp -f $file $bkFolder
-      fi
-    done
-
-    mkdir -p /etc/remoteit
-
-    machineID=$(remoteit --json info | jq -r .machineID)
-    uid=$([ -e /etc/remoteit/config.json ] && jq -r .device.uid /etc/remoteit/config.json) && true
-    if [ -z "$uid" ] && [ -d /etc/connectd/services ]; then
-      for file in /etc/connectd/services/*.conf; do
-        [ -e "$file" ] && echo -F "file=@$file"
-      done | xargs -r curl -so /etc/remoteit/config.json $installApi/convert -F "machineID=$machineID"
-      if [ -e /etc/connectd/services/Connectdrmt365535.conf ]; then
-        mv -f /etc/connectd/services/*.conf $bkFolder # archive conf files
-        if [ -L /etc/systemd/system/multi-user.target.wants/connectd.service ]; then
-          systemctl disable --now connectd # live disable
-        fi
-        if [ -L /etc/systemd/system/multi-user.target.wants/connectd_schannel.service ]; then
-          systemctl disable --now connectd_schannel # live disable
-        fi
-      fi
-    fi
-    remoteit agent install # install CLI service
-  fi
-
-  tar -xzf $pkgFolder/remoteit-headless.tgz -C $pkgFolder
-  newVersion=$(jq -r .version $pkgFolder/package/package.json)
-  if [ -e /opt/remoteit-headless/package.json ]; then
-    oldVersion=$(jq -r .version /opt/remoteit-headless/package.json)
-    compVer=$(vercmp $newVersion $oldVersion)
-    if [ $compVer == 1 ]; then
-      echo "upgrading desktop to $newVersion"
-      rm -rf $bkFolder/remoteit-headless
-      mv -f /opt/remoteit-headless $bkFolder # live move
-      mv $pkgFolder/package /opt/remoteit-headless
-      systemctl restart remoteit-headless # restart desktop
-    else
-      rm -rf $pkgFolder/package # cleanup
-      echo "you already have the latest desktop version"
-    fi
-  else
-    echo "installing desktop version $newVersion"
-    mv $pkgFolder/package /opt/remoteit-headless
-    sed -e 's/rc-local.service//g' /opt/remoteit-headless/scripts/remoteit-headless.service | sed '/Requires/d' > /usr/lib/systemd/system/remoteit-headless.service
-    systemctl enable --now remoteit-headless.service
-  fi
-
-  newVersion=$(jq -r '.product["version"]' $pkgFolder/manufacturer.json)
-  newID=$(jq -r '.product["id"]' $pkgFolder/manufacturer.json)
-  newPlatform=$(jq -r '.product["platform"]' $pkgFolder/manufacturer.json)
-  if [ -e /etc/remoteit/manufacturer.json ]; then
-    oldVersion=$(jq -r '.product["version"]' /etc/remoteit/manufacturer.json)
-    compVer=$(vercmp $newVersion $oldVersion)
-    if [ $compVer == 1 ]; then
-      oldID=$(jq -r '.product["id"]' /etc/remoteit/manufacturer.json)
-      oldPlatform=$(jq -r '.product["platform"]' /etc/remoteit/manufacturer.json)
-      if [ $oldID = $newID ] && [ $oldPlatform = $newPlatform ]; then
-        echo "updating manufacturer.json"
-        jq '.product.version|="'$newVersion'"' /etc/remoteit/manufacturer.json > /etc/remoteit/manufacturer.json.tmp && mv /etc/remoteit/manufacturer.json.tmp /etc/remoteit/manufacturer.json
-      fi
-    fi
-  else
-    echo "installing manufacturer.json"
-    mv -f $pkgFolder/manufacturer.json /etc/remoteit
-  fi
-
-  rm -f $pkgFolder/remoteit-headless.tgz # cleanup
-
-  mv -f $pkgFolder/avahi-alias@remoteit.local.service /usr/lib/systemd/system
-  systemctl enable --now avahi-alias@remoteit.local.service
-
-  if [ -e /etc/remoteit/config.json ]; then
-    message="Continue your device configuration"
-  else
-    message="Continue your device registration"
-  fi
-
-  ip=$(ip addr show |grep 'inet\s' |grep -v '127.0.0.1' |awk '{print $2}' |awk -F "/" '{print $1}')
-
-  padding=$(printf "%-*s" ${#message} "")
-
-  echo "================================================================================"
-  echo
-  echo "$message at http://find.remote.it"
-  echo "$padding or http://$(hostnamectl |grep hostname |awk '{print $3}').local:29999"
-  echo "$padding or http://$ip:29999"
-  echo
-  echo "================================================================================"
+  exit 0
 
 }
 
 ## arg 1:  the old package version
 pre_remove() {
 
-  remoteit uninstall -y || true
-  systemctl disable --now avahi-alias@remoteit.local || true
-  systemctl disable --now remoteit-headless || true
-  rm -rf /opt/remoteit-headless
-  rm -f /usr/bin/remoteit
+  . /usr/share/remoteit/functions.sh
+
+  r3_remove_agent
+
   exit 0
 
 }
@@ -383,19 +88,8 @@ pre_remove() {
 ## arg 1:  the old package version
 post_remove() {
 
-  bkFolder=/usr/share/remoteit/backup
-
-  for file in /usr/bin/connectd_options /usr/bin/connectd_task_notify /etc/connectd/oem_settings; do
-    archive="$bkFolder/$(basename $file)"
-    if [ -e "$archive" ]; then
-      mkdir -p "$(dirname $file)"
-      mv -f "$archive" $file
-    fi
-  done
-
   rm -rf /etc/remoteit
-  rm -rf /root/.remoteit
-  rm -rf /usr/share/remoteit
+
   exit 0
 
 }
