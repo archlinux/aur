@@ -4,13 +4,17 @@
 pkgname=wemeet-bin
 _pkgname=wemeet
 provides=('wemeet' 'tencent-meeting')
-pkgver=3.9.0.1
+pkgver=3.10.0.400
 pkgrel=1
 pkgdesc="Tencent Video Conferencing, tencent meeting 腾讯会议"
 arch=('x86_64')
 license=('unknown')
 url="https://source.meeting.qq.com/download-center.html"
-source=("${_pkgname}-${pkgver}-${arch}.deb::https://updatecdn.meeting.qq.com/OTRhY2YwZTUtMzE5Ni00NDQyLTg0MTMtOTBjYzQzNzcxYTQz/TencentMeeting_0300000000_${pkgver}_x86_64_default.publish.deb"
+
+# open this link to check for update
+# https://meeting.tencent.com/web-service/query-app-update-info?auth_type=package&os=Linux&appid=200000001&appver=3.9.0.1&app_publish_channel=TencentInside&app_uid=144115222682129107&sdk_id=0300000000&platform=linux&arch=x86_64
+
+source=("${_pkgname}-${pkgver}-${arch}.deb::https://updatecdn.meeting.qq.com/cos/60bbaecfb3bf32615331b07d46001353/TencentMeeting_0300000000_${pkgver}_x86_64_default.publish.deb"
 "${_pkgname}".sh
 )
 depends=('qt5-x11extras'    'libxrandr'  'libxinerama' 'qt5-webengine'
@@ -20,7 +24,7 @@ depends=('qt5-x11extras'    'libxrandr'  'libxinerama' 'qt5-webengine'
 # 无 'pulseaudio' 无法连接到系统音频
 optdepends=('bubblewrap: Fix abnormal text color in dark mode.')
 makedepends=('patchelf')
-sha512sums=('e8f551d30ad4828b2919562c51c1f930a3e169c3d3810c0b64d436ee71b01e0b5a5dc376f740619e09fbc3002326d5448f7ee2199c7e7fe8aadf2189d0872fb6'
+sha512sums=('1c923fc96ffb14471c35e0294f281c07c44d6ba7fb8b01f64a6f7587c64649b757ed28bf465473c9a4824616f44a2897fdfd1af6fe226efcbed89cd6cf92ef11'
             'e67d6b8fdd9bd055ba8c2177aca884d803a2473fcfe9faf9b23e5bfd4152115814be066709db1e1dbf62917a36aa99693c5ebd8f23f2858950a3f3b98d6b8136')
 
 prepare(){
@@ -52,7 +56,7 @@ package() {
     install -Dm755 "${srcdir}/${_pkgname}".sh     ${pkgdir}/usr/bin/${_pkgname}
     install -Dm644 ${_pkgname}.svg -t ${pkgdir}/usr/share/icons/hicolor/scalable/apps/
 
-    install -Dm755 lib/{libwemeet*,libxcast.so,libxnn*,libui*,libdesktop_common.so,libImSDK.so,libxcast_codec.so,libnxui*} \
+    install -Dm755 lib/lib{ImSDK,desktop_common,nxui*,qt_*,ui*,wemeet*,xcast,xcast_codec,xnn*}.so \
         -t ${pkgdir}/usr/lib/${_pkgname}
 
     for lib in ${pkgdir}/usr/lib/${_pkgname}/*
