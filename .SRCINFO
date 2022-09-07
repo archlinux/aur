@@ -1,0 +1,19 @@
+pkgbase = concurrentlua51
+	pkgdesc = ConcurrentLua for Lua 5.1
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/lefcha/concurrentlua
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = cmake
+	makedepends = lua51
+	depends = lua51-socket
+	depends = lua51-copas
+	depends = lua51-coxpcall
+	conflicts = concurrentluajit
+	source = git+https://github.com/lefcha/concurrentlua.git#tag=v1.1
+	sha256sums = SKIP
+
+pkgname = concurrentlua51
