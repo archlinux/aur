@@ -12,7 +12,7 @@ pkgbase = concurrentluajit
 	depends = lua51-socket
 	depends = lua51-copas
 	depends = lua51-coxpcall
-	conflicts = concurrentlua5.1
+	conflicts = concurrentlua51
 	source = git+https://github.com/lefcha/concurrentlua.git#tag=v1.1
 	sha256sums = SKIP
 

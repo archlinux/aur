@@ -14,7 +14,7 @@ makedepends=(
     cmake
     luajit
 )
-conflicts=(concurrentlua5.1)
+conflicts=(concurrentlua51)
 url='https://github.com/lefcha/concurrentlua'
 license=('MIT')
 source=("git+https://github.com/lefcha/concurrentlua.git#tag=v$pkgver")
