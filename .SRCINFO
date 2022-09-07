@@ -1,7 +1,7 @@
 pkgbase = gamescope-plus
 	pkgdesc = SteamOS session compositing window manager with added patches
 	pkgver = 3.11.43
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/Plagman/gamescope
 	arch = x86_64
 	license = BSD
