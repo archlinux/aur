@@ -15,7 +15,7 @@ conflicts=('yorick-hdf5')
 replaces=('yorick-hdf5')
 
 
-_gitroot="git://github.com/frigaut/yorick-hdf5.git"
+_gitroot="https://github.com/frigaut/yorick-hdf5.git"
 _gitname="yorick-hdf5"
 
 build() {
