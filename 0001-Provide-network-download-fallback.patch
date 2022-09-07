@@ -1,0 +1,79 @@
+From 6702a9d641eeb97ce3d9f9cc3f1f12f29da29dc2 Mon Sep 17 00:00:00 2001
+From: Joost VandeVondele <Joost.VandeVondele@gmail.com>
+Date: Sat, 3 Sep 2022 11:03:09 +0200
+Subject: [PATCH] Provide network download fallback
+
+in case the base infrastructure for providing the networks
+
+https://tests.stockfishchess.org/nns
+
+is down, use an alternate github repo for downloading networks during the build.
+
+fixes #4149
+fixes #4140
+
+closes https://github.com/official-stockfish/Stockfish/pull/4151
+
+No functional change
+---
+ src/Makefile | 40 +++++++++++++++++++++++++---------------
+ 1 file changed, 25 insertions(+), 15 deletions(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index eff8baca..bde92111 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -821,25 +821,35 @@ clean: objclean profileclean
+ net:
+ 	$(eval nnuenet := $(shell grep EvalFileDefaultName evaluate.h | grep define | sed 's/.*\(nn-[a-z0-9]\{12\}.nnue\).*/\1/'))
+ 	@echo "Default net: $(nnuenet)"
+-	$(eval nnuedownloadurl := https://tests.stockfishchess.org/api/nn/$(nnuenet))
++	$(eval nnuedownloadurl1 := https://tests.stockfishchess.org/api/nn/$(nnuenet))
++	$(eval nnuedownloadurl2 := https://github.com/official-stockfish/networks/raw/master/$(nnuenet))
+ 	$(eval curl_or_wget := $(shell if hash curl 2>/dev/null; then echo "curl -skL"; elif hash wget 2>/dev/null; then echo "wget -qO-"; fi))
+-	@if test -f "$(nnuenet)"; then \
+-            echo "Already available."; \
+-         else \
+-            if [ "x$(curl_or_wget)" = "x" ]; then \
+-               echo "Automatic download failed: neither curl nor wget is installed. Install one of these tools or download the net manually"; exit 1; \
+-            else \
+-               echo "Downloading $(nnuedownloadurl)"; $(curl_or_wget) $(nnuedownloadurl) > $(nnuenet);\
+-            fi; \
+-        fi;
++	@if [ "x$(curl_or_wget)" = "x" ]; then \
++	    echo "Automatic download failed: neither curl nor wget is installed. Install one of these tools or download the net manually"; exit 1; \
++        fi
+ 	$(eval shasum_command := $(shell if hash shasum 2>/dev/null; then echo "shasum -a 256 "; elif hash sha256sum 2>/dev/null; then echo "sha256sum "; fi))
+-	@if [ "x$(shasum_command)" != "x" ]; then \
+-	    if [ "$(nnuenet)" != "nn-"`$(shasum_command) $(nnuenet) | cut -c1-12`".nnue" ]; then \
+-                echo "Failed download or $(nnuenet) corrupted, please delete!"; exit 1; \
+-            fi \
+-         else \
++	@if [ "x$(shasum_command)" = "x" ]; then \
+             echo "shasum / sha256sum not found, skipping net validation"; \
+         fi
++	@for nnuedownloadurl in "$(nnuedownloadurl1)" "$(nnuedownloadurl2)"; do \
++	   if test -f "$(nnuenet)"; then \
++	      echo "$(nnuenet) available."; \
++	   else \
++	      if [ "x$(curl_or_wget)" != "x" ]; then \
++	         echo "Downloading $${nnuedownloadurl}"; $(curl_or_wget) $${nnuedownloadurl} > $(nnuenet);\
++	      fi; \
++	   fi; \
++	   if [ "x$(shasum_command)" != "x" ]; then \
++	      if [ "$(nnuenet)" != "nn-"`$(shasum_command) $(nnuenet) | cut -c1-12`".nnue" ]; then \
++	         echo "Removing failed download"; rm -f $(nnuenet); \
++	      else \
++	         echo "Network validated"; break; \
++	      fi; \
++	   fi; \
++	done
++	@if ! test -f "$(nnuenet)"; then \
++	    echo "Failed to download $(nnuenet)."; \
++	fi
+ 
+ # clean binaries and objects
+ objclean:
+-- 
+2.37.2
+

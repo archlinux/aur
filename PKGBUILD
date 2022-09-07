@@ -17,8 +17,15 @@ arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://stockfishchess.org/"
 license=('GPL3')
 depends=('glibc')
-source=("$pkgname-$pkgver.zip::https://github.com/official-stockfish/Stockfish/archive/sf_$pkgver.zip")
-sha512sums=('96e0e5bc11d678c39b4b16286a6e1ec511fd75bcae704422fd65907930dda33bad28aa9b7d24d1d4092cc765dcc2a1fbe3d047916a26a0016e465788512c0913')
+source=("$pkgname-$pkgver.zip::https://github.com/official-stockfish/Stockfish/archive/sf_$pkgver.zip"
+        "0001-Provide-network-download-fallback.patch")
+sha512sums=('96e0e5bc11d678c39b4b16286a6e1ec511fd75bcae704422fd65907930dda33bad28aa9b7d24d1d4092cc765dcc2a1fbe3d047916a26a0016e465788512c0913'
+            '5698452b96bda981ae4e10ef6495fdc90df0fdf410aa6739e5b2f84eedbeb0fa11613fc0b748d19a9a012f889c62cddc177c718e6c89300c8c11268ccbef1cb6')
+
+prepare() {
+  cd "Stockfish-sf_${pkgver}/src"
+  patch --strip=2 --input="${srcdir}/0001-Provide-network-download-fallback.patch"
+}
 
 build() {
   cd "Stockfish-sf_${pkgver}/src"
