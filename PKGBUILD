@@ -17,7 +17,6 @@ arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://stockfishchess.org/"
 license=('GPL3')
 depends=('glibc')
-makedepends=('curl' 'sed')
 source=("$pkgname-$pkgver.zip::https://github.com/official-stockfish/Stockfish/archive/sf_$pkgver.zip")
 sha512sums=('96e0e5bc11d678c39b4b16286a6e1ec511fd75bcae704422fd65907930dda33bad28aa9b7d24d1d4092cc765dcc2a1fbe3d047916a26a0016e465788512c0913')
 
