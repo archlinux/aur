@@ -1,16 +1,14 @@
 pkgbase = python-linux-gpib
 	pkgdesc = A support package for GPIB (IEEE 488) hardware - Python 3 bindings
-	pkgver = 4.3.4
-	pkgrel = 2
+	pkgver = 4.3.5
+	pkgrel = 1
 	url = http://linux-gpib.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = linux-gpib
 	depends = python
-	source = http://downloads.sourceforge.net/project/linux-gpib/linux-gpib%20for%203.x.x%20and%202.6.x%20kernels/4.3.4/linux-gpib-4.3.4.tar.gz
-	source = 0001-python310-fix.patch
-	md5sums = d42b04d3b27a601c9b893915d5fded37
-	md5sums = 614cbe749998198cdfbee443fcc0ae12
+	source = http://downloads.sourceforge.net/project/linux-gpib/linux-gpib%20for%203.x.x%20and%202.6.x%20kernels/4.3.5/linux-gpib-4.3.5.tar.gz
+	md5sums = 1c79a2a883c99fa760548b442e225be3
 
 pkgname = python-linux-gpib
