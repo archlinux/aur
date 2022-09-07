@@ -1,7 +1,7 @@
 pkgbase = thor-git
 	pkgdesc = SFML Extension with various game programming features, like particles, animations, vector operations
 	pkgver = 2.0.r24.g3e320cb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bromeon.ch/libraries/thor
 	arch = x86_64
 	license = ZLIB
@@ -10,7 +10,7 @@ pkgbase = thor-git
 	depends = sfml
 	provides = thor
 	conflicts = thor
-	source = thor-git-2.0.r24.g3e320cb::git+https://github.com/Bromeon/Thor.git#branch=master
+	source = thor-git::git+https://github.com/Bromeon/Thor.git#branch=master
 	source = fix_cmake_module_path.patch
 	b2sums = SKIP
 	b2sums = b1f082ce989d78abb14ad4615b1babce229f3e245409cbb820bdfd7693e9870ec86a5a586908a5b0d50576d67dd49c585928cf3f4bc94510d9615af7b64c9009
