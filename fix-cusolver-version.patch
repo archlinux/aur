@@ -1,0 +1,12 @@
+diff --color -aur tensorflow-2.9.1-old/third_party/gpus/cuda_configure.bzl tensorflow-2.9.1-new/third_party/gpus/cuda_configure.bzl
+--- tensorflow-2.9.1-old/third_party/gpus/cuda_configure.bzl	2022-08-22 14:03:54.439731148 +0300
++++ tensorflow-2.9.1-new/third_party/gpus/cuda_configure.bzl	2022-08-22 14:07:09.479726331 +0300
+@@ -710,7 +716,7 @@
+         cuda_version_major = cuda_major,
+         cudart_version = cudart_version,
+         cublas_version = cublas_version,
+-        cusolver_version = cusolver_version,
++        cusolver_version = "11",
+         curand_version = curand_version,
+         cufft_version = cufft_version,
+         cusparse_version = cusparse_version,

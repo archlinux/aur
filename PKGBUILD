@@ -14,25 +14,26 @@ pkgname=()
 [ "$_build_no_opt" -eq 1 ] && pkgname+=(tensorflow-rocm python-tensorflow-rocm)
 [ "$_build_opt" -eq 1 ] && pkgname+=(tensorflow-opt-rocm python-tensorflow-opt-rocm)
 
-pkgver=2.9.1
-_pkgver=2.9.1
+pkgver=2.10.0
+_pkgver=2.10.0
 pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
 license=('APACHE')
 arch=('x86_64')
-depends=('c-ares' 'intel-mkl' 'onednn' 'pybind11' 'openssl' 'lmdb' 'libpng' 'curl' 'giflib' 'icu' 'libjpeg-turbo')
-makedepends=('bazel' 'python-numpy' 'rocm-hip-sdk' 'miopen' 'rccl' 'git'
-             'python-pip' 'python-wheel' 'python-setuptools' 'python-h5py'
-             'python-keras-applications' 'python-keras-preprocessing'
-             'cython')
+depends=('c-ares' 'pybind11' 'openssl' 'lmdb' 'libpng' 'curl' 'giflib' 'icu' 'libjpeg-turbo' 'openmp')
+makedepends=('bazel' 'python-numpy' 'rocm-hip-sdk' 'rccl' 'git' 'miopen' 'python-pip' 'python-wheel'
+             'python-setuptools' 'python-h5py' 'python-keras-applications' 'python-keras-preprocessing'
+             'cython' 'patchelf' 'python-requests')
 optdepends=('tensorboard: Tensorflow visualization toolkit')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tensorflow/tensorflow/archive/v${_pkgver}.tar.gz"
         fix-c++17-compat.patch
-        "rocblas-version.patch::https://github.com/tensorflow/tensorflow/commit/dc68efe693cb58e8d34ee62179cdaad7ce7487a7.patch")
+        fix-cusolver-version.patch
+        "rocblas-version.patch::https://github.com/tensorflow/tensorflow/commit/322fe678e5b4c3b865774bf84c880030fc9eba24.patch")
 
-sha512sums=('95ffbee1e50e396065c6f1802fd9668344c45c000e22da859bcd08ec217bcc0a8ff0e84661fdf511f210e8b09d7ae6d26c3fc1ddcf28b8aedf87c0fb1b8b60e4'
+sha512sums=('bf8a6f16393499c227fc70f27bcfb6d44ada53325aee2b217599309940f60db8ee00dd90e3d82b87d9c309f5621c404edab55e97ab8bfa09e4fc67859b9e3967'
             'f682368bb47b2b022a51aa77345dfa30f3b0d7911c56515d428b8326ee3751242f375f4e715a37bb723ef20a86916dad9871c3c81b1b58da85e1ca202bc4901e'
+            '6f42455db1db0a5cd58ab5fe5554317e9ff648c046bb81cef9b4c61cce8380da08b681f825544b5388f02da863ff19f642efa9459691cbcf8852a21bd0dc7447'
             'SKIP')
 
 # consolidate common dependencies to prevent mishaps
@@ -74,8 +75,16 @@ prepare() {
   # thinks about which versions should be used anyway. ;) (FS#68772)
   sed -i -E "s/'([0-9a-z_-]+) .= [0-9].+[0-9]'/'\1'/" tensorflow-${_pkgver}/tensorflow/tools/pip_package/setup.py
 
+  # manually specify cusolver .so version
+  patch -Np1 -i "${srcdir}/fix-cusolver-version.patch" -d tensorflow-${_pkgver}
+
   cd "${srcdir}/tensorflow-${_pkgver}"
   patch -Np1 -i "${srcdir}/rocblas-version.patch"
+
+  # change rocblas.h to rocblas/rocblas.h
+  sed -i 's/rocblas.h"/rocblas\/rocblas.h"/g' tensorflow/stream_executor/rocm/rocm_blas.h
+  sed -i 's/rocm\/include\/rocblas.h"/rocblas\/rocblas.h"/g' tensorflow/stream_executor/rocm/rocblas_wrapper.h
+
   cd "${srcdir}"
 
   cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-rocm
@@ -101,7 +110,7 @@ prepare() {
   export TF_NEED_IGNITE=0
   export TF_NEED_ROCM=1
   # Uncomment this when you want to specify specific ROCM_ARCH(s)
-  # Otherwise pytorch will automatically detect your architecture
+  # Otherwise tensorflow will automatically detect your architecture
   # See: https://github.com/tensorflow/tensorflow/commit/c04822a49d669f2d74a566063852243d993e18b1
   # export TF_ROCM_AMDGPU_TARGETS=gfx803,gfx900,gfx904,gfx906,gfx908
   # See https://github.com/tensorflow/tensorflow/blob/master/third_party/systemlibs/syslibs_configure.bzl
@@ -110,7 +119,6 @@ prepare() {
   export TF_DOWNLOAD_CLANG=0
   export TF_NCCL_VERSION=$(pkg-config nccl --modversion | grep -Po '\d+\.\d+')
   export TF_IGNORE_MAX_BAZEL_VERSION=1
-  export TF_MKL_ROOT=/opt/intel/mkl
   export NCCL_INSTALL_PATH=/usr
   # Does tensorflow really need the compiler overridden in 5 places? Yes.
   export CC=gcc-11
@@ -126,7 +134,8 @@ prepare() {
   # https://github.com/tensorflow/tensorflow/blob/1ba2eb7b313c0c5001ee1683a3ec4fbae01105fd/third_party/gpus/cuda_configure.bzl#L411-L446
   # according to the above, we should be specifying CUDA compute capabilities as 'sm_XX' or 'compute_XX' from now on
   # add latest PTX for future compatibility
-  export TF_CUDA_COMPUTE_CAPABILITIES=sm_52,sm_53,sm_60,sm_61,sm_62,sm_70,sm_72,sm_75,sm_80,sm_86,compute_86
+  export
+  TF_CUDA_COMPUTE_CAPABILITIES=sm_52,sm_53,sm_60,sm_61,sm_62,sm_70,sm_72,sm_75,sm_80,sm_86,sm_87,compute_87
 
   export BAZEL_ARGS="--config=mkl -c opt"
 }
@@ -212,6 +221,9 @@ _package() {
 
   # Fix interoperability of C++14 and C++17. See https://bugs.archlinux.org/task/65953
   patch -Np0 -i "${srcdir}"/fix-c++17-compat.patch -d "${pkgdir}"/usr/include/tensorflow/absl/base
+
+  # Fix FS#75571
+  find "${pkgdir}"/usr/lib -type f -exec patchelf --replace-needed libiomp5.so libomp.so '{}' \; -print
 }
 
 _python_package() {
