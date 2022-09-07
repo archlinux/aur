@@ -4,13 +4,13 @@
 export GIT_LFS_SKIP_SMUDGE=1
 _name=f3d
 pkgname=$_name-git
-pkgver=v1.2.1.r46.g1567cce
-pkgrel=2
+pkgver=v1.3.0.r10.g58ea808
+pkgrel=1
 pkgdesc='A fast and minimalist 3D viewer'
 arch=('x86_64')
 url="https://github.com/$_name-app/$_name"
 license=('BSD')
-depends=('vtk' 'glew' 'pugixml' 'netcdf' 'ospray' 'assimp' 'opencascade')
+depends=('vtk' 'glew' 'pugixml' 'netcdf' 'ospray' 'assimp' 'opencascade' 'alembic')
 makedepends=('git' 'git-lfs' 'cmake' 'fmt')
 provides=('f3d')
 conflicts=('f3d')
@@ -31,10 +31,11 @@ build() {
         -DBUILD_TESTING=OFF \
         -DF3D_INSTALL_DEFAULT_CONFIGURATION_FILE=ON \
         -DF3D_GENERATE_MAN=ON \
-        -DF3D_INSTALL_MIME_TYPES_FILE=ON \
+        -DF3D_INSTALL_MIME_TYPES_FILES=ON \
         -DF3D_INSTALL_THUMBNAILER_FILES=ON \
         -DF3D_MODULE_OCCT=ON \
         -DF3D_MODULE_ASSIMP=ON \
+        -DF3D_MODULE_ALEMBIC=ON \
         -DF3D_MODULE_RAYTRACING=ON \
         ..
   make
