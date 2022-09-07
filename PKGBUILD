@@ -1,7 +1,7 @@
 # Maintainer: Noah Vogt (noahvogt) <noah@noahvogt.com>
 
 pkgname='chromium-extension-https-everywhere'
-pkgver=2021.7.13
+pkgver=2022.5.24
 pkgrel=1
 pkgdesc='An extension that encrypts your communications with websites that offer HTTPS'
 license=('GPL2')
@@ -10,7 +10,7 @@ url='https://www.eff.org/https-everywhere'
 changelog="$pkgname.changelog"
 source=("$pkgname-$pkgver.crx::https://www.eff.org/files/https-everywhere-chrome-$pkgver.crx")
 noextract=("$pkgname-$pkgver.crx")
-b2sums=('fb9173113661791fab85fdfe150162334bd7401ff3bd45db53b7c6a77fc468fc3bb244db2aa8e92746bdd2cb95fdf2da979a862d2206b868b8a46e410db19853')
+sha256sums=("98ac5581c91defdfabb66f94ddf32706c183c2cd3cb93485bed68ce1773bc042")
 
 build() {
   echo "{ \"external_crx\": \"/usr/share/$pkgname/$pkgname.crx\", \"external_version\": \"$pkgver\" }" > gcbommkclmclpchllfjekcdonpmejbdp.json
