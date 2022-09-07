@@ -10,7 +10,7 @@
 pkgbase=firefox-esr
 pkgname=(firefox-esr)
 pkgver=102.2.0
-pkgrel=1
+pkgrel=1.0
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -18,7 +18,7 @@ url="https://www.mozilla.org/en-US/firefox/enterprise/"
 depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
              autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
-             python-setuptools python-zstandard lld dump_syms
+             python lld dump_syms
              wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
@@ -28,7 +28,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'xdg-desktop-portal: Screensharing with Wayland')
 options=(!emptydirs !makeflags !strip !lto !debug)
 source=(https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz{,.asc}
-        cbindgen-0.24.0.diff zstandard-0.18.0.diff update-packed_simd.diff arc4random.diff
+        cbindgen-0.24.0.diff update-packed_simd.diff arc4random.diff
         $pkgname.desktop identity-icons-brand.svg)
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
@@ -45,7 +45,7 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
 
 prepare() {
-  mkdir mozbuild
+  mkdir -p mozbuild
   cd firefox-$pkgver
 
   echo "${noextract[@]}"
@@ -53,9 +53,6 @@ prepare() {
   # Unbreak build with cbindgen 0.24.0
   patch -Np1 -i ../cbindgen-0.24.0.diff
 
-  # Unbreak build with python-zstandard 0.18.0
-  patch -Np1 -i ../zstandard-0.18.0.diff
-  
   # Unbreak build with simd
   patch -Np1 -i ../update-packed_simd.diff
 
@@ -114,7 +111,7 @@ build() {
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZ_ENABLE_FULL_SYMBOLS=1
-  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
+  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
 
   export MOZ_BUILD_DATE=$(head -1 sourcestamp.txt)
   export RUSTFLAGS="-C debuginfo=1"
@@ -360,7 +357,6 @@ done
 sha512sums=('06d753867ccfe1b2c79148cc60bc816b47a2abfa98219808868e9028bef1763d982ef7012698d06b8959cce79163d7926baf5f9d5ca9daa18c51fbf0efc59993'
             'SKIP'
             '3526402ccae1f0428f2e45bae8d0b2cb909ac2698bc3508b692b827839ccb21203ce414206039776f6ce946fc53e636290b7870e9886284d5e9d1e8ad050aac9'
-            'c949cf492bc93b6f3f1f827744e0f39e555c518434c8e73e27143a769b0d123fe4ba2cae07b7b7e7b594f8da43383d4fb4cd28b6b52e0d3e7a985afbadfb3d04'
             '1377b852680667b378ae97e073149230067ad2dc03e4dd53ca59239e6f8542156c5e27239504a0540f0b1254fc9e43c93cf2575ba0bcfcb2ad74f37bc4961c5a'
             '9cbc214c3ae7b93ef6c0573194dc7600dd0b4bb6f2653693d75b08475b7c3d65f6a181055060848143b488207c39af3fdb7382bb45de5264b2daedcb62bf97f2'
             '4b53ee133a4ecaf068e240f6a05a1ebf4b788d67fe9141cc5b3561e1128907c8c3edb49bf2b24ba89daf1552f94ac48adf682dbe7dd070cffe7f78d98f2b3338'
