@@ -17,7 +17,7 @@ replaces=('yorick')
 source=(https://raw.githubusercontent.com/frigaut/frigaut-arch-abs-files/master/yorick-git-xft.patch)
 md5sums=('ada3b2618196bb908f23175f79970b48')
 
-_gitroot="git://github.com/LLNL/yorick.git"
+_gitroot="https://github.com/LLNL/yorick.git"
 _gitname="yorick"
 
 build() {
