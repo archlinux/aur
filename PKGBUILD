@@ -2,8 +2,8 @@
 
 pkgname=budgie-backgrounds-git
 pkgver=v0.1.r0.g3cbb7cf
-pkgrel=1
-pkgdesc="The default background set for the Budgie Desktop"
+pkgrel=2
+pkgdesc="The default background set for the Budgie Desktop - latest git"
 url="https://github.com/BuddiesOfBudgie/budgie-backgrounds"
 license=("custom:CC0-1.0")
 arch=(any)
