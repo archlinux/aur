@@ -1,0 +1,17 @@
+pkgbase = budgie-backgrounds-git
+	pkgdesc = The default background set for the Budgie Desktop
+	pkgver = v0.1.r0.g3cbb7cf
+	pkgrel = 1
+	url = https://github.com/BuddiesOfBudgie/budgie-backgrounds
+	arch = any
+	license = custom:CC0-1.0
+	makedepends = git
+	makedepends = meson
+	makedepends = imagemagick
+	makedepends = jhead
+	provides = budgie-backgrounds
+	conflicts = budgie-backgrounds
+	source = budgie-backgrounds-git::git+https://github.com/BuddiesOfBudgie/budgie-backgrounds.git
+	sha256sums = SKIP
+
+pkgname = budgie-backgrounds-git
