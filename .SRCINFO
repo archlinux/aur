@@ -1,7 +1,7 @@
 pkgbase = xf86-input-cmt-setup
 	pkgdesc = A script to install the correct device specific conf files for the xf86-input-cmt driver
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/joebonrichie/xf86-input-cmt-conf
 	install = xf86-input-cmt-setup.install
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = xf86-input-cmt-setup
 	makedepends = git
 	depends = dmidecode
 	provides = xf86-input-cmt=1
-	source = xf86-input-cmt-conf::git+https://github.com/joebonrichie/xf86-input-cmt-conf.git
+	source = xf86-input-cmt-conf::git+https://github.com/joebonrichie/xf86-input-cmt-conf.git#commit=ab34935
 	md5sums = SKIP
 
 pkgname = xf86-input-cmt-setup
-
