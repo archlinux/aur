@@ -3,11 +3,11 @@
 
 pkgbase=linux-rc
 pkgrel=1
-_srcname=linux-5.18
-_major=5.18
+_srcname=linux-5.19
+_major=5.19
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=12
+_minor=7
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 [[ -z $_minor ]] && _fullver=$_major || _fullver=$_major.$_minor
@@ -30,7 +30,10 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-HID-apple-Properly-handle-function-keys-on-Keychron-.patch
+  0002-drm-i915-psr-Use-full-update-In-case-of-area-calcula.patch
+  0003-drm-i915-Ensure-damage-clip-area-is-within-pipe-area.patch
+  0004-mm-vmscan-fix-extreme-overreclaim-and-swap-floods.patch
+  0005-soundwire-intel-use-pm_runtime_resume-on-component-p.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -38,13 +41,16 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
-b2sums=('cc22236a1dca4a41b2ad4be072555b3618d308e12d13badb541346ad37aa3e880d45cadb1169bdc475003479900fe046a7bd5e5b5fd6f326418d505d0a74acbc'
+b2sums=('755416aee62b7e737ad29a3f552ba462dd4e6f1b8cc6b61c4961ea2ff8a06b68eb69f9d671e8146cfcedc7edff2e184c71bd2bd00e214e4f374b3252719c2975'
         'SKIP'
-        '000df730f6651173292a43745edd615b501d959f4d963a11df600a6bcb378db0750023c9025c8d63091658d7540693cc0e486f3bae3b49610135ca34f0b8edd4'
+        '9fd934cf511ded0800a387beda79e1d4c7523926c69cae0f4eee62cfbc0fab4b97e666c9a0b79130aff9e17dfc4c222a04a6037776182954b1edc0af9b8517c6'
         'SKIP'
-        'aeffb500a9cf0f1265fc62fa9260bdddac8ba47bf01e3b2732d961ea7d58ae4886563bc7076fe920d4fca3ad19588bfe8f9368e77fdc61336c894488bab41638'
-        'e226fb1f498a739a9a65cf8bb542978b0573ba7630e82516d2393dcdcdd42910adc7107d6174eed349a513643092a737acf552c19d27f896f4f771de3d1e00f1'
-        '35e8ef4806040797f2844d076c92728ad55adb0c29e906399afe6155e2657a2784ffea61e49ef6a9910ed392b621663a180fa0d7750e92a01afd5446bce46a5a')
+        '28b82cdb5faac7f93368bbd5c4a9106f729dd39624abbd7a0acc4909599175af0a987c91bb6c0e348ae1ab2180f5e85c3a04ce6ba03e03b0dee45fe3b81d3847'
+        '601a38549c139dee5511075133fca55fd6d11821df0d6c94807e9182fd8b09572d59cdf9ae14ff79cd38c8db15feb1d80373cfed938627fac1f05ac7169c9b22'
+        '0a2fb7535f65e402b1b24e5e86f48dddd004d2ca2feff4a6066e221e55e34d6343eb1e515b62ee03c2ccb19692921593ae5a17ff63fba46c6df6b74bfe37897c'
+        'e53054446bb25fea9ba1de582c57da637112219c308255dd4003c040b61bb8d26fcd5bd61515884df91f81611a762edf2fe83493567354c164cf55afbc6e4fa8'
+        'b6a3342e9993383e714eeabeb1e2ab6e9f9062af4d0c8551522c3554cc84b93ed3bf4ce22e8e74e1e73f3fd668c334ca2e3e358bd6e75c9d75eb487983ee8bd5'
+        '5efabcfc95f308af6f22015e6a15b170393773c214711460aaf9d455c4ea74ad258fb3d392f8c0383fb7b10f97c1f237b332544345ff98ba69c4c176728bea60')
 
 
 export KBUILD_BUILD_HOST=archlinux
