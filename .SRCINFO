@@ -6,7 +6,6 @@ pkgbase = lua-luaproc
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = lua
 	makedepends = lua51
 	makedepends = lua52
 	makedepends = lua53
@@ -15,8 +14,6 @@ pkgbase = lua-luaproc
 	source = https://luarocks.org/manifests/askyrme/luaproc-1.0-4.rockspec
 	md5sums = c80b27a812b2b73faa07411fa8155a5f
 	md5sums = 140945b4b7d8ae8ff2151de84fe94c90
-
-pkgname = lua-luaproc
 
 pkgname = lua51-luaproc
 

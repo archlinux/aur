@@ -1,6 +1,6 @@
 # Maintainer: Stephen Smith <stephen304@gmail.com>
 
-pkgname=(lua-luaproc lua51-luaproc lua52-luaproc lua53-luaproc)
+pkgname=(lua51-luaproc lua52-luaproc lua53-luaproc)
 pkgbase=lua-luaproc
 _rockname=luaproc
 pkgver=1.0
@@ -18,7 +18,6 @@ md5sums=(
     '140945b4b7d8ae8ff2151de84fe94c90'
 )
 makedepends=(
-    lua
     lua51
     lua52
     lua53
@@ -46,8 +45,4 @@ package_lua52-luaproc() {
 
 package_lua53-luaproc() {
   _package_helper '5.3'
-}
-
-package_lua-luaproc() {
-  _package_helper '5.4'
 }
