@@ -1,16 +1,16 @@
 pkgbase = otf-nerd-fonts-fira-mono
 	pkgdesc = Patched font Fira (Fura) Mono with Nerd Font icons.
-	pkgver = 2.2.1
-	pkgrel = 1
+	pkgver = 2.2.2
+	pkgrel = 0
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
 	license = MIT
 	depends = fontconfig
 	conflicts = nerd-fonts-complete
 	conflicts = nerd-fonts-git
-	source = otf-nerd-fonts-fira-mono-2.2.1.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.1/FiraMono.zip
-	source = otf-nerd-fonts-fira-mono-2.2.1-LICENSE::https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v2.2.1/LICENSE
-	sha256sums = e60a9f8cd097c2cbaa54dc08dc861d6d02809cfc0d35d60410648cefb1855c23
+	source = otf-nerd-fonts-fira-mono-2.2.2.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/FiraMono.zip
+	source = otf-nerd-fonts-fira-mono-2.2.2-LICENSE::https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v2.2.2/LICENSE
+	sha256sums = 29fff85e0afe0bd723fbd84e6c9587b08fd277cacc516d49bd379faa95612ac3
 	sha256sums = 245b522abb5aba0d8e84898bf6d5e95102620637626106bfd0061189a2370360
 
 pkgname = otf-nerd-fonts-fira-mono
