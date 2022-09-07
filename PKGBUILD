@@ -6,7 +6,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine64-git
-pkgver=7.11.212.ge06a62049e8
+pkgver=7.16.165.ge553be7e776
 pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs which is only for 64 bit system."
 url=https://winehq.org
@@ -14,7 +14,7 @@ arch=('x86_64' 'aarch64')
 options=('staticlibs' '!lto')
 license=('LGPL')
 source=(
-    "git://source.winehq.org/git/wine.git"
+    "git+https://gitlab.winehq.org/wine/wine.git"
     "30-win32-aliases.conf"
     "wine-binfmt.conf"
 )

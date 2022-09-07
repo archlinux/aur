@@ -1,6 +1,6 @@
 pkgbase = wine64-git
 	pkgdesc = A compatibility layer for running Windows programs which is only for 64 bit system.
-	pkgver = 7.11.212.ge06a62049e8
+	pkgver = 7.16.165.ge553be7e776
 	pkgrel = 1
 	url = https://winehq.org
 	arch = x86_64
@@ -99,7 +99,7 @@ pkgbase = wine64-git
 	conflicts = wine64
 	options = staticlibs
 	options = !lto
-	source = git://source.winehq.org/git/wine.git
+	source = git+https://gitlab.winehq.org/wine/wine.git
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
 	sha256sums = SKIP
