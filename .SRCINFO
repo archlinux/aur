@@ -1,0 +1,17 @@
+pkgbase = janet-spork-git
+	pkgdesc = Various Janet utility modules - the official Contrib library.
+	pkgver = 0.r251.ac1d647
+	pkgrel = 1
+	url = https://github.com/janet-lang/spork
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = janet-lang
+	provides = janet-spork
+	conflicts = janet-spork
+	options = !strip
+	options = staticlibs
+	source = janet-spork::git+https://github.com/janet-lang/spork.git
+	sha256sums = SKIP
+
+pkgname = janet-spork-git

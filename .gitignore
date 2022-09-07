@@ -1,0 +1,10 @@
+# Packages & tars
+*.pkg.*
+*.tar.*
+
+# Build
+src
+pkg
+
+# Duplicated git files (don't know why)
+/janet-spork
