@@ -1,6 +1,6 @@
 pkgbase = nerd-fonts-tinos
 	pkgdesc = Patched font Tinos from Nerd Fonts Library
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = nerd-fonts-tinos
 	provides = ttf-nerd-fonts-tinos
 	conflicts = nerd-fonts-git
 	conflicts = nerd-fonts-complete
-	source = nerd-fonts-tinos-2.2.1.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.1/Tinos.zip
-	sha256sums = 35b0c771731d03c405ab2a7d2fe52f4f091d30af6752e20d3c749e9048475d4f
+	source = nerd-fonts-tinos-2.2.2.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Tinos.zip
+	sha256sums = 3e353181bd7eadcac29b31dfbac7a87020daa6b0e870e0c9fe3ff4fc6b647792
 
 pkgname = nerd-fonts-tinos
