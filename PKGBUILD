@@ -3,7 +3,7 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-truecolor-wide-glyphs
 pkgver=9.30
-pkgrel=5
+pkgrel=6
 pkgdesc="Unicode enabled rxvt-clone terminal emulator (urxvt) with true color, enhanced glyphs and improved font rendering support"
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -17,7 +17,6 @@ depends=(
 )
 optdepends=(
     'gtk2-perl: to use the urxvt-tabbed'
-    'libxft-bgra: support for BGRA glyphs and scaling'
 )
 provides=(
     'rxvt-unicode'
@@ -44,26 +43,19 @@ source=(
     'improve-font-rendering.patch'
     'perl-background-fix.patch'
 )
-sha1sums=('700265a255eedf0f553cadfe5484bf71f8fb74c2'
-          'b5a4507f85ebb7bac589db2e07d9bc40106720d9'
-          '62c4ffecfce6967def394dd4d418b68652372ea2'
-          'cd204d608d114d39c80331efe0af0231ad6b7e18'
-          'a61366659c73bd551fa99a8415bb71e033897598'
-          '9883d0c31b45f8521829ea6a2041f2e9eb7abe6a'
-          'b5a239179a6da062bcc9c5a36e870387080372d2'
-          '5c11265e5c54fdc7e005aa0a3c55de3374f15a73'
-          'a62225c18458ed9d1743699ef98f41d3d157f145'
-          '586b3b0de73d78612612c07301313bbcbb15d781')
+b2sums=('645164e37e9e484c66f5047836689e4e4727575dfdcbefc64affb70d9110497529fdcc7d476f77737efed5cee4af314e1e1ccbcb42b506bb7e653b827c24a0c7'
+        'eff2407a1551d57d7a9e9000a9bad760afd4d9b7a0fa15c375ec821d185561a99c3761319c1cbed5cdd512b39faf339fb78387220eae161c9a33a859fc4733d2'
+        '2c4bc054e89b1bbd9ebce18cee64728b5ebb3aa915ce3ec7957e1a95da34c26ea757d324041b6c65db5902b60d0009176ff6aabc5093c5b2665c4b6997a3f60f'
+        '71072f1f262b0759f0251654b7563e0dc5b3f73bc3705321d4e75230c51692541a8f5aa289657714baeab93a9e7b404a0b3ce0eecafb116c389a640209916916'
+        '7f760beda37d781ae5bfff280fb912b3210ed4e60c82d279706feb023e5e10e9c5abe8eaa9bef6d7da460df39808c56de91ee2d5ffc63ea0c2e402810fa3dfb5'
+        '9e3c03390d44a53b933fd6e11f3b644c43f377d3848975d9a5d1b964b042aca08995c968ada22b143bdc014691282242c8e718820f16086b35588242eb71a15b'
+        '714c6f6b25dded535be85107ff1495175fbec1568f46eac7f59a0ef1af873bf3ac73bc312611c4a4443127f66d5fde48f30f342ca1f632541066d1bd6e11b560'
+        'f9c56c35579155f33f2c09a580554a58e82e1de328d3bf3037386ab1cecb2970abeffe215ad9909706c398c506e369936584024672aac379f78a7f5bbcecc560'
+        'c2e0b6be3df3cf037ffa1db9a5acff92dacd8ad6244b152bcb83cfd13bc3fc7a72dbd39b0ee97855c27ba960f2de5d5558516d12e4ec876d5d8bdba9eef11e1a'
+        'd7f8b1472de6563d329f0edac6839a1625af4b74a782fb7080d30b804a5bb7292cf8b136c0682e535e5806092eddbe970399f3591e9150c6929ab85056c30be1')
 _dir="$_pkgname-$pkgver"
 
 prepare() {
-    ################################################################
-    #                                                              #
-    #        If you have problems with character rendering,        #
-    #           try to install libxft-bgra from the aur.           #
-    #                                                              #
-    ################################################################
-
     cd $_dir
 
     # the repo with original 24-bit-color.patch is no longer available:
