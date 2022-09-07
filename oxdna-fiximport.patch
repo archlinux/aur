@@ -1,0 +1,10 @@
+diff --git a/analysis/src/oxDNA_analysis_tools/external_force_utils/exclude_force.py b/analysis/src/oxDNA_analysis_tools/external_force_utils/exclude_force.py
+index e29b871f..2114a7b3 100644
+--- a/analysis/src/oxDNA_analysis_tools/external_force_utils/exclude_force.py
++++ b/analysis/src/oxDNA_analysis_tools/external_force_utils/exclude_force.py
+@@ -1,4 +1,4 @@
+-from external_force_utils.force_reader import read_force_file, write_force_file
++from oxDNA_analysis_tools.external_force_utils.force_reader import read_force_file, write_force_file
+ from sys import argv
+ 
+ force_file = argv[1]
