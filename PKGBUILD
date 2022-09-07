@@ -2,7 +2,7 @@
 
 pkgname=python-esbonio
 _pkgname=esbonio
-pkgver=0.11.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="A language server for working with Sphinx projects."
 arch=("any")
@@ -14,8 +14,8 @@ depends=("python-appdirs"
          "python-pyspellchecker"
          "python-typing_extensions")
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/49/79/1d19be7c08399f003c4a797697e080b4cc91eadb4b27a75ea43258f0460f/esbonio-0.11.1.tar.gz")
-sha256sums=('e18e5f90b944a850e90a75a60841ff628a5746eb9664e8676e17f87bafd94c34')
+source=("https://files.pythonhosted.org/packages/df/0b/915a34c855b227e6444d5d954d190b998a52e2b27ea815db24bc0662afda/esbonio-0.14.0.tar.gz")
+sha256sums=('9a76b4c6b8e5dd87d621728c7ac31657f1be350f20812081b6fffabb3fea2b08')
 
 build() {
     cd ${_pkgname}-${pkgver}
