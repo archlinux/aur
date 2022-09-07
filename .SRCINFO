@@ -5,7 +5,6 @@ pkgbase = globalprotect-bin
 	url = https://docs.paloaltonetworks.com/globalprotect/5-2/globalprotect-app-user-guide/globalprotect-app-for-linux/download-and-install-the-globalprotect-app-for-linux
 	install = globalprotect.install
 	arch = x86_64
-	groups = 
 	license = custom
 	depends = qt5-webkit
 	depends = wmctrl
