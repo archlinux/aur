@@ -4,14 +4,14 @@ pkgname=oxdna-cuda-git
 
 pkgdesc="DNA/RNA/etc simulator, from lorenzo-rovigatti/oxDNA, with CUDA support and analysis tools."
 
-url="https://github.com/loroviga/oxDNA"
+url="https://github.com/lorenzo-rovigatti/oxDNA"
 
 pkgver=v3.2.1.r249.gec1be2bc
 arch=('x86_64')
 license=('GPL3')
 provides=('oxdna')
 conflicts=('oxdna')
-pkgrel=1
+pkgrel=2
 
 depends=('python3' 'python-matplotlib' 'python-scikit-learn' 'python-setuptools' 'python-biopython' 'ipython')
 

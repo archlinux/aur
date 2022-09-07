@@ -1,8 +1,8 @@
 pkgbase = oxdna-cuda-git
 	pkgdesc = DNA/RNA/etc simulator, from lorenzo-rovigatti/oxDNA, with CUDA support and analysis tools.
 	pkgver = v3.2.1.r249.gec1be2bc
-	pkgrel = 1
-	url = https://github.com/loroviga/oxDNA
+	pkgrel = 2
+	url = https://github.com/lorenzo-rovigatti/oxDNA
 	arch = x86_64
 	license = GPL3
 	makedepends = git
