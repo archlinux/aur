@@ -3,7 +3,7 @@
 
 pkgname=amulegui-upnp
 pkgver=11106
-pkgrel=2
+pkgrel=3
 pkgdesc="Remote GUI for the aMule Daemon, an eMule-like client for the ed2k p2p network"
 arch=('i686' 'x86_64')
 url="http://www.amule.org/"
@@ -35,4 +35,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 "$srcdir/aMule-SVN-r${pkgver}"/amulegui.xpm "$pkgdir"/usr/share/pixmaps/amulegui.xpm
 }
