@@ -2,7 +2,8 @@
 
 pkgname=paper-note
 pkgver=22.9
-pkgrel=1
+_app_id=io.posidon.Paper
+pkgrel=2
 pkgdesc="A pretty note-taking app for GNOME"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/posidon_software/paper"
@@ -24,4 +25,7 @@ check() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
+
+  # Temporary solution to the issue: https://gitlab.com/posidon_software/paper/-/issues/36
+  mv "$pkgdir/usr/share/applications/$_app_id.desktop" "$pkgdir/usr/share/applications/Paper.desktop"  
 }

@@ -1,7 +1,7 @@
 pkgbase = paper-note
 	pkgdesc = A pretty note-taking app for GNOME
 	pkgver = 22.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/posidon_software/paper
 	arch = x86_64
 	arch = aarch64
