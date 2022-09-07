@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=nixpacks
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='App source + Nix packages + Docker = Image'
 arch=(x86_64)
@@ -16,7 +16,7 @@ checkdepends=(zig)
 options=('!lto')
 _archive="$pkgname-$pkgver"
 source=("$_archive.tar.gz::$_url/archive/v$pkgver.tar.gz")
-sha256sums=('e9e260e3181b47780c5f273fcc44ccb0597246dca3a103b895dcece7e12e9f29')
+sha256sums=('d714291940bd80d486770018c0217c28600399f641f1f30694762a8f6c08be37')
 
 prepare() {
 	cd "$_archive"
