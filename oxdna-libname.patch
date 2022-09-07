@@ -1,0 +1,38 @@
+diff --git a/oxpy/CMakeLists.txt b/oxpy/CMakeLists.txt
+index 3155fa48..1d9c1029 100644
+--- a/oxpy/CMakeLists.txt
++++ b/oxpy/CMakeLists.txt
+@@ -20,10 +20,10 @@ IF(Python)
+ 	SET(CMAKE_SHARED_LIBRARY_PREFIX "")
+ 	
+ 	# we need the oxDNA "common" library to be compiled so that the resulting code is position-independent and the library can be linked dynamically
+-	SET_TARGET_PROPERTIES(common PROPERTIES POSITION_INDEPENDENT_CODE ON)
++	SET_TARGET_PROPERTIES(oxdna_common PROPERTIES POSITION_INDEPENDENT_CODE ON)
+ 	
+ 	ADD_LIBRARY(_oxpy_lib STATIC ${oxpy_SOURCES})
+-	TARGET_LINK_LIBRARIES(_oxpy_lib ${PYTHON_LIBRARIES} common)
++	TARGET_LINK_LIBRARIES(_oxpy_lib ${PYTHON_LIBRARIES} oxdna_common)
+ 	SET_TARGET_PROPERTIES(_oxpy_lib PROPERTIES POSITION_INDEPENDENT_CODE ON)
+ 	pybind11_add_module(core SHARED bindings.cpp)
+ 	TARGET_LINK_LIBRARIES(core PRIVATE _oxpy_lib)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index c2f39dfa..2485b701 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -2,13 +2,13 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+ 
+ IF(CMAKE_BUILD_TYPE MATCHES Debug)
+ 	SET(exe_name oxDNA_debug)
+-	SET(lib_name common_debug)
++	SET(lib_name oxdna_common_debug)
+ ELSEIF(MPI)
+ 	SET(exe_name oxDNA_mpi)
+-	SET(lib_name common)
++	SET(lib_name oxdna_common)
+ ELSE()
+ 	SET(exe_name oxDNA)
+-	SET(lib_name common)
++	SET(lib_name oxdna_common)
+ ENDIF()
+ 
+ SET(observables_SOURCES
