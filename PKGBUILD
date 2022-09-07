@@ -14,7 +14,7 @@ provides=('yorick-yutils')
 conflicts=('yorick-yutils')
 replaces=('yorick-yutils')
 
-_gitroot="git://github.com/frigaut/yorick-yutils.git"
+_gitroot="https://github.com/frigaut/yorick-yutils.git"
 _gitname="yorick-yutils"
 
 build() {
