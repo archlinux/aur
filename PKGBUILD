@@ -1,6 +1,6 @@
 # Maintainer: Ramadan Ali <ezqa@ezqa.ny>
 pkgname=gnome-console-bin
-pkgver=42.beta
+pkgver=42.2
 pkgrel=1
 pkgdesc='A simple user-friendly terminal emulator for the GNOME desktop'
 arch=('x86_64')
@@ -10,8 +10,8 @@ groups=('gnome-extra')
 depends=('libgtop' 'libhandy' 'vte3')
 provides=(${pkgname%-bin})
 conflicts=(${pkgname%-bin})
-source=("https://dl.fedoraproject.org/pub/fedora/linux/releases/36/Everything/x86_64/os/Packages/g/gnome-console-42~beta-1.fc36.x86_64.rpm")
-sha1sums=("90fb4955dd36d7fbb5e5d57f3c426113bf917000")
+source=("https://dl.fedoraproject.org/pub/fedora/linux/updates/36/Everything/x86_64/Packages/g/gnome-console-42.2-1.fc36.x86_64.rpm")
+sha1sums=("9295dc80fa86bc459695582902cdee7ddb79cdd4")
 
 package() {
 	mv $srcdir/usr $pkgdir/usr
