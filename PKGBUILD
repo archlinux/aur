@@ -14,7 +14,7 @@ provides=('yorick-yeti')
 conflicts=('yorick-yeti')
 replaces=('yorick-yeti')
 
-_gitroot="git://github.com/emmt/Yeti.git"
+_gitroot="https://github.com/emmt/Yeti.git"
 _gitname="Yeti"
 
 build() {
