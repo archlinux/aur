@@ -1,6 +1,6 @@
 pkgbase = gtk4-telegrand
 	pkgdesc = GObject-based multi-platform GUI toolkit (Version required by Telegrand)
-	pkgver = 4.6.7
+	pkgver = 4.8.0
 	pkgrel = 1
 	url = https://www.gtk.org/
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = gtk4-telegrand
 	depends = glib2
 	depends = cairo
 	depends = pango
+	depends = harfbuzz
 	depends = fribidi
 	depends = gdk-pixbuf2
 	depends = libpng
@@ -25,7 +26,6 @@ pkgbase = gtk4-telegrand
 	depends = libepoxy
 	depends = libgl
 	depends = libegl
-	depends = harfbuzz
 	depends = libxkbcommon
 	depends = graphene
 	depends = iso-codes
@@ -56,11 +56,11 @@ pkgbase = gtk4-telegrand
 	provides = gtk4
 	provides = libgtk-4.so
 	conflicts = gtk4
-	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=42b14ce5f20fc81b85aa3e3e0036fbb2d1476137
-	source = https://raw.githubusercontent.com/melix99/telegrand/main/build-aux/gtk-reversed-list.patch
+	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=9cc1dcf2a4739d55460675903c595f68478e0811
+	source = gtk-reversed-list-4.8.0.patch::https://raw.githubusercontent.com/melix99/telegrand/main/build-aux/gtk-reversed-list.patch
 	source = gtk4-querymodules.hook
 	sha256sums = SKIP
-	sha256sums = 376dd807f472939eff8fc8b8fdc576a7b0cdb1438093342536bf5e34b9d0dcb7
+	sha256sums = 4bf149a0f547747f13ffcd97f3160b6170dbfc4473d7d56d4f4c80eada4893c2
 	sha256sums = cd8e607eddd9941f279084e1d15309941423d26cca1897f43524a02e58e48816
 
 pkgname = gtk4-telegrand

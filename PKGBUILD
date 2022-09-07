@@ -2,14 +2,14 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=gtk4-telegrand
-pkgver=4.6.7
+pkgver=4.8.0
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (Version required by Telegrand)"
 url="https://www.gtk.org/"
 arch=(x86_64)
 license=(LGPL)
-depends=(glib2 cairo pango fribidi gdk-pixbuf2 libpng libtiff libjpeg libepoxy
-         libgl libegl harfbuzz libxkbcommon graphene iso-codes tracker3
+depends=(glib2 cairo pango harfbuzz fribidi gdk-pixbuf2 libpng libtiff libjpeg
+         libepoxy libgl libegl libxkbcommon graphene iso-codes tracker3
          libcolord wayland libxrandr libx11 libxrender libxi libxext libxcursor
          libxdamage libxfixes fontconfig libxinerama libcloudproviders libcups
          gst-plugins-bad-libs librsvg dconf shared-mime-info desktop-file-utils
@@ -20,12 +20,12 @@ provides=(gtk4 libgtk-4.so)
 makedepends=(git meson shaderc sassc gobject-introspection
              wayland-protocols python-gobject python-docutils)
 checkdepends=(weston)
-_commit=42b14ce5f20fc81b85aa3e3e0036fbb2d1476137  # tags/4.6.7^0
+_commit=9cc1dcf2a4739d55460675903c595f68478e0811  # tags/4.8.0^0
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
-        'https://raw.githubusercontent.com/melix99/telegrand/main/build-aux/gtk-reversed-list.patch'
+        gtk-reversed-list-${pkgver}.patch::'https://raw.githubusercontent.com/melix99/telegrand/main/build-aux/gtk-reversed-list.patch'
         gtk4-querymodules.hook)
 sha256sums=('SKIP'
-            '376dd807f472939eff8fc8b8fdc576a7b0cdb1438093342536bf5e34b9d0dcb7'
+            '4bf149a0f547747f13ffcd97f3160b6170dbfc4473d7d56d4f4c80eada4893c2'
             'cd8e607eddd9941f279084e1d15309941423d26cca1897f43524a02e58e48816')
 
 pkgver() {
@@ -36,7 +36,7 @@ pkgver() {
 prepare() {
   cd gtk
 
-  patch --forward --strip=1 --input="$srcdir/gtk-reversed-list.patch"
+  patch --forward --strip=1 --input="$srcdir/gtk-reversed-list-${pkgver}.patch"
 }
 
 build() {
