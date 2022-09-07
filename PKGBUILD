@@ -3,15 +3,16 @@
 _pkgname=python3-msrplib
 pkgname=python-msrplib
 pkgver=0.21.1
-pkgrel=1
+pkgrel=2
 pkgdesc="MSRP (RFC4975) client library"
 license=('LGPL-2.1+')
 arch=('aarch64' 'x86_64')
 url="https://github.com/AGProjects/python3-msrplib"
+makedepends=('python-setuptools')
 depends=(
   'python-application'
-  'python-gnutls'
   'python-eventlib'
+  'python-gnutls'
   'python-twisted'
   'python-zope-interface'
   )
