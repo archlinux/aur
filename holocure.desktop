@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=holocure
+Comment=A free unofficial fan game with Hololive members
+Path=/usr/bin/holocure
+Exec=holocure
+Icon=holocure
+Terminal=false
+Categories=Game
+

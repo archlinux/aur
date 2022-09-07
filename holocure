@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+HOLOCURE_LOCAL_DIR="${XDG_DATA_HOME:-$HOME/.local/state}"/holocure
+export WINEPREFIX="$HOLOCURE_LOCAL_DIR"/wine
+
+if [ ! -d "$HOLOCURE_LOCAL_DIR" ] ; then
+   mkdir -p "$WINEPREFIX"
+   wineboot -u
+fi
+WINEDEBUG=-all wine /usr/share/holocure/Holocure.exe "$@"
+
