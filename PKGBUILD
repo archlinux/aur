@@ -2,9 +2,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=scotch-git
-pkgver=r733.1093134
-pkgrel=2
-pkgdesc="Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering. This is the all-inclusive version (MPI/serial/esmumps)."
+pkgver=7.0.1.r733.1093134
+pkgrel=1
+pkgdesc="Libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering"
 url="https://gitlab.inria.fr/scotch/scotch"
 license=("custom:CeCILL-C")
 depends=('zlib' 'openmpi' 'bzip2')
@@ -17,11 +17,16 @@ _pkgname=scotch
 
 pkgver() {
   cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  _version=$(grep SCOTCH_VERSION CMakeLists.txt |head -1|cut -d" " -f2|tr -d \))
+  _release=$(grep SCOTCH_RELEASE CMakeLists.txt |head -1|cut -d" " -f2|tr -d \))
+  _patchlevel=$(grep SCOTCH_PATCHLEVEL CMakeLists.txt |head -1|cut -d" " -f2|tr -d \))
+  
+  printf "${_version}.${_release}.${_patchlevel}.r%s.%s" \
+	 "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "${srcdir}/${_pkgname}/src"
+  cd ${_pkgname}/src
 
   [ -e Makefile.inc ] && rm Makefile.inc
   cp "Make.inc/Makefile.inc.${CARCH/_/-}_pc_linux2.shlib" Makefile.inc
@@ -39,7 +44,7 @@ prepare() {
   sed -i "s/-DCOMMON_FILE_COMPRESS_GZ/-DCOMMON_FILE_COMPRESS_GZ -DCOMMON_FILE_COMPRESS_BZ2/" Makefile.inc
   sed -i "s/-lz/-lz -lbz2/" Makefile.inc
 
-  # Fix the creation of directories
+  # Fix the creation of directories1
   sed -i "s/mkdir/mkdir\ -p/" Makefile.inc
 
   # To install headers and libs also for esmumps
@@ -47,7 +52,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}/src"
+  cd ${_pkgname}/src
 
   make scotch
   make -j1 esmumps
@@ -60,12 +65,12 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}/src"
+  cd ${_pkgname}/src
 
-  make install prefix="${pkgdir}/usr" includedir="${pkgdir}/usr/include/scotch"
+  make install prefix="$pkgdir"/usr includedir="$pkgdir"/usr/include/scotch
 
   # To avoid conflict with extra/gpart, maybe move the package to /opt/scotch ?
-  mv "${pkgdir}/usr/bin/gpart" "${pkgdir}/usr/bin/gpart-scotch"
+  mv "$pkgdir"/usr/bin/gpart "$pkgdir"/usr/bin/gpart-scotch
 
-  install -m 644 -D "../doc/CeCILL-C_V1-en.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -m 644 -D "../doc/CeCILL-C_V1-en.txt" "$pkgdir"/usr/share/licenses/${_pkgname}/LICENSE
 }
