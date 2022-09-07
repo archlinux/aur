@@ -5,7 +5,7 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 pkgname=obs-studio-rc
 _pkgver=28.0.1
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=3
 epoch=3
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -87,7 +87,7 @@ else
 fi
 provides=("obs-studio=$pkgver" "obs-vst" "obs-websocket")
 conflicts=("obs-studio" "obs-vst" "obs-websocket")
-options=('!strip')
+options=('debug')
 source=(
   "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$_pkgver"
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
@@ -117,14 +117,10 @@ if [[ $CARCH == 'x86_64' ]]; then
 fi
 
 if [[ $CARCH == 'x86_64' ]]; then
-  _cefbranch=5060
-  source+=("https://cdn-fastly.obsproject.com/downloads/cef_binary_${_cefbranch}_linux64.tar.bz2")
-  sha256sums+=("ac4e2a8ebf20700e4e36353e314f876623633dd5b474778a2548bb66bdbea11d")
+  makedepends+=("cef-minimal-obs=103.0.0_5060_shared_textures_143.2591+g4204d54+chromium_103.0.5060.134_1")
   provides+=("obs-browser")
   conflicts+=("obs-linuxbrowser" "obs-browser")
   _browser=ON
-  _arch=64
-  _parch=x86_64
 else
   _browser=OFF
 fi
@@ -146,17 +142,6 @@ prepare() {
 }
 
 build() {
-  if [[ $CARCH == 'x86_64' ]]; then
-    cd "$srcdir"/cef_binary_${_cefbranch}_linux${_arch}
-
-    #The arm64 CEF set the wrong arch for the project
-    cmake \
-      -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-      -DPROJECT_ARCH=$_parch .
-
-    make libcef_dll_wrapper
-  fi
-
   cd "$srcdir"/obs-studio
   mkdir -p build; cd build
 
@@ -170,7 +155,7 @@ build() {
     -DENABLE_JACK=ON \
     -DENABLE_SNDIO=ON \
     -DENABLE_BROWSER=$_browser \
-    -DCEF_ROOT_DIR="$srcdir/cef_binary_${_cefbranch}_linux${_arch}" \
+    -DCEF_ROOT_DIR=/opt/cef-obs \
     -DOBS_VERSION_OVERRIDE="$_pkgver" ..
 
   sed -i "s|#define OBS_VERSION |#define OBS_VERSION \"$_pkgver-$pkgrel\" //|" config/obsconfig.h

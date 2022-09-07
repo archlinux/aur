@@ -1,7 +1,7 @@
 pkgbase = obs-studio-rc
 	pkgdesc = Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration
 	pkgver = 28.0.1
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 3
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = obs-studio-rc
 	makedepends = websocketpp
 	makedepends = libajantv2
 	makedepends = python
+	makedepends = cef-minimal-obs=103.0.0_5060_shared_textures_143.2591+g4204d54+chromium_103.0.5060.134_1
 	depends = jack
 	depends = gtk-update-icon-cache
 	depends = x264
@@ -57,16 +58,14 @@ pkgbase = obs-studio-rc
 	conflicts = obs-websocket
 	conflicts = obs-linuxbrowser
 	conflicts = obs-browser
-	options = !strip
+	options = debug
 	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=28.0.1
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-websocket::git+https://github.com/obsproject/obs-websocket.git
 	source = qr::git+https://github.com/nayuki/QR-Code-generator.git
-	source = https://cdn-fastly.obsproject.com/downloads/cef_binary_5060_linux64.tar.bz2
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = ac4e2a8ebf20700e4e36353e314f876623633dd5b474778a2548bb66bdbea11d
 
 pkgname = obs-studio-rc
