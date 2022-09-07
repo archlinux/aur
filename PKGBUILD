@@ -14,7 +14,7 @@ provides=('yorick-yao')
 conflicts=('yorick-yao')
 replaces=('yorick-yao')
 
-_gitroot="git://github.com/frigaut/yao.git"
+_gitroot="https://github.com/frigaut/yao.git"
 _gitname="yao"
 
 build() {
