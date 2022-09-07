@@ -8,3 +8,4 @@ Icon=/usr/share/pixmaps/worldpainter.png
 Terminal=false
 Type=Application
 Categories=Game;
+StartupWMClass=install4j-org-pepsoft-worldpainter-Main

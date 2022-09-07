@@ -3,7 +3,7 @@
 # Maintainer: Thomas Bork <sudobash418 at gmail dot com>
 pkgname=worldpainter
 pkgver=2.13.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An interactive map generator for Minecraft'
 
 url='https://www.worldpainter.net/'
@@ -19,7 +19,7 @@ source=("https://www.worldpainter.net/files/${pkgname}_${pkgver}.tar.gz"
 		'launch-script')
 sha256sums=('e503d3c0521ae86b5559acf33f52abcc3185bd0ea3b017fac537bf626e994f43'
             'a93cd4af0e8ef470f48a8dd2773fb9d83a5302f1b9bfba67f43b4ec7500a039e'
-            '669f78518b75b441f4382cfd14e207dd91ee1dc967383db1771ec202dbb07cb4'
+            '815abfee2eb545a3bac0d2e4e5c0cadc548cc1466c4e0aaf3bfd1f07a15e7741'
             'fd64d11450f03c8924cbc133a009b3373bc5f80b2589b63391b65db04d82963f')
 
 package() {
