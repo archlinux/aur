@@ -383,7 +383,7 @@ index 0000000..2f39174
 +	{
 +		for (auto i = 0; i < count; ++i)
 +		{
-+			out[i].idle = sppi[i].IdleTime.QuadPart;            
++			out[i].idle = sppi[i].IdleTime.QuadPart;
 +			out[i].kernel = sppi[i].KernelTime.QuadPart;
 +			out[i].user = sppi[i].UserTime.QuadPart;
 +		}
