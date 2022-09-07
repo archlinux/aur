@@ -2,7 +2,7 @@
 
 pkgname=distrobox
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Use any linux distribution inside your terminal."
 arch=('any')
 url="https://github.com/89luca89/distrobox"
@@ -18,4 +18,4 @@ package() {
   ./install -P "${pkgdir}/usr"
 }
 
-sha256sums=('014deed53c2842aa7424ab46f70a85249c1b7f001ad5d48e621c044603f95631')
+sha256sums=('e643a702c3f3f0d7467afe840b4f3ee6e4c369b6464618b6ec09f7ad27eb64f5')
