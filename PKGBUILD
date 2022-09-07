@@ -14,7 +14,7 @@ provides=('yorick-soy')
 conflicts=('yorick-soy')
 replaces=('yorick-soy')
 
-_gitroot="git://github.com/frigaut/yorick-soy.git"
+_gitroot="https://github.com/frigaut/yorick-soy.git"
 _gitname="yorick-soy"
 
 build() {
