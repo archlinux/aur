@@ -1,0 +1,25 @@
+pkgbase = flax
+	pkgdesc = Flax Engine – multi-platform 3D game engine
+	pkgver = 1.4.6334
+	pkgrel = 1
+	url = https://flaxengine.com
+	arch = any
+	license = Flax EULA
+	depends = glibc
+	depends = libx11
+	depends = libxcursor
+	depends = libxinerama
+	depends = zlib
+	depends = libvorbis
+	optdepends = portaudio: PortAudio audio driver
+	optdepends = libpulse: PulseAudio audio driver
+	optdepends = jack: JACK audio driver
+	provides = thunderbird=1.4.6334
+	noextract = FlaxEditorLinux.zip
+	noextract = Linux.zip
+	source = https://vps2.flaxengine.com/store/builds/Package_1_04_06334/FlaxEditorLinux.zip
+	source = https://vps2.flaxengine.com/store/builds/Package_1_04_06334/Linux.zip
+	sha256sums = 658a7453d411f4ebc82754f5cd12cd89a6803a74ea636af19df16b8bc4c9f307
+	sha256sums = 1c8149a357f81a433412739633f50693b794fcb61780f8b507ad5a773b9a8c1f
+
+pkgname = flax
