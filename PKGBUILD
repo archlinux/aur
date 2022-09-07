@@ -1,21 +1,17 @@
-# Maintainer: Jesper Jensen <jesper@slashwin.dk>
+# Contributor: Jesper Jensen <jesper@slashwin.dk>
 pkgname=python-borgmatic-git
-pkgver=1.1.7.r3.gf3d6d7c
-pkgrel=3
+pkgver=1.7.1.r5.g9e64d84
+pkgrel=1
 pkgdesc="a simple Python wrapper script for the Borg backup software"
 arch=('any')
 url="https://github.com/witten/borgmatic.git"
 license=('GPL3')
-groups=()
-depends=('python' 'python-pykwalify' 'python-ruamel-yaml<=0.15.0' 'python-setuptools')
-makedepends=('git')
-checkdepends=('python-flexmock' 'python-pytest')
+depends=('python-ruamel-yaml' 'python-requests' 'python-jsonschema' 'python-colorama' 'borg')
+makedepends=('git' 'python-setuptools')
+checkdepends=('python-pytest' 'python-flexmock')
 provides=('borgmatic')
 conflicts=('borgmatic')
-replaces=()
-backup=()
 options=(!emptydirs)
-install=
 source=('git+https://github.com/witten/borgmatic.git')
 md5sums=('SKIP')
 
@@ -27,13 +23,11 @@ pkgver() {
 package() {
   cd "$srcdir/borgmatic"
   python setup.py install --root="$pkgdir/" --optimize=1
-  install -Dm644 sample/systemd/borgmatic.service "$pkgdir/usr/lib/systemd/system/borgmatic.service" || return 1
-  install -Dm644 sample/systemd/borgmatic.timer "$pkgdir/usr/lib/systemd/system/borgmatic.timer" || return 1
+  install -Dm644 -t "$pkgdir"/usr/lib/systemd/system sample/systemd/*
+  install -d "$pkgdir"/usr/share/bash-completion/completions
 }
 
 check() {
   cd "$srcdir/borgmatic"
   python setup.py test
 }
-
-# vim:set ts=2 sw=2 et:
