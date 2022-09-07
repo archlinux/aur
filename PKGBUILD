@@ -2,7 +2,7 @@
 
 pkgname=gopoggers
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='POGGERS pixelart printer for celebrating accomplishments'
 arch=('any')
 url="https://github.com/poggeroni/gopoggers"
