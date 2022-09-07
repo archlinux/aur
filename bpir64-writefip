@@ -12,10 +12,15 @@ mkdir -p $tmp
 origargs=$(fdtget -ts "/boot/dtbs/${dtb}.dtb" "/chosen" "bootargs")
 bootargs="root=PARTLABEL=bpir64-${fipdev}-root $origargs $cmdline"
 echo BOOTARGS = "$bootargs"
+cp -vf "/boot/dtbs/${dtb}.dtb" "/boot/dtbs/${dtb}-fixed.dtb"
 for bp in /boot/dtbos/*.dts; do
   dtc -q -I dts -O dtb -o ${bp/".dts"/".dtbo"} $bp
+  cat $bp | grep "//fdtput" | while read -r line ; do
+    bash -xc fdtput "/boot/dtbs/${dtb}-fixed.dtb" ${line/"//fdtput"/""}
+  done
 done
-fdtoverlay -vi "/boot/dtbs/${dtb}.dtb" -o "/boot/atf-direct.dtb" /boot/dtbos/*.dtbo
+fdtoverlay -vi "/boot/dtbs/${dtb}-fixed.dtb" -o "/boot/atf-direct.dtb" \
+                /boot/dtbos/*.dtbo
 fdtput -ts "/boot/atf-direct.dtb" "/chosen" "bootargs" "$bootargs"
 fdtput -ts "/boot/atf-direct.dtb" "/memory" "device_type" "memory"
 if [ -f "$initrd" ];then
