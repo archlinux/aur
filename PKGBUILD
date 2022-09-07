@@ -1,6 +1,6 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=helm-push
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 pkgdesc='Helm plugin to pushing charts to chartmuseum'
 arch=('x86_64')
@@ -10,7 +10,7 @@ install=helm-push.install
 depends=('helm')
 makedepends=('go')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('0e6f22aa0c44a9ad96328c847e140babfc39a8d895e488e5391ee58fe323a4b2')
+sha256sums=('eac51a24c14edb990b6483814e43311ef6260fc104cafa83d63d04aae075daf2')
 
 prepare() { sed -i '/^hooks:$/Q' "$pkgname-$pkgver"/plugin.yaml; }
 
