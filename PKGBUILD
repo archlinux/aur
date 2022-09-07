@@ -2,7 +2,7 @@
 # Important: the versions of the packages linux and linux-header must match
 
 pkgname=riffa-git
-pkgver=2.2.2.git20210624
+pkgver=2.2.2.git20220907
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='RIFFA: A Reusable Integration Framework For FPGA Accelerators'
@@ -17,8 +17,8 @@ makedepends=("linux-headers=$_local_linux_version")
 install='riffa.install'
 
 source=(
-	#"git://github.com/drichmond/riffa.git"
-	"git://github.com/marzoul/riffa.git"
+	#"git+https://github.com/drichmond/riffa.git"
+	"git+https://github.com/marzoul/riffa.git"
 	'riffa.install'
 	'patch-subdirs.patch'
 	'99-riffa.rules'

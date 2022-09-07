@@ -1,15 +1,15 @@
 pkgbase = riffa-git
 	pkgdesc = RIFFA: A Reusable Integration Framework For FPGA Accelerators
-	pkgver = 2.2.2.git20210624
+	pkgver = 2.2.2.git20220907
 	pkgrel = 1
 	url = http://riffa.ucsd.edu/
 	install = riffa.install
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = linux-headers=5.16.8.arch1-1
-	depends = linux=5.16.8.arch1-1
-	source = git://github.com/marzoul/riffa.git
+	makedepends = linux-headers=5.18.7.arch1-1
+	depends = linux=5.18.7.arch1-1
+	source = git+https://github.com/marzoul/riffa.git
 	source = riffa.install
 	source = patch-subdirs.patch
 	source = 99-riffa.rules
