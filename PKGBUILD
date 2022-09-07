@@ -12,7 +12,7 @@ makedepends=(
     git
     make
     cmake
-    lua51
+    luajit
 )
 conflicts=(concurrentlua5.1)
 url='https://github.com/lefcha/concurrentlua'
