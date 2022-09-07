@@ -8,7 +8,6 @@ arch=('any')
 url='https://curl.haxx.se'
 license=('MIT')
 depends=('libcurl-gnutls')
-provides=('libcurl-gnutls.so')
 
 package() {
 	install -dm 0755 "${pkgdir}/usr/lib/"

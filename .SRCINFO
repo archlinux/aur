@@ -6,6 +6,5 @@ pkgbase = libcurl-gnutls.so
 	arch = any
 	license = MIT
 	depends = libcurl-gnutls
-	provides = libcurl-gnutls.so
 
 pkgname = libcurl-gnutls.so
