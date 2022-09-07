@@ -10,7 +10,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium-xdg-bin
-pkgver=104.0.5112.79
+pkgver=105.0.5195.102
 pkgrel=1
 _launcher_ver=8
 pkgdesc="A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory (binary version)"
@@ -28,7 +28,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://github.com/noahvogt/${pkgname%-*}-aur/releases/download/$pkgver-$pkgrel/$pkgname-$pkgver.tar.gz
         index.html)
-sha256sums=('8155c9c5bc23d2db090c9b45f812487d3293847ab173bf157aba89a97e797b1d'
+sha256sums=('671bf97a4d346a05e8487db35a843a2e87c28de6dad92f6c2e709bcef927319b'
             'a4cdd2b86f32d5302c2792be841ff40d982b19bb58a4e63df9d77f4c706b8665')
 provides=('chromium')
 conflicts=('chromium')
@@ -36,12 +36,17 @@ conflicts=('chromium')
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
+  [brotli]=brotli
+  [dav1d]=dav1d
   [ffmpeg]=ffmpeg
   [flac]=flac
   [fontconfig]=fontconfig
   [freetype]=freetype2
   [harfbuzz-ng]=harfbuzz
   [icu]=icu
+  [jsoncpp]=jsoncpp
+  [libaom]=aom
+  [libavif]=libavif
   [libdrm]=
   [libjpeg]=libjpeg
   [libpng]=libpng
@@ -52,6 +57,7 @@ declare -gA _system_libs=(
   [opus]=opus
   [re2]=re2
   [snappy]=snappy
+  [woff2]=woff2
   [zlib]=minizip
 )
 _unwanted_bundled_libs=(
