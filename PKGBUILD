@@ -9,7 +9,7 @@ url="http://www.freedesktop.org/software/systemd/man/binfmt.d.html"
 license=('GPL')
 optdepends=('qemu-user-static')
 source=("qemu-static.conf")
-sha256sums=('4a9a23a02e20651791a5e5feca5872b8f0c85537cba21fc0b58af6d325dca46b')
+sha256sums=('e2271db050fe0a224246a437dd269e4efe4b6598049f8917370e654989fe0d31')
 
 package() {
   install -Dm 644 "$srcdir/qemu-static.conf" "$pkgdir/usr/lib/binfmt.d/qemu-static.conf"
