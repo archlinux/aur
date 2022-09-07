@@ -1,7 +1,7 @@
 pkgbase = otf-monocraft-git
 	pkgdesc = Minecraft-based monospace font
-	pkgver = r22.a4b13ab
-	pkgrel = 1
+	pkgver = r24.70c817b
+	pkgrel = 2
 	url = https://github.com/IdreesInc/Monocraft
 	arch = any
 	license = unknown

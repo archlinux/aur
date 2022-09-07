@@ -1,7 +1,7 @@
 # Maintainer: Ittai D <ittai11 at gmail dot com>
 pkgname=otf-monocraft-git
-pkgver=r22.a4b13ab
-pkgrel=1
+pkgver=r24.70c817b
+pkgrel=2
 pkgdesc="Minecraft-based monospace font"
 arch=(any)
 url="https://github.com/IdreesInc/Monocraft"
@@ -23,5 +23,5 @@ pkgver() {
 
 package() {
 	cd "$srcdir/${pkgname}"
-  install -Dm644 -t "$pkgdir/usr/share/fonts/OTF" "MinecraftMono.otf"
+  install -Dm644 -t "$pkgdir/usr/share/fonts/OTF" "Monocraft.otf"
 }
