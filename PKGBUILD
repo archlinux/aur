@@ -10,10 +10,10 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium-xdg
-pkgver=104.0.5112.79
-pkgrel=2
+pkgver=105.0.5195.102
+pkgrel=1
 _launcher_ver=8
-_gcc_patchset=2
+_gcc_patchset=1
 pkgdesc="A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory"
 arch=('x86_64')
 url="https://github.com/ungoogled-software/ungoogled-chromium"
@@ -31,23 +31,21 @@ options=('debug' '!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
-        x11-ozone-fix-X11-screensaver-suspension.patch
+        fix-TFLite-build-on-linux-with-system-zlib.patch
         enable-GlobalMediaControlsCastStartStop.patch
         roll-src-third_party-ffmpeg.patch
-        chromium-tflite-system-zlib.patch
-        remove-no-opaque-pointers-flag.patch
+        angle-wayland-include-protocol.patch
         use-oauth2-client-switches-as-default.patch
         xdg-basedir.patch
         no-omnibox-suggestion-autocomplete.patch
         index.html)
-sha256sums=('9cc662f1a84c796521ee17ed2808795ca937fe7f77bc605e788f0304a81dabf3'
+sha256sums=('1cba0527c951e3c506ade96cf6ec2507ee9d43661764731ed896348182369262'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            'ce702099849465927cf47f7bc3a4a27045d0e35e16b17481ebf35e14506bafa7'
-            '9956a843bc8a765c130080616ccd3ebc46ea95c3a2324c4b403bc293a8705eb2'
+            'f0c437c02cab7a6efc958f82fbb4ea35d5440f73d65731bad7c0dcaecb932121'
+            '5db1fae8a452774b5b177e493a2d1a435b980137b16ed74616d1fb86fe342ec7'
             '779fb13f2494209d3a7f1f23a823e59b9dded601866d3ab095937a1a04e19ac6'
             '30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44'
-            '588c166bf748793758a7df438cfa665b32e09ca8fbd6380be28bc5984a33523c'
-            'ab46b2c26a4dfe86486fd7e31bfc7211c515994a61a8c0cbd742f9c9e3c91873'
+            'cd0d9d2a1d6a522d47c3c0891dabe4ad72eabbebc0fe5642b9e22efa3d5ee572'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
             'cd844867b5b2197ad097662fee32579a7091dfba1d46cb438c4c7e696690440a'
             'ff1591fa38e0ede7e883dc7494b813641b7a1a7cb1ded00d9baaee987c1dbea8'
@@ -55,19 +53,21 @@ sha256sums=('9cc662f1a84c796521ee17ed2808795ca937fe7f77bc605e788f0304a81dabf3'
 provides=('chromium')
 conflicts=('chromium')
 _uc_usr=ungoogled-software
-_uc_ver=104.0.5112.81-1
+_uc_ver=$pkgver-1
 source=(${source[@]}
         ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz
-        chromium-drirc-disable-10bpc-color-configs.conf
-        ozone-add-va-api-support-to-wayland.patch)
+        ozone-add-va-api-support-to-wayland.patch
+        chromium-drirc-disable-10bpc-color-configs.conf)
 sha256sums=(${sha256sums[@]}
-            '75fbb5a8679522cd81520a5623e18d8aa4783d5403d2bc26aacab90d899a7a15'
-            'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
-            'af20fc58aef22dd0b1fb560a1fab68d0d27187ff18fad7eb1670feab9bc4a8d8')
+            '7f6b3397aee0b659c5964a6419f2cdf28e2b19e16700da4613f3aa9c7dde876d'
+            'e08a2c4c1e1059c767343ea7fbf3c77e18c8daebbb31f8019a18221d5da05293'
+            'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
+  [brotli]=brotli
+  [dav1d]=dav1d
   [ffmpeg]=ffmpeg
   [flac]=flac
   [fontconfig]=fontconfig
@@ -75,6 +75,9 @@ declare -gA _system_libs=(
   [harfbuzz-ng]=harfbuzz
   [icu]=icu
   [libdrm]=
+  [jsoncpp]=jsoncpp
+  [libaom]=aom
+  [libavif]=libavif
   [libjpeg]=libjpeg
   [libpng]=libpng
   #[libvpx]=libvpx
@@ -84,6 +87,7 @@ declare -gA _system_libs=(
   [opus]=opus
   [re2]=re2
   [snappy]=snappy
+  [woff2]=woff2
   [zlib]=minizip
 )
 _unwanted_bundled_libs=(
@@ -110,14 +114,8 @@ prepare() {
   # runtime -- this allows signing into Chromium without baked-in values
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
-  # Remove '-Xclang -no-opaque-pointers' flag not supported by our clang
-  patch -Np1 -i ../remove-no-opaque-pointers-flag.patch
-
-  # Fix build with unbundled zlip (patch from Gentoo)
-  patch -Np1 -i ../chromium-tflite-system-zlib.patch
-
   # Upstream fixes
-  patch -Np1 -i ../x11-ozone-fix-X11-screensaver-suspension.patch
+  patch -Np1 -i ../fix-TFLite-build-on-linux-with-system-zlib.patch
 
   # Revert kGlobalMediaControlsCastStartStop enabled by default
   # https://crbug.com/1314342
@@ -127,8 +125,14 @@ prepare() {
   # https://crbug.com/1325301
   patch -Rp1 -i ../roll-src-third_party-ffmpeg.patch
 
+  # https://crbug.com/angleproject/7582
+  patch -Np0 -i ../angle-wayland-include-protocol.patch
+
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../patches/chromium-103-VirtualCursor-std-layout.patch
+  patch -Np1 -i ../patches/chromium-105-Bitmap-include.patch
+  patch -Np1 -i ../patches/chromium-105-browser_finder-include.patch
+  patch -Np1 -i ../patches/chromium-105-AdjustMaskLayerGeometry-ceilf.patch
 
   # move ~/.pki directory to ${XDG_DATA_HOME:-$HOME/.local}/share/pki
   patch -p1 -i ../xdg-basedir.patch
