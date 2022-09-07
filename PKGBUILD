@@ -2,16 +2,16 @@
 # Maintainer: Mathieu Wespthal <mathieu.westphal+aur@gmail.com>
 
 pkgname=f3d
-pkgver=1.2.1
-pkgrel=3
+pkgver=1.3.1
+pkgrel=1
 pkgdesc='A fast and minimalist 3D viewer'
 arch=('x86_64')
 url="https://github.com/${pkgname}-app/${pkgname}"
 license=('BSD')
-depends=('vtk' 'glew' 'pugixml' 'netcdf' 'ospray' 'assimp' 'opencascade' 'fmt')
+depends=('vtk' 'glew' 'pugixml' 'netcdf' 'ospray' 'assimp' 'opencascade' 'fmt' 'alembic')
 makedepends=('cmake' 'help2man')
 source=("https://github.com/$pkgname-app/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0d72cc465af1adefdf71695481ceea95d4a94ee9e00125bc98c9f32b14ac2bf4')
+sha256sums=('653dc4044e14d0618c1d947a8ee85d2513e100b3fc24bd6e51830131a13e795d')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -26,6 +26,7 @@ build() {
         -DF3D_INSTALL_THUMBNAILER_FILES=ON \
         -DF3D_MODULE_OCCT=ON \
         -DF3D_MODULE_ASSIMP=ON \
+        -DF3D_MODULE_ALEMBIC=ON \
         -DF3D_MODULE_RAYTRACING=ON \
         ..
   make
