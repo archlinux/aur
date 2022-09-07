@@ -14,7 +14,7 @@ provides=('yorick-z')
 conflicts=('yorick-z')
 replaces=('yorick-z')
 
-_gitroot="git://github.com/LLNL/yorick-z.git"
+_gitroot="https://github.com/LLNL/yorick-z.git"
 _gitname="yorick-z"
 
 build() {
