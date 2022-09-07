@@ -16,7 +16,7 @@ makedepends=('gendesk')
 noextract=("${pkgname}-${pkgver}.AppImage")
 source=("${pkgname}-${pkgver}.AppImage::https://download.redisinsight.redis.com/latest/RedisInsight-v2-linux-x86_64.AppImage" 
         "LICENSE::https://raw.githubusercontent.com/RedisInsight/RedisInsight/main/LICENSE")
-sha256sums=('6b160dcf04a1f1d8febe53e462e5140b3b3aa6867e9628d4dfa2ad063a987f95',
+sha256sums=('6b160dcf04a1f1d8febe53e462e5140b3b3aa6867e9628d4dfa2ad063a987f95'
             '723a1b274ff1653c4414fa9133b11cae6cc0b258af7617967d50c04fa4354c9e')
 
 package() {
