@@ -14,7 +14,7 @@ provides=('yorick-spydr')
 conflicts=('yorick-spydr')
 replaces=('yorick-spydr')
 
-_gitroot="git://github.com/frigaut/yorick-spydr.git"
+_gitroot="https://github.com/frigaut/yorick-spydr.git"
 _gitname="yorick-spydr"
 
 package() {
