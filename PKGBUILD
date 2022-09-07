@@ -1,8 +1,8 @@
 # Maintainer: Ian Huang <imyxhuang@gmail.com>
 # Maintainer: MartorSkull <livemartor@gmail.com>
 pkgname=cardano-node-bin
-pkgver=1.35.0
-_hydra_build=16159630
+pkgver=1.35.3
+_hydra_build=17428084
 pkgrel=1
 pkgdesc="The core component that is used to participate in a Cardano \
 decentralised blockchain (binary package)."
@@ -20,7 +20,7 @@ source=(
   "cardano-node.confd"
   "cardano-node-testnet.service"
   "cardano-node-testnet.confd")
-sha256sums=('56603e35a0d9e1475993e0336887a83a3a7d0c8f5730c84eac9b5b5562db1618'
+sha256sums=('fab41bec9f1f924de9c351b855c78758fc576109f737f5978620f3ae95cde71d'
             '782696d794db3c41cc96e301ed76c8108ac01cbd3347233eb9c4d4f970071633'
             '3212902b0d2bb0e6bacba0feeafd261516b9f6ab5f37f876a8c37239a1947542'
             '6db0b3bb81063f410499a6688a1abbbc5d63af165310ef709924985e5c0d1c4d'
