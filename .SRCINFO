@@ -1,0 +1,16 @@
+pkgbase = randomutils
+	pkgdesc = Utilities for generating 64-bit cryptographic random numbers
+	pkgver = 53.10.19
+	pkgrel = 1
+	epoch = 1
+	url = https://gitlab.com/hdante/randomutils/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = zig
+	makedepends = asciidoc
+	optdepends = bash: running examples
+	source = git+https://gitlab.com/hdante/randomutils/#tag=1e58c8900f4fd5c9a55fbe5d16ca805563673fd6
+	sha256sums = SKIP
+
+pkgname = randomutils
