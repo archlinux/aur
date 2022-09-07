@@ -1,40 +1,36 @@
-# Maintainer: Jason Stryker <public at jasonstryker dot com>
-
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Jason Stryker <public at jasonstryker dot com>
 pkgname=protontricks-git
-pkgver=1.8.2.dev3+gbe3805b
+pkgver=1.9.1.r2.gaea43f7
 pkgrel=1
-pkgdesc="A simple wrapper that does winetricks things for Proton enabled games. (Git Version)"
+pkgdesc="A simple wrapper that does winetricks things for Proton enabled games."
 arch=('any')
 url="https://github.com/Matoking/protontricks"
 license=('GPL3')
-depends=('python' 'python-vdf>=2.4' 'winetricks' 'python-setuptools')
-optdepends=(
-  'yad: GUI for game selection', 
-  'zenity: GUI for winetricks'
-)
-makedepends=('git' 'python-setuptools' 'python-setuptools-scm')
-provides=("protontricks")
-conflicts=('protontricks')
-source=("git+${url}.git")
-sha512sums=('SKIP')
+depends=('python-setuptools' 'python-vdf' 'steam' 'winetricks')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
+optdepends=('yad: for GUI'
+            'zenity: fallback for GUI')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=('git+https://github.com/Matoking/protontricks.git')
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/${pkgname%-git}"
-    printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${pkgname%-git}"
-
-  python3 setup.py build
+  cd "$srcdir/${pkgname%-git}"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "$srcdir/${pkgname%-git}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
-  python3 setup.py install --root="$pkgdir" --optimize=1 || return 1
-
-  install -D -m 0644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  # Remove protontricks-desktop-install, since we already install
+  # desktop files properly
+  rm "$pkgdir/usr/bin/${pkgname%-git}-desktop-install"
 }
-
-# vim:set ts=2 sw=2 et:
