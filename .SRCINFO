@@ -1,15 +1,15 @@
 pkgbase = nancy-bin
 	pkgdesc = A tool to check for vulnerabilities in your Golang dependencies
-	pkgver = 1.0.37
+	pkgver = 1.0.38
 	pkgrel = 1
 	url = https://github.com/sonatype-nexus-community/nancy
 	arch = x86_64
 	arch = i686
 	license = Apache
 	provides = nancy
-	source_x86_64 = https://github.com/sonatype-nexus-community/nancy/releases/download/v1.0.37/nancy-v1.0.37-linux-amd64.tar.gz
-	sha256sums_x86_64 = d112eee494790f65c972bf2442b45163ff21cc6bfbba3fd8800e2830ff6a9977
-	source_i686 = https://github.com/sonatype-nexus-community/nancy/releases/download/v1.0.37/nancy-v1.0.37-linux-386.tar.gz
-	sha256sums_i686 = 2d8b2be73ea2a03f63bb25016765ab0d1d21b9f1a1538e0c9a0272c0b26721ee
+	source_x86_64 = https://github.com/sonatype-nexus-community/nancy/releases/download/v1.0.38/nancy-v1.0.38-linux-amd64.tar.gz
+	sha256sums_x86_64 = 8142f7f5522d867f46cb943f34b3d360d92d3031d758b4a3552c6a445e398384
+	source_i686 = https://github.com/sonatype-nexus-community/nancy/releases/download/v1.0.38/nancy-v1.0.38-linux-386.tar.gz
+	sha256sums_i686 = 7ac8750f942b5e491363c9152794202b3c28bd15a1248c00304e2f306447684c
 
 pkgname = nancy-bin
