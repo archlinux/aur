@@ -1,0 +1,11 @@
+pkgbase = libcurl-gnutls.so
+	pkgdesc = Unversioned soname for libcurl-gnutls
+	pkgver = 7.85.0
+	pkgrel = 1
+	url = https://curl.haxx.se
+	arch = any
+	license = MIT
+	depends = libcurl-gnutls
+	provides = libcurl-gnutls.so
+
+pkgname = libcurl-gnutls.so
