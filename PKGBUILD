@@ -11,7 +11,7 @@ groups=('science' 'yorick-all')
 depends=('yorick' 'yorick-yutils-git')
 makedepends=('yorick')
 
-_gitroot="git://github.com/LLNL/yorick-ml4.git"
+_gitroot="https://github.com/LLNL/yorick-ml4.git"
 _gitname="yorick-ml4"
 
 build() {
