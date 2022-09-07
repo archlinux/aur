@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-cflib
-pkgver=0.1.19
+pkgver=0.1.20
 pkgrel=1
 pkgdesc='Python library to communicate with Crazyflie'
 arch=('x86_64')
@@ -9,22 +9,19 @@ url='https://github.com/bitcraze/crazyflie-lib-python'
 license=('GPL-2.0')
 depends=('python' 'python-pyusb' 'python-libusb-package' 'python-scipy'
          'python-numpy' 'python-opencv')
-makedepends=('python' 'python-setuptools')
+makedepends=('python' 'python-build' 'python-installer' 'python-wheel'
+             'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bitcraze/crazyflie-lib-python/archive/$pkgver.tar.gz")
-sha256sums=('15156866803e57417b9c66cbc4e08da99eca5ff166bfc0fdb66378831373cc9a')
+sha256sums=('b947b54e07dfcf6499fb5ace57aff8d33db61e9e58e8891a78fd5f49170ca7ed')
 
 _pkgname=crazyflie-lib-python
 
-prepare() {
-  sed -i '/opencv/d' ${srcdir}/${_pkgname}-${pkgver}/setup.py
-}
-
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir"/ --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }

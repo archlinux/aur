@@ -1,11 +1,14 @@
 pkgbase = python-cflib
 	pkgdesc = Python library to communicate with Crazyflie
-	pkgver = 0.1.19
+	pkgver = 0.1.20
 	pkgrel = 1
 	url = https://github.com/bitcraze/crazyflie-lib-python
 	arch = x86_64
 	license = GPL-2.0
 	makedepends = python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pyusb
@@ -13,7 +16,7 @@ pkgbase = python-cflib
 	depends = python-scipy
 	depends = python-numpy
 	depends = python-opencv
-	source = python-cflib-0.1.19.tar.gz::https://github.com/bitcraze/crazyflie-lib-python/archive/0.1.19.tar.gz
-	sha256sums = 15156866803e57417b9c66cbc4e08da99eca5ff166bfc0fdb66378831373cc9a
+	source = python-cflib-0.1.20.tar.gz::https://github.com/bitcraze/crazyflie-lib-python/archive/0.1.20.tar.gz
+	sha256sums = b947b54e07dfcf6499fb5ace57aff8d33db61e9e58e8891a78fd5f49170ca7ed
 
 pkgname = python-cflib
