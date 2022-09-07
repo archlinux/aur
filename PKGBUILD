@@ -9,7 +9,7 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=obs-studio-browser
 pkgver=28.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64")
 url="https://github.com/obsproject/obs-studio"
@@ -37,8 +37,6 @@ depends=(
          
   # AUR Packages
   "ffmpeg-obs>=5" "vlc-luajit" "ftl-sdk"
-
-  "cef-minimal-obs=103.0.0_5060_shared_textures_143.2591+g4204d54+chromium_103.0.5060.134_1"
 )
 # To manage mbedtls rebuild easily, this will prevent you to rebuild OBS on non-updated system
 # For Manjaro user this feature is disabled
@@ -64,6 +62,8 @@ makedepends=(
 
   # AUR Packages
   "libajantv2"
+
+  "cef-minimal-obs=103.0.0_5060_shared_textures_143.2591+g4204d54+chromium_103.0.5060.134_1"
 )
 # To manage python rebuild easily, this will prevent you to rebuild OBS on non-updated system
 # For Manjaro user this feature is disabled
