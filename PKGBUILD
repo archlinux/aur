@@ -3,7 +3,8 @@
 
 pkgname=chromium-extension-rggl
 _extension=rggl
-pkgver=5.9.9
+pkgver=6.0.8
+_commit=ff37a4666304f381c8d6cffe4409a94dd07e09e8
 pkgrel=1
 pkgdesc="Remove German Gender Language - chromium extension"
 arch=('any')
@@ -27,13 +28,15 @@ build() {
 }
 EOF
     cd "$_extension-$pkgver"
-    git checkout a1f13e70e2126c433cd6e42c053161c92e258aac
+    git checkout "$_commit"
+    cd "src_edge_chrome_manifest_v3"
     jq --ascii-output --arg key "$pubkey" '. + {key: $key}' manifest.json > manifest.json.new
     mv manifest.json.new manifest.json
-    cd ..
+    cd "$srcdir"
     tmpdir="$(mktemp -d chromium-pack-XXXXXX)"
-    chromium --user-data-dir="$tmpdir" --pack-extension="$_extension-$pkgver" --pack-extension-key="$_extension.pem"
-    mv "$_extension-$pkgver.crx" "$pkgname-$pkgver.crx"
+    mv "$_extension-$pkgver/src_edge_chrome_manifest_v3" "$srcdir"
+    chromium --user-data-dir="$tmpdir" --pack-extension="src_edge_chrome_manifest_v3" --pack-extension-key="$_extension.pem"
+    mv "src_edge_chrome_manifest_v3.crx" "$pkgname-$pkgver.crx"
 }
 
 package() {
