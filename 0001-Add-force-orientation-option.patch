@@ -1,4 +1,4 @@
-From 62ff738299f4ec6331f9ebae569b4e295c15b204 Mon Sep 17 00:00:00 2001
+From ef13b55736576d1a0376c02e2be44a4ceabd0b1d Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Joaqu=C3=ADn=20Ignacio=20Aramend=C3=ADa?=
  <samsagax@gmail.com>
 Date: Mon, 18 Jul 2022 19:59:41 -0300
@@ -12,11 +12,11 @@ Subject: [PATCH 1/2] Add --force-orientation option
  4 files changed, 138 insertions(+), 29 deletions(-)
 
 diff --git a/src/drm.cpp b/src/drm.cpp
-index fce6052..af80966 100644
+index 90e2531..fd86605 100644
 --- a/src/drm.cpp
 +++ b/src/drm.cpp
-@@ -42,6 +42,8 @@ bool g_bDebugLayers = false;
- const char *g_sOutputName = nullptr;
+@@ -48,6 +48,8 @@ const char *g_sOutputName = nullptr;
+ bool g_bSupportsAsyncFlips = false;
  
  enum drm_mode_generation g_drmModeGeneration = DRM_MODE_GENERATE_CVT;
 +enum g_panel_orientation g_drmModeOrientation = PANEL_ORIENTATION_AUTO;
@@ -24,7 +24,7 @@ index fce6052..af80966 100644
  
  static LogScope drm_log("drm");
  static LogScope drm_verbose_log("drm", LOG_SILENT);
-@@ -1189,7 +1191,7 @@ void drm_lock_fbid( struct drm_t *drm, uint32_t fbid )
+@@ -1244,7 +1246,7 @@ void drm_lock_fbid( struct drm_t *drm, uint32_t fbid )
  void drm_unlock_fbid( struct drm_t *drm, uint32_t fbid )
  {
  	struct fb &fb = get_fb( *drm, fbid );
@@ -33,7 +33,7 @@ index fce6052..af80966 100644
  	assert( fb.held_refs > 0 );
  	if ( --fb.held_refs != 0 )
  		return;
-@@ -1230,7 +1232,26 @@ drm_prepare_basic( struct drm_t *drm, const struct FrameInfo_t *frameInfo )
+@@ -1285,7 +1287,26 @@ drm_prepare_basic( struct drm_t *drm, const struct FrameInfo_t *frameInfo )
  
  	drm->fbids_in_req.push_back( fb_id );
  
@@ -61,7 +61,7 @@ index fce6052..af80966 100644
  
  	add_plane_property(req, drm->primary, "FB_ID", fb_id);
  	add_plane_property(req, drm->primary, "CRTC_ID", drm->crtc->id);
-@@ -1480,7 +1501,25 @@ drm_prepare_liftoff( struct drm_t *drm, const struct FrameInfo_t *frameInfo, boo
+@@ -1535,7 +1556,25 @@ drm_prepare_liftoff( struct drm_t *drm, const struct FrameInfo_t *frameInfo, boo
  			liftoff_layer_set_property( drm->lo_layers[ i ], "SRC_W", entry.layerState[i].srcW );
  			liftoff_layer_set_property( drm->lo_layers[ i ], "SRC_H", entry.layerState[i].srcH );
  
@@ -88,7 +88,7 @@ index fce6052..af80966 100644
  
  			liftoff_layer_set_property( drm->lo_layers[ i ], "CRTC_X", entry.layerState[i].crtcX);
  			liftoff_layer_set_property( drm->lo_layers[ i ], "CRTC_Y", entry.layerState[i].crtcY);
-@@ -1957,7 +1996,7 @@ bool drm_update_color_mtx(struct drm_t *drm)
+@@ -2020,7 +2059,7 @@ bool drm_update_color_mtx(struct drm_t *drm)
  		drm_ctm.matrix[i] = color.s31_32;
  	}
  
@@ -97,7 +97,7 @@ index fce6052..af80966 100644
  	if (drmModeCreatePropertyBlob(drm->fd, &drm_ctm,
  			sizeof(struct drm_color_ctm), &blob_id) != 0) {
  		drm_log.errorf_errno("Unable to create CTM property blob");
-@@ -2035,7 +2074,7 @@ bool drm_update_gamma_lut(struct drm_t *drm)
+@@ -2098,7 +2137,7 @@ bool drm_update_gamma_lut(struct drm_t *drm)
  		gamma_lut[i].blue  = drm_calc_lut_value( b_exp, drm->pending.color_linear_gain[2], drm->pending.color_gain[2], drm->pending.gain_blend );
  	}
  
@@ -106,7 +106,7 @@ index fce6052..af80966 100644
  	if (drmModeCreatePropertyBlob(drm->fd, gamma_lut,
  			lut_entries * sizeof(struct drm_color_lut), &blob_id) != 0) {
  		drm_log.errorf_errno("Unable to create gamma LUT property blob");
-@@ -2086,7 +2125,7 @@ bool drm_update_degamma_lut(struct drm_t *drm)
+@@ -2149,7 +2188,7 @@ bool drm_update_degamma_lut(struct drm_t *drm)
  		degamma_lut[i].blue  = drm_quantize_lut_value( safe_pow( input, drm->pending.color_degamma_exponent[screen_type][2] ) );
  	}
  
@@ -116,10 +116,10 @@ index fce6052..af80966 100644
  			lut_entries * sizeof(struct drm_color_lut), &blob_id) != 0) {
  		drm_log.errorf_errno("Unable to create degamma LUT property blob");
 diff --git a/src/drm.hpp b/src/drm.hpp
-index 7cf2710..8deb8b2 100644
+index d954871..603dacc 100644
 --- a/src/drm.hpp
 +++ b/src/drm.hpp
-@@ -86,7 +86,7 @@ struct fb {
+@@ -92,7 +92,7 @@ struct fb {
  	uint32_t id;
  	/* Client buffer, if any */
  	struct wlr_buffer *buf;
@@ -128,7 +128,7 @@ index 7cf2710..8deb8b2 100644
  	 * doesn't need to be atomic as it's only ever
  	 * modified/read from the steamcompmgr thread */
  	int held_refs;
-@@ -108,19 +108,19 @@ struct drm_t {
+@@ -114,19 +114,19 @@ struct drm_t {
  	std::unordered_map< uint32_t, struct connector > connectors;
  
  	std::map< uint32_t, drmModePropertyRes * > props;
@@ -152,7 +152,7 @@ index 7cf2710..8deb8b2 100644
  	struct liftoff_device *lo_device;
  	struct liftoff_output *lo_output;
  	struct liftoff_layer *lo_layers[ k_nMaxLayers ];
-@@ -158,16 +158,16 @@ struct drm_t {
+@@ -164,16 +164,16 @@ struct drm_t {
  	std::vector < uint32_t > fbids_queued;
  	/* FBs currently on screen */
  	std::vector < uint32_t > fbids_on_screen;
@@ -173,7 +173,7 @@ index 7cf2710..8deb8b2 100644
  	std::atomic < uint64_t > flipcount;
  
  	std::atomic < bool > paused;
-@@ -192,7 +192,16 @@ enum drm_mode_generation {
+@@ -200,7 +200,16 @@ enum drm_mode_generation {
  	DRM_MODE_GENERATE_FIXED,
  };
  
@@ -191,10 +191,10 @@ index 7cf2710..8deb8b2 100644
  bool init_drm(struct drm_t *drm, int width, int height, int refresh);
  void finish_drm(struct drm_t *drm);
 diff --git a/src/main.cpp b/src/main.cpp
-index a7c6f86..ec94acb 100644
+index 9f88dfc..6ceb80f 100644
 --- a/src/main.cpp
 +++ b/src/main.cpp
-@@ -78,6 +78,7 @@ const struct option *gamescope_options = (struct option[]){
+@@ -79,6 +79,7 @@ const struct option *gamescope_options = (struct option[]){
  	{ "composite-debug", no_argument, nullptr, 0 },
  	{ "disable-xres", no_argument, nullptr, 'x' },
  	{ "fade-out-duration", required_argument, nullptr, 0 },
@@ -202,7 +202,7 @@ index a7c6f86..ec94acb 100644
  
  	{} // keep last
  };
-@@ -106,6 +107,7 @@ const char usage[] =
+@@ -107,6 +108,7 @@ const char usage[] =
  	"  -e, --steam                    enable Steam integration\n"
  	"  --xwayland-count               create N xwayland servers\n"
  	"  --prefer-vk-device             prefer Vulkan device for compositing (ex: 1002:7300)\n"
@@ -210,7 +210,7 @@ index a7c6f86..ec94acb 100644
  	"\n"
  	"Nested mode options:\n"
  	"  -o, --nested-unfocused-refresh game refresh rate when unfocused\n"
-@@ -215,6 +217,22 @@ static enum drm_mode_generation parse_drm_mode_generation(const char *str)
+@@ -217,6 +219,22 @@ static enum drm_mode_generation parse_drm_mode_generation(const char *str)
  	}
  }
  
@@ -233,7 +233,7 @@ index a7c6f86..ec94acb 100644
  static void handle_signal( int sig )
  {
  	switch ( sig ) {
-@@ -369,6 +387,8 @@ int main(int argc, char **argv)
+@@ -371,6 +389,8 @@ int main(int argc, char **argv)
  					g_nTouchClickMode = g_nDefaultTouchClickMode;
  				} else if (strcmp(opt_name, "generate-drm-mode") == 0) {
  					g_drmModeGeneration = parse_drm_mode_generation( optarg );
@@ -242,7 +242,7 @@ index a7c6f86..ec94acb 100644
  				} else if (strcmp(opt_name, "sharpness") == 0 ||
  						   strcmp(opt_name, "fsr-sharpness") == 0) {
  					g_upscalerSharpness = atoi( optarg );
-@@ -529,7 +549,7 @@ int main(int argc, char **argv)
+@@ -533,7 +553,7 @@ int main(int argc, char **argv)
  		fprintf( stderr, "Failed to initialize wlserver\n" );
  		return 1;
  	}
@@ -252,7 +252,7 @@ index a7c6f86..ec94acb 100644
  
  	setenv("DISPLAY", base_server->get_nested_display_name(), 1);
 diff --git a/src/wlserver.cpp b/src/wlserver.cpp
-index 117373e..4edd457 100644
+index 99ba75f..df2b154 100644
 --- a/src/wlserver.cpp
 +++ b/src/wlserver.cpp
 @@ -6,7 +6,7 @@
@@ -264,15 +264,15 @@ index 117373e..4edd457 100644
  
  #include <linux/input-event-codes.h>
  
-@@ -64,6 +64,7 @@ struct wlserver_content_override {
+@@ -65,6 +65,7 @@ struct wlserver_content_override {
  enum wlserver_touch_click_mode g_nDefaultTouchClickMode = WLSERVER_TOUCH_CLICK_LEFT;
  enum wlserver_touch_click_mode g_nTouchClickMode = g_nDefaultTouchClickMode;
  
 +
  static struct wl_list pending_surfaces = {0};
  
- static void wlserver_surface_set_wlr( struct wlserver_surface *surf, struct wlr_surface *wlr_surf );
-@@ -861,18 +862,38 @@ void wlserver_touchmotion( double x, double y, int touch_id, uint32_t time )
+ static void wlserver_x11_surface_info_set_wlr( struct wlserver_x11_surface_info *surf, struct wlr_surface *wlr_surf );
+@@ -948,18 +949,38 @@ void wlserver_touchmotion( double x, double y, int touch_id, uint32_t time )
  {
  	if ( wlserver.mouse_focus_surface != NULL )
  	{
@@ -317,7 +317,7 @@ index 117373e..4edd457 100644
  		wlserver.mouse_surface_cursorx = tx;
  		wlserver.mouse_surface_cursory = ty;
  
-@@ -900,18 +921,38 @@ void wlserver_touchdown( double x, double y, int touch_id, uint32_t time )
+@@ -987,18 +1008,38 @@ void wlserver_touchdown( double x, double y, int touch_id, uint32_t time )
  {
  	if ( wlserver.mouse_focus_surface != NULL )
  	{

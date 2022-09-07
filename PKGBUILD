@@ -5,7 +5,7 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-plus-git
-pkgver=3.11.43.r2.gc40c8aa
+pkgver=3.11.43.r21.gec1ce12
 pkgrel=1
 pkgdesc="Micro-compositor from Valve with added patches not yet commited upstream"
 arch=(x86_64)
@@ -13,7 +13,7 @@ url="https://github.com/Plagman/gamescope"
 license=("custom:BSD-2-Clause")
 depends=(
     # gamescope
-    "libxcomposite" "libxtst" "libxres" "sdl2" "pipewire" "libliftoff"
+    "libxcomposite" "libxtst" "libxres" "sdl2" "pipewire"
     # wlroots
     "libdrm" "libxkbcommon" "libinput" "pixman" "xorg-xwayland" "xcb-util-renderutil" "xcb-util-wm" "xcb-util-errors" "seatd"
 )
@@ -24,9 +24,11 @@ source=("0001-Add-force-orientation-option.patch"
 				"0002-Force-orientation-only-to-internal-display.patch"
 				"$_pkgname::git+https://github.com/Plagman/gamescope.git"
         "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
+        "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
         "git+https://github.com/nothings/stb.git")
-sha512sums=('6f7b56a3ff495401c6fc86a54cb14306aaaeb87c1746a4024b7a31af933933a0b1704be7daa7c3477bbd311ca266c9a3bf4d2118dfa14755a781aa455c530fd3'
-            '6a804987c2845e7ef0cbbfc0a9f8c66b96b489d3929d3cc9bdaa3edbeef5876c91fca16074ac1821ab785a23bcd2b12b9bb908d462e11750e87e4db0e33da3cd'
+sha512sums=('0af3fd13dd47930e10d528d267f93b76d6605a0fc153ee9378cfbde3b1d61abbe7bc40edfec687ebffa0bd3ce4bbb8b0e05bcad8add4e9b11e35c90da6ca57f4'
+            '346847ee4ce8fb7de0b1693c2f30ab30a5dc3f304da90172516a882605780b33bb7e3b8e6fee92fd59a934ad4fa26d484f8e8c3dbed5110a75fbfd5a9e16694f'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -50,7 +52,7 @@ prepare() {
 
     git submodule init
     git config submodule.subprojects/wlroots.url "$srcdir/wlroots"
-    git config submodule.subprojects/libliftoff.active "false"
+		git config submodule.subprojects/libliftoff.url "$srcdir/libliftoff"
     git submodule update
 
     # make stb.wrap use our local clone
@@ -61,7 +63,7 @@ prepare() {
 build() {
 
     arch-meson "$srcdir/$_pkgname" build \
-        --force-fallback-for=wlroots,stb \
+        --force-fallback-for=wlroots,libliftoff,stb \
         -Dpipewire=enabled
     ninja -C build
 }
@@ -72,14 +74,7 @@ check() {
 }
 
 package() {
-
-    DESTDIR="$pkgdir" ninja -C build install
-
-    # Delete library files that were linked statically
-    rm -rfv "$pkgdir/usr/include/wlr" "$pkgdir/usr/lib/libwlroots.a" "$pkgdir/usr/lib/libwlroots*" "$pkgdir/usr/lib/pkgconfig/wlroots.pc"
-
-    # Delete empty directories
-    find "$pkgdir" -type d -empty -print -delete
+    meson install -C build --skip-subprojects --destdir "$pkgdir"
 
     cd "$srcdir/$_pkgname"
 

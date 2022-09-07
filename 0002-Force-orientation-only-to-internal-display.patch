@@ -1,4 +1,4 @@
-From 4152008a08bcad741ca8c4a0b977cb1ab5b2c15e Mon Sep 17 00:00:00 2001
+From 62c0942050cc6c5d31e71fd154fd223f54dd0efd Mon Sep 17 00:00:00 2001
 From: alphonsez1 <alphonsez743@gmail.com>
 Date: Sat, 3 Sep 2022 13:49:11 -0700
 Subject: [PATCH 2/2] Force orientation only to internal display.
@@ -8,10 +8,10 @@ Subject: [PATCH 2/2] Force orientation only to internal display.
  1 file changed, 51 insertions(+), 34 deletions(-)
 
 diff --git a/src/drm.cpp b/src/drm.cpp
-index af80966..168fb54 100644
+index fd86605..0dd12f5 100644
 --- a/src/drm.cpp
 +++ b/src/drm.cpp
-@@ -1232,25 +1232,33 @@ drm_prepare_basic( struct drm_t *drm, const struct FrameInfo_t *frameInfo )
+@@ -1287,25 +1287,33 @@ drm_prepare_basic( struct drm_t *drm, const struct FrameInfo_t *frameInfo )
  
  	drm->fbids_in_req.push_back( fb_id );
  
@@ -62,7 +62,7 @@ index af80966..168fb54 100644
  	}
  
  	add_plane_property(req, drm->primary, "FB_ID", fb_id);
-@@ -1501,25 +1509,34 @@ drm_prepare_liftoff( struct drm_t *drm, const struct FrameInfo_t *frameInfo, boo
+@@ -1556,25 +1564,34 @@ drm_prepare_liftoff( struct drm_t *drm, const struct FrameInfo_t *frameInfo, boo
  			liftoff_layer_set_property( drm->lo_layers[ i ], "SRC_W", entry.layerState[i].srcW );
  			liftoff_layer_set_property( drm->lo_layers[ i ], "SRC_H", entry.layerState[i].srcH );
  
