@@ -1,13 +1,13 @@
-# Maintainer: Ethan Zonca <e@ethanzonca.com>
+# Contributor: Ethan Zonca <e@ethanzonca.com>
 
 pkgname='borgweb-git'
 pkgdesc='Web front-end for Borg'
-pkgver=0.1.4.r59.ga9e694d
+pkgver=0.3.0.r8.ge609ec4
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://github.com/borgbackup/borgweb'
-depends=('python' 'python-tox' 'python-pytest' 'python-click' 'python-itsdangerous' 'python-werkzeug' 'python-flask' 'npm')
-makedepends=('python-pip')
+depends=('python-flask')
+makedepends=('git' 'python-setuptools-scm' 'npm')
 
 source=('git+https://github.com/borgbackup/borgweb.git')
 sha512sums=('SKIP')
