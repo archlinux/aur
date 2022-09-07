@@ -14,7 +14,6 @@ pkgbase = flax
 	optdepends = portaudio: PortAudio audio driver
 	optdepends = libpulse: PulseAudio audio driver
 	optdepends = jack: JACK audio driver
-	provides = thunderbird=1.4.6334
 	noextract = FlaxEditorLinux.zip
 	noextract = Linux.zip
 	source = https://vps2.flaxengine.com/store/builds/Package_1_04_06334/FlaxEditorLinux.zip
