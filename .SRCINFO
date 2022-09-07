@@ -1,6 +1,6 @@
 pkgbase = cysinfo-git
 	pkgdesc = A super simple and minimal fetch tool.
-	pkgver = r5.278d10a
+	pkgver = r19.89130a8
 	pkgrel = 1
 	url = https://gitlab.com/charged1/cysinfo.git
 	arch = any
