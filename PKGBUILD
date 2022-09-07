@@ -41,6 +41,8 @@ package() {
 	cd "${srcdir}/${_pkgname}"
 	install -Dm755 -t "${pkgdir}/usr/bin" ./lf
 
+	install -Dm644 -t "${pkgdir}/usr/share/applications" ./lf.desktop
+
 	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ./LICENSE
 	install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" ./README.md ./etc/lfrc.example
 	install -Dm644 -t "${pkgdir}/usr/share/${pkgname}" ./etc/lfcd.sh
