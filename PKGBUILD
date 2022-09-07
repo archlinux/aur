@@ -1,4 +1,4 @@
-# Maintainer: Xuanwo <qie2035@qq.com>
+# Maintainer: QiE2035 <qie2035@qq.com>
 
 _pkgname=logseq-desktop
 pkgname=$_pkgname-non-opt
