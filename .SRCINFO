@@ -6,7 +6,6 @@ pkgbase = arjun
 	arch = x86_64
 	license = GPL3
 	makedepends = python-setuptools
-	depends = python
 	depends = python-requests
 	depends = python-dicttoxml
 	source = arjun-2.1.5.tar.gz::https://github.com/s0md3v/Arjun/archive/2.1.5.tar.gz
