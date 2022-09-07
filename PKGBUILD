@@ -1,8 +1,8 @@
 # Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=hqplayer4
-pkgver=4.19.2
-_rpmpkgver=4.19.2-58
+pkgver=4.19.3
+_rpmpkgver=4.19.3-59
 pkgrel=1
 pkgdesc="The high-end upsampling multichannel software HD-audio player"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('hqplayer-client' 'evince: hqplayer manual reading')
 conflicts=('hqplayer-embedded-amd' 'hqplayer-embedded')
 provides=('hqplayer')
 source=("https://www.signalyst.eu/bins/hqplayer/fc36/hqplayer4desktop-$_rpmpkgver.fc36.x86_64.rpm")
-sha256sums=('5fc9ffaa1d41d1e72760f8cd68d067eae0dcfea428faa567dfc1659f041bdb8b')
+sha256sums=('644f5966ea752ef700c6ae0c0647165a6cb24da1c43e5180868eb862fa0c81a9')
 options=(!strip)
 
 package() {
