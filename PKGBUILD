@@ -14,7 +14,7 @@ license=('GPL')
 
 depends=('libdrm' 'pango' 'systemd')
 makedepends=('docbook-xsl')
-optdepends=('cantarell-fonts: For true type font support'
+optdepends=('cantarell-fonts: For text output, e.g. during decryption'
         'xf86-video-fbdev: Support special graphic cards on early startup')
 backup=('etc/plymouth/plymouthd.conf')
 
@@ -110,7 +110,4 @@ package() {
 
 	install -Dm644 "$srcdir/plymouth-deactivate.service" 	"$pkgdir/usr/lib/systemd/system/plymouth-deactivate.service"
 	install -Dm644 "$pkgdir/usr/share/plymouth/plymouthd.defaults" "$pkgdir/etc/plymouth/plymouthd.conf"
-	
-	# remove unused scripts
-	rm -rf "$pkgdir"/usr/lib/plymouth/plymouth-{generate,populate}-initrd
 }
