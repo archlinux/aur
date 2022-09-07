@@ -1,6 +1,6 @@
 pkgbase = r-tweenr
 	pkgdesc = Interpolate Data for Smooth Animations
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=tweenr
 	arch = i686
@@ -14,9 +14,9 @@ pkgbase = r-tweenr
 	depends = r-vctrs
 	optdepends = r-testthat
 	optdepends = r-covr
-	source = https://cran.r-project.org/src/contrib/tweenr_2.0.1.tar.gz
+	source = https://cran.r-project.org/src/contrib/tweenr_2.0.2.tar.gz
 	source = CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT
-	sha256sums = 1521da97edabfec6f038ff0bde04abc1b6fc8dec8b04221e4da271d8efc38622
+	sha256sums = 64bbfded418d4880e3636f434571c20303d2f66be6950d64583a864fbb661ff3
 	sha256sums = e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b
 
 pkgname = r-tweenr
