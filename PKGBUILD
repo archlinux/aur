@@ -3,7 +3,7 @@ pkgname='dust-mail-client-git'
 
 arch=('x86_64')
 
-pkgver=0.1.4.r25.ge1b9dfc
+pkgver=0.1.4.r47.gd0d93b8
 pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -11,7 +11,7 @@ pkgver() {
 pkgrel=1
 epoch=1
 
-makedepends=('pnpm-bin' 'nvm' 'cargo' 'git' 'appstream' 'wget')
+makedepends=('pnpm-bin' 'nvm' 'cargo' 'git' 'appstream' 'wget' 'webkit2gtk' 'appmenu-gtk-module' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libvips')
 
 pkgdesc='A simple and fast mail client (Git version)'
 
@@ -55,6 +55,8 @@ build() {
   cd "$pkgname"
 
   pnpm install --frozen-lockfile --offline
+
+  pnpm run build --filter @dust-mail/client
 
   cd "apps/client"
 
