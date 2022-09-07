@@ -1,12 +1,12 @@
 pkgbase = flightgear-data
 	pkgdesc = Base-Data for the opensource flight-simulator.
-	pkgver = 2020.3.12
+	pkgver = 2020.3.13
 	pkgrel = 1
 	url = http://www.flightgear.org/
 	arch = any
 	license = GPL
 	options = !strip
-	source = https://downloads.sourceforge.net/project/flightgear/release-2020.3/FlightGear-2020.3.12-data.txz
-	sha256sums = 802b16f5ef08b97c2625f01fc49fe73911795bf3f00a46be3bc0a1c26dba3a76
+	source = https://downloads.sourceforge.net/project/flightgear/release-2020.3/FlightGear-2020.3.13-data.txz
+	sha256sums = 0b7894540ec8250efb39d5dc6819d2a43a613058e61599a7d27a3342f7714893
 
 pkgname = flightgear-data
