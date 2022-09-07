@@ -2,7 +2,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=libipuz-git
-pkgver=r222.d6ab97a
+pkgver=0.2.0.r0.g9e292ca
 pkgrel=1
 pkgdesc='Library for parsing .ipuz puzzle files'
 arch=(x86_64 aarch64)
@@ -17,12 +17,10 @@ b2sums=(SKIP)
 
 pkgver() {
 	cd "${srcdir}/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	CFLAGS="${CFLAGS} -Wno-error=format-security"
-
 	arch-meson "${pkgname%-git}" build
 	meson compile -C build
 }
