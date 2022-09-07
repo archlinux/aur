@@ -1,0 +1,6 @@
+*.pkg.*
+*.crx
+src
+pkg
+*.tar.*
+*.pem
