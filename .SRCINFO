@@ -1,0 +1,16 @@
+pkgbase = kyocera-print-driver
+	pkgdesc = Kyocera linux driver for models FS-1020, FS-1025, FS-1120, FS-1125, FS-1040, FS-1041, FS-1060, FS-1061
+	pkgver = 1.1203
+	pkgrel = 1
+	url = https://www.kyoceradocumentsolutions.eu/
+	arch = x86_64
+	license = custom:proprietary
+	makedepends = tar
+	depends = libcups
+	noextract = kyocera-print-driver-1.1203-license.pdf
+	source = kyocera-print-driver-1.1203.zip::https://www.kyoceradocumentsolutions.eu/content/download-center/eu/drivers/all/LinuxDrv_1_1203_FS_1x2xMFP_zip.download.zip
+	source = kyocera-print-driver-1.1203-license.pdf::https://www.kyoceradocumentsolutions.eu/content/dam/kyocera/common/documents/20181012%20Terms%20to%20accept%20before%20downloadingv2.pdf
+	md5sums = 203cd4492c2b22b4fad046b67b4b022e
+	md5sums = 4fb159cde2f3de8bb0c9533ab1f934a2
+
+pkgname = kyocera-print-driver
