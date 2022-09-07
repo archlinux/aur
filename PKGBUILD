@@ -10,7 +10,7 @@
 pkgbase=firefox-esr
 pkgname=(firefox-esr)
 pkgver=102.2.0
-pkgrel=1.0
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(x86_64)
 license=(MPL GPL LGPL)
