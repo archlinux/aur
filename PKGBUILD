@@ -5,7 +5,7 @@ pkgname=(
   regclient-regsync
   regclient-regbot
 )
-pkgver=0.4.2
+pkgver=0.4.4
 pkgrel=0
 pkgdesc='Docker and OCI Registry tooling - regctl / regsync / regbot'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ makedepends=('go' 'git')
 source=("https://github.com/regclient/regclient/archive/v$pkgver/$pkgbase-$pkgver.tar.gz")
 # how to build git tag from github
 #source=("$pkgbase-$pkgver.tar.gz::https://github.com/regclient/regclient/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5ffafbcb0bc8498131e18d10579328eb9d7ae9544b3fd70f49930162140cb6d2')
+sha256sums=('fd47ec7f276a11d28767b606a52ad41ea6dcc8d05725cdab304aac8dd4d207db')
 _bins=('regctl' 'regsync' 'regbot')
 
 build() {
@@ -41,7 +41,8 @@ build() {
 
 check() {
 	cd "${pkgbase}-${pkgver}"
-	go test -mod=readonly ./...
+	# ignore relative path errors because credhelper_test.go in regclient tests requires it
+	GODEBUG=execerrdot=0 go test -mod=readonly ./...
 }
 
 _pkgcommon() {
