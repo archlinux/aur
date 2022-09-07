@@ -5,7 +5,7 @@ _pkgname=${pkgname}
 _githuborg=${_projectname}
 pkgdesc="Skywire Mainnet Node implementation. Debian package; cross-compile."
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
-pkgver='1.1.0'
+pkgver='1.1.1'
 pkgrel=2
 #pkgrel=2
 _rc=''
@@ -33,7 +33,7 @@ source=("${url}/archive/refs/tags/${_tag_ver}.tar.gz"
 "postinst.sh::https://aur.archlinux.org/cgit/aur.git/plain/postinst.sh?h=skywire-bin"
 "prerm.sh::https://aur.archlinux.org/cgit/aur.git/plain/prerm.sh?h=skywire-bin"
 )
-sha256sums=('2f50904749231ffddf8ca348214491289d1ca099192caf0c9d0a9a7409f9a7ff'
+sha256sums=('4eb13dba4e8aea7c21290ab03374e98f2597b3ddc4b12de89e20d61c0110e233'
             '08f0c625a3ae8810f0468a45aa2e463425ec307441f71f6ba48114bda2055316'
             'f0300bcde06b6818b637ccc23fa8206a40e67f63815781d265bd10d2cda93e65'
             '0c20dd44eca0266a3a10fab24c657295a833eba9f78c6b1cf06132b093ac3ba8'
