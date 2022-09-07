@@ -11,7 +11,7 @@ groups=('science' 'yorick-all')
 depends=('yorick')
 makedepends=('yorick')
 
-_gitroot="git://github.com/frigaut/yorick-usleep.git"
+_gitroot="https://github.com/frigaut/yorick-usleep.git"
 _gitname="yorick-usleep"
 
 build() {
