@@ -5,7 +5,7 @@
 
 pkgname=vgrep
 pkgver=2.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Reimpementation of the ancient cgvg perl scripts"
 arch=('x86_64' 'i686')
 license=('GPL3')
