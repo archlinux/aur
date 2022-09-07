@@ -1,6 +1,6 @@
 pkgbase = pastix
 	pkgdesc = High performance parallel solver for very large sparse linear systems based on direct methods
-	pkgver = 6.2.1
+	pkgver = 6.2.2
 	pkgrel = 1
 	url = https://gitlab.inria.fr/solverstack/pastix
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = pastix
 	provides = libpastix_kernels.so
 	provides = libspm.so
 	provides = libspmf.so
-	source = pastix::git+https://gitlab.inria.fr/solverstack/pastix.git#tag=v6.2.1
+	source = pastix::git+https://gitlab.inria.fr/solverstack/pastix.git#tag=v6.2.2
 	source = gitmodules.diff
 	md5sums = SKIP
 	md5sums = 59430d563cc9a665292c0d793520e148
