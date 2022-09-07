@@ -6,7 +6,7 @@
 
 pkgname=gnome-shell-extension-coverflow-alt-tab-git
 pkgver=1.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Replacement of Alt-Tab, iterates through windows in a cover-flow manner"
 arch=('any')
 url="https://github.com/dmo60/CoverflowAltTab"
@@ -67,8 +67,9 @@ package_10_schemas() {
 }
 depends[125]=gnome-shell
 
+readonly prefixes=(3. 1:3. 1:)
 prefix() {
-  [ "$1" -le 30 ] || echo 1:
+  echo "${prefixes[(( ("$1" > 30) + ("$1" >= 40) ))]}"
 }
 
 package_20_version() {
@@ -78,13 +79,13 @@ package_20_version() {
     tr -d '\n' | grep -Po '(?<="shell-version": \[)[^\[\]]*(?=\])' | \
     tr '\n," ' '\n' | sed 's/3\.//g;/^$/d' | sort -n -t. -k 1,1))
   local min="${compatibles[0]}"
-  depends+=("gnome-shell>=$(prefix "${min%%.*}")3.$min")
+  depends+=("gnome-shell>=$(prefix "${min%%.*}")$min")
   if [ "${compatibles[-1]}" != $(
     LD_PRELOAD= gnome-shell --version | \
-      grep -Po '(?<=GNOME Shell 3\.)[[:digit:]]+'
+      sed -n 's/^GNOME Shell \(3\.\)\?\([[:digit:]]\+\).*$/\2/p'
   ) ]; then
     let max=${compatibles[-1]%%.*}+1
-    depends+=("gnome-shell<$(prefix "$max")3.$max")
+    depends+=("gnome-shell<$(prefix "$max")$max")
   fi
   unset depends[125]
 }
