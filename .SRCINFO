@@ -1,11 +1,11 @@
 pkgbase = r352
 	pkgdesc = Language and environment for statistical computing and graphicsi (version 3.5.2)
 	pkgver = 3.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.r-project.org/
 	arch = x86_64
 	license = GPL
-	makedepends = jdk7-openjdk
+	makedepends = jdk-openjdk
 	makedepends = gcc-fortran
 	makedepends = tk
 	depends = blas

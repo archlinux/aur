@@ -5,7 +5,7 @@
 
 pkgname=r352
 pkgver=3.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Language and environment for statistical computing and graphicsi (version 3.5.2)'
 arch=('x86_64')
 license=('GPL')
