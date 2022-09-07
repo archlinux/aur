@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-custom-hot-corners-extended
 _pkgname=custom-hot-corners-extended
-pkgver=20
+pkgver=22
 pkgrel=1
 # _pkgrev=
 # _commit=
@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('gnome-shell')
 source=("${url}/archive/Ext-v${pkgver}${_pkgrev}.tar.gz")
 # source=("Ext-v${pkgver}${_pkgrev}.tar.gz::${url}/archive/${_commit}.tar.gz")
-sha256sums=('125a00dd9ec39cb6a974f51937f93d8e19c0e0745109570a13f323a158171798')
+sha256sums=('89eeea9f3eaa53590ac8598fa7905870809193bc3d8cf32cd73d89b13783612b')
 
 build() {
   cd "${_pkgname}-Ext-v${pkgver}${_pkgrev}"

@@ -1,12 +1,12 @@
 pkgbase = gnome-shell-extension-custom-hot-corners-extended
 	pkgdesc = A GNOME Shell Extension that allows you to use corners and edges as triggers for various actions.
-	pkgver = 20
+	pkgver = 22
 	pkgrel = 1
 	url = https://github.com/G-dH/custom-hot-corners-extended
 	arch = any
 	license = GPL3
 	depends = gnome-shell
-	source = https://github.com/G-dH/custom-hot-corners-extended/archive/Ext-v20.tar.gz
-	sha256sums = 125a00dd9ec39cb6a974f51937f93d8e19c0e0745109570a13f323a158171798
+	source = https://github.com/G-dH/custom-hot-corners-extended/archive/Ext-v22.tar.gz
+	sha256sums = 89eeea9f3eaa53590ac8598fa7905870809193bc3d8cf32cd73d89b13783612b
 
 pkgname = gnome-shell-extension-custom-hot-corners-extended
