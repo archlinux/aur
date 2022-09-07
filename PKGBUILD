@@ -7,7 +7,7 @@ _microarchitecture=0
 ## Major kernel version
 _major=5.19
 ## Minor kernel version
-_minor=1
+_minor=7
 
 ## PKGBUILD ##
 
@@ -36,8 +36,9 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
+  'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
-sha256sums=('f4e27b926ea2c66b808db1f5706254cf92a8899e2108eedb0c3a7d12499aea55'
+sha256sums=('SKIP' # stock skips this too: https://github.com/archlinux/svntogit-packages/blob/packages/linux/trunk/PKGBUILD
             'SKIP'
             'SKIP'
             'SKIP'
