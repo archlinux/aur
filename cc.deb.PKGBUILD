@@ -1,14 +1,14 @@
 # Maintainer: Moses Narrow <moe_narrow@use.startmail.com>
-# Maintainer: Rudi [KittyCash] <rudi@skycoinmail.com>
 pkgname=skywire-bin
 _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Decentralize the web. Skycoin.com. Debian package"
-pkgver='1.1.0'
-_rc='-pr1'
+pkgver='1.1.1'
+_rc=''
+#_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
 _tag_ver="v${_pkgver}"
-pkgrel=1
+pkgrel=2
 _pkgrel=${pkgrel}
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
 _pkgarch=$(dpkg --print-architecture)
@@ -19,7 +19,7 @@ makedepends=('dpkg')
 depends=()
 _debdeps=""
 #_debdeps=""
-#_scripts="skywire-scripts"
+license=('license-free')
 _binarchive=("${_pkgname}-${_tag_ver}-linux")
 _release_url=("${url}/releases/download/${_tag_ver}/${_binarchive}")
 source=(
@@ -43,16 +43,16 @@ noextract=(
 "${_binarchive}armhf.tar.gz"
 "${_release_url}-arm.tar.gz"
 )
-sha256sums=('ac9acfdbde9a7e09c451ef167dbebb298b887a883b25299bf0be8e8aede6c6dc'
-            '128fa08dbc6e4e4e8bee09d5353cc7ecdfd1a7e894373a7a2148a77a930ec542'
-            '29bf8938d7f8c4d01ced62cc9c83fa67e4414e8c783aef254af8a53e0d130864'
-            '71860d197771141fcf13533a117eee31381861642f1a86236a59f60af7b988e6'
-            '57eeac39adb3d801ca0cac5c069fdc14add4e9c182569b58fcc4d41aac8efec4'
+sha256sums=('e05344a580807c843b023f4deeed7863105c02b8c865ea3bbcaaa13748108c5d'
+            '948296a66d79cb35fcfd510d3edb53f58433934347660e256dd2f909b90797f2'
+            '03a16c8562047084a1adcde0603c9006cd53cc4b1b79644d836d68706ce8afbb'
+            '40444274f1864d123e863e8b18f7ac6d1cccf3b19602068ff902ede4e9ff140f'
+            '08f0c625a3ae8810f0468a45aa2e463425ec307441f71f6ba48114bda2055316'
             'f0300bcde06b6818b637ccc23fa8206a40e67f63815781d265bd10d2cda93e65'
-            'e6ea2c7471bcf5bc83e8fd831c047ba61b98eab58ca7c055475714dcf6066539'
+            '0c20dd44eca0266a3a10fab24c657295a833eba9f78c6b1cf06132b093ac3ba8'
             'ec24750a99f5cda8d8a8dc94743943218e1b2088c2b2c7dc1644ee78d954fe7e'
             'a6941680b5858ca3e0c85d9bf5824455a0c95524b61e42352462f2abbb750495'
-            'c8d9f7394763997bb3917c55dd288d431d7054c7f1edec55540a4c02600dd7d3'
+            '19b74f7a9b245a96617f31d1fef7ce1e0231b2359d6525dd3f35d2b2a9d10d18'
             '55293e05c5d6c877397eb4c52123bb02e8bc92aeaf663ba70e1cfab318ce727c'
             '7b17a55e64d1371fecd24edc3da7c6a762cf2b3d058f6fc4a5dc7c5f9b4cff09'
             '233ccf0e87b37e782828f53960e05e478cf381f61bbfdb16a0cc0254ee8be7c2')
