@@ -16,7 +16,8 @@ cp -vf "/boot/dtbs/${dtb}.dtb" "/boot/dtbs/${dtb}-fixed.dtb"
 for bp in /boot/dtbos/*.dts; do
   dtc -q -I dts -O dtb -o ${bp/".dts"/".dtbo"} $bp
   cat $bp | grep "//fdtput" | while read -r line ; do
-    bash -xc fdtput "/boot/dtbs/${dtb}-fixed.dtb" ${line/"//fdtput"/""}
+    echo fdtput "/boot/dtbs/${dtb}-fixed.dtb" ${line/"//fdtput"/""}
+         fdtput "/boot/dtbs/${dtb}-fixed.dtb" ${line/"//fdtput"/""}
   done
 done
 fdtoverlay -vi "/boot/dtbs/${dtb}-fixed.dtb" -o "/boot/atf-direct.dtb" \
