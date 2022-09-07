@@ -7,18 +7,18 @@ pkgdesc="A means of quick navigation through directories in the CLI"
 arch=(any)
 url="https://gitlab.com/a4to/${pkgname}"
 license=('MIT')
-depends=(dialog)
+depends=(dialog fzf)
 source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst"
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
   )
 sha512sums=(
-  '67c86e7b91bbb3813f2d38adb545de8286b334202a9f6876e4806a8c40cbf02928a946ae584271864fc69ec6350d749bf15347db38b24fc3fd4aa47444186ada'
-  '891a2f734f19bb4f9fbc7081eccc475ecea9bb68813ee252920b13142b0d765cc701300cb9c1a777d94aad2303369cbbdf64c54f4ca79815090078b195a2f96a'
+  '8e4615480c601791d3aa3fb67aafd032c12d44a9e724cb83d50fb1fb264da3eedf37e7d76ced6ca5e837219130683c9efd7046f7057d9a71c38ba20c49673ea3'
+  '63038cdf0e82fc30e49980def54043482a7d93de8fca34bc5e6f9245280b4173226659262b40e87d2da7fa0aaf16287dbc51632af8bf5c233f95e511bf01fd06'
   )
 md5sums=(
-  '757cff600d50e6c6c70823a76dc1c46d'
-  'b15de2c9fafb0b152d4f76eb7047c49c'
+  'dfebf9efb8d004926b8b3687430c12cb'
+  'a3b3bc1f7e1db5551094670b14c39c67'
   )
 validpgpkeys=('81BACEEBC3EA26E127166E4A819BB92A9A48160E')
 
