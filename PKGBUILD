@@ -1,4 +1,4 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Lance Roy <ldr709@gmail.com>
 
 pkgname=gambit-git
 pkgver=16.0.2.r19.gef732c81
