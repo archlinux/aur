@@ -1,7 +1,7 @@
 pkgbase = show-git
 	pkgdesc = Realtime GLSL shader wallpapers
-	pkgver = r86.f966da3
-	pkgrel = 2
+	pkgver = r89.2be9440
+	pkgrel = 1
 	url = https://github.com/danielfvm/Show
 	arch = any
 	license = GPL
@@ -15,11 +15,12 @@ pkgbase = show-git
 	depends = python-opengl
 	depends = python-screeninfo
 	depends = python-mouse
-	depends = python-opencv
 	depends = python-scipy
 	depends = python-glfw
 	depends = glfw
+	depends = python-pillow
 	optdepends = glfw-wayland: wayland support
+	optdepends = glfw-x11: x11 support
 	source = git+https://github.com/danielfvm/Show.git
 	sha256sums = SKIP
 
