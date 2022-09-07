@@ -1,10 +1,11 @@
 pkgbase = lib32-libxnvctrl
 	pkgdesc = NVIDIA NV-CONTROL X extension (32-bit)
 	pkgver = 515.65.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NVIDIA/nvidia-settings
 	arch = x86_64
 	license = GPL2
+	depends = lib32-gcc-libs
 	depends = lib32-libxext
 	optdepends = libxnvctrl: XNVCtrl development headers
 	source = nvidia-settings-515.65.01.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/515.65.01.tar.gz
