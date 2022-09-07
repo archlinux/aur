@@ -3,17 +3,16 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-app-cospend
-pkgver=1.4.8
+pkgver=1.4.10
 pkgrel=1
 pkgdesc="Shared budget manager Nextcloud app"
 arch=('any')
 url="https://github.com/eneiluj/cospend-nc"
 license=('AGPL3')
-depends=('nextcloud>=22' 'nextcloud<26')
-makedepends=('npm' 'nodejs' 'rsync')
+makedepends=('npm' 'nodejs' 'rsync' 'yq')
 options=('!strip')
 source=("cospend-nc-v$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('ccbccae2abdaedcc7821c2e6f71a2829a3152f619d4d3fbcfff59e663212e041edc68e38a1d6636621eb917b2a5eb6de940e648ff0675550d8ca4abd63789602')
+sha512sums=('a8eb5b4d202ee6b987939da756ab3d6bb7a2fa90e2fd99d76c0b7a3e75c43f0e6923ab62878c89dc7455f6c332f5117daa26047c65c622d8427cae54ebf1f3aa')
 _releasename=cospend-nc
 _appname=cospend
 
@@ -28,7 +27,18 @@ build() {
     make
 }
 
+_get_nextcloud_versions() {
+  _app_min_major_version="$(xq '.info.dependencies.nextcloud["@min-version"]' "$1/appinfo/info.xml"| sed 's/"//g')"
+  _app_max_major_version="$(xq '.info.dependencies.nextcloud["@max-version"]' "$1/appinfo/info.xml"| sed 's/"//g')"
+  _app_max_major_version=$(expr ${_app_max_major_version} + 1)
+}
+
 package() {
+    local _app_min_major_version
+    local _app_max_major_version
+    _get_nextcloud_versions "$srcdir/$_releasename-$pkgver"
+    depends=("nextcloud>=$_app_min_major_version" "nextcloud<$_app_max_major_version")
+
     cd "$srcdir/$_releasename-$pkgver"
     _destdir="$pkgdir/usr/share/webapps/nextcloud/apps"
     make build_dir=build sign_dir="$_destdir" version="v$pkgver" build_release
