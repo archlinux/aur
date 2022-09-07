@@ -1,6 +1,6 @@
 pkgbase = tofi
 	pkgdesc = Tiny rofi / dmenu replacement for wlroots-based Wayland compositors.
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/philj56/tofi
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = tofi
 	depends = libxkbcommon
 	provides = tofi
 	conflicts = tofi
-	source = https://github.com/philj56/tofi/archive/v0.4.0/tofi-0.4.0.tar.gz
-	sha512sums = e03d907ecc1eaa8651a2eea0e05d24e2648fc2610899982b71dc1034cacb63c562c47678c81d9ffc8869b1bd91d3c034b2f5bee4f0c9243c7a750a30c2a47289
+	source = https://github.com/philj56/tofi/archive/v0.5.0/tofi-0.5.0.tar.gz
+	sha512sums = 40b0c14f6b1ecc82cb2d27c957578dbc7570e9beff65c83cbcbf33a87e77881482225dc4e30fd19bd5b501a3ca119dfaec944182b4e903e3ba1eabe9a90d3488
 
 pkgname = tofi
