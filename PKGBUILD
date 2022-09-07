@@ -10,7 +10,11 @@ pkgdesc="A small library for spawning sub-processes"
 arch=('x86_64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml')
+depends=(
+	'ocaml'
+	'ocaml-ppx_expect'
+	'ocaml-ppx_bench'
+	)
 makedepends=('dune')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
