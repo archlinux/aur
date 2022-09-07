@@ -1,0 +1,21 @@
+pkgbase = n2-git
+	pkgdesc = n2 ("into"), a ninja compatible build system
+	pkgver = 0.1.0.r289.693d2ef
+	pkgrel = 2
+	url = https://github.com/evmar/n2
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	makedepends = git
+	makedepends = rust
+	makedepends = coreutils
+	makedepends = sed
+	makedepends = gcc
+	depends = gcc-libs
+	depends = glibc
+	provides = n2
+	conflicts = n2
+	source = n2::git+https://github.com/evmar/n2.git
+	sha256sums = SKIP
+
+pkgname = n2-git
