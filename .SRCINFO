@@ -1,7 +1,7 @@
 pkgbase = kdevelop-python
 	pkgdesc = Python language and documentation plugin for KDevelop
-	pkgver = 21.12.2
-	pkgrel = 2
+	pkgver = 22.08.0
+	pkgrel = 1
 	url = http://www.kdevelop.org/
 	arch = x86_64
 	groups = kde-applications
@@ -11,12 +11,12 @@ pkgbase = kdevelop-python
 	depends = kdevelop
 	depends = python<3.10
 	optdepends = python-pycodestyle: for Python style checking
-	source = https://download.kde.org/stable/release-service/21.12.2/src/kdev-python-21.12.2.tar.xz
-	source = https://download.kde.org/stable/release-service/21.12.2/src/kdev-python-21.12.2.tar.xz.sig
+	source = https://download.kde.org/stable/release-service/22.08.0/src/kdev-python-22.08.0.tar.xz
+	source = https://download.kde.org/stable/release-service/22.08.0/src/kdev-python-22.08.0.tar.xz.sig
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
-	sha256sums = 92a2dadc706d8adb2b9ed2cba9517d8c14c46e141640fe7b5ef7cda70e3e5216
+	sha256sums = b5d8b0b1846953e6725d51d7d2363f8aa717276975a7e7e27afc7be5a802b581
 	sha256sums = SKIP
 
 pkgname = kdevelop-python
