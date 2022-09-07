@@ -1,7 +1,7 @@
 pkgbase = holocure-bin
 	pkgdesc = A free unofficial fan game with Hololive members
 	pkgver = 0.3.1656491913
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kay-yu.itch.io/holocure
 	arch = x86_64
 	license = custom
@@ -10,8 +10,8 @@ pkgbase = holocure-bin
 	source = holocure
 	source = holocure.desktop
 	source = holocure.png
-	source = holocure-bin-0.3.1656491913.zip::https://w3g3a5v6.ssl.hwcdn.net/upload2/game/1576684/6057240?GoogleAccessId=uploader@moonscript2.iam.gserviceaccount.com&Expires=1662530186&Signature=MdGBgE8W8YfuBOfl0OpDPyV%2FpVgvdDOH%2FUL847lPLCd9%2BWc72YppeXQXpZHWOY5IYxIZgrEH6WGny1xVmUoYF%2BSTHtPfPTRAgxC8Ff4sbeEeKe2K46FZQtE3Ikjjp9CfF17JWGgYIEtrGevvDf3fUeMcLoybsffQxAgpW%2F9HSpymR8WzLOUBlPGDGdhqV2eUr2WHaZrYLxIu6bfRl0F2KQRDmivcmF26WSjJit4VXwdHS6C7baL7adMe2zwL8emMAEm7csGi7v1YVjZ2iLBuCXsUTa9drOMolW82brZf3UV8AGdOGUKH3ssQEC11O3gmWVIN%2FoLSFvn97Xerxt%2FyKg==&hwexp=1662530446&hwsig=a5ab6b43d048e789af421e96881a458a
-	b2sums = daf9c3ebb1f86e2b6eee9bc5cf243869c2345bd2017c673275da7a573f916e401736684819446cb100b8b2efed688e1905c563954b7e224fbc8494e33ac54fed
+	source = holocure-bin-0.3.1656491913.zip::https://w3g3a5v6.ssl.hwcdn.net/upload2/game/1576684/6057240?GoogleAccessId=uploader@moonscript2.iam.gserviceaccount.com&Expires=1662533076&Signature=n%2FirrYqnPzaCyVQAcYSMOwlk3NbZj0AWhfiAQQa9gWk3A%2Bz%2BUaSPJmbSKczfz0cl6qv6JKecySfug3VgaiEzqzyjnbMY1FrRXz%2B1njx9qCZTa3DdgFHyi61Ekgb0qf9piwxXJpYNNNrbIvYBhOJeMbrQFn7Eyf4MtU%2Fk6cJwm97SHL15Rcq7KI7FmGSAS0D55%2BQmDWEGD3nYS0tftblQLflqpX6Q4OL%2BXFfz6HXINAYWXT9CwRxuRznfdil0HskPqJQTLN47aqWGZOyZZ%2F48wiJClApFNNRkFlNhEDNXP5gwGpnHXJ1gyEY0rxioWaTnQaQZoLXQife5gkPAvRtMzQ==&hwexp=1662533336&hwsig=27767515f79dd8e5424fdf638a5373d6
+	b2sums = 4301db2ba2d8bd5e9ccddf617c07846323b002eb5aa0e1fdc8df84e2d90d4ce7167fa0097fbcd3f159d209d1950c63afa8ac3d70a18161723566c48d69a8ee08
 	b2sums = 4fd06cf2fe6796bbab41e8b473c6d558d4fc1ed71f4d87b9ed4eba720b62ffb70d4a775d28dcb1e6d4c04eadb1676c9f340344305542a62f03277f63547fcbba
 	b2sums = ede12f7c2bedcf077dd6da495f5aa2c45b95db128eb28af562b11fc13dcf21db18d98aa818b6b81514049696d9e622364d1f5044282950faa6c64499b2c613c5
 	b2sums = 631e4c32ca3bda5a8c4f43a5cb72449fa03e81a1711001f5beb44e42a1a5c0b87558db690bf9c9f004556c15139e20868d0a63460a2a13edb448ae2b34a14983

@@ -9,5 +9,5 @@ if [ ! -d "$HOLOCURE_LOCAL_DIR" ] ; then
    mkdir -p "$WINEPREFIX"
    wineboot -u
 fi
-WINEDEBUG=-all wine /usr/share/holocure/Holocure.exe "$@"
+WINEDEBUG=-all wine /usr/share/holocure/HoloCure.exe "$@"
 
