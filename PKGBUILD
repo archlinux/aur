@@ -3,7 +3,7 @@
 _name=blink
 _pkgname=blink-qt
 pkgname=blink-git
-pkgver=5.2.0.r1379.a2a082e
+pkgver=5.3.0.r1473.cd25488
 pkgrel=1
 pkgdesc='Fully featured, easy to use SIP client with a Qt based UI'
 arch=('aarch64' 'x86_64')
@@ -16,6 +16,7 @@ depends=(
   'python-gmpy2'
   'python-google-api-python-client'
   'python-oauth2client'
+  'python-pgpy'
   'python-pyopenssl'
   'python-pyqt5'
   'python-service-identity'
