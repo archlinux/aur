@@ -1,6 +1,6 @@
 pkgbase = moment-git
 	pkgdesc = A customizable, keyboard-operable Matrix client. Fork of Mirage
-	pkgver = v0.7.3.r14.7e9cc8df
+	pkgver = v0.7.3.r20.4c3a8444
 	pkgrel = 1
 	url = https://mx-moment.xyz/
 	arch = x86_64
@@ -46,7 +46,7 @@ pkgbase = moment-git
 	depends = python-simpleaudio
 	provides = moment
 	conflicts = moment
-	source = git+https://gitlab.com/mx-moment/moment.git#branch=dev
+	source = git+https://gitlab.com/mx-moment/moment.git
 	sha256sums = SKIP
 
 pkgname = moment-git

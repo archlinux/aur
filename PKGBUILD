@@ -2,7 +2,7 @@
 
 pkgname=moment-git
 _name=moment
-pkgver=v0.7.3.r14.7e9cc8df
+pkgver=v0.7.3.r20.4c3a8444
 pkgrel=1
 pkgdesc='A customizable, keyboard-operable Matrix client. Fork of Mirage'
 arch=('x86_64' 'i686' 'aarch64')
@@ -12,7 +12,7 @@ depends=('qt5-base' 'qt5-declarative' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-graphi
 makedepends=('cmake' 'git')
 provides=('moment')
 conflicts=('moment')
-source=('git+https://gitlab.com/mx-moment/moment.git#branch=dev')
+source=('git+https://gitlab.com/mx-moment/moment.git')
 sha256sums=('SKIP')
 
 prepare() {
