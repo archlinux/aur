@@ -10,7 +10,7 @@
 
 pkgname=aseprite-skia-bin
 pkgver=1.2.40
-pkgrel=1
+pkgrel=2
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
@@ -35,7 +35,7 @@ provides=(aseprite)
 conflicts=(aseprite)
 source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprite-v$pkgver-Source.zip"
         # Which branch a given build of Aseprite requires is noted in its `INSTALL.md`
-        "https://github.com/aseprite/skia/releases/download/m102-861e4743af/Skia-Linux-Release-x64.zip"
+        "https://github.com/aseprite/skia/releases/download/m102-861e4743af/Skia-Linux-Release-x64-libc++.zip"
         desktop.patch
         # Based on https://patch-diff.githubusercontent.com/raw/aseprite/aseprite/pull/2535.patch
         shared-libarchive.patch
@@ -45,7 +45,7 @@ source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprit
         optional-pixman.patch)
 noextract=("${source[0]##*/}" "${source[1]##*/}") # Don't extract Aseprite sources or Skia at the root
 sha256sums=('cd67eaf34ee19ae5584f9052f3b385dcfa41232f38016baf08723b987ae583fb'
-            '47693b85d7ee9e4bab3663c04de2bae37f67d566e091183b0a22c97837b7dcbe'
+            '66293c15aa773a96121afb01f09109d3e5d455a6fd51944e0bb8bdc0829913ea'
             '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9'
             'e42675504bfbc17655aef1dca957041095026cd3dd4e6981fb6df0a363948aa7'
             '320ed456512fb26f30aa682d7d34529d6fc3372d76daba3812cecb8fc21d5f1d'
