@@ -1,7 +1,7 @@
 pkgbase = nasc
 	pkgdesc = Do maths like a normal person.
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://parnold-x.github.io/nasc/
 	arch = i686
 	arch = x86_64

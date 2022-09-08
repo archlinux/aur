@@ -2,7 +2,7 @@
 pkgname=nasc
 pkgver=0.8.0
 _qalculate_ver=ad985fd77acfd54ee369d56f6066b1460b973cdb
-pkgrel=1
+pkgrel=2
 pkgdesc='Do maths like a normal person.'
 arch=(i686 x86_64)
 url=https://parnold-x.github.io/nasc/
@@ -20,6 +20,8 @@ prepare () {
 	cd "$pkgname-$pkgver/subprojects"
 	rm -rf libqalculate
 	ln -vsnf "../../libqalculate-$_qalculate_ver" libqalculate
+	sed -i "s/link_with: 'libqalculate_lib_static'/link_with: libqalculate_lib_static/g" \
+		libqalculate/libqalculate/meson.build
 }
 
 build () {
