@@ -1,7 +1,7 @@
 # Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch>
 # Contributor: DisableGraphics elchifladod@gmail.com
 pkgbase="korai-git"
-pkgname="korai"
+pkgname="korai-geet"
 pkgrel=3
 pkgver=0.2.1
 pkgdesc="Fast, reliable and feature-packed manga and comics reader"
