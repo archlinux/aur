@@ -65,7 +65,8 @@ ${ADDITIONAL}
 
 build() {
     cd \"\${srcdir}/\${_module}-\${pkgver}\"
-    poetry build
+    sed -i '/keywords.*/ainclude = [ { path = \"offlinemsmtp/*\" } ]' pyproject.toml    
+    poetry build --format=wheel
 }
 
 package() {
