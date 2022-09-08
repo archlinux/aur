@@ -1,6 +1,6 @@
 pkgbase = nerd-fonts-cascadia-code
 	pkgdesc = Patched Cascadia Code font with extra glyphs
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = nerd-fonts-cascadia-code
 	provides = nerd-fonts-cascadia-code
 	conflicts = nerd-fonts-complete
 	conflicts = nerd-fonts-git
-	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.1/CascadiaCode.zip
-	source = https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v2.2.1/LICENSE
-	sha256sums = 06039f286c247cc5606bbc8267cdefcc01d1a1955b8da597a11c6b6fdc480c65
+	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/CascadiaCode.zip
+	source = https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v2.2.2/LICENSE
+	sha256sums = b4f4f20ab6bbf55dd9ae7dd1fadd4ef2c608f38922c401afcce373b36a9b0407
 	sha256sums = 245b522abb5aba0d8e84898bf6d5e95102620637626106bfd0061189a2370360
 
 pkgname = nerd-fonts-cascadia-code
