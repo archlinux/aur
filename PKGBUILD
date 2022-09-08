@@ -2,7 +2,7 @@
 
 pkgname='catt-git'
 pkgver=v0.12.9.r6.ge30fa5c
-pkgrel=1
+pkgrel=2
 pkgdesc='Cast All The Things - Send videos from many, many online sources to your Chromecast.'
 arch=('any')
 url="https://github.com/skorokithakis/catt"
