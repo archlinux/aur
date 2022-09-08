@@ -1,0 +1,13 @@
+pkgbase = python-oscrypto-tests
+	pkgdesc = Test suite for oscrypto, separated due to file size
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://pypi.org/project/oscrypto-tests/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-oscrypto
+	source = oscrypto_tests-1.3.0.tar.gz::https://files.pythonhosted.org/packages/source/o/oscrypto_tests/oscrypto_tests-1.3.0.tar.gz
+	sha256sums = 40b822bea63e02da2624fee3c252926605c283e8129837e3154a3b3ca53f3c32
+
+pkgname = python-oscrypto-tests
