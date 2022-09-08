@@ -10,7 +10,8 @@ pkgbase = randomutils
 	makedepends = zig
 	makedepends = asciidoc
 	optdepends = bash: running examples
-	source = git+https://gitlab.com/hdante/randomutils/#tag=1e58c8900f4fd5c9a55fbe5d16ca805563673fd6
-	sha256sums = SKIP
+	optdepends = words: default dictionary for mempassword
+	source = https://gitlab.com/hdante/randomutils/-/archive/r1-53.10.19/randomutils-r1-53.10.19.tar.gz
+	sha256sums = 8036cd3a6f06ddd68ddde2b33abb0dfd218cdf559b0313e3ea2c90bf54ac1235
 
 pkgname = randomutils
