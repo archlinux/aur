@@ -1,7 +1,7 @@
 # Maintainer: Alexei Colin <ac@alexeicolin.com>
 
 pkgname=zephyr-sdk
-pkgver=0.14.1
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64')
@@ -26,10 +26,13 @@ depends=('python-breathe>=4.9.1' 'python-docutils>=0.14'
          'git-spindle' 'gitlint' 'ninja' 'gperf' 'gcovr' 'ccache'
          'doxygen' 'dfu-util' 'dtc' 'cmake>=3.8.2')
 optdepends=('pyocd: programming and debugging ARM MCUs')
-makedepends=('patchelf')
+makedepends=('patchelf' 'wget')
 source=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/zephyr-sdk-${pkgver}_linux-x86_64.tar.gz"
         "zephyrrc"
 )
+sha256sums=('993c23dc104b7e6e211b1a30ec3dbbf93f7e435d1e103b63c93c6e33f33f415f'
+            '7a1257272c64bdec281283d391e3149cece065935c9e8394d6bece32d0f6fc05')
+
 
 options=(!strip)
 install=$pkgname.install
@@ -114,6 +117,3 @@ package ()
 #       Hello World! qemu_cortex_a53
 
 # More info: https://docs.zephyrproject.org/latest/getting_started/index.html
-
-sha256sums=('b7b70e5e70968ac6ae3184c90c3f3f8a6836acadd1432bf7b3702be7a1d317d8'
-            '7a1257272c64bdec281283d391e3149cece065935c9e8394d6bece32d0f6fc05')
