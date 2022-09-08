@@ -27,7 +27,7 @@ package() {
     ln -s /opt/$_pkgname/betterbird "$pkgdir"/usr/bin/$_pkgname
 
     #icons
-    for i in 16 22 24 32 48 256; do
+    for i in 16 22 24 32 48 64 128 256; do
         install -d "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/
         ln -s /opt/$_pkgname/chrome/icons/default/default$i.png \
             "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png
