@@ -3,16 +3,16 @@
 _base=monty
 pkgname=python-${_base}
 pkgdesc="Monty is the missing complement to Python"
-pkgver=2022.4.26
+pkgver=2022.9.8
 pkgrel=1
-arch=('x86_64')
+arch=(x86_64)
 url="https://github.com/materialsvirtuallab/${_base}"
 license=(MIT)
 depends=(python)
 makedepends=(python-setuptools)
 checkdepends=(python-pytest python-bson python-pandas python-pydantic python-ruamel-yaml python-tqdm)
-source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('1a194dea4872b27927b5044998bdf6b220191be376517afa88fa92835a7123f99c27d4dd81090cb932ed47a26a23852a171477b07454d4cc9c4edaa5a9b0afc2')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('3ea10ed3147571d2dc4bbe6a8cc246613986d89144fa4367d28fcdff4052d0021b229e32c9d6f5635251c076f456dc71509c4b607edc6397246ab9213803d0c8')
 
 build() {
   cd ${_base}-${pkgver}
