@@ -7,7 +7,7 @@ pkgrel=2
 
 pkgdesc="Download metadata from OLX online marketplaces"
 url="https://gitlab.com/christoph.fink/olxsearch"
-license=("GPLv3")
+license=("GPL3")
 
 arch=("any")
 makedepends=("python-setuptools")
