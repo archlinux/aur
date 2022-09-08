@@ -70,7 +70,7 @@ _subarch=36
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=5.19.1
+pkgver=5.19.7
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -80,35 +80,36 @@ makedepends=(bc libelf cpio perl tar xz)
 [[ -n "$_clangbuild" ]] && makedepends+=(clang llvm lld python)
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=6a3eeaa7908512f909a5ef7fc76c45db63caf0aa
+_arch_config_commit=aa564cf7088b1d834ef4cda9cb48ff0283fde5c5
 _prjc_version=5.19-r0
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20220315
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   "${pkgbase}-${pkgver}-config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
-  "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
+  # "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
+  "${_prjc_patch}::https://gitlab.com/torvic9/linux519-vd/-/raw/master/prjc-519-r1-vd-test.patch"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-${pkgbase}-${pkgver}-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/c13195971c59cf29cb399b3a0ccf667ec95b10fd.patch"
-  "0002-${pkgbase}-${pkgver}-soundwire-Raise-DEFAULT_PROBE_TIMEOUT-to-10000-ms.patch::https://github.com/archlinux/linux/commit/fd3f27d2cb7ff51ec49ddc5f41ea0a0d7bf1bd85.patch"
-  "0003-${pkgbase}-${pkgver}-drm_i915_psr_Use_full_update_In_case_of_area_calcula.patch::https://github.com/archlinux/linux/commit/a38762d4a787abab09f5137034dc0d1edcfa9432.patch"
-  "0004-${pkgbase}-${pkgver}-drm_i915_Ensure_damage_clip_area_is_within_pipe_area.patch::https://github.com/archlinux/linux/commit/9e3c13250fcc42961e0ce53607962c403e6de135.patch"
-  "0005-${pkgbase}-${pkgver}-mm_vmscan_fix_extreme_overreclaim_and_swap_floods.patch::https://github.com/archlinux/linux/commit/b6ab62421fc34e6b1b9b3809c7c9ccac61334566.patch"
+  "0001-${pkgbase}-${pkgver}-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/365311308e94c32ce860cb1c7aeefb40e9ec91cf.patch"
+  "0002-${pkgbase}-${pkgver}-drm_i915_psr_Use_full_update_In_case_of_area_calcula.patch::https://github.com/archlinux/linux/commit/51928058df4cebd8749d269a20dafa3e52122bfc.patch"
+  "0003-${pkgbase}-${pkgver}-drm_i915_Ensure_damage_clip_area_is_within_pipe_area.patch::https://github.com/archlinux/linux/commit/568322864d985b26cb125c26940e6512183eb517.patch"
+  "0004-${pkgbase}-${pkgver}-mm_vmscan_fix_extreme_overreclaim_and_swap_floods.patch::https://github.com/archlinux/linux/commit/157e5550caea8a8389e57c68de443a1babd015c3.patch"
+  "0005-${pkgbase}-${pkgver}-soundwire_intel_use_pm_runtime_resume_on_component_probe::https://github.com/archlinux/linux/commit/82b1098e107303aefec21455a84c0e8120ea42e3.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('da67a87567253d04d35319381b2051c4c1fa20c0da4ca1983e9e9e39f46ba7fc7a6e95b6385a4b9062b480677b1782b7896d50cd5b7ce87eeb1f2b3b065e8441'
+b2sums=('9fd934cf511ded0800a387beda79e1d4c7523926c69cae0f4eee62cfbc0fab4b97e666c9a0b79130aff9e17dfc4c222a04a6037776182954b1edc0af9b8517c6'
         'SKIP'
-        '3b78ed6ebe8be6df83c6ac9e9f798540cfdf5bf96b2d0d7f0f1027195903531e69ca11a083488a14409bf9f06c3cce91f9f8be617f8e507554e357c93c886190'
-        '6bc109b462670602eba8ccba55cbcf9902402c627e40c62a3a574828847a518d84d35d30e786b2f1edd4365a3eaa3a2b358f20c013bb2789b30804c37fe12d45'
+        '28b82cdb5faac7f93368bbd5c4a9106f729dd39624abbd7a0acc4909599175af0a987c91bb6c0e348ae1ab2180f5e85c3a04ce6ba03e03b0dee45fe3b81d3847'
+        '87950689ffe97134100aa91d0ff89acd6f4e93b626ad7ab08af464a49457f16526cae7b863d53213dd129d47b6f97b3407ae7027b02656d9eba85942241e8d3f'
         '20674a8fcc0a85726e06460a7dbccfe731c46bf377cc3bf511b7591175e7df892f271bc1909e77d9a02913c753d241493502c5ab15d9f78e95f31aa4399c2c27'
-        '8cae366ed8526b813d60e4f6d55ad558d21d158331c04a1b061f3c362601343362043968088e0fcc057ace8cea1b9d0a6f02a38deae3301b1841eaaa6a24b8a4'
-        '9f7eb03ff5973317d39bb0a8803f5ef7d0a7651882b7cdd47d5b1817dda35987c0e1386cc6b7d9428ec9b71f39f94409deaa4596679945d749ee9a58ae8e5589'
-        'f07dbcdd28c9105c5943c4fd9e27572341ef7c13dfd6fa83565f7a32122348fc6227371bb4e9e65c01b29feb039b7903a9f3def42628a3f71a119e010fa99e46'
-        'c767d603a6cbf91dae35fe087ea15f39f058191d3fe5986b43720aeaa54c16acbe6fa9abba30dcf2ed02ee8bf99315daac3fc156636828cfdad2c7c0ae8beda7'
-        '3fc3b613785f147dd67c6f3acf0f9b4a7a2da34bf677b445eed39507c204c20e3c4482d5695f952927efdb22a238db8378218dabd2de05f9d8a1643bfc93bda1')
+        'f724dc401fe63b7ed321b4bc03428526880d66c9ad07446fe08180b7969da936b7db7274a898ef0d85b9974865c9b7b0c31ab5ad148cd371d2016068184b84b3'
+        'ce3ba4d91e7dc2f4b1f853d7bcf0325ef17db9c618a16d74b3f7e8c6cdf93852839ae7a48261ac0f9c109cdd37e34e2ba1f0cb712bb1a125671e649620b5e8f4'
+        'e2f017d671ebe7458d186b059e068efa3e382f35df07ab71489066e5aa678e8d9d90c59c3395199e0143e0d18e00d42cf7c61e75383a85b8905b74b1f4a9f50c'
+        '4ffa0496fdb6045555f7a2d8f017a26d898fafdb11a6bc925301f1c4f62b875547c428ada6db6789e7a31d8b600a3494a3328a05ffcd71560c2b4ce2346a46ce'
+        '7a077555af4adb90b3ec256f88b598b034bb7c2bd587b0617f059660f4fa463ca72d49b328dc3ffe11a24693219846b88dc97d44ae6fb85d76f04a2e5564c935')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
@@ -312,7 +313,7 @@ _package-headers() {
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
   #echo "Stripping vmlinux..."
-  #strip -v $STRIP_STATIC "$builddir/vmlinux"
+  strip -v $STRIP_STATIC "$builddir/vmlinux"
   # not needed since not building with CONFIG_DEBUG_INFO=y
 
   echo "Adding symlink..."
