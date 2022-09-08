@@ -20,6 +20,8 @@ provides=("${pkgname%-git}" "python-${pkgname%-git}")
 conflicts=("${pkgname%-git}" "python-${pkgname%-git}")
 source=('git+https://github.com/dylanaraps/pywal.git')
 sha256sums=('SKIP')
+conflicts=('python-pywal')
+provides=('python-pywal')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
