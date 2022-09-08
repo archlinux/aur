@@ -13,7 +13,8 @@ makedepends=(yarn)
 checkdepends=()
 optdepends=(
   "mangohud: FPS Hud/GUI"
-  "vkbasalt: Custom shaders"
+  "vkbasalt: Custom shaders (install this and reshade-shaders-git)"
+  "reshade-shaders-git: Required by vkBasalt config files (install this and vkbasalt)"
   "gamemode: Game Optimizations"
 )
 provides=()
