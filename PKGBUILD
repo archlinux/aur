@@ -2,8 +2,8 @@
 
 pkgbase=sdbus-cpp
 pkgname=(${pkgbase} ${pkgbase}-doc)
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="sdbus-c++ is a high-level C++ D-Bus library for Linux designed to provide expressive, easy-to-use API in modern C++"
 url="https://github.com/Kistler-Group/sdbus-cpp"
 arch=('i686' 'x86_64')
