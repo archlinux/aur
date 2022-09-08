@@ -1,0 +1,17 @@
+pkgbase = openscad-lsp-git
+	pkgdesc = A LSP (Language Server Protocol) server for OpenSCAD.
+	pkgver = 1.2.1.97.g31761a2
+	pkgrel = 1
+	url = https://github.com/Leathong/openscad-LSP
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = openscad-lsp
+	conflicts = openscad-lsp
+	source = openscad-lsp::git+https://github.com/Leathong/openscad-LSP.git
+	sha256sums = SKIP
+
+pkgname = openscad-lsp-git
