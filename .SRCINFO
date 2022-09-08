@@ -1,6 +1,6 @@
 pkgbase = shadowsocks-go-git
 	pkgdesc = A versatile and efficient proxy platform for secure communications
-	pkgver = 1.1.0.r0.g7ceae19
+	pkgver = 1.1.0.r30.g6130263
 	pkgrel = 1
 	url = https://github.com/database64128/shadowsocks-go
 	arch = x86_64
