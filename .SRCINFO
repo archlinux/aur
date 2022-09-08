@@ -1,13 +1,13 @@
 pkgbase = fw
 	pkgdesc = Workspace productivity booster
-	pkgver = 2.16.0
+	pkgver = 2.16.1
 	pkgrel = 1
 	url = https://github.com/brocode/fw
 	arch = x86_64
 	license = custom:WTFPL
 	makedepends = cargo
 	depends = fzf
-	source = fw-2.16.0.tar.gz::https://github.com/brocode/fw/archive/v2.16.0.tar.gz
-	sha256sums = 6d09a17d56584fd072385ac61c47da0648cfc0223ec6eea121088bce1d2b12e9
+	source = fw-2.16.1.tar.gz::https://github.com/brocode/fw/archive/v2.16.1.tar.gz
+	sha256sums = 2d77ce6673e48dd8f20ee42d8a64a0cbe648d51b837cb930b69c3707718659c2
 
 pkgname = fw
