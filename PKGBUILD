@@ -4,23 +4,20 @@
 
 _pkgname=teams-for-linux
 pkgname=${_pkgname}-wbundled-electron
-pkgver=1.0.29
+pkgver=1.0.33
 pkgrel=1
 pkgdesc="Unofficial Microsoft Teams client for Linux using Electron."
 arch=("any")
 url="https://github.com/IsmaelMartinez/${_pkgname}"
 license=("GPL3")
 depends=("electron")
-provides=("$_pkgname" "teams")
-conflicts=("$_pkgname" "teams")
-replaces=("teams")
 makedepends=("node-gyp" "yarn" "asar")
 source=(
   "${_pkgname}-${pkgver}.tar.gz::https://github.com/IsmaelMartinez/${_pkgname}/archive/v${pkgver}.tar.gz"
   "${_pkgname}.desktop.in"
 )
-sha256sums=('bd6c096a02a1575a560359c00099eaf56ee6ad49263b489bc5af550e73c412ec'
-            'b1c8052cd233aa69c58cef58c9097002cc15f53943997cffe5bf08f259c98677')
+sha256sums=('b775ab9d763565e491ab2a91fc1162fd04691ee6f8a4295f498652c507bdf5a3'
+            '9ebf37120c1968e8c4656f7e97b6fa23b8906be4b1bc1059645fd71c1ae2d941')
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
@@ -54,10 +51,10 @@ package() {
     filename="$(basename ${file})"
     install -Dm644 "${file}" "${pkgdir}/usr/share/icons/hicolor/${filename%.png}/apps/${_pkgname}.png"
   done
-  cat > "${pkgdir}/usr/bin/teams" <<EOF
+  cat > "${pkgdir}/usr/bin/$_pkgname" <<EOF
 #!/bin/sh
 
 exec electron "${pkgsharedir}"/app.asar  \"\$@\"
 EOF
-  chmod 755 "${pkgdir}/usr/bin/teams"
+  chmod 755 "${pkgdir}/usr/bin/$_pkgname"
 }
