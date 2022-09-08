@@ -1,24 +1,24 @@
-# Maintainer: Tuhana GAYRETLİ <tuhana at tuta dot io>
+# Maintainer: Tuhana GAYRETLİ <tuhana at proton dot me>
 # shellcheck disable=SC2034,SC2148,SC2164,SC2154
 
 pkgname=kde-material-you-colors-git
 _pkgname=${pkgname%-git}
-pkgver=0.2.0BETA.r54.g57f706b
+pkgver=0.9.1.r11.g2d304b5
 pkgrel=1
-pkgdesc="Automatic Material You Colors generator from your wallpaper for the Plasma Desktop - Git dev branch version"
+pkgdesc='Automatic Material You Colors generator from your wallpaper for the Plasma Desktop - Git dev branch version'
 arch=(x86_64)
-url="https://github.com/luisbocanegra/kde-material-you-colors/tree/dev"
-license=(APACHE)
+url='https://github.com/luisbocanegra/kde-material-you-colors/tree/dev'
+license=(GPL3)
 makedepends=(git)
 depends=(
   dbus-python
   python-numpy
+  python-material-color-utilities
 )
 optdepends=(
-  "python-colr: colored hex codes printing"
-  "python-pywal: theme other programs using Material You Colors"
+  'python-colr: colored hex codes printing'
+  'python-pywal: theme other programs using Material You Colors'
 )
-options=(!strip)
 conflicts=("$_pkgname")
 provides=("$_pkgname")
 source=("$pkgname::git+${url/\/tree\/dev/}.git#branch=dev")
@@ -30,22 +30,21 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname/src"
   python -m compileall ./*.py
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname/src"
 
   local files=(
+    color_utils.py
+    extra_image_utils.py
+    kde-material-you-colors
     kde-material-you-colors.desktop
     sample_config.conf
-    kde-material-you-colors
-    utils.py
-    color_utils.py
     schemeconfigs.py
-    material-color-utility-bin
-    libSkiaSharp.so
+    utils.py
   )
 
   for file in "${files[@]}"; do
@@ -57,8 +56,7 @@ package() {
   done
 
   install -d "$pkgdir/usr/bin"
-  ln -s /usr/lib/$_pkgname/material-color-utility-bin "$pkgdir/usr/bin/material-color-utility"
   ln -s /usr/lib/$_pkgname/kde-material-you-colors "$pkgdir/usr/bin/kde-material-you-colors"
 
-  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname" README.md
+  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname" ../README.md
 }
