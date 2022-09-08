@@ -1,8 +1,8 @@
 # Maintainer: Jason Nader <jason *add-dot-here* nader *you-know-what-goes-here* protonmail.com>
 
 pkgname='catt-git'
-pkgver=v0.12.9.r6.ge30fa5c
-pkgrel=2
+pkgver=0.12.9.r6.ge30fa5c
+pkgrel=1
 pkgdesc='Cast All The Things - Send videos from many, many online sources to your Chromecast.'
 arch=('any')
 url="https://github.com/skorokithakis/catt"
@@ -27,7 +27,7 @@ conflicts=("catt")
 
 pkgver() {
   cd "${pkgname%-*}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
