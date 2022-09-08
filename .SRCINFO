@@ -1,6 +1,6 @@
 pkgbase = librewolf
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
-	pkgver = 104.0
+	pkgver = 104.0.2
 	pkgrel = 1
 	url = https://librewolf.net/
 	install = librewolf.install
@@ -25,8 +25,7 @@ pkgbase = librewolf
 	makedepends = nodejs
 	makedepends = cbindgen
 	makedepends = nasm
-	makedepends = python-setuptools
-	makedepends = python-zstandard
+	makedepends = python
 	makedepends = git
 	makedepends = binutils
 	makedepends = lld
@@ -57,19 +56,17 @@ pkgbase = librewolf
 	options = !debug
 	backup = usr/lib/librewolf/librewolf.cfg
 	backup = usr/lib/librewolf/distribution/policies.json
-	source = https://archive.mozilla.org/pub/firefox/releases/104.0/source/firefox-104.0.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/104.0/source/firefox-104.0.source.tar.xz.asc
-	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/1f6f9abcdcb2a03f259602b4671208b15cc6d4b9/trunk/zstandard-0.18.0.diff
+	source = https://archive.mozilla.org/pub/firefox/releases/104.0.2/source/firefox-104.0.2.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/104.0.2/source/firefox-104.0.2.source.tar.xz.asc
 	source = https://github.com/archlinuxarm/PKGBUILDs/raw/20308ce75b0eecf1fae0db7d7ab07fb68b3000dc/extra/firefox/arc4random.diff
 	source = librewolf.desktop
-	source = git+https://gitlab.com/librewolf-community/browser/source.git#commit=ee6c58fd8d0d7f7b58baff70e75873184d3114fb
+	source = git+https://gitlab.com/librewolf-community/browser/source.git#commit=64ade27afdf4fd9da67cdc04b55eefe5542e70be
 	source = git+https://gitlab.com/librewolf-community/settings.git#tag=6.9
 	source = default192x192.png
 	source = 0018-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = 1a294a651dc6260f9a72a3ab9f10e7792a4ab41a9cfa8527ad3dd9979cdc98ce
+	sha256sums = 72bba06f04e7745f6b02951906413eb1c15a7e253e06e373302162c6219f286a
 	sha256sums = SKIP
-	sha256sums = a6857ad2f2e2091c6c4fdcde21a59fbeb0138914c0e126df64b50a5af5ff63be
 	sha256sums = 714ca50b2ce0cac470dbd5a60e9a0101b28072f08a5e7a9bba94fef2058321c4
 	sha256sums = 21054a5f41f38a017f3e1050ccc433d8e59304864021bef6b99f0d0642ccbe93
 	sha256sums = SKIP
