@@ -1,6 +1,6 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 pkgname=coeurl
-pkgver=0.1.1
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A simple async wrapper around CURL for C++"
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=('MIT')
 depends=("curl" "libevent" "spdlog")
 makedepends=("meson")
 source=("https://nheko.im/nheko-reborn/coeurl/-/archive/v$pkgver/coeurl-v$pkgver.tar.gz")
-sha256sums=('e79becfc80b20ee8377e4282463ca2337df5a7b3f2f64b304a88ccd0128bef06')
+sha256sums=('099feb59512fdd321f777547f0d4f1fc3c2d919369330f318b8c36dc646c0764')
 
 build() {
   arch-meson $pkgname-v$pkgver build
