@@ -3,7 +3,7 @@
 _mplusver=20220319052552
 pkgname=mplus-1-code-nerd-font
 pkgdesc='M PLUS 1 Code Nerd Font'
-pkgver=20220319052552.2.2.1
+pkgver=20220319052552.2.2.2
 pkgrel=1
 arch=('any')
 license=('OFL')
@@ -17,7 +17,7 @@ source=("Mplus1Code-Bold-$_mplusver.ttf::https://github.com/coz-m/MPLUS_FONTS/ra
         "Mplus1Code-SemiBold-$_mplusver.ttf::https://github.com/coz-m/MPLUS_FONTS/raw/master/fonts/ttf/Mplus1Code-SemiBold.ttf"
         "Mplus1Code-Thin-$_mplusver.ttf::https://github.com/coz-m/MPLUS_FONTS/raw/master/fonts/ttf/Mplus1Code-Thin.ttf"
         "OFL-$_mplusver.txt::https://raw.githubusercontent.com/coz-m/MPLUS_FONTS/master/OFL.txt"
-        "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.1/FontPatcher.zip")
+        "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/FontPatcher.zip")
 sha256sums=('a7067056ec7a69f81812527e232ec9e57c28c3c01f897655a45937cebfd23d91'
             '507979a891f2d4d249e1249bacb53a89dda87e1cd699cef005857d79e711f643'
             '45c83fd3f9a5a6d07a4bbfd631e9e86559867bd4aa88cf81c334939ae06c316c'

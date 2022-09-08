@@ -1,6 +1,6 @@
 pkgbase = mplus-1-code-nerd-font
 	pkgdesc = M PLUS 1 Code Nerd Font
-	pkgver = 20220319052552.2.2.1
+	pkgver = 20220319052552.2.2.2
 	pkgrel = 1
 	url = https://mplusfonts.github.io/
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = mplus-1-code-nerd-font
 	source = Mplus1Code-SemiBold-20220319052552.ttf::https://github.com/coz-m/MPLUS_FONTS/raw/master/fonts/ttf/Mplus1Code-SemiBold.ttf
 	source = Mplus1Code-Thin-20220319052552.ttf::https://github.com/coz-m/MPLUS_FONTS/raw/master/fonts/ttf/Mplus1Code-Thin.ttf
 	source = OFL-20220319052552.txt::https://raw.githubusercontent.com/coz-m/MPLUS_FONTS/master/OFL.txt
-	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.1/FontPatcher.zip
+	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/FontPatcher.zip
 	sha256sums = a7067056ec7a69f81812527e232ec9e57c28c3c01f897655a45937cebfd23d91
 	sha256sums = 507979a891f2d4d249e1249bacb53a89dda87e1cd699cef005857d79e711f643
 	sha256sums = 45c83fd3f9a5a6d07a4bbfd631e9e86559867bd4aa88cf81c334939ae06c316c
