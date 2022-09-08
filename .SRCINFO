@@ -1,0 +1,9 @@
+pkgbase = ttf-malithi
+	pkgdesc = Malithi web Sinhala unicode font
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	source = http://www.sinhalafonts.org/d/13092/malithi_web.zip
+	sha256sums = 9cfa6b88a22cd12b6c89cd56e6cd0eb145b75ecdaed73fdc25fdfb8835bc36ee
+
+pkgname = ttf-malithi
