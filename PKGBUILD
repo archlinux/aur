@@ -2,9 +2,9 @@
 # Contributor: vapourismo <ole at vprsm dot de>
 _pkgname=knxd
 pkgname='knxd-git'
-pkgver=1877.re667b25
+pkgver=1893.r4e4340b
 pkgrel=1
-pkgdesc='A server which provides an interface to a KNX/EIB installation'
+pkgdesc='A server-daemon which provides an interface to a KNX/EIB installation'
 license=('GPL')
 
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -15,7 +15,7 @@ depends=('gcc-libs' 'libev')
 optdepends=('libsystemd' 'libusb')
 makedepends=('fmt' 'git' 'libtool' 'autoconf' 'automake' 'pkgconfig')
 
-source=("git://github.com/knxd/${_pkgname}.git#branch=main")
+source=("git+https://github.com/knxd/${_pkgname}.git#branch=main")
 sha512sums=('SKIP')
 url="https://github.com/knxd/knxd"
 
