@@ -1,6 +1,6 @@
 pkgbase = blueprint64
 	pkgdesc = A general-purpose ROMhacking tool for creating Super Mario 64 ROMhacks.
-	pkgver = 0.19.2
+	pkgver = 0.20.0
 	pkgrel = 0
 	url = https://blueprint64.ca/
 	install = blueprint64.install
@@ -10,14 +10,12 @@ pkgbase = blueprint64
 	makedepends = qt5-declarative
 	makedepends = make
 	depends = glibc
-	depends = libstdc++5
 	depends = gcc-libs
 	depends = qt5-base
 	depends = qt5-svg
 	depends = which
 	depends = zlib
-	source = https://gitlab.com/blueprint64/blueprint-64/uploads/eca3706d34c726ed2ade90cb3d291407/blueprint64-0.19.2.tar.gz
-	md5sums = 1004903248221906134d0e4a4645b725
+	source = https://gitlab.com/blueprint64/blueprint-64/uploads/75763ea95dc9261c0142cbdeec5e6847/blueprint64-0.20.0.tar.gz
+	sha256sums = 6ecd9081bc63647a9a2432c7a1e717bb222927e001dd17dc2f5abb43067c007b
 
 pkgname = blueprint64
-

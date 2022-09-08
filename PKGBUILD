@@ -1,6 +1,6 @@
 # Maintainer: Matt Pharoah <mtpharoah@gmail.com>
 pkgname=blueprint64
-pkgver=0.19.2
+pkgver=0.20.0
 pkgrel=0
 epoch=
 pkgdesc='A general-purpose ROMhacking tool for creating Super Mario 64 ROMhacks.'
@@ -10,7 +10,6 @@ license=('GPL2')
 groups=()
 depends=(
 	'glibc'
-	'libstdc++5'
 	'gcc-libs'
 	'qt5-base'
 	'qt5-svg'
@@ -34,14 +33,14 @@ backup=()
 options=()
 install='blueprint64.install'
 changelog=
-source=('https://gitlab.com/blueprint64/blueprint-64/uploads/eca3706d34c726ed2ade90cb3d291407/blueprint64-0.19.2.tar.gz')
+source=('https://gitlab.com/blueprint64/blueprint-64/uploads/75763ea95dc9261c0142cbdeec5e6847/blueprint64-0.20.0.tar.gz')
 noextract=()
-md5sums=('1004903248221906134d0e4a4645b725')
+sha256sums=('6ecd9081bc63647a9a2432c7a1e717bb222927e001dd17dc2f5abb43067c007b')
 validpgpkeys=()
 
 build() {
 	qmake-qt5 app.pro -spec linux-g++
-	make
+	make -j `nproc`
 }
 
 package() {
