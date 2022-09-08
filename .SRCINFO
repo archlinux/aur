@@ -1,13 +1,11 @@
 pkgbase = perl-pod-projectdocs
 	pkgdesc = generates CPAN like pod pages
 	pkgver = 0.53
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Pod-ProjectDocs
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl-class-accessor
-	depends = perl-class-data-inheritable
 	depends = perl-json
 	depends = perl-readonly
 	depends = perl-template-toolkit

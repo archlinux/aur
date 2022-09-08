@@ -3,12 +3,12 @@
 # Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname='perl-pod-projectdocs'
 pkgver='0.53'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="generates CPAN like pod pages"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-class-accessor' 'perl-class-data-inheritable' 'perl-json' 'perl-readonly' 'perl-template-toolkit' 'perl-html-parser' 'perl-moose' 'perl')
+depends=('perl-json' 'perl-readonly' 'perl-template-toolkit' 'perl-html-parser' 'perl-moose' 'perl')
 url='https://metacpan.org/release/Pod-ProjectDocs'
 source=("https://search.cpan.org/CPAN/authors/id/M/MG/MGRUNER/Pod-ProjectDocs-${pkgver}.tar.gz")
 md5sums=('456961beea93816d74975a3c39710a37')
