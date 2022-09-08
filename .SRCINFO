@@ -1,0 +1,23 @@
+pkgbase = secsend
+	pkgdesc = A file-sharing app providing end-to-end encryption of data
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/aguinet/secsend
+	arch = any
+	license = GPL3
+	makedepends = python
+	makedepends = npm
+	source = https://github.com/aguinet/secsend/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = b49fabe29820a7eb79d0b9fe35f043f05aecb5d00c2941bb94eb5569f8733b53
+
+pkgname = secsend-api
+	depends = python-jsonschema
+	depends = python-sanic
+
+pkgname = secsend-cli
+	depends = python-requests
+	depends = python-magic
+	depends = python-cryptography
+	depends = python-progressbar
+
+pkgname = secsend-webapp
