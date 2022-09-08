@@ -1,14 +1,14 @@
 pkgbase = cgrc
 	pkgdesc = Generic log formatter
-	pkgver = 0.4.0
-	pkgrel = 2
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://github.com/carlonluca/cgrc
 	arch = any
 	license = GPL
 	makedepends = git
 	makedepends = cmake
 	depends = qt6-base
-	source = git+https://github.com/carlonluca/cgrc.git#tag=v0.4.0
+	source = git+https://github.com/carlonluca/cgrc.git#tag=v0.5.0
 	md5sums = SKIP
 
 pkgname = cgrc
