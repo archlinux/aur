@@ -2,4 +2,6 @@ pkg
 src
 *.pkg.tar.*
 Caddyfile
-index.html 
+index.html
+*.service
+
