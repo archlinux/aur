@@ -1,11 +1,11 @@
 pkgbase = r-stringr
 	pkgdesc = Simple, Consistent Wrappers for Common String Operations
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=stringr
 	arch = i686
 	arch = x86_64
-	license = GPLv2
+	license = GPL2
 	depends = r
 	depends = r-glue>=1.2.0
 	depends = r-magrittr
