@@ -4,7 +4,7 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=104.0.1
+pkgver=104.0.2
 pkgrel=1
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3 aarch64)
@@ -39,7 +39,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
         "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
         "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git")
 # source_aarch64=()
-sha256sums=('f23f4198bd9ba1bbb7420a622080301adb924fafbd6d83b00b1e6cc687e75f4e'
+sha256sums=('72bba06f04e7745f6b02951906413eb1c15a7e253e06e373302162c6219f286a'
             'SKIP'
             '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
             'SKIP'
@@ -186,10 +186,10 @@ fi
   patch -Np1 -i "${_librewolf_patches_dir}"/remove_addons.patch
 
   # Debian patch to enable global menubar
-  patch -Np1 -i "${_librewolf_patches_dir}"/unity-menubar.patch
+  # patch -Np1 -i "${_librewolf_patches_dir}"/unity-menubar.patch
 
   # KDE menu
-  patch -Np1 -i "${_librewolf_patches_dir}"/mozilla-kde_after_unity.patch
+  # patch -Np1 -i "${_librewolf_patches_dir}"/mozilla-kde_after_unity.patch
   patch -Np1 -i "${_cachyos_patches_dir}"/kde/mozilla-nongnome-proxies.patch
 
   # Disabling Pocket
