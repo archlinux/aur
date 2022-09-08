@@ -1,6 +1,6 @@
 pkgbase = plymouth-theme-sweet-arch-git
 	pkgdesc = Make your Arch Linux splash screen look wonderful with this theme inspired by Sweet by EliverLara.
-	pkgver = 2
+	pkgver = 3
 	pkgrel = 1
 	url = https://github.com/abrahammurciano/plymouth-theme-sweet-arch
 	install = message.install
@@ -8,8 +8,7 @@ pkgbase = plymouth-theme-sweet-arch-git
 	license = GPL
 	makedepends = git
 	depends = plymouth
-	source = git://github.com/abrahammurciano/plymouth-theme-sweet-arch.git
+	source = git+https://github.com/abrahammurciano/plymouth-theme-sweet-arch.git
 	sha256sums = SKIP
 
 pkgname = plymouth-theme-sweet-arch-git
-
