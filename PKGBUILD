@@ -2,11 +2,10 @@
 # Contributor: DisableGraphics elchifladod@gmail.com
 pkgbase="korai-git"
 pkgname="korai"
-pkgrel=2
+pkgrel=3
 pkgver=0.2.1
 pkgdesc="Fast, reliable and feature-packed manga and comics reader"
 arch=("any")
-depends=("rust")
 url='https://github.com/DisableGraphics/Korai'
 makedepends=("git" "imagemagick")
 depends=("libarchive" "gtkmm3" "webkit2gtk" "vte3" "mangodl")
