@@ -1,13 +1,13 @@
 pkgbase = wedoc-bin
 	pkgdesc = Tencent Document, like Google Doc to create and collaborate on online documents. 腾讯文档
-	pkgver = 2.3.16
+	pkgver = 2.3.17
 	pkgrel = 1
 	url = https://down.qq.com/qqweb/linux_docs/LinuxTencentDocsAmd64.deb
 	arch = x86_64
 	license = unknown
 	provides = wedoc
 	provides = tencent-document
-	source = wedoc-2.3.16-x86_64.deb::https://down.qq.com/qqweb/linux_docs/LinuxTencentDocsAmd64.deb
+	source = wedoc-2.3.17-x86_64.deb::https://down.qq.com/qqweb/linux_docs/LinuxTencentDocsAmd64.deb
 	sha512sums = 9e2b847b90f2138c189beaebc7a37037b634fcd4f88e2c649c62d73fb19c8ad568b02905387b8aae39fdb3f750dd8dbd862240c82407fd9c40f9e9b7b3778d9b
 
 pkgname = wedoc-bin

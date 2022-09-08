@@ -3,14 +3,14 @@
 pkgname=wedoc-bin
 _pkgname=wedoc
 provides=('wedoc' 'tencent-document')
-pkgver=2.3.16
+pkgver=2.3.17
 pkgrel=1
 pkgdesc="Tencent Document, like Google Doc to create and collaborate on online documents. 腾讯文档"
 arch=('x86_64')
 license=('unknown')
 url="https://down.qq.com/qqweb/linux_docs/LinuxTencentDocsAmd64.deb"
 source=("${_pkgname}-${pkgver}-${arch}.deb::https://down.qq.com/qqweb/linux_docs/LinuxTencentDocsAmd64.deb")
-sha512sums=('9e2b847b90f2138c189beaebc7a37037b634fcd4f88e2c649c62d73fb19c8ad568b02905387b8aae39fdb3f750dd8dbd862240c82407fd9c40f9e9b7b3778d9b')
+sha512sums=('a9a57ed16c76c745e18ccd0136b9642a7e778a089e95ee817f54a436cb5cad95ad9a09a9b2b6ec40c69b6271d262fd275021882bf50b57fae822df10abff55f3')
 package() {
     tar xpf data.tar.xz -C ${pkgdir}
     cd ${pkgdir}/usr/share/applications
