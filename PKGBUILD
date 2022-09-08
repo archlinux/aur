@@ -7,7 +7,7 @@ pkgrel=2
 
 pkgdesc="Downloads YouTube metadata"
 url="https://gitlab.com/christoph.fink/metatube"
-license=("GPLv3")
+license=("GPL3")
 
 arch=("any")
 makedepends=("python-setuptools")
