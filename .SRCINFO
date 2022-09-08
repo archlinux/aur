@@ -1,6 +1,6 @@
 pkgbase = anbox-modules-dkms
 	pkgdesc = Android kernel driver fork by @choff (binder/binderfs & ashmem) in DKMS format
-	pkgver = 5.18
+	pkgver = 5.19
 	pkgrel = 1
 	url = https://github.com/choff/anbox-modules
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = anbox-modules-dkms
 	conflicts = anbox-modules-dkms-git
 	source = git+https://github.com/choff/anbox-modules.git#commit=8148a162755bf5500a07cf41a65a02c8f3eb0af9
 	source = https://github.com/sickcodes/anbox-modules/commit/7c19d3c66758747d854c63e4c34ef127ce201fa6.patch
-	source = https://github.com/Etaash-mathamsetty/anbox-modules/commit/f06ba5869503f8bc07cede1ed77241438d1fea20.patch
+	source = https://github.com/choff/anbox-modules/pull/4.patch
 	sha256sums = SKIP
 	sha256sums = 7589f311fd9a503c30a214b54f1f687c26a2f160d4339098c65f655e9b1e3556
-	sha256sums = ef170a1b88a83052f5ad38afaf493a9e720a3c2d93316884d40426f32d3ad576
+	sha256sums = fced11f849692dd1f0f36b50bb859d85aa244a536c2cef529a14bb73f568bb5e
 
 pkgname = anbox-modules-dkms

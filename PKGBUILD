@@ -4,7 +4,7 @@
 
 pkgname=anbox-modules-dkms
 _pkgname=anbox-modules
-pkgver=5.18
+pkgver=5.19
 arch="$(uname -r)"
 url='https://github.com/choff/anbox-modules'
 pkgrel=1
@@ -16,20 +16,21 @@ depends=('dkms')
 makedepends=('git')
 source=("git+https://github.com/choff/${_pkgname}.git#commit=8148a162755bf5500a07cf41a65a02c8f3eb0af9"
   "https://github.com/sickcodes/anbox-modules/commit/7c19d3c66758747d854c63e4c34ef127ce201fa6.patch"
-  "https://github.com/Etaash-mathamsetty/anbox-modules/commit/f06ba5869503f8bc07cede1ed77241438d1fea20.patch")
+  "https://github.com/choff/anbox-modules/pull/4.patch")
 sha256sums=('SKIP'
             '7589f311fd9a503c30a214b54f1f687c26a2f160d4339098c65f655e9b1e3556'
-            'ef170a1b88a83052f5ad38afaf493a9e720a3c2d93316884d40426f32d3ad576')
+            'fced11f849692dd1f0f36b50bb859d85aa244a536c2cef529a14bb73f568bb5e')
 conflicts=(anbox-modules-dkms-git)
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
 
-  # Patch for 5.18-lts
-  patch -p1 -i "${srcdir}"/f06ba5869503f8bc07cede1ed77241438d1fea20.patch
-
   # Patch for 5.10-lts
   patch -p1 -i "${srcdir}"/7c19d3c66758747d854c63e4c34ef127ce201fa6.patch
+
+  # # Patch for 5.19
+  patch -p1 -i "${srcdir}"/4.patch
+
 }
 
 package() {
