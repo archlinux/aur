@@ -2,7 +2,7 @@
 # contributor: FabioLolix
 
 pkgname=notekit
-pkgver=2022.5.5
+pkgver=2022.9.7
 pkgrel=1
 pkgdesc="A GTK3 hierarchical markdown notetaking application with tablet support."
 arch=("x86_64")
@@ -10,7 +10,7 @@ url="https://github.com/blackhole89/notekit"
 license=("GPL3")
 depends=("desktop-file-utils" "clatexmath" "gtkmm3" "gtksourceviewmm>=3.18" "jsoncpp" "zlib")
 makedepends=("git" "meson" "fontconfig" "appstream-glib")
-pkgcommit=5fa3ba90f14106c3c0f4f6db00abc2d555c57099
+pkgcommit=f0d078195e4c2b854293492561d06aec9a01b5bf
 source=("git+https://github.com/blackhole89/notekit.git#commit=$pkgcommit")
 sha256sums=('SKIP')
 
