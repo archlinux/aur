@@ -3,7 +3,7 @@
 # Contributor: SuperNinja_4965
 
 pkgname=arduino-ide-beta-bin
-_pkgver=2.0.0-rc9.3
+_pkgver=2.0.0-rc9.4
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Arduino prototyping platform IDE, rewrite based on the Theia IDE framework"
@@ -22,7 +22,7 @@ install=arduino-ide.install
 options=(!strip)
 source=("https://downloads.arduino.cc/arduino-ide/arduino-ide_${_pkgver}_Linux_64bit.zip"
         "https://www.arduino.cc/wiki/370832ed4114dd35d498f2f449b4781e/arduino.svg")
-sha256sums=('6f5b07c6f98da4b1c759f618584902fdd9c1d26821f8c08b2a2cc96b4e240e2a'
+sha256sums=('1da2bda7da56dce0bba95f0d7b3dffd29f5f5659041adad6ce7c0cf460822874'
             '4137981bcb4057c2e0092f22faea287767f102e0b48497d22cd55e8d6988e4ac')
 
 prepare() {
