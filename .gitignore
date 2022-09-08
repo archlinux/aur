@@ -3,3 +3,4 @@ src/
 pkg/
 *.deb*
 *.json
+*.log
