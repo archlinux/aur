@@ -1,12 +1,12 @@
 pkgbase = nerd-fonts-hack
 	pkgdesc = Patched font Hack from nerd-fonts library
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
 	license = MIT
-	provides = ttf-font-nerd=2.2.1
-	source = Hack-2.2.1.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.1/Hack.zip
-	sha256sums = 742f33105dc6eff192ad9e8b3b4406580ad418910c806c51551d9bb050f25d66
+	provides = ttf-font-nerd=2.2.2
+	source = Hack-2.2.2.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Hack.zip
+	sha256sums = 1f031b6d08d51f4830eacd00853dddc7fbd4ae0a05e169f2c13f3037dd3359b3
 
 pkgname = nerd-fonts-hack
