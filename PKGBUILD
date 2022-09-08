@@ -4,7 +4,7 @@
 
 pkgname=devtools-git
 _pkgname=devtools
-pkgver=20211129.r0.g412d032
+pkgver=20220621.r20.gf8d2ad9
 pkgrel=1
 pkgdesc='Tools for Arch Linux package maintainers'
 arch=('any')
