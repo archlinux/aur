@@ -8,7 +8,7 @@
 _pkgname=plymouth
 pkgname=${_pkgname}-nosystemd
 pkgver=22.02.122
-pkgrel=3
+pkgrel=4
 pkgdesc="A graphical boot splash screen with kernel mode-setting support for non-systemd setups"
 url="http://www.freedesktop.org/wiki/Software/Plymouth"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ license=('GPL')
 
 depends=('libdrm' 'pango' 'elogind')
 makedepends=('docbook-xsl')
-optdepends=('cantarell-fonts: For true type font support'
+optdepends=('cantarell-fonts: For text output, e.g. during decryption'
         'xf86-video-fbdev: Support special graphic cards on early startup')
 provides=('plymouth')
 conflicts=('plymouth')
@@ -39,7 +39,7 @@ sha256sums=('8921cd61a9f32f5f8903ceffb9ab0defaef8326253e1549ef85587c19b7f2ab6'
             '748e0cfa0e10ab781bc202fceeed46e765ed788784f1b85945187b0f29eafad7'
             '373ec20fe4c47e693a0c45cc06dd906e35dd1d70a85546bd1d571391de11763a'
             '2a80e2cad8de428358647677afa166219589d3338c5f94838146c804a29e2769'
-            '14ca377af62a0d27f30fd2acb66a5fb6ab584ead317116c3985e3e764929004d'
+            '619be4d3e85457bbec42071bf6c38fb885acdb66ac635e29efad9b5d09c7fa6d'
             '74908ba59cea53c6a9ab67bb6dec1de1616f3851a0fd89bb3c157a1c54e6633a'
             '71d34351b4313da01e1ceeb082d9776599974ce143c87e93f0a465f342a74fd2'
             '1bd7693d1e135fe9e22a03f7635309e2ae616e952665d9774eb5ca4d82718e1b'
@@ -97,6 +97,4 @@ package() {
   install -Dm644 "$srcdir/plymouth.initcpio_install" "$pkgdir/usr/lib/initcpio/install/plymouth"
 
   install -Dm644 "$pkgdir/usr/share/plymouth/plymouthd.defaults" "$pkgdir/etc/plymouth/plymouthd.conf"
-  #remove unused scripts, a comment on plymouth says it breaks dracut, so commented
-  #rm -rf "$pkgdir"/usr/lib/plymouth/plymouth-{generate,populate}-initrd
 }
