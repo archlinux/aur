@@ -2,10 +2,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-quick3d
-_basever=5.15.5
-pkgver=5.15.5+kde+r1
+_basever=5.15.6
+pkgver=5.15.6+kde+r1
 pkgrel=1
-_commit=1a8736a5834492aa8b7fc2dbc59a1eb4420a7330
+_commit=5cf67a0a93026ffd41d2ea5a11b289f46a518376
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3')
