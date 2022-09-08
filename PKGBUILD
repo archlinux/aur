@@ -7,7 +7,7 @@ pkgrel=3
 
 pkgdesc="retrieves emoji character range from unicode.org"
 url="https://gitlab.com/christoph.fink/python-emojientities"
-license=("GPLv3")
+license=("GPL3")
 
 arch=("any")
 makedepends=("python-setuptools")
