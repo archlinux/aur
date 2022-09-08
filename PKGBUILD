@@ -17,9 +17,9 @@ sha256sums=('SKIP' 'SKIP')
 package() {
     cd "${srcdir}"
     find cavecube extras/ resources/ -not -path "extras/icon/*" -type f -exec install -Dm 755 "{}" "${pkgdir}/opt/${ghpkgname}/{}" \;
-    cd extras/icon/hicolor/
+    cd extras/icon/
     find hicolor/ -type f -exec install -Dm 755 "{}" "${pkgdir}/usr/share/icons/{}" \;
-    cd ../../../
+    cd ../../
     mkdir -p "${pkgdir}/usr/bin/"
     ln -sf "/opt/${ghpkgname}/cavecube" "${pkgdir}/usr/bin/cavecube"
     mkdir -p "${pkgdir}/usr/share/applications/"
