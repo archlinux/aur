@@ -1,6 +1,6 @@
 pkgbase = mailnagtray
 	pkgdesc = A tray icon applet for mail monitoring using Mailnag
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/jgmdev/mailnagtray
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = mailnagtray
 	depends = qt6-base
 	depends = imagemagick
 	optdepends = gnome-control-center: administer online accounts
-	source = https://github.com/jgmdev/mailnagtray/archive/refs/tags/v0.2.tar.gz
-	md5sums = SKIP
+	source = https://github.com/jgmdev/mailnagtray/archive/refs/tags/v0.3.tar.gz
+	sha256sums = bd6dbb1eb9c83d81af768c60fded5aec42f3036134018b3e2ee167300f700245
 
 pkgname = mailnagtray
