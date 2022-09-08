@@ -1,0 +1,17 @@
+pkgbase = stowd
+	pkgdesc = Easily manage all your dotfiles across your devices
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/ghassan0/stowd
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = stow
+	source = https://github.com/ghassan0/stowd/archive/refs/tags/v0.2.1.tar.gz
+	b2sums = d46d310978e6d46fdd1bbb2b42968edf59356f3e4cef4165a68a67b1cef4de61e81d2d831479a02d86c259ecff6c379c0de7ea8faaa65fad117b2faa39adf075
+
+pkgname = stowd
