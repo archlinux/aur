@@ -1,7 +1,7 @@
-From 82b1098e107303aefec21455a84c0e8120ea42e3 Mon Sep 17 00:00:00 2001
+From aaaa4d04d55ded0ec738ae5a6f927eeec66434e3 Mon Sep 17 00:00:00 2001
 From: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
 Date: Tue, 21 Jun 2022 17:56:40 -0500
-Subject: [PATCH 5/6] soundwire: intel: use pm_runtime_resume() on component
+Subject: [PATCH 5/7] soundwire: intel: use pm_runtime_resume() on component
  probe
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

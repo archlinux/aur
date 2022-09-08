@@ -1,7 +1,7 @@
-From 51928058df4cebd8749d269a20dafa3e52122bfc Mon Sep 17 00:00:00 2001
+From a109628df29f8cde35ffcdeda2d6f5181a85d59c Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jouni=20H=C3=B6gander?= <jouni.hogander@intel.com>
 Date: Fri, 13 May 2022 17:28:10 +0300
-Subject: [PATCH 2/6] drm/i915/psr: Use full update In case of area calculation
+Subject: [PATCH 2/7] drm/i915/psr: Use full update In case of area calculation
  fails
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

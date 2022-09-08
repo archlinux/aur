@@ -68,7 +68,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=5.19.7
+pkgver=5.19.8
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -95,21 +95,23 @@ source=(
   0003-drm-i915-Ensure-damage-clip-area-is-within-pipe-area.patch
   0004-mm-vmscan-fix-extreme-overreclaim-and-swap-floods.patch
   0005-soundwire-intel-use-pm_runtime_resume-on-component-p.patch
+  0006-ALSA-hda-Once-again-fix-regression-of-page-allocatio.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('b8bb6019d4255f39196726f9d0f82f76179d1c3d7c6b603431ef04b38201199f'
+sha256sums=('616308795a952a6a39b4c74807c33916850eb7166d8ed7c9a87a1ba55d7487ce'
             'SKIP'
             'ec58b63109b23d318af62b48a4f43e3042ddb45e71060c885d5d03f2cb3760b0'
             '5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c'
             '7037fa27b33666a3bd20c888c667efb218e95e45af8debe591896cc79fe69c76'
-            'a5c5a7522b27a36328f0e2a4b8d06b3f57f0de94a08cdcc8b0a036ca1e09ccf5'
-            '919251a32b739a0bce98b8d9afcd7bfcdd107d185036eaa760a975f04fe0d293'
-            'bcf75d242132e0c4ed7e11040aced748d41e2a91cc4a7f74d4612fd8f6ff535b'
-            '105a3a2abdf6e6883eed1eb7a5645fca558354e77c1baa542cb2f737faa9a8d0'
-            '9ff6f6e54eceed31f85687e4a788db0993650c69d5c3e3540ca2f7c2ccc00d92')
+            '83a1b84ec09bd349edc4d13aaa6a4066f5aa1416531c06f9f9758dc60fa16cb7'
+            'a0e101e199949c1571352e4b5b60810db5889f1280392c36ddf54077f9b205f9'
+            '320d6e730ea46059b5faae642b3ea7bca13fd87b3520341a67c440495a58ff73'
+            '2f3d0db25f54a575a6fd075964309925adaa31edd61979931991c94474cb1513'
+            '81d7b8bd2799e3b9146b9c0fa72f0cf469da797d9e955d307775231424e2cf3b'
+            '738b731aa36d2ef7986ef80769c471fc7d1d9dd6b3fe307137059ec154e743a3')
 
 prepare() {
   cd linux-${pkgver}

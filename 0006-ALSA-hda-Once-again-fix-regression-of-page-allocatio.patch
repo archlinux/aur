@@ -1,0 +1,84 @@
+From a72ed1112caeb42af858924293b47029d7bc8500 Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Tue, 6 Sep 2022 11:03:19 +0200
+Subject: [PATCH 6/7] ALSA: hda: Once again fix regression of page allocations
+ with IOMMU
+
+The last fix for trying to recover the regression on AMD platforms,
+unfortunately, leaded to yet another regression: it turned out that
+IOMMUs don't like the usage of raw page allocations.
+
+This is yet another attempt for addressing the log saga; at this time,
+we re-use the existing buffer allocation mechanism with SG-pages
+although we require only single pages.  The SG buffer allocation
+itself was confirmed to work for stream buffers, so it's relatively
+easy to adapt for other places.
+
+The only problem is: although the HD-audio code is accessing the
+address directly via dmab->address field, SG-pages don't set up it.
+For the ease of adaption, we now set up the dmab->addr field from the
+address of the first page as default, so that it can run with the
+HD-audio driver code as-is without the excessive call of
+snd_sgbuf_get_addr() multiple times; that's the only change in the
+memalloc helper side.  The rest is nothing but a flip of the dma_type
+field in the HD-audio side.
+
+Fixes: a8d302a0b770 ("ALSA: memalloc: Revive x86-specific WC page allocations again")
+Reported-by: Mikhail Gavrilov <mikhail.v.gavrilov@gmail.com>
+Tested-by: Mikhail Gavrilov <mikhail.v.gavrilov@gmail.com>
+Cc: <stable@vger.kernel.org>
+Link: https://lore.kernel.org/r/CABXGCsO+kB2t5QyHY-rUe76npr1m0-5JOtt8g8SiHUo34ur7Ww@mail.gmail.com
+Link: https://bugzilla.kernel.org/show_bug.cgi?id=216112
+Link: https://bugzilla.kernel.org/show_bug.cgi?id=216363
+Link: https://lore.kernel.org/r/20220906090319.23358-1-tiwai@suse.de
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ sound/core/memalloc.c     | 9 +++++++--
+ sound/pci/hda/hda_intel.c | 2 +-
+ 2 files changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/sound/core/memalloc.c b/sound/core/memalloc.c
+index 55b3c49ba61d..244afc38ddca 100644
+--- a/sound/core/memalloc.c
++++ b/sound/core/memalloc.c
+@@ -535,10 +535,13 @@ static void *snd_dma_noncontig_alloc(struct snd_dma_buffer *dmab, size_t size)
+ 	dmab->dev.need_sync = dma_need_sync(dmab->dev.dev,
+ 					    sg_dma_address(sgt->sgl));
+ 	p = dma_vmap_noncontiguous(dmab->dev.dev, size, sgt);
+-	if (p)
++	if (p) {
+ 		dmab->private_data = sgt;
+-	else
++		/* store the first page address for convenience */
++		dmab->addr = snd_sgbuf_get_addr(dmab, 0);
++	} else {
+ 		dma_free_noncontiguous(dmab->dev.dev, size, sgt, dmab->dev.dir);
++	}
+ 	return p;
+ }
+ 
+@@ -772,6 +775,8 @@ static void *snd_dma_sg_fallback_alloc(struct snd_dma_buffer *dmab, size_t size)
+ 	if (!p)
+ 		goto error;
+ 	dmab->private_data = sgbuf;
++	/* store the first page address for convenience */
++	dmab->addr = snd_sgbuf_get_addr(dmab, 0);
+ 	return p;
+ 
+  error:
+diff --git a/sound/pci/hda/hda_intel.c b/sound/pci/hda/hda_intel.c
+index a77165bd92a9..b20694fd69de 100644
+--- a/sound/pci/hda/hda_intel.c
++++ b/sound/pci/hda/hda_intel.c
+@@ -1817,7 +1817,7 @@ static int azx_create(struct snd_card *card, struct pci_dev *pci,
+ 
+ 	/* use the non-cached pages in non-snoop mode */
+ 	if (!azx_snoop(chip))
+-		azx_bus(chip)->dma_type = SNDRV_DMA_TYPE_DEV_WC;
++		azx_bus(chip)->dma_type = SNDRV_DMA_TYPE_DEV_WC_SG;
+ 
+ 	if (chip->driver_type == AZX_DRIVER_NVIDIA) {
+ 		dev_dbg(chip->card->dev, "Enable delay in RIRB handling\n");
+-- 
+2.37.3
+
