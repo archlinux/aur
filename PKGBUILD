@@ -4,8 +4,7 @@ _theme="sweet-arch"
 _pkgname="plymouth-theme-$_theme"
 pkgname="$_pkgname-git"
 _gitname=$_pkgname
-_gitroot="git://github.com/abrahammurciano/$_gitname.git"
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="Make your Arch Linux splash screen look wonderful with this theme inspired by Sweet by EliverLara."
 arch=("any")
@@ -14,7 +13,7 @@ license=("GPL")
 install="message.install"
 depends=("plymouth")
 makedepends=("git")
-source=($_gitroot)
+source=("git+$url.git")
 sha256sums=("SKIP")
 
 
