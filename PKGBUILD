@@ -1,8 +1,9 @@
+
 # Maintainer: Sick Codes <info at sick dot codes>
 # 
 pkgname=riscv-gnu-toolchain-bin
 # To maintain, simply change the nightly date: https://github.com/riscv-collab/riscv-gnu-toolchain/releases
-pkgver=2022.06.10
+pkgver=2022.08.26
 _target=11.1.0
 _pkg_prefix=ubuntu-20.04-nightly
 pkgrel=2
