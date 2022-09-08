@@ -1,4 +1,3 @@
-# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch>
 # Contributor: DisableGraphics elchifladod@gmail.com
 pkgbase="korai"
 pkgname="korai"
