@@ -1,6 +1,6 @@
 pkgbase = gnunet-git
 	pkgdesc = A framework for secure peer-to-peer networking
-	pkgver = 0.17.5.r9.g6745bed70
+	pkgver = 0.17.5.r14.g008fbd997
 	pkgrel = 1
 	url = http://gnunet.org
 	install = gnunet.install
@@ -24,7 +24,7 @@ pkgbase = gnunet-git
 	depends = gnutls
 	depends = iptables
 	depends = jansson
-	depends = libcurl-gnutls.so
+	depends = libcurl-gnutls
 	depends = libextractor
 	depends = libgcrypt
 	depends = libidn2
