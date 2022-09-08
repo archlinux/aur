@@ -1,6 +1,6 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=helm-2to3
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 pkgdesc='Migrates and cleans up Helm v2 configuration and releases in-place to Helm v3'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('kubectl')
 makedepends=('go')
 groups=('helm-plugins')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('ffeb217778d222b724c27c07c4f4982d007af76a63285f0b090896df154193ed')
+sha256sums=('24ba9d48fde69a46b7477b5856816be66f41e6c955829274d1d8639603aafb3d')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
