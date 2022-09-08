@@ -36,6 +36,8 @@ _package() {
     sed -i "s#/usr/share/asus_touchpad_numpad-driver/asus_touchpad.py#${pkgdir}/usr/share/asus_touchpad_numpad-driver/asus_touchpad.py#" "asus_touchpad.service"
     install -Dm755 asus_touchpad.py "${pkgdir}/usr/share/asus_touchpad_numpad-driver/asus_touchpad.py"
     install -Dm644 "asus_touchpad.service" "${pkgdir}/usr/lib/systemd/system/asus_touchpad_numpad.service"
+    install -Dm644 "asus_touchpad.X11.service" "${pkgdir}/usr/lib/systemd/system/asus_touchpad.X11.service"
+    install -Dm644 "asus_touchpad_suspend.service" "${pkgdir}/usr/lib/systemd/system/asus_touchpad_suspend.service"
     install -Dm 644 -t "${pkgdir}/usr/share/asus_touchpad_numpad-driver/numpad_layouts" numpad_layouts/*.py
 }
 
