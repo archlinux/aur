@@ -3,7 +3,7 @@
 
 pkgname=amulegui-upnp
 pkgver=11106
-pkgrel=3
+pkgrel=4
 pkgdesc="Remote GUI for the aMule Daemon, an eMule-like client for the ed2k p2p network"
 arch=('i686' 'x86_64')
 url="http://www.amule.org/"
@@ -12,8 +12,14 @@ depends=(wxwidgets-gtk3 gd geoip libupnp)
 makedepends=(crypto++)
 conflicts=('amule' 'amule-svn' 'amule-noupnp-svn' 'amule-noupnp')
 provides=("amulegui=${pkgver}")
-source=(http://amule.sourceforge.net/tarballs/aMule-SVN-r${pkgver}.tar.bz2)
-md5sums=('1f9308e2354c684e7ec38abb819f9a1a')
+source=(http://amule.sourceforge.net/tarballs/aMule-SVN-r${pkgver}.tar.bz2
+        fix-locale-translations.patch)
+md5sums=('1f9308e2354c684e7ec38abb819f9a1a'
+         '151f4c91955df643f339c31a244a8271')
+
+prepare() {
+  patch -d aMule-SVN-r${pkgver} -p1 < fix-locale-translations.patch
+}
 
 build() {
   cmake -B build -S aMule-SVN-r${pkgver} \

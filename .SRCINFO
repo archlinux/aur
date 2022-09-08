@@ -1,7 +1,7 @@
 pkgbase = amulegui-upnp
 	pkgdesc = Remote GUI for the aMule Daemon, an eMule-like client for the ed2k p2p network
 	pkgver = 11106
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.amule.org/
 	arch = i686
 	arch = x86_64
@@ -17,6 +17,8 @@ pkgbase = amulegui-upnp
 	conflicts = amule-noupnp-svn
 	conflicts = amule-noupnp
 	source = http://amule.sourceforge.net/tarballs/aMule-SVN-r11106.tar.bz2
+	source = fix-locale-translations.patch
 	md5sums = 1f9308e2354c684e7ec38abb819f9a1a
+	md5sums = 151f4c91955df643f339c31a244a8271
 
 pkgname = amulegui-upnp
