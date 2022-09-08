@@ -1,6 +1,6 @@
 # Maintainer: Philip Jones <philj56@gmail.com>
 pkgname=tofi
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Tiny rofi / dmenu replacement for wlroots-based Wayland compositors."
 arch=("x86_64")
@@ -17,7 +17,7 @@ options=()
 install=
 source=("https://github.com/philj56/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 noextract=()
-sha512sums=(40b0c14f6b1ecc82cb2d27c957578dbc7570e9beff65c83cbcbf33a87e77881482225dc4e30fd19bd5b501a3ca119dfaec944182b4e903e3ba1eabe9a90d3488)
+sha512sums=(dd3514c0012ff6bb77cfae1c248a9fe04bd4104085e7a5bb5cf2d3033e2dcf45b32d1bc3381006ca099cd842db46536f1ae867639477e6594b3d0d387aa95168)
 
 prepare() {
 	rm -rf build
