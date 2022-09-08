@@ -2,7 +2,7 @@
 
 pkgname=libcrossguid-git
 pkgver=0.2.2.r52.gca1bf4b
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight cross platform C++ GUID/UUID library"
 arch=('i686' 'x86_64')
 url="https://github.com/graeme-hill/crossguid"
@@ -33,7 +33,7 @@ check(){
 package() {
   cd "$srcdir"/libcrossguid
   install -D -m644 libcrossguid.a "${pkgdir}/usr/lib/libcrossguid.a"
-  install -D -m644 include/crossguid/guid.hpp "${pkgdir}/usr/include/guid.hpp"
+  install -D -m644 include/crossguid/guid.hpp "${pkgdir}/usr/include/crossguid/guid.hpp"
   install -D -m644 crossguid.pc "${pkgdir}/usr/lib/pkgconfig/crossguid.pc"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
