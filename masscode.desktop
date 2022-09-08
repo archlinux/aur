@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=MassCode
+Comment=A free and open source code snippets manager for developers
+Exec=masscode %F
+Terminal=false
+Type=Application
+Icon=masscode
+Categories=TextEditor;Utility;
+Keywords=masscode;snippets;
+StartupWMClass=masscode
+Actions=NewWindow;
