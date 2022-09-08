@@ -22,6 +22,7 @@ pkgbase = comictagger
 	depends = python-text2digits
 	depends = python-thefuzz
 	depends = python-typing_extensions
+	depends = python-wordninja
 	depends = python-unrar-cffi
 	depends = python-pyqt5
 	source = git+https://github.com/comictagger/comictagger.git#tag=1.4.8
