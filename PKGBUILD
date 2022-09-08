@@ -1,38 +1,38 @@
-# Maintainer: Sumner Evans <sumner.evans98 at gmail dot com>
+# Maintainer: Bart Van Loon <bbb at bbbart dot be>
 
 pkgbase='offlinemsmtp'
 pkgname=('offlinemsmtp')
 _module='offlinemsmtp'
-pkgver='0.3.8'
-pkgrel=2
+pkgver='0.3.10'
+pkgrel=1
 pkgdesc='Use msmtp offline by queuing email until you have an internet connection.'
-url='https://git.sr.ht/~sumner/offlinemsmtp'
+url='https://github.com/sumnerevans/offlinemsmtp'
 depends=(
     'python'
     'python-watchdog'
     'python-gobject'
 )
-makedepends=('python-setuptools')
+makedepends=('python-poetry' 'python-installer')
 license=('GPL3')
 arch=('any')
 source=(
-    'https://files.pythonhosted.org/packages/source/o/offlinemsmtp/offlinemsmtp-0.3.8.tar.gz'
-    'https://git.sr.ht/~sumner/offlinemsmtp/blob/v0.3.8/systemd/offlinemsmtp.service'
+    'https://github.com/sumnerevans/offlinemsmtp/archive/refs/tags/v0.3.10.tar.gz'
+    'https://raw.githubusercontent.com/sumnerevans/offlinemsmtp/master/systemd/offlinemsmtp.service'
 )
 noextract=(
     'offlinemsmtp.service'
 )
-md5sums=('16dcab47937058d362331592285086e5'
-         '9f96e70c7e1deec45aa04b6a91bda89e')
+sha256sums=('35735db733b2e9c871fd5b528c0c31a4a86b7e0aaef8866cbe039cd1d9c2d2bf'
+            '4c104ec682190c5459a89d6fc09bdd4a33f80302bd1888d01b7264dfcbdff9a9')
 replaces=('python-offlinemsmtp')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
+    poetry build
 }
 
 package() {
     install -Dm644 offlinemsmtp.service "${pkgdir}/usr/lib/systemd/user/offlinemsmtp.service"
     cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }

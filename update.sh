@@ -3,13 +3,13 @@
 AUR_NAME=offlinemsmtp
 PROJ_NAME=offlinemsmtp
 DESCRIPTION="Use msmtp offline by queuing email until you have an internet connection."
-URL=https://git.sr.ht/~sumner/offlinemsmtp
+URL=https://github.com/sumnerevans/offlinemsmtp
 DEPENDS=(python-watchdog python-gobject)
 LICENSE='GPL3'
 ADDITIONAL="replaces=('python-offlinemsmtp')"
 SOURCES=(
-    https://files.pythonhosted.org/packages/source/${PROJ_NAME:0:1}/${PROJ_NAME}/${PROJ_NAME}-$1.tar.gz
-    https://git.sr.ht/~sumner/offlinemsmtp/blob/v$1/systemd/offlinemsmtp.service
+    https://github.com/sumnerevans/${PROJ_NAME}/archive/refs/tags/v$1.tar.gz
+    https://raw.githubusercontent.com/sumnerevans/${PROJ_NAME}/master/systemd/offlinemsmtp.service
 )
 NOEXTRACT=(offlinemsmtp.service)
 
@@ -23,7 +23,7 @@ if [[ $# == 2 ]]; then
     pkgrel=$2
 fi
 
-echo "# Maintainer: Sumner Evans <sumner.evans98 at gmail dot com>
+echo "# Maintainer: Bart Van Loon <bbb at bbbart dot be>
 
 pkgbase='${AUR_NAME}'
 pkgname=('${AUR_NAME}')
@@ -41,7 +41,7 @@ for d in ${DEPENDS[*]}; do
 done
 
 echo ")
-makedepends=('python-setuptools')
+makedepends=('python-poetry' 'python-installer')
 license=('${LICENSE}')
 arch=('any')
 source=(" >> PKGBUILD
@@ -65,13 +65,13 @@ ${ADDITIONAL}
 
 build() {
     cd \"\${srcdir}/\${_module}-\${pkgver}\"
-    python setup.py build
+    poetry build
 }
 
 package() {
     install -Dm644 offlinemsmtp.service \"\${pkgdir}/usr/lib/systemd/user/offlinemsmtp.service\"
     cd \"\${srcdir}/\${_module}-\${pkgver}\"
-    python setup.py install --root=\"\${pkgdir}\" --optimize=1 --skip-build
+    python -m installer --destdir=\"\${pkgdir}\" dist/*.whl
 }" >> PKGBUILD
 
 updpkgsums
