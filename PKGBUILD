@@ -1,6 +1,6 @@
 # Maintainer: Anuskuss <anuskuss@googlemail.com>
 pkgname=cemu
-pkgver=2.0.99
+pkgver=2.0.104
 pkgrel=1
 pkgdesc='Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)'
 arch=(x86_64)
@@ -23,8 +23,9 @@ makedepends=(
 optdepends=(
 	'vulkan-driver: Vulkan graphics'
 )
+install=cemu.install
 source=(
-	git+https://github.com/cemu-project/Cemu#commit=e20bfd00ecfc4376e39048942c15a55463f065d0
+	git+https://github.com/cemu-project/Cemu#commit=6cdb6eed1730cde23ede99099a12092b9abe8aa3
 	# dependencies
 	imgui-1.88.tar.gz::https://github.com/ocornut/imgui/archive/refs/tags/v1.88.tar.gz
 	imgui.cmake::https://raw.githubusercontent.com/microsoft/vcpkg/master/ports/imgui/CMakeLists.txt
@@ -40,7 +41,6 @@ source=(
 	# patches
 	xdg.diff # 963f9b38349c5d03b26ab2a50ead2ee4e743ca41
 	overlay.diff # edeb14d4c68ee8bf500b990b13079177e01c25f1
-
 )
 sha256sums=(
 	SKIP
@@ -93,15 +93,16 @@ prepare() {
 	# glslang fix
 	sed -i 's/GLSLANG_VERSION_LESS/GLSLANG_VERSION_GREATER/' src/Cafe/HW/Latte/Renderer/Vulkan/RendererShaderVk.cpp
 
+	# exit crash fix
+	sed -i 's/exit(0)/_exit(0)/g' src/gui/CemuApp.cpp
+
 	# experimental: xdg base dir (https://github.com/cemu-project/Cemu/pull/130)
 	git apply "$srcdir/xdg.diff"
+	sed -i 's|gameProfiles/default|gameProfiles|' src/Cafe/GameProfile/GameProfile.cpp
 
 	# experimental: linux overlay (https://github.com/cemu-project/Cemu/pull/142)
 	rm -rf src/util/SystemInfo
 	git apply "$srcdir/overlay.diff"
-
-	# gameProfiles improvement
-	sed -i 's|gameProfiles/default|gameProfiles|' src/Cafe/GameProfile/GameProfile.cpp
 }
 
 build() {
