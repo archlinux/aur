@@ -2,7 +2,7 @@
 
 pkgname=dolphin-nospace
 _pkgname=dolphin
-pkgver=22.08.0
+pkgver=22.08.1
 pkgrel=1
 pkgdesc="KDE File Manager (with DuckSoft's Space Patch)"
 arch=(x86_64)
@@ -16,7 +16,7 @@ optdepends=('kde-cli-tools: for editing file type options' 'ffmpegthumbs: video 
             'konsole: terminal panel' 'purpose: share context menu' 'packagekit-qt5: service menu installer')
 source=("https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz"
         "ducksoft-want-my-space-back.patch")
-sha256sums=('03458f878b70d82f0a55396bb0bfe7409be867e77d31fb42b310888bd1f16682'
+sha256sums=('067bef1d24c411ba2bad2aee62ed10dd584c4c43184cbddfbefa775c9a1c9be9'
             '21a50881ce6dce2a831d8fc0e2d1339a158aaabc65986bbe3c9e990a4a71fcbe')
 
 prepare() {
