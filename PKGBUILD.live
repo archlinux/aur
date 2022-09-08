@@ -19,6 +19,7 @@ depends=(python
          python-text2digits
          python-thefuzz
          python-typing_extensions
+         python-wordninja
          python-unrar-cffi
          python-pyqt5
 )
