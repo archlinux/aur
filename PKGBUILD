@@ -44,7 +44,7 @@ build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+    export GOFLAGS="-buildmode=pie -trimpath"
     go build -ldflags='-s -w -linkmode=external' ./cmd/$_pkgname
     go build -ldflags='-s -w -linkmode=external' ./cmd/$_pkgname-domain-set-converter
 }
@@ -58,5 +58,5 @@ package() {
     install -Dm644 client.json "$pkgdir"/etc/$_pkgname/client.json
     cd $pkgname
     install -Dm755 $_pkgname "$pkgdir"/usr/bin/$_pkgname
-    install -Dm755 $_pkgname "$pkgdir"/usr/bin/$_pkgname-domain-set-converter
+    install -Dm755 $_pkgname-domain-set-converter "$pkgdir"/usr/bin/$_pkgname-domain-set-converter
 }
