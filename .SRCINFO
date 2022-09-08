@@ -1,20 +1,18 @@
 pkgbase = semaphore-git
 	pkgdesc = Modern UI for Ansible
-	pkgver = v2.8.65.r14.c2c4344
-	pkgrel = 3
+	pkgver = v2.8.65.r25.f02c260
+	pkgrel = 1
 	url = https://github.com/ansible-semaphore/semaphore
 	arch = any
 	license = MIT
-	makedepends = taskfile-git
+	makedepends = go-task
 	makedepends = npm
-	makedepends = packr
 	makedepends = go-swagger
+	depends = ansible
 	optdepends = postgresql: Database
 	provides = semaphore
 	conflicts = semaphore
 	source = semaphore::git+https://github.com/ansible-semaphore/semaphore.git
-	source = 1007.patch
 	sha256sums = SKIP
-	sha256sums = 3e76b2da62cd7e5be3f0edd05f918b94dd2ac0931690dd34e6f6244c25d392c0
 
 pkgname = semaphore-git
