@@ -1,7 +1,7 @@
 # Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch>
 # Contributor: DisableGraphics elchifladod@gmail.com
 pkgbase="korai-git"
-pkgname="korai-geet"
+pkgname="korai"
 pkgrel=3
 pkgver=0.2.1
 pkgdesc="Fast, reliable and feature-packed manga and comics reader"
@@ -9,6 +9,7 @@ arch=("any")
 url='https://github.com/DisableGraphics/Korai'
 makedepends=("git" "imagemagick")
 depends=("libarchive" "gtkmm3" "webkit2gtk" "vte3" "mangodl")
+conflicts=("korai-git")
 license=("GPL")
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('2f40b9bbddc3aca79fd6c4c34e78a68eea89bb9fb289f4324636829a0586bb9e8ee15db89fb5faba3ac98b2a2dbf4b474a0b7e93eb24a9da2354af1e3f688964')
