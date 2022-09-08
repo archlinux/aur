@@ -19,8 +19,6 @@ pkgbase = waydroid-git
 	provides = waydroid
 	conflicts = waydroid
 	source = waydroid::git+https://github.com/waydroid/waydroid.git
-	source = gbinder.conf
 	sha256sums = SKIP
-	sha256sums = 87a21d401281735ea026d715ea79b36e01f9af084198de2761b32d5b58a343dd
 
 pkgname = waydroid-git

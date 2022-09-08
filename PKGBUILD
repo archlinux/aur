@@ -14,10 +14,8 @@ makedepends=('git' 'make')
 optdepends=('waydroid-image: Android image for use with waydroid'
             'python-pyclip: share clipboard with container')
 _commit="96204ad92421fd3e1a17b3555e7057d05255046e" # tags/1.1.1
-source=(${_pkgname}::git+https://github.com/waydroid/waydroid.git
-        gbinder.conf)
-sha256sums=('SKIP'
-            '87a21d401281735ea026d715ea79b36e01f9af084198de2761b32d5b58a343dd')
+source=(${_pkgname}::git+https://github.com/waydroid/waydroid.git)
+sha256sums=('SKIP')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
@@ -40,9 +38,6 @@ package() {
   mv "${pkgdir}/usr/lib/waydroid/data/Waydroid.desktop" "${pkgdir}/usr/share/applications"
   cp waydroid.py "${pkgdir}/usr/lib/waydroid/"
   ln -s /usr/lib/waydroid/waydroid.py "${pkgdir}/usr/bin/waydroid"
-  install -Dm644 -t "${pkgdir}/etc" "$srcdir/gbinder.conf"
-  install -Dm644 -t "${pkgdir}/etc/gbinder.d" gbinder/anbox.conf
-  install -Dm644 -t "${pkgdir}/usr/lib/systemd/system" debian/waydroid-container.service
-
+  install -Dm644 -t "${pkgdir}/usr/lib/systemd/system" systemd/waydroid-container.service
 }
 
