@@ -1,0 +1,28 @@
+pkgbase = cleartouch-git
+	pkgdesc = A touchpad vizualizer written in zig
+	pkgver = 0.1.0.r14.g4c37c64
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/canadaduane/cleartouch
+	arch = x86_64
+	license = MIT
+	makedepends = zig
+	makedepends = git
+	depends = udev
+	depends = glfw
+	depends = libxi
+	depends = libxinerama
+	depends = libxrandr
+	depends = libxcursor
+	provides = cleartouch
+	conflicts = cleartouch
+	source = cleartouch::git+https://github.com/canadaduane/cleartouch.git
+	source = clap::git+https://github.com/Hejsil/zig-clap.git#tag=0.5.0
+	source = pike::git+https://github.com/cekongnetcv/pike.git
+	source = raylib::git+https://github.com/raysan5/raylib.git#commit=e60aa8e9351a3427f1754ef5e83c1f0102223415
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = cleartouch-git
