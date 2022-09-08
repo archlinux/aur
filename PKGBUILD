@@ -1,9 +1,8 @@
 # Maintainer: Sergii Fesenko <sergii underscore f dot at outlook dot com>
-# PKGBUILD based on the one from https://aur.archlinux.org/packages/lite-xl
 
 pkgname=lite-xl-git
 _pkgname=${pkgname%-git}
-pkgver=v2.1.0.r1967.c25f83da
+pkgver=v2.1.0.r1970.334ef427
 pkgrel=1
 pkgdesc='A lightweight text editor written in Lua (master branch)'
 arch=('x86_64')
@@ -25,13 +24,12 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${_pkgname}"
 
-  # tags are not correct for 2.1.0, so try to reconstruct version
+  # git describe --tags --long --exclude 'testing*' | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
+
   V=$(meson introspect --projectinfo _build | jq -r '.version')
   CNT=$(git rev-list --count HEAD)
   H=$(git rev-parse --short HEAD)
   echo v${V}.r${CNT}.${H}
-
-  # git describe --tags --long --exclude 'testing*' | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
 prepare() {
