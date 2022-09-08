@@ -1,7 +1,7 @@
 pkgbase = xkbset
 	pkgdesc = Manage most of the options of XKB extensions from X window interface.
 	pkgver = 0.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/stephenmontgomerysmith/xkbset
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,6 @@ pkgbase = xkbset
 	provides = xkbset
 	conflicts = xkbset-git
 	source = https://github.com/stephenmontgomerysmith/xkbset/archive/refs/tags/v0.8.tar.gz
-	md5sums = SKIP
+	sha256sums = 23c2397f16473611ca16eddbb5b144da1f02b2765183b8b4f99e17031488ea6a
 
 pkgname = xkbset
