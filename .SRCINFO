@@ -1,7 +1,7 @@
 pkgbase = korai-git
 	pkgdesc = Fast, reliable and feature-packed manga and comics reader (git version)
-	pkgver = 08.09.22
-	pkgrel = 1
+	pkgver = dcb9124471c700d2f2454d43d91c6e62a59145fa
+	pkgrel = 0
 	url = https://github.com/DisableGraphics/Korai
 	arch = any
 	license = GPL
