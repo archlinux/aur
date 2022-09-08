@@ -2,7 +2,7 @@
 # Contributor: DisableGraphics elchifladod@gmail.com
 pkgbase="korai"
 pkgname="korai"
-pkgrel=0
+pkgrel=1
 pkgver=0.2.1
 pkgdesc="Fast, reliable and feature-packed manga and comics reader"
 arch=("any")
