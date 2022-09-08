@@ -2,10 +2,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-sensors
-_basever=5.15.5
-pkgver=5.15.5+kde+r0
+_basever=5.15.6
+pkgver=5.15.6+kde+r0
 pkgrel=1
-_commit=bce4b6231229e953c3961f3d9858e58555a55d56
+_commit=35eb5ac7eaef4745a38958c3ca780d7baa2e4f30
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
