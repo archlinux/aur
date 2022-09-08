@@ -1,23 +1,26 @@
+# Maintainer: Robert Brzozowski <robson75@linux.pl>
 # Maintainer: Lara Maia <dev@lara.click>
 # co-Maintainer: Acidhub <contact@acidhub.click>
 # co-Maintainer: bobi
 # Contributer: Jean-Alexandre Anglès d'Auriac <jagw40k@free.fr>
 
 pkgname=buuf-icon-theme
-pkgdesc="An icon theme for Gnome based on the Buuf iconset by Mattahan"
+pkgdesc="Created by fana-m. Icons by mattahan. Modified by Hybrid Son Of Oxayotl"
 pkgver=3.34
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="http://buuficontheme.free.fr"
 license=('cc-by-nc-sa')
-
 depends=('hicolor-icon-theme')
 
-plingurl="https://www.pling.com/dl?file_id=1572174181&file_type=application/x-xz&file_name=buuf$pkgver.tar.xz&file_size=21660564&project_id=1012512&link_type=download&is_external=false&external_link=null"
-source=($(curl -sX POST "$plingurl" | sed -n -e '/class="empty"/,/\/section/p' | awk '/script/,/\/script/' | sed 's/^[^"]*"//' | sed 's/"[^"]*$//'))
+source=("https://github.com/robson-66/Buuf/archive/refs/tags/v3.34.tar.gz")
+sha256sums=('35bf7618c4e0731b6596834e7c6d3718012196c6c2c71b21336162d57a2b8159')
 
 package() {
-  mkdir -p "$pkgdir"/usr/share/icons/$pkgname/
-  cp -rf "$srcdir"/buuf$pkgver/* "$pkgdir"/usr/share/icons/$pkgname/
+  mkdir -p "$pkgdir"/usr/share/icons/
+  cp -rf "$srcdir"/Buuf* "$pkgdir"/usr/share/icons/
+
+  find $pkgdir/usr -type f -exec chmod 644 {} \;
+  find $pkgdir/usr -type d -exec chmod 755 {} \;
+  find $pkgdir/usr -type f -name '.directory' -delete
 }
-md5sums=('0edbcd3d019d4a9b5fc0478168aac263')

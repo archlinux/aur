@@ -1,13 +1,12 @@
 pkgbase = buuf-icon-theme
-	pkgdesc = An icon theme for Gnome based on the Buuf iconset by Mattahan
+	pkgdesc = Created by fana-m. Icons by mattahan. Modified by Hybrid Son Of Oxayotl
 	pkgver = 3.34
-	pkgrel = 2
+	pkgrel = 3
 	url = http://buuficontheme.free.fr
 	arch = any
 	license = cc-by-nc-sa
 	depends = hicolor-icon-theme
-	source = https://dllb2.pling.com/api/files/download/id/1572174181/s/a99b3b9694ceed9ec1ee37a3320310f07d836a63cad2ea817ad09da65738bf9a4ad0a1b4e01b2de0085cbe09147b71512e2dc0e9d8d6e109cd791ca84f1fc766/t/1578583304/c/a99b3b9694ceed9ec1ee37a3320310f07d836a63cad2ea817ad09da65738bf9a4ad0a1b4e01b2de0085cbe09147b71512e2dc0e9d8d6e109cd791ca84f1fc766/lt/download/buuf3.34.tar.xz
-	md5sums = 0edbcd3d019d4a9b5fc0478168aac263
+	source = https://github.com/robson-66/Buuf/archive/refs/tags/v3.34.tar.gz
+	sha256sums = 35bf7618c4e0731b6596834e7c6d3718012196c6c2c71b21336162d57a2b8159
 
 pkgname = buuf-icon-theme
-
