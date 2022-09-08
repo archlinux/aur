@@ -7,7 +7,7 @@ pkgrel=2
 
 pkgdesc="Python wrapper for the webis Twitter sentiment identification tool"
 url="https://gitlab.com/christoph.fink/python-webis"
-license=("GPLv3")
+license=("GPL3")
 
 arch=("any")
 makedepends=(
