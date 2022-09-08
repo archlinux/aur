@@ -2,13 +2,14 @@
 
 pkgname=python-txzmq
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://pypi.org/project/txZMQ"
 license=("MPL2")
 pkgdesc="Twisted bindings for ZeroMQ"
 depends=('python-twisted' 'python-pyzmq')
 makedepends=('python-setuptools')
+checkdepends=('python-pycodestyle' 'python-pyflakes' 'python-gobject')
 source=("https://pypi.io/packages/source/t/txZMQ/txZMQ-${pkgver}.tar.gz")
 sha256sums=('8d607d0bf09ca94600b8e42f0721dbe43ee53a0470182344ac7ace7e58dc6177')
 
@@ -17,6 +18,13 @@ build() {
     python setup.py build
 }
 
+check() {
+    cd txZMQ-$pkgver
+    # taken from Makefile
+    pycodestyle --repeat txzmq
+    pyflakes txzmq
+    trial --reactor=default txzmq
+}
 package() {
     cd txZMQ-$pkgver
     python setup.py install --root="$pkgdir" --optimize=1
