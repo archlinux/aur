@@ -1,8 +1,8 @@
 # Packager: Joseph R. Quinn <quinn.josephr@protonmail.com>
 # Maintainer: Joseph R. Quinn <quinn.josephr@protonmail.com>
 pkgname=nerd-fonts-fira-code
-pkgver=2.2.1
-pkgrel=3
+pkgver=2.2.2
+pkgrel=1
 pkgdesc="Patched font Fira (Fura) Code from the nerd-fonts library"
 arch=("any")
 url="https://github.com/ryanoasis/nerd-fonts"
@@ -12,7 +12,7 @@ provides=('nerd-fonts-fira-code')
 conflicts=('nerd-fonts-git' 'nerd-fonts-complete' 'otf-nerd-fonts-fira-code')
 groups=("nerd-fonts")
 source=("$pkgver.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/FiraCode.zip")
-b2sums=('344aab77dc8b63cf3662c473745a35ef929d1af09fe8de31419ab0b848987542052546a5d5eda1b822d89cd0c0ab0bd8979099b84956370deb84894542317225')
+b2sums=('9f8ada87945ff10d9eced99369f7c6d469f9eaf2192490623a93b2397fe5b6ee3f0df6923b59eb87e92789840a205adf53c6278e526dbeeb25d0a6d307a07b18')
 
 package() {
   find . -iname "*.otf" -not -iname "*Windows Compatible.otf" -execdir install -Dm644 {} "$pkgdir/usr/share/fonts/OTF/{}" \;
