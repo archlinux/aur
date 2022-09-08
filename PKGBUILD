@@ -2,8 +2,8 @@
 
 pkgname=devtools32-git
 _pkgname=devtools
-pkgver=20210225.1.r3.gff0c88c
-pkgrel=2
+pkgver=20220607.r0.g0b93b9d
+pkgrel=1
 pkgdesc='Tools for Arch Linux package maintainers'
 arch=('any')
 license=('GPL')
