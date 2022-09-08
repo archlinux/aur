@@ -3,7 +3,7 @@
 # Contributor: Ondrej Patrovic <ondrej@patrovic.com>
 
 pkgname=010editor
-pkgver=12.0.1
+pkgver=13.0
 
 pkgrel=1
 pkgdesc="Professional text and hex editing with Binary Templates technology"
@@ -12,13 +12,14 @@ url="https://www.sweetscape.com/010editor/"
 license=('custom')
 depends=('libpng')
 makedepends=('fakechroot')
+options=('!strip')
 
 source=('010editor.desktop')
 source_i686=(https://download.sweetscape.com/010EditorLinux32Installer$pkgver.tar.gz)
 source_x86_64=(https://download.sweetscape.com/010EditorLinux64Installer$pkgver.tar.gz)
 sha256sums=('e3398b117934840828a96cd33534fc9b9242ec96089c2f283add137975499766')
-sha256sums_i686=('b4d60a35649890df19dae021652ee96cb726b34b8b55f916fb9bb7d9121944a9')
-sha256sums_x86_64=('f0bb4a37f41c75184b30cb76c3810334993eebb6bc3764adc548c61a7cc7c852')
+sha256sums_i686=('b047973dc7a3b2e3a8c8a1c1c7257966e77480744177c0e1bf64a240f069658b')
+sha256sums_x86_64=('a53ac2e1d5566157d73af9d93a4702367c44798b17206a8d162507d04d8fecac')
 
 package() {
   cd "${srcdir}"
@@ -28,14 +29,7 @@ package() {
   _installer=${_filename%%$pkgver*}
 
   install -dm 755 "${pkgdir}/opt"
-
-  mkdir "${pkgname}-${pkgver}"
-  ln -s {/etc,/tmp} "${_}/"
-  ln -s "${pkgdir}/opt" "${_}/"
-  ln -s "${srcdir}/${_installer}" "${_}/"
-
-  fakechroot -s chroot "${_}" \
-    ./${_installer} --mode silent --prefix "/opt/${pkgname}"
+  cp -r "${pkgname}" "${_}/"
 
   # Clean up unnecessary items (assitant is part of qt5-tools)
   rm -r "${pkgdir}/opt/${pkgname}/"{'assistant','uninstall'}
