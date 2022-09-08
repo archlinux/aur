@@ -1,6 +1,6 @@
 pkgbase = tuf
 	pkgdesc = Implementation of The Update Framework
-	pkgver = 0.3.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/theupdateframework/go-tuf
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = tuf
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = tuf-0.3.1.tar.gz::https://github.com/theupdateframework/go-tuf/archive/v0.3.1.tar.gz
-	sha256sums = d57c3ceaae88cce46cd51142b03a5477d170a2700f8fc5298688eccbf38a682f
+	source = tuf-0.5.0.tar.gz::https://github.com/theupdateframework/go-tuf/archive/v0.5.0.tar.gz
+	sha256sums = 71d75c708301b78414ded3a4fc8879f0dd1f426dad1e481d644ddac229e5fb9b
 
 pkgname = tuf
