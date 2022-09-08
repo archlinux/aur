@@ -1,6 +1,6 @@
 pkgbase = nwg-shell-config
 	pkgdesc = nwg-shell configuration utility
-	pkgver = 0.3.11
+	pkgver = 0.3.12
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-shell-config
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = nwg-shell-config
 	provides = nwg-shell-config
 	conflicts = nwg-shell-config
 	conflicts = nwg-shell-config-git
-	source = nwg-shell-config-0.3.11.tar.gz::https://github.com/nwg-piotr/nwg-shell-config/archive/v0.3.11.tar.gz
-	md5sums = 0c718785a1b39a4ea42c8c5bc470be16
+	source = nwg-shell-config-0.3.12.tar.gz::https://github.com/nwg-piotr/nwg-shell-config/archive/v0.3.12.tar.gz
+	md5sums = 79b18f8046dc54e056bd8d7de466aab2
 
 pkgname = nwg-shell-config
