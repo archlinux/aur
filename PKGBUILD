@@ -2,7 +2,7 @@
 pkgname="an-anime-game-launcher-git"
 _pkgname="${pkgname%-git}"
 pkgver=2.3.8.r23.g6a4afb1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 arch=("x86_64")
 url="https://github.com/an-anime-team/an-anime-game-launcher"
