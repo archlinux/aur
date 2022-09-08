@@ -6,6 +6,7 @@ src/
 *.bz2
 *.gz
 *.log
+*.log.*
 *.pkg.*
 *.tar.*
 *.xz

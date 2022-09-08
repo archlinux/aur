@@ -1,7 +1,7 @@
 pkgbase = wyrmsun
 	pkgdesc = Real-time strategy game based on history, mythology and fiction
-	pkgver = 5.3.5
-	pkgrel = 3
+	pkgver = 5.3.6
+	pkgrel = 1
 	url = https://andrettin.github.io/
 	arch = i686
 	arch = x86_64
@@ -19,11 +19,9 @@ pkgbase = wyrmsun
 	depends = qt5-quickcontrols2
 	depends = sdl2_mixer
 	depends = tolua++
-	source = wyrmsun-5.3.5.tar.gz::https://github.com/Andrettin/Wyrmsun/archive/v5.3.5.tar.gz
-	source = wyrmgus-5.3.5.tar.gz::https://github.com/Andrettin/Wyrmgus/archive/v5.3.5.tar.gz
-	source = werror_format_security.patch
-	md5sums = f519b26169499e52517196b24813d2ac
-	md5sums = 73b2e1bf4e29c0663af23d025c104f7c
-	md5sums = 426efa2e8ee8b3ab46736d634599963c
+	source = wyrmsun-5.3.6.tar.gz::https://github.com/Andrettin/Wyrmsun/archive/v5.3.6.tar.gz
+	source = wyrmgus-5.3.6.tar.gz::https://github.com/Andrettin/Wyrmgus/archive/v5.3.6.tar.gz
+	md5sums = fd77be9c4e3c425b0cab35c3545ddbba
+	md5sums = 3210ec84d8ef96d6c352ecc149d4c82c
 
 pkgname = wyrmsun
