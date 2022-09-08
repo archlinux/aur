@@ -1,16 +1,16 @@
 pkgbase = nnls-chroma
 	pkgdesc = NNLS Chroma/Chordino is an open source Vamp plugin library for harmony and chord extraction.
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://soundsoftware.ac.uk
 	arch = i686
 	arch = x86_64
 	groups = pro-audio
 	groups = vamp-plugins
 	license = GPL
+	makedepends = boost
 	depends = vamp-plugin-sdk
 	source = nnls-chroma-1.1.tar.gz::https://code.soundsoftware.ac.uk/hg/nnls-chroma/archive/82d5d11b68d7.tar.gz
-	md5sums = f4f16758613965cfe5787a3f8f7d3ca4
+	sha256sums = 93e53501981b829c85ef1a4edbac68095a5afdb2670f83fba1618e9004fdf503
 
 pkgname = nnls-chroma
-
