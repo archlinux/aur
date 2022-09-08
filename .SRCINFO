@@ -1,12 +1,10 @@
 pkgbase = python-wordninja
 	pkgdesc = Probabilistically split concatenated words using NLP based on English Wikipedia unigram frequencies
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/keredson/wordninja
 	arch = x86_64
 	license = MIT
-	checkdepends = python-pytest
-	checkdepends = python-hypothesis
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
