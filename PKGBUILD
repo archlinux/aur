@@ -3,7 +3,7 @@
 pkgname=python-text2digits
 _pyname=${pkgname#python-}
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A small library to convert text numbers to digits in a string'
 arch=(x86_64)
 url="https://github.com/ShailChoksi/$_pyname"
@@ -32,5 +32,4 @@ check() {
 package() {
 	cd "$_archive"
 	python -m installer -d "$pkgdir" dist/*.whl
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

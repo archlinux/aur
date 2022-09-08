@@ -1,10 +1,10 @@
 pkgbase = python-text2digits
 	pkgdesc = A small library to convert text numbers to digits in a string
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ShailChoksi/text2digits
 	arch = x86_64
-	license = LGPL
+	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-hypothesis
 	makedepends = python-build
