@@ -2,33 +2,37 @@
 # Contributor: GI_Jack <GI_Jack@hackermail.com>
 
 pkgname=python-coveralls
-pkgver=3.3.0
-pkgrel=3
+_pkg="${pkgname#python-}"
+pkgver=3.3.1
+pkgrel=1
+_commit=c35bf51
 pkgdesc="Python integration with coveralls.io"
 url="https://github.com/thekevjames/coveralls-python"
 arch=('any')
 license=('MIT')
 depends=('python-coverage' 'python-docopt' 'python-requests')
 optdepends=('python-yaml')
-makedepends=('python-setuptools')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('git' 'python-mock' 'python-pytest' 'python-responses')
 changelog=CHANGELOG.md
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('466ade75b818f8fb240a3049de0d3896a7d1efec878ead7b4d878935a7af386a')
+source=("$pkgname::git+$url#commit=$_commit?signed")
+sha256sums=('SKIP')
+validpgpkeys=('ED35BBC75D8B80DA1949AABDB2B0BD2FE4EE84C5') ## Kevin James
 
 build() {
-	cd "coveralls-python-$pkgver"
-	python setup.py build
+	cd "$pkgname"
+	python -m build --wheel --no-isolation
 }
 
 check() {
-	cd "coveralls-python-$pkgver"
+	cd "$pkgname"
 	pytest -x
 }
 
 package() {
-	export PYTHONHASHSEED=0
-	cd "coveralls-python-$pkgver"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+	cd "$pkgname"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s "$_site/$_pkg-$pkgver.dist-info/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/"
 }
