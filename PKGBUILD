@@ -1,38 +1,40 @@
 # Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch>
 # Contributor: DisableGraphics elchifladod@gmail.com
 pkgbase="korai-git"
-pkgname="korai"
-pkgrel=3
-pkgver=0.2.1
-pkgdesc="Fast, reliable and feature-packed manga and comics reader"
+pkgname="korai-git"
+pkgrel=1
+pkgver=$(date +%d.%m.%y)
+pkgdesc="Fast, reliable and feature-packed manga and comics reader (git version)"
 arch=("any")
+conflicts=("korai")
 url='https://github.com/DisableGraphics/Korai'
 makedepends=("git" "imagemagick")
 depends=("libarchive" "gtkmm3" "webkit2gtk" "vte3" "mangodl")
-conflicts=("korai-git")
 license=("GPL")
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('2f40b9bbddc3aca79fd6c4c34e78a68eea89bb9fb289f4324636829a0586bb9e8ee15db89fb5faba3ac98b2a2dbf4b474a0b7e93eb24a9da2354af1e3f688964')
+source=("git+https://github.com/DisableGraphics/Korai")
+md5sums=("SKIP")
 prepare() {
-	tar xf v${pkgver}.tar.gz
-	cd ${srcdir}/Korai-${pkgver}/
+	cd ${srcdir}/
+	ln -s Korai ${srcdir}/${pkgname^}
+	cd ${srcdir}/${pkgname^}
 	make -j$(nproc)
 }
 package() {
-	install -Dm755 ${pkgname^}-${pkgver}/build/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
-	install -Dm755 ${pkgname^}-${pkgver}/build/korai-extensions/savepos.so "${pkgdir}/home/${USER}/.local/share/korai-extensions/savepos.so"
+
+	install -Dm755 ${pkgname^}/build/korai "${pkgdir}/usr/bin/korai"
+	install -Dm755 ${pkgname^}/build/korai-extensions/savepos.so "${pkgdir}/home/${USER}/.local/share/korai-extensions/savepos.so"
 
 	echo "Converting icon..."
-	convert ${pkgname^}-${pkgver}/src/icon.xpm ${pkgname^}-${pkgver}/src/icon.png
+	convert ${pkgname^}/src/icon.xpm ${pkgname^}/src/icon.png
 
-	install -Dm755 ${pkgname^}-${pkgver}/src/icon.png "${pkgdir}/usr/share/icons/korai.png"
+	install -Dm755 ${pkgname^}/src/icon.png "${pkgdir}/usr/share/icons/korai.png"
 
 	echo "Adding application menu..."
 
-	if [ -f "${pkgname^}-${pkgver}/korai.desktop" ]; then
-		rm -f "${pkgname^}-${pkgver}/korai.desktop"
+	if [ -f "${pkgname^}/korai.desktop" ]; then
+		rm -f "${pkgname^}/korai.desktop"
 	fi
-	touch "${pkgname^}-${pkgver}/korai.desktop"
+	touch "${pkgname^}/korai.desktop"
 	echo "#!/usr/bin/env xdg-open
 	[Desktop Entry]
 	Version=Git
@@ -44,9 +46,9 @@ package() {
 	Path=/home/$USER/.local/share
 	Terminal=false
 	StartupNotify=false
-	Categories=Network;" >> "${pkgname^}-${pkgver}/korai.desktop"
+	Categories=Network;" >> "${pkgname^}/korai.desktop"
 
-	install -Dm755 ${pkgname^}-${pkgver}/korai.desktop "${pkgdir}/usr/share/applications/korai.desktop"
+	install -Dm755 ${pkgname^}/korai.desktop "${pkgdir}/usr/share/applications/korai.desktop"
 	pip install --upgrade mangadex-downloader
 	echo "Korai requires mangadex-downloader (only available using pip) to download MangaDex manga directly" 
 }
