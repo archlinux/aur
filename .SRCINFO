@@ -1,6 +1,6 @@
 pkgbase = dirsearch-git
 	pkgdesc = Web path scanner/fuzzer, written in Python
-	pkgver = 0.4.2.r56.b83e68c
+	pkgver = 0.4.2.r298.ec05dec
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/maurosoria/dirsearch
@@ -18,7 +18,6 @@ pkgbase = dirsearch-git
 	depends = python-cffi
 	provides = dirsearch
 	conflicts = dirsearch
-	backup = etc/dirsearch/default.conf
 	source = git+https://github.com/maurosoria/dirsearch.git
 	sha256sums = SKIP
 
