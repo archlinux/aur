@@ -5,7 +5,7 @@
 # Contributor: Sean Haugh <seanphaugh@gmail.com>
 
 pkgname=pywal-git
-pkgver=3.3.0.r128.g4997a49
+pkgver=3.3.0.r134.g236aa48
 pkgrel=1
 pkgdesc="Generate and change color-schemes on the fly."
 arch=('any')
