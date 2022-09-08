@@ -1,0 +1,11 @@
+## arg 1:  the new package version
+post_install() {
+    cat <<EOF
+To start the inhibitor service:
+
+    systemctl --user start wayland-idle-inhibitor.service
+
+EOF
+}
+
+# vim: ft=sh

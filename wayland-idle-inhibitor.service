@@ -1,0 +1,10 @@
+[Unit]
+Description=Prevents display idling in sway/wayland and prevents locking by swayidle.
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/wayland-idle-inhibitor.py
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
