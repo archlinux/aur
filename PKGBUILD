@@ -1,8 +1,8 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
-_commit='2d157f99bd683d127aac8ca1f5f396120b721c9e'
+_commit='dc7b4b68eaab6774e67f40960b4d277348ab080b'
 pkgname=supersonic
-pkgver=2020.11.24
+pkgver=2022.09.05
 pkgrel=1
 pkgdesc='A Subsonic music server implemented in C++'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -15,11 +15,11 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/davidgfnet/${pkgname}-c
         "${pkgname}.install"
         "${pkgname}.service"
         "${pkgname}.socket")
-sha256sums=('7686430618849103b5fa9de416add6e7e854187c44e4416ce420612139baf8de'
-            '7e43bf60bac7445e2c8dcf307928ed6e62b7940071b43a5a6674a04d6476e61b'
-            '4a48d22aed461d9ea52bfd91c32835dbead08d47157d9e49062561db63113f41'
-            '3ffba956ec0044df1fd5e7e4fe18188e341634d1763994ebbf47498067fca676'
-            'df937e7a8922a04d69ed9db46774d67d565a0fe2738661119311c44ba365a047')
+b2sums=('e6c4f336daf74ddf6e56ab983b4d76614de4b0d9e4ad7f9ef91944b5717e521e419e6b6a3810112860a10ccf3ab74b5697b1c871d703bc6623783684b3e799e6'
+        '16cd71894f0fa201fea1bb56f19a7fbfbf6fb793f80b14b3d07c2e226306e30efb142ad4b08e9d44fb43abff4386ce6f9b5798afbe9a6acb116fea96145de55d'
+        '74bb9e4dbb14ec1e08d939c5c4ceee9467e92c71e575df3fa989b44b615e9959312145bef6ed86d0232e6e834b549b2f2861a3d84dda5a68072bca9eae1de278'
+        'a2d78990749a8d4079a83733cbb6d2a1e087619740eb6c7c8df31bd53a2d43e85241beec530cea11548226d863fbafead69b2eedeef91149abec1e8199fd649a'
+        '576340cce12df7a1494316758b4f8ff5424a50dae3119da4e25f55290785c84517fb43afeefe25748c1afd2a5beeef7a1d6d19d5dcdf5f2e6e24afb4a7e928a9')
 
 prepare() {
   mv argparse.hpp "${pkgname}-cpp-${_commit}"/argparse
