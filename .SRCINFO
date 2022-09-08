@@ -13,11 +13,11 @@ pkgbase = mcuxpresso-config-tools
 	depends = alsa-lib
 	depends = libnet
 	options = !strip
-	source = file://mcuxpresso-config-tools-v11-1_amd64.deb.bin
+	source = file://mcuxpresso-config-tools-v12-1_amd64.deb.bin
 	source = LICENSE
 	source = mcuxpresso-config-tools.install
-	sha256sums = ce4a71a1255fddab720fee6a2621d814a7f1d7ba1edca24025d7b3f8bb113920
-	sha256sums = ae82fb67eb9a69d464ca7000aa9861db21de819673fb556d4a9a61f5abe620ad
+	sha256sums = dd3bce43d2825ada02a2b92a46456cab4e1d81c27ce43e67c55d383973978e0d
+	sha256sums = 7e97086459e4c272cf5bcc191fdb3227f89fed668e2bed9f6ce309d176c59116
 	sha256sums = 6435144e9b28ec594ebea3e598e01e23a4d41c3787a67de68dafedcf71bc18ed
 
 pkgname = mcuxpresso-config-tools
