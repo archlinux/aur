@@ -1,6 +1,6 @@
 pkgbase = cemu
 	pkgdesc = Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)
-	pkgver = 2.0.104
+	pkgver = 2.0.106
 	pkgrel = 1
 	url = https://cemu.info
 	install = cemu.install
@@ -23,7 +23,7 @@ pkgbase = cemu
 	depends = libpng
 	depends = wxwidgets-gtk3>=3.2
 	optdepends = vulkan-driver: Vulkan graphics
-	source = git+https://github.com/cemu-project/Cemu#commit=6cdb6eed1730cde23ede99099a12092b9abe8aa3
+	source = git+https://github.com/cemu-project/Cemu#commit=1e851fe7e2e7a26e5a97d27fc07ffabec852ca0f
 	source = imgui-1.88.tar.gz::https://github.com/ocornut/imgui/archive/refs/tags/v1.88.tar.gz
 	source = imgui.cmake::https://raw.githubusercontent.com/microsoft/vcpkg/master/ports/imgui/CMakeLists.txt
 	source = imgui.conf::https://raw.githubusercontent.com/microsoft/vcpkg/master/ports/imgui/imgui-config.cmake.in
@@ -33,6 +33,7 @@ pkgbase = cemu
 	source = git+https://github.com/google/googletest#commit=800f5422ac9d9e0ad59cd860a2ef3a679588acb4
 	source = xdg.diff
 	source = overlay.diff
+	source = case.diff
 	sha256sums = SKIP
 	sha256sums = 9f14c788aee15b777051e48f868c5d4d959bd679fc5050e3d2a29de80d8fd32e
 	sha256sums = 262faed507149c89aab7572fd2c2a968f843ca2900043e30a9c339735ed08a8f
@@ -41,7 +42,8 @@ pkgbase = cemu
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 78aa9187fa6a1819da039c10f1d2681b962329c9fc6d4724eeff5936b3ec02ee
-	sha256sums = 8447dc7fb7958a1ec12798a2d2fbb7da1174fa1afd7be76a94a2faccee61b19e
+	sha256sums = 65a4455f47386475ff1567ba94dbf281b928d52f7d69e4b733d7dc60ef96d1cb
+	sha256sums = 7ca0223ef7fae14399ca4e0148335052d8d5863d4a41c31ae6f72f26688a6834
+	sha256sums = 09d19fd8975a22b10e57066516e76a57b7fbc08efd199c5133e40f1462b13b5f
 
 pkgname = cemu

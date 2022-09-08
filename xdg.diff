@@ -1,5 +1,3 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index e9f7458..9135c62 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -58,6 +58,13 @@ option(ENABLE_OPENGL "Enables the OpenGL backend" ON)
@@ -27,8 +25,6 @@ index e9f7458..9135c62 100644
  add_subdirectory("dependencies/ih264d" EXCLUDE_FROM_ALL)
  
  find_package(ZArchive)
-diff --git a/src/Cafe/Account/Account.cpp b/src/Cafe/Account/Account.cpp
-index f370c81..55fc824 100644
 --- a/src/Cafe/Account/Account.cpp
 +++ b/src/Cafe/Account/Account.cpp
 @@ -424,7 +424,7 @@ OnlineValidator Account::ValidateOnlineFiles() const
@@ -49,8 +45,6 @@ index f370c81..55fc824 100644
  	if (!fs::exists(seeprom))
  		result.seeprom = OnlineValidator::FileState::Missing;
  	else if (fs::file_size(seeprom) != 512)
-diff --git a/src/Cafe/CafeSystem.cpp b/src/Cafe/CafeSystem.cpp
-index bfa5d82..50f46d1 100644
 --- a/src/Cafe/CafeSystem.cpp
 +++ b/src/Cafe/CafeSystem.cpp
 @@ -289,7 +289,7 @@ uint32 loadSharedData()
@@ -80,8 +74,6 @@ index bfa5d82..50f46d1 100644
  	FileStream* ramDumpFile = FileStream::openFile2(path);
  	if (ramDumpFile)
  	{
-diff --git a/src/Cafe/Filesystem/FST/KeyCache.cpp b/src/Cafe/Filesystem/FST/KeyCache.cpp
-index 7fedc3d..124611f 100644
 --- a/src/Cafe/Filesystem/FST/KeyCache.cpp
 +++ b/src/Cafe/Filesystem/FST/KeyCache.cpp
 @@ -59,7 +59,7 @@ void KeyCache_Prepare()
@@ -93,8 +85,6 @@ index 7fedc3d..124611f 100644
  	FileStream* fs_keys = FileStream::openFile2(keysPath);
  	if( !fs_keys )
  	{
-diff --git a/src/Cafe/GameProfile/GameProfile.cpp b/src/Cafe/GameProfile/GameProfile.cpp
-index d3e930e..85de1f4 100644
 --- a/src/Cafe/GameProfile/GameProfile.cpp
 +++ b/src/Cafe/GameProfile/GameProfile.cpp
 @@ -180,12 +180,12 @@ void gameProfile_load()
@@ -121,8 +111,6 @@ index d3e930e..85de1f4 100644
  	FileStream* fs = FileStream::createFile2(gameProfilePath);
  	if (!fs)
  	{
-diff --git a/src/Cafe/GraphicPack/GraphicPack2.cpp b/src/Cafe/GraphicPack/GraphicPack2.cpp
-index 41e33a1..38e52bb 100644
 --- a/src/Cafe/GraphicPack/GraphicPack2.cpp
 +++ b/src/Cafe/GraphicPack/GraphicPack2.cpp
 @@ -63,7 +63,7 @@ void GraphicPack2::LoadGraphicPack(fs::path graphicPackPath)
@@ -134,8 +122,6 @@ index 41e33a1..38e52bb 100644
  	for (fs::recursive_directory_iterator it(basePath, ec); it != end(it); ++it)
  	{
  		if (!it->is_directory(ec))
-diff --git a/src/Cafe/HW/Latte/Core/LatteShaderCache.cpp b/src/Cafe/HW/Latte/Core/LatteShaderCache.cpp
-index ebf425b..7ad99e4 100644
 --- a/src/Cafe/HW/Latte/Core/LatteShaderCache.cpp
 +++ b/src/Cafe/HW/Latte/Core/LatteShaderCache.cpp
 @@ -197,17 +197,17 @@ void LatteShaderCache_load()
@@ -161,8 +147,6 @@ index ebf425b..7ad99e4 100644
  
  	LatteShaderCache_handleDeprecatedCacheFiles(pathGeneric, pathGenericPre1_25_0, pathGenericPre1_16_0);
  	// calculate extraVersion for transferable and precompiled shader cache
-diff --git a/src/Cafe/HW/Latte/Renderer/OpenGL/RendererShaderGL.cpp b/src/Cafe/HW/Latte/Renderer/OpenGL/RendererShaderGL.cpp
-index e9e86f5..dc088ae 100644
 --- a/src/Cafe/HW/Latte/Renderer/OpenGL/RendererShaderGL.cpp
 +++ b/src/Cafe/HW/Latte/Renderer/OpenGL/RendererShaderGL.cpp
 @@ -279,7 +279,7 @@ void RendererShaderGL::ShaderCacheLoading_begin(uint64 cacheTitleId)
@@ -174,8 +158,6 @@ index e9e86f5..dc088ae 100644
  		g_programBinaryCache = FileCache::Open(cachePath, true, cacheMagic);
  		if (g_programBinaryCache == nullptr)
  			cemuLog_log(LogType::Force, "Unable to open OpenGL precompiled cache {}", cacheFilename);
-diff --git a/src/Cafe/HW/Latte/Renderer/Renderer.cpp b/src/Cafe/HW/Latte/Renderer/Renderer.cpp
-index c7f7b81..366ce54 100644
 --- a/src/Cafe/HW/Latte/Renderer/Renderer.cpp
 +++ b/src/Cafe/HW/Latte/Renderer/Renderer.cpp
 @@ -133,7 +133,7 @@ void Renderer::SaveScreenshot(const std::vector<uint8>& rgb_data, int width, int
@@ -187,8 +169,6 @@ index c7f7b81..366ce54 100644
  			if (!fs::exists(screendir))
  				fs::create_directory(screendir);
  
-diff --git a/src/Cafe/HW/Latte/Renderer/Vulkan/RendererShaderVk.cpp b/src/Cafe/HW/Latte/Renderer/Vulkan/RendererShaderVk.cpp
-index 7af5204..703c92d 100644
 --- a/src/Cafe/HW/Latte/Renderer/Vulkan/RendererShaderVk.cpp
 +++ b/src/Cafe/HW/Latte/Renderer/Vulkan/RendererShaderVk.cpp
 @@ -456,7 +456,7 @@ void RendererShaderVk::ShaderCacheLoading_begin(uint64 cacheTitleId)
@@ -200,8 +180,6 @@ index 7af5204..703c92d 100644
  	s_spirvCache = FileCache::Open(cachePath, true, spirvCacheMagic);
  	if (s_spirvCache == nullptr)
  		cemuLog_log(LogType::Force, "Unable to open SPIR-V cache {}", cacheFilename);
-diff --git a/src/Cafe/HW/Latte/Renderer/Vulkan/VulkanPipelineStableCache.cpp b/src/Cafe/HW/Latte/Renderer/Vulkan/VulkanPipelineStableCache.cpp
-index 50d5a25..b86b0a5 100644
 --- a/src/Cafe/HW/Latte/Renderer/Vulkan/VulkanPipelineStableCache.cpp
 +++ b/src/Cafe/HW/Latte/Renderer/Vulkan/VulkanPipelineStableCache.cpp
 @@ -32,8 +32,8 @@ VulkanPipelineStableCache& VulkanPipelineStableCache::GetInstance()
@@ -215,8 +193,6 @@ index 50d5a25..b86b0a5 100644
  	
  	// init cache loader state
  	g_vkCacheState.pipelineLoadIndex = 0;
-diff --git a/src/Cafe/HW/Latte/Renderer/Vulkan/VulkanRenderer.cpp b/src/Cafe/HW/Latte/Renderer/Vulkan/VulkanRenderer.cpp
-index 7c81a3c..8cf1f12 100644
 --- a/src/Cafe/HW/Latte/Renderer/Vulkan/VulkanRenderer.cpp
 +++ b/src/Cafe/HW/Latte/Renderer/Vulkan/VulkanRenderer.cpp
 @@ -2305,7 +2305,7 @@ void VulkanRenderer::WaitCommandBufferFinished(uint64 commandBufferId)
@@ -237,8 +213,6 @@ index 7c81a3c..8cf1f12 100644
  	if (fs::exists(dir))
  	{
  		const auto filename = dir / fmt::format("{:016x}.bin", CafeSystem::GetForegroundTitleId());
-diff --git a/src/Cafe/HW/MMU/MMU.cpp b/src/Cafe/HW/MMU/MMU.cpp
-index 87bf572..10d69ef 100644
 --- a/src/Cafe/HW/MMU/MMU.cpp
 +++ b/src/Cafe/HW/MMU/MMU.cpp
 @@ -409,7 +409,7 @@ void memory_writeDumpFile(uint32 startAddr, uint32 size, const fs::path& path)
@@ -250,8 +224,6 @@ index 87bf572..10d69ef 100644
  	fs::create_directories(path);
  
  	for (auto& itr : g_mmuRanges)
-diff --git a/src/Cafe/IOSU/legacy/iosu_crypto.cpp b/src/Cafe/IOSU/legacy/iosu_crypto.cpp
-index 0433995..ef30a2b 100644
 --- a/src/Cafe/IOSU/legacy/iosu_crypto.cpp
 +++ b/src/Cafe/IOSU/legacy/iosu_crypto.cpp
 @@ -563,7 +563,7 @@ void iosuCrypto_loadSSLCertificates()
@@ -288,8 +260,6 @@ index 0433995..ef30a2b 100644
  	if (!fs::exists(seeprom_file, ec))
  		return IOS_CRYPTO_ONLINE_REQ_SEEPROM_MISSING;
  	if (fs::file_size(seeprom_file, ec) != 512)
-diff --git a/src/Cafe/OS/RPL/rpl.cpp b/src/Cafe/OS/RPL/rpl.cpp
-index 90f9225..40c8e42 100644
 --- a/src/Cafe/OS/RPL/rpl.cpp
 +++ b/src/Cafe/OS/RPL/rpl.cpp
 @@ -2122,7 +2122,7 @@ void RPLLoader_LoadDependency(rplDependency_t* dependency)
@@ -301,8 +271,6 @@ index 90f9225..40c8e42 100644
  		auto fileData = FileStream::LoadIntoMemory(filePath);
  		if (fileData)
  		{
-diff --git a/src/Cafe/OS/libs/coreinit/coreinit_FS.cpp b/src/Cafe/OS/libs/coreinit/coreinit_FS.cpp
-index 3d13fdb..fb72ca8 100644
 --- a/src/Cafe/OS/libs/coreinit/coreinit_FS.cpp
 +++ b/src/Cafe/OS/libs/coreinit/coreinit_FS.cpp
 @@ -107,7 +107,7 @@ namespace coreinit
@@ -323,8 +291,6 @@ index 3d13fdb..fb72ca8 100644
  			fs::create_directories(path, ec);
  			if (!FSCDeviceHostFS_Mount(mountPathOut, path.generic_wstring().c_str(), FSC_PRIORITY_BASE))
  				return FS_RESULT::ERR_PLACEHOLDER;
-diff --git a/src/Cemu/Logging/CemuLogging.cpp b/src/Cemu/Logging/CemuLogging.cpp
-index f58e798..6d403de 100644
 --- a/src/Cemu/Logging/CemuLogging.cpp
 +++ b/src/Cemu/Logging/CemuLogging.cpp
 @@ -98,7 +98,7 @@ void cemuLog_createLogFile(bool triggeredByCrash)
@@ -336,8 +302,6 @@ index f58e798..6d403de 100644
  	LogContext.file_stream.open(path, std::ios::out);
  	if (LogContext.file_stream.fail())
  	{
-diff --git a/src/Common/ExceptionHandler/ExceptionHandler_win32.cpp b/src/Common/ExceptionHandler/ExceptionHandler_win32.cpp
-index 25dca26..9f38cdd 100644
 --- a/src/Common/ExceptionHandler/ExceptionHandler_win32.cpp
 +++ b/src/Common/ExceptionHandler/ExceptionHandler_win32.cpp
 @@ -61,7 +61,7 @@ bool CreateMiniDump(CrashDump dump, EXCEPTION_POINTERS* pep)
@@ -363,8 +327,6 @@ index 25dca26..9f38cdd 100644
  	}
  
  	exit(0);
-diff --git a/src/config/ActiveSettings.cpp b/src/config/ActiveSettings.cpp
-index c7ff4fe..23bc364 100644
 --- a/src/config/ActiveSettings.cpp
 +++ b/src/config/ActiveSettings.cpp
 @@ -18,7 +18,7 @@ void ActiveSettings::LoadOnce()
@@ -438,8 +400,6 @@ index c7ff4fe..23bc364 100644
 +{
 +	return GetDataPath("mlc01");
 +}
-diff --git a/src/config/ActiveSettings.h b/src/config/ActiveSettings.h
-index 95ceae1..c47ebeb 100644
 --- a/src/config/ActiveSettings.h
 +++ b/src/config/ActiveSettings.h
 @@ -13,6 +13,11 @@ public:
@@ -522,8 +482,6 @@ index 95ceae1..c47ebeb 100644
  	inline static bool s_has_required_online_files = false;
  };
 -
-diff --git a/src/gui/CemuApp.cpp b/src/gui/CemuApp.cpp
-index e78b30b..b1a72b0 100644
 --- a/src/gui/CemuApp.cpp
 +++ b/src/gui/CemuApp.cpp
 @@ -115,7 +115,7 @@ bool CemuApp::OnInit()
@@ -567,11 +525,9 @@ index e78b30b..b1a72b0 100644
  }
  
 -
-diff --git a/src/gui/ChecksumTool.cpp b/src/gui/ChecksumTool.cpp
-index 74422c9..9787ffd 100644
 --- a/src/gui/ChecksumTool.cpp
 +++ b/src/gui/ChecksumTool.cpp
-@@ -133,7 +133,7 @@ ChecksumTool::ChecksumTool(wxWindow* parent, wxTitleManagerList::TitleEntry& ent
+@@ -134,7 +134,7 @@ ChecksumTool::ChecksumTool(wxWindow* parent, wxTitleManagerList::TitleEntry& ent
  				const auto title_id_str = fmt::format("{:016x}", m_json_entry.title_id);
  				const auto default_file = fmt::format("{}_v{}.json", title_id_str, m_info.GetAppTitleVersion());
  
@@ -580,7 +536,7 @@ index 74422c9..9787ffd 100644
  				if (exists(checksum_path))
  					m_verify_online->Enable();
  			}
-@@ -185,7 +185,7 @@ void ChecksumTool::LoadOnlineData() const
+@@ -186,7 +186,7 @@ void ChecksumTool::LoadOnlineData() const
  
  		std::string latest_commit;
  
@@ -589,7 +545,7 @@ index 74422c9..9787ffd 100644
  		if (exists(checksum_path))
  		{
  			std::string current_commit;
-@@ -593,7 +593,7 @@ void ChecksumTool::OnVerifyOnline(wxCommandEvent& event)
+@@ -594,7 +594,7 @@ void ChecksumTool::OnVerifyOnline(wxCommandEvent& event)
  	const auto title_id_str = fmt::format("{:016x}", m_json_entry.title_id);
  	const auto default_file = fmt::format("{}_v{}.json", title_id_str, m_info.GetAppTitleVersion());
  	
@@ -598,8 +554,6 @@ index 74422c9..9787ffd 100644
  	if(!exists(checksum_path))
  		return;
  	
-diff --git a/src/gui/DownloadGraphicPacksWindow.cpp b/src/gui/DownloadGraphicPacksWindow.cpp
-index 28e5bf6..6811b99 100644
 --- a/src/gui/DownloadGraphicPacksWindow.cpp
 +++ b/src/gui/DownloadGraphicPacksWindow.cpp
 @@ -65,7 +65,7 @@ bool DownloadGraphicPacksWindow::curlDownloadFile(const char *url, curlDownloadF
@@ -647,8 +601,6 @@ index 28e5bf6..6811b99 100644
  
  		size_t sbNameLen = strlen(sb.name);
  		if(sbNameLen == 0)
-diff --git a/src/gui/MainWindow.cpp b/src/gui/MainWindow.cpp
-index 8f26f81..2fb052e 100644
 --- a/src/gui/MainWindow.cpp
 +++ b/src/gui/MainWindow.cpp
 @@ -997,7 +997,7 @@ void MainWindow::OnDebugSetting(wxCommandEvent& event)
@@ -682,8 +634,6 @@ index 8f26f81..2fb052e 100644
  		}
  		catch (const std::exception & ex)
  		{
-diff --git a/src/gui/MemorySearcherTool.cpp b/src/gui/MemorySearcherTool.cpp
-index c7c6c73..3ecfff5 100644
 --- a/src/gui/MemorySearcherTool.cpp
 +++ b/src/gui/MemorySearcherTool.cpp
 @@ -270,7 +270,7 @@ void MemorySearcherTool::OnFilter(wxCommandEvent& event)
@@ -704,8 +654,6 @@ index c7c6c73..3ecfff5 100644
  	FileStream* fs = FileStream::createFile2(memorySearcherPath);
  	if (fs)
  	{
-diff --git a/src/gui/debugger/DebuggerWindow2.cpp b/src/gui/debugger/DebuggerWindow2.cpp
-index cca9bfb..e31031d 100644
 --- a/src/gui/debugger/DebuggerWindow2.cpp
 +++ b/src/gui/debugger/DebuggerWindow2.cpp
 @@ -272,7 +272,7 @@ DebuggerWindow2::DebuggerWindow2(wxFrame& parent, const wxRect& display_size)
@@ -726,8 +674,6 @@ index cca9bfb..e31031d 100644
  }
  
  void DebuggerWindow2::OnBreakpointHit(wxCommandEvent& event)
-diff --git a/src/gui/input/InputSettings2.cpp b/src/gui/input/InputSettings2.cpp
-index 5793cbd..e48d2a2 100644
 --- a/src/gui/input/InputSettings2.cpp
 +++ b/src/gui/input/InputSettings2.cpp
 @@ -669,10 +669,10 @@ void InputSettings2::on_profile_delete(wxCommandEvent& event)
@@ -743,8 +689,6 @@ index 5793cbd..e48d2a2 100644
  		fs::remove(path);
  
  		profile_names->ChangeValue(kDefaultProfileName);
-diff --git a/src/input/InputManager.cpp b/src/input/InputManager.cpp
-index 4ae43ce..852c918 100644
 --- a/src/input/InputManager.cpp
 +++ b/src/input/InputManager.cpp
 @@ -76,9 +76,9 @@ bool InputManager::load(size_t player_index, std::string_view filename)
@@ -799,8 +743,6 @@ index 4ae43ce..852c918 100644
  	if (!exists(path))
  		return {};
  
-diff --git a/src/main.cpp b/src/main.cpp
-index f94b276..fb8baec 100644
 --- a/src/main.cpp
 +++ b/src/main.cpp
 @@ -160,7 +160,7 @@ void _putenvSafe(const char* c)
@@ -830,8 +772,6 @@ index f94b276..fb8baec 100644
  	for (auto& it : GetConfig().game_paths)
  		CafeTitleList::AddScanPath(it);
  	fs::path mlcPath = ActiveSettings::GetMlcPath();
-diff --git a/src/util/libusbWrapper/libusbWrapper.cpp b/src/util/libusbWrapper/libusbWrapper.cpp
-index e1d7298..6e498c8 100644
 --- a/src/util/libusbWrapper/libusbWrapper.cpp
 +++ b/src/util/libusbWrapper/libusbWrapper.cpp
 @@ -18,7 +18,7 @@ void libusbWrapper::init()

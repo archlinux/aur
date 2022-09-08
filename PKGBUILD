@@ -1,6 +1,6 @@
 # Maintainer: Anuskuss <anuskuss@googlemail.com>
 pkgname=cemu
-pkgver=2.0.104
+pkgver=2.0.106
 pkgrel=1
 pkgdesc='Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)'
 arch=(x86_64)
@@ -25,7 +25,7 @@ optdepends=(
 )
 install=cemu.install
 source=(
-	git+https://github.com/cemu-project/Cemu#commit=6cdb6eed1730cde23ede99099a12092b9abe8aa3
+	git+https://github.com/cemu-project/Cemu#commit=1e851fe7e2e7a26e5a97d27fc07ffabec852ca0f
 	# dependencies
 	imgui-1.88.tar.gz::https://github.com/ocornut/imgui/archive/refs/tags/v1.88.tar.gz
 	imgui.cmake::https://raw.githubusercontent.com/microsoft/vcpkg/master/ports/imgui/CMakeLists.txt
@@ -41,6 +41,7 @@ source=(
 	# patches
 	xdg.diff # 963f9b38349c5d03b26ab2a50ead2ee4e743ca41
 	overlay.diff # edeb14d4c68ee8bf500b990b13079177e01c25f1
+	case.diff # dfe35375b72da312f5a70784f771938580cae4fe
 )
 sha256sums=(
 	SKIP
@@ -51,8 +52,9 @@ sha256sums=(
 	SKIP
 	SKIP
 	SKIP
-	78aa9187fa6a1819da039c10f1d2681b962329c9fc6d4724eeff5936b3ec02ee
-	8447dc7fb7958a1ec12798a2d2fbb7da1174fa1afd7be76a94a2faccee61b19e
+	65a4455f47386475ff1567ba94dbf281b928d52f7d69e4b733d7dc60ef96d1cb
+	7ca0223ef7fae14399ca4e0148335052d8d5863d4a41c31ae6f72f26688a6834
+	09d19fd8975a22b10e57066516e76a57b7fbc08efd199c5133e40f1462b13b5f
 )
 
 pkgver() {
@@ -93,9 +95,6 @@ prepare() {
 	# glslang fix
 	sed -i 's/GLSLANG_VERSION_LESS/GLSLANG_VERSION_GREATER/' src/Cafe/HW/Latte/Renderer/Vulkan/RendererShaderVk.cpp
 
-	# exit crash fix
-	sed -i 's/exit(0)/_exit(0)/g' src/gui/CemuApp.cpp
-
 	# experimental: xdg base dir (https://github.com/cemu-project/Cemu/pull/130)
 	git apply "$srcdir/xdg.diff"
 	sed -i 's|gameProfiles/default|gameProfiles|' src/Cafe/GameProfile/GameProfile.cpp
@@ -103,6 +102,9 @@ prepare() {
 	# experimental: linux overlay (https://github.com/cemu-project/Cemu/pull/142)
 	rm -rf src/util/SystemInfo
 	git apply "$srcdir/overlay.diff"
+
+	# experimental: case insensitivity (https://github.com/cemu-project/Cemu/pull/196)
+	git apply "$srcdir/case.diff"
 }
 
 build() {
