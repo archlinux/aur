@@ -9,7 +9,7 @@
 pkgname=xmind
 _pkgver=22.08.2224
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Brainstorming and Mind Mapping Software"
 arch=(x86_64)
 url="https://www.xmind.net"
@@ -22,5 +22,5 @@ sha256sums_x86_64=('3986a2a8eec5c38a6d2b44fe97c179d267cf8ec994fb399111203636271a
 package() {
   bsdtar -xf ${srcdir}/data.tar.xz -C ${pkgdir}/
   install -d "$pkgdir/usr/bin"
-  ln -s /opt/XMind/xmind "$pkgdir/usr/bin/xmind"
+  ln -s /opt/Xmind/xmind "$pkgdir/usr/bin/xmind"
 }
