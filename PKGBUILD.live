@@ -26,13 +26,12 @@ makedepends=(python-{build,installer}
              python-setuptools-scm
              python-wheel)
 makedepends+=(git)
-_tag=1.4.8
-source=(git+https://github.com/comictagger/comictagger.git#tag=$_tag)
+source=(git+https://github.com/comictagger/comictagger.git#branch=develop)
 sha256sums=('SKIP')
 
 pkgver() {
   cd comictagger
-  printf "${_tag//-/.}"
+  printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
