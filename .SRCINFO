@@ -1,0 +1,15 @@
+pkgbase = blender-plugin-vrm-addon-git
+	pkgdesc = VRM Importer, Exporter and Utilities for Blender 2.83 or later
+	pkgver = r24.c39d73c
+	pkgrel = 1
+	url = https://github.com/saturday06/VRM_Addon_for_Blender
+	arch = any
+	license = GPL
+	depends = blender
+	conflicts = blender-plugin-vrm-addon
+	source = git_dir::git+https://github.com/saturday06/VRM_Addon_for_Blender.git
+	source = vrm-addon.zip::https://github.com/saturday06/VRM_Addon_for_Blender/raw/release-archive/VRM_Addon_for_Blender-release.zip
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = blender-plugin-vrm-addon-git
