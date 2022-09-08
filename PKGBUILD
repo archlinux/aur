@@ -1,34 +1,34 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Santiago Lo Coco <mail at slococo dot com dot ar>
 
 _pkgname='pdd'
 pkgname="${_pkgname}-git"
-pkgver=1.5.r2.g6e44f7c
-pkgrel=2
-pkgdesc='Tiny CLI date, time diff calculator with timers'
+pkgver=r132.4de93e9
+pkgrel=1
+pkgdesc='Tiny date, time diff calculator with piggybacked timers.'
 arch=('any')
 url='https://github.com/jarun/pdd'
 license=('GPL3')
-depends=('python-dateutil')
+depends=('python' 'python-dateutil')
 makedepends=('git' 'python-setuptools')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=("${_pkgname}::git+${url}.git")
+provides=("pdd")
+conflicts=("pdd")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  git -C "${_pkgname}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${srcdir}/${_pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${_pkgname}"
-  python setup.py build
+    cd "${srcdir}/${_pkgname}"
+    make
 }
 
 package() {
-  cd "${_pkgname}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dvm644 -t "${pkgdir}/usr/share/man/man1" "${_pkgname}.1"
-  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${_pkgname}"
+    cd "${srcdir}/${_pkgname}"
+    make PREFIX=/usr DESTDIR="${pkgdir}" install
+    gzip -c -9 "${_pkgname}".1 > "${_pkgname}".1.gz
+    install -Dm644 "${_pkgname}".1 "${pkgdir}/usr/share/man/man1"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
-
-# vim: ts=2 sw=2 et:
