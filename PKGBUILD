@@ -3,7 +3,7 @@
 pkgname=('mangohud' 'mangoapp' 'mangohud-common')
 pkgbase=mangohud
 pkgver=0.6.8
-pkgrel=1
+pkgrel=2
 _imgui_ver=1.81
 pkgdesc="A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more."
 arch=('x86_64')
@@ -55,7 +55,7 @@ check() {
 }
 
 package_mangohud() {
-  depends=('mangohud-common' 'dbus' 'gcc-libs' 'libx11' 'spdlog' 'vulkan-icd-loader')
+  depends=('mangohud-common' 'dbus' 'fmt' 'gcc-libs' 'libx11' 'spdlog' 'vulkan-icd-loader')
   optdepends=('libxnvctrl: NVIDIA GPU stats by XNVCtrl'
               'mangoapp')
   replaces=("$pkgname-x11" "$pkgname-wayland")

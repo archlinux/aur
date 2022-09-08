@@ -1,7 +1,7 @@
 pkgbase = mangohud
 	pkgdesc = A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more.
 	pkgver = 0.6.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flightlessmango/MangoHud
 	arch = x86_64
 	license = MIT
@@ -30,6 +30,7 @@ pkgbase = mangohud
 pkgname = mangohud
 	depends = mangohud-common
 	depends = dbus
+	depends = fmt
 	depends = gcc-libs
 	depends = libx11
 	depends = spdlog
