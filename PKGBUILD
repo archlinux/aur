@@ -2,11 +2,11 @@
 # Contributor: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
 pkgname='omada-controller'
-pkgver=5.4.6
+pkgver=5.5.6
 pkgrel=1
 pkgdesc='Omada SDN Controller'
-_basepkgname='Omada_SDN_Controller_v5.4.6_Linux_x64'
-_basepkgpath='upload/software/2022/202207/20220729'
+_basepkgname='Omada_SDN_Controller_v5.5.6_Linux_x64'
+_basepkgpath='upload/software/2022/202208/20220822'
 arch=('x86_64')
 url='https://www.tp-link.com/us/support/download/omada-software-controller/#Controller_Software'
 license=('custom')
@@ -18,10 +18,11 @@ source=(
     "https://static.tp-link.com/${_basepkgpath}/${_basepkgname}.tar.gz"
     "git+http://github.com/murtuzaakhtari/omada-controller-scripts.git"
 )
-sha256sums=('f82737e1fafff3ff7f02af659b76b37ba9996beb59462b2e7069d1de0ec41c19'
+sha256sums=('9cb983bf7e2ac5adc949615611f4c2d40a8c8e1cc903405db9a4d60b34064f94'
             'SKIP')
 package() {
-    cd ${_basepkgname}
+    #cd ${_basepkgname}
+    cd Omada_SDN_Controller_v5.5.6_linux_x64
 
     # Install required source files.
     local BASEDIR="${pkgdir}/opt/omada-controller"
