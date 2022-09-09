@@ -10,9 +10,9 @@ pkgbase = cunicu-bin
 	provides = cunicu
 	arch = aarch64
 	source_aarch64 = https://github.com/stv0g/cunicu/releases/download/v0.1.2/cunicu_0.1.2_linux_arm64
-	sha256sums_aarch64 = f34d940e757c0a47136d1e678a1b643eaa3b3d46ed84e7be91874fa2a55e0b94
+	sha256sums_aarch64 = b61a27f90e0fd8d490a70bfc550d0d60f1f1848afcfbd5a75e9b6f1a44e5d82d
 	arch = x86_64
 	source_x86_64 = https://github.com/stv0g/cunicu/releases/download/v0.1.2/cunicu_0.1.2_linux_amd64
-	sha256sums_x86_64 = f370dfdcc15e8bd6798fa3a8e0cdd68ffb503aee361b97ca0ac0643776ce483a
+	sha256sums_x86_64 = 0652b9170d3b998585596be3e84db1bd49c2a3725cd7510596db406ce74d2558
 	
 pkgname = cunicu-bin
