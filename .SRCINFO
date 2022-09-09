@@ -1,0 +1,20 @@
+pkgbase = mmfm
+	pkgdesc = Viewer and manager for multimedia files
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/milgra/mmfm
+	arch = i686
+	arch = x86_64
+	license = gplv3
+	makedepends = meson
+	makedepends = wayland-protocols
+	depends = wayland
+	depends = freetype2
+	depends = ffmpeg
+	depends = glew
+	depends = openjpeg2
+	depends = libmupdf
+	source = mmfm-0.1.tar.xz::https://github.com/milgra/mmfm/releases/download/0.1/mmfm-0.1.tar.xz
+	sha256sums = 36329422be453b5aa97f1eec9eb2448d3f456e309378b4ede42f95418b88cc61
+
+pkgname = mmfm
