@@ -1,7 +1,7 @@
 pkgbase = buuf-icon-theme
 	pkgdesc = Created by fana-m. Icons by mattahan. Modified by Hybrid Son Of Oxayotl
 	pkgver = 3.34
-	pkgrel = 3
+	pkgrel = 4
 	url = http://buuficontheme.free.fr
 	arch = any
 	license = cc-by-nc-sa
