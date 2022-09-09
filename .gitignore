@@ -1,0 +1,6 @@
+# Whitelist our files.
+/*
+!/.gitignore
+!/README.md
+!/PKGBUILD
+!/.SRCINFO
