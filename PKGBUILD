@@ -1,21 +1,21 @@
 # Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname=obfs4proxy-bin
-pkgver=0.0.13
-pkgrel=2
+pkgver=0.0.14
+pkgrel=1
 pkgdesc='The obfourscator - A Pluggable Transport Proxy Written in Go (This package is built by myself for thoes who live in countries with tor censored that cannot download the source in obfs4proxy package'
 arch=('x86_64')
-url='https://gitweb.torproject.org/pluggable-transports/obfs4.git/'
+url='https://gitlab.com/yawning/obfs4'
 license=('BSD')
 conflicts=("${pkgname%-bin}")
 makedepends=('glibc')
 optdepends=('tor: you need tor to use this package')
-source=('https://github.com/molaeiali/obfs4proxy-bin/raw/master/files.tar.xz')
-sha512sums=('9b01700c89f5eb3f113bc51c9267af1f741c7254123f7b56cfb3871c915689538492871ae4d267d92c931aa8617211ec39b20bea70d298f35ddd60812c086a3c')
+source=("files-${pkgver}.tar.xz::https://github.com/molaeiali/obfs4proxy-bin/raw/master/files.tar.xz")
+sha512sums=('273078c03d954b8f6b1ac84b852397bd6c7434268c681083c3703fef2a94b34120b19e4386d1b3bac117d5b57294f7bf5e13fa620fa8d07ef70c13f3f678c058')
 
 prepare() {
   cd "${srcdir}"
-  tar -xvf "${srcdir}/files.tar.xz"
+  tar -xvf "${srcdir}/files-${pkgver}.tar.xz"
 }
 
 package()	{
