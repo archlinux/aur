@@ -1,7 +1,7 @@
 pkgbase = holocure-bin
 	pkgdesc = A free unofficial fan game with Hololive members
 	pkgver = 0.4.1662688581
-	pkgrel = 2
+	pkgrel = 1
 	url = https://kay-yu.itch.io/holocure
 	arch = x86_64
 	license = custom
