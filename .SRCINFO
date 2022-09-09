@@ -3,6 +3,7 @@ pkgbase = ambiant
 	pkgver = 22.9.9
 	pkgrel = 1
 	url = https://github.com/tari01/ambiant
+	install = ambiant.install
 	arch = any
 	license = GPL3
 	depends = gtk-engine-murrine
