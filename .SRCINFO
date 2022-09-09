@@ -1,6 +1,6 @@
 pkgbase = fluffychat-bin
 	pkgdesc = Chat with your friends
-	pkgver = 1.6.3
+	pkgver = 1.6.4
 	pkgrel = 1
 	url = https://fluffychat.im/
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = fluffychat-bin
 	optdepends = libolm: E2E Encryption support
 	provides = fluffychat
 	conflicts = fluffychat
-	source_x86_64 = fluffychat-v1.6.3_x86_64.tar.gz::https://gitlab.com/api/v4/projects/16112282/packages/generic/fluffychat/1.6.3/fluffychat-linux-x86.tar.gz
-	sha256sums_x86_64 = 357dd9d245fac55dd30b338a3bc7b844dfd4841a6ec0fb0cc52725368d83d6bc
-	source_aarch64 = fluffychat-v1.6.3_aarch64.tar.gz::https://gitlab.com/api/v4/projects/16112282/packages/generic/fluffychat/1.6.3/fluffychat-linux-arm64.tar.gz
-	sha256sums_aarch64 = bcb053326e3582269205b5a4941a0637ef65e65298691c2a2aac495cca6c1686
+	source_x86_64 = fluffychat-v1.6.4_x86_64.tar.gz::https://gitlab.com/api/v4/projects/16112282/packages/generic/fluffychat/1.6.4/fluffychat-linux-x86.tar.gz
+	sha256sums_x86_64 = b416c32a44efb09b12010246e68454c16a2efc9df29c822151ee0049042d0b4c
+	source_aarch64 = fluffychat-v1.6.4_aarch64.tar.gz::https://gitlab.com/api/v4/projects/16112282/packages/generic/fluffychat/1.6.4/fluffychat-linux-arm64.tar.gz
+	sha256sums_aarch64 = f28efff7f8309d9082623987153e04bb45f58591cf095b9b4c578dc55cf2596b
 
 pkgname = fluffychat-bin
