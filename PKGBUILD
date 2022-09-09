@@ -1,25 +1,24 @@
-# Maintainer: Bruce Zhang
+# Maintainer: littzhch <2371050115@qq.com>
+# Contributor: Bruce Zhang
 pkgname=picgo
 _name=PicGo
-pkgver=2.2.2
-pkgrel=3
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="A simple & beautiful tool for pictures uploading built by electron-vue"
 arch=('x86_64' 'i686')
 url="https://github.com/Molunerfinn/PicGo"
 license=('MIT')
-depends=('electron8')
-makedepends=('npm')
+depends=()
+makedepends=('yarn')
 provides=('picgo')
 conflicts=('picgo-appimage')
 source=(
 	"$pkgname-$pkgver.src.tar.gz::https://github.com/Molunerfinn/PicGo/archive/v$pkgver.tar.gz"
 )
-sha256sums=('19d140f45bc788b2782408f7dd8cde17106eabd2f27b7905bb035610f826bad7')
+sha256sums=('605a4f209c97ce5b0494b5f9a7c4f1685ed766a84dc61a6db8a02bb4665fa79f')
 
 prepare() {
 	cd "$_name-$pkgver"
-	electronDist="\/usr\/lib\/electron8"
-	sed -i "s/productName: 'PicGo',/productName: 'PicGo', electronDist: '$electronDist',/" vue.config.js
 	yarn
 }
 
@@ -31,14 +30,10 @@ build() {
 package() {
 	cd "$_name-$pkgver"
 
-	# Install asar file
-	install -Dm644 dist_electron/linux-unpacked/resources/app.asar "$pkgdir/usr/share/picgo/app.asar"
-
-	# Install start script
-	echo "#!/usr/bin/env sh
-exec electron8 /usr/share/picgo/app.asar \$@
-" > "$srcdir/picgo.sh"
-	install -Dm755 "$srcdir/picgo.sh" "$pkgdir/usr/bin/picgo"
+	install -d "$pkgdir/usr/share/picgo"
+	install -d "$pkgdir/usr/bin"
+	cp -r dist_electron/linux-unpacked/* "$pkgdir/usr/share/picgo"
+	ln -s "$pkgdir/usr/share/picgo/picgo" "$pkgdir/usr/bin/picgo"
 
 	# Install desktop file
 	echo "[Desktop Entry]
