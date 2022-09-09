@@ -10,7 +10,6 @@ pkgbase = fex-emu
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = clang
-	makedepends = nasm
 	depends = sdl2
 	depends = libepoxy
 	depends = squashfs-tools

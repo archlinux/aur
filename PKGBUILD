@@ -7,7 +7,7 @@ pkgdesc='Fast usermode x86 and x86-64 emulator for Arm64'
 url=https://fex-emu.org
 arch=(aarch64 x86_64)
 license=(MIT)
-makedepends=(git cmake ninja clang nasm)
+makedepends=(git cmake ninja clang)
 depends=(sdl2 libepoxy squashfs-tools squashfuse)
 source=("git+https://github.com/FEX-Emu/FEX#tag=FEX-$pkgver"
         "git+https://github.com/catchorg/Catch2"
@@ -76,6 +76,7 @@ prepare() {
 build() {
   FEX_OPTIONS=()
   FEX_OPTIONS+=(-D ENABLE_LTO=True)
+  FEX_OPTIONS+=(-D BUILD_TESTS=False)
 
   if command -V ld.mold &>/dev/null
   then
