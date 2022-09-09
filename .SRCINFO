@@ -6,7 +6,6 @@ pkgbase = ambiant
 	arch = any
 	license = GPL3
 	depends = gtk-engine-murrine
-	depends = humanity-icon-theme
 	source = ambiant-22.9.8.tar.gz::https://github.com/tari01/ambiant/archive/22.9.8.tar.gz
 	md5sums = fbcdb5011950e831d211326ba4ba5014
 
