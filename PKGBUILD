@@ -1,7 +1,7 @@
 # Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
 
 pkgname=mailnagtray
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="A tray icon applet for mail monitoring using Mailnag"
 arch=('i686' 'x86_64' 'aarch64')
@@ -11,11 +11,11 @@ depends=('mailnag' 'qt6-base' 'imagemagick')
 makedepends=('meson' 'qt6-tools')
 optdepends=('gnome-control-center: administer online accounts')
 source=("https://github.com/jgmdev/mailnagtray/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bd6dbb1eb9c83d81af768c60fded5aec42f3036134018b3e2ee167300f700245')
+sha256sums=('9e4494dd4493da2140b633ab3a4a6af6740b0a90ba65603e029ab182209a5f5a')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
-  meson setup build --prefix /usr
+  meson setup --buildtype release build --prefix /usr
   meson compile -C build
 }
 
