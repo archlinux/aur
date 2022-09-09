@@ -1,13 +1,13 @@
 pkgbase = natscli-bin
 	pkgdesc = The NATS Command Line Interface
-	pkgver = 0.0.33
+	pkgver = 0.0.34
 	pkgrel = 1
 	url = https://github.com/nats-io/natscli
 	arch = x86_64
 	license = Apache
 	provides = nats
 	conflicts = natscli
-	source = https://github.com/nats-io/natscli/releases/download/v0.0.33/nats-0.0.33-linux-amd64.zip
-	sha256sums = e1f8cbece8b7f5c24e0e4cb884ea44f2b40b47231b6fe28aefb30f19de16be88
+	source = https://github.com/nats-io/natscli/releases/download/v0.0.34/nats-0.0.34-linux-amd64.zip
+	sha256sums = 4f57234271b0600dc905933e6add707a36fb14353090de3c973220e8f8e2d65b
 
 pkgname = natscli-bin
