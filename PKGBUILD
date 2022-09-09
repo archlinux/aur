@@ -7,12 +7,12 @@ pkgdesc='Tools to help manage Xfce configurations'
 depends=('ruby' 'ruby-dbus')
 url="https://github.com/felipec/$pkgname"
 arch=('any')
-license=('MIT')
+license=('ISC')
 makedepends=('git')
 source=("$pkgname::git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 package() {
-  cd $pkgname &&
-  DESTDIR="$pkgdir" make prefix=/usr install
+	cd $pkgname &&
+	DESTDIR="$pkgdir/" make prefix=/usr install
 }
