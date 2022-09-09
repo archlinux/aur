@@ -1,6 +1,6 @@
 pkgbase = fex-emu-git
 	pkgdesc = Fast usermode x86 and x86-64 emulator for Arm64
-	pkgver = 2208+11.ga2f4f494a9
+	pkgver = 2209+6.gc987e1ef44
 	pkgrel = 1
 	url = https://fex-emu.com
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = fex-emu-git
 	depends = libepoxy
 	depends = squashfs-tools
 	depends = squashfuse
-	provides = fex-emu=2208
+	provides = fex-emu=2209
 	conflicts = fex-emu
 	source = git+https://github.com/FEX-Emu/FEX
 	source = git+https://github.com/catchorg/Catch2
