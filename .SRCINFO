@@ -1,6 +1,6 @@
 pkgbase = vintagestory
 	pkgdesc = An in-development indie sandbox game about innovation and exploration
-	pkgver = 1.17.2
+	pkgver = 1.17.3
 	pkgrel = 1
 	url = https://www.vintagestory.at/
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = vintagestory
 	depends = mono
 	depends = opengl-driver
 	depends = openal
-	source = https://cdn.vintagestory.at/gamefiles/stable/vs_archive_1.17.2.tar.gz
+	source = https://cdn.vintagestory.at/gamefiles/stable/vs_archive_1.17.3.tar.gz
 	source = vintagestory.desktop
 	source = vintagestory.sh
-	md5sums = e0f1177789e9e02c8c43a169f9e0e725
+	md5sums = fb725cffaadcd46b98c613927cdc35a8
 	md5sums = ab6680c4499b58b14aa36acc2ab4038a
 	md5sums = 88627bf1e56df5cb72605c0e60ae9dcb
 
