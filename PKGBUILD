@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-shell')
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="nwg-shell meta-package, installer and updater"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/nwg-shell"
@@ -28,4 +28,5 @@ package() {
   cd "${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1
   install -D -t "$pkgdir"/usr/local/bin scripts/*
+  install -D -t "$pkgdir"/usr/share/backgrounds nwg-shell.jpg
 }
