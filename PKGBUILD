@@ -1,7 +1,7 @@
 # Maintainer: Kazuya Takei <myself@attakei.net>
 
 pkgname=firebase-tools-bin
-pkgver=11.8.0
+pkgver=11.8.1
 pkgrel=1
 pkgdesc=" The Firebase Command Line Tools (bundled official standalone binary)"
 arch=('x86_64')
@@ -10,11 +10,11 @@ license=('MIT')
 conflicts=('firebase-tools')
 options=('!strip')
 source=(
-    "https://github.com/firebase/firebase-tools/releases/download/v11.8.0/firebase-tools-linux"
-    "https://github.com/firebase/firebase-tools/raw/v11.8.0/LICENSE"
+    "https://github.com/firebase/firebase-tools/releases/download/v11.8.1/firebase-tools-linux"
+    "https://github.com/firebase/firebase-tools/raw/v11.8.1/LICENSE"
     )
 md5sums=(
-    '24d8bcf727b2fa5f2367d1384a314951'
+    '17f212ffbfd0afcfffea92e96f49d8c2'
     '6ea8f4d1de9a164d33ffe95483a58af4'
     )
 
