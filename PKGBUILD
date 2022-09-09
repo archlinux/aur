@@ -3,7 +3,7 @@
 
 pkgname=snakemake
 pkgver=7.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python-based language and execution environment for GNU Make-like workflows'
 arch=(any)
 url='https://snakemake.readthedocs.io'
@@ -31,7 +31,7 @@ depends=(
 	python-jinja
 	python-retry
 )
-makedepends=(python-setuptools python-build python-installer)
+makedepends=(python-setuptools python-wheel python-build python-installer)
 optdepends=(
 	'python-pygments: For report generation'
 	'python-biopython: For GenBank/NCBI Entrez support'
