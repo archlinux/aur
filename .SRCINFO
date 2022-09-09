@@ -1,6 +1,6 @@
 pkgbase = lampswitch
 	pkgdesc = Indicator and control applet for web services
-	pkgver = 20.10.27
+	pkgver = 22.9.9
 	pkgrel = 1
 	url = https://tari.in/www/software/lampswitch
 	install = lampswitch.install
@@ -13,7 +13,7 @@ pkgbase = lampswitch
 	depends = python-gobject
 	depends = libayatana-appindicator
 	depends = desktop-file-utils
-	source = lampswitch-20.10.27.tar.gz::https://github.com/tari01/lampswitch/archive/20.10.27.tar.gz
-	md5sums = 01433ed4e68cab02464daf2d87256f03
+	source = lampswitch-22.9.9.tar.gz::https://github.com/tari01/lampswitch/archive/22.9.9.tar.gz
+	md5sums = 854a1d356df42a6373be7ef4f5782eb4
 
 pkgname = lampswitch
