@@ -2,7 +2,7 @@
 
 pkgname=bloodhound
 _pkgname=BloodHound
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Use graph theory to reveal the hidden and often unintended relationships within an Active Directory"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -13,13 +13,14 @@ makedepends=('electron' 'npm' 'python-sphinx' 'python-sphinx_rtd_theme')
 optdepends=('python-bloodhound: Python injest tool that runs on natively on Linux')
 source=("https://github.com/BloodHoundAD/BloodHound/archive/${pkgver}.tar.gz"
 	"bloodhound.desktop")
-sha256sums=('49182a003a7a624ac8df14f416e8f09595787933060187415ed3644aeed94b91'
+sha256sums=('9e15fb8451d7bd0e537c2d815cdfea7a0553945b6893b4c83ea5aba3e9c72e2a'
             '8a64de7e9fc4857fadd890cc8966a641a896077eb2c869a7eb0987074dcd02c2')
 
 build() {
   cd "${_pkgname}-${pkgver}"
   HOME="$srcdir/.electron-gyp" npm install
-  HOME="$srcdir/.electron-gyp" npm run linuxbuild
+  #HOME="$srcdir/.electron-gyp" npm run linuxbuild
+  HOME="$srcdir/.electron-gyp" npm run build:linux
   # Documentation
   cd docs
   make man html
