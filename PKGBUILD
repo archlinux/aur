@@ -2,7 +2,7 @@
 
 pkgname=wayland-idle-inhibitor-git
 pkgver=r2.46a5077
-pkgrel=1
+pkgrel=2
 pkgdesc="An inhibitor that prevents wayland from idleing and locking the screen"
 arch=("any")
 url="https://github.com/stwa/wayland-idle-inhibitor"
