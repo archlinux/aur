@@ -1,6 +1,6 @@
 # Maintainer: Eric Renfro <psi-jack@linux-help.org>
 
-_pkgbase=xfce-session-systemd
+_pkgbase=xfce-session-target
 pkgname=${_pkgbase}-git
 pkgdesc='systemd Integration for xfce-session'
 pkgver=1.3.0.r0.g577cf34
