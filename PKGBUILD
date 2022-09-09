@@ -1,6 +1,6 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-shell')
-pkgver=0.2.5
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="nwg-shell meta-package, installer and updater"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/nwg-piotr/nwg-shell"
 license=('MIT')
 depends=('foot' 'gnome-themes-extra' 'grim' 'imagemagick' 'jq'
          'libappindicator-gtk3' 'light' 'ttf-dejavu'
-         'network-manager-applet' 'noto-fonts' 'pacman-contrib' 
+         'network-manager-applet' 'pacman-contrib' 
          'papirus-icon-theme' 'playerctl' 'polkit-gnome' 
          'python-geopy' 'python-yaml' 'slurp' 'swappy' 'sway' 'swayidle'
          'swaylock' 'swaybg' 'wl-clipboard' 'xorg-xwayland' 'azote' 
@@ -20,12 +20,12 @@ optdepends=('chromium: suggested web browser'
             'thunar: suggested file manager'
             'nano: in case you hate vi')
 makedepends=('python-setuptools' 'python-wheel')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/nwg-shell/archive/v"$pkgver".tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/nwg-shell/releases/download/v"$pkgver"/nwg-shell-v"$pkgver".tar.gz")
 
-md5sums=('e29792068e9be52718b6637f1288fa93')
+md5sums=('b3e7033dcb53474636e1189637610ae4')
 
 package() {
   cd "${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1
-  install -D -t "$pkgdir"/usr/share/backgrounds nwg-shell.jpg
+  install -D -t "$pkgdir"/usr/local/bin scripts/*
 }
