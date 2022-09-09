@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=AnyLogic Personal Learning Edition
+Comment=AnyLogic Personal Learning Edition - for beginners and students
+Exec=env SWT_GTK3=0 UBUNTU_MENUPROXY= /opt/anylogic/anylogic
+Icon=anylogic-ple
+Terminal=false
+StartupNotify=false
+Categories=Application;
