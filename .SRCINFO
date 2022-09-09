@@ -4,7 +4,7 @@ pkgbase = git-completion
 	pkgrel = 1
 	url = https://github.com/felipec/git-completion
 	arch = any
-	license = GPLv2
+	license = GPL2
 	makedepends = git
 	source = git-completion::git+https://github.com/felipec/git-completion.git#tag=v1.4
 	sha256sums = SKIP
