@@ -1,6 +1,6 @@
 pkgbase = python-gspread-git
 	pkgdesc = Google Sheets Python API
-	pkgver = v5.4.0.r2.g4fcad2a
+	pkgver = v5.5.0.r4.gca8e39f
 	pkgrel = 1
 	url = https://github.com/burnash/gspread
 	arch = any
