@@ -1,0 +1,15 @@
+pkgbase = gnome-cosmic-desktop-widget-git
+	pkgdesc = COSMIC desktop widget from popos for Gnome.
+	pkgver = VERSION
+	pkgrel = 1
+	url = https://github.com/pop-os/desktop-widget
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = gnome
+	depends = pop-theme
+	depends = gnome-shell-extension-pop-shell
+	depends = gnome-cosmic-git
+	source = git+https://github.com/pop-os/desktop-widget
+
+pkgname = gnome-cosmic-desktop-widget-git
