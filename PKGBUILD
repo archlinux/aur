@@ -4,7 +4,7 @@ _name=aqademia
 
 pkgname=latex-template-aqademia
 pkgver=3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A LaTeX template for printable academic documents."
 
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL-2.0')
 url="https://gitlab.com/Groctel/aqademia"
 
 source=("$url/-/archive/main/aqademia-main.zip")
-sha512sums=('4f644217a4fca8446a71ee72427d8e70e2d07b07d9606d51eb1ba14f308965b874e971d5002c73ea57a45fd6c2ae60ae209973657e14e5f984949398210972c0')
+sha512sums=('48d1cb0426fb45b311c8a9984f245e202629610163643930a9d6e91409afb12397fb6b8e09df7dfc84ca688546c52a9832af6afcb4ddce3272cf7c918d388343')
 
 depends=('texlive-core')
 
