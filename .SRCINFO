@@ -1,12 +1,12 @@
 pkgbase = ambiant
 	pkgdesc = A fork of Ubuntu MATE's Ambiant theme
-	pkgver = 22.9.8
+	pkgver = 22.9.9
 	pkgrel = 1
 	url = https://github.com/tari01/ambiant
 	arch = any
 	license = GPL3
 	depends = gtk-engine-murrine
-	source = ambiant-22.9.8.tar.gz::https://github.com/tari01/ambiant/archive/22.9.8.tar.gz
-	md5sums = fbcdb5011950e831d211326ba4ba5014
+	source = ambiant-22.9.9.tar.gz::https://github.com/tari01/ambiant/archive/22.9.9.tar.gz
+	md5sums = be2d017a913330dc176d376a04cd4f32
 
 pkgname = ambiant

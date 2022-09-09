@@ -1,7 +1,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="ambiant"
-pkgver="22.9.8"
+pkgver="22.9.9"
 pkgrel="1"
 pkgdesc="A fork of Ubuntu MATE's Ambiant theme"
 arch=("any")
@@ -9,7 +9,7 @@ url="https://github.com/tari01/ambiant"
 license=("GPL3")
 depends=("gtk-engine-murrine")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("fbcdb5011950e831d211326ba4ba5014")
+md5sums=("be2d017a913330dc176d376a04cd4f32")
 
 package()
 {
