@@ -13,10 +13,10 @@ conflicts=('cunicu')
 optdepends=('bash-completion: for shell completions' 'wireguard-tools: for controlling WireGuard interfaces')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/stv0g/cunicu/releases/download/v0.1.2/cunicu_0.1.2_linux_arm64.tar.gz")
-sha256sums_aarch64=('98f56bcc0bc46acd25b5cf1c8205e6765860c8e32ab67c0f700182eb65f83d8b')
+sha256sums_aarch64=('9d7332548bc64f480872bf951970d964a8bd34fa9db5d3ddfd451b363b6fd0e5')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/stv0g/cunicu/releases/download/v0.1.2/cunicu_0.1.2_linux_amd64.tar.gz")
-sha256sums_x86_64=('2e15230078322c3c4ef99efce33c0fb38889919e2fea7be4667624827a482de8')
+sha256sums_x86_64=('836dc487753bffd3b4a0c52aeebcb450059d815cee23dc48df343eb61c97fea9')
 
 package() {
   # bin
