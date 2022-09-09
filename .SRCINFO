@@ -1,6 +1,6 @@
 pkgbase = aws-cli-v2
 	pkgdesc = Universal Command Line Interface for Amazon Web Services (version 2)
-	pkgver = 2.7.28
+	pkgver = 2.7.30
 	pkgrel = 1
 	url = https://github.com/aws/aws-cli
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = aws-cli-v2
 	conflicts = aws-cli
 	conflicts = aws-cli-git
 	conflicts = aws-cli-v2-bin
-	source = aws-cli-v2-2.7.28.tar.gz::https://github.com/aws/aws-cli/archive/2.7.28.tar.gz
-	sha256sums = 1067702c3f6ca58a1a034ca2ad83b8e9d692ba59c28cf11c7ccf73945dd44a34
+	source = aws-cli-v2-2.7.30.tar.gz::https://github.com/aws/aws-cli/archive/2.7.30.tar.gz
+	sha256sums = b9b8a29e87c74e9a45436e414c5cf10ce27e0c7402f8c1d56e4fc025d6b982d6
 
 pkgname = aws-cli-v2
