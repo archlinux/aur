@@ -1,14 +1,14 @@
 pkgbase = postman-agent
 	pkgdesc = The Postman agent overcomes the Cross Object Resource Sharing (CORS) limitations of browsers, and facilitates API request sending from your browser version of Postman. Using the system electron
-	pkgver = 0.4.4
+	pkgver = 0.4.7
 	pkgrel = 1
 	url = https://www.postman.com/
 	arch = any
 	depends = electron
 	options = !strip
-	source = postman-agent-0.4.4-linux-x64.tar.gz::https://dl-agent.pstmn.io/download/version/0.4.4/linux64
+	source = postman-agent-0.4.7-linux-x64.tar.gz::https://dl-agent.pstmn.io/download/version/0.4.7/linux64
 	source = postman-agent.desktop
-	sha256sums = aceffddd696797026e972e328e109e50480f3360b8cd78732a35be4736539a55
+	sha256sums = 4807643acea2a953be0c6f5957371470b7032b2d10b297d00401b75428a30fd9
 	sha256sums = 1a4b04c499d03296049104a06863eb2b9341d93e7fddaa8b22b0a89b2e1b0525
 
 pkgname = postman-agent
