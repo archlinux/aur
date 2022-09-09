@@ -11,19 +11,19 @@
     "user": "",
     "password": "",
     "name": "",
-    "db_file": "/var/lib/alist/data.db",
+    "db_file": "data.db",
     "ssl_mode": "disable",
-    "table_prefix": "x_",
+    "table_prefix": "x_"
   },
   "scheme": {
     "https": false,
     "cert_file": "",
     "key_file": ""
   },
-  "temp_dir": "/var/cache/alist/temp",
+  "temp_dir": "../../cache/alist/temp",
   "log": {
     "enable": false,
-    "name": "/var/log/alist/log.log",
+    "name": "../../log/alist/log.log",
     "max_size": 10,
     "max_backups": 5,
     "max_age": 28,
