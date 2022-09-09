@@ -2,12 +2,12 @@
 
 pkgname=python-autopwn-suite
 _pyname=autopwn-suite
-pkgver=2.1.3
+pkgver=2.1.5
 pkgrel=1
 pkgdesc="AutoPWN Suite is a project for scanning vulnerabilities and exploiting systems automatically."
 url="https://auto.pwnspot.com"
 arch=("any")
-depends=("python" "python-requests" "python-rich" "python-nmap" "python-bs4" "python-distro")
+depends=("python" "python-requests" "python-rich" "python-nmap" "python-bs4" "python-distro" "nmap")
 makedepends=("python-setuptools")
 license=("EULA")
 source=("${_pyname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/a/${_pyname}/${_pyname}-${pkgver}.tar.gz")
