@@ -25,8 +25,6 @@ validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aac
 # https://invent.kde.org/kdevelop/kdev-python/-/blob/master/INSTALL
 build() {
   cd kdev-python-$pkgver
-  # currently errors with build testing on
-  # check each release if removing this works
   cmake -B build -S . \
     -DBUILD_TESTING=OFF
   cmake --build build
