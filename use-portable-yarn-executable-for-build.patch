@@ -1,0 +1,11 @@
+--- a/scripts/build-dist.sh
++++ b/scripts/build-dist.sh
+@@ -11,7 +11,7 @@ case "$(uname -s)" in
+     system_yarn=yarn.cmd
+     ;;
+   *)
+-    system_yarn=yarn
++    system_yarn=$PWD/../yarn-portable/bin/yarn
+     ;;
+ esac
+
