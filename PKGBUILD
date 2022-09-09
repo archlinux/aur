@@ -12,12 +12,30 @@ provides=('cunicu')
 conflicts=('cunicu')
 optdepends=('bash-completion: for shell completions' 'wireguard-tools: for controlling WireGuard interfaces')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.binary::https://github.com/stv0g/cunicu/releases/download/v0.1.2/cunicu_0.1.2_linux_arm64")
-sha256sums_aarch64=('b61a27f90e0fd8d490a70bfc550d0d60f1f1848afcfbd5a75e9b6f1a44e5d82d')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/stv0g/cunicu/releases/download/v0.1.2/cunicu_0.1.2_linux_arm64.tar.gz")
+sha256sums_aarch64=('98f56bcc0bc46acd25b5cf1c8205e6765860c8e32ab67c0f700182eb65f83d8b')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.binary::https://github.com/stv0g/cunicu/releases/download/v0.1.2/cunicu_0.1.2_linux_amd64")
-sha256sums_x86_64=('0652b9170d3b998585596be3e84db1bd49c2a3725cd7510596db406ce74d2558')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/stv0g/cunicu/releases/download/v0.1.2/cunicu_0.1.2_linux_amd64.tar.gz")
+sha256sums_x86_64=('2e15230078322c3c4ef99efce33c0fb38889919e2fea7be4667624827a482de8')
 
 package() {
-  install -Dm755 "./cunicu_*" "${pkgdir}/usr/bin/cunicu"
+  # bin
+  install -Dm755 "./cunicu" "${pkgdir}/usr/bin/cunicu"
+
+  # license
+  install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/cunicu/LICENSE"
+
+  # manpages
+  install -Dm644 man/*.1 "${pkgdir}/usr/share/man/man1"
+  install -Dm644 man/*.5 "${pkgdir}/usr/share/man/man5"
+  install -Dm644 man/*.7 "${pkgdir}/usr/share/man/man7"
+  install -Dm644 man/*.8 "${pkgdir}/usr/share/man/man8"
+
+  # completions
+  mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
+  mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
+  mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
+  install -Dm644 "./completions/cunicu.bash" "${pkgdir}/usr/share/bash-completion/completions/cunicu"
+  install -Dm644 "./completions/cunicu.zsh" "${pkgdir}/usr/share/zsh/site-functions/_cunicu"
+  install -Dm644 "./completions/cunicu.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/cunicu.fish"
 }
