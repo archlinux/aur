@@ -66,7 +66,9 @@ build() {
 
   ./configure \
     --prefix=/opt \
-    --enable-shared 
+    --enable-shared \
+    --extra-ldflags=-L/opt/ffmpeg21/lib \
+    --extra-cflags=-I/opt/ffmpeg21/include
     #--libdir="${_libdir}" \
     #--includedir="${_includedir}"
   #make "-j$(nproc)" || return 1
