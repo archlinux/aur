@@ -2,7 +2,7 @@
 
 _pkgname=pipe-viewer
 pkgname=pipe-viewer-git
-pkgver=0.2.3.r0.g64f14fc
+pkgver=0.3.0.r0.gf9c9585
 pkgrel=1
 pkgdesc="A lightweight YouTube client for Linux (CLI/GTK) (fork of straw-viewer)"
 arch=('any')
