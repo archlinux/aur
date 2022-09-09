@@ -1,6 +1,6 @@
 # Maintainer: Alexander Fasching <fasching.a91@gmail.com>
 pkgname=nerd-fonts-roboto-mono
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Patched font Roboto Mono from the nerd-fonts library"
 arch=("any")
@@ -11,7 +11,7 @@ conflicts=('nerd-fonts-git' 'nerd-fonts-complete')
 groups=("nerd-fonts")
 source=("https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/RobotoMono.zip"
         "https://github.com/ryanoasis/nerd-fonts/raw/v$pkgver/LICENSE")
-sha1sums=('b2c3f5298a7c3be2a4dc6566064d3a3d03ab364d'
+sha1sums=('cbd356d71a980b328e67c890414f0bf0f5239514'
           '3175046f10fc45ffaaf96f5e4023d12316db0688')
 
 package() {
