@@ -1,0 +1,14 @@
+pkgbase = gnome-cosmic-git
+	pkgdesc = COSMIC shell from popos for Gnome.
+	pkgver = VERSION
+	pkgrel = 1
+	url = https://github.com/pop-os/cosmic.git
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = gnome
+	depends = pop-theme
+	depends = gnome-shell-extension-pop-shell
+	source = git+https://github.com/pop-os/cosmic.git
+
+pkgname = gnome-cosmic-git
