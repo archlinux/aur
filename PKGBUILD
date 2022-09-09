@@ -6,7 +6,7 @@
 
 _appname='gnunet'
 pkgname="${_appname}-git"
-pkgver=0.17.5.r14.g008fbd997
+pkgver=0.17.5.r19.g0892484b4
 pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ url="http://${_appname}.org"
 license=('AGPL')
 conflicts=("${_appname}" "${_appname}-bin")
 provides=("${_appname}")
-depends=('brotli' 'gettext' 'gnutls' 'iptables' 'jansson' 'libcurl-gnutls'
+depends=('brotli' 'gettext' 'gnurl' 'gnutls' 'iptables' 'jansson'
          'libextractor' 'libgcrypt' 'libidn2' 'libmicrohttpd' 'libsodium'
          'libtool' 'libunistring' 'miniupnpc' 'nss' 'openssl' 'sqlite' 'which'
          'zlib')
