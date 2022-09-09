@@ -1,0 +1,15 @@
+pkgbase = bichon-git
+	pkgdesc = Tool to determine whether the X server in use is Xwayland
+	pkgver = 0+442.gd69c5e0bf9
+	pkgrel = 1
+	url = https://gitlab.com/bichon-project/bichon
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	provides = bichon
+	conflicts = bichon
+	source = git+https://gitlab.com/bichon-project/bichon
+	sha256sums = SKIP
+
+pkgname = bichon-git
