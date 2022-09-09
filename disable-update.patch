@@ -1,5 +1,5 @@
---- appSettings.json	2022-09-09 05:11:30.198735862 +0200
-+++ appSettingsUpdated.json	2022-09-09 05:11:29.148737460 +0200
+--- appSettings.json	2022-09-09 05:22:07.295823229 +0200
++++ appSettingsUpdated.json	2022-09-09 05:22:12.586815963 +0200
 @@ -15,7 +15,7 @@
          "UseDeferredRendering": null
      },
