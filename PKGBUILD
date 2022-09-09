@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libxml2-git
-pkgver=2.9.12.r14.gdea91c97
+pkgver=2.10.2.r137.gf2392dc4
 pkgrel=1
 pkgdesc="The XML C parser and toolkit of Gnome"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://xmlsoft.org/"
 license=('custom')
 depends=('glibc' 'icu' 'sh' 'xz' 'zlib')
 makedepends=('git' 'python')
-provides=('libxml2')
+provides=("libxml2=$pkgver")
 conflicts=('libxml2')
 options=('staticlibs')
 source=("git+https://gitlab.gnome.org/GNOME/libxml2.git")
@@ -31,6 +31,7 @@ build() {
   NOCONFIGURE=1 ./autogen.sh
   ./configure \
     --prefix="/usr" \
+    --enable-static \
     --with-history \
     --with-icu
   make

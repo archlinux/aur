@@ -1,6 +1,6 @@
 pkgbase = libxml2-git
 	pkgdesc = The XML C parser and toolkit of Gnome
-	pkgver = 2.9.12.r14.gdea91c97
+	pkgver = 2.10.2.r137.gf2392dc4
 	pkgrel = 1
 	url = http://xmlsoft.org/
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = libxml2-git
 	depends = sh
 	depends = xz
 	depends = zlib
-	provides = libxml2
+	provides = libxml2=2.10.2.r137.gf2392dc4
 	conflicts = libxml2
 	options = staticlibs
 	source = git+https://gitlab.gnome.org/GNOME/libxml2.git
