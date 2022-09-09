@@ -1,0 +1,5 @@
+pre_upgrade()
+{
+	rm -fr /usr/share/icons/Ambiant
+    rm -fr /usr/share/themes/Ambiant
+}

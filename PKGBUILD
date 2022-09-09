@@ -7,13 +7,12 @@ pkgdesc="A fork of Ubuntu MATE's Ambiant theme"
 arch=("any")
 url="https://github.com/tari01/ambiant"
 license=("GPL3")
+install="${pkgname}.install"
 depends=("gtk-engine-murrine")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("be2d017a913330dc176d376a04cd4f32")
 
 package()
 {
-    rm -fr /usr/share/icons/Ambiant
-    rm -fr /usr/share/themes/Ambiant
     mv ${srcdir}/${pkgname}-${pkgver}/usr ${pkgdir}/
 }
