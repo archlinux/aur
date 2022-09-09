@@ -1,7 +1,7 @@
 # Maintainer : Ilan Frumer (ilanfrumer@gmail.com)
 
 pkgname=dragonfly-bin
-pkgver=0.5.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Dragonfly is a modern in-memory datastore, fully compatible with Redis and Memcached APIs"
 arch=("x86_64" "aarch64")
