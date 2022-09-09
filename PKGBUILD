@@ -2,7 +2,7 @@
 pkgname=kappanhang
 pkgver=1.3
 pkgrel=1
-pkgdesc="Interface for Icom transceivers"
+pkgdesc="Remotely open audio channels and a serial port to an Icom RS-BA1 server (for ex. Icom IC-705 transceiver)."
 arch=('i686' 'x86_64')
 gopath="github.com/nonoo/kappanhang"
 url="https://gopath"
