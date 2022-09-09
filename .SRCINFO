@@ -1,18 +1,19 @@
 pkgbase = anylogic-university
 	pkgdesc = AnyLogic University Edition - for public research in universities
-	pkgver = 8.7.9
+	pkgver = 8.8.0
 	pkgrel = 1
 	url = https://www.anylogic.com
 	arch = x86_64
 	license = custom
-	makedepends = gendesk
 	depends = glibc
 	optdepends = chromium: alternative browser for model animating
 	optdepends = firefox: alternative browser for model animating
 	provides = anylogic
 	conflicts = anylogic
 	options = !strip
-	source = https://files.anylogic.com/anylogic-university-8.7.9.linux.x86_64.tgz.bin
-	sha256sums = 84cee52efedea2f08988aab96f1b11610dc09474ca167f8de8f25380ea7eb135
+	source = https://files.anylogic.com/anylogic-university-8.8.0.linux.x86_64.tgz.bin
+	source = anylogic-university.desktop
+	sha256sums = f43a0752d993fc4fb37d1c8053cef1fb7e1fd24f078f4b9b74fa2e09afd1eae4
+	sha256sums = f0d4b44dd6f53d0aa940b730d1c0dfac77ab3aea4cca6ab185abc7e458a8c135
 
 pkgname = anylogic-university

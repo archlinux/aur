@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=AnyLogic University Edition
+Comment=AnyLogic University Edition - for public research in universities
+Exec=env SWT_GTK3=0 UBUNTU_MENUPROXY= /opt/anylogic/anylogic
+Icon=anylogic-university
+Terminal=false
+StartupNotify=false
+Categories=Application;
