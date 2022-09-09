@@ -3,7 +3,7 @@
 pkgname=python-pypykatz
 _pkgname=pypykatz
 pkgver=0.5.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Partial Mimikatz implementation in pure Python."
 url="https://pypi.org/project/pypykatz/"
 arch=('any')
