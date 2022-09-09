@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://jihulab.com/ambition-echo/earth_wallpaper"
 license=('GPL3')
 
-depends=('qt5-base' 'python' 'python-pillow' 'python-requests')
+depends=('dbus-python' 'qt5-base' 'python' 'python-pillow' 'python-requests')
 makedepends=('cmake' 'git' 'ninja')
 
 source=("git+$url.git")

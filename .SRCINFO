@@ -8,6 +8,7 @@ pkgbase = earth-wallpaper-nightly
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
+	depends = dbus-python
 	depends = qt5-base
 	depends = python
 	depends = python-pillow
