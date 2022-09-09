@@ -15,6 +15,9 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "$srcdir/libharu-${pkgver}"
+  # restore version header
+  curl -L https://github.com/libharu/libharu/commit/d75f9fa2519fa31bde7775523042771e6c02bde7.patch | patch -p1
+  curl -L https://github.com/libharu/libharu/pull/239.patch | patch -p1
 }
 
 build() {
