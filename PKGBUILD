@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-shell-extension-rounded-window-corners-git
-pkgver=4.r33.ge76dc9a
+pkgver=6.r9.g4dd72c5
 pkgrel=1
 pkgdesc="A GNOME Shell extension that adds rounded corners for all windows"
 arch=('any')
@@ -32,7 +32,6 @@ build() {
             --extra-source=manager/ \
             --extra-source=preferences/ \
             --extra-source=utils/ \
-            --extra-source=app.js \
             --extra-source=stylesheet-prefs.css \
             --force
   popd
@@ -43,9 +42,13 @@ package() {
   local uuid=$(grep -Po '(?<="uuid": ")[^"]*' _build/metadata.json)
 
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${uuid}"
-  bsdtar -xvf "_build/${uuid}.shell-extension.zip" -C "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/"
+  bsdtar -xvf "_build/${uuid}.shell-extension.zip" -C \
+    "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/"
 
   install -Dm644 _build/schemas/org.gnome.shell.extensions.rounded-window-corners.gschema.xml -t \
     "$pkgdir/usr/share/glib-2.0/schemas/"
   rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/schemas/"
+
+  install -Dm644 "_build/locale/zh_CN/LC_MESSAGES/${uuid}.mo" -t \
+    "$pkgdir/usr/share/locale/zh_CN/LC_MESSAGES/"
 }
