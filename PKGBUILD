@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scam
-_pkgver=1.2-12
+_pkgver=1.2-13
 pkgname=r-${_pkgname,,}
-pkgver=1.2.12
-pkgrel=4
+pkgver=1.2.13
+pkgrel=1
 pkgdesc='Shape Constrained Additive Models'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,7 +16,7 @@ optdepends=(
   r-nlme
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0ce5f844221370884719424eb5b2b22c34a8a8ad64eac3de981e5539b6e88f4a')
+sha256sums=('33fd80394583ee9c909c5059fee1184ee3ca9325bd3cf40beaa12cfe8978e562')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
