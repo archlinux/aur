@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Stürz <benni@stuerz.xyz>
 pkgname=billig-sweeper
-pkgver=1.2.1
+pkgver=1.3
 pkgrel=1
 pkgdesc="A cheap Minesweeper clone"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('sdl2' 'sdl2_image')
 makedepends=('git' 'meson' 'ninja')
 source=("https://github.com/riscygeek/billig-sweeper/archive/refs/tags/v${pkgver}.tar.gz" "git+https://github.com/cktan/tomlc99")
-sha256sums=(a9d4d06396026caa192ee5cdd505ca3771e4b0c0ff1c5b5d68e18fca1cee1ea0 SKIP)
+sha256sums=(94b6ac8d2ae4a5745728aed0bb0702bb624e9f6072f4252f84f334dadb8cdf57 SKIP)
 
 prepare() {
 	rmdir "billig-sweeper-${pkgver}/tomlc99"
