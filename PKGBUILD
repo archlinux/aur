@@ -2,7 +2,7 @@
 
 _pkgname=pacseek
 pkgname=pacseek-bin
-pkgver=1.6.6
+pkgver=1.6.7
 pkgrel=1
 pkgdesc='A terminal user interface for searching and installing Arch Linux packages (binary version)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('xdg-utils: open URL on click support'
 provides=('pacseek')
 conflicts=('pacseek')
 source=("$url/releases/download/v$pkgver/$_pkgname-linux-x64-v$pkgver.tar.gz")
-sha256sums=('bb3d74802996a3c51ebd0405e8baf287b52871f9050ce2254bf89441baa80758')
+sha256sums=('66c1ec17334e932ec264969d846439dc58f3520918d714ac32702a4da807feb2')
 
 package() {
   # bin
@@ -28,4 +28,7 @@ package() {
   
   # icon
   install -Dm644 "assets/$_pkgname.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
+  
+  # man page
+  install -Dm644 "doc/pacseek.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
 }
