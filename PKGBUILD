@@ -1,7 +1,7 @@
 # Maintainer: Mario Oenning <mo-son at mailbox dot org>
 
 pkgname=pacseek
-pkgver=1.6.6
+pkgver=1.6.7
 pkgrel=1
 pkgdesc='A terminal user interface for searching and installing Arch Linux packages'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('go')
 optdepends=('xdg-utils: open URL on click support'
             'fakeroot: display upgrades support')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('3c0bde3bd61786a8c65be8f64b0a17fecb1019c69fb3c310f1fafab59c713a6f')
+sha256sums=('159ef22feedc9ff23d2869be80bfefca5344090b8c3794881935d342b0dd6033')
 
 prepare(){
   cd "$pkgname-$pkgver"
@@ -44,4 +44,7 @@ package() {
   
   # icon
   install -Dm644 "assets/$pkgname.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+  
+  # man page
+  install -Dm644 "doc/pacseek.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
 }
