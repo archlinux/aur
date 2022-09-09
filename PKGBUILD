@@ -4,12 +4,12 @@
 
 pkgname=inception
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A FireWire physical memory manipulation and hacking tool exploiting IEEE 1394 SBP-2 DMA."
 url="https://github.com/carmaa/inception/"
 arch=('x86_64' 'i686')
 license=('GPL3')
-depends=('python' 'libforensic1394')
+depends=('python' 'python-libforensic1394')
 optdepends=()
 makedepends=('cmake' 'gcc')
 conflicts=('inception-git')
