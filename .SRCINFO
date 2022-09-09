@@ -1,7 +1,7 @@
 pkgbase = gradience-git
 	pkgdesc = Change the look of Adwaita, with ease
 	pkgver = r1043.78bda9d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GradienceTeam/Gradience
 	install = xdg-config.install
 	arch = x86_64
@@ -14,10 +14,12 @@ pkgbase = gradience-git
 	depends = libadwaita-git>=1.2.alpha
 	depends = python-gobject
 	depends = python-anyascii
+	depends = python-lxml
 	depends = python-pillow
 	depends = python-pluggy
 	depends = python-svglib
 	depends = python-urllib3
+	depends = python-yapsy
 	depends = python-regex
 	depends = python-material-color-utilities
 	depends = libportal-gtk4
