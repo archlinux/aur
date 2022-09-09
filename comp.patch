@@ -1,0 +1,29 @@
+diff '--color=auto' --unified --recursive --text gpuowl-7.2/B1Accumulator.h gpuowl-new/B1Accumulator.h
+--- gpuowl-7.2/B1Accumulator.h	2020-11-01 01:19:55.000000000 -0500
++++ gpuowl-new/B1Accumulator.h	2022-09-09 12:49:40.713663093 -0400
+@@ -7,6 +7,7 @@
+ #include "common.h"
+ 
+ #include <cassert>
++#include <optional>
+ 
+ class Gpu;
+ class Args;
+Only in gpuowl-new: .d
+Only in gpuowl-new: gpuowl-expanded.cl
+Only in gpuowl-new: gpuowl-wrap.cpp
+diff '--color=auto' --unified --recursive --text gpuowl-7.2/Makefile gpuowl-new/Makefile
+--- gpuowl-7.2/Makefile	2020-11-01 01:19:55.000000000 -0500
++++ gpuowl-new/Makefile	2022-09-09 12:47:18.279877452 -0400
+@@ -1,3 +1,4 @@
++CXX = g++-11
+ CXXFLAGS = -Wall -O2 -std=c++17
+ 
+ LIBPATH = -L/opt/rocm/opencl/lib -L/opt/rocm-3.3.0/opencl/lib/x86_64 -L/opt/rocm-3.1.0/opencl/lib/x86_64 -L/opt/rocm/opencl/lib/x86_64 -L/opt/amdgpu-pro/lib/x86_64-linux-gnu -L.
+diff '--color=auto' --unified --recursive --text gpuowl-7.2/pm1/Makefile gpuowl-new/pm1/Makefile
+--- gpuowl-7.2/pm1/Makefile	2020-11-01 01:19:55.000000000 -0500
++++ gpuowl-new/pm1/Makefile	2022-09-09 12:47:31.561128173 -0400
+@@ -1,2 +1,2 @@
+ pm1: pm1driver.cpp pm1prob.cpp pm1prob.h
+-	g++ -opm1 -std=c++17 pm1driver.cpp pm1prob.cpp
++	g++-11 -opm1 -std=c++17 pm1driver.cpp pm1prob.cpp
