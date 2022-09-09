@@ -1,6 +1,6 @@
 pkgbase = wechat-devtools
 	pkgdesc = WeChat Devtools For Linux.
-	pkgver = 1.06.2207210
+	pkgver = 1.06.2208010
 	pkgrel = 1
 	epoch = 2
 	url = https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html
@@ -17,9 +17,9 @@ pkgbase = wechat-devtools
 	depends = libxkbfile
 	options = !strip
 	source = nwjs-v0.55.0.tar.gz::https://npm.taobao.org/mirrors/nwjs/v0.55.0/nwjs-sdk-v0.55.0-linux-x64.tar.gz
-	source = wechat_devtools_1.06.2207210_x64.exe::https://servicewechat.com/wxa-dev-logic/download_redirect?type=x64&from=mpwiki&download_version=1062207210&version_type=1
+	source = wechat_devtools_1.06.2208010_x64.exe::https://servicewechat.com/wxa-dev-logic/download_redirect?type=x64&from=mpwiki&download_version=1062208010&version_type=1
 	source = node-v16.4.2.tar.gz::https://npm.taobao.org/mirrors/node/v16.4.2/node-v16.4.2-linux-x64.tar.gz
-	source = compiler-v1.06.2207210-1.tar.gz::https://github.com/msojocs/wechat-web-devtools-linux/releases/download/v1.06.2207210-1/compiler.tar.gz
+	source = compiler-v1.06.2208010-1.tar.gz::https://github.com/msojocs/wechat-web-devtools-linux/releases/download/v1.06.2208010-1/compiler.tar.gz
 	source = wechat-devtools.desktop
 	source = logo.svg
 	source = wechat-devtools
@@ -33,9 +33,9 @@ pkgbase = wechat-devtools
 	source = wxvpkg_unpack.js
 	source = fix-other.sh
 	md5sums = ac7680788544c457daee11aaf69798fe
-	md5sums = 7599cfeeebb57bda7ae5594daf2e0659
+	md5sums = 4312c9cd7b7be4a95f7b71d3311b19e4
 	md5sums = 4d14589085ebbf79ce504dc27330d33b
-	md5sums = 807f1ebc16e344386c723a25fdb2276e
+	md5sums = d6eb02f0d31b25e82812784b4147b9c5
 	md5sums = 4d3f5273be80a74741c841fcfa4185d3
 	md5sums = 0f4353664123320280ea4d6bb295dce2
 	md5sums = ae685283b21becd9c097aca4571f7556
