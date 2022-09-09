@@ -3,7 +3,7 @@
 pkgname=picgo
 _name=PicGo
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple & beautiful tool for pictures uploading built by electron-vue"
 arch=('x86_64' 'i686')
 url="https://github.com/Molunerfinn/PicGo"
@@ -33,7 +33,7 @@ package() {
 	install -d "$pkgdir/usr/share/picgo"
 	install -d "$pkgdir/usr/bin"
 	cp -r dist_electron/linux-unpacked/* "$pkgdir/usr/share/picgo"
-	ln -s "$pkgdir/usr/share/picgo/picgo" "$pkgdir/usr/bin/picgo"
+	ln -s "../share/picgo/picgo" "$pkgdir/usr/bin/picgo"
 
 	# Install desktop file
 	echo "[Desktop Entry]
