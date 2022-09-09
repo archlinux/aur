@@ -5,7 +5,7 @@ set -euxo pipefail
 PKG=$(awk -F '=' '/^pkgname/{ print $2 }' PKGBUILD)
 
 # Get latest version
-VER=$(curl -sSf https://dl.thorium.rocks/debian/dists/stable/main/binary-amd64/Packages |
+VER=$(curl -sSf https://dl.thorium.rocks/debian/dists/stable/main/binary-amd64/Packages.gz |
 	grep -A1 "Package: ${PKG}" |
 	awk '/Version/{print $2}' |
 	cut -d '-' -f1)
