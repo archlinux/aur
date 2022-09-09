@@ -18,7 +18,7 @@ source=(
 )
 b2sums=(
     'SKIP'
-    'b5b95ef9ca13dbd03b4b6816036542a92c860a9bdeabfaf4dd7a24fff3201f6cc57bc698143c654ba40da3e0aa2c6f7774d7d211eaa82196f497ace4a01cd4e5'
+    '775a6a39bc6e50b06ea3ad0754b0bd9614ec4ba37fea0cea5000b191ba718e3916511b3b4d31cc2b3b3b2f52563ac6441c882c0bbf3faaad1a68dccd8fba7cdf'
 )
 
 pkgver() {
