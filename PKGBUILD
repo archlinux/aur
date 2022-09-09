@@ -2,20 +2,20 @@
 
 pkgname=changedetection.io
 pkgver=0.39.19
-pkgrel=1
+pkgrel=2
 pkgdesc='change monitoring of web pages'
 arch=('any')
 url='https://github.com/dgtlmoon/changedetection.io'
 license=('Apache 2.0')
-makedepends=('python-setuptools' 'python-pip')
-depends=(# see https://github.com/dgtlmoon/changedetection.io/blob/master/requirements.txt
+makedepends=('python-setuptools')
+depends=(# ordered per https://github.com/dgtlmoon/changedetection.io/blob/master/requirements.txt
          'python-flask'
          'python-flask-wtf'
          'python-flask-restful'
          'python-eventlet'
          'python-validators'
          'python-timeago'
-         # inscriptis
+         'python-inscriptis'
          'python-feedgen'
          'python-flask-login'
          'python-pytz'
@@ -27,7 +27,8 @@ depends=(# see https://github.com/dgtlmoon/changedetection.io/blob/master/requir
          'python-apprise'
          'python-cryptography'
          'python-beautifulsoup4'
-         'python-selenium')
+         'python-selenium'
+         'python-werkzeug')
 source=("https://github.com/dgtlmoon/changedetection.io/archive/refs/tags/$pkgver.tar.gz"
         'sysusers'
         'tmpfiles'
@@ -40,8 +41,6 @@ sha512sums=('f18777aea1b4dbe20c039e7274295b232339891eedefa2ba3ec43b976afa10f2899
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1
-  # command per https://wiki.archlinux.org/title/Python_package_guidelines (now removed from page?)
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --target="$pkgdir/usr/lib/changedetection.io" --ignore-installed --no-deps inscriptis
   python -O -m compileall -s ${pkgdir} "${pkgdir}/usr/lib/changedetection.io"
   install -Dm644 "${srcdir}/sysusers" "${pkgdir}/usr/lib/sysusers.d/changedetection.io.conf"
   install -Dm644 "${srcdir}/tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/changedetection.io.conf"
