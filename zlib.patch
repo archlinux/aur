@@ -1,6 +1,0 @@
-@@ -198,3 +198,5 @@
-     mapping.zopen_file = (open_file_func)open;
-+#ifdef ZOPENDISK64
-     mapping.zopendisk_file = (opendisk_file_func)opendisk;
-+#endif
-     mapping.zread_file = (read_file_func)read;
