@@ -1,7 +1,7 @@
 # Maintainer: Gaël PORTAY <gael.portay@gmail.com>
 
 pkgname=iamroot
-pkgver=6
+pkgver=7
 pkgrel=1
 pkgdesc='Emulating the syscall chroot(2) in an unpriviliged process'
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=('lib32-glibc'
 checkdepends=('shellcheck')
 options=('!strip')
 source=("https://github.com/gportay/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('00c861216b5ea76f1a13c22030da3dd7b9227ed1c0720ecab0e3ab7e94e114fc')
+sha256sums=('252fddc6b552898a482564cae187673025552a9154616190027ecfc264b7f482')
 validpgpkeys=('8F3491E60E62695ED780AC672FA122CA0501CA71')
 
 prepare() {
@@ -61,5 +61,5 @@ package() {
 	make PREFIX=/usr DESTDIR="$pkgdir" install-exec-armhf-musl-armhf.1
 	make PREFIX=/usr DESTDIR="$pkgdir" install-doc
 	make PREFIX=/usr DESTDIR="$pkgdir" install-bash-completion
-	install -D -m 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
