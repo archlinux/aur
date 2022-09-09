@@ -1,0 +1,12 @@
+pkgbase = sourcemapper-git
+	pkgdesc = Extract JavaScript source trees from Sourcemap files
+	pkgver = r24.5388f8e
+	pkgrel = 1
+	url = https://github.com/denandz/sourcemapper
+	arch = x86_64
+	license = BSD
+	makedepends = go
+	source = sourcemapper::git+https://github.com/denandz/sourcemapper.git
+	sha256sums = SKIP
+
+pkgname = sourcemapper-git
