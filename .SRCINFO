@@ -1,11 +1,12 @@
 pkgbase = python-get_version
 	pkgdesc = Automatically use the latest “vX.X.X” tag as version in your Python package
 	pkgver = 3.5.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/get_version
 	arch = any
 	license = GPL3
 	makedepends = python-flit-core
+	makedepends = python-dunamai
 	makedepends = python-installer
 	makedepends = python-build
 	depends = python
