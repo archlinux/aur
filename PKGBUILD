@@ -1,6 +1,6 @@
 pkgname='helvum-git'
 _pkgname='helvum'
-pkgver=0.3.4.134.gdf72a68
+pkgver=0.3.2.115.gc1ec56e
 pkgrel=1
 pkgdesc="A GTK patchbay for pipewire."
 arch=('i686' 'x86_64')
