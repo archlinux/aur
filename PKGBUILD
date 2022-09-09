@@ -3,7 +3,7 @@
 
 pkgname=python2-pysodium
 pkgver=0.7.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Python wrapper for libsodium"
 arch=('any')
 depends=('libsodium' 'python2')
@@ -17,6 +17,11 @@ sha256sums=('3e9005c770dca021889b2fe77db7ffa3c2e98fcac7e3cc1e8e157b9ed78f1fc8')
 build() {
   cd "$srcdir/${pkgname#python2-}-$pkgver"
   python2 setup.py build
+}
+
+check() {
+  cd "$srcdir/${pkgname#python2-}-$pkgver"
+  python2 setup.py test
 }
 
 package() {
