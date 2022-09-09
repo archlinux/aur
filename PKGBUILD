@@ -1,8 +1,8 @@
 # Maintainer: Paulo Diovani <paulo@diovani.com>
 pkgname=neovim-vim-compat
 pkgver=0.1.0
-pkgrel=1
-pkgdesc='Vim compatibility for neovim. Symlinks vim to nvim'
+pkgrel=2
+pkgdesc='Vim compatibility for neovim. Symlinks vim to nvim and installs xxd.'
 arch=('any')
 url='https://neovim.io/'
 license=('MIT')

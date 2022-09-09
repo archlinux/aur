@@ -1,7 +1,7 @@
 pkgbase = neovim-vim-compat
-	pkgdesc = Vim compatibility for neovim. Symlinks vim to nvim
+	pkgdesc = Vim compatibility for neovim. Symlinks vim to nvim and installs xxd.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://neovim.io/
 	changelog = CHANGELOG
 	arch = any
