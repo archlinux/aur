@@ -19,7 +19,7 @@ pkgver() {
 }
 
 build() {
-  meson --prefix=/usr --buildtype=plain "$pkgname-$pkgver" build
+  meson --prefix=/usr --buildtype=plain "$_pkgname" build
   meson compile -C build
 }
 
