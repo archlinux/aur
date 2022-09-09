@@ -1,6 +1,6 @@
 pkgbase = junction-git
 	pkgdesc = Application/browser chooser
-	pkgver = r170.63c8a70
+	pkgver = r189.59270f4
 	pkgrel = 1
 	url = https://github.com/sonnyp/Junction
 	arch = x86_64
@@ -8,14 +8,14 @@ pkgbase = junction-git
 	checkdepends = appstream-glib
 	makedepends = git
 	makedepends = meson
-	depends = glib2
-	depends = gtk4
 	depends = libadwaita
 	depends = libportal-gtk4
 	depends = gjs
 	provides = junction
 	conflicts = junction
 	source = git+https://github.com/sonnyp/Junction.git
-	sha256sums = SKIP
+	source = git+https://github.com/sonnyp/troll.git
+	b2sums = SKIP
+	b2sums = SKIP
 
 pkgname = junction-git
