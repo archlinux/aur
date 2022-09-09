@@ -1,15 +1,21 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 # Maintainer: András Wacha < awacha at gmail >
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 
 pkgname='perl-astro-fits-header'
 pkgver='3.08'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Object Orientated interface to FITS HDUs"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=0' 'perl-astro-fits-cfitsio')
-makedepends=()
+depends=('perl-astro-fits-cfitsio')
+makedepends=('perl-module-build')
+optdepends=('perl-starlink-ast: needed for Astro::FITS::Header::AST')
+# Astro::FITS::Header::GSD and Astro::FITS::Header::NDF require perl-GSD and perl-NDF respectively
+# These are not package on AUR and I couldn't find them on CPAN either, only GH repos
+# https://github.com/Starlink/perl-GSD
+# https://github.com/Starlink/perl-NDF
 url='https://metacpan.org/release/Astro-FITS-Header'
 source=("http://search.cpan.org/CPAN/authors/id/G/GS/GSB/Astro-FITS-Header-${pkgver}.tar.gz")
 md5sums=('dc62a668e29278bb5f0d02e26071b644')
