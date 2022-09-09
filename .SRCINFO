@@ -1,6 +1,6 @@
 pkgbase = dots-git
 	pkgdesc = Dotfiles generator that allows quick configuration and managing of different tools and window managers in multiple OSs
-	pkgver = 1.1.12.r9.g3dd0503
+	pkgver = 1.1.12.r10.g18a052a
 	pkgrel = 1
 	url = https://github.com/ulises-jeremias/dotfiles
 	arch = any
@@ -60,9 +60,7 @@ pkgbase = dots-git
 	optdepends = xfce4-power-manager: Power manager for the Xfce4 desktop
 	optdepends = xfce4-screenshooter: An application to take screenshots
 	provides = dots
-	provides = dots-scripts
 	conflicts = dots
-	conflicts = dots-scripts
 	source = git+https://github.com/ulises-jeremias/dotfiles.git
 	md5sums = SKIP
 
