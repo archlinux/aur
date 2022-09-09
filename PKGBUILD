@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=radiant.data
-_pkgver=1.4.4
+_pkgver=1.4.5
 pkgname=r-${_pkgname,,}
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc='Data Menu for Radiant: Business Analytics using R and Shiny'
 arch=('any')
@@ -55,7 +55,7 @@ optdepends=(
   r-webshot
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('97444131f1d0a74255a72d9abec46c84246a7eb9c9763973d27e9ef7d3ff48d2')
+sha256sums=('a11993eabb7f3ab9e4a36391486dbe08802c14ac51b176ebf29d3f7be7025aed')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
