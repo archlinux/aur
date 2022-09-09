@@ -3,7 +3,7 @@
 pkgname=junction-git
 _pkgname=Junction
 pkgver=r189.59270f4
-pkgrel=1
+pkgrel=2
 pkgdesc="Application/browser chooser"
 arch=('x86_64')
 url="https://github.com/sonnyp/Junction"
@@ -28,7 +28,7 @@ prepare() {
 pkgver() {
   cd "$_pkgname"
   ( set -o pipefail
-    git de_pkgnamescribe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }

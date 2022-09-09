@@ -1,7 +1,7 @@
 pkgbase = junction-git
 	pkgdesc = Application/browser chooser
 	pkgver = r189.59270f4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sonnyp/Junction
 	arch = x86_64
 	license = GPL3
