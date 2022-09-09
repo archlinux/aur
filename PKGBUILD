@@ -13,5 +13,6 @@ md5sums=("fbcdb5011950e831d211326ba4ba5014")
 
 package()
 {
+    rm -fr ${pkgdir}/usr/share/icons/Ambiant
     mv ${srcdir}/${pkgname}-${pkgver}/usr ${pkgdir}/
 }
