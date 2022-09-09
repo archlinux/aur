@@ -1,6 +1,6 @@
 pkgname='helvum-git'
 _pkgname='helvum'
-pkgver=0.3.4.134.gdf72a68
+pkgver="0.3.4.134.gdf72a68"
 pkgrel=1
 pkgdesc="A GTK patchbay for pipewire."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ sha384sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --tags | sed 's/-/+/g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
