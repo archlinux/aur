@@ -8,7 +8,7 @@ pkgbase = xfce-config-helper
 	makedepends = git
 	depends = ruby
 	depends = ruby-dbus
-	source = xfce-config-helper::git+https://github.com/felipec/xfce-config-helper.git#tag=v1.0
-	sha256sums = SKIP
+	source = https://github.com/felipec/xfce-config-helper/archive/v1.0.tar.gz
+	sha1sums = a3bfcefbd615419df6c97f71582c1a979ec8fef0
 
 pkgname = xfce-config-helper
