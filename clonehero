@@ -19,7 +19,7 @@ fi
 # working directory than the binary doesn't work either.
 cp -f '/opt/clonehero/clonehero' "$dir/clonehero"
 cp -f '/opt/clonehero/UnityPlayer.so' "$dir/UnityPlayer.so"
-rsync -a --delete '/opt/clonehero/clonehero_Data' "$dir/clonehero_Data"
+rsync -a --delete '/opt/clonehero/clonehero_Data/' "$dir/clonehero_Data"
 
 # We won't touch neither the Custom/ nor Songs/ directories as those are
 # probably best left to the user to populate (or link to another folder).
