@@ -1,7 +1,7 @@
 # Maintainer: Luna D. Dragon (nullrequest) <nullreques [@] vivaldi.net>
 
 pkgbase=linux-clang
-pkgver=5.19.1.arch2
+pkgver=5.19.7.arch1
 pkgrel=1
 pkgdesc='Linux but built with clang'
 _srctag=v${pkgver%.*}-${pkgver##*.}

@@ -1,8 +1,8 @@
 pkgbase = linux-clang
 	pkgdesc = Linux but built with clang
-	pkgver = 5.19.1.arch2
+	pkgver = 5.19.7.arch1
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v5.19.1-arch2
+	url = https://github.com/archlinux/linux/commits/v5.19.7-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -23,7 +23,7 @@ pkgbase = linux-clang
 	makedepends = lld
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.19.1-arch2
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.19.7-arch1
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
