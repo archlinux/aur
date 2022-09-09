@@ -1,7 +1,7 @@
 pkgbase = jamesdsp-pulse
 	pkgdesc = An audio effect processor for PulseAudio clients
-	pkgver = 2.3
-	pkgrel = 3
+	pkgver = 2.4
+	pkgrel = 1
 	url = https://github.com/Audio4Linux/JDSP4Linux
 	arch = x86_64
 	license = GPL3
@@ -18,7 +18,7 @@ pkgbase = jamesdsp-pulse
 	replaces = jdsp4linux
 	replaces = jdsp4linux-gui
 	replaces = gst-plugin-jamesdsp
-	source = git+https://github.com/Audio4Linux/JDSP4Linux.git#commit=1f49c84c222a02d9e9e2e1a4a2fb04397ce7017b
+	source = git+https://github.com/Audio4Linux/JDSP4Linux.git#commit=49994d2856b66e6c6a9a8752ac47dd338a45166c
 	source = git+https://github.com/ThePBone/EELEditor.git
 	source = git+https://github.com/ThePBone/GraphicEQWidget.git
 	source = git+https://github.com/ThePBone/FlatTabWidget.git
