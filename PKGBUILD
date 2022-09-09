@@ -28,7 +28,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://github.com/noahvogt/${pkgname%-*}-aur/releases/download/$pkgver-$pkgrel/$pkgname-$pkgver.tar.gz
         index.html)
-sha256sums=('671bf97a4d346a05e8487db35a843a2e87c28de6dad92f6c2e709bcef927319b'
+sha256sums=('e553f68400448919a528b689dff3a86a89dc19569f20782150086f371a2a41a5'
             'a4cdd2b86f32d5302c2792be841ff40d982b19bb58a4e63df9d77f4c706b8665')
 provides=('chromium')
 conflicts=('chromium')
