@@ -1,7 +1,7 @@
 pkgbase = alist-bin
 	pkgdesc = Another file list program that supports multiple storage
 	pkgver = 3.0.0_beta.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Xhofe/alist
 	install = alist.install
 	arch = aarch64

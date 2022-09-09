@@ -4,7 +4,7 @@
 pkgname=alist-bin
 _pkgname=${pkgname%-bin}
 pkgver=3.0.0_beta.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Another file list program that supports multiple storage"
 arch=("aarch64" "x86_64")
 url="https://github.com/Xhofe/alist"
@@ -21,7 +21,7 @@ sha256sums_aarch64=('25a5b044545b7cbde3c308d6033b6758c2657fa46201c2341efa25b3455
 sha256sums_x86_64=('557586fc1b97a752fed61965eb694840948582a3e7226bf0604074fd4ccbc952')
 
 package() {
-    install -Dm755 alist-linux* ${pkgdir}/usr/bin/alist
+    install -Dm755 alist ${pkgdir}/usr/bin/alist
     install -Dm644 alist.service -t ${pkgdir}/usr/lib/systemd/system/
     install -Dm644 config.json -t ${pkgdir}/etc/alist
 }
