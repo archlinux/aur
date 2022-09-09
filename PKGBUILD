@@ -5,9 +5,9 @@
 # Contributor: Muhammad 'MJ' Jassim <UnbreakableMJ@gmail.com> 
 
 pkgname=icecat
-pkgver=91.12.0
+pkgver=102.2.0
 pkgrel=1
-_commit=298024d727053a1609df4003fb4438836d5181f4
+_commit=e77a1fa25ac66250e88d5d9901a2ba670edb94cc
 pkgdesc="GNU version of the Firefox browser."
 arch=(x86_64)
 url="http://www.gnu.org/software/gnuzilla/"
@@ -15,7 +15,8 @@ license=('GPL' 'MPL' 'LGPL')
 depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse)
 makedepends=(m4 unzip zip diffutils python-setuptools python-jsonschema yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust clang llvm jack gtk2
-             python nodejs python-psutil cbindgen nasm wget mercurial git lld perl-rename)
+             python nodejs python-psutil cbindgen nasm wget mercurial git lld perl-rename
+             wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -26,14 +27,16 @@ options=(!emptydirs !makeflags !strip)
 
 source=(https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-${_commit}.tar.gz
         icecat.desktop icecat-safe.desktop
-        "0001-Use-remoting-name-for-GDK-application-names.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/0adcedc05ce67d53268575f8801c8de872206901/firefox/trunk/0001-Use-remoting-name-for-GDK-application-names.patch"
-        'https://raw.githubusercontent.com/canonical/firefox-snap/5622734942524846fb0eb7108918c8cd8557fde3/patches/fix-ftbfs-newer-cbindgen.patch')
+        'https://raw.githubusercontent.com/canonical/firefox-snap/5622734942524846fb0eb7108918c8cd8557fde3/patches/fix-ftbfs-newer-cbindgen.patch'
+        'arc4random.patch::https://hg.mozilla.org/mozilla-central/raw-rev/970ebbe54477'
+        'arc4random_buf.patch::https://hg.mozilla.org/mozilla-central/raw-rev/a61813bd9f0a')
 
-sha256sums=('599774c0ca1d2265c4788d0dd4beb95547cca12997f08b6c487d36cc97091331'
+sha256sums=('ef38a884f063eda441b9d43c3515622d558c58e3a0148030ad1823e5dea871bd'
             'e00dbf01803cdd36fd9e1c0c018c19bb6f97e43016ea87062e6134bdc172bc7d'
             '33dd309eeb99ec730c97ba844bf6ce6c7840f7d27da19c82389cdefee8c20208'
-            'bb9769a8fe720abea2bba5b895c70c4fba0d44bb553399d83350268edf85cdeb'
-            'd3ea2503dff0a602bb058153533ebccd8232e8aac1dc82437a55d724b8d22bc2')
+            'd3ea2503dff0a602bb058153533ebccd8232e8aac1dc82437a55d724b8d22bc2'
+            '68fc08b5ee1cfd45bd72d484fe299688b09e5f7ba8e27445fd27ba71d792538c'
+            '6a8799d135761a405eb8c9be03c20287fe616bb0a101b898ad08bdb26c3d6447')
 
 prepare() {
   cd gnuzilla-${_commit}
@@ -126,8 +129,9 @@ EOF
   bash makeicecat
   cd output/icecat-${pkgver}
 
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
-  patch -Np1 -i ../../../0001-Use-remoting-name-for-GDK-application-names.patch
+  # https://hg.mozilla.org/mozilla-central/rev/a61813bd9f0a
+  patch -Np1 -i ../../../arc4random.patch
+  patch -Np1 -i ../../../arc4random_buf.patch
 
   # cbindgen
   patch -Np1 -i ../../../fix-ftbfs-newer-cbindgen.patch
@@ -149,6 +153,7 @@ ac_add_options --enable-rust-simd
 ac_add_options --enable-linker=lld
 ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
+ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 
 # Branding
 ac_add_options --enable-official-branding
