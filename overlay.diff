@@ -147,7 +147,6 @@
  
  	// update vram
  	g_renderer->GetVRAMInfo(g_state.vramUsage, g_state.vramTotal);
-new file mode 100644
 --- /dev/null
 +++ b/src/util/SystemInfo/SystemInfo.cpp
 @@ -0,0 +1,34 @@
@@ -186,7 +185,6 @@ new file mode 100644
 +	out.user = user;
 +}
 \ No newline at end of file
-new file mode 100644
 --- /dev/null
 +++ b/src/util/SystemInfo/SystemInfo.h
 @@ -0,0 +1,17 @@
@@ -208,7 +206,6 @@ new file mode 100644
 +void QueryProcTime(ProcessorTime &out);
 +void QueryCoreTimes(uint32 count, ProcessorTime out[]);
 \ No newline at end of file
-new file mode 100644
 --- /dev/null
 +++ b/src/util/SystemInfo/SystemInfoLinux.cpp
 @@ -0,0 +1,67 @@
@@ -280,7 +277,6 @@ new file mode 100644
 +
 +#endif
 \ No newline at end of file
-new file mode 100644
 --- /dev/null
 +++ b/src/util/SystemInfo/SystemInfoStub.cpp
 @@ -0,0 +1,25 @@
@@ -310,7 +306,6 @@ new file mode 100644
 +
 +#endif
 \ No newline at end of file
-new file mode 100644
 --- /dev/null
 +++ b/src/util/SystemInfo/SystemInfoWin.cpp
 @@ -0,0 +1,72 @@

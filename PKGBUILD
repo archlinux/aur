@@ -1,6 +1,6 @@
 # Maintainer: Anuskuss <anuskuss@googlemail.com>
 pkgname=cemu
-pkgver=2.0.106
+pkgver=2.0.109
 pkgrel=1
 pkgdesc='Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)'
 arch=(x86_64)
@@ -25,7 +25,7 @@ optdepends=(
 )
 install=cemu.install
 source=(
-	git+https://github.com/cemu-project/Cemu#commit=1e851fe7e2e7a26e5a97d27fc07ffabec852ca0f
+	git+https://github.com/cemu-project/Cemu#commit=6dda53e84f7200283351a9514b0db569360dbe1a
 	# dependencies
 	imgui-1.88.tar.gz::https://github.com/ocornut/imgui/archive/refs/tags/v1.88.tar.gz
 	imgui.cmake::https://raw.githubusercontent.com/microsoft/vcpkg/master/ports/imgui/CMakeLists.txt
@@ -41,7 +41,7 @@ source=(
 	# patches
 	xdg.diff # 963f9b38349c5d03b26ab2a50ead2ee4e743ca41
 	overlay.diff # edeb14d4c68ee8bf500b990b13079177e01c25f1
-	case.diff # dfe35375b72da312f5a70784f771938580cae4fe
+	case.diff # 4f3025ec3ac1644cd469d895cd10237e36e8e36c
 )
 sha256sums=(
 	SKIP
@@ -52,9 +52,9 @@ sha256sums=(
 	SKIP
 	SKIP
 	SKIP
-	65a4455f47386475ff1567ba94dbf281b928d52f7d69e4b733d7dc60ef96d1cb
-	7ca0223ef7fae14399ca4e0148335052d8d5863d4a41c31ae6f72f26688a6834
-	09d19fd8975a22b10e57066516e76a57b7fbc08efd199c5133e40f1462b13b5f
+	3af4bd2757f6053ba30186aaa53ffcb95bb13b98c1d3fabe13cab972697c2e08
+	f25d13fe76cc6a0b475f0131211a951288160ddae92cd7a815f5aea61d7cfc0f
+	aecc99abdf756202f7fb978e69d2745bccc78023ba6c9583942e8faf1304bc49
 )
 
 pkgver() {
