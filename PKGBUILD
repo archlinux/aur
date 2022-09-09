@@ -43,8 +43,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            )
+            'SKIP')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%+*}")
 
