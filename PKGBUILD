@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit-nature
 pkgname=python-${_pkgname}
-pkgver=0.4.1
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Quantum Nature package for IBM qiskit framework"
 arch=('x86_64')
@@ -23,23 +23,13 @@ makedepends=(
     'python-setuptools'
     'python-wheel'
 )
-checkdepends=(
-    'python-qiskit-aer'
-    'python-ddt'
-    'python-pytest'
-)
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Qiskit/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('bf73ae175cb8bc767062ffd09bb49f8b9e70d8ae4017834448e43fa85f2ef3328cf7260342c47683f810a3fffc94fb21972d128c0a191f4eb5567c55e55d2b1d')
+b2sums=('6e581af3c4415b7a61553e668f6a608268290a7665a30d55bc86d9d5cb227fbb6d734cbcd499eb7b7b85776216a5ccade86b0035b63681d5cdd831686fc3e35e')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     python -m build --wheel --no-isolation
 }
-
-#check() {
-#    cd "${srcdir}/${_pkgname}-${pkgver}"
-#    python -m pytest test/
-#}
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
