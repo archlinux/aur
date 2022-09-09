@@ -1,0 +1,27 @@
+pkgbase = pyglossary-git
+	pkgdesc = A tool for converting dictionary files aka glossaries with various formats for different dictionary applications, git version
+	pkgver = 4.5.0.r2732.g8f7d7cfd
+	pkgrel = 1
+	url = https://github.com/ilius/pyglossary
+	install = pyglossary.install
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python>=3.7.0
+	optdepends = python-gobject: Gtk3-based interface
+	optdepends = tix: Tkinter-based interface
+	optdepends = python-prompt_toolkit: interactive command-line interface
+	optdepends = python-lxml: Many optional flags and formats
+	optdepends = python-beautifulsoup4: HTML parsing
+	optdepends = python-yaml: Reading from cc-kedict
+	optdepends = python-pyicu: Reading or writing Aard 2 (.slob) files
+	optdepends = python-marisa: Writing to Kobo E-Reader Dictionary
+	optdepends = python-lzo: Required for some MDX glossaries
+	optdepends = python-html5lib: Required to write to AppleDict
+	provides = pyglossary-git
+	conflicts = pyglossary
+	conflicts = pyglossary-git
+	source = git+https://github.com/ilius/pyglossary
+	sha256sums = SKIP
+
+pkgname = pyglossary-git
