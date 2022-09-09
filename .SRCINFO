@@ -1,6 +1,6 @@
 pkgbase = changedetection.io
 	pkgdesc = change monitoring of web pages
-	pkgver = 0.39.18
+	pkgver = 0.39.19
 	pkgrel = 1
 	url = https://github.com/dgtlmoon/changedetection.io
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = changedetection.io
 	depends = python-cryptography
 	depends = python-beautifulsoup4
 	depends = python-selenium
-	source = https://github.com/dgtlmoon/changedetection.io/archive/refs/tags/0.39.18.tar.gz
+	source = https://github.com/dgtlmoon/changedetection.io/archive/refs/tags/0.39.19.tar.gz
 	source = sysusers
 	source = tmpfiles
 	source = service
