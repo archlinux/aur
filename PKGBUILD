@@ -13,6 +13,7 @@ md5sums=("be2d017a913330dc176d376a04cd4f32")
 
 package()
 {
-    rm -fr ${pkgdir}/usr/share/icons/Ambiant
+    rm -fr /usr/share/icons/Ambiant
+    rm -fr /usr/share/themes/Ambiant
     mv ${srcdir}/${pkgname}-${pkgver}/usr ${pkgdir}/
 }
