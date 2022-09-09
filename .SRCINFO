@@ -1,15 +1,15 @@
 pkgbase = linux-xanmod-edge-linux-headers-bin-x64v2
 	pkgdesc = Headers and scripts for building modules for the Linux Xanmod - Latest Mainline (EDGE) - Prebuilt version
-	pkgver = 5.19.7
+	pkgver = 5.19.8
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
 	license = GPL2
 	depends = pahole
 	options = !strip
-	source = https://github.com/xanmod/linux/releases/download/5.19.7-xanmod1/linux-headers-5.19.7-xanmod1-x64v2_5.19.7-xanmod1-x64v2-0.20220905.gitc7394a5_amd64.deb
+	source = https://github.com/xanmod/linux/releases/download/5.19.8-xanmod1/linux-headers-5.19.8-xanmod1-x64v2_5.19.8-xanmod1-x64v2-0.20220908.git42d221f_amd64.deb
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = dce26e9bf6cbdf484f79df1cc61cdbf98ff5c2c3db01c4b5b7f31376ee4d99aa
+	sha256sums = e5d57bc8b228e53ea6358b099390dfea40483cf1fc7c63be19f5e50a7f3a5c92
 
 pkgname = linux-xanmod-edge-linux-headers-bin-x64v2
