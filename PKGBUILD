@@ -3,7 +3,7 @@ pkgname=rustc-demangle
 pkgver=0.1.21
 pkgrel=1
 pkgdesc="Demangling for Rust symbols, C API"
-arch=('any')
+arch=('x86_64' 'aarch64')
 url="https://github.com/alexcrichton/rustc-demangle"
 license=('Apache' 'MIT')
 depends=('gcc-libs')
@@ -15,7 +15,7 @@ prepare() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo fetch
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
