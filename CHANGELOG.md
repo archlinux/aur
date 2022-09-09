@@ -1,6 +1,19 @@
 
 # Changelog
 
+* 0.0.7 (Released on 09.09.2022)
+    * Pings now follow period more closely (and no longer shift)
+        * Previously some shift occured as we waited `period` time between pings (and did not include actions which may take some time)
+    * `timeout` for the `command` action
+    * action `influx` for inserting data into [InfluxDB](https://www.influxdata.com/)
+    * `%timestamp` is replaced with the unix timestamp
+    * Allow development without gateway
+    * `datetime_format` (defined in srd.c) will replace `%%ms` (really double percentage sign) with the milliseconds of the current time 
+    * Fix no message when `loglevel` is invalid
+    * Potential performance improvements
+    * targets can now be IPv6 addresses
+    * New setting `header` for action `log` (usefull for creating CSV files)
+
 * 0.0.6 (Released on 19.08.2022)
     * **Breaking**: `down-again`, `up-again` renamed to `down-new` and`up-new`
     * Own ping implementation (running as root is no longer needed to ping)

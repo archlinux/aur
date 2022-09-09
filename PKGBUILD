@@ -1,6 +1,6 @@
 # Maintainer: David Bernhard <davidbernhard.w@gmail.com>
 pkgname=simple-reaction-daemon
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="Simple Reaction Daemon - Periodically ping hosts and run custom actions if they fail/succeed"
 arch=('any')
@@ -31,8 +31,6 @@ build() {
     cd "${pkgname}"
     git checkout -q ${_srctag}
 
-    git submodule init
-    git submodule update
     make
 }
 
