@@ -1,0 +1,10 @@
+pkgbase = easyrp-bin
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://github.com/Pizzabelly/EasyRP
+	arch = x86_64
+	license = MIT
+	source = https://github.com/Pizzabelly/EasyRP/releases/download/v3.0/EasyRP-v3.0-linux.tar.gz
+	sha256sums = 5c8e9a0ced691afd881b258285e0b87b0a30ae136997c19d60b09a6600556ba9
+
+pkgname = easyrp-bin
