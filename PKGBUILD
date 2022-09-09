@@ -1,7 +1,7 @@
 pkgbase=kodi-eggz
 pkgname=kodi-eggz
-pkgver=20.0a2
-gittag=20.0a2-Nexus
+pkgver=20.0a3
+gittag=20.0a3-Nexus
 gittagvfs=20.1.0-Nexus
 pkgrel=1
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=(
 sha256sums=(
 'SKIP'
 'SKIP'
-'e89cc7c880b0b10361b882339b542ad49be91ae78de9d4b38ddc08b594734cf5'
+'2b70aecae2fb11fef8f925baa8e272cacb17add58fc6fdbf791b30e7e4b2baed'
 )
 
 pkgver() {
@@ -49,6 +49,8 @@ prepare() {
  make -j $threads || exit 2
 
  msg "Prepare Kodi"
+ msg2 "pivot to xbmc builddir"
+ cd ${srcdir}/xbmc
  msg2 "Patching Kodisource"
  while read patch; do
   echo "Applying $patch"
