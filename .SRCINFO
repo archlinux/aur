@@ -1,0 +1,14 @@
+pkgbase = neovim-vim-compat
+	pkgdesc = Vim compatibility for neovim. Symlinks vim to nvim
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://neovim.io/
+	changelog = CHANGELOG
+	arch = any
+	license = MIT
+	depends = neovim
+	depends = xxd-standalone
+	provides = vim
+	conflicts = vim
+
+pkgname = neovim-vim-compat
