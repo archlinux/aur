@@ -3,27 +3,15 @@
 
 pkgbase=wxwidgets
 pkgname=(wxwidgets-gtk3 wxwidgets-qt5 wxwidgets-common)
-pkgver=3.2.0
-pkgrel=6
+pkgver=3.2.1
+pkgrel=1
 arch=(x86_64)
 url='https://wxwidgets.org'
 license=(custom:wxWindows)
 makedepends=(cmake gst-plugins-base glu webkit2gtk libnotify qt5-base sdl2 libmspack)
-source=(https://github.com/wxWidgets/wxWidgets/releases/download/v$pkgver/wxWidgets-$pkgver.tar.bz2
-        https://github.com/wxWidgets/wxWidgets/commit/e4f230a3.patch
-        https://github.com/wxWidgets/wxWidgets/commit/d9a78be1.patch
-        https://github.com/wxWidgets/wxWidgets/commit/600bf54a.patch)
-sha256sums=('356e9b55f1ae3d58ae1fed61478e9b754d46b820913e3bfbc971c50377c1903a'
-            '00f58f7248ce513e50acfdf6fca536a2e557d9d07891168ba9f9789322bbac03'
-            'efc502a5c72b257d38bf9957bd29eb684fd24b816d689a860bc1d511ff56458f'
-            '6c764e0907fe9e0f881f6bff924429bf42f33ce5865dc2f3fe918ba3c492c011')
+source=(https://github.com/wxWidgets/wxWidgets/releases/download/v$pkgver/wxWidgets-$pkgver.tar.bz2)
+sha256sums=('c229976bb413eb88e45cb5dfb68b27890d450149c09b331abd751e7ae0f5fa66')
 options=(debug)
-
-prepare() {
-  patch -d wxWidgets-$pkgver -p1 < d9a78be1.patch # Support GTKprint with cmake
-  patch -d wxWidgets-$pkgver -p1 < e4f230a3.patch # Pre next commit
-  patch -d wxWidgets-$pkgver -p1 < 600bf54a.patch # Honor DESTDIR
-}
 
 build() {
   cmake -B build-gtk3 -S wxWidgets-$pkgver \
