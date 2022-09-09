@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=jamesdsp
-pkgver=2.3
-pkgrel=5
+pkgver=2.4
+pkgrel=1
 pkgdesc="An audio effect processor for PipeWire clients"
 arch=('x86_64')
 url="https://github.com/Audio4Linux/JDSP4Linux"
@@ -10,7 +10,7 @@ depends=('glibmm' 'pipewire' 'qt5-svg')
 makedepends=('git')
 conflicts=('jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp')
 replaces=('jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp')
-_commit=1f49c84c222a02d9e9e2e1a4a2fb04397ce7017b
+_commit=49994d2856b66e6c6a9a8752ac47dd338a45166c
 source=("git+https://github.com/Audio4Linux/JDSP4Linux.git#commit=$_commit"
         'git+https://github.com/ThePBone/EELEditor.git'
         'git+https://github.com/ThePBone/GraphicEQWidget.git'
