@@ -1,6 +1,6 @@
 pkgname='helvum-git'
 _pkgname='helvum'
-pkgver=0.3.2.115.gc1ec56e
+pkgver=0.3.4.134.gdf72a68
 pkgrel=1
 pkgdesc="A GTK patchbay for pipewire."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ sha384sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  echo "$(grep '^version =' Cargo.toml | head -n1 | awk -F '"' '{print $2}').$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  git describe --tags | sed 's/-/+/g'
 }
 
 build() {
