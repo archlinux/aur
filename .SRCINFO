@@ -1,8 +1,8 @@
 pkgbase = mini-benchmarker
 	pkgdesc = A simple benchmarking script using stress-ng, perf, blender etc.
-	pkgver = 0.9.r80.ge4a3de2
+	pkgver = 0.9.r121.g74b00c4
 	pkgrel = 1
-	url = https://github.com/torvic9/bash-scripts
+	url = https://gitlab.com/torvic9/bash-scripts/mini-benchmarker
 	arch = x86_64
 	depends = gcc
 	depends = make
