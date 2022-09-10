@@ -10,14 +10,14 @@
 
 _qt_module=qtwinextras
 pkgname=mingw-w64-qt5-winextras-static
-pkgver=5.15.4
+pkgver=5.15.6
 pkgrel=1
 arch=('any')
 pkgdesc="Classes and functions that enable you to use Windows-specific functions (mingw-w64)"
 depends=('mingw-w64-qt5-base-static' 'mingw-w64-qt5-declarative-static')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 license=('GPL3' 'LGPL3' 'LGPL2.1' 'FDL' 'custom')
-_commit=96cfbd36ad9979ff1974cf137b68b9ae101022c3
+_commit=a2ef397d1833c7417138a14ae23c880ae434d8a6
 _basever=$pkgver
 pkgver+=+kde+r0
 makedepends+=('git')
