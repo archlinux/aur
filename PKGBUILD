@@ -10,7 +10,7 @@ url="https://apps.nextcloud.com/apps/twofactor_webauthn"
 license=('GPL3')
 makedepends=('nextcloud' 'yq')
 options=('!strip')
-source=("nextcloud-app-bruteforcesettings-${pkgver}.tar.gz::https://github.com/nextcloud-releases/${_name}/releases/download/v${pkgver}/${_name}-v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nextcloud-releases/${_name}/releases/download/v${pkgver}/${_name}-v${pkgver}.tar.gz")
 sha512sums=('6d85de06d63d560acccbbc504642bc2d5dcc2b39a5145af29dae7873339122967f4033eed671dbc3515ece55479b84fcef4b1d75ed5adff16beca34a35b2660f')
 
 

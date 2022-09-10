@@ -8,7 +8,7 @@ pkgbase = nextcloud-app-twofactor-webauthn
 	makedepends = nextcloud
 	makedepends = yq
 	options = !strip
-	source = nextcloud-app-bruteforcesettings-0.3.1.tar.gz::https://github.com/nextcloud-releases/twofactor_webauthn/releases/download/v0.3.1/twofactor_webauthn-v0.3.1.tar.gz
+	source = nextcloud-app-twofactor-webauthn-0.3.1.tar.gz::https://github.com/nextcloud-releases/twofactor_webauthn/releases/download/v0.3.1/twofactor_webauthn-v0.3.1.tar.gz
 	sha512sums = 6d85de06d63d560acccbbc504642bc2d5dcc2b39a5145af29dae7873339122967f4033eed671dbc3515ece55479b84fcef4b1d75ed5adff16beca34a35b2660f
 
 pkgname = nextcloud-app-twofactor-webauthn
