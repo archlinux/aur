@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-quickcontrols-static
 	pkgdesc = Reusable Qt Quick based UI controls to create classic desktop-style user interfaces (mingw-w64)
-	pkgver = 5.15.4+kde+r0
+	pkgver = 5.15.6+kde+r0
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = mingw-w64-qt5-quickcontrols-static
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://invent.kde.org/qt/qt/qtquickcontrols#commit=d405bf6a29bc9d6da6e3dcefbd1b88f5ed70fb1b
+	source = git+https://invent.kde.org/qt/qt/qtquickcontrols#commit=e62b8b6d2f45a79652238b33f4bbe23023004ae7
 	sha256sums = SKIP
 
 pkgname = mingw-w64-qt5-quickcontrols-static
