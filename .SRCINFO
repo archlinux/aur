@@ -1,0 +1,18 @@
+pkgbase = dg-gnome-theme
+	pkgdesc = A Libadwaita + macOS + Yaru theme for GNOME
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dgmarie/dg-gnome-theme
+	arch = any
+	license = GPL
+	makedepends = sassc
+	makedepends = git
+	makedepends = ninja
+	makedepends = meson
+	depends = gnome-shell-extensions
+	provides = dg-gnome-theme
+	conflicts = dg-gnome-theme
+	source = git+https://github.com/dgmarie/dg-gnome-theme.git
+	b2sums = SKIP
+
+pkgname = dg-gnome-theme
