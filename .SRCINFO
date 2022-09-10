@@ -10,7 +10,6 @@ pkgbase = python-xhtml2pdf
 	makedepends = python-sphinxcontrib-pdfembed
 	makedepends = texlive-latexextra
 	makedepends = texlive-fontsextra
-	makedepends = python-wheel
 	depends = python-arabic-reshaper
 	depends = python-bidi
 	depends = python-reportlab

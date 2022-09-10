@@ -20,8 +20,7 @@ makedepends=(python-setuptools
              python-sphinx_rtd_theme
              python-sphinxcontrib-pdfembed
              texlive-latexextra
-             texlive-fontsextra
-             python-wheel)
+             texlive-fontsextra)
 source=("${_name}-${pkgver}.tar.gz::https://github.com/xhtml2pdf/xhtml2pdf/archive/refs/tags/v$pkgver.tar.gz"
         'latex_engine.patch'
 )
