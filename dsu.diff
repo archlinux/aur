@@ -4,16 +4,28 @@
  	api/DSU/DSUControllerProvider.h
  	api/DSU/DSUMessages.h
  	api/DSU/DSUMessages.cpp
-+	api/DSU/TimeoutSocketOption.h
++	api/DSU/ReceiveTimeoutSocketOption.h
  )
  
  # Keyboard controller
+--- a/src/input/api/DSU/DSUController.cpp
++++ b/src/input/api/DSU/DSUController.cpp
+@@ -164,5 +164,8 @@ ControllerState DSUController::raw_state()
+ 	result.rotation.y = (float)state.data.ry / std::numeric_limits<uint8>::max();
+ 	result.rotation.y = (result.rotation.y * 2.0f) - 1.0f;
+ 
+-	return result;
++    result.trigger.x = (float)state.data.l2 / std::numeric_limits<uint8>::max();
++    result.trigger.y = (float)state.data.r2 / std::numeric_limits<uint8>::max();
++
++    return result;
+ }
 --- a/src/input/api/DSU/DSUControllerProvider.cpp
 +++ b/src/input/api/DSU/DSUControllerProvider.cpp
 @@ -1,5 +1,6 @@
  #include "input/api/DSU/DSUControllerProvider.h"
  #include "input/api/DSU/DSUController.h"
-+#include "input/api/DSU/TimeoutSocketOption.h"
++#include "input/api/DSU/ReceiveTimeoutSocketOption.h"
  
  DSUControllerProvider::DSUControllerProvider()
  	: base_type(), m_uid(rand()), m_socket(m_io_service)
@@ -24,7 +36,50 @@
 +
  		// set timeout for our threads to give a chance to exit
 -		m_socket.set_option(boost::asio::detail::socket_option::integer<SOL_SOCKET, SO_RCVTIMEO>{200});
-+		m_socket.set_option(TimeoutSocketOption{200});
++		m_socket.set_option(ReceiveTimeoutSocketOption{200});
  
  		// reset data
  		m_state = {};
+--- /dev/null
++++ b/src/input/api/DSU/ReceiveTimeoutSocketOption.h
+@@ -0,0 +1,39 @@
++#pragma once
++
++#if BOOST_OS_WINDOWS
++#include <boost/asio/detail/socket_option.hpp>
++#include <winsock2.h> // For SOL_SOCKET, SO_RCVTIMEO
++using ReceiveTimeoutSocketOption = boost::asio::detail::socket_option::integer<SOL_SOCKET, SO_RCVTIMEO>;
++#elif BOOST_OS_LINUX || BOOST_OS_MACOS
++
++class ReceiveTimeoutSocketOption {
++    timeval m_data; // POSIX only allows timeeval to be parameter to option SO_RCVTIMEO
++public:
++    constexpr explicit ReceiveTimeoutSocketOption(int time_ms)
++    : m_data(timeval{.tv_usec = time_ms * 1000}){
++    }
++    ReceiveTimeoutSocketOption& operator=(int time_ms){
++        m_data = timeval{.tv_usec = time_ms * 1000};
++        return *this;
++    }
++    template <typename Protocol>
++    int level(const Protocol&) const {
++        return SOL_SOCKET;
++    }
++
++    template <typename Protocol>
++    int name(const Protocol&) const {
++        return SO_RCVTIMEO;
++    }
++
++    template <typename Protocol>
++    const timeval* data(Protocol&) const {
++        return &m_data;
++    }
++
++    template <typename Protocol>
++    std::size_t size(const Protocol&) const {
++        return sizeof(timeval);
++    }
++};
++#endif
+\ No newline at end of file

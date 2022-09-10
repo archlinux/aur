@@ -1,7 +1,7 @@
 pkgbase = cemu
 	pkgdesc = Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)
 	pkgver = 2.0.116
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cemu.info
 	install = cemu.install
 	arch = x86_64
@@ -34,6 +34,7 @@ pkgbase = cemu
 	source = xdg.diff
 	source = overlay.diff
 	source = dsu.diff
+	source = dark.diff
 	sha256sums = SKIP
 	sha256sums = 9f14c788aee15b777051e48f868c5d4d959bd679fc5050e3d2a29de80d8fd32e
 	sha256sums = 262faed507149c89aab7572fd2c2a968f843ca2900043e30a9c339735ed08a8f
@@ -44,6 +45,7 @@ pkgbase = cemu
 	sha256sums = SKIP
 	sha256sums = 4061e28533d391ebc4745cdc47470438b20c64dd11f7308e5acf35d0fbc54326
 	sha256sums = f25d13fe76cc6a0b475f0131211a951288160ddae92cd7a815f5aea61d7cfc0f
-	sha256sums = 19a8fbc50dd1fe5beab3c3fc08ea1a0b767fa388b80c9d5d1a98b565855603a0
+	sha256sums = 9af0cb88f07acad70aa5b7133ccbbaddacca542edea5817e622b4571cc26046d
+	sha256sums = 15243ffa555559ade19cdb99d42dc10a6b4d1402c9cee045a623dd4b30827a1d
 
 pkgname = cemu

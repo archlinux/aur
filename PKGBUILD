@@ -1,7 +1,7 @@
 # Maintainer: Anuskuss <anuskuss@googlemail.com>
 pkgname=cemu
 pkgver=2.0.116
-pkgrel=1
+pkgrel=2
 pkgdesc='Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)'
 arch=(x86_64)
 url=https://cemu.info
@@ -41,7 +41,8 @@ source=(
 	# patches
 	xdg.diff # 963f9b38349c5d03b26ab2a50ead2ee4e743ca41
 	overlay.diff # edeb14d4c68ee8bf500b990b13079177e01c25f1
-	dsu.diff # b0e523a44ee7d69e6d2453325dcc669e2bcb719d
+	dsu.diff # dbe8c94dd427585fc2f0c49947fa2d8051d8f218 + 56b140f159f3322cce00bb87f34274d1f62c314b
+	dark.diff # 557d25c0525fd0dd662f41529c60fb9d722e5a0e
 )
 sha256sums=(
 	SKIP
@@ -54,7 +55,8 @@ sha256sums=(
 	SKIP
 	4061e28533d391ebc4745cdc47470438b20c64dd11f7308e5acf35d0fbc54326
 	f25d13fe76cc6a0b475f0131211a951288160ddae92cd7a815f5aea61d7cfc0f
-	19a8fbc50dd1fe5beab3c3fc08ea1a0b767fa388b80c9d5d1a98b565855603a0
+	9af0cb88f07acad70aa5b7133ccbbaddacca542edea5817e622b4571cc26046d
+	15243ffa555559ade19cdb99d42dc10a6b4d1402c9cee045a623dd4b30827a1d
 )
 
 pkgver() {
@@ -104,7 +106,11 @@ prepare() {
 	git apply "$srcdir/overlay.diff"
 
 	# experimental: dsu controller (https://github.com/cemu-project/Cemu/pull/234)
+	rm -f src/input/api/DSU/ReceiveTimeoutSocketOption.h
 	git apply "$srcdir/dsu.diff"
+
+	# experimental: dark mode fix (https://github.com/cemu-project/Cemu/pull/241)
+	git apply "$srcdir/dark.diff"
 }
 
 build() {
@@ -145,6 +151,6 @@ package() {
 	# install -Dm644 bin/shaderCache/info.txt "$pkgdir/opt/cemu/shaderCache/info.txt"
 
 	install -Dm644 src/resource/logo_icon.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/cemu.png"
-	sed -i "s|^Icon=info.cemu.Cemu$|Icon=cemu|;s|^Exec=cemu$|Exec=env GDK_BACKEND=x11 /usr/bin/cemu|" dist/linux/info.cemu.Cemu.desktop
+	sed -i -e '/^Icon=/cIcon=cemu' -e '/^Exec=/cExec=env GDK_BACKEND=x11 cemu' dist/linux/info.cemu.Cemu.desktop
 	install -Dm644 dist/linux/info.cemu.Cemu.desktop "$pkgdir/usr/share/applications/cemu.desktop"
 }
