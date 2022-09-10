@@ -1,10 +1,10 @@
 pkgbase = ultimate-doom-builder-git
-	pkgdesc = A documentation generator for GZDoom ZScript code
+	pkgdesc = A level editor for Doom-engine games, with experimental Linux support.
 	pkgver = 3.0.0.r3991.b24a2dd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jewalky/UltimateDoomBuilder
 	arch = x86_64
-	license = GPLv3
+	license = GPL3
 	makedepends = git
 	makedepends = mono-msbuild
 	makedepends = ripgrep

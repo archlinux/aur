@@ -1,7 +1,7 @@
 # Maintainer: Gutawer <https://github.com/Gutawer>
 pkgname=ultimate-doom-builder-git
 pkgver=3.0.0.r3991.b24a2dd
-pkgrel=1
+pkgrel=2
 pkgdesc='A level editor for Doom-engine games, with experimental Linux support.'
 arch=('x86_64')
 url="https://github.com/jewalky/UltimateDoomBuilder"
