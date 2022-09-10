@@ -2,7 +2,7 @@
 
 _pkgname=context
 pkgname=${_pkgname}
-pkgver=2022.08.25_19.21
+pkgver=2022.09.10_02.44
 pkgrel=1
 pkgdesc='ConTeXt LMTX, the Lean and Mean TeX eXperience with Lua, MetaPost, TeX, and XML'
 arch=('x86_64')
@@ -11,11 +11,10 @@ license=(GPL)
 depends=()
 replaces=(context-bin)
 provides=(${_pkgname} ${_pkgname}-lmtx)
-conflicts=()
+conflicts=(${_pkgname})
 optdepends=()
 source=("http://lmtx.pragma-ade.nl/install-lmtx/context-linux-64.zip")
 sha256sums=(SKIP)
-install=${_pkgname}.install
 
 prepare() {
   cd "${srcdir}"
@@ -33,6 +32,7 @@ package() {
 }
 
 pkgver() {
+  # TODO use https://wiki.contextgarden.net/LMTX#How_to_check_for_newer_versions.3F
   cat "${srcdir}/tex/texmf-context/tex/context/base/mkxl/context.mkxl" |
     grep "def\\\\contextversion" |
     sed 's/^.*{\(.*\)}.*$/\1/' |
