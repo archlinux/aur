@@ -4,7 +4,7 @@
 pkgname=chitubox-free-bin
 pkgver=1.9.4
 
-pkgrel=1
+pkgrel=2
 pkgdesc="All-in-one SLA/DLP/LCD Slicer"
 
 makedepends=('xdg-user-dirs')
@@ -37,7 +37,7 @@ source=(
 )
 
 sha256sums=(
-    "65dc2513064bb0bf5c849001eb5e110262479878bc70022eae3bd780e4828dbf"
+    "c3131af2c0409759b8659f0e0b9a023bf65698245a9073051be5ff7082748e9b"
     "fdd0c1595cfa7ef97ae850b83de328db55150d76f42e6c472167bcc80f87ea47"
     "02fb0cfac1a04d8cc71345a6cf4921c92abcbfdd09e010604a1bc891657a2894"
 )
