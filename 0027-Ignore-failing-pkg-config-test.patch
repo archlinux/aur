@@ -1,7 +1,7 @@
-From 6f8b521567786e38f5c986f05793c1a8e376eee4 Mon Sep 17 00:00:00 2001
+From e87edd3a17d9c1ff4eb4e60ae71ae276af9d93f6 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 25 Jan 2017 21:08:48 +0100
-Subject: [PATCH 27/33] Ignore failing pkg-config test
+Subject: [PATCH 27/32] Ignore failing pkg-config test
 
 Didn't investigate why it fails, let's hope for the best
 ---
@@ -21,5 +21,5 @@ index e308b5b7d7..928ee2afa1 100644
                  "publicFeature",
                  { "type": "publicQtConfig", "negative": true },
 -- 
-2.36.1
+2.37.3
 

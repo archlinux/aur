@@ -17,10 +17,10 @@
 
 _qt_module=qtbase
 pkgname=mingw-w64-qt5-base-static
-pkgver=5.15.4+kde+r135
+pkgver=5.15.6+kde+r165
 pkgrel=1
 _basever=${pkgver%%+*}
-_commit=e0a15c11b853954d4189b2e30aa2450184de0987
+_commit=eeadc036d77b75bec5b7c41869688c7db9a2e221
 pkgdesc='A cross-platform application and UI framework, native OpenGL backend (mingw-w64)'
 arch=('any')
 url='https://www.qt.io/'
@@ -69,42 +69,40 @@ source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         '0029-Hardcode-linker-flags-for-platform-plugins.patch'
         '0030-Fix-linking-against-static-plugins-with-qmake.patch'
         '0031-Prevent-Cannot-find-feature-windows_vulkan_sdk.patch'
-        '0032-Fix-crashes-in-rasterization-code-using-setjmp.patch'
-        '0033-Handle-even-more-include-in-enum-cases.patch')
+        '0032-Fix-crashes-in-rasterization-code-using-setjmp.patch')
 sha256sums=('SKIP'
-            'e54366498a5374c85164e883c58f7274bf231ec285ba6dc0c7eadad9ec3ffbb1'
-            '2962c1a34f36a28401bac0d90b808a79567a4d3105f22ba3534a8f9a16e77c77'
-            '8d5cee5485be27fde395488328c4ae3751d8b6f99b2fb975178dedaa776c17de'
-            '0465f1a8f8830106164d86d18514cc1558c7cb0d057e3f8d1902f9e3bd9fb23b'
-            'ed5f2b71229201bce7563f5f91d89e059779a49b9c6c91596224332169083507'
-            '8de6b8c5405917589a6847f69b02d4940a021737c355a25b3f163cdab548b711'
-            '502cb54d8b77c71b7812dca378c079bcdeb0f0bc991095131896974eed20e04c'
-            '1ee4ec6ee02f049d8d991d0a56fcd6a687a3a7cc368d5b937a98ee0f52834584'
-            'cc2d8d8daf4ae578690cf50b81196aeff0e9f44672ed30ceb33a41abae42099d'
-            'e16188f688e03da51f909151915d201666853a909f132a137c1505daa87d87eb'
-            '31bcdb687bf1d0bd0ee789cf5c67ebbfb8e379757f9d4ebb02f16486a1bcc4f0'
-            '7f6c2cb002446f6f24450a6bf6bcd07db46a2cbfc065d751cda1334da0a1facc'
-            '903554c186f1876d01e9a2383820f257bac604a964550cbb1d01b25f374b7872'
-            '9f29ba92db17e4690ecb10977aca1e3d9212bec143562664a5c2562c9c9e7ade'
-            '911c46fa0a4b8993ae061f91ff2874567ffe40fe5f79930b926aa79c9c2e351f'
-            'bd7ad72c515c519213eb5e3512a6079830f86970a2de5c4a4d58d0c602f35422'
-            '07551376ed340d12093ca2f22e354f47b14bff050f83f04eb9b65c91ffa9a0a3'
-            '6014b68b4fc357a05cde75a4c84fce9cfcda2ce21368ca3f382756025dce9732'
-            'b522c9c8d2f04ee44d26a32ee0e7b5408e9fb54cc15dda718cf1e8ba03e52157'
-            '8ea4685376fed385f99c304161597e2f11f942b43efefdb94ee448b2a74f8aeb'
-            'ed71ed12749f8948088dfcec3a980ff7033c7db78d1543888ac1f869bd422e30'
-            '846b354c2a8a8dd9e85fcbaf2c079627fa33cf8a49349b208a2e4d1698663181'
-            '9a791909b3adb5c94ddfd4f3b25637190b3327307873d7da6003c082d84a11e8'
-            'aefa30834e2d8006768591277e6f06afb4f2e79b19fca357d8b05a9fb57153f1'
-            '93b941ffbb75ed7d6177e8b41c7a39f64b3607955a2102e069c60ae832e6beac'
-            'a7d547da8f8aae320f0f65476dc3bd95c6d9339a6b56793c8a8232432e501874'
-            'a205639ac75464ee2d3a278791262894079b2f1d6b7e4802ccb6b56ac6952be8'
-            'faebb2d05cdc748d69f397c237433a7a27aab50922b7b57511a4f03524ec04cd'
-            '3095c5da24a9e2d572627acf24c4eb36a4f575d564ee17c59b3e6879bfd8dd40'
-            'b1276acc58de81e72c9bfa456af1328c3bb21615fe42a577e25d21bd77c7c17c'
-            '5761551f4c3ba63d357acdb3e313ef4e0cf64b44394484b757cc8725062e2eb6'
-            'acefce75b6659a72d611609c7edf6ad8478bc8af018e8a37085d52415faae505'
-            '0d654b878944c128a9cd47cafddd0cc1d326dfbcf6b8d607edeebe1d4c92f2c5')
+            'c41a27864036608b0356c240d48fb105b6afbd47a976e36908c9aed327d7b7cb'
+            'a69ef91d9f42adc4d5796dd268dd58710fd080fb938fa3a65889b6ad517ccaf0'
+            '260a3fb5f812c2dfa515eb2585c395ffb2b00a5ee86ab21f580c70ba2ef6ece5'
+            '5a6539b00e1459016554d04c4c4e7951989528c012dd5ed01a5ef5a1a01d326e'
+            'b029b7a73680b9b972d8c29be109133b75834c76b3c99533382e7145d9cdadff'
+            '40267b7089d95c59899b5fb2a2ce8c9ce66b284e8ca222ecf56839bbc8619be6'
+            '75afb4b6eab560d55058f170565944774fb534bcfe077acf95035f331dce321f'
+            'e76976133fa5b31d57a4b05b8aad5369559f50c93f9e4a3cb75a4645fee0c017'
+            'f4867d176bda13c506543b630931d1efe3b0c8e02d80fd81cca6de9a53ed9fea'
+            '2049f9afc17877edc8014ad1abfa7492d7208fc6a1e97f90c6ff3e8fd89ed853'
+            'b8d69fa14f6e14aaf98e2e9ca201b0e54ea066c70f514d84e652e2dc06d75bba'
+            'c021e47b0452c47a7b486596324f62fdc192665a6c476cb7fad9207340b7fe5f'
+            '0aa2ec748924f3fa1ebe16645c581f6b5d5bf82186e58407c8ee0597e7547a10'
+            'b2ffe203da527c95936806121d646bcf03026b0a7cc8ada2f60d4d26284028b3'
+            'bfddd2c8c44bab7f7995623bdcb89fd3ff8fbe9125522b1bb50b43efe297ee13'
+            'a9e9ac55bd881390b41b49a06f11c3441a008409527f7fce3d337df6820598c6'
+            'fb8de523d608ded6a6f6ca82d884af7bd086091e10d492902363f4f3f90f1a5b'
+            '4d6f76f552cd0eaae0ae8e9ea8232f36ad140680c2d04ed70e792c11b85c86ac'
+            'bb0bfd9431d103af36d4b09134f3f9f1ac7a05feeb7779e6c15d447593ce6381'
+            'af6014fb1c311b91a1390898d25622d6aba555a0a30724dd953af2ea17cad6c5'
+            'ab620d4da6897d0b5fed70f8ac01febb46b9ff6e04e8fb49b4c1a2cb8527994f'
+            'e7217028a44537e40ddac73ac49630f77a361ecd20d6c40f6482517ae3103939'
+            '7937d08e1aaf5bb59161e84ecd23cb0ea6a251eae0b98a8291e126442bf048f1'
+            'ed37dc1bef6aee8e842c347ebe4fb3a4435887a15664f98487466d771d85f15e'
+            '071cce97add50db7e4703c6798afc42500405276043b2e5e6e9a5cf80556726c'
+            '62ae5fbeace74ba9830c185f45432decd5f0f8305767d9a3b9bfac27647f5a7c'
+            '9fae7c2dc88a27322bdb32748ea03fac1a04d8d35327acce05be511dd00b04e2'
+            '06836073078a6cb304931443eab9306baee29d1c19f167765cff238bd34ae78d'
+            '484996266fe418c1b5db76eec61d1bce1bc163546f534acf8343b0f77796cab7'
+            '94852f7bd841f0ded357e9d0a5c6e53434711df1b701674da49f4f1a8f61a26b'
+            '242f068c25d72ed8f67790d2c629b4aea2f13053760a9c8de43cab26c620bfe1'
+            '5f83de1635acee180f65019ccd37112f284552d6d4831b770a1a0c0119f17f5e')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 

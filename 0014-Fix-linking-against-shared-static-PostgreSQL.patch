@@ -1,7 +1,7 @@
-From 8691567261c4d3d4acb1eaae70d4282901ec29e8 Mon Sep 17 00:00:00 2001
+From 47e906fc890136daf25f1afb512bc3105ddb0e04 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:58:25 +0200
-Subject: [PATCH 14/33] Fix linking against shared/static PostgreSQL
+Subject: [PATCH 14/32] Fix linking against shared/static PostgreSQL
 
 ---
  src/plugins/sqldrivers/configure.json | 4 ++--
@@ -24,5 +24,5 @@ index 7262914c64..852ba558be 100644
              ]
          },
 -- 
-2.36.1
+2.37.3
 
