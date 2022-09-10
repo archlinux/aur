@@ -2,7 +2,7 @@
 # Maintainer: hertg <aur@her.tg>
 pkgname=leftwm-git
 pkgver=0.3.0.r31.g0986691
-pkgrel=0
+pkgrel=1
 epoch=0
 pkgdesc="Leftwm - A tiling window manager for the adventurer"
 arch=('i686' 'x86_64')
