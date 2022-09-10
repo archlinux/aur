@@ -1,7 +1,7 @@
 pkgbase = domain2idna
 	pkgdesc = The tool to convert a domain or a file with a list of domain to the famous IDNA format.
 	pkgver = 1.12.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/funilrys/domain2idna
 	arch = any
 	license = MIT
@@ -12,7 +12,6 @@ pkgbase = domain2idna
 	source = https://files.pythonhosted.org/packages/source/d/domain2idna/domain2idna-1.12.0.tar.gz
 	source = https://raw.githubusercontent.com/PyFunceble/domain2idna/master/LICENSE
 	sha256sums = 7f45b4de5ae261b23270b7f980c2600cd306fa570d4ade9e5935f965327bba2d
-	sha256sums = 08c0daa67e227be62d082aa48d00e990e1192791291293ba683cec88151c6820
+	sha256sums = 87fb21807b1c4f1d32217ef2be569be5cf8c16cecac5fd34eecbc07810881583
 
 pkgname = domain2idna
-
