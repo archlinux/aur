@@ -4,8 +4,8 @@
 # Contributor : Jan de Groot <jgc@archlinux.org>
 
 pkgname=lib32-libdrm-git
-pkgver=2.4.110.r27.g83763622
-pkgrel=1
+pkgver=2.4.113.r0.gfb5c0c30
+pkgrel=2
 pkgdesc="Userspace interface to kernel DRM services, git 32-bit version"
 arch=(x86_64)
 license=('custom')
@@ -43,7 +43,7 @@ build() {
         --buildtype plain \
         --wrap-mode      nofallback \
         -D udev=false \
-        -D valgrind=false
+        -D valgrind=disabled
     meson configure _build
     ninja -C _build
 }
