@@ -1,0 +1,13 @@
+post_install() {
+  echo ""
+  echo "  This package is provided as a workaround because ffsubsync"
+  echo "  doesn't work correctly with the most recent version of its"
+  echo "  libraries. In this package, it is installed, together with"
+  echo "  its dependencies, as a Python virtual environment inside the"
+  echo "  directory /usr/share/ffsubsync-venv."
+  echo ""
+}
+
+post_upgrade() {
+  post_install $1
+}
