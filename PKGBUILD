@@ -18,7 +18,7 @@ source=(
 )
 sha1sums=('9e5295435b2b5eef024a39a5a62fe1c3e81a4b0d'
           '530cfc10f8d6198a24e5c98cdf39b386ed1733d0')
-sha1sums_x86_64=('e8e0720da73c87843653e8ee004a8550ce925d88')
+sha1sums_x86_64=('93162dc4968ddd2695f1a0a0e4dd1f0be10c019b')
 
 package() {
   cd "$srcdir/projector-linux-x64/resources/app"
