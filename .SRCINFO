@@ -1,21 +1,18 @@
 pkgbase = rust-racer-git
 	pkgdesc = Code completion for Rust
-	pkgver = 2.0.10.r12.gc7c819e
+	pkgver = 2.2.1.r4.ga457c23
 	pkgrel = 1
-	url = https://github.com/phildawes/racer
+	url = https://github.com/racer-rust/racer
 	install = rust-racer-git.install
 	arch = i686
 	arch = x86_64
-	license = custom:MIT
+	license = MIT
+	makedepends = rustup
 	makedepends = git
-	depends = rust
 	depends = gcc-libs
-	optdepends = rust-src
 	provides = rust-racer
 	conflicts = rust-racer
-	replaces = racer-git
-	source = git+https://github.com/phildawes/racer.git
+	source = git+https://github.com/racer-rust/racer.git
 	md5sums = SKIP
 
 pkgname = rust-racer-git
-

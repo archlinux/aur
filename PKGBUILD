@@ -1,33 +1,35 @@
 # Contributor: Vlad M. <vlad@archlinux.net>
 # Contributor: issue <issue at archlinux dot info>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Orhun Parmaksız <orhun@archlinux.org>
 
 pkgname=rust-racer-git
 _pkgname=racer
-pkgver=2.0.10.r12.gc7c819e
+pkgver=2.2.1.r4.ga457c23
 pkgrel=1
 pkgdesc="Code completion for Rust"
-url="https://github.com/phildawes/racer"
-depends=('rust' 'gcc-libs')
-optdepends=('rust-src')
-makedepends=('git' )
+url="https://github.com/racer-rust/racer"
+depends=('gcc-libs')
+makedepends=('rustup' 'git')
 provides=('rust-racer')
 conflicts=('rust-racer')
-replaces=('racer-git')
 arch=('i686' 'x86_64')
-license=('custom:MIT')
+license=('MIT')
 md5sums=('SKIP')
 install=$pkgname.install
-source=("git+https://github.com/phildawes/$_pkgname.git")
+source=("git+https://github.com/racer-rust/$_pkgname.git")
 
 pkgver() {
   cd "$_pkgname"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+
 build() {
   cd "$_pkgname"
-  cargo build --release --verbose
+  rustup set profile minimal
+  rustup default nightly-2020-07-21
+  cargo build --release --locked
 }
 
 package() {
