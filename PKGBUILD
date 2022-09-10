@@ -1,6 +1,6 @@
 # Maintainer: Anuskuss <anuskuss@googlemail.com>
 pkgname=cemu
-pkgver=2.0.109
+pkgver=2.0.116
 pkgrel=1
 pkgdesc='Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)'
 arch=(x86_64)
@@ -25,7 +25,7 @@ optdepends=(
 )
 install=cemu.install
 source=(
-	git+https://github.com/cemu-project/Cemu#commit=6dda53e84f7200283351a9514b0db569360dbe1a
+	git+https://github.com/cemu-project/Cemu#commit=3349d7b4245e9bee862ee53a04196357fbedc99d
 	# dependencies
 	imgui-1.88.tar.gz::https://github.com/ocornut/imgui/archive/refs/tags/v1.88.tar.gz
 	imgui.cmake::https://raw.githubusercontent.com/microsoft/vcpkg/master/ports/imgui/CMakeLists.txt
@@ -41,7 +41,7 @@ source=(
 	# patches
 	xdg.diff # 963f9b38349c5d03b26ab2a50ead2ee4e743ca41
 	overlay.diff # edeb14d4c68ee8bf500b990b13079177e01c25f1
-	case.diff # 4f3025ec3ac1644cd469d895cd10237e36e8e36c
+	dsu.diff # b0e523a44ee7d69e6d2453325dcc669e2bcb719d
 )
 sha256sums=(
 	SKIP
@@ -52,9 +52,9 @@ sha256sums=(
 	SKIP
 	SKIP
 	SKIP
-	3af4bd2757f6053ba30186aaa53ffcb95bb13b98c1d3fabe13cab972697c2e08
+	4061e28533d391ebc4745cdc47470438b20c64dd11f7308e5acf35d0fbc54326
 	f25d13fe76cc6a0b475f0131211a951288160ddae92cd7a815f5aea61d7cfc0f
-	aecc99abdf756202f7fb978e69d2745bccc78023ba6c9583942e8faf1304bc49
+	19a8fbc50dd1fe5beab3c3fc08ea1a0b767fa388b80c9d5d1a98b565855603a0
 )
 
 pkgver() {
@@ -103,8 +103,8 @@ prepare() {
 	rm -rf src/util/SystemInfo
 	git apply "$srcdir/overlay.diff"
 
-	# experimental: case insensitivity (https://github.com/cemu-project/Cemu/pull/196)
-	git apply "$srcdir/case.diff"
+	# experimental: dsu controller (https://github.com/cemu-project/Cemu/pull/234)
+	git apply "$srcdir/dsu.diff"
 }
 
 build() {

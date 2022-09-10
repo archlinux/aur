@@ -280,7 +280,7 @@
 -		const auto path = ActiveSettings::GetPath("sdcard/");
 +		const auto path = ActiveSettings::GetDataPath("sdcard/");
  		fs::create_directories(path, ec);
- 		FSCDeviceHostFS_Mount("/vol/external01", path.generic_wstring().c_str() , FSC_PRIORITY_BASE);
+ 		FSCDeviceHostFS_Mount("/vol/external01", _pathToUtf8(path), FSC_PRIORITY_BASE);
  
 @@ -140,7 +140,7 @@ namespace coreinit
  				return FS_RESULT::ERR_PLACEHOLDER;
@@ -289,7 +289,7 @@
 -			const auto path = ActiveSettings::GetPath("sdcard/");
 +			const auto path = ActiveSettings::GetDataPath("sdcard/");
  			fs::create_directories(path, ec);
- 			if (!FSCDeviceHostFS_Mount(mountPathOut, path.generic_wstring().c_str(), FSC_PRIORITY_BASE))
+ 			if (!FSCDeviceHostFS_Mount(mountPathOut, _pathToUtf8(path), FSC_PRIORITY_BASE))
  				return FS_RESULT::ERR_PLACEHOLDER;
 --- a/src/Cemu/Logging/CemuLogging.cpp
 +++ b/src/Cemu/Logging/CemuLogging.cpp
