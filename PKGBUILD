@@ -8,37 +8,33 @@
 pkgname=perl-pdl
 _pkgname=PDL
 pkgver=2.080
-pkgrel=1
+pkgrel=2
 pkgdesc='The Perl Data Language, a perl extension designed for scientific and bulk numeric data processing and display'
 arch=('i686' 'x86_64')
 url='http://search.cpan.org/dist/PDL'
 license=('PerlArtistic' 'GPL')
 depends=(
 	'perl-inline'
+	'perl-inline-c'
 	'perl-term-readkey'
 	'perl-text-balanced>=2.05' #this is because perl provides only 2.04
+	'perl-opengl-glut'
 	'gsl'
 )
 makedepends=(
-	'perl'
 	'fftw2'
 	'hdf4'
-	'perl-opengl'
 	'plplot'
 	'perl-extutils-f77'
 	'proj'
 	'perl-extutils-parsexs'
-	'perl-convert-uu'
-	'perl-inline-c'
-	'perl-module-compile'
 	'perl-devel-checklib'
 	'perl-pod-parser'
 	'perl-extutils-depends'
+	'perl-pgplot'
 )
 checkdepends=(
 	'perl-test-warn'
-	'perl-perlio-layers'
-	'perl-file-map'
 	'perl-test-exception'
 	'perl-test-deep'
 )
@@ -46,11 +42,9 @@ optdepends=(
 	'fftw2: for PDL::FFTW support'
 	'hdf4: for HDF files support'
 	'perl-astro-fits-header: improved FITS files support'
-#	'perl-convert-uu: for the case when something wrong with Unicode support'  # It is necessary on *BSD systems
-#	'perl-extutils-f77: for PDL::Slatec and PDL::Minuit support'               # It is not necessary at runtime
-	'perl-opengl: for PDL::Graphics::TriD support'
 	'plplot: for PDL::Graphics::PLplot support'
 	'proj: for PDL::GIS::Proj and PDL::Transform::Proj4 support'
+	'perl-sys-sigaction: Ctrl-C handling in shells'
 )
 source=(https://cpan.metacpan.org/authors/id/E/ET/ETJ/${_pkgname}-${pkgver}.tar.gz perldl.conf Makefile.patch)
 options=(!emptydirs)
