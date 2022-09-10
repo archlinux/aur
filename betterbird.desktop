@@ -58,10 +58,11 @@ GenericName[zh_TW]=郵件用戶端
 Exec=/opt/betterbird/betterbird %u
 Terminal=false
 Type=Application
-Icon=betterbird
+Icon=eu.betterbird.Betterbird
 Categories=Network;Email;
 MimeType=message/rfc822;x-scheme-handler/mailto;application/x-xpinstall;
 StartupNotify=true
+StartupWMClass=betterbird-default
 Actions=ComposeMessage;OpenAddressBook;
 
 [Desktop Action ComposeMessage]
