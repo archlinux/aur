@@ -4,7 +4,7 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer
-pkgver=2022.821.0
+pkgver=2022.902.1
 pkgrel=1
 
 dotnet_version=6.0
