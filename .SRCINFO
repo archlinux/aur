@@ -1,6 +1,6 @@
 pkgbase = python-resampy
 	pkgdesc = Efficient sample rate conversion in python
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/bmcfee/resampy
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-resampy
 	makedepends = python-setuptools
 	depends = python-numba
 	depends = python-numpy
-	source = https://github.com/bmcfee/resampy/archive/0.4.0.tar.gz
-	md5sums = 1b313b9fc52abad811f46c15a94e3b90
+	source = https://github.com/bmcfee/resampy/archive/0.4.1.tar.gz
+	md5sums = e176c3b79ae9041cd5f6928377b656b5
 
 pkgname = python-resampy
