@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-webglplugin-static
 	pkgdesc = QPA plugin for running an application via a browser using streamed WebGL commands (mingw-w64)
-	pkgver = 5.15.4+kde+r0
+	pkgver = 5.15.6+kde+r0
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = mingw-w64-qt5-webglplugin-static
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://invent.kde.org/qt/qt/qtwebglplugin#commit=df60c61e640dc4fb6be0d9565a4ab08aee054f93
+	source = git+https://invent.kde.org/qt/qt/qtwebglplugin#commit=68a322c391c2eb92876fce42b9fc23ad2f3a1ecb
 	source = 0001-Hardcode-linker-flags-for-platform-plugin.patch
 	sha256sums = SKIP
 	sha256sums = c855d5b15171ed0f8d730898a62621462a71dbdb0b296d1e0ba2d3cfa87a8bcb
