@@ -2,14 +2,14 @@
 
 pkgname="xdg-sanity"
 pkgver=0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A tool to sanely open http/s links."
 arch=("any")
 url="https://git.tebibyte.media/emma/xdg-sanity"
 license=("AGPL3")
 source=("https://git.tebibyte.media/emma/xdg-sanity/archive/0.3.tar.gz")
 backup=("etc/xdg-sanity/xdg-sanity.conf")
-depends=("handlr")
+depends=("handlr" "xdg-utils")
 makedepends=("git" "gendesk")
 provides=("xdg-sanity")
 
