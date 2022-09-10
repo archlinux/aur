@@ -1,20 +1,20 @@
 pkgbase = bacula-client
 	pkgdesc = Enterprise ready, network based backup program
-	pkgver = 11.0.6
+	pkgver = 13.0.1
 	pkgrel = 1
 	url = https://www.bacula.org
-	arch = any
+	arch = x86_64
 	license = AGPL3
 	depends = openssl
-	provides = bacula-fd=11.0.6
+	provides = bacula-fd=13.0.1
 	conflicts = bacula
 	backup = etc/bacula/bconsole.conf
 	backup = etc/bacula/bacula-fd.conf
-	source = https://downloads.sourceforge.net/project/bacula/bacula/11.0.6/bacula-11.0.6.tar.gz
-	source = https://downloads.sourceforge.net/project/bacula/bacula/11.0.6/bacula-11.0.6.tar.gz.sig
+	source = https://downloads.sourceforge.net/project/bacula/bacula/13.0.1/bacula-13.0.1.tar.gz
+	source = https://downloads.sourceforge.net/project/bacula/bacula/13.0.1/bacula-13.0.1.tar.gz.sig
 	source = bacula-fd.service
 	validpgpkeys = 5235F5B668D81DB61704A82DC0BE2A5FE9DF3643
-	sha256sums = 0195a08bcd4f578ae4a9ce0d91f7f86731c634d56b810534722d721b2a9eecb7
+	sha256sums = d63848d695ac15c1ccfc117892753314bcb9232a852c40e32cca88c0e918978a
 	sha256sums = SKIP
 	sha256sums = 37cdab95a99142a7e8494f0a49e54a5bfb1dca28561d0ce70ea64bf98e0c50fd
 

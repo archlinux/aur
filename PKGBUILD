@@ -6,11 +6,11 @@
 # Contributor: Matthew <pyther@pyther.net>
 
 pkgname=bacula-client
-pkgver=11.0.6
+pkgver=13.0.1
 pkgrel=1
 pkgdesc="Enterprise ready, network based backup program"
 url="https://www.bacula.org"
-arch=('any')
+arch=('x86_64')
 license=('AGPL3')
 depends=('openssl')
 conflicts=('bacula')
@@ -25,11 +25,9 @@ source=(
     "https://downloads.sourceforge.net/project/bacula/bacula/${pkgver}/bacula-${pkgver}.tar.gz"{,.sig}
     'bacula-fd.service'
 )
-sha256sums=(
-    '0195a08bcd4f578ae4a9ce0d91f7f86731c634d56b810534722d721b2a9eecb7'
-    'SKIP'
-    '37cdab95a99142a7e8494f0a49e54a5bfb1dca28561d0ce70ea64bf98e0c50fd'
-)
+sha256sums=('d63848d695ac15c1ccfc117892753314bcb9232a852c40e32cca88c0e918978a'
+            'SKIP'
+            '37cdab95a99142a7e8494f0a49e54a5bfb1dca28561d0ce70ea64bf98e0c50fd')
 
 build() {
     cd bacula-${pkgver}/
