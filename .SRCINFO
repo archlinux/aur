@@ -1,6 +1,6 @@
 pkgbase = rofi-lbonn-wayland
 	pkgdesc = A window switcher, application launcher and dmenu replacement (Wayland fork)
-	pkgver = 1.7.3+wayland1
+	pkgver = 1.7.5+wayland1
 	pkgrel = 1
 	url = https://github.com/lbonn/rofi
 	arch = x86_64
