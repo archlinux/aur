@@ -24,7 +24,7 @@ depends=(
 	'htop'
 	'jp2a'
 	'mlocate'
-	'man-db'
+	'man'
 	'moreutils'
 	'openssh'
 	'tree'
