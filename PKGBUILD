@@ -2,14 +2,14 @@
 
 pkgname=guish-git
 _pkgname=guish
-pkgver=2.0.0.r2.g327ee98
+pkgver=2.0.0.r10.g02b807a
 pkgrel=1
 pkgdesc="A versatile graphical DSL and army knife to make and modify GUIs (newer 2.x version)."
 arch=('x86_64')
 url="https://codeberg.org/phranz/guish"
 license=('GPL3')
-depends=('libx11' 'libxtst')
-makedepends=('git' 'libx11' 'libxtst')
+depends=('libx11' 'libxtst' 'imlib2')
+makedepends=('git' 'libx11' 'libxtst' 'imlib2')
 provides=(guish)
 conflicts=(guish guish-git)
 
