@@ -2,7 +2,7 @@
 # Contribtor: Igor <f2404@yandex.ru>
 # Contributor: Davi da Silva Böger <dsboger at gmail dot com>
 pkgname=tilix-git
-pkgver=1.9.5.r31.g4ba1236d
+pkgver=1.9.5.r33.gee1e65ac
 pkgrel=1
 pkgdesc="A tiling terminal emulator for Linux using GTK+ 3"
 arch=('x86_64')
