@@ -3,7 +3,7 @@
 
 pkgname=gnome-shell-extension-arc-menu
 _pkgbase=ArcMenu
-pkgver=37
+pkgver=38
 pkgrel=1
 pkgdesc="Application Menu Extension for GNOME"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('dconf' 'gnome-shell' 'gnome-menus')
 conflicts=('gnome-shell-extension-arc-menu-git')
 
 source=("${url}/-/archive/v${pkgver}/${_pkgbase}-v${pkgver}.tar.gz")
-sha256sums=('d4d8860022bed2c76c0fea5e4220743accce9928e31185fa5daef70bd7c48ca9')
+sha256sums=('2b6280d45de60785641ef83e1aebb5a93ed321a68b049d09d00c1d85829ce8ed')
 
 build() {
   cd "${_pkgbase}-v${pkgver}"
