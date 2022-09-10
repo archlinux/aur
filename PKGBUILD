@@ -1,21 +1,63 @@
-# Maintainer: Sven Klomp <mail at klomp dot eu>
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: Sven Klomp <mail at klomp dot eu>
 
-pkgdesc='Allows to create a website as a subfolder of the cloud.'
-pkgname=('nextcloud-app-picocms')
-pkgver=0.9.7
+_name=cms_pico
+pkgname=nextcloud-app-picocms
+pkgver=1.0.19
 pkgrel=1
+pkgdesc="Integrate Pico CMS and let your users manage their own websites "
 arch=('any')
-license=('AGPL')
-url="https://github.com/nextcloud/cms_pico"
-makedepends=()
-depends=('nextcloud')
+url="https://apps.nextcloud.com/apps/cms_pico"
+license=('AGPL3')
+makedepends=('nextcloud' 'yq')
 options=('!strip')
-source=("cms_pico-${pkgver}.tar.gz::https://github.com/nextcloud/cms_pico/releases/download/v${pkgver}/cms_pico-${pkgver}.tar.gz")
-sha256sums=('041c87abb1932f25aaae65b998e873bd343213c0160ff873c91f24b70389e9cf')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nextcloud/${_name}/releases/download/v${pkgver}/${_name}-v${pkgver}.tar.gz")
+sha512sums=('d626663e8e3f4ea0c7a6b192f7833f90b3000f56879cf0d1180fe30b1f84e48f213cdfafc1fe2ba1cf2dcc7ded62c92c606bacae8f186ab53a771c733493ad12')
 
 
-package() {
-	install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
-	cp -a "${srcdir}/cms_pico" "${pkgdir}/usr/share/webapps/nextcloud/apps/cms_pico"
+# BEGIN boilerplate nextcloud app version clamping, see also other packages in group
+# 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
+# 2. Add makedepends+=(nextcloud yq)
+_phps=(php7 php)
+_get_supported_ranges() {
+  _app_min_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@min-version"] | values')"
+  _app_max_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@max-version"] | values | tonumber | .+1')"
+  _app_min_php="$(< appinfo/info.xml xq -r '.info.dependencies.php["@min-version"] | values')"
+  _app_max_php="$(< appinfo/info.xml xq -r '.info.dependencies.php["@max-version"] | values | tonumber | .+0.1')"
+}
+_unsupported_range() {
+  printf "%s requires %s %s, but %s %s is provided.\n" "$pkgname" "$1" "$2" "$1" "$3"
+  exit 1
+}
+_nextcloud_app_check() {
+  _get_supported_ranges
+  for _php in "${_phps[@]}"; do command -v "$_php" > /dev/null && break; done
+  local _nextcloud_ver="$("$_php" <(cat /usr/share/webapps/nextcloud/version.php; echo 'print($OC_VersionString);'))"
+  local _php_ver="$("$_php" -r 'print(phpversion());')"
+  [[ "$(vercmp "${_app_min_nextcloud:-0}" "$_nextcloud_ver")" -le 0 ]] || \
+    _unsupported_range nextcloud "=> $_app_min_nextcloud" "$_nextcloud_ver"
+  [[ "$(vercmp "${_app_max_nextcloud:-999}" "$_nextcloud_ver")" -gt 0 ]] || \
+    _unsupported_range nextcloud "< $_app_max_nextcloud" "$_nextcloud_ver"
+  [[ "$(vercmp "${_app_min_php:-0}" "$_php_ver")" -le 0 ]] || \
+    _unsupported_range php ">= $_app_min_php" "$_php_ver"
+  [[ "$(vercmp "${_app_max_php:-999}" "$_php_ver")" -gt 0 ]] || \
+    _unsupported_range php "< $_app_max_php" "$_php_ver"
+}
+_nextcloud_app_package() {
+  _get_supported_ranges
+  depends+=("nextcloud>=${_app_min_nextcloud:-0}" "nextcloud<${_app_max_nextcloud:-999}")
+  depends+=("php-interpreter${_app_min_php:+>=$_app_min_php}" ${_app_max_php:+"php-interpreter<$_app_max_php"})
+}
+# END boilerplate nextcloud app version clamping
+
+check() {
+  cd $_name
+  _nextcloud_app_check
 }
 
+package() {
+  install -vdm 755 "$pkgdir/usr/share/webapps/nextcloud/apps/"
+  cp -av $_name "$pkgdir/usr/share/webapps/nextcloud/apps/"
+  cd $_name
+  _nextcloud_app_package
+}
