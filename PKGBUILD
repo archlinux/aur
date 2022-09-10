@@ -1,6 +1,6 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-shell')
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="nwg-shell meta-package, installer and updater"
 arch=('x86_64')
@@ -22,12 +22,11 @@ optdepends=('chromium: suggested web browser'
 makedepends=('python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/nwg-shell/releases/download/v"$pkgver"/nwg-shell-v"$pkgver".tar.gz")
 
-md5sums=('becbb0acc09a868bea408024b2cc59be')
+md5sums=('6c4f071dd988777ec878c7bbd84feb3f')
 
 package() {
   cd "${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1
   install -D -t "$pkgdir"/usr/local/bin scripts/*
   install -D -t "$pkgdir"/usr/share/backgrounds nwg-shell.jpg
-  install -D -t "$pkgdir"/$HOME .azotebg
 }
