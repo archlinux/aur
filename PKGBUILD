@@ -12,7 +12,7 @@
 
 pkgname=lib32-mesa-minimal-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=22.3.0_devel.158199.d7e6174c2bd4
+pkgver=22.3.0_devel.159472.d5394296bec
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -21,8 +21,8 @@ makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
 depends=('mesa-minimal-git' 'lib32-gcc-libs' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence'
             'lib32-libelf' 'lib32-libunwind' 'lib32-lm_sensors' 'glslang' 'lib32-vulkan-icd-loader' 'lib32-zstd' 'lib32-llvm-libs-minimal-git')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=('lib32-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-opengl-driver' 'lib32-vulkan-driver' 'lib32-mesa-vulkan')
-conflicts=('lib32-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-mesa-vulkan')
+provides=('lib32-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vulkan' 'lib32-opengl-driver' 'lib32-vulkan-driver' 'lib32-mesa-vulkan')
+conflicts=('lib32-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vulkan' 'lib32-mesa-vdpau')
 url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git'
@@ -60,18 +60,12 @@ build () {
     export CC="gcc -m32"
     export CXX="g++ -m32"
     export PKG_CONFIG=/usr/bin/i686-pc-linux-gnu-pkg-config
-    
-# llvm 16 switchted to c++17 by default in https://github.com/llvm/llvm-project/commit/b4e9977fc18405d4a11cbaf1975bcadbf75920b8
-# use cpp_std=c++17 to force that version
-# can be removed once https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/17966 is merged to master
-
 
     meson setup mesa _build \
         --native-file llvm32.native \
         -D b_ndebug=true \
         -D b_lto=true \
         -D buildtype=plain \
-        -D cpp_std=c++17 \
         --wrap-mode=nofallback \
         -D prefix=/usr \
         -D sysconfdir=/etc \
