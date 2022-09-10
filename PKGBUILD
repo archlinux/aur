@@ -2,7 +2,7 @@
 # Contributor: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=scute
 pkgver=1.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="GnuPG PKCS#11 module for using OpenPGP smartcards with X.509"
 arch=(i686 x86_64)
 url="https://github.com/gpg/scute"
@@ -20,7 +20,7 @@ makedepends=(
 source=(
     "https://gnupg.org/ftp/gcrypt/scute/scute-$pkgver.tar.bz2"
     "https://gnupg.org/ftp/gcrypt/scute/scute-$pkgver.tar.bz2.sig"
-    "fix-build.patch::https://git.gnupg.org/cgi-bin/gitweb.cgi?p=scute.git;a=patch;h=49ad2b0e05e3fcb8c8c2e23bb1c6063b390dee02"
+    "fix-build.patch" # https://git.gnupg.org/cgi-bin/gitweb.cgi?p=scute.git;a=patch;h=49ad2b0e05e3fcb8c8c2e23bb1c6063b390dee02
 )
 b2sums=(
     '9a459fc07c53e44d6b194f0f7786644dae7c37402f69cc511ed7e6cc387236cfe01b13400779a90a123461a28e69629abc260f0fad9c302a9b630e23cb8b4293'
