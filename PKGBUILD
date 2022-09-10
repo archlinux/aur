@@ -8,7 +8,7 @@ arch=('i586' 'x86_64')
 url='https://ffmpeg.org/'
 license=('GPL2')
 depends=(
-  x264_152
+  #x264_152
 )
 provides=(
 
@@ -38,9 +38,9 @@ build() {
     --enable-shared \
     --disable-yasm \
     --disable-doc \
-    --enable-libx264 \
     --extra-ldflags=-L/opt/lib \
     --extra-cflags=-I/opt/include
+    #--enable-libx264
     
     make clean
     make "-j$(nproc)" || return 1
