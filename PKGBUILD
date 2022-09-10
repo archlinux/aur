@@ -1,12 +1,12 @@
 # Maintainer: edward-p <edward at edward-p dot xyz>
 pkgname=projector-bin
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Common and client-related code for running Swing applications remotely.'
 arch=('x86_64')
 url='https://github.com/JetBrains/projector-client'
 license=('MIT')
-depends=('electron15')
+depends=('electron16')
 options=('!strip')
 conflicts=('projector')
 source_x86_64=(
