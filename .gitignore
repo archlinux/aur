@@ -1,0 +1,4 @@
+pkg/
+src/
+shadowsocks-go-geolite2-country-git/
+*.tar.zst

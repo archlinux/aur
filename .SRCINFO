@@ -1,0 +1,16 @@
+pkgbase = shadowsocks-go-geolite2-country-git
+	pkgdesc = MaxMind GeoLite2 country database for shadowsocks-go
+	pkgver = 20220910122630
+	pkgrel = 1
+	url = https://github.com/Dreamacro/maxmind-geoip
+	arch = any
+	license = custom
+	makedepends = git
+	provides = shadowsocks-go-geolite2-country
+	conflicts = shadowsocks-go-geolite2-country
+	source = shadowsocks-go-geolite2-country-git::git+https://github.com/Dreamacro/maxmind-geoip.git#branch=release
+	source = LICENSE
+	b2sums = SKIP
+	b2sums = 1707ac1ef0f204942b3be9130c679b04e5690d2d2feb086acdf89d30c85dfe833da8c576d4b4f6144d0dd712248dbff034ea2429a819e57c051679aa6ac85755
+
+pkgname = shadowsocks-go-geolite2-country-git
