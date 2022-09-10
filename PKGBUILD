@@ -3,7 +3,7 @@
 
 pkgname='eclint'
 pkgver=0.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc='EditorConfig linter'
 url='https://gitlab.com/greut/eclint'
 arch=('x86_64' 'i686')
@@ -26,10 +26,8 @@ validpgpkeys=('9E2D407EAFEE50863F42B9D16058CF4574298812')
 build() {
   export CGO_LDFLAGS="$LDFLAGS"
   export GOFLAGS='-buildmode=pie -trimpath -modcacherw'
-  _commit=$(zcat "${pkgname}-${pkgver}.tar.gz" | git get-tar-commit-id)
   _flags=(
     -X=main.version=v$pkgver
-    -X=main.commit=${_commit::7}
     -X=main.date=$(date -u -d "@${SOURCE_DATE_EPOCH}" +'%FT%TZ')
   )
   go build -o "$pkgname" -ldflags="${_flags[*]}" ./cmd/"$pkgname"

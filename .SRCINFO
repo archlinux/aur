@@ -1,7 +1,7 @@
 pkgbase = eclint
 	pkgdesc = EditorConfig linter
 	pkgver = 0.3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/greut/eclint
 	arch = x86_64
 	arch = i686
