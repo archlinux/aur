@@ -6,8 +6,6 @@ post_install()
 
     chmod +x /usr/share/lampswitch/services.sh
     gtk-update-icon-cache -q -f usr/share/icons/hicolor
-    gtk-update-icon-cache -q -f usr/share/icons/ubuntu-mono-dark
-    gtk-update-icon-cache -q -f usr/share/icons/ubuntu-mono-light
     update-desktop-database -q
 }
 
@@ -31,7 +29,5 @@ pre_remove()
 post_remove()
 {
     gtk-update-icon-cache -q -f usr/share/icons/hicolor
-    gtk-update-icon-cache -q -f usr/share/icons/ubuntu-mono-dark
-    gtk-update-icon-cache -q -f usr/share/icons/ubuntu-mono-light
     update-desktop-database -q
 }
