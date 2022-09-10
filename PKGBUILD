@@ -7,7 +7,7 @@ arch=('x86_64')
 license=('GPL' 'LGPL')
 depends=('gtk3' 'babl' 'gegl' 'glib-networking' 'mypaint-brushes1' 'poppler-data' 'appstream-glib')
 makedepends=('meson' 'ninja' 'intltool' 'iso-codes' 'gobject-introspection' 'libxslt' 'libxmu')
-options=('!emptydirs' '!docs')
+options=('!docs')
 
 _name="${pkgname%-devel-stripped}"
 _snapshot="${_name}-${pkgver}"
