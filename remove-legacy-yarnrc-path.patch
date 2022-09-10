@@ -1,14 +1,3 @@
---- a/src/util/rc.js
-+++ b/src/util/rc.js
-@@ -34,8 +34,6 @@ function getRcPaths(name: string, cwd: string): Array<string> {
-     pushConfigPath(CONFIG_DIRECTORY);
-     pushConfigPath(home, '.config', name, 'config');
-     pushConfigPath(home, '.config', name);
--    pushConfigPath(home, `.${name}`, 'config');
--    pushConfigPath(home, `.${name}rc`);
-   }
-
-   // add .yarnrc locations relative to the cwd
 --- a/src/registries/yarn-registry.js
 +++ b/src/registries/yarn-registry.js
 @@ -8,6 +8,7 @@ import NpmRegistry from './npm-registry.js';
@@ -24,7 +13,7 @@
      super(cwd, registries, requestManager, reporter, enableDefaultRc, extraneousRcFiles);
  
 -    this.homeConfigLoc = path.join(userHome, '.yarnrc');
-+    this.homeConfigLoc = getConfigDir();
++    this.homeConfigLoc = path.join(userHome, '.config', 'yarnrc');
      this.homeConfig = {};
    }
  
