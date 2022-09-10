@@ -1,7 +1,7 @@
 pkgbase = hollywood
 	pkgdesc = Fill your console with Hollywood melodrama technobabble.
 	pkgver = 1.21
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/dustinkirkland/hollywood
 	arch = any
 	license = Apache
