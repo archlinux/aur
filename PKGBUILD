@@ -2,14 +2,15 @@
 # Contribtor: Igor <f2404@yandex.ru>
 # Contributor: Davi da Silva Böger <dsboger at gmail dot com>
 pkgname=tilix-git
-pkgver=1.9.5.r29.gc809ec12
-pkgrel=2
+pkgver=1.9.5.r31.g4ba1236d
+pkgrel=1
 pkgdesc="A tiling terminal emulator for Linux using GTK+ 3"
 arch=('x86_64')
 url="https://gnunn1.github.io/tilix-web"
-license=('MPL')
+license=('MPL2')
 depends=('libx11' 'gtkd' 'vte3' 'dconf' 'gsettings-desktop-schemas')
 makedepends=('appstream' 'git' 'ldc' 'po4a' 'meson')
+checkdepends=('appstream-glib')
 optdepends=('python-nautilus: for "Open Tilix Here" support in nautilus'
             'libsecret: for the password manager'
             'vte3-notification: for desktop notifications support')
@@ -38,7 +39,7 @@ build() {
 
   # Build with LDC
   export DC=ldc
-  export LDFLAGS="$(echo -ne $LDFLAGS | sed -e 's/-flto/--flto=full/')"
+  export LDFLAGS="$(echo -ne $LDFLAGS | sed -e 's/-flto=auto/-flto=full/')"
 
   arch-meson "${pkgname%-git}" build
   meson compile -C build
@@ -46,6 +47,8 @@ build() {
 
 check() {
   meson test -C build --print-errorlogs
+
+  appstream-util validate-relax --nonet build/data/com.gexperts.Tilix.appdata.xml
 }
 
 package() {
