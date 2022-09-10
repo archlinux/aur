@@ -1,10 +1,10 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit-optimization
 pkgname=python-${_pkgname}
-pkgver=0.3.2
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Quantum Optimization package for IBM qiskit framework"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/Qiskit/qiskit-optimization"
 license=('Apache')
 depends=(
@@ -20,23 +20,13 @@ makedepends=(
     'python-setuptools'
     'python-wheel'
 )
-checkdepends=(
-    'python-qiskit-aer'
-    'python-ddt'
-    'python-pytest'
-)
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Qiskit/${_pkgname}/archive/${pkgver}.tar.gz")
-b2sums=('aa840a1413f6205f9edca4c63a34ea3ad88bc9a3b7e86297b8801f4ebc9fcceec259ec905ef13e118b2c489f5eb2e6d17178642234184b060c1082ad4e56228f')
+b2sums=('856fca9031843fcb8a836c0612c4c488c195c4ee5dd011075327ec5221df3b053d68af35411e99d42d7a821e52737d7cdc2c6f2bdb63babb180f33ba04df8d88')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     python -m build --wheel --no-isolation
 }
-
-#check() {
-#    cd "${srcdir}/${_pkgname}-${pkgver}"
-#    python -m pytest test/
-#}
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
