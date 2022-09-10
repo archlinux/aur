@@ -1,11 +1,10 @@
 # Maintainer: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
-
 # Contributor Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor: SierraKiloBravo <aur at hillebrand dot io>
 
 pkgname=vieb-bin
 _pkgname=vieb
-pkgver=9.0.0
+pkgver=9.1.0
 pkgrel=1
 pkgdesc="Vim Inspired Electron Browser - Vim bindings for the web by design"
 arch=('x86_64')
@@ -26,7 +25,7 @@ depends=('c-ares'
   'libnotify')
 install="${_pkgname}.install"
 source=("https://github.com/Jelmerro/Vieb/releases/download/${pkgver}/${_pkgname}-${pkgver}.pacman")
-sha512sums=('1d379f748e137313620d8ea14373a3968e584d81319a4ab2b207c759cd3004d2d7f1fa2c5abf99276ea70e1e613522eeb263965b6eb098283f2b2a618b38a629')
+sha512sums=('86639da90ed5099d8bb266ed62a2e7492b7b4389cba3e1aee321c4d9459d2467fdf84a4d2b918412ae30b906a47ab0a0e3835f28e2ab714c2edf03174d250000')
 
 package() {
 	cd "$srcdir"
