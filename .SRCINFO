@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-speech
 	pkgdesc = Qt module to make text to speech and speech recognition easy (mingw-w64)
-	pkgver = 5.15.4+kde+r1
+	pkgver = 5.15.6+kde+r1
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = mingw-w64-qt5-speech
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://invent.kde.org/qt/qt/qtspeech#commit=c8a1dadc46ccdbeaef45aa805a9dc98d4b3220bd
+	source = git+https://invent.kde.org/qt/qt/qtspeech#commit=d1273416f25a15a6edf6ea56a07602cd7d99fe48
 	sha256sums = SKIP
 
 pkgname = mingw-w64-qt5-speech
