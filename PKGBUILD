@@ -8,6 +8,7 @@ arch=(x86_64)
 url="https://github.com/bytecodealliance/wasm-micro-runtime"
 license=(Apache)
 depends=(gcc-libs lld)
+makedepends=(git cmake ninja)
 source=("git+$url")
 sha256sums=('SKIP')
 provides=(wasm-micro-runtime)
