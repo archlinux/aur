@@ -1,6 +1,6 @@
 pkgbase = meshboard-wayland
 	pkgdesc = Synchronize the clipboard across a mesh of hosts, with wayland integration
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/hossbeast/meshboard
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = meshboard-wayland
 	depends = wayland
 	provides = meshboard
 	conflicts = meshboard
-	source = meshboard::git+https://github.com/hossbeast/meshboard#tag=v0.5.1?signed
+	source = meshboard::git+https://github.com/hossbeast/meshboard#tag=v0.5.3?signed
 	validpgpkeys = 79154EE9C4811D32B814EB88B1B3C76D76638462
 	sha512sums = SKIP
 

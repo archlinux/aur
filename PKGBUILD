@@ -1,7 +1,7 @@
 # Maintainer: hossbeast <todd DOT freed AT gmail DOT com>
 
 pkgname=meshboard-wayland
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Synchronize the clipboard across a mesh of hosts, with wayland integration"
 provides=('meshboard')
@@ -37,5 +37,5 @@ package() {
   install -m644 -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/meshboard/LICENSE"
 
   install -m755 -d "$pkgdir/usr/lib/systemd/user"
-  install -m644 -t "$pkgdir/usr/lib/systemd/user" "$srcdir/meshboard/systemd/meshboard.service"
+  install -m644 -t "$pkgdir/usr/lib/systemd/user" "$srcdir/meshboard/contrib/systemd/meshboard.service"
 }
