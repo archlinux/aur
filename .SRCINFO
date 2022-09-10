@@ -1,7 +1,7 @@
 pkgbase = basix
 	pkgdesc = FEniCS finite element basis evaluation library
 	pkgver = 0.5.0.post0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FEniCS/basix
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,8 @@ pkgbase = basix
 	depends = lapack
 	depends = xtensor
 	source = basix-0.5.0.post0.tar.gz::https://github.com/FEniCS/basix/archive/v0.5.0.post0.tar.gz
+	source = basix_docs.patch::https://github.com/FEniCS/basix/pull/592.patch
 	sha512sums = cadce6b4935200714f4f25b0fd72a9ee3484ab319104b9c80d2653218787418bf8f42bee7c3dcec83669c809460538442b4244474a5bbe59688b207b6b892faf
+	sha512sums = 9b931a9637f6c7821e68bc2893b73230e07afd3c06ba4f7752b06184da4649ef7bb3474ef651bdbe800cc6a8da5f3a95d98c092d7a15b44ef7d6a32b5e70def6
 
 pkgname = basix
