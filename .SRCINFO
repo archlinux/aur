@@ -1,0 +1,18 @@
+pkgbase = fortune-mod-ibash
+	pkgdesc = A collection of quotes for fortune-mod from https://ibash.org.ru
+	pkgver = 2022.09
+	pkgrel = 1
+	url = http://ibash.org.ru
+	arch = any
+	groups = fortune-mods
+	license = ?
+	makedepends = git
+	makedepends = python
+	makedepends = python-requests
+	makedepends = python-beautifulsoup4
+	makedepends = python-lxml
+	depends = fortune-mod
+	source = fortune-mod-ibash::git+https://git.sr.ht/~riderius/ibashparser
+	sha256sums = SKIP
+
+pkgname = fortune-mod-ibash
