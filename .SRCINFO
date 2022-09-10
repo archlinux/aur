@@ -1,6 +1,6 @@
 pkgbase = build-arch-gce
 	pkgdesc = Builds an Arch image for Google Compute Engine
-	pkgver = 0.8
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/GoogleCloudPlatform/compute-archlinux-image-builder
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = build-arch-gce
 	depends = arch-install-scripts
 	depends = dosfstools
 	depends = e2fsprogs
-	source = build-arch-gce-0.8.tar.gz::https://github.com/GoogleCloudPlatform/compute-archlinux-image-builder/archive/0.8.tar.gz
-	sha256sums = 836c81e8f61a25f3d4a0c658d673dd7b5e760ba7ab4bd0714bdbfd67e0c40273
+	source = build-arch-gce-1.0.tar.gz::https://github.com/GoogleCloudPlatform/compute-archlinux-image-builder/archive/1.0.tar.gz
+	sha256sums = 08fed48fe8cf4970f592853465e3c63257f56a9ea189469ae8525541b8c917e0
 
 pkgname = build-arch-gce
