@@ -9,14 +9,14 @@
 
 _qt_module=qtwebchannel
 pkgname=mingw-w64-qt5-webchannel-static
-pkgver=5.15.4
+pkgver=5.15.6
 pkgrel=1
 arch=('any')
 pkgdesc='Provides access to QObject or QML objects from HTML clients for seamless integration of Qt applications with HTML/JavaScript clients (mingw-w64)'
 depends=('mingw-w64-qt5-declarative-static')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
-_commit=8c842152da613f941892481d62267c73c4a4f006
+_commit=fb1ca87aa1a12048199d2aabe9015b7222d2b773
 _basever=$pkgver
 pkgver+=+kde+r3
 makedepends+=('git')
