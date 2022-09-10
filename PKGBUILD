@@ -1,8 +1,9 @@
 # Maintainer: Lex Childs <lexchilds@gmail.com>
+# Maintainer: hertg <aur@her.tg>
 pkgname=leftwm-git
-pkgver=0.2.7.r21.g3f30650
-pkgrel=2
-epoch=2
+pkgver=0.3.0.r31.g0986691
+pkgrel=0
+epoch=0
 pkgdesc="Leftwm - A tiling window manager for the adventurer"
 arch=('i686' 'x86_64')
 url="https://github.com/leftwm/leftwm"
@@ -25,14 +26,14 @@ build() {
 pkgver() {
   cd "$pkgname"
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
 
 package() {
   cd $pkgname/target/release
-  install -Dm755 leftwm leftwm-worker leftwm-state leftwm-check leftwm-command -t "$pkgdir"/usr/bin
+  install -Dm755 leftwm leftwm-worker lefthk-worker leftwm-state leftwm-check leftwm-command -t "$pkgdir"/usr/bin
 
   install -d "$pkgdir"/usr/share/leftwm
   cp -R "$srcdir"/$pkgname/themes "$pkgdir"/usr/share/leftwm
