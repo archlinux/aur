@@ -12,6 +12,7 @@ pkgbase = gimp-devel-stripped
 	makedepends = iso-codes
 	makedepends = gobject-introspection
 	makedepends = libxslt
+	makedepends = libxmu
 	depends = gtk3
 	depends = babl
 	depends = gegl
