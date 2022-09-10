@@ -2,7 +2,7 @@
 
 pkgname=passh
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="interactive keyboard password authentication for SSH"
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -21,6 +21,6 @@ package() {
 
   install -Dm755 passh "$pkgdir/usr/bin/passh"
 
-  install -Dm644 README.md "$pkgdir/usr/share/doc/README.md"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -1,7 +1,7 @@
 pkgbase = passh
 	pkgdesc = interactive keyboard password authentication for SSH
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clarkwang/passh
 	arch = i686
 	arch = x86_64
