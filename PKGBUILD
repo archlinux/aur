@@ -2,8 +2,8 @@
 
 _pkgname=libegit2
 pkgname=emacs-${_pkgname}-wbundled-git
-pkgver=r463.77bd28a
-pkgrel=3
+pkgver=r464.3f3d600
+pkgrel=1
 pkgdesc='Emacs bindings for libgit2 without bundled libgit2'
 arch=('i686' 'x86_64')
 url="https://github.com/magit/libegit2"
@@ -57,7 +57,7 @@ package() {
           "$pkgdir"/usr/lib/emacs/site-lisp/libegit2.so
 
   install -dm755 "$pkgdir"/usr/share/emacs/site-lisp
-  install -Dm755 libgit.el{,c} \
+  install -Dm755 libgit.el{,c} libgit-autoloads.el\
           "$pkgdir"/usr/share/emacs/site-lisp
 
 
