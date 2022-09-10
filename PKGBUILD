@@ -5,7 +5,7 @@ _pkgname=helium-wallet-rs
 pkgdesc='Helium Wallet'
 license=('Apache')
 url='https://github.com/helium/helium-wallet-rs'
-pkgver=1.6.10
+pkgver=1.7.4
 pkgrel=1
 arch=('x86_64')
 depends=(
@@ -20,7 +20,7 @@ makedepends=(
 source=(
     "https://github.com/helium/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha512sums=('67e020d580730954358ae7c040461d365a046b78d149997a09b25b97d03f3b836b4ae20203eee387e12773e893cd1ddc19202bf736c24c63b238932631421301')
+sha512sums=('0f87286ecd25312b768734716bd0237ba1b751ec794283b5016a84b8cc63687ee99cabd249f367e1cf6269ed6eb7833f8051de1110a31b7cfaf008256a4acc4e')
 
 build() {
     cd ${_pkgname}-${pkgver}
