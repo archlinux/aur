@@ -1,6 +1,6 @@
 # Maintainer: Nikita Puzyryov <PuzyryovN@gmail.com>
 pkgname=casync-git
-pkgver=2.r156.g5f4540f
+pkgver=2.r267.g0efa7ab
 pkgrel=1
 pkgdesc="Content-Addressable Data Synchronization Tool"
 arch=(x86 x86_64)
