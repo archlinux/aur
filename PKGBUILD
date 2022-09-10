@@ -6,8 +6,8 @@
 # $ curl -sL https://dl.google.com/linux/earth/deb/dists/stable/main/binary-amd64/Packages | grep -Pom1 'Version: \K[^-]*'
 
 pkgname=google-earth-pro
-pkgver=7.3.4.8642
-pkgrel=2
+pkgver=7.3.4.8738
+pkgrel=1
 pkgdesc='3D interface to explore the globe, terrain, streets, buildings and other planets (Pro version)'
 arch=('x86_64')
 url='https://www.google.com/earth/'
@@ -38,7 +38,7 @@ source=(
 )
 noextract=("google-earth-pro-stable_${pkgver}-r0_amd64.deb")
 b2sums=(
-    '5db867a47f4f8695da0fa2e960f8dcbd0371cb703928642ed7a99b67d58ad859a6ff8e0fe33a0b1c2bccc5a5e6baa9c91cdd464407fcb49bbb7fe65d0631f9ae'
+    '46233141ed43d1f810f4c3cdd966d1174a7ac09212c2214e023dcbd60b712e419c5dfbda07fb3eccc70f65f2ee9ccbf4c8c7952c922cd91e21d9089768e7d5c5'
     'SKIP'
     'SKIP'
     'SKIP'
