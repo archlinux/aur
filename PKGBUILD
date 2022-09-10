@@ -1,11 +1,11 @@
 # Mainteiner: Donald Webster <fryfrog@gmail.com>
 
 pkgname=runrestic
-pkgver=0.5.24
+pkgver=0.5.26.1
 pkgrel=1
 pkgdesc='A wrapper script for Restic backup software that inits, creates, prunes and checks backups'
 arch=(any)
-url='https://github.com/sinnwerkstatt/runrestic'
+url='https://pypi.org/project/runrestic'
 license=('GPL3')
 depends=(
   'restic'
@@ -15,9 +15,9 @@ depends=(
 
 checkdepends=('python-pytest')
 
-source=("runrestic-${pkgver}.tar.gz::https://github.com/sinnwerkstatt/runrestic/archive/${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 
-sha256sums=('c0156cd3f77a5d42e95a3ed1ae9c7182b963156acb0c4c37ac703bd98a5f0a27')
+sha256sums=('225842a779536e8d945071403e652d9e4d8111a2615744427dcb8b093e8e88fe')
 
 check() {
   cd "${pkgname}-${pkgver}"
