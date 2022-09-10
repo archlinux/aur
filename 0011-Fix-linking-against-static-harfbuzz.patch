@@ -1,7 +1,7 @@
-From 7caf291b795d3b56e66dd3f7f754ec048fb18710 Mon Sep 17 00:00:00 2001
+From ec97898dc6b1446c10a2e357627ffb198b614a81 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:22:56 +0200
-Subject: [PATCH 11/33] Fix linking against static harfbuzz
+Subject: [PATCH 11/32] Fix linking against static harfbuzz
 
 ---
  src/gui/configure.json | 6 +++++-
@@ -25,5 +25,5 @@ index 2fe0a018b1..ceeee23164 100644
          },
          "imf": {
 -- 
-2.36.1
+2.37.3
 

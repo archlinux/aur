@@ -1,7 +1,7 @@
-From 97dd25ccddaf09c2cd81e7e1c6bc937b18fcb314 Mon Sep 17 00:00:00 2001
+From 9eac4a7941ee50c585a74b5555e0bd15b7bff786 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 5 Aug 2017 21:14:26 +0200
-Subject: [PATCH 21/33] Allow usage of static version with CMake
+Subject: [PATCH 21/32] Allow usage of static version with CMake
 
 Allow selecting between dynamic and static Qt versions
 installed in the same prefix
@@ -11,20 +11,20 @@ installed in the same prefix
  - Set USE_STATIC_QT_BY_DEFAULT to use static version
    via regular find_package(Qt5Core)
 
-Change-Id: I75f8ff616ad23038416be6271369f9dcc36f2528
+Change-Id: I410d22d1bee9dd66b90e07461c85fdb74ef621c1
 ---
  mkspecs/features/create_cmake.prf             |  96 ++++--
  .../data/cmake/Qt5BasicConfig.cmake.in        | 311 +++++++++++-------
- .../data/cmake/Qt5PluginTarget.cmake.in       |  32 +-
+ .../data/cmake/Qt5PluginTarget.cmake.in       |  30 +-
  .../cmake/Qt5StaticOnlyRedirection.cmake.in   |  11 +
  src/corelib/Qt5CoreConfigExtras.cmake.in      |  26 +-
  src/gui/Qt5GuiConfigExtras.cmake.in           |   8 +-
  src/testlib/Qt5TestConfigExtras.cmake.in      |   2 +-
- 7 files changed, 319 insertions(+), 167 deletions(-)
+ 7 files changed, 318 insertions(+), 166 deletions(-)
  create mode 100644 mkspecs/features/data/cmake/Qt5StaticOnlyRedirection.cmake.in
 
 diff --git a/mkspecs/features/create_cmake.prf b/mkspecs/features/create_cmake.prf
-index 37689938eb..636a2af9b6 100644
+index ac089a2f9f..ceae7c1f8c 100644
 --- a/mkspecs/features/create_cmake.prf
 +++ b/mkspecs/features/create_cmake.prf
 @@ -68,7 +68,7 @@ split_incpath {
@@ -45,7 +45,7 @@ index 37689938eb..636a2af9b6 100644
  
  internal_module {
      CMAKE_INTERNAL_MODULE = true
-@@ -214,20 +216,25 @@ contains(CONFIG, plugin) {
+@@ -221,20 +223,25 @@ contains(CONFIG, plugin) {
      win32 {
          !mingw|qtConfig(debug_and_release): debug_suffix="d"
  
@@ -78,7 +78,7 @@ index 37689938eb..636a2af9b6 100644
          mac {
              isEmpty(CMAKE_STATIC_TYPE): CMAKE_PLUGIN_EXT = .dylib
              else: CMAKE_PLUGIN_EXT = .a
-@@ -247,9 +254,9 @@ contains(CONFIG, plugin) {
+@@ -254,9 +261,9 @@ contains(CONFIG, plugin) {
          }
      }
      cmake_target_file.input = $$PWD/data/cmake/Qt5PluginTarget.cmake.in
@@ -90,7 +90,7 @@ index 37689938eb..636a2af9b6 100644
  
      !build_pass {
          QMAKE_SUBSTITUTES += cmake_target_file
-@@ -258,7 +265,7 @@ contains(CONFIG, plugin) {
+@@ -265,7 +272,7 @@ contains(CONFIG, plugin) {
  
      cmake_qt5_plugin_file.files = $$cmake_target_file.output
      static|staticlib: cmake_qt5_plugin_file.files += $$cmake_qt5_plugin_import_file.output
@@ -99,7 +99,7 @@ index 37689938eb..636a2af9b6 100644
      INSTALLS += cmake_qt5_plugin_file
  
      return()
-@@ -271,30 +278,38 @@ mod_deps =
+@@ -278,30 +285,38 @@ mod_deps =
  lib_deps =
  aux_mod_deps =
  aux_lib_deps =
@@ -142,7 +142,7 @@ index 37689938eb..636a2af9b6 100644
      !isEmpty(CMAKE_STATIC_TYPE) {
          CMAKE_LIB_FILE_LOCATION_DEBUG = lib$${CMAKE_QT_STEM}_debug.a
          CMAKE_LIB_FILE_LOCATION_RELEASE = lib$${CMAKE_QT_STEM}.a
-@@ -321,13 +336,6 @@ mac {
+@@ -328,13 +343,6 @@ mac {
      CMAKE_LIB_FILE_LOCATION_DEBUG = $${CMAKE_QT_STEM}$${debug_suffix}.dll
      CMAKE_LIB_FILE_LOCATION_RELEASE = $${CMAKE_QT_STEM}.dll
  
@@ -156,7 +156,7 @@ index 37689938eb..636a2af9b6 100644
      mingw {
          CMAKE_WINMAIN_FILE_LOCATION_DEBUG = libqt5main$${QT_LIBINFIX}$${debug_suffix}.a
          CMAKE_WINMAIN_FILE_LOCATION_RELEASE = libqt5main$${QT_LIBINFIX}.a
-@@ -335,14 +343,30 @@ mac {
+@@ -342,14 +350,30 @@ mac {
          isEmpty(QMAKE_EXTENSION_IMPORTLIB): QMAKE_EXTENSION_IMPORTLIB = a
          CMAKE_IMPLIB_FILE_LOCATION_DEBUG = lib$${CMAKE_QT_STEM}$${debug_suffix}.$${QMAKE_EXTENSION_IMPORTLIB}
          CMAKE_IMPLIB_FILE_LOCATION_RELEASE = lib$${CMAKE_QT_STEM}.$${QMAKE_EXTENSION_IMPORTLIB}
@@ -187,7 +187,7 @@ index 37689938eb..636a2af9b6 100644
      !isEmpty(CMAKE_STATIC_TYPE) {
          CMAKE_LIB_FILE_LOCATION_DEBUG = lib$${CMAKE_QT_STEM}.a
          CMAKE_LIB_FILE_LOCATION_RELEASE = lib$${CMAKE_QT_STEM}.a
-@@ -362,12 +386,12 @@ mac {
+@@ -369,12 +393,12 @@ mac {
  INSTALLS += cmake_qt5_module_files
  
  cmake_config_file.input = $$PWD/data/cmake/Qt5BasicConfig.cmake.in
@@ -202,7 +202,7 @@ index 37689938eb..636a2af9b6 100644
  
  !build_pass:QMAKE_SUBSTITUTES += \
      cmake_config_file \
-@@ -377,11 +401,29 @@ cmake_qt5_module_files.files = \
+@@ -384,11 +408,29 @@ cmake_qt5_module_files.files = \
      $$cmake_config_file.output \
      $$cmake_config_version_file.output
  
@@ -233,7 +233,7 @@ index 37689938eb..636a2af9b6 100644
  
      !build_pass:QMAKE_SUBSTITUTES += cmake_extras_file
  
-@@ -393,7 +435,7 @@ cmake_macros_file.input = $$_PRO_FILE_PWD_/Qt5$${CMAKE_MODULE_NAME}Macros.cmake
+@@ -400,7 +442,7 @@ cmake_macros_file.input = $$_PRO_FILE_PWD_/Qt5$${CMAKE_MODULE_NAME}Macros.cmake
  exists($$cmake_macros_file.input) {
      CMAKE_MODULE_MACROS = "true"
  
@@ -242,7 +242,7 @@ index 37689938eb..636a2af9b6 100644
      cmake_macros_file.CONFIG = verbatim
  
      !build_pass:QMAKE_SUBSTITUTES += cmake_macros_file
-@@ -401,7 +443,7 @@ exists($$cmake_macros_file.input) {
+@@ -408,7 +450,7 @@ exists($$cmake_macros_file.input) {
      cmake_qt5_module_files.files += $$cmake_macros_file.output
  }
  
@@ -887,7 +887,7 @@ index 5a5bc4d61d..97150fb244 100644
      )
  endif()
 diff --git a/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in b/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in
-index acbe1cc33b..65869c5122 100644
+index eaf9011c3d..65869c5122 100644
 --- a/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in
 +++ b/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in
 @@ -1,13 +1,13 @@
@@ -935,14 +935,12 @@ index acbe1cc33b..65869c5122 100644
 -set_property(TARGET Qt5::$${CMAKE_PLUGIN_NAME} PROPERTY QT_PLUGIN_TYPE \"$$CMAKE_PLUGIN_TYPE\")
 -set_property(TARGET Qt5::$${CMAKE_PLUGIN_NAME} PROPERTY QT_PLUGIN_EXTENDS \"$$CMAKE_PLUGIN_EXTENDS\")
 -set_property(TARGET Qt5::$${CMAKE_PLUGIN_NAME} PROPERTY QT_PLUGIN_CLASS_NAME \"$$CMAKE_PLUGIN_NAME\")
--endif()
-\ No newline at end of file
 +list(APPEND ${QT_VARIANT_PREFIX}Qt5$${CMAKE_MODULE_NAME}_PLUGINS ${QT_VARIANT_PREFIX}Qt5::$$CMAKE_PLUGIN_NAME)
 +set_property(TARGET ${QT_VARIANT_PREFIX}Qt5::$${CMAKE_MODULE_NAME} APPEND PROPERTY QT_ALL_PLUGINS_$${CMAKE_PLUGIN_TYPE_ESCAPED} ${QT_VARIANT_PREFIX}Qt5::$${CMAKE_PLUGIN_NAME})
 +set_property(TARGET ${QT_VARIANT_PREFIX}Qt5::$${CMAKE_PLUGIN_NAME} PROPERTY QT_PLUGIN_TYPE \"$$CMAKE_PLUGIN_TYPE\")
 +set_property(TARGET ${QT_VARIANT_PREFIX}Qt5::$${CMAKE_PLUGIN_NAME} PROPERTY QT_PLUGIN_EXTENDS \"$$CMAKE_PLUGIN_EXTENDS\")
 +set_property(TARGET ${QT_VARIANT_PREFIX}Qt5::$${CMAKE_PLUGIN_NAME} PROPERTY QT_PLUGIN_CLASS_NAME \"$$CMAKE_PLUGIN_NAME\")
-+endif()
+ endif()
 diff --git a/mkspecs/features/data/cmake/Qt5StaticOnlyRedirection.cmake.in b/mkspecs/features/data/cmake/Qt5StaticOnlyRedirection.cmake.in
 new file mode 100644
 index 0000000000..0091940fd2
@@ -1091,5 +1089,5 @@ index 2a575958ae..ca0e3be3b5 100644
      INTERFACE_COMPILE_DEFINITIONS QT_TESTCASE_BUILDDIR=\\\"\${CMAKE_BINARY_DIR}\\\"
  )
 -- 
-2.36.1
+2.37.3
 

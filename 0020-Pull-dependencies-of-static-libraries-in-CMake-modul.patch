@@ -1,7 +1,7 @@
-From 2549c562ae5de32f93a1b1ea63f32f6284d0aedf Mon Sep 17 00:00:00 2001
+From 296e4bdadaedd8b2ec38ba98b53b24c337edde5c Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:32:00 +0200
-Subject: [PATCH 20/33] Pull dependencies of static libraries in CMake modules
+Subject: [PATCH 20/32] Pull dependencies of static libraries in CMake modules
 
 When doing a static build of Qt, the dependencies of the Qt
 libraries and plugins itself must be specified when linking
@@ -28,11 +28,11 @@ actually works so I keep using my own implemention for now.
 That's why this patch now removes a lot of the 5.14.0 and 5.15.0
 additions in favour of 'how it used to work'.
 
-Change-Id: I75a9c91e9ab0dc06a941b576c28f87aef254669c
+Change-Id: I9a1a384aeb39f9185342e3581ab98feb8ad103a0
 ---
  .../data/cmake/Qt5BasicConfig.cmake.in        | 242 +++++++++---------
- .../data/cmake/Qt5PluginTarget.cmake.in       |  93 +------
- 2 files changed, 133 insertions(+), 202 deletions(-)
+ .../data/cmake/Qt5PluginTarget.cmake.in       |  92 +------
+ 2 files changed, 133 insertions(+), 201 deletions(-)
 
 diff --git a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
 index db18dbece6..5a5bc4d61d 100644
@@ -384,7 +384,7 @@ index db18dbece6..5a5bc4d61d 100644
      include(\"${CMAKE_CURRENT_LIST_DIR}/Qt5$${CMAKE_MODULE_NAME}ConfigExtras.cmake\")
  !!ENDIF
 diff --git a/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in b/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in
-index b550a52c60..acbe1cc33b 100644
+index 2e23109167..eaf9011c3d 100644
 --- a/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in
 +++ b/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in
 @@ -1,5 +1,6 @@
@@ -396,7 +396,7 @@ index b550a52c60..acbe1cc33b 100644
  
  !!IF !isEmpty(CMAKE_STATIC_TYPE)
  set(_Qt5$${CMAKE_PLUGIN_NAME}_MODULE_DEPENDENCIES \"$${CMAKE_PLUGIN_MODULE_DEPS}\")
-@@ -16,99 +17,17 @@ foreach(_module_dep ${_Qt5$${CMAKE_PLUGIN_NAME}_MODULE_DEPENDENCIES})
+@@ -16,98 +17,17 @@ foreach(_module_dep ${_Qt5$${CMAKE_PLUGIN_NAME}_MODULE_DEPENDENCIES})
  endforeach()
  
  !!IF !isEmpty(CMAKE_RELEASE_TYPE)
@@ -472,15 +472,14 @@ index b550a52c60..acbe1cc33b 100644
 -        \"${_user_specified_genex_versionless},\"
 -        # Add this plugin if all of the following are true:
 -        # 1) the list of explicitly included plugin types is empty
--        # 2) the QT_PLUGIN_EXTENDS property for the plugin is empty or equal to the current
--        #    module name
+-        # 2) the QT_PLUGIN_EXTENDS property for the plugin is empty or equal to one of the modules
+-        #    listed in the plugin's PLUGIN_EXTEND qmake variable
 -        # 3) the user hasn\'t explicitly excluded the plugin.
+-        # TODO: Note that the current implementation of (2) is not entirely correct QTBUG-93501
 -        \"$<AND:\"
 -            \"$<STREQUAL:${_plugin_type_genex},>,\"
 -            \"$<OR:\"
--                # FIXME: The value of CMAKE_MODULE_NAME seems to be wrong (e.g for Svg plugin
--                # it should be Qt::Svg instead of Qt::Gui).
--                \"$<STREQUAL:$<TARGET_PROPERTY:Qt5::$${CMAKE_PLUGIN_NAME},QT_PLUGIN_EXTENDS>,Qt::$${CMAKE_MODULE_NAME}>,\"
+-                $${CMAKE_PLUGIN_EXTENDS_GENEX_CHECK}
 -                \"$<STREQUAL:$<TARGET_PROPERTY:Qt5::$${CMAKE_PLUGIN_NAME},QT_PLUGIN_EXTENDS>,>\"
 -            \">,\"
 -            \"$<NOT:$<IN_LIST:Qt5::$${CMAKE_PLUGIN_NAME},${_no_plugins_genex}>>,\"
@@ -499,7 +498,6 @@ index b550a52c60..acbe1cc33b 100644
  set_property(TARGET Qt5::$${CMAKE_PLUGIN_NAME} PROPERTY QT_PLUGIN_EXTENDS \"$$CMAKE_PLUGIN_EXTENDS\")
  set_property(TARGET Qt5::$${CMAKE_PLUGIN_NAME} PROPERTY QT_PLUGIN_CLASS_NAME \"$$CMAKE_PLUGIN_NAME\")
 +endif()
-\ No newline at end of file
 -- 
-2.36.1
+2.37.3
 

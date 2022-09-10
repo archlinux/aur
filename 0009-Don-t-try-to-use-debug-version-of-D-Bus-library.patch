@@ -1,7 +1,7 @@
-From 0986318a86937b2222babb6ec7c17c05fee23b32 Mon Sep 17 00:00:00 2001
+From 709f40bf4118e2409ef0d6b0e9ea6fecdbaaf220 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 2 Jun 2017 18:28:10 +0200
-Subject: [PATCH 09/33] Don't try to use debug version of D-Bus library
+Subject: [PATCH 09/32] Don't try to use debug version of D-Bus library
 
 Required for a debug build of Qt because mingw-w64-dbus
 does not contain debug version
@@ -25,5 +25,5 @@ index fedc80fa18..e308b5b7d7 100644
                      },
                      "condition": "config.win32 && features.shared"
 -- 
-2.36.1
+2.37.3
 

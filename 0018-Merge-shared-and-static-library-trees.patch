@@ -1,7 +1,7 @@
-From a8c019454d89468771253722224dd00802705289 Mon Sep 17 00:00:00 2001
+From 4329157e0a3f2a59d839da9aaf38b9415391c3da Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:45:08 +0200
-Subject: [PATCH 18/33] Merge shared and static library trees
+Subject: [PATCH 18/32] Merge shared and static library trees
 
 Allow installation of shared and static build in the same prefix
 
@@ -89,10 +89,10 @@ index c15559e174..dd09ac749d 100644
  unset(DEVICE_PRI)
  
 diff --git a/mkspecs/features/qt.prf b/mkspecs/features/qt.prf
-index 69d1954306..2bc7b1dedd 100644
+index da1f44a88a..8096d01c34 100644
 --- a/mkspecs/features/qt.prf
 +++ b/mkspecs/features/qt.prf
-@@ -235,6 +235,23 @@ for(ever) {
+@@ -254,6 +254,23 @@ for(ever) {
              !isEmpty(MODULE_WINRT_CAPABILITIES_DEVICE): \
                  WINRT_MANIFEST.capabilities_device_default += $$MODULE_WINRT_CAPABILITIES_DEVICE
          }
@@ -204,5 +204,5 @@ index c0ce0972ef..5a2deaf31d 100644
  mkspecs.files -= $$PWD/mkspecs/modules $$PWD/mkspecs/modules-inst
  INSTALLS += mkspecs
 -- 
-2.36.1
+2.37.3
 
