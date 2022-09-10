@@ -2,7 +2,7 @@
 
 pkgname=cutefish-screenlocker
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="CutefishOS system screen locker"
 arch=('x86_64')
 url="https://github.com/cutefishos/screenlocker"
@@ -16,7 +16,8 @@ sha512sums=('7b5c2064afe74ff036a840cb73ea51a0b203d4abd2756d983bd160b670374813d85
 build() {
   cd screenlocker-$pkgver
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr .
+  # https://github.com/cutefishos/screenlocker/issues/2
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DKDE4_KSCREENSAVER_PAM_SERVICE=system-login .
   make
 }
 
