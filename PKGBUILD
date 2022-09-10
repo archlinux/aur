@@ -4,7 +4,7 @@ pkgname=cider-git
 _pkgname=Cider
 _pkgbranch=main
 pkgver=1.5.7
-pkgrel=4
+pkgrel=5
 pkgdesc="Project Cider. An open-source Apple Music client built from the ground up with Vue.js and Electron. Compiled from the GitHub repositories ${_pkgbranch} branch."
 arch=("armv7h" "i686" "x86_64")
 url="https://github.com/ciderapp/${_pkgname}.git"
@@ -33,7 +33,7 @@ build() {
     pnpm install --frozen-lockfile
 
     echo "Building : Install Build Dependencies | [Build] | Done"
-    pnpm dist --linux dir
+    pnpm dist:linuxdir
 
     echo "Building : Install Build Dependencies | Build | [Done]"
 }
@@ -41,18 +41,18 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}"
 
-	# Desktop File
+    # Desktop File
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
-	# Install the icon
+    # Install the icon
     install -Dm644 "${srcdir}/${_pkgname}/resources/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-git}.png"
-	# Install the build files
+    # Install the build files
     install -d "$pkgdir/opt/"
     install -d "$pkgdir/usr/bin/"
     cd ${srcdir}/${_pkgname}/dist/linux-unpacked
     mkdir "${pkgdir}/opt/${pkgname%-git}"
     cp -r --preserve=mode * "${pkgdir}/opt/${pkgname%-git}"
     ln -sf "/opt/${pkgname%-git}/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
-	# License and Readme
+    # License and Readme
     install -d "$pkgdir/usr/share/licenses" "$pkgdir/usr/share/doc"
     install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/${_pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
