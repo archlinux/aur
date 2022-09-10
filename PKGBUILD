@@ -14,7 +14,7 @@ license=('BSD')
 depends=('nodejs' 'gulp')
 source=("git+https://github.com/yarnpkg/yarn.git"
         "https://github.com/yarnpkg/yarn/releases/download/v$pkgver/yarn-v$pkgver.tar.gz"
-        "https://github.com/noahvogt/yarn-build-node_modules/releases/download/1.22.19-1/yarn-build-node_modules.tar.gz"
+        "https://github.com/noahvogt/yarn-build-node_modules/releases/download/$pkgver-$pkgrel/yarn-build-node_modules.tar.gz"
         "use-portable-yarn-executable-for-build.patch"
         "remove-legacy-yarnrc-path.patch")
 sha512sums=('SKIP'
