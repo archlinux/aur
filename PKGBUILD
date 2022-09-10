@@ -24,12 +24,14 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "$_pkgname"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
   cd "$_pkgname"
-  rustup set profile minimal
-  rustup default nightly-2020-07-21
-  cargo build --release --locked
+  cargo build --release --frozen
 }
 
 package() {
