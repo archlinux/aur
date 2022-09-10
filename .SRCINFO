@@ -1,6 +1,6 @@
 pkgbase = gitoxide
 	pkgdesc = A command-line application for interacting with git repositories
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/Byron/gitoxide
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = gitoxide
 	license = MIT
 	makedepends = cargo
 	makedepends = cmake
-	source = gitoxide-0.14.0.tar.gz::https://github.com/Byron/gitoxide/archive/refs/tags/v0.14.0.tar.gz
-	cksums = 1498052120
-	sha256sums = c8ca65dcb6a68a14a2a6cf01456745f302fcf5555dbf001c61dfb54dc5eefc64
-	b2sums = a0bc4247c14fb72763b66d6d98dd069c81842548316840132f253242fc9238a382e9d558cd36204ad4b001a7b3de3b7fe70f22b95533f1420c5b1fb491963fc3
+	source = gitoxide-0.15.0.tar.gz::https://github.com/Byron/gitoxide/archive/refs/tags/v0.15.0.tar.gz
+	cksums = 3796950596
+	sha256sums = 0d780f0ec2d01f64cb24be0f82ceb959d96575adb3c6027003f491a0788c6ebb
+	b2sums = aa948e5d4f64379796a6619c30d7816249b545fe9eb88012f456de74f809b21e8c7d73d7639290b51c136e750868d7e869aacad1f95d8d39cb236b9257c95a46
 	depends_x86_64 = gcc-libs
 	depends_i686 = gcc-libs
 
