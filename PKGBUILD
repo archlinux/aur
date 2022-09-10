@@ -2,7 +2,7 @@
 
 pkgname="xdg-sanity"
 pkgver=0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A tool to sanely open http/s links."
 arch=("any")
 url="https://git.tebibyte.media/emma/xdg-sanity"
@@ -17,7 +17,7 @@ sha256sums=("SKIP")
 
 prepare() {
   cd ..
-  gendesk -n --exec="xdg-sanity %U" --genericname="Web Browser" --categories="Network;WebBrowser" --mimetypes="text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;application/x-xpinstall" PKGBUILD
+  gendesk -n --categories="Network;WebBrowser" --exec="xdg-sanity %U" --genericname="Web Browser" --icon="browser" --mimetypes="text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;application/x-xpinstall" PKGBUILD
   mv xdg-sanity.desktop "${srcdir}"
 }
 
