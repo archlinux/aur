@@ -1,0 +1,16 @@
+pkgbase = yarn-xdg-bin
+	pkgdesc = Fast, reliable, and secure dependency management - with xdg basedir patches (binary version)
+	pkgver = 1.22.19
+	pkgrel = 2
+	url = https://classic.yarnpkg.com/
+	arch = any
+	license = BSD
+	depends = nodejs
+	depends = gulp
+	provides = yarn
+	conflicts = yarn
+	options = !strip
+	source = https://github.com/noahvogt/yarn-build-node_modules/releases/download/1.22.19-2/yarn-xdg-1.22.19-2-any.pkg.tar.zst
+	sha256sums = 4d4d09350c7e190ca69120a4d5ec68d30226e8ef97afa792faa6002b8ab84bb3
+
+pkgname = yarn-xdg-bin
