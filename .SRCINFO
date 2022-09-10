@@ -1,0 +1,18 @@
+pkgbase = gnome-shell-extension-desktop-icons-ng
+	pkgdesc = A Gtk4 fork from the official desktop icons project, with several enhancements.
+	pkgver = 6
+	pkgrel = 1
+	url = https://extensions.gnome.org/extension/5263/gtk4-desktop-icons-ng-ding
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = glib2
+	depends = gnome-shell
+	conflicts = gnome-shell-extension-desktop-icons-ng-git, gnome-shell-extension-desktop-icons-ng
+	source = desktop-icons-ng-version6.tar.gz::https://gitlab.com/smedius/desktop-icons-ng/-/archive/Version6/desktop-icons-ng-Version6.tar.gz
+	sha256sums = ac30b56ed431de9a9ebffa63d83813dda0cbc93d678ce0c32a4d73f3b120b07c
+	sha512sums = 5d214f1187ca03a06d8a0d77b66b9bd3b6be356b24f70e90ae6173ad4c50ddecf8b290ef6e12e61f44678aa19de44f6a8814ea20b79baf2ec6dbbaf4a4e0b834
+
+pkgname = gnome-shell-extension-gtk4-desktop-icons-ng
