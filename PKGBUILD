@@ -6,7 +6,7 @@ url='https://www.gimp.org/'
 arch=('x86_64')
 license=('GPL' 'LGPL')
 depends=('gtk3' 'babl' 'gegl' 'glib-networking' 'mypaint-brushes1' 'poppler-data' 'appstream-glib')
-makedepends=('meson' 'ninja' 'intltool' 'iso-codes' 'gobject-introspection')
+makedepends=('meson' 'ninja' 'intltool' 'iso-codes' 'gobject-introspection' 'libxslt')
 options=('!emptydirs' '!docs')
 
 _name="${pkgname%-devel-stripped}"
