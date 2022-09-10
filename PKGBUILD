@@ -2,7 +2,7 @@
 
 pkgname=taskell
 pkgver=1.11.4
-pkgrel=227
+pkgrel=228
 pkgdesc='A command-line kanban board/task manager'
 license=(BSD)
 arch=(x86_64)
