@@ -1,17 +1,14 @@
 pkgbase = protocase-designer
 	pkgdesc = The fastest and easiest way to design, price, and build custom electronics enclosures.
-	pkgver = 4.6.13
+	pkgver = 6.0
 	pkgrel = 1
 	url = http://www.protocasedesigner.com/
-	arch = i686
 	arch = x86_64
 	license = custom
 	depends = java-runtime-common
-	depends = jre7-openjdk
-	source = https://www.protocasedesigner.com/RELEASE/protocaseDesigner-linux-amd64-4.6.13.tar.gz
+	source = https://www.protocasedesigner.com/RELEASE/ProtocaseDesigner-linux-beta.tar.gz
 	source = ProtocaseDesigner.desktop
-	md5sums = df197d715c974e7ab6b4e125495c1cad
-	md5sums = f66d02094444eac61f468371589fcc9c
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = protocase-designer
-
