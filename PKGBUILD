@@ -4,9 +4,9 @@
 
 pkgname='pomsky-bin'
 _pkgname=${pkgname%%-bin}
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
-pkgdesc='Formerly rulex — a new, portable, regular expression language written in Rust (pre-compiled)'
+pkgdesc='Formerly rulex — a portable, modern regular expression language written in Rust (pre-compiled)'
 arch=('x86_64')
 url='https://pomsky-lang.org/'
 _rawurl='https://raw.githubusercontent.com/rulex-rs/pomsky/main'
@@ -39,15 +39,15 @@ package() {
 }
 
 sha256sums=(
-  '76db59b1457d9d2bc69f0bf7d6be8c3f1cff82596dd9cb986620a53ba8feeef0'
+  'b15c3f4dea50272dff619bf6893513a44e5cebeab56665d5bdc8cc9797bb1a87'
   SKIP SKIP SKIP SKIP
 )
 sha512sums=(
-  'ad8a3c50df3c4da36902d29fd84adae154f0ad3c82b89e9fc33d3f3ebac2e65a9f15a430172c5d608cc8c09e7150be2b83af857fa4da2e24fbbefdc90891e8af'
+  '4a0239d122506632e22e3861aa1f122f01416449130d59954c38b068c9c8c415fd455ab5130e209935e178943462ad07d3582ba88d7aaf9f44f9001ae7d6945f'
   SKIP SKIP SKIP SKIP
 )
 b2sums=(
-  '1e2bac1c7f5a0b79ec4a6028358849cefb6e4bf7a610c6441b7200c4858add6202b6cb67d288f90d12ef2a6f0a40c15e0f89deba8c4b8b408aee5c783cf6bf93'
+  '3827209b971b037624c096c2c2902a1aabaf225c5ad2c642204e03a3f39ad3867ae2a0af3a8c7d0a0b8ae96e449ecc351c86a4d94e208cfa4f697d6bc789168c'
   SKIP SKIP SKIP SKIP
 )
 
