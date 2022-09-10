@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=leiden
-_pkgver=0.4.2
+_pkgver=0.4.3
 pkgname=r-${_pkgname,,}
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='R Implementation of Leiden Clustering Algorithm'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-tibble
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cace86748c4aa1720508210658ee2f63f7875be5bac215084001fdc59d22e2bd')
+sha256sums=('6a464b4b860e621749b3b701bb7ceb07e23c1a36be241c3e13b18105eb980938')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
