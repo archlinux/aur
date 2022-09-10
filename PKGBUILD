@@ -1,6 +1,6 @@
 # Maintainer: Kevin S <aur@eldenring.mozmail.com>
 pkgname=audiobookshelf-git
-pkgver=v2.1.2.r7.gc5f91ec
+pkgver=v2.1.5.r3.ge32f51f
 pkgrel=1
 pkgdesc="Self-hosted audiobook server for managing and playing audiobooks"
 arch=('any')
