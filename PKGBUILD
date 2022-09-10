@@ -3,7 +3,7 @@ pkgname=betterbird-bin
 _pkgname=betterbird
 pkgver=102.2.2
 _build=bb16
-pkgrel=1
+pkgrel=2
 pkgdesc="EN-US // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will."
 arch=('x86_64')
 url="https://www.betterbird.eu/index.html"
@@ -34,4 +34,4 @@ package() {
     done
 }
 sha256sums=('ef2f526b934261e7d57670e672b304b84ff76c215512891c97adfef90d53bb13'
-            'c613467d1c0826d663b406b6fe37e44127eb8c0cae23748aa8ca43a16dd32cbf')
+            '04e24196c18b83d464d415bd060048cf47656f148ac36f6bbfe4c53adaaeec7f')
