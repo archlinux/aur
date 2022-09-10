@@ -1,7 +1,7 @@
 # Maintainer: Piotr Grabowski <fau999@gmail.com>
 _pkgname='kamite'
 pkgname="${_pkgname}-bin"
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 _gitname="v${pkgver}"
 _archivename="Kamite_${pkgver}_Linux.zip"
@@ -23,7 +23,7 @@ conflicts=()
 source=(
     https://github.com/fauu/Kamite/releases/download/"${_gitname}"/"${_archivename}"
 )
-b2sums=('2d223c0e4334df3dc250f387af1081074cde3879cbcf3d19fa869f63f0e4c94f2fb9ed6969e72879247ab80510d1a73b61072fed499bbb3c7a70909c47a4fafb')
+b2sums=('3fa5da49a681b710029c90175cd6eee674701f7582d57b2328e2fd1892b50a951147e94757313e4ab57bf7727d2a7810201e105e8f9fe1d612299801bb1e6318')
 
 package() {
     cd "${srcdir}"/"${_pkgname}"
