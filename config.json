@@ -3,7 +3,7 @@
   "address": "0.0.0.0",
   "port": 5244,
   "jwt_secret": "random generated",
-  "cdn": "https://cdn.jsdelivr.net/npm/alist-web@$version/dist/",
+  "cdn": "",
   "database": {
     "type": "sqlite3",
     "host": "",
@@ -11,7 +11,7 @@
     "user": "",
     "password": "",
     "name": "",
-    "db_file": "data.db",
+    "db_file": "/var/lib/alist/data.db",
     "ssl_mode": "disable",
     "table_prefix": "x_"
   },
@@ -20,10 +20,10 @@
     "cert_file": "",
     "key_file": ""
   },
-  "temp_dir": "../../cache/alist/temp",
+  "temp_dir": "/var/cache/alist/temp",
   "log": {
     "enable": false,
-    "name": "../../log/alist/log.log",
+    "name": "/var/log/alist/log.log",
     "max_size": 10,
     "max_backups": 5,
     "max_age": 28,

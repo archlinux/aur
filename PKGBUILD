@@ -3,8 +3,8 @@
 
 pkgname=alist-bin
 _pkgname=${pkgname%-bin}
-pkgver=3.0.0_beta.0
-pkgrel=5
+pkgver=3.0.0_beta.1
+pkgrel=1
 pkgdesc="Another file list program that supports multiple storage"
 arch=("aarch64" "x86_64")
 url="https://github.com/Xhofe/alist"
@@ -12,13 +12,14 @@ license=('AGPL3')
 provides=(${_pkgname})
 backup=("etc/alist/config.json")
 source=("alist.service" "config.json")
+optdepends=('aria2: download by aria2.')
 install=alist.install
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz"::"${url}/releases/download/v${pkgver//_/-}/alist-linux-arm64.tar.gz")
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz"::"${url}/releases/download/v${pkgver//_/-}/alist-linux-amd64.tar.gz")
 sha256sums=('f9f6152b0329946809778efd2396496363212dd2fb1fe465a049a54ab9d5a5f2'
-            'bbae12ab423ddd9b6cf98d7b7ba3f1e0ea59cc2d556f19a781b5e09a9168be84')
-sha256sums_aarch64=('25a5b044545b7cbde3c308d6033b6758c2657fa46201c2341efa25b3455c78bd')
-sha256sums_x86_64=('557586fc1b97a752fed61965eb694840948582a3e7226bf0604074fd4ccbc952')
+            'b72f194a7b8855e97eeb76e63e179f38132cc9e6be9daa5b396699c9c11611de')
+sha256sums_aarch64=('ae7d8e90c956217bd850a4025beb7cee23238c57cfd344f383de245e82d7f026')
+sha256sums_x86_64=('fc09f84487027869e80a35eb5a9700277496703fb75bc8a0cd92b85c2822cd8b')
 
 package() {
     install -Dm755 alist ${pkgdir}/usr/bin/alist
