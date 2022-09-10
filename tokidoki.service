@@ -1,0 +1,13 @@
+[Unit]
+Description=A small and robust calendar & contacts server
+After=network.target
+
+[Service]
+Type=simple
+User=tokidoki
+Restart=always
+EnvironmentFile=/etc/tokidoki/params
+ExecStart=/usr/bin/tokidoki -addr=${addr} -auth.url=${auth_url} -storage.url=${storage_url}
+
+[Install]
+WantedBy=multi-user.target

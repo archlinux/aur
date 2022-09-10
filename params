@@ -1,0 +1,3 @@
+addr=:8080
+storage_url=file:///var/tokidoki/db
+auth_url=
