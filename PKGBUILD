@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=toml-adapt
 pkgdesc="A very simple cli for manipulating toml files"
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 arch=(any)
 url="https://github.com/firefly-cpp/${pkgname}"
@@ -10,8 +10,8 @@ depends=(python-toml python-click)
 makedepends=(python-build python-install python-poetry-core)
 checkdepends=(python-pytest)
 optdepends=('man-db: manual pages for toml-adapt')
-source=(${url}/archive/${pkgver}.tar.gz)
-sha512sums=('f5440a771ed320c622610165f63293da1e1dd061bdc7c15dd84c3680422134431088719ba28662ae7762a87326eacf53992a2b3ce58ffe3dc1151420a700880d')
+source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
+sha512sums=('6748496ca8eb36ffa7c05a6a8d6efeafa95825517f6a2c2ddbe073f251be91532aeac7d444f766dfed9da9a8ab226d46598658434c4cf104c928c85866ca5688')
 
 build() {
   cd ${pkgname}-${pkgver}
