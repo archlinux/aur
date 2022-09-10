@@ -3,7 +3,7 @@ pkgname=betterbird-zh-bin
 _pkgname=betterbird
 pkgver=91.13.0
 _build=bb36
-pkgrel=1
+pkgrel=2
 pkgdesc="CHINESE // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will."
 arch=('x86_64')
 url="https://www.betterbird.eu/index.html"
@@ -34,5 +34,5 @@ package() {
     done
 }
 sha256sums=('645bf43d8ee3b375d7e1815cc2a34ac39d86479f1c4ee42b33a078e7aa458b8f'
-        'c99879de5ec8e8f98c2436bf414c7c167762c06df0846b42bb51195d6c8a3031')
+        '04e24196c18b83d464d415bd060048cf47656f148ac36f6bbfe4c53adaaeec7f')
 
