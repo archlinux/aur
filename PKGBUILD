@@ -4,7 +4,7 @@
 # Maintainer: Erik Bender <erik.bender@develerik.dev>
 
 pkgname=studio-3t
-pkgver=2022.8.0
+pkgver=2022.8.1
 pkgrel=1
 pkgdesc="The Professional Client, IDE and GUI for MongoDB"
 arch=('x86_64')
@@ -17,7 +17,7 @@ replaces=('mongochef')
 
 source=("$pkgname-$pkgver.tar.gz::https://download.studio3t.com/studio-3t/linux/${pkgver}/${pkgname}-linux-x64.tar.gz")
 
-sha256sums=('a12555d69f1aa61a774faf047f91642a4cb588cd5d4abbffdc62eb84c59395cd')
+sha256sums=('da3f5086bf49d18224bd8df307519fba6f16d8257c226d01dddb374e82f414e0')
 
 prepare() {
     # Extract, rename and add execution permision
