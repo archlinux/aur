@@ -6,7 +6,7 @@
 
 pkgname=icecat
 pkgver=102.2.0
-pkgrel=1
+pkgrel=2
 _commit=e77a1fa25ac66250e88d5d9901a2ba670edb94cc
 pkgdesc="GNU version of the Firefox browser."
 arch=(x86_64)
@@ -29,14 +29,16 @@ source=(https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-${_comm
         icecat.desktop icecat-safe.desktop
         'https://raw.githubusercontent.com/canonical/firefox-snap/5622734942524846fb0eb7108918c8cd8557fde3/patches/fix-ftbfs-newer-cbindgen.patch'
         'arc4random.patch::https://hg.mozilla.org/mozilla-central/raw-rev/970ebbe54477'
-        'arc4random_buf.patch::https://hg.mozilla.org/mozilla-central/raw-rev/a61813bd9f0a')
+        'arc4random_buf.patch::https://hg.mozilla.org/mozilla-central/raw-rev/a61813bd9f0a'
+        'packed_simd_2.patch::https://hg.mozilla.org/releases/mozilla-esr102/raw-rev/4598f299a274')
 
 sha256sums=('ef38a884f063eda441b9d43c3515622d558c58e3a0148030ad1823e5dea871bd'
             'e00dbf01803cdd36fd9e1c0c018c19bb6f97e43016ea87062e6134bdc172bc7d'
             '33dd309eeb99ec730c97ba844bf6ce6c7840f7d27da19c82389cdefee8c20208'
             'd3ea2503dff0a602bb058153533ebccd8232e8aac1dc82437a55d724b8d22bc2'
             '68fc08b5ee1cfd45bd72d484fe299688b09e5f7ba8e27445fd27ba71d792538c'
-            '6a8799d135761a405eb8c9be03c20287fe616bb0a101b898ad08bdb26c3d6447')
+            '6a8799d135761a405eb8c9be03c20287fe616bb0a101b898ad08bdb26c3d6447'
+            '1ae1919fd6540146d35789edbe5ea1e0f82bf085b7871542a3a294ac8b4238fa')
 
 prepare() {
   cd gnuzilla-${_commit}
@@ -133,6 +135,9 @@ EOF
   patch -Np1 -i ../../../arc4random.patch
   patch -Np1 -i ../../../arc4random_buf.patch
 
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1783784
+  patch -Np1 -i ../../../packed_simd_2.patch
+
   # cbindgen
   patch -Np1 -i ../../../fix-ftbfs-newer-cbindgen.patch
 
@@ -183,7 +188,7 @@ build() {
 
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
-  export MACH_USE_SYSTEM_PYTHON=1
+  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   export LDFLAGS="${LDFLAGS} -lwayland-client"
 
   # LTO needs more open files
