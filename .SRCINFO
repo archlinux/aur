@@ -1,0 +1,15 @@
+pkgbase = v2mixer-bin
+	pkgdesc = v2mixer, the movie editor, video mixer
+	pkgver = 1.20210707
+	pkgrel = 1
+	url = http://v2mixer.livev2.com/
+	arch = x86_64
+	license = custom
+	depends = jre8-openjdk
+	depends = ffmpeg4.4
+	source = https://v2mixer.livev2.com/f/cms/10/v2mixer-linux-x86_64-native-1.20210707.tgz
+	source = v2mixer.desktop
+	sha256sums = 129c7d10a35df09db4450c701b698286328b8011699970a43090b1faa0079893
+	sha256sums = 0b4469724aa3dc23a90fab47cea181292df97573f72a6238a360ba646f9a090c
+
+pkgname = v2mixer-bin
