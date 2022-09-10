@@ -2,7 +2,7 @@
 
 pkgname=python-mynux
 _name=${pkgname#python-}
-pkgver=0.1.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Just a dotfile manager with some extras."
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python)
 makedepends=(python-build python-installer python-wheel)
 conflicts=(${pkgname}-git)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('b06a5b6d4b89c91f66fc6a04d3682bad76d2e0f90796cf60afb44ff00cf2b62b')
+sha256sums=('12277a4c48a3bbf3417849f76ca700367da5fde6ba8d92f0093bb7964dbc3948')
 
 build() {
     cd "$_name-$pkgver"
