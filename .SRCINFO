@@ -1,6 +1,6 @@
 pkgbase = transcribe
 	pkgdesc = music transcription aid
-	pkgver = 9.10
+	pkgver = 9.21
 	pkgrel = 1
 	url = http://www.seventhstring.com/xscribe/overview.html
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = transcribe
 	depends = libsm
 	depends = gtk3
 	depends = gst-plugins-base-libs
-	source_x86_64 = https://www.seventhstring.com/xscribe/downlo/xscsetup-9.10.0.tar.gz
-	md5sums_x86_64 = fea4ca954ce5bed18af367eabf19e39d
+	source_x86_64 = https://www.seventhstring.com/xscribe/downlo/xscsetup-9.21.0.tar.gz
+	md5sums_x86_64 = 18631429036aa7d9d17205b54eb5b9e2
 
 pkgname = transcribe
