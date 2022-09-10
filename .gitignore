@@ -1,0 +1,4 @@
+pkg/
+src/
+shadowsocks-go-domain-sets-git/
+*.tar.zst

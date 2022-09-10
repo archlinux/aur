@@ -1,0 +1,14 @@
+pkgbase = shadowsocks-go-domain-sets-git
+	pkgdesc = Commonly used domain sets for shadowsocks-go
+	pkgver = 20220910115313
+	pkgrel = 1
+	url = https://github.com/database64128/shadowsocks-go-domain-sets
+	arch = any
+	license = AGPL3
+	makedepends = git
+	provides = shadowsocks-go-domain-sets
+	conflicts = shadowsocks-go-domain-sets
+	source = shadowsocks-go-domain-sets-git::git+https://github.com/database64128/shadowsocks-go-domain-sets.git#branch=release
+	b2sums = SKIP
+
+pkgname = shadowsocks-go-domain-sets-git
