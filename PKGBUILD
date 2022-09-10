@@ -1,7 +1,7 @@
 # Maintainer: Roboron <robertoms258 at gmail dot com >
 
 pkgname=simutrans-extended-pak128.britain
-pkgver=r4328.584d17bfa
+pkgver=r4329.43d06deed
 pkgrel=1
 pkgdesc="High resolution graphics set for Simutrans Extended, with a British theme"
 arch=('any')
