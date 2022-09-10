@@ -1,0 +1,14 @@
+pkgbase = scantool-git
+	pkgdesc = OBD-II vehicle diagnostic scanner
+	pkgver = v2.1.2.r21.gce6257a
+	pkgrel = 1
+	url = https://github.com/kees/scantool
+	arch = x86_64
+	license = GPL
+	depends = allegro4
+	provides = scantool
+	conflicts = scantool
+	source = git+https://github.com/kees/scantool.git
+	sha256sums = SKIP
+
+pkgname = scantool-git
