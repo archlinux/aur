@@ -1,0 +1,23 @@
+pkgbase = ultimate-doom-builder-git
+	pkgdesc = A documentation generator for GZDoom ZScript code
+	pkgver = 3.0.0.r3991.b24a2dd
+	pkgrel = 1
+	url = https://github.com/jewalky/UltimateDoomBuilder
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	makedepends = mono-msbuild
+	makedepends = ripgrep
+	makedepends = sed
+	makedepends = coreutils
+	makedepends = make
+	makedepends = imagemagick
+	depends = mono
+	provides = ultimate-doom-builder
+	conflicts = ultimate-doom-builder
+	source = ultimate-doom-builder::git+https://github.com/jewalky/UltimateDoomBuilder
+	source = ultimate-doom-builder.desktop
+	sha512sums = SKIP
+	sha512sums = ba12a66ec415b34f96c3bd7d89d5970030973afc245bfdae012a6aa7049a5cc7aa90b9d3b043c4c9bc6051fc5b8fffe98e30511f6d7483640180e5095c7fddc3
+
+pkgname = ultimate-doom-builder-git

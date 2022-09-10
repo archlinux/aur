@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Ultimate Doom Builder
+Icon=ultimate-doom-builder
+TryExec=ultimate-doom-builder
+Exec=ultimate-doom-builder
+Terminal=false
+StartupWMClass=ultimate-doom-builder
