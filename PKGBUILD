@@ -1,7 +1,7 @@
 # Maintainer: Georg Graßnick <dev.grassnick at mailbox dot org>
 
 pkgname=ymuse
-pkgver=0.20
+pkgver=0.21
 pkgrel=1
 pkgdesc="Easy, functional, and snappy client for Music Player Daemon"
 arch=("x86_64" "aarch64")
@@ -14,7 +14,7 @@ source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/yktoo/${pkgname}/archive/v${pkgver}.tar.gz"
 )
 sha512sums=(
-	"c155af87261efc3eefd2d533b786fec6c8883bd4e7185bacf05cfdd02129ca386ace7d9588042680e0edcf58ed15e9432f88b82ac87f544942bdaa1cc314b07b"
+	"11227b20c28d3c5118e8d977e936ea822e15ec71981297f825b145969009bf5ab0a754a5806b0bfdb4913392a557a434becda6c359a2f975c055764bf1095c08"
 )
 
 build() {
@@ -26,7 +26,7 @@ build() {
 
 	cd "${pkgname}-${pkgver}"
 	go generate
-	go build -ldflags "-s -w -X main.version=${pkgver} -X main.date=$(date --iso-8601=seconds)"
+	go build -ldflags "-s -w -X main.version=${pkgver} -X main.commit=$(git rev-parse HEAD) -X main.date=$(date --iso-8601=seconds)"
 }
 
 package() {
@@ -41,5 +41,5 @@ package() {
 		install -Dm644  ${file} "${pkgdir}"/usr/share/locale/${file#resources/i18n/generated}
 	done
 
-	install -Dm644 resources/ymuse.desktop -t "${pkgdir}"/usr/share/applications/
+	install -Dm644 resources/com.yktoo.ymuse.desktop -t "${pkgdir}"/usr/share/applications/
 }
