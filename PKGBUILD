@@ -1,8 +1,9 @@
-# Maintainer: Nelson Santos <nbsantos@gmail.com>
+# Maintainer: hertg <aur@her.tg>
 _pkgname=egpu-switcher
 pkgname=$_pkgname-git
-pkgver=0.16.0.r0.gd22ce2e
+pkgver=0.17.0.r2.ge9b9479
 pkgrel=1
+epoch=0
 pkgdesc="Distribution agnostic script that works with NVIDIA and AMD cards."
 arch=('any')
 url="https://github.com/hertg/egpu-switcher"
@@ -12,7 +13,7 @@ makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
 install=${pkgname}.install
-source=("${pkgname}::git+https://github.com/hertg/egpu-switcher.git")
+source=("${pkgname}::git+https://github.com/hertg/egpu-switcher.git#branch=legacy")
 md5sums=('SKIP')
 
 pkgver() {
