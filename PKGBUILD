@@ -2,7 +2,7 @@
 # Contributor: Marc Plano-Lesay <marc.planolesay@gmail.com>
 
 pkgname=bazelisk
-pkgver=1.13.0
+pkgver=1.13.1
 pkgrel=1
 pkgdesc='A user-friendly launcher for Bazel.'
 arch=('x86_64')
@@ -15,8 +15,8 @@ source=(
   "bazelisk-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
   "bazelisk-bin-${pkgver}::https://github.com/bazelbuild/bazelisk/releases/download/v${pkgver}/bazelisk-linux-amd64"
 )
-sha256sums=('2b4959d0011b26ee6f3407d523b32cc74057770236e0d4ea662a0cbf37fd578e'
-            'f99b1b16046e5ca12aaa872b33abcb63f0545051fb09d5aaddc96667f5d2d12d')
+sha256sums=('5c22d347cafb97ce352c434c095fa4ee4ab7fe673faa163cdef739c56cf52f46'
+            '294d0584d7ab4e893fc99b38479caec730f0fed47fff479c618559010882136b')
 
 prepare() {
   chmod +x "${srcdir}/${source[1]%%::*}"
