@@ -5,4 +5,4 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!apostrophe-NEWS
+!Allow-building-with-webkitgtk-4.1.patch
