@@ -2,8 +2,8 @@
 # Contributor: Lucas Silva <lcdss@live.com>
 
 pkgname=lbry-desktop-bin
-pkgver=0.53.4
-pkgrel=4
+pkgver=0.53.5
+pkgrel=1
 pkgdesc='Desktop app for the lbry-network (Odysee.com) - a decentralized, user-controlled content marketplace and YouTube alternative'
 arch=('x86_64')
 url="https://github.com/lbryio/lbry-desktop.git"
@@ -15,7 +15,7 @@ conflicts=('lbry' 'lbry-desktop' 'lbry-app-bin' 'lbrynet' 'lbrynet-bin' 'lbry-de
 depends=('libxtst' 'nss' 'alsa-lib' 'gtk3')
 source=("https://github.com/lbryio/lbry-desktop/releases/download/v$pkgver/LBRY_$pkgver.deb"
         'https://raw.githubusercontent.com/lbryio/lbry-desktop/master/LICENSE')
-b2sums=('8e512ed7f796fbca95190a11cffd0d9f0a08bb0743e106e612f418782061a2fe3a4fa6bb6e6628d8ed99f3ef897c3bca5cb4b5df2e4445d527c8f4604c6f9061'
+b2sums=('eaefcbb8867195f11a485aadad26dc84772359a3828638cf20e68449948aef6871141815df8757a74cc5a1d86ad7a19eb62bdffbec6b04163249f20017d59e5e'
         'eadd07c9a4210b7d3b2408483433daca30100cdca4590379f376538d2c7cb300d77da3ffcd4950c279c7ecae729fbb2f5f6447c4a4fd8079ef979c54aaa21e42')
 
 package() {
