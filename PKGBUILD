@@ -4,8 +4,8 @@
 # Contributor: Tom Zander <tom@flowee.org>
 
 pkgname=lbry-desktop
-pkgver=0.53.4
-pkgrel=3
+pkgver=0.53.5
+pkgrel=1
 arch=('x86_64')
 pkgdesc='Desktop app for the lbry-network (Odysee.com) - a decentralized, user-controlled content marketplace and YouTube alternative'
 url="https://github.com/lbryio/${pkgname}.git"
