@@ -1,0 +1,25 @@
+pkgbase = tootle-git-vpzomtrrfrt
+	pkgdesc = GTK4 client for Mastodon (git, vpzomtrrfrt fork)
+	pkgver = r435.85a8c6b
+	pkgrel = 1
+	url = https://github.com/vpzomtrrfrt/tootle
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	makedepends = gobject-introspection
+	depends = gtk4
+	depends = libadwaita
+	depends = glib2
+	depends = libgee
+	depends = libsoup
+	depends = json-glib
+	depends = libxml2
+	depends = libsecret
+	provides = tootle
+	conflicts = tootle
+	source = git+https://github.com/vpzomtrrfrt/tootle
+	sha512sums = SKIP
+
+pkgname = tootle-git-vpzomtrrfrt
