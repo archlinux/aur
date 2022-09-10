@@ -1,0 +1,15 @@
+pkgbase = 9front-drawterm-git
+	pkgdesc = A fork of drawterm to incorporate features from 9front, most importantly DP9IK authentication support and the TLS based rcpu protocol.
+	pkgver = r488.60e52ed
+	pkgrel = 1
+	url = http://drawterm.9front.org/
+	arch = i686
+	arch = x86_64
+	license = custom: LPC, MIT
+	makedepends = git
+	depends = xorg-server
+	conflicts = 9front-drawterm-hg
+	source = 9front-drawterm-git::git+git://git.9front.org/plan9front/drawterm
+	md5sums = SKIP
+
+pkgname = 9front-drawterm-git
