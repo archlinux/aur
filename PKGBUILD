@@ -10,14 +10,14 @@
 
 _qt_module=qtxmlpatterns
 pkgname=mingw-w64-qt5-xmlpatterns-static
-pkgver=5.15.4
+pkgver=5.15.6
 pkgrel=1
 arch=('any')
 pkgdesc="Support for XPath, XQuery, XSLT and XML schema validation (mingw-w64)"
 depends=('mingw-w64-qt5-base-static')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
-_commit=dfcae10dec8c1c2c544ad0cd303cea113b0af51d
+_commit=30e6c84fe2752cde8b53aff9d38c2095cd7c8761
 _basever=$pkgver
 pkgver+=+kde+r0
 makedepends+=('git')
