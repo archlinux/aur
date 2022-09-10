@@ -1,5 +1,5 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
-# Contribtor: Igor <f2404@yandex.ru>
+# Contributor: Igor <f2404@yandex.ru>
 # Contributor: Davi da Silva Böger <dsboger at gmail dot com>
 pkgname=tilix-git
 pkgver=1.9.5.r33.gee1e65ac
