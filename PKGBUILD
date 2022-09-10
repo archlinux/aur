@@ -4,8 +4,8 @@
 
 pkgname=libdrm-git
 _realname=libdrm
-pkgver=2.4.110.r27.g83763622
-pkgrel=1
+pkgver=2.4.113.r0.gfb5c0c30
+pkgrel=2
 pkgdesc="Userspace interface to kernel DRM services, master git version"
 arch=(i686 x86_64)
 license=('custom')
@@ -16,9 +16,7 @@ url="http://dri.freedesktop.org/"
 provides=('libdrm')
 conflicts=('libdrm')
 
-# source=('libdrm::git+https://gitlab.freedesktop.org/mesa/drm.git'
-#        COPYING)
- source=('libdrm::git+https://gitlab.freedesktop.org/mesa/drm.git'
+source=('libdrm::git+https://gitlab.freedesktop.org/mesa/drm.git'
         COPYING)
 sha512sums=('SKIP'
             'b0ca349b882a4326b19f81f22804fabdb6fb7aef31cdc7b16b0a7ae191bfbb50c7daddb2fc4e6c33f1136af06d060a273de36f6f3412ea326f16fa4309fda660')
@@ -40,7 +38,7 @@ build() {
         --buildtype plain \
         --wrap-mode      nofallback \
         -D udev=false \
-        -D valgrind=false
+        -D valgrind=disabled
     meson configure _build
     ninja -C _build
 }
