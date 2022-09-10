@@ -186,7 +186,7 @@ fi
   patch -Np1 -i "${_librewolf_patches_dir}"/remove_addons.patch
 
   # Debian patch to enable global menubar
-  # patch -Np1 -i "${_librewolf_patches_dir}"/unity-menubar.patch
+  patch -Np1 -i "${_librewolf_patches_dir}"/unity-menubar.patch
 
   # KDE menu
   # patch -Np1 -i "${_librewolf_patches_dir}"/mozilla-kde_after_unity.patch
