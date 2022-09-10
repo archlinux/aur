@@ -3,21 +3,21 @@
 
 pkgbase=grails
 pkgname=(grails grails-docs)
-pkgver=5.1.2
+pkgver=5.2.3
 pkgrel=1
-pkgdesc='Groovy on rails, web framework'
+pkgdesc='Groovy on rails, a web framework'
 url='https://grails.org/'
 arch=(any)
 license=(Apache)
 makedepends=(apache-ant java-environment junit setconf unzip)
 optdepends=('grails-docs: documentation for grails'
             'groovy: the groovy programming language')
-options=('!emptydirs')
-noextract=("${pkgname[1]}-${pkgver}.zip")
-source=(${pkgname[0]}-${pkgver}.zip::https://github.com/grails/grails-core/releases/download/v${pkgver}/grails-${pkgver}.zip
-        ${pkgname[1]}-${pkgver}.zip::https://github.com/grails/grails-doc/releases/download/v${pkgver}/grails-docs.zip)
-b2sums=('60befa361c8df05c7cf6dcf85343856fb422b806ec60fabad65643d0393213d934e276f2a1e51fa9ef1298fb49d2cdf43013991440f294b8dfc167589b1a5014'
-        'b4a71f5d9ab5627903552370df0787d210db1203ea91e20d3abd394ed8e34d508ec56c761dd87f198c021b0fa1a71d7061a7965a6eb9b173de5b9dd10ac0a8fc')
+options=(!emptydirs)
+noextract=(${pkgname[1]}-$pkgver.zip)
+source=(${pkgname[0]}-$pkgver.zip::https://github.com/grails/grails-core/releases/download/v$pkgver/grails-$pkgver.zip
+        ${pkgname[1]}-$pkgver.zip::https://github.com/grails/grails-doc/releases/download/v$pkgver/grails-docs.zip)
+b2sums=('0fd4b0918206f03f4fd330eff3a4271e562128baa196bc82c94be66b9e4b78af78ed20f3bd3a7f878c3f2128d4b94eff25c596e641a7c4a9675bcd0528cadcc8'
+        'a71bd8d67c4ee08cbb2db530340d667cf9f77229e377bd75de1c0c064de934e628b0db71fafb6cc37a3cbbbda25a89943f323618ace790868f8377a20c5c972c')
 
 prepare() {
   cd $pkgbase-$pkgver
@@ -27,7 +27,7 @@ prepare() {
 }
 
 package_grails() {
-  depends=('java-environment' 'junit' 'bash')
+  depends=(bash java-environment junit)
 
   install -Dm755 $pkgbase.profile "$pkgdir/etc/profile.d/$pkgname.sh"
   cd $pkgbase-$pkgver
