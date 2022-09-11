@@ -2,7 +2,7 @@
 _pkgname=egpu-switcher
 pkgname=$_pkgname-git
 pkgver=v0.18.0.rc.5.r0.g04b64c8
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="Distribution agnostic script that works with NVIDIA and AMD cards."
 arch=('any')

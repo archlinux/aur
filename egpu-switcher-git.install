@@ -7,7 +7,7 @@ post_install() {
 }
 
 pre_upgrade() {
-	egpu-switcher disable
+	egpu-switcher cleanup
 }
 
 post_upgrade() {
