@@ -1,13 +1,13 @@
 # Maintainer: Andrew Gregory Neumann <agneum14@gmail.com>
 pkgname=4bulk-git
 pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc="download all media from 4chan thread"
 arch=('any')
 url="https://github.com/agneum14/4bulk"
 license=('MIT')
 optdepends=('xclip')
-depends=('python' 'python-beautifulsoup4' 'python-psutil' 'python-requests')
+depends=('python' 'python-beautifulsoup4' 'python-requests')
 makedepends=('git')
 source=($pkgname::git+$url)
 md5sums=('SKIP')

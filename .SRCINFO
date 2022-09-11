@@ -1,14 +1,13 @@
 pkgbase = 4bulk-git
 	pkgdesc = download all media from 4chan thread
 	pkgver = 1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/agneum14/4bulk
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = python
 	depends = python-beautifulsoup4
-	depends = python-psutil
 	depends = python-requests
 	optdepends = xclip
 	source = 4bulk-git::git+https://github.com/agneum14/4bulk
