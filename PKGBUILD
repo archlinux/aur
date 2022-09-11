@@ -2,7 +2,7 @@
 # Contributor: Alexandr Parkhomenko <it@52tour.ru>
 
 pkgname=python-orange-widget-base
-pkgver=4.17.0
+pkgver=4.18.0
 pkgrel=1
 pkgdesc="Base widget and workflow definitions for Orange."
 arch=('any')
@@ -15,7 +15,7 @@ depends=('python-matplotlib'
          'python-typing_extensions'
          'python-orange-canvas-core')
 source=("https://files.pythonhosted.org/packages/source/o/${pkgname/python-}/${pkgname/python-}-${pkgver}.tar.gz")
-sha256sums=('8897491277ce80a1ea49306552be778ece4d0bf8fad3373388936554c32bccd8')
+sha256sums=('30769fb1fe6ba1f3d2fd67173fdb0461cf53610d2ad68b81db616c038aa834d6')
 
 build() {
   cd "${srcdir}/orange-widget-base-$pkgver"
