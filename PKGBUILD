@@ -8,10 +8,10 @@
 pkgname='mosek'
 pkgdesc="A commercial solver for mathematical optimization problems."
 epoch=1
-_majver=9
-_minver=3
+_majver=10
+_minver=0
 _ver=${_majver}.${_minver}
-_tnyver=6
+_tnyver=20
 pkgver=${_ver}.${_tnyver}
 pkgrel=1
 arch=('x86_64')
@@ -25,13 +25,12 @@ options=('!strip')
 
 source=("mosek-${pkgver}.tar.bz2::https://download.mosek.com/stable/${pkgver}/mosektools${_mosekarch}.tar.bz2")
 
-sha512sums=('35b68df41074b86e7ecacbf2cbf53ad63d2f82cb773b88a8add3a7bcfcefefa989ee61f46ec8c2e01b90a866c9f631e7443976f3717a4351367d153f84b03fbb')
+sha512sums=('0d7869e0cdcf7e44f65cac8b1fb2a054d338cf6b3f8664e337dc33bb378259a702de3d5835bfd73a6cefa16194a73f9f2ca77ac5547c6d1253e7f2cd9105b930')
 
 package() {
 	# Install shared libraries.
 	cd "${srcdir}/mosek/${_ver}/tools/platform/${_mosekarch}/bin"
 	install -dm755 "${pkgdir}/usr/lib"
-	install -m755 "libcilkrts.so.5" "${pkgdir}/usr/lib/"
 	install -m755 "libmosek64.so.${_ver}" "${pkgdir}/usr/lib/"
 	install -m755 "libmosekxx${_majver}_${_minver}.so" "${pkgdir}/usr/lib/"
 	ln -rs "${pkgdir}/usr/lib/libmosek64.so.${_ver}" "${pkgdir}/usr/lib/libmosek64.so"
