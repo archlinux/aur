@@ -1,9 +1,9 @@
 # Maintainer: Mintsuki <mintsuki@protonmail.com>
 pkgname=limine
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced, portable, multiprotocol bootloader"
-arch=('i686' 'x86_64' 'aarch64')
+arch=('i686' 'pentium4' 'x86_64' 'armv7h' 'aarch64')
 url="https://limine-bootloader.org/"
 license=('BSD')
 depends=('glibc')
@@ -20,6 +20,5 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
-  ln -s ./limine-deploy "${pkgdir}/usr/bin/limine-install"
   install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

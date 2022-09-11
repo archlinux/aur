@@ -1,10 +1,12 @@
 pkgbase = limine
 	pkgdesc = An advanced, portable, multiprotocol bootloader
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://limine-bootloader.org/
 	arch = i686
+	arch = pentium4
 	arch = x86_64
+	arch = armv7h
 	arch = aarch64
 	license = BSD
 	makedepends = nasm
