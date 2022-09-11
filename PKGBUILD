@@ -1,7 +1,7 @@
 pkgname=crunchyroll-bin
 _pkgname=Crunchyroll-bin
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 _pkgrel_x86_64=1
 pkgdesc="Unnofficial CrunchyRoll desktop application"
 arch=('x86_64')
