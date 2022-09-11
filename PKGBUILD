@@ -1,4 +1,7 @@
 # Maintainer: jmcb <joelsgp@protonmail.com>
+
+# doesn't work: game tries to log to working directory which makes permission error
+
 pkgname=tachyons
 pkgver=a0.8.34
 pkgrel=1
