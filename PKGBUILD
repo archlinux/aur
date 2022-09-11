@@ -1,5 +1,5 @@
 pkgname=webcord
-pkgver=3.8.1
+pkgver=3.8.2
 pkgrel=1
 pkgdesc="A Discord and Fosscord client made with the Electron."
 arch=('any')
@@ -20,7 +20,7 @@ source=(
 )
 
 sha256sums=(
-    'f7144eb63939039ce666994916d694537e3bb1991ec159b47b89d79e800c0d39'
+    'b780b8129ff9bddb231398109967007761e84cf95694f2db5d129d49e0c3cc18'
     '09fdd4b51af5c87480dceb52fe67e5666720f56e1f98c1aa567b5ca6699e261f'
     'c803c7227982fad22390a8d6d11f3707171d5e9b1a394731a6a07773eab75b1f'
     '3a9b6df6be84741b5839d559301b95cb75e012fd7f20f3f8eac10cc11bccc4a1'
@@ -37,7 +37,7 @@ prepare() {
         "@types/source-map-support@^0.5.4" \
         "@types/spdx-expression-parse@^3.0.1" \
         "@types/ws@^8.5.1" \
-        "electron@^20.0.0"
+        "electron@>=13.0.0 <21.0.0"
 
     rm -r "node_modules/electron/node_modules/@types/node"
 
