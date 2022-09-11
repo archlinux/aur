@@ -2,7 +2,7 @@
 
 pkgname=changedetection.io
 pkgver=0.39.19.1
-pkgrel=2
+pkgrel=3
 pkgdesc='change monitoring of web pages'
 arch=('any')
 url='https://github.com/dgtlmoon/changedetection.io'
