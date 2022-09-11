@@ -1,0 +1,18 @@
+pkgbase = cubiomes-viewer-git
+	pkgdesc = An efficient graphical Minecraft seed finder and map viewer
+	pkgver = 2.3.3.r3.g15b90aa
+	pkgrel = 1
+	url = https://github.com/Cubitect/cubiomes-viewer
+	arch = x86_64
+	license = GPL3
+	makedepends = gendesk
+	makedepends = qt5-tools
+	depends = qt5-base
+	provides = cubiomes-viewer
+	conflicts = cubiomes-viewer
+	source = git+https://github.com/Cubitect/cubiomes-viewer.git
+	source = git+https://github.com/Cubitect/cubiomes.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = cubiomes-viewer-git
