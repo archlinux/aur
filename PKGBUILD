@@ -1,7 +1,7 @@
 pkgname=primevideo-bin
 _pkgname=PrimeVideo-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 _pkgrel_x86_64=1
 pkgdesc="Unnofficial Prime Videos desktop application"
 arch=('x86_64')

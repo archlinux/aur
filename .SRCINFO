@@ -1,7 +1,7 @@
 pkgbase = primevideo-bin
 	pkgdesc = Unnofficial Prime Videos desktop application
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/primevideo
 	arch = x86_64
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = primevideo-bin
 	depends = gtk3
 	depends = libxss
 	conflicts = primevideos-git
-	source_x86_64 = https://gitlab.com/primevideo/binaries/1.0.0-1/-/raw/main/PrimeVideo-linux-x64.tar.xz
+	source_x86_64 = https://gitlab.com/primevideo/binaries/1.0.0-2/-/raw/main/PrimeVideo-linux-x64.tar.xz
 	sha256sums_x86_64 = SKIP
 
 pkgname = primevideo-bin
