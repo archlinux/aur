@@ -1,12 +1,12 @@
 pkgname=bun-bin
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="Incredibly fast JavaScript runtime, bundler, transpiler and package manager – all in one."
 arch=('x86_64')
-url="https://github.com/Jarred-Sumner/bun"
+url="https://github.com/oven-sh/bun"
 license=('MIT')
 provides=("bun=$pkgver" 'bun')
-source=("bun-linux-x64-${pkgver}.zip::https://github.com/Jarred-Sumner/bun/releases/download/bun-v${pkgver}/bun-linux-x64.zip")
+source=("bun-linux-x64-${pkgver}.zip::https://github.com/oven-sh/bun/releases/download/bun-v${pkgver}/bun-linux-x64.zip")
 sha512sums=('SKIP')
 
 
