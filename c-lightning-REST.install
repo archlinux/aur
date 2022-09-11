@@ -1,0 +1,13 @@
+
+post_install() {
+
+  echo "$(tput setaf 1)To get this running at a minimum you'll need to copy /usr/lib/node_modules/c-lightning-rest/sample-cl-rest-config.json$(tput sgr0)"
+  echo "$(tput setaf 1)to /usr/lib/node_modules/c-lightning-rest/cl-rest-config.json and setup the configuration options in cl-rest-config.json$(tput sgr0)"
+  echo "$(tput setaf 1)appropriately for your setup.  You also may need to edit /usr/lib/systemd/system/REST.service for you configuration.$(tput sgr0)"
+  echo "$(tput setaf 1)$(tput sgr0)"
+  echo "$(tput setaf 1)Make sure that the user "bitcoin" can access the lightning-rpc file and configure LNRPCPATH appropriately.$(tput sgr0)"
+  echo "$(tput setaf 1)$(tput sgr0)"
+  echo "$(tput setaf 1)You can then start REST.service with systemctl.$(tput sgr0)"
+  echo "$(tput setaf 1) $(tput sgr0)"
+
+  }
