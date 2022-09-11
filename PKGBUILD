@@ -19,7 +19,7 @@ makedepends=(
 )
 _tag=v${pkgver}
 source=("${url}/archive/refs/tags/${_tag}.tar.gz")
-b2sums=('55d1c82d29cabd5bb367a8d35703a930f7ab855c6f733127c67b8400d193c9cc08f5c4bbc786784939acf943ad6fe1dd9b0fc5a9006904e990208d8761dcf457')
+b2sums=('e023b000d77048e4b50752e3ff91dddfb000cb687d368474b9efec7e1154a9b6da931069fea11314539c148d7f55ff4e54076859ac39cc6b48f0da688025e270')
 
 build() {
 	cd "$pkgname-$pkgver"
