@@ -1,7 +1,7 @@
 pkgbase = amen
 	pkgdesc = A CLI menu tool utilizing abbreviations
-	pkgver = 0.0.1.r3.ga5a743a
-	pkgrel = 2
+	pkgver = 0.0.4.r0.gc108485
+	pkgrel = 1
 	url = https://github.com/Kniben/amen
 	arch = i686
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: alltidsemester <alltidsemester+git@pm.me>
 pkgname=amen
-pkgver=0.0.1.r3.ga5a743a
-pkgrel=2
+pkgver=0.0.4.r0.gc108485
+pkgrel=1
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc='A CLI menu tool utilizing abbreviations'
