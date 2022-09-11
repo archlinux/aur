@@ -21,13 +21,14 @@ noextract=()
 build() {
 	echo ${srcdir}
 	cd ${srcdir}/sasm-asm
-	make
+	make clean -j1
+	make -j1
 }
 
 check() {
 	cd ${srcdir}/sasm-asm
-	make test
-	./sasm-tests
+	make test -j1
+	make run_test -j1
 }
 
 package() {
