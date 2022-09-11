@@ -2,46 +2,26 @@
 
 _target=loongarch64-linux-gnu
 pkgname=$_target-gcc
-pkgver=12.0.0.r185552.g14cdc0fc6a6
-_islver=0.24
-_pkgver=12.0.0
+pkgver=12.2.1
+_pkgdate=20220911
 pkgrel=1
 pkgdesc='Cross compiler for LoongArch 64-bit'
 arch=('x86_64')
 url='https://gcc.gnu.org/'
 license=('GPL' 'LGPL' 'FDL')
 groups=('loongarch')
-depends=("$_target-binutils" "$_target-glibc" 'libmpc')
-options=('!emptydirs' '!strip')
-source=('git+https://github.com/loongson/gcc.git#branch=loongarch-12'
-        http://isl.gforge.inria.fr/isl-${_islver}.tar.xz)
-sha256sums=('SKIP'
-            '043105cc544f416b48736fff8caf077fb0663a717d06b1113f16e391ac99ebad')
-
-pkgver() {
-	cd "$srcdir/gcc"
-	printf "${_pkgver}.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+depends=("$_target-binutils" "$_target-glibc" 'libmpc' 'libisl' 'zstd')
+options=('!emptydirs' '!strip' '!lto')
+source=("https://github.com/yetist/gcc/releases/download/v${_pkgdate}/gcc-${pkgver}-${_pkgdate}.tar.xz")
+sha256sums=('cbdf44fb512a626a3d8d3141fd20ea22737b738ca46e55f3c7af9195bdef11a7')
 
 prepare() {
-  cd gcc
-
-  # link isl for in-tree builds
-  ln -sf ../isl-$_islver isl || true
+  cd gcc-$pkgver
 
   echo $pkgver > gcc/BASE-VER
 
   # Do not run fixincludes
   sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
-
-  # Arch Linux installs LoongArch64 libraries /lib
-  sed -i '/lib64/s/lib64/lib/' gcc/config/loongarch/t-linux
-  sed -i "/GLIBC_DYNAMIC_LINKER_LP64.*lib64/s@lib64@usr/$_target/lib@" gcc/config/loongarch/gnu-user.h
-  sed -i "/.*INT_ABI_SUFFIX \"lib64\"/s@lib64@usr/$_target/lib@" gcc/config/loongarch/linux.h
-
-  # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
-  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" \
-    "$srcdir/gcc/"{libiberty,gcc}/configure
 
   rm -rf "$srcdir/gcc-build"
   mkdir "$srcdir/gcc-build"
@@ -50,12 +30,15 @@ prepare() {
 build() {
   cd gcc-build
 
+  CFLAGS=${CFLAGS/-Werror=format-security/}
+  CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
+
   # Using -pipe causes spurious test-suite failures.
   # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
   CFLAGS=${CFLAGS/-pipe/}
   CXXFLAGS=${CXXFLAGS/-pipe/}
 
-  "$srcdir/gcc/configure" \
+  "$srcdir/gcc-$pkgver/configure" \
       --prefix=/usr \
       --program-prefix=$_target- \
       --with-local-prefix=/usr/$_target \
@@ -72,8 +55,7 @@ build() {
       --disable-nls \
       --disable-libunwind-exceptions \
       --disable-libstdcxx-pch \
-      --disable-libssp \
-      --enable-multilib \
+      --disable-multilib \
       --disable-werror \
       --enable-languages=c,c++ \
       --enable-shared \
@@ -84,20 +66,22 @@ build() {
       --enable-linker-build-id \
       --enable-lto \
       --enable-plugin \
-      --enable-install-libiberty \
       --enable-gnu-indirect-function \
       --enable-default-pie \
-      --with-abi=lp64 \
-      --enable-tls \
-      --with-arch=loongarch64 \
-      --with-fix-loongson3-llsc \
-      --enable-checking=release
+      --enable-checking=release \
+      --enable-cet=auto \
+      --enable-default-ssp \
+      --disable-multiarch \
+      --disable-multilib \
+      --with-build-config=bootstrap-lto \
+      --enable-link-serialization=1
+
   make -j`nproc`
 }
 
 package() {
   make -C gcc-build DESTDIR="$pkgdir" \
-    install-gcc install-target-libgcc install-target-libstdc++-v3
+    install-gcc install-target-{libgcc,libstdc++-v3,libgomp,libgfortran,libquadmath,libatomic}
 
   # Strip target binaries
   find "$pkgdir/usr/lib/gcc/$_target/" "$pkgdir/usr/$_target/lib" -type f \
@@ -112,6 +96,8 @@ package() {
 
   # Remove files that conflict with host gcc package
   rm -r "$pkgdir/usr/share/"{man/man7,info,"gcc-$pkgver"}
+
+  ln -sf lib $pkgdir/usr/$_target/lib64
 }
 
 # vim: ts=2 sw=2 et:

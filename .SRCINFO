@@ -1,6 +1,6 @@
 pkgbase = loongarch64-linux-gnu-gcc
 	pkgdesc = Cross compiler for LoongArch 64-bit
-	pkgver = 12.0.0.r185552.g14cdc0fc6a6
+	pkgver = 12.2.1
 	pkgrel = 1
 	url = https://gcc.gnu.org/
 	arch = x86_64
@@ -11,11 +11,12 @@ pkgbase = loongarch64-linux-gnu-gcc
 	depends = loongarch64-linux-gnu-binutils
 	depends = loongarch64-linux-gnu-glibc
 	depends = libmpc
+	depends = libisl
+	depends = zstd
 	options = !emptydirs
 	options = !strip
-	source = git+https://github.com/loongson/gcc.git#branch=loongarch-12
-	source = http://isl.gforge.inria.fr/isl-0.24.tar.xz
-	sha256sums = SKIP
-	sha256sums = 043105cc544f416b48736fff8caf077fb0663a717d06b1113f16e391ac99ebad
+	options = !lto
+	source = https://github.com/yetist/gcc/releases/download/v20220911/gcc-12.2.1-20220911.tar.xz
+	sha256sums = cbdf44fb512a626a3d8d3141fd20ea22737b738ca46e55f3c7af9195bdef11a7
 
 pkgname = loongarch64-linux-gnu-gcc
