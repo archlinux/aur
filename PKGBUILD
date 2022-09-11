@@ -17,7 +17,7 @@ license=(GPL)
 depends=(
   ffmpeg21
   bzip2
-  liblsmash.so
+  #liblsmash.so
 )
 makedepends=(
   git

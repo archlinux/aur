@@ -10,7 +10,6 @@ pkgbase = x264_152
 	license = GPL2
         depends = ffmpeg21
 	depends = bzip2
-	depends = liblsmash.so
 	makedepends = git
 	makedepends = l-smash
 	makedepends = nasm
