@@ -1,0 +1,7 @@
+*.tar.*
+src/
+pkg/
+LICENSE*
+cache/
+*.tgz.*
+*.tgz
