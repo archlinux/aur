@@ -4,7 +4,7 @@
 
 pkgname=tmuxinator
 pkgver=3.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage complex tmux sessions easily"
 arch=(any)
 url="https://github.com/aziz/tmuxinator"
@@ -13,7 +13,7 @@ depends=(
   'ruby'
   'ruby-erubis'
   'ruby-thor'
-  'ruby-xdg>=4.3.0'
+  'ruby-xdg5'
 )
 makedepends=('ruby-bundler')
 optdepends=('zsh-completions: for ZSH completion')
