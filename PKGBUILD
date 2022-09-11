@@ -1,7 +1,7 @@
 #Maintainer Yury Bobylev <bobilev_yury@mail.ru>
 pkgname="libcommunist"
 pkgver="1.0.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Library for P2P communications"
 license=('GPL3')
 arch=('x86_64')
@@ -10,7 +10,7 @@ source=("https://github.com/ProfessorNavigator/libcommunist/archive/refs/tags/v1
 url="https://github.com/ProfessorNavigator/libcommunist"
 makedepends=('meson' 'ninja' 'pkgconf' 'libtorrent-rasterbar' 'libgcrypt' 'libzip')
 depends=('libtorrent-rasterbar' 'libgcrypt' 'libzip')
-sha256sums=('7fb90f662299b19416c13a4f714539efbc3f5c6d5ac72acf2a69f1b10dc244ec')
+sha256sums=('ad434a3020674039697de81fb508272fa39c4df5720018e9a695d48513582a36')
 options=(strip)
 
 build() {   
