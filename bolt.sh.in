@@ -16,7 +16,7 @@ buildenv_functions+=('buildenv_bolt')
 buildenv_bolt() {
     if
     check_buildoption "bolt" "y"; then
-         export PATH="~/.toolchain/llvm/bin:$PATH"
+         export PATH="$HOME/.toolchain/llvm/bin:$PATH"
          export CC=clang
 		 export CXX=clang++
  		 export CC_LD=lld
