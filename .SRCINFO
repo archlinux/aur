@@ -1,0 +1,24 @@
+pkgbase = xx-net-git
+	pkgdesc = XX-Net, a web proxy tool.(development version)
+	pkgver = 4.9.5.r5.g6d979b7a
+	pkgrel = 1
+	url = https://github.com/XX-net/XX-Net
+	install = xx-net-git.install
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	license = unknown
+	makedepends = git
+	depends = python
+	depends = python-pycryptodome
+	optdepends = python2: A high-level scripting language
+	optdepends = miredo: a Teredo server/client, x86_64
+	optdepends = miredo-debian: a Teredo client, armv7
+	conflicts = xx-net
+	options = !strip
+	source = xx-net-git::git+https://github.com/XX-net/XX-Net/
+	source = xx-net.service
+	md5sums = SKIP
+	md5sums = 9911696fa6f035c8cb4e1c10359c6682
+
+pkgname = xx-net-git
