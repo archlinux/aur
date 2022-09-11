@@ -1,0 +1,23 @@
+pkgbase = loongarch64-linux-gnu-gcc-bootstrap
+	pkgdesc = Cross compiler for LoongArch 64-bit
+	pkgver = 12.2.1
+	pkgrel = 1
+	url = https://gcc.gnu.org/
+	arch = x86_64
+	groups = loongarch
+	license = GPL
+	license = LGPL
+	license = FDL
+	depends = loongarch64-linux-gnu-binutils
+	depends = loongarch64-linux-gnu-glibc
+	depends = libmpc
+	depends = libisl
+	depends = zstd
+	provides = loongarch64-linux-gnu-gcc
+	conflicts = loongarch64-linux-gnu-gcc
+	options = !emptydirs
+	options = !strip
+	source = https://github.com/yetist/gcc/releases/download/v20220911/gcc-12.2.1-20220911.tar.xz
+	sha256sums = cbdf44fb512a626a3d8d3141fd20ea22737b738ca46e55f3c7af9195bdef11a7
+
+pkgname = loongarch64-linux-gnu-gcc-bootstrap
