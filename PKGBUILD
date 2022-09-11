@@ -6,7 +6,7 @@ pkgname=dnote-cli-bin
 _pkgname="${pkgname%-bin}"
 _shortname="${_pkgname%-cli}"
 pkgver=0.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple command line notebook for programmers"
 arch=('x86_64')
 url="https://www.getdnote.com/"
@@ -21,5 +21,5 @@ package() {
 
 	install -Dm 755 "${_shortname}" "${pkgdir}/usr/bin/${_shortname}"
 
-	install -Dm 644 "README.md" "${pkgdir}/usr/share/doc/${_shortname}"
+	install -Dm 644 "README.md" "${pkgdir}/usr/share/doc/${_shortname}/README.md"
 }
