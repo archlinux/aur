@@ -1,6 +1,6 @@
 # Maintainer: Pig Fang <g-plane@hotmail.com>
 pkgname=deno-bin
-pkgver=1.25.1
+pkgver=1.25.2
 pkgrel=1
 pkgdesc="A modern runtime for JavaScript and TypeScript."
 arch=('x86_64' 'aarch64')
