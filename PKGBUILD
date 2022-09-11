@@ -1,7 +1,7 @@
 # Maintainer: Dominik Schwaiger <mail@dominik-schwaiger.ch>
 pkgname=surrealdb
 pkgver=1.0.0_beta.7
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A scalable, distributed, collaborative, document-graph database, for the realtime web"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('rust')
 checkdepends=('rust')
 optdepends=()
 provides=()
-conflicts=()
+conflicts=('surrealdb-bin')
 replaces=()
 backup=()
 options=()
