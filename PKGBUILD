@@ -41,7 +41,7 @@ build() {
 check() {
   # * Unset LDFLAGS as testsuite makes assumptions about which ones are active.
   # * Do not abort on errors - manually check log files.
-  make -O -C "binutils-$pkgver" LDFLAGS="" -k check
+  make -O -C "binutils-$pkgver" LDFLAGS="" -k check || true
 }
 
 package() {
