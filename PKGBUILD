@@ -4,7 +4,7 @@ pkgname=cura-5-bin
 _pkgname=cura-5-bin
 _shortname=cura5
 pkgver=5.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Uncompressed version of Ultimaker Cura 5.1'
 arch=('x86_64')
 url="https://ultimaker.com/software/ultimaker-cura"
@@ -20,8 +20,8 @@ source=(
 )
 
 sha256sums=('eab92e31c12c1b101fbaf2664df00bed182528e282874e4f379c87b29692ac76'
-            '55cf596db74ab369e33f860d581e9e27b72a1d4688de37868c038ad5328fb09a'
-            '4db683cf5424c97553ba3b6ab834b838ffec731441b240e6451e4ffc12a66976')
+            'f7917a834849618f62147bf68e8cb1cb31157e724163325effd495ddd8be2494'
+            '22ee374746989baa4f87e79ecbc662b681ba9ca3fd93902408367461a2b4b571')
    
 prepare() {
     cd "${srcdir}"
@@ -29,18 +29,15 @@ prepare() {
     ${srcdir}/Ultimaker-Cura-${pkgver}-linux.AppImage --appimage-extract 1>>/dev/null 2>>/dev/null
     mv squashfs-root ${_shortname}
     cd ${_shortname}
-    # Simplify life
-    cp /usr/lib/libstdc++* ${srcdir}
-    cp /usr/lib/librsvg-2.so* ${srcdir}
     patch -Np0 < ${srcdir}/cura.desktop.patch
 
 }
 
 package() {
-    mkdir -p "${pkgdir}/opt/"
+    install -d "${pkgdir}/opt/"
     cp -rf "${srcdir}/${_shortname}" "${pkgdir}/opt/"
-    mkdir -p "${pkgdir}/usr/bin/"
-    cp -f "${srcdir}/cura5.sh" "${pkgdir}/usr/bin/${_shortname}"
+    install -d "${pkgdir}/usr/bin/"
+    install -Dm 755 "${srcdir}/cura5.sh" "${pkgdir}/usr/bin/${_shortname}"
     install -Dm 644 "${srcdir}/cura5/cura-icon.png" "${pkgdir}/usr/share/pixmaps/cura5-icon.png"
     install -Dm 644 "${srcdir}/cura5/cura.desktop" "${pkgdir}/usr/share/applications/cura5.desktop"
 }
