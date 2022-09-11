@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=terra
-_cranver=1.6-7
+_cranver=1.6-17
 pkgname=r-${_cranname,,}
 pkgdesc="Spatial Data Analysis"
 url="https://cran.r-project.org/package=terra"
@@ -14,23 +14,22 @@ depends=(
     "gdal>=2.2.3"
     "geos>=3.4.0"
     "proj>=4.9.3"
-    r-rcpp
+    "r-rcpp"
     "r>=3.5.0"
-    sqlite
+    "sqlite"
 )
 optdepends=(
-    r-deldir
-    r-leaflet
-    r-ncdf4
-    r-raster
+    "r-deldir"
+    "r-leaflet"
+    "r-ncdf4"
     "r-sf>=0.9.8"
-    r-tinytest
-    r-xml
+    "r-tinytest"
+    "r-xml"
 )
 makedepends=()
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=("3470e03264836a1f9e9cc1029276b7481020042448914bc3948cd8144f3ac7dc")
+b2sums=('64006ae3afca48caf0adb7253b597d1dbf52915f7f9cb5b497d2c3334236fce25f2b1a4a6740762292c3f821f537ec7116ffe52fb7a5d776197e53355b2f6a2d')
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
