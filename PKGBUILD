@@ -1,5 +1,5 @@
 # Maintainer: Tobias Heider <me@tobhe.de>
-# Maintainer: T.J. Townsend <tj@openbsd.org>
+# Maintainer: T.J. Townsend <blakkheim@archlinux.org>
 
 pkgname=openiked
 pkgver=7.1
