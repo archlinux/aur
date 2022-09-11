@@ -3,13 +3,14 @@
 _gemname=xdg
 pkgname=ruby-xdg5
 pkgver=5.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides a Ruby implementation of the XDG Base Directory Specification (version 5.x)"
 arch=('any')
 url="https://www.alchemists.io/projects/xdg"
 license=('Apache')
 depends=('ruby')
 makedepends=('ruby-rdoc')
+provides=('ruby-xdg=5.3.0')
 conflicts=('ruby-xdg')
 options=(!emptydirs)
 source=("http://rubygems.org/downloads/xdg-$pkgver.gem")
