@@ -10,7 +10,7 @@ provides=('mac')
 conflicts=('mac')
 makedepends=('gcc' 'make')
 source=("https://monkeysaudio.com/files/MAC_${pkgver//.}_SDK.zip")
-sha256sums=('08f6170f45643eadc131554eb939b0c5041570755c27cf08fa0da6fd5bc3aaf9')
+sha256sums=('4d9bc4bc46d43fb85f5261ac11e52fdf300cb975a185a13b1a04608a5ca879db')
 
 _project_path() {
     echo "$srcdir/Source/Projects/NonWindows"
