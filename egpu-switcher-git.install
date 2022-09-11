@@ -1,3 +1,24 @@
 pre_remove() {
-	egpu-switcher cleanup
+	egpu-switcher disable
+}
+
+post_install() {
+	egpu-switcher enable --no-prompt
+}
+
+pre_upgrade() {
+	egpu-switcher disable
+}
+
+post_upgrade() {
+	# TODO remove this warning
+	major=$(cut -d'.' -f1 <<< $1 | cut -c2-)
+	minor=$(cut -d'.' -f2 <<< $1)
+	if [ $major -eq '0' -a $minor -lt 18 ]; then
+		echo "========"
+		echo "BREAKING UPDATE: You seem to update from the legacy version, please run the setup again"
+		echo "========"
+	fi
+
+	egpu-switcher enable --no-prompt
 }
