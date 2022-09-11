@@ -1,0 +1,20 @@
+pkgbase = toost
+	pkgdesc = Level viewer for Super Mario Maker 2, based on JiXiaomai's work
+	pkgver = 2.0.2
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gcc11
+	depends = curl
+	depends = glfw
+	depends = glew
+	depends = zlib
+	depends = cairo
+	depends = freetype2
+	depends = curl
+	conflicts = toost-bin
+	source = git+https://github.com/TheGreatRambler/toost.git
+	md5sums = SKIP
+
+pkgname = toost
