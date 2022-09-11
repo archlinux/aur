@@ -2,10 +2,10 @@
 
 pkgname=('archisteamfarm')
 pkgver=5.3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful CLI program primarily for Steam trading card farming based on SteamKit2"
 url="https://github.com/JustArchiNET/ArchiSteamFarm"
-license=('GPL')
+license=('Apache')
 source=("${pkgname}-${pkgver}".tar.gz::https://github.com/JustArchiNET/ArchiSteamFarm/archive/refs/tags/${pkgver}.tar.gz
 	'archisteamfarm')
 b2sums=('7c1a099e647e29b443367b7404121d34a058492234eb16039de18e2cc7a875e5045abb796b76ad8c29f0b6c8921544503393735269277b102ac6b1038df2c0fc'

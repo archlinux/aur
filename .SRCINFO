@@ -1,10 +1,10 @@
 pkgbase = archisteamfarm
 	pkgdesc = Powerful CLI program primarily for Steam trading card farming based on SteamKit2
 	pkgver = 5.3.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JustArchiNET/ArchiSteamFarm
 	arch = any
-	license = GPL
+	license = Apache
 	makedepends = dotnet-sdk-6.0
 	depends = dotnet-runtime-6.0
 	options = !strip
