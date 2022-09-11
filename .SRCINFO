@@ -1,6 +1,6 @@
 pkgbase = markdown2pdf-git
 	pkgdesc = Markdown to PDF converter with syntax highlighting, using md2html (md4c), highlight and wkhtmltopdf.
-	pkgver = 22.07.r14.gedf9cd3
+	pkgver = 22.07.r30.g073bec7
 	pkgrel = 1
 	url = https://github.com/trizen/perl-scripts
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = markdown2pdf-git
 	makedepends = git
 	depends = perl>=5.10.0
 	depends = perl-html-tree
+	depends = perl-ipc-run3
 	depends = wkhtmltopdf
 	depends = highlight
 	depends = md4c
