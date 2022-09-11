@@ -1,34 +1,44 @@
-# Maintainer: Matt C <matt[at]getcryst[dot]al>
-# Developer: axtlos <axtlos[at]salyut[dot]one>
-# Developer: jnats <jnats[at]salyut[dot]one>
+# Maintainer:   echo -n 'TWF0dCBDLiA8bWF0dEBnZXRjcnlzdC5hbD4='     | base64 -d
+# Contributor:  echo -n 'YXh0bG9zIDxheHRsb3NAZ2V0Y3J5c3QuYWw+'     | base64 -d
+# Contributor:  echo -n 'TWljaGFsIFMuIDxtaWNoYWxAZ2V0Y3J5c3QuYWw+' | base64 -d
 
-pkgname=ame
-pkgver=3.2.0
+pkgname=amethyst
+pkgver=3.6.0
 pkgrel=1
-pkgdesc="Fast, efficient and lightweight AUR helper/pacman wrapper"
-arch=('x86_64')
-url="https://git.tar.black/crystal/ame"
+pkgdesc='A fast and efficient AUR helper'
+arch=('x86_64' 'aarch64')
+url="https://github.com/crystal-linux/$pkgname"
 license=('GPL3')
-source=("git+https://git.tar.black/crystal/programs/amethyst.git")
+source=("git+$url#tag=v$pkgver")
 sha256sums=('SKIP')
-depends=('git' 'binutils' 'fakeroot' 'openssl' 'sqlite')
+depends=(
+    'git' 
+    'binutils' 
+    'fakeroot' 
+    'pacman-contrib' 
+    'vim' 
+    'expac' 
+    'less'
+)
 makedepends=('cargo')
-options=('!lto')
 
 prepare() {
-    cd ${srcdir}/amethyst
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --target ${CARCH}-unknown-linux-gnu
+    cd "$srcdir/$pkgname"
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    cd ${srcdir}/amethyst
-    export RUSTUP_TOOLCHAIN=stable
+    cd "$srcdir/$pkgname"
+    export RUSTUP_TOOLCHAIN=nightly
     export CARGO_TARGET_DIR=target
-    cargo build --release 
+    cargo build --frozen --release
 }
 
 package() {
-    cd ${srcdir}/amethyst
-    install -Dm755 target/release/${pkgname} -t "${pkgdir}"/usr/bin
+    cd "$srcdir/$pkgname"
+    find target/release \
+        -maxdepth 1 \
+        -executable \
+        -type f \
+        -exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
 }
