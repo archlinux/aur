@@ -1,4 +1,4 @@
-pkgbase = amethyst
+pkgbase = ame
 	pkgdesc = A fast and efficient AUR helper
 	pkgver = 3.6.0
 	pkgrel = 1
@@ -17,4 +17,4 @@ pkgbase = amethyst
 	source = git+https://github.com/crystal-linux/amethyst#tag=v3.6.0
 	sha256sums = SKIP
 
-pkgname = amethyst
+pkgname = ame

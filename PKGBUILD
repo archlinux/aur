@@ -2,12 +2,13 @@
 # Contributor:  echo -n 'YXh0bG9zIDxheHRsb3NAZ2V0Y3J5c3QuYWw+'     | base64 -d
 # Contributor:  echo -n 'TWljaGFsIFMuIDxtaWNoYWxAZ2V0Y3J5c3QuYWw+' | base64 -d
 
-pkgname=amethyst
+pkgname=ame
+_pkgname=amethyst
 pkgver=3.6.0
 pkgrel=1
 pkgdesc='A fast and efficient AUR helper'
 arch=('x86_64' 'aarch64')
-url="https://github.com/crystal-linux/$pkgname"
+url="https://github.com/crystal-linux/$_pkgname"
 license=('GPL3')
 source=("git+$url#tag=v$pkgver")
 sha256sums=('SKIP')
@@ -23,7 +24,7 @@ depends=(
 makedepends=('cargo')
 
 prepare() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$_pkgname"
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
