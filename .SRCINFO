@@ -1,6 +1,6 @@
 pkgbase = rom-properties
 	pkgdesc = This shell extension adds a few nice features to file browsers for managing video game ROM and disc images
-	pkgver = 1.8.3
+	pkgver = 1.9
 	pkgrel = 1
 	url = https://github.com/GerbilSoft/rom-properties
 	arch = x86_64
@@ -15,7 +15,8 @@ pkgbase = rom-properties
 	depends = nettle
 	depends = tinyxml2
 	depends = libseccomp
-	source = rom-properties-1.8.3.tar.gz::https://github.com/GerbilSoft/rom-properties/archive/v1.8.3.tar.gz
-	sha256sums = 72bbf5560f197a7a53cf2686e23e204027bf3fbbc5ef733f4194ec3c582e61c4
+	depends = openmp
+	source = rom-properties-1.9.tar.gz::https://github.com/GerbilSoft/rom-properties/archive/v1.9.tar.gz
+	sha256sums = 50a38d85eb37d27ceebcbf412db53f2506281650deda476be0a42126463f7784
 
 pkgname = rom-properties
