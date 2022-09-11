@@ -1,6 +1,6 @@
 pkgbase = communist
 	pkgdesc = Simple GTK4 based p2p messenger
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/ProfessorNavigator/communist
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = communist
 	depends = libcommunist
 	provides = communist
 	options = strip
-	source = https://github.com/ProfessorNavigator/communist/archive/refs/tags/v2.0.1.tar.gz
-	sha256sums = 0dce384590631fbbb4ab1690c9580b3b9894801bde538e7b86a0a3695a1d06be
+	source = https://github.com/ProfessorNavigator/communist/archive/refs/tags/v2.0.2.tar.gz
+	sha256sums = 1bfdd7239ae3c9cac0b722b102124a3792f0e5c41d3d8f0339a5eb9f3b9dfbf1
 
 pkgname = communist
