@@ -8,7 +8,6 @@ pkgbase = ffmpeg21
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	depends = x264_152
 	source = https://ffmpeg.org/releases/ffmpeg-2.1.tar.gz
 	md5sums = 6dc14b2521eb956b2d3799717d6b0ed1
 

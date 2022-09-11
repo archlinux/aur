@@ -1,4 +1,4 @@
-# Maintainer: Suchan Roland <snrd at arcor dot de>
+# Maintainer: Roland Suchan <snrd at arcor dot de>
 
 pkgname=ffmpeg21
 pkgver=2.1
