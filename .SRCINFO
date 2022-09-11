@@ -1,6 +1,6 @@
 pkgbase = tblock
 	pkgdesc = An anti-capitalist ad-blocker that uses the hosts file
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://tblock.codeberg.page
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = tblock
 	depends = python-colorama
 	provides = tblock
 	backup = etc/tblock.conf
-	source = tblock-2.3.0.tar.gz::https://codeberg.org/tblock/tblock/archive/2.3.0.tar.gz
-	sha512sums = 0b803786c5c271eef68aad589b1a497bb7615144ce6eb5fee90c0e8e4255c9ca25d05885c897f34f867792b220f5fcfd1a9d4b62eff64a4214bc184131b3d36b
+	source = tblock-2.4.0.tar.gz::https://codeberg.org/tblock/tblock/archive/2.4.0.tar.gz
+	sha512sums = 4b22298488e515c0cc7928286712b23a53e7390c996d92088683d5efd158265ba31e7c1c671a91deaa9349336fc4c5a865f40185862c321714eb190a886d1221
 
 pkgname = tblock
