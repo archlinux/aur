@@ -1,10 +1,10 @@
-# Maintainer: ValHue <vhuelamo at gmail dot com>
+# Maintainer: CaptainKnots <captainknots@riseup.net>
 #
-# Contributor: ValHue <vhuelamo at gmail dot com>
+# Contributor: CaptainKnots <captainknots@riseup.net>
 #
 pkgname="mcmojave-circle-icon-theme"
 _pkgname="McMojave-circle"
-pkgver="2022.02.18"
+pkgver="2022.07-03"
 pkgrel="1"
 pkgdesc="MacOSX Mojave like circle icon theme for linux desktops."
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('mojave-gtk-theme: Recommended GTK theme.')
 options=('!strip')
 
 source=("${_pkgname}-${pkgver//./-}.tar.gz::${url}/archive/${pkgver//./-}.tar.gz")
-sha256sums=('a6c5aa75ddf6a91f18aaad646a74a3f1b56bbccda6331b6f048f0258a97c49cf')
+sha256sums=('08002818036252fefdecac97bf340d7e8f4dde39ce05641f4f95c7aff72dbd3b')
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver//./-}"
