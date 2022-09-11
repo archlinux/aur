@@ -1,16 +1,16 @@
 # Contributor: graysky <graysky AT archlinux dot us>
 pkgname=('linpack')
-pkgver=2021.2.0_109
-_math_kernel_lib=2021.2.0
+pkgver=2022.0.2.84
+_math_kernel_lib=2022.0.2
 pkgrel=1
 arch=('x86_64')
 license=('custom')
 url="http://software.intel.com/en-us/articles/intel-math-kernel-library-linpack-download"
-source=("https://www.intel.com/content/dam/develop/external/us/en/documents/l_onemklbench_p_$pkgver.tgz"
+source=("https://downloadmirror.intel.com/721397/l-onemklbench-p-${pkgver//./-}.tgz"
 'linpack.conf' 'linpack_runme_xeon64')
-b2sums=('31642cc4fcf478cb8bed8f21b7e099f6d228c11de728c07bc3c19c545c2ba115213430e7a298167c60fc8e58f615cec319137d1bae9d489862ec0f95aedea932'
-        'cb9e676aab60304f56c1ab099a0a46e0bb2af9beee93b95adbf2661c475c8e5a1ee35c6726f646b98c5cdacbdb1870488526bc0f19de59699c6a550bb2de06b6'
-        '1ab0b9fde310496400bfa924c2e1a9206f341102117a64b3b086732394cbc33498708322ffbdf45b117898ed35a34b5107127cfedd9eec0eeb1a3f84d7aeaf63')
+sha1sums=('3c9f41fcd1454bfbb5525a1056b18edc7f58aae5'
+          '96636f441f3ab48b2df5e24afd2775ff5f954446'
+          '9529264752433c0fa5fe33c9712ffc3cf83acc2a')
 
 package_linpack() {
 	pkgdesc='Benchmark based on linear algebra excellent app for stress testing.'
