@@ -1,0 +1,17 @@
+pkgbase = leftwm-config-git
+	pkgdesc = Config manager for LeftWM
+	pkgver = r26.30a255b
+	pkgrel = 1
+	url = https://github.com/leftwm/leftwm-theme
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cargo
+	depends = leftwm
+	provides = leftwm-config
+	conflicts = leftwm-config
+	source = leftwm-config-git::git+https://github.com/leftwm/leftwm-config.git
+	md5sums = SKIP
+
+pkgname = leftwm-config-git
