@@ -2,7 +2,7 @@
 # Contributor: Hugo Courtial <hugo [at] courtial [not colon] me>
 pkgname=natron-plugins-git
 _pkgname=natron-plugins
-pkgver=2.1.7.r1177.g456618b
+pkgver=2.1.7.r1199.g19de003
 pkgrel=1
 arch=("any")
 pkgdesc="A collection of Natron plugins made by the community"
@@ -12,7 +12,7 @@ makedepends=("git")
 depends=("natron")
 provides=("natron-plugins")
 install=natron-plugins.install
-source=("$_pkgname::git://github.com/NatronGitHub/natron-plugins.git")
+source=("$_pkgname::git+https://github.com/NatronGitHub/natron-plugins.git")
 sha256sums=("SKIP")
 
 pkgver() {
