@@ -1,7 +1,7 @@
 # Maintainer: Christian Schendel (doppelhelix@gmail.com)
 
 pkgname=gnome-shell-extension-pano-git
-pkgver=3.r2.g871fb08
+pkgver=7.r0.gd3313ab
 pkgrel=1
 pkgdesc="Next-gen Clipboard Manager"
 arch=('any')
@@ -40,7 +40,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname%-git}/dist"
   local uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
-  local schema=org.gnome.shell.extensions.extensions-sync.gschema.xml
+  local schema=$(grep -Po '(?<="settings-schema": ")[^"]*' metadata.json).gschema.xml
   local destdir="${pkgdir}/usr/share/gnome-shell/extensions/${uuid}"
   install -dm755 "${destdir}"
   find . -regextype posix-egrep -regex ".*\.(js|json|xml|css|mo|compiled|svg|png)$" -exec\
