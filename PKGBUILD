@@ -1,7 +1,7 @@
 # Contributor: Kim Scarborough <sluggo@unknown.nu>
 
 pkgname=treeline
-pkgver=3.1.4
+pkgver=3.1.5
 pkgrel=1
 pkgdesc="Outliner and PIM which stores information in a tree structure"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('aspell' 'ispell' 'hunspell')
 conflicts=('treeline-unstable')
 source=("https://github.com/doug-101/TreeLine/releases/download/v${pkgver}/treeline-${pkgver}.tar.gz"
 	"treeline.xml")
-sha256sums=('6602f529c6a8b365f5ad721bd8fb7a0e8c8f76a6a99be29ec74d0e6f09cbea82'
+sha256sums=('cbdfd26b577cd9491a495e96cbda8529b1a7d385b8f2296ce8e2749890ebc9f9'
             '2b23717127a37888499bddf62042eddb800d58b10ec88f3f54a538c8e24b19d6')
 
 package() {
