@@ -1,7 +1,7 @@
 pkgbase = gameoftrees-git
 	pkgdesc = A version control system which prioritizes ease of use and simplicity over flexibility.
-	pkgver = r3550.fe5032d2
-	pkgrel = 1
+	pkgver = r4814.7e8004ba
+	pkgrel = 2
 	url = http://gameoftrees.org/
 	arch = x86_64
 	license = ISC
@@ -19,4 +19,3 @@ pkgbase = gameoftrees-git
 	sha256sums = SKIP
 
 pkgname = gameoftrees-git
-

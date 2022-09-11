@@ -1,8 +1,8 @@
 # Maintainer: Tim Lagnese tim@inept.tech
 
 pkgname=gameoftrees-git
-pkgver=r3550.fe5032d2
-pkgrel=1
+pkgver=r4814.7e8004ba
+pkgrel=2
 pkgdesc="A version control system which prioritizes ease of use and simplicity over flexibility."
 arch=('x86_64')
 url="http://gameoftrees.org/"
@@ -23,7 +23,7 @@ build() {
   cd "$srcdir/${pkgname%-git}"
 
   autoreconf -i
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --sbindir=/bin
   make
 }
 
