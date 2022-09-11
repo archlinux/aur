@@ -1,0 +1,19 @@
+pkgbase = scribus-colornerd
+	pkgdesc = Comprehensive library of proprietary color swatches for Scribus
+	pkgver = 2.4.12
+	pkgrel = 1
+	url = https://github.com/jpederson/colornerd
+	arch = any
+	license = unknown
+	makedepends = jq
+	makedepends = python
+	makedepends = python-xmltodict
+	depends = scribus
+	conflicts = scribus-colornerd-git
+	options = !strip
+	source = scribus-colornerd-2.4.12.tar.gz::https://github.com/jpederson/colornerd/archive/refs/tags/2.4.12.tar.gz
+	source = convert_to_scribus.py
+	sha512sums = f1651607f3ac5873f57cb55216f02b220fc4a35afefd904287c273acdd28ce8c5c962a87ef64f8cb988e660657ef69d450846f017d94549f056b2677fb165586
+	sha512sums = 2db7ad78d48f738e16c29d78db875201a471eedf472f2f32e8e659af42b2db379712e0acd5934c10ae5a9952969c444919885be59c461b7fa43864bccde2d916
+
+pkgname = scribus-colornerd
