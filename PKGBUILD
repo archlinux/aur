@@ -15,7 +15,8 @@ arch=(x86_64)
 url=https://www.videolan.org/developers/x264.html
 license=(GPL)
 depends=(
-  'bzip2'
+  ffmpeg21
+  bzip2
   liblsmash.so
 )
 makedepends=(
@@ -24,7 +25,7 @@ makedepends=(
   nasm
 )
 provides=(
-  libx264.so
+  #libx264.so
   libx264.so.152
 )
 #conflicts=(
