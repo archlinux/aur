@@ -1,4 +1,4 @@
-# Maintainer: Takumi <takuoh qt tutanota d0t com> # please replace q to a , 0 to o
+# Maintainer: Takumi <dGFrdW9oQHR1dGEuaW8K | base64 -d>
 pkgname=fzpac-git
 _pkgname=fzpac
 pkgver=r215.6f7adb3
