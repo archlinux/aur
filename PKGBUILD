@@ -2,7 +2,7 @@
 
 pkgname=tnl-git
 _pkgname=tnl
-pkgver=r6458.78d6c24ce
+pkgver=r6724.42ed0e554
 pkgrel=1
 pkgdesc="An efficient C++ library providing parallel algorithms and data structures for high-performance computing on GPUs, multicore CPUs and distributed clusters"
 arch=('x86_64')
@@ -29,35 +29,35 @@ build() {
   cmake -B build -S "$_pkgname" -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DWITH_OPENMP=yes \
-    -DWITH_MPI=yes \
-    -DWITH_CUDA=yes \
-    -DWITH_CUDA_ARCH="3.5 Maxwell Pascal Turing Volta Ampere" \
-    -DBUILD_TESTS=no \
-    -DBUILD_MATRIX_TESTS=no \
-    -DBUILD_DOC=no \
-    -DWITH_COVERAGE=no \
-    -DBUILD_BENCHMARKS=yes \
-    -DBUILD_EXAMPLES=yes \
-    -DBUILD_TOOLS=yes
+    -DTNL_USE_OPENMP=ON \
+    -DTNL_USE_MPI=ON \
+    -DTNL_USE_CUDA=ON \
+    -DTNL_USE_CUDA_ARCH="3.5 Maxwell Pascal Turing Volta Ampere" \
+    -DTNL_BUILD_BENCHMARKS=ON \
+    -DTNL_BUILD_EXAMPLES=ON \
+    -DTNL_BUILD_TOOLS=ON \
+    -DTNL_BUILD_TESTS=OFF \
+    -DTNL_BUILD_MATRIX_TESTS=OFF \
+    -DTNL_BUILD_COVERAGE=OFF \
+    -DTNL_BUILD_DOC=OFF
   ninja -C build all
 
-  # BUILD_DOC=yes executes the built examples, so we need to check if the build
+  # TNL_BUILD_DOC=ON executes the built examples, so we need to check if the build
   # system has a GPU to disable building CUDA samples
-  local WITH_CUDA=no
+  local TNL_USE_CUDA=OFF
   if nvidia-smi --list-gpus >/dev/null; then
-    WITH_CUDA=yes
+    TNL_USE_CUDA=ON
   fi
 
   # build documentation samples in a separate builddir
   cmake -B build-doc -S "$_pkgname" -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DWITH_OPENMP=yes \
-    -DWITH_MPI=yes \
-    -DWITH_CUDA=$WITH_CUDA \
-    -DWITH_CUDA_ARCH=auto \
-    -DBUILD_DOC=yes
+    -DTNL_USE_OPENMP=ON \
+    -DTNL_USE_MPI=ON \
+    -DTNL_USE_CUDA=$TNL_USE_CUDA \
+    -DCMAKE_CUDA_ARCHITECTURES=native \
+    -DTNL_BUILD_DOC=ON
   ninja -C build-doc all
 
   # build the documentation itself
@@ -72,25 +72,25 @@ build() {
 
 check() {
   # check if the build system has a GPU where CUDA tests could be executed
-  local WITH_CUDA=no
+  local TNL_USE_CUDA=OFF
   if nvidia-smi --list-gpus >/dev/null; then
-    WITH_CUDA=yes
+    TNL_USE_CUDA=ON
   fi
 
   cmake -B build-tests -S "$_pkgname" -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DWITH_OPENMP=yes \
-    -DWITH_MPI=yes \
-    -DWITH_CUDA=$WITH_CUDA \
-    -DWITH_CUDA_ARCH=auto \
-    -DBUILD_TESTS=yes \
-    -DBUILD_MATRIX_TESTS=yes \
-    -DBUILD_DOC=no \
-    -DWITH_COVERAGE=no \
-    -DBUILD_BENCHMARKS=no \
-    -DBUILD_EXAMPLES=no \
-    -DBUILD_TOOLS=no
+    -DTNL_USE_OPENMP=ON \
+    -DTNL_USE_MPI=ON \
+    -DTNL_USE_CUDA=$TNL_USE_CUDA \
+    -DCMAKE_CUDA_ARCHITECTURES=native \
+    -DTNL_BUILD_BENCHMARKS=OFF \
+    -DTNL_BUILD_EXAMPLES=OFF \
+    -DTNL_BUILD_TOOLS=OFF \
+    -DTNL_BUILD_TESTS=ON \
+    -DTNL_BUILD_MATRIX_TESTS=ON \
+    -DTNL_BUILD_COVERAGE=OFF \
+    -DTNL_BUILD_DOC=OFF
   ninja -C build-tests all
 
   # limit parallel execution of tests to 4 threads and 4 processes
