@@ -2,20 +2,20 @@
 # Contributor: naelstrof <naelstrof@gmail.com>
 
 pkgname=mingw-w64-flac
-pkgver=1.3.4
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Free Lossless Audio Codec (mingw-w64)"
 url="http://flac.sourceforge.net/"
 arch=('any')
 license=('BSD' 'GPL')
 depends=('mingw-w64-libogg' 'mingw-w64-crt')
-makedepends=('mingw-w64-cmake' 'ninja')
+makedepends=('mingw-w64-cmake' 'ninja' 'nasm')
 options=('staticlibs' '!buildflags' '!strip')
 source=("https://github.com/xiph/flac/releases/download/${pkgver}/flac-${pkgver}.tar.xz")
-sha256sums=('8ff0607e75a322dd7cd6ec48f4f225471404ae2730d0ea945127b1355155e737')
+sha256sums=('af41c0733c93c237c3e52f64dd87e3b0d9af38259f1c7d11e8cbf583c48c2506')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-_pkgname="flac"
+_pkgname="${pkgname#mingw-w64-}"
 
 build() {
     for _arch in ${_architectures}; do
@@ -28,7 +28,6 @@ build() {
             -DBUILD_PROGRAMS=OFF \
             -DBUILD_TESTING=OFF \
             -DWITH_STACK_PROTECTOR=OFF \
-            -DWITH_ASM=OFF \
             -DINSTALL_MANPAGES=OFF \
             -DNDEBUG=ON
 
@@ -41,7 +40,6 @@ build() {
             -DBUILD_PROGRAMS=OFF \
             -DBUILD_TESTING=OFF \
             -DWITH_STACK_PROTECTOR=OFF \
-            -DWITH_ASM=OFF \
             -DINSTALL_MANPAGES=OFF \
             -DNDEBUG=ON
 
