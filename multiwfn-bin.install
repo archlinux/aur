@@ -1,0 +1,9 @@
+post_install() {
+    echo '
+> config file: /etc/multiwfn
+'
+}
+
+post_upgrade() {
+  post_install
+}
