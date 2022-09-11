@@ -3,8 +3,8 @@
 
 pkgname=emacs-ng
 pkgver=28.1.50
-_fix_commit=732c590
-pkgrel=2
+_fix_commit=79e8f5b
+pkgrel=3
 pkgdesc="A new approach to Emacs - Including TypeScript, Threading, Async I/O, and WebRender"
 arch=('x86_64')
 url="https://emacs-ng.github.io/emacs-ng"
@@ -17,7 +17,7 @@ depends=('jansson' 'ncurses' 'libgccjit' 'librsvg' 'libxpm' 'libjpeg-turbo' 'lib
 	 )
 makedepends=('rustup' 'python' 'texlive-core')
 source=("$pkgname-$pkgver_${_fix_commit}.tar.gz::https://github.com/emacs-ng/emacs-ng/archive/refs/tags/v0.0.${_fix_commit}.tar.gz")
-sha256sums=('8a51f4475ebec30460d4f6e761cd469ad1ab66ba97c078904533f207a9bcbeab')
+sha256sums=('c122a035e983abdadabca0cbe2f93c5ed56289a855967acd268120b8f366316e')
  
 prepare() {
     cd ${pkgname}-0.0.${_fix_commit}
@@ -36,7 +36,7 @@ build() {
 	--without-imagemagick --with-gpm --with-dbus --without-pop --without-mailutils \
 	--without-gsettings --with-all --disable-build-details
         
-    make NATIVE_FULL_AOT=0 \
+    make NATIVE_FULL_AOT=1 \
          PATH="$HOME/.rustup/toolchains/${RUSTUP_TOOLCHAIN}-$(uname -m)-unknown-linux-gnu/bin:$PATH"
     make pdf
 }
