@@ -1,0 +1,19 @@
+pkgbase = classic-colors
+	pkgdesc = A simple image drawing and editing in a look similar to MS Paint
+	pkgver = 20220508
+	pkgrel = 1
+	url = https://github.com/justinmeiners/classic-colors/
+	arch = x86_64
+	arch = i686
+	license = GPL-2
+	depends = openmotif
+	depends = libxpm
+	source = https://tilde.club/~harvettfox96/files/archive/pkg/classic-colors/classic-colors-20220508.tar.gz
+	source = classic-colors.desktop
+	source = classic-colors.xpm
+	sha512sums = a6f5fc588356e72fc0b20a271be9ee67da70b091934241db261512b169f08f0992ddb15c23e3272f59c0ed307c313429dfe6a88451e4b27d5e167adb40e80740
+	sha512sums = 3ea147b70e7c2246def29965e6cb1e97a849680c1c07f5e5e214df3fb905db508472c02364af62898896e94f349b5645477333a9111293eed9c89fb2d226695c
+	sha512sums = eea5f2366398727bea12aa14b36eb16a5567b9d940dc4e2062bd70cbeeed6b957d64869407900d740d9d4627f17c5c5ef31215384e39640268bcba6fa1f48e8a
+
+pkgname = classic-colors
+

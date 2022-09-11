@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Classic Colors
+Comment=A simple image drawing and editing in a look similar to MS Paint
+Type=Application
+Categories=Application;Graphics;2DGraphics;RasterGraphics
+Icon=/usr/share/pixmaps/classic-colors.xpm
+Exec=classic-colors
+Terminal=false
