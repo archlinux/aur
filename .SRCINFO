@@ -1,7 +1,7 @@
 pkgbase = espanso-wayland
 	pkgdesc = Cross-platform Text Expander written in Rust
-	pkgver = 2.1.6
-	pkgrel = 2
+	pkgver = 2.1.7
+	pkgrel = 1
 	url = https://espanso.org/
 	install = espanso-wayland.install
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = espanso-wayland
 	provides = espanso
 	conflicts = espanso
 	options = !lto
-	source = git+https://github.com/federico-terzi/espanso.git#tag=v2.1.6-beta
+	source = git+https://github.com/federico-terzi/espanso.git#tag=v2.1.7-beta
 	sha512sums = SKIP
 
 pkgname = espanso-wayland
