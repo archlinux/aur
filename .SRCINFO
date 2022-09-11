@@ -1,16 +1,14 @@
 pkgbase = darling-bin
 	pkgdesc = Darwin/macOS emulation layer for Linux
-	pkgver = 0.1.20220213
-	pkgrel = 2
+	pkgver = 0.1.20220704
+	pkgrel = 1
 	url = https://github.com/darlinghq/darling
 	install = darling-bin.install
 	arch = x86_64
 	groups = darling-bin
 	license = GPL
-	depends = anaconda>=2.12.6
-	depends = darling-dkms
 	depends = dbus>=1.9.14
-	depends = ffmpeg-vulkan>=2:4.0
+	depends = ffmpeg>=2:4.0
 	depends = freetype2>=2.2.1
 	depends = fuse2>=2.2
 	depends = giflib>=5.1
@@ -31,7 +29,7 @@ pkgbase = darling-bin
 	conflicts = darling-git
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/darlinghq/darling/releases/download/v0.1.20220213/darling_0.1.20220125.focal_amd64.deb
-	sha512sums = 53776310c8457eaa2dd9103243e6f82b96c6ba029919b60a7c20a4c093347af335539b699a622c157353ef05461a1e8275d1603d6adc5aca89407ba7acfba51a
+	source = https://github.com/darlinghq/darling/releases/download/v0.1.20220704/darling_0.1.20220704.focal_amd64.deb
+	sha512sums = 6acf5271e25931c0871ed205d0ac0cea9b023b534669aa0491d82a0eb37b13f3970f2c323dffa0e0e4a3b49bb50377c01eb28f9d87f5b142cc5fcd8fd42e40d9
 
 pkgname = darling-bin
