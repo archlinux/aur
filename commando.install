@@ -1,0 +1,14 @@
+post_install() {
+	cmd=$(printf '$\t')
+	cat <<EOF
+
+
+Please remember to initialize/update your database by executing:
+$cmd commando -vu
+
+OR to also include packages from AUR (trough Chaotic-AUR repos):
+$cmd commando -vua
+
+
+EOF
+}
