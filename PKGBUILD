@@ -19,6 +19,36 @@ conflicts=('chromium')
 source=(https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/$pkgver-$pkgrel/ungoogled-chromium-$pkgver-$pkgrel-x86_64.pkg.tar.zst)
 sha256sums=('1a187a1a44bedbefa9db3c6a3a7a8dcd007f2213d9cd93ab583e908a4e9be68b')
 
+declare -gA _system_libs=(
+    [brotli]=brotli
+    [dav1d]=dav1d
+    [ffmpeg]=ffmpeg
+    [flac]=flac
+    [fontconfig]=fontconfig
+    [freetype]=freetype2
+    [harfbuzz-ng]=harfbuzz
+    [icu]=icu
+    [jsoncpp]=jsoncpp
+    [libaom]=aom
+    [libavif]=libavif
+    [libdrm]=
+    [libjpeg]=libjpeg
+    [libpng]=libpng
+    #[libvpx]=libvpx
+    [libwebp]=libwebp
+    [libxml]=libxml2
+    [libxslt]=libxslt
+    [opus]=opus
+    [re2]=re2
+    [snappy]=snappy
+    [woff2]=woff2
+    [zlib]=minizip
+)
+_unwanted_bundled_libs=(
+    $(printf "%s\n" ${!_system_libs[@]} | sed 's/^libjpeg$/&_turbo/')
+)
+depends+=(${_system_libs[@]})
+
 package() {
     cp -R "${srcdir}/usr/" "${pkgdir}/usr"
 
