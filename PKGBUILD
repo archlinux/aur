@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-wrapper')
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.1.3
+pkgrel=1
 pkgdesc="Wrapper to display a script output or a text file content on the desktop in sway or other wlroots-based compositors"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/nwg-wrapper"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'python-wheel')
 optdepends=('wlr-randr: for non-sway Wayland WMs support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/"$pkgname"/archive/v"$pkgver".tar.gz")
 
-md5sums=('a2211523b90feefaa3fe6599cb495549')
+md5sums=('65b01a726309a0010cb43f3d1fb61073')
 
 package() {
   cd "${pkgname}-${pkgver}"
