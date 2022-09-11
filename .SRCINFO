@@ -10,8 +10,8 @@ pkgbase = deno-bin
 	conflicts = deno
 	conflicts = deno-git
 	source_x86_64 = deno-x86_64-unknown-linux-gnu.zip::https://github.com/denoland/deno/releases/download/v1.25.2/deno-x86_64-unknown-linux-gnu.zip
-	sha256sums_x86_64 = 9a078665c17269d96486ee3c9f9bd16eb3fb4acf79946c88b1e4bab622d1258c
+	sha256sums_x86_64 = 2985d16b522c37e88d6e3c831e5cca53b87228d1b715c31320ba61ebdeb36590
 	source_aarch64 = deno-linux-arm64.zip::https://github.com/LukeChannings/deno-arm64/releases/download/v1.25.2/deno-linux-arm64.zip
-	sha256sums_aarch64 = f09a1852e4bdf0b9fc4e4a1ca2424521056bf76f806dc9baa450037f48a95a01
+	sha256sums_aarch64 = a123fd0dc27c9e2f0813a523f7c447e4004aaf0398592a91369f7b50b5ef3e7d
 
 pkgname = deno-bin
