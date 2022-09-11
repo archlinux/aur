@@ -2,8 +2,8 @@
 
 pkgname=sweet-theme-full-git
 _pkgname=sweet
-pkgver=r279.a77fd36
-pkgrel=2
+pkgver=r282.6870965
+pkgrel=3
 pkgdesc="Sweet KDE Plasma theme"
 arch=('x86_64')
 url="https://github.com/EliverLara/$_pkgname"
@@ -11,7 +11,7 @@ license=('GPL3')
 makedepends=('git' 'inkscape' 'optipng')
 depends=('sweet-kde-theme-git'
 		 'kvantum'
-         'candy-icons')
+         'candy-icons-git')
 optdepends=('ttf-roboto: primary font face defined (GTK theme)'
 			'ttf-ubuntu-font-family: secondary font face defined (GTK theme)'
 			'cantarell-fonts: tertiary font face defined (GTK theme)'
