@@ -1,5 +1,5 @@
 # Maintainer: Vincevrp
-# Maintainer: T.J. Townsend <tj@mrsk.me>
+# Maintainer: T.J. Townsend <blakkheim@archlinux.org>
 
 pkgname=nerd-fonts-arimo
 pkgver=2.2.2
