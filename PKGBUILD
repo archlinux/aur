@@ -3,7 +3,7 @@
 # Contributor: Shunsuke Shibayama <sbym1346@gmail.com>
 
 pkgname=erg
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Statically typed language that builds upon the Python ecosystem'
 url='https://github.com/erg-lang/erg'
@@ -12,7 +12,7 @@ arch=('x86_64')
 depends=('python')
 makedepends=('cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('457dca5840ed0814b7965fd7ff465cca1487a363e9e325d448da28bc383a93ae')
+sha256sums=('a8a5437249174dc7dc217f6d3f1b4c25fa173823c0c0ac7568afdb84b248aafe')
 
 ## We don't turn on --all-features here because they change the language
 ## of the error messages
