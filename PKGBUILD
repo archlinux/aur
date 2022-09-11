@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _cranname=gganimate
-_cranver=1.0.7
+_cranver=1.0.8
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -16,7 +16,6 @@ depends=(
     r-rlang
     r-glue
     r-progress
-    r-plyr
     r-scales
 )
 checkdepends=(r-magick r-testthat r-transformr)
@@ -36,7 +35,7 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
         "CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT")
-sha256sums=('0efc065cced5e9dac8855b33a49cc680808e60f10d2168357ceaf52e9234db10'
+sha256sums=('a12d865ddecea761e8f12bdc3bfdb78642f7ab2d53b78940e1290c9071d24bc9'
             'e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b')
 
 prepare() {
