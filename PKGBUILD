@@ -1,4 +1,4 @@
-# Maintainer: T.J. Townsend <tj@openbsd.org>
+# Maintainer: T.J. Townsend <blakkheim@archlinux.org>
 # Contributor: Yuuta Liang <yuuta@yuuta.moe>
 
 pkgname=openbgpd
