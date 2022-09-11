@@ -1,0 +1,13 @@
+pkgbase = tachyons
+	pkgdesc = It's like FTL but multiplayer :)
+	pkgver = a0.8.34
+	pkgrel = 1
+	url = https://spektor.itch.io/tachyon
+	arch = any
+	license = custom
+	depends = java-runtime<15
+	depends = jre11-openjdk
+	source = file://Tachyons a0834 lin.zip
+	sha256sums = 7d2f77204595c5c1cf7931cbcc1207e675213dc0f0693ea9f6192e58509027cd
+
+pkgname = tachyons
