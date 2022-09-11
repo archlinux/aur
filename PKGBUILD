@@ -12,7 +12,7 @@ arch=(x86_64 aarch64)
 license=(GPL2 LGPL2.1)
 url="http://wiki.qemu.org/"
 depends=()
-makedepends=(python meson glib2-static pcre-static)
+makedepends=(python meson glib2 pcre)
 source=('git+https://github.com/qemu/qemu')
 sha512sums=('SKIP')
 
