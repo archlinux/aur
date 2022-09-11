@@ -1,11 +1,11 @@
 # Maintainer: Sasha Romijn <arch at mxsasha.eu>
-# Maintainer: T.J. Townsend <tj@openbsd.org>
+# Maintainer: T.J. Townsend <blakkheim@archlinux.org>
 
 pkgname=rpki-client
 pkgver=8.0
 pkgrel=1
 pkgdesc="Implementation of RPKI for Relying Parties to facilitate ROA validation"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://rpki-client.org"
 license=('ISC')
 depends=('glibc' 'expat' 'rsync' 'libressl')
