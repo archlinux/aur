@@ -1,0 +1,11 @@
+post_install() {
+    echo '
+> please add this line to your .bashrc
+[ -r /etc/profile.d/multiwfn.sh ] && . /etc/profile.d/multiwfn.sh
+> config file /etc/multiwfn
+'
+}
+
+post_upgrade() {
+  post_install
+}
