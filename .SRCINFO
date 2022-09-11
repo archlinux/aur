@@ -1,9 +1,11 @@
 pkgbase = limine
 	pkgdesc = An advanced, portable, multiprotocol bootloader
-	pkgver = 4.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://limine-bootloader.org/
+	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = BSD
 	makedepends = nasm
 	makedepends = mtools
@@ -11,7 +13,7 @@ pkgbase = limine
 	makedepends = lld
 	makedepends = clang
 	depends = glibc
-	source = https://github.com/limine-bootloader/limine/releases/download/v4.0/limine-4.0.tar.xz
-	sha256sums = 92fdc713781d1e0be1f31dedb710bcdef68f6b5e44e26583b108f5d5faabf7bc
+	source = https://github.com/limine-bootloader/limine/releases/download/v4.0.1/limine-4.0.1.tar.xz
+	sha256sums = 94594fbb935b5a68623f542594dcdc08db808b60597e6e8f378b8fb90533f5e8
 
 pkgname = limine
