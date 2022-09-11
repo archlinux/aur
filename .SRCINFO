@@ -1,10 +1,11 @@
 pkgbase = i3-layouts
 	pkgdesc = Dynamic layouts for i3wm
 	pkgver = 0.13.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/eliep/i3-layouts
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python
 	depends = xdotool
 	depends = i3-wm
