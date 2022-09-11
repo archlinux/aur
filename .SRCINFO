@@ -1,10 +1,11 @@
 pkgbase = kodi-addon-pvr-stalker
 	pkgdesc = IPTV Stalker PVR client addon for Kodi
-	pkgver = 19.0.0
+	pkgver = 19.0.3
 	pkgrel = 1
 	url = https://github.com/kodi-pvr/pvr.stalker
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	arch = i686
 	arch = x86_64
 	groups = kodi
@@ -13,9 +14,9 @@ pkgbase = kodi-addon-pvr-stalker
 	makedepends = kodi-platform
 	makedepends = git
 	depends = kodi
-	source = https://github.com/kodi-pvr/pvr.stalker/archive/19.0.0-Matrix.tar.gz
-	source = https://github.com/xbmc/xbmc/archive/19.1-Matrix.tar.gz
-	sha256sums = 6161f0593feb67865e78f9aecc8c59019933ddda273e495ffadb0bdb42dde2a3
-	sha256sums = 195a916a32057e259e6f42b49ba8f07cc6253460018851a52deb058ae938c58c
+	source = https://github.com/kodi-pvr/pvr.stalker/archive/19.0.3-Matrix.tar.gz
+	source = https://github.com/xbmc/xbmc/archive/19.4-Matrix.tar.gz
+	sha256sums = c0d71dad5fdbc334ea8b0b66f5155c72b6f59a76c268a1de71edb837688ebf81
+	sha256sums = cc026f59fd6e37ae90f3449df50810f1cefa37da9444e1188302d910518710da
 
 pkgname = kodi-addon-pvr-stalker
