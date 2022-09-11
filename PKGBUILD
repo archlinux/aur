@@ -2,8 +2,8 @@
 
 _pkgname=zigpy-deconz
 pkgname=python-$_pkgname
-pkgver=0.18.0
-pkgrel=3
+pkgver=0.18.1
+pkgrel=1
 pkgdesc='Zigpy support for deCONZ based Zigbee radio devices.'
 url='https://github.com/zigpy/zigpy-deconz'
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=(
 )
 checkdepends=('python-pytest-asyncio')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/zigpy/zigpy-deconz/archive/$pkgver.tar.gz")
-b2sums=('197cc0e96762102e903f401eb38192cecb81d5b5b9538277fb3f08ea756b02c4e6a2b71fde1e4f8563bc7538121fc11e28840f6e9b48107a750d2df3f7fb0130')
+b2sums=('9a07745c53f77266eea850d85e815e699b5e016c1a5829c2a99fe3aba4d8794948d66668b8bfb6905a3a671e23a457f870ab0c176c44766e8110b7bfd5eb8aaf')
 
 build() {
   cd $_pkgname-$pkgver
