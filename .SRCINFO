@@ -1,6 +1,6 @@
 pkgbase = blender-benchmark
 	pkgdesc = Benchmark based on Blender to perform hardware and software performance tests
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://opendata.blender.org/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = blender-benchmark
 	license = GPL3
 	depends = glibc>=2.19
 	options = !strip
-	source = blender-benchmark-launcher-3.0.0.tar.gz::https://download.blender.org/release/BlenderBenchmark2.0/launcher/benchmark-launcher-3.0.0-linux.tar.gz
-	sha256sums = 3ce1e3a98547e10dfdaf31114f42b9d0ec8a16f316ea5815743945ed00ba1406
+	source = blender-benchmark-launcher-3.1.0.tar.gz::https://download.blender.org/release/BlenderBenchmark2.0/launcher/benchmark-launcher-3.1.0-linux.tar.gz
+	sha256sums = 4059c576407aa5add4f6280c59d68070b721572ec91aa6d5dfd528441070bb62
 
 pkgname = blender-benchmark
