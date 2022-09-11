@@ -35,11 +35,17 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
             'lua51-lgi: LUA scripting support')
 provides=("${_pkgname}=${pkgver}")
 source=(https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz
-        linux.gpl)
+        linux.gpl
+        file-heif.diff)
 sha256sums=('7ba1b032ea520d540e4acad3da16d8637fe693743fdb36e0121775eea569f6a3'
-            '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3')
+            '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3'
+            '4996eedcf6d8238c21c52c70ac4b3027f007b2a2a8f1eab9a0caaee6989dcc35')
 build() {
-  arch-meson "${_pkgname}-${pkgver}" build \
+  local _dir="${_pkgname}-${pkgver}"
+  # fix builing with libheif 1.13.0+
+  # see https://gitlab.gnome.org/GNOME/gimp/-/issues/8570
+  patch "$_dir/plug-ins/common/file-heif.c" < file-heif.diff
+  arch-meson "$_dir" build \
     -Dgi-docgen=enabled \
     -Dg-ir-doc=true
   meson compile -C build
