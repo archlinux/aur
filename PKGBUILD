@@ -1,36 +1,46 @@
-# Contributor: naelstrof <naelstrof@gmail.com> 
+# Contributor: Vaporeon <vaporeon@vaporeon.io>
+# Contributor: naelstrof <naelstrof@gmail.com>
 
 pkgname=mingw-w64-libogg
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="Ogg bitstream and framing library (mingw-w64)"
 arch=(any)
 url="http://xiph.org"
 license=('BSD')
-makedepends=('mingw-w64-configure')
+makedepends=('mingw-w64-cmake' 'ninja')
 depends=('mingw-w64-crt')
 options=('staticlibs' '!strip' '!buildflags')
-source=(http://downloads.xiph.org/releases/ogg/libogg-${pkgver}.tar.gz)
-sha256sums=('fe5670640bd49e828d64d2879c31cb4dde9758681bb664f9bdbf159a01b0c76e')
+source=(http://downloads.xiph.org/releases/ogg/libogg-${pkgver}.tar.xz)
+sha256sums=('c4d91be36fc8e54deae7575241e03f4211eb102afb3fc0775fbbc1b740016705')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_pkgname="${pkgname#mingw-w64-}"
 
 build() {
-  cd "${srcdir}"/libogg-${pkgver}
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure
-    make
-    popd
+    ${_arch}-cmake -S ${_pkgname}-${pkgver} -B build/${_arch}-static -G Ninja \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_INSTALL_PREFIX=/usr/${_arch} \
+      -DBUILD_SHARED_LIBS=OFF \
+      -DINSTALL_DOCS=OFF
+
+    ${_arch}-cmake -S ${_pkgname}-${pkgver} -B build/${_arch} -G Ninja \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_INSTALL_PREFIX=/usr/${_arch} \
+      -DBUILD_SHARED_LIBS=ON \
+      -DINSTALL_DOCS=OFF
+
+    cmake --build build/${_arch}-static
+    cmake --build build/${_arch}
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}"/libogg-${pkgver}/build-${_arch}
-    make DESTDIR="$pkgdir" install
-    rm -r $pkgdir/usr/${_arch}/share/doc
-    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
-    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+    DESTDIR="${pkgdir}" cmake --install build/${_arch}-static
+    DESTDIR="${pkgdir}" cmake --install build/${_arch}
+    ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
+    ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
   done
 }
