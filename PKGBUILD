@@ -25,8 +25,6 @@ prepare() {
     zip -r1 ../game.love media parts Zframework conf.lua main.lua version.lua
     cd ..
     cp ./Techmino/.github/build/linux/dev/icon.png ./Techmino_Development.png
-
-    bsdtar -xf CC_Linux.zip
 }
 
 package() {
