@@ -1,12 +1,15 @@
 # Maintainer: Ryan Farley <ryan.farley@gmx.com>
 pkgname=kodi-cli-git
-pkgver=r49.e97efce
+pkgver=r60.899075e
 pkgrel=1
 pkgdesc="Kodi/XBMC bash script to send Kodi commands from the command line"
 arch=('any')
 url="https://github.com/nawar/kodi-cli"
 license=('GPL')
 depends=('curl')
+optdepends=(
+	'mps-youtube: launch youtube video with -o switch'
+)
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

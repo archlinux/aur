@@ -8,10 +8,10 @@ pkgbase = kodi-cli-git
 	license = GPL
 	makedepends = git
 	depends = curl
+	optdepends = mps-youtube: launch youtube video with -o switch
 	provides = kodi-cli
 	conflicts = kodi-cli
 	source = git+https://github.com/nawar/kodi-cli
 	md5sums = SKIP
 
 pkgname = kodi-cli-git
-
