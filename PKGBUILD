@@ -6,7 +6,7 @@
 
 _target=x86_64-elf
 pkgname=$_target-gcc
-pkgver=12.1.0
+pkgver=12.2.0
 pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for x86_64-elf target'
 arch=(x86_64)
@@ -20,7 +20,7 @@ changelog='.Changelog'
 source=("https://mirrors.kernel.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "https://mirrors.kernel.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz.sig")
 
-sha256sums=('62fd634889f31c02b64af2c468f064b47ad1ca78411c45abe6ac4b5f8dd19c7b'
+sha256sums=('e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff'
             'SKIP')
 
 _basedir=gcc-$pkgver
