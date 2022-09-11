@@ -28,7 +28,7 @@ package(){
   fi
 
   cd ${srcdir}/${_gitname}
-  git checkout v1.1.0
+  git checkout v1.2.0
 
   echo "Git checkout done"
 
