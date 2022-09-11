@@ -1,5 +1,5 @@
 pkgname=xenia-git
-pkgver=r5780.a641b5b16.linux_fixes
+pkgver=r6873.90fffe1de.linux_fixes
 pkgrel=1
 pkgdesc="Xenia is an experimental emulator for the Xbox 360."
 arch=('x86_64')
@@ -53,7 +53,8 @@ prepare() {
   cd "${srcdir}/${pkgname%-git}"
 
   msg2 "Merging Linux Fixes"
-  git pull "../${pkgname%-git}-linux-fixes" --no-edit
+  git config pull.rebase false
+  # git pull "../${pkgname%-git}-linux-fixes" --no-edit
 
   git submodule init
   git config submodule.third_party/binutils-ppc-cygwin.url $srcdir/binutils-ppc-cygwin
