@@ -1,7 +1,8 @@
-# Maintainer: Danila Fedotov <mail at danilafedotov dot com>
+# Maintainer: <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Danila Fedotov <mail at danilafedotov dot com>
 # Contributor: Gökberk Yaltıraklı <webdosusb at gmail dot com>
 pkgname=notes
-pkgver=1.5.0
+pkgver=2.0.0+2+g5d245d0
 pkgrel=1
 pkgdesc='Note taking application, write down your thoughts'
 arch=('x86_64')
@@ -9,7 +10,7 @@ url='https://www.get-notes.com/'
 license=('MPL')
 depends=('hicolor-icon-theme' 'qt5-base')
 makedepends=('git')
-_commit=4840afcf0ea87f9b9eecc849ef3e4ec2e36894d7  # tags/v1.5.0
+_commit=5d245d055fcdf1a32095dbd784bae55d4b268e01 # tags/v1.5.0
 source=("git+https://github.com/nuttyartist/notes.git#commit=$_commit"
         'git+https://github.com/b00f/qautostart.git'
         'git+https://github.com/pbek/qmarkdowntextedit.git'
