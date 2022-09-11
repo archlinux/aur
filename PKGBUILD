@@ -1,8 +1,8 @@
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
 # Helpful suggestions by Foxboron
 pkgname=solo2-cli
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc='Solo 2 CLI'
 arch=('x86_64')
 url="https://github.com/solokeys/solo2-cli"
@@ -15,7 +15,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/solokeys/solo2-cli/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-    "f797a53046f7fb66ffd9f76063c4b9abdd88299b89d18c28a451a4f62573a334"
+    "ae9ef9dd174a8b8294941635a3a66dc9062fd4b595d5f1f6507b5a5a232d6932"
 )
 
 prepare() {
