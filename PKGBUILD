@@ -1,36 +1,35 @@
-# Maintainer : Ista Zahn <istazahn@gmail.com>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Ista Zahn <istazahn@gmail.com>
 ## Based on miniconda3 aur package by Ashwin Vishn Immae, Martin Wimpress and Jingbei Li
 pkgname=mambaforge
-pkgver=4.10.3.7
-pkgrel=3
-pkg_ver=4.10.3-7
-pkgdesc="Conda and Mamba package managers configured to use conda-forge."
+_pkgrel=0
+pkgver=4.14.0.${_pkgrel}
+pkgrel=1
+pkgdesc="Conda and Mamba package managers configured to use conda-forge"
 arch=('x86_64')
 url="https://github.com/conda-forge/miniforge"
-install="$pkgname.install"
-license=("BSD-3-Clause")
-source=("Mambaforge-${pkgver}.sh::https://github.com/conda-forge/miniforge/releases/download/${pkg_ver}/Mambaforge-${pkg_ver}-Linux-x86_64.sh"
-        "$pkgname.install")
+license=('custom:BSD-3-clause')
+provides=('conda' 'mamba')
+source=("${pkgname}-${pkgver::-2}-${_pkgrel}.sh::${url}/releases/download/${pkgver::-2}-${_pkgrel}/Mambaforge-${pkgver::-2}-${_pkgrel}-Linux-x86_64.sh")
 options=(!strip libtool staticlibs)
-sha256sums=('fc872522ec427fcab10167a93e802efaf251024b58cc27b084b915a9a73c4474'
-            '14d79ebcc8fadec9cf59f8fa7eb496166272923ffaa7f36b0c73d24a36283786')
+sha512sums=('11bd4aed939f90598715ee71b695b7ab9a8eaed308645d3285e73c9f4f869cec997ed303d7c9485732f15d3d8c4f25a0b1868252e751fd2d8a068f0c5fd8cec1')
+install="${pkgname}.install"
 
 package() {
 	prefix="${pkgdir}/opt/${pkgname}"
 	LD_PRELOAD="/usr/lib/libfakeroot/libfakeroot.so"
 
-	msg2 "Packaging ${pkgname} for installation to /opt/${pkgname}"
-	bash "${srcdir}/Mambaforge-${pkgver}.sh" -b -p $prefix -f
+	# Packaging mambaforge for installation to /opt/mambaforge
+	bash "${srcdir}/${pkgname}-${pkgver::-2}-${_pkgrel}.sh" -b -p $prefix -f
 	[ "$BREAK_EARLY" = 1 ] && exit 1
 	cd "${prefix}"
 
-	msg2 "Correcting permissions"
+	# Correcting permissions
 	chmod a+r -R pkgs
 
-	msg2 "Stripping \$pkgdir"
+	# Stripping $pkgdir
 	sed "s|${pkgdir}||g" -i $(grep "$pkgdir" . -rIl)
 
-	msg2 "Installing license"
+	# Installing license
 	install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-

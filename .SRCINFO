@@ -1,17 +1,17 @@
 pkgbase = mambaforge
-	pkgdesc = Conda and Mamba package managers configured to use conda-forge.
-	pkgver = 4.10.3.7
-	pkgrel = 3
+	pkgdesc = Conda and Mamba package managers configured to use conda-forge
+	pkgver = 4.14.0.0
+	pkgrel = 1
 	url = https://github.com/conda-forge/miniforge
 	install = mambaforge.install
 	arch = x86_64
-	license = BSD-3-Clause
+	license = custom:BSD-3-clause
+	provides = conda
+	provides = mamba
 	options = !strip
 	options = libtool
 	options = staticlibs
-	source = Mambaforge-4.10.3.7.sh::https://github.com/conda-forge/miniforge/releases/download/4.10.3-7/Mambaforge-4.10.3-7-Linux-x86_64.sh
-	source = mambaforge.install
-	sha256sums = fc872522ec427fcab10167a93e802efaf251024b58cc27b084b915a9a73c4474
-	sha256sums = 14d79ebcc8fadec9cf59f8fa7eb496166272923ffaa7f36b0c73d24a36283786
+	source = mambaforge-4.14.0-0.sh::https://github.com/conda-forge/miniforge/releases/download/4.14.0-0/Mambaforge-4.14.0-0-Linux-x86_64.sh
+	sha512sums = 11bd4aed939f90598715ee71b695b7ab9a8eaed308645d3285e73c9f4f869cec997ed303d7c9485732f15d3d8c4f25a0b1868252e751fd2d8a068f0c5fd8cec1
 
 pkgname = mambaforge
