@@ -1,40 +1,28 @@
-# Maintainer : Ahmed Moselhi <ahmedmoselhi55@gmail.com>
+# Maintainer : Thanos Apostolou <thanosapostolou@outlook.com>
 
 # Build notes:
 # https://phoenicisorg.github.io/phoenicis/Users/build/
 
 pkgname=phoenicis-playonlinux
 _pkgname=phoenicis
-pkgver=5.0_snapshot
-_pkgver=5.0-snapshot
-pkgrel=3
+pkgver=5.0_alpha4
+_pkgver=5.0-alpha4
+pkgrel=2
 pkgdesc="Phoenicis PlayOnLinux allows you to install and use non-native applications on linux"
 arch=('any')
-url="https://github.com/PhoenicisOrg/phoenicis.git"
+url="https://www.phoenicis.org/"
 license=('LGPL3')
 makedepends=('maven' 'java-environment-openjdk=11' 'git')
 depends=('cabextract' 'curl' 'icoutils' 'imagemagick'
          'p7zip' 'unzip' 'wget' 'wine' 'xterm')
 options=(!strip)
-commit="9f4d518c42a919a97fa6b027641f9c0dd1857681"
-source=("$pkgname-${commit}.zip::https://github.com/PhoenicisOrg/${_pkgname}/archive/$commit.zip")
-sha256sums=('SKIP')
+source=("https://github.com/ahmedmoselhi/${_pkgname}/releases/download/v${_pkgver}/Phoenicis_5.0-SNAPSHOT.deb")
+sha256sums=('68622f98604d4902be9b15797e744b8c33872257a1cd4264d1a99d91d4d501da')
 
-build() {
-  cd "${_pkgname}-$commit"
-  if test -d "/usr/lib/jvm/java-11-openjdk"; then
-    export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
-  elif test -d "/usr/lib/jvm/java-11-jdk11"; then
-    export JAVA_HOME="/usr/lib/jvm/java-11-jdk11"
-  elif test -d "/usr/lib/jvm/java-11-adoptopenjdk"; then
-    export JAVA_HOME="/usr/lib/jvm/java-11-adoptopenjdk"
-  fi
-  mvn clean package
-  cd phoenicis-dist/src/scripts
-  bash phoenicis-create-package.sh
+prepare() {
+    bsdtar -xf data.tar.xz
 }
 
 package() {
-  cd "${_pkgname}-$commit/phoenicis-dist/target/Phoenicis_5.0-SNAPSHOT"
   cp -a usr "${pkgdir}"
 }

@@ -1,8 +1,8 @@
 pkgbase = phoenicis-playonlinux
 	pkgdesc = Phoenicis PlayOnLinux allows you to install and use non-native applications on linux
-	pkgver = 5.0_snapshot
-	pkgrel = 3
-	url = https://github.com/PhoenicisOrg/phoenicis.git
+	pkgver = 5.0_alpha4
+	pkgrel = 2
+	url = https://www.phoenicis.org/
 	arch = any
 	license = LGPL3
 	makedepends = maven
@@ -18,7 +18,7 @@ pkgbase = phoenicis-playonlinux
 	depends = wine
 	depends = xterm
 	options = !strip
-	source = phoenicis-playonlinux-9f4d518c42a919a97fa6b027641f9c0dd1857681.zip::https://github.com/PhoenicisOrg/phoenicis/archive/9f4d518c42a919a97fa6b027641f9c0dd1857681.zip
-	sha256sums = SKIP
+	source = https://github.com/ahmedmoselhi/phoenicis/releases/download/v5.0-alpha4/Phoenicis_5.0-SNAPSHOT.deb
+	sha256sums = 68622f98604d4902be9b15797e744b8c33872257a1cd4264d1a99d91d4d501da
 
 pkgname = phoenicis-playonlinux
