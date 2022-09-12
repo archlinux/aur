@@ -4,7 +4,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tectonic-git
-pkgver=20220302
+pkgver=20220910.3428aa5c
 pkgrel=1
 arch=('x86_64')
 pkgdesc='Modernized, complete, self-contained TeX/LaTeX engine, powered by XeTeX and TeXLive'
@@ -17,11 +17,11 @@ provides=('tectonic')
 source=("git+https://github.com/tectonic-typesetting/tectonic.git" "git+https://github.com/tectonic-typesetting/tectonic-staging.git")
 sha512sums=('SKIP'
             'SKIP')
-options=('!lto')
+options=('!lto' '!makeflags')
 
 pkgver() {
   cd ${pkgname%-git}
-  echo $(git log -1 --format="%cd" --date=short | sed 's|-||g')
+  echo $(git log -1 --format="%cd" --date=short | sed 's|-||g').$(git rev-parse --short HEAD)
 }
 
 prepare() {
