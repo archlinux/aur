@@ -4,12 +4,12 @@
 
 _pkgname=treesheets
 pkgname=$_pkgname-git
-pkgver=r354.6aeaa03
+pkgver=r369.a962f73
 pkgrel=1
-pkgdesc="A \"hierarchical spreadsheet\" as a replacement for spreadsheets, mind mappers, outliners, PIMs, text editors and small databases."
-url="http://treesheets.com"
+pkgdesc='A "hierarchical spreadsheet" as a replacement for spreadsheets, mind mappers, outliners, PIMs, text editors and small databases.'
+url="https://strlen.com/treesheets/"
 license=('ZLIB')
-depends=('wxwidgets-gtk3')
+depends=('wxwidgets-qt5')
 makedepends=('cmake' 'git')
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 provides=('treesheets')
