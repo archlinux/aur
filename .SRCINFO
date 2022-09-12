@@ -1,0 +1,14 @@
+pkgbase = python-wonderful-bing
+	pkgdesc = Set bing's picture as wallpaper, support cinnamon, gnome, xfce, mate
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/lord63/wonderful_bing
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-docopt
+	depends = python-requests
+	source = https://github.com/lord63/wonderful_bing/archive/v0.10.0.tar.gz
+	md5sums = bd3efe4c6f75ec71ee5276298d073ac5
+
+pkgname = python-wonderful-bing
