@@ -1,13 +1,13 @@
 pkgbase = xdao
 	pkgdesc = An nmbXD TUI cli written in Python.
-	pkgver = 1.0.8.220902
+	pkgver = 1.0.9.220902
 	pkgrel = 1
 	url = https://github.com/TransparentLC/xdcmd
 	install = xdao.install
 	arch = any
 	license = AGPL-3.0
 	makedepends = git
-	depends = python>=3.10.0
+	depends = python>=3.7.0
 	depends = python-beautifulsoup4
 	depends = python-lxml
 	depends = python-prompt_toolkit

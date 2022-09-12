@@ -3,14 +3,14 @@
 
 pkgname=xdao
 pkgrel=1
-pkgver=1.0.8.220902
+pkgver=1.0.9.220902
 pkgdesc="An nmbXD TUI cli written in Python."
 arch=('any')
 url="https://github.com/TransparentLC/xdcmd"
 license=('AGPL-3.0')
 sha256sums=('SKIP')
 depends=(
-  'python>=3.10.0'
+  'python>=3.7.0'
   'python-beautifulsoup4'
   'python-lxml'
   'python-prompt_toolkit'
@@ -26,7 +26,7 @@ install=${pkgname}.install
 source=("${pkgname}::git+https://ghproxy.com/https://github.com/TransparentLC/xdcmd.git")
 pkgver() {
   cd "${srcdir}/xdao"
-  printf "1.0.8.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.0.9.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 package() {
   cd "${pkgdir}"
