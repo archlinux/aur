@@ -1,13 +1,13 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=phonon-qt5-mpv-git
-pkgver=v0.0.6.0.g91bec0f
+pkgver=0.0.7.1.g9a85c5e
 pkgrel=1
 pkgdesc="Phonon Backend using MPV Player. (GIT version)"
 arch=('x86_64')
 url='https://github.com/OpenProgger/phonon-mpv'
 license=('GPL')
-depends=('mpv'
+depends=('libmpv.so'
          'phonon-qt5'
          'qt5-x11extras'
          )
@@ -23,25 +23,24 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd phonon-mpv
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 prepare() {
-  mkdir -p build
+  sed -e '/mpv_opengl_init_params/s/nullptr,//g' -i phonon-mpv/src/video/videowidget.cpp
 }
 
 build() {
-  cd build
-  cmake ../phonon-mpv \
-    -DCMAKE_BUILD_TYPE=None \
+  cmake -S phonon-mpv -B build \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DCMAKE_SKIP_RPATH=ON
 
-  make
+  cmake --build build
 }
 
 
 package () {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
