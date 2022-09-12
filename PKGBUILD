@@ -32,6 +32,7 @@ prepare() {
   cd ${_name}
   git submodule update --init --recursive
   
+  flutter --no-version-check --suppress-analytics clean
   flutter --no-version-check --suppress-analytics pub get
 }
 
