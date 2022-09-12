@@ -57,7 +57,6 @@ _make_options=(
 	libcurl_gnutls_la_CPPFLAGS='$(AM_CPPFLAGS) $(libcurl_gnutls_la_CPPFLAGS_EXTRA)'
 	libcurl_gnutls_la_LDFLAGS='$(AM_LDFLAGS) $(libcurl_gnutls_la_LDFLAGS_EXTRA) $(LDFLAGS) $(LIBCURL_LIBS)'
 	libcurl_gnutls_la_CFLAGS='$(AM_CFLAGS) $(libcurl_gnutls_la_CFLAGS_EXTRA)'
-	curl_LDADD='$(top_builddir)/lib/libcurl-gnutls.la $(NSS_LIBS) $(SSL_LIBS) $(ZLIB_LIBS) $(CURL_NETWORK_AND_TIME_LIBS)'
 )
 
 build() {
