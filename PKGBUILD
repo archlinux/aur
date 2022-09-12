@@ -3,7 +3,7 @@
 
 pkgname=fluffychat-git
 _name=fluffychat
-pkgver=v1.5.0.fdroid.2.r57.g58da4dca
+pkgver=v1.6.4.r33.g0c94ffcd
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('x86_64' 'aarch64')
@@ -16,6 +16,7 @@ makedepends=('clang'
              'cmake'
              'git'
              'gtk3')
+optdepends=('libolm: E2E Encryption support')
 provides=("$_name")
 conflicts=("$_name")
 source=("git+https://gitlab.com/famedly/fluffychat.git")
@@ -36,19 +37,30 @@ prepare() {
 }
 
 build() {
-  _flutter_dir="${srcdir}/flutter"
-  PATH="${_flutter_dir}/bin:${PATH}"
-  export PATH
-
+  # overriding CMake flags for aarch64 in order to ensure build
+  # is not failing
+  if [[ "$arch" == "aarch64" ]]; then
+    export CXXFLAGS="${CXXFLAGS/-fstack-protector-strong/ }"
+    export CXXFLAGS="${CXXFLAGS/-fstack-clash-protection/ }"
+  fi
 
   cd ${_name}
   flutter --no-version-check --suppress-analytics build linux --release --verbose
 }
 
 package() {
+  case "$arch" in
+    "x86_64")
+      export FLUTTER_ARCH="x64"
+      ;;
+    "aarch64")
+      export FLUTTER_ARCH="arm64"
+      ;;
+  esac
+
   # install
   install -dm755 ${pkgdir}/opt
-  mv ${_name}/build/linux/x64/release/bundle ${pkgdir}/opt/${_name}
+  mv ${_name}/build/linux/$FLUTTER_ARCH/release/bundle ${pkgdir}/opt/${_name}
   
   # link
   install -dm755 ${pkgdir}/usr/bin
