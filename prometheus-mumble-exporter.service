@@ -1,0 +1,17 @@
+[Unit]
+Description=Prometheus blackbox exporter for Mumble metrics
+After=network.target nss-lookup.target
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/conf.d/prometheus-mumble-exporter
+ExecStart=/usr/bin/prometheus-mumble-exporter $MUMBLE_EXPORTER_ARGS
+DynamicUser=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=full
+Restart=on-failure
+RestartSec=20
+
+[Install]
+WantedBy=multi-user.target
