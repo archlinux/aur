@@ -6,8 +6,8 @@
 
 _pkgname=polymc
 pkgname=${_pkgname}-git
-pkgver=1.3.1.r299.gc5625d8d
-pkgrel=2
+pkgver=1.4.0.r223.g30abb653
+pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="https://github.com/PolyMC/PolyMC"
@@ -21,6 +21,7 @@ optdepends=('glfw: to use system GLFW libraries'
             'visualvm: Profiling support'
             'xorg-xrandr: for older minecraft versions'
 )
+options=(debug)
 source=("git+https://github.com/PolyMC/PolyMC"
         "git+https://github.com/PolyMC/libnbtplusplus"
         "git+https://github.com/stachenov/quazip")
