@@ -3,23 +3,35 @@
 
 pkgname=albion-online-launcher-bin
 pkgver=1.17
-pkgrel=2
+pkgrel=3
 pkgdesc="The first true cross-platform Sandbox MMO -- launcher client"
 url="https://albiononline.com/"
 arch=('x86_64')
 license=('custom')
 makedepends=()
-depends=('libgl' 'qt5-webengine' 'sndio' 'xdelta3' 'ttf-font')
+depends=(
+  'libgl'
+  'alsa-lib'
+  'libxrandr'
+  'qt5-base'
+  'qt5-declarative'
+  'qt5-location'
+  'qt5-webchannel'
+  'qt5-webengine'
+  'xdelta3'
+  'ttf-font'
+)
 optdepends=()
 source=("https://live.albiononline.com/clients/20220825102752/albion-online-setup"
 	"albion-online-launcher.desktop" "albion-online" "Albion-Online.patch")
 install=albion-online-launcher-bin.install
 options=(!strip docs libtool emptydirs !zipman staticlibs)
-sha256sums=('89f4b80b77984cc304b4af6a6b8bdea95dcf3395521cda160ed22c947c19e006'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-           )
+sha256sums=(
+  '89f4b80b77984cc304b4af6a6b8bdea95dcf3395521cda160ed22c947c19e006'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+)
 
 prepare() {
   pushd "${srcdir}/data/launcher"
