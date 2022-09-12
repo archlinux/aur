@@ -1,4 +1,4 @@
-From 0d092aaa1b76d7e6e269fa6a7d005b83c3e159f5 Mon Sep 17 00:00:00 2001
+From 53b2a57128ec0c67be3eb865c7a749ddf9d72f76 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 21:59:33 +0100
 Subject: [PATCH 04/12] Fix transitive dependencies (of static libraries)
@@ -93,10 +93,10 @@ index 2cf6caca19..23dc161e4c 100644
  unset(__freetype_target_name)
  unset(__freetype_found)
 diff --git a/cmake/FindWrapSystemHarfbuzz.cmake b/cmake/FindWrapSystemHarfbuzz.cmake
-index 3cb44aa766..9dc741b2be 100644
+index fc6233d942..1e6105a00c 100644
 --- a/cmake/FindWrapSystemHarfbuzz.cmake
 +++ b/cmake/FindWrapSystemHarfbuzz.cmake
-@@ -54,7 +54,7 @@ find_package_handle_standard_args(WrapSystemHarfbuzz
+@@ -70,7 +70,7 @@ find_package_handle_standard_args(WrapSystemHarfbuzz
  if(WrapSystemHarfbuzz_FOUND)
      add_library(WrapSystemHarfbuzz::WrapSystemHarfbuzz INTERFACE IMPORTED)
      target_link_libraries(WrapSystemHarfbuzz::WrapSystemHarfbuzz
@@ -104,7 +104,7 @@ index 3cb44aa766..9dc741b2be 100644
 +                          INTERFACE "${__harfbuzz_target_name}" ${HARFBUZZ_DEPENDENCIES})
  endif()
  unset(__harfbuzz_target_name)
- unset(__harfbuzz_found)
+ unset(__harfbuzz_find_include_dirs_hints)
 diff --git a/cmake/FindWrapSystemPNG.cmake b/cmake/FindWrapSystemPNG.cmake
 index 372a064ff4..a363bfd31b 100644
 --- a/cmake/FindWrapSystemPNG.cmake
@@ -132,5 +132,5 @@ index d3a6a8588e..743154fc50 100644
          Qt::CorePrivate
          Qt::SqlPrivate
 -- 
-2.36.1
+2.37.3
 

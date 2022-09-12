@@ -1,4 +1,4 @@
-From 8ac6411a3410f571d784ec3ddeea4fe640938840 Mon Sep 17 00:00:00 2001
+From b0f8a6b432e1576774679fbf54dc2d1424590bbe Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 24 Apr 2022 23:00:27 +0200
 Subject: [PATCH 09/12] Find fontconfig via pkg-config for correct handling of
@@ -59,5 +59,5 @@ index 42ab041f99..044c90a0d1 100644
  qt_find_package(gbm PROVIDED_TARGETS gbm::gbm MODULE_NAME gui QMAKE_LIB gbm)
  qt_find_package(WrapSystemHarfbuzz 2.6.0 PROVIDED_TARGETS WrapSystemHarfbuzz::WrapSystemHarfbuzz MODULE_NAME gui QMAKE_LIB harfbuzz)
 -- 
-2.36.1
+2.37.3
 
