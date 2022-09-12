@@ -1,2 +1,10 @@
 #!/bin/bash
-	/opt/albion-online-launcher-bin/Albion-Online
+
+if newgrp albion &>/dev/null <<< /opt/albion-online-launcher-bin/Albion-Online
+then
+    :
+else
+    zenity \
+        --info \
+        --text="Please run the next command in your terminal to give your user permissions to update Albion game data on /opt:\n\n\sudo usermod -a -G albion ${USER}"
+fi

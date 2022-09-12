@@ -1,7 +1,7 @@
 pkgbase = albion-online-launcher-bin
 	pkgdesc = The first true cross-platform Sandbox MMO -- launcher client
 	pkgver = 1.17
-	pkgrel = 3
+	pkgrel = 4
 	url = https://albiononline.com/
 	install = albion-online-launcher-bin.install
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = albion-online-launcher-bin
 	depends = qt5-webengine
 	depends = xdelta3
 	depends = ttf-font
+	depends = zenity
 	options = !strip
 	options = docs
 	options = libtool

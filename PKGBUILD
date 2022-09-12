@@ -3,7 +3,7 @@
 
 pkgname=albion-online-launcher-bin
 pkgver=1.17
-pkgrel=3
+pkgrel=4
 pkgdesc="The first true cross-platform Sandbox MMO -- launcher client"
 url="https://albiononline.com/"
 arch=('x86_64')
@@ -20,6 +20,7 @@ depends=(
   'qt5-webengine'
   'xdelta3'
   'ttf-font'
+  'zenity'
 )
 optdepends=()
 source=("https://live.albiononline.com/clients/20220825102752/albion-online-setup"
@@ -46,10 +47,10 @@ prepare() {
 package() {
   mkdir -p "${pkgdir}/opt"
   cp -a "${srcdir}/data" "${pkgdir}/opt/${pkgname}"
-  chmod 777 "$pkgdir/opt/${pkgname}"
+  chmod 755 "$pkgdir/opt/${pkgname}"
 
   mkdir -p "${pkgdir}/opt/${pkgname}/game_x64"
-  chmod 6777 "${pkgdir}/opt/${pkgname}/game_x64"
+  chmod 6775 "${pkgdir}/opt/${pkgname}/game_x64"
 
   # Link launcher to usr/system binaries directory
   mkdir -p "${pkgdir}/usr/bin"
