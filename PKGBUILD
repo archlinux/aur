@@ -1,6 +1,6 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=cargo-mutants
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Mutation testing for Rust'
 url="https://github.com/sourcefrog/$pkgname"
@@ -8,7 +8,7 @@ arch=("x86_64")
 license=("MIT")
 depends=("cargo")
 source=("$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha256sums=('a91ce129a8b4018b0167f95057d75fbf2fa35c3a44cd4127382153f5fb329a6d')
+sha256sums=('fb3c3d496ae6b54c0837b503f172dc241ec1c2f5999e438eda6201c077f27f0d')
 
 build()
 {
