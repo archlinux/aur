@@ -11,7 +11,7 @@
 # All patches are managed at https://github.com/Martchus/qtbase
 
 pkgname=mingw-w64-qt6-base
-_qtver=6.3.1
+_qtver=6.3.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -43,19 +43,19 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
         '0010-Fix-dependency-of-xcb-image-on-xcb-util.patch'
         '0011-Allow-using-properties-of-PkgConfig-targets-for-glib.patch'
         '0012-Allow-using-properties-of-PkgConfig-targets-for-Wayl.patch')
-sha256sums=('0a64421d9c2469c2c48490a032ab91d547017c9cc171f3f8070bc31888f24e03'
-            'b50847b70210657d5579bbc6fe88c5343f675d63e0059183705777a2d0c0fcf6'
-            'c2e2499413b281be496de2b62385ff947c38b92f98028336b4c1a06230f5a180'
-            '16cd13db60b669f1b84bc98910b40a50b28e75b00b839883c0dd69e457a997b0'
-            'e6d6b86b2a4a9f30ce361b6baa6e5d32d1567828581d6bc65f6986a15a4ae0ab'
-            '34d6083183e58e02d8bc53db6fbeb2059766a23b3fe9ccdc0b53c861eefbfdb0'
-            '53e83363b0508d8005987fea8f752d2f0d804f07d434c0a7a1a39ebf9668d433'
-            'b90c472eda3caa44981d14b8081039c56653a0c85bd60175ff37d0d48ed43078'
-            '8ee1b3c4554be7d4f2ec5ac24727887ea4c47704e1ddcf80aacece93b9e54dda'
-            '0d8f78df6da2dd3bf7610fdc7b3018cb2698bbe6f523925ad4c3565e7ecb03c9'
-            'ae0d2140f3be5fa16ff32cb9715144de72139e509dacd937ad643c14177c14ce'
-            'c811240dc3f6e95a636bfbb8f05f5a074b6d82ac2bf623cdc32bf74cd9f39548'
-            '87e00cc7c4e47494f3eb117f930432cb2385ee5016280e22a719e775664512c7')
+sha256sums=('7929ba4df870b6b30870bc0aed2525cfc606ed7091107b23cf7ed7e434caa9a6'
+            '44447564d76f656f78dcebbd9015f87cc5ab89caf1984909f32c8a57168ebfc6'
+            '62efb1cbd52b852115df5887c4653c39dce9e695470c3577f58388a8493964dc'
+            'ac185df12dafaa5b2a35b05ae0fa5ff05b6e885525c6159c89589028081b1285'
+            '454f758469ed0dc03278e851cc6dc19424fc8147396b3a54640c284e7085277c'
+            '7ceaa7fa65a73d2ae60a93cce1cb68e85bd486ac5529e3456c696fc2a3098749'
+            'b493577b3b524383312d6f093c7d41b621daea7e82f6efb7d219b2796e217a81'
+            'fc29185f66f3b9a288bdd7e36a363d3f573d9602d7b01588f58c352a54dfed8f'
+            '7b00f18dc4ebd42194f853acd1bee4fb4fcb586086ce6c2be7996df058c6dbb6'
+            '4e29919b6692be949164f47a929178dcff0e0075f51f3aa54d617795291cd31f'
+            '37a0951bec45840157275c0e79fc1882143b6152069cde93be193128c22e5d2d'
+            '9969dd32b3f8e5f6f67396a98a676a1d50a7beaf9fb150aa3c3127c8835086cd'
+            '0d1b83a7ab41a6f4d52c48c215949b7204e880531df0f1dd395a08f615b43faa')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
