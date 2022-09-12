@@ -1,7 +1,7 @@
 pkgbase = multiwfn-bin
 	pkgdesc = A program for realizing electronic wavefunction analysis, stable binary version
 	pkgver = 3.7
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sobereva.com/multiwfn
 	install = multiwfn-bin.install
 	arch = x86_64

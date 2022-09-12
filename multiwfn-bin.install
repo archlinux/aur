@@ -1,6 +1,6 @@
 post_install() {
     echo '
-> config file: /etc/multiwfn
+> config file: /etc/Multiwfn/settings.ini
 '
 }
 
