@@ -1,6 +1,6 @@
 pkgbase = koi
 	pkgdesc = Switch between light and dark themes on KDE Plasma
-	pkgver = 0.2.1
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/baduhai/Koi
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = koi
 	depends = kconfig
 	depends = kcoreaddons
 	depends = kwidgetsaddons
-	source = https://github.com/baduhai/Koi/archive/0.2.1.tar.gz
-	sha256sums = dd87c3d09913e56c8585a28c9db6c36b3f27e798bd33127c05e1e638d6aa2aed
+	source = https://github.com/baduhai/Koi/archive/0.2.3.tar.gz
+	sha256sums = 811f6bdaa8146f0da6103742816cc48f571d344d2cd8cd9ac2448ca518825e32
 
 pkgname = koi
