@@ -1,0 +1,17 @@
+pkgbase = kde-thumbnailer-hpgl-git
+	pkgdesc = KDE / Dolphin thumbnails for HPGL (HP graphics language) files (git)
+	pkgver = v1.0.0.r0.g0c30a38
+	pkgrel = 1
+	url = https://github.com/CodingMarco/kde-thumbnailer-hpgl
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = hp2xx
+	depends = kio
+	source = git+https://github.com/CodingMarco/kde-thumbnailer-hpgl.git
+	md5sums = SKIP
+
+pkgname = kde-thumbnailer-hpgl-git
