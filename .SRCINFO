@@ -1,0 +1,15 @@
+pkgbase = neovide-lunarvim
+	pkgdesc = neovide binary and .desktop file that launches with lunarvim
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/neovide/neovide
+	arch = x86_64
+	license = custom
+	depends = neovide
+	optdepends = lunarvim-git: if not installed with shell script
+	source = neovide-lunarvim.desktop
+	source = script.sh
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = neovide-lunarvim
