@@ -5,22 +5,23 @@
 
 pkgname=jpilot
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
+pkgGitHubCommit=200d954
 pkgdesc="A desktop organizer application for the Palm Pilot"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/juddmon/jpilot/"
 license=('GPL2')
 depends=('openssl' 'gtk3' 'pilot-link' 'slang')
 makedepends=('intltool')
-source=("https://codeload.github.com/juddmon/jpilot/legacy.tar.gz/ba8354f"
+source=("https://codeload.github.com/juddmon/jpilot/legacy.tar.gz/$pkgGitHubCommit"
 	"https://raw.githubusercontent.com/eklausme/c/e637065e25e6a855dfac91ddf9683f5123ae612f/jpsqlite.c"
 	"https://raw.githubusercontent.com/eklausme/c/0c35d9a6b9097890e8af24ecd8956ed24da61e13/jptables.sql")
-sha256sums=('db88cd8ec06c7a847ca91fcb6015c2086ad1063316b7017f4a9de3668efc4aa9'
+sha256sums=('0cb610793fdebfde926d3add0694119e408791f0c36e96f00c8049dc1eb55a3e'
             'e99be953dab21d248322b35dc895089593d1272f2e0b9af83d5cb6762c7ec3e0'
             '01d8b6c47c365958b60f841fd96e82af661b9011090b3bde25e8ea90802e8a44')
 
 build() {
-	cd "${srcdir}"/juddmon-$pkgname-ba8354f
+	cd "${srcdir}"/juddmon-$pkgname-$pkgGitHubCommit
 
 	./autogen.sh --prefix=/usr --disable-pl-test --disable-gtktest
 	make
@@ -31,7 +32,7 @@ build() {
 }
 
 package() {
-	cd "${srcdir}"/juddmon-$pkgname-ba8354f
+	cd "${srcdir}"/juddmon-$pkgname-$pkgGitHubCommit
 
 	make DESTDIR="${pkgdir}" install
 
