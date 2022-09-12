@@ -27,9 +27,12 @@ prepare() {
 
   # overriding CMake flags for aarch64 in order to ensure build
   # is not failing
-  if [ "$(uname -m)" == "aarch64" ]; then
+  if [[ "$(uname -m)" == "aarch64" ]]; then
     export CXXFLAGS="${CXXFLAGS/-fstack-protector-strong/ }"
     export CXXFLAGS="${CXXFLAGS/-fstack-clash-protection/ }"
+
+    export CFLAGS="${CFLAGS/-fstack-protector-strong/ }"
+    export CFLAGS="${CFLAGS/-fstack-clash-protection/ }"
   fi
   
   cd ${pkgname}-v$pkgver
