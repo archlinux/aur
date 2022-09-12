@@ -6,6 +6,7 @@ pkgbase = miniconda3
 	install = miniconda3.install
 	arch = x86_64
 	license = custom
+	provides = conda
 	options = !strip
 	options = libtool
 	options = staticlibs

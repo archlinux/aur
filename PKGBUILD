@@ -11,6 +11,7 @@ pkgdesc="Mini version of Anaconda Python distribution"
 arch=(x86_64)
 url="https://conda.io/en/latest/miniconda"
 license=('custom')
+provides=('conda')
 source=(${pkgname}-${pkgver}.sh::https://repo.continuum.io/miniconda/Miniconda3-py39_${pkgver}-Linux-x86_64.sh)
 options=(!strip libtool staticlibs)
 sha512sums=('874a3c0b73cef6b349907e330ef5d3caac57c97a8dc0f264a40263838b45325c91e7bbe39889d01166e664bb305fb361df4b85a842672a826af252943faa06ba')
