@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-tools-static
-_qtver=6.3.1
+_qtver=6.3.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -18,8 +18,8 @@ groups=(mingw-w64-qt6)
 _pkgfqn="qttools-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Enable-only-SQL-plugins-which-are-known-to-work.patch')
-sha256sums=('c412750f2aa3beb93fce5f30517c607f55daaeb7d0407af206a8adf917e126c1'
-            'e278a7db3cb3fe0095adf4017e941baa25681afa765ef982a5d754e77bdb8261')
+sha256sums=('e5b07d2ffab68cebe935972506c88ffe1e4b7d24bdc28c67578dbc075799aed2'
+            '5eef71b11a8274aefd2b9f44e1f676e6fc3d54d57aab27efe96775fa9e28046e')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
