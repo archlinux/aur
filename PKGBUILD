@@ -2,7 +2,7 @@
 pkgdesc="XDG sound themes for the X Desktop Environment"
 pkgname=xde-sounds
 pkgver=1.1
-pkgrel=1
+pkgrel=1.1
 arch=('any')
 license=('GPL')
 url="https://github.com/bbidulock/${pkgname}"
