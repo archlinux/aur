@@ -1,15 +1,16 @@
 pkgbase = x86info
 	pkgdesc = A CPU identification utility. Provides more info than /proc/cpuinfo
-	pkgver = 1.30.158
-	pkgrel = 2
+	pkgver = 1.30.174
+	pkgrel = 1
 	url = https://github.com/kernelslacker/x86info
 	install = x86info.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = python
 	depends = pciutils
-	source = git+https://github.com/kernelslacker/x86info.git#commit=9501749231164135db25c72cbeb42bf32af1519b
+	source = git+https://github.com/kernelslacker/x86info.git#commit=7d3d95d99d10dff96a140333ce30b01ed4f34434
 	sha256sums = SKIP
 
 pkgname = x86info
