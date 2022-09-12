@@ -1,7 +1,7 @@
 # Maintainer: Anuskuss <anuskuss@googlemail.com>
 pkgname=cemu
-pkgver=2.0.116
-pkgrel=2
+pkgver=2.0.121
+pkgrel=1
 pkgdesc='Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)'
 arch=(x86_64)
 url=https://cemu.info
@@ -25,7 +25,7 @@ optdepends=(
 )
 install=cemu.install
 source=(
-	git+https://github.com/cemu-project/Cemu#commit=3349d7b4245e9bee862ee53a04196357fbedc99d
+	git+https://github.com/cemu-project/Cemu#commit=6cf5dc9a569315969aeaec71f058b4fa8bf16993
 	# dependencies
 	imgui-1.88.tar.gz::https://github.com/ocornut/imgui/archive/refs/tags/v1.88.tar.gz
 	imgui.cmake::https://raw.githubusercontent.com/microsoft/vcpkg/master/ports/imgui/CMakeLists.txt
@@ -39,10 +39,10 @@ source=(
 	git+https://github.com/arsenm/sanitizers-cmake#commit=aab6948fa863bc1cbe5d0850bc46b9ef02ed4c1a
 	git+https://github.com/google/googletest#commit=800f5422ac9d9e0ad59cd860a2ef3a679588acb4
 	# patches
-	xdg.diff # 963f9b38349c5d03b26ab2a50ead2ee4e743ca41
+	xdg.diff # 00dbe939f29c6fa6670a6f71946e52b520d51033
 	overlay.diff # edeb14d4c68ee8bf500b990b13079177e01c25f1
-	dsu.diff # dbe8c94dd427585fc2f0c49947fa2d8051d8f218 + 56b140f159f3322cce00bb87f34274d1f62c314b
-	dark.diff # 557d25c0525fd0dd662f41529c60fb9d722e5a0e
+	dark.diff # 9a1f7bede33ef2ba334d4d318fd6742512dd7759
+	gamelist.diff # 182b40d38964a4c296127c5eb4497b5cccc01802
 )
 sha256sums=(
 	SKIP
@@ -53,10 +53,10 @@ sha256sums=(
 	SKIP
 	SKIP
 	SKIP
-	4061e28533d391ebc4745cdc47470438b20c64dd11f7308e5acf35d0fbc54326
+	8c108b92d641b404d753b72aecfd7ebfa7609f84e8fa4b1318227a5a33bbe240
 	f25d13fe76cc6a0b475f0131211a951288160ddae92cd7a815f5aea61d7cfc0f
-	9af0cb88f07acad70aa5b7133ccbbaddacca542edea5817e622b4571cc26046d
-	15243ffa555559ade19cdb99d42dc10a6b4d1402c9cee045a623dd4b30827a1d
+	e6209279267e6b3f2550248d6992042b23eeec2501f3df31feb9c4b1fbf2aa15
+	c28de51af46ac88d5db4ecae8626b9087f2a34503ced51b25498cbbf7eba306c
 )
 
 pkgver() {
@@ -105,12 +105,12 @@ prepare() {
 	rm -rf src/util/SystemInfo
 	git apply "$srcdir/overlay.diff"
 
-	# experimental: dsu controller (https://github.com/cemu-project/Cemu/pull/234)
-	rm -f src/input/api/DSU/ReceiveTimeoutSocketOption.h
-	git apply "$srcdir/dsu.diff"
-
 	# experimental: dark mode fix (https://github.com/cemu-project/Cemu/pull/241)
 	git apply "$srcdir/dark.diff"
+	sed -i 's/wxSYS_COLOUR_MENUHILIGHT/wxSYS_COLOUR_MENU/' src/gui/components/wxGameList.cpp
+
+	# experimental: gamelist auto resize (https://github.com/cemu-project/Cemu/pull/214)
+	git apply "$srcdir/gamelist.diff"
 }
 
 build() {
