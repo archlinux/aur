@@ -1,6 +1,6 @@
 pkgname=mx-puppet-discord-git
 pkgver=v0.1.1.r5.gfd44022
-pkgrel=1
+pkgrel=2
 # strip the -git suffix from name
 _dirname="${pkgname%-git}"
 _basename="${pkgname%-git}"
@@ -13,7 +13,7 @@ source=("git+${url}" "${_basename}.tmpfiles" "${_basename}.sysusers" "${_basenam
 sha256sums=('SKIP'
             '52882939775b359aceb0b1f16f46d8c2063dab100d58bd2d3753bae66638490d'
             '34f11759a1202f9e4448dd493b2aad253bf2c7f233f70fcf95c33f5a2ab19984'
-            '81c81f60a3db42f840e70d1ca55a84e2655227a0b0f5ff99b6beff582a9e6964')
+            '6c3b68dcb11603996aff7daf3b9432c74eed0138eb1ba2cca30a926dbbb786d4')
 backup=("etc/${_basename}/config.yaml")
 install="${_basename}.install"
 # npm is strangely necessary during better-sqlite build or it'll fail
