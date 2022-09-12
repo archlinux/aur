@@ -1,8 +1,6 @@
 post_install() {
     echo '
-> please add this line to your .bashrc
-[ -r /etc/profile.d/multiwfn.sh ] && . /etc/profile.d/multiwfn.sh
-> config file /etc/multiwfn
+> config file: /etc/Multiwfn/settings.ini
 '
 }
 
