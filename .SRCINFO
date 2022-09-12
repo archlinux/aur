@@ -1,0 +1,16 @@
+pkgbase = leqm-nrt-git
+	pkgdesc = An open source implementation of Leq(M) measurement with patches from Carl
+	pkgver = 0.0.2.r10.gb795210
+	pkgrel = 1
+	url = https://git.carlh.net/gitweb/?p=leqm-nrt.git;a=summary
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = python
+	provides = leqm-nrt
+	conflicts = leqm-nrt
+	source = leqm-nrt-git::git+git://git.carlh.net/git/leqm-nrt.git#branch=carl
+	sha256sums = SKIP
+
+pkgname = leqm-nrt-git
+	pkgdesc = An open source implementation of Leq(M) measurement with patches from Carl
