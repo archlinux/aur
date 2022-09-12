@@ -1,7 +1,7 @@
 pkgbase = obs-service-tar_scm-git
 	pkgdesc = Source Service for the OpenSUSE Build Service (OBS)
-	pkgver = 0.10.31.r772
-	pkgrel = 2
+	pkgver = 0.10.32.r777
+	pkgrel = 1
 	url = https://github.com/openSUSE/obs-service-tar_scm
 	arch = any
 	groups = obs
