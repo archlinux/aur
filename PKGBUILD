@@ -2,13 +2,13 @@
 
 pkgname=redmibook-hwdb-git
 _pkgname=redmibook-hwdb
-pkgver=0.0
+pkgver=0.0.r2.gc050119
 pkgrel=1
 pkgdesc="hwdb rules for my RedmiBook Pro laptop"
 url="https://github.com/oldherl/redmibook-hwdb"
 license=("custom:MIT")
 arch=(any)
-source=("git+https://github.com/oldherl/redmibook-hwdb/")
+source=("git+https://github.com/oldherl/redmibook-hwdb.git")
 sha256sums=('SKIP')
 makedepends=('git')
 depends=('systemd')
