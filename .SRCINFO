@@ -1,0 +1,18 @@
+pkgbase = settings-shim-git
+	pkgdesc = Simple shim to launch GNOME Control Center from the settings spec
+	pkgver = r22.c76e5ee
+	pkgrel = 1
+	url = https://github.com/dusansimic/settings-shim
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = gtk4
+	makedepends = vala
+	depends = gnome-control-center
+	provides = settings-shim
+	conflicts = settings-shim
+	source = settings-shim::git+https://github.com/dusansimic/settings-shim
+	md5sums = SKIP
+
+pkgname = settings-shim-git
