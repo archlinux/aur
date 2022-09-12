@@ -27,13 +27,12 @@ prepare() {
 
   # overriding CMake flags for aarch64 in order to ensure build
   # is not failing
-  if [[ "$arch" == "aarch64" ]]; then
+  if [ "$(uname -m)" == "aarch64" ]; then
     export CXXFLAGS="${CXXFLAGS/-fstack-protector-strong/ }"
     export CXXFLAGS="${CXXFLAGS/-fstack-clash-protection/ }"
   fi
   
   cd ${pkgname}-v$pkgver
-  flutter --no-version-check --suppress-analytics clean
   flutter --no-version-check --suppress-analytics pub get
 }
 
@@ -43,7 +42,7 @@ build() {
 }
 
 package() {  
-  case "$arch" in
+  case "$(uname -m)" in
     "x86_64")
       export FLUTTER_ARCH="x64"
       ;;
