@@ -9,7 +9,7 @@
 
 pkgname=flexget
 _pkgname=FlexGet
-pkgver=3.3.25
+pkgver=3.3.26
 pkgrel=1
 pkgdesc='Multipurpose automation tool for downloading media content from different sources'
 arch=('any')
@@ -67,7 +67,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/F/$_pkgname/$_pkgname-$pkgver.tar.gz"
   'flexget.service'
   'flexget@.service')
-sha256sums=('525d833b393f55a0e6fdbdd55459b3428ba2f04f4e4ea08fb2e8577df3334dbd'
+sha256sums=('487911fa44e26e3f1126017d87d4b4a7d1f09553390bb9788d033db755d2388a'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
             'aceecee5496a34c14c12ed5ad8b97197de32896f358b5aef63a84bf4a419756a')
 
