@@ -32,14 +32,14 @@ prepare() {
   cd ${_name}
   git submodule update --init --recursive
   
-  flutter --no-version-check --suppress-analytics clean
   flutter --no-version-check --suppress-analytics pub get
 }
 
 build() {
   # overriding CMake flags for aarch64 in order to ensure build
   # is not failing
-  if [[ "$arch" == "aarch64" ]]; then
+  if [ "$(uname -m)" == "aarch64" ]; then
+    echo "Adjusting CMake flags for aarch64."
     export CXXFLAGS="${CXXFLAGS/-fstack-protector-strong/ }"
     export CXXFLAGS="${CXXFLAGS/-fstack-clash-protection/ }"
   fi
@@ -49,7 +49,7 @@ build() {
 }
 
 package() {
-  case "$arch" in
+  case "$(uname -m)" in
     "x86_64")
       export FLUTTER_ARCH="x64"
       ;;
