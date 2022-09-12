@@ -2,8 +2,8 @@
 pkgdesc="XDG sound themes for the X Desktop Environment"
 pkgname=xde-sounds-git
 _pkgname=xde-sounds
-pkgver=1.1.r1.g6fd8bb5
-pkgrel=2
+pkgver=1.1.r2.g893cec0
+pkgrel=1
 arch=('any')
 license=('GPL')
 url="https://github.com/bbidulock/${_pkgname}"
@@ -12,7 +12,7 @@ provides=("${_pkgname}=${pkgver%%.r*}-${pkgrel}")
 conflicts=("${_pkgname}")
 depends=('glib2' 'libcanberra')
 makedepends=('git' 'pkgconfig' 'flite' 'flite-voices' 'sox')
-source=("$pkgname::git://github.com/bbidulock/$_pkgname.git")
+source=("$pkgname::git+https://github.com/bbidulock/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
