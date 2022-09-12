@@ -33,5 +33,5 @@ makepkg --printsrcinfo > .SRCINFO
 #sha256sum skywire-scripts.tar.gz
 echo "don't forget to increment pkgrel if you edited the PKGBUILD"
 echo
-echo "git add -f ${_debPKGBUILD} ${_ccdebPKGBUILD} ${_ccdevPKGBUILD} ${_devPKGBUILD} ${_gitPKGBUILD} PKGBUILD .SRCINFO skywire-autoconfig com.skywire.Skywire.desktop com.skywirevpn.SkywireVPN.desktop skywirevpn.png skywire.png skywire.service skywire-autoconfig.service postinst.sh prerm.sh skywire.install updates.sh test.sh"
+echo "git add -f ${_debPKGBUILD} ${_ccdebPKGBUILD} ${_ccdevPKGBUILD} ${_devPKGBUILD} ${_gitPKGBUILD} PKGBUILD .SRCINFO skywire-autoconfig com.skywire.Skywire.desktop com.skywirevpn.SkywireVPN.desktop skywirevpn.png skywire.png skywire.service skywire-autoconfig.service postinst.sh prerm.sh updates.sh test.sh"
 echo 'git commit -m " "'
