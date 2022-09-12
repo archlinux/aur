@@ -1,7 +1,7 @@
 # Maintainer: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=sdl2-git
-pkgver=2.24.0.r15.g057086e38
+pkgver=2.24.0.r199.g6dfd7a17e
 pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -29,6 +29,7 @@ pkgver() {
 build() {
 	CFLAGS+=" -ffat-lto-objects"
 	cmake -S SDL -B build -G Ninja \
+	-D SDL_HIDAPI_LIBUSB=ON \
 	-D CMAKE_INSTALL_PREFIX=/usr \
 	-D SDL_RPI=OFF \
 	-D SDL_STATIC=OFF \
@@ -38,9 +39,9 @@ build() {
 
 package() {
 	DESTDIR="${pkgdir}" cmake --install build
+
 	# For some reason, this isn't named correctly and we have to fix it to reflect the actual staticlib name.
 	sed -i "s/libSDL2\.a/libSDL2main.a/g" "$pkgdir"/usr/lib/cmake/SDL2/SDL2Targets-noconfig.cmake
 	install -Dm644 SDL/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	chown -R root:root "$pkgdir"
 }
 
