@@ -2,7 +2,7 @@
 # Contributor: Sébastien Feugère <smonff@riseup.net>
 # Contributor: Dario Klingenberg <dario.klingenberg at web.de>
 pkgname=gopanda
-pkgver=2.7.14
+pkgver=2.7.17
 pkgrel=1
 pkgdesc="Client for the Pandanet-IGS go Server" 
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('custom')
 depends=()
 options=(!strip)
 source_x86_64=("https://pandanet-igs.com/gopanda2/download/GoPanda2.AppImage")
-md5sums_x86_64=('06ca6a3ac336cd951d4b6383ec59b5a7')
+md5sums_x86_64=('69cfff969ff0a3e451cdd600c002cd30')
 _DEST="/opt/${pkgname}"
 _CLIENT="GoPanda2.AppImage"
 _NAME="GoPanda2"
