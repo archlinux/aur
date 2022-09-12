@@ -36,6 +36,7 @@ prepare() {
   fi
   
   cd ${pkgname}-v$pkgver
+  flutter --no-version-check --suppress-analytics clean
   flutter --no-version-check --suppress-analytics pub get
 }
 
