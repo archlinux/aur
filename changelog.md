@@ -1,3 +1,14 @@
+## GE-Proton-7-33
+- wine updated to latest bleeding edge, pulls in more fixes for gta v, rdr2, verified bioshock remastered 1/2 + infinite work with 2k launcher
+- dxvk updated to latest git
+- vkd3d updated to latest git
+- pulled in latest proton script changes from upstream
+- fixed issue with fall guys protonfix trying to replace incorrect command name (Thanks Corben78)
+- removed Divinity Original Sin 2 launcher protonfix as it's no longer needed
+
+## GE-Proton-7-32
+- Version deprecated by upstream
+
 ## GE-Proton-7-31 Released
 - FXIV Launcher fixed (thanks Valve)
 - GTA V fixes added (thanks Valve)
@@ -9,7 +20,6 @@
 - patches added for Visual Novel Doukyuusei
 
 ## GE-Proton-7-30 Released
-
 - protonfix for Flatout Ultimate Carnage (single player only) added -- thanks Ranplayer
 - amazon games patch added (this is mainly for possible future compatibility, please use wine-ge for non-steam games)
 - wine-staging ddraw-Device_Caps and ddraw-version-check patchsets disabled in favor of new proton ddraw changes.
