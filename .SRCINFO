@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-pano-git
 	pkgdesc = Next-gen Clipboard Manager
-	pkgver = 7.r0.gd3313ab
+	pkgver = 7.r2.g442d084
 	pkgrel = 1
 	url = https://github.com/oae/gnome-shell-pano
 	install = gnome-shell-extension-pano.install
@@ -13,6 +13,7 @@ pkgbase = gnome-shell-extension-pano-git
 	makedepends = appstream
 	depends = gnome-shell>=42
 	depends = libgda
+	depends = gobject-introspection
 	provides = gnome-shell-extension-pano
 	conflicts = gnome-shell-extension-pano
 	options = !strip
