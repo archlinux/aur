@@ -1,4 +1,4 @@
-pkgbase = curl
+pkgbase = libcurl-gnutls.so
 	pkgdesc = An URL retrieval library (without versioned symbols and linked against gnutls)
 	pkgver = 7.85.0
 	pkgrel = 1

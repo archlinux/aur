@@ -5,7 +5,7 @@
 # Contributor: Lucien Immink <l.immink@student.fnt.hvu.nl>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
-pkgbase='curl'
+_projectname='curl'
 _libname='libcurl-gnutls'
 pkgname="${_libname}.so"
 pkgver='7.85.0'
@@ -20,20 +20,20 @@ depends=('brotli' 'ca-certificates' 'curl' 'gnutls' 'krb5' 'libbrotlidec.so'
          'libzstd.so')
 provides=("${_libname}" "${pkgname}")
 conflicts=("${_libname}")
-source=("https://curl.haxx.se/download/${pkgbase}-${pkgver}.tar.gz"{,.asc})
+source=("https://curl.haxx.se/download/${_projectname}-${pkgver}.tar.gz"{,.asc})
 sha512sums=('bbad693bcde9c55e5942499950d76011f53ad43d3270eee2c8db486bcf46f5fc92b32dd8752caf4c5976fe493d083e2d34fa299cb96fb8e76d8f5fcc2cc56a36'
             'SKIP')
 
 validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
 
 prepare() {
-	cd "${srcdir}/${pkgbase}-${pkgver}"
+	cd "${srcdir}/${_projectname}-${pkgver}"
 	sed -i 's/libcurl\.la/libcurl\-gnutls\.la/g;s/libcurl_la/libcurl_gnutls_la/g;' \
-		"${srcdir}/${pkgbase}-${pkgver}/docs/examples/Makefile.am" \
-		"${srcdir}/${pkgbase}-${pkgver}/lib/Makefile.am" \
-		"${srcdir}/${pkgbase}-${pkgver}/src/Makefile.am" \
-		"${srcdir}/${pkgbase}-${pkgver}/tests/libtest/Makefile.am" \
-		"${srcdir}/${pkgbase}-${pkgver}/lib/libcurl.vers.in"
+		"${srcdir}/${_projectname}-${pkgver}/docs/examples/Makefile.am" \
+		"${srcdir}/${_projectname}-${pkgver}/lib/Makefile.am" \
+		"${srcdir}/${_projectname}-${pkgver}/src/Makefile.am" \
+		"${srcdir}/${_projectname}-${pkgver}/tests/libtest/Makefile.am" \
+		"${srcdir}/${_projectname}-${pkgver}/lib/libcurl.vers.in"
 }
 
 _configure_options=(
@@ -62,9 +62,9 @@ _make_options=(
 )
 
 build() {
-	cd "${srcdir}/${pkgbase}-${pkgver}"
+	cd "${srcdir}/${_projectname}-${pkgver}"
 	autoreconf -i
-	"${srcdir}/${pkgbase}-${pkgver}"/configure \
+	"${srcdir}/${_projectname}-${pkgver}"/configure \
 		"${_configure_options[@]}" \
 		"${_make_options[@]}"
 	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
@@ -73,7 +73,7 @@ build() {
 
 
 package() {
-	cd "${srcdir}/${pkgbase}-${pkgver}"
+	cd "${srcdir}/${_projectname}-${pkgver}"
 	make -C lib DESTDIR="${pkgdir}" "${_make_options[@]}" install
 	install -dm 0755 "${pkgdir}"/usr/share/licenses
 	ln -s curl "${pkgdir}"/usr/share/licenses/libcurl-gnutls
