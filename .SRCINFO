@@ -1,12 +1,12 @@
 pkgbase = buuf-icon-theme
 	pkgdesc = Created by fana-m. Icons by mattahan. Modified by Hybrid Son Of Oxayotl
-	pkgver = 3.34
-	pkgrel = 4
+	pkgver = 3.35
+	pkgrel = 0
 	url = http://buuficontheme.free.fr
 	arch = any
 	license = cc-by-nc-sa
 	depends = hicolor-icon-theme
-	source = https://github.com/robson-66/Buuf/archive/refs/tags/v3.34.tar.gz
-	sha256sums = 35bf7618c4e0731b6596834e7c6d3718012196c6c2c71b21336162d57a2b8159
+	source = https://github.com/robson-66/Buuf/archive/refs/tags/v3.35.tar.gz
+	sha256sums = 8af3beed03737b6dd2d3bdb8ad1888534a7a93f19226eae92c3411d8913e042a
 
 pkgname = buuf-icon-theme
