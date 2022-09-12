@@ -1,6 +1,6 @@
 # Maintainer: calamity <calamity dot aur at mailban dot de>
 pkgname=ph-userjs-updater
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Load or update user.js for Firefox and Thunderbird from privacy-handbuch.de"
 arch=('any')
@@ -9,8 +9,8 @@ license=('MIT')
 depends=('curl')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "updater.patch")
-sha256sums=('5529c31d854c5ae0b3f1388304760965eda38b3df74fb029cca3252588b13b5d'
-            'fd56d6bb1dcc3327893177a701cb00cc3a6ad4319c8f3913bdf521653efe4094')
+sha256sums=('3f448b8f9f1e54613c97e740284483db27edcaa480c7a2530345b47fb97fab6d'
+            'b258d6fea9a887c7127a8600f5ad381e5b0ddd640d6d731043005b03e15eaa3e')
 
 prepare() {
   patch --directory="${pkgname}" --forward --strip=0 --input="${srcdir}/updater.patch"

@@ -10,14 +10,14 @@
 -            ;;
 @@ -282 +277,0 @@
 -  update='false'
-@@ -301 +296 @@
+@@ -302 +297 @@
 -  printf '%s' "${color_usage}Usage: ${0} [-abdhilnrsuvy] [-c CONFIG]"
 +  printf '%s' "${color_usage}Usage: ${0} [-abdhilnrvy] [-c CONFIG]"
-@@ -332 +326,0 @@
+@@ -334 +328,0 @@
 -  -s          (Deprecated) This is an alias for -u .
-@@ -335 +328,0 @@
+@@ -337 +330,0 @@
 -  -u          Check for updates of this updater and install if available.
-@@ -478,51 +470,0 @@
+@@ -480,51 +472,0 @@
 -#    Update Updater     #
 -#########################
 -
@@ -69,5 +69,5 @@
 -}
 -
 -#########################
-@@ -780 +721,0 @@
+@@ -782 +723,0 @@
 -update_updater "${@}"
