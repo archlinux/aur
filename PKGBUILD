@@ -2,14 +2,13 @@
 
 pkgname=gitmux
 pkgver=0.7.9
-pkgrel=3
+pkgrel=4
 pkgdesc="Git in your tmux status bar"
 arch=('x86_64' 'i686')
 url="https://github.com/arl/gitmux"
 license=('MIT')
-depends=('glibc')
+depends=('glibc' 'tmux')
 makedepends=('go')
-optdepends=('tmux')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/arl/gitmux/archive/v${pkgver}.tar.gz")
 sha256sums=('ca59fad183fd3b9e99818201074b58c92d060b58765b1dd73a00ffa9fab914ef')
