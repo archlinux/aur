@@ -22,7 +22,6 @@ pkgver () {
 
 prepare() {
   cd "${srcdir}/vtk"
-  sed -i "27i#undef STRICT" ThirdParty/libproj/vtk_libproj.h.in
 }
 
 build() {
