@@ -2,13 +2,13 @@
 # Contributor: John Hamelink <me@johnhame.link>
 
 pkgname=python-tidalapi
-pkgver=0.6.10
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc='Unofficial API for TIDAL music streaming service.'
 arch=('any')
 url='https://github.com/tamland/python-tidal'
 license=('LGPL3')
-depends=('python-requests')
+depends=('python-requests' 'python-dateutil')
 makedepends=(
 	'git'
 	'python-build'
