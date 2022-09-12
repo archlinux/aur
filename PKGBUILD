@@ -3,7 +3,7 @@
 
 _gemname=rubocop
 pkgname=ruby-${_gemname}
-pkgver=1.29.1
+pkgver=1.36.0
 pkgrel=1
 pkgdesc="A Ruby static code analyzer and formatter"
 arch=(any)
@@ -35,14 +35,25 @@ makedepends=(rubygems ruby-rdoc)
 url=https://rubocop.org
 license=(MIT)
 options=(!emptydirs)
-source=(https://github.com/rubocop/rubocop/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
-sha256sums=('e6bbe962d4a10ce45f4fa63d0dfa96d5dd7d6c6d3c75afada3e6295c33a1b16f')
+source=(
+  https://github.com/rubocop/rubocop/archive/v$pkgver/$_gemname-$pkgver.tar.gz
+  https://patch-diff.githubusercontent.com/raw/rubocop/rubocop/pull/10992.patch
+  https://patch-diff.githubusercontent.com/raw/rubocop/rubocop/pull/10995.patch
+)
+sha256sums=('9f1bbfe5c21c7001391a7caa907613e73cf5e0cf69db34e1653fffed24e45351'
+            '7dafe92c6eb6dd785761ff30f8a9ed4ebdd6feeedbb0f7e9783bd7974b46677a'
+            'ab6cad98b4ab49ecbfe13cf4db92c9cb4050c726c5e8e44d17c9079f0bcf4411')
 
 prepare() {
   cd $_gemname-$pkgver
 
+  # fix broken tests
+  patch -p1 -N -i "$srcdir/10992.patch"
+  patch -p1 -N -i "$srcdir/10995.patch"
+
   sed -i 's|~>|>=|g' ${_gemname}.gemspec
 
+  sed -i '/asciidoctor/d' Gemfile
   sed -i '/memory_profiler/d' Gemfile
   sed -i '/simplecov/d' Gemfile
   sed -i '/stackprof/d' Gemfile
