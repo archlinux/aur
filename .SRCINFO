@@ -1,0 +1,11 @@
+pkgbase = wengerbinning
+	pkgdesc = This is a lab package for Wenger Binning.
+	pkgver = 0.1.0.1
+	pkgrel = 1
+	url = https://github.com/wengerbinning
+	arch = any
+	license = GPL
+	source = https://github.com/wengerbinning/wengerbinning/archive/refs/tags/v0.1.0.1.tar.gz
+	sha256sums = a03c886573d3aff1ab918c9a9964da021db3f5885e164fe854a6e1ef324e2a1d
+
+pkgname = wengerbinning
