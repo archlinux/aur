@@ -4,8 +4,8 @@
 
 pkgname=python-thinc
 _pkg="${pkgname#python-}"
-pkgver=8.1.0
-pkgrel=2
+pkgver=8.1.1
+pkgrel=1
 pkgdesc='Practical Machine Learning for NLP'
 arch=('x86_64' 'aarch64')
 url='https://github.com/explosion/thinc'
@@ -27,7 +27,7 @@ depends=(
 makedepends=('cython' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 # checkdepends=('python-pytest' 'python-hypothesis' 'python-mock')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/t/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('eaaea91dc56c041516a829c460423a8aef5357001610c8d6395bce95d8254a0b')
+sha256sums=('9b90282984f3cbaac98e0367df1b1af9e4836231bc063dfad7242a9d0dd52bcd')
 
 prepare() {
 	cd "$_pkg-$pkgver"
