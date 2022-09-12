@@ -1,6 +1,6 @@
 pkgbase = gamescope-session-git
 	pkgdesc = Steam Big Picture Mode session based on gamescope for ChimeraOS
-	pkgver = r57.8e1a336
+	pkgver = r70.3f43594
 	pkgrel = 1
 	url = https://github.com/ChimeraOS/gamescope-session
 	install = gamescope-session.install
@@ -9,6 +9,7 @@ pkgbase = gamescope-session-git
 	makedepends = git
 	depends = gamescope
 	optdepends = chimera: for steam-tweaks integration
+	optdepends = frzr: chimeraos update system
 	source = gamescope-session::git+https://github.com/ChimeraOS/gamescope-session.git
 	md5sums = SKIP
 
