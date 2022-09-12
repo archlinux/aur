@@ -1,13 +1,13 @@
 # Maintainer: Tim Lagnese tim@inept.tech
 
 pkgname=gameoftrees-git
-pkgver=r4814.7e8004ba
-pkgrel=2
+pkgver=r4815.8e396e19
+pkgrel=1
 pkgdesc="A version control system which prioritizes ease of use and simplicity over flexibility."
 arch=('x86_64')
 url="http://gameoftrees.org/"
 license=('ISC')
-depends=('ncurses' 'libmd' 'util-linux-libs' 'zlib' 'libbsd')
+depends=('ncurses' 'libmd' 'util-linux-libs' 'zlib' 'libbsd' 'libevent')
 makedepends=('pkgconf' 'git')
 conflicts=('got' 'got-bin' 'got-git')
 source=('gameoftrees::git+https://git.gameoftrees.org/got-portable.git#branch=linux')
@@ -23,7 +23,7 @@ build() {
   cd "$srcdir/${pkgname%-git}"
 
   autoreconf -i
-  ./configure --prefix=/usr --sbindir=/bin
+  ./configure --prefix=/usr --sbindir=/usr/bin --libexecdir=/usr/lib/$pkgname
   make
 }
 
