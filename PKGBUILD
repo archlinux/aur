@@ -1,29 +1,35 @@
-# Maintainer: Max Niederman <max@maxniederman.com>
+# Maintainer: Adrian Groh <adrian[dot]groh[at]t[dash]online[dot]de>
+# Contributor: Max Niederman <max@maxniederman.com>
 pkgname=ttyper
-pkgver=0.1.13
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Terminal-based typing test."
 url="https://github.com/max-niederman/ttyper"
 license=("MIT")
-arch=("any")
+arch=("i686" "pentium4" "x86_64" "arm" "armv7h" "armv6h" "aarch64")
 makedepends=("cargo")
 provides=("ttyper")
+source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
+b2sums=('e0f77a306dca45242ffc901217bf7b26c8ec1dcfe9d0daef38fa33765f4c7fd20a814c2845f1c6abe3949487d8e1bad6a00ccb583e9e2f1be37e393cb0e786c2')
 
-pkgver() {
-    (git describe --long --tags || echo "$pkgver") | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+prepare() {
+    cd "$pkgname-$pkgver"
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
+check() {
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen --all-features
+}
 build() {
-    export CARGO_TARGET_DIR="${srcdir}/${pkgname}-${pkgver}"
-    cargo build --release
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --all-features
 }
 
 package() {
-    export CARGO_TARGET_DIR="${srcdir}/${pkgname}-${pkgver}"
-    cd ..
-    usrdir="$pkgdir/usr"
-    mkdir -p $usrdir
-    cargo install --path . --root "$usrdir"
-    rm -f $usrdir/.crates.toml
+    cd "$pkgname-$pkgver"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
-
