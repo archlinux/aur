@@ -24,6 +24,13 @@ sha256sums=('87335b4634d40c629a8957ff97d8803f706aef5c2692cfd62751edf4fe2312de')
 
 prepare() {
   flutter --no-version-check --suppress-analytics config --enable-linux-desktop
+
+  # overriding CMake flags for aarch64 in order to ensure build
+  # is not failing
+  if [[ "$ARCH" == "aarch64" ]]; then
+    export CXXFLAGS="${CXXFLAGS/-fstack-protector-strong/ }"
+    export CXXFLAGS="${CXXFLAGS/-fstack-clash-protection/ }"
+  fi
   
   cd ${pkgname}-v$pkgver
   flutter --no-version-check --suppress-analytics clean
@@ -31,18 +38,23 @@ prepare() {
 }
 
 build() {
-  _flutter_dir="${srcdir}/flutter"
-  PATH="${_flutter_dir}/bin:${PATH}"
-  export PATH  
-
   cd ${pkgname}-v$pkgver
   flutter --no-version-check --suppress-analytics build linux --release --verbose
 }
 
 package() {  
+  case "$ARCH" in
+    "x86_64")
+      export FLUTTER_ARCH="x64"
+      ;;
+    "aarch64")
+      export FLUTTER_ARCH="arm64"
+      ;;
+  esac
+
   # install
   install -dm755 ${pkgdir}/opt
-  mv ${pkgname}-v$pkgver/build/linux/x64/release/bundle ${pkgdir}/opt/${pkgname}
+  mv ${pkgname}-v$pkgver/build/linux/$FLUTTER_ARCH/release/bundle ${pkgdir}/opt/${pkgname}
   
   # link
   install -dm755 ${pkgdir}/usr/bin
