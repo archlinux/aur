@@ -33,6 +33,7 @@ build() {
     local targets=("Alone" "Alone2" "Alone7z" "Format7zF")
     (
         export BUILD_DIR="${srcdir}/build"
+        mkdir -p "${BUILD_DIR}"
         for target in "${targets[@]}"; do
             make -C "${bundles}/${target}" -f "${mak}"
         done
