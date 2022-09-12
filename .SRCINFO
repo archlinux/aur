@@ -1,6 +1,6 @@
 pkgbase = dict-freedict-swe-deu-bin
 	pkgdesc = Swedish -> German dictionary for dictd et al. from Freedict.org
-	pkgver = 2020.10.04
+	pkgver = 2022.04.06
 	pkgrel = 1
 	url = https://freedict.org/
 	install = dict-freedict-swe-deu-bin.install
@@ -10,8 +10,7 @@ pkgbase = dict-freedict-swe-deu-bin
 	optdepends = dictd: dict client and server
 	provides = dict-freedict-swe-deu
 	conflicts = dict-freedict-swe-deu
-	source = https://download.freedict.org/dictionaries/swe-deu/2020.10.04/freedict-swe-deu-2020.10.04.dictd.tar.xz
-	sha256sums = 5708218e4cc59f6af6ef14ae418ed74264a990d7608c982377ba2a44280ba66d
+	source = https://download.freedict.org/dictionaries/swe-deu/2022.04.06/freedict-swe-deu-2022.04.06.dictd.tar.xz
+	sha256sums = 81cad75974b9b7da962a0a717ddd45011e245100cbb0bff26ed81d1665df79f8
 
 pkgname = dict-freedict-swe-deu-bin
-
