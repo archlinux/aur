@@ -1,6 +1,6 @@
 pkgbase = xdg-sound-git
 	pkgdesc = Command line XDG sound theme utilities
-	pkgver = 1.0.r1.gb7cb0c1
+	pkgver = 1.0.r2.g0843795
 	pkgrel = 1
 	url = https://github.com/bbidulock/xdg-sound
 	arch = i686
@@ -17,4 +17,3 @@ pkgbase = xdg-sound-git
 	sha256sums = SKIP
 
 pkgname = xdg-sound-git
-
