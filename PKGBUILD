@@ -1,5 +1,5 @@
 pkgname=mingw-w64-libharu
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="C library for generating PDF documents (mingw-w64)"
 url="https://github.com/libharu/libharu"
@@ -9,15 +9,12 @@ depends=('mingw-w64-zlib' 'mingw-w64-libpng')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/libharu/libharu/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1af88a3b53af0b322c5af207935aefaf5b18847da4b70826725f18465fd43ec9')
+sha256sums=('226de46ffb035714f6f3c9ab52f22ca83d95c7af8480f7fd133537f072cda6cc')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "$srcdir/libharu-${pkgver}"
-  # restore version header
-  curl -L https://github.com/libharu/libharu/commit/d75f9fa2519fa31bde7775523042771e6c02bde7.patch | patch -p1
-  curl -L https://github.com/libharu/libharu/pull/239.patch | patch -p1
 }
 
 build() {
