@@ -27,7 +27,7 @@ prepare() {
 
   # overriding CMake flags for aarch64 in order to ensure build
   # is not failing
-  if [[ "$ARCH" == "aarch64" ]]; then
+  if [[ "$arch" == "aarch64" ]]; then
     export CXXFLAGS="${CXXFLAGS/-fstack-protector-strong/ }"
     export CXXFLAGS="${CXXFLAGS/-fstack-clash-protection/ }"
   fi
@@ -43,7 +43,7 @@ build() {
 }
 
 package() {  
-  case "$ARCH" in
+  case "$arch" in
     "x86_64")
       export FLUTTER_ARCH="x64"
       ;;
