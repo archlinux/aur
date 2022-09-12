@@ -1,7 +1,7 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail.com>
 pkgname=matrix-commander
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple CLI-based Matrix client"
 arch=('any')
 url="https://github.com/8go/matrix-commander"
@@ -18,7 +18,7 @@ depends=(
   "python-markdown"
   "python-matrix-nio>=0.14.1"
   "python-pillow"
-  "python-magic-git"
+  "python-magic"
   "python-pyxdg"
   # "python-uuid" part of standard python 
 )

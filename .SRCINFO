@@ -1,7 +1,7 @@
 pkgbase = matrix-commander
 	pkgdesc = Simple CLI-based Matrix client
 	pkgver = 3.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/8go/matrix-commander
 	arch = any
 	license = GPL
@@ -13,7 +13,7 @@ pkgbase = matrix-commander
 	depends = python-markdown
 	depends = python-matrix-nio>=0.14.1
 	depends = python-pillow
-	depends = python-magic-git
+	depends = python-magic
 	depends = python-pyxdg
 	optdepends = dbus-python: needed for notifications on desktop systems
 	optdepends = notify2: needed for notifications on desktop systems
