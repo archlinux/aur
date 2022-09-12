@@ -3,7 +3,7 @@
 pkgname=python-mynux
 _name=${pkgname#python-}
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Just a dotfile manager with some extras."
 arch=(any)
 url="https://pypi.org/project/mynux/"
@@ -16,11 +16,11 @@ sha256sums=('12277a4c48a3bbf3417849f76ca700367da5fde6ba8d92f0093bb7964dbc3948')
 
 build() {
     cd "$_name-$pkgver"
-    python -m build --wheel --no-isolation
+    env PATH=$(getconf PATH) python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$_name-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    env PATH=$(getconf PATH) python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

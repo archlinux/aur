@@ -1,7 +1,7 @@
 pkgbase = python-mynux
 	pkgdesc = Just a dotfile manager with some extras.
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/mynux/
 	arch = any
 	license = MIT
