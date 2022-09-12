@@ -10,7 +10,7 @@ url='https://github.com/matanui159/ReplaySorcery'
 arch=(x86_64 i686)
 license=(GPL3)
 depends=(ffmpeg libx11 gcc-libs)
-optdependss=('pulseaudio: recording audio'
+optdepends=('pulseaudio: recording audio'
              'libdrm: listing kms devices')
 makedepends=(git cmake)
 provides=("$_pkgname")
@@ -49,6 +49,6 @@ build() {
 
 package() {
     cd "$_pkgname"
-    
+
     DESTDIR=${pkgdir} make -C build install
 }

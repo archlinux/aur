@@ -11,11 +11,15 @@ pkgbase = replay-sorcery-git
 	depends = ffmpeg
 	depends = libx11
 	depends = gcc-libs
+	optdepends = pulseaudio: recording audio
+	optdepends = libdrm: listing kms devices
 	provides = replay-sorcery
 	conflicts = replay-sorcery
 	source = replay-sorcery::git+https://github.com/matanui159/ReplaySorcery.git
 	source = git+https://github.com/ianlancetaylor/libbacktrace.git
+	source = 0000-include-avutil-ch-layout.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 5404e7d26db1eb8e051844d65c2182f9dfac813243d093ea8e4c4ae97bc548da
 
 pkgname = replay-sorcery-git
