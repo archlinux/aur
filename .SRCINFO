@@ -1,0 +1,13 @@
+pkgbase = buuf-smplayer
+	pkgdesc = Theme for SMPlayer
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/robson-66/Buuf-smplayer
+	arch = any
+	license = cc-by-nc-sa
+	depends = smplayer
+	depends = smplayer-themes
+	source = https://github.com/robson-66/Buuf-smplayer/archive/refs/tags/v1.0.tar.gz
+	sha256sums = a84497e8bcb0f4f522fa9c4b88a8db65bfe0f81eaf21f7e726e3ce399b467576
+
+pkgname = buuf-smplayer
