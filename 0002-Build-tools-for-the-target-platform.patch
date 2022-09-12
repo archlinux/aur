@@ -1,7 +1,7 @@
-From 108c018eb1669292c88430a1639d982eb269e31a Mon Sep 17 00:00:00 2001
+From 474401fa162c3d7497e587d21c7ed296c840ec04 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 7 May 2021 16:10:47 +0200
-Subject: [PATCH 2/2] Build tools for the target platform
+Subject: [PATCH 2/3] Build tools for the target platform
 
 These tools seem to be not portable so they should not be built for the
 host platform. If they need to be executed on the host they could be
@@ -63,5 +63,5 @@ index 515a5fc..86369ae 100644
          main.cpp
      PUBLIC_LIBRARIES
 -- 
-2.36.1
+2.37.3
 
