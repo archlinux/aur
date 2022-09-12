@@ -3,16 +3,16 @@
 
 pkgname=yank-note-bin
 _pkgname=yank-note
-_electron=electron19
+_electron=electron
 pkgver=3.35.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A Hackable Markdown Note Application for Programmers.'
 arch=('x86_64')
 url='https://github.com/purocean/yn'
 license=('AGPL3')
 provides=("${_pkgname}")
 depends=(${_electron} 'pandoc')
-makedepends=('asar' 'yarn' 'jq' 'moreutils' 'node-gyp')
+makedepends=('asar' 'yarn' 'jq' 'moreutils' 'node-gyp' 'git')
 source=("$_pkgname-$pkgver.deb::${url}/releases/download/v${pkgver}/Yank-Note-linux-amd64-${pkgver}.deb"
         "$_pkgname.sh"
         )
@@ -35,7 +35,7 @@ prepare() {
     # fix for electron20, see https://github.com/electron/electron/issues/35193,
     # and https://github.com/nodejs/nan/pull/943
     cd "$srcdir/opt/Yank Note/resources"/apps
-    # jq '.resolutions.nan = "github:VerteDinde/nan#deprecate_accessor_signature"' package.json|sponge package.json
+    jq '.resolutions.nan = "github:weedz/nan#a679b69b92e1997f6b40f1d3981a58a0021e1b99"' package.json|sponge package.json
 
     cd $srcdir/usr/share/applications
     sed -i "s|^Exec.*|Exec=yank-note %U|g"   ${_pkgname}.desktop
@@ -68,5 +68,4 @@ package(){
     cd "$srcdir/opt/Yank Note/resources"
     mkdir -p ${pkgdir}/usr/lib/${_pkgname}/
     cp -rf apps ${pkgdir}/usr/lib/${_pkgname}/app
-#     cp -rf app.asar.unpacked ${pkgdir}/usr/lib/${_pkgname}/app.asar.unpacked
 }
