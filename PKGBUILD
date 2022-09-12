@@ -6,10 +6,11 @@
 pkgname=anaconda
 pkgver=2022.05
 pkgrel=1
-pkgdesc="Completely free enterprise-ready Python distribution for large-scale data processing, predictive analytics, and scientific computing."
+pkgdesc="Simplifies package management and deployment of Anaconda"
 arch=(x86_64)
-url="https://www.${pkgname}.com"
+url="https://${pkgname}.com"
 license=('custom')
+provides=('conda')
 source=(https://repo.${pkgname}.com/archive/Anaconda3-${pkgver}-Linux-x86_64.sh)
 options=(!strip libtool staticlibs)
 sha512sums=('45b7fd085cb4edabb388ab64cd1d5e1bb62aeb4c906d371552fa71b6fae341b10d30c4acb54af43d63f027180d6a16095443668f36954cbc2f362e295c8e2c47')

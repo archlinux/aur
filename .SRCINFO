@@ -1,11 +1,12 @@
 pkgbase = anaconda
-	pkgdesc = Completely free enterprise-ready Python distribution for large-scale data processing, predictive analytics, and scientific computing.
+	pkgdesc = Simplifies package management and deployment of Anaconda
 	pkgver = 2022.05
 	pkgrel = 1
-	url = https://www.anaconda.com
+	url = https://anaconda.com
 	install = anaconda.install
 	arch = x86_64
 	license = custom
+	provides = conda
 	options = !strip
 	options = libtool
 	options = staticlibs
