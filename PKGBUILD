@@ -1,16 +1,36 @@
-# Maintainer: Rvn0xsy <rvn0xsy@gmail.com>
-# Contributor: Rvn0xsy <rvn0xsy@gmail.com>
-pkgname="red-tldr"
-pkgver="0.4.3"
-pkgrel="1"
-pkgdesc="red-tldr is a lightweight text search tool, which is used to help red team staff quickly find the commands and key points they want to execute, so it is more suitable for use by red team personnel with certain experience."
-arch=("x86_64")
-license=("custom")
-url='https://github.com/Rvn0xsy/red-tldr'
+# This is an example PKGBUILD file. Use this as a start to creating your own,
+# and remove these comments. For more information, see 'man PKGBUILD'.
+# NOTE: Please fill out the license field for your package! If it is unknown,
+# then please put 'unknown'.
 
-source=("https://github.com/Rvn0xsy/red-tldr/releases/download/v${pkgver}/red-tldr_${pkgver}_linux_amd64.tar.gz")
-sha512sums=("aa4ce44d2e8a84d1e0bf390cb5ed28e40458645313a5a48ec24d07ecf494928694eb60452c91b03df33f6abe6e604d1be37b8b42069ebb2703e0dedd63845c32")
+# Maintainer: Your Name <youremail@domain.com>
+pkgname="YoLang"
+pkgver="1.2.15"
+pkgrel=1
+pkgdesc="Lightweight, simple interpretive programming language"
+arch=("any")
+url="https://github.com/PowerAngelXD/YoLang"
+license=("MIT")
+makedepends=("cmake"
+            "make")
+provides=("yolang")
+source=("$pkgname-$pkgver.zip::https://github.com/PowerAngelXD/YoLang/archive/refs/heads/master.zip")
+md5sums=("764407b9d4a7267dc857555a6a2fdaef")
+
+# prepare() {
+# 	cd "$pkgname-$pkgver"
+# 	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
+# }
+
+build() {
+	cd "$pkgname-master"
+	cmake -S .
+	make
+}
 
 package() {
-  install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	cd "$pkgname-master"
+  mkdir "$pkgdir/usr"
+  mkdir "$pkgdir/usr/bin"
+  install -m=777 "yolang" "${pkgdir}/usr/bin"
 }
