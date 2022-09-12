@@ -1,36 +1,50 @@
 # Maintainer: Markus Kalb <mk@filmkreis.tu-darmstadt.de>
+# Maintainer: Benjamin Radel <aur@radel.tk>
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=dcpomatic-git
-pkgver=0.r10510.b04211812
+_branch=main
+pkgver=2.16.24.r9.gf44e5e0b2
 pkgrel=1
 pkgdesc="A free, open-source program to generate Digital Cinema Packages (DCPs) from videos or images"
 arch=('i686' 'x86_64')
-url="http://dcpomatic.com/"
-license=('GPL2')
-depends=('pangomm>=1.4' 'libsub-git' 'libcxml-git' 'libdcp-git' 'ffmpeg' 'glib2' 'imagemagick' 'libssh' 'wxgtk2>=3.0.1' 'libquickmail>=0.1.22' 'libzip' 'xz' 'libsndfile' 'libsamplerate' 'pangomm' 'rtaudio')
-makedepends=('python2' 'boost>=1.65.1' 'git' )
+url="https://dcpomatic.com/"
+license=('GPL')
+depends=('xorgproto' 'libsub-git' 'libcxml-git' 'libdcp-git' 'ffmpeg>=4.0.2' 'glib2' 'imagemagick' 'libssh'  'wxwidgets-gtk3' 'wxwidgets-common' 'libzip' 'xz' 'libsndfile' 'libsamplerate' 'pangomm' 'rtaudio' 'x264' 'openssl' 'leqm-nrt-git')
+makedepends=('python' 'which' 'boost>=1.78.0' )
+source=("${pkgname}::git+git://git.carlh.net/git/dcpomatic.git#branch=${_branch}")
 
-provides=('dcpomatic')
-conflicts=('dcpomatic')
-source=('dcpomatic-git::git://git.carlh.net/git/dcpomatic.git#branch=master')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd dcpomatic-git
-    printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$pkgname"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
-build() {
-      PKG_CONFIG_LIBDIR="/usr/lib64/pkgconfig/:/usr/lib/pkgconfig/:$PKG_CONFIG_LIBDIR"
-      CXXFLAGS="$CXXFLAGS    --std=c++11"
-      cd  dcpomatic-git
-      python waf configure --prefix=/usr  --disable-tests
-      python waf build
+prepare() {
+  cd "${srcdir}/${pkgname}"
+  for p in "${source[@]}"; do
+    if [[ "$p" =~ \.patch$ ]]; then
+      echo "Applying patch ${p##*/}"
+      patch -p1 -N -i "${srcdir}/${p##*/}"
+    fi
+  done
 }
 
 
-package() {
-    cd dcpomatic-git
-    python waf install --destdir=$pkgdir
-}
+ build() {
+   cd "${srcdir}/${pkgname}"
+   python waf configure --prefix=/usr --disable-tests
+   python waf build
+ }
+
+ package() {
+   cd "${srcdir}/${pkgname}"
+   python waf install --destdir=$pkgdir
+   cd "${pkgdir}"
+   if [ -d usr/lib64  ]
+   then
+     mv usr/lib64 usr/lib
+   fi
+   ln -s $(which openssl) usr/bin/dcpomatic2_openssl
+ }
