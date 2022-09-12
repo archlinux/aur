@@ -1,10 +1,10 @@
 # Maintainer: Marie Piontek <marie@kaifa.ch>
 
 pkgname=an-anime-game-launcher-gtk-bin
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="An GTK4 alternative to an-anime-game-launcher-bin"
-url="https://gitlab.com/an-anime-team/alternatives/an-anime-game-launcher-gtk"
+url="https://github.com/an-anime-team/an-anime-game-launcher-gtk"
 conflicts=("an-anime-game-launcher-bin" "an-anime-game-launcher")
 provides=("an-anime-game-launcher")
 arch=("x86_64")
@@ -30,13 +30,13 @@ optdepends=(
 )
 
 source=(
-    "an-anime-game-launcher_${pkgver}::https://gitlab.com/an-anime-team/alternatives/an-anime-game-launcher-gtk/uploads/1fc10d8d200ef1bcdb6d03612fb95db4/anime-game-launcher"
+    "an-anime-game-launcher_${pkgver}::https://github.com/an-anime-team/an-anime-game-launcher-gtk/releases/download/${pkgver}/anime-game-launcher"
     "icon.png"
     "an-anime-game-launcher.desktop"
 )
 
 md5sums=(
-    '2f1c9695025dc3dd1de6271dacc12579'
+    '4538e1b68213c71b281b62249c914dcc'
     'c1a5499b80a55d3d238ef5c5d2c93c99'
     '12d89b3be2072437e7b252af97274142'
 )
