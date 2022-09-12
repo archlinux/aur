@@ -12,5 +12,8 @@ post_upgrade() {
 EOM
   chgrp -R albion "/opt/albion-online-launcher-bin/launcher"
   chgrp -R albion "/opt/albion-online-launcher-bin/game_x64"
-  chgrp -R albion "/opt/albion-online-launcher-bin/staging_x64"
+}
+
+post_remove() {
+  groupdel albion &> /dev/null
 }

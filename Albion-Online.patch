@@ -1,0 +1,34 @@
+--- old	2022-09-11 19:50:08.965753712 -0600
++++ Albion-Online	2022-09-11 19:47:06.444974351 -0600
+@@ -1,16 +1,21 @@
+ #!/bin/sh
+ SCRIPT=$(readlink -f "$0")
+ SCRIPTPATH=$(dirname "$SCRIPT")
+-export QT_QPA_PLATFORM_PLUGIN_PATH="$SCRIPTPATH/launcher/plugins/platforms"
+-export QT_PLUGIN_PATH="$SCRIPTPATH/launcher/plugins/"
+-OSNAME=$(grep '^NAME=' /etc/os-release)
+-
+-if [ $OSNAME != "NAME=\"SteamOS\"" ]; then
+ export LIBGL_ALWAYS_SOFTWARE=1
+ export QSG_INFO=1
+-"$SCRIPTPATH/launcher/Albion-Online" "--no-sandbox" "-loglevel 0" "$@" &
+-else
+-export QT_QPA_PLATFORM="xcb;eglfs"
+-export __GL_GlslUseCollapsedArrays=0
+-"$SCRIPTPATH/launcher/Albion-Online" "--no-sandbox" "$@" &
++"$SCRIPTPATH/launcher/Albion-Online" "--no-sandbox" "-loglevel 0" "$@"
++
++declare exit_code=$?
++
++## Clear cache on core dump
++if (( $exit_code )); then
++    echo "Bad exit code: $exit_code"
++    if (( $exit_code >= 128 )); then ## Core Dump
++	echo "Core Dump can be produced by corrupt cache"
++	echo "Clearing user cache, you could try again"
++	rm -rf "$HOME/.config/Sandbox Interactive GmbH"
++	rm -rf "$HOME/.config/unity3d/Sandbox Interactive GmbH"
++	rm -rf "$HOME/.local/share/Sandbox Interactive GmbH/Albion Online Launcher"
++    fi
+ fi
++

@@ -1,8 +1,2 @@
 #!/bin/bash
-if [ -d "/opt/albion-online-launcher-bin/game_x64/Albion-Online_Data" ];
-then
 	/opt/albion-online-launcher-bin/Albion-Online
-else
-	pkexec chown $USER /opt/albion-online-launcher-bin/game_x64
-	/opt/albion-online-launcher-bin/Albion-Online
-fi 
