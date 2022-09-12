@@ -4,8 +4,8 @@ _get() {
 }
 
 pkgname=lapce-nightly-bin
-pkgver=20220903
-pkgrel=3
+pkgver=20220912
+pkgrel=1
 pkgdesc='Lightning-fast and powerful code editor'
 arch=(x86_64)
 url=https://lapce.dev
@@ -37,7 +37,10 @@ pkgver() {
 }
 
 prepare() {
-    sed -i -e "s/Exec=lapce/Exec=lapce-nightly/" -e "s/Name=Lapce/Name=Lapce nightly/" dev.lapce.lapce.desktop
+    sed -i dev.lapce.lapce.desktop \
+        -e "s/Name=Lapce/Name=Lapce nightly/" \
+        -e "s/Exec=lapce/Exec=lapce-nightly/"
+    sed -i "s/dev\.lapce\.lapce/dev.lapce.lapce-nightly/" dev.lapce.lapce.desktop dev.lapce.lapce.metainfo.xml
 }
 
 check() {
