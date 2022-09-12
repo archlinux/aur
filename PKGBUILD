@@ -5,7 +5,7 @@
 pkgname=ame
 _pkgname=amethyst
 pkgver=3.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A fast and efficient AUR helper'
 arch=('x86_64' 'aarch64')
 url="https://github.com/crystal-linux/$_pkgname"
@@ -36,7 +36,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$_pkgname"
     find target/release \
         -maxdepth 1 \
         -executable \
