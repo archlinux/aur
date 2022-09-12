@@ -1,7 +1,7 @@
 pkgbase = rstudio-desktop-bin
 	pkgdesc = An integrated development environment (IDE) for R (binary from RStudio official repository)
-	pkgver = 2022.07.1.548
-	pkgrel = 1
+	pkgver = 2022.07.1.554
+	pkgrel = 2
 	url = http://www.rstudio.org/
 	install = rstudio-desktop-bin.install
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = rstudio-desktop-bin
 	depends = sqlite
 	depends = nss
 	optdepends = clang: C/C++ and Rcpp support
-	provides = rstudio-desktop=2022.07.1.548
+	provides = rstudio-desktop=2022.07.1.554
 	conflicts = rstudio-desktop
 	conflicts = rstudio-desktop-git
 	conflicts = rstudio-desktop-preview-bin
