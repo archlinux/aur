@@ -5,7 +5,7 @@
 # Contributor: Artem Sereda <overmind88@gmail.com>
 
 pkgname=kde-thumbnailer-hpgl-git
-pkgver=v1.0.0.r0.g0c30a38
+pkgver=v1.0.0.r3.gfc38f4d
 pkgrel=1
 pkgdesc='KDE / Dolphin thumbnails for HPGL (HP graphics language) files (git)'
 arch=(i686 x86_64)
