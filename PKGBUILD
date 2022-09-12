@@ -1,14 +1,15 @@
 # Maintainer: Kevin MacMartin <prurigro@gmail.com>
+# Contributor: mstmob
 
 _pkgname=cura
 pkgname=$_pkgname-bin
 pkgver=5.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='State-of-the-art slicer app to prepare your 3D models for your 3D printer'
 url='https://ultimaker.com/software/ultimaker-cura'
 license=('LGPL3')
 arch=('x86_64')
-depends=('fuse2' 'zlib')
+depends=('fuse2' 'xdg-desktop-portal' 'xdg-desktop-portal-gtk')
 provides=($_pkgname)
 conflicts=($_pkgname)
 options=('!strip')
