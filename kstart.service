@@ -15,6 +15,8 @@ ExecStart=/usr/bin/k5start -K30 -a -H30 -f $KEYTAB -U -t -b -L
 # -v	Be verbose
 ExecReload=/bin/kill -s ALRM $MAINPID
 StandardOutput=null
+Restart=on-failure
+RestartForceExitStatus=SIGALRM
 
 # Keytab to use for acquiring credentials when none are available.
 # (Mandatory; use krenew.service if you don't want this functionality.)
