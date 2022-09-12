@@ -2,44 +2,40 @@
 
 pkgname=aigepu
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="指北者有声简谱编辑软件"
 url="https://aigepu.com"
 arch=('x86_64')
 license=('GPL')
-depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libnghttp2'
-         'libxslt' 'minizip' 'nss' 're2' 'snappy')
-makedepends=('asar' 'electron11')
+depends=('electron')
+makedepends=('asar')
 source=('aigepu.desktop'
         'index.js'
+	'aigepu.sh'
         'logo.png'
         'package.json'
 )
 sha256sums=('4a80f5c56a36f9b57d75f1ad928d3bc1fb9996c6972f0239ca59e0678caee9dc'
-            '0fcf90ce21d83abf12d013f1fcbcacbe79c6c3a737d677a686210a43ac902d77'
+            '20e02090f2e037b389cf616414f579180b3f76b47fdf3304eb07d0f211ca19fc'
+            '40e0d06777bb050ecc03238e617754a500fedd18fc07e9332d4eff671561983a'
             'b1601305118665652818b2567e098414586a373aac8f1329bb03585674ccab44'
             '9f8df1516e01d76b3377dd7a24593e206bd29a52d3559345e534cefc46fad71b')
 
 build() {
-    mkdir app
+    mkdir -p app
     cp index.js logo.png package.json app
-    cp -rf /usr/lib/electron11/* .
-    rm resources/default_app.asar
-    asar pack app resources/app.asar
-    ln -fsr electron aigepu
+    asar pack app app.asar
 }
 
 package() {
-    install -d ${pkgdir}/usr/lib/aigepu
-    cp -rf locales/ resources/ swiftshader/ ${pkgdir}/usr/lib/aigepu
-    cp lib* ${pkgdir}/usr/lib/aigepu
-    cp *.pak *.bin *.json ${pkgdir}/usr/lib/aigepu
-    cp chrome-sandbox electron version ${pkgdir}/usr/lib/aigepu
-    ln -sf electron ${pkgdir}/usr/lib/aigepu/aigepu
+    cd "$srcdir"
 
-    install -d ${pkgdir}/usr/bin
-    ln -sf /usr/lib/aigepu/aigepu ${pkgdir}/usr/bin/aigepu
+    # Install executable file
+    install -Dm755 "$pkgname".sh "$pkgdir"/usr/bin/$pkgname
 
-    install -Dm644 logo.png ${pkgdir}/usr/share/pixmaps/aigepu.png
-    install -Dm644 aigepu.desktop ${pkgdir}/usr/share/applications/aigepu.desktop
+    # Install desktop file
+    install -Dm644 logo.png ${pkgdir}/usr/share/pixmaps/$pkgname.png
+    install -Dm644 $pkgname.desktop -t ${pkgdir}/usr/share/applications/
+
+    install -Dm644 app.asar -t ${pkgdir}/usr/lib/$pkgname/
 }

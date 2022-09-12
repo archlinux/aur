@@ -9,7 +9,7 @@ function createWindow () {
         useContentSize: true,
         icon: path.join(__dirname, './logo.png')
     })
-    win.loadURL('https://aigepu.com/zhipu');
+    win.loadURL('http://zhipu.lezhi99.com/Zhipu-index.html');
 }
 
 app.on('window-all-closed', function () {
