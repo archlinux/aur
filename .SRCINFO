@@ -1,6 +1,16 @@
-arch = i686
-arch = x86_64
 pkgbase = gitmaster
+    pkgdesc = GitMaster is GUI git client.
     pkgver = 0.1.2
     pkgrel = 1
+    url = https://github.com/bokic/gitmaster
+    arch = x86_64
+    arch = i686
+    license = GPL
+    makedepends = qt5-base
+    makedepends = libgit2
+    depends = qt5-base
+    depends = libgit2
+    source = https://github.com/bokic/gitmaster/archive/0.1.2.tar.gz
+    md5sums = cfe0118c5a9b6c446e699ce04623a811
+
 pkgname = gitmaster
