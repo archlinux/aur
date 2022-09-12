@@ -1,0 +1,14 @@
+#!/bin/sh
+
+message() {
+  echo ":: This package has been renamed. Please install 'lua-libmagic'"
+  echo "   (or 'lua51-libmagic' or 'lua52-libmagic', respectively) instead."
+}
+
+post_upgrade() {
+  message
+}
+
+post_install() {
+  message
+}
