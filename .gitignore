@@ -1,0 +1,6 @@
+/pkg/
+/src/
+/*.patch
+
+/squishyball-*.tar*
+/squishyball/

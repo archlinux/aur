@@ -1,19 +1,19 @@
 pkgbase = squishyball
 	pkgdesc = Perform ABX audio sample comparison testing on the command line
-	pkgver = 19643
+	pkgver = r78.27590fe
 	pkgrel = 1
-	url = https://svn.xiph.org/trunk/squishyball/
+	url = https://gitlab.xiph.org/xiph/squishyball
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = subversion
 	depends = opusfile
 	depends = ncurses
 	depends = libvorbis
 	depends = flac
 	depends = libao
-	source = svn+https://svn.xiph.org/trunk/squishyball/
-	sha1sums = SKIP
+	source = git+https://gitlab.xiph.org/xiph/squishyball.git
+	source = https://gitlab.xiph.org/xiph/squishyball/uploads/5609ceaf85ebb6dc297c0efe61b9a1b7/0001-mincurses.c-use-ncurses-API-to-enter-raw-mode-ncurse.patch
+	sha256sums = SKIP
+	sha256sums = 9eb5e820069867a6b36c06b71b941d5c82aff6bd0f966be588cbcf203e29aae6
 
 pkgname = squishyball
-
