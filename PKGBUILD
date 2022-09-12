@@ -4,7 +4,7 @@
 
 _gemname=parser
 pkgname=ruby-${_gemname}
-pkgver=3.1.2.0
+pkgver=3.1.2.1
 pkgrel=1
 pkgdesc="A Ruby parser written in pure Ruby"
 arch=(any)
@@ -15,7 +15,7 @@ url=https://github.com/whitequark/parser
 license=(MIT)
 source=(https://github.com/whitequark/parser/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
 options=(!emptydirs)
-sha256sums=('126b8a11073c6cc49ffd2421907ea7288b2c969ca5446fb733b8999e7c78c3ba')
+sha256sums=('0b1ebcc4fe28a6b61a758e4a0129a0f770c52f4d5ef0d69fad70bc068410ec44')
 
 prepare() {
   cd $_gemname-$pkgver
