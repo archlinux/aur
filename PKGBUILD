@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=latex2exp
-_pkgver=0.9.4
+_pkgver=0.9.5
 pkgname=r-${_pkgname,,}
-pkgver=0.9.4
-pkgrel=3
+pkgver=0.9.5
+pkgrel=1
 pkgdesc='Use LaTeX Expressions in Plots'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -24,7 +24,7 @@ optdepends=(
   r-tibble
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('85a49efd42d31986c2faaf191d0a2be7695d26d618c9314ebd9488f2deca6b7d')
+sha256sums=('8a42a7281b6736f9587b5443aa10e08b1823167f3c543821eed66eeafac86b94')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

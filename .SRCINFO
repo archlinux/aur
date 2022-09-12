@@ -1,7 +1,7 @@
 pkgbase = r-latex2exp
 	pkgdesc = Use LaTeX Expressions in Plots
-	pkgver = 0.9.4
-	pkgrel = 3
+	pkgver = 0.9.5
+	pkgrel = 1
 	url = https://cran.r-project.org/package=latex2exp
 	arch = any
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = r-latex2exp
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tibble
-	source = https://cran.r-project.org/src/contrib/latex2exp_0.9.4.tar.gz
-	sha256sums = 85a49efd42d31986c2faaf191d0a2be7695d26d618c9314ebd9488f2deca6b7d
+	source = https://cran.r-project.org/src/contrib/latex2exp_0.9.5.tar.gz
+	sha256sums = 8a42a7281b6736f9587b5443aa10e08b1823167f3c543821eed66eeafac86b94
 
 pkgname = r-latex2exp
