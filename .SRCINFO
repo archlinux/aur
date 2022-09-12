@@ -1,0 +1,17 @@
+pkgbase = polybar-now-playing-git
+	pkgdesc = Script for polybar to display and control media (not only Spotify)using DBus
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/d093w1z/polybar-now-playing.git
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python3
+	depends = playerctl
+	depends = dbus-python
+	depends = ttf-font-awesome
+	provides = polybar-now-playing
+	source = polybar-now-playing
+	md5sums = SKIP
+
+pkgname = polybar-now-playing-git
