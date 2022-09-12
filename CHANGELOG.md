@@ -8,6 +8,14 @@ Versions since `1.7.0` only track ABI breaks and not API breaks.
 
 ## [Unreleased]
 
+## [1.22.3] - 2022-09-09
+### Added
+- Libtcod can now be built without utf8proc by passing the `-LIBTCOD_UTF8PROC=disable` flag to CMake.
+
+### Fixed
+- Fixed double present bug in non-context flush functions.
+  This was affecting performance and also caused a screen flicker whenever the global fade color was active.
+
 ## [1.22.2] - 2022-08-26
 ### Fixed
 - Libtcod was not linking `utf8proc` correctly in projects statically built with CMake.

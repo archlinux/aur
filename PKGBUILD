@@ -7,7 +7,7 @@
 ## GPG key: https://github.com/hexdecimal.gpg
 
 pkgname=libtcod
-pkgver=1.22.2
+pkgver=1.22.3
 pkgrel=1
 pkgdesc="Roguelike graphics/utility library"
 arch=('x86_64')
@@ -19,7 +19,7 @@ provides=("$pkgname.so")
 changelog=CHANGELOG.md
 source=("$pkgname::git+$url#tag=$pkgver?signed")
 sha256sums=('SKIP')
-validpgpkeys=('9EF1E80F3817BC043097A7C15814977902B194CC') ## HexDecimal
+validpgpkeys=('9EF1E80F3817BC043097A7C15814977902B194CC') ## Kyle Benesch
 
 build() {
   cd "$pkgname/buildsys/autotools"
