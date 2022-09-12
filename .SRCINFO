@@ -1,4 +1,4 @@
-pkgbase = gnome-shell-extension-desktop-icons-ng
+pkgbase = gnome-shell-extension-gtk4-desktop-icons-ng
 	pkgdesc = A Gtk4 fork from the official desktop icons project, with several enhancements.
 	pkgver = 6
 	pkgrel = 1
