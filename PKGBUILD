@@ -1,7 +1,7 @@
 # Maintainer : kdx <kikoodx@paranoici.org>
 
 pkgname=libdx
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Small C functions library.'
 arch=(x86_64)
