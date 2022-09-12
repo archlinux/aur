@@ -1,13 +1,16 @@
 pkgbase = certificate-ripper-bin
 	pkgdesc = A CLI tool to extract server certificates
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Hakky54/certificate-ripper
 	arch = x86_64
+	arch = aarch64
 	license = Apache
 	provides = certificate-ripper
 	conflicts = certificate-ripper
-	source = crip-1.0.0.tar.gz::https://github.com/Hakky54/certificate-ripper/releases/download/1.0.0/crip-linux-amd64.tar.gz
-	sha256sums = 83ab8bf2d68b54967a3c1525d25dc6a8210ebadb30cbd6592ef61001731a288a
+	source_x86_64 = crip-1.0.0-amd64.tar.gz::https://github.com/Hakky54/certificate-ripper/releases/download/1.0.0/crip-linux-amd64.tar.gz
+	sha256sums_x86_64 = 83ab8bf2d68b54967a3c1525d25dc6a8210ebadb30cbd6592ef61001731a288a
+	source_aarch64 = crip-1.0.0-aarch64.tar.gz::https://github.com/Hakky54/certificate-ripper/releases/download/1.0.0/crip-linux-aarch64.tar.gz
+	sha256sums_aarch64 = cc14b1f436a7a1b10c65b5052b71c8fad51e09eded8de4a892087f5e6cdd9f6d
 
 pkgname = certificate-ripper-bin
