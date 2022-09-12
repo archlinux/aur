@@ -1,6 +1,6 @@
 pkgbase = ignoreit
 	pkgdesc = Quickly load .gitignore templates
-	pkgver = 2.4.7
+	pkgver = 2.4.8
 	pkgrel = 1
 	url = https://github.com/jewlexx/ignoreit
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = ignoreit
 	makedepends = rust
 	makedepends = cargo
 	depends = openssl
-	source = ignoreit-2.4.7.tar.gz::https://github.com/jewlexx/ignoreit/archive/v2.4.7.tar.gz
-	sha256sums = 37b00b992ddd842a8dc94e1e52c59983544dadc201447df13e03170bb31cd567
+	source = ignoreit-2.4.8.tar.gz::https://github.com/jewlexx/ignoreit/archive/v2.4.8.tar.gz
+	sha256sums = 09cc1d913b3d0564174a4b7671aa69fcab0d5185a77e4df29d5e2ae83d7ef948
 
 pkgname = ignoreit

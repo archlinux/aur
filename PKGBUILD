@@ -1,6 +1,6 @@
 # Maintainer: Juliette Cordor
 pkgname=ignoreit
-pkgver=2.4.7
+pkgver=2.4.8
 pkgrel=1
 makedepends=('rust' 'cargo')
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -10,7 +10,7 @@ depends=('openssl')
 url="https://github.com/jewlexx/ignoreit"
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jewlexx/ignoreit/archive/v$pkgver.tar.gz")
-sha256sums=('37b00b992ddd842a8dc94e1e52c59983544dadc201447df13e03170bb31cd567')
+sha256sums=('09cc1d913b3d0564174a4b7671aa69fcab0d5185a77e4df29d5e2ae83d7ef948')
 
 # Generated in accordance to https://wiki.archlinux.org/title/Rust_package_guidelines.
 # Might require further modification depending on the package involved.
