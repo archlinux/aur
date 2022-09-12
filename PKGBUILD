@@ -3,7 +3,7 @@ pkgname=skywire-bin
 _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Building a new Internet. Skycoin.com"
-pkgver='1.1.1'
+pkgver='1.2.0'
 pkgrel=2
 _rc=''
 #_rc='-pr1'
@@ -32,13 +32,13 @@ sha256sums=('08f0c625a3ae8810f0468a45aa2e463425ec307441f71f6ba48114bda2055316'
             'a6941680b5858ca3e0c85d9bf5824455a0c95524b61e42352462f2abbb750495'
             '19b74f7a9b245a96617f31d1fef7ce1e0231b2359d6525dd3f35d2b2a9d10d18'
             '55293e05c5d6c877397eb4c52123bb02e8bc92aeaf663ba70e1cfab318ce727c')
-sha256sums_x86_64=('e05344a580807c843b023f4deeed7863105c02b8c865ea3bbcaaa13748108c5d')
-sha256sums_aarch64=('948296a66d79cb35fcfd510d3edb53f58433934347660e256dd2f909b90797f2')
-sha256sums_armv8=('948296a66d79cb35fcfd510d3edb53f58433934347660e256dd2f909b90797f2')
-sha256sums_armv7=('03a16c8562047084a1adcde0603c9006cd53cc4b1b79644d836d68706ce8afbb')
-sha256sums_armv7l=('03a16c8562047084a1adcde0603c9006cd53cc4b1b79644d836d68706ce8afbb')
-sha256sums_armv7h=('03a16c8562047084a1adcde0603c9006cd53cc4b1b79644d836d68706ce8afbb')
-sha256sums_arm=('40444274f1864d123e863e8b18f7ac6d1cccf3b19602068ff902ede4e9ff140f')
+sha256sums_x86_64=('2538bc460f911e4de314dd5b36e15f146e9c812784149c521159b129ac9f04aa')
+sha256sums_aarch64=('227d84c1e7e5e9abc639617043ddc8e0fe894512006efad352352da5ac62e23a')
+sha256sums_armv8=('227d84c1e7e5e9abc639617043ddc8e0fe894512006efad352352da5ac62e23a')
+sha256sums_armv7=('97626da6489f2a1641f6423fe71fd098233d33b01a6f6862e7a194241ef43863')
+sha256sums_armv7l=('97626da6489f2a1641f6423fe71fd098233d33b01a6f6862e7a194241ef43863')
+sha256sums_armv7h=('97626da6489f2a1641f6423fe71fd098233d33b01a6f6862e7a194241ef43863')
+sha256sums_arm=('2a3c20bac46405b9a46d551b0982de7697c654ddd58a160cdfc6fe2ef4ab2768')
 #https://github.com/skycoin/skywire/releases/download/v1.0.0/skywire-v1.0.0-linux-amd64.tar.gz
 #https://github.com/skycoin/skywire/releases/download/v1.0.0/skywire-v1.0.0-linux-arm64.tar.gz
 #https://github.com/skycoin/skywire/releases/download/v1.0.0/skywire-v1.0.0-linux-armhf.tar.gz
