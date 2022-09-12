@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-serialport
-_qtver=6.3.1
+_qtver=6.3.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -17,7 +17,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtserialport-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('4eb6d80e65799dd2e0318df4dfba14173c1929e861718cda9bedca24253b616e')
+sha256sums=('c7d207322367c63647edbd06ded9c76ba9071961daac1d1021b622b762c35e6f')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
