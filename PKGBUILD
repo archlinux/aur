@@ -1,19 +1,19 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
-pkgbase=lua-magic
-pkgname=('lua-magic' 'lua51-magic' 'lua52-magic')
-pkgver=5.25
+pkgbase=lua-libmagic
+pkgname=('lua-libmagic' 'lua51-libmagic' 'lua52-libmagic')
+pkgver=5.41
 pkgrel=1
 pkgdesc='libmagic binding for lua'
 arch=('i686' 'x86_64')
-url='https://github.com/mah0x211/lua-magic'
+url='https://github.com/mah0x211/lua-libmagic'
 license=('MIT')
 makedepends=('lua' 'lua51' 'lua52')
-source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/mah0x211/${pkgbase}/archive/v${pkgver}.tar.gz")
-sha256sums=('98af5e79246811ddde8ba50d5b43cd4dd854f84018081aac5e25e85288565697')
+source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/mah0x211/${pkgbase}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('e6bc0eb1ea7b430b9a337139f2f425e1808bb23be413dd022943f86f0a7ff497')
 
 build() {
-	cd lua-magic-${pkgver}/
+	cd ${pkgbase}-${pkgver}/
 
 	echo '#define DEFAULT_LUA_MAGIC_FILE "/usr/share/file/misc/magic.mgc"' > src/config.h
 
@@ -22,21 +22,27 @@ build() {
 	gcc -fPIC -shared -llua -lmagic -o magic53.so src/magic.c
 }
 
-package_lua-magic() {
+package_lua-libmagic() {
 	depends=('file' 'lua')
+	provides=('lua-magic')
+	replaces=('lua-magic')
 
-	install -D -m0755 lua-magic-${pkgver}/magic53.so ${pkgdir}/usr/lib/lua/5.3/magic.so
+	install -D -m0755 ${pkgbase}-${pkgver}/magic53.so ${pkgdir}/usr/lib/lua/5.3/magic.so
 }
 
-package_lua51-magic() {
+package_lua51-libmagic() {
 	depends=('file' 'lua51')
+	provides=('lua52-magic')
+	replaces=('lua52-magic')
 
-	install -D -m0755 lua-magic-${pkgver}/magic51.so ${pkgdir}/usr/lib/lua/5.1/magic.so
+	install -D -m0755 ${pkgbase}-${pkgver}/magic51.so ${pkgdir}/usr/lib/lua/5.1/magic.so
 }
 
-package_lua52-magic() {
+package_lua52-libmagic() {
 	depends=('file' 'lua51')
+	provides=('lua51-magic')
+	replaces=('lua51-magic')
 
-	install -D -m0755 lua-magic-${pkgver}/magic52.so ${pkgdir}/usr/lib/lua/5.2/magic.so
+	install -D -m0755 ${pkgbase}-${pkgver}/magic52.so ${pkgdir}/usr/lib/lua/5.2/magic.so
 }
 
