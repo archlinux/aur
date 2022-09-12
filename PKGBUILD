@@ -2,7 +2,7 @@
 
 pkgname=python-xdoctest
 _pkgname="${pkgname#python-}"
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='A Python package for executing tests in documentation strings'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-six' 'python-pygments')
 makedepends=('git' 'python-setuptools')
 checkdepends=('python-pytest')
-_commit='58e573d27a091e2d1adf723e2bd1fb56a2617762'
+_commit='9a6f1e777272285d3d2d0465830f7d299de30652'
 source=("$pkgname::git+$url.git#commit=$_commit")
 b2sums=('SKIP')
 
