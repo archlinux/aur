@@ -2,7 +2,7 @@
 pkgname='multiwfn-bin'
 _pkgname='Multiwfn'
 pkgver=3.7
-pkgrel=3
+pkgrel=4
 pkgdesc="A program for realizing electronic wavefunction analysis, stable binary version"
 arch=('x86_64')
 url="http://sobereva.com/multiwfn"
@@ -21,6 +21,7 @@ package() {
     mkdir -p "${pkgdir}/etc/${_pkgname}"
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
     cp -a "${srcdir}/${_pkgname}_${pkgver}_bin_Linux/"* "${pkgdir}/opt/${pkgname}"
+    mv "${pkgdir}/opt/${pkgname}/settings.ini" "${pkgdir}/etc/${_pkgname}/"
     chmod +x "${pkgdir}/opt/${pkgname}/${_pkgname}"
     cat << EOF > "${pkgdir}/usr/bin/${_pkgname}"
 export KMP_STACKSIZE=200M
