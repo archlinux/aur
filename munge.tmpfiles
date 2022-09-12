@@ -1,3 +1,4 @@
 Z /etc/munge 0700 munge munge
 Z /var/log/munge 0700 munge munge
 Z /var/lib/munge 0711 munge munge
+d /run/munge 0755 munge munge -
