@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 
 pkgname=kdsoap
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Qt-based client-side and server-side SOAP component'
 license=(GPL3 LGPL custom)
@@ -11,7 +11,7 @@ url='https://github.com/KDAB/KDSoap'
 depends=(qt5-base)
 makedepends=(cmake)
 source=(https://github.com/KDAB/KDSoap/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz{,.asc})
-sha256sums=('d18963104fa6f7d02b044631cddbe78f18f70e06c607af680c7ace04d6cf04ee'
+sha256sums=('3eec5568a14ff575b3d14c582de62dd8fddd132429859a6d8cea9892709f5ff4'
             'SKIP')
 validpgpkeys=(E86C000370B1B9E2A9191AD53DBFB6882C9358FB) # KDAB Products (user for KDAB products) <info@kdab.com>
 
