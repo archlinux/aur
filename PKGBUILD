@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=atena
-_pkgver=1.2.0
+_pkgver=1.2.2
 pkgname=r-${_pkgname,,}
-pkgver=1.2.0
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='Analysis of Transposable Elements'
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d6c8cd3f6a924d444c372d3c228c3750d3aabeca8f2100aaa7ee5a3473a776c9')
+sha256sums=('177eb89602bf4d7c50d4ccce7c1732a7c5c72fb20d19649a448c10c6cee2092d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
