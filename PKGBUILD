@@ -5,7 +5,7 @@
 
 pkgname=lib32-sqlite2
 pkgver=2.8.17
-pkgrel=4
+pkgrel=5
 pkgdesc="A C library that implements an SQL database engine"
 arch=('x86_64')
 url="http://www.sqlite.org/"
@@ -29,6 +29,7 @@ prepare() {
     cd "${srcdir}/sqlite-${pkgver}" || exit 1
 
     patch -p0 < ../fix-error-format-security.patch
+    patch -p0 < ../fix-libtool-directiories.patch
     patch -p0 < ../fix-implicit-fn-decl-Makefile.in.patch
     patch -p0 < ../fix-implicit-fn-decl-tool-lemon.c.patch
 }
