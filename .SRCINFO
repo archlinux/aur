@@ -1,0 +1,13 @@
+pkgbase = borrg-bin
+	pkgdesc = A borg wrapper written in rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/SebastianSpeitel/borrg
+	arch = x86_64
+	license = Apache-2.0
+	provides = borrg
+	conflicts = borrg
+	source = https://github.com/SebastianSpeitel/borrg/releases/download/v0.1.0/borrg-0.1.0-x86_64.tar.gz
+	sha256sums = ebe1de98149ec74f4f68c89e69ff0e6b90659f49741d9083abacfee1b1f26236
+
+pkgname = borrg-bin
