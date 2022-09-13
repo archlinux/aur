@@ -23,15 +23,15 @@ build() {
 
   echo 'Building dcrd...'
   cd "$srcdir/dcrd-release-v$pkgver"
-  go install -v -trimpath -mod=readonly -v -ldflags "-buildid= -s -w" . ./cmd/...
+  go install -v -trimpath -mod=readonly -modcacherw -v -ldflags "-buildid= -s -w" . ./cmd/...
 
   echo 'Building dcrwallet...'
   cd "$srcdir/dcrwallet-release-v$pkgver"
-  go install -v -trimpath -mod=readonly -v -ldflags "-buildid= -s -w" .
+  go install -v -trimpath -mod=readonly -modcacherw -v -ldflags "-buildid= -s -w" .
 
   echo 'Building dcrctl...'
   cd "$srcdir/dcrctl-release-v$pkgver"
-  go install -v -trimpath -mod=readonly -v -ldflags "-buildid= -s -w" .
+  go install -v -trimpath -mod=readonly -modcacherw -v -ldflags "-buildid= -s -w" .
 
   for _bin in $(find "$srcdir/bin"  \
                         -mindepth 1 \
