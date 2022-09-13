@@ -2,13 +2,14 @@
 # Contributor: Daniel Greve <greve.daniel.l@gmail.com>
 
 pkgname=zsh-pure-prompt-git
-pkgver=1.6.0.r3.ga3b22b2
+pkgver=1.20.4.r0.g47c0c88
 pkgrel=1
 pkgdesc='Pretty, minimal and fast ZSH prompt'
 arch=('any')
 url='https://github.com/sindresorhus/pure'
 license=('MIT')
-depends=('git>=2.0.0' 'zsh>=5.0.0')
+makedepends=('git>=2.0.0')
+depends=('zsh>=5.0.0')
 source=('git+https://github.com/sindresorhus/pure.git')
 md5sums=('SKIP')
 
