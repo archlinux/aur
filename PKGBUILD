@@ -2,10 +2,10 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-mainline-um5302ta
-pkgver=6.0rc4
+pkgver=6.0rc5
 pkgrel=1
 pkgdesc='Linux'
-_srctag=v6.0-rc4
+_srctag=v6.0-rc5
 url="https://git.kernel.org/torvalds/h/$_srctag"
 arch=(x86_64)
 license=(GPL2)
@@ -28,7 +28,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'f170eda023a56db8cdcad4b83da5911b7b919bbd25084f729d37f1e6142557ca'
+            'ec58b63109b23d318af62b48a4f43e3042ddb45e71060c885d5d03f2cb3760b0'
             '405100dba08840def4e9546f6e49616cc6bb3d9d25d26c58fa32cd82b4d3df82'
             '132ece1b42f359fcbb4c97e96615747d34355f2f682efe744257f3310de77a98')
 
