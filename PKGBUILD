@@ -1,5 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
-# Co-Maintainer: Joe Pfeiffer joepfeiffer16 at gmail dot com
+# Maintainer: Joe Pfeiffer joepfeiffer16 at gmail dot com
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Maxim Baz <$pkgname at maximbaz dot com>
 pkgname=dell-command-configure
 _pkgver=4.7.0-433
