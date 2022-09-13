@@ -1,7 +1,7 @@
 pkgbase = audiothumbnailer
 	pkgdesc = Lightweight audio thumbnailer that can be used by file managers
 	pkgver = 0.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://code.google.com/p/audiothumbnailer/
 	arch = i686
 	arch = x86_64
@@ -9,10 +9,9 @@ pkgbase = audiothumbnailer
 	depends = imagemagick
 	depends = taglib
 	options = !libtool
-	source = http://audiothumbnailer.googlecode.com/files/audiothumbnailer-0.2.0.tar.gz
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/audiothumbnailer/audiothumbnailer-0.2.0.tar.gz
 	source = audiothumbnailer.cpp.patch
 	sha256sums = 1706f78e51be698ce4194dfe4fdff50ae07440d3e51d9e1ae4d367a5a8c2085c
-	sha256sums = 26447c4e29d94702af5939613af6153a6bc80b41157f330454db153a1d2463f7
+	sha256sums = 84771d5b964650dccb5814c30f788d67619a937f1143c42f14249a67b4eb2d72
 
 pkgname = audiothumbnailer
-

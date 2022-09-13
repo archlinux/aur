@@ -1,4 +1,4 @@
 33c33
 < #include <ImageMagick/Magick++.h>
 ---
-> #include <ImageMagick-6/Magick++.h>
+> #include <ImageMagick-7/Magick++.h>
