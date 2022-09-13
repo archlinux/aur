@@ -2,7 +2,7 @@
 # based on testing/linux: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-pf-git
-pkgver=6.0rc4.r34.g68ee9ff7dbfa
+pkgver=6.0rc5.r33.gc1f958d88653
 pkgrel=1
 pkgdesc='Linux pf-kernel (git version)'
 _kernel_rel=6.0
@@ -23,7 +23,7 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            'db3cb7352d8bbbc78082f130b9bb61bda512cc667d0687fc8cce836786811eba')
+            'cd0a12930cddd72ff39d7ea2407ed45046a802354e08aca91f12f17eaef3bd69')
 
 pkgver() {
   cd $_srcname
@@ -69,7 +69,6 @@ _package() {
   pkgdesc="The $pkgdesc kernel and modules"
   depends=(coreutils kmod initramfs)
   optdepends=('wireless-regdb: to set the correct wireless channels of your country'
-              'linux-firmware: firmware images needed for some devices'
               'ksmbd-tools: userspace tools for the ksmbd kernel SMB server'
               'linux-firmware: firmware images needed for some devices'
               'uksmd: userspace KSM helper daemon'
