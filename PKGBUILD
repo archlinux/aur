@@ -2,14 +2,14 @@
 # Contributor: Chuah Chee Shian <shian15810@gmail.com>
 
 pkgname=scala-cli
-pkgver=0.1.13
-pkgrel=2
-pkgdesc='Scala CLI is a command-line tool to interact with the Scala language.'
+pkgver=0.1.14
+pkgrel=1
+pkgdesc='A command-line tool to interact with the Scala language'
 arch=('x86_64')
 url='https://scala-cli.virtuslab.org'
 license=('Apache')
 source=("$pkgname-$pkgver.gz::https://github.com/VirtusLab/scala-cli/releases/download/v$pkgver/scala-cli-$CARCH-pc-linux.gz")
-sha256sums=('f08695372e9590f20dfc04271232de99666b83397078612b3cd152a9e705b10f')
+sha256sums=('e0b08100637a7702ce2850116763cc5e8d1ca64e07b6e0675616f28b81488ed8')
 
 package() {
   SCALA_CLI="$pkgdir/usr/bin/scala-cli"
