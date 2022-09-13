@@ -1,8 +1,8 @@
 # Maintainer: Evgeny Cherkashin <eugeneai@irnok.net>
 
 pkgname=logtalk
-pkgver=3.53.0
-pkgrel=2
+pkgver=3.57.0
+pkgrel=1
 pkgdesc='Object-Oriented Logic Programming Language'
 arch=('x86_64' 'i686')
 url='http://logtalk.org/'
@@ -15,7 +15,7 @@ optdepends=(
 	'yap: Prolog backend for logtalk'
 )
 source=("https://logtalk.org/files/logtalk-${pkgver}.tar.bz2")
-sha256sums=('31d59739f9bf125dc19b39ef059f0670a7234015b22fdab1918a9bef5c7f32b0')
+sha256sums=('f7ed89aae3aa3c47625dd2177b8188619d537b40020071baeddf7a63a477e752')
 conflicts=()
 provides=('logtalk')
 install=logtalk.install
