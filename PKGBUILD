@@ -1,6 +1,6 @@
 # Maintainer: Craig Barnes <craigbarnes@protonmail.com>
 pkgname=dte-git
-pkgver=1.10+19+g83a13ea0
+pkgver=1.10+874+gc5a2161b
 pkgrel=1
 pkgdesc='A small, configurable console text editor'
 url='https://craigbarnes.gitlab.io/dte/'
@@ -12,7 +12,7 @@ optdepends=(
     'git: for the builtin git-grep and git-open aliases'
     'fzf: for the builtin git-open alias'
 )
-makedepends=(git bash-completion)
+makedepends=(git)
 conflicts=(dte)
 provides=(dte)
 source=("git+https://gitlab.com/craigbarnes/dte.git")
@@ -35,5 +35,5 @@ check() {
 
 package() {
     cd "$srcdir/dte"
-    make install install-bash-completion V=1 prefix=/usr DESTDIR="$pkgdir"
+    make install V=1 prefix=/usr DESTDIR="$pkgdir"
 }
