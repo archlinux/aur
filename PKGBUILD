@@ -1,6 +1,6 @@
 # Maintainer: Kasimir Wansing <kasimir at wansing dot org>
 pkgname=ulist
-pkgver=0.13.5
+pkgver=0.13.7
 pkgrel=1
 pkgdesc="A mailing list service that keeps it simple."
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
 )
 
 validpgpkeys=('F433936B030F7FB97F4084E4C7C21DFFE932EF9D')
-sha256sums=('4574a7823f763fad1822223732d43c2e60055f6fba4fc73229fabc5c8e9ce17e'
+sha256sums=('7e7478e79d3755706b7435ccbe4a72ece84e8a0d0a0acfe72825e88c8d0f8d25'
             'efdf22898f12125f1ddfee0f0a55910d0d7372852e6275eec38c2f794f7a8e46'
             '358fdea45f6764941d14dd09cdfa520428dde2d7b341175cf7c2b9092924420d'
             'd2c1ade5e945be634ac132d72c922e21876595471f86f26372904938a063c93b'
