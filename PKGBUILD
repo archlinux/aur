@@ -1,7 +1,7 @@
 # Maintainer: Jordan Cannon <LiteracyFanatic@gmail.com>
 pkgname=manga-sharp
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc='CLI manga downloader and reader with lightweight web interface'
 arch=(x86_64)
 url='https://github.com/LiteracyFanatic/manga-sharp'
@@ -13,14 +13,16 @@ source=("git+https://github.com/LiteracyFanatic/manga-sharp#tag=v$pkgver")
 sha256sums=(SKIP)
 
 prepare() {
-	cd "$srcdir/$pkgname"
-	npm install
-	mkdir -p src/CLI/wwwroot/assets
-	cp node_modules/bulma/css/bulma.min.css src/CLI/wwwroot/assets/
+	cd "$srcdir/$pkgname/src/Client"
+	yarn
 }
 
 build() {
+	cd "$srcdir/$pkgname/src/Client"
+	yarn build
 	cd "$srcdir/$pkgname"
+	mkdir -p src/CLI/wwwroot/
+	cp -R src/Client/dist/* src/CLI/wwwroot/
 	dotnet publish -c Release -r linux-x64 --no-self-contained -o dist src/CLI/
 }
 
