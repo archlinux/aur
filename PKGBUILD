@@ -23,7 +23,6 @@ validpgpkeys=(
 
 build() {
     cmake -B "build-$pkgver" -S "$_pkgname-$pkgver" \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib
     cmake --build "build-$pkgver"
