@@ -1,7 +1,7 @@
 # Maintainer: Agustin Carrasco <asermax at gmail dot com>
 pkgname=nerd-fonts-ubuntu-mono
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Patched font UbuntuMono from the nerd-fonts library"
 arch=("any")
 url="https://github.com/ryanoasis/nerd-fonts"

@@ -1,7 +1,7 @@
 pkgbase = nerd-fonts-ubuntu-mono
 	pkgdesc = Patched font UbuntuMono from the nerd-fonts library
 	pkgver = 2.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
 	groups = nerd-fonts
