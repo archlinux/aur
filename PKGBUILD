@@ -5,7 +5,7 @@
 # Contributor: clarence <catchfire at gmail dot com>
 
 pkgname=patchage
-pkgver=1.0.8
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="A modular patch bay for audio and MIDI systems based on Jack and Alsa"
 arch=(x86_64)
@@ -15,9 +15,9 @@ depends=(atkmm gcc-libs glibc glibmm gtkmm)
 makedepends=(alsa-lib boost dbus-glib ganv glib2 gtk2 jack libsigc++ meson)
 options=(debug)
 source=(https://download.drobilla.net/$pkgname-$pkgver.tar.xz{,.sig})
-sha512sums=('af2e43c53ce80ab59416745e85cd7fc524fd3b21ae259d171f15998566cfa067a84a7406e78f5b50bc3ff339363b3ed9cacc9790f08cc6189e4919fc43d041dc'
+sha512sums=('c6c43afc50978db02517282c1e8c7aad131e30f6255e79e65ea17edcee0b470ec3172da2c057abe4cf4bb12a081a92165ac322cfc4ec77382bb992e74827831b'
             'SKIP')
-b2sums=('d6bac04a3a6880c7758a01c60b4f4c907e7ae191ef8956fb6ad6f039d9bf40e973ff6e38fc6a5af5b4b4ce5386496282ab5cb06573b0e091e24b7c80fae73ac3'
+b2sums=('db7e17acc483b1fec27c80a3bedf3b546d303d8ce4f90f7f7669a4e4e1dcb526881d949d91edfdd6283dff3d9382c4c3534972065e2769a43e9e4b982b0dfbec'
         'SKIP')
 validpgpkeys=('907D226E7E13FA337F014A083672782A9BF368F3') # David Robillard <d@drobilla.net>
 
