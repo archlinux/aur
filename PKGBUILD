@@ -1,7 +1,7 @@
 # Maintainer: Michał Sałaban <michal@salaban.info>
 pkgname="python-revolut"
 _projname="revolut-python"
-pkgver=0.8.5
+pkgver=0.10
 pkgrel=1
 pkgdesc='Revolut API client for Python'
 license=('BSD')
@@ -10,7 +10,7 @@ url='https://github.com/emesik/revolut-python'
 makedepends=('python' 'python-distribute')
 depends=('python' 'python-requests' 'python-dateutil' 'python-pyjwt')
 source=("https://github.com/emesik/${_projname}/archive/v${pkgver}.tar.gz")
-md5sums=('a8cb2becd73e0d8adf8c00ad06202733')
+md5sums=('e1e0edce964ada8cb9f5095710783ffa')
 
 build() {
   cd "${srcdir}/${_projname}-${pkgver}"
