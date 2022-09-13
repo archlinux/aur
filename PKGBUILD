@@ -2,7 +2,7 @@
 
 _npmname=clean-css-cli
 pkgname=nodejs-$_npmname
-pkgver=5.6.0
+pkgver=5.6.1
 pkgrel=1
 pkgdesc="The command line interface to clean-css CSS optimizer"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(nodejs)
 makedepends=(npm)
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('7d86dc2c334d939d164da39e1eb7ac6b895dff465c63ca2635dd58a2dbb3bf20')
+sha256sums=('0c494dd331e3f277098b308bd997221f7e7ecd237ff27fd8a5a633fc5484d0a7')
 
 package() {
   npm install --global \
