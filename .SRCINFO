@@ -1,6 +1,6 @@
 pkgbase = budgie-control-center
 	pkgdesc = Budgie's main interface to configure various aspects of the desktop
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/BuddiesOfBudgie/budgie-control-center
 	arch = x86_64
@@ -29,11 +29,11 @@ pkgbase = budgie-control-center
 	optdepends = openssh: remote login
 	optdepends = power-profiles-daemon: Power profiles support
 	conflicts = gnome-control-center
-	source = https://github.com/BuddiesOfBudgie/budgie-control-center/releases/download/v1.1.0/budgie-control-center-1.1.0.tar.xz
-	source = https://github.com/BuddiesOfBudgie/budgie-control-center/releases/download/v1.1.0/budgie-control-center-1.1.0.tar.xz.asc
+	source = https://github.com/BuddiesOfBudgie/budgie-control-center/releases/download/v1.1.1/budgie-control-center-1.1.1.tar.xz
+	source = https://github.com/BuddiesOfBudgie/budgie-control-center/releases/download/v1.1.1/budgie-control-center-1.1.1.tar.xz.asc
 	validpgpkeys = 1E1FB0017C998A8AE2C498A6C2EAA8A26ADC59EE
 	validpgpkeys = 0E0D97562A4EC8BD8E329DCDAA7A2325E04B609B
-	sha256sums = 1d0de48749c10e43f1e66b3a95557118cbd6815b659c4881f040d324dc7a8abc
+	sha256sums = 0a0f27cee3e5a33f17e6b34ad698b4a54fe8ef7c1d215a0aa9a07431722ac963
 	sha256sums = SKIP
 
 pkgname = budgie-control-center
