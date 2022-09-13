@@ -1,7 +1,7 @@
 [Desktop Entry]
 Terminal=false
 Type=Application
-Name=ApiPost6
-Icon=apipost6
-Exec=apipost6 %U
+Name=ApiPost7
+Icon=apipost7
+Exec=apipost7 %U
 Categories=Development;

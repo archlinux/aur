@@ -3,14 +3,14 @@
 pkgname=apipost-bin
 _pkgname=${pkgname%-bin}
 pkgver=7.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An API debugging and management tool that supports team collaboration and can generate documents directly."
 arch=('x86_64')
 url="https://www.apipost.cn/"
 license=('unknown')
 source=("${_pkgname}.desktop"
         "https://www.apipost.cn/dl.php?client=LinuxGz&arch=x64&version=$pkgver#/${_pkgname}-v$pkgver.tar.gz")
-md5sums=("74c20618584d247486311abf144089ea"
+md5sums=("bb57646eba1d0778a6d6575e554a4260"
         "SKIP")
 
 package() {
