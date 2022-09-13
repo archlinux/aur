@@ -1,17 +1,19 @@
 pkgbase = mp3rename
-	pkgdesc = mp3rename renames mp3-files according id3-infos
-	pkgver = 0.6.9
-	pkgrel = 4
-	url = http://packages.debian.org/unstable/sound/mp3rename
+	pkgdesc = Rename mp3 files based on id3tags
+	pkgver = 0.6
+	pkgrel = 13
+	url = https://salsa.debian.org/debian/mp3rename
 	arch = i686
 	arch = x86_64
 	license = GPL
+	depends = glibc
+	provides = mp3rename
+	conflicts = mp3rename
 	source = http://ftp.debian.org/debian/pool/main/m/mp3rename/mp3rename_0.6.orig.tar.gz
-	source = combined-mp3rename_0.6.9-and-jf-archlinux-and-jf-manpage-and-jf-padnumbers.diff
+	source = http://ftp.debian.org/debian/pool/main/m/mp3rename/mp3rename_0.6-13.debian.tar.xz
 	source = mp3rename-jf-long-options.patch
-	md5sums = c3c3dff9ed533103eede86fbce75a7b1
-	md5sums = b11dc25c5af85f159680ed8401017445
-	md5sums = 695bc74356443fb4090585f9bcdf390a
+	sha256sums = 3bd0c73d542901a012ace7a16957ff79a8b297ed98a412004320a22dcfdc8c5e
+	sha256sums = 388dcab2f4deb34a0a857c2fe7c10d2e34b00ac8af56e8bdc004ff8e7da22966
+	sha256sums = 2cf135666f30e315e1023302229a3b9df4db31a78339cb70c00b5efd45a32ee5
 
 pkgname = mp3rename
-
