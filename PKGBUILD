@@ -32,7 +32,7 @@ pkgver() {
 build() {
     cd "$_pkgname"
 
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DLIB_POSTFIX= \
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DLIB_POSTFIX= \
         -DOpenGL_GL_PREFERENCE=GLVND .
     make
 }
