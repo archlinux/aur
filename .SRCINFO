@@ -1,0 +1,19 @@
+pkgbase = borrg
+	pkgdesc = A borg wrapper written in rust
+	pkgver = 0.1.0_pre_20220618
+	pkgrel = 1
+	url = https://github.com/SebastianSpeitel/borrg
+	arch = x86_64
+	license = Apache-2.0
+	license = Apache-2.0-with-LLVM-exceptions
+	license = Boost-1.0
+	license = MIT
+	license = Unlicense
+	makedepends = rust
+	depends = borgbackup
+	provides = borrg
+	conflicts = borrg-bin
+	source = https://github.com/SebastianSpeitel/borrg/archive/2b85f68ad9c438b1804286935eec50a4ce6ccccf.tar.gz
+	sha256sums = bbb3847a2a5b60c9001bf47204b2c0db9510a34da9c0bfd7df05090410ca9321
+
+pkgname = borrg
