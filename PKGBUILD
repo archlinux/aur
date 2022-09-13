@@ -1,40 +1,36 @@
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=gerbv-git
 _pkgname=gerbv
-pkgver=r1544.b5f1eac
+pkgver=2.9.2.3.g319a8af
 pkgrel=1
 pkgdesc="An open source Gerber file (RS-274X only) viewer"
-url="http://gerbv.geda-project.org/"
+url="https://github.com/gerbv/gerbv"
 license=('GPL')
-arch=('x86_64')
-depends=('gtk2' 'dconf')
-optdepends=('cairo: for better graphics')
-makedepends=('cvs' 'gettext' 'git')
+arch=('i686' 'x86_64')
+depends=('gtk2')
 provides=('gerbv')
 conflicts=('gerbv')
-source=("$_pkgname"::'git://git.geda-project.org/gerbv.git')
-md5sums=('SKIP')
+optdepends=('cairo: for better graphics')
+makedepends=('git' 'gettext')
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd $_pkgname
+  git describe --tags | cut -c2- | sed 's+-+.r+' | tr - .
 }
 
-build ()
-{
-  cd "$srcdir/$_pkgname"
-  CFLAGS+=' -fcommon' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
+build () {
+  cd $_pkgname
   ./autogen.sh
-  sed -i 's|am_aux_dir=`cd $ac_aux_dir|am_aux_dir=`cd $srcdir|' configure
   ./configure --prefix=/usr \
               --disable-update-desktop-database 
   make 
 }
 
-package()
-{
-  cd "$srcdir/$_pkgname"
+package() {
+  cd $_pkgname
   make DESTDIR="$pkgdir" install 
 }
-
