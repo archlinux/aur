@@ -1,5 +1,5 @@
 pkgname=nextcloud-app-richdocumentscode
-pkgver=21.11.402
+pkgver=22.5.502
 pkgrel=1
 pkgdesc="Built-in CODE Server app"
 arch=('any')
@@ -9,7 +9,7 @@ depends=('nextcloud-app-richdocuments' 'fontconfig' 'fuse2' 'glibc')
 makedepends=()
 options=('!strip')
 source=("richdocumentscode-${pkgver}.tar.gz::https://github.com/CollaboraOnline/richdocumentscode/releases/download/$pkgver/richdocumentscode.tar.gz")
-sha512sums=('046fb329bb3af18fc29c18948a1ed2c46132e160eccb96fd21e9e24f2d125e796ce9acf31f8abe687e76dc676942fcfe8fbf5fc4ff2a2e021272ca1a936b6a5a')
+sha512sums=('4cfb9c2b89ddd377d9281bbe448267fac665945463d32164189ebf874b36c4d0a4fe11422b3fd9bef25c06627796369dfb678f80cb133e9b0e565b2b3cf04c37')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
