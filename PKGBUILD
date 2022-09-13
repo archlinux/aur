@@ -1,7 +1,7 @@
-# Maintainer: lightning1141 <lightning1141@gmail.com>
+# Contributor: lightning1141 <lightning1141@gmail.com>
 pkgname=pocsuite-git
 pkgdesc="Pocsuite is A remote vulnerability test framework developed by Knownsec Security Team. http://sebug.net"
-pkgver=1.7.6.0.gf8dddd9
+pkgver=1.9.11.1.gb26a773
 pkgrel=1
 arch=('any')
 url="https://github.com/knownsec/pocsuite3"
@@ -11,7 +11,7 @@ provides=('pocsuite')
 conflicts=('pocsuite')
 makedepends=('git')
 options=('!strip')
-source=("git://github.com/knownsec/pocsuite3.git")
+source=("git+https://github.com/knownsec/pocsuite3.git")
 md5sums=(SKIP)
 
 _repo_name=pocsuite3
