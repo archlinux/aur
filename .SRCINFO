@@ -1,7 +1,7 @@
 pkgbase = mekfetch-git
 	pkgdesc = Simple neofetch alternative written in C
 	pkgver = 1.1.0.r0.gf2736d9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mekb-turtle/mekfetch
 	arch = any
 	optdepends = ttf-nerd-fonts-symbols: Nerd font support

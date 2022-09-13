@@ -1,7 +1,7 @@
 # Maintainer: mekb https://github.com/mekb-turtle
 pkgname=mekfetch-git
 pkgver=1.1.0.r0.gf2736d9
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple neofetch alternative written in C'
 arch=('any')
 url="https://github.com/mekb-turtle/mekfetch"
@@ -14,7 +14,7 @@ package() {
 build() {
 	make -C "$srcdir/mekfetch"
 }
-function pkgver() {
-	cd mekfetch
+pkgver() {
+	cd "$srcdir/mekfetch"
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
