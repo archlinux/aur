@@ -2,7 +2,7 @@
 
 pkgname=holocure-bin
 pkgver=0.4.1662787865
-pkgrel=1
+pkgrel=2
 pkgdesc="A free unofficial fan game with Hololive members"
 arch=('x86_64')
 url=https://kay-yu.itch.io/holocure
@@ -15,7 +15,7 @@ _srcurl=$(
 source=(holocure holocure.desktop holocure.png "$pkgname-$pkgver.zip"::$_srcurl)
 # update via updpkgsums
 b2sums=('4301db2ba2d8bd5e9ccddf617c07846323b002eb5aa0e1fdc8df84e2d90d4ce7167fa0097fbcd3f159d209d1950c63afa8ac3d70a18161723566c48d69a8ee08'
-        '4fd06cf2fe6796bbab41e8b473c6d558d4fc1ed71f4d87b9ed4eba720b62ffb70d4a775d28dcb1e6d4c04eadb1676c9f340344305542a62f03277f63547fcbba'
+        'b7260f800bf63a8f058b7df9965190583a4b3f6ad3d85aa752e5e9e8aa6f5a17742affe347ee70aee74f781657767ed9c845cbe1c48bc752cb0e7988e1532d92'
         'ede12f7c2bedcf077dd6da495f5aa2c45b95db128eb28af562b11fc13dcf21db18d98aa818b6b81514049696d9e622364d1f5044282950faa6c64499b2c613c5'
         'dc7db05954eb418b23b4366cf8774e51138bfe0c5fdc0cdaaa4cebe3c71df8442496e46724d850d9230b7498bbc07dc192b5f0da629563af704fdd4fd569f96b')
 DLAGENTS=('https::/usr/bin/env curl -o %o')
