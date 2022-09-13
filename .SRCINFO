@@ -7,7 +7,7 @@ pkgbase = devbox-bin
 	license = Apache
 	depends = nix
 	optdepends = docker
-	provides = devbox-bin
+	provides = devbox
 	source = https://github.com/jetpack-io/devbox/releases/download/0.0.4/devbox_0.0.4_linux_amd64.tar.gz
 	sha256sums = 92ae5642b7069faf7a538ccacbe7f38402ec7925254c0b628d6119070b7efbe5
 
