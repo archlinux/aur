@@ -3,7 +3,7 @@
 
 pkgname=go-task
 _pkgname=task
-pkgver=3.14.1
+pkgver=3.15.2
 pkgrel=1
 pkgdesc="Task runner & Make alternative that runs taskfiles (Installs as go-task to avoid conflict with taskwarrior)"
 arch=('any')
@@ -15,12 +15,12 @@ makedepends=('go')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 
-sha256sums=('60999d5fa263bdb9e08a2f332ec5fcc32fb18771be7d12526f62291d3acaad2a')
+sha256sums=('5f1853d04724fc89b45a3e66ce21126a709e8da2b296ca30e916629a20409cc0')
 
 prepare() {
   cd "$_pkgname-$pkgver"
 
-  sed -i 's/GO_TASK_PROGNAME=task/GO_TASK_PROGNAME=go-task/' completion/bash/task.bash
+  sed -i 's/complete -F _task task/complete -F _task go-task/' completion/bash/task.bash
   sed -i 's/set GO_TASK_PROGNAME task/set GO_TASK_PROGNAME go-task/' completion/fish/task.fish
   sed -i 's/#compdef task/#compdef go-task/' completion/zsh/_task
   sed -i 's/cmd=(task)/cmd=(go-task)/' completion/zsh/_task
