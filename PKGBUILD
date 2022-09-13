@@ -2,7 +2,7 @@
 
 pkgname=lowcharts-git
 _pkgname="${pkgname%-git}"
-pkgver=0.5.2.r63.4b51452
+pkgver=0.5.4.r69.e2567a5
 pkgrel=1
 pkgdesc="Tool to draw low-resolution graphs in terminal (git version)"
 arch=('x86_64' 'i686')
