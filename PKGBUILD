@@ -5,7 +5,7 @@
 # This file is inspired by Dan Trickey PKGBUILD's
 
 pkgname=webots-bin
-pkgver=2022a
+pkgver=2022b
 pkgrel=1
 pkgdesc="Mobile robot simulation software."
 arch=('x86_64')
@@ -15,12 +15,12 @@ depends=("make" "gcc" "atk>=1.9.0" "ffmpeg" "dbus" "freeimage>=3.15.4" "glib2>2.
          "gtk3" "nss" "gcc-libs" "libxaw" "libxrandr" "libxrender"
          "zziplib>=0.13.62" "libssh" "libzip" "libx11" "xorg-server" "libxslt" "gd"
          "freetype2")
-optdepends=('alsa-lib' 'cairo'  'dbus' 'desktop-file-utils' 'expat' 'fontconfig' 'gdk-pixbuf2' 'hicolor-icon-theme' 'jre-openjdk-headless' 'libcups' 'libglvnd' 'libjpeg-turbo' 'libpulse' 'libxaw' 'libxcb' 'libxcomposite' 'libxcursor' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxkbcommon' 'libxkbcommon-x11' 'libxrandr' 'libxrender' 'libxtst' 'nspr' 'nss' 'openal' 'openssl' 'pango' 'qt5-base' 'qt5-declarative' 'qt5-location' 'qt5-multimedia' 'qt5-webchannel' 'qt5-webengine' 'qt5-websockets' 'xorg-server' 'zlib')
+optdepends=('alsa-lib' 'cairo'  'dbus' 'desktop-file-utils' 'expat' 'fontconfig' 'gdk-pixbuf2' 'hicolor-icon-theme' 'jre-openjdk-headless' 'libcups' 'libglvnd' 'libjpeg-turbo' 'libpulse' 'libxaw' 'libxcb' 'libxcomposite' 'libxcursor' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxkbcommon' 'libxkbcommon-x11' 'libxrandr' 'libxrender' 'libxtst' 'nspr' 'nss' 'openal' 'openssl' 'pango' 'qt6-base' 'qt6-declarative' 'qt6-positioning' 'qt6-multimedia' 'qt6-webchannel' 'qt6-webengine' 'qt6-websockets' 'xorg-server' 'zlib')
 conflicts=('webots')
 options=('!strip' '!emptydirs')
 install=webots.install
-source_x86_64=('https://github.com/cyberbotics/webots/releases/download/R2022a/webots_2022a_amd64.deb')
-sha512sums_x86_64=('be798345ff80a6d329d1c7505d03dc60dc9997216fa26f73bc3fc8ba2befce3f410785041a3b096112ae86d69836bc03958659aa052d379946a4f18d983946d5')
+source_x86_64=('https://github.com/cyberbotics/webots/releases/download/R2022b/webots_2022b_amd64.deb')
+sha512sums_x86_64=('a6a9b284964b0988eec4d43d2f50ac8ea58f17d2baf453c6dc054fbeb02c9c25c3f91eb93e431c1f7fccffe945a703d67daa167dbb2287dc3ffce1f1fb18cd94')
 
 package(){
 
