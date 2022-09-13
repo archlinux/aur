@@ -4,7 +4,7 @@
 
 pkgname=ddgr
 pkgver=2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="DuckDuckGo from the terminal"
 arch=('any')
 url="https://github.com/jarun/ddgr"
@@ -19,6 +19,6 @@ package() {
 	make PREFIX=/usr DESTDIR="${pkgdir}" install
 
 	install -Dm 644 "auto-completion/fish/${pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
-	install -Dm 644 "auto-completion/bash/${pkgname}-completion.bash" "${pkgdir}/etc/bash_completion.d/${pkgname}"
+	install -Dm 644 "auto-completion/bash/${pkgname}-completion.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
 	install -Dm 644 "auto-completion/zsh/_${pkgname}" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
 }
