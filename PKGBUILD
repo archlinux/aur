@@ -30,7 +30,7 @@ prepare() {
 
 build() {
     cd "$_pkgname"
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_UNIT_TESTS=OFF .
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_UNIT_TESTS=OFF .
     make
 }
 
