@@ -1,10 +1,9 @@
-dyr901vgo587m
 # Maintainer: Dave Blair <mail@dave-blair.de>
 # Contributor: Rustam Tsurik <rustam.tsurik@gmail.com>
 
 pkgname=memsource-editor
 _pkg=MemsourceEditor
-pkgver=22.24.0
+pkgver=22.25.0
 pkgrel=1
 pkgdesc="A CAT translation tool, requires Memsource subscription"
 arch=('x86_64')
@@ -32,7 +31,7 @@ source=("http://download.memsource.com/production/updates/memsource-editor/linux
         "memsource"
         "license.desktop")
 
-sha256sums=('2bfad70565a4d0aa7b2a0ad680187b09d96ad04aea41946c15e5ecc5ae9e7885'
+sha256sums=('4a00f4c0ad7f9979ba08cf6e745f7c53698ebf309f7e310bb00d390a4cf0d90f'
             '215a02637392af7a3f0af23411c5234c9ce8cdf1ae5c0e40b97c43e5b0995a45'
             '8a40f0172dc948dfadec126b5ab9a4f983216034aa8fbf19a41b9466e6253866'
             '4802b77ffefd2cdd7526fec28a690f8dc560fef74501806b3485648dcac830fe'
