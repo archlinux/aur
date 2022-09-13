@@ -1,15 +1,15 @@
 pkgbase = deconz-dev
 	pkgdesc = A generic ZigBee monitoring and control tool (development headers)
-	pkgver = 2.13.02
+	pkgver = 2.18.01
 	pkgrel = 1
 	url = https://www.dresden-elektronik.de
 	arch = x86_64
 	arch = aarch64
 	license = custom:"Copyright (c) dresden elektronik ingenieurtechnik GmbH"
 	makedepends = xz
-	source_x86_64 = deconz-dev-2.13.02-x86_64.deb::https://deconz.dresden-elektronik.de/ubuntu/beta/deconz-dev-2.13.02.deb
-	sha256sums_x86_64 = 38d19613462e618b3774d56f019f89d50beadc8d053d028fd84e85540a70fb37
-	source_aarch64 = deconz-dev_2.13.02-debian-stretch-stable_arm64.deb::https://deconz.dresden-elektronik.de/debian/beta/deconz-dev_2.13.02-debian-buster-beta_arm64.deb
-	sha256sums_aarch64 = 1b41cd6c251d1c9754cddb5786ea069c17d6680ee35587c478260fb187bddf97
+	source_x86_64 = deconz-dev-2.18.01-x86_64.deb::https://deconz.dresden-elektronik.de/ubuntu/beta/deconz-dev-2.18.01.deb
+	sha256sums_x86_64 = 54abf81d4019b6dc2f45a254df3404e9d84d7a453102b73f54cf123b053d799b
+	source_aarch64 = deconz-dev_2.18.01-debian-stretch-stable_arm64.deb::https://deconz.dresden-elektronik.de/debian/beta/deconz-dev_2.18.01-debian-buster-beta_arm64.deb
+	sha256sums_aarch64 = 24dadfe2241b66ccb98bde514bead2942a8776e78211971b18981976ae62a747
 
 pkgname = deconz-dev
