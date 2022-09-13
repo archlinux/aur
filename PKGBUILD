@@ -2,23 +2,26 @@
 
 _gemname=http-accept
 pkgname=ruby-${_gemname}
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Parse Accept and Accept-Language HTTP headers in Ruby"
 arch=(any)
 url=https://github.com/socketry/http-accept
 license=(MIT)
 depends=(ruby)
-checkdepends=(ruby-bundler ruby-rake ruby-rspec)
-makedepends=(git rubygems ruby-rdoc)
-source=(git+https://github.com/socketry/http-accept.git?tag=v$pkgver)
-sha256sums=('SKIP')
+checkdepends=(ruby-bundler ruby-rspec)
+makedepends=(rubygems ruby-rdoc)
+source=(https://github.com/socketry/http-accept/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
+sha256sums=('9a614046d55f8c122a38116332650e6ccddd7bf7e0c0e039dd8653ef63122f49')
 
 prepare() {
-  cd ${_gemname}
+  cd ${_gemname}-$pkgver
   sed -i 's|~>|>=|g' ${_gemname}.gemspec
+
   sed -i '/covered/d' ${_gemname}.gemspec
   sed -i '/covered/d' spec/spec_helper.rb
+  sed -i '/cert_chain/d' ${_gemname}.gemspec
+  sed -i '/signing_key/d' ${_gemname}.gemspec
 
   # there is no license file in the repo, but we can extract one from the readme
   # https://stackoverflow.com/a/35966027
@@ -26,17 +29,17 @@ prepare() {
 }
 
 build() {
-  cd ${_gemname}
+  cd ${_gemname}-$pkgver
   gem build ${_gemname}.gemspec
 }
 
 check() {
-  cd ${_gemname}
-  rake spec
+  cd ${_gemname}-$pkgver
+  rspec
 }
 
 package() {
-  cd ${_gemname}
+  cd ${_gemname}-$pkgver
   local _gemdir="$(gem env gemdir)"
 
   gem install \
