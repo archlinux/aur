@@ -1,0 +1,16 @@
+pkgbase = lowcharts-bin
+	pkgdesc = Tool to draw low-resolution graphs in terminal
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/juan-leon/lowcharts
+	arch = x86_64
+	arch = i686
+	license = MIT
+	provides = lowcharts
+	conflicts = lowcharts
+	source_x86_64 = lowcharts-0.5.2-x86_64.tar.gz::https://github.com/juan-leon/lowcharts/releases/download/v0.5.2/lowcharts-v0.5.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = ec69223790f45534a160efc61d96774a201e2c1d816067fc2c9aa1e668035c43
+	source_i686 = lowcharts-0.5.2-i686.tar.gz::https://github.com/juan-leon/lowcharts/releases/download/v0.5.2/lowcharts-v0.5.2-i686-unknown-linux-gnu.tar.gz
+	sha256sums_i686 = cb57ff85c759fe6dee068d4ca6beb4c5db42db5c02ffd053538a2bdcef23bd42
+
+pkgname = lowcharts-bin
