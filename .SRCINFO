@@ -1,14 +1,16 @@
 pkgbase = nodejs-mjml
 	pkgdesc = The only framework that makes responsive-email easy
-	pkgver = 4.12.0
+	pkgver = 4.13.0
 	pkgrel = 1
 	url = https://mjml.io
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = mjml-4.12.0.tgz
-	source = https://registry.npmjs.org/mjml/-/mjml-4.12.0.tgz
-	sha256sums = 357474dc63ef721fa242e8ee53aff0b0cf5ebea4a932c69341fde2e7a4192d58
+	noextract = mjml-4.13.0.tgz
+	source = https://registry.npmjs.org/mjml/-/mjml-4.13.0.tgz
+	source = https://raw.githubusercontent.com/mjmlio/mjml/v4.13.0/LICENSE.md
+	sha256sums = 7508e1de045aa4d41a38daec2bd2cbe68aa0bde97294a232749ac4df9026c466
+	sha256sums = 0c4f37a6b1d7fdc8e2abb11cf49ba9dfe8128a4242861930d810f01f00ca4c49
 
 pkgname = nodejs-mjml
