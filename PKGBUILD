@@ -1,6 +1,6 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname='diaspora-mysql-git'
-pkgver=0.7.18.0.r608.g58483bdd2
+pkgver=0.7.18.1.r627.g7c450b444
 pkgrel=1
 pkgdesc="A distributed privacy aware social network (development head) (MySQL)"
 arch=('i686' 'x86_64')
