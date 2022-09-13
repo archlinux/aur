@@ -22,7 +22,6 @@ prepare() {
 build() {
     cmake -B "build-$pkgver" -S "$_pkgname-$pkgver" \
         -DBUILD_TESTING=ON \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib
     cmake --build "build-$pkgver"
