@@ -3,7 +3,7 @@
 
 _srcname=fancontrol-gui
 pkgname=fancontrol-plasmoid-git
-pkgver=v0.8.r15.gb7c65b3
+pkgver=v0.8.r23.g5bfa8fa
 pkgrel=1
 pkgdesc="Plasmoid for the fancontrol script and systemd service"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('fancontrol-gui-git' 'plasma-framework' 'gettext')
 makedepends=('git' 'cmake' 'extra-cmake-modules')
 provides=('fancontrol-plasmoid')
 conflicts=('fancontrol-plasmoid')
-source=('git://github.com/Maldela/fancontrol-gui.git')
+source=('git+https://github.com/Maldela/fancontrol-gui.git')
 md5sums=('SKIP')
 
 

@@ -1,6 +1,6 @@
 pkgbase = fancontrol-plasmoid-git
 	pkgdesc = Plasmoid for the fancontrol script and systemd service
-	pkgver = v0.8.r15.gb7c65b3
+	pkgver = v0.8.r23.g5bfa8fa
 	pkgrel = 1
 	url = https://github.com/Maldela/Fancontrol-GUI
 	arch = i686
@@ -14,8 +14,7 @@ pkgbase = fancontrol-plasmoid-git
 	depends = gettext
 	provides = fancontrol-plasmoid
 	conflicts = fancontrol-plasmoid
-	source = git://github.com/Maldela/fancontrol-gui.git
+	source = git+https://github.com/Maldela/fancontrol-gui.git
 	md5sums = SKIP
 
 pkgname = fancontrol-plasmoid-git
-
