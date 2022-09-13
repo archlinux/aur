@@ -4,7 +4,7 @@
 
 pkgname=python-pymisp
 _pkg="${pkgname#python-}"
-pkgver=2.4.160
+pkgver=2.4.162
 pkgrel=1
 pkgdesc="Python library to access MISP platforms via their REST API"
 arch=('any')
