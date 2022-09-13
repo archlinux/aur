@@ -4,7 +4,7 @@
 
 pkgname=hydrogen-drumkits
 pkgver=20191129
-pkgrel=2
+pkgrel=3
 pkgdesc='Hydrogen drum kits'
 arch=(any)
 url='https://sourceforge.net/projects/hydrogen/'
@@ -45,8 +45,7 @@ _drumkits=(
     'circAfrique v4'
 )
 
-_subhost='deac-ams'
-_host="https://$_subhost.dl.sourceforge.net"
+_host='https://downloads.sourceforge.net'
 _path='/project/hydrogen/Sound%20Libraries/Main%20sound%20libraries'
 _base=$_host$_path
 
