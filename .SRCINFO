@@ -1,0 +1,13 @@
+pkgbase = abacus-git
+	pkgdesc = A simple interactive calculator REPL with support for variables, lambdas, and more.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/viktordanov/abacus.git
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = abacus
+	conflicts = abacus
+
+pkgname = abacus-git
