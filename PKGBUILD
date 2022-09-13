@@ -41,7 +41,6 @@ build()
     cmake -B "build-$pkgver" -S "$pkgbase-$pkgver" \
         -DTULIP_BUILD_TESTS=ON \
         -DBUILD_SHARED_LIBS=ON \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib
     cmake --build "build-$pkgver"
