@@ -1,6 +1,6 @@
 pkgname="techmino-git"
 pkgver=0.17.6.r4476.03515b44
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of various modern block game rules, more ways to play, and awesome features added for a new experience."
 arch=('x86_64')
 url="https://github.com/26F-Studio/Techmino"
@@ -22,11 +22,14 @@ prepare() {
     git submodule init
     git config Zframework.url "$srcdir/Zframework"
     git submodule update
+}
+
+build() {
+    cd ${srcdir}/Techmino
     zip -r1 ../game.love media parts Zframework conf.lua main.lua version.lua
     cd ..
     cp ./Techmino/.github/build/linux/dev/icon.png ./Techmino_Development.png
 }
-
 package() {
     install -Dm644 "game.love" "${pkgdir}/opt/Techmino_Development/game.love"
     install -Dm644 "./x64/CCloader.so" "${pkgdir}/opt/Techmino_Development/CCloader.so"
