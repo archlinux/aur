@@ -1,0 +1,10 @@
+--- tool/lemon.c.sav	2022-09-13 11:30:26.420019206 +0200
++++ tool/lemon.c	2022-09-13 11:30:42.110002858 +0200
+@@ -11,6 +11,7 @@
+ #include <string.h>
+ #include <ctype.h>
+ #include <stdlib.h>
++#include <unistd.h>
+ 
+ #ifndef __WIN32__
+ #   if defined(_WIN32) || defined(WIN32)

@@ -1,0 +1,17 @@
+--- Makefile.in.sav	2022-09-13 11:29:58.580057197 +0200
++++ Makefile.in	2022-09-13 11:30:01.280052996 +0200
+@@ -272,10 +272,11 @@
+ # configure the config.h file.
+ #
+ config.h:	
+-	echo '#include <stdio.h>' >temp.c
+-	echo 'int main(){printf(' >>temp.c
++	echo '#include <stdio.h>'                         > temp.c
++	echo '#include <stdlib.h>'                        >>temp.c
++	echo 'int main(){printf('                         >>temp.c
+ 	echo '"#define SQLITE_PTR_SZ %d",sizeof(char*));' >>temp.c
+-	echo 'exit(0);}' >>temp.c
++	echo 'exit(0);}'                                  >>temp.c
+ 	$(BCC) -o temp temp.c
+ 	./temp >config.h
+ 	echo >>config.h
