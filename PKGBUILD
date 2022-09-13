@@ -2,7 +2,7 @@
 
 _gemname=librarianp
 pkgname=ruby-$_gemname
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A Framework for Bundlers, used by librarian-puppet"
 arch=(any)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(ruby ruby-thor)
 makedepends=(git rubygems ruby-rdoc)
 options=(!emptydirs)
-source=(git+https://github.com/voxpupuli/librarian.git?tag=v$pkgver)
+source=(git+https://github.com/voxpupuli/librarian.git#tag=v$pkgver)
 sha256sums=('SKIP')
 
 prepare() {
