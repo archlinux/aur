@@ -12,7 +12,7 @@ arch=("x86_64")
 provides=("borrg")
 conflicts=("borrg")
 source=("https://github.com/enderium/borrg-bin/releases/download/$pkgver/borrg-$pkgver-x86_64.tar.gz")
-sha256sums=("ebe1de98149ec74f4f68c89e69ff0e6b90659f49741d9083abacfee1b1f26236")
+sha256sums=("199e9d0a7d60dc92f52b5b3d6e2145386fccee4213b494b54dc0e025778c7808")
 
 package() {
     install -Dm755 borrg -t "$pkgdir/usr/bin"
