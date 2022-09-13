@@ -1,20 +1,21 @@
-From cac18e3d1ace16e77abe1fb988492eea2f2dfbce Mon Sep 17 00:00:00 2001
+From 27bd2f629da113a2fe20469e27b4ae50a50e0603 Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Mon, 27 Jun 2022 01:26:56 +0300
 Subject: [PATCH] AUR pkgbuild changes
 
 ---
- Makefile.in             | 74 +++++++++++++++++++++++++++++++++++------
- configure.sh            |  2 ++
- make/rules-autoconf.mk  |  4 +--
- make/rules-cargo.mk     |  4 ++-
- make/rules-cmake.mk     |  4 +--
- make/rules-common.mk    | 18 ++++++----
- make/rules-configure.mk |  4 +--
- make/rules-meson.mk     |  3 +-
- make/rules-winemaker.mk |  2 +-
- proton                  |  6 ++--
- 10 files changed, 90 insertions(+), 31 deletions(-)
+ Makefile.in                    | 74 +++++++++++++++++++++++++++++-----
+ compatibilitytool.vdf.template |  2 +-
+ configure.sh                   |  2 +
+ make/rules-autoconf.mk         |  4 +-
+ make/rules-cargo.mk            |  4 +-
+ make/rules-cmake.mk            |  4 +-
+ make/rules-common.mk           | 18 +++++----
+ make/rules-configure.mk        |  4 +-
+ make/rules-meson.mk            |  3 +-
+ make/rules-winemaker.mk        |  2 +-
+ proton                         |  6 +--
+ 11 files changed, 91 insertions(+), 32 deletions(-)
 
 diff --git a/Makefile.in b/Makefile.in
 index f1f3d27d..4d683061 100644
@@ -255,6 +256,19 @@ index f1f3d27d..4d683061 100644
  
  $(micross.ttf): $(noto_sans.ttf) $(noto_sans_arabic.ttf) $(noto_sans_armenian.ttf) $(noto_sans_bengali.ttf) $(noto_sans_coptic.ttf) \
  		$(noto_sans_georgian.ttf) $(noto_sans_gujarati.ttf) $(noto_sans_hebrew.ttf) $(noto_sans_khmer.ttf) $(noto_sans_tamil.ttf) \
+diff --git a/compatibilitytool.vdf.template b/compatibilitytool.vdf.template
+index 5ac60e8b..1d161307 100644
+--- a/compatibilitytool.vdf.template
++++ b/compatibilitytool.vdf.template
+@@ -14,7 +14,7 @@
+       "install_path" "."
+ 
+       // For this template, we're going to substitute the display_name key in here, e.g.:
+-      "display_name" "##BUILD_NAME##"
++      "display_name" "##BUILD_NAME## (Unofficial AUR package [native])"
+ 
+       "from_oslist"  "windows"
+       "to_oslist"    "linux"
 diff --git a/configure.sh b/configure.sh
 index 68168bff..09cd2b7f 100755
 --- a/configure.sh
@@ -428,7 +442,7 @@ index 69688a03..1c0d1d3b 100644
  	winebuild --$(lastword $(subst ., ,$(4))) --fake-module -E "$(basename $(4)).spec" -o "$(4).fake"
  	mkdir -p $$($(2)_LIBDIR$(3))/$(LIBDIR_WINE_$(3))
 diff --git a/proton b/proton
-index dcabbb77..2c01f550 100755
+index dfa7b1e7..231e0acd 100755
 --- a/proton
 +++ b/proton
 @@ -417,7 +417,6 @@ class Proton:
@@ -459,5 +473,5 @@ index dcabbb77..2c01f550 100755
      g_session.init_session(sys.argv[1] != "runinprefix")
  
 -- 
-2.37.2
+2.37.3
 

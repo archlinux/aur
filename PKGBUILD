@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=GE-Proton7-31
+_srctag=GE-Proton7-33
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
@@ -382,4 +382,4 @@ sha256sums=('SKIP'
             '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
             '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
             '55ca808868599b1d8ad53b222b8cb26fd96fa818c511163e361238025c76e9fe'
-            '10dd149ae65f13234c8e9717722f79a2ef11ea79909c196c5b6765c125213874')
+            '81163fc684989abff3be620ddd56ebcc76d1f9a919f1b72fdd0cd5f4b8e92ce3')
