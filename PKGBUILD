@@ -3,12 +3,12 @@
 pkgname=hush3-bin
 _pkgname=hush3
 pkgver=3.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc='HUSH (Privacy Cryptocurrency and Messenger) full node that supports z-addresses'
 url='http://git.hush.is/hush/hush3'
 arch=('x86_64')
 license=('GPL3')
-depends=('libsodium' 'lib32-zlib')
+depends=('libsodium')
 makedepends=('wget' 'git' 'curl')
 conflicts=('hush3')
 source=("hush-$pkgver-amd64.deb::https://git.hush.is/attachments/0988a34a-a24f-4ced-8e3d-4b80eb9286d8"
