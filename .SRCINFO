@@ -1,13 +1,13 @@
 pkgbase = gyr
 	pkgdesc = Blazing fast TUI launcher for GNU/Linux and *BSD
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 0
-	url = https://sr.ht/~forkbomb9/gyr
+	url = https://sr.ht/~f9/gyr
 	arch = any
 	license = BSD-2-Clause
 	makedepends = rust
-	source = https://git.sr.ht/~forkbomb9/gyr/archive/v0.1.1.tar.gz
-	sha256sums = d529070ebd673495967a9004b51d1c2c9af48006277a1cf12d035a2b6abd2397
-	b2sums = 906ffb16cd8e9e22d8a1d0671310fd284d4699c14e1068700fe35903f45c7d05d566f90c35c4a64a4aeaf5058cb170f0f65296e3bc3a3962ab975e5eaebd07ba
+	source = https://git.sr.ht/~f9/gyr/archive/v0.1.2.tar.gz
+	sha256sums = 202bf707b6be24e070fd7579e9dc7fca5d9eebc9f4bd974fe4a8fb529a7d78ef
+	b2sums = d542965d3ace94bd47b33e646481f55c08b9253bb98b27c3a63ae59fa69a5ad106065e757a945ced1ac2059fb16efcb906683b42fa4f882e6b84da2f9bc41ed2
 
 pkgname = gyr
