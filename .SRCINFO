@@ -1,6 +1,7 @@
 pkgbase = decred
+	pkgdesc = Decred command line applications
 	pkgver = 1.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://decred.org
 	arch = aarch64
 	arch = armv6h
@@ -13,9 +14,9 @@ pkgbase = decred
 	makedepends = go>=1.18
 	options = !strip
 	options = !emptydirs
-	source = dcrd-v1.7.4.tar.gz::https://github.com/decred/dcrd/archive/refs/tags/release-v1.7.4.tar.gz
-	source = dcrwallet-v1.7.4.tar.gz::https://github.com/decred/dcrwallet/archive/refs/tags/release-v1.7.4.tar.gz
-	source = dcrctl-v1.7.4.tar.gz::https://github.com/decred/dcrctl/archive/refs/tags/release-v1.7.4.tar.gz
+	source = dcrd-release-v1.7.4.tar.gz::https://github.com/decred/dcrd/archive/refs/tags/release-v1.7.4.tar.gz
+	source = dcrwallet-release-v1.7.4.tar.gz::https://github.com/decred/dcrwallet/archive/refs/tags/release-v1.7.4.tar.gz
+	source = dcrctl-release-v1.7.4.tar.gz::https://github.com/decred/dcrctl/archive/refs/tags/release-v1.7.4.tar.gz
 	sha256sums = ec58967c3f03a65236af8bf3d17c1e496bc1067f5d975c76fa4a6ddecb2e3daf
 	sha256sums = ddaeccde9bdcaf4096830b06d95e778593775e8ddb0da81a3b174ce30e383a42
 	sha256sums = b02d94770d30d6e03dec072646f5790e0082a89382406538301d1c686a0a6b0a
@@ -30,3 +31,7 @@ pkgname = dcrwallet
 	provides = dcrwallet
 	conflicts = dcrwallet
 
+pkgname = dcrctl
+	pkgdesc = Decred command line control utility
+	provides = dcrctl
+	conflicts = dcrctl

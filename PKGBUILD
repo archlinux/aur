@@ -1,9 +1,12 @@
+# Maintainer: Jonathan Chappelow <chappjc@protonmail.com>
+
 pkgbase=decred
 pkgname=('dcrd' 'dcrwallet' 'dcrctl')
 pkgver=1.7.4
-pkgrel=1
+pkgrel=2
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
-makedepends=('git' 'go')
+pkgdesc="Decred command line applications"
+makedepends=('git' 'go>=1.18')
 groups=('decred')
 url="https://decred.org"
 license=('ISC')
@@ -15,23 +18,21 @@ sha256sums=('ec58967c3f03a65236af8bf3d17c1e496bc1067f5d975c76fa4a6ddecb2e3daf'
             'ddaeccde9bdcaf4096830b06d95e778593775e8ddb0da81a3b174ce30e383a42'
             'b02d94770d30d6e03dec072646f5790e0082a89382406538301d1c686a0a6b0a')
 
-
 build() {
   export GOPATH="$srcdir"
 
-  msg2 'Building dcrd...'
+  echo 'Building dcrd...'
   cd "$srcdir/dcrd-release-v$pkgver"
   go install -v -trimpath -mod=readonly -v -ldflags "-buildid= -s -w" . ./cmd/...
 
-  msg2 'Building dcrwallet...'
+  echo 'Building dcrwallet...'
   cd "$srcdir/dcrwallet-release-v$pkgver"
   go install -v -trimpath -mod=readonly -v -ldflags "-buildid= -s -w" .
 
-  msg2 'Building dcrctl...'
+  echo 'Building dcrctl...'
   cd "$srcdir/dcrctl-release-v$pkgver"
   go install -v -trimpath -mod=readonly -v -ldflags "-buildid= -s -w" .
 
-  msg2 'Prepending dcr to unqualified binaries...'
   for _bin in $(find "$srcdir/bin"  \
                         -mindepth 1 \
                         -maxdepth 1 \
@@ -45,11 +46,9 @@ package_dcrd() {
   provides=('dcrd')
   conflicts=('dcrd')
 
-  msg2 'Installing dcrd license...'
   install -Dm 644 "$srcdir/dcrd-release-v$pkgver/LICENSE" \
           -t "$pkgdir/usr/share/licenses/dcrd"
 
-  msg2 'Installing dcrd docs...'
   for _doc in CHANGES README.md; do
     install -Dm 644 "$srcdir/dcrd-release-v$pkgver/$_doc" \
             -t "$pkgdir/usr/share/doc/dcrd"
@@ -58,9 +57,7 @@ package_dcrd() {
   cp -dpr --no-preserve=ownership "$srcdir/dcrd-release-v$pkgver/docs" \
     "$pkgdir/usr/share/doc/dcrd"
 
-  msg2 'Installing dcrd...'
   for _bin in dcraddblock \
-              dcrctl \
               dcrd \
               dcrfindcheckpoint \
               dcrgencerts \
@@ -74,11 +71,9 @@ package_dcrwallet() {
   provides=('dcrwallet')
   conflicts=('dcrwallet')
 
-  msg2 'Installing dcrwallet license...'
   install -Dm 644 "$srcdir/dcrwallet-release-v$pkgver/LICENSE" \
           -t "$pkgdir/usr/share/licenses/dcrwallet"
 
-  msg2 'Installing dcrwallet docs...'
   for _doc in README.md sample-dcrwallet.conf; do
     install -Dm 644 "$srcdir/dcrwallet-release-v$pkgver/$_doc" \
             -t "$pkgdir/usr/share/doc/dcrwallet"
@@ -87,12 +82,11 @@ package_dcrwallet() {
     "$srcdir/dcrwallet-release-v$pkgver/docs" \
     "$pkgdir/usr/share/doc/dcrwallet"
 
-  msg2 'Installing dcrwallet...'
   install -Dm 755 "$srcdir/bin/dcrwallet" -t "$pkgdir/usr/bin"
 }
 
 package_dcrctl() {
-  pkgdesc="Decred command line control"
+  pkgdesc="Decred command line control utility"
   provides=('dcrctl')
   conflicts=('dcrctl')
 
