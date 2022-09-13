@@ -1,41 +1,35 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
-
 pkgbase=decred
-pkgname=('dcrd' 'dcrwallet')
-pkgver=1.2.0
+pkgname=('dcrd' 'dcrwallet' 'dcrctl')
+pkgver=1.7.4
 pkgrel=1
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
-makedepends=('dep' 'git' 'go')
+makedepends=('git' 'go')
 groups=('decred')
 url="https://decred.org"
 license=('ISC')
 options=('!strip' '!emptydirs')
-source=(dcrd-$pkgver.tar.gz::https://codeload.github.com/decred/dcrd/tar.gz/v$pkgver
-        dcrwallet-$pkgver.tar.gz::https://codeload.github.com/decred/dcrwallet/tar.gz/v$pkgver)
-sha256sums=('eb4a5cca1884cb96aa8a2f06800bef5a367523ac98715019e093b530675efcb6'
-            '8ef709dc63ee0827025b021baceb9462277015f668a18a9d017ac60ccf3518ab')
+source=(dcrd-release-v$pkgver.tar.gz::https://github.com/decred/dcrd/archive/refs/tags/release-v$pkgver.tar.gz
+        dcrwallet-release-v$pkgver.tar.gz::https://github.com/decred/dcrwallet/archive/refs/tags/release-v$pkgver.tar.gz
+        dcrctl-release-v$pkgver.tar.gz::https://github.com/decred/dcrctl/archive/refs/tags/release-v$pkgver.tar.gz)
+sha256sums=('ec58967c3f03a65236af8bf3d17c1e496bc1067f5d975c76fa4a6ddecb2e3daf'
+            'ddaeccde9bdcaf4096830b06d95e778593775e8ddb0da81a3b174ce30e383a42'
+            'b02d94770d30d6e03dec072646f5790e0082a89382406538301d1c686a0a6b0a')
 
-prepare() {
-  export GOPATH="$srcdir"
-  mkdir -p "$GOPATH/src/github.com/decred"
-  cp -dpr --no-preserve=ownership "$srcdir/dcrd-$pkgver" \
-    "$GOPATH/src/github.com/decred/dcrd"
-  cp -dpr --no-preserve=ownership "$srcdir/dcrwallet-$pkgver" \
-    "$GOPATH/src/github.com/decred/dcrwallet"
-}
 
 build() {
   export GOPATH="$srcdir"
 
-  msg2 'Building dcrd and dependencies...'
-  cd "$GOPATH/src/github.com/decred/dcrd"
-  dep ensure -v
-  go install . ./cmd/...
+  msg2 'Building dcrd...'
+  cd "$srcdir/dcrd-release-v$pkgver"
+  go install -v -trimpath -mod=readonly -v -ldflags "-buildid= -s -w" . ./cmd/...
 
-  msg2 'Building dcrwallet and dependencies...'
-  cd "$GOPATH/src/github.com/decred/dcrwallet"
-  dep ensure -v
-  go install . ./cmd/...
+  msg2 'Building dcrwallet...'
+  cd "$srcdir/dcrwallet-release-v$pkgver"
+  go install -v -trimpath -mod=readonly -v -ldflags "-buildid= -s -w" .
+
+  msg2 'Building dcrctl...'
+  cd "$srcdir/dcrctl-release-v$pkgver"
+  go install -v -trimpath -mod=readonly -v -ldflags "-buildid= -s -w" .
 
   msg2 'Prepending dcr to unqualified binaries...'
   for _bin in $(find "$srcdir/bin"  \
@@ -52,15 +46,16 @@ package_dcrd() {
   conflicts=('dcrd')
 
   msg2 'Installing dcrd license...'
-  install -Dm 644 "$srcdir/src/github.com/decred/dcrd/LICENSE" \
+  install -Dm 644 "$srcdir/dcrd-release-v$pkgver/LICENSE" \
           -t "$pkgdir/usr/share/licenses/dcrd"
 
   msg2 'Installing dcrd docs...'
-  for _doc in CHANGES README.md cmd/dcrctl/sample-dcrctl.conf; do
-    install -Dm 644 "$srcdir/src/github.com/decred/dcrd/$_doc" \
+  for _doc in CHANGES README.md; do
+    install -Dm 644 "$srcdir/dcrd-release-v$pkgver/$_doc" \
             -t "$pkgdir/usr/share/doc/dcrd"
   done
-  cp -dpr --no-preserve=ownership "$srcdir/src/github.com/decred/dcrd/docs" \
+
+  cp -dpr --no-preserve=ownership "$srcdir/dcrd-release-v$pkgver/docs" \
     "$pkgdir/usr/share/doc/dcrd"
 
   msg2 'Installing dcrd...'
@@ -80,22 +75,28 @@ package_dcrwallet() {
   conflicts=('dcrwallet')
 
   msg2 'Installing dcrwallet license...'
-  install -Dm 644 "$srcdir/src/github.com/decred/dcrwallet/LICENSE" \
+  install -Dm 644 "$srcdir/dcrwallet-release-v$pkgver/LICENSE" \
           -t "$pkgdir/usr/share/licenses/dcrwallet"
 
   msg2 'Installing dcrwallet docs...'
-  for _doc in CHANGES README.md sample-dcrwallet.conf; do
-    install -Dm 644 "$srcdir/src/github.com/decred/dcrwallet/$_doc" \
+  for _doc in README.md sample-dcrwallet.conf; do
+    install -Dm 644 "$srcdir/dcrwallet-release-v$pkgver/$_doc" \
             -t "$pkgdir/usr/share/doc/dcrwallet"
   done
   cp -dpr --no-preserve=ownership \
-    "$srcdir/src/github.com/decred/dcrwallet/docs" \
+    "$srcdir/dcrwallet-release-v$pkgver/docs" \
     "$pkgdir/usr/share/doc/dcrwallet"
 
   msg2 'Installing dcrwallet...'
-  for _bin in dcrmovefunds \
-              dcrsweepaccount \
-              dcrwallet; do
-    install -Dm 755 "$srcdir/bin/$_bin" -t "$pkgdir/usr/bin"
-  done
+  install -Dm 755 "$srcdir/bin/dcrwallet" -t "$pkgdir/usr/bin"
+}
+
+package_dcrctl() {
+  pkgdesc="Decred command line control"
+  provides=('dcrctl')
+  conflicts=('dcrctl')
+
+  install -Dm 644 "$srcdir/dcrctl-release-v$pkgver/sample-dcrctl.conf" \
+            -t "$pkgdir/usr/share/doc/dcrd"
+  install -Dm 755 "$srcdir/bin/dcrctl" -t "$pkgdir/usr/bin"
 }
