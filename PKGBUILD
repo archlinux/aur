@@ -2,11 +2,11 @@
 
 pkgname=atool-git
 _pkgname=atool
-pkgver=r9.7a81df9
-pkgrel=3
+pkgver=r21.e574d66
+pkgrel=4
 pkgdesc="A script for managing file archives of various types (with zstd support)"
 arch=('any')
-url="https://github.com/solsticedhiver/atool"
+url="https://github.com/solsticedhiver/atool2"
 license=('GPL3')
 depends=('file' 'perl')
 makedepends=('bash')

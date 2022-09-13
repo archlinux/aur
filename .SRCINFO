@@ -1,8 +1,8 @@
 pkgbase = atool-git
 pkgdesc = A script for managing file archives of various types (with zstd support)
-pkgver = r9.7a81df9
-pkgrel = 3
-url = https://github.com/solsticedhiver/atool
+pkgver = r21.e574d66
+pkgrel = 4
+url = https://github.com/solsticedhiver/atool2
 arch = any
 license = GPL3
 makedepends = bash
