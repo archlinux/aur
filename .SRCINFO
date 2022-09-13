@@ -1,7 +1,7 @@
 pkgbase = gitmux-bin
 	pkgdesc = Git in your tmux status bar
 	pkgver = 0.7.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/arl/gitmux
 	arch = x86_64
 	arch = i686
@@ -10,6 +10,8 @@ pkgbase = gitmux-bin
 	depends = tmux
 	provides = gitmux
 	conflicts = gitmux
+	source = https://raw.githubusercontent.com/arl/gitmux/main/LICENSE
+	sha256sums = 051c31312c5af0e4e4d2559546a8a0f36ce2bf9b50e2d00a81e6a3b31666a3ec
 	source_x86_64 = gitmux-0.7.9-amd64.tar.gz::https://github.com/arl/gitmux/releases/download/v0.7.9/gitmux_0.7.9_linux_amd64.tar.gz
 	sha256sums_x86_64 = 156f98946cc437572576c69f062f287e4d0e5a98855bd47cd6a2f15c9e385107
 	source_i686 = gitmux-0.7.9-386.tar.gz::https://github.com/arl/gitmux/releases/download/v0.7.9/gitmux_0.7.9_linux_386.tar.gz
