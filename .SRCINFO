@@ -1,0 +1,21 @@
+pkgbase = opencpn-plugin-o_charts
+	pkgdesc = use charts from o-charts.org in opencpn
+	pkgver = 1.0.29.0
+	pkgrel = 1
+	url = https://opencpn.org/OpenCPN/plugins/ocharts.html
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	license = custom
+	makedepends = cmake
+	makedepends = lsb-release
+	depends = opencpn
+	depends = libusb-compat
+	source = opencpn-plugin-o_charts::git+https://github.com/bdbcat/o-charts_pi.git#commit=49dee9c5a98635a13f418eddc52dda3666296835
+	source = wx_workaround.patch
+	source = LICENSE
+	b2sums = SKIP
+	b2sums = e72db7fb9af2fa05c93a412f3ea0a8b3a58f77e1e1347c3110b646d9c9558dde35f00422a4e70ebb4a0f07840b09d8a236ddb6c283015127b64d9ef4648b465f
+	b2sums = 2d09f9bc4f793b03977d05607f065fbd85e8c257edb70d27b8846f620f920d23803e320045ae3e6cc23e862d0c52336b8e334580d946518f86f4260c0a886deb
+
+pkgname = opencpn-plugin-o_charts

@@ -1,0 +1,5 @@
+This software is copyright (c) David Register 2020-2021. It is distributed under the terms of the Gnu Public License version 2 or, at your option, any later version. See COPYING.gplv2.
+
+The oexserverd binary and libsgllnx64-2.29.02 libraries are closed source. Re-distribution of these items is allowed.
+
+The sources also contains dependencies distributed under various open-source licenses including Expat, the Curl license, SGI-B, Zlib and Khronos. Refer to the source files for details.
