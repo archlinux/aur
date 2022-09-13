@@ -2,7 +2,7 @@
 
 pkgname=quarto-cli-pre-release
 pkgver=1.2.96
-pkgrel=1
+pkgrel=2
 _pkgbasename=quarto-cli
 _denodomver="0.1.23-alpha-artifacts"
 _deno_arch="deno-x86_64-unknown-linux-gnu"
@@ -34,7 +34,8 @@ build() {
   fi
 
   #mkdir -p package/dist/bin/tools/${_deno_arch}/{deno_dom,dart-sass}
-  mkdir -p package/dist/bin/tools/${_deno_arch}/dart-sass
+  mkdir -p package/dist/bin/tools/${_deno_arch}
+  #mkdir -p package/dist/bin/tools/dart-sass
   cp /usr/bin/deno package/dist/bin/tools
  
   cd package/src
@@ -58,11 +59,11 @@ package() {
   rm package/dist/bin/tools/deno
   ln -sfT /usr/bin/deno package/dist/bin/tools/${_deno_arch}/deno
   ## And dart-sass
-  rm -rf package/dist/bin/tools/dart-sass
-  ln -sfT /usr/bin/sass package/dist/bin/tools/${_deno_arch}/dart-sass/sass
+  rm -rf package/dist/bin/tools/dart-sass/*
+  ln -sfT /usr/bin/sass package/dist/bin/tools/dart-sass/sass
   ## as well as esbuild
   rm package/dist/bin/tools/esbuild
-  ln -sfT /usr/bin/esbuild package/dist/bin/tools/${_deno_arch}/esbuild
+  ln -sfT /usr/bin/esbuild package/dist/bin/tools/esbuild
   ## 2. Remove symlinks created by build script in ~/bin and ~/.local/bin directories
   rm -f "$HOME/.local/bin/quarto"
   rm -f "$HOME/bin/quarto"
