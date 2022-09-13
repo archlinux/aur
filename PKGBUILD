@@ -1,22 +1,22 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=dolfinx
 pkgdesc="Next generation FEniCS problem solving environment"
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/FEniCS/${pkgname}"
 license=(LGPL3)
 makedepends=(cmake)
-depends=(boost xsimd python-fenics-ffcx hdf5-openmpi petsc parmetis pugixml)
-source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
-  ${pkgname}_algorithm.patch::${url}/pull/2323.patch)
-sha512sums=('9bb93c155ca16386934e2643e8afa93fbbc5ffaf2fdf176013cf1eb4bad702a2d2b424568ac41dbe87a43d872fccc2eea66508fafd287748a99c5632c6b76e97'
-  '6809d75b74e962dbd7a6bd0de1cb2a76c94192490f0eb1edc5dc82087c4a31b0cc55b141b4eb95d25ce0ffde5f122ff5b5b5ae848cf1d9976d5e5fa4b73c7675')
+depends=(boost python-fenics-ffcx hdf5-openmpi parmetis petsc pugixml)
+optdepends=('adios2: for use ADIOS2 writer'
+  'slepc: for use SLEPc eigen solver'
+  'scotch: for compute graph partition'
+  'kahip: for compute graph partition in parallel')
+source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('2394f3650923723e9a81643f5e1d42ae03e58274872921daeb182c5b99b8e755d91217d9e05fb3d301c8f7cbce3faff84f233232c7d91b541fd405a359b06ea4')
 
 prepare() {
-  cd ${pkgname}-${pkgver}
-  # https://github.com/FEniCS/dolfinx/issues/2319
-  patch -p1 -i ../${pkgname}_algorithm.patch
+  sed -i '8 a #include <algorithm>' ${pkgname}-${pkgver}/cpp/${pkgname}/common/MPI.h
 }
 
 build() {
