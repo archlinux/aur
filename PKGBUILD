@@ -2,7 +2,7 @@
 
 _gemname=set
 pkgname=ruby-$_gemname
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="This library provides the Set class"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby)
 checkdepends=(ruby-rake ruby-bundler ruby-test-unit)
 makedepends=(git rubygems ruby-rdoc)
 options=(!emptydirs)
-source=(git+https://github.com/ruby/set.git?tag=v${pkgver})
+source=(git+https://github.com/ruby/set.git#tag=v${pkgver})
 sha256sums=('SKIP')
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = ruby-set
 	pkgdesc = This library provides the Set class
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/ruby/set
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = ruby-set
 	makedepends = ruby-rdoc
 	depends = ruby
 	options = !emptydirs
-	source = git+https://github.com/ruby/set.git?tag=v1.0.2
+	source = git+https://github.com/ruby/set.git#tag=v1.0.3
 	sha256sums = SKIP
 
 pkgname = ruby-set
