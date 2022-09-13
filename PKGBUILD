@@ -2,12 +2,11 @@
 
 pkgname=bd
 pkgver=1.03
-pkgrel=1
+pkgrel=2
 pkgdesc='Quickly go back to a parent directory instead of typing "cd ../../.." repeatedly'
 url='https://github.com/vigneshwaranr/bd'
 arch=('any')
 license=('MIT')
-optdepends=('bash-completion')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('2d9b8ce674e4a80452c119dc10efe184194fdf244abf1822dc7693796793c352')
 
