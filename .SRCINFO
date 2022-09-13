@@ -1,0 +1,14 @@
+pkgbase = advocat
+	pkgdesc = A complimentary CLI tool to jutge.org
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://crates.io/crates/advocat
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = gcc
+	depends = curl
+	source = advocat-3.0.0.tar.gz::https://static.crates.io/crates/advocat/advocat-3.0.0.crate
+	sha256sums = 3231884821d5487e0a69ca87b12b1bef81d907981a32dddb7b805f1bd403c8bc
+
+pkgname = advocat
