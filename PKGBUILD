@@ -15,7 +15,6 @@ sha256sums=('fe3bbdfdedbc91359d1be8f094d6a544a941e664ccd6a0c08b061b714e32d216')
 
 build() {
     cmake -B "build-$pkgver" -S "$pkgname-$pkgver" \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib
     cmake --build "build-$pkgver"
