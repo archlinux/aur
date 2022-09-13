@@ -2,8 +2,8 @@
 # Maintainer: Jeancarlo Hidalgo <jeancahu@gmail.com>
 
 pkgname=albion-online-launcher-bin
-pkgver=1.17
-pkgrel=4
+pkgver=1.20.050.229341
+pkgrel=1
 pkgdesc="The first true cross-platform Sandbox MMO -- launcher client"
 url="https://albiononline.com/"
 arch=('x86_64')
@@ -27,12 +27,8 @@ source=("https://live.albiononline.com/clients/20220825102752/albion-online-setu
 	"albion-online-launcher.desktop" "albion-online" "Albion-Online.patch")
 install=albion-online-launcher-bin.install
 options=(!strip docs libtool emptydirs !zipman staticlibs)
-sha256sums=(
-  '89f4b80b77984cc304b4af6a6b8bdea95dcf3395521cda160ed22c947c19e006'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
+sha256sums=('89f4b80b77984cc304b4af6a6b8bdea95dcf3395521cda160ed22c947c19e006'
+  'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
   pushd "${srcdir}/data/launcher"
@@ -50,7 +46,7 @@ package() {
   chmod 755 "$pkgdir/opt/${pkgname}"
 
   mkdir -p "${pkgdir}/opt/${pkgname}/game_x64"
-  chmod 6775 "${pkgdir}/opt/${pkgname}/game_x64"
+  chmod 2775 "${pkgdir}/opt/${pkgname}/game_x64"
 
   # Link launcher to usr/system binaries directory
   mkdir -p "${pkgdir}/usr/bin"

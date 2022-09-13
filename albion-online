@@ -1,10 +1,35 @@
 #!/bin/bash
 
-if newgrp albion &>/dev/null <<< /opt/albion-online-launcher-bin/Albion-Online
-then
-    :
+declare no_group="Please run the next command in your terminal to give your user permissions to update Albion game data on /opt:\n\nsudo usermod -a -G albion ${USER}"
+declare no_sudo="Don't run this game as root(sudo)!! it could be a security risk!"
+
+if [[ "$USER" == "root" ]]; then
+    if zenity \
+           --info \
+           --text="$no_sudo"; then :
+    else
+        ## Zenity is not installed
+        printf "${no_sudo}\n"
+    fi
+    exit 1
+fi
+
+if which newgrp; then :
 else
-    zenity \
-        --info \
-        --text="Please run the next command in your terminal to give your user permissions to update Albion game data on /opt:\n\n\sudo usermod -a -G albion ${USER}"
+    echo "A core package \"util-linux\" is required"
+    exit 2
+fi
+
+if (( $( id -nG "$USER" | grep -c '\balbion\b' ) )) # Does the user have the permissions to run as group albion?
+then
+    newgrp albion <<< /opt/albion-online-launcher-bin/Albion-Online
+else
+    if zenity \
+           --info \
+           --text="$no_group"; then :
+    else
+        ## Zenity is not installed
+        printf "${no_group}\n"
+    fi
+    exit 4
 fi
