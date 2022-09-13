@@ -18,7 +18,7 @@ prepare() {
 
 build() {
   cmake -B "build-$pkgver" -S "qpOASES-releases-$pkgver" \
-      -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+      -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build "build-$pkgver"
 }
 
