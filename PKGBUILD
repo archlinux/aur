@@ -1,8 +1,9 @@
 # Maintainer: Cirk2 <privat+aur at cirk2 dot de> 
 
-pkgname=sdbus-cpp-git
-_pkgname=sdbus-cpp
-pkgver=0.8.3.33.r261.d20210622.e16ffb1
+pkgbase=sdbus-cpp-git
+_pkgbase=sdbus-cpp
+pkgname=(${_pkgbase}-git ${_pkgbase}-doc-git)
+pkgver=1.2.0.4.r317.d20220905.74d849d
 pkgrel=1
 epoch=2
 pkgdesc="sdbus-c++ is a high-level C++ D-Bus library for Linux designed to provide expressive, easy-to-use API in modern C++"
@@ -12,20 +13,18 @@ license=('LGPL2.1' 'custom:sdbus-c++ LGPL Exception 1.0')
 depends=('systemd-libs' 'expat')
 makedepends=('systemd' 'git' 'cmake' 'doxygen')
 provides=(
-  "${_pkgname}=${pkgver}"
-  "${_pkgname}-git=${pkgver}"
-  "${_pkgname}-${_pkgvariant}=${pkgver}"
+  "${pkgbase}=${pkgver}"
+  "${pkgbase}-git=${pkgver}"
+  "${pkgbase}-${_pkgvariant}=${pkgver}"
 )
 conflicts=(
-  "${_pkgname}"
-  "${_pkgname}-git"
-  "${_pkgname}-${_pkgvariant}"
+  "${_pkgbase}"
 )
-source=("${pkgname}::git+https://github.com/Kistler-Group/sdbus-cpp.git")
+source=("${pkgbase}::git+https://github.com/Kistler-Group/sdbus-cpp.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname}"
+    cd "${pkgbase}"
     _ver="$(git describe --tags | sed 's|^v||' | awk -F'-' '{print $1}')"
     _subver="$(git describe --tags | awk -F'-' '{print $2}')"
     _rev="$(git rev-list --count HEAD)"
@@ -39,17 +38,40 @@ pkgver() {
 }
 
 build() {
-    cmake "$srcdir/${pkgname}" \
+
+    cmake -B build -S "$srcdir/${pkgbase}" \
         -DCMAKE_INSTALL_PREFIX=/ \
-        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_BUILD_TYPE='Release' \
         -DBUILD_CODE_GEN=ON \
         -DBUILD_DOXYGEN_DOC=ON
-    make
-    make doc
+
+    cmake --build build
+    cmake --build build --target doc
+
+    # Install so we can split the packaging up later
+    DESTDIR="$srcdir/fakeinstall" cmake --install build
+
+    # Remove references to $srcdir
+    find "$srcdir/fakeinstall/usr/share/doc" -name \*.html -print -exec sed \
+         -e "s|${srcdir}/sdbus-cpp/include|/usr/include|g" \
+         -e "s|${srcdir}/sdbus-cpp||" \
+         -i {} \;
 }
 
-package() {
-    make DESTDIR="$pkgdir" install
-    install -Dm644 "$srcdir/${pkgname}/COPYING-LGPL-Exception" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+package_sdbus-cpp-git() {
+  local dir
+  install -Dm644 "$srcdir/${pkgbase}/COPYING-LGPL-Exception" "$pkgdir/usr/share/licenses/$pkgbase/LICENSE"
+
+  for dir in lib include bin ; do
+    install -dm755 "$pkgdir/usr/$dir"
+    cp  -dr --no-preserve=owner "$srcdir/fakeinstall/usr/$dir/"* "$pkgdir/usr/$dir"
+  done
 }
 
+package_sdbus-cpp-doc-git() {
+  local dir
+  for dir in share/doc ; do
+    install -dm755 "$pkgdir/usr/$dir"
+    cp  -dr --no-preserve=owner "$srcdir/fakeinstall/usr/$dir/"* "$pkgdir/usr/$dir"
+  done
+}
