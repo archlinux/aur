@@ -1,0 +1,17 @@
+pkgbase = cortex
+	pkgdesc = The psychedelic tunnel-runner
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://github.com/milgra/cortex
+	arch = i686
+	arch = x86_64
+	license = gplv3
+	makedepends = meson
+	depends = glew
+	depends = sdl2
+	depends = sdl2_mixer
+	depends = glu
+	source = cortex-0.8.tar.xz::https://github.com/milgra/cortex/releases/download/0.8/cortex-0.8.tar.xz
+	sha256sums = fa739192a5c0064c2b9762dc69432c398151a835078ee68609b925e71cb47efc
+
+pkgname = cortex
