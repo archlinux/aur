@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=osu!tracker
+Icon=/usr/share/pixmaps/osu-tracker.png
+Comment=Statistics tracker for osu!
+Exec=/usr/bin/osu-tracker
+Categories=Game;Utility
