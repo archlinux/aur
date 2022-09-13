@@ -1,7 +1,7 @@
 pkgbase = linux-mainline-um5302ta
 	pkgdesc = Linux
 	pkgver = 6.0rc5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.kernel.org/torvalds/h/v6.0-rc5
 	arch = x86_64
 	license = GPL2
@@ -24,6 +24,7 @@ pkgbase = linux-mainline-um5302ta
 	source = config
 	source = cs35l42-hda-no-acpi-dsd-csc3551.patch
 	source = patch-realtek-um5302ta-quirk.patch
+	source = acp6x-um5302ta-quirk.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
@@ -31,6 +32,7 @@ pkgbase = linux-mainline-um5302ta
 	sha256sums = ec58b63109b23d318af62b48a4f43e3042ddb45e71060c885d5d03f2cb3760b0
 	sha256sums = 405100dba08840def4e9546f6e49616cc6bb3d9d25d26c58fa32cd82b4d3df82
 	sha256sums = 132ece1b42f359fcbb4c97e96615747d34355f2f682efe744257f3310de77a98
+	sha256sums = 25ec00e28f43db69b60714b749d12a482d8a47c8fce5bec04b64da2abd8948c6
 
 pkgname = linux-mainline-um5302ta
 	pkgdesc = The Linux kernel and modules

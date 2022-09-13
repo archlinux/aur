@@ -3,7 +3,7 @@
 
 pkgbase=linux-mainline-um5302ta
 pkgver=6.0rc5
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux'
 _srctag=v6.0-rc5
 url="https://git.kernel.org/torvalds/h/$_srctag"
@@ -21,6 +21,7 @@ source=(
   config         # the main kernel config file
   cs35l42-hda-no-acpi-dsd-csc3551.patch
   patch-realtek-um5302ta-quirk.patch
+  acp6x-um5302ta-quirk.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -30,7 +31,8 @@ validpgpkeys=(
 sha256sums=('SKIP'
             'ec58b63109b23d318af62b48a4f43e3042ddb45e71060c885d5d03f2cb3760b0'
             '405100dba08840def4e9546f6e49616cc6bb3d9d25d26c58fa32cd82b4d3df82'
-            '132ece1b42f359fcbb4c97e96615747d34355f2f682efe744257f3310de77a98')
+            '132ece1b42f359fcbb4c97e96615747d34355f2f682efe744257f3310de77a98'
+            '25ec00e28f43db69b60714b749d12a482d8a47c8fce5bec04b64da2abd8948c6')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

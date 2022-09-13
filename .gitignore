@@ -5,3 +5,4 @@
 !/config
 !/cs35l42-hda-no-acpi-dsd-csc3551.patch
 !/patch-realtek-um5302ta-quirk.patch
+!/acp6x-um5302ta-quirk.patch
