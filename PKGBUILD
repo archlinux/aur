@@ -21,7 +21,6 @@ build() {
     cmake -B "build-$pkgver" -S "$pkgbase-$pkgver" \
         -DCMAKE_CXX_STANDARD=14 \
         -DHPP_FCL_HAS_QHULL=ON \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -Wno-dev
