@@ -3,7 +3,7 @@
 
 _gemname=atk
 pkgname=ruby-$_gemname
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 pkgdesc='Ruby/ATK is a Ruby binding of ATK-1.0.x.'
 arch=(x86_64)
@@ -14,7 +14,7 @@ makedepends=(ruby-native-package-installer ruby-rake)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('0d8372c4099a60e7a4e74927423a24f6734abfd8')
+sha1sums=('9c4df6ec5dbf046e904b026896af95beed09d60e')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
