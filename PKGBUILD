@@ -2,7 +2,7 @@
 
 pkgbase='pokete-git'
 pkgname='pokete-git'
-pkgver=0.8.0.r19.gf21aa1d
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A terminal based Pokemon like game"
 arch=(any)
