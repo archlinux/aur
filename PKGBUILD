@@ -10,7 +10,7 @@
 
 pkgname=ungoogled-chromium
 pkgver=105.0.5195.102
-pkgrel=2
+pkgrel=3
 _launcher_ver=8
 _gcc_patchset=1
 pkgdesc="A lightweight approach to removing Google web service dependency"
@@ -52,10 +52,12 @@ _uc_ver=$pkgver-1
 source=(${source[@]}
         $pkgname-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz
         ozone-add-va-api-support-to-wayland.patch
+        remove-main-main10-profile-limit.patch
         chromium-drirc-disable-10bpc-color-configs.conf)
 sha256sums=(${sha256sums[@]}
             '7f6b3397aee0b659c5964a6419f2cdf28e2b19e16700da4613f3aa9c7dde876d'
             'e08a2c4c1e1059c767343ea7fbf3c77e18c8daebbb31f8019a18221d5da05293'
+            '01ba9fd3f791960aa3e803de4a101084c674ce8bfbaf389953aacc6beedd66dc'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb')
  
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -133,6 +135,9 @@ prepare() {
   # Enable vaapi on wayland
   patch -Np1 -i ../ozone-add-va-api-support-to-wayland.patch
 
+  # Remove HEVC profile limits
+  patch -Np1 -i ../remove-main-main10-profile-limit.patch
+
   # Ungoogled Chromium changes
   _ungoogled_repo="$srcdir/$pkgname-$_uc_ver"
   _utils="${_ungoogled_repo}/utils"
@@ -189,6 +194,8 @@ build() {
     'use_sysroot=false'
     'use_custom_libcxx=false'
     'enable_widevine=true'
+    'enable_platform_hevc=true'
+    'enable_hevc_parser_and_hw_decoder=true'
   )
 
   if [[ -n ${_system_libs[icu]+set} ]]; then

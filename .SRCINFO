@@ -1,7 +1,7 @@
 pkgbase = ungoogled-chromium
 	pkgdesc = A lightweight approach to removing Google web service dependency
 	pkgver = 105.0.5195.102
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
 	license = BSD
@@ -70,6 +70,7 @@ pkgbase = ungoogled-chromium
 	source = use-oauth2-client-switches-as-default.patch
 	source = ungoogled-chromium-105.0.5195.102-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/105.0.5195.102-1.tar.gz
 	source = ozone-add-va-api-support-to-wayland.patch
+	source = remove-main-main10-profile-limit.patch
 	source = chromium-drirc-disable-10bpc-color-configs.conf
 	sha256sums = 1cba0527c951e3c506ade96cf6ec2507ee9d43661764731ed896348182369262
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
@@ -82,6 +83,7 @@ pkgbase = ungoogled-chromium
 	sha256sums = e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711
 	sha256sums = 7f6b3397aee0b659c5964a6419f2cdf28e2b19e16700da4613f3aa9c7dde876d
 	sha256sums = e08a2c4c1e1059c767343ea7fbf3c77e18c8daebbb31f8019a18221d5da05293
+	sha256sums = 01ba9fd3f791960aa3e803de4a101084c674ce8bfbaf389953aacc6beedd66dc
 	sha256sums = babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb
 
 pkgname = ungoogled-chromium
