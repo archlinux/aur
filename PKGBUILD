@@ -12,7 +12,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 #source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"{,.asc})
 sha256sums=('8baec7bf8e0ce955a34597df852e801bc4f4ad0b51d989ca4f33706085e701b5')
-validpgpkeys=('DC837EE14A7E37347E87061700806F2BD729A457') # Jelmer Vernooĳ <jelmer@jelmer.uk>
+#validpgpkeys=('DC837EE14A7E37347E87061700806F2BD729A457') # Jelmer Vernooĳ <jelmer@jelmer.uk>
 
 build() {
   cd "$_name-$pkgver"

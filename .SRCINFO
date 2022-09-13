@@ -13,7 +13,6 @@ pkgbase = python-buildlog-consultant
 	depends = python-pyaml
 	depends = python-requirements-parser
 	source = https://files.pythonhosted.org/packages/source/b/buildlog-consultant/buildlog-consultant-0.0.25.tar.gz
-	validpgpkeys = DC837EE14A7E37347E87061700806F2BD729A457
 	sha256sums = 8baec7bf8e0ce955a34597df852e801bc4f4ad0b51d989ca4f33706085e701b5
 
 pkgname = python-buildlog-consultant
