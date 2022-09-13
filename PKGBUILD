@@ -1,6 +1,6 @@
 pkgname=bitcoincashd
 pkgver=24.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Cash Node with bitcoincashd, bitcoincash-tx, and bitcoincash-cli"
 arch=('i686' 'x86_64')
 url="https://bitcoincashnode.org"
@@ -14,7 +14,7 @@ source=(https://github.com/bitcoin-cash-node/bitcoin-cash-node/archive/v$pkgver.
         bitcoincash.sysusers
         bitcoincash.tmpfiles)
 sha256sums=('2f2ff3c3759480b1c8f2d0d4b80c2b9f3c10d58d5e8ee9125584f2b5491c793d'
-            '724ad195b4f8d32bea8954cbae7f50eb02c9ec6924c3f2f2f82e8d320ba07689'
+            '53d49ed7fbf6e0ed25c6c8d77d3ac1e40ac90804161eb3393c71e8c3071cca27'
             '98a89a694437c74950b8f2b157c24e07a2a99c7a78b73e86e989aa0bffc5442b'
             '8521616ae515786dca8b49bf2b156e18fd174955f8224bb94a409eccc8809f3c'
             'd65c37451f6838cfa64fb543c06165711ac1166997145fa7e9290f5c79560159'
