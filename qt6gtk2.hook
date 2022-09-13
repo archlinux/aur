@@ -1,0 +1,9 @@
+[Trigger]
+Type = Package
+Operation = Upgrade
+Target = qt6-base
+
+[Action]
+Description = Qt6 Upgrade Warning
+When = PostTransaction
+Exec = /usr/bin/echo "[WARNING] qt6-base was updated, qt6 applications will break until qt6gtk2 is rebuilt."
