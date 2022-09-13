@@ -2,9 +2,9 @@
 
 pkgname="axolotl-bin"
 pkgdesc="Axolotl binary from deb."
-pkgver=1.2.0
+pkgver=1.5.0
 pkgrel=1
-deb_pkgver='1.2.0-1'
+deb_pkgver='1.5.0-1'
 arch=('aarch64')
 url="https://github.com/nanu-c/axolotl/releases/download"
 license=('GPL3')
@@ -14,7 +14,7 @@ source=(
 )
 validpgpkeys=('0F93160A4198CE8993FE7F53D91B90C8A18672B5') # Laurent Laffont <lolgzs@gresille.org>
 md5sums=(
-    '3f5e9475e60f46bbc74db4708b8ece93'
+    '40118417129c186cb70f313a6e017d4a'
 )
 noextract=("axolotl_${deb_pkgver}_arm64.deb")
 
