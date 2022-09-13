@@ -1,0 +1,12 @@
+pkgbase = blokator
+	pkgdesc = Simple system-wide adblocker
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://gitlab.com/Tomkoid/blokator
+	arch = x86_64
+	license = GPL3
+	makedepends = rustup
+	source = git+https://gitlab.com/Tomkoid/blokator
+	sha512sums = SKIP
+
+pkgname = blokator
