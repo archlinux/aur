@@ -11,7 +11,7 @@ license=("Apache-2.0")
 arch=("x86_64")
 provides=("borrg")
 conflicts=("borrg")
-source=("https://github.com/enderium/borrg/releases/download/$pkgver/borrg-$pkgver-x86_64.tar.gz")
+source=("https://github.com/enderium/borrg-bin/releases/download/$pkgver/borrg-$pkgver-x86_64.tar.gz")
 sha256sums=("ebe1de98149ec74f4f68c89e69ff0e6b90659f49741d9083abacfee1b1f26236")
 
 package() {
