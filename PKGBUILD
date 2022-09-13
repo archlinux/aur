@@ -20,13 +20,8 @@ sha256sums=('61981c192630f3c99865dc3b3d095df94e97ede9d7df0e8d8601eb39eef54c6d')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  libtoolize -c
-  aclocal
-  autoheader
-  autoconf
-  automake --add-missing
+  ./bootstrap
   ./configure --prefix=/usr
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
