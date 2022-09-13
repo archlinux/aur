@@ -1,0 +1,13 @@
+pkgbase = emojiterm
+	pkgdesc = List and display all available GitHub emojis, using the GitHub API
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/xyproto/emojiterm
+	arch = x86_64
+	license = BSD
+	makedepends = go
+	makedepends = git
+	source = git+https://github.com/xyproto/emojiterm#commit=f311b695fdf95c5f19b2d9bdb7790faf049814e7
+	b2sums = SKIP
+
+pkgname = emojiterm
