@@ -1,0 +1,11 @@
+# Ignore common directories.
+/pkg
+/src
+
+# Ignore all archive files.
+*.tar.gz
+*.tar.xz
+*.tar.zst
+
+# Ignore original Git repo.
+/python-argclass
