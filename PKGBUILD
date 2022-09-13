@@ -26,7 +26,6 @@ build() {
   cd OpenSceneGraph-OpenSceneGraph-${pkgver}/build
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_LIBDIR=lib \
   ..
   VERBOSE=1 make
