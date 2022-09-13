@@ -1,25 +1,28 @@
-# Maintainer:  apophys <email AT kubikmilan DOT sk>
-# Contributor: kusakata <shohei atmark kusakata period com>
+# Maintainer: Cassandra Watergate (saltedcoffii) <cassandrajwatergate@gmail.com>
+# Contributor: apophys <email@kubikmilan.sk>
+# Contributor: kusakata <shohei@kusakata.com>
 
 pkgname=lziprecover
-pkgver=1.22
+pkgver=1.23
 pkgrel=1
 pkgdesc="A data recovery tool and decompressor for files in the lzip compressed data format"
 url="http://www.nongnu.org/lzip/lziprecover.html"
 license=('GPL')
-depends=('gcc-libs')
-arch=('i686' 'x86_64')
-install=lziprecover.install
-source=(http://download.savannah.gnu.org/releases/lzip/lziprecover/lziprecover-${pkgver}.tar.gz{,.sig})
-sha256sums=('fd958a0975f7729c44f3b784e566891f736c3dc68374dbd2149ee692a16d0862'
+arch=('x86_64')
+source=("https://download.savannah.gnu.org/releases/lzip/lziprecover/$pkgname-$pkgver.tar.gz"{,.sig})
+validpgpkeys=('1D41C14B272A2219A739FA4F8FE99503132D7742') # Antonio Diaz Diaz
+sha512sums=('9f2d40311f901c2c00fa6b106a2363dfcd7b6c73ae86282733d7c3451237ee30f6d5cce035ab5ba63300eea637eeb3ac5db7e7571bdef1bef259b801b10f1c7a'
             'SKIP')
-validpgpkeys=('1D41C14B272A2219A739FA4F8FE99503132D7742')
 
 build() {
-  cd "${srcdir}/lziprecover-${pkgver}"
+	cd "$pkgname-$pkgver"
+	./configure --prefix=/usr CPPFLAGS="$CPPFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS"
+	make
+}
 
-  ./configure --prefix=/usr
-  make
+check() {
+	cd "$pkgname-$pkgver"
+	make -k check
 }
 
 package() {

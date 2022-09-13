@@ -1,17 +1,14 @@
 pkgbase = lziprecover
 	pkgdesc = A data recovery tool and decompressor for files in the lzip compressed data format
-	pkgver = 1.22
+	pkgver = 1.23
 	pkgrel = 1
 	url = http://www.nongnu.org/lzip/lziprecover.html
-	install = lziprecover.install
-	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = gcc-libs
-	source = http://download.savannah.gnu.org/releases/lzip/lziprecover/lziprecover-1.22.tar.gz
-	source = http://download.savannah.gnu.org/releases/lzip/lziprecover/lziprecover-1.22.tar.gz.sig
+	source = https://download.savannah.gnu.org/releases/lzip/lziprecover/lziprecover-1.23.tar.gz
+	source = https://download.savannah.gnu.org/releases/lzip/lziprecover/lziprecover-1.23.tar.gz.sig
 	validpgpkeys = 1D41C14B272A2219A739FA4F8FE99503132D7742
-	sha256sums = fd958a0975f7729c44f3b784e566891f736c3dc68374dbd2149ee692a16d0862
-	sha256sums = SKIP
+	sha512sums = 9f2d40311f901c2c00fa6b106a2363dfcd7b6c73ae86282733d7c3451237ee30f6d5cce035ab5ba63300eea637eeb3ac5db7e7571bdef1bef259b801b10f1c7a
+	sha512sums = SKIP
 
 pkgname = lziprecover
