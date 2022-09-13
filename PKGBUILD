@@ -2,7 +2,7 @@
 
 _npmname=postcss-cli
 pkgname=nodejs-$_npmname
-pkgver=9.1.0
+pkgver=10.0.0
 pkgrel=1
 pkgdesc="CLI for postcss"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(nodejs)
 makedepends=(npm)
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('9bbf4a01cff6d7014313f5563f6e9397a8d33b9ecc5a4ff0a1d612d818fa2b04')
+sha256sums=('09b89ec17a0ee017b3bef809041e2cb50498e7822a72a6eeb1b78cb537d6ec0f')
 
 package() {
   npm install --global \
