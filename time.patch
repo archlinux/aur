@@ -1,0 +1,23 @@
+From 5ba5498a62382f8955b7b6ce3070f60f59714e0a Mon Sep 17 00:00:00 2001
+From: cmitu <31816814+cmitu@users.noreply.github.com>
+Date: Sat, 20 Aug 2022 17:04:51 +0100
+Subject: [PATCH] timeutil: fix building with recent `gcc` versions.
+
+Included `time.h` to get the declarations of `time_t` and `struct tm`.
+Should fix building with `gcc` 12.x.
+---
+ es-core/src/utils/TimeUtil.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/es-core/src/utils/TimeUtil.h b/es-core/src/utils/TimeUtil.h
+index 9b44207b35..c326a45119 100644
+--- a/es-core/src/utils/TimeUtil.h
++++ b/es-core/src/utils/TimeUtil.h
+@@ -3,6 +3,7 @@
+ #define ES_CORE_UTILS_TIME_UTIL_H
+ 
+ #include <string>
++#include <time.h>
+ 
+ namespace Utils
+ {

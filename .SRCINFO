@@ -1,7 +1,7 @@
 pkgbase = emulationstation
 	pkgdesc = Emulation Station is a flexible emulator front-end supporting keyboardless navigation and custom system themes.
 	pkgver = 2.10.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RetroPie/EmulationStation
 	install = emulationstation.install
 	arch = i686
@@ -36,11 +36,13 @@ pkgbase = emulationstation
 	source = https://github.com/RetroPie/EmulationStation/archive/v2.10.3.tar.gz
 	source = install.patch
 	source = pugixml.patch
+	source = time.patch
 	source = emulationstation.desktop
 	source = emulationstation.png
 	sha256sums = eddc90ee3c79ee30e762de088e7c3e3b94f2e99c68f764a929f7dda7fc7d8c36
 	sha256sums = 2608b7de63be4d4d117c2712517e3c40df872f6619f08ac9356f13bdc8c179ab
 	sha256sums = e6cb6a134117cb734c69ed86eecd31cfe29b5d52aa3e00b71a614809c1d7e0fe
+	sha256sums = 83f4bec9a832f904be85ee2a9f514572c2ac03fb77a5234044e856c499df0821
 	sha256sums = 56a68a60577d015224d721ab169f1439d1545a0fdcf1c23eeee599dc49ea51c6
 	sha256sums = ac589d9da5c258226f8de76e99afe2b07ac86030ced90d284d31b51193057f9c
 
