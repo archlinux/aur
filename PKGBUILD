@@ -3,17 +3,17 @@
 pkgorg='humanoid-path-planner'
 _pkgname='hpp-fcl'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="An extension of the Flexible Collision Library"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgorg/$pkgname"
 license=('BSD')
-depends=('assimp' 'eigenpy' 'octomap' 'qhull')
+depends=('assimp' 'eigenpy' 'octomap' 'qhull' 'python-numpy')
 optdepends=('doxygen')
 makedepends=('cmake' 'eigen' 'boost')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('904453ee2080d1d339dcd771f2ea947c9525bf6604acae678bd098212a68b117'
+sha256sums=('8d11f17e0f54e691e03564dd16deca438fd1678188cf98e6c4557587ca1777bd'
             'SKIP')
 validpgpkeys=('9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28' 'A031AD35058955293D54DECEC45D22EF408328AD')
 
