@@ -9,7 +9,7 @@ pkgdesc="A borg wrapper written in rust"
 url="https://github.com/SebastianSpeitel/borrg"
 license=("Apache-2.0")
 arch=("x86_64")
-depends=('borg')
+depends=('borg>=1.2')
 provides=("borrg")
 conflicts=("borrg")
 source=("https://github.com/enderium/borrg-bin/releases/download/$pkgver/borrg-$pkgver-x86_64.tar.gz")
