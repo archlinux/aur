@@ -21,7 +21,7 @@ sha256sums=('3d3fee920f67b70566fa09ba62203323d4a8100d1ab210c6e7b34f7cb23349fb')
 build() {
     cd "$_pkgname-$pkgver"
     export GOOGLETEST_HOME=/usr/src/googletest
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .
+    cmake -DCMAKE_INSTALL_PREFIX=/usr .
     make
 }
 
