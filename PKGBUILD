@@ -3,7 +3,7 @@
 # Contributor: Advaith Madhukar <advaith.madhukar at gmail dot com>
 
 pkgname=pyside6-tools
-_qtver=6.3.1
+_qtver=6.3.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
@@ -15,7 +15,7 @@ conflicts=(pyside2-tools)
 makedepends=(cmake shiboken6 qt6-tools)
 _pkgfqn=pyside-setup-opensource-src-$_qtver
 source=("https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-$pkgver-src/${_pkgfqn}.tar.xz")
-sha256sums=('e5a85ed68834eb8324e3486283a9451b030d7221809e2a9533162e6b93899977')
+sha256sums=('d19979589e8946488e1b5e01ac0da75ab73b40c901726723335e160241a56892')
 
 build() {
   cmake -B build -S ${_pkgfqn}/sources/pyside-tools/ \
