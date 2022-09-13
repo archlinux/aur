@@ -3,7 +3,7 @@
 pkgorg='stack-of-tasks'
 _pkgname='eiquadprog'
 pkgname=("${_pkgname}" "${_pkgname}-docs")
-pkgver=1.2.3
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="Quadratic Programing solver with eigen"
 arch=('any')
@@ -13,31 +13,29 @@ depends=()
 optdepends=('doxygen')
 makedepends=('cmake' 'boost' 'boost-libs' 'eigen')
 source=($url/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz{,.sig})
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('c90a8bfa35e316cccef852392e4584381f0394c03adefcdcaa5a153c2ee86f7e'
+            'SKIP')
 validpgpkeys=('9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28')
 
 build() {
-    cd "${_pkgname}-${pkgver}"
-
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib .
-    make
+    cmake -B "build-$pkgver" -S "$pkgbase-$pkgver" \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib
+    cmake --build "build-$pkgver"
 }
 
 check() {
-    cd "${_pkgname}-${pkgver}"
-    make test
+    cmake --build "build-$pkgver" -t test
 }
 
 package_eiquadprog() {
-    cd "${_pkgname}-${pkgver}"
-    make DESTDIR="${pkgdir}/" install
+    DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
     rm -rf ${pkgdir}/usr/share/doc
-    install -Dm644 COPYING.LESSER "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${_pkgname}-${pkgver}/COPYING.LESSER" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_eiquadprog-docs() {
-    cd "${_pkgname}-${pkgver}"
-    make DESTDIR="${pkgdir}/" install
+    DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
     rm -rf ${pkgdir}/usr/{lib,include,"share/$_pkgname"}
-    install -Dm644 COPYING.LESSER "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${_pkgname}-${pkgver}/COPYING.LESSER" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
