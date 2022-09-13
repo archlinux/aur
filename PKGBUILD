@@ -8,7 +8,7 @@ pkgdesc="Media server for comics/mangas/BDs with API and OPDS support "
 arch=('any')
 url="https://komga.org"
 license=('MIT')
-depends=('java-runtime')
+depends=('java-runtime-headless>=8')
 backup=(etc/komga.conf)
 source=("https://github.com/gotson/komga/releases/download/v${pkgver}/komga-${pkgver}.jar"
         "komga"

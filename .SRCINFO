@@ -5,7 +5,7 @@ pkgbase = komga
 	url = https://komga.org
 	arch = any
 	license = MIT
-	depends = java-runtime
+	depends = java-runtime-headless>=8
 	backup = etc/komga.conf
 	source = https://github.com/gotson/komga/releases/download/v0.157.1/komga-0.157.1.jar
 	source = komga
