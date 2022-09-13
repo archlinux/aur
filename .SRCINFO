@@ -1,0 +1,16 @@
+pkgbase = termitegame
+	pkgdesc = The ultimate real-time strategy
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://github.com/milgra/termite
+	arch = i686
+	arch = x86_64
+	license = gplv3
+	makedepends = meson
+	depends = glew
+	depends = sdl2
+	depends = glu
+	source = termitegame-0.8.tar.xz::https://github.com/milgra/termite/releases/download/0.8/termite-0.8.tar.xz
+	sha256sums = c475e897d93d73e661c3f91febac3b60d00d3d6f94df974aba90ea3edeb91be0
+
+pkgname = termitegame
