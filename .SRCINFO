@@ -11,6 +11,7 @@ pkgbase = gradience-git
 	makedepends = meson
 	makedepends = blueprint-compiler
 	makedepends = gobject-introspection
+	makedepends = sassc
 	depends = libadwaita-git>=1.2.alpha
 	depends = python-gobject
 	depends = python-anyascii

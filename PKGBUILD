@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/GradienceTeam/Gradience"
 license=('GPL3')
 depends=('libadwaita-git>=1.2.alpha' 'python-gobject' 'python-anyascii' 'python-lxml' 'python-pillow' 'python-pluggy' 'python-svglib' 'python-aiohttp-git' 'python-yapsy' 'python-regex' 'python-material-color-utilities' 'libportal-gtk4')
-makedepends=('git' 'meson' 'blueprint-compiler' 'gobject-introspection')
+makedepends=('git' 'meson' 'blueprint-compiler' 'gobject-introspection' 'sassc')
 checkdepends=('appstream-glib')
 optdepends=('adw-gtk3: The theme from libadwaita ported to GTK-3'
             'adw-gtk-theme: LibAdwaita Theme for all GTK3 and GTK4 Apps.')
