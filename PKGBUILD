@@ -2,7 +2,7 @@
 # Maintainer: Biell <biell@pobox.com>
 
 pkgname=vile
-pkgver=9.8_u
+pkgver=9.8_w
 _basever=${pkgver//_/}
 pkgrel=1
 pkgdesc="vi like emacs"
@@ -11,7 +11,7 @@ url="http://invisible-island.net/vile/vile.html"
 depends=('ncurses')
 license=('custom')
 source=( ftp://ftp.invisible-island.net/vile/current/vile-${_basever}.tgz )
-sha1sums=( c1cac5db46f022cabd92d464b082e248f8403666 )
+sha1sums=( 7fed26774f22ffad722c1108c2c2a91ad6502ce6 )
 
 prepare() {
   cd "$srcdir"/$pkgname-${_basever}
