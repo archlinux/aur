@@ -3,7 +3,7 @@
 
 pkgname=sfml
 pkgver=2.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple, fast, cross-platform, and object-oriented multimedia API'
 arch=('x86_64')
 url='http://www.sfml-dev.org/'
@@ -34,4 +34,3 @@ package() {
 
   install -Dm644 ../license.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
