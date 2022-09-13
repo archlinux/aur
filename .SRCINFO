@@ -1,0 +1,14 @@
+pkgbase = pa-rs-e
+	pkgdesc = A rusty password manager that'll blow your arse off
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://gitlab.com/mchal_/parse
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo-nightly
+	makedepends = git
+	source = git+https://gitlab.com/mchal_/parse#tag=v1.0.1
+	sha256sums = SKIP
+
+pkgname = pa-rs-e
