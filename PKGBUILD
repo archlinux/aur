@@ -1,20 +1,20 @@
 # Maintainer: Namkhai B. <echo hc.9mobkrof@em | rev>
 
 pkgname=gyr-bin
-pkgver=0.1.1
-pkgrel=1
+pkgver=0.1.2
+pkgrel=0
 pkgdesc='Blazing fast TUI launcher for GNU/Linux and *BSD (prebuilt binary version)'
 arch=('x86_64' 'aarch64')
-url="https://sr.ht/~forkbomb9/gyr"
+url="https://sr.ht/~f9/gyr"
 license=('BSD-2-Clause')
 provides=('gyr')
 conflicts=('gyr')
-source_x86_64=("https://git.sr.ht/~forkbomb9/gyr/refs/download/v${pkgver}/gyr-v${pkgver}-x86_64-unknown-linux-musl")
-sha256sums_x86_64=('94bf24c3dd0b7f3d6c31a0b53fe446868edd45f2f9de5000dbb1b720a6d35cc7')
-b2sums_x86_64=('620c4ccef50dc8a25b57382c7a3b7baf25718030a24a2fb091f434407244eb86b29c0e459b98220f5fa1cfb29cfabec0450fba9675555d8da7aa01ac3f956d5b')
-source_aarch64=("https://git.sr.ht/~forkbomb9/gyr/refs/download/v${pkgver}/gyr-v${pkgver}-aarch64-unknown-linux-musl")
-sha256sums_aarch64=('5d9af921cbbaac69f8d0106db54437e4c1bb942604dc6a87e69380bb90fc0f9b')
-b2sums_aarch64=('858715c1923ab059ceac647bddc4af7adc5cb7ff3082305413e8884d7c2f545099fb75804a5079a3de0003a98e6c936450a2a07a71cc3cc855d38a7f44544c78')
+source_x86_64=("https://git.sr.ht/~f9/gyr/refs/download/v${pkgver}/gyr-v${pkgver}-x86_64-unknown-linux-musl")
+sha256sums_x86_64=('0bc364d62408aa495a543150cb8775e81e28c37373c95fca6355919404794798')
+b2sums_x86_64=('46bed6109a1d36ad3ac4221acc33e1a938aa9f6e9ad224d3b1ac8b3c89c8a36ff149b81bf062c98f55c569d933ff571ef8b21ed4e2fea33256173202de3e096d')
+source_aarch64=("https://git.sr.ht/~f9/gyr/refs/download/v${pkgver}/gyr-v${pkgver}-aarch64-unknown-linux-musl")
+sha256sums_aarch64=('48ecb99c6fc7e3a2903c758e959cac81a0548e7bf04f6488d0a258e339dc9303')
+b2sums_aarch64=('6a184d291bb3c120f89fa9f83a2c5d4eff00fbf564537daab426f0aec60138cbc773269ad6a0e3ebed98dbbcb39dee7d49a0e002638f12f8f6da8821b7352656')
 
 package() {
     install -Dm755 "gyr-v${pkgver}-${CARCH}-unknown-linux-musl" \
