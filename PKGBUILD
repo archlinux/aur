@@ -1,12 +1,12 @@
 # Maintainer: m8D2 <omui (at) proton mail (dot) com>
-# Contributor: Dct Mei <dctxmei@gmail.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Dct Mei <dctxmei@gmail.com>
 # Contributor: pandada8 <pandada8@gmail.com>
 
 pkgname=v2ray-git
-pkgver=4.28.2.r25.g73311d10
+pkgver=5.1.0.r7.g2e0ea8804
 pkgrel=1
-pkgdesc="A set of network tools that help you to build your own computer network (git version)."
+pkgdesc="A platform for building proxies to bypass network restrictions (git version)."
 arch=(x86_64)
 url="https://github.com/v2fly/v2ray-core"
 license=(MIT)
@@ -20,6 +20,7 @@ sha512sums=('SKIP')
 
 prepare() {
   cd "$srcdir"/$pkgname
+  #patch -p1 < ../v2ray-prefix-checking-fix.patch
   sed -i 's|/usr/local/bin|/usr/bin|;s|/usr/local/etc|/etc|' release/config/systemd/system/*.service
 }
 
@@ -37,12 +38,11 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   go build -o v2ray ./main
-  go build -o v2ctl ./infra/control/main
 }
 
 check() {
   cd "$srcdir"/$pkgname
-  go test -p 1 -tags json -v -timeout 30m v2ray.com/core/...
+  go test -p 1 -tags json -v -timeout 30m ./...
 }
 
 package() {
@@ -52,5 +52,4 @@ package() {
   install -Dm644 release/config/systemd/system/v2ray@.service "$pkgdir"/usr/lib/systemd/system/v2ray@.service
   install -Dm644 release/config/*.json -t "$pkgdir"/etc/v2ray/
   install -Dm755 v2ray -t "$pkgdir"/usr/bin/
-  install -Dm755 v2ctl -t "$pkgdir"/usr/bin/
 }
