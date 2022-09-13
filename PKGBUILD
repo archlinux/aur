@@ -2,8 +2,8 @@
 # Contributor: Agorgianitis Loukas <agorglouk@gmail.com>
 
 pkgname=tailwindcss-language-server
-_commit=bb5993d047dbb07ceedf89ff790bf418aa9f23db
-pkgver=0.0.7
+_commit=f49c7e84a1ef74c214a824f136dde3a63c3e8076
+pkgver=0.0.9
 pkgrel=1
 pkgdesc='Tailwind CSS Language Server'
 arch=('any')
@@ -14,9 +14,13 @@ makedepends=('git' 'npm')
 source=("git+https://github.com/tailwindlabs/tailwindcss-intellisense.git#commit=$_commit")
 b2sums=('SKIP')
 
-build() {
+prepare() {
   cd tailwindcss-intellisense
   npm ci
+}
+
+build() {
+  cd tailwindcss-intellisense
   npm run bootstrap
   cd packages/$pkgname
   npm run build

@@ -1,6 +1,6 @@
 pkgbase = tailwindcss-language-server
 	pkgdesc = Tailwind CSS Language Server
-	pkgver = 0.0.7
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://github.com/tailwindlabs/tailwindcss-intellisense/tree/master/packages/tailwindcss-language-server
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = tailwindcss-language-server
 	makedepends = git
 	makedepends = npm
 	depends = nodejs
-	source = git+https://github.com/tailwindlabs/tailwindcss-intellisense.git#commit=bb5993d047dbb07ceedf89ff790bf418aa9f23db
+	source = git+https://github.com/tailwindlabs/tailwindcss-intellisense.git#commit=f49c7e84a1ef74c214a824f136dde3a63c3e8076
 	b2sums = SKIP
 
 pkgname = tailwindcss-language-server
