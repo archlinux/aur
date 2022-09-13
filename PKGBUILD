@@ -3,7 +3,7 @@
 pkgname=atool2-git
 _pkgname=atool
 pkgver=r24.c135b88
-pkgrel=1
+pkgrel=2
 pkgdesc="A script for managing file archives of various types (with zstd support)"
 arch=('any')
 url="https://github.com/solsticedhiver/atool2"
@@ -25,7 +25,7 @@ optdepends=('bzip2: for using atool with bzip2 compressed archives'
             'zip: for using atool for creating zip archives'
             'unzip: for using atool for unpacking archives'
             'zstd: for using atool with zstandard archives')
-source=(atool::git+https://github.com/solsticedhiver/atool.git)
+source=(atool::git+https://github.com/solsticedhiver/atool2.git)
 sha256sums=('SKIP')
 
 pkgver() {
