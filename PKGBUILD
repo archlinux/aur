@@ -17,7 +17,7 @@ md5sums=('8ecf4fb94720a02dacbdb1ceeda6f411')
 build() {
     cd "$_pkgname-$pkgver"
 
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DLIB_POSTFIX= .
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DLIB_POSTFIX= .
     make
 }
 
