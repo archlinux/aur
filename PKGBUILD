@@ -5,8 +5,8 @@
 
 pkgname=v2ray-git
 pkgver=5.1.0.r7.g2e0ea8804
-pkgrel=1
-pkgdesc="A platform for building proxies to bypass network restrictions (git version)."
+pkgrel=2
+pkgdesc="A set of network tools that helps you to build your own computer network (git version)."
 arch=(x86_64)
 url="https://github.com/v2fly/v2ray-core"
 license=(MIT)
@@ -20,7 +20,6 @@ sha512sums=('SKIP')
 
 prepare() {
   cd "$srcdir"/$pkgname
-  #patch -p1 < ../v2ray-prefix-checking-fix.patch
   sed -i 's|/usr/local/bin|/usr/bin|;s|/usr/local/etc|/etc|' release/config/systemd/system/*.service
 }
 
