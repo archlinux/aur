@@ -14,7 +14,7 @@ sha256sums=('db95b6be8a81d32766a20f11e85fda9189a498e216c268197299656cdaeb0eb7')
 
 build() {
     cd "$pkgname-$pkgver"
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DCLIENT_ONLY=TRUE .
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DCLIENT_ONLY=TRUE .
     for file in $(find . -name \*.py)
     do
         sed -i 's/env python$/env python2/' $file
