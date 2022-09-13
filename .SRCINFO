@@ -1,7 +1,7 @@
 pkgbase = python-argclass-git
 	pkgdesc = A wrapper around the standard argparse module that allows you to describe argument parsers declaratively
 	pkgver = 0.8.0.r0.41d5b8c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mosquito/argclass
 	arch = i686
 	arch = x86_64
