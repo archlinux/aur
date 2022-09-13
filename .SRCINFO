@@ -1,0 +1,14 @@
+pkgbase = minetest-update-translations-git
+	pkgdesc = A Python script for updating the translation files of a Minetest mod
+	pkgver = r58.5221cfa
+	pkgrel = 1
+	url = https://github.com/minetest-tools/update_translations
+	arch = any
+	license = LGPLv2.1
+	makedepends = git
+	depends = python
+	options = !strip
+	source = git+https://github.com/minetest-tools/update_translations
+	md5sums = SKIP
+
+pkgname = minetest-update-translations-git
