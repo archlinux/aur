@@ -1,0 +1,2 @@
+d /etc/bitcoincash 0750 bitcoincash bitcoincash
+d /srv/bitcoincash 0750 bitcoincash bitcoincash

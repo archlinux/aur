@@ -1,0 +1,18 @@
+[Unit]
+Description=Bitcoin Cash Daemon
+After=network.target
+
+[Service]
+User=bitcoincash
+Group=bitcoincash
+ExecStart=/usr/bin/bitcoincashd -daemon=0                               \
+                                -conf=/etc/bitcoincash/bitcoincash.conf \
+                                -datadir=/srv/bitcoincash               \
+                                -pid=/run/bitcoincash/bitcoincashd.pid
+ExecReload=/usr/bin/kill -HUP $MAINPID
+ExecStop=/usr/bin/bitcoincashd stop
+PrivateTmp=true
+RuntimeDirectory=bitcoincash
+
+[Install]
+WantedBy=multi-user.target
