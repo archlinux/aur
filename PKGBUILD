@@ -2,7 +2,7 @@
 # Ex-Maintainer: K0n24d <konrad AT knauber DOT net>
 pkgname=urbackup2-client
 pkgver=2.5.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Client Server backup system"
 arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
 url="http://www.urbackup.org/"
@@ -20,7 +20,6 @@ source=(
     'lvm_create_filesystem_snapshot'
     'lvm_remove_filesystem_snapshot'
     'md5-bytes.patch'
-    'double_language.patch'
 )
 sha512sums=('edb5cd76a00d8aa08611bebdf4abb83f0456c1c86a4cddc7f08a6ab8c17d19d58d6fae2a95128d3072de8d7102d4abdfa48b8b8ebab35e6bc64ef8fc01ac66a6'
             '416fb8f5f3687a3c369cc2b199d4c8b4170494f0a119566a91ac6a0c2f202dc5049804c10508b66ba657011b39be5ddd055091cd531a665b4398899f404086ca'
@@ -30,8 +29,7 @@ sha512sums=('edb5cd76a00d8aa08611bebdf4abb83f0456c1c86a4cddc7f08a6ab8c17d19d58d6
             '238c286d451474a8721292f7e98b4f13600cb430c16a27ceb9551cc83705b8268a3f1202785fb5b61523f372b4e7e804fd20b7db62677621983d79a271aa106b'
             'a2d4ba03ae15582d2cd74ff68c38ff0f90d75a6eb5c241f9a022b0652fa2dc9b184439f6bda9a9538645925f739503ee7b3fc7bb232589583cdeb6dc27d74e5c'
             '9bdfefccdd9d6e37a77975324a7c417f3de2aa59e6da0bfde3c318b8c6f3d7f4629f3a41eebee548b9c572b8ed39640434cc08bd020d25362fddffc4426438de'
-            '34e25c868cf4572414fbc6c693877127152f9a97edf8865b4263a55cf16f71a5045ba96b1a9af8244ed49c35cab56e3fdb44348d191e9f85e2efb66392907132'
-            'fb6c43d725d4ea201bdf91b1482473f205834c14f24906041d5c6ef22b1e0f4cec16d5e765a3fda6fed4d3b98f6217b190dd5d1e84051525205e22747c5eefac')
+            '34e25c868cf4572414fbc6c693877127152f9a97edf8865b4263a55cf16f71a5045ba96b1a9af8244ed49c35cab56e3fdb44348d191e9f85e2efb66392907132')
 
 CFLAGS="-march=native -O2 -pipe -fstack-protector-strong"
 CXXFLAGS="${CFLAGS} -ansi -std=gnu++11"
@@ -42,7 +40,6 @@ build() {
     sed  -i '/\#include \"cryptopp_inc.h\"/a #include "assert.h"' "${srcdir}/urbackup-client-${pkgver}.0/cryptoplugin/AESGCMDecryption.h"
 
     patch -d"${srcdir}/urbackup-client-${pkgver}.0" -p0 < "${srcdir}/md5-bytes.patch"
-    patch --forward --strip=1 --input="${srcdir}/double_language.patch"
 
     cd "${srcdir}/urbackup-client-${pkgver}.0"
     ./configure --prefix=/usr --sbindir=/usr/bin --localstatedir=/var --sysconfdir=/etc --enable-embedded-cryptopp
