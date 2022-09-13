@@ -1,0 +1,12 @@
+pkgbase = bd
+	pkgdesc = Quickly go back to a parent directory instead of typing "cd ../../.." repeatedly
+	pkgver = 1.03
+	pkgrel = 1
+	url = https://github.com/vigneshwaranr/bd
+	arch = any
+	license = MIT
+	optdepends = bash-completion
+	source = bd-1.03.tar.gz::https://github.com/vigneshwaranr/bd/archive/v1.03.tar.gz
+	sha256sums = 2d9b8ce674e4a80452c119dc10efe184194fdf244abf1822dc7693796793c352
+
+pkgname = bd
