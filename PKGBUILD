@@ -7,7 +7,7 @@
 _pkgname=torcs
 pkgname=torcs-can
 pkgver=1.3.7
-pkgrel=6
+pkgrel=7
 pkgdesc="A 3D racing cars simulator using OpenGL (Enrico Pozzobon's fork with CAN support)"
 url="http://torcs.sourceforge.net"
 license=("GPL")
@@ -16,7 +16,7 @@ depends=('freeglut' 'libpng' 'freealut' 'libxi' 'libxmu' 'libxrandr' 'libvorbis'
 makedepends=('plib' 'mesa' 'dbcc')
 conflicts=('torcs' 'torcs-data')
 options=('!makeflags')
-source=(git://github.com/epozzobon/torcs-1.3.7)
+source=(git+https://github.com/epozzobon/torcs-1.3.7)
 md5sums=('SKIP')
 
 prepare() {
