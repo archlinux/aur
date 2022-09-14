@@ -2,17 +2,20 @@
 # Maintainer: Jeancarlo Hidalgo <jeancahu@gmail.com>
 
 pkgname=albion-online-launcher-bin
-pkgver=1.20.050.229341
-pkgrel=1
+pkgver=1.20.060.231052
+pkgrel=2
 pkgdesc="The first true cross-platform Sandbox MMO -- launcher client"
 url="https://albiononline.com/"
 arch=('x86_64')
 license=('custom')
-makedepends=()
+makedepends=(chrpath)
 depends=(
   'libgl'
   'alsa-lib'
   'libxrandr'
+  'libxcb'
+  'libxkbcommon'
+  'sdl2'
   'qt5-base'
   'qt5-declarative'
   'qt5-location'
@@ -23,16 +26,22 @@ depends=(
   'zenity'
 )
 optdepends=()
-source=("https://live.albiononline.com/clients/20220825102752/albion-online-setup"
+source=("https://live.albiononline.com/clients/20220914103045/albion-online-setup"
 	"albion-online-launcher.desktop" "albion-online" "Albion-Online.patch")
 install=albion-online-launcher-bin.install
 options=(!strip docs libtool emptydirs !zipman staticlibs)
-sha256sums=('89f4b80b77984cc304b4af6a6b8bdea95dcf3395521cda160ed22c947c19e006'
+sha256sums=('0ef7ea10ce92d10ba2ba3ed62d861ef6bdbf72c6c9418ebbdbe0c19e80b760c4'
   'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
+  chrpath -d "${srcdir}/data/launcher/Albion-Online"
+
   pushd "${srcdir}/data/launcher"
-  rm libQt5* qt.conf xdelta3 QtWebEngineProcess libicu*
+  rm libQt5* qt.conf xdelta3 QtWebEngineProcess libicu* \
+     libSDL2-2.0.so.0 libSDL2-2.0.so \
+     libcrypto.so libssl.so libxkbcommon* libxcb*
+
+  rm -r resources plugins translations
   popd
 
   pushd "${srcdir}/data"
@@ -47,6 +56,9 @@ package() {
 
   mkdir -p "${pkgdir}/opt/${pkgname}/game_x64"
   chmod 2775 "${pkgdir}/opt/${pkgname}/game_x64"
+
+  ## Give albion group permission to update the launcher
+  chmod 2775 "${pkgdir}/opt/${pkgname}/launcher"
 
   # Link launcher to usr/system binaries directory
   mkdir -p "${pkgdir}/usr/bin"
