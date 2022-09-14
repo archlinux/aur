@@ -13,14 +13,14 @@ fi
 
 _pkgname=qtwebbrowser
 pkgname=${_pkgname}-qpi
-pkgver=1.0
+pkgver=5.15.1_QtAS
 pkgrel=1
 pkgdesc="Browser for embedded devices developed using the capabilities of Qt and Qt WebEngine"
 arch=('any')
 url="http://code.qt.io/cgit/qt-apps/qtwebbrowser.git"
 license=('GPL3')
-makedepends=('git')
-depends=('qt5-declarative')
+makedepends=('git' 'qt5-declarative' 'qt5-webengine' 'qt5-websockets')
+depends=()
 source=("git://code.qt.io/qt-apps/$_pkgname.git#tag=v$pkgver" "$_pkgname.desktop")
 md5sums=('SKIP' 'b1fde5cdcb9b7160398a78ecd8d70bf5')
 
