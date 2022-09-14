@@ -1,7 +1,7 @@
 pkgbase = python-pytest-md-report
 	pkgdesc = Pytest plugin to create a report in Markdown table format
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/thombashi/pytest-md-report
 	arch = any
 	license = MIT
@@ -16,10 +16,10 @@ pkgbase = python-pytest-md-report
 	depends = python-pytest
 	depends = python-tcolorpy
 	depends = python-typepy
-	source = python-pytest-md-report-0.2.0.tar.gz::https://files.pythonhosted.org/packages/source/p/pytest-md-report/pytest-md-report-0.2.0.tar.gz
-	source = python-pytest-md-report-0.2.0.tar.gz.asc::https://files.pythonhosted.org/packages/source/p/pytest-md-report/pytest-md-report-0.2.0.tar.gz.asc
+	source = python-pytest-md-report-0.3.0.tar.gz::https://files.pythonhosted.org/packages/source/p/pytest-md-report/pytest-md-report-0.3.0.tar.gz
+	source = python-pytest-md-report-0.3.0.tar.gz.asc::https://files.pythonhosted.org/packages/source/p/pytest-md-report/pytest-md-report-0.3.0.tar.gz.asc
 	validpgpkeys = BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367
-	sha256sums = c129cebee45f9acb2fc26631ca5845f2d2deabbc134789f163224a347a0f9f5f
+	sha256sums = adaf3c5971bafb11d28ce732ead7588efa4aa4d96fbba96afac65c90b69d0255
 	sha256sums = SKIP
 
 pkgname = python-pytest-md-report
