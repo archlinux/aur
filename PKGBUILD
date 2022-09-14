@@ -1,7 +1,7 @@
 # Maintainer: ml <>
 pkgname=ionosctl
 pkgver=6.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='IONOS Cloud CLI'
 arch=('x86_64' 'i686' 'aarch64' 'arm' 'armv6h' 'armv7h')
 url='https://github.com/ionos-cloud/ionosctl'
@@ -33,7 +33,7 @@ package() {
   install -Dm755 "$pkgname" -t "$pkgdir"/usr/bin
   install -Dm644 completion.bash "$pkgdir"/usr/share/bash-completion/completions/"$pkgname"
   install -Dm644 completion.zsh "$pkgdir"/usr/share/zsh/site-functions/_"$pkgname"
-  install -Dm644 completion.fish "$pkgdir"/usr/share/fish/completions/"$pkgname".fish
+  install -Dm644 completion.fish "$pkgdir"/usr/share/fish/vendor_completions.d/"$pkgname".fish
   install -dm755 "$pkgdir"/usr/share/doc/"$pkgname"
   cp -a docs -T "$pkgdir"/usr/share/doc/"$pkgname"
 }
