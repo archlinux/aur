@@ -1,7 +1,7 @@
 # Maintainer: Winston Astrachan <winston dot astrachan at gmail dot com>
 
 pkgname=google-cloud-sdk-gke-gcloud-auth-plugin
-pkgver=401.0.0
+pkgver=402.0.0
 pkgrel=1
 pkgdesc="A google-cloud-sdk component that provides a kubectl authentication plugin for GKE."
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=('!strip')
 source=(
     "https://storage.googleapis.com/cloud-sdk-release/for_packagers/linux/google-cloud-cli-gke-gcloud-auth-plugin_${pkgver}.orig_amd64.tar.gz"
     'google-cloud-sdk-gke-gcloud-auth-plugin.sh')
-sha256sums=('8acc5e47ae79ff6865c664e9cb0dd591628deade1dd0fdc0e038cc25fef44078'
+sha256sums=('99f6842f9830b2ad820b4710602ab9358bbed91d1096995c2e7754c320fef564'
             '4432c1e71c39cb0914baa4df6c8699adc7e633163da7be87ac159d5b320cb346')
 install="${pkgname}.install"
 
