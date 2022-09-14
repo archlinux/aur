@@ -1,7 +1,7 @@
 # Maintainer: Menci <huanghaorui301@gmail.com>
 pkgname=curl-http3-msquic
 pkgver=7.85.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An URL retrieval utility and library - compiled with HTTP/3 support (with msquic) - binary is called curl3"
 arch=('x86_64' 'aarch64')
 url="https://curl.haxx.se"
@@ -17,13 +17,11 @@ source=(
 	01-msquic-openssl-enable-md4.patch
 	02-curl-msquic-static.patch
 )
-sha512sums=(
-	'204ce7ac32be94e4262ebda3cde46ae4e1e58b4f2bc4867ca6cce88a5906e0dd633200ccb9928b2a90e5ae4c43715747034a09cb2b810a8638388f2dc40a7941'
-	'SKIP'
-	'849bfeee56ba53ffa3e8ee73df858688848fe350f91a3e8fca2726e5d0b4050def8b64668d8dbb12052cf81a70542f4a6f5faa89b1b91ea24eb64f88383724f0'
-	'7a7f31b53fe1b4e7fd0c905e8078b7859ab0b408e08ea0efdead2cedcf0b64e2e49e82c9723b5cd128f0e564a8e9723bd51154c6489609c63a93a023d6f131c8'
-	'544fc1c667f89323f0a071e002770b85ffd441c0dedb782c6e5d3b1348a646f5fb1d2fa2db8db584fe9d508888231d5c481a07282689ef20c857c98edcf58eaa'
-)
+sha512sums=('bbad693bcde9c55e5942499950d76011f53ad43d3270eee2c8db486bcf46f5fc92b32dd8752caf4c5976fe493d083e2d34fa299cb96fb8e76d8f5fcc2cc56a36'
+            'SKIP'
+            '849bfeee56ba53ffa3e8ee73df858688848fe350f91a3e8fca2726e5d0b4050def8b64668d8dbb12052cf81a70542f4a6f5faa89b1b91ea24eb64f88383724f0'
+            '7a7f31b53fe1b4e7fd0c905e8078b7859ab0b408e08ea0efdead2cedcf0b64e2e49e82c9723b5cd128f0e564a8e9723bd51154c6489609c63a93a023d6f131c8'
+            '544fc1c667f89323f0a071e002770b85ffd441c0dedb782c6e5d3b1348a646f5fb1d2fa2db8db584fe9d508888231d5c481a07282689ef20c857c98edcf58eaa')
 validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
 
 _msh3_ref=879898706f2e10b9cc2e34de5d30eedbe4186c29
