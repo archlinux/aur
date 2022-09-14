@@ -1,0 +1,17 @@
+pkgbase = nginx-quic-mod-brotli
+	pkgdesc = Brotli compression filter module for nginx
+	pkgver = 1.0.9
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/google/ngx_brotli
+	arch = x86_64
+	license = CUSTOM
+	makedepends = nginx-quic-src
+	makedepends = git
+	depends = nginx
+	depends = brotli
+	source = git+https://github.com/google/ngx_brotli#commit=6e975bcb015f62e1f303054897783355e2a877dc
+	validpgpkeys = 536487F1470D7187
+	sha256sums = SKIP
+
+pkgname = nginx-quic-mod-brotli
