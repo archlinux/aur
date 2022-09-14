@@ -1,6 +1,6 @@
 pkgbase = ayatana-indicator-datetime
 	pkgdesc = Ayatana Indicator providing clock and calendar
-	pkgver = 22.2.0
+	pkgver = 22.9.0
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators/ayatana-indicator-datetime
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = ayatana-indicator-datetime
 	depends = libayatana-common>=0.9.5
 	depends = evolution-data-server
 	depends = libaccounts-glib
-	source = ayatana-indicator-datetime-22.2.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-datetime/archive/22.2.0.tar.gz
-	md5sums = ed70e9b45fc14926ba2b419c7e93162b
+	source = ayatana-indicator-datetime-22.9.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-datetime/archive/22.9.0.tar.gz
+	md5sums = 5b1b43661655c87bd6eaf42aad8c23fb
 
 pkgname = ayatana-indicator-datetime
