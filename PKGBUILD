@@ -2,7 +2,7 @@
 
 _pkgname=ncspot
 pkgname="${_pkgname}-git"
-pkgver=0.5.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Cross-platform ncurses Spotify client written in Rust, inspired by ncmpc and the likes."
 arch=('x86_64')
@@ -54,6 +54,8 @@ check() {
 package() {
   cd "${srcdir}/${_pkgname}"
   install -Dm 755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm 755 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm 644 "misc/ncspot.desktop" "${pkgdir}/usr/share/applications/ncspot.desktop"
+  install -Dm 644 "images/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/ncspot.svg"
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
