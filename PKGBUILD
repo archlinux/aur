@@ -12,7 +12,7 @@ depends=('ghc-libs' 'haskell-aeson' 'haskell-base64-bytestring' 'haskell-cmdargs
          'haskell-ipython-kernel' 'haskell-random' 'haskell-shelly' 'haskell-split' 'haskell-strict'
          'haskell-unordered-containers' 'haskell-utf8-string' 'haskell-vector' 'jupyterlab')
 makedepends=('git' 'ghc' 'haskell-hunit' 'haskell-here' 'haskell-hspec' 'haskell-hspec-contrib'
-             'haskell-raw-strings-qq' 'haskell-setenv' 'fakechroot' 'ghc-static')
+             'haskell-raw-strings-qq' 'haskell-setenv' 'ghc-static')
 conflicts=()
 source=("git+https://github.com/gibiansky/IHaskell")
 sha256sums=('SKIP')

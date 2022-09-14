@@ -13,7 +13,6 @@ pkgbase = ihaskell-git
 	makedepends = haskell-hspec-contrib
 	makedepends = haskell-raw-strings-qq
 	makedepends = haskell-setenv
-	makedepends = fakechroot
 	makedepends = ghc-static
 	depends = ghc-libs
 	depends = haskell-aeson
