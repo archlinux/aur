@@ -1,12 +1,13 @@
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 # Contributor: aksr <aksr at t-com dot me>
 pkgname=edit-git
 pkgver=0.r321.bc24e3d
-pkgrel=1
+pkgrel=2
 pkgdesc="An experimental text editor, a relaxing mix of vi & acme."
-arch=('i686' 'x86_64')
-url="http://c9x.me/edit/"
+arch=('i686' 'x86_64' 'aarch64')
+url="https://c9x.me/edit/"
 license=('unknown')
-makedepends=('git' 'texlive-bin' 'texlive-core')
+makedepends=('git' 'texlive-bin' 'texlive-core' 'libxft')
 install=echo.install
 source=("$pkgname::git://c9x.me/ed.git")
 md5sums=('SKIP')

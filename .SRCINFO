@@ -1,15 +1,17 @@
 pkgbase = edit-git
 	pkgdesc = An experimental text editor, a relaxing mix of vi & acme.
 	pkgver = 0.r321.bc24e3d
-	pkgrel = 1
-	url = http://c9x.me/edit/
+	pkgrel = 2
+	url = https://c9x.me/edit/
 	install = echo.install
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = unknown
 	makedepends = git
 	makedepends = texlive-bin
 	makedepends = texlive-core
+	makedepends = libxft
 	source = edit-git::git://c9x.me/ed.git
 	md5sums = SKIP
 
