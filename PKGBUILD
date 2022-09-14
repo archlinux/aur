@@ -13,10 +13,11 @@ arch=("any")
 url="https://github.com/ElementsProject/${_pkgname}"
 license=("custom:BSD-MIT")
 depends=("bitcoin-cli")
-makedepends=("git" "gmp" "libsodium" "mrkd" "net-tools" "python" "python-mako" "sqlite" "zlib")
+makedepends=("git" "gmp" "libsodium" "mrkd" "net-tools" "python" "python-mako" "rust" "sqlite" "zlib")
 optdepends=("cppcheck: Static C/C++ code analysis"
     "jq: Command-line JSON processor"
     "libsecp256k1: Optimised C library for EC operations on curve secp256k1"
+    "lowdown: Markdown translator"
     "postgresql-libs: Libraries for use with PostgreSQL"
     "shellcheck: Shell script analysis"
     "valgrind: Tool for memory management")
