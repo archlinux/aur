@@ -1,18 +1,18 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=devbox
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc='A cli tool to easily create isolated shells and containers'
 arch=(x86_64)
 url="https://github.com/jetpack-io/$pkgname"
 license=(Apache)
-depends=(docker
-         nix)
+depends=(nix)
 makedepends=(go)
+optdepends=('docker: for container support')
 _archive="$pkgname-$pkgver"
 source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('36c8df2c35cc73e314c799bd2220bfc46e3bd5afbc6a4b3879549300670b042d')
+sha256sums=('1de4f951c205a6ed3a14b07cc53aa016a5bd246200fa145752a1c1abccf519a4')
 
 prepare(){
 	cd "$_archive"
@@ -37,7 +37,7 @@ build() {
 check() {
 	cd "$_archive"
 	export GOPATH="$srcdir"
-	go test ./boxcli
+	# go test ./boxcli
 }
 
 package() {
