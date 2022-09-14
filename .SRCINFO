@@ -7,6 +7,8 @@ pkgbase = isc-stork
 	license = MPL2
 	makedepends = rake
 	makedepends = git
+	makedepends = python
+	depends = glibc
 	backup = etc/stork
 	source = git+https://gitlab.isc.org/isc-projects/stork.git#tag=v1.6.0
 	source = isc-stork.sysuser

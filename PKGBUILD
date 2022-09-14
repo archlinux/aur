@@ -8,7 +8,8 @@ pkgdesc="A dashboard for BIND 9 and Kea DHCP."
 arch=('x86_64')
 url='https://gitlab.isc.org/isc-projects/stork'
 license=('MPL2')
-makedepends=('rake' 'git')
+depends=('glibc')
+makedepends=('rake' 'git' 'python')
 backup=('etc/stork')
 source=("git+https://gitlab.isc.org/isc-projects/${_pkgname}.git#tag=v${pkgver}"
         "isc-stork.sysuser")
@@ -26,7 +27,6 @@ package() {
   mkdir -p "$pkgdir/usr/share"
   mv "$pkgdir/man" "$pkgdir/usr/share"
   mv "$pkgdir/lib" "$pkgdir/usr"
-  mkdir -p "$pkgdir/etc/"
   install -Dm644 "${srcdir}/isc-stork.sysuser" "${pkgdir}/usr/lib/sysusers.d/isc-stork.conf"
 }
 
