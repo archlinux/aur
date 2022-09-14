@@ -1,5 +1,5 @@
 pkgbase = soundtracker-git
-	pkgdesc = A ScreamTracker-style music tracker (only supports .MOD and .XM)
+	pkgdesc = A FutureTrackerII-style music tracker (only supports .MOD and .XM)
 	pkgver = r560.8f1d335
 	pkgrel = 1
 	url = https://soundtracker.org
