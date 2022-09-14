@@ -1,7 +1,7 @@
 pkgbase = python-proton-client
 	pkgdesc = Official Proton API Python Client, maintained by the Proton(VPN/Mail) team.
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ProtonMail/proton-python-client
 	arch = any
 	groups = ProtonVPN
@@ -14,7 +14,7 @@ pkgbase = python-proton-client
 	depends = python-dnspython
 	conflicts = python-protonvpn-nm-lib<3.4.0
 	source = https://github.com/ProtonMail/proton-python-client/archive/refs/tags/0.7.1.tar.gz
-	validpgpkeys = A884 41BD 4864 F95B EE08 E63A 71EB 4740 1994 0E11
+	validpgpkeys = 6A5571928D2222D83BC7456E4EDE055B645F044F
 	sha256sums = 88d2546a922d9053988b5e1863bf6cf965e97b4c643cd879f16bb3f0b5f02b5e
 
 pkgname = python-proton-client
