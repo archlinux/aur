@@ -2,7 +2,7 @@
 
 pkgname=moosync
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple music player'
 arch=('any')
 url='https://github.com/Moosync/Moosync'
@@ -36,7 +36,9 @@ package() {
     cd "${srcdir}/${_sourcedirectory}/node_modules"
     find . -name '*.node' -exec cp --parents \{\} /"${pkgdir}/opt/Moosync/resources/app.asar.unpacked/node_modules" \;
 
+    cp -R ${srcdir}/${_sourcedirectory}/node_modules/better-sqlite3 "${pkgdir}/opt/Moosync/resources/app.asar.unpacked/node_modules/"
     cp -R ${srcdir}/${_sourcedirectory}/node_modules/sharp "${pkgdir}/opt/Moosync/resources/app.asar.unpacked/node_modules/"
+    cp -R ${srcdir}/${_sourcedirectory}/node_modules/media-controller "${pkgdir}/opt/Moosync/resources/app.asar.unpacked/node_modules/"
     cp -R "${_prebuiltpath}/resources/app.asar" "${pkgdir}/opt/Moosync/resources/app.asar"
     cp ${_prebuiltpath}/resources/app.asar.unpacked/*.js ${pkgdir}/opt/Moosync/resources/app.asar.unpacked/
 
