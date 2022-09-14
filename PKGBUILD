@@ -1,13 +1,13 @@
 # Maintainer: Evgeniy Alekseev
 
 pkgname='ahriman'
-pkgver=2.1.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="ArcH linux ReposItory MANager"
 arch=('any')
 url="https://github.com/arcan1s/ahriman"
 license=('GPL3')
-depends=('devtools' 'git' 'pyalpm' 'python-inflection' 'python-passlib' 'python-requests' 'python-srcinfo')
+depends=('devtools' 'git' 'pyalpm' 'python-inflection' 'python-passlib' 'python-requests' 'python-setuptools' 'python-srcinfo')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 optdepends=('breezy: -bzr packages support'
             'darcs: -darcs packages support'
@@ -49,6 +49,6 @@ package() {
   install -Dm644 "$srcdir/$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 }
 
-sha512sums=('3de1a212af90a37880fa8f7f5e66f4a07dcbee80f403760665a15f9c009ece8ed6f52f78735cccea8523407beecd7262da98798bb0aade8849d48fad89e177bb'
+sha512sums=('6e533463b8461acf146331239cdb65a49a19df5aca2d620459a6ed2ef35b097ae961c2fd36707773a6cfdacb043635ac75f444a373beaf89a84c1910fa13482f'
             '53d37efec812afebf86281716259f9ea78a307b83897166c72777251c3eebcb587ecee375d907514781fb2a5c808cbb24ef9f3f244f12740155d0603bf213131'
             '62b2eccc352d33853ef243c9cddd63663014aa97b87242f1b5bc5099a7dbd69ff3821f24ffc58e1b7f2387bd4e9e9712cc4c67f661b1724ad99cdf09b3717794')
