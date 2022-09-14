@@ -1,6 +1,6 @@
 pkgbase = protonvpn-cli
 	pkgdesc = Official ProtonVPN Command Line Interface, maintained by the ProtonVPN team.
-	pkgver = 3.12.0
+	pkgver = 3.13.0
 	pkgrel = 2
 	url = https://github.com/ProtonVPN/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = protonvpn-cli
 	makedepends = python-setuptools
 	depends = python-protonvpn-nm-lib>=3.10.0
 	depends = python-pythondialog
-	source = https://github.com/ProtonVPN/linux-cli/archive/refs/tags/3.12.0.tar.gz
-	validpgpkeys = A884 41BD 4864 F95B EE08 E63A 71EB 4740 1994 0E11
-	sha256sums = 761d8c1864b46e0caea5cea19e1be5dc46940fbcc294c8923a2a34ff4b1ee2bf
+	source = https://github.com/ProtonVPN/linux-cli/archive/refs/tags/3.13.0.tar.gz
+	validpgpkeys = 6A5571928D2222D83BC7456E4EDE055B645F044F
+	sha256sums = d295d6c899638a88d615e2cacb078ecf2aee8c771ebb087c9edb43aea25aacd9
 
 pkgname = protonvpn-cli
