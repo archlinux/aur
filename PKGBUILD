@@ -1,11 +1,11 @@
 # Maintainer: bajaco <admin at agyx dot org>
 # Contributor: Lev Lybin <lev.lybin at gmail dot com>
 # Contributor: Maksym Sheremet <msheremet at sheremets dot com>
-
+https://upwork-usw2-desktopapp.upwork.com/binaries/v5_6_10_23_687b9a63474e4cda/upwork_5.6.10.23_amd64.deb
 pkgname=upwork-desktop
-pkgver=5.6.10.13
+pkgver=5.6.10.23
 _rawver=${pkgver//./_}
-_hashver='3c485d1dd2af4f61'
+_hashver='687b9a63474e4cda'
 _pkgupname='Upwork'
 pkgrel=1
 pkgdesc='Desktop Application'
