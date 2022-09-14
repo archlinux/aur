@@ -3,7 +3,7 @@
 _pkgbase=xfce-session-target
 pkgname=${_pkgbase}-git
 pkgdesc='systemd Integration for xfce-session'
-pkgver=1.3.1.r0.gf914ff0
+pkgver=1.3.2.r0.gb2163b1
 pkgrel=1
 arch=('any')
 url="https://git.linux-help.org/infusix/${_pkgbase}"
