@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-comtool
-pkgver=3.1.0
+pkgver=3.1.2
 pkgrel=1
 epoch=
 pkgdesc="A cross platform serial debug tools written by python"
@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/Neutree/COMTool"
 license=('LGPL3.0')
 groups=()
-depends=('python' 'python-pyqt5' 'python-pyserial' 'python-requests' 'python-babel' 'python-qtawesome' 'python-paramiko' 'python-pyte' 'python-pyperclip' 'python-coloredlogs')
+depends=('python' 'python-pyqt5' 'python-pyserial' 'python-requests' 'python-babel' 'python-qtawesome' 'python-paramiko' 'python-pyte' 'python-pyperclip' 'python-coloredlogs' 'python-pyqtgraph')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 checkdepends=()
 optdepends=()
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("${pkgname#python-}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('e8a3670ca02f6d953e71aac0db12edbdbdf4e8fe19b2da788d33c2530301ce40')
+sha256sums=('6a501067b393775d70e3f9d868602164cebcd1cc21a8c726ac8213ad3d2f81b2')
 #validpgpkeys=()
 
 build() {
