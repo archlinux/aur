@@ -3,7 +3,7 @@
 
 pkgname=pylon
 pkgdesc="Basler camera Software suite"
-pkgver=7.0.0.24651
+pkgver=7.1.0.25066
 pkgrel=1
 arch=(x86_64)
 license=(custom)
@@ -13,12 +13,12 @@ depends=(qt5-base)
 makedepends=(patchelf)
 
 source=(
-	"https://www.baslerweb.com/fp-1654581454/media/downloads/software/pylon_software/${pkgname}_${pkgver}_${CARCH}_setup.tar.gz"
+	"https://www.baslerweb.com/fp-1658220865/media/downloads/software/pylon_software/${pkgname}_${pkgver}_${CARCH}_setup.tar.gz"
 	"LICENSE"
 )
 
 
-sha512sums=('c410752970c7ac720a5aa31d39b428fd8442b4b1570d5b6e4dfacf445fe3b454a7a7c01f14b2f5cd8db4cc6a92de7d3a1e347827a67892ff671f87e3cbccf169'
+sha512sums=('b3db33a266c84d2bb61fef59d7269175451bdd35f04aa86ced5ffe851ebc8f0ce0321494ad16623496cd3eeb98bf1d1625581269a33891a8817d952d99a8ca1a'
 'a88072c34d5b18ebbdcc3003c7bbd899f81557500f963cda988239df7e692637fe29948b866fe80341b28c4820e1593f35fe37473de9ba35f7de8a8b31601ae1')
 
 _dir="$pkgname_$pkgver_$CARCH"
