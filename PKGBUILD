@@ -3,7 +3,7 @@
 
 pkgname=albion-online-launcher-bin
 pkgver=1.20.060.231052
-pkgrel=2
+pkgrel=3
 pkgdesc="The first true cross-platform Sandbox MMO -- launcher client"
 url="https://albiononline.com/"
 arch=('x86_64')
@@ -42,6 +42,7 @@ prepare() {
      libcrypto.so libssl.so libxkbcommon* libxcb*
 
   rm -r resources plugins translations
+  chmod 755 "./*"
   popd
 
   pushd "${srcdir}/data"
