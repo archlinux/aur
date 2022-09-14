@@ -1,0 +1,6 @@
+# 10.0.19 / 2022-09-14
+
+* first version on AUR
+	* complementary git package to the stable build
+	* allows to test prerelease versions
+	* available on whim when packaging takes time
