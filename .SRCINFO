@@ -1,6 +1,6 @@
 pkgbase = manafiles-git
 	pkgdesc = Config file and package tracking utility
-	pkgver = r241.4ea1242
+	pkgver = r335.0e15bfe
 	pkgrel = 1
 	url = https://github.com/riyyi/manafiles
 	install = manafiles.install

@@ -2,7 +2,7 @@
 
 _pkgname=manafiles
 pkgname=manafiles-git
-pkgver=r241.4ea1242
+pkgver=r335.0e15bfe
 pkgrel=1
 pkgdesc='Config file and package tracking utility'
 arch=('i686' 'x86_64' 'aarch64')
@@ -17,6 +17,7 @@ source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 prepare() {
+	git -C "${_pkgname}" submodule update --init --recursive
 	mkdir -p "${_pkgname}/build"
 }
 
