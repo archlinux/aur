@@ -1,25 +1,24 @@
 # Maintainer: Hao Zhang <hao [at] hao-zhang [dot] com>
 
 pkgname=genx
-pkgver=3.0.6
+_name=${pkgname}3
+pkgver=3.6.13
 pkgrel=1
 pkgdesc="X-ray and Neutron reflectivity fitting software"
-arch=("i686" "x86_64")
-url="http://genx.sourceforge.net/"
+arch=("x86_64")
+url="https://github.com/aglavic/genx"
 license=("GPL v3")
-options=(!libtool)
-depends=("python" "python-numpy" "python-scipy" "python-matplotlib" "python-h5py" "python-wxpython" "python-appdirs")
-makedepends=("cython" "git")
-source=(https://master.dl.sourceforge.net/project/genx/3.x.y/GenX%203.0.x/GenX-$pkgver.tar.gz)
-sha256sums=("eedcce587a2d5d31ef8d9886accf1a2741777bd64a1061232b9d039c02bd0927")
+depends=("python" "python-numpy" "python-scipy" "python-matplotlib" "python-h5py" "python-wxpython" "python-appdirs" "python-requests" "python-docutils" "python-numba" "python-orsopy")
+makedepends=(python-build python-installer python-wheel)
+source=(https://github.com/aglavic/genx/releases/download/v$pkgver/GenX-$pkgver.tar.gz)
+sha256sums=("aa2521eca0b2b0fe5791936e5e7c33c0f7c4e68146b6f27b762d0ab7137a3116")
 
 build() {
-  cd "$srcdir"/GenX-"$pkgver"
-  python setup.py build
+  cd "$srcdir"/$_name-"$pkgver"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir"/GenX-"$pkgver"
-  python setup.py install --prefix=usr/ --root=$pkgdir
-  sed -i $'s/\r$//' $pkgdir/usr/bin/genx
+  cd "$srcdir"/$_name-"$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
