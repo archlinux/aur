@@ -11,10 +11,9 @@ provides=('fig')
 conflicts=('fig')
 source=("${pkgname}-${pkgver//_/-}.tar.xz::https://pkg-cdn.fig.io/${pkgver//_/-}/linux/${arch}/fig.tar.xz")
 
-sha256sums=('47d4cda06ac1d79ee8a6016ed6011491e407b303b09c803d6c39f855eea185a2')
+sha256sums=('506d5a63a8506869e3161259cd9a5715d15585be5600e8d0dae112f207174f95')
 
 package() {
   cp -r "${srcdir}/usr" "${pkgdir}/usr"
 }
 
-sha256sums=('506d5a63a8506869e3161259cd9a5715d15585be5600e8d0dae112f207174f95')
