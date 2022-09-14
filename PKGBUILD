@@ -4,7 +4,7 @@
 # Contributor: tobias <tobias@archlinux.org>
 
 pkgname=blender-rocm
-pkgver=3.2.2
+pkgver=3.3.0
 pkgrel=1
 epoch=1
 pkgdesc="A fully integrated 3D graphics creation suite (with ROCm)"
@@ -72,13 +72,13 @@ build() {
     -DPYTHON_LIBRARY=python$PYTHON_VER \
     -DPYTHON_INCLUDE_DIRS=/usr/include/python$PYTHON_VER \
     -DCMAKE_CXX_FLAGS="-I /usr/include/python$PYTHON_VER"
-  ninja -C build
+  cmake --build build
 }
 
 package() {
   cd "$_pkgname"
 
-  DESTDIR="${pkgdir}" ninja -C build install
+  DESTDIR="${pkgdir}" cmake --install build
   install -Dm755 release/bin/blender-softwaregl "${pkgdir}/usr/bin/blender-softwaregl"
   python -m compileall "${pkgdir}/usr/share/blender"
   python -O -m compileall "${pkgdir}/usr/share/blender"
