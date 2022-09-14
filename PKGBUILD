@@ -19,15 +19,14 @@ pkgbase=java17-jetbrains-imfix
 _pkgbase=java17-jetbrains
 pkgname=('jre17-jetbrains-imfix' 'jdk17-jetbrains-imfix')
 _majorver=17
-_ver=17.0.3
-_hgver=17.0.3
-_updatever=7
-_jbver1=498
-_jbver2=3
+_ver=17.0.4.1
+_hgver=17.0.4.1
+_updatever=1
+_jbver1=597
+_jbver2=1
 pkgrel=1
 pkgver=${_ver}.b${_jbver1}.${_jbver2}
 _hg_tag=jb${_hgver}-b${_jbver1}.${_jbver2}
-_jcef_commit=316db138ea00b1a814f92e3d2f853320e8ce73b5
 arch=('x86_64')
 url='https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime'
 license=('custom')
@@ -37,13 +36,11 @@ makedepends=('java-environment=17' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx
              'libnet' 'bash' 'harfbuzz' 'gcc-libs' 'glibc' 'jcef-jetbrains' 'git')
 options=(!lto)
 source=(git+https://github.com/JetBrains/JetBrainsRuntime.git#tag=$_hg_tag
-#        git+https://github.com/JetBrains/jcef.git#commit=$_jcef_commit
         idea.patch
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
 sha256sums=('SKIP'
-#            'SKIP'
             '5f984d2e050fb6a9cbc1d48df62cd3ca2ff705a8aaa7286913c337c02da9beda'
             '3d5ab2d5eaa994377de0554de5e59596f1fc7ab773e02d84aee83a568042b5ec'
             '442d17b0de7ddd4c49a392f4ccc60f3378b9cf54908081b802d98b89597b3ab8'
