@@ -1,7 +1,7 @@
 # Patched package:
 # Maintainer: Térence Clastres <t.clastres@gmail.com>
 # Co-maintainer: Saren Arterius <saren@wtako.net>
-# Co-maintainer: Sung Mingi <FiestaLake@protonmail.com>
+# Co-maintainer: Mingi Sung <FiestaLake@protonmail.com>
 # Contributor: Joakim Soderlund <joakim.soderlund@gmail.com>
 
 # Official package:
@@ -20,6 +20,7 @@ _merge_requests_to_use=('2487' '2506')
 # Remember to unset this variable when producing .SRCINFO
 : "${_disable_docs:=""}"
 
+
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=mutter-performance
@@ -28,7 +29,7 @@ if [ -n "$_disable_docs" ]; then
 else
   pkgname=(mutter-performance mutter-performance-docs)
 fi
-pkgver=42.4+r4+g29e7d2378
+pkgver=42.4+r8+g62447a32c
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -41,12 +42,12 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols sysprof gi-docgen)
 checkdepends=(xorg-server-xvfb pipewire-session-manager python-dbusmock)
-_commit=29e7d2378bedcdd36efea619520ff4afbad65f66  # tags/42.4^4
+_commit=62447a32c014c47cf2e7f5e4dab97c38c8dade6d  # tags/42.4^8
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr2487.patch'
         'mr2506.patch')
 sha256sums=('SKIP'
-            '52bd9644176327fc64846495bdd8d288890e5e6ee61195cd6ec4d762f74e7eb9'
+            'a33aeefb653da24cddee4118c9bdc9f07a8f1d71c2b4d0868c1c0184babd2f27'
             'd6aa7d5b62b522fe6c448ec0c54826acd9ae19d49389fa26a456e2cdfbdf3294')
 
 pkgver() {
