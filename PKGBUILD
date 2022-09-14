@@ -4,8 +4,8 @@
 pkgname=runebook-bin
 _pkgname=runebook
 __pkgname=RuneBook
-pkgver=1.16.0
-pkgrel=2
+pkgver=1.16.1
+pkgrel=1
 pkgdesc="Arcane Rune Pages manager for League of Legends"
 arch=('x86_64')
 url="https://github.com/Soundofdarkness/RuneBook"
@@ -15,7 +15,7 @@ source=(
   "runebook-logo.png::https://raw.githubusercontent.com/Soundofdarkness/Runebook/master/img/logo.png"
   "runebook.desktop"
 )
-sha256sums=("1c87ff07d5b943f4b7c3912a6aa8bfd3f37696661794cdffb01f53ec524f9c78" "SKIP" "SKIP")
+sha256sums=("28d04350e0d807ad153f730df1333d4424a7f30b9b2de54f5df5d860f4fc0f5d" "SKIP" "SKIP")
 
 package() {
   cd "${pkgdir}"
