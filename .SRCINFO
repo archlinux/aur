@@ -1,0 +1,12 @@
+pkgbase = shorter
+	pkgdesc = rename series to unified format
+	pkgver = 2.1
+	pkgrel = 0
+	url = https://code.obermui.de/markus/shorter
+	arch = any
+	license = GPL3+
+	depends = bash
+	source = https://code.obermui.de/markus/shorter/archive/v2.1.tar.gz
+	sha1sums = b2f245c4934ccdfa7694ace896fa69e4d8e5e295
+
+pkgname = shorter
