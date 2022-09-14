@@ -3,7 +3,7 @@
 
 _pkgname=nomad-driver-podman
 pkgname=${_pkgname}-git
-pkgver=v0.3.0.r13.g7e3d018
+pkgver=v0.4.0.r21.g39a4a50
 pkgrel=1
 pkgdesc="A nomad taskdriver for podman containers"
 arch=('x86_64')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --match'=v[0-9]*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
