@@ -1,32 +1,28 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=python-pip-audit
-pkgver=2.4.3
-pkgrel=2
+pkgver=2.4.4
+pkgrel=1
 pkgdesc='A tool for scanning Python environments for known vulnerabilities'
 arch=('any')
-url='https://github.com/trailofbits/pip-audit'
+url='https://github.com/pypa/pip-audit'
 license=('Apache')
 depends=(
+  'python-cachecontrol'
+  'python-cyclonedx-lib'
+  'python-dataclasses'
+  'python-html5lib'
+  'python-lockfile'
   # Upstream requires pip-api >= 0.0.28 but Arch’s Community
-  # repository is on 0.0.21, which causes an error message that
+  # repository is on 0.0.22, which causes an error message that
   # says “failed to list installed distributions.”
   # Once community/python-pip-api catches up to version 0.0.28,
   # remove the `>=0.0.28` part from the following line.
   'python-pip-api>=0.0.28'
   'python-pip-requirements-parser'
-  'python-packaging'
-  'python-dataclasses'
   'python-progress'
   'python-resolvelib'
-  'python-html5lib'
-  # Upstream requires cachecontrol >= 0.12.10 but Arch’s Community
-  # repository is at 0.12.6.
-  # The 0.12.6 version appears to work just fine, so let’s ignore
-  # the mismatch.
-  'python-cachecontrol'
-  'python-lockfile'
-  'python-cyclonedx-lib'
+  'python-rich'
 )
 makedepends=(
   'python-build'
@@ -36,8 +32,8 @@ makedepends=(
 )
 conflicts=('python-pip-audit-git')
 options=('!strip')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trailofbits/pip-audit/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('31b8aa10d0ab560bec43d7b77ca04b9262b7e757a01c226cba686a9e6e5bbe397c796f3da45fc57b377a73465e01b9064a4d5dd8b89ecb32589157392f6d8a4c')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pypa/pip-audit/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('4f381ee67a08c02ec54ac63dc2c14b064f3669bfed119ddfa0957f66fffa55bbe7f87ab362f8acf412a2a29be167a2d9542ba7190c4ad63a8d312469265ba100')
 
 build() {
   cd "${srcdir}/${pkgname#python-}-${pkgver}"
