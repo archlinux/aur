@@ -4,10 +4,10 @@ pkgname=hqplayer-embedded
 _debpkgver=4.32.5-143avx2
 _debpkgverarm=4.32.5-142
 pkgver=4.32.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Signalyst HQPlayer Embedded
  HQPlayer - the high-end upsampling multichannel software HD-audio player"
-arch=('x86_64' 'x86_64_v3' 'aarch64')
+arch=('x86_64' 'aarch64')
 url="http://www.signalyst.com/custom.html"
 license=('custom')
 depends=('alsa-lib' 'glibc' 'libusb-compat' 'flac' 'gcc-libs' 'libgmpris' 'glib2' 'rygel' 'zip' 'unzip' 'wavpack' 'gupnp' 'openmp' 'mpg123' 'lame')
@@ -26,7 +26,7 @@ sha256sums_aarch64=('e3eaad1e137e907527bac7c99abd33db7f2db7121e7a27b86e1ebb9a212
 install=${pkgname}.install
 
 package() {
- if [[ "$CARCH" = "x86_64" ]] || [[ "$CARCH" = "x86_64_v3" ]]; then
+ if [[ "$CARCH" = "x86_64" ]]; then
  bsdtar xf data.tar.zst -C "$pkgdir"
  else
  bsdtar xf data.tar.xz -C "$pkgdir"
