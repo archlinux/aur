@@ -1,5 +1,5 @@
 pkgbase = buildg-git
-	pkgdesc = buildg is a tool to interactively debug Dockerfile based on BuildKit.
+	pkgdesc = Buildg is a tool to interactively debug Dockerfile based on BuildKit.
 	pkgver = v0.4.1.r8.fe2b44d
 	pkgrel = 1
 	url = https://github.com/ktock/buildg
