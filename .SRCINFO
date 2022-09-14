@@ -1,0 +1,16 @@
+pkgbase = pikmin
+	pkgdesc = real-time strategy puzzle video game developed and published by Nintendo for the GameCube
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://en.wikipedia.org/wiki/Pikmin_(video_game)
+	arch = any
+	license = custom
+	depends = dolphin-emu
+	source = GPIP01.iso::https://archive.org/download/rr-nintendo-gamecube/europe/Pikmin%20%28E%29.7z/Pikmin%20%28E%29.iso
+	source = gamecube-template.desktop
+	source = com.nintendo.Pikmin.png::https://archive.ph/iMGvI/db3919adddaf0ceb42857428111bc97feefbe21d.jpg
+	sha512sums = 8bf2fff81e1d3af10d35b287af26da4d26b40d183dc32d9adb1784576d6404d9903a13c1e56e68e662695c8e43349bb4656df18040b2a5d15893e4da377c30ce
+	sha512sums = 64deb671d7251f9a97f82eb345799f5df8fa63fa1ebc8c8e1ee0c148af81ecdddfc85900be2957283507adc4fc90e78aef2723ad8b2f6c255d952c0b8ab29aa3
+	sha512sums = 3b1ac4f8840bda750a73fc8eb33920c9c16f9ad837efadfac07e3b7156a4b8b353c3d702cd150f527270bbb2270a07270eda148fed561bf6aba31f6c584f9147
+
+pkgname = pikmin
