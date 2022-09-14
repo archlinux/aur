@@ -1,12 +1,12 @@
 pkgbase = filen-desktop-appimage
 	pkgdesc = Filen.io Desktop Client - Zero knowledge end-to-end encrypted cloud storage
-	pkgver = 2.0.3
-	pkgrel = 2
+	pkgver = 2.0.4
+	pkgrel = 1
 	url = https://filen.io/
 	arch = x86_64
 	license = MIT
 	options = !strip
-	source = https://cdn.filen.io/desktop/release/2.0.3/filen_x86_64.AppImage
+	source = https://cdn.filen.io/desktop/release/2.0.4/filen_x86_64.AppImage
 	sha512sums = 83f61cbe06db5604736ee8f24ac8ae0dbdeea4b75467d90c963126169324c75a7c73c51c6ca5125507b77849f00de5133d36c103bb599a1f89c410c166ee364e
 
 pkgname = filen-desktop-appimage

@@ -1,8 +1,8 @@
 # Maintainer: Lukas Deutz <aur at deutz dot io>
 
 pkgname=filen-desktop-appimage
-pkgver=2.0.3
-pkgrel=2
+pkgver=2.0.4
+pkgrel=1
 pkgdesc="Filen.io Desktop Client - Zero knowledge end-to-end encrypted cloud storage"
 arch=('x86_64')
 url="https://filen.io/"
