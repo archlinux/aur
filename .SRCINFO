@@ -1,15 +1,20 @@
 pkgbase = intellij-idea-ultimate-edition
 	pkgdesc = An intelligent IDE for Java, Groovy and other programming languages with advanced refactoring features intensely focused on developer productivity.
-	pkgver = 2022.2.1
-	pkgrel = 2
+	pkgver = 2022.2.2
+	pkgrel = 1
 	url = https://www.jetbrains.com/idea/
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = custom:commercial
 	options = !strip
-	source = https://download.jetbrains.com/idea/ideaIU-2022.2.1.tar.gz
+	source = https://download.jetbrains.com/idea/ideaIU-2022.2.2.tar.gz
 	source = jetbrains-idea.desktop
-	sha256sums = 69d3600b94cdd45a0954d7424e6e87d86fb4c86f64974ff678ba6a4e2a885c47
+	sha256sums = bbc1793715c7a75228de6914bea0a881d982d38da3b48b89df08f08fbe8e5e54
 	sha256sums = 83af2ba8f9f14275a6684e79d6d4bd9b48cd852c047dacfc81324588fa2ff92b
+	source_aarch64 = https://cache-redirector.jetbrains.com/intellij-jbr/jbr-17.0.4-linux-aarch64-b469.53.tar.gz
+	source_aarch64 = https://github.com/JetBrains/intellij-community/raw/master/bin/linux/aarch64/fsnotifier
+	sha256sums_aarch64 = b86531e3bc2f3760636e818dab80f3967935ffdf77996b19fda2bdb72f9b258b
+	sha256sums_aarch64 = eb3c61973d34f051dcd3a9ae628a6ee37cd2b24a1394673bb28421a6f39dae29
 
 pkgname = intellij-idea-ultimate-edition
 	depends = giflib
@@ -21,5 +26,3 @@ pkgname = intellij-idea-ultimate-edition
 	backup = opt/intellij-idea-ultimate-edition/bin/idea.properties
 
 pkgname = intellij-idea-ultimate-edition-jre
-	arch = x86_64
-	arch = aarch64
