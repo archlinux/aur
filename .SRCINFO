@@ -1,6 +1,6 @@
 pkgbase = arsse
 	pkgdesc = Multi-protocol RSS/Atom newsfeed synchronization server
-	pkgver = 0.10.2
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = https://thearsse.com/
 	arch = any
@@ -19,12 +19,11 @@ pkgbase = arsse
 	backup = etc/webapps/arsse/apache/example.conf
 	backup = etc/webapps/arsse/apache/arsse.conf
 	backup = etc/webapps/arsse/apache/arsse-loc.conf
-	source = arsse-0.10.2.tar.gz::https://thearsse.com/releases/0.10.2.tar.gz
-	md5sums = ca93f28270fed3240ce9089e5d7a5f0c
+	source = arsse-0.10.3.tar.gz::https://thearsse.com/releases/0.10.3.tar.gz
+	md5sums = 69b0b8fa6522eba1079e4ba6d78f8a0c
 
 pkgname = arsse
 	depends = php>=7.1
 	depends = php-intl>=7.1
 	depends = php-sqlite>=7.1
 	depends = php-fpm>=7.1
-
