@@ -5,7 +5,7 @@
 
 pkgname=chromium
 pkgver=105.0.5195.125
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _gcc_patchset=1
 pkgdesc="A web browser built for speed, simplicity, and security"
