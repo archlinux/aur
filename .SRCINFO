@@ -1,7 +1,7 @@
 pkgbase = yesplz
 	pkgdesc = Unixporn.com image screenshot & uploader (Courtesy of sigFLUP)
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://uberleethackerforce.deepgeek.us/
 	arch = any
 	license = custom
