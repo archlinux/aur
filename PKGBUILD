@@ -1,14 +1,14 @@
-# Maintainer: haru_nak <uobikiemukot at gmail dot com>
+# Contributor: haru_nak <uobikiemukot at gmail dot com>
 pkgname=idump
 pkgver=0.2.0
 pkgrel=1
 pkgdesc="tiny image viewer for framebuffer"
 arch=('i686' 'x86_64')
-url="https://github.com/uobikiemukot/"
+url="https://github.com/uobikiemukot/idump"
 license=('MIT')
 depends=('libpng' 'libjpeg-turbo')
 makedepends=()
-source=($url/$pkgname/archive/v$pkgver.tar.gz)
+source=($url/archive/v$pkgver.tar.gz)
 
 build() {
   cd $srcdir/$pkgname-$pkgver
