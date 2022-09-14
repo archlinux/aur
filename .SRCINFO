@@ -1,7 +1,7 @@
 pkgbase = shorter
 	pkgdesc = rename series to unified format
 	pkgver = 2.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://code.obermui.de/markus/shorter
 	arch = any
 	license = GPL3+
