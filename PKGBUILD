@@ -2,12 +2,13 @@
 
 pkgname=python-mamba
 pkgver=0.11.2
-pkgrel=3
+pkgrel=4
 pkgdesc="The definitive testing tool for Python. Born under the banner of Behavior Driven Development."
 arch=('any')
 license=('MIT')
 url="https://nestorsalceda.github.io/mamba"
-depends=('python-coverage' 'python-watchdog' 'python-clint' 'python-setuptools')
+depends=('python-coverage' 'python-clint')
+makedepends=('python-setuptools')
 checkdepends=('python-doublex-expects')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nestorsalceda/mamba/archive/v$pkgver.tar.gz")
 sha512sums=('8ca6207c9df7b3388db8ecabd13456e54d8811c24f695ccc638c90bb2c975268f9e803533808f9b099651ee4744376fad3b58eaa84a6c97605631368f979915c')
@@ -32,5 +33,5 @@ check() {
 package() {
   cd mamba-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
-  install -D -m644 COPYING -t "$pkgdir"/usr/share/licenses/$pkgname/
+  install -Dm644 COPYING -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
