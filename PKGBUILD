@@ -1,7 +1,7 @@
 # Maintainer: Sahil Gupte <ovenoboyo@gmail.com>
 
 pkgname=moosync
-pkgver=5.0.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc='A simple music player'
 arch=('any')
@@ -11,8 +11,8 @@ provides=("${pkgname}")
 depends=('electron' 'libvips')
 makedepends=('nodejs' 'yarn' 'node-gyp')
 source=("${pkgname}-${pkgver}-prebuilt.tar::https://github.com/Moosync/Moosync/releases/download/v${pkgver}/Moosync-${pkgver}-linux-x64.pacman" "${pkgname}-${pkgver}.tar::https://github.com/Moosync/Moosync/archive/v${pkgver}.tar.gz" moosync moosync.desktop)
-sha256sums=('2962062fefec93c193369155b3f12aea7587e2fbaa62ab0d48da6920dfa5b62b'
-            '6cfb84d4cb48f4e5de5c9626dc5eec7ffa2b50e0f315950bff181b533002bf31'
+sha256sums=('51b21a04a48801554a12e9125c28c72198143386b2506871dfcf47308b38b3f9'
+            '4e536fd0adbe238afa393916b95b1e0c2ba1de00c79b2560d3ca136117e1ed1d'
             '36867efee6f9a491e64979ed329ce87f2136da2afcce4c9ef5696a9f2538d9ba'
             '4b63fa17717239db8a87ebeae1fdd96c5318b71d7d851d6c5a4f337793d3fecd')
 _sourcedirectory="Moosync-$pkgver"
