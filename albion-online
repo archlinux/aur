@@ -4,13 +4,7 @@ declare no_group="Please run the next command in your terminal to give your user
 declare no_sudo="Don't run this game as root(sudo)!! it could be a security risk!"
 
 if [[ "$USER" == "root" ]]; then
-    if zenity \
-           --info \
-           --text="$no_sudo"; then :
-    else
-        ## Zenity is not installed
-        printf "${no_sudo}\n"
-    fi
+    printf "${no_sudo}\n"
     exit 1
 fi
 
