@@ -1,5 +1,6 @@
+# Maintainer: ramen <hendrikschick@hndrkk.sh>
+# Contributor: Mélanie Chauvel (ariasuni) <perso@hack-libre.org>
 # Contributor: Crotok <crotok [at] mailbox [dot] org>
-# Maintainer: Mélanie Chauvel (ariasuni) <perso@hack-libre.org>
 
 _pkgbase=shub
 pkgname=shub-bin
