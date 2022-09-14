@@ -7,7 +7,7 @@
 # - the pure GTK3 rendering backend is enabled.
 # - the xwidgets is enabled (you can surf the Internet via 
 #   a modern browser(webkit) in Emacs!).
-# - link-time optimization is enabled by default.
+# - link-time optimization is disabled by default.
 # - use the fastest linker "mold".
 # - enalbe JIT and AOT compilation of emacs-lisp, which
 #   means built-in packages and your own packages are 
@@ -104,7 +104,7 @@ if [[ $CLI == "YES" ]] ; then
 else
 pkgname="emacs-pgtk-git"
 fi
-pkgver=29.0.50.159748
+pkgver=29.0.50.159759
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
