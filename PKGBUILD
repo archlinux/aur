@@ -29,12 +29,10 @@ build() {
   cd "$srcdir/$pkgname-${pkgver}.orig"
 
   # apply debian patches
-  for p in $(cat "$srcdir/debian/patches/series") ; do
-    patch -p 1 < "$srcdir/debian/patches/$p"
-  done
+  xargs -a "$srcdir/debian/patches/series" -d "\n" -i -P 1 -- patch -p 1 -i "$srcdir/debian/patches/{}"
 
   # apply long-options patch
-  patch -p 1 < "$srcdir/mp3rename-jf-long-options.patch"
+  patch -p 1 -i "$srcdir/mp3rename-jf-long-options.patch"
 
   # build binary
   make || return 1
