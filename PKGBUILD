@@ -72,6 +72,12 @@ _kyber_disable=y
 # 'none' - disable multigenerational LRU
 _lru_config='standard'
 
+### Enable per-VMA locking
+# ATTENTION - one of two predefined values should be selected!
+# 'standard' - enable per-VMA locking
+# 'stats' - enable per-VMA locking with stats
+_vma_config='standard'
+
 ## Enable DAMON
 _damon=
 
@@ -97,6 +103,14 @@ _disable_debug=y
 ## Enable zram/zswap ZSTD compression
 _zstd_compression=y
 
+### Selecting the ZSTD kernel and modules compression level
+# ATTENTION - one of two predefined values should be selected!
+# 'ultra' - highest compression ratio
+# 'normal' - standard compression ratio
+# WARNING: the ultra settings can sometimes
+# be counterproductive in both size and speed.
+_zstd_level_value='normal'
+
 # Clang LTO mode, only available with the "llvm" compiler - options are "no", "full" or "thin".
 # "full: uses 1 thread for Linking, slow and uses more memory, theoretically with the highest performance gains."
 # "thin: uses multiple threads, faster and uses less memory, may have a lower runtime performance than Full."
@@ -119,8 +133,20 @@ _build_zfs=
 # Enable bcachefs
 _bcachefs=
 
-if [ -n "$_use_llvm_lto" ]; then
+# Enable RT kernel
+_rtkernel=
+
+
+if [[ -n "$_use_llvm_lto" && -n "$_rtkernel" ]]; then
+    pkgsuffix=cachyos-rt-rc-lto
+    pkgbase=linux-$pkgsuffix
+
+elif [ -n "$_use_llvm_lto" ]; then
     pkgsuffix=cachyos-rc-lto
+    pkgbase=linux-$pkgsuffix
+    
+elif [ -n "$_rtkernel" ]; then
+    pkgsuffix=cachyos-rt-rc
     pkgbase=linux-$pkgsuffix
 
 else
@@ -130,7 +156,7 @@ fi
 _major=6.0
 _minor=0
 #_minorc=$((_minor+1))
-_rcver=rc4
+_rcver=rc5
 pkgver=${_major}.${_rcver}
 #_stable=${_major}.${_minor}
 #_stable=${_major}
@@ -163,7 +189,7 @@ fi
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
 source=(
     "https://github.com/torvalds/linux/archive/refs/tags/v${_major}-${_rcver}.tar.gz"
-    "config"
+    "config" "config-rt"
     "auto-cpu-optimization.sh"
     "${_patchsource}/all/0001-cachyos-base-all.patch")
 ## ZFS Support
@@ -211,10 +237,15 @@ if [ -n "$_use_kcfi" ]; then
 fi
 ## bcachefs Support
 if [ -n "$_bcachefs" ]; then
-    source+=("${_patchsource}/misc(0001-bcachefs-after-lru.patch")
+    source+=("${_patchsource}/misc/0001-bcachefs-after-lru.patch")
 fi
 
-export KBUILD_BUILD_HOST=archlinux
+## rt kernel
+if [ -n "$_rtkernel" ]; then
+    source+=("${_patchsource}/misc/0001-rt-rc.patch")
+fi
+
+export KBUILD_BUILD_HOST=cachyos
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
@@ -237,7 +268,11 @@ prepare() {
     done
 
     echo "Setting config..."
-    cp ../config .config
+    if [ -n "$_rtkernel" ]; then
+        cp ../config-rt .config
+    else
+        cp ../config .config
+    fi
 
     ### Select CPU optimization
     if [ -n "$_processor_opt" ]; then
@@ -251,6 +286,17 @@ prepare() {
     if [ -n "$_use_auto_optimization" ]; then
         "${srcdir}"/auto-cpu-optimization.sh
     fi
+
+    ### Selecting proper RT config
+    if [ -n "$_rtkernel" ]; then
+        echo "Setting proper RT config"
+        scripts/config --disable RCU_NOCB_CPU_CB_BOOST \
+            --enable RCU_NOCB_CPU_DEFAULT_ALL \
+            --enable HZ_1000 \
+            --set-val HZ 1000 \
+            --enable PREEMPT_RT \
+            --enable PREEMPT_LAZY
+     fi
 
     ### Selecting the CPU scheduler
     if [ "$_cpusched" = "bmq" ]; then
@@ -483,17 +529,17 @@ prepare() {
     ### Select LRU config
     if [ "$_lru_config" = "standard" ]; then
        echo "Enabling multigenerational LRU..."
-       scripts/config --enable CONFIG_LRU_GEN \
-           --enable CONFIG_LRU_GEN_ENABLED \
-           --disable CONFIG_LRU_GEN_STATS
+       scripts/config --enable LRU_GEN \
+           --enable LRU_GEN_ENABLED \
+           --disable LRU_GEN_STATS
     elif [ "$_lru_config" = "stats" ]; then
        echo "Enabling multigenerational LRU with stats..."
-       scripts/config --enable CONFIG_LRU_GEN \
-           --enable CONFIG_LRU_GEN_ENABLED \
-           --enable CONFIG_LRU_GEN_STATS
+       scripts/config --enable LRU_GEN \
+           --enable LRU_GEN_ENABLED \
+           --enable LRU_GEN_STATS
     elif [ "$_lru_config" = "none" ]; then
        echo "Disabling multigenerational LRU..."
-       scripts/config --disable CONFIG_LRU_GEN
+       scripts/config --disable LRU_GEN
     else
         if [ -n "$_lru_config" ]; then
            error "The value $_lru_config is invalid. Choose the correct one again."
@@ -501,6 +547,25 @@ prepare() {
            error "The value is empty. Choose the correct one again."
         fi
          error "Enabling multigenerational LRU failed!"
+         exit
+    fi
+
+    ### Select VMA config
+    if [ "$_vma_config" = "standard" ]; then
+       echo "Enabling per-VMA locking..."
+       scripts/config --enable PER_VMA_LOCK \
+           --disable PER_VMA_LOCK_STATS
+    elif [ "$_vma_config" = "stats" ]; then
+       echo "Enabling per-VMA locking with stats..."
+       scripts/config --enable PER_VMA_LOCK \
+           --enable PER_VMA_LOCK_STATS
+    else
+        if [ -n "$_vma_config" ]; then
+           error "The value $_vma_config is invalid. Choose the correct one again."
+        else
+           error "The value is empty. Choose the correct one again."
+        fi
+         error "Enabling per-VMA locking failed!"
          exit
     fi
 
@@ -588,9 +653,9 @@ prepare() {
             --disable LRNG_SELFTEST_PANIC
     fi
 
-    ### Enable ZSTD swap/zram compression
+    ### Enable zram/zswap ZSTD compression
     if [ -n "$_zstd_compression" ]; then
-        echo "Enabling zram ZSTD compression..."
+        echo "Enabling zram/swap ZSTD compression..."
         scripts/config --disable ZRAM_DEF_COMP_LZORLE \
             --enable ZRAM_DEF_COMP_ZSTD \
             --set-str ZRAM_DEF_COMP zstd \
@@ -599,6 +664,28 @@ prepare() {
             --set-str ZSWAP_COMPRESSOR_DEFAULT zstd \
             --enable ZRAM_ENTROPY \
             --set-val ZRAM_ENTROPY_THRESHOLD 100000
+    fi
+
+    ### Selecting the ZSTD modules and kernel compression level
+    if [ "$_zstd_level_value" = "ultra" ]; then
+        echo "Enabling highest ZSTD modules and kernel compression ratio..."
+        scripts/config --set-val MODULE_COMPRESS_ZSTD_LEVEL 19 \
+            --enable MODULE_COMPRESS_ZSTD_ULTRA \
+            --set-val MODULE_COMPRESS_ZSTD_LEVEL_ULTRA 22 \
+            --set-val ZSTD_COMP_VAL 22
+    elif [ "$_zstd_level_value" = "normal" ]; then
+        echo "Enabling standard ZSTD modules and kernel compression ratio..."
+        scripts/config --set-val MODULE_COMPRESS_ZSTD_LEVEL 9 \
+            --disable MODULE_COMPRESS_ZSTD_ULTRA \
+            --set-val ZSTD_COMP_VAL 19
+    else
+        if [ -n "$_zstd_level_value" ]; then
+            error "The value $_zstd_level_value is invalid. Choose the correct one again."
+        else
+            error "The value is empty. Choose the correct one again."
+        fi
+        error "Selecting the ZSTD modules and kernel compression level failed!"
+        exit
     fi
 
     ### Disable DEBUG
@@ -656,6 +743,7 @@ prepare() {
     echo "Rewrite configuration..."
     make ${BUILD_FLAGS[*]} prepare
     yes "" | make ${BUILD_FLAGS[*]} config >/dev/null
+    #make ${BUILD_FLAGS[*]} olddefconfig
     diff -u ../config .config || :
 
     ### Prepared version
@@ -836,8 +924,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('4b4d142d7c4307cc6ec17a984652b4e04c74dc4bccdd8adcb6c0572bce11ca48'
-            '2fbaccef60e929a901f965a29012b05de38b9424a10bb303513111d725c3ffec'
-            'ce8bf7807b45a27eed05a5e1de5a0bf6293a3bbc2085bacae70cd1368f368d1f'
-            '9dee9b14c1d47e86efbd107961b1af7405a0223614f80dc0f43f6e38a5929b0c'
-            '0d040413e03f25131760823d4f422e28c0cc438ea3b707c692f058d5690a98a3')
+sha256sums=('1842d4d5910e339806509c46e78268888f6a2d05c9d8277f93238b729d005a07'
+            '961728da1ea6a8a7b8a72971820acbec431e3f02e2949b7e94e828d7587d33ec'
+            'bce631b3669add1257269619dfb22b81ff25ab6b45ca7f75f08832e6c3a25c13'
+            'e1d45b5842079a5f0f53d7ea2d66ffa3f1497766f3ccffcf13ed00f1ac67f95e'
+            '1487d0e13b2829d360313a6243b244f29b4f348d2a7b77b6410051d72e75f907'
+            '1f1651126d1dd082f734ef65e08edb5093d6fe40c474e9e59fd89edea1338071')
