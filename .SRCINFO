@@ -1,6 +1,6 @@
 pkgbase = drawio-desktop
 	pkgdesc = Diagram drawing application built on web technology
-	pkgver = 20.2.8
+	pkgver = 20.3.0
 	pkgrel = 1
 	url = https://github.com/jgraph/drawio-desktop
 	arch = any
@@ -8,15 +8,15 @@ pkgbase = drawio-desktop
 	makedepends = yarn
 	makedepends = ant
 	makedepends = nodejs>=12
-	depends = electron19
+	depends = electron20
 	depends = libnotify
 	depends = shared-mime-info
 	options = !strip
-	source = drawio-20.2.8.tar.gz::https://github.com/jgraph/drawio/archive/v20.2.8.tar.gz
-	source = drawio-desktop-20.2.8.tar.gz::https://github.com/jgraph/drawio-desktop/archive/v20.2.8.tar.gz
+	source = drawio-20.3.0.tar.gz::https://github.com/jgraph/drawio/archive/v20.3.0.tar.gz
+	source = drawio-desktop-20.3.0.tar.gz::https://github.com/jgraph/drawio-desktop/archive/v20.3.0.tar.gz
 	source = drawio.xml
-	sha512sums = 877081969cc739d51409aa72352bbbe79f64b387ef9657a34e9660d143cf695061e77bc1770a8b38144422082b4f42b9f679149ee96356feb9fd62a7d38b7e2c
-	sha512sums = 8b2c2d90631725495d0be94182a9e83063fa6a4aba5233ee89937107dd12e97c17780c938de248321b8fa879c722e0349fb006a1e54507b8c6ddcd6938587bd3
+	sha512sums = d4b9d19e1986f8330ea84d8d92278dd1eb1a9c05ac7b799c1729b8a061fffb6a859792eb36500b2861429ad815f7443fdf2541e4ec3fffe3f6dd2abed5220f21
+	sha512sums = 92f037f019c650bfabde542cb0b791e20cde22f75f7fe6ec41f56f172f9f3d51b5aaa26cf36f8c4eaeddd357346d26d380773c9ab2ba16b2f533b7187d93644a
 	sha512sums = 8899108b4112f065173a077ca68d4d915780bcc993c69924098e134fa05338a20cb0391720b7b45c27071f789fbe5a6a02228dd633570e91fb4482082c480539
 
 pkgname = drawio-desktop
