@@ -1,0 +1,7 @@
+post_install() {  
+  echo "Please enable linger for your user and enable the nvda2speechd user unit"
+}
+
+post_upgrade() {
+ 	post_install
+}

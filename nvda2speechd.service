@@ -1,0 +1,9 @@
+[Unit]
+Description=nvda2speechd server
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/nvda2speechd
+
+[Install]
+WantedBy=default.target
