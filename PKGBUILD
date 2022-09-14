@@ -18,10 +18,10 @@ pkgname=()
 # use ROCm fork of tensorflow: https://github.com/ROCmSoftwarePlatform/tensorflow-upstream
 # take branch+commit from docker.io/rocm/tensorflow@lastest Dockerfile
 _id="4f7f7b9d6489de80eb81572ecc188af299e9e495"
-_srcname="tensorflow-upstream-$_id"
-_pkgver=2.9.2
-pkgver=2.9.2
-pkgrel=2
+_srcname="tensorflow"
+_pkgver=2.10.0
+pkgver=2.10.0
+pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning (AMD upstream)"
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -32,15 +32,13 @@ makedepends=('bazel' 'python-numpy' 'rocm-hip-sdk' 'miopen' 'hipsolver' 'rccl' '
              'python-keras-applications' 'python-keras-preprocessing'
              'cython')
 optdepends=('tensorboard: Tensorflow visualization toolkit')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/tensorflow/tensorflow/archive/v${_pkgver}.tar.gz"
-        fix-c++17-compat.patch
-        fix-cusolver-version.patch
-        "rocblas-version.patch::https://github.com/tensorflow/tensorflow/commit/322fe678e5b4c3b865774bf84c880030fc9eba24.patch")
+source=("tensorflow::git+https://github.com/ROCmSoftwarePlatform/tensorflow-upstream.git#branch=r2.10-rocm-enhanced"
+        "fix-c++17-compat.patch"
+        "fix-rocblas-include.patch")
 
-sha512sums=('bf8a6f16393499c227fc70f27bcfb6d44ada53325aee2b217599309940f60db8ee00dd90e3d82b87d9c309f5621c404edab55e97ab8bfa09e4fc67859b9e3967'
+sha512sums=('SKIP'
             'f682368bb47b2b022a51aa77345dfa30f3b0d7911c56515d428b8326ee3751242f375f4e715a37bb723ef20a86916dad9871c3c81b1b58da85e1ca202bc4901e'
-            '6f42455db1db0a5cd58ab5fe5554317e9ff648c046bb81cef9b4c61cce8380da08b681f825544b5388f02da863ff19f642efa9459691cbcf8852a21bd0dc7447'
-            'SKIP')
+            '4f88760a5e60c79ef29335eb511afef7f6b064f4b4820261f08c12f69d7ba1e3748fff480ee073d248b41aa56de642f69fa9e57ba106cd885ab47ca83d272353')
 
 # consolidate common dependencies to prevent mishaps
 _common_py_depends=(python-termcolor python-astor python-gast03 python-numpy python-protobuf
@@ -81,20 +79,12 @@ prepare() {
   # thinks about which versions should be used anyway. ;) (FS#68772)
   sed -i -E "s/'([0-9a-z_-]+) .= [0-9].+[0-9]'/'\1'/" $_srcname/tensorflow/tools/pip_package/setup.py
 
-  # manually specify cusolver .so version
-  patch -Np1 -i "${srcdir}/fix-cusolver-version.patch" -d tensorflow-${_pkgver}
-
-  cd "${srcdir}/tensorflow-${_pkgver}"
-  patch -Np1 -i "${srcdir}/rocblas-version.patch"
-
-  # change rocblas.h to rocblas/rocblas.h
-  sed -i 's/rocblas.h"/rocblas\/rocblas.h"/g' tensorflow/stream_executor/rocm/rocm_blas.h
-  sed -i 's/rocm\/include\/rocblas.h"/rocblas\/rocblas.h"/g' tensorflow/stream_executor/rocm/rocblas_wrapper.h
-
+  cd "${srcdir}/$_srcname"
+  patch -Np1 -i "${srcdir}/fix-rocblas-include.patch"
   cd "${srcdir}"
 
-  cp -r $_srcname tensorflow-${_pkgver}-amd
-  cp -r $_srcname tensorflow-${_pkgver}-opt-amd
+  cp -r $_srcname tensorflow-amd
+  cp -r $_srcname tensorflow-opt-amd
 
   # These environment variables influence the behavior of the configure call below.
   export PYTHON_BIN_PATH=/usr/bin/python
@@ -149,7 +139,7 @@ prepare() {
 build() {
   if [ "$_build_no_opt" -eq 1 ]; then
     echo "Building with rocm and without non-x86-64 optimizations"
-    cd "${srcdir}"/tensorflow-${_pkgver}-amd
+    cd "${srcdir}"/tensorflow-amd
     export CC_OPT_FLAGS="-march=x86-64"
     export TF_NEED_CUDA=0
     export TF_NEED_ROCM=1
@@ -167,7 +157,7 @@ build() {
 
   if [ "$_build_opt" -eq 1 ]; then
     echo "Building with rocm and with non-x86-64 optimizations"
-    cd "${srcdir}"/tensorflow-${_pkgver}-opt-amd
+    cd "${srcdir}"/tensorflow-opt-amd
     export CC_OPT_FLAGS="-march=haswell -O3"
     export TF_NEED_CUDA=0
     export TF_NEED_ROCM=1
@@ -226,10 +216,7 @@ _package() {
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 
   # Fix interoperability of C++14 and C++17. See https://bugs.archlinux.org/task/65953
-  patch -Np0 -i "${srcdir}"/fix-c++17-compat.patch -d "${pkgdir}"/usr/include/tensorflow/absl/base
-
-  # Fix FS#75571
-  find "${pkgdir}"/usr/lib -type f -exec patchelf --replace-needed libiomp5.so libomp.so '{}' \; -print
+  # patch -Np0 -i "${srcdir}"/fix-c++17-compat.patch -d "${pkgdir}"/usr/include/tensorflow/absl/base
 }
 
 _python_package() {
@@ -259,7 +246,7 @@ package_tensorflow-amd() {
   conflicts=(tensorflow tensorflow-rocm)
   provides=(tensorflow tensorflow-rocm)
 
-  cd "${srcdir}"/tensorflow-${_pkgver}-amd
+  cd "${srcdir}"/tensorflow-amd
   _package tmprocm
 }
 
@@ -269,7 +256,7 @@ package_tensorflow-opt-amd() {
   conflicts=(tensorflow tensorflow-rocm)
   provides=(tensorflow tensorflow-rocm tensorflow-amd)
 
-  cd "${srcdir}"/tensorflow-${_pkgver}-opt-amd
+  cd "${srcdir}"/tensorflow-opt-amd
   _package tmpoptrocm
 }
 
@@ -279,7 +266,7 @@ package_python-tensorflow-amd() {
   conflicts=(python-tensorflow python-tensorflow-rocm)
   provides=(python-tensorflow python-tensorflow-rocm)
 
-  cd "${srcdir}"/tensorflow-${_pkgver}-amd
+  cd "${srcdir}"/tensorflow-amd
   _python_package tmprocm
 }
 
@@ -289,7 +276,7 @@ package_python-tensorflow-opt-amd() {
   conflicts=(python-tensorflow python-tensorflow-rocm)
   provides=(python-tensorflow python-tensorflow-rocm python-tensorflow-amd)
 
-  cd "${srcdir}"/tensorflow-${_pkgver}-opt-amd
+  cd "${srcdir}"/tensorflow-opt-amd
   _python_package tmpoptrocm
 }
 
