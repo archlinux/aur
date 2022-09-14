@@ -1,23 +1,17 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-doublex
-pkgver=1.9.3
-# Upstream forgot to push tags and ignored my notice
-_commit=fe03fcb4672d
-pkgrel=2
+pkgver=1.9.4
+pkgrel=1
 pkgdesc="Powerful test doubles framework for Python"
 arch=('any')
 license=('GPL')
 url="https://github.com/davidvilla/python-doublex"
-depends=('python-pyhamcrest')
+depends=('python-pyhamcrest' 'python-six')
 makedepends=('python-setuptools')
-checkdepends=('python-nose')
-source=("$pkgname-$pkgver.tar.bz2::https://bitbucket.org/DavidVilla/python-doublex/get/$_commit.tar.bz2")
-sha512sums=('e3ca091c4794f1054779364bf9d13b188c0cecb2b7afbe87c7fa05c79182c4d7fcca171e9bfc52d7603f1a7280e0a62b04bcd834d4cf7bc7b32b701e8224b764')
-
-prepare() {
-  mv DavidVilla-python-doublex-* python-doublex-$pkgver
-}
+checkdepends=('python-nose2')
+source=("https://github.com/davidvilla/python-doublex/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha512sums=('0cec6ad2fc7fca9e7bd2833f0466e82483c87f72a41b833fd675005bc574c1b2c1b975501a182b0b17604717a757694ffb3757eda340a8346ef93009e23c3f5b')
 
 build() {
   cd python-doublex-$pkgver
@@ -26,8 +20,7 @@ build() {
 
 check() {
   cd python-doublex-$pkgver
-  # https://bitbucket.org/DavidVilla/python-doublex/issues/6/more-failing-tests-with-python-39
-  python setup.py test || :
+  nose2
 }
 
 package() {
