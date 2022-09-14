@@ -1,35 +1,41 @@
-# Maintainer: Solomon Choina <shlomochoina@gmail.com 
+# Maintainer: Andrea Manenti <andrea [dot] manenti [at] yahoo [dot] com>
+
 _hkgname=semigroups
 pkgname=haskell-semigroups
-pkgver=0.19.1
+pkgver=0.20
 pkgrel=1
 pkgdesc="Anything that associates"
-url="http://hackage.haskell.org/package/${_hkgname}"
-license=('custom:BSD3')
-arch=('i686' 'x86_64')
-makedepends=(ghc)
-depends=('haskell-bytestring' 'haskell-deepseq' 'haskell-ghc-prim' 'haskell-containers' 'haskell-hashable' 'haskell-nats' 'haskell-text' 'haskell-unordered-containers')
-source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
-sha256sums=('79e761e64b862564a3470d5d356cb6b060b14452d675859aed3b2d1e14646648')
+url="http://github.com/ekmett/semigroups/"
+license=("BSD")
+arch=('x86_64')
+depends=('ghc-libs')
+makedepends=('ghc')
+source=("https://hackage.haskell.org/packages/archive/$_hkgname/$pkgver/$_hkgname-$pkgver.tar.gz")
+sha256sums=('902d2e33c96b40a89de5957f2a9e097197afcc35e257e45b32ebe770993673e1')
+
 build() {
-    cd ${srcdir}/${_hkgname}-${pkgver}
-    runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
-        --prefix=/usr --docdir="/usr/share/doc/${pkgname}" \
-        --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid
-    runhaskell Setup build
-    runhaskell Setup haddock
-    runhaskell Setup register   --gen-script
-    runhaskell Setup unregister --gen-script
-    sed -i -r -e "s|ghc-pkg.*update[^ ]* |&'--force' |" register.sh
-    sed -i -r -e "s|ghc-pkg.*unregister[^ ]* |&'--force' |" unregister.sh
+  cd $_hkgname-$pkgver
+
+  runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
+    --prefix=/usr --docdir=/usr/share/doc/$pkgname --datasubdir=haskell-semigroups --enable-tests \
+    --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid \
+    --ghc-option=-optl-Wl\,-z\,relro\,-z\,now \
+    --ghc-option='-pie' \
+    -fbinary -fbytestring -f-bytestring-builder -fcontainers -fdeepseq -fhashable -ftagged -ftemplate-haskell -ftext -ftransformers -funordered-containers
+
+  runhaskell Setup build
+  runhaskell Setup register --gen-script
+  runhaskell Setup unregister --gen-script
+  sed -i -r -e "s|ghc-pkg.*update[^ ]* |&'--force' |" register.sh
+  sed -i -r -e "s|ghc-pkg.*unregister[^ ]* |&'--force' |" unregister.sh
 }
+
 package() {
-    cd ${srcdir}/${_hkgname}-${pkgver}
-    install -D -m744 register.sh   ${pkgdir}/usr/share/haskell/${pkgname}/register.sh
-    install    -m744 unregister.sh ${pkgdir}/usr/share/haskell/${pkgname}/unregister.sh
-    install -d -m755 ${pkgdir}/usr/share/doc/ghc/html/libraries
-    ln -s /usr/share/doc/${pkgname}/html ${pkgdir}/usr/share/doc/ghc/html/libraries/${_hkgname}
-    runhaskell Setup copy --destdir=${pkgdir}
-    install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-    rm -f ${pkgdir}/usr/share/doc/${pkgname}/LICENSE
+  cd $_hkgname-$pkgver
+
+  install -D -m744 register.sh "$pkgdir"/usr/share/haskell/register/$pkgname.sh
+  install -D -m744 unregister.sh "$pkgdir"/usr/share/haskell/unregister/$pkgname.sh
+  runhaskell Setup copy --destdir="$pkgdir"
+  install -D -m644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
+  rm -f "$pkgdir"/usr/share/doc/$pkgname/LICENSE
 }

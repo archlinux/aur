@@ -1,22 +1,13 @@
 pkgbase = haskell-semigroups
 	pkgdesc = Anything that associates
-	pkgver = 0.19.1
+	pkgver = 0.20
 	pkgrel = 1
-	url = http://hackage.haskell.org/package/semigroups
-	arch = i686
+	url = http://github.com/ekmett/semigroups/
 	arch = x86_64
-	license = custom:BSD3
+	license = BSD
 	makedepends = ghc
-	depends = haskell-bytestring
-	depends = haskell-deepseq
-	depends = haskell-ghc-prim
-	depends = haskell-containers
-	depends = haskell-hashable
-	depends = haskell-nats
-	depends = haskell-text
-	depends = haskell-unordered-containers
-	source = http://hackage.haskell.org/packages/archive/semigroups/0.19.1/semigroups-0.19.1.tar.gz
-	sha256sums = 79e761e64b862564a3470d5d356cb6b060b14452d675859aed3b2d1e14646648
+	depends = ghc-libs
+	source = https://hackage.haskell.org/packages/archive/semigroups/0.20/semigroups-0.20.tar.gz
+	sha256sums = 902d2e33c96b40a89de5957f2a9e097197afcc35e257e45b32ebe770993673e1
 
 pkgname = haskell-semigroups
-
