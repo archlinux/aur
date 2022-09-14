@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=codevis-git
-pkgver=0.2.0.r0.g996843a
+pkgver=0.2.0.r5.gcbb3331
 pkgrel=1
 pkgdesc="A tool for turning your code into one large image (git)"
 arch=('x86_64')
@@ -12,10 +12,8 @@ depends=('gcc-libs')
 makedepends=('cargo' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
-source=("git+${url}"
-	"${pkgname}-cargo-lock.patch::${url}/commit/2d54517261524a4cadb884046658c4437ec1256b.patch")
-sha512sums=('SKIP'
-            '789c9859b7df333e1438c45ef96743fbb6cd429ae868de0d599137d99961fcec78978d7a7f321a16a965f1587fa2a163633e8f0249dc9cef86f79d76d30aabe1')
+source=("git+${url}")
+sha512sums=('SKIP')
 options=('!lto')
 
 pkgver() {
@@ -25,7 +23,6 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  patch -Np1 -i "../${pkgname}-cargo-lock.patch"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
