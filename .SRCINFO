@@ -1,17 +1,20 @@
 pkgbase = sigma
 	pkgdesc = Generic Signature Format for SIEM Systems
-	pkgver = 0.19.1
+	pkgver = 0.22.1
 	pkgrel = 1
-	url = https://github.com/Neo23x0/sigma
+	url = https://github.com/sigmahq/sigma
 	arch = any
 	license = LGPL3
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	depends = python-yaml
-	depends = python-argparse
-	depends = python-urllib3
+	makedepends = python-wheel
+	depends = python>=3.8
+	depends = python-progressbar
 	depends = python-pymisp
-	source = sigma-0.19.1.tar.gz::https://github.com/Neo23x0/sigma/archive/0.19.1.tar.gz
-	sha256sums = 344fce7b04844f84dbbf793d2aaec37f49ff030a9595399e09042bac0c743d71
+	depends = python-ruamel-yaml
+	depends = python-yaml
+	source = sigma-0.22.1.tar.gz::https://files.pythonhosted.org/packages/source/s/sigmatools/sigmatools-0.22.1.tar.gz
+	sha256sums = 17c6b5c46eedd651cf32abcea71e4851905e6cd7595c626342a9c5734f69ca71
 
 pkgname = sigma
-
