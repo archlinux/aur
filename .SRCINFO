@@ -1,6 +1,6 @@
 pkgbase = vt-cli
 	pkgdesc = VirusTotal Command Line Interface
-	pkgver = 0.10.2
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = https://virustotal.github.io/vt-cli/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = vt-cli
 	license = Apache
 	makedepends = go
 	depends = glibc
-	source = https://github.com/VirusTotal/vt-cli/archive/0.10.2/vt-cli-0.10.2.tar.gz
-	sha256sums = 09953ce45c2fbf872f70294d5fb58e856c0167ed6a7e1312f770e45bab18356b
+	source = https://github.com/VirusTotal/vt-cli/archive/0.10.3/vt-cli-0.10.3.tar.gz
+	sha256sums = ca1a37c40b8fc7f328f412d19dd54a36180894ac1e6c233b53af84ca23deb0d5
 
 pkgname = vt-cli

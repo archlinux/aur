@@ -1,6 +1,6 @@
 # Maintainer: ml <>
 pkgname=vt-cli
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 pkgdesc='VirusTotal Command Line Interface'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("https://github.com/VirusTotal/vt-cli/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('09953ce45c2fbf872f70294d5fb58e856c0167ed6a7e1312f770e45bab18356b')
+sha256sums=('ca1a37c40b8fc7f328f412d19dd54a36180894ac1e6c233b53af84ca23deb0d5')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -22,6 +22,7 @@ build() {
   go build -o build/vt -ldflags "-linkmode=external -X github.com/VirusTotal/vt-cli/cmd.Version=$pkgver" ./vt
   build/vt completion bash >vt.bash
   build/vt completion zsh >vt.zsh
+  build/vt completion fish >vt.fish
 }
 
 check() {
@@ -32,8 +33,9 @@ check() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755  build/vt -t "$pkgdir/usr/bin"
+  install -Dm755 build/vt -t "$pkgdir/usr/bin"
   install -Dm644 vt.bash "$pkgdir/usr/share/bash-completion/completions/vt"
   install -Dm644 vt.zsh "$pkgdir/usr/share/zsh/site-functions/_vt"
+  install -Dm644 vt.fish "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname".fish
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" doc/*
 }
