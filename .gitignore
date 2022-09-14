@@ -1,4 +1,5 @@
 pkg
 src
 *-git
-*.pkg.tar.zst
+*.tar.*
+*.log
