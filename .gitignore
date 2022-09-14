@@ -1,8 +1,5 @@
-*.zip
-*.zst
-*.png
-src/
-pkg/
+src
+pkg
 *.log
-*.log.*
+*.tar*
 

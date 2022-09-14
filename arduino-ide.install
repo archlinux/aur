@@ -1,6 +1,6 @@
 post_install() {
   echo "
-You need to have a valid arduino-cli.yaml config present. You can generate one with
+You may need to create a valid arduino-cli.yaml config for the IDE to work. You can generate one with
 
   arduino-cli config init
 
