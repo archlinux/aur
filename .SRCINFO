@@ -1,6 +1,6 @@
 pkgbase = edit-git
 	pkgdesc = An experimental text editor, a relaxing mix of vi & acme.
-	pkgver = 0.r309.b1634e6
+	pkgver = 0.r321.bc24e3d
 	pkgrel = 1
 	url = http://c9x.me/edit/
 	install = echo.install
@@ -14,4 +14,3 @@ pkgbase = edit-git
 	md5sums = SKIP
 
 pkgname = edit-git
-

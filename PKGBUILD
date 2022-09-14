@@ -1,26 +1,14 @@
-# Maintainer: aksr <aksr at t-com dot me>
+# Contributor: aksr <aksr at t-com dot me>
 pkgname=edit-git
-pkgver=0.r309.b1634e6
+pkgver=0.r321.bc24e3d
 pkgrel=1
-epoch=
 pkgdesc="An experimental text editor, a relaxing mix of vi & acme."
 arch=('i686' 'x86_64')
 url="http://c9x.me/edit/"
 license=('unknown')
-groups=()
-depends=('')
 makedepends=('git' 'texlive-bin' 'texlive-core')
-optdepends=()
-checkdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-changelog=
 install=echo.install
 source=("$pkgname::git://c9x.me/ed.git")
-noextract=()
 md5sums=('SKIP')
 
 pkgver() {
