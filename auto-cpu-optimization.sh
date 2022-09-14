@@ -1,7 +1,7 @@
 #!/bin/bash
 CPU=$(gcc -Q -march=native --help=target|grep march=|awk '{print $2}'|head -1)
 MARCH=$(echo $CPU|tr '[:lower:]' '[:upper:]'&&echo)
-if [[ ${MARCH} == "ZNVER" ]]; then
+if [[ ${MARCH} == "ZNVER1" ]]; then
     MARCH="ZEN"
 elif [[ ${MARCH} == "ZNVER2" ]]; then
     MARCH="ZEN2"
@@ -29,6 +29,10 @@ elif [[ ${MARCH} == "GOLDMONT-PLUS" ]]; then
     MARCH="GOLDMONTPLUS"
 elif [[ ${MARCH} == "SKYLAKE-AVX512" ]]; then
     MARCH="SKYLAKE2"
+elif [[ ${MARCH} == "MIVYBRIDGE" ]]; then
+    scripts/config --disable CONFIG_AGP_AMD64 
+    scripts/config --disable CONFIG_MICROCODE_AMD
+    MARCH="MIVYBRIDGE"
 elif [[ ${MARCH} == "ICELAKE-CLIENT" ]]; then
     MARCH="ICELAKE"
 fi
