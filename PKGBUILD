@@ -1,27 +1,28 @@
 # Maintainer: Dmitry Valter <`echo ZHZhbHRlciA8YXQ+IHByb3Rvbm1haWwgPGRvdD4gY29tCg== | base64 -d`>
 
 pkgname=drawio-desktop
-pkgver=20.2.8
+pkgver=20.3.0
 pkgrel=1
 pkgdesc='Diagram drawing application built on web technology'
 arch=('any')
 url='https://github.com/jgraph/drawio-desktop'
 license=('Apache')
-depends=(electron19 libnotify shared-mime-info)
+depends=(electron20 libnotify shared-mime-info)
 makedepends=(yarn ant 'nodejs>=12')
 options=('!strip')
 source=("drawio-$pkgver.tar.gz::https://github.com/jgraph/drawio/archive/v$pkgver.tar.gz"
         "drawio-desktop-$pkgver.tar.gz::https://github.com/jgraph/drawio-desktop/archive/v$pkgver.tar.gz"
         "drawio.xml")
-sha512sums=('877081969cc739d51409aa72352bbbe79f64b387ef9657a34e9660d143cf695061e77bc1770a8b38144422082b4f42b9f679149ee96356feb9fd62a7d38b7e2c'
-            '8b2c2d90631725495d0be94182a9e83063fa6a4aba5233ee89937107dd12e97c17780c938de248321b8fa879c722e0349fb006a1e54507b8c6ddcd6938587bd3'
+sha512sums=('d4b9d19e1986f8330ea84d8d92278dd1eb1a9c05ac7b799c1729b8a061fffb6a859792eb36500b2861429ad815f7443fdf2541e4ec3fffe3f6dd2abed5220f21'
+            '92f037f019c650bfabde542cb0b791e20cde22f75f7fe6ec41f56f172f9f3d51b5aaa26cf36f8c4eaeddd357346d26d380773c9ab2ba16b2f533b7187d93644a'
             '8899108b4112f065173a077ca68d4d915780bcc993c69924098e134fa05338a20cb0391720b7b45c27071f789fbe5a6a02228dd633570e91fb4482082c480539')
 
 build() {
-  cd "$srcdir/drawio-$pkgver"/etc/build
+  rm -rf "$srcdir/drawio-desktop-$pkgver/drawio"
+  mv "$srcdir/drawio-$pkgver" "$srcdir/drawio-desktop-$pkgver/drawio"
+  cd "$srcdir/drawio-desktop-$pkgver"/drawio/etc/build
   ant app
-  cd "$srcdir/drawio-$pkgver"/src/main/webapp
-  cp "$srcdir/drawio-desktop-$pkgver"/package.json "$srcdir/drawio-$pkgver"/src/main/webapp/package.json
+  cd "$srcdir/drawio-desktop-$pkgver"/drawio/src/main/webapp
 
   rm -rf "META-INF" "WEB-INF"
 
@@ -36,12 +37,10 @@ build() {
   # fix version in package.json
   sed -i 's/"version": ".*"/"version": "'"$pkgver"'"/g' package.json
 
+  cd "$srcdir/drawio-desktop-$pkgver"
   yarn install --cache-folder ../npm-cache --prod
   yarn autoclean -I
   yarn autoclean -F
-
-  # remove paths refering build directories
-  find . -name 'package.json' -exec sed "s,$srcdir/src/drawio-$pkgver/src/main/webapp,/usr/lib/drawio,g" -i {} \;
 
   rm -f 'package-lock.json'
   find . -name '.yarnclean'         -exec rm -fv {} \;
@@ -62,10 +61,10 @@ build() {
 }
 
 package() {
-  cd "$srcdir/drawio-$pkgver"/src/main/webapp
+  cd "$srcdir/drawio-desktop-$pkgver"
 
-  mkdir -p "$pkgdir/usr/lib"
-  cp -rp . "$pkgdir/usr/lib/draw.io"
+  mkdir -p "$pkgdir/usr/lib/draw.io"
+  cp -rp package.json *.js drawio node_modules "$pkgdir/usr/lib/draw.io"
 
   # fix file permissions
   chmod -R g+r,o+r "$pkgdir/usr/lib/draw.io"
