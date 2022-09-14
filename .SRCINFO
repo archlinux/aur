@@ -1,0 +1,17 @@
+pkgbase = pods
+	pkgdesc = A Podman desktop application
+	pkgver = 1.0.0_beta.2
+	pkgrel = 1
+	url = https://github.com/marhkb/pods
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = meson
+	makedepends = cargo
+	depends = libadwaita-git
+	depends = podman
+	source = https://github.com/marhkb/pods/archive/v1.0.0-beta.2.tar.gz
+	b2sums = 4ed40cde44f7127c7138dc3098cd9636f8acc70765b994adbfcfb2c03d2ea72c1dc27eec0d9d2190aa542a01943f24b17f7b897b1701804a08d6cfe5dbfae741
+
+pkgname = pods
