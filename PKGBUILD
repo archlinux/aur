@@ -4,8 +4,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=105.0.5195.102
-pkgrel=2
+pkgver=105.0.5195.125
+pkgrel=1
 _launcher_ver=8
 _gcc_patchset=1
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -31,7 +31,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         roll-src-third_party-ffmpeg.patch
         angle-wayland-include-protocol.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('1cba0527c951e3c506ade96cf6ec2507ee9d43661764731ed896348182369262'
+sha256sums=('201b5c44668a415e3e05c0a806ab43a0904024340531332fc3ce39eb0cf10a66'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'f0c437c02cab7a6efc958f82fbb4ea35d5440f73d65731bad7c0dcaecb932121'
             '5db1fae8a452774b5b177e493a2d1a435b980137b16ed74616d1fb86fe342ec7'
