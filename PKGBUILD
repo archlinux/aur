@@ -2,8 +2,8 @@
 
 pkgname=apipost-bin
 _pkgname=${pkgname%-bin}
-pkgver=7.0.2
-pkgrel=2
+pkgver=7.0.3
+pkgrel=1
 pkgdesc="An API debugging and management tool that supports team collaboration and can generate documents directly."
 arch=('x86_64')
 url="https://www.apipost.cn/"
