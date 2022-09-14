@@ -1,3 +1,12 @@
+# 10.0.19-1 / 2022-09-13
+
+* bump to new library version
+	* fixes more issues with reconnection
+	* see library changelog for full list
+* known issue with the coroutine code
+	* patched in the package
+	* feedback for the coroutines still wanted
+
 # 10.0.18-1 / 2022-09-05
 
 * bump to new library version
@@ -79,7 +88,7 @@
 # 10.0.10-1 / 2022-06-14
 
 * first build on the AUR
-	* preceeded by a bunch of test builds and finetuning
+	* preceded by a bunch of test builds and finetuning
 	* consulted and collaborated with upstream
 * cmake integration is semibroken as mentioned in .install
 	* attempts were made to narrow it down a bit

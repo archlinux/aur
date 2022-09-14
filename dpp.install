@@ -18,7 +18,7 @@ post_install() {
 post_upgrade() {
 	echo -e "\e[1;33mEmbedded fmt have been completely dropped off the package.\e[0m"
 	echo -e "\e[1;33mWe already replaced that by systemwide version.\e[0m"
-	echo -e "\e[1;33mJust mind that it's not longer a dependency.\e[0m"
+	echo -e "\e[1;33mJust mind that it's no longer a dependency.\e[0m"
 	echo ""
 	echo -e "\e[32mPackage now includes experimental coroutine support.\e[0m"
 	echo -e "\e[32mIt's not considered production ready, but it's available for your experiments.\e[0m"

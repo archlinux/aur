@@ -2,7 +2,7 @@
 # See also https://github.com/eremiell-aur/dpp
 pkgname=dpp
 _pkgname=DPP
-pkgver=10.0.18
+pkgver=10.0.19
 pkgrel=1
 pkgdesc="Lightweight and Scalable C++ Discord API Bot Library"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('cmake')
 install="${pkgname}.install"
 changelog="${pkgname}.changelog"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/brainboxdotcc/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0d976673852a5d8e71833d5f6a5b9767ffaf6b6a053d8420fa921adfcb80ab64')
+sha256sums=('1126d927540715f7405d5bc33bd7ae54314431c7b1545bb5e886addfc547cf51')
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -24,6 +24,7 @@ prepare() {
 	mv "cmake/libdpp-config.cmake" "cmake/dpp-config.cmake"
 	sed -i -E "s/^.*dpp\/nlohmann.*$//" "library/CMakeLists.txt"
 	rm -rf "include/dpp/nlohmann"
+	sed -i -E -e "s/std::map<event_handle, std::function<void\(const T\)>> coroutine_container;/std::map<event_handle, std::function<dpp::task(T)>> coroutine_container;\n#else\n    \/**\n     * @brief Dummy container to keep the struct size same\n     *\/\n    std::map<event_handle, std::function<void(T)>> dummy_container;/" -e "s/event_handle attach\(std::function<dpp::task\(const T&\)> func\) \{/event_handle co_attach(std::function<dpp::task(T)> func) {/" "include/dpp/cluster.h"
 }
 
 build() {
