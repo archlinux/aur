@@ -1,7 +1,7 @@
 pkgbase = protocase-designer
 	pkgdesc = The fastest and easiest way to design, price, and build custom electronics enclosures.
 	pkgver = 6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.protocasedesigner.com/
 	arch = x86_64
 	license = custom
