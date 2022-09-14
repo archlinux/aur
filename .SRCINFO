@@ -8,6 +8,8 @@ pkgbase = isc-stork
 	makedepends = rake
 	makedepends = git
 	makedepends = python
+	makedepends = wget
+	makedepends = unzip
 	depends = glibc
 	backup = etc/stork
 	source = git+https://gitlab.isc.org/isc-projects/stork.git#tag=v1.6.0

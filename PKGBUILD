@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://gitlab.isc.org/isc-projects/stork'
 license=('MPL2')
 depends=('glibc')
-makedepends=('rake' 'git' 'python')
+makedepends=('rake' 'git' 'python' 'wget' 'unzip')
 backup=('etc/stork')
 source=("git+https://gitlab.isc.org/isc-projects/${_pkgname}.git#tag=v${pkgver}"
         "isc-stork.sysuser")
