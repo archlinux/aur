@@ -1,39 +1,60 @@
-# Maintainer: Jiehong Ma <email@majiehong.com>
+# Maintainer: Andrea Manenti <andrea [dot] manenti [at] yahoo [dot] com>
 
 pkgname=ihaskell-git
-pkgver=0.8.4
+pkgver=2129.e0c1a8d
 pkgrel=1
-pkgdesc="A Haskell kernel for Jupyter, built in a sandbox."
-arch=('i686' 'x86_64')
+pkgdesc="A Haskell backend kernel for the IPython project"
+arch=('x86_64')
 url="https://github.com/gibiansky/IHaskell"
 license=('MIT')
-depends=('python-pyzmq' 'jupyter' 'stack' 'ghc')
-makedepends=('git' 'happy' 'haskell-gtk2hs-buildtools')
-provides=('ihaskell')
+depends=('ghc-libs' 'haskell-aeson' 'haskell-base64-bytestring' 'haskell-cmdargs' 'haskell-ghc'
+         'haskell-ghc-parser' 'haskell-ghc-paths' 'hlint' 'haskell-http-client' 'haskell-http-client-tls'
+         'haskell-ipython-kernel' 'haskell-random' 'haskell-shelly' 'haskell-split' 'haskell-strict'
+         'haskell-unordered-containers' 'haskell-utf8-string' 'haskell-vector' 'jupyterlab')
+makedepends=('git' 'ghc' 'haskell-hunit' 'haskell-here' 'haskell-hspec' 'haskell-hspec-contrib'
+             'haskell-raw-strings-qq' 'haskell-setenv' 'fakechroot' 'ghc-static')
 conflicts=()
 source=("git+https://github.com/gibiansky/IHaskell")
-sha512sums=('SKIP')
-
-prepare()
-{
-  cd "$srcdir/IHaskell"
-}
+sha256sums=('SKIP')
 
 build() {
-  export STACK_ROOT="$HOME/.stack/"
-  cd "$srcdir/IHaskell"
-  stack setup
-  printf '%s\n' 'If you never used stack before, run `stack init` first.'
-  stack install ghc-parser --no-copy-bins
-  stack install ipython-kernel --no-copy-bins
-  stack install system-argv0 --no-copy-bins
-  stack install ihaskell --no-copy-bins
-  stack build
-  stack build
+  cd IHaskell
+
+  runhaskell Setup configure --ghc-option='-dynamic' --prefix=/usr --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid --enable-tests
+
+  runhaskell Setup build
+}
+
+ check() {
+   cd IHaskell
+   export PATH=$PWD/dist/build/ihaskell:$PATH
+   export GHC_PACKAGE_PATH=$PWD/dist/package.conf.inplace/:$GHC_PACKAGE_PATH
+   runhaskell Setup test
 }
 
 package() {
-  printf '\n%s\n' 'Now, install ihaskell with `ihaskell install`, and enjoy it in `jupyter notebook`!'
-  printf '%s\n\n' 'Also make sure to set resolver to `resolver: lts-6.2` in your ~/.stack/global/stack.yaml file.'
-  printf '%s\n' 'If you run in any issue, make sure to check that you initialiazed stack with `stack init`' 'But change the resolver as mentionned'
+  cd IHaskell
+
+  runhaskell Setup copy --destdir="$pkgdir"
+  install -D -m644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
+
+  _ghc_ver=$(ghc -V | sed -e 's/[A-Za-z, ]\+\([0-9.]\+\)$/\1/')
+  _kernel_json_content='{"argv":["/usr/bin/ihaskell","kernel","{connection_file}","--ghclib","/usr/lib/ghc-'$_ghc_ver'","+RTS","-M3g","-N2","-RTS"],"display_name":"Haskell","language":"haskell"}'
+
+  msg2 "Generating kernel.json"
+  echo $_kernel_json_content > html/kernel.json
+
+  msg2 "Copying labextension and kernel in jupyter share folder"
+  for _file in $(ls jupyterlab-ihaskell/labextension/static)
+  do
+    install -D -m644 jupyterlab-ihaskell/labextension/static/$_file "$pkgdir"/usr/share/jupyter/labextension/jupyterlab-ihaskell/static/$_file
+  done
+
+  install -D -m644 jupyterlab-ihaskell/labextension/package.json "$pkgdir"/usr/share/jupyter/labextension/jupyterlab-ihaskell/package.json
+
+  for _file in $(ls html)
+  do
+    install -D -m644 html/$_file "$pkgdir"/usr/share/jupyter/kernels/haskell/$_file
+  done
+
 }
