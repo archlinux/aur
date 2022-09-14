@@ -5,13 +5,12 @@
 
 pkgname=python-pysrt
 pkgver=1.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Python parser for SubRip (srt) files"
 arch=('any')
 url="https://github.com/byroot/pysrt"
 license=('GPL3')
 depends=('python-chardet')
-optdepends=('python-setuptools: for srt script')
 makedepends=('python-setuptools')
 checkdepends=('python-nose')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/byroot/pysrt/archive/v$pkgver.tar.gz")
