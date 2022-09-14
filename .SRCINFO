@@ -1,6 +1,6 @@
 pkgbase = nixpacks
 	pkgdesc = App source + Nix packages + Docker = Image
-	pkgver = 0.5.5
+	pkgver = 0.5.6
 	pkgrel = 1
 	url = https://nixpacks.com
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = nixpacks
 	depends = gcc-libs
 	depends = docker
 	options = !lto
-	source = nixpacks-0.5.5.tar.gz::https://github.com/railwayapp/nixpacks/archive/v0.5.5.tar.gz
-	sha256sums = d6ce0e87afc871f1705e036d70d550edf3ea2ff209cf8bca4914868dbecae27c
+	source = nixpacks-0.5.6.tar.gz::https://github.com/railwayapp/nixpacks/archive/v0.5.6.tar.gz
+	sha256sums = 52dc8173ca1c78c1fe0cc7fe7120effd21b0572bc9e5d42964272265c346dbd9
 
 pkgname = nixpacks
