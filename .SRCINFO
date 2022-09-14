@@ -1,6 +1,6 @@
 pkgbase = ayatana-indicator-messages
 	pkgdesc = Ayatana Indicator that collects messages that need a response
-	pkgver = 22.2.0
+	pkgver = 22.9.0
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators/ayatana-indicator-messages
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = ayatana-indicator-messages
 	depends = dconf
 	provides = indicator-messages
 	conflicts = indicator-messages
-	source = ayatana-indicator-messages-22.2.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-messages/archive/22.2.0.tar.gz
-	md5sums = b453de4c2d2448d42457f406f907d1ff
+	source = ayatana-indicator-messages-22.9.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-messages/archive/22.9.0.tar.gz
+	md5sums = a5ef45313142b4023dc44fdee19c8076
 
 pkgname = ayatana-indicator-messages
