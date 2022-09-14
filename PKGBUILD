@@ -3,12 +3,12 @@
 _pkgname=wayland-utils
 pkgname=wayland-utils-git
 pkgver=1.1.0.r2.gbaa65ba
-pkgrel=1
+pkgrel=2
 pkgdesc="Wayland tools to display information about current compositor"
 url="https://gitlab.freedesktop.org/wayland/wayland-utils"
 arch=(x86_64)
 license=(MIT)
-depends=(wayland)
+depends=(wayland libdrm)
 makedepends=(meson wayland-protocols git)
 conflicts=(wayland-utils)
 provides=(wayland-utils)
