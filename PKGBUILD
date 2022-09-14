@@ -3,7 +3,7 @@
 # -*- mode: sh -*-
 
 pkgname=bc-gh
-pkgver=6.0.2
+pkgver=6.0.3
 pkgrel=1
 pkgdesc="Implementation of dc and POSIX bc with GNU extensions"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -17,15 +17,15 @@ source=(
   "$pkgname-$pkgver.tar.xz.sig::$url/releases/download/$pkgver/bc-$pkgver.tar.xz.sig"
 )
 sha512sums=(
-  '401826b113fda155b00a0157fa18c2a7244ef81b1c9df706fed41a31d9500d49c7b7d059104523f744465316f432332b280618e0afbb6891e78d3542444cc7e3'
-  '93e962d733e1cc637a3a6465d58fb54dcfde2e38176c2d6c5e3dac043d5e45f4c078dbe5e20ce0d043c9967ba7a896ec0a63c133a50373c873ba3b023a54ab9c'
+  'c5d1d64fa8061c168ca124d974b9965d516b833cbc5f023d4414ba1ba0616ab5e9336f36e747ad437534c964726883ac44a61a058b9e3184d95d078622922be0'
+  '62c13ff0d4da370ab82956bee7af5b8e4bc296a7178734670e654bc3737b5a1c99e2da418c2e4e787a82f061f556b9b115439f892578b4547de69da3caf940ff'
 )
 sha256sums=(
-  'a4e51fda30515005f729422d184df7f04d9b4517614212aa65204db33c344046'
-  'e20dc2ec37c8aa8c6c41b9a0091c4fc92de0f5de34302db04010eec598886d24'
+  'a938cf4ef165ee63ca9ed378d442d62c121c5667f36c9193d12e79523094ae7a'
+  '98cee879841b2444ce19d1b34c2a897d9405cd068f0dbbfe5b3b6ffe78599d17'
 )
 validpgpkeys=('E2A30324A4465A4D5882692EC08038BDF280D33E')
-CFLAGS="$CFLAGS -flto -O3"
+CFLAGS="$CFLAGS -flto=auto -O3"
 
 build() {
   cd "bc-$pkgver"
