@@ -3,16 +3,16 @@
 
 pkgbase=asusctl
 pkgname=(asusctl rog-control-center)
-pkgver=4.3.4
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="A control daemon, tools, and a collection of crates for interacting with ASUS ROG laptops"
 arch=('x86_64')
 url="https://gitlab.com/asus-linux/asusctl"
 license=('MPL2')
-makedepends=('git' 'rust'
-             'hicolor-icon-theme' 'libusb' 'systemd' 'power-profiles-daemon')
+makedepends=('cmake' 'git' 'rust'
+             'hicolor-icon-theme' 'libusb' 'fontconfig' 'systemd' 'power-profiles-daemon')
 conflicts=('asusctl-git')
-_commit=5ab24a624eb6d01432643f0458def2e8827bf192 # tags/4.3.4^0
+_commit=d76cb3b95aac844ed97117b05aaa4abc8ab2696c # tags/4.4.0^0
 source=("git+${url}.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -54,7 +54,7 @@ package_asusctl() {
 }
 
 package_rog-control-center() {
-  depends=('asusctl')
+  depends=('asusctl' 'fontconfig')
   pkgdesc="App to control asusctl"
   mv rogcc/* "$pkgdir"
 }
