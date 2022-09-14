@@ -119,13 +119,13 @@
  		wxArrayInt order;
 -		order.reserve(ColumnFavorite);
 +		order.reserve(ColumnMax);
- 		
+ 
  		const auto order_string = std::string_view(config.game_list_column_order).substr(1);
- 		
+ 
 @@ -135,10 +146,10 @@ void wxGameList::LoadConfig()
  			order.push_back(ConvertString<int>(token, 10));
  		}
- 		
+ 
 -		#ifdef wxHAS_LISTCTRL_COLUMN_ORDER
 -		if(order.GetCount() == ColumnFavorite)
 +#ifdef wxHAS_LISTCTRL_COLUMN_ORDER
@@ -148,14 +148,14 @@
  
  	if (flush)
  		g_config.Save();
-@@ -355,61 +356,7 @@ void wxGameList::SortEntries(int column)
+@@ -372,61 +373,7 @@ void wxGameList::SortEntries(int column)
  	}
  }
  
 -void wxGameList::CreateListColumns()
 -{
 -	DeleteAllColumns();
--	
+-
 -	const auto& config = GetConfig();
 -	wxListItem col0;
 -	col0.SetId(ColumnHiddenName);
@@ -198,7 +198,7 @@
 -	col6.SetText(_("Last played"));
 -	col6.SetWidth(config.column_width.game_started);
 -	InsertColumn(ColumnGameStarted, col6);
--	
+-
 -	wxListItem col7;
 -	col7.SetId(ColumnRegion);
 -	col7.SetText(_("Region"));
@@ -207,11 +207,11 @@
 -}
 -
 -void wxGameList::OnKeyDown(wxListEvent& event)
-+void wxGameList::OnKeyDown(wxListEvent& event)	
++void wxGameList::OnKeyDown(wxListEvent& event)
  {
  	event.Skip();
  	if (m_style != Style::kList)
-@@ -642,6 +599,12 @@ void wxGameList::OnContextMenuSelected(wxCommandEvent& event)
+@@ -659,6 +616,12 @@ void wxGameList::OnContextMenuSelected(wxCommandEvent& event)
  	}
  }
  
@@ -224,12 +224,12 @@
  void wxGameList::OnColumnClick(wxListEvent& event)
  {
  	const int column = event.GetColumn();
-@@ -669,17 +632,16 @@ void wxGameList::OnColumnRightClick(wxListEvent& event)
+@@ -686,17 +649,16 @@ void wxGameList::OnColumnRightClick(wxListEvent& event)
  	menu.SetClientObject(new wxCustomData(column));
- 	
+ 
  	menu.Append(ResetWidth, _("Reset &width"));
 -	menu.Append(ResetOrder, _("Reset &order"))	;
--	
+-
 +#ifdef wxHAS_LISTCTRL_COLUMN_ORDER
 +	menu.Append(ResetOrder, _("Reset &order"));
 +#endif
@@ -246,7 +246,7 @@
  
  	menu.Bind(wxEVT_COMMAND_MENU_SELECTED,
  		[this](wxCommandEvent& event) {
-@@ -692,44 +654,44 @@ void wxGameList::OnColumnRightClick(wxListEvent& event)
+@@ -712,44 +671,44 @@ void wxGameList::OnColumnRightClick(wxListEvent& event)
  			switch (event.GetId())
  			{
  			case ShowName:
@@ -304,7 +304,7 @@
  					break;
  				default:
  					return;
-@@ -740,11 +702,11 @@ void wxGameList::OnColumnRightClick(wxListEvent& event)
+@@ -757,11 +719,11 @@ void wxGameList::OnColumnRightClick(wxListEvent& event)
  			case ResetOrder:
  			{
  				config.game_list_column_order.clear();
@@ -319,7 +319,7 @@
  				Refresh();
  				return;
  			}
-@@ -758,31 +720,60 @@ void wxGameList::OnColumnRightClick(wxListEvent& event)
+@@ -775,31 +737,60 @@ void wxGameList::OnColumnRightClick(wxListEvent& event)
  	event.Skip();
  }
  
@@ -365,7 +365,7 @@
 -		else
 -			this->SetColumnWidth(id, width);
 -	};
--	
+-
  	const auto& config = GetConfig();
  	wxWindowUpdateLocker lock(this);
 -	set_width(ColumnName, config.column_width.name);
@@ -395,7 +395,7 @@
  		event.Veto();
  	else
  		event.Skip();
-@@ -812,21 +803,18 @@ void wxGameList::OnColumnResize(wxListEvent& event)
+@@ -829,21 +820,18 @@ void wxGameList::OnColumnResize(wxListEvent& event)
  	case ColumnGameStarted:
  		config.column_width.game_started = width;
  		break;
@@ -422,7 +422,7 @@
  void wxGameList::OnClose(wxCloseEvent& event)
  {
  	event.Skip();
-@@ -837,8 +825,6 @@ int wxGameList::FindInsertPosition(TitleId titleId)
+@@ -854,8 +842,6 @@ int wxGameList::FindInsertPosition(TitleId titleId)
  {
  	SortData data{ this, s_last_column, s_direction };
  	const auto itemCount = GetItemCount();

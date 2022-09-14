@@ -1,6 +1,6 @@
 # Maintainer: Anuskuss <anuskuss@googlemail.com>
 pkgname=cemu
-pkgver=2.0.121
+pkgver=2.0.127
 pkgrel=1
 pkgdesc='Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)'
 arch=(x86_64)
@@ -25,7 +25,7 @@ optdepends=(
 )
 install=cemu.install
 source=(
-	git+https://github.com/cemu-project/Cemu#commit=6cf5dc9a569315969aeaec71f058b4fa8bf16993
+	git+https://github.com/cemu-project/Cemu#commit=61a3b07697c657daf51cba5d50d44a3d10d2d276
 	# dependencies
 	imgui-1.88.tar.gz::https://github.com/ocornut/imgui/archive/refs/tags/v1.88.tar.gz
 	imgui.cmake::https://raw.githubusercontent.com/microsoft/vcpkg/master/ports/imgui/CMakeLists.txt
@@ -41,7 +41,7 @@ source=(
 	# patches
 	xdg.diff # 00dbe939f29c6fa6670a6f71946e52b520d51033
 	overlay.diff # edeb14d4c68ee8bf500b990b13079177e01c25f1
-	dark.diff # 9a1f7bede33ef2ba334d4d318fd6742512dd7759
+	dark.diff # 25504d7c12bd3fb1f12a7c7563cb2ddee0d7f441
 	gamelist.diff # 182b40d38964a4c296127c5eb4497b5cccc01802
 )
 sha256sums=(
@@ -55,8 +55,8 @@ sha256sums=(
 	SKIP
 	8c108b92d641b404d753b72aecfd7ebfa7609f84e8fa4b1318227a5a33bbe240
 	f25d13fe76cc6a0b475f0131211a951288160ddae92cd7a815f5aea61d7cfc0f
-	e6209279267e6b3f2550248d6992042b23eeec2501f3df31feb9c4b1fbf2aa15
-	c28de51af46ac88d5db4ecae8626b9087f2a34503ced51b25498cbbf7eba306c
+	eabf6fa57e114c1e1621fa32dce6958b84024f2bb70c7f45e4e9a42ca4893270
+	90197478a063ff4739c57d4443c0efbd0d4bc1a300be7ba0dc0ddc46184f1266
 )
 
 pkgver() {
@@ -69,6 +69,7 @@ pkgver() {
 
 prepare() {
 	cd Cemu
+	echo "#define BUILD_VERSION_WITH_NAME_STRING \"Cemu $pkgver\"" >> src/Common/version.h
 
 	# cemu submodules
 	for submodule in dependencies/{cubeb,ZArchive}; do
@@ -107,7 +108,6 @@ prepare() {
 
 	# experimental: dark mode fix (https://github.com/cemu-project/Cemu/pull/241)
 	git apply "$srcdir/dark.diff"
-	sed -i 's/wxSYS_COLOUR_MENUHILIGHT/wxSYS_COLOUR_MENU/' src/gui/components/wxGameList.cpp
 
 	# experimental: gamelist auto resize (https://github.com/cemu-project/Cemu/pull/214)
 	git apply "$srcdir/gamelist.diff"
@@ -135,13 +135,11 @@ package() {
 	cd Cemu
 	install -D bin/Cemu_release "$pkgdir/usr/bin/cemu"
 
-	pushd bin/gameProfiles
-	mv default/000500001011000.ini default/0005000010111000.ini
-	for ini in default/*[A-Z]*; do
-		mv $ini ${ini,,}
-	done
-	# install -Dm644 example.ini "$pkgdir/opt/cemu/gameProfiles/example.ini"
-	install -Dm644 default/* -t "$pkgdir/opt/cemu/gameProfiles"
+	pushd bin/gameProfiles/default
+	mv 000500001011000.ini 0005000010111000.ini
+	for ini in *[A-Z]*; do mv $ini ${ini,,}; done
+	# install -Dm644 ../example.ini "$pkgdir/opt/cemu/gameProfiles/example.ini"
+	install -Dm644 * -t "$pkgdir/opt/cemu/gameProfiles"
 	popd
 
 	install -Dm644 bin/resources/sharedFonts/* -t "$pkgdir/opt/cemu/resources/sharedFonts"
