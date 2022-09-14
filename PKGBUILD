@@ -2,7 +2,7 @@
 
 _pkgname=wayland-utils
 pkgname=wayland-utils-git
-pkgver=1.0.0.r3.g6edadee
+pkgver=1.1.0.r2.gbaa65ba
 pkgrel=1
 pkgdesc="Wayland tools to display information about current compositor"
 url="https://gitlab.freedesktop.org/wayland/wayland-utils"
@@ -12,13 +12,13 @@ depends=(wayland)
 makedepends=(meson wayland-protocols git)
 conflicts=(wayland-utils)
 provides=(wayland-utils)
-source=("git+${url}.git")
+source=("git+${url}.git#branch=main")
 sha256sums=('SKIP')
 
 
 pkgver() {
   cd "${_pkgname}" 
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/wayland.utils.//'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/wayland.utils.//'
 }
 
 build() {
