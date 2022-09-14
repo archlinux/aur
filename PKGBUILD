@@ -1,11 +1,11 @@
 # Maintainer: #BrainDamage
 
 pkgname=python-matplotlib-sixel-git
-pkgver=r9.27df6fa
-pkgrel=2
+pkgver=r15.a6c632d
+pkgrel=1
 pkgdesc="a sixel graphics backend for matplotlib "
 arch=('any')
-url="https://github.com/koppa/matplotlib-sixel"
+url="https://github.com/jonathf/matplotlib-sixel"
 license=('BSD')
 makedepends=('git' 'python-setuptools')
 depends=('python' 'python-matplotlib' 'python-numpy')
