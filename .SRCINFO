@@ -1,0 +1,14 @@
+pkgbase = isc-stork
+	pkgdesc = Stork is a dashboard for BIND 9 and Kea DHCP.
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://gitlab.isc.org/isc-projects/stork
+	arch = x86_64
+	license = MPL2
+	depends = rake
+	depends = java-runtime
+	backup = etc/stork
+	source = git+https://gitlab.isc.org/isc-projects/stork.git#tag=v1.6.0
+	sha512sums = SKIP
+
+pkgname = isc-stork
