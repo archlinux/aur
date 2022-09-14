@@ -1,6 +1,6 @@
 pkgbase = cemu-git
 	pkgdesc = Nintendo Wii U emulator
-	pkgver = 2.0.r88.g917b809
+	pkgver = 2.0.1.r24.g6cf5dc9
 	pkgrel = 1
 	url = https://cemu.info/
 	arch = x86_64
@@ -21,8 +21,8 @@ pkgbase = cemu-git
 	makedepends = openssl
 	makedepends = rapidjson
 	makedepends = sdl2
-	makedepends = vulkan-headers
-	makedepends = zarchive
+	makedepends = vulkan-headers>=1.3.225
+	makedepends = zarchive>=0.1.2
 	makedepends = zlib
 	makedepends = zstd
 	depends = discord-rpc
@@ -34,7 +34,7 @@ pkgbase = cemu-git
 	source = cemu::git+https://github.com/cemu-project/Cemu.git
 	source = cemu.bash
 	b2sums = SKIP
-	b2sums = 36819eb14786e26f7555da95312f7edf0de868844d0b00f17e291684e5268c410371a1a6e979c40980a222356b4655242f1bc1ef6d9387843c82efd12c26850c
+	b2sums = dbb107d6eea8ce57e8275fb57fc24c10cbc490b1a95a80a4ae1676306d56ea4380a2b4350bea9045fdafb4730be31d060eabcc8f2e74afd3787e80564f79fca4
 
 pkgname = cemu-git
 	depends = discord-rpc

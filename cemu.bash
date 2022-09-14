@@ -6,7 +6,7 @@ readonly GID
 exec unshare -rm bash -es -- \
 	"${XDG_DATA_HOME:-$HOME/.local/share}" \
 	"${XDG_RUNTIME_DIR:-/tmp}" \
-	"${XDG_STATE_HOME:-$HOME/.local/state}" \
+	"${XDG_CACHE_HOME:-$HOME/.cache}" \
 	"$@" <<- BASH
 		readonly data=\$1/cemu
 		readonly overlay=\$2/cemu
