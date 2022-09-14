@@ -42,7 +42,7 @@ CLANG=            # Use clang.
 
 GOLD=             # Use the gold linker.
 
-LTO="YES"         # Enable link-time optimization. Read emacs's INSTALL before
+LTO=              # Enable link-time optimization. Read emacs's INSTALL before
                   # attempting to use it with clang.
 
 MOLD="YES"        # Use the mold linker.
