@@ -1,6 +1,6 @@
 pkgname=sqlconvert-tools
 pkgdesc="convert sql server to sqlite"
-pkgver=v0.0.1.r0.ga14f4e7
+pkgver=v0.0.1.r14.g077a8c2
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://github.com/vcup/MonitorFileSystem
@@ -12,7 +12,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '18450c72b35727b13b9b8a4191c2c95d7fbd3f4a0091ab71edcfb16eb57e5494'
+  'SKIP'
 )
 
 pkgver() {
