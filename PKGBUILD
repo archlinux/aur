@@ -39,5 +39,5 @@ package() {
 	mkdir -p $pkgdir/usr/bin/
 	ln -s /opt/XX-net/xx_net.sh $pkgdir/usr/bin/xx_net
 
-	install -D -m644 ${srcdir}/xx-net.service $pkgdir/etc/systemd/system/xx-net.service
+	install -D -m644 ${srcdir}/xx-net.service $pkgdir/usr/lib/systemd/system/xx-net.service
 }
