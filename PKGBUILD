@@ -2,7 +2,7 @@
 
 pkgname=yesplz
 pkgver=1
-pkgrel=1
+pkgrel=2
 depends=()
 makedepends=('glibc' 'libjpeg-turbo' 'libx11' 'elfutils' 'libxcb' 'libxau' 'libxdmcp')
 url='http://uberleethackerforce.deepgeek.us/'
