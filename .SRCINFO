@@ -12,6 +12,6 @@ pkgbase = amalthea-ldc2
 	makedepends = glib2
 	depends = ldc
 	source = amalthea-ldc2-1.2.1.tar.gz::https://gitlab.com/os-18/amalthea/-/archive/v1.2.1/amalthea-v1.2.1.tar.gz
-	sha256sums = 59068d2a0a97df5036caa55db5af437a998bcb9fa4149fb7981b65ce2e496e38
+	sha256sums = f9ec27a8859a10605e51a6b6f4096c57a59e759a293c57aca73e9076b2941ae6
 
 pkgname = amalthea-ldc2
