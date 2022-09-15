@@ -1,8 +1,8 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='uucd'
 pkgname="ocaml-$_projectname"
-pkgver='14.0.0'
-pkgrel='2'
+pkgver='15.0.0'
+pkgrel='1'
 pkgdesc='Unicode character database decoder for OCaml'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://erratique.ch/software/$_projectname"
@@ -11,7 +11,7 @@ depends=('ocaml>=4.01.0')
 makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-topkg>=1.0.3' 'opam' 'ocaml-xmlm')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/dbuenzli/$_projectname/archive/v$pkgver.tar.gz")
-sha512sums=('4f52c83c9eab3a111f917a89b11a39ac46f3b6d63b381c0caaa41a2d68d9271a9d9d844de348e176b3059f8185d0149fd3700fd7faf944787fd506cbc2e02f96')
+sha512sums=('771d877e2d1a61b0db637c4ff7b1e820786739226254facec2bdac97fd7b9f6ac9ed5041d310e425b941bfcc47912c806d0d2db4168a69fb0bd418c0025817bb')
 
 _sourcedirectory="$_projectname-$pkgver"
 
