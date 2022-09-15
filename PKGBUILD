@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TFHAZ
-_pkgver=1.18.0
+_pkgver=1.18.4
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.18.4
 pkgrel=1
 pkgdesc='Transcription Factor High Accumulation Zones'
 arch=('any')
@@ -13,6 +13,7 @@ depends=(
   r
   r-genomicranges
   r-iranges
+  r-orfik
   r-s4vectors
 )
 optdepends=(
@@ -21,7 +22,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('32f634af62429d904f786ab2352626f5425bb763b83528ca6e28e4b6df81b6b0')
+sha256sums=('af1a5fa95f3312dd46424dc13dceb9631c0053c08808c90b32dd02e5d2f06e1f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
