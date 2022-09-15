@@ -1,6 +1,6 @@
 pkgbase = ots
 	pkgdesc = OpenType fonts sanitiser. Supports TTF, WOFF, WOFF2 and other formats
-	pkgver = 8.2.2
+	pkgver = 9.0.0
 	pkgrel = 1
 	url = https://github.com/khaledhosny/ots
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ots
 	depends = freetype2
 	depends = libfreetype.so
 	depends = woff2
-	source = https://github.com/khaledhosny/ots/releases/download/v8.2.2/ots-8.2.2.tar.xz
-	sha256sums = d0d60d4bfb8cc8841ac8f91d3e562e47fa831d3e5c9b3bd7c05120391cf1f36b
+	source = https://github.com/khaledhosny/ots/releases/download/v9.0.0/ots-9.0.0.tar.xz
+	sha256sums = 5982233f167266c6fa4d89bdd3aaddfaf7aad2f19053bc63abf901847d4403fa
 
 pkgname = ots
