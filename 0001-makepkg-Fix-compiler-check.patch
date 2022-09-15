@@ -1,4 +1,4 @@
-From c9b234ce108b15bd3b10383af62d19fbc2d72b5d Mon Sep 17 00:00:00 2001
+From d80cfacfbc6c01fa59c37a9db2d06f2e93d9ed16 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Sun, 14 Aug 2022 23:01:45 +0200
 Subject: [PATCH 1/2] makepkg: Fix compiler check
@@ -8,10 +8,10 @@ Subject: [PATCH 1/2] makepkg: Fix compiler check
  1 file changed, 7 insertions(+), 3 deletions(-)
 
 diff --git a/cmake/build_helpers.cmake b/cmake/build_helpers.cmake
-index 638f17a7..c65e1816 100644
+index 72ea053b..41a942d0 100644
 --- a/cmake/build_helpers.cmake
 +++ b/cmake/build_helpers.cmake
-@@ -391,10 +391,14 @@ function(downloadImHexPatternsFiles dest)
+@@ -407,10 +407,14 @@ function(downloadImHexPatternsFiles dest)
  endfunction()
  
  macro(setupCompilerWarnings target)
