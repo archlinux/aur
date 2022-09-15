@@ -1,0 +1,13 @@
+pkgbase = tasmanian
+	pkgdesc = Toolkit for Adaptive Stochastic Modeling and Non-Intrusive ApproximatioN
+	pkgver = 7.7
+	pkgrel = 1
+	url = https://tasmanian.ornl.gov/
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = lapack
+	source = https://github.com/ORNL/TASMANIAN/archive/refs/tags/v7.7.tar.gz
+	sha256sums = 85fb3a7b302ea21a3b700712767a59a623d9ab93da03308fa47d4413654c3878
+
+pkgname = tasmanian
