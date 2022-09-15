@@ -1,6 +1,6 @@
 pkgbase = codevis
 	pkgdesc = A tool for turning your code into one large image
-	pkgver = 0.2.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/sloganking/codevis
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = codevis
 	makedepends = cargo
 	depends = gcc-libs
 	options = !lto
-	source = codevis-0.2.0.tar.gz::https://github.com/sloganking/codevis/archive/v0.2.0.tar.gz
-	sha512sums = 8c31b550b5a73740c8ac1ba117aba3895b35ca5a0b48e02ee6570e52c9a1d11ed217d66a4fcfab41efadcfd6bcaa6265b102733cd78b0d6007939985401fa042
+	source = codevis-0.3.1.tar.gz::https://github.com/sloganking/codevis/archive/v0.3.1.tar.gz
+	sha512sums = eb7105f2a4c2a9b6760612bf72a40876285095c8e3a91ed838928734ab98e3d2eb3c59b862776b951c1115fabdd02153805d5b1cd5ca7a20456f374f4ae743e8
 
 pkgname = codevis
