@@ -2,7 +2,7 @@
 
 pkgname=brickstore
 pkgver=2022.9.2
-pkgrel=1
+pkgrel=3
 pkgdesc="BrickStore is a BrickLink offline management tool."
 arch=('i686' 'x86_64')
 url="https://github.com/rgriebl/brickstore"
