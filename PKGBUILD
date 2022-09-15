@@ -18,7 +18,7 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=()
+options=(!makeflags)
 install=
 changelog=
 source=("https://github.com/intel-iot-devkit/$pkgname/archive/v$pkgver.tar.gz")
@@ -31,21 +31,15 @@ validpgpkeys=()
 #}
 
 build() {
-#	cd "$pkgname-$pkgver"
-#	mkdir -p build
-#  	cd build
-    export JAVA_HOME=/usr/lib/jvm/default
-    export JAVA_AWT_LIBRARY=/usr/lib/jvm/default/jre/lib/amd64/libawt.so
-    export JAVA_JVM_LIBRARY=/usr/lib/jvm/default/jre/lib/amd64/server/libjvm.so
-    export JAVA_INCLUDE_PATH=/usr/lib/jvm/default/include
-    export JAVA_INCLUDE_PATH2=/usr/lib/jvm/default/include/linux
-    export JAVA_AWT_INCLUDE_PATH=/usr/lib/jvm/default/include
-	cmake -B build -S "${pkgname}-${pkgver}" -DBUILDJAVA=ON -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" ..
-	make
+        cd "$pkgname-$pkgver"
+        mkdir -p build
+        cd build
+        cmake -DBUILDJAVA=ON -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" ..
+        make
 }
 package() {
-	cd "$pkgname-$pkgver"
-	cd build
-	make install
+        cd "$pkgname-$pkgver"
+        cd build
+        make install
 }
 

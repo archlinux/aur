@@ -9,6 +9,7 @@ pkgbase = tinyb
 	depends = bluez
 	depends = java-environment>=1.8
 	depends = java-environment<9
+	options = !makeflags
 	source = https://github.com/intel-iot-devkit/tinyb/archive/v0.5.1.tar.gz
 	sha256sums = 1d27b5f3b05c5b7a9f29f3d717164162607aa94b8e15ba2a9aaa3884908a2da1
 
