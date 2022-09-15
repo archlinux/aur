@@ -1,7 +1,7 @@
 pkgbase = surge-xt
 	pkgdesc = An Open Source Digital Synthesizer
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://surge-synthesizer.github.io/
 	arch = x86_64
 	arch = aarch64
@@ -35,7 +35,9 @@ pkgbase = surge-xt
 	optdepends = jack: backend for standalone
 	optdepends = vst3-host: for VST3 plugins
 	source = surge-xt-1.1.1.tar.gz::https://github.com/surge-synthesizer/releases-xt/releases/download/1.1.1/surge-src-1.1.1.tar.gz
+	source = fix-crash.patch::https://patch-diff.githubusercontent.com/raw/surge-synthesizer/surge/pull/6608.patch
 	sha256sums = 546181606fbedad2280a5d14d82355312e6bfd3b14285ed099335e5bb2c13485
+	sha256sums = bdf1dcf70b4360474b65657345ea8f0eee1111e21d7b0aaf467f9bcd56a3588a
 
 pkgname = surge-xt
 	depends = cairo
