@@ -85,9 +85,10 @@ _kyber_disable=y
 _lru_config='standard'
 
 ### Enable per-VMA locking
-# ATTENTION - one of two predefined values should be selected!
+# ATTENTION - one of three predefined values should be selected!
 # 'standard' - enable per-VMA locking
 # 'stats' - enable per-VMA locking with stats
+# 'none' - disable per-VMA locking
 _vma_config='standard'
 
 ## Enable DAMON
@@ -154,7 +155,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=5.19
-_minor=8
+_minor=9
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -164,7 +165,7 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux BORE scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=3
+pkgrel=4
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -543,6 +544,9 @@ prepare() {
        echo "Enabling per-VMA locking with stats..."
        scripts/config --enable PER_VMA_LOCK \
            --enable PER_VMA_LOCK_STATS
+    elif [ "$_vma_config" = "none" ]; then
+       echo "Disabling per-VMA locking..."
+       scripts/config --disable PER_VMA_LOCK
     else
         if [ -n "$_vma_config" ]; then
            error "The value $_vma_config is invalid. Choose the correct one again."
@@ -913,9 +917,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('616308795a952a6a39b4c74807c33916850eb7166d8ed7c9a87a1ba55d7487ce'
-            '663a8510367172791fe6a51a67fb185720e8433de7351e7a8ece71c9af4d3d81'
+sha256sums=('0ad5b5986693adc1962be807bc3a64423a24b6a9da9df39b259d7e3bfd927f37'
+            '8c42384613b972a88f2fda8413f31d580a4170158767f14f7595a78497367c57'
             'e1d45b5842079a5f0f53d7ea2d66ffa3f1497766f3ccffcf13ed00f1ac67f95e'
-            '170239dd75f80d5f3c4a4706b11c6569a97be36a9057cd36c54296da0cc6a2d7'
+            '85aeec85cfeff447503c7c1f648c82764d22cecc57ce0b33338e7936c8282ee5'
             '9659b83b734788c7cecb39d15f3a273d007bfa95fc3ed1951dd92796533fdcb2'
             'd9ad53018d77344a31ec28482a09fa11d5189781972b1ed850102e3a9e20ba3a')
