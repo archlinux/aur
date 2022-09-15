@@ -18,7 +18,7 @@ install="${pkgname}".install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname%%-cli}/${pkgname}/archive/${pkgver}.tar.gz"
         "${pkgname}-${pkgver}-openapi.yaml::https://www.${pkgname%%-cli}.com/docs/api/openapi.yaml")
 sha512sums=('f24708b657f7f6d0289f190823b34a357f793a2a141aafd9e91de398b494f88b2f72f278e368d5180e97b5176d368d94b4cb75eaaa29ba808a8dd4bad6f8437f'
-            '335c1be085ce882e26ac954644d1837ade79d76114218fbd672147dcf2a134ea7d6e7647549bf6a57fc55ad2b63ba8dedafb82d549c1b45d7fd12f738b8eddea')
+            'aecaf1d6e764c524b4bd198f863d7f33965dada1510f96cc9877af505b4ca7ee721c24ec44bff2a8bfe4c8d0b378cabeadc0a427d37fc8f38a60dc1d9eca7b39')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
