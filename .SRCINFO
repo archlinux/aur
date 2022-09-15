@@ -1,7 +1,7 @@
 pkgbase = cubeb-git
 	pkgdesc = Cross platform audio library
 	pkgver = 0.2.r1393.g4783607
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mozilla/cubeb
 	arch = aarch64
 	arch = armv7h
@@ -15,7 +15,7 @@ pkgbase = cubeb-git
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = git
-	makedepends = jack2
+	makedepends = jack
 	makedepends = libpulse
 	makedepends = sndio
 	makedepends = speexdsp

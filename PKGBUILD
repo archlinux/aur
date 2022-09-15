@@ -3,12 +3,12 @@
 _pkgname=cubeb
 pkgname=$_pkgname-git
 pkgver=0.2.r1393.g4783607
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross platform audio library"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/mozilla/cubeb"
 license=('ISC')
-makedepends=('alsa-lib' 'cmake' 'doxygen' 'git' 'jack2' 'libpulse' 'sndio' 'speexdsp')
+makedepends=('alsa-lib' 'cmake' 'doxygen' 'git' 'jack' 'libpulse' 'sndio' 'speexdsp')
 checkdepends=('gtest')
 optdepends=(
 	'alsa-lib: for ALSA backend'
