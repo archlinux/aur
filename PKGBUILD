@@ -3,17 +3,17 @@
 # Contributor: Florian Latifi <mail@florian-latifi.at>
 
 pkgname=evolution-decsync
-pkgver=2.0.1
-_pkgver=2.0.1-evolution-3.44
-pkgrel=2
+pkgver=2.1.0
+_pkgver=2.1.0-3-evolution-3.44
+pkgrel=1
 pkgdesc="An Evolution plugin which synchronizes contacts and calendars using DecSync."
 arch=(x86_64 i686 armv7h aarch64)
 license=(LGPL)
 url="https://github.com/39aldo39/Evolution-DecSync"
-depends=(json-c evolution-data-server evolution libdecsync)
+depends=(json-glib evolution-data-server evolution libdecsync)
 makedepends=(meson ninja)
 source=("https://github.com/39aldo39/Evolution-DecSync/archive/v${_pkgver}.tar.gz")
-sha256sums=('60d36a0522556e519be7390295ce4bd8781fa1f034b2a2dc3cd5207c439f536e')
+sha256sums=('dc059e3fda4de5ab483bfea536929652165daea8dadfd7843c650281f8d414d4')
 
 build() {
   cd "Evolution-DecSync-${_pkgver}"
