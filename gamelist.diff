@@ -246,7 +246,7 @@
  
  	menu.Bind(wxEVT_COMMAND_MENU_SELECTED,
  		[this](wxCommandEvent& event) {
-@@ -712,44 +671,44 @@ void wxGameList::OnColumnRightClick(wxListEvent& event)
+@@ -709,44 +668,44 @@ void wxGameList::OnColumnRightClick(wxListEvent& event)
  			switch (event.GetId())
  			{
  			case ShowName:

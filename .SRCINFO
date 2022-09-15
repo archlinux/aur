@@ -1,6 +1,6 @@
 pkgbase = cemu
 	pkgdesc = Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)
-	pkgver = 2.0.127
+	pkgver = 2.0.128
 	pkgrel = 1
 	url = https://cemu.info
 	install = cemu.install
@@ -10,23 +10,23 @@ pkgbase = cemu
 	makedepends = cmake>=3.21.1
 	makedepends = make
 	makedepends = rapidjson
-	makedepends = boost
-	makedepends = glslang
-	makedepends = glm
+	makedepends = boost>=1.79.0
+	makedepends = glslang>=11.8.0
+	makedepends = glm>=0.9.9.8
 	makedepends = fmt>=9.1
 	makedepends = nasm
-	makedepends = vulkan-headers
+	makedepends = vulkan-headers>=1.3.225
 	makedepends = glu
-	depends = sdl2
-	depends = pugixml
-	depends = libzip
-	depends = libpng
-	depends = wxwidgets-gtk3>=3.2
+	depends = sdl2>=2.0.22
+	depends = pugixml>=1.12.1
+	depends = libzip>=1.9.2
+	depends = libpng>=1.6.37
+	depends = wxwidgets-gtk3>=3.2.0
 	optdepends = vulkan-driver: Vulkan graphics
-	source = git+https://github.com/cemu-project/Cemu#commit=61a3b07697c657daf51cba5d50d44a3d10d2d276
+	source = git+https://github.com/cemu-project/Cemu#commit=cebdccfdf5aec30aa2ab7c61c4720ec2191bdb8f
 	source = imgui-1.88.tar.gz::https://github.com/ocornut/imgui/archive/refs/tags/v1.88.tar.gz
-	source = imgui.cmake::https://raw.githubusercontent.com/microsoft/vcpkg/master/ports/imgui/CMakeLists.txt
-	source = imgui.conf::https://raw.githubusercontent.com/microsoft/vcpkg/master/ports/imgui/imgui-config.cmake.in
+	source = imgui.cmake::https://raw.githubusercontent.com/microsoft/vcpkg/1b0252ca70ca2244a711535462c7f981eb439e83/ports/imgui/CMakeLists.txt
+	source = imgui.conf::https://raw.githubusercontent.com/microsoft/vcpkg/1b0252ca70ca2244a711535462c7f981eb439e83/ports/imgui/imgui-config.cmake.in
 	source = git+https://github.com/mozilla/cubeb#commit=dc511c6b3597b6384d28949285b9289e009830ea
 	source = git+https://github.com/Exzap/ZArchive#commit=48914a07df3c213333c580bb5e5bb3393442ca5b
 	source = git+https://github.com/arsenm/sanitizers-cmake#commit=aab6948fa863bc1cbe5d0850bc46b9ef02ed4c1a
@@ -35,6 +35,7 @@ pkgbase = cemu
 	source = overlay.diff
 	source = dark.diff
 	source = gamelist.diff
+	source = mic.diff
 	sha256sums = SKIP
 	sha256sums = 9f14c788aee15b777051e48f868c5d4d959bd679fc5050e3d2a29de80d8fd32e
 	sha256sums = 262faed507149c89aab7572fd2c2a968f843ca2900043e30a9c339735ed08a8f
@@ -45,7 +46,8 @@ pkgbase = cemu
 	sha256sums = SKIP
 	sha256sums = 8c108b92d641b404d753b72aecfd7ebfa7609f84e8fa4b1318227a5a33bbe240
 	sha256sums = f25d13fe76cc6a0b475f0131211a951288160ddae92cd7a815f5aea61d7cfc0f
-	sha256sums = eabf6fa57e114c1e1621fa32dce6958b84024f2bb70c7f45e4e9a42ca4893270
-	sha256sums = 90197478a063ff4739c57d4443c0efbd0d4bc1a300be7ba0dc0ddc46184f1266
+	sha256sums = 3c5527c6aa07bca9425b2bad5cd84102d5a7ab5ce61dadff727ce977a005aeae
+	sha256sums = 7f1b11b78de3f9f96d2af9569a980f066422bfc68f76e03bf8c253dc926c03f2
+	sha256sums = 3a3b29fc2643433c94d5244eaa3c3ff689929563c74f540b7b29266329c5a494
 
 pkgname = cemu

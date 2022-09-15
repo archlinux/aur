@@ -60,8 +60,8 @@
 +
  	wxWindowUpdateLocker lock(this);
 +
-+    // Get the background color so we can determine the theme in use
-+    const wxColour bgColour = GetBackgroundColour();
++	// Get the background color so we can determine the theme in use
++	const wxColour bgColour = GetBackgroundColour();
 +
  	for (int i = startIndex; i < GetItemCount(); ++i)
  	{
@@ -74,26 +74,26 @@
  		else if ((i&1) != 0)
 -			SetItemBackgroundColour(i, kSecondColor);
 +		{
-+            // Depending on the background RGB value:
-+            // Light theme row color will be 10% darker (90)
-+            // Dark theme row color will be 10% brighter (110)
-+            int alpha = bgColour.GetRGB() > 0x808080 ? 90 : 110;
-+            SetItemBackgroundColour(i, bgColour.ChangeLightness(alpha));
++			// Depending on the background RGB value:
++			// Light theme row color will be 10% darker (90)
++			// Dark theme row color will be 10% brighter (110)
++			int alpha = bgColour.GetRGB() > 0x808080 ? 90 : 110;
++			SetItemBackgroundColour(i, bgColour.ChangeLightness(alpha));
 +
-+            // Text can be changed to other values for alternating rows if needed
-+            SetItemTextColour(i, wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWTEXT));
++			// Text can be changed to other values for alternating rows if needed
++			SetItemTextColour(i, wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWTEXT));
 +		}
  		else
 -			SetItemBackgroundColour(i, 0xFFFFFFUL);
 +		{
-+            // Depending on the background RGB value:
-+            // Light theme row color will be 0% darker (100)
-+            // Dark theme row color will be 0% brighter (100)
-+            int alpha = bgColour.GetRGB() > 0x808080 ? 100 : 100;
-+            SetItemBackgroundColour(i, bgColour.ChangeLightness(alpha));
++			// Depending on the background RGB value:
++			// Light theme row color will be 0% darker (100)
++			// Dark theme row color will be 0% brighter (100)
++			int alpha = bgColour.GetRGB() > 0x808080 ? 100 : 100;
++			SetItemBackgroundColour(i, bgColour.ChangeLightness(alpha));
 +
-+            // Text color can be modified to other values for alternating rows if needed
-+            SetItemTextColour(i, wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWTEXT));
++			// Text color can be modified to other values for alternating rows if needed
++			 SetItemTextColour(i, wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWTEXT));
 +		}
  	}
  }
