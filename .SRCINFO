@@ -1,12 +1,13 @@
 pkgbase = python-numcodecs
 	pkgdesc = A Python package providing buffer compression and transformation codecs for use in data storage and communication applications
 	pkgver = 0.10.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/zarr-developers/numcodecs
 	arch = any
 	license = MIT
 	makedepends = cython
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
