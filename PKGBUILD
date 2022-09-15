@@ -2,8 +2,8 @@
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 
 pkgname=gdown
-pkgver=4.4.0
-pkgrel=2
+pkgver=4.5.1
+pkgrel=1
 pkgdesc="Download a large file from Google Drive"
 arch=('any')
 url="https://github.com/wkentaro/gdown"
