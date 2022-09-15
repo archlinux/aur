@@ -2,8 +2,8 @@
 
 pkgname=gitmux-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.7.9
-pkgrel=3
+pkgver=0.7.10
+pkgrel=1
 pkgdesc="Git in your tmux status bar"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/arl/gitmux"
@@ -11,19 +11,19 @@ license=('MIT')
 depends=('tmux')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("https://raw.githubusercontent.com/arl/gitmux/main/LICENSE")
 source_x86_64=("${_pkgname}-${pkgver}-amd64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
 source_i686=("${_pkgname}-${pkgver}-386.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_386.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}-arm64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
-sha256sums=('051c31312c5af0e4e4d2559546a8a0f36ce2bf9b50e2d00a81e6a3b31666a3ec')
-sha256sums_x86_64=('156f98946cc437572576c69f062f287e4d0e5a98855bd47cd6a2f15c9e385107')
-sha256sums_i686=('60ad0033546362bd016e6c820637358b07e08aae999e5ec0956311be115767f7')
-sha256sums_aarch64=('959111d5de93aecc87cb706cc3729fce93b27b3a31a7bfbc4d9d1bc7bb93391e')
+sha256sums_x86_64=('99d25aa57d2b255a1969b1c068121702dcce019de5f8c23bf398a1f6e520ffb5')
+sha256sums_i686=('6d009c6dc467cf8138a3b3a26fc7aa001911a10bf8b3b7f15a19e81f75052301')
+sha256sums_aarch64=('a7209f9ef368e5e723ddb5719bc05b09ce119af4a91965a5fb90f3ca5036cc68')
 
 package() {
 	cd "${srcdir}"
 	
 	install -Dm 755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-	install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+	
+	install -Dm 644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 }
