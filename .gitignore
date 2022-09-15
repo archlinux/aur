@@ -3,6 +3,11 @@ obs-studio-git/
 ftl-sdk/
 obs-browser/
 obs-vst/
+QR-Code-generator/
+asio/
+json/
+obs-websocket/
+websocketpp/
 pkg/
 src/
 
