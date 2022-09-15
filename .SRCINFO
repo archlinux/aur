@@ -1,7 +1,7 @@
 pkgbase = lua-libmagic
 	pkgdesc = libmagic binding for lua
 	pkgver = 5.41
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/mah0x211/lua-libmagic
 	arch = i686
 	arch = x86_64

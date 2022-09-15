@@ -3,7 +3,7 @@
 pkgbase=lua-libmagic
 pkgname=('lua-libmagic' 'lua51-libmagic' 'lua52-libmagic' 'lua53-libmagic')
 pkgver=5.41
-pkgrel=3
+pkgrel=4
 pkgdesc='libmagic binding for lua'
 arch=('i686' 'x86_64')
 url='https://github.com/mah0x211/lua-libmagic'
@@ -17,10 +17,10 @@ build() {
 
 	echo '#define DEFAULT_LUA_MAGIC_FILE "/usr/share/file/misc/magic.mgc"' > src/config.h
 
-	gcc -fPIC -shared -I/usr/include/lua5.1/ -llua5.1 -lmagic -o magic51.so src/magic.c
-	gcc -fPIC -shared -I/usr/include/lua5.2/ -llua5.2 -lmagic -o magic52.so src/magic.c
-	gcc -fPIC -shared -I/usr/include/lua5.3/ -llua5.3 -lmagic -o magic53.so src/magic.c
-	gcc -fPIC -shared -llua -lmagic -o magic54.so src/magic.c
+	gcc -fPIC -shared -I/usr/include/lua5.1/ -llua5.1 -lmagic -o libmagic51.so src/magic.c
+	gcc -fPIC -shared -I/usr/include/lua5.2/ -llua5.2 -lmagic -o libmagic52.so src/magic.c
+	gcc -fPIC -shared -I/usr/include/lua5.3/ -llua5.3 -lmagic -o libmagic53.so src/magic.c
+	gcc -fPIC -shared -llua -lmagic -o libmagic54.so src/magic.c
 }
 
 package_lua-libmagic() {
@@ -28,7 +28,7 @@ package_lua-libmagic() {
 	provides=('lua-magic')
 	replaces=('lua-magic')
 
-	install -D -m0755 ${pkgbase}-${pkgver}/magic54.so ${pkgdir}/usr/lib/lua/5.4/magic.so
+	install -D -m0755 ${pkgbase}-${pkgver}/libmagic54.so ${pkgdir}/usr/lib/lua/5.4/libmagic.so
 }
 
 package_lua51-libmagic() {
@@ -36,7 +36,7 @@ package_lua51-libmagic() {
 	provides=('lua52-magic')
 	replaces=('lua52-magic')
 
-	install -D -m0755 ${pkgbase}-${pkgver}/magic51.so ${pkgdir}/usr/lib/lua/5.1/magic.so
+	install -D -m0755 ${pkgbase}-${pkgver}/libmagic51.so ${pkgdir}/usr/lib/lua/5.1/libmagic.so
 }
 
 package_lua52-libmagic() {
@@ -44,7 +44,7 @@ package_lua52-libmagic() {
 	provides=('lua51-magic')
 	replaces=('lua51-magic')
 
-	install -D -m0755 ${pkgbase}-${pkgver}/magic52.so ${pkgdir}/usr/lib/lua/5.2/magic.so
+	install -D -m0755 ${pkgbase}-${pkgver}/libmagic52.so ${pkgdir}/usr/lib/lua/5.2/libmagic.so
 }
 
 package_lua53-libmagic() {
@@ -52,6 +52,6 @@ package_lua53-libmagic() {
 	provides=('lua51-magic')
 	replaces=('lua51-magic')
 
-	install -D -m0755 ${pkgbase}-${pkgver}/magic53.so ${pkgdir}/usr/lib/lua/5.3/magic.so
+	install -D -m0755 ${pkgbase}-${pkgver}/libmagic53.so ${pkgdir}/usr/lib/lua/5.3/libmagic.so
 }
 
