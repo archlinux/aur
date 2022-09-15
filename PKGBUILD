@@ -15,7 +15,7 @@ makedepends=(
     luajit
 )
 conflicts=(concurrentlua51)
-url='https://github.com/lefcha/concurrentlua'
+url='https://lefcha.github.io/concurrentlua/'
 license=('MIT')
 source=("git+https://github.com/lefcha/concurrentlua.git#tag=v$pkgver")
 sha256sums=('SKIP')
