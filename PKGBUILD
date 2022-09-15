@@ -2,7 +2,7 @@
 
 pkgname=python-rioxarray
 _pkg="${pkgname#python-}"
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="Geospatial xarray extension powered by rasterio"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel
 checkdepends=('python-netcdf4' 'python-pytest')
 changelog=
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('b63559691e6dd6f9e6fd9dc9c79ba618590e3634d6683fab58542ab2c546c626')
+sha256sums=('e5f2db73cc9c46cadbdd25565ae58344ed80eac574fd20eab35c3c16678a4e2b')
 
 build() {
 	cd "$_pkg-$pkgver"
