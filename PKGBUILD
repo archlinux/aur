@@ -2,12 +2,12 @@
 
 pkgname=pods
 pkgver=1.0.0_beta.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Podman desktop application"
 arch=('x86_64' 'aarch64')
 url="https://github.com/marhkb/pods"
 license=('GPL3')
-depends=('libadwaita-git' 'podman')
+depends=('libadwaita' 'podman')
 makedepends=('meson' 'cargo')
 checkdepends=('appstream-glib')
 source=($url/archive/v${pkgver//_/-}.tar.gz)
@@ -19,7 +19,7 @@ build() {
 }
 
 check() {
-  meson test -C build || :
+  meson test -C build --print-errorlogs || :
 }
 
 package() {
