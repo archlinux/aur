@@ -1,62 +1,39 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# See http://wiki.archlinux.org/index.php/VCS_PKGBUILD_Guidelines
-# for more information on packaging from GIT sources.
+###PKGBUILD was last modified on September 15, 2022 at 12:28 AM EDT by bms### 
 
 # Maintainer: Gary Hollis <ghollisjr@gmail.com>
+
 pkgname=sbcl-git
-pkgver=1.0
+pkgver=sbcl.2.2.8.r94.g70c277589
 pkgrel=1
-pkgdesc="SBCL from project GIT repo"
-arch=(any)
-url=""
-license=('GPL')
-groups=()
-depends=(automake gcc sbcl)
-makedepends=('git')
+pkgdesc="Steel Bank Common Lisp from Git"
+arch=('i686' 'x86_64' 'aarch64')
+url="https://www.sbcl.org"
+license=('BSD')
+makedepends=('texlive-bin' 'sbcl')
 provides=(sbcl)
 conflicts=(sbcl)
-replaces=()
-backup=()
-options=()
-install=
-source=()
-noextract=()
-md5sums=() #generate with 'makepkg -g'
+BUILDENV+=('!check')
+source=("$pkgname::git+git://git.code.sf.net/p/sbcl/sbcl")
+sha256sums=('SKIP')
 
-_gitroot=https://git.code.sf.net/p/sbcl/sbcl
-_gitname=sbcl-sbcl
+pkgver() {
+  cd "$pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
+  cd "$pkgname"
+  sh make.sh --fancy
+  cd doc/manual && make
+}
 
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  #
-  # BUILD HERE
-  #
-  sh make.sh
+check() {
+  cd "$pkgname/tests" && sh run-tests.sh
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
-  INSTALL_ROOT="$pkgdir/" ./install.sh
+  cd "$pkgname"
+  INSTALL_ROOT="$pkgdir/usr" ./install.sh
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
-# vim:set ts=2 sw=2 et:
