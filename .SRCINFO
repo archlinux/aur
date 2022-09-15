@@ -1,6 +1,6 @@
 pkgbase = python-easyocr
 	pkgdesc = End-to-End Multi-Lingual Optical Character Recognition (OCR) Solution
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 4
 	url = https://github.com/JaidedAI/EasyOCR
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = python-easyocr
 	provides = python-easyocr
 	conflicts = python-easyocr-git
 	replaces = python-easyocr-git
-	source = https://github.com/JaidedAI/EasyOCR/archive/refs/tags/v1.6.1.tar.gz
-	sha256sums = 8f7259c64bc7317de3ea88e999d0eeff4c03795c215bf9aa789f403e3649ae04
+	source = https://github.com/JaidedAI/EasyOCR/archive/refs/tags/v1.6.2.tar.gz
+	sha256sums = SKIP
 
 pkgname = python-easyocr
