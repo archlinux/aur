@@ -1,58 +1,57 @@
-# Maintainer: Zion Nimchuk <zionnimchuk@gmail.com>
-_pkgbase='cubeb'
-pkgbase="$_pkgbase-git"
-pkgname="$_pkgbase-git"
-pkgver=r1464.f495dc9
-provides=("cubeb=$pkgver" 'libcubeb.so')
-conflicts=('cubeb')
+# Maintainer: Alexandre Bouvier <contact@amb.tf>
+# Contributor: Zion Nimchuk <zionnimchuk@gmail.com>
+_pkgname=cubeb
+pkgname=$_pkgname-git
+pkgver=0.2.r1393.g4783607
 pkgrel=1
-pkgdesc="A cross platform audio library"
-arch=('i686' 'x86_64')
+pkgdesc="Cross platform audio library"
+arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/mozilla/cubeb"
-license=('GPL2')
-depends=('sndio' 'alsa-lib')
-makedepends=('git' 'cmake' 'libpulse' 'alsa-lib' 'jack' 'sndio')
-optdepends=('libpulse: for PulseAudio support'
-			'jack: for JACK support')
-source=("$_pkgbase::git+https://github.com/mozilla/cubeb"
-		'git+https://github.com/arsenm/sanitizers-cmake')
-md5sums=('SKIP'
-	'SKIP')
+license=('ISC')
+makedepends=('alsa-lib' 'cmake' 'git' 'jack2' 'libpulse' 'sndio' 'speexdsp')
+checkdepends=('gtest')
+optdepends=(
+	'alsa-lib: for ALSA backend'
+	'jack: for JACK backend'
+	'libpulse: for PulseAudio backend'
+	'sndio: for sndio backend'
+)
+provides=("$_pkgname=$pkgver" 'libcubeb.so')
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url.git")
+b2sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_pkgbase"
-	echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	cd $_pkgname
+	git describe --long --tags | sed 's/^cubeb-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "$srcdir/$_pkgbase"
-	mkdir -p build
-	
-	git submodule init
-	git config submodule.cmake/sanitizers-cmake.url "$srcdir/sanitizers-cmake"
-	git submodule update
+	sed -i '/install(TARGETS test_/d' $_pkgname/CMakeLists.txt
 }
 
 build() {
-	cd "$srcdir/$_pkgbase/build"
-	cmake .. \
-	  -DCMAKE_INSTALL_PREFIX=/usr \
-	  -DCMAKE_BUILD_TYPE=Release \
-	  -DBUILD_TESTS=False \
-	  -DBUILD_SHARED_LIBS=true \
-	  -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-	  -DUSE_PULSE=true \
-	  -DUSE_ALSA=true \
-	  -DUSE_JACK=true \
-	  -DUSE_SNDIO=true \
-	  -DUSE_OPENSL=false \
-	  -DUSE_KAI=false
-	# What even is kai?
-	  
-	make
+	cmake -S $_pkgname -B build \
+		-DBUILD_SHARED_LIBS=ON \
+		-DBUILD_TESTS="$CHECKFUNC" \
+		-DBUNDLE_SPEEX=OFF \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
+		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DUSE_SANITIZERS=OFF \
+		-Wno-dev
+	cmake --build build
+}
+
+check() {
+	ctest --test-dir build -E 'audio|callback_ret|device_changed_callback|devices|duplex|latency|record|sanity|tone'
 }
 
 package() {
-	cd "$srcdir/$_pkgbase/build"
-	make DESTDIR="$pkgdir/" install
+	depends+=('libspeexdsp.so')
+	# shellcheck disable=SC2154
+	DESTDIR="$pkgdir" cmake --install build
+	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname $_pkgname/LICENSE
 }
