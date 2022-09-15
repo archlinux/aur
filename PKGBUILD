@@ -7,18 +7,18 @@ pkgdesc="BrickStore is a BrickLink offline management tool."
 arch=('i686' 'x86_64')
 url="https://github.com/rgriebl/brickstore"
 license=('GPL')
-depends=('qt5-base' 'tbb')
-makedepends=('qt5-tools' 'qt5-translations')
+depends=('qt6-base' 'qt6-quick3d' 'qt6-shadertools')
+makedepends=('cmake' 'ninja')
 source=("https://github.com/rgriebl/brickstore/archive/v$pkgver.tar.gz")
 sha256sums=('ebfbe3dc9f60f8ca6ffb7751a45012b93a241ac043ec303d4c9e72459e5e3a7c')
 
 build() {
   cd "$pkgname-$pkgver"
-  qmake-qt5 -r PREFIX=/usr CONFIG+=release
-  make
+  /usr/lib/qt6/bin/qt-cmake -G Ninja -DCMAKE_BUILD_TYPE=Release
+  cmake --build . --config Release --parallel
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  make INSTALL_ROOT="$pkgdir/" install
+  DESTDIR="$pkgdir/" cmake --install . -v
 }
