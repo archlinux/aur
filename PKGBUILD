@@ -5,13 +5,13 @@ pkgver=0.1.5
 pkgrel=1
 pkgdesc='Terminal snake game written in C++'
 arch=(x86_64)
-url='https://github.com/langurmonkey/tsnake'
+url='https://codeberg.org/langurmonkey/tsnake'
 license=(GPL)
 depends=('bash')
 makedepends=('git' 'gcc' 'ncurses')
 provides=(tsnake)
 conflicts=(tsnake)
-source=(https://github.com/langurmonkey/tsnake/archive/$pkgver.tar.gz)
+source=(https://codeberg.org/langurmonkey/tsnake/archive/$pkgver.tar.gz)
 md5sums=('SKIP')
 
 build() {
