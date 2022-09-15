@@ -1,6 +1,6 @@
 # Maintainer: Saghm Rossi <aur@saghm.com>
 pkgname=curseforge
-pkgver=0.206.3_6102
+pkgver=0.207.1_6337
 pkgrel=1
 pkgdesc="CurseForge desktop client for Linux"
 arch=('x86_64')
@@ -9,7 +9,7 @@ source=('https://curseforge.overwolf.com/downloads/curseforge-latest-linux.zip'
         'curseforge'
 )
 options=(!strip)
-sha512sums=('20c79462933db64603136bdd35cc3afbadd08e2637f76e68c73462839bd7e6abe05f7c2087a2762f1b9c276e1618182de7bcd706c296f22d057894a6ab1fbdf8'
+sha512sums=('0bc4d85e802749c85074970d6806c7928721381b5e6865cdfca84a46b288616a6114380ba44485d279f32f5c2f7415a8ce14910febe5000b64add15b1f654baa'
             'ef669b9423f685dc50f7d4db487fde5c4708ee3991517c3f6a28c0417368ffd9f0ba982e183471cef27e376bbb4f7c18c80eeb76dd189dc591e994049c421ddb')
 
 prepare() {
