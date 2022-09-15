@@ -1,14 +1,14 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=python-scrap_engine
-pkgver=1.2.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A 2D ascii game engine for the terminal"
 arch=('any')
 url="https://pypi.org/project/scrap-engine"
 license=('GPL3')
 depends=('python')
-makedepends=('python-setuptools' 'python-setuptools-scm')
+makedepends=('git' 'python-setuptools' 'python-setuptools-scm')
 source=("$pkgname::git+https://github.com/lxgr-linux/scrap_engine.git#tag=$pkgver")
 sha256sums=('SKIP')
 b2sums=('SKIP')
