@@ -3,12 +3,12 @@
 _pkgname=cubeb
 pkgname=$_pkgname-git
 pkgver=0.2.r1393.g4783607
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross platform audio library"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/mozilla/cubeb"
 license=('ISC')
-makedepends=('alsa-lib' 'cmake' 'git' 'jack2' 'libpulse' 'sndio' 'speexdsp')
+makedepends=('alsa-lib' 'cmake' 'doxygen' 'git' 'jack2' 'libpulse' 'sndio' 'speexdsp')
 checkdepends=('gtest')
 optdepends=(
 	'alsa-lib: for ALSA backend'
@@ -27,7 +27,11 @@ pkgver() {
 }
 
 prepare() {
-	sed -i '/install(TARGETS test_/d' $_pkgname/CMakeLists.txt
+	cd $_pkgname
+	sed -i '/install(TARGETS test_/d' CMakeLists.txt
+	sed -i 's/@PACKAGE@/@CMAKE_PROJECT_NAME@/' docs/Doxyfile.in
+	sed -i 's/@VERSION@/@CMAKE_PROJECT_VERSION@/' docs/Doxyfile.in
+	sed -i '$a install(DIRECTORY ${CMAKE_BINARY_DIR}/docs/html/ TYPE DOC)' CMakeLists.txt
 }
 
 build() {
