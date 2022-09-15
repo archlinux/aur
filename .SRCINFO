@@ -17,6 +17,7 @@ pkgname = adwaita-qt5-git
 	depends = qt5-base
 	optdepends = qt5-x11extras: For X11 and/or xwayland support
 	provides = adwaita-qt5
+	provides = adwaita-qt-git
 	conflicts = adwaita-qt
 	conflicts = adwaita-qt5
 

@@ -35,7 +35,7 @@ package_adwaita-qt5-git() {
   depends=(qt5-base)
   optdepends=('qt5-x11extras: For X11 and/or xwayland support')
   conflicts=(adwaita-qt adwaita-qt5)
-  provides=(adwaita-qt5)
+  provides=(adwaita-qt5 adwaita-qt-git)
 
   DESTDIR="$pkgdir" cmake --install build-qt5
 }
