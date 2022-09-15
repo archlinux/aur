@@ -8,7 +8,7 @@ pkgdesc="Skywire Mainnet Node implementation. Develop Banch. Debian package"
 _pkgarch=$(dpkg --print-architecture)
 #leave arch package as any
 arch=('any')
-pkgver='1.2.0'
+pkgver='1.2.1'
 pkgrel=1
 _rc=''
 _pkgver="${pkgver}${_rc}"
@@ -32,7 +32,7 @@ source=( "${url}/archive/refs/tags/${_tag_ver}.tar.gz"
 "postinst.sh::https://aur.archlinux.org/cgit/aur.git/plain/postinst.sh?h=skywire-bin"
 "prerm.sh::https://aur.archlinux.org/cgit/aur.git/plain/prerm.sh?h=skywire-bin"
 )
-sha256sums=('7440ae409420c5703a680b1a4fefd0677c6e10de69701052239136b7c2057f83'
+sha256sums=('56da81239baefeffd0bb607c4d1d3a1efc2e86e029471892970e531a9c269533'
             '08f0c625a3ae8810f0468a45aa2e463425ec307441f71f6ba48114bda2055316'
             'f0300bcde06b6818b637ccc23fa8206a40e67f63815781d265bd10d2cda93e65'
             '0c20dd44eca0266a3a10fab24c657295a833eba9f78c6b1cf06132b093ac3ba8'
