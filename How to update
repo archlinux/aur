@@ -1,0 +1,5 @@
+makepkg
+makepkg --printsrcinfo > .SRCINFO 
+git push
+
+# Increment package rel if the update is important
