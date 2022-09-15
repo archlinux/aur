@@ -2,7 +2,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=shiv
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="CLI for building self-contained Python zipapps"
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=(
 	'python-sphinx-click'
 	'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('26b1e67db39931f4e7cd8cb6b6d92132c68a275e7f5cc3a485f05873bf2710b2')
+sha256sums=('7d4e87e8d2705d313d69bc3219a2dc334197f44b29641222ba0e3e636dd170d1')
 
 build() {
 	cd "$pkgname-$pkgver"
