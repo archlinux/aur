@@ -3,7 +3,7 @@ pkgname=skywire-bin
 _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Decentralize the web. Skycoin.com. Debian package"
-pkgver='1.2.0'
+pkgver='1.2.1'
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -43,10 +43,10 @@ noextract=(
 "${_binarchive}armhf.tar.gz"
 "${_release_url}-arm.tar.gz"
 )
-sha256sums=('2538bc460f911e4de314dd5b36e15f146e9c812784149c521159b129ac9f04aa'
-            '227d84c1e7e5e9abc639617043ddc8e0fe894512006efad352352da5ac62e23a'
-            '97626da6489f2a1641f6423fe71fd098233d33b01a6f6862e7a194241ef43863'
-            '2a3c20bac46405b9a46d551b0982de7697c654ddd58a160cdfc6fe2ef4ab2768'
+sha256sums=('d2dd1f6a15eba62cad2838602e8366bb8fe63cf2df00e9f1619a8233e8d20235'
+            '60da7b30dc42b43e469caa5e82d9f2e9413a65a54a15007cf44725cdc334d209'
+            '6619e736efc1823517a98f31ec9611d4211674d1b70b17e25c5ae1cfeab556f1'
+            'a66bdfa7ffe83cc770a7955e2aedeccaeef43d71e5597005e063058eba004fe8'
             '08f0c625a3ae8810f0468a45aa2e463425ec307441f71f6ba48114bda2055316'
             'f0300bcde06b6818b637ccc23fa8206a40e67f63815781d265bd10d2cda93e65'
             '0c20dd44eca0266a3a10fab24c657295a833eba9f78c6b1cf06132b093ac3ba8'
