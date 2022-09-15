@@ -1,6 +1,6 @@
 # Maintainer: Sam Therapy <sam at samtherapy dot net>
 pkgname=awl-dns-git
-pkgver=0.2.0.r35.g61ddbb3
+pkgver=0.5.0.r1.g0d011bb
 pkgrel=1
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="A DNS client"
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  printf "%s" "$(git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
+  printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 build() {
