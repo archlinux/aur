@@ -1,7 +1,7 @@
 # Where to file issues: https://github.com/remotemobprogramming/mob/issues
 
 pkgname=mobsh-bin
-pkgver=3.1.5
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Fast git handover with mob"
 arch=('x86_64')
@@ -13,8 +13,8 @@ optdepends=('espeak-ng-espeak: Multi-lingual software speech synthesizer'
 provides=('mobsh')
 conflicts=('mobsh' 'mob')
 
-source_x86_64=("$url/releases/download/v3.1.5/mob_v3.1.5_linux_amd64.tar.gz")
-sha256sums_x86_64=("bc96caeedd195612cfa37d1fe40fcd78c12db2834bd463f48265e01a1b0ee60c")
+source_x86_64=("$url/releases/download/v3.2.0/mob_v3.2.0_linux_amd64.tar.gz")
+sha256sums_x86_64=("104e05144dcc77fcafa9b99f0f7969218e3ee5fb329a922eab2e7045b454109a")
 
 package() {
     install -D -m644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
