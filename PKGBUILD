@@ -2,14 +2,14 @@
 # ex-Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=decoder-git
-pkgver=0.3.1.r5.g7ec1867
+pkgver=0.3.1.r17.g8235821
 pkgrel=1
 pkgdesc='Scan and Generate QR Codes'
 arch=('x86_64' 'aarch64')
 url="https://gitlab.gnome.org/World/decoder"
 license=('GPL3')
-depends=('libadwaita-git>=1.2.alpha' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gst-plugins-good' 'pipewire' 'zbar')
-makedepends=('git' 'meson' 'cargo' 'clang') #llvm12
+depends=('libadwaita>=1:1.2.0' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gst-plugins-good' 'pipewire' 'zbar')
+makedepends=('git' 'meson' 'cargo' 'clang')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -22,12 +22,12 @@ pkgver() {
 }
 
 build() {
-  arch-meson --buildtype release "${pkgname%-git}" build
+  arch-meson "${pkgname%-git}" build
   meson compile -C build
 }
 
 check() {
-  meson test -C build || :
+  meson test -C build --print-errorlogs || :
 }
 
 package() {
