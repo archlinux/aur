@@ -1,0 +1,13 @@
+pkgbase = nodejs-dockerfile-language-server
+	pkgdesc = A language server for Dockerfiles powered by Node.js, TypeScript, and VSCode technologies.
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/rcjsuen/dockerfile-language-server-nodejs
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	source = https://registry.npmjs.com/dockerfile-language-server-nodejs/-/dockerfile-language-server-nodejs-0.9.0.tgz
+	sha256sums = 88a6085ca049ebdf383f3644ee699e982379e3767918bf14baedd0ef90c1e18f
+
+pkgname = nodejs-dockerfile-language-server
