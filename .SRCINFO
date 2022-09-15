@@ -1,7 +1,7 @@
 pkgbase = randomgtk
 	pkgdesc = A randomization app for GNOME
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/foreverxml/random
 	arch = x86_64
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = randomgtk
 	makedepends = meson
 	makedepends = gobject-introspection
 	makedepends = vala
-	depends = libadwaita-git>=1.2.alpha
+	depends = libadwaita>=1:1.2.0
 	source = https://codeberg.org/foreverxml/random/archive/v1.5.tar.gz
 	b2sums = 60424c05e57920c483fd4e9cb49cf4b147a9f624520d58ae2b1c65c3a496e817e90c9cfcbafa557b0ec2486169663913fc49030ac3f3409cc85dd686efb62444
 

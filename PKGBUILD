@@ -3,12 +3,12 @@
 pkgname=randomgtk
 _pkgname=random
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A randomization app for GNOME"
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/foreverxml/random"
 license=('AGPL3')
-depends=('libadwaita-git>=1.2.alpha')
+depends=('libadwaita>=1:1.2.0')
 makedepends=('meson' 'gobject-introspection' 'vala')
 checkdepends=('appstream-glib')
 source=("${url}/archive/v${pkgver}.tar.gz")
@@ -20,7 +20,7 @@ build() {
 }
 
 check() {
-  meson test -C build || :
+  meson test -C build --print-errorlogs || :
 }
 
 package() {
