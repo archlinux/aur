@@ -1,4 +1,4 @@
-pkgbase = amalthea-ldc2
+pkgbase = amalthea-gdc
 	pkgdesc = Small general library for the D programming language, version for GDC
 	pkgver = 1.2.1
 	pkgrel = 1
