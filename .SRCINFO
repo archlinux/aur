@@ -32,6 +32,6 @@ pkgbase = eruption
 	backup = etc/eruption/process-monitor.conf
 	backup = etc/eruption/audio-proxy.conf
 	source = eruption-0.2.0.tar.gz::https://github.com/X3n0m0rph59/eruption/archive/refs/heads/releases/v0.2.0.tar.gz
-	sha512sums = 2120f803e46669438e833ea5f3e22fe00c570bc67f421406d235c1817949a2f11001a228f00326e59fcf765fe97b2e662f0de1b0b28be291b80c7e4a9c6beaa3
+	sha512sums = 4ecb7673af590ce376ddee8d5fc4de394c3b08d8be46c564b5f0265ecd078e69234f408e7fab2c9f16ae5f6af485aa088901e7b143bf164b04abb4dc51ebd6ed
 
 pkgname = eruption
