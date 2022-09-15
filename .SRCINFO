@@ -1,0 +1,15 @@
+pkgbase = libtexprintf-git
+	pkgdesc = Formatted Output with tex-like syntax support
+	pkgver = 1.12dev
+	pkgrel = 1
+	url = https://github.com/bartp5/libtexprintf
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	provides = libtexprintf
+	conflicts = libtexprintf
+	source = libtexprintf::git+https://github.com/bartp5/libtexprintf
+	md5sums = SKIP
+
+pkgname = libtexprintf-git
