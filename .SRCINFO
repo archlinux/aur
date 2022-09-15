@@ -1,11 +1,11 @@
 pkgbase = apipost-bin
 	pkgdesc = An API debugging and management tool that supports team collaboration and can generate documents directly.
 	pkgver = 7.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.apipost.cn/
 	arch = x86_64
 	license = unknown
-	source = apipost.desktop
+	source = apipost7.desktop
 	source = https://www.apipost.cn/dl.php?client=LinuxGz&arch=x64&version=7.0.3#/apipost-v7.0.3.tar.gz
 	md5sums = bb57646eba1d0778a6d6575e554a4260
 	md5sums = SKIP
