@@ -3,7 +3,7 @@
 
 pkgname=kcm-grub2-git
 _product="${pkgname%-git}"
-pkgver=0.6.4.r87.g024abc7
+pkgver=0.6.4.r132.gecb98f3
 pkgrel=1
 pkgdesc="A KDE Control Module for configuring the GRUB2 bootloader"
 arch=('x86_64')
@@ -21,7 +21,6 @@ makedepends=(
     'extra-cmake-modules'
     'git'
     'kdoctools'
-    'ninja'
 )
 
 conflicts=('grub2-editor-frameworks')
@@ -36,15 +35,9 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-   cd ${_product}
-   sed -i 's/startup-and-shutdown/session/g' other/kcm_grub2.desktop
-}
-
 build() {
     export PKG_CONFIG_PATH='/usr/lib/imagemagick6/pkgconfig'
     cmake -B build -S "${_product}" \
-       -G Ninja \
        -D BUILD_TESTING=OFF \
        -Wno-dev
 

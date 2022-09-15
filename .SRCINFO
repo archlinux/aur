@@ -1,6 +1,6 @@
 pkgbase = kcm-grub2-git
 	pkgdesc = A KDE Control Module for configuring the GRUB2 bootloader
-	pkgver = 0.6.4.r87.g024abc7
+	pkgver = 0.6.4.r132.gecb98f3
 	pkgrel = 1
 	url = https://invent.kde.org/system/kcm-grub2
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = kcm-grub2-git
 	makedepends = extra-cmake-modules
 	makedepends = git
 	makedepends = kdoctools
-	makedepends = ninja
 	depends = grub
 	depends = hwinfo
 	depends = kcmutils
