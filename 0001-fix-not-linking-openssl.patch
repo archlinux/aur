@@ -1,0 +1,11 @@
+--- Cargo.toml.bak	2022-09-16 00:21:02.027968951 +0200
++++ Cargo.toml	2022-09-16 00:21:12.474917046 +0200
+@@ -100,7 +100,7 @@
+ version = "0.22.0"
+ features = [
+     "testing",
+-    "dns-over-native-tls",
++    "dns-over-rustls",
+ ]
+ 
+ [dev-dependencies.trust-dns-resolver]
