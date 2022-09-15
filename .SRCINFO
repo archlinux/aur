@@ -1,6 +1,6 @@
 pkgbase = miniserve-bin
 	pkgdesc = For when you really just want to serve some files over HTTP right now!
-	pkgver = 0.20.0
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://github.com/svenstaro/miniserve
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = miniserve-bin
 	license = MIT
 	provides = miniserve
 	conflicts = miniserve
-	source_x86_64 = miniserve-0.20.0::https://github.com/svenstaro/miniserve/releases/download/v0.20.0/miniserve-v0.20.0-x86_64-unknown-linux-musl
-	sha256sums_x86_64 = 4570d04a205f2f8a074f00f7f4906cf1bb0e1f4f44754b7eef670a2c4cf105f2
-	source_aarch64 = miniserve-0.20.0::https://github.com/svenstaro/miniserve/releases/download/v0.20.0/miniserve-v0.20.0-aarch64-unknown-linux-musl
-	sha256sums_aarch64 = e2293fdf04e0b7cefde358370f7ccad5570f5d2e24494175383df5b0431d73c3
-	source_armv7h = miniserve-0.20.0::https://github.com/svenstaro/miniserve/releases/download/v0.20.0/miniserve-v0.20.0-armv7-unknown-linux-musleabihf
-	sha256sums_armv7h = 48c9b67e2b28794e8918d681bb25d57bdffd0ac94acb06e2d64f8ed731eb6184
+	source_x86_64 = miniserve-0.21.0-x86_64::https://github.com/svenstaro/miniserve/releases/download/v0.21.0/miniserve-0.21.0-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = 0431dde2ae2d2a017aaee24e3049668f867e259dc7e32367df59dc2d590d9412
+	source_aarch64 = miniserve-0.21.0-aarch64::https://github.com/svenstaro/miniserve/releases/download/v0.21.0/miniserve-0.21.0-aarch64-unknown-linux-musl
+	sha256sums_aarch64 = 5f20e4c78a819ff91dbf72e6581e942ec6487f8c74e8b63c5045a5e9569e956e
+	source_armv7h = miniserve-0.21.0-armv7h::https://github.com/svenstaro/miniserve/releases/download/v0.21.0/miniserve-0.21.0-armv7-unknown-linux-musleabihf
+	sha256sums_armv7h = d1e12a23c6a913c4943a21682488918d8ef4cdf55fd0181c33fe43c76e6c3b36
 
 pkgname = miniserve-bin
