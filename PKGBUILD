@@ -1,8 +1,9 @@
 # Maintainer: farawayer <farwayer@gmail.com>
+# Maintainer: Axel Navarro <navarroaxel at Gmail>
 
 _gemname=fastlane
 pkgname=$_gemname
-pkgver=2.209.1
+pkgver=2.210.0
 pkgrel=1
 pkgdesc='The easiest way to automate beta deployments and releases for your iOS and Android apps'
 arch=(any)
@@ -16,7 +17,7 @@ source=(
   fastlane
 )
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('0d99a38c9612b023db9efcbf145f97ea67d4928e5ae1e15f535374a96fb6a49e'
+sha256sums=('0b151ad550370df4eb2a9d15a15627892ddccf4c8693f29e878d57d95b0b5571'
             'feb1a15a8120dd3de709d73287fd4a754dbbfb05fa839f4927b3b7d6ea9b5ee3')
 
 package() {
