@@ -4,7 +4,7 @@
 # Contributor: Mr. Outis <mroutis@protonmail.com>
 
 pkgname=dvc
-pkgver=2.26.1
+pkgver=2.26.2
 pkgrel=1
 pkgdesc='Open-source version control system for data science projects'
 arch=(any)
@@ -61,7 +61,7 @@ optdepends=('python-google-cloud-storage: support for Google Cloud'
 makedepends=(python-{build,installer} python-setuptools-scm{,-git-archive} python-wheel)
 _archive=("$pkgname-$pkgver")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('27a2835b55da70cc3879ee8aa01a2f8c29b3c8d341a8c37a6717fdbb9c582d51')
+sha256sums=('f51dbe294537ad779b368829c6b89dc3795a2ffeb57efc2210a1f9f660927ecd')
 
 prepare() {
 	cd "$_archive"
