@@ -1,7 +1,7 @@
 # Maintainer: Helltar <iam@helltar.com>
 
 pkgname=gcencryptor
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="GUI application for gocryptfs"
 arch=('x86_64')
@@ -11,11 +11,11 @@ depends=('qt5pas' 'gocryptfs')
 
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"
         "$pkgname.desktop"
-        "$pkgname.png")
+        "$pkgname.svg")
 
-sha256sums=('a7f970f491afdd53adb52e7ff94042c33c36c64ff525550aef64beadc57410e6'
+sha256sums=('e81cf55147c960ed2e921ae46bb2ad4fa2a230b9bfe37c8cb48a7676d8898fb4'
             '1b7d3ccbc119ea43dc7b252114e1bf97cd0a212f6fb02231a0e7b93811461a43'
-            'a144e4421b81b713837f19e0ee2ee9d3ff8f8142c7c276403e06200959e2ca3b')
+            '64b0bce6f048d72e91621edb5403c7d132956b85b97790b55dd9ded646fc7467')
 
 package() {
 
@@ -25,6 +25,6 @@ package() {
     mkdir -p "$pkgdir"/usr/bin
     ln -s /usr/lib/$pkgname/$pkgname "$pkgdir"/usr/bin/$pkgname
 
-    install -Dm644 $pkgname.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/$pkgname.png
+    install -Dm644 $pkgname.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/$pkgname.svg
     install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
 }
