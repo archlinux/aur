@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 
 clean:
-	rm *.gz *.xz
+	rm *.gz *.xz *.zst
 
 prepare:
 	updpkgsums
