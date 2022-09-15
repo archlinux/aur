@@ -27,6 +27,6 @@ package() {
     install --mode=644 --owner=root --group=root "DeepQt.desktop" "$pkgdir/usr/share/applications/"
 
     mkdir -p "$pkgdir/usr/share/pixmaps"
-    install --mode=644 --owner=root --group=root "media/logo.png" "$pkgdir/usr/share/pixmaps/deepqt.png"
+    install --mode=644 --owner=root --group=root "media/deepqt.png" "$pkgdir/usr/share/pixmaps/deepqt.png"
 }
 
