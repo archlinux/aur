@@ -1,8 +1,8 @@
 # Maintainer: Marie Piontek <marie@kaifa.ch>
 
 pkgname=honkers-launcher-bin
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="An Launcher for HI3 that installs and updates the game for you"
 url="https://github.com/an-anime-team/honkers-launcher"
 conflicts=("honkers-launcher")
@@ -44,7 +44,7 @@ source=(
 )
 
 md5sums=(
-    'ef6fc6362088d877629cbf3ac3600c49'
+    '7bfa33090b50d7e3c3389b7423e1f564'
     '28c2154639e28ca41e8064f409f9df7d'
     'a1ca3142229aef0e9f1b89f94ce5e5c7'
     'd3830e6a689ed05aead71519ea3f261d'
