@@ -1,7 +1,7 @@
 pkgbase = sylpheed-beta
 	pkgdesc = Lightweight and user-friendly e-mail client. Latest official beta version.
-	pkgver = 3.7.0beta1
-	pkgrel = 4
+	pkgver = 3.8.0beta1
+	pkgrel = 1
 	url = http://sylpheed.sraoss.jp/en/
 	arch = i686
 	arch = x86_64
@@ -14,13 +14,12 @@ pkgbase = sylpheed-beta
 	conflicts = sylpheed
 	conflicts = sylpheed-beta-iconmod
 	options = libtool
-	source = http://sylpheed.sraoss.jp/sylpheed/v3.7beta/sylpheed-3.7.0beta1.tar.bz2
-	source = http://sylpheed.sraoss.jp/sylpheed/v3.7beta/sylpheed-3.7.0beta1.tar.bz2.asc
+	source = http://sylpheed.sraoss.jp/sylpheed/v3.8beta/sylpheed-3.8.0beta1.tar.bz2
+	source = http://sylpheed.sraoss.jp/sylpheed/v3.8beta/sylpheed-3.8.0beta1.tar.bz2.asc
 	source = ssl-sni-support.patch
 	validpgpkeys = 8CF3A5AC417ADE72B0AA4A835024337CC00C2E26
-	md5sums = 21826a6096cc6feb732bdaeb87435435
+	md5sums = 7496ab4614695831f9d041e4ed7ab23e
 	md5sums = SKIP
 	md5sums = b05b75bb2bd46d4022f920e09e0b1923
 
 pkgname = sylpheed-beta
-
