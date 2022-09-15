@@ -1,5 +1,6 @@
 # Maintainer :  Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
 # Contributor : Phil Schaf <flying-sheep(at)web.de>
+# Contributor : Axel Navarro <navarroaxel at gmail>
 
 #####################################################################################################
 ## NOTE: Removing python2 as mandatory makedep; if you want to have a precomiled Python 2 debugger ##
@@ -8,9 +9,9 @@
 
 
 pkgname=pycharm-community-eap
-pkgver=222.4167.4
+pkgver=222.4167.33
 _pkgver=2022.2.2
-_eap=y
+_eap=n
 pkgrel=1
 
 epoch=14
@@ -31,7 +32,7 @@ options=('!strip')
 
 _filever="$([ $_eap = y ] && echo -n $pkgver || echo -n $_pkgver)"
 source=("https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz")
-sha256sums=('8679e8193d7158bd38e2fa82a565bfd80f6fa901b9f52c0529be1d139c97e605')
+sha256sums=('2f361c5f59c685c9f8d1385029ed753eabe5b688a82acef6e83a50f0d2b9d7a8')
 
 
 prepare() {
