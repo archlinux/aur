@@ -1,8 +1,8 @@
 # Contributor: Sebastian Wolf <fatmike303 at gmail.com>
 # Contributor: Serge <cuznez at gmail.com>
 pkgname=gavrasm
-pkgver=5.0
-_pkgver=50
+pkgver=5.4
+_pkgver=54
 pkgrel=1
 pkgdesc="Command line assembler for Atmel AVR microcontrollers with many extended features"
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ license=("Custom")
 url="http://www.avr-asm-tutorial.net/gavrasm"
 makedepends=("fpc")
 source=("http://www.avr-asm-tutorial.net/${pkgname}/v${_pkgver}/${pkgname}_sources_lin_${_pkgver}.zip")
-sha256sums=('7ab6ea6b0f9c40592484d7bcd37aef83ab82799ef4ed8bba4769c91b2d5532bc')
+sha256sums=('ed1159287668a360f29d2d2f3ad2fa57ac33df8c76c4bd442edd8667c42c473d')
 
 build() {
   cd "${srcdir}"
