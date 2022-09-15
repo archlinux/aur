@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Open Visual Traceroute
-Comment=Visual Traceroute, packet sniffer and Whois.
+Comment=A Visual Traceroute.
 Exec=ovtr
 Icon=ovtr
 Terminal=false

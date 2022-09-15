@@ -1,7 +1,7 @@
 pkgname=openvisualtraceroute
 _short_pkgname=ovtr
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source cross-platform Java Visual Traceroute"
 arch=('i686' 'x86_64')
 license=('LGPLv3')
@@ -12,7 +12,7 @@ source=("https://downloads.sourceforge.net/project/openvisualtrace/${pkgver}/Ope
         "ovtr.desktop")
 sha256sums=('f72fedce4d9b5c2cf152e8808a3072a9a2197bb7fb8104ebf7f8f1e8e427d4ac'
             'a0e7609d3ea053e87c789dc1e24c522fb458daa7fdb26410c00bf0af11bbffe6'
-            'af0cef38105d65182c261067577f8ff68bf50e71d4d2f4fc7fe8e0ba4472d22f')
+            'a2b55f67667b5f0feae1543854d1eb3fc066392ff0beb96fe097bf5c3d39e1c5')
 
 if [ "$CARCH" = "i686" ]; then
   _arch="x86"
