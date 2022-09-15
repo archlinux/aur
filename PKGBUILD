@@ -5,9 +5,11 @@ pkgdesc='ConcurrentLua for Lua 5.1'
 arch=(any)
 depends=(
     lua51-socket
-    lua51-copas
-    lua51-binaryheap # copas requires this, but it's not listed in copas deps
     lua51-coxpcall
+    lua51-copas
+    # copas requires next deps, but they're not listed in package deps
+    lua51-binaryheap
+    lua51-timerwheel
 )
 makedepends=(
     git

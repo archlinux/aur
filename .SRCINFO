@@ -10,9 +10,10 @@ pkgbase = concurrentlua51
 	makedepends = cmake
 	makedepends = lua51
 	depends = lua51-socket
+	depends = lua51-coxpcall
 	depends = lua51-copas
 	depends = lua51-binaryheap
-	depends = lua51-coxpcall
+	depends = lua51-timerwheel
 	conflicts = concurrentluajit
 	source = git+https://github.com/lefcha/concurrentlua.git#tag=v1.1
 	sha256sums = SKIP
