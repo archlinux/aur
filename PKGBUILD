@@ -1,6 +1,6 @@
 # Maintainer: Erik Reider <erik.reider@protonmail.com>
 pkgname=swaync
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A simple notificaion daemon with a GTK panel for checking previous notifications like other DEs"
 _pkgfoldername=SwayNotificationCenter
@@ -16,7 +16,7 @@ conflicts=("swaync" "swaync-client")
 provides=("swaync" "swaync-client")
 makedepends=(vala meson git scdoc)
 source=("${_pkgfoldername}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('bc164e177d713d9387ed698b29b7b6a281aae8f7c7e0b71192c682a523269d61')
+sha256sums=('6a19e48976ec1705f11f3932744a304044a4ab057cac6752ec5270546ec0b36e')
 
 build() {
     arch-meson "${_pkgfoldername}-${pkgver}" build -Dscripting=true
