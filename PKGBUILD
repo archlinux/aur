@@ -7,7 +7,11 @@ arch=('any')
 url="https://github.com/nadrad/h-m-m"
 license=('GPL3')
 depends=('php')
-optdepends=('xclip: clipboard support')
+optdepends=(
+'xclip: clipboard support (x11)'
+'xsel: clipboard support (x11)'
+'wl-clipboard: clipboard support (wayland)'
+)
 source=("${pkgname}::git+https://github.com/nadrad/h-m-m")
 md5sums=('SKIP')
 pkgver() {

@@ -6,7 +6,9 @@ pkgbase = h-m-m-git
 	arch = any
 	license = GPL3
 	depends = php
-	optdepends = xclip: clipboard support
+	optdepends = xclip: clipboard support (x11)
+	optdepends = xsel: clipboard support (x11)
+	optdepends = wl-clipboard: clipboard support (wayland)
 	source = h-m-m-git::git+https://github.com/nadrad/h-m-m
 	md5sums = SKIP
 
