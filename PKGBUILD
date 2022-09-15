@@ -2,7 +2,7 @@
 pkgname=deepqt
 _module='DeepQt'
 pkgver='1.0.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="Harness the power of the DeepL API with this friendly user interface. Translate plain text and epub files."
 url="https://github.com/VoxelCubes/DeepQt"
 depends=('python>=3.10.0')
@@ -27,6 +27,6 @@ package() {
     install --mode=644 --owner=root --group=root "DeepQt.desktop" "$pkgdir/usr/share/applications/"
 
     mkdir -p "$pkgdir/usr/share/pixmaps"
-    install --mode=644 --owner=root --group=root "media/logo.svg" "$pkgdir/usr/share/pixmaps/deepqt.svg"
+    install --mode=644 --owner=root --group=root "media/logo.png" "$pkgdir/usr/share/pixmaps/deepqt.png"
 }
 
