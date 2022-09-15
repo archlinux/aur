@@ -55,6 +55,15 @@ erase_leftovers() {
     rm -rf $_IVPN_LOG|| echo "[-] Removing '$_IVPN_LOG' folder failed"
   fi
 
+  # Obtaining information about user running the script
+  # (script can be executed with 'sudo', but we should get real user)
+  USER="${SUDO_USER:-$USER}" # TODO: this returns empty line when uninstalling from GUI ('Add/Remove Software')
+  CLI_CONFIG_DIR="/home/${USER}/.ivpn"
+  if [ ! -z $USER ] && [ -d $CLI_CONFIG_DIR ] ; then
+    echo "[+] Removing CLI config folder '${CLI_CONFIG_DIR}'..."
+    rm -rf $CLI_CONFIG_DIR || echo "[-] Removing '$CLI_CONFIG_DIR' folder failed"
+  fi
+
   #remove 'ivpn' folder (if empy)
   silent sudo rmdir $_IVPN_DIR
 }
