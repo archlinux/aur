@@ -4,7 +4,7 @@
 _name=EasyOCR
 pkgname=python-easyocr
 pkgver=1.6.2
-pkgrel=4
+pkgrel=5
 pkgdesc="End-to-End Multi-Lingual Optical Character Recognition (OCR) Solution"
 arch=("any")
 url="https://github.com/JaidedAI/EasyOCR"
@@ -26,15 +26,25 @@ depends=(
     'python-shapely'
 )
 makedepends=('python-setuptools')
+checkdepends=(${depends[*]} 'python-pytorch-cuda')
 provides=('python-easyocr')
 conflicts=('python-easyocr-git')
 replaces=('python-easyocr-git')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('0ed5af2b739ce2303c5173d520b631df311d54a9aa58a80e09fe33d44c0a8115')
 
 build() {
     cd "$_name-$pkgver"
     python setup.py build
+}
+
+check() {
+    cd "$_name-$pkgver"
+    python unit_test/run_unit_test.py \
+        --easyocr ./easyocr \
+        --verbose 2 \
+        --test_data unit_test/data/EasyOcrUnitTestPackage.pickle \
+        --image_data_dir ./examples
 }
 
 package() {
