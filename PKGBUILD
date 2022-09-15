@@ -2,7 +2,7 @@
 _pkgname=qiskit-aer
 pkgname=python-${_pkgname}
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A high performance simulator for quantum circuits that includes noise models"
 arch=('x86_64')
 url="https://github.com/Qiskit/qiskit-aer"
@@ -22,7 +22,6 @@ optdepends=(
 )
 makedepends=(
     'cmake'
-    'conan'
     'ninja'
     'openblas-lapack'
     'pybind11'
@@ -55,7 +54,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    python -m build --wheel --no-isolation
+    DISABLE_CONAN=1 python -m build --wheel --no-isolation
     #python setup.py bdist_wheel
 }
 
