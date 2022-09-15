@@ -1,0 +1,13 @@
+pkgbase = xkeyclicker-git
+	pkgdesc = A Keyboard autoclicker.
+	pkgver = .1.0
+	pkgrel = 1
+	url = https://github.com/S0raWasTaken/XKeyClicker
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	source = git+https://github.com/S0raWasTaken/xkeyclicker.git
+	sha256sums = SKIP
+
+pkgname = xkeyclicker-git
