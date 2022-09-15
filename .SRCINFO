@@ -1,6 +1,6 @@
 pkgbase = alist-bin
 	pkgdesc = Another file list program that supports multiple storage
-	pkgver = 3.0.0_beta.2
+	pkgver = 3.0.0_rc.0
 	pkgrel = 1
 	url = https://github.com/Xhofe/alist
 	install = alist.install
@@ -14,9 +14,9 @@ pkgbase = alist-bin
 	source = config.json
 	sha256sums = f9f6152b0329946809778efd2396496363212dd2fb1fe465a049a54ab9d5a5f2
 	sha256sums = b72f194a7b8855e97eeb76e63e179f38132cc9e6be9daa5b396699c9c11611de
-	source_aarch64 = alist-3.0.0_beta.2-aarch64.tar.gz::https://github.com/Xhofe/alist/releases/download/v3.0.0-beta.2/alist-linux-arm64.tar.gz
-	sha256sums_aarch64 = 07a1eeb2887675bbb41e91d7dc83666f149bf04b62f39f18bf5efd63bfd6f656
-	source_x86_64 = alist-3.0.0_beta.2-x86_64.tar.gz::https://github.com/Xhofe/alist/releases/download/v3.0.0-beta.2/alist-linux-amd64.tar.gz
-	sha256sums_x86_64 = 790e16011e35d9458b67fa72c5984ba1491d55ae105e6d2c9618e52c7280f948
+	source_aarch64 = alist-3.0.0_rc.0-aarch64.tar.gz::https://github.com/Xhofe/alist/releases/download/v3.0.0-rc.0/alist-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9f9f50cfae325a99aac9a053c0e4cea7d8ea16e7dc5bd01a08b9b36a61a0bd10
+	source_x86_64 = alist-3.0.0_rc.0-x86_64.tar.gz::https://github.com/Xhofe/alist/releases/download/v3.0.0-rc.0/alist-linux-amd64.tar.gz
+	sha256sums_x86_64 = fc20bfb81c8809986f1494bb44a30d98ed22cab7ac3e9ba0827cea0e318b6319
 
 pkgname = alist-bin
