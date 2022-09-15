@@ -1,6 +1,6 @@
 pkgbase = eddie-cli-git
 	pkgdesc = Eddie - VPN tunnel - CLI - beta
-	pkgver = 2.21.8
+	pkgver = 2.22.1
 	pkgrel = 1
 	url = https://eddie.website
 	install = eddie-cli.install
@@ -9,6 +9,7 @@ pkgbase = eddie-cli-git
 	license = GPLv3
 	makedepends = cmake
 	depends = mono
+	depends = curl
 	depends = openvpn
 	depends = sudo
 	optdepends = stunnel: VPN over SSL

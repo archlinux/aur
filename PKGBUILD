@@ -6,13 +6,13 @@
 # - target framework not v4.8
 
 pkgname=eddie-cli-git
-pkgver=2.21.8
+pkgver=2.22.1
 pkgrel=1
 pkgdesc='Eddie - VPN tunnel - CLI - beta'
 arch=('i686' 'x86_64')
 url=https://eddie.website
 license=(GPLv3)
-depends=(mono openvpn sudo)
+depends=(mono curl openvpn sudo)
 optdepends=('stunnel: VPN over SSL' 'openssh: VPN over SSH')
 makedepends=('cmake')
 provides=('eddie-cli')
