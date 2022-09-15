@@ -1,27 +1,31 @@
 pkgname=mcg
-pkgver=3.0.1
-pkgrel=2
+pkgver=3.1
+pkgrel=1
 pkgdesc="A covergrid for the Music Player Daemon."
 url="https://www.suruatoel.xyz/codes/mcg"
 arch=(any)
 license=(GPL)
 depends=('python-gobject' 'gtk3>=3.22' 'gsettings-desktop-schemas' 'desktop-file-utils')
 optdepends=('python-keyring' 'avahi' 'mpd>=0.21')
-makedepends=('python-setuptools' 'git')
+makedepends=('meson' 'git')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("https://gitlab.com/coderkun/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('8d9c7ca950fe607905015f479a1ce49d997f8fd955b259cea14fd6e10dc5fd95')
+sha256sums=('bfe776f8e4a5b0a00165aa55047f357ee1d083ef3f117462cac25936a315f56a')
 
 
 build() {
-    cd "$srcdir/${pkgname}-v${pkgver}"
-    python setup.py --no-compile-schemas build
+  arch-meson ${pkgname}-v${pkgver} build
+  meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-    cd "$srcdir/${pkgname}-v${pkgver}"
-    python setup.py --no-compile-schemas \
-        install --root="$pkgdir/" --prefix=/usr --optimize=1
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  meson install -C build --destdir "$pkgdir"
+
+  python -m compileall -d /usr/lib "$pkgdir/usr/lib"
+  python -O -m compileall -d /usr/lib "$pkgdir/usr/lib"
 }
