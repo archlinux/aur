@@ -15,12 +15,12 @@ source=(https://codeberg.org/langurmonkey/tsnake/archive/$pkgver.tar.gz)
 md5sums=('SKIP')
 
 build() {
-    cd tsnake-$pkgver
+    cd tsnake
     make
 }
 
 package() {
-    cd tsnake-$pkgver
+    cd tsnake
     make DESTDIR=$pkgdir PREFIX=/usr install
 
     install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
