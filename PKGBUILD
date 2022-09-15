@@ -40,7 +40,7 @@ prepare() {
      libcrypto.so libssl.so libxkbcommon* libxcb*
 
   rm -r resources plugins translations
-  chmod 775 "./*"
+  chmod 775 ./*
   chmod 664 version.txt
   popd
 
