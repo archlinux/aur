@@ -12,7 +12,7 @@ makedepends=('git' 'gcc' 'ncurses')
 provides=(tsnake)
 conflicts=(tsnake)
 source=(https://codeberg.org/langurmonkey/tsnake/archive/$pkgver.tar.gz)
-md5sums=('SKIP')
+md5sums=('3207dd248d3254ddb739c52ece1dc024')
 
 build() {
     cd tsnake
