@@ -2,7 +2,7 @@
 pkgbase=python-readthedocs-sphinx-ext
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=2.1.8
+pkgver=2.1.9
 pkgrel=1
 pkgdesc="Sphinx epytext extension"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 #makedepends=('python-wheel' 'python-build' 'python-installer')
 checkdepends=('python-pytest' 'python-sphinx')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('ecaaee440cb231bab66328c09b120567')
+md5sums=('78d8e12367125eb35863fb1bc579432f')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
