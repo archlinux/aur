@@ -1,0 +1,18 @@
+pkgbase = brawl
+	pkgdesc = 2D mass brawl simulator
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://github.com/milgra/brawl
+	arch = i686
+	arch = x86_64
+	license = gplv3
+	makedepends = meson
+	depends = glew
+	depends = sdl2
+	depends = sdl2_mixer
+	depends = glu
+	depends = freetype2
+	source = brawl-0.8.tar.xz::https://github.com/milgra/brawl/releases/download/0.8/brawl-0.8.tar.xz
+	sha256sums = 5e8a2110fe9c1e6cf41b344f9f8a23bda2fce5139e2bcb4923b43f60033b6895
+
+pkgname = brawl
