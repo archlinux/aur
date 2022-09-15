@@ -1,6 +1,6 @@
 pkgbase = r-msstatstmt
 	pkgdesc = Protein Significance Analysis in shotgun mass spectrometry-based proteomic experiments with tandem mass tag (TMT) labeling
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MSstatsTMT
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-msstatstmt
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSstatsTMT_2.4.0.tar.gz
-	sha256sums = d39f42d90a3610306139c41fbe90536cdfa6b8628f57afccc273b11eacaca69b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSstatsTMT_2.4.1.tar.gz
+	sha256sums = 9230519037468310a3ab94055a119fb1a033ad647b941c462d09b7e6a6a47bbc
 
 pkgname = r-msstatstmt
