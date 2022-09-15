@@ -3,7 +3,7 @@ pkgname='dust-mail-client-git'
 
 arch=('x86_64')
 
-pkgver=0.1.4.r47.gd0d93b8
+pkgver=0.1.4.r53.gbd89447
 pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -42,7 +42,7 @@ prepare() {
   _ensure_local_nvm
   nvm install 16
 
-  cd "$srcdir/$pkgname/apps/client/src-tauri"
+  cd "$srcdir/$pkgname/apps/web/src-tauri"
 
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 
@@ -56,9 +56,9 @@ build() {
 
   pnpm install --frozen-lockfile --offline
 
-  pnpm run build --filter @dust-mail/client
+  pnpm run build --filter @dust-mail/web
 
-  cd "apps/client"
+  cd "apps/web"
 
   unset SOURCE_DATE_EPOCH
 
@@ -72,5 +72,5 @@ build() {
 package() {
   install -Dm644 "$srcdir/dust-mail.desktop" "$pkgdir/usr/share/applications/dust-mail-client.desktop"
   install -Dm644 "$srcdir/dust-mail.png" "$pkgdir/usr/share/dust-mail.png"
-  install -Dm755 "$srcdir/$pkgname/apps/client/src-tauri/target/release/dust-mail" "$pkgdir/usr/bin/dust-mail"
+  install -Dm755 "$srcdir/$pkgname/apps/web/src-tauri/target/release/dust-mail" "$pkgdir/usr/bin/dust-mail"
 }
