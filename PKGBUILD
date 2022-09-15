@@ -27,6 +27,8 @@ pkgver() {
 build() {
     cd "${srcdir}/${_pkgname}"
 
+	echo "store-dir=.pnpm-store" >> .npmrc
+
     echo "Building ${_pkgname} on v${pkgver} : [Install Build Dependencies] | Build | Done"
     pnpm install --frozen-lockfile
 
