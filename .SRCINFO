@@ -1,0 +1,21 @@
+pkgbase = aru-git
+	pkgdesc = a text editor
+	pkgver = f4f034a
+	pkgrel = 1
+	url = https://github.com/pegvin/aru
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = scons
+	makedepends = pkg-config
+	makedepends = python
+	depends = json-c
+	depends = tre
+	provides = aru-git
+	conflicts = aru-git
+	source = git+https://github.com/pegvin/aru.git
+	sha512sums = SKIP
+
+pkgname = aru-git
