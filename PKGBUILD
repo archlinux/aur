@@ -3,14 +3,15 @@
 
 pkgbase=qbittorrent-git
 pkgname=(qbittorrent-git qbittorrent-nox-git)
-pkgver=4.5.0alpha1.r320.gde8377ab5
+pkgver=4.5.0alpha1.r605.g4e06a9629
 pkgrel=1
 epoch=1
 arch=(x86_64)
 url='https://www.qbittorrent.org'
 license=(custom GPL)
 depends=(libtorrent-rasterbar qt6-base)
-makedepends=(git cmake boost qt6-tools qt6-svg)
+makedepends=(cmake boost qt6-tools qt6-svg)
+makedepends+=(git)
 optdepends=('python: needed for torrent search tab')
 source=("$pkgbase::git+https://github.com/qbittorrent/qBittorrent.git")
 sha256sums=('SKIP')
