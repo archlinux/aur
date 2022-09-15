@@ -1,0 +1,12 @@
+pkgbase = gradience-backgrounds
+	pkgdesc = Gradience Backgrounds
+	pkgver = 0.2.3
+	pkgrel = 2
+	url = https://github.com/GradienceTeam/Design
+	arch = any
+	license = GPLv3
+	makedepends = git
+	source = git+https://github.com/GradienceTeam/Design
+	sha256sums = SKIP
+
+pkgname = gradience-backgrounds
