@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-dev
 	pkgdesc = Official Telegram Desktop client - development release
-	pkgver = 4.1.1
+	pkgver = 4.1.2
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = x86_64
@@ -40,7 +40,7 @@ pkgbase = telegram-desktop-dev
 	optdepends = xdg-desktop-portal: desktop integration
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop#tag=v4.1.1
+	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop#tag=v4.1.2
 	source = tgcalls_type_fix.diff
 	source = cmake::git+https://github.com/desktop-app/cmake_helpers.git
 	source = codegen::git+https://github.com/desktop-app/codegen.git
@@ -62,7 +62,6 @@ pkgbase = telegram-desktop-dev
 	source = libtgvoip::git+https://github.com/telegramdesktop/libtgvoip
 	source = lib_tl::git+https://github.com/desktop-app/lib_tl.git
 	source = lib_ui::git+https://github.com/desktop-app/lib_ui.git
-	source = lib_waylandshells::git+https://github.com/desktop-app/lib_waylandshells.git
 	source = lib_webrtc::git+https://github.com/desktop-app/lib_webrtc.git
 	source = lib_webview::git+https://github.com/desktop-app/lib_webview.git
 	source = lz4::git+https://github.com/lz4/lz4.git
@@ -76,7 +75,6 @@ pkgbase = telegram-desktop-dev
 	source = xxHash::git+https://github.com/Cyan4973/xxHash.git
 	sha512sums = SKIP
 	sha512sums = e1328de1bf2dfc26a834aae855c9ee4734ff00e92f8c31fcfe633b0b5365456daa5ae1736a590a57889597f8703214829e0809d7e6d13e8fb02165c731b1ea88
-	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP

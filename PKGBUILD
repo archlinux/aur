@@ -5,7 +5,7 @@
 # Thanks Nicholas Guriev <guriev-ns@ya.ru> for the initial patches!
 # https://github.com/mymedia2/tdesktop
 pkgname=telegram-desktop-dev
-pkgver=4.1.1
+pkgver=4.1.2
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -55,7 +55,6 @@ source=(
     "libtgvoip::git+https://github.com/telegramdesktop/libtgvoip"
     "lib_tl::git+https://github.com/desktop-app/lib_tl.git"
     "lib_ui::git+https://github.com/desktop-app/lib_ui.git"
-    "lib_waylandshells::git+https://github.com/desktop-app/lib_waylandshells.git"
     "lib_webrtc::git+https://github.com/desktop-app/lib_webrtc.git"
     "lib_webview::git+https://github.com/desktop-app/lib_webview.git"
     "lz4::git+https://github.com/lz4/lz4.git"
@@ -70,7 +69,6 @@ source=(
 )
 sha512sums=('SKIP'
             'e1328de1bf2dfc26a834aae855c9ee4734ff00e92f8c31fcfe633b0b5365456daa5ae1736a590a57889597f8703214829e0809d7e6d13e8fb02165c731b1ea88'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -120,7 +118,6 @@ prepare() {
     git config submodule.Telegram/lib_storage.url "$srcdir/lib_storage"
     git config submodule.Telegram/lib_tl.url "$srcdir/lib_tl"
     git config submodule.Telegram/lib_ui.url "$srcdir/lib_ui"
-    git config submodule.Telegram/lib_waylandshells.url "$srcdir/lib_waylandshells"
     git config submodule.Telegram/lib_webrtc.url "$srcdir/lib_webrtc"
     git config submodule.Telegram/lib_webview.url "$srcdir/lib_webview"
     git config submodule.Telegram/ThirdParty/dispatch.url "$srcdir/dispatch"
