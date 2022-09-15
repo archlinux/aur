@@ -1,7 +1,7 @@
-From 8a07cff9f880a1d528c3d4fd19c3bc3b86fb87f3 Mon Sep 17 00:00:00 2001
+From 871115942e18746d6447d21acd3e29475e462833 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jouni=20H=C3=B6gander?= <jouni.hogander@intel.com>
 Date: Fri, 13 May 2022 17:28:11 +0300
-Subject: [PATCH 3/7] drm/i915: Ensure damage clip area is within pipe area
+Subject: [PATCH 3/8] drm/i915: Ensure damage clip area is within pipe area
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
