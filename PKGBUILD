@@ -1,5 +1,7 @@
-# Submitter: Grey Christoforo <first name [at] last name [dot] net>
-# Maintainer: Jeancarlo Hidalgo <jeancahu@gmail.com>
+# Maintainer: Jeancarlo Hidalgo <jeancahu at gmail dot com>
+# Contributor: hydrasho <first name [at] last name [dot] net>
+# Contributor: GoliathLabs <first name [at] last name [dot] net>
+# Contributor: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=albion-online-launcher-bin
 pkgver=1.20.060.231052
@@ -12,17 +14,11 @@ makedepends=(chrpath)
 depends=(
   'libgl'
   'alsa-lib'
-  'libxrandr'
   'libxcb'
   'libxkbcommon'
   'sdl2'
-  'qt5-base'
-  'qt5-declarative'
-  'qt5-location'
-  'qt5-webchannel'
   'qt5-webengine'
   'xdelta3'
-  'ttf-font'
   'zenity'
 )
 optdepends=()
@@ -31,7 +27,9 @@ source=("https://live.albiononline.com/clients/20220914103045/albion-online-setu
 install=albion-online-launcher-bin.install
 options=(!strip docs libtool emptydirs !zipman staticlibs)
 sha256sums=('0ef7ea10ce92d10ba2ba3ed62d861ef6bdbf72c6c9418ebbdbe0c19e80b760c4'
-  'SKIP' 'SKIP' 'SKIP')
+            '4d94016e053c4d670c88631cbeb89442b1d0447265a2993e44337037288143c2'
+            'c070a3c3e83cc75fc0a9249da65c3b4d8cb33a1445db760308fd02e2f55f91ee'
+            '997b87a699a831c37a335f06384cc189787deefd1ee5245381c7c99fbadfc510')
 
 prepare() {
   chrpath -d "${srcdir}/data/launcher/Albion-Online"
