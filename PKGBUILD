@@ -4,7 +4,7 @@
 _project=ots-python
 _pyname=opentype-sanitizer
 pkgname=python-$_pyname
-pkgver=8.2.2
+pkgver=9.0.0
 pkgrel=1
 pkgdesc='Python wheels for the OpenType Sanitizer'
 arch=(any)
@@ -18,7 +18,7 @@ makedepends=(python-setuptools-scm)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz"
         system-ots-sanitize.patch)
-sha256sums=('0b01a71314b6545544d540aa657ddf9fb6967bff69c57c8b5803aafbd7bf221a'
+sha256sums=('4b89660e166a1fe057ab1c6b63038fc48ee73e768e80e1bf982abaf7b16fa064'
             '6388d57e44f3dc7d6ee91422b30ca9eca3e3c590bacaa7bc4664b6183ed4d065')
 
 prepare () {
