@@ -1,0 +1,15 @@
+pkgbase = gradience-plugins
+	pkgdesc = Gradience Plugins
+	pkgver = 0.2.3
+	pkgrel = 2
+	url = https://github.com/GradienceTeam/Plugins
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = gradience
+	depends = python
+	depends = python-pluggy
+	source = git+https://github.com/GradienceTeam/Plugins
+	sha256sums = SKIP
+
+pkgname = gradience-plugins
