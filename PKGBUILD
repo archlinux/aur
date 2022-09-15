@@ -1,14 +1,14 @@
 # Maintainer: Cooper Pierce <cppierce@andrew.cmu.edu>
 pkgname=millet
-pkgver=0.3.5
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="Language server implementation for Standard ML"
 url="https://github.com/azdavis/millet"
 arch=('x86_64')
-license=('MIT')
+license=(APACHE MIT)
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tgz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('aa6f3553e644733b721c7a4d91664033')
+md5sums=('eb62f170197158a6a68d968b21d42e03')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -19,7 +19,7 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 "target/release/lang-srv" "$pkgdir/usr/bin/millet"
-    install -Dm644 "license.md" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "license-mit.md" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE-MIT"
 }
 
 check() {
