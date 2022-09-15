@@ -3,7 +3,7 @@
 pkgbase=lua-libmagic
 pkgname=('lua-libmagic' 'lua51-libmagic' 'lua52-libmagic' 'lua53-libmagic')
 pkgver=5.41
-pkgrel=2
+pkgrel=3
 pkgdesc='libmagic binding for lua'
 arch=('i686' 'x86_64')
 url='https://github.com/mah0x211/lua-libmagic'
@@ -28,7 +28,7 @@ package_lua-libmagic() {
 	provides=('lua-magic')
 	replaces=('lua-magic')
 
-	install -D -m0755 ${pkgbase}-${pkgver}/magic53.so ${pkgdir}/usr/lib/lua/5.3/magic.so
+	install -D -m0755 ${pkgbase}-${pkgver}/magic54.so ${pkgdir}/usr/lib/lua/5.4/magic.so
 }
 
 package_lua51-libmagic() {
