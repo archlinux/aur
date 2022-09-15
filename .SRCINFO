@@ -19,6 +19,7 @@ pkgbase = homeassistant-supervised
 	depends = dbus
 	depends = homeassistant-osagent
 	conflicts = docker-desktop
+	backup = etc/docker/daemon.json
 	source = git+https://github.com/home-assistant/supervised-installer.git#tag=2f62e65aab05fba7dbbf70d6c91a02f98067631f
 	md5sums = SKIP
 

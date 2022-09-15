@@ -22,6 +22,7 @@ depends=(
 makedepends=('git')
 conflicts=('docker-desktop')
 install=.INSTALL
+backup=(etc/docker/daemon.json)
 _tag=2f62e65aab05fba7dbbf70d6c91a02f98067631f # git rev-parse "$pkgver"
 source=("git+https://github.com/home-assistant/supervised-installer.git#tag=${_tag}")
 md5sums=('SKIP')
