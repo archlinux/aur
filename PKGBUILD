@@ -6,14 +6,14 @@
 
 _pkgname=elasticsearch
 pkgname=elasticsearch7
-pkgver=7.17.1
+pkgver=7.17.6
 pkgrel=1
 pkgdesc="Distributed RESTful search engine built on top of Lucene"
 arch=('x86_64')
 url="https://www.elastic.co/products/elasticsearch"
 license=('Apache')
 depends=('java-runtime-headless<=17' 'systemd' 'libxml2')
-makedepends=('java-environment=17')
+makedepends=('java-environment=18')
 provides=("elasticsearch=$pkgver")
 conflicts=('elasticsearch')
 source=(
@@ -29,7 +29,7 @@ source=(
   remove-systemd-distribution-check.patch
   remove-systemd-package-check.patch
 )
-sha256sums=('c4243783c90785bcf5c5854beb0bdd4e85a40d7db31c3c493f420030a89f784d'
+sha256sums=('aa75f759727255d16adc269b3ac716e175dbc20d2f800cd35d3ce57166075252'
             '9e1f68ff275ef2b5f2b93d2823efc5cc9643da696fcbe09a3ea7520ada35ffba'
             '8a76ad9a44a34eca8d6cb7ec9d8f1b01d46c114765b0a76094de8d72f0477351'
             'bac40d87acaa5bee209ceb6dfa253009a072e9243fe3b94be42fb5cd44727d6f'
