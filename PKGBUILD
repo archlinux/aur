@@ -3,7 +3,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-git
-pkgver=r21531.c6e7ca562
+pkgver=r21970.eeb0ec67c
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch'
 arch=('i686' 'x86_64')
@@ -38,7 +38,8 @@ makedepends=('boost'
              'git'
              'ninja'
              'nlohmann-json'
-             'robin-map')
+             'robin-map'
+             'yasm')
 source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu"
         'git+https://github.com/benhoyt/inih.git'
         'git+https://github.com/kinetiknz/cubeb.git'
