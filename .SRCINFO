@@ -1,7 +1,7 @@
 pkgbase = lua-libmagic
 	pkgdesc = libmagic binding for lua
 	pkgver = 5.41
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mah0x211/lua-libmagic
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = lua-libmagic
 	makedepends = lua
 	makedepends = lua51
 	makedepends = lua52
+	makedepends = lua53
 	source = lua-libmagic-5.41.tar.gz::https://github.com/mah0x211/lua-libmagic/archive/refs/tags/v5.41.tar.gz
 	sha256sums = e6bc0eb1ea7b430b9a337139f2f425e1808bb23be413dd022943f86f0a7ff497
 
@@ -26,6 +27,12 @@ pkgname = lua51-libmagic
 
 pkgname = lua52-libmagic
 	depends = file
-	depends = lua51
+	depends = lua52
+	provides = lua51-magic
+	replaces = lua51-magic
+
+pkgname = lua53-libmagic
+	depends = file
+	depends = lua53
 	provides = lua51-magic
 	replaces = lua51-magic
