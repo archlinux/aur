@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://gitlab.isc.org/isc-projects/stork'
 license=('MPL2')
 depends=('glibc')
-makedepends=('rake' 'git' 'python' 'wget' 'unzip')
+makedepends=('rake' 'git' 'python' 'wget' 'unzip' 'java-environment')
 backup=('etc/stork')
 source=("git+https://gitlab.isc.org/isc-projects/${_pkgname}.git#tag=v${pkgver}"
         "isc-stork.sysuser")
@@ -18,6 +18,11 @@ sha512sums=('SKIP'
 
 build() {
   cd $_pkgname
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   rake build
 }
 
