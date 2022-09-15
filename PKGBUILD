@@ -1,7 +1,7 @@
 # Maintainer: Utkarsh Singh <utkarsh190601 at gmail dot com>
 
 pkgname='blender-docs'
-pkgver=3.2.0
+pkgver=3.3.0
 _spkgver=${pkgver%.[0-9]}	# Short Packgage Version
 pkgrel=1
 pkgdesc='Set of HTML documentation for blender'
@@ -13,8 +13,8 @@ source=("blender-manual-$pkgver.zip::https://docs.blender.org/manual/en/latest/b
 	"blender-api-$pkgver.zip::https://docs.blender.org/api/current/blender_python_reference_${_spkgver/./_}.zip"
 	LICENCE)
 
-b2sums=('d44f9264a38d63473d3c6fcaad07f3187ae63f94c9b6a3403317a2de593b4919bbcdc447b556920eae4e080185a7c50fd12efc6c98838cd7798ac41ace50d124'
-	'99aa7771545a2d5d104292cb4f7656afc91987f6fa16c0707f0791deabc6bb0229f88b7bf2e35aeec90de8245e51e1f393b02e005340770ffd798728a1e4befa'
+b2sums=('8f17e6af99d568dd521fd6484fc1f9f86fc24952cda30db550debbde5ddae2bb09afacaf5d3a5492053886049848fa93c266d3590670001b19f5e5c9795c7df8'
+	'61d9e528117f189df49eb04902c02e105e6505d5c391de22361af482eb9b046368cb36f50bc3153b33295ed48569a3eef9c8810dac18d18bba05067deec5ff07'
 	'd1e99ef6842a6b5e4ac63cc3ab5bd7a4fd0fec5a871eec5b8bc031d8a6b2ae89f76eca2f98b0946e78e19d5fa9b2dea51cb2bb0985d064f54ea4ed9759999205')
 
 _replace_manual_ref() {
