@@ -6,7 +6,7 @@ _mainpkgname="$_projectname-emu"
 _noguipkgname="$_projectname-emu-nogui"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git")
-pkgver='5.0.r17132.g5508c52a95'
+pkgver='5.0.r17354.g1efb5b8800'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -14,9 +14,9 @@ arch=('x86_64' 'aarch64')
 url="https://$_mainpkgname.org"
 license=('GPL2')
 depends=(
-	'alsa-lib' 'bluez-libs' 'enet' 'hidapi' 'libevdev' 'libgl' 'libpulse'
-	'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls' 'pugixml' 'qt6-base' 'sfml'
-	'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so'
+	'alsa-lib' 'bluez-libs' 'enet' 'hidapi' 'libevdev' 'libgl' 'libpulse' 'libx11'
+	'libxi' 'libxrandr' 'lzo' 'mbedtls' 'minizip-ng' 'pugixml' 'qt6-base' 'sfml'
+	'zlib' 'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so' 'libfmt.so'
 	'libminiupnpc.so' 'libswscale.so' 'libudev.so' 'libusb-1.0.so'
 )
 makedepends=('cmake' 'git' 'ninja' 'python')
@@ -73,12 +73,12 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	export CXXFLAGS+=" -fpermissive"
 	cmake -S '.' -B 'build/' -G Ninja \
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX='/usr' \
 		-DDISTRIBUTOR=archlinux.org \
-		-DUSE_SHARED_ENET=ON
+		-DUSE_SHARED_ENET=ON \
+		-Wno-dev
 	cmake --build 'build/'
 }
 
