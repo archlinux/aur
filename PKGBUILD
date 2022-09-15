@@ -4,8 +4,8 @@
 # Contributor: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=albion-online-launcher-bin
-pkgver=1.20.060.231052
-pkgrel=4
+pkgver=1.0.34.415
+pkgrel=1
 pkgdesc="The first true cross-platform Sandbox MMO -- launcher client"
 url="https://albiononline.com/"
 arch=('x86_64')
