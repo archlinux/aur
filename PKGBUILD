@@ -2,7 +2,7 @@
 
 _name=pycapnp
 pkgname=python-pycapnp
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A cython wrapping of the C++ Cap'n Proto library"
 url="https://github.com/capnproto/pycapnp"
@@ -12,7 +12,7 @@ depends=(capnproto python)
 makedepends=(cython python-build python-installer python-pkgconfig python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(https://github.com/capnproto/$_name/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha512sums=('2221daa602b222563a483d73a4c0cb616d7b07aeae48d9a9b50a26cec002c80a00b5080bbe32c7094fa76d05aacc3d1d84322fdb40cbf301a208744ab246c06f')
+sha512sums=('57f62b91926bb1b3f28b250d2e98064540538e145d2b3899482e3f9f615f0917c6923c19f3426340eea7799f6e9fe471c9c2d13e5d283298ef5b2fdd4dcc743b')
 
 build() {
   cd $_name-$pkgver
