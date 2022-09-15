@@ -10,7 +10,7 @@ license=('Boost or LGPL3')
 makedepends=('make' 'bash' 'chrpath' 'lsb-release' 'glib2')
 depends=('ldc')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/amalthea-v$pkgver.tar.gz")
-sha256sums=('3465a1ec7b61e9193de15bdafccc805ae0f86c340ea7f4fee4d54eb14ab1f90c')
+sha256sums=('59068d2a0a97df5036caa55db5af437a998bcb9fa4149fb7981b65ce2e496e38')
 
 build() {
     cd "amalthea-v$pkgver"
