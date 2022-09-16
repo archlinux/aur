@@ -1,7 +1,7 @@
 pkgbase = blush-bin
 	pkgdesc = Grep with colours
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/arsham/blush
 	arch = x86_64
 	license = MIT

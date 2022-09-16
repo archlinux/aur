@@ -2,7 +2,7 @@
 _pkgname=blush
 pkgname=${_pkgname}-bin
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Grep with colours'
 arch=('x86_64')
 url='https://github.com/arsham/blush'
@@ -17,5 +17,5 @@ sha256sums=('47dab7a863a4eff082761e3aaf8a7bef301a3d48a981d41000eda4c98ea55090'
 package() {
   cd deploy
 	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-	install -Dm644 "../../LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+	install -Dm644 "${startdir}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
