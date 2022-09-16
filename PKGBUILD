@@ -7,13 +7,14 @@ _vlcver=3.0.17.4
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=10
+pkgrel=11
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64' 'aarch64')
 license=('LGPL2.1' 'GPL2')
 _aomver=3
 _dav1dver=1.0.0
+_flacver=1.4.0
 _libmicrodnsver=0.2
 _libplacebover=4.208
 _libupnpver=1.14
@@ -45,7 +46,7 @@ else
 fi
 makedepends=(
   'gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
-  'flac' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
+  'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
   'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'systemd-libs'
   'libmtp' 'libdvdcss' 'smbclient'
   'vcdimager' 'libssh2' 'mesa' 'libnfs' 'mpg123'
@@ -62,6 +63,7 @@ if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
   makedepends+=(
     'aom'
     'dav1d'
+    'flac'
     'libmicrodns'
     'libvpx'
     'x264'
@@ -73,6 +75,7 @@ else
   makedepends+=(
     "aom>=$_aomver"
     "dav1d>=$_dav1dver"
+    "flac>=$_flacver"
     "libmicrodns>=$_libmicrodnsver"
     "libvpx>=$_libvpxver"
     "x264>=$_x264ver"
@@ -92,7 +95,6 @@ optdepends=(
   #'libva-vdpau-driver: vdpau backend nvidia'
   #'libva-intel-driver: video backend intel'
   'libbluray: Blu-Ray video input'
-  'flac: Free Lossless Audio Codec plugin'
   'twolame: TwoLAME mpeg2 encoder plugin'
   'libgme: Game Music Emu plugin'
   'vcdimager: navigate VCD with libvcdinfo'
@@ -146,6 +148,7 @@ if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
   optdepends+=(
     'aom: AOM AV1 codec'
     'dav1d: dav1d AV1 decoder'
+    'flac: Free Lossless Audio Codec plugin'
     'protobuf: chromecast streaming'
     'libmicrodns: mDNS services discovery (chromecast etc)'
     'libvpx: VP8 and VP9 codec'
@@ -157,6 +160,7 @@ else
   optdepends+=(
     "aom>=$_aomver: AOM AV1 codec"
     "dav1d>=$_dav1dver: dav1d AV1 decoder"
+    "flac>=$_flacver: Free Lossless Audio Codec plugin"
     "protobuf>=$_protobufver: chromecast streaming"
     "libmicrodns>=$_libmicrodnsver: mDNS services discovery (chromecast etc)"
     "libvpx>=$_libvpxver: VP8 and VP9 codec"
