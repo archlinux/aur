@@ -2,7 +2,7 @@
 
 pkgname=pcaper
 pkgver=1.0.11
-pkgrel=2
+pkgrel=3
 pkgdesc='Read pcap and assemble HTTP requests'
 arch=(any)
 url="https://github.com/gaainf/$pkgname"
@@ -13,7 +13,7 @@ depends=(
 	'python-six>=1.11.0'
 	'python-dateutil>=2.8.0'
 )
-makedepends=(python-build python-installer)
+makedepends=(python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('65f9aea7ec97f42fbdf10ae8a6695226fe773499ef2eb477c724f998d7972075')
 
