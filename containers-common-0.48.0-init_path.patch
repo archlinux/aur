@@ -1,0 +1,13 @@
+diff --git i/pkg/config/containers.conf w/pkg/config/containers.conf
+index a4e755a6..f13c7860 100644
+--- i/pkg/config/containers.conf
++++ w/pkg/config/containers.conf
+@@ -146,7 +146,7 @@ default_sysctls = [
+ 
+ # Container init binary, if init=true, this is the init binary to be used for containers.
+ #
+-#init_path = "/usr/libexec/podman/catatonit"
++#init_path = "/usr/lib/podman/catatonit"
+ 
+ # Default way to to create an IPC namespace (POSIX SysV IPC) for the container
+ # Options are:
