@@ -1,0 +1,9 @@
+pkg
+src
+*.deb
+*.log
+*.tar.*
+.BUILDINFO
+.INSTALL
+.MTREE
+.PKGINFO
