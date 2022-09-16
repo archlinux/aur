@@ -3,7 +3,7 @@
 
 pkgname=matlab-meta
 pkgver=9.13.0.2049777
-pkgrel=1
+pkgrel=2
 pkgdesc='Meta package for MATLAB dependecies'
 arch=(x86_64)
 license=(None)
@@ -14,70 +14,41 @@ url='https://www.mathworks.com'
 # For a list of possible dependencies, see the package `namcap` and here:
 # https://hub.docker.com/r/mathworks/matlab-deps/dockerfile.
 depends=(
-  'alsa-lib'
-  'atk'
-  'ca-certificates'
-  'cairo'
-  'fontconfig'
-  'gdk-pixbuf2'
-  'glib2'
-  'gst-plugins-base'
-  'gstreamer'
+  'abseil-cpp'
+  'c-ares'
+  'embree'
+  'gtk2'
   'gtk3'
-  'krb5'
-  'libcap'
-  'libcups'
+  'hunspell'
+  'lib32-glibc'
   'libdbus'
-  'libdrm'
-  'libgcrypt'
-  'libselinux'
-  'libsm'
+  'libnet'
+  'libraw'
   'libsndfile'
-  'libx11'
-  'libxcb'
-  'libxcomposite'
+  'libuv'
   'libxcrypt-compat'
-  'libxcursor'
-  'libxdamage'
-  'libxext'
-  'libxfixes'
-  'libxft'
-  'libxi'
-  'libxmu'
-  'libxrandr'
-  'libxrender'
-  'libxslt'
   'libxss'
-  'libxt'
-  'libxtst'
-  'libxxf86vm'
-  'lsb-release'
   'make'
-  'mesa'
-  'net-tools'
-  'nspr'
+  'minizip'
   'nss'
-  'pam'
-  'pango'
-  'procps-ng'
-  'sudo'
-  'unzip'
-  'util-linux-libs'
-  'wget'
-  'x11vnc'
-  'xorg-server-xvfb'
-  'zlib')
+  'qt5-xmlpatterns'
+  'tbb'
+  'unixodbc'
+)
 # We should check even these ones.
 # GCC: https://www.mathworks.com/support/requirements/supported-compilers.html
+optdepends=(
+  'cuda'
+  'java-runtime: Java support'
+  'zsh'
+  'openal: for Orbisnap'
+  'openssl-1.0: needed by MATLAB Client for MATLAB Production Server'
+  'python2: needed by MATLAB Client for MATLAB Production Server'
+)
 depends+=(
-  'gconf'
   'glu'
-  'libunwind'
-  'libxp'
-  'libxpm'
   'portaudio'
   'qt5-svg'
   'qt5-webkit'
-  'qt5-websockets'
-  'qt5-x11extras'
-  'xerces-c')
+  'xerces-c'
+)
