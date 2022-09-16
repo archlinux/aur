@@ -3,12 +3,12 @@
 # Contributor: Rich Li <rich@dranek.com>
 
 pkgname=python-cartopy
-pkgver=0.20.3
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="A cartographic Python library with Matplotlib support for visualisation"
 url="https://scitools.org.uk/cartopy/"
 depends=(
-    'geos' 'proj' 'python-certifi' 'python-matplotlib' 'python-numpy' 'python-pillow'
+    'geos' 'python-certifi' 'python-matplotlib' 'python-numpy' 'python-pillow'
     'python-pyproj' 'python-pyshp' 'python-scipy' 'python-shapely' 'python-six'
 )
 optdepends=(
@@ -18,8 +18,11 @@ optdepends=(
     'python-pykdtree: faster warping of images'
     'python-owslib: access OGC clients'
 )
-makedepends=('python-setuptools' 'cython' 'python-setuptools-scm')
-checkdepends=('python-pytest' 'python-flufl-lock')
+makedepends=(
+    'cython' 'python-build' 'python-installer' 'python-setuptools'
+    'python-setuptools-scm' 'python-wheel'
+)
+checkdepends=('python-pytest' 'python-pytest-mpl' 'python-flufl-lock')
 license=('LGPL3')
 arch=('x86_64')
 
@@ -28,26 +31,37 @@ source=(
     "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-    '0d60fa2e2fbd77c4d1f6b1f9d3b588966147f07c1b179d2d34570ac1e1b49006'
+    'ce1d3a28a132e94c89ac33769a50f81f65634ab2bd40556317e15bd6cad1ce42'
 )
+
+prepare() {
+    cd "$_pypi-$pkgver"
+
+    # Remove pre-processed Cython extensions so we can generate a local version.
+    rm lib/cartopy/trace.cpp
+
+    # The Arch version of NumPy will always meet NEP29, so this is an unneeded dependency.
+    sed -i -e 's/oldest-supported-numpy/numpy/g' pyproject.toml
+}
 
 build() {
     cd "$_pypi-$pkgver"
-    FORCE_CYTHON=1 python setup.py build
+    FORCE_CYTHON=1 python -m build --wheel --no-isolation
 }
 
 check() {
-    local PYVER=$(python -c 'import sys; print("{}.{}".format(*sys.version_info[:2]))')
-    cd "$_pypi-$pkgver/build/lib.linux-$CARCH-$PYVER"
+    cd "$_pypi-$pkgver"
+    local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
 
     # The deselected tests fail an image comparison due to small changes in the
     # size and position of text labels.
-    PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. pytest cartopy \
-        -k "not test_gridliner and not test_contour_label" \
+    cd "build/lib.linux-$CARCH-cpython-${python_version}"
+    pytest cartopy \
+        -k "not test_gridliner and not test_contour_label and not test_annotate" \
         --ignore-glob="*mpl/test_ticks.py"
 }
 
 package() {
     cd "$_pypi-$pkgver"
-    python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
