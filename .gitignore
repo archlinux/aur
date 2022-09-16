@@ -1,0 +1,5 @@
+debhelper*
+pkg
+src
+*.tar.*
+*.log
