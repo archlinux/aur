@@ -3,7 +3,7 @@
 
 pkgname=brscan5
 pkgver=1.2.11_0
-pkgrel=1
+pkgrel=2
 pkgdesc='SANE drivers from Brother for compatible models'
 arch=('i686' 'x86_64')
 license=('GPL' 'custom:Brother')
@@ -34,7 +34,8 @@ package() {
   echo "brother5" > "$pkgdir/etc/sane.d/dll.d/brother5.conf"
   chmod 644 "$pkgdir/etc/sane.d/dll.d/brother5.conf"
 
-  install -D -m755 "$srcdir/opt/brother/scanner/brscan5/udev-rules/NN-brother-mfp-brscan5-1.0.2-2.rules" "$pkgdir/usr/lib/udev/rules.d/40-${pkgname}.rules"
+  install -D -m644 "$srcdir/opt/brother/scanner/brscan5/udev-rules/NN-brother-mfp-brscan5-1.0.2-2.rules" "$pkgdir/usr/lib/udev/rules.d/40-${pkgname}.rules"
+  sed -i '/SYSFS/d' "$pkgdir/usr/lib/udev/rules.d/40-${pkgname}.rules"
 
   mkdir -p "$pkgdir/usr/lib/sane"
   cd "$pkgdir/usr/lib/sane" || exit 1
