@@ -1,6 +1,6 @@
 # Maintainer: jonas-w < aur at 03j dot de >
 pkgname=h-m-m-git
-pkgver=r36.88a3941
+pkgver=r53.a29fddf
 pkgrel=1
 pkgdesc="h-m-m is a keyboard-centric terminal-based tool for working with mind maps."
 arch=('any')

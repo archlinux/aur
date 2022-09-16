@@ -1,6 +1,6 @@
 pkgbase = h-m-m-git
 	pkgdesc = h-m-m is a keyboard-centric terminal-based tool for working with mind maps.
-	pkgver = r36.88a3941
+	pkgver = r53.a29fddf
 	pkgrel = 1
 	url = https://github.com/nadrad/h-m-m
 	arch = any
