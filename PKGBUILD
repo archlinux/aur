@@ -2,7 +2,7 @@
 # Maintainer: Arctic Ice Studio <development@arcticicestudio.com>
 pkgname=nord-gedit
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An arctic, north-bluish clean and elegant gedit syntax theme"
 arch=("any")
 url="https://github.com/arcticicestudio/nord-gedit"
