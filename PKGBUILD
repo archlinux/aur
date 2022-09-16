@@ -1,6 +1,6 @@
 # Maintainer: Henry Mohn <hmohniii@gmail.com>
 pkgname=mjml-app
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 pkgdesc='The desktop app for MJML'
 arch=('any')
@@ -12,14 +12,14 @@ source=(
   "mjml-app.desktop"
 )
 md5sums=(
-  '693fab16b353bc0e6c20d571c6091e35'
-  '1f20e11d8f8e674500bdda8054e859c8'
+  '000e10187802d7b2d25a39d0ea4d7656'
+  'cf07094ae22e5dc6c9cfa24f8d441272'
 )
 
 prepare() {
   NODEVERSION=$(node --version)
-  if [[ $NODEVERSION == "v16"* ]]; then
-    printf "\n\n\033[0;31mMJML-APP is not compatible with NodeJS v16.  Please install an older version of NodeJS or use NVM to set an older version of NodeJS prior to making this package.\n\n"
+  if [[ $NODEVERSION == "v16"* || $NODEVERSION == "v18"* ]]; then
+    printf "\n\n\033[0;31mMJML-APP is not compatible with NodeJS v16 and higher.  Please install an older version of NodeJS or use NVM to set an older version of NodeJS prior to making this package.\n\n"
     exit 1
   fi
 }

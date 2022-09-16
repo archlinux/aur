@@ -2,7 +2,7 @@
 Name=mjml-app
 Comment=The desktop app for MJML
 Path=/opt/mjml-app
-Exec=mjml-app
+Exec=mjml-app --no-sandbox
 Icon=mjml-app
 Type=Application
 StartupNotify=true
