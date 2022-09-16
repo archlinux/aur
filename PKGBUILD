@@ -4,7 +4,7 @@
 # Contributor: Mark Lee <mark at markelee dot com>
 
 pkgname=jupyterhub
-pkgver=2.3.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Multi-user server for Jupyter notebooks"
 url="https://jupyter.org/hub"
@@ -18,7 +18,7 @@ depends=(
   'python-sqlalchemy' 'python-tornado' 'python-traitlets'
 )
 makedepends=(
-  'npm' 'python-build' 'python-installer' 'python-wheel'
+  'npm' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel'
 )
 checkdepends=(
   'jupyter-notebook' 'python-beautifulsoup4' 'python-pytest'
@@ -28,6 +28,7 @@ optdepends=(
   'jupyter-notebook: standard notebook server'
   'jupyterlab: to use the JupyterLab interface'
   'python-pycurl: improved HTTP performance'
+  'python-statsd: send metrics to a StatsD server'
 )
 install=jupyterhub.install
 backup=(
@@ -39,9 +40,9 @@ source=(
   'tests_use_random_ports.patch'
 )
 sha256sums=(
-  'dd9605462c1e382b3cc374226ffe9f550cc59643a9de05bbea67630f4a3f6c5a'
+  '3ddcd96ae291b24571f9aa42e6316410379d46068482e35bad7691cb336dcc72'
   'adb4c09c668c35605d9cddc4a4171dd64ed6e74ab82da97f19b3437d26b052b9'
-  'acba51024276670aabad3d3f2a1c80d4b573809ca7e7ef6594916329d842417f'
+  '05a86fad6eada56e1128f7ebaf038524d6182b6453427bbc27a58331992b7308'
 )
 
 prepare() {
@@ -59,7 +60,7 @@ build() {
   # installed' headers with 'Included with the jupyterhub package'.
   cd build/lib
   python -m jupyterhub --generate-config -f "$srcdir/default_config.py" -y True
-  _srcdir_esc="${srcdir////\\/}"
+  local _srcdir_esc="${srcdir////\\/}"
   sed -i "$srcdir/default_config.py" \
     -e "s/${_srcdir_esc}\/jupyterhub-$pkgver/\/usr/" \
     -e 's/#  Currently installed:/#  Included with the jupyterhub package:/'
@@ -68,7 +69,7 @@ build() {
 check() {
   cd "${srcdir}/jupyterhub-$pkgver"
 
-  skip_files=(
+  local skip_files=(
     # DB upgrade tests always seem to fail (virtual environment appears incorrect).
     'test_db.py'
 
@@ -77,7 +78,7 @@ check() {
     'test_internal_ssl_connections.py'
   )
 
-  skip_tests=(
+  local skip_tests=(
     # Needs the package to already be installed.
     'test_server_token_role'
 
@@ -97,13 +98,13 @@ check() {
   fi
 
   # Start building pytest args with --ignore options for whole files.
-  testargs=()
+  local testargs=()
   for filename in "${skip_files[@]}"; do
     testargs+=("--ignore=jupyterhub/tests/$filename")
   done
 
   # Add a filter expression with all the tests we want to skip.
-  karg=""
+  local karg=""
   for testname in "${skip_tests[@]}"; do
     karg="$karg and not $testname"
   done
