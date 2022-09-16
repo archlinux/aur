@@ -16,7 +16,7 @@ optdepends=(
 	'pandoc: Import/export for extra file formats')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("https://typora.io/linux/$filename")
+source=("https://download.typora.io/linux/$filename")
 sha512sums=('8933cb4eab13a37719a3771d14a7a3f5951f6bbce06381ffe37ad5bc3029efed3878723427a4e97b83dbc1d7ccc43b31551b0c336663c843f0e685f8a4e2390e')
 
 package() {
