@@ -26,7 +26,6 @@ check() {
 }
 
 package() {
-  cd "${srcdir}/lziprecover-${pkgver}"
-
-  make DESTDIR="$pkgdir" install
+	cd "${srcdir}/lziprecover-${pkgver}"
+	make DESTDIR="$pkgdir" install
 }
