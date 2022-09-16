@@ -1,7 +1,7 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 
 pkgname=upwork
-pkgver=5.6.10.1
+pkgver=5.6.10.23
 _pkgname='Upwork'
 pkgrel=1
 pkgdesc='Upwork Desktop Application'
@@ -11,11 +11,11 @@ license=(custom)
 depends=(alsa-lib gtk3 libxss nss)
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:104.0) Gecko/20100101 Firefox/104.0"
 _rawver=${pkgver//./_}
-_hashver='de501d28cc034306'
+_hashver='687b9a63474e4cda'
 DLAGENTS=("https::/usr/bin/curl --tlsv1.3 -H ${_useragent// /\\ } %u -o %o")
 source=(https://upwork-usw2-desktopapp.upwork.com/binaries/v${_rawver}_${_hashver}/upwork_${pkgver}_amd64.deb
         LICENSE)
-sha256sums=('8faf896d2570d1d210793f46a3860e934d03498c1f11640d43721b6eb2b56860'
+sha256sums=('bda27388df444e291842cc306b719d7e91836ad172b196689d108d8f287dc89e'
             '793d8d7bc0f088c48798bda3d5483972636c6b8c5dcd9aeaf85411f7d4547b38')
 
 prepare() {

@@ -1,6 +1,6 @@
 pkgbase = upwork
 	pkgdesc = Upwork Desktop Application
-	pkgver = 5.6.10.1
+	pkgver = 5.6.10.23
 	pkgrel = 1
 	url = https://www.upwork.com/ab/downloads/?os=linux
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = upwork
 	depends = gtk3
 	depends = libxss
 	depends = nss
-	source = https://upwork-usw2-desktopapp.upwork.com/binaries/v5_6_10_1_de501d28cc034306/upwork_5.6.10.1_amd64.deb
+	source = https://upwork-usw2-desktopapp.upwork.com/binaries/v5_6_10_23_687b9a63474e4cda/upwork_5.6.10.23_amd64.deb
 	source = LICENSE
-	sha256sums = 8faf896d2570d1d210793f46a3860e934d03498c1f11640d43721b6eb2b56860
+	sha256sums = bda27388df444e291842cc306b719d7e91836ad172b196689d108d8f287dc89e
 	sha256sums = 793d8d7bc0f088c48798bda3d5483972636c6b8c5dcd9aeaf85411f7d4547b38
 
 pkgname = upwork
