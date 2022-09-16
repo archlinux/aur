@@ -8,8 +8,7 @@ url="https://github.com/huboles/aursh/releases/download/testing"
 license=('GPL')
 depends=('git' 'curl')
 source=("$pkgname-$pkgver.tar.gz::$url/$pkgname-$pkgver.tar.gz")
-sha256sums=('03666473826011810880beaee7aff3bcf6b821f7a06599951fb02ebf28aab65f')
-
+sha256sums=('79ed2aa4fa3b8136f0a35a286b4ead449d068261a722a89e3d1587ff420bc8a7')
 package() {
 	cd "$srcdir" || exit
     install -Dm755 aur.sh "$pkgdir/usr/bin/aursh"
