@@ -1,7 +1,7 @@
 pkgbase = gnome-backgrounds-macos
 	pkgdesc = Background images for the GNOME desktop from MacOS
 	pkgver = 42.0.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/saltedcoffii/gnome-backgrounds-macos
 	arch = any
 	license = CCPL:by-sa

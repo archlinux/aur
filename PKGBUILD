@@ -3,7 +3,7 @@
 _pkgname=gnome-backgrounds-macos
 pkgname=$_pkgname
 pkgver=42.0.2
-pkgrel=0
+pkgrel=1
 pkgdesc="Background images for the GNOME desktop from MacOS"
 url="https://github.com/saltedcoffii/gnome-backgrounds-macos"
 arch=(any)
@@ -14,8 +14,11 @@ conflicts=('gnome-backgrounds-macos-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('9bfc1321b753bd97257e4edb447d6a9608200527fe0ccdec0e557a6271e7f3ce')
 
-build() {
+prepare() {
   $srcdir/$_pkgname-$pkgver/download-backgrounds.sh
+}
+
+build() {
   arch-meson $_pkgname-$pkgver build
   meson compile -C build
 }
