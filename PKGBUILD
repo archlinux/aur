@@ -2,14 +2,14 @@
 _name=pyahocorasick
 pkgname=python-ahocorasick
 pkgver=1.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Fast and memory efficient exact or approximate multi-pattern string search'
 arch=(any)
 url="https://github.com/WojciechMula/$_name"
 license=(BSD)
 provides=("python-$_name=$pkgver")
 depends=(python)
-makedepends=(python-setuptools python-installer python-build)
+makedepends=(python-setuptools python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('32545cad135660ceef556f1d987aee3206e00096735405d7a8de84eb0a15bb27')
 

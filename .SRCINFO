@@ -1,13 +1,14 @@
 pkgbase = python-ahocorasick
 	pkgdesc = Fast and memory efficient exact or approximate multi-pattern string search
 	pkgver = 1.4.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/WojciechMula/pyahocorasick
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = python-installer
 	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	provides = python-pyahocorasick=1.4.4
 	source = https://files.pythonhosted.org/packages/source/p/pyahocorasick/pyahocorasick-1.4.4.tar.gz
