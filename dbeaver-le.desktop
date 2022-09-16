@@ -1,0 +1,10 @@
+[Desktop Entry]
+Exec=/opt/dbeaver-le/dbeaver
+Type=Application
+Terminal=false
+Icon=dbeaver-le
+Categories=Development;Java;Database;
+
+Name=DBeaver Lite Edition
+GenericName=Database Client
+
