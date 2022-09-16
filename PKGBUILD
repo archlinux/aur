@@ -5,7 +5,7 @@
 
 pkgname=lib32-tcl-ar
 pkgver=8.6.12
-pkgrel=1
+pkgrel=2
 pkgdesc='The Tcl scripting language (with *.a files)'
 arch=(x86_64)
 url=http://tcl.sourceforge.net/
@@ -18,7 +18,7 @@ depends=(
   tcl
 )
 options=(staticlibs)
-source=("https://gigenet.dl.sourceforge.net/project/tcl/Tcl/${pkgver}/tcl${pkgver}-src.tar.gz")
+source=("https://cfhcable.dl.sourceforge.net/project/tcl/Tcl/${pkgver}/tcl${pkgver}-src.tar.gz")
 b2sums=('21367f4ee5903fac68177b6cc61517237e1b9347a18f213cb02ebd7cde21af9d5590d7270bc5ba8c03f3595dea1f2eaf065165b1cc0b0bc34e5329cd197b8159')
 
 prepare() {
