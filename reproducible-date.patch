@@ -1,0 +1,12 @@
+diff -aur libquvi-0.9.4.old/configure.ac libquvi-0.9.4/configure.ac
+--- libquvi-0.9.4.old/configure.ac	2022-09-16 18:40:33.053827077 +0200
++++ libquvi-0.9.4/configure.ac	2022-09-16 18:42:19.729788108 +0200
+@@ -71,7 +71,7 @@
+   AC_MSG_ERROR([a2x is required to create man pages when building from git])])
+ 
+ AC_PATH_PROG([DATE], [date], [no])
+-AS_IF([test x"$DATE" != "xno"], [build_time=`$DATE +"%F %T %z"`])
++AS_IF([test x"$DATE" != "xno"], [build_time=`date --utc --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}"`])
+ AC_DEFINE_UNQUOTED([BUILD_TIME], ["$build_time"], [We have build time])
+ 
+ BUILD_TIME="$build_time"
