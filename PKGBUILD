@@ -2,10 +2,10 @@
 
 pkgname=circup
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to manage/update libraries on CircuitPython devices."
 url="https://github.com/adafruit/circup"
-depends=('python')
+depends=('findimports' 'python-update-checker')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
