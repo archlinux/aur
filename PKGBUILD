@@ -1,9 +1,10 @@
 # Maintainer : Yamada Hayao <hayao@fascode.net>
 # Contributer: David Mazieres (http://www.scs.stanford.edu/~dm/addr/)
+# Contributer: Aviana Cruz <gwencroft@proton.me>
 
 pkgname="droidcam-obs-plugin"
-pkgver="1.2.1"
-pkgrel="2"
+pkgver="1.6.0"
+pkgrel="1"
 pkgdesc="plugin for droidcam obs"
 arch=("x86_64" "i686")
 url="https://dev47apps.com/obs/"
@@ -21,7 +22,7 @@ install=
 pkgstem=${pkgname%-git}
 source=("${pkgstem}::git+${srcurl}#tag=${pkgver}" "fix_Makefile.patch")
 noextract=()
-sha256sums=('SKIP' '5a52749268fafe141eecbb63f0dea10ac1a100e1b1ba63a2f1cf574837b8c069')
+sha256sums=('SKIP' 'SKIP')
 
 
 prepare() {
@@ -32,7 +33,7 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgstem"
-    make
+    make ALLOW_STATIC=no
 }
 
 package() {
