@@ -1,6 +1,6 @@
 pkgbase = geany-gtk2-git
 	pkgdesc = Fast and lightweight IDE (git version)
-	pkgver = 1.36.0.37.g5cc69b3d6
+	pkgver = 1.37.1.r0.g26f4813f0
 	pkgrel = 1
 	url = http://github.com/geany/geany
 	arch = x86_64
@@ -14,13 +14,8 @@ pkgbase = geany-gtk2-git
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
 	provides = geany
-	provides = geany-git
-	provides = geany-gtk3-git
 	conflicts = geany
-	conflicts = geany-git
-	conflicts = geany-gtk3-git
-	source = git://github.com/geany/geany.git
+	source = geany-gtk2-git::git+https://github.com/geany/geany.git#branch=1.37
 	md5sums = SKIP
 
 pkgname = geany-gtk2-git
-
