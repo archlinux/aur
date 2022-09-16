@@ -4,7 +4,7 @@
 
 pkgbase=matlab
 pkgname=(matlab)
-pkgrel=1
+pkgrel=2
 pkgver=9.13.0.2049777
 pkgdesc='A high-level language for numerical computation and visualization'
 arch=(x86_64)
@@ -12,7 +12,7 @@ url='https://www.mathworks.com'
 license=(custom)
 depends=(matlab-meta)
 makedepends=('findutils' 'gendesk' 'icoutils' 'python')
-provides=('matlab-bin' 'matlab')
+provides=('matlab-bin' 'matlab' 'python-matlabengine')
 source=(
   'local://matlab.tar'
   'local://matlab.fik'
@@ -26,11 +26,10 @@ _products=(
   "MATLAB"
   "Simulink"
 )
-_release=''
-_instdir="usr/lib/matlab"
+_release='R2022b'
+_instdir=usr/local/MATLAB/R2022b
 
 pkgver() {
-  _release=$(cat "${srcdir}/${pkgbase}/VersionInfo.xml" | grep "<release>" | sed "s|\s*<release>\(.*\)</release>\s*|\1|g")
   cat "${srcdir}/${pkgbase}/VersionInfo.xml" | sed --quiet 's|\s*<version>\(.*\)</version>\s*|\1|p'
 }
 
@@ -74,8 +73,8 @@ build() {
 }
 
 package_matlab() {
-  msg2 "Moving files from build area to package area to save space..."
-  install -dm755 "${pkgdir}/usr/lib/"
+  msg2 "Moving files from build area to package area directly to save space..."
+  install -dm755 "$(dirname "${pkgdir}/${_instdir}")"
   mv "${srcdir}/build" "${pkgdir}/${_instdir}"
 
   msg2 "Installing license..."
@@ -101,27 +100,27 @@ package_matlab() {
     "$pkgdir/usr/share/pixmaps/$pkgbase.png"
 
   msg2 "Linking mex options to ancient libraries..."
-  sysdir="bin/glnxa64/mexopts"
-  mkdir -p "${pkgdir}/${_instdir}/backup/${sysdir}"
-  cp "${pkgdir}/${_instdir}/${sysdir}/gcc_glnxa64.xml" \
-    "${pkgdir}/${_instdir}/backup/${sysdir}/"
-  sed -i "s/gcc/${gccexc}/g" "${pkgdir}/${_instdir}/${sysdir}/gcc_glnxa64.xml"
-  cp "${pkgdir}/${_instdir}/${sysdir}/g++_glnxa64.xml" \
-    "${pkgdir}/${_instdir}/backup/${sysdir}/"
-  sed -i "s/g++/${gppexc}/g" "${pkgdir}/${_instdir}/${sysdir}/g++_glnxa64.xml"
-  cp "${pkgdir}/${_instdir}/${sysdir}/gfortran.xml" \
-    "${pkgdir}/${_instdir}/backup/${sysdir}/"
-  sed -i "s/gfortran/${gfortranexc}/g" "${pkgdir}/${_instdir}/${sysdir}/gfortran.xml"
-  cp "${pkgdir}/${_instdir}/${sysdir}/gfortran6.xml" \
-    "${pkgdir}/${_instdir}/backup/${sysdir}/"
-  sed -i "s/gfortran/${gfortranexc}/g" "${pkgdir}/${_instdir}/${sysdir}/gfortran6.xml"
+  _sysdir="bin/glnxa64/mexopts"
+  mkdir -p "${pkgdir}/${_instdir}/backup/${_sysdir}"
+  cp "${pkgdir}/${_instdir}/${_sysdir}/gcc_glnxa64.xml" \
+    "${pkgdir}/${_instdir}/backup/${_sysdir}/"
+  sed -i "s/gcc/${gccexc}/g" "${pkgdir}/${_instdir}/${_sysdir}/gcc_glnxa64.xml"
+  cp "${pkgdir}/${_instdir}/${_sysdir}/g++_glnxa64.xml" \
+    "${pkgdir}/${_instdir}/backup/${_sysdir}/"
+  sed -i "s/g++/${gppexc}/g" "${pkgdir}/${_instdir}/${_sysdir}/g++_glnxa64.xml"
+  cp "${pkgdir}/${_instdir}/${_sysdir}/gfortran.xml" \
+    "${pkgdir}/${_instdir}/backup/${_sysdir}/"
+  sed -i "s/gfortran/${gfortranexc}/g" "${pkgdir}/${_instdir}/${_sysdir}/gfortran.xml"
+  cp "${pkgdir}/${_instdir}/${_sysdir}/gfortran6.xml" \
+    "${pkgdir}/${_instdir}/backup/${_sysdir}/"
+  sed -i "s/gfortran/${gfortranexc}/g" "${pkgdir}/${_instdir}/${_sysdir}/gfortran6.xml"
 
-  msg2 "Removing unused library files..."
+  msg2 "Removing unused libraries..."
   # <MATLABROOT>/sys/os/glnxa64/README.libstdc++
-  sysdir="sys/os/glnxa64"
-  install -dm755 "${pkgdir}/${_instdir}/backup/${sysdir}"
-  mv "${pkgdir}/${_instdir}/${sysdir}/"{libstdc++.so.*,libgcc_s.so.*,libgfortran.so.*,libquadmath.so.*} \
-    "${pkgdir}/${_instdir}/backup/${sysdir}/"
+  _sysdir="sys/os/glnxa64"
+  install -dm755 "${pkgdir}/${_instdir}/backup/${_sysdir}"
+  mv "${pkgdir}/${_instdir}/${_sysdir}/"{libstdc++.so.*,libgcc_s.so.*,libgfortran.so.*,libquadmath.so.*} \
+    "${pkgdir}/${_instdir}/backup/${_sysdir}/"
   mv "${pkgdir}/${_instdir}"/bin/glnxa64/libfreetype.so.* \
     "${pkgdir}/${_instdir}"/backup/bin/glnxa64/
 }
