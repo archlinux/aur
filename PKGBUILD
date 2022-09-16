@@ -3,13 +3,13 @@
 _name=modulegraph
 pkgname=python-$_name
 pkgver=0.19.2
-pkgrel=2
+pkgrel=3
 pkgdesc='determines a dependency graph between Python modules primarily by bytecode analysis for import statements'
 arch=('any')
 url="https://github.com/ronaldoussoren/$_name"
 license=(MIT)
 depends=(python python-altgraph)
-makedepends=(python-build python-installer)
+makedepends=(python-setuptools python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('14c59c10874001aa9c1d527f114870991c0d8dfc6baf6c7e27f885df794a8239')
 
