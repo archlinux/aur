@@ -6,6 +6,7 @@ pkgbase = prometheus-postfix-exporter
 	arch = x86_64
 	license = Apache
 	makedepends = go
+	makedepends = systemd
 	depends = glibc
 	options = strip
 	source = prometheus-postfix-exporter-0.3.0.tar.gz::https://github.com/kumina/postfix_exporter/archive/refs/tags/0.3.0.tar.gz
