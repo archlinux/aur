@@ -1,12 +1,14 @@
 pkgbase = python-wheel-inspect
 	pkgdesc = Extract information from wheels
 	pkgver = 1.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jwodder/wheel-inspect
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = python-attrs
 	depends = python-entry-points-txt
