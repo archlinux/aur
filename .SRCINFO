@@ -1,14 +1,14 @@
 pkgbase = snakemake
 	pkgdesc = Python-based language and execution environment for GNU Make-like workflows
 	pkgver = 7.14.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://snakemake.readthedocs.io
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = python-wrapt
 	depends = python-requests
