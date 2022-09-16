@@ -3,7 +3,7 @@
 
 pkgname=dosbox-staging-git
 _pkgname=dosbox-staging
-pkgver=0.79.0.alpha.1109.g4b736f078
+pkgver=0.79.0.alpha.1346.gfadb46662
 pkgrel=1
 pkgdesc="A modernized DOSBox project using current development practices and tools, fixing issues, adding features that better support today's systems"
 arch=('any')
@@ -23,7 +23,7 @@ md5sums=(
 
 prepare() {
   cd "$srcdir/${_pkgname}"
-  meson setup -Dbuildtype=release -Db_lto=true -Db_asneeded=true -Dstrip=true release
+  meson setup -Dbuildtype=release -Ddefault_library=shared -Db_lto=true -Db_asneeded=true -Dstrip=true release
 }
 
 pkgver() {
