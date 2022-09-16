@@ -30,5 +30,6 @@ pkgbase = libpamac-flatpak
 	options = !emptydirs
 	source = https://gitlab.manjaro.org/applications/libpamac/-/archive/11.3.1/libpamac-11.3.1.tar.bz2
 	sha512sums = 2270cacb9d8effca68bf985da96b7160f635f2c8d7d1c584d5d1059a966134fd8499c90e21ac01f07e9f7152bf8c090841545a3b693068a2b84bd53f348ab4ef
-pkgname = libpamac-flatpak
 	backup = etc/pamac.conf
+
+pkgname = libpamac-flatpak
