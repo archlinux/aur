@@ -3,27 +3,29 @@
 _name='Uno Calculator'
 _pkgname='uno-calculator'
 pkgname="${_pkgname}-bin"
-
-pkgver=1.2.4.725
 pkgrel=1
-_snap_id='ZZjSue7jjdQXHsNz5RI9BH3Pf3UnRo0V_15'
-
 pkgdesc='Uno port of Windows Calculator'
 arch=('x86_64')
-url='https://platform.uno/blog/windows-calculator-on-linux-via-uno-platform/'
+url='https://snapcraft.io/uno-calculator'
 _url_source='https://api.snapcraft.io/api/v1/snaps/download'
 license=('APACHE')
 depends=('hicolor-icon-theme')
-makedepends=('gendesk' 'imagemagick' 'squashfs-tools')
+makedepends=('gendesk' 'imagemagick' 'squashfs-tools' 'jq' 'curl')
 options=('staticlibs')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 noextract=("${_pkgname}-${pkgver}-x86_64.snap")
 
-# https://snapcraft.io/uno-calculator
-# curl -H 'Snap-Device-Series: 16' http://api.snapcraft.io/v2/snaps/info/uno-calculator | jq
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.snap::${_url_source}/${_snap_id}.snap")
-sha256sums_x86_64=('dbeef8687f3fa4404bd35f57aa4c86034f89d89f71fab0152e69817f16ed5c03')
+
+# get snap info from snapcraft.io
+_snap_stable_pkgs_info="$(curl -sL -H 'Snap-Device-Series: 16' http://api.snapcraft.io/v2/snaps/info/uno-calculator | jq '.["channel-map"] | .[] | select(.channel.risk == "stable") | select(.channel.architecture == "amd64")')"
+pkgver=$(jq -r ".version" <<< "${_snap_stable_pkgs_info}" |  sed "s|-uno||g")
+_source_url="$(jq -r '.download.url' <<< "${_snap_stable_pkgs_info}")"
+#_source_sha384="$(jq -r '.download | .["sha3-384"]' <<< "${_snap_stable_pkgs_info}")"
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.snap::${_source_url}")
+sha384sums_x86_64=("SKIP")
+unset _source_url _source_sha384
+
 
 prepare() {
   echo -e "#!/bin/sh\ncd /opt/${_pkgname} && exec ./Calculator.Skia.Gtk \"\$@\"" > "${_pkgname}"
