@@ -8,6 +8,6 @@ pkgbase = aursh
 	depends = git
 	depends = curl
 	source = aursh-0.1.tar.gz::https://github.com/huboles/aursh/releases/download/testing/aursh-0.1.tar.gz
-	sha256sums = 03666473826011810880beaee7aff3bcf6b821f7a06599951fb02ebf28aab65f
+	sha256sums = 79ed2aa4fa3b8136f0a35a286b4ead449d068261a722a89e3d1587ff420bc8a7
 
 pkgname = aursh
