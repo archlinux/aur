@@ -1,11 +1,11 @@
 # Maintainer: musiclover <musiclover382@protonmail.com>
 
 pkgname=furtherance-git
-pkgver=1.0.8.r8.g1ff89ff
+pkgver=1.5.4.r1.gf953f8f
 pkgrel=1
 pkgdesc='Track your time without being tracked'
 arch=(x86_64)
-url=https://github.com/lakoliu/Furtherance
+url=https://github.com/lakoliu/${pkgname%-git}
 license=(GPL3)
 depends=('gtk4' 'libadwaita' 'sqlite')
 makedepends=('git' 'meson' 'rust')
@@ -15,12 +15,17 @@ source=(git+$url.git)
 b2sums=('SKIP')
 
 pkgver() {
-	cd Furtherance
+	cd ${pkgname%-git}
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+	cd ${pkgname%-git}
+	cargo update
+}
+
 build() {
-	arch-meson Furtherance build
+	arch-meson ${pkgname%-git} build
 	meson compile -C build
 }
 
