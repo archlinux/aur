@@ -1,10 +1,12 @@
 #!/bin/bash
 
-declare no_group="Please run the next command in your terminal to give your user permissions to update Albion game data on /opt:\n\nsudo usermod -a -G albion ${USER}"
+declare no_group="Please run the next command in your terminal to give user "\
+"${USER} permissions to update Albion game data:\n"\
+"\nsudo usermod -a -G albion ${USER}"
 declare no_sudo="Don't run this game as root(sudo)!! it could be a security risk!"
 
 if [[ "$USER" == "root" ]]; then
-    printf "${no_sudo}\n"
+    echo -e "${no_sudo}"
     exit 1
 fi
 
@@ -23,7 +25,7 @@ else
            --text="$no_group"; then :
     else
         ## Zenity is not installed
-        printf "${no_group}\n"
+        echo -e "${no_group}"
     fi
     exit 4
 fi

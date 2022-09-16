@@ -4,4 +4,5 @@ Name=Albion Launcher
 Comment=The first true cross-platform Sandbox MMO -- game launcher
 Exec=albion-online
 Icon=/opt/albion-online-launcher-bin/AlbionOnline.xpm
+Categories=Game;
 Terminal=false

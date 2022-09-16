@@ -15,5 +15,8 @@ EOM
 }
 
 post_remove() {
+cat << "EOM"
+==> Group removed: albion
+EOM
   groupdel albion &> /dev/null
 }
