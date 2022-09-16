@@ -2,7 +2,7 @@
 _base=AST-Monitor
 pkgname=python-${_base,,}
 pkgdesc="A wearable Raspberry Pi computer for cyclists"
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 arch=(any)
 url="https://github.com/firefly-cpp/${_base}"
@@ -14,7 +14,7 @@ optdepends=('python-openant: for ANT sensor support'
   'python-adafruit-circuitpython-gps: for GPS sensor support'
   'python-serial: for serial communication support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('cd5a0162121f1d35399bf869ee5065f8be6431db2335d20697e426a57f52e0ba37e5efa4ea17bf3954b138dc680a2b1f83c8575ef79fe18f1b459e6471dc343a')
+sha512sums=('a13dbd6b21bb1f243cc1f81bc4c06d061f85cbacf969e2ce1b9d7d20e8b6c3c97850dec69be8abdb7b28380bd7d643e7253a0e45bc949c3c82f84fb56f992110')
 
 build() {
   cd ${_base}-${pkgver}
