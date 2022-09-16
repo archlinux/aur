@@ -2,7 +2,7 @@
 
 pkgname=iir1-git
 _pkgname=iir1
-pkgver=1.9.3.r4.g48fe77d
+pkgver=1.9.3.r15.g3c281a2
 pkgrel=1
 pkgdesc="DSP IIR Realtime C++ filter library"
 arch=('any')
@@ -21,7 +21,7 @@ md5sums=(
 
 prepare() {
   cd "$srcdir/${_pkgname}"
-  cmake . --install-prefix="${pkgdir}/usr"
+  cmake . --install-prefix="/usr"
 }
 
 pkgver() {
@@ -38,7 +38,7 @@ package() {
 
   # install all files
   cd "$srcdir/${_pkgname}"
-  make install
+  DESTDIR="${pkgdir}" make install
 
   # manual and readme documents
   cd "$srcdir/${_pkgname}/"
