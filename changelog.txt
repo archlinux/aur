@@ -135,3 +135,11 @@
 ### Added
 
 - Flexible array support
+
+### 3.1
+
+2022-09-13
+
+### Added
+
+- Make CStruct/MemCStruct Pickle Friendly
