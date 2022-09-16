@@ -1,8 +1,8 @@
 # Maintainer: sukanka <su975853527 [AT] gmail.com>
 pkgname=clash-for-windows-electron-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.20.2
-pkgrel=2
+pkgver=0.20.3
+pkgrel=1
 pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron. Using system clash and electron"
 arch=("x86_64" "aarch64")
 license=('unknown')
@@ -29,10 +29,10 @@ source=(
     "clash-core-service@.service")
 sha256sums=('9a84b05b718913d3d1fbe462a2da671abff2cb94bb2ded75a3af12204cebe32f'
             'db2e160e5d5cf82ed69d0926ac51c0eccb9efc541f89be3bb467d85be509f735'
-            '4bdb11b1691cfb7f3f8e765dddea901c4612696354e251ab5d06d68881b51284'
+            'c3262d75e89b380ecf6790268c9e364ed5300a26a3c7b2987b74f1729b654cf2'
             'd55c2f4088505116a5bad6d09f5ebe232e7c6a269ea6bf46daada02bc3a9f961')
-sha256sums_x86_64=('7c154272f5a38ff97e45c8fb3ca3f6306acc6a8bb2d34f690c46f01fa73f39b2')
-sha256sums_aarch64=('24c231088d470c80b0313a0e1efd36e657e7e52ff67ff3a833b0ec867ef7574e')
+sha256sums_x86_64=('3a46de76c5436e2ec70b3b29f32b8982a343425cc922942abcf2f5c82364c8a4')
+sha256sums_aarch64=('4a9f6c6c6a967416fe31fbe831f5f90f17315a6f60f81b5e13cc4568faa483a5')
 
 _parch=$(echo ${arch} | sed "s/x86_64/x64/;s/aarch64/arm64/")
 build() {
