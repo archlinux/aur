@@ -1,6 +1,6 @@
 pkgbase = litmusctl
 	pkgdesc = CLI tool to manage litmuschaos's agent plane
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/litmuschaos/litmusctl
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = litmusctl
 	license = Apache
 	makedepends = go
 	depends = kubectl
-	source = litmusctl-0.12.0.tar.gz::https://github.com/litmuschaos/litmusctl/archive/v0.12.0.tar.gz
-	sha256sums = 13272001e24ca7a5dee2b52dbe5caa4b1190c73563b9fa21462b6fe260d663c2
+	source = litmusctl-0.13.0.tar.gz::https://github.com/litmuschaos/litmusctl/archive/0.13.0.tar.gz
+	sha256sums = 2b24b24b58cbf4b3ea5548d256c62a23cf38ddbe6b5d7156997564d16d7f6a12
 
 pkgname = litmusctl
