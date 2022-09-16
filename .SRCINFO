@@ -1,12 +1,14 @@
 pkgbase = python-tbvaccine
 	pkgdesc = Pretty-print Python tracebacks
 	pkgver = 0.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/skorokithakis/tbvaccine
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/t/tbvaccine/tbvaccine-0.3.1.tar.gz
 	sha256sums = 8665d037ac8ad4c97bc44512de91798565b1226f7b2f59669bb7dbe9a1f87718
