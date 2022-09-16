@@ -1,0 +1,12 @@
+pkgbase = tinytiff-git
+	pkgdesc = A lightweight C/C++ library for reading and writing TIFF files
+	pkgver = r82.f13ce29
+	pkgrel = 1
+	url = https://jkriege2.github.io/TinyTIFF
+	arch = any
+	license = custom
+	makedepends = git
+	source = tinytiff::git+https://github.com/jkriege2/TinyTIFF
+	sha256sums = SKIP
+
+pkgname = tinytiff-git
