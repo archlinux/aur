@@ -3,7 +3,7 @@
 
 pkgname=pamac-flatpak-gnome
 pkgver=10.4.2
-pkgrel=2
+pkgrel=3
 _pkgfixver=$pkgver
 
 pkgdesc="A Gtk3 frontend for libalpm (with AUR, Flatpak, AppIndicator support, and GNOME integration)"
@@ -17,7 +17,7 @@ conflicts=('pamac' 'pamac-cli' 'pamac-gtk' 'pamac-qt' 'pamac-classic' 'pamac-aur
 provides=('pamac')
 options=(!emptydirs)
 install=pamac.install
-source=("pamac-$pkgver.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.gz") 
+source=("pamac-$pkgver.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.bz2") 
 sha512sums=('8b5b2298e16bcfc6fbdfbf2e2cd77cb9cd769d9faa503dd8fec35c18f37b52589ffda670dc9299a8f4962f039ba870007b4601a2610ac0fc298f64a4f8e67eeb')
 
 prepare() {
