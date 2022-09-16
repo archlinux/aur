@@ -2,6 +2,6 @@
 *.tar.xz
 *.zip
 launcher-linux-setup*
-albion-online-setup
+albion-online-launcher-bin*
 pkg/
 src/

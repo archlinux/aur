@@ -23,7 +23,7 @@ depends=(
   'zenity'
 )
 optdepends=()
-source=("https://live.albiononline.com/clients/20220915112235/albion-online-setup"
+source=($pkgname-$pkgver::"https://live.albiononline.com/clients/20220915112235/albion-online-setup"
 	"albion-online-launcher.desktop" "albion-online" "Albion-Online.patch")
 install=albion-online-launcher-bin.install
 options=(!strip docs libtool emptydirs !zipman staticlibs)
