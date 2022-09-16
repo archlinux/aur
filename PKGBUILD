@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-chess
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 pkgdesc="A Python chess library with move generation/validation and
          PGN/Polyglot/Gaviota/Syzygy/UCI support"
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=(python)
 makedepends=(python python-build python-installer python-wheel python-setuptools)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/niklasf/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=("05d35036b1f4d8ad9bb9f7b471e38d21790a068a1654974fbc633e764256a894")
+sha256sums=("0fa325c1944b7781996ff66e3b5056a5e5d3c33c8200b9279493d8054a3a0502")
 
 build() {
   cd $pkgname-$pkgver
