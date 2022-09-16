@@ -1,0 +1,27 @@
+pkgbase = libcamera-minimal-git
+	pkgdesc = An open source camera stack and framework for Linux, Android, and ChromeOS
+	pkgver = r3912.74ab3f77
+	pkgrel = 1
+	url = https://libcamera.org
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	makedepends = meson
+	makedepends = openssl
+	makedepends = libelf
+	makedepends = systemd
+	makedepends = libyaml
+	makedepends = gnutls
+	makedepends = python-jinja
+	makedepends = python-ply
+	makedepends = python-yaml
+	source = git+https://git.libcamera.org/libcamera/libcamera.git
+	sha256sums = SKIP
+
+pkgname = libcamera-minimal-git
+	depends = gnutls
+	depends = libelf
+	depends = libyaml
+	depends = libudev.so
+	provides = libcamera
+	conflicts = libcamera
