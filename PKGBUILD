@@ -11,7 +11,6 @@ arch=('i686' 'x86_64')
 depends=('libxtst' 'qt5-base' 'avahi')
 makedepends=(
   'cmake'
-  'gcc7'
   'libxt'
   'unzip'
 )
@@ -21,8 +20,8 @@ optdepends=(
 license=('GPL2')
 source=(
   "${_pkgname}-${pkgver}.tar.gz"::"https://github.com/symless/synergy-core/archive/1.6.3-final.tar.gz"
-  "${_pkgname}s_at.service"
-  "${_pkgname}s_at.socket"
+  "${_pkgname}s.service"
+  "${_pkgname}s.socket"
   'c++11-noexcept-destructor-fix.patch'
   'missing-include-fix.patch'
 )
@@ -32,7 +31,7 @@ conflicts=("$_pkgname")
 sha256sums=(
   'affd151965f97d3338595331c9e976ab0371a74e96a382f89e9a3ad02a37ddba'
   '30460dfbb53116b13a2e8e665c34e04b5b8ece759ea9e56eccceaa2455ada1af'
-  '3754b87a9164b498ff2726668c2daced901692c2cc816a1594e5ea5b15b65dc5'
+  'aeb357ba161131524aa70a5303a17f78831c9a1ab17dbc7c97e4781a5c4bac44'
   'a14e1defabd30700ffe1616ea679e33e56a3baa601c8734c936783a641979b44'
   '2f766961d7a78dd283b8480571fd748aa1adde930928bcce91515b5eb440a8a9'
 )
@@ -56,13 +55,9 @@ build() {
   cd "${srcdir}/${_pkgdir}"
 
   cmake \
-    -DCMAKE_C_COMPILER='/usr/bin/gcc-7' \
-    -DCMAKE_C_FLAGS='' \
-    -DCMAKE_CXX_COMPILER='/usr/bin/g++-7' \
-    -DCMAKE_CXX_FLAGS='' \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_CXX_FLAGS='-std=c++11' \
     .
-
   make
 
   cd src/gui
@@ -74,8 +69,8 @@ package() {
   cd "${srcdir}"
 
   # install systemd service and socket
-  install -Dm644 ${_pkgname}s_at.service "$pkgdir/usr/lib/systemd/system/${_pkgname}s@.service"
-  install -Dm644 ${_pkgname}s_at.socket "$pkgdir/usr/lib/systemd/system/${_pkgname}s@.socket"
+  install -Dm644 "${_pkgname}s.service" -t "$pkgdir/usr/lib/systemd/user"
+  install -Dm644 "${_pkgname}s.socket" -t "$pkgdir/usr/lib/systemd/user"
 
   cd "${srcdir}/${_pkgdir}"
 
