@@ -2,12 +2,13 @@
 # Contributer: Felix Laurie von Massenbach <felix@erbridge.co.uk>
 pkgname=inky
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Editor for ink: inkle's narrative scripting language"
 arch=('x86_64')
 url="http://www.inklestudios.com/ink"
 license=('MIT')
 options=('!strip')
+depends=('icu')
 optdepends=('mono: for exporting to web and JSON')
 source=("${pkgname}-${pkgver}.zip::https://github.com/inkle/inky/releases/download/${pkgver}/Inky_linux.zip"
         "${pkgname}-${pkgver}.png::https://github.com/inkle/inky/raw/${pkgver}/resources/Icon1024.png"
