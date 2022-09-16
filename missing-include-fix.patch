@@ -1,14 +1,3 @@
-From 5080bf0c679711f60ca14eb5979d92f181749bb7 Mon Sep 17 00:00:00 2001
-From: Manuel Frischknecht <manuel.frischknecht@bfh.ch>
-Date: Mon, 20 Jul 2015 17:55:02 +0200
-Subject: [PATCH] Fixed a missing include that breaks the build on linux
-
----
- src/gui/src/CommandProcess.h | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/src/gui/src/CommandProcess.h b/src/gui/src/CommandProcess.h
-index 62e89bf..f279dff 100644
 --- a/src/gui/src/CommandProcess.h
 +++ b/src/gui/src/CommandProcess.h
 @@ -18,6 +18,7 @@
@@ -19,3 +8,23 @@ index 62e89bf..f279dff 100644
  #include <QStringList>
  
  class CommandProcess : public QObject
+--- a/src/gui/src/ActionDialog.cpp
++++ b/src/gui/src/ActionDialog.cpp
+@@ -25,6 +25,7 @@
+ 
+ #include <QtCore>
+ #include <QtGui>
++#include <QButtonGroup>
+ 
+ ActionDialog::ActionDialog(QWidget* parent, ServerConfig& config, Hotkey& hotkey, Action& action) :
+ 	QDialog(parent, Qt::WindowTitleHint | Qt::WindowSystemMenuHint),
+--- a/src/gui/src/ScreenSetupView.cpp
++++ b/src/gui/src/ScreenSetupView.cpp
+@@ -22,6 +22,7 @@
+ 
+ #include <QtCore>
+ #include <QtGui>
++#include <QHeaderView>
+ 
+ ScreenSetupView::ScreenSetupView(QWidget* parent) :
+ 	QTableView(parent)

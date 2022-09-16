@@ -1,36 +1,46 @@
-# Maintainer: Patric Schmitz <bzk0711@aol.com>
+# Contributor: Patric Schmitz <bzk0711@aol.com>
 # Ported from the synergy-git AUR package
 
 _pkgname=synergy
 pkgname=$_pkgname-1.6
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Synergy upstream 1.6 branch. 1.7.x is very unstable on Linux.'
 url='http://synergy-foss.org'
 arch=('i686' 'x86_64')
 depends=('libxtst' 'qt5-base' 'avahi')
-makedepends=('libxt' 'cmake' 'unzip')
+makedepends=(
+  'cmake'
+  'gcc7'
+  'libxt'
+  'unzip'
+)
 optdepends=(
   'openssl: encryption support'
 )
 license=('GPL2')
 source=(
-  "https://github.com/symless/synergy/archive/1.6.3-final.tar.gz"
-  "${_pkgname}s_at.socket"
+  "${_pkgname}-${pkgver}.tar.gz"::"https://github.com/symless/synergy-core/archive/1.6.3-final.tar.gz"
   "${_pkgname}s_at.service"
-  'missing-include-fix.patch'
+  "${_pkgname}s_at.socket"
   'c++11-noexcept-destructor-fix.patch'
+  'missing-include-fix.patch'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-sha512sums=('8af7a920cb38f0bf057f005d612317fc81f937f74bff49aaf85e95559548d8a85de968e5f55690382ac2e133e0e6c3ae61c94156fc97a8f075956a7803db0825'
-            'f9c124533dfd0bbbb1b5036b7f4b06f7f86f69165e88b9146ff17798377119eb9f1a4666f3b2ee9840bc436558d715cdbfe2fdfd7624348fae64871f785a1a62'
-            'e85cc3452bb8ba8fcccb1857386c77eb1e4cabb149a1c492c56b38e1b121ac0e7d96c6fcbd3c9b522d3a4ae9d7a9974f4a89fc32b02a56f665be92af219e371c'
-            '679cc88794d2ef65325ef93f1034f465824efeb2f01521eda7050556c1200df31abf9b5d055b9438d24f040c234d37b74c489e4db6acbf15a2e7fec8e1da226d'
-            'e9bb015240421ba49478f124a627f82f6d4623bfbb77a498d8682ab3ee02a0e96c1f332fae0ea5e212c37528a404e9d6aa05e03e0d0277fa87dbbfa742036991')
+
+sha256sums=(
+  'affd151965f97d3338595331c9e976ab0371a74e96a382f89e9a3ad02a37ddba'
+  '30460dfbb53116b13a2e8e665c34e04b5b8ece759ea9e56eccceaa2455ada1af'
+  '3754b87a9164b498ff2726668c2daced901692c2cc816a1594e5ea5b15b65dc5'
+  'a14e1defabd30700ffe1616ea679e33e56a3baa601c8734c936783a641979b44'
+  '2f766961d7a78dd283b8480571fd748aa1adde930928bcce91515b5eb440a8a9'
+)
+
+_pkgdir=synergy-core-1.6.3-final
 
 prepare() {
-  cd $_pkgname-1.6.3-final
+  cd "${srcdir}/${_pkgdir}"
 
   patch -p1 < ../missing-include-fix.patch
 
@@ -43,9 +53,16 @@ prepare() {
 }
 
 build() {
-  cd $_pkgname-1.6.3-final
+  cd "${srcdir}/${_pkgdir}"
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr .
+  cmake \
+    -DCMAKE_C_COMPILER='/usr/bin/gcc-7' \
+    -DCMAKE_C_FLAGS='' \
+    -DCMAKE_CXX_COMPILER='/usr/bin/g++-7' \
+    -DCMAKE_CXX_FLAGS='' \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    .
+
   make
 
   cd src/gui
@@ -54,11 +71,13 @@ build() {
 }
 
 package() {
+  cd "${srcdir}"
+
   # install systemd service and socket
   install -Dm644 ${_pkgname}s_at.service "$pkgdir/usr/lib/systemd/system/${_pkgname}s@.service"
   install -Dm644 ${_pkgname}s_at.socket "$pkgdir/usr/lib/systemd/system/${_pkgname}s@.socket"
 
-  cd $_pkgname-1.6.3-final
+  cd "${srcdir}/${_pkgdir}"
 
   # install binary
   install -Dm755 bin/$_pkgname "$pkgdir/usr/bin/$_pkgname"
