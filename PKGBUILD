@@ -47,7 +47,7 @@ build() {
 }
 
 package() {
-    local parch=$(echo ${arch} | sed "s/x86_64/x64/;s/aarch64/arm64/")
+    local parch=$(echo ${CARCH} | sed "s/x86_64/x64/;s/aarch64/arm64/")
     cd "Clash for Windows-${pkgver}-${parch}-linux"
     echo "packaging resource files as 644"
     find . -type f -not \( -name "cfw" -or -name "clash-linux" -or -name "clash-core-service" -or -name "chrome-sandbox" -or -name "*.sh" \) \
