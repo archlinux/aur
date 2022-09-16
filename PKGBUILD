@@ -9,6 +9,7 @@ arch=(x86_64)
 url='https://www.upwork.com/ab/downloads/?os=linux'
 license=(custom)
 depends=(alsa-lib gtk3 libxss nss)
+conflicts=(upwork-beta)
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:104.0) Gecko/20100101 Firefox/104.0"
 _rawver=${pkgver//./_}
 _hashver='687b9a63474e4cda'
