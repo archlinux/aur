@@ -1,7 +1,7 @@
 # Maintainer: Shiroko <hhx.xxm at gmail.com>
 # Maintainer: Johnpoint <me at lvcshu.com>
 pkgname=clash-for-windows-bin
-pkgver=0.20.2
+pkgver=0.20.3
 pkgrel=1
 pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron."
 arch=("x86_64" "aarch64")
@@ -34,8 +34,8 @@ source_aarch64=(
 sha256sums=('0d48a2ea1ee05ad4579b6e6996889548fa8a61a5ff6c85a32f7622cddfcb5782'
             'a2997f604a486e264f6fc5344164ae9e1a9a01282006a41784dd181f7d1a2913'
             '4c0a9de624905e3717b0dd4effa24fbf5c79ad28221b3b3b15a4a0aca4d47e03')
-sha256sums_x86_64=('7c154272f5a38ff97e45c8fb3ca3f6306acc6a8bb2d34f690c46f01fa73f39b2')
-sha256sums_aarch64=('24c231088d470c80b0313a0e1efd36e657e7e52ff67ff3a833b0ec867ef7574e')
+sha256sums_x86_64=('3a46de76c5436e2ec70b3b29f32b8982a343425cc922942abcf2f5c82364c8a4')
+sha256sums_aarch64=('4a9f6c6c6a967416fe31fbe831f5f90f17315a6f60f81b5e13cc4568faa483a5')
 
 
 
