@@ -1,7 +1,7 @@
 # Maintainer: luisbocanegra <luis.bocanegra0 at protonmail dot com>
 pkgname=kde-material-you-colors
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="Automatic Material You Colors Generator from your wallpaper for the Plasma Desktop"
 arch=('x86_64')
 url="https://github.com/luisbocanegra/kde-material-you-colors"
@@ -12,7 +12,7 @@ optdepends=('python-colr: colored hex codes printing'
 )
 options=('!strip')
 source=("${pkgname}-${pkgver}.zip::$url/releases/download/v${pkgver}/${pkgname}-${pkgver}.zip")
-sha256sums=('33c5b5ac19f9faaa0183f0e453e01db6f318ebf99a2ff10b345d9b7d0e844e3a')
+sha256sums=('691dd3e1472016f823809fe740c3f241142fc0c495b5ec942af46f03f1917ee3')
 
 build() {
   cd "${pkgname}-${pkgver}"
