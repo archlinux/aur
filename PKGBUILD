@@ -2,7 +2,7 @@
 
 pkgname=bud-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='The Full-Stack Web Framework for Go'
 arch=(x86_64)
@@ -10,7 +10,7 @@ url="https://github.com/livebud/${_pkgname}"
 license=(MIT)
 provides=("${_pkgname}")
 source=("${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_amd64.tar.gz")
-sha256sums=('f4c16ab3ac6766aa27f8e610c05a9835d620d2bd512df6018bddd55999cc4861')
+sha256sums=('460a9cb7441ab51b2bdd7be8c0161e5b1d79728029cf7dde157257d1482820e0')
 
 package() {
 	install -Dm755 "${_pkgname}_v${pkgver}_linux_amd64/$_pkgname" -t "${pkgdir}/usr/bin"
