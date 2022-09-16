@@ -1,0 +1,13 @@
+pkgbase = findimports
+	pkgdesc = Python module import analysis tool
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/mgedmin/findimports
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/f/findimports/findimports-2.2.0.tar.gz
+	sha256sums = d47a1303e35095017c5e1da15305ae799510e72a1094101afed0c6f31a4e57cd
+
+pkgname = findimports
