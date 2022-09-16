@@ -1,14 +1,15 @@
 pkgbase = scanpy
 	pkgdesc = Single-Cell Analysis in Python
 	pkgver = 1.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/theislab/scanpy
 	arch = any
 	license = BSD
-	makedepends = python-build
-	makedepends = python-installer
 	makedepends = python-flit-core
 	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-anndata>=0.7.4
 	depends = python-numpy>=1.17.0
 	depends = python-matplotlib>=3.4

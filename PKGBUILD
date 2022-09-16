@@ -2,7 +2,7 @@
 
 pkgname=scanpy
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Single-Cell Analysis in Python'
 arch=(any)
 provides=(scanpy python-scanpy)
@@ -39,7 +39,7 @@ optdepends=(
 	'python-scanorama: Scanorama dataset integration algorithm'
 	'python-scrublet: Cell doublet detection'
 )
-makedepends=(python-build python-installer python-flit-core python-setuptools-scm)
+makedepends=(python-flit-core python-setuptools-scm python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('00c9a83b649da7e0171c91e9a08cff632102faa760614fd05cd4d1dbba4eb541')
 
