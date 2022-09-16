@@ -2,14 +2,14 @@
 
 _pkgname=grume
 pkgname="${_pkgname}-git"
-pkgver=r2726.af2fd9c0
+pkgver=r2836.e87893c8
 pkgrel=1
 pkgdesc='A 3D Action RPG by Paul Wortmann.'
 arch=('x86_64')
 url="https://github.com/Paul-Wortmann/grume"
 license=('GPL2')
 depends=("assimp" "glfw" "glm" "openal" "mesa" "physfs" "libvorbis")
-makedepends=("git")
+makedepends=("git" "cmake")
 source=("git+https://github.com/Paul-Wortmann/${_pkgname}.git")
 sha256sums=('SKIP')
 conflicts=(${_pkgname})
@@ -31,8 +31,10 @@ package() {
   install -Dm755 "${_pkgname}" "${pkgdir}/usr/share/games/${_pkgname}/${_pkgname}"
   cp -r "data" "${pkgdir}/usr/share/games/${_pkgname}/"
   find "${pkgdir}/usr/share/games/${_pkgname}/data/" -type f -exec chmod 644 {} \;
-  chmod 666 "${pkgdir}/usr/share/games/${_pkgname}/data/config.txt"
-  mkdir -m777 "${pkgdir}/usr/share/games/${_pkgname}/save"
+  chmod 777 "${pkgdir}/usr/share/games/${_pkgname}/data/config/"
+  chmod 666 "${pkgdir}/usr/share/games/${_pkgname}/data/config/"*
+  touch ${pkgdir}/usr/share/games/${_pkgname}/data/debug.log
+  chmod 666 "${pkgdir}/usr/share/games/${_pkgname}/data/debug.log"
   echo -e "#!/bin/sh\ncd /usr/share/games/${_pkgname}\n./${_pkgname} \$@" > ${pkgdir}/usr/bin/${_pkgname} 
   chmod +x ${pkgdir}/usr/bin/${_pkgname}
 }
