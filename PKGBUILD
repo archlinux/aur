@@ -2,7 +2,7 @@
 # Ex-Maintainer: K0n24d <konrad AT knauber DOT net>
 pkgname=urbackup2-server
 pkgver=2.5.26
-pkgrel=1
+pkgrel=2
 pkgdesc="Client Server backup system"
 arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
 url="http://www.urbackup.org/"
@@ -10,6 +10,7 @@ license=('GPL')
 makedepends=('gcc-libs' 'gcc' 'make')
 depends=('sqlite' 'crypto++' 'curl' 'fuse' 'zlib')
 conflicts=('urbackup-server')
+backup=("etc/default/urbackupsrv")
 source=(
     "https://www.urbackup.org/downloads/Server/${pkgver}/urbackup-server-${pkgver}.tar.gz"
     "md5-bytes.patch"
