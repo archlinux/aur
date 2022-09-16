@@ -21,4 +21,3 @@ package() {
 	python -m installer --destdir="$pkgdir" "$_wheel"
 	chmod +x "$pkgdir/usr/share/applications/camset.desktop"
 }
-
