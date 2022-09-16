@@ -1,4 +1,4 @@
-# Maintainer: Robert Falkenberg <robert.falkenberg@tu-dortmund.de>
+# Maintainer: Robert Falkenberg <robert.falkenberg@srs.io>
 # Contributor: chn <g897331845@gmail.com>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
