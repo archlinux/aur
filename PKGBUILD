@@ -1,9 +1,9 @@
 # Maintainer: Todd E Johnson <todd@toddejohnson.net>
 options=(!buildflags)
 pkgname=trunk-recorder
-pkgver=4.4.0
+pkgver=4.4.1
 _dlpkgver=${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc="Records calls from a Trunked Radio System (P25 & SmartNet)"
 arch=(x86_64 i686 armv5 armv6h armv7h aarch64)
 url="https://github.com/robotastic/trunk-recorder"
@@ -15,7 +15,7 @@ source=("https://github.com/robotastic/trunk-recorder/archive/v${_dlpkgver}.tar.
   'trunk-recorder.service'
   'trunk-recorder.sysusers'
   'trunk-recorder.tmpfiles')
-sha256sums=('2a3dbbf7e6230a91fd068e38af37c615bde5532d77aa6a481cfe2e6d8acec455'
+sha256sums=('46314b860d62ae8cfff70a32639b67ab186a9eadf0a68ea770ce94de9d63e5fe'
   '78bb66aa30af3395c2eddcafa3e59f65e59a328e04a093bb849a83cdedf01a0d'
   'f2e06d333ec8a64c869a9cf369015bf6e0b9819d2af259b4d1c411ed3cca78f8'
   'c20344ba366fcab3f3552e2b5e537f394406ab634f35c2b8858423ffa63fd0e8')
