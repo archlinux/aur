@@ -1,12 +1,14 @@
 pkgbase = python-sadisplay
 	pkgdesc = A Sphinx extension for displaying SqlAlchemy models
 	pkgver = 0.4.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sphinx-contrib/sadisplay
 	arch = any
 	license = BSD
+	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-pandas
 	depends = python-sqlalchemy
 	source = https://files.pythonhosted.org/packages/source/s/sadisplay/sadisplay-0.4.9.tar.gz
