@@ -1,7 +1,7 @@
 pkgbase = p7zip-gui
 	pkgdesc = Graphic user interface (alpha quality) for the 7zip file archiver
 	pkgver = 16.02
-	pkgrel = 7
+	pkgrel = 8
 	url = http://p7zip.sourceforge.net
 	install = p7zip-gui.install
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = p7zip-gui
 	depends = wxwidgets-gtk3
 	optdepends = desktop-file-utils: desktop entries
 	optdepends = kservice: entries in kde context menu
+	conflicts = 7-zip-full
 	source = https://downloads.sourceforge.net/project/p7zip/p7zip/16.02/p7zip_16.02_src_all.tar.bz2
 	source = https://src.fedoraproject.org/rpms/p7zip/raw/rawhide/f/14-Fix-g++-warning.patch
 	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/a82b67f5d36f374afd154e7648bb13ec38a3c497/trunk/CVE-2016-9296.patch

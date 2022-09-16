@@ -10,7 +10,7 @@
 
 pkgname=p7zip-gui
 pkgver=16.02
-pkgrel=7
+pkgrel=8
 pkgdesc='Graphic user interface (alpha quality) for the 7zip file archiver'
 url='http://p7zip.sourceforge.net'
 license=('custom:unRAR' 'LGPL')
@@ -21,6 +21,7 @@ optdepends=('desktop-file-utils: desktop entries'
 makedepends=('python')
 makedepends_i686=('nasm')
 makedepends_x86_64=('yasm')
+conflicts=('7-zip-full')
 install='p7zip-gui.install'
 source=("https://downloads.sourceforge.net/project/p7zip/p7zip/${pkgver}/p7zip_${pkgver}_src_all.tar.bz2"
         'https://src.fedoraproject.org/rpms/p7zip/raw/rawhide/f/14-Fix-g++-warning.patch'
