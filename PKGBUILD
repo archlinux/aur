@@ -1,15 +1,15 @@
 # Maintainer: Aang23 <aang23@altillimity.com>
 pkgname=satdump-git
-pkgver=1.0
-pkgrel=5
+pkgver=r1747.6e5b1325
+pkgrel=1
 epoch=
 pkgdesc="A generic satellite processing software"
 arch=('any')
 url="https://github.com/altillimity/SatDump"
 license=('GPL')
 groups=()
-depends=("libvolk" "glfw" "glew" "fftw" "libcorrect-git" "nng")
-makedepends=("gcc" "make" "cmake" "libcorrect-git" "airspy" "rtl-sdr" "hackrf")
+depends=("libvolk" "glfw" "glew" "fftw" "airspy" "airspyhf" "rtl-sdr" "hackrf" "libusb" "limesuite" "bladerf" "libiio" "libad9361" "ocl-icd" "zstd" "nng")
+makedepends=("gcc" "make" "cmake")
 checkdepends=()
 optdepends=()
 provides=()
@@ -28,7 +28,7 @@ build() {
 	cd "SatDump"
 	mkdir build
 	cd build
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_LIVE=ON ..
+	cmake -DCMAKE_BUILD_TYPE=Release ..
 	make $MAKEOPTS
 }
 
