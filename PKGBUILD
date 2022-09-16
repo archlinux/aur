@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=python-soundcard-git
-pkgver=0.3.3.r10.gc03a9f9
+pkgver=0.4.2.r7.g213aa0a
 pkgrel=1
 pkgdesc='Play and record audio without resorting to CPython extensions'
 arch=(any)
@@ -11,8 +11,8 @@ license=('BSD3')
 depends=(python python-numpy python-cffi)
 provides=("python-soundcard=$pkgver")
 conflicts=(python-soundcard)
-makedepends=('python-setuptools')
-source=("git+https://github.com/bastibe/SoundCard.git")
+makedepends=(python-setuptools python-build python-installer python-wheel)
+source=("git+$url.git")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -22,7 +22,13 @@ pkgver() {
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+build() {
+	cd "$srcdir/SoundCard"
+	python -m build --wheel --no-isolation
+}
+
 package() {
 	cd "$srcdir/SoundCard"
-	python setup.py install --root="$pkgdir"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
+
