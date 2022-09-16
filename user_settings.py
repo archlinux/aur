@@ -11,8 +11,15 @@ user_settings = {
     #Use at your own risk.
 #    "DXVK_ASYNC": "1",
 
-    #Enable AMD FidelityFX Super Resolution (FSR). Only works in vulkan games (dxvk and vkd3d-proton included).
-#    "WINE_FULLSCREEN_FSR": "1",
+    #Disable AMD FidelityFX Super Resolution (FSR), as it is enabled by default. FSR only works in vulkan games (dxvk and vkd3d-proton included).
+#    "WINE_FULLSCREEN_FSR": "0",
+
+    #By default, the "balanced" resolution option for FSR is added to the resolution list if a mode is not specified.
+    #possible modes : ultra, quality, balanced, performance.
+#    "WINE_FULLSCREEN_FSR_MODE": "performance",
+
+    #Add "widthxheight" to the in-game resolution list. Example resolution: 1234x4321
+#    "WINE_FULLSCREEN_FSR_CUSTOM_MODE": "1234x4321"
 
     #The default sharpening of 5 is enough without needing modification, but can be changed with 0-5 if wanted.
     #0 is the maximum sharpness, higher values mean less sharpening.
@@ -115,7 +122,7 @@ user_settings = {
 
     #wine-mono debug logging (Wine's .NET replacement)
 #    "WINE_MONO_TRACE": "E:System.NotImplementedException",
-    #"MONO_LOG_LEVEL": "info",
+#    "MONO_LOG_LEVEL": "info",
 
     #general purpose media logging
 #    "GST_DEBUG": "4",
