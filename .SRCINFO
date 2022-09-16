@@ -1,13 +1,14 @@
 pkgbase = python-wheel-filename
 	pkgdesc = Parse wheel filenames
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jwodder/wheel-filename
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python-installer
 	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/w/wheel-filename/wheel-filename-1.4.1.tar.gz
 	sha256sums = e2e1eb0780910a0148358252aad6394cc674250686c56c39aa379493438370b3
