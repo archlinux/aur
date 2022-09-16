@@ -1,14 +1,13 @@
 pkgbase = ulauncher-theme-arc-dark-git
 	pkgdesc = A theme for Ulauncher based on Arc Theme
-	pkgver = r7.3083ea2
+	pkgver = r2.d98b4ac
 	pkgrel = 1
-	url = https://github.com/philberndt/Arc-Dark-for-Ulauncher
+	url = https://github.com/tjquillan/Arc-Dark-ULauncher
 	arch = any
 	license = Unlicense
 	makedepends = git
 	depends = ulauncher
-	source = git+https://github.com/philberndt/Arc-Dark-for-Ulauncher.git
+	source = git+https://github.com/tjquillan/Arc-Dark-ULauncher.git
 	md5sums = SKIP
 
 pkgname = ulauncher-theme-arc-dark-git
-
