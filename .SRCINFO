@@ -1,0 +1,14 @@
+pkgbase = python-pyfakewebcam
+	pkgdesc = An API for writing RGB frames to a fake webcam device on Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jremmons/pyfakewebcam
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = v4l2loopback-dkms
+	source = https://github.com/jremmons/pyfakewebcam/archive/refs/tags/r0.1.0.tar.gz
+	sha256sums = b53d816691d1896070d50e0e92a846f4afda61933766dc70a44b36829715e59c
+
+pkgname = python-pyfakewebcam
