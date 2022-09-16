@@ -1,21 +1,21 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-#
-# Upwork allows to download Linux binaries only for logged-in users.
-# Download a deb package from https://www.upwork.com/ab/downloads/os/linux/
-# and place it in the same directory as this PKGBUILD file, then run makepkg.
 
 pkgname=upwork
-pkgver=5.6.10.13
+pkgver=5.6.10.1
 _pkgname='Upwork'
-pkgrel=2
+pkgrel=1
 pkgdesc='Upwork Desktop Application'
 arch=(x86_64)
-url='https://www.upwork.com/ab/downloads/os/linux/'
+url='https://www.upwork.com/ab/downloads/?os=linux'
 license=(custom)
 depends=(alsa-lib gtk3 libxss nss)
-source=(file://upwork_${pkgver}_amd64.deb
+_useragent="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:104.0) Gecko/20100101 Firefox/104.0"
+_rawver=${pkgver//./_}
+_hashver='de501d28cc034306'
+DLAGENTS=("https::/usr/bin/curl --tlsv1.3 -H ${_useragent// /\\ } %u -o %o")
+source=(https://upwork-usw2-desktopapp.upwork.com/binaries/v${_rawver}_${_hashver}/upwork_${pkgver}_amd64.deb
         LICENSE)
-sha256sums=('c3e1ecf14c99596f434edf93a2e08f031fbaa167025d1280cf19f68b829d6b79'
+sha256sums=('8faf896d2570d1d210793f46a3860e934d03498c1f11640d43721b6eb2b56860'
             '793d8d7bc0f088c48798bda3d5483972636c6b8c5dcd9aeaf85411f7d4547b38')
 
 prepare() {
