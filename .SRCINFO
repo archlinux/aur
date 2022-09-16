@@ -1,14 +1,15 @@
 pkgbase = python-zarr
 	pkgdesc = An implementation of chunked, compressed, N-dimensional arrays for Python
 	pkgver = 2.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zarr-developers/zarr-python
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
-	makedepends = python-installer
 	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-asciitree
 	depends = python-numpy
 	depends = python-fasteners
