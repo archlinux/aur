@@ -3,7 +3,7 @@
 
 pkgname=python-botorch
 _pkg="${pkgname#python-}"
-pkgver=0.6.6
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='Bayesian Optimization in PyTorch'
 arch=('any')
@@ -25,7 +25,7 @@ makedepends=(
 checkdepends=('python-pytest')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('75eb1dacf111cd32b49acb3bb6a74f2b732092fa5a8ee43ed6701fef06bbe701')
+sha256sums=('73f2f8635fbbf1ea0a3089ea644af409468a0a24d6bdda50b094837f4bf93a28')
 
 build() {
 	cd "$_pkg-$pkgver"
