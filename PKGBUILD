@@ -4,7 +4,7 @@
 _disable_mate=false
 _disable_xfce=false
 _disable_vala=false
-_disable_budgie=false
+_disable_budgie=true
 
 _opts=(
 	--prefix=/usr
@@ -15,7 +15,7 @@ _opts=(
 
 pkgname=('vala-panel-appmenu-common')
 
-makedepends=('meson' 'vala' 'gtk3' 'libwnck3' 'bamf>=0.5.0')
+makedepends=('meson' 'vala' 'gtk3' 'libwnck3' 'bamf>=0.5.0' 'git')
 
 if [[ "${_disable_mate}" = false ]];then
     _opts+=(-Dmate=enabled)
@@ -50,7 +50,7 @@ fi
 _pkgbase="vala-panel-appmenu"
 pkgbase="${_pkgbase}"
 pkgver="0.7.6"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="AppMenu (Global Menu) plugin"
 url="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
 arch=('i686' 'x86_64')
