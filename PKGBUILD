@@ -9,7 +9,7 @@ arch=(any)
 url="https://github.com/vtraag/$_name"
 license=(GPL3)
 depends=(python python-igraph)
-makedepends=(python-build python-installer python-setuptools python-setuptools-scm python-wheel)
+makedepends=(python-setuptools python-setuptools-scm python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('670317fed31e87c38b1da4e0792922110f234a8cf5b4c80edd5f791fee537bc1')
 
