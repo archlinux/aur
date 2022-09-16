@@ -1,7 +1,7 @@
 # Maintainer: Schorsch <wsixcde+aur at gmail dot com>
 # Thanks to <mti at tillenius dot com> whose packages the ps7b packages were based on
 pkgname=picoscope7beta
-pkgver=7.0.107_1r12341
+pkgver=7.0.108_1r12500
 pkgrel=1
 pkgdesc="PicoScope 7 Test and Measurment Early Access"
 arch=('x86_64')
@@ -31,7 +31,7 @@ source=(
   "https://labs.picotech.com/rc/picoscope7/debian/pool/main/p/picoscope/picoscope_${pkgver//_/-}_amd64.deb"
   "picoscope.install"
   "95-pico.rules")
-md5sums=('d5311afcc9883ef077625dc59b6e19f9'
+md5sums=('26a019508174352f452f0bc4f8d214f0'
          '503df69f2e6001e3e9269970a552af13'
          'afedfca88c003ead013c18f26f789fd4')
 
