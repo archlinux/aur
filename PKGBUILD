@@ -1,8 +1,8 @@
 # Maintainer: Lucas Melo <luluco250 at gmail dot com>
 
 pkgname=sonic3air-bin
-pkgver=v21.09.28.0
-pkgrel=3
+pkgver=v22.09.10.0
+pkgrel=1
 pkgdesc='A fan-made widescreen remaster of Sonic 3 & Knuckles.'
 arch=('x86_64')
 url='https://sonic3air.org/'
@@ -12,7 +12,7 @@ optdepends=('discord: Discord rich presence support')
 provides=(sonic3air)
 
 # Unfortunately Google seems to have started taking measures to crack down even
-# harder on automatically downloads, with URLs changing and limiting how many
+# harder on automatic downloads, with URLs changing and limiting how many
 # users can even download the file in an arbitrary period of time.
 # So we'll just have to rely on the slower server from sonic3air.org.
 # Or you could just download it from Google Drive yourself, if the sha256 check
@@ -36,14 +36,14 @@ provides=(sonic3air)
 
 source=(
 	# "sonic3air_${pkgver}.tar.gz::${_srcCurl}"
-	"sonic3air_${pkgver}.tar.gz::https://sonic3air.org/sonic3air_game.tar.gz"
+	"sonic3air_${pkgver}.tar.gz::https://sonic3air.org/download/downloadgame_linux2.php"
 	'sonic3air.desktop'
 	'sonic3air.sh'
 	'LICENSE.md'
 )
 
 sha256sums=(
-	'4fda6c6b10399f62dfa61c329114e6cf866688e2ff9f68ac7b72ca2da38022fd'
+	'2c052dbd4e823a9700ac700f0fcf3deca943effd06004c52363844b5b0409634'
 	'7c5568d01131935c189b3060ea0319cc0047c8a76c9152bf5d461e70f676eebd'
 	'0ac3f4ea42157e6956f85e1e68e7bd456104fd264d10dd2be43e4c38421b3426'
 	'4bff643c05c2396b7e2987721c2f77cd3921434a0a2511f4a3bf31fc53fd7d76'
