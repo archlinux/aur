@@ -3,7 +3,7 @@
 
 pkgname=lib32-systemd-git
 _pkgbasename=systemd
-pkgver=251.r58405.4e5c39597a
+pkgver=251.r59852.cb19517490
 pkgrel=1
 pkgdesc='system and service manager (32-bit git version)'
 arch=('x86_64')
@@ -11,12 +11,13 @@ url='https://www.github.com/systemd/systemd'
 license=('GPL2' 'LGPL2.1')
 depends=('lib32-gcc-libs' 'lib32-libcap' 'lib32-libgcrypt' 'lib32-libxcrypt'
          'lib32-xz' 'lib32-zstd' 'systemd-git')
-provides=("lib32-systemd=$pkgver")
-conflicts=('lib32-systemd')
 makedepends=('git' 'gperf' 'intltool' 'lib32-acl' 'lib32-bzip2'
              'lib32-curl' 'lib32-dbus' 'lib32-gcc-libs' 'lib32-glib2'
              'lib32-gnutls' 'lib32-libelf' 'lib32-libidn2' 'lib32-pcre2'
              'libxslt' 'meson' 'python-jinja')
+provides=('libsystemd.so' 'libudev.so')
+provides+=("lib32-systemd=$pkgver")
+conflicts=('lib32-systemd')
 source=('git+https://github.com/systemd/systemd')
 sha512sums=('SKIP')
 
@@ -49,6 +50,7 @@ build() {
   local _meson_options=(
     --libexecdir  /usr/lib32
     --libdir    /usr/lib32
+    -Dmode=release
 
     # features
     -Daudit=false
@@ -134,7 +136,7 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+  meson install -C build --destdir "$pkgdir"
 
   rm -rf "${pkgdir}"/{etc,var}
   rm -rf "${pkgdir}"/usr/{bin,include,lib,share}
