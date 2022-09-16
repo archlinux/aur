@@ -8,7 +8,7 @@
 # https://www.kernel.org/category/releases.html
 # 5.15 Greg Kroah-Hartman & Sasha Levin 2021-10-31 Oct, 2023
 _LLL_VER=5.15
-_LLL_SUBVER=58
+_LLL_SUBVER=66
 
 # Bisect debug, v5.4.47 -> v5.4.48
 _Bisect_debug=off # on, test, off
@@ -95,7 +95,7 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            'd53ba7438f77e5a95a4c2766844d39c0854aac86d186f2ee245149df4dc421a6'
+            'aa9c881589d3f97b07f3b9b29c2ea4f15ffd03dcc6ab5b6dec237397d1de968a'
             '34c9791cc0cacab354bdb0b283e1d429367bb78a060f89b1ef5a9add5880e339'
             '05371d7a0b55daa630c7a9124798a06451d8ab2af4520d33e554995cc47bd5eb'
             '7323d58e79dee3bd79431db134afb49e6024f0f63f821eebacf04d3c9d7645da'
@@ -133,6 +133,11 @@ prepare() {
 
   # add upstream patch
   patch -Np1 -i ../patch-${pkgver}
+
+  # https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/commit/scripts/pahole-flags.sh?h=v5.15.68&id=096e34b05a439f0e607529d9404be3c3f59d2064
+  if [ "${_LLL_VER}.${_LLL_SUBVER}" == "5.15.66" ]; then
+    chmod +x scripts/pahole-flags.sh
+  fi
 
   # Bisect debug
   if [ "$_Bisect_debug" == "on" ]; then
