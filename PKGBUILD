@@ -1,4 +1,4 @@
-# Maintainer: Robert Falkenberg <robert.falkenberg@tu-dortmund.de>
+# Maintainer: Robert Falkenberg <robert.falkenberg@srs.io>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
