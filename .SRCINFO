@@ -1,11 +1,11 @@
 pkgbase = pigz-gzip-symlink
 	pkgdesc = Symlinks gzip to pigz
-	pkgver = 1
-	pkgrel = 1
+	pkgver = 2.7
+	pkgrel = 2
+	url = https://zlib.net/pigz/
 	arch = any
 	license = GPL
 	depends = pigz
-	depends = which
 	provides = gzip
 	conflicts = gzip
 
