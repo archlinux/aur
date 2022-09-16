@@ -11,7 +11,7 @@ fi
 
 _pluginname=tuna
 pkgname=obs-$_pluginname
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 arch=("x86_64" "aarch64")
 pkgdesc="Get song info from right within obs"
@@ -30,7 +30,7 @@ sha256sums=(
   "SKIP"
   "7a98baa9bcaddbb76cf00d11b3765fec4a696d2d793ef25c04939941e44cf4dc"
   "8b6b5627dee73246eff61de3189d7ed33fe6c81c19373851feafe98421ffb3ae"
-  "6b90db87873aa90d1127200e0a23a7eb0a3bebad1c110fb698a1e421a06c6758"
+  "f73a37aeb6e5af5a2f2e2fd0eda78c5b3eb909bdd52f291f740bf8092b1bf70a"
 )
 
 prepare() {

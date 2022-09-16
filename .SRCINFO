@@ -1,6 +1,6 @@
 pkgbase = obs-tuna
 	pkgdesc = Get song info from right within obs
-	pkgver = 1.8.3
+	pkgver = 1.8.4
 	pkgrel = 1
 	url = https://obsproject.com/forum/resources/tuna.843/
 	arch = x86_64
@@ -15,13 +15,13 @@ pkgbase = obs-tuna
 	conflicts = obs-plugin-tuna-bin
 	conflicts = obs-plugin-tuna-git
 	options = debug
-	source = tuna::git+https://github.com/univrsal/tuna.git#tag=v1.8.3
+	source = tuna::git+https://github.com/univrsal/tuna.git#tag=v1.8.4
 	source = FindLibMPDClient.cmake
 	source = FindTaglib.cmake
 	source = deps_CMakeLists.txt
 	sha256sums = SKIP
 	sha256sums = 7a98baa9bcaddbb76cf00d11b3765fec4a696d2d793ef25c04939941e44cf4dc
 	sha256sums = 8b6b5627dee73246eff61de3189d7ed33fe6c81c19373851feafe98421ffb3ae
-	sha256sums = 6b90db87873aa90d1127200e0a23a7eb0a3bebad1c110fb698a1e421a06c6758
+	sha256sums = f73a37aeb6e5af5a2f2e2fd0eda78c5b3eb909bdd52f291f740bf8092b1bf70a
 
 pkgname = obs-tuna
