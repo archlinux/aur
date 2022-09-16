@@ -1,13 +1,14 @@
 pkgbase = python-aiomanhole
 	pkgdesc = Manhole for accessing asyncio applications
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nathan-hoad/aiomanhole
 	arch = any
 	license = Apache
+	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/a/aiomanhole/aiomanhole-0.7.0.tar.gz
 	sha256sums = bf22b6ca4190cb35c9cdc94e4be31190353fdc320e1b346c032d0d47fc3ca453
