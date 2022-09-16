@@ -17,6 +17,7 @@ pkgname=(pipewire-full-git
          pipewire-full-vulkan-git
          pipewire-full-ffmpeg-git
          pipewire-full-roc-git
+         pipewire-full-libcamera-git
          )
 pkgver=0.3.58.r39.g8de03f5c
 pkgrel=1
@@ -36,6 +37,8 @@ makedepends=(git meson doxygen python-docutils graphviz ncurses
              vulkan-headers vulkan-icd-loader
              ffmpeg
              roc-toolkit
+             libcamera-minimal-git
+             libdrm
              )
 source=("git+https://gitlab.freedesktop.org/pipewire/${_pkgbase}.git")
 sha256sums=('SKIP')
@@ -54,19 +57,22 @@ pkgver() {
 build() {
   # make AUR helper happy
   rm -rf build || true
-  arch-meson $_pkgbase build \
-    -D bluez5-codec-lc3plus=disabled \
-    -D docs=enabled \
-    -D jack-devel=true \
-    -D libcamera=disabled \
-    -D libjack-path=/usr/lib \
-    -D sdl2=disabled \
-    -D session-managers=[] \
-    -D test=enabled \
-    -D bluez5-codec-lc3=enabled \
-    -D vulkan=enabled \
-    -D ffmpeg=enabled \
+
+  local meson_options=(
+    -D bluez5-codec-lc3plus=disabled
+    -D docs=enabled
+    -D jack-devel=true
+    -D libjack-path=/usr/lib
+    -D sdl2=disabled
+    -D session-managers=[]
+    -D test=enabled
+    -D bluez5-codec-lc3=enabled
+    -D vulkan=enabled
+    -D ffmpeg=enabled
     -D udevrulesdir=/usr/lib/udev/rules.d
+  )
+
+  arch-meson $_pkgbase build "${meson_options[@]}"
   meson compile -C build
 }
 
@@ -154,6 +160,8 @@ package_pipewire-full-git() {
   _pick ffmpeg usr/lib/spa-0.2/ffmpeg
 
   _pick roc usr/lib/pipewire-$_ver/libpipewire-module-roc-{sink,source}.so
+
+  _pick libcamera usr/lib/spa-0.2/libcamera
 }
 
 package_pipewire-full-docs-git() {
@@ -305,6 +313,17 @@ package_pipewire-full-roc-git() {
   conflicts=(pipewire-roc)
 
   mv roc/* "${pkgdir}"
+
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $_pkgbase/COPYING
+}
+
+package_pipewire-full-libcamera-git() {
+  pkgdesc+="libcamera SPA plugin"
+  depends=(pipewire-full-git libcamera)
+  provides=(pipewire-libcamera)
+  conflicts=(pipewire-libcamera)
+
+  mv libcamera/* "${pkgdir}"
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $_pkgbase/COPYING
 }

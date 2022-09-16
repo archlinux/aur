@@ -40,6 +40,8 @@ pkgbase = pipewire-full-git
 	makedepends = vulkan-icd-loader
 	makedepends = ffmpeg
 	makedepends = roc-toolkit
+	makedepends = libcamera-minimal-git
+	makedepends = libdrm
 	source = git+https://gitlab.freedesktop.org/pipewire/pipewire.git
 	sha256sums = SKIP
 
@@ -201,3 +203,10 @@ pkgname = pipewire-full-roc-git
 	depends = roc-toolkit
 	provides = pipewire-roc
 	conflicts = pipewire-roc
+
+pkgname = pipewire-full-libcamera-git
+	pkgdesc = Low-latency audio/video router and processorlibcamera SPA plugin
+	depends = pipewire-full-git
+	depends = libcamera
+	provides = pipewire-libcamera
+	conflicts = pipewire-libcamera
