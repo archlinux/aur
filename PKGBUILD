@@ -1,7 +1,7 @@
 # Maintainer: Huck Boles <huboles@protonmail.com>
 pkgname=aursh
-pkgver=0.0.1
-pkgrel=1
+pkgver=0.1
+pkgrel=2
 pkgdesc="A simple cli package manager for the AUR written in bash"
 arch=('x86_64')
 url="https://github.com/huboles/aursh/releases/download/testing"
