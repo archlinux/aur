@@ -1,6 +1,6 @@
 pkgbase = python-niaaml
 	pkgdesc = Python automated machine learning framework
-	pkgver = 1.1.10
+	pkgver = 1.1.11
 	pkgrel = 1
 	url = https://github.com/lukapecnik/NiaAML
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = python-niaaml
 	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-install
-	makedepends = python-poetry
+	makedepends = python-poetry-core
 	depends = python-niapy
 	depends = python-scikit-learn
-	source = NiaAML-1.1.10.tar.gz::https://github.com/lukapecnik/NiaAML/archive/1.1.10.tar.gz
-	sha512sums = 0ba2ca4c102c913b1f3144360bf18ab6a01274b19332e0520d0c401dd8023924fc16815230822fde270c441c8f66b73cf212f5a88501fdb3b4ad8124c77cad50
+	source = NiaAML-1.1.11.tar.gz::https://github.com/lukapecnik/NiaAML/archive/1.1.11.tar.gz
+	sha512sums = 6513879a1843be932f271ad3a1d6bd92736a7d7c2e3dbd37c543f6c49563c10281ffeba2e2133dbb182cb68a68287a8bb61ba508a756ef094858ffb0c5e96aa9
 
 pkgname = python-niaaml
