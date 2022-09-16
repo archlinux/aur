@@ -2,8 +2,8 @@
 # Contributor: Ashwin <ashwinvis+arch_@t_Pr0t0nM4il_c0m>
 _base=transonic
 pkgname=python-${_base}
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="Make your Python code fly at transonic speeds!"
 arch=(any)
 url="https://foss.heptapod.net/fluiddyn/${_base}"
@@ -18,8 +18,8 @@ optdepends=(
 makedepends=(python-setuptools)
 checkdepends=(python-pytest)
 provides=(${_base})
-source=(${url}/-/archive/${pkgver}/${_base}-${pkgver}.tar.gz)
-sha512sums=('2cc2b9a358436fbeec6418b702cc9efbedf5bf5f88aa4feb9630fc90ff0496af09e9c4c8877e6cc41265281d529f6ee5d4dc20087c81cf42a86633920c6441cf')
+source=(${_base}-${pkgver}.tar.gz::${url}/-/archive/${pkgver}/${_base}-${pkgver}.tar.gz)
+sha512sums=('d951d911ec7dba26e4f6955fd35fa0c3d41df90ac2b55a0ea0ee9a7facd0ec472fe92193fc2562cdbc748e1edf49ff4faac774fe21556d0bfdc6c97b93b54ecc')
 
 build() {
   cd ${_base}-${pkgver}
