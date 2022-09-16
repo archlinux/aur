@@ -2,7 +2,7 @@
 _name=anglerfish
 pkgname=python-$_name
 pkgver=2.5.0
-pkgrel=2
+pkgrel=4
 pkgdesc='Helper library for Python 3 apps'
 arch=('any')
 url="http://pypi.python.org/pypi/$_name"
