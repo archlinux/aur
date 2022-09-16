@@ -1,5 +1,2 @@
 #!/bin/sh
-
-pushd /usr/lib/solana/
-./cargo-build-bpf "$@"
-popd
+/usr/lib/solana/cargo-build-bpf "$@"
