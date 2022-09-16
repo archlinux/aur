@@ -18,7 +18,7 @@ pkgname=(pipewire-full-git
          pipewire-full-ffmpeg-git
          pipewire-full-roc-git
          )
-pkgver=0.3.57.r4.gf9574355
+pkgver=0.3.58.r39.g8de03f5c
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -29,6 +29,7 @@ makedepends=(git meson doxygen python-docutils graphviz ncurses
              glib2 webrtc-audio-processing libusb bluez-libs
              sbc libldac libfreeaptx libfdk-aac opus
              lilv libx11 libxfixes libcanberra
+             liblc3
              avahi openssl
              gst-plugins-base-libs
              jack2
@@ -62,6 +63,7 @@ build() {
     -D sdl2=disabled \
     -D session-managers=[] \
     -D test=enabled \
+    -D bluez5-codec-lc3=enabled \
     -D vulkan=enabled \
     -D ffmpeg=enabled \
     -D udevrulesdir=/usr/lib/udev/rules.d

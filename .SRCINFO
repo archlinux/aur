@@ -1,6 +1,6 @@
 pkgbase = pipewire-full-git
 	pkgdesc = Low-latency audio/video router and processor
-	pkgver = 0.3.57.r4.gf9574355
+	pkgver = 0.3.58.r39.g8de03f5c
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -31,6 +31,7 @@ pkgbase = pipewire-full-git
 	makedepends = libx11
 	makedepends = libxfixes
 	makedepends = libcanberra
+	makedepends = liblc3
 	makedepends = avahi
 	makedepends = openssl
 	makedepends = gst-plugins-base-libs
@@ -77,7 +78,7 @@ pkgname = pipewire-full-git
 	optdepends = gst-plugin-pipewire-full-git: GStreamer support
 	optdepends = ofono: ofono Bluetooth HFP support
 	optdepends = hsphfpd: hsphfpd Bluetooth HSP/HFP support
-	provides = pipewire=0.3.57
+	provides = pipewire=0.3.58
 	provides = alsa-card-profiles
 	provides = libpipewire-0.3.so
 	conflicts = pipewire
