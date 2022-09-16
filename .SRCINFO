@@ -64,6 +64,7 @@ pkgname = pipewire-full-git
 	depends = libfreeaptx.so
 	depends = libfdk-aac.so
 	depends = libopus.so
+	depends = liblc3.so
 	depends = liblilv-0.so
 	optdepends = pipewire-session-manager: Session manager
 	optdepends = pipewire-full-docs-git: Documentation

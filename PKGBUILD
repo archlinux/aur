@@ -94,6 +94,7 @@ package_pipewire-full-git() {
            libwebrtc_audio_processing.so libusb-1.0.so
            libbluetooth.so libsbc.so libldacBT_{enc,abr}.so
            libfreeaptx.so libfdk-aac.so libopus.so
+           liblc3.so
            liblilv-0.so)
   optdepends=('pipewire-session-manager: Session manager'
               'pipewire-full-docs-git: Documentation'
