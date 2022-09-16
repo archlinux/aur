@@ -5,7 +5,7 @@ _pkgbase=systemd
 pkgbase=$_pkgbase-git
 pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
 pkgdesc='systemd (git version)'
-pkgver=251.r58942.91375fb9cf
+pkgver=251.r59852.cb19517490
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -84,6 +84,10 @@ build() {
 
   local _meson_options=(
     -Dmode=release
+
+    # https://bugs.archlinux.org/task/75852
+    --buildtype debugoptimized
+    -D b_ndebug=true
 
     -Dgnu-efi=true
     -Dima=false
@@ -164,7 +168,7 @@ package_systemd-git() {
           etc/udev/udev.conf)
   install=systemd.install
 
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 
   # we'll create this on installation
   rmdir "$pkgdir"/var/log/journal/remote
