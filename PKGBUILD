@@ -1,6 +1,6 @@
 # Maintainer: Mintsuki <mintsuki@protonmail.com>
 pkgname=limine
-pkgver=4.0.4
+pkgver=4.1
 pkgrel=1
 pkgdesc="An advanced, portable, multiprotocol bootloader"
 arch=('i686' 'pentium4' 'x86_64' 'armv7h' 'aarch64')
@@ -8,7 +8,7 @@ url="https://limine-bootloader.org/"
 license=('BSD')
 depends=('glibc')
 source=("https://github.com/limine-bootloader/limine/releases/download/v${pkgver}/limine-${pkgver}.tar.xz")
-b2sums=('5ec774b44948baaf0f84485019e75c50e01ef24f6e941696fd9fb69e42aac731c28fec11a6ad9704ef24e116c9934b48d267e850599cba25e34eb3d6bcfa037c')
+b2sums=('9ef827c873cbff4310f3f16a2551e641942adf239dad3a548a06f175017ef2182459adee784203441045d846935e821772ab24c860c624dedef2b43d6af5e119')
 makedepends=('nasm' 'mtools' 'llvm' 'lld' 'clang')
 
 build() {
