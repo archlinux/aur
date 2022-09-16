@@ -4,13 +4,13 @@
 
 pkgname=ame
 _pkgname=amethyst
-pkgver=3.6.0
-pkgrel=3
+pkgver=4.0.0
+pkgrel=1
 pkgdesc='A fast and efficient AUR helper'
 arch=('x86_64' 'aarch64')
 url="https://github.com/crystal-linux/$_pkgname"
 license=('GPL3')
-source=("git+$url#tag=v$pkgver")
+source=("$_pkgname-$pkgver-$pkgrel::git+$url#tag=v$pkgver")
 sha256sums=('SKIP')
 depends=(
     'git' 
@@ -24,19 +24,20 @@ depends=(
 makedepends=('cargo')
 
 prepare() {
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/$_pkgname-$pkgver-$pkgrel"
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/$_pkgname-$pkgver-$pkgrel"
     export RUSTUP_TOOLCHAIN=nightly
     export CARGO_TARGET_DIR=target
+    export AMETHYST_CODENAME="Funky Fish"
     cargo build --frozen --release
 }
 
 package() {
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/$_pkgname-$pkgver-$pkgrel"
     find target/release \
         -maxdepth 1 \
         -executable \
