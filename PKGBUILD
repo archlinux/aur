@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="An arctic, north-bluish clean and elegant gedit syntax theme"
 arch=("any")
 url="https://github.com/arcticicestudio/nord-gedit"
-license=("Apache", "CC-BY-SA-4.0")
+license=("MIT")
 depends=("gedit")
 makedepends=("git")
 source=("$pkgname::git+https://github.com/arcticicestudio/nord-gedit.git#tag=v$pkgver")
