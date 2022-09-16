@@ -21,7 +21,7 @@ depends=(
 	'python-scikit-learn>=0.21.2'
 	'python-matplotlib>=3.3.0'
 )
-makedepends=(python-setuptools python-setuptools-scm python-wheel python-installer python-build)
+makedepends=(python-setuptools python-setuptools-scm python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('ffacae961993df19034580ae748dc5bda12852e1da517b1f065ad2544850b040')
 
