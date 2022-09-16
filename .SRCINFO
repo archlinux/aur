@@ -1,13 +1,14 @@
 pkgbase = python-goatools
 	pkgdesc = Python scripts to find enrichment of GO terms
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tanghaibao/goatools
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = python-installer
 	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = python-pandas
 	depends = python-numpy
