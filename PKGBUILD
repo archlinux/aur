@@ -1,11 +1,12 @@
 pkgname=7-zip-full
 pkgver=22.01
-pkgrel=2
+pkgrel=3
 pkgdesc="File archiver with a high compression ratio. (Full package to replace p7zip.)"
 url="https://www.7-zip.org"
 license=(LGPL)
-arch=(x86_64)
+arch=('x86_64' 'i686' 'aarch64')
 makedepends=('uasm')
+[ "${CC}" == 'clang' ] && makedepends+=('clang' 'lld')
 provides=("${pkgname%-full}" 'p7zip')
 conflicts=("${provides[@]}")
 
@@ -18,7 +19,7 @@ source=(
 
 sha256sums=(
     '393098730c70042392af808917e765945dc2437dee7aae3cfcc4966eb920fbc5'
-    'fa1fd77e9d95f97d349f057c53b9ba4bacde64b2fae3a50d16b1d93e991d7866'
+    '4e010de2dce2eebbe72d0e9f72fbf953eb2f8cba7bffbae53bda1544e3879101'
 )
 
 prepare() {
@@ -29,13 +30,27 @@ prepare() {
 
 build() {
     local bundles="${srcdir}/CPP/7zip/Bundles"
-    local mak="${srcdir}/CPP/7zip/cmpl_gcc_x64.mak"
     local targets=("Alone" "Alone2" "Alone7z" "Format7zF")
+    local -A platforms=(['x86_64']='x64' ['i686']='x86' ['aarch64']='arm64')
+    local build_dir="${srcdir}/build"
+    mkdir -p "${build_dir}"
+
     (
-        export BUILD_DIR="${srcdir}/build"
-        mkdir -p "${BUILD_DIR}"
+        set -a
+        PLATFORM="${platforms["${CARCH}"]}"
+        O="${build_dir}"
+        IS_X64=$([ "${PLATFORM}" == 'x64' ] && echo '1' || echo '')
+        IS_X86=$([ "${PLATFORM}" == 'x86' ] && echo '1' || echo '')
+        IS_ARM64=$([ "${PLATFORM}" == 'arm64' ] && echo '1' || echo '')
+        MY_ARCH=
+        USE_ASM=1
+        CC="${CC:-gcc}"
+        CXX="${CXX:-g++}"
+        CFLAGS_WARN='-Wno-error'
+        set +a
+
         for target in "${targets[@]}"; do
-            make -C "${bundles}/${target}" -f "${mak}"
+            make -C "${bundles}/${target}" -f 'makefile.gcc'
         done
     )
 }
