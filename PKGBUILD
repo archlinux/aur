@@ -1,7 +1,7 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
 pkgname=curl-impersonate-firefox
-pkgver=v0.5.2
+pkgver=v0.5.3
 pkgrel=1
 pkgdesc="A special compilation of curl that makes it impersonate Firefox"
 url="https://github.com/lwthiker/curl-impersonate"
@@ -18,7 +18,7 @@ source=(
   "curl-impersonate.tar.gz::https://github.com/lwthiker/curl-impersonate/archive/refs/tags/${pkgver}.tar.gz"
 )
 
-md5sums=('c7d0d1e3f48ad45fe830138ac972976b')
+md5sums=('d4c8d51a32b875af210fcf80fc070ba9')
 
 build () {
   cd curl-impersonate-${pkgver/v/}
