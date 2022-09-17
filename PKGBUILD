@@ -3,13 +3,14 @@
 
 pkgname=espeak-ng
 pkgver=1.51.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Multi-lingual software speech synthesizer'
 url=https://github.com/espeak-ng/espeak-ng
 arch=('x86_64')
 license=('GPL3')
-depends=('pcaudiolib')
-makedepends=('pcaudiolib' 'ruby-ronn-ng')
+depends=('pcaudiolib' 'libsonic')
+#checkdepends=('python')
+makedepends=('ruby-ronn-ng')
 replaces=('espeak-ng-espeak')
 provides=('espeak-ng-espeak')
 conflicts=('espeak-ng-espeak' 'espeak')
@@ -22,12 +23,18 @@ prepare() {
   ./autogen.sh
 }
 
+
 build() {
   cd espeak-ng-$pkgver
   ./configure --prefix=/usr
   make src/espeak-ng src/speak-ng
   make
 }
+
+#check() {
+#  cd espeak-ng-$pkgver
+#  make -j1 check
+#}
 
 package() {
   cd espeak-ng-$pkgver
