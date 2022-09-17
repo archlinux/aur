@@ -1,9 +1,10 @@
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Tom < reztho at archlinux dot us >
 #
 # Thanks to Alan Heckert from NIST for his support
 
 pkgname=dataplot
-pkgver=20200619
+pkgver=20210713
 pkgrel=1
 pkgdesc="Software for scientific visualization, statistical analysis, and non-linear modeling."
 arch=('x86_64')
@@ -14,7 +15,7 @@ makedepends=('imagemagick' 'gcc-fortran' 'gendesk')
 # backup=('usr/share/dataplot/frscript/xdpConfig')
 source=("${url}/ftp/unix/dataplot-${pkgver}.tar.gz"
   "dataplot.sh")
-sha512sums=('f9947d7da49f99f9fe3b69390ef3e3f143b01889049fc86b3bf2969271df1f84d64cb300481971220548b011e4824b471f2e9b7a55db406876f891b1dd01add9'
+sha512sums=('5e1920b1ad795c189a587bd8cc2d26a4fff259c84cc89ee4c5a4d86c6606cc2f61fc9b7dddcea998bf94c4b8123076c35205da828926c637776f481f41c8fbb8'
   '62d40b182ec2212a0cf27ac548a3a4b46598291c7407dbb8d51633bf088841b3bdf1917c0b223c3d234e8eb149aba3a0ec5d35ac66a4ac4f1521a485ca87a411')
 
 prepare() {
@@ -69,4 +70,5 @@ NIST assumes no responsibility whatsoever for its use by other parties, and make
 guarantees, expressed or implied, about its quality, reliability, or any other
 characteristic. 
 EOF
+  find "${pkgdir}" -type d -empty -delete
 }
