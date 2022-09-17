@@ -51,7 +51,7 @@ prepare()
 #Fix Fedora Version Var And Libstdc++ Rename
 tar -zxf "$srcdir/NX/etc/NX/server/packages/nxrunner.tar.gz" NX/scripts/setup/nxrunner
 sed -i 's/    majorFedoraVersion.*/    majorFedoraVersion=23/' "$srcdir/NX/scripts/setup/nxrunner"
-tar -zxf "$srcdir/NX/etc/NX/server/packages/nxclient.tar.gz" "NX/lib/"
+tar -zxf "$srcdir/NX/etc/NX/server/packages/nxrunner.tar.gz" "NX/lib/"
 for _libstdc in "$srcdir/NX/lib/"libstdc++.*; do
 mv "${_libstdc}" ${_libstdc}.nomachine
 done
