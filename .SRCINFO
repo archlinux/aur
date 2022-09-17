@@ -1,0 +1,13 @@
+pkgbase = refind-theme-dracula
+	pkgdesc = Simple theme inspired by the Dracula palette
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/rassweiler/refind-theme-dracula
+	install = refind-theme-dracula.install
+	arch = any
+	license = MIT
+	depends = refind
+	source = https://github.com/rassweiler/refind-theme-dracula/releases/download/1.0.0/refind-theme-dracula-1.0.0.tar.gz
+	sha256sums = f7fdc40ca24722e703164cfb6098b85a40194bb72459c284135248c142e8a471
+
+pkgname = refind-theme-dracula
