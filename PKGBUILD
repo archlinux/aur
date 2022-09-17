@@ -3,7 +3,7 @@
 
 _pkgname=ImHex
 pkgname=${_pkgname,,}
-pkgver=1.23.0
+pkgver=1.23.2
 pkgrel=1
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://imhex.werwolv.net'
@@ -24,25 +24,28 @@ source=("$pkgname::git+https://github.com/WerWolv/ImHex.git#tag=v$pkgver"
         "pattern_language::git+https://github.com/WerWolv/PatternLanguage#tag=ImHex-v$pkgver"
         0001-makepkg-Fix-compiler-check.patch
         0002-fix-Deduplicate-resources-directories.patch
-        pl-0001-Use-C-23-standard.patch)
+        pl-0001-Use-C-23-standard.patch
+        pl-0002-makepkg-Remove-extraneous-compiler-flags.patch)
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '467afb63c5ef8f8c62f530df241bcb968d127973e3607bc6f97edc69df0146c4'
-            '2ea54ee1c52b6f4b633dc5a09f6e9e4581a737cd51fb9394e688b6dd28363043'
-            'c6c315b456d9e3b22f9951ddbec42a148fa7d2b754f0a4858fd7cd19a2ea724e')
+            'f04f186b5564bff71c36a00e1119ef42b11cfa75b551bf9233201aa27bc817aa'
+            '6efe9a6b58029f8232979e4e2f2da3bc8509114f2b7a21bc0f8b42ad06c8a9dd'
+            'b4eee4780a0509199432bea056616a3e216c84866b908601fe06b79fce8c8b3d'
+            'c4817d6376596f19308667b2fd3da04b8a21a71b0cefaa3ae3a22c0a564616ad')
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'b306373f21f9e85efcbe500526de10760ddd321ff464fe35667ceb5a51ab3ac26a37804462d87eb2261d9e645456f2e414da82e62e866d8d20dee25d02ea2d6c'
-        'cfedf32505130f2b86bd666c11cc56095bcf2fde5f8a49112c5a266bb4b2633c50b91898c36b90f03e80d8df1ab93edb4b817473769732136ee235843f330ab7'
-        '7c4251311609475f591ff2263db9d87d065095e0d8afea59f6c1e236535fd730c410b8513424e2d2ffac6a4c37ea27d82681cee5720687ff5148e03151ada7f6')
+        'c4962b1c7fd888d0bcacd15d9c50ee8ded52b9405bef2a7a43c616c2ad318945297f2f71cfaeebf99319ea99e58cbdd33c1670e1749e0746d9b1bb9980351086'
+        '3329f5159bb74299b9e2b71cc5f50e4f9b0c7c3499eb46fb2162a5312aa27c671fa66770786e9940aee7d4fbd57fc8db842d6a7e239b18fe3db13b3a9ed13588'
+        '4c7fb504629efd534d843e7b091cbcb79c742b7c2b5ca54c6e88e0135dd2ebea5aa9084f4230c84d988b631861aab47b7c23dd1ec88f37b867d2eb1d4dd4d2ac'
+        'dac5924ea241d4cdc7039829d3f9eb347cbfa94ec8847d391be3055eac2bfc0cf45bcab277061f7ece3df81e69fc644f5ade6918440101c36b67f42dc947b1f2')
 options=(!lto !strip)
 
 prepare() {
@@ -62,7 +65,8 @@ prepare() {
     "$srcdir/0002-fix-Deduplicate-resources-directories.patch"
 
   git -C lib/external/pattern_language apply \
-    "$srcdir/pl-0001-Use-C-23-standard.patch"
+    "$srcdir/pl-0001-Use-C-23-standard.patch" \
+    "$srcdir/pl-0002-makepkg-Remove-extraneous-compiler-flags.patch"
 }
 
 build() {
