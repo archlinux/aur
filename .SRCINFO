@@ -1,7 +1,7 @@
 pkgbase = boulder-git
 	pkgdesc = Serpent OS build tool
 	pkgver = r1076.1b1e9f9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/serpent-os/boulder
 	arch = x86_64
 	license = ZLIB

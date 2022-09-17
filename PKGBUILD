@@ -1,7 +1,7 @@
 # Maintainer: Xerz <xerz@xerz.one>
 pkgname=boulder-git
 pkgver=r1076.1b1e9f9
-pkgrel=1
+pkgrel=2
 pkgdesc="Serpent OS build tool"
 arch=('x86_64')
 url="https://github.com/serpent-os/boulder"
@@ -56,12 +56,12 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	meson build/
-	meson compile -C build/
+	meson --prefix=/usr --buildtype=plain build
+	meson compile -C build
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	DESTDIR="$pkgdir/" meson install -C build/
+	DESTDIR="$pkgdir" meson install -C build
 	install -D -m644 "${srcdir}/${pkgname%-git}/LICENSES/Zlib.txt" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
