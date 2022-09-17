@@ -2,14 +2,15 @@
 # Maintainer: Alexander Epaneshnikov <alex19ep@archlinux.org>
 
 pkgname=('espeak-ng-git')
-pkgver=1.51.r6.g473cd995
+pkgver=1.51.r260.g4acc2954
 pkgrel=1
 pkgdesc="Multi-lingual software speech synthesizer (development version)"
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/espeak-ng/espeak-ng"
 license=('GPL3')
-depends=('pcaudiolib')
-makedepends=('pcaudiolib' 'git' 'ruby-ronn-ng')
+depends=('pcaudiolib' 'libsonic')
+makedepends=('git' 'ruby-ronn-ng')
+checkdepends=('python')
 replaces=('espeak-ng-espeak-git' 'espeak-ng-espeak')
 provides=('espeak-ng-espeak-git' 'espeak-ng-espeak' 'espeak-ng')
 conflicts=('espeak-ng-espeak' 'espeak-ng' 'espeak')
@@ -31,6 +32,11 @@ build() {
   cd ${pkgname%-git}
   ./configure --prefix=/usr
   make
+}
+
+check() {
+  cd ${pkgname%-git}
+  make -j1 check
 }
 
 package() {
