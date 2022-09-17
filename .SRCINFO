@@ -9,6 +9,6 @@ pkgbase = tarnation-git
 	provides = tarnation
 	conflicts = tarnation
 	source = tarnation-git::git+https://github.com/kennyparsons/tarnation
-	sha256sums = SKIP
+	sha512sums = SKIP
 
 pkgname = tarnation-git

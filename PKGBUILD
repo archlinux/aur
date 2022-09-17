@@ -1,4 +1,4 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 _pkgname='tarnation'
 pkgname="$_pkgname-git"
 pkgver='1.2.0.r0.gc5d8a17'
@@ -11,7 +11,7 @@ makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname::git+$url")
-sha256sums=('SKIP')
+sha512sums=('SKIP')
 
 _sourcedirectory="$pkgname"
 
