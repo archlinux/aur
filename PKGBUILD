@@ -1,16 +1,16 @@
 # Maintainer: Abraham Toriz <categulario at gmail dot com>
 pkgname=pizarra-bin
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
-pkgdesc='A free-hand vector drawing application with infinite canvas'
+pkgdesc='A free-hand vector drawing application with infinite canvas (git version)'
 arch=('x86_64')
 url='https://gitlab.com/categulario/pizarra-gtk'
 license=('GPL3')
 depends=('gtk3')
 provides=('pizarra')
 conflicts=('pizarra')
-source=("https://pizarra.categulario.tk/releases/any-linux/pizarra-$pkgver-$arch.tar.gz")
-sha256sums=('47dbe663d63bef464878a2c04f0b0653d6f77b1aeae344612c1bc471aaee43f4')
+source=("https://pizarra.categulario.xyz/releases/any-linux/pizarra-$pkgver-$arch.tar.gz")
+sha256sums=('e6e7b2fe9e9a974f24814dcb6fe039021e221448fbac1689dc1fb9c5a3e3a5b7')
 
 package() {
     cd "$srcdir/build"
