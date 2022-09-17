@@ -1,7 +1,7 @@
 pkgbase = pkgdistcache
 	pkgdesc = A distributed local-network cache for pacman packages
 	pkgver = 0.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://venator.ath.cx/dw/doku.php?id=linux:pkgdistcache
 	install = pkgdistcache.install
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = pkgdistcache
 	depends = python-gobject
 	depends = curl
 	depends = python-requests
-	depends = python-xdg
+	depends = python-pyxdg
 	backup = etc/pkgdistcache.conf
 	source = pkgdistcache-client
 	source = pkgdistcache-daemon
