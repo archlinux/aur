@@ -1,19 +1,19 @@
-# Maintainer: Maurice Panchaud <github at mauricepanchaud dot com>
+# Maintainer: Mona Panchaud <github at mpan dot ch>
 _pkgbasename=switchtube-dl
 
 options=(!strip) # Otherwise all libraries will be stripped from the executable file
 
 pkgname=$_pkgbasename-bin
-pkgver=0.0.9
+pkgver=1.0.0
 pkgrel=1 # Increment when PKGBUILD is changed
 pkgdesc="Simple CLI for downloading videos from SwitchTube"
 arch=('x86_64')
-url="https://github.com/panmau/switchtube-dl"
+url="https://github.com/panmona/switchtube-dl"
 license=('MIT')
 depends=('gcc-libs' 'zlib')
 makedepends=()
 provides=('switchtube-dl')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/panmau/switchtube-dl/releases/download/$pkgver/$_pkgbasename.$pkgver.linux-x64.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/panmona/switchtube-dl/releases/download/$pkgver/$_pkgbasename.$pkgver.linux-x64.tar.gz")
 sha256sums=('SKIP')
 
 package() {
