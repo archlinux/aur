@@ -2,9 +2,9 @@
 
 pkgname=heroic-gogdl
 _basever=0.3
-pkgver=0.3+r8
-pkgrel=2
-_commit=bcd4bba34e4e713aeab3e4dbcd6a4d9b34369300
+pkgver=0.3+r13
+pkgrel=1
+_commit=a55e3aae0f3c8d0674be7807cc5a8f82098b6094
 pkgdesc="GOG Downloading module for Heroic Games Launcher"
 arch=('any')
 url="https://github.com/Heroic-Games-Launcher/heroic-gogdl"
@@ -21,10 +21,10 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  python setup.py build
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
   cd "$srcdir/$pkgname"
-  python setup.py install --skip-build -O1 --root="$pkgdir/"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
