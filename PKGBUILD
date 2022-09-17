@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PloGO2
-_pkgver=1.8.0
+_pkgver=1.8.2
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.8.2
 pkgrel=1
 pkgdesc='Plot Gene Ontology and KEGG pathway Annotation and Abundance'
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('baa0e01b069d5e66965a156bee6d3f6adf8cb0957f3cb9b0442dfbd0458d9fbb')
+sha256sums=('dea62e74ec74eff3ebf33bd1c4d9290b67b0110a2ee0fd0f92ad4d4e60a48e45')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
