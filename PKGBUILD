@@ -3,7 +3,7 @@
 
 pkgname=heroic-games-launcher-electron
 _pkgbase=HeroicGamesLauncher
-pkgver=2.4.2
+pkgver=2.4.3
 pkgrel=1
 _electronversion=20
 pkgdesc="HGL, a Native alternative Linux Launcher for Epic Games"
@@ -14,21 +14,34 @@ depends=("electron$_electronversion" 'gawk' 'curl' 'zstd' 'legendary' 'heroic-go
 makedepends=('nodejs' 'node-gyp' 'asar' 'jq' 'yarn')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
+_launcher_ver=8
 source=("https://github.com/Heroic-Games-Launcher/$_pkgbase/archive/refs/tags/v$pkgver.tar.gz"
+        "https://github.com/foutrelis/chromium-launcher/archive/refs/tags/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz"
         electron-is-dev-env.patch
-        "${pkgname%-*}.sh.in")
-sha256sums=('13ef604eb0806d0b29e751ff425ac2c8db3c10a1c852e6cecfe8be3940946aac'
-            'd4fad8a579a8a955fe2176da0b2fa14cdc010d750c00651c1193a6fba914d4d8'
-            '01840a1e45da355cea9205eb1724615d27ea0b9c8115b9ee811ff545cac5bbfc')
+        chromium-launcher-electron-app.patch)
+sha256sums=('b6590fd99776c2f6d890266ee177d1d90f8a127eaa47b9aec41fc00c4194bc9a'
+            '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
+            'f1ae11ddec00a31ee4e377bd83ee13c0cbf8ed1a96835aa0ffd51a61a2671822'
+            '9235485adc4acbfaf303605f4428a6995a7b0b3b5a95181b185afbcb9f1f6ae5')
 
 prepare() {
-  cd "$_pkgbase-$pkgver"
+  cd chromium-launcher-$_launcher_ver
+  patch -Np1 < ../chromium-launcher-electron-app.patch
+
+  cd ../"$_pkgbase-$pkgver"
   patch -Np1 < ../electron-is-dev-env.patch
   jq 'del(.scripts.prepare)' package.json > tmp.json
   mv {tmp,package}.json
 }
 
 build() {
+  make \
+    CHROMIUM_APP="Heroic Games Launcher" \
+    CHROMIUM_ARGS="/usr/lib/${pkgname%-*}/resources/app.asar" \
+    CHROMIUM_BINARY="/usr/lib/electron$_electronversion/electron" \
+    CHROMIUM_NAME=heroic \
+    -C chromium-launcher-$_launcher_ver
+
   cd "$_pkgbase-$pkgver"
   electronDist="/usr/lib/electron$_electronversion"
   electronVer="$(sed s/^v// $electronDist/version)"
@@ -38,7 +51,14 @@ build() {
 }
 
 package() {
-  cd "$_pkgbase-$pkgver"
+  cd chromium-launcher-$_launcher_ver
+  make PREFIX=/usr DESTDIR="$pkgdir" CHROMIUM_NAME=heroic install
+  ln -s heroic "$pkgdir/usr/bin/heroic-run"
+
+  install -Dm644 LICENSE \
+    "$pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE.launcher"
+
+  cd ../"$_pkgbase-$pkgver"
 
   _reversed_domain=com.heroicgameslauncher.hgl
 
@@ -48,9 +68,6 @@ package() {
   ln -s /usr/bin/{gogdl,legendary} \
     "$pkgdir/usr/lib/${pkgname%-*}/resources/app.asar.unpacked/build/bin/linux/"
 
-  sed "s/@@VERSION@@/$_electronversion/" "$srcdir/${pkgname%-*}.sh.in" > "${pkgname%-*}.sh"
-  install -Dm755 "${pkgname%-*}.sh" "$pkgdir/usr/bin/heroic"
-  ln -s heroic "$pkgdir/usr/bin/heroic-run"
   install -Dm644 "flatpak/$_reversed_domain.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 "flatpak/$_reversed_domain.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
 
