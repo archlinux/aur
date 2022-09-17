@@ -1,6 +1,6 @@
 pkgbase = pizarra-git
-	pkgdesc = Simple Gtk drawing application
-	pkgver = 1.7.3
+	pkgdesc = A free-hand vector drawing application with infinite canvas (binary version)
+	pkgver = 1.7.4
 	pkgrel = 1
 	url = https://gitlab.com/categulario/pizarra-gtk
 	arch = i686
