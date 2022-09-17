@@ -1,6 +1,8 @@
 # Maintainer: NSK-1010 <kotone[dot]olin1010[at]gmail[dot]com>
 pkgname=floorp
-pkgver=10.4.0
+pkgver=10.5.0
+# tagnameはリリース後変えるべきではないことは知ってるけど流石にこれは変えてくれ...
+_tagname="Pre2-v${pkgver}"
 pkgrel=1
 pkgdesc="Firefox-based browser with excellent privacy protection, developed by a community of students in Japan"
 url="http://floorp.ablaze.one"
@@ -17,10 +19,13 @@ makedepends=('imagemagick')
 conflicts=()
 replaces=()
 backup=()
-source=("https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/${pkgname}-${pkgver}.linux-${arch}.tar.bz2"
+# source=("https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/${pkgname}-${pkgver}.linux-${arch}.tar.bz2"
+#             "https://github.com/Floorp-Projects/About-Floorp-Projects/raw/main/Creater-pack/Creater_pack_Floorp.zip"
+#             "floorp.desktop")
+source=("https://github.com/Floorp-Projects/Floorp/releases/download/${_tagname}/${pkgname}-${pkgver}.linux-${arch}.tar.bz2"
             "https://github.com/Floorp-Projects/About-Floorp-Projects/raw/main/Creater-pack/Creater_pack_Floorp.zip"
             "floorp.desktop")
-md5sums=('81d9923ca608a085ae07d274e319d63f'
+md5sums=('b9513276a80566328b78af2558801650'
             'c12cf6c807ad562188e648c60b2b7289'
             'cecce3f030f194da95819cfaffe020e3')
 
