@@ -1,7 +1,7 @@
 # Maintainer: Rodrigo Farias <rodrigofarias77 at gmail dot com>
 
 pkgname=unrpyc-git
-pkgver=1.1.6+1+g8edfc27
+pkgver=1.1.8+0+g2f9810c
 pkgrel=1
 pkgdesc="A ren'py script decompiler"
 arch=('any')
@@ -23,7 +23,6 @@ pkgver () {
 
 prepare () {
     cd "$srcdir/$repo"
-    sed -i "/scripts=/s/]/, 'deobfuscate.py']/" setup.py
 }
 
 package () {
