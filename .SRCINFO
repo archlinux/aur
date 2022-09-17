@@ -1,0 +1,17 @@
+pkgbase = python-pyems-git
+	pkgdesc = High-level python interface to OpenEMS with automatic mesh generation
+	pkgver = f63fcf8
+	pkgrel = 1
+	url = https://github.com/matthuszagh/pyems
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = openems
+	depends = python-csxcad
+	depends = python-openems
+	provides = python-pyems
+	conflicts = python-pyems
+	source = git+https://github.com/matthuszagh/pyems
+	md5sums = SKIP
+
+pkgname = python-pyems-git
