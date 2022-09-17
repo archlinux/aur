@@ -84,6 +84,7 @@ package() {
   local _dongle_iso="${_pkgname}-dongle-${pkgver}-x86_64.iso"
   local _profile_src="/${_pkg_path}/configs/${profile}"
   local _profile="${srcdir}/${profile}"
+  local _quiet="false"
   cp -r "${_profile_src}" "${_profile}"
   cd "${_profile}" || exit
   mkdir -p work
@@ -100,7 +101,8 @@ package() {
                          "${pgp_key_id}" \
                          "${sig_sender}" \
                          "${_profile}/work" \
-                         "${_profile}"
+                         "${_profile}" \
+                         "${_quiet}"
   mv "${_dest}/${_iso}" "${_dest}/${_pkgname}-x86_64.iso"
   mv "${_dest}/${_dongle_iso}" "${_private_dest}/${_pkgname}-dongle-x86_64.iso"
 }
