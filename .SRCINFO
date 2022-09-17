@@ -1,0 +1,23 @@
+pkgbase = openssl-3.0-bin
+	pkgdesc = Toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols
+	pkgver = 3.0.5
+	pkgrel = 2
+	url = https://www.openssl.org/
+	arch = i686
+	arch = x86_64
+	license = apache
+	makedepends = git
+	depends = glibc
+	depends = perl
+	optdepends = ca-certificates
+	provides = openssl-3.0
+	provides = openssl3-git
+	provides = openssl-git
+	conflicts = openssl-3.0
+	conflicts = openssl3-git
+	conflicts = openssl-git
+	options = staticlibs
+	source = http://ftp.debian.org/debian/pool/main/o/openssl/libssl3_3.0.5-2_amd64.deb
+	sha256sums = 1b6c27131c8b23866fbeb445ad51358040b1370440513285d489f95e201e232a
+
+pkgname = openssl-3.0-bin
