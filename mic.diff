@@ -175,7 +175,7 @@
  namespace mic
 --- a/src/audio/CMakeLists.txt
 +++ b/src/audio/CMakeLists.txt
-@@ -3,6 +3,8 @@ project(CemuAudio)
+@@ -1,6 +1,8 @@ project(CemuAudio)
  add_library(CemuAudio
  	IAudioAPI.cpp
  	IAudioAPI.h
@@ -184,7 +184,7 @@
  )
  
  set_property(TARGET CemuAudio PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
-@@ -28,6 +30,8 @@ if(ENABLE_CUBEB)
+@@ -26,6 +28,8 @@ if(ENABLE_CUBEB)
  	target_sources(CemuAudio PRIVATE
  		CubebAPI.cpp
  		CubebAPI.h
@@ -766,7 +766,7 @@
  	config.pad_volume = m_pad_volume->GetValue();
 +	config.input_volume = m_input_volume->GetValue();
  
- 	config.tv_device = L"";
+ 	config.tv_device.clear();
  	const auto tv_device = m_tv_device->GetSelection();
 @@ -861,6 +916,15 @@ void GeneralSettings2::StoreConfig()
  			config.pad_device = device_description->GetDescription()->GetIdentifier();

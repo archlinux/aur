@@ -262,7 +262,7 @@
  	if (fs::file_size(seeprom_file, ec) != 512)
 --- a/src/Cafe/OS/RPL/rpl.cpp
 +++ b/src/Cafe/OS/RPL/rpl.cpp
-@@ -2122,7 +2122,7 @@ void RPLLoader_LoadDependency(rplDependency_t* dependency)
+@@ -2116,7 +2116,7 @@ void RPLLoader_LoadDependency(rplDependency_t* dependency)
  	// attempt to load rpl from Cemu's /cafeLibs/ directory
  	if (ActiveSettings::LoadSharedLibrariesEnabled())
  	{
@@ -678,7 +678,7 @@
  		if(sbNameLen == 0)
 --- a/src/gui/MainWindow.cpp
 +++ b/src/gui/MainWindow.cpp
-@@ -999,7 +999,7 @@ void MainWindow::OnDebugSetting(wxCommandEvent& event)
+@@ -989,7 +989,7 @@ void MainWindow::OnDebugSetting(wxCommandEvent& event)
  		{
  			try
  			{
@@ -687,7 +687,7 @@
  				fs::create_directories(path);
  			}
  			catch (const std::exception& ex)
-@@ -1056,8 +1056,8 @@ void MainWindow::OnDebugDumpUsedTextures(wxCommandEvent& event)
+@@ -1046,8 +1046,8 @@ void MainWindow::OnDebugDumpUsedTextures(wxCommandEvent& event)
  		try
  		{
  			// create directory
@@ -698,7 +698,7 @@
  		}
  		catch (const std::exception& ex)
  		{
-@@ -1077,8 +1077,8 @@ void MainWindow::OnDebugDumpUsedShaders(wxCommandEvent& event)
+@@ -1067,8 +1067,8 @@ void MainWindow::OnDebugDumpUsedShaders(wxCommandEvent& event)
  		try
  		{
  			// create directory
@@ -751,7 +751,7 @@
  void DebuggerWindow2::OnBreakpointHit(wxCommandEvent& event)
 --- a/src/gui/input/InputSettings2.cpp
 +++ b/src/gui/input/InputSettings2.cpp
-@@ -669,10 +669,10 @@ void InputSettings2::on_profile_delete(wxCommandEvent& event)
+@@ -667,10 +667,10 @@ void InputSettings2::on_profile_delete(wxCommandEvent& event)
  	}
  	try
  	{

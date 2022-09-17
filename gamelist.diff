@@ -148,7 +148,7 @@
  
  	if (flush)
  		g_config.Save();
-@@ -372,61 +373,7 @@ void wxGameList::SortEntries(int column)
+@@ -366,61 +367,7 @@ void wxGameList::SortEntries(int column)
  	}
  }
  
@@ -211,7 +211,7 @@
  {
  	event.Skip();
  	if (m_style != Style::kList)
-@@ -659,6 +616,12 @@ void wxGameList::OnContextMenuSelected(wxCommandEvent& event)
+@@ -653,6 +610,12 @@ void wxGameList::OnContextMenuSelected(wxCommandEvent& event)
  	}
  }
  
@@ -224,7 +224,7 @@
  void wxGameList::OnColumnClick(wxListEvent& event)
  {
  	const int column = event.GetColumn();
-@@ -686,17 +649,16 @@ void wxGameList::OnColumnRightClick(wxListEvent& event)
+@@ -680,17 +643,16 @@ void wxGameList::OnColumnRightClick(wxListEvent& event)
  	menu.SetClientObject(new wxCustomData(column));
  
  	menu.Append(ResetWidth, _("Reset &width"));
@@ -246,7 +246,7 @@
  
  	menu.Bind(wxEVT_COMMAND_MENU_SELECTED,
  		[this](wxCommandEvent& event) {
-@@ -709,44 +668,44 @@ void wxGameList::OnColumnRightClick(wxListEvent& event)
+@@ -703,44 +662,44 @@ void wxGameList::OnColumnRightClick(wxListEvent& event)
  			switch (event.GetId())
  			{
  			case ShowName:
@@ -304,7 +304,7 @@
  					break;
  				default:
  					return;
-@@ -757,11 +719,11 @@ void wxGameList::OnColumnRightClick(wxListEvent& event)
+@@ -751,11 +713,11 @@ void wxGameList::OnColumnRightClick(wxListEvent& event)
  			case ResetOrder:
  			{
  				config.game_list_column_order.clear();
@@ -319,7 +319,7 @@
  				Refresh();
  				return;
  			}
-@@ -775,31 +737,60 @@ void wxGameList::OnColumnRightClick(wxListEvent& event)
+@@ -769,31 +731,60 @@ void wxGameList::OnColumnRightClick(wxListEvent& event)
  	event.Skip();
  }
  
@@ -395,7 +395,7 @@
  		event.Veto();
  	else
  		event.Skip();
-@@ -829,21 +820,18 @@ void wxGameList::OnColumnResize(wxListEvent& event)
+@@ -823,21 +814,18 @@ void wxGameList::OnColumnResize(wxListEvent& event)
  	case ColumnGameStarted:
  		config.column_width.game_started = width;
  		break;
@@ -422,7 +422,7 @@
  void wxGameList::OnClose(wxCloseEvent& event)
  {
  	event.Skip();
-@@ -854,8 +842,6 @@ int wxGameList::FindInsertPosition(TitleId titleId)
+@@ -848,8 +836,6 @@ int wxGameList::FindInsertPosition(TitleId titleId)
  {
  	SortData data{ this, s_last_column, s_direction };
  	const auto itemCount = GetItemCount();

@@ -1,6 +1,6 @@
 # Maintainer: Anuskuss <anuskuss@googlemail.com>
 pkgname=cemu
-pkgver=2.0.128
+pkgver=2.0.138
 pkgrel=1
 pkgdesc='Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)'
 arch=(x86_64)
@@ -8,13 +8,15 @@ url=https://cemu.info
 license=(MPL2)
 depends=(
 	# unbundled vcpkg
-	'sdl2>=2.0.22' 'pugixml>=1.12.1' 'libzip>=1.9.2' 'libpng>=1.6.37' 'wxwidgets-gtk3>=3.2.0'
+	'sdl2>=2.0.22' 'pugixml>=1.12.1' 'libzip>=1.9.2' 'libpng>=1.6.37' 'wxwidgets-gtk3>=3.2'
 )
 makedepends=(
 	# pkgbuild
 	git 'cmake>=3.21.1' make
+	# clang
+	$([[ $CC+$CXX == *clang* ]] && echo 'clang>=12 llvm>=12')
 	# unbundled vcpkg
-	rapidjson 'boost>=1.79.0' 'glslang>=11.8.0' 'glm>=0.9.9.8' 'fmt>=9.1'
+	rapidjson 'boost>=1.79' 'glslang>=11.8' 'glm>=0.9.9.8' 'fmt>=9.1'
 	# cemu
 	nasm 'vulkan-headers>=1.3.225'
 	# wxwidgets
@@ -25,23 +27,22 @@ optdepends=(
 )
 install=cemu.install
 source=(
-	git+https://github.com/cemu-project/Cemu#commit=cebdccfdf5aec30aa2ab7c61c4720ec2191bdb8f
+	git+https://github.com/cemu-project/Cemu#commit=12b6830546e28e6a697c5dbcbc3aa24882ec7fb3
 	# dependencies
 	imgui-1.88.tar.gz::https://github.com/ocornut/imgui/archive/refs/tags/v1.88.tar.gz
-	imgui.cmake::https://raw.githubusercontent.com/microsoft/vcpkg/1b0252ca70ca2244a711535462c7f981eb439e83/ports/imgui/CMakeLists.txt
-	imgui.conf::https://raw.githubusercontent.com/microsoft/vcpkg/1b0252ca70ca2244a711535462c7f981eb439e83/ports/imgui/imgui-config.cmake.in
+	imgui.cmake::https://raw.githubusercontent.com/microsoft/vcpkg/1b0252c/ports/imgui/CMakeLists.txt
+	imgui.conf::https://raw.githubusercontent.com/microsoft/vcpkg/1b0252c/ports/imgui/imgui-config.cmake.in
 	# submodules
 	git+https://github.com/mozilla/cubeb#commit=dc511c6b3597b6384d28949285b9289e009830ea
 	# git+https://github.com/microsoft/vcpkg#commit=1b0252ca70ca2244a711535462c7f981eb439e83
 	# git+https://github.com/KhronosGroup/Vulkan-Headers#commit=715673702f5b18ffb8e5832e67cf731468d32ac6
-	git+https://github.com/Exzap/ZArchive#commit=48914a07df3c213333c580bb5e5bb3393442ca5b
+	git+https://github.com/Exzap/ZArchive#commit=d2c717730092c7bf8cbb033b12fd4001b7c4d932
 	# cubeb submodules
 	git+https://github.com/arsenm/sanitizers-cmake#commit=aab6948fa863bc1cbe5d0850bc46b9ef02ed4c1a
 	git+https://github.com/google/googletest#commit=800f5422ac9d9e0ad59cd860a2ef3a679588acb4
 	# patches
 	xdg.diff # 00dbe939f29c6fa6670a6f71946e52b520d51033
 	overlay.diff # edeb14d4c68ee8bf500b990b13079177e01c25f1
-	dark.diff # dd8c91f7fa1af00a85dd54a7a24d10bc11c4ee4b
 	gamelist.diff # 182b40d38964a4c296127c5eb4497b5cccc01802
 	mic.diff # 5231a71527cb57ea79b1b2ab9e4d7247d9141dd1
 )
@@ -54,36 +55,35 @@ sha256sums=(
 	SKIP
 	SKIP
 	SKIP
-	8c108b92d641b404d753b72aecfd7ebfa7609f84e8fa4b1318227a5a33bbe240
+	6c6f0d4f68e86aeb7d61cff7af12a6522761188d0f12f7fb92427de6e531eaec
 	f25d13fe76cc6a0b475f0131211a951288160ddae92cd7a815f5aea61d7cfc0f
-	3c5527c6aa07bca9425b2bad5cd84102d5a7ab5ce61dadff727ce977a005aeae
-	7f1b11b78de3f9f96d2af9569a980f066422bfc68f76e03bf8c253dc926c03f2
-	3a3b29fc2643433c94d5244eaa3c3ff689929563c74f540b7b29266329c5a494
+	00a8b51434c45f595b54b3d317719cd36955ce36dcb246c796eabfd3d3967ed1
+	182113fe927b9bc3dd0dd94e1caa9f725dbeffc70c137615c3145fa135b7d9da
 )
 
 pkgver() {
 	cd Cemu
-	MAJ=$(awk -F '\t' '/LEAD/ {print $NF;exit}' src/Common/version.h)
-	MIN=$(awk -F '\t' '/MAJOR/ {print $NF;exit}' src/Common/version.h)
+	MAJ=$(awk -F'\t' '/LEAD/ {print $NF;exit}' src/Common/version.h)
+	MIN=$(awk -F'\t' '/MAJOR/ {print $NF;exit}' src/Common/version.h)
 	PAT=$(git rev-list --count HEAD)
 	echo "$MAJ.$MIN.$PAT"
 }
 
 prepare() {
 	cd Cemu
-	echo "#define BUILD_VERSION_WITH_NAME_STRING \"Cemu $pkgver\"" >> src/Common/version.h
+	sed -i "s/ (experimental)/.${pkgver##*.}/" src/Common/version.h
 
 	# cemu submodules
 	for submodule in dependencies/{cubeb,ZArchive}; do
-		git config submodule.$submodule.url "$srcdir/${submodule##*/}"
+		git config submodule.$submodule.url "file://$srcdir/${submodule##*/}"
 		git submodule update --init $submodule
 	done
-	pushd dependencies/cubeb
+	pushd dependencies/cubeb > /dev/null
 	for submodule in {cmake/sanitizers-cmake,googletest}; do
-		git config submodule.$submodule.url "$srcdir/${submodule##*/}"
+		git config submodule.$submodule.url "file://$srcdir/${submodule##*/}"
 		git submodule update --init $submodule
 	done
-	popd
+	popd > /dev/null
 
 	# unbundled imgui
 	sed -i '/imgui/cadd_subdirectory(dependencies/imgui)' CMakeLists.txt
@@ -107,9 +107,7 @@ prepare() {
 	# experimental: linux overlay (https://github.com/cemu-project/Cemu/pull/142)
 	rm -rf src/util/SystemInfo
 	git apply "$srcdir/overlay.diff"
-
-	# experimental: dark mode fix (https://github.com/cemu-project/Cemu/pull/241)
-	git apply "$srcdir/dark.diff"
+	sed -i '/add_library/aSystemInfo/SystemInfo.cpp SystemInfo/SystemInfoLinux.cpp' src/util/CMakeLists.txt
 
 	# experimental: gamelist auto resize (https://github.com/cemu-project/Cemu/pull/214)
 	git apply "$srcdir/gamelist.diff"
@@ -123,8 +121,8 @@ build() {
 	# prefer clang (faster)
 	if [[ $(clang --version 2> /dev/null | sed -E '1!d;s/^clang version ([0-9]+)\.[0-9]+\.[0-9]+$/\1/') -ge 12 ]] &&
 	   [[ $(llvm-config --version 2> /dev/null | sed -E 's/^([0-9]+)\.[0-9]+\.[0-9]+$/\1/') -ge 12 ]]; then
-		export CC=$(which clang)
-		export CXX=$(which clang++ 2> /dev/null || which clang)
+		[[ -z $CC  ]] && export CC=$(which clang)
+		[[ -z $CXX ]] && export CXX=$(which clang++)
 	fi
 
 	cd Cemu
