@@ -2,8 +2,8 @@
 # Contributor: Matthew Murray <matt@compti.me>
 
 pkgname=mautrix-whatsapp
-pkgver=0.6.0
-pkgrel=5
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="A Matrix-WhatsApp puppeting bridge"
 arch=('any')
 license=('AGPL')
@@ -19,7 +19,7 @@ source=("${url}/archive/v${pkgver}.tar.gz"
         mautrix-whatsapp.service
         log-path.diff)
 backup=("etc/${pkgname}/mautrix-whatsapp.yaml")
-sha256sums=('87a27891b6407eaa5a29c7f51ef992c6cf3bc803919806fad02ed50e3818754c'
+sha256sums=('5ab64255ba064ef96929dd090e6db2ddda2fc28f7bb11b165623e16ffcc55b56'
             '409e8fb3e35de1bd1ceebefa0ac275ad62ec66680117648058bcc177ddd2f9a1'
             '6f8a1b16c9de8c847c93d01a6d72b796dc91c5c7e78e410777b96a2916e35f1a'
             'c353ac242c501063c7c45169e1e65e7a75fe7d681f73409e76682e7537466965'
@@ -44,7 +44,7 @@ package() {
   install -Dm644 "$srcdir/sysusers-mautrix-whatsapp.conf" "$pkgdir/usr/lib/sysusers.d/mautrix-whatsapp.conf"
   install -Dm644 "$srcdir/mautrix-whatsapp.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/mautrix-whatsapp.conf"
 
-  install -Dm600 "example-config.yaml" "$pkgdir/etc/$pkgname/mautrix-whatsapp.yaml"
+  install -Dm640 "example-config.yaml" "$pkgdir/etc/$pkgname/mautrix-whatsapp.yaml"
   install -Dm644 "$srcdir/mautrix-whatsapp.service" "$pkgdir/usr/lib/systemd/system/mautrix-whatsapp.service"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
