@@ -1,6 +1,6 @@
 pkgbase = ddnet-git
 	pkgdesc = A Teeworlds modification with a unique cooperative gameplay.
-	pkgver = 16.2.2.r108.gb0a44546d
+	pkgver = 16.4.r13.ge61b85036
 	pkgrel = 1
 	url = https://ddnet.tw
 	arch = x86_64

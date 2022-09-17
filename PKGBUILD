@@ -2,7 +2,7 @@
 # Maintainer: Edgar Luque <git@edgarluque.com>
 
 pkgname=ddnet-git
-pkgver=16.2.2.r108.gb0a44546d
+pkgver=16.4.r13.ge61b85036
 pkgrel=1
 pkgdesc="A Teeworlds modification with a unique cooperative gameplay."
 arch=('x86_64')
@@ -46,6 +46,7 @@ build() {
         -DVIDEORECORDER=ON          \
         -DUPNP=ON                   \
         -DMYSQL=ON                  \
+        -DTEST_MYSQL=OFF            \
         -GNinja
     ninja
 }
