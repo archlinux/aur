@@ -28,8 +28,8 @@ source=($pkgname-$pkgver::"https://live.albiononline.com/clients/20220915112235/
 install=albion-online-launcher-bin.install
 options=(!strip docs libtool emptydirs !zipman staticlibs)
 sha256sums=('0ef7ea10ce92d10ba2ba3ed62d861ef6bdbf72c6c9418ebbdbe0c19e80b760c4'
-            '4d94016e053c4d670c88631cbeb89442b1d0447265a2993e44337037288143c2'
-            'c070a3c3e83cc75fc0a9249da65c3b4d8cb33a1445db760308fd02e2f55f91ee'
+            '8522ec18f3eba72aefc88c945263bad1b66b8c59d0e0c70c52bc737cff129853'
+            'dc8abe731ac9a189a1265fccc13f40f80efd467559dcc03c0dcff8e4ae2bac60'
             '997b87a699a831c37a335f06384cc189787deefd1ee5245381c7c99fbadfc510')
 
 prepare() {
