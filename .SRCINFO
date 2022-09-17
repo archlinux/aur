@@ -1,0 +1,25 @@
+pkgbase = splatplost-git
+	pkgdesc = A software-based SplatPost plotter.
+	pkgver = 0.2.0.dev2.a4aa693
+	pkgrel = 1
+	url = https://github.com/Victrid/splatplost
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python-libnxctrl
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-setuptools
+	depends = python-scipy
+	depends = python-tqdm
+	depends = python-scikit-image
+	depends = python-tsp-solver2
+	depends = python-pyqt6
+	depends = python-requests
+	depends = bluez-utils-compat
+	provides = splatplost
+	conflicts = splatplost
+	source = git+https://github.com/Victrid/splatplost.git#branch=dev-v0.2
+	sha256sums = SKIP
+
+pkgname = splatplost-git
