@@ -1,8 +1,8 @@
 # Maintainer: Wachid Adi Nugroho <wachidadinugroho.maya@gmail.com>
 
-pkgname=cask-server-git
-_pkgname=${pkgname%-git}
-pkgver=r3.e442424
+_pkgname=cask-server
+pkgname=$_pkgname-git
+pkgver=0.5.5.r4.ga16cff8
 pkgrel=1
 pkgdesc='Public server and API to interface with Cask features'
 url='https://github.com/Nitrux/cask-server'
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd $_pkgname
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
