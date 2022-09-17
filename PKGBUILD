@@ -3,7 +3,7 @@
 
 pkgname=python-ax-platform
 _pkg="${pkgname#python-}"
-pkgver=0.2.6
+pkgver=0.2.7.2
 pkgrel=1
 pkgdesc='Adaptive Experimentation Platform'
 arch=('any')
@@ -25,7 +25,7 @@ makedepends=(
 	'python-sphinx'
 	'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/a/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('d172fef07439c9c0e55e38bf3bf32b059a313d4c851e82281affaf047cf048e4')
+sha256sums=('fec49feab094af163cecf9aa46f9bd599eef637c89b762ca969c8b24b15ef135')
 
 prepare() {
 	cd "$_pkg-$pkgver"
