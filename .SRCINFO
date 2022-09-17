@@ -1,0 +1,12 @@
+pkgbase = sf-fonts
+	pkgdesc = Sans typeface by Kostas Bartsokas
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ProjectOSX/Fonts
+	arch = any
+	license = MIT
+	makedepends = git
+	source = https://github.com/ProjectOSX/Fonts/releases/download/v1.0.0/SF-Fonts.zip
+	sha256sums = 7b7388fcd3a99d552a7724d5aca1ab3b68cf0fb430fb738db2d8dc6d06d1fc4d
+
+pkgname = sf-fonts
