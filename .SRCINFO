@@ -1,15 +1,15 @@
 pkgbase = sm64ex-redrawn-60fps-git
 	pkgdesc = Super Mario 64 PC port (sm64ex fork) with the 60fps patch, redrawn texture pack and HD Mario
 	pkgver = r513.58
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sm64pc/sm64ex
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = reverse-engineered and unlicensed
-	makedepends = git
 	makedepends = audiofile
+	makedepends = git
 	makedepends = python
 	depends = sdl2
 	provides = sm64ex

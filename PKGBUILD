@@ -1,5 +1,5 @@
-# Maintainer: Kevin MacMartin <prurigro@gmail.com>
-# Forked by: mekb https://github.com/mekb-turtle
+# Maintainer: mekb https://github.com/mekb-turtle
+# Original Maintainer: Kevin MacMartin <prurigro@gmail.com>
 # Contributor: Hekuran https://github.com/narukeh
 # Contributor: selurvedu
 
@@ -10,13 +10,13 @@ _region=us
 _pkgname=sm64ex
 pkgname=$_pkgname-redrawn-60fps-git
 pkgver=r513.58
-pkgrel=2
+pkgrel=3
 pkgdesc='Super Mario 64 PC port (sm64ex fork) with the 60fps patch, redrawn texture pack and HD Mario'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/sm64pc/sm64ex'
 license=('reverse-engineered and unlicensed')
 depends=('sdl2')
-makedepends=('git' 'audiofile' 'python')
+makedepends=('audiofile' 'git' 'python')
 provides=($_pkgname)
 conflicts=($_pkgname)
 
@@ -60,9 +60,9 @@ build() {
 }
 
 package() {
+  install -Dm644 $_pkgname.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  install -Dm644 $_pkgname.svg "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
   install -Dm755 $_pkgname.sh "$pkgdir/usr/bin/$_pkgname"
-  install -Dm755 $_pkgname.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
-  install -Dm755 $_pkgname.svg "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
   install -Dm755 $_pkgname/build/${_region}_pc/sm64.${_region}.* "$pkgdir/usr/share/$_pkgname/$_pkgname"
   install -Dm644 $_pkgname/build/${_region}_pc/res/base.zip "$pkgdir/usr/share/$_pkgname/res/base.zip"
   cp -r --no-preserve=owner sm64redrawn/gfx "$pkgdir/usr/share/$_pkgname/res/" # sm64redrawn
