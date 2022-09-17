@@ -1,6 +1,6 @@
 # Maintainer: LanjieYou <ylj18926385312@163.com>
 pkgname='cgame2'
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 epoch=0
 pkgdesc="五子棋游戏(Chinese Only)"
