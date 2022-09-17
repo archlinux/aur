@@ -1,0 +1,25 @@
+pkgbase = python-libnxctrl-git
+	pkgdesc = Python Library Emulating Nintendo Switch Controllers
+	pkgver = 0.1.7.e3ed8bc
+	pkgrel = 1
+	url = https://github.com/Victrid/libnxctrl
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = dbus-python
+	depends = python-flask
+	depends = python-flask-socketio
+	depends = python-eventlet
+	depends = python-blessed
+	depends = python-pynput
+	depends = python-psutil
+	depends = python-cryptography
+	depends = python-hid
+	depends = python-aioconsole
+	provides = python-libnxctrl
+	conflicts = python-libnxctrl
+	source = python-libnxctrl::git+https://github.com/Victrid/libnxctrl.git
+	sha256sums = SKIP
+
+pkgname = python-libnxctrl-git
