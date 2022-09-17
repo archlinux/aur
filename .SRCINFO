@@ -1,0 +1,24 @@
+pkgbase = archlinux-baseline-libvirt
+	pkgdesc = Arch Linux baseline (libvirt VM).
+	pkgver = v1.0
+	pkgrel = 1
+	url = https://gitlab.archlinux.org/tallero/archiso-profiles
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	license = AGPL3
+	checkdepends = libvirt
+	checkdepends = shellcheck
+	makedepends = python
+	depends = archlinux-baseline
+	depends = libvirt
+	source = archiso-template.xml
+	source = archiso-storage-template.xml
+	source = archiso-storage-private-template.xml
+	source = uuidgen
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = ef927dee368018633409f651b200cba4623a305a90c917fb3eb3d119446194bd
+
+pkgname = archlinux-baseline-libvirt

@@ -1,0 +1,9 @@
+post_install() {
+    echo ":: Restarting libvirt..."
+    /usr/bin/systemctl restart libvirtd
+}
+
+post_remove() {
+    echo ":: Restarting libvirt..."
+    /usr/bin/systemctl restart libvirtd
+}

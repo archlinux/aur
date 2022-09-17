@@ -1,0 +1,21 @@
+<!--
+WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
+OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
+  virsh pool-edit archlinux
+or other application using the libvirt API.
+-->
+
+<pool type='dir'>
+  <name>%_PKGNAME%-storage-private</name>
+  <capacity unit='bytes'>214748364800</capacity>
+  <allocation unit='bytes'>4525137920</allocation>
+  <available unit='bytes'>210223226880</available>
+  <source>
+  </source>
+  <target>
+    <path>/etc/archlinux</path>
+    <mode>0700</mode>
+      <owner>0</owner>
+      <group>0</group>
+  </target>
+</pool>
