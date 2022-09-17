@@ -1,13 +1,12 @@
 pkgbase = nerd-fonts-cascadia-code
 	pkgdesc = Patched Cascadia Code font with extra glyphs
 	pkgver = 2.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
 	groups = nerd-fonts
 	license = MIT
 	depends = fontconfig
-	provides = nerd-fonts-cascadia-code
 	conflicts = nerd-fonts-complete
 	conflicts = nerd-fonts-git
 	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/CascadiaCode.zip
