@@ -1,0 +1,20 @@
+pkgbase = moss-container-git
+	pkgdesc = Serpent OS build tool
+	pkgver = r140.143364c
+	pkgrel = 1
+	url = https://github.com/serpent-os/moss-container
+	arch = x86_64
+	license = ZLIB
+	makedepends = git
+	makedepends = ldc
+	makedepends = meson
+	makedepends = ninja
+	depends = moss-serpent
+	provides = moss-container
+	conflicts = moss-container
+	source = git+https://github.com/serpent-os/moss-container
+	source = git+https://github.com/serpent-os/moss-core
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = moss-container-git
