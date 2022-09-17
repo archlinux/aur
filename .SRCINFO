@@ -1,18 +1,25 @@
 pkgbase = citus
 	pkgdesc = Scalable PostgreSQL for multi-tenant and real-time workloads
-	pkgver = 10.2.5
+	pkgver = 11.1.1
 	pkgrel = 1
-	url = https://github.com/citusdata/citus
+	url = https://www.citusdata.com
 	install = citus.install
-	arch = any
-	license = AGPL-3.0
-	makedepends = postgresql-libs
+	arch = x86_64
+	license = AGPL3
+	license = MIT
+	license = BSD
+	license = custom:PostgreSQL
 	makedepends = git
+	makedepends = postgresql-libs
 	makedepends = llvm
+	makedepends = clang
+	depends = glibc
 	depends = postgresql
-	source = https://github.com/citusdata/citus/archive/refs/tags/v10.2.5.tar.gz
-	source = citus.install
-	sha512sums = 95ee1225c850bc986025f6960cb5784b02f2ac5af8f312f5dd4a270c4ebf46dd60388ba604a9cd4cf2e22f8b7a855bd18654cbe9f701ba7cd35c1576414d185f
-	sha512sums = 1ccf8c4a0b1353134ba85dad024d438f4492e88b3139f11db958e0460a925260d8c9cd7eeb8e11b7f8adbc0c4ede4820fdb3a90073b93f699c50d648418789c3
+	depends = lz4
+	depends = zstd
+	depends = curl
+	depends = openssl
+	source = citus::git+https://github.com/citusdata/citus#commit=b7ae596fe8a4758f251cafc6ebb95ae9b971d202
+	b2sums = SKIP
 
 pkgname = citus

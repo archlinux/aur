@@ -1,9 +1,11 @@
 post_install() {
-    echo "To use citus, edit your /var/lib/postgres/data/postgresql.conf
-to uncoment 'shared_preload_libraries' and add required library:
-    shared_preload_libraries = 'citus'
-If you already have any other shared library preloaded in your 
-postgres, add it as the first lib (as recommended by citus):
-    shared_preload_libraries = 'citus, otherext'
-Then restart postgres."
+  cat << EOF
+
+To add Citus to your PostgreSQL database, add the following to postgresql.conf:
+
+  shared_preload_libraries = 'citus'
+
+Then restart PostgreSQL and setup Citus.
+
+EOF
 }
