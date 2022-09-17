@@ -7,7 +7,7 @@
 pkgbase=lib32-bluez-libs
 pkgname=("${pkgbase}" 'lib32-bluez-plugins')
 pkgver=5.65
-pkgrel=1
+pkgrel=2
 url="http://www.bluez.org/"
 arch=('x86_64')
 license=('LGPL2.1')
@@ -70,4 +70,7 @@ package_lib32-bluez-plugins() {
   cd "bluez-${pkgver}"
   make DESTDIR=${pkgdir} \
        install-pluginLTLIBRARIES
+
+  # Cleanup: these libs go into lib32-bluez-libs
+  rm "${pkgdir}"/usr/lib32/libbluetooth.so*
 }
