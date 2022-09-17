@@ -5,7 +5,7 @@
 
 pkgbase=mutter-dynamic-buffering
 pkgname=(mutter-dynamic-buffering)
-pkgver=42.4
+pkgver=42.5
 pkgrel=1
 pkgdesc="A window manager for GNOME (with dynamic triple/double buffering)"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -19,7 +19,7 @@ makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols sysprof gi-docgen)
 #checkdepends=(xorg-server-xvfb wireplumber python-dbusmock)
 #options=(debug)
-_commit=9a25838e4e3f705b69b7f2e0bf22e970d8829f1f  # tags/42.4^0
+_commit=4b35c269c7ad2515f91d2d3ccaea7526e0cb5f97  # tags/42.5^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch')
 
@@ -50,9 +50,9 @@ build() {
 }
 
 _check_internal() (
-  mkdir -p -m 700 "${XDG_RUNTIME_DIR:=$PWD/runtime-dir}"
-  glib-compile-schemas "${GSETTINGS_SCHEMA_DIR:=$PWD/build/data}"
-  export XDG_RUNTIME_DIR GSETTINGS_SCHEMA_DIR
+  export XDG_RUNTIME_DIR="$PWD/rdir" GSETTINGS_SCHEMA_DIR="$PWD/build/data"
+  mkdir -p -m 700 "$XDG_RUNTIME_DIR"
+  glib-compile-schemas "$GSETTINGS_SCHEMA_DIR"
 
   pipewire &
   _p1=$!
@@ -97,4 +97,4 @@ package_mutter-docs() {
   mv docs/* "$pkgdir"
 }
 
-# vim:set sw=2 et:
+# vim:set sw=2 sts=-1 et:
