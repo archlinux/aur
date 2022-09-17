@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-libfdk_aac
 	pkgdesc = Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)
-	pkgver = 5.0.1
+	pkgver = 5.1.1
 	pkgrel = 1
 	epoch = 1
 	url = https://ffmpeg.org/
@@ -13,7 +13,10 @@ pkgbase = ffmpeg-libfdk_aac
 	makedepends = ffnvcodec-headers
 	makedepends = git
 	makedepends = ladspa
+	makedepends = mesa
 	makedepends = nasm
+	makedepends = opencl-headers
+	makedepends = vulkan-headers
 	depends = alsa-lib
 	depends = aom
 	depends = bzip2
@@ -26,9 +29,11 @@ pkgbase = ffmpeg-libfdk_aac
 	depends = libass.so
 	depends = libavc1394
 	depends = libbluray.so
+	depends = libbs2b.so
 	depends = libdav1d.so
 	depends = libdrm
 	depends = libfreetype.so
+	depends = libgl
 	depends = libiec61883
 	depends = libmfx
 	depends = libmodplug
@@ -47,6 +52,7 @@ pkgbase = ffmpeg-libfdk_aac
 	depends = libvorbisenc.so
 	depends = libvorbis.so
 	depends = libvpx.so
+	depends = libvulkan.so
 	depends = libwebp
 	depends = libx11
 	depends = libx264.so
@@ -57,6 +63,7 @@ pkgbase = ffmpeg-libfdk_aac
 	depends = libxv
 	depends = libxvidcore.so
 	depends = libzimg.so
+	depends = ocl-icd
 	depends = opencore-amr
 	depends = openjpeg2
 	depends = openssl
@@ -82,14 +89,13 @@ pkgbase = ffmpeg-libfdk_aac
 	provides = libpostproc.so
 	provides = libswresample.so
 	provides = libswscale.so
-	provides = ffmpeg=5.0.1
+	provides = ffmpeg=5.1.1
 	conflicts = ffmpeg
 	options = debug
-	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=9687cae2b468e09e35df4cea92cc2e6a0e6c93b3
-	source = ffmpeg-vmaf2.x.patch
+	source = git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=8536e629f0c35c0e8a2b67e65d3bc60a088fe413
 	source = add-av_stream_get_first_dts-for-chromium.patch
+	validpgpkeys = DD1EC9E8DE085C629B3E1846B18E8928B3948D64
 	b2sums = SKIP
-	b2sums = 65039aac811bfd143359e32720cd6ca64124f1789c1b624bd28a5bd75b37362b2a3b6b402203c4e9d137fb1d00895114f3789df40f8381091d38c98e7876cc8a
-	b2sums = 3f2ee7606500fa9444380d138959cd2bccfbba7d34629a17f4f6288c6bde29e931bbe922a7c25d861f057ddd4ba0b095bbd675c1930754746d5dd476b3ccbc13
+	b2sums = 555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de
 
 pkgname = ffmpeg-libfdk_aac

@@ -8,7 +8,7 @@
 
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
-pkgver=5.0.1
+pkgver=5.1.1
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
@@ -29,9 +29,11 @@ depends=(
   libass.so
   libavc1394
   libbluray.so
+  libbs2b.so
   libdav1d.so
   libdrm
   libfreetype.so
+  libgl
   libiec61883
   libmfx
   libmodplug
@@ -50,6 +52,7 @@ depends=(
   libvorbisenc.so
   libvorbis.so
   libvpx.so
+  libvulkan.so
   libwebp
   libx11
   libx264.so
@@ -60,6 +63,7 @@ depends=(
   libxv
   libxvidcore.so
   libzimg.so
+  ocl-icd
   opencore-amr
   openjpeg2
   openssl # https://aur.archlinux.org/packages/ffmpeg-libfdk_aac/#comment-722966
@@ -81,7 +85,10 @@ makedepends=(
   ffnvcodec-headers
   git
   ladspa
+  mesa
   nasm
+  opencl-headers
+  vulkan-headers
 )
 optdepends=(
   'avisynthplus: AviSynthPlus support'
@@ -100,24 +107,21 @@ provides=(
   libswscale.so
   "ffmpeg=$pkgver"
 )
-_tag=9687cae2b468e09e35df4cea92cc2e6a0e6c93b3
+_tag=8536e629f0c35c0e8a2b67e65d3bc60a088fe413
 options=(
   debug
 )
 conflicts=("$_name")
 source=(
-  git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
-  ffmpeg-vmaf2.x.patch
+git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}
   add-av_stream_get_first_dts-for-chromium.patch
 )
 b2sums=('SKIP'
-        '65039aac811bfd143359e32720cd6ca64124f1789c1b624bd28a5bd75b37362b2a3b6b402203c4e9d137fb1d00895114f3789df40f8381091d38c98e7876cc8a'
-        '3f2ee7606500fa9444380d138959cd2bccfbba7d34629a17f4f6288c6bde29e931bbe922a7c25d861f057ddd4ba0b095bbd675c1930754746d5dd476b3ccbc13')
+        '555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de')
+validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
 
 prepare() {
   cd ffmpeg
-  git cherry-pick -n 988f2e9eb063db7c1a678729f58aab6eba59a55b # fix nvenc on older gpus
-  patch -Np1 -i ../ffmpeg-vmaf2.x.patch # vmaf 2.x support
   patch -Np1 -i ../add-av_stream_get_first_dts-for-chromium.patch # https://crbug.com/1251779
 }
 
@@ -145,6 +149,7 @@ build() {
     --enable-libaom \
     --enable-libass \
     --enable-libbluray \
+    --enable-libbs2b \
     --enable-libdav1d \
     --enable-libdrm \
     --enable-libfreetype \
@@ -182,10 +187,13 @@ build() {
     --enable-libzimg \
     --enable-nvdec \
     --enable-nvenc \
+    --enable-opencl \
+    --enable-opengl \
     --enable-openssl \
     --enable-shared \
     --enable-vaapi \
     --enable-version3 \
+    --enable-vulkan \
     --enable-libfdk_aac \
     --enable-nonfree
 #   --enable-gnutls  https://aur.archlinux.org/packages/ffmpeg-libfdk_aac/#comment-722966
