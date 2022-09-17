@@ -1,0 +1,22 @@
+pkgbase = r-rvenn
+	pkgdesc = Set Operations for Many Sets
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=RVenn
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ggforce
+	depends = r-ggplot2
+	depends = r-magrittr
+	depends = r-pheatmap
+	depends = r-purrr
+	depends = r-rlang
+	depends = r-vegan
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/RVenn_1.1.0.tar.gz
+	sha256sums = c41a96dd4a9b51e7dcc8647cdbaa0faa704ab22d5b0c1d45e593a6b23b00d504
+
+pkgname = r-rvenn
