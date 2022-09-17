@@ -1,8 +1,7 @@
 pkgbase = egpu-switcher-git
-	pkgdesc = Distribution agnostic script that works with NVIDIA and AMD cards.
-	pkgver = v0.18.0.rc.5.r0.g04b64c8
-	pkgrel = 2
-	epoch = 0
+	pkgdesc = Automatically detect and use eGPU on startup, git version
+	pkgver = 0.18.0.r0.ge4bf70a
+	pkgrel = 1
 	url = https://github.com/hertg/egpu-switcher
 	install = egpu-switcher-git.install
 	arch = any

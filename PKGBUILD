@@ -1,10 +1,9 @@
 # Maintainer: hertg <aur@her.tg>
 _pkgname=egpu-switcher
 pkgname=$_pkgname-git
-pkgver=v0.18.0.rc.5.r0.g04b64c8
-pkgrel=2
-epoch=0
-pkgdesc="Distribution agnostic script that works with NVIDIA and AMD cards."
+pkgver=0.18.0.r0.ge4bf70a
+pkgrel=1
+pkgdesc="Automatically detect and use eGPU on startup, git version"
 arch=('any')
 url="https://github.com/hertg/egpu-switcher"
 license=('GPL')
@@ -20,11 +19,6 @@ pkgver() {
 	cd "$srcdir/$pkgname"
 	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
 }
-
-# check() {
-# 	cd "$srcdir/$pkgname"
-# 	make test
-# }
 
 build() {
 	cd "$srcdir/$pkgname"
