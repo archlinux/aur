@@ -60,7 +60,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.18.1.arch1
+pkgver=5.19.9.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -84,7 +84,7 @@ _kernel_patch_name="more-uarches-for-kernel-5.17+.patch"
 _pkgdesc_extra="~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG"
 
 PatchesArray=(
-    0009-prjc_v5.18-r1.patch
+    0009-prjc_v5.19-r0.patch
     0005-glitched-pds.patch
 )
 
@@ -102,8 +102,8 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            'f27136b6faaac6bc6b4dd734ea1c3afc4215f7442301b0f8590951a246bf4612349450db8340247446a671f6ddcab22b48924e770c0635bc63f53cd41399c397'
-            '2d64fe6c9233e07bedcf93afa58eafbca01eac9f167c7115806be4f6651e93d6e239bb29c983f81dcb907296a745790f141992a58e1b65b33a1fd1e2ba72a604'
+            'b326e3b031c5c3e8697803d9a071c54ac4dc7444c638d40f37c448c0552a792a20b1bdea3abe41a80505ddba76dec71bcd00d0a3641c3e51792e9f7151fa3131'
+            '1b6f2dd6b2f15f141ee22e54f3eaeb88f8074b8089a2d6de39ca598310c04c5082464b69d633813f013a6d662b48158194a94e36c95306778f63cb6f77ee7be4'
             '889f0a49f326de3f119290256393b09a9e9241c2a297ca0b7967a2884e4e35d71388d2a559e4c206f55f67228b65e8f2013a1ec61f6ff8f1de3b6a725fd5fa57')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -181,7 +181,7 @@ _package() {
         wireless-regdb linux-firmware thrash-protect
     )
     provides=(
-        VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE
+        VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE
     )
     replaces=(
         virtualbox-guest-modules-arch wireguard-arch
@@ -316,3 +316,4 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
+# vim:set ts=8 sts=2 sw=2 et:
