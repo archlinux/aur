@@ -1,27 +1,33 @@
 # Maintainer: Jonathan Hudson <jh+gtk-g-rays@daria.co.uk>
 # Contributor: Lukas Kramer <lukas@carrotIndustries.net>
 pkgname=gtk-g-rays2
-pkgver=2.05
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Access the configuration data (and visualise NMEA data) from the WBT-201 GPS"
-arch=(i686 x86_64 armv6l armv6h armv7h ppc)
-url="http://www.daria.co.uk/gps"
+arch=('i686' 'x86_64' 'arm' 'aarch64' 'armv7h' 'pentium4')
+url='https://github.com/stronnag/gtk-g-rays2.git'
 license=('GPL')
-depends=('gtk3' 'hicolor-icon-theme')
-source=(http://www.zen35309.zen.co.uk/gps/gtk-g-rays2-$pkgver.tar.xz)
-# shutup namcap
-install='g-rays.install'
+depends=('gtk3' 'bluez-libs' 'libgudev')
+makedepends=('git' 'meson')
+optdepends=('gpsbabel: download log files')
+provides=("$pkgname")
+conflicts=("$pkgname")
+source=("$pkgname::git+$url")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr --sysconfdir=/etc
-  make || return 1
+  cd $pkgname
+  meson build --prefix=/usr --buildtype=release --strip
+  meson compile -C build
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
+  # executable
+  cd $pkgname
+  DESTDIR="$pkgdir" meson install -C build
 }
-
-sha512sums=('673d6e756f1a827e1c0de5384f3228e69a00a56588b81528202e80f5d2067213fd9fdb5af22028fcce0c4ea9e4d1b708accdd5777628ded351e3f2b6f2f57e41')
-
