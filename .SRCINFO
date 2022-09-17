@@ -1,11 +1,11 @@
 pkgbase = inky
 	pkgdesc = Editor for ink: inkle's narrative scripting language
 	pkgver = 0.13.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.inklestudios.com/ink
 	arch = x86_64
 	license = MIT
-	depends = icu
+	depends = icu68
 	optdepends = mono: for exporting to web and JSON
 	options = !strip
 	source = inky-0.13.0.zip::https://github.com/inkle/inky/releases/download/0.13.0/Inky_linux.zip
