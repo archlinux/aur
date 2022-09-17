@@ -21,8 +21,12 @@ pkgbase = pamac-nosnap
 	depends = libnotify
 	depends = libpamac-nosnap>=10.3.0
 	depends = libhandy
+	depends = appstream-glib
 	optdepends = polkit-gnome: needed for authentification in Cinnamon, Gnome
 	optdepends = fwupd: support firmware updates
+	optdepends = git: use git repositories as package sources
+	optdepends = svn: use svn repositories as package sources
+	optdepends = mercurial: use mercurial (hg) repositories as package sources
 	provides = pamac
 	conflicts = pamac
 	conflicts = pamac-all

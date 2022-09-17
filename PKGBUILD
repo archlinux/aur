@@ -4,15 +4,18 @@
 _pkgname=pamac
 pkgname=$_pkgname-nosnap
 pkgver=10.4.2
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A Gtk3 frontend from Manjaro Linux for libalpm with AUR, flatpak, and appindicator support."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/pamac"
 license=('GPL3')
-depends=('libnotify' 'libpamac-nosnap>=10.3.0' 'libhandy')
+depends=('libnotify' 'libpamac-nosnap>=10.3.0' 'libhandy' 'appstream-glib')
 optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome'
-            'fwupd: support firmware updates')
+            'fwupd: support firmware updates'
+            'git: use git repositories as package sources'
+            'svn: use svn repositories as package sources'
+            'mercurial: use mercurial (hg) repositories as package sources')
 makedepends=('gettext' 'itstool' 'vala>=0.45' 'meson' 'gobject-introspection' 'xorgproto' 'asciidoc')
 conflicts=('pamac' 'pamac-all' 'pamac-gtk' 'pamac-cli' 'pamac-common' 'pamac-aur' 'pamac-aur-git' 'pamac-flatpak' 'pamac-flatpak-gnome')
 provides=('pamac')
