@@ -1,0 +1,15 @@
+pkgbase = mctrd-git
+	pkgdesc = Small tool for managing TRD and SCL disk images
+	pkgver = r36.ef53b25
+	pkgrel = 1
+	url = https://github.com/samstyle/mctrd
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	provides = mctrd
+	source = git+https://github.com/samstyle/mctrd.git
+	sha256sums = SKIP
+
+pkgname = mctrd-git
