@@ -5,8 +5,8 @@
 pkgname=arduino-ide-bin
 _pkgver=2.0.0
 pkgver=${_pkgver//-/.}
-pkgrel=1
-pkgdesc="Arduino prototyping platform IDE, rewrite based on the Theia IDE framework"
+pkgrel=2
+pkgdesc="Arduino prototyping platform IDE, rewrite based on the Theia IDE framework."
 arch=(x86_64)
 url="https://github.com/arduino/arduino-ide"
 license=(AGPL3)
@@ -19,7 +19,6 @@ makedepends=()
 provides=(arduino-ide)
 conflicts=(arduino-ide)
 replaces=(arduino-ide-beta-bin)
-install=arduino-ide.install
 options=(!strip)
 source=("https://downloads.arduino.cc/arduino-ide/arduino-ide_${_pkgver}_Linux_64bit.zip"
         "https://www.arduino.cc/wiki/370832ed4114dd35d498f2f449b4781e/arduino.svg")
