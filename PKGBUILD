@@ -1,4 +1,4 @@
-# Maintainer: mib <mib@mib.dev>
+# Maintainer: mib <mib@kanp.ai>
 pkgname=lightburn-bin
 pkgver=1.2.01
 pkgrel=2
