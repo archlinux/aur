@@ -1,15 +1,16 @@
 pkgbase = devc-bin
-	pkgdesc = A CLI tool to manage your devcontainers
-	pkgver = 1.0.0.alpha.3
+	pkgdesc = CLI tool to manage your devcontainers.
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/nikaro/devc
-	arch = x86_64
-	license = GPL3
-	depends = docker
-	optdepends = docker-compose
-	provides = devc
+	url = https://github.con/nikaro/devc
+	license = GPLv3
 	conflicts = devc
-	source = https://github.com/nikaro/devc/releases/download/v1.0.0-alpha.3/devc_1.0.0-alpha.3_Linux_x86_64.tar.gz
-	sha256sums = 836e46df8f4ec1b28e66139a35e228aa08247501d653a6977390894b6966f144
-
+	provides = devc
+	arch = aarch64
+	source_aarch64 = https://github.com/nikaro/devc/releases/download/v1.0.0-beta.2/devc_1.0.0-beta.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 22048067f00502213c9a48c6457adc36fe512f812d6d5d6654c8c922c54b5acc
+	arch = x86_64
+	source_x86_64 = https://github.com/nikaro/devc/releases/download/v1.0.0-beta.2/devc_1.0.0-beta.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 40f0aaf0c66949eaf9d40ef7b25ebd24b94e52410e1bd962cd890b60637215c7
+	
 pkgname = devc-bin
