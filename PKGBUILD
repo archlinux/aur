@@ -6,7 +6,7 @@ pkgver=r57.bcce338
 pkgrel=1
 pkgdesc=" HPLIP Printer Application"
 arch=('x86_64')
-depends=('libcups')
+depends=('libcups' 'mupdf-tools')
 makedepends=('git')
 source=('git+https://github.com/OpenPrinting/hplip-printer-app.git'
         'git+https://github.com/michaelrsweet/pappl.git'
