@@ -26,6 +26,7 @@ pkgbase = gradience-git
 	depends = python-regex
 	depends = python-material-color-utilities
 	depends = libportal-gtk4
+        depends = pyton-cssutils
 	optdepends = adw-gtk3: The theme from libadwaita ported to GTK-3
 	optdepends = adw-gtk-theme: LibAdwaita Theme for all GTK3 and GTK4 Apps.
 	provides = gradience
