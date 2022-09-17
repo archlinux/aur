@@ -1,0 +1,25 @@
+From 3a3e6132480fbcd4b7abf50f233bfcc0ea814fe4 Mon Sep 17 00:00:00 2001
+From: Igor Dyatlov <dyatlov.igor@gmail.com>
+Date: Sat, 17 Sep 2022 19:35:52 +0300
+Subject: [PATCH 288/288] Use pacman hooks
+
+---
+ Makefile | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 7e48bd9..5577d4d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -39,8 +39,6 @@ install: mo
+ 	install -D -m 0644 data/dev.geopjr.Collision.desktop $(PREFIX)/share/applications/dev.geopjr.Collision.desktop
+ 	install -D -m 0644 data/icons/dev.geopjr.Collision.svg $(PREFIX)/share/icons/hicolor/scalable/apps/dev.geopjr.Collision.svg
+ 	install -D -m 0644 data/icons/dev.geopjr.Collision-symbolic.svg $(PREFIX)/share/icons/hicolor/symbolic/apps/dev.geopjr.Collision-symbolic.svg
+-	gtk-update-icon-cache $(PREFIX)/share/icons/hicolor
+-	glib-compile-schemas $(PREFIX)/share/glib-2.0/schemas/
+ 
+ uninstall:
+ 	rm -f $(PREFIX)/bin/collision
+-- 
+2.37.3
+
