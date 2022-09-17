@@ -1,6 +1,6 @@
 pkgbase = linux-bcachefs-git
 	pkgdesc = Linux
-	pkgver = v5.18.3.arch1.r1092118.00e321143014
+	pkgver = v5.19.9.arch1.r1108681.5a6bf64b47f4
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = linux-bcachefs-git
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 433f1ac1c7bf1ca634c4f8312c6e0e6c221cecb80daa5d873e5cf7b15b542e85339789ccba50f104c64b72430fcc32e296ad648bb0d5df4e60cbfaafd2932dc0
+	sha512sums = 5780c7597cdb31c14a55f1575df60110803a63e7e922a2901d9f7abbe822ce113e44fb5409823e345af088e1ca30a130b78d9ca74290c442bd6dec64186a585d
 
 pkgname = linux-bcachefs-git
 	pkgdesc = The Linux kernel and modules ~ featuring Kent Overstreet's bcachefs filesystem
@@ -43,6 +43,7 @@ pkgname = linux-bcachefs-git
 	depends = bcachefs-tools-git
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
+	provides = KSMBD-MODULE
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 

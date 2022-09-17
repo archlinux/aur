@@ -60,8 +60,8 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-_srcver_tag=v5.18.3.arch1
-pkgver=v5.18.3.arch1.r1092118.00e321143014
+_srcver_tag=v5.19.9.arch1
+pkgver=v5.19.9.arch1.r1108681.5a6bf64b47f4
 pkgrel=1
 pkgdesc="Linux"
 url="https://github.com/koverstreet/bcachefs"
@@ -105,7 +105,7 @@ validpgpkeys=(
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
-            '433f1ac1c7bf1ca634c4f8312c6e0e6c221cecb80daa5d873e5cf7b15b542e85339789ccba50f104c64b72430fcc32e296ad648bb0d5df4e60cbfaafd2932dc0')
+            '5780c7597cdb31c14a55f1575df60110803a63e7e922a2901d9f7abbe822ce113e44fb5409823e345af088e1ca30a130b78d9ca74290c442bd6dec64186a585d')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -193,7 +193,7 @@ _package() {
         wireless-regdb linux-firmware bcachefs-tools-git
     )
     provides=(
-        VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE
+        VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE
     )
     replaces=(
         virtualbox-guest-modules-arch wireguard-arch
@@ -328,3 +328,4 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
+# vim:set ts=8 sts=2 sw=2 et:
