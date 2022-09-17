@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=metagene
-_pkgver=2.28.0
+_pkgver=2.28.1
 pkgname=r-${_pkgname,,}
-pkgver=2.28.0
+pkgver=2.28.1
 pkgrel=1
 pkgdesc='A package to produce metagene plots'
 arch=('any')
@@ -41,7 +41,7 @@ optdepends=(
   r-similarpeak
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e1f84e9af85b698d676b50ee1f754b3a7a43b5736e348f8e6bdc07c9b3ad3e8c')
+sha256sums=('7c6adddd7fd77c5d2351152054d5b59f5247f94fb6de7d679a554fc81797d3e4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
