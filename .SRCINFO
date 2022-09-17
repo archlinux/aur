@@ -1,15 +1,14 @@
 pkgbase = libsaasound
 	pkgdesc = Philips SAA1099 sound generator chip emulator
-	pkgver = 3.2
-	pkgrel = 2
+	pkgver = 3.4
+	pkgrel = 1
 	url = http://www.simcoupe.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = make
 	depends = sdl
-	source = http://www.simcoupe.org/files/SAASound-3.2.tar.gz
-	md5sums = 6a1e45f3f8958be6cfe88872cec3763f
+	source = https://github.com/simonowen/SAASound/archive/refs/tags/3.4.tar.gz
+	md5sums = 784340694e9d75f1364643a54d12eb7c
 
 pkgname = libsaasound
-
