@@ -20,18 +20,14 @@ sha256sums=('SKIP'
 
 prepare() {
     if [ $CARCH = "armv7h" ]; then
-        cp /lib/modules/$(uname -r)/build/arch/arm/Makefile \
-            /lib/modules/$(uname -r)/build/arch/arm/Makefile.$(date +%Y%m%d%H%M)
-        sed -i 's/-msoft-float//' \
-            /lib/modules/$(uname -r)/build/arch/arm/Makefile
-        ln -s /lib/modules/$(uname -r)/build/arch/arm \
-            /lib/modules/$(uname -r)/build/arch/armv7l
+	sed -i 's/CONFIG_PLATFORM_I386_PC = y/CONFIG_PLATFORM_I386_PC = n/g' ${srcdir}/8821cu-20210118/Makefile
+	sed -i 's/CONFIG_PLATFORM_ARM_RPI = n/CONFIG_PLATFORM_ARM_RPI = y/g' ${srcdir}/8821cu-20210118/Makefile
+       
     elif [ $CARCH = "aarch64" ]; then
-        cp /lib/modules/$(uname -r)/build/arch/arm64/Makefile \
-            /lib/modules/$(uname -r)/build/arch/arm64/Makefile.$(date +%Y%m%d%H%M)
-        sed -i 's/-mgeneral-regs-only//' \
-            /lib/modules/$(uname -r)/build/arch/arm64/Makefile
-    fi
+	sed -i 's/CONFIG_PLATFORM_I386_PC = y/CONFIG_PLATFORM_I386_PC = n/g' ${srcdir}/8821cu-20210118/Makefile
+	sed -i 's/CONFIG_PLATFORM_ARM_RPI = y/CONFIG_PLATFORM_ARM_RPI = n/g' ${srcdir}/8821cu-20210118/Makefile
+	sed -i 's/CONFIG_PLATFORM_ARM64_RPI = n/CONFIG_PLATFORM_ARM64_RPI = y/g' ${srcdir}/8821cu-20210118/Makefile
+   fi
 }
 
 pkgver() {
