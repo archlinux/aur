@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=4nec2
+Comment=NEC based antenna modeler and optimizer
+Exec=/usr/bin/4nec2
+Icon=4nec2
+Terminal=false
+Type=Application
+Categories=Application;Game;
