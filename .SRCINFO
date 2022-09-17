@@ -1,0 +1,13 @@
+pkgbase = inactiveblur-git
+	pkgdesc = the inavtive blur for kde
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ProjectOSX/inactiveblur
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = plasma-meta
+	source = git+https://github.com/ProjectOSX/inactiveblur.git
+	sha256sums = SKIP
+
+pkgname = inactiveblur-git
