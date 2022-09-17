@@ -2,7 +2,7 @@
 
 _pluginname=scale-to-sound
 pkgname=obs-$_pluginname
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="A plugin for OBS Studio that adds a filter which makes a source scale based on the audio levels of any audio source you choose"
 arch=("i686" "x86_64" "aarch64")
@@ -12,7 +12,7 @@ depends=("obs-studio")
 makedepends=("cmake")
 options=('debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Qufyy/obs-scale-to-sound/archive/$pkgver.tar.gz")
-sha256sums=("bdd72b445531835d8ac582b6f9e992519650ae9bc6f2be2d037a2e4fd9c0099c")
+sha256sums=("de5ddefaa798ac65a3a3d336b6eb084c8cb1e55b9071abfc1c221f41471658e0")
 
 build() {
   cd "$pkgname-$pkgver"
