@@ -1,12 +1,10 @@
 pkgbase = rocminfo
-	pkgdesc = ROCm info tools - rocm_agent_enumerator
+	pkgdesc = ROCm Application for Reporting System Info
 	pkgver = 5.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RadeonOpenCompute/rocminfo
 	arch = x86_64
 	license = custom:NCSAOSL
-	makedepends = cmake
-	makedepends = git
 	makedepends = rocm-cmake
 	depends = pciutils
 	depends = python
