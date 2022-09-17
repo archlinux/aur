@@ -1,6 +1,6 @@
 # Maintainer: Timo Wilken <timo.21.wilken+aur@gmail.com>
 pkgname=alibuild
-pkgver=1.11.3
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='A simple build tool for ALICE software at CERN'
 arch=(i686 x86_64)
@@ -19,7 +19,7 @@ optdepends=('pigz: alternative, faster gzip implementation'
             'awk: support for s3:// remote stores'
             'python-boto3: support for b3:// remote stores')
 source=("https://github.com/alisw/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b98ef132f08fc9cfd49820f2b43fa7c54843923c6f480798c44ffe12eaf9d090')
+sha256sums=('36028c2157d597525f5f9fc0edddaa48ea740caef6b9598f7a0d8775f21b8cd1')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
