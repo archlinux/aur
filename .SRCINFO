@@ -1,0 +1,20 @@
+pkgbase = gameoftrees
+	pkgdesc = A version control system which prioritizes ease of use and simplicity over flexibility
+	pkgver = 0.75.1
+	pkgrel = 1
+	url = http://gameoftrees.org
+	arch = x86_64
+	license = custom:ISC
+	makedepends = pkgconf
+	depends = ncurses
+	depends = util-linux-libs
+	depends = libbsd
+	depends = libevent
+	conflicts = gameoftrees-git
+	conflicts = got
+	conflicts = got-git
+	conflicts = got-bin
+	source = http://gameoftrees.org/releases/portable/got-portable-0.75.1.tar.gz
+	b2sums = 2202ff8708751df6373167dfdec8dc56f6d33fcb9124ea91441da28a327aa31978e55554bcfa756255678801de6e490aff6ef9e714f6934b96a4acdbc4067ccb
+
+pkgname = gameoftrees
