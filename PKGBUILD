@@ -13,7 +13,7 @@ optdepends=('bash-completion: Bash completion')
 provides=("rust-$_pkgname")
 conflicts=("rust-$_pkgname")
 source=("$pkgname::git+$url")
-sha256sums=('SKIP')
+sha512sums=('SKIP')
 
 _sourcedirectory="$pkgname"
 

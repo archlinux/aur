@@ -19,6 +19,6 @@ pkgbase = rust-rage-git
 	provides = rust-rage
 	conflicts = rust-rage
 	source = rust-rage-git::git+https://github.com/str4d/rage
-	sha256sums = SKIP
+	sha512sums = SKIP
 
 pkgname = rust-rage-git
