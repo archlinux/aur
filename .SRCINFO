@@ -17,6 +17,6 @@ pkgbase = portx-bin
 	depends = libsecret
 	provides = portx
 	source = PortX_latest_amd64.deb::https://cdn.netsarang.com/0ac7ea20/PortX_latest_amd64.deb
-	sha256sums = da8b1d933deac86cf9b123c146a639c473909590ddc69de89e31f3f48b5b4559
+	sha256sums = f5328c5457484477280ec822debb2f002df449d38e9820050b324fa07ac7c576
 
 pkgname = portx-bin
