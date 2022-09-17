@@ -1,10 +1,11 @@
 pkgname="blokator"
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Simple system-wide adblocker"
 url="https://gitlab.com/Tomkoid/blokator"
 arch=("x86_64")
 makedepends=("rustup")
+optdepends=("android-tools: push hosts file to your Android device")
 license=("GPL3")
 source=("git+https://gitlab.com/Tomkoid/blokator")
 sha512sums=("SKIP")
