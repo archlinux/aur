@@ -1,0 +1,23 @@
+pkgbase = openssl-3.0
+	pkgdesc = Toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols
+	pkgver = 3.0.5
+	pkgrel = 1
+	url = https://www.openssl.org/
+	arch = i686
+	arch = x86_64
+	license = apache
+	makedepends = git
+	depends = glibc
+	depends = perl
+	optdepends = ca-certificates
+	provides = openssl3-git
+	provides = openssl-git
+	conflicts = openssl3-git
+	conflicts = openssl-git
+	options = staticlibs
+	source = https://github.com/openssl/openssl/archive/refs/tags/openssl-3.0.5.tar.gz
+	source = ca-dir.patch
+	sha256sums = b6363cf1bca88f0a46a768883a225e644135432d6a51ab1c4660ab58af541078
+	sha256sums = SKIP
+
+pkgname = openssl-3.0
