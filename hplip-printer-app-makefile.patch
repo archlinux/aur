@@ -1,0 +1,17 @@
+--- src/hplip-printer-app/Makefile	2022-09-16 21:47:21.009661108 -0500
++++ Makefile	2022-09-16 20:19:06.128032854 -0500
+@@ -33,12 +33,12 @@
+ ifdef HPLIP_PLUGIN_ALT_DIR
+ DIRS		+=	-DHPLIP_PLUGIN_ALT_DIR=\"$(HPLIP_PLUGIN_ALT_DIR)\"
+ endif
+-CFLAGS		+=	`pkg-config --cflags pappl` `cups-config --cflags` `pkg-config --cflags libppd` `pkg-config --cflags libcupsfilters` `pkg-config --cflags libpappl-retrofit` `pkg-config --cflags libcurl` `pkg-config --cflags libcrypto` $(DIRS) $(OPTIM)
++CFLAGS		+=	`pkg-config --cflags libpappl-retrofit` `pkg-config --cflags libppd` `pkg-config --cflags libcupsfilters` `pkg-config --cflags libfontembed` `pkg-config --cflags pappl` `cups-config --cflags` `pkg-config --cflags libcurl` `pkg-config --cflags libcrypto` $(DIRS) $(OPTIM)
+ ifdef SNAP
+ CFLAGS		+=	-DSNAP=$(SNAP)
+ endif
+ LDFLAGS		+=	$(OPTIM) `cups-config --ldflags`
+-LIBS		+=	`pkg-config --libs pappl` `cups-config --image --libs` `pkg-config --libs libppd` `pkg-config --libs libcupsfilters` `pkg-config --libs libpappl-retrofit` `pkg-config --libs libcurl` `pkg-config --libs libcrypto`
++LIBS		+=	$(PAPPL-RETROFIT) $(PPD) $(CUPS-FILTERS) $(FONTEMBED) $(PAPPL) -lcups -lcurl -lcrypto -lavahi-common -lavahi-client -ljpeg -lpam -lusb-1.0 -ldbus-1 -lm -lpng -ltiff -lqpdf -llcms2 -lpoppler-cpp -lfontconfig -lexif -lstdc++
+ 
+ 
+ # Targets...

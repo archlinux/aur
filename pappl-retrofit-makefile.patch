@@ -1,0 +1,12 @@
+--- Makefile.original	2022-09-16 21:47:52.559377288 -0500
++++ Makefile	2022-09-16 21:48:52.159234339 -0500
+@@ -525,8 +525,9 @@
+ legacy_printer_app_CFLAGS = \
+ 	$(CUPS_CFLAGS) \
+ 	$(CUPSFILTERS_CFLAGS) \
+ 	$(PPD_CFLAGS) \
++	$(PAPPL_CFLAGS) \
+ 	-I$(srcdir)/pappl-retrofit/
+ 
+ 
+ # ===========

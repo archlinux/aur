@@ -12,8 +12,11 @@ source=('git+https://github.com/OpenPrinting/hplip-printer-app.git'
         'git+https://github.com/michaelrsweet/pappl.git'
         'git+https://github.com/OpenPrinting/pappl-retrofit.git'
         'git+https://github.com/OpenPrinting/cups-filters.git'
-        'Makefile')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'd42f5814f383f4d827bdb152108a3b3b675f246a9ebe708aade02b9bc9e147a7')
+        'hplip-printer-app-makefile.patch'
+        'pappl-retrofit-makefile.patch')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP'
+            'ef51e64a325c66ee9a05c236bb9ba863d234c2ebbd17285c2dba8d0de8832d89'
+            '6a2532e722d1566274ae0d7f124ff1f51096fb81341ffd7bfe0235dc2eee0bf2')
 
 pkgver() {
 	cd $_pkgname
@@ -23,7 +26,7 @@ pkgver() {
 build() {
     # Build pappl
 	cd pappl
-    ./configure --prefix=/ --exec-prefix=/usr --libdir="$srcdir/pappl/pappl" --includedir="$srcdir/pappl/pappl"
+    ./configure --prefix=/ --exec-prefix=/usr --libdir="$srcdir/pappl/pappl" --includedir="$srcdir/pappl"
     make
     cd ..
 
@@ -38,14 +41,15 @@ build() {
     # Build pappl-retrofit
     cd pappl-retrofit
     ./autogen.sh
-    PKG_CONFIG_PATH="$srcdir/cups-filters" ./configure --prefix=/ --exec-prefix=/usr --libdir="$srcdir/pappl-retrofit/.libs" --includedir="$srcdir/pappl-retrofit"
+    PKG_CONFIG_PATH="$srcdir/pappl/pappl:$srcdir/cups-filters" ./configure --prefix=/ --exec-prefix=/usr --libdir="$srcdir/pappl-retrofit/.libs" --includedir="$srcdir/pappl-retrofit"
+    patch Makefile < "$srcdir/pappl-retrofit-makefile.patch"
     make
     sed -i 's/-I.*/-I$\{includedir\}/' libpappl-retrofit.pc
     cd ..
 
     # Build hplip-printer-app
     cd $_pkgname
-    cp "$srcdir/Makefile" .
+    patch Makefile < "$srcdir/hplip-printer-app-makefile.patch"
     PKG_CONFIG_PATH="$srcdir/pappl/pappl:$srcdir/cups-filters:$srcdir/pappl-retrofit" make \
         PAPPL-RETROFIT="$srcdir/pappl-retrofit/.libs/libpappl-retrofit.a" \
         PPD="$srcdir/cups-filters/.libs/libppd.a" \

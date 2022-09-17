@@ -10,11 +10,13 @@ pkgbase = hplip-printer-app-git
 	source = git+https://github.com/michaelrsweet/pappl.git
 	source = git+https://github.com/OpenPrinting/pappl-retrofit.git
 	source = git+https://github.com/OpenPrinting/cups-filters.git
-	source = Makefile
+	source = hplip-printer-app-makefile.patch
+	source = pappl-retrofit-makefile.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = d42f5814f383f4d827bdb152108a3b3b675f246a9ebe708aade02b9bc9e147a7
+	sha256sums = ef51e64a325c66ee9a05c236bb9ba863d234c2ebbd17285c2dba8d0de8832d89
+	sha256sums = 6a2532e722d1566274ae0d7f124ff1f51096fb81341ffd7bfe0235dc2eee0bf2
 
 pkgname = hplip-printer-app-git
