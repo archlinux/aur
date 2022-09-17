@@ -12,7 +12,7 @@ url=https://github.com/atar-axis/xpadneo
 license=(GPL)
 depends=(dkms bluez bluez-utils)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/atar-axis/xpadneo/archive/v$pkgver.tar.gz")
-b2sums=('82c5bd4e9d68e0b9465047d446a1ffe0c95b9590d76f1c6cec2d6e1c770a6c3f7c6c47cffef5ce27c449f1ada854dd9b6e6413791360c0d8eee8a697718bb320')
+b2sums=('d04a3e1b626af1f1a9ec114f0a8ed44c50ec8cde9da71483491d1afd7688611fd7548186ea68ef8a144aecec06acba816e81e9f0708c8dceb96fa1d40985bb44')
 
 package() {
     cd "xpadneo-${pkgver}/hid-xpadneo"
