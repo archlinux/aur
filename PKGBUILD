@@ -3,15 +3,16 @@
 pkgname=endeavour
 _pkgname=Endeavour
 pkgver=42.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Task manager for GNOME"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.gnome.org/World/Endeavour"
 license=('GPL3')
 groups=('gnome-extra')
-depends=('evolution-data-server' 'libpeas' 'librest' 'python' 'libportal-gtk4' 'libadwaita-git>=1.2.alpha')
+depends=('evolution-data-server' 'libpeas' 'librest' 'python' 'libportal-gtk4' 'libadwaita>=1.2')
 makedepends=('gobject-introspection' 'meson' 'yelp-tools')
 checkdepends=('appstream-glib')
+provides=('gnome-todo')
 conflicts=('gnome-todo')
 replaces=('gnome-todo')
 source=($url/-/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz
@@ -33,7 +34,7 @@ check() (
   glib-compile-schemas "${GSETTINGS_SCHEMA_DIR:=$PWD/$_pkgname-v$pkgver/data}"
   export GSETTINGS_SCHEMA_DIR
 
-  meson test -C build || :
+  meson test -C build --print-errorlogs || :
 )
 
 package() {
