@@ -1,10 +1,11 @@
 # Contributor: Catriel Müller <catriel at gmail dot com>
+_dlhash=a975f61a
 pkgname=synergy1-bin
-pkgver=1.14.5.17
+pkgver=1.14.5
 pkgrel=1
 pkgdesc="Keyboard and mouse sharing solution. Synergy allows you to share one mouse and keyboard between multiple computers. Work seamlessly across Windows, macOS and Linux."
 arch=('x86_64')
-url="https://github.com/DEAKSoftware/Synergy-Binaries"
+url="https://symless.com/synergy"
 license=('unknown')
 depends=(
   'avahi>=0.6.16'
@@ -23,14 +24,15 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 
 source=(
-  "https://github.com/DEAKSoftware/Synergy-Binaries/releases/download/1.14.5.17/synergy-1.14.5.17-ad30acbc-ubuntu-22.04-jammy-jellyfish-x86_64.deb"
+  "https://binaries.symless.com/synergy/v1-core-standard/${pkgver}-stable.${_dlhash}/synergy_${pkgver}-stable.${_dlhash}_ubuntu20_amd64.deb"
 )
+
 sha256sums=(
-  'bd0125f91b3f5a3e2953d33478716a3b39641c50cb6db76bd15ed4f452263d77'
+  'f4937d7235f8bb9cd7c8fc95ce5f132d75f3304268af2578d58b7aa8afd5dbc0'
 )
 
 package() {
   # Extract package data
-  tar xf data.tar.zst -C "${pkgdir}"
+  tar xf data.tar.xz -C "${pkgdir}"
   install -D -m644 "${pkgdir}/usr/share/doc/synergy/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
