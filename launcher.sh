@@ -18,30 +18,30 @@ set_env() {
 	# While this makes no sense in standalone, we need to set *some* path even if does not exists.
 	if [ -z ${STEAM_COMPAT_CLIENT_INSTALL_PATH+x} ]; then
 		export STEAM_COMPAT_CLIENT_INSTALL_PATH=${_steam}
-		echo "ProtonLauncher[$$] INFO: empty STEAM_COMPAT_CLIENT_INSTALL_PATH set to ${STEAM_COMPAT_CLIENT_INSTALL_PATH}"
+		>&2 echo "ProtonLauncher[$$] INFO: empty STEAM_COMPAT_CLIENT_INSTALL_PATH set to ${STEAM_COMPAT_CLIENT_INSTALL_PATH}"
 	fi
 	if ! [ -d "${STEAM_COMPAT_CLIENT_INSTALL_PATH}" ]; then
-		echo "ProtonLauncher[$$] WARN: directory ${STEAM_COMPAT_CLIENT_INSTALL_PATH} does not exist"
+		>&2 echo "ProtonLauncher[$$] WARN: directory ${STEAM_COMPAT_CLIENT_INSTALL_PATH} does not exist"
 	fi
 
 	# No data path to prefix? Let's set the default path. We want to include the AppId in the path like steam.
 	if [ -z ${STEAM_COMPAT_DATA_PATH+x} ]; then
 		export STEAM_COMPAT_DATA_PATH=${_pfx}/${SteamAppId:-${_appid}}
-		echo "ProtonLauncher[$$] INFO: empty STEAM_COMPAT_DATA_PATH set to ${STEAM_COMPAT_DATA_PATH}"
+		>&2 echo "ProtonLauncher[$$] INFO: empty STEAM_COMPAT_DATA_PATH set to ${STEAM_COMPAT_DATA_PATH}"
 	elif ! [ "${SteamGameId}" -ge 0 ] 2>/dev/null && ! [ "${SteamAppId}" -ge 0 ] 2>/dev/null && ! [ "$(basename "${STEAM_COMPAT_DATA_PATH}")" -ge 0 ] 2>/dev/null; then
 		export SteamAppId=${_appid}
-		echo "ProtonLauncher[$$] INFO: empty SteamAppId set to ${SteamAppId}"
+		>&2 echo "ProtonLauncher[$$] INFO: empty SteamAppId set to ${SteamAppId}"
 	fi
 	# If the prefix path does not exist yet, we will create it.
 	if ! [ -d "${STEAM_COMPAT_DATA_PATH}" ]; then
 		install -d "${STEAM_COMPAT_DATA_PATH}" || exit 1
-		echo "ProtonLauncher[$$] INFO: directory ${STEAM_COMPAT_DATA_PATH} created"
+		>&2 echo "ProtonLauncher[$$] INFO: directory ${STEAM_COMPAT_DATA_PATH} created"
 	fi
 
 	# Placeholder in case we need the workaround again when tracked_files missing
 	if ! [ -f "${STEAM_COMPAT_DATA_PATH}"/tracked_files ]; then
 		if [ -f "${STEAM_COMPAT_DATA_PATH}"/version ]; then
-			echo "ProtonLauncher[$$] WARN: file ${STEAM_COMPAT_DATA_PATH}/tracked_files missing! Please report to AUR maintainer"
+			>&2 echo "ProtonLauncher[$$] WARN: file ${STEAM_COMPAT_DATA_PATH}/tracked_files missing! Please report to AUR maintainer"
 		fi
 	fi
 
@@ -138,7 +138,7 @@ case $# in
 		# first arg is a positive signed int, thus the appid
 		export SteamAppId="$1"
 		#export SteamGameId="$1"
-		echo "ProtonLauncher[$$] INFO: forcing SteamAppId to $1"
+		>&2 echo "ProtonLauncher[$$] INFO: forcing SteamAppId to $1"
 		set_env
 		"${_proton}" "${_mode}" "${@:2}"
 	fi
