@@ -10,7 +10,7 @@ makedepends=(cmake ninja)
 source=("https://github.com/zeux/meshoptimizer/archive/v$pkgver.tar.gz"
         "no-error.patch")
 sha256sums=('f5bc07d7322e6292fe0afce03462b5c394d111386236f926fdc44d2aff3b854b'
-            '2ab7614fed032a45ad3b9038b736bb7617c8c564d943b39f3b4c5fa26a4e4db1')
+            'edeadacc492247229d8558bea91b16610171b36ca68caa680f8680f7952d7af6')
 
 prepare() {
     cd "$srcdir/meshoptimizer-$pkgver"
