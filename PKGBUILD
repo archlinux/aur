@@ -17,22 +17,26 @@ b2sums=('82c5bd4e9d68e0b9465047d446a1ffe0c95b9590d76f1c6cec2d6e1c770a6c3f7c6c47c
 package() {
     cd "xpadneo-${pkgver}/hid-xpadneo"
 
-    # DKMS source files
+    ## DKMS source files
     install -D -m0644 Makefile -t "${pkgdir}"/usr/src/"hid-xpadneo-${pkgver}"
-    install -D -m0644 src/* -t "${pkgdir}"/usr/src/"hid-xpadneo-${pkgver}/src"
+    install -D -m0644 src/* -t "${pkgdir}"/usr/src/"hid-xpadneo-${pkgver}"/src
 
-    # DKMS config file
-    sed 's/"@DO_NOT_CHANGE@"/"'"${pkgver}"'"/g' dkms.conf.in |\
+    ## DKMS config file
+    sed "s/\"@DO_NOT_CHANGE@\"/\"${pkgver}\"/g" dkms.conf.in |\
         install -D -m0644 /dev/stdin "${pkgdir}"/usr/src/"hid-xpadneo-${pkgver}"/dkms.conf
 
-    # DKMS post scripts
-    # the last 10 lines are responsible for copying modprobe and udev files, which is done below
+    ## DKMS post scripts
+    #
+    # The last 10 lines are removed since they are responsible for copying modprobe and udev files
+    # at DKMS install time. In Arch Linux, it makes more sense to let pacman handle these files.
     head -n -10 dkms.post_install |\
         install -D -m0755 /dev/stdin "${pkgdir}"/usr/src/"hid-xpadneo-${pkgver}"/dkms.post_install
     head -n -10 dkms.post_remove |\
         install -D -m0755 /dev/stdin "${pkgdir}"/usr/src/"hid-xpadneo-${pkgver}"/dkms.post_remove
 
-    # modprobe and udev rules (pacman already has a hook to reload udev rules)
+    ## Modprobe and udev rules
+    #
+    # No need to reaload rules manually, as pacman already has a hook for that.
     install -D -m0644 etc-modprobe.d/*.conf -t "${pkgdir}"/usr/lib/modprobe.d
     install -D -m0644 etc-udev-rules.d/*.rules -t "${pkgdir}"/usr/lib/udev/rules.d
 }
