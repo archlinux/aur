@@ -5,7 +5,8 @@ After=avahi-daemon.service
 
 [Service]
 ExecStart=/usr/lib/pkgdistcache/pkgdistcache-daemon
-DynamicUser=yes
+User=nobody
+Group=nobody
 NoNewPrivileges=yes
 PrivateTmp=yes
 PrivateDevices=yes
