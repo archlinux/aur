@@ -1,7 +1,7 @@
 pkgbase = wayfarer-git
 	pkgdesc = Screen recorder for GNOME / Wayland / Pipewire / XDG Portal
-	pkgver = r24.4cbbb04
-	pkgrel = 2
+	pkgver = r33.77452bc
+	pkgrel = 1
 	url = https://github.com/stronnag/wayfarer.git
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = wayfarer-git
 	makedepends = git
 	makedepends = vala
 	makedepends = meson
+	makedepends = gobject-introspection
 	depends = gtk4
 	depends = gstreamer
 	depends = libportal
