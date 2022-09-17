@@ -13,7 +13,7 @@ _pgo=true
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=103.0.2
+pkgver=104.0.2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
@@ -63,7 +63,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'xdg-desktop-portal: Screensharing with Wayland')
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
-_patchrev=f19750bc526806a962eba3682d09086b6bd5292c
+_patchrev=c9d5562cc0db38ebb7fadf11fcc504ca691c9285
 options=('!emptydirs' !lto)
 _patchurl=https://raw.githubusercontent.com/openSUSE/firefox-maintenance/$_patchrev
 _repo=https://hg.mozilla.org/mozilla-unified
@@ -329,7 +329,7 @@ md5sums=('SKIP'
          '05bb69d25fb3572c618e3adf1ee7b670'
          'b386ac38ffb7e545b9473e516455a25f'
          '2e2e0721f1c29b2ae786d8c6e34fa65f'
-         'b1bf4eb1f628c90ea07e6453231eb73c'
+         'b8266dc4cc56be5134c210c4c0457851'
          '0a5733b7a457a2786c2dd27626a1bf88'
          '63ebf05aea29545081dab2cb023e2bba'
          'fe24f5ea463013bb7f1c12d12dce41b2'
