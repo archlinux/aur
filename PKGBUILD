@@ -1,12 +1,12 @@
 pkgname=python-keyring-pass
 _pkgname=keyring_pass
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='https://www.passwordstore.org backend for keyring'
 arch=('any')
 url='https://github.com/nazarewk/keyring_pass'
 license=('MIT')
-depends=('python-keyring' 'pass')
+depends=('python-keyring' 'python-jaraco.classes' 'pass')
 makedepends=('git' 'python-setuptools')
 source=("git+$url#tag=v$pkgver")
 sha512sums=('SKIP')
