@@ -1,0 +1,27 @@
+pkgbase = r-ggvenndiagram
+	pkgdesc = A 'ggplot2' Implement of Venn Diagram
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=ggVennDiagram
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-dplyr
+	depends = r-ggplot2
+	depends = r-magrittr
+	depends = r-plotly
+	depends = r-purrr
+	depends = r-rvenn
+	depends = r-sf
+	depends = r-tibble
+	depends = r-yulab.utils
+	optdepends = r-knitr
+	optdepends = r-rcolorbrewer
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-tidyr
+	optdepends = r-venn
+	source = https://cran.r-project.org/src/contrib/ggVennDiagram_1.2.2.tar.gz
+	sha256sums = 939c0bd3e7c01c87560a9dd938cfc46ac7bd52a56147d9464f58b053998d8cd0
+
+pkgname = r-ggvenndiagram
