@@ -1,6 +1,6 @@
 pkgbase = pcsx2-git
 	pkgdesc = A Sony PlayStation 2 emulator
-	pkgver = v1.7.0.dev.r4271.g1ecadc353
+	pkgver = v1.7.0.dev.r4282.g20846bb93
 	pkgrel = 1
 	url = https://www.pcsx2.net
 	install = dev9.install
@@ -39,14 +39,12 @@ pkgbase = pcsx2-git
 	provides = pcsx2-qt
 	conflicts = pcsx2
 	source = git+https://github.com/kenshen112/pcsx2.git#branch=packages
-	source = git+https://github.com/ocornut/imgui.git
 	source = git+https://github.com/rtissera/libchdr.git
 	source = git+https://github.com/google/googletest.git
 	source = git+https://github.com/mozilla/cubeb.git
 	source = git+https://github.com/KhronosGroup/glslang.git
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	source = git+https://github.com/fmtlib/fmt.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

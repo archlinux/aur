@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=v1.7.0.dev.r4271.g1ecadc353
+pkgver=v1.7.0.dev.r4282.g20846bb93
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -62,7 +62,6 @@ conflicts=(pcsx2)
 
 source=(
 git+https://github.com/kenshen112/pcsx2.git#branch=packages
-git+https://github.com/ocornut/imgui.git
 git+https://github.com/rtissera/libchdr.git
 git+https://github.com/google/googletest.git
 git+https://github.com/mozilla/cubeb.git
@@ -79,7 +78,6 @@ SKIP
 SKIP
 SKIP
 SKIP
-SKIP
 )
 
 prepare()
@@ -89,11 +87,10 @@ prepare()
   git config submodule.3rdparty/libchdr/libchdr.url $srcdir/libchdr
   git config submodule.3rdparty/gtest.url $srcdir/googletest
   git config submodule.3rdparty/cubeb/cubeb.url $srcdir/cubeb
-  git config submodule.3rdparty/imgui/imgui.url $srcdir/imgui
   git config submodule.3rdparty/glslang/glslang.url $srcdir/glslang
   git config submodule.3rdparty/vulkan-headers.url $srcdir/Vulkan-Headers
   git config submodule.3rdparty/fmt/fmt.url $srcdir/fmt
-  git submodule update 3rdparty/libchdr/libchdr 3rdparty/gtest 3rdparty/cubeb/cubeb 3rdparty/imgui 3rdparty/glslang/glslang 3rdparty/vulkan-headers 3rdparty/fmt/fmt
+  git submodule update 3rdparty/libchdr/libchdr 3rdparty/gtest 3rdparty/cubeb/cubeb 3rdparty/glslang/glslang 3rdparty/vulkan-headers 3rdparty/fmt/fmt
 }
 
 pkgver()
