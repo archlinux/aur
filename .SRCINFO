@@ -1,7 +1,7 @@
 pkgbase = moss-container-git
-	pkgdesc = Serpent OS build tool
+	pkgdesc = Serpent OS build tool dependency
 	pkgver = r140.143364c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/serpent-os/moss-container
 	arch = x86_64
 	license = ZLIB
