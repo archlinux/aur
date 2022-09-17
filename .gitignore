@@ -3,3 +3,4 @@
 src/
 pkg/
 *.log
+kcoreaddons*.tar.xz
