@@ -1,7 +1,7 @@
 pkgbase = elements-project
 	pkgdesc = Elements blockchain platform, a collection of feature experiments and extensions to the Bitcoin protocol
-	pkgver = 0.21.0.1
-	pkgrel = 2
+	pkgver = 22.0
+	pkgrel = 1
 	url = https://github.com/ElementsProject/elements
 	arch = aarch64
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = elements-project
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_aarch64 = https://github.com/ElementsProject/elements/releases/download/elements-0.21.0.1/elements-elements-0.21.0.1-aarch64-linux-gnu.tar.gz
-	sha256sums_aarch64 = b34120a11c1fac41f150fb3a28dd5825e372c049723066280e51302f8b04ed90
-	source_x86_64 = https://github.com/ElementsProject/elements/releases/download/elements-0.21.0.1/elements-elements-0.21.0.1-x86_64-linux-gnu.tar.gz
-	sha256sums_x86_64 = ebe1f0c6e8510c3059a82936f61a64c2353a193409be245761de05f3152fbe53
+	source_aarch64 = https://github.com/ElementsProject/elements/releases/download/elements-22.0/elements-22.0-aarch64-linux-gnu.tar.gz
+	sha256sums_aarch64 = a40501d61f08208ec57ba178fd29fee32da64e790165f66be97bb2546364e94e
+	source_x86_64 = https://github.com/ElementsProject/elements/releases/download/elements-22.0/elements-22.0-x86_64-linux-gnu.tar.gz
+	sha256sums_x86_64 = 1ec859895362c12468225a8d738120ea137fc917bb70825beadfb87784488a97
 
 pkgname = elements-project
