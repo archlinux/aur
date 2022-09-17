@@ -1,8 +1,8 @@
 # Maintainer: Wachid Adi Nugroho <wachidadinugroho.maya@gmail.com>
 
-pkgname=maui-manager-git
-_pkgname=${pkgname%-git}
-pkgver=r15.b5c87ae
+_pkgname=mauiman
+pkgname=$_pkgname-git
+pkgver=1.0.0.r5.g6ef5b9c
 pkgrel=1
 pkgdesc='Maui Manager Library. Server and public library API.'
 url='https://invent.kde.org/maui/mauiman'
@@ -11,15 +11,16 @@ license=(GPL3)
 depends=(qt5-base)
 makedepends=(git extra-cmake-modules)
 groups=(maui)
-provides=($_pkgname mauiman)
-conflicts=($_pkgname mauiman)
-source=($_pkgname::git+$url.git)
+provides=($_pkgname)
+conflicts=($_pkgname)
+replaces=(maui-manager)
+source=(git+$url.git)
 sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
