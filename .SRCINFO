@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-current-screen-only-on-window-switcher-git
+	pkgdesc = Gnome shell extension that filters the windows shown in the window switcher to those of the current monitor
+	pkgver = r24.ce57d07
+	pkgrel = 1
+	url = https://github.com/mmai/Current_screen_only_on_window_switcher
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = gnome-shell
+	provides = gnome-shell-extension-current-screen-only-on-window-switcher
+	conflicts = gnome-shell-extension-current-screen-only-on-window-switcher
+	source = gnome-shell-extension-current-screen-only-on-window-switcher-git::git+https://github.com/mmai/Current_screen_only_on_window_switcher.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-current-screen-only-on-window-switcher-git
