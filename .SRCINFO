@@ -1,0 +1,15 @@
+pkgbase = python-pygments-style-github
+	pkgdesc = A port of the github color scheme for pygments
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/hugomaiavieira/pygments-style-github
+	arch = any
+	license = BSD
+	checkdepends = python-nose
+	checkdepends = python-pygments
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/p/pygments-style-github/pygments-style-github-0.4.tar.gz
+	md5sums = dea9072f0ab9ede0f23651c380cc47a7
+
+pkgname = python-pygments-style-github
+	depends = python-pygments>=1.4
