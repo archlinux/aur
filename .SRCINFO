@@ -1,0 +1,18 @@
+pkgbase = python-desktop-parser
+	pkgdesc = Parse .desktop files
+	pkgver = 0.1.0
+	pkgrel = 00
+	url = https://desktopcreatorteam.github.io/
+	arch = any
+	license = GPL3
+	makedepends = python-pip
+	depends = python
+	noextract = desktop_parser-0.1.0-py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/66/5c/58a1a82f51846deac391eae7063708142a9e900acb1edaf601e6921a045c/desktop_parser-0.1.0-py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = b1d1517cf85c598bfb828e4c41c84a61
+	md5sums = d2baaa06b6d7d3b245973f952cdb37f8
+
+pkgname = python-desktop-parser
