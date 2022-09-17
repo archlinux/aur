@@ -1,0 +1,17 @@
+pkgbase = python-tsp-solver2-git
+	pkgdesc = Travelling Salesman Problem solver in pure Python + some visualizers
+	pkgver = 0.4.1.e743b7c
+	pkgrel = 1
+	url = https://github.com/dmishin/tsp-solver2
+	arch = i686
+	arch = x86_64
+	license = Unlicense
+	makedepends = git
+	makedepends = python
+	depends = python
+	provides = python-tsp-solver2
+	conflicts = python-tsp-solver2
+	source = python-tsp-solver2::git+https://github.com/dmishin/tsp-solver.git
+	sha256sums = SKIP
+
+pkgname = python-tsp-solver2-git
