@@ -1,0 +1,19 @@
+pkgbase = 4nec2-bin
+	pkgdesc = NEC based antenna modeler and optimizer (using Wine)
+	pkgver = 5.9.3
+	pkgrel = 1
+	url = https://www.qsl.net/4nec2
+	arch = x86_64
+	license = unknown
+	makedepends = unzip
+	depends = wine
+	depends = winetricks
+	depends = wine-gecko
+	provides = 4nec2-bin
+	conflicts = 4nec2-bin
+	source = 4nec2.sh
+	source = https://qsl.net/4nec2/4nec2zip.zip
+	sha256sums = 4d329f4217997b16649387caed63407c388baae88a71018fe991bad38875efba
+	sha256sums = e8180b923e4ca26344ee8acc4310d24411689382e2d164a1a2fd88f7c75c260a
+
+pkgname = 4nec2-bin
