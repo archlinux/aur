@@ -1,7 +1,7 @@
 # Maintainer: Andrej Radović (r.andrej@gmail.com)
 
 pkgname=otf-xcharter
-pkgver=1.224
+pkgver=1.24
 pkgrel=1
 depends=('fontconfig')
 pkgdesc="Extension of Bitstream Charter, which provides small caps, "\

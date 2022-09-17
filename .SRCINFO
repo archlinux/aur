@@ -1,6 +1,6 @@
 pkgbase = otf-xcharter
 	pkgdesc = Extension of Bitstream Charter, which provides small caps, oldstyle figures and superior figures in all four styles, Cyrillic and Greek.
-	pkgver = 1.224
+	pkgver = 1.24
 	pkgrel = 1
 	url = https://www.ctan.org/pkg/xcharter
 	arch = any
