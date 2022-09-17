@@ -3,8 +3,8 @@
 
 pkgname=dcvviewer-bin
 _pkgname=dcvviewer
-_majver=2022.1
-_minver=4251
+_majver=2022.0
+_minver=4131
 pkgver=${_majver}.${_minver}
 pkgrel=1
 pkgdesc="NICE DCV client for Linux. DCV is a desktop remotization server, with support for native as well as web-based clients."
@@ -15,15 +15,15 @@ depends=('cairo' 'dconf' 'desktop-file-utils' 'ffmpeg' 'gdk-pixbuf2' 'glib2' 'gl
 # At launch, dcvviewer shows an error looking for OpenSSL 3.0.0 libs, but I haven't noticed any broken features without it
 optdepends=('openssl3-git: Support for OpenSSL 3.0.0')
 source=(
-  "https://d1uj6qtbmh3dt5.cloudfront.net/${_majver}/Clients/nice-dcv-viewer_${pkgver}-1_amd64.ubuntu2204.deb"
+  "https://d1uj6qtbmh3dt5.cloudfront.net/${_majver}/Clients/nice-dcv-viewer_${pkgver}-1_amd64.ubuntu2004.deb"
 )
-sha256sums=('cbd7fa4aec4eca87836bc96cedf8a03d6a9836d8ba8a242b4cc19fa3f0d9d7a7')
+sha256sums=('SKIP')
 
 package(){
 
   # Extract package data, move files to comply with Arch package guidelines
   # (https://wiki.archlinux.org/index.php/Arch_package_guidelines#Directories)
-  tar -xf data.tar.zst -C "${pkgdir}" \
+  tar -xf data.tar.xz -C "${pkgdir}" \
     --transform 's,^./usr/lib/x86_64-linux-gnu,./usr/lib,' \
     --transform 's,^./usr/libexec,./usr/lib,' \
     --transform 's,^./usr/share/dcvviewer/license/EULA.txt,./usr/share/licenses/dcvviewer/EULA,' \
@@ -49,7 +49,7 @@ package(){
   # Might want to keep with same version of glib
   rm libffi.so.7 libjson-glib-1.0.so.0
   # Codecs provided by ffmpeg, gst-plugins-base, lz4, zlib
-  rm libavcodec.so.59 libturbojpeg.so.0 libavutil.so.57 libopus.so.0 libjpeg.so.62 liblz4.so.1 libz.so.1
+  rm libavcodec.so.* libturbojpeg.so.0 libavutil.so.* libopus.so.0 libjpeg.so.62 liblz4.so.1 libz.so.1
   rm liblmdb.so libprotobuf-c.so.1
   # There is no (real) soname 3 for libpcre. Debian may be repsponsible for masquerading soname 0 as 3.
   ln -s /usr/lib/libpcre.so libpcre.so.3

@@ -1,6 +1,6 @@
 pkgbase = dcvviewer-bin
 	pkgdesc = NICE DCV client for Linux. DCV is a desktop remotization server, with support for native as well as web-based clients.
-	pkgver = 2022.1.4251
+	pkgver = 2022.0.4131
 	pkgrel = 1
 	url = https://www.nice-software.com/products/dcv
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = dcvviewer-bin
 	depends = sqlite
 	depends = zlib
 	optdepends = openssl3-git: Support for OpenSSL 3.0.0
-	source = https://d1uj6qtbmh3dt5.cloudfront.net/2022.1/Clients/nice-dcv-viewer_2022.1.4251-1_amd64.ubuntu2204.deb
-	sha256sums = cbd7fa4aec4eca87836bc96cedf8a03d6a9836d8ba8a242b4cc19fa3f0d9d7a7
+	source = https://d1uj6qtbmh3dt5.cloudfront.net/2022.0/Clients/nice-dcv-viewer_2022.0.4131-1_amd64.ubuntu2004.deb
+	sha256sums = SKIP
 
 pkgname = dcvviewer-bin
