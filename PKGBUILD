@@ -1,17 +1,17 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='uucp'
 pkgname="ocaml-$_projectname"
-pkgver='14.0.0'
-pkgrel='2'
+pkgver='15.0.0'
+pkgrel='1'
 pkgdesc='Unicode character properties for OCaml'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://erratique.ch/software/$_projectname"
 license=('ISC')
 depends=('ocaml>=4.03.0')
-makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-topkg>=1.0.3' 'opam' 'ocaml-cmdliner' 'ocaml-uucd' 'ocaml-uunf' 'ocaml-uutf')
+makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-topkg>=1.0.3' 'opam' 'ocaml-cmdliner>=1.1.0' 'ocaml-uucd' 'ocaml-uunf' 'ocaml-uutf>=1.0.1')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/dbuenzli/$_projectname/archive/v$pkgver.tar.gz")
-sha512sums=('b8e70cd89ef8e58f9808db4314c2a56f02ec869d48908e8243adafd33c75d2df7233e22eca156febf3e3e6c93bfc7af735ae54f486f19b5bc36531df4c85ae72')
+sha512sums=('bae1409937321e59764fa00d5ee4c85697096609d9b02a948ec31c00f8efb4ad96ae99741ac172be169cbbee211dab26f58b6a3e524341fb3908d52b33378aa1')
 
 _sourcedirectory="$_projectname-$pkgver"
 
@@ -23,7 +23,6 @@ prepare() {
 
 	# Replace topkg watermarks
 	find . -type f -exec sed -i "s/%%\(VERSION\|VERSION_NUM\)%%/$pkgver/g" {} +
-	find . -type f -exec sed -i "s|%%PKG_HOMEPAGE%%|$url|g" {} +
 	find . -type f -exec sed -i "s/%%UNICODE_VERSION%%/$_unicodeversion/g" {} +
 
 	# Download a copy of the XML Unicode character database
