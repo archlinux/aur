@@ -1,6 +1,6 @@
 pkgbase = lutris-wine-git
 	pkgdesc = Easy launch of your Windows applications and games with Wine/Proton
-	pkgver = 0.74.r5.g62fb981
+	pkgver = 0.74.r6.g0225dc9
 	pkgrel = 1
 	url = https://github.com/VHSgunzo/lutris-wine
 	arch = any
