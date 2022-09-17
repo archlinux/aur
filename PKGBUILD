@@ -1,6 +1,6 @@
 # Maintainer: VHSgunzo <vhsgunzo.github.io>
 pkgname='lutris-wine-git'
-pkgver=0.74.r6.g0225dc9
+pkgver=0.74.r7.gb6d0045
 pkgrel=1
 pkgdesc='Easy launch of your Windows applications and games with Wine/Proton'
 arch=('any')
@@ -25,7 +25,8 @@ depends=('aria2' 'qt5-tools' 'xterm' 'xorg-fonts-100dpi' 'xorg-fonts-75dpi'
          'lib32-vulkan-mesa-layers' 'libstrangle-git' 'openssl' 'libnotify' 'coreutils'
          'libxrandr' 'lib32-libxrandr' 'xorg-xrandr' 'bc' 'xorg-xgamma' 'lsb-release'
          'iputils' 'curl' 'xdelta3' 'latencyflex-git' 'latencyflex-wine-git' 'xdg-utils'
-         'desktop-file-utils' 'squashfs-tools' 'squashfuse' 'fuse2'
+         'desktop-file-utils' 'squashfs-tools' 'squashfuse' 'fuse2' 'reshade-shaders-git'
+         'winetricks' 'innoextract' 'p7zip'
 )
 makedepends=('git')
 optdepends=('lib32-vulkan-radeon' 'vulkan-radeon' 'xf86-video-amdgpu'
@@ -33,7 +34,7 @@ optdepends=('lib32-vulkan-radeon' 'vulkan-radeon' 'xf86-video-amdgpu'
             'libva-intel-driver' 'libva-utils' 'xf86-video-intel' 'lib32-nvidia-utils'
             'lib32-opencl-nvidia' 'lib32-libxnvctrl' 'libxnvctrl' 'nvidia' 'nvidia-dkms'
             'nvidia-settings' 'nvidia-utils' 'opencl-nvidia' 'linux-zen' 'linux-zen-headers'
-            'vulkan-swrast' 'llvm' 'lib32-llvm' 'winetricks' 'wine'
+            'vulkan-swrast' 'llvm' 'lib32-llvm' 'wine'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
