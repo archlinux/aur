@@ -1,7 +1,7 @@
 pkgbase = simcoupe
 	pkgdesc = The SAM Coupé Emulator
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 1.2.11
+	pkgrel = 1
 	url = http://www.simcoupe.org/
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,9 @@ pkgbase = simcoupe
 	makedepends = imagemagick
 	depends = sdl
 	depends = libsaasound
-	source = http://www.simcoupe.org/files/SimCoupe-1.0.tar.gz
+	source = https://github.com/simonowen/simcoupe/archive/refs/tags/v1.2.11.tar.gz
 	source = simcoupe.desktop
-	md5sums = 2931e93b877af0a383a4db9424c456f8
+	md5sums = 57d0100ac726adbf3bf8d2fac4f06fca
 	md5sums = bd4dbdecfccb1eb86dfc9a23309bf5b9
 
 pkgname = simcoupe
-
