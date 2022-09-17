@@ -7,7 +7,7 @@ pkgdesc="High-level python interface to OpenEMS with automatic mesh generation"
 url="https://github.com/matthuszagh/pyems"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('openems' 'python-csxcad' 'python-openems')
+depends=('openems' 'python-csxcad' 'python-openems' 'python-h5py-git')
 provides=('python-pyems')
 conflicts=('python-pyems')
 

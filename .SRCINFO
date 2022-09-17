@@ -9,6 +9,7 @@ pkgbase = python-pyems-git
 	depends = openems
 	depends = python-csxcad
 	depends = python-openems
+	depends = python-h5py-git
 	provides = python-pyems
 	conflicts = python-pyems
 	source = git+https://github.com/matthuszagh/pyems
