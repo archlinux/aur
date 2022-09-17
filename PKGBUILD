@@ -12,7 +12,7 @@ _GRUB_EMU_BUILD="0"
 
 _GRUB_EXTRAS_COMMIT="8a245d5c1800627af4cefa99162a89c7a46d8842"
 _GNULIB_COMMIT="be584c56eb1311606e5ea1a36363b97bddb6eed3"
-_UNIFONT_VER="13.0.06"
+_UNIFONT_VER="15.0.01"
 
 [[ "${CARCH}" == "x86_64" ]] && _EFI_ARCH="x86_64"
 [[ "${CARCH}" == "i686" ]] && _EFI_ARCH="i386"
@@ -23,8 +23,8 @@ _UNIFONT_VER="13.0.06"
 pkgname='grub-luks-keyfile-git'
 pkgdesc='GNU GRand Unified Bootloader (2)'
 epoch=2
-pkgver=2.06
-pkgrel=3
+pkgver=2.11
+pkgrel=1
 url='https://www.gnu.org/software/grub/'
 arch=('x86_64')
 license=('GPL3')
@@ -66,7 +66,7 @@ source=("git+https://github.com/mxfm/grub.git"
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'b7668a5d498972dc4981250c49f83601babce797be19b4fdd0f2f1c6cfbd0fc5'
+            '1fddba900a36b8a067bf2177b05c4a2482a0f7ca1545cf531c03509f47ce1590'
             'SKIP'
             'ef87b27e4cef6f83c41c8a1a0401f41e22a89a130baaef8c5a832a6c99bb2683'
             'ce7e24acec78989169a136e989e07369def3dd7c727788d5038a255409ec3c35')
