@@ -3,7 +3,7 @@
 pkgname=sing-geosite-git
 _pkgname=sing-geosite
 pkgver=20220916160215
-pkgrel=1
+pkgrel=2
 
 pkgdesc='sing-geosite database'
 arch=('any')
@@ -32,6 +32,6 @@ build () {
 }
 
 package() {
-    install -Dm644 "${_builddir}/geosite.db" -t "${pkgdir}/usr/share/${pkgname}"
-    install -Dm644 "${_builddir}/LICENSE"    -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${_builddir}/geosite.db" -t "${pkgdir}/usr/share/${_pkgname}"
+    install -Dm644 "${_builddir}/LICENSE"    -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
