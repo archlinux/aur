@@ -3,7 +3,7 @@
 # Contributor: Nicky D
 
 pkgname=firestorm
-pkgver=6.5.6
+pkgver=6.6.3
 pkgrel=1
 pkgdesc="This is the Firestorm Viewer!"
 arch=('i686' 'x86_64')
