@@ -2,7 +2,7 @@
 
 pkgname=unrpyc-git
 pkgver=1.1.8+0+g2f9810c
-pkgrel=1
+pkgrel=2
 pkgdesc="A ren'py script decompiler"
 arch=('any')
 url='https://github.com/CensoredUsername/unrpyc'
@@ -28,4 +28,6 @@ prepare () {
 package () {
     cd "$srcdir/$repo"
     python2 setup.py install --root="$pkgdir"
+    cd "$pkgdir"
+    mv usr/bin/unrpyc{.py,}
 }

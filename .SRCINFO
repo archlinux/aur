@@ -1,7 +1,7 @@
 pkgbase = unrpyc-git
 	pkgdesc = A ren'py script decompiler
 	pkgver = 1.1.8+0+g2f9810c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CensoredUsername/unrpyc
 	arch = any
 	license = MIT
