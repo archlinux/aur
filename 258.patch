@@ -1,0 +1,42 @@
+From c890b1459c0a27261f46eb1101b16e74a773312d Mon Sep 17 00:00:00 2001
+From: Ilya Fedin <fedin-ilja2010@ya.ru>
+Date: Sat, 17 Sep 2022 01:11:51 +0400
+Subject: [PATCH] Cache portal urls
+
+It's much more natural for a Qt application to assume that the result is valid as long as QMimeData exists
+
+Currently, this assumption breaks if the transfer source doesn't set autostop = false (and gtk doesn't do that), caching the result for QMimeData lifetime easily fixes that.
+---
+ src/lib/io/kurlmimedata.cpp | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/src/lib/io/kurlmimedata.cpp b/src/lib/io/kurlmimedata.cpp
+index 440c6de5..5c616cd3 100644
+--- a/src/lib/io/kurlmimedata.cpp
++++ b/src/lib/io/kurlmimedata.cpp
+@@ -118,6 +118,11 @@ static QString portalFormat()
+ 
+ static QList<QUrl> extractPortalUriList(const QMimeData *mimeData)
+ {
++    static QHash<const QMimeData*, QList<QUrl>> cache;
++    if (const auto uris = cache.constFind(mimeData); uris != cache.constEnd()) {
++        qCDebug(KCOREADDONS_DEBUG) << "Urls from portal cache" << *uris;
++        return *uris;
++    }
+     const auto transferId = mimeData->data(portalFormat());
+     qCDebug(KCOREADDONS_DEBUG) << "Picking up portal urls from transfer" << transferId;
+     auto iface =
+@@ -129,6 +134,10 @@ static QList<QUrl> extractPortalUriList(const QMimeData *mimeData)
+         uris.append(QUrl::fromLocalFile(path));
+     }
+     qCDebug(KCOREADDONS_DEBUG) << "Urls from portal" << uris;
++    cache.insert(mimeData, uris);
++    QObject::connect(mimeData, &QObject::destroyed, [mimeData] {
++        cache.remove(mimeData);
++    });
+     return uris;
+ }
+ #endif
+-- 
+GitLab
+
