@@ -49,17 +49,17 @@ install=nomachine.install
 prepare()
 {
 #Fix Fedora Version Var And Libstdc++ Rename
-tar -zxf "$srcdir/NX/etc/NX/server/packages/nxclient.tar.gz" NX/scripts/setup/nxclient
-sed -i 's/    majorFedoraVersion.*/    majorFedoraVersion=23/' "$srcdir/NX/scripts/setup/nxclient"
+tar -zxf "$srcdir/NX/etc/NX/server/packages/nxrunner.tar.gz" NX/scripts/setup/nxrunner
+sed -i 's/    majorFedoraVersion.*/    majorFedoraVersion=23/' "$srcdir/NX/scripts/setup/nxrunner"
 tar -zxf "$srcdir/NX/etc/NX/server/packages/nxclient.tar.gz" "NX/lib/"
 for _libstdc in "$srcdir/NX/lib/"libstdc++.*; do
 mv "${_libstdc}" ${_libstdc}.nomachine
 done
-gzip -d "$srcdir/NX/etc/NX/server/packages/nxclient.tar.gz"
-tar -rf "$srcdir/NX/etc/NX/server/packages/nxclient.tar" NX/scripts/setup/nxclient -C "$srcdir/NX/scripts/setup/nxclient"
-tar --delete -f "$srcdir/NX/etc/NX/server/packages/nxclient.tar" "NX/lib/"
-tar -rf "$srcdir/NX/etc/NX/server/packages/nxclient.tar" "NX/lib/" -C "$srcdir/NX/lib/"
-gzip "$srcdir/NX/etc/NX/server/packages/nxclient.tar"
+gzip -d "$srcdir/NX/etc/NX/server/packages/nxrunner.tar.gz"
+tar -rf "$srcdir/NX/etc/NX/server/packages/nxrunner.tar" NX/scripts/setup/nxrunner -C "$srcdir/NX/scripts/setup/nxrunner"
+tar --delete -f "$srcdir/NX/etc/NX/server/packages/nxrunner.tar" "NX/lib/"
+tar -rf "$srcdir/NX/etc/NX/server/packages/nxrunner.tar" "NX/lib/" -C "$srcdir/NX/lib/"
+gzip "$srcdir/NX/etc/NX/server/packages/nxrunner.tar"
 rm -fr "$srcdir/NX/scripts"*
 rm -fr "$srcdir/NX/lib"*
 #Change Automatic Service Start And/Or Firewall Automatic Rules If Apply
