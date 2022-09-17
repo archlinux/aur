@@ -6,8 +6,8 @@
 
 _pkgname=gamescope
 pkgname=gamescope-plus
-pkgver=3.11.43
-pkgrel=4
+pkgver=3.11.45
+pkgrel=1
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
 url=https://github.com/Plagman/gamescope
@@ -47,13 +47,13 @@ makedepends=(
   ninja
   vulkan-headers
 )
-_tag=c5269642a293ce5e91d3d644ee15a3f3bcc3c5f3
+_tag=215a19b0e80cfeb6219c752fcfcf719d5c913432
 source=("git+https://github.com/Plagman/gamescope.git#tag=${_tag}"
         "0001-Add-force-orientation-option.patch"
         "0002-Force-orientation-only-to-internal-display.patch")
 b2sums=('SKIP'
-        '86d47b63f3d2a4d2bc94e30b197ddc4c3563b2e57f0e98537a3eea4dcb90b7b9ba686b44e646f37e41ae46f36c3d33184b66f6597eeefe77b01f2e44c5c84662'
-        'd594fc79b9f0a348d2b760aaef0f513c9202de5c5ca8b66575a9b7a3d628be728027a7effa119552616578b4d04bec40dd1f163f7df70d503b9d631280acbab7')
+        '53ccad968f46ed022ea847d2bc60513b797a054ab105c7e67e384f1ed53cffc814be64d3a699ba0a567076c4205e4c03a07576607b82a2f4f92c0018b2482f53'
+        'f0a9071917387b9025cecf8c4a818b6773947b2996240898439eb3d845a8ffc0f93404b28133a78e96ef5a43ddf00a71e39459e6e0281d5b884efdd3d339720f')
 
 prepare() {
   cd "$srcdir/$_pkgname"
