@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=exfatprogs-git
-pkgver=1.1.3.r0.gfa7fa09
+pkgver=1.1.3.r59.gb8a9b32
 pkgrel=1
 pkgdesc="exFAT filesystem userspace utilities"
 arch=('i686' 'x86_64')
@@ -9,9 +9,9 @@ url="https://github.com/exfatprogs/exfatprogs"
 license=('GPL')
 depends=('glibc')
 makedepends=('git')
-provides=('exfatprogs' 'exfat-utils')
+provides=("exfatprogs=$pkgver" 'exfat-utils')
 conflicts=('exfatprogs' 'exfat-utils')
-source=("git+https://github.com/exfatprogs/exfatprogs.git")
+source=("git+https://github.com/exfatprogs/exfatprogs.git#branch=exfat-next")
 sha256sums=('SKIP')
 
 
