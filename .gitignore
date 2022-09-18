@@ -1,5 +1,4 @@
-/hunspell-id
-*.tar
-*.tar.gz
-*.tar.bz2
-*.tar.xz
+*.tar.zst
+hunspell-id
+pkg
+src

@@ -1,13 +1,13 @@
-pkgbase = hunspell-id
-	pkgdesc = Indonesian hunspell dictionary
-	pkgver = 2.2
+pkgbase = hunspell-id-git
+	pkgdesc = Indonesian hunspell dictionary.
+	pkgver = v2.2.r5.2adbeb0
 	pkgrel = 1
 	url = https://github.com/shuLhan/hunspell-id
 	arch = any
 	license = LGPL3
 	makedepends = git
-	source = git+https://github.com/shuLhan/hunspell-id.git
+	conflicts = vim-spell-id
+	source = hunspell-id::git+file:///home/ms/src/hunspell-id
 	sha256sums = SKIP
 
-pkgname = hunspell-id
-
+pkgname = hunspell-id-git

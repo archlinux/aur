@@ -1,28 +1,29 @@
 # Maintainer: Shulhan <m.shulhan at gmail.com>
-
-pkgname='hunspell-id'
-pkgver=2.2
-pkgdesc="Indonesian hunspell dictionary"
+pkgname='hunspell-id-git'
+pkgver=v2.2.r5.2adbeb0
+pkgdesc='Indonesian hunspell dictionary.'
 pkgrel=1
 arch=('any')
-url="https://github.com/shuLhan/hunspell-id"
+url='https://github.com/shuLhan/hunspell-id'
 license=('LGPL3')
+conflicts=('vim-spell-id')
 
-makedepends=("git") 
-source=("git+https://github.com/shuLhan/hunspell-id.git")
+makedepends=('git')
+#source=('hunspell-id::git+https://github.com/shuLhan/hunspell-id.git')
+source=('hunspell-id::git+file:///home/ms/src/hunspell-id')
 sha256sums=('SKIP')
 
-package() {
-	cd $pkgname
+pkgver() {
+	cd "$srcdir/${pkgname%-git}"
 
-	git reset --hard "v${pkgver}"
-
-	install -dm755 ${pkgdir}/usr/share/hunspell/
-	install -m644 id_ID.dic id_ID.aff $pkgdir/usr/share/hunspell/
-
-	install -dm755 ${pkgdir}/usr/share/myspell/dicts/
-	pushd ${pkgdir}/usr/share/myspell/dicts/
-	ln -sv /usr/share/hunspell/id_ID.dic
-	ln -sv /usr/share/hunspell/id_ID.aff
-	popd
+	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
+
+package() {
+	cd "$srcdir/${pkgname%-git}"
+
+	make DESTDIR="$pkgdir" install
+}
+
+## SPDX-FileCopyrightText: 2022 M. Shulhan <ms@kilabit.info>
+## SPDX-License-Identifier: LGPL-3.0-only

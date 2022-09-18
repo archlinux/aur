@@ -1,9 +1,9 @@
 .PHONY: all build check
 
-all: build check
-
-build:
-	makepkg --printsrcinfo > .SRCINFO
+all: check release
 
 check:
 	namcap PKGBUILD
+
+release:
+	makepkg --printsrcinfo > .SRCINFO
