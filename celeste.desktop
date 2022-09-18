@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Celeste
+Comment=Super-tight hand-crafted 2D platformer
+Exec=celeste
+Icon=celeste
+Terminal=false
+Categories=Game
