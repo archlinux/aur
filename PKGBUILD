@@ -4,7 +4,7 @@
 pkgname=an-anime-game-launcher-gtk-bin
 pkgver=1.0.4
 pkgrel=1
-pkgdesc="An GTK4 alternative to an-anime-game-launcher-bin"
+pkgdesc="A GTK4 alternative to an-anime-game-launcher-bin"
 url="https://github.com/an-anime-team/an-anime-game-launcher-gtk"
 conflicts=("an-anime-game-launcher-bin" "an-anime-game-launcher")
 provides=("an-anime-game-launcher")
