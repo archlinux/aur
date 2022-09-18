@@ -3,7 +3,7 @@
 
 pkgname=('d-spy' 'libdspy')
 pkgbase='d-spy'
-pkgver=1.2.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='A D-Bus explorer for GNOME'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL3')
 makedepends=('meson')
 checkdepends=('appstream-glib')
 source=($url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('aa68134712feb9e6855aa84b60e8d2eecdb826f73969ddae68e350f121c6d3637d39beaee84b1c300ac9c603669b723935c2ae75b518cdc999ba422ce39ad556')
+b2sums=('ddcc97fe39311ae5271ac434d6a871ca3be68e9e843f2685f8dbeac5e01b93c70029a0ef47130319a0441d4fb3782af8f73433b6817398157da3830e267c7761')
 
 build() {
   arch-meson "${pkgname%-git}-$pkgver" build
