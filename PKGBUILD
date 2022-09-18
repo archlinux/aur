@@ -1,38 +1,44 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=ja2-stracciatella-git
-pkgver=8296.9202397c2
+pkgver=11237.829db5183
 pkgrel=1
 pkgdesc="Jagged Alliance 2 Stracciatella project with a goal of improving JA2"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/ja2-stracciatella/ja2-stracciatella"
 license=('custom')
-depends=('boost-libs' 'sdl2')
-makedepends=('git' 'cargo' 'cmake' 'boost')
+conflicts=('ja2-stracciatella')
+provides=('ja2-stracciatella')
+depends=('sdl2' 'sdl2>2.0.6' 'fltk' 'rapidjson' 'lua53' 'sol2')
+makedepends=('git' 'cargo' 'cmake' 'ninja')
 source=('git+https://github.com/ja2-stracciatella/ja2-stracciatella.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/ja2-stracciatella"
+  cd "${srcdir}/ja2-stracciatella"
   echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
 build() {
-  cd "$srcdir/ja2-stracciatella"
+  cd "${srcdir}"
 
-  cmake "../ja2-stracciatella" \
+  cmake -GNinja -B build \
     -DCMAKE_INSTALL_PREFIX="/usr" \
-    -DEXTRA_DATA_DIR=/usr/share/ja2
-  make
+    -DEXTRA_DATA_DIR=/usr/share/ja2 \
+    -DLOCAL_LUA_LIB=OFF \
+    -DLOCAL_SOL_LIB=OFF \
+    -DLOCAL_RAPIDJSON_LIB=OFF \
+    -DWITH_UNITTESTS=OFF \
+    "${srcdir}/ja2-stracciatella"
+  cmake --build build
 }
 
 package() {
-  cd "$srcdir/ja2-stracciatella"
+  cd "${srcdir}/"
 
-  make DESTDIR="$pkgdir" install
+  DESTDIR="${pkgdir}" cmake --install build
 
-  install -d -m755 "$pkgdir/usr/share/licenses/$pkgname"
-  install -m644 README.md "$pkgdir/usr/share/licenses/$pkgname"
-  install -m644 "SFI Source Code license agreement.txt" "$pkgdir/usr/share/licenses/$pkgname"
+  install -m644 -Dt "${pkgdir}/usr/share/doc/${pkgname}" "${srcdir}/ja2-stracciatella/README.md"
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/ja2-stracciatella/SFI Source Code license agreement.txt"
 }
 
 # vim:set ts=2 sw=2 et:
