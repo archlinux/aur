@@ -1,7 +1,7 @@
 # Maintainer: Monika Crichton <monika+aur@monikacrichton.com>
 pkgname=celeste-bin
 pkgver=1.4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Super-tight hand-crafted 2D platformer"
 arch=("x86_64")
 url="http://www.celestegame.com/"

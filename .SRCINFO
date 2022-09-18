@@ -1,7 +1,7 @@
 pkgbase = celeste-bin
 	pkgdesc = Super-tight hand-crafted 2D platformer
 	pkgver = 1.4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.celestegame.com/
 	arch = x86_64
 	license = custom:commercial
