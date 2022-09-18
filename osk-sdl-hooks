@@ -7,7 +7,6 @@ run_hook() {
     export SDL_VIDEODRIVER=kmsdrm
 
     modprobe -a -q dm-crypt >/dev/null 2>&1
-    [ "${quiet}" = "y" ] && CSQUIET=">/dev/null"
 
     if [ -n "${cryptdevice}" ]; then
         DEPRECATED_CRYPT=0
