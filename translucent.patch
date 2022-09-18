@@ -1,0 +1,158 @@
+diff -Naur a/product.json b/product.json
+--- a/product.json	2022-09-01 00:05:32.000000000 +0200
++++ b/product.json	2022-09-04 00:16:05.325505334 +0200
+@@ -1,4 +1,20 @@
+ {
++	"quality": "stable",
++	"extensionsGallery": {
++		"serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery",
++		"cacheUrl": "https://vscode.blob.core.windows.net/gallery/index",
++		"itemUrl": "https://marketplace.visualstudio.com/items",
++		"resourceUrlTemplate": "https://{publisher}.vscode-unpkg.net/{publisher}/{name}/{version}/{path}",
++		"controlUrl": "https://az764295.vo.msecnd.net/extensions/marketplace.json",
++		"recommendationsUrl": "https://az764295.vo.msecnd.net/extensions/workspaceRecommendations.json.gz"
++	},
++	"documentationUrl": "https://code.visualstudio.com/docs",
++	"requestFeatureUrl": "https://github.com/Microsoft/vscode/issues",
++	"introductoryVideosUrl": "https://go.microsoft.com/fwlink/?linkid=832146",
++	"tipsAndTricksUrl": "https://go.microsoft.com/fwlink/?linkid=852118",
++	"keyboardShortcutsUrlLinux": "https://go.microsoft.com/fwlink/?linkid=832144",
++	"commit": "@COMMIT@",
++	"date": "@DATE@",
+ 	"nameShort": "Code - OSS",
+ 	"nameLong": "Code - OSS",
+ 	"applicationName": "code-oss",
+diff -Naur a/src/main.js b/src/main.js
+--- a/src/main.js	2022-09-01 00:05:32.000000000 +0200
++++ b/src/main.js	2022-09-04 04:30:24.685459144 +0200
+@@ -224,6 +224,10 @@
+ 	 */
+ 	app.commandLine.appendSwitch('disable-features', 'CalculateNativeWinOcclusion');
+ 
++	// Enable visuals for transparent window
++	app.commandLine.appendSwitch('enable-transparent-visuals');
++	app.commandLine.appendSwitch('use-gl', 'desktop');
++
+ 	// Support JS Flags
+ 	const jsFlags = getJSFlags(cliArgs);
+ 	if (jsFlags) {
+diff -Naur a/src/vs/editor/browser/viewParts/overviewRuler/decorationsOverviewRuler.ts b/src/vs/editor/browser/viewParts/overviewRuler/decorationsOverviewRuler.ts
+--- a/src/vs/editor/browser/viewParts/overviewRuler/decorationsOverviewRuler.ts	2022-09-01 00:05:32.000000000 +0200
++++ b/src/vs/editor/browser/viewParts/overviewRuler/decorationsOverviewRuler.ts	2022-09-02 21:46:40.243244303 +0200
+@@ -75,7 +75,7 @@
+ 		if (backgroundColor === null || minimapSide === 'left') {
+ 			this.backgroundColor = null;
+ 		} else {
+-			this.backgroundColor = Color.Format.CSS.formatHex(backgroundColor);
++			this.backgroundColor = Color.Format.CSS.formatHexA(backgroundColor);
+ 		}
+ 
+ 		const layoutInfo = options.get(EditorOption.layoutInfo);
+diff -Naur a/src/vs/platform/windows/electron-main/windowImpl.ts b/src/vs/platform/windows/electron-main/windowImpl.ts
+--- a/src/vs/platform/windows/electron-main/windowImpl.ts	2022-09-01 00:05:32.000000000 +0200
++++ b/src/vs/platform/windows/electron-main/windowImpl.ts	2022-09-04 04:50:44.757860341 +0200
+@@ -211,10 +211,11 @@
+ 				height: this.windowState.height,
+ 				x: this.windowState.x,
+ 				y: this.windowState.y,
++				transparent: true,
+ 				backgroundColor: this.themeMainService.getBackgroundColor(),
+ 				minWidth: WindowMinimumSize.WIDTH,
+ 				minHeight: WindowMinimumSize.HEIGHT,
+-				show: !isFullscreenOrMaximized, // reduce flicker by showing later
++				show: false,
+ 				title: this.productService.nameLong,
+ 				webPreferences: {
+ 					preload: FileAccess.asFileUri('vs/base/parts/sandbox/electron-browser/preload.js', require).fsPath,
+@@ -391,9 +392,6 @@
+ 					this.setFullScreen(true);
+ 				}
+ 
+-				// to reduce flicker from the default window size
+-				// to maximize or fullscreen, we only show after
+-				this._win.show();
+ 				mark('code/didMaximizeCodeWindow');
+ 			}
+ 
+@@ -478,6 +476,9 @@
+ 
+ 		this.readyState = ReadyState.READY;
+ 
++		// We are ready! Show the window!
++		this._win.show();
++
+ 		// inform all waiting promises that we are ready now
+ 		while (this.whenReadyCallbacks.length) {
+ 			this.whenReadyCallbacks.pop()!(this);
+diff -Naur a/src/vs/workbench/common/theme.ts b/src/vs/workbench/common/theme.ts
+--- a/src/vs/workbench/common/theme.ts	2022-09-01 00:05:32.000000000 +0200
++++ b/src/vs/workbench/common/theme.ts	2022-09-03 22:50:19.628326135 +0200
+@@ -7,21 +7,11 @@
+ import { registerColor, editorBackground, contrastBorder, transparent, editorWidgetBackground, textLinkForeground, lighten, darken, focusBorder, activeContrastBorder, editorWidgetForeground, editorErrorForeground, editorWarningForeground, editorInfoForeground, treeIndentGuidesStroke, errorForeground, listActiveSelectionBackground, listActiveSelectionForeground, editorForeground, toolbarHoverBackground } from 'vs/platform/theme/common/colorRegistry';
+ import { IColorTheme } from 'vs/platform/theme/common/themeService';
+ import { Color } from 'vs/base/common/color';
+-import { ColorScheme } from 'vs/platform/theme/common/theme';
+ 
+ // < --- Workbench (not customizable) --- >
+ 
+ export function WORKBENCH_BACKGROUND(theme: IColorTheme): Color {
+-	switch (theme.type) {
+-		case ColorScheme.LIGHT:
+-			return Color.fromHex('#F3F3F3');
+-		case ColorScheme.HIGH_CONTRAST_LIGHT:
+-			return Color.fromHex('#FFFFFF');
+-		case ColorScheme.HIGH_CONTRAST_DARK:
+-			return Color.fromHex('#000000');
+-		default:
+-			return Color.fromHex('#252526');
+-	}
++	return Color.transparent;
+ }
+ 
+ // < --- Tabs --- >
+@@ -855,6 +845,13 @@
+ 	hcLight: editorInfoForeground
+ }, localize('notificationsInfoIconForeground', "The color used for the icon of info notifications. Notifications slide in from the bottom right of the window."));
+ 
++export const WINDOW_BACKGROUND = registerColor('window.background', {
++	dark: '#252526',
++	light: '#F3F3F3',
++	hcDark: '#000000',
++	hcLight: '#FFFFFF'
++}, localize('windowBackground', "The color used for the background of the window."));
++
+ export const WINDOW_ACTIVE_BORDER = registerColor('window.activeBorder', {
+ 	dark: null,
+ 	light: null,
+diff -Naur a/src/vs/workbench/contrib/splash/browser/partsSplash.ts b/src/vs/workbench/contrib/splash/browser/partsSplash.ts
+--- a/src/vs/workbench/contrib/splash/browser/partsSplash.ts	2022-09-01 00:05:32.000000000 +0200
++++ b/src/vs/workbench/contrib/splash/browser/partsSplash.ts	2022-09-06 23:08:02.701342240 +0200
+@@ -68,11 +68,16 @@
+ 	private _savePartsSplash() {
+ 		const theme = this._themeService.getColorTheme();
+ 
++		const windowBackground = theme.getColor(themes.WINDOW_BACKGROUND) || Color.transparent;
++		const background = windowBackground.isOpaque() ? windowBackground.transparent(0.99)
++						 : windowBackground.isTransparent() ? Color.fromHex('#FFF0')
++						 : windowBackground;
++
+ 		this._partSplashService.saveWindowSplash({
+ 			baseTheme: getThemeTypeSelector(theme.type),
+ 			colorInfo: {
+ 				foreground: theme.getColor(foreground)?.toString(),
+-				background: Color.Format.CSS.formatHex(theme.getColor(editorBackground) || themes.WORKBENCH_BACKGROUND(theme)),
++				background: Color.Format.CSS.formatRGBA(background),
+ 				editorBackground: theme.getColor(editorBackground)?.toString(),
+ 				titleBarBackground: theme.getColor(themes.TITLE_BAR_ACTIVE_BACKGROUND)?.toString(),
+ 				activityBarBackground: theme.getColor(themes.ACTIVITY_BAR_BACKGROUND)?.toString(),
+diff -Naur a/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts b/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts
+--- a/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts	2022-09-01 00:05:32.000000000 +0200
++++ b/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts	2022-09-03 02:38:13.888556140 +0200
+@@ -152,6 +152,7 @@
+ 			altClickMovesCursor: config.altClickMovesCursor && editorOptions.multiCursorModifier === 'alt',
+ 			scrollback: config.scrollback,
+ 			theme: this._getXtermTheme(),
++			allowTransparency: true,
+ 			drawBoldTextInBrightColors: config.drawBoldTextInBrightColors,
+ 			fontFamily: font.fontFamily,
+ 			fontWeight: config.fontWeight,
