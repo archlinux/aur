@@ -4,7 +4,7 @@
 _pkgname=pamac
 pkgname=$_pkgname-nosnap
 pkgver=10.4.2
-pkgrel=2
+pkgrel=3
 
 pkgdesc="A Gtk3 frontend from Manjaro Linux for libalpm with AUR, flatpak, and appindicator support."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -17,7 +17,7 @@ optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome'
             'svn: use svn repositories as package sources'
             'mercurial: use mercurial (hg) repositories as package sources')
 makedepends=('gettext' 'itstool' 'vala>=0.45' 'meson' 'gobject-introspection' 'xorgproto' 'asciidoc')
-conflicts=('pamac' 'pamac-all' 'pamac-gtk' 'pamac-cli' 'pamac-common' 'pamac-aur' 'pamac-aur-git' 'pamac-flatpak' 'pamac-flatpak-gnome')
+conflicts=('pamac' 'pamac-all' 'pamac-gtk' 'pamac-cli' 'pamac-common' 'pamac-aur' 'pamac-aur-git' 'pamac-flatpak' 'pamac-flatpak-gnome' 'gnome-software' 'gnome-software-git')
 provides=('pamac')
 options=(!emptydirs)
 install=pamac.install
@@ -40,8 +40,4 @@ check() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
-  # remove pamac-gnome-integration
-  rm "$pkgdir/usr/bin/gnome-software"
-  rm "$pkgdir/usr/share/applications/org.gnome.Software.desktop"
-  rm "$pkgdir/usr/share/dbus-1/services/org.gnome.Software.service"
 }
