@@ -2,10 +2,11 @@ diff --git a/build.bash b/build.bash
 index 9f72c04..6462b11 100755
 --- a/build.bash
 +++ b/build.bash
-@@ -33,9 +33,7 @@ test -n "${1-}" || die "usage: $0 build-directory"
+@@ -32,10 +32,7 @@
+ 
  outd=$1
  srcd=$(dirname $0)
- mudir=$outd/mupdf
+-mudir=$outd/mupdf
 -muinc="-I $mudir/include -I $mudir/thirdparty/freetype/include"
 -
 -test -d $mudir || die muPDF wasn\'t found in $outd/, consult $srcd/BUILDING
@@ -13,16 +14,17 @@ index 9f72c04..6462b11 100755
  
  mkdir -p $outd/{$wsid,lablGL}
  
-@@ -45,8 +43,6 @@ mbt=${mbt:-release}
+@@ -45,8 +42,7 @@
  test -n "${gmk:-}" && gmk=false || gmk=true
  
  mulibs="$mudir/build/$mbt/libmupdf.a $mudir/build/$mbt/libmupdf-third.a"
 -make="make -C "$mudir" build=$mbt -j $mjobs libs"
 -$make -q -s || $make
++
  
  oincs() {
      local b=$1 incs
-@@ -85,7 +81,7 @@ cflags() {
+@@ -85,7 +81,7 @@
          version.o) f=-DLLPP_VERSION=$ver;;
          lablGL/*.o) f="-g -Wno-pointer-sign -Werror -O2";;
          link.o)
@@ -31,12 +33,12 @@ index 9f72c04..6462b11 100755
              test "${mbt-}" = "debug" || f+="-O2 "
              $darwin && f+="-DMACOS -D_GNU_SOURCE -DGL_H='<OpenGL/gl.h>'" \
                      || f+="-D_POSIX_C_SOURCE -DGL_H='<GL/gl.h>'"
-@@ -104,39 +100,6 @@ mflags() {
+@@ -104,39 +100,6 @@
  }
  
  overs=$(ocamlc -vnum 2>/dev/null) || overs=""
--if test "$overs" != "4.13.0"; then
--    url=https://caml.inria.fr/pub/distrib/ocaml-4.13/ocaml-4.13.0.tar.xz
+-if test "$overs" != "4.14.0~rc1"; then
+-    url=https://caml.inria.fr/pub/distrib/ocaml-4.14/ocaml-4.14.0~rc1.tar.xz
 -    txz=$outd/$(basename $url)
 -    keycmd="printf $url; digest $txz;"
 -    isfresh $txz "$(eval $keycmd)" || {
@@ -71,12 +73,12 @@ index 9f72c04..6462b11 100755
  
  while read k v; do
      case "$k" in
-@@ -307,7 +270,7 @@ for m in ml_gl ml_glarray ml_raw; do
+@@ -307,7 +270,7 @@
  done
  
  libs="str.cma unix.cma"
 -clibs="-L$mudir/build/$mbt -lmupdf -lmupdf-third -lpthread"
-+clibs="-ljbig2dec $(pkg-config --libs "${mudeps[@]}") -lmupdf -lmupdf-third -lpthread"
++clibs="-ljbig2dec $(pkg-config --libs "${mudeps[@]}") -lmupdf -lmupdf-third -lpthread
  if $darwin; then
      mcomp=$ccomp
      clibs+=" -framework Cocoa -framework OpenGL"
