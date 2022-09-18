@@ -7,7 +7,9 @@ pkgbase = guile-colorized-git
 	license = GPL
 	makedepends = git
 	makedepends = sed
-	source = guile-colorized-git::git+https://gitlab.com/NalaGinrut/guile-colorized.git
+	makedepends = guile
+	provides = guile-colorized=v0.1.r5.g1625a79
+	source = guile-colorized::git+https://gitlab.com/NalaGinrut/guile-colorized.git
 	md5sums = SKIP
 
 pkgname = guile-colorized-git
