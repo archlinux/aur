@@ -36,6 +36,7 @@ package() {
 
   chgrp -R games "${DESTDIR}"
   chmod o-w -R "${DESTDIR}"
+  chmod g+w -R "${DESTDIR}"
 
   install -D "${srcdir}/celeste-linux/Celeste.png" "${pkgdir}/usr/share/pixmaps/celeste.png"
   install -D celeste.desktop "${pkgdir}/usr/share/applications/celeste.desktop"  
