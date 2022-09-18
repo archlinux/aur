@@ -1,6 +1,6 @@
 pkgbase = gnumeric-minimal
 	pkgdesc = A GNOME-less spreadsheet program
-	pkgver = 1.12.52
+	pkgver = 1.12.53
 	pkgrel = 1
 	url = http://www.gnumeric.org/
 	arch = i686
@@ -9,11 +9,11 @@ pkgbase = gnumeric-minimal
 	makedepends = intltool
 	makedepends = itstool
 	makedepends = yelp-tools
-	depends = goffice>=0.10.52
+	depends = goffice>=0.10.53
 	provides = gnumeric
 	conflicts = gnumeric
 	options = libtool
-	source = https://gitlab.gnome.org/GNOME/gnumeric/-/archive/GNUMERIC_1_12_52/gnumeric-GNUMERIC_1_12_52.tar.bz2
-	sha256sums = 5b2743c3a440a3a062e19cf41590951b2b86ae7f7a987f0955eeea0a1002f5f2
+	source = https://gitlab.gnome.org/GNOME/gnumeric/-/archive/GNUMERIC_1_12_53/gnumeric-GNUMERIC_1_12_53.tar.bz2
+	sha256sums = 295a6c68b37c2c771eab27c929018eb9b1e12b52013988df23fddfe3455bfbd4
 
 pkgname = gnumeric-minimal
