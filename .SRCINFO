@@ -6,8 +6,6 @@ pkgbase = ffmpeg-audio-thumbnailer
 	arch = any
 	license = GPL3 or any later version
 	depends = ffmpeg
-	provides = ffmpeg-audio-thumbnailer
-	conflicts = ffmpeg-audio-thumbnailer
 	source = ffmpeg-audio-thumbnailer-1.0.0.tar.gz::https://github.com/saltedcoffii/ffmpeg-audio-thumbnailer/archive/1.0.0.tar.gz
 	sha256sums = 4bb34dcb4150596c9400e497fd79990d7c1d8fe27cc5b25e2a80a09ca0f94dc2
 
