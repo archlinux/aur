@@ -1,4 +1,4 @@
-# Maintainer: Scott Hansen (firecat53) firecat4153 at gmail
+# Maintainer: Scott Hansen (firecat53) tech at firecat53 dot net
 pkgname=urlscan-git
 _gitname=urlscan
 pkgver=r182.9505e7c
