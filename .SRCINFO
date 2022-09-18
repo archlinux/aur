@@ -9,6 +9,7 @@ pkgbase = secureboot-grub
 	depends = grub
 	depends = shim-signed
 	depends = sbsigntools
+	depends = efibootmgr
 	source = secureboot::git+https://github.com/zeroxoneafour/arch-secureboot
 	sha256sums = SKIP
 
