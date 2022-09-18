@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=lilypond-devel-docs
-pkgver=2.23.12
+pkgver=2.23.13
 pkgrel=1
 pkgdesc="Offline documentation for the unstable version of lilypond"
 arch=('any')
@@ -13,7 +13,7 @@ options=('!strip')
 conflicts=('lilypond-docs')
 provides=('lilypond-docs')
 source=("https://gitlab.com/lilypond/lilypond/-/releases/v${pkgver}/downloads/lilypond-${pkgver}-documentation.tar.xz")
-sha256sums=('64104e60cbba8582069e94a186f12dc0d67423b1678cd8fe28d9a7ea088e0da3')
+sha256sums=('1cb56011bd02a9c6907d9b11fb773cb7c4303b66403429b03240d838e38af928')
 
 package(){
   install -d "$pkgdir"/usr
