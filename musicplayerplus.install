@@ -6,7 +6,7 @@ read -d '' mppin <<'EOF'
 Perform the following post-installation initialization:
   - Run the 'mppinit' command as your normal user (REQUIRED)
   - If the music library is not located at '$HOME/Music'
-    - Configure the 'music_directory' setting by editing '~/.config/mpd/mpd.conf'
+    - Edit '~/.config/mpprc' and set 'MUSIC_DIR'
     - Run the 'mppinit sync' command as your normal user
 
 View additional post-installation configuration details at:

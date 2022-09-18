@@ -1,13 +1,13 @@
 # Maintainer: Ronald Record <github@ronrecord.com>
 
 pkgname=musicplayerplus
-pkgver=v2.0.1r2
-pkgrel=2
+pkgver=v2.0.1r3
+pkgrel=1
 pkgdesc="Character based MPD client, spectrum visualizer, Beets library management, Mopidy and Navidrome servers, plus more"
 arch=('x86_64' 'armv7h')
 url="https://github.com/doctorfree/MusicPlayerPlus"
 license=('MIT')
-depends=(util-linux boost-libs libcurl-compat libmpdclient ncurses readline taglib mpd ffmpeg4.4 inotify-tools figlet tmux fzf mpc python python-pip python-numpy python-six mplayer eigen fftw clang libsamplerate chromaprint iniparser libyaml swig alsa-lib libpulse sndio sqlite qt5-base wmctrl xorg-xrandr yt-dlp)
+depends=(util-linux bc boost-libs coreutils flac jq libcurl-compat libmpdclient ncurses readline taglib mediainfo mpd ffmpeg4.4 inotify-tools figlet tmux fzf mpc python python-pip python-numpy python-six mplayer eigen fftw clang libsamplerate chromaprint iniparser libyaml swig alsa-lib alsa-utils libpulse sndio sqlite qt5-base wget wmctrl xorg-xdpyinfo xorg-xprop xorg-xrandr yt-dlp)
 makedepends=(boost cargo git pandoc qt5-tools zip)
 optdepends=('cool-retro-term: cool retro terminal emulator')
 install=musicplayerplus.install
@@ -184,6 +184,7 @@ package() {
   cp LICENSE ${pkgdir}/${destdir}/share/doc/${pkgname}
   cp LICENSE ${pkgdir}/${destdir}/share/licenses/${pkgname}
   cp NOTICE ${pkgdir}/${destdir}/share/doc/${pkgname}
+  cp AUTHORS ${pkgdir}/${destdir}/share/doc/${pkgname}
   cp CHANGELOG.md ${pkgdir}/${destdir}/share/doc/${pkgname}
   cp README.md ${pkgdir}/${destdir}/share/doc/${pkgname}
   pandoc -f gfm README.md | tee ${pkgdir}/${destdir}/share/doc/${pkgname}/README.html > /dev/null
@@ -200,11 +201,11 @@ package() {
   cp bliss-analyze/ChangeLog ${pkgdir}/${destdir}/share/doc/${pkgname}/bliss-analyze
   cp bliss-analyze/LICENSE ${pkgdir}/${destdir}/share/doc/${pkgname}/bliss-analyze
   cp bliss-analyze/README.md ${pkgdir}/${destdir}/share/doc/${pkgname}/bliss-analyze
+  cp -a share/alsa-capabilities ${pkgdir}/${destdir}/share/doc/${pkgname}/alsa-capabilities
 
   cp asound.conf.tmpl ${pkgdir}/${destdir}/share/${pkgname}
   cp mpcplus/doc/config ${pkgdir}/${destdir}/share/${pkgname}/mpcplus
   cp mpcplus/doc/bindings ${pkgdir}/${destdir}/share/${pkgname}/mpcplus
-  cp config/config-art.conf ${pkgdir}/${destdir}/share/${pkgname}/mpcplus
   cp config/default_cover.png ${pkgdir}/${destdir}/share/${pkgname}/mpcplus
   cp config/fzmp.conf ${pkgdir}/${destdir}/share/${pkgname}/mpcplus
   cp share/mpcplus-cheat-sheet.txt ${pkgdir}/${destdir}/share/${pkgname}/mpcplus
@@ -217,6 +218,8 @@ package() {
   cp config/xterm-24bit.src ${pkgdir}/${destdir}/share/${pkgname}
   cp config/tmux.conf ${pkgdir}/${destdir}/share/${pkgname}
 
+  cp config/mpprc ${pkgdir}/${destdir}/share/${pkgname}
+
   cp -a config/beets "${pkgdir}/${destdir}/share/${pkgname}/beets"
   cp -a beets "${pkgdir}/${destdir}/share/${pkgname}/beets/plugins"
   cp config/calliope/* "${pkgdir}/${destdir}/share/${pkgname}/calliope"
@@ -227,6 +230,7 @@ package() {
   cp mppcava/example_files/config ${pkgdir}/${destdir}/share/${pkgname}/mppcava/template.conf
   cp -a config/navidrome "${pkgdir}/${destdir}/share/${pkgname}/navidrome"
   cp -a config/tmuxp ${pkgdir}/${destdir}/share/${pkgname}/tmuxp
+  cp -a config/ueberzug ${pkgdir}/${destdir}/share/${pkgname}/mpcplus/ueberzug
   cp -a config/yt-dlp "${pkgdir}/${destdir}/share/${pkgname}/yt-dlp"
   cp -a music "${pkgdir}/${destdir}/share/${pkgname}/music"
 
