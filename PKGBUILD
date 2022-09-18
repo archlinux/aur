@@ -15,18 +15,18 @@
 
 #
 _pkg_name="codelite"
-_pkg_ver="16.2.0"
-_commit=49783ba2e9cfbc83746098ce8d88efb2af54c116
+_pkg_ver="16.4.0"
+_commit="6cd58652c0c3b9e3fef1e3f5e9411aa213b623bf"
 
 # ctags submodule
 _ctags_pkg_name="eranif-ctags"
-_ctags_pkg_ident="52c724d"
-_ctags_pkg_name_ident="${_ctags_pkg_name}-${_ctags_pkg_ident}"
+_ctags_pkg_ident="52c724d1132d78ea44894bfe2eaca44f38a9bd85"
+_ctags_pkg_name_ident="${_ctags_pkg_name}-${_ctags_pkg_ident:0:7}"
 
 # dbgd/wxdap submodule
 _dbgd_pkg_name="eranif-dbgd"
-_dbgd_pkg_ident="82d9bb8"
-_dbgd_pkg_name_ident="${_dbgd_pkg_name}-${_dbgd_pkg_ident}"
+_dbgd_pkg_ident="cb1c8e4655ed96879f210efc7d2f2c039698b003"
+_dbgd_pkg_name_ident="${_dbgd_pkg_name}-${_dbgd_pkg_ident:0:7}"
 
 # pkg
 pkgname="${_pkg_name}-unstable"
@@ -38,12 +38,11 @@ pkgrel=0
 # generic: pre
 _pkg_ver="${pkgver}"
 
-# version
-#_pkg_ident="${_pkg_name}-${pkgver}"
-#_pkg_name_ver="${_pkg_name}-${_pkg_ver}"
+# use version
+_pkg_ident="${pkgver}"
 
-# commit
-_pkg_ident="${_commit}"
+# use commit
+#_pkg_ident="${_commit}"
 
 # generic: post
 _pkg_name_ver="${_pkg_name}-${_pkg_ident}"
@@ -81,14 +80,14 @@ conflicts=('codelite')
 
 source=(
     "${_pkg_name_ident}.tar.gz::https://github.com/eranif/${_pkg_name}/archive/${_pkg_ident}.tar.gz"
-    "codelite-ctags.tar.gz::https://github.com/eranif/ctags/tarball/52c724d1132d78ea44894bfe2eaca44f38a9bd85"
-    "codelite-dbgd.tar.gz::https://github.com/eranif/dbgd/tarball/82d9bb8cdef440eef14c7ef484f21e0df812d103"
-    http://repos.codelite.org/wxCrafterLibs/wxgui.zip
+    "codelite-ctags.tar.gz::https://github.com/eranif/ctags/tarball/${_ctags_pkg_ident}"
+    "codelite-dbgd.tar.gz::https://github.com/eranif/dbgd/tarball/${_dbgd_pkg_ident}"
+    "http://repos.codelite.org/wxCrafterLibs/wxgui.zip"
   )
 
-sha256sums=('207651b0a06de5972f0b85aee4ed863658e67b2d9e0ac186e892da858f787e0f'
+sha256sums=('60ed21b27a6bff5815bf93573f04c2dc1fc8b7088539daa0f9ff242cfc966fb4'
             '77cd02b001f8d677ce0842eb3d93675a5762c7cedc96e5a915b247be1eaaa075'
-            '12a86354ac047496668aeab801504d3ce537bd43e1a820dd65602fed4e2d411d'
+            '909d3b1367badd29808ecedd60cfdb4884de8850366d537fc1c54e9e8662cd39'
             '498c39ad3cc46eab8232d5fa37627c27a27f843cbe9521f05f29b19def436e12')
 
 noextract=('wxgui.zip')
@@ -117,11 +116,11 @@ prepare()
 
   # submodule eranif-ctags
   rmdir ctags
-  ln -s ../eranif-ctags-52c724d ctags
+  ln -s ../${_ctags_pkg_name_ident} ctags
 
   # submodule eranif-dbgd to wxdap
   rmdir wxdap
-  ln -s ../eranif-dbgd-82d9bb8 wxdap
+  ln -s ../${_dbgd_pkg_name_ident} wxdap
 
   # apply patches
 

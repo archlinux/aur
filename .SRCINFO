@@ -1,6 +1,6 @@
 pkgbase = codelite-unstable
 	pkgdesc = Cross platform IDE for C, C++, Rust, Python, PHP and Node.js written in C++
-	pkgver = 16.2.0
+	pkgver = 16.4.0
 	pkgrel = 0
 	url = http://www.codelite.org/
 	arch = i686
@@ -27,13 +27,13 @@ pkgbase = codelite-unstable
 	optdepends = valgrind: debugger
 	conflicts = codelite
 	noextract = wxgui.zip
-	source = codelite-49783ba2e9cfbc83746098ce8d88efb2af54c116.tar.gz::https://github.com/eranif/codelite/archive/49783ba2e9cfbc83746098ce8d88efb2af54c116.tar.gz
+	source = codelite-16.4.0.tar.gz::https://github.com/eranif/codelite/archive/16.4.0.tar.gz
 	source = codelite-ctags.tar.gz::https://github.com/eranif/ctags/tarball/52c724d1132d78ea44894bfe2eaca44f38a9bd85
-	source = codelite-dbgd.tar.gz::https://github.com/eranif/dbgd/tarball/82d9bb8cdef440eef14c7ef484f21e0df812d103
+	source = codelite-dbgd.tar.gz::https://github.com/eranif/dbgd/tarball/cb1c8e4655ed96879f210efc7d2f2c039698b003
 	source = http://repos.codelite.org/wxCrafterLibs/wxgui.zip
-	sha256sums = 207651b0a06de5972f0b85aee4ed863658e67b2d9e0ac186e892da858f787e0f
+	sha256sums = 60ed21b27a6bff5815bf93573f04c2dc1fc8b7088539daa0f9ff242cfc966fb4
 	sha256sums = 77cd02b001f8d677ce0842eb3d93675a5762c7cedc96e5a915b247be1eaaa075
-	sha256sums = 12a86354ac047496668aeab801504d3ce537bd43e1a820dd65602fed4e2d411d
+	sha256sums = 909d3b1367badd29808ecedd60cfdb4884de8850366d537fc1c54e9e8662cd39
 	sha256sums = 498c39ad3cc46eab8232d5fa37627c27a27f843cbe9521f05f29b19def436e12
 
 pkgname = codelite-unstable
