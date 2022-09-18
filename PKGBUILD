@@ -2,25 +2,30 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cicero
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Unicode tool with a terminal user interface"
 arch=('x86_64')
 url="https://github.com/eyeplum/cicero-tui"
 license=('GPL3')
 depends=('fontconfig' 'freetype2')
-makedepends=('rust')
+makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('2aefc4f6dd9a96dddf08550495f2e30351ce76efabb5b8a99e4e2e74869d6bcbb3efd552376a9406e556f2eb0f28ef9fce8025b8fcad98bcf31fe69ab37049e4')
+sha512sums=('2ee127448af6058fec20e27fedb14aee700948d87e282d567df4c561c15719be12203fa460aeb0ee108182a4b485816910c6448467afded198e5aa16f323fb4b')
+
+prepare() {
+  cd "$pkgname-tui-$pkgver"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
   cd "$pkgname-tui-$pkgver"
-  cargo build --release --locked
+  cargo build --release --frozen
 }
 
 check() {
   cd "$pkgname-tui-$pkgver"
-  cargo test --release --locked
+  cargo test --frozen
 }
 
 package() {
