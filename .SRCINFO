@@ -1,0 +1,16 @@
+pkgbase = ja2-stracciatella
+	pkgdesc = Jagged Alliance 2 Stracciatella
+	pkgver = 0.19.1
+	pkgrel = 1
+	url = https://github.com/ja2-stracciatella/ja2-stracciatella
+	arch = x86_64
+	license = custom
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = ninja
+	depends = sdl2>2.0.6
+	depends = fltk
+	source = https://github.com/ja2-stracciatella/ja2-stracciatella/archive/refs/tags/v0.19.1.tar.gz
+	sha256sums = e9806755f471275b653408f5b1ffc6f1629e83ac2fe04370b8756ed6eb87fee7
+
+pkgname = ja2-stracciatella
