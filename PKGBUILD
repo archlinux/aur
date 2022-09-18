@@ -45,3 +45,5 @@ package() {
   mkdir -p "${pkgdir}"/usr/bin
   ln -sf /opt/Garlmap/garlmap "${pkgdir}/usr/bin/garlmap"
 }
+sha256sums=('SKIP'
+            '760758e0524a37e97649436f205448ec3ff42aed1db8515806312ece90ca20f3')
