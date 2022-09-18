@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 pkgname=git-gone
-pkgver=0.3.8
-pkgrel=3
+pkgver=0.4.0
+pkgrel=1
 pkgdesc='Prune stale local Git branches'
 arch=('i686' 'x86_64')
 url="https://codeberg.org/flausch/git-gone"
@@ -10,9 +10,7 @@ depends=('git' 'libgit2')
 conflicts=('git-gone-git')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=('5bd958ea26c0ea5fd94da7f2b035927b')
-sha1sums=('b7db56f92c71ba22a54127113a3e4205bd4f5c96')
-sha512sums=('dfe624aebc376062c43856a975f0e1a607b1046e77f544e398a3f67277ad402df7f0514cbec9c808a1c80028e1bc412cdfc664de476b1d33f927cdfde9c5282c')
+sha512sums=('2921a15a90e28967cc5aaec99a44f7be2151fb25f54f9a3e887c6c657c31314a351e2a0af1786b453d29257c1ba516e3e852ad63bebee394f4b74bbceb90802a')
 
 build() {
     cd "$pkgname"
