@@ -1,0 +1,10 @@
+pkgbase = 2048-terminal
+	pkgdesc = Terminal 2048 game written in C
+	pkgver = r3.5f43040
+	pkgrel = 1
+	url = https://github.com/mekb-turtle/2048
+	arch = any
+	source = 2048::git+https://github.com/mekb-turtle/2048.git
+	sha256sums = SKIP
+
+pkgname = 2048-terminal
