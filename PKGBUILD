@@ -2,7 +2,7 @@
 
 pkgname=clonehero-ptb
 pkgver=v1.0.0.3805
-pkgrel=2
+pkgrel=3
 pkgdesc=\
 'Public test build for Clone Hero. Clone Hero is a free rhythm game, which '\
 'can be played with any 5 or 6 button guitar controller, game controllers, '\
@@ -22,8 +22,8 @@ source=(
 sha256sums=(
 	'2f93e014817284ee0456eda49fa73579ef848c8bdfb8e069f335e022aa1e13d9'
 	'6d6d3e8e08ba65fedcc07a2d4ef8d5f6eabd4aec20dbc7e0febc6d58faff72bf'
-	'a2a4829d71d91d106a9c756d6323bfbf505e2757c83abba199a661728dccde9a'
-	'0f753537f49b0f924949c7805a3e086fa1a13f9075869afe59737b4e8c791dba'
+	'cd5f6a9ae2dd74f845d9cd5f1e5a4d2f95de661d4ce29ba8fb0d4231c97ef8e3'
+	'2aff1db59fb7aaadbad80675271f2bcfff8ddf873d69815c242333a0dd4d1fba'
 )
 install=clonehero.install
 

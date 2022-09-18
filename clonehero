@@ -1,27 +1,7 @@
 #!/bin/bash
 
-# Create/locate local user folder for the game.
-xdg_data_home="${XDG_DATA_HOME:-$HOME/.local/share}"
-dir="$xdg_data_home/clonehero"
-
-if ! mkdir -p "$dir"; then
-	echo "Failed to create directory at ´$dir'"
-	exit 1
-fi
-
-if ! cd "$dir"; then
-	echo "Failed to change to directory '$dir'"
-	exit 1
-fi
-
-# We have to copy the required files to get the game to run in a local user
-# directory. Symbolic linking leads to runtime errors, running with a different
-# working directory than the binary doesn't work either.
-cp -f '/opt/clonehero/clonehero' "$dir/clonehero"
-cp -f '/opt/clonehero/UnityPlayer.so' "$dir/UnityPlayer.so"
-rsync -a --delete '/opt/clonehero/clonehero_Data/' "$dir/clonehero_Data"
-
-# We won't touch neither the Custom/ nor Songs/ directories as those are
-# probably best left to the user to populate (or link to another folder).
-
-exec ./clonehero "$@"
+# We need to increase the open file limit otherwise the game eventually crashes
+# or softlocks with the log pointing to IOExceptions refering to "too many open
+# files".
+ulimit -Sn 8192
+exec /opt/clonehero/clonehero "$@"
