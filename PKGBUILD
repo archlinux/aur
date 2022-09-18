@@ -23,7 +23,7 @@ options=('!strip')
 source=("git+$cloneurl#tag=v$pkgver"
         'system-makedeps.patch')
 b2sums=('SKIP'
-        '3701e6163b8c584c2fc71352273769357cc289b9d298325bfd6cb86dd87196fcb53f416691074ef5e9279f084d24b93f2091bd49bb36a4a1be30c2846526b107')
+        'ea03064061fd97ce7a4ef218709c9897f1df57dc4a3e71c2df1ef19fb187dfa04922fff5e3cc4d29caa08fbc9ae7073317bdf4f66a687695a20a840c37b44787')
 
 prepare() {
   cd $pkgname
