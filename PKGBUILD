@@ -11,11 +11,11 @@ license=('GPLv3')
 provides=('devc')
 conflicts=('devc')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/nikaro/devc/releases/download/v1.0.0-beta.3/devc_1.0.0-beta.3_linux_arm64.tar.gz")
-sha256sums_aarch64=('48ee61fc6485df5a93b2b89d86e31e9f272d3de140a671e1bf887f90612581d0')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/nikaro/devc/releases/download/v1.0.0-beta.4/devc_1.0.0-beta.4_linux_arm64.tar.gz")
+sha256sums_aarch64=('8f38f1d01538da9412ec7636d10bd7e4abea7175457735a53f157a32c54e11c7')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/nikaro/devc/releases/download/v1.0.0-beta.3/devc_1.0.0-beta.3_linux_amd64.tar.gz")
-sha256sums_x86_64=('dd090be8e61b5845cb4582c6b25f000816966956d0659cbc4ae5969f62b75062')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/nikaro/devc/releases/download/v1.0.0-beta.4/devc_1.0.0-beta.4_linux_amd64.tar.gz")
+sha256sums_x86_64=('2239089e829c126595e4f14b864bcd06fbe4c2a30ee977e51333605d2cdca870')
 
 package() {
   install -Dm755 "./devc" "${pkgdir}/usr/bin/devc"
