@@ -1,4 +1,4 @@
-# Maintainer: Scott Hansen (firecat53) firecat4153 at gmail
+# Maintainer: Scott Hansen (firecat53) tech at firecat53 dot net
 pkgname=tabview-git
 pkgver=r226.77846ac
 pkgrel=1
