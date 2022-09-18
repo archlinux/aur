@@ -3,7 +3,7 @@
 pkgname=yacd-git
 _pkgname=yacd
 pkgver=0.3.6.r12.ge405512
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Yet Another Clash Dashboard'
 arch=('any')
@@ -11,7 +11,7 @@ _repo="haishanh/${_pkgname}"
 url="https://github.com/${_repo}"
 license=('GPL3')
 
-makedepends=('git' 'yarn')
+makedepends=('git' 'pnpm')
 optdepends=('clash:  A rule-based tunnel in Go'
             'sing-box: The universal proxy platform')
 provides=("$_pkgname")
@@ -27,7 +27,7 @@ pkgver() {
 
 build () {
   cd "$_pkgname"
-  yarn install && yarn build
+  pnpm i && pnpm build
 }
 
 package() {
