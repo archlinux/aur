@@ -1,18 +1,18 @@
-# Maintainer: Benoît Allard <benoit.allard@gnx.de>
+# Maintainer: Benoît Allard <benoit.allard@gmx.de>
 # Contributor: Oliver Mader <b52@reaktor42.de>
 
 pkgname=libcmaes
-pkgver=0.9.8
+pkgver=0.10
 pkgrel=1
 pkgdesc="libcmaes is a multithreaded C++11 library with Python bindings for high performance blackbox stochastic optimization using the CMA-ES algorithm for Covariance Matrix Adaptation Evolution Strategy."
-url="https://github.com/beniz/libcmaes"
+url="https://github.com/CMA-ES/libcmaes"
 arch=('x86_64' 'i686')
 license=('LGPLv3')
 depends=('gcc-libs')
 optdepends=('boost-libs: Python support' 'python-numpy: Python support')
 makedepends=('eigen' 'boost' 'python-numpy')
-source=("https://github.com/beniz/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('d3d1008c619669dfdfc4ac31372f2371')
+source=("https://github.com/CMA-ES/${pkgname}/archive/v${pkgver}.tar.gz")
+md5sums=('97a8e5b4ccbed04cfa00ad55a0c77c7f')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
