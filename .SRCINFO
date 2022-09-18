@@ -1,6 +1,6 @@
 pkgbase = hare
 	pkgdesc = The Hare programming language
-	pkgver = r2661.2a3bba86
+	pkgver = r2664.d34545f0
 	pkgrel = 1
 	url = https://harelang.org/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = hare
 	makedepends = scdoc
 	depends = qbe
 	depends = harec
-	source = hare::git+https://git.sr.ht/~sircmpwn/hare#commit=2a3bba8623e3c7c5f874ab429bbd278c760bb223
+	source = hare::git+https://git.sr.ht/~sircmpwn/hare#commit=d34545f0a7b228ae402bb2091c7b15548aee3e20
 	b2sums = SKIP
 
 pkgname = hare
