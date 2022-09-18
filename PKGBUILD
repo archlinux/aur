@@ -7,7 +7,7 @@
 ### PKGBUILD METADATA ###
 
 pkgname=webcord-git
-pkgver=3.8.1.r675.a906b04
+pkgver=3.8.3.r688.8f7c3a3
 pkgrel=2
 pkgdesc="A Discord and Fosscord client made with the Electron."
 arch=("any")
@@ -17,6 +17,11 @@ _author="SpacingBat3"
 
 url="https://github.com/${_author}/${_repo}"
 license=('MIT')
+optdepends=(
+  'xdg-desktop-portal-impl: Screen share UI and other portals under Wayland'
+  'pipewire: WebRTC screen sharing under Wayland'
+  'org.freedesktop.secrets: Encryption using stored key in the secret service'
+)
 makedepends=('npm' 'git' 'imagemagick' 'typescript' 'asar')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
