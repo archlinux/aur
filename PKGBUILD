@@ -1,5 +1,5 @@
-# Packager: Rocky Prabowo <rocky at lazycats dot id>
-# Maintainer: Rocky Prabowo <rocky at lazycats dot id>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor : Rocky Prabowo <rocky at lazycats dot id>
 
 _pkgbase='nerd-fonts'
 _font_name='Meslo'
@@ -8,7 +8,7 @@ _font_pkgname='meslo'
 _nerdfonts_source='Meslo.zip'
 
 pkgname=${_pkgbase}-${_font_pkgname}
-pkgver=2.1.0
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Standalone ${_font_name} (${_font_pkgbase}) patched font from the ${_pkgbase} library"
 arch=("any")
@@ -20,8 +20,8 @@ conflicts=( ${_pkgbase}-git ${_pkgbase}-complete )
 groups=( ${_pkgbase} )
 source=("https://github.com/ryanoasis/${_pkgbase}/releases/download/v${pkgver}/${_nerdfonts_source}"
         "https://github.com/ryanoasis/${_pkgbase}/raw/v${pkgver}/LICENSE")
-sha1sums=('6f1a11b0b8a2560ed35fec89dac5958d100919ec'
-          '92fdad3c8babc0473da5f03e41fb1151417ab386')
+sha1sums=('d57d073835504b217c4a2c13042ad637eed947e0'
+          '3175046f10fc45ffaaf96f5e4023d12316db0688')
 
 package() {
   find . -iname "*.otf" -not -iname "*Windows Compatible.otf" -execdir install -Dm644 {} "${pkgdir}/usr/share/fonts/OTF/{}" \;
