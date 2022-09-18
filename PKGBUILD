@@ -2,7 +2,7 @@
 
 pkgname=monitorix-git
 _pkgname=Monitorix
-pkgver=3.10.0.r48.gf260e1c
+pkgver=3.14.0.r121.g9dbbd4c
 pkgrel=1
 pkgdesc='A lightweight system monitoring tool that uses rrd databases.'
 arch=('any')
@@ -24,7 +24,7 @@ conflicts=('monitorix')
 replaces=('monitorix')
 backup=("etc/monitorix/monitorix.conf")
 install=readme.install
-source=("git://github.com/mikaku/$_pkgname")
+source=("git+https://github.com/mikaku/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
