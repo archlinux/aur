@@ -2,7 +2,7 @@
 
 pkgname=visidata-git
 pkgver=2.10.1.g987fd75f
-pkgrel=1
+pkgrel=2
 pkgdesc='A console spreadsheet tool for discovering and arranging data'
 arch=('any')
 url='http://visidata.org/'

@@ -1,7 +1,7 @@
 pkgbase = visidata-git
 	pkgdesc = A console spreadsheet tool for discovering and arranging data
 	pkgver = 2.10.1.g987fd75f
-	pkgrel = 1
+	pkgrel = 2
 	url = http://visidata.org/
 	arch = any
 	license = GPLv3
