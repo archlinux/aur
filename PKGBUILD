@@ -1,8 +1,8 @@
 # Maintainer: varsity <varsity@duck.com>
 pkgname=hybrid-bar-git
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
-makedepends=('rust' 'cargo' 'git')
+makedepends=('rust' 'cargo' 'git' 'wget')
 depends=('gtk3' 'gtk-layer-shell')
 url="https://github.com/vars1ty/HybridBar"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -28,6 +28,7 @@ check() {
 }
 
 package() {
-  pwd
+  mkdir -p ~/.config/HybridBar/
+  wget https://github.com/vars1ty/HybridBar/raw/main/examples/config.json -P ~/.config/HybridBar/
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/hybrid-bar"
 }
