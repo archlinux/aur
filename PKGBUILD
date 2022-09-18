@@ -2,7 +2,7 @@
 
 pkgname=ncspot-cover
 _pkgname=ncspot
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc='Cross-platform ncurses Spotify client written in Rust, inspired by ncmpc and the likes. Built with the `cover` feature.'
 arch=('x86_64' 'aarch64' 'armv7h')
