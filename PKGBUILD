@@ -3,11 +3,11 @@
 
 pkgname=kos
 pkgver=0.0.37
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple SUID tool written in C++'
 arch=('x86_64')
 url='https://github.com/TruncatedDinosour/kos'
-license=('custom:ArAr2')
+license=('GPL3')
 provides=('kos')
 conflicts=('kos')
 optdepends=('bash'

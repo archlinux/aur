@@ -1,11 +1,11 @@
 pkgbase = kos
 	pkgdesc = A simple SUID tool written in C++
 	pkgver = 0.0.37
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TruncatedDinosour/kos
 	install = kos.install
 	arch = x86_64
-	license = custom:ArAr2
+	license = GPL3
 	makedepends = clang
 	makedepends = pkgconf
 	depends = libxcrypt
