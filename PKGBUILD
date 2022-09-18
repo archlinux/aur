@@ -13,7 +13,7 @@
 # Marco Trevisan: <https://salsa.debian.org/gnome-team/mutter/-/blob/ubuntu/master/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch>
 
 pkgname=mutter-x11-scaling
-pkgver=42.4
+pkgver=42.5
 pkgrel=1
 pkgdesc="A window manager for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -29,7 +29,7 @@ checkdepends=(xorg-server-xvfb wireplumber python-dbusmock)
 provides=(mutter libmutter-10.so)
 conflicts=(mutter)
 _scaling_commit=c3ca443d49da639e73f27ab92a758a41259ba732 # Commit c3ca443d
-_commit=9a25838e4e3f705b69b7f2e0bf22e970d8829f1f  # tags/42.4^0
+_commit=4b35c269c7ad2515f91d2d3ccaea7526e0cb5f97  # tags/42.5^0
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
 	"x11-Add-support-for-fractional-scaling-using-Randr.patch::https://salsa.debian.org/gnome-team/mutter/-/raw/$_scaling_commit/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch"
 	"Support-Dynamic-triple-double-buffering.patch::https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/11525ce32c13b542bbfcb7f43a76d51111077cea/Support-Dynamic-triple-double-buffering.patch")
@@ -62,9 +62,9 @@ build() {
 }
 
 _check() (
-  mkdir -p -m 700 "${XDG_RUNTIME_DIR:=$PWD/runtime-dir}"
-  glib-compile-schemas "${GSETTINGS_SCHEMA_DIR:=$PWD/build/data}"
-  export XDG_RUNTIME_DIR GSETTINGS_SCHEMA_DIR
+  export XDG_RUNTIME_DIR="$PWD/rdir" GSETTINGS_SCHEMA_DIR="$PWD/build/data"
+  mkdir -p -m 700 "$XDG_RUNTIME_DIR"
+  glib-compile-schemas "$GSETTINGS_SCHEMA_DIR"
 
   pipewire &
   _p1=$!
