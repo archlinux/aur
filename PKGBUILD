@@ -2,7 +2,7 @@
 
 _pkgname=mayo
 pkgname=mayo-git
-pkgver=0.5.2.r0.g2f9229e
+pkgver=0.6.0.r0.ge55c5ee
 pkgrel=1
 pkgdesc="3D CAD viewer and converter based on Qt and OpenCascade (git version)"
 arch=('any')
