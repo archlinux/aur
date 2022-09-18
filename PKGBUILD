@@ -13,8 +13,8 @@ pkgdesc="A fast and simple GTK+ Image Viewer"
 arch=('any')
 url="https://gitlab.com/thomasross/mirage"
 license=('GPL3')
-replaces=("${pkgname}")
-conflicts=("${pkgname}")
+replaces=("${pkgname}-python3")
+conflicts=("${pkgname}-python3")
 depends=('python' 'gtk3' 'python-gobject' 'python-cairo' 'libgexiv2')
 source=("${pkgname}-${pkgver}.tar.bz2::https://gitlab.com/thomasross/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.bz2"
         "${pkgname}-${pkgver}-${_debian_pkgrel}.debian.tar.xz::https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/${pkgname}/${pkgver}-${_debian_pkgrel}/${pkgname}_${pkgver}-${_debian_pkgrel}.debian.tar.xz"
