@@ -2,14 +2,14 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-binstall-git
-pkgver=0.12.0.r0.g4500e4a
+pkgver=0.13.1.r3.g7816b21
 pkgrel=1
 pkgdesc="Binary installation for Rust projects (git)"
 arch=('x86_64')
 url="https://github.com/cargo-bins/cargo-binstall"
 license=('GPL3')
-depends=('xz' 'bzip2')
-makedepends=('cargo' 'git' 'cmake' 'clang')
+depends=('gcc-libs')
+makedepends=('cargo' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}")
