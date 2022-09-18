@@ -2,7 +2,7 @@
 
 pkgname=fightcade2
 pkgver=2.1.33
-pkgrel=1
+pkgrel=2
 pkgdesc='The best way to play your favorite retro games with or against any other player in the world.'
 url='https://www.fightcade.com/'
 arch=('any')
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 _romsPkgname="$pkgname-roms"
 
 createShellFiles() {
-	cat << 'EOF' > $srcdir/Fightcade/start.sh
+	cat << 'EOF' > $srcdir/Fightcade/Fightcade2.sh
 #!/bin/bash
 
 fightcadeUserFolderName="fightcade2"
@@ -53,20 +53,24 @@ fi
 
 compareVersion "$newVersion" "$oldVersion"
 hasNewVersion=$?
+echo "$oldVersion -> $newVersion"
 
 if [ ! -f "$fightcadeUserFolderPath/Fightcade2.sh" ] || [ "$hasNewVersion" -eq "1" ] 
 then
+    echo "New version: $newVersion"
+    notify-send "Fightcade" "Updating new version $newVersion... please wait"
     mkdir -p "$fightcadeUserFolderPath"
     rsync -r --copy-links $fightcadeInstallFolder/* $fightcadeUserFolderPath
 fi
 
-sh "$fightcadeUserFolderPath/Fightcade2.sh"
+sh "$fightcadeUserFolderPath/_Fightcade2.sh"
 EOF
 }
 
 prepare() {
-	gendesk -n -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name "Fightcade 2" --exec "/opt/$pkgname/start.sh"
-	gendesk -n -f --pkgname "$_romsPkgname" --name "Fightcade 2 ROMs Folder" --exec "/opt/$pkgname/start.sh roms"
+	gendesk -n -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name "Fightcade" --exec "/opt/$pkgname/Fightcade2.sh"
+	gendesk -n -f --pkgname "$_romsPkgname" --name "Fightcade ROMs Folder" --exec "/opt/$pkgname/Fightcade2.sh roms"
+	mv "$srcdir/Fightcade/Fightcade2.sh" "$srcdir/Fightcade/_Fightcade2.sh"
 	createShellFiles
 }
 
@@ -78,5 +82,6 @@ package() {
 	install -Dm644 "$srcdir/$_romsPkgname.desktop" "$pkgdir/usr/share/applications/$_romsPkgname.desktop"
 	msg "Copying files..."
 	rsync -r -I --copy-links $srcdir/Fightcade/* $pkgdir/opt/$pkgname/
-	chmod +x $pkgdir/opt/$pkgname/start.sh
+	chmod +x $pkgdir/opt/$pkgname/Fightcade2.sh
+	chmod +x $pkgdir/opt/$pkgname/_Fightcade2.sh
 }
