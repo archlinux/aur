@@ -9,8 +9,8 @@ license=('LGPL3')
 conflicts=('vim-spell-id')
 
 makedepends=('git')
-#source=('hunspell-id::git+https://github.com/shuLhan/hunspell-id.git')
-source=('hunspell-id::git+file:///home/ms/src/hunspell-id')
+source=('hunspell-id::git+https://github.com/shuLhan/hunspell-id.git')
+#source=('hunspell-id::git+file:///home/ms/src/hunspell-id')
 sha256sums=('SKIP')
 
 pkgver() {

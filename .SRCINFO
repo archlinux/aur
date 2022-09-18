@@ -7,7 +7,7 @@ pkgbase = hunspell-id-git
 	license = LGPL3
 	makedepends = git
 	conflicts = vim-spell-id
-	source = hunspell-id::git+file:///home/ms/src/hunspell-id
+	source = hunspell-id::git+https://github.com/shuLhan/hunspell-id.git
 	sha256sums = SKIP
 
 pkgname = hunspell-id-git
