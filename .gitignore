@@ -1,0 +1,5 @@
+/src/
+/pkg/
+/mirage-*.pkg.tar.*
+
+/mirage-*.tar.*

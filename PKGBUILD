@@ -1,38 +1,58 @@
-# Maintainer: Dmytro Meleshko <dmytro.meleshko@gmail.com>
+# Maintainer: Dmytro Meleshko <dmytro dot meleshko at gmail dot com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Scott Horowitz <stonecrest@gmail.com>
 # Contributor: James Rayner <james@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
+# NOTE: DON'T FORGET TO CHECK IF THE DEBIAN PACKAGE HAS BEEN UPDATED!!!
 
 pkgname=mirage
-pkgver=1.0_pre2
-pkgrel=4
-pkgdesc="A simple GTK+ Image Viewer"
-url="https://sourceforge.net/projects/mirageiv.berlios/"
-license=('GPL')
-depends=('pygtk' 'libexif')
-optdepends=('gnome-python: toolbar setting support in GNOME')
-arch=('x86_64')
-source=(http://downloads.sourceforge.net/project/mirageiv.berlios/${pkgname}-${pkgver}.tar.bz2
-        exif.patch
-        exif.c)
-install=$pkgname.install
-sha256sums=('6b5b0011f41daec3653c464e47fd225e52b741fcad8870960e0a94662a2fdda7'
-            'a669be216365c84bc1f4dc3d08ee97ed0b0eee083c0293004a3f2772f9e177bd'
-            'ed965fcf26cc1ca8ddea7eec8bc44a19d2c73e495235f9b015f9ee405ccce95f')
+pkgver=0.11.1
+pkgrel=1
+_debian_pkgrel=1build4
+pkgdesc="A fast and simple GTK+ Image Viewer"
+arch=('any')
+url="https://gitlab.com/thomasross/mirage"
+license=('GPL3')
+replaces=("${pkgname}")
+conflicts=("${pkgname}")
+depends=('python' 'gtk3' 'python-gobject' 'python-cairo' 'libgexiv2')
+source=("${pkgname}-${pkgver}.tar.bz2::https://gitlab.com/thomasross/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.bz2"
+        "${pkgname}-${pkgver}-${_debian_pkgrel}.debian.tar.xz::https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/${pkgname}/${pkgver}-${_debian_pkgrel}/${pkgname}_${pkgver}-${_debian_pkgrel}.debian.tar.xz"
+        "${pkgname}.patch"
+        "${pkgname}-python310-fixes.patch")
+sha256sums=('2932f7e9e6a1da7785cae2664669eff6f12ca26163afb3d1a3c8e1cc3255e5ec'
+            'a818b922af4b6c9fe4aa54f04988e34f922628fc2a942c78bbc357e396e7b304'
+            '2de9c32689e1b0d2c559ea68b5eca4f0b37a53ddd8687b7a9c36b51c11ffee6b'
+            '485546cf69a018ff5580af3f8aef921fe99624034f9e1915958285f5d8524a4d')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  patch --forward --strip=1 --input="${srcdir}/exif.patch"
-  cp "${srcdir}/exif.c" .
+  patch --forward --strip=1 --input="${srcdir}/${pkgname}.patch"
+  patch --forward --strip=1 --input="${srcdir}/${pkgname}-python310-fixes.patch"
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
-  python2 setup.py build
+
+  cp "${srcdir}/debian/${pkgname}.1" .
+
+  local po_file; for po_file in po/*.po; do
+    local po_file_lang="$(basename "$po_file" .po)"
+    if [[ "$po_file_lang" != "messages" ]]; then
+      local mo_file_dir="mo/${po_file_lang}"
+      mkdir -p "$mo_file_dir"
+      local mo_file="${mo_file_dir}/${pkgname}.mo"
+      echo "generating ${mo_file}"
+      msgfmt "$po_file" -o "$mo_file"
+    fi
+  done
+
+  glib-compile-resources --sourcedir="resources" --target="io.thomasross.${pkgname}.gresource" "resources/${pkgname}.gresource.xml"
+
+  python setup.py build
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
-  python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
