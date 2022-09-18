@@ -6,7 +6,7 @@ arch=("any")
 url="https://github.com/zeroxoneafour/arch-secureboot"
 pkgdesc="A set of helper scripts for secure boot with Grub2 and Shim"
 license=("MIT")
-depends=("openssl" "grub" "shim-signed" "sbsigntools")
+depends=("openssl" "grub" "shim-signed" "sbsigntools" "efibootmgr")
 source=("$_pkgname::git+https://github.com/zeroxoneafour/arch-secureboot")
 sha256sums=("SKIP")
 
