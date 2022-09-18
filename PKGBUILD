@@ -1,7 +1,7 @@
-# Maintainer: Benoît Allard <benoit.allard@gnx.de>
+# Maintainer: Benoît Allard <benoit.allard@gmx.de>
 pkgname=python-optuna
-pkgver=2.10.0
-pkgrel=3
+pkgver=3.0.2
+pkgrel=1
 pkgdesc="A hyperparameter optimization framework"
 arch=('any')
 url="https://optuna.org"
@@ -19,7 +19,7 @@ depends=("python"
 optdepends=() # Too many to list here
 _name=${pkgname#python-}
 source=("$pkgname-$pkgver.tar.gz::https://github.com/optuna/$_name/archive/v$pkgver.tar.gz")
-md5sums=('e2eccd727e531b65408b51e8515ed04c')
+md5sums=('062f4fd7b20273ecd06e7653b2d8a279')
 
 build() {
     cd $_name-$pkgver
