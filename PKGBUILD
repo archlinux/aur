@@ -1,22 +1,28 @@
-# Maintainer: Alex S. shantanna_at_hotmail_dot_com>
+# Maintainer: Francois Menning <f.menning@pm.me>
+# Contributer: Alex S. shantanna_at_hotmail_dot_com>
 
 pkgname=gnome-shell-extension-status-area-horizontal-spacing
-pkgver=2.6
+pkgver=2.8
 pkgrel=1
-pkgdesc="This is a GNOME shell extension that reduces the horizontal spacing between status area icons (top-right of the panel: volume indicator, etc)."
+pkgdesc="Reduces the horizontal spacing between icons/indicators in the status area"
 arch=('any')
-url="https://gitlab.com/p91paul/status-area-horizontal-spacing-gnome-shell-extension"
-license=('unknow')
+url="https://gitlab.com/p91paul/status-area-horizontal-spacing-gnome-shell-extension.git"
+license=('custom')
 depends=('gnome-shell')
-source=('git+https://gitlab.com/p91paul/status-area-horizontal-spacing-gnome-shell-extension.git')
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname}::git+${url}#tag=v2.8")
 sha256sums=('SKIP')
 
+build() {
+  cd "$srcdir/${pkgname%-git}"
+  make all
+}
+
 package() {
-	_uuid='status-area-horizontal-spacing@mathematical.coffee.gmail.com'
+  cd "$srcdir/${pkgname%-git}"
 
-	cd status-area-horizontal-spacing-gnome-shell-extension
-	make
-	install -d "${pkgdir}/usr/share/gnome-shell/extensions"
-
-	cp -af "${_uuid}" "${pkgdir}/usr/share/gnome-shell/extensions/"
+  install -dm755 "${pkgdir}/usr/share/gnome-shell/extensions"
+  cp -a "status-area-horizontal-spacing@mathematical.coffee.gmail.com" "${pkgdir}/usr/share/gnome-shell/extensions"
 }
