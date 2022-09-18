@@ -1,9 +1,9 @@
 # Maintainer: Posi<posi1981@gmail.com>
 pkgname=betterbird-zh-bin
 _pkgname=betterbird
-pkgver=91.13.0
-_build=bb36
-pkgrel=3
+pkgver=91.13.1
+_build=bb37
+pkgrel=1
 pkgdesc="CHINESE // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will."
 arch=('x86_64')
 url="https://www.betterbird.eu/index.html"
@@ -33,6 +33,6 @@ package() {
             "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png
     done
 }
-sha256sums=('645bf43d8ee3b375d7e1815cc2a34ac39d86479f1c4ee42b33a078e7aa458b8f'
-        '547fedbeb8895e5dd7132f483b3fc8b9140c56a5f081cc2e31cff57e8cb02b93')
+sha256sums=('8a03f73f6a5ad9ba6c559602ea969ce0f6e26bc39597a6e2e73e79794ae05f98'
+        '476744b7ea8f945d7e33ef58196ba3a53f317bcebcd69795cda0f7618d3db6f3')
 
