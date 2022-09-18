@@ -1,6 +1,6 @@
 pkgbase = ruby-dry-container
 	pkgdesc = A simple container intended for use as an IoC container
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/dry-rb/dry-container
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = ruby-dry-container
 	depends = ruby
 	depends = ruby-concurrent
 	options = !emptydirs
-	source = ruby-dry-container::git+https://github.com/dry-rb/dry-container#commit=ad67e5b8f3f8e0717ee67bd13a477ace5fd66131
+	source = ruby-dry-container::git+https://github.com/dry-rb/dry-container#commit=eff66c2e4bac92d9e888a8900c9f711a21913949
 	b2sums = SKIP
 
 pkgname = ruby-dry-container
