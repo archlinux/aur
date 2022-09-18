@@ -5,15 +5,15 @@
 # Contributor: Mark Taylor <skymt0@gmail.com>
 
 pkgname=clex
-pkgver=4.6.patch10
-pkgrel=3
+pkgver=4.7
+pkgrel=1
 pkgdesc="File manager with a full-screen user interface"
 arch=('i686' 'x86_64')
-url="http://www.clex.sk"
+url="https://github.com/xitop/clex"
 license=('GPL2')
 depends=('ncurses')
-source=($url/download/$pkgname-$pkgver.tar.gz)
-sha256sums=('1c3aa2a37e858359636fa8e82229e2bb5459548e9820266a3efd9e32318cd10e')
+source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz)
+sha256sums=('dd8ddac89132f691cb4d449e5d879e91355da29c0a2d9f2f55c55aacb2059e93')
 
 build() {
   cd "$pkgname-$pkgver"
