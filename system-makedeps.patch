@@ -2,11 +2,10 @@ diff --git a/build.bash b/build.bash
 index 9f72c04..6462b11 100755
 --- a/build.bash
 +++ b/build.bash
-@@ -32,10 +32,7 @@
- 
+@@ -33,9 +33,7 @@
  outd=$1
  srcd=$(dirname $0)
--mudir=$outd/mupdf
+ mudir=$outd/mupdf
 -muinc="-I $mudir/include -I $mudir/thirdparty/freetype/include"
 -
 -test -d $mudir || die muPDF wasn\'t found in $outd/, consult $srcd/BUILDING
@@ -14,7 +13,7 @@ index 9f72c04..6462b11 100755
  
  mkdir -p $outd/{$wsid,lablGL}
  
-@@ -45,8 +42,7 @@
+@@ -45,8 +43,7 @@
  test -n "${gmk:-}" && gmk=false || gmk=true
  
  mulibs="$mudir/build/$mbt/libmupdf.a $mudir/build/$mbt/libmupdf-third.a"
@@ -24,7 +23,7 @@ index 9f72c04..6462b11 100755
  
  oincs() {
      local b=$1 incs
-@@ -85,7 +81,7 @@
+@@ -85,7 +82,7 @@
          version.o) f=-DLLPP_VERSION=$ver;;
          lablGL/*.o) f="-g -Wno-pointer-sign -Werror -O2";;
          link.o)
@@ -33,7 +32,7 @@ index 9f72c04..6462b11 100755
              test "${mbt-}" = "debug" || f+="-O2 "
              $darwin && f+="-DMACOS -D_GNU_SOURCE -DGL_H='<OpenGL/gl.h>'" \
                      || f+="-D_POSIX_C_SOURCE -DGL_H='<GL/gl.h>'"
-@@ -104,39 +100,6 @@
+@@ -104,39 +101,6 @@
  }
  
  overs=$(ocamlc -vnum 2>/dev/null) || overs=""
@@ -73,7 +72,7 @@ index 9f72c04..6462b11 100755
  
  while read k v; do
      case "$k" in
-@@ -307,7 +270,7 @@
+@@ -307,7 +271,7 @@
  done
  
  libs="str.cma unix.cma"
