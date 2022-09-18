@@ -23,7 +23,8 @@ prepare() {
 #  make toml-gen
 
 #  export RUSTUP_TOOLCHAIN=stable
-#  cargo fetch --target "$CARCH-unknown-linux-gnu"
+  export RUSTUP_TOOLCHAIN=1.41.0
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
