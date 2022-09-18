@@ -1,0 +1,18 @@
+pkgbase = remake-git
+	pkgdesc = Enhanced GNU Make - tracing, error reporting, debugging, profiling and more
+	pkgver = r3131.7619a012
+	pkgrel = 1
+	url = http://bashdb.sourceforge.net/remake/
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = patch
+	depends = glibc
+	depends = guile
+	provides = remake=r3131.7619a012
+	conflicts = remake
+	source = remake::git+https://github.com/rocky/remake.git
+	sha256sums = SKIP
+
+pkgname = remake-git

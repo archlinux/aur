@@ -1,0 +1,5 @@
+###.gitignore was last modified on September 18, 2022 at 05:47 PM EDT by bms###
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
