@@ -1,15 +1,15 @@
 pkgbase = deta-bin
 	pkgdesc = Command line interface for managing Deta micros and deployments
-	pkgver = 1.3.2_beta
+	pkgver = 1.3.3_beta
 	pkgrel = 1
 	url = https://github.com/deta/deta-cli
 	arch = x86_64
 	arch = aarch64
 	license = unknown
 	provides = deta
-	source_x86_64 = deta-1.3.2_beta-x86_64.zip::https://github.com/deta/deta-cli/releases/download/v1.3.2-beta/deta-x86_64-linux.zip
-	sha512sums_x86_64 = d5af5868e7454980a096df612d80190d3cbbd93e0bd741fc8fc344f6888aa277126190ac51ca3d987bf78f1029ca9ea345c506c571ffc71b08781713709c7da8
-	source_aarch64 = deta-1.3.2_beta-aarch64.zip::https://github.com/deta/deta-cli/releases/download/v1.3.2-beta/deta-arm64-linux.zip
-	sha512sums_aarch64 = cf1bca448b44acdc11b4c243c4dd909b7223f55512614df852fc427eb40db30f14e27421126ca943bf57dea1db896d974014da5632a8fd8fe6aa7695874d59af
+	source_x86_64 = deta-1.3.3_beta-x86_64.zip::https://github.com/deta/deta-cli/releases/download/v1.3.3-beta/deta-x86_64-linux.zip
+	sha512sums_x86_64 = 9be8b52ca8e02f92fa3c4fe240209ea9b3a8d231972a5012250f0dccfa4c7b69bbd4ffd41e3b1c1d059154a30415e6fe6793278790fcb9898296e934876b4498
+	source_aarch64 = deta-1.3.3_beta-aarch64.zip::https://github.com/deta/deta-cli/releases/download/v1.3.3-beta/deta-arm64-linux.zip
+	sha512sums_aarch64 = 84b42412d6e8e7afaa66055d84e30210499d7a9a267f127f2874e1960de86a045c437749355e0b61dd308fb732a2ca1ca20314b461c2ee002dcde12394ca4b05
 
 pkgname = deta-bin
