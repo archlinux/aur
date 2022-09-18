@@ -1,4 +1,4 @@
-# Maintainer: Scott Hansen (firecat53) firecat4153 at gmail dot com
+# Maintainer: Scott Hansen (firecat53) tech at firecat53 dot net
 
 _pkgname=keepmenu
 _gitname=keepmenu
