@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs' 'zlib' 'openssl' 'ncurses')
 makedepends=('rust' 'pkg-config')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~julienxx/asuka/archive/$pkgver.tar.gz")
-sha256sums=('1305d65e07e83fe33ca102637fa27f8dafae9a9aaa436414c29532c4ed51c6ea')
+sha512sums=('0b26d5fbc38e8bf16cf2eaad68a62a710870ce17bf1a4b577c96c0f99427c13e80fd67d7bec3672ce83dc1ed3df4dc44baa517a1ef21534c64e30613338f3eb0')
 
 prepare() {
   cd $pkgname-$pkgver
