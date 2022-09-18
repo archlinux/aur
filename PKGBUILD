@@ -2,7 +2,7 @@
 
 pkgname=keepmenu
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="dmenu/rofi frontend for KeePass databases"
 arch=('any')
 url="https://github.com/firecat53/keepmenu"
