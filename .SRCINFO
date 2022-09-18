@@ -1,6 +1,6 @@
 pkgbase = headsetkontrol
 	pkgdesc = Interface for HeadsetControl (by Sapd) written with Kirigami and KDE Framework
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://gitlab.com/TheBill2001/HeadsetKontrol
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = headsetkontrol
 	depends = headsetcontrol
 	conflicts = headsetkontrol-git
 	conflicts = headsetkontrol-bin
-	source = https://gitlab.com/TheBill2001/HeadsetKontrol/-/archive/v1.0.2/HeadsetKontrol-v1.0.2.tar.gz
-	sha256sums = 28cc2ef0ea766250cb9b3fef9109c271328282859975d21cc4fccb77a72e99f7
+	source = https://gitlab.com/TheBill2001/HeadsetKontrol/-/archive/v1.0.3/HeadsetKontrol-v1.0.3.tar.gz
+	sha256sums = 37b3c09e2f28b2f6b7360918811babef970afc0849c5c2e4853f5ace811379ed
 
 pkgname = headsetkontrol
