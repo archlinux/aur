@@ -1,6 +1,6 @@
 pkgbase = python-openml
 	pkgdesc = python interface for OpenML
-	pkgver = 0.11.0
+	pkgver = 0.12.2
 	pkgrel = 1
 	url = http://openml.org/
 	arch = any
@@ -17,8 +17,7 @@ pkgbase = python-openml
 	depends = python-numpy
 	depends = python-minio
 	depends = python-pyarrow
-	source = https://files.pythonhosted.org/packages/a4/5d/30ce4d1af609ba389d55654e6a7271619253dbbe7006a33bb20c703f0234/openml-0.11.0.tar.gz
-	sha256sums = 935a457e7a3fd07412a873621bd710f80277e94a8f396207d8fcd3e66f2795c8
+	source = https://files.pythonhosted.org/packages/source/o/openml/openml-0.12.2.tar.gz
+	sha256sums = cefb4792ca12ee87ab3acc5e5afb4e9d205c398621e2424f2f5de1564cfee849
 
 pkgname = python-openml
-
