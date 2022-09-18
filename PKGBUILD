@@ -1,9 +1,9 @@
 # Maintainer: Jasper Young <jasper.c.young@gmail.com>
 pkgname=jasper-i3blocks-blocklets-git
-pkgver=18092022.37c5601
+pkgver=18092022.37c5601.1
 pkgrel=1
 #epoch=
-pkgdesc="Jasper's personal blocklets for i3blocks"
+pkgdesc="Jasper's blocklets for i3blocks"
 arch=('x86_64')
 url="https://github.com/jasper1378/i3blocks-blocklets"
 license=('MIT')

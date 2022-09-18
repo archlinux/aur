@@ -1,6 +1,6 @@
 pkgbase = jasper-i3blocks-blocklets-git
-	pkgdesc = Jasper's personal blocklets for i3blocks
-	pkgver = 18092022.37c5601
+	pkgdesc = Jasper's blocklets for i3blocks
+	pkgver = 18092022.37c5601.1
 	pkgrel = 1
 	url = https://github.com/jasper1378/i3blocks-blocklets
 	arch = x86_64
