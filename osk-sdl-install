@@ -28,55 +28,19 @@ build() {
     add_file /etc/osk.conf
 
     # add DRI drivers so we can have hw accel
-    DRI_driver=/usr/lib/dri/vmgfx_dri.so
-    if [ -f "$DRI_driver" ]; then
-        add_binary "$DRI_driver"
-    fi
-    DRI_driver=/usr/lib/dri/virtio_gpu_dri.so
-    if [ -f "$DRI_driver" ]; then
-        add_binary "$DRI_driver"
-    fi
-    DRI_driver=/usr/lib/dri/i965_drv_video.so
-    if [ -f "$DRI_driver" ]; then
-        add_binary "$DRI_driver"
-    fi
-    DRI_driver=/usr/lib/dri/iris_dri.so
-    if [ -f "$DRI_driver" ]; then
-        add_binary "$DRI_driver"
-    fi
-    DRI_driver=/usr/lib/dri/nouveau_dri.so
-    if [ -f "$DRI_driver" ]; then
-        add_binary "$DRI_driver"
-    fi
-    DRI_driver=/usr/lib/dri/r300_dri.so
-    if [ -f "$DRI_driver" ]; then
-        add_binary "$DRI_driver"
-    fi
-    DRI_driver=/usr/lib/dri/r600_dri.so
-    if [ -f "$DRI_driver" ]; then
-        add_binary "$DRI_driver"
-    fi
-    DRI_driver=/usr/lib/dri/radeonsi_dri.so
-    if [ -f "$DRI_driver" ]; then
-        add_binary "$DRI_driver"
-    fi
-    DRI_driver=/usr/lib/dri/zink_dri.so
-    if [ -f "$DRI_driver" ]; then
-        add_binary "$DRI_driver"
-    fi
-    DRI_driver=/usr/lib/dri/kms_swrast_dri.so
-    if [ -f "$DRI_driver" ]; then
-        add_binary "$DRI_driver"
-    fi
+    libdir=/usr/lib
+    DRI_drivers="vmgfx_dri.so virtio_gpu_dri.so i965_drv_video.so iris_dri.so nouveau_dri.so r300_dri.so r600_dri.so radeonsi_dri.so zink_dri.so kms_swrast_dri.so"
+    for so in $DRI_drivers; do
+      if [ -f "libdir/dri/$so" ]; then
+          add_binary "$libdir/dri/$so"
+      fi
+    done
 
-    GL_library=/usr/lib/libGLESv2.so.2
-    if [ -f "$GL_library" ]; then
-        add_binary "$GL_library"
-    fi
+    add_binary "$libdir/libGLESv2.so.2"
 
-    add_binary /usr/lib/libGL.so.1
-    add_binary /usr/lib/libEGL.so.1
-    add_binary /usr/lib/libEGL_mesa.so.0
+    find -L "$libdir" -name "libGL*.so*" -o -name "libEGL*.so*" -o -name "libEGL_mesa.so*" -type f | while read -r so; do
+       add_binary "$so"
+    done
 
     [ -f /usr/share/glvnd/egl_vendor.d/50_mesa.json ] && add_file /usr/share/glvnd/egl_vendor.d/50_mesa.json
 
