@@ -1,0 +1,15 @@
+pkgbase = donut-ramanathan
+	pkgdesc = Packaging the donut.c script
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/wonder-coconut/donut.git
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = make
+	depends = glibc
+	provides = donut
+	source = git+https://github.com/wonder-coconut/donut.git
+	md5sums = SKIP
+
+pkgname = donut-ramanathan
