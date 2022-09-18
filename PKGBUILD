@@ -1,23 +1,25 @@
-# Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
+# Maintainer: olddog <jeff@impcode.com>
+# Contributer: Carsten Feuls <archlinux@carstenfeuls.de>
 
 pkgname=pg_backup_ctl
-pkgver=b11948d
+pkgver=r159.5c5bd4e
 pkgrel=1
-pkgdesc='A shell script to manage PostgreSQL archiving and basebackups'
+pkgdesc='A tool to manage PostgreSQL archiving and basebackups'
 arch=('any')
 url='https://github.com/credativ/pg_backup_ctl'
 license=('BSD')
-depends=('git')
+depends=('bash')
+makedepends=('git')
 source=("${pkgname}::git+https://github.com/credativ/pg_backup_ctl.git")
 sha512sums=('SKIP')
 
 pkgver() {
-        cd ${srcdir}/${pkgname}
-        git describe --always | sed 's|-|.|g'
+  cd ${srcdir}/${pkgname}
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  	cd ${srcdir}/${pkgname}
-  	make install PREFIX=${pkgdir}/usr
+  cd ${srcdir}/${pkgname}
+  make install PREFIX=${pkgdir}/usr
 }
 
