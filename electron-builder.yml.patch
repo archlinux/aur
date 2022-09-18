@@ -1,0 +1,31 @@
+diff --git a/electron-builder.yml b/electron-builder.yml
+index 03e5cc3..7da1095 100644
+--- a/electron-builder.yml
++++ b/electron-builder.yml
+@@ -6,26 +6,10 @@ linux:
+   category: Audio;AudioVideo;Player;
+   maintainer: Jelmer van Arnhem
+   target:
+-    - target: AppImage
+-      arch:
+-        - x64
+-        - arm64
+-    - target: deb
+-      arch:
+-        - x64
+-        - arm64
+     - target: pacman
+       arch:
+         - x64
+         - arm64
+-    - target: rpm
+-      arch:
+-        - x64
+-        - arm64
+-    - target: tar.gz
+-      arch:
+-        - x64
+-        - arm64
+ rpm:
+   fpm:
+     - --rpm-rpmbuild-define=_build_id_links none
