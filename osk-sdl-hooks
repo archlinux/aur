@@ -57,7 +57,7 @@ EOF
         fi
     fi
 
-    IFS=,
+    OLDIFS="$IFS"; IFS=,
     if [ -n "${osk_kms}" ]; then
       for i in $osk_kms
       do
@@ -65,6 +65,8 @@ EOF
         rmmod -f "$i"
       done
     fi
+    IFS="$OLDIFS"
+    unset OLDIFS
 }
 
 # vim: set ft=sh ts=4 sw=4 et:
