@@ -1,0 +1,7 @@
+[Unit]
+Description    =  Open vSwitch Database Server
+Documentation  =  man:ovsdb-server
+
+[Service]
+PIDFile=/run/openvswitch/ovsdb-server.pid
+ExecStart=/usr/sbin/ovsdb-server --remote=punix:/var/run/openvswitch/db.sock --pidfile=/run/openvswitch/ovsdb-server.pid

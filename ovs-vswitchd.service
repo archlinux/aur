@@ -1,0 +1,15 @@
+[Unit]
+Description    = Open vSwitch Daemon
+Documentation  = man:ovs-vswitchd
+Wants          = network.target
+Before         = network.target NetworkManager.service
+Requires       = ovsdb-server.service
+After          = ovsdb-server.service
+
+[Service]
+ExecStartPre = /sbin/modprobe openvswitch
+PIDFile = /run/openvswitch/ovs-vswitchd.pid
+ExecStart = /usr/sbin/ovs-vswitchd --pidfile=/run/openvswitch/ovs-vswitchd.pid
+
+[Install]
+WantedBy       = multi-user.target
