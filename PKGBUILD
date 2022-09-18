@@ -13,7 +13,7 @@ makedepends=('cargo' 'pkgconf' 'python')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-bin" "${_pkgname}-git" )
 source=("${_pkgname}-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('7ecad04d34332b5ef5c59bce50146420f601810b6e676b6df70b8f2e786ecbd329ffb7b1c6cbe58dca6e1e7eddcf2dd7e8fdc147b45cdec046cb568a4531bb60')
+sha512sums=('e26d67b52a0b01e4547f25d2c6c78e185cf7b47ee7f833123abed2eb01fb2168d258c93200b71aaf994735a4ecb512eb25ec84e11627ec62e50522491977bc68')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
