@@ -1,5 +1,5 @@
 pkgname=esbuild-bin
-pkgver=0.15.7
+pkgver=0.15.8
 pkgrel=1
 pkgdesc="An extremely fast JavaScript and CSS bundler and minifier."
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -21,10 +21,10 @@ source_i686=("$(_get_source 32)")
 source_aarch64=("$(_get_source arm64)")
 source_armv7h=("$(_get_source arm)")
 
-sha256sums_x86_64=('6d9f01aad7f65eb8de693c771b0755a7383e38dec285e38e8e03ce21badbe652')
-sha256sums_i686=('16cf0a52df62bd10af9f09c4db9092c415e37a0850beaaa347cc0ee40099c10e')
-sha256sums_aarch64=('fc8e46a7908e826fc3857a3dbb8556938f4a1d12ed79b3233c7cefadbd22e812')
-sha256sums_armv7h=('e039d252d189f909088e1300462358145d8dc1f5763f63530257faffd66dae1c')
+sha256sums_x86_64=('67a8aec1c400503f57b039b5629313e1f7c4dcfe2e69799fcdb7661d07c0b602')
+sha256sums_i686=('3c2d4daa2da4d5431080fff4815a99db840a1d9496902a376162cb9f44c98e0b')
+sha256sums_aarch64=('31bfe2de3a422ac65936eaa58b9349e0405ff6000f42b5a473a34fc999628775')
+sha256sums_armv7h=('1889080d394c4254b868b55b8883c336932bb445b8a06fc0bb3d0f31b84280c6')
 
 package() {
     cd "${srcdir}/package/bin"
