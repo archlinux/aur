@@ -1,10 +1,10 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux
-_kernver=5.19.8
+_kernver=5.19.9
 _archver=arch1
 _pkgrel=1
 _pkgver="${_kernver}.${_archver}"
-_KERNNAME=5.19.8-arch1-1
+_KERNNAME=5.19.9-arch1-1
 pkgbase="${_pkgname}-versioned-bin"
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}"
 pkgname=("${_pkgname}-versioned-bin"
@@ -16,7 +16,7 @@ pkgname=("${_pkgname}-versioned-bin"
 pkgver=${_pkgver}
 pkgrel=${_pkgrel}
 pkgdesc="The Linux kernel and modules | repackaged with a unique package name for each version"
-url="https://github.com/archlinux/linux/commits/v5.19.8-arch1"
+url="https://github.com/archlinux/linux/commits/v5.19.9-arch1"
 arch=(x86_64)
 license=(GPL2)
 options=('!strip')
@@ -44,9 +44,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('01873873a45e00aaa1163c8b9a689cb2535c428401236f0306cfd70e6cba9ae2'
-            'c0c921928969472c410dc67b75ed1826cb90e4b3b7aaaa7d13f8e3b839faa8d7'
-            '9c79c7493f3f3779fa1fbe08ffb03b530c97ef04b8337b0ea28b317ed183ff7d')
+sha256sums=('ae13673c09cba6598200d4cdded2450af28bab1be1d225b11d286ae7155affdf'
+            'e08e9deef78b23fb9aabbac46434c27042a466622cd5d426e60d7d946aad1592'
+            '09ebe08ca0d4591af9882b8252a3e1dbc595a62ec4501022bc0769149e22360c')
 
 package_linux-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -64,7 +64,7 @@ package_linux-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.19.8.arch1-1-bin() {
+package_linux5.19.9.arch1-1-bin() {
   pkgdesc="The Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -82,7 +82,7 @@ package_linux5.19.8.arch1-1-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux5.19.8.arch1-1-headers-bin() {
+package_linux5.19.9.arch1-1-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -91,7 +91,7 @@ package_linux5.19.8.arch1-1-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.19.8.arch1-1-docs-bin() {
+package_linux5.19.9.arch1-1-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
