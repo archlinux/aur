@@ -3,7 +3,7 @@
 # Date 1559294891 -7200
 #      Fri May 31 11:28:11 2019 +0200
 # Node ID c2aa7198fb925e7fde96abf65b6f68b9b755f112
-# Parent  b7a9df31234bb6342e8b01dcfa98b7d8ecdfd1dd
+# Parent  65e96e081f6f4b68d6b7998f4182a3764832c2ce
 Description: Add KDE integration to Firefox (toolkit parts)
 Author: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Author: Lubos Lunak <lunak@suse.com>
@@ -810,7 +810,7 @@ diff --git a/uriloader/exthandler/moz.build b/uriloader/exthandler/moz.build
      ]
  elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "windows":
      UNIFIED_SOURCES += [
-@@ -130,16 +132,17 @@ include("/ipc/chromium/chromium-config.m
+@@ -126,16 +128,17 @@ include("/ipc/chromium/chromium-config.m
  FINAL_LIBRARY = "xul"
  
  LOCAL_INCLUDES += [
@@ -1166,7 +1166,7 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
  #include "nsISupports.h"
  #include "nsString.h"
  #include "nsReadableUtils.h"
-@@ -1025,17 +1025,17 @@ nsresult nsOSHelperAppService::GetHandle
+@@ -1102,17 +1102,17 @@ nsresult nsOSHelperAppService::GetHandle
  
  nsresult nsOSHelperAppService::OSProtocolHandlerExists(
      const char* aProtocolScheme, bool* aHandlerExists) {
@@ -1185,7 +1185,7 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
      nsCOMPtr<nsIHandlerService> handlerSvc =
          do_GetService(NS_HANDLERSERVICE_CONTRACTID, &rv);
      if (NS_SUCCEEDED(rv) && handlerSvc) {
-@@ -1045,17 +1045,17 @@ nsresult nsOSHelperAppService::OSProtoco
+@@ -1122,17 +1122,17 @@ nsresult nsOSHelperAppService::OSProtoco
    }
  
    return rv;
@@ -1204,26 +1204,26 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
  
  NS_IMETHODIMP nsOSHelperAppService::IsCurrentAppOSDefaultForProtocol(
      const nsACString& aScheme, bool* _retval) {
-@@ -1148,17 +1148,17 @@ already_AddRefed<nsMIMEInfoBase> nsOSHel
+@@ -1227,17 +1227,17 @@ already_AddRefed<nsMIMEInfoBase> nsOSHel
    nsresult rv =
        LookUpTypeAndDescription(NS_ConvertUTF8toUTF16(aFileExt), majorType,
                                 minorType, mime_types_description, true);
  
    if (NS_FAILED(rv) || majorType.IsEmpty()) {
  #ifdef MOZ_WIDGET_GTK
-     LOG(("Looking in GNOME registry\n"));
+     LOG("Looking in GNOME registry\n");
      RefPtr<nsMIMEInfoBase> gnomeInfo =
 -        nsGNOMERegistry::GetFromExtension(aFileExt);
 +        nsCommonRegistry::GetFromExtension(aFileExt);
      if (gnomeInfo) {
-       LOG(("Got MIMEInfo from GNOME registry\n"));
+       LOG("Got MIMEInfo from GNOME registry\n");
        return gnomeInfo.forget();
      }
  #endif
  
      rv = LookUpTypeAndDescription(NS_ConvertUTF8toUTF16(aFileExt), majorType,
                                    minorType, mime_types_description, false);
-@@ -1261,17 +1261,17 @@ already_AddRefed<nsMIMEInfoBase> nsOSHel
+@@ -1342,17 +1342,17 @@ already_AddRefed<nsMIMEInfoBase> nsOSHel
  
    // Now look up our extensions
    nsAutoString extensions, mime_types_description;
@@ -1235,17 +1235,17 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
 -    RefPtr<nsMIMEInfoBase> gnomeInfo = nsGNOMERegistry::GetFromType(aMIMEType);
 +    RefPtr<nsMIMEInfoBase> gnomeInfo = nsCommonRegistry::GetFromType(aMIMEType);
      if (gnomeInfo) {
-       LOG(
-           ("Got MIMEInfo from GNOME registry without extensions; setting them "
-            "to %s\n",
-            NS_LossyConvertUTF16toASCII(extensions).get()));
+       LOG("Got MIMEInfo from GNOME registry without extensions; setting them "
+           "to %s\n",
+           NS_LossyConvertUTF16toASCII(extensions).get());
  
        NS_ASSERTION(!gnomeInfo->HasExtensions(), "How'd that happen?");
        gnomeInfo->SetFileExtensions(NS_ConvertUTF16toUTF8(extensions));
+       return gnomeInfo.forget();
 diff --git a/widget/gtk/moz.build b/widget/gtk/moz.build
 --- a/widget/gtk/moz.build
 +++ b/widget/gtk/moz.build
-@@ -146,16 +146,17 @@ FINAL_LIBRARY = "xul"
+@@ -147,16 +147,17 @@ FINAL_LIBRARY = "xul"
  
  LOCAL_INCLUDES += [
      "/layout/base",
@@ -1655,7 +1655,7 @@ diff --git a/xpcom/components/ManifestParser.cpp b/xpcom/components/ManifestPars
    int argc;
  
    bool ischrome;
-@@ -397,16 +398,17 @@ void ParseManifest(NSLocationType aType,
+@@ -389,16 +390,17 @@ void ParseManifest(NSLocationType aType,
    constexpr auto kRemoteEnabled = u"remoteenabled"_ns;
    constexpr auto kRemoteRequired = u"remoterequired"_ns;
    constexpr auto kApplication = u"application"_ns;
@@ -1673,7 +1673,7 @@ diff --git a/xpcom/components/ManifestParser.cpp b/xpcom/components/ManifestPars
    // possible to have conditional manifest contents, so we need to recognize and
    // discard these tokens even when MOZ_BACKGROUNDTASKS is not set.
    constexpr auto kBackgroundTask = u"backgroundtask"_ns;
-@@ -456,39 +458,44 @@ void ParseManifest(NSLocationType aType,
+@@ -448,39 +450,44 @@ void ParseManifest(NSLocationType aType,
          CopyUTF8toUTF16(s, abi);
          abi.Insert(char16_t('_'), 0);
          abi.Insert(osTarget, 0);
@@ -1718,7 +1718,7 @@ diff --git a/xpcom/components/ManifestParser.cpp b/xpcom/components/ManifestPars
      process = kMain;
    }
  
-@@ -583,25 +590,27 @@ void ParseManifest(NSLocationType aType,
+@@ -571,25 +578,27 @@ void ParseManifest(NSLocationType aType,
      // When in background task mode, default to not registering
      // category directivies unless backgroundtask=1 is specified.
      TriState stBackgroundTask = (BackgroundTasks::IsBackgroundTaskMode() &&
@@ -1746,7 +1746,7 @@ diff --git a/xpcom/components/ManifestParser.cpp b/xpcom/components/ManifestPars
          continue;
        }
  
-@@ -650,17 +659,17 @@ void ParseManifest(NSLocationType aType,
+@@ -638,17 +647,17 @@ void ParseManifest(NSLocationType aType,
        }
  
        LogMessageWithContext(
