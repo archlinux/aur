@@ -29,6 +29,6 @@ check() {
 
 package() {
   mkdir -p ~/.config/HybridBar/
-  wget https://github.com/vars1ty/HybridBar/raw/main/examples/config.json -P ~/.config/HybridBar/
+  wget https://raw.githubusercontent.com/vars1ty/HybridBar/main/examples/config.json -P ~/.config/HybridBar/
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/hybrid-bar"
 }
