@@ -1,6 +1,6 @@
 pkgbase = sqlitecpp
 	pkgdesc = A smart and easy to use C++ SQLite3 wrapper.
-	pkgver = 3.1.1
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/SRombauts/SQLiteCpp
 	arch = i686
@@ -9,8 +9,7 @@ pkgbase = sqlitecpp
 	makedepends = cmake>=3.1
 	depends = sqlite>=3.19
 	optdepends = sqlcipher: for database encryption API
-	source = sqlitecpp-3.1.1::https://github.com/SRombauts/SQLiteCpp/archive/3.1.1.tar.gz
-	sha512sums = 9030b5249c149db8a5b2fe350f71613e4ee91061765a771640ed3ffa7c24aada4000ba884ef91790fdc0f13dc4519038c1edeba64b85b85ac09c3e955a7988a1
+	source = sqlitecpp-3.2.0::https://github.com/SRombauts/SQLiteCpp/archive/3.2.0.tar.gz
+	sha512sums = af57c3e82a8804174c52105ecc14ea7a2d4e293ef13b2fc371f2455890ea54683ed76adf4649e561686a6b4c3368676f5edcc54d9f22c4850be3ba32832d3272
 
 pkgname = sqlitecpp
-

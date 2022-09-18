@@ -1,7 +1,7 @@
 # Maintainer: sum01 <sum01@protonmail.com>
 pkgname=sqlitecpp
 _dirname='SQLiteCpp'
-pkgver=3.1.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='A smart and easy to use C++ SQLite3 wrapper.'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('sqlite>=3.19')
 optdepends=('sqlcipher: for database encryption API')
 makedepends=('cmake>=3.1')
 source=("$pkgname-$pkgver::https://github.com/SRombauts/SQLiteCpp/archive/${pkgver}.tar.gz")
-sha512sums=('9030b5249c149db8a5b2fe350f71613e4ee91061765a771640ed3ffa7c24aada4000ba884ef91790fdc0f13dc4519038c1edeba64b85b85ac09c3e955a7988a1')
+sha512sums=('af57c3e82a8804174c52105ecc14ea7a2d4e293ef13b2fc371f2455890ea54683ed76adf4649e561686a6b4c3368676f5edcc54d9f22c4850be3ba32832d3272')
 build() {
 	_has_sqlcipher='false'
 
@@ -29,6 +29,7 @@ build() {
 	# SQLITE_HAS_CODEC enables/disables DB encryption, which depends on sqlcipher
 	cmake -DCMAKE_BUILD_TYPE=Release \
 		-DBUILD_SHARED_LIBS=ON \
+		-DSQLITECPP_INCLUDE_SCRIPT=OFF \
 		-DCMAKE_INSTALL_PREFIX='/usr' \
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DSQLITECPP_INTERNAL_SQLITE='false' \
