@@ -8,7 +8,7 @@ arch=('any')
 url='http://visidata.org/'
 license=('GPLv3')
 depends=('python')
-makedepends=('git' 'python-pip' 'python-setuptools')
+makedepends=('git' 'python-pip' 'python-setuptools' 'python-wheels')
 optdepends=('python-dnslib: pcap support'
             'python-dpkt: pcap support'  # AUR
             'python-fonttools: ttf/otf support'

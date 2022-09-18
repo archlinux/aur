@@ -8,6 +8,7 @@ pkgbase = visidata-git
 	makedepends = git
 	makedepends = python-pip
 	makedepends = python-setuptools
+	makedepends = python-wheels
 	depends = python
 	optdepends = python-dnslib: pcap support
 	optdepends = python-dpkt: pcap support
