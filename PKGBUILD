@@ -9,8 +9,6 @@ url="https://github.com/saltedcoffii/ffmpeg-audio-thumbnailer"
 arch=(any)
 depends=('ffmpeg')
 license=('GPL3 or any later version')
-provides=('ffmpeg-audio-thumbnailer')
-conflicts=('ffmpeg-audio-thumbnailer')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('4bb34dcb4150596c9400e497fd79990d7c1d8fe27cc5b25e2a80a09ca0f94dc2')
 
