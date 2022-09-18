@@ -1,7 +1,7 @@
 pkgbase = rime-emoji-git
 	pkgdesc = Emoji support for rime
 	pkgver = 0.0.0.20220315
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rime/rime-emoji
 	arch = any
 	license = LGPL
