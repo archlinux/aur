@@ -9,7 +9,7 @@
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=104.0.5110.0
+pkgver=107.0.5300.0
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -72,6 +72,7 @@ source=(
         # Patch form Gentoo.
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-93-InkDropHost-crash.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-98-EnumTable-crash.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-105-swiftshader-no-wayland.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-cross-compile.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-shim_headers.patch'
         # Misc Patches.
@@ -89,6 +90,7 @@ sha256sums=(
             # Patch form Gentoo
             '04bba6fb19ea5a4ab3949b65f06c88728a00ab296f42022ece62ca2fa25ec2e7'
             '31620c30a1e6b77fdafbc4be3b499420f7862c30957d43f5962fb346614164db'
+            'adc8fa657a79a7ae19ca9dca3c629ea10eb1d40f239fffcf54c099b8e857c6ac'
             '9f8e90672e7914e1974ea73de48336800204a188b94d8b03e3ddd64a97f5e630'
             'fabf66cfb15449011a20e377d600573b6338cc4c52e3f28f80e0541772659e8b'
             # Misc Patches
@@ -98,6 +100,7 @@ sha256sums=(
             'fb075666b991ccfe4a02e1a287dc75a659e947e0b02bc5cd2237e74a866c6f02'
             '6db1f1c23f0816f350d45f0ffecb689fdb450674e3fdb5822cd112cffb30a5aa'
             )
+options=('debug' '!lto') # Chromium adds its own flags for ThinLTO
 install=chromium-dev.install
 
 ################################################
@@ -112,7 +115,7 @@ _google_api_key="AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM"
 #_google_default_client_id="413772536636.apps.googleusercontent.com"
 #_google_default_client_secret="0ZChLK6AxeA3Isu96MkwqDR4"
 
-# List of third-party components needed for build chromium. The rest is removed by remove_bundled_libraries srcipt in prepare().
+# List of third-party components neededs keep for build chromium. The rest is removed by remove_bundled_libraries srcipt in prepare().
 _keeplibs=(
            'base/third_party/cityhash'
            'base/third_party/double_conversion'
@@ -146,6 +149,7 @@ _keeplibs=(
            'third_party/apple_apsl'
            'third_party/axe-core'
            'third_party/blink'
+           'third_party/bidimapper'
            'third_party/boringssl'
            'third_party/boringssl/src/third_party/fiat'
            'third_party/breakpad'
@@ -168,6 +172,7 @@ _keeplibs=(
            'third_party/ced'
            'third_party/cld_3'
            'third_party/closure_compiler'
+           'third_party/content_analysis_sdk'
            'third_party/cpuinfo'
            'third_party/crashpad'
            'third_party/crashpad/crashpad/third_party/lss'
@@ -221,6 +226,7 @@ _keeplibs=(
            'third_party/hunspell'
            'third_party/iccjpeg'
            'third_party/inspector_protocol'
+           'third_party/ipcz'
            'third_party/jinja2'
            'third_party/jsoncpp'
            'third_party/jstemplate'
@@ -232,6 +238,7 @@ _keeplibs=(
            'third_party/libaom/source/libaom/third_party/vector'
            'third_party/libaom/source/libaom/third_party/x86inc'
            'third_party/libavif'
+           'third_party/libevent'
            'third_party/libdrm'
            'third_party/libgav1'
            'third_party/libgifcodec'
@@ -269,7 +276,7 @@ _keeplibs=(
            'third_party/nearby'
            'third_party/neon_2_sse'
            'third_party/node'
-           'third_party/node/node_modules/polymer-bundler/lib/third_party/UglifyJS2'
+           'third_party/omnibox_proto'
            'third_party/one_euro_filter'
            'third_party/openh264'
            'third_party/openscreen'
@@ -282,7 +289,7 @@ _keeplibs=(
            'third_party/pdfium/third_party/bigint'
            'third_party/pdfium/third_party/freetype'
            'third_party/pdfium/third_party/lcms'
-           'third_party/pdfium/third_party/libopenjpeg20'
+           'third_party/pdfium/third_party/libopenjpeg'
            'third_party/pdfium/third_party/libpng16'
            'third_party/pdfium/third_party/libtiff'
            'third_party/pdfium/third_party/skia_shared'
@@ -305,10 +312,8 @@ _keeplibs=(
            'third_party/shell-encryption'
            'third_party/simplejson'
            'third_party/skia'
-           'third_party/skia/include/third_party/skcms'
            'third_party/skia/include/third_party/vulkan'
-           'third_party/skia/third_party/skcms'
-           'third_party/skia/third_party/vulkan'
+           'third_party/skia/third_party/vulkanmemoryallocator'
            'third_party/smhasher'
            'third_party/sqlite'
            'third_party/swiftshader'
@@ -357,7 +362,6 @@ _keeplibs=(
            'v8/third_party/v8'
 
            # gyp -> gn leftovers.
-           'base/third_party/libevent'
            'third_party/speech-dispatcher'
            'third_party/usb_ids'
            'third_party/xdg-utils'
@@ -372,6 +376,7 @@ _flags=(
         "custom_toolchain=\"//build/toolchain/linux/unbundle:default\""
         "host_toolchain=\"//build/toolchain/linux/unbundle:default\""
         'is_debug=false'
+        'symbol_level=0' # sufficient for backtraces on x86(_64)
         'is_official_build=false'
         'chrome_pgo_phase=0' # unsupported instrumentation profile format version
         'is_component_build=true'
@@ -404,21 +409,19 @@ _flags=(
         'clang_use_chrome_plugins=true'
         'use_gold=false'
         'use_dbus=true'
-        'use_thin_lto=false'
         'enable_pseudolocales=false'
-        'enable_platform_hevc=true'
-        'enable_platform_hevc_decoding=true'
         'dcheck_always_on=false'
         'dcheck_is_configurable=false'
         'use_system_harfbuzz=true'
         'use_system_freetype=true'
         'use_system_lcms2=true'
         'use_system_minigbm=true'
-        'use_system_libwayland=true'
         'use_system_libpng=true'
 #         'use_system_libsync=true'
         'use_system_libopenjpeg2=true'
-        'use_system_wayland_scanner=true'
+        'use_system_libwayland=false' # fail build error: use of undeclared identifier 'wl_proxy_marshal_flags'
+        'use_system_wayland_scanner=false' # fail build error: use of undeclared identifier 'wl_proxy_marshal_flags'
+        'use_system_libffi=true'
         'rtc_use_pipewire=true'
         'rtc_link_pipewire=true'
         'enable_js_type_check=false' # https://crbug.com/1192875
@@ -453,10 +456,27 @@ CFLAGS+=' -Wno-builtin-macro-redefined'
 CXXFLAGS+=' -Wno-builtin-macro-redefined'
 CPPFLAGS+=' -D__DATE__=  -D__TIME__=  -D__TIMESTAMP__='
 
-# Conditionals.
-if check_option strip y; then
-  _flags+=('symbol_level=0')
-fi
+# Let Chromium set its own symbol level
+CFLAGS=${CFLAGS/-g }
+CXXFLAGS=${CXXFLAGS/-g }
+
+# https://github.com/ungoogled-software/ungoogled-chromium-archlinux/issues/123
+CFLAGS=${CFLAGS/-fexceptions}
+CFLAGS=${CFLAGS/-fcf-protection}
+CXXFLAGS=${CXXFLAGS/-fexceptions}
+CXXFLAGS=${CXXFLAGS/-fcf-protection}
+
+# This appears to cause random segfaults when combined with ThinLTO
+# https://bugs.archlinux.org/task/73518
+CFLAGS=${CFLAGS/-fstack-clash-protection}
+CXXFLAGS=${CXXFLAGS/-fstack-clash-protection}
+
+# https://crbug.com/957519#c122
+CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
+
+# Seems bundled clang don't like Debug flag -fvar-tracking-assignments.
+DEBUG_CFLAGS=${DEBUG_CFLAGS/-fvar-tracking-assignments}
+DEBUG_CXXFLAGS=${DEBUG_CXXFLAGS/-fvar-tracking-assignments}
 
 if check_buildoption ccache y; then
   # Avoid falling back to preprocessor mode when sources contain time macros.
@@ -537,6 +557,7 @@ prepare() {
   # # Patch from Gentoo
   patch -p1 -i "${srcdir}/chromium-93-InkDropHost-crash.patch"
   patch -p1 -i "${srcdir}/chromium-98-EnumTable-crash.patch"
+  patch -p1 -i "${srcdir}/chromium-105-swiftshader-no-wayland.patch"
   patch -p1 -i "${srcdir}/chromium-cross-compile.patch"
   patch -p1 -i "${srcdir}/chromium-shim_headers.patch"
 
@@ -553,8 +574,10 @@ prepare() {
   # Upstream fixes
 
   # fix https://crbug.com/1288414 (bring back again)
+  sed 's|is_castos|is_chromecast|g' -i build/config/linux/gtk/gtk.gni
   base64 -d "${srcdir}/fix_build_use_gio_false_part1.patch.base64" | patch -Rp1 -i -
   base64 -d "${srcdir}/fix_build_use_gio_false_part2.patch.base64" | patch -Rp1 -i -
+  sed 's|is_chromecast|is_castos|g' -i build/config/linux/gtk/gtk.gni
 
   # Setup nodejs dependency.
   mkdir -p third_party/node/linux/node-linux-x64/bin/
@@ -627,21 +650,15 @@ build() {
   chromium/scripts/generate_gn.py
   popd &> /dev/null
 
-  # New chromium seems not like this flag. see base/allocator/allocator_shim.cc:411
-  CFLAGS="${CFLAGS/-fexceptions/}"
-  CXXFLAGS="${CXXFLAGS/-fexceptions/}"
-
   msg2 "Starting building Chromium..."
 #   LC_ALL=C buildtools/linux64/gn args out/Release --list && exit # DEBUG: this command list the build options.
   LC_ALL=C buildtools/linux64/gn gen out/Release -v --args="${_flags[*]}" --script-executable=/usr/bin/python
 
   # Build all.
-  LC_ALL=C ninja -C out/Release -v chrome chrome_sandbox chromedriver
+  LC_ALL=C ninja -C out/Release -v chrome chrome_sandbox chromedriver.unstripped
 }
 
 package() {
-  options=('!strip')
-
   # Install launcher.
   make -C chromium-launcher \
     PREFIX=/usr \
@@ -649,7 +666,6 @@ package() {
     DESTDIR="${pkgdir}" \
     install
   install -Dm644 "chromium-launcher/LICENSE" "${pkgdir}/usr/share/licenses/chromium-dev/LICENSE.launcher"
-  strip $STRIP_BINARIES "${pkgdir}/usr/bin/chromium-dev"
 
   pushd "chromium-${pkgver}/out/Release" &> /dev/null
 
@@ -657,7 +673,6 @@ package() {
   _bin=(
         'chromium-dev'
         'chrome_sandbox'
-        'chromedriver'
         'chromedriver.unstripped'
         'chrome_crashpad_handler'
         )
@@ -666,15 +681,11 @@ package() {
       chrome_sandbox)
         install -Dm4755 "${i}" "${pkgdir}/usr/lib/chromium-dev/${i}"
         ;;
+      chromedriver.unstripped)
+        install -Dm775 "${i}" "${pkgdir}/usr/lib/chromium-dev/chromedriver"
+        ;;
       *)
         install -Dm755 "${i}" "${pkgdir}/usr/lib/chromium-dev/${i}"
-        ;;
-    esac
-    case "$i" in
-      chromedriver.unstripped)
-        ;;
-      *)
-        strip $STRIP_BINARIES "${pkgdir}/usr/lib/chromium-dev/${i}"
         ;;
     esac
   done
@@ -684,7 +695,6 @@ package() {
   # Install libs.
   for i in lib*.so; do
     install -Dm755 "${i}" "${pkgdir}/usr/lib/chromium-dev/${i}"
-    strip $STRIP_SHARED "${pkgdir}/usr/lib/chromium-dev/${i}"
   done
 
   _blobs=(
@@ -709,13 +719,6 @@ package() {
               )
   for i in "${_nacl_libs[@]}"; do
     install -Dm755 "${i}" "${pkgdir}/usr/lib/chromium-dev/${i}"
-    case "$i" in
-      nacl_irt_x86_64.nexe)
-        ;;
-      *)
-        strip $STRIP_BINARIES "${pkgdir}/usr/lib/chromium-dev/${i}"
-        ;;
-    esac
   done
 
   # Install Resources.
