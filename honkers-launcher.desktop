@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Honkers Launcher
+Comment=A Launcher for a specific anime game with auto-patching, discord rpc and time tracking
+Exec=/bin/honkers-launcher
+Terminal=false
+Type=Application
+Icon=honkers-launcher
+Categories=Game
