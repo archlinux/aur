@@ -1,4 +1,5 @@
-# Maintainer: Marie Piontek <marie@kaifa.ch>
+# Maintainer: Maxim Korotkov <maximkorotkov4@gmail.com>
+# Contributor: Marie Piontek <marie@kaifa.ch>
 
 pkgname=an-anime-game-launcher-gtk-bin
 pkgver=1.0.4
