@@ -7,21 +7,22 @@ pkgdesc="Colorized Guile REPL from Git"
 arch=('any')
 url="https://gitlab.com/NalaGinrut/guile-colorized"
 license=('GPL')
-makedepends=('git' 'sed')
-source=("$pkgname::git+https://gitlab.com/NalaGinrut/guile-colorized.git")
+makedepends=('git' 'sed' 'guile')
+provides=("guile-colorized=$pkgver")
+source=("${pkgname%-git}::git+https://gitlab.com/NalaGinrut/guile-colorized.git")
 md5sums=('SKIP')
 
 prepare() {
-  cd "$pkgname"
+  cd "${pkgname%-git}"
   sed -i -e "s%^TARGET.\+:= %TARGET := $pkgdir%" -e 's%install:%install:\n	mkdir -p \$\(TARGET\)\n%' Makefile
 }
 
 pkgver() {
-  cd "$pkgname"
+  cd "${pkgname%-git}"
   git describe --long | sed 's%\([^-]*-g\)%r\1%;s%-%.%g'
 }
 
 package() {
-	cd "$pkgname"
+	cd "${pkgname%-git}"
 	make install
 }
