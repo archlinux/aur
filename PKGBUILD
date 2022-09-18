@@ -2,7 +2,7 @@
 
 pkgname=flax
 pkgver=1.4.6334
-pkgrel=1
+pkgrel=2
 pkgdesc="Flax Engine – multi-platform 3D game engine"
 arch=(any)
 url="https://flaxengine.com"
@@ -17,7 +17,6 @@ sha256sums=('658a7453d411f4ebc82754f5cd12cd89a6803a74ea636af19df16b8bc4c9f307' '
 
 package() {
 	cd "$srcdir"
-	rm -rf "$pkgdir/opt/flax/"
 	echo "Extracting Editor..."
 	mkdir -p "$pkgdir/opt/flax/"
 	bsdtar -xf "FlaxEditorLinux.zip" -C "$pkgdir/opt/flax"
@@ -26,4 +25,9 @@ package() {
 	bsdtar -xf "Linux.zip" -C "$pkgdir/opt/flax/Source/Platforms/Linux"
 	mkdir -p "$pkgdir/usr/bin/"
 	ln -sf "$pkgdir/opt/flax/Binaries/Editor/Linux/Development/FlaxEditor" "$pkgdir/usr/bin/flax"
+	echo "Extracting Desktop files..."
+	cd "$startdir"
+	bsdtar -xf "desktop_files.tar.gz" -C "$pkgdir/usr/"
+	cp --no-preserve=mode,ownership ".run.sh" "$pkgdir/opt/flax/"
+	chmod +x "$pkgdir/opt/flax/.run.sh"
 }

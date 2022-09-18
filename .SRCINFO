@@ -1,7 +1,7 @@
 pkgbase = flax
 	pkgdesc = Flax Engine – multi-platform 3D game engine
 	pkgver = 1.4.6334
-	pkgrel = 1
+	pkgrel = 2
 	url = https://flaxengine.com
 	arch = any
 	license = Flax EULA
