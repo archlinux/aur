@@ -1,0 +1,7 @@
+# By default, ignore everything.
+/*
+
+# Re-include .gitignore, .SRCINFO, and PKGBUILD.
+!.gitignore
+!.SRCINFO
+!.PKGBUILD

@@ -1,7 +1,7 @@
 # Maintainer: Max von Forell <aur at vonforell dot de>
 
 pkgname=toluol
-pkgver=1.3.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Rust tool to make DNS queries'
 arch=(x86_64)
@@ -11,7 +11,7 @@ makedepends=('cargo')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha512sums=('f08a8eb473b45e6ffa8749b3da2b2bc64fa3d4df4d8652036060dae1accb8d942f5af65028f697327a2af5cd8b8489d465bb046d70aa84bc2a68ae321703bfbc')
+sha512sums=('63b5aed418d208ad44cad360252dec8f4ddd2e98023815782a71a62ebf047b2a388a5c123607ed2fecf8215ac0153cbd28f5d4319f2937d488f2e7e2163a868e')
 
 build() {
   cd $pkgname-$pkgver
