@@ -1,0 +1,18 @@
+pkgbase = rough
+	pkgdesc = A GTK based app launcher written in Rust
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/z3oxs/rough.git
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = gtk3
+	provides = rough
+	conflicts = rough
+	source = git+https://github.com/z3oxs/rough.git
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = rough
