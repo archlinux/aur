@@ -1,11 +1,11 @@
 pkgbase = cicero-git
 	pkgdesc = Unicode tool with a terminal user interface (git)
-	pkgver = 0.3.0.r0.gcd1af70
+	pkgver = 0.4.0.r1.gbc292d3
 	pkgrel = 1
 	url = https://github.com/eyeplum/cicero-tui
 	arch = x86_64
 	license = GPL3
-	makedepends = rust
+	makedepends = cargo
 	makedepends = git
 	depends = fontconfig
 	depends = freetype2
