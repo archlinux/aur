@@ -21,6 +21,10 @@ check() {
   PERL=/usr/bin/perl ./test.sh
 }
 
+prepare() {
+  sed -i 's/fgrep/grep -F/g' $pkgname/check.t
+}
+
 build() {
   cd "$pkgname"
   sh Build.sh -r

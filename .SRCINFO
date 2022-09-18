@@ -12,4 +12,3 @@ pkgbase = mksh
 	sha256sums = 77ae1665a337f1c48c61d6b961db3e52119b38e58884d1c89684af31f87bc506
 
 pkgname = mksh
-
