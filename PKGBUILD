@@ -2,8 +2,8 @@
 # Original Contributor: Erufu / Sébastien Lacroix <erufu.sennin@gmail.com>
 
 pkgname=wmfs2-git
-pkgver=r442.3c701a9
-pkgrel=3
+pkgver=r459.b7b8ff8
+pkgrel=1
 pkgdesc="A lightweight and highly configurable tiling window manager for X"
 arch=('i686' 'x86_64')
 url="https://github.com/xorg62/wmfs"
@@ -12,8 +12,10 @@ depends=('libxft' 'imlib2' 'libxinerama' 'libxrandr')
 makedepends=('git')
 provides=('wmfs2')
 conflicts=('wmfs' 'wmfs-git')
-source=("git+https://github.com/xorg62/wmfs.git")
-md5sums=('SKIP')
+source=("git+https://github.com/xorg62/wmfs.git"
+	'gcc-10.patch')
+md5sums=('SKIP'
+	'4031b1efc5437fa641c279d7b67f6776')
 _pkgname="wmfs"
 
 pkgver() {
@@ -24,6 +26,10 @@ pkgver() {
   )
 }
 
+prepare() {
+  cd "${_pkgname}"
+  patch -Np1 < ../gcc-10.patch
+}
 build() {
   cd "$srcdir/$_pkgname"
   export CFLAGS=""

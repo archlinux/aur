@@ -1,0 +1,73 @@
+From e4ec12618f4689d791892ebb49df9610a25d24d3 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Fri, 6 May 2022 18:57:38 +0100
+Subject: [PATCH] Fix builf on -fno-common toolchains
+
+gcc-10 changed the default from -fcommon to fno-common:
+  https://gcc.gnu.org/PR85678
+
+As a result build fails as:
+
+    ld: src/log.o:(.bss+0x0): multiple definition of `W'; src/barwin.o:(.bss+0x0): first defined here
+    ld: src/wmfs.o:(.bss+0x0): multiple definition of `W'; src/barwin.o:(.bss+0x0): first defined here
+    ld: src/wmfs.o:(.bss+0x10): multiple definition of `event_handle'; src/client.o:(.bss+0x10): first defined here
+
+The change moves definitions into .c files.
+---
+ src/event.c | 3 +++
+ src/event.h | 2 +-
+ src/wmfs.c  | 2 ++
+ src/wmfs.h  | 2 +-
+ 4 files changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/src/event.c b/src/event.c
+index 5f788573..739b703d 100644
+--- a/src/event.c
++++ b/src/event.c
+@@ -21,6 +21,9 @@
+           if(!m->use_area || (m->use_area && INAREA(ev->x, ev->y, m->area))) \
+                if(m->func)                                                   \
+                     m->func(m->cmd);
++
++void (*event_handle[MAX_EV])(XEvent*);
++
+ static void
+ event_buttonpress(XEvent *e)
+ {
+diff --git a/src/event.h b/src/event.h
+index bc74fd87..1db72efa 100644
+--- a/src/event.h
++++ b/src/event.h
+@@ -17,6 +17,6 @@
+ 
+ void event_init(void);
+ 
+-void (*event_handle[MAX_EV])(XEvent*);
++extern void (*event_handle[MAX_EV])(XEvent*);
+ 
+ #endif /* EVENT_H */
+diff --git a/src/wmfs.c b/src/wmfs.c
+index 4d1a4492..ec1f7f62 100644
+--- a/src/wmfs.c
++++ b/src/wmfs.c
+@@ -25,6 +25,8 @@
+ #include "layout.h"
+ #include "systray.h"
+ 
++struct wmfs *W;
++
+ int
+ wmfs_error_handler(Display *d, XErrorEvent *event)
+ {
+diff --git a/src/wmfs.h b/src/wmfs.h
+index c312e365..2321032f 100644
+--- a/src/wmfs.h
++++ b/src/wmfs.h
+@@ -444,6 +444,6 @@ void uicb_reload(Uicb cmd);
+ void uicb_quit(Uicb cmd);
+ 
+ /* Single global variable */
+-struct wmfs *W;
++extern struct wmfs *W;
+ 
+ #endif /* WMFS_H */
