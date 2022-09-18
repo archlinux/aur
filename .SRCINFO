@@ -26,5 +26,6 @@ pkgbase = garlmap
 	source = git+https://github.com/Jelmerro/Garmlap
 	source = electron-builder.yml.patch
 	sha256sums = SKIP
+        sha256sums = 760758e0524a37e97649436f205448ec3ff42aed1db8515806312ece90ca20f3
 
 pkgname = garlmap
