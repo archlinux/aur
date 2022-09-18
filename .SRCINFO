@@ -1,0 +1,25 @@
+pkgbase = pe-bear-git
+	pkgdesc = Portable Executable reversing tool with a friendly GUI
+	pkgver = 0.6.0.r4.g8fb024d
+	pkgrel = 1
+	url = https://hshrzd.wordpress.com/pe-bear/
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	provides = pe-bear
+	conflicts = pe-bear
+	source = git+https://github.com/hasherezade/pe-bear.git
+	source = git+https://github.com/capstone-engine/capstone.git
+	source = git+https://github.com/hasherezade/bearparser.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = pe-bear-git
