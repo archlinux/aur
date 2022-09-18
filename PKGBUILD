@@ -11,15 +11,13 @@ arch=('x86_64' 'armv7h' 'aarch64')
 url='https://mupdf.com/'
 license=('AGPL3')
 makedepends=('git' 'libxi' 'glu')
-depends=('libxrandr' 'harfbuzz' 'jbig2dec' 'libjpeg-turbo' 'openjpeg2' 'gumbo-parser')
+depends=('libxrandr' 'harfbuzz' 'jbig2dec' 'libjpeg-turbo' 'openjpeg2' 'gumbo-parser' 'mujs')
 source=('git://git.ghostscript.com/mupdf.git'
         'git://git.ghostscript.com/thirdparty-extract.git'
         'git://git.ghostscript.com/thirdparty-freeglut.git'
         'git://git.ghostscript.com/thirdparty-lcms2.git'
-        'git://git.ghostscript.com/mujs.git'
         'desktop')
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -35,40 +33,29 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
-
 	sed "/extract.git/c url = $(pwd)/../thirdparty-extract" -i .gitmodules
 	sed "/freeglut.git/c url = $(pwd)/../thirdparty-freeglut" -i .gitmodules
 	sed "/lcms2.git/c url = $(pwd)/../thirdparty-lcms2" -i .gitmodules
-	sed "/mujs.git/c url = $(pwd)/../mujs" -i .gitmodules
 	git submodule update --init thirdparty/extract
 	git submodule update --init thirdparty/freeglut
 	git submodule update --init thirdparty/lcms2
-	git submodule update --init thirdparty/mujs
-
-	# embedding CJK fonts into binaries is madness...
-	sed '/TOFU_CJK /c #define TOFU_CJK 1/' -i include/mupdf/fitz/config.h
-
-	# force internal freeglut; see e.g. 06c999fec01863a90824ba2f9f3ce98ea1a967d3
-	sed 's/USE_SYSTEM_GLUT :=/& no #/g' -i Makethird
 }
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-
 	export USE_SYSTEM_LIBS=yes
+	export CFLAGS+=' -D TOFU_CJK -D TOFU_NOTO' # only embed Base14 fonts and Charis SIL
+	sed 's/$(HAVE_X11)/no/g' -i Makefile # prevent building useless binaries
+	sed 's/$(USE_SYSTEM_MUJS)/yes/g' -i Makethird
+	sed 's/$(USE_SYSTEM_GLUT)/no/g' -i Makethird Makefile
 	make release
 }
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-
 	make install DESTDIR="${pkgdir}" prefix=/usr
 	mv "${pkgdir}"/usr/bin/mupdf{-gl,}
-	rm "${pkgdir}"/usr/bin/mupdf-x11*
-
-	install -Dm644 ../desktop "${pkgdir}"/usr/share/applications/mupdf.desktop
-	find "${pkgdir}"/usr/share -type f -exec chmod 0644 {} +
-
-	# prevent the static-linking disease from spreading...
 	rm -fr "${pkgdir}"/usr/{include,lib}
+	find "${pkgdir}"/usr/share -type f -exec chmod 0644 {} +
+	install -Dm644 ../desktop "${pkgdir}"/usr/share/applications/mupdf.desktop
 }
