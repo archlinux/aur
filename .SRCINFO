@@ -1,0 +1,15 @@
+pkgbase = cxxbridge
+	pkgdesc = C++ code generator for integrating cxx crate into a non-Cargo build.
+	pkgver = 1.0.75
+	pkgrel = 1
+	url = https://cxx.rs
+	arch = x86_64
+	license = MIT
+	license = APACHE
+	makedepends = cargo
+	options = !lto
+	source = https://github.com/dtolnay/cxx/archive/refs/tags/1.0.75.tar.gz
+	sha256sums = 4d8105e20f6363dd4c22d6f68b59e064af569318117df883ae8d09a42aa23ef8
+	b2sums = 30f1540b117e24b21da28c6347fb9e4df0d2ffadb877fbdea5774080a982dc37fc1417342b8239376d2ea732bf401cf8f0a4865831e83787f190e1ed60f16e91
+
+pkgname = cxxbridge
