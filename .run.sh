@@ -16,4 +16,3 @@ elif [ $1 == "-new" ]; then
 else
 	/usr/bin/flax -project $1
 fi
-done

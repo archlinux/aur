@@ -24,7 +24,7 @@ package() {
 	mkdir -p "$pkgdir/opt/flax/Source/Platforms/Linux"
 	bsdtar -xf "Linux.zip" -C "$pkgdir/opt/flax/Source/Platforms/Linux"
 	mkdir -p "$pkgdir/usr/bin/"
-	ln -sf "$pkgdir/opt/flax/Binaries/Editor/Linux/Development/FlaxEditor" "$pkgdir/usr/bin/flax"
+	ln -sf "/opt/flax/Binaries/Editor/Linux/Development/FlaxEditor" "$pkgdir/usr/bin/flax"
 	echo "Extracting Desktop files..."
 	cd "$startdir"
 	bsdtar -xf "desktop_files.tar.gz" -C "$pkgdir/usr/"
