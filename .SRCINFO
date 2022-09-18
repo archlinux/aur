@@ -1,5 +1,5 @@
 pkgbase = honkers-launcher-gtk-bin
-	pkgdesc = An GTK4 alternative to honkers-bin
+	pkgdesc = An GTK4 alternative to honkers-launcher-bin
 	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/an-anime-team/honkers-launcher-gtk
