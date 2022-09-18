@@ -1,4 +1,5 @@
-# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
+# Maintainer: Sagnik Mandal <criticic>
+# Contributor: Daniel M. Capella <polyzen@archlinux.org>
 # Contributor: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: earnestly
 
