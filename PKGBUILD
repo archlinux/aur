@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 pkgname=ja2-stracciatella
 pkgver=0.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Jagged Alliance 2 Stracciatella"
 arch=('x86_64')
 url="https://github.com/ja2-stracciatella/ja2-stracciatella"
@@ -20,7 +20,7 @@ build() {
   # reasonable default type
   cmake -GNinja -B build \
     -DCMAKE_INSTALL_PREFIX="/usr" \
-    -DEXTRA_DATA_DIR=/usr/share/ja2-stracciatella \
+    -DEXTRA_DATA_DIR=/usr/share/ja2 \
     -DWITH_UNITTESTS=OFF \
     "${srcdir}/ja2-stracciatella-${pkgver}"
   cmake --build build
