@@ -1,6 +1,6 @@
 # Maintainer: Benoît Allard <benoit.allard@gmx.de>
 pkgname=python-stable-baselines3-contrib
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Contrib package of Stable Baselines3, experimental code."
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=("python" "python-stable-baselines3")
 _name=${pkgname#python-}
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Stable-Baselines-Team/$_name/archive/v$pkgver.tar.gz")
-md5sums=('120365f0bfaa4357f8fb08b56c8b588d')
+md5sums=('6b7e45e6b1e8a269eeba9d1ad154711e')
 
 build() {
     cd $_name-$pkgver
