@@ -10,6 +10,7 @@ pkgbase = visidata-git
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
+	depends = python-importlib-metadata
 	optdepends = python-dnslib: pcap support
 	optdepends = python-dpkt: pcap support
 	optdepends = python-fonttools: ttf/otf support

@@ -7,7 +7,7 @@ pkgdesc='A console spreadsheet tool for discovering and arranging data'
 arch=('any')
 url='http://visidata.org/'
 license=('GPLv3')
-depends=('python')
+depends=('python' 'python-importlib-metadata')
 makedepends=('git' 'python-pip' 'python-setuptools' 'python-wheel')
 optdepends=('python-dnslib: pcap support'
             'python-dpkt: pcap support'  # AUR
