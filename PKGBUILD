@@ -2,7 +2,7 @@
 
 _pyname=sphinxcontrib-actdiag
 pkgname=python-$_pyname
-pkgver=2.0.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Sphinx actdiag extension"
 arch=('any')
@@ -19,9 +19,9 @@ makedepends=(
 	python-setuptools
 )
 source=("https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz")
-md5sums=('ec3d18e7dc33c1cce23406cc6d3a61be')
-sha256sums=('4edb8564e2e48a0e0c50b2e7743425ad34f1f11886c37e0cb23997a0f95a74c6')
-sha512sums=('8faeb97b6be7c1a3603d34d34331ed4144a0b4a1ea537d8826682252213268a288f180ee0218d1266e199c41eba5e85caabf0a0f734024c358019fe806dd38de')
+md5sums=('4171faa43dbf5394052319f0992539eb')
+sha256sums=('3c55d454ffc3b9efe7c20f2adaf022199b825612d32f200be8a497aa87e0f81f')
+sha512sums=('b6cb595c2f5a6ac5c816b7b8424239c8ce1787420776f6e001721818d64d546f97d03baacef636464fb29a4f7a62d6f89dec7894b942e87d2b07d78edecc7ecd')
 
 build(){
 	cd $_pyname-$pkgver
