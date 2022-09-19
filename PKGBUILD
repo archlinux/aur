@@ -3,6 +3,7 @@
 
 _pkgname=openfec
 pkgname="${_pkgname}-roc"
+_pkgver=1.4.2
 pkgver=1.4.2.4
 pkgrel=1
 pkgdesc="Open Forward Erasure Codes (ROC fork)"
@@ -30,9 +31,9 @@ build() {
 }
 
 package() {
-  install -Dm755 ${_pkgname}-${pkgver}/bin/Release/libopenfec.so.$pkgver "$pkgdir/usr/lib/libopenfec.so.$pkgver"
-  ln -s libopenfec.so.$pkgver "$pkgdir/usr/lib/libopenfec.so.1"
-  ln -s libopenfec.so.$pkgver "$pkgdir/usr/lib/libopenfec.so"
+  install -Dm755 ${_pkgname}-${pkgver}/bin/Release/libopenfec.so.$_pkgver "$pkgdir/usr/lib/libopenfec.so.$_pkgver"
+  ln -s libopenfec.so.$_pkgver "$pkgdir/usr/lib/libopenfec.so.1"
+  ln -s libopenfec.so.$_pkgver "$pkgdir/usr/lib/libopenfec.so"
   install -Dm644 ${_pkgname}-${pkgver}/LICENCE_CeCILL-C_V1-en.txt "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 
   mkdir -p "$pkgdir/usr/include"
