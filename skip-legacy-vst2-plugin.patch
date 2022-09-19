@@ -1,0 +1,13 @@
+--- a/OB-Xd.jucer
++++ b/OB-Xd.jucer
+@@ -9,8 +9,8 @@
+               pluginAUExportPrefix="" pluginRTASCategory="2048" aaxIdentifier="com.discodsp.obxd"
+               companyName="discoDSP" companyWebsite="https://www.discodsp.com/"
+               pluginIsMidiEffectPlugin="0" pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
+-              pluginFormats="buildAU,buildLV2,buildStandalone,buildVST,buildVST3"
+-              buildVST="1" buildVST3="1" buildAU="1" buildAUv3="0" buildRTAS="0"
++              pluginFormats="buildAU,buildLV2,buildStandalone,buildVST3"
++              buildVST="0" buildVST3="1" buildAU="1" buildAUv3="0" buildRTAS="0"
+               buildAAX="0" buildStandalone="1" enableIAA="0" jucerFormatVersion="1"
+               pluginChannelConfigs="{0,2}" companyCopyright="discoDSP" companyEmail="contactus@discodsp.com"
+               pluginAAXCategory="2048" pluginVSTCategory="kPlugCategSynth"
