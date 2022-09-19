@@ -29,6 +29,8 @@ package() {
   cp -r * "${pkgdir}"
   # Remove *.u8 files and strip ".fortunes" from filenames
   cd $pkgdir/usr/share/fortune/de
+  mv debian debian-de
+  mv debian.dat debian-de.dat
   rm *.u8
   mv * ..
   cd ..
