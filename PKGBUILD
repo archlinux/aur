@@ -2,7 +2,7 @@
 
 pkgbase=sniprun
 pkgname=('sniprun' 'neovim-sniprun')
-pkgver=1.2.6
+pkgver=1.2.7
 pkgrel=1
 pkgdesc='Independently run snippets of code'
 arch=('x86_64')
@@ -11,10 +11,11 @@ license=('MIT')
 makedepends=('cargo' 'gcc-libs')
 changelog=CHANGELOG.md
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0269e4e467a070c918aca6b96dabd11886484078ece3c4a9ed9dd816d47963c8')
+sha256sums=('cda4e519c5e200973ab352694c5990ef2dbb69b73ea2211ebe8e3ed4cb9e19ab')
 
 prepare() {
 	cd "$pkgbase-$pkgver"
+	cargo update
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -26,8 +27,9 @@ build() {
 }
 
 # check() {
-#		cd "$pkgname-$pkgver"
-#		cargo test --release --locked --target-dir=target
+# 	export RUSTUP_TOOLCHAIN=stable
+# 	cd "$pkgname-$pkgver"
+# 	cargo test --frozen --all-features
 # }
 
 package_sniprun() {
