@@ -9,6 +9,7 @@ url='https://github.com/reales/OB-Xd'
 license=('GPL3')
 groups=('pro-audio' 'vst3-plugins' 'lv2-plugins')
 depends=(
+  'alsa-lib'
   'hicolor-icon-theme'
   'libjpeg-turbo'
   'libvorbis'
@@ -23,7 +24,6 @@ makedepends=(
   'zlib'
   'libpng'
   'libogg'
-  'alsa-lib'
   'jack'
   'libx11'
   'libxext'
@@ -34,7 +34,6 @@ makedepends=(
 )
 optdepends=(
   'jack: backend for standalone'
-  'alsa-lib: backend for standalone'
   'vst3-host: for VST3 plugins'
   'lv2-host: for LV2 plugins'
 )
