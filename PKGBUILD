@@ -3,7 +3,8 @@
 # Contributor: bitwave
 
 pkgname=python-pycaption
-pkgver=2.0.9
+_pkg="${pkgname#python-}"
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Python module to read/write popular video caption formats"
 arch=('any')
@@ -12,25 +13,25 @@ license=('Apache')
 depends=('python-beautifulsoup4' 'python-lxml' 'python-cssutils')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-lazy-fixture')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/pycaption/pycaption-$pkgver.tar.gz")
-sha256sums=('a9d434a13fc387566d2a329c7ea1ce423034cf6deb8b28757123bc05656840c5')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('995fff11874fef02980f755ce3dcfa2d055078eba1ccd28564b7f6f1161d0019')
 
 prepare() {
-	cd "pycaption-$pkgver"
+	cd "$_pkg-$pkgver"
 	sed -i "/packages=/s/()/(exclude=['tests*'])/" setup.py
 }
 
 build() {
-	cd "pycaption-$pkgver"
+	cd "$_pkg-$pkgver"
 	python -m build --wheel --no-isolation
 }
 
 check() {
-	cd "pycaption-$pkgver"
+	cd "$_pkg-$pkgver"
 	pytest -x --disable-warnings
 }
 
 package() {
-	cd "pycaption-$pkgver"
+	cd "$_pkg-$pkgver"
 	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 }
