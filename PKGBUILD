@@ -10,7 +10,6 @@ depends=(
   # adapted from requirements.txt
   "python>3.7"
   "python-aiohttp"
-  "python-aiohttp"
   "python-aiofiles>=0.6.0"
   "python-argparse"
   # "python-asyncio" part of python since 3.3
