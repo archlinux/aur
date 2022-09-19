@@ -1,6 +1,6 @@
 pkgbase = xmobar-dynamic
 	pkgdesc = Minimalistic Text Based Status Bar
-	pkgver = 0.39.rel24
+	pkgver = 0.44.2
 	pkgrel = 1
 	url = https://hackage.haskell.org/package/xmobar
 	arch = x86_64
@@ -41,9 +41,9 @@ pkgbase = xmobar-dynamic
 	provides = xmobar
 	conflicts = xmobar
 	conflicts = xmobar-git
-	source = https://github.com/jaor/xmobar/archive/0.39/xmobar-dynamic-0.39.tar.gz
+	source = https://codeberg.org/xmobar/xmobar/archive/0.44.2.tar.gz
 	source = dynamic.patch
-	sha512sums = a47d7cf16fdea4bece1d622db1c2ac76acc9d9369043eec6ff41a22c1f59c9757932fbcebfe804a636c783e9a66317bb3aaf72edc4a373c48e7db3c9292d9658
+	sha512sums = SKIP
 	sha512sums = 7a8d6f157716c41f1e0f5749b79477fb560bb36c8f0eb244f9659a4e17918fb792b81e0622be00429445186e2a3f89caaa0bbdd30d3bd52975472e64502460f5
 
 pkgname = xmobar-dynamic
