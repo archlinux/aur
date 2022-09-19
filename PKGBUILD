@@ -3,7 +3,7 @@
 _pyname=os-vif
 _pycname=${_pyname//-/_}
 pkgname=python-$_pyname
-pkgver=2.6.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A library for plugging and unplugging virtual interfaces in OpenStack."
 arch=(any)
@@ -38,9 +38,9 @@ checkdepends=(
 	python-testscenarios
 )
 source=(https://pypi.io/packages/source/${_pycname::1}/$_pycname/$_pycname-$pkgver.tar.gz)
-md5sums=('0e66af9323107e827b8205c5d385794b')
-sha256sums=('285a7447b3e40db371438176be85d3c42710279ae4ca5da59809718aff5e4c88')
-sha512sums=('1ad6d00025abeff833c82e22f5ec6ce11176b3073e3dba7bca729433f7c8b77b344919b841aef2beb2aa6e606d7d3f19958b414c1d0ec4dcd89089a7866eff1a')
+md5sums=('201e1c90544dc3ba8c1d0d527cbe82ad')
+sha256sums=('dc345bfc24ba76042bba939f27931c8b55b7c7dd76b4528505da75fdd594b919')
+sha512sums=('3f7b55f1c69b3b283bc719e9466756d74eea6c78b648938104df0b2336ccc560884ef2e63c3525ccf71ac7fd0ffaabb8c1bc2c0111c1828fb4093b4ffce6c0fa')
 
 export PBR_VERSION=$pkgver
 
