@@ -1,11 +1,11 @@
 pkgbase = libadwaita-git
 	pkgdesc = Building blocks for modern adaptive GNOME applications
-	pkgver = 1.1.rc
+	pkgver = 1.2.0+26+ge97d36dc
 	pkgrel = 1
 	url = https://gnome.pages.gitlab.gnome.org/libadwaita
+	arch = x86_64
 	arch = i686
 	arch = pentium4
-	arch = x86_64
 	license = LGPL
 	checkdepends = weston
 	makedepends = git
