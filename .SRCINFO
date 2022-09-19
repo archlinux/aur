@@ -33,12 +33,3 @@ pkgname = gnome-desktop-git
 	provides = libgnome-desktop-3.so
 	provides = gnome-desktop
 	conflicts = gnome-desktop
-
-pkgname = gnome-desktop-4-git
-	pkgdesc = Library with common API for various GNOME modules (GTK4)
-	depends = gnome-desktop-common=1:43-1
-	depends = gtk4
-	provides = libgnome-bg-4.so
-	provides = libgnome-desktop-4.so
-	provides = libgnome-rr-4.so
-	provides = gnome-desktop-4

@@ -3,8 +3,9 @@
 _pkgbase=gnome-desktop
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgbase}-common-git"
-         "${_pkgbase}-git"
-         "${_pkgbase}-4-git")
+         "${_pkgbase}-git")
+         # Waiting for merge packages request
+         # "${_pkgbase}-4-git")
 pkgver=43
 pkgrel=1
 epoch=1
