@@ -1,6 +1,6 @@
 pkgbase = gnome-desktop-git
 	pkgdesc = Library with common API for various GNOME modules
-	pkgver = 40.0+17+gbab26981
+	pkgver = 43
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-desktop
@@ -13,17 +13,32 @@ pkgbase = gnome-desktop-git
 	makedepends = meson
 	makedepends = gtk-doc
 	makedepends = yelp-tools
+	source = git+https://gitlab.gnome.org/GNOME/gnome-desktop.git
+	b2sums = SKIP
+
+pkgname = gnome-desktop-common-git
+	pkgdesc = Library with common API for various GNOME modules (common files)
 	depends = gsettings-desktop-schemas
-	depends = gtk3
 	depends = xkeyboard-config
 	depends = iso-codes
 	depends = libseccomp
 	depends = bubblewrap
-	depends = systemd-libs
+	depends = systemd
 	depends = libxkbcommon
-	provides = gnome-desktop
-	conflicts = gnome-desktop
-	source = git+https://gitlab.gnome.org/GNOME/gnome-desktop.git
-	b2sums = SKIP
 
 pkgname = gnome-desktop-git
+	pkgdesc = Library with common API for various GNOME modules (GTK3)
+	depends = gnome-desktop-common=1:43-1
+	depends = gtk3
+	provides = libgnome-desktop-3.so
+	provides = gnome-desktop
+	conflicts = gnome-desktop
+
+pkgname = gnome-desktop-4-git
+	pkgdesc = Library with common API for various GNOME modules (GTK4)
+	depends = gnome-desktop-common=1:43-1
+	depends = gtk4
+	provides = libgnome-bg-4.so
+	provides = libgnome-desktop-4.so
+	provides = libgnome-rr-4.so
+	provides = gnome-desktop-4
