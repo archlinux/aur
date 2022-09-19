@@ -1,0 +1,23 @@
+diff --git a/js/ui/screenshot.js b/js/ui/screenshot.js
+index 4bce178ef..a2ae1a864 100644
+--- a/js/ui/screenshot.js
++++ b/js/ui/screenshot.js
+@@ -1839,11 +1839,15 @@ var ScreenshotUI = GObject.registerClass({
+                     _('Screencasts'),
+                     /* Translators: this is a filename used for screencast
+                      * recording, where "%d" and "%t" date and time, e.g.
+-                     * "Screencast from 07-17-2013 10:00:46 PM.webm" */
++                     * "Screencast from 07-17-2013 10:00:46 PM.mkv" */
+                     /* xgettext:no-c-format */
+-                    _('Screencast from %d %t.webm'),
++                    _('Screencast from %d %t.mkv'),
+                 ]),
+-                { 'draw-cursor': new GLib.Variant('b', drawCursor) },
++                {
++                    'draw-cursor': new GLib.Variant('b', drawCursor),
++                    'pipeline': new GLib.Variant('s', 'vaapipostproc ! video/x-raw,format=NV12,max-framerate=60/1 ! queue ! vaapih264enc ! video/x-h264,profile=main ! queue ! h264parse ! matroskamux'),
++                    'framerate': new GLib.Variant('u', 60),
++                },
+                 ([success, path], error) => {
+                     if (error !== null) {
+                         this._setScreencastInProgress(false);
