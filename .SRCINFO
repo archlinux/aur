@@ -8,6 +8,7 @@ pkgbase = scrap_engine-git
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = python-pip
 	depends = python
 	provides = python-scrap_engine
 	source = scrap_engine-git::git+https://github.com/lxgr-linux/scrap_engine
