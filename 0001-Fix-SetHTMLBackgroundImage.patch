@@ -1,0 +1,26 @@
+diff --git a/include/lenmus_content_box_ctrol.h b/include/lenmus_content_box_ctrol.h
+index 244c71d0..6c7d73a2 100644
+--- a/include/lenmus_content_box_ctrol.h
++++ b/include/lenmus_content_box_ctrol.h
+@@ -129,7 +129,7 @@ public:
+     wxWindow* GetHTMLWindow();
+     wxColour GetHTMLBackgroundColour() const;
+     void SetHTMLBackgroundColour(const wxColour& WXUNUSED(clr));
+-    void SetHTMLBackgroundImage(const wxBitmap& WXUNUSED(bmpBg));
++    void SetHTMLBackgroundImage(const wxBitmapBundle& WXUNUSED(bmpBg));
+     void SetHTMLStatusText(const wxString& WXUNUSED(text));
+     wxCursor GetHTMLCursor(HTMLCursor type) const;
+     wxPoint GetRootCellCoords(size_t n) const;
+diff --git a/src/app/lenmus_content_box_ctrol.cpp b/src/app/lenmus_content_box_ctrol.cpp
+index f7b1f9cb..c458f0a6 100644
+--- a/src/app/lenmus_content_box_ctrol.cpp
++++ b/src/app/lenmus_content_box_ctrol.cpp
+@@ -989,7 +989,7 @@ void ContentBoxCtrol::SetHTMLBackgroundColour(const wxColour& WXUNUSED(clr))
+     // nothing to do
+ }
+ 
+-void ContentBoxCtrol::SetHTMLBackgroundImage(const wxBitmap& WXUNUSED(bmpBg))
++void ContentBoxCtrol::SetHTMLBackgroundImage(const wxBitmapBundle& WXUNUSED(bmpBg))
+ {
+     // nothing to do
+ }
