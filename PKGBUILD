@@ -6,6 +6,7 @@
 # Contributor: Bakasura <bakasura@protonmail.ch>
 # Contributor: mazharhussain <realmazharhussain@gmail.com>
 # Contributor: Herman Rimm <herman_rimm@pm.me>
+# Contributor: huyz
 
 _pkgname=libadwaita
 pkgbase=$_pkgname-git
