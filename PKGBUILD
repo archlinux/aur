@@ -4,13 +4,13 @@
 _arch=armv7l
 _target=$_arch-unknown-linux-gnueabihf
 pkgname=$_arch-gcc
-pkgver=12.1.0
+pkgver=12.2.0
 pkgrel=0
 pkgdesc='The GNU Compiler Collection - cross compiler for armv7l'
 arch=(x86_64)
 url='https://gcc.gnu.org/'
 license=(GPL LGPL FDL)
-depends=(libmpc zstd libisl)
+depends=(libmpc zstd libisl $_arch-glibc)
 makedepends=($_arch-binutils)
 provides=($_arch-gcc)
 conflicts=($_arch-gcc)
@@ -19,7 +19,7 @@ source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
         #https://gcc.gnu.org/pub/gcc/snapshots/$_snapshot/gcc-$_snapshot.tar.xz
 )
 
-sha256sums=('62fd634889f31c02b64af2c468f064b47ad1ca78411c45abe6ac4b5f8dd19c7b'
+sha256sums=('e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff'
 	'SKIP')
 
 validpgpkeys=('F3691687D867B81B51CE07D9BBE43771487328A9'  # bpiotrowski@archlinux.org
