@@ -9,7 +9,7 @@ url="https://github.com/coloradocolby/thokr"
 license=('MIT')
 makedepends=('cargo' 'git')
 provides=('mow')
-source=('git+https://github.com/coloradocolby/thokr.git')
+source=('git+https://github.com/thatvegandev/thokr.git')
 md5sums=('SKIP')
 
 

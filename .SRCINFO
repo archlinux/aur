@@ -8,7 +8,7 @@ pkgbase = thokr-git
 	makedepends = cargo
 	makedepends = git
 	provides = mow
-	source = git+https://github.com/coloradocolby/thokr.git
+	source = git+https://github.com/thatvegandev/thokr.git
 	md5sums = SKIP
 
 pkgname = thokr-git
