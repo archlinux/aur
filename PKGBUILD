@@ -4,23 +4,20 @@
 _pkgname=hvac
 pkgname=python-$_pkgname
 # https://github.com/hvac/hvac/releases
-pkgver=0.11.2
-pkgrel=4
+pkgver=1.0.2
+pkgrel=1
 pkgdesc='Python 2.7/3.X client for HashiCorp Vault'
 url='https://python-hvac.org/'
 license=(Apache)
 arch=(any)
-depends=(python python-requests python-six)
-makedepends=(python-setuptools vault)
+depends=(python python-pyhcl python-requests python-six)
+makedepends=(python-build python-installer python-poetry-core vault)
 checkdepends=(python-pytest python-authlib python-flask python-flask-sqlalchemy python-mock
-              python-parameterized python-pyhcl python-requests-mock python-werkzeug python-jwcrypto
+              python-parameterized python-requests-mock python-werkzeug python-jwcrypto
               consul)
-optdepends=(
-  'python-pyhcl: for parsing returned data'
-)
 # Upstream intentionally prune tests from sdists (https://github.com/hvac/hvac/pull/356)
 source=("https://github.com/$_pkgname/$_pkgname/archive/v$pkgver/$_pkgname-$pkgver.tar.gz")
-sha512sums=('7a3cb82e17e7ceef04173c8682b33d35457675eae7b402ba36c3a21026ebf551a2731ecbd6dc0d00bb727e98a29f0a0f5bf427d7429b55b922247b4ccfb79794')
+sha512sums=('e0f81682be5308a418c2246b03573f0001b9e619e1dc6435b9c9bb608e496a6406b862e28c337afe56cd2d2432d9a0240af5529841d3d6b1b60b662b9b56b668')
 
 prepare() {
   # /usr/bin/vault not working in clean chroots as it requires CAP_IPC_LOCK
@@ -31,19 +28,17 @@ prepare() {
 
 build() {
   cd $_pkgname-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
   cd $_pkgname-$pkgver
   # test_ldap requires many unpackaged dependencies
-  # some tests are disabled due to incompatibility with vault 1.9 https://github.com/hvac/hvac/issues/786
-  # XXX: Disable integration tests altogether with much more failures with newer vault
   PATH="$srcdir/vault-unprivileged:$PATH" pytest tests \
-    --ignore=tests/integration_tests
+    --ignore=tests/integration_tests/api/auth_methods/test_ldap.py
 }
 
 package() {
   cd $_pkgname-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
