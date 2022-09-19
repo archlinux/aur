@@ -1,6 +1,6 @@
 pkgbase = python-tooz
 	pkgdesc = Coordination library for distributed systems.
-	pkgver = 2.9.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://docs.openstack.org/tooz/latest/
 	arch = any
@@ -37,10 +37,9 @@ pkgbase = python-tooz
 	depends = python-futurist
 	depends = python-oslo-utils
 	depends = python-oslo-serialization
-	source = https://pypi.io/packages/source/t/tooz/tooz-2.9.0.tar.gz
-	md5sums = 4e9ef713ad9cd5f85fab97e34ea10dcf
-	sha256sums = 834faf28ca15cbee45073125ccbfcd11675083c68cd3882b602fa3a79b8de11f
-	sha512sums = 56d4d74dc9decee1944b1f5fcc482e3243da5dacdbfaddc33eb408c1362705519a64db8289350ecfca2565c0aa184f9b20a0bdd50da5605c4f8b2dee50e94210
+	source = https://pypi.io/packages/source/t/tooz/tooz-3.1.0.tar.gz
+	md5sums = b2ab720867b00d66b2c30afc182f7290
+	sha256sums = 689ba42055fe1fedf4c2d90a58c92e70b8c5df068ef30a483960055c9fcc2c44
+	sha512sums = 86fe16dc0dfcb49bc34c720d295daed920e788330581dc41d9d1a3d3d9202cb58ff2f88882f0b84ff48a0618d634080d7b1fb5366e9139bb0b124f7cdce2d540
 
 pkgname = python-tooz
-
