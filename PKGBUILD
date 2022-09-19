@@ -1,7 +1,7 @@
 # Maintainer: Akira Fukushima <h3.poteto@gmail.com>
 pkgname=whalebird
 pkgver=4.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An Electron based Mastodon, Pleroma and Misskey client"
 arch=('x86_64')
 url="https://whalebird.social"
