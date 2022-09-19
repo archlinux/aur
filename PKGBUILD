@@ -3,7 +3,7 @@
 _pyname=oslo.messaging
 _pycname=${_pyname/./-}
 pkgname=python-${_pycname}
-pkgver=12.9.1
+pkgver=14.0.0
 pkgrel=1
 pkgdesc="Oslo Messaging API"
 arch=(any)
@@ -56,9 +56,9 @@ checkdepends=(
 )
 options=('!emptydirs')
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('37ee8a1a5d3d13743410f0e4b3496c41')
-sha256sums=('c83efc787347bb7953a69a07acdd4f140200edce78a92ff08ce7a863abe56ca3')
-sha512sums=('808436d4a821d1f8dc8a7bf00156f6ad6a199dfc11f72e41cc4ea03c6dbb4c6ade52c1f92b4798a29cbda0c5fc07b981dbecbb1d34bb6a53b6a1b4bf8b9e5267')
+md5sums=('baf22245c7a34f5ffed229373e10f7f1')
+sha256sums=('49917adeef2f795c9d9fad8714997cabb3df2ca7fac57c8bb119617bff2874c3')
+sha512sums=('01fc34749987167e988142786eb27f612ef396b44a57987ad2f7fb3493b0cd9eaad8bc0f2d9c898184dd014132a4e35583e20dcef3428101af1ee912f2af6d0a')
 
 export PBR_VERSION=$pkgver
 
