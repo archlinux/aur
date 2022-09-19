@@ -1,0 +1,29 @@
+diff --git a/setup.py b/setup.py
+index c0fd889..02f2f45 100644
+--- a/setup.py
++++ b/setup.py
+@@ -1,11 +1,12 @@
+-import io
+-
+ from setuptools import setup
+ 
++with open('README.rst', encoding='utf-8') as f:
++    desc=f.read()
++
+ setup(
+     name='txZMQ',
+-    version=io.open('VERSION', encoding='utf-8').read().strip(),
+-    packages=['txzmq', 'txzmq.test'],
++    version='$$PKGVER$$',
++    packages=['txzmq'],
+     license='MPLv2',
+     author='Andrey Smirnov',
+     author_email='me@smira.ru',
+@@ -20,6 +21,6 @@ setup(
+         "Programming Language :: Python :: 3",
+         "Topic :: Software Development :: Libraries",
+     ],
+-    long_description=io.open('README.rst', encoding='utf-8').read(),
++    long_description=desc,
+     install_requires=["Twisted>=10.0", "pyzmq>=13"],
+ )
