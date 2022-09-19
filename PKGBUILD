@@ -1,7 +1,7 @@
 # Maintainer: Antoine Maleyrie <antoine.maleyrie@gmail.com>
 
 pkgname=sys-pc-tool
-pkgver=6.30
+pkgver=6.31
 pkgrel=1
 
 pkgdesc="SYS PC Tool is a software for downloading flights recorded inside Syrides instruments."
@@ -11,7 +11,7 @@ license=('unknown')
 depends=('glibc>=2.17' 'krb5>=1.10' 'libldap' 'gtk2' 'libusb' 'libxml2' 'p11-kit' 'openssl' 'libcurl-gnutls')
 #install=
 source=("https://www.syride.com/downloads/$pkgname-$pkgver-$pkgrel""_amd64.deb")
-md5sums=('4f1b052a89cf111eac945644aaac3a40')
+md5sums=('9398821a938019e7a95a12d3a30bc496')
 
 prepare() {
     tar -xf data.tar.xz
