@@ -1,7 +1,7 @@
 # Maintainer: Conrad Hoffmann <ch@bitfehler.net>
 pkgname=makeimg
 pkgver=v0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Declarative way to build Arch or Alpine Linux images'
 arch=(any)
 url='https://sr.ht/~bitfehler/makeimg'
@@ -19,7 +19,6 @@ optdepends=(
 )
 makedepends=(
   asciidoc
-  git
   make
 )
 provides=('makeimg')

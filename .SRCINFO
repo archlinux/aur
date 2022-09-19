@@ -1,12 +1,11 @@
 pkgbase = makeimg
 	pkgdesc = Declarative way to build Arch or Alpine Linux images
 	pkgver = v0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sr.ht/~bitfehler/makeimg
 	arch = any
 	license = GPL2
 	makedepends = asciidoc
-	makedepends = git
 	makedepends = make
 	depends = coreutils
 	depends = tar
