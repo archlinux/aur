@@ -1,0 +1,16 @@
+pkgbase = git-review-git
+	pkgdesc = Tool to submit code to Gerrit
+	pkgver = 2.3.1.r1.7009d7d0
+	pkgrel = 1
+	url = https://opendev.org/opendev/git-review
+	arch = any
+	license = APACHE
+	makedepends = python-pbr
+	depends = git
+	depends = python-requests
+	provides = git-review
+	conflicts = git-review
+	source = git-review::git+https://opendev.org/opendev/git-review.git
+	md5sums = SKIP
+
+pkgname = git-review-git
