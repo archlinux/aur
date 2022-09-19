@@ -1,10 +1,12 @@
 pkgbase = gjs-git
 	pkgdesc = Javascript Bindings for GNOME
-	pkgver = 1.63.91+2+g6ea0f836
+	pkgver = 1.73.2+23+ge78966e1
 	pkgrel = 1
 	epoch = 2
 	url = https://gitlab.gnome.org/GNOME/gjs/blob/master/doc/Home.md
 	arch = x86_64
+	arch = i686
+	arch = pentium4
 	license = GPL
 	checkdepends = valgrind
 	checkdepends = xorg-server-xvfb
@@ -15,12 +17,11 @@ pkgbase = gjs-git
 	makedepends = meson
 	depends = cairo
 	depends = gobject-introspection-runtime
-	depends = js78
+	depends = js102
 	depends = dconf
-	provides = gjs=1.63.91+2+g6ea0f836
+	provides = gjs=1.73.2+23+ge78966e1
 	conflicts = gjs
 	source = git+https://gitlab.gnome.org/GNOME/gjs.git/
 	sha256sums = SKIP
 
 pkgname = gjs-git
-
