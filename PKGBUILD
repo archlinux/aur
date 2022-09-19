@@ -4,7 +4,7 @@
 _pkgname=darling
 pkgname=$_pkgname-bin
 pkgver=0.1.20220704
-pkgrel=1
+pkgrel=2
 pkgdesc="Darwin/macOS emulation layer for Linux"
 arch=('x86_64')
 url="https://github.com/darlinghq/darling"
@@ -18,7 +18,7 @@ depends=('dbus>=1.9.14' 'ffmpeg>=2:4.0' 'freetype2>=2.2.1' 'fuse2>=2.2' 'giflib>
          'libxrandr')
 source=("$url/releases/download/v$pkgver/${_pkgname}_${pkgver}.focal_amd64.deb")
 sha512sums=('6acf5271e25931c0871ed205d0ac0cea9b023b534669aa0491d82a0eb37b13f3970f2c323dffa0e0e4a3b49bb50377c01eb28f9d87f5b142cc5fcd8fd42e40d9')
-options=('!strip' '!emptydirs')
+options=('!strip')
 install=$pkgname.install
 
 package() {
