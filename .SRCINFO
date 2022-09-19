@@ -1,23 +1,18 @@
 pkgbase = greetd-qtgreet
-	pkgdesc = Qt based greeter for greetd, to be run under wayfire or similar wlr-based compositors.
+	pkgdesc = Qt based greeter for greetd
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/marcusbritanicus/QtGreet
-	install = greetd-qtgreet.install
 	arch = aarch64
 	arch = x86_64
-	license = GPLv3
+	license = GPL3
 	makedepends = cmake
 	makedepends = extra-cmake-modules
-	makedepends = python
 	depends = qt5-base
 	depends = wlroots
 	depends = qt5-wayland
 	depends = greetd
-	optdepends = wayfire
-	optdepends = sway
-	source = QtGreet-v1.0.0::https://gitlab.com/marcusbritanicus/QtGreet/-/archive/v1.0.0/QtGreet-v1.0.0.tar.gz
-	md5sums = ea391a96c297a967e16ac4cc7300e8f9
+	source = greetd-qtgreet-1.0.0.bz2::https://gitlab.com/marcusbritanicus/QtGreet/-/archive/v1.0.0/QtGreet-v1.0.0.tar.bz2
+	sha256sums = cc309f5d86477e5d616d9e4df4d172bd7860de6ed242b23a6564e1727b837998
 
 pkgname = greetd-qtgreet
-
