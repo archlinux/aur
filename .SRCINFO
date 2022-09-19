@@ -1,6 +1,6 @@
 pkgbase = python-pyjson5
 	pkgdesc = A JSON5 serializer and parser library for Python 3 written in Cython.
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/Kijewski/pyjson5
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-pyjson5
 	makedepends = python-wheel
 	depends = cython
 	depends = python-more-itertools
-	source = https://files.pythonhosted.org/packages/source/p/pyjson5/pyjson5-1.6.1.tar.gz
-	sha256sums = 8c78ce75423059becbad4d2b8267d930eda5f68c5e99b11ab523c29552c639fc
+	source = https://files.pythonhosted.org/packages/source/p/pyjson5/pyjson5-1.6.2.tar.gz
+	sha256sums = 227a1e5eff5c570281a9154002ad4e15dcbe7c93334fc1b8f3cd132481382a33
 
 pkgname = python-pyjson5
