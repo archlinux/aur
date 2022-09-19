@@ -1,7 +1,6 @@
-
 # Maintainer: Your Name <hexisXz>
 pkgname=ps-lookup
-pkgver=1.0.r21.130d142
+pkgver=1.0
 pkgrel=1
 pkgdesc="a simple and easy to use command line app that searches for the process you enter."
 arch=(x86_64)
