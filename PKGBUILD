@@ -3,7 +3,7 @@
 _pyname=glance-store
 _pycname=${_pyname//-/_}
 pkgname=python-$_pyname
-pkgver=2.7.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="OpenStack Image Service Store library"
 arch=(any)
@@ -53,9 +53,9 @@ checkdepends=(
 	python-oslo-privsep
 )
 source=("https://pypi.io/packages/source/${_pycname::1}/$_pycname/$_pycname-$pkgver.tar.gz")
-md5sums=('264a478c9fb01372e7d88baa99e280ba')
-sha256sums=('8f7faf76e76f2170ea124f9e5e71752da71d1db25053e73581a6291330f687b3')
-sha512sums=('fc5b06dbd197d99b36e2f744f10dff77d268e1dfe13ebb85b1945f28d3b27607d7023735868e6f4bfcd63735c917a2bc21aa7772ed35a4710f9df557d4cd5a99')
+md5sums=('721ff5df6edb6e1fd19a0ecc338b16c8')
+sha256sums=('f621e6f676aa0d3682580f3f3ba833afdc077238c97253fbd0bbbd0b9995e04b')
+sha512sums=('81462535de76897203d9c9772f1aef6fcce658a09d9c85e61debf0f94a14839b09a4fbe4bb6539b98f6c89297f8298ab77655cebc3a63daab282257f47e5efeb')
 
 export PBR_VERSION=$pkgver
 
