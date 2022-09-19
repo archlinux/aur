@@ -1,6 +1,6 @@
 pkgbase = zsh-completions-git
 	pkgdesc = Additional completion definitions for Zsh
-	pkgver = 0.33.0.r57.g55d07cc
+	pkgver = 0.34.0.r18.gacd4de5
 	pkgrel = 1
 	url = https://github.com/zsh-users/zsh-completions
 	arch = any

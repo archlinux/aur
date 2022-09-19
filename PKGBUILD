@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=zsh-completions-git
-pkgver=0.33.0.r57.g55d07cc
+pkgver=0.34.0.r18.gacd4de5
 pkgrel=1
 pkgdesc="Additional completion definitions for Zsh"
 arch=(any)
@@ -22,6 +22,7 @@ pkgver() {
 
 package() {
 	cd "$srcdir"/zsh-completions/src
+	rm _vagrant
 	install -m0755 -d "$pkgdir"/usr/share/zsh/site-functions
 	install -m0644 _* "$pkgdir"/usr/share/zsh/site-functions
 }
