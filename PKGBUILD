@@ -31,7 +31,6 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     make PREFIX=/usr DESTDIR=${pkgdir} install
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm644 AUTHORS "${pkgdir}/usr/share/doc/${pkgname}/AUTHORS"
     install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
