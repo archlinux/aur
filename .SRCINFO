@@ -1,6 +1,6 @@
 pkgbase = python-os-ken
 	pkgdesc = A component-based software defined networking framework for OpenStack.
-	pkgver = 2.3.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = http://docs.openstack.org/os-ken/latest
 	arch = any
@@ -29,9 +29,9 @@ pkgbase = python-os-ken
 	depends = python-routes
 	depends = python-six
 	depends = python-webob
-	source = https://pypi.io/packages/source/o/os-ken/os-ken-2.3.0.tar.gz
-	md5sums = a111c05123c30ac879d8f417494b6476
-	sha256sums = 9eb24c72b66aeb928ab505332a037ba070d902b434c4366701eb40914e628fbe
-	sha512sums = 7e71b0c25f9e5a9b9a14fff913d796349e2c8a6630956ed6cc069eb008fec702dfde41b3a6751d05d683948e75e170c432ffb8c19b0e2ebf95f5a19f9b2a6f17
+	source = https://pypi.io/packages/source/o/os-ken/os-ken-2.5.0.tar.gz
+	md5sums = 3d68ae037c3652d7957ec16feb1e521f
+	sha256sums = 1901decc5521f1a0b73d42f25759ba0bba2af39fd4e26eaccae836912ea2dac6
+	sha512sums = c692221bd7aed53fd1e0f3baa4d1c885f308bb9eb1679fd4b15463d90c374841aa1630d84dd7af48f951af8cb577db382bfeecf350cd9bb7ad35d1b9518e3901
 
 pkgname = python-os-ken
