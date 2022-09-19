@@ -47,8 +47,9 @@ _pick() {
 }
 
 package_cheese-git() {
-  depends+=("libcheese=$pkgver-$pkgrel")
+  depends+=("libcheese-git=$pkgver-$pkgrel")
   provides=("${_pkgbase}")
+  conflicts=("${_pkgbase}")
   groups=(gnome)
 
   meson install -C build --destdir "$pkgdir"
@@ -65,6 +66,7 @@ package_libcheese-git() {
   depends=(clutter clutter-gtk clutter-gst gdk-pixbuf2 glib2 gtk3 libcanberra
            gstreamer gst-plugins-base-libs gst-plugins-bad-libs)
   provides=(libcheese.so libcheese-gtk.so libcheese)
+  conflicts=(libcheese)
   mv libs/* "$pkgdir"
 }
 

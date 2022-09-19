@@ -43,8 +43,9 @@ pkgname = cheese-git
 	depends = libgudev
 	depends = dconf
 	depends = gnome-video-effects
-	depends = libcheese=43.alpha+r7+ge2197c0b-1
+	depends = libcheese-git=43.alpha+r7+ge2197c0b-1
 	provides = cheese
+	conflicts = cheese
 
 pkgname = libcheese-git
 	pkgdesc = Webcam widget for Clutter and GTK
@@ -61,3 +62,4 @@ pkgname = libcheese-git
 	provides = libcheese.so
 	provides = libcheese-gtk.so
 	provides = libcheese
+	conflicts = libcheese
