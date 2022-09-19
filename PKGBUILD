@@ -3,7 +3,7 @@
 
 pkgname=gnome-browser-connector
 pkgver=42.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Native browser connector for integration with extensions.gnome.org'
 arch=(any)
 url="https://wiki.gnome.org/Projects/GnomeShellIntegration"
@@ -25,7 +25,7 @@ pkgver() {
 prepare() {
   cd $pkgname
   # Enforce Arch python package's binary, to avoid different python binary in users' PATH
-  sed -i "/find_installation('python3'/s/python3/\/usr\/bin\/python3/" meson.build
+  sed -i "s|'python3'|'/usr/bin/python3'|" meson.build
 }
 
 build() {
