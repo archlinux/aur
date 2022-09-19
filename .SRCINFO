@@ -7,6 +7,8 @@ pkgbase = fortune-mod-de
 	license = GPL2
 	makedepends = recode
 	depends = fortune-mod
+	provides = fortune-mod-de
+	conflicts = fortune-mod-de
 	source = http://ftp.de.debian.org/debian/pool/main/f/fortunes-de/fortunes-de_0.34.orig.tar.gz
 	md5sums = 4d461b13da65c5964a73de744f5217b1
 

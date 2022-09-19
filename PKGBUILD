@@ -11,7 +11,8 @@ source=(http://ftp.de.debian.org/debian/pool/main/f/fortunes-de/fortunes-de_$pkg
 arch=('any')
 license=('GPL2')
 md5sums=('4d461b13da65c5964a73de744f5217b1')
-
+provides=("${pkgname}")
+conflicts=("${pkgname}")
 build() {
 	cd "$srcdir/fortunes-de-${pkgver}"
 	
