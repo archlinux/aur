@@ -5,7 +5,7 @@
 _pkgbase=cheese
 pkgbase=$_pkgbase-git
 pkgname=($_pkgbase-git lib$_pkgbase-git)
-pkgver=41.1+r5+gddee436d
+pkgver=43.alpha+r7+ge2197c0b
 pkgrel=1
 pkgdesc="Take photos and videos with your webcam, with fun graphical effects"
 url="https://wiki.gnome.org/Apps/Cheese"
@@ -29,8 +29,8 @@ build() {
 }
 
 check() (
-  glib-compile-schemas "${GSETTINGS_SCHEMA_DIR:=$PWD/cheese/data}"
-  export GSETTINGS_SCHEMA_DIR
+  # glib-compile-schemas "${GSETTINGS_SCHEMA_DIR:=$PWD/cheese/data}"
+  # export GSETTINGS_SCHEMA_DIR
 
   dbus-run-session xvfb-run -s '-nolisten local' \
     meson test -C build --print-errorlogs
