@@ -1,6 +1,6 @@
 /pkg/
 /src/
-/LICENSE
+/LICENSE*.txt
 **.pkg.tar
 **.pkg.tar.zst
 **.tar.gz
