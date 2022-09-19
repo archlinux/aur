@@ -1,7 +1,7 @@
 pkgbase = python-restructuredtext-lint
-	pkgdesc = A comprehensive, fast, pure Python memcached client
+	pkgdesc = reStructuredText linter
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/twolfson/restructuredtext-lint
 	arch = any
 	license = UNLICENSE
