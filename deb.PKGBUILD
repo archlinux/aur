@@ -1,12 +1,11 @@
 # Maintainer: Moses Narrow <moe_narrow@use.startmail.com>
-# Maintainer: Rudi [KittyCash] <rudi@skycoinmail.com>
 pkgname=skywire-dmsg
 _pkgname=dmsg
 _githuborg=skycoin
 pkgdesc="Skywire Mainnet Node implementation. Skycoin.com"
-pkgver=0.6.0
+pkgver='0.0.1'
 _pkgver=${pkgver}
-pkgrel=4
+pkgrel=1
 _pkgrel=${pkgrel}
 arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' )
 _pkgarch=$(dpkg --print-architecture)
@@ -35,68 +34,105 @@ export CC=musl-gcc
 
 #create the skywire binaries
 cd ${srcdir}/go/src/${_pkggopath}
+go mod tidy
+go mod vendor
+
 _cmddir=${srcdir}/go/src/${_pkggopath}/cmd
+for _i in ${_cmddir}/*/*.go ; do
+	_dir=${_i/*skycoin\/dmsg\/}
+	_dir=${_dir%\/*}
+	cd $_dir
+	#temporary fix
+	if [[ $_i == *"dmsg-discovery"* ]] ; then
+	go get github.com/VictoriaMetrics/metrics
+	go get github.com/go-chi/chi/v5
+	go get github.com/go-chi/chi/v5/middleware
+	go get github.com/go-redis/redis/v8
+	go get github.com/json-iterator/go
+	go get github.com/pires/go-proxyproto
+	go get github.com/sirupsen/logrus
+	go get github.com/skycoin/noise
+	go get github.com/skycoin/skycoin/src/cipher
+	go get github.com/skycoin/skywire-utilities/pkg/buildinfo
+	go get github.com/skycoin/skywire-utilities/pkg/cipher
+	go get github.com/skycoin/skywire-utilities/pkg/cmdutil
+	go get github.com/skycoin/skywire-utilities/pkg/httputil
+	go get github.com/skycoin/skywire-utilities/pkg/logging
+	go get github.com/skycoin/skywire-utilities/pkg/metricsutil
+	go get github.com/skycoin/skywire-utilities/pkg/netutil
+	go get github.com/skycoin/skywire-utilities/pkg/networkmonitor
+	go get github.com/skycoin/skywire-utilities/pkg/skyenv
+	go get github.com/skycoin/yamux
+	go get github.com/spf13/cobra
+	go get github.com/skycoin/dmsg/internal/dmsg-discovery/store
+	fi
+	if [[ $_i == *"dmsgpty-cli"* ]] ; then
+	go get github.com/skycoin/dmsg/pkg/dmsgpty
+	go get golang.org/x/term@v0.0.0-20210927222741-03fcf44c2211
+	go get github.com/skycoin/skywire/pkg/skyenv
+	go get nhooyr.io/websocket
+	go get github.com/VictoriaMetrics/metrics
+	go get github.com/go-chi/chi/v5
+	go get github.com/go-chi/chi/v5/middleware
+	go get github.com/go-redis/redis/v8
+	go get github.com/json-iterator/go
+	go get github.com/pires/go-proxyproto
+	go get github.com/sirupsen/logrus
+	go get github.com/skycoin/noise
+	go get github.com/skycoin/skycoin/src/cipher
+	go get github.com/skycoin/skywire-utilities/pkg/buildinfo
+	go get github.com/skycoin/skywire-utilities/pkg/cipher
+	go get github.com/skycoin/skywire-utilities/pkg/cmdutil
+	go get github.com/skycoin/skywire-utilities/pkg/httputil
+	go get github.com/skycoin/skywire-utilities/pkg/logging
+	go get github.com/skycoin/skywire-utilities/pkg/metricsutil
+	go get github.com/skycoin/skywire-utilities/pkg/netutil
+	go get github.com/skycoin/skywire-utilities/pkg/networkmonitor
+	go get github.com/skycoin/skywire-utilities/pkg/skyenv
+	go get github.com/skycoin/yamux
+	go get github.com/spf13/cobra
+	fi
+	go build -trimpath --ldflags '-s -w -linkmode external -extldflags "-static" -buildid=' -o $GOBIN/ .
+	cd ../../
+done
 
-_buildbins dmsg-discovery $GOBIN
-_buildbins dmsg-server $GOBIN
-_buildbins dmsgget $GOBIN
-_buildbins dmsgpty-cli $GOBIN
-_buildbins dmsgpty-host $GOBIN
-_buildbins dmsgpty-ui $GOBIN
+### CONTROL FILES CREATION ###
+#create control file for the debian package
+echo "Package: ${_pkgname}" > ${srcdir}/control
+echo "Version: ${_pkgver}-${_pkgrel}" >> ${srcdir}/control
+echo "Priority: optional" >> ${srcdir}/control
+echo "Section: web" >> ${srcdir}/control
+echo "Architecture: ${_pkgarch}" >> ${srcdir}/control
+echo "Depends: ${_debdeps}" >> ${srcdir}/control
+echo "Maintainer: Moses Narrow" >> ${srcdir}/control
+echo "Description: ${pkgdesc}" >> ${srcdir}/control
 
-  ### CONTROL FILES CREATION ###
-  #create control file for the debian package
-  echo "Package: ${_pkgname}" > ${srcdir}/control
-  echo "Version: ${_pkgver}-${_pkgrel}" >> ${srcdir}/control
-  echo "Priority: optional" >> ${srcdir}/control
-  echo "Section: web" >> ${srcdir}/control
-  echo "Architecture: ${_pkgarch}" >> ${srcdir}/control
-  echo "Depends: ${_debdeps}" >> ${srcdir}/control
-  echo "Maintainer: Moses Narrow" >> ${srcdir}/control
-  echo "Description: ${pkgdesc}" >> ${srcdir}/control
-
-}
-
-_buildbins() {
-  _GOHERE=$2
-  _binpath=$3
-  _binname=$1
-  _msg2 "building ${_binname} binary"
-  cd ${_cmddir}/${_binpath}${_binname}
-  go build -trimpath --ldflags '-s -w -linkmode external -extldflags "-static" -buildid=' -o $_GOHERE/ .
 }
 
 package() {
-  _debpkgdir="${_pkgname}-${pkgver}-${_pkgrel}-${_pkgarch}"
-  echo "${_debpkgdir}"
-  _pkgdir="${pkgdir}/${_debpkgdir}"
-  mkdir -p ${_pkgdir}/
-  #create directory trees
-	_srcdir=${srcdir}/${_pkgname}
-  _path=${_pkgdir}/opt/${_pkgname}
-  _gobin=${_path}/bin
-	mkdir -p ${_pkgdir}/usr/bin
-	mkdir -p ${_gobin}
-	mkdir -p ${_guidir}
-	_msg2 'installing binaries'
-	_bin="${srcdir}"/go/bin
-	_bins=$( ls "$_bin")
-	for i in $_bins; do
-		install -Dm755 ${srcdir}/go/bin/${i} ${_gobin}/${i}
-		ln -rTsf ${_gobin}/$i ${_pkgdir}/usr/bin/${i}
-		chmod 755 ${_pkgdir}/usr/bin/${i}
-	done
+_debpkgdir="${_pkgname}-${pkgver}-${_pkgrel}-${_pkgarch}"
+_pkgdir="${pkgdir}/${_debpkgdir}"
+mkdir -p ${_pkgdir}/
+_msg2 'installing binaries'
+mkdir -p ${_pkgdir}/opt/dmsg/bin/
+mkdir -p ${_pkgdir}/usr/bin/
 
-  _msg2 'installing control file'
-  install -Dm755 ${srcdir}/control ${_pkgdir}/DEBIAN/control
+for _i in $GOBIN/* ; do
+install -Dm755  $_i ${_pkgdir}/opt/dmsg/bin/
+done
+for _i in ${_pkgdir}/opt/dmsg/bin/* ; do
+ln -rTsf ${_i} ${_pkgdir}/usr/bin/${_i##*\/}
+done
+_msg2 'installing control file'
+install -Dm755 ${srcdir}/control ${_pkgdir}/DEBIAN/control
 
-  _msg2 'creating the debian package'
-  #create the debian package
-  cd $pkgdir
-  dpkg-deb --build -z9 ${_debpkgdir}
-  mv *.deb ../../
-  #exit so the arch package doesn't get built
-  exit
+_msg2 'creating the debian package'
+#create the debian package
+cd $pkgdir
+dpkg-deb --build -z9 ${_debpkgdir}
+mv *.deb ../../
+#exit so the arch package doesn't get built
+exit
 }
 
 _msg2() {
