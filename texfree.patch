@@ -1,0 +1,48 @@
+diff --git a/src/texprintf.c b/src/texprintf.c
+index bfda36e..5c8199c 100644
+--- a/src/texprintf.c
++++ b/src/texprintf.c
+@@ -101,6 +101,11 @@ char * stexprintf(const char *format, ...)
+ 	return res;
+ }
+ 
++void texfree(void *ptr)
++{
++    free(ptr);
++}
++
+ int ftexprintf(FILE *f, const char *format, ...)
+ {
+    	va_list ap;
+diff --git a/src/texprintf.h b/src/texprintf.h
+index 6ea547f..1c430bc 100644
+--- a/src/texprintf.h
++++ b/src/texprintf.h
+@@ -1,9 +1,12 @@
++#ifndef __TEXPRINTF_H__
++#define __TEXPRINTF_H__
++
+ extern int TEXPRINTF_LW;								/* line width, if it is 0 the line width is infinite */
+ extern char * TEXPRINTF_FONT;							/* default font, one of:
+-														 *	"mathsfbfit"
++														 *  "mathsfbfit"
+ 														 *  "mathsfbf"
+ 														 *  "mathfrak"
+-														 * 	"mathbfit"
++														 *  "mathbfit"
+ 														 *  "mathsfit"
+ 														 *  "mathcal"
+ 														 *  "mathscr"
+@@ -18,9 +21,12 @@ extern int TEXPRINTF_WCW;								/* wide character width */
+ extern int TEXPRINTF_ERR;
+ int texprintf(const char *format, ...);					/* prints to stdout */
+ char * stexprintf(const char *format, ...);				/* prints to string */
++void texfree(void *ptr);								/* free memory from results */
+ int ftexprintf(FILE *f, const char *format, ...);		/* prints to file */
+ void texboxtree(const char *format, ...);				/* print the box-tree, for debugging purposes */
+ void texlistsymbols();
+ void texerrors();
+ void SetStyleASCII();
+ void SetStyleUNICODE();
++
++#endif

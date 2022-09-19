@@ -9,10 +9,17 @@ arch=('i686' 'x86_64')
 url='https://github.com/bartp5/libtexprintf'
 license=('GPL3')
 makedepends=(git)
-source=('libtexprintf::git+https://github.com/bartp5/libtexprintf')
-md5sums=('SKIP')
+source=('libtexprintf::git+https://github.com/bartp5/libtexprintf',
+'texfree.diff')
+sha512sums=('SKIP'
+         'f9e83ad44f48afd271ee081820cb46e246d81f64aae35c7c40f57d50104f1f548c1ad20fde4bd4700465d8c78c6358ca3c6e1ca05a3283b29f83b48b2f584f63')
 conflicts=(libtexprintf)
 provides=('libtexprintf')
+
+prepare() {
+    cd "${srcdir}/libtexprintf"
+    patch -p1 < ${srcdir}/texfree.patch
+}
 
 build() {
     cd "$srcdir/libtexprintf"
