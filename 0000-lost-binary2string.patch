@@ -1,7 +1,7 @@
-diff --git a/oslo.rootwrap-6.3.0/oslo_rootwrap/tests/test_functional.py b/oslo.rootwrap-6.3.0/oslo_rootwrap/tests/test_functional.py
+diff --git a/oslo.rootwrap-6.3.1/oslo_rootwrap/tests/test_functional.py b/oslo.rootwrap-6.3.1/oslo_rootwrap/tests/test_functional.py
 index da59b21..5b89630 100644
---- a/oslo.rootwrap-6.3.0/oslo_rootwrap/tests/test_functional.py
-+++ b/oslo.rootwrap-6.3.0/oslo_rootwrap/tests/test_functional.py
+--- a/oslo.rootwrap-6.3.1/oslo_rootwrap/tests/test_functional.py
++++ b/oslo.rootwrap-6.3.1/oslo_rootwrap/tests/test_functional.py
 @@ -103,11 +103,11 @@ later_install_cmd: CommandFilter, %s, root
  
          # Should run as 'nobody'
