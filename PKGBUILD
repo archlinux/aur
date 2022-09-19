@@ -4,7 +4,7 @@
 # Maintainer: eomanis at web dot de
 
 pkgname='pulse-autoconf'
-_pkgverUpstream="1.8.2"
+_pkgverUpstream="1.9.0"
 pkgver="${_pkgverUpstream//-/.}"
 pkgrel=1
 pkgdesc="PulseAudio server dynamic configuration daemon"
@@ -13,7 +13,7 @@ url='https://eomanis.duckdns.org/permshare/pulse-autoconf/'
 license=('GPL3')
 depends=('bash' 'bc' 'coreutils' 'findutils' 'grep' 'libpulse' 'sed' 'util-linux')
 source=("https://eomanis.duckdns.org/permshare/pulse-autoconf/pulse-autoconf-${_pkgverUpstream}.tar.gz")
-sha384sums=('5f14855fea35c6446988268e72ae459300a010755b6eeb099bd30e3b910cf60705655cb44757e0d7730ffbf0dec03d49')
+sha384sums=('6f48da4bd82191044652671de6e06081abc2a77bd32f8f0c8e5a5b438c367fa78277433115611a25d3e72719c938ddab')
 
 package () {
     local srcRootDir="${srcdir}/${pkgname}-${_pkgverUpstream}"
