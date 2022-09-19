@@ -1,13 +1,14 @@
 pkgbase = brickstore
 	pkgdesc = BrickStore is a BrickLink offline management tool.
 	pkgver = 2022.9.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/rgriebl/brickstore
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = qt6-tools
 	depends = qt6-base
 	depends = qt6-quick3d
 	depends = qt6-shadertools
