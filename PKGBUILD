@@ -4,7 +4,7 @@ _pyname=restructuredtext-lint
 _pycname=${_pyname/-/_}
 pkgbase=python-$_pyname
 pkgname=(python{,2}-$_pyname)
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A comprehensive, fast, pure Python memcached client"
 arch=('any')
@@ -19,9 +19,9 @@ makedepends=(
 	python2-setuptools
 )
 source=("https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pycname-$pkgver.tar.gz")
-md5sums=('f329e3fb722f4d58b72af9e96f088df4')
-sha256sums=('d3b10a1fe2ecac537e51ae6d151b223b78de9fafdd50e5eb6b08c243df173c80')
-sha512sums=('723c97879d54ce475a71441a9ca190a07f12a13da51c818ded29f3e4da255e734b54a49ae6c395cc1938e91ba9e88964d6aae896517e0d239301704f1b18cf67')
+md5sums=('05aae776c7fe02edb03f3b2601ac6b67')
+sha256sums=('1b235c0c922341ab6c530390892eb9e92f90b9b75046063e047cacfb0f050c45')
+sha512sums=('8e16e2a43cb1e52bb3b4ac60da53130bd4a8d0b823fc95b32e62068bed95728084de3b55820cfcaba70eecaaa93bdf3f956b8bb6c55155115b40c7151ef58a2c')
 
 prepare(){
 	cp -a $_pycname-$pkgver{,-py2}
