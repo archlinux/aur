@@ -6,6 +6,7 @@ pkgbase = celeste-bin
 	arch = x86_64
 	license = custom:commercial
 	depends = sdl2
+	optdepends = olympus-bin: Mod Manager for Celeste
 	provides = celeste
 	conflicts = celeste
 	noextract = celeste-linux.zip
