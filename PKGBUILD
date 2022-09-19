@@ -2,16 +2,16 @@
 # Contributor: Samuel Mesa <samuelmesa@linuxmail.org>
 
 pkgname=orfeo-toolbox
-pkgver=8.0.1
+pkgver=8.1.0
 _pkgver=8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
 arch=(x86_64 i686)
 url="http://www.orfeo-toolbox.org/otb/"
 license=('CeCILL')
 groups=()
 depends=('gdal' 'agg' 'freeglut' 'curl' 'fftw' 'tinyxml' 'muparser' 'fltk' 'python' 'openthreads' 'boost' 'ossim'
-		'hdf5'  'insight-toolkit4' 'libsvm' 'qwt' 'opencv>=3' 'glfw' 'openmpi' 'shark-ml-git')
+		'hdf5'  'insight-toolkit4' 'libsvm' 'qwt' 'opencv>=3' 'glfw' 'openmpi' 'shark-ml-git' 'glew')
 makedepends=('git' 'swig' 'cmake' 'qt5-base')
 optdepends=()
 provides=()
@@ -26,7 +26,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://www.orfeo-toolbox.org/packages/OTB
 		"git+https://github.com/jmichel-otb/GKSVM.git")
 noextract=()
 
-md5sums=('19eb6417dd3e527f6f6f3fa90f7b54fb'
+md5sums=('124cd2982c9f6535a4092da498a3e24c'
          'SKIP')
 
 
@@ -80,7 +80,7 @@ build() {
   -DOTB_USE_SHARK=OFF \
   -DITK_DIR=/opt/insight-toolkit4 \
   -DCMAKE_PREFIX_PATH=/opt/insight-toolkit4 \
-  -DCMAKE_CXX_STANDARD=11 \
+  -DCMAKE_CXX_STANDARD=17 \
   -DBoost_USE_STATIC_LIBS=OFF
          
   make
