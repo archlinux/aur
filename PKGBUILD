@@ -1,15 +1,17 @@
 # Maintainer: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
 # Contributor: Ricardo Liang (rliang) <ricardoliang@gmail.com>
 
+# shellcheck disable=SC2034
 _pkgname="gnome-control-center"
 pkgname="${_pkgname}-git"
-pkgver=42.beta1+82+ga080e5c45
+pkgver=43.0+11+g997a09e1a
 pkgrel=1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop"
 url="https://gitlab.gnome.org/GNOME/${_pkgname}"
 license=(GPL2)
 arch=('x86_64' 'i686' 'pentium4')
 provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 depends=(accountsservice cups-pk-helper gnome-bluetooth-git gnome-desktop-4-git
          gnome-online-accounts gnome-settings-daemon gsettings-desktop-schemas-git gtk3
          libgtop libnma-git nm-connection-editor sound-theme-freedesktop upower libpwquality
@@ -30,18 +32,17 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
+  cd "${_pkgname}" || exit
   git describe --tags | sed 's/^GNOME_CONTROL_CENTER_//;s/_/./g;s/-/+/g'
 }
 
+# shellcheck disable=SC2154
 prepare() {
-  cd "${_pkgname}"
-
+  cd "${_pkgname}" || exit
   # Install bare logos into pixmaps, not icons
   sed -i "/install_dir/s/'icons'/'pixmaps'/" panels/info-overview/meson.build
-
   git submodule init subprojects/gvc
-  git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
+  git submodule set-url subprojects/gvc "${srcdir}/libgnome-volume-control"
   git submodule update
 }
 
@@ -55,6 +56,7 @@ check() {
   meson test -C build --print-errorlogs
 }
 
+# shellcheck disable=SC2154
 package() {
   meson install -C build --destdir "${pkgdir}"
   install -d -o root -g 102 -m 750 "${pkgdir}/usr/share/polkit-1/rules.d"
