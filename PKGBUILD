@@ -3,20 +3,19 @@
 pkgname='python-pairinteraction'
 _name='pairinteraction'
 _py="py3"
-pkgver=0.9.7a0
-pkgrel=2
+pkgver=0.9.8a0
+pkgrel=1
 pkgdesc="A Rydberg Interaction Calculator"
 url="https://github.com/pairinteraction/pairinteraction"
-depends=('python-numpy' 'python-scipy' 'python-pint' 'python-psutil' 'boost-libs' 'sqlite' 'gsl' 'swig')
+depends=('python-numpy' 'python-scipy' 'python-pint' 'python-psutil' 'python-pyqtgraph' 'python-pyzmq' 'sqlite' 'gsl' 'swig')
 makedepends=('python-pip')
 license=('GPL3' 'LGPL3')
 arch=('x86_64')
 options=('!buildflags' 'staticlibs' '!strip' 'libtool')
-# source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-source=("https://files.pythonhosted.org/packages/8a/f0/53057d5cd8e532091767f63139dbb2d4806549c97200c476854f4f3cd0c1/pairinteraction-0.9.7a0-py3-none-manylinux2010_x86_64.whl")
+source=("https://files.pythonhosted.org/packages/ef/49/1377fdf569cd2774f75688a9cd6524c6dc06a99a60249f659a0a2bcb8e6a/pairinteraction-0.9.8a0-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl")
 sources=("https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/$name-$pkgver-$_py-none-manylinux2010_x86_64.whl")
 
-sha256sums=('d6ccf4e8b186f13b452bf4b697342fe862b54335ea4f92a2a96a5b55716a394a')
+sha256sums=('bba4a49b52e038d461d7a511d605fe22ac3dcbbe41ad3225f2dd3e86aa91a587')
 
 package() {
   cd "$srcdir"
