@@ -81,7 +81,7 @@ package_gnome-desktop-common-git() {
 
 package_gnome-desktop-git() {
   pkgdesc+=" (GTK3)"
-  depends=(${_pkgbase}-common="${epoch}:${pkgver}-${pkgrel}"
+  depends=(${_pkgbase}-common-git="${epoch}:${pkgver}-${pkgrel}"
            gtk3)
   provides=("lib${_pkgbase}-3.so"
             "${_pkgbase}")
