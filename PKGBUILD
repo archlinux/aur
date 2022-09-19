@@ -1,6 +1,6 @@
 # Maintainer: Bruno Carlin <bruno+aur@bcarlin.net>
 pkgname=graph-cli
-pkgver=0.1.7
+pkgver=0.1.19
 pkgrel=1
 epoch=1
 pkgdesc="A CLI utility to create graphs from CSV files."
@@ -23,7 +23,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/${pkgname/-/_}-$pkgver.tar.gz"
 )
 #noextract=()
-sha256sums=( feff423a0023bae9c9d3a1c7979e49d26a15d69e2e3be37ec3643013cb6079b4 )
+sha256sums=('00e7d481e560713b6e7f922e2d8cb5cc54c10a3599c6ed0e899cd45570c86927')
 
 #prepare() {
 #	cd "$pkgname-$pkgver"
