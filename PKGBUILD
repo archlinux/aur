@@ -8,7 +8,7 @@ pkgname=mutter-auto-rotation
 provides=(libmutter-10.so mutter)
 conflicts=(mutter)
 groups=(gnome)
-pkgver=42.4
+pkgver=42.5
 pkgrel=1
 pkgdesc="A window manager for GNOME, with touch-mode auto-rotation (reverts MR 1710)"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -21,7 +21,7 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols sysprof gi-docgen xorg-server-xvfb)
 checkdepends=(xorg-server-xvfb wireplumber python-dbusmock)
-_commit=9a25838e4e3f705b69b7f2e0bf22e970d8829f1f  # tags/42.4^0
+_commit=4b35c269c7ad2515f91d2d3ccaea7526e0cb5f97  # tags/42.5^0
 
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         "0001-Revert-backends-native-Disable-touch-mode-with-point.patch")
@@ -52,9 +52,9 @@ build() {
 }
 
 _check() (
-  mkdir -p -m 700 "${XDG_RUNTIME_DIR:=$PWD/runtime-dir}"
-  glib-compile-schemas "${GSETTINGS_SCHEMA_DIR:=$PWD/build/data}"
-  export XDG_RUNTIME_DIR GSETTINGS_SCHEMA_DIR
+  export XDG_RUNTIME_DIR="$PWD/rdir" GSETTINGS_SCHEMA_DIR="$PWD/build/data"
+  mkdir -p -m 700 "$XDG_RUNTIME_DIR"
+  glib-compile-schemas "$GSETTINGS_SCHEMA_DIR"
 
   pipewire &
   _p1=$!
@@ -88,4 +88,4 @@ package() {
   _pick docs "$pkgdir"/usr/share/mutter-*/doc
 }
 
-# vim:set sw=2 et:
+# vim:set sw=2 sts=-1 et:
