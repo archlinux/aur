@@ -5,12 +5,12 @@
 
 pkgname=d1x-rebirth
 pkgver=20220823
-pkgrel=1
+pkgrel=2
 pkgdesc="An enhanced engine to play with Descent1 data."
 arch=('x86_64')
 url="https://www.dxx-rebirth.com/"
 license=('custom:D1x' 'LGPL' 'custom:as-is')
-depends=('sdl-openglhq' 'sdl_mixer' 'mesa' 'physfs' 'sdl_image')
+depends=('sdl2' 'sdl2_mixer' 'mesa' 'physfs' 'sdl2_image')
 makedepends=('scons' 'unzip')
 install="$pkgname.install"
 source=("https://www.dxx-rebirth.com/download/dxx/rebirth/dxx-rebirth_$pkgver-src.tar.xz"
@@ -23,7 +23,7 @@ md5sums=('204fa5d8bf3395414da9763a01973e7f'
 
 build() {
 	cd "dxx-rebirth_$pkgver-src"
-	scons sharepath="/usr/share/$pkgname" d1x=1
+	scons sharepath="/usr/share/$pkgname" d1x=1 sdlmixer=yes opengl=yes sdl2=yes
 }
 
 package() {
