@@ -3,13 +3,13 @@
 pkgname=junction-git
 _pkgname=Junction
 pkgver=r189.59270f4
-pkgrel=2
+pkgrel=3
 pkgdesc="Application/browser chooser"
 arch=('x86_64')
 url="https://github.com/sonnyp/Junction"
 license=('GPL3')
 depends=('libadwaita' 'libportal-gtk4' 'gjs')
-makedepends=('git' 'meson')
+makedepends=('git' 'meson' 'blueprint-compiler')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -39,7 +39,7 @@ build() {
 }
 
 check() {
-  meson test -C build || :
+  meson test -C build --print-errorlogs || :
 }
 
 package() {
