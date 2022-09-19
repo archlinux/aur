@@ -1,0 +1,17 @@
+pkgbase = xwinwrap-0.9-bin
+	pkgdesc = xwinwrap 0.9 (useful for ghostlexly-gpu-video-wallpaper)
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://github.com/mmhobi7/xwinwrap/
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = libx11
+	depends = libxext
+	depends = libxrender
+	provides = xwinwrap
+	conflicts = xwinwrap
+	source = https://github.com/mmhobi7/xwinwrap/releases/download/v0.9/xwinwrap
+	sha256sums = da043b08e229282fbdf6d00753b86ea69cf0c0a1d2162f78b93d1f991a1cbd19
+
+pkgname = xwinwrap-0.9-bin
