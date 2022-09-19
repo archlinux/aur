@@ -24,7 +24,6 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    ./autogen.sh
     ./configure --prefix=/usr --enable-shared=yes --enable-static=no
     make CFLAGS="$(echo ${CFLAGS} | sed 's_-Werror=format-security__')" all -j${nprocs}
 }
