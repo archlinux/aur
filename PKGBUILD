@@ -2,17 +2,24 @@
 # based on the PKGBUILD of dzen2-git
 
 pkgname=libtexprintf-git
-pkgver=1.12dev
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="Formatted Output with tex-like syntax support"
 arch=('i686' 'x86_64')
 url='https://github.com/bartp5/libtexprintf'
 license=('GPL3')
-makedepends=(git)
-source=('libtexprintf::git+https://github.com/bartp5/libtexprintf')
-md5sums=('SKIP')
+makedepends=(git make gcc)
+source=('libtexprintf::git+https://github.com/bartp5/libtexprintf'
+        'texfree.patch')
 conflicts=(libtexprintf)
 provides=('libtexprintf')
+sha256sums=('SKIP'
+            '31914dab8c162d07d76dea5117c9495e4594059669945a8dd9fbc8c6bf998cf0')
+
+prepare() {
+    cd "$srcdir/libtexprintf"
+    patch -p1 < "$srcdir/texfree.patch"
+}
 
 build() {
     cd "$srcdir/libtexprintf"
