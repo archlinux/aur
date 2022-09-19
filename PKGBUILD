@@ -3,8 +3,8 @@
 _pkgbase=gnome-desktop
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgbase}-common-git"
-         "${_pkgbase}-git"
-         "${_pkgbase}-4-git")
+         "${_pkgbase}-git")
+         # "${_pkgbase}-4-git")
 pkgver=43
 pkgrel=1
 pkgdesc="Library with common API for various GNOME modules"
@@ -59,8 +59,8 @@ package_gnome-desktop-common-git() {
            bubblewrap
            systemd
            libxkbcommon)
-  provides=("lib${_pkgbase}-common")
-  conflicts=("lib${_pkgbase}-common")
+  provides=("${_pkgbase}-common")
+  conflicts=("${_pkgbase}-common")
 
   meson install -C build --destdir "$pkgdir"
 
