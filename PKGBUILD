@@ -3,7 +3,7 @@
 _pyname=oslo.middleware
 _pycname=${_pyname/./-}
 pkgname=python-${_pycname}
-pkgver=4.4.0
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="Oslo Middleware library"
 arch=(any)
@@ -42,9 +42,9 @@ checkdepends=(
 )
 options=('!emptydirs')
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('e6cf0e771b7a086888f1d861ad6093fb')
-sha256sums=('0b91cd7e0a34b5d0cc3bbfa67bc0b1f2c543edcacef3a488dd20e70539524521')
-sha512sums=('6cbfb22ec4a513bed214de32924c370ac290ebc9c6dfd6e14b60035179695f49f623dffba9313d263f818c02eaed92596ba58912daf6289760570861307beaa5')
+md5sums=('85eaa484469c368a4f85d4ed720372b3')
+sha256sums=('3d0f2fd723d194d2a8c64068e8a057a5038c860abe0c03f6f0f08cf7b86781d1')
+sha512sums=('8bd1f4d2cb0203abee1c2c6d53761c921993a68f9855caf6563285159f3029fdffec9336a0a8a8825890e075ecc01ab575d96263dfd2827f21a47a21339b7f52')
 
 export PBR_VERSION=$pkgver
 
