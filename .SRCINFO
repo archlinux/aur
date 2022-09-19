@@ -1,0 +1,19 @@
+pkgbase = python-docutils-graphviz
+	pkgdesc = Graphviz extension for docutils
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/liuyug/python-docutils-graphviz
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-beautifulsoup4
+	depends = python-docutils
+	depends = python-graphviz
+	depends = python-html5lib
+	source = python-docutils-graphviz-1.0.3.tar.gz::https://files.pythonhosted.org/packages/source/p/python-docutils-graphviz/python-docutils-graphviz-1.0.3.tar.gz
+	sha256sums = ee141cc12f104fac966373eb3b087a8b97718148d71425b567734133ed033653
+
+pkgname = python-docutils-graphviz
