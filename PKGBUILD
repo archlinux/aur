@@ -3,7 +3,7 @@
 _pyname=oslo.upgradecheck
 _pycname=${_pyname/./-}
 pkgname=python-${_pycname}
-pkgver=1.4.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Common code for writing OpenStack upgrade checks"
 arch=(any)
@@ -33,9 +33,9 @@ checkdepends=(
 )
 options=('!emptydirs')
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('332ee28ac0b82e1234c3a9b551a972d9')
-sha256sums=('fed6db548731388e7ee4cb064ac76b524ff3397fdc63a59c5c569fc6642b6713')
-sha512sums=('ce53c01a6e144788c16f36af74d4593e850631c4552560e36ac17b1583d966ba2df83dc4a4251a81ccb35363935688b1d901de718e2149dd86473cdcc2570961')
+md5sums=('242581a865ab80de85878a073cdbb379')
+sha256sums=('f842efeb7cf5fbbf39b569873216bd1f997dfe8af18d3fc3339ea08a38f83268')
+sha512sums=('c414590d4a7d8f41b6cc3c3d1241366f61565f61853230044400307b3592f045492ba32acddd442051232416f33556207aafdccb8587fc3af35d364a28a4efe7')
 
 export PBR_VERSION=$pkgver
 
