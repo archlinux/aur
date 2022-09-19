@@ -3,8 +3,9 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Roman Kyrylych <roman@archlinux.org>
 
-_pkgname=gnome-bluetooth
-pkgname=$_pkgname-git
+# shellcheck disable=SC2034
+_pkgname="gnome-bluetooth"
+pkgname="${_pkgname}-git"
 pkgver=42.4+2+gc95fe4ad
 pkgrel=1
 pkgdesc="The GNOME Bluetooth Subsystem"
@@ -24,22 +25,18 @@ makedepends=(gobject-introspection
              git
              systemd
              meson)
-provides=(libgnome-bluetooth.so $_pkgname)
-conflicts=($_pkgname)
-source=("git+https://gitlab.gnome.org/GNOME/gnome-bluetooth.git")
+provides=(libgnome-bluetooth.so "${_pkgname}")
+conflicts=("${_pkgname}")
+source=("git+https://gitlab.gnome.org/GNOME/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
+  cd "${_pkgname}" || exit
   git describe --tags | sed 's/^GNOMEBT_V_//;s/_fixed//;s/_/./g;s/-/+/g'
 }
 
-prepare() {
-  cd $_pkgname
-}
-
 build() {
-  arch-meson $_pkgname build -D gtk_doc=true
+  arch-meson "${_pkgname}" build -D gtk_doc=true
   meson compile -C build
 }
 
@@ -47,8 +44,9 @@ check() {
   meson test -C build --print-errorlogs
 }
 
+# shellcheck disable=SC2154
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  DESTDIR="${pkgdir}" meson install -C build
 }
 
 # vim:set sw=2 et:
