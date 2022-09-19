@@ -1,3 +1,16 @@
+## GE-Proton-7-35
+- The Phantasy Star Online 2 update wasn't working properly. I've updated it and it's now working as expected (double checked on steam deck) -- Thanks Goldreaver
+
+## GE-Proton-7-34
+- Phantasy Star Online 2 fixed (again)
+- Persona 4 Golden fixed (again) -- Thanks tgurr
+- GTA IV custom radio protonfix added -- Thanks xperia64
+- upstream WINE_HEAP_DELAY_FREE fix for CoD BO3 Multiplayer + zombies added
+- upstream LAA disable for Sword and Fairy 4 added
+- wine updated to latest bleeding edge
+- DXVK updated to latest git
+- vkd3d updated to latest git
+
 ## GE-Proton-7-33
 - wine updated to latest bleeding edge, pulls in more fixes for gta v, rdr2, verified bioshock remastered 1/2 + infinite work with 2k launcher
 - dxvk updated to latest git
