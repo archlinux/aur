@@ -1,6 +1,6 @@
 pkgbase = python-oslo-metrics
 	pkgdesc = Oslo Metrics API
-	pkgver = 0.3.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://docs.openstack.org/oslo.metrics/latest/
 	arch = any
@@ -23,9 +23,9 @@ pkgbase = python-oslo-metrics
 	depends = python-oslo-config
 	depends = python-prometheus_client
 	options = !emptydirs
-	source = https://pypi.io/packages/source/o/oslo.metrics/oslo.metrics-0.3.0.tar.gz
-	md5sums = 4c28b7ff3701c7b489a65938fcf317ce
-	sha256sums = 9e25c21943e12df9b7390025b92b5112118d4b43bc96a5191eb0a112a0e4e84a
-	sha512sums = f30370d2837ceca015b32d66dafb71d11bf1bfb01d47afa09bdf2e57d0fd65011e30b5e2de68c0f635d5710068b23944f4112f5a22260ed6350aaa7e3c64c4d7
+	source = https://pypi.io/packages/source/o/oslo.metrics/oslo.metrics-0.5.0.tar.gz
+	md5sums = 2da28a79fcf9dc8c975ca57675c63bc4
+	sha256sums = db9ae0d7dd3ba1a55f55c25226919ee1f454cfc2535ffa98d5b31ee3cbb67cc5
+	sha512sums = e41236e54844cafc41f5a65602505291d2e3a80a5e01c3aa6f4c039ddd199a898d4c00b9b2d6ea923de6687217aceced409efa740b06be9d3b305b0bb7fe6038
 
 pkgname = python-oslo-metrics
