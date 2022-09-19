@@ -3,7 +3,7 @@
 
 pkgname=zeek
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A network analysis framework"
 arch=('x86_64')
 url="https://zeek.org"
@@ -11,21 +11,13 @@ license=('BSD')
 depends=(zlib libpcap bash libmaxminddb python)
 makedepends=(cmake swig bison flex openssl geoip gperftools shadow)
 source=("https://download.zeek.org/zeek-$pkgver.tar.gz"{,.asc}
-        0001-Fix-default-build-with-disable-cpp-tests.patch
         zeek.tmpfiles.conf)
 sha256sums=('3cd43ae446200e7e59a89a9bf8190d964f3198e517f5d4be9cc1daba67ba0b81'
             'SKIP'
-            '3f5f0820480ecb2b160d948cfd3957ac26d4c48ecab95410eebbbfb6ac5380b4'
             'af5b7e14caae88122d0e6dd29539ae77ed3388c70a12ea0ed73c9a3f6de16d91')
 validpgpkeys=(
   962FD2187ED5A1DD82FC478A33F15EAEF8CB8019 # The Zeek Team <info@zeek.org>
 )
-
-prepare() {
-  cd "zeek-$pkgver"
-
-  patch -Np1 -i "$srcdir/0001-Fix-default-build-with-disable-cpp-tests.patch"
-}
 
 build() {
   cmake -B build -S "zeek-$pkgver" \
