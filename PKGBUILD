@@ -3,32 +3,30 @@
 
 pkgname=python-tarantool
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python client library for Tarantool 1.6 Database'
 arch=('any')
 url='https://github.com/tarantool/tarantool-python'
 license=('BSD')
-depends=('python' 'python-msgpack' 'python-yaml' 'python-six')
-makedepends=('python-setuptools' 'git')
-checkdepends=('tarantool' 'python-dbapi-compliance')
-source=("https://pypi.io/packages/source/t/tarantool/tarantool-$pkgver.tar.gz")
-sha512sums=('04fa32ccaa21a8171926b2486e3522ba9ede8a077f439a2022f1adf2f664f9ac5c980e2982be6c976a9d36d37637432401c18ad54ec39f1ce13ec9be73684aea')
-
-#prepare() {
-#  sed -i 's/msgpack-python/msgpack/g' tarantool-$pkgver/setup.py
-#}
+depends=('python-msgpack')
+makedepends=('python-setuptools')
+checkdepends=('tarantool' 'python-dbapi-compliance' 'python-yaml')
+source=("https://github.com/tarantool/tarantool-python/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+sha512sums=('180c2f677177eef4e8afc882d08dc9556faab914c37521666a294e31373d3f6ff001b347f50a17fcc13afb033c84f759933f11045a4b3823d0aba2b407dc1805')
 
 build() {
-  cd tarantool-$pkgver
+  cd tarantool-python-$pkgver
   python setup.py build
 }
 
 check() {
-  cd tarantool-$pkgver
-  python setup.py test
+  cd tarantool-python-$pkgver
+  make testdata
+  make test
 }
 
 package() {
-  cd tarantool-$pkgver
+  cd tarantool-python-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
