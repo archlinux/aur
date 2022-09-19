@@ -1,6 +1,6 @@
 # Maintainer: Anuskuss <anuskuss@googlemail.com>
 pkgname=cemu
-pkgver=2.0.138
+pkgver=2.0.141
 pkgrel=1
 pkgdesc='Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)'
 arch=(x86_64)
@@ -8,7 +8,7 @@ url=https://cemu.info
 license=(MPL2)
 depends=(
 	# unbundled vcpkg
-	'sdl2>=2.0.22' 'pugixml>=1.12.1' 'libzip>=1.9.2' 'libpng>=1.6.37' 'wxwidgets-gtk3>=3.2'
+	'fmt>=9.1' 'sdl2>=2.0.22' 'pugixml>=1.12.1' 'libzip>=1.9.2' 'libpng>=1.6.37' 'wxwidgets-gtk3>=3.2'
 )
 makedepends=(
 	# pkgbuild
@@ -16,7 +16,7 @@ makedepends=(
 	# clang
 	$([[ $CC+$CXX == *clang* ]] && echo 'clang>=12 llvm>=12')
 	# unbundled vcpkg
-	rapidjson 'boost>=1.79' 'glslang>=11.8' 'glm>=0.9.9.8' 'fmt>=9.1'
+	rapidjson 'boost>=1.79' 'glslang>=11.8' 'glm>=0.9.9.8'
 	# cemu
 	nasm 'vulkan-headers>=1.3.225'
 	# wxwidgets
@@ -27,7 +27,7 @@ optdepends=(
 )
 install=cemu.install
 source=(
-	git+https://github.com/cemu-project/Cemu#commit=12b6830546e28e6a697c5dbcbc3aa24882ec7fb3
+	git+https://github.com/cemu-project/Cemu#commit=9f02733a0dfa7f8e35bbe0ed245b443b23c6f4a8
 	# dependencies
 	imgui-1.88.tar.gz::https://github.com/ocornut/imgui/archive/refs/tags/v1.88.tar.gz
 	imgui.cmake::https://raw.githubusercontent.com/microsoft/vcpkg/1b0252c/ports/imgui/CMakeLists.txt
@@ -63,15 +63,15 @@ sha256sums=(
 
 pkgver() {
 	cd Cemu
-	MAJ=$(awk -F'\t' '/LEAD/ {print $NF;exit}' src/Common/version.h)
-	MIN=$(awk -F'\t' '/MAJOR/ {print $NF;exit}' src/Common/version.h)
+	MAJ=$(awk -F'\t' '/LEAD/ {print $NF; exit}' src/Common/version.h)
+	MIN=$(awk -F'\t' '/MAJOR/ {print $NF; exit}' src/Common/version.h)
 	PAT=$(git rev-list --count HEAD)
 	echo "$MAJ.$MIN.$PAT"
 }
 
 prepare() {
 	cd Cemu
-	sed -i "s/ (experimental)/.${pkgver##*.}/" src/Common/version.h
+	sed -i "/#define EMULATOR_VERSION_MINOR/s/[0-9]\+/${pkgver##*.}/;s/-/./" src/Common/version.h
 
 	# cemu submodules
 	for submodule in dependencies/{cubeb,ZArchive}; do
@@ -84,6 +84,9 @@ prepare() {
 		git submodule update --init $submodule
 	done
 	popd > /dev/null
+
+	# unbundled fmt
+	sed -i '/FMT_HEADER_ONLY/d' src/Common/precompiled.h
 
 	# unbundled imgui
 	sed -i '/imgui/cadd_subdirectory(dependencies/imgui)' CMakeLists.txt
@@ -126,13 +129,15 @@ build() {
 	fi
 
 	cd Cemu
+	rm -f build/CMakeCache.txt
 	cmake -B build \
+	      $(which ninja &> /dev/null && echo '-G Ninja') \
 	      -DCMAKE_CXX_FLAGS="$CXXFLAGS -w" -Wno-dev \
 	      -DSYSTEM_DATA_PATH=/opt/cemu \
 	      -DENABLE_VCPKG=OFF \
 	      -DCMAKE_BUILD_TYPE=Release \
 	      -DPUBLIC_RELEASE=ON
-	make -C build -j $(nproc)
+	$(which ninja 2> /dev/null || which make) -C build -j $(nproc)
 }
 
 package() {
