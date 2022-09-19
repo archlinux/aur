@@ -1,0 +1,16 @@
+pkgbase = sorting-algorithms-git
+	pkgdesc = Sorting algorithms visualizer, in your terminal!
+	pkgver = r11.24cc340
+	pkgrel = 1
+	url = https://github.com/SkwalExe/sorting-algorithms
+	install = sorting-algorithms.install
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = clang
+	provides = sorting-algorithms
+	source = git+https://github.com/SkwalExe/sorting-algorithms
+	md5sums = SKIP
+
+pkgname = sorting-algorithms-git
