@@ -2,31 +2,31 @@
 
 _name=git
 pkgname=$_name-run-command-patch-git
-pkgver=2.35.0.rc2.r2.g297ca895a2
+pkgver=2.38.0.rc0.r52.gdda7228a83
 pkgrel=1
 pkgdesc='A fast distributed version control system with patch applied for customizing git add --patch behaviour'
 arch=('i686' 'x86_64')
-url='http://git-scm.com/'
+url='https://git-scm.com/'
 license=('GPL2')
 depends=('curl' 'expat' 'perl-error' 'perl' 'openssl'
-         'perl-mailtools' 'pcre2' 'grep' 'shadow')
+         'perl-mailtools' 'pcre2' 'grep' 'shadow' 'zlib')
 makedepends=('python' 'xmlto' 'asciidoc' 'libgnome-keyring' 'git')
 optdepends=('tk: gitk and git gui'
             'perl-libwww: git svn'
-            'perl-term-readkey: git svn'
-            'perl-mime-tools: git send-email'
-            'perl-net-smtp-ssl: git send-email TLS support'
+            'perl-term-readkey: git svn and interactive.singlekey setting'
+            'perl-io-socket-ssl: git send-email TLS support'
             'perl-authen-sasl: git send-email TLS support'
             'perl-mediawiki-api: git mediawiki support'
             'perl-datetime-format-iso8601: git mediawiki support'
             'perl-lwp-protocol-https: git mediawiki https support'
             'perl-cgi: gitweb (web interface) support'
-            'python: various helper scripts'
+            'python: git svn & git p4'
             'subversion: git svn'
             'org.freedesktop.secrets: keyring credential helper'
             'libsecret: libsecret credential helper')
 conflicts=('git')
 provides=('git')
+options=('debug')
 install=git-git.install
 source=('git+https://github.com/git/git.git'
         'git-daemon@.service'
@@ -39,12 +39,6 @@ sha512sums=('SKIP'
             '4d4b434c2c317388ed6d3bdd87b1e8acb6c845b58be7bd1466e73a210cc824d53185fad302c5fffc1328f0c25300050843f343f37d36700a981e3c11322ea0cc'
             '8772d6647a58f87afee336c2bdbf69e67cde8372449b015af7fd49ee41684f9dbb8fe37a11680eb82c1ef1e3fd5beb3c9e9453ed0ce8cd8c3e64d3bedc7407b7')
 
-pkgver() {
-  cd "$srcdir/$_name"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-
 _make_paths=(
   prefix='/usr'
   gitexecdir='/usr/lib/git-core'
@@ -54,11 +48,16 @@ _make_paths=(
 _make_options=(
   CFLAGS="$CFLAGS"
   LDFLAGS="$LDFLAGS"
-  USE_LIBPCRE2=1
-  NO_PERL_CPAN_FALLBACKS=1
-  MAN_BOLD_LITERAL=1
   INSTALL_SYMLINKS=1
+  MAN_BOLD_LITERAL=1
+  NO_PERL_CPAN_FALLBACKS=1
+  USE_LIBPCRE2=1
 )
+
+pkgver() {
+  cd "$srcdir/$_name"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
     patch --directory="$srcdir/$_name" --input="${srcdir}/add-patch-interactive-run-commands.patch"
@@ -101,6 +100,7 @@ check() {
 
 package() {
   cd "$srcdir/$_name"
+
   make \
     "${_make_paths[@]}" \
     "${_make_options[@]}" \
