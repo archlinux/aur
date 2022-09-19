@@ -5,7 +5,7 @@ pkgname=comma-ide-community
 _pkgname=comma-ide
 _binname=comma
 pkgrel=1
-pkgver=2022.04.0
+pkgver=2022.07.0
 _tarname=comma-community-${pkgver}
 provides=(${_pkgname})
 pkgdesc='The Integrated Development Environment for Raku (formerly Perl 6).'
@@ -16,7 +16,7 @@ depends=('java-runtime')
 optdepends=('rakudo-star' 'rakudo')
 source=('https://commaide.com/download/community/linux'
         'comma-ide-community.desktop')
-sha256sums=('e7e601b61984bc03dcf39c6b04ef2b01b241f4b9e413ce121496b668d18f5725'
+sha256sums=('e812ba0c016995bad9f7c6cc1d736da71d14e69021c9685931f9a446903058f0'
             'a805e27b65c742889e2d12def48ed0e12fba0e99a32fae6f21724d5b02f7ea46')
 install=comma-ide.install
 

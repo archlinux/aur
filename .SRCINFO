@@ -1,6 +1,6 @@
 pkgbase = comma-ide-community
 	pkgdesc = The Integrated Development Environment for Raku (formerly Perl 6).
-	pkgver = 2022.04.0
+	pkgver = 2022.07.0
 	pkgrel = 1
 	url = https://commaide.com/
 	install = comma-ide.install
@@ -12,7 +12,7 @@ pkgbase = comma-ide-community
 	provides = comma-ide
 	source = https://commaide.com/download/community/linux
 	source = comma-ide-community.desktop
-	sha256sums = e7e601b61984bc03dcf39c6b04ef2b01b241f4b9e413ce121496b668d18f5725
+	sha256sums = e812ba0c016995bad9f7c6cc1d736da71d14e69021c9685931f9a446903058f0
 	sha256sums = a805e27b65c742889e2d12def48ed0e12fba0e99a32fae6f21724d5b02f7ea46
 
 pkgname = comma-ide-community
