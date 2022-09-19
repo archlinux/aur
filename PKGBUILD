@@ -22,7 +22,7 @@
 # 'perl-xml-libxml' 'perl-xml-sax-expat' in makedepends
 
 pkgname=conky-cairo
-pkgver=1.11.3
+pkgver=1.13.1
 pkgrel=1
 pkgdesc='conky - built for nvidia - Just change one variable to build the git version - defaults to release version.'
 url='https://github.com/brndnmtthws/conky'
@@ -33,7 +33,13 @@ replaces=('torsmo' 'conky')
 conflicts=('conky')
 provides=('conky')
 
+## nvidia requirements - comment for non-nvidia
 depends=( 'alsa-lib' 'libxml2' 'curl' 'cairo' 'wireless_tools' 'libxft' 'librsvg' 'glib2' 'libxdamage' 'imlib2' 'lua' 'libxnvctrl' 'libxinerama' )
+
+## NON-nvidia requirements - remove comment for non-nvidia
+## in the cmake line below change -D BUILD_NVIDIA=ON \ to -D BUILD_NVIDIA=OFF \
+# depends=( 'alsa-lib' 'libxml2' 'curl' 'cairo' 'wireless_tools' 'libxft' 'librsvg' 'glib2' 'libxdamage' 'imlib2' 'lua' 'libxinerama' )
+
 
 makedepends=( 'cmake' 'git' )
 
