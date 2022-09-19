@@ -1,0 +1,18 @@
+pkgbase = pico2wave-shell
+	pkgdesc = Shell wrapper replacement for pico2wave, based on pico-tts and ffmpeg, that doesn't depend on binary/outdated sources
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = ffmpeg
+	depends = pico-tts
+	provides = svox-pico
+	provides = svox-pico-bin
+	provides = pico2wave
+	conflicts = svox-pico
+	conflicts = svox-pico-bin
+	conflicts = pico2wave
+	source = pico2wave-shell
+	sha256sums = 3b6a5e8da5a08f4950698292418b454f886ecbf42a4a0e35374163d73bffa645
+
+pkgname = pico2wave-shell

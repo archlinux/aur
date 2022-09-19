@@ -1,0 +1,78 @@
+#!/bin/env sh
+
+# Copyright (c) 2022 BrainDamage
+
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+
+lang='en-US'
+filename=''
+text=''
+parseArgs() {
+	nextArg=''
+	for arg in "${@}"
+	do
+		case "${arg}" in
+			-w|--wave)
+				nextArg="file"
+			;;
+			--wave=*)
+				filename=$(echo "${arg}" | cut -d '=' -f 2-)
+			;;
+			-l|--lang)
+				nextArg="lang"
+			;;
+			--lang=*)
+				lang=$(echo "${arg}" | cut -d '=' -f 2-)
+			;;
+			--help|-?)
+				echo 'Usage: pico2wave <words>'
+				echo '	-w, --wave=filename.wav     Write output to this WAV file (extension SHOULD be .wav)'
+				echo '	-l, --lang=lang             Language (default: "en-US")'
+				echo ''
+				echo 'Help options:'
+				echo '	-?, --help                  Show this help message'
+				echo '	--usage                     Display brief usage message'
+				exit 0
+			;;
+			--usage)
+				echo 'Usage: pico2wave [-?] [-w|--wave=filename.wav] [-l|--lang=lang] [-?|--help] [--usage] <words>'
+				exit 0
+			;;
+			*)
+				case "$nextArg" in
+					file)
+						filename="${arg}"
+					;;
+					lang)
+						lang="${arg}"
+					;;
+					*)
+						test -n "${text}" && text="${text} ${arg}" || text="${arg}"
+					;;
+				esac
+				nextArg=""
+		esac
+	done
+}
+parseArgs "${@}"
+
+test -z "${filename}" && parseArgs '--help' >&2 && exit 1
+
+echo "${text}" | pico-tts -l "${lang}" | ffmpeg -guess_layout_max 0 -hide_banner -loglevel warning -ar 16000 -f s16le -ac 1 -i - -y "${filename}"
