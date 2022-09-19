@@ -25,6 +25,8 @@ pkgname = gnome-desktop-common-git
 	depends = bubblewrap
 	depends = systemd
 	depends = libxkbcommon
+	provides = libgnome-desktop-common
+	conflicts = libgnome-desktop-common
 
 pkgname = gnome-desktop-git
 	pkgdesc = Library with common API for various GNOME modules (GTK3)
