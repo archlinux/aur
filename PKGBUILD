@@ -2,7 +2,7 @@
 # Contributor: Anatol Pomozov
 
 pkgname=python-tarantool
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Python client library for Tarantool 1.6 Database'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-msgpack' 'python-yaml' 'python-six')
 makedepends=('python-setuptools' 'git')
 checkdepends=('tarantool' 'python-dbapi-compliance')
 source=("https://pypi.io/packages/source/t/tarantool/tarantool-$pkgver.tar.gz")
-sha512sums=('3d61737a476e956911cef86131938f0c29c8cbf8e19a8ab8b39d1bf6f7c1518c102326e8bc8eb7a6c18c7549355a15de3ad4be70925cae02eefdff792fb94d0a')
+sha512sums=('04fa32ccaa21a8171926b2486e3522ba9ede8a077f439a2022f1adf2f664f9ac5c980e2982be6c976a9d36d37637432401c18ad54ec39f1ce13ec9be73684aea')
 
 #prepare() {
 #  sed -i 's/msgpack-python/msgpack/g' tarantool-$pkgver/setup.py
