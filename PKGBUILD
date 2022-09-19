@@ -3,7 +3,7 @@
 
 _pyname=castellan
 pkgname=python-$_pyname
-pkgver=3.9.1
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Generic Key Manager interface for OpenStack"
 arch=(any)
@@ -43,9 +43,9 @@ makedepends=(
 	python-pbr
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('ef123b7c4fef829c251f59326bb03bb8')
-sha256sums=('4cb23a5e1640b4b9aa683490c86e4778883db6f553c559b31c65b2cf25969c10')
-sha512sums=('6cf489307c8bc74922297d51305f37668c1118c3f22607bed455cb37a515709cd161203f024fe289c0a99225957365e0cb39eca0945d135b0a6e03872241d009')
+md5sums=('b8a55d74db0c06288eb0bdf5f20deecc')
+sha256sums=('11e2245e31f42ff850745d05be662baf836f75ed7f67020059335f410cd503a4')
+sha512sums=('af6266808a8125bcb80fb6a3b527e3511b51c952687c3920bfcae5ef6952dae6b4cfd52bda31dda13ccf45fc233604eb03d3e417d9a8af53e8bfeaf9e0d860e4')
 
 export PBR_VERSION=$pkgver
 
