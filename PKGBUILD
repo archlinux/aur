@@ -1,16 +1,16 @@
 # Maintainer: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
 # Contributor: Ricardo Liang (rliang) <ricardoliang@gmail.com>
 
-_pkgname=gnome-control-center
-pkgname=$_pkgname-git
+_pkgname="gnome-control-center"
+pkgname="${_pkgname}-git"
 pkgver=42.beta1+82+ga080e5c45
 pkgrel=1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop"
-url="https://gitlab.gnome.org/GNOME/gnome-control-center"
+url="https://gitlab.gnome.org/GNOME/${_pkgname}"
 license=(GPL2)
-arch=(i686 pentium4 x86_64)
-provides=(gnome-control-center)
-depends=(accountsservice cups-pk-helper gnome-bluetooth-git gnome-desktop-git
+arch=('x86_64' 'i686' 'pentium4')
+provides=("${_pkgname}")
+depends=(accountsservice cups-pk-helper gnome-bluetooth-git gnome-desktop-4-git
          gnome-online-accounts gnome-settings-daemon gsettings-desktop-schemas-git gtk3
          libgtop libnma-git nm-connection-editor sound-theme-freedesktop upower libpwquality
          gnome-color-manager smbclient libmm-glib libgnomekbd libibus libcheese-git
@@ -24,7 +24,7 @@ optdepends=('system-config-printer: Printer settings'
             'openssh: remote login'
             'power-profiles-daemon: Power profiles support')
 groups=(gnome)
-source=("${_pkgname}::git+https://gitlab.gnome.org/GNOME/gnome-control-center.git"
+source=("${_pkgname}::git+https://gitlab.gnome.org/GNOME/${_pkgname}.git"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'
             'SKIP')
@@ -56,6 +56,6 @@ check() {
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
-  install -d -o root -g 102 -m 750 "$pkgdir/usr/share/polkit-1/rules.d"
+  meson install -C build --destdir "${pkgdir}"
+  install -d -o root -g 102 -m 750 "${pkgdir}/usr/share/polkit-1/rules.d"
 }
