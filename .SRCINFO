@@ -1,0 +1,11 @@
+pkgbase = ps-lookup
+	pkgdesc = a simple and easy to use command line app that searches for the process you enter.
+	pkgver = 1.0.r21.130d142
+	pkgrel = 1
+	url = https://github.com/hexisXz/ps-lookup.git
+	arch = x86_64
+	license = GPL
+	source = ps-lookup::git+https://github.com/hexisXz/ps-lookup.git
+	md5sums = SKIP
+
+pkgname = ps-lookup
