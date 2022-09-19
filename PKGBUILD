@@ -4,36 +4,43 @@
 pkgname=keepass-diff
 _author=Narigo
 _gitname=keepass-diff
-pkgver=1.1.1
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='Tool to find diff between KeePass (*.kdbx) files'
 arch=(any)
 url=https://github.com/Narigo/keepass-diff
 license=(MIT)
 makedepends=(
-  cargo
+    cargo
 )
 source=(
-  "$_gitname-v$pkgver.tar.gz::https://github.com/$_author/$_gitname/archive/$pkgver.tar.gz"
+    "$_gitname-v$pkgver.tar.gz::https://github.com/$_author/$_gitname/archive/$pkgver.tar.gz"
 )
 sha256sums=(
-  '9f4bfedefd0d99c79ddd5458c021bb76fc70b04cac2eb09896e1740f696156c9'
+    '4ddf872f126ee74cc4b44f7b6aabe516da9a4c0dee1466110ca9acec04079325'
 )
 
+prepare() {
+    cd "$_gitname-$pkgver"
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
-  cd "$_gitname-$pkgver"
-  export RUSTFLAGS="-C target-cpu=native"
-  cargo build --release --locked --all-features --target-dir=target
+    cd "$_gitname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --locked --all-features
 }
 
 check() {
-  cd "$_gitname-$pkgver"
-  cargo test --release --locked --all-features --target-dir=target
+    cd "$_gitname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen --all-features
 }
 
 package() {
-  cd "$_gitname-$pkgver"
-  install -Dm755 "target/release/keepass-diff" "$pkgdir/usr/bin/keepass-diff"
-  install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+    cd "$_gitname-$pkgver"
+    install -Dm0755 -t "$pkgdir/usr/bin" "target/release/keepass-diff"
+    install -Dm0644 -t "$pkgdir/usr/share/doc/${pkgname}" "README.md"
+    install -Dm0644 -t "$pkgdir/usr/share/licenses/${pkgname}" "LICENSE"
 }

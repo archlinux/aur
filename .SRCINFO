@@ -1,12 +1,12 @@
 pkgbase = keepass-diff
 	pkgdesc = Tool to find diff between KeePass (*.kdbx) files
-	pkgver = 1.1.1
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://github.com/Narigo/keepass-diff
 	arch = any
 	license = MIT
 	makedepends = cargo
-	source = keepass-diff-v1.1.1.tar.gz::https://github.com/Narigo/keepass-diff/archive/1.1.1.tar.gz
-	sha256sums = 9f4bfedefd0d99c79ddd5458c021bb76fc70b04cac2eb09896e1740f696156c9
+	source = keepass-diff-v1.1.3.tar.gz::https://github.com/Narigo/keepass-diff/archive/1.1.3.tar.gz
+	sha256sums = 4ddf872f126ee74cc4b44f7b6aabe516da9a4c0dee1466110ca9acec04079325
 
 pkgname = keepass-diff
