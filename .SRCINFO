@@ -1,6 +1,6 @@
 pkgbase = python-pymemcache
 	pkgdesc = A comprehensive, fast, pure Python memcached client
-	pkgver = 3.5.0
+	pkgver = 3.5.2
 	pkgrel = 1
 	url = https://github.com/pinterest/pymemcache
 	arch = any
@@ -15,14 +15,9 @@ pkgbase = python-pymemcache
 	makedepends = python
 	makedepends = python-six
 	makedepends = python-setuptools
-	makedepends = python2
-	makedepends = python2-six
-	makedepends = python2-setuptools
-	source = https://pypi.io/packages/source/p/pymemcache/pymemcache-3.5.0.tar.gz
-	md5sums = 717cab2068070a62af7d9c30cc842c40
-	sha256sums = 5bf9c94a6bc9ad081dc9b5808284e027d755a0518f6375a57405552938c74d91
-	sha512sums = 0244e40ae5060ad3df96ab60d239e92fe0c21d26d560ed380bed06722fd229e40d3d26e3256ff469daaf682019e05b171b11b47a1bc328e35a3d18c87d45a3fc
+	source = https://pypi.io/packages/source/p/pymemcache/pymemcache-3.5.2.tar.gz
+	md5sums = 6fa634ad18b317cab0721427fc7ea6b7
+	sha256sums = 8923ab59840f0d5338f1c52dba229fa835545b91c3c2f691c118e678d0fb974e
+	sha512sums = 7089b3fdf424735a1922685022a30f7984686f13401a13101e4745ea1c38a3888b1c380f859653da85889e95829f3b7c6226c3c55f838baf783465321433fda5
 
 pkgname = python-pymemcache
-
-pkgname = python2-pymemcache
