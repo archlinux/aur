@@ -1,17 +1,17 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=ppp-git
-pkgver=2.4.9.r132.gd7e62a8
-pkgrel=3
+pkgver=2.4.9.r188.g35198ad
+pkgrel=1
 pkgdesc="A package which implements the Point-to-Point Protocol"
 arch=('i686' 'x86_64')
 url="https://ppp.samba.org/"
 license=('BSD' 'GPL')
-depends=('glibc' 'libpcap' 'libxcrypt' 'openssl' 'pam')
+depends=('glibc' 'libpcap' 'libxcrypt' 'openssl' 'pam' 'systemd-libs')
 makedepends=('git')
 provides=("ppp=$pkgver")
 conflicts=('ppp')
-backup=(etc/ppp/{chap-secrets,ip-down,ip-down.d/00-dns.sh,ip-up,ip-up.d/00-dns.sh,ipv6-up.d/00-iface-config.sh,,options,pap-secrets})
+backup=(etc/ppp/{chap-secrets,ip-down,ip-down.d/00-dns.sh,ip-up,ip-up.d/00-dns.sh,ipv6-down,ipv6-up,ipv6-up.d/00-iface-config.sh,options,pap-secrets})
 source=("git+https://github.com/paulusmack/ppp.git"
         "ip-down::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/ppp/trunk/ip-down"
         "ip-down.d.dns.sh::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/ppp/trunk/ip-down.d.dns.sh"

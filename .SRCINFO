@@ -1,7 +1,7 @@
 pkgbase = ppp-git
 	pkgdesc = A package which implements the Point-to-Point Protocol
-	pkgver = 2.4.9.r132.gd7e62a8
-	pkgrel = 3
+	pkgver = 2.4.9.r188.g35198ad
+	pkgrel = 1
 	url = https://ppp.samba.org/
 	arch = i686
 	arch = x86_64
@@ -13,15 +13,17 @@ pkgbase = ppp-git
 	depends = libxcrypt
 	depends = openssl
 	depends = pam
-	provides = ppp=2.4.9.r132.gd7e62a8
+	depends = systemd-libs
+	provides = ppp=2.4.9.r188.g35198ad
 	conflicts = ppp
 	backup = etc/ppp/chap-secrets
 	backup = etc/ppp/ip-down
 	backup = etc/ppp/ip-down.d/00-dns.sh
 	backup = etc/ppp/ip-up
 	backup = etc/ppp/ip-up.d/00-dns.sh
+	backup = etc/ppp/ipv6-down
+	backup = etc/ppp/ipv6-up
 	backup = etc/ppp/ipv6-up.d/00-iface-config.sh
-	backup = etc/ppp/
 	backup = etc/ppp/options
 	backup = etc/ppp/pap-secrets
 	source = git+https://github.com/paulusmack/ppp.git
