@@ -1,5 +1,5 @@
 pkgbase = ghostlexly-gpu-video-wallpaper
-	pkgdesc = An x-cursor theme inspired by Graphite gtk theme.
+	pkgdesc = User your GPU for rendering low cpu using/usage video animated wallpaper
 	pkgver = 2021.11.26.r9.g8773e95
 	pkgrel = 1
 	url = https://github.com/ghostlexly/gpu-video-wallpaper
