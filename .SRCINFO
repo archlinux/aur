@@ -1,0 +1,13 @@
+pkgbase = graphite-cursor-theme-git
+	pkgdesc = An x-cursor theme inspired by Graphite gtk theme.
+	pkgver = 2021.11.26.r0.g4d712ad
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Graphite-cursors
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = graphite-cursor-theme
+	source = git+https://github.com/vinceliuice/Graphite-cursors.git
+	sha256sums = SKIP
+
+pkgname = graphite-cursor-theme-git
