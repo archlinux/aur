@@ -23,7 +23,7 @@ depends=(
 )
 optdepends=(
   "dbus-python: needed for notifications on desktop systems"
-  "notify2: needed for notifications on desktop systems"
+  "python-notify2: needed for notifications on desktop systems"
 )
 provides=()
 conflicts=()
