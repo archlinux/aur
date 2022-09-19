@@ -1,17 +1,17 @@
 
 # Maintaner: Dummerle
 pkgname=rare
-pkgver=1.8.9
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="A GUI for legendary, an open source replacement for Epic Games Launcher"
 arch=('any')
 url="https://github.com/Dummerle/Rare"
 license=('GPL3')
 groups=()
-depends=("python-pyqt5" "python-qtawesome" "python-requests" "python-psutil")
+depends=("python-pyqt5" "python-qtawesome" "python-requests" "python-typing_extensions" "legendary")
 makedepends=("git" "python-setuptools")
 checkdepends=()
-optdepends=("wine-staging: Run windows games" "python-pypresence: Use Discord RPC ")
+optdepends=("wine-staging: Run windows games" "python-pypresence: Use Discord RPC " "python-pywebview: easier login process in a browser")
 provides=()
 conflicts=("rare-git")
 replaces=()
@@ -25,11 +25,7 @@ sha256sums=("SKIP")
 
 prepare() {
       cd $srcdir/$pkgname-$pkgver
-      git submodule init
-      git submodule update
-      cd "$srcdir/$pkgname-$pkgver"
       cp $srcdir/$pkgname-$pkgver/rare/resources/images/Rare.png $srcdir/$pkgname-$pkgver/$pkgname.png
-      sed -i 's/mdi.view-grid-outline/mdi.view-grid/' $srcdir/$pkgname-$pkgver/rare/utils/extra_widgets.py
 }
 
 build() {
