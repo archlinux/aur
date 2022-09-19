@@ -1,7 +1,7 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail>
 pkgbase=rubymine-eap
 pkgname=(rubymine-eap rubymine-eap-jre)
-pkgver=222.4167.20
+pkgver=222.4167.28
 _pkgname=RubyMine
 _pkgver=2022.2.2
 pkgrel=1
@@ -13,10 +13,10 @@ license=('custom')
 depends=('desktop-file-utils' 'gtk-update-icon-cache')
 optdepends=('ruby: Ruby run/debug support')
 install=rubymine.install
-source=(https://download.jetbrains.com/ruby/${_pkgname}-${pkgver}.tar.gz
+source=(https://download.jetbrains.com/ruby/${_pkgname}-${_pkgver}.tar.gz
         rubymine-eap.desktop
         rubymine.install)
-sha256sums=('4c49fe4200a0cf44c745d03a70aec6e6b4404aa03fc2c7643520e28f75c66825'
+sha256sums=('b76f1c329e030bd3d29f41c68cc84f7c963980d3f52e31b8bfe2f649c4d05b53'
             '02b32d973da26ef7d61e4c291fff71229729b203661dc75cc947c8098cb8e660'
             'fe42e281cdcaca5008d3f254a16974504c9271407800d0234ce06476ea9e3bdd')
 
@@ -29,7 +29,7 @@ prepare() {
 
 package_rubymine-eap() {
   optdepends=('rubymine-eap-jre: JetBrains custom Java Runtime (Recommended)'
-              'java-runtime: JRE - Required if rubymine-jre is not installed')
+              'java-runtime: JRE - Required if rubymine-eap-jre is not installed')
 
   cd "${srcdir}"
   [ $CARCH == "x86_64" ] && SUFFIX=64

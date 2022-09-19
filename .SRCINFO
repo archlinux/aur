@@ -1,6 +1,6 @@
 pkgbase = rubymine-eap
 	pkgdesc = Ruby and Rails IDE with the full stack of essential developer tools (EAP).
-	pkgver = 222.4167.20
+	pkgver = 222.4167.28
 	pkgrel = 1
 	url = http://www.jetbrains.com/ruby/
 	install = rubymine.install
@@ -11,16 +11,16 @@ pkgbase = rubymine-eap
 	depends = gtk-update-icon-cache
 	optdepends = ruby: Ruby run/debug support
 	options = !strip
-	source = https://download.jetbrains.com/ruby/RubyMine-222.4167.20.tar.gz
+	source = https://download.jetbrains.com/ruby/RubyMine-2022.2.2.tar.gz
 	source = rubymine-eap.desktop
 	source = rubymine.install
-	sha256sums = 4c49fe4200a0cf44c745d03a70aec6e6b4404aa03fc2c7643520e28f75c66825
+	sha256sums = b76f1c329e030bd3d29f41c68cc84f7c963980d3f52e31b8bfe2f649c4d05b53
 	sha256sums = 02b32d973da26ef7d61e4c291fff71229729b203661dc75cc947c8098cb8e660
 	sha256sums = fe42e281cdcaca5008d3f254a16974504c9271407800d0234ce06476ea9e3bdd
 
 pkgname = rubymine-eap
 	optdepends = rubymine-eap-jre: JetBrains custom Java Runtime (Recommended)
-	optdepends = java-runtime: JRE - Required if rubymine-jre is not installed
+	optdepends = java-runtime: JRE - Required if rubymine-eap-jre is not installed
 
 pkgname = rubymine-eap-jre
 	pkgdesc = JBR (JetBrains Runtime) for RubyMine EAP - a patched JRE
