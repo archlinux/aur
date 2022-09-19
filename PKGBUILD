@@ -1,15 +1,15 @@
 # Maintainer: Marcel Campello <marcel.campello@prafrentex.com.br>
 # Contributor: David Birks <david@birks.dev>
 
-pkgname=aws-cli-v2
-pkgver=2.7.32
-pkgrel=1
-pkgdesc='Universal Command Line Interface for Amazon Web Services (version 2)'
+pkgname='aws-cli-v2'
+pkgver='2.7.33'
+pkgrel='1'
+
+pkgdesc='Unified command line interface for Amazon Web Services (version 2)'
 arch=('x86_64')
-url='https://github.com/aws/aws-cli'
+url='https://github.com/aws/aws-cli/tree/v2'
 license=('Apache')
-provides=('aws-cli')
-conflicts=('aws-cli' 'aws-cli-git' 'aws-cli-v2-bin')
+
 depends=(
   'python-awscrt'
   'python-colorama'
@@ -24,8 +24,12 @@ depends=(
 makedepends=(
   'python-setuptools'
 )
+
+provides=('aws-cli')
+conflicts=('aws-cli' 'aws-cli-git' 'aws-cli-v2-bin')
+
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aws/aws-cli/archive/$pkgver.tar.gz")
-sha256sums=('a1717cfad7d3f93ed2c6496ef1db0e712edad8d230b1d1d4d16b8627605844fb')
+sha256sums=('a0989d4cace3260042052b473b843f883349582e8e3902675eb9f61934c92810')
 
 build() {
   cd "$srcdir"/aws-cli-$pkgver
