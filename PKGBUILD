@@ -3,7 +3,7 @@
 _pyname=etcd3gw
 pkgbase=python-$_pyname
 pkgname=(python-$_pyname)
-pkgver=1.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A python client for etcd3 grpc-gateway v3 API"
 arch=(any)
@@ -39,9 +39,9 @@ checkdepends=(
 	python-urllib3
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('c5041f0e66d008aca3fd84a881e1a96d')
-sha256sums=('0a97cb0baf0623db6027443caae0dd9bd271f0d9496196f5487b4b9fa083a54a')
-sha512sums=('d1aac81ebd221277c03bbb0f5dd76bb7c99a52132113959cf397fd44a598ade77300d506e2e5cfa04864cfd6a16f40ea8ddd350a4763a30609d8d922224c78ac')
+md5sums=('60b4b63e2eef1070c8cd7f9b0acbedbb')
+sha256sums=('38c42b51c01777a323a84362ef0987a19dda6c17b828d7877761d0fda5bfd0d1')
+sha512sums=('106bef3273bc934440716b81686b78fd0b7948c2baa1d36c32a9cbaa225c700037bbcbbb2384fa943b043ee8bdfc7f082bd35dab27df664f0210dd2d125148c9')
 
 export PBR_VERSION=$pkgver
 
