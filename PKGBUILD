@@ -3,12 +3,12 @@
 pkgname=python-pytoolconfig
 _name=${pkgname#python-}
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage configuration for python tools, such as black and rope."
 arch=('any')
 url="https://pypi.org/project/pytoolconfig/"
 license=('LGPL3')
-depends=('python' 'python-tomli' 'python-packaging' 'python-typing_extensions')
+depends=('python>=3.8' 'python-tomli' 'python-packaging')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-pdm')
 _dlurl="https://files.pythonhosted.org/packages/source"
 source=("$_dlurl/${_name::1}/$_name/$_name-$pkgver.tar.gz")
