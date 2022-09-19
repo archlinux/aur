@@ -1,26 +1,27 @@
 # Contributor : zico <zico@dxx-rebirth.com>
 # Contributor: Dominic Radermacher <dominic.radermacher@gmail.com>
+# Contributor: Star-X (AUR)
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=d2x-rebirth
-pkgver=20210623
+pkgver=20220823
 pkgrel=1
 pkgdesc="An enhanced engine to play with Descent2 data."
 arch=('x86_64')
 url="https://www.dxx-rebirth.com/"
 license=('custom:D2x' 'LGPL' 'custom:as-is')
-depends=('sdl' 'sdl_mixer' 'mesa' 'physfs' 'sdl_image')
+depends=('sdl2' 'sdl2_mixer' 'mesa' 'physfs' 'sdl2_image')
 makedepends=('scons' 'unzip')
 install="$pkgname.install"
 source=("https://www.dxx-rebirth.com/download/dxx/rebirth/dxx-rebirth_$pkgver-src.tar.xz"
         "https://www.dxx-rebirth.com/download/dxx/res/d2xr-sc55-music.dxa")
 noextract=("d2xr-sc55-music.dxa")
-md5sums=('6f19b43a2e80113a9de0eaae9f893543'
+md5sums=('204fa5d8bf3395414da9763a01973e7f'
          'b5bd2bea4cf904d54bddad36222aa92f')
 
 build() {
 	cd "dxx-rebirth_$pkgver-src"
-	scons sharepath="/usr/share/$pkgname" d2x=1
+	scons sharepath="/usr/share/$pkgname" d2x=1 sdlmixer=yes opengl=yes sdl2=yes
 }
 
 package() {
@@ -30,7 +31,7 @@ package() {
 	mkdir -p "$pkgdir/usr/share/applications"
 	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
 
-	install -m755 "dxx-rebirth_$pkgver-src/d2x-rebirth/d2x-rebirth" "$pkgdir/usr/bin/"
+	install -m755 "dxx-rebirth_$pkgver-src/build/d2x-rebirth/d2x-rebirth" "$pkgdir/usr/bin/"
 
 	install -m644 "dxx-rebirth_$pkgver-src/d2x-rebirth/d2x-rebirth.xpm" "$pkgdir/usr/share/pixmaps/"
 
