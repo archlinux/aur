@@ -1,6 +1,6 @@
 # Maintainer: Conrad Hoffmann <ch@bitfehler.net>
 pkgname=vsync
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="IMAP to maildir synchronization tool"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo' 'scdoc')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~bitfehler/vomit-sync/archive/v$pkgver.tar.gz")
-sha512sums=('eb77fbb958a7cea7580faf146d31c20b2ab44b89231dda55cfd7a7cade4a0366a1a773418a52b6ba37bf2631db2fbaeb68b0e3827fceb2e5a7c8a2f1cee2541e')
+sha512sums=('99448a2e60f2df7e725657895804cc6d30fbc92bdfe80e415d1ab0609cd7eb839d6500b0cae6055fedb0a5dbd30b58207eb8b8af5fe7fef5b711ba517048d20a')
 
 build() {
   cd "vomit-sync-v$pkgver"
