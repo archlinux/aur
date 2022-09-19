@@ -1,15 +1,15 @@
-# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Roman Kyrylych <roman@archlinux.org>
-# Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
 _pkgname=gnome-bluetooth
 pkgname=$_pkgname-git
-pkgver=42.beta.2+10+g35a0c4c8
+pkgver=42.4+2+gc95fe4ad
 pkgrel=1
 pkgdesc="The GNOME Bluetooth Subsystem"
 url="https://wiki.gnome.org/Projects/GnomeBluetooth"
-arch=(i686 pentium4 x86_64)
+arch=('x86_64' 'i686' 'pentium4')
 license=(GPL LGPL)
 depends=(gtk3
          libadwaita-git
