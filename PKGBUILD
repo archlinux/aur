@@ -2,7 +2,7 @@
 
 _pyname=os-win
 pkgname=python-$_pyname
-pkgver=5.5.0
+pkgver=5.7.1
 pkgrel=1
 pkgdesc="Windows / Hyper-V library for OpenStack projects."
 arch=(any)
@@ -29,9 +29,9 @@ checkdepends=(
 	python-testtools
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('7f9579f2342d4947e70885dc8e68113f')
-sha256sums=('ce555463d3ce0b7b0a66ed25c6dd90797b5ee3fb8fc073336af3fb751fa6338a')
-sha512sums=('bc980d973f5089c1328095b6edfaabf2435df3acbca543a768dbbccc8a10ffce4405c54c7711d2c7fa55c40442fa4b116f2e2d40ad4116b1c8bb96ace3450335')
+md5sums=('04f90d16c9131fc0fe0bfae336de922d')
+sha256sums=('d60ac38edf400e3ae831394697708cc95a5f1788067752d96fa5cba3674f30ca')
+sha512sums=('ea36fc99c215c9867c3620919cf62ec4634356dd53bcaca247a8b6330e32085c0b119df2d458b1262d9fc6a017f711033d8f583ba597bd95837e32054ac4eb9a')
 
 export PBR_VERSION=$pkgver
 
