@@ -3,8 +3,8 @@
 _pkgbase=gnome-desktop
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgbase}-common-git"
-         "${_pkgbase}-git")
-         #"${_pkgbase}-4-git")
+         "${_pkgbase}-git"
+         "${_pkgbase}-4-git")
 pkgver=43
 pkgrel=1
 pkgdesc="Library with common API for various GNOME modules"
@@ -81,7 +81,7 @@ package_gnome-desktop-common-git() {
 
 package_gnome-desktop-git() {
   pkgdesc+=" (GTK3)"
-  depends=(${_pkgbase}-common-git="${epoch}:${pkgver}-${pkgrel}"
+  depends=("${_pkgbase}-common-git=${epoch}:${pkgver}-${pkgrel}"
            gtk3)
   provides=("lib${_pkgbase}-3.so"
             "${_pkgbase}")
@@ -91,7 +91,7 @@ package_gnome-desktop-git() {
 
 package_gnome-desktop-4-git() {
   pkgdesc+=" (GTK4)"
-  depends=("${_pkgbase}-common=${epoch}:${pkgver}-${pkgrel}"
+  depends=("${_pkgbase}-common-git=${epoch}:${pkgver}-${pkgrel}"
            "gtk4")
   provides=(libgnome-{bg,desktop,rr}-4.so
             "${_pkgbase}-4")
