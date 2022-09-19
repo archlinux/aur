@@ -7,7 +7,6 @@ pkgbase = perimeter81-rpm
 	license = custom:LICENSE
 	depends = systemd
 	depends = netcat
-	depends = rpm-tools
 	options = !strip
 	source = https://static.perimeter81.com/agents/linux/Perimeter81_8.0.3.654.rpm
 	source = perimeter81helper.service
