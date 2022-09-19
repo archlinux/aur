@@ -1,6 +1,6 @@
 pkgbase = python-oslo-privsep
 	pkgdesc = OpenStack library for privilege separation
-	pkgver = 2.6.2
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://docs.openstack.org/oslo.privsep/latest/
 	arch = any
@@ -27,9 +27,9 @@ pkgbase = python-oslo-privsep
 	depends = python-greenlet
 	depends = python-msgpack
 	options = !emptydirs
-	source = https://pypi.io/packages/source/o/oslo.privsep/oslo.privsep-2.6.2.tar.gz
-	md5sums = decca9992112049c536fe12555a99c9a
-	sha256sums = b7bdb7c575cdce6a541ec698387fdf5fba502d4cb32f912e77ed32ac0dc7133a
-	sha512sums = 59cd8567ea31c17d849bc2c6f12ab8b0aeffce3341ae2a6f46c36388229a230930c3b6af9e9d59c754bf5d88a05deb11c413079b27d001ac5e49faa89baa3d1a
+	source = https://pypi.io/packages/source/o/oslo.privsep/oslo.privsep-3.0.1.tar.gz
+	md5sums = 96951be7cf8a90ad7a55ffac32fc1e88
+	sha256sums = c50977470b09a4016254dadc274837673604bd07b23b9d77a00769c47a0b05e4
+	sha512sums = fc373a6c8690545f8e8fb9a2d05e7ce8b25453f31b7f5cf7c851573b7492b7c333583c35ed08b6867af6e928759764dcb6a4cc733550b0fc1be0eab216e9bae3
 
 pkgname = python-oslo-privsep
