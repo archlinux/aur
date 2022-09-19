@@ -28,7 +28,6 @@ pkgbase = proton-ge-custom-bin
 	depends = graphene
 	depends = lib32-libjpeg6-turbo
 	depends = lib32-libgudev
-	depends = lib32-flac
 	depends = lib32-mpg123
 	depends = lib32-libusb
 	optdepends = kdialog: KDE splash dialog support

@@ -38,7 +38,6 @@ depends=('python'
 	'graphene'
 	'lib32-libjpeg6-turbo'
 	'lib32-libgudev'
-	'lib32-flac'
 	'lib32-mpg123'
 	'lib32-libusb')
 optdepends=('kdialog: KDE splash dialog support'
