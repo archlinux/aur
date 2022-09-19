@@ -1,7 +1,7 @@
 # Maintainer: Brittany Figueroa <dormwear underscore iure at crowley dot seership dot dev>
 
 pkgname=docker-machine-driver-kvm2
-pkgver=1.26.0
+pkgver=1.27.0
 pkgrel=1
 pkgdesc='Minikube-maintained KVM driver for docker-machine'
 url='https://minikube.sigs.k8s.io'
@@ -13,11 +13,11 @@ depends=(
 	'docker-machine'
 	'iptables-nft'
 	'libvirt'
-	'qemu-headless'
+	'qemu'
 )
 optdepends=('docker: to manage containers in the machine')
 source=("${pkgname}-${pkgver}"::"https://storage.googleapis.com/minikube/releases/v${pkgver}/${pkgname}-${_goarch}")
-b2sums=('41ea5a1f95e2111466539a372581d6bd2abe37ea43481f9c134826c143dfafb3eb8d69d771f33e8912dbb1a424a86a2dc206ecb97c3a186dece63fc643752174')
+b2sums=('e92b9aa39ac33fe72c0aa553944bbde0ac0c0b87ede554359a8da57d4ee86d45c4046f097a278112e6551d073bd1ff83cbacf6c4e4e41f044428182a9581a43a')
 
 package() {
 	install -D --mode 755 "${pkgname}-${pkgver}" "${pkgdir}/usr/bin/${pkgname}"
