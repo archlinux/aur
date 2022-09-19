@@ -3,7 +3,8 @@
 # Ionut Biru <ibiru@archlinux.org>
 # Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Adam Hani Schakaki (krzd) <krzd@krzd.net>
-# Maintainer: Andrey Vetrov <vetrov at mail dot ru>
+# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Contributor: Andrey Vetrov <vetrov at mail dot ru>
 
 pkgname=gsettings-desktop-schemas-git
 pkgver=43.0.r2.g0083a8e
