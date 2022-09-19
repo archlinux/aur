@@ -1,6 +1,6 @@
 # Maintainer: csantosb <csantosb dot inventati dot org>
 pkgname=python-cocotb-bus
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Pre-packaged testbenching tools and reusable bus interfaces for cocotb"
 arch=('any')
