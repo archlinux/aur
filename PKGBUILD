@@ -10,7 +10,7 @@ arch=(any)
 url="https://github.com/python-rope/pylsp-rope"
 license=(MIT license)
 depends=("python-rope" "python-typing_extensions" "python" "python-lsp-server")
-makedepends=("python" "python-pip" "python-build" "python-installer" "python-pytest")
+makedepends=("python" "python-pip" "python-build" "python-installer" "python-pytest" "python-wheel")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=("9e6104f15f922f633a4ba06ba0280f08a5e18973028f9bbdcae57b715d81cdd7")
 build() {

@@ -11,6 +11,7 @@ pkgbase = python-pylsp-rope
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-pytest
+	makedepends = python-wheel
 	depends = python-rope
 	depends = python-typing_extensions
 	depends = python
