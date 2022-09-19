@@ -1,0 +1,18 @@
+pkgbase = wallshell-git
+	pkgdesc = A shell program to fetch images in the terminal.
+	pkgver = r6.aad7faf
+	pkgrel = 1
+	url = https://github.com/acxz/wallshell
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = curl
+	depends = jq
+	depends = imagemagick
+	depends = chafa
+	provides = wallshell
+	conflicts = wallshell
+	source = wallshell::git+https://github.com/acxz/wallshell
+	sha256sums = SKIP
+
+pkgname = wallshell-git
