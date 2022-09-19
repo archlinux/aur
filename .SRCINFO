@@ -1,13 +1,13 @@
 pkgbase = fortune-mod-de
-	pkgdesc = A collection of German fortune cookie files
-	pkgver = 1.0
-	pkgrel = 2
-	url = http://www.mabelsoft.org/fortune_de_utf8.htm
+	pkgdesc = Fortune Cookies in german, from the Debian project
+	pkgver = 0.34
+	pkgrel = 1
+	url = https://packages.debian.org/source/sid/fortunes-de
 	arch = any
 	license = GPL2
+	makedepends = recode
 	depends = fortune-mod
-	source = http://www.mabelsoft.org/pub/fortune_deutsch_utf8.tgz
-	md5sums = d603b87a3a593ae333bd48f646332528
+	source = http://ftp.de.debian.org/debian/pool/main/f/fortunes-de/fortunes-de_0.34.orig.tar.gz
+	md5sums = 4d461b13da65c5964a73de744f5217b1
 
 pkgname = fortune-mod-de
-

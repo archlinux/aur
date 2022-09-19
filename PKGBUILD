@@ -1,20 +1,35 @@
-# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
-# Contributor: rabyte <rabyte__gmail>
+# Maintainer: Christian Schendel < doppelhelix@gmail.com >
 
 pkgname=fortune-mod-de
-pkgver=1.0
-pkgrel=2
-pkgdesc="A collection of German fortune cookie files"
-arch=('any')
-url="http://www.mabelsoft.org/fortune_de_utf8.htm"
-license=('GPL2')
+pkgver=0.34
+pkgrel=1
+pkgdesc="Fortune Cookies in german, from the Debian project"
+url="https://packages.debian.org/source/sid/fortunes-de"
 depends=('fortune-mod')
-source=(http://www.mabelsoft.org/pub/fortune_deutsch_utf8.tgz)
-md5sums=('d603b87a3a593ae333bd48f646332528')
+makedepends=('recode')
+source=(http://ftp.de.debian.org/debian/pool/main/f/fortunes-de/fortunes-de_$pkgver.orig.tar.gz)
+arch=('any')
+license=('GPL2')
+md5sums=('4d461b13da65c5964a73de744f5217b1')
+
+build() {
+	cd "$srcdir/fortunes-de-${pkgver}"
+	
+  PREFIX=`pwd`/build \
+  DOCDIR=usr/share/doc/${pkgname%-git} \
+  BINDIR=usr/bin \
+  FORTUNESDIR=usr/share/fortune \
+  ./install.sh -utf8
+}
 
 package() {
-  cd "${pkgdir}"
-
-  install -d "${pkgdir}"/usr/share
-  cp -rf "${srcdir}"/f/ "${pkgdir}"/usr/share/fortune/
+  cd "$srcdir/fortunes-de-${pkgver}/build"
+  rm -r {man,usr/bin}
+  cp -r * "${pkgdir}"
+  # Remove *.u8 files and strip ".fortunes" from filenames
+  cd $pkgdir/usr/share/fortune/de
+  rm *.u8
+  mv * ..
+  cd ..
+  rm -r de
 }
