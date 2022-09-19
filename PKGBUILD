@@ -1,12 +1,12 @@
 # Maintainer: spaceslug <me at spaceslug dot no>
 pkgname=dwarffortress-linuxdwarfpack-appimage
 pkgver=0.47.05_r6
-pkgrel=1
+pkgrel=2
 pkgdesc="The AppImage of lnp-forge built LinuxDwarfPack appimage"
 arch=('x86_64')
 url="https://github.com/McArcady/lnp-forge"
 license=('unknown')
-depends=('ncurses' 'qt5-base' 'webkit2gtk' 'tk' 'tcl' 'fuse2' 'fuse-overlayfs' 'gtk3' 'glu' 'sdl' 'sdl_image' 'sdl_ttf' 'libsndfile' 'openal' 'glew' 'gcc-libs' 'glib2')
+depends=('ncurses' 'qt5-base' 'webkit2gtk' 'tk' 'tcl' 'fuse2' 'fuse-overlayfs' 'gtk2' 'glu' 'sdl' 'sdl_image' 'sdl_ttf' 'libsndfile' 'openal' 'glew' 'gcc-libs' 'glib2')
 optdepends=('nvidia-utils: If you have nvidia graphics'
             'alsa-lib: for alsa sound'
             'libpulse: for pulse sound')

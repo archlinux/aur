@@ -1,7 +1,7 @@
 pkgbase = dwarffortress-linuxdwarfpack-appimage
 	pkgdesc = The AppImage of lnp-forge built LinuxDwarfPack appimage
 	pkgver = 0.47.05_r6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/McArcady/lnp-forge
 	arch = x86_64
 	license = unknown
@@ -12,7 +12,7 @@ pkgbase = dwarffortress-linuxdwarfpack-appimage
 	depends = tcl
 	depends = fuse2
 	depends = fuse-overlayfs
-	depends = gtk3
+	depends = gtk2
 	depends = glu
 	depends = sdl
 	depends = sdl_image
