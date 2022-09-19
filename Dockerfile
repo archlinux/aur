@@ -7,11 +7,11 @@ ARG GID=1000
 RUN useradd -m ${USER} --uid=${UID} -G wheel
 
 RUN pacman-key --init
-RUN pacman -Syu namcap --noconfirm
+RUN pacman -Syu namcap gnome-keyring tpm2-tss openssl --noconfirm
 RUN echo "%wheel ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/build
 RUN mkdir /build
 
 WORKDIR /build
-USER ${UID}:${GID}
+USER ${UID}
 
-CMD [ "/usr/sbin/makepkg", "-s", "--noconfirm"]
+CMD [ "/usr/sbin/makepkg", "--noconfirm"]
