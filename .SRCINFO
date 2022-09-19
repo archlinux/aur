@@ -1,13 +1,13 @@
 pkgbase = r-dtw
 	pkgdesc = Dynamic Time Warping Algorithms
-	pkgver = 1.22.3
-	pkgrel = 4
+	pkgver = 1.23.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=dtw
 	arch = x86_64
 	license = GPL
 	depends = r
 	depends = r-proxy
-	source = https://cran.r-project.org/src/contrib/dtw_1.22-3.tar.gz
-	sha256sums = df7cf9adf613422ddb22a160597eb5f5475ab6c67c0d790092edb7f72ba98f00
+	source = https://cran.r-project.org/src/contrib/dtw_1.23-1.tar.gz
+	sha256sums = 6ed6a3b52be673ce2617b8d48723c7c488c95aab88fe2912d7e00507838e826d
 
 pkgname = r-dtw
