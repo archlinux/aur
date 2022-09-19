@@ -2,7 +2,7 @@
 
 _pyname=tinyrpc
 pkgname=python-${_pyname}
-pkgver=1.1.3
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="A small, modular, transport and protocol neutral RPC library that, among other things, supports JSON-RPC and zmq."
 arch=(any)
@@ -24,9 +24,9 @@ makedepends=(
 )
 options=(!emptydirs)
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('0b758afa703546bfde37bdc65804d07b')
-sha256sums=('ac1ef6a1e0df0d5ccbd488d185e92581ddfe81a703b2d2aa0f1ad1fd99700f31')
-sha512sums=('9d46040b1b5ee942f7e085bd7727132eeaa813ba9fc40df77d7ac6a665f5fe6008266f4ac01cf5a4d4498f51005c5a10608c5478d4007fa7f4781257023faf5e')
+md5sums=('e9e8f35a7b862d63b9f8907a0eecbbff')
+sha256sums=('da437a84448d0d55f55ad1f6f7ac1636474f5f56c372c02f60f3faa0f90d91b9')
+sha512sums=('885aa07c67aca8071c48f2f3922fbfd59ca085651883dc791ca219afaea28eea76bdb514ba3ef113bbd5fb08c86c7b471518a3c8db0d6ffb05538586b0d97350')
 
 build(){
 	cd $_pyname-$pkgver
