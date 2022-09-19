@@ -1,7 +1,7 @@
 pkgbase = context-modules
 	pkgdesc = ConTeXt LMTX with all ConTeXt Garden modules
-	pkgver = 2022.08.25_19.21
-	pkgrel = 2
+	pkgver = 2022.09.10_02.44
+	pkgrel = 1
 	url = https://wiki.contextgarden.net/Installation
 	arch = x86_64
 	license = GPL

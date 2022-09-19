@@ -2,8 +2,8 @@
 
 _pkgname=context
 pkgname=${_pkgname}-modules
-pkgver=2022.08.25_19.21
-pkgrel=2
+pkgver=2022.09.10_02.44
+pkgrel=1
 pkgdesc='ConTeXt LMTX with all ConTeXt Garden modules'
 arch=('x86_64')
 url="https://wiki.contextgarden.net/Installation"
@@ -39,6 +39,7 @@ package() {
 }
 
 pkgver() {
+  # TODO use https://wiki.contextgarden.net/LMTX#How_to_check_for_newer_versions.3F
   cat "${srcdir}/tex/texmf-context/tex/context/base/mkxl/context.mkxl" |
     grep "def\\\\contextversion" |
     sed 's/^.*{\(.*\)}.*$/\1/' |
