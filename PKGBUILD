@@ -1,15 +1,15 @@
 # Maintainer: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname=biobambam
-pkgver=2.0.183_release_20210802180148
-pkgrel=2
+pkgver=2.0.184_release_20220919134840
+pkgrel=1
 pkgdesc="BAM file pre-processing utilities for bioinformatics."
 arch=('x86_64')
 url="https://github.com/gt1/biobambam2"
 license=('GPL3')
 makedepends=('libmaus' 'autoconf' 'make' 'boost')
 source=(https://gitlab.com/german.tischler/biobambam2/-/archive/${pkgver//_/-}/${pkgname}2-${pkgver//_/-}.tar.gz)
-sha256sums=('8712ceac509c389111b01dc3429f673dc0f8b77cb2bc48a1ebcf17f6888b2945')
+sha256sums=('e64a2eb261ff8af270ba541e67793a93c440c3691eee6aa40beae97ba68578c0')
 
 build() {
   cd "${srcdir}"/"${pkgname}2"-"${pkgver//_/-}"
