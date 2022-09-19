@@ -4,7 +4,6 @@ pkgdesc="xwinwrap 0.9 (useful for ghostlexly-gpu-video-wallpaper)"
 pkgver=0.9
 pkgrel=1
 arch=('x86_64')
-makedepends=('git')
 depends=('libx11' 'libxext' 'libxrender')
 provides=('xwinwrap')
 conflicts=('xwinwrap')

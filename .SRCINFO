@@ -5,7 +5,6 @@ pkgbase = xwinwrap-0.9-bin
 	url = https://github.com/mmhobi7/xwinwrap/
 	arch = x86_64
 	license = custom
-	makedepends = git
 	depends = libx11
 	depends = libxext
 	depends = libxrender
