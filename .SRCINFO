@@ -1,13 +1,16 @@
-pkgbase = graphite-cursor-theme-git
+pkgbase = ghostlexly-gpu-video-wallpaper
 	pkgdesc = An x-cursor theme inspired by Graphite gtk theme.
-	pkgver = 2021.11.26.r0.g4d712ad
+	pkgver = 2021.11.26.r9.g8773e95
 	pkgrel = 1
-	url = https://github.com/vinceliuice/Graphite-cursors
+	url = https://github.com/ghostlexly/gpu-video-wallpaper
 	arch = any
-	license = GPL3
+	license = MIT
 	makedepends = git
-	provides = graphite-cursor-theme
-	source = git+https://github.com/vinceliuice/Graphite-cursors.git
+	depends = python-pyqt5
+	depends = mpv
+	depends = xorg-xrandr
+	depends = xwinwrap
+	source = git+https://github.com/ghostlexly/gpu-video-wallpaper.git
 	sha256sums = SKIP
 
-pkgname = graphite-cursor-theme-git
+pkgname = ghostlexly-gpu-video-wallpaper
