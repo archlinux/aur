@@ -2,7 +2,7 @@
 
 _pyname=openstackdocstheme
 pkgname=python-$_pyname
-pkgver=2.3.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="OpenStack Docs Theme"
 arch=(any)
@@ -20,9 +20,9 @@ checkdepends=(
 	python-pre-commit
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('afa5e145d3a61bfdb168fd8b2357e744')
-sha256sums=('dbdd237e40f660c86a5fe8c3d16db99e2c8471db2d7575981d5a02ce1977cf77')
-sha512sums=('26cd9c6c36bf4f707c74556829dcf270eb7e064e4d35ad76931d79f9b0f2aeb0cde37b2ff07f97a010566fed53c55746cd413aa4a03d8718be92810f6afd29f0')
+md5sums=('1e13b4214bb424d89e2d0b563bbbccda')
+sha256sums=('72c6d4f9a9b6397a78c49eb43f80a9da2ed30b3f8f9d183704271cf7e3f23ccf')
+sha512sums=('0e4c5ca3f43e701692bb56d4e0823b52c55c49e9b4144d3920830903e178522f414930c0a253be415cd6d08534205f2d8e8fac107513bc32d1f667e8559a8c2f')
 
 export PBR_VERSION=$pkgver
 
