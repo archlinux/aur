@@ -3,7 +3,7 @@
 # Contributor: Igor Scabini <furester @ gmail.com>
 
 pkgname=cython3
-pkgver=3.0.0a10
+pkgver=3.0.0a11
 pkgrel=2
 pkgdesc="C-Extensions for Python"
 arch=(x86_64)
@@ -13,15 +13,8 @@ depends=('python')
 makedepends=(python-setuptools)
 provides=('cython')
 conflicts=('cython')
-source=($pkgname-$pkgver.tar.gz::"https://github.com/cython/cython/archive/$pkgver.tar.gz"
-        "https://patch-diff.githubusercontent.com/raw/cython/cython/pull/4528.patch")
-sha256sums=('d530216e015fd365bf3327a176e0073d0e5b8d48781f387336459f10032d776f'
-            'ba082a7b47bc66bc76b0801b58d2d3b425bea4207a72eb5815bd0dd5318b1df0')
-
-prepare() {
-    cd "cython-$pkgver"
-    patch -p1 -i ../4528.patch
-}
+source=($pkgname-$pkgver.tar.gz::"https://github.com/cython/cython/archive/$pkgver.tar.gz")
+sha256sums=('08dbdb6aa003f03e65879de8f899f87c8c718cd874a31ae9c29f8726da2f5ab0')
 
 build() {
   cd "cython-$pkgver"
