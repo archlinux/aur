@@ -1,7 +1,7 @@
 # Maintainer: Cedric Mamo <vrighter@gmail.com>
 pkgname=digisim-git
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="A digital logic simulator programmed in lua"
 arch=('x86_64')
 url=""
@@ -15,7 +15,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('digisim::git+https://github.com/VrIgHtEr/digisim.git#tag=1.0')
+source=('digisim::git+https://github.com/VrIgHtEr/digisim.git')
 noextract=()
 md5sums=('SKIP')
 
