@@ -1,7 +1,7 @@
 # Maintainer: Salamandar <felix@piedallu.me>
 
 pkgname=prusa-slicer-git
-pkgver=2.6.0.alpha0.r149.g60cd7d456
+pkgver=2.6.0.alpha0.r156.gc3bdf2fc2
 pkgrel=1
 pkgdesc='G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)'
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
@@ -54,18 +54,23 @@ build() {
     export CC=clang
     export CXX=clang++
 
-    cmake -B build -S PrusaSlicer -G Ninja \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DSLIC3R_FHS=ON \
-        -DSLIC3R_PCH=OFF \
-        -DSLIC3R_WX_STABLE=ON \
-        -DSLIC3R_GTK=3 \
-        -DSLIC3R_STATIC=OFF \
-        -DwxWidgets_CONFIG_EXECUTABLE=$(which wx-config-gtk3) \
+    cmake_args=(
+        -DCMAKE_INSTALL_PREFIX=/usr
+        -DCMAKE_INSTALL_LIBDIR=lib
+        -DSLIC3R_FHS=ON
+        -DSLIC3R_PCH=OFF
+        -DSLIC3R_GTK=3
         -DOPENVDB_FIND_MODULE_PATH=/usr/lib/cmake/OpenVDB
+    )
+    # For system-provided wx-gtk3
+    cmake_args+=(
+        -DSLIC3R_STATIC=OFF
+        -DSLIC3R_WX_STABLE=ON
+        -DwxWidgets_CONFIG_EXECUTABLE="$(which wx-config-gtk3)"
+    )
 
-    ninja -C build
+    cmake -B build -S PrusaSlicer -G Ninja "${cmake_args[@]}"
+    cmake --build build
 }
 
 check() {
@@ -74,7 +79,7 @@ check() {
 }
 
 package () {
-    DESTDIR="${pkgdir}" ninja -C "build" install
+    DESTDIR="$pkgdir" cmake --install build
 
     # Patch desktop files
     for i in PrusaGcodeviewer PrusaSlicer; do
