@@ -104,7 +104,7 @@ if [[ $CLI == "YES" ]] ; then
 else
 pkgname="emacs-pgtk-git"
 fi
-pkgver=29.0.50.159780
+pkgver=29.0.50.157451
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
