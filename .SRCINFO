@@ -1,0 +1,10 @@
+pkgbase = odus-git
+	pkgdesc = Light-weight sudo alternative
+	pkgver = r34.ef1e609
+	pkgrel = 1
+	url = https://github.com/mekb-turtle/odus
+	arch = any
+	source = odus::git+https://github.com/mekb-turtle/odus.git
+	sha256sums = SKIP
+
+pkgname = odus-git
