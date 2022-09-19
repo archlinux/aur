@@ -1,13 +1,14 @@
 pkgbase = heroic-gogdl
 	pkgdesc = GOG Downloading module for Heroic Games Launcher
 	pkgver = 0.3+r13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Heroic-Games-Launcher/heroic-gogdl
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-requests
 	source = git+https://github.com/Heroic-Games-Launcher/heroic-gogdl#commit=a55e3aae0f3c8d0674be7807cc5a8f82098b6094
 	sha256sums = SKIP
