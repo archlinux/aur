@@ -1,7 +1,7 @@
 pkgbase = deadbeef-plugin-lyricbar-git
 	pkgdesc = DeaDBeeF lyric bar plugin
 	pkgver = r80.ga1b2dba
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/loskutov/deadbeef-lyricbar
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,8 @@ pkgbase = deadbeef-plugin-lyricbar-git
 	depends = libxml++
 	optdepends = gtkmm3
 	optdepends = gtkmm
+	provides = deadbeef-plugin-lyricbar
+	conflicts = deadbeef-plugin-lyricbar
 	source = deadbeef-lyricbar::git+https://github.com/loskutov/deadbeef-lyricbar
 	source = deadbeef-lyricbar-makefile.patch
 	sha256sums = SKIP
