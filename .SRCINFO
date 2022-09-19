@@ -1,6 +1,6 @@
 pkgbase = gdevelop-bin
 	pkgdesc = Open-source, cross-platform game creator designed to be used by everyone - no programming skills required.
-	pkgver = 5.0.141
+	pkgver = 5.0.143
 	pkgrel = 1
 	url = https://gdevelop-app.com/
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = gdevelop-bin
 	provides = gdevelop
 	conflicts = gdevelop
 	options = !strip
-	source = https://github.com/4ian/GDevelop/releases/download/v5.0.141/GDevelop-5-5.0.141.AppImage
+	source = https://github.com/4ian/GDevelop/releases/download/v5.0.143/GDevelop-5-5.0.143.AppImage
 	source = https://github.com/4ian/GDevelop/raw/master/Core/docs/images/glogo.png
 	source = gdevelop.desktop
-	sha256sums = b58ddf3aabd3e76194d180e1438d1525631eebb00e22dc72f1caaa601f50116c
+	sha256sums = 5e10a8de078279aaabad5680efdb68986535a3001913e3a52f9dee915ff8c21b
 	sha256sums = 6ec8974d1c073442e1e653ac75d8ab4c1ed1cc1c2d14c6d73d6c50543a4f4b5f
 	sha256sums = d6074b92d0e5896a33cc007fa59eb35759569047b3a31d35108134beb538e039
 
