@@ -19,7 +19,7 @@ md5sums=('84ceb08e173be20bdff53987a7934962'
 prepare() {
   cd "whalebird-desktop-${pkgver}"
   rm -f electron-builder.json
-  _electronVersion="$(</usr/lib/electron18/version)"
+  _electronVersion="$(</usr/lib/electron19/version)"
   yarn upgrade "electron@$_electronVersion"
 }
 
@@ -27,7 +27,7 @@ build() {
   cp electron-builder.yml "whalebird-desktop-${pkgver}"/electron-builder.yml
   cd "whalebird-desktop-${pkgver}"
   make build
-  yarn exec electron-builder --linux --dir --config electron-builder.yml -c.electronDist=/usr/lib/electron18 -c.electronVersion="$_electronVersion"
+  yarn exec electron-builder --linux --dir --config electron-builder.yml -c.electronDist=/usr/lib/electron19 -c.electronVersion="$_electronVersion"
 }
 
 package() {
