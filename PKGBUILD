@@ -13,16 +13,17 @@ source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
   )
 sha512sums=(
-  '8db27268e46e58c116f6e2e206ab1c036e319728be3d7de18430c30f23e6a5070f8fde3e8d86ab50fbe31b93f10769288a34afbadbb9fb4e95c48e556a280532'
-  '8daf50a34037f5da0821268a2358f296ed60f20b7fa78498e9159f40d06b090c120644a15f7eae238f5b2e0f391296e042c77679ec2820345cd02abc6d478e7a'
+  '0ffb00221c180408e9c4927de03ae91f39459dd32de54bb8a1da887d6ca4aee6051c4da0549a425626a1d1ea4ec5f5e131276797ec4672831be3722d04531e9b'
+  'f7813acc8993bb54ea0ffa5e0162ca30f22a95edd7db4dbf9c494cdc587cbe52c30da054d50da68ff06d3d0079917cb25e2eca1f876b48437ff54a926abed645'
   )
 md5sums=(
-  'e5026fdf5ace56561b29299e4558a345'
-  '4239275babec0a77172cda54ff5de042'
+  '14693d8295a83d24e7ec5d1c0877963d'
+  '0a45d65a419525bad029efef7e303dd7'
   )
 validpgpkeys=('81BACEEBC3EA26E127166E4A819BB92A9A48160E')
 
 package() {
     install -Dm644 usr/share/licenses/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 usr/share/repoup/repouprc "${pkgdir}${XDG_CONFIG_HOME:-$HOME/.config}/repoup/repouprc"
     install -Dm755 usr/bin/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
 }
