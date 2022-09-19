@@ -3,13 +3,12 @@
 _pkgbase=gnome-desktop
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgbase}-common-git"
-         "${_pkgbase}-git")
-         # Waiting for merge packages request
-         # "${_pkgbase}-4-git")
+         "${_pkgbase}-git"
+         "${_pkgbase}-4-git")
 pkgver=43
 pkgrel=1
-epoch=1
 pkgdesc="Library with common API for various GNOME modules"
+epoch=1
 url="https://gitlab.gnome.org/GNOME/${_pkgbase}"
 arch=(x86_64)
 license=(GPL LGPL)
@@ -23,12 +22,12 @@ source=("git+${url}.git")
 b2sums=('SKIP')
 
 pkgver() {
-  cd ${_pkgname}
+  cd ${_pkgbase}
   git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-  arch-meson ${_pkgname} build \
+  arch-meson ${_pkgbase} build \
     -D gtk_doc=true \
     -D debug_tools=false \
     -D legacy_library=true \
