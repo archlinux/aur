@@ -76,7 +76,7 @@ source=("${_pkgver}_${pkgrel}.tar.gz::${url}/releases/download/${_pkgver}/${_pkg
 	'launcher.sh'
 	'pam_limits.conf')
 sha512sums=('ce6d1dcba3a458f154b7f80414e2201443cdc3c1a84ac3bf1ddb2fb6d9c8bf752c93714e7b0a2056daf566d302f0ca3fb8e224caf8bfd8c1bd695a7dc81e4fcf'
-            'cd70fa35e8565197148c6135628ea4c751c7dc4d7eba6e59cf8a8f2315e79f45e80fc3adce68c8ca2c195a18aaa2a8b2b346e8843b369f3d0ac97e752dbb5399'
+            '0b5b5786f93aee16303ab77f89ad2df146b7cd4950ccf80025d3a79be6cfdf6bc4771b0dc5063350b724ea8bd64b8f4a19a976efd974631c967f9ab2aa9c731c'
             '59a4ebb318e8ededc8425d4c4e27aa43fb8b0423511790682b547a03cde78801b2e622fbea2c4ac7355e863c4827ed8c8c754c6dff77a74145ec00ff3c68ce52'
             'c64898bd41801470925fb0efdcf7d247e5cb476fb4745f83ceeccf12041474e5c309fb1c2ac1483b419d12b4ade7668c046bebded4e3bf4708737ee505b080a1')
 
