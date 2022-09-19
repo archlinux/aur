@@ -21,12 +21,12 @@ pkgver() {
 }
 
 build() {
-	cd $pkgname
+	cd "$srcdir/${pkgname%-git}"
 	python setup.py build
 }
 
 package() {
-	cd $pkgname
+	cd "$srcdir/${pkgname%-git}"
 	python setup.py install --optimize=1 --root="$pkgdir"
 	install -Dm644 git-review.1 "$pkgdir"/usr/share/man/man1/git-review.1
 }
