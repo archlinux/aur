@@ -1,0 +1,17 @@
+pkgbase = shimo-bin
+	pkgdesc = 石墨文档 Shimo document (An online collaborative office software).
+	pkgver = 3.0.4
+	pkgrel = 1
+	url = https://shimo.im/
+	arch = x86_64
+	license = custom
+	depends = nss
+	depends = alsa-lib
+	depends = java-runtime
+	depends = libnet
+	depends = gtk3
+	depends = libxkbcommon-x11
+	source = https://as.smvm.cn/panther/shimo/release/linux/x64/shimo_v3.0.4-release.98ec8bb.shimo_linux-amd64.deb
+	sha512sums = ccebe1e6e8be1b6292a59c21aee5b24fae8ced93e6abb4f60850af9bb74696f816368224d886a979c245963ee2a20c737c89677c552af3c2574f7827b7e62aec
+
+pkgname = shimo-bin
