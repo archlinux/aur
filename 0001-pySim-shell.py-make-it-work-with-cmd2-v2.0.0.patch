@@ -1,0 +1,53 @@
+From d5c1bec8697ee0a9fd93ba8a9c2ba1e161a1724b Mon Sep 17 00:00:00 2001
+From: Vadim Yanitskiy <vyanitskiy@sysmocom.de>
+Date: Sun, 13 Feb 2022 22:25:16 +0600
+Subject: [PATCH 1/2] pySim-shell.py: make it work with cmd2 >= v2.0.0
+
+* Argument 'use_ipython' was renamed to 'use_ipython'.
+* Class 'Settable' requires the reference to the object that holds
+  the settable attribute.
+
+See https://github.com/python-cmd2/cmd2/releases/tag/2.0.0.
+
+Change-Id: Ia38f0ca5c3f41395f8fe850adae37f5af4e3fe19
+---
+ pySim-shell.py | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/pySim-shell.py b/pySim-shell.py
+index ef6a2b1..8759cc2 100755
+--- a/pySim-shell.py
++++ b/pySim-shell.py
+@@ -134,7 +134,7 @@ class PysimApp(cmd2.Cmd):
+ 
+     def __init__(self, card, rs, sl, ch, script=None):
+         super().__init__(persistent_history_file='~/.pysim_shell_history', allow_cli_args=False,
+-                         use_ipython=True, auto_load_commands=False, startup_script=script)
++                         auto_load_commands=False, startup_script=script)
+         self.intro = style('Welcome to pySim-shell!', fg=fg.red)
+         self.default_category = 'pySim-shell built-in commands'
+         self.card = None
+@@ -145,16 +145,16 @@ class PysimApp(cmd2.Cmd):
+         self.ch = ch
+ 
+         self.numeric_path = False
+-        self.add_settable(cmd2.Settable('numeric_path', bool, 'Print File IDs instead of names',
++        self.add_settable(cmd2.Settable('numeric_path', bool, 'Print File IDs instead of names', self,
+                                         onchange_cb=self._onchange_numeric_path))
+         self.conserve_write = True
+-        self.add_settable(cmd2.Settable('conserve_write', bool, 'Read and compare before write',
++        self.add_settable(cmd2.Settable('conserve_write', bool, 'Read and compare before write', self,
+                                         onchange_cb=self._onchange_conserve_write))
+         self.json_pretty_print = True
+         self.add_settable(cmd2.Settable('json_pretty_print',
+-                          bool, 'Pretty-Print JSON output'))
++                          bool, 'Pretty-Print JSON output', self))
+         self.apdu_trace = False
+-        self.add_settable(cmd2.Settable('apdu_trace', bool, 'Trace and display APDUs exchanged with card',
++        self.add_settable(cmd2.Settable('apdu_trace', bool, 'Trace and display APDUs exchanged with card', self,
+                                         onchange_cb=self._onchange_apdu_trace))
+ 
+         self.equip(card, rs)
+-- 
+2.37.3
+
