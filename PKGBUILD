@@ -3,40 +3,24 @@
 
 pkgname=uefitool
 _pkgname=UEFITool
-_tools=('UEFIExtract' 'UEFIFind')
-pkgver=A59
+_tools=("${_pkgname}" 'UEFIExtract' 'UEFIFind')
+pkgver=A61
 pkgrel=1
 pkgdesc='UEFI firmware image viewer and editor and utilities'
 arch=('armv7h' 'aarch64' 'i686' 'x86_64')
 url='https://github.com/LongSoft/UEFITool'
 license=('BSD')
-depends=('qt5-base')
+depends=('qt6-base')
 makedepends=('cmake')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('efcaebe644c43e9550d62a3b20885f9c6a7f0235a0ae6acd97ccf9c9fa9be868')
-
-_cbuild() {
-  cmake .
-  cmake --build .
-}
-
-_qbuild() {
-  qmake \
-    QMAKE_CFLAGS_RELEASE="$CFLAGS" \
-    QMAKE_CXXFLAGS_RELEASE="$CXXFLAGS" \
-    QMAKE_LFLAGS_RELEASE="$LDFLAGS"
-  make
-}
+sha256sums=('54fbc130a71e6474f0f9342166465670dff0dac9ba743fe162ae2c9912826155')
 
 build() {
-  cd "$_pkgname-$pkgver/$_pkgname"
-  _qbuild
-  cd ..
+  cd "${_pkgname}-${pkgver}"
 
-  for tool in "${_tools[@]}"; do
-    cd "$tool"
-    _cbuild
-    cd ..
+  for _tool in "${_tools[@]}"; do
+	cmake -S "${_tool}" -B "${_tool}-build"
+	cmake --build "${_tool}-build"
   done
 }
 
@@ -44,9 +28,9 @@ package() {
   cd "${_pkgname}-${pkgver}"
 
   __tools=("${_pkgname}" "${_tools[@]}")
-  for tool in "${__tools[@]}"; do
-    install -Dm755 "$tool/$tool" "$pkgdir/usr/bin/${tool,,}"
+  for _tool in "${__tools[@]}"; do
+    install -Dm755 "${_tool}-build/${_tool}" "${pkgdir}/usr/bin/${_tool,,}"
   done
 
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
