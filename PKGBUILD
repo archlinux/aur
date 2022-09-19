@@ -1,7 +1,7 @@
 # Maintainer: Ivan 'ivabus' Bushchik ivabus@ivabus.dev -> https://github.com/ivabus
 
 pkgname=plainpanel
-pkgver=0.2.1
+pkgver=0.3
 pkgrel=1
 pkgdesc="plainDE panel"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
