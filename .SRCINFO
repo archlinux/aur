@@ -1,0 +1,20 @@
+pkgbase = openfec-roc
+	pkgdesc = Open Forward Erasure Codes (ROC fork)
+	pkgver = 1.4.2.4
+	pkgrel = 1
+	url = https://openfec.org
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7l
+	arch = armv6l
+	arch = armv7h
+	arch = armv6h
+	license = CeCill
+	makedepends = cmake
+	provides = openfec
+	conflicts = openfec
+	source = openfec-1.4.2.4.tar.gz::https://github.com/roc-streaming/openfec/archive/refs/tags/v1.4.2.4.tar.gz
+	sha256sums = 691e3ec41b948e93dd34c690139624e2e20ed390e6a5f000f238491574343a16
+
+pkgname = openfec-roc
