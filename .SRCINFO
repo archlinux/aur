@@ -30,7 +30,7 @@ pkgbase = emacs-pgtk-git
 	conflicts = emacs
 	replaces = emacs
 	options = !strip
-	source = emacs-git::git://git.savannah.gnu.org/emacs.git
+	source = emacs-git::git://github.com/emacs-mirror/emacs.git#commit=bdcc61247a540699851eb73ea9d4ef3d0a06a92a
 	b2sums = SKIP
 
 pkgname = emacs-pgtk-git

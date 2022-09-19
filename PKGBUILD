@@ -116,9 +116,9 @@ makedepends=('git' 'mold')
 provides=('emacs')
 conflicts=('emacs')
 replaces=('emacs')
-source=("emacs-git::git://git.savannah.gnu.org/emacs.git")
+#source=("emacs-git::git://git.savannah.gnu.org/emacs.git")
 # If Savannah fails for reasons, use Github's mirror
-#source=("emacs-git::git://github.com/emacs-mirror/emacs.git")
+source=("emacs-git::git://github.com/emacs-mirror/emacs.git#commit=bdcc61247a540699851eb73ea9d4ef3d0a06a92a")
 options=(!strip)
 install=emacs-git.install
 b2sums=('SKIP')
