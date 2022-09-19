@@ -1,6 +1,6 @@
 pkgbase = python-confluent-kafka
 	pkgdesc = Confluent's Python client for Apache Kafka
-	pkgver = 1.7.0
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = https://github.com/confluentinc/confluent-kafka-python
 	arch = x86_64
@@ -27,12 +27,11 @@ pkgbase = python-confluent-kafka
 	makedepends = python2-pyrsistent
 	makedepends = python2-protobuf
 	makedepends = python2-setuptools
-	source = https://pypi.io/packages/source/c/confluent-kafka/confluent-kafka-1.7.0.tar.gz
-	md5sums = 6690aa4605764d6a7c3f102f125a684a
-	sha256sums = 80e01b4791513c27eded8517af847530dfdf04c43d99ff132ed9c3085933b75b
-	sha512sums = 242736ba1538bef2b9627554e107ec0b435ff78dba321efd3b6feaafea786d6d35641753ea473962962dc0eefca204612483796b68e166f5016618f04c5fd705
+	source = https://pypi.io/packages/source/c/confluent-kafka/confluent-kafka-1.9.2.tar.gz
+	md5sums = 09ab474fe8fefff6e40df1cea4ba0832
+	sha256sums = 2fb97bd25d436bd59fe079885aa77a3a2f23cface9c6359d4700053665849262
+	sha512sums = bc78c168294dc0eedd6fcc2ae979ab3d9c49c926faf1bb0c5449aeab4d5495388ef012f19ccdfe1614dae0d7d07a7c0bb3295b6cc69b58d1e8b13761ea6e8763
 
 pkgname = python-confluent-kafka
 
 pkgname = python2-confluent-kafka
-
