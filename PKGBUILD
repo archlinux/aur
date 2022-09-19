@@ -1,4 +1,5 @@
-# Maintainer: Popolon <popolon(At)popolon.org>
+# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Contributor: Popolon <popolon(At)popolon.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: mathieui <mathieui(AT)mathieui(DOT)net>
 # Contributor: Celos <celos94(AT)gmail(DOT)com>
