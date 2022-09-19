@@ -2,7 +2,7 @@
 
 pkgname=flarectl
 _pkgname=cloudflare-go
-pkgver=0.49.0
+pkgver=0.50.0
 pkgrel=1
 pkgdesc='CLI application for interacting with a Cloudflare account'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/${_pkgname%-go}/${_pkgname}/tree/v${pkgver}/cmd/${pkgnam
 license=('BSD')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/${_pkgname%-go}/${_pkgname}/archive/v${pkgver}.tar.gz")
-b2sums=('090cdd8f7ad7c6c39f937104bc8ee61f2eca38fbfe557d1ab1e9b398d7e453e5eab42d724ced63a8397d82249d84bd7a1f5dfb658269ca760f06d22c9fe175d8')
+b2sums=('86121f49dd6524af831b54a470febeb94c7c82daea3fc9d8821e551a31ab6527a189a601173856eb2db4f9ed4982839c08fa1af5f4e53bd380bf054274692b9c')
 
 prepare() {
 	cd "${_pkgname}-${pkgver}"
