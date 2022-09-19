@@ -1,0 +1,6 @@
+post_install() {
+  _contextshare=/usr/share/texmf-dist/texmf-context
+  test -d "$_contextshare" || exit $?
+  echo "Add the following to your environment and run it now to use ConTeXt immediately:
+    export TEXMF=${_contextshare}"
+}
