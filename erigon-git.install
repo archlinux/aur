@@ -1,0 +1,7 @@
+post_install() {
+    echo "=> This is a bleeding edge build of Erigon. Use only if you know what you are doing as it may contain bugs."
+}
+
+post_upgrade() {
+    echo "=> This is a bleeding edge build of Erigon. Use only if you know what you are doing as it may contain bugs."
+}

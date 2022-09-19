@@ -1,0 +1,20 @@
+pkgbase = erigon-git
+	pkgdesc = Ethereum execution layer implementation in Go
+	pkgver = 2022.09.02+11
+	pkgrel = 1
+	url = https://github.com/ledgerwatch/erigon
+	install = erigon-git.install
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	depends = glibc
+	provides = erigon
+	conflicts = erigon
+	source = git+https://github.com/ledgerwatch/erigon.git#branch=devel
+	source = ethereum-tests::git+https://github.com/ethereum/tests
+	source = erigon-git.install
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = f9950a2111c57bac7be081768c2e58594df9d438b35cdc35ec0a54de81b82ff7
+
+pkgname = erigon-git
