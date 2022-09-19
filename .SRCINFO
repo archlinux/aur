@@ -1,6 +1,6 @@
 pkgbase = python-oslo-limit
 	pkgdesc = Limit enforcement library to assist with quota calculation.
-	pkgver = 1.4.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://docs.openstack.org/oslo.limit/latest/
 	arch = any
@@ -26,9 +26,9 @@ pkgbase = python-oslo-limit
 	depends = python-oslo-log
 	depends = python-openstacksdk
 	options = !emptydirs
-	source = https://pypi.io/packages/source/o/oslo.limit/oslo.limit-1.4.0.tar.gz
-	md5sums = 2d8a94f5358c7c4b502195f09cc01d8d
-	sha256sums = ca11f5a19c092f8ecae9a5360584b6c0a3e6d1189eafa9dab2b6d6afb6f5507e
-	sha512sums = 6c52bf009ab5ecc186b2174a49cf2b5fac6320aa0170375733f6c78d75fb8ee1850dcac172a5b6689114b83625eb7e618c299f6127772152fc049cec2eae9f6a
+	source = https://pypi.io/packages/source/o/oslo.limit/oslo.limit-2.0.1.tar.gz
+	md5sums = ad4bb636e6ccb0a504de3a7af7f2eef9
+	sha256sums = 2171408f4d9ee1d754eda051711faed7e0b3f281f9386428517b036e8d9323c9
+	sha512sums = 1f3e8ffc327ccbfa6a15cc093441f5f89d40933763b03c1ed468deb5aadc224e8da4f2963805d20e26c454ee0645492919f63c86ef6c75d35c3e1e04d901db16
 
 pkgname = python-oslo-limit
