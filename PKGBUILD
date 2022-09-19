@@ -9,7 +9,7 @@ pkgdesc='Perimeter81 agent application'
 arch=('x86_64')
 url='https://support.perimeter81.com/docs/downloading-the-agent'
 license=('custom:LICENSE')
-depends=('systemd' 'netcat' 'rpm-tools')
+depends=('systemd' 'netcat')
 options=(!strip)
 source=(
   "https://static.perimeter81.com/agents/linux/Perimeter81_${pkgver}.rpm"
