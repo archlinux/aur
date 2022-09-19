@@ -1,17 +1,18 @@
 # Maintainer: Łukasz Mariański <lmarianski dot protonmail dot com>
 pkgname=alvr-nightly
 _pkgname=${pkgname%-nightly}
-pkgver=19.0.0_dev00+nightly.2022.09.02
+pkgver=19.0.0_dev01+nightly.2022.09.19
 pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
 license=('MIT')
 groups=()
-depends=('vulkan-driver' 'ffmpeg' 'gtk3' 'libunwind')
-makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'jack')
+depends=('vulkan-driver' 'ffmpeg' 'libunwind')
+makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'jack' 'libxrandr')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
+options=('!lto')
 
 _RES=$(curl -Ls https://github.com/alvr-org/ALVR-nightly/releases/latest)
 _COMMIT=$(echo "$_RES" | grep 'Generated from commit:' | head -n1 | awk '{print $4}' | awk -F '@' '{print $2}')
@@ -93,10 +94,8 @@ package() {
 	install -Dm644 target/release/libalvr_vulkan_layer.so -t "$pkgdir/usr/lib/"
 	install -Dm644 alvr/vulkan_layer/layer/alvr_x86_64.json -t "$pkgdir/usr/share/vulkan/explicit_layer.d/"
 
-	# resources (presets + dashboard)
-	install -d $pkgdir/usr/share/alvr/{dashboard,presets}
-
-	# install -Dm644 alvr/xtask/resources/presets/* -t "$pkgdir/usr/share/alvr/presets/"
+	# resources (dashboard)
+	install -d $pkgdir/usr/share/alvr/dashboard
 	cp -ar dashboard $pkgdir/usr/share/alvr/
 
 	# Desktop
