@@ -2,7 +2,7 @@
 
 pkgbase=neovim-zenbones
 pkgname=('neovim-zenbones' 'vim-zenbones' 'neovim-zenbones-extras')
-pkgver=1.1.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Contrast-focused Neovim colorscheme"
 arch=('any')
@@ -29,6 +29,7 @@ package_neovim-zenbones() {
 }
 
 package_vim-zenbones() {
+	pkgdesc="Contrast-focused Vim colorscheme"
 	depends=('vim')
 	provides=('vim-lightline-zenbones')
 	conflicts=('neovim-zenbones' 'vim-lightline-zenbones')
