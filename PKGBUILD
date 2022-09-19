@@ -1,7 +1,7 @@
 # Maintainer: Artem Vorotnikov <artem@vorotnikov.me>
 
 pkgname=erigon
-pkgver=2022.09.01
+pkgver=2022.09.02
 pkgrel=1
 pkgdesc='Ethereum implementation on the efficiency frontier.'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('glibc')
 makedepends=('go')
 source=("https://github.com/ledgerwatch/erigon/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1f91daef4797a9a2928259227d1c31d2a5274f4eaf0d37b220fcf060277b8f78')
+sha256sums=('882ab6a7291b2b0fc8f2211f4c1fa9969422006d835c5f79d6e34dfdb54bf277')
 
 build() {
     cd ${pkgname}-${pkgver}
