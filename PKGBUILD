@@ -9,12 +9,13 @@ url="https://gitlab.com/postmarketOS/osk-sdl"
 license=('GPL3')
 depends=(device-mapper cryptsetup sdl2 sdl2_ttf mesa ttf-dejavu libglvnd)
 makedepends=(scdoc meson)
-source=(https://gitlab.com/postmarketOS/osk-sdl/-/archive/41f67e26b8e8466c0613ea51ff602c19e01c7009/osk-sdl-41f67e26b8e8466c0613ea51ff602c19e01c7009.tar.gz
+_commit="41f67e26b8e8466c0613ea51ff602c19e01c7009" # include 0.67 and fixes
+source=(git+https://gitlab.com/postmarketOS/osk-sdl.git#commit=${_commit}
         osk-sdl-hooks
         osk-sdl-install)
 
 build() {
-  arch-meson "$pkgname"-41f67e26b8e8466c0613ea51ff602c19e01c7009  _build
+  arch-meson "$pkgname"  _build
   meson compile -C _build
 }
 
