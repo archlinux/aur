@@ -2,7 +2,7 @@
 
 _pyname=os-brick
 pkgname=python-$_pyname
-pkgver=5.0.0
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="OpenStack Cinder brick library for managing local volume attaches"
 arch=(any)
@@ -51,9 +51,9 @@ checkdepends=(
 	python-fixtures
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('0647f7a64719b760383e4435cb0025ce')
-sha256sums=('0edc7eea855a5376c390d987593a55b121ab03735d6991d838b7f16821e6bfb9')
-sha512sums=('cefe64bdd9a128db3fb05f371b562d9112de788332458d8903ea05b8063bca0e3920e4574cdc82372c50aee0a203d0343aea4efc96d5c16bcd995671321a5438')
+md5sums=('36263ef94c71a8a660bf281c346f03c4')
+sha256sums=('b3fbd2f3fd2f05ed5ab6259bf8a89465412014b75157b437121fda42c3532aae')
+sha512sums=('6dd27f32d8552f9189c2c86f54dccc5cf9bed06a57eda66dbd89f32cd02898466a8b99ea9a6849967fa63336516cb881c02e86d97b0424ad984754886ac7a595')
 
 export PBR_VERSION=$pkgver
 
