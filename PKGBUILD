@@ -2,7 +2,7 @@
 
 pkgname=fortune-mod-de
 pkgver=0.34
-pkgrel=1
+pkgrel=2
 pkgdesc="Fortune Cookies in german, from the Debian project"
 url="https://packages.debian.org/source/sid/fortunes-de"
 depends=('fortune-mod')
