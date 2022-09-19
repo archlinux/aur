@@ -1,6 +1,6 @@
 pkgbase = onnxruntime-git
 	pkgdesc = cross-platform inference and training machine-learning accelerator.
-	pkgver = orttraining_rc2.r3930.g3d99f16e98
+	pkgver = orttraining_rc2.r4438.g14365b67a0
 	pkgrel = 1
 	url = https://onnxruntime.ai/
 	arch = x86_64
@@ -9,9 +9,10 @@ pkgbase = onnxruntime-git
 	makedepends = cmake
 	makedepends = ninja
 	depends = gcc-libs
+	depends = python
 	provides = onnxruntime
 	conflicts = onnxruntime
-	source = git+https://github.com/microsoft/onnxruntime.git
+	source = git+https://github.com/microsoft/onnxruntime.git#branch=main
 	md5sums = SKIP
 
 pkgname = onnxruntime-git

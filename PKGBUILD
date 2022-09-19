@@ -2,13 +2,13 @@
 
 _pkgname=onnxruntime
 pkgname=onnxruntime-git
-pkgver=orttraining_rc2.r3930.g3d99f16e98
+pkgver=orttraining_rc2.r4438.g14365b67a0
 pkgrel=1
 pkgdesc="cross-platform inference and training machine-learning accelerator."
 arch=('x86_64')
 url="https://onnxruntime.ai/"
 license=('MIT')
-depends=('gcc-libs')
+depends=('gcc-libs' 'python')
 makedepends=('git' 'cmake' 'ninja')
 checkdepends=()
 optdepends=()
@@ -18,7 +18,7 @@ replaces=()
 options=()
 # install=
 # changelog=
-source=("git+https://github.com/microsoft/onnxruntime.git")
+source=("git+https://github.com/microsoft/onnxruntime.git#branch=main")
 md5sums=('SKIP')
 
 prepare() {
@@ -46,6 +46,9 @@ build() {
 		-DCMAKE_BUILD_TYPE=Release \
 		-Donnxruntime_BUILD_SHARED_LIB=ON \
 		-DONNX_USE_PROTOBUF_SHARED_LIBS=ON \
+		-DPYTHON_INCLUDE_DIR=$(python -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \
+		-DPYTHON_LIBRARY=$(python -c "import distutils.sysconfig as sysconfig; print(sysconfig.get_config_var('LIBDIR'))") \
+		-DPYTHON_EXECUTABLE:FILEPATH=$(which python) \
 		.
 	ninja -C $srcdir/$_pkgname-build
 }
