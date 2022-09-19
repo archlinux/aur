@@ -1,0 +1,95 @@
+Version 3.4.7
+
+  Bug fixes
+
+    Handle battery ValueError for invalid upower output @timmo001 (#1972)
+    Allow GUI to be stopped by keyboard interrupt / SIGTERM @timmo001 (#1973)
+
+  Dependency updates
+
+    Bump @types/node from 18.7.14 to 18.7.15 in /frontend @dependabot (#1969)
+    Bump psutil from 5.9.1 to 5.9.2 in /backend @dependabot (#1970)
+    Bump pydantic from 1.10.1 to 1.10.2 in /shared @dependabot (#1971)
+    Bump @mui/lab from 5.0.0-alpha.97 to 5.0.0-alpha.98 in /frontend @dependabot (#1974)
+    Bump @mui/material from 5.10.3 to 5.10.4 in /frontend @dependabot (#1976)
+    Bump zeroconf from 0.39.0 to 0.39.1 in /backend @dependabot (#1977)
+    Bump typescript from 4.8.2 to 4.8.3 in /frontend @dependabot (#1981)
+    Bump @types/node from 18.7.15 to 18.7.16 in /frontend @dependabot (#1982)
+    Bump next from 12.2.5 to 12.3.0 in /frontend @dependabot (#1979)
+    Bump uuid from 8.3.2 to 9.0.0 in /frontend @dependabot (#1975)
+    Bump cryptography from 37.0.4 to 38.0.1 in /shared @dependabot (#1978)
+    Bump eslint-config-next from 12.2.5 to 12.3.0 in /frontend @dependabot (#1980)
+    Bump screeninfo from 0.8 to 0.8.1 in /backend @dependabot (#1983)
+    Bump @types/react from 18.0.18 to 18.0.19 in /frontend @dependabot (#1984)
+    Bump @mui/material from 5.10.4 to 5.10.5 in /frontend @dependabot (#1985)
+    Bump @types/lodash from 4.14.184 to 4.14.185 in /frontend @dependabot (#1987)
+    Bump @mui/lab from 5.0.0-alpha.98 to 5.0.0-alpha.99 in /frontend @dependabot (#1986)
+    Bump eslint from 8.23.0 to 8.23.1 in /frontend @dependabot (#1988)
+    Bump pyside6 from 6.3.1 to 6.3.2 in /gui @dependabot (#1990)
+    Bump pyinstaller from 5.3 to 5.4.1 in /backend @dependabot (#1992)
+    Bump pyinstaller from 5.3 to 5.4.1 in /cli @dependabot (#1991)
+    Bump pyinstaller from 5.3 to 5.4.1 in /gui @dependabot (#1989)
+    Bump @types/node from 18.7.16 to 18.7.17 in /frontend @dependabot (#1993)
+    Bump @types/node from 18.7.17 to 18.7.18 in /frontend @dependabot (#1994)
+    Bump @types/react from 18.0.19 to 18.0.20 in /frontend @dependabot (#1995)
+
+Version 3.4.6
+
+  Bug fixes
+
+    Restore/Fix type conversion for settings @timmo001 (#1968)
+
+Version  3.4.5
+
+  Enhancements
+
+    SQLModel for Database ORM @timmo001 (#1907)
+    Add alternative for displays @timmo001 (#1966)
+
+  Dependency updates
+
+    Bump @types/node from 18.6.3 to 18.6.4 in /frontend @dependabot (#1906)
+    Bump peerjs from 1.4.6 to 1.4.7 in /frontend @dependabot (#1917)
+    Bump @types/react from 18.0.15 to 18.0.17 in /frontend @dependabot (#1910)
+    Bump @fontsource/roboto from 4.5.7 to 4.5.8 in /frontend @dependabot (#1911)
+    Bump @mui/lab from 5.0.0-alpha.93 to 5.0.0-alpha.94 in /frontend @dependabot (#1915)
+    Bump @types/node from 18.6.4 to 18.6.5 in /frontend @dependabot (#1912)
+    Bump @mui/material from 5.9.3 to 5.10.0 in /frontend @dependabot (#1916)
+    Bump zeroconf from 0.38.7 to 0.39.0 in /backend @dependabot (#1913)
+    Bump pydantic from 1.9.1 to 1.9.2 in /shared @dependabot (#1921)
+    Bump sanic from 22.6.1 to 22.6.2 in /backend @dependabot (#1919)
+    Bump sanic-ext from 22.6.2 to 22.6.3 in /backend @dependabot (#1920)
+    Bump @types/node from 18.6.5 to 18.7.1 in /frontend @dependabot (#1918)
+    Bump eslint-config-next from 12.2.4 to 12.2.5 in /frontend @dependabot (#1923)
+    Bump @types/node from 18.7.1 to 18.7.2 in /frontend @dependabot (#1924)
+    Bump next from 12.2.4 to 12.2.5 in /frontend @dependabot (#1922)
+    Bump @types/node from 18.7.2 to 18.7.4 in /frontend @dependabot (#1925)
+    Bump eslint from 8.21.0 to 8.22.0 in /frontend @dependabot (#1926)
+    Bump @mui/lab from 5.0.0-alpha.94 to 5.0.0-alpha.95 in /frontend @dependabot (#1930)
+    Bump @types/node from 18.7.4 to 18.7.6 in /frontend @dependabot (#1931)
+    Bump @mui/material from 5.10.0 to 5.10.1 in /frontend @dependabot (#1932)
+    Bump @types/lodash from 4.14.182 to 4.14.183 in /frontend @dependabot (#1935)
+    Bump @types/lodash from 4.14.183 to 4.14.184 in /frontend @dependabot (#1936)
+    Bump @types/node from 18.7.6 to 18.7.7 in /frontend @dependabot (#1937)
+    Bump @types/node from 18.7.7 to 18.7.9 in /frontend @dependabot (#1939)
+    Bump @mui/lab from 5.0.0-alpha.95 to 5.0.0-alpha.96 in /frontend @dependabot (#1941)
+    Bump @types/node from 18.7.9 to 18.7.11 in /frontend @dependabot (#1940)
+    Bump @mui/material from 5.10.1 to 5.10.2 in /frontend @dependabot (#1943)
+    Bump @mui/styles from 5.9.3 to 5.10.2 in /frontend @dependabot (#1942)
+    Bump @types/node from 18.7.11 to 18.7.13 in /frontend @dependabot (#1944)
+    Bump typescript from 4.7.4 to 4.8.2 in /frontend @dependabot (#1947)
+    Bump @mui/styles from 5.10.2 to 5.10.3 in /frontend @dependabot (#1952)
+    Bump @mui/lab from 5.0.0-alpha.96 to 5.0.0-alpha.97 in /frontend @dependabot (#1950)
+    Bump @mui/material from 5.10.2 to 5.10.3 in /frontend @dependabot (#1953)
+    Bump sqlmodel from 0.0.6 to 0.0.7 in /shared @dependabot (#1954)
+    Bump colorlog from 6.6.0 to 6.7.0 in /shared @dependabot (#1955)
+    Bump eslint from 8.22.0 to 8.23.0 in /frontend @dependabot (#1951)
+    Bump @types/react from 18.0.17 to 18.0.18 in /frontend @dependabot (#1956)
+    Bump @emotion/styled from 11.10.0 to 11.10.4 in /frontend @dependabot (#1958)
+    Bump @types/node from 18.7.13 to 18.7.14 in /frontend @dependabot (#1957)
+    Bump @emotion/react from 11.10.0 to 11.10.4 in /frontend @dependabot (#1959)
+    Bump sqlmodel from 0.0.7 to 0.0.8 in /shared @dependabot (#1960)
+    Bump pydantic from 1.9.2 to 1.10.0 in /shared @dependabot (#1961)
+    Bump pandas from 1.4.3 to 1.4.4 in /shared @dependabot (#1962)
+    Bump pydantic from 1.10.0 to 1.10.1 in /shared @dependabot (#1963)
+

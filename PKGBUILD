@@ -3,8 +3,8 @@
 
 _archive_extension='tar.gz'
 pkgname=system-bridge
-pkgver=3.4.4
-pkgrel=2
+pkgver=3.4.7
+pkgrel=1
 epoch=1
 pkgdesc="Bridges your system to other systems, like Home Assistant"
 arch=('any')
@@ -29,6 +29,7 @@ depends=(
 	python-colorlog
 	python-cryptography
 	python-pandas
+	python-screeninfo
 )
 makedepends=(
 	yarn
@@ -38,19 +39,25 @@ makedepends=(
 	python-wheel
 	libxss
 	gtk3
-	nss)
+	nss
+)
 optdepends=(
 	'lshw: To get system information such as the UUID'
 	'upower: To get battery information'
 )
-source=("$pkgname-$pkgver.$_archive_extension::https://github.com/timmo001/$pkgname/archive/refs/tags/$pkgver.$_archive_extension"
+source=(
+	"$pkgname-$pkgver.$_archive_extension::https://github.com/timmo001/$pkgname/archive/refs/tags/$pkgver.$_archive_extension"
         "$pkgname.desktop"
         "$pkgname"
-        "$pkgname.service")
-b2sums=('6aea30062b9001845b39f8459a63a2b83c2a15d45ca13ef30cb0293adb41e2693d6760e155ebf30f1b0f0805d06a0eee8036e99990b1b78183d2f29dfdb33c2f'
+        "$pkgname.service"
+)
+b2sums=(
+	'57d780f9ae64e9e29ef63296f41343871458eda06653962032ad3af944ca8e18f6934da1d29c76d38e295bd64b9153c049bfc2959029840062a9f883e0b18051'
         'fa5f2b2bb64d44f7791fe8631481cf294f0a3afa88f1ac7fdb55508df9acc4ad26b1723cadebbf1bc09369c2e3732c6628b6b06d44c3bdcebee0d5913d85d097'
         '26634fe43624791f7ae6fe85e70792fcf67fcd5a9997ba40043c49a636d939d610eb5e6ededdf1e6723dd8280e924160e72a8469501a1436ad67f28eab2d4fef'
-        '03852934e853a7a5973e4139a9c51a160df81af1fa958ac6550a6525aa97ad3ebc983bf4a662cce345e04cc0451912687d4c199c9152c7160b173abad2b73b37')
+        '03852934e853a7a5973e4139a9c51a160df81af1fa958ac6550a6525aa97ad3ebc983bf4a662cce345e04cc0451912687d4c199c9152c7160b173abad2b73b37'
+)
+changelog=$pkgname.changelog
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver/frontend"
@@ -86,4 +93,3 @@ package() {
 	install -Dm 644 "resources/$pkgname.svg" "$pkgdir/usr/share/icons/$pkgname.svg"
         install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
