@@ -2,7 +2,7 @@
 
 _pyname=pypowervm
 pkgname=python-$_pyname
-pkgver=1.1.26
+pkgver=1.1.27
 pkgrel=1
 pkgdesc="Python binding for the PowerVM REST API"
 arch=(any)
@@ -41,9 +41,9 @@ checkdepends=(
 	python-mock
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('e4e33d88e9b8fd9557d7f4ffb91fb940')
-sha256sums=('7362c474389960cc15e8579683fee60773cacf2ea2f24456e181ddfb117dfee0')
-sha512sums=('c258a5d7b9a38f0e718d28ec07efe08b1bb7fae3086e3c2d0edc56c9cb0e7d8256fd6e8f1c17fe0511b4ce1772b935680b657fe565454bdb3c312a470c490a5d')
+md5sums=('4a16d0f483ec153dfd696146bfd8f9c1')
+sha256sums=('d792d8a6390c25b742142f39d201f6b416b44b960434fd42a0241b2489e258c4')
+sha512sums=('8397ae8418965ee296939adfd6e23c2144fdd69deab5990da0fecd8ed5bd9c31d7e4c08d7fbe5d434056158c9db46b4cfa53b2fc0ef2efe56a5ead08c0a8c187')
 
 export PBR_VERSION=$pkgver
 
