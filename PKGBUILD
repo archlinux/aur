@@ -2,7 +2,7 @@
 #Contributor: max-k <max-k AT post DOT com>
 pkgname=ampache
 pkgver=5.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="PHP web based audio/video streaming application and file manager"
 arch=('any')
 url="http://www.ampache.org/"
@@ -42,6 +42,8 @@ package() {
   rm -r "${_targetdir}/docs/man"
   mkdir -p "$_docdir"
   mkdir -p "$_mandir"
+  cp "${_targetdir}/play/.htaccess.dist" "${_targetdir}/play/.htaccess"
+  cp "${_targetdir}/rest/.htaccess.dist" "${_targetdir}/rest/.htaccess"
   install -D -m644 "${srcdir}/docs/man/man1/ampache.1" "${_mandir}/"
   install -D -m644 "${srcdir}/nginx-example.conf" "${_docdir}/"
   find "$_targetdir" -type d -exec chmod 755 {} \;

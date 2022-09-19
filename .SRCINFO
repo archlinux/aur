@@ -1,7 +1,7 @@
 pkgbase = ampache
 	pkgdesc = PHP web based audio/video streaming application and file manager
 	pkgver = 5.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ampache.org/
 	install = ampache.install
 	arch = any
