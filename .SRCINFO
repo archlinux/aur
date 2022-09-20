@@ -1,0 +1,22 @@
+pkgbase = conf2struct-git
+	pkgdesc = conf2struct takes a configuration file that describes a configuration file in the libconfig format, and generates a C parser that will read a configuration file directly into a C structure
+	pkgver = 1.5.r0.g6bc9eed
+	pkgrel = 1
+	url = https://www.rutschle.net/tech/conf2struct/README.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = libconfig
+	makedepends = perl-conf-libconfig
+	makedepends = pcre2
+	makedepends = perl
+	depends = libconfig
+	depends = perl
+	depends = perl-conf-libconfig
+	provides = conf2struct
+	conflicts = conf2struct
+	source = conf2struct-git::git+https://github.com/yrutschle/conf2struct.git
+	md5sums = SKIP
+
+pkgname = conf2struct-git
