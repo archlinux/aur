@@ -2,7 +2,7 @@
 # Contributor (from 1.0.2): Viliam Ganz <viliam.ganz@gmail.com>
 
 pkgname=offsetexplorer2
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 epoch=
 pkgdesc="The Ultimate UI Tool for Kafka"
