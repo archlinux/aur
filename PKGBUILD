@@ -1,7 +1,7 @@
 # Maintainer: Aditya Mishra <adityamishra081@protonmail.com>
 
 pkgname=dotto
-pkgver=6dea09
+pkgver=6dea00
 pkgrel=5
 pkgdesc="a pixel art editor (Very Unstable, Under Heavy Development)"
 arch=('any')

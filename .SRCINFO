@@ -1,6 +1,6 @@
 pkgbase = dotto
 	pkgdesc = a pixel art editor (Very Unstable, Under Heavy Development)
-	pkgver = 6dea09
+	pkgver = 6dea00
 	pkgrel = 5
 	url = https://github.com/LibreSprite/Dotto
 	arch = any
