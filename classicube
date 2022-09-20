@@ -1,5 +1,6 @@
 #!/bin/bash
 
 mkdir -p $HOME/.local/share/classicube
-/usr/bin/classicube_run -d$HOME/.local/share/classicube
+cd $HOME/.local/share/classicube
+/usr/bin/classicube_run
 
