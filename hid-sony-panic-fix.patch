@@ -1,0 +1,43 @@
+--- a/drivers/hid/hid-sony.c	2022-09-15 20:19:32.729266754 +0300
++++ b/drivers/hid/hid-sony.c	2022-09-15 20:35:35.081264397 +0300
+@@ -1132,11 +1132,14 @@
+ 		 * Note: we swap numerator 'x' and 'numer' in mult_frac for
+ 		 *       precision reasons so we don't need 64-bit.
+ 		 */
+-		int calib_data = mult_frac(calib->sens_numer,
+-					   raw_data - calib->bias,
+-					   calib->sens_denom);
++		if (calib->sens_denom != 0) {
++			int calib_data = mult_frac(calib->sens_numer,
++					raw_data - calib->bias,
++					calib->sens_denom);
++
++			input_report_abs(sc->sensor_dev, calib->abs_code, calib_data);
++		}
+ 
+-		input_report_abs(sc->sensor_dev, calib->abs_code, calib_data);
+ 		offset += 2;
+ 	}
+ 	input_sync(sc->sensor_dev);
+@@ -2617,21 +2620,6 @@
+ 		if (!buf)
+ 			return -ENOMEM;
+ 
+-		/*
+-		 * The MAC address of a DS4 controller connected via USB can be
+-		 * retrieved with feature report 0x81. The address begins at
+-		 * offset 1.
+-		 */
+-		ret = hid_hw_raw_request(sc->hdev, 0x81, buf,
+-				DS4_FEATURE_REPORT_0x81_SIZE, HID_FEATURE_REPORT,
+-				HID_REQ_GET_REPORT);
+-
+-		if (ret != DS4_FEATURE_REPORT_0x81_SIZE) {
+-			hid_err(sc->hdev, "failed to retrieve feature report 0x81 with the DualShock 4 MAC address\n");
+-			ret = ret < 0 ? ret : -EINVAL;
+-			goto out_free;
+-		}
+-
+ 		memcpy(sc->mac_address, &buf[1], sizeof(sc->mac_address));
+ 
+ 		snprintf(sc->hdev->uniq, sizeof(sc->hdev->uniq),

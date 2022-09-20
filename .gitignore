@@ -1,0 +1,5 @@
+src
+pkg
+hid-sony-panic-fix-dkms-*.pkg.tar.zst
+hid-sony.c
+hid-ids.h

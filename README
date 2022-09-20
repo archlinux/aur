@@ -1,0 +1,7 @@
+hid-sony-panic-fix-dkms
+=======================
+This hack is based on https://github.com/Kyuunex/hid-sony-clone-fix-dkms
+but it also adds a check to avoid a divide by zero. It removes the unused code
+instead of just changing the value of the variable.
+
+Use at your own risk.
