@@ -1,8 +1,8 @@
 # Maintainer: Wachid Adi Nugroho <wachidadinugroho.maya@gmail.com>
 
-pkgname=maui-shell-git
-_pkgname=${pkgname%-git}
-pkgver=v0.5.5.r6.g6a67519
+_pkgname=maui-shell
+pkgname=$_pkgname-git
+pkgver=0.5.5.r18.ge077362
 pkgrel=1
 pkgdesc='Maui Shell is a convergent shell for desktops, tablets, and phones.'
 url='https://github.com/Nitrux/maui-shell'
@@ -39,11 +39,11 @@ depends=(bluedevil
          kunitconversion
          kwallet
          kwayland
-         maui-calendar-git
+         maui-agenda-git
          maui-core-git
-         maui-manager-git
-         mauikit-git
          mauikit-filebrowsing
+         mauikit-git
+         mauiman-git
          phonon-qt5
          plasma-nm
          plasma-pa
@@ -66,7 +66,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd $_pkgname
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
