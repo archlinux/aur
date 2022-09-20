@@ -1,6 +1,6 @@
 pkgbase = glibc-linux4
 	pkgver = 2.36
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/libc/
 	arch = x86_64
 	license = GPL
@@ -12,8 +12,7 @@ pkgbase = glibc-linux4
 	options = debug
 	options = staticlibs
 	options = !lto
-	source = https://ftp.gnu.org/gnu/glibc/glibc-2.36.tar.xz
-	source = https://ftp.gnu.org/gnu/glibc/glibc-2.36.tar.xz.sig
+	source = git+https://sourceware.org/git/glibc.git#commit=4b95b6e8bbb5a2b6856f707bf3bc3308ebef595a
 	source = glibc-linux4.patch
 	source = locale.gen.txt
 	source = locale-gen
@@ -22,7 +21,6 @@ pkgbase = glibc-linux4
 	source = sdt-config.h
 	validpgpkeys = 7273542B39962DF7B299931416792B4EA25340F8
 	validpgpkeys = BC7C7372637EC10C57D7AA6579C43DFBF1CF2187
-	sha256sums = 1c959fea240906226062cb4b1e7ebce71a9f0e3c0836c09e7e3423d434fcfe75
 	sha256sums = SKIP
 	sha256sums = 69573c1c4eee6216f4f345647aed938d13994bf19a7e3a6ba9ed8bab85f23bef
 	sha256sums = fbd57987ca24d71305eda9e0dd76143b422118e12f76b2b0d555f86763e14cd2
