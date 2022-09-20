@@ -8,6 +8,6 @@ pkgbase = erigon
 	makedepends = go
 	depends = glibc
 	source = https://github.com/ledgerwatch/erigon/archive/refs/tags/v2022.09.03.tar.gz
-	sha256sums = 882ab6a7291b2b0fc8f2211f4c1fa9969422006d835c5f79d6e34dfdb54bf277
+	sha256sums = 4ca59881444c1a810c91c8c2cbc3517cdff3d46f4c302dc913c117280b785dd5
 
 pkgname = erigon
