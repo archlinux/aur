@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=bash -c 'cd /usr/local/games/rusted-arkanoid && ./arkanoid'
+Icon=/usr/share/pixmaps/rusted-arkanoid_icon.png
+Name=Rusted Arkanoid
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Game;
+Encoding=UTF-8
+Comment=Arkanoid - clone written in Rust
